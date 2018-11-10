@@ -13,18 +13,18 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.custom: mvc
-ms.date: 10/15/2018
+ms.date: 10/25/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: fa20f746e55f784e02244355c96ac273b9906acc
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 62eccba1b876ca8272dacbbd97a1d28c8b796081
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49339541"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50138309"
 ---
 # <a name="what-is-the-azure-stack-development-kit"></a>Was ist das Azure Stack Development Kit?
-[Integrierte Microsoft Azure Stack-Systeme](.\.\azure-stack-poc.md) haben eine Größe von vier bis zwölf Knoten, und der Support wird von einem Hardwarepartner und von Microsoft gemeinsam bereitgestellt. Mit integrierten Azure Stack-Systemen ermöglichen Sie neue Szenarien für Ihre Produktionsworkloads. Wenn Sie ein Azure Stack-Betreiber sind, der die Infrastruktur integrierter Systeme verwaltet und Dienste anbietet, hilft Ihnen die [Dokumentation für Betreiber](https://docs.microsoft.com/azure/azure-stack) weiter.
+[Integrierte Microsoft Azure Stack-Systeme](.\.\azure-stack-poc.md) haben eine Größe von 4 bis 16 Knoten, und der Support wird von einem Hardwarepartner und von Microsoft gemeinsam bereitgestellt. Mit integrierten Azure Stack-Systemen ermöglichen Sie neue Szenarien für Ihre Produktionsworkloads. Wenn Sie ein Azure Stack-Betreiber sind, der die Infrastruktur integrierter Systeme verwaltet und Dienste anbietet, hilft Ihnen die [Dokumentation für Betreiber](https://docs.microsoft.com/azure/azure-stack) weiter.
 
 Das Azure Stack Development Kit (ASDK) ist eine Azure Stack-Bereitstellung mit einem einzelnen Knoten, die Sie **kostenlos** herunterladen und verwenden können. Alle ASDK-Komponenten werden auf virtuellen Computern installiert, die auf einem einzelnen Hostservercomputer ausgeführt werden, der die [Mindesthardwareanforderungen](asdk-deploy-considerations.md#hardware) erfüllen muss. Das ASDK stellt eine *produktionsfremde* Umgebung bereit, in der Sie anhand von mit Azure konsistenten APIs und Tools Azure Stack evaluieren und moderne Anwendungen entwickeln können. 
 
@@ -47,7 +47,7 @@ Zwischen ASDK-Bereitstellungen mit einem einzelnen Knoten und Azure Stack-Bereit
 
 |BESCHREIBUNG|ASDK|Azure Stack mit mehreren Knoten|
 |-----|-----|-----|
-|**Skalieren**|Alle Komponenten werden auf einem Servercomputer mit einem einzelnen Knoten installiert.|Kann zwischen vier und zwölf Knoten umfassen.|
+|**Skalieren**|Alle Komponenten werden auf einem Servercomputer mit einem einzelnen Knoten installiert.|Kann zwischen 4 und 16 Knoten umfassen.|
 |**Resilienz**|Die Konfiguration mit einem einzelnen Knoten bietet keine Hochverfügbarkeit.|Funktionen für [Hochverfügbarkeit](.\.\azure-stack-key-features.md#high-availability-for-azure-stack) werden unterstützt.|
 |**Netzwerk**|Das ASDK verwendet für das Routing des gesamten ASDK-Netzwerkdatenverkehrs einen virtuellen Computer namens „AzS-BGPNAT01“. Es müssen keine zusätzlichen Switchanforderungen erfüllt werden.|Bei Bereitstellungen mit mehreren Knoten ist der virtuelle Computer „AzS-BGPNAT01“ nicht vorhanden. Es wird eine komplexere [Netzwerkroutinginfrastruktur](.\.\azure-stack-network.md#network-infrastructure) benötigt – einschließlich TOR-Switches (Top-Of-Rack), BMC-Switches (Baseboard Management Controller, Baseboard-Verwaltungscontroller) und Grenzswitches (Datencenter-Netzwerkswitches).|
 |**Patch- und Updateprozess**|Wenn Sie zu einer neuen ASDK-Version wechseln möchten, müssen Sie das ASDK erneut auf dem Development Kit-Hostcomputer bereitstellen.|Zum Aktualisieren der installierten Azure Stack-Version wird der Prozess zum [Patchen und Aktualisieren](.\.\azure-stack-updates.md) verwendet.|

@@ -1,5 +1,5 @@
 ---
-title: Integrieren von Azure ExpressRoute mit Notfallwiederherstellung für virtuelle Azure-Computer mithilfe von Azure Site Recovery | Microsoft-Dokumentation
+title: Integrieren von Azure ExpressRoute mit Notfallwiederherstellung für virtuelle Azure-Computer mithilfe des Azure Site Recovery-Diensts | Microsoft-Dokumentation
 description: Beschreibt, wie Sie die Notfallwiederherstellung für Azure VMs mithilfe von Azure Site Recovery und Azure ExpressRoute einrichten.
 services: site-recovery
 author: mayurigupta13
@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: mayg
-ms.openlocfilehash: 03fac23ea17a6baa1b43e748a4390cf142661a19
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: e7c63fba892f70ca0e18c1bffcda0782316b7ada
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353540"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50211552"
 ---
 # <a name="integrate-azure-expressroute-with-disaster-recovery-for-azure-vms"></a>Integrieren von Azure ExpressRoute mit Notfallwiederherstellung für virtuelle Azure-Computer
 

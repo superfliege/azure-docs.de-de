@@ -1,21 +1,20 @@
 ---
-title: Replizieren von VMware-VMs in Azure und Ausführen eines Failovers mithilfe von PowerShell in Azure Site Recovery | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie Replikation und Failover in Azure für VMware-VMs mithilfe von PowerShell in Azure Site Recovery einrichten.
-services: site-recovery
+title: Einrichten der Notfallwiederherstellung von virtuellen VMware-Computern in Azure mithilfe von PowerShell in Azure Site Recovery | Microsoft-Dokumentation
+description: Hier erfahren Sie, wie Sie Replikation und Failover in Azure für die Notfallwiederherstellung von virtuellen VMware-Computern mithilfe von PowerShell in Azure Site Recovery einrichten.
 author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.date: 07/06/2018
 ms.topic: conceptual
 ms.author: sutalasi
-ms.openlocfilehash: 070e51b132828e4fdf597d28fc2ad602adf76692
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 631225e6e0a7bb3bc42741e2761e3746c001c217
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48042801"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50211637"
 ---
-# <a name="replicate-and-fail-over-vmware-vms-to-azure-with-powershell"></a>Replizieren von VMware-VMs in Azure und Ausführen eines Failovers mithilfe von PowerShell
+# <a name="set-up-disaster-recovery-of-vmware-vms-to-azure-with-powershell"></a>Einrichten der Notfallwiederherstellung von virtuellen VMware-Computern in Azure mithilfe von PowerShell
 
 In diesem Artikel erfahren Sie etwas über das Replizieren virtueller VMware-Computer in VMM-Clouds und das Ausführen eines Failovers für diese mithilfe von Azure Site Recovery-PowerShell. 
 

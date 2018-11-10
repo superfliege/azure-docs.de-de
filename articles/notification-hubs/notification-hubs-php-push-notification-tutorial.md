@@ -14,17 +14,17 @@ ms.devlang: php
 ms.topic: article
 ms.date: 04/14/2018
 ms.author: dimazaid
-ms.openlocfilehash: b812d60363ffebf1f4374b6fd44dff5e67497e08
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: cf7dd8b111683a3b5b2f0a9f371c08ffb788fe58
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "42146451"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51241071"
 ---
 # <a name="how-to-use-notification-hubs-from-php"></a>Verwenden von Notification Hubs von PHP aus
 [!INCLUDE [notification-hubs-backend-how-to-selector](../../includes/notification-hubs-backend-how-to-selector.md)]
 
-Sie können auf alle Notification Hubs-Features von einem Java-/PHP-/Ruby-Back-End aus mithilfe der Notification Hub-REST-Schnittstelle zugreifen, die im MSDN-Thema [REST-APIs für Benachrichtigungshubs](http://msdn.microsoft.com/library/dn223264.aspx)beschrieben ist.
+Sie können auf alle Notification Hubs-Features von einem Java-/PHP-/Ruby-Back-End aus mithilfe der Notification Hub-REST-Schnittstelle zugreifen, die im MSDN-Thema [REST-APIs für Benachrichtigungshubs](https://msdn.microsoft.com/library/dn223264.aspx)beschrieben ist.
 
 In diesem Thema wird Folgendes erläutert:
 
@@ -32,7 +32,7 @@ In diesem Thema wird Folgendes erläutert:
 * Führen Sie die Schritte im [Erste-Schritte-Lernprogramm](notification-hubs-ios-apple-push-notification-apns-get-started.md) für die mobile Plattform Ihrer Wahl aus, und implementieren Sie den Back-End-Teil in PHP.
 
 ## <a name="client-interface"></a>Clientschnittstelle
-Die Hauptschnittstelle des Clients kann dieselben Methoden bereitstellen, die im [.NET Notification Hubs SDK](http://msdn.microsoft.com/library/jj933431.aspx) verfügbar sind. Damit können Sie alle Tutorials und Beispiele, die aktuell auf dieser Website erhältlich sind und von der Community im Internet beigetragen werden, direkt umsetzen.
+Die Hauptschnittstelle des Clients kann dieselben Methoden bereitstellen, die im [.NET Notification Hubs SDK](https://msdn.microsoft.com/library/jj933431.aspx) verfügbar sind. Damit können Sie alle Tutorials und Beispiele, die aktuell auf dieser Website erhältlich sind und von der Community im Internet beigetragen werden, direkt umsetzen.
 
 Sie finden den gesamten Code im [PHP REST-Wrapper-Beispiel].
 
@@ -49,7 +49,7 @@ So senden Sie eine native iOS-Benachrichtigung:
 Führen Sie, sofern nicht bereits geschehen, das Tutorial [Erste-Schritte-Lernprogramm] bis zum letzten Abschnitt aus, in dem Sie das Back-End implementieren müssen.
 Sie können auch den Code aus dem [PHP REST-Wrapper-Beispiel] verwenden und direkt mit dem Abschnitt [Abschließen des Tutorials](#complete-tutorial) fortfahren.
 
-Alle Details für das Implementieren eines vollständigen REST-Wrappers finden sich auf [MSDN](http://msdn.microsoft.com/library/dn530746.aspx). In diesem Abschnitt beschreiben wir die PHP-Implementierung der Hauptschritte, die für den Zugriff auf REST-Endpunkte von Notification Hubs erforderlich sind:
+Alle Details für das Implementieren eines vollständigen REST-Wrappers finden sich auf [MSDN](https://msdn.microsoft.com/library/dn530746.aspx). In diesem Abschnitt beschreiben wir die PHP-Implementierung der Hauptschritte, die für den Zugriff auf REST-Endpunkte von Notification Hubs erforderlich sind:
 
 1. Analysieren der Verbindungszeichenfolge
 2. Generieren des Authentifizierungstokens
@@ -92,7 +92,7 @@ Hier ist die Hauptklasse, die den Client implementiert, dessen Konstruktor die V
 
 
 ### <a name="create-security-token"></a>Erstellen des Sicherheitstokens
-Einzelheiten zum Erstellen des Sicherheitstokens finden Sie [hier](http://msdn.microsoft.com/library/dn495627.aspx).
+Einzelheiten zum Erstellen des Sicherheitstokens finden Sie [hier](https://msdn.microsoft.com/library/dn495627.aspx).
 Die folgende Methode muss der **NotificationHub** -Klasse hinzugefügt werden, um das Token basierend auf dem URI der aktuellen Anforderung und den Anmeldeinformationen, die aus der Verbindungszeichenfolge extrahiert wurden, zu erstellen.
 
     private function generateSasToken($uri) {
@@ -135,7 +135,7 @@ Zuerst definieren wir eine Klasse, die eine Benachrichtigung darstellt.
 
 Diese Klasse ist ein Container für einen nativen Benachrichtigungstext oder ein Satz von Eigenschaften einer Benachrichtigungsvorlage sowie ein Satz von Headern, die ein Format (native Plattform oder Vorlage) und plattformspezifische Eigenschaften (wie die Apple-Ablaufeigenschaft und WNS-Header) enthalten.
 
-Alle verfügbaren Optionen finden Sie in der Dokumentation der [REST-APIs für Notification Hubs](http://msdn.microsoft.com/library/dn495827.aspx) und unter den Formaten der einzelnen Benachrichtigungsplattformen.
+Alle verfügbaren Optionen finden Sie in der Dokumentation der [REST-APIs für Notification Hubs](https://msdn.microsoft.com/library/dn495827.aspx) und unter den Formaten der einzelnen Benachrichtigungsplattformen.
 
 Mit dieser Klasse können wir jetzt die Methoden zum Senden von Benachrichtigungen in der **NotificationHub** -Klasse schreiben.
 

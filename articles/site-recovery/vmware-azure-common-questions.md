@@ -1,23 +1,22 @@
 ---
-title: Allgemeine Fragen – VMware-zu-Azure-Replikation mit Azure Site Recovery | Microsoft-Dokumentation
-description: In diesem Artikel werden häufig gestellte Fragen zum Replizieren lokaler VMware-VMs zu Azure mithilfe von Azure Site Recovery zusammengefasst.
-services: site-recovery
+title: 'Allgemeine Fragen: VMware-Notfallwiederherstellung in Azure mit Azure Site Recovery | Microsoft-Dokumentation'
+description: In diesem Artikel werden häufig gestellte Fragen zum Einrichten der Notfallwiederherstellung von lokalen virtuellen VMware-Computern in Azure mithilfe von Azure Site Recovery zusammengefasst.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.date: 07/19/2018
+ms.date: 10/29/2018
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: 487e0c763ca4b247f1818b2beaf3282734fc4e27
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 086acdd74932836627c600b5545bc4353052ad6f
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49388441"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50215445"
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>Allgemeine Fragen – VMware-zu-Azure-Replikation
 
-Dieser Artikel enthält Antworten auf häufig gestellte Fragen zum Replizieren lokaler VMware-VMs zu Azure. Sollten Sie nach der Lektüre dieses Artikels noch Fragen haben, stellen Sie diese bitte im [Azure Recovery Services-Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr).
+Dieser Artikel enthält Antworten auf häufig gestellte Fragen zum Bereitstellen der Notfallwiederherstellung von lokalen virtuellen VMware-Computern in Azure. Sollten Sie nach der Lektüre dieses Artikels noch Fragen haben, stellen Sie diese bitte im [Azure Recovery Services-Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr).
 
 
 ## <a name="general"></a>Allgemein

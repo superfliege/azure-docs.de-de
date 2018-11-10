@@ -5,15 +5,15 @@ services: storage
 author: wmgries
 ms.service: storage
 ms.topic: quickstart
-ms.date: 10/18/2018
+ms.date: 10/26/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: 16f557d48f8056d438d55fdd066395e7e36ed8a5
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 119853df5b5234b65bdade890df1fecb72c326b7
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945483"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50157376"
 ---
 # <a name="quickstart-create-and-manage-an-azure-file-share-with-azure-powershell"></a>Schnellstart: Erstellen und Verwalten einer Azure-Dateifreigabe mit Azure PowerShell 
 In dieser Anleitung werden Schritt für Schritt die Grundlagen der Verwendung von [Azure-Dateifreigaben](storage-files-introduction.md) mit PowerShell beschrieben. Azure-Dateifreigaben sind genau wie andere Dateifreigaben, werden jedoch in der Cloud gespeichert und von der Azure-Plattform unterstützt. Azure-Dateifreigaben unterstützen das SMB-Protokoll nach Industriestandard und ermöglichen es, Dateien für mehrere Computer, Anwendungen und Instanzen freizugeben. 
@@ -165,6 +165,57 @@ Get-AzureStorageFile -Context $storageAcct.Context -ShareName "myshare2" -Path "
 ```
 
 Das `Start-AzureStorageFileCopy`-Cmdlet eignet sich zwar gut für das Verschieben von Ad-hoc-Dateien zwischen Azure-Dateifreigaben und Azure Blob Storage-Containern, aber für umfangreichere Verschiebungen (in Bezug auf die Anzahl oder Größe von Dateien) empfehlen wir die Verwendung von AzCopy. Informieren Sie sich über [AzCopy für Windows](../common/storage-use-azcopy.md) und [AzCopy für Linux](../common/storage-use-azcopy-linux.md). AzCopy muss lokal installiert werden und ist in Cloud Shell nicht verfügbar. 
+
+## <a name="create-and-manage-share-snapshots"></a>Erstellen und Verwalten von Freigabemomentaufnahmen
+Eine weitere nützliche Aufgabe, die Sie mit einer Azure-Dateifreigabe durchführen können, ist die Erstellung von Freigabemomentaufnahmen. Mit einer Momentaufnahme wird für eine Azure-Dateifreigabe ein bestimmter Zeitpunkt beibehalten. Freigabemomentaufnahmen ähneln Betriebssystemtechnologien, mit denen Sie unter Umständen bereits vertraut sind:
+- [Volumeschattenkopie-Dienst (VSS)](https://docs.microsoft.com/windows/desktop/VSS/volume-shadow-copy-service-portal) für Windows-Dateisysteme wie NTFS und ReFS
+- Momentaufnahmen vom Typ [Logical Volume Manager (LVM)](https://en.wikipedia.org/wiki/Logical_Volume_Manager_(Linux)#Basic_functionality) für Linux-Systeme
+- Momentaufnahmen vom Typ [Apple File System (APFS)](https://developer.apple.com/library/content/documentation/FileManagement/Conceptual/APFS_Guide/Features/Features.html) für macOS 
+ Sie können eine Freigabemomentaufnahme für eine Freigabe erstellen, indem Sie die `Snapshot`-Methode im PowerShell-Objekt für eine Dateifreigabe verwenden, die mit dem [Get-AzureStorageShare](/powershell/module/azure.storage/get-azurestorageshare)-Cmdlet abgerufen wird. 
+
+```azurepowershell-interactive
+$share = Get-AzureStorageShare -Context $storageAcct.Context -Name "myshare"
+$snapshot = $share.Snapshot()
+```
+
+### <a name="browse-share-snapshots"></a>Durchsuchen von Freigabemomentaufnahmen
+Sie können den Inhalt der Freigabemomentaufnahme durchsuchen, indem Sie den Momentaufnahmenverweis (`$snapshot`) an den Parameter `-Share` des `Get-AzureStorageFile`-Cmdlets übergeben.
+
+```azurepowershell-interactive
+Get-AzureStorageFile -Share $snapshot
+```
+
+### <a name="list-share-snapshots"></a>Auflisten von Freigabemomentaufnahmen
+Sie können die Liste mit den Momentaufnahmen, die Sie für Ihre Freigabe erstellt haben, mit dem folgenden Befehl anzeigen.
+
+```azurepowershell-interactive
+Get-AzureStorageShare -Context $storageAcct.Context | Where-Object { $_.Name -eq "myshare" -and $_.IsSnapshot -eq $true }
+```
+
+### <a name="restore-from-a-share-snapshot"></a>Wiederherstellen von einer Freigabemomentaufnahme
+Sie können eine Datei wiederherstellen, indem Sie den Befehl `Start-AzureStorageFileCopy` verwenden, den wir bereits genutzt haben. In dieser Schnellstartanleitung löschen wir zuerst unsere Datei `SampleUpload.txt`, die wir hochgeladen haben, damit wir sie aus der Momentaufnahme wiederherstellen können.
+
+```azurepowershell-interactive
+# Delete SampleUpload.txt
+Remove-AzureStorageFile `
+    -Context $storageAcct.Context `
+    -ShareName "myshare" `
+    -Path "myDirectory\SampleUpload.txt"
+ # Restore SampleUpload.txt from the share snapshot
+Start-AzureStorageFileCopy `
+    -SrcShare $snapshot `
+    -SrcFilePath "myDirectory\SampleUpload.txt" `
+    -DestContext $storageAcct.Context `
+    -DestShareName "myshare" `
+    -DestFilePath "myDirectory\SampleUpload.txt"
+```
+
+### <a name="delete-a-share-snapshot"></a>Löschen einer Freigabemomentaufnahme
+Sie können eine Freigabemomentaufnahme löschen, indem Sie das [Remove-AzureStorageShare](/powershell/module/azure.storage/remove-azurestorageshare)-Cmdlet mit der Variablen verwenden, die den Verweis `$snapshot` auf den Parameter `-Share` enthält.
+
+```azurepowershell-interactive
+Remove-AzureStorageShare -Share $snapshot
+```
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 Wenn Sie fertig sind, können Sie die Ressourcengruppe und alle zugehörigen Ressourcen mit dem [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup)-Cmdlet entfernen. 

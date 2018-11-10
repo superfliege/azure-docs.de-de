@@ -1,21 +1,20 @@
 ---
-title: Azure Site Recovery Deployment Planner für „VMware zu Azure“ | Microsoft-Dokumentation
-description: In diesem Artikel wird die Ausführung von Azure Site Recovery-Bereitstellungsplaner im Modus für das Szenario „VMware zu Azure“ beschrieben.
-services: site-recovery
+title: Ausführen des Azure Site Recovery-Bereitstellungsplaners für die VMware-Notfallwiederherstellung in Azure | Microsoft-Dokumentation
+description: In diesem Artikel wird beschrieben, wie Sie den Azure Site Recovery-Bereitstellungsplaner für die VMware-Notfallwiederherstellung in Azure ausführen.
 author: nsoneji
 manager: garavd
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: nisoneji
-ms.openlocfilehash: f83ab78cae17859dc28349cf7c435d7101c5fa3b
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: b890dce5d94c2177c8fc8cdb5477b92df15c8095
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49093158"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50211025"
 ---
-# <a name="run-azure-site-recovery-deployment-planner-for-vmware-to-azure"></a>Ausführen von Azure Site Recovery-Bereitstellungsplaner für „VMware zu Azure“
+# <a name="run-the-azure-site-recovery-deployment-planner-for-vmware-disaster-recovery-to-azure"></a>Ausführen des Azure Site Recovery-Bereitstellungsplaners für die VMware-Notfallwiederherstellung in Azure
 Dieser Artikel ist der Leitfaden zum Deployment Planner (Bereitstellungsplaner) von Azure Site Recovery für Bereitstellungen von „VMware zu Azure“ in der Produktion.
 
 

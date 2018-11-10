@@ -8,14 +8,14 @@ ms.service: batch
 ms.devlang: multiple
 ms.topic: article
 ms.workload: na
-ms.date: 06/04/2018
+ms.date: 10/24/2018
 ms.author: danlep
-ms.openlocfilehash: a85db0315a2ee8aa9fd34b8c18893f4cb1068528
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: 458b0f7bbf581c7f2490a8122f351dac612b4ff0
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39090961"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50155617"
 ---
 # <a name="run-container-applications-on-azure-batch"></a>Ausführen von Containeranwendungen in Azure Batch
 
@@ -157,7 +157,7 @@ new_pool = batch.models.PoolAddParameter(
 ```
 
 
-Beim folgenden Beispiel C# wird davon ausgegangen, dass Sie ein TensorFlow-Image über [Docker Hub](https://hub.docker.com) vorabrufen möchten. Dieses Beispiel enthält eine Startaufgabe, die auf den Poolknoten im VM-Host ausgeführt wird. Beispielsweise können Sie eine Startaufgabe auf dem Host ausführen, um einen Dateiserver einzubinden, der über die Container zugänglich ist.
+Im folgenden C#-Beispiel wird davon ausgegangen, dass Sie vorab ein TensorFlow-Image über [Docker Hub](https://hub.docker.com) abrufen möchten. Dieses Beispiel enthält eine Startaufgabe, die auf den Poolknoten im VM-Host ausgeführt wird. Beispielsweise können Sie eine Startaufgabe auf dem Host ausführen, um einen Dateiserver einzubinden, der über die Container zugänglich ist.
 
 ```csharp
 
@@ -225,11 +225,15 @@ CloudPool pool = batchClient.PoolOperations.CreatePool(
 
 ## <a name="container-settings-for-the-task"></a>Containereinstellungen für die Aufgabe
 
-Zur Ausführung von Containeraufgaben auf den Computeknoten müssen Sie containerspezifische Einstellungen wie z.B. Optionen für die Ausgabenausführung, zu verwendende Images und die Registrierung angeben.
+Zur Ausführung von Containeraufgaben auf den Computeknoten müssen Sie containerspezifische Einstellungen angeben, z.B. Optionen für die Containerausführung, zu verwendende Images und die Registrierung.
 
 Verwenden Sie die `ContainerSettings`-Eigenschaft der Aufgabenklassen zum Konfigurieren containerspezifischer Einstellungen. Diese Einstellungen werden durch die [TaskContainerSettings](/dotnet/api/microsoft.azure.batch.taskcontainersettings)-Klasse definiert.
 
 Wenn Sie Aufgaben in Containerimages ausführen, sind für die [Cloudaufgabe](/dotnet/api/microsoft.azure.batch.cloudtask) und die [Auftrags-Manager-Aufgabe](/dotnet/api/microsoft.azure.batch.cloudjob.jobmanagertask) Containereinstellungen erforderlich. Die [Startaufgabe](/dotnet/api/microsoft.azure.batch.starttask), die [Auftragsvorbereitungsaufgabe](/dotnet/api/microsoft.azure.batch.cloudjob.jobpreparationtask) und die [Auftragsfreigabeaufgabe](/dotnet/api/microsoft.azure.batch.cloudjob.jobreleasetask) benötigen jedoch keine Containereinstellungen (diese können in einem Containerkontext oder direkt auf dem Knoten ausgeführt werden).
+
+Die optionalen Optionen für die Containerausführung ([ContainerRunOptions](/dotnet/api/microsoft.azure.batch.taskcontainersettings.containerrunoptions)) sind zusätzliche Argumente für den Befehl `docker create`, der von der Aufgabe zum Erstellen des Containers ausgeführt wird.
+
+### <a name="container-task-working-directory"></a>Arbeitsverzeichnis für Containeraufgaben
 
 Die Befehlszeile für eine Azure Batch-Containeraufgabe wird in einem Arbeitsverzeichnis in dem Container ausgeführt, der sehr stark der Umgebung ähnelt, die von Batch für eine normale Aufgabe (Nicht-Containeraufgabe) eingerichtet wird:
 
@@ -237,9 +241,13 @@ Die Befehlszeile für eine Azure Batch-Containeraufgabe wird in einem Arbeitsver
 * Alle Variablen der Aufgabenumgebung werden dem Container zugeordnet.
 * Das Arbeitsverzeichnis der Anwendung ist wie für eine normale Aufgabe festgelegt, sodass Sie Funktionen wie Anwendungspakete und Ressourcendateien verwenden können.
 
-Da Batch das Standardarbeitsverzeichnis im Container ändert, wird die Aufgabe an einem anderen Speicherort als dem üblichen Containereinstiegspunkt ausgeführt (z.B. standardmäßig `c:\` in einem Windows-Container oder `/` unter Linux). Stellen Sie sicher, dass die Aufgabenbefehlszeile oder der Containereinstiegspunkt einen absoluten Pfad angibt, sofern nicht bereits eine entsprechende Konfiguration vorliegt.
+Da das Standardarbeitsverzeichnis im Container von Batch geändert wird, wird die Aufgabe an einem anderen Ort als dem typischen Containerarbeitsverzeichnis ausgeführt (z.B. standardmäßig `c:\` in einem Windows-Container bzw. `/` unter Linux oder in einem anderen Verzeichnis, wenn dies im Containerimage konfiguriert ist). Führen Sie eines der folgenden Verfahren aus, um sicherzustellen, dass Ihre Containeranwendungen im Batch-Kontext korrekt ausgeführt werden: 
 
-Der folgende Python-Codeausschnitt zeigt eine grundlegende Befehlszeile, die in einem aus Docker Hub gepullten Ubuntu-Container ausgeführt wird. Die Optionen für die Containerausführung sind zusätzliche Argumente für den von der Aufgabe ausgeführten `docker create`-Befehl. Hier entfernt die Option `--rm` den Container, nachdem die Aufgabe abgeschlossen ist.
+* Stellen Sie sicher, dass in der Aufgabenbefehlszeile (oder im Containerarbeitsverzeichnis) ein absoluter Pfad angegeben wird, sofern nicht bereits eine entsprechende Konfiguration vorliegt.
+
+* Legen Sie unter dem Element „ContainerSettings“ der Aufgabe in den Optionen für die Containerausführung ein Arbeitsverzeichnis fest. Beispiel: `--workdir /app`.
+
+Der folgende Python-Codeausschnitt zeigt eine grundlegende Befehlszeile, die in einem aus Docker Hub gepullten Ubuntu-Container ausgeführt wird. Hier entfernt die Option `--rm` für die Containerausführung den Container, nachdem die Aufgabe abgeschlossen ist.
 
 ```python
 task_id = 'sampletask'

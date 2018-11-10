@@ -14,12 +14,12 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 04/25/2018
 ms.author: dimazaid
-ms.openlocfilehash: 21ed7dd1120958576651703283a0732e3843546d
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: f2fa2b8b43a4840d8c6956efb7704327cca78d7c
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33777456"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50232511"
 ---
 # <a name="azure-notification-hubs-rich-push"></a>Azure Notification Hubs – Umfassende Pushbenachrichtigungen
 ## <a name="overview"></a>Übersicht
@@ -136,7 +136,7 @@ Nachdem Sie das Back-End nun so geändert haben, dass nur die *ID* einer Benachr
 2. Klicken Sie auf **Capabilities**, aktivieren Sie **Background Modes**, und aktivieren Sie das Kontrollkästchen **Remote notifications**.
    
     ![][IOS3]
-3. Navigieren Sie zu **Main.storyboard**, und vergewissern Sie sich, dass Sie einen View Controller (Ansichtscontroller, in diesem Lernprogramm als "Home View Controller" bezeichnet) aus dem Lernprogramm [Benachrichtigen von Benutzern](notification-hubs-aspnet-backend-ios-apple-apns-notification.md) haben.
+3. Navigieren Sie zu **Main.storyboard**, und vergewissern Sie sich, dass Sie einen Ansichtscontroller (in diesem Tutorial als „Home View Controller“ bezeichnet) aus dem Tutorial [Benachrichtigen von Benutzern](notification-hubs-aspnet-backend-ios-apple-apns-notification.md) haben.
 4. Fügen Sie Ihrem Storyboard einen **Navigation Controller** hinzu, und ziehen Sie bei gedrückter STRG-TASTE zum Home View Controller, um ihn zur **Stammansicht** der Navigation zu machen. Achten Sie darauf, dass die Option **Is Initial View Controller** in "Attributes inspector" nur für den Navigation Controller ausgewählt ist.
 5. Fügen Sie dem Storyboard einen **View Controller** hinzu, und fügen Sie eine **Image View** hinzu. Dies ist die Seite, die Benutzern angezeigt wird, nachdem sie auf die Benachrichtigung geklickt haben, um weitere Informationen zu erhalten. Ihr Storyboard sollte nun folgendermaßen aussehen:
    

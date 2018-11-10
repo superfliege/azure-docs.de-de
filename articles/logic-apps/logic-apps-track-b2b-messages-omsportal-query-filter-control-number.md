@@ -1,6 +1,6 @@
 ---
-title: 'Erstellen von Abfragen für B2B-Nachrichten in Log Analytics: Azure Logic Apps | Microsoft-Dokumentation'
-description: Erstellen von Abfragen zum Nachverfolgen von AS2-, X12- und EDIFACT-Nachrichten mit Log Analytics für Azure Logic Apps
+title: 'Erstellen von Nachverfolgungsabfragen für B2B-Nachrichten in Log Analytics: Azure Logic Apps | Microsoft-Dokumentation'
+description: Erstellen von Abfragen zum Nachverfolgen von AS2-, X12- und EDIFACT-Nachrichten in Azure Log Analytics für Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -8,109 +8,127 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
-ms.date: 06/19/2018
-ms.openlocfilehash: baccd255fc2812eae0de3a98dfcef3dcbc7e1b46
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.date: 10/19/2018
+ms.openlocfilehash: af1d00e49819f1d69e08c0fa99891690e07b489f
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43124269"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50233751"
 ---
-# <a name="create-queries-for-tracking-as2-x12-and-edifact-messages-in-log-analytics-for-azure-logic-apps"></a>Erstellen von Abfragen zum Nachverfolgen von AS2-, X12- und EDIFACT-Nachrichten mit Log Analytics für Azure Logic Apps
+# <a name="create-tracking-queries-for-b2b-messages-in-azure-log-analytics-for-azure-logic-apps"></a>Erstellen von Nachverfolgungsabfragen für B2B-Nachrichten in Azure Log Analytics für Azure Logic Apps
 
-Sie können Abfragen erstellen, die Aktionen auf der Grundlage bestimmter Kriterien filtern, um die AS2-, X12- oder EDIFACT-Nachrichten zu finden, die Sie mithilfe von [Azure Log Analytics](../log-analytics/log-analytics-overview.md) nachverfolgen. So können Sie beispielsweise anhand einer bestimmten Austauschkontrollnummer nach Nachrichten suchen.
+Sie können Abfragen erstellen, die Aktionen auf der Grundlage bestimmter Kriterien filtern, um AS2-, X12- oder EDIFACT-Nachrichten zu finden, die Sie mithilfe von [Azure Log Analytics](../log-analytics/log-analytics-overview.md) nachverfolgen. So können Sie beispielsweise anhand einer bestimmten Austauschkontrollnummer nach Nachrichten suchen.
 
-## <a name="requirements"></a>Anforderungen
+> [!NOTE]
+> Auf dieser Seite wurden zuvor Schritte zum Ausführen dieser Aufgaben mit der Microsoft Operations Management Suite (OMS) beschrieben. Diese wird [im Januar 2019 außer Betrieb genommen](../log-analytics/log-analytics-oms-portal-transition.md), und stattdessen werden Schritte mit Azure Log Analytics angegeben. 
 
-* Eine Logik-App, für die die Diagnoseprotokollierung eingerichtet ist. Informieren Sie sich über das [Erstellen einer Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md) und das [Einrichten der Protokollierung für diese Logik-App](../logic-apps/logic-apps-monitor-your-logic-apps.md#azure-diagnostics).
+## <a name="prerequisites"></a>Voraussetzungen
+
+* Eine Logik-App, für die die Diagnoseprotokollierung eingerichtet ist. Informieren Sie sich über das [Erstellen einer Logik-App](quickstart-create-first-logic-app-workflow.md) und das [Einrichten der Protokollierung für diese Logik-App](../logic-apps/logic-apps-monitor-your-logic-apps.md#azure-diagnostics).
 
 * Ein Integrationskonto, für das die Überwachung und Protokollierung eingerichtet ist. Informieren Sie sich über das [Erstellen eines Integrationskontos](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) und das [Einrichten der Überwachung und Protokollierung für dieses Konto](../logic-apps/logic-apps-monitor-b2b-message.md).
 
 * [Veröffentlichen Sie Diagnosedaten in Log Analytics](../logic-apps/logic-apps-track-b2b-messages-omsportal.md), und [richten Sie die Nachrichtennachverfolgung in Log Analytics ein](../logic-apps/logic-apps-track-b2b-messages-omsportal.md), sofern noch nicht geschehen.
 
-> [!NOTE]
-> Wenn auch die anderen Anforderungen erfüllt sind, verfügen Sie über einen Arbeitsbereich in Log Analytics. Es empfiehlt sich, für die Nachverfolgung der B2B-Kommunikation in Log Analytics den gleichen Arbeitsbereich zu verwenden. 
->  
-> Falls Sie keinen Log Analytics-Arbeitsbereich besitzen, lesen Sie die Informationen zum [Erstellen eines Log Analytics-Arbeitsbereichs](../log-analytics/log-analytics-quick-create-workspace.md).
+## <a name="create-queries-with-filters"></a>Erstellen von Abfragen mit Filtern
 
-## <a name="create-message-queries-with-filters-in-log-analytics"></a>Erstellen von Nachrichtenabfragen mit Filtern in Log Analytics
+Um Nachrichten basierend auf bestimmten Eigenschaften oder Werten zu suchen, können Sie Abfragen erstellen, die Filter verwenden. 
 
-In diesem Beispiel erfahren Sie, wie Sie anhand der Austauschkontrollnummer nach Nachrichten suchen.
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com) die Option **Alle Dienste**. Geben Sie im Suchfeld „log analytics“ ein, und wählen Sie **Log Analytics** aus.
 
-> [!TIP] 
-> Wenn Ihnen der Name Ihres Log Analytics-Arbeitsbereichs bekannt ist, navigieren Sie zur Startseite Ihres Arbeitsbereichs (`https://{your-workspace-name}.portal.mms.microsoft.com`), und fahren Sie mit Schritt 4 fort. Beginnen Sie andernfalls mit Schritt 1.
+   ![Auswählen von „Log Analytics“](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/find-log-analytics.png)
 
-1. Wählen Sie im [Azure-Portal](https://portal.azure.com) die Option **Alle Dienste** aus. Suchen Sie nach „Log Analytics“, und wählen Sie die Option **Log Analytics** aus, wie hier zu sehen:
+1. Wählen Sie unter **Log Analytics** Ihren Log Analytics-Arbeitsbereich aus. 
 
-   ![Suchen nach Log Analytics](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/browseloganalytics.png)
+   ![Auswählen des Log Analytics-Arbeitsbereichs](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/select-log-analytics-workspace.png)
 
-2. Wählen Sie unter **Log Analytics** Ihren Log Analytics-Arbeitsbereich aus.
+1. Wählen Sie in Ihrem Arbeitsbereichsmenü unter **Allgemein** entweder **Protokolle (klassisch)** oder **Protokolle** aus. 
 
-   ![Auswählen Ihres Log Analytics-Arbeitsbereichs](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/selectla.png)
+   In diesem Beispiel wird die Verwendung der Ansicht für klassische Protokolle veranschaulicht. 
+   Wenn Sie im Abschnitt **Schöpfen Sie das Potenzial von Log Analytics voll aus** unter **Protokolle durchsuchen und analysieren** die Option **Protokolle anzeigen** auswählen, gelangen Sie zur Ansicht **Protokolle (klassisch)**. 
 
-3. Wählen Sie unter **Verwaltung** die Option **Protokollsuche** aus.
+   ![Anzeigen klassischer Protokolle](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/view-classic-logs.png)
 
-   ![Auswählen von „Protokollsuche“](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/azure-portal-page.png)
+1. Beginnen Sie im Feld für die Abfragebearbeitung mit der Eingabe des Feldnamens, den Sie suchen möchten. Wenn Sie mit der Eingabe beginnen, werden im Abfrage-Editor mögliche Übereinstimmungen und verfügbare Vorgänge angezeigt. Wählen Sie nach dem Erstellen Ihrer Abfrage **Ausführen**, oder drücken Sie die EINGABETASTE.
 
-4. Geben Sie im Suchfeld ein Feld an, nach dem Sie suchen möchten, und drücken Sie die **EINGABETASTE**. Wenn Sie mit der Eingabe beginnen, werden in Log Analytics mögliche Übereinstimmungen und verfügbare Vorgänge angezeigt. Informieren Sie sich über das [Suchen nach Daten in Log Analytics](../log-analytics/log-analytics-log-searches.md).
+   In diesem Beispiel wird nach Übereinstimmungen für **LogicAppB2B** gesucht. 
+   Informieren Sie sich über das [Suchen nach Daten in Log Analytics](../log-analytics/log-analytics-log-searches.md).
 
-   In diesem Beispiel wird nach Ereignissen mit **Type=AzureDiagnostics** gesucht.
+   ![Beginnen mit der Eingabe einer Abfragezeichenfolge](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/create-query.png)
 
-   ![Beginnen mit der Eingabe einer Abfragezeichenfolge](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/oms-start-query.png)
+1. Wenn Sie den anzuzeigenden Zeitraum ändern möchten, wählen Sie im linken Bereich in der Liste für die Dauer eine Option aus, oder ziehen Sie den Schieberegler. 
 
-5. Wählen Sie auf der linken Leiste den gewünschten Zeitrahmen aus. Wenn Sie der Abfrage einen Filter hinzufügen möchten, wählen Sie **+Hinzufügen** aus.
+   ![Ändern des Zeitraums](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/change-timeframe.png)
 
-   ![Hinzufügen eines Filters zur Abfrage](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/query1.png)
+1. Wenn Sie der Abfrage einen Filter hinzufügen möchten, wählen Sie **Hinzufügen** aus. 
 
-6. Geben Sie unter **Filter hinzufügen** den Namen des gewünschten Filters ein. Wählen Sie den Filter aus, und wählen Sie **+Hinzufügen** aus.
+   ![Hinzufügen eines Filters zur Abfrage](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/add-filter.png)
 
-   Zur Ermittlung der Austauschkontrollnummer wird in diesem Beispiel nach dem Wort „interchange“ (Austausch) gesucht und **event_record_messageProperties_interchangeControlNumber_s** als Filter ausgewählt.
+1. Geben Sie unter **Filter hinzufügen** den Filternamen ein, den Sie suchen möchten. Wenn Sie den Filter gefunden haben, wählen Sie ihn aus. Wählen Sie im linken Bereich erneut **Hinzufügen** aus.
 
-   ![Auswählen des Filters](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/oms-query-add-filter.png)
+   Hier sehen Sie beispielsweise eine andere Abfrage, die nach Ereignissen vom Typ **Type=="AzureDiagnostics"** sucht und durch Auswahl des Filters **event_record_messageProperties_interchangeControlNumber_s** Ergebnisse auf der Grundlage der Austauschkontrollnummer zurückgibt.
 
-7. Wählen Sie auf der linken Leiste den gewünschten Filterwert und anschließend **Übernehmen** aus.
+   ![Auswählen des Filterwerts](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/filter-example.png)
 
-   In diesem Beispiel wird die Austauschkontrollnummer für die gewünschten Nachrichten ausgewählt.
+   Nach dem Auswählen von **Hinzufügen** wird Ihre Abfrage mit dem ausgewählten Filterereignis und -wert aktualisiert. 
+   Die vorherigen Ergebnisse werden nun ebenfalls gefiltert. 
 
-   ![Auswählen des Filterwerts](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/oms-query-select-filter-value.png)
+   Diese Abfrage sucht beispielsweise nach **Type=="AzureDiagnostics"** und gibt unter Verwendung des Filters **event_record_messageProperties_interchangeControlNumber_s** Ergebnisse zurück, die auf der Austauschkontrollnummer basieren.
 
-8. Kehren Sie zur Abfrageerstellung zurück. Ihre Abfrage wurde mit dem ausgewählten Filterereignis und -wert aktualisiert. Die vorherigen Ergebnisse werden nun ebenfalls gefiltert.
-
-    ![Rückkehr zur Abfrage mit gefilterten Ergebnissen](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/oms-query-filtered-results.png)
+   ![Gefilterte Ergebnisse](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/filtered-results.png)
 
 <a name="save-oms-query"></a>
 
-## <a name="save-your-query-for-future-use"></a>Speichern der Abfrage zur späteren Verwendung
+## <a name="save-query"></a>Speichern der Abfrage
 
-1. Wählen Sie auf der Seite **Protokollsuche** für Ihre Abfrage die Option **Speichern** aus. Benennen Sie die Abfrage, wählen Sie eine Kategorie aus, und wählen Sie anschließend **Speichern** aus.
+Führen Sie zum Speichern Ihrer Abfrage in der Ansicht**Protokolle (klassisch)** die folgenden Schritte aus:
 
-   ![Benennen der Abfrage und Auswählen einer Kategorie](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/oms-query-save.png)
+1. Wählen Sie in Ihrer Abfrage auf der Seite **Protokolle (klassisch)** die Option **Analytics** aus. 
 
-2. Wählen Sie zum Anzeigen Ihrer Abfrage die Option **Favoriten** aus.
+   ![Auswählen von „Analytics“](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/choose-analytics.png)
 
-   ![Auswählen von „Favoriten“](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/oms-query-favorites.png)
+1. Wählen Sie auf der Symbolleiste der Abfrage **Speichern** aus.
 
-3. Wählen Sie unter **Gespeicherte Suchvorgänge** Ihre Abfrage aus, um die entsprechenden Ergebnisse anzuzeigen. Sie können die Abfrage bearbeiten, um andere Ergebnisse zu erhalten.
+   ![Auswählen von „Save“ (Speichern)](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/save-query.png)
 
-   ![Auswählen Ihrer Abfrage](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/oms-log-search-find-favorites.png)
+1. Geben Sie Details zu Ihrer Abfrage ein. Geben Sie etwa einen Namen für die Abfrage ein, wählen Sie **Abfrage** aus, und geben Sie einen Kategorienamen an. Wenn Sie fertig sind, wählen Sie **Speichern** aus.
 
-## <a name="find-and-run-saved-queries-in-log-analytics"></a>Suchen und Ausführen gespeicherter Abfragen in Log Analytics
+   ![Auswählen von „Save“ (Speichern)](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/query-details.png)
 
-1. Öffnen Sie die Startseite Ihres Log Analytics-Arbeitsbereichs (`https://{your-workspace-name}.portal.mms.microsoft.com`), und klicken Sie auf **Protokollsuche**.
+1. Gehen Sie zum Anzeigen gespeicherter Abfragen zurück zur Abfrageseite. Wählen Sie auf der Symbolleiste der Abfrage **Gespeicherte Suchvorgänge** aus.
 
-   ![Klicken auf „Protokollsuche“ auf der Log Analytics-Startseite](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/logsearch.png)
+   ![Auswählen von „Gespeicherte Suchvorgänge“](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/choose-saved-searches.png)
 
-   Oder
+1. Wählen Sie unter **Gespeicherte Suchvorgänge** Ihre Abfrage aus, um die entsprechenden Ergebnisse anzuzeigen. 
 
-   ![Auswählen von „Protokollsuche“ im Menü](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/logsearch-2.png)
+   ![Auswählen Ihrer Abfrage](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/saved-query-results.png)
 
-2. Wählen Sie auf der Startseite der **Protokollsuche** die Option **Favoriten** aus.
+   Sie können die Abfrage bearbeiten, um andere Ergebnisse zu erhalten.
 
-   ![Auswählen von „Favoriten“](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/oms-log-search-favorites.png)
+## <a name="find-and-run-saved-queries"></a>Suchen und Ausführen gespeicherter Abfragen
 
-3. Wählen Sie unter **Gespeicherte Suchvorgänge** Ihre Abfrage aus, um die entsprechenden Ergebnisse anzuzeigen. Sie können die Abfrage bearbeiten, um andere Ergebnisse zu erhalten.
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com) die Option **Alle Dienste**. Geben Sie im Suchfeld „log analytics“ ein, und wählen Sie **Log Analytics** aus.
 
-   ![Auswählen Ihrer Abfrage](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/oms-log-search-find-favorites.png)
+   ![Auswählen von „Log Analytics“](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/find-log-analytics.png)
+
+1. Wählen Sie unter **Log Analytics** Ihren Log Analytics-Arbeitsbereich aus. 
+
+   ![Auswählen des Log Analytics-Arbeitsbereichs](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/select-log-analytics-workspace.png)
+
+1. Wählen Sie in Ihrem Arbeitsbereichsmenü unter **Allgemein** entweder **Protokolle (klassisch)** oder **Protokolle** aus. 
+
+   In diesem Beispiel wird die Verwendung der Ansicht für klassische Protokolle veranschaulicht. 
+
+1. Wählen Sie auf der geöffneten Abfrageseite auf der Symbolleiste der Abfrage die Option **Gespeicherte Suchvorgänge** aus.
+
+   ![Auswählen von „Gespeicherte Suchvorgänge“](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/choose-saved-searches.png)
+
+1. Wählen Sie unter **Gespeicherte Suchvorgänge** Ihre Abfrage aus, um die entsprechenden Ergebnisse anzuzeigen. 
+
+   ![Auswählen Ihrer Abfrage](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/saved-query-results.png) 
+
+   Die Abfrage wird automatisch ausgeführt. Ist dies aus irgendeinem Grund nicht der Fall, wählen Sie im Abfrage-Editor die Option **Ausführen** aus.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

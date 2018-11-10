@@ -8,18 +8,18 @@ ms.date: 09/21/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 259d61125828ee487b74daa525f3635cfa592ce7
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: ecc48adfeef30a777ae4d96c9b996c8bcdfea12d
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48017703"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50247809"
 ---
 # <a name="properties-of-the-edge-agent-and-edge-hub-module-twins"></a>Eigenschaften der Modulzwillinge „Edge-Agent“ und „Edge-Hub“
 
 Der Edge-Agent und der Edge-Hub sind die zwei Module, aus denen die IoT Edge-Laufzeit besteht. Weitere Informationen dazu, welche Aufgaben von einem Modul jeweils ausgeführt werden, finden Sie unter [Grundlegendes zur Azure IoT Edge-Laufzeit und ihrer Architektur](iot-edge-runtime.md). 
 
-Dieser Artikel enthält die gewünschten Eigenschaften und gemeldeten Eigenschaften der Laufzeitmodulzwillinge. Weitere Informationen zur Bereitstellung von Modulen auf IoT Edge-Geräten finden Sie unter [Bereitstellung und Überwachung][lnk-deploy].
+Dieser Artikel enthält die gewünschten Eigenschaften und gemeldeten Eigenschaften der Laufzeitmodulzwillinge. Weitere Informationen zur Bereitstellung von Modulen auf IoT Edge-Geräten finden Sie unter [Bereitstellung und Überwachung](module-deployment-monitoring.md).
 
 ## <a name="edgeagent-desired-properties"></a>Gewünschte EdgeAgent-Eigenschaften
 
@@ -30,26 +30,26 @@ Der Modulzwilling für den Edge-Agent heißt `$edgeAgent` und koordiniert die Ko
 | Schemaversion | Muss „1.0“ sein. | JA |
 | runtime.type | Muss „Docker“ sein. | JA |
 | runtime.settings.minDockerVersion | Legen Sie hier die für dieses Bereitstellungsmanifest mindestens erforderliche Docker-Version fest. | JA |
-| runtime.settings.loggingOptions | In eine Zeichenfolge umgewandelter JSON-Code mit den Protokollierungsoptionen für den Edge-Agent-Container. [Docker-Protokollierungsoptionen][lnk-docker-logging-options] | Nein  |
+| runtime.settings.loggingOptions | In eine Zeichenfolge umgewandelter JSON-Code mit den Protokollierungsoptionen für den Edge-Agent-Container. [Docker-Protokollierungsoptionen](https://docs.docker.com/engine/admin/logging/overview/) | Nein  |
 | runtime.settings.registryCredentials<br>.{registryId}.username | Der Benutzername der Containerregistrierung. Für Azure Container Registry entspricht der Benutzername in der Regel dem Namen der Registrierung.<br><br> Registrierungsanmeldeinformationen werden für jedes nicht öffentliche Modulimage benötigt. | Nein  |
 | runtime.settings.registryCredentials<br>.{registryId}.password | Das Kennwort der Containerregistrierung. | Nein  |
 | runtime.settings.registryCredentials<br>.{registryId}.address | Die Adresse der Containerregistrierung. Für Azure Container Registry lautet die Adresse in der Regel *{registryname}.azurecr.io*. | Nein  |  
 | systemModules.edgeAgent.type | Muss „Docker“ sein. | JA |
 | systemModules.edgeAgent.settings.image | Der URI des Edge-Agent-Image. Der Edge-Agent ist gegenwärtig nicht in der Lage, sich selbst zu aktualisieren. | JA |
-| systemModules.edgeAgent.settings<br>.createOptions | In eine Zeichenfolge umgewandelter JSON-Code, der die Optionen für die Erstellung des Edge-Agent-Containers enthält. [Optionen zum Erstellen von Docker][lnk-docker-create-options] | Nein  |
+| systemModules.edgeAgent.settings<br>.createOptions | In eine Zeichenfolge umgewandelter JSON-Code, der die Optionen für die Erstellung des Edge-Agent-Containers enthält. [Docker-Erstellungsoptionen](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate) | Nein  |
 | systemModules.edgeAgent.configuration.id | Die ID der Bereitstellung, von der dieses Modul bereitgestellt wurde. | Diese Eigenschaft wird von IoT Hub festgelegt, wenn dieses Manifest mithilfe einer Bereitstellung angewendet wird. Nicht Teil eines Bereitstellungsmanifests. |
 | systemModules.edgeHub.type | Muss „Docker“ sein. | JA |
 | systemModules.edgeHub.type | Muss „running“ sein. | JA |
 | systemModules.edgeHub.restartPolicy | Muss „always“ sein. | JA |
 | systemModules.edgeHub.settings.image | Der URI des Image des Edge-Hubs. | JA |
-| systemModules.edgeHub.settings<br>.createOptions | In eine Zeichenfolge umgewandelter JSON-Code mit den Optionen für die Erstellung des Edge-Hubcontainers. [Optionen zum Erstellen von Docker][lnk-docker-create-options] | Nein  |
+| systemModules.edgeHub.settings<br>.createOptions | In eine Zeichenfolge umgewandelter JSON-Code mit den Optionen für die Erstellung des Edge-Hubcontainers. [Docker-Erstellungsoptionen](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate) | Nein  |
 | systemModules.edgeHub.configuration.id | Die ID der Bereitstellung, von der dieses Modul bereitgestellt wurde. | Diese Eigenschaft wird von IoT Hub festgelegt, wenn dieses Manifest mithilfe einer Bereitstellung angewendet wird. Nicht Teil eines Bereitstellungsmanifests. |
 | modules.{moduleId}.version | Benutzerdefinierte Zeichenfolge, die die Version des Moduls darstellt. | JA |
 | modules.{moduleId}.type | Muss „Docker“ sein. | JA |
 | modules.{moduleId}.status | {"running" \| "stopped"} | JA |
 | modules.{moduleId}.restartPolicy | {"never" \| "on-failed" \| "on-unhealthy" \| "always"} | JA |
 | modules.{moduleId}.settings.image | URI des Modulimage. | JA |
-| modules.{moduleId}.settings.createOptions | In eine Zeichenfolge umgewandelter JSON-Code mit den Optionen für die Erstellung des Modulcontainers. [Optionen zum Erstellen von Docker][lnk-docker-create-options] | Nein  |
+| modules.{moduleId}.settings.createOptions | In eine Zeichenfolge umgewandelter JSON-Code mit den Optionen für die Erstellung des Modulcontainers. [Docker-Erstellungsoptionen](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate) | Nein  |
 | modules.{moduleId}.configuration.id | Die ID der Bereitstellung, von der dieses Modul bereitgestellt wurde. | Diese Eigenschaft wird von IoT Hub festgelegt, wenn dieses Manifest mithilfe einer Bereitstellung angewendet wird. Nicht Teil eines Bereitstellungsmanifests. |
 
 ## <a name="edgeagent-reported-properties"></a>Gemeldete EdgeAgent-Eigenschaften
@@ -63,7 +63,7 @@ Zu den vom Edge-Agent gemeldeten Eigenschaften gehören im Wesentlichen drei Inf
 Diese letzte Information ist nützlich für den Fall, dass die letzten gewünschten Eigenschaften nicht erfolgreich von der Runtime angewendet wurden und das Gerät demzufolge noch ein vorheriges Bereitstellungsmanifest ausführt.
 
 > [!NOTE]
-> Die gemeldeten Eigenschaften des Edge-Agents sind hilfreich, da sie mit der [IoT Hub-Abfragesprache][lnk-iothub-query] abgefragt werden können, um den Status der Bereitstellungen großflächig zu untersuchen. Weitere Informationen zur Verwendung der Edge-Agent-Eigenschaften für den Status finden Sie unter [Grundlegendes zu IoT Edge-Bereitstellungen für einzelne Geräte oder nach Bedarf][lnk-deploy].
+> Die gemeldeten Eigenschaften des Edge-Agents sind hilfreich, da sie mit der [IoT Hub-Abfragesprache](../iot-hub/iot-hub-devguide-query-language.md) abgefragt werden können, um den Status der Bereitstellungen großflächig zu untersuchen. Weitere Informationen zur Verwendung der Edge-Agent-Eigenschaften für den Status finden Sie unter [Grundlegendes zu IoT Edge-Bereitstellungen für einzelne Geräte oder nach Bedarf](module-deployment-monitoring.md).
 
 In der folgenden Tabelle sind die aus den gewünschten Eigenschaften kopierten Informationen nicht enthalten.
 
@@ -117,9 +117,3 @@ Der Modulzwilling für den Edge-Hub wird als `$edgeHub` bezeichnet und koordinie
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen zur Verwendung dieser Eigenschaften zum Erstellen von Bereitstellungsmanifesten finden Sie unter [Verstehen, wie IoT Edge-Module verwendet, konfiguriert und wiederverwendet werden können](module-composition.md).
-
-<!--links -->
-[lnk-deploy]: module-deployment-monitoring.md
-[lnk-docker-create-options]: https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate
-[lnk-docker-logging-options]: https://docs.docker.com/engine/admin/logging/overview/
-[lnk-iothub-query]: ../iot-hub/iot-hub-devguide-query-language.md

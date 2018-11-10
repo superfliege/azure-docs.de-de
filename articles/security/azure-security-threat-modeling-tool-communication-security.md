@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 7e8afc02c738a2bba445b1d84b7cb899dfbb93a0
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: bc724f57a25e2ca12d334192d2171899345e72de
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43301553"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51247380"
 ---
 # <a name="security-frame-communication-security--mitigations"></a>Sicherheitsrahmen: Kommunikationssicherheit | Gegenmaßnahmen 
 | Produkt/Dienst | Artikel |
@@ -30,7 +30,7 @@ ms.locfileid: "43301553"
 | **Identity Server** | <ul><li>[Stellen Sie sicher, dass der gesamte an Identity Server gerichtete Datenverkehr über eine HTTPS-Verbindung abgewickelt wird.](#identity-https)</li></ul> |
 | **Web Application** | <ul><li>[Überprüfen Sie die X.509 Zertifikate, die zum Authentifizieren von SSL-, TLS- und DTLS-Verbindungen verwendet werden.](#x509-ssltls)</li><li>[Konfigurieren Sie ein SSL-Zertifikat für eine benutzerdefinierte Domäne in Azure App Service.](#ssl-appservice)</li><li>[Erzwingen Sie, dass der gesamte an Azure App Service gerichtete Datenverkehr über eine HTTPS-Verbindung abgewickelt wird.](#appservice-https)</li><li>[Aktivieren Sie HSTS (HTTP Strict Transport Security).](#http-hsts)</li></ul> |
 | **Datenbank** | <ul><li>[Verwenden Sie SQL Server-Verbindungsverschlüsselung und Zertifikatüberprüfung.](#sqlserver-validation)</li><li>[Erzwingen Sie die Verschlüsselung der Kommunikation mit SQL Server.](#encrypted-sqlserver)</li></ul> |
-| **Azure Storage** | <ul><li>[Stellen Sie sicher, dass die Kommunikation mit Azure Storage über HTTPS abgewickelt wird.](#comm-storage)</li><li>[Überprüfen Sie nach dem Herunterladen eines Blobs den MD5-Hash, falls HTTPS nicht aktiviert werden kann.](#md5-https)</li><li>[Verwenden Sie einen SMB 3.0-kompatiblen Client, um die Verschlüsselung von Daten während der Übertragung an Azure-Dateifreigaben zu gewährleisten.](#smb-shares)</li></ul> |
+| **Azure Storage (in englischer Sprache)** | <ul><li>[Stellen Sie sicher, dass die Kommunikation mit Azure Storage über HTTPS abgewickelt wird.](#comm-storage)</li><li>[Überprüfen Sie nach dem Herunterladen eines Blobs den MD5-Hash, falls HTTPS nicht aktiviert werden kann.](#md5-https)</li><li>[Verwenden Sie einen SMB 3.0-kompatiblen Client, um die Verschlüsselung von Daten während der Übertragung an Azure-Dateifreigaben zu gewährleisten.](#smb-shares)</li></ul> |
 | **Mobiler Client** | <ul><li>[Implementieren Sie das Anheften von Zertifikaten.](#cert-pinning)</li></ul> |
 | **WCF** | <ul><li>[Aktivieren Sie den sicheren HTTPS-Transportkanal.](#https-transport)</li><li>[WCF: Legen Sie die Schutzebene für die Nachrichtensicherheit auf „EncryptAndSign“ fest.](#message-protection)</li><li>[WCF: Führen Sie den WCF-Dienst mit einem Konto mit möglichst wenigen Berechtigungen aus.](#least-account-wcf)</li></ul> |
 | **Web-API** | <ul><li>[Erzwingen Sie, dass der gesamte an Web-APIs gerichtete Datenverkehr über eine HTTPS-Verbindung abgewickelt wird.](#webapi-https)</li></ul> |
@@ -113,7 +113,7 @@ ms.locfileid: "43301553"
 | **Zutreffende Technologien** | Allgemein |
 | **Attribute**              | EnvironmentType: Azure |
 | **Referenzen**              | [Erzwingen von HTTPS in Azure App Service](../app-service/app-service-web-tutorial-custom-ssl.md#enforce-https) |
-| **Schritte** | <p>Azure aktiviert zwar bereits standardmäßig HTTPS für Azure App Services mit einem Platzhalterzertifikat für die Domäne „*.azurewebsites.net“, erzwingt es aber nicht. Besucher können weiterhin über HTTP auf die App zugreifen, dies kann allerdings die Sicherheit der App gefährden. Daher muss explizit HTTPS erzwungen werden. ASP.NET-MVC-Anwendungen müssen den [RequireHttps-Filter](http://msdn.microsoft.com/library/system.web.mvc.requirehttpsattribute.aspx) verwenden. Dieser sorgt dafür, dass ungeschützte HTTP-Anforderungen erneut über HTTPS gesendet werden müssen.</p><p>Alternativ kann HTTPS mithilfe des in Azure App Service enthaltenen URL-Rewrite-Moduls erzwungen werden. Mit dem URL-Rewrite-Modul können Entwickler Regeln definieren, die auf eingehende Anforderungen angewendet werden, bevor diese an Ihre Anwendung übergeben werden. URL-Rewrite-Regeln werden im Stammverzeichnis der Anwendung in einer Datei vom Typ „web.config“ gespeichert.</p>|
+| **Schritte** | <p>Azure aktiviert zwar bereits standardmäßig HTTPS für Azure App Services mit einem Platzhalterzertifikat für die Domäne „*.azurewebsites.net“, erzwingt es aber nicht. Besucher können weiterhin über HTTP auf die App zugreifen, dies kann allerdings die Sicherheit der App gefährden. Daher muss explizit HTTPS erzwungen werden. ASP.NET-MVC-Anwendungen müssen den [RequireHttps-Filter](https://msdn.microsoft.com/library/system.web.mvc.requirehttpsattribute.aspx) verwenden. Dieser sorgt dafür, dass ungeschützte HTTP-Anforderungen erneut über HTTPS gesendet werden müssen.</p><p>Alternativ kann HTTPS mithilfe des in Azure App Service enthaltenen URL-Rewrite-Moduls erzwungen werden. Mit dem URL-Rewrite-Modul können Entwickler Regeln definieren, die auf eingehende Anforderungen angewendet werden, bevor diese an Ihre Anwendung übergeben werden. URL-Rewrite-Regeln werden im Stammverzeichnis der Anwendung in einer Datei vom Typ „web.config“ gespeichert.</p>|
 
 ### <a name="example"></a>Beispiel
 Das folgende Beispiel enthält eine einfache URL-Rewrite-Regel, die für sämtlichen eingehenden Datenverkehr die Verwendung von HTTPS erzwingt.
@@ -156,7 +156,7 @@ Diese Regel funktioniert durch die Rückgabe eines HTTP-Statuscode von 301 (Perm
 | **SDL-Phase**               | Entwickeln |  
 | **Zutreffende Technologien** | SQL Azure  |
 | **Attribute**              | SQL-Version: V12 |
-| **Referenzen**              | [Best Practices on Writing Secure Connection Strings for SQL Database](http://social.technet.microsoft.com/wiki/contents/articles/2951.windows-azure-sql-database-connection-security.aspx#best) (Bewährte Methoden zum Schreiben sicherer Verbindungszeichenfolgen für SQL-Datenbank) |
+| **Referenzen**              | [Best Practices on Writing Secure Connection Strings for SQL Database](https://social.technet.microsoft.com/wiki/contents/articles/2951.windows-azure-sql-database-connection-security.aspx#best) (Bewährte Methoden zum Schreiben sicherer Verbindungszeichenfolgen für SQL-Datenbank) |
 | **Schritte** | <p>Die gesamte Kommunikation zwischen SQL-Datenbank und einer Clientanwendung wird jederzeit mithilfe von SSL (Secure Sockets Layer) verschlüsselt. SQL-Datenbank unterstützt keine unverschlüsselten Verbindungen. Um Zertifikate mit Anwendungscode oder Tools zu überprüfen, sollten Sie explizit eine verschlüsselte Verbindung anfordern und den Serverzertifikaten nicht vertrauen. Verschlüsselte Verbindungen werden auch dann verwendet, wenn von Ihrem Anwendungscode oder von Ihren Tools keine verschlüsselte Verbindung angefordert wird.</p><p>Es kann aber sein, dass hierbei die Serverzertifikate nicht überprüft werden, sodass die Gefahr von Man-in-the-Middle-Angriffen besteht. Legen Sie `Encrypt=True` und `TrustServerCertificate=False` in der Datenbank-Verbindungszeichenfolge fest, um Zertifikate mit ADO.NET-Anwendungscode zu überprüfen. Um Zertifikate über SQL Server Management Studio zu überprüfen, öffnen Sie das Dialogfeld „Verbindung mit Server herstellen“. Klicken Sie auf der Registerkarte „Verbindungseigenschaften“ auf „Verbindung verschlüsseln“.</p>|
 
 ## <a id="encrypted-sqlserver"></a>Erzwingen Sie die Verschlüsselung der Kommunikation mit SQL Server.

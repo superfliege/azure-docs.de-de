@@ -4,9 +4,6 @@ description: In diesem Artikel wird der Lastenausgleich des Datenverkehrs mit ei
 services: traffic-manager
 documentationcenter: ''
 author: kumudd
-manager: timlt
-editor: ''
-ms.assetid: 6dca6de1-18f7-4962-bd98-6055771fab22
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
@@ -14,19 +11,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/20/2017
 ms.author: kumud
-ms.openlocfilehash: 6637132481ee33d43ec2b747ba89a56983205ff2
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 132cbecdad8303414f15ff3f18caaccd6d430ded
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47432442"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50154924"
 ---
 # <a name="configure-the-weighted-traffic-routing-method-in-traffic-manager"></a>Konfigurieren der gewichteten Routingmethode für Datenverkehr in Traffic Manager
 
-Ein gängiges Muster für das Routing von Datenverkehr besteht darin, eine Reihe identischer Endpunkte (die Clouddienste und Websites umfassen) bereitzustellen und Datenverkehr im Roundrobin-Verfahren an die einzelnen Endpunkte zu senden. Die folgenden Schritte beschreiben, wie diese Routingmethodentyp für Datenverkehr konfiguriert wird.
+Ein gängiges Muster für das Routing von Datenverkehr besteht darin, eine Reihe identischer Endpunkte (die Clouddienste und Websites umfassen) bereitzustellen und gleichmäßig Datenverkehr an die einzelnen Endpunkte zu senden. Die folgenden Schritte beschreiben, wie diese Routingmethodentyp für Datenverkehr konfiguriert wird.
 
 > [!NOTE]
-> Beachten Sie, dass Azure Web-App bereits Roundrobin-Lastenausgleichsfunktionen für Websites in einer Azure-Region (enthält mehrere Rechenzentren) zur Verfügung stellt. Traffic Manager ermöglicht das Angeben von Routingmethoden für Roundrobin-Datenverkehr für Websites in verschiedenen Datencentern.
+> Beachten Sie, dass Azure Web-App bereits Roundrobin-Lastenausgleichsfunktionen für Websites in einer Azure-Region (die mehrere Datencenter enthalten kann) zur Verfügung stellt. Traffic Manager ermöglicht das Verteilen von Datenverkehr auf Websites in verschiedenen Datencentern.
 
 ## <a name="to-configure-the-weighted-traffic-routing-method"></a>So konfigurieren Sie die gewichtete Routingmethode für Datenverkehr
 

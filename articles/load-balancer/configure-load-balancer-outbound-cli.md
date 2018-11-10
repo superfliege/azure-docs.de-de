@@ -4,8 +4,6 @@ description: In diesem Artikel wird gezeigt, wie Sie Lastenausgleichs- und Ausga
 services: load-balancer
 documentationcenter: na
 author: KumudD
-manager: jpconnock
-tags: azure-resource-manager
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -13,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: kumud
-ms.openlocfilehash: a6d442452fe5ffc61648b3c004c03f1756f8f57e
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 0759b6a8e3deb9bc1d04e41598e4eef9304ecd83
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47160654"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50416408"
 ---
 # <a name="configure-load-balancing-and-outbound-rules-in-standard-load-balancer-using-azure-cli"></a>Konfigurieren von Lastenausgleichs- und Ausgangsregeln in Load Balancer Standard mithilfe der Azure CLI
 
-In dieser Schnellstartanleitung erfahren Sie, wie Sie Ausgangsregeln in Load Balancer Standard mithilfe der Azure CLI konfigurieren.  
+In dieser Schnellstartanleitung erfahren Sie, wie Sie Ausgangsregeln in Load Balancer Standard mithilfe von Azure CLI konfigurieren.  
 
 Anschließend enthält die Load Balancer-Ressource zwei Front-Ends mit zugeordneten Regeln: eines für eingehenden und eines für ausgehenden Datenverkehr.  Jedes Front-End verfügt über einen Verweis auf eine öffentliche IP-Adresse. In diesem Szenario werden für Eingangs- und Ausgangsdatenverkehr unterschiedliche öffentliche IP-Adressen verwendet.   Die Lastenausgleichsregel bietet nur Lastenausgleich für eingehenden Datenverkehr, und die Ausgangsregel steuert die für den virtuellen Computer angegebene NAT für ausgehenden Datenverkehr.
 
@@ -63,7 +61,7 @@ Um über das Internet auf Ihre Web-App zugreifen zu können, benötigen Sie eine
 
 ## <a name="create-outbound-public-ip-address"></a>Erstellen einer öffentlichen Ausgangs-IP-Adresse 
 
-Erstellen Sie mit [az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip#create) eine Standard-IP-Adresse für die Ausgangskonfiguration des Load Balancer-Front-Ends mit dem Namen *mypublicipoutbound* in *myresourcegroupoutbound*.
+Erstellen Sie mit [az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip#create) eine Standard-IP-Adresse für die Ausgangskonfiguration des Load Balancer-Front-Ends.
 
 ```azurecli-interactive
   az network public-ip create --resource-group myresourcegroupoutbound --name mypublicipoutbound --sku standard
@@ -81,7 +79,7 @@ In diesem Abschnitt erfahren Sie, wie Sie die folgenden Komponenten des Lastenau
 
 ### <a name="create-load-balancer"></a>Erstellen oder Aktualisieren eines Lastenausgleichs
 
-Erstellen Sie mit [az network lb create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest#create) eine Load Balancer-Instanz mit der Eingangs-IP-Adresse mit dem Namen *lb*, die eine IP-Adresskonfiguration des Eingangs-Front-Ends *myfrontendinbound* und einen Back-End-Pool namens *bepool* enthält (mit Zuordnung zur öffentlichen IP-Adresse *mypublicipinbound*, die Sie im vorherigen Schritt erstellt haben).
+Erstellen Sie mit [az network lb create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest#create) eine Load Balancer-Instanz mit der Eingangs-IP-Adresse mit dem Namen *lb*, die eine IP-Adresskonfiguration des Eingangs-Front-Ends und einen Back-End-Pool enthält (mit Zuordnung zur öffentlichen IP-Adresse *mypublicipinbound*, die Sie im vorherigen Schritt erstellt haben).
 
 ```azurecli-interactive
   az network lb create \

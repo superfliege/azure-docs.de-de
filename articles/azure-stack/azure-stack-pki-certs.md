@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/16/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: 112940dbacf0bfdaff735eb0abd79e177cf5c9c5
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: d181835c6baf5a2a40bca04feaa4c115178ba086
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49457011"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50093968"
 ---
 # <a name="azure-stack-public-key-infrastructure-certificate-requirements"></a>Azure Stack-PKI-Zertifikatanforderungen
 
@@ -40,7 +40,8 @@ Die folgende Liste beschreibt die Zertifikatsanforderungen, die für die Bereits
 - Beim Rotieren von Zertifikaten müssen diese entweder von der gleichen internen Zertifizierungsstelle stammen, die auch zum Signieren der bei der Bereitstellung angegebenen Zertifikate verwendet wurde, oder von einer der oben angegebenen öffentlichen Zertifizierungsstellen.
 - Die Verwendung selbstsignierter Zertifikate wird nicht unterstützt.
 - Für Bereitstellung und Rotation können Sie entweder ein einziges Zertifikat verwenden, das alle Namespaces in den Feldern „Antragstellername“ und „Alternativer Antragstellername“ des Zertifikats abdeckt. ODER Sie können einzelne Zertifikate für jeden der folgenden Namespaces verwenden, die die Azure Stack-Dienste benötigen, deren Nutzung Sie planen. Beide Ansätze erfordern bei Bedarf die Verwendung von Platzhaltern für Endpunkte, z.B. **KeyVault** und **KeyVaultInternal**. 
-- Der Signaturalgorithmus darf nicht SHA1 sein, sondern muss sicherer sein. 
+- Die PFX-Verschlüsselung des Zertifikats sollte mit 3DES erfolgen. 
+- Der Zertifikatsignaturalgorithmus sollte nicht SHA1 sein. 
 - Das Zertifikatsformat muss PFX sein, da sowohl der öffentliche als auch der private Schlüssel für die Installation von Azure Stack benötigt werden. 
 - Die PFX-Verschlüsselung muss 3DES sein. (Dies ist beim Exportieren von einem Windows 10-Client oder einem Windows Server 2016-Zertifikatspeicher der Standard.)
 - Die PFX-Zertifikatdateien müssen im Feld „Schlüsselverwendung“ einen Wert in „Digitale Signatur“ und „Schlüsselchiffrierung“ enthalten.

@@ -1,21 +1,21 @@
 ---
-title: Azure Site Recovery Deployment Planner für „VMware zu Azure“ | Microsoft-Dokumentation
-description: In diesem Artikel wird die Analyse des generierten Azure Site Recovery-Bereitstellungsplaner-Berichts für „VMware zu Azure“ beschrieben.
-services: site-recovery
+title: Analysieren des Azure Site Recovery-Bereitstellungsplaner-Berichts für die Notfallwiederherstellung von VMware in Azure | Microsoft-Dokumentation
+description: Dieser Artikel beschreibt, wie Sie einen Bericht analysieren, der vom Azure Site Recovery-Bereitstellungsplaner für die VMware-Notfallwiederherstellung in Azure generiert wurde.
 author: nsoneji
 manager: garavd
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: nisoneji
-ms.openlocfilehash: e6aa3a8c788fe06a528a9c363a28faffa0a9ca88
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: d709b13aaf6b6ee9a913484ed503da1e76982d17
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49094087"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50213915"
 ---
-# <a name="azure-site-recovery-deployment-planner-report"></a>Azure Site Recovery-Bereitstellungsplaner-Bericht
+# <a name="analyze-the-azure-site-recovery-deployment-planner-report-for-vmware-disaster-recovery-to-azure"></a>Analysieren des Azure Site Recovery-Bereitstellungsplaner-Berichts für die VMware-Notfallwiederherstellung in Azure
+
 Der erstellte Microsoft Excel-Bericht enthält die folgenden Tabellen:
 ## <a name="on-premises-summary"></a>On-premises Summary (Lokale Zusammenfassung)
 Das Arbeitsblatt „On-premises Summary“ (Lokale Zusammenfassung) enthält eine Übersicht über die VMware-Umgebung für die Profilerstellung.

@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: users-groups-roles
 ms.topic: article
-ms.date: 09/20/2018
+ms.date: 10/26/2018
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: e8f0077bf5a1a2911b3aec032fadacf31ad75463
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 13d6ed9feab4654d3574a5aced72efa0345365a6
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48855271"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50215326"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Regeln für eine dynamische Mitgliedschaft für Gruppen in Azure Active Directory
 
@@ -316,7 +316,7 @@ Die Regel für alle Geräte wird mit einem einzelnen Ausdruck mit dem -ne-Operat
 device.objectid -ne null
 ```
 
-### <a name="extension-properties-and-custom-extension-properties"></a>Erweiterungseigenschaften und benutzerdefinierte Erweiterungseigenschaften
+## <a name="extension-properties-and-custom-extension-properties"></a>Erweiterungseigenschaften und benutzerdefinierte Erweiterungseigenschaften
 
 Erweiterungsattribute und benutzerdefinierte Erweiterungsattribute werden als Zeichenfolgeneigenschaften in den Regeln für eine dynamische Mitgliedschaft unterstützt. Erweiterungsattribute werden von einer lokalen Windows Server AD-Instanz synchronisiert und erhalten folgendes Format: ExtensionAttributeX. Dabei entspricht X 1 bis 15. Dies ist ein Beispiel für eine Regel, die ein Erweiterungsattribut als Eigenschaft verwendet:
 
@@ -335,7 +335,7 @@ Beispiel für eine Regel, die eine benutzerdefinierte Erweiterungseigenschaft ve
 user.extension_c272a57b722d4eb29bfe327874ae79cb__OfficeNumber -eq "123"
 ```
 
-Den Namen der benutzerdefinierten Eigenschaft finden Sie im Verzeichnis. Fragen Sie dazu die Eigenschaft eines Benutzers mithilfe des Graph-Explorers ab, und suchen Sie nach dem Eigenschaftennamen.
+Den Namen der benutzerdefinierten Eigenschaft finden Sie im Verzeichnis. Fragen Sie dazu die Eigenschaft eines Benutzers mithilfe des Graph-Explorers ab, und suchen Sie nach dem Eigenschaftennamen. Sie können jetzt im Regel-Generator für dynamische Benutzergruppen auf den Link **Get custom extension properties** (Benutzerdefinierte Erweiterungseigenschaften abrufen) klicken, um Ihre eindeutige App-ID einzugeben und die vollständige Liste mit benutzerdefinierten Erweiterungseigenschaften abzurufen, die Sie beim Erstellen einer dynamischen Mitgliedschaftsregel verwenden. Diese Liste kann auch aktualisiert werden, um neue benutzerdefinierte Erweiterungseigenschaften für diese App zu erhalten.
 
 ## <a name="rules-for-devices"></a>Regeln für Geräte
 

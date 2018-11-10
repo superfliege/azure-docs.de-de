@@ -8,21 +8,25 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 59414f0f4580fa221b400153818421f1334f8b4f
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: b73d3f3252a2691d8a1dc520ba6cef43b27a5b32
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50026874"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50228872"
 ---
 # <a name="supported-browsers-for-azure-iot-central"></a>Unterstützte Browser für Azure IoT Central
 
 *Dieser Artikel gilt für Betreiber, Ersteller und Administratoren.*
 
-Auf Azure IoT Central kann von vielen modernen Desktops, Tablets und Browsern zugegriffen werden. Der folgende Artikel enthält die Liste der unterstützten Browser. 
+Auf Azure IoT Central kann von den meisten modernen Desktops, Tablets und Browsern zugegriffen werden. Der folgende Artikel enthält die Liste der unterstützten Browser und der erforderlichen Konnektivität.  
 
+## <a name="supported-browsers"></a>Unterstützte Browser
 Es wird empfohlen, den neuesten Browser zu verwenden, der mit Ihrem Betriebssystem kompatibel ist. Die folgenden Browser werden unterstützt:
 - Microsoft Edge (neueste Version)
 - Safari (neueste Version, nur auf Mac)
 - Chrome (neueste Version)
 - Firefox (neueste Version)
+
+## <a name="required-protocols"></a>Erforderliche Protokolle
+Azure IoT Central erfordert, dass Ihr Netzwerk die Protokolle HTTPS und WebSocket für ausgehende Verbindungen unterstützt.

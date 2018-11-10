@@ -7,140 +7,113 @@ author: diberry
 manager: cgronlun
 ms.component: language-understanding
 ms.topic: article
-ms.date: 09/10/2018
+ms.date: 10/24/2018
 ms.author: diberry
 ms.service: cognitive-services
-ms.openlocfilehash: 9b7207a16a89e48ad64b2dbc48a5293d0cf8aa25
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 495b7e99319126b3ee9e655b2d9aa4af940e1d56
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47036081"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50139919"
 ---
-# <a name="manage-intents"></a>Verwalten von Absichten 
+# <a name="add-intents"></a>Hinzufügen von Absichten 
+
 Fügen Sie Ihrer LUIS-App [Absichten](luis-concept-intent.md) hinzu, um Gruppen von Fragen oder Befehlen zu identifizieren, die den gleichen Zweck verfolgen. 
 
-Absichten werden im Abschnitt **Erstellen** in der oberen Symbolleiste verwaltet. Sie verwalten Ihre Absichten auf der Seite **Intents** (Absichten), auf die Sie über das linke Panel zugreifen können. 
+Navigieren Sie in der oberen Navigationsleiste zum Abschnitt **Build** und dann im linken Bereich zu **Absichten**, um die Absichten zu verwalten. 
 
-Das folgende Verfahren veranschaulicht, wie Sie die Absicht „BookFlight“ in der TravelAgent-App hinzufügen.
+## <a name="create-an-app"></a>Erstellen einer App
+
+1. Melden Sie sich beim [LUIS](https://www.luis.ai)-Portal an.
+
+1. Klicken Sie auf **Create new app** (Neue App erstellen). 
+
+1. Geben Sie der neuen App den Namen `MyHumanResourcesApp`. Wählen Sie **Englisch** als Kultur aus. Die Angabe einer Beschreibung ist optional. 
+
+1. Wählen Sie **Fertig**aus. 
 
 ## <a name="add-intent"></a>Hinzufügen einer Absicht
 
-1. Öffnen Sie die App (z.B. TravelAgent), indem Sie auf der Seite **Meine Apps** auf ihren Namen klicken, und klicken Sie dann im linken Bereich auf **Intents** (Absichten). 
-2. Klicken Sie auf der Seite **Intents** (Absichten) auf **Create new Intent** (Neue Absicht erstellen).
+1. Die App wird mit der Liste **Absichten** geöffnet.
 
-3. Geben Sie im Dialogfeld **Create new Intent** (Neue Absicht erstellen) den Namen „BookFlight“ für die Absicht ein, und klicken Sie auf **Fertig**.
+1. Wählen Sie auf der Seite **Absichten** die Option **Create new intent** (Neue Absicht erstellen).
+
+1. Geben Sie im Dialogfeld **Create new intent** (Neue Absicht erstellen) den Namen `GetEmployeeInformation` für die Absicht ein, und klicken Sie auf **Fertig**.
 
     ![Hinzufügen einer Absicht](./media/luis-how-to-add-intents/Addintent-dialogbox.png)
 
-    Auf der Seite der Absichtsdetails für die neu hinzugefügte Absicht können Sie [Äußerungen hinzufügen](#add-an-utterance-on-intent-page).
+## <a name="add-an-example-utterance"></a>Hinzufügen einer Beispieläußerung
 
-## <a name="rename-intent"></a>Umbenennen der Absicht
+Beispieläußerungen sind Textbeispiele für Benutzerfragen oder -befehle. Fügen Sie einer Absicht Beispieläußerungen hinzu, um Language Understanding-Apps zu trainieren.
 
-1. Klicken Sie auf der Seite **Intent** (Absicht) auf das Symbol ![Rename Intent](./media/luis-how-to-add-intents/Rename-Intent-btn.png) (Absicht umbenennen) neben dem Namen der Absicht. 
-
-2. Auf der Seite **Intent** (Absicht) wird der Name der aktuellen Absicht in einem Dialogfeld angezeigt. Bearbeiten Sie den Namen der Absicht, und drücken Sie die EINGABETASTE. Der neue Name wird gespeichert und auf der Seite der Absicht angezeigt.
-
-    ![Bearbeiten einer Absicht](./media/luis-how-to-add-intents/EditIntent-dialogbox.png)
-
-## <a name="delete-intent"></a>Löschen einer Absicht
-Wenn Sie eine andere Absicht als „None“ löschen, können Sie angeben, dass alle Äußerungen der Absicht „None“ hinzugefügt werden sollen. Das ist hilfreich, wenn Sie die Äußerungen verschieben und nicht löschen müssen.   
-
-1. Klicken Sie auf der Seite **Intent** (Absicht) auf die Schaltfläche **Delete Intent** (Absicht löschen) rechts neben dem Namen der Absicht. 
-
-    ![Schaltfläche „Delete Intent“ (Absicht löschen)](./media/luis-how-to-add-intents/DeleteIntent.png)
-
-2. Klicken Sie im Bestätigungsdialogfeld auf die Schaltfläche „Ok“.
-
-<!--
-    TBD: waiting for confirmation about which delete dialog is going to be in //BUILD
-
-    ![Delete Intent Dialog](./media/luis-how-to-add-intents/DeleteIntent-Confirmation.png)
--->
-
-
-## <a name="add-an-utterance-on-intent-page"></a>Hinzufügen einer Äußerung auf der Seite der Absicht
-
-Geben Sie auf der Seite der Absicht im Textfeld unter ihrem Namen eine relevante Äußerung ein, die Sie von Ihren Benutzern erwarten, z.B. `book 2 adult business tickets to Paris tomorrow on Air France`, und drücken Sie dann die EINGABETASTE. 
+1. Geben Sie auf der Seite **GetEmployeeInformation** mit den Details der Absicht im Textfeld unter dem Absichtsnamen eine relevante Äußerung ein, die Sie von Ihren Benutzern erwarten, z.B. `Does John Smith work in Seattle?`. Drücken Sie anschließend die EINGABETASTE.
  
->[!NOTE]
->LUIS konvertiert alle Äußerungen in Kleinbuchstaben.
+    ![Screenshot der Seite „Intents details“ (Details zu den Absichten) mit hervorgehobener Äußerung](./media/luis-how-to-add-intents/add-new-utterance-to-intent.png) 
 
-![Screenshot der Seite „Intents details“ (Details zu den Absichten) mit hervorgehobener Äußerung](./media/luis-how-to-add-intents/add-new-utterance-to-intent.png) 
+    LUIS konvertiert alle Äußerungen in Kleinbuchstaben und fügt vor und nach Token, z.B. Bindestrichen, Leerzeichen ein.
 
-Die Äußerungen werden der Liste der Äußerungen für die aktuelle Absicht hinzugefügt. Nachdem eine Äußerung hinzugefügt wurde, [bezeichnen Sie alle Entitäten](luis-how-to-add-example-utterances.md) innerhalb der Äußerungen, und [trainieren](luis-how-to-train.md) Sie Ihre App. 
+## <a name="intent-prediction-discrepancy-errors"></a>Fehler durch Abweichung bei der Absichtsvorhersage 
 
-## <a name="create-a-pattern-from-an-utterance"></a>Erstellen eines Musters aus einer Äußerung
-Weitere Informationen finden Sie unter [Hinzufügen eines Musters aus einer vorhandenen Äußerung auf der Seite der Absicht oder der Entität](luis-how-to-model-intent-pattern.md#add-pattern-from-existing-utterance-on-intent-or-entity-page).
+Eine Äußerung in einer Absicht kann eine Abweichung bei der Absichtsvorhersage zwischen der ausgewählten Absicht und dem Vorhersageergebnis aufweisen. LUIS gibt diese Abweichung mit einem roten Kasten an, mit dem in der Zeile mit der Beispieläußerung die **bezeichnete Absicht** gekennzeichnet wird. 
 
-## <a name="edit-an-utterance-on-intent-page"></a>Bearbeiten einer Äußerung auf der Seite der Absicht
+![Screenshot der Seite „Intents details“ (Details zu den Absichten) mit hervorgehobener Äußerung](./media/luis-how-to-add-intents/prediction-discrepancy-intent.png) 
 
-Um eine Äußerung zu bearbeiten, wählen Sie die Auslassungspunkte (***...***) am rechten Ende der Zeile für diese Äußerung aus, und wählen Sie dann **Bearbeiten** aus. Ändern Sie den Text, und drücken Sie die EINGABETASTE.
+Wählen Sie im oberen Navigationsbereich die Option **Trainieren**. Die Abweichung der Vorhersage ist nun nicht mehr vorhanden.
 
-![Screenshot der Seite „Intents details“ (Details zu den Absichten) mit hervorgehobenen Auslassungspunkten](./media/luis-how-to-add-intents/edit-utterance.png) 
+## <a name="add-a-custom-entity"></a>Hinzufügen einer benutzerdefinierten Entität
 
-## <a name="reassign-utterances-on-intent-page"></a>Neues Zuweisen von Äußerungen auf der Seite der Absicht
-Sie können die Absicht von Äußerungen ändern, indem Sie diese einer anderen Absicht neu zuweisen. 
+Nachdem eine Äußerung einer Absicht hinzugefügt wurde, können Sie Text der Äußerung auswählen, um eine benutzerdefinierte Entität zu erstellen. Eine benutzerdefinierte Entität ist eine Möglichkeit, um Text zusammen mit der richtigen Absicht für die Extrahierung zu kennzeichnen. 
 
-Um eine einzelne Äußerung einer anderen Absicht neu zuzuweisen, wählen Sie am rechten Ende der Zeile für die Äußerung den Namen der richtigen Absicht in der Spalte **Labeled Intent** (Bezeichnete Absicht) aus. Die Äußerung wird aus der Liste der Äußerungen für die aktuellen Absicht entfernt. 
+1. Wählen Sie in der Äußerung das Wort `Seattle` aus. Der Text wird in eckige Klammern gesetzt, und es wird ein Dropdownmenü angezeigt. 
 
-![Screenshot der Seite der Absicht „BookFlight“ mit ausgewählter Absicht für eine Äußerung in der Spalte „Labeled Intent“ (Bezeichnete Absicht)](./media/luis-how-to-add-intents/reassign-1-utterance.png)
+    ![Screenshot: Seite mit Absichtsdetails, Erstellung einer benutzerdefinierten Entität](./media/luis-how-to-add-intents/create-custom-entity.png) 
 
-Um die Absicht mehrerer Äußerungen zu ändern, aktivieren Sie die Kontrollkästchen links neben den Äußerungen, und wählen Sie dann **Reassign Intent** (Absicht neu zuweisen) aus. Wählen Sie die richtige Absicht in der Liste aus.
+    In diesem Beispiel wird ein einzelnes Wort ausgewählt, um es als Entität zu kennzeichnen. Sie können einzelne Wörter und Wortgruppen als Entitäten kennzeichnen.
 
-![Screenshot der Seite der Absicht „BookFlight“ mit einer aktivierten Äußerung und hervorgehobener Schaltfläche „Reassign Intent“ (Absicht neu zuweisen)](./media/luis-how-to-add-intents/delete-several-utterances.png) 
+1. Geben Sie im oberen Textfeld des Menüs das Wort `Location` ein, und wählen Sie dann **Neue Entität erstellen**. 
 
-## <a name="delete-utterances-on-intent-page"></a>Löschen von Äußerungen auf der Seite der Absicht
+    ![Screenshot: Seite mit Absichtsdetails, Erstellung des Namens für benutzerdefinierte Entität](./media/luis-how-to-add-intents/create-custom-entity-name.png) 
 
-Um eine Äußerung zu löschen, wählen Sie die Auslassungspunkte (***...***) am rechten Ende der Zeile für diese Äußerung aus, und wählen Sie dann **Löschen** aus. Die Äußerung wird aus der Liste und der LUIS-App entfernt.
+1. Überprüfen Sie im Popupfenster **What type of entity do you want to create?** (Welchen Entitätstyp möchten Sie erstellen?) für die Entitätserstellung, ob der **Entitätsname** auf _Location_ (Standort) und der **Entitätstyp** auf _Simple_ (Einfach) festgelegt ist. Wählen Sie **Fertig**aus.
 
-![Screenshot der Seite „Intents details“ (Details zu den Absichten) mit hervorgehobener Option „Löschen“](./media/luis-how-to-add-intents/delete-utterance-ddl.png)
+## <a name="entity-prediction-discrepancy-errors"></a>Fehler durch Abweichung bei der Entitätsvorhersage 
 
-So löschen Sie mehrere Äußerungen
+Die Entität ist rot unterstrichen, um eine [Abweichung bei der Entitätsvorhersage](luis-how-to-add-example-utterances.md#entity-status-predictions) anzuzeigen. Da dies das erste Auftreten einer Entität ist, verfügt LUIS nicht über genügend Beispiele, um zuverlässig feststellen zu können, ob dieser Text mit der richtigen Entität gekennzeichnet ist. Diese Abweichung wird entfernt, nachdem die App trainiert wurde. 
 
-1. Aktivieren Sie die Kontrollkästchen links neben den Äußerungen, und wählen Sie dann **Delete utterances(s)** (Äußerungen löschen) aus. 
+![Screenshot: Seite mit Absichtsdetails, benutzerdefinierter Entitätsname blau hervorgehoben](./media/luis-how-to-add-intents/create-custom-entity-name-blue-highlight.png) 
 
-    ![Screenshot der Seite „Intents details“ (Details zu den Absichten) mit aktivierten Äußerungen und hervorgehobener Schaltfläche „Delete utterances(s)“ (Äußerungen löschen)](./media/luis-how-to-add-intents/delete-several-utterances.png)
+Der Text ist blau hervorgehoben, um eine Entität anzuzeigen.  
 
-2. Wählen Sie im Popupdialogfeld **Delete utterances?** (Äußerungen löschen?) die Option **Fertig** aus.
+## <a name="add-a-prebuilt-entity"></a>Hinzufügen einer vordefinierten Entität
 
-## <a name="search-in-utterances-on-intent-page"></a>Suchen in Äußerungen auf der Seite der Absicht
-Sie können innerhalb der Äußerungsliste einer Absicht nach Äußerungen suchen, die Text (Wörter oder Ausdrücke) enthalten. Beispielsweise fällt Ihnen möglicherweise ein Fehler im Zusammenhang mit einem bestimmten Wort auf, und Sie möchten alle Beispiele suchen, die dieses Wort enthalten. 
+Weitere Informationen finden Sie unter [Vordefinierte Entitäten](luis-how-to-add-entities.md#add-prebuilt-entity).
 
-1. Wählen Sie auf der Symbolleiste das Lupensymbol aus.
+## <a name="using-the-contextual-toolbar"></a>Verwenden der kontextbezogenen Symbolleiste
 
-    ![Screenshot der Seite „Intents“ (Absichten) mit hervorgehobenem Lupensymbol](./media/luis-how-to-add-intents/magnifying-glass.png)
+Wenn in der Liste mindestens eine Äußerung ausgewählt ist, können Sie über die Symbolleiste oberhalb der Liste mit den Äußerungen die folgenden Aktionen durchführen, indem Sie das Feld links von einer Äußerung aktivieren:
 
-2. Ein Suchtextfeld wird angezeigt. Geben Sie im Suchfeld in der rechten oberen Ecke der Liste der Äußerungen ein Wort oder einen Ausdruck ein. Die Liste der Äußerungen wird aktualisiert, sodass nur noch die Äußerungen angezeigt werden, die den Suchtext enthalten. 
+* Absicht neu zuweisen: Verschieben von Äußerungen in eine andere Absicht
+* Löschen von Äußerungen
+* Entitätsfilter: Ausschließliches Anzeigen von Äußerungen mit gefilterten Entitäten
+* Alle anzeigen/Nur Fehler: Anzeigen von Äußerungen mit Vorhersagefehlern oder aller Äußerungen
+* Ansicht für Entitäten/Token: Anzeigen der Ansicht für Entitäten mit Entitätsnamen oder des unformatierten Texts der Äußerung
+* Lupe: Suchen nach Äußerungen mit spezifischem Text
 
-    ![Screenshot der Seite „Intents“ (Absichten) mit hervorgehobenem Suchtextfeld](./media/luis-how-to-add-intents/search-textbox.png)
+## <a name="working-with-an-individual-utterance"></a>Arbeiten mit einer einzelnen Äußerung
 
-    Um die Suche abzubrechen und die vollständige Liste der Äußerungen wiederherzustellen, löschen Sie den eingegebenen Suchtext. Um das Suchtextfeld zu schließen, wählen Sie das Lupensymbol auf der Symbolleiste erneut aus.
+Für eine einzelne Äußerung können über das Menü mit den Auslassungszeichen rechts neben der Äußerung die folgenden Aktionen durchgeführt werden:
 
-## <a name="prediction-discrepancy-errors-on-intent-page"></a>Fehler durch Vorhersagediskrepanz auf der Seite der Absicht
-Eine Äußerung in einer Absicht kann eine Diskrepanz zwischen der ausgewählten Absicht und dem Vorhersageergebnis aufweisen. LUIS gibt diese Diskrepanz durch ein rotes Feld um das Ergebnis an. 
+* Bearbeiten: Ändern des Texts der Äußerung
+* Löschen: Entfernen der Äußerung aus der Absicht. Falls Sie die Äußerung aufbewahren möchten, können Sie sie in die Absicht **Keine** verschieben. 
+* Muster hinzufügen: Mit einem Muster können Sie in einer häufigen Äußerung den Text kennzeichnen, der ersetzt bzw. ignoriert werden kann. So verringern Sie die Notwendigkeit von weiteren Äußerungen in der Absicht. 
 
-![Screenshot der Seite der Absicht „BookFlight“ mit hervorgehobener Diskrepanz im Vorhersageergebnis](./media/luis-how-to-add-intents/score-discrepancy.png) 
-
-## <a name="filter-by-intent-prediction-discrepancy-errors-on-intent-page"></a>Filtern nach Diskrepanzfehlern für die Absichtsvorhersage auf der Seite der Absicht
-Um die Liste der Äußerung so zu filtern, dass nur Äußerungen mit einer Diskrepanz in der Absichtsvorhersage angezeigt werden, schalten Sie auf der Symbolleiste von **Alle anzeigen** zu **Nur Fehler** um. 
-
-## <a name="filter-by-entity-type-on-intent-page"></a>Filtern nach Entitätstyp auf der Seite der Absicht
-Verwenden Sie die Dropdownliste **Entity filters** (Entitätsfilter) auf der Symbolleiste, um die Äußerungen nach Entität zu filtern. 
-
-![Screenshot der Seite „Intents“ (Absichten) mit hervorgehobenem Entitätstypfilter](./media/luis-how-to-add-intents/filter-by-entities.png) 
-
-Um den Filter zu entfernen, wählen Sie das blaue Filterfeld mit diesem Wort oder diesem Ausdruck unter der Symbolleiste aus.  
-<!-- TBD: waiting for ux fix - bug in ux of prebuit entity number -- when filtering by it, it doesn't show the list -->
-
-## <a name="switch-to-token-view-on-intent-page"></a>Wechseln zur Tokenansicht auf der Seite der Absicht
-Wechseln Sie zur **Tokens View** (Tokenansicht), um die Token anstelle der Entitätstypnamen anzuzeigen. Sie können auch **STRG+E** drücken, um die Ansicht umzuschalten. 
-
-![Screenshot der Seite der Absicht „BookFlight“ mit hervorgehobener „Token View“ (Tokenansicht)](./media/luis-how-to-add-intents/toggle-tokens-view.png)
+In der Spalte **Labeled intent** (Bezeichnete Absicht) können Sie die Absicht der Äußerung ändern.
 
 ## <a name="train-your-app-after-changing-model-with-intents"></a>Trainieren der App nach dem Ändern des Modells mit Absichten
-Nachdem Sie Absichten hinzufügen, bearbeiten oder entfernen, [trainieren](luis-how-to-train.md) und [veröffentlichen](luis-how-to-publish-app.md) Sie Ihre App, damit die Änderungen auf Endpunktabfragen angewandt werden. 
+
+Nachdem Sie Absichten hinzugefügt, bearbeitet oder entfernt haben, [trainieren](luis-how-to-train.md) und [veröffentlichen](luis-how-to-publish-app.md) Sie Ihre App, damit die Änderungen auf Endpunktabfragen angewendet werden. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Sie Ihrer App Absichten hinzugefügt haben, besteht Ihre nächste Aufgabe darin, [Beispieläußerungen](luis-how-to-add-example-utterances.md) für die hinzugefügten Absichten hinzuzufügen. 
+Erfahren Sie mehr zum Hinzufügen von [Beispieläußerungen](luis-how-to-add-example-utterances.md) mit Entitäten. 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 7/25/2018
 ms.author: erikre
-ms.openlocfilehash: 19d8fbf82410136fd6a50a2088dd9b774dd6cb27
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: 08cdce23fe298bdac932d1ca8abb8166f4d7bbbd
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39259210"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50094812"
 ---
 # <a name="manage-costs-with-azure-budgets"></a>Verwalten von Kosten mit Azure-Budgets
 
@@ -139,7 +139,7 @@ Jede Logik-App muss mit einem Trigger beginnen, der ausgelöst wird, wenn ein be
 4.  Suchen Sie im **Designer für Logik-Apps**-Suchfeld zum Suchen und Auswählen der [Aktion](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview#logic-app-concepts) **Datenvorgänge – JSON analysieren** nach „parse JSON“. 
     
     ![Azure – Logik-App – Aktion „JSON analysieren“ hinzufügen](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-06.png) 
-5.  Geben Sie „Payload“ als Namen für den **Inhalt** für das Analysieren der JSON-Nutzlast ein.
+5.  Geben Sie „Payload“ als Name für das Analysieren der JSON-Nutzlast ins Feld **Inhalt** ein, oder verwenden Sie das Body-Tag aus dem dynamischen Inhalt.
 6.  Wählen Sie die Option **Beispielnutzlast zum Generieren eines Schemas verwenden** im Feld **JSON analysieren** aus.
     
     ![Azure – Logik-App – Beispiel-JSON-Daten zum Generieren eines Schemas verwenden](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-07.png) 

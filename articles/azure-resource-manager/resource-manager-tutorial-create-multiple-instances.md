@@ -10,19 +10,19 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 10/18/2018
+ms.date: 10/30/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 1cfccdf644b1748a96f7638e574c66eace8d113a
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: 14dd76e60f615bce4e5b5aa52e6237615071779c
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49456659"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50241922"
 ---
-# <a name="tutorial-create-multiple-resource-instances-using-resource-manager-templates"></a>Tutorial: Erstellen mehrerer Ressourceninstanzen mit Resource Manager-Vorlagen
+# <a name="tutorial-create-multiple-resource-instances-with-resource-manager-templates"></a>Tutorial: Erstellen mehrerer Ressourceninstanzen mit Resource Manager-Vorlagen
 
-Erfahren Sie, wie Sie die Azure Resource Manager-Vorlage durchlaufen können, um mehrere Instanzen einer Azure-Ressource zu erstellen. Im letzten Tutorial haben Sie eine vorhandene Vorlage zum Erstellen eines verschlüsselten Azure Storage-Kontos geändert. In diesem Tutorial ändern Sie die gleiche Vorlage, um drei Speicherkontoinstanzen zu erstellen.
+Erfahren Sie, wie Sie die Azure Resource Manager-Vorlage durchlaufen können, um mehrere Instanzen einer Azure-Ressource zu erstellen. In diesem Tutorial ändern Sie eine Vorlage, um drei Speicherkontoinstanzen zu erstellen.
 
 > [!div class="checklist"]
 > * Öffnen einer Schnellstartvorlage
@@ -39,7 +39,7 @@ Damit Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie F
 
 ## <a name="open-a-quickstart-template"></a>Öffnen einer Schnellstartvorlage
 
-Die in dieser Schnellstartanleitung verwendete Vorlage heißt [Standardspeicherkonto erstellen](https://azure.microsoft.com/resources/templates/101-storage-account-create/). Die Vorlage definiert eine Azure Storage-Kontoressource.
+[Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/) ist ein Repository für Resource Manager-Vorlagen. Statt eine Vorlage von Grund auf neu zu erstellen, können Sie eine Beispielvorlage verwenden und diese anpassen. Die in dieser Schnellstartanleitung verwendete Vorlage heißt [Standardspeicherkonto erstellen](https://azure.microsoft.com/resources/templates/101-storage-account-create/). Die Vorlage definiert eine Azure Storage-Kontoressource.
 
 1. Wählen Sie in Visual Studio Code **Datei**>**Datei öffnen** aus.
 2. Fügen Sie in **Dateiname** die folgende URL ein:
@@ -48,20 +48,21 @@ Die in dieser Schnellstartanleitung verwendete Vorlage heißt [Standardspeicherk
     https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json
     ```
 3. Wählen Sie **Öffnen** aus, um die Datei zu öffnen.
-4. Wählen Sie **Datei**>**Speichern unter** aus, um die Datei als **azuredeploy.json** auf dem lokalen Computer zu speichern.
+4. In der Vorlage ist die Ressource „Microsoft.Storage/storageAccounts“ definiert. Vergleichen Sie die Vorlage mit der [Vorlagenreferenz](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts). Bevor Sie die Vorlage anpassen, sollten Sie sich zunächst grundlegend damit vertraut machen.
+5. Wählen Sie **Datei**>**Speichern unter** aus, um die Datei als **azuredeploy.json** auf dem lokalen Computer zu speichern.
 
 ## <a name="edit-the-template"></a>Bearbeiten der Vorlage
 
-Das Ziel dieses Tutorials ist, mit der Ressourceniteration drei Speicherkonten zu erstellen.  Die Beispielvorlage erstellt nur ein einzelnes Speicherkonto. 
+Die vorhandene Vorlage erstellt ein einzelnes Speicherkonto. Sie passen die Vorlage an, um drei Speicherkonten zu erstellen.  
 
 Nehmen Sie von Visual Studio Code aus die folgenden vier Änderungen vor:
 
-![Erstellen mehrerer Instanzen im Azure Resource Manager](./media/resource-manager-tutorial-create-multiple-instances/resource-manager-template-create-multiple-instances.png)
+![Erstellen mehrerer Instanzen in Azure Resource Manager](./media/resource-manager-tutorial-create-multiple-instances/resource-manager-template-create-multiple-instances.png)
 
-1. Fügen Sie der Ressourcendefinition des Speicherkontos ein `copy`-Element hinzu. Im copy-Element geben Sie die Anzahl von Iterationen und einen Namen für diese Schleife an. Der count-Wert muss eine positive ganze Zahl sein und darf 800 nicht überschreiten.
-2. Die `copyIndex()`-Funktion gibt die aktuelle Iteration in der Schleife zurück. `copyIndex()` ist nullbasiert. Zum Versetzen des Indexwerts können Sie einen Wert in der copyIndex()-Funktion übergeben. Beispiel: *copyIndex(1)*.
+1. Fügen Sie der Ressourcendefinition des Speicherkontos ein `copy`-Element hinzu. Im copy-Element geben Sie die Anzahl von Iterationen und eine Variable für diese Schleife an. Der count-Wert muss eine positive ganze Zahl sein und darf 800 nicht überschreiten.
+2. Die `copyIndex()`-Funktion gibt die aktuelle Iteration in der Schleife zurück. Verwenden Sie den Index als Namenspräfix. `copyIndex()` ist nullbasiert. Zum Versetzen des Indexwerts können Sie einen Wert in der copyIndex()-Funktion übergeben. Beispiel: *copyIndex(1)*.
 3. Löschen Sie das **variables**-Element, da es nicht mehr verwendet wird.
-4. Löschen Sie das **outputs**-Element.
+4. Löschen Sie das **outputs**-Element. Es wird nicht mehr benötigt.
 
 Die fertige Vorlage sieht folgendermaßen aus:
 

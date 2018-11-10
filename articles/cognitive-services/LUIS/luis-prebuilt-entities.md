@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 10/18/2018
 ms.author: diberry
-ms.openlocfilehash: 2f7c724b14efd569a5993f9a9319c9004874bc43
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 0fe9dbed302fd2d61305167a3bda25b1b403b761
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49647594"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50139973"
 ---
 # <a name="prebuilt-entities-to-recognize-common-data-types"></a>Vordefinierte Entitäten zum Erkennen allgemeiner Datentypen
 
@@ -25,7 +25,7 @@ LUIS umfasst eine Reihe von vordefinierten Entitäten zur Erkennung allgemeiner 
 
 1. Öffnen Sie Ihre App, indem Sie auf der Seite **Meine Apps** auf ihren Namen und anschließend links auf **Entitäten** klicken. 
 
-1. Klicken Sie auf der Seite **Entitäten** auf **Manage prebuilt entities** (Vordefinierte Entitäten verwalten).
+1. Klicken Sie auf der Seite **Entitäten** auf **Add prebuilt entity** (Vordefinierte Entität hinzufügen).
 
 1. Wählen Sie im Dialogfeld **Add prebuilt entities** (Vordefinierte Entitäten hinzufügen) die vordefinierte Entität „datetimeV2“ aus. 
 

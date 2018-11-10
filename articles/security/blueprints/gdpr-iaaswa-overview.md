@@ -8,19 +8,19 @@ ms.service: security
 ms.topic: article
 ms.date: 05/14/2018
 ms.author: jomolesk
-ms.openlocfilehash: 509c33f2774e2d16bb8a96c50d1fb53962578dee
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: f5f04fdaa12c716b21bafcc0abccc719428fe791
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49409321"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51242074"
 ---
 # <a name="azure-security-and-compliance-blueprint---iaas-web-application-for-gdpr"></a>Azure Security and Compliance Blueprint – IaaS-Webanwendungen gemäß DSGVO
 
 ## <a name="overview"></a>Übersicht
 Die Datenschutz-Grundverordnung (DSGVO) enthält viele Anforderungen für das Sammeln, Speichern und Verwenden personenbezogener Daten. Diese umfassen auch das Identifizieren und Schützen dieser Daten durch Organisationen, die Einhaltung der Transparenzanforderungen, das Erkennen und Melden von Sicherheitsverletzungen im Zusammenhang mit personenbezogenen Daten sowie das Schulen von Datenschutzbeauftragten und anderen Mitarbeitern. Die DSGVO bietet Einzelpersonen mehr Kontrolle über ihre persönlichen Daten und ist mit vielen neuen Pflichten für Organisationen verbunden, die personenbezogene Daten sammeln, verarbeiten oder analysieren. Die DSGVO enthält neue Vorschriften für Organisationen, die Menschen in der Europäischen Union (EU) Waren und Dienstleistungen anbieten oder Daten in Bezug auf EU-Bürger sammeln und analysieren. Die DSGVO gilt unabhängig vom Standort der Organisation.
 
-Microsoft hat Azure basierend auf branchenweit führenden Sicherheitsmaßnahmen und Datenschutzrichtlinien zum Schutz von Daten in der Cloud entwickelt, zu denen auch personenbezogene Daten gehören, die der DSGVO unterliegen. Gemäß den eigenen [Vertragsbedingungen](http://aka.ms/Online-Services-Terms) muss Microsoft die Anforderungen von datenverarbeitenden Organisationen einhalten.
+Microsoft hat Azure basierend auf branchenweit führenden Sicherheitsmaßnahmen und Datenschutzrichtlinien zum Schutz von Daten in der Cloud entwickelt, zu denen auch personenbezogene Daten gehören, die der DSGVO unterliegen. Gemäß den eigenen [Vertragsbedingungen](https://aka.ms/Online-Services-Terms) muss Microsoft die Anforderungen von datenverarbeitenden Organisationen einhalten.
 
 Dieser Azure Security and Compliance Blueprint bietet Anleitungen für die Bereitstellung einer IaaS-Umgebung (Infrastructure-as-a-Service), die für eine einfache, internetfähige Webanwendung geeignet ist. Diese Lösung zeigt Möglichkeiten, mit denen Kunden bestimmte Sicherheits- und Complianceanforderungen der DSGVO erfüllen können, und sie dient Kunden als Grundlage für das Erstellen und Konfigurieren eigener IaaS-Webanwendungslösungen in Azure. Kunden können diese Referenzarchitektur nutzen und für die Einhaltung der DSGVO den aus [vier Schritten bestehenden Prozess](https://aka.ms/gdprebook) von Microsoft befolgen:
 1. Ermitteln: Identifizieren Sie, welche personenbezogenen Daten vorhanden sind und wo sie sich befinden.

@@ -1,22 +1,21 @@
 ---
-title: Einrichten von IP-Adressen für das Verbinden mit Azure nach einem Failover mit Azure Site Recovery | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie IP-Adressen für die Verbindung mit Azure-VMs nach einem Failover von lokalen Computern mit Azure Site Recovery einrichten.
+title: Einrichten von IP-Adressen für das Verbinden nach einer Notfallwiederherstellung und einem Failover in Azure mit Azure Site Recovery | Microsoft-Dokumentation
+description: Hier erfahren Sie, wie Sie IP-Adressen für die Verbindung mit virtuellen Azure-Computern nach einer Notfallwiederherstellung und einem Failover von lokalen Computern mit Azure Site Recovery einrichten.
 services: site-recovery
-documentationcenter: ''
 author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: mayg
-ms.openlocfilehash: 9b7797ba58a44e64460f4dbc58d562b4c470c043
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: ce7e5fde60503a969b88892be890173861fb15be
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353086"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50215224"
 ---
-# <a name="set-up-ip-addressing-to-connect-after-failover-to-azure"></a>Einrichten von IP-Adressen für Verbindungen mit Azure nach einem Failover
+# <a name="set-up-ip-addressing-to-connect-to-azure-vms-after-failover"></a>Einrichten von IP-Adressen für Verbindungen mit virtuellen Azure-Computern nach einem Failover
 
 In diesem Artikel werden die Netzwerkanforderungen für die Verbindung mit Azure-VMs erläutert, nachdem der Service [Azure Site Recovery](site-recovery-overview.md) für die Replikation und das Failover zu Azure verwendet wird.
 

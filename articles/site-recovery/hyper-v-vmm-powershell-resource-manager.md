@@ -1,6 +1,6 @@
 ---
-title: Replizieren von Hyper-V-VMs in Virtual Machine Manager-Clouds an einen sekundären Standort mithilfe von PowerShell (Azure Resource Manager) | Microsoft-Dokumentation
-description: In diesem Artikel wird beschrieben, wie Sie Hyper-V-VMs in Virtual Machine Manager-Clouds mit PowerShell (Resource Manager) an einen sekundären Virtual Machine Manager-Standort replizieren.
+title: Einrichten der Notfallwiederherstellung von Hyper-V-VMs in VMM-Clouds in einem sekundären Standort mit Azure Site Recovery und PowerShell | Microsoft-Dokumentation
+description: Dieser Artikel beschreibt, wie Sie die Notfallwiederherstellung von Hyper-V-VMs, die sich in VMM-Clouds befinden, in einem sekundären VMM-Standort mithilfe von Azure Site Recovery und PowerShell einrichten.
 services: site-recovery
 author: sujayt
 manager: rochakm
@@ -8,14 +8,14 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: sutalasi
-ms.openlocfilehash: 896b3cb3c40673dfbc7269cab1d37790f78912b0
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 6ade1d584fad05e33a72a0ff5099378a9cf7f29f
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48041355"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50214578"
 ---
-# <a name="replicate-hyper-v-vms-to-a-secondary-site-by-using-powershell-resource-manager"></a>Replizieren von Hyper-V-VMs an einen sekundären Standort mithilfe von PowerShell (Resource Manager)
+# <a name="set-up-disaster-recovery-of-hyper-v-vms-to-a-secondary-site-by-using-powershell-resource-manager"></a>Einrichten der Notfallwiederherstellung von Hyper-V-VMs in einen sekundären Standort mithilfe von PowerShell (Resource Manager)
 
 In diesem Artikel wird beschrieben, wie Sie die Schritte für die Replikation von Hyper-V-VMs in System Center Virtual Machine Manager-Clouds in eine Virtual Machine Manager-Cloud an einem sekundären lokalen Standort mit [Azure Site Recovery](site-recovery-overview.md) automatisieren.
 

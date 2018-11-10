@@ -8,12 +8,12 @@ services: mariadb
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 13d1353b0f8b3320972973d428f4aedb0fb68ac8
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: f75b3e33cbd5719211bb30b22ab8d53c344b5579
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46990687"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212759"
 ---
 # <a name="how-to-configure-azure-database-for-mariadb-data-in-replication"></a>Gewusst wie: Konfigurieren der Datenreplikation in Azure Database for MariaDB
 
@@ -62,7 +62,7 @@ Mit den folgenden Schritten wird der MariaDB-Server, der lokal, auf einem virtue
 
    Erstellen Sie ein Benutzerkonto auf dem Masterserver, der mit Replikationsberechtigungen konfiguriert ist. Dies kann über SQL-Befehle oder ein Tool wie MySQL Workbench erfolgen. Treffen Sie die Entscheidung, ob Sie eine Replikation mit SSL durchführen möchten, da dies bei der Erstellung des Benutzers angegeben werden muss. Wie [Benutzerkonten Ihrem Masterserver hinzugefügt werden](https://mariadb.com/kb/en/library/create-user/), erfahren Sie in der MariaDB-Dokumentation. 
 
-   In den unten aufgeführten Befehlen kann die neu erstellte Replikationsrolle nicht nur vom Computer, auf dem der Masterserver selbst gehostet wird, auf den Masterserver zugreifen, sondern von jedem Computer aus. Hierfür muss „syncuser@'%'“ im Befehl zum Erstellen von Benutzern angegeben werden. Weitere Informationen finden Sie in der MariaDB-Dokumentation unter [Specifying Account Names](https://mariadb.com/kb/en/library/create-user/#account-names) (Angeben von Kontonamen).
+   In den unten aufgeführten Befehlen kann die neu erstellte Replikationsrolle nicht nur vom Computer, auf dem der Masterserver selbst gehostet wird, auf den Masterserver zugreifen, sondern von jedem Computer aus. Hierfür muss „syncuser\@'%'“ im Befehl zum Erstellen von Benutzern angegeben werden. Weitere Informationen finden Sie in der MariaDB-Dokumentation unter [Specifying Account Names](https://mariadb.com/kb/en/library/create-user/#account-names) (Angeben von Kontonamen).
 
    **SQL-Befehl**
 

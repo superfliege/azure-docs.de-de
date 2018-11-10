@@ -1,6 +1,6 @@
 ---
-title: Senden von Metriken des Gastbetriebssystems an den klassischen Clouddienst des Azure Monitor-Metrikspeichers
-description: Senden von Metriken des Gastbetriebssystems an den klassischen Clouddienst des Azure Monitor-Metrikspeichers
+title: Senden von Metriken des Gastbetriebssystems an den Azure Monitor-Metrikspeicher – Cloud Services (klassisch)
+description: Senden von Metriken des Gastbetriebssystems an den Azure Monitor-Metrikspeicher (Cloud Services)
 author: anirudhcavale
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,36 +8,37 @@ ms.topic: howto
 ms.date: 09/24/2018
 ms.author: ancav
 ms.component: metrics
-ms.openlocfilehash: be27ff3f8dda3209a011c3ad79d1a7a1f1d259fe
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 30b08062aa360c4a43dc1bfe9f574447b58521f5
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46986913"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50095210"
 ---
-# <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-classic-cloud-service"></a>Senden von Metriken des Gastbetriebssystems an den klassischen Clouddienst des Azure Monitor-Metrikspeichers
+# <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-classic-cloud-services"></a>Senden von Metriken des Gastbetriebssystems an den Azure Monitor-Metrikspeicher – Cloud Services (klassisch) 
+Die [Diagnoseerweiterung](azure-diagnostics.md) von Azure Monitor ermöglicht es Ihnen, Metriken und Protokolle von einem Gastbetriebssystem zu erfassen, das als Teil eines virtuellen Computers, eines Clouddiensts oder eines Service Fabric-Clusters ausgeführt wird. Die Erweiterung kann Telemetriedaten an [viele verschiedene Orte](https://docs.microsoft.com/azure/monitoring/monitoring-data-collection?toc=/azure/azure-monitor/toc.json) senden.
 
-Die [Windows Azure-Diagnoseerweiterung](azure-diagnostics.md) (WAD) von Azure Monitor ermöglicht es Ihnen, Metriken und Protokolle vom Gastbetriebssystem zu erfassen, das als Teil eines virtuellen Computers, eines Clouddiensts oder eines Service Fabric-Clusters ausgeführt wird.  Die Erweiterung kann Telemetriedaten an viele verschiedene Standorte senden, die im zuvor verlinkten Artikel aufgeführt sind.  
+In diesem Artikel erfahren Sie, wie Sie Leistungsmetriken des Gastbetriebssystems für klassische Azure-Clouddienste an den Azure Monitor-Metrikspeicher senden. Ab Version 1.11 der Diagnoseerweiterung können Sie Metriken direkt in den Azure Monitor-Metrikspeicher schreiben, in dem bereits Metriken der Standardplattformen gesammelt werden. 
 
-In diesem Artikel wird der Prozess zum Senden von Leistungsmetriken des Gastbetriebssystems für klassische Azure-Clouddienste an den Azure Monitor-Metrikspeicher beschrieben. Ab WAD Version 1.11 können Sie Metriken direkt in den Azure Monitor-Metrikspeicher schreiben, in dem bereits Metriken der Standardplattformen gesammelt werden. Wenn Sie sie an dieser Position speichern, können Sie auf die gleichen Aktionen zugreifen, die auch für Plattformmetriken verfügbar sind.  Zu den Maßnahmen gehören zeitnahe Benachrichtigung, Diagrammerstellung, Routing, Zugriff über die REST-API und vieles mehr.  In der Vergangenheit hat die WAD-Erweiterung in Azure Storage geschrieben, aber nicht der Azure Monitor-Datenspeicher.  
+Durch die Speicherung an diesem Ort stehen Ihnen die gleichen Aktionen zur Verfügung, die auch für Plattformmetriken verfügbar sind. Dazu zählen unter anderem zeitnahe Benachrichtigungen, Diagrammerstellung, Routing und Zugriff über eine REST-API.  In der Vergangenheit hat die Diagnoseerweiterung zwar in Azure Storage geschrieben, aber nicht in den Azure Monitor-Datenspeicher.  
 
-Der in diesem Artikel beschriebene Prozess funktioniert nur für Leistungsindikatoren für Azure Cloud Services. Er funktioniert nicht für andere benutzerdefinierte Metriken. 
+Der in diesem Artikel beschriebene Prozess funktioniert nur mit Leistungsindikatoren in Azure Cloud Services. Er kann nicht für andere benutzerdefinierte Metriken verwendet werden. 
    
 
-## <a name="pre-requisites"></a>Voraussetzungen
+## <a name="prerequisites"></a>Voraussetzungen
 
-- Sie müssen ein [Dienstadministrator oder Co-Administrator](https://docs.microsoft.com/azure/billing/billing-add-change-azure-subscription-administrator.md) für Ihr Azure-Abonnement sein. 
+- Sie müssen [Dienstadministrator oder Co-Administrator](https://docs.microsoft.com/azure/billing/billing-add-change-azure-subscription-administrator.md) für Ihr Azure-Abonnement sein. 
 
-- Ihr Abonnement muss mit [Microsoft.Insights](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-6.8.1) registriert werden. 
+- Ihr Abonnement muss bei [Microsoft.Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services#portal) registriert sein. 
 
-- Sie müssen entweder [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-6.8.1) installiert haben, oder Sie können [Azure CloudShell](https://docs.microsoft.com/azure/cloud-shell/overview.md) verwenden. 
+- Bei Ihnen muss entweder [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-6.8.1) oder [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) installiert sein.
 
 
-## <a name="provision-cloud-service-and-storage-account"></a>Bereitstellung von Clouddienst und Speicherkonto 
+## <a name="provision-a-cloud-service-and-storage-account"></a>Bereitstellen eines Clouddiensts und eines Speicherkontos 
 
-1. Erstellen Sie einen klassischen Clouddienst, und stellen Sie ihn bereit (ein Beispiel einer klassischen Clouddienst-Anwendung und -Bereitstellung finden Sie [hier](../cloud-services/cloud-services-dotnet-get-started.md)). 
+1. Erstellen Sie einen klassischen Clouddienst, und stellen Sie ihn bereit. Eine exemplarische klassische Clouddienstanwendung und -bereitstellung finden Sie unter [Erste Schritte mit Azure-Clouddiensten und ASP.NET](../cloud-services/cloud-services-dotnet-get-started.md). 
 
-2. Sie können ein vorhandenes Speicherkonto verwenden oder ein neues Speicherkonto bereitstellen. Es wird empfohlen, dass sich das Speicherkonto in derselben Region wie der klassische Clouddienst befindet, den Sie gerade erstellt haben. Navigieren Sie im Azure-Portal zum Ressourcenblatt „Speicherkonto“ und wählen Sie die **Schlüssel** aus. Notieren Sie sich den Namen und den Schlüssel des Speicherkonto, die Sie in späteren Schritten benötigen.
+2. Sie können ein vorhandenes Speicherkonto verwenden oder ein neues Speicherkonto bereitstellen. Das Speicherkonto sollte sich idealerweise in der gleichen Region befinden wie der klassische Clouddienst, den Sie erstellt haben. Navigieren Sie im Azure-Portal zum Ressourcenblatt **Speicherkonten**, und wählen Sie **Schlüssel** aus. Notieren Sie sich den Speicherkontonamen und den Speicherkontoschlüssel. Sie benötigen diese Informationen in den späteren Schritten.
 
    ![Speicherkontoschlüssel](./media/metrics-store-custom-guestos-classic-cloud-service/storage-keys.png)
 
@@ -45,19 +46,20 @@ Der in diesem Artikel beschriebene Prozess funktioniert nur für Leistungsindika
 
 ## <a name="create-a-service-principal"></a>Erstellen eines Dienstprinzipals 
 
-Erstellen Sie einen Dienstprinzipal in Ihrem Azure Active Directory-Mandanten unter Verwendung der Anweisungen unter ../azure/azure/azure-resource-manager/resource-group-create-service-principal-portal. Beachten Sie Folgendes, während Sie diesen Prozess durchlaufen: 
-  - Sie können eine beliebige URL für die Anmelde-URL eingeben.  
-  - Erstellen Sie einen neuen geheimen Client für diese App.  
+Erstellen Sie anhand der Anleitung unter [Erstellen einer Azure Active Directory-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff mithilfe des Portals](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal) einen Dienstprinzipal in Ihrem Azure Active Directory-Mandanten. Beachten Sie dabei Folgendes: 
+
+  - Sie können für die Anmelde-URL eine beliebige URL eingeben.  
+  - Erstellen Sie einen neuen geheimen Clientschlüssel für diese App.  
   - Speichern Sie den Schlüssel und die Client-ID für die Verwendung in späteren Schritten.  
 
-Erteilen Sie der App, die im vorherigen Schritt *Herausgeber von Überwachungsmetriken* erstellt wurde, Berechtigungen für die Ressource, für die Sie Metriken ausgeben möchten. Wenn Sie planen, die App zu verwenden, um benutzerdefinierte Metriken für viele Ressourcen auszugeben, können Sie diese Berechtigungen auf der Ebene der Ressourcengruppe oder des Abonnements vergeben.  
+Erteilen Sie der im vorherigen Schritt erstellten App Berechtigungen vom Typ *Überwachungsmetriken veröffentlichen* für die Ressource, für die Sie Metriken ausgeben möchten. Wenn Sie planen, die App zu verwenden, um benutzerdefinierte Metriken für viele Ressourcen auszugeben, können Sie diese Berechtigungen auf der Ebene der Ressourcengruppe oder des Abonnements vergeben.  
 
 > [!NOTE]
-> Die Diagnoseerweiterung verwendet den Dienstprinzipal, um sich gegenüber Azure Monitor zu authentifizieren und Metriken für Ihren Clouddienst auszugeben. 
+> Die Diagnoseerweiterung verwendet den Dienstprinzipal, um sich gegenüber Azure Monitor zu authentifizieren und Metriken für Ihren Clouddienst auszugeben.
 
 ## <a name="author-diagnostics-extension-configuration"></a>Erstellen der Konfiguration der Diagnoseerweiterung 
 
-Bereiten Sie Ihre Konfigurationsdatei für die WAD-Diagnoseerweiterung vor. Diese Datei bestimmt, welche Protokolle und Leistungsindikatoren die Diagnoseerweiterung für Ihren Clouddienst sammeln soll. Nachfolgend finden Sie eine Beispieldatei für die Diagnosekonfiguration.  
+Bereiten Sie Ihre Konfigurationsdatei für die Diagnoseerweiterung vor. Diese Datei bestimmt, welche Protokolle und Leistungsindikatoren die Diagnoseerweiterung für Ihren Clouddienst erfassen soll. Nachfolgend finden Sie eine Beispieldatei für die Diagnosekonfiguration:  
 
 ```XML
 <?xml version="1.0" encoding="utf-8"?> 
@@ -112,15 +114,16 @@ Definieren Sie im Abschnitt „SinksConfig“ Ihrer Diagnosedatei eine neue Azur
   </SinksConfig> 
 ```
 
-Fügen Sie in dem Abschnitt Ihrer Konfigurationsdatei, in dem Sie die zu sammelnden Leistungsindikatoren auflisten, die Azure Monitor-Senke hinzu. Dieser Eintrag stellt sicher, dass alle angegebenen Leistungsindikatoren als Metriken an Azure Monitor weitergeleitet werden. Sie können Leistungsindikatoren nach Bedarf hinzufügen/entfernen. 
+Fügen Sie die Azure Monitor-Senke dem Abschnitt Ihrer Konfigurationsdatei hinzu, in dem die zu erfassenden Leistungsindikatoren aufgelistet werden. Dieser Eintrag stellt sicher, dass alle angegebenen Leistungsindikatoren als Metriken an Azure Monitor weitergeleitet werden. Sie können nach Bedarf Leistungsindikatoren hinzufügen oder entfernen. 
 
-```XML
-<PerformanceCounters scheduledTransferPeriod="PT1M" sinks="AzMonSink"> 
- <PerformanceCounterConfiguration counterSpecifier="\Processor(_Total)\% Processor Time" sampleRate="PT15S" /> 
-  … 
-</PerformanceCounters> 
+```xml
+    <PerformanceCounters scheduledTransferPeriod="PT1M" sinks="AzMonSink">
+        <PerformanceCounterConfiguration counterSpecifier="\Processor(_Total)\% Processor Time" sampleRate="PT15S" />
+    ...
+    </PerformanceCounters>
 ```
-Fügen Sie schließlich in der privaten Konfiguration den Abschnitt *Azure Monitor-Konto* hinzu. Geben Sie die Client-ID des Dienstprinzipals und den geheimen Schlüssel ein, die in einem früheren Schritt erstellt wurden. 
+
+Fügen Sie schließlich in der privaten Konfiguration den Abschnitt *Azure Monitor-Konto* hinzu. Geben Sie die Client-ID des Dienstprinzipals und das Geheimnis ein, die Sie in einem früheren Schritt erstellt haben. 
 
 ```XML
 <PrivateConfig xmlns="http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration"> 
@@ -138,51 +141,51 @@ Speichern Sie diese Diagnosedatei lokal.
 
 ## <a name="deploy-the-diagnostics-extension-to-your-cloud-service"></a>Bereitstellen der Diagnoseerweiterung für Ihren Clouddienst 
 
-Starten von PowerShell und Anmelden an Azure 
+Starten Sie PowerShell, und melden Sie sich bei Azure an. 
 
 ```PowerShell
 Login-AzureRmAccount 
 ```
 
-Speichern Sie die Details zu den in einem früheren Schritt erstellten Details des Speicherkontos mit den folgenden Befehlen in Variablen. 
+Verwenden Sie die folgenden Befehle, um die Details des zuvor erstellten Speicherkontos zu speichern: 
 
 ```PowerShell
 $storage_account = <name of your storage account from step 3> 
 $storage_keys = <storage account key from step 3> 
 ```
  
-Legen Sie ebenso den Diagnosedateipfad mit dem folgenden Befehl in einer Variablen fest. 
+Legen Sie mit dem folgenden Befehl den Diagnosedateipfad auf eine Variable fest:
 
 ```PowerShell
-$diagconfig = “<path of the diagnostics configuration file with the Azure Monitor sink configured>” 
+$diagconfig = “<path of the Diagnostics configuration file with the Azure Monitor sink configured>” 
 ```
  
-Stellen Sie die Diagnoseerweiterung mit dem nachfolgenden Befehl für Ihren Clouddienst mit der Diagnosedatei mit der konfigurierten Azure Monitor-Senke bereit. 
+Stellen Sie die Diagnoseerweiterung mithilfe des folgenden Befehls unter Verwendung der Diagnosedatei mit der konfigurierten Azure Monitor-Senke für Ihren Clouddienst bereit:  
 
 ```PowerShell
 Set-AzureServiceDiagnosticsExtension -ServiceName <classicCloudServiceName> -StorageAccountName $storage_account -StorageAccountKey $storage_keys -DiagnosticsConfigurationPath $diagconfig 
 ```
  
 > [!NOTE] 
-> Sie müssen im Rahmen der Installation der Diagnoseerweiterung weiterhin ein Speicherkonto angeben. Alle Protokolle und/oder Leistungsindikatoren, die in der Diagnosekonfigurationsdatei angegeben sind, werden in das angegebene Speicherkonto geschrieben.  
+> Im Rahmen der Installation der Diagnoseerweiterung muss weiterhin ein Speicherkonto angegeben werden. Alle Protokolle und/oder Leistungsindikatoren, die in der Diagnosekonfigurationsdatei angegeben sind, werden in das angegebene Speicherkonto geschrieben.  
 
 ## <a name="plot-metrics-in-the-azure-portal"></a>Darstellen von Metriken im Azure-Portal 
 
-Navigieren Sie zum Azure-Portal. 
+1. Öffnen Sie das Azure-Portal. 
 
- ![Metriken – Azure-Portal](./media/metrics-store-custom-guestos-classic-cloud-service/navigate-metrics.png)
+   ![Metriken – Azure-Portal](./media/metrics-store-custom-guestos-classic-cloud-service/navigate-metrics.png)
 
-1. Klicken Sie im linken Menü auf „Überwachen“. 
+2. Wählen Sie im Menü auf der linken Seite **Monitor** aus.
 
-1. Klicken Sie auf dem Blatt „Überwachen“ auf die Registerkarte „Metriken (Vorschau)“. 
+3. Wählen Sie auf dem Blatt **Monitor** die Registerkarte **Metriken (Vorschau)** aus.
 
-1. Wählen Sie in der Dropdownliste der Ressourcen Ihren klassischen Clouddienst aus. 
+4. Wählen Sie im Dropdownmenü mit den Ressourcen Ihren klassischen Clouddienst aus.
 
-1. Wählen Sie in der Dropdownliste der Namespaces **azure.vm.windows.guest** aus. 
+5. Wählen Sie im Dropdownmenü mit den Namespaces **azure.vm.windows.guest** aus. 
 
-1. Wählen Sie in der Dropdownliste der Metriken *Arbeitsspeicher\Verwendete zugesicherte Bytes* aus. 
+6. Wählen Sie im Dropdownmenü mit den Metriken **Arbeitsspeicher\Verwendete zugesicherte Bytes** aus. 
 
-Sie können wählen, ob Sie den gesamten von einer bestimmten Rolle und den einzelnen Rolleninstanzen verwendeten Arbeitsspeicher anzeigen möchten, indem Sie die Funktionen zum Filtern und Aufteilen von Dimensionen verwenden. 
+Mithilfe der Funktionen zum Filtern und Aufteilen von Dimensionen können Sie den gesamten Arbeitsspeicher anzeigen, der von einer bestimmten Rolle oder Rolleninstanz verwendet wird. 
 
  ![Metriken – Azure-Portal](./media/metrics-store-custom-guestos-classic-cloud-service/metrics-graph.png)
 

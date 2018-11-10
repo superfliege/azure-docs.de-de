@@ -1,5 +1,5 @@
 ---
-title: Azure Monitor for VMs – bekannte Probleme | Microsoft-Dokumentation
+title: 'Azure Monitor für VMs (Vorschauversion): bekannte Probleme | Microsoft-Dokumentation'
 description: Azure Monitor for VMs ist eine Lösung in Azure, die Integritäts- und Leistungsüberwachung des Azure VM-Betriebssystems mit der automatischen Erkennung von Anwendungskomponenten und Abhängigkeiten mit anderen Ressourcen kombiniert und die Kommunikation unter ihnen als Zuordnung darstellt. In diesem Artikel werden bekannte Probleme behandelt.
 services: azure-monitor
 documentationcenter: ''
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/15/2018
+ms.date: 10/25/2018
 ms.author: magoedte
-ms.openlocfilehash: 6d1f1d1ae07ec32262f655fd6ed7205a70e252f4
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: eba9e26f12fd9e1862727adec4f8c8f594e8f659
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49385090"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50091673"
 ---
-# <a name="known-issues-with-azure-monitor-for-vms"></a>Bekannte Probleme bei Azure Monitor for VMs
+# <a name="known-issues-with-azure-monitor-for-vms-preview"></a>Bekannte Probleme bei Azure Monitor für VMs (Vorschauversion)
 
 Die folgende Aufstellung enthält bekannte Probleme beim Integritätsfeature von Azure Monitor for VMs:
 

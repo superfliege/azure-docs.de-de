@@ -3,21 +3,21 @@ title: Einrichten einer Gerätevorlage in einer Azure IoT Central-Anwendung | Mi
 description: Informationen zum Einrichten einer Gerätevorlage mit Messungen, Einstellungen, Eigenschaften, Regeln und Dashboard.
 author: viv-liu
 ms.author: viviali
-ms.date: 04/16/2018
+ms.date: 10/26/2018
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: a076ee5275a4d053613902a1980542590263385c
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 61bc9da45ac420e5683be1ea3ad253eae9c0ba5a
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47034273"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50158940"
 ---
 # <a name="set-up-a-device-template"></a>Einrichten einer Gerätevorlage
 
-Eine Gerätevorlage ist eine Blaupause zur Definition der Merkmale und Verhaltensweisen eines Gerätetyps, der eine Verbindung mit einer Microsoft Azure IoT Central-Anwendung herstellt.
+Eine Gerätevorlage ist eine Blaupause, die die Merkmale und das Verhalten eines Gerätetyps definiert, der eine Verbindung mit einer Azure IoT Central-Anwendung herstellt.
 
 Beispielsweise kann ein Hersteller eine Gerätevorlage für einen mit IoT verbundenen Lüfter mit folgenden Merkmalen erstellen:
 
@@ -46,7 +46,7 @@ Anhand dieser Gerätevorlage kann ein Operator reale Lüftergeräte mit Namen wi
 
 2. Wählen Sie zum Erstellen einer leeren Vorlage **Gerätevorlage erstellen** und dann **Benutzerdefiniert** aus.
 
-3. Geben Sie einen Namen für Ihre neue Gerätevorlage ein, und wählen Sie **Erstellen** aus.
+3. Geben Sie einen Namen für Ihre neue Gerätevorlage ein (beispielsweise „Refrigerator-1“), und wählen Sie **Erstellen** aus.
 
    ![Seite mit Gerätedetails mit „Refrigerator“ als Name der Vorlage](./media/howto-set-up-template/devicedetailspage.png)
 
@@ -66,16 +66,20 @@ Messungen sind die Daten, die von Ihrem Gerät stammen. Sie können Ihrer Gerät
 Klicken Sie zum Hinzufügen neuer Telemetriemessung auf **Vorlage bearbeiten**, und klicken Sie dann auf die Schaltfläche **+ New Measurement** (+ Neue Messung). Wählen Sie als Messungstyp **Telemetrie** aus, und geben Sie die Details im Formular **Telemetrie erstellen** ein.
 
 > [!NOTE]
-> Wenn ein echtes Gerät verbunden ist, achten Sie auf den Namen der vom Gerät gemeldeten Messung. Der Name muss mit dem Eintrag **Feldname** einer Messung genau übereinstimmen.
+> Die Feldnamen in der Gerätevorlage müssen mit den Eigenschaftennamen im entsprechenden Gerätecode übereinstimmen, damit die Telemetriemessung in der Anwendung angezeigt werden, wenn ein echtes Gerät verbunden ist. Gehen Sie beim Konfigurieren von Einstellungen, Geräteeigenschaften und Befehlen auf die gleiche Weise vor, wenn Sie die Gerätevorlage in den folgenden Abschnitten weiter definieren.
 
 Beispielsweise können Sie eine neue Temperaturtelemetriemessung hinzufügen:
+| Anzeigename        | Feldname    |  Units    | Min   |max|
+| --------------------| ------------- |-----------|-------|---|
+| Temperatur         | temp          |  degC     |  0    |100|
 
 ![Formular „Telemetrie erstellen“ mit Details zur Temperaturmessung](./media/howto-set-up-template/measurementsform.png)
 
-Nachdem Sie auf **Fertig** geklickt haben, wird die Messung **Temperatur** in der Liste der Messungen angezeigt. Ein Bediener kann die Visualisierung der vom Gerät erfassten Temperaturdaten einsehen.
+Nachdem Sie auf **Fertig** geklickt haben, wird die Messung **Temperatur** in der Liste der Messungen angezeigt. In Kürze sehen Sie die Visualisierung der Temperaturdaten, die das simulierte Gerät generiert hat. Wenn Sie eine Gerätevorlage erstellen, wird auf der Grundlage der Vorlage ein simuliertes Gerät generiert, mit dem Sie das Verhalten Ihrer Anwendung testen können, bevor eine Verbindung mit einem physischen/echten Gerät hergestellt wird.
+
 
 > [!NOTE]
-  Die Telemetriemessung gibt Daten vom Typ „double“ aus.
+  Die Telemetriemessung gibt Daten als Gleitkommazahl aus.
 
 ### <a name="create-an-event-measurement"></a>Erstellen einer Ereignismessung
 Klicken Sie zum Hinzufügen neuer Ereignismessung auf **Vorlage bearbeiten**, und klicken Sie dann auf die Schaltfläche **+ New Measurement** (+ Neue Messung). Wählen Sie als Messungstyp **Ereignis**, und geben Sie die Details im Formular **Ereignis erstellen** ein.
@@ -83,6 +87,10 @@ Klicken Sie zum Hinzufügen neuer Ereignismessung auf **Vorlage bearbeiten**, un
 Geben Sie in diesem Formular den **Anzeigenamen**, **Feldnamen** und Details zum **Schweregrad** des Ereignisses an. Ihnen stehen die drei verfügbare Schweregrade zur Auswahl: **Fehler**, **Warnung** und **Information**.  
 
 Beispielsweise können Sie das neue Ereignis **Lüftermotorfehler** hinzufügen.
+
+| Anzeigename        | Feldname    |  Standardschweregrad | 
+| --------------------| ------------- |-----------|
+| Fan Motor Error     | fanmotorerror |  Error    | 
 
 ![Formular „Ereignis erstellen“ mit Details zu einem Lüftermotorereignis](./media/howto-set-up-template/eventmeasurementsform.png)
 
@@ -104,6 +112,11 @@ Geben Sie in diesem Formular den **Anzeigenamen**, **Feldnamen** und **Werte** f
 
 Sie können z.B. den neuen Zustand **Lüftermodus** hinzufügen, der zwei mögliche Werte hat, die vom Gerät gesendet werden können: **In Betrieb** und **Angehalten**.
 
+
+| Anzeigename | Feldname    |  Wert 1   | Anzeigename | Wert 2    |Anzeigename  | 
+| -------------| ------------- |----------- | -------------| -----------| -------------|
+| Fan Mode     | fanmode       |  1         | Operating    |     0      | Beendet      |
+
 ![Formular „Zustand bearbeiten“ mit Details zum Lüftermodus](./media/howto-set-up-template/statemeasurementsform.png)
 
 Nachdem Sie auf **Fertig** geklickt haben, wird die Messung **Lüftermodus** in der Liste der Messungen angezeigt. Der Bediener kann die Visualisierung der vom Gerät gesendeten Zustandsdaten einsehen.
@@ -117,10 +130,7 @@ Wenn das Gerät in einer kleinen Zeitspanne zu viele Datenpunkte sendet, wird di
 
 ## <a name="settings"></a>Einstellungen
 
-Ein Gerät wird durch Einstellungen gesteuert. Diese ermöglichen den Operatoren Ihrer Anwendung die Angabe von Eingaben für das Gerät. Sie können Ihrer Gerätevorlage mehrere Einstellungen hinzufügen, die auf der Registerkarte **Einstellungen** als Kacheln angezeigt und von Operatoren verwendet werden können. Sie können sechs Typen von Einstellungen hinzufügen: Drehzahl, Text, Datum, Ein-/Ausschalten, Auswahlliste und Abschnittsbezeichnung.
-
-> [!NOTE]
-> Wenn ein echtes Gerät verbunden ist, achten Sie auf den Namen der vom Gerät gemeldeten Einstellung. Der Name muss mit dem Eintrag **Feldname** einer Einstellung genau übereinstimmen.
+Ein Gerät wird durch Einstellungen gesteuert. Diese ermöglichen den Operatoren Ihrer Anwendung die Angabe von Eingaben für das Gerät. Sie können Ihrer Gerätevorlage mehrere Einstellungen hinzufügen, die auf der Registerkarte **Einstellungen** als Kacheln angezeigt und von Operatoren verwendet werden können. Sie können verschiedene Arten von Einstellungen hinzufügen: Drehzahl, Text, Datum, Ein-/Ausschalten, Auswahlliste und Abschnittsbezeichnung. 
 
 Einstellungen können einen von drei Zuständen aufweisen. Das Gerät meldet diese Zustände.
 
@@ -130,29 +140,34 @@ Einstellungen können einen von drei Zuständen aufweisen. Das Gerät meldet die
 
 - **Fehler**: Das Gerät hat einen Fehler zurückgegeben.
 
-Sie können zum Beispiel eine neue Einstellung für die Lüfterdrehzahl hinzufügen, indem Sie auf **Vorlage bearbeiten** klicken und die neue Einstellung eingeben:
+Sie können zum Beispiel eine neue Einstellung für die Lüfterdrehzahl hinzufügen, indem Sie auf **Vorlage bearbeiten** klicken und die neue Einstellung für die **Drehzahl** eingeben:
+
+| Anzeigename  | Feldname    |  Units  | Dezimalstellen |Initial|
+| --------------| ------------- |---------| ---------|---- |
+| Lüfterdrehzahl     | fanSpeed      | U/Min     | 2        | 0   |
 
 ![Formular „Drehzahl konfigurieren“ mit Details zu Geschwindigkeitseinstellungen](./media/howto-set-up-template/settingsform.png)
 
 Nachdem Sie auf **Speichern** geklickt haben, wird die Einstellung **Lüfterdrehzahl** als Kachel angezeigt und kann verwendet werden, um die Lüfterdrehzahl des Geräts zu ändern.
 
-Nachdem Sie eine Kachel erstellt haben, können Sie Ihre neue Einstellung ausprobieren. Klicken Sie zunächst rechts oben auf dem Bildschirm auf **Fertig**.
+Klicken nach Erstellung einer Kachel rechts oben auf dem Bildschirm auf **Fertig**. Wenn das echte Gerät mit der Anwendung verbunden wird, ändert sich der Einstellungswert in „Synchronisiert“.
 
 ![Registerkarte „Einstellungen“ mit dem Schalter „Entwurfsmodus“ für die Kachel](./media/howto-set-up-template/settingstile.png)
 
 ## <a name="properties"></a>Eigenschaften
 
-Eigenschaften sind die dem Gerät zugeordneten Gerätemetadaten, z.B. Gerätestandort und Seriennummer. Sie können Ihrer Gerätevorlage mehrere Eigenschaften hinzufügen, die auf der Registerkarte **Eigenschaften** als Kacheln angezeigt werden. Ein Bediener kann die Werte für Eigenschaften beim Erstellen eines neuen Geräts angeben und sie anschließend jederzeit bearbeiten. Sie können sechs Typen von Eigenschaften hinzufügen: Drehzahl, Text, Datum, Ein-/Ausschalten, Geräteeigenschaft und Bezeichnung.
+Eigenschaften sind die dem Gerät zugeordneten Gerätemetadaten, z.B. Gerätestandort und Seriennummer. Sie können Ihrer Gerätevorlage mehrere Eigenschaften hinzufügen, die auf der Registerkarte **Eigenschaften** als Kacheln angezeigt werden. Sie können verschiedene Arten von Eigenschaften hinzufügen: Drehzahl, Text, Datum, Ein-/Ausschalten, Geräteeigenschaft, Bezeichnung und Standort. Ein Bediener kann die Werte für Eigenschaften beim Erstellen eines neuen Geräts angeben und sie anschließend jederzeit bearbeiten. Geräteeigenschaften sind jedoch schreibgeschützt. Sie werden vom Gerät an die Anwendung gesendet und können vom Bediener nicht geändert werden. Wenn das echte Gerät verbunden wird, wird die Kachel für die Geräteeigenschaften in der Anwendung aktualisiert. 
 
 Es gibt zwei Kategorien von Eigenschaften:
 
-- Eigenschaften des **Geräts**, die das Gerät meldet.
-- Eigenschaften der **Anwendung**, die ausschließlich in der Anwendung gespeichert werden. Das Gerät erkennt keine Anwendungseigenschaften.
+- **Geräteeigenschaften** werden vom Gerät an die IoT Central-Anwendung gemeldet. Hierbei handelt es sich um schreibgeschützte Werte, die vom Gerät gemeldet und in der Anwendung aktualisiert werden, wenn das echte Gerät verbunden wird. 
+- **Anwendungseigenschaften** werden ausschließlich in der Anwendung gespeichert und können vom Bediener bearbeitet werden. Das Gerät erkennt keine Anwendungseigenschaften.
 
-> [!NOTE]
-> Wenn ein echtes Gerät verbunden ist, achten Sie bei den Geräteeigenschaften auf den Namen der vom Gerät gemeldeten Eigenschaft. Der Name muss mit dem Eintrag **Feldname** der Eigenschaft genau übereinstimmen. Bei den Anwendungseigenschaften kann der Feldname einen beliebigen Wert aufweisen, solange er in der Gerätevorlage eindeutig ist.
+Sie können zum Beispiel den Gerätestandort als neue Eigenschaft vom Typ **Text** (eine Anwendungseigenschaft) hinzufügen, indem Sie auf **Vorlage bearbeiten** klicken und die neue Eigenschaft eingeben:
 
-Sie können zum Beispiel den Gerätestandort als neue Eigenschaft hinzufügen, indem Sie auf **Vorlage bearbeiten** klicken und die neue Eigenschaft eingeben:
+| Anzeigename  | Feldname | Trim Leading Spaces (Führende Leerzeichen kürzen)  | Nachgestellte Leerzeichen kürzen  | Groß- und Kleinschreibung| Min. Länge | Max. Länge |
+| --------------| -----------|---------| ---------|---- |----|----|
+| Standort      | loc        | Aus     |  Aus     | Gemischt  | 0 | 100|
 
 ![Formular „Text konfigurieren“ auf der Registerkarte „Eigenschaften“](./media/howto-set-up-template/propertiesform.png)
 
@@ -160,14 +175,14 @@ Nachdem Sie auf **Speichern** geklickt haben, wird der Gerätestandort als Kache
 
 ![Kachel „Standort“](./media/howto-set-up-template/propertiestile.png)
 
-Nach dem Erstellen einer Kachel können Sie den Wert der Eigenschaft ändern. Klicken Sie zunächst rechts oben auf dem Bildschirm auf **Fertig**.
+Nach Erstellung der Kachel können Sie den Wert der Anwendungseigenschaft ändern. Klicken Sie zunächst rechts oben auf dem Bildschirm auf **Fertig**.
 
 ### <a name="create-a-location-property-through-azure-maps"></a>Erstellen einer Standorteigenschaft über Azure Maps
 Sie können Ihre Standortdaten mit geografischem Kontext in Azure IoT Central versehen und Breiten- und Längengradkoordinaten einer Anschrift zuordnen. Oder Sie können einfach Breiten- und Längengradkoordinaten zuordnen. Azure Maps unterstützt diese Funktion in IoT Central.
 
 Sie können zwei Arten von Standorteigenschaften hinzufügen:
 - **Standort als eine Anwendungseigenschaft**, die ausschließlich in der Anwendung gespeichert wird. Das Gerät erkennt keine Anwendungseigenschaften.
-- **Standort als eine Geräteeigenschaft**, die vom Gerät gemeldet wird.
+- **Standort als eine Geräteeigenschaft**, die vom Gerät an die Anwendung gemeldet wird.
 
 #### <a name="add-location-as-an-application-property"></a>Hinzufügen eines Standorts als eine Anwendungseigenschaft 
 Sie können mithilfe von Azure Maps in Ihrer Azure IoT Central-Anwendung eine Standorteigenschaft als eine Anwendungseigenschaft erstellen. Beispielsweise können Sie die Geräteinstallationsadresse hinzufügen. 
@@ -178,6 +193,10 @@ Sie können mithilfe von Azure Maps in Ihrer Azure IoT Central-Anwendung eine St
 
 2. Wählen Sie in der Bibliothek **Standort** aus.
 3. Konfigurieren Sie den **Anzeigenamen**, **Feldnamen** und (optional) den **Anfangswert** des Standorts. 
+
+    | Anzeigename  | Feldname | Anfangswert |
+    | --------------| -----------|---------| 
+    | Installationsadresse | insta_address | Microsoft, 1 Microsoft Way, Redmond, WA 98052   |
 
    ![Formular „Standort konfigurieren“ mit Details zum Standort](./media/howto-set-up-template/locationcloudproperty2.png)
 
@@ -198,12 +217,16 @@ Sie können eine Standorteigenschaft als eine Geräteeigenschaft erstellen, die 
 2. Klicken Sie in der Bibliothek auf **Geräteeigenschaft**.
 3. Konfigurieren Sie den Anzeigenamen und den Feldnamen, und wählen Sie **Standort** als Datentyp. 
 
+    | Anzeigename  | Feldname | Datentyp |
+    | --------------| -----------|-----------| 
+    | Gerätestandort | deviceLoc| location  |
+
    > [!NOTE]
-   > Der Feldname muss mit dem Namen der Eigenschaft genau übereinstimmen, die das Gerät meldet. 
+   > Die Feldnamen müssen mit den Eigenschaftennamen im entsprechenden Gerätecode übereinstimmen.
 
    ![Formular „Geräteeigenschaften konfigurieren“ mit Details zum Standort](./media/howto-set-up-template/locationdeviceproperty2.png)
 
-Nachdem Sie nun Ihre Standorteigenschaft konfiguriert haben, können Sie [eine Karte hinzufügen, um den Standort auf dem Gerätedashboard zu visualisieren](#add-an-azure-maps-location-in-the-dashboard).
+Wenn das echte Gerät verbunden wird, wird der als Geräteeigenschaft hinzugefügte Standort mit dem vom Gerät gesendeten Wert aktualisiert. Die Installationsadresse (also der Standort, den Sie als Anwendungseigenschaft hinzugefügt haben) ist eine bearbeitbare Kachel. Nachdem Sie nun Ihre Standorteigenschaft konfiguriert haben, können Sie [eine Karte hinzufügen, um den Standort auf dem Gerätedashboard zu visualisieren](#add-an-azure-maps-location-in-the-dashboard).
 
 ## <a name="commands"></a>Befehle
 
@@ -215,15 +238,17 @@ Wie unterscheidet sich ein Befehl von einer Einstellung?
 
 * **Befehl**: Sie verwenden Befehle, um einen Befehl auf dem Gerät sofort von IoT Central aus remote auszuführen. Wenn ein Gerät nicht angeschlossen ist, wird der Befehl mit einem Fehler abgebrochen. Angenommen, Sie möchten ein Gerät neu starten.  
 
-Wenn Sie einen Befehl ausführen, kann es einen von drei Zuständen geben, je nachdem, ob das Gerät den Befehl empfangen hat.
 
 Sie können zum Beispiel einen neuen **Echo**-Befehl hinzufügen, indem Sie auf **Vorlage bearbeiten** und dann auf **+ New Command** (+ Neuer Befehl) klicken. Anschließend geben Sie den neuen Befehl ein:
 
+| Anzeigename  | Feldname | Standardzeitlimit | Datentyp |
+| --------------| -----------|---------------- | --------- | 
+| Echo-Befehl  | Echo       |  30             | text      |
+
 ![Formular „Befehl konfigurieren“ mit Details zu „Echo“](./media/howto-set-up-template/commandsecho.png)
 
-Nachdem Sie auf **Speichern** und auf **Fertig** geklickt haben, wird der Befehl **Echo** als Kachel angezeigt und kann verwendet werden, um eine Echoanforderung an das Gerät zu senden.
+Nachdem Sie auf **Speichern** und auf **Fertig** geklickt haben, wird der Befehl **Echo** als Kachel angezeigt und kann verwendet werden, um eine Echoanforderung an das Gerät zu senden, sobald Ihr echtes Gerät verbunden wird. Die Feldnamen Ihres Befehls müssen mit den Eigenschaftennamen im entsprechenden Gerätecode übereinstimmen, damit die Befehle erfolgreich ausgeführt werden können.
 
-Nachdem Sie eine Kachel erstellt haben, können Sie Ihren neuen Befehl ausprobieren.
 
 ## <a name="rules"></a>Regeln
 
@@ -233,7 +258,7 @@ Anhand von Regeln können Operatoren Geräte nahezu in Echtzeit überwachen. Reg
 
 ## <a name="dashboard"></a>Dashboard
 
-Im Dashboard findet ein Operator Informationen zu einem Gerät. Als Hersteller können Sie dieser Seite Kacheln hinzufügen, mit deren Hilfe Bediener das Verhalten des Geräts nachvollziehen können. Sie können Ihrer Gerätevorlage mehrere Dashboardkacheln hinzufügen. Sie können sechs Typen von Dashboardkacheln hinzufügen: Bild, Liniendiagramm, Balkendiagramm, KPI, Einstellungen und Eigenschaften sowie Bezeichnung.
+Im Dashboard findet ein Operator Informationen zu einem Gerät. Als Hersteller können Sie dieser Seite Kacheln hinzufügen, mit deren Hilfe Bediener das Verhalten des Geräts nachvollziehen können. Sie können Ihrer Gerätevorlage mehrere Dashboardkacheln hinzufügen. Sie können verschiedene Arten von Dashboardkacheln hinzufügen. Hierzu zählen unter anderem Bild, Liniendiagramm, Balkendiagramm, Key Performance Indicator (KPI), Einstellungen und Eigenschaften sowie Bezeichnung.
 
 Beispielsweise können Sie eine Kachel **Einstellungen und Eigenschaften** hinzufügen, um eine Auswahl der aktuellen Werte für Einstellungen und Eigenschaften anzuzeigen, indem Sie auf **Vorlage bearbeiten** klicken und die Kachel aus der Bibliothek auswählen:
 
@@ -252,7 +277,7 @@ Wenn Sie zuvor in [Erstellen einer Standorteigenschaft über Azure Maps](#create
    ![Registerkarte „Dashboard“ mit aktiviertem Entwurfsmodus](./media/howto-set-up-template/locationcloudproperty4map.png)
 
 2. Wählen Sie auf dem Gerätedashboard in der Bibliothek **Karte** aus. 
-3. Geben Sie einen Titel ein, und wählen Sie die Standorteigenschaft aus, die Sie zuvor als Teil Ihrer Geräteeigenschaften konfiguriert haben.
+3. Versehen Sie sie mit einem Titel. Im folgenden Beispiel lautet der Titel „Installation Location“. Wählen Sie anschließend die Standorteigenschaft aus, die Sie zuvor auf der Registerkarte „Eigenschaften“ konfiguriert haben. Im folgenden Beispiel wird **Installationsadresse** ausgewählt.
 
    ![Formular „Karte konfigurieren“ mit Details zu Titel und Eigenschaften](./media/howto-set-up-template/locationcloudproperty5map.png)
 

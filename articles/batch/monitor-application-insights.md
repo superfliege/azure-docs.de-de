@@ -11,12 +11,12 @@ ms.topic: article
 ms.workload: na
 ms.date: 04/05/2018
 ms.author: danlep
-ms.openlocfilehash: 5e0358ebf525c39c09df4268971fa71c02457821
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: fb0760f24b8f384818db8154ffe871d7fd4ce429
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47094192"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50138343"
 ---
 # <a name="monitor-and-debug-an-azure-batch-net-application-with-application-insights"></a>Überwachen und Debuggen einer Azure Batch-.NET-Anwendung mit Application Insights
 
@@ -25,6 +25,10 @@ ms.locfileid: "47094192"
 In diesem Artikel wird beschrieben, wie Sie die Application Insights-Bibliothek in Ihrer Azure Batch-.NET-Lösung hinzufügen und konfigurieren und den Anwendungscode instrumentieren. Zudem werden Methoden zum Überwachen Ihrer Anwendung über das Azure-Portal und Erstellen benutzerdefinierter Dashboards vorgestellt. Informationen zur Unterstützung von Application Insights in anderen Programmiersprachen finden Sie in der [Dokumentation zu Sprachen, Plattformen und Integrationen](../application-insights/app-insights-platforms.md).
 
 Für diesen Artikel ist auf [GitHub](https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/ApplicationInsights) eine begleitende C#-Beispiellösung mit Code verfügbar. In diesem Beispiel wird dem Beispiel [TopNWords](https://github.com/Azure/azure-batch-samples/tree/master/CSharp/TopNWords) Application Insights-Instrumentierungscode hinzugefügt. Falls Sie nicht mit diesem Beispiel vertraut sind, sollten Sie versuchen, zunächst TopNWords zu erstellen und auszuführen. Dadurch können Sie sich mit dem grundlegenden Batch-Workflow der parallelen Verarbeitung eines Satzes von Eingabeblobs auf mehreren Computeknoten vertraut machen. 
+
+> [!TIP]
+> Konfigurieren Sie alternativ dazu die Batch-Lösung zum Anzeigen von Application Insights-Daten (etwa VM-Leistungsindikatoren) in Batch Explorer. Der [Batch Explorer](https://github.com/Azure/BatchExplorer) ist ein kostenloses eigenständiges Clienttool mit zahlreichen Features, das Sie beim Erstellen, Debuggen und Überwachen von Azure Batch-Anwendungen unterstützt. Ein Installationspaket für Mac, Linux oder Windows können Sie [hier](https://azure.github.io/BatchExplorer/) herunterladen. Im [Batch Insights-Repository](https://github.com/Azure/batch-insights) finden Sie schnelle Schritte zum Aktivieren von Application Insights-Daten im Batch Explorer. 
+>
 
 ## <a name="prerequisites"></a>Voraussetzungen
 * [Visual Studio 2017](https://www.visualstudio.com/vs)

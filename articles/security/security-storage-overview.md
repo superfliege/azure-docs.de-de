@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/17/2018
+ms.date: 10/29/2018
 ms.author: terrylan
-ms.openlocfilehash: 4ed4e73348db8cfffb6e79afaa9d196e242d7488
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 759de1c62cb9cb4aa642fa564378b1ed551d7dae
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42146877"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50239354"
 ---
 # <a name="azure-storage-security-overview"></a>Übersicht über die Sicherheit von Azure Storage
 
@@ -33,6 +33,7 @@ Azure Storage ist eine Cloudspeicherlösung für moderne Anwendungen, die eine K
 * Verwenden Sie Analysen zum Verfolgen der Authentifizierungsmethode, die ein Benutzer beim Zugriff auf Storage verwendet.
 
 Eine ausführlichere Betrachtung der Sicherheit in Azure Storage finden Sie im [Azure Storage-Sicherheitsleitfaden](../storage/common/storage-security-guide.md). Dieser Leitfaden enthält fundierte Informationen zu den Sicherheitsfeatures von Azure Storage. Zu diesen Features gehören Speicherkontoschlüssel, Datenverschlüsselung während der Übertragung und Speicherung sowie Speicheranalysen.
+
 
 Dieser Artikel bietet eine Übersicht über die Sicherheitsfunktionen von Azure, die mit Azure Storage verwendet werden können. Links zu Artikeln bieten weitere Informationen zu den einzelnen Features.
 
@@ -91,13 +92,35 @@ Weitere Informationen
 
 * [Azure Disk Encryption for Windows and Linux IaaS Virtual Machines (Azure Disk Encryption für virtuelle Windows- und Linux-IaaS-Computer)](https://gallery.technet.microsoft.com/Azure-Disk-Encryption-for-a0018eb0)
 
-## <a name="azure-storage-firewalls-and-virtual-networks"></a>Firewalls und virtuelle Netzwerke in Azure Storage
+## <a name="firewalls-and-virtual-networks"></a>Firewalls und virtuelle Netzwerke
 
 Azure Storage ermöglicht es Ihnen, Firewallregeln für Ihre Speicherkonten zu aktivieren. Sobald diese aktiviert sind, blockieren sie eingehende Datenanforderungen, einschließlich Anforderungen von anderen Azure-Diensten. Sie können Ausnahmen zum Zulassen von Datenverkehr konfigurieren. Firewallregeln können für vorhandene Speicherkonten oder während der Erstellung aktiviert werden.
 
 Sie sollten diese Funktion verwenden, um Ihre Speicherkonten für eine bestimmte Gruppe zulässiger Netzwerke zu sichern.
 
 Weitere Informationen zu Firewalls und virtuellen Netzwerken in Azure Storage finden Sie im Artikel [Konfigurieren von Firewalls und virtuellen Netzwerken in Azure Storage](../storage/common/storage-network-security.md).
+
+## <a name="azure-data-box"></a>Azure Data Box
+
+Wenn das Netzwerk keine Option ist, können Sie mit Data Box-, Data Box Disk- und Data Box Heavy-Geräten große Datenmengen nach Azure übertragen. Diese Geräte zur Offlinedatenübertragung werden zwischen Ihrer Organisation und dem Azure-Rechenzentrum verschickt. Die Geräte nutzen die AES-Verschlüsselung, um Ihre Daten während der Übertragung zu schützen, und werden nach dem Upload einem umfassenden Bereinigungsprozess unterzogen, um Ihre Daten sicher von den Geräten zu löschen.
+
+Data Box Edge und Data Box Gateway sind Produkte zur Onlinedatenübertragung, die als Netzwerkspeichergateways für die Übertragung der Daten zwischen Ihrem Standort und Azure dienen. Data Box Edge, ein lokales Netzwerkgerät, überträgt Daten nach und aus Azure und verwendet KI-fähiges Edge Computing zur Datenverarbeitung. Data Box Gateway ist eine virtuelle Appliance mit Speichergatewayfunktionen.
+
+Weitere Informationen:
+
+* [Azure Data Box](https://azure.microsoft.com/services/storage/databox/)
+* [Azure Data Box Edge](../databox-online/data-box-edge-overview.md)
+* [Azure Data Box Gateway](..//databox-online/data-box-gateway-overview.md)
+
+## <a name="advanced-threat-protection"></a>Erweiterter Schutz vor Bedrohungen
+
+Azure Storage bietet Advanced Threat Protection, um intelligente Sicherheitsfunktionen zu nutzen, die ungewöhnliche und möglicherweise schädliche Versuche zu ermitteln, auf Ihr Speicherkonto zuzugreifen oder dieses unbefugt zu nutzen. Advanced Threat Protection überwacht die Azure Storage-Diagnoseprotokolle auf verdächtige Lese-, Schreib- oder Löschanforderungen in Blob Storage. 
+
+Warnungen von Advanced Threat Protection können im [Azure Security Center](https://azure.microsoft.com/services/security-center/) angezeigt werden. Das Azure Security Center zeigt Details zu allen ermittelten verdächtigen Aktivitäten an und empfiehlt Aktionen zur Untersuchung und Beseitigung der potenziellen Bedrohung. 
+
+Weitere Informationen:
+
+* [Azure Storage Advanced Threat Protection – Übersicht](../storage/common/storage-advanced-threat-protection.md)
 
 ## <a name="azure-key-vault"></a>Azure Key Vault
 

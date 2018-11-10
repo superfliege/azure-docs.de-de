@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/15/2018
 ms.author: yijenj
-ms.openlocfilehash: a0b3c220a1cd857bc8bea0eb5ab41625845fcc5d
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: 604eb528ef33a95993aa5b6d3ff6eebb77936aa2
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49365620"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50157937"
 ---
 # <a name="azure-partner-customer-usage-attribution"></a>Zuordnen der Nutzung durch Kunden von Azure-Partnern
 
@@ -44,7 +44,7 @@ Viele Partnerlösungen werden mithilfe von Resource Manager-Vorlagen im Abonneme
 
 Um einen global eindeutigen Bezeichner (GUID) hinzuzufügen, nehmen Sie an der Hauptvorlagendatei eine einzige Änderung vor:
 
-1. [Erstellen Sie eine GUID](#create-guids) (z. B. eb7927c8-dd66-43e1-b0cf-c346a422063), und [registrieren Sie die GUID](#register-guids-and-offers).
+1. [Erstellen Sie eine GUID](#create-guids) unter Verwendung der vorgeschlagenen Methode, und [registrieren Sie die GUID](#register-guids-and-offers).
 
 1. Öffnen Sie die Resource Manager-Vorlage.
 
@@ -58,9 +58,26 @@ Um einen global eindeutigen Bezeichner (GUID) hinzuzufügen, nehmen Sie an der H
 
 1. [Überprüfen Sie den Erfolg der GUID in der Vorlagenbereitstellung](#verify-the-guid-deployment).
 
-### <a name="sample-template-code"></a>Beispielcode der Vorlage
+### <a name="sample-resource-manager-template-code"></a>Beispielcode für Resource Manager-Vorlage
+Stellen Sie sicher, dass Sie den unten stehenden Beispielcode mit Ihren eigenen Eingaben ändern, wenn Sie ihn zur Hauptvorlagendatei hinzufügen.
+Die Ressource muss nur in der Datei **mainTemplate.json** oder **azuredeploy.json** hinzugefügt werden, nicht in geschachtelten oder verknüpften Vorlagen.
+```
+// Make sure to modify this sample code with your own inputs where applicable
 
-![Beispielcode der Vorlage](media/marketplace-publishers-guide/tracking-sample-code-for-lu-1.PNG)
+{ // add this resource to the mainTemplate.json (do not add the entire file)
+    "apiVersion": "2018-02-01",
+    "name": "pid-XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX" // use your generated GUID here
+    "type": "Microsoft.Resources/deployments",
+    "properties": {
+        "mode": "Incremental",
+        "template": {
+            "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+            "contentVersion": "1.0.0.0",
+            "resources": []
+        }
+    }
+} // remove all comments from the file when complete
+```
 
 ## <a name="use-the-resource-manager-apis"></a>Verwenden der Resource Manager-APIs
 
@@ -77,7 +94,7 @@ Nehmen Sie bei diesem Nachverfolgungsansatz beim Entwerfen Ihrer API-Aufrufe ein
 > [!Note]
 > Das Format der Zeichenfolge ist wichtig. Wenn das Präfix **pid-** nicht enthalten ist, können die Daten nicht abgefragt werden. Verschiedene SDKs gehen bei der Nachverfolgung unterschiedlich vor. Zum Implementieren dieser Methode müssen Sie die Unterstützung und den Nachverfolgungsansatz Ihres bevorzugten Azure SDK überprüfen. 
 
-### <a name="example-the-python-sdk"></a>Beispiel: Python SDK
+#### <a name="example-the-python-sdk"></a>Beispiel: Python SDK
 
 Bei Python wird das Attribut **config** verwendet. Sie können das Attribut nur einem Benutzer-Agent hinzufügen. Hier sehen Sie ein Beispiel:
 
@@ -104,7 +121,7 @@ export AZURE_HTTP_USER_AGENT='pid-eb7927c8-dd66-43e1-b0cf-c346a422063'
 
 ## <a name="create-guids"></a>Erstellen von GUIDs
 
-Eine GUID ist ein eindeutiger Verweis mit 32 Hexadezimalziffern. Zum Erstellen einer GUID für die Nachverfolgung sollten Sie einen GUID-Generator verwenden. Es wird empfohlen, die Sie das [GUID-Generatorformular von Azure Storage](https://aka.ms/StoragePartners) nutzen. Wenn Sie den GUID-Generator von Azure Storage jedoch nicht verwenden möchten, gibt es mehrere [Online-GUID-Generatoren](https://www.bing.com/search?q=guid%20generator), die Sie verwenden können.
+Eine GUID ist ein eindeutiger Verweis mit 32 Hexadezimalziffern. Zum Erstellen einer GUID für die Nachverfolgung sollten Sie einen GUID-Generator verwenden. Das Azure Storage-Team hat ein [Formular für den GUID-Generator](https://aka.ms/StoragePartners) erstellt, über das Sie per E-Mail eine GUID im richtigen Format erhalten. Dieses Formular kann für verschiedene Nachverfolgungssysteme wiederverwendet werden. 
 
 > [!Note]
 > Es wird dringend empfohlen, dass Sie das [GUID-Generatorformular von Azure Storage](https://aka.ms/StoragePartners) verwenden, um Ihre GUID zu erstellen. Weitere Informationen finden Sie in den [häufig gestellten Fragen](#faq).

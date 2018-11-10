@@ -5,21 +5,21 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/18/2018
+ms.date: 10/26/2018
 ms.topic: troubleshooting
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 4984332e1a149ae838bc76a24abec90364f5699e
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: ba6d8250d70320b33822d73c9213e9005128633f
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47221977"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50157206"
 ---
 # <a name="frequently-asked-questions-for-cloudyn"></a>Häufig gestellte Fragen zu Cloudyn
 
-In diesem Artikel werden einige häufige Fragen zu Cloudyn beantwortet. Wenn Sie Fragen zu Cloudyn haben, können Sie diese in [Häufig gestellte Fragen zu Cloudyn](https://social.msdn.microsoft.com/Forums/231bf072-2c71-4121-8339-ac9d868137b9/faqs-for-azure-cost-management-by-cloudyn?forum=Cloudyn) stellen.
+In diesem Artikel werden einige häufige Fragen zu Cloudyn beantwortet. Wenn Sie Fragen zu Cloudyn haben, können Sie diese in [Häufig gestellte Fragen zu Cloudyn](https://social.msdn.microsoft.com/Forums/home?forum=faqs-for-azure-cost-management-by-cloudyn) stellen.
 
 ## <a name="how-can-i-resolve-common-indirect-enterprise-setup-problems"></a>Wie kann ich Fehler beheben, die häufig bei der indirekten Enterprise-Einrichtung auftreten?
 
@@ -35,7 +35,7 @@ Sie können die Probleme wie folgt beheben:
 
 1. Ihr Handelspartner muss _Markup_ für Ihr Konto aktivieren. Die Anleitung finden Sie unter [Indirect Customer Onboarding Guide (Anleitung für indirektes Kundenonboarding)](https://ea.azure.com/api/v3Help/v2IndirectCustomerOnboardingGuide).
 
-2. Sie generieren den Azure EA-Schlüssel für die Verwendung mit Cloudyn. Eine Anleitung hierzu finden Sie unter [Adding Your Azure EA (Hinzufügen Ihres Azure EA)](https://support.cloudyn.com/hc/articles/210429585-Adding-Your-AZURE-EA) oder [How to Find Your EA Enrollment ID and API Key (Ermitteln Ihrer EA-Registrierungs-ID und Ihres API-Schlüssels)](https://youtu.be/u_phLs_udig).
+2. Sie generieren den Azure EA-Schlüssel für die Verwendung mit Cloudyn. Eine Anleitung hierzu finden Sie unter [Adding Your Azure EA (Hinzufügen Ihres Azure EA)](quick-register-ea.md#register-with-cloudyn) oder [How to Find Your EA Enrollment ID and API Key (Ermitteln Ihrer EA-Registrierungs-ID und Ihres API-Schlüssels)](https://youtu.be/u_phLs_udig).
 
 Cloudyn kann nur von einem Azure-Dienstadministrator aktiviert werden. Co-Administrator-Berechtigungen sind nicht ausreichend.
 
@@ -100,7 +100,7 @@ Vermeiden Sie die Verwendung der direkten Cloudyn-URL „https://app.cloudyn.com
 
 ## <a name="how-do-i-activate-unactivated-accounts-with-azure-credentials"></a>Wie aktiviere ich deaktivierte Konten mit Azure-Anmeldeinformationen?
 
-Nachdem Ihre Azure-Konten von Cloudyn ermittelt wurden, werden in kostenbasierten Berichten sofort Kostendaten bereitgestellt. Damit Cloudyn Daten zur Nutzung und Leistung bereitstellen kann, müssen Sie Ihre Azure-Anmeldeinformationen für die Konten registrieren. Anweisungen finden Sie unter [Hinzufügen von Azure Resource Manager](https://support.cloudyn.com/hc/articles/212784085-Adding-Azure-Resource-Manager).
+Nachdem Ihre Azure-Konten von Cloudyn ermittelt wurden, werden in kostenbasierten Berichten sofort Kostendaten bereitgestellt. Damit Cloudyn Daten zur Nutzung und Leistung bereitstellen kann, müssen Sie Ihre Azure-Anmeldeinformationen für die Konten registrieren. Anweisungen finden Sie unter [Hinzufügen eines Kontos oder Aktualisieren eines Abonnements](activate-subs-accounts.md#add-an-account-or-update-a-subscription).
 
 Klicken Sie zum Hinzufügen von Azure-Anmeldeinformationen für ein Konto im Cloudyn-Portal auf das Bearbeitungssymbol rechts vom Kontonamen (nicht neben dem Abonnement).
 
@@ -108,10 +108,7 @@ Bis Ihre Azure-Anmeldeinformationen Cloudyn hinzugefügt wurden, wird Ihr Konto 
 
 ## <a name="how-do-i-add-multiple-accounts-and-entities-to-an-existing-subscription"></a>Wie füge ich einem vorhandenen Abonnement mehrere Konten und Entitäten hinzu?
 
-Zusätzliche Entitäten werden verwendet, um einem Cloudyn-Abonnement weitere Enterprise Agreements hinzuzufügen. Unter den folgenden Links wird beschrieben, wie Sie zusätzliche Entitäten hinzufügen:
-
-- Artikel [Adding an Entity](https://support.cloudyn.com/hc/articles/212016145-Adding-an-Entity) (Hinzufügen einer Entität)
-- Video [Defining your hierarchy with Cost Entities](https://support.cloudyn.com/hc/articles/115005142529-Video-Defining-your-hierarchy-with-Cost-Entities) (Definieren Ihrer Hierarchie mit Kostenentitäten)
+Zusätzliche Entitäten werden verwendet, um einem Cloudyn-Abonnement weitere Enterprise Agreements hinzuzufügen. Weitere Informationen finden Sie unter [Tutorial: Zuweisen des Zugriffs auf Cloudyn-Daten](tutorial-user-access.md#create-and-manage-entities).
 
 Für CSPs:
 

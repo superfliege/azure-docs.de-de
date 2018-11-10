@@ -9,12 +9,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 08/29/2018
-ms.openlocfilehash: 606e8aed42bce69d5b3210b4e97f8cbfeaaf104c
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 97ac405db3de4fa2c6f1173f813eafd41a5361ad
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46961007"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50209444"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Bereitstellen von Modellen mit dem Azure Machine Learning-Dienst
 
@@ -22,36 +22,41 @@ Der Azure Machine Learning-Dienst bietet mehrere Möglichkeiten zum Bereitstelle
 
 Sie können Modelle an folgenden Computezielen bereitstellen:
 
-- Azure Container Instances (ACI)
-- Azure Kubernetes Service (AKS)
-- Azure IoT Edge
-- Field-Programmable Gate Array (FPGA)
+- [Azure Container Instances (ACI)](#aci): Schnelle Bereitstellung. Gut geeignet für Entwicklungs- und Testzwecke.
+- [Azure Kubernetes Service (AKS)](#aks): Gut geeignet für sehr umfangreiche Produktionsworkloads. Bietet automatische Skalierung und schnelle Reaktionszeiten.
+- [Azure IoT Edge](#iotedge): Stellen Sie Modelle auf IoT-Geräten bereit. Rückschlüsse erfolgen auf dem Gerät.
+- [Field-Programmable Gate Array (FPGA)](#fpga): Extrem geringe Latenz für Rückschlüsse in Echtzeit.
 
 Im weiteren Verlauf dieses Dokuments werden die einzelnen Optionen ausführlich erläutert.
 
-## <a name="azure-container-instances"></a>Azure Container Instances
+## <a id="aci"></a>Azure Container Instances
 
 Verwenden Sie Azure Container Instances für die Bereitstellung Ihrer Modelle als REST-API-Endpunkt, wenn mindestens eine der folgenden Bedingungen zutrifft:
-- Sie möchten eine schnelle Bereitstellung, um Ihr Modell zu bewerten zu überprüfen. Eine ACI-Bereitstellung ist in der Regel in weniger als 5 Minuten abgeschlossen.
+- Sie müssen Ihr Modell schnell bereitstellen und überprüfen. Eine ACI-Bereitstellung ist in weniger als 5 Minuten abgeschlossen.
 - Sie möchten Ihr Modell in einer Entwicklungs- oder Testumgebung bereitstellen. ACI ermöglicht Ihnen das Bereitstellen von 20 Containergruppen pro Abonnement. Weitere Informationen finden Sie im Dokument [Kontingente und Regionsverfügbarkeit für Azure Container Instances](https://docs.microsoft.com/azure/container-instances/container-instances-quotas).
 
 Weitere Informationen finden Sie im Dokument [Bereitstellen eines Modells in Azure Container Instances](how-to-deploy-to-aci.md).
 
-## <a name="azure-kubernetes-service"></a>Azure Kubernetes Service
+## <a id="aks"></a>Azure Kubernetes Service
 
-Für Produktionsszenarien mit umfangreicher Skalierung können Sie Ihr Modell in Azure Kubernetes Service (AKS) bereitstellen. Sie können einen vorhandenen AKS-Cluster verwenden oder mithilfe des Azure Machine Learning-SDK, der CLI oder des Azure-Portals einen neuen erstellen.
+Verwenden Sie Azure Kubernetes Service (AKS) für sehr umfangreiche Produktionsszenarien. Sie können einen vorhandenen AKS-Cluster verwenden oder mithilfe des Azure Machine Learning-SDK, der CLI oder des Azure-Portals einen neuen erstellen.
 
-Das Erstellen des AKS-Clusters ist ein für Ihren Arbeitsbereich einmaliger Prozess. Nach der Erstellung können Sie diesen Cluster für mehrere Bereitstellungen wiederverwenden. Wenn Sie den Cluster oder die Ressourcengruppe, die ihn enthält, löschen, müssen Sie bei der nächsten Bereitstellung einen neuen Cluster erstellen.
+Das Erstellen eines AKS-Clusters ist ein für Ihren Arbeitsbereich einmaliger Prozess. Sie können diesen Cluster für mehrere Bereitstellungen wiederverwenden. Wenn Sie den Cluster löschen, müssen Sie bei der nächsten Bereitstellung einen neuen Cluster erstellen.
 
-Die Bereitstellung in AKS bietet automatische Skalierung, Protokollierung, Modelldatensammlung und schnelle Antwortzeiten für Ihre Webdienste. 
+Azure Kubernetes Service bietet die folgenden Funktionen:
+
+* Automatische Skalierung
+* Protokollierung
+* Modelldatensammlung
+* Schnelle Reaktionszeiten für Ihre Webdienste
 
 Der Erstellen eines AKS-Clusters dauert etwa 20 Minuten.
 
 Weitere Informationen finden Sie im Dokument [Bereitstellen eines Modells in Azure Kubernetes Service](how-to-deploy-to-aks.md).
 
-## <a name="azure-iot-edge"></a>Azure IoT Edge
+## <a id="iotedge"></a>Azure IoT Edge
 
-Bei IoT-Geräten ist das Durchführen von Bewertungen auf dem Gerät schneller, als Daten in die Cloud senden und zu warten, bis ein in der Cloud gehostetes Modell Daten zurückgibt. Mit Azure IoT Edge können Sie Ihr Modell auf Edge-Geräten hosten. Stellen Sie Ihr Modell in IoT Edge bereit, wenn Sie eine oder mehrere der folgenden Funktionen benötigen:
+Bei IoT-Geräten ist es schneller, Bewertungen direkt auf dem Gerät durchzuführen, als Daten zur Bewertung in die Cloud zu senden. Mit Azure IoT Edge können Sie Ihr Modell auf Edge-Geräten hosten. Stellen Sie Ihr Modell in IoT Edge bereit, wenn Sie eine oder mehrere der folgenden Funktionen benötigen:
 - Lokale Verarbeitung von Prioritätsaufgaben auch ohne Cloudverbindung
 - Arbeiten mit generierten Daten, die zu umfangreich für einen schnellen Abruf aus der Cloud sind
 - Aktivieren von Echtzeitverarbeitung über Intelligenz auf oder in der Nähe von lokalen Geräten
@@ -62,9 +67,9 @@ Weitere Informationen finden Sie im Dokument [Bereitstellen für Azure IoT Edge]
 Weitere Informationen zum IoT Edge-Dienst finden Sie in der [Azure IoT Edge-Dokumentation](https://docs.microsoft.com/azure/iot-edge/).
 
 
-## <a name="field-programmable-gate-arrays-fpga"></a>Field-Programmable Gate Arrays (FPGA)
+## <a id="fpga"></a>Field-Programmable Gate Array (FPGA)
 
-Von Project Brainwave unterstützte hardwarebeschleunigte Modelle ermöglichen äußerst geringe Wartezeiten für Echtzeit-Inferenzanforderungen. Project Brainwave beschleunigt tiefe neuronale Netzwerke (Deep Neural Networks, DNNS), die auf Field-Programmable Gate Arrays in der Azure-Cloud bereitgestellt sind. Häufig verwendete DNNs sind als Featurizer für das Lernen durch Transfer verfügbar oder können mit Gewichtungen angepasst werden, die mit Ihren eigenen Daten trainiert sind.
+Von Project Brainwave unterstützte hardwarebeschleunigte Modelle ermöglichen äußerst geringe Wartezeiten für Echtzeit-Inferenzanforderungen. Project Brainwave beschleunigt tiefe neuronale Netzwerke (Deep Neural Networks, DNNs), die auf Field-Programmable Gate Arrays in der Azure-Cloud bereitgestellt sind. Häufig verwendete DNNs sind als Featurizer für das Lernen durch Transfer verfügbar oder können mit Gewichtungen angepasst werden, die mit Ihren eigenen Daten trainiert sind.
 
 Weitere Informationen finden Sie im Dokument [Bereitstellen in einem FPGA](how-to-deploy-fpga-web-service.md).
 

@@ -8,204 +8,159 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 09/10/2018
+ms.date: 10/24/2018
 ms.author: diberry
-ms.openlocfilehash: e82955da24e127e5536c2e40ad2cccf07c5fa173
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 178f4314f9ede86444ee60fd2a64f85dc283080b
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47032001"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50138530"
 ---
-# <a name="manage-entities"></a>Verwalten von Entitäten
-Nachdem Sie die [Absichten](luis-concept-intent.md) Ihrer App identifiziert haben, müssen Sie [Beispieläußerungen](luis-concept-utterance.md) mit [Entitäten](luis-concept-entity-types.md) bezeichnen. Entitäten sind die wichtigen Teile eines Befehls oder einer Frage und können entscheidend dafür sein, dass Ihre Client-App ihre Aufgabe ausführt. 
+# <a name="create-entities-without-utterances"></a>Erstellen von Entitäten ohne Äußerungen
 
-Sie können Entitäten in Ihrer App über die **Entitätenlisten** auf der Seite **Entitäten** hinzufügen, bearbeiten oder löschen. LUIS bietet zwei Typen von Entitäten: [vordefinierte Entitäten](luis-reference-prebuilt-entities.md) und Ihre eigenen benutzerdefinierten Entitäten.
+Die Entität stellt ein Wort oder einen Ausdruck innerhalb der Äußerung dar, die extrahiert werden soll. Eine Äußerung kann viele Entitäten oder auch überhaupt keine enthalten. Eine Entität stellt eine Klasse dar, einschließlich einer Sammlung ähnlicher Objekte (Orte, Dinge, Personen, Ereignisse oder Konzepte). Entitäten beschreiben Informationen mit Bezug zur Absicht. Manchmal sind sie auch für die Ausführung der Aufgabe Ihrer App wichtig. 
 
-Die folgenden Abschnitte sind nur vom Abschnitt **Erstellen** aus in einer LUIS-App verfügbar. Der Link **Erstellen** befindet sich in der oberen Navigationsleiste. Wählen Sie im Abschnitt **Erstellen** im linken Navigationsmenü **Entitäten** aus. Sobald eine Entität der Anwendung hinzugefügt ist, und es sich um eine durch maschinelles Lernen erworbene Entität handelt, können Sie in der Äußerung [die Entität bezeichnen](luis-how-to-add-example-utterances.md). Sobald die App trainiert und veröffentlicht ist, können Sie aus der Vorhersage [extrahierte](luis-concept-data-extraction.md) Entitätsdaten erhalten. 
+Sie können Entitäten vor dem Erstellen von Absichten oder in einem separaten Vorgang erstellen.
+
+Sie können Entitäten in Ihrer LUIS-App über die **Entitätenlisten** auf der Seite **Entitäten** hinzufügen, bearbeiten oder löschen. LUIS verfügt über zwei Haupttypen von Entitäten: [vordefinierte Entitäten](luis-reference-prebuilt-entities.md) und Ihre eigenen [benutzerdefinierten Entitäten](luis-concept-entity-types.md#types-of-entities).
+
+Nachdem eine Entität erstellt wurde, kann sie auf der Seite mit den Details zur **Absicht** in der Beispieläußerung einer Absicht markiert werden. 
 
 ## <a name="add-prebuilt-entity"></a>Hinzufügen einer vordefinierten Entität
-Vordefinierte Entitäten werden im [Recognizers-Text](https://github.com/Microsoft/Recognizers-Text)-Projekt definiert. Einer Anwendung hinzugefügte allgemeine vordefinierte Entitäten sind *number* und *datetimeV2*. 
 
-1. Klicken Sie in Ihrer App im Abschnitt **Erstellen** im linken Bereich auf **Entitäten**.
+Einer Anwendung hinzugefügte allgemeine vordefinierte Entitäten sind *number* und *datetimeV2*. 
+
+1. Wählen Sie in Ihrer App im Abschnitt **Erstellen** im linken Bereich die Option **Entitäten**.
  
-2. Wählen Sie auf der Seite **Entitäten** die Option **Vordefinierte Entitäten verwalten** aus.
+1. Wählen Sie auf der Seite **Entitäten** die Option **Vordefinierte Entitäten hinzufügen**.
 
-3. Wählen Sie im Dialogfeld **Vordefinierte Entitäten hinzufügen oder entfernen** die vordefinierten Entitäten **number** und **datetimeV2** aus. Wählen Sie dann **Fertig** aus.
+1. Wählen Sie im Dialogfeld **Vordefinierte Entitäten hinzufügen** die vordefinierten Entitäten **number** und **datetimeV2** aus. Wählen Sie dann **Fertig** aus.
 
     ![Screenshot des Dialogfelds „Vordefinierte Entität hinzufügen“](./media/add-entities/list-of-prebuilt-entities.png)
 
-    Weitere Informationen zum Extrahieren der vordefinierten Entität aus der Antwort der JSON-Endpunktabfrage finden Sie unter [Datenextraktion](luis-concept-data-extraction.md#prebuilt-entity-data).
-
 ## <a name="add-simple-entities"></a>Hinzufügen einfacher Entitäten
-Eine einfache Entität ist eine generische Entität, die ein einzelnes Konzept beschreibt. 
 
-1. Klicken Sie in Ihrer App im Abschnitt **Erstellen** im linken Bereich auf **Entitäten**, und wählen Sie **Neue Entität erstellen** aus.
+Eine einfache Entität beschreibt ein einzelnes Konzept. Verwenden Sie das folgende Verfahren zum Erstellen einer Entität, mit der die Namen von Unternehmensabteilungen extrahiert werden, z.B. *Personalwesen* oder *Operativer Betrieb*.   
 
-2. Geben Sie im Popupdialogfeld `Airline` in das Feld **Entitätsname** ein, und wählen Sie **Einfach** in der Liste **Entitätstyp** und dann **Fertig** aus.
+1. Wählen Sie in Ihrer App den Abschnitt **Build**, im linken Bereich die Option **Entitäten** und dann die Option **Neue Entität erstellen**.
 
-    ![Screenshot des Dialogfelds für die Erstellung einer einfachen Airline-Entität](./media/add-entities/create-simple-airline-entity.png)
+1. Geben Sie im Popupdialogfeld das Wort `Location` in das Feld **Entitätsname** ein, und wählen Sie in der Liste **Entitätstyp** die Option **Einfach** aus. Wählen Sie anschließend **Fertig**.
 
-    Weitere Informationen zum Extrahieren der einfachen Entität aus der Antwort der JSON-Endpunktabfrage finden Sie unter [Datenextraktion](luis-concept-data-extraction.md#simple-entity-data). Probieren Sie den [Schnellstart](luis-quickstart-primary-and-secondary-data.md) für einfache Entitäten aus, um mehr über das Verwenden einer einfachen Entität zu erfahren.
+    Navigieren Sie nach dem Erstellen dieser Entität zu allen Absichten mit Beispieläußerungen, die die Entität enthalten. Wählen Sie den Text in der Beispieläußerung aus, und kennzeichnen Sie ihn als Entität. 
+
+    Normalerweise wird eine [Ausdrucksliste](luis-concept-feature.md) verwendet, um das Signal einer einfachen Entität zu verstärken.
 
 ## <a name="add-regular-expression-entities"></a>Hinzufügen von Entitäten des Typs „Regulärer Ausdruck“
+
 Eine Entität des Typs „Regulärer Ausdruck“ dient zum Abrufen von Daten aus der Äußerung basierend auf einem regulären Ausdruck, den Sie bereitstellen. 
 
 1. Wählen Sie in Ihrer App im linken Navigationsbereich **Entitäten** und dann **Neue Entität erstellen** aus.
 
-2. Geben Sie im Popupdialogfeld `AirFrance Flight` in das Feld **Entitätsname** ein, wählen Sie **Regulärer Ausdruck** in der Liste **Entitätstyp** aus, geben Sie den regulären Ausdruck `AFR[0-9]{3,4}` ein, und wählen Sie dann **Fertig** aus. 
+1. Geben Sie im Popupdialogfeld `Human resources form name` in das Feld **Entitätsname** ein, wählen Sie **Regulärer Ausdruck** in der Liste **Entitätstyp** aus, geben Sie den regulären Ausdruck `hrf-[0-9]{6}` ein, und wählen Sie dann **Fertig** aus. 
 
-    Dieser reguläre Ausdruck „AirFrance Flight“ erwartet drei Zeichen, buchstäblich `AFR`, und dann 3 oder 4 Ziffern. Die Ziffern können beliebige Zahlen von 0 bis 9 sein. Der reguläre Ausdruck stimmt mit AirFrance-Flugnummern wie z.B. „AFR101“, „ARF1302“ und „AFR5006“ überein. Weitere Informationen zum Extrahieren der Entität aus der Antwort der JSON-Endpunktabfrage finden Sie unter [Datenextraktion](luis-concept-data-extraction.md).
-
-    ![Bild des Dialogfelds zum Erstellen einer Entität des Typs „Regulärer Ausdruck“](./media/add-entities/regex-entity-create-dialog.png)
-
-    Weitere Informationen zum Extrahieren der Entität des Typs „Regulärer Ausdruck“ aus der Antwort der JSON-Endpunktabfrage finden Sie unter [Datenextraktion](luis-concept-data-extraction.md#regular-expression-entity-data). Probieren Sie den [Schnellstart](luis-quickstart-intents-regex-entity.md) für Entitäten des Typs „Regulärer Ausdruck“ aus, um mehr über das Verwenden einer Entität des Typs „Regulärer Ausdruck“ zu erfahren.
+    Dieser reguläre Ausdruck (Literal) enthält die Zeichen `hrf-` und dann sechs Ziffern, um eine Formularnummer für ein Formular aus dem Personalwesen zu bilden.
 
 ## <a name="add-hierarchical-entities"></a>Hinzufügen hierarchischer Entitäten
+
 Eine hierarchische Entität ist eine Kategorie von im Kontext erlernten und konzeptionell verwandten Entitäten. Die Entität im folgenden Beispiel enthält Abflug- und Zielorte. 
 
-In der Äußerung `Book 2 tickets from Seattle to Cairo` ist Seattle der Abflug- und Kairo der Zielort. Die Orte unterscheiden sich durch den Kontext und werden aufgrund der Wortstellung und Wortwahl in der Äußerung erlernt.
+In der Äußerung `Move John Smith from Seattle to Cairo` ist Seattle der Abflug- und Kairo der Zielort. Die Orte unterscheiden sich durch den Kontext und werden aufgrund der Wortstellung und Wortwahl in der Äußerung erlernt.
 
 Um hierarchische Entitäten hinzuzufügen, führen Sie die folgenden Schritte aus: 
 
 1. Wählen Sie in Ihrer App im linken Navigationsbereich **Entitäten** und dann **Neue Entität erstellen** aus.
 
-2. Geben Sie im Popupdialogfeld `Location` in das Feld **Entitätsname** ein, und wählen Sie dann **Hierarchisch** in der Liste **Entitätstyp** aus.
+1. Geben Sie im Popupdialogfeld `Location` in das Feld **Entitätsname** ein, und wählen Sie dann **Hierarchisch** in der Liste **Entitätstyp** aus.
 
     ![Hinzufügen einer Entität vom Typ „Hierarchisch“](./media/add-entities/hier-location-entity-creation.png)
 
-3. Wählen Sie **Untergeordnetes Element hinzufügen** aus, und geben Sie „Origin“ in das erste Feld **Untergeordnetes Element** ein. 
+1. Wählen Sie **Untergeordnetes Element hinzufügen**, und geben Sie im ersten Feld **Untergeordnete Entität** dann `Origin` ein. 
 
-4. Wählen Sie **Untergeordnetes Element hinzufügen** aus, und geben Sie „Destination“ in das zweite Feld **Untergeordnetes Element** ein. Wählen Sie **Fertig**aus.
-5. 
-    >[!NOTE]
-    >Um ein untergeordnetes Element zu löschen, wählen Sie das Papierkorbsymbol daneben aus.
+1. Wählen Sie **Untergeordnetes Element hinzufügen**, und geben Sie im zweiten Feld **Untergeordnete Entität** dann `Destination` ein. Wählen Sie **Fertig**aus.
 
     >[!CAUTION]
     >Die Namen untergeordneter Entitäten müssen für alle Entitäten einer einzelnen App eindeutig sein. Zwei unterschiedliche hierarchische Entitäten dürfen keine untergeordneten Elemente mit dem gleichen Namen enthalten. 
 
-    Weitere Informationen dazu, wie Sie die hierarchische Entität aus der Antwort der JSON-Endpunktabfrage extrahieren, finden Sie unter [Datenextrahierung](luis-concept-data-extraction.md#hierarchical-entity-data). Probieren Sie den [Schnellstart](luis-quickstart-intent-and-hier-entity.md) für hierarchische Entitäten aus, um mehr über das Verwenden einer hierarchischen Entität zu erfahren.
+    Navigieren Sie nach dem Erstellen dieser Entität zu allen Absichten mit Beispieläußerungen, die die Entität enthalten. Wählen Sie den Text in der Beispieläußerung aus, und kennzeichnen Sie ihn als Entität. 
 
 ## <a name="add-composite-entities"></a>Hinzufügen einer zusammengesetzten Entität
-Sie können Beziehungen zwischen mehreren vorhandenen Entitäten durch das Erstellen einer zusammengesetzten Entität definieren. Die Entität im folgenden Beispiel enthält die Anzahl der Tickets, Abflug- und Zielorte. 
 
-In der Äußerung `Book 2 tickets from Seattle to Cairo` entspricht die Zahl 2 einer vordefinierten Entität, Seattle ist der Abflug- und Kairo der Zielort. Nach Erstellen der zusammengesetzten Entität ist jede Entität Teil einer größeren, übergeordneten Entität.
+Sie können Beziehungen zwischen Entitäten unterschiedlichen Typs durch das Erstellen einer zusammengesetzten Entität definieren. Im folgenden Beispiel enthält die Entität einen regulären Ausdruck und eine vordefinierte Entität mit einem Namen.  
 
-1. Fügen Sie in Ihrer App die vordefinierte Entität **number** hinzu. Anweisungen hierzu finden Sie unter [Hinzufügen einer vordefinierten Entität](#add-prebuilt-entity). 
+In der Äußerung `Send hrf-123456 to John Smith` wird die Zeichenfolge `hrf-123456` mit einem [regulären Ausdruck](#add-regular-expression-entities) des Personalwesens abgeglichen, und `John Smith` wird mit der vordefinierten Entität „personName“ extrahiert. Jede Entität ist Teil einer größeren übergeordneten Entität. 
 
-2. Fügen Sie die hierarchische Entität `Location` hinzu, einschließlich der Untertypen: `origin`, `destination`. Weitere Anweisungen finden Sie unter [Hinzufügen hierarchischer Entitäten](#add-hierarchical-entities). 
+1. Wählen Sie in Ihrer App im linken Navigationsbereich des Abschnitts **Build** die Option **Entitäten** und dann **Vordefinierte Entität hinzufügen**.
 
-3. Wählen Sie im linken Navigationsbereich **Entitäten** und dann **Neue Entität erstellen** aus.
+1. Fügen Sie die vordefinierte Entität **PersonName** hinzu. Anweisungen hierzu finden Sie unter [Hinzufügen einer vordefinierten Entität](#add-prebuilt-entity). 
 
-4. Geben Sie im Popupdialogfeld `TicketsOrder` in das Feld **Entitätsname** ein, und wählen Sie dann **Zusammengesetzt** in der Liste **Entitätstyp** aus.
+1. Wählen Sie im linken Navigationsbereich **Entitäten** und dann **Neue Entität erstellen** aus.
 
-5. Wählen Sie **Untergeordnetes Element hinzufügen** aus, um ein neues untergeordnetes Element hinzuzufügen.
+1. Geben Sie im Popupdialogfeld die Zeichenfolge `SendHrForm` in das Feld **Entitätsname** ein, und wählen Sie in der Liste **Entitätstyp** dann die Option **Zusammengesetzt** aus.
 
-6. Wählen Sie im ersten Feld **Untergeordnete Entität** die Entität **number** in der Liste aus.
+1. Wählen Sie **Untergeordnetes Element hinzufügen** aus, um ein neues untergeordnetes Element hinzuzufügen.
 
-7. Wählen Sie im zweiten Feld **Untergeordnete Entität** die Entität **Location::Origin** in der Liste aus. 
+1. Wählen Sie im ersten Feld **Untergeordnete Entität** die Entität **number** in der Liste aus.
 
-8. Wählen Sie im dritten Feld **Untergeordnete Entität** die Entität **Location::Destination** in der Liste aus. 
+1. Wählen Sie im zweiten Feld **Untergeordnete Entität** in der Liste die Entität **Human resources form name** (Name für Personalwesenformular) aus. 
 
-9. Wählen Sie **Fertig**aus.
-
-    ![Abbildung des Dialogfelds zum Erstellen einer zusammengesetzten Entität](./media/add-entities/ticketsorder-composite-entity.png)
-
-    >[!NOTE]
-    >Um ein untergeordnetes Element zu löschen, wählen Sie das Papierkorbsymbol daneben aus.
-
-    Weitere Informationen zum Extrahieren der zusammengesetzten Entität aus der Antwort der JSON-Endpunktabfrage finden Sie unter [Datenextraktion](luis-concept-data-extraction.md#composite-entity-data). Probieren Sie das [Tutorial](luis-tutorial-composite-entity.md) für zusammengesetzte Entitäten aus, um mehr über das Verwenden einer zusammengesetzten Entität zu erfahren.
-
+1. Wählen Sie **Fertig**aus.
 
 ## <a name="add-patternany-entities"></a>Hinzufügen der „Pattern.any“-Entitäten
-[Pattern.Any](luis-concept-entity-types.md)-Entitäten sind nur in [Mustern](luis-how-to-model-intent-pattern.md) gültig. Diese Entität kann LUIS helfen, das Ende von Entitäten unterschiedlicher Länge und Wortwahl zu finden. Da diese Entität in einem Muster verwendet wird, weiß LUIS, wo das Ende der Entität in der Äußerung ist.
 
-Wenn eine App eine `FindBookInfo`-Absicht hat, kann ein Konflikt zwischen dem Titel des Buchs und der Absichtsvorhersage auftreten. Um zu verdeutlichen, welche Wörter der Buchtitel enthält, verwenden Sie eine Pattern.any-Entität in einem Muster. Die LUIS-Vorhersage beginnt mit der Äußerung. Zunächst wird die Äußerung überprüft und mit Entitäten abgeglichen. Wenn Entitäten gefunden werden, wird das Muster überprüft und abgeglichen. 
+[Pattern.Any](luis-concept-entity-types.md)-Entitäten sind nur in [Mustern](luis-how-to-model-intent-pattern.md) gültig, nicht in Absichten. Mit diesem Entitätstyp kann LUIS das Ende von Entitäten unterschiedlicher Länge und Wortwahl finden. Da diese Entität in einem Muster verwendet wird, weiß LUIS, wo sich das Ende der Entität in der Äußerungsvorlage befindet.
 
-In der Äußerung `Who wrote the book Ask and when was it published?` ist der Buchtitel „Ask“ problematisch, da aus dem Kontext nicht hervorgeht, wo der Titel endet und der übrige Teil der Äußerung beginnt. Buchtitel können eine beliebigen Wortreihenfolge aufweisen, einschließlich eines einzelnen Worts, komplexer Ausdrücke mit Satzzeichen und unsinniger Reihenfolge der Wörter. Ein Muster ermöglicht Ihnen, eine Entität zu erstellen, wobei die vollständige und genaue Entität extrahiert werden kann. Sobald der Buchtitel gefunden ist, wird die `FindBookInfo`-Absicht vorhergesagt, die die Absicht für das Muster ist.
+Wenn eine App eine `FindHumanResourcesForm`-Absicht hat, kann ein Konflikt zwischen dem extrahierten Formulartitel und der Absichtsvorhersage auftreten. Um zu verdeutlichen, welche Wörter der Formulartitel enthält, verwenden Sie eine Pattern.any-Entität in einem Muster. Die LUIS-Vorhersage beginnt mit der Äußerung. Zunächst wird die Äußerung überprüft und mit Entitäten abgeglichen. Wenn Entitäten gefunden werden, wird das Muster überprüft und abgeglichen. 
 
-1. Klicken Sie in Ihrer App im Abschnitt **Erstellen** im linken Bereich auf **Entitäten**, und wählen Sie **Neue Entität erstellen** aus.
+In der Äußerung `Where is Request relocation from employee new to the company on the server?` ist der Formulartitel problematisch, da aus dem Kontext nicht hervorgeht, wo der Titel endet und wo der restliche Teil der Äußerung beginnt. Titel können eine beliebigen Wortreihenfolge aufweisen und beispielsweise ein einzelnes Wort, komplexe Ausdrücke mit Satzzeichen und eine unsinnige Reihenfolge von Wörtern enthalten. Ein Muster ermöglicht Ihnen, eine Entität zu erstellen, wobei die vollständige und genaue Entität extrahiert werden kann. Sobald der Titel gefunden wurde, wird die `FindHumanResourcesForm`-Absicht vorhergesagt, da dies die Absicht für das Muster ist.
 
-2. Geben Sie im Dialogfeld **Entität hinzufügen** `BookTitle` in das Feld **Entitätsname** ein, und wählen Sie **Pattern.any** als **Entitätstyp** aus.
- 
-    ![Screenshot: Erstellen einer pattern.any-Entität](./media/add-entities/create-pattern-any-entity.png)
+1. Wählen Sie im Abschnitt **Erstellen** im linken Bereich die Option **Entitäten** und dann **Neue Entität erstellen**.
 
-    Um die pattern.any-Entität zu verwenden, fügen Sie auf der Seite **Muster** (im Abschnitt **Verbessern der App-Leistung**) mit der richtigen Syntax mit geschweiften Klammern ein Muster ein, z.B. „Wer ist der Autor von **{BookTitle}**?“.
+1. Geben Sie im Dialogfeld **Entität hinzufügen** den Namen in das Feld „Entitätsname“ ein, und wählen Sie **Pattern.any** als **Entitätstyp** aus.
 
-    Weitere Informationen zum Extrahieren der Pattern.any-Entität aus der Antwort der JSON-Endpunktabfrage finden Sie unter [Datenextraktion](luis-concept-data-extraction.md#patternany-entity-data). Probieren Sie das [Muster](luis-tutorial-pattern.md)-Tutorial aus, um weitere Informationen zum Verwenden einer Pattern.any-Entität zu erhalten.
+    Um die pattern.any-Entität zu verwenden, fügen Sie auf der Seite **Muster** im Abschnitt **Improve app performance** (App-Leistung verbessern) mit der richtigen Syntax mit geschweiften Klammern ein Muster ein, z.B. `Where is **{HumanResourcesFormTitle}** on the server?`.
 
-Wenn Ihr Muster eine Pattern.any-Entität enthält und Entitäten falsch extrahiert, verwenden Sie eine [explizite Liste](luis-concept-patterns.md#explicit-lists), um dieses Problem zu beheben. 
+    Wenn Ihr Muster eine Pattern.any-Entität enthält und Entitäten falsch extrahiert, verwenden Sie eine [explizite Liste](luis-concept-patterns.md#explicit-lists), um dieses Problem zu beheben. 
 
-## <a name="add-role-to-pattern-based-entity"></a>Hinzufügen von Rollen zu musterbasierten Entitäten
+## <a name="add-a-role-to-pattern-based-entity"></a>Hinzufügen einer Rolle zur musterbasierten Entität
+
 Eine Rolle ist ein benannter Untertyp einer Entität, basierend auf dem Kontext. Dies ist vergleichbar mit einer [hierarchischen](#add-hierarchical-entities) Entität, aber Rollen werden nur in [Mustern](luis-how-to-model-intent-pattern.md) verwendet. 
 
-Ein Flugticket hat beispielsweise einen *Abflugort* und einen *Zielort*, aber beide sind Städte. LUIS ermittelt, dass beide Städte sind, und kann Abflug- und Zielort basierend auf dem Kontext von Wortreihenfolge und Wortwahl bestimmen. 
+Wenn dasselbe Beispiel wie bei der hierarchischen Entität mit Ausgangs- und Zielorten verwendet wird, besteht der Unterschied darin, dass eine Rolle als Ausgangsort (origin) und nicht als hierarchisches untergeordnetes Element bezeichnet wird. 
 
-Die Syntax für eine Rolle ist **{Entitätsname:Rollenname}**, wobei auf den Entitätsnamen ein Doppelpunkt folgt, und darauf der Rollenname. Beispiel: „Ticket von {Location:Origin} nach {Location:Destination} buchen“.
+Die Syntax für eine Rolle ist **{Entitätsname:Rollenname}**, wobei auf den Entitätsnamen ein Doppelpunkt und dann der Rollenname folgt. Beispiel: `Move {personName} from {LocationUsingRoles:Origin} to {LocationUsingRoles:Destination}`.
 
-1. Wählen Sie in Ihrer App im Abschnitt **Erstellen** im linken Bereich **Entitäten** aus.
+1. Wählen Sie im Abschnitt **Erstellen** im linken Bereich die Option **Entitäten**.
 
-2. Wählen Sie **Neue Entität erstellen** aus. Geben Sie den Namen `Location` ein. Wählen Sie den Typ **Einfach** und dann **Fertig** aus.
+1. Wählen Sie **Neue Entität erstellen** aus. Geben Sie den Namen `LocationUsingRoles` ein. Wählen Sie den Typ **Einfach** und dann **Fertig** aus. 
 
-3. Wählen Sie im linken Bereich **Entitäten** und dann die in Schritt 2 erstellte neue Entität **Location** aus.
+1. Wählen Sie im linken Bereich die Option **Entitäten** und dann die neue Entität **LocationUsingRoles** aus, die im vorherigen Schritt erstellt wurde.
 
-4. Geben Sie im Textfeld **Rollenname** den Namen der Rolle `Origin` ein, und drücken Sie die EINGABETASTE. Fügen Sie eine zweite Rolle namens `Destination` hinzu. Beispielsweise hat eine Flugreise einen Abflug- und einen Zielort. Die beiden Rollen sind „Origin“ und „Destination“.
+1. Geben Sie im Textfeld **Rollenname** den Namen der Rolle `Origin` ein, und drücken Sie die EINGABETASTE. Fügen Sie eine zweite Rolle namens `Destination` hinzu. 
 
     ![Screenshot vom Hinzufügen der Rolle „Origin“ zur Entität „Location“](./media/add-entities/roles-enter-role-name-text.png)
 
-    Weitere Informationen zum Extrahieren von Rollen aus der Antwort der JSON-Endpunktabfrage finden Sie unter [Datenextraktion](luis-concept-data-extraction.md). Probieren Sie das Muster-Tutorial aus, um weitere Informationen zum Verwenden einer Pattern.any-Entität zu erhalten.
-
 ## <a name="add-list-entities"></a>Hinzufügen von Listenentitäten
-Listenentitäten stellen eine feste, abgeschlossene Gruppe verwandter Wörter in Ihrem System dar. 
 
-Die Entität „drinks list“ (Getränkeliste) beispielsweise kann zwei normalisierte Werte aufweisen: Water und Soda Pop. Jeder normalisierte Name verfügt über Synonyme. Die Synonyme für Water lauten H20, gas, flat (H2O, sprudelig, still). Die Synonyme für Soda Pop lauten fruit, cola, ginger (Frucht, Cola, Ingwer). Sie müssen nicht alle Werte kennen, wenn Sie die Entität erstellen. Sie können weitere Werte hinzufügen, nachdem Sie wirkliche Benutzeräußerungen mit Synonymen überprüft haben.
+Listenentitäten stellen eine feste, abgeschlossene Gruppe mit verwandten Wörtern dar. 
 
-|Normalisierter Name|Synonyme|
-|--|--|
-|Water|H20, gas, flat|
-|Soda pop|Fruit, cola, ginger|
+Für eine Personal-App können Sie eine Liste mit allen Abteilungen und den Synonymen für die Abteilungen verwenden. Sie müssen nicht alle Werte kennen, wenn Sie die Entität erstellen. Sie können weitere Werte hinzufügen, nachdem Sie wirkliche Benutzeräußerungen mit Synonymen überprüft haben.
 
-1. Klicken Sie in Ihrer App im Abschnitt **Erstellen** im linken Bereich auf **Entitäten**, und wählen Sie **Neue Entität erstellen** aus.
+1. Wählen Sie im Abschnitt **Erstellen** im linken Bereich die Option **Entitäten** und dann **Neue Entität erstellen**.
 
-2. Geben Sie im Dialogfeld **Entität hinzufügen** `Drinks` in das Feld **Entitätsname** ein, und wählen Sie **Liste** als **Entitätstyp** aus. Wählen Sie **Fertig**aus.
- 
-    ![Abbildung des Dialogfelds zum Erstellen der Listenentität „Drinks“](./media/add-entities/menu-list-dialog.png)
+1. Geben Sie im Dialogfeld **Entität hinzufügen** `Department` in das Feld **Entitätsname** ein, und wählen Sie **Liste** als **Entitätstyp** aus. Wählen Sie **Fertig**aus.
   
-3.  Auf der Listenentitätsseite können Sie normalisierte Namen hinzufügen. Geben Sie im Textfeld **Werte** ein Element für die Liste ein, z.B. `Water` für die Getränkeliste, und drücken Sie dann die EINGABETASTE. 
+1. Auf der Listenentitätsseite können Sie normalisierte Namen hinzufügen. Geben Sie im Textfeld **Werte** einen Abteilungsnamen für eine Liste ein, z.B. `HumanResources`, und drücken Sie anschließend auf der Tastatur die EINGABETASTE. 
 
-    ![Screenshot der Getränkelistenentität mit normalisiertem Wert „Water“ im Textfeld](./media/add-entities/entity-list-normalized-name.png)
+1. Geben Sie rechts neben dem normalisierten Wert die Synonyme ein, und drücken Sie nach jedem Element die EINGABETASTE.
 
-4. Geben Sie rechts neben dem normalisierten Wert **Water** die Synonyme `h20`, `flat`, und `gas` ein, und drücken Sie nach jedem Element die EINGABETASTE.
+1. Wenn Sie weitere normalisierte Elemente für die Liste wünschen, wählen Sie **Empfehlen** aus, um Optionen aus dem [semantischen Wörterbuch](luis-glossary.md#semantic-dictionary) anzuzeigen.
 
-    ![Screenshot der Getränkelistenentität, wobei die Synonymelemente für Wasser hervorgehoben sind](./media/add-entities/menu-list-synonyms.png)
+    ![Screenshot vom Hinzufügen der Rolle „Origin“ zur Entität „Location“](./media/add-entities/hr-list-2.png)
 
-5. Wenn Sie weitere normalisierte Elemente für die Liste wünschen, wählen Sie **Empfehlen** aus, um Optionen aus dem [semantischen Wörterbuch](luis-glossary.md#semantic-dictionary) anzuzeigen.
 
-    ![Screenshot der Getränkelistenentität, wobei die empfohlenen Elemente hervorgehoben sind](./media/add-entities/entity-list-recommended-list.png)
-
-6. Wählen Sie ein Element in der empfohlenen Liste aus, um es als normalisierten Wert hinzuzufügen, oder wählen Sie **Alle hinzufügen** aus, um alle Elemente hinzuzufügen. 
-
-    ![Screenshot der Getränkelistenentität, wobei das empfohlene Element „beer“ und die Schaltfläche „Alle hinzufügen“ hervorgehoben sind](./media/add-entities/list-entity-add-suggestions.png)
-
-    Weitere Informationen zum Extrahieren von Listenentitäten aus der Antwort der JSON-Endpunktabfrage finden Sie unter [Datenextraktion](luis-concept-data-extraction.md#list-entity-data). Probieren Sie den [Schnellstart](luis-quickstart-intent-and-list-entity.md) aus, um mehr über das Verwenden einer Listenentität zu erfahren.
-
-## <a name="import-list-entity-values"></a>Importieren von Listenentitätwerten
-Sie können Werte in eine vorhandene Listenentität importieren.
-
- 1. Wählen Sie auf der Listenentitätsseite **Listen importieren** aus.
-
- 2. Wählen Sie im Dialogfeld **Neue Einträge importieren** die Option **Datei auswählen** aus, und wählen Sie die JSON-Datei aus, die die Liste enthält.
-
-    ![Screenshot des Popupdialogfelds „Einträge in Listenentität importieren“](./media/add-entities/menu-list-import-json-dialog-with-file.png)
-
-    >[!NOTE]
-    >LUIS importiert nur Dateien mit der Erweiterung JSON.
-
- 3. Um Informationen zu der unterstützten Listensyntax im JSON-Format zu erfahren, wählen Sie **Informationen zu unterstützter Listensyntax** aus, um das Dialogfeld zu erweitern und ein Beispiel zulässiger Syntax anzuzeigen. Um das Dialogfeld zu reduzieren und die Syntax auszublenden, wählen Sie den Linktitel erneut aus.
-
- 4. Wählen Sie **Fertig**aus.
-
-    Ein gültiges JSON-Beispiel für eine Listenentität **Farben** wird im folgenden Code im JSON-Format dargestellt:
+1. Wählen Sie ein Element in der empfohlenen Liste aus, um es als normalisierten Wert hinzuzufügen, oder wählen Sie **Alle hinzufügen** aus, um alle Elemente hinzuzufügen. 
+    Sie können Werte in eine vorhandene Listenentität importieren, indem Sie das folgende JSON-Format verwenden:
 
     ```
     [
@@ -228,33 +183,24 @@ Sie können Werte in eine vorhandene Listenentität importieren.
     ]  
     ```
 
-## <a name="edit-entity-name"></a>Bearbeiten des Entitätsnamens
-1. Wählen Sie auf der Seite **Entitäten** die Entität in der Liste aus. Damit gelangen Sie auf die **Entität**-Seite.
 
-2. Auf der **Entität**-Seite bearbeiten Sie den Namen der Entität, indem Sie das Bearbeitungssymbol neben dem Namen der Entität auswählen. Der Entitätstyp kann nicht bearbeitet werden. 
+## <a name="change-entity-type"></a>Ändern des Entitätstyps
 
-## <a name="delete-entity"></a>Löschen der Entität
-
-Wählen Sie auf der **Entität**-Seite die Schaltfläche **Entität löschen** aus. Wählen Sie dann in der Bestätigungsmeldung **OK** aus, um den Löschvorgang zu bestätigen.
- 
-![Screenshot der Location-Entitätsseite, wobei die Schaltfläche „Entität löschen“ hervorgehoben ist](./media/add-entities/entity-delete.png)
-
->[!NOTE]
->* Beim Löschen einer hierarchischen Entität werden alle untergeordneten Entitäten gelöscht.
->* Beim Löschen einer zusammengesetzten Entität werden nur die Zusammensetzung gelöscht und die Zusammensetzungsbeziehung aufgehoben, aber nicht die Entitäten gelöscht, die sie bilden.
-
-## <a name="changing-entity-type"></a>Ändern des Entitätstyps
 LUIS erlaubt Ihnen nicht, den Entitätstyps zu ändern, da die Anwendung nicht weiß, was zum Erstellen der Entität hinzugefügt oder entfernt werden muss. Um den Typ zu ändern, sollten Sie besser eine neue Entität des richtigen Typs mit einem etwas anderen Namen erstellen. Sobald die Entität erstellt ist, entfernen Sie in jeder Äußerung den alten bezeichnenden Entitätsnamen, und fügen Sie den neuen Entitätsnamen hinzu. Sobald alle Äußerungen ihre neuen Bezeichnungen erhalten haben, löschen Sie die alte Entität. 
 
 ## <a name="create-a-pattern-from-an-utterance"></a>Erstellen eines Musters aus einer Äußerung
+
 Weitere Informationen finden Sie unter [Hinzufügen eines Musters aus einer vorhandenen Äußerung auf der Seite der Absicht oder der Entität](luis-how-to-model-intent-pattern.md#add-pattern-from-existing-utterance-on-intent-or-entity-page).
 
-## <a name="search-utterances"></a>Durchsuchen von Äußerungen
-Sie können Äußerungen mit dem Lupensymbol auf der Symbolleiste durchsuchen und filtern. 
-
 ## <a name="train-your-app-after-changing-model-with-entities"></a>Trainieren Ihrer App nach dem Ändern des Modells mit Entitäten
+
 Nachdem Sie Entitäten hinzugefügt, bearbeitet oder entfernt haben, [trainieren](luis-how-to-train.md) und [veröffentlichen](luis-how-to-publish-app.md) Sie Ihre App, damit die Änderungen auf Endpunktabfragen angewandt werden. 
 
 ## <a name="next-steps"></a>Nächste Schritte
+
+Weitere Informationen zu vordefinierten Entitäten finden Sie unter dem Projekt [Recognizers-Text](https://github.com/Microsoft/Recognizers-Text). 
+
+Weitere Informationen zur Anzeige der Entität in der Antwort auf die JSON-Endpunktabfrage finden Sie unter [Extrahieren von Daten](luis-concept-data-extraction.md).
+
 Wenn Sie Absichten, Äußerungen und Entitäten hinzugefügt haben, verfügen Sie über eine einfache LUIS-App. Erfahren Sie, wie Sie Ihre App [trainieren](luis-how-to-train.md), [testen](luis-interactive-test.md) und [veröffentlichen](luis-how-to-publish-app.md) können.
  

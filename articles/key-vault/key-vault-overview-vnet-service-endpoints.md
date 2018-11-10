@@ -10,12 +10,12 @@ ms.date: 08/31/2018
 ms.service: key-vault
 ms.workload: identity
 ms.topic: conceptual
-ms.openlocfilehash: 9b0600a7afb07600116440461037c7abcb9236de
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 6e0029e051e418bc54471284547329a0b0a2e9cd
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49404323"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50246653"
 ---
 # <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Dienstendpunkte virtueller Netzwerke für Azure Key Vault
 
@@ -44,7 +44,7 @@ Es folgen die erforderlichen Schritte zum Konfigurieren von Firewalls und virtue
 Ausführliche Anweisungen finden Sie unter [Konfigurieren von Azure Key Vault-Firewalls und virtuellen Netzwerken](key-vault-network-security.md).
 
 > [!IMPORTANT]
-> Sobald Firewallregeln in Kraft sind, können alle Vorgänge auf Key Vault-[Datenebene](../key-vault/key-vault-secure-your-key-vault.md#data-plane-access-control) NUR ausgeführt werden, wenn Aufruferanforderungen aus zulässigen virtuellen Netzwerken oder IPV4-Adressbereichen stammen. Dies gilt auch für den Zugriff auf den Schlüsseltresor im Azure-Portal. Obwohl ein Benutzer im Azure-Portal zu einem Schlüsseltresor navigieren kann, kann er möglicherweise keine Schlüssel, Geheimnisse oder Zertifikate auflisten, wenn sein Clientcomputer nicht in der Zulassungsliste enthalten ist. Dies wirkt sich auch auf die Key Vault-Auswahl anderer Azure-Dienste aus. Benutzer können möglicherweise eine Liste von Schlüsseltresoren einsehen, aber keine Schlüssel auflisten, wenn Firewallregeln ihren Clientcomputer blockieren.
+> Sobald Firewallregeln in Kraft sind, können alle Vorgänge auf Key Vault-[Datenebene](../key-vault/key-vault-secure-your-key-vault.md#data-plane-access-control) NUR ausgeführt werden, wenn Aufruferanforderungen aus zulässigen virtuellen Netzwerken oder IPV4-Adressbereichen stammen. Weitere Informationen zur Verwaltungsebene und zur Datenebene finden Sie [in diesem Artikel](../key-vault/key-vault-secure-your-key-vault.md#management-plane-access-control). Dies gilt auch für den Zugriff auf den Schlüsseltresor über das Azure-Portal. Obwohl ein Benutzer im Azure-Portal zu einem Schlüsseltresor navigieren kann, kann er möglicherweise keine Schlüssel, Geheimnisse oder Zertifikate auflisten, wenn sein Clientcomputer nicht in der Zulassungsliste enthalten ist. Dies wirkt sich auch auf die Key Vault-Auswahl anderer Azure-Dienste aus. Benutzer können möglicherweise eine Liste von Schlüsseltresoren einsehen, aber keine Schlüssel auflisten, wenn Firewallregeln ihren Clientcomputer blockieren.
 
 
 > [!NOTE]

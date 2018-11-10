@@ -10,12 +10,12 @@ ms.component: core
 ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 9/24/2018
-ms.openlocfilehash: f221d160685dd12fb18a611432911baa60ebc6f7
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 4d25e147044053aa76afe2da482b71c24efc2325
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48888103"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51242873"
 ---
 # <a name="development-environment-for-azure-machine-learning"></a>Entwicklungsumgebung für Azure Machine Learning 
 
@@ -59,7 +59,7 @@ Wir empfehlen die Nutzung von [Visual Studio Code](https://code.visualstudio.com
 
 ## <a name="data-science-virtual-machine"></a>Virtueller Computer für Data Science
 
-Die DSVM (Data Science Virtual Machine) ist eine Kombination aus den vorherigen Umgebungen. Es handelt sich um eine VM auf der Azure Platform, für die Jupyter Notebooks, Visual Studio Code und das Azure Machine Learning SDK vorinstalliert sind. Das Erstellen der VM ist komplexer als mit Azure Notebooks, aber weniger komplex als die völlig neue Einrichtung eines Computers. Da die erforderliche Software auf dem VM-Image vorinstalliert ist, können Sie schnell mit dem Experimentieren mit Azure Machine Learning beginnen, nachdem die VM erstellt wurde.
+Die DSVM (Data Science Virtual Machine) ist eine Kombination aus den vorherigen Umgebungen. Es handelt sich um eine VM auf der Azure Platform, für die Jupyter Notebooks, Visual Studio Code und das Azure Machine Learning SDK vorinstalliert sind. Da die erforderliche Software auf dem VM-Image vorinstalliert ist, können Sie schnell mit dem Experimentieren mit Azure Machine Learning beginnen, nachdem die VM erstellt wurde.
 
 Mit der DSVM können Sie die benötigten Computeressourcen auswählen, z.B. CPU, GPU und Arbeitsspeicher. Außerdem sind noch andere Editoren vorinstalliert, z.B. PyCharm, sowie beliebte Machine Learning-Software wie TensorFlow, Keras und PyTorch. Falls die für Sie erforderliche Software nicht installiert ist, können Sie die Installation selbst durchführen.
 

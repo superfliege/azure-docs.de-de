@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: tutorial
 ms.date: 06/25/2018
 ms.author: panosper
-ms.openlocfilehash: 81449889ae9218f2b59ea48f10c676dcee9aa8b1
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 70fc9c34599f27eb5d67b79ef823f8037ae55ba9
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49466085"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50215241"
 ---
 # <a name="tutorial-create-a-custom-acoustic-model"></a>Tutorial: Erstellen eines benutzerdefinierten Akustikmodells
 
@@ -53,7 +53,7 @@ Ein Akustikdataset zur Anpassung des Akustikmodells besteht aus zwei Teilen: ein
 * Alle Audiodateien im Dataset sollten im Audioformat WAV (RIFF) gespeichert werden.
 * Die Audiodaten müssen mit einer Samplingrate von 8 oder 16 Kilohertz (kHz) vorliegen, und die Beispielwerte müssen als unkomprimierte 16-Bit-PCM-Ganzzahlen mit Vorzeichen (Shorts) gespeichert sein.
 * Es werden nur Audiodateien mit einem Kanal (Mono) unterstützt.
-* Die Audiodateien müssen eine Länge zwischen 100 Mikrosekunden und einer Minute haben. Jede Audiodatei sollte idealerweise mit 100 Mikrosekunden ohne Ton beginnen und enden. Ein Wert zwischen 500 Mikrosekunden und einer Sekunde ist üblich.
+* Die Audiodateien können zwischen 100 Mikrosekunden und 1 Minute lang sein. Die optimale Länge beträgt 10 bis 12 Sekunden. Jede Audiodatei sollte idealerweise mit 100 Mikrosekunden ohne Ton beginnen und enden. Ein Wert zwischen 500 Mikrosekunden und einer Sekunde ist üblich.
 * Falls in Ihren Daten Hintergrundgeräusche enthalten sind, sollten die Daten auch einige Beispiele mit längeren stillen Segmenten (beispielsweise einige Sekunden) vor und/oder nach dem Sprachinhalt enthalten.
 * Jede Audiodatei muss eine einzelne Äußerung darstellen. Dies kann beispielsweise ein Satz zum Diktieren, eine Abfrage oder ein Gesprächsbeitrag eines Sprachdialogsystems sein.
 * Jede Audiodatei im Dataset muss einen eindeutigen Dateinamen und die Erweiterung „.wav“ besitzen.
@@ -69,7 +69,7 @@ Ein Akustikdataset zur Anpassung des Akustikmodells besteht aus zwei Teilen: ein
 | Samplingrate | 8.000 Hertz (Hz) oder 16.000 Hz |
 | Kanäle | 1 (Mono) |
 | Beispielformat | PCM, 16-Bit-Ganzzahl |
-| Dateidauer | 0,1 Sekunden < Dauer < 60 Sekunden |
+| Dateidauer | 0,1 Sekunden < Dauer < 12 Sekunden | 
 | Ruhe | > 0,1 Sekunden |
 | Archivformat | .zip |
 | Maximale Archivgröße | 2 GB |

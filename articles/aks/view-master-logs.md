@@ -5,14 +5,14 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
-ms.date: 07/26/2018
+ms.date: 10/25/2018
 ms.author: iainfou
-ms.openlocfilehash: 7caa98b65b35d1eb1a000f1e9099fbf8eb3f8861
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: c3256b2b1e8be0e883d0f7b47e66ab1fee95b042
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49406040"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50138164"
 ---
 # <a name="enable-and-review-kubernetes-master-node-logs-in-azure-kubernetes-service-aks"></a>Aktivieren und Überprüfen der Kubernetes-Masterknotenprotokolle in Azure Kubernetes Service (AKS)
 
@@ -42,7 +42,7 @@ Der folgende Screenshot eines Beispielportals zeigt das Fenster *Diagnoseeinstel
 ![Aktivieren eines Log Analytics-Arbeitsbereichs für Log Analytics für einen AKS-Cluster](media/view-master-logs/enable-oms-log-analytics.png)
 
 >[!NOTE]
->OMS-Arbeitsbereiche werden jetzt als Log Analytics-Arbeitsbereiche bezeichnet. 
+>OMS-Arbeitsbereiche werden jetzt als Log Analytics-Arbeitsbereiche bezeichnet.
 
 ## <a name="schedule-a-test-pod-on-the-aks-cluster"></a>Planen eines Testpods im AKS-Cluster
 
@@ -82,7 +82,7 @@ Es kann einige Minuten dauern, bis die Diagnoseprotokolle aktiviert und im Log A
 
 ![Auswählen des Log Analytics-Arbeitsbereichs für Ihren AKS-Cluster](media/view-master-logs/select-log-analytics-workspace.png)
 
-Wählen Sie auf der linken Seite **Protokollsuche** aus. Geben Sie zum Anzeigen von *kube-apiserver* die folgende Abfrage in das Textfeld ein:
+Wählen Sie auf der linken Seite **Protokolle** aus. Geben Sie zum Anzeigen von *kube-apiserver* die folgende Abfrage in das Textfeld ein:
 
 ```
 AzureDiagnostics

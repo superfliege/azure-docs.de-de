@@ -8,12 +8,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 94f96d949f2a05f71e9565fdcbc7b48ed2c2a5c5
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: f1df22c505bffdfaf60bf9c6eec3ad4e698fff02
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46972658"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50139525"
 ---
 # <a name="azure-data-explorer-data-ingestion"></a>Datenerfassung im Azure-Daten-Explorer
 
@@ -60,9 +60,15 @@ Kusto bietet Client SDKs, die zum Erfassen und Abfragen von Daten mit folgenden 
 
 * [Java SDK](https://docs.microsoft.com/azure/kusto/api/java/kusto-java-client-library)
 
+* [Node SDK]
+
 * [REST-API](https://docs.microsoft.com/azure/kusto/api/netfx/kusto-ingest-client-rest)
 
 **Techniken der programmgesteuerten Erfassung**:
+
+* Erfassen von Daten über den Datenverwaltungsdienst von Azure-Daten-Explorer (mit hohem Durchsatz und zuverlässige Erfassung)
+
+  * [**Batch-Erfassung** ](https://docs.microsoft.com/azure/kusto/api/netfx/kusto-ingest-queued-ingest-sample) (bereitgestellt vom SDK): Der Client lädt die Daten auf den Azure Blob Storage hoch (der vom Datenverwaltungsdienst des Azure-Daten-Explorers angegeben wird) und sendet eine Benachrichtigung an eine Azure-Warteschlange. Dies ist die empfohlene Technik für die hochvolumige, zuverlässige und kostengünstige Datenerfassung.
 
 * Erfassen von Daten direkt in die Azure-Daten-Explorer-Engine (am besten geeignet für Untersuchungen und Prototyping):
 
@@ -71,10 +77,6 @@ Kusto bietet Client SDKs, die zum Erfassen und Abfragen von Daten mit folgenden 
   * **Erfassen aus der Abfrage**: Der Steuerbefehl (.set,.set,.set-or-append,.set-or-replace), der auf Abfrageergebnisse verweist, wird zum Erzeugen von Berichten oder kleinen temporären Tabellen verwendet.
 
   * **Erfassen aus dem Speicher**:Der Steuerbefehl (.ingest in) mit extern gespeicherten Daten (z.B. Azure Blob Storage) ermöglicht eine effiziente Massenaufnahme von Daten.
-
-* Erfassen von Daten über den Datenverwaltungsdienst von Azure-Daten-Explorer (mit hohem Durchsatz und zuverlässige Erfassung)
-
-  * [**Batch-Erfassung** ](https://docs.microsoft.com/azure/kusto/api/netfx/kusto-ingest-queued-ingest-sample) (bereitgestellt vom SDK): Der Client lädt die Daten auf den Azure Blob Storage hoch (der vom Datenverwaltungsdienst des Azure-Daten-Explorers angegeben wird) und sendet eine Benachrichtigung an eine Azure-Warteschlange. Dies ist die empfohlene Technik für die hochvolumige, zuverlässige und kostengünstige Datenerfassung.
 
 **Latenz der verschiedenen Methoden**:
 

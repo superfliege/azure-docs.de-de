@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 10/15/2018
 ms.author: tamram
-ms.openlocfilehash: ae6f7646192b7bee8cbd836f1eff3814c26a6b46
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: ed35380e66e6d5d59058552d8e0504220c100b73
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49427326"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50231388"
 ---
 # <a name="enable-azure-active-directory-authentication-over-smb-for-azure-files-preview"></a>Aktivieren der Azure Active Directory-Authentifizierung über SMB für Azure Files (Vorschau)
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
@@ -88,7 +88,11 @@ In der folgenden Abbildung ist dargestellt, wie Sie die Azure AD-Authentifizieru
   
 ### <a name="powershell"></a>PowerShell  
 
-Installieren Sie zuerst das Modul `AzureRM.Storage 6.0.0-preview`, um die Azure AD-Authentifizierung über SMB mit Azure PowerShell zu aktivieren. Weitere Informationen zum Installieren von PowerShell finden Sie unter [Installieren von Azure PowerShell unter Windows mit PowerShellGet](https://docs.microsoft.com/powershell/azure/install-azurerm-ps).
+Installieren Sie zuerst das Modul `AzureRM.Storage`, Version `6.0.0-preview`, um die Azure AD-Authentifizierung über SMB mit Azure PowerShell zu aktivieren. Weitere Informationen zum Installieren von PowerShell finden Sie unter [Installieren von Azure PowerShell unter Windows mit PowerShellGet](https://docs.microsoft.com/powershell/azure/install-azurerm-ps):
+
+```powershell
+Install-Module -Name AzureRM.Storage -RequiredVersion 6.0.0-preview -AllowPrerelease
+```
 
 Erstellen Sie als Nächstes ein neues Speicherkonto, und rufen Sie anschließend [Set-AzureRmStorageAccount](https://docs.microsoft.com/powershell/module/azurerm.storage/set-azurermstorageaccount) auf, und legen Sie den Parameter **EnableAzureFilesAadIntegrationForSMB** auf **true** fest. Denken Sie im folgenden Beispiel daran, die Platzhalterwerte durch Ihre eigenen Werte zu ersetzen.
 

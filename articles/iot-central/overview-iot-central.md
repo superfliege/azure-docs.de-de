@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: timlt
-ms.openlocfilehash: 8c369ab05059e57f2e2a98339052c27292ac7c0d
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 8240cf5beb50ef16aa2bd03415e6bbff9a2f4250
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34628775"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50158141"
 ---
 <!---
 Purpose of an Overview article: 
@@ -25,7 +25,7 @@ Purpose of an Overview article:
 
 # <a name="what-is-azure-iot-central"></a>Was ist Azure IoT Central?
 
-Microsoft Azure IoT Central ist eine vollständig verwaltete IoT-SaaS-Lösung (Software-as-a-Service) zur einfachen Erstellung von Produkten, die die physische mit der digitalen Welt verbinden. Setzen Sie Ihre Vision für verbundene Produkte um, indem Sie:
+Azure IoT Central ist eine vollständig verwaltete IoT-SaaS-Lösung (Software-as-a-Service) zur einfachen Erstellung von Produkten, die die physische mit der digitalen Welt verbinden. Setzen Sie Ihre Vision für verbundene Produkte um, indem Sie:
 
 - auf der Grundlage neuer Erkenntnisse, die Sie von verbundenen Geräten gewinnen, bessere Produkte und Erfahrungen für Ihre Kunden entwickeln.
 - neue Verkaufschancen für Ihre Organisation generieren.
@@ -65,7 +65,7 @@ Als Ersteller verwenden Sie Azure IoT Central, um eine benutzerdefinierte, in de
 - Eine cloudbasierte Anwendung, die Telemetriedaten von Ihren Geräten empfängt und die Verwaltung dieser Geräte ermöglicht
 - Mehrere Geräte, auf denen benutzerdefinierter Code ausgeführt wird und die mit Ihrer cloudbasierten Anwendung verbunden sind
 
-Sie können schnell eine neue Azure IoT Central-Anwendung bereitstellen und anschließend direkt in Ihrem Browser an Ihre spezifischen Anforderungen anpassen. Mithilfe der webbasierten Tools können Azure IoT Central-Ersteller eine _Gerätevorlage_ für die Geräte erstellen, die eine Verbindung mit der Anwendung herstellen. Bei einer Gerätevorlage handelt es sich um die Blaupause eines Gerätemodells, das alle auf der Grundlage der Gerätevorlage erstellten Geräte gemeinsam haben. Eine Gerätevorlage definiert die Merkmale und das Verhalten eines Gerätetyps. Hierzu zählt beispielsweise Folgendes:
+Sie können schnell eine neue Azure IoT Central-Anwendung bereitstellen und anschließend direkt in Ihrem Browser an Ihre spezifischen Anforderungen anpassen. Mithilfe der webbasierten Tools können Azure IoT Central-Ersteller eine _Gerätevorlage_ für die Geräte erstellen, die eine Verbindung mit der Anwendung herstellen. Eine Gerätevorlage ist die Blaupause eines Gerätemodells. Alle Geräte, die mit der gleichen Gerätevorlage erstellt wurden, verwenden die gleiche Vorlage. Eine Gerätevorlage definiert die Merkmale und das Verhalten eines Gerätetyps. Hierzu zählt beispielsweise Folgendes:
 
 - Die Telemetriedaten, die das Gerät sendet
 - Geschäftliche Eigenschaften, die ein Bediener ändern kann

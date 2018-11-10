@@ -1,29 +1,24 @@
 ---
-title: Verwenden von Wiederherstellungsplänen in Azure Site Recovery | Microsoft-Dokumentation
-description: Erfahren Sie mehr über Wiederherstellungspläne in Azure Site Recovery.
-services: site-recovery
-documentationcenter: ''
+title: Verwenden von Wiederherstellungsplänen bei der Notfallwiederherstellung mit Azure Site Recovery | Microsoft-Dokumentation
+description: Hier erfahren Sie, wie Sie Wiederherstellungspläne für die Notfallwiederherstellung mit dem Azure Site Recovery-Dienst verwenden.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.devlang: na
 ms.topic: article
-ms.date: 07/06/2018
+ms.date: 10/28/2018
 ms.author: raynew
-ms.openlocfilehash: 011c9acb5d34e15f65b64d59867e7501f0720a08
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 463a7fc51cac6160fbb97fc53077d0b5eda80533
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37920116"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50215190"
 ---
 # <a name="about-recovery-plans"></a>Informationen zu Wiederherstellungsplänen
 
 Dieser Artikel beschreibt Wiederherstellungspläne in [Azure Site Recovery](site-recovery-overview.md).
 
 Ein Wiederherstellungsplan fasst Computer in Wiederherstellungsgruppen zusammen. Sie können einen Plan anpassen, indem Sie ihn eine Reihenfolge, Anweisungen und Aufgaben hinzufügen. Nach dem Definieren eines Plans können Sie ein Failover für den Plan ausführen.
-
-
 
 
 

@@ -6,14 +6,14 @@ manager: timlt
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.topic: conceptual
-ms.date: 12/12/2017
+ms.date: 10/26/2018
 ms.author: dobett
-ms.openlocfilehash: ae5218bae12b9489d67b0264f0e5fdb6d833cb9e
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: 23b36fb647c2949dca1c5efe7f8194ec5a397965
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39187766"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50140399"
 ---
 # <a name="connected-factory-solution-accelerator-walkthrough"></a>Exemplarische Vorgehensweise zum Connected Factory-Solution Accelerator
 
@@ -53,7 +53,7 @@ Die Lösung verfügt auch über einen in eine Webanwendung integrierten OPC UA-C
 
 Die simulierten Stationen und die simulierten MES (Manufacturing Execution Systems) bilden eine Fertigungsstrecke in einem Werk. Die simulierten Geräte und das OPC Publisher-Modul basieren auf dem [.NET-Standard für OPC UA][lnk-OPC-UA-NET-Standard], der von OPC Foundation veröffentlicht wurde.
 
-OPC Proxy und OPC Publisher werden basierend auf [Azure IoT Edge][lnk-Azure-IoT-Gateway] als Module implementiert. An jede simulierte Fertigungsstrecke ist ein designiertes Gateway angefügt.
+OPC Proxy und OPC Publisher werden basierend auf [Azure IoT Edge][lnk-Azure-IoT-Gateway] als Module implementiert. An jede simulierte Fertigungsstrecke ist ein Gateway angefügt.
 
 Alle in Docker-Containern ausgeführten Simulationskomponenten werden auf einem virtuellen Azure-Computer unter Linux gehostet. Die Simulation ist standardmäßig für die Ausführung von acht simulierten Fertigungsstrecken konfiguriert.
 
@@ -69,7 +69,11 @@ Das MES überwacht jede Station der Fertigungsstrecke über OPC UA, um Statusän
 
 ## <a name="gateway-opc-publisher-module"></a>OPC Publisher-Gatewaymodul
 
-Das OPC Publisher-Modul stellt eine Verbindung mit den OPC UA-Servern der Stationen her und abonniert die zu veröffentlichenden OPC-Knoten. Das Modul konvertiert die Knotendaten ins JSON-Format, verschlüsselt sie und sendet sie als OPC UA-Nachrichten für Veröffentlichung/Abonnement an IoT Hub.
+Das OPC Publisher-Modul stellt eine Verbindung mit den OPC UA-Servern der Stationen her und abonniert die zu veröffentlichenden OPC-Knoten. Das Modul führt die folgenden Aufgaben aus:
+
+1. Konvertieren der Knotendaten ins JSON-Format
+1. Verschlüsseln des JSON-Codes
+1. Senden des JSON-Codes als OPC UA-Nachrichten für Veröffentlichung/Abonnement an IoT Hub
 
 Für das OPC Publisher-Modul ist nur ein ausgehender HTTPS-Port (443) erforderlich, und es kann mit der vorhandenen Unternehmensinfrastruktur verwendet werden.
 
@@ -77,7 +81,7 @@ Für das OPC Publisher-Modul ist nur ein ausgehender HTTPS-Port (443) erforderli
 
 Das OPC UA Proxy-Gatewaymodul tunnelt binäre Befehls- und Steuerungsnachrichten für OPC UA und erfordert lediglich einen ausgehenden HTTPS-Port (443). Es kann mit vorhandener Unternehmensinfrastruktur, einschließlich Webproxys, verwendet werden.
 
-Es nutzt IoT Hub-Gerätemethoden zum Übertragen zusammengefasster TCP/IP-Daten auf Anwendungsebene und stellt somit die Endpunktvertrauensstellung, Datenverschlüsselung und Integrität mithilfe von SSL/TLS sicher.
+Es nutzt IoT Hub-Gerätemethoden zum Übertragen zusammengefasster TCP/IP-Daten auf Anwendungsebene und stellt die Endpunktvertrauensstellung, Datenverschlüsselung und Integrität mithilfe von SSL/TLS sicher.
 
 Das über den Proxy selbst weitergeleitete OPC UA-Binärprotokoll nutzt UA-Authentifizierung und -Verschlüsselung.
 
@@ -95,11 +99,11 @@ IoT Hub stellt Azure TSI eine Ereignisquelle zur Verfügung. TSI speichert Daten
 
 Derzeit ermöglicht TSI Kunden nicht die Anpassung der Aufbewahrungsdauer für Daten.
 
-TSI führt mithilfe eines **SearchSpan**-Elements (**Time.From**, **Time.To**) Abfragen anhand von Knotendaten aus und aggregiert sie nach **OPC UA-Anwendungs-URI**, **OPC UA-Knoten-ID** oder **OPC UA-Anzeigename**.
+TSI führt mithilfe eines zeitbasierten **SearchSpan**-Elements Abfragen anhand von Knotendaten aus und aggregiert sie nach **OPC UA-Anwendungs-URI**, **OPC UA-Knoten-ID** oder **OPC UA-Anzeigename**.
 
-Zum Abrufen der Daten für die OEE- and KPI-Messgeräte sowie die Zeitreihendiagramme werden Daten anhand der Ereignisanzahl, Summe, des Durchschnittswerts und des Mindest- und Höchstwerts aggregiert.
+Zum Abrufen der Daten für die OEE- and KPI-Messgeräte sowie die Zeitreihendiagramme aggregiert die Lösung Daten anhand der Ereignisanzahl, **Summe**, des **Durchschnittswerts** und des **Mindestwerts** und **Höchstwerts**.
 
-Die Zeitreihen werden mit einem anderen Prozess erstellt. OEE und KPIs werden aus den Stationsbasisdaten berechnet und für die Topologie (Produktionslinien, Werke, Unternehmen) in der Anwendung hochgerechnet.
+Die Zeitreihen werden mit einem anderen Prozess erstellt. Die Lösung berechnet OEE- und KPI-Werte aus den Stationsbasisdaten und rechnet sie für die Produktionslinien, Werke und Unternehmen hoch.
 
 Darüber hinaus werden Zeitreihen für OEE- und KPI-Topologie in der App berechnet, wenn ein angezeigter Zeitraum verfügbar ist. Die Tagesansicht wird beispielsweise zu jeder vollen Stunde aktualisiert.
 
@@ -116,7 +120,7 @@ Zu den Aufgaben des IoT Hub in der Lösung zählen auch:
 Die Lösung nutzt Azure Blob Storage als Datenspeicher für den virtuellen Computer sowie zum Speichern von Bereitstellungsdaten.
 
 ## <a name="web-app"></a>Web-App
-Die als Teil des Solution Accelerators bereitgestellte Web-App setzt sich aus einem integrierten OPC UA-Client, der Warnungsverarbeitung und der Telemetrievisualisierung zusammen.
+Die als Teil des Solution Accelerators bereitgestellte Web-App beinhaltet einen integrierten OPC UA-Client, die Warnungsverarbeitung und die Telemetrievisualisierung.
 
 ## <a name="telemetry-data-flow"></a>Telemetriedatenfluss
 
@@ -161,7 +165,7 @@ Die als Teil des Solution Accelerators bereitgestellte Web-App setzt sich aus ei
     - Hierbei handelt es sich um einen internen Schritt innerhalb des Datencenters.
 
 11. Der Webbrowser stellt eine Verbindung mit der Connected Factory-Web-App her.
-    - Rendert das Connected Factory-Dashboard.
+    - Zeigt das Connected Factory-Dashboard an.
     - Stellt eine HTTPS-Verbindung her.
     - Der Zugriff auf die Connected Factory-App erfordert die Authentifizierung des Benutzers über Azure Active Directory.
     - An die Connected Factory-Web-App gerichtete WebApi-Aufrufe werden durch Fälschungssicherheitstoken geschützt.
@@ -184,7 +188,7 @@ Die als Teil des Solution Accelerators bereitgestellte Web-App setzt sich aus ei
     - Liest alle bekannten Geräte von IoT Hub.
     - Verwendet MQTT über TLS über Socket oder sicheren WebSocket.
 
-3. Der Webbrowser stellt eine Verbindung mit der Connected Factory-Web-App her und rendert das Connected Factory-Dashboard.
+3. Der Webbrowser stellt eine Verbindung mit der Connected Factory-Web-App her und zeigt das Connected Factory-Dashboard an.
     - Verwendet HTTPS.
     - Ein Benutzer wählt einen OPC UA-Server für die Verbindungsherstellung aus.
 
@@ -212,7 +216,7 @@ Die als Teil des Solution Accelerators bereitgestellte Web-App setzt sich aus ei
     - Diese Daten werden an den OPC UA-Stapel in der Connected Factory-Web-App gesendet.
 
 11. Die Connected Factory-Web-App gibt OPC-Browser-UX (angereichert mit den OPC UA-spezifischen Informationen des OPC UA-Servers) zum Rendern an den Webbrowser zurück.
-    - Beim Browsen durch den OPC-Adressraum und Anwenden von Funktionen auf Knoten im OPC-Adressraum verwendet der OPC-Browser-UX-Clientteil mit Fälschungssicherheitstoken geschützte AJAX-Aufrufe über HTTPS, um Daten aus der Connected Factory-Web-App abzurufen.
+    - Wenn ein Benutzer im OPC-Adressraum navigiert und Funktionen auf Knoten im OPC-Adressraum anwendet, verwendet der OPC-Browser-UX-Client mit Fälschungssicherheitstoken geschützte AJAX-Aufrufe über HTTPS, um Daten aus der Connected Factory-Web-App abzurufen.
     - Bei Bedarf verwendet der Client die in den Schritten 4 bis 10 beschriebene Kommunikation für den Informationsaustausch mit dem OPC UA-Server.
 
 > [!NOTE]

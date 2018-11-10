@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: 4f00268fcf3797697812f3aa8b221817a2794691
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 4dd54a4a4985a33bc14022d7f722bdf83224c4aa
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49092540"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51240850"
 ---
 # <a name="api-management-access-restriction-policies"></a>API Management-Richtlinien für die Zugriffsbeschränkung
-Dieses Thema bietet eine Referenz für die folgenden API Management-Richtlinien. Weitere Informationen zum Hinzufügen und Konfigurieren von Richtlinien finden Sie unter [Richtlinien in API Management](http://go.microsoft.com/fwlink/?LinkID=398186).  
+Dieses Thema bietet eine Referenz für die folgenden API Management-Richtlinien. Weitere Informationen zum Hinzufügen und Konfigurieren von Richtlinien finden Sie unter [Richtlinien in API Management](https://go.microsoft.com/fwlink/?LinkID=398186).  
   
 ##  <a name="AccessRestrictionPolicies"></a> Richtlinien für die Zugriffsbeschränkung  
   
@@ -71,7 +71,7 @@ Dieses Thema bietet eine Referenz für die folgenden API Management-Richtlinien.
 |ignore-case|Kann auf „true“ oder „false“ festgelegt werden. Wenn dieses Attribut auf „true“ festgelegt ist, wird beim Vergleichen des Headerwerts mit dem Satz zulässiger Werte die Groß- und Kleinschreibung ignoriert.|JA|N/V|  
   
 ### <a name="usage"></a>Verwendung  
- Diese Richtlinie kann in den folgenden [Abschnitten](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.  
+ Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.  
   
 -   **Richtlinienabschnitte**: inbound, outbound  
   
@@ -126,7 +126,7 @@ Dieses Thema bietet eine Referenz für die folgenden API Management-Richtlinien.
 |renewal-period|Der Zeitraum in Sekunden, nach dem das Kontingent zurückgesetzt wird.|JA|N/V|  
   
 ### <a name="usage"></a>Verwendung  
- Diese Richtlinie kann in den folgenden [Abschnitten](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.  
+ Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.  
   
 -   **Richtlinienabschnitte**: inbound  
   
@@ -181,7 +181,7 @@ Dieses Thema bietet eine Referenz für die folgenden API Management-Richtlinien.
 |renewal-period|Der Zeitraum in Sekunden, nach dem das Kontingent zurückgesetzt wird.|JA|N/V|  
   
 ### <a name="usage"></a>Verwendung  
- Diese Richtlinie kann in den folgenden [Abschnitten](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.  
+ Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.  
   
 -   **Richtlinienabschnitte**: inbound  
   
@@ -224,7 +224,7 @@ Dieses Thema bietet eine Referenz für die folgenden API Management-Richtlinien.
 |ip-filter action="allow &#124; forbid"|Gibt an, ob Aufrufe für die angegebenen IP-Adressen oder -Adressbereiche erlaubt oder blockiert werden sollen.|JA|N/V|  
   
 ### <a name="usage"></a>Verwendung  
- Diese Richtlinie kann in den folgenden [Abschnitten](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.  
+ Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.  
   
 -   **Richtlinienabschnitte**: inbound  
 -   **Richtlinienbereiche**: global, Produkt, API, Vorgang  
@@ -279,7 +279,7 @@ Dieses Thema bietet eine Referenz für die folgenden API Management-Richtlinien.
 |renewal-period|Der Zeitraum in Sekunden, nach dem das Kontingent zurückgesetzt wird.|JA|N/V|  
   
 ### <a name="usage"></a>Verwendung  
- Diese Richtlinie kann in den folgenden [Abschnitten](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.  
+ Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.  
   
 -   **Richtlinienabschnitte**: inbound  
 -   **Richtlinienbereiche**: Produkt  
@@ -336,7 +336,7 @@ Dieses Thema bietet eine Referenz für die folgenden API Management-Richtlinien.
 |renewal-period|Der Zeitraum in Sekunden, nach dem das Kontingent zurückgesetzt wird.|JA|N/V|  
   
 ### <a name="usage"></a>Verwendung  
- Diese Richtlinie kann in den folgenden [Abschnitten](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.  
+ Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.  
   
 -   **Richtlinienabschnitte**: inbound  
 -   **Richtlinienbereiche**: global, Produkt, API, Vorgang  
@@ -506,7 +506,7 @@ Dieses Thema bietet eine Referenz für die folgenden API Management-Richtlinien.
 |URL|URL des Open ID-Konfigurationsendpunkts, von dem die Open ID-Konfigurationsmetadaten abgerufen werden können. Die Antwort sollte den Spezifikationen entsprechen, wie sie unter URL:`https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata` definiert sind.  Verwenden Sie für Azure Active Directory diese URL: `https://login.microsoftonline.com/{tenant-name}/.well-known/openid-configuration`. Verwenden Sie dabei den Namen Ihres Verzeichnismandanten, z.B. `contoso.onmicrosoft.com`.|JA|N/V|  
   
 ### <a name="usage"></a>Verwendung  
- Diese Richtlinie kann in den folgenden [Abschnitten](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.  
+ Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.  
   
 -   **Richtlinienabschnitte**: inbound  
 -   **Richtlinienbereiche**: global, Produkt, API, Vorgang  

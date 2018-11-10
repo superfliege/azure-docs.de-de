@@ -6,27 +6,27 @@ manager: deshner
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/10/2018
+ms.date: 10/26/2018
 ms.author: dwalthermsft
-ms.openlocfilehash: aa5f6053bf1c98d2b84c02617da30f5d856ed3fc
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: f9a3d934de47630ac3fd2356001014d006c2a4eb
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49323791"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212266"
 ---
 # <a name="public-preview-service-limits"></a>Diensteinschränkungen der öffentlichen Vorschauversion
 
-Während der öffentlichen Vorschau (Public Preview) gelten für Azure Digital Twins temporäre Abonnement-, Instanz- und Anzahlgrenzwerte, die nachstehend beschrieben sind.
+Während der öffentlichen Vorschau (**Public Preview**) gelten für Azure Digital Twins temporäre Abonnement-, Instanz- und Anzahlgrenzwerte, die nachstehend beschrieben sind.
 
 Diese Einschränkungen gibt es, um das Kennenlernen des neuen Diensts und seiner zahlreichen Funktionen vereinfachen.
 
 > [!NOTE]
-> Diese Grenzwerte werden erhöht und/oder entfernt, wenn „Allgemeine Verfügbarkeit“ (General Availability, GA) gegeben ist.
+> Diese Grenzwerte werden erhöht oder entfernt, wenn **Allgemeine Verfügbarkeit** (General Availability, **GA**) gegeben ist.
 
 ## <a name="per-subscription-limits"></a>Grenzwerte pro Abonnement
 
-Während Public Preview kann in jedem Azure-Abonnement nur jeweils genau eine Azure Digital Twins-Instanz erstellt oder ausgeführt werden.
+Während der **Public Preview** kann in jedem Azure-Abonnement nur jeweils genau eine Azure Digital Twins-Instanz erstellt oder ausgeführt werden.
 
 > [!TIP]
 > Wenn Sie Ihre Instanz gelöscht haben, können Sie eine neue Instanz erstellen.
@@ -35,9 +35,9 @@ Während Public Preview kann in jedem Azure-Abonnement nur jeweils genau eine Az
 
 Der Reihe nach kann jede Azure Digital Twins-Instanz Folgendes haben:
 
-- Eine `IoTHub`-Ressource
-- Einen `EventHub`-Endpunkt für den Ereignistyp „DeviceMessage“
-- Bis zu drei `EventHub`-, `ServiceBus`- oder `EventGrid`-Endpunkte des Ereignistyps `SensorChange`, `SpaceChange`, `TopologyOperation` oder `UdfCustom`
+- Eine **IoTHub**-Ressource
+- Einen **EventHub**-Endpunkt für den Ereignistyp **DeviceMessage**
+- Bis zu drei **EventHub**-, **ServiceBus**- oder **EventGrid**-Endpunkte der Ereignistypen **SensorChange**, **SpaceChange**, **TopologyOperation** oder **UdfCustom**
 
 ## <a name="management-api-limits"></a>Verwaltungs-API-Grenzwerte
 
@@ -54,7 +54,7 @@ Die Anforderungsanzahlgrenzwerte für eine Verwaltungs-API sind wie folgt:
 Es gelten die folgenden Grenzwerte für die Gesamtanzahl der Aufrufe, die von benutzerdefinierten Funktionen an die Azure Digital Twins-Instanz gesendet werden:
 
 - 400 Clientbibliotheksaufrufe pro Sekunde
-- 100 SendNotification-Aufrufe pro Sekunde
+- 100 **SendNotification**-Aufrufe pro Sekunde
 
 > [!NOTE]
 > Die folgenden Aktionen können dazu führen, dass temporär zusätzliche Anzahlgrenzwerte wirksam werden:

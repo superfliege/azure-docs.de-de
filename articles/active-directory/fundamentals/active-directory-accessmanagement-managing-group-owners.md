@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: lizross
 ms.custom: it-pro
-ms.openlocfilehash: f546ea5b5f9288849334d27cd1721f0c22fb8806
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: fae68bccbeaa54ca1bab9d77510fe6baecd11fcc
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46297774"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50139719"
 ---
 # <a name="how-to-add-or-remove-group-owners-in-azure-active-directory"></a>Hinzufügen oder Entfernen von Gruppenbesitzern in Azure Active Directory
 Azure AD-Gruppen (Azure Active Directory) befinden sich im Besitz von Gruppenbesitzern und werden von diesen verwaltet. Gruppenbesitzer werden von einem Ressourcenbesitzer (Administrator) zugewiesen, um eine Gruppe und deren Mitglieder zu verwalten. Die Gruppenbesitzer müssen der Gruppe nicht angehören. Nachdem ein Gruppenbesitzer zugewiesen wurde, können Besitzer nur durch einen Ressourcenbesitzer hinzugefügt oder entfernt werden.
@@ -29,7 +29,7 @@ Fügen Sie einer Gruppe mithilfe von Azure AD weitere Gruppenbesitzer hinzu.
 ### <a name="to-add-a-group-owner"></a>So fügen Sie einen Gruppenbesitzer hinzu
 1. Melden Sie sich mit dem Konto eines globalen Administrators für das Verzeichnis beim [Azure-Portal](https://portal.azure.com) an.
 
-2. Klicken Sie auf **Azure Active Directory**, klicken Sie auf **Gruppen**, und wählen Sie anschließend die Gruppe aus, der Sie einen Besitzer hinzufügen möchten. (In diesem Beispiel wird _MDM policy - West_ verwendet.)
+2. Klicken Sie auf **Azure Active Directory**, klicken Sie auf **Gruppen**, und wählen Sie anschließend die Gruppe aus, der Sie einen Besitzer hinzufügen möchten. (In diesem Beispiel wird *MDM policy - West* verwendet.)
 
 3. Klicken Sie auf der Übersichtsseite für **MDM policy - West** auf **Besitzer**.
 
@@ -47,7 +47,7 @@ Entfernen Sie einen Besitzer mithilfe von Azure AD aus einer Gruppe.
 ### <a name="to-remove-an-owner"></a>So entfernen Sie einen Besitzer
 1. Melden Sie sich mit dem Konto eines globalen Administrators für das Verzeichnis beim [Azure-Portal](https://portal.azure.com) an.
 
-2. Klicken Sie auf **Azure Active Directory**, klicken Sie auf **Gruppen**, und wählen Sie anschließend die Gruppe aus, der Sie einen Besitzer hinzufügen möchten. (In diesem Beispiel wird _MDM policy - West_ verwendet.)
+2. Wählen Sie **Azure Active Directory** > **Gruppen** und anschließend die Gruppe aus, aus der Sie einen Besitzer löschen möchten. (In diesem Beispiel wird *MDM policy - West* (MDM-Richtlinie – Westen) verwendet.)
 
 3. Klicken Sie auf der Übersichtsseite für **MDM policy - West** auf **Besitzer**.
 

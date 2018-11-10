@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: automation
 ms.component: process-automation
 ms.custom: mvc
-ms.openlocfilehash: 701d2c348e91efed17c8c7828ace920914093b5a
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 6d473d8874208297e905a5d90a08ffd870ffa8a6
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49426191"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50091823"
 ---
 # <a name="create-an-azure-automation-account"></a>Erstellen eines Azure Automation-Kontos
 
@@ -35,6 +35,9 @@ Melden Sie sich unter https://portal.azure.com bei Azure an.
 1. Geben Sie die Kontoinformationen ein. Wählen Sie für **Ausführendes Azure-Konto erstellen** die Option **Ja**, damit die Artefakte zum Vereinfachen der Authentifizierung für Azure automatisch aktiviert werden. Beachten Sie beim Erstellen eines Automation-Kontos unbedingt, dass der Name nach dem Auswählen nicht geändert werden kann. Ein Automation-Konto kann Ressourcen in allen Regionen und Abonnements für einen bestimmten Mandanten verwalten. Klicken Sie nach Abschluss des Vorgangs auf **Erstellen**, um die Bereitstellung des Automation-Kontos zu starten.
 
     ![Eingeben von Informationen zu Ihrem Automation-Konto auf der Seite](./media/automation-quickstart-create-account/create-automation-account-portal-blade.png)  
+
+    > [!NOTE]
+    > Eine aktualisierte Liste mit Standorten, an denen Sie ein Automation-Konto bereitstellen können, finden Sie unter [Verfügbare Produkte nach Region](https://azure.microsoft.com/en-us/global-infrastructure/services/?products=automation&regions=all).
 
 1. Klicken Sie nach Abschluss der Bereitstellung auf ** **Alle Dienste**, und wählen Sie **Automation-Konten** und anschließend das von Ihnen erstellte Automation-Konto.
 

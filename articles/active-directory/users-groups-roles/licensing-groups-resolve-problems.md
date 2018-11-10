@@ -11,15 +11,15 @@ ms.service: active-directory
 ms.component: users-groups-roles
 ms.topic: article
 ms.workload: identity
-ms.date: 06/05/2017
+ms.date: 10/29/2018
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5d64cf71ea3a44b7539835e3616150218e8b3635
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: ee441a8c9a0d8a70a2797f090a143189cdb6872a
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37861231"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50211535"
 ---
 # <a name="identify-and-resolve-license-assignment-problems-for-a-group-in-azure-active-directory"></a>Identifizieren und Beheben von Lizenzzuweisungsproblemen für eine Gruppe in Azure Active Directory
 
@@ -97,6 +97,19 @@ Sie können dieses Problem beheben, indem Sie Benutzer aus den nicht unterstütz
 > [!NOTE]
 > Wenn von Azure AD Gruppenlizenzen zugewiesen werden, erben alle Benutzer ohne Verwendungsstandort den Standort des Verzeichnisses. Es wird empfohlen, dass Administratoren die richtigen Werte für den Verwendungsstandort von Benutzern festlegen, bevor sie die gruppenbasierte Lizenzierung verwenden, um die vor Ort geltenden Gesetze und Bestimmungen zu erfüllen.
 
+## <a name="duplicate-proxy-addresses"></a>Doppelte Proxyadressen
+
+Bei Verwendung von Exchange Online sind unter Umständen einige Benutzer in Ihrem Mandanten fälschlicherweise mit dem gleichen Proxyadresswert konfiguriert. Wenn bei der gruppenbasierten Lizenzierung versucht wird, einem dieser Benutzer eine Lizenz zuzuweisen, tritt ein Fehler auf, und ein Hinweis der Art „Proxyadresse wird bereits verwendet“ wird angezeigt.
+
+> [!TIP]
+> Um zu ermitteln, ob eine doppelte Proxyadresse vorhanden ist, führen Sie das folgende PowerShell-Cmdlet für Exchange Online aus:
+```
+Run Get-Recipient | where {$_.EmailAddresses -match "user@contoso.onmicrosoft.com"} | fL Name, RecipientType,emailaddresses
+```
+> Weitere Informationen zu diesem Problem finden Sie unter ["Proxy address is already being used" error message in Exchange Online](https://support.microsoft.com/help/3042584/-proxy-address-address-is-already-being-used-error-message-in-exchange-online) (Fehlermeldung „Proxyadresse wird bereits verwendet“ in Exchange Online). Der Artikel enthält auch Informationen zum [Herstellen einer Verbindung mit Exchange Online mithilfe einer PowerShell-Remotesitzung](https://technet.microsoft.com/library/jj984289.aspx). Weitere Informationen finden Sie im Artikel zum Thema [Auffüllen des proxyAddresses-Attributs in Azure AD](https://support.microsoft.com/help/3190357/how-the-proxyaddresses-attribute-is-populated-in-azure-ad).
+
+Nachdem Sie die Probleme mit den Proxyadressen für die betroffenen Benutzer behoben haben, erzwingen Sie die Lizenzverarbeitung für diese Gruppe, um sicherzustellen, dass die Lizenzen nun zugewiesen werden können.
+
 ## <a name="what-happens-when-theres-more-than-one-product-license-on-a-group"></a>Was geschieht, wenn mehr als eine Produktlizenz für eine Gruppe vorhanden ist?
 
 Sie können einer Gruppe mehr als eine Produktlizenz zuweisen. Beispielsweise können Sie Office 365 Enterprise E3 und Enterprise Mobility + Security einer Gruppe zuweisen, um alle enthaltenen Dienste den Benutzern mühelos zur Verfügung zu stellen.
@@ -134,19 +147,7 @@ Ab jetzt verwenden alle Benutzer, die dieser Gruppe hinzugefügt werden, eine Li
 > [!TIP]
 > Für jeden Dienstplan mit Voraussetzungen können mehrere Gruppen erstellt werden. Wenn Sie für Ihre Benutzer sowohl „Office 365 Enterprise E1“ als auch „Office 365 Enterprise E3“ verwenden, können Sie zwei Gruppen erstellen, um Microsoft Workplace Analytics zu lizenzieren: eine mit E1 als Voraussetzung und die andere mit E3. So können Sie das Add-On auf E1- und E3-Benutzer verteilen, ohne zusätzliche Lizenzen zu verbrauchen.
 
-## <a name="license-assignment-fails-silently-for-a-user-due-to-duplicate-proxy-addresses-in-exchange-online"></a>Die Lizenzzuweisung zu einem Benutzer schlägt ohne Fehlermeldung fehl wegen doppelter Proxyadressen in Exchange Online
 
-Bei Verwendung von Exchange Online sind unter Umständen einige Benutzer in Ihrem Mandanten fälschlicherweise mit dem gleichen Proxyadresswert konfiguriert. Wenn die gruppenbasierte Lizenzierung versucht, einem solchen Benutzer eine Lizenz zuweisen, tritt ein Fehler auf. Dieser Fehler wird nicht erfasst. Die Nichterfassung des Fehlers ist eine Einschränkung in der Vorschauversion dieses Features, die vor der *allgemeinen Verfügbarkeit* noch behoben wird.
-
-> [!TIP]
-> Wenn Sie feststellen, dass einige Benutzer keine Lizenz erhalten haben und für diese Benutzer kein Fehler erfasst wurde, überprüfen Sie zunächst, ob bei diesen Benutzern doppelte Proxyadressen vorhanden sind.
-> Um zu ermitteln, ob eine doppelte Proxyadresse vorhanden ist, führen Sie das folgende PowerShell-Cmdlet für Exchange Online aus:
-```
-Run Get-Recipient | where {$_.EmailAddresses -match "user@contoso.onmicrosoft.com"} | fL Name, RecipientType,emailaddresses
-```
-> Weitere Informationen zu diesem Problem finden Sie unter ["Proxy address is already being used" error message in Exchange Online](https://support.microsoft.com/help/3042584/-proxy-address-address-is-already-being-used-error-message-in-exchange-online) (Fehlermeldung „Proxyadresse wird bereits verwendet“ in Exchange Online). Der Artikel enthält auch Informationen zum [Herstellen einer Verbindung mit Exchange Online mithilfe einer PowerShell-Remotesitzung](https://technet.microsoft.com/library/jj984289.aspx).
-
-Nachdem Sie die Probleme mit den Proxyadressen für die betroffenen Benutzer behoben haben, erzwingen Sie die Lizenzverarbeitung für diese Gruppe, um sicherzustellen, dass die Lizenzen nun zugewiesen werden können.
 
 ## <a name="how-do-you-force-license-processing-in-a-group-to-resolve-errors"></a>Wie können Sie die Lizenzverarbeitung für eine Gruppe durchsetzen, um Fehler zu beheben?
 
@@ -154,11 +155,19 @@ Je nachdem, welche Maßnahmen Sie ergriffen haben, um die Fehler zu beheben, mü
 
 Wenn Sie beispielsweise einige Lizenzen freigegeben haben, indem Sie direkte Zuweisungen von Lizenzen für Benutzer entfernt haben, müssen Sie die Verarbeitung von Gruppen auslösen, für die zuvor ein Fehler aufgetreten ist. Nur so erreichen Sie die vollständige Versorgung von Benutzern mit Lizenzen. Navigieren Sie zum erneuten Verarbeiten einer Gruppe zum Namen der Gruppe, öffnen Sie **Lizenzen**, und klicken Sie auf der Symbolleiste auf **Erneut verarbeiten**.
 
+## <a name="how-do-you-force-license-processing-on-a-user-to-resolve-errors"></a>Wie können Sie die Lizenzverarbeitung für einen Benutzer durchsetzen, um Fehler zu beheben?
+
+Je nachdem, welche Maßnahmen Sie ergriffen haben, um die Fehler zu beheben, müssen Sie die Verarbeitung eines Benutzers ggf. manuell auslösen, um den Benutzerzustand zu aktualisieren.
+
+Sie müssen beispielsweise die Verarbeitung des Benutzers auslösen, nachdem Sie das Problem mit der doppelten Proxyadresse für einen betroffenen Benutzer behoben haben. Navigieren Sie zum erneuten Verarbeiten eines Benutzers zum entsprechenden Benutzerbereich, öffnen Sie **Lizenzen**, und klicken Sie auf der Symbolleiste auf **Erneut verarbeiten**.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen zu anderen Szenarien für die Lizenzverwaltung über Gruppen finden Sie unter:
 
-* [Zuweisen von Lizenzen zu einer Gruppe in Azure Active Directory](licensing-groups-assign.md)
 * [Was ist die gruppenbasierte Lizenzierung in Azure Active Directory?](../fundamentals/active-directory-licensing-whatis-azure-portal.md)
+* [Zuweisen von Lizenzen zu einer Gruppe in Azure Active Directory](licensing-groups-assign.md)
 * [Migrieren einzelner lizenzierter Benutzer zur gruppenbasierten Lizenzierung in Azure Active Directory](licensing-groups-migrate-users.md)
+* [Sicheres Migrieren von Benutzern zwischen Produktlizenzen mithilfe von gruppenbasierter Lizenzierung in Azure Active Directory](licensing-groups-change-licenses.md)
 * [Gruppenbasierte Azure Active Directory-Lizenzierung – zusätzliche Szenarien](licensing-group-advanced.md)
+* [PowerShell-Beispiele für die gruppenbasierte Lizenzierung in Azure AD](licensing-ps-examples.md)

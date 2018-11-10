@@ -5,17 +5,16 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 10/2/2018
+ms.date: 10/27/2018
 ms.author: victorh
-ms.openlocfilehash: 27221ac4b23f52dd6976a959e6e5529eb0cc89fa
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 3c225e6fbfb13c04d650b8e6b72ee18d23139a8e
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48856070"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50158957"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-in-a-hybrid-network-using-azure-powershell"></a>Tutorial: Bereitstellen und Konfigurieren von Azure Firewall in einem Hybridnetzwerk mit Azure PowerShell
-
 
 In diesem Tutorial lernen Sie Folgendes:
 
@@ -49,6 +48,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 [!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
 
 ## <a name="declare-the-variables"></a>Deklarieren der Variablen
+
 Im folgenden Beispiel werden die Variablen mit den Werten für dieses Tutorial deklariert. In den meisten Fällen sollten Sie die Werte durch Ihre eigenen Werte ersetzen. Sie können diese Variablen jedoch verwenden, wenn Sie die Schritte nur durchgehen, um sich mit dieser Art von Konfiguration vertraut zu machen. Ändern Sie die Variablen ggf., kopieren Sie sie, und fügen Sie sie in die PowerShell-Konsole ein.
 
 ```azurepowershell
@@ -91,6 +91,7 @@ $SNnameGW = "GatewaySubnet"
 ```
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
+
 Erstellen Sie eine Ressourcengruppe für alle Ressourcen, die für dieses Tutorial erforderlich sind:
 
 ```azurepowershell
@@ -112,12 +113,14 @@ Erstellen Sie als Nächstes das Firewall-Hub-VNET:
 $VNetHub = New-AzureRmVirtualNetwork -Name $VNetnameHub -ResourceGroupName $RG1 `
 -Location $Location1 -AddressPrefix $VNetHubPrefix -Subnet $FWsub,$GWsub
 ```
+
 Fordern Sie eine öffentliche IP-Adresse an, die dem VPN-Gateway zugewiesen wird, das Sie für Ihr VNet erstellen. Beachten Sie, dass *AllocationMethod* auf **Dynamic** festgelegt ist. Es ist nicht möglich, die IP-Adresse selbst anzugeben. Sie wird Ihrem VPN-Gateway dynamisch zugewiesen. 
 
   ```azurepowershell
   $gwpip1 = New-AzureRmPublicIpAddress -Name $GWHubpipName -ResourceGroupName $RG1 `
   -Location $Location1 -AllocationMethod Dynamic
 ```
+
 ## <a name="create-and-configure-the-spoke-vnet"></a>Erstellen und Konfigurieren des Spoke-VNET
 
 Definieren Sie die einzufügenden Subnetze im Spoke-VNET:
@@ -149,6 +152,7 @@ Erstellen Sie nun das lokale VNET:
 $VNetOnprem = New-AzureRmVirtualNetwork -Name $VNetnameOnprem -ResourceGroupName $RG1 `
 -Location $Location1 -AddressPrefix $VNetOnpremPrefix -Subnet $Onpremsub,$GWOnpremsub
 ```
+
 Fordern Sie eine öffentliche IP-Adresse an, die dem Gateway zugewiesen wird, das Sie für das VNET erstellen. Beachten Sie, dass *AllocationMethod* auf **Dynamic** festgelegt ist. Es ist nicht möglich, die IP-Adresse selbst anzugeben. Sie wird Ihrem Gateway dynamisch zugewiesen. 
 
   ```azurepowershell
@@ -176,32 +180,20 @@ $AzfwPrivateIP
 
 ### <a name="configure-network-rules"></a>Konfigurieren von Netzwerkregeln
 
-<!--- $Rule2 = New-AzureRmFirewallNetworkRule -Name "AllowPing" -Protocol ICMP -SourceAddress $SNOnpremPrefix `
+<!--- $Rule3 = New-AzureRmFirewallNetworkRule -Name "AllowPing" -Protocol ICMP -SourceAddress $SNOnpremPrefix `
    -DestinationAddress $VNetSpokePrefix -DestinationPort *--->
 
 ```azurepowershell
 $Rule1 = New-AzureRmFirewallNetworkRule -Name "AllowWeb" -Protocol TCP -SourceAddress $SNOnpremPrefix `
    -DestinationAddress $VNetSpokePrefix -DestinationPort 80
 
-$Rule3 = New-AzureRmFirewallNetworkRule -Name "AllowRDP" -Protocol TCP -SourceAddress $SNOnpremPrefix `
+$Rule2 = New-AzureRmFirewallNetworkRule -Name "AllowRDP" -Protocol TCP -SourceAddress $SNOnpremPrefix `
    -DestinationAddress $VNetSpokePrefix -DestinationPort 3389
 
 $NetRuleCollection = New-AzureRmFirewallNetworkRuleCollection -Name RCNet01 -Priority 100 `
-   -Rule $Rule1,$Rule2,$Rule3 -ActionType "Allow"
+   -Rule $Rule1,$Rule2 -ActionType "Allow"
 $Azfw.NetworkRuleCollections = $NetRuleCollection
 Set-AzureRmFirewall -AzureFirewall $Azfw
-```
-### <a name="configure-an-application-rule"></a>Konfigurieren einer Anwendungsregel
-
-```azurepowershell
-$Rule4 = New-AzureRmFirewallApplicationRule -Name "AllowBing" -Protocol "Http:80","Https:443" `
-   -SourceAddress $SNOnpremPrefix -TargetFqdn "bing.com"
-
-$AppRuleCollection = New-AzureRmFirewallApplicationRuleCollection -Name RCApp01 -Priority 100 `
-   -Rule $Rule4 -ActionType "Allow"
-$Azfw.ApplicationRuleCollections = $AppRuleCollection
-Set-AzureRmFirewall -AzureFirewall $Azfw
-
 ```
 
 ## <a name="create-and-connect-the-vpn-gateways"></a>Erstellen und Verbinden der VPN-Gateways
@@ -245,10 +237,13 @@ New-AzureRmVirtualNetworkGateway -Name $GWOnpremName -ResourceGroupName $RG1 `
 -Location $Location1 -IpConfigurations $gwipconf2 -GatewayType Vpn `
 -VpnType RouteBased -GatewaySku basic
 ```
+
 ### <a name="create-the-vpn-connections"></a>Erstellen der VPN-Verbindungen
+
 Jetzt können Sie die VPN-Verbindungen zwischen den Hub- und lokalen Gateways erstellen.
 
 #### <a name="get-the-vpn-gateways"></a>Abrufen der VPN-Gateways
+
 ```azurepowershell
 $vnetHubgw = Get-AzureRmVirtualNetworkGateway -Name $GWHubName -ResourceGroupName $RG1
 $vnetOnpremgw = Get-AzureRmVirtualNetworkGateway -Name $GWOnpremName -ResourceGroupName $RG1
@@ -270,8 +265,9 @@ Erstellen Sie Verbindung zwischen dem lokalen VNET und dem Hub-VNET. Dieser Schr
   -VirtualNetworkGateway1 $vnetOnpremgw -VirtualNetworkGateway2 $vnetHubgw -Location $Location1 `
   -ConnectionType Vnet2Vnet -SharedKey 'AzureA1b2C3'
   ```
+
 #### <a name="verify-the-connection"></a>Überprüfen der Verbindung
- 
+
 Sie können überprüfen, ob die Verbindungserstellung erfolgreich war, indem Sie das Cmdlet *Get-AzureRmVirtualNetworkGatewayConnection* mit oder ohne den Zusatz *-Debug* verwenden. Verwenden Sie das folgende Cmdlet-Beispiel, und konfigurieren Sie die Werte so, dass sie Ihren eigenen Werten entsprechen. Wählen Sie bei entsprechender Aufforderung **A** (für **Alle**), um alles auszuführen. In dem Beispiel verweist *-Name* auf den Namen der Verbindung, die Sie testen möchten.
 
 ```azurepowershell
@@ -286,8 +282,6 @@ Zeigen Sie die Werte an, nachdem der Cmdlet-Vorgang beendet wurde. Im folgenden 
 "egressBytesTransferred": 4142431
 ```
 
-
-
 ## <a name="peer-the-hub-and-spoke-vnets"></a>Durchführen des Peerings für Hub- und Spoke-VNETs
 
 Führen Sie jetzt das Peering für die Spoke- und Hub-VNETs durch.
@@ -299,9 +293,11 @@ Add-AzureRmVirtualNetworkPeering -Name HubtoSpoke -VirtualNetwork $VNetHub -Remo
 # Peer spoke to hub
 Add-AzureRmVirtualNetworkPeering -Name SpoketoHub -VirtualNetwork $VNetSpoke -RemoteVirtualNetworkId $VNetHub.Id -AllowForwardedTraffic -UseRemoteGateways
 ```
+
 ## <a name="create-routes"></a>Erstellen von Routen
 
-Erstellen Sie als Nächstes zwei Routen: 
+Erstellen Sie als Nächstes zwei Routen:
+
 - Eine Route vom Hub-Gatewaysubnetz zum Spoke-Subnetz über die Firewall-IP-Adresse
 - Eine Standardroute vom Spoke-Subnetz über die Firewall-IP-Adresse
 
@@ -364,16 +360,18 @@ Set-AzureRmVirtualNetworkSubnetConfig `
   -RouteTable $routeTableSpokeDG | `
 Set-AzureRmVirtualNetwork
 ```
+
 ## <a name="create-virtual-machines"></a>Erstellen von virtuellen Computern
 
 Erstellen Sie nun die Spoke-Workload-VMs und lokalen VMs, und platzieren Sie sie in den entsprechenden Subnetzen.
 
 ### <a name="create-the-workload-virtual-machine"></a>Erstellen des virtuellen Workloadcomputers
+
 Erstellen Sie einen virtuellen Computer im Spoke-VNET, für den IIS ausgeführt wird, keine öffentliche IP-Adresse vorhanden ist und eingehende Pings zulässig sind.
 Geben Sie bei entsprechender Aufforderung einen Benutzernamen und das Kennwort für den virtuellen Computer ein.
 
 ```azurepowershell
-# Create an inbound network security group rule for port 3389
+# Create an inbound network security group rule for ports 3389 and 80
 $nsgRuleRDP = New-AzureRmNetworkSecurityRuleConfig -Name Allow-RDP  -Protocol Tcp `
   -Direction Inbound -Priority 200 -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix $SNSpokePrefix -DestinationPortRange 3389 -Access Allow
 $nsgRuleWeb = New-AzureRmNetworkSecurityRuleConfig -Name Allow-web  -Protocol Tcp `
@@ -417,9 +415,10 @@ Set-AzureRmVMExtension `
     -SettingString '{"commandToExecute":"powershell New-NetFirewallRule –DisplayName “Allow ICMPv4-In” –Protocol ICMPv4"}' `
     -Location $Location1--->
 
-
 ### <a name="create-the-onprem-virtual-machine"></a>Erstellen des lokalen virtuellen Computers
+
 Dies ist ein einfacher virtueller Computer, mit dem Sie eine Verbindung herstellen können, indem Sie eine Remotedesktopverbindung mit der öffentlichen IP-Adresse herstellen. Von dort aus können Sie dann über die Firewall eine Verbindung mit dem lokalen Server herstellen. Geben Sie bei entsprechender Aufforderung einen Benutzernamen und das Kennwort für den virtuellen Computer ein.
+
 ```azurepowershell
 New-AzureRmVm `
     -ResourceGroupName $RG1 `
@@ -432,6 +431,7 @@ New-AzureRmVm `
 ```
 
 ## <a name="test-the-firewall"></a>Testen der Firewall
+
 Rufen Sie zuerst die private IP-Adresse für den virtuellen Computer **VM-spoke-01** ab, und notieren Sie sie.
 
 ```azurepowershell
@@ -462,17 +462,14 @@ Damit haben Sie sich vergewissert, dass die Firewallregeln funktionieren:
 $rcNet = $azfw.GetNetworkRuleCollectionByName("RCNet01")
 $rcNet.action.type = "Deny"
 
-$rcApp = $azfw.GetApplicationRuleCollectionByName("RCApp01")
-$rcApp.action.type = "Deny"
-
 Set-AzureRmFirewall -AzureFirewall $azfw
 ```
+
 Führen Sie die Tests nun erneut durch. Dieses Mal sollten alle Tests fehlschlagen. Schließen Sie alle vorhandenen Remotedesktops, bevor Sie die geänderten Regeln testen.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
 Sie können die Firewallressourcen für das nächste Tutorial behalten oder die Ressourcengruppe **FW-Hybrid-Test** löschen, wenn Sie sie nicht mehr benötigen. Hierdurch werden alle firewallbezogenen Ressourcen gelöscht.
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 

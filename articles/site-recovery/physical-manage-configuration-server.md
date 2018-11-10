@@ -1,18 +1,18 @@
 ---
-title: " Verwalten des Konfigurationsservers für die Notfallwiederherstellung von physischen Servern mit Azure Site Recovery | Microsoft-Dokumentation"
-description: In diesem Artikel wird beschrieben, wie Sie einen vorhandenen Konfigurationsserver für die Notfallwiederherstellung von physischen Servern in Azure mit dem Azure Site Recovery-Dienst verwalten.
+title: Verwalten des Konfigurationsservers für die Notfallwiederherstellung von lokalen physischen Servern in Azure mit Azure Site Recovery | Microsoft-Dokumentation
+description: In diesem Artikel wird beschrieben, wie Sie den Azure Site Recovery-Konfigurationsserver für die Notfallwiederherstellung von physischen Servern in Azure verwalten.
 services: site-recovery
-author: AnoopVasudavan
+author: Rajeswari-Mamilla
 ms.service: site-recovery
 ms.topic: article
-ms.date: 07/06/2018
-ms.author: anoopkv
-ms.openlocfilehash: 068d2774791995fab1c07c73e6d733a6e09379f1
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.date: 10/29/2018
+ms.author: ramamill
+ms.openlocfilehash: 4bf9277598c3e56c0429dddcb2204cb1338a33be
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37951175"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50213252"
 ---
 # <a name="manage-the-configuration-server-for-physical-server-disaster-recovery"></a>Verwalten des Konfigurationsservers für die Notfallwiederherstellung von physischen Servern
 

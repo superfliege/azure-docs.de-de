@@ -13,14 +13,14 @@ ms.workload: web
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 05/11/2018
+ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 7aa5b00d1497e384377ba4423431eac57c1aa4c9
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 8cc47fc7ec60027851525b98cdf95e7d534ea556
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39630402"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50241853"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Häufig gestellte Fragen zur Konfiguration und Verwaltung von Web-Apps in Azure
 
@@ -292,7 +292,7 @@ Beim Erstellen einer neuen Website mithilfe von Web-Apps in Azure wird Ihrer Web
 
 ## <a name="how-do-i-determine-which-version-of-net-version-is-installed-in-app-service"></a>Wie erkenne ich, welche .NET-Version in App Service installiert ist?
 
-Die schnellste Methode, die Version von Microsoft .NET zu bestimmen, die in App Service installiert ist, bietet die Kudu-Konsole. Auf die Kudu-Konsole können Sie im Portal oder über die URL Ihrer App Service-App zugreifen. Ausführliche Anweisungen finden Sie unter [How to determine the installed .NET version in Azure App Services](https://blogs.msdn.microsoft.com/waws/2016/11/02/how-to-determine-the-installed-net-version-in-azure-app-services/) (Bestimmen der installierten Version von .NET in App Service).
+Die schnellste Methode, die Version von Microsoft .NET zu bestimmen, die in App Service installiert ist, bietet die Kudu-Konsole. Auf die Kudu-Konsole können Sie +über das Portal oder die URL Ihrer App Service-App zugreifen. Ausführliche Anweisungen finden Sie unter [How to determine the installed .NET version in Azure App Services](https://blogs.msdn.microsoft.com/waws/2016/11/02/how-to-determine-the-installed-net-version-in-azure-app-services/) (Bestimmen der installierten Version von .NET in App Service).
 
 ## <a name="why-isnt-autoscale-working-as-expected"></a>Warum funktioniert die automatische Skalierung nicht wie erwartet?
 

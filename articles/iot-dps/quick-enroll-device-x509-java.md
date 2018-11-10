@@ -1,6 +1,6 @@
 ---
 title: 'Schnellstart: Registrieren von X.509-Geräten für den Azure Device Provisioning-Dienst per Java | Microsoft-Dokumentation'
-description: In dieser Schnellstartanleitung registrieren Sie X.509-Geräte für den Azure IoT Hub Device Provisioning-Dienst per Java.
+description: In dieser Schnellstartanleitung werden sowohl Gruppenregistrierungen als auch individuelle Registrierungen verwendet. In dieser Schnellstartanleitung registrieren Sie X.509-Geräte mithilfe von Java in Azure IoT Hub Device Provisioning Service.
 author: wesmc7777
 ms.author: wesmc
 ms.date: 12/20/2017
@@ -10,12 +10,12 @@ services: iot-dps
 manager: timlt
 ms.devlang: java
 ms.custom: mvc
-ms.openlocfilehash: 505aee35c839a0224ca158d918fc5e54dc6e0f28
-ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.openlocfilehash: 3eec6628ca7dbc16e0cc01701620f1699ba8d368
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39205764"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50412770"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-java"></a>Schnellstart: Registrieren von X.509-Geräten für den Device Provisioning-Dienst per Java
 
@@ -31,7 +31,7 @@ Das Java-Dienst-SDK funktioniert auf Windows- und Linux-Computern, aber in diese
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Installieren Sie [Java SE Development Kit 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html).
+* Installieren Sie [Java SE Development Kit 8](https://aka.ms/azure-jdks).
 * Installieren Sie [Maven 3](https://maven.apache.org/download.cgi). Sie können Ihre aktuelle Maven-Version anzeigen, indem Sie Folgendes ausführen:
 
     ```cmd/sh

@@ -10,12 +10,12 @@ ms.devlang: spark-scala
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ankhanol
-ms.openlocfilehash: 38a972d39b845dca39bcc4dcf921c603301af582
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: 165919fa3d456786e926f754dba378be38c12588
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48869651"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50094243"
 ---
 # <a name="connect-to-azure-cosmos-db-cassandra-api-from-spark"></a>Herstellen einer Verbindung mit der Azure Cosmos DB-Cassandra-API von Spark
 
@@ -29,7 +29,7 @@ Dieser Artikel stammt aus einer Reihe von Artikeln zur Integration der Cosmos DB
 ## <a name="dependencies-for-connectivity"></a>Abhängigkeiten für die Konnektivität
 * **Spark-Connector für Cassandra**: Der Spark-Connector wird verwendet, um eine Verbindung mit der Azure Cosmos DB-Cassandra-API herzustellen.  Identifizieren und verwenden Sie die Version des Connectors unter [Maven > Central]( https://mvnrepository.com/artifact/com.datastax.spark/spark-cassandra-connector), die mit den Spark- und Scala-Versionen Ihrer Spark-Umgebung kompatibel ist.
 
-* **Bibliothek für das Azure Cosmos DB-Hilfsprogramm für die Cassandra-API**: Neben dem Spark-Connector benötigen Sie eine weitere Bibliothek mit dem Namen [azure-cosmos-cassandra-spark-helper]( https://search.maven.org/artifact/com.microsoft.azure.cosmosdb/azure-cosmos-cassandra-spark-helper/1.0.0/jar) von Azure Cosmos DB. Diese Bibliothek enthält eine Verbindungsfactory und benutzerdefinierte Wiederholungsrichtlinienklassen.
+* **Bibliothek für das Azure Cosmos DB-Hilfsprogramm für die Cassandra-API**: Neben dem Spark-Connector benötigen Sie eine weitere Bibliothek mit dem Namen [azure-cosmos-cassandra-spark-helper]( https://search.maven.org/artifact/com.microsoft.azure.cosmosdb/azure-cosmos-cassandra-spark-helper/1.0.0/jar) von Azure Cosmos DB. Diese Bibliothek enthält benutzerdefinierte Klassen für die Verbindungsfactory und Wiederholungsrichtlinie.
 
   Die Wiederholungsrichtlinie in Azure Cosmos DB ist für die Verarbeitung von Ausnahmen mit dem HTTP-Statuscode 429 („Anforderungsrate ist groß“) konfiguriert. Die Azure Cosmos DB-Cassandra-API übersetzt diese Ausnahmen in Überladungsfehler im nativen Cassandra-Protokoll, und Sie können mit Backoffs wiederholen. Da Azure Cosmos DB das bereitgestellte Durchsatzmodell verwendet, treten Ausnahmen in Bezug auf große Anforderungsraten auf, wenn die Rate der eingehenden/ausgehenden Daten steigt. Durch die Wiederholungsrichtlinie werden Ihre Spark-Aufträge vor Datenspitzen geschützt, die den für Ihre Sammlung zugeordneten Durchsatz vorübergehend überschreiten.
 

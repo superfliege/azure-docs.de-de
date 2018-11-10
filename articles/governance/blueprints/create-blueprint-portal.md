@@ -4,21 +4,21 @@ description: Erstellen, Definieren und Bereitstellen von Artefakten mithilfe von
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 09/18/2018
+ms.date: 10/25/2018
 ms.topic: quickstart
 ms.service: blueprints
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 6b7ca276f3273faa485d08633061f882493f72f7
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 2c53c5c51a6e93fa99f32400e512f0e13503b436
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49647271"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50092126"
 ---
 # <a name="define-and-assign-an-azure-blueprint-in-the-portal"></a>Definieren und Zuweisen einer Azure-Blaupause im Portal
 
-Die Kenntnis, wie Blaupausen in Azure erstellt und zugewiesen werden, ermöglicht einer Organisation, allgemeine Konsistenzmuster zu definieren und wiederverwendbare und schnell bereitstellbare Konfigurationen zu entwickeln, die auf Resource Manager-Vorlagen, Richtlinien, Sicherheit usw. basieren. In diesem Tutorial erfahren Sie, wie Sie mithilfe von Azure Blueprint einige allgemeine Aufgaben im Zusammenhang mit der organisationsweiten Erstellung, Veröffentlichung und Zuweisung einer Blaupause ausführen:
+Wenn Sie mit der Erstellung und Zuweisung von Blaupausen vertraut sind, können Sie allgemeine Muster definieren, um wiederverwendbare und schnell bereitstellbare Konfigurationen zu entwickeln, die auf Resource Manager-Vorlagen, Richtlinien, Sicherheit usw. basieren. In diesem Tutorial erfahren Sie, wie Sie mithilfe von Azure Blueprint einige allgemeine Aufgaben im Zusammenhang mit der organisationsweiten Erstellung, Veröffentlichung und Zuweisung einer Blaupause ausführen:
 
 > [!div class="checklist"]
 > - Erstellen einer neuen Blaupause und Hinzufügen verschiedener unterstützter Artefakte
@@ -34,7 +34,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 Im ersten Schritt beim Definieren eines Standardmusters für die Konformität wird eine Blaupause aus den verfügbaren Ressourcen erstellt. In diesem Beispiel erstellen Sie eine neue Blaupause „MyBlueprint“, um Rollen- und Richtlinienzuweisungen für das Abonnement zu konfigurieren. Anschließend fügen Sie eine neue Ressourcengruppe hinzu und erstellen eine Resource Manager-Vorlage und eine Rollenzuweisung für die neue Ressourcengruppe.
 
-1. Starten Sie den Azure Blueprint-Dienst im Azure-Portal. Klicken Sie dazu auf **Alle Dienste**, und suchen Sie im linken Bereich nach **Richtlinie**. Klicken Sie auf der Seite **Richtlinie** auf **Blaupausen**.
+1. Klicken Sie auf **Alle Dienste**, suchen Sie im linken Bereich nach der Option **Richtlinie**, und wählen Sie sie aus. Klicken Sie auf der Seite **Richtlinie** auf **Blaupausen**.
 
 1. Wählen Sie **Blaupausendefinitionen** auf der linken Seite und klicken Sie auf die Schaltfläche **+ Blaupause erstellen** am oberen Rand der Seite.
 
@@ -47,9 +47,9 @@ Im ersten Schritt beim Definieren eines Standardmusters für die Konformität wi
    > [!NOTE]
    > Blaupausendefinitionen können nur in Verwaltungsgruppen gespeichert werden. Führen Sie zum Erstellen Ihrer ersten Verwaltungsgruppe [diese Schritte](../management-groups/create.md) aus.
 
-1. Überprüfen Sie, ob die Informationen richtig sind (die Felder **Blaupausenname** und **Speicherort der Definition** können später nicht geändert werden), und klicken Sie auf **Weiter: Artefakte** am unteren Rand der Seite oder die Registerkarte **Artefakte** am oberen Rand der Seite.
+1. Überprüfen Sie, ob die Informationen korrekt sind (die Felder **Blaupausenname** und **Speicherort der Definition** können später nicht geändert werden), und klicken Sie unten auf der Seite auf **Weiter: Artefakte** oder oben auf der Seite auf die Registerkarte **Artefakte**.
 
-1. Fügen Sie die Rollenzuweisung unter dem Abonnement hinzu: Klicken Sie auf die Zeile **+ Artefakt hinzufügen...** unter dem **Abonnement**, und das Fenster „Artefakt hinzufügen“ wird auf der rechten Seite des Browsers geöffnet. Wählen Sie „Rollenzuweisung“ als _Artefakttyp_ aus. Wählen Sie unter _Rolle_ „Mitwirkender“ aus, und behalten Sie das Kontrollkästchen in dem Feld _Benutzer, App oder Gruppe hinzufügen_ bei, das einen **dynamischen Parameter** angibt. Klicken Sie auf **Hinzufügen**, um der Blaupause dieses Artefakt hinzuzufügen.
+1. Fügen Sie unter „Abonnement“ die Rollenzuweisung hinzu: Klicken Sie unter **Abonnement** auf die Zeile **+ Artefakt hinzufügen...**. Daraufhin wird auf der rechten Seite des Browsers das Fenster „Artefakt hinzufügen“ angezeigt. Wählen Sie „Rollenzuweisung“ als _Artefakttyp_ aus. Wählen Sie unter _Rolle_ „Mitwirkender“ aus, und behalten Sie das Kontrollkästchen in dem Feld _Benutzer, App oder Gruppe hinzufügen_ bei, das einen **dynamischen Parameter** angibt. Klicken Sie auf **Hinzufügen**, um der Blaupause dieses Artefakt hinzuzufügen.
 
    ![Artefakt – Rollenzuweisung](./media/create-blueprint-portal/add-role-assignment.png)
 
@@ -58,14 +58,14 @@ Im ersten Schritt beim Definieren eines Standardmusters für die Konformität wi
 
 1. Fügen Sie die Richtlinienzuweisung unter dem Abonnement hinzu: Klicken Sie auf die Zeile **+ Artefakt hinzufügen...** direkt unter dem **Abonnement**. Wählen Sie „Richtlinienzuweisung“ als _Artefakttyp_ aus. Ändern Sie _Typ_ in „Integriert“, und geben Sie in _Suche_ „Tag“ ein. Klicken Sie von _Suche_ aus, damit die Filterung ausgeführt wird. Wählen Sie „Tag und dessen Standardwert auf Ressourcengruppen anwenden“ aus, indem Sie darauf klicken. Klicken Sie auf **Hinzufügen**, um der Blaupause dieses Artefakt hinzuzufügen.
 
-1. Klicken Sie auf die Zeile der Richtlinienzuweisung „Tag und dessen Standardwert auf Ressourcengruppen anwenden“. Das Fenster zum Bereitstellen von Parametern für das Artefakt als Teil der Blaupausendefinition wird geöffnet und ermöglicht das Festlegen der Parameter für alle Zuweisungen (**statische Parameter**) basierend auf dieser Blaupause statt bei der Zuordnung (**dynamische Parameter**). In diesem Beispiel ist es wünschenswert, **dynamische Parameter** bei der Blaupausenzuweisung zu verwenden, darum behalten Sie die Standardwerte bei, und klicken Sie auf **Abbrechen**.
+1. Klicken Sie auf die Zeile der Richtlinienzuweisung „Tag und dessen Standardwert auf Ressourcengruppen anwenden“. Das Fenster zum Bereitstellen von Parametern für das Artefakt als Teil der Blaupausendefinition wird geöffnet und ermöglicht das Festlegen der Parameter für alle Zuweisungen (**statische Parameter**) basierend auf dieser Blaupause statt bei der Zuordnung (**dynamische Parameter**). In diesem Beispiel werden bei der Blaupausenzuweisung **dynamische Parameter** verwendet. Behalten Sie daher die Standardwerte bei, und klicken Sie auf **Abbrechen**.
 
 1. Fügen Sie die Ressourcengruppe unter dem Abonnement hinzu: Klicken Sie auf die Zeile **+ Artefakt hinzufügen...** unter dem **Abonnement**. Wählen Sie „Ressourcengruppe“ für _Artefakttyp_. Lassen Sie die Felder _Ressourcengruppenname_ und _Speicherort_ leer, aber stellen Sie sicher, dass die Kontrollkästchen aller Eigenschaften aktiviert sind, um sie zu **dynamischen Parametern** zu machen. Klicken Sie auf **Hinzufügen**, um der Blaupause dieses Artefakt hinzuzufügen.
 
 1. Fügen Sie die Vorlage unter der Ressourcengruppe hinzu: Klicken Sie auf die Zeile **+ Artefakt hinzufügen...** unterhalb des Eintrags **ResourceGroup**. Wählen Sie „Azure Resource Manager-Vorlage“ als _Artefakttyp_ aus, legen Sie für _Artefaktanzeigename_ „StorageAccount“ fest, und lassen Sie _Beschreibung_ leer. Fügen Sie auf der Registerkarte **Vorlage** im Editorfeld die folgende Resource Manager-Vorlage ein. Klicken Sie nach dem Einfügen der Vorlage auf die Registerkarte **Parameter**, und beachten Sie, dass Vorlagenparameter **storageAccountType** und Standardwert **Standard_LRS** automatisch ermittelt und aufgefüllt, aber als **dynamische Parameter** konfiguriert wurden. Deaktivieren Sie das Kontrollkästchen, und beachten Sie, dass die Dropdownliste nur Werte enthält, die in der Resource Manager-Vorlage unter **allowedValues** enthalten sind. Aktivieren Sie das Kästchen, um es wieder auf einen **dynamischen Parameter** zurückzusetzen. Klicken Sie auf **Hinzufügen**, um der Blaupause dieses Artefakt hinzuzufügen.
 
    > [!IMPORTANT]
-   > Wenn Sie die Vorlage importieren möchten, stellen Sie sicher, dass die Datei nur JSON-Code und keinen HTML-Code enthält. Wenn Sie auf eine URL in GitHub zeigen, stellen Sie sicher, dass Sie auf **RAW** geklickt haben, um die reine JSON-Datei und nicht die mit HTML umschlossene für die Anzeige auf GitHub zu erhalten. Wenn die importierte Vorlage keine reine JSON-Datei ist, tritt ein Fehler auf.
+   > Wenn Sie die Vorlage importieren möchten, stellen Sie sicher, dass die Datei nur JSON-Code und keinen HTML-Code enthält. Wenn Sie auf eine URL in GitHub zeigen, stellen Sie sicher, dass Sie auf **RAW** geklickt haben, um die reine JSON-Datei und nicht die mit HTML umschlossene für die Anzeige auf GitHub zu erhalten. Wenn die importierte Vorlage kein reiner JSON-Code ist, tritt ein Fehler auf.
 
    ```json
    {
@@ -119,7 +119,7 @@ Im ersten Schritt beim Definieren eines Standardmusters für die Konformität wi
 
 ## <a name="edit-a-blueprint"></a>Bearbeiten einer Blaupause
 
-In [Erstellen einer Blaupause](#create-a-blueprint) wurde weder eine Beschreibung angegeben noch die Rollenzuweisung der neuen Ressourcengruppe hinzugefügt. Beides kann mit folgenden Schritten nachgeholt werden:
+In [Erstellen einer Blaupause](#create-a-blueprint) wurde weder eine Beschreibung angegeben noch die Rollenzuweisung zur neuen Ressourcengruppe hinzugefügt. Beides kann wie folgt behoben werden:
 
 1. Wählen Sie auf der Seite links **Blaupausendefinitionen** aus.
 
@@ -129,7 +129,7 @@ In [Erstellen einer Blaupause](#create-a-blueprint) wurde weder eine Beschreibun
 
 1. Klicken Sie auf **Weiter: Artefakte** am unteren Rand der Seite oder auf die Registerkarte **Artefakte** am oberen Rand der Seite.
 
-1. Fügen Sie die Rollenzuweisung unter der Ressourcengruppe hinzu: Klicken Sie auf die Zeile **+ Artefakt hinzufügen...** direkt unterhalb des Eintrags **ResourceGroup**. Wählen Sie „Rollenzuweisung“ als _Artefakttyp_ aus. Wählen Sie unter _Rolle_ “Besitzer“ aus, deaktivieren Sie das Feld _Benutzer, App oder Gruppe hinzufügen_, suchen Sie nach einem Benutzer, einer App oder Gruppe zum Hinzufügen, und wählen Sie diese(n) Benutzer, App oder Gruppe aus. Dies wird ein **statischer Parameter**, der in jeder Zuordnung von dieser Blaupause verwendet wird. Klicken Sie auf **Hinzufügen**, um der Blaupause dieses Artefakt hinzuzufügen.
+1. Fügen Sie die Rollenzuweisung unter der Ressourcengruppe hinzu: Klicken Sie auf die Zeile **+ Artefakt hinzufügen...** direkt unterhalb des Eintrags **ResourceGroup**. Wählen Sie „Rollenzuweisung“ als _Artefakttyp_ aus. Wählen Sie unter _Rolle_ die Option „Besitzer“ aus, deaktivieren Sie das Kontrollkästchen _Benutzer, App oder Gruppe hinzufügen_, suchen Sie nach einem Benutzer, einer App oder Gruppe zum Hinzufügen, und wählen Sie ihn bzw. sie aus. Dieses Artefakt verwendet einen **statischen Parameter**, der in jeder Zuordnung dieser Blaupause auf den gleichen Wert festgelegt wird. Klicken Sie auf **Hinzufügen**, um der Blaupause dieses Artefakt hinzuzufügen.
 
    ![Artefakt – Rollenzuweisung Nr. 2](./media/create-blueprint-portal/add-role-assignment-2.png)
 
@@ -141,14 +141,14 @@ In [Erstellen einer Blaupause](#create-a-blueprint) wurde weder eine Beschreibun
 
 ## <a name="publish-a-blueprint"></a>Veröffentlichen einer Blaupause
 
-Nach dem Hinzufügen der geplanten Artefakte zur Blaupause kann diese veröffentlicht werden.
+Nach dem Hinzufügen der geplanten Artefakte kann die Blaupause veröffentlicht werden.
 Durch die Veröffentlichung kann sie einem Abonnement zugewiesen werden.
 
 1. Wählen Sie auf der Seite links **Blaupausendefinitionen** aus.
 
 1. Klicken Sie in der Liste der Blaupausen mit der rechten Maustaste auf die zuvor von Ihnen erstellte, und wählen Sie **Blaupause veröffentlichen** aus.
 
-1. Geben Sie im daraufhin geöffneten Dialogfeld eine **Version** (Buchstaben, Zahlen und Bindestriche mit einer maximalen Länge von 20 Zeichen) wie z.B. „v1“ und **Änderungshinweise** (optional) wie z.B. „Erste Veröffentlichung“ ein.
+1. Geben Sie im daraufhin angezeigten Dialogfeld eine **Version** (Buchstaben, Zahlen und Bindestriche mit einer maximalen Länge von 20 Zeichen – beispielsweise „v1“) und **Änderungshinweise** (optional – beispielsweise „Erste Veröffentlichung“) ein.
 
 1. Klicken Sie unten auf der Seite auf **Veröffentlichen**.
 
@@ -180,7 +180,7 @@ Nach dem Veröffentlichen einer Blaupause kann sie einem Abonnement zugewiesen w
 1. Geben Sie für „ResourceGroup“ den **Namen** „StorageAccount“ und den **Speicherort** „USA, Osten 2“ aus der Dropdownliste ein.
 
    > [!NOTE]
-   > Jedes Artefakt, das während der Blaupausendefinition unter der Ressourcengruppe hinzugefügt wurde, wird eingerückt, um an der Ressourcengruppe oder dem Objekt ausgerichtet zu werden, womit es bereitgestellt wird. Artefakte, die entweder keine Parameter annehmen, oder für die keine Parameter bei der Zuweisung definiert werden, werden nur für Kontextinformationen aufgelistet.
+   > Jedes Artefakt, das im Rahmen der Blaupausendefinition unter der Ressourcengruppe hinzugefügt wurde, wird eingerückt und an der Ressourcengruppe oder dem Objekt ausgerichtet, mit der bzw. dem es bereitgestellt werden soll. Artefakte, die entweder keine Parameter verwenden oder für die bei der Zuweisung keine Parameter definiert werden, werden lediglich als Kontextinformationen aufgelistet.
 
 1. Wählen Sie auf der Azure Resource Manager-Vorlage „StorageAccount“ „Standard_GRS“ für den **storageAccountType**-Parameter aus.
 
@@ -201,11 +201,11 @@ Nun, da die Blaupause einem Abonnement zugewiesen wurde, überprüfen Sie den St
 
    ![Zuweisungsdetails anzeigen](./media/create-blueprint-portal/view-assignment-details.png)
 
-1. Überprüfen Sie auf der Seite **Bereitstellungsdetails**, ob alle Artefakte erfolgreich bereitgestellt wurden und während der Bereitstellung keine Fehler aufgetreten sind. Wenn Fehler aufgetreten sind, bestimmen Sie anhand der Schritte unter [Problembehandlung mit Azure Blueprints](./troubleshoot/general.md), welche Fehler aufgetreten sind.
+1. Überprüfen Sie auf der Seite **Bereitstellungsdetails**, ob alle Artefakte erfolgreich bereitgestellt wurden und während der Bereitstellung keine Fehler aufgetreten sind. Sollten Fehler aufgetreten sein, ermitteln Sie anhand der Schritte unter [Problembehandlung mit Azure Blueprints](./troubleshoot/general.md), was nicht funktioniert hat.
 
 ## <a name="unassign-a-blueprint"></a>Aufheben der Zuweisung einer Blaupause
 
-Blaupausen können aus einem Abonnement entfernt werden, wenn sie nicht mehr benötigt werden oder durch neuere Blaupausen mit neueren Mustern, Richtlinien und Entwürfen ersetzt wurden. Wenn eine Blaupause entfernt wird, werden die als Teil der Blaupause zugewiesenen Artefakte beibehalten. Um eine Blaupausenzuweisung zu entfernen, gehen Sie folgendermaßen vor:
+Entfernen Sie eine Blaupausenzuweisung aus einem Abonnement, wenn Sie sie nicht mehr benötigen. Möglicherweise wurde die Blaupause durch eine neuere Blaupause mit aktualisierten Mustern, Richtlinien und Entwürfen ersetzt. Wenn eine Blaupause entfernt wird, werden die als Teil der Blaupause zugewiesenen Artefakte beibehalten. Gehen Sie zum Entfernen einer Blaupausenzuweisung wie folgt vor:
 
 1. Wählen Sie auf der Seite links **Zugewiesene Blaupausen** aus.
 
@@ -220,7 +220,7 @@ Blaupausen können aus einem Abonnement entfernt werden, wenn sie nicht mehr ben
 1. Klicken Sie mit der rechten Maustaste auf die Blaupause, die Sie löschen möchten, wählen Sie **Blaupause löschen** aus, und klicken Sie dann im Bestätigungsdialogfeld auf **Ja**.
 
 > [!NOTE]
-> Wenn eine Blaupause in dieser Methode gelöscht wird, werden auch alle **Veröffentlichten Versionen** der ausgewählten Blaupause gelöscht. Um eine einzelne Version zu löschen, öffnen Sie die Blaupause, klicken Sie auf die Registerkarte **Veröffentlichte Versionen**, wählen Sie die zu löschende Version aus, klicken Sie darauf und dann auf **Diese Version löschen**. Darüber hinaus kann keine Blaupause mit Zuweisungen gelöscht werden, bis alle diese Blaupausenzuweisungen gelöscht sind.
+> Wenn eine Blaupause auf diese Weise gelöscht wird, werden auch alle **veröffentlichten Versionen** der ausgewählten Blaupause gelöscht. Um eine einzelne Version zu löschen, öffnen Sie die Blaupause, klicken Sie auf die Registerkarte **Veröffentlichte Versionen**, wählen Sie die zu löschende Version aus, klicken Sie darauf und dann auf **Diese Version löschen**. Darüber hinaus kann eine Blaupause mit Zuweisungen erst gelöscht werden, wenn alle diese Blaupausenzuweisungen gelöscht wurden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

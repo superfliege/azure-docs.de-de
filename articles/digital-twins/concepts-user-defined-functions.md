@@ -6,14 +6,14 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/08/2018
+ms.date: 10/26/2018
 ms.author: alinast
-ms.openlocfilehash: b7561848ffd0158e22e97530774112dcee2a9864
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: a45f82b142ee4f4c9c88ea755607b88323feaae5
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49323786"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50210124"
 ---
 # <a name="data-processing-and-user-defined-functions"></a>Datenverarbeitung und benutzerdefinierte Funktionen
 
@@ -25,7 +25,7 @@ Sobald Geräte Telemetriedaten an Digital Twins senden, können Entwickler Daten
 
 ![Datenverarbeitungsfluss in Digital Twins][1]
 
-1. In der _Überprüfung_-Phase wird eine eingehende Telemetrienachricht in ein allgemein verständliches [ `data transfer object`](https://en.wikipedia.org/wiki/Data_transfer_object)-Format transformiert. In dieser Phase erfolgt auch die Überprüfung von Geräten und Sensoren.
+1. In der _Validierungsphase_ wird eine eingehende Telemetrienachricht in ein allgemein verständliches Format eines [**Datenübertragungsobjekts**](https://en.wikipedia.org/wiki/Data_transfer_object) transformiert. In dieser Phase erfolgt auch die Überprüfung von Geräten und Sensoren.
 1. In der _Abgleich_-Phase wird nach den entsprechenden benutzerdefinierten Funktionen gesucht, die ausgeführt werden sollen. Vordefinierte Matcher (Abgleicher) finden die benutzerdefinierten Funktionen anhand der Geräte-, Sensor- und Rauminformationen aus der eingehenden Telemetrienachricht.
 1. In der _Berechnung_-Phase werden die benutzerdefinierten Funktionen ausgeführt, für die in der vorherigen Phase eine Übereinstimmung gefunden wurde. In diesen Funktionen können berechnete Werte aus Raumgraphknoten gelesen und aktualisiert und können benutzerdefinierte Benachrichtigungen ausgegeben werden.
 1. In der _Versendung_-Phase werden alle benutzerdefinierten Benachrichtigungen aus der Berechnungsphase an Endpunkte gesendet, die im Graphen definiert sind.
@@ -40,11 +40,11 @@ Datenverarbeitung in Azure Digital Twins besteht aus dem Definieren von drei Obj
 
 _Matcher_ definieren eine Reihe von Bedingungen, mit denen anhand der eingehenden Telemetriedaten eines Sensors bestimmt wird, welche Aktionen auszuführen sind. In diesen Bedingungen können Eigenschaften des Sensors, des übergeordneten Geräts des Sensors und des übergeordneten Raums des Sensors enthalten sein. Die Bedingungen sind als Vergleiche mit einem jeweiligen [JSON-Pfad](http://jsonpath.com/) (path) formuliert, wie dies im folgenden Beispiel skizziert ist:
 
-- Alle Sensoren, die den Datentyp `Temperature` haben.
+- Alle Sensoren, die den Datentyp **Temperature** aufweisen.
 - Für die `01` in deren Anschlüssen steht.
-- Die zu Geräten gehören, für die der erweiterte Eigenschaftenschlüssel `Manufacturer` auf den Wert `GoodCorp` festgelegt ist.
-- Die zu Räumen des Typs `Venue` gehören.
-- Die Nachfolger des übergeordneten Raums mit der `SpaceId` `DE8F06CA-1138-4AD7-89F4-F782CC6F69FD` sind.
+- Die zu Geräten gehören, für die der erweiterte Eigenschaftenschlüssel **Manufacturer** auf den Wert `"GoodCorp"` festgelegt ist.
+- Die zu Räumen des Typs `"Venue"` gehören.
+- Die Nachfolger der übergeordneten **SpaceId** `DE8F06CA-1138-4AD7-89F4-F782CC6F69FD` sind.
 
 ```JSON
 {

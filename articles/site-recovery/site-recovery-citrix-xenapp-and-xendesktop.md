@@ -1,36 +1,29 @@
 ---
-title: Replizieren einer Citrix XenDesktop- und and XenApp-Bereitstellung mit mehreren Schichten mit Azure Site Recovery | Microsoft-Dokumentation
-description: In diesem Artikel werden das Schützen und Wiederherstellen von Citrix XenDesktop- und XenApp-Bereitstellungen mithilfe von Azure Site Recovery beschrieben.
-services: site-recovery
-documentationcenter: ''
+title: Einrichten der Notfallwiederherstellung für eine Citrix XenDesktop- und XenApp-Bereitstellung mit mehreren Ebenen mithilfe von Azure Site Recovery | Microsoft-Dokumentation
+description: Dieser Artikel beschreibt, wie Sie die Notfallwiederherstellung für Citrix XenDesktop- und XenApp-Bereitstellungen mithilfe von Azure Site Recovery einrichten.
 author: ponatara
 manager: abhemraj
-editor: ''
-ms.assetid: 9126f5e8-e9ed-4c31-b6b4-bf969c12c184
 ms.service: site-recovery
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: ponatara
-ms.openlocfilehash: 45d366842416ddfa7b0153a1d075ee6de58e45a1
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 0b8d9765766191533745da4c653f1a91ce635c24
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39213632"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50210311"
 ---
-# <a name="replicate-a-multi-tier-citrix-xenapp-and-xendesktop-deployment-using-azure-site-recovery"></a>Replizieren einer Citrix XenApp- und and XenDesktop-Bereitstellung mit mehreren Schichten mit Azure Site Recovery
+# <a name="set-up-disaster-recovery-for-a-multi-tier-citrix-xenapp-and-xendesktop-deployment"></a>Einrichten der Notfallwiederherstellung für eine Citrix XenDesktop- und XenApp-Bereitstellung mit mehreren Ebenen
 
-## <a name="overview"></a>Übersicht
+
 
 Bei Citrix XenDesktop handelt es sich um eine Desktop-Virtualisierungslösung, bei der Desktops und Anwendungen als On-Demand-Dienst für beliebige Benutzer an beliebigen Standorten bereitgestellt werden. Mit der FlexCast-Übermittlungstechnologie kann XenDesktop schnell und sicher Anwendungen und Desktops für Benutzer bereitstellen.
 Zurzeit bietet Citrix XenApp keine Funktionen für die Notfallwiederherstellung.
 
 Bei einer guten Lösung für die Notfallwiederherstellung sollte die Modellierung von Wiederherstellungsplänen für die obigen komplexen Anwendungsarchitekturen möglich sein. Darüber hinaus sollten Sie angepasste Schritte hinzufügen können, um Anwendungszuordnungen zwischen unterschiedlichen Ebenen durchzuführen und so eine sichere Single-Click-Lösung zu haben, falls es in einem Notfall zu einem niedrigeren RTO-Wert kommt.
 
-Dieses Dokument enthält eine detaillierte Anleitung zum Erstellen einer Notfallwiederherstellungslösung für Ihre lokalen Citrix XenApp-Bereitstellungen auf Hyper-V- und VMware vSphere-Plattformen. In diesem Dokument werden das Durchführen eines Testfailovers (Disaster Recovery Drill) und eines ungeplanten Failovers in Azure mithilfe von Wiederherstellungsplänen sowie die unterstützten Konfigurationen und erforderlichen Komponenten beschrieben.
+Dieses Dokument enthält detaillierte Schrittanleitungen zum Erstellen einer Notfallwiederherstellungslösung für Ihre lokalen Citrix XenApp-Bereitstellungen auf Hyper-V- und VMware vSphere-Plattformen. In diesem Dokument werden das Durchführen eines Testfailovers (Disaster Recovery Drill) und eines ungeplanten Failovers in Azure mithilfe von Wiederherstellungsplänen sowie die unterstützten Konfigurationen und erforderlichen Komponenten beschrieben.
 
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -46,7 +39,7 @@ Stellen Sie zunächst sicher, dass Sie mit den folgenden Verfahren vertraut sind
 
 ## <a name="deployment-patterns"></a>Bereitstellungsmuster
 
-Eine Citrix XenApp- und XenDesktop-Farm weist normalerweise das folgende Bereitstellungsmuster auf:
+Eine Citrix XenApp- und XenDesktop-Farm weist in der Regel das folgende Bereitstellungsmuster auf:
 
 **Bereitstellungsmuster**
 
@@ -75,7 +68,7 @@ Da XenApp 7.7 und höher in Azure unterstützt wird, kann nur für Bereitstellun
 
 1. Schutz und Wiederherstellung von lokalen Bereitstellungen mithilfe von Computern mit Serverbetriebssystemen zum Übermitteln von in XenApp veröffentlichten Apps und Desktops werden unterstützt.
 
-2. Schutz und Wiederherstellung von lokalen Bereitstellungen mit Computern mit Desktopbetriebssystemen zum Übermitteln von Desktop VDI für virtuelle Clientdesktops, einschließlich Windows 10, werden nicht unterstützt. Dies liegt daran, dass ASR die Wiederherstellung von Computern mit Desktopbetriebssystemen nicht unterstützt.  Außerdem werden einige Betriebssysteme von virtuellen Clientdesktops (z.B. Windows 7) für die Lizenzierung in Azure noch nicht unterstützt. Weitere Informationen zur Lizenzierung für Client-/Serverdesktopcomputer in Azure finden Sie [hier](https://azure.microsoft.com/pricing/licensing-faq/).
+2. Schutz und Wiederherstellung von lokalen Bereitstellungen mit Computern mit Desktopbetriebssystemen zum Übermitteln von Desktop VDI für virtuelle Clientdesktops, einschließlich Windows 10, werden nicht unterstützt. Dies liegt daran, dass Site Recovery die Wiederherstellung von Computern mit Desktopbetriebssystemen nicht unterstützt.  Außerdem werden einige Betriebssysteme von virtuellen Clientdesktops (z.B. Windows 7) für die Lizenzierung in Azure noch nicht unterstützt. Weitere Informationen zur Lizenzierung für Client-/Serverdesktopcomputer in Azure finden Sie [hier](https://azure.microsoft.com/pricing/licensing-faq/).
 
 3.  Azure Site Recovery kann keine lokalen MCS- oder PVS-Klone replizieren und schützen.
 Sie müssen diese Klone mithilfe der Azure RM-Bereitstellung über den Delivery Controller neu erstellen.
@@ -163,20 +156,20 @@ Unten wird der angepasste Wiederherstellungsplan dargestellt:
    >[!NOTE]     
    >Die Schritte 4, 6 und 7 mit manuellen oder Skriptaktionen gelten nur für eine lokale XenApp-Umgebung mit MCS/PVS-Katalogen.
 
-4. Manuelle oder Skriptaktion für Gruppe 3: Virtuellen VDA-Mastercomputer herunterfahren. Wenn für den virtuellen VDA-Mastercomputer ein Failover in Azure ausgeführt wird, befindet er sich in einem ausgeführten Zustand. Zum Erstellen von neuen MCS-Katalogen mit Azure ARM-Hosting, muss sich der virtuelle VDA-Mastercomputer im Zustand „Beendet“ (nicht mehr zugeordnet) befinden. Fahren Sie den virtuellen Computer über das Azure-Portal herunter.
+4. Manuelle oder Skriptaktion für Gruppe 3: Virtuellen VDA-Mastercomputer herunterfahren. Der virtuelle VDA-Mastercomputer, für den ein Failover nach Azure ausgeführt wird, befindet sich in einem ausgeführten Zustand. Zum Erstellen von neuen MCS-Katalogen mithilfe von Azure-Hostingfunktionen muss sich der virtuelle VDA-Mastercomputer im Zustand „Beendet“ (Zuordnung aufgehoben) befinden. Fahren Sie den virtuellen Computer über das Azure-Portal herunter.
 
 5. Failovergruppe4: Delivery Controller und virtuelle Computer für StoreFront-Server
 6. Manuelle oder Skriptaktion 1 für Gruppe 3:
 
     ***Azure RM-Hostverbindung hinzufügen***
 
-    Erstellen Sie eine Azure ARM-Hostverbindung auf dem Delivery Controller-Computer, um neue MCS-Kataloge in Azure bereitzustellen. Führen Sie die in [diesem Artikel](https://www.citrix.com/blogs/2016/07/21/connecting-to-azure-resource-manager-in-xenapp-xendesktop/) beschriebenen Schritte aus.
+    Erstellen Sie eine Azure-Hostverbindung auf dem Delivery Controller-Computer, um neue MCS-Kataloge in Azure bereitzustellen. Führen Sie die in [diesem Artikel](https://www.citrix.com/blogs/2016/07/21/connecting-to-azure-resource-manager-in-xenapp-xendesktop/) beschriebenen Schritte aus.
 
 7. Manuelle oder Skriptaktion 2 für Gruppe 3:
 
     ***MCS-Kataloge in Azure erneut erstellen***
 
-    Die vorhandenen MCS- oder PVS-Klone am primären Standort werden nicht in Azure repliziert. Sie müssen diese Klone mithilfe der replizierten Master-VDA und Azure ARM-Bereitstellung über den Delivery Controller neu erstellen. Führen Sie die Schritte in [diesem Artikel](https://www.citrix.com/blogs/2016/09/12/using-xenapp-xendesktop-in-azure-resource-manager/) aus, um MCS-Kataloge in Azure zu erstellen.
+    Die vorhandenen MCS- oder PVS-Klone am primären Standort werden nicht in Azure repliziert. Sie müssen diese Klone mithilfe des replizierten VDA-Masters und der Azure-Bereitstellung über den Delivery Controller neu erstellen. Führen Sie die in diesem [Artikel](https://www.citrix.com/blogs/2016/09/12/using-xenapp-xendesktop-in-azure-resource-manager/) erläuterten Schritte aus, um MCS-Kataloge in Azure zu erstellen.
 
 ![Wiederherstellungsplan für XenApp-Komponenten](./media/site-recovery-citrix-xenapp-and-xendesktop/citrix-recoveryplan.png)
 

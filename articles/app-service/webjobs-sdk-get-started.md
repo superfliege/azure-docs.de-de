@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/27/2018
 ms.author: glenga
-ms.openlocfilehash: e2f9bee2adcebfd47ca088a1bbe76b870e285044
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: b0f4ef5079ac689827cb49884fa1c6a51529ea83
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45580434"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50140348"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Erste Schnitte mit dem Azure WebJobs SDK für die ereignisgesteuerte Hintergrundverarbeitung
 
@@ -182,7 +182,7 @@ In diesem Abschnitt richten Sie die Konsolenprotokollierung ein, die das neue Fr
 
 Der lokal ausgeführte Azure Storage-Emulator verfügt nicht über alle Funktionen, die das WebJobs SDK benötigt. Daher erstellen Sie in diesem Abschnitt ein Speicherkonto in Azure und konfigurieren das Projekt für dessen Verwendung.
 
-1. Öffnen Sie **Server-Explorer**, und melden Sie sich bei Azure an. Klicken Sie mit der rechten Maustaste auf den Knoten **Azure**, und wählen Sie dann **Verbindung mit Microsoft Azure-Abonnement herstellen** aus.
+1. Öffnen Sie **Server-Explorer** in Visual Studio, und melden Sie sich in Azure an. Klicken Sie mit der rechten Maustaste auf den Knoten **Azure**, und wählen Sie dann **Verbindung mit Microsoft Azure-Abonnement herstellen** aus.
 
    ![Anmelden bei Azure](./media/webjobs-sdk-get-started/sign-in.png)
 
@@ -245,7 +245,7 @@ In diesem Abschnitt wird das Projekt lokal erstellt und ausgeführt, und die Fun
 
 1. Schließen Sie das Konsolenfenster.
 
-1. Erweitern Sie in **Server-Explorer** den Knoten für Ihr neues Speicherkonto, und klicken Sie dann mit der rechten Maustaste auf **Warteschlangen**. 
+1. Erweitern Sie in Visual Studio in **Server-Explorer** den Knoten für Ihr neues Speicherkonto, und klicken Sie dann mit der rechten Maustaste auf **Warteschlangen**. 
 
 1. Wählen Sie **Warteschlange erstellen** aus. 
 
@@ -310,7 +310,7 @@ In diesem Abschnitt führen Sie die folgenden Aufgaben zum Einrichten der Applic
 
 ### <a name="configure-app-settings"></a>Konfigurieren von App-Einstellungen 
 
-1. Erweitern Sie in **Server-Explorer** unter **Azure** den Knoten **App Service**.
+1. Erweitern Sie in Visual Studio in **Server-Explorer** den Knoten **App Service** unter **Azure**.
 
 1. Erweitern Sie die Ressourcengruppe, in der sich Ihre App Service-App befindet, und klicken Sie dann mit der rechten Maustaste auf Ihre App Service-App.
 
@@ -396,7 +396,7 @@ In diesem Abschnitt führen Sie die folgenden Aufgaben zum Einrichten der Applic
 
 In diesem Abschnitt führen Sie das Projekt erneut lokal aus, um zu überprüfen, ob die Protokollierungsdaten jetzt sowohl an Application Insights als auch an die Konsole weitergeleitet werden.
 
-1. Verwenden Sie **Server-Explorer**, um eine Warteschlangennachricht auf die gleiche Weise wie [zuvor](#trigger-the-function) zu erstellen, mit der Ausnahme, dass Sie hier *Hello App Insights!* als Nachrichtentext eingeben.
+1. Verwenden Sie in Visual Studio **Server-Explorer**, um eine Warteschlangennachricht auf die gleiche Weise wie [zuvor](#trigger-the-function) zu erstellen, mit der Ausnahme, dass Sie hier *Hello App Insights!* als Nachrichtentext eingeben.
 
 1. Führen Sie das Projekt aus.
 
@@ -442,7 +442,6 @@ In diesem Abschnitt stellen Sie das Projekt als WebJob bereit. Sie stellen es f�
 
 1. Stellen Sie sicher, dass das Projekt nicht lokal ausgeführt wird. (schließen Sie das Konsolenfenster, falls es noch geöffnet ist). Andernfalls verarbeitet möglicherweise die lokale Instanz als erste die von Ihnen erstellten Warteschlangennachrichten.
 
-1. Verwenden Sie **Server-Explorer**, um eine Warteschlangennachricht auf die gleiche Weise wie [zuvor](#trigger-the-function) zu erstellen, mit der Ausnahme, dass Sie hier *Hello Azure!* eingeben.
 
 1. Aktualisieren Sie in Visual Studio die Seite **Warteschlange**. Die neue Nachricht wird dann nicht mehr angezeigt, weil die in Azure App Service ausgeführte Funktion sie verarbeitet hat.
 
@@ -485,7 +484,7 @@ Eingabebindungen vereinfachen Code, der Daten liest. In diesem Beispiel ist die 
 
 1. Erstellen Sie einen Blobcontainer in Ihrem Speicherkonto.
 
-   a. Erweitern Sie in **Server-Explorer** den Knoten für Ihr Speicherkonto, klicken Sie mit der rechten Maustaste auf **Blobs**, und wählen Sie dann **BLOB-Container erstellen** aus.
+   a. Erweitern Sie in Visual Studio in **Server-Explorer** den Knoten für Ihr Speicherkonto, klicken Sie mit der rechten Maustaste auf **Blobs**, und wählen Sie dann **BLOB-Container erstellen** aus.
 
    b. Geben Sie im Dialogfeld **BLOB-Container erstellen** den Text *container* als Containernamen ein, und klicken Sie dann auf **OK**.
 
@@ -521,7 +520,7 @@ Eingabebindungen vereinfachen Code, der Daten liest. In diesem Beispiel ist die 
 
 Ausgabebindungen vereinfachen Code, der Daten schreibt. In diesem Beispiel wird der vorherige Code geändert, indem eine Kopie des Blobs geschrieben wird, statt dessen Größe zu protokollieren.
 
-1. Ersetzen Sie die `ProcessQueueMessage` -Methode durch den folgenden Code:
+1. Ersetzen Sie die `ProcessQueueMessage`-Methode durch den folgenden Code:
 
    ```cs
    public static void ProcessQueueMessage(

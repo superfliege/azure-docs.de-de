@@ -1,20 +1,19 @@
 ---
-title: " Verwalten von VMware vCenter Server in Azure Site Recovery | Microsoft-Dokumentation"
-description: In diesem Artikel wird beschrieben, wie Sie VMware vCenter in Azure Site Recovery hinzufügen und verwalten.
+title: Verwalten von VMware vCenter-Servern für die Notfallwiederherstellung von VMware-VMs mithilfe von Azure Site Recovery | Microsoft-Dokumentation
+description: Dieser Artikel beschreibt, wie Sie VMware vCenter für die Notfallwiederherstellung von VMware-VMs in Azure mit Azure Site Recovery hinzufügen und verwalten.
 author: Rajeswari-Mamilla
 ms.service: site-recovery
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/20/2018
 ms.author: ramamill
-ms.openlocfilehash: 6f3edf8e5d7a6fda1795991ac0a21cc316c29414
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 854d7724aebd882414287b19c015ef1425bfa6db
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37950443"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50210294"
 ---
-# <a name="manage-vmware-vcenter-servers"></a>Verwalten von VMware vCenter Server 
+# <a name="manage-vmware-vcenter-server"></a>Verwalten von VMware vCenter-Servern
 
 Dieser Artikel beschreibt die verschiedenen Site Recovery-Vorgänge, die in einem VMware vCenter ausgeführt werden können. Überprüfen Sie die [Voraussetzungen](vmware-physical-azure-support-matrix.md#replicated-machines), bevor Sie beginnen.
 
@@ -34,7 +33,7 @@ Es dauert ungefähr 15 Minuten, bis die Kontoinformationen mit dem Site Recovery
 
 ### <a name="account-permissions"></a>Kontoberechtigungen
 
-|**Task** | **Konto** | **Berechtigungen** | **Details**|
+|**Aufgabe** | **Konto** | **Berechtigungen** | **Details**|
 |--- | --- | --- | ---|
 |**Automatische Ermittlung/Migration (ohne Failback)** | Sie benötigen mindestens einen Benutzer mit Lesezugriff. | Data Center object (Rechenzentrenobjekt) –> Propagate to Child Object (An untergeordnetes Objekt weitergeben), role=Read-only (Rolle=schreibgeschützt) | Der Benutzer wird auf Datencenterebene zugewiesen und hat Zugriff auf alle Objekte im Datencenter.<br/><br/> Um den Zugriff einzuschränken, weisen Sie den untergeordneten Objekten (vSphere-Hosts, Datenspeicher, VMs und Netzwerke) die Rolle **No access** (Kein Zugriff) mit **Propagate to child object** (Auf untergeordnetes Objekt übertragen) zu.|
 |**Replikation/Failover** | Sie benötigen mindestens einen Benutzer mit Lesezugriff.| Data Center object (Rechenzentrenobjekt) –> Propagate to Child Object (An untergeordnetes Objekt weitergeben), role=Read-only (Rolle=schreibgeschützt) | Der Benutzer wird auf Datencenterebene zugewiesen und hat Zugriff auf alle Objekte im Datencenter.<br/><br/> Um den Zugriff einzuschränken, weisen Sie den untergeordneten Objekten (vSphere-Hosts, Datenspeicher, VMs und Netzwerke) die Rolle **No access** (Kein Zugriff) mit **Propagate to child object** (Auf untergeordnetes Objekt übertragen) zu.<br/><br/> Ist für Migrationszwecke geeignet, aber nicht für die vollständige Replikation, Failover oder Failback.|

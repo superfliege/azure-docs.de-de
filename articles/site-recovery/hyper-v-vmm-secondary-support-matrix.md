@@ -1,21 +1,21 @@
 ---
-title: Unterstützungsmatrix für die Replikation von virtuellen Hyper-V-Computern in VMM-Clouds an einen sekundären Standort mit Azure Site Recovery | Microsoft-Dokumentation
+title: Unterstützungsmatrix für die Notfallwiederherstellung von Hyper-V-VMs in VMM-Clouds in einem sekundären Standort mit Azure Site Recovery | Microsoft-Dokumentation
 description: Fasst Informationen zur Unterstützung für die Replikation von virtuellen Hyper-V-Computern in VMM-Clouds an einen sekundären Standort mit Azure Site Recovery zusammen.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/10/2018
+ms.date: 10/28/2018
 ms.author: raynew
-ms.openlocfilehash: e1a0ee2a9ad958a5938569927a489785edd8ee1f
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 3203ae48163ba325c8dad2f29c9f566e330928b5
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49078836"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50214289"
 ---
-# <a name="support-matrix-for-replication-of-hyper-v-vms-to-a-secondary-site"></a>Unterstützungsmatrix für die Replikation von virtuellen Hyper-V-Computern an einen sekundären Standort
+# <a name="support-matrix-for-disaster-recovery-of-hyper-v-vms-to-a-secondary-site"></a>Unterstützungsmatrix für die Notfallwiederherstellung von Hyper-V-VMs in einem sekundären Standort
 
 In diesem Artikel ist zusammengefasst, was unterstützt wird, wenn Sie den [Azure Site Recovery](site-recovery-overview.md)-Dienst nutzen, um virtuelle Hyper-V-Computer, die in System Center Virtual Machine Manager-Clouds (VMM) verwaltet werden, an sekundäre Standorte zu replizieren. Wenn Sie virtuelle Hyper-V-Computer in Azure replizieren möchten, lesen Sie [diese Unterstützungsmatrix](hyper-v-azure-support-matrix.md).
 

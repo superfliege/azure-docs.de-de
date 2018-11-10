@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: dukek
 ms.component: alerts
-ms.openlocfilehash: 3c1bff98debf426fc02dbd4518c0bb798d7ba96d
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 74607f61482d4a96931e307e77b4a6d4c45e4c30
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45576018"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50420930"
 ---
 # <a name="how-to-trigger-complex-actions-with-azure-monitor-alerts"></a>Auslösen komplexer Aktionen mit Azure Monitor-Warnungen
 
@@ -38,25 +38,25 @@ Der Vorgang ist ähnlich, wenn die Logik-App eine andere Aktion ausführen soll.
 
 1.  Wählen Sie im Azure-Portal oben links **Ressource erstellen** aus.
 
-2.  Suchen Sie nach **Logik-App**, und wählen Sie diese Option und dann **Erstellen** aus.
+2.  Suchen Sie nach  **Logik-App**, wählen Sie diese Option aus, und wählen Sie dann  **Erstellen** aus.
 
 3.  Geben Sie der Logik-App einen **Namen**, wählen Sie eine **Ressourcengruppe** aus usw.
 
-    ![Erstellen einer Logik-App](media/monitoring-action-groups/create-logic-app-dialog.png "Erstellen einer Logik-App")
+    ![Erstellen einer Logik-App](media/monitoring-action-groups-logic-app/create-logic-app-dialog.png "Erstellen einer Logik-App")
 
 4.  Wählen Sie **Erstellen** aus, um die Logik-App zu erstellen. Eine Popupmeldung zeigt an, dass die Logik-App erstellt ist. Wählen Sie **Ressource starten** aus, um den **Logik-App-Designer** zu öffnen.
 
 5.  Wählen Sie **Beim Empfang einer HTTP-Anforderung** als Trigger aus.
 
-    ![Logik-App-Trigger](media/monitoring-action-groups/logic-app-triggers.png "Logik-App-Trigger")
+    ![Logik-App-Trigger](media/monitoring-action-groups-logic-app/logic-app-triggers.png "Logik-App-Trigger")
 
 6.  Wählen Sie **Bearbeiten** aus, um den HTTP-Anforderungstrigger zu ändern.
 
-    ![HTTP-Anforderungstrigger ](media/monitoring-action-groups/http-request-trigger-shape.png "HTTP-Anforderungstrigger ")
+    ![HTTP-Anforderungstrigger ](media/monitoring-action-groups-logic-app/http-request-trigger-shape.png "HTTP-Anforderungstrigger ")
 
 7.  Wählen Sie **Beispielnutzlast zum Generieren eines Schemas verwenden** aus.
 
-    ![Verwenden einer Beispielnutzlast](media/monitoring-action-groups/use-sample-payload-button.png "Verwenden einer Beispielnutzlast")
+    ![Verwenden einer Beispielnutzlast](media/monitoring-action-groups-logic-app/use-sample-payload-button.png "Verwenden einer Beispielnutzlast")
 
 8.  Kopieren Sie das folgende Beispielschema, und fügen Sie es in das Dialogfeld ein:
 
@@ -99,15 +99,15 @@ Der Vorgang ist ähnlich, wenn die Logik-App eine andere Aktion ausführen soll.
 
 9. Der **Logik-App-Designer** zeigt ein Popupfenster an, das Sie daran erinnert, dass in der an die Logik-App gesendeten Anforderung der **Content-Type**-Header auf **application/json** festgelegt werden muss. Schließen Sie das Popupfenster. Die Azure Monitor-Warnung legt den Header fest.
 
-    ![Festlegen des Content-Type-Headers](media/monitoring-action-groups/content-type-header.png "Festlegen des Content-Type-Headers")
+    ![Festlegen des Content-Type-Headers](media/monitoring-action-groups-logic-app/content-type-header.png "Festlegen des Content-Type-Headers")
 
 10. Wählen Sie **+** **Neuer Schritt** und anschließend **Aktion hinzufügen** aus.
 
-    ![Aktion hinzufügen](media/monitoring-action-groups/add-action.png "Aktion hinzufügen")
+    ![Aktion hinzufügen](media/monitoring-action-groups-logic-app/add-action.png "Aktion hinzufügen")
 
 11. Suchen Sie nach dem Microsoft Teams-Connector, und wählen ihn aus. Wählen Sie die Aktion **Microsoft Teams: Nachricht veröffentlichen** aus.
 
-    ![Microsoft Teams-Aktionen](media/monitoring-action-groups/microsoft-teams-actions.png "Microsoft Teams-Aktionen")
+    ![Microsoft Teams-Aktionen](media/monitoring-action-groups-logic-app/microsoft-teams-actions.png "Microsoft Teams-Aktionen")
 
 12. Konfigurieren Sie die Microsoft Teams-Aktion. Der **Logik-Apps-Designer** fordert Sie zur Authentifizierung mit Ihrem Office 365-Konto auf. Wählen Sie die **Team-ID** und die **Kanal-ID** zum Senden der Nachricht aus.
 
@@ -125,13 +125,13 @@ Der Vorgang ist ähnlich, wenn die Logik-App eine andere Aktion ausführen soll.
     > [!NOTE]
     > Es gibt zwei dynamische Felder mit dem Namen **Status**. Fügen Sie der Nachricht beide Felder hinzu. Verwenden Sie das Feld im **activityLog**-Eigenschaftenbehälter, und löschen Sie das andere Feld. Wenn Sie Ihren Mauszeiger über dem Feld **Status** positionieren, wird der vollqualifizierte Feldverweis wie im folgenden Screenshot gezeigt angezeigt:
 
-    ![Aktion der Microsoft Teams: Posten einer Nachricht](media/monitoring-action-groups/teams-action-post-message.png "Aktion der Microsoft Teams: Posten einer Nachricht")
+    ![Aktion der Microsoft Teams: Posten einer Nachricht](media/monitoring-action-groups-logic-app/teams-action-post-message.png "Aktion der Microsoft Teams: Posten einer Nachricht")
 
 14. Wählen Sie oben im **Logik-Apps-Designer** die Option **Speichern** aus, um Ihre Logik-App zu speichern.
 
 15. Öffnen Sie Ihre vorhandene Aktionsgruppe, und fügen Sie eine Aktion hinzu, um auf die Logik-App zu verweisen. Wenn Sie nicht über eine Aktionsgruppe verfügen, erfahren Sie unter [Erstellen und Verwalten von Aktionsgruppen im Azure-Portal](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups), wie Sie eine erstellen. Vergessen Sie nicht, Ihre Änderungen zu speichern.
 
-    ![Aktionsgruppe aktualisieren](media/monitoring-action-groups/update-action-group.png "Aktionsgruppe aktualisieren")
+    ![Aktionsgruppe aktualisieren](media/monitoring-action-groups-logic-app/update-action-group.png "Aktionsgruppe aktualisieren")
 
 Das nächste Mal, wenn Ihre Aktionsgruppe durch eine Warnung aufgerufen wird, wird Ihre Logik-App aufgerufen.
 
@@ -192,7 +192,7 @@ Azure Service Health-Einträge sind ein Teil des Aktivitätsprotokolls. Der Proz
        - `eventSource == ServiceHealth`
        - `version == "0.1.1"`
 
-      ![„Bedingung Service Health-Nutzlast“](media/monitoring-action-groups/service-health-payload-condition.png "Bedingung Service Health-Nutzlast")
+      ![„Bedingung Service Health-Nutzlast“](media/monitoring-action-groups-logic-app/service-health-payload-condition.png "Bedingung Service Health-Nutzlast")
 
    1. Befolgen Sie in der **If true**-Bedingung die Anweisungen in den Schritten 11 bis 13 in [Erstellen einer Aktivitätsprotokollwarnung](#create-an-activity-log-alert-administrative), um die Microsoft Teams-Aktion hinzuzufügen.
 
@@ -209,7 +209,7 @@ Azure Service Health-Einträge sind ein Teil des Aktivitätsprotokolls. Der Proz
        <p>[communication]</p>
        ```
 
-       ![„Veröffentlichungsaktion von Service Health, wenn Bedingung TRUE ist“](media/monitoring-action-groups/service-health-true-condition-post-action.png "Veröffentlichungsaktion von Service Health, wenn Bedingung TRUE ist")
+       ![„Veröffentlichungsaktion von Service Health, wenn Bedingung TRUE ist“](media/monitoring-action-groups-logic-app/service-health-true-condition-post-action.png "Veröffentlichungsaktion von Service Health, wenn Bedingung TRUE ist")
 
    1. Geben Sie für die Bedingung **If false** eine sinnvolle Nachricht an:
 
@@ -219,7 +219,7 @@ Azure Service Health-Einträge sind ein Teil des Aktivitätsprotokolls. Der Proz
        <p><a href="https://ms.portal.azure.com/#blade/Microsoft_Azure_Health/AzureHealthBrowseBlade/serviceIssues">For details, log in to the Azure Service Health dashboard.\</a></p>
        ```
 
-       ![„Veröffentlichungsaktion von Service Health, wenn Bedingung FALSE ist“](media/monitoring-action-groups/service-health-false-condition-post-action.png "Veröffentlichungsaktion von Service Health, wenn Bedingung FALSE ist")
+       ![„Veröffentlichungsaktion von Service Health, wenn Bedingung FALSE ist“](media/monitoring-action-groups-logic-app/service-health-false-condition-post-action.png "Veröffentlichungsaktion von Service Health, wenn Bedingung FALSE ist")
 
 - Schritt 15 ist identisch. Befolgen Sie die Anweisungen zum Speichern Ihrer Logik-App und Aktualisieren Ihrer Aktionsgruppe.
 
@@ -279,15 +279,15 @@ Der Prozess zum Erstellen einer Metrikwarnung ähnelt abgesehen von ein paar Än
        - `schemaId == AzureMonitorMetricAlert`
        - `version == "2.0"`
        
-       ![„Bedingung Metrikwarnungnutzlast“](media/monitoring-action-groups/metric-alert-payload-condition.png "Bedingung Metrikwarnungnutzlast")
+       ![„Bedingung Metrikwarnungnutzlast“](media/monitoring-action-groups-logic-app/metric-alert-payload-condition.png "Bedingung Metrikwarnungnutzlast")
 
    1. Fügen Sie in der **If true**-Bedingung eine **For each**-Schleife und die Microsoft Teams-Aktion hinzu. Definieren Sie die Nachricht unter Verwendung einer Kombination von HTML und dynamischem Inhalt.
 
-       ![„Veröffentlichungsaktion Metrikwarnung, wenn Bedingung TRUE ist“](media/monitoring-action-groups/metric-alert-true-condition-post-action.png "Veröffentlichungsaktion Metrikwarnung, wenn Bedingung TRUE ist")
+       ![„Veröffentlichungsaktion Metrikwarnung, wenn Bedingung TRUE ist“](media/monitoring-action-groups-logic-app/metric-alert-true-condition-post-action.png "Veröffentlichungsaktion Metrikwarnung, wenn Bedingung TRUE ist")
 
    1. Definieren Sie in der **If false**-Bedingung eine Microsoft Teams-Aktion, die kommuniziert, dass die Metrikwarnung nicht mit den Erwartungen der Logik-App übereinstimmt. Schließen Sie die JSON-Nutzlast ein. Beachten Sie, wie im `json()`-Ausdruck auf den dynamischen Inhalt `triggerBody` verwiesen wird.
 
-       ![„Veröffentlichungsaktion Metrikwarnung, wenn Bedingung FALSE ist“](media/monitoring-action-groups/metric-alert-false-condition-post-action.png "Veröffentlichungsaktion Metrikwarnung, wenn Bedingung FALSE ist")
+       ![„Veröffentlichungsaktion Metrikwarnung, wenn Bedingung FALSE ist“](media/monitoring-action-groups-logic-app/metric-alert-false-condition-post-action.png "Veröffentlichungsaktion Metrikwarnung, wenn Bedingung FALSE ist")
 
 - Schritt 15 ist identisch. Befolgen Sie die Anweisungen zum Speichern Ihrer Logik-App und Aktualisieren Ihrer Aktionsgruppe.
 

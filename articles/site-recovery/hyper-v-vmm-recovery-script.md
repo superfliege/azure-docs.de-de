@@ -1,25 +1,18 @@
 ---
-title: Hinzufügen eines Skripts zu einem Wiederherstellungsplan in Azure Site Recovery | Microsoft-Dokumentation
-description: Erfahren Sie etwas über die Voraussetzungen für das Hinzufügen eines neuen System Center Virtual Machine Manager-Skripts (VMM) zu einem Wiederherstellungsplan in Azure.
-services: site-recovery
-documentationcenter: ''
+title: Hinzufügen eines Skripts zu einem Wiederherstellungsplan für die Notfallwiederherstellung in Azure Site Recovery | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie ein VMM-Skript zu einem Wiederherstellungsplan für die Notfallwiederherstellung von Hyper-V-VMs in VMM-Clouds hinzufügen.
 author: rajani-janaki-ram
 manager: rochakm
-editor: ''
-ms.assetid: 72408c62-fcb6-4ee2-8ff5-cab1218773f2
 ms.service: site-recovery
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
+ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: rajanaki
-ms.openlocfilehash: 0b2bb17c85f76498e11ea3f007d55d7488f249cf
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 239ccacaed9420fb15e9e116f46ad93596ddaaa2
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39426886"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50214884"
 ---
 # <a name="add-a-vmm-script-to-a-recovery-plan"></a>Hinzufügen eines VMM-Skripts zu einem Wiederherstellungsplan
 

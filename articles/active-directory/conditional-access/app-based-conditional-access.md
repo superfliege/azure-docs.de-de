@@ -1,6 +1,6 @@
 ---
-title: App-basierter bedingter Zugriff mit Azure Active Directory | Microsoft-Dokumentation
-description: Erfahren Sie, wie der App-basierte bedingte Zugriff mit Azure Active Directory funktioniert.
+title: Vorschreiben der Verwendung von genehmigten Client-Apps für den Zugriff auf Cloud-Apps mithilfe des bedingten Zugriffs von Azure Active Directory | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie die Verwendung genehmigter Client-Apps für den Zugriff auf Cloud-Apps mithilfe des bedingten Zugriffs von Azure Active Directory vorschreiben können.
 services: active-directory
 keywords: bedingter Zugriff auf Apps, bedingter Zugriff mit Azure AD, sicherer Zugriff auf Unternehmensressourcen, Richtlinien für bedingten Zugriff
 documentationcenter: ''
@@ -17,18 +17,18 @@ ms.workload: identity
 ms.date: 06/13/2018
 ms.author: markvi
 ms.reviewer: spunukol
-ms.openlocfilehash: f34fc4c41094292db9bed1294ee7b26ec04c96c6
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 68c2178440264aa6a6efce074b299f4e3deaa10f
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39630601"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50415388"
 ---
-# <a name="azure-active-directory-app-based-conditional-access"></a>App-basierter bedingter Zugriff mit Azure Active Directory  
+# <a name="how-to-require-approved-client-apps-for-cloud-app-access-with-conditional-access"></a>Vorschreiben genehmigter Client-Apps für den Zugriff auf Cloud-Apps mithilfe des bedingten Zugriffs 
 
-Ihre Mitarbeiter verwenden mobile Geräte sowohl für private als auch für berufliche Zwecke. Während Sie einerseits die Produktivität der Mitarbeiter sicherstellen möchten, sollten Sie andererseits Datenverluste vermeiden. Mit dem App-basierten bedingten Zugriff mit Azure Active Directory (Azure AD) können Sie den Zugriff auf Ihre Cloud-Apps auf Client-Apps beschränken, die Ihre Unternehmensdaten schützen können.  
+Ihre Mitarbeiter verwenden mobile Geräte sowohl für private als auch für berufliche Zwecke. Während Sie einerseits die Produktivität der Mitarbeiter sicherstellen möchten, sollten Sie andererseits Datenverluste vermeiden. Mit dem bedingten Zugriff mit Azure Active Directory (Azure AD) können Sie den Zugriff auf Ihre Cloud-Apps auf genehmigte Client-Apps beschränken, die Ihre Unternehmensdaten schützen können.  
 
-In diesem Thema wird erläutert, wie Sie den App-basierten bedingten Zugriff mit Azure AD konfigurieren.
+In diesem Thema wird erläutert, wie Sie Richtlinien für den bedingten Zugriff konfigurieren, die genehmigte Client-Apps erfordern.
 
 ## <a name="overview"></a>Übersicht
 
@@ -36,7 +36,7 @@ Mit dem [bedingten Zugriff von Azure AD](overview.md) können Sie präzise steue
 
 Zum Schutz Ihrer Unternehmensdaten können Sie [Intune-Richtlinien für den App-Schutz](https://docs.microsoft.com/intune/app-protection-policy) verwenden. Da die Intune-Richtlinien für den App-Schutz keine MDM-Lösung (Mobile-Device Management, Verwaltung mobiler Geräte) erfordern, sind Ihre Unternehmensdaten unabhängig davon geschützt, ob Sie die Geräte in einer Lösung für die Geräteverwaltung registrieren oder nicht.
 
-Der App-basierte bedingte Zugriff mit Azure Active Directory ermöglicht es Ihnen, den Zugriff auf Ihre Cloud-Apps auf Client-Apps zu beschränken, die Intune-Richtlinien für den App-Schutz unterstützen. Sie können zum Beispiel den Zugriff auf Exchange Online für die Outlook-App einschränken.
+Der bedingte Zugriff mit Azure Active Directory ermöglicht es Ihnen, den Zugriff auf Ihre Cloud-Apps auf Client-Apps zu beschränken, die Intune-Richtlinien für den App-Schutz unterstützen. Sie können zum Beispiel den Zugriff auf Exchange Online für die Outlook-App einschränken.
 
 Im Kontext des bedingten Zugriffs werden diese Client-Apps als **genehmigte Client-Apps** bezeichnet.  
 
@@ -120,9 +120,9 @@ Für die Richtlinie zum bedingten Zugriff in diesem Schritt müssen folgende Kom
 
     ![Bedingter Zugriff](./media/app-based-conditional-access/03.png)
 
-    b. Wählen Sie als **Clientanwendungen** die Option **Mobile Apps und Desktopclients** aus.
+    b. Wählen Sie als **Client-Apps (Vorschau)** die Option **Mobile Apps und Desktop-Apps** und **Clients mit moderner Authentifizierung**.
 
-    ![Bedingter Zugriff](./media/app-based-conditional-access/04.png)
+    ![Bedingter Zugriff](./media/app-based-conditional-access/91.png)
 
 5. Als **Zugriffskontrollen** muss **Genehmigte Client-App erforderlich (Vorschau)** ausgewählt werden.
 
@@ -144,11 +144,11 @@ Für die Richtlinie zum bedingten Zugriff in diesem Schritt müssen folgende Kom
 
     ![Bedingter Zugriff](./media/app-based-conditional-access/07.png)
 
-4. **Bedingungen:** Als **Bedingungen** müssen **Clientanwendungen** konfiguriert werden. 
+4. **Bedingungen:** Als **Bedingungen** müssen **Client-Apps (Vorschauversion)** konfiguriert werden. 
 
-    a. Wählen Sie als **Clientanwendungen** die Option **Exchange Active Sync** aus.
+    a. Wählen Sie als **Client-Apps (Vorschauversion)** die Option **Mobile Apps und Desktop-Apps** und **ActiveSync-Clients austauschen**.
 
-    ![Bedingter Zugriff](./media/app-based-conditional-access/08.png)
+    ![Bedingter Zugriff](./media/app-based-conditional-access/92.png)
 
     b. Als **Zugriffskontrollen** muss **Genehmigte Client-App erforderlich (Vorschau)** ausgewählt werden.
 
@@ -201,9 +201,9 @@ Für die Richtlinie zum bedingten Zugriff in diesem Schritt müssen folgende Kom
 
     ![Bedingter Zugriff](./media/app-based-conditional-access/03.png)
 
-    b. Wählen Sie als **Clientanwendungen** die Option **Mobile Apps und Desktopclients** aus.
+    b. Wählen Sie als **Client-Apps (Vorschau)** die Option **Mobile Apps und Desktop-Clients** und **Clients mit moderner Authentifizierung**.
 
-    ![Bedingter Zugriff](./media/app-based-conditional-access/04.png)
+    ![Bedingter Zugriff](./media/app-based-conditional-access/91.png)
 
 5. Als **Zugriffskontrollen** muss **Genehmigte Client-App erforderlich (Vorschau)** ausgewählt werden.
 
@@ -228,9 +228,9 @@ Für die Richtlinie zum bedingten Zugriff in diesem Schritt müssen folgende Kom
 
 4. **Bedingungen:** Als **Bedingungen** müssen **Clientanwendungen** konfiguriert werden:
 
-    a. Wählen Sie als **Clientanwendungen** die Option **Exchange Active Sync** aus.
+    a. Wählen Sie als **Client-Apps (Vorschauversion)** die Option **Mobile Apps und Desktop-Apps** und **ActiveSync-Clients austauschen**.
 
-    ![Bedingter Zugriff](./media/app-based-conditional-access/08.png)
+    ![Bedingter Zugriff](./media/app-based-conditional-access/92.png)
 
     b. Als **Zugriffskontrollen** muss **Genehmigte Client-App erforderlich (Vorschau)** ausgewählt werden.
 
@@ -285,9 +285,9 @@ Für die Richtlinie zum bedingten Zugriff in diesem Schritt müssen folgende Kom
 
     ![Bedingter Zugriff](./media/app-based-conditional-access/03.png)
 
-    b. Wählen Sie als **Clientanwendungen** die Option **Mobile Apps und Desktopclients** aus.
+    b. Wählen Sie als **Client-Apps (Vorschau)** die Option **Mobile Apps und Desktop-Clients** und **Clients mit moderner Authentifizierung**.
 
-    ![Bedingter Zugriff](./media/app-based-conditional-access/04.png)
+    ![Bedingter Zugriff](./media/app-based-conditional-access/91.png)
 
 5. Als **Zugriffskontrollen** muss Folgendes ausgewählt werden:
 
@@ -317,9 +317,9 @@ Für die Richtlinie zum bedingten Zugriff in diesem Schritt müssen folgende Kom
 
 4. **Bedingungen:** Als **Bedingungen** müssen **Clientanwendungen** konfiguriert werden. 
 
-    Wählen Sie als *Clientanwendungen* die Option **Exchange Active Sync** aus.
+    Wählen Sie als **Client-Apps (Vorschauversion)** die Option **Mobile Apps und Desktop-Apps** und **ActiveSync-Clients austauschen**.
 
-    ![Bedingter Zugriff](./media/app-based-conditional-access/08.png)
+    ![Bedingter Zugriff](./media/app-based-conditional-access/91.png)
 
 5. Als **Zugriffskontrollen** muss **Genehmigte Client-App erforderlich (Vorschau)** ausgewählt werden.
  
@@ -381,9 +381,9 @@ Für die Richtlinie zum bedingten Zugriff in diesem Schritt müssen folgende Kom
 
     ![Bedingter Zugriff](./media/app-based-conditional-access/03.png)
 
-    b. Wählen Sie als **Clientanwendungen** die Option **Mobile Apps und Desktopclients** aus.
+    b. Wählen Sie als **Client-Apps (Vorschau)** die Option **Mobile Apps und Desktop-Apps** und **Clients mit moderner Authentifizierung**.
 
-    ![Bedingter Zugriff](./media/app-based-conditional-access/04.png)
+    ![Bedingter Zugriff](./media/app-based-conditional-access/91.png)
 
 5. Als **Zugriffskontrollen** muss Folgendes ausgewählt werden:
 
@@ -411,11 +411,11 @@ Für die Richtlinie zum bedingten Zugriff in diesem Schritt müssen folgende Kom
 
     ![Bedingter Zugriff](./media/app-based-conditional-access/07.png)
 
-4. **Bedingungen:** Als **Bedingungen** müssen **Clientanwendungen** konfiguriert werden. 
+4. **Bedingungen:** Als **Bedingungen** müssen **Client-Apps (Vorschauversion)** konfiguriert werden. 
 
-    Wählen Sie als **Clientanwendungen** die Option **Exchange Active Sync** aus.
+    Wählen Sie als **Client-Apps (Vorschauversion)** die Option **Mobile Apps und Desktop-Apps** und **ActiveSync-Clients austauschen**.
 
-    ![Bedingter Zugriff](./media/app-based-conditional-access/08.png)
+    ![Bedingter Zugriff](./media/app-based-conditional-access/92.png)
 
 5. Als **Zugriffskontrollen** muss Folgendes ausgewählt werden:
 

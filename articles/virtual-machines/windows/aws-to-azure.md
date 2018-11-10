@@ -1,6 +1,6 @@
 ---
 title: Verschieben von Windows-AWS-VMs nach Azure | Microsoft-Dokumentation
-description: Es wird beschrieben, wie Sie eine Windows-Instanz vom Typ „Amazon Web Services (AWS) EC2“ mit Azure PowerShell auf Azure Virtual Machines verschieben.
+description: Hier wird beschrieben, wie Sie eine Windows-Instanz vom Typ „Amazon Web Services (AWS) EC2“ auf einen virtuellen Azure-Computer verschieben.
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2018
 ms.author: cynthn
-ms.openlocfilehash: cb5b68e7bd0a1b247327e7147fe38eae19395f50
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 3fa890b02c791f26f3f25bf2418b105d1116ca75
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34726532"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50094425"
 ---
-# <a name="move-a-windows-vm-from-amazon-web-services-aws-to-azure-using-powershell"></a>Verschieben einer Windows-VM aus Amazon Web Services (AWS) nach Azure mit PowerShell
+# <a name="move-a-windows-vm-from-amazon-web-services-aws-to-an-azure-virtual-machine"></a>Verschieben eines virtuellen Windows-Computers aus Amazon Web Services (AWS) auf einen virtuellen Azure-Computer
 
 Wenn Sie virtuelle Azure-Computer für das Hosten von Workloads auswerten, können Sie eine vorhandene Windows-VM-Instanz vom Typ „Amazon Web Services (AWS) EC2“ exportieren und die virtuelle Festplatte (VHD) dann in Azure hochladen. Nach dem Hochladen der VHD können Sie in Azure aus der VHD eine neue VM erstellen. 
 

@@ -11,17 +11,59 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 10/16/2018
+ms.date: 10/28/2018
 ms.author: raiye
-ms.openlocfilehash: 7540f12f888108ed7091cece575b6d25131ef47b
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 0430eefb55893420cf7ea603998f14465fb2cc60
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49377513"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50215513"
 ---
 # <a name="azure-guest-os"></a>Azure-Gastbetriebssystem
 Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MSRC), die auf das Azure-Gastbetriebssystem angewendet wurden. Durchsuchen Sie diesen Artikel, um zu ermitteln, ob ein bestimmtes Update für das Gastbetriebssystem gilt, das Sie verwenden. Updates werden für die [Familie][family-explain], in der sie eingeführt wurden, immer in die jeweils neueste Version übertragen.
+
+## <a name="october-2018-guest-os"></a>Gastbetriebssystem für Oktober 2018
+>[!NOTE]
+>Das Gastbetriebssystem für Oktober wird derzeit auf Clouddienst-VMs eingeführt, die für automatische Updates konfiguriert sind. Wenn die Bereitstellung abgeschlossen ist, wird diese Version für manuelle Updates über das Azure-Portal und Konfigurationsdateien verfügbar gemacht. Die folgenden Patches sind im Gastbetriebssystem für Oktober enthalten. Änderungen der Liste vorbehalten.
+
+| Produktkategorie | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
+| --- | --- | --- | --- | --- |
+| Rel 18-10 | [4462917] | Sicherheitsupdates für Windows 10 | 5.24 | 9. Oktober 2018 |
+| Rel 18-10 | [4464330] | Sicherheitsupdates für Windows 10 | 6,0 | 9. Oktober 2018 |
+| Rel 18-10 | [4462915] | Windows-Sicherheit | 2.79 | 9. Oktober 2018 |
+| Rel 18-10 | [4462931] | Windows-Sicherheit | 3.66 | 9. Oktober 2018 |
+| Rel 18-10 | [4462941] | Windows-Sicherheit | 4.59 | 9. Oktober 2018 |
+| Rel 18-10 | [4462930] | Blinken | 3.66, 4.59, 5.24, 6.0 | 9. Oktober 2018 |
+| Rel 18-10 | [4462949] | Internet Explorer | 2.79, 3.66, 4.59 | 9. Oktober 2018 |
+| N/V | [4339284] | Zeitzonenupdate | 2.79, 3.66, 4.59 | 24. Juli 2018 |
+| N/V | [4457144] | Nicht sicherheitsrelevanter Rollup für September | 2.79 | 11. September 2018 |
+| N/V | [4457044] | Nicht sicherheitsrelevanter .NET 3.5-Rollup für September | 2.79 | 11. September 2018 |
+| N/V | [4457038] | Nicht sicherheitsrelevanter .NET 4.5.2-Rollup für September | 2.79 | 11. September 2018 |
+| N/V | [4457135] | Nicht sicherheitsrelevanter Rollup für September | 3.66 | 11. September 2018 |
+| N/V | [4457042] | Nicht sicherheitsrelevanter .NET 3.5-Rollup für September | 3.66 | 11. September 2018 |
+| N/V | [4457037] | Nicht sicherheitsrelevanter .NET 4.5.2-Rollup für September | 3.66 | 11. September 2018 |
+| N/V | [4457129] | Nicht sicherheitsrelevanter Rollup für September | 4.59 | 11. September 2018 |
+| N/V | [4457045] | Nicht sicherheitsrelevanter .NET 3.5-Rollup für September | 4.59 | 11. September 2018 |
+| N/V | [4457036] | Nicht sicherheitsrelevanter .NET 4.5.2-Rollup für September | 4.59 | 11. September 2018 |
+
+[4462917]: http://support.microsoft.com/kb/4462917
+[4464330]: http://support.microsoft.com/kb/4464330
+[4462915]: http://support.microsoft.com/kb/4462915
+[4462931]: http://support.microsoft.com/kb/4462931
+[4462941]: http://support.microsoft.com/kb/4462941
+[4462930]: http://support.microsoft.com/kb/4462930
+[4462949]: http://support.microsoft.com/kb/4462949
+[4339284]: http://support.microsoft.com/kb/4339284
+[4457144]: http://support.microsoft.com/kb/4457144
+[4457044]: http://support.microsoft.com/kb/4457044
+[4457038]: http://support.microsoft.com/kb/4457038
+[4457135]: http://support.microsoft.com/kb/4457135
+[4457042]: http://support.microsoft.com/kb/4457042
+[4457037]: http://support.microsoft.com/kb/4457037
+[4457129]: http://support.microsoft.com/kb/4457129
+[4457045]: http://support.microsoft.com/kb/4457045
+[4457036]: http://support.microsoft.com/kb/4457036
 
 ## <a name="september-2018-guest-os"></a>Gastbetriebssystem für September 2018
 | Produktkategorie | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |

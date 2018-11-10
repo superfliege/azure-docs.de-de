@@ -6,14 +6,14 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/08/2018
+ms.date: 10/26/2018
 ms.author: alinast
-ms.openlocfilehash: 1c2068af510cb3733ce99a6ae7b40487a8c1a015
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: c1d66e0b58567244f8c1406ee258c9311994ff20
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49323804"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50215105"
 ---
 # <a name="understanding-digital-twins-object-models-and-spatial-intelligence-graph"></a>Grundlegendes zum Digital Twins-Objektmodell und zum Raumintelligenzgraphen
 
@@ -25,7 +25,7 @@ Mit formulierten _Azure Digital Twins-Objektmodellen_ und formulierter _Ontologi
 
 ![Digital Twins-Raumgraph für ein Gebäude][1]
 
-<a id="model" />
+<a id="model"></a>
 
 In dem Raumgraph werden Räume, Geräte, Sensoren und Benutzer zusammengeführt. Jedes Objekt ist auf eine Weise verknüpft, die die reale Welt modelliert: Veranstaltungsort 43 hat vier Etagen, von denen jede mehrere verschiedene Bereiche hat. Benutzer sind ihren Arbeitsplätzen zugeordnet und erhalten Zugriff auf Teile des Graphen.  Beispielsweise hätte ein Administrator Berechtigungen, Änderungen am Raumgraphen vornehmen zu können, während ein Besucher möglicherweise nur Berechtigungen zum Anzeigen bestimmter Gebäudedaten hätte.
 
@@ -52,19 +52,19 @@ Weitere Objektkategorien sind:
 - **Matcher** (Abgleicher) sind Objekte, die bestimmen, welche benutzerdefinierten Funktionen für eine bestimmte Telemetrienachricht ausgeführt werden sollen.
 - **Endpunkte** sind die Punkte, an denen Telemetrienachrichten und Digital Twins-Ereignisse weitergeleitet werden können, z. B. `Event Hub`, `Service Bus`, `Event Grid`.
 
-<a id="graph" />
+<a id="graph"></a>
 
 ## <a name="spatial-intelligence-graph"></a>Raumintelligenzgraph
 
 **Raumgraph** ist der hierarchische Graph aus Räumen, Geräten und Personen, die im **Digital Twins-Objektmodell** definiert sind. Für einen Raumgraph werden _Vererbung_, _Filterung_, _Durchlaufen_, _Skalierbarkeit_ und _Erweiterbarkeit_  unterstützt. Benutzer können Raumgraphen über eine Sammlung von REST-APIs (siehe unten) verwalten und nutzen.
 
-Ein Benutzer, der einen Digital Twins-Dienst in seinem Abonnement bereitstellt, wird zum globalen Administrator des Stammknotens und gewährt automatisch vollen Zugriff auf die gesamte Struktur. Dieser Benutzer kann dann über die `Space`-API Räume im Graphen bereitstellen. Geräte können über die `Device`-API, Sensoren können über die `Sensor`-API bereitgestellt werden, usw. Wir bieten auch [Open Source-Tools](https://github.com/Azure-Samples/digital-twins-samples-csharp), um den Graphen in großem Umfang bereitzustellen.
+Ein Benutzer, der einen Digital Twins-Dienst in seinem Abonnement bereitstellt, wird zum globalen Administrator des Stammknotens und gewährt automatisch vollen Zugriff auf die gesamte Struktur. Dieser Benutzer kann dann über die Bereichs-API Bereiche im Graphen bereitstellen. Geräte können über die Geräte-API, Sensoren können über die Sensoren-API bereitgestellt werden usw. Wir bieten auch [Open Source-Tools](https://github.com/Azure-Samples/digital-twins-samples-csharp), um den Graphen in großem Umfang bereitzustellen.
 
 Graph-_Vererbung_ bezieht sich auf die Berechtigungen und Eigenschaften, die von einem übergeordneten Knoten an alle unter ihm befindlichen Knoten weitergegeben werden. Ist beispielsweise einem Benutzer in einem bestimmten Knoten eine Rolle zugewiesen, hat der Benutzer die Berechtigungen dieser Rolle für den bestimmten Knoten und für jeden darunter befindlichen Knoten. Außerdem werden alle Eigenschaftenschlüssel und erweiterte Typen, die für einen bestimmten Knoten definiert sind, an alle Knoten unter diesem Knoten vererbt.
 
-Graph-_Filterung_ ermöglicht es Benutzern, Anforderungsergebnisse nach IDs, Namen, Typen, Untertypen, übergeordnetem Raum, zugeordnetem Raum, Sensordatentypen, Eigenschaftenschlüsseln und -werten, Durchlaufen (traverse), minLevel, maxLevel und anderen OData-Filterparametern einzugrenzen.
+Graph-_Filterung_ ermöglicht es Benutzern, Anforderungsergebnisse nach IDs, Namen, Typen, Untertypen, übergeordnetem Raum, zugeordnetem Raum, Sensordatentypen, Eigenschaftenschlüsseln und -werten, Durchlaufen (*traverse*), *minLevel*, *maxLevel* und anderen OData-Filterparametern einzugrenzen.
 
-Graph-_durchlaufen_ ermöglicht es Benutzern im Raumgraphen in die Tiefe und die Breite zu navigieren. Hinsichtlich Tiefe kann ein Graph von oben nach unten oder von unten nach oben über die Navigationsparameter `traverse`, `minLevel` und `maxLevel` durchlaufen werden. Hinsichtlich Breite kann im Graph navigiert werden, um nebengeordnete Knoten direkt mit einem übergeordneten Raum oder einem ihrer Nachfolgerelemente zu verknüpfen. Wenn Sie ein Objekt abfragen, können Sie alle Objekte, die eine Beziehung mit diesem Objekt haben, ermitteln, indem Sie den `includes`-Parameter der GET-APIs verwenden.
+Graph-_durchlaufen_ ermöglicht es Benutzern im Raumgraphen in die Tiefe und die Breite zu navigieren. Hinsichtlich der Tiefe kann ein Graph von oben nach unten oder von unten nach oben über die Navigationsparameter *traverse*, *minLevel* und *maxLevel* durchlaufen werden. Hinsichtlich Breite kann im Graph navigiert werden, um nebengeordnete Knoten direkt mit einem übergeordneten Raum oder einem ihrer Nachfolgerelemente zu verknüpfen. Wenn Sie ein Objekt abfragen, können Sie alle Objekte, die eine Beziehung mit diesem Objekt haben, ermitteln, indem Sie den *includes*-Parameter der GET-APIs verwenden.
 
 Azure Digital Twins garantiert Graph-_Skalierbarkeit_, sodass Ihre tatsächlichen Workloads verarbeitet werden können. Digital Twins kann verwendet werden, um große Portfolios von Immobilien, Infrastruktur, Geräten, Sensoren, Telemetrie usw. darzustellen.
 
@@ -80,8 +80,8 @@ https://yourInstanceName.yourLocation.azuresmartspaces.net/management/swagger
 
 | Name des benutzerdefinierten Attributs | Ersetzen durch |
 | --- | --- |
-| `yourInstanceName` | Den Namen Ihrer Azure Digital Twins-Instanz |
-| `yourLocation` | Die Serverregion, in der Ihre Instanz gehostet wird |
+| *yourInstanceName* | Den Namen Ihrer Azure Digital Twins-Instanz |
+| *yourLocation* | Die Serverregion, in der Ihre Instanz gehostet wird |
 
  Das vollständige URL-Format, das verwendet wird, ist in der folgenden Abbildung zu sehen:
 

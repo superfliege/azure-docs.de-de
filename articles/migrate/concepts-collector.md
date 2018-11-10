@@ -4,15 +4,15 @@ description: Informationen zur Collectorappliance in Azure Migrate
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 10/24/2018
+ms.date: 10/30/2018
 ms.author: snehaa
 services: azure-migrate
-ms.openlocfilehash: 006a246323e9f82ea9c9a6a2940ed624d7e44e13
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 81e6731068db84f02073f02c49bea9a8fb7c7c70
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49986779"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50241190"
 ---
 # <a name="about-the-collector-appliance"></a>Informationen zur Collectorappliance
 
@@ -20,6 +20,38 @@ ms.locfileid: "49986779"
 
 Der Azure Migrate-Collector ist eine einfache Appliance, die zum Ermitteln einer lokalen vCenter-Umgebung verwendet werden kann, damit vor der Migration zu Azure eine Überprüfung mit dem [Azure Migrate](migrate-overview.md)-Dienst durchgeführt werden kann.  
 
+## <a name="discovery-methods"></a>Ermittlungsmethoden
+
+Es gibt zwei Optionen für die Collectorappliance: einmalige Ermittlung und kontinuierliche Ermittlung.
+
+### <a name="one-time-discovery"></a>Einmalige Ermittlung
+
+Die Collectorappliance kommuniziert einmalig mit vCenter Server, um Metadaten über die VMs zu sammeln. Er verwendet diese Methode:
+
+- Die Appliance ist nicht kontinuierlich mit dem Azure Migrate-Projekt verbunden.
+- In der lokalen Umgebung vorgenommene Änderungen werden nach Abschluss der Ermittlung in Azure Migrate nicht widergespiegelt. Sie müssen dieselbe Umgebung in demselben Projekt erneut ermitteln, um sämtliche Änderungen widerspiegeln zu können.
+- Beim Sammeln von Leistungsdaten für eine VM verwendet die Appliance die in vCenter Server gespeicherten Verlaufsleistungsdaten. Sie erfasst den Leistungsverlauf des letzten Monats.
+- Für die Sammlung historischer Leistungsdaten müssen Sie die Statistikeinstellungen in vCenter Server auf Ebene 3 festlegen. Nach dem Festlegen der Ebene 3 müssen Sie mindestens einen Tag warten, damit vCenter Leistungsindikatoren sammeln kann. Daher wird empfohlen, die Ermittlung erst nach mindestens einem Tag durchzuführen. Wenn Sie die Umgebung anhand der Leistungsdaten für eine Woche oder einen Monat bewerten möchten, müssen Sie entsprechend lange warten.
+- Bei dieser Ermittlungsmethode erfasst Azure Migrate Durchschnittswerte für jede Metrik (keine Spitzenwerte). Dies kann zu Unterdimensionierung führen. Es wird empfohlen, die kontinuierliche Erkennung zu verwenden, um genauere Ergebnisse für die Größenfestlegung zu erhalten.
+
+### <a name="continuous-discovery"></a>Kontinuierliche Ermittlung
+
+Die Collectorappliance ist kontinuierlich mit dem Azure Migrate-Projekt verbunden und sammelt kontinuierlich Leistungsdaten von VMs.
+
+- Der Collector profiliert kontinuierlich die lokale Umgebung, um alle 20 Sekunden Echtzeit-Verwendungsdaten zu sammeln.
+- Die Appliance führt für die 20-Sekunden-Stichproben ein Rollup aus und erstellt alle 15 Minuten einen einzelnen Datenpunkt.
+- Zum Erstellen des Datenpunkts wählt die Appliance den Spitzenwert aus den 20-Sekunden-Stichproben aus und sendet diesen an Azure.
+- Dieses Modell ist für die Sammlung von Leistungsdaten nicht von den Statistikeinstellungen von vCenter Server abhängig.
+- Sie können die kontinuierliche Profilerstellung jederzeit über den Collector beenden.
+
+Beachten Sie, dass die Appliance nur Leistungsdaten kontinuierlich erfasst. Sie erkennt keine Konfigurationsänderungen in der lokalen Umgebung (etwa hinzugefügte VMs, Löschvorgänge, hinzugefügte Datenträger etc.). Wenn sich die Konfiguration in der lokalen Umgebung ändert, können Sie wie folgt vorgehen, damit die Änderungen im Portal berücksichtigt werden:
+
+- Hinzugefügte Elemente (VMs, Datenträger, Kerne und Ähnliches): Damit diese Änderungen im Azure-Portal berücksichtigt werden, können Sie die Ermittlung über die Appliance beenden und anschließend wieder starten. Dadurch wird sichergestellt, dass die Änderungen im Azure Migrate-Projekt aktualisiert werden.
+
+- Gelöschte VMs: Das Löschen von VMs wird aufgrund des Entwurfs der Appliance auch dann nicht berücksichtigt, wenn Sie die Ermittlung beenden und wieder starten. Das liegt daran, dass Daten nachfolgender Ermittlungen älteren Ermittlungen angefügt und nicht überschrieben werden. In diesem Fall können Sie die VM im Portal einfach ignorieren, indem Sie sie aus Ihrer Gruppe entfernen und die Bewertung neu berechnen.
+
+> [!NOTE]
+> Die Funktionalität der kontinuierlichen Ermittlung ist in der Vorschau. Es empfiehlt sich, diese Methode zu verwenden, da sie präzise Leistungsdaten erfasst und zu einer korrekten Größe führt.
 
 ## <a name="deploying-the-collector"></a>Bereitstellen des Collectors
 
@@ -163,43 +195,6 @@ Sie können ein Upgrade für den Collector auf die neueste Version durchführen,
 3. Kopieren Sie die ZIP-Datei auf den virtuellen Azure Migrate-Collectorcomputer (Collectorappliance).
 4. Klicken Sie mit der rechten Maustaste auf die ZIP-Datei, und wählen Sie „Alle extrahieren“ aus.
 5. Klicken Sie mit der rechten Maustaste auf „Setup.ps1“, und klicken Sie auf „Mit PowerShell ausführen“. Befolgen Sie dann die Anweisungen auf dem Bildschirm, um das Update zu installieren.
-
-
-## <a name="discovery-methods"></a>Ermittlungsmethoden
-
-Es gibt zwei Ermittlungsmethoden, die von der Collectorappliance verwendet werden: die einmalige Ermittlung und die kontinuierliche Ermittlung.
-
-
-### <a name="one-time-discovery"></a>Einmalige Ermittlung
-
-Der Collector kommuniziert einmalig mit vCenter Server, um Metadaten über die VMs zu sammeln. Er verwendet diese Methode:
-
-- Die Appliance ist nicht kontinuierlich mit dem Azure Migrate-Projekt verbunden.
-- In der lokalen Umgebung vorgenommene Änderungen werden nach Abschluss der Ermittlung in Azure Migrate nicht widergespiegelt. Sie müssen dieselbe Umgebung in demselben Projekt erneut ermitteln, um sämtliche Änderungen widerspiegeln zu können.
-- Für diese Ermittlungsmethode müssen Sie die Statistikeinstellungen in vCenter Server auf Ebene 3 festlegen.
-- Nachdem die Statistikeinstellungen auf Ebene 3 festgelegt wurden, dauert es bis zu einem Tag, bis die Leistungsindikatoren generiert werden. Daher wird empfohlen, die Ermittlung erst nach einem Tag durchzuführen.
-- Beim Sammeln von Leistungsdaten für eine VM verwendet die Appliance die in vCenter Server gespeicherten Verlaufsleistungsdaten. Sie erfasst den Leistungsverlauf des letzten Monats.
-- Azure Migrate erfasst Durchschnittswerte der Leistungsindikatoren – keine Spitzenwerte – für jede Metrik, was zu Unterdimensionierung führen kann.
-
-### <a name="continuous-discovery"></a>Kontinuierliche Ermittlung
-
-Die Collectorappliance ist kontinuierlich mit dem Azure Migrate-Projekt verbunden und sammelt kontinuierlich Leistungsdaten von VMs.
-
-- Der Collector profiliert kontinuierlich die lokale Umgebung, um alle 20 Sekunden Echtzeit-Verwendungsdaten zu sammeln.
-- Dieses Modell ist für die Sammlung von Leistungsdaten nicht von den Statistikeinstellungen von vCenter Server abhängig.
-- Die Appliance führt für die 20-Sekunden-Stichproben ein Rollup aus und erstellt alle 15 Minuten einen einzelnen Datenpunkt.
-- Zum Erstellen des Datenpunkts wählt die Appliance den Spitzenwert aus den 20-Sekunden-Stichproben aus und sendet diesen an Azure.
-- Sie können die kontinuierliche Profilerstellung jederzeit über den Collector beenden.
-
-Beachten Sie, dass die Appliance nur Leistungsdaten kontinuierlich erfasst. Sie erkennt keine Konfigurationsänderungen in der lokalen Umgebung (etwa hinzugefügte VMs, Löschvorgänge, hinzugefügte Datenträger etc.). Wenn sich die Konfiguration in der lokalen Umgebung ändert, können Sie wie folgt vorgehen, damit die Änderungen im Portal berücksichtigt werden:
-
-1. Hinzugefügte Elemente (VMs, Datenträger, Kerne und Ähnliches): Damit diese Änderungen im Azure-Portal berücksichtigt werden, können Sie die Ermittlung über die Appliance beenden und anschließend wieder starten. Dadurch wird sichergestellt, dass die Änderungen im Azure Migrate-Projekt aktualisiert werden.
-
-2. Gelöschte VMs: Das Löschen von VMs wird aufgrund des Entwurfs der Appliance auch dann nicht berücksichtigt, wenn Sie die Ermittlung beenden und wieder starten. Das liegt daran, dass Daten nachfolgender Ermittlungen älteren Ermittlungen angefügt und nicht überschrieben werden. In diesem Fall können Sie die VM im Portal einfach ignorieren, indem Sie sie aus Ihrer Gruppe entfernen und die Bewertung neu berechnen.
-
-> [!NOTE]
-> Die Funktionalität der kontinuierlichen Ermittlung ist in der Vorschau. Es empfiehlt sich, diese Methode zu verwenden, da sie präzise Leistungsdaten erfasst und zu einer korrekten Größe führt.
-
 
 ## <a name="discovery-process"></a>Ermittlungsprozess
 

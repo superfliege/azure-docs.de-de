@@ -4,21 +4,21 @@ description: Verwenden Sie Azure Resource Graph, um einige einfache Abfragen aus
 services: resource-graph
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 09/18/2018
+ms.date: 10/22/2018
 ms.topic: quickstart
 ms.service: resource-graph
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: ba3df8f0f7fa0443e64972647b6f146f756e62d6
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: d5b2bb719bcd5c2145740a02bc408385953ff739
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49646627"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50084529"
 ---
 # <a name="starter-resource-graph-queries"></a>Einfache Resource Graph-Abfragen
 
-Der erste Schritt zum Verstehen von Abfragen mit Azure Resource Graph sind Grundkenntnisse der [Abfragesprache](../concepts/query-language.md). Wenn Sie nicht bereits mit dem [Azure Data Explorer](../../../data-explorer/data-explorer-overview.md) vertraut sind, sollten Sie sich über die Grundlagen informieren, um zu verstehen, wie Sie die Anforderungen für die Ressourcen, die Sie suchen, zusammenstellen müssen.
+Der erste Schritt zum Verstehen von Abfragen mit Azure Resource Graph sind Grundkenntnisse der [Abfragesprache](../concepts/query-language.md). Wenn Sie nicht bereits mit [Azure Data Explorer](../../../data-explorer/data-explorer-overview.md) vertraut sind, sollten Sie sich über die Grundlagen informieren, um zu verstehen, wie Sie Anforderungen für die gesuchten Ressourcen zusammenstellen müssen.
 
 Wir behandeln die folgenden einfachen Abfragen:
 
@@ -58,7 +58,7 @@ Search-AzureRmGraph -Query "summarize count()"
 
 ## <a name="list-resources"></a>Auflisten von Ressourcen nach Namen sortiert
 
-Ohne Einschränkung auf einen Ressourcentyp oder bestimmte übereinstimmende Eigenschaften gibt diese Abfrage nur **Namen**, **Typ** und **Speicherort** der Azure-Ressourcen zurück, verwendet aber `order by`, um sie nach der Eigenschaft **Name** in aufsteigender (`asc`) Reihenfolge zu sortieren.
+Mit dieser Abfrage werden alle Ressourcentypen, aber nur die Eigenschaften **name**, **type** und **location** zurückgegeben. Sie nutzt `order by`, um die Eigenschaften in aufsteigender Reihenfolge (`asc`) nach der Eigenschaft **name** zu sortieren.
 
 ```Query
 project name, type, location
@@ -75,8 +75,7 @@ Search-AzureRmGraph -Query "project name, type, location | order by name asc"
 
 ## <a name="show-vms"></a>Anzeigen aller virtuellen Computer in absteigender Folge nach Namen sortiert
 
-Anstatt alle Azure-Ressourcen abzurufen, um eine Liste der virtuellen Computer zu erhalten (die `Microsoft.Compute/virtualMachines` sind), können wir die Eigenschaft **Typ** in den Ergebnissen abgleichen.
-Ähnelt der vorherigen Abfrage, `desc` ändert `order by` in absteigend. `=~` in der Typübereinstimmung weist Resource Graph an, die Groß-/Kleinschreibung nicht zu berücksichtigen.
+Wenn Sie nur virtuelle Computer (Typ: `Microsoft.Compute/virtualMachines`) auflisten möchten, können Sie die Eigenschaft **type** in den Ergebnissen zum Abgleich heranziehen. Ähnelt der vorherigen Abfrage, `desc` ändert `order by` in absteigend. `=~` in der Typübereinstimmung weist Resource Graph an, die Groß-/Kleinschreibung nicht zu berücksichtigen.
 
 ```Query
 project name, location, type
@@ -165,7 +164,8 @@ Search-AzureRmGraph -Query "where type contains 'storage' | distinct type"
 
 ## <a name="list-publicip"></a>Liste der öffentlichen IP-Adressen
 
-Ähnlich wie bei der vorherigen Abfrage wird jeder Typ gefunden, der das Wort **publicIPAddresses** enthält. Diese Abfrage baut auf diesem Muster auf, um Ergebnisse auszuschließen, in denen **properties.ipAddress** NULL ist, um nur **properties.ipAddress** zurückzugeben und die Ergebnisse auf die obersten 100 zu begrenzen (`limit`). Je nach Ihrer ausgewählten Shell müssen Sie Anführungszeichen möglicherweise mit Escapezeichen versehen.
+Ähnlich wie bei der vorherigen Abfrage wird jeder Typ mit dem Wort **publicIPAddresses** gefunden.
+Diese Abfrage baut auf diesem Muster auf, um Ergebnisse auszuschließen, in denen **properties.ipAddress** NULL ist, um nur **properties.ipAddress** zurückzugeben und die Ergebnisse auf die obersten 100 zu begrenzen (`limit`). Je nach Ihrer ausgewählten Shell müssen Sie Anführungszeichen möglicherweise mit Escapezeichen versehen.
 
 ```Query
 where type contains 'publicIPAddresses' and properties.ipAddress != ''
@@ -215,7 +215,7 @@ az graph query -q "where tags.environment=~'internal' | project name"
 Search-AzureRmGraph -Query "where tags.environment=~'internal' | project name"
 ```
 
-Wenn es erforderlich wäre, auch anzugeben, welche Tags die Ressource hätte, und wie deren Werte lauten, könnte dieses Beispiel durch Hinzufügen der Eigenschaft **tags** zum `project`-Schlüsselwort erweitert werden.
+Wenn Sie darüber hinaus die Tags der Ressource und ihre Werte zurückgeben möchten, fügen Sie dem Schlüsselwort `project` die Eigenschaft **tags** hinzu.
 
 ```Query
 where tags.environment=~'internal'
@@ -232,7 +232,7 @@ Search-AzureRmGraph -Query "where tags.environment=~'internal' | project name, t
 
 ## <a name="list-specific-tag"></a>Auflisten aller Speicherkonten mit einem bestimmten Tagwert
 
-Durch Kombination der Filterfunktion des vorherigen Beispiels mit der Filterung nach Azure-Ressourcentyp nach **type**-Eigenschaft können wir unsere Suche nach bestimmten Typen von Azure-Ressourcen mit einem bestimmten Tagnamen und Wert beschränken.
+Kombinieren Sie die Filterfunktionen des vorherigen Beispiels, und filtern Sie den Azure-Ressourcentyp nach der Eigenschaft **type**. Diese Abfrage schränkt auch unsere Suche nach spezifischen Azure-Ressourcentypen mit einem bestimmten Tagnamen und -wert ein.
 
 ```Query
 where type =~ 'Microsoft.Storage/storageAccounts'

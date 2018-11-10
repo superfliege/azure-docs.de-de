@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: conceptual
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 9bbbb797cd7e7d1cea52f1d5b1b491998b595db7
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: fea70e2b1912bde94e23dbd98fa933784d2a69ac
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49638082"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50140314"
 ---
 # <a name="entity-roles-in-patterns-are-contextual-subtypes"></a>Entitätsrollen in Mustern sind kontextabhängige Untertypen
 Rollen sind benannte, kontextabhängige Untertypen einer Entität, die nur in [Mustern](luis-concept-patterns.md) verwendet wird.
@@ -42,13 +42,8 @@ In der Äußerungsvorlage eines Musters werden Rollen innerhalb der Äußerung v
 ## <a name="role-syntax-in-patterns"></a>Rollensyntax in Mustern
 Die Entität und die Rolle werden in Klammern `{}` eingeschlossen. Die Entität und die Rolle werden durch einen Doppelpunkt voneinander getrennt. 
 
-## <a name="roles-versus-hierarchical-entities"></a>Rollen und hierarchische Entitäten
-Hierarchische Entitäten bieten die gleichen Kontextinformationen wie Rollen, aber ausschließlich für Äußerungen in **Absichten**. Auf ähnliche Weise bieten Rollen die gleiche Kontextinformationen wie hierarchische Entitäten, jedoch ausschließlich in **Mustern**.
 
-|Kontextabhängiges Lernen|Verwendet für|
-|--|--|
-|hierarchische Entitäten|Absichten|
-|Rollen|Muster|
+[!include[H2 Roles versus hierarchical entities](../../../includes/cognitive-services-luis-hier-roles.md)] 
 
 ## <a name="roles-with-prebuilt-entities"></a>Rollen mit vordefinierten Entitäten
 
@@ -60,4 +55,4 @@ Die vordefinierte Entität „datetimeV2“ eignet sich hervorragend, um untersc
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Erfahren Sie, wie das Hinzufügen von [Rollen](luis-how-to-add-entities.md#add-role-to-pattern-based-entity) funktioniert.
+* Erfahren Sie, wie das Hinzufügen von [Rollen](luis-how-to-add-entities.md#add-a-role-to-pattern-based-entity) funktioniert.

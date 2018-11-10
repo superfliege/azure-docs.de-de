@@ -1,28 +1,28 @@
 ---
-title: Erstellen von Ressourcen für die Verwendung mit Azure Site Recovery | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie Azure für die Replikation von lokalen Computern mit Azure Site Recovery vorbereiten.
+title: Vorbereiten von Azure für die Notfallwiederherstellung von lokalen Computern mit Azure Site Recovery | Microsoft-Dokumentation
+description: Hier erfahren Sie, wie Sie Azure für die Notfallwiederherstellung von lokalen Computern mit Azure Site Recovery vorbereiten.
 services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 10/19/2018
+ms.date: 10/29/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 1d9f84a176d4c2483c83e8961bf426e70933aaa2
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: c00dd8cd412d79093e4ae1fd7ea30a3071c9b54f
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49457152"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50210243"
 ---
-# <a name="prepare-azure-resources-for-replication-of-on-premises-machines"></a>Vorbereiten von Azure-Ressourcen für die Replikation von lokalen Computern
+# <a name="prepare-azure-resources-for-disaster-recovery-of-on-premises-machines"></a>Vorbereiten von Azure-Ressourcen für die Notfallwiederherstellung von lokalen Computern
 
  [Azure Site Recovery](site-recovery-overview.md) unterstützt Ihre Strategien für Geschäftskontinuität und Notfallwiederherstellung, indem die Verfügbarkeit Ihrer Geschäftsanwendungen bei geplanten und ungeplanten Ausfällen gewährleistet wird. Site Recovery verwaltet und koordiniert die Notfallwiederherstellung von lokalen Computern sowie virtuellen Azure-Computern (VMs), einschließlich Replikation, Failover und Wiederherstellung.
 
 In diesem Artikel ist das erste Tutorial in einer Reihe, welche die Einrichtung der Notfallwiederherstellung für lokale virtuelle Computer veranschaulicht. Die Informationen gelten für das Schützen von lokalen virtuellen VMware-Computern, virtuellen Hyper-V-Computern und physischen Servern.
 
 > [!NOTE]
-> Tutorials dienen zur Veranschaulichung des einfachsten Bereitstellungspfads für ein Szenario. Sie verwenden nach Möglichkeit Standardoptionen und zeigen nicht alle möglichen Einstellungen und Pfade. Ausführliche Anweisungen finden Sie im Abschnitt mit **Anweisungen** für das entsprechende Szenario.
+> Tutorials dienen zur Veranschaulichung des einfachsten Bereitstellungspfads für ein Szenario. Sie verwenden nach Möglichkeit Standardoptionen und zeigen nicht alle möglichen Einstellungen und Pfade. Eine ausführliche Anleitung finden Sie jeweils im Abschnitt mit der **Gewusst wie-Anleitung** für das entsprechende Szenario.
 
 In diesem Artikel wird gezeigt, wie Sie Azure-Komponenten vorbereiten, wenn Sie lokale virtuelle Computer (Hyper-V oder VMware) oder physische Windows/Linux-Server in Azure replizieren möchten. In diesem Tutorial lernen Sie Folgendes:
 

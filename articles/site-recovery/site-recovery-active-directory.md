@@ -1,6 +1,6 @@
 ---
-title: Schützen von Active Directory und DNS mit Azure Site Recovery | Microsoft-Dokumentation
-description: Dieser Artikel beschreibt das Implementieren einer Notfallwiederherstellungs-Lösung für Active Directory mit Azure Site Recovery.
+title: Einrichten der Notfallwiederherstellung für Active Directory und DNS mit Azure Site Recovery | Microsoft-Dokumentation
+description: Dieser Artikel beschreibt das Implementieren einer Notfallwiederherstellungslösung für Active Directory und DNS mit Azure Site Recovery.
 services: site-recovery
 documentationcenter: ''
 author: mayurigupta13
@@ -9,14 +9,14 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: mayg
-ms.openlocfilehash: 1072c903e9bd9ccb3d63cae426283a677d10077e
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 51d435d9edea5e341127cac89bc96a71c7bc8bb4
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49354290"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50211892"
 ---
-# <a name="use-azure-site-recovery-to-protect-active-directory-and-dns"></a>Verwenden von Azure Site Recovery zum Schützen von Active Directory und DNS
+# <a name="set-up-disaster-recovery-for-active-directory-and-dns"></a>Einrichten der Notfallwiederherstellung für Active Directory und DNS
 
 Für Unternehmensanwendungen, z.B. SharePoint, Dynamics AX und SAP, ist eine Active Directory- und DNS-Infrastruktur erforderlich, damit sie richtig funktionieren. Wenn Sie Notfallwiederherstellung für Anwendungen einrichten, müssen Sie häufig Active Directory und DNS vorrangig vor den anderen Anwendungskomponenten wiederherstellen, um eine ordnungsgemäße Anwendungsfunktionalität sicherzustellen.
 

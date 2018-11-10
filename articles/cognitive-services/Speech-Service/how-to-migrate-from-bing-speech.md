@@ -1,7 +1,7 @@
 ---
 title: Migrieren von der Bing-Spracheingabe zum Spracherkennungsdienst
 titleSuffix: Azure Cognitive Services
-description: Lernen Sie die Unterschiede zwischen Bing-Spracheingabe und dem Spracherkennungsdienst aus Entwicklersicht kennen und migrieren Sie Ihre Anwendung, um den Spracherkennungsdienst zu nutzen.
+description: Lernen Sie die Unterschiede zwischen Bing-Spracheingabe und dem Spracherkennungsdienst aus Entwicklersicht kennen, und migrieren Sie Ihre Anwendung, um den Spracherkennungsdienst zu nutzen.
 services: cognitive-services
 author: wsturman
 manager: cgronlun
@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: gracez
-ms.openlocfilehash: baf9b9cd9b3f57c1d708dd404d59c036df6c169f
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: fdd22e14e0b7636dbc337a20dd69bf93696bb924
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49466646"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50416279"
 ---
 # <a name="migrate-from-bing-speech-to-the-speech-service"></a>Migrieren von der Bing-Spracheingabe zum Spracherkennungsdienst
 
@@ -35,23 +35,23 @@ Das [Sprach-SDK](speech-sdk.md) ist ein funktionaler Ersatz für die Clientbibli
 
 ## <a name="comparison-of-features"></a>Vergleich der Features
 
-Der Spracherkennungsdienst ist der Bing-Spracheingabe hinsichtlich Features, Plattform und Programmiersprache weitgehend ähnlich, weist aber die folgenden Unterschiede auf.
+Der Spracherkennungsdienst ähnelt weitgehend der Bing-Spracheingabe, wobei die folgenden Unterschiede bestehen.
 
 Feature | Bing-Spracheingabe | Spracherkennungsdienst | Details
 -|-|-|-
-C++ SDK | :heavy_minus_sign: | :heavy_check_mark: | Der Spracherkennungsdienst unterstützt Windows und Linux
-Java-SDK | :heavy_check_mark: | :heavy_check_mark: | Der Spracherkennungsdienst unterstützt Android- und Spracherkennungsgeräte
-C# SDK | :heavy_check_mark: | :heavy_check_mark: | Der Spracherkennungsdienst unterstützt Windows 10, UWP und .NET Standard 2.0
+C++ SDK | :heavy_minus_sign: | :heavy_check_mark: | Der Spracherkennungsdienst unterstützt Windows und Linux.
+Java-SDK | :heavy_check_mark: | :heavy_check_mark: | Der Spracherkennungsdienst unterstützt Android- und Spracherkennungsgeräte.
+C# SDK | :heavy_check_mark: | :heavy_check_mark: | Der Spracherkennungsdienst unterstützt Windows 10, Universelle Windows-Plattform (UWP) und .NET Standard 2.0.
 Kontinuierliche Spracherkennung | 10 Minuten | Unbegrenzt (mit SDK) | Die WebSockets-Protokolle der Bing-Spracheingabe als auch des Spracherkennungsdiensts unterstützen bis zu 10 Minuten pro Aufruf. Das Spracherkennungs-SDK verbindet sich jedoch bei einem Timeout oder wenn die Verbindung getrennt wird automatisch erneut.
-Teil- oder Zwischenergebnisse | :heavy_check_mark: | :heavy_check_mark: | Mit WebSockets-Protokoll oder SDK
-Benutzerdefinierte Spracherkennungsmodelle | :heavy_check_mark: | :heavy_check_mark: | Die Bing-Spracheingabe erfordert ein separates Abonnement für die benutzerdefinierte Spracherkennung
-Benutzerdefinierte Voicefonts | :heavy_check_mark: | :heavy_check_mark: | Die Bing-Spracheingabe erfordert ein separates Abonnement für Custom Voice
+Teil- oder Zwischenergebnisse | :heavy_check_mark: | :heavy_check_mark: | Mit WebSockets-Protokoll oder SDK.
+Benutzerdefinierte Spracherkennungsmodelle | :heavy_check_mark: | :heavy_check_mark: | Die Bing-Spracheingabe erfordert ein separates Custom Speech-Abonnement.
+Benutzerdefinierte Voicefonts | :heavy_check_mark: | :heavy_check_mark: | Die Bing-Spracheingabe erfordert ein separates Custom Voice-Abonnement.
 24-KHz-Stimmen | :heavy_minus_sign: | :heavy_check_mark: 
-Erkennung der Absicht bei gesprochenen Inhalten | Erfordert separaten LUIS-API-Aufruf | Integriert (mit SDK) |  Ein LUIS-Schlüssel kann mit dem Spracherkennungsdienst verwendet werden.
+Erkennung der Absicht bei gesprochenen Inhalten | Erfordert separaten LUIS-API-Aufruf | Integriert (mit SDK) |  Sie können einen LUIS-Schlüssel mit dem Spracherkennungsdienst verwenden.
 Einfache Absichtserkennung | :heavy_minus_sign: | :heavy_check_mark: 
 Batch-Transkription bei langen Audiodateien | :heavy_minus_sign: | :heavy_check_mark:
-Erkennungsmodus | Manuell über den Endpunkt-URI | Automatisch | Der Erkennungsmodus ist im Spracherkennungsdienst nicht verfügbar
-Endpunktregion | Global | Länderspezifisch | Regionale Endpunkte verbessern die Latenz. Ein globaler Endpunkt wird für den Spracherkennungsdienst in Betracht gezogen.
+Erkennungsmodus | Manuell über den Endpunkt-URI | Automatisch | Der Erkennungsmodus ist im Spracherkennungsdienst nicht verfügbar.
+Endpunktregion | Global | Länderspezifisch | Regionale Endpunkte verbessern die Latenz.
 REST-APIs | :heavy_check_mark: | :heavy_check_mark: | Die Spracherkennungsdienst-REST-API ist kompatibel mit der Bing-Spracheingabe (unterschiedlicher Endpunkt). REST-APIs unterstützen Sprachsynthese- und eingeschränkte Spracherkennungsfunktionen.
 WebSockets-Protokolle | :heavy_check_mark: | :heavy_check_mark: | Die Spracherkennungsdienst-WebSockets-API ist kompatibel mit der Bing-Spracheingabe (unterschiedlicher Endpunkt). Migrieren Sie nach Möglichkeit zum Spracherkennungs-SDK, um Ihren Code zu vereinfachen.
 Dienst-zu-Dienst-API-Aufrufe | :heavy_check_mark: | :heavy_minus_sign: | Wird bei der Bing-Spracheingabe über die C#-Dienstbibliothek bereitgestellt. 
@@ -63,22 +63,22 @@ Der Spracherkennungsdienst verwendet ein zeitbasiertes Preismodell (anstelle ein
 
 Wenn Sie oder Ihr Unternehmen Anwendungen in der Entwicklungs- oder Produktionsumgebung verwenden, die eine Bing-Spracheingabe-API verwenden, sollten Sie diese aktualisieren, um den Spracherkennungsdienst so schnell wie möglich zu nutzen. Informationen zu verfügbaren SDKs, Codebeispielen und Tutorials finden Sie in der [Dokumentation zum Spracherkennungsdienst](index.yml).
 
-Die Spracherkennungsdienst-[REST-APIs](rest-apis.md) sind mit den Bing-Spracheingabe-APIs kompatibel. Wenn Sie derzeit die REST-APIs der Bing-Spracherkennung verwenden, müssen Sie nur den REST-Endpunkt ändern und zu einem Abonnementschlüssel des Spracherkennungsdiensts wechseln.
+Die Spracherkennungsdienst-[REST-APIs](rest-apis.md) sind mit den Bing-Spracheingabe-APIs kompatibel. Wenn Sie derzeit die Bing-Spracheingabe-REST-APIs verwenden, müssen Sie nur den REST-Endpunkt ändern und zu einem Abonnementschlüssel des Spracherkennungsdiensts wechseln.
 
-Die WebSockets-Protokolle des Spracherkennungsdiensts sind auch mit den Protokollen der Bing-Spracheingabe kompatibel. Wir empfehlen, dass neue Entwicklungen auf das Spracherkennungsdienst-SDK ausgerichtet sind, anstatt WebSockets zu verwenden. Zudem empfehlen wird Ihnen, bestehenden Code ebenfalls für das SDK zu migrieren. Wie bei den REST-APIs erfordert jedoch bestehender Code, der die Bing-Spracheingabe via WebSockets verwendet, nur eine Änderung des Endpunkts und einen aktualisierten Schlüssel.
+Die WebSockets-Protokolle des Spracherkennungsdiensts sind auch mit den Protokollen der Bing-Spracheingabe kompatibel. Wir empfehlen bei neuen Entwicklungen die Verwendung des Spracherkennungsdienst-SDK anstelle von WebSockets. Außerdem empfiehlt es sich, den vorhandenen Code zum SDK zu migrieren. Wie bei den REST-APIs erfordert jedoch bestehender Code, der die Bing-Spracheingabe via WebSockets verwendet, nur eine Änderung des Endpunkts und einen aktualisierten Schlüssel.
 
-Wenn Sie eine Bing-Spracheingabe-Clientbibliothek für eine bestimmte Programmiersprache verwenden, erfordert die Migration auf das [Spracherkennungs-SDK](speech-sdk.md) Änderungen an Ihrer Anwendung, da es sich um eine andere API handelt. Das Spracherkennungs-SDK kann Ihren Code einfacher gestalten und Ihnen gleichzeitig Zugang zu neuen Features geben.
+Wenn Sie eine Bing-Spracheingabe-Clientbibliothek für eine bestimmte Programmiersprache verwenden, erfordert die Migration zum [Spracherkennungs-SDK](speech-sdk.md) Änderungen an Ihrer Anwendung, weil es sich um eine andere API handelt. Das Spracherkennungs-SDK kann Ihren Code einfacher gestalten und Ihnen auch Zugriff auf neue Features bieten.
 
 Das Spracherkennungs-SDK unterstützt derzeit C# (Windows 10, UWP, .NET Standard), Java (Android und benutzerdefinierte Geräte), Objective C (iOS), C++ (Windows und Linux) und JavaScript. APIs sind auf den verschiedenen Plattformen ähnlich, was die Entwicklung für mehrere Plattformen erleichtert.
 
-Spracherkennungsdienst bietet derzeit keinen globalen Endpunkt. Sie müssen feststellen, ob Ihre Anwendung effizient funktioniert, indem Sie einen einzigen regionalen Endpunkt für den gesamten Datenverkehr verwenden. Wenn nicht, verwenden Sie die Geolokalisierung, um den effizientesten Endpunkt zu bestimmen. Sie benötigen für jede verwendete Region ein separates Spracherkennungsdienst-Abonnement.
+Spracherkennungsdienst bietet derzeit keinen globalen Endpunkt. Ermitteln Sie, ob Ihre Anwendung effizient funktioniert, wenn sie einen einzigen regionalen Endpunkt für den gesamten Datenverkehr verwendet. Wenn nicht, verwenden Sie die Geolokalisierung, um den effizientesten Endpunkt zu bestimmen. Sie benötigen für jede verwendete Region ein separates Spracherkennungsdienst-Abonnement.
 
-Wenn Ihre Anwendung langlebige Verbindungen verwendet und kein verfügbares SDK verwenden kann, können Sie eine WebsSockets-Verbindung verwenden und das 10-minütige Zeitlimit verwalten, indem Sie sich zu den entsprechenden Zeiten erneut verbinden.
+Wenn Ihre Anwendung langlebige Verbindungen verwendet und kein verfügbares SDK nutzen kann, können Sie eine WebSockets-Verbindung verwenden. Steuern Sie das Zeitlimit von 10 Minuten, indem Sie die Verbindung zum jeweils richtigen Zeitpunkt wiederherstellen.
 
 Erste Schritte mit dem Spracherkennungs-SDK:
 
 1. Laden Sie das [Spracherkennungs-SDK](speech-sdk.md) herunter.
-1. Lesen Sie die [Schnellstartanleitungen](quickstart-csharp-dotnet-windows.md) und [Tutorials](how-to-recognize-intents-from-speech-csharp.md) des Spracherkennungsdiensts und betrachten Sie sich die [Codebeispiele](samples.md) an, um Erfahrungen mit den neuen APIs zu sammeln.
+1. Arbeiten Sie die [Leitfäden für den Schnellstart](quickstart-csharp-dotnet-windows.md) und die [Tutorials](how-to-recognize-intents-from-speech-csharp.md) für den Spracherkennungsdienst durch. Sehen Sie sich auch die [Codebeispiele](samples.md) an, um sich mit den neuen APIs vertraut zu machen.
 1. Aktualisieren Sie Ihre Anwendung, um den Spracherkennungsdienst und die APIs zu verwenden.
 
 ## <a name="support"></a>Support
@@ -94,5 +94,5 @@ Informationen zur Unterstützung von Spracherkennungsdienst, SDK und API finden 
 
 ## <a name="see-also"></a>Weitere Informationen
 * [Spracherkennungsdienst: Anmerkungen zu dieser Version](releasenotes.md)
-* [Worum handelt es sich beim Spracherkennungsdienst?](overview.md)
+* [Worum handelt es sich beim Speech-Dienst?](overview.md)
 * [Spracherkennungsdienst und SDK: Dokumentation](speech-sdk.md#get-the-sdk)

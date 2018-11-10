@@ -3,17 +3,17 @@ title: Verbinden einer generischen Node.js-Clientanwendung mit Azure IoT Central
 description: In diesem Artikel erfahren Sie, wie Sie als Geräteentwickler ein generisches Node.js-Gerät mit Ihrer Azure IoT Central-Anwendung verbinden.
 author: tbhagwat3
 ms.author: tanmayb
-ms.date: 04/16/2018
+ms.date: 10/26/2018
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 8a5d880d0238e38fbbaa9de22fc1baf604f0fc07
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 4702b0eb53897f173311c40469c912cf41751f24
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45733463"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50155149"
 ---
 # <a name="connect-a-generic-client-application-to-your-azure-iot-central-application-nodejs"></a>Verbinden einer generischen Clientanwendung mit Ihrer Azure IoT Central-Anwendung (Node.js)
 
@@ -41,9 +41,9 @@ Fügen Sie auf der Seite **Messungen** folgende Telemetriedaten hinzu:
 | Pressure     | pressure    | kPa   | 80  | 110 | 0              |
 
 > [!NOTE]
-  Die Telemetriemessung gibt Daten vom Typ „double“ aus.
+  Die Telemetriemessung gibt Daten als Gleitkommazahl aus.
 
-Geben Sie Feldnamen genau wie in der Tabelle angegeben in die Gerätevorlage ein. Wenn die Feldnamen nicht übereinstimmen, können die Telemetriedaten nicht in der Anwendung angezeigt werden.
+Geben Sie Feldnamen genau wie in der Tabelle angegeben in die Gerätevorlage ein. Wenn die Feldnamen nicht mit den Eigenschaftennamen im entsprechenden Gerätecode übereinstimmen, können die Telemetriedaten nicht in der Anwendung angezeigt werden.
 
 ### <a name="state-measurements"></a>Statusmessungen
 
@@ -56,7 +56,7 @@ Fügen Sie auf der Seite **Messungen** folgenden Status hinzu:
 > [!NOTE]
   Die Statusmessung gibt Daten vom Typ „string“ aus.
 
-Geben Sie Feldnamen genau wie in der Tabelle angegeben in die Gerätevorlage ein. Wenn die Feldnamen nicht übereinstimmen, kann der Status nicht in der Anwendung angezeigt werden.
+Geben Sie Feldnamen genau wie in der Tabelle angegeben in die Gerätevorlage ein. Wenn die Feldnamen nicht mit den Eigenschaftennamen im entsprechenden Gerätecode übereinstimmen, kann der Status nicht in der Anwendung angezeigt werden.
 
 ### <a name="event-measurements"></a>Ereignismessung
 
@@ -78,7 +78,7 @@ Fügen Sie auf der Seite **Eigenschaften** folgende Geräteeigenschaften hinzu:
 | Seriennummer       | serialNumber      | text      |
 | Gerätehersteller | manufacturer      | text      |
 
-Geben Sie die Feldnamen genau wie in der Tabelle angegeben in die Gerätevorlage ein. Wenn die Feldnamen nicht übereinstimmen, kann der Eigenschaftswert nicht in der Anwendung angezeigt werden.
+Geben Sie die Feldnamen genau wie in der Tabelle angegeben in die Gerätevorlage ein. Wenn die Feldnamen nicht mit den Eigenschaftennamen im entsprechenden Gerätecode übereinstimmen, kann der Geräteeigenschaftswert nicht in der Anwendung angezeigt werden.
 
 ### <a name="settings"></a>Einstellungen
 
@@ -89,15 +89,15 @@ Fügen Sie auf der Seite **Einstellungen** folgende **Nummerneinstellungen** hin
 | Lüfterdrehzahl       | fanSpeed       | U/Min   | 0        | 0   | 3000 | 0       |
 | Set Temperature | setTemperature | F     | 0        | 20  | 200  | 80      |
 
-Geben Sie den Feldnamen genau wie in der Tabelle angegeben in die Gerätevorlage ein. Wenn die Feldnamen nicht übereinstimmen, kann das Gerät nicht den Einstellungswert empfangen.
+Geben Sie den Feldnamen genau wie in der Tabelle angegeben in die Gerätevorlage ein. Wenn die Feldnamen nicht mit den Eigenschaftennamen im entsprechenden Gerätecode übereinstimmen, kann das Gerät den Einstellungswert nicht empfangen.
 
 ## <a name="add-a-real-device"></a>Hinzufügen eines echten Geräts
 
-Fügen Sie in Ihrer Azure IoT Central-Anwendung ein echtes Gerät über die Gerätevorlage hinzu, die Sie erstellen, und notieren Sie sich die Verbindungszeichenfolge des Geräts. Weitere Informationen finden Sie unter [Hinzufügen eines echten Geräts zu Ihrer Azure IoT Central-Anwendung](tutorial-add-device.md).
+Fügen Sie in Ihrer Azure IoT Central-Anwendung ein echtes Gerät über die Gerätevorlage hinzu, die Sie erstellen, und notieren Sie sich die Verbindungszeichenfolge des Geräts. Ausführliche Anweisungen zum Herstellen einer Verbindung mit einer Node.js-Anwendung und mit IoT Central finden Sie im Tutorial zum Hinzufügen eines Geräts unter [Generieren der Verbindungszeichenfolge für das echte Gerät über die Anwendung](tutorial-add-device.md#generate-connection-string-for-real-device-from-application) und [Vorbereiten des Clientcodes](tutorial-add-device.md#prepare-the-client-code).
 
 ### <a name="create-a-nodejs-application"></a>Erstellen einer Node.js-Anwendung
 
-In den folgenden Schritten wird gezeigt, wie eine Clientanwendung mit Implementierung des echten Geräts, das Sie der Anwendung hinzugefügt haben, erstellt wird.
+In den folgenden Schritten wird gezeigt, wie eine Clientanwendung mit Implementierung des echten Geräts, das Sie der Anwendung hinzugefügt haben, erstellt wird. Die Node.js-Anwendung stellt hier das echte physische Gerät dar. 
 
 1. Erstellen Sie auf Ihrem Computer den Ordner `connected-air-conditioner-adv`. Navigieren Sie in der Befehlszeilenumgebung zu diesem Ordner.
 
@@ -130,10 +130,10 @@ In den folgenden Schritten wird gezeigt, wie eine Clientanwendung mit Implementi
     ```
 
   > [!NOTE]
-   > Azure IoT Central verwendet nun den Azure IoT Hub Device Provisioning-Dienst (Device Provisioning Service, DPS) für alle Geräteverbindungen. Führen Sie die Schritte zum [Abrufen der Verbindungszeichenfolge des Geräts](concepts-connectivity.md#getting-device-connection-string) aus, und fahren Sie anschließend mit dem Rest des Tutorials fort.
+  > Azure IoT Central verwendet nun Azure IoT Hub Device Provisioning Service für alle Geräteverbindungen. Führen Sie die Schritte zum [Abrufen der Verbindungszeichenfolge des Geräts](concepts-connectivity.md#getting-device-connection-string) aus, und fahren Sie dann mit dem Tutorial fort. Ausführliche Anweisungen finden Sie darüber hinaus im Tutorial zum Hinzufügen eines Geräts unter [Vorbereiten des Clientcodes](tutorial-add-device.md#prepare-the-client-code).
 
 
-    Aktualisieren Sie den Platzhalter `{your device connection string}` mit der Verbindungszeichenfolge des Geräts. In diesem Beispiel wird `targetTemperature` auf NULL initialisiert, wobei Sie optional die aktuelle Ablesung vom Gerät oder den Wert vom Gerätezwilling übernehmen können. 
+  Aktualisieren Sie den Platzhalter `{your device connection string}` mit der Verbindungszeichenfolge des Geräts. In diesem Beispiel wird `targetTemperature` auf NULL initialisiert, wobei Sie optional die aktuelle Ablesung vom Gerät oder den Wert vom Gerätezwilling übernehmen können. 
 
 1. Fügen Sie zum Senden von Telemetrie-, Status- und Ereignismessungen an Ihre Azure IoT Central-Anwendung folgende Funktion zur Datei hinzu:
 
@@ -157,7 +157,7 @@ In den folgenden Schritten wird gezeigt, wie eine Clientanwendung mit Implementi
     }
     ```
 
-    1. Fügen Sie zum Senden von Eigenschaften an Ihre Azure IoT Central-Anwendung folgende Funktion zu Ihrer Datei hinzu:
+1. Fügen Sie zum Senden von Eigenschaften an Ihre Azure IoT Central-Anwendung folgende Funktion zu Ihrer Datei hinzu:
 
     ```javascript
     // Send device properties.
@@ -269,11 +269,11 @@ Als Operator in der Azure IoT Central-Anwendung für Ihre echtes Gerät können 
 
     ![Anzeigen von Telemetriedaten](media/howto-connect-nodejs/viewtelemetry.png)
 
-* Anzeigen der von Ihrem Gerät gesendeten Geräteeigenschaftswerte auf der Seite **Eigenschaften**:
+* Anzeigen der von Ihrem Gerät gesendeten Geräteeigenschaftswerte auf der Seite **Eigenschaften**: Die Kacheln mit den Geräteeigenschaften werden aktualisiert, wenn die Verbindung hergestellt wurde. 
 
     ![Anzeigen von Geräteeigenschaften](media/howto-connect-nodejs/viewproperties.png)
 
-* Festlegen der Lüfterdrehzahl und Zieltemperatur auf der Seite **Einstellungen**:
+* Festlegen der Lüfterdrehzahl und Zieltemperatur auf der Seite **Einstellungen**: Die Einstellungswerte werden synchronisiert, wenn die Verbindung hergestellt wurde. 
 
     ![Festlegen der Lüfterdrehzahl](media/howto-connect-nodejs/setfanspeed.png)
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: 411c743421af79ea066df3a5fc07f71b8b6cb993
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 43f9d7d39cfcdd7b670aca6184533def0b6966f5
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48855866"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50211382"
 ---
 # <a name="use-serial-console-to-access-grub-and-single-user-mode"></a>Verwenden der seriellen Konsole zum Zugreifen auf den GRUB- und Einzelbenutzermodus
 GRUB steht für GRand Unified Bootloader. Mit GRUB können Sie unter anderem Ihre Startkonfiguration so ändern, dass das System im Einzelbenutzermodus gestartet wird.
@@ -33,7 +33,7 @@ Damit Sie in den Einzelbenutzermodus wechseln können, müssen Sie GRUB beim Sta
 ## <a name="general-grub-access"></a>Allgemeiner GRUB-Zugriff
 Damit Sie auf GRUB zugreifen können, müssen Sie Ihren virtuellen Computer neu starten, während das Blatt für die serielle Konsole geöffnet ist. Einige Distributionen erfordern Tastatureingaben zum Anzeigen von GRUB, während andere Distributionen GRUB automatisch ein paar Sekunden lang anzeigen und Benutzereingaben über die Tastatur zulassen, um das Timeout abzubrechen. 
 
-Damit Sie auf den Einzelbenutzermodus zugreifen können, müssen Sie sicherstellen, dass GRUB auf Ihrer VM aktiviert ist. Je nach Distribution müssen Sie möglicherweise einige Einrichtungsschritte durchführen, um sicherzustellen, dass GRUB aktiviert ist. Distributionsspezifische Informationen finden Sie weiter unten.
+Damit Sie auf den Einzelbenutzermodus zugreifen können, müssen Sie sicherstellen, dass GRUB auf Ihrer VM aktiviert ist. Je nach Distribution müssen Sie möglicherweise einige Einrichtungsschritte durchführen, um sicherzustellen, dass GRUB aktiviert ist. Distributionsspezifische Informationen finden Sie weiter unten und unter [diesem Link](https://blogs.msdn.microsoft.com/linuxonazure/2018/10/23/why-proactively-ensuring-you-have-access-to-grub-and-sysrq-in-your-linux-vm-could-save-you-lots-of-down-time/).
 
 ### <a name="reboot-your-vm-to-access-grub-in-serial-console"></a>Neustarten Ihres virtuellen Computers zum Zugreifen auf GRUB in der seriellen Konsole
 Sie können Ihren virtuellen Computer neu starten, während das Blatt für die serielle Konsole geöffnet ist, indem Sie einen Befehl vom Typ „SysRq+`'b'`“ ausführen, wenn [SysRq](./serial-console-nmi-sysrq.md) aktiviert ist, oder indem Sie auf dem Blatt „Übersicht“ auf die Schaltfläche „Neu starten“ klicken. (Öffnen Sie den virtuellen Computer auf einer neuen Browserregisterkarte, um den Neustart auszuführen, ohne das Blatt für die serielle Konsole zu schließen.) Lesen Sie die distributionsspezifischen Anweisungen weiter unten, um zu erfahren, was bei einem Neustart von GRUB zu erwarten ist.
@@ -186,6 +186,7 @@ Befolgen Sie die obigen Anweisungen für RHEL, um den Einzelbenutzermodus in Ora
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Die Hauptseite der Linux-Dokumentation für die serielle Konsole finden Sie [hier](serial-console-linux.md).
+* Erfahren Sie, wie Sie die serielle Konsole zum [Aktivieren von GRUB in verschiedenen Distributionen](https://blogs.msdn.microsoft.com/linuxonazure/2018/10/23/why-proactively-ensuring-you-have-access-to-grub-and-sysrq-in-your-linux-vm-could-save-you-lots-of-down-time/) verwenden.
 * Verwenden der seriellen Konsole für [NMI- und SysRq-Aufrufe](serial-console-nmi-sysrq.md)
 * Die serielle Konsole ist auch für [Windows](serial-console-windows.md)-VMs verfügbar.
 * Erfahren Sie mehr über die [Startdiagnose](boot-diagnostics.md).

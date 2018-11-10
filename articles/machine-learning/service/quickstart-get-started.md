@@ -9,16 +9,16 @@ ms.reviewer: sgilley
 author: rastala
 ms.author: roastala
 ms.date: 09/24/2018
-ms.openlocfilehash: b81e40298eae0f0b44f37e7f8f16beaddad999a5
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: 624564d61a7031cee910ab98e1b327b6f0205e28
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49456812"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50159008"
 ---
 # <a name="quickstart-use-the-azure-portal-to-get-started-with-azure-machine-learning"></a>Schnellstart: Verwenden des Azure-Portals zum Ausführen der ersten Schritte für Azure Machine Learning
 
-In dieser Schnellstartanleitung verwenden Sie das Azure-Portal, um einen Azure Machine Learning-Arbeitsbereich zu erstellen. Dieser Arbeitsbereich bildet die Grundlage in der Cloud zum Experimentieren, Trainieren und Bereitstellen von Machine Learning-Modellen mit Machine Learning. 
+In dieser Schnellstartanleitung verwenden Sie das Azure-Portal, um einen Azure Machine Learning-Arbeitsbereich zu erstellen. Dieser Arbeitsbereich bildet die Grundlage in der Cloud zum Experimentieren, Trainieren und Bereitstellen von Machine Learning-Modellen mit Machine Learning. In dieser Schnellstartanleitung werden Cloudressourcen genutzt, und es ist keine Installation erforderlich. Informationen zur Konfiguration Ihres eigenen Jupyter Notebook-Servers finden Sie unter [Schnellstart: Verwenden von Python für die ersten Schritte mit Azure Machine Learning](quickstart-create-workspace-with-python.md).
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2F9Ad]
 
@@ -78,32 +78,9 @@ Neben zwei Notebooks sehen Sie die Datei `config.json`. Diese Konfigurationsdate
 
 Klicken Sie auf `01.run-experiment.ipynb`, um das Notebook zu öffnen.
 
-Verwenden Sie `Shift`+`Enter`, um die Zellen nacheinander auszuführen. Sie können aber auch auf `Cells` > `Run All` klicken, um das gesamte Notebook auszuführen. Wenn neben einer Zelle ein Sternchen (*) angezeigt wird, wird sie gerade ausgeführt. Nach Abschluss der Codeausführung für die Zelle wird eine Zahl angezeigt.
+Verwenden Sie `Shift`+`Enter`, um die Zellen nacheinander auszuführen. Sie können aber auch auf `Cells` > `Run All` klicken, um das gesamte Notebook auszuführen. Wenn neben einer Zelle ein Sternchen (*) angezeigt wird, wird sie gerade ausgeführt. Nach Abschluss der Codeausführung für die Zelle wird eine Zahl angezeigt. 
 
-Sie werden unter Umständen aufgefordert, sich anzumelden. Kopieren Sie den Code aus der Nachricht. Klicken Sie anschließend auf den Link, und fügen Sie den Code in das neue Fenster ein. Achten Sie darauf, dass Sie kein Leerzeichen vor oder hinter dem Code kopieren. Melden Sie sich mit demselben Konto an, das Sie im Azure-Portal verwendet haben.
-
- ![Anmelden](./media/quickstart-get-started/login.png)
-
-Im Notebook liest die zweite Zelle aus `config.json`, um eine Verbindung mit Ihrem Arbeitsbereich herzustellen.
-```
-ws = Workspace.from_config()
-```
-
-Die dritte Zelle im Code startet ein Experiment mit dem Namen „my-first-experiment“. Verwenden Sie diesen Namen, um in Ihrem Arbeitsbereich nach Informationen zur Ausführung zu suchen.
-
-```
-experiment = Experiment(workspace_object=ws, name = "my-first-experiment")
-```
-
-Beachten Sie in der letzten Zelle des Notebooks die Werte, die in eine Protokolldatei geschrieben werden.
-
-```
-# Log final results
-run.log("Final estimate: ",pi_estimate)
-run.log("Final error: ",math.pi-pi_estimate)
-```
-
-Sie können diese Werte in Ihrem Arbeitsbereich anzeigen, nachdem der Code ausgeführt wurde.
+Nachdem Sie die Ausführung aller Zellen im Notebook abgeschlossen haben, können Sie die protokollierten Werte in Ihrem Arbeitsbereich anzeigen.
 
 ## <a name="view-logged-values"></a>Anzeigen protokollierter Werte
 
@@ -121,11 +98,11 @@ Sehen Sie sich die Informationen zu der Ausführung, die Sie gerade durchgeführ
 
  ![Link für den Ausführungsverlauf](./media/quickstart-get-started/report.png)
 
-Daraufhin werden Plots angezeigt, die automatisch aus den protokollierten Werten erstellt wurden.  
+Daraufhin werden Plots angezeigt, die automatisch aus den protokollierten Werten erstellt wurden. Wenn Sie mehrere Werte mit dem gleichen Namensparameter protokollieren, wird für Sie automatisch ein Plot generiert.
 
    ![Anzeigen des Verlaufs](./media/quickstart-get-started/plots.png)
 
-Da der Code für die Pi-Annäherung willkürliche Werte verwendet, enthalten Ihre Plots andere Werte.
+Da der Code für die Pi-Annäherung willkürliche Werte verwendet, enthalten Ihre Plots andere Werte.  
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen 
 

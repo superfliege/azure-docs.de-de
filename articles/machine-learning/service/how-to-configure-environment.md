@@ -1,6 +1,6 @@
 ---
 title: Konfigurieren einer Entwicklungsumgebung für Azure Machine Learning | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie eine Entwicklungsumgebung für die Arbeit mit dem Azure Machine Learning Service konfigurieren. In diesem Dokument erfahren Sie, wie Sie Conda-Umgebungen verwenden, Konfigurationsdateien erstellen und Jupyter Notebooks, Azure Notebooks, IDEs, Code-Editoren und die Data Science Virtual Machine konfigurieren.
+description: Erfahren Sie, wie Sie eine Entwicklungsumgebung für die Arbeit mit dem Azure Machine Learning Service konfigurieren. In diesem Dokument erfahren Sie, wie Sie Conda-Umgebungen verwenden, Konfigurationsdateien erstellen und Jupyter-Notebooks, Azure-Notebooks, IDEs, Code-Editoren und die Data Science Virtual Machine konfigurieren.
 services: machine-learning
 author: rastala
 ms.author: roastala
@@ -9,13 +9,13 @@ ms.component: core
 ms.reviewer: larryfr
 manager: cgronlun
 ms.topic: conceptual
-ms.date: 8/6/2018
-ms.openlocfilehash: 657a762874f7c2fb40553552ef6c17d9b5b6da0f
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.date: 10/24/2018
+ms.openlocfilehash: 6c2d5a776f603161ef730028168b91844c120aec
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49958617"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50158991"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Konfigurieren einer Entwicklungsumgebung für Azure Machine Learning
 
@@ -85,7 +85,7 @@ Die Konfigurationsdatei für den Arbeitsbereich wird vom Azure Machine Learning 
 Azure Notebooks und Azure Data Science Virtual Machines (DSVMs) sind für den Azure Machine Learning-Dienst vorkonfiguriert. Diese Umgebungen enthalten erforderliche Komponenten, z.B. das Azure Machine Learning SDK.
 
 - Azure Notebooks ist ein Jupyter Notebook-Dienst in der Azure-Cloud.
-- Die Data Science Virtual Machine ist ein benutzerdefiniertes VM-Image, das für Data Science-Zwecke konzipiert wurde. Sie enthält Folgendes:
+- Die Data Science Virtual Machine ist ein benutzerdefiniertes VM-Image, das für Data Science-Zwecke konzipiert wurde. Sie hat folgenden Inhalt:
   - Beliebte Tools
   - Integrierte Entwicklungsumgebungen (IDEs)
   - Pakete, z.B. Jupyter Notebooks, PyCharm und Tensorflow
@@ -120,12 +120,16 @@ Weitere Informationen zu Data Science Virtual Machines finden Sie unter [Data Sc
     pip install --upgrade azureml-sdk[notebooks,automl] azureml-dataprep
     ```
 
-    > [!NOTE]
-    > Wenn Sie eine Meldung mit dem Hinweis erhalten, dass `PyYAML` nicht deinstalliert werden kann, können Sie stattdessen den folgenden Befehl verwenden:
-    >
-    > `pip install --upgrade azureml-sdk[notebooks,automl] azureml-dataprep --ignore-installed PyYAML`
+   Sie finden die Python-Referenzdokumente für Klassen und Methoden in den folgenden SDKs:
+   + [Azure Machine Learning SDK for Python](https://aka.ms/aml-sdk)
+   + [Azure Machine Learning – Datenaufbereitungs-SDK](https://aka.ms/data-prep-sdk)
 
-    Die Installation des SDK kann mehrere Minuten dauern.
+   > [!NOTE]
+   > Wenn Sie eine Meldung mit dem Hinweis erhalten, dass `PyYAML` nicht deinstalliert werden kann, können Sie stattdessen den folgenden Befehl verwenden:
+   >
+   > `pip install --upgrade azureml-sdk[notebooks,automl] azureml-dataprep --ignore-installed PyYAML`
+
+   Die Installation des SDK kann mehrere Minuten dauern.
 
 1. Installieren Sie Pakete für Ihre Machine Learning-Experimente. Verwenden Sie den folgenden Befehl, und ersetzen Sie `<new package>` durch das zu installierende Paket:
 

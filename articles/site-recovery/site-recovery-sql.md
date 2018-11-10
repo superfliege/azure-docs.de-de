@@ -1,20 +1,21 @@
 ---
-title: Replizieren von Anwendungen mit SQL Server und Azure Site Recovery | Microsoft-Dokumentation
-description: In diesem Artikel wird beschrieben, wie Sie SQL Server mit Azure Site Recovery bzw. SQL Server-Funktionen für die Notfallwiederherstellung replizieren.
+title: Einrichten der Notfallwiederherstellung für SQL Server mit SQL Server und Azure Site Recovery | Microsoft-Dokumentation
+description: In diesem Artikel wird beschrieben, wie Sie die Notfallwiederherstellung für SQL Server mithilfe von SQL Server und Azure Site Recovery einrichten.
 services: site-recovery
-author: rayne-wiselman
+author: sujayt
+manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 07/22/2018
-ms.author: raynew
-ms.openlocfilehash: a734999f0fa473b5f1ee8ed55c4b73950566490d
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.author: sutalasi
+ms.openlocfilehash: 46f5f73293875cd89036eb615e7bd81188bc4c67
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43188772"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50210260"
 ---
-# <a name="protect-sql-server-using-sql-server-disaster-recovery-and-azure-site-recovery"></a>Schützen von SQL Server mit der Notfallwiederherstellung von SQL Server und Azure Site Recovery
+# <a name="set-up-disaster-recovery-for-sql-server"></a>Einrichten der Notfallwiederherstellung für SQL Server 
 
 In diesem Artikel erfahren Sie, wie Sie das SQL Server-Back-End einer Anwendung mit einer Kombination aus SQL Server-Technologien für Geschäftskontinuität und Notfallwiederherstellung (Business Continuity and Disaster Recovery, BCDR) und [Azure Site Recovery](site-recovery-overview.md) schützen.
 
@@ -100,7 +101,7 @@ Das müssen Sie tun:
 
 1. Importieren Sie Skripts in Ihr Azure Automation-Konto. Hier sind die Skripts zum Durchführen eines Failovers für die SQL-Verfügbarkeitsgruppe auf einem [mit Resource Manager erstellten virtuellen Computer](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/asr-automation-recovery/scripts/ASR-SQL-FailoverAG.ps1) und einem [klassischen virtuellen Computer](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/asr-automation-recovery/scripts/ASR-SQL-FailoverAGClassic.ps1).
 
-    [![Bereitstellen in Azure](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/c4803408-340e-49e3-9a1f-0ed3f689813d.png)](https://aka.ms/asr-automationrunbooks-deploy)
+    [![In Azure bereitstellen](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/c4803408-340e-49e3-9a1f-0ed3f689813d.png)](https://aka.ms/asr-automationrunbooks-deploy)
 
 
 1. Fügen Sie ASR-SQL-FailoverAG als vorausgehende Aktion der ersten Gruppe des Wiederherstellungsplans hinzu.

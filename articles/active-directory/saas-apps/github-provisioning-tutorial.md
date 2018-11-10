@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: asmalser-msft
-ms.openlocfilehash: c645b0a99493c71a9fa1416c16876da30bcff891
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: bc82f0b71c6963c4f5a356180a1eabbca1b166c4
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46367653"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50156951"
 ---
 # <a name="tutorial-configure-github-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von GitHub für die automatische Benutzerbereitstellung
 
@@ -32,7 +32,7 @@ In diesem Tutorial werden die Schritte beschrieben, die Sie in GitHub und Azure 
 Das in diesem Lernprogramm verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
 
 *   Einen Azure Active Directory-Mandanten
-*   Einen GitHub-Mandanten, für den mindestens der [Business-Tarif](https://help.github.com/articles/organization-billing-plans/#business-plan) aktiviert ist 
+*   Einen GitHub-Mandanten, für den mindestens der [Business Cloud-Tarif](https://help.github.com/articles/organization-billing-plans/#github-business-cloud) aktiviert ist 
 *   Ein Benutzerkonto in GitHub mit Teamadministratorberechtigungen 
 
 > [!NOTE]

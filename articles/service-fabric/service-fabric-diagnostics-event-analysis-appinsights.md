@@ -14,53 +14,53 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/04/2018
 ms.author: srrengar
-ms.openlocfilehash: 29adf362fdacdb793af071fa6d7bd59214536374
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: aedbc5925a6e101299170843abef79ef6125eafe
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34207752"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50230419"
 ---
 # <a name="event-analysis-and-visualization-with-application-insights"></a>Ereignisanalyse und Visualisierung mit Application Insights
 
-Azure Application Insights ist eine erweiterbare Plattform für die Überwachung und Diagnose von Anwendungen. Sie enthält ein leistungsfähiges Analyse- und Abfragetool, ein anpassbares Dashboard und Visualisierungen sowie weitere Optionen, z.B. automatisierte Warnungen. Sie ist die empfohlene Plattform für die Überwachung und Diagnose für Service Fabric-Anwendungen und -Dienste. Dieser Artikel geht auf folgende allgemeine Fragen ein:
+Microsoft Azure Application Insights ist eine erweiterbare Plattform für die Überwachung und Diagnose von Anwendungen. Sie enthält ein leistungsfähiges Analyse- und Abfragetool, ein anpassbares Dashboard und Visualisierungen sowie weitere Optionen, z.B. automatisierte Warnungen. Sie ist die empfohlene Plattform für die Überwachung und Diagnose für Service Fabric-Anwendungen und -Dienste. Dieser Artikel geht auf folgende allgemeine Fragen ein:
 
 * Wie kann ich mich über die Vorgänge in meiner Anwendung und in meinen Diensten informieren und Telemetriedaten sammeln?
 * Wie behebe ich Probleme mit meiner Anwendung (insbesondere Probleme bei der Kommunikation zwischen Diensten)?
 * Wie erhalte ich Metriken zur Leistung meiner Dienste wie Seitenladezeit, HTTP-Anforderungen und Ähnliches?
 
-In diesem Artikel erfahren Sie, wie Sie in Application Insights Erkenntnisse gewinnen und Probleme behandeln können. Informationen zum Einrichten und Konfigurieren von AI mit Service Fabric finden Sie in [diesem Tutorial](service-fabric-tutorial-monitoring-aspnet.md).
+In diesem Artikel erfahren Sie, wie Sie in Application Insights Erkenntnisse gewinnen und Probleme behandeln. Informationen zum Einrichten und Konfigurieren von Application Insights mit Service Fabric finden Sie in [diesem Tutorial](service-fabric-tutorial-monitoring-aspnet.md).
 
-## <a name="monitoring-in-app-insights"></a>Überwachen in Application Insights
+## <a name="monitoring-in-application-insights"></a>Überwachen in Application Insights
 
-Application Insights bietet bereits standardmäßig umfassende Service Fabric-Funktionen. Auf der Übersichtsseite liefert AI wichtige Informationen zu Ihrem Dienst (beispielsweise zur Antwortzeit und zur Anzahl verarbeiteter Anforderungen). Wenn Sie am oberen Rand auf die Suchschaltfläche klicken, wird eine Liste mit Anforderungen angezeigt, die kürzlich in Ihrer Anwendung ausgeführt wurden. Darüber hinaus werden hier ggf. nicht erfolgreiche Anforderungen angezeigt, und Sie können die aufgetretenen Fehler diagnostizieren.
+Application Insights bietet bereits standardmäßig umfassende Service Fabric-Funktionen. Auf der Übersichtsseite stellt Application Insights wichtige Informationen zu Ihrem Dienst bereit (beispielsweise zur Antwortzeit und zur Anzahl verarbeiteter Anforderungen). Wenn Sie am oberen Rand auf die Suchschaltfläche klicken, wird eine Liste mit Anforderungen angezeigt, die kürzlich in Ihrer Anwendung ausgeführt wurden. Darüber hinaus werden hier ggf. nicht erfolgreiche Anforderungen angezeigt, und Sie können die aufgetretenen Fehler diagnostizieren.
 
-![AI-Übersicht](media/service-fabric-diagnostics-event-analysis-appinsights/ai-overview.png)
+![Application Insights-Übersicht](media/service-fabric-diagnostics-event-analysis-appinsights/ai-overview.png)
 
-Die Liste im rechten Bereich der vorherigen Abbildung enthält hauptsächlich zwei Arten von Einträgen: Anforderungen und Ereignisse. Anforderungen sind an die API der App gerichtete Aufrufe (in diesem Fall über HTTP-Anforderungen). Ereignisse sind benutzerdefinierte Ereignisse und fungieren als Telemetrie, die Sie an einer beliebigen Stelle in Ihrem Code hinzufügen können. Weitere Informationen zur Instrumentierung Ihrer Anwendungen finden Sie unter [Application Insights-API für benutzerdefinierte Ereignisse und Metriken](../application-insights/app-insights-api-custom-events-metrics.md). Wenn Sie auf eine Anforderung klicken, werden weitere Details angezeigt, wie in der folgenden Abbildung zu sehen. Sie umfassen unter anderem Service Fabric-spezifische Daten, die im AI Service Fabric-NuGet-Paket erfasst werden. Diese Informationen können zur Problembehandlung und zur Ermittlung des Anwendungszustands herangezogen sowie in Application Insights durchsucht werden.
+Die Liste im rechten Bereich der vorherigen Abbildung enthält hauptsächlich zwei Arten von Einträgen: Anforderungen und Ereignisse. Anforderungen sind an die API der App gerichtete Aufrufe (in diesem Fall über HTTP-Anforderungen). Ereignisse sind benutzerdefinierte Ereignisse und fungieren als Telemetrie, die Sie an einer beliebigen Stelle in Ihrem Code hinzufügen können. Weitere Informationen zur Instrumentierung Ihrer Anwendungen finden Sie unter [Application Insights-API für benutzerdefinierte Ereignisse und Metriken](../application-insights/app-insights-api-custom-events-metrics.md). Wenn Sie auf eine Anforderung klicken, werden weitere Details angezeigt, wie in der folgenden Abbildung zu sehen. Sie umfassen unter anderem Service Fabric-spezifische Daten, die im Application Insights Service Fabric-NuGet-Paket erfasst werden. Diese Informationen können zur Problembehandlung und zur Ermittlung des Anwendungszustands herangezogen sowie in Application Insights durchsucht werden.
 
-![AI-Anforderungsdetails](media/service-fabric-diagnostics-event-analysis-appinsights/ai-request-details.png)
+![Application Insights-Anforderungsdetails](media/service-fabric-diagnostics-event-analysis-appinsights/ai-request-details.png)
 
-Application Insights bietet eine eigene Ansicht zum Abfragen sämtlicher eingehender Daten. Klicken Sie am oberen Rand der Übersichtsseite auf „Metrik-Explorer“, um zum AI-Portal zu gelangen. Hier können Sie unter Verwendung der Kusto-Abfragesprache Abfragen für die zuvor erwähnten benutzerdefinierten Ereignisse sowie für Anforderungen, Ausnahmen, Leistungsindikatoren und weitere Metriken ausführen. Das folgende Beispiel zeigt alle Anforderungen der letzten Stunde:
+Application Insights bietet eine eigene Ansicht zum Abfragen sämtlicher eingehender Daten. Klicken Sie am oberen Rand der Übersichtsseite auf „Metrik-Explorer“, um zum Application Insights-Portal zu gelangen. Hier können Sie unter Verwendung der Kusto-Abfragesprache Abfragen für die zuvor erwähnten benutzerdefinierten Ereignisse sowie für Anforderungen, Ausnahmen, Leistungsindikatoren und weitere Metriken ausführen. Das folgende Beispiel zeigt alle Anforderungen der letzten Stunde:
 
-![AI-Anforderungsdetails](media/service-fabric-diagnostics-event-analysis-appinsights/ai-metrics-explorer.png)
+![Application Insights-Anforderungsdetails](media/service-fabric-diagnostics-event-analysis-appinsights/ai-metrics-explorer.png)
 
-Weitere Informationen zu den Funktionen des App Insights-Portals finden Sie in der [Dokumentation zum Application Insights-Portal](../application-insights/app-insights-dashboards.md).
+Weitere Informationen zu den Funktionen des Application Insights-Portals finden Sie in der [Dokumentation zum Application Insights-Portal](../application-insights/app-insights-dashboards.md).
 
-### <a name="configuring-ai-with-wad"></a>Konfigurieren von AI mit WAD
+### <a name="configuring-application-insights-with-wad"></a>Konfigurieren von Application Insights mit WAD
 
 >[!NOTE]
 >Dies gilt gegenwärtig nur für Windows-Cluster.
 
-Es gibt zwei bevorzugte Möglichkeiten zum Senden von Daten von WAD an Azure AI. Dies erfolgt durch Hinzufügen einer AI-Senke in der WAD-Konfiguration, wie in [diesem Artikel](../monitoring-and-diagnostics/azure-diagnostics-configure-application-insights.md) ausführlich beschrieben.
+Es gibt grundsätzlich zwei Möglichkeiten, um Daten von WAD an Azure Application Insights zu senden. Hierzu wird der WAD-Konfiguration eine Application Insights-Senke hinzugefügt, wie in [diesem Artikel](../monitoring-and-diagnostics/azure-diagnostics-configure-application-insights.md) beschrieben.
 
-#### <a name="add-an-ai-instrumentation-key-when-creating-a-cluster-in-azure-portal"></a>Hinzufügen eines AI-Instrumentierungsschlüssels beim Erstellen eines Clusters im Azure-Portal
+#### <a name="add-an-application-insights-instrumentation-key-when-creating-a-cluster-in-azure-portal"></a>Hinzufügen eines Application Insights-Instrumentierungsschlüssels beim Erstellen eines Clusters im Azure-Portal
 
 ![Hinzufügen eines AI-Schlüssels](media/service-fabric-diagnostics-event-analysis-appinsights/azure-enable-diagnostics.png)
 
-Wenn beim Erstellen eines Clusters die Diagnose aktiviert ist („Ein“), wird ein optionales Feld angezeigt, in dem ein Application Insights-Instrumentierungsschlüssel eingegeben werden kann. Wenn Sie Ihren AI-Schlüssel hier einfügen, wird die AI-Senke automatisch in der Resource Manager-Vorlage konfiguriert, die zum Bereitstellen Ihres Clusters verwendet wird.
+Wenn beim Erstellen eines Clusters die Diagnose aktiviert ist („Ein“), wird ein optionales Feld angezeigt, in dem ein Application Insights-Instrumentierungsschlüssel eingegeben werden kann. Wenn Sie hier Ihren Application Insights-Schlüssel einfügen, wird die Application Insights-Senke automatisch in der Resource Manager-Vorlage konfiguriert, die zum Bereitstellen Ihres Clusters verwendet wird.
 
-#### <a name="add-the-ai-sink-to-the-resource-manager-template"></a>Hinzufügen der AI-Senke zur Resource Manager-Vorlage
+#### <a name="add-the-application-insights-sink-to-the-resource-manager-template"></a>Hinzufügen der Application Insights-Senke zur Resource Manager-Vorlage
 
 Fügen Sie in „WadCfg“ der Resource Manager-Vorlage durch Einfügen der folgenden beiden Änderungen eine Senke („Sink“) hinzu:
 
@@ -86,12 +86,12 @@ Fügen Sie in „WadCfg“ der Resource Manager-Vorlage durch Einfügen der folg
 
 In den beiden obigen Codeausschnitten wurde für die Senke der Name „applicationInsights“ verwendet. Dieser Name muss nicht verwendet werden. Solange der Name der Senke in „sinks“ eingefügt wird, können Sie eine beliebige Zeichenfolge als Name festlegen.
 
-Protokolle aus dem Cluster werden derzeit als **Ablaufverfolgungen** in der AI-Protokollanzeige angezeigt. Da die meisten Ablaufverfolgungen der Plattform als „Information“ eingestuft werden, haben Sie auch die Möglichkeit, die Senkenkonfiguration so zu ändern, dass nur Protokolle vom Typ „Kritisch“ und „Fehler“ gesendet werden. Dies kann durch Hinzufügen von „Kanälen“ zur Senke erfolgen, wie in [diesem Artikel](../monitoring-and-diagnostics/azure-diagnostics-configure-application-insights.md) erläutert.
+Protokolle aus dem Cluster werden derzeit als **Ablaufverfolgungen** in der Application Insights-Protokollanzeige angezeigt. Da die meisten Ablaufverfolgungen der Plattform als „Information“ eingestuft werden, haben Sie auch die Möglichkeit, die Senkenkonfiguration so zu ändern, dass nur Protokolle vom Typ „Kritisch“ und „Fehler“ gesendet werden. Dies kann durch Hinzufügen von „Kanälen“ zur Senke erfolgen, wie in [diesem Artikel](../monitoring-and-diagnostics/azure-diagnostics-configure-application-insights.md) erläutert.
 
 >[!NOTE]
->Wenn Sie im Portal oder in der Resource Manager-Vorlage einen falschen AI-Schlüssel verwenden, müssen Sie ihn manuell ändern und den Cluster aktualisieren und erneut bereitstellen.
+>Wenn Sie im Portal oder in der Resource Manager-Vorlage einen falschen Application Insights-Schlüssel verwenden, müssen Sie ihn manuell ändern und den Cluster aktualisieren und erneut bereitstellen.
 
-### <a name="configuring-ai-with-eventflow"></a>Konfigurieren von AI mit EventFlow
+### <a name="configuring-application-insights-with-eventflow"></a>Konfigurieren von Application Insights mit EventFlow
 
 Wenn Sie EventFlow zum Aggregieren von Ereignissen verwenden, müssen Sie das NuGet-Paket `Microsoft.Diagnostics.EventFlow.Output.ApplicationInsights` importieren. Der Abschnitt *outputs* von *eventFlowConfig.json* muss folgenden Code enthalten:
 
@@ -106,17 +106,17 @@ Wenn Sie EventFlow zum Aggregieren von Ereignissen verwenden, müssen Sie das Nu
 
 Stellen Sie sicher, dass Sie die erforderlichen Änderungen in Ihren Filtern vornehmen und alle anderen Eingaben (zusammen mit den jeweiligen NuGet-Paketen) einfügen.
 
-## <a name="aisdk"></a>AI.SDK
+## <a name="application-insights-sdk"></a>Application Insights SDK
 
-Es empfiehlt sich, EventFlow und WAD als Aggregationslösungen zu verwenden, da diese einen modularen Ansatz für die Diagnose und Überwachung bieten. Das heißt, wenn Sie die Ausgaben von EventFlow ändern möchten, ist keine Änderung der eigentlichen Instrumentierung, sondern lediglich eine einfache Änderung der Konfigurationsdatei erforderlich. Wenn Sie sich jedoch für die Verwendung von Application Insights entscheiden und voraussichtlich die Plattform nicht ändern werden, sollten Sie in Betracht ziehen, das neue SDK von AI einzusetzen, um Ereignisse zu aggregieren und an AI zu senden. Das bedeutet, dass Sie nicht mehr EventFlow zum Senden der Daten an AI konfigurieren müssen, sondern stattdessen das Service Fabric-NuGet-Paket von Application Insights installieren. Details zu diesem Paket finden Sie [hier](https://github.com/Microsoft/ApplicationInsights-ServiceFabric).
+Es empfiehlt sich, EventFlow und WAD als Aggregationslösungen zu verwenden, da diese einen modularen Ansatz für die Diagnose und Überwachung bieten. Das heißt, wenn Sie die Ausgaben von EventFlow ändern möchten, ist keine Änderung der eigentlichen Instrumentierung, sondern lediglich eine einfache Änderung der Konfigurationsdatei erforderlich. Wenn Sie sich jedoch für die Verwendung von Application Insights entscheiden und nicht planen, auf eine andere Plattform umzusteigen, empfiehlt es sich ggf., das neue SDK von Application Insights zu verwenden, um Ereignisse zu aggregieren und an Application Insights zu senden. Das bedeutet, dass Sie EventFlow nicht mehr zum Senden der Daten an Application Insights konfigurieren müssen, sondern stattdessen das Service Fabric-NuGet-Paket von Application Insights installieren. Details zu diesem Paket finden Sie [hier](https://github.com/Microsoft/ApplicationInsights-ServiceFabric).
 
-Unter [Application Insights-Unterstützung für Microservices und Container](https://azure.microsoft.com/blog/app-insights-microservices/) werden einige der neuen Features beschrieben, an denen gearbeitet wird (derzeit noch in der Betaversion) und mit denen Sie über umfangreichere vordefinierte Überwachungsoptionen mit AI verfügen. Dazu gehören die Abhängigkeitsnachverfolgung (wird beim Erstellen einer AppMap aller Ihrer Dienste und Anwendungen in einem Cluster und der zugehörigen Kommunikation verwendet) und eine bessere Korrelation der Ablaufverfolgungen, die von Ihren Diensten stammen (trägt zur besseren genauen Erkennung eines Problems im Workflow einer App oder eines Diensts bei).
+Unter [Application Insights-Unterstützung für Microservices und Container](https://azure.microsoft.com/blog/app-insights-microservices/) werden einige der neuen Features beschrieben, an denen gearbeitet wird (derzeit noch in der Betaversion) und mit denen Sie über umfangreichere vordefinierte Überwachungsoptionen mit Application Insights verfügen. Dazu gehören die Abhängigkeitsnachverfolgung (wird beim Erstellen einer AppMap aller Ihrer Dienste und Anwendungen in einem Cluster und der zugehörigen Kommunikation verwendet) und eine bessere Korrelation der Ablaufverfolgungen, die von Ihren Diensten stammen (trägt zur besseren genauen Erkennung eines Problems im Workflow einer App oder eines Diensts bei).
 
-Wenn Sie beim Entwickeln in .NET voraussichtlich einige der Service Fabric-Programmiermodelle verwenden und AI als Plattform zum Visualisieren und Analysieren von Ereignis- und Protokolldaten verwenden möchten, wird empfohlen, das AI SDK für den Workflow der Überwachung und Diagnose zu verwenden. Informationen für den Einstieg in die Verwendung von AI zum Sammeln und Anzeigen Ihrer Protokolle finden Sie [hier](../application-insights/app-insights-asp-net-more.md) und [hier](../application-insights/app-insights-asp-net-trace-logs.md).
+Wenn Sie beim Entwickeln in .NET voraussichtlich einige der Service Fabric-Programmiermodelle verwenden und Application Insights als Plattform zum Visualisieren und Analysieren von Ereignis- und Protokolldaten verwenden möchten, empfiehlt es sich, das Application Insights SDK für den Workflow der Überwachung und Diagnose zu verwenden. Informationen zu den ersten Schritten mit Application Insights zum Sammeln und Anzeigen Ihrer Protokolle finden Sie [hier](../application-insights/app-insights-asp-net-more.md) und [hier](../application-insights/app-insights-asp-net-trace-logs.md).
 
-## <a name="navigating-the-ai-resource-in-azure-portal"></a>Navigieren zu der AI-Ressource im Azure-Portal
+## <a name="navigating-the-application-insights-resource-in-azure-portal"></a>Navigieren zur Application Insights-Ressource im Azure-Portal
 
-Nachdem Sie AI als Ausgabe für die Ereignisse und Protokolle konfiguriert haben, sollten nach wenigen Minuten Informationen in der AI-Ressource angezeigt werden. Navigieren Sie zu der AI-Ressource, um das Dashboard für die AI-Ressource anzuzeigen. Klicken Sie in der AI-Taskleiste auf **Suchen**, um die zuletzt empfangenen Ablaufverfolgungen anzuzeigen und sie filtern zu können.
+Wenn Sie Application Insights als Ausgabe für die Ereignisse und Protokolle konfiguriert haben, sollten nach wenigen Minuten Informationen in der Application Insights-Ressource angezeigt werden. Navigieren Sie zur Application Insights-Ressource, um zum Dashboard für die Ressource zu gelangen. Klicken Sie auf der Application Insights-Taskleiste auf **Suchen**, um die zuletzt empfangenen Ablaufverfolgungen anzuzeigen und zu filtern.
 
 *Metrik-Explorer* ist ein nützliches Tool zum Erstellen von benutzerdefinierten Dashboards basierend auf den Metriken, die Ihre Anwendungen, Dienste und Cluster melden. Informationen zum Einrichten einiger benutzerdefinierter Diagramme basierend auf Ihren gesammelten Daten finden Sie unter [Untersuchen von Metriken in Application Insights](../application-insights/app-insights-metrics-explorer.md).
 
@@ -125,4 +125,4 @@ Durch Klicken auf **Analytics** gelangen Sie zum Application Insights Analytics-
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Richten Sie Warnungen in AI ein](../application-insights/app-insights-alerts.md), um Benachrichtigungen zu Änderungen der Leistung oder Nutzung zu erhalten.
-* Die [intelligente Erkennung in Application Insights](../application-insights/app-insights-proactive-diagnostics.md) führt eine proaktive Analyse der an AI gesendeten Telemetriedaten aus, um Sie vor potenziellen Leistungsproblemen zu warnen.
+* Die [intelligente Erkennung in Application Insights](../application-insights/app-insights-proactive-diagnostics.md) führt eine proaktive Analyse der an Application Insights gesendeten Telemetriedaten durch, um Sie vor potenziellen Leistungsproblemen zu warnen.

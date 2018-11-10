@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 09/04/2017
 ms.author: geg
-ms.openlocfilehash: 450314dddd49825bae689701b694f9a26758835e
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 7de9d1674860a6369c1dc09462a06def672fbdf2
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49377638"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50420522"
 ---
 # <a name="use-the-azure-portal-to-restore-virtual-machines"></a>Wiederherstellen virtueller Computer über das Azure-Portal
 Schützen Sie Ihre Daten, indem Sie in festgelegten Abständen Momentaufnahmen Ihrer Daten erstellen. Diese Momentaufnahmen werden als Wiederherstellungspunkte bezeichnet. Sie werden in Recovery Services-Tresoren gespeichert. Wenn es erforderlich ist, einen virtuellen Computer zu reparieren oder wiederherzustellen, können Sie den virtuellen Computer auf der Grundlage eines gespeicherten Wiederherstellungspunkts wiederherstellen. Beim Herstellen eines Wiederherstellungspunkts haben Sie folgende Möglichkeiten:
@@ -151,7 +151,7 @@ Klicken Sie auf dem Blatt **Wiederherstellungskonfiguration** auf **OK**, um die
 Die **direkte Wiederherstellung** erfolgt über die Registerkarte **Vorhandene ersetzen**.
 
 ## <a name="replace-existing-disks-from-a-restore-point"></a>Ersetzen vorhandener Datenträger über einen Wiederherstellungspunkt
-Die Option **Vorhandene ersetzen** hilft dabei, vorhandene Datenträger im aktuellen virtuellen Computer durch den ausgewählten Wiederherstellungspunkt zu ersetzen. Dieser Vorgang kann nur ausgeführt werden, wenn der aktuelle virtuelle Computer vorhanden ist. Wenn er aus irgendeinem Grund gelöscht wurde, kann dieser Vorgang nicht durchgeführt werden. Alternativ wird empfohlen, **Neu erstellen** für den virtuellen Computer oder die Datenträger durchzuführen, um mit den Wiederherstellungsvorgängen fortzufahren. Bei den Vorgängen zum Ersetzen vorhandener Datenträger werden als Vorsichtsmaßnahme die Daten vor dem Initiieren der Ersetzungsvorgänge gesichert. Wenn der Wiederherstellungspunkt mehr/weniger Datenträger als der aktuelle virtuelle Computer aufweist, dann wird die Anzahl der Datenträger im Wiederherstellungspunkt nur auf dem virtuellen Computer angezeigt. Die Option „Vorhandene ersetzen“ wird derzeit nur für verwaltete Datenträger und unverschlüsselte virtuelle Computer unterstützt.  
+Die Option **Vorhandene ersetzen** hilft dabei, vorhandene Datenträger im aktuellen virtuellen Computer durch den ausgewählten Wiederherstellungspunkt zu ersetzen. Dieser Vorgang kann nur ausgeführt werden, wenn der aktuelle virtuelle Computer vorhanden ist. Wenn er aus irgendeinem Grund gelöscht wurde, kann dieser Vorgang nicht durchgeführt werden. Alternativ wird empfohlen, **Neu erstellen** für den virtuellen Computer oder die Datenträger durchzuführen, um mit den Wiederherstellungsvorgängen fortzufahren. Bei den Vorgängen zum Ersetzen vorhandener Datenträger werden als Vorsichtsmaßnahme die Daten vor dem Initiieren der Ersetzungsvorgänge gesichert. Wenn der Wiederherstellungspunkt mehr/weniger Datenträger als der aktuelle virtuelle Computer aufweist, dann wird die Anzahl der Datenträger im Wiederherstellungspunkt nur auf dem virtuellen Computer angezeigt. Die Option **Vorhandene ersetzen** wird derzeit nur für verwaltete Datenträger und unverschlüsselte virtuelle Computer unterstützt. Für [generalisierte VMs](https://docs.microsoft.com/azure/virtual-machines/windows/capture-image-resource) und für virtuelle Computer, die mit [benutzerdefinierte Images](https://azure.microsoft.com/resources/videos/create-a-custom-virtual-machine-image-in-azure-resource-manager-with-powershell/) erstellt wurden, wird sie nicht unterstützt.  
 
  Auf dem Blatt **Konfiguration wiederherstellen** muss als einzige Eingabe **Stagingort** ausgewählt werden.
 
@@ -170,7 +170,7 @@ Klicken Sie auf den Link der Benachrichtigungen, um zur Liste **BackupJobs** zu 
 
 Das Blatt **Sicherungsaufträge** wird geöffnet und zeigt die Liste der Aufträge an.
 
-![Liste der virtuellen Computer in einem Tresor](./media/backup-azure-arm-restore-vms/restore-job-completed.png)
+![Liste der virtuellen Computer in einem Tresor](./media/backup-azure-arm-restore-vms/restore-job-in-progress1.png)
 
 ## <a name="use-templates-to-customize-a-restored-vm"></a>Verwenden von Vorlagen zum Anpassen eines wiederhergestellten virtuellen Computers
 Verwenden Sie [nach Abschluss der Datenträgerwiederherstellung](#Track-the-restore-operation) die Vorlage, die im Rahmen des Wiederherstellungsvorgangs generiert wurde, um einen neuen virtuellen Computer mit einer anderen Konfiguration als der Sicherungskonfiguration zu erstellen. Sie können mit der Vorlage auch Namen von Ressourcen anpassen, die beim Erstellen eines neuen virtuellen Computers über einen Wiederherstellungspunkt erstellt wurden.

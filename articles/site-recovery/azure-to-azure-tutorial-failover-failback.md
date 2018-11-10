@@ -1,20 +1,20 @@
 ---
-title: Ausführen eines Failovers und Failbacks von replizierten Azure-VMs auf eine sekundäre Azure-Region mit Azure Site Recovery
-description: Erfahren Sie, wie Sie ein Failover und Failback von replizierten Azure-VMs auf eine sekundäre Azure-Region mit Azure Site Recovery durchführen.
+title: Ausführen eines Failovers und Failbacks von in einer sekundären Azure-Region replizierten virtuellen Azure IaaS-Computern zur Notfallwiederherstellung mit dem Azure Site Recovery-Dienst
+description: Hier erhalten Sie Informationen zum Ausführen eines Failovers und Failbacks von in einer sekundären Azure-Region replizierten virtuellen Azure IaaS-Computern zur Notfallwiederherstellung mit dem Azure Site Recovery-Dienst
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 10/10/2018
+ms.date: 10/28/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: f7d6594910f3c703c2381515c3b93eb56ff4f675
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: 9917656a3bc8fd8cfe7d71786dc39d296a2449c1
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49456506"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50239286"
 ---
 # <a name="fail-over-and-fail-back-azure-vms-between-azure-regions"></a>Ausführen eines Failovers und Failbacks von Azure-VMs zwischen Azure-Regionen
 
@@ -34,7 +34,7 @@ In diesem Tutorial wird beschrieben, wie für eine einzelne Azure-VM ein Failove
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Führen Sie unbedingt ein [Notfallwiederherstellungsverfahren](azure-to-azure-tutorial-dr-drill.md) durch, um zu überprüfen, ob alles wie erwartet funktioniert.
-- Überprüfen Sie die VM-Eigenschaften, bevor Sie das Testfailover ausführen. Die VM muss den [Azure-Anforderungen](azure-to-azure-support-matrix.md#support-for-replicated-machine-os-versions) entsprechen.
+- Überprüfen Sie die VM-Eigenschaften, bevor Sie das Testfailover ausführen. Die VM muss den [Azure-Anforderungen](azure-to-azure-support-matrix.md#replicated-machine-operating-systems) entsprechen.
 
 ## <a name="run-a-failover-to-the-secondary-region"></a>Ausführen eines Failovers zur sekundären Region
 

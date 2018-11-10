@@ -10,27 +10,28 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 10/18/2018
+ms.date: 10/30/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: a3fc3e0cc30b379c84ac0ba12f733d2db4e41587
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 79572a364c2346ffd567cab7d3633ae398715210
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945789"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50239949"
 ---
-# <a name="tutorial-create-an-azure-resource-manager-template-for-deploying-an-encrypted-storage-account"></a>Tutorial: Erstellen einer Azure Resource Manager-Vorlage für die Bereitstellung eines verschlüsselten Speicherkontos
+# <a name="tutorial-deploy-an-encrypted-azure-storage-account-with-resource-manager-template"></a>Tutorial: Bereitstellen eines verschlüsselten Azure Storage-Kontos mit einer Resource Manager-Vorlage
 
-Hier erfahren Sie, wie Sie Informationen zum Ausführen einer Azure Resource Manager-Vorlage finden.
+Hier erfahren Sie, wie Sie die Vorlagenschemainformationen ermitteln und anhand der Informationen Azure Resource Manager-Vorlagen erstellen.
 
-In diesem Tutorial verwenden Sie eine Basisvorlage aus Azure-Schnellstartvorlagen, um ein Azure Storage-Konto zu erstellen.  Anhand der Vorlagenreferenzdokumentation passen Sie die Basisvorlage an, um ein verschlüsseltes Speicherkonto zu erstellen.
+In diesem Tutorial verwenden Sie eine Basisvorlage aus Azure-Schnellstartvorlagen. Anhand der Vorlagenreferenzdokumentation passen Sie die Vorlage an, um ein verschlüsseltes Speicherkonto zu erstellen.
 
 Dieses Tutorial enthält die folgenden Aufgaben:
 
 > [!div class="checklist"]
 > * Öffnen einer Schnellstartvorlage
 > * Kennenlernen der Vorlage
+> * Suchen der Vorlagenreferenz
 > * Bearbeiten der Vorlage
 > * Bereitstellen der Vorlage
 
@@ -44,7 +45,7 @@ Damit Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie F
 
 ## <a name="open-a-quickstart-template"></a>Öffnen einer Schnellstartvorlage
 
-Die in dieser Schnellstartanleitung verwendete Vorlage heißt [Standardspeicherkonto erstellen](https://azure.microsoft.com/resources/templates/101-storage-account-create/). Die Vorlage definiert eine Azure Storage-Kontoressource.
+[Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/) ist ein Repository für Resource Manager-Vorlagen. Statt eine Vorlage von Grund auf neu zu erstellen, können Sie eine Beispielvorlage verwenden und diese anpassen. Die in dieser Schnellstartanleitung verwendete Vorlage heißt [Standardspeicherkonto erstellen](https://azure.microsoft.com/resources/templates/101-storage-account-create/). Die Vorlage definiert eine Azure Storage-Kontoressource.
 
 1. Wählen Sie in Visual Studio Code **Datei**>**Datei öffnen** aus.
 2. Fügen Sie in **Dateiname** die folgende URL ein:
@@ -57,58 +58,22 @@ Die in dieser Schnellstartanleitung verwendete Vorlage heißt [Standardspeicherk
 
 ## <a name="understand-the-schema"></a>Grundlegendes zum Schema
 
-Reduzieren Sie in VS Code die Vorlage auf die Stammebene. Sie besitzen die einfachste Struktur mit den folgenden Elementen:
+1. Reduzieren Sie in VS Code die Vorlage auf die Stammebene. Sie besitzen die einfachste Struktur mit den folgenden Elementen:
 
-![Einfachste Struktur der Resource Manager-Vorlage](./media/resource-manager-tutorial-create-encrypted-storage-accounts/resource-manager-template-simplest-structure.png)
+    ![Einfachste Struktur der Resource Manager-Vorlage](./media/resource-manager-tutorial-create-encrypted-storage-accounts/resource-manager-template-simplest-structure.png)
 
-* **$schema**: Geben Sie den Speicherort der JSON-Schemadatei an, die die Version der Vorlagensprache beschreibt.
-* **contentVersion**: Geben Sie einen beliebigen Wert für dieses Element an, um wichtige Änderungen an der Vorlage zu dokumentieren.
-* **parameters**: Geben Sie die Werte an, die bei der Bereitstellung angegeben werden, um die Bereitstellung der Ressourcen anzupassen.
-* **variables**: Geben Sie die Werte an, die als JSON-Fragmente in der Vorlage verwendet werden, um Vorlagensprachausdrücke zu vereinfachen.
-* **resources**: Geben Sie die Ressourcentypen an, die in einer Ressourcengruppe bereitgestellt oder aktualisiert werden.
-* **outputs**: Geben Sie die Werte an, die nach der Bereitstellung zurückgegeben werden.
+    * **$schema**: Geben Sie den Speicherort der JSON-Schemadatei an, die die Version der Vorlagensprache beschreibt.
+    * **contentVersion**: Geben Sie einen beliebigen Wert für dieses Element an, um wichtige Änderungen an der Vorlage zu dokumentieren.
+    * **parameters**: Geben Sie die Werte an, die bei der Bereitstellung angegeben werden, um die Bereitstellung der Ressourcen anzupassen.
+    * **variables**: Geben Sie die Werte an, die als JSON-Fragmente in der Vorlage verwendet werden, um Vorlagensprachausdrücke zu vereinfachen.
+    * **resources**: Geben Sie die Ressourcentypen an, die in einer Ressourcengruppe bereitgestellt oder aktualisiert werden.
+    * **outputs**: Geben Sie die Werte an, die nach der Bereitstellung zurückgegeben werden.
 
-## <a name="use-parameters"></a>Verwenden von Parametern
+2. Erweitern Sie **Ressourcen**. Dort ist eine Ressource vom Typ `Microsoft.Storage/storageAccounts` definiert. Die Vorlage erstellt ein nicht verschlüsseltes Storage-Konto.
 
-Mit Parametern können Sie die Bereitstellung anpassen, indem Sie Werte angeben, die für eine bestimmte Umgebung maßgeschneidert sind. Sie verwenden die in der Vorlage definierten Parameter beim Festlegen von Werten für das Speicherkonto.
+    ![Resource Manager-Vorlage, Speicherkontodefinition](./media/resource-manager-tutorial-create-encrypted-storage-accounts/resource-manager-template-encrypted-storage-resource.png)
 
-![Resource Manager-Vorlagenparameter](./media/resource-manager-tutorial-create-encrypted-storage-accounts/resource-manager-template-parameters.png)
-
-In dieser Vorlage werden zwei Parameter definiert. Beachten Sie, dass in „location.defaultValue“ eine Vorlagenfunktion verwendet wird:
-
-```json
-"defaultValue": "[resourceGroup().location]",
-```
-
-Die Funktion „resourceGroup()“ gibt ein Objekt zurück, das die aktuelle Ressourcengruppe darstellt. Unter [Vorlagenfunktionen im Azure-Ressourcen-Manager](./resource-group-template-functions.md) finden Sie eine Liste der Vorlagenfunktionen.
-
-So verwenden Sie die in der Vorlage definierten Parameter:
-
-```json
-"location": "[parameters('location')]",
-"name": "[parameters('storageAccountType')]"
-```
-
-## <a name="use-variables"></a>Verwenden von Variablen
-
-Mit Variablen können Sie Werte erstellen, die in der ganzen Vorlage verwendet werden können. Variablen helfen Ihnen, die Komplexität der Vorlagen zu verringern.
-
-![Resource Manager-Vorlagenvariablen](./media/resource-manager-tutorial-create-encrypted-storage-accounts/resource-manager-template-variables.png)
-
-Diese Vorlage definiert eine Variable: *storageAccountName*. In der Definition werden zwei Vorlagenfunktionen verwendet:
-
-- **concat()**: Verkettet Zeichenfolgen. Weitere Informationen finden Sie unter [concat](./resource-group-template-functions-string.md#concat).
-- **uniqueString()**: Erstellt auf der Grundlage der als Parameter angegebenen Werte eine deterministische Hashzeichenfolge. Jedes Azure-Speicherkonto muss einen eindeutigen Namen in Azure besitzen. Diese Funktion stellt eine eindeutige Zeichenfolge bereit. Weitere Zeichenfolgenfunktionen finden Sie unter [Zeichenfolgenfunktionen für Azure Resource Manager-Vorlagen](./resource-group-template-functions-string.md).
-
-So verwenden Sie die in der Vorlage definierte Variable:
-
-```json
-"name": "[variables('storageAccountName')]"
-```
-
-## <a name="edit-the-template"></a>Bearbeiten der Vorlage
-
-In diesem Tutorial wird eine Vorlage zum Erstellen eines verschlüsselten Speicherkontos definiert.  Die Beispielvorlage erstellt nur ein einfaches unverschlüsseltes Speicherkonto. Sie können die Vorlagenreferenz des Azure Storage-Kontos verwenden, um die verschlüsselungsbezogene Konfiguration zu ermitteln.
+## <a name="find-the-template-reference"></a>Suchen der Vorlagenreferenz
 
 1. Navigieren Sie zu [Azure-Vorlagen](https://docs.microsoft.com/azure/templates/).
 2. Geben Sie in **Filtern nach Titel** **Speicherkonten** ein.
@@ -120,17 +85,52 @@ In diesem Tutorial wird eine Vorlage zum Erstellen eines verschlüsselten Speich
 
     ```json
     "encryption": {
-        "keySource": "Microsoft.Storage",
+      "services": {
+        "blob": {
+          "enabled": boolean
+        },
+        "file": {
+          "enabled": boolean
+        }
+      },
+      "keySource": "string",
+      "keyvaultproperties": {
+        "keyname": "string",
+        "keyversion": "string",
+        "keyvaulturi": "string"
+      }
+    },
+    ```
+
+    Auf der gleichen Webseite wird mit der folgenden Beschreibung bestätigt, dass das Objekt `encryption` zum Erstellen eines verschlüsselten Speicherkontos verwendet wird.
+
+    ![Resource Manager: Vorlagenreferenz > Speicherkontoverschlüsselung](./media/resource-manager-tutorial-create-encrypted-storage-accounts/resource-manager-template-resources-reference-storage-accounts-encryption.png)
+
+    Es gibt zwei Möglichkeiten zum Verwalten des Verschlüsselungsschlüssels. Mit Storage Service Encryption können von Microsoft verwaltete oder eigene Verschlüsselungsschlüssel verwendet werden. In diesem Tutorial verwenden Sie der Einfachheit halber die Option `Microsoft.Storage`, damit Sie keine Azure Key Vault-Instanz erstellen müssen.
+
+    ![Resource Manager: Vorlagenreferenz > Speicherkonto-Verschlüsselungsobjekt](./media/resource-manager-tutorial-create-encrypted-storage-accounts/resource-manager-template-resources-reference-storage-accounts-encryption-object.png)
+
+    Ihr Verschlüsselungsobjekt sollte wie folgt aussehen:
+
+    ```json
+    "encryption": {
         "services": {
             "blob": {
                 "enabled": true
+            },
+            "file": {
+              "enabled": true
             }
-        }
+        },
+        "keySource": "Microsoft.Storage"
     }
     ```
-5. Ändern Sie die Vorlage in Visual Studio Code, sodass das endgültige Ressourcenelement wie folgt aussieht:
-    
-    ![Verschlüsselte Speicherkontoressourcen der Resource Manager-Vorlage](./media/resource-manager-tutorial-create-encrypted-storage-accounts/resource-manager-template-encrypted-storage-resources.png)
+
+## <a name="edit-the-template"></a>Bearbeiten der Vorlage
+
+Ändern Sie die Vorlage in Visual Studio Code, sodass das Ressourcenelement wie folgt aussieht:
+
+![Verschlüsselte Speicherkontoressourcen der Resource Manager-Vorlage](./media/resource-manager-tutorial-create-encrypted-storage-accounts/resource-manager-template-encrypted-storage-resources.png)
 
 ## <a name="deploy-the-template"></a>Bereitstellen der Vorlage
 

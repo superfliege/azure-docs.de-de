@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: barclayn
-ms.openlocfilehash: 56a1ebcfbb6dda9bc96aa241bd2b8d753022181a
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: d1a6da5d599296a11678ee58cadc42d61296e8e7
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49385854"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50230300"
 ---
 # <a name="what-is-azure-key-vault"></a>Was ist der Azure-Schlüsseltresor?
 
@@ -27,17 +27,20 @@ Mit Azure Key Vault lassen sich folgende Probleme lösen:
 - **Geheimnisverwaltung**: Azure Key Vault ermöglicht die sichere Speicherung und präzise Steuerung des Zugriffs auf Token, Kennwörter, Zertifikate, API-Schlüssel und andere Geheimnisse.
 - **Schlüsselverwaltung**: Azure Key Vault kann auch als Schlüsselverwaltungslösung verwendet werden. Azure Key Vault vereinfacht das Erstellen und Verwalten der zur Verschlüsselung Ihrer Daten verwendeten Verschlüsselungsschlüssel. 
 - **Zertifikatverwaltung**: Darüber hinaus können Sie mit dem Azure Key Vault-Dienst komfortabel öffentliche und private SSL-/TLS-Zertifikate (Secure Sockets Layer/Transport Layer Security) für die Verwendung mit Azure und Ihren internen verbundenen Ressourcen bereitstellen und verwalten. 
-- **Speichern von Geheimnissen mit Unterstützung durch Hardwaresicherheitsmodule**: Die Geheimnisse und Schlüssel können entweder per Software oder mit FIPS 140-2 Level 2 HSMs geschützt werden.
+- **Speichern von Geheimnissen mit Unterstützung durch Hardwaresicherheitsmodule**: Die Geheimnisse und Schlüssel können per Software oder mit durch FIPS 140-2 Level 2 validierten HSMs geschützt werden.
 
 ## <a name="basic-concepts"></a>Grundlegende Konzepte
 
 Azure Key Vault ist ein Tool zum sicheren Speichern und Zugreifen auf Geheimnisse. Als Geheimnis wird alles bezeichnet, für das Sie den Zugriff streng kontrollieren möchten, z.B. API-Schlüssel, Kennwörter oder Zertifikate. Ein **Tresor** ist logische Gruppe von Geheimnissen. Damit Sie jetzt Vorgänge mit Key Vault durchführen können, müssen Sie sich zunächst authentifizieren. 
 
-Grundsätzlich gibt es drei Möglichkeiten für die Authentifizierung bei Key Vault
+Grundsätzlich gibt es drei Möglichkeiten für die Authentifizierung bei Key Vault:
 
-1. **Mithilfe der [verwalteten Identitäten für Azure-Ressourcen](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)** (**Empfohlene und bewährte Methode**): Wenn Sie eine App auf einem virtuellen Computer in Azure bereitstellen, können Sie Ihrem virtuellen Computer eine Identität zuweisen, die Zugriff auf Key Vault hat. Sie können Identitäten auch anderen Azure-Ressourcen zuweisen, die [hier](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) aufgeführt sind. Der Vorteil bei diesem Ansatz ist, dass die App bzw. der Dienst die Rotation des ersten Geheimnisses nicht verwaltet. Die Identität wird von Azure automatisch gedreht. 
-2. **Mithilfe von Dienstprinzipal und Zertifikat:** Die zweite Option besteht darin, einen Dienstprinzipal und ein zugehöriges Zertifikat zu verwenden, das Zugriff auf Key Vault hat. Die Verantwortung für die Rotation des Zertifikats liegt beim Anwendungsbesitzer oder -entwickler, weshalb dies nicht empfohlen wird.
-3. **Mithilfe von Dienstprinzipal und Geheimnis:** Die dritte Option (nicht die bevorzugte Option) besteht darin, einen Dienstprinzipal und ein Geheimnis zur Authentifizierung beim Key Vault zu verwenden.
+1. **Mithilfe der [verwalteten Identitäten für Azure-Ressourcen](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)** (**Empfohlene und bewährte Methode**): Wenn Sie eine App auf einem virtuellen Computer in Azure bereitstellen, können Sie Ihrem virtuellen Computer eine Identität zuweisen, die Zugriff auf Key Vault hat. Sie können Identitäten auch anderen Azure-Ressourcen zuweisen, die [hier](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) aufgeführt sind. Der Vorteil bei diesem Ansatz ist, dass die App bzw. der Dienst die Rotation des ersten Geheimnisses nicht verwaltet. Die Identität wird von Azure automatisch rotiert. 
+2. **Mithilfe von Dienstprinzipal und Zertifikat**: Die zweite Option besteht darin, einen Dienstprinzipal und ein zugehöriges Zertifikat zu verwenden, das Zugriff auf Key Vault hat. Dies wird allerdings nicht empfohlen, da die Verantwortung für die Rotation des Zertifikats liegt beim Anwendungsbesitzer oder -entwickler.
+3. **Mithilfe von Dienstprinzipal und Geheimnis**: Die dritte Option (keine bevorzugte Option) besteht darin, zur Authentifizierung beim Key Vault einen Dienstprinzipal und ein Geheimnis zu verwenden.
+
+> [!NOTE]
+> Diese Option sollte nicht verwendet werden, da es schwierig ist, das Bootstrapgeheimnis für die Authentifizierung bei Key Vault automatisch zu rotieren.
 
 Im Anschluss finden Sie einige wichtige Begriffe:
 - **Mandant:** Ein Mandant ist die Organisation, die eine bestimmte Instanz von Microsoft-Clouddiensten besitzt und verwaltet. Der Begriff am häufigsten verwendet, um speziell auf die Azure- und Office 365-Dienste einer Organisation zu verweisen.
@@ -45,7 +48,7 @@ Im Anschluss finden Sie einige wichtige Begriffe:
 - **Tresorconsumer:** Ein Tresorconsumer kann Aktionen für die Objekte im Schlüsseltresor ausführen, wenn der Tresorbesitzer dem Consumer Zugriff gewährt. Welche Aktionen verfügbar sind, hängt von den gewährten Berechtigungen ab.
 - **Ressource:** Eine Ressource ist ein verwaltbares Element, das über Azure verfügbar ist. Beispiele für häufig verwendete Ressourcen sind virtueller Computer, Speicherkonto, Web-App, Datenbank und virtuelles Netzwerk, aber es sind noch viele weitere Ressourcen vorhanden.
 - **Ressourcengruppe:** Eine Azure-Ressourcengruppe ist ein Container, der verwandte Ressourcen für eine Azure-Lösung enthält. Die Ressourcengruppe kann alle Ressourcen für die Lösung oder nur die Ressourcen enthalten, die Sie als Gruppe verwalten möchten. Sie entscheiden in Abhängigkeit davon, was für Ihre Organisation am sinnvollsten ist, wie Sie die Ressourcen den Ressourcengruppen zuordnen möchten.
-- **Dienstprinzipal**: Um auf Ressourcen zugreifen zu können, die von einem Azure AD-Mandanten geschützt werden, muss die Entität, die Zugriff benötigt, durch einen Sicherheitsprinzipal dargestellt werden. Dies gilt für Benutzer (Benutzerprinzipal) und Anwendungen (Dienstprinzipal). Der Sicherheitsprinzipal definiert die Richtlinie für den Zugriff und Berechtigungen für den Benutzer/die Anwendung in diesem Mandanten. Dies aktiviert die Kernfunktionen wie die Authentifizierung des Benutzers/der Anwendung während der Anmeldung und die Autorisierung beim Zugriff auf Ressourcen.
+- **Dienstprinzipal**: Ein Azure-Dienstprinzipal ist eine Sicherheitsidentität, mit der von Benutzern erstellte Apps, Dienste und Automatisierungstools auf bestimmte Azure-Ressourcen zugreifen. Das Konzept lässt sich als Benutzeridentität (Benutzername und Kennwort oder Zertifikat) mit einer bestimmten Rolle und streng kontrollierten Berechtigungen beschreiben. Ein Dienstprinzipal sollte – im Gegensatz zu einer allgemeinen Benutzeridentität – nur für bestimmte Dinge zuständig sein. Wenn Sie ihr nur die Berechtigungen gewähren, die sie zum Ausführen ihrer Verwaltungsaufgaben benötigt, verbessert das die Sicherheit.
 - **[Azure Active Directory (Azure AD):](../active-directory/active-directory-whatis.md)** Azure AD ist der Active Directory-Dienst für einen Mandanten. Jedes Verzeichnis verfügt über mindestens eine Domäne. Einem Verzeichnis können viele Abonnements zugeordnet sein, aber nur ein Mandant. 
 - **Azure-Mandanten-ID:** Eine Azure-Mandanten-ID ist eine Möglichkeit zur eindeutigen Identifizierung einer Azure AD-Instanz in einem Azure-Abonnement.
 - **Verwaltete Identitäten für Azure-Ressourcen:** Azure Key Vault bietet eine Möglichkeit zum sicheren Speichern von Anmeldeinformationen und anderen Schlüsseln und Geheimnissen. Um diese abrufen zu können, muss sich Ihr Code aber bei Key Vault authentifizieren. Die Verwendung einer verwalteten Identität vereinfacht die Lösung dieses Problems, indem für Azure-Dienste eine automatisch verwaltete Identität in Azure AD bereitgestellt wird. Sie können diese Identität für die Authentifizierung bei Key Vault oder jedem anderen Dienst verwenden, der die Azure AD-Authentifizierung unterstützt. Hierfür müssen keine Anmeldeinformationen im Code enthalten sein. Weitere Informationen finden Sie in der nachfolgenden Abbildung und unter [Verwaltete Identitäten für Azure-Ressourcen – Übersicht](../active-directory/managed-identities-azure-resources/overview.md).

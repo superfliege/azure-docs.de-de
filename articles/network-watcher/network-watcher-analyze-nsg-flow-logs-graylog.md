@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2017
 ms.author: mareat
-ms.openlocfilehash: db3b08ae8092661e6ffa0f2dd7e460f341a8d013
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 3030fdcec95d91b75974465ad30f707837263367
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43666058"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50414776"
 ---
 # <a name="manage-and-analyze-network-security-group-flow-logs-in-azure-using-network-watcher-and-graylog"></a>Verwalten und Analysieren von Datenflussprotokollen für Netzwerksicherheitsgruppen in Azure mithilfe von Network Watcher und Graylog
 
@@ -38,7 +38,7 @@ Datenflussprotokolle von Netzwerksicherheitsgruppen werden mithilfe von Network 
 
 ### <a name="enable-network-security-group-flow-logging"></a>Aktivieren der Datenflussprotokollierung für Netzwerksicherheitsgruppen
 
-Für dieses Szenario müssen Sie die NSG-Datenflussprotokollierung für mindestens eine Netzwerksicherheitsgruppe in Ihrem Konto aktivieren. Eine Anleitung zum Aktivieren von NSG-Datenflussprotokollen finden Sie im Artikel [Einführung in die Datenflussprotokollierung für Netzwerksicherheitsgruppen](network-watcher-nsg-flow-logging-overview.md).
+Für dieses Szenario müssen Sie die NSG-Datenflussprotokollierung für mindestens eine Netzwerksicherheitsgruppe in Ihrem Konto aktivieren. Eine Anleitung zum Aktivieren von NSG-Datenflussprotokollen finden Sie im Artikel  [Einführung in die Datenflussprotokollierung für Netzwerksicherheitsgruppen](network-watcher-nsg-flow-logging-overview.md).
 
 ### <a name="setting-up-graylog"></a>Einrichten von Graylog
 
@@ -51,7 +51,7 @@ Dieses Beispiel verwendet die Graylog-Mindestkonfiguration (d.h. eine einzelne G
 
 Graylog kann in vielerlei Hinsicht je nach Plattform und Vorlieben installiert werden. Eine vollständige Liste der möglichen Installationsmethoden finden Sie in Graylogs offizieller [Dokumentation](http://docs.graylog.org/en/2.2/pages/installation.html). Die Graylog-Serveranwendung wird auf Linux-Verteilungen ausgeführt und hat die folgenden Voraussetzungen:
 
--  Oracle Java SE 8 oder höher – [Oracles Installationsdokumentation](http://docs.oracle.com/javase/8/docs/technotes/guides/install/install_overview.html)
+-  Java SE 8 oder höher – [Azul Azure JDK-Dokumentation](https://aka.ms/azure-jdks)
 -  Elastic Search 2.x (2.1.0 oder höher) – [Elasticsearch-Installationsdokumentation](https://www.elastic.co/guide/en/elasticsearch/reference/2.4/_installation.html)
 -  MongoDB 2.4 oder höher – [MongoDB-Installationsdokumentation](https://docs.mongodb.com/manual/administration/install-on-linux/)
 
@@ -244,4 +244,4 @@ Durch die Integration von Network Watcher mit Graylog haben Sie jetzt eine einfa
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erfahren Sie unter [Visualize network security group flows logs with Power BI](network-watcher-visualize-nsg-flow-logs-power-bi.md) (Visualisieren der Datenflussprotokolle von Netzwerksicherheitsgruppen mit Power BI), wie Sie Ihre NSG-Datenflussprotokolle mit Power BI visualisieren.
+Erfahren Sie unter  [Visualisieren der Datenflussprotokolle von Netzwerksicherheitsgruppen mit Power BI](network-watcher-visualize-nsg-flow-logs-power-bi.md), wie Sie Ihre NSG-Datenflussprotokolle mit Power BI visualisieren.

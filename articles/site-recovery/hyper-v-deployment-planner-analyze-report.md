@@ -1,6 +1,6 @@
 ---
-title: Azure Site Recovery-Bereitstellungsplaner für „Hyper-V zu Azure“ | Microsoft-Dokumentation
-description: In diesem Artikel wird die Analyse eines erstellten Azure Site Recovery-Bereitstellungsplaner-Berichts für „Hyper-V zu Azure“ beschrieben.
+title: Analysieren des Azure Site Recovery-Bereitstellungsplaner-Berichts für die Notfallwiederherstellung von Hyper-V-VMs in Azure | Microsoft-Dokumentation
+description: Dieser Artikel beschreibt, wie Sie einen Bericht analysieren, der vom Azure Site Recovery-Bereitstellungsplaner für die Notfallwiederherstellung von Hyper-V-VMs in Azure generiert wurde.
 services: site-recovery
 author: nsoneji
 manager: garavd
@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: nisoneji
-ms.openlocfilehash: d5e8038aea547977ed11d0bd5d2675322921d8ef
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: ad53b32b9809e8cce459d8317a916a9ddab0e336
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49092914"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50210929"
 ---
 # <a name="analyze-the-azure-site-recovery-deployment-planner-report"></a>Analysieren des Azure Site Recovery-Bereitstellungsplaner-Berichts
 In diesem Artikel werden die Arbeitsblätter beschrieben, die im Excel-Bericht enthalten sind, der mit dem Azure Site Recovery-Bereitstellungsplaner für das Szenario „Hyper-V zu Azure“ erstellt wird.

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
 ms.author: garye
-ms.openlocfilehash: cd08f6a31f431900a2cb7ed9ed222409f9583b55
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 32c7fca1b56e5426bc422b816279dd0919599f0f
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49393370"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51243998"
 ---
 # <a name="cheat-sheet-for-an-automated-data-pipeline-for-azure-machine-learning-predictions"></a>Cheat Sheet für eine automatisierte Datenpipeline für Azure Machine Learning-Vorhersagen
 Das **Cheat Sheet für eine automatisierte Datenpipeline für Microsoft Azure Machine Learning** hilft Ihnen bei der Navigation durch die Technologie, mit deren Hilfe Sie Ihre Daten an Ihren Machine Learning-Webdienst senden können, in dem sie von Ihrem Predictive Analytics-Modell bewertet werden.
@@ -31,7 +31,7 @@ Dieses Cheat Sheet führt Sie durch die Entscheidungen, die Sie treffen müssen,
 ## <a name="download-the-machine-learning-automated-data-pipeline-cheat-sheet"></a>Herunterladen des Cheat Sheets für eine automatisierte Datenpipeline für Machine Learning
 Nachdem Sie das Cheat Sheet heruntergeladen haben, können Sie es im Tabloid-Format (11 x 17 Zoll) ausdrucken.
 
-Sie können das Cheat Sheet hier herunterladen: **[Cheat Sheet für eine automatisierte Datenpipeline für Microsoft Azure Machine Learning](http://download.microsoft.com/download/C/C/7/CC726F8B-2E6F-4C20-9B6F-AFBEE8253023/microsoft-machine-learning-operationalization-cheat-sheet_v1.pdf)**
+Sie können das Cheat Sheet hier herunterladen: **[Cheat Sheet für eine automatisierte Datenpipeline für Microsoft Azure Machine Learning](https://download.microsoft.com/download/C/C/7/CC726F8B-2E6F-4C20-9B6F-AFBEE8253023/microsoft-machine-learning-operationalization-cheat-sheet_v1.pdf)**
 
 ![Übersicht der Microsoft Azure Machine Learning Studio-Funktionen][op-cheat-sheet]
 

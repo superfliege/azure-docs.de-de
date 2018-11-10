@@ -13,12 +13,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 633717a9f5f74648f7418970dd8047079efe18b9
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 38839379f584b40cdbefad3e4cbb3bc47881c9a7
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49649090"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50094594"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>Beitreten einer Azure-SSIS-Integrationslaufzeit zu einem virtuellen Netzwerk
 Verknüpfen Sie in folgenden Szenarien Ihre Azure SSIS-Integration Runtime (IR) mit einem virtuellen Azure-Netzwerk: 
@@ -28,6 +28,9 @@ Verknüpfen Sie in folgenden Szenarien Ihre Azure SSIS-Integration Runtime (IR) 
 - Sie hosten die SQL Server Integration Services-Katalogdatenbank (SSIS) in Azure SQL-Datenbank mit Dienstendpunkten virtueller Netzwerke/verwalteter Instanz. 
 
  Mit Azure Data Factory können Sie Ihre Azure SSIS-Integration Runtime mit einem virtuellen Netzwerk verknüpfen, das über das klassische Bereitstellungsmodell oder das Azure Resource Manager-Bereitstellungsmodell erstellt wurde. 
+
+> [!IMPORTANT]
+> Das klassische virtuelle Netzwerk wird demnächst als veraltet angesehen, daher sollten Sie stattdessen das virtuelle Azure Resource Manager-Netzwerk verwenden.  Wenn Sie das klassische virtuelle Netzwerk bereits verwenden, wechseln Sie so bald wie möglich zum virtuellen Azure Resource Manager-Netzwerk.
 
 ## <a name="access-to-on-premises-data-stores"></a>Zugriff auf lokale Datenspeicher
 Wenn SSIS-Pakete nur auf Datenspeicher in öffentlichen Clouds zugreifen, müssen Sie die Azure SSIS-IR nicht mit einem virtuellen Netzwerk verknüpfen. Wenn SSIS-Pakete auf lokale Datenspeicher zugreifen, müssen Sie die Azure SSIS-IR mit einem virtuellen Netzwerk verknüpfen, das mit dem lokalen Netzwerk verbunden ist. 
@@ -46,11 +49,13 @@ Folgende wichtige Punkte sind zu beachten:
 Wenn der SSIS-Katalog in einer Azure SQL-Datenbank-Instanz mit Dienstendpunkten virtueller Netzwerke oder in verwalteter SQL-Datenbank-Instanz gehostet wird, können Sie eine Azure SSIS IR mit folgenden Netzwerken verknüpfen: 
 
 - Demselben virtuellen Netzwerk 
-- Einem anderen virtuellen Netzwerk, das über eine Netzwerk-zu-Netzwerk-Verbindung mit dem Netzwerk verfügt, das für die Azure SQL-Datenbank mit Dienstendpunkten virtueller Netzwerke/verwalteten Azure SQL-Datenbank-Instanz verwendet wird 
+- Einem anderen virtuellen Netzwerk, das über eine Netzwerk-zu-Netzwerk-Verbindung mit dem Netzwerk verfügt, das für die verwaltete Instanz verwendet wird 
 
-Wenn Sie Ihre Azure SSIS-IR mit demselben virtuellen Netzwerk verknüpfen wie die verwaltete Instanz, stellen Sie sicher, dass sich die Azure SSIS-IR in einem anderen Subnetz als die verwaltete Instanz befindet. Wenn Sie die Azure SSIS-IR mit einem anderen virtuellen Netzwerk verknüpfen als die verwaltete Instanz, empfiehlt sich das Peering virtueller Netzwerke (das auf die gleiche Region begrenzt ist) oder eine Verbindung zwischen virtuellem Netzwerk und virtuellem Netzwerk. Weitere Informationen finden Sie unter [Herstellen einer Verbindung zwischen einer Anwendung und einer verwalteten Azure SQL-Datenbank-Instanz](../sql-database/sql-database-managed-instance-connect-app.md).
+Wenn Sie Ihren SSIS-Katalog in Azure SQL-Datenbank mit virtuellen Netzwerk-Dienstendpunkten hosten, stellen Sie sicher, dass Sie Ihre Azure-SSIS IR mit demselben virtuellen Netzwerk und Subnetz verknüpfen.
 
-Das virtuelle Netzwerk kann mit dem klassischen Bereitstellungsmodell oder dem Azure Resource Manager-Bereitstellungsmodell bereitgestellt werden.
+Wenn Sie Ihre Azure-SSIS IR mit demselben virtuellen Netzwerk verknüpfen wie die verwaltete Instanz, stellen Sie sicher, dass sich die Azure-SSIS IR in einem anderen Subnetz als die verwaltete Instanz befindet. Wenn Sie die Azure-SSIS IR mit einem anderen virtuellen Netzwerk verknüpfen als die verwaltete Instanz, empfiehlt sich das Peering virtueller Netzwerke (begrenzt auf die gleiche Region) oder eine Verbindung zwischen den virtuellen Netzwerken. Weitere Informationen finden Sie unter [Herstellen einer Verbindung zwischen einer Anwendung und einer verwalteten Azure SQL-Datenbank-Instanz](../sql-database/sql-database-managed-instance-connect-app.md).
+
+In allen Fällen kann das virtuelle Netzwerk nur über das Azure Resource Manager-Bereitstellungsmodell bereitgestellt werden.
 
 Die folgenden Abschnitte enthalten hierzu weitere Informationen. 
 
@@ -73,13 +78,13 @@ Die folgenden Abschnitte enthalten hierzu weitere Informationen.
 
 Der Benutzer, der Azure-SSIS Integration Runtime erstellt, muss über die folgenden Berechtigungen verfügen:
 
-- Wenn Sie SSIS IR in ein virtuelles Azure-Netzwerk mit der aktuellen Version einbinden, haben Sie zwei Möglichkeiten:
+- Wenn Sie Ihre SSIS IR in ein virtuelles Azure Resource Manager-Netzwerk einbinden, haben Sie zwei Möglichkeiten:
 
-  - Verwendung der integrierten Rolle *Netzwerkmitwirkender*. Diese Rolle erfordert die Berechtigung *Microsoft.Network/\**, jedoch mit einem deutlich größeren Umfang.
+  - Verwenden Sie die integrierte Rolle *Netzwerkmitwirkender*. Diese Rolle umfasst die Berechtigung *Microsoft.Network/\**, die jedoch einen deutlich größeren Umfang als erforderlich hat.
 
-  - Erstellen Sie eine benutzerdefinierte Rolle, die die Berechtigung *Microsoft.Network/virtualNetworks/\*/join/action* umfasst. 
+  - Erstellen Sie eine benutzerdefinierte Rolle, die nur die erforderliche Berechtigung *Microsoft.Network/virtualNetworks/\*/join/action* aufweist. 
 
-- Wenn Sie SSIS IR in ein klassisches virtuelles Azure-Netzwerk einbinden, wird empfohlen, die integrierte Rolle *Mitwirkender für klassische virtuelle Computer* zu verwenden. Andernfalls müssen Sie eine benutzerdefinierte Rolle definieren, die die Berechtigung zum Einbinden in das virtuelle Netzwerk enthält.
+- Wenn Sie die SSIS IR in ein klassisches virtuelles Netzwerk einbinden, wird empfohlen, die integrierte Rolle *Mitwirkender für klassische virtuelle Computer* zu verwenden. Andernfalls müssen Sie eine benutzerdefinierte Rolle definieren, die die Berechtigung zum Einbinden in das virtuelle Netzwerk enthält.
 
 ### <a name="subnet"></a> Auswählen des Subnetzes
 -   Wählen Sie nicht „GatewaySubnet“ für die Bereitstellung einer Azure-SSIS-Integrationslaufzeit aus, da es für Gateways des virtuellen Netzwerks vorgesehen ist. 

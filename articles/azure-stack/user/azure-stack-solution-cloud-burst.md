@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: 1f3dcc7da3e91d3805cae805422778978d0187c5
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 68021d25e3deab1c6551d29b0febd9f07e144b57
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46971330"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50095337"
 ---
 # <a name="tutorial-create-cross-cloud-scaling-solutions-with-azure"></a>Tutorial: Erstellen von cloudübergreifenden Skalierungslösungen mit Azure
 
@@ -101,7 +101,7 @@ Richten Sie Hybrid-CI/CD (Continuous Integration/Continuous Deployment) ein, um 
 
 ### <a name="add-code-to-visual-studio-team-services-project"></a>Hinzufügen von Code zum Visual Studio Team Services-Projekt
 
-1. Melden Sie sich an Visual Studio Team Services (VSTS) mit einem Konto an, das über Berechtigungen zum Erstellen von Projekten in VSTS verfügt~~.~~
+1. Melden Sie sich bei Visual Studio Team Services (VSTS) mit einem Konto an, das über Berechtigungen zum Erstellen von Projekten in VSTS verfügt.
 
     Der hybride CI/CD-Ansatz kann für Anwendungscode und Infrastrukturcode verwendet werden. Verwenden Sie [Azure Resource Manager-Vorlagen](https://azure.microsoft.com/resources/templates/) für die Entwicklung von privaten und gehosteten Clouds.
 

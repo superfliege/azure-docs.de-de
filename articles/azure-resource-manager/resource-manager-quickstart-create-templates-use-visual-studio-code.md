@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 10/18/2018
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: e8ca232f3c5664f69db800648b46abaf0822d6f1
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: 092b6f2c3267a2c2cd2cc6304133134825bb7261
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49458138"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50230146"
 ---
 # <a name="quickstart-create-azure-resource-manager-templates-by-using-visual-studio-code"></a>Schnellstart: Erstellen von Azure Resource Manager-Vorlagen mit Visual Studio Code
 
@@ -83,13 +83,13 @@ Fügen Sie dem Bereich `outputs` ein weiteres Element hinzu, um sich mit der Bea
 
     Wenn Sie den Code in Visual Studio Code kopiert und eingefügt haben, versuchen Sie, das Element **value** erneut einzugeben, um die IntelliSense-Funktion der Erweiterung „Resource Manager-Tools“ zu testen.
 
-    ![Resource Manager-Vorlagen, Visual Studio Code, IntelliSense](./media/resource-manager-quickstart-create-templates-use-visual-studio-code/resource-manager-templates-visual-studio-code-intellisense.png)
+    ![Resource Manager-Vorlage, Visual Studio Code, IntelliSense](./media/resource-manager-quickstart-create-templates-use-visual-studio-code/resource-manager-templates-visual-studio-code-intellisense.png)
 
 2. Wählen Sie **Datei**>**Speichern** aus, um die Datei zu speichern.
 
 ## <a name="deploy-the-template"></a>Bereitstellen der Vorlage
 
-Es gibt viele Methoden zum Bereitstellen von Vorlagen.  In dieser Schnellstartanleitung wird Azure Cloud Shell verwendet. Cloud Shell unterstützt die Azure-Befehlszeilenschnittstelle (CLI) und Azure PowerShell. 
+Es gibt viele Methoden zum Bereitstellen von Vorlagen.  In dieser Schnellstartanleitung wird Azure Cloud Shell verwendet. Cloud Shell unterstützt die Azure-Befehlszeilenschnittstelle (CLI) und Azure PowerShell.
 
 1. Melden Sie sich bei [Azure Cloud Shell](https://shell.azure.com) an.
 

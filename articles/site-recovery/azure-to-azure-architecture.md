@@ -1,24 +1,24 @@
 ---
 title: Architektur der Azure-zu-Azure-Replikation in Azure Site Recovery | Microsoft-Dokumentation
-description: Dieser Artikel bietet einen Überblick über die Komponenten und die Architektur, die beim Replizieren von Azure-VMs zwischen Azure-Regionen mit dem Azure Site Recovery-Dienst verwendet werden.
+description: Dieser Artikel bietet einen Überblick über die Komponenten und die Architektur, die beim Einrichten der Notfallwiederherstellung zwischen Azure-Regionen für virtuelle Azure-Computer mit dem Azure Site Recovery-Dienst verwendet werden.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/10/2018
+ms.date: 10/28/2018
 ms.author: raynew
-ms.openlocfilehash: 20387c325497934ccb2e02188b24a0125f937e00
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 0069ece5d02ad52b6fea9add7817e63fa3c412b6
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49078256"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212728"
 ---
-# <a name="azure-to-azure-replication-architecture"></a>Architektur der Azure-zu-Azure-Replikation
+# <a name="azure-to-azure-disaster-recovery-architecture"></a>Architektur der Notfallwiederherstellung von Azure zu Azure
 
 
-Dieser Artikel beschreibt die Architektur, die unter Verwendung des [Azure Site Recovery](site-recovery-overview.md)-Diensts für die Replikation, die Ausführung eines Failovers und die Wiederherstellung von virtuellen Azure-Computern (VMs) zwischen Azure-Regionen verwendet wird.
+Dieser Artikel beschreibt die Architektur, die für die Bereitstellung der Notfallwiederherstellung mit Replikation, Failover und Wiederherstellung von virtuellen Azure-Computern zwischen Azure-Regionen mithilfe des [Azure Site Recovery](site-recovery-overview.md)-Diensts verwendet wird.
 
 
 

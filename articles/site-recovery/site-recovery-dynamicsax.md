@@ -1,29 +1,22 @@
 ---
-title: Replizieren einer Dynamics AX-Bereitstellung mit mehreren Schichten mithilfe von Azure Site Recovery | Microsoft-Dokumentation
-description: In diesem Artikel wird beschrieben, wie Sie Dynamics AX mithilfe von Azure Site Recovery replizieren und schützen können.
-services: site-recovery
-documentationcenter: ''
+title: Einrichten der Notfallwiederherstellung für eine Dynamics AX-Bereitstellung mit mehreren Ebenen mithilfe von Azure Site Recovery | Microsoft-Dokumentation
+description: In diesem Artikel wird beschrieben, wie Sie die Notfallwiederherstellung für Dynamics AX mithilfe von Azure Site Recovery einrichten.
 author: asgang
 manager: rochakm
-editor: ''
-ms.assetid: 9126f5e8-e9ed-4c31-b6b4-bf969c12c184
 ms.service: site-recovery
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: asgang
-ms.openlocfilehash: eb6f7d9b34e00ce1efd8c871439c2504e5f550d5
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: e2cba8cb53e73bd1fc25f1fe43fa0365247e2bd2
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43669441"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50210821"
 ---
-# <a name="replicate-a-multitier-dynamics-ax-application-by-using-azure-site-recovery"></a>Replizieren einer Dynamics AX-Anwendung mit mehreren Schichten mithilfe von Azure Site Recovery
+# <a name="set-up-disaster-recovery-for-a-multitier-dynamics-ax-application"></a>Einrichten der Notfallwiederherstellung für eine Dynamics AX-Anwendung mit mehreren Ebenen 
 
-## <a name="overview"></a>Übersicht
+
 
 
  Dynamics AX ist eine der bei Unternehmen beliebtesten ERP-Lösungen zur standortübergreifenden Standardisierung von Prozessen, zum Verwalten von Ressourcen und zum Vereinfachen der Konformität. Da die Anwendung für eine Organisation unternehmenskritisch ist, muss sie in einem Notfall schnellstmöglich wieder in Betrieb genommen werden können.

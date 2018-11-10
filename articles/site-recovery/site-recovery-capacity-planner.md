@@ -1,27 +1,20 @@
 ---
-title: Schätzen der Replikationskapazität in Azure | Microsoft-Dokumentation
-description: Anhand dieses Artikel können Sie die Kapazität bei der Replikation mit Azure Site Recovery abschätzen.
-services: site-recovery
-documentationcenter: ''
+title: Planen der Kapazität für die Hyper-V-Notfallwiederherstellung mit Azure Site Recovery | Microsoft-Dokumentation
+description: Verwenden Sie diesen Artikel, um die Kapazität zu schätzen, wenn Sie die Notfallwiederherstellung mit dem Azure Site Recovery-Dienst einrichten.
 author: rayne-wiselman
-manager: jwhit
-editor: ''
-ms.assetid: 0a1cd8eb-a8f7-4228-ab84-9449e0b2887b
+manager: carmonm
 ms.service: site-recovery
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
-ms.date: 10/11/2018
-ms.author: nisoneji
-ms.openlocfilehash: 3df7bd5ed44bdf514d48e451468329bd11fdf596
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.date: 10/28/2018
+ms.author: raynew
+ms.openlocfilehash: f600471e8a3602628a5040051f382e6e020f29d5
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49094036"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50211416"
 ---
-# <a name="plan-capacity-for-protecting-hyper-v-vms-with-site-recovery"></a>Planen der Kapazität für den Schutz von Hyper-V-VMs mit Site Recovery
+# <a name="plan-capacity-for-hyper-v-vm-disaster-recovery"></a>Planen der Kapazität für die Notfallwiederherstellung von Hyper-V-VMs 
 
 Eine neue, erweiterte Version des [Azure Site Recovery-Bereitstellungsplaners für Hyper-V zu Azure](site-recovery-hyper-v-deployment-planner.md) ist jetzt verfügbar. Sie ersetzt das alte Tool. Verwenden Sie das neue Tool für Ihre Bereitstellungsplanung.
 Das Tool verfügt über Richtlinien für Folgendes:

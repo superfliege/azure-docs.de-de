@@ -1,5 +1,5 @@
 ---
-title: Onboardingmethoden für Azure Monitor für Container | Microsoft-Dokumentation
+title: Onboarding von Azure Monitor für Container (Vorschauversion) | Microsoft-Dokumentation
 description: In diesem Artikel wird beschrieben, wie Sie das Onboarding und die Konfiguration von Azure Monitor für Container durchführen, damit Sie erfahren können, wie gut die Leistung Ihrer Container ist und welche leistungsbezogenen Probleme erkannt wurden.
 services: azure-monitor
 documentationcenter: ''
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/04/2018
 ms.author: magoedte
-ms.openlocfilehash: 9fa0df0bbf363a7c751de460fd98740b4314f996
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.openlocfilehash: 505abe8f3dc19458b3f0e18f349974199ae4ba58
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48831193"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212113"
 ---
-# <a name="how-to-onboard-azure-monitor-for-containers"></a>Onboardingmethoden für Azure Monitor für Container
+# <a name="how-to-onboard-azure-monitor-for-containers-preview"></a>Onboarding von Azure Monitor für Container (Vorschauversion) 
 In diesem Artikel wird beschrieben, wie Azure Monitor für Container eingerichtet und verwendet wird, um die Leistung von Workloads zu überwachen, die in Kubernetes-Umgebungen bereitgestellt und von [Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/) gehostet werden.
 
 ## <a name="prerequisites"></a>Voraussetzungen 

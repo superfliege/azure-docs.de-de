@@ -1,20 +1,20 @@
 ---
-title: Durchführen eines Notfallwiederherstellungsverfahrens für virtuelle Azure-Computer in einer sekundären Azure-Region mit Azure Site Recovery
-description: Erfahren Sie, wie Sie ein Notfallwiederherstellungsverfahren für Azure-VMs in eine sekundäre Azure-Region mit Azure Site Recovery durchführen.
+title: Durchführen eines Notfallwiederherstellungsverfahrens für virtuelle Azure-Computer in einer sekundären Azure-Region mit dem Azure Site Recovery-Dienst
+description: Hier erfahren Sie, wie Sie mit dem Azure Site Recovery-Dienst ein Notfallwiederherstellungsverfahren für virtuelle Azure-Computer in einer sekundären Azure-Region durchführen.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 10/19/2018
+ms.date: 10/28/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: b1893d9713f70ee7553392a320fec52fe5c88f3c
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: 4445d26f3e68e84be23c5727a20d55a15142952c
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49458053"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50209410"
 ---
 # <a name="run-a-disaster-recovery-drill-for-azure-vms-to-a-secondary-azure-region"></a>Durchführen eines Notfallwiederherstellungsverfahrens für virtuelle Azure-Computer in einer sekundären Azure-Region
 

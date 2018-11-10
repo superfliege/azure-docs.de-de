@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: 6c68d90605590ed8a17296e83276c7ef5396d6a2
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 48b4878eef7395b51d19c59443736bae5aeb7365
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49092973"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50233581"
 ---
 # <a name="contoso-migration-rebuild-an-on-premises-app-to-azure"></a>Contoso-Migration: Neuerstellen einer lokalen App in Azure
 
@@ -139,7 +139,7 @@ Contoso geht bei der Ausführung der Migration wie folgt vor:
 > * **Schritt 1: Bereitstellen von AKS und ACR**: Contoso stellt mithilfe von PowerShell den verwalteten AKS-Cluster und Azure Container Registry bereit.
 > * **Schritt 2: Erstellen von Docker-Containern**: Das Unternehmen richtet CI für Docker-Container mithilfe von Azure DevOps ein und überträgt diese mithilfe von Push an ACR.
 > * **Schritt 3: Bereitstellen von Back-End-Microservices**: Es stellt die restliche Infrastruktur bereit, die von Back-End-Microservices genutzt wird.
-> * **Schritt 4: Bereitstellen der Front-End-Infrastruktur**: Es stellt die Front-End-Infrastruktur bereit, einschließlich Blobspeicher für Fotos von Haustieren, Cosmos DB und die Maschinelles Sehen-API.
+> * **Schritt 4: Bereitstellen der Front-End-Infrastruktur:** Es stellt die Front-End-Infrastruktur bereit, einschließlich Blob Storage für Fotos von Haustieren, Cosmos DB und der Maschinelles Sehen-API.
 > * **Schritt 5: Migrieren des Back-Ends**: Es stellt Microservices bereit und führt diese in AKS aus, um das Back-End zu migrieren.
 > * **Schritt 6: Veröffentlichen des Front-Ends:** Es veröffentlicht die App SmartHotel360 in Azure App Service und die Funktionen-App, die vom Haustierdienst aufgerufen wird.
 

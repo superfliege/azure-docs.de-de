@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 09/24/2018
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: fe0ed06c5ecd0a84e9999c09cd312ddea2557f80
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 1037f7921093d38d9020bafd9fd3597f27ca5011
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47221650"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50230249"
 ---
 # <a name="introduction-to-the-azure-cosmos-db-cassandra-api"></a>Einführung in die Cassandra-API für Azure Cosmos DB
 
@@ -49,7 +49,7 @@ Die Cassandra-API ermöglicht Ihnen die Interaktion mit Daten, die in Azure Cosm
 
 * Erste Schritte mit dem [Erstellen eines Cassandra-API-Kontos, einer Datenbank und einer Tabelle](create-cassandra-api-account-java.md) mithilfe einer Java-Anwendung.
 
-* [Laden von Beispieldaten in die Cassandra-API-Tabelle](cassandra-api-load-data.md) mithilfe einer Java-Anwendung.
+* [Laden von Beispieldaten in eine Cassandra-API-Tabelle von Azure Cosmos DB](cassandra-api-load-data.md) mithilfe einer Java-Anwendung
 
 * [Abfragen von Daten aus dem Cassandra-API-Konto](cassandra-api-query-data.md) mithilfe einer Java-Anwendung.
 

@@ -9,12 +9,12 @@ manager: kfile
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/29/2017
-ms.openlocfilehash: 0b920d21486fc0003d8b11bef79bd44be4b28adf
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: de0ddbc041d6f177e5bfcd24d593b8d63a8e1e23
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37030613"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50248726"
 ---
 # <a name="real-time-twitter-sentiment-analysis-in-azure-stream-analytics"></a>Twitter-Standpunktanalyse in Echtzeit in Azure Stream Analytics
 
@@ -235,7 +235,7 @@ Um die Anzahl der Erwähnungen verschiedener Themen zu vergleichen, können Sie 
 
 1. Schließen Sie das Blatt **Eingaben**, sofern Sie dies noch nicht getan haben.
 
-2. Klicken Sie auf dem Blatt „Auftrag“ auf das Feld **Abfrage**. In Azure werden die Eingaben und Ausgaben aufgeführt, die für den Auftrag konfiguriert sind. Zudem können Sie eine Abfrage erstellen, mit der Sie die Datenstromeingabe beim Senden an die Ausgabe transformieren können.
+2. Klicken Sie im Blatt **Übersicht** oben rechts im Abfragefeld auf **Abfrage bearbeiten**. In Azure werden die Eingaben und Ausgaben aufgeführt, die für den Auftrag konfiguriert sind. Zudem können Sie eine Abfrage erstellen, mit der Sie die Datenstromeingabe beim Senden an die Ausgabe transformieren können.
 
 3. Stellen Sie sicher, dass die TwitterWpfClient-Anwendung ausgeführt wird. 
 

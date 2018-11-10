@@ -1,22 +1,20 @@
 ---
-title: 'Problembehandlung bei Azure Site Recovery-Agent-Fehlern: Status des Gast-Agents ist unbekannt | Microsoft-Dokumentation'
-description: Erfahren Sie mehr über die Symptome, Ursachen und Lösungen von Azure Site Recovery-Fehlern in Verbindung mit dem Agent und der Erweiterung.
-services: site-recovery
+title: Behandeln von Problemen mit Azure Site Recovery-Agents | Microsoft-Dokumentation
+description: Dieser Artikel bietet Informationen zu Symptomen, Ursachen und Lösungen von Azure Site Recovery-Agent-Fehlern.
 author: asgang
 manager: rochakm
 ms.service: site-recovery
-ms.devlang: na
-ms.topic: article
-ms.date: 07/06/2018
+ms.topic: troubleshooting
+ms.date: 10/29/2018
 ms.author: asgang
-ms.openlocfilehash: c0429e87f6c58ef2b9c7a268bee596d769e95910
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 3090dd9e0d9681dbf77f052e9d324f2add0a1910
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37919803"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50215037"
 ---
-# <a name="troubleshoot-azure-site-recovery-extension-failures-issues-with-the-agent-or-extension"></a>Beheben von Fehlern bei der Azure Site Recovery-Erweiterung: Probleme mit dem Agent oder der Erweiterung
+# <a name="troubleshoot-issues-with-the-azure-site-recovery-agent"></a>Behandeln von Problemen mit dem Azure Site Recovery-Agent
 
 Dieser Artikel enthält Schritte für die Problembehandlung, mit denen Sie Azure Site Recovery-Fehler mit dem VM-Agent und der Erweiterung beheben können.
 

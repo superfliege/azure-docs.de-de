@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 5/21/2018
+ms.date: 10/29/2018
 ms.topic: article
 ms.service: azure-blockchain
-ms.reviewer: zeyadr
+ms.reviewer: coborn
 manager: femila
-ms.openlocfilehash: ee8057be98d18db5963a3e5f1ba1f8bd8d76fe05
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: c08557156848d4e7fcf0b1adbe6c8faa4ee00c82
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48240974"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50231371"
 ---
 # <a name="hyperledger-fabric-single-member-network"></a>Hyperledger Fabric-Einzelelement-Netzwerk
 
@@ -28,7 +28,7 @@ In diesem Artikel lernen Sie Folgendes:
 
 ## <a name="about-blockchain"></a>Über Blockchain
 
-Neuen Mitgliedern der Blockchain-Community bietet dies eine ausgezeichnete Möglichkeit, die Technologie auf einfache und konfigurierbare Weise in Azure kennenzulernen. Blockchain ist die Bitcoin zugrunde liegende Technologie. Sie ist allerdings viel mehr als nur ein Faktor für virtuelle Währungen. Es handelt sich um eine Kombination aus vorhandenen Technologien für Datenbanken, verteilte Systeme und Kryptografie, die eine sichere Berechnung durch mehrere Parteien und Garantien im Hinblick auf Unveränderlichkeit, Überprüfbarkeit, Nachverfolgbarkeit und Resilienz gegenüber Angriffen ermöglicht. Unterschiedliche Protokolle verwenden unterschiedliche Mechanismen, um diese Attribute bereitzustellen. [Hyperledger Fabric](https://github.com/hyperledger/fabric) ist ein solches Protokoll.
+Neuen Mitgliedern der Blockchain-Community bietet diese Lösungsvorlage eine ausgezeichnete Möglichkeit, die Technologie auf einfache und konfigurierbare Weise in Azure kennenzulernen. Blockchain ist die Bitcoin zugrunde liegende Technologie. Sie ist allerdings viel mehr als nur ein Faktor für virtuelle Währungen. Es handelt sich um eine Kombination aus vorhandenen Technologien für Datenbanken, verteilte Systeme und Kryptografie, die eine sichere Berechnung durch mehrere Parteien und Garantien im Hinblick auf Unveränderlichkeit, Überprüfbarkeit, Nachverfolgbarkeit und Resilienz gegenüber Angriffen ermöglicht. Unterschiedliche Protokolle verwenden unterschiedliche Mechanismen, um diese Attribute bereitzustellen. [Hyperledger Fabric](https://github.com/hyperledger/fabric) ist ein solches Protokoll.
 
 ## <a name="consortium-architecture-on-azure"></a>Konsortiumsarchitektur bei Azure
 
@@ -36,7 +36,7 @@ Diese Vorlage stellt eine Topologie bereit, um Benutzer beim Testen und Simulier
 
 Das Netzwerk enthält drei Typen von Knoten:
 
-1. **Memberknoten:** Knoten, auf dem der Fabric-Mitgliedschaftsdienst, der Mitglieder des Netzwerks registriert und verwaltet, ausgeführt wird. Dieser Knoten kann später für eine bessere Skalierbarkeit und Hochverfügbarkeit einem Cluster hinzugefügt werden, in dieser Übung wird jedoch ein Einzelmemberknoten verwendet.
+1. **Memberknoten:** Knoten, auf dem der Fabric-Mitgliedschaftsdienst, der Mitglieder des Netzwerks registriert und verwaltet, ausgeführt wird. Dieser Knoten kann einem Cluster hinzugefügt werden, um Skalierbarkeit und Hochverfügbarkeit zu erzielen. In dieser Übung wird jedoch ein Einzelmemberknoten verwendet.
 2. **Auftraggeberknoten:** Knoten, auf dem der Kommunikationsdienst zum Implementieren einer Zustellungsgarantie, z.B. als Gesamtauftragsübertragung oder als Einzeltransaktionen, ausgeführt wird.
 3. **Peerknoten:** Knoten, der Transaktionen committet und den Status sowie eine Kopie des Distributed Ledger verwaltet.
 
@@ -57,13 +57,13 @@ Wenn Sie über ein Abonnement verfügen, wechseln Sie zum [Azure-Portal](https:/
 
 ## <a name="deployment"></a>Bereitstellung
 
-Wählen Sie zum Starten **Hyperledger Fabric Single Member Blockchain** (Hyperledger Fabric – Blockchain Einzelmember) aus, und klicken Sie auf **Erstellen**. Damit öffnen Sie das Blatt **Grundlagen** im Assistenten.
+Wählen Sie zum Starten **Hyperledger Fabric Single Member Blockchain** (Hyperledger Fabric – Einzelmember-Blockchain) aus, und klicken Sie auf **Erstellen**, um das Blatt **Grundlagen** im Assistenten zu öffnen.
 
 Während der Vorlagenbereitstellung werden Sie durch die Konfiguration des Netzwerks mit mehreren Knoten geführt. Der Ablauf für die Bereitstellung ist in drei Schritte unterteilt: Grundlagen, Netzwerkkonfiguration und Fabric-Konfiguration.
 
 ### <a name="basics"></a>Grundlagen
 
-Geben Sie auf dem Blatt **Grundlagen** Werte für die Standardparameter für eine beliebige Bereitstellung an, z.B. Abonnement, Ressourcengruppe und grundlegende VM-Eigenschaften.
+Geben Sie auf dem Blatt **Grundlagen** Werte für die Standardparameter für jede Bereitstellung an. Beispiele: Abonnement, Ressourcengruppe, grundlegende VM-Eigenschaften.
 
 ![Grundlagen](./media/hyperledger-fabric-single-member-blockchain/basics.png)
 
@@ -72,7 +72,7 @@ Parametername| BESCHREIBUNG| Zulässige Werte|Standardwert
 **Ressourcenpräfix**| Eine Zeichenfolge, die als Grundlage für die Benennung der bereitgestellten Ressourcen verwendet wird.|Max. 6 Zeichen|Nicht verfügbar
 **Benutzername des virtuellen Computers**| Der Benutzername des Administrators für jeden bereitgestellten virtuellen Computer dieses Members.|1–64 Zeichen|azureuser
 **Authentifizierungstyp**| Die Methode zur Authentifizierung des virtuellen Computers.|Kennwort oder öffentlicher SSH-Schlüssel|Kennwort
-**Kennwort (Authentifizierungstyp = Kennwort)**|Das Kennwort für das Administratorkonto jedes bereitgestellten, virtuellen Computers. Das Kennwort muss 3 der folgenden Zeichen umfassen: 1 Großbuchstabe, 1 Kleinbuchstabe, 1 Ziffer und 1 Sonderzeichen.<br /><br />Alle VMs haben zunächst dasselbe Kennwort, das nach der Bereitstellung jedoch geändert werden kann.|12–72 Zeichen|Nicht verfügbar
+**Kennwort (Authentifizierungstyp = Kennwort)**|Das Kennwort für das Administratorkonto jedes bereitgestellten, virtuellen Computers. Das Kennwort muss drei der folgenden Arten von Zeichen umfassen: ein Großbuchstabe, ein Kleinbuchstabe, eine Ziffer und ein Sonderzeichen.<br /><br />Alle VMs haben zunächst dasselbe Kennwort, das nach der Bereitstellung jedoch geändert werden kann.|12–72 Zeichen|Nicht verfügbar
 **SSH-Schlüssel (Authentifizierungstyp = öffentlicher Schlüssel)**|Der Secure Shell-Schlüssel für die Remoteanmeldung.||Nicht verfügbar
 **Zugriff beschränken nach IP-Adresse**|Einstellung zur Festlegung, ob der Zugriff auf den Clientendpunkt beschränkt ist.|Ja/Nein| Nein 
 **Zulässige IP-Adresse oder Subnetz (Zugriff beschränken nach IP-Adresse = Ja)**|Die IP-Adresse oder der Satz von IP-Adressen mit Zugriff auf den Clientendpunkt, wenn die Zugriffssteuerung aktiviert ist.||Nicht verfügbar
@@ -82,7 +82,7 @@ Parametername| BESCHREIBUNG| Zulässige Werte|Standardwert
 
 ### <a name="network-size-and-performance"></a>Netzwerkgröße und -leistung
 
-Geben Sie als Nächstes unter **Netzwerkgröße und -leistung** Werte zur Größe des Konsortiumsnetzwerks an, z.B. die Anzahl von Mitgliedschafts-, Auftraggeber- und Peerknoten. Wählen Sie Infrastrukturoptionen und die Größe des virtuellen Computers aus.
+Geben Sie als Nächstes unter **Netzwerkgröße und -leistung** Werte für die Größe des Konsortiumsnetzwerks ein. Beispiele: Anzahl von Mitgliedschafts-, Auftraggeber- und Peerknoten. Wählen Sie Infrastrukturoptionen und die Größe des virtuellen Computers aus.
 
 ![Netzwerkgröße und -leistung](./media/hyperledger-fabric-single-member-blockchain/network-size-performance.png)
 
@@ -135,7 +135,7 @@ Die Detailbildschirm zeigt eine Zusammenfassung der Bereitstellung, gefolgt von 
 
 - Den _API-ENDPOINT_ können Sie verwenden, nachdem Sie eine Anwendung im Netzwerk bereitgestellt haben.
 - Das _PREFIX_ wird auch als _Bereitstellungspräfix_ bezeichnet. Es identifiziert Ihre Ressourcen und Ihre Bereitstellung eindeutig. Es wird für Befehlszeilentools verwendet.
-- Über _SSH-TO-FIRST-VM_ erhalten Sie einen vorab assemblierten SSH-Befehl mit den richtigen erforderlichen Parametern für eine Verbindung mit dem ersten virtuellen Computer in Ihrem Netzwerk. Bei Hyperledger Fabric ist dies der Knoten mit der Fabriczertifizierungsstelle.
+- Mit _SSH-TO-FIRST-VM_ erhalten Sie einen vorab assemblierten SSH-Befehl mit den richtigen Parametern, die für eine Verbindung mit dem ersten virtuellen Computer in Ihrem Netzwerk erforderlich sind. Bei Hyperledger Fabric ist dies der Knoten mit der Fabriczertifizierungsstelle.
 
 Sie können für jeden Knoten eine Remoteverbindung mit virtuellen Computern herstellen. Dazu verwenden Sie SSH mit dem angegebenen Administratorbenutzernamen und dem zugehörigen Kennwort/SSH-Schlüssel. Da die Knoten-VMs keine eigenen, öffentlichen IP-Adressen haben, müssen Sie den Lastenausgleich durchlaufen und eine Portnummer angeben. Der SSH-Befehl für den Zugriff auf dem ersten Transaktionsknoten ist die dritte Vorlagenausgabe **SSH-TO-FIRST-VM** (für die Beispielbereitstellung: `sh -p 3000 azureuser@hlf2racpt.northeurope.cloudapp.azure.com`). Um weitere Transaktionsknoten anzuzeigen, erhöhen Sie die Portnummer jeweils um 1 (Beispiel: Der erste Transaktionsnoten befindet sich an Port 3000, der zweite an 3001, der dritte an 3002 usw.).
 

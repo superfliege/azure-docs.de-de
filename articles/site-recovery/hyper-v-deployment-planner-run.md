@@ -1,20 +1,20 @@
 ---
-title: Azure Site Recovery-Bereitstellungsplaner für „Hyper-V zu Azure“ | Microsoft-Dokumentation
-description: In diesem Artikel erfahren Sie, wie Sie den Site Recovery-Bereitstellungsplaner für die Replikation von Hyper-V in Azure ausführen.
+title: Ausführen des Azure Site Recovery-Bereitstellungsplaners für die Hyper-V-Notfallwiederherstellung in Azure | Microsoft-Dokumentation
+description: In diesem Artikel wird beschrieben, wie Sie den Azure Site Recovery-Bereitstellungsplaner für die Hyper-V-Notfallwiederherstellung in Azure ausführen.
 author: nsoneji
 manager: garavd
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: nisoneji
-ms.openlocfilehash: 9da79884973c620bbf8b6a191f3dd6db5bd19064
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 1df8f7025787eb864b7e9ad6f41105df8fb2cc8a
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49094189"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50213337"
 ---
-# <a name="run-azure-site-recovery-deployment-planner-for-hyper-v-to-azure"></a>Ausführen des Azure Site Recovery-Bereitstellungsplaners für „Hyper-V zu Azure“
+# <a name="run-the-azure-site-recovery-deployment-planner-for-hyper-v-disaster-recovery-to-azure"></a>Ausführen des Azure Site Recovery-Bereitstellungsplaners für die Hyper-V-Notfallwiederherstellung in Azure
 
 Sie können das Befehlszeilentool Site Recovery-Bereitstellungsplaner (ASRDeploymentPlanner.exe) in einem der folgenden vier Modi ausführen: 
 -   [Abrufen der Liste mit den virtuellen Computern (VMs)](#get-vm-list-for-profiling-hyper-v-vms)

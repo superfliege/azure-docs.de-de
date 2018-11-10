@@ -14,144 +14,164 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 10/16/2018
 ms.author: shvija
-ms.openlocfilehash: 48d41ef4df986f959dfabe04e07552e287fdfcd0
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: 584696303bfbaed07f416fb0b3febbcf59d05b35
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49457082"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50085738"
 ---
-# <a name="create-an-event-hubs-namespace-with-event-hub-and-consumer-group-using-an-azure-resource-manager-template"></a>Erstellen eines Event Hubs-Namespace mit Event Hub und einer Consumergruppe mithilfe einer Azure Resource Manager-Vorlage
+# <a name="quickstart-create-an-event-hub-using-azure-resource-manager-template"></a>Schnellstart: Erstellen eines Event Hubs anhand einer Azure Resource Manager-Vorlage
 Azure Event Hubs ist eine Big Data-Streamingplattform und ein Ereigniserfassungsdienst, der pro Sekunde Millionen von Ereignissen empfangen und verarbeiten kann. Event Hubs kann Ereignisse, Daten oder Telemetriedaten, die von verteilter Software und verteilten Geräten erzeugt wurden, verarbeiten und speichern. An einen Event Hub gesendete Daten können transformiert und mit einem beliebigen Echtzeitanalyse-Anbieter oder Batchverarbeitungs-/Speicheradapter gespeichert werden. Eine ausführliche Übersicht über Event Hubs finden Sie unter [Was ist Azure Event Hubs?](event-hubs-about.md) und unter [Event Hubs-Features im Überblick](event-hubs-features.md).
 
 In dieser Schnellstartanleitung erstellen Sie einen Event Hub mithilfe einer Azure Resource Manager-Vorlage. Sie verwenden eine Azure Resource Manager-Vorlage, um einen Namespace vom Typ [Event Hubs](event-hubs-what-is-event-hubs.md) mit einem Event Hub und einer Consumergruppe zu erstellen. Dieser Artikel zeigt Ihnen, wie Sie definieren, welche Ressourcen bereitgestellt werden und wie Sie Parameter definieren, die angegeben werden, wenn die Bereitstellung ausgeführt wird. Sie können diese Vorlage für Ihre eigenen Bereitstellungen verwenden oder an Ihre Anforderungen anpassen. Informationen zum Erstellen von Vorlagen finden Sie unter [Verstehen der Struktur und Syntax von Azure Resource Manager-Vorlagen][Authoring Azure Resource Manager templates].
 
-Die vollständige [Event Hub- und Consumergruppenvorlage][Event Hub and consumer group template] finden Sie auf GitHub.
 
 > [!NOTE]
-> Die neuesten Vorlagen finden Sie, indem Sie im Katalog [Azure-Schnellstartvorlagen][Azure Quickstart Templates] nach „Event Hubs“ suchen.
+> Die vollständige [Event Hub- und Consumergruppenvorlage][Event Hub and consumer group template] finden Sie auf GitHub. Mit dieser Vorlage wurde zusätzlich zu einem Event Hub-Namespace und einem Event Hub eine Consumergruppe erstellt. Die neuesten Vorlagen finden Sie, indem Sie im Katalog [Azure-Schnellstartvorlagen][Azure Quickstart Templates] nach „Event Hubs“ suchen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
-Für diese Schnellstartanleitung benötigen Sie ein Azure-Abonnement. Sollten Sie kein Abonnement besitzen, können Sie ein [kostenloses Konto erstellen][], bevor Sie beginnen.
+Für diese Schnellstartanleitung benötigen Sie ein Azure-Abonnement. Falls Sie kein Abonnement besitzen, können Sie ein [kostenloses Konto erstellen](https://azure.microsoft.com/free/), bevor Sie beginnen.
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+Wenn Sie die Resource Manager-Vorlage mithilfe von **Azure PowerShell** bereitstellen möchten, [installieren Sie Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-5.7.0).
 
-Wenn Sie die Resource Manager-Vorlage mithilfe von **Azure PowerShell** lokal bereitstellen möchten, müssen Sie für diese Schnellstartanleitung die neueste PowerShell-Version verwenden. Wenn Sie eine Installation oder ein Upgrade durchführen müssen, helfen Ihnen die Informationen unter [Installieren und Konfigurieren von Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-5.7.0) weiter.
+Wenn Sie die Resource Manager-Vorlage über die **Azure-Befehlszeilenschnittstelle** bereitstellen möchten, [installieren Sie die Azure-Befehlszeilenschnittstelle]( /cli/azure/install-azure-cli).
 
-Wenn Sie die **Azure-Befehlszeilenschnittstelle** installieren und verwenden möchten, um die Resource Manager-Vorlage lokal bereitzustellen, müssen Sie für dieses Tutorial mindestens Version 2.0.4 der Azure-Befehlszeilenschnittstelle verwenden. Führen Sie `az --version` aus, um Ihre Version zu überprüfen. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI]( /cli/azure/install-azure-cli).
-
-## <a name="what-will-you-deploy"></a>Was möchten Sie bereitstellen?
-
-Mit dieser Vorlage stellen Sie einen Event Hubs-Namespace mit einem Event Hub und einer Consumergruppe bereit.
-
-Wählen Sie die folgende Schaltfläche, um die Bereitstellung automatisch auszuführen:
-
-[![In Azure bereitstellen](./media/event-hubs-resource-manager-namespace-event-hub/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-event-hubs-create-event-hub-and-consumer-group%2Fazuredeploy.json)
-
-## <a name="define-parameters"></a>Definieren von Parametern
-Mit Azure Resource Manager definieren Sie die Parameter für Werte, die Sie bei der Bereitstellung der Vorlage angeben möchten. Die Vorlage enthält einen Abschnitt namens `Parameters` , der alle Parameterwerte enthält. Sie sollten einen Parameter für Werte definieren, die basierend auf dem bereitgestellten Projekt oder der Bereitstellungsumgebung variieren. Definieren Sie keine Parameter für Werte, die sich nicht ändern. Jeder Parameterwert in der Vorlage definiert die bereitgestellten Ressourcen.
-
-Die Vorlage definiert die folgenden Parameter:
-
-### <a name="eventhubnamespacename"></a>eventHubNamespaceName
-
-Der Name des zu erstellenden Event Hubs-Namespace.
+## <a name="create-the-resource-manager-template-json"></a>Erstellen der JSON-Datei für die Resource Manager-Vorlage
+Erstellen Sie die JSON-Datei „MyEventHub.json“ mit folgendem Inhalt, und speichern Sie sie in einem Ordner (z.B unter „C:\EventHubsQuickstarts\ResourceManagerTemplate“).
 
 ```json
-"eventHubNamespaceName": {
-"type": "string"
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "eventhub-namespace-name": {
+            "type": "String"
+        },
+        "eventhub_name": {
+            "type": "String"
+        }
+    },
+    "resources": [
+        {
+            "type": "Microsoft.EventHub/namespaces",
+            "sku": {
+                "name": "Standard",
+                "tier": "Standard",
+                "capacity": 1
+            },
+            "name": "[parameters('eventhub-namespace-name')]",
+            "apiVersion": "2017-04-01",
+            "location": "East US",
+            "tags": {},
+            "scale": null,
+            "properties": {
+                "isAutoInflateEnabled": false,
+                "maximumThroughputUnits": 0
+            },
+            "dependsOn": []
+        },
+        {
+            "type": "Microsoft.EventHub/namespaces/eventhubs",
+            "name": "[concat(parameters('eventhub-namespace-name'), '/', parameters('eventhub_name'))]",
+            "apiVersion": "2017-04-01",
+            "location": "East US",
+            "scale": null,
+            "properties": {
+                "messageRetentionInDays": 7,
+                "partitionCount": 1,
+                "status": "Active"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces', parameters('eventhub-namespace-name'))]"
+            ]
+        }
+    ]
 }
 ```
 
-### <a name="eventhubname"></a>eventHubName
-
-Der Name des im Event Hubs-Namespace erstellten Event Hubs.
+## <a name="create-the-parameters-json"></a>Erstellen der JSON-Parameter
+Erstellen Sie die JSON-Datei „MyEventHub-Parameters.json“ mit Parametern für die Azure Resource Manager-Vorlage. 
 
 ```json
-"eventHubName": {
-"type": "string"
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+        "eventhub-namespace-name": {
+            "value": "<specify a name for the event hub namespace>"
+        },
+        "eventhub_name": {
+            "value": "<Specify a name for the event hub in the namespace>"
+        }
+  }
 }
 ```
 
-### <a name="eventhubconsumergroupname"></a>eventHubConsumerGroupName
 
-Der Name der Consumergruppe, die für den Event Hub erstellt wurde.
 
-```json
-"eventHubConsumerGroupName": {
-"type": "string"
-}
-```
+## <a name="use-azure-powershell-to-deploy-the-template"></a>Bereitstellen der Vorlage mit Azure PowerShell
 
-### <a name="apiversion"></a>apiVersion
+### <a name="sign-in-to-azure"></a>Anmelden bei Azure
+1. Starten von Azure PowerShell
 
-Die API-Version der Vorlage.
+2. Führen Sie den folgenden Befehl aus, um sich bei Azure anzumelden:
 
-```json
-"apiVersion": {
-"type": "string"
-}
-```
+   ```azurepowershell
+   Login-AzureRmAccount
+   ```
+3. Führen Sie die folgenden Befehle aus, um den aktuellen Abonnementkontext festzulegen:
 
-## <a name="define-resources-to-deploy"></a>Definieren der bereitzustellenden Ressourcen
+   ```azurepowershell
+   Select-AzureRmSubscription -SubscriptionName "<YourSubscriptionName>" 
+   ```
 
-Erstellt einen Namespace des Typs **EventHubs** mit einem Event Hub und einer Consumergruppe:
+### <a name="provision-resources"></a>Bereitstellen von Ressourcen
+Wechseln Sie zum Bereitstellen der Ressourcen mit Azure PowerShell zum Ordner „C:\EventHubsQuickStart\ARM\“, und führen Sie die folgenden Befehle aus:
 
-```json
-"resources":[  
-      {  
-         "apiVersion":"[variables('ehVersion')]",
-         "name":"[parameters('namespaceName')]",
-         "type":"Microsoft.EventHub/namespaces",
-         "location":"[variables('location')]",
-         "sku":{  
-            "name":"Standard",
-            "tier":"Standard"
-         },
-         "resources":[  
-            {  
-               "apiVersion":"[variables('ehVersion')]",
-               "name":"[parameters('eventHubName')]",
-               "type":"EventHubs",
-               "dependsOn":[  
-                  "[concat('Microsoft.EventHub/namespaces/', parameters('namespaceName'))]"
-               ],
-               "properties":{  
-                  "path":"[parameters('eventHubName')]"
-               },
-               "resources":[  
-                  {  
-                     "apiVersion":"[variables('ehVersion')]",
-                     "name":"[parameters('consumerGroupName')]",
-                     "type":"ConsumerGroups",
-                     "dependsOn":[  
-                        "[parameters('eventHubName')]"
-                     ],
-                     "properties":{  
-
-                     }
-                  }
-               ]
-            }
-         ]
-      }
-   ],
-```
-
-## <a name="azure-powershell"></a>Azure PowerShell
-Wenn Sie die Ressourcen mithilfe von Azure PowerShell bereitstellen möchten, führen Sie den folgenden Befehl aus:
+> [!IMPORTANT]
+> Geben Sie vor dem Ausführen der Befehle einen Namen für die Azure-Ressourcengruppe als Wert für „$resourceGroupName“ an. 
 
 ```azurepowershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName \<resource-group-name\> -TemplateFile https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-event-hubs-create-event-hub-and-consumer-group/azuredeploy.json
+$resourceGroupName = "<Specify a name for the Azure resource group>"
+
+# Create an Azure resource group
+New-AzureRmResourceGroup $resourceGroupName -location 'East US'
+
+# Deploy the Resource Manager template. Specify the names of deployment itself, resource group, JSON file for the template, JSON file for parameters
+New-AzureRmResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName $resourceGroupName -TemplateFile MyEventHub.json -TemplateParameterFile MyEventHub-Parameters.json
 ```
 
-## <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
-Wenn Sie die Ressourcen mithilfe von Azure PowerShell bereitstellen möchten, führen Sie den folgenden Befehl aus:
+## <a name="use-azure-cli-to-deploy-the-template"></a>Bereitstellen der Vorlage über die Azure-Befehlszeilenschnittstelle
+
+## <a name="sign-in-to-azure"></a>Anmelden bei Azure
+
+Die folgenden Schritte sind nicht erforderlich, wenn Sie Befehle in Cloud Shell ausführen. Bei lokaler Ausführung der CLI führen Sie die folgenden Schritte aus, um sich an Azure anzumelden und Ihr aktuelles Abonnement festzulegen:
+
+Führen Sie den folgenden Befehl aus, um sich bei Azure anzumelden:
 
 ```azurecli
-azure config mode arm
+az login
+```
 
-azure group deployment create \<my-resource-group\> \<my-deployment-name\> --template-uri [https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-event-hubs-create-event-hub-and-consumer-group/azuredeploy.json][]
+Legen Sie den aktuellen Abonnementkontext fest. Ersetzen Sie `MyAzureSub` durch den Namen des Azure-Abonnements, das Sie verwenden möchten:
+
+```azurecli
+az account set --subscription <Name of your Azure subscription>
+``` 
+
+### <a name="provision-resources"></a>Bereitstellen von Ressourcen
+Wechseln Sie zum Bereitstellen der Ressourcen über die Azure-Befehlszeilenschnittstelle zum Ordner „C:\EventHubsQuickStart\ARM\“, und führen Sie die folgenden Befehle aus:
+
+> [!IMPORTANT]
+> Geben Sie im Befehl „az group create“ einen Namen für die Azure-Ressourcengruppe an. .
+
+```azurecli
+# Create an Azure resource group
+az group create --name <YourResourceGroupName> --location eastus
+
+# # Deploy the Resource Manager template. Specify the names of resource group, deployment, JSON file for the template, JSON file for parameters
+az group deployment create --name <Specify a name for the deployment> --resource-group <YourResourceGroupName> --template-file MyEventHub.json --parameters @MyEventHub-Parameters.json
 ```
 
 Glückwunsch! Sie haben die Azure Resource Manager-Vorlage verwendet, um einen Event Hubs-Namespace und einen darin enthaltenen Event Hub zu erstellen.

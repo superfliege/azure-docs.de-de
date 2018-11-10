@@ -10,12 +10,12 @@ ms.component: qna-maker
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: tulasim
-ms.openlocfilehash: 76024266a8ae3eb03e910e140184a07ae363e881
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 53fadc0e3ea21b94ca656774baf077192c0394b4
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49384947"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50137292"
 ---
 # <a name="qna-maker-limits"></a>Grenzwerte für QnA Maker
 Umfassende Liste der für QnA Maker geltenden Grenzwerte.
@@ -37,11 +37,11 @@ Umfassende Liste der für QnA Maker geltenden Grenzwerte.
 
 |**Azure Search-Tarif** | **Free** | **Basic** |**S1** | **S2**| **S3** |**S3 HD**|
 |---|---|---|---|---|---|----|
-|Maximale Anzahl der Metadatenfelder pro QnA Maker-Dienst (für alle Knowledge Bases)|1000|100*|1000|1000|1000|1000|
+|Maximale Anzahl der Metadatenfelder pro QnA Maker-Dienst (für alle Knowledge Bases)|1.000|100*|1.000|1.000|1.000|1.000|
 
 ## <a name="knowledge-base-content-limits"></a>Grenzwerte für die Inhalte einer Knowledge Base
 Allgemeine Grenzwerte für die Inhalte in der Knowledge Base:
-* Länge des Antworttexts: 250.000
+* Länge des Antworttexts: 25.000
 * Länge des Fragentexts: 1.000
 * Länge des Texts für den Metadatenschlüssel/-wert: 100
 * Unterstützte Zeichen für den Metadatennamen: Buchstaben, Ziffern und „_“  

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/03/2018
+ms.date: 10/28/2018
 ms.author: magoedte
-ms.openlocfilehash: 49688b958d904450c50944725b18e0d518e27146
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: 32cd373499a1ac6dd8cc02e666b0f6ff70688157
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48269257"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50215258"
 ---
 # <a name="using-service-map-solution-in-azure"></a>Verwenden der Service Map-Lösung in Azure
 Service Map ermittelt automatisch Anwendungskomponenten auf Windows- und Linux-Systemen und stellt die Kommunikation zwischen Diensten dar. Mit Service Map können Sie die Server Ihrer Vorstellung gemäß anzeigen – als verbundene Systeme, die wichtige Dienste bereitstellen. Dienstzuordnung zeigt Verbindungen zwischen Servern, Prozessen, ein- und ausgehende Verbindungslatenz und Ports über die gesamte TCP-Verbindungsarchitektur an. Außer der Installation eines Agents ist keine weitere Konfiguration erforderlich.
@@ -72,11 +72,6 @@ Computer können in der Zuordnung erweitert werden, um die ausgeführten Prozess
 
 Standardmäßig zeigt Service Map Abhängigkeitsinformationen der letzten 30 Minuten an. Mithilfe der Zeitauswahl in der linken oberen Ecke können Sie Zuordnungen nach historischen Zeiträumen (maximal eine Stunde) abfragen, um zu zeigen, wie die Abhängigkeiten in der Vergangenheit aussahen, z.B. während eines Incidents oder vor einer Änderung. Service Map-Daten werden in kostenpflichtigen Arbeitsbereichen 30 Tage lang gespeichert, in kostenlosen Arbeitsbereichen 7 Tage lang.
 
-
-
-
-
-
 ## <a name="status-badges-and-border-coloring"></a>Statusbadges und Rahmenfarbe
 Am unteren Rand jedes Servers in der Zuordnung wird möglicherweise eine Liste der Statusbadges mit Statusinformationen über den Server angezeigt. Die Badges weisen darauf hin, dass relevante Informationen für den Server aus einer der Lösungsintegrationen vorliegen. Durch Klicken auf einen Badge gelangen Sie direkt zu den Statusdetails im rechten Bereich. Aktuell sind folgende Statusbadges verfügbar: Warnungen, Service Desk, Änderungen, Sicherheit und Updates.
 
@@ -104,7 +99,7 @@ Hier können Sie auf **Create new** (Neu erstellen) klicken und die Gruppe benen
 ![Benennen einer Gruppe](media/monitoring-service-map/machine-groups-name.png)
 
 >[!NOTE]
->Computergruppen sind derzeit auf 10 Server beschränkt, aber wir planen, diese Einschränkung bald zu erhöhen.
+>Computergruppen sind auf zehn Server beschränkt.
 
 ### <a name="viewing-a-group"></a>Anzeigen einer Gruppe
 Sobald Sie einige Gruppen erstellt haben, können Sie sich diese auf der Registerkarte „Gruppen“ anschauen.

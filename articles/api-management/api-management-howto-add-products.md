@@ -14,12 +14,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 08/10/2018
 ms.author: apimpm
-ms.openlocfilehash: 0346cf456c53b14fd3c5b14b2e40eddd8b89fe4d
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 0f2b45685d2976c567c16666e2ca89d334914b63
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49465949"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50417292"
 ---
 # <a name="create-and-publish-a-product"></a>Erstellen und Veröffentlichen eines Produkts  
 
@@ -35,6 +35,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
++ Machen Sie sich mit der [Azure API Management-Terminologie](api-management-terminology.md) vertraut.
 + Absolvieren Sie den folgenden Schnellstart: [Erstellen einer Azure API Management-Instanz](get-started-create-service-instance.md).
 + Schließen Sie darüber hinaus das folgende Tutorial ab: [Importieren und Veröffentlichen Ihrer ersten API](import-and-publish.md).
 
@@ -83,6 +84,9 @@ Entwickler müssen zuerst ein Produkt abonnieren, um Zugriff auf die API zu erha
 2. Navigieren Sie zur Registerkarte **APIs**.
 3. Klicken Sie auf **+ Hinzufügen**.
 4. Wählen Sie eine API aus, und klicken Sie auf **Auswählen**.
+
+> [!TIP]
+> Sie können ein Benutzerabonnement für ein *Produkt* unter Verwendung benutzerdefinierter Abonnementschlüssel über die [REST-API](https://docs.microsoft.com/rest/api/apimanagement/subscription/createorupdate) oder einen PowerShell-Befehl erstellen oder aktualisieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

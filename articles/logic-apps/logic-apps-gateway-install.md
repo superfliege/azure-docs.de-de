@@ -6,15 +6,15 @@ ms.service: logic-apps
 ms.suite: integration
 author: ecfan
 ms.author: estfan
-ms.reviewer: yshoukry, LADocs
+ms.reviewer: arthii, LADocs
 ms.topic: article
-ms.date: 07/20/2018
-ms.openlocfilehash: 5fc4ccacaaedfc3fe6c77fa9a0ad693530bdde93
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.date: 10/01/2018
+ms.openlocfilehash: 2934eadce9e3e0d5e0375dff4eec359a33bd4479
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48855424"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50420097"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>Installieren des lokalen Datengateways für Azure Logic Apps
 
@@ -60,10 +60,12 @@ Informationen zum Verwenden des Gateways mit anderen Diensten finden Sie in den 
 * Dies sind die Anforderungen für den lokalen Computer:
 
   **Mindestanforderungen**
+
   * .NET Framework 4.5.2
   * 64-Bit-Version von Windows 7 oder Windows Server 2008 R2 (oder höher)
 
   **Empfohlen**
+
   * 8-Kern-CPU
   * 8 GB Arbeitsspeicher
   * 64-Bit-Version von Windows Server 2012 R2 (oder höher)
@@ -75,11 +77,11 @@ Informationen zum Verwenden des Gateways mit anderen Diensten finden Sie in den 
     > [!TIP]
     > Um Wartezeiten zu minimieren, können Sie das Gateway so nah wie möglich zur Datenquelle oder auf demselben Computer installieren, vorausgesetzt, Sie haben die Berechtigungen.
 
-  * Installieren Sie das Gateway auf einem Computer, der mit dem Internet verbunden ist, immer eingeschaltet ist und sich *nicht* im Energiesparmodus befindet. Andernfalls kann das Gateway nicht ausgeführt werden. Darüber hinaus kann die Leistung bei Einsatz eines Drahtlosnetzwerks ggf. beeinträchtigt werden.
+  * Installieren Sie das Gateway auf einem Computer, der mit dem Internet verbunden ist, immer eingeschaltet ist und sich *nicht* im Energiesparmodus befindet. Andernfalls kann das Gateway nicht ausgeführt werden. 
+  Darüber hinaus kann die Leistung bei Einsatz eines Drahtlosnetzwerks ggf. beeinträchtigt werden.
 
-  * Während der Installation können Sie sich nur mit einem von Azure Active Directory (Azure AD) verwalteten [Geschäfts-, Schul- oder Unikonto](../active-directory/sign-up-organization.md) anmelden, nicht mit einem Microsoft-Konto. 
-  Stellen Sie außerdem sicher, dass es sich dabei um kein Azure B2B-Konto (Gastkonto) handelt. 
-  Wenn Sie Ihre Gatewayinstallation durch Erstellung einer Azure-Ressource für Ihr Gateway registrieren, müssen Sie ebenfalls das gleiche Anmeldekonto im Azure-Portal verwenden. 
+  * Während der Installation können Sie sich nur mit einem von Azure Active Directory (Azure AD) verwalteten [Geschäfts-, Schul- oder Unikonto](../active-directory/sign-up-organization.md) anmelden, beispielsweise @contoso.onmicrosoft.com, aber nicht mit einem Azure-B2B-(Gast-)Konto oder einem persönlichen Microsoft-Konto, wie etwa @hotmail.com oder @outlook.com. 
+  Achten Sie darauf, zur Registrierung Ihrer Gatewayinstallation im Azure-Portal durch Erstellen einer Gatewayressource das gleiche Anmeldekonto zu verwenden. 
   Anschließend können Sie diese Gatewayressource auswählen, wenn Sie die Verbindung zwischen Ihrer Logik-App und der lokalen Datenquelle herstellen. 
   [Warum muss ich ein Azure AD-Geschäfts-, -Schul- oder -Unikonto verwenden?](#why-azure-work-school-account)
 
@@ -96,6 +98,19 @@ Informationen zum Verwenden des Gateways mit anderen Diensten finden Sie in den 
   * Wenn Sie bereits ein Gateway besitzen, das Sie mit einem Installer eingerichtet haben, dessen Version älter ist als 14.16.6317.4, können Sie den Ort Ihres Gateways nicht durch Ausführung des neuesten Installers ändern. Sie können aber den neuesten Installer verwenden, um ein neues Gateway mit dem gewünschten Ort einzurichten.
   
     Wenn Sie einen Gateway-Installer mit einer älteren Version als 14.16.6317.4 besitzen, aber Ihr Gateway noch nicht installiert haben, können Sie stattdessen den neuesten Installer herunterladen und verwenden.
+
+## <a name="high-availability-support"></a>Unterstützung für Hochverfügbarkeit
+
+Das lokale Datengateway unterstützt die Hochverfügbarkeit, wenn Sie mehrere Gatewayinstallationen besitzen und diese als Cluster eingerichtet haben. Wenn bereits ein Gateway vorhanden ist, können Sie beim Erstellen eines weiteren Gateways optional Hochverfügbarkeitscluster erstellen. Diese Cluster gliedern Gateways in Gruppen, mit deren Hilfe Single Points of Failure vermieden werden können. Außerdem unterstützen jetzt alle lokalen Datengatewayconnectors Hochverfügbarkeit.
+
+Wenn Sie das lokale Datengateway verwenden möchten, sehen Sie sich die folgenden Anforderungen und Überlegungen an:
+
+* Sie müssen bereits über mindestens eine Gatewayinstallation im gleichen Azure-Abonnement wie das primäre Gateway sowie über den Wiederherstellungsschlüssel für diese Installation verfügen. 
+
+* Für das primäre Gateway muss das Gatewayupdate vom November 2017 oder ein höheres Update ausgeführt werden.
+
+Wenn diese Anforderungen erfüllt sind, wählen Sie beim Erstellen des nächsten Gateways **Add to an existing gateway cluster** (Zu einem vorhandenen Gatewaycluster hinzufügen) und dann das primäre Gateway für den Cluster aus. Geben Sie anschließend den Wiederherstellungsschlüssel für dieses primäre Gateway an.
+Weitere Informationen finden Sie unter [Hochverfügbarkeitscluster für lokale Datengateways](https://docs.microsoft.com/power-bi/service-gateway-high-availability-clusters).
 
 <a name="install-gateway"></a>
 
@@ -160,19 +175,6 @@ Informationen zum Verwenden des Gateways mit anderen Diensten finden Sie in den 
    ![Fertiges Gateway](./media/logic-apps-gateway-install/finished-gateway-default-location.png)
 
 10. Registrieren Sie nun Ihr Gateway in Azure, indem Sie [eine Azure-Ressource für Ihre Gatewayinstallation erstellen](../logic-apps/logic-apps-gateway-connection.md). 
-
-## <a name="enable-high-availability"></a>Aktivieren der Hochverfügbarkeit
-
-Das lokale Datengateway unterstützt die Hochverfügbarkeit, wenn Sie mehrere Gatewayinstallationen besitzen und diese als Cluster eingerichtet haben. Wenn bereits ein Gateway vorhanden ist, können Sie beim Erstellen eines weiteren Gateways optional Hochverfügbarkeitscluster erstellen. Diese Cluster gliedern Gateways in Gruppen, mit deren Hilfe Single Points of Failure vermieden werden können. Wenn Sie diese Funktion verwenden möchten, sehen Sie sich die folgenden Anforderungen und Überlegungen an:
-
-* Nur einige Connectors unterstützen Hochverfügbarkeit, z.B. der Dateisystemconnector, und weitere werden folgen. 
-     
-* Sie müssen bereits über mindestens eine Gatewayinstallation im gleichen Azure-Abonnement wie das primäre Gateway sowie über den Wiederherstellungsschlüssel für diese Installation verfügen. 
-
-* Für das primäre Gateway muss das Gatewayupdate vom November 2017 oder ein höheres Update ausgeführt werden.
-
-Wenn diese Anforderungen erfüllt sind, wählen Sie beim Erstellen des nächsten Gateways **Add to an existing gateway cluster** (Zu einem vorhandenen Gatewaycluster hinzufügen) und dann das primäre Gateway für den Cluster aus. Geben Sie anschließend den Wiederherstellungsschlüssel für dieses primäre Gateway an.
-Weitere Informationen finden Sie unter [Hochverfügbarkeitscluster für lokale Datengateways](https://docs.microsoft.com/power-bi/service-gateway-high-availability-clusters).
 
 <a name="update-gateway-installation"></a>
 
@@ -253,7 +255,7 @@ In einigen Fällen werden Azure Service Bus-Verbindungen nicht mithilfe von voll
 
 ### <a name="force-https-communication-with-azure-service-bus"></a>Erzwingen von HTTPS-Kommunikation mit Azure Service Bus
 
-Einige Proxys lassen Datenverkehr nur an Port 80 und 443 zu. Standardmäßig erfolgt die Kommunikation mit Azure Service Bus über andere Ports als 443.
+Einige Proxys lassen Datenverkehr nur an Port 80 und 443 durch. Standardmäßig erfolgt die Kommunikation mit Azure Service Bus über andere Ports als 443.
 Sie können erzwingen, dass das Gateway mit Azure Service Bus über HTTPS kommuniziert. Dies kann allerdings die Leistung erheblich beeinträchtigen. Führen Sie diese Aufgabe in folgenden Schritten aus:
 
 1. Navigieren Sie zum Speicherort für den Client des lokalen Datengateways. In der Regel befindet er sich hier: ```C:\Program Files\On-premises data gateway\Microsoft.PowerBI.EnterpriseGateway.exe```
@@ -283,7 +285,7 @@ Das lokale Datengateway wird als Windows-Dienst mit dem Namen „On-premises dat
 
 ## <a name="restart-gateway"></a>Neustarten des Gateways
 
-Das Datengateway wird als Windows-Dienst ausgeführt, und Sie können das Gateway wie jeden anderen Windows-Dienst auf mehrere Arten starten und beenden. Beispielsweise können Sie eine Eingabeaufforderung mit erhöhten Berechtigungen auf dem Computer öffnen, auf dem das Gateway ausgeführt wird, und einen der folgenden Befehle ausführen:
+Das Datengateway wird als Windows-Dienst ausgeführt, und Sie können das Gateway wie jeden anderen Windows-Dienst auf verschiedene Arten starten und beenden. Beispielsweise können Sie eine Eingabeaufforderung mit erhöhten Berechtigungen auf dem Computer öffnen, auf dem das Gateway ausgeführt wird, und einen der folgenden Befehle ausführen:
 
 * Führen Sie zum Beenden des Diensts den folgenden Befehl aus:
   

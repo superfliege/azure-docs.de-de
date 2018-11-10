@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 03/22/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 95f2ffb1a51184f1194f87a4a5e9a54e682edf80
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: cbafe7fcdf2ccd515dfec5554c93bec9c7f3537a
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46305959"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50243162"
 ---
 # <a name="connector-version-release-history"></a>Connector – Versionsveröffentlichungsverlauf
 Die Connectors für Forefront Identity Manager (FIM) und Microsoft Identity Manager (MIM) werden regelmäßig aktualisiert.
@@ -98,7 +98,7 @@ Verwandte Links:
 * Webdienste (generisch):
   * Das Tool „Wsconfig“ hat das JSON-Array nicht korrekt von „Beispielanforderung“ für die REST-Dienstmethode konvertiert. Dadurch wurden Probleme bei der Serialisierung dieses JSON-Arrays für die REST-Anforderung verursacht.
   * Das Konfigurationstool für Webdienstconnectors unterstützt in Namen von JSON-Attributen keine Bereichssymbole. 
-    * Der Datei „WSConfigTool.exe.config“ kann ein Ersetzungsmuster hinzugefügt werden, z.B. ```<appSettings> <add key=”JSONSpaceNamePattern” value="__" /> </appSettings>```.
+    * Der Datei „WSConfigTool.exe.config“ kann ein Ersetzungsmuster hinzugefügt werden, z.B. ```<appSettings> <add key="JSONSpaceNamePattern" value="__" /> </appSettings>```.
 > [!NOTE]
 > Der JSONSpaceNamePattern-Schlüssel ist erforderlich, da beim Export die folgende Fehlermeldung angezeigt wird: „Ein leerer Name ist unzulässig.“. 
 
@@ -143,7 +143,7 @@ Veröffentlicht: März 2017
 ### <a name="enhancements"></a>Verbesserungen
 
 * SQL (generisch):</br>
-  **Symptome des Szenarios:** Für den SQL-Connector gibt es eine bekannte Einschränkung, bei der nur ein Verweis auf einen Objekttyp zulässig und ein Querverweis mit Membern erforderlich ist. </br>
+  **Symptome des Szenarios:**  Für den SQL-Connector gibt es eine bekannte Einschränkung, bei der nur ein Verweis auf einen Objekttyp zulässig und ein Querverweis mit Membern erforderlich ist. </br>
   **Lösungsbeschreibung:** Im Verarbeitungsschritt für Verweise, bei denen die Option „*“ ausgewählt wird, werden ALLE Kombinationen von Objekttypen an das Synchronisierungsmodul zurückgegeben.
 
 >[!Important]

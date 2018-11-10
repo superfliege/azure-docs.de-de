@@ -1,25 +1,18 @@
 ---
-title: Beheben von Problemen bei einem Failover nach Azure | Microsoft-Dokumentation
-description: Dieser Artikel beschreibt Möglichkeiten zum Beheben allgemeiner Probleme beim Failover nach Azure.
-services: site-recovery
-documentationcenter: ''
+title: Beheben von Problemen bei einem Failover auf Azure | Microsoft-Dokumentation
+description: In diesem Artikel wird beschrieben, wie Sie allgemeine Probleme beim Failover auf Azure mit Azure Site Recovery behandeln.
 author: ponatara
 manager: abhemraj
-editor: ''
-ms.assetid: ''
 ms.service: site-recovery
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
 ms.date: 09/11/2018
 ms.author: ponatara
-ms.openlocfilehash: 6be71424e30c5783a03b157171b3f5acd0160e65
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: de0b3a51ae7c7cca91366b955c5fa74963d95d27
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44391009"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50211671"
 ---
 # <a name="troubleshoot-errors-when-failing-over-a-virtual-machine-to-azure"></a>Beheben von Problemen beim Ausführen eines Failovers eines virtuellen Computers nach Azure
 
@@ -86,7 +79,7 @@ Wenn beim Starten eines virtuellen Windows-Computers nach dem Failover auf dem w
 Normalerweise ist das kein Anlass zur Sorge und kann in der Regel für ungeplante Failover ignoriert werden. Stellen Sie im Fall eines geplanten Failovers sicher, dass der virtuelle Computer vor dem Failover ordnungsgemäß heruntergefahren wird, und gewähren Sie ausreichend Zeit, damit ausstehende lokale Daten zur Replikation an Azure gesendet werden können. Verwenden Sie dann die Option **Neueste** auf dem Bildschirm [Failover](site-recovery-failover.md#run-a-failover), damit alle ausstehenden Daten in Azure in einem Wiederherstellungspunkt verarbeitet werden, der dann für VM-Failover verwendet wird.
 
 ## <a name="retaining-drive-letter-after-failover"></a>Beibehalten von Laufwerkbuchstaben nach einem Failover
-Wenn Sie nach dem Failover den Laufwerkbuchstaben des virtuellen Computers beibehalten möchten, können Sie die **SAN-Richtlinie** für den virtuellen Computer lokal auf **OnlineAll** festlegen. [Weitere Informationen](https://support.microsoft.com/help/3031135/how-to-preserve-the-drive-letter-for-protected-virtual-machines-that-are-failed-over-or-migrated-to-azure)
+Wenn Sie nach dem Failover den Laufwerkbuchstaben des virtuellen Computers beibehalten möchten, können Sie die **SAN-Richtlinie** für den virtuellen Computer lokal auf **OnlineAll** festlegen. [Weitere Informationen](https://support.microsoft.com/help/3031135/how-to-preserve-the-drive-letter-for-protected-virtual-machines-that-are-failed-over-or-migrated-to-azure).
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Beheben von Fehlern bei der [RDP-Verbindung mit einem virtuellen Windows-Computer](../virtual-machines/windows/troubleshoot-rdp-connection.md)

@@ -1,19 +1,18 @@
 ---
-title: Ausführen eines DR-Drills für Hyper-V-VMs an einen sekundären Standort mit Azure Site Recovery | Microsoft Docs
-description: Erfahren Sie, wie ein DR-Drill für Hyper-V-VMs in VMM-Clouds in ein sekundäres Datencenter mit Azure Site Recovery ausgeführt wird.
-services: site-recovery
+title: Ausführen einer Übung für die Notfallwiederherstellung von Hyper-V-VMs an einem sekundären Standort mit Azure Site Recovery | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie eine Übung für die Notfallwiederherstellung von Hyper-V-VMs in VMM-Clouds in einem sekundären Rechenzentrum mit Azure Site Recovery ausführen.
 author: ponatara
 manager: abhemraj
 ms.service: site-recovery
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: ponatara
-ms.openlocfilehash: 03533af27ac6fd406b4639c31c3add0015a76f45
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 3f7e534e9c698e31e1061c35aec713d20c7e570f
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37918797"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50211348"
 ---
 # <a name="run-a-dr-drill-for-hyper-v-vms-to-a-secondary-site"></a>Ausführen eines DR-Drills für Hyper-V-VMs an einen sekundären Standort
 

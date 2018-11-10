@@ -10,12 +10,12 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: f633dd375d690a1c3e66a2a6e02ae69665dbe960
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: bd0bcd79bb21dc3973b34086f6dad21b47a95c2f
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39170632"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51240867"
 ---
 # <a name="demo-password-reset"></a>Demo: Kennwortzurücksetzung
 Diese Demo zeigt, wie Sie mithilfe eines einfachen Bots für den technischen Support Ihr Kennwort zurücksetzen. 
@@ -24,7 +24,7 @@ Sie erfahren, wie das Unterhaltungslernmodul schwierige Dialogabläufe und Seque
 
 ## <a name="video"></a>Video
 
-[![Demo: Kennwort – Vorschau](http://aka.ms/cl-demo-password-preview)](http://aka.ms/blis-demo-password)
+[![Demo: Kennwort – Vorschau](https://aka.ms/cl-demo-password-preview)](https://aka.ms/blis-demo-password)
 
 ## <a name="requirements"></a>Anforderungen
 Für dieses Tutorial muss der Kennwortzurücksetzung-Bot ausgeführt werden.

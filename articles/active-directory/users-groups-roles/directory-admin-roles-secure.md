@@ -13,12 +13,12 @@ ms.workload: identity
 ms.component: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer, MarkMorow
-ms.openlocfilehash: 55ce6398d89e56f92874d0ec135377d2a08cf075
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: f42e7c2e564f660df1e88c63c00a9f04db7c8116
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46297808"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51240102"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Schützen des privilegierten Zugriffs für hybride und Cloudbereitstellungen in Azure AD
 
@@ -388,7 +388,7 @@ Bestimmen Sie, ob Sie [den Besitz eines Azure-Abonnements auf ein anderes Konto 
 
 8. Stellen Sie sicher, dass Sie Sicherungen der relevanten Protokolle für potenzielle forensische und rechtliche Untersuchungen speichern.
 
-Weitere Informationen zur Behandlung von Sicherheitsvorfällen durch Microsoft Office 365 finden Sie unter [Sicherheitsvorfallmanagement in Microsoft Office 365](http://aka.ms/Office365SIM).
+Weitere Informationen zur Behandlung von Sicherheitsvorfällen durch Microsoft Office 365 finden Sie unter [Sicherheitsvorfallmanagement in Microsoft Office 365](https://aka.ms/Office365SIM).
 
 ## <a name="faq-common-questions-we-receive-regarding-securing-privileged-access"></a>Häufig gestellte Fragen: Allgemeine Fragen, die wir zum Schützen des privilegierten Zugriffs erhalten  
 

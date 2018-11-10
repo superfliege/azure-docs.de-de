@@ -4,16 +4,16 @@ description: Erfahren Sie mehr über die Problembehandlung durch die Erstellung 
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 09/18/2018
+ms.date: 10/25/2018
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: dd1163ece225c2e9a9b082f5e8364f34b06a10ae
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: b910f90e70af4ce6d4243c06bfe5bd03d25d74d6
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46982289"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50092933"
 ---
 # <a name="troubleshoot-errors-using-azure-blueprints"></a>Problembehandlung mit Azure Blueprints
 
@@ -21,17 +21,17 @@ Beim Erstellen oder Zuweisen von Blaupausen können Probleme auftreten. In diese
 
 ## <a name="finding-error-details"></a>Ermitteln von Fehlerdetails
 
-Viele Fehler sind das Ergebnis der Zuweisung einer Blaupause zu einem Bereich. Wenn bei einer Zuweisung ein Fehler auftritt, finden Sie in Blueprint Informationen zur fehlerhaften Bereitstellung. Diese Informationen zeigen das Problem an, sodass es behoben werden kann und die nachfolgende Bereitstellung erfolgreich ist.
+Viele Fehler sind das Ergebnis der Zuweisung einer Blaupause zu einem Bereich. Wenn bei einer Zuweisung ein Fehler auftritt, finden Sie in der Blaupause Informationen zur fehlerhaften Bereitstellung. Diese Informationen enthalten Hinweise zum Problem, damit Sie es beheben können und die nächste Bereitstellung erfolgreich verläuft.
 
-1. Starten Sie den Azure Blueprint-Dienst im Azure-Portal. Klicken Sie dazu auf **Alle Dienste**, und suchen Sie im linken Bereich nach **Richtlinie**. Klicken Sie auf der Seite **Richtlinie** auf **Blaupausen**.
+1. Klicken Sie auf **Alle Dienste**, suchen Sie im linken Bereich nach der Option **Richtlinie**, und wählen Sie sie aus. Klicken Sie auf der Seite **Richtlinie** auf **Blaupausen**.
 
 1. Wählen Sie **Zugewiesene Blaupausen** auf der linken Seite und verwenden Sie das Suchfeld, um die Blaupausenzuweisungen zu filtern und die fehlerhafte Zuweisung zu finden. Sie können die Tabelle der Zuweisungen auch nach der Spalte **Bereitstellungsstatus** sortieren, um alle fehlerhaften Zuweisungen gruppiert anzuzeigen.
 
 1. Klicken Sie mit der linken Maustaste auf die Blaupause mit dem Status _Fehlerhaft_, oder klicken Sie mit der rechten Maustaste und wählen Sie **Zuweisungsdetails anzeigen**.
 
-1. Oben auf der Seite „Blaupausenzuweisung“ befindet sich ein rotes Banner, das darauf hinweist, dass die Zuweisung fehlerhaft ist. Klicken Sie auf eine beliebige Stelle auf das Banner, um weitere Details anzuzeigen.
+1. In einem roten Banner oben auf der Seite „Blaupausenzuweisung“ wird darauf hingewiesen, dass die Zuweisung fehlerhaft ist. Klicken Sie auf eine beliebige Stelle auf das Banner, um weitere Details anzuzeigen.
 
-Es ist üblich, dass der Fehler durch ein Artefakt in der Blaupause und nicht durch die Blaupause als Ganzes verursacht wird. Wenn die Blaupause beispielsweise ein Artefakt zum Erstellen eines Schlüsseltresors enthält, die Erstellung des Schlüsseltresors jedoch durch die Azur Policy verhindert wird, schlägt die gesamte Zuweisung fehl.
+Es ist üblich, dass der Fehler durch ein Artefakt und nicht durch die Blaupause als Ganzes verursacht wird. Wenn ein Artefakt eine Key Vault-Instanz erstellt und Azure Policy die Key Vault-Erstellung verhindert, tritt für die gesamte Zuweisung ein Fehler auf.
 
 ## <a name="general-errors"></a>Allgemeine Fehler
 
@@ -50,7 +50,7 @@ Eine Richtlinie kann aus verschiedenen Gründen einer Bereitstellung widersprech
 
 #### <a name="resolution"></a>Lösung
 
-Passen Sie die Blaupause so an, dass sie nicht im Widerspruch zu den in den Fehlerinformationen aufgeführten Richtlinien steht. Wenn dies nicht möglich ist, besteht eine alternative Option darin, den Umfang der Richtlinienzuordnung so zu ändern, dass die Blaupause nicht mehr der Richtlinie widerspricht.
+Ändern Sie die Blaupause so, dass sie nicht in Konflikt mit den Richtlinien in den Fehlerdetails steht. Wenn diese Änderung nicht möglich ist, besteht eine alternative Option darin, den Umfang der Richtlinienzuordnung so zu ändern, dass die Blaupause der Richtlinie nicht mehr widerspricht.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -92,14 +92,20 @@ items:
       href: conflict-resolution-policies.md
     - name: 'Globale Verteilung: Hintergrundinformationen'
       href: global-dist-under-the-hood.md
-  - name: Throughput
+  - name: Partitionierung
     items:
     - name: Übersicht
+      href: partitioning-overview.md
+    - name: Logische Partitionen
+      href: partition-data.md
+    - name: Erstellen eines synthetischen Partitionsschlüssels
+      href: synthetic-partition-keys.md
+  - name: Bereitgestellter Durchsatz
+    items:
+    - name: Anforderungseinheiten
       href: request-units.md
-    - name: Abrufen und Festlegen des Durchsatzes
+    - name: Bereitstellen des Durchsatzes für Container und Datenbanken
       href: set-throughput.md
-  - name: Partitionierung und Datenverteilung
-    href: partition-data.md
   - name: Indizierung
     href: indexing-policies.md
   - name: Änderungsfeed
@@ -391,6 +397,8 @@ items:
     items:
     - name: Verwalten mit PowerShell
       href: manage-account-with-powershell.md
+    - name: Verwalten mithilfe der Azure-Befehlszeilenschnittstelle
+      href: manage-with-cli.md
     - name: Verwalten mithilfe des Storage-Explorers
       href: storage-explorer.md
     - name: Verwalten mithilfe des Daten-Explorers
@@ -427,6 +435,18 @@ items:
       href: how-to-manage-consistency.md
     - name: Verwalten von Konflikten
       href: how-to-manage-conflicts.md
+  - name: Bereitgestellter Durchsatz
+    items:
+    - name: Bereitstellen des Containerdurchsatzes
+      href: how-to-provision-container-throughput.md
+    - name: Bereitstellen des Datenbankdurchsatzes
+      href: how-to-provision-database-throughput.md
+  - name: Arbeiten mit Containern und Elementen
+    items:
+    - name: Erstellen eines Containers
+      href: how-to-create-container.md
+    - name: Abfragen eines Containers
+      href: how-to-query-container.md
   - name: Bewährte Methoden
     items:
     - name: Leistungstipps
@@ -515,9 +535,9 @@ items:
       href: use-cases.md
     - name: Apps für soziale Medien
       href: social-media-apps.md
-ms.openlocfilehash: bb18835e9bd413867b9cd8f7fe8c58d525c79875
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 139bf5c5edfb808e912f2da07ea1bcab57636c55
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50963947"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51244269"

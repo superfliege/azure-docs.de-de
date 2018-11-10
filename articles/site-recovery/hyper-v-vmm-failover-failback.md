@@ -1,19 +1,19 @@
 ---
-title: Failover und Failback von Hyper-V-VMs, die mit Site Recovery nach einem sekundären Rechenzentrum repliziert werden | Microsoft-Dokumentation
-description: Erfahren Sie, wie mit Azure Site Recovery ein Failover von Hyper-V-VMs auf Ihren sekundären lokalen Standort und ein Failback auf den primären Standort ausgeführt wird.
+title: Failover und Failback von Hyper-V-VMs, die während der Notfallwiederherstellung mit Azure Site Recovery in ein sekundäres Rechenzentrum repliziert werden | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie während der Notfallwiederherstellung mit Azure Site Recovery ein Failover von Hyper-V-VMs zu Ihrem sekundären lokalen Standort und ein Failback zum primären Standort ausführen.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/10/2018
+ms.date: 10/28/2018
 ms.author: raynew
-ms.openlocfilehash: 782ddc3ebb7b3c533d0eb5c4b7735a13cbaf268c
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 80a26f7f2c97fdbc5342d8845277facd79f22a62
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49077679"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50210005"
 ---
 # <a name="fail-over-and-fail-back-hyper-v-vms-replicated-to-your-secondary-on-premises-site"></a>Failover und Failback von Hyper-V-VMs, die nach Ihrem sekundären lokalen Standort repliziert werden
 

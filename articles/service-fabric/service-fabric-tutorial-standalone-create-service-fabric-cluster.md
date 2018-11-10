@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 05/11/2018
 ms.author: dastanfo
 ms.custom: mvc
-ms.openlocfilehash: 36d65abb26435581f3e6c9c4a9fc46bb3dd538ce
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: b740aa205982bc0c1104b59e3ea89e2d5980d461
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39362775"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51240340"
 ---
 # <a name="tutorial-install-and-create-service-fabric-cluster"></a>Tutorial: Installieren und Erstellen eines Service Fabric-Clusters
 
@@ -37,7 +37,7 @@ Im zweiten Teil der Reihe lernen Sie Folgendes:
 
 ## <a name="download-the-service-fabric-for-windows-server-package"></a>Herunterladen des Service Fabric-Pakets für Windows Server
 
-Für Service Fabric steht ein Setuppaket zum Erstellen eigenständiger Service Fabric-Cluster bereit.  Laden Sie das [Setuppaket](http://go.microsoft.com/fwlink/?LinkId=730690) auf Ihren lokalen Computer herunter.  Kopieren Sie das erfolgreich heruntergeladene Paket über die RDP-Verbindung in Ihre EC2-Instanz, und fügen Sie es auf dem Desktop ein.
+Für Service Fabric steht ein Setuppaket zum Erstellen eigenständiger Service Fabric-Cluster bereit.  Laden Sie das [Setuppaket](https://go.microsoft.com/fwlink/?LinkId=730690) auf Ihren lokalen Computer herunter.  Kopieren Sie das erfolgreich heruntergeladene Paket über die RDP-Verbindung in Ihre EC2-Instanz, und fügen Sie es auf dem Desktop ein.
 
 Klicken Sie auf die ZIP-Datei, öffnen Sie das Kontextmenü, und klicken Sie auf **Alle extrahieren** > **Extrahieren**.  Im Zuge der Datenextraktion wird auf dem Desktop ein Ordner mit dem Namen der ZIP-Datei erstellt.
 

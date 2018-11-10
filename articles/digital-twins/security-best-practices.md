@@ -6,14 +6,14 @@ manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/10/2018
+ms.date: 10/25/2018
 ms.author: adgera
-ms.openlocfilehash: 28eb8b5dc0f75b5e031070803d35c8a1ceb1f000
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: a17fe8ed47384ed248b339643be11269b8b9cdc0
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49364339"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50092184"
 ---
 # <a name="security-best-practices"></a>Bewährte Methoden für die Sicherheit
 
@@ -33,8 +33,9 @@ Einige der wichtigsten Methoden zum sicheren Schutz Ihrer IoT-Geräte sind:
 > [!div class="checklist"]
 > * Schützen Sie jedes Gerät, das mit Ihrem IoT-Raum verbunden ist, auf eine manipulationssichere Weise.
 > * Begrenzen Sie die Rolle jedes Geräts, jedes Sensors und jeder Person in Ihrem IoT-Raum. Bei einer Kompromittierung sind die Auswirkungen minimiert.
-> * Verwenden Sie ggf. Filterung der Geräte-IP-Adressen.
+> * Verwenden Sie ggf. Filterung der Geräte-IP-Adressen und Einschränkungen der Ports.
 > * Begrenzen Sie E/A- und Gerätebandbreite, um die Leistung zu verbessern. Begrenzung der Übertragungsrate kann die Sicherheit verbessern, indem Denial-of-Service-Angriffe verhindert werden.
+> * Halten Sie die Gerätefirmware auf dem neuesten Stand.
 
 Einige der wichtigsten Methoden zum sicheren Schutz eines IoT-Raums sind:
 
@@ -55,7 +56,7 @@ Azure Digital Twins verwendet Azure Active Directory, um Benutzer zu authentifiz
 
 > [!div class="checklist"]
 > * Speichern Sie geheime Schlüssel von Azure Active Directory-Apps an einem sicheren Ort, z. B. [Key Vault](https://azure.microsoft.com/services/key-vault/).
-> * Verwenden Sie zum Authentifizieren anstelle der geheimen App-Schlüssel ein Zertifikat, das von einer vertrauenswürdigen [Zertifizierungsstelle](https://docs.microsoft.com/azure/active-directory/authentication/active-directory-certificate-based-authentication-get-started) ausgegeben wurde.
+> * Verwenden Sie zum Authentifizieren anstelle der geheimen App-Schlüssel ein Zertifikat, das von einer vertrauenswürdigen [Zertifizierungsstelle](https://docs.microsoft.com/azure/active-directory/authentication/active-directory-certificate-based-authentication-get-started) ausgestellt wurde.
 > * Begrenzen Sie den OAuth 2.0-Zugriffsbereich für ein Token.
 > * Überprüfen Sie, wie lange ein Token gültig ist und ob ein Token gültig bleibt.
 > * Legen Sie entsprechende Zeitspannen fest, während denen Token gültig sind.

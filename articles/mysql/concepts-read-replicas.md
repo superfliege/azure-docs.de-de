@@ -7,13 +7,13 @@ ms.author: andrela
 editor: jasonwhowell
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: 283b529aa8c6431ea725b066c9b5cb3db19a929b
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.date: 10/30/2018
+ms.openlocfilehash: b4e79723072a19f2637bea16d0534cb85588e9e3
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46969443"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50412447"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Lesereplikate in Azure Database for MySQL
 
@@ -34,6 +34,10 @@ In einem häufig anzutreffenden Szenario verwenden BI- und Analyseworkloads das 
 ### <a name="pricing-tiers"></a>Tarife
 
 Lesereplikate sind zurzeit nur in den Tarifen „Universell“ und „Arbeitsspeicheroptimiert“ verfügbar.
+
+### <a name="master-server-restart"></a>Masterserverneustart
+
+Wenn Sie in dieser Vorschauversion ein Replikat für einen Master erstellen, der keine vorhandenen Replikate hat, startet der Master zunächst neu, um sich auf die Replikation vorzubereiten. Bitte beachten Sie dies und führen Sie diese Operationen nicht zu Spitzenzeiten durch.
 
 ### <a name="stopping-replication"></a>Beenden der Replikation
 

@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: conceptual
 ms.date: 10/19/2018
 ms.author: diberry
-ms.openlocfilehash: 92b4864f8991380740e6edb498328ce2eea98250
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: fdf81943a7bdbae80f4474915a72bb61f1123a30
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49650110"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50085854"
 ---
 # <a name="entities-in-luis"></a>Entitäten in LUIS
 
@@ -96,8 +96,9 @@ LUIS bietet viele Typen von Entitäten: vordefinierte Entitäten, benutzerdefini
 ## <a name="entity-limits"></a>Grenzwerte für Entitäten
 Informieren Sie sich über die [Grenzwerte](luis-boundaries.md#model-boundaries), um zu erfahren, wie viele Entitäten jedes Typs Sie einem Modell hinzufügen können.
 
-## <a name="entity-roles"></a>Entitätsrollen
-[Entitätsrollen](luis-concept-roles.md) gelten für benutzerdefinierte und vordefinierte Entitäten und werden nur in Mustern verwendet. 
+## <a name="roles-versus-hierarchical-entities"></a>Rollen und hierarchische Entitäten
+
+Weitere Informationen finden Sie unter [Rollen und hierarchische Entitäten](luis-concept-roles.md#roles-versus-hierarchical-entities).
 
 ## <a name="composite-vs-hierarchical-entities"></a>Hierarchische und zusammengesetzte Entitäten
 Zusammengesetzte Entitäten und hierarchische Entitäten verfügen jeweils über eine Über- und Unterordnungsbeziehung, und sie wurden durch maschinelles Lernen erworben. Durch maschinelles Lernen kann LUIS die Entitäten basierend auf unterschiedlichen Kontexten (Anordnung von Wörtern) verstehen. Zusammengesetzte Entitäten sind flexibler, da sie unterschiedliche Entitätstypen als untergeordnete Elemente zulassen. Bei einer hierarchischen Entität sind die untergeordneten Entitäten immer einfache Entitäten. 

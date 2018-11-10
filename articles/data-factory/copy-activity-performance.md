@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/06/2018
+ms.date: 10/31/2018
 ms.author: jingwang
-ms.openlocfilehash: 958d1ea09ce4d85afc59af412e1050efc6290a1a
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 7dc60c18e105c9be190b5bfede786f61a65feec3
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39002244"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50416935"
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>Handbuch zur Leistung und Optimierung der Kopieraktivität
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -56,7 +56,7 @@ Als Referenz ist in der nachfolgenden Tabelle der Durchsatzwert beim Kopieren **
 Beachten Sie Folgendes:
 
 * Der Durchsatz wird mithilfe der folgenden Formel berechnet: [Größe der aus der Quelle gelesenen Daten]/[Ausführungsdauer der Kopieraktivität]
-* Die Leistungsreferenzwerte in der Tabelle wurden mit dem [TPC-H](http://www.tpc.org/tpch/)-Dataset in einer einzelnen Kopieraktivitätsausführung gemessen.
+* Die Leistungsreferenzwerte in der Tabelle wurden mit dem [TPC-H](http://www.tpc.org/tpch/)-Dataset in einer einzelnen Kopieraktivitätsausführung gemessen. Testdateien für dateibasierte Speicher sind mehrere Dateien mit einer Größe von 10 GB.
 * In Azure-Datenspeichern befinden sich Quelle und Senke in der gleichen Azure-Region.
 * Bei hybriden Kopieraktivitäten zwischen lokalen und Clouddatenspeichern wurde jeder selbstgehostete Integration Runtime-Knoten auf einem Computer ausgeführt, bei dem es sich nicht um den Datenspeicher mit der folgenden Spezifikation gehandelt hat. Bei Ausführung einer einzelnen Aktivität wurde vom Kopiervorgang nur ein kleiner Teil der CPU, des Arbeitsspeichers und der Netzwerkbandbreite des Testcomputers in Anspruch genommen.
     <table>
@@ -76,7 +76,7 @@ Beachten Sie Folgendes:
 
 
 > [!TIP]
-> Sie können einen höheren Durchsatz erzielen, indem Sie mehr Datenintegrationseinheiten (DIUs) als laut standardmäßig zulässigem DIU-Höchstwert verwenden. Dieser beträgt für die Ausführung einer Cloud-zu-Cloud-Kopieraktivität 32. Beispielsweise können Sie mit 100 DIUs Daten mit einer Rate von **1,0 GB/s** aus Azure Blob Storage nach Azure Data Lake Store kopieren. Informationen zu diesem Feature und dem unterstützten Szenario finden Sie im Abschnitt [Datenintegrationseinheiten](#data-integration-units). Wenden Sie sich an den [Azure-Support](https://azure.microsoft.com/support/), um zusätzliche DIUs anzufordern.
+> Mit weiteren Datenintegrationseinheiten (DIU) können Sie einen höheren Durchsatz erzielen. Beispielsweise können Sie mit 100 DIUs Daten mit einer Rate von **1,0 GB/s** aus Azure Blob Storage nach Azure Data Lake Store kopieren. Informationen zu diesem Feature und dem unterstützten Szenario finden Sie im Abschnitt [Datenintegrationseinheiten](#data-integration-units). 
 
 ## <a name="data-integration-units"></a>Datenintegrationseinheiten
 
@@ -94,7 +94,7 @@ Sie können diese Standardeinstellung überschreiben, indem Sie wie folgt einen 
 Sie können die tatsächlich verwendeten Datenintegrationseinheiten für jede Kopierausführung in der Kopieraktivitätsausgabe anzeigen, wenn Sie eine Aktivitätsausführung überwachen. Weitere Informationen finden Sie unter [Copy activity monitoring (Überwachung der Kopieraktivität)](copy-activity-overview.md#monitoring).
 
 > [!NOTE]
-> Sollten Sie zur Steigerung des Durchsatzes zusätzliche DIUs benötigen, wenden Sie sich an den [Azure-Support](https://azure.microsoft.com/support/). Der Wert 8 und höher kann derzeit nur verwendet werden, wenn Sie **mehrere Dateien aus Blob Storage/Data Lake Store/Amazon S3/Cloud-FTP/Cloud-SFTP in einen beliebigen anderen Clouddatenspeicher kopieren**.
+> Der Wert **4 und höher** für DIUs kann derzeit nur verwendet werden, wenn Sie **mehrere Dateien aus Blob Storage/Data Lake Store/Amazon S3/Cloud-FTP/Cloud-SFTP in einen beliebigen anderen Clouddatenspeicher** kopieren.
 >
 
 **Beispiel:**

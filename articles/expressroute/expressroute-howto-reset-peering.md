@@ -1,55 +1,56 @@
 ---
 title: Zurücksetzen von Azure ExpressRoute-Peerings | Microsoft-Dokumentation
-description: So deaktivieren und aktivieren Sie Peerings einer ExpressRoute-Verbindung
+description: Informationen zum Deaktivieren und Aktivieren von Peerings einer ExpressRoute-Verbindung.
 services: expressroute
 author: charwen
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 08/15/2018
 ms.author: charwen
-ms.openlocfilehash: b8c9bc1944e9ed0281616062a84958c953d08694
-ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
+ms.openlocfilehash: 1bb2bb61ccd06d5774b811203e86d609a01250a4
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "40180557"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50415813"
 ---
 # <a name="reset-expressroute-peerings"></a>Zurücksetzen von ExpressRoute-Peerings
 
-In diesem Artikel wird beschrieben, wie Peerings einer ExpressRoute-Verbindung mithilfe von PowerShell deaktiviert und aktiviert werden. Wenn Sie ein Peering deaktivieren, wird die BGP-Sitzung Ihrer primären und sekundären Verbindung Ihrer ExpressRoute-Verbindung heruntergefahren. Durch das Peering zu Microsoft geht Konnektivität verloren. Wenn Sie das Peering aktivieren, wird die BGP-Sitzung jeweils auf der primären und sekundären Verbindung Ihrer ExpressRoute-Verbindung gestartet. Sie erhalten über dieses Peering zu Microsoft die Konnektivität zurück. Sie können das Microsoft-Peering und das private Azure-Peering unabhängig voneinander auf einer ExpressRoute-Verbindung aktivieren und deaktivieren. Wenn Sie die Peerings zum ersten Mal auf Ihrer ExpressRoute-Verbindung konfigurieren, werden diese standardmäßig aktiviert. 
+In diesem Artikel wird beschrieben, wie Peerings einer ExpressRoute-Verbindung mithilfe von PowerShell deaktiviert und aktiviert werden. Wenn Sie ein Peering deaktivieren, wird die BGP-Sitzung Ihrer primären und sekundären Verbindung Ihrer ExpressRoute-Verbindung heruntergefahren. Durch das Peering zu Microsoft geht Konnektivität verloren. Wenn Sie das Peering aktivieren, wird die BGP-Sitzung jeweils auf der primären und sekundären Verbindung Ihrer ExpressRoute-Verbindung gestartet. Sie erhalten über dieses Peering zu Microsoft die Konnektivität zurück. Sie können das Microsoft-Peering und das private Azure-Peering unabhängig voneinander auf einer ExpressRoute-Verbindung aktivieren und deaktivieren. Wenn Sie die Peerings zum ersten Mal auf Ihrer ExpressRoute-Verbindung konfigurieren, werden diese standardmäßig aktiviert.
 
 Es gibt einige Szenarios, in denen das Zurücksetzen Ihrer ExpressRoute-Peerings hilfreich sein kann.
 * Testen Sie Ihren Entwurf und die Implementierung der Notfallwiederherstellung. Wenn Sie z.B. über zwei ExpressRoute-Verbindungen verfügen, können Sie die Peerings von einer Verbindung deaktivieren und erzwingen, dass Ihr Netzwerkdatenverkehr ein Failover auf die andere Verbindung ausführt.
 * Aktivieren Sie die bidirektionale Weiterleitungserkennung (Bidirectional Forwarding Detection, BFD) für das private Azure-Peering Ihrer ExpressRoute-Verbindung. BFD ist standardmäßig aktiviert, wenn Ihre ExpressRoute-Verbindung nach dem 1. August 2018 erstellt wurde. Wenn Ihre Verbindung vor diesem Datum erstellt wurde, wurde BFD nicht aktiviert. Sie können BFD aktivieren, indem Sie das Peering deaktivieren und anschließend erneut aktivieren. Beachten Sie, dass BFD ausschließlich für das private Azure-Peering unterstützt wird.
 
+### <a name="working-with-azure-powershell"></a>Arbeiten mit Azure PowerShell
+
+[!INCLUDE [expressroute-cloudshell](../../includes/expressroute-cloudshell-powershell-about.md)]
 
 ## <a name="reset-a-peering"></a>Zurücksetzen eines Peerings
 
-1. Installieren Sie die aktuelle Version der PowerShell-Cmdlets für Azure Resource Manager. Weitere Informationen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/install-azurerm-ps).
+1. Wenn Sie PowerShell lokal ausführen, öffnen Sie die PowerShell-Konsole mit erhöhten Rechten, und stellen Sie eine Verbindung mit Ihrem Konto her. Verwenden Sie das folgende Beispiel, um eine Verbindung herzustellen:
 
-2. Öffnen Sie die PowerShell-Konsole mit erhöhten Rechten, und stellen Sie eine Verbindung mit Ihrem Konto her. Verwenden Sie das folgende Beispiel, um eine Verbindung herzustellen:
-
-  ```powershell
+  ```azurepowershell
   Connect-AzureRmAccount
   ```
-3. Überprüfen Sie die Abonnements für das Konto, wenn Sie über mehrere Azure-Abonnements verfügen.
+2. Überprüfen Sie die Abonnements für das Konto, wenn Sie über mehrere Azure-Abonnements verfügen.
 
-  ```powershell
+  ```azurepowershell-interactive
   Get-AzureRmSubscription
   ```
-4. Geben Sie das Abonnement an, das Sie verwenden möchten.
+3. Geben Sie das Abonnement an, das Sie verwenden möchten.
 
-  ```powershell
+  ```azurepowershell-interactive
   Select-AzureRmSubscription -SubscriptionName "Replace_with_your_subscription_name"
   ```
-5. Führen Sie die folgenden Befehle aus, um Ihre ExpressRoute-Verbindung abzurufen.
+4. Führen Sie die folgenden Befehle aus, um Ihre ExpressRoute-Verbindung abzurufen.
 
-  ```powershell
+  ```azurepowershell-interactive
   $ckt = Get-AzureRmExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
   ```
-6. Identifizieren Sie das Peering, das Sie deaktivieren oder aktivieren möchten. *Peerings* ist ein Array. Im folgenden Beispiel handelt es sich bei „Peerings[0]“ um das private Azure-Peering und bei „Peerings[1]“ um das Microsoft-Peering.
+5. Identifizieren Sie das Peering, das Sie deaktivieren oder aktivieren möchten. *Peerings* ist ein Array. Im folgenden Beispiel handelt es sich bei „Peerings[0]“ um das private Azure-Peering und bei „Peerings[1]“ um das Microsoft-Peering.
 
-  ```powershell
+  ```azurepowershell-interactive
 Name                             : ExpressRouteARMCircuit
 ResourceGroupName                : ExpressRouteResourceGroup
 Location                         : westus
@@ -130,9 +131,9 @@ Authorizations                   : []
 AllowClassicOperations           : False
 GatewayManagerEtag               :
   ```
-7. Führen Sie die folgenden Befehle aus, um den Peeringzustand zu ändern.
+6. Führen Sie die folgenden Befehle aus, um den Peeringzustand zu ändern.
 
-  ```powershell
+  ```azurepowershell-interactive
   $ckt.Peerings[0].State = "Disabled"
   Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
   ```

@@ -1,19 +1,19 @@
 ---
-title: Installieren von Mobility Service (VMware oder physisch in Azure) | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie den Mobility Service-Agent installieren, um lokale VMware-VMs und physische Server mit Azure Site Recovery zu schützen.
+title: Installieren des Mobilitätsdiensts für die Notfallwiederherstellung von virtuellen VMware-Computern und physischen Servern in Azure | Microsoft-Dokumentation
+description: Hier erfahren Sie, wie Sie den Mobilitätsdienst-Agent installieren, um mit dem Azure Site Recovery-Dienst eine Notfallwiederherstellung von virtuellen VMware-Computern und physischen Servern in Azure auszuführen.
 author: Rajeswari-Mamilla
 ms.service: site-recovery
 ms.topic: article
-ms.date: 07/06/2018
+ms.date: 10/29/2018
 ms.author: ramamill
-ms.openlocfilehash: 094c1776c0760c04d85aff6ad3d812a2ad7afa56
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 145affbcff128e0ec599ad1f97c79260b0dcae5a
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39526996"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212691"
 ---
-# <a name="install-the-mobility-service"></a>Installieren des Mobilitätsdiensts 
+# <a name="install-the-mobility-service-for-disaster-recovery-of-vmware-vms-and-physical-servers"></a>Installieren des Mobilitätsdiensts für die Notfallwiederherstellung von virtuellen VMware-Computern und physischen Servern
 
 Azure Site Recovery Mobility Service wird auf VMware-VMs und physischen Servern installiert, die Sie in Azure replizieren möchten. Der Dienst erfasst Datenschreibvorgänge auf einem Computer und leitet sie dann an den Prozessserver weiter. Stellen Sie Mobility Service auf jedem Computer (VMware-VM oder physischer Server) bereit, den Sie in Azure replizieren möchten. Sie können Mobility Service mithilfe der folgenden Methoden auf den Servern und VMware-VMs bereitstellen, die Sie schützen möchten:
 

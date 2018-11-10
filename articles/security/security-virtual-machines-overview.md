@@ -12,16 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/21/2017
+ms.date: 10/30/2018
 ms.author: terrylan
-ms.openlocfilehash: fb6a984ff838305b4ce411538465c0b9b5c152da
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: 631fe91bc72093cf5ad87779853df4901a27a068
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42886913"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50249115"
 ---
 # <a name="azure-virtual-machines-security-overview"></a>Virtuelle Azure-Computer – Sicherheitsübersicht
+
 Mit Azure Virtual Machines können Sie sehr flexibel eine Vielzahl unterschiedlicher Computinglösungen bereitstellen. Der Dienst unterstützt Microsoft Windows, Linux, Microsoft SQL Server, Oracle, IBM, SAP und Azure BizTalk Services. Daher können Sie jede Workload und jede Sprache für nahezu alle Betriebssysteme bereitstellen.
 
 Ein virtueller Azure-Computer bietet Ihnen die Flexibilität der Virtualisierung, ohne Zeit und Geld für den Kauf und das Verwalten der Hardware aufwenden zu müssen, die den virtuellen Computer hostet. Sie können Ihre Anwendungen in der Gewissheit erstellen und bereitstellen, dass Ihre Daten in hochsicheren Datencentern geschützt und abgesichert sind.
@@ -37,6 +38,7 @@ Mit Azure können Sie richtlinienkonforme Lösungen mit erweiterter Sicherheit e
 Das Ziel dieses Artikels ist, eine Übersicht über die wichtigsten Azure-Sicherheitsfunktionen zu bieten, die mit virtuellen Computern verwendet werden können. Links zu Artikeln bieten weitere Informationen zu den einzelnen Features.  
 
 ## <a name="antimalware"></a>Antimalware
+
 Mit Azure können Sie Antischadsoftware von Sicherheitsanbietern wie Microsoft, Symantec, Trend Micro und Kaspersky verwenden. Diese Software dient dem Schutz Ihrer virtuellen Computer vor Dateien mit schädlichem Inhalt, Adware und anderen Bedrohungen.
 
 Microsoft Antimalware for Azure Cloud Services and Virtual Machines ist eine Echtzeit-Schutzfunktion zum Bestimmen und Entfernen von Viren, Spyware und anderer Schadsoftware.  Microsoft Antimalware für Azure gibt konfigurierbare Warnungen aus, wenn bekannte schädliche oder unerwünschte Software versucht, sich selbst auf Ihren Azure-Systemen zu installieren oder dort auszuführen.
@@ -64,7 +66,24 @@ Weitere Informationen zu Antischadsoftware zum Schutz Ihrer virtuellen Computer:
 * [Installieren und Konfigurieren von Symantec Endpoint Protection auf einem virtuellen Windows-Computer](../virtual-machines/windows/classic/install-symantec.md)
 * [Willkommen im Azure Marketplace](https://azure.microsoft.com/marketplace/?term=security)
 
+Für einen noch leistungsfähigeren Schutz verwenden Sie [Windows Defender Advanced Threat Protection](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-atp/windows-defender-advanced-threat-protection). Windows Defender ATP bietet:
+
+* [Reduzierung der Angriffsfläche](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-atp/overview-attack-surface-reduction)  
+* [Schutz der nächsten Generation](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-in-windows-10)  
+* [Endpoint Protection und Antwort](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-atp/overview-endpoint-detection-response)
+* [Automatisierte Untersuchung und Wartung](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-atp/automated-investigations-windows-defender-advanced-threat-protection)
+* [Sicherheitsbewertung](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-atp/overview-secure-score-windows-defender-advanced-threat-protection)
+* [Erweiterte Erkennung](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-atp/overview-hunting-windows-defender-advanced-threat-protection)
+* [Verwaltung und APIs](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-atp/management-apis)
+* [Microsoft Threat Protection](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-atp/threat-protection-integration)
+
+Weitere Informationen: 
+
+* [Erste Schritte mit Windows Defender Advanced Threat Protection](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-atp/get-started)  
+* [Übersicht über Windows Defender ATP-Funktionen](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-atp/overview)  
+
 ## <a name="hardware-security-module"></a>Hardwaresicherheitsmodul
+
 Verschlüsselungs- und Authentifizierungsschutzmaßnahmen können durch eine höhere Sicherheit verbessert werden. Sie können die Verwaltung und Sicherheit Ihrer geschäftskritischen geheimen Daten und Schlüssel vereinfachen, indem Sie diese in Azure Key Vault speichern. 
 
 Mit Key Vault können Sie Ihre Schlüssel in Hardwaresicherheitsmodulen (Hardware Security Modules, HSMs) speichern, die gemäß FIPS 140-2 Level 2-Standards zertifiziert sind. Sie können Ihre SQL Server-Verschlüsselungsschlüssel für Sicherungen oder [transparente Datenverschlüsselung](https://msdn.microsoft.com/library/bb934049.aspx) gemeinsam mit den Schlüsseln oder geheimen Daten Ihrer Anwendungen in Key Vault speichern. Der Zugriff auf diese geschützten Elemente sowie die zugehörigen Berechtigungen werden über [Azure Active Directory](https://azure.microsoft.com/documentation/services/active-directory/)verwaltet.
@@ -76,6 +95,7 @@ Weitere Informationen:
 * [Azure Key Vault-Blog](https://blogs.technet.microsoft.com/kv/)
 
 ## <a name="virtual-machine-disk-encryption"></a>Verschlüsselung der Datenträger virtueller Computer
+
 Azure Disk Encryption ist eine neue Funktion zur Verschlüsselung der Datenträger virtueller Windows- und Linux-Computer. Azure Disk Encryption verwendet das Branchenstandardfeature [BitLocker](https://technet.microsoft.com/library/cc732774.aspx) von Windows und das Feature [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt) von Linux, um Volumeverschlüsselung für das Betriebssystem und die Datenträger bereitzustellen.
 
 Die Lösung ist in Azure Key Vault integriert, damit Sie die Verschlüsselungsschlüssel und Geheimnisse für die Datenträgerverschlüsselung in Ihrem Key Vault-Abonnement steuern und verwalten können. Sie stellt außerdem sicher, dass alle ruhenden Daten auf den Datenträgern der virtuellen Computer in Azure Storage verschlüsselt sind.
@@ -86,6 +106,7 @@ Weitere Informationen:
 * [Schnellstart: Verschlüsseln eines virtuellen Windows-IaaS-Computers mit Azure PowerShell](../security/quick-encrypt-vm-powershell.md)
 
 ## <a name="virtual-machine-backup"></a>Sicherung virtueller Computer
+
 Azure Backup ist eine skalierbare Lösung, die Ihre Anwendungsdaten schützt – ganz ohne Investitionskosten und mit sehr niedrigen Betriebskosten. Anwendungsfehler können Ihre Daten beschädigen, und menschliche Fehler können Bugs in Ihren Anwendungen verursachen. Mit Azure Backup sind Ihre virtuellen Windows- und Linux-Computer geschützt.
 
 Weitere Informationen:
@@ -95,6 +116,7 @@ Weitere Informationen:
 * [Azure Backup-Dienst – Häufig gestellte Fragen](../backup/backup-azure-backup-faq.md)
 
 ## <a name="azure-site-recovery"></a>Azure Site Recovery
+
 Ein wichtiger Teil der BCDR-Strategie Ihrer Organisation ist die Ermittlung, wie geschäftliche Workloads und Apps verfügbar gehalten werden können, wenn geplante und ungeplante Ausfälle auftreten. Azure Site Recovery unterstützt die Orchestrierung von Replikation, Failover und Wiederherstellung von Workloads und Apps, damit diese Komponenten über einen sekundären Standort zur Verfügung stehen, wenn der primäre Standort ausfällt.
 
 Site Recovery:
@@ -112,6 +134,7 @@ Weitere Informationen:
 * [Welche Workloads werden durch Azure Site Recovery geschützt?](../site-recovery/site-recovery-workload.md)
 
 ## <a name="virtual-networking"></a>Virtuelle Netzwerke
+
 Virtuelle Computer benötigen Netzwerkkonnektivität. Azure erfordert von einem virtuellen Computer eine Verbindung mit einem virtuellen Azure-Netzwerk, damit die Konnektivitätsanforderung unterstützt wird. 
 
 Ein virtuelles Azure-Netzwerk ist ein logisches Konstrukt, das auf dem physischen Azure-Netzwerkfabric basiert. Jedes logische virtuelle Azure-Netzwerk ist von allen anderen virtuellen Azure-Netzwerken isoliert. Mit dieser Isolierung wird sichergestellt, dass der Netzwerkverkehr in Ihren Bereitstellungen nicht für andere Microsoft Azure-Kunden zugänglich ist.
@@ -123,6 +146,7 @@ Weitere Informationen:
 * [Netzwerkfeatures und Partnerschaften für Enterpriseszenarien](https://azure.microsoft.com/blog/networking-enterprise/)
 
 ## <a name="security-policy-management-and-reporting"></a>Verwaltung von Sicherheitsrichtlinien und Berichtserstellung
+
 Mit Azure Security Center können Sie Bedrohungen verhindern, erkennen und beheben. Security Center sorgt für eine größere Transparenz und bessere Kontrolle der Sicherheit Ihrer Azure-Ressourcen. Es bietet eine integrierte Sicherheitsüberwachung und Richtlinienverwaltung für Ihre Azure-Abonnements. Es hilft bei der Erkennung von Bedrohungen, die andernfalls möglicherweise unbemerkt bleiben, und kann gemeinsam mit einem breiten Spektrum von Sicherheitslösungen verwendet werden.
 
 Mit Security Center können Sie die Sicherheit Ihrer virtuellen Computer durch folgende Aktionen optimieren und überwachen:
@@ -137,9 +161,24 @@ Weitere Informationen:
 * [Planungs- und Betriebshandbuch für Azure Security Center](../security-center/security-center-planning-and-operations-guide.md)
 
 ## <a name="compliance"></a>Compliance
+
 Azure Virtual Machines ist für FISMA, FedRAMP, HIPAA, PCI DSS Level 1 und andere Complianceprogramme zertifiziert. So können Sie auch mit Ihren eigenen Azure-Anwendungen die verschiedenen Complianceanforderungen besser erfüllen, und Ihr Unternehmen kann sicherstellen, dass diverse nationale und internationale rechtliche Vorgaben eingehalten werden.
 
 Weitere Informationen:
 
 * [Microsoft Trust Center – Compliance](https://www.microsoft.com/en-us/trustcenter/compliance)
 * [Die vertrauenswürdige Cloud: Sicherheit, Datenschutz und Compliance von Microsoft Azure](http://download.microsoft.com/download/1/6/0/160216AA-8445-480B-B60F-5C8EC8067FCA/WindowsAzure-SecurityPrivacyCompliance.pdf)
+
+## <a name="confidential-computing"></a>Confidential Computing
+
+Confidential Computing gehört technisch betrachtet zwar nicht zum Thema „Sicherheit virtueller Computer“, doch die Sicherheit von VMs ist Teil des übergeordneten Themas Computesicherheit. Confidential Computing fällt in die Kategorie der Computesicherheit. 
+
+Confidential Computing stellt sicher, dass Daten im unverschlüsselten Zustand, der zur effizienten Verarbeitung erforderlich ist, in einer Trusted Execution Environment (TEE, auch Enclave) geschützt werden (s. https://en.wikipedia.org/wiki/Trusted_execution_environment). Ein Beispiel finden Sie in der Abbildung unten.  
+
+Wenn Sie TEEs verwenden, können externe Benutzer interne Daten und Vorgänge auch nicht mit einem Debugger anzeigen. TEEs gewährleisten sogar, dass nur autorisierter Code für den Zugriff auf Daten zugelassen wird. Wenn der Code geändert oder manipuliert wird, werden die Vorgänge verweigert, und die Umgebung wird deaktiviert. Die TEE erzwingt diese Schutzmaßnahmen, während der Code in der Umgebung ausgeführt wird. 
+
+Weitere Informationen:
+
+* [Einführung in Confidential Computing in Azure](https://azure.microsoft.com/blog/introducing-azure-confidential-computing/)  
+* [Confidential Computing in Azure](https://azure.microsoft.com/blog/azure-confidential-computing/)  
+

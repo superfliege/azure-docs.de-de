@@ -14,18 +14,18 @@ ms.tgt_pltfrm: ''
 ms.topic: article
 ms.date: 4/27/2018
 ms.author: shhurst
-ms.openlocfilehash: e6ac6a4aa46feb768df437ff9d5969b2b41092c3
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 5aa5ea2a39a0fb9f969e965fed14063522197cda
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48041644"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50085795"
 ---
 # <a name="handle-large-messages-with-chunking-in-azure-logic-apps"></a>Verarbeiten von großen Nachrichten durch Blockerstellung in Azure Logic Apps
 
 Beim Verarbeiten von Nachrichten begrenzt Logic Apps Nachrichteninhalt auf eine maximale Größe. Dieser Grenzwert ermöglicht ein Verringern des Mehraufwands, der durch das Speichern und Verarbeiten von großen Nachrichten verursacht wird. Sollen Nachrichten verarbeitet werden, die größer sind, als dieser Grenzwert angibt, kann Logic Apps eine große Nachricht durch *Blockerstellung* in kleinere Nachrichten aufteilen. Auf diese Weise können Sie weiterhin große Dateien unter bestimmten Bedingungen mit Logic Apps übertragen. Bei der Kommunikation mit anderen Diensten über Connectors oder HTTP kann Logic Apps große Nachrichten verarbeiten, jedoch *nur* in Blöcken. Diese Bedingung bedeutet, dass auch Connectors Blockerstellung unterstützen müssen oder der zugrunde liegende HTTP-Nachrichtenaustausch zwischen Logic Apps und diesen Diensten Blockerstellung verwenden muss.
 
-In diesem Artikel wird gezeigt, wie Sie die Unterstützung für Blockerstellung für Nachrichten einrichten können, die größer als der Grenzwert sind.
+In diesem Artikel wird gezeigt, wie Sie die Blockerstellung für Aktionen im Zusammenhang mit Nachrichten einrichten, deren Größe den Grenzwert übersteigt. Logik-App-Trigger unterstützen die Blockerstellung aufgrund des Mehraufwands für den Austausch mehrerer Nachrichten nicht. 
 
 ## <a name="what-makes-messages-large"></a>Was macht Nachrichten „groß“?
 

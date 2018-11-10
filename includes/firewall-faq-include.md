@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/20/2018
 ms.author: victorh
 ms.custom: include file
-ms.openlocfilehash: e4d698b8b9c3f9e304780ee49bd4243a76e69138
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: e33871f35613fbd5cdc5bf3162855b942056807f
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49471529"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50254515"
 ---
 ### <a name="what-is-azure-firewall"></a>Was ist Azure Firewall?
 
@@ -111,10 +111,7 @@ Set-AzureRmFirewall -AzureFirewall $azfw
 
 ### <a name="what-are-the-known-service-limits"></a>Welche Dienstgrenzwerte sind bekannt?
 
-* Azure Firewall verfügt über einen weichen Grenzwert von 1000 TB pro Firewall pro Monat.
-* Eine Azure Firewall-Instanz, die in einem zentralen virtuellen Netzwerk ausgeführt wird, weist Einschränkungen für das virtuelle Netzwerkpeering auf, mit maximal 50 virtuellen Spoke-Netzwerken.  
-* Azure Firewall arbeitet nicht mit globalem Peering. Daher sollten Sie mindestens eine Firewall pro Region bereitstellen.
-* Azure Firewall unterstützt 10.000 Anwendungsregeln und 10.000 Netzwerkregeln.
+Die Einschränkungen des Azure Firewall-Diensts finden Sie unter [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](../articles/azure-subscription-service-limits.md#azure-firewall-limits).
 
 ### <a name="can-azure-firewall-in-a-hub-virtual-network-forward-and-filter-network-traffic-between-two-spoke-virtual-networks"></a>Kann Azure Firewall in einem virtuellen Hubnetzwerk den Netzwerkdatenverkehr zwischen zwei virtuellen Spoke-Netzwerken weiterleiten und filtern?
 

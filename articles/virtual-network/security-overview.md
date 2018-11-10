@@ -4,9 +4,6 @@ description: Hier finden Sie Informationen zu Netzwerk- und Anwendungssicherheit
 services: virtual-network
 documentationcenter: na
 author: jimdial
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: NA
 ms.topic: get-started-article
@@ -14,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/26/2018
 ms.author: jdial
-ms.openlocfilehash: 79ea839a5b57a2b64b80feba8324764a23c05697
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: e9a4aa1606e99057565891dc10d17ba9abf15d9c
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46987015"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50159076"
 ---
 # <a name="security-groups"></a>Sicherheitsgruppen
 <a name="network-security-groups"></a>
@@ -60,9 +57,9 @@ Mit ergänzten Sicherheitsregeln wird die Sicherheitsdefinition für virtuelle N
  Die folgenden Diensttags können zum Definieren von Sicherheitsregeln verwendet werden. Ihre Namen unterscheiden sich je nach [Azure-Bereitstellungsmodell](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json) leicht.
 
 * **VirtualNetwork** (Resource Manager) (**VIRTUAL_NETWORK** für klassisches Bereitstellungsmodell): Dieses Tag enthält den VM-Adressraum (alle für das virtuelle Netzwerk definierten CIDR-Bereiche), alle verbundenen lokalen Adressräume und [per Peering verknüpfte](virtual-network-peering-overview.md) virtuelle Netzwerke oder virtuelle Netzwerke, die mit einem [Gateway des virtuellen Netzwerks](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json) verbunden sind.
-* **AzureLoadBalancer** (Resource Manager) (**AZURE_LOADBALANCER** für klassisch): Dieses Tag symbolisiert den Lastenausgleich der Azure-Infrastruktur. Das Tag wird in eine [Azure-Datencenter-IP-Adresse](https://www.microsoft.com/download/details.aspx?id=41653) umgewandelt, die als Ausgangspunkt für die Integritätstests von Azure fungiert. Sie können diese Regel außer Kraft setzen, wenn Sie den Lastenausgleich von Azure nicht verwenden.
+* **AzureLoadBalancer** (Resource Manager) (**AZURE_LOADBALANCER** für klassisch): Dieses Tag symbolisiert den Lastenausgleich der Azure-Infrastruktur. Das Tag wird in eine [virtuelle IP-Adresse des Hosts](security-overview.md##azure-platform-considerations) (168.63.129.16) umgewandelt, die als Ausgangspunkt für die Integritätstests von Azure fungiert. Sie können diese Regel außer Kraft setzen, wenn Sie den Lastenausgleich von Azure nicht verwenden.
 * **Internet** (Resource Manager) (**INTERNET** klassisch): Dieses Tag stellt den IP-Adressraum dar, der außerhalb des virtuellen Netzwerks liegt und über das öffentliche Internet erreichbar ist. Der Adressbereich schließt den [Azure-eigenen öffentlichen IP-Adressraum](https://www.microsoft.com/download/details.aspx?id=41653) ein.
-* **AzureCloud** (nur Resource Manager): Mit diesem Tag wird der IP-Adressraum für Azure angegeben, einschließlich aller öffentlichen IP-Adressen für Rechenzentren. Wenn Sie *AzureCloud* als Wert angeben, wird der Datenverkehr für öffentliche Azure-IP-Adressen zugelassen oder verweigert. Falls Sie den Zugriff auf AzureCloud nur für eine bestimmte [Region](https://azure.microsoft.com/regions) zulassen möchten, können Sie die Region angeben. Falls Sie den Zugriff auf AzureCloud von Azure beispielsweise nur für die Region „USA, Osten“ zulassen möchten, können Sie *AzureCloud.EastUS* als Diensttag angeben. 
+* **AzureCloud** (nur Resource Manager): Mit diesem Tag wird der IP-Adressraum für Azure angegeben, einschließlich aller [öffentlichen IP-Adressen für Datencenter](https://www.microsoft.com/download/details.aspx?id=41653). Wenn Sie *AzureCloud* als Wert angeben, wird der Datenverkehr für öffentliche Azure-IP-Adressen zugelassen oder verweigert. Falls Sie den Zugriff auf AzureCloud nur für eine bestimmte [Region](https://azure.microsoft.com/regions) zulassen möchten, können Sie die Region angeben. Falls Sie den Zugriff auf AzureCloud von Azure beispielsweise nur für die Region „USA, Osten“ zulassen möchten, können Sie *AzureCloud.EastUS* als Diensttag angeben. 
 * **AzureTrafficManager** (nur Resource Manager): Mit diesem Tag wird der IP-Adressraum für die Test-IP-Adressen des Azure Traffic Manager angegeben. Weitere Informationen zu Test-IP-Adressen von Traffic Manager finden Sie unter [Häufig gestellte Fragen (FAQ) zu Traffic Manager](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs). 
 * **Storage** (nur Resource Manager): Mit diesem Tag wird der IP-Adressraum für den Azure Storage-Dienst angegeben. Wenn Sie *Storage* als Wert angeben, wird der Datenverkehr für den Speicher zugelassen oder verweigert. Falls Sie den Zugriff auf den Speicher nur für eine bestimmte [Region](https://azure.microsoft.com/regions) zulassen möchten, können Sie die Region angeben. Wenn Sie den Zugriff auf Azure Storage beispielsweise nur für die Region „USA, Osten“ zulassen möchten, können Sie *Storage.EastUS* als Diensttag angeben. Das Tag steht für den Dienst, aber nicht für bestimmte Instanzen des Diensts. Beispielsweise steht das Tag für den Azure Storage-Dienst, aber nicht für ein bestimmtes Azure Storage-Konto. Alle Adresspräfixe, für die dieses Tag steht, werden auch durch das **Internet**-Tag repräsentiert. 
 * **Sql** (nur Resource Manager): Dieses Tag steht für die Adresspräfixe der Azure SQL-Datenbank- und Azure SQL Data Warehouse-Dienste. Wenn Sie *Sql* als Wert angeben, wird der Datenverkehr für Sql zugelassen oder verweigert. Falls Sie den Zugriff auf Sql nur für eine bestimmte [Region](https://azure.microsoft.com/regions) zulassen möchten, können Sie die Region angeben. Wenn Sie den Zugriff auf Azure SQL-Datenbank beispielsweise nur für die Region „USA, Osten“ zulassen möchten, können Sie *Sql.EastUS* als Diensttag angeben. Das Tag steht für den Dienst, aber nicht für bestimmte Instanzen des Diensts. Beispielsweise steht das Tag für den Azure SQL-Datenbank-Dienst, aber nicht für eine bestimmte SQL-Datenbank oder einen bestimmten SQL-Server. Alle Adresspräfixe, für die dieses Tag steht, werden auch durch das **Internet**-Tag repräsentiert. 
@@ -79,7 +76,6 @@ Mit ergänzten Sicherheitsregeln wird die Sicherheitsdefinition für virtuelle N
 * **GatewayManager** (nur Resource Manager): Mit diesem Tag werden die Adresspräfixe des Azure Gateway Manager-Diensts angegeben. Wenn Sie *GatewayManager* als Wert angeben, wird der Datenverkehr für GatewayManager zugelassen oder verweigert. Falls Sie den Zugriff auf GatewayManager nur in einer bestimmten [Region](https://azure.microsoft.com/regions) zulassen möchten, können Sie die Region im folgenden Format angeben: GatewayManager.[Name der Region]. 
 * **AzureDataLake** (nur Resource Manager): Mit diesem Tag werden die Adresspräfixe des Data Lake-Diensts von Azure angegeben. Wenn Sie *AzureDataLake* als Wert angeben, wird der Datenverkehr für AzureDataLake zugelassen oder verweigert. 
 * **AzureActiveDirectory** (nur Resource Manager): Mit diesem Tag werden die Adresspräfixe des AzureActiveDirectory-Diensts angegeben. Wenn Sie *AzureActiveDirectory* als Wert angeben, wird der Datenverkehr für AzureActiveDirectory zugelassen oder verweigert.  
-* **CorpNetSAW** (nur Resource Manager): Mit diesem Tag werden die Adresspräfixe der von Azure betriebenen [CorpNetSAW-Geräte](../security/azure-security-iaas.md) angegeben. In einigen Fällen können die Azure-Dienste dieses Diensttag nutzen, um den Zugriff auf vom Kunden verwaltete Instanzen anzufordern und so die Unterstützungsmöglichkeiten zu verbessern. Wenn Sie *CorpNetSAW* als Wert angeben, wird der Datenverkehr für CorpNetSAW zugelassen oder verweigert. 
 
 > [!NOTE]
 > Mit Diensttags von Azure-Diensten werden die Adresspräfixe der spezifischen verwendeten Cloud angegeben. Regionale Diensttags werden in nationalen Clouds nicht unterstützt, sondern nur im globalen Format. Beispiel: *Storage* und *Sql*.

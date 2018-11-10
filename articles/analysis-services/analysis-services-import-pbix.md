@@ -8,19 +8,19 @@ ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 8882a44b0b6db1b3c23c017a072ebddfe9aa20f5
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 3adf0c9c2e2b264904e66b82716447d634aaeee7
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49090870"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50209648"
 ---
 # <a name="import-a-power-bi-desktop-file"></a>Importieren einer Power BI Desktop-Datei
 
 Sie können ein Datenmodell in einer Power BI Desktop-Datei (PBIX-Datei) in Azure Analysis Services importieren. Modellmetadaten, zwischengespeicherte Daten und Datenquellenverbindungen werden importiert. Berichte und Visualisierungen werden nicht importiert. Importierte Datenmodelle aus Power BI Desktop haben den Kompatibilitätsgrad 1400.
 
 > [!IMPORTANT]
-> Dieses Feature ist veraltet. Es kann in einem zukünftigen Update entfernt oder erheblich geändert werden. Wir empfehlen, dieses Feature in neuen und vorhandenen Projekten nicht mehr zu verwenden, um die Kompatibilität mit kommenden Updates aufrecht zu erhalten. Bei komplexeren Modellentwicklungen und -tests ist es sinnvoll, Visual Studio (SSDT) und SQL Server Management Studio (SSMS) zu verwenden.
+> Dieses Feature ist veraltet. Es kann in einem zukünftigen Update entfernt oder erheblich geändert werden. Es wird empfohlen, dieses Feature in neuen und vorhandenen Projekten nicht mehr zu verwenden, um die Kompatibilität mit kommenden Updates aufrechtzuerhalten. Bei komplexeren Modellentwicklungen und -tests ist es sinnvoll, Visual Studio (SSDT) und SQL Server Management Studio (SSMS) zu verwenden.
 
 **Einschränkungen**   
 

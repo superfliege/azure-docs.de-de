@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/12/2018
 ms.author: vinynigam
-ms.openlocfilehash: 2821f3fa07d8d9ada02da212084639c93e469d0b
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 91cfa35cd10772da0042566bdd9030f780329f93
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49408879"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50415184"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Netzwerkleistungsmonitor-Lösung: häufig gestellte Fragen
 
-![Symbol des Netzwerkleistungsmonitors](media/log-analytics-network-performance-monitor/npm-symbol.png)
+![Symbol des Netzwerkleistungsmonitors](media/log-analytics-network-performance-monitor-faq/npm-symbol.png)
 
 Dieser Artikel umfasst die häufig gestellten Fragen (FAQs) zum Netzwerkleistungsmonitor (NPM) in Azure.
 
@@ -54,7 +54,7 @@ Für die Funktion „ExpressRoute-Monitor“ sollten die Azure-Knoten nur als Di
 ### <a name="which-protocol-among-tcp-and-icmp-should-be-chosen-for-monitoring"></a>Welches Protokoll, TCP oder ICMP, sollte für die Überwachung ausgewählt werden?
 Wenn Sie Ihr Netzwerk mithilfe Windows Server-basierter Knoten überwachen, wird empfohlen, TCP als Überwachungsprotokoll zu verwenden, da es eine höhere Genauigkeit bietet. 
 
-Für auf Windows-Desktop- und Windows-Clientbetriebssystemen basierende Knoten wird ICMP empfohlen, da diese Plattform nicht zulässt, dass TCP-Daten über RAW-Sockets gesendet werden, dies ist jedoch für den Netzwerkleistungsmonitor zum Ermitteln der Netzwerktopologie erforderlich.
+ICMP wird für Windows-Knoten mit Desktop-/Clientbetriebssystemen empfohlen. Auf dieser Plattform können keine TCP-Daten über RAW-Sockets mit npm gesendet werden, um die Netzwerktopologie zu ermitteln.
 
 Weitere Informationen zu den jeweiligen Vorteilen der einzelnen Protokolle finden Sie [hier](log-analytics-network-performance-monitor-performance-monitor.md#choose-the-protocol).
 

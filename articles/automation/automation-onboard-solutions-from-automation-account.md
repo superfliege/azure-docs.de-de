@@ -9,20 +9,20 @@ ms.date: 10/16/2018
 ms.topic: conceptual
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 1ed76b0505747831363ea829f1cb91b3e056282a
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: d031965a812cd218fbb4e78dfbf90ee01c26f5bb
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49352445"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50085974"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions"></a>Integrieren von Lösungen für die Updateverwaltung, Änderungsnachverfolgung und den Bestand
 
 Azure Automation stellt Lösungen zum Verwalten der Sicherheitsupdates für das Betriebssystem, zum Nachverfolgen von Änderungen und für den Bestand bereit, der auf Ihren Computern installiert ist. Es gibt mehrere Möglichkeiten, Computer zu integrieren. Sie können die Lösung [über einen virtuellen Computer](automation-onboard-solutions-from-vm.md), [durch Durchsuchen mehrerer Computer](automation-onboard-solutions-from-browse.md), über Ihr Automation-Konto oder per [Runbook](automation-onboard-solutions.md) integrieren. Dieser Artikel behandelt das Integrieren dieser Lösungen über Ihr Automation-Konto.
 
-## <a name="log-in-to-azure"></a>Anmelden an Azure
+## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
-Anmelden bei Azure unter https://portal.azure.com
+Melden Sie sich unter https://portal.azure.com bei Azure an.
 
 ## <a name="enable-solutions"></a>Aktivieren von Lösungen
 
@@ -52,7 +52,7 @@ Falls der ausgewählte Arbeitsbereich noch nicht die Lösungen „Updateverwaltu
 
 * **MicrosoftDefaultScopeConfig-Updates**
 
-Wenn der ausgewählte Arbeitsbereich bereits die Lösung enthält, wird sie nicht erneut bereitgestellt, und die Bereichskonfiguration wird ihm nicht hinzugefügt.
+Verfügt der ausgewählte Arbeitsbereich bereits über die Lösung, wird die Lösung nicht erneut bereitgestellt, und die Bereichskonfiguration wird nicht hinzugefügt.
 
 ## <a name="saved-searches"></a>Gespeicherte Suchvorgänge
 
@@ -73,7 +73,7 @@ Wählen Sie einen der gespeicherten Suchvorgänge aus, um die zum Füllen der Gr
 
 Wählen Sie in Ihrem Automation-Konto unter **KONFIGURATIONSVERWALTUNG** entweder **Bestand** oder **Änderungsnachverfolgung** bzw. unter **UPDATEVERWALTUNG** die Option **Updateverwaltung** aus.
 
-Klicken Sie auf **+ Azure-VMs hinzufügen**, und wählen Sie mindestens eine VM aus der Liste aus. Virtuelle Computer, die nicht aktiviert werden können, sind ausgegraut und können nicht ausgewählt werden. Klicken Sie auf der Seite **Updateverwaltung aktivieren** auf **Aktivieren**. Dadurch werden die ausgewählten virtuellen Computer der Computergruppe des gespeicherten Suchvorgangs für die Lösung hinzugefügt.
+Klicken Sie auf **+ Azure-VMs hinzufügen**, und wählen Sie mindestens eine VM aus der Liste aus. Virtuelle Computer, die nicht aktiviert werden können, sind ausgegraut und können nicht ausgewählt werden. Klicken Sie auf der Seite **Updateverwaltung aktivieren** auf **Aktivieren**. Diese Aktion fügt die ausgewählten virtuellen Computer zum gespeicherten Suchvorgang der Computergruppe für die Lösung hinzu.
 
 ![Aktivieren von Azure-VMs](media/automation-onboard-solutions-from-automation-account/enable-azure-vms.png)
 
@@ -81,23 +81,23 @@ Klicken Sie auf **+ Azure-VMs hinzufügen**, und wählen Sie mindestens eine VM 
 
 Computer, die nicht in Azure enthalten sind, müssen manuell hinzugefügt werden. Wählen Sie in Ihrem Automation-Konto unter **KONFIGURATIONSVERWALTUNG** entweder **Bestand** oder **Änderungsnachverfolgung** bzw. unter **UPDATEVERWALTUNG** die Option **Updateverwaltung** aus.
 
-Klicken Sie auf **Nicht-Azure-Computer hinzufügen**. Dadurch wird ein neues Browserfenster mit den [Anweisungen zum Installieren und Konfigurieren von Microsoft Monitoring Agent auf dem Computer](../log-analytics/log-analytics-concept-hybrid.md) geöffnet, sodass der Computer mit der Berichterstellung für die Lösung beginnen kann. Wenn Sie einen Computer integrieren, der aktuell von System Center Operations Manager verwaltet wird, ist kein neuer Agent erforderlich. Die Arbeitsbereichsinformationen werden in den vorhandenen Agent eingegeben.
+Klicken Sie auf **Nicht-Azure-Computer hinzufügen**. Diese Aktion öffnet ein neues Browserfenster mit den [Anweisungen zum Installieren und Konfigurieren von Microsoft Monitoring Agent auf dem Computer](../log-analytics/log-analytics-concept-hybrid.md), sodass der Computer mit der Berichterstellung für die Lösung beginnen kann. Wenn Sie einen Computer integrieren, der aktuell von System Center Operations Manager verwaltet wird, ist kein neuer Agent erforderlich. Die Arbeitsbereichsinformationen werden in den vorhandenen Agent eingegeben.
 
 ## <a name="onboard-machines-in-the-workspace"></a>Integrierte Computer im Arbeitsbereich
 
-Manuell installierte Computer oder Computer, die bereits Ihrem Arbeitsbereich angehören, müssen Azure Automation hinzugefügt werden, damit die Lösung aktiviert wird. Wählen Sie in Ihrem Automation-Konto unter **KONFIGURATIONSVERWALTUNG** entweder **Bestand** oder **Änderungsnachverfolgung** bzw. unter **UPDATEVERWALTUNG** die Option **Updateverwaltung** aus.
+Manuell installierte Computer oder Computer, die bereits Berichte für Ihren Arbeitsbereich erstellen, müssen Azure Automation hinzugefügt werden, damit die Lösung aktiviert wird. Wählen Sie in Ihrem Automation-Konto unter **KONFIGURATIONSVERWALTUNG** entweder **Bestand** oder **Änderungsnachverfolgung** bzw. unter **UPDATEVERWALTUNG** die Option **Updateverwaltung** aus.
 
-Wählen Sie **Computer verwalten** aus. Dadurch wird die Seite **Computer verwalten** geöffnet. Auf dieser Seite können Sie die Lösung für eine ausgewählte Computergruppe, für alle verfügbaren Computer oder für alle aktuellen und zukünftigen Computer aktivieren.
+Wählen Sie **Computer verwalten** aus. Diese Aktion öffnet die Seite **Computer verwalten**. Auf dieser Seite können Sie die Lösung für eine ausgewählte Computergruppe, für alle verfügbaren Computer oder für alle aktuellen und zukünftigen Computer aktivieren. Die Schaltfläche **Computer verwalten** wird möglicherweise abgeblendet dargestellt, wenn Sie zuvor die Option **Auf allen verfügbaren und zukünftigen Computern aktivieren** ausgewählt haben.
 
 ![Gespeicherte Suchvorgänge](media/automation-onboard-solutions-from-automation-account/managemachines.png)
 
 ### <a name="all-available-machines"></a>Alle verfügbaren Computer
 
-Um die Lösung für alle verfügbaren Computer zu aktivieren, wählen Sie **Auf allen verfügbaren Computern aktivieren** aus. Dadurch wird das Steuerelement für das einzelne Hinzufügen von Computern deaktiviert. Mit dieser Aufgabe werden alle Namen der Computer hinzugefügt, die Berichte für den Arbeitsbereich und die Computergruppe der gespeicherten Suchabfrage erstellen. Wenn diese Option aktiviert ist, wird die Schaltfläche **Computer verwalten** deaktiviert.
+Um die Lösung für alle verfügbaren Computer zu aktivieren, wählen Sie **Auf allen verfügbaren Computern aktivieren** aus. Diese Aktion deaktiviert das Steuerelement zum einzelnen Hinzufügen von Computern. Mit dieser Aufgabe werden alle Namen der Computer hinzugefügt, die Berichte für den Arbeitsbereich und die Computergruppe der gespeicherten Suchabfrage erstellen. Diese Aktion deaktiviert die Schaltfläche **Computer verwalten**.
 
 ### <a name="all-available-and-future-machines"></a>Alle verfügbaren und zukünftigen Computer
 
-Um die Lösung für alle verfügbaren und alle zukünftigen Computer zu aktivieren, wählen Sie **Auf allen verfügbaren und zukünftigen Computern aktivieren** aus. Mit dieser Option werden die gespeicherte Suchvorgänge und Bereichskonfigurationen aus dem Arbeitsbereich gelöscht. Daraufhin wird die Lösung für alle Azure- und Nicht-Azure-Computer geöffnet, die Berichte für den Arbeitsbereich erstellen. Wenn diese Option aktiviert ist, wird die Schaltfläche **Computer verwalten** deaktiviert.
+Um die Lösung für alle verfügbaren und zukünftigen Computer zu aktivieren, wählen Sie **Auf allen verfügbaren und zukünftigen Computern aktivieren** aus. Mit dieser Option werden die gespeicherte Suchvorgänge und Bereichskonfigurationen aus dem Arbeitsbereich gelöscht. Diese Aktion öffnet die Lösung für alle Azure- und Nicht-Azure-Computer, die Berichte für den Arbeitsbereich erstellen. Diese Aktion deaktiviert die Schaltfläche **Computer verwalten** dauerhaft, da keine Bereichskonfiguration übrig ist.
 
 ### <a name="selected-machines"></a>Ausgewählte Computer
 
@@ -111,7 +111,7 @@ Die folgenden Lösungen sind vom Log Analytics-Arbeitsbereich abhängig:
 * [Änderungsnachverfolgung](automation-change-tracking.md)
 * [Starten und Beenden von VMs außerhalb der Kernzeit](automation-solution-vm-management.md)
 
-Wenn Sie Ihr Automation-Konto nicht länger in Log Analytics integriert sein soll, können Sie die Verknüpfung direkt im Azure-Portal aufheben.  Bevor Sie fortfahren, müssen Sie zuerst die zuvor erwähnten Lösungen entfernen, da dieser Prozess andernfalls nicht fortgesetzt werden kann. Lesen Sie den Artikel für die jeweilige Lösung, die Sie importiert haben, um die Schritte zu deren Entfernung zu verstehen.
+Wenn Sie Ihr Automation-Konto nicht länger in Log Analytics integriert sein soll, können Sie die Verknüpfung direkt im Azure-Portal aufheben.  Bevor Sie fortfahren, müssen Sie zuerst die zuvor erwähnten Lösungen entfernen, da dieser Prozess andernfalls nicht fortgesetzt werden kann. Lesen Sie den Artikel für die jeweilige Lösung, die Sie importiert haben, um zu erfahren, welche Schritte zur Entfernung ausgeführt werden müssen.
 
 Nach dem Entfernen dieser Lösungen können Sie die folgenden Schritte ausführen, um die Verknüpfung Ihres Automation-Kontos aufzuheben.
 
@@ -126,7 +126,7 @@ Nach dem Entfernen dieser Lösungen können Sie die folgenden Schritte ausführe
 
    Sie werden gefragt, ob Sie fortfahren möchten.
 
-3. Während Azure Automation versucht, die Verknüpfung des Kontos mit Ihrem Log Analytics-Arbeitsbereich aufzuheben, können Sie den Fortschritt unter **Benachrichtigungen** im Menü nachverfolgen.
+3. Während Azure Automation versucht, die Verknüpfung des Kontos mit Ihrem Log Analytics-Arbeitsbereich aufzuheben, können Sie den Fortschritt im Menü unter **Benachrichtigungen** nachverfolgen.
 
 Wenn Sie die Lösung „Updateverwaltung“ verwendet haben, können Sie optional die folgenden Elemente entfernen, die nach dem Entfernen der Lösung nicht mehr benötigt werden.
 

@@ -17,12 +17,12 @@ ms.workload: identity
 ms.date: 08/08/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: e7e92c2f3564591133816baaaf758d72b083330b
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 585a4968672c8bcab0efb988d556e447983dfc5a
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49958549"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50158702"
 ---
 # <a name="what-is-baseline-protection-preview"></a>Was ist Baselineschutz (Vorschauversion)?  
 
@@ -51,7 +51,7 @@ Beim **Anfordern von MFA für Administratoren** handelt es sich um eine Basisric
 
 ![Azure Active Directory](./media/baseline-protection/01.png)
 
-In dieser Basisrichtlinie haben Sie die Möglichkeit, Benutzer und Gruppen auszuschließen. Möglicherweise möchten Sie ein *[Administratorkonto für den Notfallzugriff](../users-groups-roles/directory-emergency-access.md)* ausschließen, um sicherzustellen, dass Sie für den Mandanten nicht gesperrt werden.
+In dieser Basisrichtlinie haben Sie die Möglichkeit, Benutzer auszuschließen. Möglicherweise möchten Sie ein *[Administratorkonto für den Notfallzugriff](../users-groups-roles/directory-emergency-access.md)* ausschließen, um sicherzustellen, dass Sie für den Mandanten nicht gesperrt werden.
 
 
 ## <a name="enable-a-baseline-policy"></a>Aktivieren einer Basisrichtlinie 

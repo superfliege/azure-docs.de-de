@@ -1,21 +1,18 @@
 ---
 title: Einrichten der Notfallwiederherstellung für VMware-VMs oder physische Server an einem sekundären Standort mit Azure Site Recovery | Microsoft-Dokumentation
 description: Hier erfahren sie, wie Sie die Notfallwiederherstellung für VMware-VMs oder physische Windows- und Linux-Server an einem sekundären Standort mit Azure Site Recovery einrichten.
-services: site-recovery
-author: nsoneji
-manager: gauarvd
+author: rayne-wiselman
+manager: carmonm
 ms.service: site-recovery
-ms.workload: backup-recovery
-ms.tgt_pltfrm: na
-ms.topic: article
-ms.date: 08/01/2018
+ms.topic: conceptual
+ms.date: 10/29/2018
 ms.author: raynew
-ms.openlocfilehash: 94abdd30dc9cd279ab791541250787a111f80d30
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: fe6199aea91bbb7518ccdbfe640848a59edcee49
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39618987"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50215462"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-vmware-virtual-machines-or-physical-servers-to-a-secondary-site"></a>Einrichten der Notfallwiederherstellung für lokale virtuelle VMware-Computer oder physische Server an einem sekundären Standort
 
@@ -176,7 +173,7 @@ Scout Update 5 ist ein kumulatives Update. Es enthält sämtliche Fixes aus Upda
 > [!NOTE]
 > * Die P2V-Cluster-Fixes sind nur auf physische MSCS-Cluster anwendbar, die kürzlich mit Site Recovery Scout Update 5 geschützt wurden. Befolgen Sie beim Installieren der Cluster-Fixes auf geschützten P2V MSCS-Clustern mit älteren Updates die Upgrade-Schritte, die in Abschnitt 12 der [Versionshinweise zu Site Recovery Scout](https://aka.ms/asr-scout-release-notes) beschrieben sind.
 > * Wenn beim erneuten Schützen dieselben Datenträger auf den einzelnen Datenknoten aktiv sind wie zum Zeitpunkt des ursprünglichen Schützens, können beim erneuten Schützen eines physischen MSCS-Clusters nur vorhandene Zieldatenträger verwendet werden. Andernfalls müssen Sie die Abschnitt 12 der [Versionshinweise zu Site Recovery Scout](https://aka.ms/asr-scout-release-notes) beschriebenen Schritte ausführen, um die Zieldatenträger in den korrekten Datenspeicherpfad zu verschieben und sie während des erneuten Schützens erneut verwenden zu können. Wenn Sie den MSCS-Cluster im P2V-Modus ohne Befolgen der Upgrade-Schritte erneut schützen, wird auf dem ESXi-Zielserver ein neuer Datenträger erstellt. Die alten Datenträger müssen manuell aus dem Datenspeicher gelöscht werden.
-> * Wenn ein SLES11- oder SLES11-Quellserver (mit einem beliebigen Service Pack) ordnungsgemäß neu gestartet wird, markieren Sie die Replikationspaare des **Stammdatenträgers** manuell für die erneute Synchronisierung. Es erfolgt keine Benachrichtigung über die CX-Schnittstelle. Wenn Sie den Stammdatenträger nicht für die erneute Synchronisierung markieren, treten u.U. Probleme mit der Datenintegrität auf.
+> * Wenn ein SLES11- oder SLES11-Quellserver (mit einem beliebigen Service Pack) ordnungsgemäß neu gestartet wird, markieren Sie die Replikationspaare des **Stammdatenträgers** manuell für die erneute Synchronisierung. Es erfolgt keine Benachrichtigung über die CX-Schnittstelle. Wenn Sie den Stammdatenträger nicht für die erneute Synchronisierung markieren, treten u.U. Probleme mit der Datenintegrität auf.
 
 
 ### <a name="azure-site-recovery-scout-801-update-4"></a>Azure Site Recovery Scout 8.0.1 Update 4

@@ -1,6 +1,6 @@
 ---
 title: Registrieren eines TPM-Geräts für den Azure Device Provisioning-Dienst per C# | Microsoft-Dokumentation
-description: Azure-Schnellstart – Registrieren eines TPM-Geräts für den Azure IoT Hub Device Provisioning-Dienst per C#-Dienst-SDK
+description: 'Azure-Schnellstart: Registrieren eines TPM-Geräts für Azure IoT Hub Device Provisioning Service per C#-Dienst-SDK. In dieser Schnellstartanleitung werden einzelne Registrierungen verwendet.'
 author: wesmc7777
 ms.author: wesmc
 ms.date: 01/16/2018
@@ -10,12 +10,12 @@ services: iot-dps
 manager: timlt
 ms.devlang: csharp
 ms.custom: mvc
-ms.openlocfilehash: 5c0ac54996f66f44d39389d8ed1bc0c40793933b
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 48409fec8a9edd8a56f6e0664e1451e9677c4281
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39528077"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50155033"
 ---
 # <a name="enroll-tpm-device-to-iot-hub-device-provisioning-service-using-c-service-sdk"></a>Registrieren eines TPM-Geräts für den IoT Hub Device Provisioning-Dienst per C#-Dienst-SDK
 
@@ -34,7 +34,7 @@ Anhand dieser Schritte wird veranschaulicht, wie Sie programmgesteuert eine indi
 ## <a name="get-the-connection-string-for-your-provisioning-service"></a>Abrufen der Verbindungszeichenfolge für Ihren Bereitstellungsdienst
 
 Für das Beispiel in dieser Schnellstartanleitung benötigen Sie die Verbindungszeichenfolge für Ihren Bereitstellungsdienst.
-1. Melden Sie sich beim Azure-Portal an, klicken Sie im Menü auf der linken Seite auf die Schaltfläche **Alle Ressourcen**, und öffnen Sie Ihren Device Provisioning-Dienst. 
+1. Melden Sie sich am Azure-Portal an, klicken Sie im Menü auf der linken Seite auf die Schaltfläche **Alle Ressourcen**, und öffnen Sie Ihren Device Provisioning-Dienst. 
 2. Klicken Sie auf **Freigegebene Zugriffsrichtlinien** und dann auf die gewünschte Zugriffsrichtlinie, um die dazugehörigen Eigenschaften zu öffnen. Kopieren Sie im Fenster **Zugriffsrichtlinie** die Primärschlüssel-Verbindungszeichenfolge, und notieren Sie sie. 
 
     ![Abrufen der Verbindungszeichenfolge für den Provisioning-Dienst aus dem Portal](media/quick-enroll-device-tpm-csharp/get-service-connection-string.png)

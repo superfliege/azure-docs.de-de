@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/31/2018
+ms.date: 10/29/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: 12d3b358be8bb90b63e5e7310123f8ae7093994c
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 28344ac7c50b48b472ba6f907b116b3b202de454
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43190271"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50238796"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Planen der Implementierung einer Azure Active Directory-Hybrideinbindung
 
@@ -95,13 +95,13 @@ Wenn Sie das Systemvorbereitungstool Sysprep verwenden, stellen Sie sicher, dass
 
 Wenn Sie zusätzliche VMs mit einer Momentaufnahme des virtuellen Computers erstellen, stellen Sie sicher, dass Sie eine Momentaufnahme verwenden, die nicht für die Azure AD-Hybrideinbindung konfiguriert wurde.
 
-Für Geräte, die für das Roaming von Benutzerprofilen oder das Roaming von Anmeldeinformationen konfiguriert wurden, wird die Registrierung kompatibler Windows-Geräte nicht unterstützt. Verwenden Sie Windows 10, wenn Sie das Roaming von Profilen oder Einstellungen nutzen.
+Azure AD Hybrid Join für kompatible Windows-Geräte:
 
-- Die Registrierung kompatibler Windows-Geräte **wird** in nicht zu einem Verbund gehörenden Umgebungen durch die [nahtlose einmalige Anmeldung mit Azure Active Directory](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso-quick-start) unterstützt. 
- 
-- Bei Verwendung der Azure AD-Passthrough-Authentifizierung wird die Registrierung kompatibler Windows-Geräte ohne nahtloses einmaliges Anmelden **nicht** unterstützt.
+- **Wird** in nicht zu einem Verbund gehörenden Umgebungen durch das [nahtlose einmalige Anmelden von Azure Active Directory](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso-quick-start) unterstützt. 
 
-- Für Geräte, die Roamingprofile verwenden, wird die Registrierung kompatibler Windows-Geräte **nicht** unterstützt. Verwenden Sie Windows 10, wenn Sie das Roaming von Profilen oder Einstellungen nutzen.
+- Wird bei Verwendung der Azure AD-Passthrough-Authentifizierung ohne nahtloses einmaliges Anmelden **nicht** unterstützt.
+
+- Wird **nicht** unterstützt, wenn das Roaming von Anmeldeinformationen oder Benutzerprofilen aktiviert ist oder wenn eine virtuelle Desktopinfrastruktur (VDI) verwendet wird.
 
 
 Die Registrierung von Windows Server mit der Domänencontrollerrolle wird nicht unterstützt.

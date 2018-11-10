@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.component: core
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 13820dd511d31217b79385e893edbb55a3a57693
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: e66dcac1d83c71174ad5d7c3fdcd2310143f8e01
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49430018"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50140805"
 ---
 # <a name="tune-hyperparameters-for-your-model"></a>Optimieren von Hyperparametern für Ihr Modell
 
@@ -238,16 +238,18 @@ In diesem Beispiel wird die Richtlinie zur frühzeitigen Beendigung bei jedem In
 
 ### <a name="no-termination-policy"></a>Keine Beendigungsrichtlinie
 
-Wenn Sie alle Trainingsläufe bis zum Abschluss ausführen lassen möchten, verwenden Sie „NoTerminationPolicy“. Das hat die Wirkung, dass keine Richtlinie zur frühzeitigen Beendigung angewendet wird.
+Wenn Sie alle Trainingsläufe bis zum Abschluss ausführen lassen möchten, legen Sie die Richtlinie auf „None“ fest. Das hat die Wirkung, dass keine Richtlinie zur frühzeitigen Beendigung angewendet wird.
 
 ```Python
-from azureml.train.hyperdrive import NoTerminationPolicy
-early_termination_policy = NoTerminationPolicy()
+policy=None
 ```
 
 ### <a name="default-policy"></a>Standardrichtlinie
 
-Wenn keine Richtlinie angegeben wird, verwendet der Dienst zur Optimierung von Hyperparametern standardmäßig eine Medianstopprichtlinie mit `evaluation_interval` 1 und `delay_evaluation` 5. Dies ist eine konservative Einstellung, die annähernd 25 %–35 % Ersparnis ohne Verluste bei der primären Metrik erbringen kann (bezogen auf unsere Auswertungsdaten).
+Ist keine Richtlinie angegeben, lässt der Dienst zur Optimierung von Hyperparametern alle Trainingsläufe bis zum Abschluss ausführen.
+
+>[!NOTE] 
+>Wenn Sie eine konservative Richtlinie möchten, die eine Ersparnis ohne Beendigung vielversprechender Aufträge ermöglicht, können Sie eine Medianstopprichtlinie mit den Werten 1 für `evaluation_interval` und 5 für `delay_evaluation` verwenden. Dies ist eine konservative Einstellung, die annähernd 25 %–35 % Ersparnis ohne Verluste bei der primären Metrik erbringen kann (bezogen auf unsere Auswertungsdaten).
 
 ## <a name="allocate-resources"></a>Zuordnen von Ressourcen
 

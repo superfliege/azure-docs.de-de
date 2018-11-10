@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.author: haining
 author: hning86
 ms.reviewer: larryfr
-ms.date: 09/24/2018
-ms.openlocfilehash: 64104fc70c7be1589c9332905f243a2e1e692eee
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.date: 10/24/2018
+ms.openlocfilehash: 95f74b23b9d0c89966347f066041b23f64f3b82c
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48237975"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50210685"
 ---
-# <a name="architecture-and-concepts-how-does-azure-machine-learning-service-work"></a>Architektur und Konzepte: Wie funktioniert der Azure Machine Learning-Dienst? 
+# <a name="how-the-azure-machine-learning-service-works-architecture-and-concepts"></a>Funktionsweise des Azure Machine Learning-Diensts: Architektur und Konzepte
 
 In diesem Dokument werden die Architektur und Konzepte für den Azure Machine Learning-Dienst beschrieben. Im folgenden Diagramm sind die wichtigsten Komponenten des Diensts und der allgemeine Workflow für seine Nutzung dargestellt: 
 
@@ -143,7 +143,7 @@ Eine Ausführung ist ein Datensatz, der die folgenden Informationen enthält:
 
 * Metadaten zur Ausführung (Zeitstempel, Dauer usw.)
 * Metriken, die von Ihrem Skript protokolliert werden
-* Ausgabedateien, die automatisch vom Experiment gesammelt oder explizit von Ihnen hochgeladen werden
+* Ausgabedateien, die automatisch vom Experiment gesammelt oder explizit von Ihnen hochgeladen werden.
 * Eine Momentaufnahme des Verzeichnisses, in dem Ihre Skripts enthalten sind, vor der Ausführung
 
 Eine Ausführung wird ausgelöst, wenn Sie ein Skript zum Trainieren eines Modells übermitteln. Eine Ausführung kann über null oder mehr untergeordnete Elemente verfügen. Die Ausführung der obersten Ebene weist also unter Umständen zwei untergeordnete Ausführungen auf, die beide jeweils selbst untergeordnete Ausführungen haben können.
@@ -156,16 +156,28 @@ Ein Experiment ist eine Gruppierung vieler Ausführungen aus einem bestimmten Sk
 
 Ein Beispiel für die Verwendung eines Experiments finden Sie im Dokument [Schnellstart: Erste Schritte mit dem Azure Machine Learning-Dienst](quickstart-get-started.md).
 
+## <a name="pipelines"></a>Pipelines
+
+Pipelines werden zum Erstellen und Verwalten von Workflows verwendet, die Machine Learning-Phasen zusammenfügen. Eine Pipeline kann beispielsweise eine Datenaufbereitungs-, eine Modelltrainings-, eine Modellimplementierungs- und eine Rückschlussphase enthalten. Jede Phase kann mehrere Schritte umfassen, von denen wiederum jeder Schritt auf verschiedenen Computezielen unbeaufsichtigt ausgeführt werden kann.
+
+Weitere Informationen zu Machine Learning-Pipelines für diesen Dienst finden Sie im Artikel [Pipelines und Azure Machine Learning](concept-ml-pipelines.md).
+
 ## <a name="compute-target"></a>Computeziel
 
-Ein Computeziel ist die Computeressource, die zum Ausführen Ihres Trainingsskripts oder Hosten Ihrer Webdienstbereitstellung verwendet wird. Die unterstützten Computeziele lauten: 
+Ein Computeziel ist die Computeressource, die zum Ausführen Ihres Trainingsskripts oder zum Hosten Ihrer Dienstbereitstellung verwendet wird. Die unterstützten Computeziele lauten: 
 
-* Ihr lokaler Computer
-* Eine Linux-VM in Azure (z.B. die Data Science Virtual Machine)
-* Azure Batch AI-Cluster
-* Apache Spark für HDInsight
-* Azure Container Instances
-* Azure Kubernetes Service
+| Computeziel | Training | Bereitstellung |
+| ---- |:----:|:----:|
+| Ihr lokaler Computer | ✓ | &nbsp; |
+| Ein virtueller Linux-Computer in Azure</br>(z. B. Data Science Virtual Machine) | ✓ | &nbsp; |
+| Azure Batch AI-Cluster | ✓ | &nbsp; |
+| Azure Databricks | ✓ | &nbsp; | &nbsp; |
+| Azure Data Lake Analytics | ✓ | &nbsp; |
+| Apache Spark für HDInsight | ✓ | &nbsp; |
+| Azure Container Instances | ✓ | ✓ |
+| Azure Kubernetes Service | &nbsp; | ✓ |
+| Azure IoT Edge | &nbsp; | ✓ |
+| Project Brainwave</br>(Field Programmable Gate Array) | &nbsp; | ✓ |
 
 Computeziele sind einem Arbeitsbereich zugeordnet. Andere Computeziele als der lokale Computer werden von Benutzern des Arbeitsbereichs gemeinsam genutzt.
 
@@ -187,7 +199,7 @@ Beispiele für Laufzeitkonfigurationen finden Sie im Dokument [Auswählen und Ve
 
 Zum Trainieren eines Modells geben Sie das Verzeichnis an, in dem das Trainingsskript und die zugehörigen Dateien enthalten sind. Außerdem geben Sie einen Experimentnamen an, der zum Speichern der während des Trainings gesammelten Informationen verwendet wird. Beim Training wird das gesamte Verzeichnis in die Trainingsumgebung (Computeziel) kopiert und das von der Laufzeitkonfiguration angegebene Skript gestartet. Darüber hinaus wird auch eine Momentaufnahme des Verzeichnisses unter dem Experiment im Arbeitsbereich gespeichert.
 
-Ein Beispiel für die Verwendung von Skripts zum Trainieren eines Modells finden Sie unter [Schnellstart: Erste Schritte mit dem Azure Machine Learning-Dienst](quickstart-get-started.md).
+Ein Beispiel finden Sie unter [Erstellen eines Arbeitsbereichs mit Python](quickstart-get-started.md).
 
 ## <a name="logging"></a>Protokollierung
 

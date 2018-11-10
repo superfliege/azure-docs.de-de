@@ -11,12 +11,12 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 04/15/2018
 ms.author: ghogen
-ms.openlocfilehash: c90ef26c0170db67b1d422701b6969ca3f9c9e38
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 9f2adfcbf2d6ca5de79cc787029f5139138b0e52
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49958515"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50230436"
 ---
 # <a name="add-key-vault-to-your-web-application-by-using-visual-studio-connected-services"></a>Hinzufügen von Key Vault zu Ihrer Webanwendung mithilfe der Option „Verbundene Dienste“ in Visual Studio
 
@@ -57,7 +57,7 @@ Ausführliche Informationen zu den Änderungen, die durch verbundene Dienste in 
 
    ![Hinzufügen eines verbundenen Diensts zum Projekt](media/vs-key-vault-add-connected-service/KeyVaultConnectedService4.PNG)
 
-1. Fügen Sie Ihrem Schlüsseltresor in Azure jetzt ein Geheimnis hinzu. Um im Portal an die richtige Stelle zu gelangen, klicken Sie auf den Link für die Verwaltung von Geheimnissen, die in diesem Schlüsseltresor gespeichert sind. Wenn Sie die Seite oder das Projekt geschlossen haben, können Sie im [Azure-Portal](https://portal.azure.com) dorthin wechseln, indem Sie unter **Sicherheit** die Option **Alle Dienste**, dann **Key Vault** und schließlich den Schlüsseltresor auswählen, den Sie gerade erstellt haben.
+1. Fügen Sie Ihrem Schlüsseltresor in Azure jetzt ein Geheimnis hinzu. Um im Portal an die richtige Stelle zu gelangen, klicken Sie auf den Link für die Verwaltung von Geheimnissen, die in diesem Schlüsseltresor gespeichert sind. Wenn Sie die Seite oder das Projekt geschlossen haben, können Sie im [Azure-Portal](https://portal.azure.com) dorthin wechseln, indem Sie unter **Sicherheit** die Option **Alle Dienste**, dann **Key Vault** und schließlich den erstellten Schlüsseltresor auswählen.
 
    ![Navigieren zum Portal](media/vs-key-vault-add-connected-service/manage-secrets-link.jpg)
 
@@ -65,7 +65,7 @@ Ausführliche Informationen zu den Änderungen, die durch verbundene Dienste in 
 
    ![Generieren/Importieren eines Geheimnisses](media/vs-key-vault-add-connected-service/generate-secrets.jpg)
 
-1. Geben Sie ein Geheimnis ein, z.B. „MeinGeheimn“, und weisen Sie diesem testweise einen beliebigen Zeichenfolgenwert zu. Klicken Sie anschließend auf die Schaltfläche **Erstellen**.
+1. Geben Sie ein Geheimnis ein, z.B. „MeinGeheimnis“, und weisen Sie diesem testweise einen beliebigen Zeichenfolgenwert zu. Wählen Sie anschließend die Schaltfläche **Erstellen** aus.
 
    ![Erstellen eines Geheimnisses](media/vs-key-vault-add-connected-service/create-a-secret.jpg)
 
@@ -73,94 +73,62 @@ Ausführliche Informationen zu den Änderungen, die durch verbundene Dienste in 
  
 Jetzt können Sie in Code auf Ihre Geheimnisse zugreifen. Die nächsten Schritte unterscheiden sich abhängig davon, ob Sie ASP.NET 4.7.1 oder ASP.NET Core verwenden.
 
-## <a name="access-your-secrets-in-code-aspnet-core-projects"></a>Zugreifen auf Ihre Geheimnisse in Code (ASP.NET Core-Projekte)
+## <a name="access-your-secrets-in-code"></a>Zugreifen auf Ihre Geheimnisse im Code
 
-Die Verbindung zu Key Vault wird beim Systemstart von einer Klasse eingerichtet, die über eine gewisse Erweiterung des Startverhaltens (beschrieben in [Optimieren einer App von einem externen Assembly in ASP.NET Core mit IHostingStartup](/aspnet/core/fundamentals/host/platform-specific-configuration)) [Microsoft.AspNetCore.Hosting.IHostingStartup](/dotnet/api/microsoft.aspnetcore.hosting.ihostingstartup?view=aspnetcore-2.1) implementiert. Die Startup-Klasse verwendet zwei Umgebungsvariablen, welche die Verbindungsinformationen für Key Vault enthalten: ASPNETCORE_HOSTINGSTARTUP__KEYVAULT__CONFIGURATIONENABLED = „true“ und ASPNETCORE_HOSTINGSTARTUP__KEYVAULT__CONFIGURATIONVAULT, eingestellt auf die Key Vault-URL. Diese Umgebungsvariablen werden beim Ausführen des Prozesses **Verbundenen Dienst hinzufügen** der Datei „launchsettings.json“ hinzugefügt.
+1. Installieren Sie die beiden NuGet-Bibliotheken [AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) und [KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault).
 
-So greifen Sie auf Ihre Geheimnisse zu
+2. Öffnen Sie die Datei „Program.cs“, und aktualisieren Sie den Code mit folgendem Code: 
+```
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            BuildWebHost(args).Run();
+        }
 
-1. In Visual Studio können Sie in Ihrem ASP.NET Core-Projekt jetzt auf diese Geheimnisse verweisen, indem Sie im Code die folgenden Ausdrücke verwenden:
- 
-   ```csharp
-      config["MySecret"] // Access a secret without a section
-      config["Secrets:MySecret"] // Access a secret in a section
-      config.GetSection("Secrets")["MySecret"] // Get the configuration section and access a secret in it.
-   ```
+        public static IWebHost BuildWebHost(string[] args) =>
+           WebHost.CreateDefaultBuilder(args)
+               .ConfigureAppConfiguration((ctx, builder) =>
+               {
+                   var keyVaultEndpoint = GetKeyVaultEndpoint();
+                   if (!string.IsNullOrEmpty(keyVaultEndpoint))
+                   {
+                       var azureServiceTokenProvider = new AzureServiceTokenProvider();
+                       var keyVaultClient = new KeyVaultClient(
+                           new KeyVaultClient.AuthenticationCallback(
+                               azureServiceTokenProvider.KeyVaultTokenCallback));
+                       builder.AddAzureKeyVault(
+                           keyVaultEndpoint, keyVaultClient, new DefaultKeyVaultSecretManager());
+                   }
+               }
+            ).UseStartup<Startup>()
+             .Build();
 
-1. Fügen Sie auf einer CSHTML-Seite, beispielsweise „About.cshtml“, im oberen Bereich der Datei die Anweisung @inject hinzu, um eine Variable einzurichten, mit der Sie auf die Key Vault-Konfiguration zugreifen können.
+        private static string GetKeyVaultEndpoint() => "https://<YourKeyVaultName>.vault.azure.net";
+    }
+```
+3. Öffnen Sie als Nächstes die Datei „About.cshtml.cs“, und schreiben Sie den folgenden Code:
+    1. Fügen Sie einen Verweis auf Microsoft.Extensions.Configuration mit dieser using-Anweisung ein.    
+        ```
+        using Microsoft.Extensions.Configuration
+        ```
+    2. Fügen Sie diesen Konstruktor hinzu.
+        ```
+        public AboutModel(IConfiguration configuration)
+        {
+            _configuration = configuration;
+        }
+        ```
+    3. Aktualisieren Sie die OnGet-Methode. Ersetzen Sie den hier gezeigten Platzhalterwert durch den geheimen Namen, den Sie mit den oben angegebenen Befehlen erstellt haben.
+        ```
+        public void OnGet()
+        {
+            //Message = "Your application description page.";
+            Message = "My key val = " + _configuration["<YourSecretNameThatWasCreatedAbove>"];
+        }
+        ```
 
-   ```cshtml
-      @inject Microsoft.Extensions.Configuration.IConfiguration config
-   ```
-
-1. Durch einen Test können Sie sicherstellen, dass der Wert des Geheimnisses verfügbar ist, indem Sie ihn auf einer der Seiten anzeigen. Verwenden Sie @config zum Verweisen auf die Konfigurationsvariable.
- 
-   ```cshtml
-      <p> @config["MySecret"] </p>
-      <p> @config.GetSection("Secrets")["MySecret"] </p>
-      <p> @config["Secrets:MySecret"] </p>
-   ```
-
-1. Erstellen Sie die Webanwendung, und führen Sie sie aus. Navigieren Sie zur About-Seite, und sehen Sie sich den Geheimniswert an.
-
-## <a name="access-your-secrets-in-code-aspnet-471-projects"></a>Zugreifen auf Ihre Geheimnisse in Code (ASP.NET 4.7.1-Projekte)
-
-Die Verbindung zu Key Vault wird mithilfe von Informationen, die beim Ausführen des Prozesses **Verbundenen Dienst hinzufügen** der Datei „web.config“ hinzugefügt wurden, von der ConfigurationBuilder-Klasse eingerichtet.
-
-So greifen Sie auf Ihre Geheimnisse zu
-
-1. Nehmen Sie in der Datei „Web.config“ die folgenden Änderungen vor. Die Schlüssel sind Platzhalter, die vom AzureKeyVault ConfigurationBuilder durch die Werte von Geheimnissen in Key Vault ersetzt werden.
-
-   ```xml
-     <appSettings configBuilders="AzureKeyVault">
-       <add key="webpages:Version" value="3.0.0.0" />
-       <add key="webpages:Enabled" value="false" />
-       <add key="ClientValidationEnabled" value="true" />
-       <add key="UnobtrusiveJavaScriptEnabled" value="true" />
-       <add key="MySecret" value="dummy1"/>
-       <add key="Secrets--MySecret" value="dummy2"/>
-     </appSettings>
-   ```
-
-1. Fügen Sie im HomeController in der Controllermethode „About“ die folgenden Zeilen hinzu, um das Geheimnis abzurufen und im ViewBag-Objekt zu speichern.
- 
-   ```csharp
-            var secret = ConfigurationManager.AppSettings["MySecret"];
-            var secret2 = ConfigurationManager.AppSettings["Secrets--MySecret"];
-            ViewBag.Secret = $"Secret: {secret}";
-            ViewBag.Secret2 = $"Secret2: {secret2}";
-   ```
-
-1. Fügen Sie in der Ansicht „About.cshtml“ Folgendes hinzu, um den Wert des Geheimnisses anzuzeigen (nur zu Testzwecken).
-
-   ```csharp
-      <h3>@ViewBag.Secret</h3>
-      <h3>@ViewBag.Secret2</h3>
-   ```
-
-1. Führen Sie Ihre App lokal aus, um zu überprüfen, ob Sie anstelle des Dummywerts aus der Konfigurationsdatei den Geheimniswert, den Sie im Azure-Portal eingegeben haben, lesen können.
-
-Veröffentlichen Sie Ihre App anschließend in Azure.
-
-## <a name="publish-to-azure-app-service"></a>Veröffentlichen in Azure App Service
-
-1. Klicken Sie mit der rechten Maustaste auf den Projektknoten, und wählen Sie **Veröffentlichen** aus. Sie werden auf einem Bildschirm aufgefordert, ein **Veröffentlichungsziel auszuwählen**. Wählen Sie auf der linken Seite **App Service** aus, und klicken Sie dann auf **Neu erstellen**.
-
-   ![Veröffentlichen in App Service](media/vs-key-vault-add-connected-service/AppServicePublish1.PNG)
-
-1. Stellen Sie auf dem Bildschirm **App Service erstellen** sicher, dass das Abonnement und die Ressourcengruppe die gleichen Elemente sind, in denen Sie den Schlüsseltresor erstellt haben, und klicken Sie dann auf **Erstellen**.
-
-   ![Erstellen eines App Service](media/vs-key-vault-add-connected-service/AppServicePublish2.PNG)
-
-1. Nachdem Ihre Webanwendung erstellt wurde, wird der Bildschirm **Veröffentlichen** angezeigt. Notieren Sie sich die URL für Ihre veröffentlichte, in Azure gehostete Webanwendung. Wenn neben **Schlüsseltresor** der Wert **Kein** angezeigt wird, müssen Sie App Service noch mitteilen, mit welchem Schlüsseltresor eine Verbindung hergestellt werden soll. Klicken Sie auf den Link **Schlüsseltresor hinzufügen**, und wählen Sie den erstellten Schlüsseltresor aus.
-
-   ![Schlüsseltresor hinzufügen](media/vs-key-vault-add-connected-service/AppServicePublish3.PNG)
-
-   Wenn die Option **Schlüsseltresor verwalten** angezeigt wird, können Sie darauf klicken, um die aktuellen Einstellungen anzuzeigen, Berechtigungen zu bearbeiten oder Ihre Geheimnisse im Azure-Portal zu ändern.
-
-1. Wählen Sie als Nächstes den Link mit der Website-URL aus, um Ihre Webanwendung im Browser zu öffnen. Überprüfen Sie, ob Sie den richtigen Wert aus dem Schlüsseltresor sehen.
-
-Herzlichen Glückwunsch, Sie haben sichergestellt, dass Ihre Web-App Key Vault für den Zugriff auf sicher gespeicherte Geheimnisse verwenden kann, wenn sie in Azure ausgeführt wird.
+Führen Sie die App lokal aus, indem Sie zur Infoseite navigieren. Sie sollten Ihren Geheimniswert abgerufen haben.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

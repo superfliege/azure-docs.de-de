@@ -1,21 +1,21 @@
 ---
-title: Unterstützungsmatrix für Hyper-V-Replikation in Azure | Microsoft-Dokumentation
-description: Fasst die unterstützten Komponenten und Anforderungen für die Hyper-V-Replikation in Azure mit Azure Site Recovery zusammen
+title: Unterstützungsmatrix für die Notfallwiederherstellung von lokalen Hyper-V-VMs in Azure | Microsoft-Dokumentation
+description: Dieser Artikel fasst die unterstützten Komponenten und Anforderungen für die Hyper-V-Notfallwiederherstellung in Azure mit Azure Site Recovery zusammen.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/10/2018
+ms.date: 10/28/2018
 ms.author: raynew
-ms.openlocfilehash: 83d2fabbe3a1b0ab44cb97e53baf0aa40349aeed
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: e389f37448211afc35fb98572161be4fcaea7556
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49079207"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50210719"
 ---
-# <a name="support-matrix-for-hyper-v-replication-to-azure"></a>Unterstützungsmatrix für die Hyper-V-Replikation in Azure
+# <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Unterstützungsmatrix für die Notfallwiederherstellung von lokalen Hyper-V-VMs in Azure
 
 
 In diesem Artikel werden die unterstützten Komponenten und Einstellungen für die Notfallwiederherstellung von lokalen Hyper-V-VMs in Azure mit [Azure Site Recovery](site-recovery-overview.md) beschrieben.

@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/05/2017
+ms.date: 10/25/2018
 ms.author: mbullwin
-ms.openlocfilehash: 5743408b000dd7497a10f27db2a4ea9d87082b8d
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 91b050c4e1ca37c0af208d6df1ce4f8272235294
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47091794"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50139770"
 ---
 # <a name="monitor-azure-web-app-performance"></a>Überwachen der Leistung der Azure-Web-App
 Im [Azure-Portal](https://portal.azure.com) können Sie eine Anwendungsleistungsüberwachung für Ihre [Azure-Web-Apps](../app-service/app-service-web-overview.md) einrichten. [Azure Application Insights](app-insights-overview.md) instrumentiert Ihre App, um Telemetriedaten über ihre Aktivitäten an den Application Insights-Dienst zu senden, wo sie gespeichert und analysiert werden. Hier können Sie dann mithilfe von Metrikdiagrammen und Suchtools Probleme diagnostizieren, die Leistung verbessern und die Nutzung untersuchen.
@@ -33,24 +33,32 @@ Zum Konfigurieren der Überwachung kann die App auf zwei Arten instrumentiert we
 Wenn Sie bereits eine Web-App in Azure ausführen, verfügen Sie schon über eine Art der Überwachung, und zwar von Anforderungs- und Fehlerraten. Fügen Sie Application Insights hinzu, um mehr zu erhalten – beispielsweise Reaktionszeiten, Überwachung von Abhängigkeitsaufrufen, intelligente Erkennung und leistungsstarke Log Analytics-Abfragesprache. 
 
 1. In der Azure-Systemsteuerung für Ihre Web-App können Sie **Application Insights auswählen**.
-   
-    ![Wählen Sie unter „Überwachung“ die Option „Application Insights“.](./media/app-insights-azure-web-apps/05-extend.png)
-   
-   * Wählen Sie die Option zum Erstellen einer neuen Ressource, sofern Sie nicht bereits auf einem anderen Weg eine Application Insights-Ressource für diese App eingerichtet haben.
-2. **Instrumentieren Sie Ihre Web-App**, nachdem Application Insights installiert wurde. 
-   
-    ![Instrumentieren Ihrer Web-App](./media/app-insights-azure-web-apps/restart-web-app-for-insights.png)
+
+    ![Auswählen von „Application Insights“ unter „Einstellungen“](./media/app-insights-azure-web-apps/settings-app-insights.png)
+
+   * Wählen Sie die Option zum Erstellen einer neuen Ressource, sofern Sie nicht bereits eine Application Insights-Ressource für diese Anwendung eingerichtet haben. 
+
+    > [!NOTE]
+    > Beim Klicken auf **OK** zum Erstellen der neuen Ressource wird die Aufforderung **Überwachungseinstellungen anwenden** angezeigt. Wenn Sie **Weiter** wählen, wird Ihre neue Application Insights-Ressource mit Ihrer Web-App verknüpft, und außerdem wird **ein Neustart Ihrer Web-App ausgelöst**. 
+
+    ![Instrumentieren Ihrer Web-App](./media/app-insights-azure-web-apps/create-resource.png)
+
+2. Nachdem Ihre Ressource erstellt wurde, können Sie **Application Insights-Erweiterung für die Web-App überprüfen und aktualisieren** wählen, um sich zu vergewissern, dass die Erweiterung aktuell ist.
+
+     ![Überprüfen und Aktualisieren der Websiteerweiterung](./media/app-insights-azure-web-apps/check-and-update.png)
+
+3. **Instrumentieren Sie Ihre Web-App**, nachdem Application Insights installiert wurde.
 
    **Aktivieren Sie die clientseitige Überwachung** für Seitenansicht und Benutzertelemetrie.
 
    * Wählen Sie „Einstellungen“ > „Anwendungseinstellungen“ aus.
-   * Fügen Sie unter „App-Einstellungen“ ein neues Schlüssel-Wert-Paar hinzu: 
-   
-    Schlüssel: `APPINSIGHTS_JAVASCRIPT_ENABLED` 
-    
+   * Fügen Sie unter „App-Einstellungen“ ein neues Schlüssel-Wert-Paar hinzu:
+
+    Schlüssel: `APPINSIGHTS_JAVASCRIPT_ENABLED`
+
     Wert: `true`
    * **Speichern** Sie die Einstellungen, und **starten Sie die App neu**.
-3. **Überwachen Sie Ihre App**.  [Untersuchen Sie die Daten](#explore-the-data).
+4. Erkunden Sie die Überwachungsdaten Ihrer App, indem Sie **Einstellungen** > **Application Insights** > **Weitere Informationen in Application Insights anzeigen** wählen.
 
 Später können Sie die App bei Bedarf mit Application Insights erstellen.
 
@@ -63,14 +71,14 @@ Application Insights kann durch Installieren eines SDK in Ihrer App eine detaill
 
 1. Konfigurieren Sie in **Visual Studio** (2013 Update 2 oder höher) Application Insights für Ihr Projekt.
 
-    Klicken Sie mit der rechten Maustaste auf das Webprojekt, und wählen Sie die Option **Hinzufügen > Application Insights** oder **Application Insights konfigurieren**.
-   
+    Klicken Sie mit der rechten Maustaste auf das Webprojekt, und wählen Sie **Hinzufügen > Application Insights** oder **Projekt** > **Application Insights** > **Application Insights konfigurieren**.
+
     ![Klicken Sie mit der rechten Maustaste auf das Webprojekt, und wählen Sie „"Application Insights hinzufügen“ oder „Application Insights konfigurieren“.](./media/app-insights-azure-web-apps/03-add.png)
-   
+
     Wenn Sie zur Anmeldung aufgefordert werden, verwenden Sie die Anmeldeinformationen für Ihr Azure-Konto.
-   
+
     Der Vorgang hat zwei Auswirkungen:
-   
+
    1. Es wird eine Application Insights-Ressource in Azure erstellt, unter der die Telemetriedaten gespeichert, analysiert und angezeigt werden.
    2. Das Application Insights-NuGet-Paket wird dem Code hinzugefügt (sofern noch nicht vorhanden) und so konfiguriert, dass Telemetriedaten an die Azure-Ressource gesendet werden.
 2. **Testen Sie die Telemetrie**, indem Sie die App auf Ihrem Entwicklungscomputer (F5) ausführen.
@@ -79,29 +87,6 @@ Application Insights kann durch Installieren eines SDK in Ihrer App eine detaill
 *Wie führe ich die Umstellung durch, damit Daten an eine andere Application Insights-Ressource gesendet werden?*
 
 * Klicken Sie in Visual Studio mit der rechten Maustaste auf das Projekt, und wählen Sie **Application Insights konfigurieren** und dann die gewünschte Ressource aus. Sie erhalten die Möglichkeit, eine neue Ressource zu erstellen. Führen Sie die Neuerstellung und dann die erneute Bereitstellung durch.
-
-## <a name="explore-the-data"></a>Untersuchen der Daten
-1. Das Blatt „Application Insights“ Ihrer Web-App-Systemsteuerung enthält Livemetriken. Anforderungen und Fehler werden darüber innerhalb von ein oder zwei Sekunden nach dem Auftreten eingeblendet. Dies ist eine sehr nützliche Anzeige beim erneuten Veröffentlichen Ihrer App, weil Ihnen Probleme sofort auffallen.
-2. Klicken Sie weiter, bis Sie zur vollständigen Application Insights-Ressource gelangen.
-
-    ![Navigieren per Klick](./media/app-insights-azure-web-apps/view-in-application-insights.png)
-
-    Sie gelangen auch direkt über die Azure-Ressourcennavigation dorthin.
-
-1. Klicken Sie sich durch ein beliebiges Diagramm, um weitere Details anzuzeigen:
-   
-    ![Klicken Sie auf dem Blatt mit der Application Insights-Übersicht auf ein Diagramm.](./media/app-insights-azure-web-apps/07-dependency.png)
-   
-    Sie können [Blätter mit Metriken anpassen](app-insights-metrics-explorer.md).
-2. Klicken Sie weiter, um einzelne Ereignisse und die zugehörigen Eigenschaften anzuzeigen:
-   
-    ![Klicken Sie auf einen Ereignistyp, um eine nach diesem Typ gefilterte Suche zu öffnen.](./media/app-insights-azure-web-apps/08-requests.png)
-   
-    Beachten Sie den Link „...“ zum Öffnen aller Eigenschaften.
-   
-    Sie können [Suchvorgänge anpassen](app-insights-diagnostic-search.md).
-
-Verwenden Sie die [Log Analytics-Abfragesprache](app-insights-analytics-tour.md), um Telemetriedaten noch effizienter zu durchsuchen.
 
 ## <a name="more-telemetry"></a>Mehr Telemetrie
 

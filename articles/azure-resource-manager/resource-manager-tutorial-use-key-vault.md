@@ -10,21 +10,21 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 10/10/2018
+ms.date: 10/30/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 3a2edb898c8053627684818d7fe257fe3402df5f
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 601d022917adc71ff3a3c728c7b674ae47a632c4
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49645472"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50238477"
 ---
 # <a name="tutorial-integrate-azure-key-vault-in-resource-manager-template-deployment"></a>Tutorial: Integrieren von Azure Key Vault in die Resource Manager-Vorlagenbereitstellung
 
 Hier erfahren Sie, wie Sie bei der Resource Manager-Bereitstellung geheime Werte aus Azure Key Vault abrufen und als Parameter übergeben. Der Wert wird nie verfügbar gemacht, da lediglich die Key Vault-ID als Verweis verwendet wird. Weitere Informationen finden Sie unter [Verwenden von Azure Key Vault zum Übergeben eines sicheren Parameterwerts während der Bereitstellung](./resource-manager-keyvault-parameter.md).
 
-In diesem Tutorial erstellen Sie einen virtuellen Computer und einige abhängige Ressourcen. Dabei verwenden Sie die gleiche Vorlage wie im [Tutorial: Erstellen von Azure Resource Manager-Vorlagen mit abhängigen Ressourcen](./resource-manager-tutorial-create-templates-with-dependent-resources.md). Das Administratorkennwort für den virtuellen Computer wird aus Azure Key Vault abgerufen.
+Im Tutorial [Festlegen der Reihenfolge für die Ressourcenbereitstellung](./resource-manager-tutorial-create-templates-with-dependent-resources.md) erstellen Sie einen virtuellen Computer, ein virtuelles Netzwerk und einige andere abhängige Ressourcen. In diesem Tutorial passen Sie die Vorlage an, um das Administratorkennwort für den virtuellen Computer aus Azure Key Vault abzurufen.
 
 Dieses Tutorial enthält die folgenden Aufgaben:
 
@@ -43,12 +43,18 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 Damit Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie Folgendes:
 
 * [Visual Studio Code](https://code.visualstudio.com/) mit der [Erweiterung „Azure Resource Manager-Tools“](./resource-manager-quickstart-create-templates-use-visual-studio-code.md#prerequisites)
+* Verwenden Sie aus Sicherheitsgründen ein generiertes Kennwort für das Administratorkonto des virtuellen Computers. Hier sehen Sie ein Beispiel für die Kennwortgenerierung:
+
+    ```azurecli-interactive
+    openssl rand -base64 32
+    ```
+    Azure Key Vault dient zum Schützen von kryptografischen Schlüsseln und anderen Geheimnissen. Weitere Informationen finden Sie unter [Tutorial: Integrieren von Azure Key Vault in die Resource Manager-Vorlagenbereitstellung](./resource-manager-tutorial-use-key-vault.md). Wir empfehlen Ihnen auch, Ihr Kennwort alle drei Monate zu aktualisieren.
 
 ## <a name="prepare-the-key-vault"></a>Vorbereiten der Key Vault-Instanz
 
 In diesem Abschnitt erstellen Sie mithilfe einer Resource Manager-Vorlage eine Key Vault-Instanz und ein Geheimnis. Diese Vorlage umfasst Folgendes:
 
-* Sie erstellt eine Key Vault-Instanz und aktiviert die Eigenschaft **enabledForTemplateDeployment**. Diese Eigenschaft muss auf „true“ festgelegt sein, damit der Bereitstellungsprozess auf die in dieser Key Vault-Instanz definierten Geheimnisse zugreifen kann.
+* Erstellen einer Key Vault-Instanz mit aktivierter `enabledForTemplateDeployment`-Eigenschaft. Diese Eigenschaft muss auf „true“ festgelegt sein, damit der Bereitstellungsprozess auf die in dieser Key Vault-Instanz definierten Geheimnisse zugreifen kann.
 * Sie fügt der Key Vault-Instanz ein Geheimnis hinzu.  Das Geheimnis enthält das Administratorkennwort für den virtuellen Computer.
 
 Wenn Sie (als der Benutzer, der die VM-Vorlage bereitstellt) nicht der Besitzer oder Mitwirkende für die Key Vault-Instanz sind, muss der Besitzer oder Mitwirkende für die Key Vault-Instanz Ihnen Zugriff auf die Berechtigung „Microsoft.KeyVault/vaults/deploy/action“ für die Key Vault-Instanz gewähren. Weitere Informationen finden Sie unter [Verwenden von Azure Key Vault zum Übergeben eines sicheren Parameterwerts während der Bereitstellung](./resource-manager-keyvault-parameter.md).
@@ -58,7 +64,9 @@ Ihre Azure AD-Benutzerobjekt-ID wird von der Vorlage zum Konfigurieren von Berec
 1. Führen Sie den folgenden Azure PowerShell- oder Azure CLI-Befehl aus:  
 
     ```azurecli-interactive
-    az ad user show --upn-or-object-id "<Your User Principle Name>" --query "objectId"
+    echo "Enter your email address that is associated with your Azure subscription):" &&
+    read upn &&
+    az ad user show --upn-or-object-id $upn --query "objectId" &&
     openssl rand -base64 32
     ```
     ```azurepowershell-interactive
@@ -95,21 +103,21 @@ So erstellen Sie eine Key Vault-Instanz:
     ```json
     "enabledForTemplateDeployment": true,
     ```
-    `enabledForTemplateDeployment` ist eine Key Vault-Eigenschaft. Diese Eigenschaft muss auf „true“ festgelegt sein, um bei der Bereitstellung die Geheimnisse aus dieser Key Vault-Instanz abrufen zu können. 
+    `enabledForTemplateDeployment` ist eine Key Vault-Eigenschaft. Diese Eigenschaft muss auf „true“ festgelegt sein, um bei der Bereitstellung die Geheimnisse aus dieser Key Vault-Instanz abrufen zu können.
 6. Navigieren Sie zu Zeile 89. Hierbei handelt es sich um die Definition des Key Vault-Geheimnisses.
 7. Klicken Sie unten auf der Seite auf **Verwerfen**. Sie haben keine Änderungen vorgenommen.
 8. Vergewissern Sie sich anhand des vorherigen Screenshots, dass Sie alle Werte angegeben haben, und klicken Sie anschließend unten auf der Seite auf **Kaufen**.
 9. Klicken Sie im oberen Bereich der Seite auf das Glockensymbol (Benachrichtigung), um den Bereich **Benachrichtigungen** zu öffnen. Warten Sie, bis die Ressource erfolgreich bereitgestellt wurde.
-8. Klicken Sie im Bereich **Benachrichtigungen** auf **Zu Ressourcengruppe wechseln**. 
-9. Klicken Sie auf den Schlüsseltresornamen, um die Key Vault-Instanz zu öffnen.
-10. Klicken Sie im linken Bereich auf **Zugriffsrichtlinien**. Der Name „Active Directory“ sollte aufgeführt werden. Falls nicht, sind Sie nicht berechtigt, auf den Schlüsseltresor zuzugreifen.
-11. Wählen Sie **Klicken Sie, um erweiterte Zugriffsrichtlinien anzuzeigen.** aus. Wie Sie sehen, ist **Zugriff auf Azure Resource Manager für Vorlagenbereitstellung aktivieren** aktiviert. Hierbei handelt es sich um eine weitere Bedingung, die erfüllt sein muss, damit die Key Vault-Integration funktioniert.
+10. Klicken Sie im Bereich **Benachrichtigungen** auf **Zu Ressourcengruppe wechseln**. 
+11. Klicken Sie auf den Schlüsseltresornamen, um die Key Vault-Instanz zu öffnen.
+12. Klicken Sie im linken Bereich auf **Zugriffsrichtlinien**. Der Name „Active Directory“ sollte aufgeführt werden. Falls nicht, sind Sie nicht berechtigt, auf den Schlüsseltresor zuzugreifen.
+13. Wählen Sie **Klicken Sie, um erweiterte Zugriffsrichtlinien anzuzeigen.** aus. Wie Sie sehen, ist **Zugriff auf Azure Resource Manager für Vorlagenbereitstellung aktivieren** aktiviert. Hierbei handelt es sich um eine weitere Bedingung, die erfüllt sein muss, damit die Key Vault-Integration funktioniert.
 
-    ![Resource Manager-Vorlage: Key Vault-Integration – Zugriffsrichtlinien](./media/resource-manager-tutorial-use-key-vault/resource-manager-tutorial-key-vault-access-policies.png)    
-12. Klicken Sie im linken Bereich auf **Eigenschaften**.
-13. Kopieren Sie die **Ressourcen-ID**. Diese ID wird beim Bereitstellen des virtuellen Computers benötigt.  Die Ressourcen-ID hat das folgende Format:
+    ![Resource Manager-Vorlage: Key Vault-Integration – Zugriffsrichtlinien](./media/resource-manager-tutorial-use-key-vault/resource-manager-tutorial-key-vault-access-policies.png)
+14. Klicken Sie im linken Bereich auf **Eigenschaften**.
+15. Kopieren Sie die **Ressourcen-ID**. Diese ID wird beim Bereitstellen des virtuellen Computers benötigt.  Die Ressourcen-ID hat das folgende Format:
 
-    ```
+    ```json
     /subscriptions/<SubscriptionID>/resourceGroups/mykeyvaultdeploymentrg/providers/Microsoft.KeyVault/vaults/<KeyVaultName>
     ```
 
@@ -124,8 +132,17 @@ So erstellen Sie eine Key Vault-Instanz:
     https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.json
     ```
 3. Wählen Sie **Öffnen** aus, um die Datei zu öffnen. Hierbei handelt es sich um das gleiche Szenario, das auch im [Tutorial: Erstellen von Azure Resource Manager-Vorlagen mit abhängigen Ressourcen](./resource-manager-tutorial-create-templates-with-dependent-resources.md) verwendet wird.
-4. Wählen Sie **Datei**>**Speichern unter** aus, um eine Kopie der Datei als **azuredeploy.json** auf dem lokalen Computer zu speichern.
-5. Wiederholen Sie die Schritte 1 bis 4, um die folgende URL zu öffnen, und speichern Sie die Datei anschließend als **azuredeploy.parameters.json**.
+4. Es gibt fünf Ressourcen, die von der Vorlage definiert werden:
+
+    * `Microsoft.Storage/storageAccounts`. Informationen finden Sie in der [Vorlagenreferenz](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts).
+    * `Microsoft.Network/publicIPAddresses`. Informationen finden Sie in der [Vorlagenreferenz](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses).
+    * `Microsoft.Network/virtualNetworks`. Informationen finden Sie in der [Vorlagenreferenz](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworks).
+    * `Microsoft.Network/networkInterfaces`. Informationen finden Sie in der [Vorlagenreferenz](https://docs.microsoft.com/azure/templates/microsoft.network/networkinterfaces).
+    * `Microsoft.Compute/virtualMachines`. Informationen finden Sie in der [Vorlagenreferenz](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines).
+
+    Bevor Sie die Vorlage anpassen, sollten Sie sich zunächst grundlegend damit vertraut machen.
+5. Wählen Sie **Datei**>**Speichern unter** aus, um eine Kopie der Datei als **azuredeploy.json** auf dem lokalen Computer zu speichern.
+6. Wiederholen Sie die Schritte 1 bis 4, um die folgende URL zu öffnen, und speichern Sie die Datei anschließend als **azuredeploy.parameters.json**.
 
     ```url
     https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.parameters.json

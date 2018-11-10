@@ -1,18 +1,18 @@
 ---
-title: Ausführen eines Failovers und Failbacks für physische Server, die mit Site Recovery in Azure repliziert werden | Microsoft-Dokumentation
-description: Informationen zum Ausführen eines Failovers physischer Server in Azure und eines Failbacks an den lokalen Standort mit Azure Site Recovery
+title: Failover und Failback von physischen Servern für die Notfallwiederherstellung in Azure mit Site Recovery | Microsoft-Dokumentation
+description: Informationen zum Ausführen eines Failovers physischer Server in Azure und eines Failbacks an den lokalen Standort für die Notfallwiederherstellung mit Azure Site Recovery
 services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: article
-ms.date: 10/19/2018
+ms.date: 10/28/2018
 ms.author: raynew
-ms.openlocfilehash: 1a818d37efd370ce0b3e27bff73a153544763ebb
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: 309da6f7753d95bc6830d61ecca7d86e002ddedf
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49456625"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50214834"
 ---
 # <a name="fail-over-and-fail-back-physical-servers-replicated-to-azure"></a>Ausführen eines Failovers und Failbacks für physische Server, die in Azure repliziert werden
 

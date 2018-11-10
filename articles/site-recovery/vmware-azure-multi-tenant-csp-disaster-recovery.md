@@ -1,21 +1,20 @@
 ---
-title: Einrichten der VMware-Replikation in Azure in Umgebungen mit mehreren Mandanten mithilfe von Site Recovery und dem Cloud Solution Provider-Programm (CSP) | Microsoft-Dokumentation
-description: Hier erfahren Sie, wie Sie Mandantenabonnements über CSP erstellen und verwalten und wie Sie Azure Site Recovery in einer Umgebung mit mehreren Mandanten bereitstellen.
-services: site-recovery
+title: Einrichten der VMware-Notfallwiederherstellung in Azure in einer mehrinstanzenfähigen Umgebung mithilfe von Site Recovery und dem Cloud Solution Provider-Programm (CSP) | Microsoft-Dokumentation
+description: Dieser Artikel beschreibt, wie Sie die VMware-Notfallwiederherstellung in einer mehrinstanzenfähigen Umgebung mithilfe von Azure Site Recovery einrichten.
 author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: mayg
-ms.openlocfilehash: bd356a7e4285f8663b91da1f200cc2ae3c266bf3
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: c26421f848cf25e391589fa791f801e30fd14797
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49354120"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50208900"
 ---
-# <a name="set-up-vmware-replication-in-a-multi-tenancy-environment-with-the-cloud-solution-provider-csp-program"></a>Einrichten der VMware-Replikation in einer Umgebung mit mehreren Mandanten mit dem Cloud Solution Provider-Programm (CSP)
+# <a name="set-up-vmware-disaster-recovery-in-a-multi-tenancy-environment-with-the-cloud-solution-provider-csp-program"></a>Einrichten der VMware-Notfallwiederherstellung in einer mehrinstanzenfähigen Umgebung mit dem Cloud Solution Provider-Programm (CSP)
 
 Das [CSP-Programm](https://partner.microsoft.com/en-US/cloud-solution-provider) fördert ein besseres Zusammenspiel für Microsoft Cloud Services (einschließlich Office 365, Enterprise Mobility Suite und Microsoft Azure). Mit CSP können sich Partner um sämtliche Aspekte der Kundenbeziehung kümmern und als Hauptansprechpartner fungieren. Partner können Azure-Abonnements für Kunden bereitstellen und diese Abonnements mit ihren eigenen angepassten Angeboten mit einem Mehrwert kombinieren.
 

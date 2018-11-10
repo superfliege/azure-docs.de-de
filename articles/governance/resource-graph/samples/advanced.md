@@ -4,21 +4,21 @@ description: Verwenden Sie Azure Resource Graph, um einige erweiterte Abfragen a
 services: resource-graph
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 09/18/2018
+ms.date: 10/22/2018
 ms.topic: quickstart
 ms.service: resource-graph
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 934dff93b9a7f5d6755f55ad1073e01e586b1ca7
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: fbbdc4a67cd6f2e7d74031f7acc584bf0004bea4
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49647832"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50085375"
 ---
 # <a name="advanced-resource-graph-queries"></a>Erweiterte Resource Graph-Abfragen
 
-Der erste Schritt zum Verstehen von Abfragen mit Azure Resource Graph sind Grundkenntnisse der [Abfragesprache](../concepts/query-language.md). Wenn Sie nicht bereits mit dem [Azure Data Explorer](../../../data-explorer/data-explorer-overview.md) vertraut sind, sollten Sie sich über die Grundlagen informieren, um zu verstehen, wie Sie die Anforderungen für die Ressourcen, die Sie suchen, zusammenstellen müssen.
+Der erste Schritt zum Verstehen von Abfragen mit Azure Resource Graph sind Grundkenntnisse der [Abfragesprache](../concepts/query-language.md). Wenn Sie nicht bereits mit [Azure Data Explorer](../../../data-explorer/data-explorer-overview.md) vertraut sind, sollten Sie sich über die Grundlagen informieren, um zu verstehen, wie Sie Anforderungen für die gesuchten Ressourcen zusammenstellen müssen.
 
 Wir behandeln die folgenden erweiterten Abfragen:
 
@@ -33,9 +33,9 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 Azure CLI (über eine Erweiterung) und Azure PowerShell (über ein Modul) unterstützen Azure Resource Graph. Überprüfen Sie vor dem Ausführen der folgenden Abfragen, ob Ihre Umgebung bereit ist. Unter [Azure CLI](../first-query-azurecli.md#add-the-resource-graph-extension) und [Azure PowerShell](../first-query-powershell.md#add-the-resource-graph-module) werden die Schritte zum Installieren und Überprüfen der Shellumgebung Ihrer Wahl beschrieben.
 
-## <a name="vmss-capacity"></a>Abrufen von VMSS-Kapazität und -Größe
+## <a name="vmss-capacity"></a>Abrufen der Kapazität und Größe von VM-Skalierungsgruppen
 
-Diese Abfrage sucht nach Ressourcen für VM-Skalierungsgruppen (VMSS, Virtual Machine Scale Sets) und ruft verschiedene Details einschließlich der Größe des virtuellen Computers und der Kapazität der Skalierungsgruppe ab. Mit diesen Informationen wandelt die `toint()`-Funktion die Kapazität in eine Zahl um, damit sie sortiert werden kann. So werden auch die Rückgabewerte in benutzerdefiniert benannte Eigenschaften umbenannt.
+Diese Abfrage sucht nach Ressourcen für VM-Skalierungsgruppen und ruft verschiedene Details (einschließlich der Größe des virtuellen Computers und der Kapazität der Skalierungsgruppe) ab. Mit dieser Abfrage wandelt die `toint()`-Funktion die Kapazität in eine Zahl um, damit sie sortiert werden kann. Schließlich werden die Spalten in benutzerdefinierte benannte Eigenschaften umbenannt.
 
 ```Query
 where type=~ 'microsoft.compute/virtualmachinescalesets'
@@ -75,7 +75,7 @@ Diese Abfrage sucht nach virtuellen Computern, die einem [regulären Ausdruck](/
 Mit **matches regex @** wird der reguläre Ausdruck für den Abgleich definiert: **^Contoso(.*) [0-9] + $**. Diese RegEx-Definition wird wie folgt erläutert:
 
 - `^` – Die Übereinstimmung muss am Anfang der Zeichenfolge beginnen.
-- `Contoso` – Die Kernzeichenfolge, nach deren Übereinstimmung wir suchen (Groß-/Kleinschreibung).
+- `Contoso` – Zeichenfolge mit Beachtung von Groß-/Kleinschreibung
 - `(.*)` – Eine Übereinstimmung mit einem Teilausdruck:
   - `.` – stimmt mit einem beliebigen einzelnen Zeichen (außer eines Zeilenumbruchs) überein.
   - `*` – stimmt mit dem vorhergehenden Element null Mal oder mehrfach überein.

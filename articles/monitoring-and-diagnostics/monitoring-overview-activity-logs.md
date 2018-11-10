@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: johnkem
 ms.component: activitylog
-ms.openlocfilehash: 5288dc508c35c72f3c1996ce665ccf83a84a4ea3
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 7538951b1ac8290b574180779b83c6b8e79fcf1f
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46948961"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50094362"
 ---
 # <a name="monitor-subscription-activity-with-the-azure-activity-log"></a>Überwachen der Abonnementaktivität per Azure-Aktivitätsprotokoll
 
@@ -33,7 +33,7 @@ Das Aktivitätsprotokoll unterscheidet sich von [Diagnoseprotokollen](monitoring
 Sie können Ereignisse per Azure-Portal, Befehlszeilenschnittstelle, PowerShell-Cmdlets und Azure Monitor-REST-API aus dem Aktivitätsprotokoll abrufen.
 
 > [!NOTE]
->  Die [neueren Warnungen](monitoring-overview-unified-alerts.md) bieten eine erweiterte Benutzeroberfläche für die Erstellung und Verwaltung von Warnungsregeln für Aktivitätsprotokolle.  [Weitere Informationen](monitoring-activity-log-alerts-new-experience.md)
+>  Die [neueren Warnungen](monitoring-overview-unified-alerts.md) bieten eine erweiterte Benutzeroberfläche für die Erstellung und Verwaltung von Warnungsregeln für Aktivitätsprotokolle.  [Weitere Informationen](monitoring-activity-log-alerts-new-experience.md).
 
 Sehen Sie sich dieses Video zum Aktivitätsprotokoll an.
 > [!VIDEO https://channel9.msdn.com/Blogs/Seth-Juarez/Logs-John-Kemnetz/player]

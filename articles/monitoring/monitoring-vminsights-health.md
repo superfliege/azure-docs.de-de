@@ -1,5 +1,5 @@
 ---
-title: Überwachen der Integrität von VMs mit Azure Monitor for VMs | Microsoft-Dokumentation
+title: Überwachen der Integrität von virtuellen Computern mit Azure Monitor für VMs (Vorschau) | Microsoft-Dokumentation
 description: In diesem Artikel wird beschrieben, wie Sie die Integrität der VM und des zugrundeliegenden Betriebssystems mithilfe von Azure Monitor for VMs beurteilen können.
 services: azure-monitor
 documentationcenter: ''
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/15/2018
+ms.date: 10/25/2018
 ms.author: magoedte
-ms.openlocfilehash: 84314f64d8a96e65f63cb5c6051f7f5e902cd682
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 059667787c905f47f6629afdb249a2273ceed585
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49387820"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50094226"
 ---
-# <a name="understand-the-health-of-your-azure-virtual-machines-with-azure-monitor-for-vms"></a>Verstehen Sie die Integrität Ihrer Azure-VMs mit Azure Monitor for VMs
+# <a name="understand-the-health-of-your-azure-virtual-machines-with-azure-monitor-for-vms-preview"></a>Überwachen der Integrität Ihrer virtuellen Azure-Computer mit Azure Monitor für VMs (Vorschau)
 Azure beinhaltet mehrere Dienste, die einzeln eine bestimmte Rolle oder Aufgabe im Überwachungsbereich ausführen, aber ein tiefgreifender Blick auf die Integrität des auf Azure-VMs gehosteten Betriebssystems war bisher nicht verfügbar.  Zwar konnten Sie mithilfe von Log Analytics oder Azure Monitor verschiedene Bedingungen überwachen, diese waren aber nicht dafür ausgelegt, die Integrität von Kernkomponenten oder die Gesamtintegrität der VM zu modellieren und darzustellen.  Das Integritätsfeature von Azure Monitor for VMs überwacht proaktiv die Verfügbarkeit und Leistung des Windows- oder Linux-Gastbetriebssystems mit einem Modell, das Schlüsselkomponenten und ihre Beziehungen modelliert, und mit Kriterien, die angeben, wie die Integrität dieser Komponenten gemessen wird, und eine Warnung an Sie auslösen, wenn ein Zustand eingeschränkter Integrität erkannt wird.  
 
 Die Anzeige des Integritätsgesamtstatus von Azure-VMs und des zugrundeliegenden Betriebssystems mit dem Azure Monitor for VMs kann aus zwei verschiedenen Perspektiven erfolgen, einmal direkt in einer VM oder übergreifend über alle in einer Ressourcengruppe enthaltenen VMs mithilfe von Azure Monitor.
@@ -35,7 +35,7 @@ Dieser Abschnitt beschreibt im Umriss die definierten standardmäßigen Integrit
 
 ### <a name="windows-vms"></a>Virtuelle Windows-Computer
 
-- Verfügbare Megabyte Arbeitsspeicher 
+- Verfügbare Megabyte Arbeitsspeicher 
 - Datenträger – mittlere Dauer pro Schreibvorgang (logischer Datenträger)
 - Datenträger – mittlere Dauer pro Schreibvorgang (Datenträger)
 - Logischer Datenträger – mittlere Dauer pro Lesevorgang

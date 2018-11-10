@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/27/2018
+ms.date: 10/25/2018
 ms.author: jdial
 ms.custom: mvc
-ms.openlocfilehash: 9b13b8ae0b64dc84e476f5fc5da59ea30702fd8d
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 0c865b8bc129f4f2809f2dbb09a836efe4cee3d9
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34639026"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50093039"
 ---
 # <a name="tutorial-monitor-network-communication-between-two-virtual-machines-using-the-azure-portal"></a>Tutorial: Überwachen der Netzwerkkommunikation zwischen zwei virtuellen Computern über das Azure-Portal
 
@@ -30,6 +30,7 @@ Erfolgreiche Kommunikation zwischen einem virtuellen Computer (VM) und einem End
 > [!div class="checklist"]
 > * Erstellen von zwei virtuellen Computern
 > * Überwachen der Kommunikation zwischen virtuellen Computern mit der Verbindungsmonitorfunktion des Network Watchers
+> * Generieren von Warnungen zu Verbindungsmonitormetriken
 > * Diagnostizieren eines Problems bei der Kommunikation zwischen zwei VMs und Informationen zu seiner Lösung
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
@@ -52,10 +53,10 @@ Erstellen Sie zwei virtuelle Computer.
     |---|---|
     |NAME|myVm1|
     |Benutzername| Geben Sie den gewünschten Benutzernamen ein.|
-    |Password| Geben Sie das gewünschte Kennwort ein. Das Kennwort muss mindestens zwölf Zeichen lang sein und die [definierten Anforderungen an die Komplexität](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm) erfüllen.|
+    |Kennwort| Geben Sie das gewünschte Kennwort ein. Das Kennwort muss mindestens zwölf Zeichen lang sein und die [definierten Anforderungen an die Komplexität](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm) erfüllen.|
     |Abonnement| Wählen Sie Ihr Abonnement aus.|
     |Ressourcengruppe| Klicken Sie auf **Neu erstellen**, und geben Sie **myResourceGroup** ein.|
-    |Speicherort| Wählen Sie **USA, Osten** aus.|
+    |Standort| Wählen Sie **USA, Osten** aus.|
 
 4. Wählen Sie eine Größe für den virtuellen Computer aus, und klicken Sie dann auf **Auswählen**.
 5. Wählen Sie unter **Einstellungen** die Option **Erweiterungen** aus. Wählen Sie **Erweiterung hinzufügen** und dann **Network Watcher-Agent für Windows** aus, wie in der folgenden Abbildung gezeigt:
@@ -120,6 +121,19 @@ Erstellen Sie einen Verbindungsmonitor zum Überwachen der Kommunikation über T
     | DURCHSCHN. ROUNDTRIPZEIT          | Informiert Sie über die Roundtripzeit zum Herstellen der Verbindung, in Millisekunden. Der Verbindungsmonitor prüft die Verbindung alle 60 Sekunden, sodass Sie die Latenz im Laufe der Zeit überwachen können.                                         |
     | Hops                     | Der Verbindungsmonitor Informiert Sie über die Hops zwischen den beiden Endpunkten. In diesem Beispiel besteht die Verbindung zwischen zwei virtuellen Computern im selben virtuellen Netzwerk, es gibt also nur einen Hop zur IP-Adresse 10.0.0.5. Wenn bestehende System- oder benutzerdefinierte Routen Datenverkehr zwischen den VMs z.B. über ein VPN-Gateway oder eine virtuelle Netzwerkappliance leiten, werden zusätzliche Hops aufgelistet.                                                                                                                         |
     | STATUS                   | Die grünen Häkchen an jedem Endpunkt informieren Sie darüber, dass jeder Endpunkt fehlerfrei ist.    ||
+
+## <a name="generate-alerts"></a>Generieren von Warnungen
+
+Warnungen werden von Warnungsregeln in Azure Monitor erstellt und können in regelmäßigen Abständen automatisch gespeicherte Abfragen oder benutzerdefinierte Protokollsuchen ausführen. Eine generierte Warnung kann automatisch eine oder mehrere Aktionen ausführen, z.B. die Benachrichtigung einer Person oder das Starten eines anderen Prozesses. Beim Festlegen einer Warnungsregel bestimmt die jeweils betroffene Ressource die Liste mit den verfügbaren Metriken, die Sie zum Generieren von Warnungen verwenden können.
+
+1. Wählen Sie im Azure-Portal den Dienst **Monitor** und dann **Warnungen** > **Neue Warnungsregel**.
+2. Klicken Sie auf **Ziel auswählen**, und wählen Sie dann die gewünschten Ressourcen aus. Wählen Sie das **Abonnement** aus, und legen Sie **Ressourcentyp** fest, um nach dem zu verwendenden Verbindungsmonitor zu filtern.
+
+    ![Fenster „Warnungen“ mit ausgewähltem Ziel](./media/connection-monitor/set-alert-rule.png)
+1. Nachdem Sie eine gewünschte Ressource ausgewählt haben, können Sie **Kriterien hinzufügen** wählen. Der Network Watcher enthält [Metriken zum Erstellen von Warnungen](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-near-real-time-metric-alerts#metrics-and-dimensions-supported). Legen Sie **Verfügbare Signale** auf die Metriken ProbesFailedPercent und AverageRoundtripMs fest:
+
+    ![Seite „Warnungen“ mit ausgewählten Signalen](./media/connection-monitor/set-alert-signals.png)
+1. Geben Sie die Warnungsdetails an, z.B. Name, Beschreibung und Schweregrad der Warnungsregel. Sie können der Warnung auch eine Aktionsgruppe hinzufügen, um die Antwort auf die Warnung zu automatisieren und anzupassen.
 
 ## <a name="view-a-problem"></a>Anzeigen eines Problems
 

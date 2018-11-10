@@ -1,22 +1,19 @@
 ---
-title: Beibehalten von IP-Adressen beim Durchführen eines Failovers von virtuellen Azure-Computern in eine andere Azure-Region | Microsoft-Dokumentation
-description: Es wird beschrieben, wie Sie IP-Adressen für Failoverszenarien von Azure zu Azure mit Azure Site Recovery beibehalten.
+title: Beibehalten von IP-Adressen für Azure-VM-Failover | Microsoft-Dokumentation
+description: Dieser Artikel beschreibt, wie Sie IP-Adressen beibehalten, wenn bei der Notfallwiederherstellung mit Azure Site Recovery ein Failover für Azure-VMs auf eine sekundäre Region ausgeführt wird.
 ms.service: site-recovery
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.date: 10/16/2018
 author: mayurigupta13
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: 4260a4487480c42b518374965d8deda1e7803e62
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 86adaa21a069c168b512231ba231940bfa2ef9e8
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353321"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50213031"
 ---
-# <a name="ip-address-retention-for-azure-virtual-machine-failover"></a>Beibehaltung von IP-Adressen für das Failover von virtuellen Azure-Computern
+# <a name="ip-address-retention-for-azure-vm-failover"></a>Beibehalten von IP-Adressen für das Failover von Azure-VMs
 
 Azure Site Recovery ermöglicht die Notfallwiederherstellung für Azure-VMs. Bei einem Failover von einer Azure-Region in eine andere ist es für Kunden häufig erforderlich, die IP-Konfigurationen beizubehalten. Standardmäßig imitiert Site Recovery die Struktur des virtuellen Quellnetzwerks und des Subnetzes, wenn diese Ressourcen in der Zielregion erstellt werden. Für Azure-VMs, die mit statischen privaten IP-Adressen konfiguriert sind, stellt Site Recovery nach Möglichkeit außerdem die gleiche private IP-Adresse auf der Ziel-VM bereit, wenn diese IP nicht von einer Azure-Ressource oder einer replizierten VM blockiert wird.
 

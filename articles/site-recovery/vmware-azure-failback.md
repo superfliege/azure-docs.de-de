@@ -1,19 +1,19 @@
 ---
-title: Ausführen eines Failbacks von Azure zu VMware mit Azure Site Recovery | Microsoft-Dokumentation
-description: Nach einem Failover von virtuellen Computern auf Azure können Sie ein Failback starten, um die virtuellen Computer wieder in die lokale Umgebung zu übertragen. Erfahren Sie, welche Schritte für ein Failback ausgeführt werden.
+title: Ausführen eines Failbacks in Azure während der Notfallwiederherstellung von virtuellen VMware-Computern in Azure mit Azure Site Recovery | Microsoft-Dokumentation
+description: Hier erfahren Sie, wie Sie während der Notfallwiederherstellung von virtuellen VMware-Computern und physischen Servern in Azure nach dem Failover in Azure ein Failback auf den lokalen Standort ausführen.
 author: nsoneji
 ms.service: site-recovery
 ms.date: 10/11/2018
 ms.topic: conceptual
 ms.author: nisoneji
-ms.openlocfilehash: 841e036555723051dfeaf946f31eaf9eedaee798
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: becf0b8c9f14d81b0a25fb1727b69452c3ff690c
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49093509"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50215173"
 ---
-# <a name="fail-back-from-azure-to-an-on-premises-site"></a>Failback von Azure zu einem lokalen Standort
+# <a name="fail-back-vmware-vms-and-physical-servers-from-azure-to-an-on-premises-site"></a>Failback von virtuellen VMware-Computern und physischen Servern von Azure zum lokalen Standort
 
 In diesem Artikel wird beschrieben, wie Sie für virtuelle Computer ein Failback von Azure Virtual Machines in die lokale VMware-Umgebung durchführen. Befolgen Sie die Anweisungen in diesem Artikel, um ein Failback Ihrer virtuellen VMware-Computer oder Ihrer physischen Windows-/Linux-Server nach einem Failover vom lokalen Standort nach Azure (beschrieben im Tutorial [Failover in Azure Site Recovery](site-recovery-failover.md)) zurück an den lokalen Standort durchzuführen.
 

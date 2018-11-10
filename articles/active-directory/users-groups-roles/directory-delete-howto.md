@@ -13,12 +13,12 @@ ms.date: 06/13/2018
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
-ms.openlocfilehash: b1d3439412e324c71687c43aa9e47c520cb72262
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: ab752799c9e64e47abe0200a26215f9e01c489f6
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42143630"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50139685"
 ---
 # <a name="delete-an-azure-active-directory-tenant"></a>Löschen eines Azure Active Directory-Mandanten
 Beim Löschen eines Mandanten werden auch alle darin enthaltenen Ressourcen gelöscht. Sie müssen den Mandanten vorbereiten, indem Sie die mit ihm verbundenen Ressourcen minimieren, ehe Sie ihn löschen. Nur ein globaler Administrator von Azure Active Directory (Azure AD) kann einen Azure AD-Mandanten im Portal löschen.
@@ -73,7 +73,7 @@ Sie können ein Abonnement in den Zustand **Bereitstellung aufgehoben** versetze
   
   ![Geschäftsbedingungen](./media/directory-delete-howto/delete-terms.png)
 
-4. Nachdem sich der Abonnementzustand geändert hat, wird das Abonnement zum Löschen gekennzeichnet. Die Abonnement wechselt 72 Stunden später in den Zustand **Bereitstellung aufgehoben**.
+4. Nachdem sich der Abonnementzustand geändert hat, wird das Abonnement zum Löschen gekennzeichnet. Das Abonnement wechselt 72 Stunden später in den Zustand **Bereitstellung aufgehoben**.
 
 5. Sobald Sie ein Abonnement für Ihren Mandanten gelöscht haben und 72 Stunden verstrichen sind, können Sie sich wieder im Azure AD Admin Center anmelden. Dort sollten keine Aktionen erforderlich sein und keine Abonnements das Löschen Ihres Mandanten blockieren. Sie sollten Ihren Azure AD-Mandanten nun erfolgreich löschen können.
   

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/18/2018
 ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: 4b254f9a4446a1b0ff400e0d63effe68fc4f82b4
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: cf39ba6b1754a5e809e7295f2783846e95636ce8
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46363665"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51241735"
 ---
 # <a name="deploy-a-template-to-azure-stack-using-powershell"></a>Bereitstellen einer Vorlage in Azure Stack mithilfe von PowerShell
 
@@ -35,7 +35,7 @@ In diesem Beispiel werden AzureRM-PowerShell-Cmdlets und eine auf GitHub gespeic
 >[!NOTE]
 >Bevor Sie dieses Beispiel ausprobieren, stellen Sie sicher, dass Sie [PowerShell für einen Azure Stack-Benutzer konfiguriert](azure-stack-powershell-configure-user.md) haben.
 
-1. Navigieren Sie zu [http://aka.ms/AzureStackGitHub](http://aka.ms/AzureStackGitHub), und suchen Sie nach der Vorlage **101-simple-windows-vm**. Speichern Sie die Vorlage hier: C:\\templates\\azuredeploy-101-simple-windows-vm.json.
+1. Navigieren Sie zu [http://aka.ms/AzureStackGitHub](https://aka.ms/AzureStackGitHub), und suchen Sie nach der Vorlage **101-simple-windows-vm**. Speichern Sie die Vorlage hier: C:\\templates\\azuredeploy-101-simple-windows-vm.json.
 2. Öffnen Sie eine PowerShell-Eingabeaufforderung mit erhöhten Rechten.
 3. Ersetzen Sie *username* und *password* im folgenden Skript durch Ihren Benutzernamen und Ihr Kennwort, und führen Sie das Skript aus.
 

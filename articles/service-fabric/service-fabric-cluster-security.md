@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/14/2018
 ms.author: aljo
-ms.openlocfilehash: e791ddd3ade2ff486f1c3ec123695ecc155353d6
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: aa0d209cf3da65bb3d50a6458ecc33cfcd85eecb
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45541903"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51240595"
 ---
 # <a name="service-fabric-cluster-security-scenarios"></a>Szenarien für die Clustersicherheit in Service Fabric
 Ein Azure Service Fabric-Cluster ist eine Ressource, die sich in Ihrem Besitz befindet. Sie müssen Ihre Cluster schützen, um zu verhindern, dass nicht autorisierte Benutzer eine Verbindung mit ihnen herstellen. Ein sicherer Cluster ist besonders wichtig, wenn Sie Produktionsworkloads im Cluster ausführen. Es ist zwar möglich, einen ungeschützten Cluster zu erstellen, doch falls der Cluster Verwaltungsendpunkte im öffentlichen Internet verfügbar macht, können anonyme Benutzer eine Verbindung mit ihm herstellen. Nicht geschützte Cluster werden für Produktionsworkloads nicht unterstützt. 
@@ -85,7 +85,7 @@ Benutzer mit Administratorrolle haben vollständigen Zugriff auf Verwaltungsfunk
 Legen Sie die Administrator- und Benutzerclientrollen bei der Erstellung des Clusters fest. Weisen Sie Rollen zu, indem Sie verschiedene Identitäten für jeden Rollentyp bereitstellen (z.B. durch Verwendung von Zertifikaten oder Azure AD). Weitere Informationen zu den Standardeinstellungen der Zugriffssteuerung sowie zum Ändern der Standardeinstellungen finden Sie unter [Rollenbasierte Zugriffssteuerung für Service Fabric-Clients](service-fabric-cluster-security-roles.md).
 
 ## <a name="x509-certificates-and-service-fabric"></a>X.509-Zertifikate und Service Fabric
-Digitale X.509-Zertifikate werden in der Regel verwendet, um Clients und Server zu authentifizieren. Sie werden auch zum Verschlüsseln und digitalen Signieren von Nachrichten verwendet. Service Fabric verwendet X.509-Zertifikate, um einen Cluster zu sichern und Sicherheitsfunktionen für Anwendungen bereitzustellen. Weitere Informationen zu digitalen X. 509-Zertifikaten finden Sie unter [Verwenden von Zertifikaten](http://msdn.microsoft.com/library/ms731899.aspx). [Key Vault](../key-vault/key-vault-get-started.md) dient zum Verwalten von Zertifikaten für Service Fabric-Cluster in Azure.
+Digitale X.509-Zertifikate werden in der Regel verwendet, um Clients und Server zu authentifizieren. Sie werden auch zum Verschlüsseln und digitalen Signieren von Nachrichten verwendet. Service Fabric verwendet X.509-Zertifikate, um einen Cluster zu sichern und Sicherheitsfunktionen für Anwendungen bereitzustellen. Weitere Informationen zu digitalen X. 509-Zertifikaten finden Sie unter [Verwenden von Zertifikaten](https://msdn.microsoft.com/library/ms731899.aspx). [Key Vault](../key-vault/key-vault-get-started.md) dient zum Verwalten von Zertifikaten für Service Fabric-Cluster in Azure.
 
 Einige wichtige Punkte sind zu beachten:
 
@@ -109,7 +109,7 @@ Einige weitere Aspekte, die zu berücksichtigen sind:
 
 * Das Feld **Antragsteller** kann mehrere Werte enthalten. Der Typ jedes Werts wird durch ein Initialisierungspräfix angegeben. In der Regel lautet die Initialisierung **CN** (für *Common Name*, den allgemeinen Namen); z.B. **CN = www.contoso.com**. 
 * Das Feld **Antragsteller** kann leer sein. 
-* Wenn das optionale Feld **Alternativer Antragstellername** ausgefüllt ist, muss es sowohl den allgemeinen Namen des Zertifikats als auch einen Eintrag pro SAN enthalten. Diese werden als Werte für **DNS-Name** eingegeben. Informationen zum Generieren von Zertifikaten mit SANs finden Sie unter [How to add a Subject Alternative Name to a secure LDAP certificate](http://support.microsoft.com/kb/931351) (Hinzufügen eines alternativen Antragstellernamens zu einem geschützten LDAP-Zertifikat).
+* Wenn das optionale Feld **Alternativer Antragstellername** ausgefüllt ist, muss es sowohl den allgemeinen Namen des Zertifikats als auch einen Eintrag pro SAN enthalten. Diese werden als Werte für **DNS-Name** eingegeben. Informationen zum Generieren von Zertifikaten mit SANs finden Sie unter [How to add a Subject Alternative Name to a secure LDAP certificate](https://support.microsoft.com/kb/931351) (Hinzufügen eines alternativen Antragstellernamens zu einem geschützten LDAP-Zertifikat).
 * Der Wert des Felds **Beabsichtigte Zwecke** des Zertifikats muss einen entsprechenden Wert enthalten, z.B. **Serverauthentifizierung** oder **Clientauthentifizierung**.
 
 ### <a name="application-certificates-optional"></a>Anwendungszertifikate (optional)

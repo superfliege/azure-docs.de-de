@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 5/21/2018
+ms.date: 10/29/2018
 ms.topic: article
 ms.service: azure-blockchain
-ms.reviewer: zeyadr
+ms.reviewer: coborn
 manager: femila
-ms.openlocfilehash: 823bea9bac8ff270d5b5c02e3b76a2f7236c9c99
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: fa58ecf4607efc1d212e40b98d199756d4b987f8
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48241013"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50231796"
 ---
 # <a name="ethereum-proof-of-work-consortium-solution-template"></a>Projektmappenvorlage für „Ethereum – Proof-of-Work-Konsortium“
 
@@ -119,7 +119,7 @@ Fünfte Region| Die fünfte Region, in der das Konsortiumsnetzwerk bereitgestell
 
 ### <a name="network-size-and-performance"></a>Netzwerkgröße und -leistung
 
-Geben Sie als Nächstes unter **Netzwerkgröße und -leistung** einen Wert für die Größe des Konsortiumsnetzwerks ein, z. B. die Anzahl und Größe von Mining- und Transaktionsknoten.
+Geben Sie als Nächstes unter **Netzwerkgröße und -leistung** Werte für die Größe des Konsortiumsnetzwerks ein. Beispiele: Anzahl und Größe von Miningknoten und Transaktionsknoten.
 
 ![Netzwerkgröße und -leistung](./media/ethereum-deployment/network-size-performance.png)
 
@@ -263,8 +263,8 @@ Führen Sie abschließend die Funktion mithilfe der entsprechenden Eingabe aus:
 
 - **MyGatewayResourceId**: Ressourcenpfad des Gateways. Die Informationen können Sie dem Ausgabeparameter **CONSORTIUM_MEMBER_GATEWAY_ID** der Vorlagenbereitstellung entnehmen.
 - **OtherGatewayResourceId**: Ressourcenpfad des Gateways des beitretenden Mitglieds. Dieser wird vom beitretenden Mitglied angegeben und entspricht dem gleichnamigen Ausgabeparameter **CONSORTIUM_MEMBER_GATEWAY_ID** der Vorlagenbereitstellung.
-- **ConnectionName**: Ein Name zur Identifizierung dieser Gateway-Verbindung.
-- **Gemeinsam verwendeter Schlüssel**: Der vorab festgelegte, geheime Schlüssel zwischen zwei Mitgliedern des Konsortiumsnetzwerks, zwischen denen eine Verbindung hergestellt wird.
+- **ConnectionName**: Ein Name zur Identifizierung dieser Gatewayverbindung.
+- **Shared Key**: Das vorab festgelegte Geheimnis zwischen den beiden Mitgliedern des Konsortiumsnetzwerks, zwischen denen eine Verbindung hergestellt wird.
 
 **CreateConnection** - MyGatewayResourceId <resource path of your Gateway> -OtherGatewayResourceId <Ressourcenpfad des Gateways des beitretenden Mitglieds> -ConnectionName myConnection -SharedKey "MySharedKeyAbc123"
 
@@ -276,9 +276,9 @@ Führen Sie das Skript mit dem entsprechenden Eingabewert aus:
 
 - **MyGatewayResourceId**: Ressourcenpfad des Gateways. Die Informationen können Sie dem Ausgabeparameter **CONSORTIUM_MEMBER_GATEWAY_ID** der Vorlagenbereitstellung entnehmen.
 - **OtherGatewayResourceId**: Ressourcenpfad des Gateways des beitretenden Mitglieds. Dieser wird vom beitretenden Mitglied angegeben und entspricht dem gleichnamigen Parameter **CONSORTIUM_MEMBER_GATEWAY_ID** der Vorlagenbereitstellung.
-- **ConnectionName**: Ein Name zur Identifizierung dieser Gateway-Verbindung.
-- **Gemeinsam verwendeter Schlüssel**: Der vorab festgelegte, geheime Schlüssel zwischen zwei Mitgliedern des Konsortiumsnetzwerks, zwischen denen eine Verbindung hergestellt wird.
-- **Standort**: Die Azure-Region, in der die Gatewayressource bereitgestellt wird.
+- **ConnectionName**: Ein Name zur Identifizierung dieser Gatewayverbindung.
+- **Shared Key**: Das vorab festgelegte Geheimnis zwischen den beiden Mitgliedern des Konsortiumsnetzwerks, zwischen denen eine Verbindung hergestellt wird.
+- **Location**: Die Azure-Region, in der die Gatewayressource bereitgestellt wird.
 
 ``` powershell
 az network vpn-connection create --name $ConnectionName --resource-group
@@ -316,7 +316,7 @@ Um die Erweiterung in Chrome zu installieren, wechseln Sie zu „Anpassen“ und
 
 ![MetaMask-Erweiterung](./media/ethereum-deployment/metamask-extension.png)
 
-Öffnen Sie MetaMask, nachdem die Installation abgeschlossen ist, und erstellen Sie einen neuen Tresor. Der Tresor ist standardmäßig mit dem Morden Test Network verbunden. Sie müssen die Standardeinstellung ändern, um stattdessen eine Verbindung mit dem bereitgestellten, privaten Konsortiumsnetzwerk herzustellen (d. h. mit dem vor die Transaktionsknoten geschalteten Lastenausgleich). Rufen Sie von der Vorlagenausgabe aus den verfügbar gemachten Ethereum RPC-Endpunkt an Port 8545 (`ETHEREUM-RPC-ENDPOINT`) ab, und geben Sie ihn wie unten dargestellt in den benutzerdefinierten RPC ein.
+Öffnen Sie MetaMask, nachdem die Installation abgeschlossen ist, und erstellen Sie einen neuen Tresor. Der Tresor ist standardmäßig mit dem Morden Test Network verbunden. Ändern Sie diese Einstellung, damit stattdessen eine Verbindung mit dem bereitgestellten privaten Konsortiumsnetzwerk hergestellt wird – bzw. mit dem Lastenausgleichsmodul vor den Transaktionsknoten. Rufen Sie von der Vorlagenausgabe aus den verfügbar gemachten Ethereum RPC-Endpunkt an Port 8545 (`ETHEREUM-RPC-ENDPOINT`) ab, und geben Sie ihn wie unten dargestellt in den benutzerdefinierten RPC ein.
 
 ![MetaMask-Einstellungen](./media/ethereum-deployment/metamask-settings.png)
 

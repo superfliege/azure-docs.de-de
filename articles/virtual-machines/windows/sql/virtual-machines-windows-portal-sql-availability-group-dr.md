@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mikeray
-ms.openlocfilehash: 84fa2e051c46e178e3e72709886babc8c3db7b9d
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 43f3628878654a32be8aeafe1ba0d2e42e03d82f
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2018
-ms.locfileid: "29852828"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51240408"
 ---
 # <a name="configure-an-always-on-availability-group-on-azure-virtual-machines-in-different-regions"></a>Konfigurieren einer Always On-Verfügbarkeitsgruppe auf virtuellen Azure-Computern in verschiedenen Regionen
 
@@ -56,7 +56,7 @@ Das folgende Diagramm zeigt die Netzwerkkommunikation zwischen Rechenzentren:
    ![Verfügbarkeitsgruppe](./media/virtual-machines-windows-portal-sql-availability-group-dr/01-vpngateway-example.png)
 
 >[!IMPORTANT]
->Bei dieser Architektur fallen Gebühren für ausgehende Daten an, die zwischen Azure-Regionen repliziert werden. Weitere Informationen finden Sie unter [Preisübersicht Bandbreite](http://azure.microsoft.com/pricing/details/bandwidth/).  
+>Bei dieser Architektur fallen Gebühren für ausgehende Daten an, die zwischen Azure-Regionen repliziert werden. Weitere Informationen finden Sie unter [Preisübersicht Bandbreite](https://azure.microsoft.com/pricing/details/bandwidth/).  
 
 ## <a name="create-remote-replica"></a>Erstellen eines Remotereplikats
 
@@ -104,13 +104,13 @@ Gehen Sie wie folgt vor, um ein Replikat in einem Remoterechenzentrum zu erstell
    - Verwenden Sie das Netzwerk aus dem Remoterechenzentrum.
    - Weisen Sie die IP-Adresse aus der neuen Azure Load Balancer-Instanz zu. 
 
-1. Aktivieren Sie in der neuen SQL Server-Instanz mithilfe des SQL Server-Konfigurations-Managers die AlwaysOn-Verfügbarkeitsgruppen. (Informationen hierzu finden Sie [hier](http://msdn.microsoft.com/library/ff878259.aspx).)
+1. Aktivieren Sie in der neuen SQL Server-Instanz mithilfe des SQL Server-Konfigurations-Managers die AlwaysOn-Verfügbarkeitsgruppen. (Informationen hierzu finden Sie [hier](https://msdn.microsoft.com/library/ff878259.aspx).)
 
 1. [Öffnen Sie Firewallports in der neuen SQL Server-Instanz.](virtual-machines-windows-portal-sql-availability-group-prereq.md#endpoint-firewall)
 
    Welche Portnummern geöffnet werden müssen, hängt von Ihrer Umgebung ab. Öffnen Sie Ports für den Spiegelungsendpunkt und den Integritätstest der Azure Load Balancer-Instanz.
 
-1. [Fügen Sie der Verfügbarkeitsgruppe in der neuen SQL Server-Instanz ein Replikat hinzu.](http://msdn.microsoft.com/library/hh213239.aspx)
+1. [Fügen Sie der Verfügbarkeitsgruppe in der neuen SQL Server-Instanz ein Replikat hinzu.](https://msdn.microsoft.com/library/hh213239.aspx)
 
    Konfigurieren Sie ein Replikat in einer Azure-Remoteregion für die asynchrone Replikation mit manuellem Failover.  
 
@@ -142,9 +142,9 @@ Führen Sie das PowerShell-Skript mit dem Clusternetzwerknamen, der IP-Adresse u
 
 Das Replikat im Remoterechenzentrum ist Teil der Verfügbarkeitsgruppe, befindet sich aber in einem anderen Subnetz. Wenn dieses Replikat zum primären Replikat wird, treten unter Umständen Verbindungstimeouts für Anwendungen auf. Dieses Verhalten entspricht dem Verhalten einer lokalen Verfügbarkeitsgruppe in einer Bereitstellung mit mehreren Subnetzen. Aktualisieren Sie entweder die Clientverbindung, oder konfigurieren Sie den Namensauflösungs-Cache für die Clusternetzwerknamen-Ressource, um Verbindungen von Clientanwendungen zu ermöglichen.
 
-Aktualisieren Sie vorzugsweise die Clientverbindungszeichenfolgen, um `MultiSubnetFailover=Yes` festzulegen. Weitere Informationen finden Sie unter [Verbinden mit MultiSubnetFailover](http://msdn.microsoft.com/library/gg471494#Anchor_0).
+Aktualisieren Sie vorzugsweise die Clientverbindungszeichenfolgen, um `MultiSubnetFailover=Yes` festzulegen. Weitere Informationen finden Sie unter [Verbinden mit MultiSubnetFailover](https://msdn.microsoft.com/library/gg471494#Anchor_0).
 
-Falls Sie die Verbindungszeichenfolgen nicht ändern können, können Sie den Namensauflösungs-Cache konfigurieren. Weitere Informationen finden Sie unter [Connection Timeouts in Multi-subnet Availability Group](http://blogs.msdn.microsoft.com/alwaysonpro/2014/06/03/connection-timeouts-in-multi-subnet-availability-group/) (Verbindungstimeouts in Verfügbarkeitsgruppen mit mehreren Subnetzen).
+Falls Sie die Verbindungszeichenfolgen nicht ändern können, können Sie den Namensauflösungs-Cache konfigurieren. Weitere Informationen finden Sie unter [Connection Timeouts in Multi-subnet Availability Group](https://blogs.msdn.microsoft.com/alwaysonpro/2014/06/03/connection-timeouts-in-multi-subnet-availability-group/) (Verbindungstimeouts in Verfügbarkeitsgruppen mit mehreren Subnetzen).
 
 ## <a name="fail-over-to-remote-region"></a>Durchführen eines Failovers auf die Remoteregion
 
@@ -164,7 +164,7 @@ Sie können ein Failover des Replikats auf die Remoteregion durchführen, um die
 
 Verschieben Sie das primäre Replikat nach dem Testen der Verbindung wieder in Ihr primäres Rechenzentrum, und legen Sie den Verfügbarkeitsmodus wieder auf die normalen Betriebseinstellungen fest. Die folgende Tabelle enthält die normalen Betriebseinstellungen für die in diesem Dokument beschriebene Architektur:
 
-| Speicherort | Serverinstanz | Rolle | Verfügbarkeitsmodus | Failovermodus
+| Standort | Serverinstanz | Rolle | Verfügbarkeitsmodus | Failovermodus
 | ----- | ----- | ----- | ----- | -----
 | Primäres Rechenzentrum | SQL-1 | Primär | Synchron | Automatisch
 | Primäres Rechenzentrum | SQL-2 | Sekundär | Synchron | Automatisch
@@ -175,12 +175,12 @@ Verschieben Sie das primäre Replikat nach dem Testen der Verbindung wieder in I
 
 Weitere Informationen finden Sie in den folgenden Themen:
 
-- [Ausführen eines geplanten manuellen Failovers einer Verfügbarkeitsgruppe (SQL Server)](http://msdn.microsoft.com/library/hh231018.aspx)
-- [Ausführen eines erzwungenen manuellen Failovers einer Verfügbarkeitsgruppe (SQL Server)](http://msdn.microsoft.com/library/ff877957.aspx)
+- [Ausführen eines geplanten manuellen Failovers einer Verfügbarkeitsgruppe (SQL Server)](https://msdn.microsoft.com/library/hh231018.aspx)
+- [Ausführen eines erzwungenen manuellen Failovers einer Verfügbarkeitsgruppe (SQL Server)](https://msdn.microsoft.com/library/ff877957.aspx)
 
 ## <a name="additional-links"></a>Weitere Links
 
-* [AlwaysOn-Verfügbarkeitsgruppen](http://msdn.microsoft.com/library/hh510230.aspx)
-* [Dokumentation zu virtuellen Computern](http://docs.microsoft.com/azure/virtual-machines/windows/)
+* [AlwaysOn-Verfügbarkeitsgruppen](https://msdn.microsoft.com/library/hh510230.aspx)
+* [Dokumentation zu virtuellen Computern](https://docs.microsoft.com/azure/virtual-machines/windows/)
 * [Azure Load Balancer-Instanzen](virtual-machines-windows-portal-sql-availability-group-tutorial.md#configure-internal-load-balancer)
 * [Azure-Verfügbarkeitsgruppen](../manage-availability.md)

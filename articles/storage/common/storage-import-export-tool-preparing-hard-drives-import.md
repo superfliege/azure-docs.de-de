@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/29/2017
 ms.author: muralikk
 ms.component: common
-ms.openlocfilehash: 0be0d6c9613b4160a6c4c5cc3b63336fcf67d5c2
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: b16a476f1960c79c378cd3aa18eae789c289eb54
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50025621"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51244031"
 ---
 # <a name="preparing-hard-drives-for-an-import-job"></a>Vorbereiten von Festplatten für einen Importauftrag
 
@@ -309,7 +309,7 @@ Wenn die Größe der Daten die Größe des Datenträgers überschreitet, verteil
 
 #### <a name="where-can-i-find-previous-version-of-waimportexport-tool"></a>Wo finde ich die Vorgängerversion des WAImportExport-Tools?
 
-Das WAImportExport-Tool verfügt über alle Funktionen, die das WAImportExport V1-Tool hatte. Das WAImportExport-Tool ermöglicht Benutzern, mehrere Quellen anzugeben und auf mehrere Laufwerke zu schreiben. Darüber hinaus lassen sich problemlos mehrere Quellspeicherorte, aus denen die Daten kopiert werden müssen, in einer einzigen CSV-Datei verwalten. Falls Sie jedoch SAS-Unterstützung benötigen oder eine einzelne Datenquelle auf einen einzelnen Datenträger kopieren möchten, können Sie das [WAImportExport V1-Tool herunterladen](http://go.microsoft.com/fwlink/?LinkID=301900&amp;clcid=0x409). In der [Referenz zu WAImportExport V1](storage-import-export-tool-how-to-v1.md) finden Sie Hilfe zur Verwendung von WAImportExport V1 finden.
+Das WAImportExport-Tool verfügt über alle Funktionen, die das WAImportExport V1-Tool hatte. Das WAImportExport-Tool ermöglicht Benutzern, mehrere Quellen anzugeben und auf mehrere Laufwerke zu schreiben. Darüber hinaus lassen sich problemlos mehrere Quellspeicherorte, aus denen die Daten kopiert werden müssen, in einer einzigen CSV-Datei verwalten. Falls Sie jedoch SAS-Unterstützung benötigen oder eine einzelne Datenquelle auf einen einzelnen Datenträger kopieren möchten, können Sie das [WAImportExport V1-Tool herunterladen](https://go.microsoft.com/fwlink/?LinkID=301900&amp;clcid=0x409). In der [Referenz zu WAImportExport V1](storage-import-export-tool-how-to-v1.md) finden Sie Hilfe zur Verwendung von WAImportExport V1 finden.
 
 #### <a name="what-is-a-session-id"></a>Was ist eine Sitzungs-ID?
 

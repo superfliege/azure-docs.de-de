@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/03/2018
 ms.author: jeedes
-ms.openlocfilehash: c9134ceebca696ed2b3376a69e26c2ea06f4f0f6
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: c33edf13a8bcafd4a6c3d4885553fc856ec941d8
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39507121"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50158124"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-4me"></a>Tutorial: Azure Active Directory-Integration mit 4me
 
@@ -177,7 +177,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     c. Fügen Sie unter dem Abschnitt **SAML** in das Textfeld **SAML SSO URL** den Wert der **SAML-Dienst-URL für einmaliges Anmelden** ein, den Sie aus dem Azure-Portal kopiert haben.
 
-    d. Fügen Sie in das Textfeld **Certificate fingerprint** (Fingerabdruck des Zertifikats) den **FINGERABDRUCK**-Wert, den Sie aus dem Azure-Portal kopiert haben, getrennt durch Doppelpunkte in Duplets (AA:BB:CC:DD:EE:FF:GG:HH:II) ein.
+    d. Fügen Sie in das Textfeld **Certificate fingerprint** (Fingerabdruck des Zertifikats) den **FINGERABDRUCK**-Wert, den Sie aus dem Azure-Portal kopiert haben, in durch Doppelpunkte getrennten Duplets ein (AA:BB:CC:DD:EE:FF:GG:HH:II).
 
     e. Klicken Sie auf **Speichern**.
 
@@ -218,7 +218,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 Das Ziel dieses Abschnitts ist das Erstellen eines Benutzers namens Britta Simon in 4me. 4me unterstützt die Just-In-Time-Bereitstellung, die standardmäßig aktiviert ist. Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Wenn noch kein Benutzer vorhanden ist, wird beim Zugreifen auf 4me ein neuer Benutzer erstellt.
 
 >[!Note]
->Setzen Sie sich mit dem [4me-Supportteam](mailto:support@4me.com) in Verbindung, wenn Sie einen Benutzer manuell erstellen müssen.
+>Setzen Sie sich mit dem  [Supportteam von 4me](mailto:support@4me.com) in Verbindung, wenn Sie einen Benutzer manuell erstellen müssen.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 

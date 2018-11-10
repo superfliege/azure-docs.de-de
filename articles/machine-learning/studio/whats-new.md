@@ -1,6 +1,6 @@
 ---
-title: Neuigkeiten in Azure Machine Learning | Microsoft-Dokumentation
-description: Neue Features, die in Azure Machine Learning verfügbar sind.
+title: Neuigkeiten in Azure Machine Learning Studio | Microsoft-Dokumentation
+description: Neue Features, die in Azure Machine Learning Studio verfügbar sind.
 services: machine-learning
 documentationcenter: ''
 author: YasinMSFT
@@ -14,19 +14,22 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/28/2017
-ms.openlocfilehash: 61bea7fde96b239a50ec25a702a73ecfb62ce717
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.date: 10/28/2018
+ms.openlocfilehash: 2f990ce30b66392e8a649e4e88b21457d9fe223b
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34836071"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212657"
 ---
-# <a name="whats-new-in-azure-machine-learning"></a>Neuerungen in Azure Machine Learning
+# <a name="whats-new-in-azure-machine-learning-studio"></a>Neuerungen in Azure Machine Learning Studio
 
-### <a name="the-march-2017-release-of-microsoft-azure-machine-learning-updates-provides-the-following-feature"></a>Die Updates für Microsoft Azure Machine Learning (ML) vom März 2017 bieten das folgende Feature:
+## <a name="october-2018"></a>Oktober 2018
 
+Für das R-Sprachmodul im Modul [Execute R Script](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/execute-r-script) wurde eine neue R-Laufzeitversion hinzugefügt: Microsoft R Open (MRO) 3.4.4. MRO 3.4.4 basiert auf der Open-Source-Version CRAN R 3.4.4 und ist deshalb mit Paketen kompatibel, für die diese Version von R verwendet werden kann. Weitere Informationen zu den unterstützten R-Paketen finden Sie im Artikel [R Packages supported by Azure Machine Learning Studio](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/r-packages-supported-by-azure-machine-learning#bkmk_List) (Von Azure Machine Learning Studio unterstützte R-Pakete).
 
+## <a name="march-2017"></a>17. März 2017 
+Dieses Release der Microsoft Azure Machine Learning-Updates enthält das folgende Feature:
 
 * Dedizierte Kapazität für Azure Machine Learning-BES-Aufträge
 
@@ -35,14 +38,16 @@ ms.locfileid: "34836071"
     Weitere Informationen finden Sie unter [Azure Batch-Dienst für Machine Learning-Aufträge](dedicated-capacity-for-bes-jobs.md).
 
 
-### <a name="the-august-2016-release-of-microsoft-azure-machine-learning-updates-provide-the-following-features"></a>Die Updates für Microsoft Azure Machine Learning (ML) vom August 2016 bieten die folgenden Features:
+## <a name="august-2016"></a>August 2016 
+Dieses Release der Microsoft Azure Machine Learning-Updates enthält die folgenden Features:
 * Klassische Webdienste können nun im neuen [Microsoft Azure Machine Learning Web Services](https://services.azureml.net/)-Portal verwaltet werden, das als Zentrale für die Verwaltung aller Aspekte Ihres Webdiensts fungiert.    
   * Ein Webdienst für [Nutzungsstatistik](manage-new-webservice.md) wird bereitgestellt.
   * Das Testen von Remote-Request-Aufrufen in Azure Machine Learning, die Beispieldaten verwenden, wird vereinfacht.
   * Es gibt eine neue Batch Execution Service-Testseite mit Beispieldaten und Auftragsübermittlungsverlauf.
   * Einfachere Verwaltung von Endpunkten.
 
-### <a name="the-july-2016-release-of-microsoft-azure-machine-learning-updates-provide-the-following-features"></a>Die Updates für Microsoft Azure Machine Learning (ML) vom Juli 2016 bieten die folgenden Features:
+## <a name="july-2016"></a>Juli 2016 
+Dieses Release der Microsoft Azure Machine Learning-Updates enthält die folgenden Features:
 * Webdienste werden jetzt als Azure-Ressourcen über [Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md) -Schnittstellen verwaltet, wodurch sich folgende Verbesserungen und Erweiterungen ergeben:
   * Es gibt neue [REST-APIs](https://msdn.microsoft.com/library/azure/Dn950030.aspx) zum Bereitstellen und Verwalten Ihrer Resource Manager-basierten Webdienste.
   * Es gibt ein neues [Microsoft Azure Machine Learning Web Services](https://services.azureml.net/)-Portal, das als Zentrale zum Verwalten aller Aspekte Ihres Webdiensts fungiert.

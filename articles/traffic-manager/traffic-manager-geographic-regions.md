@@ -4,9 +4,6 @@ description: Dieser Artikel listet die Länder-/Regionshierarchie auf, die vom g
 services: traffic-manager
 documentationcenter: ''
 author: kumudd
-manager: timlt
-editor: ''
-ms.assetid: ''
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
@@ -14,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2017
 ms.author: kumud
-ms.openlocfilehash: 45fa209b4417ce8b65d1fa4f2f59ff6c2d50f3a4
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 1609daa4edbc3db9384941d575c141faaa799fb6
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2018
-ms.locfileid: "28201495"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50138241"
 ---
 # <a name="countryregion-hierarchy-used-by-azure-traffic-manager-for-geographic-traffic-routing-method"></a>Vom geografischen Routingtyp für Datenverkehr des Azure Traffic Managers verwendete Länder-/Regionshierarchie
 
-In diesem Artikel sind die Länder und Regionen aufgelistet, die von der **geografischen** Routingmethode in Azure Traffic Manager verwendet werden. Sie können diese Informationen durch Aufrufen der [Azure Traffic Manager-REST-API](https://docs.microsoft.com/rest/api/trafficmanager/) auch programmgesteuert abrufen. 
+In diesem Artikel sind die Länder und Regionen aufgelistet, die von der **geografischen** Routingmethode in Azure Traffic Manager verwendet werden. Sie können diese Informationen durch Aufrufen der [Azure Traffic Manager-REST-API](https://docs.microsoft.com/rest/api/trafficmanager/) auch programmgesteuert abrufen. 
 
 - Welt(Welt)
 
@@ -483,7 +480,7 @@ In diesem Artikel sind die Länder und Regionen aufgelistet, die von der **geogr
 
         - CF(Zentralafrikanische Republik)
 
-        - CG(Kongo, Demokratische Republik)
+        - CG(Kongo)
 
         - CI(Côte d’Ivoire)
 

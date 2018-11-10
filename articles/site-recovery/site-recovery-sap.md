@@ -1,27 +1,23 @@
 ---
-title: Schützen einer SAP NetWeaver-Anwendungsbereitstellung mit mehreren Schichten mit Azure Site Recovery | Microsoft-Dokumentation
-description: In diesem Artikel wird beschrieben, wie Sie SAP NetWeaver-Anwendungsbereitstellungen mit Azure Site Recovery schützen.
-services: site-recovery
-documentationcenter: ''
+title: Einrichten der Notfallwiederherstellung für die Bereitstellung einer SAP NetWeaver-App mit mehreren Ebenen mithilfe von Azure Site Recovery | Microsoft-Dokumentation
+description: In diesem Artikel wird beschrieben, wie Sie die Notfallwiederherstellung für SAP NetWeaver-Anwendungsbereitstellungen mit Azure Site Recovery einrichten.
 author: asgang
 manager: rochakm
-editor: ''
-ms.assetid: ''
 ms.service: site-recovery
 ms.workload: backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 07/06/2018
+ms.topic: conceptual
+ms.date: 10/29/2018
 ms.author: asgang
-ms.openlocfilehash: a498ac9f973bbcf87bec104f18b542cc7e8b5800
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: c83cf9fb319c21881f0db8bd94dc9a94a3b811bc
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49318689"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50211722"
 ---
-# <a name="protect-a-multi-tier-sap-netweaver-application-deployment-by-using-site-recovery"></a>Schützen einer SAP NetWeaver-Anwendungsbereitstellung mit mehreren Ebenen mit Azure Site Recovery
+# <a name="set-up-disaster-recovery-for-a-multi-tier-sap-netweaver-app-deployment"></a>Einrichten der Notfallwiederherstellung für die Bereitstellung einer SAP NetWeaver-App mit mehreren Ebenen
 
 Die meisten großen und mittleren SAP-Bereitstellungen weisen eine Form von Notfallwiederherstellungslösung auf. Die Bedeutung robuster und testfähiger Notfallwiederherstellungslösungen ist weiter gewachsen, da immer mehr Kerngeschäftsprozesse in Anwendungen wie SAP verschoben werden. Azure Site Recovery wurde mit SAP-Anwendungen getestet und integriert. Azure Site Recovery übersteigt die Möglichkeiten der meisten lokalen Notfallwiederherstellungslösungen, und dies zu geringeren Gesamtkosten (TCO) als Lösungen von Mitbewerbern.
 
@@ -62,7 +58,7 @@ Es wird empfohlen, diese Infrastruktur einzurichten, bevor Sie Site Recovery ber
 
 Anhand dieser Referenzarchitektur wird gezeigt, wie SAP NetWeaver in einer Windows-Umgebung in Azure mit Hochverfügbarkeit ausgeführt werden kann.  Diese Architektur wird mit virtuellen Computern bestimmter Größen bereitgestellt, die an die Anforderungen Ihres Unternehmens angepasst werden können.
 
-![Diagramm eines typischen SAP-Bereitstellungsmusters](./media/site-recovery-sap/reference_sap.png)
+![Diagramm eines typischen SAP-Bereitstellungsmusters](./media/site-recovery-sap/sap-netweaver_latest.png)
 
 ## <a name="disaster-recovery-considerations"></a>Überlegungen zur Notfallwiederherstellung
 

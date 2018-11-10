@@ -11,12 +11,12 @@ services: logic-apps
 ms.reviewer: klam, LADocs
 ms.suite: integration
 tags: connectors
-ms.openlocfilehash: 8e83a246c815a01b417f7658535906c396bf5996
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 78ac8f83bceef88e89edefa0eececb058e8efe2b
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35296018"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50230232"
 ---
 # <a name="get-started-with-the-oracle-database-connector"></a>Erste Schritte mit dem Oracle-Datenbankconnector
 
@@ -36,9 +36,9 @@ In diesem Artikel erfahren Sie, wie Sie den Oracle-Datenbankconnector in einer L
 * Installieren Sie den lokalen Datengateway. Unter [Herstellen einer Verbindung mit lokalen Daten für Logik-Apps](../logic-apps/logic-apps-gateway-connection.md) werden die Schritte aufgeführt. Das Gateway ist erforderlich, um eine Verbindung zu einer lokalen Oracle-Datenbank oder einer Azure-VM mit installierter Oracle-Datenbank herzustellen. 
 
     > [!NOTE]
-    > Das lokale Datengateway fungiert als Brücke und ermöglicht eine sichere Datenübertragung zwischen lokalen (nicht in der Cloud enthaltenen) Datenquellen und Ihren Logik-Apps. Dasselbe Gateway kann mit mehreren Diensten und mehreren Datenquellen verwendet werden. Daher müssen Sie das Gateway möglicherweise nur einmal installieren.
+    > Das lokale Datengateway fungiert als Brücke und ermöglicht eine sichere Datenübertragung zwischen lokalen (nicht in der Cloud enthaltenen) Datenquellen und Ihren Logik-Apps. Dasselbe Gateway kann mit mehreren Diensten und mehreren Datenquellen verwendet werden. Daher müssen Sie das Gateway möglicherweise nur einmal installieren.
 
-* Installieren Sie den Oracle-Client auf dem Computer, auf dem das lokale Datengateway installiert ist. Achten Sie darauf, dass Sie den 64-Bit-Oracle-Datenanbieter für .NET von Oracle installieren:  
+* Installieren Sie den Oracle-Client auf dem Computer, auf dem das lokale Datengateway installiert ist. Achten Sie darauf, dass Sie den 64-Bit-Oracle-Datenanbieter für .NET von Oracle installieren:  
 
   [64-Bit-ODAC 12c Release 4 (12.1.0.2.4) für Windows x64](http://www.oracle.com/technetwork/database/windows/downloads/index-090165.html)
 
@@ -97,25 +97,25 @@ In diesem Artikel erfahren Sie, wie Sie den Oracle-Datenbankconnector in einer L
 
 #### <a name="error-cannot-reach-the-gateway"></a>**Fehler**: Das Gateway ist nicht erreichbar.
 
-**Ursache**: Das lokale Datengateway kann keine Verbindung zur Cloud herstellen. 
+**Ursache**: Das lokale Datengateway kann keine Verbindung zur Cloud herstellen. 
 
-**Lösung**: Stellen Sie sicher, dass Ihr Gateway auf dem lokalen Computer ausgeführt wird, auf dem dieser installiert ist, und dass eine Internetverbindung hergestellt werden kann.  Es wird empfohlen, das Gateway nicht auf einem Computer zu installieren, der möglicherweise ausgeschaltet wird oder in den Standbymodus wechselt. Sie können auch den lokalen Datengatewaydienst (PBIEgwService) neu starten.
+**Lösung**: Stellen Sie sicher, dass Ihr Gateway auf dem lokalen Computer ausgeführt wird, auf dem dieser installiert ist, und dass eine Internetverbindung hergestellt werden kann.  Es wird empfohlen, das Gateway nicht auf einem Computer zu installieren, der möglicherweise ausgeschaltet wird oder in den Standbymodus wechselt. Sie können auch den lokalen Datengatewaydienst (PBIEgwService) neu starten.
 
 #### <a name="error-the-provider-being-used-is-deprecated-systemdataoracleclient-requires-oracle-client-software-version-817-or-greater-see-httpsgomicrosoftcomfwlinkplinkid272376httpsgomicrosoftcomfwlinkplinkid272376-to-install-the-official-provider"></a>**Fehler**: Der verwendete Anbieter ist veraltet: „System.Data.OracleClient erfordert Version 8.1.7 oder höher der Oracle-Clientsoftware.“. Informationen zum Installieren des offiziellen Anbieters finden Sie unter [https://go.microsoft.com/fwlink/p/?LinkID=272376](https://go.microsoft.com/fwlink/p/?LinkID=272376).
 
-**Ursache**: Das Oracle-Client-SDK ist nicht auf dem Computer installiert, auf dem das lokale Datengateway ausgeführt wird.  
+**Ursache**: Das Oracle-Client-SDK ist nicht auf dem Computer installiert, auf dem das lokale Datengateway ausgeführt wird.  
 
 **Lösung**: Laden Sie das Oracle-Client-SDK auf demselben Computer herunter, auf dem sich das lokale Datengateway befindet, und installieren Sie es.
 
 #### <a name="error-table-tablename-does-not-define-any-key-columns"></a>**Fehler**: Für die Tabelle „[Tablename]“ sind keine Schlüsselspalten definiert.
 
-**Ursache**: Die Tabelle weist keinen Primärschlüssel auf.  
+**Ursache**: Die Tabelle weist keinen Primärschlüssel auf.  
 
 **Lösung**: Der Oracle-Datenbankconnector erfordert, dass eine Tabelle mit einer Primärschlüsselspalte verwendet wird.
 
 #### <a name="currently-not-supported"></a>Wird derzeit nicht unterstützt.
 
-* Ansichten und gespeicherte Verfahren 
+* Ansichten und gespeicherte Verfahren 
 * Tabellen mit zusammengesetzten Schlüsseln
 * Geschachtelte Objekttypen in Tabellen
  
@@ -127,7 +127,7 @@ Zeigen Sie die in Swagger definierten Trigger und Aktionen sowie mögliche Besch
 
 Das [Azure Logic Apps-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps) ist ein hervorragender Ort, um Fragen zu stellen, Fragen zu beantworten und sich über die Aktivitäten anderer Logik-Apps-Benutzer zu informieren. 
 
-Sie können zur Verbesserung von Logik-Apps und Connectors beitragen, indem Sie unter [http://aka.ms/logicapps-wish](http://aka.ms/logicapps-wish) Ihre Ideen einreichen und über Ideen abstimmen. 
+Sie können zur Verbesserung von Logik-Apps und Connectors beitragen, indem Sie unter [https://aka.ms/logicapps-wish](https://aka.ms/logicapps-wish) Ihre Ideen einreichen und über Ideen abstimmen. 
 
 
 ## <a name="next-steps"></a>Nächste Schritte

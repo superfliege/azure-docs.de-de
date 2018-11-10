@@ -15,12 +15,12 @@ ms.date: 06/27/2018
 ms.author: barbkess
 ms.custom: it-pro
 ms.reviewer: harshja
-ms.openlocfilehash: 5d8af50e3007342a5cd46e4862623f2cf7145172
-ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
+ms.openlocfilehash: 388fd812185bc8bd2ef68a1dbcea6303d30dcdf3
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39480420"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50230791"
 ---
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>Veröffentlichen des Remotedesktops per Azure AD-Anwendungsproxy
 
@@ -43,7 +43,7 @@ Bei einer RDS-Bereitstellung werden die Rollen „RD-Web“ und „RD-Gateway“
 >[!TIP]
 >Wenn Sie RDS zum ersten Mal bereitstellen oder weitere Informationen wünschen, bevor Sie beginnen, lesen Sie den Abschnitt [Nahtlose Bereitstellung von RDS mit Azure Resource Manager und dem Azure Marketplace](https://technet.microsoft.com/windows-server-docs/compute/remote-desktop-services/rds-in-azure).
 
-## <a name="requirements"></a>Anforderungen
+## <a name="requirements"></a>Requirements (Anforderungen)
 
 - Verwenden Sie einen anderen Client als den Remotedesktop-Webclient, da der Webclient Anwendungsproxy nicht unterstützt.
 
@@ -97,6 +97,8 @@ Stellen Sie eine Verbindung mit der RDS-Bereitstellung als Administrator her und
    ```
    Set-RDSessionCollectionConfiguration -CollectionName "QuickSessionCollection" -CustomRdpProperty "pre-authentication server address:s:https://remotedesktoptest-aadapdemo.msappproxy.net/`nrequire pre-authentication:i:1"
    ```
+>[!NOTE]
+>Im obigen Befehl wird in „`nrequire“ ein Graviszeichen verwendet.
 
 9. Führen den folgenden Befehl aus, um die Änderung der benutzerdefinierten RDP-Eigenschaften zu überprüfen und um den Inhalt der RDP-Datei anzuzeigen, der für diese Sammlung aus RDWeb heruntergeladen wird:
     ```

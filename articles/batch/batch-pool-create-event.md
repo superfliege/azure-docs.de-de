@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/20/2017
 ms.author: danlep
-ms.openlocfilehash: bf7dfc2600c3d94faeb8d03561f6f2b30a0ee2d2
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: f8c0adf96d027f58a35dbe570f1b19c311cd84b9
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30316986"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51246513"
 ---
 # <a name="pool-create-event"></a>Poolerstellungsereignis
 
@@ -51,7 +51,7 @@ ms.locfileid: "30316986"
 |-------------|----------|-----------|
 |id|Zeichenfolge|Die ID des Pools.|
 |displayName|Zeichenfolge|Der Anzeigename des Pools.|
-|vmSize|Zeichenfolge|Die Größe der virtuellen Computer im Pool. Alle virtuellen Computer in einem Pool haben die gleiche Größe. <br/><br/> Informationen zu den verfügbaren Größen von virtuellen Computern für Cloud Services-Pools (Pools, die mit der „CloudServiceConfiguration“-Eigenschaft erstellt wurden) finden Sie unter [Größen für Cloud Services](http://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/). Der Azure Batch-Dienst unterstützt alle Cloud Services-VM-Größen mit Ausnahme von `ExtraSmall`.<br/><br/> Informationen zu verfügbaren VM-Größen für Pools, die Images aus Virtual Machines Marketplace verwenden (Pools, die mit der „VirtualMachineConfiguration“-Eigenschaft erstellt wurden), finden Sie unter [Größen für virtuelle Computer](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/) (Linux) oder [Größen für virtuelle Computer](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/) (Windows). Batch unterstützt alle Größen von Azure-VMs mit Ausnahme von `STANDARD_A0` und Größen mit Storage Premium (Serien `STANDARD_GS`, `STANDARD_DS` und `STANDARD_DSV2`).|
+|vmSize|Zeichenfolge|Die Größe der virtuellen Computer im Pool. Alle virtuellen Computer in einem Pool haben die gleiche Größe. <br/><br/> Informationen zu den verfügbaren Größen von virtuellen Computern für Cloud Services-Pools (Pools, die mit der „CloudServiceConfiguration“-Eigenschaft erstellt wurden) finden Sie unter [Größen für Cloud Services](https://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/). Der Azure Batch-Dienst unterstützt alle Cloud Services-VM-Größen mit Ausnahme von `ExtraSmall`.<br/><br/> Informationen zu verfügbaren VM-Größen für Pools, die Images aus Virtual Machines Marketplace verwenden (Pools, die mit der „VirtualMachineConfiguration“-Eigenschaft erstellt wurden), finden Sie unter [Größen für virtuelle Computer](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/) (Linux) oder [Größen für virtuelle Computer](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/) (Windows). Batch unterstützt alle Größen von Azure-VMs mit Ausnahme von `STANDARD_A0` und Größen mit Storage Premium (Serien `STANDARD_GS`, `STANDARD_DS` und `STANDARD_DSV2`).|
 |[cloudServiceConfiguration](#bk_csconf)|Komplexer Typ|Die Clouddienstkonfiguration des Pools.|
 |[virtualMachineConfiguration](#bk_vmconf)|Komplexer Typ|Die VM-Konfiguration des Pools.|
 |[networkConfiguration](#bk_netconf)|Komplexer Typ|Die Netzwerkkonfiguration des Pools.|

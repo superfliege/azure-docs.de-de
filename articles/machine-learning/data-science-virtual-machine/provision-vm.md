@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/30/2018
 ms.author: gokuma
-ms.openlocfilehash: 37a30055e567b27f4e215dac162642d4447a8e49
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 1b293ee8f0f83d727cd647cdcdcc424b4db7e5d3
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44298204"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51240884"
 ---
 # <a name="provision-the-windows-data-science-virtual-machine-on-azure"></a>Bereitstellen der Data Science Virtual Machine für Windows in Azure
 Die Microsoft Data Science Virtual Machine (DSVM) ist ein Image des virtuellen Windows Azure-Computers (VM). Sie ist vorinstalliert und mit verschiedenen Tools konfiguriert, die für Datenanalysen und Machine Learning verwendet werden. Die folgenden Tools sind enthalten:
@@ -186,7 +186,7 @@ Mehrere Azure-Tools werden auf dem virtuellen Computer installiert:
 * **Microsoft Azure PowerShell** ist ein Tool zur Verwaltung Ihrer Azure-Ressourcen in der PowerShell-Skriptsprache. Es ist auch auf Ihrem virtuellen Computer installiert. 
 
 ### <a name="power-bi"></a>Power BI
-Das **Power BI Desktop** wurde installiert, um Sie bei der Erstellung von Dashboards und Visualisierungen zu unterstützen. Verwenden Sie dieses Tool, um Daten aus verschiedenen Quellen abzurufen, Dashboards und Berichte zu erstellen und diese in der Cloud zu veröffentlichen. Weitere Informationen finden Sie auf der [Power BI](http://powerbi.microsoft.com)-Website. Sie finden den Power BI-Desktop im Startmenü. 
+Das **Power BI Desktop** wurde installiert, um Sie bei der Erstellung von Dashboards und Visualisierungen zu unterstützen. Verwenden Sie dieses Tool, um Daten aus verschiedenen Quellen abzurufen, Dashboards und Berichte zu erstellen und diese in der Cloud zu veröffentlichen. Weitere Informationen finden Sie auf der [Power BI](https://powerbi.microsoft.com)-Website. Sie finden den Power BI-Desktop im Startmenü. 
 
 > [!NOTE]
 > Für den Zugriff auf Power BI benötigen Sie ein Microsoft Office 365-Konto. 
@@ -228,7 +228,7 @@ Der [Microsoft-Webplattform-Installer](https://www.microsoft.com/web/downloads/p
 * Schauen Sie sich die Tools für die Data Science-VM an, indem Sie das Startmenü auswählen.
 * Informieren Sie sich über Azure Machine Learning Services und Workbench, indem Sie die [Seite mit Schnellstarts und Tutorials](../service/index.yml) für das Produkt besuchen. 
 * Navigieren Sie zu **C:\Programme\Microsoft\ML Server\R_SERVER\library\RevoScaleR\demoScripts**, um Beispiele für die RevoScaleR-Bibliothek in R zu finden, die Datenanalysen auf Unternehmensebene unterstützt.  
-* Lesen Sie den Artikel [Zehn Dinge, die Sie mit der Data Science Virtual Machine machen können](http://aka.ms/dsvmtenthings).
+* Lesen Sie den Artikel [Zehn Dinge, die Sie mit der Data Science Virtual Machine machen können](https://aka.ms/dsvmtenthings).
 * Erfahren Sie, wie Sie mithilfe des [Team Data Science-Prozesses](../team-data-science-process/index.yml)systematisch vollständige Analyselösungen erstellen.
 * Besuchen Sie die [Azure AI Gallery](http://gallery.cortanaintelligence.com), um Beispiele zu Machine Learning und zur Datenanalyse zu erhalten, in denen Azure Machine Learning und dazugehörige Datendienste in Azure verwendet werden. Wir haben auch ein Symbol für diese Galerie im Startmenü und auf dem Desktop der virtuellen Maschine bereitgestellt.
 

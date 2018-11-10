@@ -5,19 +5,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 04/09/2018
+ms.date: 10/17/2018
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: a934a1b75e85e03b6803be5c8afcd8fe74b0fad5
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 7889fbc9373cbdfdfab891bf8b1cd610523c7032
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45739197"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50088090"
 ---
 Azure Blob Storage ist die Objektspeicherlösung von Microsoft für die Cloud. Blobspeicher ist für die Speicherung großer Mengen von unstrukturierten Daten, z.B. Text oder Binärdaten, optimiert.
-
-Hochgradig skalierbarer Objektspeicher für unstrukturierte Daten
 
 Blobspeicher ist für folgende Zwecke ideal geeignet:
 
@@ -28,7 +26,7 @@ Blobspeicher ist für folgende Zwecke ideal geeignet:
 * Speichern von Daten für Sicherung und Wiederherstellung, Notfallwiederherstellung und Archivierung
 * Speichern von Daten für Analysen durch einen lokalen oder von Azure gehosteten Dienst
 
-Über HTTP oder HTTPS kann von allen Orten weltweit auf Objekte zugegriffen werden, die sich in Blobspeicher befinden. Benutzer oder Clientanwendungen können über URLs, die [Azure Storage-REST-API](https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api), [Azure PowerShell](https://docs.microsoft.com/powershell/module/azure.storage), die [Azure CLI](https://docs.microsoft.com/cli/azure/storage) oder eine Azure Storage-Clientbibliothek auf Blobs zugreifen. Die Speicherclientbibliotheken sind für mehrere Sprachen verfügbar, z.B. [.NET](https://docs.microsoft.com/dotnet/api/overview/azure/storage/client), [Java](https://docs.microsoft.com/java/api/overview/azure/storage/client), [Node.js](http://azure.github.io/azure-storage-node), [Python](https://docs.microsoft.com/python/azure/), [PHP](http://azure.github.io/azure-storage-php/) und [Ruby](http://azure.github.io/azure-storage-ruby).
+Benutzer- oder Clientanwendungen können auf Blobspeicherobjekte per HTTP oder HTTPS (von jedem Ort der Welt) über URLs, die [Azure Storage-REST-API](https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api), [Azure PowerShell](https://docs.microsoft.com/powershell/module/azure.storage), die [Azure CLI](https://docs.microsoft.com/cli/azure/storage) oder eine Azure Storage-Clientbibliothek zugreifen. Die Speicherclientbibliotheken sind für verschiedene Sprachen verfügbar, z.B. [.NET](https://docs.microsoft.com/dotnet/api/overview/azure/storage/client), [Java](https://docs.microsoft.com/java/api/overview/azure/storage/client), [Node.js](http://azure.github.io/azure-storage-node), [Python](https://docs.microsoft.com/python/azure/), [PHP](http://azure.github.io/azure-storage-php/) und [Ruby](http://azure.github.io/azure-storage-ruby).
 
 ## <a name="blob-service-concepts"></a>Konzepte des Blob-Diensts
 
@@ -42,7 +40,10 @@ Der gesamte Zugriff auf Datenobjekte erfolgt in Azure Storage über ein Speicher
 
 ### <a name="container"></a>Container
 
-Ein Container dient zum Organisieren einer Gruppe von Blobs (ähnlich wie ein Ordner in einem Dateisystem). Alle Blobs befinden sich innerhalb eines Containers. Ein Speicherkonto kann eine unbegrenzte Anzahl von Containern enthalten, und in einem Container kann eine unbegrenzte Anzahl von Blobs gespeichert werden. Beachten Sie, dass der Containername ausschließlich Kleinbuchstaben enthalten darf.
+Ein Container dient zum Organisieren einer Gruppe von Blobs (ähnlich wie ein Ordner in einem Dateisystem). Alle Blobs befinden sich innerhalb eines Containers. Ein Speicherkonto kann eine unbegrenzte Anzahl von Containern enthalten, und in einem Container kann eine unbegrenzte Anzahl von Blobs gespeichert werden. 
+
+  > [!NOTE]
+  > Der Containername darf ausschließlich Kleinbuchstaben enthalten.
 
 ### <a name="blob"></a>Blob
  
@@ -52,8 +53,10 @@ Azure Storage verfügt über drei Arten von Blobs: Blockblobs, Anfügeblobs und 
 * Anfügeblobs bestehen wie Blockblobs auch aus Blöcken, aber sie sind für Anfügevorgänge optimiert. Anfügeblobs sind beispielsweise ideal für Szenarien, bei denen es um das Protokollieren von Daten virtueller Computer geht.
 * In Seitenblobs werden Random-Access-Dateien mit einer Größe von bis zu 8 TB gespeichert. Die VHD-Dateien, die als Grundlage für VMs dienen, werden in Seitenblobs gespeichert.
 
-Alle Blobs befinden sich innerhalb eines Containers. Ein Container ähnelt einem Ordner in einem Dateisystem. Sie können Blobs außerdem in virtuellen Verzeichnissen anordnen und wie in einem Dateisystem organisieren. 
+Alle Blobs befinden sich innerhalb eines Containers. Ein Container ähnelt einem Ordner in einem Dateisystem. Sie können Blobs außerdem in virtuellen Verzeichnissen anordnen und wie in einem Dateisystem darin navigieren. 
 
-Wenn sich die Daten besonders umfangreicher Datasets aufgrund von Netzwerkbeschränkungen nicht sinnvoll über eine Kabelverbindung in Blob Storage hochladen bzw. daraus herunterladen lassen, können Sie Festplatten an Microsoft schicken und Ihre Daten direkt in das Rechenzentrum importieren bzw. aus dem Rechenzentrum exportieren lassen. Weitere Informationen finden Sie unter [Verwenden des Microsoft Azure Import/Export-Diensts zum Übertragen von Daten in den Blobspeicher](../articles/storage/common/storage-import-export-service.md).
+Es kann sein, dass das Hochladen von Daten in Blobspeicher per Übertragung aufgrund von großen Datasets und Netzwerkeinschränkungen unrealistisch ist. Sie können [Azure Data Box Disk](../articles/databox/data-box-disk-overview.md) nutzen, um SSDs (Solid-State Disks) von Microsoft anzufordern. Anschließend können Sie Ihre Daten auf diese Datenträger kopieren und zurück an Microsoft senden, damit sie in den Blobspeicher hochgeladen werden können.
+
+Falls Sie große Datenmengen aus Ihrem Speicherkonto exportieren müssen, helfen Ihnen die Informationen unter [Was ist der Azure Import/Export-Dienst?](../articles/storage/common/storage-import-export-service.md) weiter.
   
 Ausführliche Informationen zum Benennen von Containern und Blobs finden Sie unter [Naming and Referencing Containers, Blobs, and Metadata](/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata)(Benennen von Containern, Blobs und Metadaten und Verweisen auf diese).

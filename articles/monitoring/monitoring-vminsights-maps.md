@@ -1,6 +1,6 @@
 ---
-title: Anzeigen von Anwendungsabhängigkeiten mit Azure Monitor für VMs | Microsoft-Dokumentation
-description: Zuordnung ist ein Feature von Azure Monitor für VMs, das Anwendungskomponenten auf Windows- und Linux-Systemen automatisch ermittelt und die Kommunikation zwischen Diensten abbildet. Dieser Artikel enthält Details zu seiner Verwendung in einer Reihe von Szenarien.
+title: Anzeigen von Anwendungsabhängigkeiten mit Azure Monitor für VMs (Vorschau) | Microsoft-Dokumentation
+description: Zuordnung ist ein Feature von Azure Monitor for VMs, das Anwendungskomponenten auf Windows- und Linux-Systemen automatisch ermittelt und die Kommunikation zwischen Diensten abbildet. Dieser Artikel enthält Details zu seiner Verwendung in einer Reihe von Szenarien.
 services: azure-monitor
 documentationcenter: ''
 author: mgoedtel
@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/17/2018
+ms.date: 10/25/2018
 ms.author: magoedte
-ms.openlocfilehash: 8641b6cfb14bceb248cc587095a9d3469ce2c9e0
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: af3d2b997a4d58f2d32705c55151c4cf13bdcc7c
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49402148"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50095477"
 ---
-# <a name="using-azure-monitor-for-vms-map-to-understand-application-components"></a>Verwenden der Zuordnung in Azure Monitor für VMs zum Verstehen von Anwendungskomponenten
+# <a name="using-azure-monitor-for-vms-preview-map-to-understand-application-components"></a>Verwenden der Zuordnung in Azure Monitor für VMs (Vorschau) zum Verstehen von Anwendungskomponenten
 Das Anzeigen der ermittelten Anwendungskomponenten auf virtuellen Windows- und Linux-Computern, die in Ihrer Azure-Umgebung ausgeführt werden, kann mit Azure Monitor für VMs auf zwei Arten erfolgen: direkt in einem virtuellen Computer oder übergreifend für eine Gruppe von VMs in Azure Monitor. 
 
-Dieser Artikel soll Ihnen die unterschiedliche Benutzererfahrung der beiden Perspektiven und die Verwendung des Zuordnungsfeatures nahebringen. Informationen zum Konfigurieren von Azure Monitor für VMs finden Sie unter [Enable Azure Monitor for VMs](monitoring-vminsights-onboard.md) (Aktivieren von Azure Monitor für VMs).
+Dieser Artikel soll Ihnen die unterschiedliche Benutzererfahrung der beiden Perspektiven und die Verwendung des Zuordnungsfeatures nahebringen. Informationen zum Konfigurieren von Azure Monitor for VMs finden Sie unter [Enable Azure Monitor for VMs](monitoring-vminsights-onboard.md) (Aktivieren von Azure Monitor for VMs).
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim Azure-Portal an.
@@ -44,7 +44,7 @@ Klicken Sie auf der rechten Seite des Bereichs auf das Symbol **Protokollereigni
 
 ![Protokollsuchliste im Bereich „Eigenschaften“](./media/monitoring-vminsights-maps/properties-pane-logs-01.png)
 
-Schließen Sie *Protokolle**, kehren Sie zum Bereich **Eigenschaften** zurück, und wählen Sie **Warnungen** aus, um Warnungen anzuzeigen, die von den Integritätskriterien für die VM ausgelöst wurden. Die Zuordnung ist in Azure-Warnungen integriert, um Warnungen für den ausgewählten Server anzuzeigen, die im ausgewählten Zeitraum ausgelöst werden. Für den Server wird ein Symbol angezeigt, wenn aktuelle Warnungen vorliegen, und im Computerwarnungsbereich werden die Warnungen aufgelistet. 
+Schließen Sie *Protokolle*\*, kehren Sie zum Bereich **Eigenschaften** zurück, und wählen Sie **Warnungen** aus, um Warnungen anzuzeigen, die von den Integritätskriterien für die VM ausgelöst wurden. Die Zuordnung ist in Azure-Warnungen integriert, um Warnungen für den ausgewählten Server anzuzeigen, die im ausgewählten Zeitraum ausgelöst werden. Für den Server wird ein Symbol angezeigt, wenn aktuelle Warnungen vorliegen, und im Computerwarnungsbereich werden die Warnungen aufgelistet. 
 
 ![Computerwarnungen im Bereich „Eigenschaften“](./media/monitoring-vminsights-maps/properties-pane-alerts-01.png)
 
@@ -88,7 +88,7 @@ Wenn die Gruppen überwachte und nicht überwachte Server beinhalten, können Si
 
 ## <a name="view-map-directly-from-a-virtual-machine"></a>Direktes Anzeigen der Zuordnung in einer VM 
 
-Führen Sie die folgenden Schritte aus, um direkt aus einer VM auf Azure Monitor für VMs zuzugreifen.
+Führen Sie die folgenden Schritte aus, um direkt aus einer VM auf Azure Monitor for VMs zuzugreifen.
 
 1. Wählen Sie im Azure-Portal die Option **Virtual Machines** aus. 
 2. Wählen Sie in der Liste eine VM und im Abschnitt **Überwachung** **Insights (Vorschau)** aus.  
@@ -112,4 +112,4 @@ Wählen Sie mit dem Selektor **Arbeitsbereich** oben auf der Seite – falls Sie
 Standardmäßig zeigt die Zuordnung die letzten 30 Minuten. Mithilfe des **TimeRange**-Selektors können Sie nach historischen Zeiträumen (maximal eine Stunde) abfragen, um anzuzeigen, wie die Abhängigkeiten in der Vergangenheit aussahen, z.B. während eines Incidents oder vor einer Änderung.   
 
 ## <a name="next-steps"></a>Nächste Schritte
-Informationen zum Verwenden des Integritätsfeatures finden Sie unter [View Azure VM Health](monitoring-vminsights-health.md) (Anzeigen der Integrität von Azure-VMs); Informationen zum Erkennen von Engpässen und der Gesamtnutzung mit Ihrer VM-Leistung finden Sie unter [View Azure Monitor for VMs Performance](monitoring-vminsights-performance.md) (Anzeigen der Leistung von Azure Monitor für VMs). 
+Informationen zum Verwenden des Integritätsfeatures finden Sie unter [View Azure VM Health](monitoring-vminsights-health.md) (Anzeigen der Integrität von Azure-VMs); Informationen zum Erkennen von Engpässen und der Gesamtnutzung mit Ihrer VM-Leistung finden Sie unter [View Azure Monitor for VMs Performance](monitoring-vminsights-performance.md) (Anzeigen der Leistung von Azure Monitor for VMs). 

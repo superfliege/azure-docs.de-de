@@ -1,6 +1,6 @@
 ---
-title: Failback in Azure Site Recovery | Microsoft-Dokumentation
-description: Dieser Artikel bietet eine Übersicht über verschiedene Arten von Failbacks sowie Vorsichtsmaßnahmen, die beim Durchführen von Failbacks zum lokalen Standort über den Azure Site Recovery-Dienst zu berücksichtigen sind.
+title: Failback während der Notfallwiederherstellung mit Azure Site Recovery | Microsoft-Dokumentation
+description: Dieser Artikel bietet eine Übersicht über verschiedene Arten von Failbacks sowie Vorsichtsmaßnahmen, die beim Durchführen von Failbacks zum lokalen Standort während der Notfallwiederherstellung mit dem Azure Site Recovery-Dienst zu berücksichtigen sind.
 services: site-recovery
 author: rajani-janaki-ram
 manager: guaravd
@@ -8,16 +8,16 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: rajanki
-ms.openlocfilehash: 2a9ee380fc16c4088d98875dd465509c4023d037
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: e97d736e7e117e0ccce6dc021a9de2ea15ac5484
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37920388"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50210141"
 ---
 # <a name="overview-of-failback"></a>Übersicht über das Failback
 
-Nach einem Failover zu Azure können Sie ein Failback zu Ihrem lokalen Standort durchführen. Bei Azure Site Recovery sind zwei verschiedene Arten von Failback möglich: 
+Nach einem Failover zu Azure im Rahmen des Notfallwiederherstellungsprozesses können Sie ein Failback zu Ihrem lokalen Standort durchführen. Bei Azure Site Recovery sind zwei verschiedene Arten von Failback möglich: 
 
 - Failback zum ursprünglichen Speicherort 
 - Failback zu einem alternativen Speicherort

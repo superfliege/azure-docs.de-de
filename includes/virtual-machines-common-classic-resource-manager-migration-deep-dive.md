@@ -1,3 +1,16 @@
+---
+author: cynthn
+ms.service: virtual-machines
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: cynthn
+ms.openlocfilehash: dc871b29cdafa57d337f9be6cf01e76212f31b67
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50227462"
+---
 ## <a name="migrate-iaas-resources-from-the-classic-deployment-model-to-azure-resource-manager"></a>Migrieren von IaaS-Ressourcen vom klassischen Bereitstellungsmodell zu Azure Resource Manager
 Zunächst einmal ist es wichtig, den Unterschied zwischen Vorgängen auf der Datenebene und Vorgängen auf der Verwaltungsebene für IaaS-Ressourcen (Infrastructure-as-a-Service) zu verstehen.
 
@@ -118,12 +131,12 @@ Nach Abschluss der Überprüfung können Sie einen Commit für die Migration dur
 
 Hier sehen Sie ein Flussdiagramm für die Migration:
 
-![Screenshot mit den Migrationsschritten](../articles/virtual-machines/windows/media/migration-classic-resource-manager/migration-flow.png)
+![Screenshot that shows the migration steps](../articles/virtual-machines/windows/media/migration-classic-resource-manager/migration-flow.png)
 
 ## <a name="translation-of-the-classic-deployment-model-to-resource-manager-resources"></a>Umwandlung klassischer Ressourcen in Resource Manager-Ressourcen
 Die folgende Tabelle zeigt die Darstellung der Ressourcen im klassischen Bereitstellungsmodell und in Resource Manager. Andere Features und Ressourcen werden derzeit nicht unterstützt.
 
-| Klassische Darstellung | Resource Manager-Darstellung | Hinweise |
+| Klassische Darstellung | Resource Manager-Darstellung | Notizen |
 | --- | --- | --- |
 | Name des Clouddiensts |DNS-Name |Während der Migration wird für jeden Clouddienst eine neue Ressourcengruppe mit dem Benennungsmuster `<cloudservicename>-migrated`erstellt. Diese Ressourcengruppe enthält alle Ihre Ressourcen. Der Name des Clouddiensts wird als DNS-Name verwendet, der der öffentlichen IP-Adresse zugeordnet ist. |
 | Virtueller Computer |Virtueller Computer |VM-spezifische Eigenschaften werden unverändert migriert. Bestimmte osProfile-Informationen (etwa der Computername) werden im klassischen Bereitstellungsmodell nicht gespeichert und bleiben daher nach der Migration leer. |

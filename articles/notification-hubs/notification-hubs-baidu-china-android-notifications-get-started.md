@@ -14,12 +14,12 @@ ms.tgt_pltfrm: mobile-baidu
 ms.workload: mobile
 ms.date: 04/14/2018
 ms.author: dimazaid
-ms.openlocfilehash: c680de254c55adaad8cedde6cf4748efd0c2c858
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: d8ece15e7e8fa3b74fbefc78aea65683229712ca
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38700899"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51246768"
 ---
 # <a name="get-started-with-notification-hubs-using-baidu"></a>Erste Schritte mit Notification Hubs mit Baidu
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
@@ -31,7 +31,7 @@ Da Google Play und FCM (Firebase Cloud Messaging) in China nicht verfügbar sind
 ## <a name="prerequisites"></a>Voraussetzungen
 Für dieses Tutorial ist Folgendes erforderlich:
 
-* Android SDK (wir gehen davon aus, dass Sie Android Studio verwenden), das Sie von der <a href="http://go.microsoft.com/fwlink/?LinkId=389797">Android-Website</a> herunterladen können
+* Android SDK (wir gehen davon aus, dass Sie Android Studio verwenden), das Sie von der <a href="https://go.microsoft.com/fwlink/?LinkId=389797">Android-Website</a> herunterladen können
 * [Baidu Push Android SDK]
 
 > [!NOTE]
@@ -475,7 +475,7 @@ Pushbenachrichtigungen werden normalerweise in einem Back-End-Dienst wie z. B. 
 Der Einfachheit halber wird in diesem Tutorial das Senden einer Benachrichtigung mit dem .NET SDK über eine Konsolen-App gezeigt. Es empfiehlt sich jedoch, als Nächstes das Tutorial [Verwenden von Notification Hubs für Pushbenachrichtigungen an Benutzer](notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md) zum Senden von Benachrichtigungen über ein ASP.NET-Back-End zu absolvieren. 
 
 Benachrichtigungen können auf unterschiedliche Weise gesendet werden:
-* **REST-Schnittstelle**: Sie können die Benachrichtigung auf allen Back-End-Plattformen unterstützen, indem Sie die [REST-Schnittstelle](http://msdn.microsoft.com/library/windowsazure/dn223264.aspx) verwenden.
+* **REST-Schnittstelle**: Sie können die Benachrichtigung auf allen Back-End-Plattformen unterstützen, indem Sie die [REST-Schnittstelle](https://msdn.microsoft.com/library/windowsazure/dn223264.aspx) verwenden.
 * **Microsoft Azure Notification Hubs .NET SDK**: Führen Sie im Nuget-Paket-Manager für Visual Studio die Option [Install-Package Microsoft.Azure.NotificationHubs](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)aus.
 * **Node.js**: [Verwenden von Notification Hubs mit Node.js](notification-hubs-nodejs-push-notification-tutorial.md)
 * **Mobile Apps**: Ein Beispiel für das Senden von Benachrichtigungen von einem Back-End für Azure Mobile App Service-Apps, das in Notification Hubs integriert ist, finden Sie unter [Hinzufügen von Pushbenachrichtigungen zu Ihrer App](../app-service-mobile/app-service-mobile-windows-store-dotnet-get-started-push.md).

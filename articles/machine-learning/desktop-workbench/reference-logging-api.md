@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: article
 ms.date: 09/25/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: 7084251102984445e7c2341b78b44f85811ebea7
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: f7dac645ef0b732b7f3087a06c74385871d5b1c9
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46958219"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50238335"
 ---
 # <a name="logging-api-reference"></a>Referenz zur Protokollierungs-API
 
@@ -89,5 +89,5 @@ $ az ml history info -r <runid> -a <artifact/path>
 $ az ml history promote -r <runid> -ap <artifact/prefix> -n <name of asset to create>
 ```
 ## <a name="next-steps"></a>Nächste Schritte
-- Durchlaufen Sie das [Tutorial zum Klassifizieren von Schwertlilien, Teil 2](tutorial-classifying-iris-part-2.md), um die Protokollierungs-API in Aktion zu sehen.
+- Arbeiten Sie das [Tutorial zum Klassifizieren von Schwertlilien, Teil 2](tutorial-classifying-iris-part-2.md) durch, um die Protokollierungs-API in Aktion zu sehen.
 - Lesen Sie [Verwenden des Ausführungsverlaufs und der Modellmetriken in Azure Machine Learning Workbench](how-to-use-run-history-model-metrics.md), um besser verstehen, wie Protokollierungs-APIs im Ausführungsverlauf verwendet werden können.

@@ -10,15 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 09/07/2018
+ms.date: 10/30/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: d25ca14b78465a6c4fec7e90bc20436e3ca553fc
-ms.sourcegitcommit: 3150596c9d4a53d3650cc9254c107871ae0aab88
+ms.openlocfilehash: b08013941c1cf83b3eb006543d699eb7e1356ff0
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47419626"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50239983"
 ---
 # <a name="tutorial-create-linked-azure-resource-manager-templates"></a>Tutorial: Erstellen verknüpfter Azure Resource Manager-Vorlagen
 
@@ -32,7 +32,6 @@ Dieses Tutorial enthält die folgenden Aufgaben:
 > * Hochladen der verknüpften Vorlage
 > * Verknüpfen mit der verknüpften Vorlage
 > * Konfigurieren der Abhängigkeit
-> * Abrufen von Werten aus einer verknüpften Vorlage
 > * Bereitstellen der Vorlage
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
@@ -41,16 +40,20 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 Damit Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie Folgendes:
 
-* [Visual Studio Code](https://code.visualstudio.com/).
-* Die Erweiterung „Azure Resource Manager-Tools“.  Informationen finden Sie unter [Schnellstart: Erstellen von Azure Resource Manager-Vorlagen mit Visual Studio Code](./resource-manager-quickstart-create-templates-use-visual-studio-code.md#prerequisites).
-* Schließen Sie [Tutorial: Erstellen mehrerer Ressourceninstanzen mit Resource Manager-Vorlagen](./resource-manager-tutorial-create-multiple-instances.md) ab.
+* [Visual Studio Code](https://code.visualstudio.com/) mit der [Erweiterung „Azure Resource Manager-Tools“](./resource-manager-quickstart-create-templates-use-visual-studio-code.md#prerequisites)
+* Verwenden Sie aus Sicherheitsgründen ein generiertes Kennwort für das Administratorkonto des virtuellen Computers. Hier sehen Sie ein Beispiel für die Kennwortgenerierung:
+
+    ```azurecli-interactive
+    openssl rand -base64 32
+    ```
+    Azure Key Vault dient zum Schützen von kryptografischen Schlüsseln und anderen Geheimnissen. Weitere Informationen finden Sie unter [Tutorial: Integrieren von Azure Key Vault in die Resource Manager-Vorlagenbereitstellung](./resource-manager-tutorial-use-key-vault.md). Wir empfehlen Ihnen auch, Ihr Kennwort alle drei Monate zu aktualisieren.
 
 ## <a name="open-a-quickstart-template"></a>Öffnen einer Schnellstartvorlage
 
 „Azure-Schnellstartvorlagen“ ist ein Repository für Resource Manager-Vorlagen. Statt eine Vorlage von Grund auf neu zu erstellen, können Sie eine Beispielvorlage verwenden und diese anpassen. Die in diesem Tutorial verwendete Vorlage heißt [Deploy a simple Windows VM](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/) (Bereitstellen eines einfachen virtuellen Windows-Computers). Dieselbe Vorlage wird in [Tutorial: Erstellen mehrerer Ressourceninstanzen mit Resource Manager-Vorlagen](./resource-manager-tutorial-create-multiple-instances.md) verwendet. Sie speichern zwei Kopien der gleichen Vorlage, die verwendet werden sollen als:
 
-- **Die Hauptvorlage**: Erstellen aller Ressourcen mit Ausnahme des Speicherkontos.
-- **Die verknüpfte Vorlage**: Erstellen des Speicherkontos.
+* **Die Hauptvorlage**: Erstellen aller Ressourcen mit Ausnahme des Speicherkontos.
+* **Die verknüpfte Vorlage**: Erstellen des Speicherkontos.
 
 1. Wählen Sie in Visual Studio Code **Datei**>**Datei öffnen** aus.
 2. Fügen Sie in **Dateiname** die folgende URL ein:
@@ -59,8 +62,17 @@ Damit Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie F
     https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.json
     ```
 3. Wählen Sie **Öffnen** aus, um die Datei zu öffnen.
-4. Wählen Sie **Datei**>**Speichern unter** aus, um eine Kopie der Datei als **azuredeploy.json** auf dem lokalen Computer zu speichern.
-5. Wählen Sie **Datei**>**Speichern unter** aus, um eine andere Kopie der Datei mit dem Namen **linkedTemplate.json** zu erstellen.
+4. Die Vorlage definiert fünf Ressourcen:
+
+    * `Microsoft.Storage/storageAccounts`. Informationen finden Sie in der [Vorlagenreferenz](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts). 
+    * `Microsoft.Network/publicIPAddresses`. Informationen finden Sie in der [Vorlagenreferenz](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses). 
+    * `Microsoft.Network/virtualNetworks`. Informationen finden Sie in der [Vorlagenreferenz](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworks). 
+    * `Microsoft.Network/networkInterfaces`. Informationen finden Sie in der [Vorlagenreferenz](https://docs.microsoft.com/azure/templates/microsoft.network/networkinterfaces). 
+    * `Microsoft.Compute/virtualMachines`. Informationen finden Sie in der [Vorlagenreferenz](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines).
+
+    Bevor Sie die Vorlage anpassen, sollten Sie sich zunächst grundlegend damit vertraut machen.
+5. Wählen Sie **Datei**>**Speichern unter** aus, um eine Kopie der Datei als **azuredeploy.json** auf dem lokalen Computer zu speichern.
+6. Wählen Sie **Datei**>**Speichern unter** aus, um eine andere Kopie der Datei mit dem Namen **linkedTemplate.json** zu erstellen.
 
 ## <a name="create-the-linked-template"></a>Erstellen der verknüpften Vorlage
 
@@ -69,8 +81,8 @@ Die verknüpfte Vorlage erstellt ein Speicherkonto. Die verknüpfte Vorlage ist 
 1. Öffnen Sie „linkedTemplate.json“ in Visual Studio Code, falls die Datei noch nicht geöffnet ist.
 2. Nehmen Sie die folgenden Änderungen vor:
 
-    - Entfernen Sie alle Ressourcen mit Ausnahme des Speicherkontos. Sie entfernen insgesamt vier Ressourcen.
-    - Aktualisieren Sie das **outputs**-Element, sodass es so aussieht:
+    * Entfernen Sie alle Ressourcen mit Ausnahme des Speicherkontos. Sie entfernen insgesamt vier Ressourcen.
+    * Aktualisieren Sie das **outputs**-Element, sodass es so aussieht:
 
         ```json
         "outputs": {
@@ -81,9 +93,9 @@ Die verknüpfte Vorlage erstellt ein Speicherkonto. Die verknüpfte Vorlage ist 
         }
         ```
         Die VM-Ressourcendefinition in der Hauptvorlage benötigt **storageUri**.  Sie geben den Wert als Ausgabewert an die Hauptvorlage zurück.
-    - Entfernen Sie die Parameter, die nie verwendet werden. Diese Parameter sind mit einer grünen Wellenlinie unterlegt. Es sollte nur links ein Parameter namens **location** aufgerufen sein.
-    - Entfernen Sie das Element **variables**. Sie sind in diesem Tutorial nicht erforderlich.
-    - Fügen Sie einen Parameter namens **storageAccountName** hinzu. Der Name des Speicherkontos wird aus der Hauptvorlage als Parameter an die verknüpfte Vorlage übergeben.
+    * Entfernen Sie die Parameter, die nie verwendet werden. Diese Parameter sind mit einer grünen Wellenlinie unterlegt. Es sollte nur links ein Parameter namens **location** aufgerufen sein.
+    * Entfernen Sie das Element **variables**. Sie sind in diesem Tutorial nicht erforderlich.
+    * Fügen Sie einen Parameter namens **storageAccountName** hinzu. Der Name des Speicherkontos wird aus der Hauptvorlage als Parameter an die verknüpfte Vorlage übergeben.
 
     Wenn Sie fertig sind, sollte die Vorlage etwa so aussehen:
 
@@ -161,11 +173,11 @@ Die Hauptvorlage hat den Namen „azuredeploy.json“.
 
     Berücksichtigen Sie dabei folgende Details:
 
-    - Eine `Microsoft.Resources/deployments`-Ressource in der Hauptvorlage wird zum Verknüpfen mit einer anderen Vorlage verwendet.
-    - Die `deployments`-Ressource hat den Namen `linkedTemplate`. Dieser Name wird zum [Konfigurieren der Abhängigkeit](#configure-dependency) verwendet.  
-    - Beim Aufrufen verknüpfter Vorlagen können Sie nur den Bereitstellungsmodus [Inkrementell](./deployment-modes.md) verwenden.
-    - `templateLink/uri` enthält den URI der verknüpften Vorlage. Die verknüpfte Vorlage wurde in ein freigegebenes Speicherkonto hochgeladen. Sie können den URI aktualisieren, wenn Sie die Vorlage zu einem anderen Speicherort im Internet hochladen.
-    - Übergeben Sie mit `parameters` Werte aus der Hauptvorlage an die verknüpfte Vorlage.
+    * Eine `Microsoft.Resources/deployments`-Ressource in der Hauptvorlage wird zum Verknüpfen mit einer anderen Vorlage verwendet.
+    * Die `deployments`-Ressource hat den Namen `linkedTemplate`. Dieser Name wird zum [Konfigurieren der Abhängigkeit](#configure-dependency) verwendet.  
+    * Beim Aufrufen verknüpfter Vorlagen können Sie nur den Bereitstellungsmodus [Inkrementell](./deployment-modes.md) verwenden.
+    * `templateLink/uri` enthält den URI der verknüpften Vorlage. Die verknüpfte Vorlage wurde in ein freigegebenes Speicherkonto hochgeladen. Sie können den URI aktualisieren, wenn Sie die Vorlage zu einem anderen Speicherort im Internet hochladen.
+    * Übergeben Sie mit `parameters` Werte aus der Hauptvorlage an die verknüpfte Vorlage.
 4. Speichern Sie die Änderungen.
 
 ## <a name="configure-dependency"></a>Konfigurieren der Abhängigkeit
@@ -176,8 +188,8 @@ Wie Sie aus [Tutorial: Erstellen mehrerer Ressourceninstanzen mit Resource Manag
 
 Da das Speicherkonto nun in der verknüpften Vorlage definiert ist, müssen Sie die folgenden zwei Elemente der `Microsoft.Compute/virtualMachines`-Ressource aktualisieren.
 
-- Konfigurieren Sie das `dependOn`-Element neu. Die Definition des Speicherkontos wird in die verknüpfte Vorlage verschoben.
-- Konfigurieren Sie das `properties/diagnosticsProfile/bootDiagnostics/storageUri`-Element neu. In [Verknüpfte Vorlage erstellen](#create-the-linked-template) haben Sie einen Ausgabewert hinzugefügt:
+* Konfigurieren Sie das `dependOn`-Element neu. Die Definition des Speicherkontos wird in die verknüpfte Vorlage verschoben.
+* Konfigurieren Sie das `properties/diagnosticsProfile/bootDiagnostics/storageUri`-Element neu. In [Verknüpfte Vorlage erstellen](#create-the-linked-template) haben Sie einen Ausgabewert hinzugefügt:
 
     ```json
     "outputs": {
@@ -193,15 +205,15 @@ Da das Speicherkonto nun in der verknüpften Vorlage definiert ist, müssen Sie 
 2. Erweitern Sie die VM-Ressourcendefinition, aktualisieren Sie **dependsOn** wie im folgenden Screenshot gezeigt:
 
     ![Azure Resource Manager: verknüpfte Vorlagen – Abhängigkeit konfigurieren ](./media/resource-manager-tutorial-create-linked-templates/resource-manager-template-linked-templates-configure-dependency.png)
-    
-    „linkedTemplate“ ist der Name der Ressource der Bereitstellungen.  
+
+    *linkedTemplate* ist der Name der Ressource der Bereitstellungen.  
 3. Aktualisieren Sie **properties/diagnosticsProfile/bootDiagnostics/storageUri** wie im vorherigen Screenshot dargestellt.
 
 Weitere Informationen finden Sie unter [Verwenden von verknüpften und geschachtelten Vorlagen bei der Bereitstellung von Azure-Ressourcen](./resource-group-linked-templates.md).
 
 ## <a name="deploy-the-template"></a>Bereitstellen der Vorlage
 
-Informationen zum Bereitstellungsverfahren finden Sie im Abschnitt [Bereitstellen der Vorlage](./resource-manager-tutorial-create-multiple-instances.md#deploy-the-template).
+Informationen zum Bereitstellungsverfahren finden Sie im Abschnitt [Bereitstellen der Vorlage](./resource-manager-tutorial-create-multiple-instances.md#deploy-the-template). Verwenden Sie aus Sicherheitsgründen ein generiertes Kennwort für das Administratorkonto des virtuellen Computers. Siehe [Voraussetzungen](#prerequisites).
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
@@ -214,9 +226,7 @@ Wenn Sie die Azure-Ressourcen nicht mehr benötigen, löschen Sie die Ressourcen
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial entwickeln Sie verknüpfte Vorlagen und stellen Sie bereit. Wie Sie Azure-Ressourcen in mehreren Regionen bereitstellen und sichere Bereitstellungspraktiken verwenden, erfahren Sie unter
-
+In diesem Tutorial haben Sie eine verknüpfte Vorlage entwickelt und bereitgestellt. Informationen zum Ausführen von Aufgaben nach der Bereitstellung mithilfe von VM-Erweiterungen finden Sie unter
 
 > [!div class="nextstepaction"]
-> [Tutorial: Verwenden des Azure-Bereitstellungs-Manager mit Resource Manager-Vorlagen (Public Preview)](./deployment-manager-tutorial.md)
-
+> [Tutorial: Verwenden des Azure-Bereitstellungs-Managers mit Resource Manager-Vorlagen (private Vorschau)](./deployment-manager-tutorial.md).

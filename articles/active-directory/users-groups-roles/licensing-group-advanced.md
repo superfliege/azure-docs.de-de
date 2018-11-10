@@ -11,15 +11,15 @@ ms.service: active-directory
 ms.topic: article
 ms.workload: identity
 ms.component: users-groups-roles
-ms.date: 06/02/2017
+ms.date: 10/29/2018
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 15b52920774a878cd386ced5966d507768a8af70
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 9b94bf4c499a5d6323e774df90304f0134bc5894
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39627388"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50215411"
 ---
 # <a name="scenarios-limitations-and-known-issues-using-groups-to-manage-licensing-in-azure-active-directory"></a>Szenarien, Einschränkungen und bekannte Probleme mit der Verwendung von Gruppen zum Verwalten der Lizenzierung in Azure Active Directory
 
@@ -213,21 +213,19 @@ Wenn Sie die gruppenbasierte Lizenzierung verwenden, ist es ratsam, sich mit der
 
 - Die gruppenbasierte Lizenzierung unterstützt derzeit keine Gruppen, die andere Gruppen enthalten (geschachtelte Gruppen). Wenn Sie eine Lizenz auf eine geschachtelte Gruppe anwenden, werden die Lizenzen nur auf unmittelbare Mitglieder der obersten Gruppenebene angewendet.
 
-- Das Feature kann nur mit Sicherheitsgruppen verwendet werden. Office-Gruppen werden derzeit nicht unterstützt, und es ist nicht möglich, sie für den Prozess der Lizenzzuweisung zu verwenden.
+- Das Feature kann nur mit Sicherheitsgruppen und Office 365-Gruppen verwendet werden, für die „securityEnabled=TRUE“ gilt.
 
 - Das [Office 365-Verwaltungsportal](https://portal.office.com ) unterstützt derzeit keine gruppenbasierte Lizenzierung. Wenn ein Benutzer eine Lizenz aus einer Gruppe erbt, wird diese Lizenz im Office-Verwaltungsportal als normale Benutzerlizenz angezeigt. Wenn Sie versuchen, diese Lizenz zu ändern oder zu entfernen, wird im Portal eine Fehlermeldung zurückgegeben. Geerbte Gruppenlizenzen können nicht direkt für einen Benutzer geändert werden.
 
-- Wenn ein Benutzer aus einer Gruppe entfernt wird und die Lizenz verliert, werden die Status der Dienstpläne aus dieser Lizenz (z.B. SharePoint Online) in **Angehalten** geändert. Diese Dienstpläne sind nicht auf einen endgültigen deaktivierten Status festgelegt. Mit dieser Vorsichtsmaßnahme kann ein versehentliches Entfernen von Benutzerdaten vermieden werden, wenn ein Administrator einen Fehler bei der Verwaltung der Gruppenmitgliedschaft macht.
-
 - Wenn Lizenzen für eine große Gruppe zugewiesen oder geändert werden (z.B. 100.000 Benutzer), kann dies die Leistung beeinträchtigen. Vor allem das Volumen der Änderungen, das von der Azure AD-Automation generiert wird, kann sich negativ auf die Leistung Ihrer Verzeichnissynchronisierung zwischen Azure AD und lokalen Systemen auswirken.
 
-- In bestimmten Situationen mit hoher Auslastung kann sich die Lizenzverarbeitung verzögern, und es dauert möglicherweise lange, bis Änderungen wie das Hinzufügen/Entfernen einer Gruppenlizenz oder das Hinzufügen/Entfernen von Benutzern in einer Gruppe verarbeitet werden. Wenn die Verarbeitung von Änderungen länger als 24 Stunden dauert, [öffnen Sie bitte ein Supportticket](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/supportRequest), damit wir den Fall untersuchen können. Wir werden die Leistungsmerkmale dieses Features verbessern, bevor es *allgemein verfügbar* wird.
+- Wenn Sie dynamische Gruppen für die Verwaltung der Benutzermitgliedschaft verwenden, vergewissern Sie sich, dass der Benutzer Mitglied der Gruppe ist. Dies ist für die Lizenzzuweisung erforderlich. Ist er kein Mitglied, [überprüfen Sie den Verarbeitungsstatus für die Mitgliedschaftsregel](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-create-rule#check-processing-status-for-a-membership-rule) der dynamischen Gruppe. 
+
+- In bestimmten Situationen mit hoher Auslastung kann es lange dauern, Lizenzänderungen für Gruppen oder Änderungen der Mitgliedschaft für Gruppen mit vorhandenen Lizenzen zu verarbeiten. Wenn die Verarbeitung Ihrer Änderungen für Gruppen mit einer Größe von mehr als 60.000 Benutzern länger als 24 Stunden dauert, sollten Sie ein [Supportticket erstellen](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/supportRequest), damit wir den Fall untersuchen können. 
 
 - Die Automatisierung der Lizenzverwaltung reagiert nicht automatisch auf alle Typen von Änderungen in der Umgebung. Beispielsweise kann es sein, dass Sie keine verfügbaren Lizenzen mehr haben und für einige Benutzer daher ein Fehlerzustand gilt. Sie können einige direkt zugewiesene Lizenzen von anderen Benutzern entfernen, um mehr verfügbare Arbeitsplätze freizugeben. Das System reagiert aber nicht automatisch auf diese Änderung und entfernt nicht den Fehlerstatus von den Benutzern.
 
   Als Problemumgehung für diese Art von Einschränkungen können Sie in Azure AD zum Blatt **Gruppe** wechseln und auf **Erneut verarbeiten** klicken. Mit diesem Befehl werden alle Benutzer in dieser Gruppe verarbeitet und die Fehlerzustände nach Möglichkeit behoben.
-
-- Bei der gruppenbasierten Lizenzierung werden keine Fehler aufgezeichnet, wenn einem Benutzer aufgrund einer doppelten Proxyadressenkonfiguration in Exchange Online keine Lizenz zugewiesen werden konnte. Diese Benutzer werden während der Lizenzzuweisung übersprungen. Weitere Informationen dazu, wie Sie dieses Problem identifizieren und lösen, finden Sie in [diesem Abschnitt](licensing-groups-resolve-problems.md#license-assignment-fails-silently-for-a-user-due-to-duplicate-proxy-addresses-in-exchange-online).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -237,3 +235,5 @@ Weitere Informationen zu anderen Szenarien für die gruppenbasierte Lizenzverwal
 * [Zuweisen von Lizenzen zu einer Gruppe in Azure Active Directory](licensing-groups-assign.md)
 * [Bestimmen und Beheben von Lizenzproblemen für eine Gruppe in Azure Active Directory](licensing-groups-resolve-problems.md)
 * [Migrieren einzelner lizenzierter Benutzer zur gruppenbasierten Lizenzierung in Azure Active Directory](licensing-groups-migrate-users.md)
+* [Sicheres Migrieren von Benutzern zwischen Produktlizenzen mithilfe von gruppenbasierter Lizenzierung in Azure Active Directory](../users-groups-roles/licensing-groups-change-licenses.md)
+* [PowerShell-Beispiele für die gruppenbasierte Lizenzierung in Azure AD](../users-groups-roles/licensing-ps-examples.md)

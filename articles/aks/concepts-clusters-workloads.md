@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: iainfou
-ms.openlocfilehash: fb428e63be54688744bcdb022ba276a957f8aee1
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 1b0b3d0db2067a492905d8f828934f0b63fb8f54
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49648768"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50155982"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Grundlegende Kubernetes-Konzepte für Azure Kubernetes Service (AKS)
 
@@ -71,6 +71,27 @@ Die Größe der Azure-VMs für Ihre Knoten definiert die Anzahl der CPUs, die Gr
 In AKS basiert das VM-Image für die Knoten in Ihrem Cluster derzeit auf Ubuntu Linux. Wenn Sie einen AKS-Cluster erstellen oder die Anzahl von Knoten zentral hochskalieren, erstellt die Azure-Plattform die erforderliche Anzahl von VMs und konfiguriert diese. Sie müssen keine manuellen Konfigurationsaufgaben ausführen.
 
 Wenn Sie ein anderes Hostbetriebssystem oder eine andere Containerruntime benötigen oder benutzerdefinierte Pakete verwenden müssen, können Sie mit [acs-engine][acs-engine] selbst einen Kubernetes-Cluster bereitstellen. Die `acs-engine`-Upstreamreleases stellen Konfigurationsoptionen bereit, bevor diese offiziell in AKS-Clustern unterstützt werden. Wenn Sie z.B. Windows-Container oder eine andere Containerruntime als Docker verwenden möchten, können Sie mithilfe von `acs-engine` einen Kubernetes-Cluster konfigurieren und bereitstellen, der Ihre aktuellen Anforderungen erfüllt.
+
+### <a name="resource-reservations"></a>Ressourcenreservierungen
+
+Sie müssen nicht die Kubernetes-Kernkomponenten auf jedem Knoten verwalten, z.B. *kubelet*, *kube-proxy* und *kube-dns*, sie belegen jedoch einige der verfügbaren Computeressourcen. Um die Leistung und Funktionalität des Knotens zu gewährleisten, werden auf jedem Knoten die folgenden Computeressourcen reserviert:
+
+- **CPU:** 60 ms
+- **Arbeitsspeicher:** 20 % bis zu 4 GiB
+
+Diese Reservierungen führen dazu, dass möglicherweise eine geringere Menge verfügbarer CPU-Leistung und Arbeitsspeicher für Ihre Anwendungen angezeigt wird, als der eigentliche Knoten enthält. Wenn Ressourceneinschränkungen aufgrund der Anzahl von ausgeführten Anwendungen vorliegen, gewährleisten diese Reservierungen, dass für die Kubernetes-Kernkomponenten weiterhin CPU-Leistung und Arbeitsspeicher zur Verfügung stehen. Die Ressourcenreservierungen können nicht geändert werden.
+
+Beispiel: 
+
+- Knotengröße **Standard DS2 v2** mit 2 vCPUs und 7 GiB Arbeitsspeicher
+    - 20 % von 7 GiB Arbeitsspeicher = 1,4 GiB
+    - Insgesamt *7 – 1,4 = 5,6 GiB* Arbeitsspeicher für den Knoten verfügbar
+    
+- Knotengröße **Standard E4s v3** mit 4 vCPUs und 32 GiB Arbeitsspeicher
+    - 20 % von 32 GiB Arbeitsspeicher = 6,4 GiB, AKS reserviert jedoch maximal 4 GiB
+    - Insgesamt *32 – 4 = 28 GiB* für den Knoten verfügbar
+    
+Das zugrunde liegende Betriebssystem des Knotens erfordert auch eine gewisse Menge an CPU- und Speicherressourcen für die eigenen Kernfunktionen.
 
 ### <a name="node-pools"></a>Knotenpools
 

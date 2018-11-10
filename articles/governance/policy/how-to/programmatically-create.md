@@ -4,16 +4,16 @@ description: In diesem Artikel wird das programmgesteuerte Erstellen und Verwalt
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 09/18/2018
+ms.date: 10/30/2018
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: dd7ec4f1d0c018a3c7eed19bea523f7c09bfea3e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: d72c9c1747bb697f66fa53489636b1726053060c
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46985315"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50242627"
 ---
 # <a name="programmatically-create-policies-and-view-compliance-data"></a>Programmgesteuertes Erstellen von Richtlinien und Anzeigen von Konformitätsdaten
 
@@ -74,7 +74,13 @@ Im ersten Schritt zur besseren Sichtbarkeit Ihrer Ressourcen werden Richtlinien 
    New-AzureRmPolicyDefinition -Name 'AuditStorageAccounts' -DisplayName 'Audit Storage Accounts Open to Public Networks' -Policy 'AuditStorageAccounts.json'
    ```
 
-   Mit dem Befehl wird die Richtliniendefinition _Audit Storage Accounts Open to Public Networks_ erstellt. Weitere Informationen zu anderen Parametern, die Sie verwenden können, finden Sie unter [New-AzureRmPolicyDefinition](/powershell/module/azurerm.resources/new-azurermpolicydefinition).
+   Mit dem Befehl wird die Richtliniendefinition _Audit Storage Accounts Open to Public Networks_ erstellt.
+   Weitere Informationen zu anderen Parametern, die Sie verwenden können, finden Sie unter [New-AzureRmPolicyDefinition](/powershell/module/azurerm.resources/new-azurermpolicydefinition).
+
+   `New-AzureRmPolicyDefinition` speichert die Richtliniendefinition standardmäßig im ausgewählten Abonnement des Sitzungskontexts bei Aufruf ohne Speicherortparameter. Um die Definition an einem anderen Speicherort zu speichern, verwenden Sie die folgenden Parameter:
+
+   - **SubscriptionId** zum Speichern in einem anderen Abonnement. Dies erfordert einen _GUID_-Wert.
+   - **ManagementGroupName** zum Speichern in einer Verwaltungsgruppe. Dies erfordert einen _Zeichenfolgenwert_.
 
 1. Nach dem Erstellen der Richtliniendefinition können Sie eine Richtlinienzuweisung erstellen. Führen Sie dazu die folgenden Befehle aus:
 
@@ -85,6 +91,13 @@ Im ersten Schritt zur besseren Sichtbarkeit Ihrer Ressourcen werden Richtlinien 
    ```
 
    Ersetzen Sie _ContosoRG_ durch den Namen Ihrer gewünschten Ressourcengruppe.
+
+   Der **Scope**-Parameter in `New-AzureRmPolicyAssignment` kann auch mit Abonnements und Verwaltungsgruppen verwendet werden. Der Parameter verwendet einen vollständigen Ressourcenpfad, den die Eigenschaft **ResourceId** in `Get-AzureRmResourceGroup` zurückgibt. Das Muster für **Scope** sieht für jeden Container wie folgt aus.
+   Ersetzen Sie `{rgName}`, `{subId}` und `{mgName}` durch Ihren Ressourcengruppennamen, Ihre Abonnement-ID und den Namen Ihrer Verwaltungsgruppe.
+
+   - Ressourcengruppe: `/subscriptions/{subId}/resourceGroups/{rgName}`
+   - Abonnement: `/subscriptions/{subId}/`
+   - Verwaltungsgruppe: `/providers/Microsoft.Management/managementGroups/{mgName}`
 
 Weitere Informationen zum Verwalten von Ressourcenrichtlinien unter Verwendung des Azure Resource Manager-PowerShell-Moduls finden Sie unter [AzureRM.Resources](/powershell/module/azurerm.resources/#policies).
 

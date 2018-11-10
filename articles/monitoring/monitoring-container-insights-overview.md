@@ -1,5 +1,5 @@
 ---
-title: Übersicht zu Azure Monitor für Container | Microsoft-Dokumentation
+title: Übersicht über Azure Monitor für Container (Vorschau) | Microsoft-Dokumentation
 description: Dieser Artikel beschreibt Azure Monitor für Container, das die AKS Container Insights-Lösung überwacht, und den Wert, den es durch die Überwachung der Integrität Ihrer AKS-Cluster und Containerinstanzen in Azure bietet.
 services: azure-monitor
 documentationcenter: ''
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/14/2018
 ms.author: magoedte
-ms.openlocfilehash: 6819cf96eb968e8faad5441cf3f3dd672653f1cd
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 13fde8a4ec4ecf43b9997d5d4d181a232505626f
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46971432"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212997"
 ---
-# <a name="azure-monitor-for-containers-overview"></a>Azure Monitor für Container – Übersicht
+# <a name="azure-monitor-for-containers-preview-overview"></a>Azure Monitor für Container (Vorschau) – Übersicht
 
 Azure Monitor für Container ist ein Feature zum Überwachen der Leistung von Containerworkloads, die auf Managed Kubernetes-Clustern bereitgestellt und im Azure Kubernetes Service (AKS) gehostet sind. Die Überwachung Ihrer Container ist vor allem dann entscheidend, wenn Sie einen umfangreichen Produktionscluster mit mehreren Anwendungen ausführen.
 

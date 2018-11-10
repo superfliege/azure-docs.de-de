@@ -1,22 +1,20 @@
 ---
-title: Verwalten von Netzwerkschnittstellen in Azure Site Recovery für die Replikation zwischen einem lokalen Standort und Azure | Microsoft-Dokumentation
-description: Beschreibt das Verwalten von Netzwerkschnittstellen für die Replikation zwischen einem lokalen Standort und Azure mit Azure Site Recovery
-services: site-recovery
+title: Verwalten von Netzwerkschnittstellen in Azure Site Recovery für die lokale Notfallwiederherstellung in Azure | Microsoft-Dokumentation
+description: Hier wird das Verwalten von Netzwerkschnittstellen für die lokale Notfallwiederherstellung in Azure mit Azure Site Recovery beschrieben.
 author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: mayg
-ms.openlocfilehash: 0ca2d32910e57042d2cbc9d3b772d226d835b545
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: afa8dfc39177e3f15db0092691d910b6b2cd3764
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49352409"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212453"
 ---
-# <a name="manage-virtual-machine-network-interfaces-for-on-premises-to-azure-replication"></a>Verwalten von Netzwerkschnittstellen auf virtuellen Computern für die Replikation zwischen einem lokalen Standort und Azure
-
+# <a name="manage-virtual-machine-network-interfaces-for-on-premises-disaster-recovery-to-azure"></a>Verwalten von Netzwerkschnittstellen auf virtuellen Computern für die lokale Notfallwiederherstellung in Azure
 An einen virtuellen Computer (VM) in Azure muss mindestens eine Netzwerkschnittstelle angefügt sein. Es können so viele Netzwerkschnittstellen angefügt sein, wie die VM-Größe unterstützt.
 
 Standardmäßig wird die erste an einen virtuellen Azure-Computer angefügte Netzwerkschnittstelle als primäre Netzwerkschnittstelle definiert. Alle anderen Netzwerkschnittstellen auf dem virtuellen Computer sind sekundäre Netzwerkschnittstellen. Standardmäßig wird sämtlicher ausgehender Datenverkehr des virtuellen Computers über die IP-Adresse gesendet, die der primären IP-Konfiguration der primären Netzwerkschnittstelle zugewiesen ist.

@@ -7,20 +7,20 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 07/12/2018
+ms.date: 10/26/2018
 ms.author: dobett
-ms.openlocfilehash: 50005e38214bf22aa664c2d2b0cc4f86da412818
-ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
+ms.openlocfilehash: 365c6e41db865edf8384ca1f82210d9471808f94
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39144493"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50140856"
 ---
 # <a name="quickstart-try-a-cloud-based-remote-monitoring-solution"></a>Schnellstart: Ausprobieren einer cloudbasierten Lösung für die Remoteüberwachung
 
-In dieser Schnellstartanleitung erfahren Sie, wie Sie den Azure IoT-Solution Accelerator für die Remoteüberwachung verwenden, um eine cloudbasierte Remoteüberwachungssimulation auszuführen. Nach der Bereitstellung des Solution Accelerators verwenden Sie die Seite mit dem **Lösungsdashboard**, um simulierte Geräte auf einer Karte zu visualisieren. Auf der Seite **Wartung** reagieren Sie auf eine Druckwarnung eines simulierten Kühlgeräts. Dieser Solution Accelerator kann als Ausgangspunkt für Ihre eigene Implementierung sowie als Lernhilfe verwendet werden.
+In dieser Schnellstartanleitung wird veranschaulicht, wie Sie den Azure IoT-Solution Accelerator für die Remoteüberwachung bereitstellen. Bei dieser cloudbasierten Lösung verwenden Sie die Seite mit dem **Dashboard**, um simulierte Geräte auf einer Karte zu visualisieren. Auf der Seite **Wartung** reagieren Sie auf eine Druckwarnung eines simulierten Kühlgeräts. Dieser Solution Accelerator kann als Ausgangspunkt für Ihre eigene Implementierung sowie als Lernhilfe verwendet werden.
 
-In der ursprünglichen Bereitstellung wird der Solution Accelerator für die Remoteüberwachung für ein Unternehmen namens Contoso konfiguriert. Contoso verwaltet eine Auswahl von unterschiedlichen Gerätetypen, z.B. Kältemaschinen, die in verschiedenen physischen Umgebungen bereitgestellt wurden. Eine Kältemaschine sendet Telemetriedaten zu Temperatur, Luftfeuchtigkeit und Druck an den Solution Accelerator für die Remoteüberwachung.
+In der ursprünglichen Bereitstellung wird der Solution Accelerator für ein Unternehmen namens Contoso konfiguriert. Als Bediener bei Contoso verwalten Sie eine Auswahl von unterschiedlichen Gerätetypen, z.B. Kältemaschinen, die in verschiedenen physischen Umgebungen bereitgestellt wurden. Eine Kältemaschine sendet Telemetriedaten zu Temperatur, Luftfeuchtigkeit und Druck an den Solution Accelerator für die Remoteüberwachung.
 
 Für diese Schnellstartanleitung benötigen Sie ein aktives Azure-Abonnement.
 
@@ -38,7 +38,7 @@ Klicken Sie auf der Kachel **Remoteüberwachung** auf **Jetzt testen**.
 
 Wählen Sie auf der Seite **Create Remote Monitoring solution** (Remoteüberwachungslösung erstellen) eine Bereitstellung vom Typ **Basic** aus. Wenn Sie den Solution Accelerator bereitstellen, um sich damit vertraut zu machen oder ihn zu Demonstrationszwecken auszuführen, wählen Sie zur Kostenminimierung die Option **Basic**.
 
-Wählen Sie als Sprache die Option **.NET**. Die Java- und .NET-Implementierungen verfügen über identische Features.
+Wählen Sie als Sprache die Option **.NET**. Die Java- und .NET-Implementierungen verfügen über die gleichen Features.
 
 Geben Sie einen eindeutigen **Lösungsnamen** für den Solution Accelerator für die Remoteüberwachung ein. In dieser Schnellstartanleitung wird der Name **contoso-rm2** verwendet.
 
@@ -68,15 +68,15 @@ Klicken Sie auf **Akzeptieren**, um die Zustimmungsanforderung zu akzeptieren, d
 
 Im Lösungsdashboard werden die folgenden Informationen zu den simulierten Geräten von Contoso angezeigt:
 
-* Unter **Device statistics** (Gerätestatistik) werden zusammenfassende Informationen zu Warnungen und die Gesamtzahl von Geräten angezeigt. In der Standardbereitstellung verfügt Contoso über zehn simulierte Geräte unterschiedlichen Typs.
+* Im Panel **Device statistics** (Gerätestatistik) werden zusammenfassende Informationen zu Warnungen und die Gesamtzahl von Geräten angezeigt. In der Standardbereitstellung verfügt Contoso über zehn simulierte Geräte unterschiedlichen Typs.
 
-* Unter **Device locations** (Gerätestandorte) wird angezeigt, wo Ihre Geräte physisch angeordnet sind. Über die Farbe der Nadel wird angegeben, wenn Warnungen für das Gerät vorliegen.
+* Im Panel **Device locations** (Gerätestandorte) wird angezeigt, wo Ihre Geräte physisch angeordnet sind. Über die Farbe der Nadel wird angegeben, wenn Warnungen für das Gerät vorliegen.
 
-* Unter **Alerts** (Warnungen) sind die Details für die Warnungen Ihrer Geräte angegeben.
+* Im Panel **Alerts** (Warnungen) sind die Details für die Warnungen Ihrer Geräte angegeben.
 
-* Unter **Telemetry** (Telemetrie) werden Telemetriedaten für Ihre Geräte angezeigt. Sie können unterschiedliche Telemetriedatenströme anzeigen, indem Sie oben auf einen Telemetrietyp klicken.
+* Im Panel **Telemetry** (Telemetrie) werden Telemetriedaten für Ihre Geräte angezeigt. Sie können unterschiedliche Telemetriedatenströme anzeigen, indem Sie oben auf einen Telemetrietyp klicken.
 
-* Unter **Analytics** (Analyse) werden kombinierte Informationen zu den Warnungen der Geräte angezeigt.
+* Im Panel **Analytics** (Analyse) werden kombinierte Informationen zu den Warnungen der Geräte angezeigt.
 
 ## <a name="respond-to-an-alert"></a>Reagieren auf eine Warnung
 
@@ -94,11 +94,11 @@ Auf der Wartungsseite **Chiller pressure too high** (Druck der Kältemaschine zu
 
 [![Seite „Wartung“ mit Liste der ausgelösten Warnungen](./media/quickstart-remote-monitoring-deploy/maintenancealarmlist-inline.png)](./media/quickstart-remote-monitoring-deploy/maintenancealarmlist-expanded.png#lightbox)
 
-Sie haben nun das Problem und das zugeordnete Gerät identifiziert, für das die Warnung ausgelöst wurde. Für den Bediener sind die nächsten Schritte das Bestätigen der Warnung und das Beheben des Problems.
+Sie haben nun das Problem und das zugeordnete Gerät identifiziert, für das die Warnung ausgelöst wurde. Für Sie als Bediener sind die nächsten Schritte das Bestätigen der Warnung und das Beheben des Problems.
 
 ### <a name="fix-the-issue"></a>Beheben des Problems
 
-Um für andere Bediener anzugeben, dass Sie nun an der Warnung arbeiten, können Sie sie auswählen und den **Warnungsstatus** in **Bestätigt** ändern:
+Um für andere Bediener anzugeben, dass Sie an der Warnung arbeiten, können Sie sie auswählen und den **Warnungsstatus** in **Bestätigt** ändern:
 
 [![Auswählen und Bestätigen der Warnung](./media/quickstart-remote-monitoring-deploy/maintenanceacknowledge-inline.png)](./media/quickstart-remote-monitoring-deploy/maintenanceacknowledge-expanded.png#lightbox)
 
@@ -108,7 +108,7 @@ Scrollen Sie nach unten zu **Verwandte Informationen**, wählen Sie die Kältema
 
 [![Auswählen des Geräts und Planen einer Aktion](./media/quickstart-remote-monitoring-deploy/maintenanceschedule-inline.png)](./media/quickstart-remote-monitoring-deploy/maintenanceschedule-expanded.png#lightbox)
 
-Klicken Sie im Bereich **Aufträge** auf **Run method** (Methode ausführen) und anschließend auf die Methode **EmergencyValveRelease**. Fügen Sie den Auftragsnamen **ChillerPressureRelease** hinzu, und klicken Sie auf **Übernehmen**. Mit diesen Einstellungen wird ein Auftrag erstellt, der sofort ausgeführt wird.
+Klicken Sie im Bereich **Aufträge** auf **Run method** (Methode ausführen) und anschließend auf die Methode **EmergencyValveRelease**. Fügen Sie den Auftragsnamen **ChillerPressureRelease** hinzu, und klicken Sie auf **Übernehmen**. Mit diesen Einstellungen wird ein Auftrag für Sie erstellt, der sofort ausgeführt wird.
 
 Kehren Sie zum Anzeigen des Auftragsstatus auf die Seite **Wartung** zurück, und zeigen Sie die Liste mit den Aufträgen in der Ansicht **Aufträge** an. Unter Umständen müssen Sie einige Sekunden warten, bevor Sie sehen, dass der Auftrag ausgeführt und der Ventildruck für die Kältemaschine verringert wurde:
 

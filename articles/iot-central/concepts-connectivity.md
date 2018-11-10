@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: timlt
-ms.openlocfilehash: d2ed07be829e48cc4fc0538c08fd498dea99e71e
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: ad77f1f0a99fbdb355163e1bc83461c8c4eb75fa
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45985174"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50157699"
 ---
 # <a name="device-connectivity-in-azure-iot-central"></a>Gerätekonnektivität in Azure IoT Central
 
@@ -102,7 +102,7 @@ So führen Sie den Massenexport von Geräten aus Ihrer Anwendung durch:
 1.  Wählen Sie die Geräte aus, die Sie exportieren möchten, und klicken Sie dann auf die Aktion **Exportieren**.
 1.  Sobald der Exportvorgang abgeschlossen ist, wird eine Erfolgsmeldung zusammen mit einem Link zum Download der generierten Datei angezeigt.
 1.  Klicken Sie auf die Erfolgsmeldung, um die Datei in einen lokalen Ordner auf dem Datenträger herunterzuladen.
-1.  Die Spalten der exportierten CSV-Datei enthalten die folgenden Informationen: **Geräte-ID, Gerätename, Primär-/Sekundärschlüssel des Geräts und die primären und sekundären Zertifikatfingerabdrücke**.
+1.  Die exportierte CSV-Datei weist die folgenden Spalteninformationen auf: **„Device Id“, „Device Name“, „Device Primary/Secondary Keys“ und „Primary/Secondary certificate thumbprints“**.
     *   IOTC_DEVICEID
     *   IOTC_DEVICENAME
     *   IOTC_SASKEY_PRIMARY

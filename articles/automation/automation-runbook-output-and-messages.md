@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 751175e46e13d6046cd6f459e1405a876fdce39a
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: aff3ce4bc290f6e4ad2fb11a586372862d0c1462
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "42145610"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51240731"
 ---
 # <a name="runbook-output-and-messages-in-azure-automation"></a>Runbookausgabe und -meldungen in Azure Automation
 Die meisten Azure Automation-Runbooks haben eine Ausgabe, z.B. eine Fehlermeldung für den Benutzer oder ein komplexes Objekt, das von einem anderen Workflow genutzt werden soll. Windows PowerShell bietet [mehrere Datenströme](http://blogs.technet.com/heyscriptingguy/archive/2014/03/30/understanding-streams-redirection-and-write-host-in-powershell.aspx) zum Senden der Ausgabe eines Skripts oder Workflows. Da jeder dieser Datenströme in Azure Automation unterschiedlich verwendet wird, sollten Sie beim Erstellen eines Runbooks die bewährten Methoden befolgen.
@@ -33,7 +33,7 @@ Die folgende Tabelle enthält eine kurze Beschreibung der einzelnen Datenströme
 ## <a name="output-stream"></a>Ausgabedatenstrom
 Der Ausgabedatenstrom dient zur Ausgabe von Objekten, die bei korrekter Ausführung von einem Skript oder Workflow erstellt werden. In Azure Automation wird dieser Datenstrom hauptsächlich für Objekte verwendet, die von [übergeordneten Runbooks, die das aktuelle Runbook aufrufen](automation-child-runbooks.md), genutzt werden sollen. Wenn Sie ein Runbook über ein übergeordnetes Runbook [inline aufrufen](automation-child-runbooks.md#invoking-a-child-runbook-using-inline-execution), werden Daten aus dem Ausgabedatenstrom an das übergeordnete Runbook zurückgegeben. Verwenden Sie den Ausgabedatenstrom nur dann zum Übermitteln allgemeiner Informationen an den Benutzer, wenn Sie wissen, dass das Runbook nie von einem anderen Runbook aufgerufen wird. In der Regel empfiehlt es sich jedoch, den [ausführlichen Datenstrom](#verbose-stream) zu verwenden, um allgemeine Informationen für den Benutzer bereitzustellen.
 
-Sie können Daten in den Ausgabedatenstrom schreiben, indem Sie [Write-Output](http://technet.microsoft.com/library/hh849921.aspx) verwenden oder das Objekt im Runbook in einer eigenen Zeile platzieren.
+Sie können Daten in den Ausgabedatenstrom schreiben, indem Sie [Write-Output](https://technet.microsoft.com/library/hh849921.aspx) verwenden oder das Objekt im Runbook in einer eigenen Zeile platzieren.
 
 ```PowerShell
 #The following lines both write an object to the output stream.
@@ -75,7 +75,7 @@ Der ausführliche Datenstrom für den Runbookauftrag würde wie folgt aussehen:
 Nach dem Veröffentlichen und vor dem Starten des Runbooks müssen Sie die ausführliche Protokollierung in den Runbookeinstellungen aktivieren, um die ausführliche Datenstromausgabe abzurufen.
 
 ### <a name="declaring-output-data-type"></a>Deklarieren des Ausgabedatentyps
-Ein Workflow kann den Datentyp seiner Ausgabe mit dem [OutputType-Attribut](http://technet.microsoft.com/library/hh847785.aspx)angeben. Dieses Attribut hat zur Laufzeit keinerlei Auswirkung, gibt dem Runbookautor zur Entwurfszeit aber Auskunft über die erwartete Ausgabe des Runbooks. Mit der Weiterentwicklung des Toolsets für Runbooks wird die Deklaration der Ausgabedatentypen zur Entwurfszeit zunehmend an Bedeutung gewinnen. Daher empfiehlt es sich, diese Deklaration in alle von Ihnen erstellten Runbooks einzuschließen.
+Ein Workflow kann den Datentyp seiner Ausgabe mit dem [OutputType-Attribut](https://technet.microsoft.com/library/hh847785.aspx)angeben. Dieses Attribut hat zur Laufzeit keinerlei Auswirkung, gibt dem Runbookautor zur Entwurfszeit aber Auskunft über die erwartete Ausgabe des Runbooks. Mit der Weiterentwicklung des Toolsets für Runbooks wird die Deklaration der Ausgabedatentypen zur Entwurfszeit zunehmend an Bedeutung gewinnen. Daher empfiehlt es sich, diese Deklaration in alle von Ihnen erstellten Runbooks einzuschließen.
 
 Hier sehen Sie einige Beispiele für Ausgabetypen:
 
@@ -120,7 +120,7 @@ Im Gegensatz zum Ausgabedatenstrom dienen Nachrichtendatenströme zum Übermitte
 ### <a name="warning-and-error-streams"></a>Warnungs- und Fehlerdatenströme
 Die Warnungs- und Fehlerdatenströme dienen zum Protokollieren von Problemen, die in einem Runbook auftreten. Sie werden in den Auftragsverlauf geschrieben, wenn ein Runbook ausgeführt wird, und im Testausgabebereich im Azure-Portal angezeigt, wenn ein Runbook getestet wird. Standardmäßig wird das Runbook nach einer Warnung oder einem Fehler fortgesetzt. Sie können angeben, dass das Runbook bei einer Warnung oder einem Fehler angehalten werden soll, indem Sie vor dem Erstellen der Meldung eine [Einstellungsvariable](#preference-variables) im Runbook festlegen. Soll ein Runbook beim Auftreten eines Fehlers wie bei einer Ausnahme angehalten werden, legen Sie z.B. **$ErrorActionPreference** auf „Stop“ fest.
 
-Erstellen Sie mit dem Cmdlet [Write-Warning](https://technet.microsoft.com/library/hh849931.aspx) bzw. [Write-Error](http://technet.microsoft.com/library/hh849962.aspx) eine Warn- oder Fehlermeldung. Aktivitäten können ebenfalls in diese Datenströme schreiben.
+Erstellen Sie mit dem Cmdlet [Write-Warning](https://technet.microsoft.com/library/hh849931.aspx) bzw. [Write-Error](https://technet.microsoft.com/library/hh849962.aspx) eine Warn- oder Fehlermeldung. Aktivitäten können ebenfalls in diese Datenströme schreiben.
 
 ```PowerShell
 #The following lines create a warning message and then an error message that will suspend the runbook.
@@ -135,7 +135,7 @@ Der ausführliche Nachrichtendatenstrom dient für allgemeine Informationen zu R
 
 Beim [Testen eines Runbooks](automation-testing-runbook.md)werden auch dann keine ausführlichen Meldungen angezeigt, wenn das Runbook zum Protokollieren ausführlicher Datensätze konfiguriert ist. Um beim [Testen eines Runbooks](automation-testing-runbook.md)ausführliche Meldungen anzuzeigen, müssen Sie die $VerbosePreference-Variable auf „Continue“ festlegen. Ist diese Variable festgelegt, werden im Testausgabebereich des Azure-Portals ausführliche Meldungen angezeigt.
 
-Erstellen Sie eine ausführliche Meldung mit dem Cmdlet [Write-Verbose](http://technet.microsoft.com/library/hh849951.aspx) .
+Erstellen Sie eine ausführliche Meldung mit dem Cmdlet [Write-Verbose](https://technet.microsoft.com/library/hh849951.aspx) .
 
 ```PowerShell
 #The following line creates a verbose message.
@@ -149,10 +149,10 @@ Der Debugdatenstrom dient zur Verwendung mit einem interaktiven Benutzer und sol
 ## <a name="progress-records"></a>Statusdatensätze
 Wenn Sie ein Runbook zum Protokollieren von Statusdatensätzen konfigurieren (auf der Registerkarte „Konfigurieren“ des Runbooks im Azure-Portal), wird vor und nach der Ausführung jeder Aktivität ein Datensatz in den Auftragsverlauf geschrieben. In den meisten Fällen sollte zum Maximieren der Leistung die Standardeinstellung (keine Protokollierung von Statusdatensätzen) für Runbooks beibehalten werden. Aktivieren Sie diese Option nur zum Beheben oder Debuggen eines Runbooks. Beim Testen eines Runbooks werden auch dann keine Statusmeldungen angezeigt, wenn das Runbook zum Protokollieren von Statusdatensätzen konfiguriert ist.
 
-Das Cmdlet [Write-Progress](http://technet.microsoft.com/library/hh849902.aspx) ist in einem Runbook ungültig, da es zur Verwendung mit einem interaktiven Benutzer vorgesehen ist.
+Das Cmdlet [Write-Progress](https://technet.microsoft.com/library/hh849902.aspx) ist in einem Runbook ungültig, da es zur Verwendung mit einem interaktiven Benutzer vorgesehen ist.
 
 ## <a name="preference-variables"></a>Einstellungsvariablen
-Windows PowerShell ermittelt anhand von [Einstellungsvariablen](http://technet.microsoft.com/library/hh847796.aspx) , wie auf Daten reagiert werden soll, die an verschiedene Ausgabedatenströme gesendet werden. Sie können diese Variablen in einem Runbook festlegen, um zu steuern, wie es auf die in unterschiedliche Datenströme gesendeten Daten reagiert.
+Windows PowerShell ermittelt anhand von [Einstellungsvariablen](https://technet.microsoft.com/library/hh847796.aspx) , wie auf Daten reagiert werden soll, die an verschiedene Ausgabedatenströme gesendet werden. Sie können diese Variablen in einem Runbook festlegen, um zu steuern, wie es auf die in unterschiedliche Datenströme gesendeten Daten reagiert.
 
 In der folgenden Tabelle sind die Einstellungsvariablen, die in Runbooks verwendet werden können, mit ihren gültigen Werten und Standardwerten aufgeführt. Diese Tabelle enthält nur die Werte, die in einem Runbook gültig sind. Bei der Verwendung in Windows PowerShell außerhalb von Azure Automation sind weitere Werte für die Einstellungsvariablen zulässig.
 

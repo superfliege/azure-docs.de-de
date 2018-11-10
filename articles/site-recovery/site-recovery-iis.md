@@ -1,21 +1,20 @@
 ---
-title: Replizieren einer IIS-basierten Webanwendung mit mehreren Ebenen mit Azure Site Recovery | Microsoft-Dokumentation
+title: Einrichten der Notfallwiederherstellung für eine IIS-basierte Webanwendung mit mehreren Ebenen mithilfe von Azure Site Recovery | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie virtuelle Computer einer IIS-Webfarm mit Azure Site Recovery replizieren.
-services: site-recovery
 author: nsoneji
 manager: gauravd
 ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: nisoneji
-ms.openlocfilehash: 830ced767a34302a635b9e685a2aee60c95fc81f
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: bac995829e90fea35eebf5e5e57a0ffb85bbba0c
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37920847"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50211824"
 ---
-# <a name="replicate-a-multi-tier-iis-based-web-application"></a>Replizieren einer IIS-basierten Webanwendung mit mehreren Ebenen
+# <a name="set-up-disaster-recovery-for-a-multi-tier-iis-based-web-application"></a>Einrichten der Notfallwiederherstellung für eine IIS-basierte Webanwendung mit mehreren Ebenen
 
 Die Anwendungssoftware ist der Motor der geschäftlichen Produktivität in einer Organisation. Verschiedene Webanwendungen können in einer Organisation unterschiedliche Zwecke erfüllen. Einige Anwendungen, z.B. Anwendungen für Gehaltsabrechnungen, Finanzanwendungen und Kunden zugängliche Websites sind für ein Unternehmen möglicherweise von entscheidender Bedeutung. Um einen Produktivitätsverlust zu verhindern, ist es für die Organisation wichtig, dass diese Anwendungen ständig verfügbar sind und ausgeführt werden. Vor allem kann eine ständige Verfügbarkeit dieser Anwendungen Schaden an der Marke oder dem Image der Organisation verhindern.
 
@@ -61,10 +60,10 @@ Für die Beispiele in diesem Artikel wurden virtuelle VMware-Computer mit IIS 7.
 
 Szenario | Sekundärer Standort | Azure
 --- | --- | ---
-Hyper-V | Ja | Ja
-VMware | Ja | Ja
-Physischer Server | Nein  | Ja
-Azure|Nicht verfügbar|Ja
+Hyper-V | JA | JA
+VMware | JA | JA
+Physischer Server | Nein  | JA
+Azure|Nicht verfügbar|JA
 
 ## <a name="replicate-virtual-machines"></a>Replizieren von virtuellen Computern
 

@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: f98d640f032fed5f91df8e9d4fb55d3f20550339
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: c2581abc782558ca114cc3a5d4f6224d132bce5d
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48883923"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50139090"
 ---
 # <a name="integrate-speech-service"></a>Integrieren des Spracherkennungsdiensts
 Der [Spracherkennungsdienst](https://docs.microsoft.com/azure/cognitive-services/Speech-Service/) ermöglicht Ihnen, mit einer einzigen Anforderung Audio zu empfangen und JSON-Objekte der LUIS-Vorhersage zurückgeben zu lassen. In diesem Artikel laden Sie ein C#-Projekt herunter und verwenden es in Visual Studio, um eine Äußerung in ein Mikrofon zu sprechen und von LUIS Vorhersageinformationen zu empfangen. Das Projekt verwendet das Spracherkennungspaket [NuGet](https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech/), das bereits als Referenz enthalten ist. 
@@ -39,7 +39,7 @@ Diese App enthält Absichten, Entitäten und Äußerungen aus dem Bereich „Per
 
 
 ## <a name="add-keyphrase-prebuilt-entity"></a>Hinzufügen einer vordefinierten Add KeyPhrase-Entität
-Nach dem Importieren der App wählen Sie **Entitäten** und dann **Vordefinierte Entitäten verwalten** aus. Fügen Sie die **KeyPhrase**-Entität hinzu. Die KeyPhrase-Entität extrahiert wichtige fachliche Inhalte aus der Äußerung.
+Nach dem Importieren der App wählen Sie **Entitäten** und dann **Add prebuilt entity** (Vordefinierte Entität hinzufügen) aus. Fügen Sie die **KeyPhrase**-Entität hinzu. Die KeyPhrase-Entität extrahiert wichtige fachliche Inhalte aus der Äußerung.
 
 ## <a name="train-and-publish-the-app"></a>Trainieren und Veröffentlichen der App
 1. Wählen Sie in der oberen, rechten Navigationsleiste die Schaltfläche **Trainieren** aus, um die LUIS-App zu trainieren.
@@ -74,7 +74,7 @@ Das Speech SDK ist bereits als Referenz enthalten.
 |--|--|
 |LUIS_assigned_endpoint_key|Entspricht dem zugewiesenen Wert „subscription-key“ der Endpunkt-URL auf der Seite „Veröffentlichen“.|
 |LUIS_endpoint_key_region|Entspricht der ersten Unterdomäne der Endpunkt-URL (Beispiel: `westus`).|
-|LUIS_app_ID|Entspricht der Route der Endpunkt-URL nach **apps/**.|
+|LUIS_app_ID|Entspricht der Route der Endpunkt-URL nach **apps/**|
 
 Der Datei `Program.cs` sind bereits die Absichten aus „Personalwesen“ zugeordnet.
 

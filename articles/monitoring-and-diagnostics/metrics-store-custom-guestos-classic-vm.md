@@ -8,51 +8,55 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.component: ''
-ms.openlocfilehash: 235eda231dfb0f936bf55c7c8d93a8f709fdf9bc
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 06b3d97f4b2b7867f09a8c4e5fe974615e9b0c70
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49954847"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50093419"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-data-store-for-a-windows-virtual-machine-classic"></a>Senden von Metriken des Gastbetriebssystems an den Azure Monitor-Datenspeicher für einen virtuellen Windows-Computer (klassisch)
 
-Die [Windows Azure-Diagnoseerweiterung](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) (WAD) von Azure Monitor ermöglicht es Ihnen, Metriken und Protokolle vom Gastbetriebssystem zu erfassen, das als Teil eines virtuellen Computers, eines Clouddiensts oder eines Service Fabric-Clusters ausgeführt wird. Die Erweiterung kann Telemetriedaten an viele verschiedene Standorte senden, die im zuvor verlinkten Artikel aufgeführt sind.
+Die [Diagnoseerweiterung](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) von Azure Monitor (auch „WAD“ oder „Diagnose“ genannt) ermöglicht es Ihnen, Metriken und Protokolle vom Gastbetriebssystem zu erfassen, das als Teil eines virtuellen Computers, eines Clouddiensts oder eines Service Fabric-Clusters ausgeführt wird. Die Erweiterung kann Telemetriedaten an [viele verschiedene Orte](https://docs.microsoft.com/azure/monitoring/monitoring-data-collection?toc=/azure/azure-monitor/toc.json) senden.
 
-In diesem Artikel wird der Prozess zum Senden von Leistungsmetriken des Gastbetriebssystems für einen virtuellen Windows-Computer (klassisch) an den Azure Monitor-Metrikspeicher beschrieben. Ab WAD Version 1.11 können Sie Metriken direkt in den Azure Monitor-Metrikspeicher schreiben, in dem bereits Metriken der Standardplattformen gesammelt werden. Wenn Sie sie an dieser Position speichern, können Sie auf die gleichen Aktionen zugreifen, die auch für Plattformmetriken verfügbar sind.  Zu den Maßnahmen gehören zeitnahe Benachrichtigung, Diagrammerstellung, Routing, Zugriff über die REST-API und vieles mehr.  In der Vergangenheit hat die WAD-Erweiterung in Azure Storage geschrieben, aber nicht der Azure Monitor-Datenspeicher. 
+In diesem Artikel erfahren Sie, wie Sie Leistungsmetriken des Gastbetriebssystems für einen virtuellen Windows-Computer (klassisch) an den Azure Monitor-Metrikspeicher senden. Ab Version 1.11 der Diagnoseerweiterung können Sie Metriken direkt in den Azure Monitor-Metrikspeicher schreiben, in dem bereits Metriken der Standardplattformen gesammelt werden. 
+
+Durch die Speicherung an diesem Ort stehen Ihnen die gleichen Aktionen zur Verfügung wie für Plattformmetriken. Dazu zählen unter anderem zeitnahe Benachrichtigungen, Diagrammerstellung, Routing und Zugriff über eine REST-API. In der Vergangenheit hat die Diagnoseerweiterung zwar in Azure Storage geschrieben, aber nicht in den Azure Monitor-Datenspeicher. 
 
 Der in diesem Artikel beschriebene Prozess funktioniert nur mit klassischen virtuellen Computern unter dem Windows-Betriebssystem.
 
-## <a name="pre-requisites"></a>Voraussetzungen
+## <a name="prerequisites"></a>Voraussetzungen
 
-- Sie müssen ein [Dienstadministrator oder Co-Administrator](https://docs.microsoft.com/azure/billing/billing-add-change-azure-subscription-administrator.md) für Ihr Azure-Abonnement sein. 
+- Sie müssen [Dienstadministrator oder Co-Administrator](https://docs.microsoft.com/azure/billing/billing-add-change-azure-subscription-administrator.md) für Ihr Azure-Abonnement sein. 
 
-- Ihr Abonnement muss mit [Microsoft.Insights](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-6.8.1) registriert werden. 
+- Ihr Abonnement muss bei [Microsoft.Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services#portal) registriert sein. 
 
-- Sie müssen entweder [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-6.8.1) installiert haben, oder Sie können [Azure CloudShell](https://docs.microsoft.com/azure/cloud-shell/overview.md) verwenden. 
+- Bei Ihnen muss entweder [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-6.8.1) oder [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) installiert sein.
 
 ## <a name="create-a-classic-virtual-machine-and-storage-account"></a>Erstellen eines klassischen virtuellen Computers und eines Speicherkontos
 
-1. Erstellen eines klassischen virtuellen Computers über das Azure-Portal ![Erstellen eines klassischen virtuellen Computers](./media/metrics-store-custom-guestos-classic-vm/create-classic-vm.png).
+1. Erstellen Sie einen klassischen virtuellen Computer über das Azure-Portal.
+   ![Erstellen eines klassischen virtuellen Computers](./media/metrics-store-custom-guestos-classic-vm/create-classic-vm.png)
 
-1. Wählen Sie beim Erstellen dieses virtuellen Computers aus, ob Sie ein neues klassisches Speicherkonto erstellen möchten. Wir verwenden dieses Speicherkonto in späteren Schritten.
+1. Wählen Sie beim Erstellen dieses virtuellen Computers aus, dass Sie ein neues klassisches Speicherkonto erstellen möchten. Wir verwenden dieses Speicherkonto in späteren Schritten.
 
-1. Navigieren Sie im Azure-Portal zum Ressourcenblatt „Speicherkonto“, und wählen Sie die **Schlüssel** aus. Notieren Sie sich den Namen und Schlüssel des Speicherkontos. Sie benötigen diese Schlüssel in späteren Schritten ![Speicherzugriffsschlüssel](./media/metrics-store-custom-guestos-classic-vm/storage-access-keys.png)
+1. Navigieren Sie im Azure-Portal zum Ressourcenblatt **Speicherkonten**. Wählen Sie **Schlüssel** aus, und notieren Sie sich den Speicherkontonamen und den Speicherkontoschlüssel. Sie benötigen diese Informationen in den späteren Schritten.
+   ![Speicherzugriffsschlüssel](./media/metrics-store-custom-guestos-classic-vm/storage-access-keys.png)
 
 ## <a name="create-a-service-principal"></a>Erstellen eines Dienstprinzipals
 
-Erstellen Sie einen Dienstprinzipal in Ihrem Azure Active Directory-Mandanten unter Verwendung der Anweisungen unter [Erstellen eines Dienstprinzipals](../active-directory/develop/howto-create-service-principal-portal.md). Beachten Sie Folgendes, während Sie diesen Prozess durchlaufen: 
-- Erstellen Sie einen neuen geheimen Client für diese App.  
+Erstellen Sie anhand der Anleitung unter [Erstellen eines Dienstprinzipals](../azure-resource-manager/resource-group-create-service-principal-portal.md) einen Dienstprinzipal in Ihrem Azure Active Directory-Mandanten. Beachten Sie Folgendes, während Sie diesen Prozess durchlaufen: 
+- Erstellen Sie einen neuen geheimen Clientschlüssel für diese App.
 - Speichern Sie den Schlüssel und die Client-ID für die Verwendung in späteren Schritten.
 
-Erteilen Sie der App die Berechtigungen „Herausgeber von Überwachungsmetriken“ für die Ressource, für die Sie Metriken ausgeben möchten. Sie können eine Ressourcengruppe oder ein vollständiges Abonnement verwenden.  
+Erteilen Sie dieser App für die Ressource, für die Sie Metriken ausgeben möchten, Berechtigungen vom Typ „Überwachungsmetriken veröffentlichen“. Sie können eine Ressourcengruppe oder ein vollständiges Abonnement verwenden.  
 
 > [!NOTE]
 > Die Diagnoseerweiterung verwendet den Dienstprinzipal, um sich gegenüber Azure Monitor zu authentifizieren und Metriken für Ihren klassischen virtuellen Computer auszugeben.
 
 ## <a name="author-diagnostics-extension-configuration"></a>Erstellen der Konfiguration der Diagnoseerweiterung
 
-1. Bereiten Sie Ihre Konfigurationsdatei für die WAD-Diagnoseerweiterung vor. Diese Datei bestimmt, welche Protokolle und Leistungsindikatoren die Diagnoseerweiterung für Ihren klassischen virtuellen Computer sammeln soll. Unten ist ein Beispiel angegeben.
+1. Bereiten Sie Ihre Konfigurationsdatei für die Diagnoseerweiterung vor. Diese Datei bestimmt, welche Protokolle und Leistungsindikatoren die Diagnoseerweiterung für Ihren klassischen virtuellen Computer erfassen soll. Dies ist ein Beispiel:
 
     ```xml
     <?xml version="1.0" encoding="utf-8"?>
@@ -98,20 +102,20 @@ Erteilen Sie der App die Berechtigungen „Herausgeber von Überwachungsmetriken
     <IsEnabled>true</IsEnabled>
     </DiagnosticsConfiguration>
     ```
-1. Definieren Sie im Abschnitt „SinksConfig“ Ihrer Diagnosedatei eine neue Azure Monitor-Senke:
+1. Definieren Sie im Abschnitt „SinksConfig“ Ihrer Diagnosedatei wie folgt eine neue Azure Monitor-Senke:
 
     ```xml
     <SinksConfig>
         <Sink name="AzMonSink">
             <AzureMonitor>
-                <ResourceId>Provide your Classic VM’s Resource ID </ResourceId>
-                <Region>Region your VM is deployed in</Region>
+                <ResourceId>Provide the resource ID of your classic VM </ResourceId>
+                <Region>The region your VM is deployed in</Region>
             </AzureMonitor>
         </Sink>
     </SinksConfig>
     ```
 
-1. Leiten Sie in dem Abschnitt Ihrer Konfigurationsdatei, in dem Sie die zu sammelnden Leistungsindikatoren auflisten, die Leistungsindikatoren an die Azure Monitor-Senke „AzMonSink“ weiter.
+1. Leiten Sie in dem Abschnitt Ihrer Konfigurationsdatei, in dem Sie die zu erfassenden Leistungsindikatoren auflisten, die Leistungsindikatoren an die Azure Monitor-Senke „AzMonSink“ weiter.
 
     ```xml
     <PerformanceCounters scheduledTransferPeriod="PT1M" sinks="AzMonSink">
@@ -120,7 +124,7 @@ Erteilen Sie der App die Berechtigungen „Herausgeber von Überwachungsmetriken
     </PerformanceCounters>
     ```
 
-1. Definieren Sie in der privaten Konfiguration das Azure Monitor-Konto, und fügen Sie die Informationen des Dienstprinzipals hinzu, den Sie zum Ausgeben von Metriken verwenden.
+1. Definieren Sie in der privaten Konfiguration das Azure Monitor-Konto. Fügen Sie anschließend die Dienstprinzipalinformationen hinzu, die für die Metrikausgabe verwendet werden sollen.
 
     ```xml
     <PrivateConfig xmlns="http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration">
@@ -136,7 +140,7 @@ Erteilen Sie der App die Berechtigungen „Herausgeber von Überwachungsmetriken
 
 1. Speichern Sie diese Datei lokal.
 
-## <a name="deploy-diagnostics-extension-to-your-cloud-service"></a>Bereitstellen der Diagnoseerweiterung für Ihren Clouddienst
+## <a name="deploy-the-diagnostics-extension-to-your-cloud-service"></a>Bereitstellen der Diagnoseerweiterung für Ihren Clouddienst
 
 1. Starten Sie PowerShell, und melden Sie sich an.
 
@@ -144,7 +148,7 @@ Erteilen Sie der App die Berechtigungen „Herausgeber von Überwachungsmetriken
     Login-AzureRmAccount
     ```
 
-1. Beginnen Sie damit, den Kontext auf Ihren klassischen virtuellen Computer festzulegen.
+1. Legen Sie zunächst den Kontext für Ihren klassischen virtuellen Computer fest.
 
     ```powershell
     $VM = Get-AzureVM -ServiceName <VM’s Service_Name> -Name <VM Name>
@@ -156,42 +160,43 @@ Erteilen Sie der App die Berechtigungen „Herausgeber von Überwachungsmetriken
     $StorageContext = New-AzureStorageContext -StorageAccountName <name of your storage account from earlier steps> -storageaccountkey "<storage account key from earlier steps>"
     ```
 
-1.  Legen Sie den Diagnosedateipfad mit dem folgenden Befehl in einer Variablen fest.
+1.  Legen Sie mit dem folgenden Befehl den Diagnosedateipfad auf eine Variable fest:
 
     ```powershell
     $diagconfig = “<path of the diagnostics configuration file with the Azure Monitor sink configured>”
     ```
 
-1.  Bereiten Sie das Update für Ihren klassischen virtuellen Computer mit der Diagnosedatei mit der konfigurierten Azure Monitor-Senke vor.
+1.  Bereiten Sie das Update für Ihren klassischen virtuellen Computer mit der Diagnosedatei vor, die die konfigurierte Azure Monitor-Senke enthält.
 
     ```powershell
     $VM_Update = Set-AzureVMDiagnosticsExtension -DiagnosticsConfigurationPath $diagconfig -VM $VM -StorageContext $Storage_Context
     ```
 
-1.  Stellen Sie das Update auf Ihrem virtuellen Computer bereit, indem Sie den folgenden Befehl ausführen.
+1.  Stellen Sie das Update mithilfe des folgenden Befehls auf Ihrem virtuellen Computer bereit:
 
     ```powershell
     Update-AzureVM -ServiceName "ClassicVMWAD7216" -Name "ClassicVMWAD" -VM $VM_Update.VM
     ```
 
 > [!NOTE]
-> Sie müssen im Rahmen der Installation der Diagnoseerweiterung weiterhin ein Speicherkonto angeben. Alle Protokolle und/oder Leistungsindikatoren, die in der Diagnosekonfigurationsdatei angegeben sind, werden in das angegebene Speicherkonto geschrieben.
+> Im Rahmen der Installation der Diagnoseerweiterung muss weiterhin ein Speicherkonto angegeben werden. Alle Protokolle und/oder Leistungsindikatoren, die in der Diagnosekonfigurationsdatei angegeben sind, werden in das angegebene Speicherkonto geschrieben.
 
 ## <a name="plot-the-metrics-in-the-azure-portal"></a>Darstellen der Metriken im Azure-Portal
 
-1.  Navigieren Sie zum Azure-Portal.
+1.  Öffnen Sie das Azure-Portal. 
 
-1.  Klicken Sie im linken Menü auf „Überwachen“.
+1.  Wählen Sie im Menü auf der linken Seite **Monitor** aus.
 
-1.  Klicken Sie auf dem Blatt „Überwachen“ auf **Metriken**
-   ![Metriken navigieren](./media/metrics-store-custom-guestos-classic-vm/navigate-metrics.png).
+1.  Wählen Sie auf dem Blatt **Monitor** die Option **Metriken** aus.
 
-1. Wählen Sie in der Dropdownliste der Ressourcen Ihren klassischen virtuellen Computer aus.
+    ![Navigieren zu „Metriken“](./media/metrics-store-custom-guestos-classic-vm/navigate-metrics.png)
 
-1. Wählen Sie in der Dropdownliste der Namespaces die Option **azure.vm.windows.guest** aus.
+1. Wählen Sie im Dropdownmenü mit den Ressourcen Ihren klassischen virtuellen Computer aus.
 
-1. Wählen Sie in der Dropdownliste der Metriken **Arbeitsspeicher\Verwendete zugesicherte Bytes**
-   ![Metriken darstellen](./media/metrics-store-custom-guestos-classic-vm/plot-metrics.png) aus.
+1. Wählen Sie im Dropdownmenü mit den Namespaces **azure.vm.windows.guest** aus.
+
+1. Wählen Sie im Dropdownmenü mit den Metriken **Arbeitsspeicher\Verwendete zugesicherte Bytes** aus.
+   ![Darstellen von Metriken](./media/metrics-store-custom-guestos-classic-vm/plot-metrics.png)
 
 
 ## <a name="next-steps"></a>Nächste Schritte

@@ -1,23 +1,22 @@
 ---
-title: Unterstützungsmatrix für die Replikation von VMware-VMs oder physischen Servern an einen sekundären VMware-Standort mit Azure Site Recovery | Microsoft-Dokumentation
-description: Fasst Informationen zur Unterstützung für die Replikation von VMware-VMs und physischen Servern an einen sekundären Standort mit Azure Site Recovery zusammen.
-services: site-recovery
+title: Unterstützungsmatrix für die Notfallwiederherstellung von VMware-VMs oder physischen Servern in einem sekundären VMware-Standort mit Azure Site Recovery | Microsoft-Dokumentation
+description: Dieser Artikel fasst die Unterstützung der Notfallwiederherstellung für VMware-VMs und physische Server in einem sekundären Standort mit Azure Site Recovery zusammen.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 07/06/2018
+ms.date: 10/29/2018
 ms.author: raynew
-ms.openlocfilehash: 4df929e8a185a04aef5cb13f30c19b0db707e765
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 8406cf2b31b87cdb4f6c9b6ba3d06559cf1d4d41
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44021992"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50209801"
 ---
-# <a name="support-matrix-for-replication-of-vmware-vms-and-physical-servers-to-a-secondary-site"></a>Unterstützungsmatrix für die Replikation von virtuellen VMware-Computern und physischen Servern an einen sekundären Standort
+# <a name="support-matrix-for-disaster-recovery-of-vmware-vms-and-physical-servers-to-a-secondary-site"></a>Unterstützungsmatrix für die Notfallwiederherstellung von VMware-VMs und physischen Servern
 
-Dieser Artikel beschreibt, was unterstützt wird, wenn Sie den [Azure Site Recovery](site-recovery-overview.md)-Dienst für die Replikation von VMware-VMs oder physischen Windows-/Linux-Servern an einen sekundären VMware-Standort verwenden.
+Dieser Artikel beschreibt, was unterstützt wird, wenn Sie den [Azure Site Recovery](site-recovery-overview.md)-Dienst für die Notfallwiederherstellung von VMware-VMs oder physischen Windows-/Linux-Servern in einem sekundären VMware-Standort verwenden.
 
 - Wenn Sie VMware-VMs oder physische Server nach Azure replizieren möchten, lesen Sie [diese Unterstützungsmatrix](vmware-physical-azure-support-matrix.md).
 - Wenn Sie Hyper-V-VMs an einen sekundären Standort replizieren möchten, lesen Sie [diese Unterstützungsmatrix](hyper-v-azure-support-matrix.md).
@@ -113,7 +112,7 @@ Der Mobilitätsdienst koordiniert die Replikation zwischen lokalen VMware-Server
 **Aktualisieren** | **Details** 
 --- | --- 
 Scout-Updates | [Informationen und Download](vmware-physical-secondary-disaster-recovery.md#updates) für die neuesten Scout-Updates | Scout-Updates sind kumulativ.
-Komponentenupdates | Scout-Updates umfassen Updates für alle Komponenten, einschließlich RX-Server, Konfigurationsserver, Prozess- und Masterzielserver, vContinuum-Server und Quellserver, die Sie schützen möchten.<br/><br/> [Weitere Informationen](vmware-physical-secondary-disaster-recovery.md#download-and-install-component-updates)
+Komponentenupdates | Scout-Updates umfassen Updates für alle Komponenten, einschließlich RX-Server, Konfigurationsserver, Prozess- und Masterzielserver, vContinuum-Server und Quellserver, die Sie schützen möchten.<br/><br/> [Weitere Informationen](vmware-physical-secondary-disaster-recovery.md#download-and-install-component-updates).
 
 
 ## <a name="next-steps"></a>Nächste Schritte

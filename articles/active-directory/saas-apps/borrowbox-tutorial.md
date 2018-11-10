@@ -8,18 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: dd8e4178-9a63-492a-bd48-782e94e404af
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/05/2018
+ms.date: 10/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 16252f690bfd34e596b2b8db26ab3a2ede0dfdee
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.openlocfilehash: a8ed2f04bf3004907cdd6e33bfb30260233fb101
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48833459"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50157155"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-borrowbox"></a>Tutorial: Azure Active Directory-Integration von BorrowBox
 
@@ -61,15 +62,15 @@ Zum Konfigurieren der Integration von BorrowBox in Azure AD müssen Sie BorrowBo
 
 1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**. 
 
-    ![image](./media/borrowbox-tutorial/selectazuread.png)
+    ![image](./common/selectazuread.png)
 
 2. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
 
-    ![image](./media/borrowbox-tutorial/a_select_app.png)
+    ![image](./common/a_select_app.png)
     
 3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
 
-    ![image](./media/borrowbox-tutorial/a_new_app.png)
+    ![image](./common/a_new_app.png)
 
 4. Geben Sie im Suchfeld den Namen **BorrowBox** ein, wählen Sie im Ergebnisbereich den Eintrag **BorrowBox** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
@@ -97,21 +98,17 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **BorrowBox** die Option **Einmaliges Anmelden** aus.
 
-    ![image](./media/borrowbox-tutorial/B1_B2_Select_SSO.png)
+    ![image](./common/B1_B2_Select_SSO.png)
 
-2. Klicken Sie im oberen Bereich des Bildschirms auf **Modus für einmaliges Anmelden ändern**, um den Modus **SAML** auszuwählen.
+2. Wählen Sie im Dialogfeld **SSO-Methode auswählen** den Modus **SAML** aus, um einmaliges Anmelden zu aktivieren.
 
-      ![image](./media/borrowbox-tutorial/b1_b2_saml_ssso.png)
+    ![image](./common/b1_b2_saml_sso.png)
 
-3. Wählen Sie im Dialogfeld **SSO-Methode auswählen** den Modus **SAML** aus, um einmaliges Anmelden zu aktivieren.
+3. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf die Schaltfläche **Bearbeiten**, um das Dialogfeld **Grundlegende SAML-Konfiguration** zu öffnen.
 
-    ![image](./media/borrowbox-tutorial/b1_b2_saml_sso.png)
+    ![image](./common/b1-domains_and_urlsedit.png)
 
-4. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf die Schaltfläche **Bearbeiten**, um das Dialogfeld **Grundlegende SAML-Konfiguration** zu öffnen.
-
-    ![image](./media/borrowbox-tutorial/b1-domains_and_urlsedit.png)
-
-5. Im Abschnitt **Grundlegende SAML-Konfiguration** muss der Benutzer keine Schritte ausführen, weil die App bereits in Azure integriert ist.
+4. Im Abschnitt **Grundlegende SAML-Konfiguration** muss der Benutzer keine Schritte ausführen, weil die App bereits in Azure integriert ist.
 
     ![image](./media/borrowbox-tutorial/tutorial_borrowbox_url.png)
 
@@ -122,33 +119,49 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     ![image](./media/borrowbox-tutorial/tutorial_borrowbox_url1.png)
 
     > [!NOTE]
-    > Der Wert der Anmelde-URL entspricht nicht dem tatsächlichen Wert. Ersetzen Sie diesen Wert durch die tatsächliche Anmelde-URL. Wenden Sie sich an das [Kundensupportteam von BorrowBox](mailto:borrowbox@bolinda.com), um den Wert zu erhalten. 
+    > Der Wert der Anmelde-URL entspricht nicht dem tatsächlichen Wert. Ersetzen Sie diesen Wert durch die tatsächliche Anmelde-URL. Wenden Sie sich an das [Kundensupportteam von BorrowBox](mailto:borrowbox@bolinda.com), um den Wert zu erhalten.
 
-6. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen**, um das Ihrer Anforderung entsprechende Zertifikat herunterzuladen und auf Ihrem Computer zu speichern.
+5. Die BorrowBox-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Konfigurieren Sie die folgenden Ansprüche für diese Anwendung. Sie können die Werte dieser Attribute im Abschnitt **Benutzerattribute und Ansprüche** auf der Anwendungsintegrationsseite verwalten. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf die Schaltfläche **Bearbeiten**, um das Dialogfeld **Benutzerattribute und Ansprüche** zu öffnen.
+
+    ![image](./media/borrowbox-tutorial/i4-attribute.png)
+
+6. Konfigurieren Sie im Dialogfeld **Benutzerattribute und Ansprüche** im Abschnitt **Benutzeransprüche** das SAML-Tokenattribut wie in der obigen Abbildung gezeigt, und führen Sie die folgenden Schritte aus:
+    
+    a. Klicken Sie auf das Symbol **Bearbeiten**, um das Dialogfeld **Benutzeransprüche verwalten** zu öffnen.
+
+    ![image](./media/borrowbox-tutorial/i2-attribute.png)
+
+    ![image](./media/borrowbox-tutorial/i3-attribute.png)
+
+    b. Wählen Sie in der Liste **Quellattribut** den Eintrag **user.mail** aus.
+
+    c. Klicken Sie auf **Speichern**. 
+
+7. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen**, um das Ihrer Anforderung entsprechende Zertifikat herunterzuladen und auf Ihrem Computer zu speichern.
 
     ![image](./media/borrowbox-tutorial/tutorial_borrowbox_certificate.png) 
 
-7. Um einmaliges Anmelden seitens **BorrowBox** zu konfigurieren, müssen Sie das Zertifikat/die Metadaten, das/die Sie aus dem Azure-Portal heruntergeladen haben, an das [Supportteam von BorrowBox](mailto:borrowbox@bolinda.com) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
+8. Um einmaliges Anmelden seitens **BorrowBox** zu konfigurieren, müssen Sie das Zertifikat/die Metadaten, das/die Sie aus dem Azure-Portal heruntergeladen haben, an das [Supportteam von BorrowBox](mailto:borrowbox@bolinda.com) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
 Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta Simon im Azure-Portal.
 
-1. Wählen Sie im Azure-Portal im linken Bereich die Option **Azure Active Directory** aus, wählen Sie **Benutzer** aus, und wählen Sie dann **Alle Benutzer** aus.
+1. Wählen Sie im Azure-Portal im linken Bereich die Option **Azure Active Directory**, **Benutzer** und dann **Alle Benutzer** aus.
 
-    ![image](./media/borrowbox-tutorial/d_users_and_groups.png)
+    ![image](./common/d_users_and_groups.png)
 
-2. Wählen Sie im oberen Bereich des Bildschirms die Option **Neuer Benutzer** aus.
+2. Wählen Sie oben im Bildschirm die Option **Neuer Benutzer** aus.
 
-    ![image](./media/borrowbox-tutorial/d_adduser.png)
+    ![image](./common/d_adduser.png)
 
 3. Führen Sie in den Benutzereigenschaften die folgenden Schritte aus.
 
-    ![image](./media/borrowbox-tutorial/d_userproperties.png)
+    ![image](./common/d_userproperties.png)
 
     a. Geben Sie im Feld **Name** den Namen **BrittaSimon** ein.
   
-    b. Geben Sie im Feld **Benutzername** die Zeichenfolge **brittasimon@yourcompanydomain.extension** ein.  
+    b. Geben Sie im Feld **Benutzername** **brittasimon@yourcompanydomain.extension** ein.  
     Zum Beispiel, BrittaSimon@contoso.com
 
     c. Wählen Sie **Eigenschaften** aus, aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich dann den Wert, der im Feld „Kennwort“ angezeigt wird.
@@ -159,7 +172,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
 Das Ziel dieses Abschnitts ist das Erstellen eines Benutzers namens Britta Simon in BorrowBox. BorrowBox unterstützt die Just-in-Time-Bereitstellung, die standardmäßig aktiviert ist. Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Wenn noch kein Benutzer vorhanden ist, wird beim Zugreifen auf BorrowBox ein neuer Benutzer erstellt.
 >[!Note]
->Wenden Sie sich an das [Supportteam von BorrowBox](mailto:borrowbox@bolinda.com), wenn Sie einen Benutzer manuell erstellen müssen.
+>Setzen Sie sich mit dem  [Supportteam von BorrowBox](mailto:borrowbox@bolinda.com) in Verbindung, wenn Sie einen Benutzer manuell erstellen müssen.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -167,7 +180,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 1. Wählen Sie im Azure-Portal die Option **Unternehmensanwendungen** und dann **Alle Anwendungen** aus.
 
-    ![image](./media/borrowbox-tutorial/d_all_applications.png)
+    ![image](./common/d_all_applications.png)
 
 2. Wählen Sie in der Anwendungsliste den Eintrag **BorrowBox** aus.
 
@@ -175,13 +188,13 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 3. Wählen Sie im Menü auf der linken Seite **Benutzer und Gruppen** aus.
 
-    ![image](./media/borrowbox-tutorial/d_leftpaneusers.png)
+    ![image](./common/d_leftpaneusers.png)
 
-4. Wählen Sie die Schaltfläche **Hinzufügen** aus, und wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
+4. Wählen Sie die Schaltfläche **Hinzufügen** und dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
 
-    ![image](./media/borrowbox-tutorial/d_assign_user.png)
+    ![image](./common/d_assign_user.png)
 
-4. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **Britta Simon** aus, und klicken Sie dann im unteren Bereich des Bildschirms auf die Schaltfläche **Auswählen**.
+4. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **Britta Simon** aus, und klicken Sie dann unten im Bildschirm auf die Schaltfläche **Auswählen**.
 
 5. Wählen Sie im Dialogfeld **Zuweisung hinzufügen** die Schaltfläche **Zuweisen** aus.
     

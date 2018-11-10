@@ -1,20 +1,20 @@
 ---
-title: Einrichten der Quellumgebung (physische Server in Azure) | Microsoft-Dokumentation
-description: Dieser Artikel beschreibt, wie Sie Ihre lokale Umgebung einrichten, um mit dem Replizieren von physischen Servern unter Windows oder Linux in Azure zu beginnen.
+title: Einrichten des Konfigurationsservers für die Notfallwiederherstellung von physischen Servern in Azure mit Azure Site Recovery | Microsoft-Dokumentation
+description: Dieser Artikel beschreibt die Einrichtung des lokalen Konfigurationsservers für die Notfallwiederherstellung von lokalen physischen Servern in Azure.
 services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
-ms.topic: article
-ms.date: 07/21/2018
+ms.topic: conceptual
+ms.date: 10/28/2018
 ms.author: raynew
-ms.openlocfilehash: 0cbba45ce49667293d8f16bf370424acd70ff78b
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 739129045fab72a9b535be25b853c902c7dbd251
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39213484"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50209546"
 ---
-# <a name="set-up-the-source-environment-physical-server-to-azure"></a>Einrichten der Quellumgebung (physische Server in Azure)
+# <a name="set-up-the-configuration-server-for-disaster-recovery-of-physical-servers-to-azure"></a>Einrichten des Konfigurationsservers für die Notfallwiederherstellung von physischen Servern in Azure
 
 Dieser Artikel beschreibt, wie Sie Ihre lokale Umgebung einrichten, um mit dem Replizieren von physischen Servern unter Windows oder Linux in Azure zu beginnen.
 
@@ -23,7 +23,7 @@ Dieser Artikel beschreibt, wie Sie Ihre lokale Umgebung einrichten, um mit dem R
 In diesem Artikel wird davon ausgegangen, dass Sie über Folgendes bereits verfügen:
 - Einen Recovery Services-Tresor im [Azure-Portal](http://portal.azure.com "Azure-Portal").
 - Einen physischen Computer, um den Konfigurationsserver zu installieren.
-- Wenn Sie TLS 1.0 auf dem Computer deaktiviert haben, auf dem der Konfigurationsserver installiert wird, stellen Sie sicher, dass TLS 1.2 aktiviert ist und .NET Framework Version 4.6 oder höher auf dem Computer (mit deaktivierter starker Kryptografie) installiert ist. [Weitere Informationen](https://support.microsoft.com/help/4033999/how-to-resolve-azure-site-recovery-agent-issues-after-disabling-tls-1)
+- Wenn Sie TLS 1.0 auf dem Computer deaktiviert haben, auf dem der Konfigurationsserver installiert wird, stellen Sie sicher, dass TLS 1.2 aktiviert ist und .NET Framework Version 4.6 oder höher auf dem Computer (mit deaktivierter starker Kryptografie) installiert ist. [Weitere Informationen](https://support.microsoft.com/help/4033999/how-to-resolve-azure-site-recovery-agent-issues-after-disabling-tls-1).
 
 ### <a name="configuration-server-minimum-requirements"></a>Mindestanforderungen für den Konfigurationsserver
 Die folgende Tabelle enthält die minimalen Hardware-, Software- und Netzwerkanforderungen für einen Konfigurationsserver.
@@ -62,7 +62,7 @@ Die folgende Tabelle enthält die minimalen Hardware-, Software- und Netzwerkanf
 [!INCLUDE [site-recovery-add-configuration-server](../../includes/site-recovery-add-configuration-server.md)]
 
 > [!NOTE]
-> Der Konfigurationsserver kann über eine Befehlszeile installiert werden. [Weitere Informationen](physical-manage-configuration-server.md#install-from-the-command-line)
+> Der Konfigurationsserver kann über eine Befehlszeile installiert werden. [Weitere Informationen](physical-manage-configuration-server.md#install-from-the-command-line).
 
 
 ## <a name="common-issues"></a>Häufige Probleme

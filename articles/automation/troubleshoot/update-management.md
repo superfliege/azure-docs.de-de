@@ -4,20 +4,22 @@ description: Erfahren Sie, wie Sie Fehler mit Updateverwaltung beheben können.
 services: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 10/17/2018
+ms.date: 10/25/2018
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 41883fd677d276f8f26721fdccc3ded020c3278b
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: f52767058ef69d29465f1274109b6d3ffe58296c
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49405225"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50092626"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>Behandeln von Problemen mit Updateverwaltung
 
 In diesem Artikel werden Lösungen zum Beheben von Problemen beschrieben, die bei Verwendung der Updateverwaltung auftreten können.
+
+Es gibt eine Agent-Problembehandlung für den Hybrid Worker-Agent, mit dem das zugrunde liegende Problem ermittelt werden kann. Informationen zur Problembehandlung finden Sie unter [Beheben von Problemen mit dem Update-Agent](update-agent-issues.md). Bei allen anderen Problemen finden Sie weiter unten ausführliche Informationen zu möglichen Problemen.
 
 ## <a name="general"></a>Allgemein
 
@@ -110,6 +112,20 @@ Der Hybrid Runbook Worker konnte kein selbstsigniertes Zertifikat generieren.
 #### <a name="resolution"></a>Lösung
 
 Überprüfen Sie, ob das Systemkonto über Lesezugriff auf den Ordner **C:\ProgramData\Microsoft\Crypto\RSA** verfügt, und versuchen Sie es erneut.
+
+### <a name="nologs"></a>Szenario: Updateverwaltungsdaten für einen Computer werden nicht in Log Analytics angezeigt.
+
+#### <a name="issue"></a>Problem
+
+Bei einigen Ihrer Computer wird **Nicht bewertet** unter **Compliance** angezeigt, es werden aber Heartbeatdaten für den Hybrid Runbook Worker, jedoch nicht für die Updateverwaltung angezeigt.
+
+#### <a name="cause"></a>Ursache
+
+Der Hybrid Runbook Worker muss eventuell erneut registriert und installiert werden.
+
+#### <a name="resolution"></a>Lösung
+
+Führen Sie die Schritte unter [Bereitstellen eines Windows Hybrid Runbook Workers](../automation-windows-hrw-install.md) aus, um den Hybrid Worker neu zu installieren.
 
 ### <a name="hresult"></a>Szenario: Computer wird als nicht bewertet mit einer HResult-Ausnahme angezeigt
 

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/02/2018
+ms.date: 10/26/2018
 ms.author: genli
-ms.openlocfilehash: d16f106fa1776b0d11a97f71ffe16cf89fb9584a
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 2a0f6b75c540f319848805e8a9bda7b166d5d709
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42142896"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50138658"
 ---
 #  <a name="network-virtual-appliance-issues-in-azure"></a>Probleme mit virtuellen Netzwerkappliances in Azure
 
@@ -77,14 +77,14 @@ Verwenden von PowerShell
 **Überprüfen, ob der Datenverkehr an die NVA weitergeleitet werden kann**
 
 1. Wählen Sie im [Azure-Portal](https://portal.azure.com) unter **Network Watcher** die Option **Nächster Hop** aus.
-2. Geben Sie eine VM, die die NVA für den nächsten Hop sein soll, und eine IP-Zieladresse an, unter der der nächste Hop angezeigt werden soll. 
+2. Geben Sie eine VM an, die für das Umleiten des Datenverkehrs an die NVA konfiguriert ist, und eine IP-Zieladresse, unter der der nächste Hop angezeigt werden kann. 
 3. Wenn die NVA nicht als **Nächster Hop** aufgeführt ist, überprüfen und aktualisieren Sie die Azure-Routingtabellen.
 
 **Überprüfen, ob der Datenverkehr die NVA erreichen kann**
 
 1.  Wählen Sie im [Azure-Portal](https://portal.azure.com) unter **Network Watcher** **IP-Flussüberprüfung** aus. 
-2.  Geben Sie eine VM und die IP-Adresse der NVA an, und überprüfen Sie dann, ob der Datenverkehr durch eine Netzwerksicherheitsgruppe (NSG) blockiert wird.
-3.  Wenn eine NSG-Regel vorhanden ist, die den Datenverkehr blockiert, suchen Sie die NSG in den **effektiven Sicherheitsregeln**, und aktualisieren Sie sie dann, indem Sie die Weiterleitung von Datenverkehr zulassen. Führen Sie dann erneut **IP-Flussüberprüfung** aus, und testen Sie anhand der **Konnektivitätsprüfung** die TCP-Kommunikation zwischen der VM und Ihrer internen oder externen IP-Adresse.
+2.  Geben Sie die VM und die IP-Adresse der NVA an, und überprüfen Sie dann, ob der Datenverkehr durch eine Netzwerksicherheitsgruppe (NSG) blockiert wird.
+3.  Wenn eine NSG-Regel vorhanden ist, die den Datenverkehr blockiert, suchen Sie die NSG in den **effektiven Sicherheitsregeln**, und aktualisieren Sie sie dann, indem Sie die Weiterleitung von Datenverkehr zulassen. Führen Sie dann erneut **IP-Flussüberprüfung** aus, und testen Sie mit **Problembehandlung für Verbindung** die TCP-Kommunikation zwischen der VM und Ihrer internen oder externen IP-Adresse.
 
 **Überprüfen, ob die NVA und die VMs auf erwarteten Datenverkehr lauschen**
 

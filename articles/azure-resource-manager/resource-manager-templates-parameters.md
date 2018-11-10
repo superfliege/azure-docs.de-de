@@ -11,19 +11,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/18/2018
+ms.date: 10/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: 6d09a057d9b8a02c7f8313161e64aa3a42eb6db2
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 83ba1b94413990c0eb8dff42c49d46456a658d5a
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34604334"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50417768"
 ---
 # <a name="parameters-section-of-azure-resource-manager-templates"></a>Abschnitt „Parameters“ von Azure Resource Manager-Vorlagen
-Im Abschnitt „Parameter“ der Vorlage geben Sie an, welche Werte Sie beim Bereitstellen der Ressourcen eingeben können. Mit diesen Parameterwerten können Sie die Bereitstellung anpassen, indem Sie Werte resources, die für eine bestimmte Umgebung (z. B. Entwicklung, Testing oder Produktion) maßgeschneidert sind. Sie müssen in der Vorlage nicht unbedingt Parameter resources, aber ohne Parameter stellt Ihre Vorlage immer dieselben Ressourcen mit den gleichen Namen, Speicherorten und Eigenschaften bereit.
+Im Abschnitt „Parameter“ der Vorlage geben Sie an, welche Werte Sie beim Bereitstellen der Ressourcen eingeben können. Mit diesen Parameterwerten können Sie die Bereitstellung anpassen, indem Sie Werte resources, die für eine bestimmte Umgebung (z. B. Entwicklung, Testing oder Produktion) maßgeschneidert sind. Sie müssen in der Vorlage nicht unbedingt Parameter angeben, aber ohne Parameter stellt Ihre Vorlage immer die gleichen Ressourcen mit den gleichen Namen, Speicherorten und Eigenschaften bereit.
 
-Maximal 255 Parameter sind in einer Vorlage zulässig. Sie können die Anzahl der Parameter verringern, indem Sie Objekte verwenden, die mehrere Eigenschaften enthalten, wie in diesem Artikel beschrieben wird.
+Die Anzahl der Parameter in einer Vorlage ist auf 256 beschränkt. Sie können die Anzahl der Parameter verringern, indem Sie Objekte verwenden, die mehrere Eigenschaften enthalten, wie in diesem Artikel beschrieben wird.
 
 ## <a name="define-and-use-a-parameter"></a>Definieren und Verwenden eines Parameters
 
@@ -85,8 +85,8 @@ Im vorherige Beispiel wurden nur einige der Eigenschaften gezeigt, die Sie im Ab
 
 | Elementname | Erforderlich | BESCHREIBUNG |
 |:--- |:--- |:--- |
-| parameterName |Ja |Der Name des Parameters. Es muss sich um einen gültigen JavaScript-Bezeichner handeln. |
-| type |Ja |Der Typ des Parameterwerts. Die zulässigen Typen und Werte sind **string**, **securestring**, **int**, **bool**, **object**, **secureObject** und **array**. |
+| parameterName |JA |Der Name des Parameters. Es muss sich um einen gültigen JavaScript-Bezeichner handeln. |
+| type |JA |Der Typ des Parameterwerts. Die zulässigen Typen und Werte sind **string**, **securestring**, **int**, **bool**, **object**, **secureObject** und **array**. |
 | defaultValue |Nein  |Der Standardwert für den Parameter, wenn kein Wert für den Parameter angegeben wird. |
 | allowedValues |Nein  |Ein Array der zulässigen Werte für den Parameter, um sicherzustellen, dass der richtige Wert angegeben wird. |
 | minValue |Nein  |Der Mindestwert für Parameter vom Typ "int", einschließlich des angegebenen Werts. |
@@ -97,7 +97,7 @@ Im vorherige Beispiel wurden nur einige der Eigenschaften gezeigt, die Sie im Ab
 
 ## <a name="template-functions-with-parameters"></a>Vorlagenfunktionen mit Parametern
 
-Wenn Sie den Standardwert für einen Parameter bereitstellen, können Sie die meisten Vorlagenfunktionen verwenden. Sie können einen anderen Parameterwert verwenden, um einen Standardwert zu erstellen. Die folgende Vorlage veranschaulicht die Verwendung von Funktionen im Standardwert:
+Wenn Sie den Standardwert für einen Parameter angeben, können Sie die meisten Vorlagenfunktionen verwenden. Sie können einen anderen Parameterwert verwenden, um einen Standardwert zu erstellen. Die folgende Vorlage veranschaulicht die Verwendung von Funktionen im Standardwert:
 
 ```json
 "parameters": {
@@ -197,7 +197,7 @@ Die folgenden Informationen können bei der Verwendung von Parametern hilfreich 
    * Ressourcennamen, die Sie zur leichteren Identifizierung angeben möchten
    * Werte, die Sie häufig nutzen, um andere Aufgaben zu erledigen (z.B. Benutzername des Administrators)
    * Geheimnisse (z.B. Kennwörter)
-   * Anzahl oder Array von Werten, die beim Erstellen mehrerer Instanzen eines Ressourcentyps verwendet werden
+   * Anzahl oder Array von Werten, die beim Erstellen von mehr als einer Instanz eines Ressourcentyps verwendet werden.
 * Verwenden Sie die camel-Schreibweise für Parameternamen.
 * Geben Sie für jeden Parameter in den Metadaten eine Beschreibung an.
 
@@ -212,7 +212,7 @@ Die folgenden Informationen können bei der Verwendung von Parametern hilfreich 
    }
    ```
 
-* Definieren Sie Standardwerte für Parameter (außer für Kennwörter und SSH-Schlüssel). Durch die Bereitstellung eines Standardwerts wird der Parameter während der Bereitstellung optional. Der Standardwert kann eine leere Zeichenfolge sein. 
+* Definieren Sie Standardwerte für Parameter (außer für Kennwörter und SSH-Schlüssel). Durch das Angeben eines Standardwerts wird der Parameter während der Bereitstellung optional. Der Standardwert kann eine leere Zeichenfolge sein. 
    
    ```json
    "parameters": {

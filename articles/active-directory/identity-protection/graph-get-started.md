@@ -13,16 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/08/2017
+ms.date: 10/26/2018
 ms.author: markvi
 ms.reviewer: nigu
 ms.custom: seohack1
-ms.openlocfilehash: 3bdf44e0a1cf0ccda6d015fa3683964f3530d4af
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 3cbded3224e7622d13e7af362cb3532a1813787e
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40003482"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50242159"
 ---
 # <a name="get-started-with-azure-active-directory-identity-protection-and-microsoft-graph"></a>Erste Schritte mit Azure Active Directory Identity Protection und Microsoft Graph
 Microsoft Graph ist der einheitliche API-Endpunkt von Microsoft und stellt die [Azure Active Directory Identity Protection](../active-directory-identityprotection.md)-APIs zur Verfügung. Mit der ersten API, **identityRiskEvents**, können Sie in Microsoft Graph eine Liste von [Risikoereignissen](../reports-monitoring/concept-risk-events.md) und zugehörige Informationen abfragen. In diesem Artikel erhalten Sie eine kurze Einführung in das Abfragen dieser API. Eine ausführliche Einführung, die vollständige Dokumentation und Informationen zum Zugriff auf den Graph-Tester finden Sie auf der Website zu [Microsoft Graph](https://graph.microsoft.io/).
@@ -37,8 +37,11 @@ Zum Zugreifen auf die Identity Protection-Daten über Microsoft Graph werden vie
 
 Bevor Sie beginnen, benötigen Sie Folgendes:
 
-* Administratorrechte, um die Anwendung in Azure AD erstellen zu können
-* Den Namen der Domäne Ihres Mandanten (z.B. „contoso.onmicrosoft.com“)
+- Einen Azure AD-P2-Mandanten
+
+- Administratorrechte, um die Anwendung in Azure AD erstellen zu können
+
+- Den Namen der Domäne Ihres Mandanten (z.B. „contoso.onmicrosoft.com“)
 
 
 ## <a name="retrieve-your-domain-name"></a>Abrufen Ihres Domänennamens 
@@ -49,12 +52,14 @@ Bevor Sie beginnen, benötigen Sie Folgendes:
    
     ![Erstellen einer Anwendung](./media/graph-get-started/41.png)
 
+3. Klicken Sie auf **Benutzerdefinierte Domänennamen**.
 
-3. Klicken Sie im Bereich **Verwalten** auf **Eigenschaften**.
+    ![Benutzerdefinierte Domänennamen](./media/graph-get-started/71.png)
 
-    ![Erstellen einer Anwendung](./media/graph-get-started/42.png)
+4. Kopieren Sie aus der Liste der Domänennamen den Domänennamen, der als primär festgelegt ist.
 
-4. Kopieren Sie Ihren Domänennamen.
+    ![Benutzerdefinierte Domänennamen](./media/graph-get-started/72.png)
+
 
 
 ## <a name="create-a-new-app-registration"></a>Erstellen einer neuen App-Registrierung
@@ -74,7 +79,7 @@ Bevor Sie beginnen, benötigen Sie Folgendes:
 
     a. Geben Sie im Textfeld **Name** einen Namen für Ihre Anwendung ein (z.B. „AADIP-Risikoereignis-API-Anwendung“).
    
-    b. Wählen Sie als **Typ** die Option **Webanwendung und/oder Web-API** aus.
+    b. Wählen Sie als **Anwendungstyp** **Webanwendung und/oder Web-API** aus.
    
     c. Geben Sie im Textfeld **Anmelde-URL** die URL `http://localhost` ein.
 
@@ -156,9 +161,9 @@ Sie sollten jetzt über Folgendes verfügen:
 
 Senden Sie für die Authentifizierung eine POST-Anforderung an `https://login.microsoft.com`. Fügen Sie die folgenden Parameter in den Anforderungstext ein:
 
-- grant_type: „**client_credentials**“
+- grant_type: **client_credentials**
 
--  resource: “**https://graph.microsoft.com**”
+-  resource: **https://graph.microsoft.com**
 
 - client_id: \<Ihre Client-ID\>
 
@@ -168,7 +173,7 @@ Senden Sie für die Authentifizierung eine POST-Anforderung an `https://login.mi
 Ist die Anforderung erfolgreich, wird ein Authentifizierungstoken zurückgegeben.  
 Erstellen Sie zum Aufrufen der API einen Header mit dem folgenden Parameter:
 
-    `Authorization`=”<token_type> <access_token>"
+    `Authorization`="<token_type> <access_token>"
 
 
 Bei der Authentifizierung können Sie den Tokentyp und das Zugriffstoken anhand des zurückgegebenen Tokens ermitteln.

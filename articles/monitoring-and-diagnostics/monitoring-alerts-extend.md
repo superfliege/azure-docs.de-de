@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: eb3489c24bd5aa328620c5a6c14ee71882a6a6f2
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: 60ecc2bc1d700c223d4a52b05e3b9362241f3f82
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48249569"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50414609"
 ---
 # <a name="extend-log-analytics-alerts-to-azure-alerts"></a>Erweitern von Log Analytics-Warnungen nach Azure Alerts
 Bis vor Kurzem enthielt Azure Log Analytics eigene Warnfunktionen, die Sie auf der Grundlage von Log Analytics-Daten proaktiv über Bedingungen benachrichtigen konnten. Sie haben im Microsoft Operations Management Suite-Portal Warnungsregeln verwaltet. Die neue Oberfläche für Warnungen bietet nun die übergreifende Warnungsanzeige für verschiedene Dienste in Microsoft Azure. Sie ist im Azure-Portal unter Azure Monitor als **Warnungen** verfügbar und unterstützt die Anzeige von Warnungen aus Aktivitätsprotokollen, Metriken und Protokollen von Log Analytics ebenso wie von Azure Application Insights. 
@@ -30,12 +30,12 @@ Das Erstellen und Verwalten von Warnungen im Azure-Portal bietet eine Reihe von 
 Der Prozess des Verschiebens von Warnungen aus Log Analytics nach Azure Alerts bringt keinerlei Änderung Ihrer Warnungsdefinition, Abfrage oder Konfiguration mit sich. Die einzige erforderliche Änderung besteht darin, dass in Azure alle Aktionen mithilfe von Aktionsgruppen ausgeführt werden. Wenn Ihrer Warnung bereits Aktionsgruppen zugeordnet sind, sind diese bei der Erweiterung nach Azure eingeschlossen.
 
 > [!NOTE]
-> Ab dem 14. Mai 2018 erweitert Microsoft in Public Cloud-Instanzen von Log Analytics erstellte Warnungen automatisch in einer wiederholten Serie bis zum vollständigen Abschluss auf Azure-Warnungen. Wenn beim Erstellen von [Aktionsgruppen](monitoring-action-groups.md) irgendwelche Probleme auftreten, verwenden Sie [diese Wartungsschritte](monitoring-alerts-extend-tool.md#troubleshooting), um Aktionsgruppen automatisch erstellen zu lassen. Sie können diese Schritte bis zum 5. Juli 2018 verwenden. *Gilt nicht für Azure Goverment und Soveriegn-Cloudbenutzer von Log Analytics*. 
+> Ab dem 14. Mai 2018 erweitert Microsoft in Public Cloud-Instanzen von Log Analytics erstellte Warnungen automatisch in einer wiederholten Serie bis zum vollständigen Abschluss auf Azure-Warnungen. Wenn beim Erstellen von [Aktionsgruppen](monitoring-action-groups.md) irgendwelche Probleme auftreten, verwenden Sie [diese Wartungsschritte](monitoring-alerts-extend-tool.md#troubleshooting), um Aktionsgruppen automatisch erstellen zu lassen. Sie können diese Schritte bis zum 5. Juli 2018 verwenden. *Gilt nicht für Azure Government- und Sovereign Cloud-Benutzer von Log Analytics*. 
 > 
 
 Wenn Sie die Erweiterung von Warnungen nach Azure in einem Log Analytics-Arbeitsbereich planen, funktionieren sie weiterhin und beschädigen Ihre Konfiguration in keiner Weise. Warnungen, für die Erweiterung geplant ist, stehen möglicherweise vorübergehend nicht zur Änderung zur Verfügung, jedoch können Sie während dieser Zeit weiterhin neue Azure-Warnungen erstellen. Wenn Sie versuchen, Warnungen im Operations Management Suite-Portal zu bearbeiten oder zu erstellen, bietet sich Ihnen die Option, sie weiterhin in Ihrem Log Analytics-Arbeitsbereich zu erstellen. Alternativ können Sie sich entscheiden, sie im Azure-Portal in Azure Alerts zu erstellen.
 
- ![Screenshot der Option zum Erstellen von Warnungen in Log Analytics oder Azure Alerts](./media/monitor-alerts-extend/ScheduledDirection.png)
+ ![Screenshot der Option zum Erstellen von Warnungen in Log Analytics oder Azure Alerts](media/monitoring-alerts-extend/ScheduledDirection.png)
 
 > [!NOTE]
 > Das Erweitern von Warnungen von Log Analytics nach Azure führt nicht zu Belastungen Ihres Kontos. Die Verwendung von Azure Alerts für abfragebasierte Log Analytics-Warnungen wird nicht in Rechnung gestellt, sofern die Grenzwerte und Bedingungen eingehalten werden, die in der [Azure Monitor-Preisrichtlinie](https://azure.microsoft.com/pricing/details/monitor/) festgelegt sind.  
@@ -47,7 +47,7 @@ Sie können Ihre Warnungen nach Azure Alerts erweitern, indem Sie einen Assisten
 ## <a name="experience-after-extending-your-alerts"></a>Benutzeroberfläche nach dem Erweitern Ihrer Warnungen
 Nachdem Sie Ihre Warnungen nach Azure Alerts erweitert haben, stehen diese weiterhin im Operations Management Suite-Portal zur Verwaltung zur Verfügung, nicht anders als zuvor.
 
-![Screenshot des Operations Management Suite-Portals mit aufgelisteten Warnungen](./media/monitor-alerts-extend/PostExtendList.png)
+![Screenshot des Operations Management Suite-Portals mit aufgelisteten Warnungen](media/monitoring-alerts-extend/PostExtendList.png)
 
 Wenn Sie im Operations Management Suite-Portal versuchen, eine vorhandene Warnung zu bearbeiten oder eine neue Warnung zu erstellen, werden Sie automatisch zu Azure Alerts umgeleitet.  
 

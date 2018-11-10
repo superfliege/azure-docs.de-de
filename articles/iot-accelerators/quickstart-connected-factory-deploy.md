@@ -7,14 +7,14 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 07/12/2018
+ms.date: 10/26/2018
 ms.author: dobett
-ms.openlocfilehash: 649ce7bcd2d2e4ceb2fc397643f4dd0d3ef89c1e
-ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
+ms.openlocfilehash: 8cb604aee39f651770cb708f8dd92b6fbc0921f5
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39144512"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50139010"
 ---
 # <a name="quickstart-try-a-cloud-based-solution-to-manage-my-industrial-iot-devices"></a>Schnellstart: Testen einer cloudbasierten Lösung zum Verwalten von industriellen IoT-Geräten
 
@@ -32,13 +32,13 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 Beim Bereitstellen des Solution Accelerators in Ihrem Azure-Abonnement müssen Sie einige Konfigurationsoptionen festlegen.
 
-Melden Sie sich mit Ihren Azure-Kontoanmeldeinformationen an [azureiotsolutions.com](https://www.azureiotsolutions.com/Accelerators) an.
+Navigieren Sie zu [Microsoft Azure IoT Solution Accelerators](https://www.azureiotsolutions.com), und melden Sie sich mit den Anmeldeinformationen für Ihr Azure-Konto an.
 
-Klicken Sie auf der Kachel **Verbundene Factory** auf **Jetzt testen**.
+Klicken Sie auf die Kachel **Verbundene Factory**. Klicken Sie auf der Seite **Verbundene Factory** auf **Jetzt testen**:
 
-![Auswählen der verbundenen Factory](./media/quickstart-connected-factory-deploy/connectedfactory.png)
+![Jetzt testen](./media/quickstart-connected-factory-deploy/connectedfactory.png)
 
-Geben Sie auf der Seite **Lösung für verbundene Factorys erstellen** einen eindeutigen **Lösungsnamen** für Ihren Solution Accelerator für verbundene Factorys ein. Dieser Name bezeichnet die Azure-Ressourcengruppe, die alle Solution Accelerator-Ressourcen enthält. In dieser Schnellstartanleitung haben wir den Namen **MyDemoConnectedFactory** verwendet.
+Geben Sie auf der Seite **Lösung für verbundene Factorys erstellen** einen eindeutigen **Lösungsnamen** für Ihren Solution Accelerator für verbundene Factorys ein. Dieser Name bezeichnet die Azure-Ressourcengruppe, die alle Solution Accelerator-Ressourcen enthält. In dieser Schnellstartanleitung wird der Name **MyDemoConnectedFactory** verwendet.
 
 Wählen Sie die gewünschten Angaben für **Abonnement** und **Region**, um den Solution Accelerator bereitzustellen. Normalerweise wählen Sie die Region, die Ihnen am nächsten liegt. In dieser Schnellstartanleitung haben wir **Visual Studio Enterprise** und **USA, Osten** gewählt. Sie müssen ein [globaler Administrator oder Benutzer](iot-accelerators-permissions.md) des Abonnements sein.
 
@@ -66,7 +66,7 @@ Die Standardansicht ist das *Dashboard*. Über das Menü auf der linken Seite ge
 
 [![Lösungsdashboard](./media/quickstart-connected-factory-deploy/dashboard-inline.png)](./media/quickstart-connected-factory-deploy/dashboard-expanded.png#lightbox)
 
-Verwenden Sie das Dashboard, um Ihre industriellen IoT-Geräte zu verwalten. Die verbundene Factory verwendet eine Hierarchie zum Anzeigen einer globalen Factorykonfiguration. Auf der obersten Ebene der Hierarchie befindet sich das Unternehmen, das eine oder mehrere Werke (Factorys) enthält, jedes Werk enthält Fertigungsstrecken und jede Fertigungsstrecken besteht aus Stationen. Auf jeder Ebene können Sie OEE und KPIs anzeigen, neue Knoten für Telemetriedaten veröffentlichen und auf Alarme reagieren.
+Verwenden Sie das Dashboard, um Ihre industriellen IoT-Geräte zu verwalten. Die verbundene Factory verwendet eine Hierarchie zum Anzeigen einer globalen Factorykonfiguration. Die oberste Ebene der Hierarchie ist das Unternehmen, das über ein oder mehrere Werke verfügt. Jedes Werk verfügt über Fertigungsstrecken, und jede Fertigungsstrecke besteht aus Stationen. Auf jeder Ebene können Sie OEE und KPIs anzeigen, neue Knoten für Telemetriedaten veröffentlichen und auf Alarme reagieren.
 
 Auf dem Dashboard wird Folgendes angezeigt:
 
@@ -122,7 +122,7 @@ Wenn für Ihr Abonnement Zugriff auf die [Bing Maps-API](iot-accelerators-faq-cf
 
 ### <a name="alarms"></a>Alarme
 
-Der Bereich **Alarme** enthält Alarme, die generiert werden, wenn ein gemeldeter Wert oder ein berechneter OEE-/KPI-Wert den konfigurierten Schwellenwert übersteigt. In diesem Bereich werden Alarme auf jeder Ebene der Hierarchie angezeigt – von der Stationsebene bis zur Unternehmensebene. Jeder Alarm enthält eine Beschreibung, das Datum, die Uhrzeit, den Standort und die Anzahl von Vorkommen:
+Das Panel **Alarme** enthält Alarme, die generiert werden, wenn ein gemeldeter Wert oder ein berechneter OEE-/KPI-Wert einen Schwellenwert überschreitet. In diesem Bereich werden Alarme auf jeder Ebene der Hierarchie angezeigt – von der Stationsebene bis zur Unternehmensebene. Jeder Alarm enthält eine Beschreibung, das Datum, die Uhrzeit, den Standort und die Anzahl von Vorkommen:
 
 [![Alarme](./media/quickstart-connected-factory-deploy/alarms-inline.png)](./media/quickstart-connected-factory-deploy/alarms-expanded.png#lightbox)
 
@@ -137,7 +137,7 @@ Klicken Sie auf einen der Alarme, wählen Sie in der Dropdownliste **Aktion wäh
 
 Klicken Sie im Bereich mit den Alarmen auf den Graphen, um die Alarmdaten eingehender zu analysieren.
 
-Diese Alarme werden durch Regeln generiert, die in einer Konfigurationsdatei im Solution Accelerator angegeben werden. Mit diesen Regeln können Alarme generiert werden, wenn die OEE- bzw. KPI-Werte oder die Werte des OPC UA-Knotens den konfigurierten Schwellenwert überschreiten.
+Diese Alarme werden durch Regeln generiert, die in einer Konfigurationsdatei im Solution Accelerator angegeben werden. Mit diesen Regeln können Alarme generiert werden, wenn die OEE- bzw. KPI-Werte oder die Werte des OPC UA-Knotens einen Schwellenwert überschreiten. Sie können diesen Schwellenwert festlegen.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

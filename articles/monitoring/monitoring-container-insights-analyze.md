@@ -1,5 +1,5 @@
 ---
-title: Überwachen der Leistung von AKS-Clustern mit Azure Monitor für Container | Microsoft-Dokumentation
+title: Überwachen der Leistung von AKS-Clustern mit Azure Monitor für Container (Vorschau) | Microsoft-Dokumentation
 description: In diesem Artikel wird beschrieben, wie Sie mit Azure Monitor für Container die Leistung analysieren und Daten protokollieren können.
 services: azure-monitor
 documentationcenter: ''
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/19/2018
 ms.author: magoedte
-ms.openlocfilehash: 430145119721ac947162d3b661377290a0ae2c11
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: daec3d6e6cd8e4df3fdfe45fbb8ee98966c8a38e
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49637997"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50214153"
 ---
-# <a name="understand-aks-cluster-performance-with-azure-monitor-for-containers"></a>Verstehen der Leistung von AKS-Clustern mit Azure Monitor für Container
+# <a name="understand-aks-cluster-performance-with-azure-monitor-for-containers-preview"></a>Verstehen der Leistung von AKS-Clustern mit Azure Monitor für Container (Vorschau)
 Das Anzeigen der Leistung von AKS-Clustern (Azure Kubernetes Service) kann mit Azure Monitor für Container in zwei Perspektiven erfolgen, direkt auf einem AKS-Cluster oder für alle AKS-Cluster in einem Abonnement in Azure Monitor. 
 
 Dieser Artikel soll Ihr Verständnis für die Benutzererfahrung in den beiden Perspektiven schärfen und aufzeigen, wie Sie erkannte Probleme schnell bewerten, untersuchen und beheben.

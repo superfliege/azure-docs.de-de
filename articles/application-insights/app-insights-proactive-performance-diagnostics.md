@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 05/04/2017
 ms.reviewer: antonfr
 ms.author: mbullwin
-ms.openlocfilehash: 8c34696f81e40b4db13e6868f6bdaa1b2a8e7a2a
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: b0256e899d47e3b6f8141218c11e1a7a62ca8e1a
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47095462"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50419723"
 ---
 # <a name="smart-detection---performance-anomalies"></a>Intelligente Erkennung – Leistungsabweichungen
 
@@ -47,7 +47,7 @@ Nein, eine Benachrichtigung bedeutet nicht zwingend, dass ein Problem mit Ihrer 
 Die Benachrichtigungen enthalten Diagnoseinformationen. Hier sehen Sie ein Beispiel:
 
 
-![Hier sehen Sie ein Beispiel, in dem eine schlechtere Antwortzeit ermittelt wurde.](./media/app-insights-proactive-diagnostics/server_response_time_degradation.png)
+![Hier sehen Sie ein Beispiel, in dem eine schlechtere Antwortzeit ermittelt wurde.](media/app-insights-proactive-performance-diagnostics/server_response_time_degradation.png)
 
 1. **Eingrenzung**. Diese Benachrichtigung zeigt an, wie viele Benutzer oder wie viele Vorgänge betroffen sind. Dadurch können Sie dem Problem eine Priorität zuweisen.
 2. **Umfang**. Betrifft das Problem den gesamten Datenverkehr oder nur bestimmte Seiten? Ist das Problem auf bestimmte Browser oder Standorte beschränkt? Diese Informationen können Sie der Benachrichtigung entnehmen.
@@ -61,7 +61,7 @@ Die Benachrichtigungen enthalten Diagnoseinformationen. Hier sehen Sie ein Beisp
 
 Benachrichtigungen der intelligenten Erkennung sind standardmäßig aktiviert und werden an Personen gesendet, die über [Besitzer, Mitwirkende und Leser mit Zugriff auf die Application Insights-Ressource](app-insights-resources-roles-access-control.md) verfügen. Um dies zu ändern, klicken Sie in der E-Mail-Benachrichtigung auf **Konfigurieren**, oder öffnen Sie die Einstellungen für die intelligente Erkennung in Application Insights. 
   
-  ![Einstellungen für die intelligente Erkennung](./media/app-insights-proactive-diagnostics/smart_detection_configuration.png)
+  ![Einstellungen für die intelligente Erkennung](media/app-insights-proactive-performance-diagnostics/smart_detection_configuration.png)
   
   * Über den Link **Austragen** in der E-Mail zur intelligenten Erkennung können Sie den Empfang der E-Mail-Benachrichtigungen kündigen.
 
@@ -143,7 +143,7 @@ Moderne Anwendungen verwenden zunehmend den Mikroservices-Entwurfsansatz, der in
 
 Beispiel einer Benachrichtigung über beeinträchtigte Abhängigkeit:
 
-![Hier sehen Sie ein Beispiel, in dem eine beeinträchtigte Abhängigkeitsdauer erkannt wurde.](./media/app-insights-proactive-diagnostics/dependency_duration_degradation.png)
+![Hier sehen Sie ein Beispiel, in dem eine beeinträchtigte Abhängigkeitsdauer erkannt wurde.](media/app-insights-proactive-performance-diagnostics/dependency_duration_degradation.png)
 
 Sie enthält folgende Angaben:
 

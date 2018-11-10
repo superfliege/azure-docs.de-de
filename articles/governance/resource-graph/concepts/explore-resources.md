@@ -4,16 +4,16 @@ description: Hier erfahren Sie, wie Sie mit der Abfragesprache Resource Graph Ih
 services: resource-graph
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 09/18/2018
+ms.date: 10/22/2018
 ms.topic: conceptual
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: f488dfad8a38bbfab3b5b74e5b504463af09c089
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: bcd25b95d1369ef98662384945123126ebbbd70f
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49645931"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50086895"
 ---
 # <a name="explore-your-azure-resources-with-resource-graph"></a>Untersuchen Ihrer Azure-Ressourcen mit Resource Graph
 
@@ -21,7 +21,7 @@ Mit Azure Resource Graph können Sie Ihre Azure-Ressourcen schnell und bedarfsge
 
 ## <a name="explore-virtual-machines"></a>Erkunden von virtuellen Computern
 
-Ein virtueller Computer ist eine typische Ressource in Azure. Als Ressourcentyp haben virtuelle Computer zahlreiche Eigenschaften, die abgefragt werden können. Anhand der einzelnen Eigenschaften kann nach der jeweils gewünschten Ressource gefiltert oder gesucht werden.
+Ein virtueller Computer ist eine typische Ressource in Azure. Als Ressourcentyp verfügen virtuelle Computer über viele Eigenschaften, die abgefragt werden können. Anhand der einzelnen Eigenschaften kann nach der jeweils gewünschten Ressource gefiltert oder gesucht werden.
 
 ### <a name="virtual-machine-discovery"></a>Ermittlung von virtuellen Computern
 
@@ -236,11 +236,11 @@ az graph query -q "where type =~ 'Microsoft.Compute/virtualmachines' and propert
 Search-AzureRmGraph -Query "where type =~ 'Microsoft.Compute/virtualmachines' and properties.hardwareProfile.vmSize == 'Standard_B2s' | extend disk = properties.storageProfile.osDisk.managedDisk | where disk.storageAccountType == 'Premium_LRS' | project disk.id"
 ```
 
-Damit wird eine Liste mit Datenträger-IDs zurückgegeben.
+Das Ergebnis ist eine Liste mit Datenträger-IDs.
 
 ### <a name="managed-disk-discovery"></a>Ermittlung von verwalteten Datenträgern
 
-Mit dem ersten Datensatz aus der vorherigen Abfrage untersuchen wir die Eigenschaften für den verwalteten Datenträger, der dem ersten virtuellen Computer zugeordnet wurde. Die aktualisierte Abfrage wird zum Ändern der Datenträger-ID verwendet.
+Mit dem ersten Datensatz aus der vorherigen Abfrage untersuchen wir die Eigenschaften für den verwalteten Datenträger, der dem ersten virtuellen Computer zugeordnet wurde. Für die aktualisierte Abfrage wird die Datenträger-ID verwendet und der Typ geändert.
 
 Beispielausgabe aus der vorherigen Abfrage:
 
@@ -314,7 +314,7 @@ Die JSON-Ergebnisse sind etwa wie im folgenden Beispiel strukturiert:
 
 ## <a name="explore-virtual-machines-to-find-public-ip-addresses"></a>Erkunden von virtuellen Computern zum Suchen nach öffentlichen IP-Adressen
 
-Mit diesen aus mehreren Schritten bestehenden Abfragen werden zunächst mittels Azure-Befehlszeilenschnittstelle alle mit virtuellen Computern verbundenen Netzwerkschnittstellenressourcen gesucht und gespeichert. Mit der Liste der Netzwerkschnittstellen werden die einzelnen IP-Adressressourcen gesucht, bei denen es sich um öffentliche IP-Adressen handelt. Die entsprechenden Werte werden gespeichert, und schließlich wird eine Liste der tatsächlichen öffentlichen IP-Adressen bereitgestellt.
+Mit diesen Azure CLI-Abfragen werden zuerst alle Netzwerkschnittstellenressourcen gefunden und gespeichert, die mit virtuellen Computern verbunden sind. Anschließend wird die Liste mit den Netzwerkschnittstellen genutzt, um nach den einzelnen IP-Adressressourcen zu suchen, bei denen es sich um eine öffentliche IP-Adresse handelt. Diese Werte werden dann gespeichert. Abschließend wird eine Liste mit den öffentlichen IP-Adressen bereitgestellt.
 
 ```azurecli-interactive
 # Use Resource Graph to get all NICs and store in the 'nic' variable
@@ -324,7 +324,7 @@ az graph query -q "where type =~ 'Microsoft.Compute/virtualMachines' | project n
 cat nics.txt
 ```
 
-Sobald wir die Datei `nics.txt` vorliegen haben, verwenden wir sie in der nächsten Abfrage zum Abrufen der Details der entsprechenden Netzwerkschnittstellenressourcen, denen eine öffentliche IP-Adresse zugeordnet ist.
+Verwenden Sie die Datei `nics.txt` in der nächsten Abfrage zum Abrufen der Details der entsprechenden Netzwerkschnittstellenressourcen, denen eine öffentliche IP-Adresse zugeordnet ist.
 
 ```azurecli-interactive
 # Use Resource Graph with the 'nics.txt' file to get all related public IP addresses and store in 'publicIp.txt' file

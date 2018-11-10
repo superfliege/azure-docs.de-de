@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Regelmäßiges Sichern und Wiederherstellen in Azure Service Fabric (Vorschauversion) | Microsoft-Dokumentation'
+title: Regelmäßiges Sichern und Wiederherstellen in Azure Service Fabric (Vorschau) | Microsoft-Dokumentation
 description: Verwenden Sie das Feature für regelmäßige Sicherungen und Wiederherstellungen von Service Fabric, um eine regelmäßige Datensicherung Ihrer Anwendungsdaten zu ermöglichen.
 services: service-fabric
 documentationcenter: .net
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/04/2018
 ms.author: hrushib
-ms.openlocfilehash: 50ee0d91b27805e4db785e5df211660900333e7f
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: ef92212b84496802dc2464498a0b6789f79a729b
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38990298"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51246700"
 ---
-# <a name="quickstart-periodic-backup-and-restore-in-azure-service-fabric-preview"></a>Schnellstart: Regelmäßiges Sichern und Wiederherstellen in Azure Service Fabric (Vorschauversion)
+# <a name="periodic-backup-and-restore-in-azure-service-fabric-preview"></a>Regelmäßiges Sichern und Wiederherstellen in Azure Service Fabric (Vorschau)
 > [!div class="op_single_selector"]
 > * [Cluster in Azure](service-fabric-backuprestoreservice-quickstart-azurecluster.md) 
 > * [Eigenständige Cluster](service-fabric-backuprestoreservice-quickstart-standalonecluster.md)

@@ -1,29 +1,29 @@
 ---
-title: Failover und Failback von Hyper-V-VMs, die mit Site Recovery in Azure repliziert werden | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie ein Failover für Hyper-V-VMs zu Azure und ein Failback zum lokalen Standort mit Azure Site Recovery durchführen.
+title: Ausführen eines Failovers und Failbacks für virtuelle Hyper-V-Computer während der Notfallwiederherstellung in Azure mit Azure Site Recovery | Microsoft-Dokumentation
+description: Hier erhalten Sie Informationen zum Ausführen eines Failovers und Failbacks für virtuelle Hyper-V-Computer während der Notfallwiederherstellung in Azure mit dem Azure Site Recovery-Dienst.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 10/10/2018
+ms.date: 10/28/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 31de654e6746cecf5aedabbfe481ab99b2aa3510
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 6dde345e360dc304578b626ee2678dd51fe56dc6
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49076982"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50210515"
 ---
-# <a name="failover-and-failback-hyper-v-vms-replicated-to-azure"></a>Failover und Failback von Hyper-V-VMs, die in Azure repliziert werden
+# <a name="fail-over-and-fail-back-hyper-v-vms-replicated-to-azure"></a>Failover und Failback von Hyper-V-VMs, die in Azure repliziert werden
 
 In diesem Tutorial wird das Ausführen eines Failovers einer Hyper-V-VM zu Azure beschrieben. Nach dem Failover erfolgt ein Failback zum lokalen Standort, wenn er verfügbar ist. In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
 > * Überprüfen der Hyper-V-VM-Eigenschaften zum Feststellen der Konformität mit Azure-Anforderungen
 > * Ausführen eines Failovers auf Azure
-> * Failback von Azure zu lokal
+> * Failback von Azure zum lokalen Standort
 > * Umgekehrtes Replizieren von lokalen VMs, um das erneute Replizieren nach Azure zu starten
 
 Dies ist das fünfte Tutorial in einer Reihe. Es wird davon ausgegangen, dass Sie bereits die Aufgaben in den vorherigen Tutorials durchgearbeitet haben.    

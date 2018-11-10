@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 57446f068945d74351a77f21e16874d9e24ddcab
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: e8a09a9fc87bff692b5d5b4c54f87839f2591b63
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48801929"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50086946"
 ---
 # <a name="how-to-configure-password-writeback"></a>Vorgehensweise: Konfigurieren des Kennwortrückschreibens
 
@@ -74,11 +74,12 @@ Um die entsprechenden Berechtigungen für das Kennwortrückschreiben einzurichte
 5. Wählen Sie das Konto aus, dem Berechtigungen zugewiesen werden sollen (vom Azure AD Connect-Setup).
 6. Wählen Sie in der Dropdownliste **Gilt für** den Eintrag **Nachfolgerbenutzerobjekte** aus.
 7. Aktivieren Sie unter **Berechtigungen** die Kontrollkästchen für folgende Optionen:
-    * **Zurücksetzen des Kennworts**
     * **Kennwort ändern**
+    * **Zurücksetzen des Kennworts**
+8. Aktivieren Sie unter **Eigenschaften** die Kontrollkästchen für folgende Optionen:
     * **lockoutTime schreiben**
     * **pwdLastSet schreiben**
-8. Wählen Sie auf **Übernehmen/OK** aus, um die Änderungen zu übernehmen und alle geöffneten Dialogfelder zu schließen.
+9. Wählen Sie auf **Übernehmen/OK** aus, um die Änderungen zu übernehmen und alle geöffneten Dialogfelder zu schließen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

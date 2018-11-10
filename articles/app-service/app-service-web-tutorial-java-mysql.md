@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/22/2017
 ms.author: bbenz
 ms.custom: mvc
-ms.openlocfilehash: db1005bbce25b0fa3fec76e6f9428a4cdd6fa4aa
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: ec942d97e7671c0477d8d723afacb06b73565c1c
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50024374"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50414556"
 ---
 # <a name="tutorial-build-a-java-and-mysql-web-app-in-azure"></a>Tutorial: Erstellen einer Java- und MySQL-Web-App in Azure
 
@@ -47,7 +47,7 @@ In diesem Tutorial lernen Sie Folgendes:
 ## <a name="prerequisites"></a>Voraussetzungen
 
 1. [Herunterladen und Installieren von Git](https://git-scm.com/)
-1. [Herunterladen und Installieren von Java 7 JDK oder höher](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
+1. [Herunterladen und Installieren des Java JDK](https://aka.ms/azure-jdks)
 1. [Herunterladen, Installieren und Starten von MySQL](https://dev.mysql.com/doc/refman/5.7/en/installing.html) 
 
 ## <a name="prepare-local-mysql"></a>Vorbereiten der lokalen MySQL-Instanz 
@@ -272,7 +272,7 @@ Wenn die Web-App-Definition fertig ist, zeigt die Azure CLI Informationen wie im
 
 Richten Sie in Cloud Shell mit dem Befehl [`az webapp config set`](/cli/azure/webapp/config#az-webapp-config-set) die für Ihre App erforderliche Java-Laufzeitkonfiguration ein.
 
-Der folgende Befehl konfiguriert die Web-App für die Ausführung mit einer aktuellen Java 8 JDK-Version und [Apache Tomcat](http://tomcat.apache.org/) 8.0.
+Der folgende Befehl konfiguriert die Web-App für die Ausführung mit einer aktuellen [Java 8 JDK-Version](https://aka.ms/azure-jdks) und [Apache Tomcat 8.0](http://tomcat.apache.org/).
 
 ```azurecli-interactive
 az webapp config set --name <app_name> --resource-group myResourceGroup --java-version 1.8 --java-container Tomcat --java-container-version 8.0

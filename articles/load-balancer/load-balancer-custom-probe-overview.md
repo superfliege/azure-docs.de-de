@@ -4,10 +4,6 @@ description: Erfahren Sie, wie Sie Integritätstests verwenden, um Instanzen hin
 services: load-balancer
 documentationcenter: na
 author: KumudD
-manager: timlt
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 46b152c5-6a27-4bfc-bea3-05de9ce06a57
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -15,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/04/2018
 ms.author: kumud
-ms.openlocfilehash: ecc33fc6078dac4affe3942f1be7e039ae9e9e70
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 134c7ab8156f3acb558e8b8a2da343961a6aad4e
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43695424"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50419332"
 ---
 # <a name="load-balancer-health-probes"></a>Lastenausgleichs-Integritätstests
 
@@ -95,7 +91,7 @@ Wenn Sie Cloud Services verwenden und über Webrollen verfügen, die „w3wp.exe
 
 HTTP-/HTTPS-Tests führen in folgenden Fällen zu Fehlern:
 * Der Testendpunkt gibt einen anderen HTTP-Antwortcode als 200 zurück (z.B. 403, 404 oder 500). Dadurch wird der Integritätstest sofort als offline gekennzeichnet. 
-* Der Testendpunkt reagiert während eines Zeitlimits von 31 Sekunden gar nicht. Je nach dem festgelegten Timeoutwert können mehrere Testanforderungen unbeantwortet bleiben, bevor der Test als nicht ausgeführt markiert wird (d. h. bevor SuccessFailCount-Tests gesendet werden).
+* Der Testendpunkt reagiert während des Zeitlimits von 31 Sekunden gar nicht. Je nach dem festgelegten Timeoutwert können mehrere Testanforderungen unbeantwortet bleiben, bevor der Test als nicht ausgeführt markiert wird (d. h. bevor SuccessFailCount-Tests gesendet werden).
 * Der Testendpunkt schließt die Verbindung über ein TCP-Reset.
 
 #### <a name="resource-manager-templates"></a>Resource Manager-Vorlagen

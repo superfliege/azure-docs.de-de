@@ -3,8 +3,8 @@ title: Voraussetzungen für OpenShift in Azure | Microsoft-Dokumentation
 description: Voraussetzungen für die Bereitstellung von OpenShift in Azure.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: haroldw
-manager: najoshi
+author: haroldwongms
+manager: joraio
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -15,32 +15,32 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: ''
 ms.author: haroldw
-ms.openlocfilehash: 36271116d697e5ee6c6ed08d5fdc6063a511e820
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: fd20fe880ae77992e5eadb5f2b581d3f5b53f86e
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46984335"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50085872"
 ---
 # <a name="common-prerequisites-for-deploying-openshift-in-azure"></a>Allgemeine Voraussetzungen für die Bereitstellung von OpenShift in Azure
 
-In diesem Artikel werden allgemeine Voraussetzungen zum Bereitstellen von OpenShift Origin oder OpenShift Container Platform in Azure beschrieben.
+In diesem Artikel werden allgemeine Voraussetzungen für die Bereitstellung von OpenShift Container Platform oder OKD in Azure beschrieben.
 
 Die Installation von OpenShift verwendet Ansible-Playbooks. Ansible stellt die Verbindung zu allen Clusterhosts über Secure Shell (SSH) her, um die Installationsschritte abzuschließen.
 
-Beim Initiieren der SSH-Verbindung mit den Remotehosts können Sie kein Kennwort eingeben. Daher darf dem privaten Schlüssel kein Kennwort zugeordnet sein. Andernfalls ist die Bereitstellung nicht erfolgreich.
+Beim Initiieren der SSH-Verbindung mit den Remotehosts kann Ansible kein Kennwort eingeben. Daher darf dem privaten Schlüssel kein Kennwort (Passphrase) zugeordnet sein. Andernfalls ist die Bereitstellung nicht erfolgreich.
 
 Da die virtuellen Computer (VMs) über Azure Resource Manager-Vorlagen bereitgestellt werden, wird der gleiche öffentliche Schlüssel für den Zugriff auf alle virtuellen Computer verwendet. Sie müssen den entsprechenden privaten Schlüssel in den virtuellen Computer einschließen, der auch alle Playbooks ausführt. Aus Sicherheitsgründen verwenden Sie Azure Key Vault, um den privaten Schlüssel an den virtuellen Computer zu übergeben.
 
-Wenn für Container beständiger Speicher benötigt wird, sind persistente Volumes erforderlich. OpenShift unterstützt hierfür virtuelle Azure-Festplatten (VHDs), dazu muss Azure jedoch zunächst als Cloudanbieter konfiguriert werden. 
+Wenn für Container beständiger Speicher benötigt wird, sind persistente Volumes erforderlich. OpenShift unterstützt hierfür virtuelle Azure-Festplatten (VHDs), dazu muss Azure jedoch zunächst als Cloudanbieter konfiguriert werden.
 
 In diesem Modell führt OpenShift folgende Schritte durch:
 
-- Erstellen eines VHD-Objekts in einem Azure Storage-Konto
+- Erstellen eines VHD-Objekts in einem Azure Storage-Konto oder auf einem verwalteten Datenträger
 - Einbinden der VHD in einen virtuellen Computer und Formatieren des Volumes
 - Einbinden des Volumes in den Pod
 
-Damit diese Konfiguration funktioniert, benötigt OpenShift Berechtigungen, um diese Aufgaben in Azure ausführen zu können. Dies erreichen Sie mit einem Dienstprinzipal. Der Dienstprinzipal ist ein Sicherheitskonto in Azure Active Directory, dem Berechtigungen für Ressourcen gewährt werden.
+Damit diese Konfiguration funktioniert, muss OpenShift zur Durchführung dieser Aufgaben in Azure berechtigt sein. Dies erreichen Sie mit einem Dienstprinzipal. Der Dienstprinzipal ist ein Sicherheitskonto in Azure Active Directory, dem Berechtigungen für Ressourcen gewährt werden.
 
 Der Dienstprinzipal benötigt Zugriff auf die Speicherkonten und virtuellen Computer, die den Cluster bilden. Wenn alle OpenShift-Clusterressourcen in einer einzelnen Ressourcengruppe bereitgestellt werden, können dem Dienstprinzipal Berechtigungen für diese Ressourcengruppe gewährt werden.
 
@@ -48,7 +48,7 @@ In diesem Leitfaden erfahren Sie, wie Sie die Artefakte für die Voraussetzungen
 
 > [!div class="checklist"]
 > * Erstellen Sie einen Schlüsseltresor (Key Vault) zum Verwalten von SSH-Schlüsseln für den OpenShift-Cluster.
-> * Erstellen Sie einen Dienstprinzipal für Azure Cloud Solution Provider.
+> * Erstellen Sie einen Dienstprinzipal für den Azure-Cloudanbieter.
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
@@ -60,7 +60,7 @@ az login
 ```
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
-Erstellen Sie mit dem Befehl [az group create](/cli/azure/group#az_group_create) eine Ressourcengruppe. Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. Sie verwenden eine dedizierte Ressourcengruppe zum Hosten des Schlüsseltresors. Diese Gruppe ist von der Ressourcengruppe getrennt, in der die OpenShift-Clusterressourcen bereitgestellt werden. 
+Erstellen Sie mit dem Befehl [az group create](/cli/azure/group#az_group_create) eine Ressourcengruppe. Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. Es empfiehlt sich, zum Hosten des Schlüsseltresors eine dedizierte Ressourcengruppe zu verwenden. Diese Gruppe ist von der Ressourcengruppe getrennt, in der die OpenShift-Clusterressourcen bereitgestellt werden.
 
 Im folgenden Beispiel wird eine Ressourcengruppe namens *keyvaultrg* am Standort *eastus* erstellt:
 
@@ -80,16 +80,16 @@ az keyvault create --resource-group keyvaultrg --name keyvault \
 ```
 
 ## <a name="create-an-ssh-key"></a>Erstellen eines SSH-Schlüssels 
-Ein SSH-Schlüssel ist erforderlich, um den Zugriff auf den OpenShift Origin-Cluster sicherzustellen. Erstellen Sie mithilfe des Befehls `ssh-keygen` (Linux oder Mac OS) ein SSH-Schlüsselpaar:
+Ein SSH-Schlüssel ist erforderlich, um den Zugriff auf den OpenShift-Cluster zu schützen. Erstellen Sie mithilfe des Befehls `ssh-keygen` (Linux oder Mac OS) ein SSH-Schlüsselpaar:
  
  ```bash
 ssh-keygen -f ~/.ssh/openshift_rsa -t rsa -N ''
 ```
 
 > [!NOTE]
-> Der SSH-Schlüsselpaar darf kein Kennwort enthalten.
+> Ihr SSH-Schlüsselpaar darf kein Kennwort/keine Passphrase enthalten.
 
-Weitere Informationen zu SSH-Schlüsseln unter Windows finden Sie unter [Verwenden von SSH-Schlüsseln in Windows](/azure/virtual-machines/linux/ssh-from-windows).
+Weitere Informationen zu SSH-Schlüsseln unter Windows finden Sie unter [Verwenden von SSH-Schlüsseln in Windows](/azure/virtual-machines/linux/ssh-from-windows). Exportieren Sie den privaten Schlüssel im OpenSSH-Format.
 
 ## <a name="store-the-ssh-private-key-in-azure-key-vault"></a>Speichern des privaten SSH-Schlüssels in Azure Key Vault
 Die OpenShift-Bereitstellung verwendet den erstellten SSH-Schlüssel zum Sicherstellen des Zugriffs auf den OpenShift-Master. Damit die Bereitstellung den SSH-Schlüssel sicher abrufen kann, speichern Sie den Schlüssel im Key Vault. Verwenden Sie hierzu den folgenden Befehl:
@@ -103,18 +103,29 @@ OpenShift kommuniziert mit Azure unter Verwendung von Benutzername und Kennwort 
 
 Erstellen Sie mit [az ad sp create-for-rbac](/cli/azure/ad/sp#az_ad_sp_create_for_rbac) einen Dienstprinzipal, und geben Sie die Anmeldeinformationen aus, die OpenShift benötigt.
 
-Im folgenden Beispiel wird ein Dienstprinzipal erstellt, mit Berechtigungen vom Typ „Mitwirkender“ ausgestattet und einer Ressourcengruppe namens „myResourceGroup“ zugewiesen. Führen Sie ```az group show --name myResourceGroup --query id``` unter Windows separat aus, und verwenden Sie die Ausgabe in der Option „--scopes“.
+Im folgenden Beispiel wird ein Dienstprinzipal erstellt und mit Berechtigungen vom Typ „Mitwirkender“ für eine Ressourcengruppe namens „openshiftrg“ ausgestattet.
+Verwenden Sie die Ausgabe als Feed für die Option „--scopes“.
+
+Erstellen Sie zunächst die Ressourcengruppe „openshiftrg“:
 
 ```azurecli
-az ad sp create-for-rbac --name openshiftsp \
-          --role Contributor --password {Strong Password} \
-          --scopes $(az group show --name myResourceGroup --query id)
+az group create -l eastus -n openshiftrg
 ```
+
+Erstellen Sie den Dienstprinzipal:
+
+```azurecli
+scope=`az group show --name openshiftrg --query id`
+az ad sp create-for-rbac --name openshiftsp \
+      --role Contributor --password {Strong Password} \
+      --scopes $scope
+```
+Falls Sie Windows verwenden, führen Sie ```az group show --name openshiftrg --query id``` aus, und verwenden Sie die Ausgabe anstelle von „$scope“.
 
 Notieren Sie die „appId“-Eigenschaft, die der Befehl zurückgibt:
 ```json
 {
-  "appId": "11111111-abcd-1234-efgh-111111111111",            
+  "appId": "11111111-abcd-1234-efgh-111111111111",
   "displayName": "openshiftsp",
   "name": "http://openshiftsp",
   "password": {Strong Password},
@@ -135,6 +146,5 @@ In diesem Artikel wurden folgende Themen behandelt:
 
 Als Nächstes können Sie einen OpenShift-Cluster bereitstellen:
 
-- [Bereitstellen von OpenShift Origin](./openshift-origin.md)
 - [Bereitstellen von OpenShift Container Platform](./openshift-container-platform.md)
-
+- [Bereitstellen von OKD](./openshift-okd.md)

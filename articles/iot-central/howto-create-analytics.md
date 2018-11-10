@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: bf86e769aff4a9b03d5df1b1aef702814c605fa4
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: c170f573a473d3fdfca5c916b4be594dc93d6b27
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46368085"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50156322"
 ---
 # <a name="how-to-use-analytics-to-analyze-your-device-data"></a>Gewusst wie: Analysieren von Gerätedaten durch Analysen
 
@@ -21,7 +21,7 @@ ms.locfileid: "46368085"
 *Dieser Artikel gilt für Betreiber, Ersteller und Administratoren.*
 
 
-Microsoft Azure IoT Central stellt umfassende Analysefunktionen bereit, um große Mengen an Daten von Ihren Geräten zu verarbeiten. Um zu beginnen, wechseln Sie im links angezeigten Navigationsmenü zu **Analyse**. 
+Azure IoT Central stellt umfassende Analysefunktionen bereit, um große Mengen an Daten von Ihren Geräten zu verarbeiten. Um zu beginnen, wechseln Sie im links angezeigten Navigationsmenü zu **Analyse**. 
 
   ![Navigation zu „Analyse“ in IoT Central](media\howto-create-analytics\analytics-navigation.png)
 
@@ -60,7 +60,7 @@ to-do: confirm if 10 is the max number of measurements
 
 Es gibt verschiedene Möglichkeiten, Ihre Abfrageergebnisse weiter zu verändern, damit sie Ihren Visualisierungsanforderungen entsprechen. Sie können zwischen einer Diagramm- und einer Tabellenansicht wechseln, die Anzeige vergrößern oder verkleinern, Ihr Dataset aktualisieren und die Anzeige der Zeilen ändern.
 
-* **Raster anzeigen**: Ihre Ergebnisse werden im Tabellenformat zur Verfügung gestellt, damit Sie den spezifischen Wert für jeden Datenpunkt anzeigen können. Diese Ansicht erfüllt außerdem die Standards der Barrierefreiheit. 
+* **Raster anzeigen**: Ihre Ergebnisse werden in einem Tabellenformat zur Verfügung gestellt, damit Sie den spezifischen Wert für jeden Datenpunkt anzeigen können. Diese Ansicht erfüllt außerdem die Standards der Barrierefreiheit. 
 * **Diagramm anzeigen**: Ihre Ergebnisse werden in Form von Linien angezeigt, um Aufwärts-/Abwärtstrends und Anomalien leicht erkennbar zu machen. 
 
  ![Rasteransicht für Ihre Analyse](media\howto-create-analytics\analytics-showgrid.png)

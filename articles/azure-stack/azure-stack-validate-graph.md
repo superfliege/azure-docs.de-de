@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 10/22/2018
 ms.author: patricka
 ms.reviewer: jerskine
-ms.openlocfilehash: e1c1ba0a065a20874bf51d7464cbcfdfa13a571d
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 43f30989fa09e711fc71941e7722dcd195212472
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49946877"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50416230"
 ---
 # <a name="validate-graph-integration-for-azure-stack"></a>Überprüfen der Graph-Integration für Azure Stack
 
-Verwenden Sie das Tool Azure Stack Readiness Checker (AzsReadinessChecker), um zu überprüfen, ob Ihre Umgebung für die Graph-Integration in Azure Stack verwendet werden kann. Sie sollten die Graph-Integration überprüfen, bevor Sie mit der Integration von Rechenzentren oder mit einer Azure Stack-Bereitstellung beginnen.
+Verwenden Sie das Tool Azure Stack Readiness Checker (AzsReadinessChecker), um zu überprüfen, ob Ihre Umgebung für die Graph-Integration in Azure Stack verwendet werden kann. Überprüfen Sie die Graph-Integration, bevor Sie mit der Integration von Rechenzentren oder mit einer Azure Stack-Bereitstellung beginnen.
 
 Bei der Überprüfung der Bereitschaft wird Folgendes geprüft:
 
@@ -37,7 +37,7 @@ Weitere Informationen zur Rechenzentrumsintegration mit Azure Stack finden Sie u
 
 ## <a name="get-the-readiness-checker-tool"></a>Beziehen des Tools zur Bereitschaftsüberprüfung
 
-Laden Sie die neueste Version des Tools Azure Stack Readiness Checker (AzsReadinessChecker) über [PSGallery](https://aka.ms/AzsReadinessChecker) herunter.
+Laden Sie die neueste Version des Tools Azure Stack Readiness Checker (AzsReadinessChecker) aus dem [PowerShell-Katalog](https://aka.ms/AzsReadinessChecker) herunter.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -46,31 +46,31 @@ Die folgenden Voraussetzungen müssen erfüllt werden:
 **Auf dem Computer, auf dem das Tool ausgeführt wird, muss Folgendes installiert sein**:
 
 * Windows 10 oder Windows Server 2016 mit Domänenkonnektivität
-* PowerShell 5.1 oder höher Um Ihre Version zu überprüfen, führen Sie den folgenden PowerShell-CMD-Befehl aus, und überprüfen Sie dann die *Hauptversion* und die *Nebenversionen*:  
+* PowerShell 5.1 oder höher Um Ihre Version zu überprüfen, führen Sie den folgenden PowerShell-Befehl aus, und überprüfen Sie dann die *Hauptversion* und die *Nebenversionen*:  
    > `$PSVersionTable.PSVersion`
-* Active Directory-PowerShell-Modul
-* Die neueste Version des Tools [Microsoft Azure Stack Readiness Checker](https://aka.ms/AzsReadinessChecker)
+* Active Directory-PowerShell-Modul.
+* Die neueste Version des Tools [Microsoft Azure Stack Readiness Checker](https://aka.ms/AzsReadinessChecker).
 
 **Active Directory-Umgebung:**
 
-* Angabe des Benutzernamens und Kennworts für ein Konto für den Graph-Dienst im vorhandenen Active Directory
+* Angabe des Benutzernamens und Kennworts für ein Konto für den Graph-Dienst in der vorhandenen Active Directory-Instanz
 * Angabe des FQDN der Stammdomäne der Active Directory-Gesamtstruktur
 
-## <a name="validate-graph"></a>Überprüfen von Graph
+## <a name="validate-the-graph-service"></a>Überprüfen des Graph-Diensts
 
-1. Öffnen Sie auf einem Computer, der die Voraussetzungen erfüllt, eine administrative PowerShell-Eingabeaufforderung, und führen Sie den folgenden Befehl zum Installieren von AzsReadinessChecker aus.
+1. Öffnen Sie auf einem Computer, der die Voraussetzungen erfüllt, eine administrative PowerShell-Eingabeaufforderung, und führen Sie den folgenden Befehl zum Installieren von AzsReadinessChecker aus:
 
      `Install-Module Microsoft.AzureStack.ReadinessChecker -Force`
 
-1. Führen Sie an der PowerShell-Eingabeaufforderung Folgendes aus, um die Variable *$graphCredential* auf das Graph-Konto festzulegen. Ersetzen Sie `contoso\graphservice` durch Ihr Konto im Format `domain\username`.
+1. Führen Sie an der PowerShell-Eingabeaufforderung den folgenden Befehl aus, um die Variable *$graphCredential* im Graph-Konto festzulegen. Ersetzen Sie `contoso\graphservice` durch Ihr Konto im Format `domain\username`.
 
     `$graphCredential = Get-Credential contoso\graphservice -Message "Enter Credentials for the Graph Service Account"`
 
-1. Führen Sie an der PowerShell-Eingabeaufforderung Folgendes aus, um die Validierung für Graph zu starten. Geben Sie den Wert für **-ForestFQDN** als den FQDN der Gesamtstruktur-Stammdomäne an:
+1. Führen Sie an der PowerShell-Eingabeaufforderung den folgenden Befehl aus, um die Validierung für den Graph-Dienst zu starten. Geben Sie den Wert für **-ForestFQDN** als den FQDN der Gesamtstruktur-Stammdomäne an.
 
      `Invoke-AzsGraphValidation -ForestFQDN contoso.com -Credential $graphCredential`
 
-1. Wenn das Tool ausgeführt wird, überprüfen Sie die Ausgabe. Vergewissern Sie sich, dass der Status für die Anforderungen an die Graph-Integration „OK“ lautet. Eine erfolgreiche Validierung wird etwa wie folgt angezeigt:
+1. Wenn das Tool ausgeführt wird, überprüfen Sie die Ausgabe. Vergewissern Sie sich, dass der Status für die Anforderungen an die Graph-Integration „OK“ lautet. Eine erfolgreiche Validierung ähnelt dem folgenden Beispiel:
 
     ```
     Testing Graph Integration (v1.0)
@@ -94,7 +94,7 @@ Die folgenden Voraussetzungen müssen erfüllt werden:
     Invoke-AzsGraphValidation Completed
     ```
 
-In Produktionsumgebungen ist das Testen der Netzwerkverbindung von der Arbeitsstation eines Operators aus nicht hinreichend für die für Azure Stack verfügbare Verbindung. Das Netzwerk mit öffentlicher VIP des Azure Stack-Stempels benötigt die Verbindung, damit die Identitätsintegration durch LDAP-Datenverkehr erfolgen kann.
+In Produktionsumgebungen ist das Testen der Netzwerkverbindung von der Arbeitsstation eines Operators aus nicht ausreichend für die für Azure Stack verfügbare Verbindung. Das Netzwerk mit öffentlicher VIP des Azure Stack-Stempels benötigt die Verbindung, damit die Identitätsintegration durch LDAP-Datenverkehr erfolgen kann.
 
 ## <a name="report-and-log-file"></a>Berichts- und Protokolldatei
 
@@ -106,12 +106,12 @@ Standardmäßig werden beide Dateien in `C:\Users\<username>\AppData\Local\Temp\
 
 Verwendung:
 
-* Parameter **-OutputPath** *Pfad* am Ende der Befehlszeilenausführung zum Angeben eines anderen Berichtsspeicherorts.
-* Parameter **-CleanReport** am Ende der Befehlszeilenausführung zum Löschen der Datei *AzsReadinessCheckerReport.json* nach früheren Ausführungen des Tools. Weitere Informationen finden Sie unter [Azure Stack-Überprüfungsbericht](azure-stack-validation-report.md).
+* **-OutputPath:** *path*-Parameter am Ende der Befehlsausführung zum Angeben eines anderen Berichtsspeicherorts.
+* **-CleanReport:** Parameter am Ende der Befehlszeilenausführung zum Löschen von *AzsReadinessCheckerReport.json* nach früheren Ausführungen des Tools. Weitere Informationen finden Sie unter [Azure Stack-Überprüfungsbericht](azure-stack-validation-report.md).
 
 ## <a name="validation-failures"></a>Fehler bei der Überprüfung
 
-Wenn bei der Überprüfung Fehler auftreten, werden Details zum Fehler im PowerShell-Fenster angezeigt. Das Tool protokolliert Informationen außerdem in der Datei *AzsGraphIntegration.log*.
+Wenn bei der Überprüfung Fehler auftreten, werden im PowerShell-Fenster Details zum Fehler angezeigt. Das Tool protokolliert Informationen außerdem in *AzsGraphIntegration.log*.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

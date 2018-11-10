@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/17/2018
 ms.author: spelluru
-ms.openlocfilehash: fd43c62f1a291a59d5d373437a49b263d6af4cb3
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 6f9b85ec4821ff2454970136b3c8af2cb0f92154
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39345887"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50140822"
 ---
 # <a name="manage-lab-accounts-in-azure-lab-services"></a>Verwalten von Lab-Konten in Azure Lab Services 
 In Azure Lab Services ist ein Lab-Konto ein Container für verwaltete Labs (beispielsweise Classroom-Labs). Ein Administrator richtet ein Lab-Konto mit Azure Lab Services ein und gewährt Lab-Besitzern Zugriff, sodass sie Labs unter dem Konto erstellen können. In diesem Artikel erfahren Sie, wie Sie ein Lab-Konto erstellen, alle Lab-Konten anzeigen oder ein Lab-Konto löschen.
@@ -90,6 +90,28 @@ Befolgen Sie die Anleitung im vorherigen Abschnitt, um Lab-Konten in einer Liste
 2. Klicken Sie auf der Symbolleiste auf **Löschen**. 
 3. Geben Sie zur Bestätigung **Ja** ein.
 4. Klicken Sie auf **Löschen**. 
+
+## <a name="view-and-manage-labs-in-the-lab-account"></a>Anzeigen und Verwalten von Labs im Labkonto
+
+1. Wählen Sie auf der Seite **Labkonto** im Menü auf der linken Seite die Option **Labs**.
+
+    ![Labs im Konto](../media/how-to-manage-lab-accounts/labs-in-account.png)
+1. Im Konto wird eine **Liste mit Labs** mit den folgenden Informationen angezeigt: 
+    1. Name des Labs
+    2. Datum, an dem das Lab erstellt wurde 
+    3. E-Mail-Adresse des Benutzers, der das Lab erstellt hat 
+    4. Maximale Anzahl von Benutzern, die für das Lab zulässig ist 
+    5. Status des Labs 
+
+## <a name="delete-a-lab-in-the-lab-account"></a>Löschen eines Labs im Labkonto
+Befolgen Sie die Anleitung im vorherigen Abschnitt, um im Labkonto eine Liste mit den Labs anzuzeigen.
+
+1. Wählen Sie **...** (Auslassungszeichen) und dann **Löschen**. 
+
+    ![Lab löschen – Schaltfläche](../media/how-to-manage-lab-accounts/delete-lab-button.png)
+2. Wählen Sie in der Warnmeldung die Option **Ja**. 
+
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 Machen Sie sich mit der Einrichtung eines Labs mit Azure Lab Services vertraut:

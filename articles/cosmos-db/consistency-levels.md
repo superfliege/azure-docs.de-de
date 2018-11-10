@@ -11,130 +11,84 @@ ms.topic: conceptual
 ms.date: 03/27/2018
 ms.author: andrl
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8d95790dc09f6d26c6ae749ed0cd386053c5cb35
-ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
+ms.openlocfilehash: 5cb439f7fe6461fcef0d010535179e16e28c294a
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "42139849"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50239168"
 ---
-# <a name="tunable-data-consistency-levels-in-azure-cosmos-db"></a>Einstellbare Datenkonsistenzebenen in Azure Cosmos DB
-Azure Cosmos DB ist für jedes Datenmodell von Grund auf im Hinblick auf eine globale Verteilung konzipiert. Es bietet planbare Garantien für geringe Wartezeiten sowie mehrere klar definierte gelockerte Konsistenzmodelle. Azure Cosmos DB bietet derzeit fünf Konsistenzebenen: Stark, Begrenzte Veraltung, Sitzung, Konsistentes Präfix und Letztlich. „Begrenzte Veraltung“, „Sitzung“, „Präfixkonsistenz“ und „Letztlich“ werden als gelockerte Konsistenzmodelle bezeichnet, da sie weniger Konsistenz bieten als „Stark“ (das Modell mit der höchstmöglichen Konsistenz). 
+# <a name="consistency-levels-in-azure-cosmos-db"></a>Konsistenzebenen in Azure Cosmos DB
 
-Neben den Konsistenzmodellen **Stark** und **Letztlich**, die bei verteilten Datenbanken üblich sind, bietet Azure Cosmos DB drei weitere sorgfältig programmierte und operationalisierte Modelle: **Begrenzte Veraltung**, **Sitzung** und **Präfixkonsistenz**. Der Nutzen dieser Konsistenzebenen hat sich jeweils im Rahmen von praktischen Anwendungsfällen bestätigt. Diese fünf Konsistenzebenen ermöglichen Ihnen, fundierte Kompromisse zwischen Konsistenz, Verfügbarkeit und Latenz zu finden. 
+Verteilte Datenbanken, die auf Replikation angewiesen sind, um Hochverfügbarkeit, niedrige Latenzzeiten oder beides sicherzustellen, bilden den grundlegenden Kompromiss zwischen Lesekonsistenz und Verfügbarkeit, Latenz sowie Durchsatz. Die meisten kommerziell verfügbaren verteilten Datenbanken verlangen von Entwicklern, dass sie zwischen den beiden extremen Konsistenzmodellen wählen: starke Konsistenz und letztliche Konsistenz. Die  [Linearisierbarkeit](http://cs.brown.edu/~mph/HerlihyW90/p463-herlihy.pdf) bzw. starke Konsistenz ist zwar das Nonplusultra in Sachen Datenprogrammierbarkeit, sie wird jedoch durch hohe Latenzen (im stabilen Zustand) und durch geringere Verfügbarkeit (im Falle eines Ausfalls) teuer erkauft. Auf der anderen Seite bietet die letztliche Konsistenz eine höhere Verfügbarkeit und bessere Leistung, erschwert aber die Programmierung ganz erheblich.
 
-Im folgenden Video zeigt Azure Cosmos DB-Programm-Manager Andrew Liu die sofort verwendbaren globalen Verteilungsfeatures.
+Cosmos DB bietet für die Datenkonsistenz nicht nur diese beiden Extreme, sondern ein ganzes Spektrum von Auswahlmöglichkeiten. Die starke und die letztliche Konsistenz bilden die beiden Enden des Spektrums, und dazwischen gibt es eine Reihe weiterer Konsistenzoptionen. Diese Konsistenzoptionen ermöglichen es Entwicklern, präzise Entscheidungen zu treffen, und bieten differenziertere Kompromisse hinsichtlich Hochverfügbarkeit und Leistung. Mit Cosmos DB können Entwickler zwischen fünf klar definierten Konsistenzmodellen aus dem gesamten Konsistenzspektrum wählen. Diese sind (von der stärksten bis zur schwächsten Option): **starke Konsistenz**, **begrenzte Veraltung**, **Sitzungskonsistenz**, **Präfixkonsistenz** und **letztliche Konsistenz**. Jedes dieser Konsistenzmodelle ist klar definiert, intuitiv und kann für spezifische reale Szenarien verwendet werden. Jedes der fünf Konsistenzmodelle bietet klare Verfügbarkeits- und Leistungskompromisse und wird durch umfassende SLAs abgesichert.
 
->[!VIDEO https://www.youtube.com/embed/-4FsGysVD14]
+![Konsistenz ist ein Spektrum](./media/consistency-levels/five-consistency-levels.png)
+**Konsistenz ist ein Spektrum**
 
-## <a name="distributed-databases-and-consistency"></a>Verteilte Datenbanken und Konsistenz
-Kommerzielle verteilte Datenbanken werden in zwei Kategorien unterteilt: Datenbanken, die keinerlei klar definierte, belegbare Konsistenzoptionen bieten, und Datenbanken, die zwei gegensätzliche Programmierbarkeitsoptionen (starke Konsistenz oder letztliche Konsistenz) bieten. 
+Beachten Sie, dass die Konsistenzebenen regionsunabhängig sind. Die Konsistenzebene (und die entsprechenden Konsistenzgarantien) Ihres Cosmos DB-Kontos wird für alle Lesevorgänge unabhängig von den folgenden Aspekten gewährleistet:
 
-Erstere liefern Anwendungsentwicklern minuziöse Replikationsprotokolle und bürden ihnen die schwierige Aufgabe auf, zwischen Konsistenz, Verfügbarkeit, Wartezeit und Durchsatz abzuwägen. Letztere setzen die Anwendungsentwickler unter Druck, eine der beiden Extreme auszuwählen. Trotz der Fülle der Untersuchungen und Vorschläge für mehr als 50 Konsistenzmodelle war die verteilte Datenbankcommunity nicht in der Lage, Konsistenzebenen über starke und letztliche Konsistenz kommerzialisieren. Cosmos DB bietet Entwicklern die Auswahl zwischen fünf klar definierten Konsistenzmodellen aus dem gesamten Konsistenzspektrum: Starke Konsistenz, Begrenzte Veraltung, [Sitzungskonsistenz](http://dl.acm.org/citation.cfm?id=383631), Präfixkonsistenz und Letztliche Konsistenz. 
+- Die Region, in der die Lesen- und Schreibvorgänge verarbeitet wird
+- Die Anzahl von Regionen, die Ihrem Cosmos-Konto zugeordnet sind
+- Konfiguration des Kontos mit einer oder mehreren Schreibregionen
 
-![Azure Cosmos DB bietet mehrere überlegt definierte (gelockerte) Konsistenzmodelle.](./media/consistency-levels/five-consistency-levels.png)
+## <a name="scope-of-the-read-consistency"></a>Geltungsbereich der Lesekonsistenz
 
-Die folgende Tabelle zeigt die speziellen Garantien der einzelnen Konsistenzebenen.
- 
-**Konsistenzebenen und Garantien**
-
-| Konsistenzebene | Garantien |
-| --- | --- |
-| STARK (Strong) | Linearisierbarkeit. Lesevorgänge geben garantiert die neueste Version eines Elements zurück.|
-| Begrenzte Veraltung (Bounded staleness) | Präfixkonsistenz. Lesevorgänge bleiben hinter Schreibvorgängen höchstens um Präfix k oder Intervall t zurück. |
-| Sitzung   | Präfixkonsistenz. Monotone Lesevorgänge, monotone Schreibvorgänge, Lesen der eigenen Schreibvorgänge, Schreibvorgänge folgen Lesevorgängen |
-| Präfixkonsistenz | Die zurückgegebenen Updates sind ein bestimmtes Präfix aller Updates ohne Lücken |
-| Letztlich (Eventual)  | Lesevorgänge in falscher Reihenfolge |
-
-Sie können die Standardkonsistenzebene für Ihr Cosmos DB-Konto konfigurieren (und die Konsistenz später für eine bestimmte Leseanforderung außer Kraft setzen). Intern gilt die Standardkonsistenzebene für Daten innerhalb der Partitionssätze, die sich über mehrere Regionen erstrecken können. Etwa 73 Prozent der Azure Cosmos DB-Mandanten arbeiten mit Sitzungskonsistenz. 20 Prozent bevorzugen die begrenzte Veraltung. Etwa drei Prozent der Azure Cosmos DB-Kunden experimentieren zunächst mit verschiedenen Konsistenzebenen, ehe sie sich für eine bestimmte Konsistenzoption für ihre Anwendung entscheiden. Nur zwei Prozent der Azure Cosmos DB-Mandanten überschreiben Konsistenzebenen auf der Grundlage individueller Anforderungen. 
-
-In Cosmos DB sind Lesevorgänge mit Sitzungs-, Präfix- und letztlicher Konsistenz zweimal günstiger als Lesevorgänge mit starker Konsistenz oder begrenzter Veraltung. Cosmos DB bietet branchenführende umfassende SLAs für Verfügbarkeit, Durchsatz und Wartezeit sowie Konsistenzgarantien. Azure Cosmos DB verwendet eine [Linearisierbarkeitsprüfung](http://dl.acm.org/citation.cfm?id=1806634), die kontinuierlich für unsere Diensttelemetriedaten durchgeführt wird und Sie transparent über mögliche Konsistenzverstöße informiert. Bei Verwendung der begrenzten Veraltung überwacht und meldet Azure Cosmos DB jegliche Verstöße gegen die Grenzen „k“ und „t“. Für alle fünf gelockerten Konsistenzebenen meldet Azure Cosmos DB außerdem die Metrik [Probabilistically bounded staleness](http://dl.acm.org/citation.cfm?id=2212359) (Probabilistisch begrenzte Veraltung) direkt an Sie.  
-
-## <a name="service-level-agreements"></a>Vereinbarungen zum Servicelevel (SLAs)
-
-Azure Cosmos-Datenbank bietet umfassende [SLAs](https://azure.microsoft.com/support/legal/sla/cosmos-db/) mit 99,99 Prozent und Garantien für Durchsatz, Konsistenz, Verfügbarkeit und Wartezeit für Azure Cosmos DB-Datenbankkonten, die auf eine einzelne Azure-Region ausgerichtet und mit einer der fünf verfügbaren Konsistenzebenen konfiguriert sind, oder für Datenbankkonten, die sich über mehrere Azure-Regionen erstrecken und mit einer der vier gelockerten Konsistenzebenen konfiguriert sind. Darüber hinaus bietet Azure Cosmos DB unabhängig von der Wahl der Konsistenzebene eine SLA mit 99,999 Prozent für die Leseverfügbarkeit von Datenbankkonten, die sich über mindestens zwei Azure-Regionen erstrecken.
-
-## <a name="scope-of-consistency"></a>Umfang der Konsistenz
-Die Granularität der Konsistenz wird auf eine einzelne Benutzeranforderung beschränkt. Eine Schreibanforderung kann einer Transaktion des Typs „Einfügen“, „Ersetzen“, „Einfügen/Aktualisieren (Upsert)“ oder „Löschen“ entsprechen. Wie bei Schreibvorgängen ist eine Lese-/Abfragetransaktion auch auf eine einzelne Benutzeranforderung beschränkt. Der Benutzer muss ggf. ein großes Resultset paginieren, das sich über mehrere Partitionen erstreckt, doch jede Lesetransaktion ist auf eine einzelne Seite beschränkt und erfolgt innerhalb einer einzelnen Partition.
-
-## <a name="consistency-levels"></a>Konsistenzebenen
-Sie können eine Standardkonsistenzebene für Ihr Datenbankkonto konfigurieren, die für alle Container (und Datenbanken) in Ihrem Cosmos DB-Konto gilt. Standardmäßig wird für alle Lesevorgänge und Abfragen für benutzerdefinierte Ressourcen die Standardkonsistenzebene verwendet, die für das Datenbankkonto festgelegt ist. Sie können die Konsistenzebene einer bestimmten Lese-/Abfrageanforderung mithilfe der einzelnen unterstützten APIs lockern. Vom Azure Cosmos DB-Replikationsprotokoll werden fünf Arten von Konsistenzebenen unterstützt, die (wie in diesem Abschnitt beschrieben) einen klaren Kompromiss zwischen bestimmten Konsistenzgarantien und Leistung bieten.
-
-<a id="strong"></a>
-**Stark**: 
-
-* „Starke Konsistenz“ bietet garantierte [Linearisierbarkeit](https://aphyr.com/posts/313-strong-consistency-models), was heißt, dass die Lesevorgänge auf jeden Fall die neueste Version eines Elements zurückgeben. 
-* Mit der Konsistenzebene STARK wird gewährleistet, dass ein Schreibvorgang erst sichtbar ist, nachdem er dauerhaft vom Mehrheitsquorum der Replikate bestätigt wurde. Ein Schreibvorgang wird entweder synchron dauerhaft sowohl vom primären Replikat als auch vom Quorum der sekundären Replikate bestätigt oder abgebrochen. Ein Lesevorgang wird immer von dem Mehrheitslesequorum bestätigt. Ein Client kann niemals einen unbestätigten oder unvollständigen Schreibvorgang sehen, wodurch gewährleistet wird, dass er immer auf die neuesten bestätigten Schreibvorgänge zugreift. 
-* Azure Cosmos DB-Konten, die mit dem Modell „Starke Konsistenz“ konfiguriert sind, kann nur eine Azure-Region zugeordnet werden.  
-* Die Kosten eines Lesevorgangs (im Sinne genutzter [Anforderungseinheiten](request-units.md) ) mit der Konsistenzebene STARK sind höher als bei SITZUNG und LETZTLICH, jedoch identisch mit BEGRENZTE VERALTUNG.
-
-<a id="bounded-staleness"></a>
-**Begrenzte Veraltung**: 
-
-* Die Konsistenzebene „Begrenzte Veraltung“ garantiert, dass Lesevorgänge hinter Schreibvorgängen höchstens *K* Versionen oder Präfixe eines Elements oder mit dem Zeitintervall *t* zurückbleiben. 
-* Bei Wahl von „Begrenzte Veraltung“ kann die „Veraltung“ auf zwei Weisen konfiguriert werden: Anzahl der *K*-Versionen des Elements, um das die Lesevorgänge den Schreibvorgängen hinterherhinken, und das Zeitintervall *t*. 
-* Begrenzte Veraltung bietet eine vollständige globale Reihenfolge außer innerhalb des „Veraltungsfensters“. Die monotonen Lesegarantien bestehen innerhalb einer Region sowohl innerhalb als auch außerhalb des Veraltungszeitfensters. 
-* Die begrenzte Veraltung bietet eine höhere Konsistenzgarantie als die Konsistenzebenen „Sitzung“, „Präfixkonsistenz“ und „Letztlich“. Für global verteilte Anwendungen wird empfohlen, BEGRENZTE VERALTUNG in Szenarien zu nutzen, in denen Sie eine hohe Konsistenz, aber auch eine Verfügbarkeit von 99,99% und niedrige Latenz wünschen.   
-* Azure Cosmos DB-Konten, die mit der Konsistenz „Begrenzte Veraltung“ konfiguriert sind, kann eine beliebige Anzahl von Azure-Regionen zugeordnet werden. 
-* Die Kosten eines Lesevorgangs (im Sinne genutzter Anforderungseinheiten) mit der Konsistenzebene BEGRENZTE VERALTUNG sind höher als bei SITZUNG und LETZTLICH, jedoch identisch mit STARKE KONSISTENZ.
-
-<a id="session"></a>
-**Sitzung**: 
-
-* Anders als die globalen Konsistenzmodelle, die von den Konsistenzebenen STARK und BEGRENZTE VERALTUNG geboten werden, ist die Konsistenzebene SITZUNG auf eine bestimmte Clientsitzung beschränkt. 
-* Die Konsistenzebene SITZUNG ist ideal für alle Szenarien, an denen eine Geräte- oder Benutzersitzung beteiligt ist, da sie monotone Lese- und Schreibvorgänge garantiert und RYW-Garantien bietet (Read Your Own Writes, eigene Schreibvorgänge lesen). 
-* Die Konsistenzebene SITZUNG bietet vorhersagbare Konsistenz für eine Sitzung, einen maximalen Lesedurchsatz und Lese- und Schreibvorgänge mit niedrigster Latenz. 
-* Azure Cosmos DB-Konten, die mit „Sitzungskonsistenz“ konfiguriert sind, kann eine beliebige Anzahl von Azure-Regionen zugeordnet werden. 
-* Die Kosten für einen Lesevorgang (hinsichtlich genutzter Anforderungseinheiten) mit der Konsistenzebene „Sitzung“ sind geringer als bei „Stark“ und „Begrenzte Veraltung“, aber höher als bei „Letztlich“.
-
-<a id="consistent-prefix"></a>
-**Präfixkonsistenz**: 
-
-* Die Präfixkonsistenz garantiert bei Fehlen weiterer Schreibvorgänge, dass es bei den Replikaten innerhalb der Gruppe letztendlich zur Konvergenz kommt. 
-* Präfixkonsistenz stellt sicher, dass Lesevorgänge keine Schreibvorgänge außerhalb der Reihenfolge angezeigt werden. Wenn Schreibvorgänge in der Reihenfolge `A, B, C` erfolgen, wird einem Client entweder `A`, `A,B` oder `A,B,C`, aber niemals eine falsche Reihenfolge wie `A,C` oder `B,A,C` angezeigt.
-* Azure Cosmos DB-Konten, die mit Präfixkonsistenz konfiguriert sind, kann eine beliebige Anzahl von Azure-Regionen zugeordnet werden. 
-
-<a id="eventual"></a>
-**Letztlich**: 
-
-* „Letztliche Konsistenz“ garantiert bei Fehlen weiterer Schreibvorgänge, dass es bei den Replikaten innerhalb der Gruppe letztendlich zur Konvergenz kommt. 
-* Die Konsistenzebene LETZTLICH stellt die schwächste Form von Konsistenz dar, bei der ein Client ggf. ältere Werte als die ihm zuvor angezeigten abruft.
-* Die Konsistenzebene LETZTLICH bietet die schwächste Lesekonsistenz, jedoch die niedrigste Latenz für Lese- und Schreibvorgänge.
-* Azure Cosmos DB-Konten, die mit „Letztliche Konsistenz“ konfiguriert sind, kann eine beliebige Anzahl von Azure-Regionen zugeordnet werden. 
-* Die Kosten eines Lesevorgangs (hinsichtlich genutzter Anforderungseinheiten) mit der Ebene „Letztliche Konsistenz“ sind die niedrigsten aller Konsistenzebenen von Azure Cosmos DB.
+Die Lesekonsistenz gilt für einen einzelnen Lesevorgang innerhalb eines Partitionsschlüsselbereichs (also einer logischen Partition). Ein Lesevorgang kann durch einen Remoteclient oder eine gespeicherte Prozedur ausgelöst werden.
 
 ## <a name="configuring-the-default-consistency-level"></a>Konfigurieren der Standardkonsistenzebene
-1. Klicken Sie im [Azure-Portal](https://portal.azure.com/) auf der linken Navigationsleiste auf **Azure Cosmos DB**.
-2. Wählen Sie auf der Seite **Azure Cosmos DB** das zu ändernde Datenbankkonto aus.
-3. Klicken Sie auf der Kontoseite auf **Standardkonsistenz**.
-4. Wählen Sie auf der Seite **Standardkonsistenz** die neue Konsistenzebene aus, und klicken Sie auf **Speichern**.
-   
-    ![Screenshot mit dem Symbol „Einstellungen“ und dem Eintrag „Standardkonsistenz“](./media/consistency-levels/database-consistency-level-1.png)
 
-## <a name="consistency-levels-for-queries"></a>Konsistenzebenen für Abfragen
-Bei benutzerdefinierten Ressourcen entspricht die Konsistenzebene für Abfragen standardmäßig der Konsistenzebene für Lesevorgänge. Der Index wird bei jedem Einfügen, Ersetzen oder Löschen eines Dokuments eines Elements im Cosmos DB-Container standardmäßig synchron aktualisiert. Auf diese Weise können die Abfragen dieselbe Konsistenzebene wie die von Lesevorgängen von Datenpunkten berücksichtigen. Obwohl Azure Cosmos DB für Schreibvorgänge optimiert ist und beständige Mengen von Schreibvorgängen, die synchrone Indexwartung und Bereitstellung konsistenter Abfragen unterstützt, können Sie bestimmte Container so konfigurieren, dass ihr Index verzögert aktualisiert wird. Die verzögerte Indizierung steigert die Schreibleistung noch weiter und ist ideal für Sammelerfassungsszenarien mit einer starken Lesearbeitsauslastung geeignet.  
+Sie können die **Standardkonsistenzebene** in Ihrem Cosmos DB-Konto jederzeit konfigurieren. Die in Ihrem Konto konfigurierte Standardkonsistenzebene gilt für alle Cosmos-Datenbanken (und Container) in diesem Konto. Bei allen in einem Container oder einer Datenbank ausgeführten Lesevorgängen und Abfragen wird standardmäßig diese Konsistenzebene verwendet. Erfahren Sie mehr über das [Konfigurieren der Standardkonsistenzebene](how-to-manage-consistency.md#configure-the-default-consistency-level).
 
-| Indizierungsmodus | Lesevorgänge | Abfragen |
-| --- | --- | --- |
-| Konsistent (Standard) |Wählen Sie „Stark“, „Begrenzte Veraltung“, „Sitzung“, „Präfixkonsistenz“ oder „Letztlich“. |Wählen Sie STARK, BEGRENZTE VERALTUNG, SITZUNG oder LETZTLICH. |
-| Verzögert |Wählen Sie „Stark“, „Begrenzte Veraltung“, „Sitzung“, „Präfixkonsistenz“ oder „Letztlich“. |Letztlich (Eventual) |
-| Keine |Wählen Sie „Stark“, „Begrenzte Veraltung“, „Sitzung“, „Präfixkonsistenz“ oder „Letztlich“. |Nicht zutreffend |
+## <a name="guarantees-associated-with-consistency-levels"></a>Garantien in Zusammenhang mit Konsistenzebenen
 
-Wie bei Leseanforderungen kann die Konsistenzebene einer bestimmten Abfrageanforderung in jeder API heruntergestuft werden.
+Die von Azure Cosmos DB bereitgestellten umfassenden SLAs garantieren, dass 100 % aller Leseanforderungen die Konsistenzgarantie für jede von Ihnen ausgewählte Konsistenzebene erfüllen. Bei einer Leseanforderung gilt die Konsistenz-SLA als erfüllt, wenn alle Konsistenzgarantien der Konsistenzebene erfüllt werden. Die genauen Definitionen der fünf Konsistenzebenen in Cosmos DB – unter Verwendung der [TLA+-Spezifikationssprache](http://lamport.azurewebsites.net/tla/tla.html) – finden Sie im GitHub-Repository [azure-cosmos-tla](https://github.com/Azure/azure-cosmos-tla). Im Folgenden wird die Semantik der fünf Konsistenzebenen beschrieben:
 
-## <a name="consistency-levels-for-the-mongodb-api"></a>Konsistenzebenen für die MongoDB-API
+- **Konsistenzebene „starke Konsistenz“**: Die starke Konsistenz bietet garantierte [Linearisierbarkeit](https://aphyr.com/posts/313-strong-consistency-models), was heißt, dass Lesevorgänge auf jeden Fall die neueste per Commit bestätigte Version eines Elements zurückgeben. Ein Client sieht niemals nur teilweise oder nicht per Commit ausgeführte Schreibvorgänge und liest garantiert immer den letzten per Commit bestätigten Schreibvorgang.
+- **Konsistenzebene „begrenzte Veraltung“**: Die Lesevorgänge berücksichtigen immer die Garantie der Präfixkonsistenz. Lesevorgänge bleiben höchstens K Versionen oder Präfixe (d.h. Updates) eines Elements oder um ein durch „t“ definiertes Zeitintervall hinter Schreibvorgängen zurück. Bei der begrenzten Veraltung kann die „Veraltung“ auf zwei Arten konfiguriert werden: Anzahl der Versionen (K) des Elements oder das Zeitintervall (t), um die bzw. das die Lesevorgänge hinter den Schreibvorgängen zurückbleiben dürfen. Begrenzte Veraltung bietet eine vollständige globale Reihenfolge außer innerhalb des „Veraltungsfensters“. Die monotonen Lesegarantien bestehen innerhalb einer Region sowohl innerhalb als auch außerhalb des Veraltungszeitfensters. Die starke Konsistenz weist die gleiche Semantik auf wie die begrenzte Veraltung, das „Zeitfenster der Veraltung“ ist aber gleich 0. Die begrenzte Veraltung wird auch als „Linearisierbarkeit mit Zeitverzögerung“ bezeichnet. Wenn ein Client Lesevorgänge in einer Region ausführt, die Schreibvorgänge akzeptiert, bietet die begrenzte Veraltung die gleichen Garantien wie die starke Konsistenz.
+- **Konsistenzebene „Sitzungskonsistenz“**: Die Lesevorgänge berücksichtigen immer folgende Garantien: Präfixkonsistenz, monotone Lesevorgänge, monotone Schreibvorgänge, Lesen der eigenen Schreibvorgänge, Schreibvorgänge folgen Lesevorgängen. Die Sitzungskonsistenz gilt immer für eine Clientsitzung.
+- **Konsistenzebene „Präfixkonsistenz“**: Zurückgegebene Updates sind ein bestimmtes Präfix aller Updates ohne Lücken. Präfixkonsistenz stellt sicher, dass Lesevorgänge keine Schreibvorgänge außerhalb der Reihenfolge angezeigt werden.
+- **Konsistenzebene „letztliche Konsistenz“**: Es gibt keine Reihenfolgengarantie für Lesevorgänge. Wenn keine weiteren Schreibvorgänge vorhanden sind, konvergieren die Replikate schließlich.
 
-Azure Cosmos DB implementiert derzeit MongoDB-Version 3.4, in der zwei Konsistenzeinstellungen zur Verfügung stehen: starke Konsistenz und letztliche Konsistenz. Da Azure Cosmos DB mehrere APIs enthält, werden die Konsistenzeinstellungen auf Kontoebene angewendet, und die Konsistenz wird durch die einzelnen APIs gesteuert.  Bis MongoDB 3.6 gab es das Konzept für Sitzungskonsistenz nicht. Wenn Sie für ein MongoDB-API-Konto die Nutzung der Sitzungskonsistenz festgelegt haben, wurde bei Verwendung der MongoDB-APIs die Konsistenz auf „Letztlich“ festgelegt. Falls Sie für ein MongoDB-API-Konto eine Garantie für das Lesen eigener Schreibvorgänge benötigen, sollte die Standardkonsistenzebene auf „Stark“ oder „Begrenzte Veraltung“ festgelegt werden.
+## <a name="consistency-levels-explained-through-baseball"></a>Konsistenzebenen – erläutert am Beispiel Baseball
+
+Wie das Dokument [Replicated Data Consistency Through Baseball](https://www.microsoft.com/en-us/research/wp-content/uploads/2011/10/ConsistencyAndBaseballReport.pdf) (Replizierte Datenkonsistenz – erläutert am Beispiel Baseball) veranschaulicht: Stellen Sie sich eine Sequenz von Schreibvorgängen vor, die das Ergebnis eines Baseballspiels mit den Punkteständen für jedes Inning darstellen. Das hypothetische Baseballspiel befindet sich gerade mitten im siebten Inning (dem sprichwörtlichen „Seventh-inning stretch“), und die Heimmannschaft gewinnt 2-5.
+
+| | **1** | **2** | **3** | **4** | **5** | **6** | **7** | **8** | **9** | **Runs** |
+| - | - | - | - | - | - | - | - | - | - | - |
+| **Gäste** | 0 | 0 | 1 | 0 | 5 | 0 | 0 |  |  | 2 |
+| **Heim** | 1 | 0 | 1 | 1 | 0 | 2 |  |  |  | 5 |
+
+Ein Cosmos DB-Container enthält die Gesamtanzahl von Runs des Gast- und des Heimteams. Während das Spiel läuft, können verschiedene Lesegarantien dazu führen, dass Clients verschiedene Punktestände lesen. Die folgende Tabelle listet sämtliche Punktestände auf, die durch Lesen der Punktestände für Gast- und Heimteam mit jeder der fünf Konsistenzgarantien zurückgegeben werden können. Beachten Sie, dass die Ergebnisse der Gäste zuerst aufgeführt werden und verschiedene mögliche Rückgabewerte durch Kommas getrennt sind.
+
+| **Konsistenzebene** | **Punktestände** |
+| - | - |
+| **Starke Konsistenz** | 2-5 |
+| **Begrenzte Veraltung** | Punktestände, die mindestens ein Inning „veraltet“ sind: 2-3, 2-4, 2-5 |
+| **Sitzungskonsistenz** | <ul><li>Für den Writer: 2-5</li><li> Für alle anderen (außer dem Writer): 0-0, 0-1, 0-2, 0-3, 0-4, 0-5, 1-0, 1-1, 1-2, 1-3, 1-4, 1-5, 2-0, 2-1, 2-2, 2-3, 2-4, 2-5</li><li>Nach dem Lesen von 1-3:  1-3, 1-4, 1-5, 2-3, 2-4, 2-5</li> |
+| **Präfixkonsistenz** | 0-0, 0-1, 1-1, 1-2, 1-3, 2-3, 2-4, 2-5 |
+| **Letztliche Konsistenz** | 0-0, 0-1, 0-2, 0-3, 0-4, 0-5, 1-0, 1-1, 1-2, 1-3, 1-4, 1-5, 2-0, 2-1, 2-2, 2-3, 2-4, 2-5 |
+
+## <a name="additional-reading"></a>Zusätzliche Lektüre
+
+In folgenden Ressourcen erfahren Sie mehr über Konsistenzkonzepte:
+
+- [High-level TLA+ specifications for the five consistency levels offered by Azure Cosmos DB](https://github.com/Azure/azure-cosmos-tla) (Allgemeine TLA+-Spezifikationen für die fünf von Azure Cosmos DB angebotenen Konsistenzebenen)
+- [Replicated Data Consistency Explained through Baseball (video) by Doug Terry](https://www.youtube.com/watch?v=gluIh8zd26I) (Erläuterung der Konsistenz replizierter Daten anhand von Baseball – Video von Doug Terry)
+- [Replicated Data Consistency Explained through Baseball (whitepaper) by Doug Terry](https://www.microsoft.com/en-us/research/publication/replicated-data-consistency-explained-through-baseball/?from=http%3A%2F%2Fresearch.microsoft.com%2Fpubs%2F157411%2Fconsistencyandbaseballreport.pdf) (Replizierte Datenkonsistenz – erläutert am Beispiel Baseball – Whitepaper von Doug Terry)
+- [Sitzungsgarantien für schwach konsistente replizierte Daten](https://dl.acm.org/citation.cfm?id=383631)
+- [Consistency Tradeoffs in Modern Distributed Database Systems Design: CAP is Only Part of the Story](https://www.computer.org/web/csdl/index/-/csdl/mags/co/2012/02/mco2012020037-abs.html) (Konsistenzkompromisse im Design moderner verteilter Datenbanksysteme: CAP ist nur ein Teil der Wahrheit)
+- [Probabilistic Bounded Staleness (PBS) for Practical Partial Quorums](http://vldb.org/pvldb/vol5/p776_peterbailis_vldb2012.pdf)
+- [Eventually Consistent – Revisited](https://www.allthingsdistributed.com/2008/12/eventually_consistent.html) (Letztliche Konsistenz – Neuauflage)
 
 ## <a name="next-steps"></a>Nächste Schritte
-Wenn Sie weitere Informationen zu Konsistenzebenen und deren Vor- und Nachteile möchten, empfehlen wir die folgenden Ressourcen:
 
-* [Erläuterung der Konsistenz replizierter Daten anhand von Baseball (Video) von Doug Terry](https://www.youtube.com/watch?v=gluIh8zd26I)
-* [Erläuterung der Konsistenz replizierter Daten anhand von Baseball (Whitepaper) von Doug Terry](http://research.microsoft.com/pubs/157411/ConsistencyAndBaseballReport.pdf)
-* [Sitzungsgarantien für schwach konsistente replizierte Daten](http://dl.acm.org/citation.cfm?id=383631)
-* [Konsistenzkompromisse im Design moderner verteilter Datenbanksysteme: CAP ist nur ein Teil der Wahrheit](https://www.computer.org/web/csdl/index/-/csdl/mags/co/2012/02/mco2012020037-abs.html)
-* [Probabilistic Bounded Staleness (PBS) for Practical Partial Quorums](http://vldb.org/pvldb/vol5/p776_peterbailis_vldb2012.pdf)
-* [Eventual Consistent – Revisited (Letztlich konsistent – noch einmal überdacht)](http://allthingsdistributed.com/2008/12/eventually_consistent.html)
-* [The Load, Capacity, and Availability of Quorum Systems (Last, Kapazität und Verfügbarkeit von Quorumsystemen), SIAM Journal on Computing](http://epubs.siam.org/doi/abs/10.1137/S0097539795281232)
-* [Line-up: a complete and automatic linearizability checker, Proceedings of the 2010 ACM SIGPLAN conference on Programming language design and implementation (Aufstellung: eine vollständige und automatische Linearisierbarkeitsüberprüfung, Verfahren der 2010 ACM SIGPLAN-Konferenz zu Design und Implementierung von Programmiersprachen)](http://dl.acm.org/citation.cfm?id=1806634)
-* [Probabilistic Bounded Staleness (PBS) for Practical Partial Quorums (Probabilistisch begrenzte Veraltung für praktische partielle Quoren)](http://dl.acm.org/citation.cfm?id=2212359)
+Um mehr über die Konsistenzebenen in Azure Cosmos DB zu erfahren, lesen Sie die folgenden Artikel:
+
+* [Auswählen der richtigen Konsistenzebene für Ihre Anwendung](consistency-levels-choosing.md)
+* [Konsistenzebenen und Cosmos DB-APIs](consistency-levels-across-apis.md)
+* [Kompromisse in Bezug auf Verfügbarkeit und Leistung für verschiedene Konsistenzebenen](consistency-levels-tradeoffs.md)
+* [Konfigurieren der Standardkonsistenzebene](how-to-manage-consistency.md#configure-the-default-consistency-level)
+* [Außerkraftsetzen der Standardkonsistenzebene](how-to-manage-consistency.md#override-the-default-consistency-level)
+

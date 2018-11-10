@@ -3,19 +3,18 @@ title: Zugreifen auf lokale Datenquellen für Azure Logic Apps | Microsoft-Dokum
 description: Erstellen Sie das lokale Datengateway und richten Sie es ein, damit Sie aus Logik-Apps auf lokale Datenquellen zugreifen können.
 services: logic-apps
 ms.service: logic-apps
+ms.suite: integration
 author: ecfan
 ms.author: estfan
-manager: jeconnoc
+ms.reviewer: arthii, LADocs
 ms.topic: article
-ms.date: 07/20/2018
-ms.reviewer: yshoukry, LADocs
-ms.suite: integration
-ms.openlocfilehash: 65c7e03b349314ad61fa5f1ea8322f4d1352b8e6
-ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
+ms.date: 10/01/2018
+ms.openlocfilehash: e8e8d85d2c95c1dda7271de72491594562b7d3c1
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39145688"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50413705"
 ---
 # <a name="connect-to-data-sources-on-premises-from-azure-logic-apps-with-on-premises-data-gateway"></a>Herstellen einer Verbindung mit lokalen Datenquellen in Azure Logic Apps mit dem lokalen Datengateway
 
@@ -34,8 +33,7 @@ Informationen zum Verwenden des Gateways mit anderen Diensten finden Sie in den 
 
 * Ihre Gatewayinstallation ist nicht bereits einer Gatewayressource in Azure zugeordnet. Sie können Ihre Gatewayinstallation nur mit einer einzigen Gatewayressource verknüpfen, was der Fall ist, wenn Sie die Gatewayressource erstellen und Ihre Gatewayinstallation auswählen. Diese Verknüpfung macht die Gatewayinstallation für andere Ressourcen nicht mehr verfügbar.
 
-* Wenn Sie sich beim Azure-Portal anmelden und die Gatewayressource erstellen, müssen Sie dasselbe Anmeldekonto verwenden, das Sie zuvor zum [Installieren des lokalen Datengateways](../logic-apps/logic-apps-gateway-install.md#requirements) verwendet haben.
-Sie müssen außerdem dasselbe [Azure-Abonnement](https://docs.microsoft.com/azure/architecture/cloud-adoption-guide/adoption-intro/subscription-explainer) verwenden, das zum Installieren des Gateways verwendet wurde. Wenn Sie noch kein Azure-Abonnement haben, <a href="https://azure.microsoft.com/free/" target="_blank">melden Sie sich für ein kostenloses Azure-Konto an</a>.
+* Wenn Sie sich beim Azure-Portal anmelden und die Gatewayressource erstellen, müssen Sie dasselbe Anmeldekonto verwenden, das Sie zuvor zum [Installieren des lokalen Datengateways](../logic-apps/logic-apps-gateway-install.md#requirements) verwendet haben. Zudem ist dasselbe [Azure-Abonnement](https://docs.microsoft.com/azure/architecture/cloud-adoption-guide/adoption-intro/subscription-explainer) erforderlich, dass zum Installieren des Gateways benutzt wurde. Wenn Sie noch kein Azure-Abonnement haben, <a href="https://azure.microsoft.com/free/" target="_blank">melden Sie sich für ein kostenloses Azure-Konto an</a>.
 
 * Um die Gatewayressource über das Azure-Portal erstellen und verwalten zu können, muss Ihr [Windows-Dienstkonto](../logic-apps/logic-apps-gateway-install.md#windows-service-account) mindestens über die Berechtigung **Mitwirkender** verfügen. Das lokale Datengateway wird als Windows-Dienst ausgeführt und ist so eingerichtet, dass es `NT SERVICE\PBIEgwService` für die Anmeldeinformationen des Windows-Diensts verwendet. 
 
@@ -44,7 +42,7 @@ Sie müssen außerdem dasselbe [Azure-Abonnement](https://docs.microsoft.com/azu
 
 ## <a name="download-and-install-gateway"></a>Herunterladen und Installieren des Gateways
 
-Bevor Sie mit den Schritten in diesem Artikel fortfahren können, muss das Gateway heruntergeladen und installiert sein.
+Bevor Sie mit den Schritten in diesem Artikel fortfahren können, muss das Gateway auf einem lokalen Computer heruntergeladen und installiert sein.
 Führen Sie – sofern noch nicht geschehen – die Schritte zum [Herunterladen und Installieren des lokalen Datengateways](../logic-apps/logic-apps-gateway-install.md) aus. 
 
 <a name="create-gateway-resource"></a>
@@ -155,7 +153,7 @@ Um eine andere Ressource zu erstellen, Ihr Gateway mit einer anderen Ressource z
 ## <a name="get-support"></a>Support
 
 * Sollten Sie Fragen haben, besuchen Sie das [Azure Logic Apps-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
-* Wenn Sie Features vorschlagen oder für Vorschläge abstimmen möchten, besuchen Sie die [Website für Logic Apps-Benutzerfeedback](http://aka.ms/logicapps-wish).
+* Wenn Sie Features vorschlagen oder für Vorschläge abstimmen möchten, besuchen Sie die [Website für Logic Apps-Benutzerfeedback](https://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

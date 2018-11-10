@@ -1,20 +1,20 @@
 ---
-title: Architektur der Replikation von Hyper-V zu einem sekundären Standort in Azure Site Recovery | Microsoft-Dokumentation
-description: Dieser Artikel bietet einen Überblick über die Architektur zum Replizieren lokaler virtueller Hyper-V-Computer an einem sekundären System Center-VMM-Standort mit Azure Site Recovery.
+title: Architektur für die Hyper-V-Notfallwiederherstellung in einem sekundären lokalen Standort mit Azure Site Recovery | Microsoft-Dokumentation
+description: Dieser Artikel bietet einen Überblick über die Architektur für die Notfallwiederherstellung lokaler Hyper-V-VMs in einem sekundären System Center-VMM-Standort mit Azure Site Recovery.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 10/10/2018
+ms.date: 10/28/2018
 ms.author: raynew
-ms.openlocfilehash: 8f8b498164cc4a77cace470f7483aa572fefbaed
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 98eb654468eb27b8100a0cc9b73994e5a7add167
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49078918"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50214595"
 ---
-# <a name="hyper-v-replication-to-a-secondary-site"></a>Hyper-V-Replikation an einem sekundären Standort
+# <a name="architecture---hyper-v-replication-to-a-secondary-site"></a>Architektur – Hyper-V-Replikation an einem sekundären Standort
 
 Dieser Artikel beschreibt die Komponenten und Prozesse bei der Replikation lokaler virtueller Hyper-V-Computer (Virtual Machines, VMs) in System Center-VMM-Clouds (Virtual Machine Manager) an einem sekundären VMM-Standort mithilfe des Diensts [Azure Site Recovery](site-recovery-overview.md) über das Azure-Portal.
 

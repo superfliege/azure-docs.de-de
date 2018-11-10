@@ -1,21 +1,20 @@
 ---
-title: Erneutes Schützen von VMs von Azure an einem lokalen Standort | Microsoft-Dokumentation
-description: Nach einem Failover von virtuellen Computern auf Azure können Sie die virtuellen Computer mittels Failback wieder in die lokale Umgebung übertragen. Erfahren Sie, wie Sie vor einem Failback den Schutz erneut vornehmen.
-services: site-recovery
+title: Erneutes Schützen von VMs aus Azure in einem lokalen Standort während der Notfallwiederherstellung von VMware-VMs und physischen Servern | Microsoft-Dokumentation
+description: Hier erfahren Sie, wie Sie nach dem Failover auf Azure während der Notfallwiederherstellung von VMware-VMs und physischen Servern ein Failback von Azure auf den lokalen Standort ausführen.
 author: rajani-janaki-ram
 manager: gauravd
 ms.service: site-recovery
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: rajanaki
-ms.openlocfilehash: 1b410b2832d856f80d640aab2096fef270156c81
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 3f661ab5ff2a127ba7507a64bb4520cbad740473
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39346678"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50213286"
 ---
-# <a name="reprotect-machines-from-azure-to-an-on-premises-site"></a>Erneutes Schützen von Computern von Azure an einem lokalen Standort
+# <a name="reprotect-and-fail-back-machines-to-an-on-premises-site-after-failover-to-azure"></a>Erneutes Schützen und Ausführen eines Failbacks für Computer auf einen lokalen Standort nach einem Failover auf Azure
 
 Nach dem [Failover](site-recovery-failover.md) von lokalen VMware-VMs oder physischen Servern in Azure besteht der erste Schritt beim Failback zurück an Ihren lokalen Standort im erneuten Schützen der Azure-VMs, die während des Failovers erstellt wurden. Dieser Artikel beschreibt die entsprechende Vorgehensweise. 
 
@@ -63,7 +62,7 @@ So stellen Sie einen Prozessserver in Azure bereit:
 Der Masterzielserver empfängt Failbackdaten. Standardmäßig wird der Masterzielserver auf dem lokalen Konfigurationsserver ausgeführt. Je nach Datenverkehrsvolumen beim Failback müssen Sie jedoch u.U. einen separaten Masterzielserver für das Failback erstellen. Gehen Sie zum Erstellen wie folgt vor:
 
 * [Richten Sie einen Linux-Masterzielserver](vmware-azure-install-linux-master-target.md) für Failbacks von Linux-VMs ein. Dies ist erforderlich.
-* Erstellen Sie optional einen separaten Masterzielserver für das Failback virtueller Windows-Computer. Führen Sie zu diesem Zweck das einheitliche Setup erneut aus, und wählen Sie dabei die Erstellung eines Masterzielservers aus. [Weitere Informationen](site-recovery-plan-capacity-vmware.md#deploy-additional-master-target-servers)
+* Erstellen Sie optional einen separaten Masterzielserver für das Failback virtueller Windows-Computer. Führen Sie zu diesem Zweck das einheitliche Setup erneut aus, und wählen Sie dabei die Erstellung eines Masterzielservers aus. [Weitere Informationen](site-recovery-plan-capacity-vmware.md#deploy-additional-master-target-servers).
 
 Nachdem Sie einen Masterzielserver erstellt haben, führen Sie folgende Aufgaben aus:
 
@@ -123,7 +122,7 @@ Beachten Sie die folgenden Informationen:
 - Wenn der Konfigurationsserver auf dem Prozessserver nicht erreichbar ist, können Sie Telnet verwenden, um die Konnektivität mit dem Konfigurationsserver an Port 443 zu überprüfen. Sie können auch versuchen, den Konfigurationsserver auf dem Prozessserver per Ping zu erreichen. Ein Prozessserver sollte außerdem einen Takt aufweisen, wenn er mit dem Konfigurationsserver verbunden ist.
 - Für einen Server vom Typ Windows Server 2008 R2 SP1, der als physischer lokaler Server geschützt wird, kann kein Failback von Azure zu einem lokalen Standort durchgeführt werden.
 - In den folgenden Situationen ist kein Failback möglich:
-    - Sie haben Computer zu Azure migriert. [Weitere Informationen](migrate-overview.md#what-do-we-mean-by-migration)
+    - Sie haben Computer zu Azure migriert. [Weitere Informationen](migrate-overview.md#what-do-we-mean-by-migration).
     - Sie haben eine VM in eine andere Ressourcengruppe verschoben.
     - Sie haben die Azure-VM gelöscht.
     - Sie haben den Schutz des virtuellen Computers deaktiviert.

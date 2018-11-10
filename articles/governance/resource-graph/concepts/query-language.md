@@ -4,22 +4,22 @@ description: Beschreibt die Funktionsweise der Abfragesprache für Azure Resourc
 services: resource-graph
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 09/18/2018
+ms.date: 10/22/2018
 ms.topic: conceptual
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: 6fcf3087feb7f208ea46d0e08824e965160a61d4
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: 09bcedc5250755f06ba23b84a0ae90b4d43a23db
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48236449"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50086164"
 ---
 # <a name="understanding-the-azure-resource-graph-query-language"></a>Grundlegendes zur Azure Resource Graph-Abfragesprache
 
 Die Abfragesprache für Azure Resource Graph unterstützt eine Reihe von Operatoren und Funktionen. Diese arbeiten jeweils basierend auf [Azure Data Explorer](../../../data-explorer/data-explorer-overview.md).
 
-Der beste Weg, die von Resource Graph verwendete Abfragesprache kennenzulernen, besteht darin, zunächst mit der Dokumentation zur Azure Data Explorer-[Abfragesprache](/azure/kusto/query/index) zu beginnen. Diese vermittelt ein Verständnis dafür, wie die Sprache aufgebaut ist und wie die verschiedenen unterstützten Operatoren und Funktionen zusammenwirken.
+Der beste Weg, die von Resource Graph verwendete Abfragesprache kennenzulernen, besteht darin, zunächst mit der Dokumentation zur Azure Data Explorer-[Abfragesprache](/azure/kusto/query/index) zu beginnen. Sie vermittelt ein Verständnis dafür, wie die Sprache aufgebaut ist und wie die verschiedenen unterstützten Operatoren und Funktionen zusammenwirken.
 
 ## <a name="supported-tabular-operators"></a>Unterstützte tabellarische Operatoren
 

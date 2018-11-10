@@ -1,10 +1,27 @@
+---
+title: Includedatei
+description: Includedatei
+services: batch
+author: dlepow
+ms.service: batch
+ms.topic: include
+ms.date: 10/11/2018
+ms.author: danlep
+ms.custom: include file
+ms.openlocfilehash: c98a2146a019817152be9fae76638dbaa4d9de3d
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49458856"
+---
 | **Ressource** | **Standardlimit** | **Maximales Limit** |
 | --- | --- | --- |
 | Batch-Konten pro Region und Abonnement | 1 - 3 |50 |
 | Dedizierte Kerne pro Batch-Konto | 10 - 100 | –<sup>1</sup> |
 | Kerne mit niedriger Priorität pro Batch-Konto | 10 - 100 | N/V<sup>2</sup> |
-| Aktive Aufträge und Auftragszeitpläne<sup>3</sup> pro Batch-Konto | 100 - 300 | 2500<sup>4</sup> |
-| Pools pro Batch-Konto | 20 - 100 | 500 |
+| Aktive Aufträge und Auftragszeitpläne<sup>3</sup> pro Batch-Konto | 100 - 300 | 1000<sup>4</sup> |
+| Pools pro Batch-Konto | 20 - 100 | 500<sup>4</sup> |
 
 > [!NOTE]
 > Die Standardgrenzwerte variieren abhängig vom Abonnementtyp, den Sie zum Erstellen eines Batch-Kontos verwenden. Die angezeigten Kontingente für Kerne gelten für Batch-Konten im Batch-Dienstmodus. [Zeigen Sie die Kontingente in Ihrem Batch-Konto an](../articles/batch/batch-quota-limit.md#view-batch-quotas). 

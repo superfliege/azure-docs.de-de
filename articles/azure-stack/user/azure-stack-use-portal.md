@@ -10,15 +10,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/12/2018
+ms.date: 10/23/2018
 ms.author: mabrigg
 ms.reviewer: efemmano
-ms.openlocfilehash: 7ccf746cfd9645b63c2810bff83cfb0c4fa55d65
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 4ec9affa78d1f244208a24bcf8a6603e867d4c08
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44713736"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50086504"
 ---
 # <a name="use-the-azure-stack-portal"></a>Verwenden des Azure Stack-Portals
 
@@ -32,12 +32,13 @@ Ihr Azure Stack-Operator (ein Dienstanbieter oder ein Administrator in Ihrer Org
 
 - Bei einem integrierten System variiert die URL abhängig von der Region und dem externen Domänenamen des Betreibers und hat das Format https://portal.&lt;*Region*&gt;.&lt;*FQDN*&gt;.
 - Wenn Sie das Azure Stack Development Kit verwenden, lautet die Portaladresse https://portal.local.azurestack.external.
-
-![Bildschirmaufnahme des Azure Stack-Benutzerportals](media/azure-stack-use-portal/UserPortal.png)
+- Die Standardzeitzone für alle Azure Stack-Bereitstellungen ist auf „Koordinierte Weltzeit (UTC)“ festgelegt. Sie können bei der Installation von Azure Stack eine Zeitzone auswählen, diese wird während der Installation jedoch automatisch auf die Standardeinstellung „UTC“ zurückgesetzt.
 
 ## <a name="customize-the-dashboard"></a>Anpassen des Dashboards
 
 Das Dashboard enthält eine Reihe von Standardkacheln. Wählen Sie **Dashboard bearbeiten** aus, um das Standarddashboard anzupassen, oder wählen Sie **Neues Dashboard** aus, um ein benutzerdefiniertes Dashboard zu erstellen. Sie können ein Dashboard einfach durch Hinzufügen oder Entfernen von Kacheln anpassen. Wählen Sie beispielsweise zum Hinzufügen einer Kachel „Compute“ die Option **+Ressource erstellen** aus. Klicken Sie mit der rechten Maustaste auf **Compute**, und wählen Sie dann **An Dashboard anheften** aus.
+
+![Bildschirmaufnahme des Azure Stack-Benutzerportals](media/azure-stack-use-portal/userportal.png)
 
 ## <a name="create-subscription-and-browse-available-resources"></a>Erstellen von Abonnements und Durchsuchen verfügbarer Ressourcen
 

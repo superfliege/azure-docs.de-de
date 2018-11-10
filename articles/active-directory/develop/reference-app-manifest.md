@@ -13,20 +13,34 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/24/2018
+ms.date: 10/24/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: sureshja
-ms.openlocfilehash: bc7999d56da8398b4f54b0144a595ee7c2e2ea35
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: 372bff911c0925e05297872da66279e727149010
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49115109"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50086776"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Azure Active Directory-App-Manifest
 
-Apps, die in Azure Active Directory (Azure AD) integriert werden, müssen bei einem Azure AD-Mandanten registriert werden. Sie können die App im [Azure-Portal](https://portal.azure.com) konfigurieren, indem Sie unter **Azure Active Directory** die Option **App-Registrierungen**, die zu konfigurierende App und dann **Manifest** auswählen.
+Das Anwendungsmanifest enthält eine Definition aller Attribute eines Anwendungsobjekts auf der Microsoft Identity Platform. Darüber hinaus dient es als Mechanismus für die Aktualisierung des Anwendungsobjekts. Weitere Informationen zur Anwendungsentität und zum dazugehörigen Schema finden Sie in der [Dokumentation zur Anwendungsentität der Graph-API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#application-entity).
+
+Sie können die Attribute einer App über das Azure-Portal oder programmgesteuert mit Microsoft Graph konfigurieren. Es gibt aber einige Szenarien, in denen Sie das App-Manifest bearbeiten müssen, um das Attribut einer App zu konfigurieren. Zu diesen Szenarien gehören:
+
+* Wenn Sie die App als Azure AD-App mit mehreren Mandanten und für persönliche Microsoft-Konten registriert haben, können Sie die unterstützten Microsoft-Konten nicht über die Benutzeroberfläche ändern. In diesem Fall müssen Sie den unterstützten Kontotyp mithilfe des Anwendungsmanifest-Editors ändern.
+* Wenn Sie Berechtigungen und Rollen definieren müssen, die von Ihrer App unterstützt werden, müssen Sie das Anwendungsmanifest ändern.
+
+## <a name="configure-the-app-manifest"></a>Konfigurieren des App-Manifests
+
+Konfigurieren Sie das Anwendungsmanifest wie folgt:
+
+1. Melden Sie sich am [Azure-Portal](https://portal.azure.com) an.
+1. Wählen Sie den Dienst **Azure Active Directory** und anschließend **App-Registrierungen** oder **App-Registrierungen (Vorschau)**.
+1. Wählen Sie die App aus, die Sie konfigurieren möchten.
+1. Wählen Sie auf der Seite **Übersicht** der App den Abschnitt **Manifest**. Ein webbasierter Manifest-Editor wird geöffnet, mit dem Sie das Manifest im Portal bearbeiten können. Optional können Sie **Herunterladen** wählen, um das Manifest lokal zu bearbeiten, und dann **Hochladen** verwenden, um es wieder auf Ihre Anwendung anzuwenden.
 
 ## <a name="manifest-reference"></a>Manifestreferenz
 

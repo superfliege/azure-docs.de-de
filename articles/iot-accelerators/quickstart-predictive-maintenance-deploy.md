@@ -7,14 +7,14 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 07/12/2018
+ms.date: 10/26/2018
 ms.author: dobett
-ms.openlocfilehash: 10ff6565ed8997a5cb87394aa0d743a0d94b67e0
-ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
+ms.openlocfilehash: c56bdb5968b5f5ada902aa9212282c3cfebe2eaf
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39144311"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50139838"
 ---
 # <a name="quickstart-try-a-cloud-based-solution-to-run-a-predictive-maintenance-analysis-on-my-connected-devices"></a>Schnellstart: Ausprobieren einer cloudbasierten Lösung zum Ausführen einer Predictive Maintenance-Analyse auf meinen verbundenen Geräten
 
@@ -22,7 +22,7 @@ In dieser Schnellstartanleitung erfahren Sie, wie Sie den Azure IoT-Solution Acc
 
 In dieser Simulation ist Fabrikam eine regionale Fluggesellschaft, deren Schwerpunkt auf hoher Kundenzufriedenheit zu wettbewerbsfähigen Preisen liegt. Eine Ursache von Flugverspätungen sind Wartungsprobleme, und insbesondere die Wartung von Flugzeugtriebwerken ist anspruchsvoll. Fabrikam muss unter allen Umständen einen Triebwerksausfall während des Flugs vermeiden. Daher setzt Fabrikam auf eine regelmäßige Inspektion und planmäßige Wartungsarbeiten. Jedes Flugzeugtriebwerk ist jedoch anders. Bisweilen werden unnötige Wartungsarbeiten an Triebwerken durchgeführt. Vor allem können jedoch Umstände auftreten, die ein Flugzeug am Fliegen hindern, bis eine Wartung durchgeführt wird. Dies kann besonders dann teuer sein, wenn sich das Flugzeug an einem Ort befindet, an dem die benötigten Techniker oder Ersatzteile nicht verfügbar sind.
 
-Die Triebwerke der Fabrikam-Flotte sind mit Sensoren ausgestattet, die den Triebwerkszustand während des Flugs erfassen. Nach jahrelanger Erfassung der Betriebs- und Fehlerdaten haben die Datenanalysten von Fabrikam ein Modell zur Vorhersage der Restnutzungsdauer (Remaining Useful Life, RUL) eines Flugzeugtriebwerks entwickelt. Das Modell nutzt eine Korrelation zwischen den Daten von vier der Triebwerksensoren und dem Triebwerkverschleiß, der letztlich zum Ausfall führen kann. Obwohl Fabrikam die reguläre Inspektion aus Sicherheitsgründen fortsetzt, kann das Unternehmen jetzt anhand der Modelle nach jedem Flug die Restnutzungsdauer für jedes Triebwerk berechnen. Dadurch kann Fabrikam künftige Problemstellen prognostizieren und Wartungspläne ausarbeiten, um die Standzeiten der Flugzeuge minimieren und die Betriebskosten zu senken, ohne die Sicherheit von Passagieren und Crew zu beeinträchtigen.
+Die Triebwerke der Fabrikam-Flotte sind mit Sensoren ausgestattet, die den Triebwerkszustand während des Flugs erfassen. Fabrikam verfügt für die Triebwerke dank dieser Sensoren über Betriebs- und Fehlerdaten aus vielen Jahren. Die Datenanalysten von Fabrikam haben diese Daten verwendet, um ein Modell zum Vorhersagen der verbleibenden Nutzungsdauer (Remaining Useful Life, RUL) eines Triebwerks zu entwickeln. Das Modell nutzt eine Korrelation zwischen den Daten von vier der Triebwerksensoren und dem Triebwerkverschleiß, der letztlich zum Ausfall führen kann. Fabrikam führt die regelmäßige Sicherheitsinspektion zwar weiterhin durch, aber jetzt kann das Unternehmen anhand der Modelle nach jedem Flug die Restnutzungsdauer für die einzelnen Triebwerke berechnen. Fabrikam kann nun zukünftige Fehlerpunkte vorhersagen und die Wartung planen, um die Zeit zu verringern, die Flugzeuge am Boden verbringen müssen. Mit diesem Prozess werden die Betriebskosten gesenkt, und gleichzeitig wird für die Sicherheit der Passagiere und der Crew gesorgt.
 
 Für diese Schnellstartanleitung benötigen Sie ein aktives Azure-Abonnement.
 
@@ -32,11 +32,11 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 Beim Bereitstellen des Solution Accelerators in Ihrem Azure-Abonnement müssen Sie einige Konfigurationsoptionen festlegen.
 
-Melden Sie sich mit Ihren Azure-Kontoanmeldeinformationen an [azureiotsolutions.com](https://www.azureiotsolutions.com/Accelerators) an.
+Navigieren Sie zu [Microsoft Azure IoT Solution Accelerators](https://www.azureiotsolutions.com), und melden Sie sich mit den Anmeldeinformationen für Ihr Azure-Konto an.
 
-Klicken Sie auf der Kachel **Predictive Maintenance** auf **Jetzt ausprobieren**.
+Klicken Sie auf die Kachel **Predictive Maintenance**. Klicken Sie auf der Seite **Predictive Maintenance** auf **Jetzt testen**:
 
-![Auswählen von Predictive Maintenance](./media/quickstart-predictive-maintenance-deploy/predictivemaintenance.png)
+![Jetzt testen](./media/quickstart-predictive-maintenance-deploy/predictivemaintenance.png)
 
 Geben Sie auf der Seite **Create Predictive Maintenance solution** (Predictive Maintenance-Lösung erstellen) einen eindeutigen **Lösungsnamen** für den Solution Accelerator für Predictive Maintenance ein. Im Rahmen dieser Schnellstartanleitung verwenden wir **MyPredictiveMaintenance**.
 

@@ -1,21 +1,20 @@
 ---
-title: Einrichten eines Prozessservers in Azure für das Failback von VMware-VMs und physischen Servern mit Azure Site Recovery | Microsoft-Dokumentation
-description: In diesem Artikel wird beschrieben, wie in Azure ein Prozessserver für ein Failback von Azure-VMs zu VMware eingerichtet wird.
-services: site-recovery
+title: Einrichten eines Prozessservers in Azure für das Failback während der Notfallwiederherstellung von VMware-VMs und physischen Servern mit Azure Site Recovery | Microsoft-Dokumentation
+description: In diesem Artikel wird beschrieben, wie Sie einen Prozessserver in Azure einrichten, um während der Notfallwiederherstellung von VMware-VMs und physischen Servern das Failback von Azure in die lokale Umgebung durchzuführen.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/10/2018
+ms.date: 10/28/2018
 ms.author: raynew
-ms.openlocfilehash: 641f671f23dde0bcc32ad1ef8343a5a84227c67f
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 330f0197b8a7735043e93f00dc4baa5578f50228
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49955377"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212232"
 ---
-# <a name="set-up-additional-process-servers-for-scalability"></a>Einrichten zusätzlicher Prozessserver für Skalierbarkeit
+# <a name="scale-for-failback-with-additional-process-servers"></a>Skalieren für das Failback mit zusätzlichen Prozessservern
 
 Wenn Sie VMware-VMs oder physische Server mithilfe von [Site Recovery](site-recovery-overview.md) in Azure replizieren, wird standardmäßig ein Prozessserver auf dem Konfigurationsservercomputer installiert und zum Koordinieren der Datenübertragung zwischen Site Recovery und Ihrer lokalen Infrastruktur verwendet. Um die Kapazität zu erhöhen und die Replikationsbereitstellung horizontal hochzuskalieren, können Sie zusätzliche eigenständige Prozessserver hinzufügen. Dieser Artikel beschreibt die entsprechende Vorgehensweise.
 

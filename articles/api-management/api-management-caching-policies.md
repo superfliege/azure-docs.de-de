@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/27/2017
 ms.author: apimpm
-ms.openlocfilehash: 160172b25f4bcdb04ac9f9649bca6b08e0be1b0d
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: 1706364ca0281240b5b887bea219620c7b4add5e
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48269071"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51246836"
 ---
 # <a name="api-management-caching-policies"></a>Cacherichtlinien für API Management
-Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinien. Weitere Informationen zum Hinzufügen und Konfigurieren von Richtlinien finden Sie unter [Richtlinien in API Management](http://go.microsoft.com/fwlink/?LinkID=398186).  
+Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinien. Weitere Informationen zum Hinzufügen und Konfigurieren von Richtlinien finden Sie unter [Richtlinien in API Management](https://go.microsoft.com/fwlink/?LinkID=398186).  
   
 ##  <a name="CachingPolicies"></a> Cacherichtlinien  
   
@@ -121,7 +121,7 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
 |vary-by-developer-groups|Legen Sie diese Option auf `true` fest, um Antworten pro Benutzerrolle zwischenzuspeichern.|JA||  
   
 ### <a name="usage"></a>Verwendung  
- Diese Richtlinie kann in den folgenden [Abschnitten](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.  
+ Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.  
   
 -   **Richtlinienabschnitte**: inbound  
 -   **Richtlinienbereiche:** API, operation, product  
@@ -193,7 +193,7 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
 |duration|Lebensdauer der zwischengespeicherten Einträge, angegeben in Sekunden.|JA|N/V|  
   
 ### <a name="usage"></a>Verwendung  
- Diese Richtlinie kann in den folgenden [Abschnitten](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.  
+ Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.  
   
 -   **Richtlinienabschnitte**: outbound    
 -   **Richtlinienbereiche:** API, operation, product  
@@ -237,7 +237,7 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
 |variable-name|Der Name der [Kontextvariablen](api-management-policy-expressions.md#ContextVariables), der der gesuchte Wert zugewiesen wird, wenn die Suche erfolgreich ist. Wenn die Suche zu keinem Ergebnis führt, wird der Variablen der Wert des `default-value`-Attribut oder `null` zugewiesen, wenn das `default-value`-Attribut ausgelassen wird.|JA|N/V|  
   
 ### <a name="usage"></a>Verwendung  
- Diese Richtlinie kann in den folgenden [Abschnitten](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.  
+ Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.  
   
 -   **Richtlinienabschnitte:** inbound, outbound, backend, on-error  
 -   **Richtlinienbereiche:** global, API, operation, product  
@@ -279,7 +279,7 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
 |value|Der Wert, der zwischengespeichert werden soll.|JA|N/V|  
   
 ### <a name="usage"></a>Verwendung  
- Diese Richtlinie kann in den folgenden [Abschnitten](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.  
+ Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.  
   
 -   **Richtlinienabschnitte:** inbound, outbound, backend, on-error  
 -   **Richtlinienbereiche:** global, API, operation, product  
@@ -316,7 +316,7 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
 |key|Der Schlüssel des zuvor zwischengespeicherten Werts, der aus dem Cache entfernt werden soll.|JA|N/V|  
   
 #### <a name="usage"></a>Verwendung  
- Diese Richtlinie kann in den folgenden [Abschnitten](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.  
+ Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.  
   
 -   **Richtlinienabschnitte:** inbound, outbound, backend, on-error  
 -   **Richtlinienbereiche:** global, API, operation, product  

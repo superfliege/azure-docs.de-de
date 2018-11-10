@@ -1,25 +1,26 @@
 ---
-title: Architektur der VMware-zu-Azure-Replikation in Azure Site Recovery | Microsoft-Dokumentation
-description: Dieser Artikel bietet eine Übersicht über die Komponenten und Architektur, die beim Replizieren von lokalen virtuellen VMware-Computern in Azure mit Azure Site Recovery verwendet werden.
+title: Architektur der VMware-zu-Azure-Notfallwiederherstellung in Azure Site Recovery | Microsoft-Dokumentation
+description: Dieser Artikel enthält eine Übersicht über die Komponenten und Architektur, die beim Einrichten der Notfallwiederherstellung von lokalen virtuellen VMware-Computern in Azure mit Azure Site Recovery verwendet werden.
 author: rayne-wiselman
 ms.service: site-recovery
+ms.topic: conceptual
 ms.date: 09/12/2018
 ms.author: raynew
-ms.openlocfilehash: 498c41324bfc85f6f91acc8000df4c34856cf428
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 58129ece0fb1b7f446e5f8d738b5d1135aa0256e
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44715753"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212385"
 ---
-# <a name="vmware-to-azure-replication-architecture"></a>VMware in der Architektur für die Azure-Replikation
+# <a name="vmware-to-azure-disaster-recovery-architecture"></a>Architektur der Notfallwiederherstellung von VMware zu Azure
 
-Dieser Artikel beschreibt die Architektur und Prozesse, die mithilfe von [Azure Site Recovery](site-recovery-overview.md) bei der Replikation, bei der Ausführung eines Failovers und beim Wiederherstellen von virtuellen VMware-Computern (VMs) zwischen einem lokalen VMware-Standort und Azure verwendet werden.
+Dieser Artikel beschreibt die Architektur und Prozesse, die mithilfe des Diensts [Azure Site Recovery](site-recovery-overview.md) beim Bereitstellen der Replikation für die Notfallwiederherstellung, bei der Ausführung eines Failovers und beim Wiederherstellen von virtuellen VMware-Computern (VMs) zwischen einem lokalen VMware-Standort und Azure verwendet werden.
 
 
 ## <a name="architectural-components"></a>Komponenten der Architektur
 
-Die folgende Tabelle und Grafik bietet eine Übersicht der Komponenten, die für die VMware-Replikation in Azure verwendet werden.
+Die folgende Tabelle und Grafik enthält eine Übersicht über die Komponenten, die für die VMware-Notfallwiederherstellung in Azure verwendet werden.
 
 **Komponente** | **Anforderung** | **Details**
 --- | --- | ---

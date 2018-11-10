@@ -8,12 +8,12 @@ ms.date: 09/18/2018
 ms.topic: conceptual
 ms.service: iot-central
 manager: peterpr
-ms.openlocfilehash: 7a52ee11e52367755d2a241a0bea2cfc053cff3d
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: cc54a3a375fa2780e289a20b699df5d65aaf08cc
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47039937"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50155574"
 ---
 # <a name="build-workflows-with-the-iot-central-connector-in-microsoft-flow"></a>Erstellen von Workflows mit dem IoT Central-Connector in Microsoft Flow
 
@@ -96,6 +96,8 @@ In diesem Abschnitt erfahren Sie, wie Sie auf einem mobilen Gerät mithilfe der 
     ![Geräte-ID im Device Explorer von IoT Central](./media/howto-add-microsoft-flow/iotcdeviceid.PNG)
 
 1. Sie können den Gerätenamen aktualisieren. Um beliebige Geräteeigenschaften und -einstellungen zu aktualisieren, müssen Sie in der Dropdownliste **Gerätevorlage** die Gerätevorlage des Geräts auswählen, das Sie aktualisieren möchten. Die Aktionskachel wird erweitert, um alle Eigenschaften und Einstellungen anzuzeigen, die Sie aktualisieren können.
+
+    ![Flow-Workflow zum Aktualisieren eines Geräts](./media/howto-add-microsoft-flow/flowupdatedevice.PNG)
 
 1. Wählen Sie die Eigenschaften und Einstellungen aus, die Sie aktualisieren möchten. Wählen Sie im dynamischen Inhaltsbereich die entsprechende Eingabe vom Auslöser aus. In diesem Beispiel wird der Wert „Speicherort“ nach unten weitergegeben, um die Eigenschaft „Speicherort“ des Geräts zu aktualisieren.
 

@@ -4,20 +4,24 @@ description: Erfahren Sie mehr über den Lebenszyklus einer Blaupause und die ei
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 09/18/2018
+ms.date: 10/25/2018
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: c09fb26d8375e08281241aaed3f6f6e30acc755b
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 4adf427727e7244bbde64a673e7353c1f8270c8a
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46955451"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50094577"
 ---
 # <a name="understand-the-deployment-sequence-in-azure-blueprints"></a>Verstehen der Bereitstellungsreihenfolge in Azure Blueprint
 
-Azure Blueprint bestimmt mit einer **Reihenfolge**, die Abfolge der Ressourcenerstellung beim Verarbeiten der Zuweisung einer Blaupause. Dieser Artikel erläutert die standardmäßig verwendete Reihenfolge, wie Sie diese anpassen können und wie die benutzerdefinierte Reihenfolge verarbeitet wird.
+Azure Blueprint bestimmt mit einer **Reihenfolge**, die Abfolge der Ressourcenerstellung beim Verarbeiten der Zuweisung einer Blaupause. In diesem Artikel werden die folgenden Konzepte erläutert:
+
+- Verwendete Standardreihenfolge
+- Vorgehensweise zum Anpassen der Reihenfolge
+- Verarbeitung der angepassten Reihenfolge
 
 In den JSON-Beispielen gibt es Variablen, die Sie durch Ihre eigenen Werte ersetzen müssen:
 
@@ -32,7 +36,7 @@ Wenn die Blaupause keine Anweisung zum Bereitstellen von Artefakten enthält ode
 - **Azure Resource Manager-Vorlagenartefakte** auf Abonnementebene werden nach Artefaktnamen sortiert
 - **Ressourcengruppenartefakte** (und untergeordnete Artefakte) werden nach Platzhalternamen sortiert
 
-In jedem verarbeiteten **Ressourcengruppenartefakt** wird die folgende Reihenfolge für Artefakte verwendet, die innerhalb dieser Ressourcengruppe erstellt werden:
+In jedem Artefakt vom Typ **Ressourcengruppe** wird für Artefakte, die innerhalb dieser Ressourcengruppe erstellt werden, die folgende Reihenfolge verwendet:
 
 - Einer Ressourcengruppe untergeordnete **Rollenzuweisungsartefakte** werden nach Artefaktnamen sortiert
 - Einer Ressourcengruppe untergeordnete **Richtlinienzuweisungsartefakte** werden nach Artefaktnamen sortiert
@@ -40,14 +44,13 @@ In jedem verarbeiteten **Ressourcengruppenartefakt** wird die folgende Reihenfol
 
 ## <a name="customizing-the-sequencing-order"></a>Anpassen der Reihenfolge
 
-Beim Erstellen großer Blaupausen muss eine Ressource ggf. in einer bestimmten Reihenfolge in Beziehung zu einer anderen Ressource erstellt werden. Im gängigsten Szenario enthält eine Blaupause mehrere Azure Resource Manager-Vorlagen. Um das zu verarbeiten, ermöglichen Blaupausen das Definieren der Reihenfolge.
+Beim Erstellen großer Blaupausen müssen Ressourcen ggf. in einer bestimmten Reihenfolge erstellt werden. Im gängigsten Muster dieses Szenarios enthält eine Blaupause mehrere Azure Resource Manager-Vorlagen. Für diesen Fall ermöglicht Blueprints das Definieren der Reihenfolge.
 
-Dafür wird eine `dependsOn`-Eigenschaft in JSON definiert. Nur die Blaupause (für Ressourcengruppen) und Artefaktobjekte unterstützen diese Eigenschaft. `dependsOn` ist ein Zeichenfolgenarray von Artefaktnamen, das das jeweilige Artefakt im Vorfeld für seine Erstellung benötigt.
+Zum Angeben der Reihenfolge wird im JSON-Code eine Eigenschaft vom Typ `dependsOn` definiert. Nur die Blaupause (für Ressourcengruppen) und Artefaktobjekte unterstützen diese Eigenschaft. `dependsOn` ist ein Zeichenfolgenarray von Artefaktnamen, das das jeweilige Artefakt im Vorfeld für seine Erstellung benötigt.
 
 ### <a name="example---blueprint-with-ordered-resource-group"></a>Beispiel: Blaupause mit sortierter Ressourcengruppe
 
-Dies ist eine Beispielblaupause mit einer Ressourcengruppe, deren benutzerdefinierte Reihenfolge durch einen Wert für `dependsOn` definiert wird, und einer Standardressourcengruppe. In diesem Fall wird das Artefakt namens **assignPolicyTags** vor der Ressourcengruppe **ordered-rg** verarbeitet.
-**standard-rg** wird gemäß der Standardreihenfolge verarbeitet.
+Diese exemplarische Blaupause verfügt über eine Ressourcengruppe mit benutzerdefinierter Reihenfolge (mittels Deklarierung eines Werts für `dependsOn`) sowie über eine Standardressourcengruppe. In diesem Fall wird das Artefakt namens **assignPolicyTags** vor der Ressourcengruppe **ordered-rg** verarbeitet. **standard-rg** wird gemäß der Standardreihenfolge verarbeitet.
 
 ```json
 {
@@ -78,7 +81,7 @@ Dies ist eine Beispielblaupause mit einer Ressourcengruppe, deren benutzerdefini
 
 ### <a name="example---artifact-with-custom-order"></a>Beispiel: Artefakt mit benutzerdefinierter Reihenfolge
 
-Dies ist ein Beispiel für ein Richtlinienartefakt, das von einer Azure Resource Manager-Vorlage abhängt. Standardmäßig wird ein Richtlinienartefakt vor der Azure Resource Manager-Vorlage erstellt. So kann das Richtlinienartefakt warten, bis die Azure Resource Manager-Vorlage erstellt wurde.
+Bei diesem Beispiel handelt es sich um ein Richtlinienartefakt, das von einer Azure Resource Manager-Vorlage abhängt. Standardmäßig wird ein Richtlinienartefakt vor der Azure Resource Manager-Vorlage erstellt. Bei Verwendung dieser Reihenfolge kann das Richtlinienartefakt warten, bis die Azure Resource Manager-Vorlage erstellt wurde.
 
 ```json
 {
@@ -99,9 +102,9 @@ Dies ist ein Beispiel für ein Richtlinienartefakt, das von einer Azure Resource
 
 ## <a name="processing-the-customized-sequence"></a>Verarbeiten der benutzerdefinierten Reihenfolge
 
-Beim Erstellen wird eine topologische Sortierung verwendet, um das Abhängigkeitsdiagramm der Blaupause und ihrer Artefakte zu erstellen. So wird sichergestellt, dass mehrere Abhängigkeitsebenen zwischen Ressourcengruppen und Artefakten unterstützt werden.
+Beim Erstellen wird eine topologische Sortierung verwendet, um das Abhängigkeitsdiagramm der Blaupausenartefakte zu erstellen. Die Überprüfung stellt sicher, dass alle Abhängigkeitsebenen zwischen Ressourcengruppen und Artefakten unterstützt werden.
 
-Wenn die Abhängigkeit für eine Blaupause oder ein Artefakt deklariert wird, die die Standardreihenfolge nicht ändert, wird die Reihenfolge beibehalten. Beispiele: Eine Ressourcengruppe, die von einer Richtlinie auf Abonnementebene abhängt, oder eine der Ressourcengruppe „standard-rg“ untergeordnete Richtlinienzuweisung, die von der Rollenzuweisung abhängt, die der Ressourcengruppe „standard-rg“ untergeordnet ist. In beiden Fällen würde `dependsOn` die Standardreihenfolge nicht ändern, sodass keine Änderungen anfallen würden.
+Wird eine Artefaktabhängigkeit deklariert, die keine Änderung der Standardreihenfolge zur Folge hat, wird keine Änderung vorgenommen. Ein Beispiel wäre etwa eine Ressourcengruppe, die von einer Richtlinie auf Abonnementebene abhängt. Ein weiteres Beispiel wäre eine untergeordnete Richtlinienzuweisung der Ressourcengruppe „standard-rg“, die von der untergeordneten Rollenzuweisung der Ressourcengruppe „standard-rg“ abhängt. In beiden Fällen würde `dependsOn` die Standardreihenfolge nicht ändern, sodass keine Änderungen anfallen würden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -109,4 +112,4 @@ Wenn die Abhängigkeit für eine Blaupause oder ein Artefakt deklariert wird, di
 - Machen Sie sich mit der Verwendung [statischer und dynamischer Parameter](parameters.md) vertraut.
 - Erfahren Sie, wie Sie[Ressourcen in Blaupausen sperren](resource-locking.md).
 - Lernen Sie, wie Sie [vorhandene Zuweisungen aktualisieren](../how-to/update-existing-assignments.md).
-- Beheben Sie bei der Blaupausenzuweisung auftretende Probleme mithilfe der [allgemeinen Lösungsanleitung](../troubleshoot/general.md).
+- Beheben Sie Probleme bei der Blueprintzuweisung mithilfe des [allgemeinen Leitfadens zur Problembehandlung](../troubleshoot/general.md).

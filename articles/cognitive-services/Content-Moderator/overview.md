@@ -8,51 +8,56 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
 ms.topic: overview
-ms.date: 10/05/2018
+ms.date: 10/22/2018
 ms.author: sajagtap
-ms.openlocfilehash: 5756e8fb451b073c68271359848ab27373ad85ed
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: 076948e7434802af7f0ad47f279335009817d40e
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49309551"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50209588"
 ---
-# <a name="what-is-content-moderator"></a>Was ist Content Moderator?
+# <a name="what-is-azure-content-moderator"></a>Was ist Azure Content Moderator?
 
-Inhaltsmoderation ist die Überwachung von Text-, Bild- oder Videoinhalten auf möglicherweise anstößiges, unerwünschtes oder riskantes Material. Gekennzeichneter Inhalt kann dann ausgeblendet oder anderweitig behandelt werden, um Vorgaben zu erfüllen oder den Benutzern eine bestimmte Umgebung zu bieten.
+Die Azure Content Moderator-API gehört zu Cognitive Services und überprüft Text-, Bild- und Videoinhalte auf potenziell anstößiges, riskantes oder anderweitig unerwünschtes Material. Gefundenes Material dieser Art wird mithilfe von Flags entsprechend gekennzeichnet. Mit Flags versehene Inhalte können dann von Ihrer App angemessen behandelt werden, um Vorgaben zu erfüllen oder den Benutzern die vorgesehene Umgebung zu bieten. Weitere Informationen zur Bedeutung der verschiedenen Inhaltsflags finden Sie im Abschnitt [Content Moderator-APIs](#content-moderator-apis).
 
 ## <a name="where-it-is-used"></a>Einsatzgebiete
 
-Die folgende Liste enthält einige Beispielszenarien für Content Moderator:
+Im Anschluss finden Sie einige Szenarien, in denen ein Softwareentwickler oder Team Content Moderator verwenden kann:
 
-- Onlinemarktplätze, in denen Produktkataloge und von Benutzern generierte Inhalte moderiert werden
-- Gamingunternehmen, die von Benutzern generierte Spielartefakte und Chatrooms moderieren
-- Messagingplattformen sozialer Medien, auf denen von den Benutzern hinzugefügte Bilder, Texte und Videos moderiert werden
-- Medienunternehmen, die eine zentrale Inhaltsmoderation für ihre Inhalte implementieren
-- Anbieter im Bildungswesen, die unangemessene und anstößige Inhalte für Schüler und Lehrer herausfiltern
+- Onlinemarktplätze, die Produktkataloge und andere benutzergenerierte Inhalte moderieren
+- Gamingunternehmen, die benutzergenerierte Spielartefakte und Chatrooms moderieren
+- Messagingplattformen sozialer Medien, die von Benutzern hinzugefügte Bilder, Texte und Videos moderieren
+- Medienunternehmen, die eine zentrale Moderation für ihre Inhalte implementieren
+- Anbieter im Bildungswesen, die unangemessene Inhalte für Schüler und Lehrer herausfiltern
 
 ## <a name="what-it-includes"></a>Lieferumfang
 
-Content Moderator besteht aus verschiedenen Webdienst-APIs und einem integrierten Tool für die Überprüfung durch Personen – die APIs und das Tool helfen beim Moderieren von Bildern, Texten und Videos.
+Der Content Moderator-Dienst umfasst mehrere Webdienst-APIs, die sowohl über REST-Aufrufe als auch über ein .NET SDK verfügbar sind. Darüber hinaus steht ein Tool für die Überprüfung durch Personen zur Verfügung, mit dem Personen den Dienst unterstützen und seine Moderationsfunktion verbessern oder optimieren können.
 
-![Content Moderator – Aufbau](images/content-moderator-block-diagram.png)
+![Blockdiagramm für Content Moderator mit den Moderations-APIs, den Überprüfungs-APIs und dem Tool für die Überprüfung durch Personen](images/content-moderator-block-diagram.png)
 
-### <a name="apis"></a>APIs
+### <a name="content-moderator-apis"></a>Content Moderator-APIs
 
-Der Content Moderator-Dienst verfügt über folgende APIs:
-  - [**Textmoderations-API**](text-moderation-api.md): Verwenden Sie diese API, um Texte nach möglichen obszönen, freizügigen, zweideutigen oder anstößigen Inhalten sowie nach personenbezogenen Informationen zu durchsuchen.
-  - [**API für benutzerdefinierte Begriffslisten**](try-terms-list-api.md): Verwenden Sie diese API, um Texte nicht nur mit den integrierten Begriffen, sondern auch mit benutzerdefinierten Begriffslisten abzugleichen. Mit diesen Listen können Sie Inhalten gemäß Ihren Inhaltsrichtlinien blockieren oder zulassen.  
-  - [**Bildmoderations-API**](image-moderation-api.md): Verwenden Sie diese API, um Bilder nach anstößigen und freizügigen Inhalten zu durchsuchen, mithilfe der optischen Zeichenerkennung Text in Bildern zu entdecken und Gesichter zu erkennen.
-  - [**API für benutzerdefinierte Bildlisten**](try-image-list-api.md): Verwenden Sie diese API, um Bilder mit benutzerdefinierten Bildlisten abzugleichen – vordefinierte Inhalte, die Sie nicht erneut klassifizieren müssen.
-  - [**Videomoderations-API**](video-moderation-api.md): Verwenden Sie diese API, um Videos nach möglichen anstößigen und freizügigen Inhalten zu durchsuchen.
-  - [**Überprüfungs-APIs**](try-review-api-job.md): Verwenden Sie die Vorgänge [Jobs](try-review-api-job.md), [Reviews](try-review-api-review.md) und [Workflow](try-review-api-workflow.md), um innerhalb des Überprüfungstools Workflows für die Überprüfung durch Personen zu erstellen und zu automatisieren.
+Der Content Moderator-Dienst verfügt über APIs für folgende Szenarien:
+
+| Aktion | Beschreibung |
+| ------ | ----------- |
+|[**Textmoderation**](text-moderation-api.md)| Durchsucht Text nach anstößigen Inhalten, explizit sexuellen oder anzüglichen Inhalten, Obszönitäten und personenbezogenen Informationen (Personally Identifiable Information, PII).|
+|[**Benutzerdefinierte Begriffslisten**](try-terms-list-api.md)| Überprüft Text auf Begriffe aus einer benutzerdefinierten Begriffsliste (zusätzlich zu den integrierten Begriffen). Mithilfe von benutzerdefinierten Listen können Sie Inhalte im Einklang mit Ihren eigenen Inhaltsrichtlinien blockieren oder zulassen.|  
+|[**Bildmoderation**](image-moderation-api.md)| Überprüft Bilder auf nicht jugendfreie oder freizügige Inhalte, erkennt Text in Bildern mithilfe der optischen Zeichenerkennung (Optical Character Recognition, OCR) und erkennt Gesichter.|
+|[**Benutzerdefinierte Bildlisten**](try-image-list-api.md)| Überprüft Bilder anhand einer benutzerdefinierten Liste von Bildern. Mithilfe benutzerdefinierter Bildlisten können Sie Instanzen häufig wiederkehrender Inhalte herausfiltern, die Sie nicht erneut klassifizieren möchten.|
+|[**Videomoderation**](video-moderation-api.md)| Überprüft Videos auf nicht jugendfreie oder freizügige Inhalte und gibt Zeitmarkierungen für entsprechende Inhalte zurück.|
+|[**Überprüfung**](try-review-api-job.md)| Verwenden Sie die Vorgänge [Jobs](try-review-api-job.md), [Reviews](try-review-api-review.md) und [Workflow](try-review-api-workflow.md), um mit dem Tool für die Überprüfung durch Personen Workflows für die Überprüfung durch Personen zu erstellen und zu automatisieren. Die Workflow-API ist noch nicht über das .NET SDK verfügbar.|
 
 ### <a name="human-review-tool"></a>Tool für die Überprüfung durch Personen
 
-Ihr Content Moderator-Abonnement umfasst das integrierte [Tool für die Überprüfung durch Personen](Review-Tool-User-Guide/human-in-the-loop.md). Verwenden Sie die bereits erwähnte Überprüfungs-API, um Überprüfungen von Texten, Bildern und Videos zu erstellen, damit Ihre menschlichen Moderatoren endgültige Entscheidungen treffen können.
+Der Content Moderator-Dienst enthält auch das webbasierte [Tool für die Überprüfung durch Personen](Review-Tool-User-Guide/human-in-the-loop.md). 
 
-![Content Moderator-Tool für die Überprüfung von Videos](images/video-review-default-view.png)
+![Startseite des Content Moderator-Tools für die Überprüfung durch Personen](images/homepage.PNG)
+
+Mithilfe der Review-APIs können Sie Teamüberprüfungen für Text-, Bild- und Videoinhalte auf der Grundlage von selbst angegebenen Filtern einrichten. Die endgültigen Moderationsentscheidungen können dann von menschlichen Moderatoren getroffen werden. Der Dienst wird durch die menschlichen Eingaben nicht trainiert. Die Zusammenarbeit zwischen Dienst und menschlichen Überprüfungsteams ermöglicht es Entwicklern jedoch, ein ausgewogenes Verhältnis zwischen Effizienz und Genauigkeit zu erzielen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Verwenden Sie die [Schnellstartanleitung](quick-start.md), um mit Content Moderator loszulegen.
+Machen Sie sich anhand der [Schnellstartanleitung](quick-start.md) mit den ersten Schritten für Content Moderator vertraut.

@@ -11,13 +11,13 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 10/17/2018
-ms.openlocfilehash: e0a4e069995c1e905834ff541b3562140b6ab01c
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.date: 10/30/2018
+ms.openlocfilehash: e89245a946848e46f3c7c502b6cd0e8017327e07
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49379008"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50419893"
 ---
 # <a name="use-sql-database-managed-instance-with-virtual-networks-and-near-100-compatibility"></a>Verwenden einer verwalteten SQL-Datenbank-Instanz mit virtuellen Netzwerken und nahezu 100iger % Kompatibilität
 
@@ -68,7 +68,7 @@ Die wichtigsten Features der verwalteten Instanz sind in der folgenden Tabelle a
 | Integrierter Berichterstellungsdienst (SSRS) | Nein – Power BI oder SSRS IaaS verwenden |
 |||
 
-## <a name="vcore-based-purchasing-model"></a>V-Kern-basiertes Kaufmodell
+## <a name="vcore-based-purchasing-model"></a>Auf virtuellen Kernen basierendes Erwerbsmodell
 
 Das [V-Kern-basierte Kaufmodell](sql-database-service-tiers-vcore.md) der verwalteten Instanz bietet Ihnen mehr Flexibilität, Kontrolle und Transparenz sowie eine unkomplizierte Möglichkeit, Ihre lokalen Workloadanforderungen in der Cloud zu realisieren. Mit diesem Modell können Sie Computeressourcen, Arbeitsspeicher und Speicher entsprechend Ihren Workloadanforderungen ändern. Das V-Kern-Modell ermöglicht mit dem [Azure-Hybridvorteil für SQL Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md) zudem Einsparungen von bis zu 30 Prozent.
 
@@ -218,7 +218,7 @@ Die verwaltete Instanz ist in der Cloud immer auf dem neuesten Stand, d.h., eini
 
 ### <a name="managed-instance-administration-features"></a>Features zur Verwaltung einer verwalteten Instanz
 
-In einer verwalteten Instanz können Systemadministratoren sich auf die für das Unternehmen wichtigsten Aspekte konzentrieren. Viele durch Systemadministratoren oder DBA durchgeführte Aktivitäten sind nicht erforderlich oder lassen sich einfach ausführen, Beispiele: Installation und Patches des Betriebssystems und des RDBMS, dynamische Größenänderung und Konfiguration von Instanzen, Sicherungen, [Datenbankreplikation](replication-with-sql-database-managed-instance.md) (einschließlich Systemdatenbanken), Konfiguration der Hochverfügbarkeit und der Integrität und Leistungsüberwachung der Datenströme.
+In einer verwalteten Instanz können Systemadministratoren sich auf die für das Unternehmen wichtigsten Aspekte konzentrieren. Viele durch Systemadministratoren oder DBA durchgeführte Aktivitäten sind nicht erforderlich oder lassen sich einfach ausführen, Beispiele: Installation und Patches des Betriebssystems und des RDBMS, dynamische Größenänderung und Konfiguration von Instanzen, Sicherungen, [Datenbankreplikation](replication-with-sql-database-managed-instance.md) (einschließlich Systemdatenbanken), Konfiguration der Hochverfügbarkeit und der Integrität und [Leistungsüberwachung](../log-analytics/log-analytics-azure-sql.md) der Datenströme.
 
 > [!IMPORTANT]
 > Eine Liste der unterstützten, teilweise unterstützten und nicht unterstützten Features finden Sie unter [Features von Azure SQL-Datenbank](sql-database-features.md). Eine Liste der T-SQL-Unterschiede in verwalteten Instanzen im Vergleich zu SQL Server finden Sie unter [T-SQL-Unterschiede zwischen einer verwalteten Azure SQL-Datenbank-Instanz und SQL Server](sql-database-managed-instance-transact-sql-information.md).
@@ -241,4 +241,5 @@ In der folgenden Tabelle sind verschiedene Eigenschaften aufgeführt, auf die ü
 - Weitere Informationen zur VNET-Konfiguration finden Sie unter [Configure a VNet for Azure SQL Database Managed Instance](sql-database-managed-instance-vnet-configuration.md) (Konfigurieren eines VNET für eine verwaltete Azure SQL-Datenbank-Instanz).
 - Eine Schnellstartanleitung, in der eine verwaltete Instanz erstellt und eine Datenbank von einer Sicherungsdatei wiederhergestellt wird, finden Sie unter [Erstellen einer verwalteten Azure SQL-Datenbank-Instanz](sql-database-managed-instance-get-started.md).
 - Ein Tutorial mit Verwendung des Azure Database Migration Service (DMS) für die Migration finden Sie unter [Migrieren von SQL Server zu einer verwalteten Azure SQL-Datenbank-Instanz](../dms/tutorial-sql-server-to-managed-instance.md).
+- Informationen zur erweiterten Überwachung der Datenbankleistung verwalteter Instanzen mit integrierten Problembehandlungsfunktionen finden Sie unter [Überwachen von Azure SQL-Datenbank mithilfe von Azure SQL-Analyse (Vorschauversion)](../log-analytics/log-analytics-azure-sql.md). 
 - Preisinformationen finden Sie unter [Preise – verwaltete Azure SQL-Datenbank-Instanzen ](https://azure.microsoft.com/pricing/details/sql-database/managed/).
