@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: 51e96065f726fadd528323157609034b5bb3f151
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 8cf5f262a758efe08ad73e2d8066ad4b736e76d1
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49387887"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51247720"
 ---
 # <a name="how-to-roll-x509-device-certificates"></a>Rollen von X.509-Gerätezertifikaten
 
 Während des Lebenszyklus Ihrer IoT-Lösung müssen Sie Zertifikate „rollen“ (festlegen, dass ein neues Zertifikat ab einem bestimmten Zeitpunkt zum aktuellen Zertifikat wird). Zwei der wichtigsten Gründe für das Rollen von Zertifikaten sind Sicherheitsverletzungen und der Ablauf von Zertifikaten. 
 
-Das Rollen von Zertifikaten ist eine bewährte Sicherheitsmethode, um Ihr System im Falle einer Sicherheitsverletzung zu schützen. Als Teil der [Assume Breach-Methodik](http://download.microsoft.com/download/C/1/9/C1990DBA-502F-4C2A-848D-392B93D9B9C3/Microsoft_Enterprise_Cloud_Red_Teaming.pdf) (von einer Sicherheitsverletzung ausgehen) betont Microsoft neben vorbeugenden Maßnahmen die Notwendigkeit von reaktiven Sicherheitsprozessen. Das Rollen Ihrer Gerätezertifikate sollte ein Bestandteil dieser Sicherheitsprozesse sein. Die Häufigkeit, mit der Sie die Zertifikate rollen, hängt von den Sicherheitsanforderungen Ihrer Lösung ab. Kunden, deren Lösungen sensible Daten beinhalten, rollen Zertifikate möglicherweise täglich, während andere ihre Zertifikate alle zwei Jahre rollen.
+Das Rollen von Zertifikaten ist eine bewährte Sicherheitsmethode, um Ihr System im Falle einer Sicherheitsverletzung zu schützen. Als Teil der [Assume Breach-Methodik](https://download.microsoft.com/download/C/1/9/C1990DBA-502F-4C2A-848D-392B93D9B9C3/Microsoft_Enterprise_Cloud_Red_Teaming.pdf) (von einer Sicherheitsverletzung ausgehen) betont Microsoft neben vorbeugenden Maßnahmen die Notwendigkeit von reaktiven Sicherheitsprozessen. Das Rollen Ihrer Gerätezertifikate sollte ein Bestandteil dieser Sicherheitsprozesse sein. Die Häufigkeit, mit der Sie die Zertifikate rollen, hängt von den Sicherheitsanforderungen Ihrer Lösung ab. Kunden, deren Lösungen sensible Daten beinhalten, rollen Zertifikate möglicherweise täglich, während andere ihre Zertifikate alle zwei Jahre rollen.
 
 Beim Rollen von Gerätezertifikaten müssen das auf dem Gerät gespeicherte Zertifikat und der IoT Hub aktualisiert werden. Anschließend kann das Gerät sich selbst mit dem IoT Hub anhand der normalen [automatischen Bereitstellung](concepts-auto-provisioning.md) mit Device Provisioning Service erneut bereitstellen.
 

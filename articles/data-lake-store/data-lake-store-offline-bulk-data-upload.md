@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 6430bf524ac81af242bf7afb4c2c8196309806ab
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: fc70089517bbc1aa90f95f1e0231f2c67f930090
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44391675"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51242193"
 ---
 # <a name="use-the-azure-importexport-service-for-offline-copy-of-data-to-azure-data-lake-storage-gen1"></a>Verwenden von Azure Import/Export zum Kopieren von Daten in Data Lake Storage Gen1 im Offlinemodus
 In diesem Artikel erfahren Sie, wie Sie große Datasets (>200 GB) mit Kopiermethoden im Offlinemodus, z.B. mit dem [Azure Import/Export-Dienst](../storage/common/storage-import-export-service.md), nach Azure Data Lake Storage Gen1 kopieren können. Die in diesem Artikel als Beispiel verwendete Datei hat eine Größe von 339.420.860.416 Byte, d.h. etwa 319GB auf dem Datenträger. Der Name dieser Datei lautet „319GB.tsv“.
@@ -52,7 +52,7 @@ Befolgen Sie die Anweisungen unter [Verwenden des Azure Import/Export-Diensts](.
 
 1. Verwenden Sie eine Festplatte, die die Anforderung zur Verwendung mit dem Azure Import/Export-Dienst erfüllt.
 2. Bestimmen Sie ein Azure-Speicherkonto, in das die Daten kopiert werden, nachdem die Festplatte an das Azure-Rechenzentrum gesendet wurde.
-3. Verwenden Sie das [Azure Import/Export-Tool](http://go.microsoft.com/fwlink/?LinkID=301900&clcid=0x409) (ein Befehlszeilenprogramm). Nachfolgend finden Sie einen Codeausschnitt als Beispiel für die Verwendung des Tools.
+3. Verwenden Sie das [Azure Import/Export-Tool](https://go.microsoft.com/fwlink/?LinkID=301900&clcid=0x409) (ein Befehlszeilenprogramm). Nachfolgend finden Sie einen Codeausschnitt als Beispiel für die Verwendung des Tools.
 
     ````
     WAImportExport PrepImport /sk:<StorageAccountKey> /t: <TargetDriveLetter> /format /encrypt /logdir:e:\myexportimportjob\logdir /j:e:\myexportimportjob\journal1.jrn /id:myexportimportjob /srcdir:F:\demo\ExImContainer /dstdir:importcontainer/vf1/

@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 1/23/2017
 ms.author: adigan
-ms.openlocfilehash: 4a74aa674bd80f3d1297e71873eb9d71e46fd4cb
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: d8241385cde61647222f85c29f45bdaabd621610
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34606918"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51242924"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-data-protection-manager-dpm-servers-using-powershell"></a>Bereitstellen und Verwalten der Sicherung in Azure für Data Protection Manager (DPM)-Server mit PowerShell
 In diesem Artikel erfahren Sie, wie Sie PowerShell zum Einrichten von Azure Backup auf einem DPM-Server sowie zum Verwalten von Sicherungen und Wiederherstellungen verwenden.
@@ -102,7 +102,7 @@ Properties        : Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties
 
 
 ## <a name="installing-the-azure-backup-agent-on-a-dpm-server"></a>Installieren des Azure Backup-Agents auf einem DPM-Server
-Bevor Sie den Azure Backup-Agent installieren, müssen Sie das Installationsprogramm herunterladen, damit es auf dem Windows-Server verfügbar ist. Die neueste Version des Installationsprogramms erhalten Sie im [Microsoft Download Center](http://aka.ms/azurebackup_agent) oder im Dashboard des Recovery Services-Tresors. Speichern Sie das Installationsprogramm an einem leicht zugänglichen Speicherort wie *C:\Downloads\*.
+Bevor Sie den Azure Backup-Agent installieren, müssen Sie das Installationsprogramm herunterladen, damit es auf dem Windows-Server verfügbar ist. Die neueste Version des Installationsprogramms erhalten Sie im [Microsoft Download Center](https://aka.ms/azurebackup_agent) oder im Dashboard des Recovery Services-Tresors. Speichern Sie das Installationsprogramm an einem leicht zugänglichen Speicherort wie *C:\Downloads\*.
 
 Um den Agent zu installieren, führen Sie den folgenden Befehl **auf dem DPM-Server**in einer PowerShell-Konsole mit erhöhten Rechten aus:
 

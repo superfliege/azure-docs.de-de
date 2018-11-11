@@ -9,12 +9,12 @@ ms.service: germany
 ms.date: 8/15/2018
 ms.topic: article
 ms.custom: bfmigrate
-ms.openlocfilehash: 6f5cccc41ca6430eb417539e09582bd25a615bab
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: e49a4d8ab4876d2351efdbb7c47a7a9063f31229
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43346251"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51243565"
 ---
 # <a name="migration-of-database-resources-from-azure-germany-to-global-azure"></a>Migration von Datenbankressourcen von Azure Deutschland zu Azure weltweit
 
@@ -62,7 +62,7 @@ Es gibt keine speziellen Migrationsoptionen für SQL Data Warehouse. Befolgen Si
 
 Mit dem Azure Cosmos DB-Datenmigrationstool können Sie problemlos Daten zu Azure Cosmos DB migrieren. Das Azure Cosmos DB-Datenmigrationstool ist eine Open-Source-Lösung, mit der Daten aus verschiedenen Quellen in Azure Cosmos DB importiert werden können.
 
-Das Tool steht als GUI-Tool oder als Befehlszeilentool zur Verfügung. Der Quellcode ist im GitHub-Repository für das [Azure Cosmos DB-Datenmigrationstool](https://github.com/azure/azure-documentdb-datamigrationtool) verfügbar, und eine kompilierte Version steht im [Microsoft Download Center](http://www.microsoft.com/download/details.aspx?id=46436) zur Verfügung.
+Das Tool steht als GUI-Tool oder als Befehlszeilentool zur Verfügung. Der Quellcode ist im GitHub-Repository für das [Azure Cosmos DB-Datenmigrationstool](https://github.com/azure/azure-documentdb-datamigrationtool) verfügbar, und eine kompilierte Version steht im [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=46436) zur Verfügung.
 
 Die folgenden Schritte werden empfohlen:
 

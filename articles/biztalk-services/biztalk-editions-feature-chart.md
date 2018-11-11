@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 11/07/2016
 ms.author: mandia
-ms.openlocfilehash: 718b57a801a9ba62a0154ae42da2ac0c0741f203
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8e25f98f1189f71943ece4a7877a86e29698689a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "22706647"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51240510"
 ---
 # <a name="biztalk-services-editions-chart"></a>BizTalk Services: Editionsübersicht
 
@@ -38,15 +38,15 @@ Enthält Hybridverbindungen, EAI- und EDI-Nachrichtenverarbeitung mit einem einf
 
 **Basic**
 
-Enthält die meisten Funktionen der Developer Edition mit zusätzlichen Hybridverbindungen, EAI-Brücken, EDI-Vereinbarungen und BizTalk Adapter Pack-Verbindungen. Bietet außerdem hohe Verfügbarkeit und eine Skalierungsoption mit einer Vereinbarung zum Servicelevel (SLA).
+Enthält die meisten Funktionen der Developer Edition mit zusätzlichen Hybridverbindungen, EAI-Brücken, EDI-Vereinbarungen und BizTalk Adapter Pack-Verbindungen. Bietet außerdem Hochverfügbarkeit und eine Skalierungsoption mit einer Vereinbarung zum Servicelevel (SLA).
 
 **Standard**
 
-Enthält alle Funktionen der Basic Edition mit zusätzlichen Hybridverbindungen, EAI-Brücken, EDI-Vereinbarungen und BizTalk Adapter Pack-Verbindungen. Bietet außerdem hohe Verfügbarkeit und eine Skalierungsoption mit einer Vereinbarung zum Servicelevel (SLA).
+Enthält alle Funktionen der Basic Edition mit zusätzlichen Hybridverbindungen, EAI-Brücken, EDI-Vereinbarungen und BizTalk Adapter Pack-Verbindungen. Bietet außerdem Hochverfügbarkeit und eine Skalierungsoption mit einer Vereinbarung zum Servicelevel (SLA).
 
 **Premium**
 
-Enthält alle Funktionen der Standard Edition mit zusätzlichen Hybridverbindungen, EAI-Brücken, EDI-Vereinbarungen und BizTalk Adapter Pack-Verbindungen. Umfasst außerdem Archivierung, hohe Verfügbarkeit und eine Skalierungsoption mit einer Vereinbarung zum Servicelevel (SLA).
+Enthält alle Funktionen der Standard Edition mit zusätzlichen Hybridverbindungen, EAI-Brücken, EDI-Vereinbarungen und BizTalk Adapter Pack-Verbindungen. Umfasst außerdem Archivierung, Hochverfügbarkeit und eine Skalierungsoption mit einer Vereinbarung zum Servicelevel (SLA).
 
 ## <a name="editions-chart"></a>Editionsübersicht
 In der folgenden Tabelle sind die Unterschiede aufgeführt:
@@ -63,7 +63,7 @@ In der folgenden Tabelle sind die Unterschiede aufgeführt:
 
 <tr>
 <td><strong>Startpreis</strong></td>
-<td colspan="5"><a HREF="http://go.microsoft.com/fwlink/p/?LinkID=304011"> Azure BizTalk Services – Preise</a> <br/><br/> <a HREF="http://azure.microsoft.com/pricing/calculator/?scenario=full"> Azure-Preisrechner</a></td>
+<td colspan="5"><a HREF="https://go.microsoft.com/fwlink/p/?LinkID=304011"> Azure BizTalk Services – Preise</a> <br/><br/> <a HREF="https://azure.microsoft.com/pricing/calculator/?scenario=full"> Azure-Preisrechner</a></td>
 </tr>
 <tr>
 <td><strong>Standardminimalkonfiguration</strong></td>
@@ -148,18 +148,18 @@ Einschließlich TPM-Vereinbarungen</td>
 <td>Enthalten</td>
 <td>Enthalten</td>
 <td>Enthalten</td>
-<td>Included</td>
+<td>Enthalten</td>
 </tr>
 <tr>
-<td><strong>Hohe Verfügbarkeit</strong>
+<td><strong>Hochverfügbarkeit</strong>
 <br/><br/>
-Informationen zur Vereinbarung zum Servicelevel (SLA) finden Sie unter <a HREF="http://go.microsoft.com/fwlink/p/?LinkID=304011">Azure BizTalk Services – Preise</a>.
+Informationen zur Vereinbarung zum Servicelevel (SLA) finden Sie unter <a HREF="https://go.microsoft.com/fwlink/p/?LinkID=304011">Azure BizTalk Services – Preise</a>.
 </td>
 <td>Nicht enthalten</td>
 <td>Nicht enthalten</td>
 <td>Enthalten</td>
 <td>Enthalten</td>
-<td>Included</td>
+<td>Enthalten</td>
 </tr>
 <tr>
 <td><strong>Sichern und Wiederherstellen</strong></td>
@@ -167,7 +167,7 @@ Informationen zur Vereinbarung zum Servicelevel (SLA) finden Sie unter <a HREF="
 <td>Enthalten</td>
 <td>Enthalten</td>
 <td>Enthalten</td>
-<td>Included</td>
+<td>Enthalten</td>
 </tr>
 <tr>
 <td><strong>Nachverfolgung</strong></td>
@@ -175,7 +175,7 @@ Informationen zur Vereinbarung zum Servicelevel (SLA) finden Sie unter <a HREF="
 <td>Enthalten</td>
 <td>Enthalten</td>
 <td>Enthalten</td>
-<td>Included</td>
+<td>Enthalten</td>
 </tr>
 <tr>
 <td><strong>Archivierung</strong><br/><br/>
@@ -192,7 +192,7 @@ Einschließlich Empfangsnachweis und Herunterladen nachverfolgter Nachrichten</t
 <td>Enthalten</td>
 <td>Enthalten</td>
 <td>Enthalten</td>
-<td>Included</td>
+<td>Enthalten</td>
 </tr>
 <tr>
 <td><strong>Verwendung von Transformationen, einschließlich benutzerdefiniertem XSLT</strong></td>
@@ -205,7 +205,7 @@ Einschließlich Empfangsnachweis und Herunterladen nachverfolgter Nachrichten</t
 </table>
 
 > [!NOTE]
-> Hohe Verfügbarkeit impliziert, dass zum besseren Schutz vor Hardwareausfällen mehrere virtuelle Computer in einer BizTalk-Einheit ausgeführt werden.
+> Hochverfügbarkeit impliziert, dass zum besseren Schutz vor Hardwareausfällen mehrere virtuelle Computer in einer BizTalk-Einheit ausgeführt werden.
 > 
 > 
 
@@ -220,7 +220,7 @@ BizTalk Services stellt eine echte PaaS-Architektur (Platform-as-a-Service) zum 
 * Microsoft gewährleistet die Verfügbarkeit.
 * Sie steuern die bedarfsgerechte Skalierung, indem Sie über das Azure-Portal einfach mehr oder weniger Kapazität anfordern.
 
-BizTalk Server in Azure Virtual Machines stellt eine IaaS-Architektur (Infrastructure-as-a-Service) bereit. Sie können virtuelle Computer erstellen und genau wie in Ihrer lokalen Umgebung konfigurieren – so lassen sich vorhandene Anwendungen ohne Codeänderungen in der Cloud einfacher ausführen. Beim IaaS-Modell sind Sie nach wie vor für das Konfigurieren der virtuellen Computer, das Verwalten der virtuellen Computer (z.B. Installieren von Software und Betriebssystemupdates) und das Gestalten der Anwendung zur Bereitstellung hoher Verfügbarkeit verantwortlich.
+BizTalk Server in Azure Virtual Machines stellt eine IaaS-Architektur (Infrastructure-as-a-Service) bereit. Sie können virtuelle Computer erstellen und genau wie in Ihrer lokalen Umgebung konfigurieren – so lassen sich vorhandene Anwendungen ohne Codeänderungen in der Cloud einfacher ausführen. Beim IaaS-Modell sind Sie nach wie vor für das Konfigurieren der virtuellen Computer, das Verwalten der virtuellen Computer (z.B. Installieren von Software und Betriebssystemupdates) und das Gestalten der Anwendung zur Bereitstellung von Hochverfügbarkeit verantwortlich.
 
 Wenn Sie neue Integrationslösungen erstellen möchten, welche Ihren Infrastrukturverwaltungsaufwand minimieren, dann sollten Sie BizTalk Services verwenden. Wenn Sie vorhandene BizTalk-Lösungen schnell migrieren und eine bedarfsgerechte Umgebung zum Entwickeln und Testen von BizTalk Server-Anwendungen möchten, dann sollten Sie BizTalk Server auf einer virtuellen Azure-Maschine verwenden.
 
@@ -242,10 +242,10 @@ Die Edition „Free“ kann nicht migriert oder auf einen anderen Tarif hochgest
 Verwenden Sie für die anderen Editionen die Sicherungs- und Wiederherstellungsoptionen zum Migrieren Ihrer Artefakte aus einem Tarif in einen anderen. Sie können beispielsweise Ihre Artefakte im Tarif „Standard“ sichern und im Tarif „Premium“ wiederherstellen. [BizTalk Services: Sichern und Wiederherstellen](biztalk-backup-restore.md) werden die unterstützten Migrationspfade beschrieben und die gesicherten Artefakte aufgelistet. Beachten Sie, dass Hybridverbindungen nicht gesichert werden. Nach dem Sichern und Wiederherstellen in einem neuen Tarif müssen Sie die Hybridverbindungen neu erstellen.  
 
 #### <a name="is-the-biztalk-adapter-service-included-in-the-service-how-do-i-receive-the-software"></a>Ist der BizTalk-Adapterdienst im Dienst enthalten? Wie erhalte ich die Software?
-Ja, BizTalk-Adapterdienst und BizTalk Adapter Pack sind im Azure BizTalk Services SDK enthalten und als [Download](http://www.microsoft.com/download/details.aspx?id=39087)verfügbar.
+Ja, BizTalk-Adapterdienst und BizTalk Adapter Pack sind im Azure BizTalk Services SDK enthalten und als [Download](https://www.microsoft.com/download/details.aspx?id=39087)verfügbar.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Um Azure BizTalk Services im Azure-Portal zu erstellen, wechseln Sie zu [BizTalk Services: Bereitstellen mit dem Azure-Portal](biztalk-provision-services.md). Wenn Sie mit dem Erstellen von Anwendungen beginnen möchten, wechseln Sie zu [Azure BizTalk Services](http://go.microsoft.com/fwlink/p/?LinkID=235197).
+Um Azure BizTalk Services im Azure-Portal zu erstellen, wechseln Sie zu [BizTalk Services: Bereitstellen mit dem Azure-Portal](biztalk-provision-services.md). Wenn Sie mit dem Erstellen von Anwendungen beginnen möchten, wechseln Sie zu [Azure BizTalk Services](https://go.microsoft.com/fwlink/p/?LinkID=235197).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 * [BizTalk Services: Bereitstellen mit dem Azure-Portal](biztalk-provision-services.md)<br/>
@@ -254,5 +254,5 @@ Um Azure BizTalk Services im Azure-Portal zu erstellen, wechseln Sie zu [BizTalk
 * [BizTalk Services: Backup and restore](biztalk-backup-restore.md)<br/>
 * [BizTalk Services: Drosselung](biztalk-throttling-thresholds.md)<br/>
 * [BizTalk Services: Name und Schlüssel des Ausstellers](biztalk-issuer-name-issuer-key.md)<br/>
-* [Wie verwende ich das Azure BizTalk Services SDK?](http://go.microsoft.com/fwlink/p/?LinkID=302335)<br/>
+* [Wie verwende ich das Azure BizTalk Services SDK?](https://go.microsoft.com/fwlink/p/?LinkID=302335)<br/>
 

@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: lizross
 ms.reviewer: asteen
-ms.openlocfilehash: 1caf69ee822ec11e8797ca23c9c163d36344edc7
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: d0d07e235c33877ede7f47a6095482b2acec18d0
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44719986"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51239836"
 ---
 # <a name="what-is-the-myapps-portal"></a>Was ist das MyApps-Portal?
 
@@ -137,7 +137,7 @@ Wenn Sie Azure-Administrator und mit einem Konto im Verzeichnis beim Azure-Porta
 Wenn Sie den Test mit einem *anderen* Benutzerkonto durchführen möchten, gehen Sie wie folgt vor:
 
 1. Wählen Sie rechts oben im Azure-Portal oder im Portal „Meine Apps“ **Abmelden** aus. 
-2. Navigieren Sie zum [Portal Meine Apps](http://myapps.microsoft.com).
+2. Navigieren Sie zum [Portal Meine Apps](https://myapps.microsoft.com).
 3. Geben Sie auf der Anmeldeseite den Benutzernamen und das Kennwort für das Konto in Ihrem Verzeichnis ein, das Sie testen möchten.
 
 

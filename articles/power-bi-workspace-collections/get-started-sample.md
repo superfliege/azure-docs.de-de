@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: powerbi
 ms.date: 09/25/2017
 ms.author: maghan
-ms.openlocfilehash: cd7da8d2bbd684df29432bb924bdae3cd9ac7e64
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: a2e1604a51b8343d926dda3b258d38b19266deeb
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43044436"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51246683"
 ---
 # <a name="get-started-with-power-bi-workspace-collections-sample"></a>Beispiel für die ersten Schritte mit Power BI-Arbeitsbereichssammlungen
 
@@ -26,9 +26,9 @@ Mit **Microsoft Power BI-Arbeitsbereichssammlungen** können Sie Power BI-Berich
 
 Bevor wir fortfahren, sollten Sie die folgenden Ressourcen speichern. Diese Ressourcen sind hilfreich, wenn Sie Power BI-Berichte in die Beispiel-App (und auch in Ihre eigenen Apps) integrieren.
 
-* [Beispiel für eine Arbeitsbereichs-Web-App](http://go.microsoft.com/fwlink/?LinkId=761493)
+* [Beispiel für eine Arbeitsbereichs-Web-App](https://go.microsoft.com/fwlink/?LinkId=761493)
 * [API-Referenz für Power BI-Arbeitsbereichssammlungen](https://msdn.microsoft.com/library/azure/mt711507.aspx)
-* [Power BI .NET SDK ](http://go.microsoft.com/fwlink/?LinkId=746472) (verfügbar über NuGet)
+* [Power BI .NET SDK ](https://go.microsoft.com/fwlink/?LinkId=746472) (verfügbar über NuGet)
 * [Beispiel für die Einbettung von JavaScript-Berichten](https://microsoft.github.io/PowerBI-JavaScript/demo)
 
 > [!NOTE]
@@ -38,7 +38,7 @@ Bevor wir fortfahren, sollten Sie die folgenden Ressourcen speichern. Diese Ress
 
 Richten wir zunächst Schritt für Schritt die Visual Studio-Entwicklungsumgebung ein, um auf die Komponenten zuzugreifen, die zum Ausführen der Beispiel-App erforderlich sind.
 
-1. Laden Sie das Beispiel [Power BI-Arbeitsbereichssammlungen – Integrate a report into a web app](http://go.microsoft.com/fwlink/?LinkId=761493) (Integrieren eines Berichts in eine Web-App) von GitHub herunter, und extrahieren Sie den Download.
+1. Laden Sie das Beispiel [Power BI-Arbeitsbereichssammlungen – Integrate a report into a web app](https://go.microsoft.com/fwlink/?LinkId=761493) (Integrieren eines Berichts in eine Web-App) von GitHub herunter, und extrahieren Sie den Download.
 2. Öffnen Sie **PowerBI embedded.sln** in Visual Studio. Möglicherweise müssen Sie den Befehl **Update-Package** in der NuGet-Paket-Manager-Konsole ausführen, um die Pakete zu aktualisieren, die in dieser Lösung verwendet werden.
 3. Erstellen Sie die Projektmappe.
 4. Führen Sie die Konsolen-App **ProvisionSample** aus. In der Beispiel-App-Konsole stellen Sie einen Arbeitsbereich bereit und importieren eine PBIX-Datei.
@@ -51,7 +51,7 @@ Richten wir zunächst Schritt für Schritt die Visual Studio-Entwicklungsumgebun
 8. Kopieren und speichern Sie die neu erstellte **Arbeitsbereichs-ID** , um sie später in diesem Artikel zu verwenden. Nach der Erstellung ist die **Arbeitsbereichs-ID** im **Azure-Portal** zu finden.
 
     ![Arbeitsbereichs-ID im Azure-Portal](media/get-started-sample/workspace-id.png)
-9. Zum Importieren einer PBIX-Datei in Ihren **Arbeitsbereich** wählen Sie Option **6. Importieren Sie die PBIX-Desktopdatei in einen vorhandenen Arbeitsbereich**. Falls Sie keine PBIX-Datei parat haben, können Sie das [PBIX-Beispiel „Retail Analysis“](http://go.microsoft.com/fwlink/?LinkID=780547) herunterladen.
+9. Zum Importieren einer PBIX-Datei in Ihren **Arbeitsbereich** wählen Sie Option **6. Importieren Sie die PBIX-Desktopdatei in einen vorhandenen Arbeitsbereich**. Falls Sie keine PBIX-Datei parat haben, können Sie das [PBIX-Beispiel „Retail Analysis“](https://go.microsoft.com/fwlink/?LinkID=780547) herunterladen.
 10. Wenn Sie dazu aufgefordert werden, geben Sie einen Anzeigenamen für Ihr **Dataset**ein.
 
 Sie sollten in etwa folgende Rückgabe erhalten:
@@ -83,7 +83,7 @@ Das Beispiel für die Web-App ist eine Beispielanwendung, die die in den **Arbei
     ```
 3. Führen Sie die Webanwendung **EmbedSample** aus.
 
-Nach dem Ausführen der Webanwendung **EmbedSample** enthält der Navigationsbereich auf der linken Seite ein Menü **Berichte**. Erweitern Sie zum Anzeigen des importierten Berichts den Eintrag **Berichte**, und klicken Sie auf einen Bericht. Wenn Sie das [PBIX-Beispiel „Retail Analysis“](http://go.microsoft.com/fwlink/?LinkID=780547) importiert haben, sieht die Beispiel-Web-App wie folgt aus:
+Nach dem Ausführen der Webanwendung **EmbedSample** enthält der Navigationsbereich auf der linken Seite ein Menü **Berichte**. Erweitern Sie zum Anzeigen des importierten Berichts den Eintrag **Berichte**, und klicken Sie auf einen Bericht. Wenn Sie das [PBIX-Beispiel „Retail Analysis“](https://go.microsoft.com/fwlink/?LinkID=780547) importiert haben, sieht die Beispiel-Web-App wie folgt aus:
 
 ![Beispiel für die linke Navigationsleiste in der Beispielanwendung](media/get-started-sample/sample-left-nav.png)
 

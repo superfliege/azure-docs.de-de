@@ -14,18 +14,18 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: f2e0c7b335b09a0d2b8b8399e807a354ec8e4282
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 41f3fd55be02364b4028642db9db1d3f47043afa
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48806175"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51245085"
 ---
 # <a name="how-to-create-dynamics-365-for-operations-offer-via-cloud-partner-portal"></a>Erstellen des Dynamics 365 for Operations-Angebots über das Cloudpartnerportal
 
 Das Veröffentlichungsportal bietet rollenbasierten Zugriff auf das Portal, sodass mehrere Personen hinsichtlich der Veröffentlichung eines Angebots zusammenarbeiten können. Weitere Informationen finden Sie unter [Verwalten von Benutzern im Cloudpartnerportal](./cloud-partner-portal-manage-users.md).
 
-Bevor ein Angebot im Auftrag eines Herausgeberkontos veröffentlicht werden kann, muss eine der Personen mit \"Besitzer\"-Rolle bestätigen, dass die [Nutzungsbedingungen](https://azure.microsoft.com/support/legal/website-terms-of-use/), die [Datenschutzerklärung von Microsoft](http://www.microsoft.com/privacystatement/default.aspx) und die [Microsoft Azure Certified-Programmvereinbarung](https://azure.microsoft.com/support/legal/marketplace/certified-program-agreement/) eingehalten werden.
+Bevor ein Angebot im Auftrag eines Herausgeberkontos veröffentlicht werden kann, muss eine der Personen mit \"Besitzer\"-Rolle bestätigen, dass die [Nutzungsbedingungen](https://azure.microsoft.com/support/legal/website-terms-of-use/), die [Datenschutzerklärung von Microsoft](https://www.microsoft.com/privacystatement/default.aspx) und die [Microsoft Azure Certified-Programmvereinbarung](https://azure.microsoft.com/support/legal/marketplace/certified-program-agreement/) eingehalten werden.
 
 ## <a name="how-to-create-a-new-dynamics-365-for-operations-offer"></a>Erstellen eines neuen Angebots für Dynamics 365 for Operations
 

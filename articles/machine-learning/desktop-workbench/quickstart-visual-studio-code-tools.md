@@ -11,18 +11,18 @@ ms.custom: mvc
 ms.topic: quickstart
 ms.date: 11/15/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: a2c4455735523b6b726dedb13151627d8ce70f22
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 935ddfdee34462a0156a6b013282a01fe9ea145b
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46991758"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51239288"
 ---
 # <a name="visual-studio-code-tools-for-ai"></a>Visual Studio Code Tools for AI
 
 [!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
 
-Visual Studio Code Tools for AI ist eine Entwicklungserweiterung zum Erstellen, Testen und Bereitstellen von Deep Learning- und KI-Lösungen. Die Erweiterung lässt sich nahtlos in Azure Machine Learning integrieren und zeigt den Ausführungsverlauf sowie die Leistung vorheriger Trainings und benutzerdefinierter Metriken an. Sie bietet eine Explorer-Ansicht mit Beispielen zum Durchsuchen und Durchführen eines Bootstraps eines neuen Projekts mit dem [Microsoft Cognitive Toolkit](http://www.microsoft.com/cognitive-toolkit) (früher als CNTK bezeichnet), [Google TensorFlow](https://www.tensorflow.org) und anderen Deep Learning-Frameworks. Sie bietet zudem einen Explorer für Computeziele, mit dem Sie Aufträge übermitteln können, um Modelle in Remoteumgebungen wie Azure Virtual Machines oder Linux-Servern mit GPU zu trainieren. 
+Visual Studio Code Tools for AI ist eine Entwicklungserweiterung zum Erstellen, Testen und Bereitstellen von Deep Learning- und KI-Lösungen. Die Erweiterung lässt sich nahtlos in Azure Machine Learning integrieren und zeigt den Ausführungsverlauf sowie die Leistung vorheriger Trainings und benutzerdefinierter Metriken an. Sie bietet eine Explorer-Ansicht mit Beispielen zum Durchsuchen und Durchführen eines Bootstraps eines neuen Projekts mit dem [Microsoft Cognitive Toolkit](https://www.microsoft.com/cognitive-toolkit) (früher als CNTK bezeichnet), [Google TensorFlow](https://www.tensorflow.org) und anderen Deep Learning-Frameworks. Sie bietet zudem einen Explorer für Computeziele, mit dem Sie Aufträge übermitteln können, um Modelle in Remoteumgebungen wie Azure Virtual Machines oder Linux-Servern mit GPU zu trainieren. 
  
 ## <a name="getting-started"></a>Erste Schritte 
 Um zu beginnen, müssen Sie zunächst [Visual Studio Code](https://code.visualstudio.com/Download) herunterladen und installieren. Sobald Visual Studio Code geöffnet ist, führen Sie die folgenden Schritte aus:

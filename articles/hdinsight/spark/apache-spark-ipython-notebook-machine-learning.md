@@ -3,18 +3,18 @@ title: 'Tutorial: Erstellen einer Spark-Machine Learning-Anwendung in Azure HDIn
 description: Schrittweise Anleitung zum Erstellen einer Apache Spark-Machine Learning-Anwendung in HDInsight Spark-Clustern mit Jupyter Notebook.
 services: hdinsight
 ms.service: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
-ms.date: 05/07/2018
-ms.author: jasonh
-ms.openlocfilehash: 4da8b0ddd8f8197d9aa8a79e5b63ac8fd90b4172
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.date: 11/06/2018
+ms.author: hrasheed
+ms.openlocfilehash: eac44d3b8daae27afec8aa24f4767bdb5dbf991a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43043336"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51239558"
 ---
 # <a name="tutorial-build-a-spark-machine-learning-application-in-hdinsight"></a>Tutorial: Erstellen einer Spark-Machine Learning-Anwendung in HDInsight 
 
@@ -80,7 +80,7 @@ In dieser Anwendung verwenden Sie eine Spark [ML-Pipeline](https://spark.apache.
         return LabeledDocument((values[6]), textValue, hot)
 
     # Load the raw HVAC.csv file, parse it using the function
-    data = sc.textFile("wasb:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
+    data = sc.textFile("/HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
 
     documents = data.filter(lambda s: "Date" not in s).map(parseDocument)
     training = documents.toDF()

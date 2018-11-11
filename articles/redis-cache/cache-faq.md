@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: wesmc
-ms.openlocfilehash: c5a18a2e8d58553e49797da418f76fc3f251e003
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 21b5050996428328bfda314b2f2242ed2a766e74
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50026040"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51239762"
 ---
 # <a name="azure-redis-cache-faq"></a>Azure Redis Cache – häufig gestellte Fragen
 In diesem Artikel erhalten Sie Antworten auf häufig gestellte Fragen sowie Informationen zu Mustern und Best Practices für Azure Redis Cache.
@@ -250,7 +250,7 @@ Sie können alle aufgelisteten [Redis-Befehle](http://redis.io/commands#) mit Au
 * `redis-cli -h <redis cache name>.redis.cache.windows.net -a <key>`
 
 > [!NOTE]
-> Die Redis-Befehlszeilentools funktionieren nicht mit dem SSL-Port, aber Sie können ein Hilfsprogramm wie `stunnel` verwenden, um eine sichere Verbindung zwischen den Tools und dem SSL-Port herzustellen. Anweisungen hierzu finden Sie im Blogbeitrag [Announcing ASP.NET Session State Provider for Redis Preview Release](http://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx) (Ankündigung des ASP.NET-Sitzungsstatusanbieters für Redis-Vorschauversion).
+> Die Redis-Befehlszeilentools funktionieren nicht mit dem SSL-Port, aber Sie können ein Hilfsprogramm wie `stunnel` verwenden, um eine sichere Verbindung zwischen den Tools und dem SSL-Port herzustellen. Anweisungen hierzu finden Sie im Blogbeitrag [Announcing ASP.NET Session State Provider for Redis Preview Release](https://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx) (Ankündigung des ASP.NET-Sitzungsstatusanbieters für Redis-Vorschauversion).
 >
 >
 
@@ -295,7 +295,7 @@ Der Redis-Server bietet keine native SSL-Unterstützung, Azure Redis Cache hinge
 >
 >
 
-Redis-Tools wie z.B. `redis-cli` funktionieren nicht mit dem SSL-Port, aber Sie können ein Hilfsprogramm wie `stunnel` verwenden, um eine sichere Verbindung zwischen den Tools und dem SSL-Port herzustellen. Anweisungen hierzu finden Sie im Blogbeitrag [Announcing ASP.NET Session State Provider for Redis Preview Release](http://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx) (Ankündigung des ASP.NET-Sitzungsstatusanbieters für Redis-Vorschauversion).
+Redis-Tools wie z.B. `redis-cli` funktionieren nicht mit dem SSL-Port, aber Sie können ein Hilfsprogramm wie `stunnel` verwenden, um eine sichere Verbindung zwischen den Tools und dem SSL-Port herzustellen. Anweisungen hierzu finden Sie im Blogbeitrag [Announcing ASP.NET Session State Provider for Redis Preview Release](https://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx) (Ankündigung des ASP.NET-Sitzungsstatusanbieters für Redis-Vorschauversion).
 
 Anweisungen zum Herunterladen der Redis-Tools finden Sie im Abschnitt [Wie führe ich Redis-Befehle aus?](#cache-commands) .
 

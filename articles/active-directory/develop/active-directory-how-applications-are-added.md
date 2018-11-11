@@ -17,12 +17,12 @@ ms.date: 04/18/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: elisol, lenalepa
-ms.openlocfilehash: fb2bfc89322d81833b1961bfb866a773c5d1d475
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 8e806fc334faf85864ea9158d4f2ed6d107327ae
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39577229"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51241496"
 ---
 # <a name="how-and-why-applications-are-added-to-azure-ad"></a>Wie und warum werden Anwendungen zu Azure AD hinzugefügt?
 
@@ -69,7 +69,7 @@ Der Dienstprinzipal kann Folgendes enthalten:
 
 * Anmeldung von Benutzern bei einer in Azure AD integrierten Drittanbieteranwendung
   * Bei der Anmeldung werden die Benutzer aufgefordert, der Anwendung neben weiteren Berechtigungen auch die Berechtigung für den Zugriff auf deren Profil zu gewähren. Der erste Benutzer, der hierzu seine Zustimmung erteilt, bewirkt, dass dem Verzeichnis ein Dienstprinzipal hinzugefügt wird, der die Anwendung darstellt.
-* Anmeldung von Benutzern bei Microsoft-Onlinediensten wie [Office 365](http://products.office.com/)
+* Anmeldung von Benutzern bei Microsoft-Onlinediensten wie [Office 365](https://products.office.com/)
   * Wenn Sie Office 365 abonnieren oder ein Testabonnement starten, werden im Verzeichnis ein oder mehrere Dienstprinzipale erstellt, die die verschiedenen Dienste darstellen, mit denen die Funktionen von Office 365 bereitgestellt werden.
   * Manche Office 365-Dienste wie beispielsweise SharePoint erstellen fortlaufend neue Dienstprinzipale, um eine sichere Kommunikation zwischen den Komponenten (einschließlich Workflows) zu ermöglichen.
 * Hinzufügen einer Anwendung aus dem App-Katalog durch einen Administrator (dadurch wird ebenfalls ein zugrunde liegendes Anwendungsobjekt erstellt)

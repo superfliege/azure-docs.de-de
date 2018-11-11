@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 1b96c801e3c5a43f23d4c63c13a611c24dd6705b
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 99d835d1d0e18bf62d6e64b7e5af45b6c53d809e
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33783439"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51239507"
 ---
 # <a name="create-virtual-machines-using-an-azure-resource-manager-template"></a>Erstellen von virtuellen Computern mit einer Azure Resource Manager-Vorlage 
 
-Wenn Sie einen virtuellen Computer (VM) in DevTest Labs über das [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040) erstellen, können Sie die Azure Resource Manager-Vorlage anzeigen, bevor Sie die VM speichern. Die Vorlage kann dann als Basis für die Erstellung von weiteren Lab-VMs mit den gleichen Einstellungen verwendet werden.
+Wenn Sie einen virtuellen Computer (VM) in DevTest Labs über das [Azure-Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) erstellen, können Sie die Azure Resource Manager-Vorlage anzeigen, bevor Sie die VM speichern. Die Vorlage kann dann als Basis für die Erstellung von weiteren Lab-VMs mit den gleichen Einstellungen verwendet werden.
 
 In diesem Artikel wird beschrieben, inwiefern sich Resource Manager-Vorlagen für mehrere VMs und für eine einzelne VM unterscheiden, und es wird gezeigt, wie Sie eine Vorlage beim Erstellen einer VM anzeigen und speichern.
 

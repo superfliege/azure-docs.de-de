@@ -16,12 +16,12 @@ ms.date: 05/30/2018
 ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 8a40acda189507c1589373a48166ed1668e30650
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: a92d3237300fcd29fecf49d78b2866f8bd7e6a6b
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46308329"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51247703"
 ---
 # <a name="determine-access-control-requirements-for-your-hybrid-identity-solution"></a>Ermitteln der Zugriffssteuerungsanforderungen für Ihre Hybrid-Identitätslösung
 Wenn eine Organisation ihre Hybrid-Identitätslösung entwirft, kann sie bei dieser Gelegenheit auch die Zugriffsanforderungen für die Ressourcen überprüfen, die sie für Benutzer verfügbar machen möchte. Der Datenzugriff deckt alle vier Säulen der Identität ab, also:
@@ -34,7 +34,7 @@ Wenn eine Organisation ihre Hybrid-Identitätslösung entwirft, kann sie bei die
 Im folgenden Abschnitt wird näher auf die Authentifizierung und Autorisierung eingegangen. Verwaltung und Überwachung sind Teil des Lebenszyklus von Hybrididentitäten. Weitere Informationen zu diesen Funktionen finden Sie unter [Ermitteln der Aufgaben für die Hybrididentitätsverwaltung](plan-hybrid-identity-design-considerations-hybrid-id-management-tasks.md).
 
 > [!NOTE]
-> Weitere Informationen zu den einzelnen Säulen finden Sie unter [Die vier Säulen der Identität – Identitätsverwaltung im Zeitalter von Hybrid-IT](http://social.technet.microsoft.com/wiki/contents/articles/15530.the-four-pillars-of-identity-identity-management-in-the-age-of-hybrid-it.aspx) (in englischer Sprache).
+> Weitere Informationen zu den einzelnen Säulen finden Sie unter [Die vier Säulen der Identität – Identitätsverwaltung im Zeitalter von Hybrid-IT](https://social.technet.microsoft.com/wiki/contents/articles/15530.the-four-pillars-of-identity-identity-management-in-the-age-of-hybrid-it.aspx) (in englischer Sprache).
 > 
 > 
 

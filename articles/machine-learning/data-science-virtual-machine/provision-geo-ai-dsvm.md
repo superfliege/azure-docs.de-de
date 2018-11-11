@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/05/2018
 ms.author: gokuma
-ms.openlocfilehash: 93dfe6594aeaf45a6905fe8cb55c98dd37cc9599
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: bdcf2662f2a81b145868cff92ecb7a2cb4d53046
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31408607"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51239796"
 ---
 # <a name="provision-a-geo-artificial-intelligence-virtual-machine-on-azure"></a>Bereitstellen einer Data Science-VM für geografische KI in Azure 
 
-Die Data Science-VM für geografische KI (Geo-DSVM) ist eine Erweiterung der verbreiteten [Azure Data Science-VM](http://aka.ms/dsvm), die speziell zur Kombination von KA und geografischen Analysen konfiguriert ist. Die geografischen Analysen auf dem virtuellen Computer werden durch [ArcGIS Pro](https://www.arcgis.com/features/index.html) ermöglicht. Die Data Science-VM ermöglicht das schnelle Trainieren von Modellen für maschinelles Lernen und selbst von Deep Learning-Modellen mit Daten, die um geografische Daten ergänzt wurden. Sie wird nur auf der Windows 2016-DSVM unterstützt. 
+Die Data Science-VM für geografische KI (Geo-DSVM) ist eine Erweiterung der verbreiteten [Azure Data Science-VM](https://aka.ms/dsvm), die speziell zur Kombination von KA und geografischen Analysen konfiguriert ist. Die geografischen Analysen auf dem virtuellen Computer werden durch [ArcGIS Pro](https://www.arcgis.com/features/index.html) ermöglicht. Die Data Science-VM ermöglicht das schnelle Trainieren von Modellen für maschinelles Lernen und selbst von Deep Learning-Modellen mit Daten, die um geografische Daten ergänzt wurden. Sie wird nur auf der Windows 2016-DSVM unterstützt. 
 
 Die Geo-DSVM enthält mehrere Tools für KI, darunter:
 

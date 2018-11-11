@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 12/07/2016
 ms.author: goraco
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1b2f6df1e5688bf9bc47056c7b05cf6ac16026c6
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: c6dddbdbc781869ef6a3c1a0a707eeb83941b92a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45634862"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51239320"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms"></a>Hochverfügbarkeit von SAP NetWeaver auf virtuellen Azure-Computern
 
@@ -504,7 +504,7 @@ In Azure Resource Manager benötigen Sie keine Azure-Ressourcengruppe, um den Az
 
 In Azure Resource Manager können Sie mehrere SAP-SID-ASCS/SCS-Instanzen in einem Cluster installieren. Instanzen mit mehreren SIDs sind möglich, weil für jeden internen Azure Load Balancer mehrere IP-Adressen unterstützt werden.
 
-Wenn Sie das klassische Azure-Bereitstellungsmodell verwenden möchten, führen Sie die Schritte in [SAP NetWeaver in Azure: Clustering SAP ASCS/SCS instances by using Windows Server Failover Clustering in Azure with SIOS DataKeeper](http://go.microsoft.com/fwlink/?LinkId=613056) (SAP NetWeaver in Azure – Clustering von SAP ASCS/SCS-Instanzen mit dem Windows Server-Failoverclustering in Azure mit SIOS DataKeeper) aus.
+Wenn Sie das klassische Azure-Bereitstellungsmodell verwenden möchten, führen Sie die Schritte in [SAP NetWeaver in Azure: Clustering SAP ASCS/SCS instances by using Windows Server Failover Clustering in Azure with SIOS DataKeeper](https://go.microsoft.com/fwlink/?LinkId=613056) (SAP NetWeaver in Azure – Clustering von SAP ASCS/SCS-Instanzen mit dem Windows Server-Failoverclustering in Azure mit SIOS DataKeeper) aus.
 
 > [!IMPORTANT]
 > Es wird dringend empfohlen, das Azure Resource Manager-Bereitstellungsmodell für Ihre SAP-Installationen zu verwenden. Es bietet viele Vorteile, die beim klassischen Bereitstellungsmodell nicht zur Verfügung stehen. Erfahren Sie mehr über Azure-[Bereitstellungsmodelle][virtual-machines-azure-resource-manager-architecture-benefits-arm].   
@@ -802,7 +802,7 @@ Geben Sie in der [ASCS/SCS-Multi-SID-Vorlage][sap-templates-3-tier-multisid-xscs
   -  **Systemverfügbarkeit**. Wählen Sie **HA** (Hohe Verfügbarkeit).
   -  **Administratorbenutzername und Administratorkennwort**. Erstellen Sie einen neuen Benutzer, der verwendet werden kann, um sich am Computer anzumelden.
   -  **Neues oder vorhandenes Subnetz**. Legen Sie fest, ob ein neues virtuelles Netzwerk und Subnetz erstellt oder ein vorhandenes Subnetz verwendet werden soll. Wenn Sie bereits über ein virtuelles Netzwerk verfügen, das mit dem lokalen Netzwerk verbunden ist, wählen Sie hier **vorhanden** aus.
-  -  **Subnetz-ID**. Wenn Sie die VM in einem vorhandenen VNet bereitstellen möchten, in dem Sie ein Subnetz definiert haben, dem die VM zugewiesen werden soll, geben Sie die ID dieses spezifischen Subnetzes an. Die ID hat normalerweise das folgende Format: /subscriptions/<*Abonnement-ID*>/resourceGroups/<*Name der Ressourcengruppe*>/providers/Microsoft.Network/virtualNetworks/<*Name des virtuellen Netzwerks*>/subnets/<*Name des Subnetzes*>
+  -  **Subnetz-ID**. Wenn Sie die VM in einem vorhandenen VNET bereitstellen möchten, in dem Sie ein Subnetz definiert haben, dem die VM zugewiesen werden soll, geben Sie die ID dieses spezifischen Subnetzes an. Die ID hat normalerweise das folgende Format: /subscriptions/<*Abonnement-ID*>/resourceGroups/<*Name der Ressourcengruppe*>/providers/Microsoft.Network/virtualNetworks/<*Name des virtuellen Netzwerks*>/subnets/<*Name des Subnetzes*>
 
 Die Vorlage stellt eine Azure Load Balancer-Instanz bereit, die mehrere SAP-Systeme unterstützt.
 

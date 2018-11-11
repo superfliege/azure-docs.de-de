@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 05/04/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 4b48400920176055e7eb166c7502c06e67b29185
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: 00f6f84a2065a67e999149e4b0f9e28f18e5e297
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37436360"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51239422"
 ---
 # <a name="learning-key-windows-powershell-workflow-concepts-for-automation-runbooks"></a>Grundlagen der wichtigsten Windows PowerShell-Workflowkonzepte für Automation-Runbooks
 
@@ -22,7 +22,7 @@ Runbooks in Azure Automation sind als Windows PowerShell-Workflows implementiert
 
 Bei einem Workflow handelt es sich um eine Sequenz von programmierten, zusammenhängenden Schritten, mit denen zeitaufwändige Aufgaben ausgeführt werden oder für die mehrere Schritte auf verschiedenen Geräten oder verwalteten Knoten koordiniert werden müssen. Die Vorteile eines Workflows gegenüber einem normalen Skript liegen darin, dass eine Aktion gleichzeitig für mehrere Geräte ausgeführt und bei Auftreten von Fehlern eine automatische Wiederherstellung durchgeführt werden kann. Ein Windows PowerShell-Workflow ist ein Windows PowerShell-Skript, das Windows Workflow Foundation nutzt. Wenngleich der Workflow mit Windows PowerShell-Syntax geschrieben und über Windows PowerShell gestartet wird, erfolgt die Verarbeitung durch Windows Workflow Foundation.
 
-Ausführliche Informationen zu den Themen in diesem Artikel finden Sie unter [Erste Schritte mit dem Windows PowerShell-Workflow](http://technet.microsoft.com/library/jj134242.aspx).
+Ausführliche Informationen zu den Themen in diesem Artikel finden Sie unter [Erste Schritte mit dem Windows PowerShell-Workflow](https://technet.microsoft.com/library/jj134242.aspx).
 
 ## <a name="basic-structure-of-a-workflow"></a>Grundlegende Struktur eines Workflows
 
@@ -45,9 +45,9 @@ Der PowerShell-Workflowcode sieht bis auf einige signifikante Änderungen fast g
 
 ### <a name="activities"></a>Aktivitäten
 
-Eine Aktivität ist eine bestimmte Aufgabe in einem Workflow. Ebenso wie ein Skript aus einem oder mehreren Befehlen zusammengesetzt ist, setzt sich ein Workflow aus einer oder mehreren Aktivitäten zusammen, die in einer bestimmten Reihenfolge ausgeführt werden. Windows PowerShell Workflow konvertiert viele der Windows PowerShell-Cmdlets automatisch in Aktivitäten, wenn ein Workflow ausgeführt wird. Wenn Sie eines dieser Cmdlets in Ihrem Runbook angeben, wird von Windows Workflow Foundation die entsprechende Aktivität ausgeführt. Für Cmdlets ohne entsprechende Aktivität führt Windows PowerShell Workflow das Cmdlet automatisch in einer [InlineScript](#inlinescript) -Aktivität aus. Es gibt einen Satz Cmdlets, der hiervon ausgeschlossen ist und nicht in einem Workflow verwendet werden kann – es sei denn, Sie schließen diese Cmdlets explizit in einen InlineScript-Block ein. Weitere Informationen zu diesen Konzepten finden Sie unter [Verwenden von Aktivitäten in Skriptworkflows](http://technet.microsoft.com/library/jj574194.aspx).
+Eine Aktivität ist eine bestimmte Aufgabe in einem Workflow. Ebenso wie ein Skript aus einem oder mehreren Befehlen zusammengesetzt ist, setzt sich ein Workflow aus einer oder mehreren Aktivitäten zusammen, die in einer bestimmten Reihenfolge ausgeführt werden. Windows PowerShell Workflow konvertiert viele der Windows PowerShell-Cmdlets automatisch in Aktivitäten, wenn ein Workflow ausgeführt wird. Wenn Sie eines dieser Cmdlets in Ihrem Runbook angeben, wird von Windows Workflow Foundation die entsprechende Aktivität ausgeführt. Für Cmdlets ohne entsprechende Aktivität führt Windows PowerShell Workflow das Cmdlet automatisch in einer [InlineScript](#inlinescript) -Aktivität aus. Es gibt einen Satz Cmdlets, der hiervon ausgeschlossen ist und nicht in einem Workflow verwendet werden kann – es sei denn, Sie schließen diese Cmdlets explizit in einen InlineScript-Block ein. Weitere Informationen zu diesen Konzepten finden Sie unter [Verwenden von Aktivitäten in Skriptworkflows](https://technet.microsoft.com/library/jj574194.aspx).
 
-Workflowaktivitäten teilen sich einen Satz allgemeiner Parameter, um ihren Betrieb zu konfigurieren. Ausführliche Informationen zu den allgemeinen Workflowparametern finden Sie unter [about_WorkflowCommonParameters](http://technet.microsoft.com/library/jj129719.aspx).
+Workflowaktivitäten teilen sich einen Satz allgemeiner Parameter, um ihren Betrieb zu konfigurieren. Ausführliche Informationen zu den allgemeinen Workflowparametern finden Sie unter [about_WorkflowCommonParameters](https://technet.microsoft.com/library/jj129719.aspx).
 
 ### <a name="positional-parameters"></a>Positionsparameter
 
@@ -152,7 +152,7 @@ InlineScript-Aktivitäten können in bestimmten Workflows wichtig sein, aber sie
 * Sie können in einem InlineScript-Block keine [parallele Ausführung](#parallel-processing) nutzen.
 * InlineScript-Blöcke beeinträchtigen die Skalierbarkeit des Workflows, da die Windows PowerShell-Sitzung für die gesamte Dauer des InlineScript-Blocks übernommen wird.
 
-Weitere Informationen zur Verwendung von InlineScript finden Sie unter [Ausführen von Windows PowerShell-Befehlen in einem Workflow](http://technet.microsoft.com/library/jj574197.aspx) und [about_InlineScript](http://technet.microsoft.com/library/jj649082.aspx).
+Weitere Informationen zur Verwendung von InlineScript finden Sie unter [Ausführen von Windows PowerShell-Befehlen in einem Workflow](https://technet.microsoft.com/library/jj574197.aspx) und [about_InlineScript](https://technet.microsoft.com/library/jj649082.aspx).
 
 ## <a name="parallel-processing"></a>Parallele Verarbeitung
 
@@ -291,7 +291,7 @@ workflow CreateTestVms
 
 Dies ist nicht erforderlich, wenn die Authentifizierung mithilfe eines ausführenden Kontos erfolgt, das mit einem Dienstprinzipal konfiguriert ist.
 
-Weitere Informationen zu Prüfpunkten finden Sie unter [Hinzufügen von Prüfpunkten zu einem Skriptworkflow](http://technet.microsoft.com/library/jj574114.aspx).
+Weitere Informationen zu Prüfpunkten finden Sie unter [Hinzufügen von Prüfpunkten zu einem Skriptworkflow](https://technet.microsoft.com/library/jj574114.aspx).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

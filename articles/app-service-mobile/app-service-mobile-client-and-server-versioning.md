@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: 37bf36af535eb9b5c8b0ba38434b71f1a6686811
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 1f5626b1001f2d5deb3fa84d64eab6acf6c94b7e
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
-ms.locfileid: "27593373"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51239524"
 ---
 # <a name="client-and-server-versioning-in-mobile-apps-and-mobile-services"></a>Client- und Serverversionsverwaltung in Mobile Apps und Mobile Services
 Die neueste Version von Azure Mobile Services ist das Feature **Mobile Apps** von Azure App Service.
@@ -73,7 +73,7 @@ Hinweis: Die Mobile Services-Client-SDKs senden *keinen* Headerwert für `ZUMO-A
 | Clientplattform | Version | Versionsheaderwert |
 | --- | --- | --- |
 | Verwalteter Client (Windows, Xamarin) |[1.3.2](https://www.nuget.org/packages/WindowsAzure.MobileServices/1.3.2) |– |
-| iOS |[2.2.2](http://aka.ms/gc6fex) |– |
+| iOS |[2.2.2](https://aka.ms/gc6fex) |– |
 | Android |[2.0.3](https://go.microsoft.com/fwLink/?LinkID=280126) |– |
 | HTML |[1.2.7](http://ajax.aspnetcdn.com/ajax/mobileservices/MobileServices.Web-1.2.7.min.js) |– |
 
@@ -99,8 +99,8 @@ Die Versionsüberprüfung wurde ab den folgenden Versionen des Client-SDK für *
 | Clientplattform | Version | Versionsheaderwert |
 | --- | --- | --- |
 | Verwalteter Client (Windows, Xamarin) |[2.0.0](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Client/2.0.0) |2.0.0 |
-| iOS |[3.0.0](http://go.microsoft.com/fwlink/?LinkID=529823) |2.0.0 |
-| Android |[3.0.0](http://go.microsoft.com/fwlink/?LinkID=717033&clcid=0x409) |3.0.0 |
+| iOS |[3.0.0](https://go.microsoft.com/fwlink/?LinkID=529823) |2.0.0 |
+| Android |[3.0.0](https://go.microsoft.com/fwlink/?LinkID=717033&clcid=0x409) |3.0.0 |
 
 <!-- TODO: add HTML version when released -->
 

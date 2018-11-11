@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/03/2017
 ms.author: sngun
-ms.openlocfilehash: 2af93d149948071f78d0c684b812e84fa68db341
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 6ac0895ac31a815f00ca6c5fa1dfd325be2e3963
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50251123"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51245816"
 ---
 # <a name="azure-storage-table-design-guide-designing-scalable-and-performant-tables"></a>Azure-Speichertabelle – Entwurfshandbuch: Entwerfen von skalierbaren und leistungsfähigen Tabellen
 [!INCLUDE [storage-table-cosmos-db-tip-include](../../includes/storage-table-cosmos-db-tip-include.md)]
@@ -122,7 +122,7 @@ Das folgende Beispiel zeigt einen einfachen Tabellenentwurf zum Speichern von Mi
 </table>
 
 
-Bisher ähnelt dieser Entwurf einer Tabelle in einer relationalen Datenbank, wobei die wesentlichen Unterschiede in den Pflichtspalten und in der Fähigkeit liegen, verschiedene Entitätstypen in derselben Tabelle zu speichern. Darüber hinaus verfügen alle benutzerdefinierten Eigenschaften wie **Vorname** oder **Alter** über einen Datentyp wie „ganze Zahl“ oder „Zeichenfolge“ – genau wie bei einer Spalte in einer relationalen Datenbank. Obwohl dies bei einer relationalen Datenbank unwahrscheinlich ist, bedeutet die Art der Tabelle ohne Schema, dass eine Eigenschaft nicht denselben Datentyp bei jeder Entität haben muss. Um komplexe Datentypen in einer einzelnen Eigenschaft zu speichern, müssen Sie ein serialisiertes Format wie z. B. JSON oder XML verwenden. Weitere Informationen zum Tabellenspeicherdienst (beispielsweise unterstützte Datentypen, unterstützte Datumsbereiche, Namensregeln und Größenbeschränkungen) finden Sie unter [Grundlegendes zum Tabellendienst-Datenmodell](http://msdn.microsoft.com/library/azure/dd179338.aspx).
+Bisher ähnelt dieser Entwurf einer Tabelle in einer relationalen Datenbank, wobei die wesentlichen Unterschiede in den Pflichtspalten und in der Fähigkeit liegen, verschiedene Entitätstypen in derselben Tabelle zu speichern. Darüber hinaus verfügen alle benutzerdefinierten Eigenschaften wie **Vorname** oder **Alter** über einen Datentyp wie „ganze Zahl“ oder „Zeichenfolge“ – genau wie bei einer Spalte in einer relationalen Datenbank. Obwohl dies bei einer relationalen Datenbank unwahrscheinlich ist, bedeutet die Art der Tabelle ohne Schema, dass eine Eigenschaft nicht denselben Datentyp bei jeder Entität haben muss. Um komplexe Datentypen in einer einzelnen Eigenschaft zu speichern, müssen Sie ein serialisiertes Format wie z. B. JSON oder XML verwenden. Weitere Informationen zum Tabellenspeicherdienst (beispielsweise unterstützte Datentypen, unterstützte Datumsbereiche, Namensregeln und Größenbeschränkungen) finden Sie unter [Grundlegendes zum Tabellendienst-Datenmodell](https://msdn.microsoft.com/library/azure/dd179338.aspx).
 
 Ihre Auswahl für **PartitionKey** und **RowKey** bildet die Grundlage für ein gutes Tabellendesign. Jede in einer Tabelle gespeicherte Entität muss eine eindeutige Kombination aus **PartitionKey** und **RowKey** besitzen. Wie bei Schlüsseln in einer relationalen Datenbanktabelle sind die Werte von **PartitionKey** und **RowKey** indiziert, um einen gruppierten Index zu erstellen, der schnelles Suchen ermöglicht. Allerdings erstellt der Tabellenspeicherdienst keine sekundären Indizes. Deshalb sind dies die einzigen beiden indizierten Eigenschaften. (Einige der später beschriebenen Muster zeigen, wie sich diese Einschränkung umgehen lässt.)  
 
@@ -133,7 +133,7 @@ Kontoname, Tabellenname und **PartitionKey** bestimmen zusammen die Partition in
 
 Im Tabellenspeicherdienst bedient ein einzelner Knoten eine oder mehrere komplette Partitionen und skaliert durch dynamischen Lastenausgleich Partitionen über Knoten hinweg. Wenn ein Knoten ausgelastet ist, kann der Tabellenspeicherdienst den Partitionsbereich *teilen*, der von diesem Knoten aus andere Knoten bedient. Wenn der Datenverkehr abnimmt, kann der Dienst die Partitionsbereiche von nicht ausgelasteten Knoten wieder auf einem einzelnen Knoten *zusammenführen*.  
 
-Weitere Informationen über die internen Details des Tabellenspeicherdiensts und insbesondere zur Verwaltung der Partitionen durch den Dienst finden Sie im Dokument [Microsoft Azure Storage: A Highly Available Cloud Storage Service with Strong Consistency](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)(in englischer Sprache).  
+Weitere Informationen über die internen Details des Tabellenspeicherdiensts und insbesondere zur Verwaltung der Partitionen durch den Dienst finden Sie im Dokument [Microsoft Azure Storage: A Highly Available Cloud Storage Service with Strong Consistency](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)(in englischer Sprache).  
 
 ### <a name="entity-group-transactions"></a>Entitätsgruppentransaktionen
 Im Tabellenspeicherdienst sind Entitätsgruppentransaktionen (EGTs) der einzige integrierte Mechanismus, mit dem atomische Aktualisierungen für mehrere Entitäten durchgeführt werden können. EGTs werden in einigen Dokumenten auch als *Batchtransaktionen* bezeichnet. EGTs können nur mit Entitäten betrieben werden, die in der gleichen Partition gespeichert sind (Freigabe desselben Partitionsschlüssels in einer bestimmten Tabelle). Deshalb müssen Sie jedes Mal, wenn Sie eine atomisches Transaktionsverhalten über mehrere Entitäten benötigen, sicherstellen, dass sich die Entitäten in derselben Partition befinden. Dies ist häufig der Grund, dass mehrere Entitätstypen in derselben Tabelle (und Partition) gehalten werden und nicht mehrere Tabellen für verschiedene Entitätstypen verwendet werden. Eine einzelne EGT kann mit höchstens 100 Entitäten verwendet werden.  Wenn Sie gleichzeitig mehrere EGTs zur Verarbeitung übermitteln, müssen Sie sicherstellen, dass diese nicht für EGT-übergreifende Entitäten verwendet werden, da andernfalls die Verarbeitung verzögert werden kann.
@@ -153,7 +153,7 @@ Die folgende Tabelle enthält einige Schlüsselwerte, auf die Sie achten müssen
 | Größe von **RowKey** |Eine Zeichenfolge mit bis zu 1 KB |
 | Größe einer Entitätsgruppentransaktion |Eine Transaktion kann höchstens 100 Entitäten umfassen, und die Nutzlast muss weniger als 4 MB groß sein. Eine EGT kann eine Entität nur einmal aktualisieren. |
 
-Weitere Informationen finden Sie unter [Grundlegendes zum Tabellendienst-Datenmodell](http://msdn.microsoft.com/library/azure/dd179338.aspx).  
+Weitere Informationen finden Sie unter [Grundlegendes zum Tabellendienst-Datenmodell](https://msdn.microsoft.com/library/azure/dd179338.aspx).  
 
 ### <a name="cost-considerations"></a>Kostenbetrachtung
 Tabellenspeicher ist relativ günstig, aber Sie sollten die Kostenschätzungen für Kapazitätsauslastung und Transaktionsmenge als Bestandteil Ihrer Auswertung bei allen Lösungen mit aufnehmen, die den Tabellenspeicherdienst verwenden. In vielen Szenarien ist jedoch die Speicherung denormalisierter oder doppelter Daten zur Verbesserung der Leistung oder der Skalierbarkeit für Ihre Lösung ein zulässiger Ansatz. Weitere Informationen zu den Preisen finden Sie unter [Preise für Azure Storage](https://azure.microsoft.com/pricing/details/storage/).  
@@ -208,7 +208,7 @@ In den folgenden Beispielen wird angenommen, dass der Tabellenspeicherdienst Ent
 | **Alter** |Ganze Zahl  |
 | **EmailAddress** |Zeichenfolge |
 
-Im Abschnitt [Übersicht über den Azure-Tabellenspeicherdienst](#overview) weiter oben werden einige der wichtigsten Funktionen des Azure-Tabellenspeicherdiensts beschrieben, die direkten Einfluss auf den Entwurf für Abfragen haben. Dadurch ergeben sich die folgenden allgemeinen Richtlinien für den Entwurf von Abfragen für den Tabellenspeicherdienst. Die in den Beispielen unten verwendete Filtersyntax stammt aus dem REST-API-Tabellenspeicherdienst. Weitere Informationen finden Sie unter [Query Entities](http://msdn.microsoft.com/library/azure/dd179421.aspx) (Abfragen von Entitäten).  
+Im Abschnitt [Übersicht über den Azure-Tabellenspeicherdienst](#overview) weiter oben werden einige der wichtigsten Funktionen des Azure-Tabellenspeicherdiensts beschrieben, die direkten Einfluss auf den Entwurf für Abfragen haben. Dadurch ergeben sich die folgenden allgemeinen Richtlinien für den Entwurf von Abfragen für den Tabellenspeicherdienst. Die in den Beispielen unten verwendete Filtersyntax stammt aus dem REST-API-Tabellenspeicherdienst. Weitere Informationen finden Sie unter [Query Entities](https://msdn.microsoft.com/library/azure/dd179421.aspx) (Abfragen von Entitäten).  
 
 * Eine ***Punktabfrage*** ist die effizienteste Suche und wird bei sehr umfangreichen Suchvorgängen oder für Suchvorgänge empfohlen, die eine sehr niedrige Latenz erfordern. Eine solche Abfrage kann mit den Indizes durch die Angabe der **PartitionKey**- und **RowKey**-Werte eine einzelne Entität effizient suchen. Beispiel: $filter=(PartitionKey eq 'Sales') und (RowKey eq '2')  
 * Die zweitbeste Lösung ist eine ***Bereichsabfrage***, die den **PartitionKey** verwendet und einen Bereich von **RowKey**-Werten filtert, um mehrere Entitäten zurückzugeben. Der **PartitionKey**-Wert identifiziert eine bestimmte Partition, die **RowKey**-Werte identifizieren eine Teilmenge der Entitäten in dieser Partition. Beispiel: $filter=PartitionKey eq 'Sales' und RowKey ge 'S' und RowKey lt 'T'  
@@ -437,7 +437,7 @@ Bei einer Abfrage für einen Bereich von Mitarbeiterentitäten können Sie einen
 * Um alle Mitarbeiter in der Vertriebsabteilung mit einer Mitarbeiter-ID im Bereich von 000100 bis 000199 zu finden, verwenden Sie: $filter=(PartitionKey eq 'Sales') und (RowKey ge 'empid_000100') und (RowKey le 'empid_000199')  
 * Um alle Mitarbeiter in der Vertriebsabteilung mit einer E-Mail-Adresse zu finden, die mit dem Buchstaben "a" beginnt, verwenden Sie: $filter=(PartitionKey eq 'Sales') und (RowKey ge 'email_a') und (RowKey lt 'email_b')  
   
-  Die in den obigen Beispielen verwendete Filtersyntax stammt aus der REST-API des Tabellenspeicherdiensts. Weitere Informationen finden Sie unter [Abfragen von Entitäten](http://msdn.microsoft.com/library/azure/dd179421.aspx).  
+  Die in den obigen Beispielen verwendete Filtersyntax stammt aus der REST-API des Tabellenspeicherdiensts. Weitere Informationen finden Sie unter [Abfragen von Entitäten](https://msdn.microsoft.com/library/azure/dd179421.aspx).  
 
 #### <a name="issues-and-considerations"></a>Probleme und Überlegungen
 Beachten Sie die folgenden Punkte bei der Entscheidung, wie dieses Muster implementiert werden soll:  
@@ -491,7 +491,7 @@ Bei einer Abfrage für einen Bereich von Mitarbeiterentitäten können Sie einen
 * Verwenden Sie Folgendes, um alle Mitarbeiter in der Vertriebsabteilung mit einer Mitarbeiter-ID im Bereich von **000100** bis **000199** zu suchen und nach Mitarbeiter-ID zu sortieren: $filter=(PartitionKey eq 'empid_Sales') and (RowKey ge '000100') and (RowKey le '000199').  
 * Um alle Mitarbeiter in der Vertriebsabteilung mit einer E-Mail-Adresse zu finden, die mit dem Buchstaben "a" beginnt, und die in E-Mail-Adressen-Reihenfolge sortiert sind, verwenden Sie: $filter=(PartitionKey eq 'email_Sales') und (RowKey ge 'a') und (RowKey lt 'b')  
 
-Beachten Sie, dass die in den obigen Beispielen verwendete Filtersyntax aus der REST-API des Tabellenspeicherdiensts stammt. Weitere Informationen finden Sie unter [Query Entities](http://msdn.microsoft.com/library/azure/dd179421.aspx) (Abfragen von Entitäten).  
+Beachten Sie, dass die in den obigen Beispielen verwendete Filtersyntax aus der REST-API des Tabellenspeicherdiensts stammt. Weitere Informationen finden Sie unter [Query Entities](https://msdn.microsoft.com/library/azure/dd179421.aspx) (Abfragen von Entitäten).  
 
 #### <a name="issues-and-considerations"></a>Probleme und Überlegungen
 Beachten Sie die folgenden Punkte bei der Entscheidung, wie dieses Muster implementiert werden soll:  
@@ -1002,7 +1002,7 @@ Eine optimale Abfrage gibt auf der Grundlage eines **PartitionKey**- und eines *
 
 In solchen Szenarien sollten Sie die Leistung Ihrer Anwendung immer vollständig testen.  
 
-Eine Abfrage für den Tabellenspeicherdienst kann maximal 1000 Entitäten gleichzeitig zurückgeben und für maximal fünf Sekunden ausgeführt werden. Wenn der Ergebnissatz mehr als 1.000 Entitäten enthält, wenn die Abfrage nicht innerhalb von fünf Sekunden abgeschlossen wurde oder die Abfrage die Partitionsgrenzen überschreitet, gibt der Tabellenspeicherdienst ein Fortsetzungstoken zurück, das der Clientanwendung ermöglicht, den nächsten Satz Entitäten anzufordern. Weitere Informationen über die Funktionsweise von Fortsetzungstoken finden Sie unter [Abfragetimeout und Paginierung](http://msdn.microsoft.com/library/azure/dd135718.aspx).  
+Eine Abfrage für den Tabellenspeicherdienst kann maximal 1000 Entitäten gleichzeitig zurückgeben und für maximal fünf Sekunden ausgeführt werden. Wenn der Ergebnissatz mehr als 1.000 Entitäten enthält, wenn die Abfrage nicht innerhalb von fünf Sekunden abgeschlossen wurde oder die Abfrage die Partitionsgrenzen überschreitet, gibt der Tabellenspeicherdienst ein Fortsetzungstoken zurück, das der Clientanwendung ermöglicht, den nächsten Satz Entitäten anzufordern. Weitere Informationen über die Funktionsweise von Fortsetzungstoken finden Sie unter [Abfragetimeout und Paginierung](https://msdn.microsoft.com/library/azure/dd135718.aspx).  
 
 Bei Verwendung der Storage Client Library kann diese automatisch Fortsetzungstoken für Sie handhaben, da es Entitäten aus dem Tabellenspeicherdienst zurückgibt. Das folgende C#-Codebeispiel verwendet die Storage Client Library und handhabt automatisch Fortsetzungstoken, wenn er vom Tabellenspeicherdienst in der Antwort zurückgegeben wird:  
 

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/17/2018
 ms.author: jeffgilb
 ms.reviewer: unknown
-ms.openlocfilehash: 9a4d7200a2bc2445fcdfefc0332d67a045b5a2e1
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: fa8c8da34a687edd1bd92c1d516183ee5d3e1bd0
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47038016"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51240119"
 ---
 # <a name="add-a-new-azure-stack-tenant-account-in-azure-active-directory"></a>Hinzufügen neuer Azure Stack-Mandantenkonten in Azure Active Directory
 
@@ -40,9 +40,9 @@ Sie benötigen ein Azure-Abonnement, um das Azure-Portal verwenden zu können.
 
     ![„Neuen Benutzer hinzufügen“, Seite „Benutzer“ mit Benutzerinformationen](media/azure-stack-add-new-user-aad/new-user-user.png)
 
-    - **Name (erforderlich).** Der Vor- und Nachname des neuen Benutzers. Beispielsweise „Mary Parker“.
+    - **Name (erforderlich).** Der Vor- und Nachname des neuen Benutzers. Beispielsweise Mary Parker.
     - **Benutzername (erforderlich).** Der Benutzername des neuen Benutzers. Beispiel: mary@contoso.com.
-        Der Domänenteil des Benutzernamens muss den anfänglichen Standarddomänennamen, <_IhrenDomänennamen_>.onmicrosoft.com oder einen benutzerdefinierten Domänennamen wie contoso.com verwenden. Weitere Informationen zum Erstellen eines benutzerdefinierten Domänennamens finden Sie unter [Hinzufügen eines benutzerdefinierten Domänennamens zu Azure Active Directory](../active-directory/fundamentals/add-custom-domain.md).
+        Der Domänenteil des Benutzernamens muss entweder der anfängliche Standarddomänenname sein, „<_IhrDomänenname_>.onmicrosoft.com“, oder ein benutzerdefinierter Domänennamen, z. B. „contoso.com“. Weitere Informationen zum Erstellen eines benutzerdefinierten Domänennamens finden Sie unter [Hinzufügen eines benutzerdefinierten Domänennamens zu Azure Active Directory](../active-directory/fundamentals/add-custom-domain.md).
     - **Profil.** Optional können Sie weitere Informationen zum Benutzer hinzufügen. Sie können Benutzerinformationen auch zu einem späteren Zeitpunkt hinzufügen. Weitere Informationen zum Hinzufügen von Benutzerinformationen finden Sie unter [Hinzufügen oder Ändern von Benutzerprofilinformationen](../active-directory/fundamentals/active-directory-users-profile-azure-portal.md).
     - **Verzeichnisrolle.**  Wählen Sie **Benutzer** aus.
 
@@ -65,7 +65,7 @@ Falls Sie kein Azure-Abonnement besitzen, können Sie ein Mandantenbenutzerkonto
 > 
 
 1. Installieren Sie den [Microsoft Online Services-Anmelde-Assistenten für IT-Experten RTW](https://www.microsoft.com/en-us/download/details.aspx?id=41950).
-2. Installieren Sie das [Azure Active Directory-Modul für Windows PowerShell (64-Bit-Version)](http://go.microsoft.com/fwlink/p/?linkid=236297), und öffnen Sie es.
+2. Installieren Sie das [Azure Active Directory-Modul für Windows PowerShell (64-Bit-Version)](https://go.microsoft.com/fwlink/p/?linkid=236297), und öffnen Sie es.
 3. Führen Sie die folgenden Cmdlets aus:
 
     ```powershell

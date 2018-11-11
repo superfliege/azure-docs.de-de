@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: willzhan;juliako
-ms.openlocfilehash: 1584dab96d1cd772bf04620c68dbe1f133304a1c
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 84e2eb6a16ce9ee4889eacbf394754c5c2544f7a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33783559"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51245306"
 ---
 # <a name="hybrid-design-of-drm-subsystems"></a>Hybriddesign des DRM-Subsystems
 
@@ -96,13 +96,13 @@ Gemäß der Erläuterungen im vorherigen Abschnitt verwenden die folgenden fünf
 
 |**Hosten von Inhalt und Ursprung**|**DRM-Verschlüsselung**|**DRM-Lizenzbereitstellung**|**Inhaltsschlüssel konfigurieren**|**Konfigurieren der Übermittlungsrichtlinie für Medienobjekte**|**Beispiel**|
 |---|---|---|---|---|---|
-|AMS|AMS|AMS|Ja|Ja|Beispiel 1|
-|AMS|AMS|Drittanbieter|Ja|Ja|Beispiel 2|
-|AMS|Drittanbieter|AMS|Ja|Nein |Beispiel 3|
+|AMS|AMS|AMS|JA|JA|Beispiel 1|
+|AMS|AMS|Drittanbieter|JA|JA|Beispiel 2|
+|AMS|Drittanbieter|AMS|JA|Nein |Beispiel 3|
 |AMS|Drittanbieter|Außerhalb|Nein |Nein |Beispiel 4|
-|Drittanbieter|Drittanbieter|AMS|Ja|Nein |    
+|Drittanbieter|Drittanbieter|AMS|JA|Nein |    
 
-In den Beispielen funktioniert der PlayReady-Schutz für DASH und Smooth Streaming. Die Video-URLs unten sind Smooth Streaming-URLs. Um die entsprechenden DASH-URLs zu erhalten, fügen Sie nur „(format=mpd-time-csf)“ an. Sie können den [Azure Media-Testplayer](http://aka.ms/amtest) zum Testen in einem Browser verwenden. Damit können Sie konfigurieren, welches Streamingprotokoll unter welcher Technologie verwendet werden soll. IE11 und MS-Edge unter Windows 10 unterstützen PlayReady über EME. Weitere Informationen finden Sie unter [Azure Media Test Tool](https://blogs.msdn.microsoft.com/playready4/2016/02/28/azure-media-test-tool/).
+In den Beispielen funktioniert der PlayReady-Schutz für DASH und Smooth Streaming. Die Video-URLs unten sind Smooth Streaming-URLs. Um die entsprechenden DASH-URLs zu erhalten, fügen Sie nur „(format=mpd-time-csf)“ an. Sie können den [Azure Media-Testplayer](https://aka.ms/amtest) zum Testen in einem Browser verwenden. Damit können Sie konfigurieren, welches Streamingprotokoll unter welcher Technologie verwendet werden soll. IE11 und MS-Edge unter Windows 10 unterstützen PlayReady über EME. Weitere Informationen finden Sie unter [Azure Media Test Tool](https://blogs.msdn.microsoft.com/playready4/2016/02/28/azure-media-test-tool/).
 
 ### <a name="sample-1"></a>Beispiel 1
 

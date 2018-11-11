@@ -14,18 +14,18 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/31/2017
 ms.author: mikeray
-ms.openlocfilehash: 39d4f452143454a345bd91f550e44c93651ff933
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 0fdf768008161fbb72e48dae937a4172222dbb63
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
-ms.locfileid: "29399048"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51239745"
 ---
 # <a name="use-azure-storage-for-sql-server-backup-and-restore"></a>Verwenden von Azure Storage für SQL Server-Sicherung und -Wiederherstellung
 ## <a name="overview"></a>Übersicht
 Seit SQL Server 2012 SP1 CU2 können Sie SQL Server-Sicherungen direkt in den Azure Blob Storage-Dienst schreiben. Mithilfe dieser Funktion können Sie Daten vom Azure Blob-Dienst mit einer lokalen SQL Server-Datenbank oder einer SQL Server-Datenbank auf einem virtuellen Azure-Computer sichern und daraus wiederherstellen. Die Sicherung in der Cloud bietet zahlreiche Vorteile: Verfügbarkeit, unbegrenzter georeplizierter Offsitespeicher und problemlose Migration von Daten in die und aus der Cloud. Sie können BACKUP- und RESTORE-Anweisungen mithilfe von T-SQL oder SMO aufrufen.
 
-In SQL Server 2016 wurden neue Funktionen eingeführt: Sie können die [Dateimomentaufnahme-Sicherung](http://msdn.microsoft.com/library/mt169363.aspx) verwenden, um nahezu sofortige Sicherungen und unglaublich schnelle Wiederherstellungen durchzuführen.
+In SQL Server 2016 wurden neue Funktionen eingeführt: Sie können die [Dateimomentaufnahme-Sicherung](https://msdn.microsoft.com/library/mt169363.aspx) verwenden, um nahezu sofortige Sicherungen und unglaublich schnelle Wiederherstellungen durchzuführen.
 
 In diesem Thema werden die Vorteile des Azure-Speichers für SQL-Sicherungen erläutert. Anschließend werden die notwendigen Komponenten beschrieben. Die Ressourcen am Ende des Artikels bieten exemplarische Vorgehensweisen und zusätzliche Informationen zur Verwendung dieses Diensts mit Ihren SQL Server-Sicherungen.
 
@@ -37,10 +37,10 @@ Bei der Sicherung von SQL Server gibt es verschiedene Herausforderungen. Hierzu 
 * **Verwaltete Hardware**: Bei Azure-Diensten fällt kein Mehraufwand für Hardwareverwaltung an. Azure-Dienste verwalten die Hardware und stellen geografische Replikation für Redundanz und Schutz vor Hardwareausfällen zur Verfügung.
 * **Unbegrenzter Speicherplatz**: Durch eine direkte Sicherung in Azure-Blobs haben Sie Zugriff auf praktisch unbegrenzten Speicher. Die Sicherung in einem virtuellen Azure-Computer dagegen weist Einschränkungen aufgrund der Computergröße auf. Die Anzahl von Datenträgern, die für Sicherungen an einen virtuellen Azure-Computer angefügt werden können, ist begrenzt. Bei einer sehr großen Instanz beträgt die maximale Anzahl 16 Datenträger, während kleinere Instanzen weniger Datenträger unterstützen.
 * **Verfügbarkeit der Sicherungen:** In Azure-Blobs gespeicherte Sicherungen sind jederzeit von überall aus erreichbar. So können Sie Daten ganz einfach auf einer lokalen SQL Server-Instanz oder einer anderen, auf einem virtuellen Azure-Computer ausgeführten SQL Server-Instanz wiederherstellen, ohne dass Sie Datenbanken anfügen/trennen oder die VHD herunterladen und anfügen müssen.
-* **Kosten**: Sie zahlen nur für den tatsächlich genutzten Dienst. Die Option kann genauso kosteneffizient wie eine Offsitesicherungs-/-archivierungslösung sein. Weitere Informationen finden Sie im [Azure-Preisrechner](http://go.microsoft.com/fwlink/?LinkId=277060 "Preisrechner") sowie in der [Azure-Preisübersicht](http://go.microsoft.com/fwlink/?LinkId=277059 "Preisübersicht").
-* **Speichermomentaufnahmen**: Wenn Datenbankdateien in einem Azure-Blob gespeichert werden und Sie SQL Server 2016 verwenden, können Sie die [Dateimomentaufnahme-Sicherung](http://msdn.microsoft.com/library/mt169363.aspx) für nahezu sofortige Sicherungen und unglaublich schnelle Wiederherstellungen verwenden.
+* **Kosten**: Sie zahlen nur für den tatsächlich genutzten Dienst. Die Option kann genauso kosteneffizient wie eine Offsitesicherungs-/-archivierungslösung sein. Weitere Informationen finden Sie im [Azure-Preisrechner](https://go.microsoft.com/fwlink/?LinkId=277060 "Preisrechner") sowie in der [Azure-Preisübersicht](https://go.microsoft.com/fwlink/?LinkId=277059 "Preisübersicht").
+* **Speichermomentaufnahmen**: Wenn Datenbankdateien in einem Azure-Blob gespeichert werden und Sie SQL Server 2016 verwenden, können Sie die [Dateimomentaufnahme-Sicherung](https://msdn.microsoft.com/library/mt169363.aspx) für nahezu sofortige Sicherungen und unglaublich schnelle Wiederherstellungen verwenden.
 
-Weitere Details finden Sie unter [SQL Server-Sicherung und -Wiederherstellung mit dem Microsoft Azure Blob Storage-Dienst](http://go.microsoft.com/fwlink/?LinkId=271617).
+Weitere Details finden Sie unter [SQL Server-Sicherung und -Wiederherstellung mit dem Microsoft Azure Blob Storage-Dienst](https://go.microsoft.com/fwlink/?LinkId=271617).
 
 Die beiden folgenden Abschnitte bieten eine Einführung in den Azure Blob Storage-Dienst, einschließlich der erforderlichen SQL Server-Komponenten. Es ist wichtig, die Komponenten zu kennen und zu wissen, wie sie interagieren, um erfolgreich Daten im Azure Blob Storage-Dienst zu sichern und daraus wiederherzustellen.
 
@@ -51,7 +51,7 @@ Die folgenden Azure-Komponenten werden bei einer Sicherung im Azure Blob Storage
 | --- | --- |
 | **Speicherkonto** |Das Speicherkonto ist der Ausgangspunkt für alle Speicherdienste. Um auf einen Azure Blob Storage-Dienst zuzugreifen, erstellen Sie als Erstes ein Azure Storage-Konto. Weitere Informationen zum Azure Blob Storage-Dienst finden Sie unter [Verwenden des Azure Blob Storage-Diensts](https://azure.microsoft.com/develop/net/how-to-guides/blob-storage/) |
 | **Container** |Ein Container stellt einen Satz Blobs als Gruppe bereit und kann eine unbegrenzte Anzahl von Blobs enthalten. Um eine SQL Server-Sicherung in einen Azure-Blob-Dienst zu speichern, muss mindestens ein Stammcontainer erstellt worden sein. |
-| **Blob** |Eine Datei von beliebiger Art und Größe. Blobs sind über das folgende URL-Format adressierbar: **https://[Speicherkonto].blob.core.windows.net/[Container]/[Blob]**. Weitere Informationen über Seitenblobs finden Sie unter [Grundlegendes zu Block- und Seitenblobs](http://msdn.microsoft.com/library/azure/ee691964.aspx) |
+| **Blob** |Eine Datei von beliebiger Art und Größe. Blobs sind über das folgende URL-Format adressierbar: **https://[Speicherkonto].blob.core.windows.net/[Container]/[Blob]**. Weitere Informationen über Seitenblobs finden Sie unter [Grundlegendes zu Block- und Seitenblobs](https://msdn.microsoft.com/library/azure/ee691964.aspx) |
 
 ## <a name="sql-server-components"></a>SQL Server-Komponenten
 Die folgenden SQL Server-Komponenten werden bei einer Sicherung im Azure Blob Storage-Dienst verwendet.

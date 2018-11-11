@@ -17,12 +17,12 @@ ms.date: 07/18/2017
 ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 5a36c239e296d6f393c49932f1a369d8aae80b83
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: a9a7848069300d5f52d16585a55313643e02bc72
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46304679"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51244456"
 ---
 # <a name="manage-and-customize-active-directory-federation-services-by-using-azure-ad-connect"></a>Verwaltung und Anpassung der Active Directory-Verbunddienste mit Azure AD Connect
 In diesem Artikel wird beschrieben, wie Active Directory-Verbunddienste (AD FS) mit Azure Active Directory (Azure AD) Connect verwaltet und angepasst werden. Darüber hinaus werden andere gängige AD FS-Aufgaben behandelt, die Sie möglicherweise zur vollständigen Konfiguration einer AD FS-Farm benötigen.
@@ -51,7 +51,7 @@ Mithilfe von Azure AD Connect können Sie den aktuellen Status der AD FS- und Az
    ![AAD- und ADFS-Vertrauensstellung reparieren](./media/how-to-connect-fed-management/RepairADTrust1.PNG)
 
 2. Geben Sie auf der Seite **Mit Azure AD verbinden** die Anmeldeinformationen des globalen Administrators für Azure AD an, und klicken Sie auf **Weiter**.
-   ![Herstellen einer Verbindung mit Azure AD](./media/how-to-connect-fed-management/RepairADTrust2.PNG)
+   ![Mit Azure AD verbinden](./media/how-to-connect-fed-management/RepairADTrust2.PNG)
 
 3. Geben Sie auf der Seite **Anmeldeinformationen für den Remotezugriff** die Anmeldeinformationen für den Domänenadministrator ein.
 
@@ -81,7 +81,7 @@ Das Konfigurieren einer alternativen Anmelde-ID für AD FS besteht aus zwei Haup
 
     ![Warnung zu fehlendem KB-Update unter 2012 R2](./media/how-to-connect-fed-management/kbwarning.png)
 
-    Installieren Sie zur Korrektur der Konfiguration bei fehlendem KB-Update das erforderliche Update [KB2919355](http://go.microsoft.com/fwlink/?LinkID=396590), und reparieren Sie dann die Vertrauensstellung mithilfe der Informationen unter [AAD reparieren und AD FS-Vertrauensstellung](#repairthetrust).
+    Installieren Sie zur Korrektur der Konfiguration bei fehlendem KB-Update das erforderliche Update [KB2919355](https://go.microsoft.com/fwlink/?LinkID=396590), und reparieren Sie dann die Vertrauensstellung mithilfe der Informationen unter [AAD reparieren und AD FS-Vertrauensstellung](#repairthetrust).
 
 > [!NOTE]
 > Weitere Informationen zur alternativen Anmelde-ID sowie Schritte zur manuellen Konfiguration finden Sie unter [Konfigurieren alternativer Anmelde-IDs](https://technet.microsoft.com/windows-server-docs/identity/ad-fs/operations/configuring-alternate-login-id)

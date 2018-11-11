@@ -10,16 +10,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/28/2018
 ms.author: lbosq
-ms.openlocfilehash: bf91ec77f8d7248c6fa2047636f295c187f626c8
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 7e9de68866b5e5849d0e48ad5073fc7b89fbb1ca
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49078221"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51239303"
 ---
 # <a name="using-a-partitioned-graph-in-azure-cosmos-db"></a>Verwenden eines partitionierten Graphen in Azure Cosmos DB
 
-Eines der Hauptmerkmale der Gremlin-API in Azure Cosmos DB ist die Fähigkeit, große Graphen mittels horizontaler Skalierbarkeit zu verarbeiten. Dieser Prozess erfolgt mithilfe der [Partitionierungsmöglichkeiten in Azure Cosmos DB](partition-data.md#how-does-partitioning-work), bei denen auf Container zurückgegriffen wird, die in Bezug auf Speicherung und Durchsatz unabhängig skaliert werden können. Microsoft Azure Cosmos DB unterstützt die folgenden Containertypen in sämtlichen APIs:
+Eines der Hauptmerkmale der Gremlin-API in Azure Cosmos DB ist die Fähigkeit, große Graphen mittels horizontaler Skalierbarkeit zu verarbeiten. Dieser Prozess erfolgt mithilfe der [Partitionierungsmöglichkeiten in Azure Cosmos DB](partition-data.md), bei denen auf Container zurückgegriffen wird, die in Bezug auf Speicherung und Durchsatz unabhängig skaliert werden können. Microsoft Azure Cosmos DB unterstützt die folgenden Containertypen in sämtlichen APIs:
 
 - **Fester Container**: Diese Container können eine bis zu 10 GB große Graphdatenbank mit einem Maximum von 10.000 zugeordneten Anforderungseinheiten pro Sekunde speichern. Zum Erstellen eines festen Containers ist es nicht notwendig, eine Partitionsschlüsseleigenschaft in den Daten anzugeben.
 
