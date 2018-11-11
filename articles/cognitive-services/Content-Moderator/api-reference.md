@@ -10,19 +10,19 @@ ms.component: content-moderator
 ms.topic: reference
 ms.date: 06/25/2017
 ms.author: sajagtap
-ms.openlocfilehash: f065310e3afeaf95af602e513421da6770c9583f
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: ecc22b097c14fc7597d8ee0e31f9691098a2211d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47222403"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51229746"
 ---
 # <a name="content-moderator-api-reference"></a>Content Moderator-API-Referenz
 
 Sie haben folgende Möglichkeiten, um mit den Azure Content Moderator-APIs zu starten(siehe auch [Verwalten von Anmeldeinformationen](review-tool-user-guide/credentials.md).):
 
 - [Abonnieren Sie die Content Moderator-APIs](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator) im Azure-Portal.
-- Registrieren Sie sich für das [Content Moderator-Prüfungstool](http://contentmoderator.cognitive.microsoft.com/). Weitere Informationen finden Sie im [Schnellstart](quick-start.md).
+- Registrieren Sie sich für das [Content Moderator-Prüfungstool](https://contentmoderator.cognitive.microsoft.com/). Weitere Informationen finden Sie im [Schnellstart](quick-start.md).
 
 ## <a name="moderation-apis"></a>Moderations-APIs
 

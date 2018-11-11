@@ -10,12 +10,12 @@ ms.component: translator-text
 ms.topic: article
 ms.date: 05/10/2018
 ms.author: v-jansko
-ms.openlocfilehash: d01a5a8a9a60bef315327721b9f55345bc3d1361
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: bbfffe948080c87feaa8c9f0a46ef9afd90eae96
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49645046"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51229678"
 ---
 # <a name="customize-your-text-translations"></a>Anpassen von Textübersetzungen
 
@@ -37,7 +37,7 @@ Das benutzerdefinierte System ist dann über einen regulären Aufruf der Microso
 
 Mit dem entsprechenden Typ und der Menge von Trainingsdaten ist es nicht ungewöhnlich, unter Verwendung des benutzerdefinierten Translators Gewinne von fünf bis zehn oder sogar mehr BLEU-Punkten für die Übersetzungsqualität zu erwarten.
 
-Weitere Informationen über die verschiedenen Anpassungsstufen basierend auf verfügbaren Daten finden Sie im [Benutzerleitfaden für den benutzerdefinierten Translator](http://aka.ms/CustomTranslatorDocs).
+Weitere Informationen über die verschiedenen Anpassungsstufen basierend auf verfügbaren Daten finden Sie im [Benutzerleitfaden für den benutzerdefinierten Translator](https://aka.ms/CustomTranslatorDocs).
 
 
 ## <a name="microsoft-translator-hub"></a>Microsoft Translator-Hub
@@ -53,7 +53,7 @@ Der ältere Microsoft Translator-Hub kann zum Übersetzen statistischer maschine
 | SMT-Anpassung | JA   | Nein  |
 | NMT-Anpassung | Nein     | JA |
 | Neue einheitliche Anpassung der Sprachdienste | Nein     | JA |
-| [No Trace (Keine Ablaufverfolgung)](http://www.aka.ms/notrace) | JA   | JA |
+| [No Trace (Keine Ablaufverfolgung)](https://www.aka.ms/notrace) | JA  | JA |
 
 ## <a name="collaborative-translations-framework"></a>Framework für kollaborative Übersetzungen
 
@@ -65,4 +65,4 @@ Der ältere Microsoft Translator-Hub kann zum Übersetzen statistischer maschine
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Set up a customized language system using Custom Translator (Einrichten eines angepassten Sprachsystems mit dem benutzerdefinierten Translator)](http://aka.ms/CustomTranslatorDocs)
+> [Set up a customized language system using Custom Translator (Einrichten eines angepassten Sprachsystems mit dem benutzerdefinierten Translator)](https://aka.ms/CustomTranslatorDocs)

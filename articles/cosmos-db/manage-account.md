@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: kirillg
-ms.openlocfilehash: 8b28143dc92fa526b631baf6d47e4a9f2367ee0e
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: abcf51c6bd196c2ffb0bb35e2df161531a53972d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34612155"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51229389"
 ---
 # <a name="how-to-manage-an-azure-cosmos-db-account"></a>Verwalten eines Azure Cosmos DB-Kontos
 Erfahren Sie, wie Sie globale Konsistenz festlegen, mit Schlüsseln arbeiten und ein Azure Cosmos DB-Konto im Azure-Portal löschen.
@@ -81,7 +81,7 @@ Führen Sie zum Abrufen der Verbindungszeichenfolge folgende Schritte aus:
 2. Klicken Sie im Ressourcenmenü auf **Schlüssel** (bzw. auf **Verbindungszeichenfolge** für MongoDB-API-Konten).
 3. Klicken Sie neben dem Feld für die **primäre Verbindungszeichenfolge** oder **sekundäre Verbindungszeichenfolge** auf die Schaltfläche **Kopieren**. 
 
-Bei Verwendung der Verbindungszeichenfolge im [Azure Cosmos DB-Datenbank-Migrationstool](import-data.md) fügen Sie den Datenbanknamen am Ende der Verbindungszeichenfolge an. `AccountEndpoint=< >;AccountKey=< >;Database=< >`(Fixierte Verbindung) festgelegt ist(Fixierte Verbindung) festgelegt ist.
+Bei Verwendung der Verbindungszeichenfolge im [Azure Cosmos DB-Datenbank-Migrationstool](import-data.md) fügen Sie den Datenbanknamen am Ende der Verbindungszeichenfolge an. `AccountEndpoint=< >;AccountKey=< >;Database=< >`.
 
 ## <a id="delete"></a>: Löschen eines Azure Cosmos DB-Kontos
 Wenn Sie ein nicht mehr verwendetes Azure Cosmos DB-Konto aus dem Azure-Portal entfernen möchten, klicken Sie mit der rechten Maustaste auf den Kontonamen, und klicken Sie anschließend auf **Konto löschen**.
@@ -96,7 +96,7 @@ Wenn Sie ein nicht mehr verwendetes Azure Cosmos DB-Konto aus dem Azure-Portal e
 ![Löschen eines Azure Cosmos DB-Kontos im Azure-Portal](./media/manage-account/delete-account-confirm.png)
 
 ## <a id="next"></a>Nächste Schritte
-Erfahren Sie mehr auf der Seite [Erste Schritte mit dem Azure Cosmos DB-Konto](http://go.microsoft.com/fwlink/p/?LinkId=402364).
+Erfahren Sie mehr auf der Seite [Erste Schritte mit dem Azure Cosmos DB-Konto](https://go.microsoft.com/fwlink/p/?LinkId=402364).
 
 <!--Image references-->
 [5]: ./media/manage-account/documentdb_change_consistency-1.png

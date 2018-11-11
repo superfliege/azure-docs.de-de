@@ -14,15 +14,15 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 3328a7c80a05a48b3c04ad5492a7eafe62059681
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: a940b1d2184961d907f72ad072270dad3571e844
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34622464"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51229252"
 ---
 # <a name="use-case---product-recommendations"></a>Anwendungsfall – Produktempfehlungen
-Azure Data Factory ist einer der zahlreichen Dienste, die zum Implementieren der Cortana Intelligence Suite von Lösungsoptimierungen verwendet werden.  Auf der Seite [Cortana Intelligence Suite](http://www.microsoft.com/cortanaanalytics) finden Sie Details zu dieser Suite. In diesem Dokument wird ein allgemeiner Anwendungsfall beschrieben, den Azure-Benutzer bereits mithilfe von Azure Data Factory und anderen Cortana Intelligence-Komponentendiensten gelöst und implementiert haben.
+Azure Data Factory ist einer der zahlreichen Dienste, die zum Implementieren der Cortana Intelligence Suite von Lösungsoptimierungen verwendet werden.  Auf der Seite [Cortana Intelligence Suite](https://www.microsoft.com/cortanaanalytics) finden Sie Details zu dieser Suite. In diesem Dokument wird ein allgemeiner Anwendungsfall beschrieben, den Azure-Benutzer bereits mithilfe von Azure Data Factory und anderen Cortana Intelligence-Komponentendiensten gelöst und implementiert haben.
 
 ## <a name="scenario"></a>Szenario
 Onlinehändler möchten ihre Kunden zum Kauf von Produkten verleiten, indem sie ihnen Produkte präsentieren, an denen sie am wahrscheinlichsten interessiert sind und die sie daher am wahrscheinlichsten kaufen werden. Hierzu müssen Onlinehändler die Onlineerfahrung der einzelnen Benutzer mithilfe personalisierter Produktempfehlungen anpassen. Diese personalisierten Produktempfehlungen basieren auf aktuellen und historischen Daten zum Kaufverhalten, auf Produktinformationen, auf neu eingeführten Marken sowie auf Produkt- und Kundensegmentierungsdaten.  Darüber hinaus können dem Benutzer Produktempfehlungen auf der Grundlage der Analyse des kombinierten Gesamtverhaltens aller Benutzer gezeigt werden.
