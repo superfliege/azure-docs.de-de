@@ -1,3 +1,16 @@
+---
+author: dominicbetts
+ms.service: iot-hub
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: dobett
+ms.openlocfilehash: 1807dc67d09b521e66314fb98535fb2c1225d34f
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50964587"
+---
 In der folgenden Tabelle sind die Grenzwerte aufgeführt, die den verschiedenen Dienstebenen (S1, S2, S3, F1) zugeordnet sind. Informationen zu den Kosten jeder *Einheit* finden Sie unter [IoT Hub – Preise](https://azure.microsoft.com/pricing/details/iot-hub/).
 
 | Ressource | S1 Standard | S2 Standard | S3 Standard | F1 Free |

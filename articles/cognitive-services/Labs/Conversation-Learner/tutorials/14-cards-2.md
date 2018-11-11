@@ -10,12 +10,12 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 1c7c88742c69041594006add76f7e3c642c64dec
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 99c474978d4da1d80669505330b2dc6220d7ca5f
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39170571"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51226633"
 ---
 # <a name="how-to-use-cards-part-1-of-2"></a>Verwenden von Karten (Teil 1 von 2)
 In diesem Tutorial wird gezeigt, wie Sie Ihrem Bot eine ausfüllbare Formularkarte hinzufügen. Es wird veranschaulicht, wie Formularfelder in Entitäten verschoben werden.
@@ -24,7 +24,7 @@ Das Unterhaltungslernmodul geht davon aus, dass Ihre Kartendefinitionsdateien in
 
 ## <a name="video"></a>Video
 
-[![Tutorial 14 – Vorschau](http://aka.ms/cl-tutorial-14-preview)](http://aka.ms/blis-tutorial-14)
+[![Tutorial 14 – Vorschau](https://aka.ms/cl-tutorial-14-preview)](https://aka.ms/blis-tutorial-14)
 
 ## <a name="requirements"></a>Requirements (Anforderungen)
 Für dieses Tutorial muss der allgemeine Tutorialbot ausgeführt werden.
@@ -47,7 +47,7 @@ Diese Karte erfasst drei Felder der Lieferanschrift: Ort, Straße und Bundesland
 
 ![](../media/tutorial14_card.PNG)
 
-### <a name="actions"></a>Actions
+### <a name="actions"></a>Aktionen
 
 Wir haben drei Aktionen erstellt. Wie Sie unten sehen, ist die erste Aktion eine Karte.
 
@@ -65,7 +65,7 @@ Wir haben drei Entitäten definiert, die mit der Karte übereinstimmen, wie oben
 
 ![](../media/tutorial14_entities.PNG)
 
-## <a name="actions"></a>Actions
+## <a name="actions"></a>Aktionen
 
 Wir haben zwei Aktionen definiert.
 

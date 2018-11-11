@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: robb
 ms.component: autoscale
-ms.openlocfilehash: 8491f3f61746374b67e174ca5efff2fbf2fe5fbe
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 7a3083bd757a7aa5625799724d601f99fd7e2b14
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51281896"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50961295"
 ---
 # <a name="overview-of-autoscale-in-microsoft-azure-virtual-machines-cloud-services-and-web-apps"></a>Übersicht über die automatische Skalierung in Microsoft Azure Virtual Machines, Cloud Services und Web-Apps
 In diesem Artikel wird beschrieben, was die automatische Skalierung von Microsoft Azure ist, welche Vorteile sie hat und wie Sie mit der Nutzung beginnen.  
@@ -107,8 +107,8 @@ Zum Einrichten der automatischen Skalierung können Sie Folgendes verwenden:
 | Web-Apps |[Skalieren von Web-Apps](monitoring-autoscale-get-started.md) |
 | Cloud Services |[Automatisches Skalieren eines Clouddiensts](../cloud-services/cloud-services-how-to-scale-portal.md) |
 | Virtuelle Computer: Klassisch |[Scaling Classic Virtual Machine Availability Sets (Skalieren von klassischen VM-Verfügbarkeitsgruppen)](https://blogs.msdn.microsoft.com/kaevans/2015/02/20/autoscaling-azurevirtual-machines/) |
-| Virtuelle Computer: Windows-Skalierungsgruppen |[Skalieren von VM-Skalierungsgruppen in Windows](../virtual-machine-scale-sets/tutorial-autoscale-powershell.md) |
-| Virtuelle Computer: Linux-Skalierungsgruppen |[Skalieren von VM-Skalierungsgruppen in Linux](../virtual-machine-scale-sets/tutorial-autoscale-cli.md) |
+| Virtuelle Computer: Windows-Skalierungsgruppen |[Skalieren von VM-Skalierungsgruppen in Windows](../virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-powershell.md) |
+| Virtuelle Computer: Linux-Skalierungsgruppen |[Skalieren von VM-Skalierungsgruppen in Linux](../virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-cli.md) |
 | Virtuelle Computer: Windows-Beispiel |[Erweiterte Konfiguration der automatischen Skalierung mithilfe von Resource Manager-Vorlagen für VM Scale Sets](insights-advanced-autoscale-virtual-machine-scale-sets.md) |
 | API Management-Dienst|[Automatisches Skalieren einer Azure API Management-Instanz](https://docs.microsoft.com/azure/api-management/api-management-howto-autoscale)
 

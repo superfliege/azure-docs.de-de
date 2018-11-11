@@ -14,12 +14,12 @@ ms.custom: mvc
 ms.topic: overview
 ms.date: 09/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: 799593758bf24924d91d38bd6a626b945247183b
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 41c8fd0092af035153b3161c4a6c3eb5c5ef3f1d
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44050237"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50958898"
 ---
 # <a name="overview-of-application-insights-for-devops"></a>Überblick über Application Insights für DevOps
 
@@ -231,6 +231,6 @@ Der Einstieg kann auf verschiedene Weise je nach den Eigenschaften Ihrer Anwendu
 * [ASP.NET-Webanwendung](app-insights-asp-net.md)
 * [Java-Webanwendung](app-insights-java-get-started.md)
 * [Node.js-Webanwendung](app-insights-nodejs.md)
-* Bereits bereitgestellte Apps, die über [IIS](app-insights-monitor-web-app-availability.md), [J2EE](app-insights-java-live.md) oder [Azure](app-insights-azure.md) gehostet werden.
+* Bereits bereitgestellte Apps, die über [IIS](app-insights-monitor-web-app-availability.md), [J2EE](app-insights-java-live.md) oder [Azure](app-insights-overview.md) gehostet werden.
 * [Webseiten:](app-insights-javascript.md) Einzelseiten-App oder gewöhnliche Webseite – eigenständig genutzt oder als Ergänzung zu den Serveroptionen.
 * [Verfügbarkeitstests:](app-insights-monitor-web-app-availability.md) zum Testen Ihrer App über das öffentliche Internet.

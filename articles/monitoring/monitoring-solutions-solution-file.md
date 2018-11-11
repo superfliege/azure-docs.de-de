@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/09/2018
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 46e6ea791752045b0f1afbf1e83e43f498415e54
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 13da68f826f7077acec9a64d1aa0ea18c66be6ff
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33887460"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50914242"
 ---
 # <a name="creating-a-management-solution-file-in-azure-preview"></a>Erstellen einer Verwaltungslösungsdatei in Azure (Vorschau)
 > [!NOTE]
@@ -34,7 +34,7 @@ Verwaltungslösungen in Azure werden als [Resource Manager-Vorlagen](../azure-re
 Können Sie einen beliebigen Texteditor zum Arbeiten mit Lösungsdateien verwenden, aber es wird empfohlen, die in Visual Studio oder Visual Studio Code bereitgestellten Funktionen zu nutzen, wie in den folgenden Artikeln beschrieben.
 
 - [Erstellen und Bereitstellen von Azure-Ressourcengruppen mit Visual Studio](../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)
-- [Verwenden von Azure Resource Manager-Vorlagen in Visual Studio Code](../azure-resource-manager/resource-manager-vs-code.md)
+- [Verwenden von Azure Resource Manager-Vorlagen in Visual Studio Code](../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md)
 
 
 
@@ -161,7 +161,7 @@ Sie können auch komplexe Variablen mit mehreren Gruppen von Werten definieren. 
 
 Sie verweisen in diesem Fall in der Lösung mit der Syntax **variables('variable name').property** auf Variablenwerte.  Um beispielsweise auf die SolutionName-Variable zuzugreifen, verwenden Sie **variables('Solution').Name**.
 
-## <a name="resources"></a>angeben
+## <a name="resources"></a>Ressourcen
 [Ressourcen](../azure-resource-manager/resource-group-authoring-templates.md#resources) definieren die verschiedenen Ressourcen, die von Ihrer Verwaltungslösung installiert und konfiguriert werden.  Dies ist der größte und komplexeste Teil der Vorlage.  Sie erhalten die Struktur und die vollständige Beschreibung der Ressourcenelemente unter [Erstellen von Azure Resource Manager-Vorlagen](../azure-resource-manager/resource-group-authoring-templates.md#resources).  Verschiedene Ressourcen, die Sie in der Regel definieren, werden in anderen Artikeln in dieser Dokumentation beschrieben. 
 
 

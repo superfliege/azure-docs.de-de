@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/12/2018
 ms.author: cawa
-ms.openlocfilehash: 708b80787337d549ebc5e66bca21e734620616ac
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: dde2983c57d0f3ec9c58537809f2d2d952b4a00e
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49388294"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50741945"
 ---
 # <a name="microsoft-azure-storage-explorer-release-notes"></a>Anmerkungen zu dieser Version vom Microsoft Azure Storage-Explorer
 
@@ -27,13 +27,110 @@ Dieser Artikel enthält die Anmerkungen zu dieser Version für Azure Storage-Exp
 
 Beim [Microsoft Azure Storage-Explorer](./vs-azure-tools-storage-manage-with-storage-explorer.md) handelt es sich um eine eigenständige App, über die Sie ganz einfach mit Azure Storage-Daten arbeiten können – unter Windows, macOS und Linux.
 
+## <a name="version-150"></a>Version 1.5.0
+29.10.2018
+
+### <a name="download-azure-storage-explorer-150"></a>Herunterladen von Azure Storage-Explorer 1.5.0
+- [Azure Storage-Explorer 1.5.0 für Windows](https://go.microsoft.com/fwlink/?LinkId=708343)
+- [Azure Storage-Explorer 1.5.0 für Mac](https://go.microsoft.com/fwlink/?LinkId=708342)
+- [Azure Storage-Explorer 1.5.0 für Linux](https://go.microsoft.com/fwlink/?LinkId=722418)
+
+### <a name="new"></a>Neu
+
+* Sie können ab sofort [AzCopy v10 (Vorschau)](https://github.com/Azure/azure-storage-azcopy) zum Hochladen und Herunterladen von Blobs verwenden. Um dieses Feature zu aktivieren, wechseln Sie zum Menü „Experimentell“, und klicken Sie dann auf „AzCopy für verbesserten Upload und Download von Blobs verwenden“. Sofern aktiviert, wird AzCopy in den folgenden Szenarien verwendet:
+   * Hochladen von Ordnern und Dateien in Blobcontainer, entweder über die Symbolleiste oder per Drag & Drop.
+   * Herunterladen von Ordnern und Dateien, entweder über die Symbolleiste oder über das Kontextmenü.
+
+* Zusätzlich gilt bei Verwendung von AzCopy Folgendes:
+   * Sie können den AzCopy-Befehl zum Ausführen der Übertragung in die Zwischenablage kopieren. Klicken Sie im Aktivitätsprotokoll einfach auf „AzCopy-Befehl in Zwischenablage kopieren“.
+   * Sie müssen den Blob-Editor nach dem Hochladen manuell aktualisieren.
+   * Das Hochladen von Dateien zum Anfügen von Blobs wird nicht unterstützt. VHDS-Dateien werden als Seitenblobs hochgeladen, alle anderen Dateien werden als Blockblobs hochgeladen.
+   * Fehler und Konflikte, die während eines Uploads oder Downloads auftreten, treten erst nach dem Abschluss von Upload oder Download zutage.
+
+Eine Unterstützung der Verwendung von AzCopy mit Dateifreigaben ist geplant.
+* Der Storage-Explorer verwendet ab sofort Electron 2.0.11.
+* Das Abbrechen von Leases kann jetzt immer nur für ein Blob durchgeführt werden. Zusätzlich müssen Sie den Namen des Blobs eingeben, deren Lease sie abbrechen möchten. Diese Änderung wurde vorgenommen, um die Wahrscheinlichkeit des versehentlichen Abbrechens einer Lease zu verringern, insbesondere im Fall von VHDS-Dateien für VMs. #394
+* Falls jemals Anmeldeprobleme auftreten sollten, können Sie jetzt die Authentifizierung zurücksetzen. Wechseln Sie zum Hilfemenü, und klicken Sie auf „Zurücksetzen“, um auf diese Funktion zuzugreifen. #419
+
+### <a name="fix"></a>Behebung
+
+* Aufgrund von zahlreichem Benutzerfeedback wurde der standardmäßige Emulatorknoten reaktiviert. Sie können über das Dialogfeld „Verbinden“ weiterhin zusätzliche Emulatorverbindungen hinzufügen, aber wenn Ihr Emulator zur Verwendung der Standardports konfiguriert ist, können Sie auch den Knoten „Emulator * Standardports“ unter „Lokale und verbundene Speicherkonten“ verwenden. #669
+* Der Storage-Explorer lässt es nicht mehr zu, dass Blobmetadaten festgelegt werden, die führende oder nachgestellte Leerzeichen aufweisen. #760
+* Auf einigen Seiten des Dialogfelds „Verbinden“ war die Schaltfläche „Anmelden“ immer aktiviert. Die Schaltfläche ist nun bei Bedarf deaktiviert. #761
+* Der Schnellzugriff löst keinen Fehler in der Konsole mehr aus, wenn keine Schnellzugriffelemente hinzugefügt wurden.
+
+### <a name="known-issues"></a>Bekannte Probleme
+
+* Das Trennen einer über einen SAS-URI angefügten Ressource, z.B. ein Blobcontainer, kann zu einem Fehler führen, durch den andere Anlagen nicht ordnungsgemäß angezeigt werden. Aktualisieren Sie zur Umgehung dieses Problems den Gruppenknoten. Siehe #537 für weitere Informationen.
+* Wenn Sie VS für Mac verwenden und irgendwann eine benutzerdefinierte AAD-Konfiguration erstellt haben, können Sie sich möglicherweise nicht anmelden. Um das Problem zu umgehen, löschen Sie den Inhalt von ~/.IdentityService/AadConfigurations. Wenn der Fehler dadurch nicht behoben wird, schreiben Sie bitte einen Kommentar zu diesem Problem.
+* Azurite hat noch nicht alle Speicher-APIs vollständig implementiert. Deswegen können unerwartete Fehler oder ein unerwartetes Verhalten auftreten, wenn Azurite als Entwicklungsspeicher verwendet wird.
+* In seltenen Fällen kann der Fokus in der Struktur beim Schnellzugriff hängen bleiben. Klicken Sie auf „Alle aktualisieren“, um den Fokus zu lösen.
+* Wegen eines NodeJS-Fehlers können keine Inhalte aus dem OneDrive-Ordner hochgeladen werden. Der Fehler wurde behoben, jedoch noch nicht in Electron integriert. Um dieses Problem beim Hochladen oder Herunterladen aus einem Blobcontainer zu umgehen, können Sie das experimentelle AzCopy-Feature verwenden.
+* Beim Hochladen bestimmter Dateien als Anfügeblobs für Azure Stack tritt möglicherweise ein Fehler auf.
+* Nach dem Klicken auf „Abbrechen“ für eine Aufgabe kann es eine Weile dauern, bis die betreffende Aufgabe abgebrochen wird. Der Grund hierfür ist, dass wir die hier beschriebene Problemumgehung für „Filter abbrechen“ verwenden.
+* Wenn Sie die falsche PIN/das falsche Smartcard-Zertifikat auswählen, müssen Sie einen Neustart ausführen, damit diese Entscheidung im Storage-Explorer unwirksam gemacht wird.
+* Beim Umbenennen von Blobs (einzeln oder in einem umbenannten Blobcontainer) werden Momentaufnahmen nicht beibehalten. Alle anderen Eigenschaften und Metadaten für Blobs, Dateien und Entitäten werden beim Umbenennen beibehalten.
+* Die folgenden Features werden von Azure Stack nicht unterstützt. Der Versuch, diese Features bei der Arbeit mit Azure Stack-Ressourcen zu verwenden, kann zu unerwarteten Fehlern führen.
+   * Dateifreigaben
+   * Zugriffsebenen
+   * Vorläufiges Löschen
+* Die von Storage-Explorer verwendete Electron-Shell hat Probleme mit einigen GPU-Hardwarebeschleunigern (Grafikprozessor). Wenn Storage-Explorer ein leeres Hauptfenster anzeigt, können Sie versuchen, Storage-Explorer über die Befehlszeile zu starten und die GPU-Beschleunigung durch Hinzufügen des Switches `--disable-gpu` zu deaktivieren:
+
+    ```
+    ./StorageExplorer.exe --disable-gpu
+    ```
+
+* Für Linux-Benutzer müssen Sie [.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x) installieren.
+* Für Benutzer unter Ubuntu 14.04 müssen Sie sicherstellen, dass GCC auf dem neuesten Stand ist. Hierzu können Sie die folgenden Befehle ausführen und anschließend Ihren Computer neu starten:
+
+    ```
+    sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+    sudo apt-get update
+    sudo apt-get upgrade
+    sudo apt-get dist-upgrade
+    ```
+
+* Für Benutzer unter Ubuntu 17.04 müssen Sie GConf installieren; hierzu können Sie die folgenden Befehle ausführen und anschließend Ihren Computer neu starten:
+
+    ```
+    sudo apt-get install libgconf-2-4
+    ```
+
+## <a name="previous-releases"></a>Vorgängerversionen
+
+* [Version 1.4.4](#version-144)
+* [Version 1.4.3](#version-143)
+* [Version 1.4.2](#version-142)
+* [Version 1.4.1](#version-141)
+* [Version 1.3.0](#version-130)
+* [Version 1.2.0](#version-120)
+* [Version 1.1.0](#version-110)
+* [Version 1.0.0](#version-100)
+* [Version 0.9.6](#version-096)
+* [Version 0.9.5](#version-095)
+* [Version 0.9.4 und 0.9.3](#version-094-and-093)
+* [Version 0.9.2](#version-092)
+* [Version 0.9.1 und 0.9.0](#version-091-and-090)
+* [Version 0.8.16](#version-0816)
+* [Version 0.8.14](#version-0814)
+* [Version 0.8.13](#version-0813)
+* [Version 0.8.12, 0.8.11 und 0.8.10](#version-0812-and-0811-and-0810)
+* [Version 0.8.9 und 0.8.8](#version-089-and-088)
+* [Version 0.8.7](#version-087)
+* [Version 0.8.6](#version-086)
+* [Version 0.8.5](#version-085)
+* [Version 0.8.4](#version-084)
+* [Version 0.8.3](#version-083)
+* [Version 0.8.2](#version-082)
+* [Version 0.8.0](#version-080)
+* [Version 0.7.20160509.0](#version-07201605090)
+* [Version 0.7.20160325.0](#version-07201603250)
+* [Version 0.7.20160129.1](#version-07201601291)
+* [Version 0.7.20160105.0](#version-07201601050)
+* [Version 0.7.20151116.0](#version-07201511160)
+
 ## <a name="version-144"></a>Version 1.4.4
 10/15/2018
-
-### <a name="download-azure-storage-explorer-144"></a>Herunterladen von Azure Storage-Explorer 1.4.4
-- [Azure Storage-Explorer 1.4.4 für Windows](https://go.microsoft.com/fwlink/?LinkId=708343)
-- [Azure Storage-Explorer 1.4.4 für Mac](https://go.microsoft.com/fwlink/?LinkId=708342)
-- [Azure Storage-Explorer 1.4.4 für Linux](https://go.microsoft.com/fwlink/?LinkId=722418)
 
 ### <a name="hotfixes"></a>Hotfixes
 * Die API-Version der Azure-Ressourcenverwaltung wurde zurückgesetzt, um die Azure US Government-Benutzer zu entsperren. [#696](https://github.com/Microsoft/AzureStorageExplorer/issues/696)
@@ -87,38 +184,6 @@ Beim [Microsoft Azure Storage-Explorer](./vs-azure-tools-storage-manage-with-sto
     ```
     sudo apt-get install libgconf-2-4
     ```
-
-## <a name="previous-releases"></a>Vorgängerversionen
-
-* [Version 1.4.3](#version-143)
-* [Version 1.4.2](#version-142)
-* [Version 1.4.1](#version-141)
-* [Version 1.3.0](#version-130)
-* [Version 1.2.0](#version-120)
-* [Version 1.1.0](#version-110)
-* [Version 1.0.0](#version-100)
-* [Version 0.9.6](#version-096)
-* [Version 0.9.5](#version-095)
-* [Version 0.9.4 und 0.9.3](#version-094-and-093)
-* [Version 0.9.2](#version-092)
-* [Version 0.9.1 und 0.9.0](#version-091-and-090)
-* [Version 0.8.16](#version-0816)
-* [Version 0.8.14](#version-0814)
-* [Version 0.8.13](#version-0813)
-* [Version 0.8.12, 0.8.11 und 0.8.10](#version-0812-and-0811-and-0810)
-* [Version 0.8.9 und 0.8.8](#version-089-and-088)
-* [Version 0.8.7](#version-087)
-* [Version 0.8.6](#version-086)
-* [Version 0.8.5](#version-085)
-* [Version 0.8.4](#version-084)
-* [Version 0.8.3](#version-083)
-* [Version 0.8.2](#version-082)
-* [Version 0.8.0](#version-080)
-* [Version 0.7.20160509.0](#version-07201605090)
-* [Version 0.7.20160325.0](#version-07201603250)
-* [Version 0.7.20160129.1](#version-07201601291)
-* [Version 0.7.20160105.0](#version-07201601050)
-* [Version 0.7.20151116.0](#version-07201511160)
 
 ## <a name="version-143"></a>Version 1.4.3
 10/11/2018

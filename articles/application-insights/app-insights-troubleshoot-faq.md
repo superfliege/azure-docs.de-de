@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/12/2017
 ms.author: mbullwin
-ms.openlocfilehash: 4f063299a0bb454c8eaf3d38a0cb0a5fb20abcc8
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 60195f135b8b0e102a36c3573a341432f2e0c784
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47094082"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50959306"
 ---
 # <a name="application-insights-frequently-asked-questions"></a>Application Insights: Häufig gestellte Fragen
 
@@ -27,7 +27,7 @@ ms.locfileid: "47094082"
 
 * [.NET-App](app-insights-asp-net-troubleshoot-no-data.md)
 * [Überwachen einer bereits ausgeführten App](app-insights-monitor-performance-live-website-now.md#troubleshooting-runtime-configuration-of-application-insights)
-* [Azure-Diagnose](app-insights-azure-diagnostics.md)
+* [Azure-Diagnose](../monitoring-and-diagnostics/azure-diagnostics-configure-application-insights.md)
 * [Java-Web-App](app-insights-java-troubleshoot.md)
 
 *Ich erhalte keine Daten von meinem Server.*
@@ -96,7 +96,7 @@ Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf `Application
 
 Eine Desktop-App, die Sie auf Ihrem IIS-Webserver zum Konfigurieren von Application Insights in Web-Apps verwenden können. Sie sammelt keine Telemetriedaten; Sie können sie beenden, wenn Sie keine App konfigurieren. 
 
-[Weitere Informationen](app-insights-monitor-performance-live-website-now.md#questions)
+[Weitere Informationen](app-insights-monitor-performance-live-website-now.md#questions).
 
 ## <a name="what-telemetry-is-collected-by-application-insights"></a>Welche Telemetriedaten werden von Application Insights gesammelt?
 
@@ -111,7 +111,7 @@ Von Server-Web-Apps:
 
 Über [Clientwebseiten](app-insights-javascript.md):
 
-* [Anzahl von Seitenaufrufen](app-insights-web-track-usage.md)
+* [Anzahl von Seitenaufrufen](app-insights-usage-overview.md)
 * [AJAX-Aufrufe](app-insights-asp-net-dependencies.md) – Anforderungen aus einem derzeit ausgeführten Skript.
 * Daten zum Laden von Seitenansichten
 * Anzahl von Benutzern und Sitzungen
@@ -119,7 +119,7 @@ Von Server-Web-Apps:
 
 Aus anderen Quellen, sofern Sie sie konfigurieren:
 
-* [Azure-Diagnose](app-insights-azure-diagnostics.md)
+* [Azure-Diagnose](../monitoring-and-diagnostics/azure-diagnostics-configure-application-insights.md)
 * [Docker-Container](app-insights-docker.md)
 * [In Analytics importierte Tabellen](app-insights-analytics-import.md)
 * [Log Analytics](https://azure.microsoft.com/blog/omssolutionforappinsightspublicpreview/)
@@ -141,7 +141,7 @@ Mit [GeoLite2](http://dev.maxmind.com/geoip/geoip2/geolite2/) wird die IP-Adress
 * Browsertelemetrie: Die IP-Adresse des Absenders wird gesammelt.
 * Servertelemetrie: Das Application Insights-Modul sammelt die Client-IP-Adresse. Sie wird nicht gesammelt, wenn `X-Forwarded-For` festgelegt ist.
 
-Sie können in der Konfiguration festlegen, dass `ClientIpHeaderTelemetryInitializer` die IP-Adresse aus einem anderen Header akzeptiert. In manchen Systemen wird sie z.B. von einem Proxy, durch den Lastenausgleich oder das CDN nach `X-Originating-IP` verschoben. [Weitere Informationen](http://apmtips.com/blog/2016/07/05/client-ip-address/)
+Sie können in der Konfiguration festlegen, dass `ClientIpHeaderTelemetryInitializer` die IP-Adresse aus einem anderen Header akzeptiert. In manchen Systemen wird sie z.B. von einem Proxy, durch den Lastenausgleich oder das CDN nach `X-Originating-IP` verschoben. [Weitere Informationen](http://apmtips.com/blog/2016/07/05/client-ip-address/).
 
 Sie können [mit Power BI](app-insights-export-power-bi.md) die Anforderungstelemetriedaten auf einer Karte anzeigen.
 

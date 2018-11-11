@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
-ms.openlocfilehash: 6fc03865185b97fb1f34028239f647f97d5bd315
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 3de17375670d7697a298023dc79ffc2418cb7e42
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34836873"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50963759"
 ---
 # <a name="retrain-a-classic-web-service"></a>Erneutes Trainieren eines klassischen Webdiensts
 Der von Ihnen bereitgestellte Vorhersagewebdienst ist der Standardbewertungsendpunkt. Standardendpunkte werden mit den ursprünglichen Trainings- und Bewertungsexperimenten synchronisiert. Daher kann das trainierte Modell für den Standardendpunkt nicht ersetzt werden. Zum erneuten Trainieren des Webdiensts müssen Sie dem Webdienst einen neuen Endpunkt hinzufügen. 
@@ -51,7 +51,7 @@ Es gibt zwei Möglichkeiten zum Hinzufügen eines neuen Endpunkts zu einem Webdi
 2. Verwenden des Portals für Microsoft Azure-Webdienste
 
 ### <a name="programmatically-add-an-endpoint"></a>Programmgesteuertes Hinzufügen eines Endpunkts
-Sie können Bewertungsendpunkte mithilfe des Beispielcodes in diesem [GitHub-Repository](https://github.com/raymondlaghaeian/AML_EndpointMgmt/blob/master/Program.cs)hinzufügen.
+Sie können Bewertungsendpunkte mithilfe des Beispielcodes in diesem [GitHub-Repository](https://github.com/hning86/azuremlps#add-amlwebserviceendpoint)hinzufügen.
 
 ### <a name="use-the-microsoft-azure-web-services-portal-to-add-an-endpoint"></a>Verwenden des Portals für Microsoft Azure-Webdienste zum Hinzufügen eines Endpunkts
 1. Klicken Sie in Machine Learning Studio links auf „Webdienste“.
