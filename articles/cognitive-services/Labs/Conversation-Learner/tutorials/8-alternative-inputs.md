@@ -10,12 +10,12 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 8d3b3f419ceacbb9a6fe2b19cf68ea6873de536f
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 3b38cc265b4adfb301dc1165e02b17a8aa7c9589
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39171016"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51252546"
 ---
 # <a name="how-to-use-alternative-inputs"></a>Alternative Eingaben
 
@@ -23,7 +23,7 @@ Dieses Tutorial zeigt Ihnen, wie Sie das Feld „Alternative Eingaben“ für Be
 
 ## <a name="video"></a>Video
 
-[![Tutorial 8 – Vorschau](http://aka.ms/cl-tutorial-08-preview)](http://aka.ms/blis-tutorial-08)
+[![Tutorial 8 – Vorschau](https://aka.ms/cl-tutorial-08-preview)](https://aka.ms/blis-tutorial-08)
 
 ## <a name="requirements"></a>Requirements (Anforderungen)
 Für dieses Tutorial muss der allgemeine Tutorialbot ausgeführt werden.
@@ -100,7 +100,7 @@ Sehen wir uns nun an, was passiert, wenn Sie etwas semantisch Ähnliches äußer
 
 1. Klicken Sie auf „Neue Aktion“ und dann auf „Neuer Trainingsdialog“.
 2. Geben Sie „Hilfe“ ein.
-3. Klicken Sie auf „Bewertungsaktionen“.
+3. Klicken Sie auf „Score Actions“ (Bewertungsaktionen).
     - Die Werte für die beiden möglichen Antworten liegen sehr nahe beieinander. Das zeigt, dass das Modell die Grenze zwischen den beiden Aktionen nicht genau bestimmen kann.
 6. Klicken Sie auf „Training abbrechen“ und auf „Bestätigen“.
 
@@ -148,7 +148,7 @@ Probieren Sie die folgenden Varianten aus:
 
 1. Klicken Sie auf „Neuer Trainingsdialog“.
 2. Geben Sie „Welche Funktionen hast du“ ein.
-3. Klicken Sie auf „Bewertungsaktionen“.
+3. Klicken Sie auf „Score Actions“ (Bewertungsaktionen).
     - Die Werte sind jetzt eindeutiger in Hinblick auf die nächste Aktion. Das zeigt die Sicherheit des Modells.
 2. Wählen Sie „Nach dem Wetter fragen“ aus.
 6. Klicken Sie auf „Training abgeschlossen“.

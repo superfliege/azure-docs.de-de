@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: troubleshooting
 ms.date: 10/29/2018
 ms.author: asgang
-ms.openlocfilehash: ddbfdc9928122373b82d043fac0777576c5fe99e
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 3090dd9e0d9681dbf77f052e9d324f2add0a1910
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51227476"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50215037"
 ---
 # <a name="troubleshoot-issues-with-the-azure-site-recovery-agent"></a>Behandeln von Problemen mit dem Azure Site Recovery-Agent
 
@@ -64,7 +64,7 @@ Der VM-Agent wurde möglicherweise beschädigt, oder der Dienst wurde angehalten
 1. Ermitteln Sie, ob der „Windows-Azure-Gast-Agent-Dienst“ in den VM-Diensten ausgeführt wird (services.msc). Starten Sie den „Windows-Azure-Gast-Agent-Dienst“ neu.    
 2. Wenn der Windows-Azure-Gast-Agent-Dienst in den Diensten nicht angezeigt wird, wechseln Sie in der Systemsteuerung zu **Programme und Funktionen**, um zu ermitteln, ob der Windows-Gast-Agent-Dienst installiert ist.
 4. Wenn der Windows-Azure-Gast-Agent unter **Programme und Funktionen** angezeigt wird, deinstallieren Sie ihn.
-5. Laden Sie die [aktuelle Version der Agent-MSI-Datei](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409) herunter, und installieren Sie sie. Zum Durchführen der Installation benötigen Sie Administratorberechtigungen.
+5. Laden Sie die [aktuelle Version der Agent-MSI-Datei](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409) herunter, und installieren Sie sie. Zum Durchführen der Installation benötigen Sie Administratorberechtigungen.
 6. Überprüfen Sie, ob der Windows-Azure-Gast-Agent-Dienst in den Diensten angezeigt wird.
 7. Starten Sie den Schutzauftrag neu.
 

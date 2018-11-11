@@ -1,20 +1,20 @@
 ---
-title: Migrieren von VMs aus AWS zu Azure mithilfe von Azure Site Recovery | Microsoft-Dokumentation
-description: In diesem Artikel wird beschrieben, wie Sie unter Amazon Web Services (AWS) ausgeführte Windows-VMs mithilfe von Azure Site Recovery zu Azure migrieren.
+title: Migrieren von virtuellen AWS-Computern zu Azure mit dem Azure Site Recovery-Dienst | Microsoft-Dokumentation
+description: In diesem Artikel wird beschrieben, wie Sie unter Amazon Web Services (AWS) ausgeführte virtuelle Windows-Computer mithilfe von Azure Site Recovery zu Azure migrieren.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 10/10/2018
+ms.date: 10/28/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 04e7506562d29e37abb65b7a760fbc9bd707e2c6
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: cd33b7cb45bb165a120a7efe20eba962ec75e273
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49078935"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51252138"
 ---
 # <a name="migrate-amazon-web-services-aws-vms-to-azure"></a>Migrieren von AWS-VMs (Amazon Web Services) zu Azure
 
@@ -119,7 +119,7 @@ Wählen Sie auf der Seite **Quelle vorbereiten** die Option **+ Konfigurationsse
 
 1. Verwenden Sie eine EC2-Instanz, die unter Windows Server 2012 R2 ausgeführt wird, um einen Konfigurationsserver zu erstellen, und registrieren Sie ihn bei Ihrem Recovery-Tresor.
 2. Konfigurieren Sie den Proxy auf der VM mit der EC2-Instanz, die Sie als Konfigurationsserver verwenden, damit der Zugriff auf die [Dienst-URLs](site-recovery-support-matrix-to-azure.md) möglich ist.
-3. Laden Sie das [Microsoft Azure Site Recovery Unified Setup](http://aka.ms/unifiedinstaller_wus) (Einheitliches Setup von Microsoft Azure Site Recovery) herunter. Sie können es auf den lokalen Computer herunterladen und anschließend auf die VM kopieren, die Sie als Konfigurationsserver verwenden.
+3. Laden Sie das [Microsoft Azure Site Recovery Unified Setup](https://aka.ms/unifiedinstaller_wus) (Einheitliches Setup von Microsoft Azure Site Recovery) herunter. Sie können es auf den lokalen Computer herunterladen und anschließend auf die VM kopieren, die Sie als Konfigurationsserver verwenden.
 4. Wählen Sie die Schaltfläche **Herunterladen**, um den Schlüssel für die Tresorregistrierung herunterzuladen. Kopieren Sie die heruntergeladene Datei auf die VM, die Sie als Konfigurationsserver verwenden.
 5. Klicken Sie auf der VM mit der rechten Maustaste auf das heruntergeladene Installationsprogramm für das einheitliche Setup von Microsoft Azure Site Recovery, und wählen Sie dann **Als Administrator ausführen**.
 

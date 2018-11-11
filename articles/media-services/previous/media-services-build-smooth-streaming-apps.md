@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/11/2017
 ms.author: juliako
-ms.openlocfilehash: f55e8aa652d65ea751a77742fa5823b09d9ee87b
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: e46ff880ff94abb2de2a9bef1464df0f6ac78fc6
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33783809"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51250797"
 ---
 # <a name="how-to-build-a-smooth-streaming-windows-store-application"></a>Erstellen einer Smooth Streaming Windows Store-Anwendung
 
@@ -38,14 +38,14 @@ Dieses Lernprogramm enthält vier Lektionen:
 
 * Windows 8 32 Bit oder 64 Bit.
 * Visual Studio-Versionen 2012 bis 2015.
-* [Microsoft Smooth Streaming Client SDK for Windows 8](http://visualstudiogallery.msdn.microsoft.com/04423d13-3b3e-4741-a01c-1ae29e84fea6?SRC=Homehttp://visualstudiogallery.msdn.microsoft.com/04423d13-3b3e-4741-a01c-1ae29e84fea6?SRC=Home).
+* [Microsoft Smooth Streaming Client SDK for Windows 8](https://visualstudiogallery.msdn.microsoft.com/04423d13-3b3e-4741-a01c-1ae29e84fea6?SRC=Home http://visualstudiogallery.msdn.microsoft.com/04423d13-3b3e-4741-a01c-1ae29e84fea6?SRC=Home).
 
 Die fertige Lösung für jede Lektion können Sie von der Website mit den MSDN-Codebeispielen für Entwickler (Code Gallery) herunterladen: 
 
-* [Lektion 1](http://code.msdn.microsoft.com/Smooth-Streaming-Client-0bb1471f) – ein einfacher Smooth Streaming-Media Player für Windows 8 
-* [Lektion 2](http://code.msdn.microsoft.com/A-simple-Windows-8-Smooth-ee98f63a) – ein einfacher Smooth Streaming-Media Player für Windows 8 mit einem Schieberegler 
-* [Lektion 3](http://code.msdn.microsoft.com/A-Windows-8-Smooth-883c3b44) – ein Smooth Streaming-Media Player für Windows 8 mit Streamauswahl  
-* [Lektion 4](http://code.msdn.microsoft.com/A-Windows-8-Smooth-aa9e4907) – ein Smooth Streaming-Media Player für Windows 8 mit Titelauswahl
+* [Lektion 1](https://code.msdn.microsoft.com/Smooth-Streaming-Client-0bb1471f) – ein einfacher Smooth Streaming-Media Player für Windows 8 
+* [Lektion 2](https://code.msdn.microsoft.com/A-simple-Windows-8-Smooth-ee98f63a) – ein einfacher Smooth Streaming-Media Player für Windows 8 mit einem Schieberegler 
+* [Lektion 3](https://code.msdn.microsoft.com/A-Windows-8-Smooth-883c3b44) – ein Smooth Streaming-Media Player für Windows 8 mit Streamauswahl  
+* [Lektion 4](https://code.msdn.microsoft.com/A-Windows-8-Smooth-aa9e4907) – ein Smooth Streaming-Media Player für Windows 8 mit Titelauswahl
 
 ## <a name="lesson-1-create-a-basic-smooth-streaming-store-application"></a>Lektion 1: Erstellen einer grundlegenden Smooth Streaming Store-Anwendung
 
@@ -53,7 +53,7 @@ In dieser Lektion erstellen Sie eine Windows Store-Anwendung mit einem MediaElem
 
 ![Beispiel für Smooth Streaming Windows Store-Anwendung][PlayerApplication]
 
-Weitere Informationen zum Entwickeln von Windows Store-Anwendungen finden Sie unter [Entwickeln von Apps für Windows 8](http://msdn.microsoft.com/windows/apps/br229512.aspx). Diese Lektion enthält die folgenden Prozeduren:
+Weitere Informationen zum Entwickeln von Windows Store-Anwendungen finden Sie unter [Entwickeln von Apps für Windows 8](https://msdn.microsoft.com/windows/apps/br229512.aspx). Diese Lektion enthält die folgenden Prozeduren:
 
 1. Erstellen eines Windows Store-Projekts
 2. Entwerfen der Benutzeroberfläche (XAML)
@@ -71,7 +71,7 @@ Weitere Informationen zum Entwickeln von Windows Store-Anwendungen finden Sie un
 | Vorlagengruppe |Installed/Templates/Visual C#/Windows Store |
 | Vorlage |Leere App (XAML) |
 | NAME |SSPlayer |
-| Speicherort |C:\SSTutorials |
+| Standort |C:\SSTutorials |
 | Projektmappenname |SSPlayer |
 | Verzeichnis für Lösung erstellen |(aktiviert) |
 

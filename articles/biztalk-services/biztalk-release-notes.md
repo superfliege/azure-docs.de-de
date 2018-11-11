@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2016
 ms.author: deonhe
-ms.openlocfilehash: db79ee85c19e5f3cdced9b894aca48de4d7d1c42
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: f990aa086997d51e59df4285aabeccd31dcce822
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45576469"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51253430"
 ---
 # <a name="release-notes-for-azure-biztalk-services"></a>Versionshinweise für Azure BizTalk Services
 
@@ -188,7 +188,7 @@ Stellen Sie sich ein Szenario vor, in dem Sie in Ihrem BizTalk Service-Projekt 
 
 ### <a name="bridges-continue-to-process-messages-even-when-the-sql-database-is-offline"></a>Bridges verarbeiten Nachrichten weiterhin, auch wenn die SQL-Datenbank offline ist
 Die BizTalk Services-Bridges setzen die Verarbeitung von Nachrichten eine Zeit lang fort, obwohl die Microsoft Azure SQL-Datenbank (in der die Ausführungsinformationen wie bereitgestellte Artefakte und Pipelines gespeichert werden) offline ist. Der Grund: BizTalk Services verwendet die zwischengespeicherten Artefakte und die zwischengespeicherte Bridgekonfiguration.
-Falls die Bridges keine Nachrichten verarbeiten sollen, wenn die SQL-Datenbank offline ist, können Sie den BizTalk Service mithilfe der PowerShell-Cmdlets für BizTalk Services beenden oder anhalten. Informationen zu den Windows PowerShell-Cmdlets für die Vorgangsverwaltung finden Sie unter [Azure BizTalk Service-Verwaltung – Beispiel](http://go.microsoft.com/fwlink/p/?LinkID=329019) .  
+Falls die Bridges keine Nachrichten verarbeiten sollen, wenn die SQL-Datenbank offline ist, können Sie den BizTalk Service mithilfe der PowerShell-Cmdlets für BizTalk Services beenden oder anhalten. Informationen zu den Windows PowerShell-Cmdlets für die Vorgangsverwaltung finden Sie unter [Azure BizTalk Service-Verwaltung – Beispiel](https://go.microsoft.com/fwlink/p/?LinkID=329019) .  
 
 ### <a name="reading-the-xml-message-within-a-bridges-custom-code-component-includes-an-extra-bom-character"></a>Beim Lesen der XML-Nachricht in der benutzerdefinierten Codekomponente einer Bridge ist ein zusätzliches BOM-Zeichen enthalten
 Szenario: Sie möchten eine XML-Nachricht im benutzerdefinierten Code einer Bridge lesen. Bei Verwendung der .NET-API „System.Text.Encoding.UTF8.GetString(bytes)“ ist in der Ausgabe am Anfang der Nachricht ein zusätzliches BOM-Zeichen enthalten. Wenn die Ausgabe kein zusätzliches BOM-Zeichen enthalten soll, müssen Sie ```System.IO.StreamReader().ReadToEnd()```verwenden.

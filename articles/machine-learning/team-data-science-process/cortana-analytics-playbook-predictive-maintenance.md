@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/11/2018
 ms.author: fboylu
-ms.openlocfilehash: 8f42ee996dae476de3744239d4cc5f053722d52b
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 611896dc9428092a76a891168b48f6962d760e60
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50093210"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51254569"
 ---
 # <a name="azure-ai-guide-for-predictive-maintenance-solutions"></a>Azure AI-Leitfaden für Predictive Maintenance-Lösungen
 
@@ -431,13 +431,13 @@ Microsoft Azure bietet Lernpfade für die grundlegenden Konzepte, die hinter PdM
 |:-------------------|--------------|
 | [Lernpfad für PdM mithilfe von Trees und Random Forest](https://aischool.microsoft.com/learning-paths/1H5vH5wAYcAy88CoQWQcA8) | Öffentlich | 
 | [Lernpfad für PdM mithilfe von Deep Learning](https://aischool.microsoft.com/learning-paths/FSIXxYkOGcauo0eUO8qAS) | Öffentlich |
-| [AI Developer in Azure](http://azure.microsoft.com/training/learning-paths/azure-ai-developer) | Öffentlich |
-| [Microsoft AI School](http://aischool.microsoft.com/learning-paths) | Öffentlich |
+| [AI Developer in Azure](https://azure.microsoft.com/training/learning-paths/azure-ai-developer) | Öffentlich |
+| [Microsoft AI School](https://aischool.microsoft.com/learning-paths) | Öffentlich |
 | [Azure AI-Lernmaterial auf GitHub](https://github.com/Azure/connectthedots/blob/master/readme.md) | Öffentlich |
 | [LinkedIn Learning](http://www.linkedin.com/learning) | Öffentlich |
 | [Microsoft AI – YouTube-Webinars](https://www.youtube.com/watch?v=NvrH7_KKzoM&t=4s) | Öffentlich |
 | [Microsoft AI-Show](http://channel9.msdn.com/Shows/AI-Show) | Öffentlich |
-| [LearnAI@MS](http://learnanalytics.microsoft.com) | Partner |
-| [Microsoft Partner Network](http://learningportal.microsoft.com) | Partner |
+| [LearnAI@MS](https://learnanalytics.microsoft.com) | Partner |
+| [Microsoft Partner Network](https://learningportal.microsoft.com) | Partner |
 
 Zusätzlich werden kostenlose MOOCs (Massive Open Online Courses) zu AI von akademischen Institutionen wie Stanford und MIT sowie anderen Bildungseinrichtungen angeboten.

@@ -12,12 +12,12 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 12/23/2016
 ms.author: ghogen
-ms.openlocfilehash: a114833b40fe834aa0108d1a2f3821f0b7cbddbc
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 5234f5c82e98fcb402cadf9a8a469a15bbb7ac6d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49321851"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51250814"
 ---
 # <a name="get-started-with-azure-queue-storage-and-visual-studio-connected-services-aspnet"></a>Erste Schritte mit Azure Queue Storage und verbundenen Visual Studio-Diensten (ASP.NET)
 
@@ -141,7 +141,7 @@ Die folgenden Schritte veranschaulichen, wie Sie eine Warteschlange erstellen:
   
     ![Erstellen einer Warteschlange](./media/vs-storage-aspnet-getting-started-queues/create-queue-results.png)
 
-    Wie bereits erwähnt, gibt die **CloudQueue.CreateIfNotExists**-Methode nur dann **true** zurück, wenn die Warteschlange nicht vorhanden ist und erstellt wird. Aus diesem Grund gibt die Methode **false** zurück, wenn Sie die App ausführen, wenn die Warteschlange vorhanden ist. Um die App mehrere Male auszuführen, müssen Sie die Warteschlange vor dem erneuten Ausführen der App löschen. Das Löschen der Warteschlange kann mit der **CloudQueue.Delete**-Methode durchgeführt werden. Sie können die Warteschlange auch über das [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040) oder den [Microsoft Azure Storage-Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) löschen.  
+    Wie bereits erwähnt, gibt die **CloudQueue.CreateIfNotExists**-Methode nur dann **true** zurück, wenn die Warteschlange nicht vorhanden ist und erstellt wird. Aus diesem Grund gibt die Methode **false** zurück, wenn Sie die App ausführen, wenn die Warteschlange vorhanden ist. Um die App mehrere Male auszuführen, müssen Sie die Warteschlange vor dem erneuten Ausführen der App löschen. Das Löschen der Warteschlange kann mit der **CloudQueue.Delete**-Methode durchgeführt werden. Sie können die Warteschlange auch über das [Azure-Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) oder den [Microsoft Azure Storage-Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) löschen.  
 
 ## <a name="add-a-message-to-a-queue"></a>Hinzufügen von Nachrichten zu einer Warteschlange
 

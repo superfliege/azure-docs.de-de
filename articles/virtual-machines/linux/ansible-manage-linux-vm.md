@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: quickstart
 ms.date: 09/27/2018
-ms.openlocfilehash: d9ff0387a1d02eb5f4684048aeed8ad0079b28ef
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 06a0f2416ecff9e2f9a21877e26487b56452d0a0
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47434414"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51251320"
 ---
 # <a name="use-ansible-to-manage-a-linux-virtual-machine-in-azure"></a>Verwalten eines virtuellen Linux-Computers in Azure mithilfe von Ansible
 Ansible ermöglicht die Automatisierung der Bereitstellung und Konfiguration von Ressourcen in Ihrer Umgebung. Sie können mit Ansible Ihre virtuellen Azure-Computer wie jede andere Ressource verwalten. In diesem Artikel wird veranschaulicht, wie Sie mithilfe eines Ansible-Playbooks einen virtuellen Linux-Computer starten und beenden. 
@@ -27,7 +27,7 @@ Ansible ermöglicht die Automatisierung der Bereitstellung und Konfiguration von
 ## <a name="use-ansible-to-deallocate-stop-an-azure-virtual-machine"></a>Aufheben der Zuordnung (Beenden) eines virtuellen Azure-Computers mithilfe von Ansible
 In diesem Abschnitt wird erläutert, wie Sie mithilfe von Ansible die Zuordnung eines virtuellen Computers aufheben (beenden).
 
-1.  Melden Sie sich auf dem [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040)an.
+1.  Melden Sie sich beim [Azure-Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) an.
 
 1.  Öffnen Sie [Cloud Shell](/azure/cloud-shell/overview).
 
@@ -85,7 +85,7 @@ In diesem Abschnitt wird erläutert, wie Sie mithilfe von Ansible die Zuordnung 
 ## <a name="use-ansible-to-start-a-deallocated-stopped-azure-virtual-machine"></a>Verwenden von Ansible zum Starten eines (beendeten) virtuellen Azure-Computers, dessen Zuordnung aufgehoben wurde
 In diesem Abschnitt wird erläutert, wie Sie mithilfe von Ansible einen (beendeten) virtuellen Computer starten, dessen Zuordnung aufgehoben wurde.
 
-1.  Melden Sie sich auf dem [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040)an.
+1.  Melden Sie sich beim [Azure-Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) an.
 
 1.  Öffnen Sie [Cloud Shell](/azure/cloud-shell/overview).
 

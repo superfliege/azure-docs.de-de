@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2018
 ms.author: sachins
-ms.openlocfilehash: ef2b5fe6c9b70eaea5ab4db2d4a0ca59ff82dbb9
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: 2c7e624344605b24e78962ac2b6d23278c06c0cc
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44391894"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51255147"
 ---
 # <a name="best-practices-for-using-azure-data-lake-storage-gen1"></a>Bewährte Methoden zur Verwendung von Azure Data Lake Storage Gen1
 
@@ -27,7 +27,7 @@ In diesem Artikel erfahren Sie mehr über die bewährten Methoden und Aspekte in
 
 Azure Data Lake Storage Gen1 ermöglicht POSIX-Zugriffssteuerungen und eine detaillierte Überwachung für Azure Active Directory-Benutzer, -Gruppen und -Dienstprinzipale. Diese Zugriffssteuerungen können auf vorhandene Dateien und Ordner festgelegt werden. Außerdem können die Zugriffssteuerungen zum Erstellen von Standardwerten verwendet werden, die auf neue Dateien oder Ordner angewendet werden können. Wenn Berechtigungen auf vorhandene Ordner und untergeordnete Objekte festgelegt werden, müssen die Berechtigungen rekursiv auf die einzelnen Objekte verteilt werden. Bei einer großen Zahl von Dateien kann das Verteilen der Berechtigungen sehr lange dauern. Die Anzahl von Objekten, die pro Sekunde verarbeitet werden, kann zwischen 30 und 50 liegen. Planen Sie die Ordnerstruktur und die Benutzergruppen daher entsprechend. Andernfalls kann es beim Arbeiten mit Ihren Daten zu unvorhergesehenen Verzögerungen und Problemen kommen. 
 
-Angenommen, Sie verfügen über einen Ordner mit 100.000 untergeordneten Objekten. Wenn Sie den unteren Wert von 30 verarbeiteten Objekten pro Sekunde ansetzen, kann das Aktualisieren der Berechtigungen für den gesamten Ordner eine Stunde dauern. Weitere Details zu Data Lake Storage Gen1-Zugriffssteuerungslisten finden Sie unter [Zugriffssteuerung in Azure Data Lake Storage Gen1](data-lake-store-access-control.md). Zur Verbesserung der Leistung beim rekursiven Zuweisen von Zugriffssteuerungslisten können Sie das Azure Data Lake-Befehlszeilentool verwenden. Mit dem Tool werden mehrere Threads und die Logik für die rekursive Navigation erstellt, damit Zugriffssteuerungslisten schnell auf Millionen von Dateien angewendet werden können. Das Tool ist für Linux und Windows verfügbar, und die dazugehörige [Dokumentation](https://github.com/Azure/data-lake-adlstool) und [Downloads](http://aka.ms/adlstool-download) finden Sie auf GitHub. Sie können die gleichen Leistungsverbesserungen mit Ihren eigenen Tools erreichen, die Sie mit den [.NET](data-lake-store-data-operations-net-sdk.md) und [Java](data-lake-store-get-started-java-sdk.md) SDKs für Data Lake Storage Gen1 erstellt haben.
+Angenommen, Sie verfügen über einen Ordner mit 100.000 untergeordneten Objekten. Wenn Sie den unteren Wert von 30 verarbeiteten Objekten pro Sekunde ansetzen, kann das Aktualisieren der Berechtigungen für den gesamten Ordner eine Stunde dauern. Weitere Details zu Data Lake Storage Gen1-Zugriffssteuerungslisten finden Sie unter [Zugriffssteuerung in Azure Data Lake Storage Gen1](data-lake-store-access-control.md). Zur Verbesserung der Leistung beim rekursiven Zuweisen von Zugriffssteuerungslisten können Sie das Azure Data Lake-Befehlszeilentool verwenden. Mit dem Tool werden mehrere Threads und die Logik für die rekursive Navigation erstellt, damit Zugriffssteuerungslisten schnell auf Millionen von Dateien angewendet werden können. Das Tool ist für Linux und Windows verfügbar, und die dazugehörige [Dokumentation](https://github.com/Azure/data-lake-adlstool) und [Downloads](https://aka.ms/adlstool-download) finden Sie auf GitHub. Sie können die gleichen Leistungsverbesserungen mit Ihren eigenen Tools erreichen, die Sie mit den [.NET](data-lake-store-data-operations-net-sdk.md) und [Java](data-lake-store-get-started-java-sdk.md) SDKs für Data Lake Storage Gen1 erstellt haben.
 
 ### <a name="use-security-groups-versus-individual-users"></a>Vergleich der Verwendung von Sicherheitsgruppen und einzelnen Benutzern 
 

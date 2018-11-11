@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: fc9ed37ef24e776336124bf097def2f6a00ee83e
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: e644f8f0db9e310e8a3c77ebd04de160bcb7fa28
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50419791"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51008911"
 ---
 # <a name="common-questions-for-transition-from-oms-portal-to-azure-portal-for-log-analytics-users"></a>Häufig gestellte Fragen zum Übergang vom OMS-Portal zum Azure-Portal für Log Analytics-Benutzer
 Log Analytics verwendete zunächst ein eigenes Portal, das OMS-Portal, um die Konfiguration zu verwalten und gesammelte Daten zu analysieren.  Alle Funktionen dieses Portals wurden in das Azure-Portal übernommen, wo sie weiter entwickelt werden.
@@ -82,7 +82,7 @@ Verwalten Sie die meisten Einstellungen von „Verbunden Quelle“ im Menü **Er
 | Linux-Server   | Menü **Erweiterte Einstellungen** für den Arbeitsbereich |
 | Azure Storage     | Menü **Erweiterte Einstellungen** für den Arbeitsbereich |
 | System Center     | Menü **Erweiterte Einstellungen** für den Arbeitsbereich |
-| Office 365        | Einzelheiten zur Konfiguration finden Sie in der [Dokumentation für die Office 365-Verwaltungslösung](../operations-management-suite/oms-solution-office-365.md). |
+| Office 365        | Einzelheiten zur Konfiguration finden Sie in der [Dokumentation für die Office 365-Verwaltungslösung](../monitoring/monitoring-solution-office-365.md). |
 | Windows-Telemetrie | Menü „Einstellungen“ für die Lösung. Die Konfigurationsdetails finden Sie unter [Windows Analytics im Azure-Portal](/windows/deployment/update/windows-analytics-azure-portal). |
 | ITSM-Connector    | Anweisungen für die Verbindung mit Ihrem ITSM-Dienst mit Log Analytics finden Sie unter [Verbinden von ITSM-Produkten/-Diensten mit dem ITSM-Connector](../log-analytics/log-analytics-itsmc-connections.md). |
 
@@ -110,7 +110,7 @@ Verwalten Sie Lösungen über das Menü **Lösungen** für den Arbeitsbereich.
 Im OMS-Portal installierten Sie Verwaltungslösungen aus dem Lösungskatalog und entfernten sie über die **Einstellungen**. Im Azure-Portal [installieren Sie Verwaltungslösungen](../monitoring/monitoring-solutions.md#install-a-management-solution) aus dem Azure Marketplace. [Entfernen Sie Lösungen](../monitoring/monitoring-solutions.md#remove-a-management-solution) aus der Liste der installierten Lösungen.
 
 ## <a name="how-do-i-create-and-manage-alerts"></a>Wie erstelle und verwalte ich Warnungen?
-Warnungsregeln basierend auf Log Analytics-Abfragen werden jetzt über die [vereinheitlichte Oberfläche für Warnungen](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md) verwaltet. Weitere Informationen zur Konfiguration und Verwendung von Warnungen im Azure-Portal finden Sie unter [Gewusst wie: Erweitern (Kopieren) von Warnungen aus dem OMS-Portal in Azure](../monitoring-and-diagnostics/monitoring-alerts-extend-tool.md).
+Warnungsregeln basierend auf Log Analytics-Abfragen werden jetzt über die [vereinheitlichte Oberfläche für Warnungen](../monitoring-and-diagnostics/alert-metric.md) verwaltet. Weitere Informationen zur Konfiguration und Verwendung von Warnungen im Azure-Portal finden Sie unter [Gewusst wie: Erweitern (Kopieren) von Warnungen aus dem OMS-Portal in Azure](../monitoring-and-diagnostics/monitoring-alerts-extend-tool.md).
 
 ## <a name="how-do-i-access-my-dashboards"></a>Wie kann ich auf meine Dashboards zugreifen?
 Das Feature [Mein Dashboard](../log-analytics/log-analytics-dashboards.md) in Log Analytics ist veraltet. Mit diesem Feature konnten Sie eine private Sammlung von Ansicht-Designer-Komponenten erstellen. Es wurde durch die integrierte Azure-Dashboard-Funktion ersetzt. Sie können weiterhin Daten in Log Analytics mit dem [Ansicht-Designer](../log-analytics/log-analytics-view-designer.md) für freigegebene Ansichten visualisieren. Sie können auch Visualisierungen aus diesen Ansichten oder für [einzelne Abfragen](../log-analytics/log-analytics-tutorial-dashboards.md) an Azure-Dashboards anheften.

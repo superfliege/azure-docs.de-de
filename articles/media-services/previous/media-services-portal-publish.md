@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/07/2017
 ms.author: juliako
-ms.openlocfilehash: d93bfc548134f730f4fad49a37593c861d6b6cbb
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 71b7e724158255cc979e9a08cd14c7f4412c4382
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33785769"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51253396"
 ---
 # <a name="publish-content-in-the-azure-portal"></a>Veröffentlichen von Inhalten im Azure-Portal
 > [!div class="op_single_selector"]
@@ -63,7 +63,7 @@ Weitere Informationen finden Sie unter [Übermitteln von Inhalten an Kunden](med
 > 
 > 
 
-Das Ablaufdatum eines Locators können Sie mithilfe einer [REST-API](https://docs.microsoft.com/rest/api/media/operations/locator#update_a_locator) oder [.NET-API](http://go.microsoft.com/fwlink/?LinkID=533259) aktualisieren. 
+Das Ablaufdatum eines Locators können Sie mithilfe einer [REST-API](https://docs.microsoft.com/rest/api/media/operations/locator#update_a_locator) oder [.NET-API](https://go.microsoft.com/fwlink/?LinkID=533259) aktualisieren. 
 
 > [!NOTE]
 > Wenn Sie das Ablaufdatum eines SAS-Locators aktualisieren, ändert sich auch die URL.

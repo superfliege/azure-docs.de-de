@@ -13,12 +13,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: ghogen
-ms.openlocfilehash: 9b61362525962c5e01d7fef6d317cf9861dfd0a3
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 565a484d2eae0879b625e79ef7ffbdd8eb5e4455
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46977892"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51251035"
 ---
 # <a name="adding-an-azure-active-directory-by-using-connected-services-in-visual-studio"></a>Hinzufügen von Azure Active Directory mithilfe von verbundenen Diensten in Visual Studio
 
@@ -64,7 +64,7 @@ Derzeit unterstützt der verbundene Dienst für Active Directory keine ASP.NET C
     - [Erste Schritte mit .NET MVC-Projekten](vs-active-directory-dotnet-getting-started.md)
     - [Erste Schritte mit WebAPI-Projekten](vs-active-directory-webapi-getting-started.md)
 
-1. Die Active Directory-Domäne wird auch im [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040) angezeigt.
+1. Die Active Directory-Domäne wird auch im [Azure-Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) angezeigt.
 
 ## <a name="how-your-project-is-modified"></a>Änderungen am Projekt
 

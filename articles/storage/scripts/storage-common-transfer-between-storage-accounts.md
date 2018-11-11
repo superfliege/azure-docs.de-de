@@ -13,12 +13,12 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.date: 02/01/2018
 ms.author: rogarana
-ms.openlocfilehash: 970315c5d597d691454f9dea0a76f2c0dc4a40ec
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 58e2275398216f29764d54d1a230959e86eda0b6
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/03/2018
-ms.locfileid: "29360716"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51253260"
 ---
 # <a name="migrate-blobs-across-storage-accounts-using-azcopy-on-windows"></a>Migrieren von Blobs zwischen Speicherkonten mit AzCopy unter Windows
 
@@ -30,7 +30,7 @@ Für dieses Beispiel ist das Azure PowerShell-Speichermodul Version **4.0.2** od
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-Dieses Beispiel erfordert auch die neueste Version von [AzCopy unter Windows](http://aka.ms/downloadazcopy). Das Standardinstallationsverzeichnis lautet `C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\`.
+Dieses Beispiel erfordert auch die neueste Version von [AzCopy unter Windows](https://aka.ms/downloadazcopy). Das Standardinstallationsverzeichnis lautet `C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\`.
 
 Dieses Beispiel verwendet den Namen und Schlüssel eines Quellspeicherkontos, den Namen und Schlüssel eines Zielspeicherkontos und den vollständigen Dateipfad der AzCopy.exe-Datei (falls die Installation nicht im Standardverzeichnis erfolgt ist).
 

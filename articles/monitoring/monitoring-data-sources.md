@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/15/2018
 ms.author: bwren
-ms.openlocfilehash: b10236a1e0307c9464d58e50eb0c7b4e6a60b5e5
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 4a5f820c9e6d39c65ef0942091b247c5d52fe17f
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46987772"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51253209"
 ---
 # <a name="sources-of-data-in-azure-monitor"></a>Quellen für Daten in Azure Monitor
 In diesem Artikel werden die Quellen von Daten beschrieben, die von Azure Monitor zum Überwachen von Integrität und Leistung Ihrer Azure-Ressourcen und der darauf ausgeführten Anwendungen gesammelt werden. Diese Ressourcen können in Azure, in einer anderen Cloud oder lokal ausgeführt werden.  Details dazu, wie diese Daten gespeichert werden und wie Sie sie anzeigen können, finden Sie unter [Von Azure Monitor gesammelte Daten](monitoring-data-collection.md).
@@ -66,7 +66,7 @@ Während das Aktivitätsprotokoll Informationen über die Vorgänge liefert, die
 Sie können Diagnoseprotokolle nicht direkt im Azure-Portal anzeigen, aber Sie können [sie zum Archivieren an den Azure-Speicher senden](../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md) und für die Umleitung zu anderen Diensten nach [Event Hub](../event-hubs/event-hubs-what-is-event-hubs.md) bzw. zur Analyse nach [Log Analytics](../monitoring-and-diagnostics/monitor-stream-diagnostic-logs-log-analytics.md) exportieren. Einige Ressourcen können direkt in Log Analytics schreiben, während andere in ein Speicherkonto schreiben, bevor sie [in Log Analytics importiert](../log-analytics/log-analytics-azure-storage-iis-table.md#use-the-azure-portal-to-collect-logs-from-azure-storage) werden.
 
 ### <a name="monitoring-solutions"></a>Überwachungslösungen
- [Überwachungslösungen](../monitoring/monitoring-solutions.md) sammeln Daten, um zusätzliche Erkenntnisse zum Betrieb eines bestimmten Diensts oder einer bestimmten Anwendung zu liefern. Sie sammeln Daten in Log Analytics, wo sie mit der [Abfragesprache](../log-analytics/log-analytics-log-search.md) oder [Sichten](../log-analytics/log-analytics-view-designer.md), die in der Regel in der Lösung enthalten sind, analysiert werden können.
+ [Überwachungslösungen](monitoring-solutions.md) sammeln Daten, um zusätzliche Erkenntnisse zum Betrieb eines bestimmten Diensts oder einer bestimmten Anwendung zu liefern. Sie sammeln Daten in Log Analytics, wo sie mit der [Abfragesprache](../log-analytics/log-analytics-queries.md) oder [Sichten](../log-analytics/log-analytics-view-designer.md), die in der Regel in der Lösung enthalten sind, analysiert werden können.
 
 ## <a name="guest-operating-system"></a>Gastbetriebssystem
 Computeressourcen in Azure, in anderen Clouds und lokal haben ein Gastbetriebssystem zu überwachen. Mit der Installation mindestens eines Agents können Sie Telemetriedaten aus dem Gastbetriebssystem in den gleichen Überwachungstools sammeln, die sie für die Azure-Dienste selbst verwenden.
@@ -78,7 +78,7 @@ Mit der [Azure-Diagnoseerweiterung](../monitoring-and-diagnostics/azure-diagnost
 
 
 ### <a name="log-analytics-agent"></a>Log Analytics-Agent
-Sie können den Log Analytics-Agent auf jeder [Windows](../log-analytics/log-analytics-agent-windows.md)- oder [Linux]()-VM bzw. jedem physischen Computer installieren. Der virtuelle Computer kann in Azure, einer anderen Cloud oder lokal ausgeführt werden.  Der Agent stellt entweder direkt oder über eine [verbundene System Center Operations Manager-Verwaltungsgruppe](../log-analytics/log-analytics-om-agents.md) eine Verbindung mit Log Analytics her und ermöglicht Ihnen, Daten aus [Datenquellen](../log-analytics/log-analytics-data-sources.md) zu sammeln, die Sie konfigurieren, oder aus [Verwaltungslösungen](../monitoring/monitoring-solutions.md), die zusätzliche Einblicke in Anwendungen ermöglichen, die auf dem virtuellen Computer ausgeführt werden.
+Sie können den Log Analytics-Agent auf jeder [Windows](../log-analytics/log-analytics-agent-windows.md)- oder [Linux]()-VM bzw. jedem physischen Computer installieren. Der virtuelle Computer kann in Azure, einer anderen Cloud oder lokal ausgeführt werden.  Der Agent stellt entweder direkt oder über eine [verbundene System Center Operations Manager-Verwaltungsgruppe](../log-analytics/log-analytics-om-agents.md) eine Verbindung mit Log Analytics her und ermöglicht Ihnen, Daten aus [Datenquellen](../log-analytics/log-analytics-data-sources.md) zu sammeln, die Sie konfigurieren, oder aus [Verwaltungslösungen](monitoring-solutions.md), die zusätzliche Einblicke in Anwendungen ermöglichen, die auf dem virtuellen Computer ausgeführt werden.
 
 ### <a name="service-map"></a>Dienstzuordnung
 [Service Map](../operations-management-suite/operations-management-suite-service-map.md) erfordert einen Dependency-Agent für Windows- und Linux-VMs. So lassen sich mit dem Log Analytics-Agent Daten über Prozesse sammeln, die auf dem virtuellen Computer ausgeführten werden, und über Abhängigkeiten von externen Prozessen. Er speichert diese Daten in Log Analytics und enthält eine Konsole, die die gesammelten Daten zusätzlich zu anderen in Log Analytics gespeicherten Daten anzeigt.

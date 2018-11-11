@@ -9,16 +9,16 @@ ms.assetid: dc9b21d8-c5f4-4f77-bcbc-eff458f48de2
 ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 11/27/2017
-ms.openlocfilehash: e4eea3cb4b16460c7e17bb6575c4e6cf8dda5a0a
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 7a4aae87cd704cf94c89c308c0c056ae5b9a8b4d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43047253"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51251001"
 ---
 # <a name="export-a-u-sql-database"></a>Exportieren einer U-SQL-Datenbank
 
-In diesem Artikel erfahren Sie, wie Sie mithilfe von [Azure Data Lake Tools für Visual Studio](http://aka.ms/adltoolsvs) eine U-SQL-Datenbank als einzelnes U-SQL-Skript und heruntergeladene Ressourcen exportieren. Sie können die exportierte Datenbank im gleichen Vorgang in ein lokales Konto importieren.
+In diesem Artikel erfahren Sie, wie Sie mithilfe von [Azure Data Lake Tools für Visual Studio](https://aka.ms/adltoolsvs) eine U-SQL-Datenbank als einzelnes U-SQL-Skript und heruntergeladene Ressourcen exportieren. Sie können die exportierte Datenbank im gleichen Vorgang in ein lokales Konto importieren.
 
 Kunden verwalten in der Regel mehrere Umgebungen für die Entwicklung, zum Testen und für die Produktion. Diese Umgebungen werden sowohl in einem lokalen Konto auf dem lokalen Computer des Entwicklers als auch im Azure Data Lake Analytics-Konto in Azure gehostet. 
 
@@ -35,7 +35,7 @@ Im Server-Explorer sind alle Data Lake Analytics-Konten aufgeführt, für die Si
    
     ![Server-Explorer – Exportieren einer Datenbank](./media/data-lake-analytics-data-lake-tools-export-database/export-database.png)
 
-     Wenn die Menüoption **Exportieren** nicht verfügbar ist, müssen Sie das [Tool auf die neueste Version aktualisieren](http://aka.ms/adltoolsvs).
+     Wenn die Menüoption **Exportieren** nicht verfügbar ist, müssen Sie das [Tool auf die neueste Version aktualisieren](https://aka.ms/adltoolsvs).
 
 ### <a name="step-2-configure-the-objects-that-you-want-to-export"></a>Schritt 2: Konfigurieren der zu exportierenden Objekte
 

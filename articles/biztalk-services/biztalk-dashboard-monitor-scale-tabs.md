@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/07/2016
 ms.author: mandia
-ms.openlocfilehash: 351809cd5f165a863dc02bfadf78fa59cbaabfd7
-ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
+ms.openlocfilehash: 3f4763b5e15d4b9b84e868262a9e8538b8a407a2
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2017
-ms.locfileid: "24103360"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51228826"
 ---
 # <a name="review-the-dashboard-monitor-scale-configure-and-hybrid-connection-tabs"></a>Registerkarten "Dashboard", "Überwachen", "Skalieren", "Konfigurieren" und "Hybridverbindungen"
 
@@ -39,20 +39,20 @@ Eventuell stehen nicht alle aufgeführten Optionen für alle BizTalk Services-Ed
         <td><strong>Abrufen der Tools</strong></td>
         <td>Laden Sie das BizTalk Services SDK herunter, um die Visual Studio-Projektvorlagen auf Ihrem lokalen Entwicklungscomputer zu speichern. Mithilfe dieser Vorlagen werden die Visual Studio-Projekte <strong>BizTalk Services</strong> (Brücke) und <strong>BizTalk Service Artifacts</strong> (Transformation) erstellt, die in Ihrem BizTalk-Dienst bereitgestellt werden.
         <br/><br/>Unter 
-        <a HREF="http://go.microsoft.com/fwlink/p/?LinkID=302335">Erstellen des Projekts in Visual Studio</a> und <a HREF="http://go.microsoft.com/fwlink/p/?LinkID=241589">Installieren des Azure BizTalk Services-SDKs</a> werden die ersten Schritte erläutert.
+        <a HREF="https://go.microsoft.com/fwlink/p/?LinkID=302335">Erstellen des Projekts in Visual Studio</a> und <a HREF="https://go.microsoft.com/fwlink/p/?LinkID=241589">Installieren des Azure BizTalk Services-SDKs</a> werden die ersten Schritte erläutert.
         </td>
     </tr>
     <tr>
         <td><strong>Partnervereinbarungen erstellen</strong></td>
         <td>Öffnet das auf Azure gehostete Azure BizTalk Services-Portal, auf dem Sie Partner hinzufügen und X12-, AS2- und EDIFACT-EDI-Verträge erstellen können.
         <br/><br/>Unter 
-        <a HREF="http://go.microsoft.com/fwlink/p/?LinkID=303653">Konfigurieren von EDI, AS2 und EDIFACT im BizTalk Services-Portal</a> werden die ersten Schritte erläutert.
+        <a HREF="https://go.microsoft.com/fwlink/p/?LinkID=303653">Konfigurieren von EDI, AS2 und EDIFACT im BizTalk Services-Portal</a> werden die ersten Schritte erläutert.
         </td>
     </tr>
 
 <tr>
         <td><strong>Weitere Informationen über BizTalk Services</strong></td>
-        <td>Im <a HREF="http://azure.microsoft.com/documentation/services/biztalk-services/">Trainingscenter</a> erfahren Sie mehr über Azure BizTalk Services.</td>
+        <td>Im <a HREF="https://azure.microsoft.com/documentation/services/biztalk-services/">Trainingscenter</a> erfahren Sie mehr über Azure BizTalk Services.</td>
 </tr>
 </table>
 
@@ -67,14 +67,14 @@ In der Taskleiste am unteren Rand stehen folgende Optionen zur Verfügung:
 <br/><br/>
 Dies ist funktionsgleich mit <strong>Partnervereinbarungen erstellen</strong> auf der Registerkarte <strong>Schnellstart</strong>.
 <br/><br/>Unter 
-<a HREF="http://go.microsoft.com/fwlink/p/?LinkID=303653">Konfigurieren von EDI, AS2 und EDIFACT im BizTalk Services-Portal</a> erhalten Sie weitere Informationen zum BizTalk Services-Portal.</td>
+<a HREF="https://go.microsoft.com/fwlink/p/?LinkID=303653">Konfigurieren von EDI, AS2 und EDIFACT im BizTalk Services-Portal</a> erhalten Sie weitere Informationen zum BizTalk Services-Portal.</td>
 </tr>
 
 <tr>
 <td><strong>Verbindungsinformationen</strong> des Access Control-Namespace</td>
 <td>Wenn Sie "Verbindungsinformationen" auswählen, werden der Access Control-Namespace, der Standardaussteller und der Standardschlüssel angezeigt. Diese Werte können kopiert werden.
 <br/><br/>
-Sie können auch das Access Control-Portal öffnen. Unter <a HREF="http://go.microsoft.com/fwlink/p/?LinkID=285670">Erstellen eines Access Control-Namespace</a> finden Sie weitere Informationen zum Access Control-Portal.</td>
+Sie können auch das Access Control-Portal öffnen. Unter <a HREF="https://go.microsoft.com/fwlink/p/?LinkID=285670">Erstellen eines Access Control-Namespace</a> finden Sie weitere Informationen zum Access Control-Portal.</td>
 </tr>
 
 <tr>
@@ -122,7 +122,7 @@ Eine Beschreibung dieser Leistungsmetriken finden Sie in diesem Thema unter [Ver
 </tr>
 <tr>
 <td><strong>SSL-Zertifikat aktualisieren</strong></td>
-<td>Hiermit können Sie Ihren BizTalk Service aktualisieren, sodass ein anderes SSL-Zertifikat verwendet wird. Wenn Sie den <a HREF="http://go.microsoft.com/fwlink/p/?LinkID=302280">BizTalk-Dienst erstellen</a>, wird automatisch ein selbstsigniertes SSL-Zertifikat erstellt.</td>
+<td>Hiermit können Sie Ihren BizTalk Service aktualisieren, sodass ein anderes SSL-Zertifikat verwendet wird. Wenn Sie den <a HREF="https://go.microsoft.com/fwlink/p/?LinkID=302280">BizTalk-Dienst erstellen</a>, wird automatisch ein selbstsigniertes SSL-Zertifikat erstellt.</td>
 </tr>
 <tr>
 <td><strong>Zertifikat herunterladen</strong></td>
@@ -130,7 +130,7 @@ Eine Beschreibung dieser Leistungsmetriken finden Sie in diesem Thema unter [Ver
 </tr>
 <tr>
 <td><strong>Status</strong></td>
-<td>Zeigt den aktuellen Status Ihres BizTalk Service an. Siehe <a HREF="http://go.microsoft.com/fwlink/p/?LinkID=329870">BizTalk Services: Dienststatusübersicht</a>. </td>
+<td>Zeigt den aktuellen Status Ihres BizTalk Service an. Siehe <a HREF="https://go.microsoft.com/fwlink/p/?LinkID=329870">BizTalk Services: Dienststatusübersicht</a>. </td>
 </tr>
 <tr>
 <td><strong>Dienst-URL</strong></td>
@@ -149,7 +149,7 @@ Eine Beschreibung dieser Leistungsmetriken finden Sie in diesem Thema unter [Ver
 <td>Führt die Edition auf, die bei der Erstellung des BizTalk Service eingegeben wurde.</td>
 </tr>
 <tr>
-<td><strong>Standort</strong></td>
+<td><strong>Location</strong></td>
 <td>Zeigt die geografische Region an, in der Ihr BizTalk Service gehostet wird.</td>
 </tr>
 <tr>
@@ -160,13 +160,13 @@ Eine Beschreibung dieser Leistungsmetriken finden Sie in diesem Thema unter [Ver
 <td><strong>Nachverfolgungsdatenbank</strong></td>
 <td>Der Name der Azure SQL-Datenbank, in der die von Ihrem BizTalk Service verwendeten Nachverfolgungstabellen gespeichert sind. 
 <br/><br/>Unter 
-<a HREF="http://go.microsoft.com/fwlink/p/?LinkID=302280">Erläuterung der Anforderungen</a> finden Sie Einzelheiten zur Nachverfolgungsdatenbank.</td>
+<a HREF="https://go.microsoft.com/fwlink/p/?LinkID=302280">Erläuterung der Anforderungen</a> finden Sie Einzelheiten zur Nachverfolgungsdatenbank.</td>
 </tr>
 <tr>
 <td><strong>Überwachen/Archivieren des Speicherkontos</strong></td>
 <td>Der Name des Azure-Speicherkontos, in dem die Überwachungsergebnisse Ihres BizTalk Service gespeichert sind.
 <br/><br/>Unter 
-<a HREF="http://go.microsoft.com/fwlink/p/?LinkID=302280">Erläuterung der Anforderungen</a> finden Sie Einzelheiten zum Speicherkonto.</td>
+<a HREF="https://go.microsoft.com/fwlink/p/?LinkID=302280">Erläuterung der Anforderungen</a> finden Sie Einzelheiten zum Speicherkonto.</td>
 </tr>
 <tr>
 <td><strong>Abonnementname</strong></td>
@@ -178,7 +178,7 @@ Eine Beschreibung dieser Leistungsmetriken finden Sie in diesem Thema unter [Ver
 </tr>
 </table>
 
-[Konfigurieren von BizTalk Services im Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=302280) enthält die Schritte zur Erstellung eines BizTalk Service.
+[Konfigurieren von BizTalk Services im Azure-Portal](https://go.microsoft.com/fwlink/p/?LinkID=302280) enthält die Schritte zur Erstellung eines BizTalk Service.
 
 ##### <a name="manage-connection-information-sync-keys-and-delete-in-the-task-bar"></a>"Verwalten", "Verbindungsinformationen", "Synchronisierungsschlüssel" und "Löschen" in der Taskleiste:
 <table border="1">
@@ -189,7 +189,7 @@ Eine Beschreibung dieser Leistungsmetriken finden Sie in diesem Thema unter [Ver
 <br/><br/>
 Dies ist funktionsgleich mit <strong>Partnervereinbarungen erstellen</strong> auf der Registerkarte <strong>Schnellstart</strong>.
 <br/><br/>Unter 
-<a HREF="http://go.microsoft.com/fwlink/p/?LinkID=303653">Konfigurieren von EDI, AS2 und EDIFACT im BizTalk Services-Portal</a> erhalten Sie weitere Informationen zum BizTalk Services-Portal.</td>
+<a HREF="https://go.microsoft.com/fwlink/p/?LinkID=303653">Konfigurieren von EDI, AS2 und EDIFACT im BizTalk Services-Portal</a> erhalten Sie weitere Informationen zum BizTalk Services-Portal.</td>
 </tr>
 <tr>
 <td><strong>Verbindungsinformationen</strong> des Access Control-Namespace</td>
@@ -197,7 +197,7 @@ Dies ist funktionsgleich mit <strong>Partnervereinbarungen erstellen</strong> au
 <br/><br/>
 Sie können auch das Access Control-Portal öffnen. Bei diesem Access Control-Portal handelt es sich um dasselbe Tool wie die Option „Active Directory“ im linken Navigationsbereich.
 <br/><br/>Unter 
-<a HREF="http://go.microsoft.com/fwlink/p/?LinkID=285670">Verwalten Ihres ACS-Namespace</a> finden Sie weitere Informationen zum Access Control-Portal.</td>
+<a HREF="https://go.microsoft.com/fwlink/p/?LinkID=285670">Verwalten Ihres ACS-Namespace</a> finden Sie weitere Informationen zum Access Control-Portal.</td>
 </tr>
 <tr>
 <td><strong>Synchronisierungsschlüssel</strong> im Speicherkonto</td>
@@ -334,19 +334,19 @@ Stellt den Sicherungsstatus auf "Keine" oder "Automatisch" ein. Bei Einstellung 
 
 Informationen zum Erstellen oder Verwalten von Hybridverbindungen in Azure BizTalk Services finden Sie unter [Hybridverbindungen](integration-hybrid-connection-overview.md).
 
-## <a name="next"></a>Weiter
+## <a name="next"></a>Next (Weiter)
 Nun, da Sie mit den verschiedenen Registerkarten vertraut sind, können Sie mehr über die Funktionen von Azure BizTalk Services erfahren:
 
 * [BizTalk Services: Drosselung](biztalk-throttling-thresholds.md)  
 * [BizTalk Services: Name und Schlüssel des Ausstellers](biztalk-issuer-name-issuer-key.md)  
 * [BizTalk Services: Sichern und Wiederherstellen](biztalk-backup-restore.md)
 
-## <a name="see-also"></a>Weitere Informationen
+## <a name="see-also"></a>Siehe auch
 * [Hybridverbindungen](integration-hybrid-connection-overview.md)  
 * [BizTalk Services: Editionsübersicht](biztalk-editions-feature-chart.md)  
 * [Konfigurieren von BizTalk Services im Azure-Portal](biztalk-provision-services.md)  
 * [BizTalk Services: BizTalk-Dienststatusübersicht](biztalk-service-state-chart.md)  
-* [Wie verwende ich das Azure BizTalk Services SDK?](http://go.microsoft.com/fwlink/p/?LinkID=302335)
+* [Wie verwende ich das Azure BizTalk Services SDK?](https://go.microsoft.com/fwlink/p/?LinkID=302335)
 
 [Quickstart]: ./media/biztalk-dashboard-monitor-scale-tabs/QuickStartIcon.png
 [AddMetrics]: ./media/biztalk-dashboard-monitor-scale-tabs/WABS_AddMetrics.png

@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 09/18/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 6154164aadd8ed508bfae8de8b6f3c8255111a73
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: fed1078b9a4e0ca4d0674db522f73705fa3efd0a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46308069"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51254486"
 ---
 # <a name="tutorial--integrate-a-single-ad-forest-using-pass-through-authentication-pta"></a>Tutorial: Integrieren einer AD-Gesamtstruktur mithilfe der Pass-Through-Authentifizierung (PTA)
 
@@ -24,7 +24,7 @@ ms.locfileid: "46308069"
 Das folgende Tutorial führt Sie durch das Erstellen einer Hybrididentitätsumgebung mithilfe einer Pass-Through-Authentifizierung.  Diese Umgebung kann dann zu Testzwecken verwendet werden, oder um sich mit der Funktionsweise einer Hybrididentität vertraut zu machen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
-Im Folgenden finden Sie erforderliche Voraussetzungen für das Abschließen dieses Tutorials.
+Im Folgenden finden Sie die erforderlichen Komponenten für die Durchführung dieses Tutorials:
 - Ein Computer mit installiertem [Hyper-V](https://docs.microsoft.com/windows-server/virtualization/hyper-v/hyper-v-technology-overview).  Es wird empfohlen, dies entweder auf einem [Windows 10](https://docs.microsoft.com/virtualization/hyper-v-on-windows/about/supported-guest-os)- oder einem [Windows Server 2016](https://docs.microsoft.com/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows)-Computer durchzuführen.
 - [Ein Azure-Abonnement](https://azure.microsoft.com/free)
 - - Ein [externer Netzwerkadapter](https://docs.microsoft.com/virtualization/hyper-v-on-windows/quick-start/connect-to-network), um dem virtuellen Computer die Kommunikation mit dem Internet zu ermöglichen.
@@ -34,12 +34,12 @@ Im Folgenden finden Sie erforderliche Voraussetzungen für das Abschließen dies
 > [!NOTE]
 > In diesem Tutorial werden PowerShell-Skripts verwendet, sodass Sie die Tutorialumgebung in kürzester Zeit erstellen können.  Jedes der Skripts verwendet Variablen, die am Anfang jedes Skripts deklariert werden.  Sie können und sollten die Variablen entsprechend Ihrer Umgebung ändern.
 >
->Die verwendeten Skripts erstellen eine allgemeinen Active Directory-Umgebung, bevor Azure AD Connect installiert wird.  Sie sind für alle Tutorials relevant.
+>Die verwendeten Skripts erstellen eine allgemeine Active Directory-Umgebung, bevor Azure AD Connect installiert wird.  Sie sind für alle Tutorials relevant.
 >
-> Kopien der in diesem Tutorial verwendeten PowerShell-Skripts sind [hier](https://github.com/billmath/tutorial-phs) auf GitHub verfügbar.
+> Kopien der in diesem Tutorial verwendeten PowerShell-Skripts sind unter [diesem Link](https://github.com/billmath/tutorial-phs) auf GitHub verfügbar.
 
 ## <a name="create-a-virtual-machine"></a>Erstellen eines virtuellen Computers
-Als Erstes müssen wir, um unsere Hybrididentitätsumgebung einzurichten und auszuführen, einen virtuellen Computer erstellen, der als unser lokaler Active Directory-Server verwendet wird.  
+Um unsere Hybrididentitätsumgebung einzurichten und auszuführen, müssen wir als Erstes einen virtuellen Computer erstellen, der als unser lokaler Active Directory-Server verwendet wird.  
 
 >[!NOTE]
 >Wenn Sie noch nie ein Skript in PowerShell auf Ihrem Hostcomputer ausgeführt haben, müssen Sie vor dem Ausführen von Skripts `Set-ExecutionPolicy remotesigned` ausführen und in PowerShell mit „Ja“ antworten.
@@ -74,22 +74,22 @@ $DVDDrive = Get-VMDvdDrive -VMName $VMName
 Set-VMFirmware -VMName $VMName -FirstBootDevice $DVDDrive 
 ```
 
-## <a name="complete-the-operating-system-deployment"></a>Abschließen der Bereitstellung des Betriebssystems
-Um das Erstellen des virtuellen Computers abzuschließen, müssen Sie die Installation des Betriebssystems abschließen.
+## <a name="complete-the-operating-system-deployment"></a>Durchführen der Betriebssystembereitstellung
+Um das Erstellen des virtuellen Computers durchzuführen, müssen Sie die Installation des Betriebssystems abschließen.
 
 1. Doppelklicken Sie im Hyper-V-Manager auf den virtuellen Computer.
 2. Klicken Sie auf die Schaltfläche „Starten“.
-3.  Sie werden aufgefordert: „Drücken Sie eine beliebige Taste, um von CD oder DVD zu starten“. Fahren Sie fort, und machen Sie das.
-4. Wählen Sie im Windows Server-Startbildschirm Ihre Sprache aus, und klicken Sie auf **Weiter**.
+3.  Sie werden zu Folgendem aufgefordert: „Drücken Sie eine beliebige Taste, um von CD oder DVD zu starten“. Fahren Sie fort, und tun Sie dies.
+4. Wählen Sie auf dem Windows Server-Startbildschirm Ihre Sprache aus, und klicken Sie auf **Weiter**.
 5. Klicken Sie auf **Jetzt installieren**.
 6. Geben Sie Ihren Lizenzschlüssel ein, und klicken Sie auf **Weiter**.
-7. Aktivieren Sie **Ich stimme den Lizenzbedingungen zu**, und klicken Sie auf **Weiter**.
+7. Aktivieren Sie „Ich stimme den Lizenzbedingungen zu“, und klicken Sie auf **Weiter**.
 8. Wählen Sie **Benutzerdefiniert: Nur Windows installieren (erweitert)** aus.
 9. Klicken Sie unten auf der Seite auf **Weiter**
-10. Nach Abschluss der Installation starten Sie den virtuellen Computer neu, melden sich an und führen Windows-Updates aus, um sicherzustellen, dass der virtuelle Computer auf dem neuesten Stand ist.  Installieren Sie die neuesten Updates.
+10. Nach Abschluss der Installation starten Sie den virtuellen Computer neu, melden sich an und führen Windows-Updates aus, um sicherzustellen, dass die VM auf dem neuesten Stand ist.  Installieren Sie die neuesten Updates.
 
-## <a name="install-active-directory-prerequisites"></a>Installieren von Active Directory-Voraussetzungen
-Nachdem nun ein virtueller Computer ausgeführt wird, müssen wir noch ein paar Vorbereitungen treffen vor der Installation von Active Directory.  Das heißt, dass wir den virtuellen Computer umbenennen, eine statische IP-Adresse und DNS-Informationen festlegen und die Remoteserver-Verwaltungstools installieren müssen.   Gehen Sie wie folgt vor:
+## <a name="install-active-directory-prerequisites"></a>Installieren der erforderlichen Active Directory-Komponenten
+Nachdem nun ein virtueller Computer ausgeführt wird, müssen wir noch ein paar Vorbereitungen vor der Installation von Active Directory treffen.  Das heißt, dass wir den virtuellen Computer umbenennen, eine statische IP-Adresse und DNS-Informationen festlegen und die Remoteserver-Verwaltungstools installieren müssen.   Gehen Sie wie folgt vor:
 
 1. Öffnen Sie die PowerShell ISE als Administrator.
 2. Führen Sie `Set-ExecutionPolicy remotesigned` aus, und beantworten Sie alles mit Ja [A].  Drücken Sie die EINGABETASTE.
@@ -126,7 +126,7 @@ Restart-Computer
 ```
 
 ## <a name="create-a-windows-server-ad-environment"></a>Erstellen einer Windows Server AD-Umgebung
-Nachdem nun der virtuelle Computer erstellt ist, umbenannt wurde und über eine statische IP-Adresse verfügt, können wir fortfahren und Active Directory Domain Services installieren und konfigurieren.  Gehen Sie wie folgt vor:
+Nachdem nun die VM erstellt ist, umbenannt wurde und über eine statische IP-Adresse verfügt, können wir fortfahren und die Active Directory Domain Services installieren und konfigurieren.  Gehen Sie wie folgt vor:
 
 1. Öffnen Sie die PowerShell ISE als Administrator.
 2. Führen Sie das folgende Skript aus.
@@ -180,7 +180,7 @@ Set-ADUser -Identity $Identity -PasswordNeverExpires $true -ChangePasswordAtLogo
 ```
 
 ## <a name="create-an-azure-ad-tenant"></a>Erstellen eines Azure AD-Mandanten
-Jetzt müssen wir einen Azure AD-Mandanten erstellen, damit wir unsere Benutzer in die Cloud synchronisieren können.  Gehen Sie zum Erstellen eines neuen Azure AD-Mandanten wie folgt vor.
+Jetzt müssen wir einen Azure AD-Mandanten erstellen, damit wir unsere Benutzer mit der Cloud synchronisieren können.  Gehen Sie zum Erstellen eines neuen Azure AD-Mandanten wie folgt vor:
 
 1. Wechseln Sie zum [Azure-Portal](https://portal.azure.com), und melden Sie sich mit einem Konto an, das über ein Azure-Abonnement verfügt.
 2. Wählen Sie das **Plussymbol (+)** aus, und suchen Sie nach **Azure Active Directory**.
@@ -188,15 +188,15 @@ Jetzt müssen wir einen Azure AD-Mandanten erstellen, damit wir unsere Benutzer 
 4. Klicken Sie auf **Erstellen**.</br>
 ![Erstellen](media/tutorial-password-hash-sync/create1.png)</br>
 5. Geben Sie einen **Namen für die Organisation** an, zusammen mit dem **Namen der Anfangsdomäne**. Klicken Sie anschließend auf **Erstellen**. Hierdurch wird Ihr Verzeichnis erstellt.
-6. Sobald dies abgeschlossen ist, klicken Sie **hier** auf den Link, um das Verzeichnis zu verwalten.
+6. Sobald dies abgeschlossen ist, klicken Sie auf **diesen Link**, um das Verzeichnis zu verwalten.
 
 ## <a name="create-a-global-administrator-in-azure-ad"></a>Erstellen eines globalen Administrators in Azure AD
-Nachdem nun ein Azure AD-Mandant vorhanden ist, erstellen wir ein globales Administratorkonto.  Dieses Konto dient zum Erstellen des Azure AD Connector-Kontos während der Installation von Azure AD Connect.  Das Azure AD Connector-Konto wird zum Schreiben von Informationen in Azure AD verwendet.   Gehen Sie zum Erstellen des globalen Administratorkontos wie folgt vor.
+Nachdem nun ein Azure AD-Mandant vorhanden ist, erstellen wir ein globales Administratorkonto.  Dieses Konto dient zum Erstellen des Azure AD Connector-Kontos während der Installation von Azure AD Connect.  Das Azure AD Connector-Konto wird zum Schreiben von Informationen in Azure AD verwendet.   Gehen Sie zum Erstellen des globalen Administratorkontos wie folgt vor:
 
 1.  Wählen Sie unter **Verwalten** die Option **Benutzer** aus.</br>
 ![Erstellen](media/tutorial-password-hash-sync/gadmin1.png)</br>
 2.  Wählen Sie **Alle Benutzer** und dann **+ Neuer Benutzer** aus.
-3.  Geben Sie für diesen Benutzer einen Namen und Benutzernamen an. Dies wird Ihr globaler Administrator für den Mandanten. Sie sollten außerdem die **Verzeichnisrolle** in **Globaler Administrator** ändern. Sie können auch das temporäre Kennwort anzeigen. Wenn Sie fertig sind, wählen Sie **Erstellen** aus.</br>
+3.  Geben Sie für diesen Benutzer einen Namen und Benutzernamen an. Dieser wird Ihr globaler Administrator für den Mandanten. Sie sollten außerdem die **Verzeichnisrolle** in **Globaler Administrator** ändern. Sie können auch das temporäre Kennwort anzeigen. Wenn Sie fertig sind, wählen Sie **Erstellen** aus.</br>
 ![Erstellen](media/tutorial-password-hash-sync/gadmin2.png)</br>
 4. Sobald dies abgeschlossen ist, öffnen Sie einen neuen Webbrowser, und melden Sie sich mit dem neuen globalen Administratorkonto und dem temporären Kennwort bei „myapps.microsoft.com“ an.
 5. Ändern Sie das Kennwort für den globalen Administrator in einen Wert, den Sie sich merken können.
@@ -215,7 +215,7 @@ Nachdem wir nun über einen Mandanten und einen globalen Administrator verfügen
 ![Benutzerdefiniert](media/tutorial-federation/custom3.png)</br>
 
 ## <a name="download-and-install-azure-ad-connect"></a>Herunterladen und Installieren von Azure AD Connect
-Jetzt müssen Sie Azure AD Connect herunterladen und installieren.  Nachdem es installiert wurde, führen wir Sie durch die Expressinstallation.  Gehen Sie wie folgt vor:
+Jetzt müssen Sie Azure AD Connect herunterladen und installieren.  Nachdem es installiert wurde, führen Sie die Expressinstallation durch.  Gehen Sie wie folgt vor:
 
 1. Laden Sie [Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594) herunter.
 2. Navigieren Sie zu **AzureADConnect.msi**, und doppelklicken Sie darauf.
@@ -235,11 +235,11 @@ Jetzt müssen Sie Azure AD Connect herunterladen und installieren.  Nachdem es i
 9. Geben Sie auf der Seite „Anmeldeinformationen für einmaliges Anmelden aktivieren“ den contoso\Administrator-Benutzernamen und das Kennwort ein, und klicken Sie auf **Weiter**.
 10. Klicken Sie im Bildschirm "Bereit zur Konfiguration" auf **Installieren**.
 11. Klicken Sie nach Abschluss der Installation auf **Beenden**.
-12. Melden Sie sich nach Abschluss der Installation ab und erneut wieder an, ehe Sie den Synchronization Service Manager oder Synchronisierungsregel-Editor verwenden.
+12. Melden Sie sich nach Abschluss der Installation ab und wieder an, ehe Sie den Synchronization Service Manager oder Synchronisierungsregel-Editor verwenden.
 
 
 ## <a name="verify-users-are-created-and-synchronization-is-occurring"></a>Überprüfen, ob Benutzer erstellt wurden und die Synchronisierung erfolgt
-Wir überprüfen jetzt, ob die Benutzer, die in unserem lokalen Verzeichnis vorhanden waren, synchronisiert wurden und jetzt im Azure AD-Mandanten vorhanden sind.  Seien Sie sich bewusst, dass dies einige Stunden dauern kann.  Gehen Sie wie folgt vor, um zu überprüfen, ob Benutzer synchronisiert werden.
+Wir überprüfen jetzt, ob die Benutzer, die in unserem lokalen Verzeichnis vorhanden waren, synchronisiert wurden und jetzt im Azure AD-Mandanten vorhanden sind.  Seien Sie sich im Klaren darüber, dass dies einige Stunden dauern kann.  Gehen Sie wie folgt vor, um zu überprüfen, ob Benutzer synchronisiert werden:
 
 
 1. Wechseln Sie zum [Azure-Portal](https://portal.azure.com), und melden Sie sich mit einem Konto an, das über ein Azure-Abonnement verfügt.
@@ -249,7 +249,7 @@ Wir überprüfen jetzt, ob die Benutzer, die in unserem lokalen Verzeichnis vorh
 
 ## <a name="test-signing-in-with-one-of-our-users"></a>Testanmeldung mit einem unserer Benutzer
 
-1.  Wechseln Sie zu [http://myapps.microsoft.com](http://myapps.microsoft.com).
+1.  Rufen Sie [http://myapps.microsoft.com](https://myapps.microsoft.com) auf.
 2. Melden Sie sich mit einem Benutzerkonto an, das in unserem neuen Mandanten erstellt wurde.  Sie müssen sich mit folgendem Format anmelden: (user@domain.onmicrosoft.com). Verwenden Sie dasselbe Kennwort, mit dem sich der Benutzer lokal anmeldet.
 ![Überprüfen](media/tutorial-password-hash-sync/verify1.png)
 
@@ -258,6 +258,6 @@ Sie haben nun erfolgreich eine Hybrididentitätsumgebung eingerichtet, die Sie z
 ## <a name="next-steps"></a>Nächste Schritte
 
 
-- [Hardware und Voraussetzungen](how-to-connect-install-prerequisites.md) 
+- [Voraussetzungen für Azure AD Connect](how-to-connect-install-prerequisites.md) 
 - [Benutzerdefinierte Einstellungen](how-to-connect-install-custom.md)
 - [Passthrough-Authentifizierung](how-to-connect-pta.md)

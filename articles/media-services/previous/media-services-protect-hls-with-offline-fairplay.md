@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/01/2017
 ms.author: willzhan, dwgeo
-ms.openlocfilehash: dc38772097dddb7c7135d55598373d7ab544f9ea
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 7d4094abacb46c5e2b525766d61cb0ede7fc20ba
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33785889"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51251831"
 ---
 # <a name="offline-fairplay-streaming-for-ios"></a>FairPlay-Streaming im Offlinemodus für iOS 
  Azure Media Services bietet eine Reihe von ausgereiften [Content Protection-Diensten](https://azure.microsoft.com/services/media-services/content-protection/), die Folgendes abdecken:
@@ -190,7 +190,7 @@ Drei Testbeispiele in Media Services decken die folgenden drei Szenarien ab:
 * FPS-geschützt, mit Video und Audio, aber ohne alternativen Audiotitel
 * FPS-geschützt, nur mit Video und ohne Audio
 
-Diese Beispiele sind auf dieser [Demoseite](http://aka.ms/poc#22) zu finden, wobei das entsprechende Anwendungszertifikat in einer Azure-Web-App gehostet wird.
+Diese Beispiele sind auf dieser [Demoseite](https://aka.ms/poc#22) zu finden, wobei das entsprechende Anwendungszertifikat in einer Azure-Web-App gehostet wird.
 Mit der Version 3 oder 4 des Beispiels des FPS Server SDK wird nur Audio wiedergegeben, wenn eine Hauptwiedergabeliste alternative Audiotitel enthält. Aus diesem Grund müssen Sie den alternativen Audiotitel entfernen. Mit anderen Worten, die zuvor aufgelisteten zweiten und dritten Beispiele arbeiten im Online- und Offlinemodus. Das zuerst aufgeführte Beispiel gibt nur im Offlinemodus Audio wieder, während das Onlinestreaming ordnungsgemäß funktioniert.
 
 ## <a name="faq"></a>Häufig gestellte Fragen

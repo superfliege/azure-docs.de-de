@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: ramamill
-ms.openlocfilehash: 0e8dbf47c40339c90a0e28c3ef497a8da963e481
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 4bf9277598c3e56c0429dddcb2204cb1338a33be
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51231017"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50213252"
 ---
 # <a name="manage-the-configuration-server-for-physical-server-disaster-recovery"></a>Verwalten des Konfigurationsservers für die Notfallwiederherstellung von physischen Servern
 
@@ -42,7 +42,7 @@ In der Tabelle werden die erforderlichen Komponenten für die Bereitstellung des
 
 ## <a name="download-the-latest-installation-file"></a>Herunterladen der aktuellen Installationsdatei
 
-Die aktuelle Version der Konfigurationsserver-Installationsdatei steht im Site Recovery-Portal zur Verfügung. Darüber hinaus kann sie direkt aus dem [Microsoft Download Center](https://aka.ms/unifiedsetup) heruntergeladen werden.
+Die aktuelle Version der Konfigurationsserver-Installationsdatei steht im Site Recovery-Portal zur Verfügung. Darüber hinaus kann sie direkt aus dem [Microsoft Download Center](http://aka.ms/unifiedsetup) heruntergeladen werden.
 
 1. Melden Sie sich beim Azure-Portal an, und navigieren Sie zu Ihrem Recovery Services-Tresor.
 2. Navigieren Sie zu **Site Recovery-Infrastruktur** > **Konfigurationsserver** (unter „Für VMware und physische Computer“).

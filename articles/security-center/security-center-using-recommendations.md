@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/18/2017
 ms.author: terrylan
-ms.openlocfilehash: d5689e6b9b4d808c24bc4952f65904654b5e99f8
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 978ef8087665edb3f0bfaa0bd0a55f4d8ab9a12d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44297365"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51251507"
 ---
 # <a name="use-azure-security-center-recommendations-to-enhance-security"></a>Befolgen von Azure Security Center-Empfehlungen zum Erhöhen der Sicherheit
 Sie können die Wahrscheinlichkeit eines Sicherheitsvorfalls verringern, indem Sie eine Sicherheitsrichtlinie und die Azure Security Center-Empfehlungen umsetzen. In diesem Artikel wird erläutert, wie mithilfe von Sicherheitsrichtlinien und Empfehlungen in Security Center Sicherheitsangriffe abgewehrt werden können.
@@ -84,7 +84,7 @@ Jeff meldet sich beim [Azure-Portal](https://azure.microsoft.com/features/azure-
    ![Microsoft Antimalware][5]
 6. Jeff gibt die erforderlichen Konfigurationseinstellungen unter **Installieren** ein und wählt **OK** aus.
 
-[Microsoft Antischadsoftware](../security/azure-security-antimalware.md) ist jetzt auf den ausgewählten VMs aktiv.
+[Microsoft Antimalware](../security/azure-security-antimalware.md) ist jetzt auf den ausgewählten virtuellen Computern aktiv.
 
 Jeff geht die Empfehlungen mit hoher und mittlerer Priorität weiter durch und trifft Entscheidungen zu ihrer Umsetzung. Jeff konsultiert den Artikel [Umsetzen von Sicherheitsempfehlungen](security-center-recommendations.md), um die Empfehlungen und die Auswirkungen bei ihrer Umsetzung zu verstehen.
 
@@ -117,7 +117,7 @@ Weitere Informationen zu Security Center finden Sie unter folgendem Link:
 * [Überwachung und Verarbeitung von Sicherheitsereignisse](security-center-events-dashboard.md) – Hier erfahren Sie, wie Sie im Laufe der Zeit erfasste Sicherheitsereignisse überwachen und verarbeiten.
 * [Überwachen von Partnerlösungen:](security-center-partner-solutions.md) Erfahren Sie, wie der Integritätsstatus Ihrer Partnerlösungen überwacht wird.
 * [Azure Security Center – Häufig gestellte Fragen:](security-center-faq.md) Hier finden Sie häufig gestellte Fragen zur Verwendung des Diensts.
-* [Azure Security Blog](http://blogs.msdn.com/b/azuresecurity/) (Blog zur Azure-Sicherheit): Hier finden Sie Neuigkeiten und Informationen zur Azure-Sicherheit.
+* [Azure Security Blog](https://blogs.msdn.com/b/azuresecurity/) (Blog zur Azure-Sicherheit): Hier finden Sie Neuigkeiten und Informationen zur Azure-Sicherheit.
 
 <!--Image references-->
 [1]: ./media/security-center-using-recommendations/security-center-policy-inheritance.png

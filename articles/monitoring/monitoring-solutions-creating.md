@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 03/20/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a07a17105b4d84b51689e9636cfacc7a3b5428ad
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 09dd046f9dc7d6b73207ab1ab739e913a8ed5b92
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39528026"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51282049"
 ---
 # <a name="design-and-build-a-management-solution-in-azure-preview"></a>Entwerfen und Erstellen einer Verwaltungslösung in Azure (Vorschau)
 > [!NOTE]
@@ -30,7 +30,7 @@ ms.locfileid: "39528026"
 
 ## <a name="what-is-a-management-solution"></a>Was ist eine Verwaltungslösung?
 
-Verwaltungslösungen enthalten Azure-Ressourcen, die zusammenarbeiten, um ein bestimmtes Verwaltungsszenario zu erreichen.  Sie werden auch als [Ressourcenverwaltungsvorlagen](../azure-resource-manager/resource-manager-template-walkthrough.md) Implementiert, die Details zum Installieren und Konfigurieren der enthaltenen Ressourcen bei Installation der Lösung umfassen.
+Verwaltungslösungen enthalten Azure-Ressourcen, die zusammenarbeiten, um ein bestimmtes Verwaltungsszenario zu erreichen.  Sie werden auch als [Ressourcenverwaltungsvorlagen](../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md) Implementiert, die Details zum Installieren und Konfigurieren der enthaltenen Ressourcen bei Installation der Lösung umfassen.
 
 Die grundlegende Strategie besteht darin, Ihre Verwaltungslösung damit zu beginnen, dass Sie die einzelnen Komponenten in der Azure-Umgebung erstellen.  Sobald die Funktionalität Ihren Vorstellungen entspricht, können Sie damit beginnen, sie in eine [Verwaltungslösungsdatei]( monitoring-solutions-solution-file.md) zu verpacken. 
 
@@ -49,16 +49,16 @@ Es gibt zahlreiche Möglichkeiten zum Erfassen von Datenquellen im Log Analytics
 Können bestimmte benötigte Daten nicht über eine der verfügbaren Datenquellen abgerufen werden, können Sie die [HTTP-Datensammler-API](../log-analytics/log-analytics-data-collector-api.md) verwenden, die Ihnen ermöglicht, von jedem beliebigen Client aus, der eine REST-API aufrufen kann, Daten in das Log Analytics-Repository zu schreiben.  Die geläufigste Methode der Sammlung benutzerdefinierter Daten in einer Verwaltungslösung besteht darin, ein [Runbook in Azure Automation](../automation/automation-runbook-types.md) zu erstellen, mit dem die erforderlichen Daten aus Azure oder externen Ressourcen gesammelt und mithilfe der Datensammler-API in das Repository geschrieben werden.  
 
 ### <a name="log-searches"></a>Protokollsuchvorgänge
-[Protokollsuchen](../log-analytics/log-analytics-log-searches.md) dienen dazu, Daten aus dem Log Analytics-Repository zu extrahieren und zu analysieren.  Sie werden von Ansichten und Warnungen verwendet und ermöglichen Benutzern außerdem, Ad-hoc-Analysen von Daten im Repository auszuführen.  
+[Protokollsuchen](../log-analytics/log-analytics-queries.md) dienen dazu, Daten aus dem Log Analytics-Repository zu extrahieren und zu analysieren.  Sie werden von Ansichten und Warnungen verwendet und ermöglichen Benutzern außerdem, Ad-hoc-Analysen von Daten im Repository auszuführen.  
 
 Sie sollten alle Abfragen definieren, die Sie für den Benutzer als hilfreich erachten, auch wenn sie nicht von Ansichten oder Warnungen verwendet werden.  Sie stehen den Benutzern im Portal als gespeicherte Suchvorgänge zur Verfügung, und Sie können sie auch einer [Visualisierungskomponente „Liste der Abfragen“](../log-analytics/log-analytics-view-designer-parts.md#list-of-queries-part) in Ihrer benutzerdefinierte Ansicht hinzufügen.
 
 ### <a name="alerts"></a>Alerts
-[Warnungen in Log Analytics](../log-analytics/log-analytics-alerts.md) identifizieren Probleme über [Protokollsuchvorgänge](#log-searches) in den Daten des Repositorys.  Entweder benachrichtigen sie den Benutzer oder führen automatisch eine Aktion als Antwort aus. Sie sollten verschiedene Warnungsbedingungen für Ihre Anwendung definieren und entsprechende Warnungsregeln zu Ihrer Lösungsdatei hinzufügen.
+[Warnungen in Log Analytics](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md) identifizieren Probleme über [Protokollsuchvorgänge](#log-searches) in den Daten des Repositorys.  Entweder benachrichtigen sie den Benutzer oder führen automatisch eine Aktion als Antwort aus. Sie sollten verschiedene Warnungsbedingungen für Ihre Anwendung definieren und entsprechende Warnungsregeln zu Ihrer Lösungsdatei hinzufügen.
 
 Wenn ein Problem prinzipiell mit einem automatisierten Prozess behoben werden kann, empfiehlt es sich in der Regel, ein Runbook in Azure Automation zu erstellen, mit dem die entsprechende Korrektur durchgeführt wird.  Die meisten Azure-Dienste lassen sich mit [Cmdlets](/powershell/azure/overview) verwalten, die vom Runbook zum Ausführen solcher Funktionen verwendet werden können.
 
-Wenn Ihre Lösung externe Funktionen als Antwort auf eine Warnung erfordert, können Sie eine [Webhookantwort](../log-analytics/log-analytics-alerts-actions.md) verwenden.  Dadurch können Sie einen externen Webdienst aufrufen, der Informationen aus der Warnung sendet.
+Wenn Ihre Lösung externe Funktionen als Antwort auf eine Warnung erfordert, können Sie eine [Webhookantwort](../monitoring-and-diagnostics/alert-metric.md) verwenden.  Dadurch können Sie einen externen Webdienst aufrufen, der Informationen aus der Warnung sendet.
 
 ### <a name="views"></a>Ansichten
 Ansichten in Log Analytics dienen zur Visualisierung von Daten aus dem Log Analytics-Repository.  Jede Lösung enthält in der Regel eine einzige Ansicht mit einer [Kachel](../log-analytics/log-analytics-view-designer-tiles.md), die auf dem Hauptdashboard des Benutzers angezeigt wird.  Die Ansicht kann eine beliebige Anzahl von [Visualisierungskomponenten](../log-analytics/log-analytics-view-designer-parts.md) enthalten, um dem Benutzer unterschiedliche Visualisierungen der gesammelten Daten bereitzustellen.

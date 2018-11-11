@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: c078320ce31e0c51c7aef0bc0a2aa14e68ac2fc3
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 41e627d895f0276d372ee42df3e0a43fdadc4051
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48042860"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51016062"
 ---
 # <a name="collect-azure-activity-logs-into-log-analytics-across-subscriptions"></a>Abonnementübergreifendes Erfassen von Azure-Aktivitätsprotokollen in Log Analytics
 
@@ -29,7 +29,7 @@ Wenn der Log Analytics-Arbeitsbereich zum gleichen oder einem anderen Azure-Abon
 
 ## <a name="overview"></a>Übersicht
 
-Entsprechend der in diesem Szenario verwendeten Strategie soll das Azure-Aktivitätsprotokoll Ereignisse an einen [Event Hub](../event-hubs/event-hubs-what-is-event-hubs.md) senden, während eine [Logik-App](../logic-apps/logic-apps-overview.md) diese an Ihren Log Analytics-Arbeitsbereich sendet. 
+Entsprechend der in diesem Szenario verwendeten Strategie soll das Azure-Aktivitätsprotokoll Ereignisse an einen [Event Hub](../event-hubs/event-hubs-about.md) senden, während eine [Logik-App](../logic-apps/logic-apps-overview.md) diese an Ihren Log Analytics-Arbeitsbereich sendet. 
 
 ![Datenfluss vom Aktivitätsprotokoll zu Log Analytics](media/log-analytics-activity-logs-subscriptions/data-flow-overview.png)
 

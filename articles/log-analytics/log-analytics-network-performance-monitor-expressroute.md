@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: abshamsft
 ms.component: ''
-ms.openlocfilehash: d0368584dfa461427fe1bad4273c993f0ece894a
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: c8ab4836274506cbfdd10b21182bffaccdfbfa06
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50413798"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51014702"
 ---
 # <a name="expressroute-monitor"></a>ExpressRoute-Monitor
 
@@ -139,4 +139,4 @@ Der Netzwerkleistungsmonitor unterstützt Sie beim Diagnostizieren mehrerer verb
  
 
 ## <a name="next-steps"></a>Nächste Schritte
-Mit [Protokollsuchen](log-analytics-log-searches.md) können Sie Detaildatensätze mit Netzwerkleistungsdaten anzeigen.
+Mit [Protokollsuchen](log-analytics-queries.md) können Sie Detaildatensätze mit Netzwerkleistungsdaten anzeigen.
