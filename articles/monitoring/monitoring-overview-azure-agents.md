@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/28/2018
 ms.author: magoedte
-ms.openlocfilehash: 62edeb36fcd56733630edc6fa27c9963f20b0186
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: 81db6720422de111cc5b390c58e9020d7c19f90a
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50913545"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51282032"
 ---
 # <a name="overview-of-the-azure-agents-to-monitor-azure-virtual-machines"></a>Übersicht über die Azure-Agents zur Überwachung von virtuellen Azure-Computern
 Microsoft Azure bietet mehrere Möglichkeiten zum Erfassen unterschiedlicher Arten von Daten von virtuellen Computern, die in Azure oder anderen Cloudanbietern gehostet werden und auf denen Microsoft Windows und Linux ausgeführt werden.  In diesem Artikel werden die Unterschiede und die mit jedem Agent verfügbaren Funktionen beschrieben, damit Sie ermitteln können, welcher Agent Ihre Dienstverwaltung oder Ihre allgemeinen Überwachungsanforderungen unterstützt.  
@@ -27,7 +27,7 @@ Microsoft Azure bietet mehrere Möglichkeiten zum Erfassen unterschiedlicher Art
 ## <a name="comparing-azure-diagnostic-and-log-analytics-agent"></a>Vergleich zwischen der Azure-Diagnoseerweiterung und dem Log Analytics-Agent
 Derzeit stehen in Azure zwei Typen von Agents zur Überwachung von virtuellen Azure-Computern zur Verfügung: die Azure-Diagnoseerweiterung und der Log Analytics-Agent für Linux und Windows.  Diese Agents dienen im Wesentlichen zur Erfassung von Metriken und Protokollen und zur Weiterleitung in ein Repository. Damit hören ihre Gemeinsamkeiten jedoch auf.  
 
-Die [Azure-Diagnoseerweiterung](../monitoring-and-diagnostics/azure-diagnostics.md), die zunächst für Azure Cloud Services bereitgestellt und dann 2010 allgemein verfügbar wurde, ist ein Agent, der die einfache Sammlung von Diagnosedaten von einer Azure-IaaS-Ressource, z.B. einem virtuellen Computer, und die Speicherung der Daten in Azure Storage ermöglicht.  Die Daten im Speicher können Sie mit einem von mehreren verfügbaren Tools anzeigen, z.B. mit [Server-Explorer in Visual Studio](../vs-azure-tools-storage-resources-server-explorer-browse-manage.md) oder [Azure Storage-Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md).
+Die [Azure-Diagnoseerweiterung](../monitoring-and-diagnostics/azure-diagnostics.md), die zunächst für Azure Cloud Services bereitgestellt und dann 2010 allgemein verfügbar wurde, ist ein Agent, der die einfache Sammlung von Diagnosedaten von einer Azure-IaaS-Ressource, z.B. einem virtuellen Computer, und die Speicherung der Daten in Azure Storage ermöglicht.  Die Daten im Speicher können Sie mit einem von mehreren verfügbaren Tools anzeigen, z.B. mit [Server-Explorer in Visual Studio](/visualstudio/azure/vs-azure-tools-storage-resources-server-explorer-browse-manage) oder [Azure Storage-Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md).
 
 Sie können auswählen, dass Folgendes gesammelt wird:
 
@@ -38,7 +38,7 @@ Sie können auswählen, dass Folgendes gesammelt wird:
 * Sammeln von Protokollereignissen aus Syslog  
 * Absturzabbilder 
 
-Daten können alternativ auch an [Application Insights](../application-insights/app-insights-cloudservices.md), [Log Analytics](../log-analytics/log-analytics-overview.md) oder über [Event Hub](../event-hubs/event-hubs-about.md) an Nicht-Azure-Dienste weitergeleitet werden. 
+Daten können alternativ auch an [Application Insights](../application-insights/app-insights-cloudservices.md), [Log Analytics](../log-analytics/log-analytics-queries.md) oder über [Event Hub](../event-hubs/event-hubs-about.md) an Nicht-Azure-Dienste weitergeleitet werden. 
 
 Für die erweiterte Überwachung, bei der nicht nur Metriken und eine Teilmenge von Protokollen gesammelt werden sollen, ist der Log Analytics-Agent für Windows und Linux erforderlich.  Mit diesem Agent können Sie Azure-Dienste wie Automation und Log Analytics, einschließlich aller angebotenen Features, nutzen, um eine umfassende Verwaltung Ihrer virtuellen Azure-Computer während des gesamten Lebenszyklus sicherzustellen. Dies umfasst:
 

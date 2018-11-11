@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/31/2017
 ms.author: cwatson
-ms.openlocfilehash: a037f4837be65eb7eac76977a3728c7357e09463
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 83891e1abdb58b4fdae65cee3689195b8f35df12
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47394433"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51230460"
 ---
 # <a name="understand-terms-on-your-microsoft-azure-detailed-usage-charges"></a>Grundlegendes über Benennungen zu den Gebühren in der Datei mit ausführlichen Nutzungsdaten zu Microsoft Azure 
 
@@ -77,7 +77,7 @@ Im Abschnitt „Tägliche Nutzung“ der CSV-Datei werden Nutzungsdetails angeze
 |Consumed Service |Der verwendete Azure-Plattformdienst |
 |Ressourcengruppe |Die Ressourcengruppe, in der die bereitgestellte Verbrauchseinheit ausgeführt wird. <br/><br/>Weitere Informationen finden Sie unter [Übersicht über den Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview). |
 |Instance ID | Der Bezeichner für die Verbrauchseinheit. <br/><br/> Der Bezeichner enthält den Namen, den Sie für die Verbrauchseinheit bei der Erstellung angegeben haben. Es ist entweder der Name der Ressource oder die vollqualifizierte Ressourcen-ID. Weitere Informationen finden Sie unter [Azure Resource Manager-API](https://docs.microsoft.com/rest/api/resources/resources). |
-|Tags | Tag, den Sie der Verbrauchseinheit zuweisen. Verwenden Sie Tags zum Gruppieren von Abrechnungsdatensätzen.<br/><br/>Beispielsweise können Sie Tags verwenden, um Kosten nach den Abteilungen zu unterteilen, die die Verbrauchseinheit nutzen. Dienste, die das Ausgeben von Tags unterstützen, sind virtuelle Computer, Speicher und Netzwerkdienste, die mit der [Azure Resource Manager-API](https://docs.microsoft.com/rest/api/resources/resources) bereitgestellt werden. Weitere Informationen finden Sie unter [Organisieren von Azure-Ressourcen mit Tags](http://azure.microsoft.com/updates/organize-your-azure-resources-with-tags/). |
+|Tags | Tag, den Sie der Verbrauchseinheit zuweisen. Verwenden Sie Tags zum Gruppieren von Abrechnungsdatensätzen.<br/><br/>Beispielsweise können Sie Tags verwenden, um Kosten nach den Abteilungen zu unterteilen, die die Verbrauchseinheit nutzen. Dienste, die das Ausgeben von Tags unterstützen, sind virtuelle Computer, Speicher und Netzwerkdienste, die mit der [Azure Resource Manager-API](https://docs.microsoft.com/rest/api/resources/resources) bereitgestellt werden. Weitere Informationen finden Sie unter [Organisieren von Azure-Ressourcen mit Tags](https://azure.microsoft.com/updates/organize-your-azure-resources-with-tags/). |
 |Additional Info |Dienstspezifische Metadaten. Dies kann beispielsweise ein Imagetyp für einen virtuellen Computer sein. |
 |Service Info 1 |Der Name des Projekts, zu dem der Dienst in Ihrem Abonnement gehört |
 |Service Info 2 |Ein Legacyfeld, in dem optionale dienstspezifische Metadaten erfasst werden |

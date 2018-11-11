@@ -12,14 +12,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/18/2018
-ms.author: bwren, vinagara
+ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8ec5f1cef3f9ca82953093d2086b615087db1a7f
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 427ac67b812da449333e4868e54ca36d2c6f54af
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50024763"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51282328"
 ---
 # <a name="adding-log-analytics-saved-searches-and-alerts-to-management-solution-preview"></a>Hinzufügen von gespeicherten Log Analytics-Suchen und -Warnungen in der Verwaltungslösung (Vorschau)
 
@@ -27,13 +27,13 @@ ms.locfileid: "50024763"
 > Dies ist die vorläufige Dokumentation für das Erstellen von Verwaltungslösungen, die sich derzeit in der Vorschau befinden. Jedes unten beschriebene Schema kann sich ändern.   
 
 
-[Verwaltungslösungen](monitoring-solutions.md) enthalten in der Regel [gespeicherte Suchen](../log-analytics/log-analytics-log-searches.md) in Log Analytics zum Analysieren der von der Lösung erfassten Daten.  Sie können auch [Warnungen](../log-analytics/log-analytics-alerts.md) zur Benachrichtigung des Benutzers definieren oder als Reaktion auf ein schwerwiegendes Problem automatisch Maßnahmen ergreifen.  Dieser Artikel beschreibt das Definieren von in Log Analytics gespeicherten Suchen und Warnungen in einer [Ressourcenverwaltungsvorlage](../resource-manager-template-walkthrough.md), damit sie in [Verwaltungslösungen](monitoring-solutions-creating.md) aufgenommen werden können.
+[Verwaltungslösungen](monitoring-solutions.md) enthalten in der Regel [gespeicherte Suchen](../log-analytics/log-analytics-queries.md) in Log Analytics zum Analysieren der von der Lösung erfassten Daten.  Sie können auch [Warnungen](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md) zur Benachrichtigung des Benutzers definieren oder als Reaktion auf ein schwerwiegendes Problem automatisch Maßnahmen ergreifen.  Dieser Artikel beschreibt das Definieren von in Log Analytics gespeicherten Suchen und Warnungen in einer [Ressourcenverwaltungsvorlage](../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md), damit sie in [Verwaltungslösungen](monitoring-solutions-creating.md) aufgenommen werden können.
 
 > [!NOTE]
 > Die Beispiele in diesem Artikel verwenden Parameter und Variablen, die entweder erforderlich sind oder für Verwaltungslösungen gelten und unter [Entwerfen und Erstellen einer Verwaltungslösung in Azure](monitoring-solutions-creating.md) beschrieben sind.  
 
 ## <a name="prerequisites"></a>Voraussetzungen
-In diesem Artikel wird davon ausgegangen, dass Sie schon mit der [Erstellung einer Verwaltungslösung](monitoring-solutions-creating.md) und der Struktur einer [Resource Manager-Vorlage](../resource-group-authoring-templates.md) und Lösungsdatei vertraut sind.
+In diesem Artikel wird davon ausgegangen, dass Sie schon mit der [Erstellung einer Verwaltungslösung](monitoring-solutions-creating.md) und der Struktur einer [Resource Manager-Vorlage](../azure-resource-manager/resource-group-authoring-templates.md) und Lösungsdatei vertraut sind.
 
 
 ## <a name="log-analytics-workspace"></a>Log Analytics-Arbeitsbereich
@@ -54,9 +54,9 @@ Die folgende Tabelle enthält die API-Versionen für die Ressource, die in diese
 
 
 ## <a name="saved-searches"></a>Gespeicherte Suchen
-Schließen Sie [gespeicherte Suchen](../log-analytics/log-analytics-log-searches.md) in eine Lösung ein, um Benutzern das Abfragen der von der Lösung erfassten Daten zu ermöglichen.  Gespeicherte Suchen werden im Azure-Portal unter **Gespeicherte Suchen** angezeigt.  Eine gespeicherte Suche ist zudem für jede Warnung erforderlich.   
+Schließen Sie [gespeicherte Suchen](../log-analytics/log-analytics-queries.md) in eine Lösung ein, um Benutzern das Abfragen der von der Lösung erfassten Daten zu ermöglichen.  Gespeicherte Suchen werden im Azure-Portal unter **Gespeicherte Suchen** angezeigt.  Eine gespeicherte Suche ist zudem für jede Warnung erforderlich.   
 
-Ressourcen für [Gespeicherte Suchen in Log Analytics](../log-analytics/log-analytics-log-searches.md) weisen den Typ `Microsoft.OperationalInsights/workspaces/savedSearches` und folgende Struktur auf.  Dies schließt allgemeine Variablen und Parameter ein, sodass Sie diesen Codeausschnitt kopieren, in Ihre Lösungsdatei einfügen und die Parameternamen ändern können. 
+Ressourcen für [Gespeicherte Suchen in Log Analytics](../log-analytics/log-analytics-queries.md) weisen den Typ `Microsoft.OperationalInsights/workspaces/savedSearches` und folgende Struktur auf.  Dies schließt allgemeine Variablen und Parameter ein, sodass Sie diesen Codeausschnitt kopieren, in Ihre Lösungsdatei einfügen und die Parameternamen ändern können. 
 
     {
         "name": "[concat(parameters('workspaceName'), '/', variables('SavedSearch').Name)]",

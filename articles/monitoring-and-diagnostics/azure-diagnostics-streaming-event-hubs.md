@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 07/13/2017
 ms.author: robb
 ms.component: diagnostic-extension
-ms.openlocfilehash: c87a4acb8ca333af73643a38ae1338c9c8769d13
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: 32cebecbb9185250d7d295eab3074a76dcd6a8b9
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37341233"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51240493"
 ---
 # <a name="streaming-azure-diagnostics-data-in-the-hot-path-by-using-event-hubs"></a>Streamen von Azure-Diagnosedaten im heißen Pfad mithilfe von Event Hubs
 Die Azure-Diagnose bietet flexible Methoden zum Erfassen von Metriken und Protokollen virtueller Computer in Clouddiensten sowie zur Übertragung der Ergebnisse an Azure Storage. Seit März 2016 (SDK 2.9) haben Sie die Möglichkeit, benutzerdefinierte Datenquellen als Sendeziel für Diagnose zu verwenden und heiße Daten mithilfe von [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) innerhalb von Sekunden zu übertragen.
@@ -42,7 +42,7 @@ Die Verwendung von Event Hubs für den Empfang von Daten von Azure-Diagnose wird
 * Vorhandene Konfigurationen der Azure-Diagnose in einer Anwendung mithilfe einer *.wadcfgx* -Datei und einer der folgenden Methoden:
   * Visual Studio: [Konfigurieren der Diagnose für Azure Cloud Services und Virtual Machines](../vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines.md)
   * Windows PowerShell: [Aktivieren der Diagnose mithilfe von PowerShell in Azure Cloud Services](../cloud-services/cloud-services-diagnostics-powershell.md)
-* Es muss ein Event Hubs-Namespace bereitgestellt werden, wie im Artikel [Erste Schritte mit Event Hubs](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)
+* Es muss ein Event Hubs-Namespace bereitgestellt werden, wie im Artikel [Erste Schritte mit Event Hubs](../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)
 
 ## <a name="connect-azure-diagnostics-to-event-hubs-sink"></a>Herstellen einer Verbindung zwischen der Azure-Diagnose und der Event Hubs-Senke
 Azure-Diagnose sendet Protokolle und Metriken standardmäßig stets an ein Azure Storage-Konto. Eine Anwendung kann auch Daten an Event Hubs senden, indem der *WADCFGX*-Datei im **PublicConfig** / **WadCfg**-Element ein neuer **Sinks**-Abschnitt hinzugefügt wird. In Visual Studio wird die *.wadcfgx*-Datei im folgenden Pfad gespeichert: **Cloud Services-Projekt** > **Rollen** > **(RoleName)** > **diagnostics.wadcfgx**-Datei.
@@ -70,7 +70,7 @@ Azure-Diagnose sendet Protokolle und Metriken standardmäßig stets an ein Azure
 
 In diesem Beispiel wird die Event Hub-URL auf den vollqualifizierten Namespace des Event Hubs festgelegt: Event Hubs-Namespace + „/“ + Event Hub-Name.  
 
-Die Event Hub-URL wird im [Azure-Portal](http://go.microsoft.com/fwlink/?LinkID=213885) auf dem Event Hubs-Dashboard angezeigt.  
+Die Event Hub-URL wird im [Azure-Portal](https://go.microsoft.com/fwlink/?LinkID=213885) auf dem Event Hubs-Dashboard angezeigt.  
 
 Der Name der **Senke** kann auf eine beliebige gültige Zeichenfolge festgelegt werden, solange der Wert in der gesamten Konfigurationsdatei konsistent verwendet wird.
 
@@ -220,7 +220,7 @@ In der folgenden Abbildung zeigt das Event Hubs-Dashboard, dass Diagnosedaten na
 ## <a name="view-hot-path-data"></a>Anzeigen von Daten im heißen Pfad
 Wie bereits erläutert, gibt es viele Anwendungsfälle für das Überwachen und Verarbeiten von Event Hubs-Daten.
 
-Ein einfacher Ansatz ist das Erstellen einer kleinen Testkonsolenanwendung, die am Event Hub lauscht und den Ausgabestream druckt. Sie können den folgenden Code (dieser wird in [Erste Schritte mit Event Hubs](../event-hubs/event-hubs-csharp-ephcs-getstarted.md) ausführlicher erläutert) in einer Konsolenanwendung platzieren.  
+Ein einfacher Ansatz ist das Erstellen einer kleinen Testkonsolenanwendung, die am Event Hub lauscht und den Ausgabestream druckt. Sie können den folgenden Code (dieser wird in [Erste Schritte mit Event Hubs](../event-hubs/event-hubs-dotnet-standard-getstarted-send.md) ausführlicher erläutert) in einer Konsolenanwendung platzieren.  
 
 Beachten Sie, dass die Konsolenanwendung das [NuGet-Paket EventProcessorHost](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost/) umfassen muss.  
 
@@ -508,7 +508,7 @@ Geschützte Einstellungen:
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zu Event Hubs finden Sie unter den folgenden Links:
 
-* [Übersicht über Event Hubs](../event-hubs/event-hubs-what-is-event-hubs.md)
+* [Übersicht über Event Hubs](../event-hubs/event-hubs-about.md)
 * [Erstellen eines Event Hubs](../event-hubs/event-hubs-create.md)
 * [Event Hubs – häufig gestellte Fragen](../event-hubs/event-hubs-faq.md)
 

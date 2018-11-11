@@ -9,12 +9,12 @@ ms.date: 09/22/2018
 ms.topic: tutorial
 ms.service: service-bus-messaging
 ms.custom: mvc
-ms.openlocfilehash: 357bdcbbee348d8cb89e2d75060a3e7ba05e2c86
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 5d209d0290d8ca813101b531f18fc0f08a6edf8a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47406233"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51246887"
 ---
 # <a name="tutorial-update-inventory-using-azure-portal-and-topicssubscriptions"></a>Tutorial: Aktualisieren des Bestands mit dem Azure-Portal und mit Themen/Abonnements
 
@@ -38,7 +38,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto][] e
 
 Damit Sie dieses Tutorial ausführen können, müssen folgende Komponenten installiert sein:
 
-- [Visual Studio 2017 Update 3 (Version 15.3, 26730.01)](http://www.visualstudio.com/vs) oder höher
+- [Visual Studio 2017 Update 3 (Version 15.3, 26730.01)](https://www.visualstudio.com/vs) oder höher
 - [NET Core SDK](https://www.microsoft.com/net/download/windows) ab Version 2.0
 
 ## <a name="service-bus-topics-and-subscriptions"></a>Service Bus-Themen und -Abonnements
@@ -51,7 +51,7 @@ Beginnen Sie im [Azure-Portal][Azure portal], und melden Sie sich mit Ihrem Azur
 
 ## <a name="create-a-service-bus-namespace"></a>Erstellen eines Service Bus-Namespace
 
-Ein Service Bus-Messaging-Namespace stellt einen eindeutigen Bereichscontainer bereit, auf den über seinen [Vollqualifizierter Domänenname][] verwiesen wird. In diesem Container erstellen Sie jeweils mindestens eine Warteschlange, ein Thema und ein Abonnement. Im folgenden Beispiel wird ein Service Bus-Messaging-Namespace in einer neuen oder vorhandenen [Ressourcengruppe](/azure/azure-resource-manager/resource-group-portal) erstellt:
+Ein Service Bus-Messaging-Namespace stellt einen eindeutigen Bereichscontainer bereit, auf den über seinen [vollqualifizierten Domänennamen][] verwiesen wird. In diesem Container erstellen Sie jeweils mindestens eine Warteschlange, ein Thema und ein Abonnement. Im folgenden Beispiel wird ein Service Bus-Messaging-Namespace in einer neuen oder vorhandenen [Ressourcengruppe](/azure/azure-resource-manager/resource-group-portal) erstellt:
 
 1. Klicken Sie im linken Navigationsbereich des Portals auf **+ Ressource erstellen**, und klicken Sie anschließend auf **Enterprise Integration** > **Service Bus**.
 2. Geben Sie im Dialogfeld **Namespace erstellen** einen Namen für den Namespace ein. Das System überprüft sofort, ob dieser Name verfügbar ist.
@@ -451,7 +451,7 @@ Fahren Sie mit dem nächsten Tutorial fort, um weitere Informationen zur Verwend
 > [Aktualisieren des Bestands mit PowerShell und Themen/Abonnements](service-bus-tutorial-topics-subscriptions-powershell.md)
 
 [kostenloses Konto]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
-[Vollqualifizierter Domänenname]: https://wikipedia.org/wiki/Fully_qualified_domain_name
+[vollqualifizierten Domänennamen]: https://wikipedia.org/wiki/Fully_qualified_domain_name
 [Azure portal]: https://portal.azure.com/
 
 [connection-string]: ./media/service-bus-tutorial-topics-subscriptions-portal/connection-string.png

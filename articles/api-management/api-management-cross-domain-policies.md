@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: 590831454e8a18678e357b4824eb35a717d1fee0
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: bd5082d9f66e65bb487c9216131b7e13f825340e
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2017
-ms.locfileid: "26129033"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51246649"
 ---
 # <a name="api-management-cross-domain-policies"></a>API Management cross domain policies (Domänenübergreifende API Management-Richtlinien)
-Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinien. Weitere Informationen zum Hinzufügen und Konfigurieren von Richtlinien finden Sie unter [Richtlinien in API Management](http://go.microsoft.com/fwlink/?LinkID=398186).  
+Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinien. Weitere Informationen zum Hinzufügen und Konfigurieren von Richtlinien finden Sie unter [Richtlinien in API Management](https://go.microsoft.com/fwlink/?LinkID=398186).  
   
 ##  <a name="CrossDomainPolicies"></a> Domänenübergreifende Richtlinien  
   
@@ -54,14 +54,14 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
   
 ### <a name="elements"></a>Elemente  
   
-|Name|Beschreibung|Erforderlich|  
+|NAME|BESCHREIBUNG|Erforderlich|  
 |----------|-----------------|--------------|  
-|cross-domain|Stammelement. Untergeordnete Elemente entsprechen der [Adobe-Dateispezifikation für domänenübergreifende Richtlinien](http://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html).|Ja|  
+|cross-domain|Stammelement Untergeordnete Elemente entsprechen der [Adobe-Dateispezifikation für domänenübergreifende Richtlinien](http://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html).|JA|  
   
 ### <a name="usage"></a>Verwendung  
- Diese Richtlinie kann in den folgenden [Abschnitten](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.  
+ Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.  
   
--   **Richtlinienabschnitte:** inbound  
+-   **Richtlinienabschnitte**: inbound  
 -   **Richtlinienbereiche:** global  
   
 ##  <a name="CORS"></a> CORS  
@@ -123,26 +123,26 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
   
 ### <a name="elements"></a>Elemente  
   
-|Name|Beschreibung|Erforderlich|Standard|  
+|NAME|BESCHREIBUNG|Erforderlich|Standard|  
 |----------|-----------------|--------------|-------------|  
-|cors|Stammelement.|Ja|N/V|  
-|allowed-origins|Enthält `origin`-Elemente, die die zulässigen Ursprünge für domänenübergreifende Anforderungen beschreiben. `allowed-origins` kann entweder ein einzelnes `origin`-Element enthalten, das `*` angibt, um einen beliebigen Ursprung zuzulassen, oder ein oder mehrere `origin`-Elemente, die einen URI enthalten.|Ja|N/V|  
-|origin|Der Wert kann entweder `*` lauten, um alle Ursprünge zuzulassen, oder ein URI sein, der einen einzelnen Ursprung angibt. Die URI muss Schema, Host und Port enthalten.|Ja|Wenn der Port in einem URI ausgelassen wird, wird Port 80 für HTTP bzw. Port 443 für HTTPS verwendet.|  
-|allowed-methods|Dieses Element ist erforderlich, wenn andere Methoden als GET oder POST zulässig sind. Enthält `method`-Elemente, die die unterstützten HTTP-Verben angeben.|Nein|Wenn dieser Abschnitt nicht vorhanden ist, werden GET und POST unterstützt.|  
+|cors|Stammelement|JA|N/V|  
+|allowed-origins|Enthält `origin`-Elemente, die die zulässigen Ursprünge für domänenübergreifende Anforderungen beschreiben. `allowed-origins` kann entweder ein einzelnes `origin`-Element enthalten, das `*` angibt, um einen beliebigen Ursprung zuzulassen, oder ein oder mehrere `origin`-Elemente, die einen URI enthalten.|JA|N/V|  
+|origin|Der Wert kann entweder `*` lauten, um alle Ursprünge zuzulassen, oder ein URI sein, der einen einzelnen Ursprung angibt. Die URI muss Schema, Host und Port enthalten.|JA|Wenn der Port in einem URI ausgelassen wird, wird Port 80 für HTTP bzw. Port 443 für HTTPS verwendet.|  
+|allowed-methods|Dieses Element ist erforderlich, wenn andere Methoden als GET oder POST zulässig sind. Enthält `method`-Elemente, die die unterstützten HTTP-Verben angeben.|Nein |Wenn dieser Abschnitt nicht vorhanden ist, werden GET und POST unterstützt.|  
 |method|Gibt ein HTTP-Verb an.|Mindestens ein `method`-Element ist erforderlich, wenn der Abschnitt `allowed-methods` vorhanden ist.|N/V|  
-|allowed-headers|Dieses Element enthält `header`-Elemente, die die Namen der Header angeben, die in der Anforderung enthalten sein können.|Nein|N/V|  
-|expose-headers|Dieses Element enthält `header`-Elemente, die die Namen der Header angeben, auf die der Client zugreifen kann.|Nein|N/V|  
+|allowed-headers|Dieses Element enthält `header`-Elemente, die die Namen der Header angeben, die in der Anforderung enthalten sein können.|Nein |N/V|  
+|expose-headers|Dieses Element enthält `header`-Elemente, die die Namen der Header angeben, auf die der Client zugreifen kann.|Nein |N/V|  
 |Header|Gibt einen Headernamen an.|Mindestens ein `header`-Element ist in `allowed-headers` oder `expose-headers` erforderlich, wenn der Abschnitt vorhanden ist.|N/V|  
   
 ### <a name="attributes"></a>Attribute  
   
-|Name|Beschreibung|Erforderlich|Standard|  
+|NAME|BESCHREIBUNG|Erforderlich|Standard|  
 |----------|-----------------|--------------|-------------|  
-|allow-credentials|Der `Access-Control-Allow-Credentials`-Header in der Preflightantwort wird auf den Wert dieses Attributs festgelegt und wirkt sich auf die Fähigkeit des Clients aus, Anmeldeinformationen in domänenübergreifenden Anforderungen zu senden.|Nein|false|  
-|preflight-result-max-age|Der `Access-Control-Max-Age`-Header in der Preflightantwort wird auf den Wert dieses Attributs festgelegt und wirkt sich auf die Fähigkeit des Benutzer-Agents aus, die Preflightantwort zwischenzuspeichern.|Nein|0|  
+|allow-credentials|Der `Access-Control-Allow-Credentials`-Header in der Preflightantwort wird auf den Wert dieses Attributs festgelegt und wirkt sich auf die Fähigkeit des Clients aus, Anmeldeinformationen in domänenübergreifenden Anforderungen zu senden.|Nein |false|  
+|preflight-result-max-age|Der `Access-Control-Max-Age`-Header in der Preflightantwort wird auf den Wert dieses Attributs festgelegt und wirkt sich auf die Fähigkeit des Benutzer-Agents aus, die Preflightantwort zwischenzuspeichern.|Nein |0|  
   
 ### <a name="usage"></a>Verwendung  
- Diese Richtlinie kann in den folgenden [Abschnitten](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.  
+ Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.  
   
 -   **Richtlinienabschnitte:** inbound  
 -   **Richtlinienbereiche:** API, operation  
@@ -168,18 +168,18 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
   
 ### <a name="elements"></a>Elemente  
   
-|Name|Beschreibung|Erforderlich|  
+|NAME|BESCHREIBUNG|Erforderlich|  
 |----------|-----------------|--------------|  
-|jsonp|Stammelement.|Ja|  
+|jsonp|Stammelement|JA|  
   
 ### <a name="attributes"></a>Attribute  
   
-|Name|Beschreibung|Erforderlich|Standard|  
+|NAME|BESCHREIBUNG|Erforderlich|Standard|  
 |----------|-----------------|--------------|-------------|  
-|callback-parameter-name|Der domänenübergreifende JavaScript-Funktionsaufruf mit dem vollqualifizierten Domänennamen, in dem die Funktion liegt, als Präfix.|Ja|N/V|  
+|callback-parameter-name|Der domänenübergreifende JavaScript-Funktionsaufruf mit dem vollqualifizierten Domänennamen, in dem die Funktion liegt, als Präfix.|JA|N/V|  
   
 ### <a name="usage"></a>Verwendung  
- Diese Richtlinie kann in den folgenden [Abschnitten](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.  
+ Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.  
   
 -   **Richtlinienabschnitte:** outbound  
 -   **Richtlinienbereiche:** global, product, API, operation  

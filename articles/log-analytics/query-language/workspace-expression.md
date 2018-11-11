@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/10/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: 70ee244599f926f4d6c4a36f6065a1f743de2466
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 8b83650acfee638ae2a667cd0925fd91d44b80b2
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46971823"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51282695"
 ---
 # <a name="workspace-expression-in-log-analytics-query"></a>workspace()-Ausdruck in Log Analytics-Abfragen
 
@@ -74,4 +74,4 @@ union
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Informationen für das Verweisen auf Application Insights-Apps finden Sie unter [app-Ausdruck](workspace-expression.md).
-- Informationen über die Art der [Speicherung von Log Analytics-Daten](../../log-analytics/log-analytics-log-search.md).
+- Informationen über die Art der [Speicherung von Log Analytics-Daten](../../log-analytics/log-analytics-queries.md).

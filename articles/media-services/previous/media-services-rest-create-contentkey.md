@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/07/2017
 ms.author: juliako
-ms.openlocfilehash: 83ba02aedebe69e15736975fbd73c7c7f221634f
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 9fb28d618a9375dec19e75d04ef0a6bc5de334b6
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33785809"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51242635"
 ---
 # <a name="create-content-keys-with-rest"></a>Erstellen von Inhaltsschlüsseln mit REST
 > [!div class="op_single_selector"]
@@ -45,7 +45,7 @@ Im Folgenden finden Sie allgemeine Schritte zum Generieren von Inhaltsschlüssel
 3. Verschlüsseln Sie Ihren Inhaltsschlüssel mit dem öffentlichen Schlüssel des X.509-Zertifikats. 
    
    Das Media Services .NET SDK verwendet RSA mit OAEP zur Verschlüsselung.  Ein Beispiel finden Sie in der [EncryptSymmetricKeyData-Funktion](https://github.com/Azure/azure-sdk-for-media-services/blob/dev/src/net/Client/Common/Common.FileEncryption/EncryptionUtils.cs).
-4. Erstellen Sie einen Prüfsummenwert (basierend auf den Prüfsummenalgorithmus des PlayReady AES-Schlüssels), der anhand der Schlüsselkennung und des Inhaltsschlüssels berechnet wird. Weitere Informationen finden Sie [hier](http://www.microsoft.com/playready/documents/)im Abschnitt "Prüfsummenalgorithmus für den PlayReady AES-Schlüssel" zum PlayReady-Headerobjekt.
+4. Erstellen Sie einen Prüfsummenwert (basierend auf den Prüfsummenalgorithmus des PlayReady AES-Schlüssels), der anhand der Schlüsselkennung und des Inhaltsschlüssels berechnet wird. Weitere Informationen finden Sie [hier](https://www.microsoft.com/playready/documents/)im Abschnitt "Prüfsummenalgorithmus für den PlayReady AES-Schlüssel" zum PlayReady-Headerobjekt.
    
    Im folgenden .NET-Beispiel wird die Prüfsumme anhand des GUID-Abschnitts der Schlüsselkennung und des unverschlüsselten Inhaltsschlüssels berechnet.
    

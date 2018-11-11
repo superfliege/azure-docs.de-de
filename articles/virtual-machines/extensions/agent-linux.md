@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/17/2016
 ms.author: roiyz
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 73e5e54e40223f7cd972e2bd2752add9ca82ff2b
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 0c19d32f6c6f491a91ba6c2219be9fd016b5ec34
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47452342"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51243878"
 ---
 # <a name="understanding-and-using-the-azure-linux-agent"></a>Grundlegendes zum Azure Linux-Agent und seiner Verwendung
 
@@ -73,7 +73,7 @@ Der Informationsfluss von der Plattform zum Agenten erfolgt über zwei Kanäle:
 Folgende Systeme können nachweislich mit dem Azure Linux-Agent verwendet werden:
 
 > [!NOTE]
-> Diese Liste kann von der offiziellen Liste unterstützter Systemen für die Microsoft Azure-Plattform abweichen. Weitere Informationen finden Sie unter [http://support.microsoft.com/kb/2805216](http://support.microsoft.com/kb/2805216).
+> Diese Liste kann von der offiziellen Liste unterstützter Systemen für die Microsoft Azure-Plattform abweichen. Weitere Informationen finden Sie unter [http://support.microsoft.com/kb/2805216](https://support.microsoft.com/kb/2805216).
 > 
 > 
 
@@ -344,6 +344,6 @@ Ubuntu Cloud Images verwenden [cloud-init](https://launchpad.net/ubuntu/+source/
 
 * Berücksichtigen Sie zum Konfigurieren des Bereitstellungspunkts und des Auslagerungsbereichs für den Ressourcendatenträger von Ubuntu Cloud Images die folgenden Ressourcen:
   
-  * [Ubuntu-Wiki: Konfigurieren von Swap-Partitionen](http://go.microsoft.com/fwlink/?LinkID=532955&clcid=0x409)
+  * [Ubuntu-Wiki: Konfigurieren von Swap-Partitionen](https://go.microsoft.com/fwlink/?LinkID=532955&clcid=0x409)
   * [Einfügen benutzerdefinierter Daten in einen virtuellen Azure-Computer](../windows/classic/inject-custom-data.md)
 

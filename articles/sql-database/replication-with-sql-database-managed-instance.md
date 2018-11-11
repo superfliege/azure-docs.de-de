@@ -12,12 +12,12 @@ ms.author: xiwu
 ms.reviewer: mathoma
 manager: craigg
 ms.date: 09/25/2018
-ms.openlocfilehash: 25d13ba53eb5a8b411a557b5eaf05d278faa3733
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: 3b979a9a7e93992ba593697fa9465fdadc1e58b9
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48869311"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51240391"
 ---
 # <a name="replication-with-sql-database-managed-instance"></a>Replikation mit einer verwalteten SQL-Datenbank-Instanz
 
@@ -77,7 +77,7 @@ Unterstützt:
 ## <a name="configure-publishing-and-distribution-example"></a>Konfigurieren eines Beispiels für Veröffentlichung und Verteilung
 
 1. [Erstellen Sie eine verwaltete Azure SQL-Datenbank-Instanz](sql-database-managed-instance-create-tutorial-portal.md) im Azure-Portal.
-2. [Erstellen Sie ein Azure-Speicherkonto](http://docs.microsoft.com/azure/storage/common/storage-create-storage-account#create-a-storage-account) für das Arbeitsverzeichnis.
+2. [Erstellen Sie ein Azure-Speicherkonto](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account#create-a-storage-account) für das Arbeitsverzeichnis.
 
    Achten Sie darauf, die Speicherkontoschlüssel zu kopieren. Siehe [Anzeigen und Kopieren von Speicherzugriffsschlüssel](../storage/common/storage-account-manage.md#access-keys
 ).
@@ -85,11 +85,11 @@ Unterstützt:
 
    Ersetzen Sie in den folgenden Beispielskripts `<Publishing_DB>` durch den Namen der Datenbank.
 
-4. Erstellen Sie einen Datenbankbenutzer mit SQL-Authentifizierung für den Verteiler. Siehe [Erstellen von Datenbankbenutzern](http://docs.microsoft.com/azure/sql-database/sql-database-security-tutorial#creating-database-users). Verwenden Sie ein sicheres Kennwort.
+4. Erstellen Sie einen Datenbankbenutzer mit SQL-Authentifizierung für den Verteiler. Siehe [Erstellen von Datenbankbenutzern](https://docs.microsoft.com/azure/sql-database/sql-database-security-tutorial#creating-database-users). Verwenden Sie ein sicheres Kennwort.
 
    Verwenden Sie in den folgenden Beispielskripts `<SQL_USER>` und `<PASSWORD>` als Datenbankbenutzer und Kennwort für dieses SQL Server-Konto.
 
-5. [Stellen Sie eine Verbindung zur verwalteten SQL-Datenbank-Instanz her](http://docs.microsoft.com/azure/sql-database/sql-database-connect-query-ssms).
+5. [Stellen Sie eine Verbindung zur verwalteten SQL-Datenbank-Instanz her](https://docs.microsoft.com/azure/sql-database/sql-database-connect-query-ssms).
 
 6. Führen Sie die folgende Abfrage aus, um den Verteiler und die Verteilungsdatenbank hinzuzufügen.
 
@@ -197,4 +197,4 @@ Folgende Funktionen werden nicht unterstützt:
 
 ## <a name="see-also"></a>Siehe auch
 
-- [Was ist eine verwaltete Instanz?](http://docs.microsoft.com/azure/sql-database/sql-database-managed-instance)
+- [Was ist eine verwaltete Instanz?](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance)

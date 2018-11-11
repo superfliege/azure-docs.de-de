@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: adigan
-ms.openlocfilehash: a458a46f3775a593f369d5acb967fc90d61efde8
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 4f1e0c14d3a835b9f6d739511186bdcc19917a7a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39628340"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51230987"
 ---
 # <a name="install-azure-backup-server-v2"></a>Installieren von Azure Backup Server v2
 
@@ -103,7 +103,7 @@ So fügen Sie in der Administratorkonsole ein Volume hinzu
 
   Wenn Sie einen Datenträger hinzufügen möchten, muss der Datenträger zu einer Schutzgruppe gehören, die über Legacyspeicher verfügt. Sie können diese Datenträger nur für diese Schutzgruppen verwenden. Falls Backup Server keine Quellen mit Legacyschutz hat, wird der Datenträger nicht aufgeführt.
 
-  Weitere Informationen zum Hinzufügen von Datenträgern finden Sie unter [Durchführen eines Upgrades für Ihre DPM-Installation](http://docs.microsoft.com/system-center/dpm/upgrade-to-dpm-2016#adding-disks-to-increase-legacy-storage). Ein Datenträger kann nicht mit einem Anzeigenamen versehen werden.
+  Weitere Informationen zum Hinzufügen von Datenträgern finden Sie unter [Durchführen eines Upgrades für Ihre DPM-Installation](https://docs.microsoft.com/system-center/dpm/upgrade-to-dpm-2016#adding-disks-to-increase-legacy-storage). Ein Datenträger kann nicht mit einem Anzeigenamen versehen werden.
 
 
 ### <a name="assign-workloads-to-volumes"></a>Zuweisen von Workloads zu Volumes
@@ -175,13 +175,13 @@ Das Aktualisieren von Schutzgruppen zur Verwendung von Modern Backup Storage ist
 
 1. Wählen Sie in der System Center 2016 DPM-Verwaltungskonsole das **Schutz**-Feature aus. Klicken Sie in der Liste **Schutzgruppenmitglied** mit der rechten Maustaste auf das Mitglied, und wählen Sie dann **Schutz des Mitglieds beenden** aus.
 
-  ![Schutz des Mitglieds beenden](http://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-stop-protection1.png)
+  ![Schutz des Mitglieds beenden](https://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-stop-protection1.png)
 
 2. Überprüfen Sie im Dialogfeld **Aus Gruppe entfernen** den belegten Speicherplatz und den verfügbaren freien Speicherplatz für den Speicherpool. Die Standardeinstellung ist das Belassen der Wiederherstellungspunkte auf dem Datenträger und sie gemäß der zugehörigen Beibehaltungsrichtlinie ablaufen zu lassen. Klicken Sie auf **OK**.
 
   Wenn der belegte Speicherplatz sofort an den Pool mit freiem Speicherplatz zurückgegeben werden soll, aktivieren Sie das Kontrollkästchen **Replikat auf Datenträger löschen**, um die Sicherungsdaten (und Wiederherstellungspunkte) zu löschen, die zu diesem Mitglied gehören.
 
-  ![Dialogfeld „Aus Gruppe entfernen“](http://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-retain-data.png)
+  ![Dialogfeld „Aus Gruppe entfernen“](https://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-retain-data.png)
 
 3. Erstellen Sie eine Schutzgruppe, die Modern Backup Storage verwendet. Fügen Sie die ungeschützten Datenquellen hinzu.
 
@@ -194,7 +194,7 @@ So fügen Sie Datenspeicher hinzu
 
 1. Wählen Sie in der System Center 2016 DPM-Verwaltungskonsole **Verwaltung** > **Datenspeicher** > **Hinzufügen** aus.
 
-  ![Dialogfeld „Datenspeicher hinzufügen“](http://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-add-disk-storage.png)
+  ![Dialogfeld „Datenspeicher hinzufügen“](https://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-add-disk-storage.png)
 
 2. Wählen Sie im Dialogfeld **Datenspeicher hinzufügen** den Befehl **Datenträger hinzufügen** aus.
 

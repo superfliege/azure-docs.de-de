@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: a469bc600715b2e276d6654596da50d75659aadb
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.openlocfilehash: 3903f247df0bc9dc4bc27d61b195492c585d7634
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48831023"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51282270"
 ---
 # <a name="tutorial-5-extract-contextually-related-data"></a>Tutorial 5: Extrahieren kontextbezogener Daten
 In diesem Tutorial wird das kontextbasierte Finden aufeinander bezogener Teildaten behandelt. Beispielsweise sind der Ausgangsort und der Zielort für eine physische Verlegung aus einem Gebäude und Büro in ein anderes Gebäude und Büro aufeinander bezogen. Zum Erstellen eines Arbeitsauftrags sind möglicherweise beide Teilinformationen erforderlich, und sie sind aufeinander bezogen.  
@@ -57,7 +57,7 @@ Wenn Sie nicht über die HumanResources-App aus dem vorhergehenden Tutorial verf
 ## <a name="remove-prebuilt-number-entity-from-app"></a>Entfernen der vordefinierten Zahlenentität aus der App
 Entfernen Sie die vordefinierte Zahlenentität vorübergehend, um die gesamte Äußerung anzuzeigen und die untergeordneten Elemente der Hierarchie zu kennzeichnen.
 
-1. [!include[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
+1. [!INCLUDE[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
 2. Wählen Sie im linken Menü die Option **Entitäten**.
 
@@ -83,7 +83,7 @@ Entfernen Sie die vordefinierte Zahlenentität vorübergehend, um die gesamte Ä
 
     Im Tutorial zur [Listenentität](luis-quickstart-intent-and-list-entity.md) wird ein Mitarbeiter anhand von Name, E-Mail-Adresse, Durchwahl, Mobiltelefonnummer oder US-Sozialversicherungsnummer bezeichnet. Diese Mitarbeiternummern werden in den Äußerungen verwendet. Die obigen Beispieläußerungen enthalten unterschiedliche Möglichkeiten zum Notieren der Ursprungs- und Zielorte (fett markiert). Zwei Äußerungen verfügen absichtlich nur über ein Ziel. So kann LUIS besser verstehen, wo diese Orte in der Äußerung angeordnet sind, wenn der Ursprungsort nicht enthalten ist.     
 
-    [!include[Do not use too few utterances](../../../includes/cognitive-services-luis-too-few-example-utterances.md)]  
+    [!INCLUDE[Do not use too few utterances](../../../includes/cognitive-services-luis-too-few-example-utterances.md)]  
 
 ## <a name="create-a-location-entity"></a>Erstellen einer Entität für den Ort
 LUIS muss verstehen, was ein Ort ist, indem der Ursprung und das Ziel in den Äußerungen gekennzeichnet werden. Wenn Sie die Äußerung in der Tokenansicht (unformatiert) anzeigen möchten, können Sie den Umschalter in der Liste oberhalb der Äußerungen mit der Bezeichnung **Entities View** (Entitätsansicht) wählen. Nach dem Umschalten hat das Steuerelement die Bezeichnung **Tokens View** (Tokenansicht).
@@ -119,7 +119,7 @@ Fügen Sie die vordefinierte Zahlenentität wieder der Anwendung hinzu.
 
 1. Wählen Sie im linken Navigationsmenü die Option **Entities** (Entitäten) aus.
 
-2. Wählen Sie die Schaltfläche **Manage prebuilt entities** (Vordefinierte Entitäten verwalten) aus.
+2. Wählen Sie die Schaltfläche **Add prebuilt entity** (Vordefinierte Entität hinzufügen).
 
 3. Wählen Sie in der Liste mit den vordefinierten Entitäten die Option **number** und dann **Fertig**.
 
@@ -248,6 +248,10 @@ Für die Orte in diesem Beispiel, z.B. `a-1234`, wird ein bestimmtes Format mit 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
+
+## <a name="hierarchical-entities-versus-roles"></a>Hierarchische Entitäten im Vergleich zu Rollen
+
+Weitere Informationen finden Sie unter [Rollen und hierarchische Entitäten](luis-concept-roles.md#roles-versus-hierarchical-entities).
 
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Tutorial wurden eine neue Absicht erstellt und Beispieläußerungen für die im Kontext gelernten Daten von Ursprungs- und Zielort hinzugefügt. Nachdem die App trainiert und veröffentlicht ist, kann eine Clientanwendung diese Informationen für einen Verlegungsauftrag mit den relevanten Informationen verwenden.

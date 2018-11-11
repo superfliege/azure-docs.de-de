@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/31/2017
 ms.author: ningk
-ms.openlocfilehash: 447532452a848c88fd927f42e4263cef4742dd89
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 0ba85e82824bc257869d9801f342bd6dbb0402d2
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
-ms.locfileid: "30841502"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51247448"
 ---
 # <a name="optimize-mysql-performance-on-azure-linux-vms"></a>Optimieren der MySQL-Leistung auf virtuellen Azure Linux-Computern
 Es gibt viele Faktoren, die die MySQL-Leistung unter Azure beeinträchtigen, sowohl in Bezug auf die Auswahl der virtuellen Hardware als auch auf die Softwarekonfiguration. Dieser Artikel befasst sich mit der Leistungsoptimierung über die Speicher-, System- und Datenbankkonfiguration.
@@ -38,7 +38,7 @@ Zusätzlich zur Datenträger-E/A verbessert sich die MySQL-Leistung, wenn Sie di
 
 Sie sollten auch die Segmentgröße berücksichtigen. Im Allgemeinen erzielen Sie mit größeren Segmenten einen niedrigeren Verarbeitungsaufwand, insbesondere bei großen Schreibvorgängen. Eine zu große Segmentgröße kann jedoch mit zusätzlichem Verarbeitungsaufwand verbunden sein, sodass Sie die Vorteile von RAID nicht nutzen können. Die aktuelle Standardgröße beträgt 512 KB, die sich für die meisten allgemeinen Produktionsumgebungen als optimal erwiesen hat. In [Anhang C](#AppendixC) finden Sie nähere Informationen.   
 
-Hinsichtlich der Anzahl der Datenträger, die Sie für verschiedene Arten von virtuellen Computern hinzufügen können, gelten Beschränkungen. Ausführliche Informationen zu diesen Grenzen finden Sie unter [Größen virtueller Computer und Clouddienste für Azure](http://msdn.microsoft.com/library/azure/dn197896.aspx). Im RAID-Beispiel in diesem Artikel benötigen Sie vier angefügte Datenträger. Sie können RAID jedoch auch mit weniger Datenträgern einrichten.  
+Hinsichtlich der Anzahl der Datenträger, die Sie für verschiedene Arten von virtuellen Computern hinzufügen können, gelten Beschränkungen. Ausführliche Informationen zu diesen Grenzen finden Sie unter [Größen virtueller Computer und Clouddienste für Azure](https://msdn.microsoft.com/library/azure/dn197896.aspx). Im RAID-Beispiel in diesem Artikel benötigen Sie vier angefügte Datenträger. Sie können RAID jedoch auch mit weniger Datenträgern einrichten.  
 
 In diesem Artikel wird angenommen, dass Sie bereits einen virtuellen Linux-Computer erstellt und MySQL installiert und konfiguriert haben. Weitere Informationen zu den ersten Schritten finden Sie unter „Installieren von MySQL in Azure“.  
 
@@ -220,7 +220,7 @@ Die folgenden Konfigurationselemente sind die Hauptfaktoren, die die MySQL-Leist
 * **max_connections**: Manchmal schließen Anwendungen Verbindungen nicht ordnungsgemäß. Mit einem größeren Wert erhält der Server mehr Zeit für die Wiederverwendung von Leerlaufverbindungen. Es sind maximal 10.000 Verbindungen möglich, doch das empfohlene Maximum sind 5.000 Verbindungen.
 * **Innodb_file_per_table**: Mit dieser Einstellung wird die Fähigkeit von InnoDB zur Speicherung von Tabellen in separaten Dateien aktiviert bzw. deaktiviert. Durch Aktivieren der Option wird sichergestellt, dass mehrere erweiterte Verwaltungsvorgänge effizient angewendet werden können. Vom Leistungsstandpunkt aus betrachtet kann die Übermittlung von Tabellenspeicherplatz hierdurch beschleunigt und die Leistung beim Umgang mit Verschwendung optimiert werden. Daher wird empfohlen, diese Option auf ON festzulegen.</br></br>
 Ab MySQL 5.6 ist die Standardeinstellung ON, sodass keine Aktion erforderlich ist. Für frühere Versionen ist die Standardeinstellung OFF. Die Einstellung muss vor dem Laden neuer Daten geändert werden, weil sie sich nur auf neu erstellte Tabellen auswirkt.
-* **Innodb_flush_log_at_trx_commit**: Der Standardwert ist 1, wobei der Gültigkeitsbereich auf 0~2 gesetzt ist. Der Standardwert ist die am besten geeignete Option für eine eigenständige MySQL-DB. Die Einstellung 2 ermöglicht die höchste Datenintegrität und eignet sich für den Master im MySQL-Cluster. Die Einstellung 0 lässt Datenverluste zu. Dies kann die Zuverlässigkeit beeinträchtigen. In einigen Fällen wird die Leistung verbessert. Daher eignet sich die Einstellung für das Sekundärgerät im MySQL-Cluster.
+* **Innodb_flush_log_at_trx_commit**: Der Standardwert ist 1, wobei der Gültigkeitsbereich auf 0~2 gesetzt ist. Der Standardwert ist die am besten geeignete Option für eine eigenständige MySQL-DB. Die Einstellung 2 ermöglicht die höchste Datenintegrität und eignet sich für den Master im MySQL-Cluster. Die Einstellung 0 lässt Datenverluste zu. Dies kann die Zuverlässigkeit beeinträchtigen. In einigen Fällen wird die Leistung verbessert. Daher eignet sich die Einstellung für „Slave“ im MySQL-Cluster.
 * **Innodb_log_buffer_size**: Der Protokollpuffer lässt zu, dass Transaktionen ausgeführt werden, ohne dass das Protokoll vor dem Ausführen der Transaktionen auf den Datenträger übertragen werden muss. Wenn jedoch ein großes binäres Objekt oder Textfeld vorhanden ist, wird der Zwischenspeicher schnell belegt. Dadurch wird eine häufige Datenträger-E/A ausgelöst. Es ist besser, die Puffergröße zu erhöhen, wenn die Zustandsvariable "Innodb_log_waits" nicht 0 ist.
 * **query_cache_size**: Die beste Möglichkeit ist, diese Einstellung von Anfang an zu deaktivieren. Legen Sie „query_cache_size“ auf 0 fest (in MySQL 5.6 ist dies die Standardeinstellung), und verwenden Sie andere Methoden zur Beschleunigung von Abfragen.  
 

@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 09/17/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 81c88c90ff24cb5e0ab143237fb08678067ea993
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: f830a27e9caf032443c2b27bdd2f95fa8069bcf2
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46305539"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51247278"
 ---
 # <a name="tutorial--integrate-a-single-ad-forest-using-password-hash-sync-phs"></a>Tutorial: Integrieren einer einzelnen AD-Gesamtstruktur mit Kennworthashsynchronisierung (Password Hash Sync, PHS)
 
@@ -224,7 +224,7 @@ Wir überprüfen jetzt, ob die Benutzer, die in unserem lokalen Verzeichnis vorh
 
 ## <a name="test-signing-in-with-one-of-our-users"></a>Testanmeldung mit einem unserer Benutzer
 
-1.  Rufen Sie [http://myapps.microsoft.com](http://myapps.microsoft.com) auf.
+1.  Rufen Sie [http://myapps.microsoft.com](https://myapps.microsoft.com) auf.
 2. Melden Sie sich mit einem Benutzerkonto an, das in unserem neuen Mandanten erstellt wurde.  Sie müssen sich mit folgendem Format anmelden: (user@domain.onmicrosoft.com). Verwenden Sie dasselbe Kennwort, mit dem sich der Benutzer lokal anmeldet.</br>
 ![Überprüfen](media/tutorial-password-hash-sync/verify1.png)</br>
 

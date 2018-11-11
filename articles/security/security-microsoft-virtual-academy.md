@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: dfcd248be48109203e91c93231d89d1d650a4b96
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 21f5aba3acfebdcd2e93825ea34226adee5455d2
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2017
-ms.locfileid: "25540047"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51248077"
 ---
 # <a name="azure-security-courses-from-microsoft-virtual-academy"></a>Azure-Sicherheitskurse der Microsoft Virtual Academy
 In der Microsoft Virtual Academy werden kostenlose Onlineschulungen angeboten, damit Entwickler, IT- und Datenspezialisten und Studenten immer auf dem neuesten Stand der Technologie bleiben, ihre Kompetenzen und Kenntnisse vertiefen und sich weiterentwickeln können.
@@ -40,7 +40,7 @@ In dieser Sitzung erfahren Sie, wie Microsoft Sie bei der Erfüllung globaler Co
 
 [Design and Implement Cloud Data Platform Solutions (Entwickeln und Implementieren von Lösungen für Datenplattformen in der Cloud)](https://mva.microsoft.com/en-us/training-courses/design-and-implement-cloud-data-platform-solutions-15711?l=jbCdW0j1B_3005244527)
 
-Lernen Sie die Features und Funktionen der Lösungen für Datenplattformen in der Microsoft-Cloud kennen. Verschaffen Sie sich einen allgemeinen Überblick über Plattformen, und informieren Sie sich über Sicherheitsfeatures, Optionen für hohe Verfügbarkeit, Verfahren für die Überwachung und Verwaltung von Clouddaten und andere Dinge. Darüber hinaus erhalten Sie Anleitungen zum Identifizieren von Kompromissen und zur Entscheidungsfindung beim Entwerfen von öffentlichen und Hybrid Cloud-Lösungen mithilfe der Features für Datenplattformen in der Microsoft-Cloud.
+Lernen Sie die Features und Funktionen der Lösungen für Datenplattformen in der Microsoft-Cloud kennen. Verschaffen Sie sich einen allgemeinen Überblick über Plattformen, und informieren Sie sich über Sicherheitsfeatures, Optionen für Hochverfügbarkeit, Verfahren für die Überwachung und Verwaltung von Clouddaten und andere Dinge. Darüber hinaus erhalten Sie Anleitungen zum Identifizieren von Kompromissen und zur Entscheidungsfindung beim Entwerfen von öffentlichen und Hybrid Cloud-Lösungen mithilfe der Features für Datenplattformen in der Microsoft-Cloud.
 
 [Manage and Secure Identities in a Cloud and Mobile World (Verwalten und Sichern von Identitäten in der Cloud und der mobilen Welt)](https://mva.microsoft.com/en-us/training-courses/manage-and-secure-identities-in-a-cloud-and-mobile-world-14013?l=GIJ2GcvrB_405192797)
 
@@ -48,7 +48,7 @@ In dieser Sitzung erfahren Sie, wie Sie mithilfe von Azure Active Directory und 
 
 [Security in a Cloud-Enabled World (Sicherheit in einer Welt mit Cloudumgebungen)](https://mva.microsoft.com/en-us/training-courses/security-in-a-cloudenabled-world-12725?l=CfLHobAcB_3904300474)
 
-Experten erläutern Ihnen anhand des Posters [Microsoft Cloud Security for Enterprise Architects](http://www.microsoft.com/download/48121) (Microsoft-Cloudsicherheit für Enterprise-Architekten) die Verantwortungsbereiche des Kunden. Sie geben auch Tipps zur Erneuerung aller Bereiche Ihres Sicherheitsstatus, einschließlich Governance, Einschlussstrategien, Sicherheitsvorgängen, professionellem Assetschutz, Information Protection sowie Benutzer- und Gerätesicherheit mit Schwerpunkt auf dem Schutz von Administratorberechtigungen. Sie machen sich mit dem Framework vertraut, das auch von den Microsoft-Mitarbeitern für die Internetsicherheit verwendet wird, um die Cloudsicherheit von Kunden zu bewerten und für sie eine Sicherheitsroadmap zu erstellen.
+Experten erläutern Ihnen anhand des Posters [Microsoft Cloud Security for Enterprise Architects](https://www.microsoft.com/download/48121) (Microsoft-Cloudsicherheit für Enterprise-Architekten) die Verantwortungsbereiche des Kunden. Sie geben auch Tipps zur Erneuerung aller Bereiche Ihres Sicherheitsstatus, einschließlich Governance, Einschlussstrategien, Sicherheitsvorgängen, professionellem Assetschutz, Information Protection sowie Benutzer- und Gerätesicherheit mit Schwerpunkt auf dem Schutz von Administratorberechtigungen. Sie machen sich mit dem Framework vertraut, das auch von den Microsoft-Mitarbeitern für die Internetsicherheit verwendet wird, um die Cloudsicherheit von Kunden zu bewerten und für sie eine Sicherheitsroadmap zu erstellen.
 
 [Microsoft Azure IaaS Deep Dive (Tiefgehende Informationen zu Microsoft Azure IaaS)](https://mva.microsoft.com/en-us/training-courses/microsoft-azure-iaas-deep-dive-14339?l=PtppYVQgB_8300115888)
 

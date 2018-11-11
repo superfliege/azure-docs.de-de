@@ -12,12 +12,12 @@ ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
 ms.date: 07/16/2018
-ms.openlocfilehash: 0f836a857d6f9748416fda1526a1957af4fc51e4
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: beab191ff33939053da942b0ce7df22238b8acef
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47163595"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51247312"
 ---
 # <a name="troubleshoot-issues-with-sql-data-sync"></a>Behandeln von Problemen mit der SQL-Datensynchronisierung
 
@@ -146,7 +146,7 @@ Der Client-Agent funktioniert nicht mehr, auch nachdem Sie die Deinstallation ab
 - **Lösung**. Sie können die folgenden beiden Lösungen ausprobieren:
 
     -   Verwenden Sie „services.msc“, um die Anmeldeinformationen für den Client-Agent erneut einzugeben.
-    -   Deinstallieren Sie den Client-Agent, und installieren Sie einen neuen. Den neuesten Client-Agent können Sie aus dem [Download Center](http://go.microsoft.com/fwlink/?linkid=221479) herunterladen und installieren.
+    -   Deinstallieren Sie den Client-Agent, und installieren Sie einen neuen. Den neuesten Client-Agent können Sie aus dem [Download Center](https://go.microsoft.com/fwlink/?linkid=221479) herunterladen und installieren.
 
 ### <a name="agent-list"></a> Meine Datenbank ist in der Agent-Liste nicht enthalten.
 

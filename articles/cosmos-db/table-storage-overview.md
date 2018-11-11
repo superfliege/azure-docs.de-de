@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: overview
 ms.date: 11/03/2017
 ms.author: sngun
-ms.openlocfilehash: 495fc0fff39a04dee4fc707bd0d2f6b3571cc46a
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 204d0032516886c2d954965c7c4561d967bae705
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38582063"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51232187"
 ---
 # <a name="azure-table-storage-overview"></a>Übersicht über Azure Table Storage
 
@@ -35,6 +35,6 @@ Mit Table Storage können Sie flexible Datasets wie Benutzerdaten für Webanwend
 
 * In der Referenzdokumentation für den Tabellenspeicherdienst finden Sie alle Details zu verfügbaren APIs:
 
-    * [Referenz zur Storage-Clientbibliothek für .NET](http://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409)
+    * [Referenz zur Storage-Clientbibliothek für .NET](https://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409)
 
-    * [REST-API-Referenz](http://msdn.microsoft.com/library/azure/dd179355)
+    * [REST-API-Referenz](https://msdn.microsoft.com/library/azure/dd179355)

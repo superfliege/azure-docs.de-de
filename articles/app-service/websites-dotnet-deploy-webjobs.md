@@ -15,18 +15,18 @@ ms.custom: vs-azure
 ms.workload: azure-vs
 ms.date: 09/12/2017
 ms.author: glenga;david.ebbo;suwatch;pbatum;naren.soni
-ms.openlocfilehash: 64fdb6dceb1ca10e68411f95c310fdd9a2e25202
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: 08cbff7bc58f5925dee9b77ff195d362af4379d8
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42444130"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51245729"
 ---
 # <a name="develop-and-deploy-webjobs-using-visual-studio---azure-app-service"></a>Entwickeln und Bereitstellen von WebJobs mit Visual Studio – Azure App Service
 
 ## <a name="overview"></a>Übersicht
 
-In diesem Thema wird erläutert, wie Sie Visual Studio zum Bereitstellen eines Konsolenanwendungsprojekts in einer [App Service](app-service-web-overview.md)-Web-App als [Azure-WebJob](http://go.microsoft.com/fwlink/?LinkId=390226) verwenden. Weitere Informationen zum Bereitstellen von WebJobs mit dem [Azure-Portal](https://portal.azure.com) finden Sie unter [Ausführen von Hintergrundaufgaben mit WebJobs](web-sites-create-web-jobs.md).
+In diesem Thema wird erläutert, wie Sie Visual Studio zum Bereitstellen eines Konsolenanwendungsprojekts in einer [App Service](app-service-web-overview.md)-Web-App als [Azure-WebJob](https://go.microsoft.com/fwlink/?LinkId=390226) verwenden. Weitere Informationen zum Bereitstellen von WebJobs mit dem [Azure-Portal](https://portal.azure.com) finden Sie unter [Ausführen von Hintergrundaufgaben mit WebJobs](web-sites-create-web-jobs.md).
 
 Wenn mithilfe von Visual Studio ein webauftragsfähiges Konsolenanwendungsprojekt bereitgestellt wird, werden zwei Aufgaben ausgeführt:
 

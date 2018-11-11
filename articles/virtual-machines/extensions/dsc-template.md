@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 10/05/2018
 ms.author: robreed
-ms.openlocfilehash: e24353013110bfa95f23b75bbd81fd6d1048b95a
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.openlocfilehash: d55f6097e3e1eed508580676edcf008b0739034c
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48830840"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51230989"
 ---
 # <a name="desired-state-configuration-extension-with-azure-resource-manager-templates"></a>Erweiterung zum Konfigurieren des gewünschten Zustands mit Azure Resource Manager-Vorlagen
 
@@ -167,7 +167,7 @@ Eine Liste mit den verfügbaren Argumenten für das Standardkonfigurationsskript
 | settings.configurationArguments |Sammlung |Definiert beliebige Parameter, die Sie Ihrer DSC-Konfiguration übergeben möchten. Diese Eigenschaft ist nicht verschlüsselt. |
 | settings.configurationData.url |Zeichenfolge |Gibt die URL an, unter der die Datei mit Ihren Konfigurationsdaten (PSD1) heruntergeladen werden kann, um sie als Eingabe für Ihre DSC-Konfiguration zu nutzen. Wenn die bereitgestellte URL ein SAS-Token für den Zugriff erfordert, müssen Sie die Eigenschaft **protectedSettings.configurationDataUrlSasToken** auf den Wert Ihres SAS-Tokens festlegen. |
 | settings.privacy.dataCollection |Zeichenfolge |Aktiviert bzw. deaktiviert die Erfassung von Telemetriedaten. Die einzig möglichen Werte für diese Eigenschaft sind **Enable**, **Disable**, **''** oder **$null**. Wird die Eigenschaft leer gelassen oder „null“ angegeben, ist die Telemetrie aktiviert. Der Standardwert ist **''**. Weitere Informationen finden Sie unter [Azure DSC extension data collection](https://blogs.msdn.microsoft.com/powershell/2016/02/02/azure-dsc-extension-data-collection-2/) (Datensammlung mit der Azure DSC-Erweiterung). |
-| settings.advancedOptions.downloadMappings |Sammlung |Definiert alternative Speicherorte zum Herunterladen von WMF. Weitere Informationen finden Sie unter [Azure DSC Extension 2.8 & How to map downloads of the extension dependencies to your own location](http://blogs.msdn.com/b/powershell/archive/2015/10/21/azure-dsc-extension-2-2-amp-how-to-map-downloads-of-the-extension-dependencies-to-your-own-location.aspx) (Azure DSC-Erweiterung 2.8 und Zuweisen von Downloads der Erweiterungsabhängigkeiten an Ihren eigenen Speicherort). |
+| settings.advancedOptions.downloadMappings |Sammlung |Definiert alternative Speicherorte zum Herunterladen von WMF. Weitere Informationen finden Sie unter [Azure DSC Extension 2.8 & How to map downloads of the extension dependencies to your own location](https://blogs.msdn.com/b/powershell/archive/2015/10/21/azure-dsc-extension-2-2-amp-how-to-map-downloads-of-the-extension-dependencies-to-your-own-location.aspx) (Azure DSC-Erweiterung 2.8 und Zuweisen von Downloads der Erweiterungsabhängigkeiten an Ihren eigenen Speicherort). |
 | protectedSettings.configurationArguments |Sammlung |Definiert beliebige Parameter, die Sie Ihrer DSC-Konfiguration übergeben möchten. Diese Eigenschaft ist verschlüsselt. |
 | protectedSettings.configurationUrlSasToken |Zeichenfolge |Gibt das SAS-Token für den Zugriff auf die durch **settings.configuration.url** definierte URL an. Diese Eigenschaft ist verschlüsselt. |
 | protectedSettings.configurationDataUrlSasToken |Zeichenfolge |Gibt das SAS-Token für den Zugriff auf die durch **settings.configurationData.url** definierte URL an. Diese Eigenschaft ist verschlüsselt. |
@@ -177,7 +177,7 @@ Eine Liste mit den verfügbaren Argumenten für das Standardkonfigurationsskript
 Weitere Informationen zu den folgenden Werten finden Sie im Abschnitt [Grundlegende Einstellungen](/powershell/dsc/metaconfig#basic-settings) des Artikels zum lokalen Konfigurations-Manager.
 Sie können das Konfigurationsskript für die DSC-Erweiterung standardmäßig so konfigurieren, dass Sie nur die LCM-Eigenschaften in der folgenden Tabelle verwenden.
 
-| Eigenschaftenname | Typ | Beschreibung |
+| Eigenschaftenname | Typ | BESCHREIBUNG |
 | --- | --- | --- |
 | protectedSettings.configurationArguments.RegistrationKey |PSCredential |Erforderliche Eigenschaft. Gibt den Schlüssel, der für die Registrierung eines Knotens beim Azure Automation-Dienst verwendet wird, als Kennwort eines PowerShell-Anmeldeinformationsobjekts an. Dieser Wert kann durch Verwendung der **listkeys**-Methode für das Automation-Konto automatisch ermittelt werden.  Ein entsprechendes Beispiel finden Sie [hier](#example-using-referenced-azure-automation-registration-values). |
 | settings.configurationArguments.RegistrationUrl |Zeichenfolge |Erforderliche Eigenschaft. Gibt die URL des Automation-Endpunkts an, an dem der Knoten die Registrierung durchführt. Dieser Wert kann durch Verwendung der **reference**-Methode für das Automation-Konto automatisch ermittelt werden. |

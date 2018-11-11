@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 05/22/2017
 ms.author: rafats
-ms.openlocfilehash: fdeb58d72e15f563fd70ae94804de0773dd603c7
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: f71a7ad538e22359a2a0dd9c2e3f6c4448ee5a2d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49387345"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51232392"
 ---
 # <a name="introduction-to-azure-cosmos-db-sql-api"></a>Einführung in Azure Cosmos DB: SQL-API
 
@@ -67,8 +67,8 @@ Mit Azure Cosmos DB werden Ressourcen über die REST-APIs verfügbar gemacht, di
 
 | Download | Dokumentation |
 | --- | --- |
-| [.NET SDK](http://go.microsoft.com/fwlink/?LinkID=402989) |[.NET-Referenzdokumentation](/dotnet/api/overview/azure/cosmosdb?view=azure-dotnet) |
-| [Java SDK](http://go.microsoft.com/fwlink/?LinkID=402380) |[Java-Referenzdokumentation](/java/api/com.microsoft.azure.documentdb) |
+| [.NET SDK](https://go.microsoft.com/fwlink/?LinkID=402989) |[.NET-Referenzdokumentation](/dotnet/api/overview/azure/cosmosdb?view=azure-dotnet) |
+| [Java SDK](https://go.microsoft.com/fwlink/?LinkID=402380) |[Java-Referenzdokumentation](/java/api/com.microsoft.azure.documentdb) |
 | [JavaScript SDK](https://www.npmjs.com/package/@azure/cosmos) |[JavaScript-Referenzdokumentation](https://docs.microsoft.com/javascript/api/@azure/cosmos/?view=azure-node-latest) |
 | [Python SDK](https://pypi.python.org/pypi/pydocumentdb) |[Python-Referenzdokumentation](https://github.com/Azure/azure-cosmos-python) |
 
