@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: c7e7b100242d6ceb35172b872f2fb6ff7f4b402b
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: dd73ca876385cf81059228088f7b027f533315eb
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48886159"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51277835"
 ---
 # <a name="tutorial-4-extract-contextually-related-patterns"></a>Tutorial 4: Extrahieren kontextbezogener Muster
 
@@ -49,7 +49,7 @@ Wenn Sie Schwierigkeiten mit der Erkennung einfacher Entitäten haben, da es um 
 > * Erstellen von Ausdruckslisten von Städten
 > * Abrufen von Absichten und Entitäten vom Endpunkt
 
-[!include[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
+[!INCLUDE[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="use-existing-app"></a>Verwenden der vorhandenen App
 Fahren Sie mit der im letzten Tutorial erstellten App mit dem Namen **HumanResources** fort. 
@@ -64,7 +64,7 @@ Wenn Sie nicht über die HumanResources-App aus dem vorhergehenden Tutorial verf
 
 ## <a name="create-new-entities"></a>Erstellen von neuen Entitäten
 
-1. [!include[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
+1. [!INCLUDE[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
 2. Wählen Sie im linken Navigationsmenü die Option **Entitäten** aus. 
 
@@ -254,7 +254,7 @@ Ortsnamen sind wie Namen von Personen schwierig, da sie eine beliebige Kombinati
 
 ## <a name="get-intent-and-entities-from-endpoint"></a>Abrufen von Absicht und Entitäten von einem Endpunkt
 
-1. [!include[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
+1. [!INCLUDE[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
 2. Geben Sie in der Adressleiste am Ende der URL `Move wayne berry from miami to mount vernon` ein. Der letzte Parameter der Abfragezeichenfolge lautet `q` (für die Abfrage (**query**) der Äußerung). 
 
@@ -380,6 +380,8 @@ In diesem Tutorial erkennt die Personalabteilungs-App Äußerungen zur Verlegung
 |--|--|--|
 |[Tutorial: Hinzufügen einer hierarchischen Entität (ohne Rollen)](luis-quickstart-intent-and-hier-entity.md)|mv Jill Jones from **a-2349** to **b-1298**|a-2349, b-1298|
 |Dieses Tutorial (mit Rollen)|Move Billy Patterson from **Yuma** to **Denver**.|Yuma, Denver|
+
+Weitere Informationen finden Sie unter [Rollen und hierarchische Entitäten](luis-concept-roles.md#roles-versus-hierarchical-entities).
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

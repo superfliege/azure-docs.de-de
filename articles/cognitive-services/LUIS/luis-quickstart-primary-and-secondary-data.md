@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: e0cdda629ddded121a424af61377c04ee8d958d3
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: 4647e663f4a2734451835f90d2687bb6aaf91712
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48867543"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51277799"
 ---
 # <a name="tutorial-7-extract-names-with-simple-entity-and-phrase-list"></a>Tutorial 7: Extrahieren von Namen mit der Simple-Entität und einer Begriffsliste
 
@@ -86,7 +86,7 @@ Diese LUIS-App verfügt über Stellennamen in verschiedenen Absichten. Durch die
 
 Nachdem die Entitäten in den Beispieläußerungen markiert sind, ist es wichtig, eine Begriffsliste hinzuzufügen, um das Signal der Simple-Entität zu verstärken. Eine Begriffsliste wird **nicht** als genaue Übereinstimmung verwendet und braucht nicht jeden möglichen erwartbaren Wert zu enthalten. 
 
-1. [!include[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
+1. [!INCLUDE[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
 2. Wählen Sie auf der Seite **Absichten** die Option **ApplyForJob** aus. 
 

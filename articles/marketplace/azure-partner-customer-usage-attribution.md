@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/15/2018
 ms.author: yijenj
-ms.openlocfilehash: 604eb528ef33a95993aa5b6d3ff6eebb77936aa2
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 7937f3d0db414d7a9cc2adaefd4324d49d734fcb
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50157937"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51280672"
 ---
 # <a name="azure-partner-customer-usage-attribution"></a>Zuordnen der Nutzung durch Kunden von Azure-Partnern
 
@@ -66,7 +66,7 @@ Die Ressource muss nur in der Datei **mainTemplate.json** oder **azuredeploy.jso
 
 { // add this resource to the mainTemplate.json (do not add the entire file)
     "apiVersion": "2018-02-01",
-    "name": "pid-XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX" // use your generated GUID here
+    "name": "pid-XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX", // use your generated GUID here
     "type": "Microsoft.Resources/deployments",
     "properties": {
         "mode": "Incremental",
@@ -145,7 +145,7 @@ Alle Registrierungen für Vorlagen-GUIDs erfolgen über das Azure Marketplace-Cl
 
 Nachdem Sie die GUID in der Vorlage oder im Benutzer-Agent hinzugefügt und die GUID im CPP registriert haben, werden alle Bereitstellungen nachverfolgt. 
 
-1. Stellen Sie beim [Azure Marketplace](http://aka.ms/listonazuremarketplace) einen Antrag, damit Sie Zugriff auf das Cloud-Partnerportal (CPP) erhalten.
+1. Stellen Sie beim [Azure Marketplace](https://aka.ms/listonazuremarketplace) einen Antrag, damit Sie Zugriff auf das Cloud-Partnerportal (CPP) erhalten.
 
    * Partner müssen [ein Profil im CPP](https://docs.microsoft.com/azure/marketplace/become-publisher) haben. Wir empfehlen Ihnen, das Angebot im Azure Marketplace oder in AppSource aufzulisten.
    * Partner können mehrere GUIDs registrieren.

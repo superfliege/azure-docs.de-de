@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/24/2018
+ms.date: 11/07/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: febdb2e3ae4432c36ca839f81ba7a1d333df1a2f
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 77f9e52da8ada9cdf56d4a710bba65492cc17f75
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46952000"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51280740"
 ---
 # <a name="tutorial-deploy-apps-to-azure-and-azure-stack"></a>Tutorial: Bereitstellen von Apps in Azure und Azure Stack
 
@@ -273,21 +273,57 @@ Durch die Erstellung von Endpunkten kann ein Visual Studio Online-Build Azure Se
 10. Klicken Sie auf **Save changes** (Änderungen speichern).
 
 Die Endpunktinformationen sind vorhanden, und die Verbindung zwischen Azure DevOps Services und Azure Stack kann nun verwendet werden. Der Build-Agent in Azure Stack erhält Anweisungen von Azure DevOps Services. Daraufhin übermittelt der Agent Endpunktinformationen für die Kommunikation mit der Azure Stack-Instanz.
+
 ## <a name="create-an-azure-stack-endpoint"></a>Erstellen eines Azure Stack-Endpunkts
+
+### <a name="create-an-endpoint-for-azure-ad-deployments"></a>Erstellen eines Endpunkts für Azure AD-Bereitstellungen
 
 Sie können die Anleitung unter [Create an Azure Resource Manager service connection with an existing service principal ](https://docs.microsoft.com/vsts/pipelines/library/connect-to-azure?view=vsts#create-an-azure-resource-manager-service-connection-with-an-existing-service-principal) (Erstellen einer Azure Resource Manager-Dienstverbindung mit einem vorhandenen Dienstprinzipal) befolgen, um eine Dienstverbindung mit einem vorhandenen Dienstprinzipal zu erstellen und die folgende Zuordnung zu verwenden:
 
-- Umgebung: AzureStack
-- Umgebungs-URL: Beispielsweise `https://management.local.azurestack.external`
-- Abonnement-ID: Benutzerabonnement-ID aus Azure Stack
-- Abonnementname: Benutzerabonnementname aus Azure Stack
-- Dienstprinzipal-Client-ID: Prinzipal-ID aus [diesem Abschnitt](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-solution-pipeline#create-a-service-principal) des Artikels
-- Dienstprinzipalschlüssel: Der Schlüssel aus demselben Artikel (bzw. das Kennwort, wenn Sie das Skript verwendet haben).
-- Mandanten-ID: Die Mandanten-ID, die Sie nach dem Befolgen der Anleitung zum [Abrufen der Mandanten-ID](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-solution-pipeline#get-the-tenant-id) abrufen.
+Eine Dienstverbindung kann mit der folgenden Zuordnung erstellt werden:
 
-Nachdem der Endpunkt erstellt wurde, kann die Verbindung zwischen VSTS und Azure Stack verwendet werden. Der Build-Agent in Azure Stack erhält Anweisungen von VSTS. Daraufhin übermittelt der Agent Endpunktinformationen für die Kommunikation mit der Azure Stack-Instanz.
+| NAME | Beispiel | BESCHREIBUNG |
+| --- | --- | --- |
+| Verbindungsname | Azure Stack Azure AD | Der Name der Verbindung. |
+| Environment | AzureStack | Der Name Ihrer Umgebung. |
+| Umgebungs-URL | `https://management.local.azurestack.external` | Ihr Verwaltungsendpunkt. |
+| Bereichsebene | Abonnement | Der Bereich der Verbindung. |
+| Abonnement-ID | 65710926-XXXX-4F2A-8FB2-64C63CD2FAE9 | Benutzerabonnement-ID aus Azure Stack. |
+| Abonnementname | name@contoso.com | Benutzerabonnementname aus Azure Stack. |
+| Client-ID des Dienstprinzipals | FF74AACF-XXXX-4776-93FC-C63E6E021D59 | Die Prinzipal-ID aus [diesem Abschnitt](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-solution-pipeline#create-a-service-principal) des Artikels. |
+| Dienstprinzipalschlüssel | THESCRETGOESHERE= | Der Schlüssel aus dem gleichen Artikel (bzw. das Kennwort, wenn Sie das Skript verwendet haben). |
+| Mandanten-ID | D073C21E-XXXX-4AD0-B77E-8364FCA78A94 | Die Mandanten-ID, die Sie gemäß der Anleitung unter [Abrufen der Mandanten-ID](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-solution-pipeline#get-the-tenant-id) abrufen.  |
+| Verbindung: | Nicht überprüft | Überprüfen Sie die Einstellungen für die Verbindung mit dem Dienstprinzipal. |
 
-![Build-Agent](media\azure-stack-solution-hybrid-pipeline\016_save_changes.png)
+Nachdem der Endpunkt erstellt wurde, kann die Verbindung zwischen DevOps und Azure Stack verwendet werden. Der Build-Agent in Azure Stack erhält Anweisungen von DevOps. Daraufhin übermittelt der Agent Endpunktinformationen für die Kommunikation mit Azure Stack.
+
+![Build-Agent – Azure AD](media\azure-stack-solution-hybrid-pipeline\016_save_changes.png)
+
+### <a name="create-an-endpoint-for-ad-fs"></a>Erstellen eines Endpunkts für AD FS
+
+Das neueste Update für Azure DevOps ermöglicht die Erstellung einer Dienstverbindung unter Verwendung eines Dienstprinzipals mit einem Zertifikat für die Authentifizierung. Dies ist erforderlich, wenn Azure Stack mit AD FS als Identitätsanbieter bereitgestellt wird. 
+
+![Build-Agent – AD FS](media\azure-stack-solution-hybrid-pipeline\image06.png)
+
+Eine Dienstverbindung kann mit der folgenden Zuordnung erstellt werden:
+
+| NAME | Beispiel | BESCHREIBUNG |
+| --- | --- | --- |
+| Verbindungsname | Azure Stack ADFS | Der Name der Verbindung. |
+| Environment | AzureStack | Der Name Ihrer Umgebung. |
+| Umgebungs-URL | `https://management.local.azurestack.external` | Ihr Verwaltungsendpunkt. |
+| Bereichsebene | Abonnement | Der Bereich der Verbindung. |
+| Abonnement-ID | 65710926-XXXX-4F2A-8FB2-64C63CD2FAE9 | Benutzerabonnement-ID aus Azure Stack. |
+| Abonnementname | name@contoso.com | Benutzerabonnementname aus Azure Stack. |
+| Client-ID des Dienstprinzipals | FF74AACF-XXXX-4776-93FC-C63E6E021D59 | Die Client-ID des Dienstprinzipals, den Sie für AD FS erstellt haben. |
+| Zertifikat | `<certificate>` |  Konvertieren Sie die Zertifikatdatei von PFX in PEM. Fügen Sie den Inhalt der PEM-Zertifikatdatei in dieses Feld ein. <br> So konvertieren Sie PFX in PEM:<br>`openssl pkcs12 -in file.pfx -out file.pem -nodes -password pass:<password_here>` |
+| Mandanten-ID | D073C21E-XXXX-4AD0-B77E-8364FCA78A94 | Die Mandanten-ID, die Sie gemäß der Anleitung unter [Abrufen der Mandanten-ID](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-solution-pipeline#get-the-tenant-id) abrufen. |
+| Verbindung: | Nicht überprüft | Überprüfen Sie die Einstellungen für die Verbindung mit dem Dienstprinzipal. |
+
+Nachdem der Endpunkt erstellt wurde, kann die Verbindung zwischen Azure DevOps und Azure Stack verwendet werden. Der Build-Agent in Azure Stack erhält Anweisungen von Azure DevOps. Daraufhin übermittelt der Agent Endpunktinformationen für die Kommunikation mit Azure Stack.
+
+> [!Note]
+> Wenn Ihr Azure Stack-ARM-Benutzerendpunkt nicht über das Internet verfügbar gemacht wurde, ist die Verbindungsüberprüfung nicht erfolgreich. Dieses Verhalten wird erwartet, und Sie können die Verbindung überprüfen, indem Sie eine Releasepipeline mit einer einfachen Aufgabe erstellen. 
 
 ## <a name="develop-your-application-build"></a>Entwickeln Ihres Anwendungsbuilds
 

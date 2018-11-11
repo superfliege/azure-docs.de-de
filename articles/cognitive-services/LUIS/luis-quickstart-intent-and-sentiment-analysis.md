@@ -10,17 +10,17 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: ff5a47f977f34535c5ad1fde7e6cac5995e7f7dd
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 95d1c4ffe76cf4c652f347014a838f1250c0ca15
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47031457"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51277476"
 ---
 # <a name="tutorial-9--extract-sentiment-of-overall-utterance"></a>Tutorial 9: Extrahieren der Stimmung aus einer gesamten Äußerung
 In diesem Tutorial erstellen Sie eine App, die veranschaulicht, wie Sie positive, negative und neutrale Emotionen aus Äußerungen extrahieren. Die Stimmung wird anhand der gesamten Äußerung bestimmt.
 
-Mithilfe der Standpunktanalyse können Sie ermitteln, ob die Äußerung eines Benutzers positiv, negativ oder neutral ist. 
+Mithilfe der Stimmungsanalyse können Sie ermitteln, ob die Äußerung eines Benutzers positiv, negativ oder neutral ist. 
 
 Die folgenden Äußerungen sind Beispiele für die Stimmung:
 
@@ -60,7 +60,7 @@ Wenn Sie nicht über die HumanResources-App aus dem vorhergehenden Tutorial verf
 ## <a name="employeefeedback-intent"></a>Absicht „EmployeeFeedback“ 
 Fügen Sie eine neue Absicht für die Erfassung von internem Mitarbeiterfeedback hinzu. 
 
-1. [!include[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
+1. [!INCLUDE[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
 2. Wählen Sie **Create new intent** (Neue Absicht erstellen) aus.
 
@@ -89,7 +89,7 @@ Fügen Sie eine neue Absicht für die Erfassung von internem Mitarbeiterfeedback
 
 [!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
-## <a name="configure-app-to-include-sentiment-analysis"></a>Konfigurieren der App zur Aufnahme der Standpunktanalyse
+## <a name="configure-app-to-include-sentiment-analysis"></a>Konfigurieren der App zur Aufnahme der Stimmungsanalyse
 1. Klicken Sie im Navigationsbereich oben rechts auf **Verwalten**, und wählen Sie dann im linken Menü die Option **Veröffentlichungseinstellungen** aus.
 
 2. Schalten Sie zum Aktivieren dieser Einstellung auf **Standpunktanalyse** um. 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/27/2018
 ms.author: bwren
-ms.openlocfilehash: a810de5c3c70322560bb45bcc2aee5cf0798cea9
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 8aa79d66801ff30fedc725913696d5cfa3c9626f
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50248709"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51282824"
 ---
 # <a name="monitoring-data-collected-by-azure-monitor"></a>Von Azure Monitor gesammelte Überwachungsdaten
 [Azure Monitor](../azure-monitor/overview.md) ist ein Dienst, der Sie bei der Überwachung Ihrer Anwendungen und der Ressourcen, auf denen sie aufbauen, unterstützt. Im Zentrum dieser Funktionalität steht die Speicherung von Telemetriedaten und weiteren Daten aus überwachten Ressourcen. Dieser Artikel enthält eine vollständige Beschreibung der Weise, in der diese Daten von Azure Monitor gespeichert und verwendet werden.
@@ -98,7 +98,7 @@ Es gibt drei grundlegende Quellen von Metriken, die von Azure Monitor erfasst we
 Dies sind einige der Aufgaben, die Sie mit Metriken ausführen können:
 
 - Verwenden des [Metrik-Explorers](../monitoring-and-diagnostics/monitoring-metric-charts.md) zum Analysieren der gesammelten Metriken und zu ihrer Darstellung in einem Diagramm. Nachverfolgen der Leistung einer Ressource (wie etwa einer VM, Website oder Logik-App) durch Anheften von Diagrammen an ein [Azure-Dashboard](../azure-portal/azure-portal-dashboards.md).
-- Konfigurieren einer [Warnungsregel für eine Metrik](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md), die eine Benachrichtigung sendet oder eine [automatisierte Aktion](../monitoring-and-diagnostics/monitoring-action-groups.md) ausführt, sobald der Metrikwert einen Schwellenwert überschreitet.
+- Konfigurieren einer [Warnungsregel für eine Metrik](../monitoring-and-diagnostics/alert-metric.md), die eine Benachrichtigung sendet oder eine [automatisierte Aktion](../monitoring-and-diagnostics/monitoring-action-groups.md) ausführt, sobald der Metrikwert einen Schwellenwert überschreitet.
 - Verwenden von [Autoskalierung](../monitoring-and-diagnostics/monitoring-overview-autoscale.md), um Ressourcen basierend auf einem Schwellenwert, der von einer Metrik über- oder unterschritten wird, herauf- oder herabzusetzen.
 - Weiterleiten von Metriken an Log Analytics, um Metrikdaten zusammen mit Protokolldaten zu analysieren und Metrikdaten länger als 93 Tage zu speichern. 
 - Streamen von Metriken an einen [Event Hub](../monitoring-and-diagnostics/monitor-stream-monitoring-data-event-hubs.md), um sie an [Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md) oder an externe Systeme weiterzuleiten.
@@ -138,7 +138,7 @@ Die von Azure Monitor gesammelten Protokolle werden in Log Analytics gespeichert
 Log Analytics kann Daten aus einer Vielzahl von Quellen sammeln, sowohl innerhalb von Azure als auch aus lokalen Ressourcen. Dies sind einige der Quellen, deren Daten in Log Analytics geschrieben werden:
 
 - [Aktivitätsprotokolle](../log-analytics/log-analytics-activity.md) von Azure-Ressourcen, die Informationen zu deren Konfiguration und Integrität beinhalten, und [Diagnoseprotokolle](../monitoring-and-diagnostics/monitor-stream-diagnostic-logs-log-analytics.md), die Einblick in ihren Betrieb geben.
-- Agents auf virtuellen [Windows](../log-analytics/log-analytics-windows-agent.md)- und [Linux](../log-analytics/log-analytics-linux-agents.md)-Computern senden Telemetriedaten basierend auf den von Ihnen konfigurierten [Datenquellen](../log-analytics/log-analytics-data-sources.md) aus dem Gastbetriebssystem und aus Anwendungen an Log Analytics.
+- Agents auf virtuellen [Windows](../log-analytics/log-analytics-windows-agent.md)- und [Linux](../log-analytics/log-analytics-quick-collect-linux-computer.md)-Computern senden Telemetriedaten basierend auf den von Ihnen konfigurierten [Datenquellen](../log-analytics/log-analytics-data-sources.md) aus dem Gastbetriebssystem und aus Anwendungen an Log Analytics.
 - Von [Application Insights](https://docs.microsoft.com/azure/application-insights/) gesammelte Anwendungsdaten.
 - Daten, die Einblick in eine bestimmte Anwendung oder einen bestimmten Dienst geben und aus [Überwachungslösungen](../monitoring/monitoring-solutions.md) oder Features wie Container Insights, VM Insights oder Resource Group Insights stammen.
 - Vom [Azure Security Center](https://docs.microsoft.com/azure/security-center/) erfasste Sicherheitsdaten.
