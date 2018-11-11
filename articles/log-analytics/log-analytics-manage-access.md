@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 75faceb641382df29a93c44803af48dcfed142d4
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 796e10053df79f8f7106d98dd9c9be6083d9f719
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50421168"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50964151"
 ---
 # <a name="manage-workspaces"></a>Verwalten von Arbeitsbereichen
 
@@ -52,7 +52,7 @@ Im Hinblick auf die Nutzung wird empfohlen, möglichst wenige Arbeitsbereiche zu
 * Sie sind ein Dienstanbieter mit Verwaltung und müssen die Log Analytics-Daten für jeden Kunden, den Sie verwalten, von den Daten der anderen Kunden isolieren.
 * Sie verwalten mehrere Kunden und möchten, dass den einzelnen Kunden/Abteilungen/Geschäftseinheiten jeweils nur die eigenen Daten angezeigt werden.
 
-Wenn Sie Windows-Agents zum Sammeln von Daten verwenden, können Sie [jeden Agent so konfigurieren, dass er Informationen zu mindestens einem Arbeitsbereich meldet](log-analytics-windows-agents.md).
+Wenn Sie Windows-Agents zum Sammeln von Daten verwenden, können Sie [jeden Agent so konfigurieren, dass er Informationen zu mindestens einem Arbeitsbereich meldet](log-analytics-agent-windows.md).
 
 Bei Verwendung von System Center Operations Manager kann jede Operations Manager-Verwaltungsgruppe mit nur einem Arbeitsbereich verbunden werden. Sie können den Microsoft Monitoring Agent auf Computern installieren, die mit Operations Manager verwaltet werden, und den Agent so einrichten, dass er sowohl Daten an Operations Manager als auch an einen anderen Log Analytics-Arbeitsbereich liefert.
 
@@ -73,7 +73,7 @@ Sie können im Azure-Portal die Details zu Ihrem Arbeitsbereich anzeigen.
     ![Informationen zum Arbeitsbereich](./media/log-analytics-manage-access/workspace-overview-page.png)  
 
 ## <a name="manage-accounts-and-users"></a>Verwalten von Konten und Benutzern
-Jedem Arbeitsbereich können mehrere Konten zugeordnet werden, und jedes Konto kann Zugriff auf mehrere Arbeitsbereiche haben. Der Zugriff wird über die [rollenbasierte Zugriffssteuerung in Azure](../active-directory/role-based-access-control-configure.md) verwaltet. Diese Zugriffsrechte gelten für das Azure-Portal sowie für den API-Zugriff.
+Jedem Arbeitsbereich können mehrere Konten zugeordnet werden, und jedes Konto kann Zugriff auf mehrere Arbeitsbereiche haben. Der Zugriff wird über die [rollenbasierte Zugriffssteuerung in Azure](../role-based-access-control/role-assignments-portal.md) verwaltet. Diese Zugriffsrechte gelten für das Azure-Portal sowie für den API-Zugriff.
 
 
 Für die folgenden Aktivitäten sind ebenfalls Azure-Berechtigungen erforderlich:
@@ -87,7 +87,7 @@ Für die folgenden Aktivitäten sind ebenfalls Azure-Berechtigungen erforderlich
 
 
 ### <a name="managing-access-to-log-analytics-using-azure-permissions"></a>Verwalten des Zugriffs auf Log Analytics mit Azure-Berechtigungen
-Führen Sie die Schritte unter [Verwenden von Rollenzuweisungen zum Verwalten Ihrer Azure-Abonnementressourcen](../active-directory/role-based-access-control-configure.md) aus, um den Zugriff auf den Log Analytics-Arbeitsbereich mit Azure-Berechtigungen zu gewähren.
+Führen Sie die Schritte unter [Verwenden von Rollenzuweisungen zum Verwalten Ihrer Azure-Abonnementressourcen](../role-based-access-control/role-assignments-portal.md) aus, um den Zugriff auf den Log Analytics-Arbeitsbereich mit Azure-Berechtigungen zu gewähren.
 
 Azure verfügt über zwei integrierte Benutzerrollen für Log Analytics:
 - Log Analytics-Leser
@@ -146,7 +146,7 @@ Mit diesen Rollen können Sie Benutzern Zugriff auf verschiedenen Ebenen gewähr
 - Ressourcengruppe: Zugriff auf alle Arbeitsbereiche in der Ressourcengruppe
 - Ressource: Nur Zugriff auf den angegebenen Arbeitsbereich
 
-Es empfiehlt sich, Zuweisungen auf der Ressourcenebene (Arbeitsbereich) vorzunehmen, um eine korrekte Zugriffssteuerung zu gewährleisten.  Verwenden Sie [benutzerdefinierte Rollen](../active-directory/role-based-access-control-custom-roles.md), um Rollen mit spezifischen Berechtigungen zu erstellen.
+Es empfiehlt sich, Zuweisungen auf der Ressourcenebene (Arbeitsbereich) vorzunehmen, um eine korrekte Zugriffssteuerung zu gewährleisten.  Verwenden Sie [benutzerdefinierte Rollen](../role-based-access-control/custom-roles.md), um Rollen mit spezifischen Berechtigungen zu erstellen.
 
 ## <a name="link-an-existing-workspace-to-an-azure-subscription"></a>Verknüpfen eines vorhandenen Arbeitsbereichs mit einem Azure-Abonnement
 Ab dem 26. September 2016 müssen alle Arbeitsbereiche bei der Erstellung mit einem Azure-Abonnement verknüpft werden. Vor diesem Datum erstellte Arbeitsbereiche müssen bei der Anmeldung mit einem Abonnement verknüpft werden. Wenn Sie den Arbeitsbereich über das Azure-Portal erstellen oder den Arbeitsbereich mit einem Azure-Abonnement verknüpfen, wird Azure Active Directory als Organisationskonto verknüpft.
@@ -241,5 +241,5 @@ Der neue Datentarif wird oben auf der Webseite im Menüband des OMS-Portals ange
 ## <a name="next-steps"></a>Nächste Schritte
 * Informationen zum Sammeln von Daten von Computern in Ihrem Datencenter oder einer anderen Cloudumgebung finden Sie unter [Sammeln von Daten von Computern in Ihrer Umgebung mit Log Analytics](log-analytics-concept-hybrid.md).
 * Informationen zum Konfigurieren der Datensammlung von virtuellen Azure-Computern finden Sie unter [Sammeln von Daten über virtuelle Azure-Computer](log-analytics-quick-collect-azurevm.md).  
-* [Add Log Analytics solutions from the Solutions Gallery](log-analytics-add-solutions.md) (Hinzufügen von Log Analytics-Lösungen aus dem Lösungskatalog) beschreibt das Hinzufügen von Funktionen und das Sammeln von Daten.
+* [Add Log Analytics solutions from the Solutions Gallery](../monitoring/monitoring-solutions.md) (Hinzufügen von Log Analytics-Lösungen aus dem Lösungskatalog) beschreibt das Hinzufügen von Funktionen und das Sammeln von Daten.
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: dineshm
 ms.component: common
-ms.openlocfilehash: 0a105122eccdfa671c806389908762941f23200c
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 6384af5368fe722d6c9307d56d8a071ebcd17bf0
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39525306"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51226973"
 ---
 # <a name="list-azure-storage-resources-in-c"></a>Auflisten von Azure Storage-Ressourcen in C++
 Auflistungsvorgänge sind der Schlüssel für viele Entwicklungsszenarien mit Azure Storage. Dieser Artikel beschreibt, wie Objekte in Azure Storage mit den Auflistungs-APIs, die in der Microsoft Azure Storage Client Library for C++ bereitgestellt werden, am effizientesten aufgelistet werden können.
@@ -195,6 +195,6 @@ Weitere Informationen zu Azure Storage und zur Client Library for C++ finden Sie
 * [Verwenden des Tabellenspeichers mit C++](../../cosmos-db/table-storage-how-to-use-c-plus.md)
 * [Verwenden des Warteschlangenspeichers in C++](../storage-c-plus-plus-how-to-use-queues.md)
 * [Azure Storage Client Library for C++ API Documentation.](http://azure.github.io/azure-storage-cpp/)
-* [Azure Storage-Teamblog](http://blogs.msdn.com/b/windowsazurestorage/)
+* [Azure Storage-Teamblog](https://blogs.msdn.com/b/windowsazurestorage/)
 * [Azure Storage-Dokumentation](https://azure.microsoft.com/documentation/services/storage/)
 

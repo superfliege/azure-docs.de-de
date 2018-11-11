@@ -1,0 +1,176 @@
+---
+title: Importieren von SQL-BACPAC-Dateien mit Azure Resource Manager-Vorlagen | Microsoft-Dokumentation
+description: Hier erfahren Sie, wie Sie die SQL-Datenbank-Erweiterung verwenden, um SQL-BACPAC-Dateien mit Azure Resource Manager-Vorlagen zu importieren.
+services: azure-resource-manager
+documentationcenter: ''
+author: mumian
+manager: dougeby
+editor: ''
+ms.service: azure-resource-manager
+ms.workload: multiple
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.date: 10/29/2018
+ms.topic: tutorial
+ms.author: jgao
+ms.openlocfilehash: fa7d48c9a8079dc9171879ab5b72e3f04f870ebc
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51036173"
+---
+# <a name="tutorial-import-sql-bacpac-files-with-azure-resource-manager-templates"></a>Tutorial: Importieren von SQL-BACPAC-Dateien mit Azure Resource Manager-Vorlagen
+
+Hier erfahren Sie, wie Sie Azure SQL-Datenbank-Erweiterungen verwenden, um eine BACPAC-Datei zu importieren. In diesem Tutorial erstellen Sie eine Vorlage zum Bereitstellen einer Azure SQL Server-Instanz, einer SQL-Datenbank und einer BACPAC-Datei. Informationen zum Bereitstellen von Azure-VM-Erweiterungen unter Verwendung von Azure Resource Manager-Vorlagen finden Sie unter [Tutorial: Deploy virtual machine extensions with Azure Resource Manager templates](./resource-manager-tutorial-deploy-vm-extensions.md) (Tutorial: Bereitstellen von VM-Erweiterungen mit Azure Resource Manager-Vorlagen).
+
+Dieses Tutorial enthält die folgenden Aufgaben:
+
+> [!div class="checklist"]
+> * Vorbereiten einer BACPAC-Datei
+> * Öffnen einer Schnellstartvorlage
+> * Bearbeiten der Vorlage
+> * Bereitstellen der Vorlage
+> * Überprüfen der Bereitstellung
+
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
+
+## <a name="prerequisites"></a>Voraussetzungen
+
+Damit Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie Folgendes:
+
+* [Visual Studio Code](https://code.visualstudio.com/) mit der Erweiterung „Azure Resource Manager-Tools“. Informationen finden Sie unter [Schnellstart: Erstellen von Azure Resource Manager-Vorlagen mit Visual Studio Code](./resource-manager-quickstart-create-templates-use-visual-studio-code.md#prerequisites).
+* Verwenden Sie aus Sicherheitsgründen ein generiertes Kennwort für das SQL Server-Administratorkonto. Hier sehen Sie ein Beispiel für die Kennwortgenerierung:
+
+    ```azurecli-interactive
+    openssl rand -base64 32
+    ```
+    Azure Key Vault dient zum Schützen von kryptografischen Schlüsseln und anderen Geheimnissen. Weitere Informationen finden Sie unter [Tutorial: Integrieren von Azure Key Vault in die Resource Manager-Vorlagenbereitstellung](./resource-manager-tutorial-use-key-vault.md). Wir empfehlen Ihnen auch, Ihr Kennwort alle drei Monate zu aktualisieren.
+
+## <a name="prepare-a-bacpac-file"></a>Vorbereiten einer BACPAC-Datei
+
+Eine BACPAC-Datei wird über ein [Azure Storage-Konto mit öffentlichem Zugriff](https://armtutorials.blob.core.windows.net/sqlextensionbacpac/SQLDatabaseExtension.bacpac) freigegeben. Informationen zum Erstellen einer eigenen Datei finden Sie unter [Exportieren einer Azure SQL-Datenbank in eine BACPAC-Datei](../sql-database/sql-database-export.md). Wenn Sie die Datei an Ihrem eigenen Standort veröffentlichen möchten, müssen Sie die Vorlage später in diesem Tutorial aktualisieren.
+
+## <a name="open-a-quickstart-template"></a>Öffnen einer Schnellstartvorlage
+
+„Azure-Schnellstartvorlagen“ ist ein Repository für Resource Manager-Vorlagen. Statt eine Vorlage von Grund auf neu zu erstellen, können Sie eine Beispielvorlage verwenden und diese anpassen. In diesem Tutorial wird die Vorlage [Azure SQL Server with Threat Detection](https://azure.microsoft.com/resources/templates/201-sql-threat-detection-server-policy-optional-db/) (Azure SQL Server mit Bedrohungserkennung) verwendet.
+
+1. Wählen Sie in Visual Studio Code **Datei**>**Datei öffnen** aus.
+2. Fügen Sie in **Dateiname** die folgende URL ein:
+
+    ```url
+    https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-sql-threat-detection-server-policy-optional-db/azuredeploy.json
+    ```
+3. Wählen Sie **Öffnen** aus, um die Datei zu öffnen.
+
+    In der Vorlage sind drei Ressourcen definiert:
+
+    * `Microsoft.Sql/servers`. Informationen finden Sie in der [Vorlagenreferenz](https://docs.microsoft.com/azure/templates/microsoft.sql/servers).
+    * `Microsoft.SQL/servers/securityAlertPolicies`. Informationen finden Sie in der [Vorlagenreferenz](https://docs.microsoft.com/azure/templates/microsoft.sql/servers/securityalertpolicies).
+    * `Microsoft.SQL.servers/databases`.  Informationen finden Sie in der [Vorlagenreferenz](https://docs.microsoft.com/azure/templates/microsoft.sql/servers/databases).
+    Bevor Sie die Vorlage anpassen, sollten Sie sich zunächst grundlegend damit vertraut machen.
+4. Wählen Sie **Datei**>**Speichern unter** aus, um eine Kopie der Datei als **azuredeploy.json** auf dem lokalen Computer zu speichern.
+
+## <a name="edit-the-template"></a>Bearbeiten der Vorlage
+
+Der Vorlage müssen zwei weitere Ressourcen hinzugefügt werden.
+
+* Damit die SQL-Datenbank-Erweiterung BACPAC-Dateien importieren kann, müssen Sie den Zugriff auf Azure-Dienste zulassen. Fügen Sie der SQL Server-Definition den folgenden JSON-Code hinzu:
+
+    ```json
+    {
+        "type": "firewallrules",
+        "name": "AllowAllAzureIps",
+        "location": "[parameters('location')]",
+        "apiVersion": "2014-04-01",
+        "dependsOn": [
+            "[variables('databaseServerName')]"
+        ],
+        "properties": {
+            "startIpAddress": "0.0.0.0",
+            "endIpAddress": "0.0.0.0"
+        }
+    }
+    ```
+
+    Die Vorlage sollte wie folgt aussehen:
+
+    ![Azure Resource Manager: Bereitstellen von SQL-Erweiterungen (BACPAC)](./media/resource-manager-tutorial-deploy-sql-extensions-bacpac/resource-manager-tutorial-deploy-sql-extensions-bacpac-firewall.png)
+
+* Fügen Sie der Datenbankdefinition mithilfe des folgenden JSON-Codes eine SQL-Datenbank-Erweiterungsressource hinzu:
+
+    ```json
+    "resources": [
+        {
+            "name": "Import",
+            "type": "extensions",
+            "apiVersion": "2014-04-01",
+            "dependsOn": [
+                "[resourceId('Microsoft.Sql/servers/databases', variables('databaseServerName'), variables('databaseName'))]"
+            ],
+            "properties": {
+                "storageKeyType": "SharedAccessKey",
+                "storageKey": "?",
+                "storageUri": "https://armtutorials.blob.core.windows.net/sqlextensionbacpac/SQLDatabaseExtension.bacpac",
+                "administratorLogin": "[variables('databaseServerAdminLogin')]",
+                "administratorLoginPassword": "[variables('databaseServerAdminLoginPassword')]",
+                "operationMode": "Import",
+            }
+        }
+    ]
+    ```
+
+    Die Vorlage sollte wie folgt aussehen:
+
+    ![Azure Resource Manager: Bereitstellen von SQL-Erweiterungen (BACPAC)](./media/resource-manager-tutorial-deploy-sql-extensions-bacpac/resource-manager-tutorial-deploy-sql-extensions-bacpac.png)
+
+    Informationen zur Ressourcendefinition finden Sie in der [Referenz zur SQL-Datenbank-Erweiterung](https://docs.microsoft.com/azure/templates/microsoft.sql/servers/databases/extensions). Im Anschluss sind einige zentrale Elemente aufgeführt:
+
+    * **dependsOn**: Die Erweiterungsressource muss nach der Erstellung der SQL-Datenbank erstellt werden.
+    * **storageKeyType**: Die Art des zu verwendenden Speicherschlüssels. Der Wert kann entweder `StorageAccessKey` oder `SharedAccessKey` lauten. Da die bereitgestellte BACPAC-Datei über ein Azure Storage-Konto mit öffentlichem Zugriff freigegeben wird, wird hier „SharedAccessKey“ verwendet.
+    * **storageKey**: Der zu verwendende Speicherschlüssel. Bei Verwendung des Speicherschlüsseltyps „SharedAccessKey“ muss ein Fragezeichen (?) vorangestellt werden.
+    * **storageUri**: Der zu verwendende Speicher-URI. Falls Sie sich gegen die Verwendung der bereitgestellten BACPAC-Datei entscheiden, müssen Sie die Werte aktualisieren.
+    * **administratorLoginPassword**: Das Kennwort des SQL-Administrators. Es wird empfohlen, ein generiertes Kennwort zu verwenden. Siehe [Voraussetzungen](#prerequisites).
+
+## <a name="deploy-the-template"></a>Bereitstellen der Vorlage
+
+Informationen zum Bereitstellungsverfahren finden Sie im Abschnitt [Bereitstellen der Vorlage](./resource-manager-tutorial-create-multiple-instances.md#deploy-the-template). Verwenden Sie stattdessen das folgende PowerShell-Bereitstellungsskript:
+
+```azurepowershell
+$deploymentName = Read-Host -Prompt "Enter the name for this deployment"
+$resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
+$location = Read-Host -Prompt "Enter the location (i.e. centralus)"
+$adminUsername = Read-Host -Prompt "Enter the virtual machine admin username"
+$adminPassword = Read-Host -Prompt "Enter the admin password" -AsSecureString
+
+New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
+New-AzureRmResourceGroupDeployment -Name $deploymentName `
+    -ResourceGroupName $resourceGroupName `
+    -adminUser $adminUsername `
+    -adminPassword $adminPassword `
+    -TemplateFile azuredeploy.json
+```
+
+Es wird empfohlen, ein generiertes Kennwort zu verwenden. Siehe [Voraussetzungen](#prerequisites).
+
+## <a name="verify-the-deployment"></a>Überprüfen der Bereitstellung
+
+Wählen Sie im Portal die SQL-Datenbank aus der neu bereitgestellten Ressourcengruppe aus. Wählen Sie **Abfrage-Editor (Vorschau)** aus, und geben Sie dann die Administratoranmeldeinformationen ein. Wie Sie sehen, wurden zwei Tabellen in die Datenbank importiert:
+
+![Azure Resource Manager: Bereitstellen von SQL-Erweiterungen (BACPAC)](./media/resource-manager-tutorial-deploy-sql-extensions-bacpac/resource-manager-tutorial-deploy-sql-extensions-bacpac-query-editor.png)
+
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
+Wenn Sie die Azure-Ressourcen nicht mehr benötigen, löschen Sie die Ressourcengruppe, um die bereitgestellten Ressourcen zu bereinigen.
+
+1. Wählen Sie im Azure-Portal im linken Menü die Option **Ressourcengruppe** aus.
+2. Geben Sie den Namen der Ressourcengruppe in das Feld **Nach Name filtern** ein.
+3. Wählen Sie den Namen der Ressourcengruppe aus.  Es werden insgesamt sechs Ressourcen in der Ressourcengruppe angezeigt.
+4. Wählen Sie **Ressourcengruppe löschen** aus dem Menü ganz oben aus.
+
+## <a name="next-steps"></a>Nächste Schritte
+
+In diesem Tutorial haben Sie eine SQL Server-Instanz und eine SQL-Datenbank bereitgestellt und eine BACPAC-Datei importiert. Im folgenden Tutorial erfahren Sie, wie Sie Azure-Ressourcen in mehreren Regionen bereitstellen und sichere Bereitstellungsverfahren verwenden:
+
+> [!div class="nextstepaction"]
+> [Tutorial: Verwenden des Azure-Bereitstellungs-Manager mit Resource Manager-Vorlagen (Public Preview)](./resource-manager-tutorial-deploy-vm-extensions.md)

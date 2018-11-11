@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 10/3/2018
 ms.author: trinadhk
-ms.openlocfilehash: 9152733e189aec25a5c024de7f9a3582c29218a3
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 20c1606d4d6a1ddd43426731e5498d1bee47f2e3
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49406533"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50962534"
 ---
 # <a name="upgrade-to-azure-vm-backup-stack-v2"></a>Upgrade auf Azure VM-Sicherungsstapel V2
 
@@ -28,8 +28,8 @@ Das Resource Manager-Bereitstellungsmodell für das Upgrade auf den VM-Sicherung
 
 * Die Möglichkeit zur Verwendung der ursprünglichen Speicherkonten einer nicht verwalteten VM bei der Wiederherstellung. Diese Funktion ist auch dann vorhanden, wenn die VM Datenträger enthält, die an mehrere Speicherkonten verteilt werden. Sie beschleunigt Wiederherstellungsvorgänge für verschiedene VM-Konfigurationen.
     > [!NOTE]
-    > Diese Funktion ist nicht identisch mit dem Ersetzen der VM-Datenträger mit Daten des Wiederherstellungspunkts. 
-    
+    > Diese Funktion ist nicht identisch mit dem Ersetzen der VM-Datenträger mit Daten des Wiederherstellungspunkts.
+
 
 ## <a name="whats-changing-in-the-new-stack"></a>Was ändert sich im neuen Stapel?
 Der Sicherungsauftrag besteht derzeit aus zwei Phasen:
@@ -55,7 +55,7 @@ Momentaufnahmen werden standardmäßig sieben Tage lang aufbewahrt. Mit diesem F
 * Bei Premium-Speicherkonten werden die für die Momentaufnahmen, die für die Punkte erstellt werden, die zur sofortigen Wiederherstellung dienen, zu den 10 TB des zugeordneten Speicherplatzes gezählt.
 
 > [!NOTE]
-> Führen Sie ein Upgrade auf den Azure VM-Sicherungsstapel V2 aus, um Azure Backup-Unterstützung für [verwaltete SSD Standard-Datenträger](https://azure.microsoft.com/blog/announcing-general-availability-of-standard-ssd-disks-for-azure-virtual-machine-workloads/) und virtuelle Computer mit bis zu 32 Datenträgern für Daten zu erhalten.
+> Führen Sie ein Upgrade auf den Azure VM-Sicherungsstapel V2 aus, um Azure Backup-Unterstützung für [verwaltete SSD Standard-Datenträger](https://azure.microsoft.com/blog/announcing-general-availability-of-standard-ssd-disks-for-azure-virtual-machine-workloads/) zu erhalten.
 
 ## <a name="upgrade"></a>Upgrade
 ### <a name="the-azure-portal"></a>Das Azure-Portal
@@ -119,4 +119,4 @@ Es wird jeden Tag eine neue Momentaufnahme erstellt. Es gibt sieben unterschiedl
 Inkrementelle Momentaufnahmen werden für nicht verwaltete Datenträger verwendet. Bei verwalteten Datenträgern werden bei der Wiederherstellungspunktsammlung, die von Azure Backup erstellt wird, Blobmomentaufnahmen verwendet. Diese sind daher inkrementell.
 
 ### <a name="how-to-get-standard-ssd-managed-disk-support-for-a-virtual-machine"></a>Wie erhalte ich Unterstützung für verwaltete SSD Standard-Datenträger für einen virtuellen Computer?
-Führen Sie ein Upgrade auf den Azure VM-Sicherungsstapel V2 aus, um Azure Backup-Unterstützung für [verwaltete SSD Standard-Datenträger](https://azure.microsoft.com/blog/announcing-general-availability-of-standard-ssd-disks-for-azure-virtual-machine-workloads/) zu erhalten. Nach dem Upgrade können Sie auch virtuelle Computer mit bis zu 32 Datenträgern für Daten sichern.
+Führen Sie ein Upgrade auf den Azure VM-Sicherungsstapel V2 aus, um Azure Backup-Unterstützung für [verwaltete SSD Standard-Datenträger](https://azure.microsoft.com/blog/announcing-general-availability-of-standard-ssd-disks-for-azure-virtual-machine-workloads/) zu erhalten.

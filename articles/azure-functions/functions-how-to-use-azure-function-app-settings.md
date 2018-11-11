@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/28/2018
 ms.author: glenga
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 18e4adb47ecf8e6d44edea873a4b3cc73492b273
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 5e34aae62f871cba2a27a292242cff8e90c67934
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44301482"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51228979"
 ---
 # <a name="how-to-manage-a-function-app-in-the-azure-portal"></a>Verwalten einer Funktionen-App im Azure-Portal 
 
@@ -50,7 +50,7 @@ Es kann manchmal schwierig sein, Ihre Ressourcen im [Azure-Portal] zu finden. Um
 
 Auf der Registerkarte **Einstellungen** können Sie die von Ihrer Funktionen-App verwendete Functions-Laufzeitversion aktualisieren. Hier verwalten Sie auch die Hostschlüssel, die zum Beschränken des HTTP-Zugriffs auf alle von der Funktionen-App gehosteten Funktionen verwendet werden.
 
-Functions unterstützt verbrauchsbasierte sowie App Service-Hostingpläne. Weitere Informationen finden Sie unter [Auswählen des richtigen Serviceplans für Azure Functions](functions-scale.md). Zur besseren Vorhersagbarkeit im verbrauchsbasierten Plan können Sie in Functions die Plattformnutzung einschränken, indem Sie ein tägliches Nutzungskontingent in GB-Sekunden festlegen. Bei Erreichen des täglichen Nutzungskontingents wird die Funktionen-App beendet. Eine Funktionen-App, die aufgrund des Erreichens des Tageskontingents beendet wurde, kann in demselben Kontext wie beim Einrichten des täglichen Kontingents wieder aktiviert werden. Ausführliche Informationen zur Abrechnung finden Sie auf der [Preisseite für Azure Functions](http://azure.microsoft.com/pricing/details/functions/).   
+Functions unterstützt verbrauchsbasierte sowie App Service-Hostingpläne. Weitere Informationen finden Sie unter [Auswählen des richtigen Serviceplans für Azure Functions](functions-scale.md). Zur besseren Vorhersagbarkeit im verbrauchsbasierten Plan können Sie in Functions die Plattformnutzung einschränken, indem Sie ein tägliches Nutzungskontingent in GB-Sekunden festlegen. Bei Erreichen des täglichen Nutzungskontingents wird die Funktionen-App beendet. Eine Funktionen-App, die aufgrund des Erreichens des Tageskontingents beendet wurde, kann in demselben Kontext wie beim Einrichten des täglichen Kontingents wieder aktiviert werden. Ausführliche Informationen zur Abrechnung finden Sie auf der [Preisseite für Azure Functions](https://azure.microsoft.com/pricing/details/functions/).   
 
 ## <a name="platform-features-tab"></a>Registerkarte „Plattformfeatures“
 

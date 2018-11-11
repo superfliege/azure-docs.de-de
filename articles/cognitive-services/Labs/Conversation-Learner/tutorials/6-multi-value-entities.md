@@ -10,19 +10,19 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: a80577bb226cbec080edf5e06dbd0f31c80a5890
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 9ef86ea728e197540180d486dc1cb171f78a2590
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49321426"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51229457"
 ---
 # <a name="how-to-use-multi-value-entities-with-a-conversation-learner-model"></a>Verwenden von mehrwertigen Entitäten in einem Unterhaltungslernmodell
 In diesem Tutorial wird die Eigenschaft „mehrwertig“ von Entitäten erörtert.
 
 ## <a name="video"></a>Video
 
-[![Tutorial 6 – Vorschau](http://aka.ms/cl-tutorial-06-preview)](http://aka.ms/blis-tutorial-06)
+[![Tutorial 6 – Vorschau](https://aka.ms/cl-tutorial-06-preview)](https://aka.ms/blis-tutorial-06)
 
 ## <a name="requirements"></a>Requirements (Anforderungen)
 Für dieses Tutorial muss der allgemeine Tutorialbot ausgeführt werden.
