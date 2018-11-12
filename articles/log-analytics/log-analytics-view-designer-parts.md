@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 31ee14369cc3f1c03d13c59e1239aa567bce3552
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: f3c24dbc0f5bb4d5b595799da4f1212b26f8c02a
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50419774"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51016759"
 ---
 # <a name="reference-guide-to-view-designer-visualization-parts-in-log-analytics"></a>Referenzleitfaden zu Ansicht-Designer-Visualisierungsteilen in Log Analytics
 Mit dem Ansicht-Designer in Azure Log Analytics können Sie benutzerdefinierte Ansichten im Azure-Portal erstellen, mit denen Sie verschiedene Datenvisualisierungen aus Ihrem Log Analytics-Arbeitsbereich darstellen können. Dieser Artikel ist ein Referenzleitfaden zu den Einstellungen für die in Ihren benutzerdefinierten Ansichten verfügbaren Visualisierungsteilen.
@@ -363,4 +363,4 @@ In der folgenden Tabelle sind Einstellungen für Schwellenwerte beschrieben:
 | Farbe |Die Farbe, die den Schwellenwert angibt. |
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Erfahren Sie mehr über [Protokollsuchvorgänge](log-analytics-log-searches.md) zur Unterstützung der Abfragen in Visualisierungskomponenten.
+* Erfahren Sie mehr über [Protokollsuchvorgänge](log-analytics-queries.md) zur Unterstützung der Abfragen in Visualisierungskomponenten.

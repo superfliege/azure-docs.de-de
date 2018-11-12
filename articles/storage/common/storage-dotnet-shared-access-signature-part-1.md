@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/18/2017
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 1bc93b083b0f6f0d813f209c9371ce38e8a9daa6
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: c7d2c16ef135644c1ff23d7a71c66bec27ac930d
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51228809"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50241044"
 ---
 # <a name="using-shared-access-signatures-sas"></a>Verwenden von Shared Access Signatures (SAS)
 
@@ -223,7 +223,7 @@ Mit den folgenden Empfehlungen für die Verwendung von Shared Access Signatures 
 7. **Beachten Sie, dass Ihnen jegliche Nutzung Ihres Kontos berechnet wird, inklusive der Nutzung über SAS.** Wenn Sie Schreibzugriff für einen Blob vergeben, können Benutzer Blobs mit bis zu 200GB hochladen. Falls Sie außerdem noch Lesezugriff vergeben, können die Benutzer die Daten bis zu zehnmal herunterladen und Gebühren für den Datenausgang von bis zu 2 TB verursachen. Vergeben Sie also auch hierbei eingeschränkte Berechtigungen, um die möglichen Aktionen böswilliger Benutzer abzuschwächen. Verwenden Sie kurzlebige SAS, um diese Bedrohung zu mindern (beachten Sie jedoch mögliche Zeitunterschiede bei der Ablaufzeit).
 8. **Überprüfen Sie Daten, die per SAS geschrieben wurden.** Wenn Clientanwendungen Daten in Ihr Speicherkonto schreiben, müssen Sie stets beachten, dass diese Daten problembehaftet sein können. Wenn Ihre Anwendung diese Daten vor der Verwendung überprüfen oder autorisieren muss, sollten Sie diese Überprüfung durchführen, nachdem die Daten geschrieben und bevor sie von Ihrer Anwendung verwendet werden. Auf diese Weise schützen Sie Ihr Konto auch vor beschädigten oder bösartigen Daten, sowohl von tatsächlich berechtigten SAS-Benutzern als auch von Angreifern, die eine abgefangene SAS verwenden.
 9. **Verwenden Sie SAS nicht immer.** Manchmal überwiegen die Risiken einer bestimmten Operation für Ihr Speicherkonto gegenüber den Vorzügen von SAS. Für solche Operation sollten Sie einen Dienst auf der mittleren Ebene erstellen, der zunächst Geschäftsregeln validiert sowie Authentifizierung und Überwachung durchführt und die Daten anschließend in Ihr Speicherkonto schreibt. Manchmal gibt es auch einfachere Möglichkeiten der Zugriffsverwaltung. Wenn Sie beispielsweise alle Blobs in einem Container öffentlich lesbar machen möchten, können Sie auch den Container öffentlich machen, anstatt jedem Client für den Zugriff eine SAS zu geben.
-10. **Überwachen Sie Ihrer Anwendung mithilfe der Speicheranalyse.** Sie können Häufungen von Authentifizierungsfehlern aufgrund von Ausfällen Ihres SAS-Anbieterdiensts oder einer unbeabsichtigt gelöschten gespeicherten Zugriffsrichtlinie mithilfe von Protokollierung und Metriken beobachten. Weitere Informationen finden Sie im [Blog des Azure-Speicherteams](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/08/03/windows-azure-storage-logging-using-logs-to-track-storage-requests.aspx) .
+10. **Überwachen Sie Ihrer Anwendung mithilfe der Speicheranalyse.** Sie können Häufungen von Authentifizierungsfehlern aufgrund von Ausfällen Ihres SAS-Anbieterdiensts oder einer unbeabsichtigt gelöschten gespeicherten Zugriffsrichtlinie mithilfe von Protokollierung und Metriken beobachten. Weitere Informationen finden Sie im [Blog des Azure-Speicherteams](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/08/03/windows-azure-storage-logging-using-logs-to-track-storage-requests.aspx) .
 
 ## <a name="sas-examples"></a>SAS-Beispiele
 Unten sind einige Beispiele für beide Arten von Shared Access Signatures aufgeführt: Konto-SAS und Dienst-SAS.
@@ -423,5 +423,5 @@ Shared Access Signatures sind nützlich für die Vergabe eingeschränkter Berech
 ## <a name="next-steps"></a>Nächste Schritte
 * [Shared Access Signatures, Teil 2: Erstellen und Verwenden einer SAS mit Blob Storage](../blobs/storage-dotnet-shared-access-signature-part-2.md)
 * [Verwalten des anonymen Lesezugriffs auf Container und Blobs](../blobs/storage-manage-access-to-resources.md)
-* [Delegieren des Zugriffs mit einer Shared Access Signature](https://msdn.microsoft.com/library/azure/ee395415.aspx)
-* [Introducing Table and Queue SAS (Einführung in Tabellen- und Warteschlangen-SAS; in englischer Sprache)](https://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-table-sas-shared-access-signature-queue-sas-and-update-to-blob-sas.aspx)
+* [Delegieren des Zugriffs mit einer Shared Access Signature](http://msdn.microsoft.com/library/azure/ee395415.aspx)
+* [Introducing Table and Queue SAS (Einführung in Tabellen- und Warteschlangen-SAS; in englischer Sprache)](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-table-sas-shared-access-signature-queue-sas-and-update-to-blob-sas.aspx)

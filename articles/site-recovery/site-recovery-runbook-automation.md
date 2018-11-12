@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: ruturajd@microsoft.com
-ms.openlocfilehash: 1853d8d23aeb96cda3148c6c9e7668b9c2c28924
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 5da623d07c34114d82c2b818a7c06420ffb9c886
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51244014"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50211110"
 ---
 # <a name="add-azure-automation-runbooks-to-recovery-plans"></a>Hinzufügen von Azure Automation-Runbooks zu Wiederherstellungsplänen
 In diesem Artikel wird beschrieben, wie Azure Site Recovery in Azure Automation integriert wird, um Sie bei der Erweiterung Ihrer Wiederherstellungspläne zu unterstützen. Mit Wiederherstellungsplänen kann die Wiederherstellung von VMs orchestriert werden, die mit Site Recovery geschützt werden. Wiederherstellungspläne können sowohl für die Replikation in eine sekundäre Cloud als auch für die Replikation in Azure genutzt werden. Darüber hinaus tragen Wiederherstellungspläne zu einer **durchgängig exakten**, **wiederholbaren** und **automatisierten** Wiederherstellung bei. Wenn Sie für Ihre VMs ein Failover zu Azure durchführen, wird die Integration mit Azure Automation auf Ihre Wiederherstellungspläne erweitert. Sie können sie zum Ausführen von Runbooks verwenden, die leistungsfähige Automatisierungsaufgaben ermöglichen.
@@ -252,8 +252,8 @@ Ein weiteres Beispiel ist im folgenden Video enthalten. Es wird veranschaulicht,
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 * [Authentifizieren von Runbooks mit der Azure-Option „Ausführendes Konto“](../automation/automation-create-runas-account.md)
-* [Übersicht über Azure Automation](https://msdn.microsoft.com/library/azure/dn643629.aspx "Übersicht über Azure Automation")
-* [Azure Automation-Beispielskripts](https://gallery.technet.microsoft.com/scriptcenter/site/search?f\[0\].Type=User&f\[0\].Value=SC%20Automation%20Product%20Team&f\[0\].Text=SC%20Automation%20Product%20Team "Azure Automation-Beispielskripts")
+* [Übersicht über Azure Automation](http://msdn.microsoft.com/library/azure/dn643629.aspx "Übersicht über Azure Automation")
+* [Azure Automation-Beispielskripts](http://gallery.technet.microsoft.com/scriptcenter/site/search?f\[0\].Type=User&f\[0\].Value=SC%20Automation%20Product%20Team&f\[0\].Text=SC%20Automation%20Product%20Team "Azure Automation-Beispielskripts")
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Weitere Informationen](site-recovery-failover.md) zum Ausführen von Failovern
