@@ -1,5 +1,5 @@
 ---
-title: Empfohlene Vorgehensweisen für die Datensicherheit und die Verschlüsselung | Microsoft-Dokumentation
+title: Empfohlene Vorgehensweisen für die Datensicherheit und die Verschlüsselung | Microsoft Docs
 description: Dieser Artikel bietet eine Reihe von empfohlenen Vorgehensweisen für die Datensicherheit und Verschlüsselung unter Verwendung der integrierten Azure-Funktionen.
 services: security
 documentationcenter: na
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/19/2018
 ms.author: barclayn
-ms.openlocfilehash: 263c04fd15240f365f2325c69d5cb25aa1a539f0
-ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
+ms.openlocfilehash: 86724ca49884f1072297ffcf4fc6498db5ae8ac3
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46465876"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51254637"
 ---
 # <a name="azure-data-security-and-encryption-best-practices"></a>Empfohlene Vorgehensweisen für Datensicherheit und Verschlüsselung in Azure
 Zum Schutz von Daten in der Cloud müssen Sie die möglichen Zustände berücksichtigen, in denen Ihre Daten auftreten können. Außerdem sollten Sie die Steuerungsmöglichkeiten beachten, die für diesen Zustand verfügbar sind. Bewährte Methoden für Datensicherheit und Verschlüsselung in Azure beziehen sich auf die folgenden Zustände von Daten:
@@ -42,7 +42,7 @@ Dieser Artikel zu den empfohlenen Vorgehensweisen für die Datensicherheit und d
 ## <a name="choose-a-key-management-solution"></a>Auswählen einer Schlüsselverwaltungslösung
 Das Schützen Ihrer Schlüssel ist ausschlaggebend für den Schutz Ihrer Daten in der Cloud.
 
-[Azure Key Vault](../key-vault/key-vault-overview.md) unterstützt Sie dabei, kryptografische Schlüssel und Geheimnisse zu schützen, die von Cloudanwendungen und -diensten verwendet werden. Key Vault optimiert die Schlüsselverwaltung und ermöglicht es Ihnen, die Kontrolle über Schlüssel zu behalten, die für den Datenzugriff und die Verschlüsselung Ihrer Daten verwendet werden. Entwickler können Schlüssel für Tests und Entwicklung innerhalb von Minuten erstellen und diese später in Schlüssel für die Produktion migrieren. Sicherheitsadministratoren können nach Bedarf Berechtigungen für Schlüssel erteilen (und widerrufen).
+[Azure Key Vault](../key-vault/key-vault-overview.md) unterstützt Sie dabei, kryptografische Schlüssel und Geheimnisse zu schützen, die von Cloudanwendungen und -diensten verwendet werden. Der Schlüsseltresor optimiert die Schlüsselverwaltung und ermöglicht es Ihnen, die Kontrolle über Schlüssel zu behalten, die für den Datenzugriff und die Verschlüsselung Ihrer Daten verwendet werden. Entwickler können Schlüssel für Tests und Entwicklung innerhalb von Minuten erstellen und diese später in Schlüssel für die Produktion migrieren. Sicherheitsadministratoren können nach Bedarf Berechtigungen für Schlüssel erteilen (und widerrufen).
 
 Mit Key Vault können Sie mehrere sichere Container (sogenannte Tresore) erstellen. Diese Tresore werden von HSMs unterstützt. Tresore zentralisieren die Speicherung von Anwendungsgeheimnissen und verringern so die Gefahr, dass Sicherheitsinformationen abhandenkommen. Darüber hinaus steuern und protokollieren Schlüsseltresore auch den Zugriff auf alle darin gespeicherten Daten. Azure Key Vault kann Anforderungen und Verlängerungen von TLS-Zertifikaten (Transport Layer Security) abwickeln. Es stellt Features für eine zuverlässige Zertifikatlebenszyklus-Verwaltungslösung bereit.
 
@@ -96,7 +96,7 @@ In Azure Storage und Azure SQL-Datenbank werden ruhende Daten standardmäßig ve
 
 Organisationen, die keine Datenverschlüsselung erzwingen, sind anfälliger für Datenintegritätsprobleme. So können beispielsweise nicht autorisierte Benutzer Daten aus kompromittierten Konten entwenden oder sich unberechtigt Zugang zu unverschlüsselten Daten verschaffen. Unternehmen müssen außerdem nachweisen, dass sie gewissenhaft sind und die richtigen Sicherheitsprotokolle zur Verbesserung ihrer Datensicherheit verwenden, um den Branchenbestimmungen zu entsprechen.
 
-## <a name="protect-data-in-transit"></a>Schutz von Daten während der Übertragung
+## <a name="protect-data-in-transit"></a>Schützen der Daten während der Übertragung
 Der Schutz von Daten während der Übertragung sollte ein wesentlicher Bestandteil Ihrer Datenschutzstrategie sein. Da die Daten zwischen vielen verschiedenen Speicherorten übertragen werden, wird generell empfohlen, immer SSL/TLS-Protokolle zu verwenden, um Daten zwischen verschiedenen Speicherorten auszutauschen. In einigen Fällen sollten Sie den gesamten Kommunikationskanal zwischen Ihrer lokalen und Ihrer Cloudinfrastruktur isolieren, indem Sie ein VPN verwenden.
 
 Für Daten, die sich zwischen Ihrer lokalen Infrastruktur und Azure bewegen, sollten Sie passende Sicherheitsmaßnahmen in Betracht ziehen, beispielsweise HTTPS oder VPN. Beim Senden von verschlüsseltem Datenverkehr zwischen einem virtuellen Azure-Netzwerk und einem lokalen Standort über das öffentliche Internet verwenden Sie [Azure VPN Gateway](https://docs.microsoft.com/azure/vpn-gateway/).
@@ -132,10 +132,10 @@ Wir empfehlen Folgendes:
 - Wenden Sie Bezeichnungen entsprechend Ihrer Geschäftsanforderungen an. Verwenden Sie beispielsweise die Bezeichnung „streng vertraulich“ für alle Dokumente und E-Mails, die streng vertrauliche Daten enthalten, um diese Daten zu klassifizieren und zu schützen. Dann können nur autorisierte Benutzer mit den von Ihnen angegebenen Einschränkungen auf diese Daten zugreifen.
 - Konfigurieren Sie die [Verwendungsprotokollierung für Azure RMS](https://docs.microsoft.com/azure/information-protection/log-analyze-usage), damit Sie überwachen können, wie Ihre Organisation den Schutzdienst verwendet.
 
-Organisationen, die in Hinsicht auf die [Datenklassifizierung](http://download.microsoft.com/download/0/A/3/0A3BE969-85C5-4DD2-83B6-366AA71D1FE3/Data-Classification-for-Cloud-Readiness.pdf) und den Dateischutz Schwächen haben, sind möglicherweise anfälliger für Datenlecks oder Datenmissbrauch. Mit geeignetem Dateischutz können Sie Datenflüsse analysieren, um Einblicke in Ihre Geschäftsabläufe zu erhalten, riskante Verhalten zu erkennen und Abhilfemaßnahmen zu ergreifen, den Zugriff auf Dokumente nachzuverfolgen usw.
+Organisationen, die in Hinsicht auf die [Datenklassifizierung](https://download.microsoft.com/download/0/A/3/0A3BE969-85C5-4DD2-83B6-366AA71D1FE3/Data-Classification-for-Cloud-Readiness.pdf) und den Dateischutz Schwächen haben, sind möglicherweise anfälliger für Datenlecks oder Datenmissbrauch. Mit geeignetem Dateischutz können Sie Datenflüsse analysieren, um Einblicke in Ihre Geschäftsabläufe zu erhalten, riskante Verhalten zu erkennen und Abhilfemaßnahmen zu ergreifen, den Zugriff auf Dokumente nachzuverfolgen usw.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere bewährte Methoden für die Sicherheit, die Sie beim Entwerfen, Bereitstellen und Verwalten Ihrer Cloudlösungen mithilfe von Azure verwenden können, finden Sie unter [Sicherheit in Azure – bewährte Methoden und Muster](security-best-practices-and-patterns.md).
+Weitere bewährte Methoden für die Sicherheit, die Sie beim Entwerfen, Bereitstellen und Verwalten Ihrer Cloudlösungen mithilfe von Azure verwenden können, finden Sie unter [Sicherheit in Azure: bewährte Methoden und Muster](security-best-practices-and-patterns.md).
 
 Die folgenden Ressourcen enthalten allgemeinere Informationen zur Sicherheit in Azure und verwandten Microsoft-Diensten:
 * [Blog des Azure-Sicherheitsteams](https://blogs.msdn.microsoft.com/azuresecurity/): Hier finden Sie Informationen über den aktuellen Stand der Azure-Sicherheit.

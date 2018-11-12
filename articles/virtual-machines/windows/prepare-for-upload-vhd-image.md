@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 10/10/2018
 ms.author: genli
-ms.openlocfilehash: f9b950b1d85f50331d556a54b4237d78ec5c07ac
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 4d30cca0106e52706326bfd91a2d0dfb0a64ca04
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49388159"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51258458"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Vorbereiten einer Windows-VHD oder -VHDX zum Hochladen in Azure
 Bevor Sie einen virtuellen Windows-Computer aus einem lokalen Speicherort in Azure hochladen können, müssen Sie die virtuelle Festplatte (Virtual Hard Disk, VHD oder VHDX) vorbereiten. Azure unterstützt **nur virtuelle Computer der 1. Generation**, die das VHD-Dateiformat aufweisen und einen Datenträger mit fester Größe umfassen. Die maximal zulässige Größe für die virtuelle Festplatte beträgt 1.023 GB. Sie können virtuelle Computer der 1. Generation vom VHDX- in das VHD-Dateisystemformat und von einem dynamisch erweiterbaren Datenträger in einen Datenträger mit fester Größe konvertieren. Aber die Generation eines virtuellen Computers kann nicht geändert werden. Weitere Informationen finden Sie unter [Should I create a generation 1 or 2 VM in Hyper-V?](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v) (Sollte ich eine VM der 1. oder 2. Generation in Hyper-V erstellen?).
@@ -48,7 +48,7 @@ Nachdem Sie den Datenträger konvertiert haben, erstellen Sie einen virtuellen C
 >Die Befehle in diesem Artikel müssen in einer PowerShell-Sitzung mit erhöhten Rechten ausgeführt werden.
 
 ### <a name="convert-disk-by-using-powershell"></a>Konvertieren eines Datenträgers mithilfe von PowerShell
-Sie können einen virtuellen Datenträger mithilfe des Befehls [Convert-VHD](http://technet.microsoft.com/library/hh848454.aspx) in Windows PowerShell konvertieren. Wählen Sie beim Starten von PowerShell **Als Administrator ausführen**. 
+Sie können einen virtuellen Datenträger mithilfe des Befehls [Convert-VHD](https://technet.microsoft.com/library/hh848454.aspx) in Windows PowerShell konvertieren. Wählen Sie beim Starten von PowerShell **Als Administrator ausführen**. 
 
 Im folgenden Beispiel wird der Vorgang zum Konvertieren von VHDX zu VHD und von einem dynamisch erweiterbaren Datenträger zu einem Datenträger fester Größe veranschaulicht:
 
@@ -58,7 +58,7 @@ Convert-VHD –Path c:\test\MY-VM.vhdx –DestinationPath c:\test\MY-NEW-VM.vhd 
 Ersetzen Sie in diesem Befehl die Werte für „-Path“ durch den Pfad zu der virtuellen Festplatte, die Sie konvertieren möchten, und „-DestinationPath“ durch den neuen Pfad und den Namen für den konvertierten Datenträger.
 
 ### <a name="convert-from-vmware-vmdk-disk-format"></a>Konvertieren des VMware-VMDK-Datenträgerformats
-Wenn Sie über ein Windows-VM-Image im [VMDK-Dateiformat](https://en.wikipedia.org/wiki/VMDK) verfügen, konvertieren Sie es mit dem [Microsoft VM Converter](https://www.microsoft.com/download/details.aspx?id=42497) in eine virtuelle Festplatte. Weitere Informationen finden Sie im Blog [How to Convert a VMware VMDK to Hyper-V VHD](http://blogs.msdn.com/b/timomta/archive/2015/06/11/how-to-convert-a-vmware-vmdk-to-hyper-v-vhd.aspx) (Konvertieren von VMware-VMDK in Hyper-V-VHD).
+Wenn Sie über ein Windows-VM-Image im [VMDK-Dateiformat](https://en.wikipedia.org/wiki/VMDK) verfügen, konvertieren Sie es mit dem [Microsoft VM Converter](https://www.microsoft.com/download/details.aspx?id=42497) in eine virtuelle Festplatte. Weitere Informationen finden Sie im Blog [How to Convert a VMware VMDK to Hyper-V VHD](https://blogs.msdn.com/b/timomta/archive/2015/06/11/how-to-convert-a-vmware-vmdk-to-hyper-v-vhd.aspx) (Konvertieren von VMware-VMDK in Hyper-V-VHD).
 
 ## <a name="set-windows-configurations-for-azure"></a>Festlegen der Windows-Konfigurationen für Azure
 
@@ -377,7 +377,7 @@ Weitere Informationen zum Erstellen einer VM aus einem spezialisierten Datenträ
 - [Erstellen eines virtuellen Computers von einem speziellen Datenträger](create-vm-specialized.md)
 - [Create a VM from a specialized VHD disk](https://docs.microsoft.com/azure/virtual-machines/windows/create-vm-specialized-portal?branch=master) (Erstellen einer VM aus einem spezialisierten VHD-Datenträger)
 
-Wenn Sie ein generalisiertes Image erstellen möchten, müssen Sie Sysprep ausführen. Weitere Informationen zur Verwendung von Sysprep finden Sie unter [How to Use Sysprep: An Introduction](http://technet.microsoft.com/library/bb457073.aspx) (Verwenden von Sysprep: Eine Einführung). 
+Wenn Sie ein generalisiertes Image erstellen möchten, müssen Sie Sysprep ausführen. Weitere Informationen zur Verwendung von Sysprep finden Sie unter [How to Use Sysprep: An Introduction](https://technet.microsoft.com/library/bb457073.aspx) (Verwenden von Sysprep: Eine Einführung). 
 
 Nicht jede Rolle oder Anwendung, die auf einem Windows-basierten Computer installiert ist, unterstützt diese Generalisierung. Bevor Sie also dieses Verfahren ausführen, sollten Sie den folgenden Artikel lesen, um sicherzustellen, dass die Rolle des betreffenden Computers von Sysprep unterstützt wird. Weitere Informationen finden Sie unter [Sysprep Support for Server Roles](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles) (Sysprep-Unterstützung für Serverrollen).
 
@@ -401,7 +401,7 @@ Nicht jede Rolle oder Anwendung, die auf einem Windows-basierten Computer instal
 ## <a name="complete-recommended-configurations"></a>Abschließen empfohlener Konfigurationen
 Die folgenden Einstellungen wirken sich nicht auf das Hochladen von VHDs aus. Es wird jedoch dringend empfohlen, diese Einstellungen zu konfigurieren.
 
-* Installieren Sie den [Azure-VM-Agent](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). Anschließend können Sie VM-Erweiterungen aktivieren. Die VM-Erweiterungen implementieren die meisten der wichtigen Funktionen, die Sie für Ihre virtuellen Computer möglicherweise verwenden möchten, darunter das Zurücksetzen von Kennwörtern, das Konfigurieren von RDP und viele andere. Weitere Informationen finden Sie unter
+* Installieren Sie den [Azure-VM-Agent](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). Anschließend können Sie VM-Erweiterungen aktivieren. Die VM-Erweiterungen implementieren die meisten der wichtigen Funktionen, die Sie für Ihre virtuellen Computer möglicherweise verwenden möchten, darunter das Zurücksetzen von Kennwörtern, das Konfigurieren von RDP und viele andere. Weitere Informationen finden Sie unter
 
     - [VM Agent and Extensions – Part 1](https://azure.microsoft.com/blog/vm-agent-and-extensions-part-1/) (VM-Agent und -Erweiterungen – Teil 1)
     - [VM Agent and Extensions – Part 2](https://azure.microsoft.com/blog/vm-agent-and-extensions-part-2/) (VM-Agent und -Erweiterungen – Teil 2)

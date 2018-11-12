@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/07/2016
 ms.author: mandia
-ms.openlocfilehash: 90cf2d0ddbba47a856bf1299a101c5185873b5d8
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 6dc3fb97c912aa9ac66e3d40a8a0318a6938905c
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39214411"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51230290"
 ---
 # <a name="biztalk-services-backup-and-restore"></a>BizTalk Services: Sichern und Wiederherstellen
 
@@ -132,18 +132,18 @@ Wenn die Nachverfolgungsdatenbank gelöscht wird und wiederhergestellt werden so
 </table>
 
 ## <a name="next"></a>Next (Weiter)
-Informationen zum Erstellen von Azure BizTalk Services finden Sie unter [Konfigurieren von BizTalk Services im Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=302280). Wenn Sie mit dem Erstellen von Anwendungen beginnen möchten, wechseln Sie zu [Azure BizTalk Services](http://go.microsoft.com/fwlink/p/?LinkID=235197).
+Informationen zum Erstellen von Azure BizTalk Services finden Sie unter [Konfigurieren von BizTalk Services im Azure-Portal](https://go.microsoft.com/fwlink/p/?LinkID=302280). Wenn Sie mit dem Erstellen von Anwendungen beginnen möchten, wechseln Sie zu [Azure BizTalk Services](https://go.microsoft.com/fwlink/p/?LinkID=235197).
 
 ## <a name="see-also"></a>Siehe auch
-* [Sichern von BizTalk Services](http://go.microsoft.com/fwlink/p/?LinkID=325584)
-* [Wiederherstellen von BizTalk Services aus einer Sicherung](http://go.microsoft.com/fwlink/p/?LinkID=325582)
-* [BizTalk Services: Editionsübersicht](http://go.microsoft.com/fwlink/p/?LinkID=302279)
-* [Konfigurieren von BizTalk Services im Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=302280)
-* [BizTalk Services: Bereitstellungsstatusübersicht](http://go.microsoft.com/fwlink/p/?LinkID=329870)
-* [BizTalk Services: Registerkarten "Dashboard", "Überwachen" und "Skalieren"](http://go.microsoft.com/fwlink/p/?LinkID=302281)
-* [BizTalk Services: Drosselung](http://go.microsoft.com/fwlink/p/?LinkID=302282)
-* [BizTalk Services: Name und Schlüssel des Ausstellers](http://go.microsoft.com/fwlink/p/?LinkID=303941)
-* [Wie verwende ich das Azure BizTalk Services SDK?](http://go.microsoft.com/fwlink/p/?LinkID=302335)
+* [Sichern von BizTalk Services](https://go.microsoft.com/fwlink/p/?LinkID=325584)
+* [Wiederherstellen von BizTalk Services aus einer Sicherung](https://go.microsoft.com/fwlink/p/?LinkID=325582)
+* [BizTalk Services: Editionsübersicht](https://go.microsoft.com/fwlink/p/?LinkID=302279)
+* [Konfigurieren von BizTalk Services im Azure-Portal](https://go.microsoft.com/fwlink/p/?LinkID=302280)
+* [BizTalk Services: Bereitstellungsstatusübersicht](https://go.microsoft.com/fwlink/p/?LinkID=329870)
+* [BizTalk Services: Registerkarten "Dashboard", "Überwachen" und "Skalieren"](https://go.microsoft.com/fwlink/p/?LinkID=302281)
+* [BizTalk Services: Drosselung](https://go.microsoft.com/fwlink/p/?LinkID=302282)
+* [BizTalk Services: Name und Schlüssel des Ausstellers](https://go.microsoft.com/fwlink/p/?LinkID=303941)
+* [Wie verwende ich das Azure BizTalk Services SDK?](https://go.microsoft.com/fwlink/p/?LinkID=302335)
 
 [BackupStatus]: ./media/biztalk-backup-restore/status-last-backup.png
 [Restore]: ./media/biztalk-backup-restore/restore-ui.png

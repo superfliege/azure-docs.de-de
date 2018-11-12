@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/31/2017
 ms.author: ninarn
-ms.openlocfilehash: 18de5b3d71922effa72414a6a52b126a34076cf3
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 9ccf7d85b52759a3f2cd64facc6ee8d7255f0fac
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44722128"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51253175"
 ---
 # <a name="application-patterns-and-development-strategies-for-sql-server-in-azure-virtual-machines"></a>Anwendungsmuster und Entwicklungsstrategien für SQL Server in Azure Virtual Machines
 [!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-both-include.md)]
@@ -236,7 +236,7 @@ Sie können Active Directory in Azure als eigenständiges Cloudverzeichnis für 
 
 Beim n-Ebenen-Hybridanwendungsmuster können Sie den folgenden Workflow in der angegebenen Reihenfolge implementieren:
 
-1. Identifizieren Sie Unternehmensdatenbank-Anwendungen, die mit dem [Microsoft Assessment and Planning (MAP) Toolkit](http://microsoft.com/map)(in englischer Sprache) in die Cloud verschoben werden müssen. Das MAP-Toolkit erfasst Bestands-und Leistungsdaten von Computern, die Sie für die Virtualisierung in Betracht ziehen, und stellt Empfehlungen für die Kapazitäts- und Bewertungsplanung bereit.
+1. Identifizieren Sie Unternehmensdatenbank-Anwendungen, die mit dem [Microsoft Assessment and Planning (MAP) Toolkit](https://microsoft.com/map)(in englischer Sprache) in die Cloud verschoben werden müssen. Das MAP-Toolkit erfasst Bestands-und Leistungsdaten von Computern, die Sie für die Virtualisierung in Betracht ziehen, und stellt Empfehlungen für die Kapazitäts- und Bewertungsplanung bereit.
 2. Planen Sie die erforderlichen Ressourcen und die Konfiguration in der Azure-Plattform, z. B. Speicherkonten und virtuelle Computer.
 3. Richten Sie die Netzwerkkonnektivität zwischen dem lokalen Unternehmensnetzwerk und [Azure Virtual Network](../../../virtual-network/virtual-networks-overview.md)ein. Um die Verbindung zwischen dem lokalen Unternehmensnetzwerk und einem virtuellen Computer in Azure einzurichten, verwenden Sie eine der beiden folgenden Methoden:
    

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/11/2017
 ms.author: maghan
-ms.openlocfilehash: af8a4a9c25005925bed3ddb78ced618e669f7f09
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 514e85fc61240834d8db152ece65a4f9cce9023e
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31424617"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51250406"
 ---
 # <a name="use-reportviewer-in-a-web-site-hosted-in-azure"></a>Verwenden von ReportViewer auf einer in Azure gehosteten Website
 > [!IMPORTANT] 
@@ -62,7 +62,7 @@ Im Remoteverarbeitungsmodus verwendet das ReportViewer-Steuerelement die folgend
 3. Wiederholen Sie die Schritte 1 und 2 für „Microsoft.ReportViewer.WebForms“.
 
 ### <a name="to-get-reportviewer-language-pack"></a>So rufen Sie ReportViewer Language Pack ab
-1. Installieren Sie das entsprechende verteilbare Microsoft Report Viewer 2012-Laufzeit-Paket aus dem [Microsoft Download Center](http://go.microsoft.com/fwlink/?LinkId=317386).
+1. Installieren Sie das entsprechende verteilbare Microsoft Report Viewer 2012-Laufzeit-Paket aus dem [Microsoft Download Center](https://go.microsoft.com/fwlink/?LinkId=317386).
 2. Wählen Sie die Sprache in der Dropdownliste aus. Danach wird die Seite auf die entsprechende Download Center-Seite umgeleitet.
 3. Klicken Sie auf **Herunterladen** , um mit dem Herunterladen von "ReportViewerLP.exe" zu beginnen.
 4. Nachdem Sie „ReportViewerLP.exe“ heruntergeladen haben, klicken Sie zur sofortigen Installation auf **Ausführen**, oder klicken Sie auf **Speichern**, damit die Datei auf dem Computer gespeichert wird. Wenn Sie auf **Speichern**klicken, sollten Sie sich den Namen des Ordners merken, in dem Sie die Datei speichern.
@@ -72,7 +72,7 @@ Im Remoteverarbeitungsmodus verwendet das ReportViewer-Steuerelement die folgend
 ### <a name="to-configure-for-localized-reportviewer-control"></a>So konfigurieren Sie für ein lokalisiertes ReportViewer-Steuerelement
 1. Gehen Sie gemäß den oben angegebenen Anweisungen vor, um das verteilbare Microsoft Report Viewer 2012-Laufzeit-Paket herunterzuladen und zu installieren.
 2. Erstellen Sie im Projekt den Ordner <language>, und kopieren Sie die zugehörigen Ressourcenassemblydateien. Folgende Ressourcenassemblydateien müssen kopiert werden: **Microsoft.ReportViewer.Webforms.Resources.dll** und **Microsoft.ReportViewer.Common.Resources.dll**. Wählen Sie die Ressourcenassemblydateien aus, und legen Sie im Eigenschaftenbereich die Eigenschaft **In Ausgabeverzeichnis kopieren** auf **Immer kopieren** fest.
-3. Legen Sie die Kultur und Benutzeroberflächenkultur für das Webprojekt fest. Weitere Informationen dazu, wie die Kultur und Benutzeroberflächenkultur für eine ASP.NET-Webseite festgelegt werden, finden Sie unter [Vorgehensweise: Festlegen der Kultur und Benutzeroberflächenkultur für die Globalisierung von ASP.NET-Webseiten](http://go.microsoft.com/fwlink/?LinkId=237461).
+3. Legen Sie die Kultur und Benutzeroberflächenkultur für das Webprojekt fest. Weitere Informationen dazu, wie die Kultur und Benutzeroberflächenkultur für eine ASP.NET-Webseite festgelegt werden, finden Sie unter [Vorgehensweise: Festlegen der Kultur und Benutzeroberflächenkultur für die Globalisierung von ASP.NET-Webseiten](https://go.microsoft.com/fwlink/?LinkId=237461).
 
 ## <a name="configuring-authentication-and-authorization"></a>Konfigurieren von Authentifizierung und Autorisierung
 Das ReportViewer-Steuerelement muss geeignete Anmeldeinformationen verwenden, um sich beim Berichtsserver zu authentifizieren, und die Anmeldeinformationen müssen vom Berichtsserver autorisiert werden, damit Sie auf die gewünschten Berichte zuzugreifen können. Informationen über die Authentifizierung finden Sie im Whitepaper [ReportViewer-Steuerelement von Reporting Services und Berichtsserver, die auf virtuellen Microsoft Azure-Computern basieren](https://msdn.microsoft.com/library/azure/dn753698.aspx).
@@ -87,8 +87,8 @@ Anleitungen zum Veröffentlichen einer ASP.NET Web-Anwendung in Azure finden Sie
 > 
 > 
 
-## <a name="resources"></a>angeben
-[Microsoft-Berichte](http://go.microsoft.com/fwlink/?LinkId=205399)
+## <a name="resources"></a>Ressourcen
+[Microsoft-Berichte](https://go.microsoft.com/fwlink/?LinkId=205399)
 
 [SQL Server-Business Intelligence auf virtuellen Azure-Computern](../classic/ps-sql-bi.md)
 

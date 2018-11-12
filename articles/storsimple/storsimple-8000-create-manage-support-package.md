@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: c83caae58e73d6f2d0fe086938e0bbc5cfdf80c4
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: dfc2d8d763a1eb64a37af73e03992f2d948a6856
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2018
-ms.locfileid: "27743577"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51254365"
 ---
 # <a name="create-and-manage-a-support-package-for-storsimple-8000-series"></a>Erstellen und Verwalten eines Unterstützungspakets für ein Gerät der StorSimple 8000-Serie
 
@@ -93,7 +93,7 @@ Wenn Sie ein Unterstützungspaket vor dem Hochladen an die Microsoft Support-We
 #### <a name="to-edit-a-support-package-in-windows-powershell-for-storsimple"></a>So bearbeiten Sie ein Unterstützungspaket in Windows PowerShell für StorSimple
 
 1. Generieren Sie ein Unterstützungspaket, wie bereits unter [So erstellen Sie ein Unterstützungspaket in Windows PowerShell für StorSimple](#to-create-a-support-package-in-windows-powershell-for-storsimple)beschrieben.
-2. [Laden Sie das Skript](http://gallery.technet.microsoft.com/scriptcenter/Script-to-decrypt-a-a8d1ed65) lokal auf den Client herunter.
+2. [Laden Sie das Skript](https://gallery.technet.microsoft.com/scriptcenter/Script-to-decrypt-a-a8d1ed65) lokal auf den Client herunter.
 3. Importieren Sie das Windows PowerShell-Modul. Geben Sie den Pfad des lokalen Ordners an, in den Sie das Skript heruntergeladen haben. Geben Sie zum Importieren des Moduls Folgendes ein:
    
     `Import-module <Path to the folder that contains the Windows PowerShell script>`

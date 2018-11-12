@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/22/2018
 ms.author: jeconnoc
-ms.openlocfilehash: 3821e13fd968e458e463e90ef338da6637d8d8f2
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 698cae13b9e78de6318c28bde998e195540c513c
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39622013"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51256798"
 ---
 # <a name="install-net-on-azure-cloud-services-roles"></a>Installieren von .NET in Rollen in Azure Cloud Services
 Dieser Artikel beschreibt die Installation von .NET Framework-Versionen, die nicht im Funktionsumfang des Azure-Gastbetriebssystems vorhanden sind. Sie können .NET im Gastbetriebssystem zum Konfigurieren Ihrer Clouddienstweb- und -workerrollen nutzen.
@@ -34,7 +34,7 @@ Zum Installieren von .NET für Ihre Web- und Workerrollen fügen Sie Ihrem Cloud
 ## <a name="add-the-net-installer-to-your-project"></a>Das Installationsprogramm für .NET zu Ihrem Projekt hinzufügen
 Laden Sie den Webinstaller der .NET Framework-Version herunter, die Sie installieren möchten:
 
-* [Webinstaller für .NET 4.7.2](http://go.microsoft.com/fwlink/?LinkId=863262)
+* [Webinstaller für .NET 4.7.2](https://go.microsoft.com/fwlink/?LinkId=863262)
 * [Webinstaller für .NET 4.6.2](https://www.microsoft.com/download/details.aspx?id=53345)
 
 So fügen Sie den Installer für eine *Webrolle* hinzu

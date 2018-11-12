@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/23/2018
 ms.author: mikhegn
-ms.openlocfilehash: 9a7ab3881cd1058a60ff7d5f6e50c296f042e76e
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: ea2f27069ca445a4d74ddc634f5c396ab13564a1
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34206078"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51248995"
 ---
 # <a name="deploy-multiple-guest-executables"></a>Bereitstellen mehrerer ausführbarer Gastanwendungsdateien
 In diesem Artikel erfahren Sie, wie Sie mehrere ausführbare Gastanwendungsdateien packen und für Azure Service Fabric bereitstellen. Informationen zum Erstellen und Bereitstellen eines einzelnen Service Fabric-Pakets finden Sie im Abschnitt [Bereitstellen einer ausführbaren Gastanwendungsdatei in Service Fabric](service-fabric-deploy-existing-app.md).
@@ -33,7 +33,7 @@ Das Anwendungspaket mit mehreren ausführbaren Gastanwendungsdateien kann mithil
 * [Beispiel für zwei ausführbare Gastdateien (C# und Node.js), die über den Naming Service mithilfe von REST kommunizieren](https://github.com/Azure-Samples/service-fabric-containers)
 
 ## <a name="manually-package-the-multiple-guest-executable-application"></a>Manuelles Packen der Anwendung mit mehreren ausführbaren Gastanwendungsdateien
-Alternativ können Sie die ausführbare Gastanwendungsdatei manuell packen. Hierzu wird in diesem Artikel das Service Fabric-Verpackungstool ([http://aka.ms/servicefabricpacktool](http://aka.ms/servicefabricpacktool)) verwendet.
+Alternativ können Sie die ausführbare Gastanwendungsdatei manuell packen. Hierzu wird in diesem Artikel das Service Fabric-Verpackungstool ([http://aka.ms/servicefabricpacktool](https://aka.ms/servicefabricpacktool)) verwendet.
 
 ### <a name="packaging-the-nodejs-application"></a>Packen der Node.js-Anwendung
 In diesem Artikel wird vorausgesetzt, dass Node.js nicht auf den Knoten im Service Fabric-Cluster installiert ist. Daher müssen Sie vor dem Packen „Node.exe“ dem Stammverzeichnis Ihrer Node.js-Anwendung hinzufügen. Die Verzeichnisstruktur der Node.js-Anwendung (mit dem Webframework Express und der Vorlagen-Engine Jade) sollte wie folgt aussehen:

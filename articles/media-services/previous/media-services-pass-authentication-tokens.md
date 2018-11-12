@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/01/2017
 ms.author: dwgeo
-ms.openlocfilehash: b6aca2928465b73e35ac15f01bb776b1f69add0b
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 204a2122f38306f2c883436fb13397b45fd91980
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33783119"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51254620"
 ---
 # <a name="learn-how-clients-pass-tokens-to-the-azure-media-services-key-delivery-service"></a>Erfahren Sie, wie Clients Token an den Schlüsselbereitstellungsdienst von Azure Media Services übergeben.
 Kunden fragen häufig, wie ein Player Token für die Überprüfung an den Schlüsselübermittlungsdienst von Azure Media Services übergeben kann, damit der Player den Schlüssel abrufen kann. Media Services unterstützt die Formate „Simple Web Token“ (SWT) und „JSON Web Token“ (JWT). Die Tokenauthentifizierung kann auf jede Art von Schlüssel angewendet werden, unabhängig davon, ob Sie die Common Encryption oder die AES-Umschlagverschlüsselung (Advanced Encryption Standard) im System verwenden.
@@ -52,7 +52,7 @@ Diese Option wird nur für den Erwerb von PlayReady-Lizenzen über das Feld „C
     ```
     Platzieren Sie Ihr Authentifizierungstoken im Token-Element.
 
-- Über eine alternative HLS-Wiedergabeliste (HTTP Live Streaming). Wenn Sie die Tokenauthentifizierung für die AES- und HLS-Wiedergabe unter iOS/Safari konfigurieren müssen, gibt es keine Möglichkeit, das Token direkt zu senden. Weitere Informationen zum Ändern der Wiedergabeliste, damit dieses Szenario ermöglicht wird, finden Sie in [diesem Blogbeitrag](http://azure.microsoft.com/blog/2015/03/06/how-to-make-token-authorized-aes-encrypted-hls-stream-working-in-safari/).
+- Über eine alternative HLS-Wiedergabeliste (HTTP Live Streaming). Wenn Sie die Tokenauthentifizierung für die AES- und HLS-Wiedergabe unter iOS/Safari konfigurieren müssen, gibt es keine Möglichkeit, das Token direkt zu senden. Weitere Informationen zum Ändern der Wiedergabeliste, damit dieses Szenario ermöglicht wird, finden Sie in [diesem Blogbeitrag](https://azure.microsoft.com/blog/2015/03/06/how-to-make-token-authorized-aes-encrypted-hls-stream-working-in-safari/).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

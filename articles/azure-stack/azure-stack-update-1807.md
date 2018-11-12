@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/07/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: b4ee3354d024034fd47ee50ae78d25d5bb4a38f5
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: ce74d12e4ea91d8c230218081461bc375e250ce4
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49345270"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51260583"
 ---
 # <a name="azure-stack-1807-update"></a>Azure Stack-Update 1807
 
@@ -94,7 +94,7 @@ Dieses Update enthält die folgenden Verbesserungen für Azure Stack.
 - **Kürzere VM-Erstellungszeit** für VMs, die mit aus dem Azure Marketplace heruntergeladenen Images erstellt werden.
 
 <!-- TBD | IS, ASDK -->  
-- **Verbesserte Benutzerfreundlichkeit von Azure Stack Capacity Planner**. Der Azure Stack [Capacity Planner](http://aka.ms/azstackcapacityplanner) umfasst jetzt eine vereinfachte Umgebung für die Eingabe von S2D-Caches und S2D-Kapazitäten beim Definieren von Lösungs-SKUs. Die Beschränkung auf 1.000 virtuelle Computer wurde aufgehoben.
+- **Verbesserte Benutzerfreundlichkeit von Azure Stack Capacity Planner**. Der Azure Stack [Capacity Planner](https://aka.ms/azstackcapacityplanner) umfasst jetzt eine vereinfachte Umgebung für die Eingabe von S2D-Caches und S2D-Kapazitäten beim Definieren von Lösungs-SKUs. Die Beschränkung auf 1.000 virtuelle Computer wurde aufgehoben.
 
 
 ### <a name="fixed-issues"></a>Behobene Probleme

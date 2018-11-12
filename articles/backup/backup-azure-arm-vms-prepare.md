@@ -9,16 +9,16 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: raynew
-ms.openlocfilehash: 30b35d38c30d3ee9410a85824c53001ca95cf30b
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 6de0d29895a6d12d3a5aa761c0c4c5148f62dd81
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50025938"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51256271"
 ---
 # <a name="prepare-to-back-up-azure-vms"></a>Vorbereiten der Sicherung virtueller Azure-Computer
 
-Dieser Artikel enthält die Schritte zum Vorbereiten Ihrer Umgebung zum Sichern eines mit Azure Resource Manager bereitgestellten virtuellen Computers (VM). In den im Verfahren dargestellten Schritten wird das Azure-Portal genutzt. Wenn Sie einen virtuellen Computer sichern, werden die Sicherungsdaten oder Wiederherstellungspunkte in einem Recovery Services-Sicherungstresor gespeichert. 
+Dieser Artikel enthält die Schritte zum Vorbereiten Ihrer Umgebung zum Sichern eines mit Azure Resource Manager bereitgestellten virtuellen Computers (VM). In den im Verfahren dargestellten Schritten wird das Azure-Portal genutzt. Wenn Sie einen virtuellen Computer sichern, werden die Sicherungsdaten oder Wiederherstellungspunkte in einem Recovery Services-Sicherungstresor gespeichert.
 
 
 
@@ -45,7 +45,7 @@ Wenn diese Bedingungen in Ihrer Umgebung bereits erfüllt sind, fahren Sie mit d
 ## <a name="limitations-when-backing-up-and-restoring-a-vm"></a>Einschränkungen beim Sichern und Wiederherstellen eines virtuellen Computers
 Machen Sie sich vor der Vorbereitung der Umgebung mit diesen Einschränkungen vertraut:
 
-* Die Sicherung von virtuellen Computern mit mehr als 32 Datenträgern wird nicht unterstützt.
+* Die Sicherung von virtuellen Computern mit mehr als 16 Datenträgern wird nicht unterstützt.
 * Das Sichern von virtuellen Linux-Computern, die mit Linux Unified Key Setup (LUKS) verschlüsselt sind, wird nicht unterstützt.
 * Das Sichern von virtuellen Computern, die freigegebene Clustervolumes (Cluster Shared Volumes, CSV) oder eine Konfiguration für Dateiserver mit horizontaler Skalierung enthalten, wird nicht empfohlen. Wenn dies der Fall ist, wird ein Fehler bei CSV-Schreibern erwartet. Dafür müssen alle während einer Momentaufnahmenaufgabe in der Clusterkonfiguration enthaltenen virtuellen Computer berücksichtigt werden. Azure Backup unterstützt keine Multi-VM-Konsistenz.
 * Im Netzwerk bereitgestellte und an einen virtuellen Computer angefügte Laufwerke werden nicht in die Sicherungsdaten einbezogen.
@@ -182,8 +182,8 @@ Falls beim Sichern des virtuellen Azure-Computers Probleme auftreten, vergewisse
 
 | **Vorgang** | **Windows** | **Linux** |
 | --- | --- | --- |
-| Installieren des VM-Agent |Laden Sie den [Agent-MSI](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)herunter, und installieren Sie ihn. Zum Durchführen der Installation benötigen Sie Administratorberechtigungen. |<li> Installieren Sie den neuesten [Linux-Agent](../virtual-machines/extensions/agent-linux.md). Zum Durchführen der Installation benötigen Sie Administratorberechtigungen. Es wird empfohlen, den Agent aus dem Repository Ihrer Distribution zu installieren. Es wird **nicht empfohlen**, den Linux-VM-Agent direkt von GitHub zu installieren.  |
-| Aktualisieren des VM-Agents |Das Aktualisieren des VM-Agents ist so einfach wie das Neuinstallieren der [Binärdateien für den VM-Agent](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). <br>Stellen Sie sicher, dass kein Sicherungsvorgang ausgeführt wird, während der VM-Agent aktualisiert wird. |Folgen Sie den Anweisungen unter [Aktualisieren des Linux-VM-Agents](../virtual-machines/linux/update-agent.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Es wird empfohlen, den Agent aus dem Repository Ihrer Distribution zu aktualisieren. Es wird **nicht empfohlen**, den Linux-VM-Agent direkt von GitHub zu aktualisieren.<br>Stellen Sie sicher, dass kein Sicherungsvorgang ausgeführt wird, während der VM-Agent aktualisiert wird. |
+| Installieren des VM-Agent |Laden Sie den [Agent-MSI](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)herunter, und installieren Sie ihn. Zum Durchführen der Installation benötigen Sie Administratorberechtigungen. |<li> Installieren Sie den neuesten [Linux-Agent](../virtual-machines/extensions/agent-linux.md). Zum Durchführen der Installation benötigen Sie Administratorberechtigungen. Es wird empfohlen, den Agent aus dem Repository Ihrer Distribution zu installieren. Es wird **nicht empfohlen**, den Linux-VM-Agent direkt von GitHub zu installieren.  |
+| Aktualisieren des VM-Agents |Das Aktualisieren des VM-Agents ist so einfach wie das Neuinstallieren der [Binärdateien für den VM-Agent](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). <br>Stellen Sie sicher, dass kein Sicherungsvorgang ausgeführt wird, während der VM-Agent aktualisiert wird. |Folgen Sie den Anweisungen unter [Aktualisieren des Linux-VM-Agents](../virtual-machines/linux/update-agent.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Es wird empfohlen, den Agent aus dem Repository Ihrer Distribution zu aktualisieren. Es wird **nicht empfohlen**, den Linux-VM-Agent direkt von GitHub zu aktualisieren.<br>Stellen Sie sicher, dass kein Sicherungsvorgang ausgeführt wird, während der VM-Agent aktualisiert wird. |
 | Überprüfen der VM-Agent-Installation |<li>Navigieren Sie auf dem virtuellen Azure-Computer zum Ordner *C:\WindowsAzure\Packages*. <li>Dieser Ordner enthält die Datei "WaAppAgent.exe".<li> Klicken Sie mit der rechten Maustaste auf die Datei, wechseln Sie zu **Eigenschaften**, und wählen Sie dann die Registerkarte **Details** aus. Im Feld mit der Produktversion sollte 2.6.1198.718 oder eine höhere Version angegeben sein. |N/V |
 
 ### <a name="backup-extension"></a>Backup-Erweiterung
@@ -194,7 +194,7 @@ Die Sicherungserweiterung wird vom Sicherungsdienst unabhängig davon installier
 ## <a name="establish-network-connectivity"></a>Herstellen der Netzwerkverbindung
 Zum Verwalten der VM-Momentaufnahmen benötigt die Sicherungserweiterung eine Verbindung mit den öffentlichen Azure-IP-Adressen. Ohne die richtige Internetverbindung tritt bei diesen HTTP-Anforderungen des virtuellen Computers ein Timeout auf, und der Sicherungsvorgang funktioniert nicht. Wenn in Ihrer Bereitstellung Zugriffseinschränkungen aktiv sind (z.B. über eine Netzwerksicherheitsgruppe [NSG]), wählen Sie eine der folgenden Optionen für die Bereitstellung eines freien Pfades für den Sicherungsdatenverkehr:
 
-* [Setzen Sie die IP-Bereiche der Azure-Rechenzentren auf die Whitelist](http://www.microsoft.com/en-us/download/details.aspx?id=41653).
+* [Setzen Sie die IP-Bereiche der Azure-Rechenzentren auf die Whitelist](https://www.microsoft.com/download/details.aspx?id=41653).
 * Stellen Sie einen HTTP-Proxyserver zum Weiterleiten des Datenverkehrs bereit.
 
 Bei der Entscheidung, welche Option Sie verwenden, müssen Sie die Kompromisse zwischen Verwaltbarkeit, differenzierter Kontrolle und Kosten abwägen.
@@ -205,7 +205,7 @@ Bei der Entscheidung, welche Option Sie verwenden, müssen Sie die Kompromisse z
 | Verwenden eines HTTP-Proxys |Feinsteuerung im Proxy über die Speicher-URLs ist zulässig.<br><br>Zentraler Punkt für Internetzugriff auf virtuelle Computer.<br><br>Unterliegt keinen Azure-IP-Adressänderungen. |Zusätzliche Kosten für die Ausführung eines virtuellen Computers mit Proxysoftware. |
 
 ### <a name="whitelist-the-azure-datacenter-ip-ranges"></a>Whitelist der IP-Bereiche der Azure-Rechenzentren
-Ausführliche Informationen und Anweisungen zur Aufnahme der IP-Bereiche der Azure-Rechenzentren in eine Whitelist finden Sie auf der [Azure-Website](http://www.microsoft.com/en-us/download/details.aspx?id=41653).
+Ausführliche Informationen und Anweisungen zur Aufnahme der IP-Bereiche der Azure-Rechenzentren in eine Whitelist finden Sie auf der [Azure-Website](https://www.microsoft.com/download/details.aspx?id=41653).
 
 Mit [Diensttags](../virtual-network/security-overview.md#service-tags) können Sie Verbindungen zum Speichern bestimmter Regionen zulassen. Stellen Sie sicher, dass die Regel, die Zugriff auf das Speicherkonto zulässt, eine höhere Priorität hat, als die Regel, die den Internetzugriff blockiert.
 
@@ -305,7 +305,7 @@ Set-AzureNetworkSecurityRule -Name "allow-proxy " -Action Allow -Protocol TCP -T
 ```
 
 ## <a name="questions"></a>Fragen?
-Wenn Sie Fragen haben oder Anregungen zu gewünschten Funktionen mitteilen möchten, [senden Sie uns Ihr Feedback](http://aka.ms/azurebackup_feedback).
+Wenn Sie Fragen haben oder Anregungen zu gewünschten Funktionen mitteilen möchten, [senden Sie uns Ihr Feedback](https://aka.ms/azurebackup_feedback).
 
 ## <a name="next-steps"></a>Nächste Schritte
 Ihre Umgebung ist jetzt für das Sichern Ihres virtuellen Computers vorbereitet. Der nächste logische Schritt besteht darin, eine Sicherung zu erstellen. Der Planungsartikel enthält ausführlichere Informationen zum Sichern virtueller Computer.

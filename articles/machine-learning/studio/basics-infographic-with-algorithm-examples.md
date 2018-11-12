@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/18/2017
-ms.openlocfilehash: a7d2d1e46847f6126ad2905e9f2d3ce52957dad5
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 8ef67add44428e08a1851a039e7e8c2c747e930d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34833366"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51253855"
 ---
 # <a name="downloadable-infographic-machine-learning-basics-with-algorithm-examples"></a>Herunterladbare Infografik: Grundlagen des maschinellen Lernens mit Algorithmusbeispielen
 Laden Sie diese einfach verständliche Infografikübersicht über Grundlagen von Machine Learning herunter, um die gängigen Algorithmen für häufige Fragen zu Machine Learning zu identifizieren. Algorithmusbeispiele helfen Einsteigern in das Machine Learning zu verstehen, welche Algorithmen verwendet werden können und welche Einsatzgebiete es für sie gibt.
@@ -30,7 +30,7 @@ Laden Sie diese einfach verständliche Infografikübersicht über Grundlagen von
 [Azure Machine Learning Studio](https://studio.azureml.net/) bietet eine große Bibliothek von Algorithmen für Predictive Analytics. Die Infografik identifiziert vier beliebte Algorithmusfamilien (Regression, Anomalieerkennung, Clustering und Klassifizierung) und enthält Links zu funktionierenden Beispielen im [Azure AI-Katalog](https://gallery.cortanaintelligence.com/). Der Katalog enthält Beispielexperimente und Tutorials, die veranschaulichen, wie diese Algorithmen in vielen realen Lösungen angewendet werden können.
 
 ## <a name="download-the-infographic-with-algorithm-examples"></a>Die Infografik mit Algorithmusbeispielen herunterladen
-**[Herunterladen: Infografik zu Machine Learning-Grundlagen mit Links zu Algorithmusbeispielen (PDF)](http://download.microsoft.com/download/0/5/A/05AE6B94-E688-403E-90A5-6035DBE9EEC5/machine-learning-basics-infographic-with-algorithm-examples.pdf)**
+**[Herunterladen: Infografik zu Machine Learning-Grundlagen mit Links zu Algorithmusbeispielen (PDF)](https://download.microsoft.com/download/0/5/A/05AE6B94-E688-403E-90A5-6035DBE9EEC5/machine-learning-basics-infographic-with-algorithm-examples.pdf)**
 
 ![Infografik: Grundlagen des maschinellen Lernens mit Algorithmusbeispielen. Häufig verwendete Algorithmen. Maschinelles Lernen für Einsteiger.](./media/basics-infographic-with-algorithm-examples/machine-learning-basics-infographic-with-algorithm-examples.png)
 

@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 ms.author: haining
 author: haining
 ms.date: 09/24/2018
-ms.openlocfilehash: 9778d348cf49d4066f034931dc350a1f4a608ad2
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: e2b3545c020f41f25f19843eab158cfb1b419164
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48236583"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51253447"
 ---
 # <a name="migrate-to-the-latest-version-of-azure-machine-learning-service"></a>Migrieren zur neuesten Version des Azure Machine Learning Services 
 
@@ -38,7 +38,7 @@ In der folgenden Tabelle und im Artikel wird erläutert, was Sie vor oder nach d
 |Registrierte Bilder|Nein |Erstellen Sie das Docker-Image zur Bereitstellung unter einem neuen Arbeitsbereich neu.|
 |Bereitgestellte Webdienste|Nein |None (Keine): Sie funktionieren immer noch wie bisher, <br/>oder [stellen Sie sie erneut mit der neuesten Version bereit](#services).|
 |Experimentier- <br/>und Modellverwaltungskonten|Nein |Stattdessen: [Erstellen Sie einen Arbeitsbereich](#resources).|
-|Machine Learning-CLI und -SDK|Nein |Verwenden Sie für neue Arbeit das neue [CLI](reference-azure-machine-learning-cli.md) und [SDK](http://aka.ms/aml-sdk).|
+|Machine Learning-CLI und -SDK|Nein |Verwenden Sie für neue Arbeit das neue [CLI](reference-azure-machine-learning-cli.md) und [SDK](https://aka.ms/aml-sdk).|
 
 
 Möchten Sie mehr dazu erfahren, [was sich in dieser Version geändert hat](overview-what-happened-to-workbench.md)?
@@ -62,7 +62,7 @@ Dieser neue Arbeitsbereich ist die Dienstressource der obersten Ebene und ermög
 
 Statt Ihre Projekte in einem Arbeitsbereich in der Cloud zu speichern, stellen Projekte in der aktuellen Version jetzt Verzeichnisse auf Ihrem lokalen Computer dar. [Diagramm der aktuellen Architektur](concept-azure-machine-learning-architecture.md). 
 
-Um das lokale Verzeichnis, das Ihre Dateien und Skripts enthält, weiterhin zu verwenden, geben Sie den Namen des Verzeichnisses im Python-Befehl ['experiment.submit'](http://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py) ein, oder verwenden Sie am CLI den Befehl 'az ml project attach'.
+Um das lokale Verzeichnis, das Ihre Dateien und Skripts enthält, weiterhin zu verwenden, geben Sie den Namen des Verzeichnisses im Python-Befehl ['experiment.submit'](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py) ein, oder verwenden Sie am CLI den Befehl 'az ml project attach'.
 
 Beispiel: 
 ```python

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/13/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: d7dbb808205c78b53277c6d916f5166a41c7e93d
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: 227ef61ee4809d376c6ac5e8e8c1a7f9c364b7fc
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49638425"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51255761"
 ---
 # <a name="azure-storage-account-overview"></a>Übersicht über Azure Storage-Konten
 
@@ -107,7 +107,7 @@ Azure Storage bietet verschiedene Optionen für den Zugriff auf Blockblobdaten b
 Folgende Zugriffsebenen sind verfügbar:
 
 > [!NOTE]
-> Die [Premium-Zugriffsebene](../blobs/storage-blob-storage-tiers.md#premium-access-tier) ist als LRS-Konto (lokal redundanter Speicher) in den Regionen „Europa, Norden“, „USA, Osten 2“, „USA, Mitte“ und „USA, Westen“ in der eingeschränkten Vorschau verfügbar. Um zu erfahren, wie Sie sich für die Vorschau registrieren, lesen Sie den Artikel [Einführung in Azure Blob Storage Premium](http://aka.ms/premiumblob).
+> Die [Premium-Zugriffsebene](../blobs/storage-blob-storage-tiers.md#premium-access-tier) ist als LRS-Konto (lokal redundanter Speicher) in den Regionen „Europa, Norden“, „USA, Osten 2“, „USA, Mitte“ und „USA, Westen“ in der eingeschränkten Vorschau verfügbar. Um zu erfahren, wie Sie sich für die Vorschau registrieren, lesen Sie den Artikel [Einführung in Azure Blob Storage Premium](https://aka.ms/premiumblob).
 
 * Die Zugriffsebene **Heiß**, die für häufigen Zugriff auf Objekte im Speicherkonto optimiert ist. Der Zugriff auf Daten auf der Zugriffsebene „Heiß“ ist sehr kosteneffektiv, aber die Speicherkosten liegen etwas höher. Neue Speicherkonten werden standardmäßig auf dieser Ebene erstellt.
 * Die Zugriffsebene **Kalt**, die für die Speicherung von großen Datenmengen optimiert ist, auf die selten zugegriffen wird und die mindestens 30 Tage lang gespeichert werden. Das Speichern von Daten auf der Ebene „Kalt“ ist sehr kosteneffektiv, aber der Zugriff auf die Daten ist unter Umständen etwas kostenintensiver als der Zugriff auf Daten auf der Ebene „Heiß“.

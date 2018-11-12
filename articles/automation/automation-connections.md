@@ -9,18 +9,18 @@ ms.author: gwallace
 ms.date: 03/15/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d9dbf816d4fd0d9f6044ebeea9a23a60adcc5bc8
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 1e9ca18d2075d40f6f55bc84723f79ae7e10850b
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48044602"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51261212"
 ---
 # <a name="connection-assets-in-azure-automation"></a>Verbindungsobjekte in Azure Automation
 
 Ein Automation-Verbindungsobjekt enthält die Informationen, die zur Verbindungsherstellung mit einem externen Dienst oder einer externen Anwendung aus einem Runbook oder einer DSC-Konfiguration erforderlich sind. Dies kann Informationen einschließen, die für die Authentifizierung erforderlich sind, beispielsweise ein Benutzername und ein Kennwort oder Verbindungsinformationen wie eine URL oder ein Port. Der Wert einer Verbindung liegt darin, dass alle Eigenschaften zur Verbindungsherstellung mit einer bestimmten Anwendung in einem Objekt gespeichert werden, statt mehrere Variablen zu erstellen. Der Benutzer kann die Werte für eine Verbindung an einem Ort bearbeiten, und Sie können den Namen einer Verbindung in einem einzelnen Parameter an ein Runbook oder eine DSC-Konfiguration übergeben. Auf die Eigenschaften für eine Verbindung kann im Runbook oder in der DSC-Konfiguration über die Aktivität **Get-AutomationConnection** zugegriffen werden. 
 
-Wenn Sie eine Verbindung erstellen, müssen Sie einen *Verbindungstyp*angeben. Der Verbindungstyp ist eine Vorlage, die einen Satz von Eigenschaften definiert. Die Verbindung definiert Werte für jede der Eigenschaften, die im zugehörigen Verbindungstyp definiert sind. Verbindungstypen werden Azure Automation in Integrationsmodulen hinzugefügt oder mit der [Azure Automation-API](http://msdn.microsoft.com/library/azure/mt163818.aspx) erstellt, wenn das Integrationsmodul einen Verbindungstyp enthält und in Ihr Automation-Konto importiert wird. Andernfalls müssen Sie eine Metadatendatei erstellen, um einen Automation-Verbindungstyp anzugeben.  Weitere Informationen dazu finden Sie unter [Integrationsmodule](automation-integration-modules.md).  
+Wenn Sie eine Verbindung erstellen, müssen Sie einen *Verbindungstyp*angeben. Der Verbindungstyp ist eine Vorlage, die einen Satz von Eigenschaften definiert. Die Verbindung definiert Werte für jede der Eigenschaften, die im zugehörigen Verbindungstyp definiert sind. Verbindungstypen werden Azure Automation in Integrationsmodulen hinzugefügt oder mit der [Azure Automation-API](https://msdn.microsoft.com/library/azure/mt163818.aspx) erstellt, wenn das Integrationsmodul einen Verbindungstyp enthält und in Ihr Automation-Konto importiert wird. Andernfalls müssen Sie eine Metadatendatei erstellen, um einen Automation-Verbindungstyp anzugeben.  Weitere Informationen dazu finden Sie unter [Integrationsmodule](automation-integration-modules.md).  
 
 >[!NOTE]
 >Zu den sicheren Objekten in Azure Automation gehören Anmeldeinformationen, Zertifikate, Verbindungen und verschlüsselte Variablen. Diese Objekte werden mithilfe eines eindeutigen Schlüssels verschlüsselt und in Azure Automation gespeichert, der für jedes Automation-Konto generiert wird. Dieser Schlüssel wird in Key Vault gespeichert. Vor dem Speichern eines sicheren Objekts wird der Schlüssel aus Key Vault geladen und dann zum Verschlüsseln des Objekts verwendet.
@@ -70,7 +70,7 @@ Mit der Funktion in der folgenden Tabelle wird auf Verbindungen in einem Python2
 
 ### <a name="to-create-a-new-connection-with-windows-powershell"></a>So erstellen Sie eine neue Verbindung mit Windows PowerShell
 
-Erstellen Sie mit dem Windows PowerShell-Cmdlet [New-AzureRmAutomationConnection](/powershell/module/azurerm.automation/new-azurermautomationconnection) eine neue Verbindung. Dieses Cmdlet verfügt über den Parameter **ConnectionFieldValues** , der eine [Hashtabelle](http://technet.microsoft.com/library/hh847780.aspx) erwartet, mit deren Hilfe die Werte für jede der im Verbindungstyp definierten Eigenschaften festgelegt werden.
+Erstellen Sie mit dem Windows PowerShell-Cmdlet [New-AzureRmAutomationConnection](/powershell/module/azurerm.automation/new-azurermautomationconnection) eine neue Verbindung. Dieses Cmdlet verfügt über den Parameter **ConnectionFieldValues** , der eine [Hashtabelle](https://technet.microsoft.com/library/hh847780.aspx) erwartet, mit deren Hilfe die Werte für jede der im Verbindungstyp definierten Eigenschaften festgelegt werden.
 
 Wenn Sie mit dem [ausführenden Konto](automation-sec-configure-azure-runas-account.md) von Automation zum Authentifizieren von Runbooks mithilfe des Dienstprinzipals vertraut sind, verwenden Sie das PowerShell-Skript, das als Alternative zum Erstellen des ausführenden Kontos über das Portal bereitgestellt wurde, mit den folgenden Beispielbefehlen zum Erstellen eines neuen Verbindungsobjekts.  
 
@@ -84,7 +84,7 @@ Sie können das Skript verwenden, um das Verbindungsobjekt zu erstellen. Als Sie
   
 ## <a name="using-a-connection-in-a-runbook-or-dsc-configuration"></a>Verwenden einer Verbindung in einem Runbook oder einer DSC-Konfiguration
 
-Rufen Sie eine Verbindung in einem Runbook oder einer DSC-Konfiguration mit dem Cmdlet **Get-AutomationConnection** ab.  Sie können die Aktivität [Get AzureRmAutomationConnection](/powershell/module/azurerm.automation/get-azurermautomationconnection) nicht verwenden.  Mithilfe dieser Aktivität werden die Werte der verschiedenen Felder in der Verbindung abgerufen und als [Hashtabelle](http://go.microsoft.com/fwlink/?LinkID=324844) zurückgegeben, die anschließend mithilfe geeigneter Befehle im Runbook oder in der DSC-Konfiguration verwendet werden kann.
+Rufen Sie eine Verbindung in einem Runbook oder einer DSC-Konfiguration mit dem Cmdlet **Get-AutomationConnection** ab.  Sie können die Aktivität [Get AzureRmAutomationConnection](/powershell/module/azurerm.automation/get-azurermautomationconnection) nicht verwenden.  Mithilfe dieser Aktivität werden die Werte der verschiedenen Felder in der Verbindung abgerufen und als [Hashtabelle](https://go.microsoft.com/fwlink/?LinkID=324844) zurückgegeben, die anschließend mithilfe geeigneter Befehle im Runbook oder in der DSC-Konfiguration verwendet werden kann.
 
 ### <a name="textual-runbook-sample"></a>Beispiel für ein Textrunbook
 

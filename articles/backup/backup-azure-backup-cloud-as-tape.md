@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 1/10/2017
 ms.author: saurse
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ff30dd0e4c7cadabddbeddc38c28a773db68d8ff
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 59236774f98af927082c78f4b75a1f5880a7cac4
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34606493"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51259603"
 ---
 # <a name="move-your-long-term-storage-from-tape-to-the-azure-cloud"></a>Verschieben langfristiger Speicher von Bändern in die Azure-Cloud
 Kunden von Azure Backup und System Center Data Protection Manager haben folgende Möglichkeiten:
@@ -23,7 +23,7 @@ Kunden von Azure Backup und System Center Data Protection Manager haben folgende
 * Beibehalten der Sicherungsdaten für längere Zeiträume
 * Integrieren von Azure in ihre Anforderungen an die langfristige Aufbewahrung (anstelle von Bändern)
 
-In diesem Artikel wird erläutert, wie Kunden Sicherungs- und Aufbewahrungsrichtlinien aktivieren können. Kunden, die für ihre Anforderungen an eine langfristige Aufbewahrung Bänder verwenden, steht jetzt dank dieses Features eine leistungsstarke und geeignete Alternative zur Verfügung. Das Feature ist in der neuesten Version von Azure Backup aktiviert (die [hier](http://aka.ms/azurebackup_agent)erhältlich ist). System Center DPM-Kunden müssen mindestens auf DPM 2012 R2 UR5 aktualisieren, bevor sie DPM mit dem Azure Backup-Dienst verwenden können.
+In diesem Artikel wird erläutert, wie Kunden Sicherungs- und Aufbewahrungsrichtlinien aktivieren können. Kunden, die für ihre Anforderungen an eine langfristige Aufbewahrung Bänder verwenden, steht jetzt dank dieses Features eine leistungsstarke und geeignete Alternative zur Verfügung. Das Feature ist in der neuesten Version von Azure Backup aktiviert (die [hier](https://aka.ms/azurebackup_agent)erhältlich ist). System Center DPM-Kunden müssen mindestens auf DPM 2012 R2 UR5 aktualisieren, bevor sie DPM mit dem Azure Backup-Dienst verwenden können.
 
 ## <a name="what-is-the-backup-schedule"></a>Was ist ein Sicherungszeitplan?
 Der Sicherungszeitplan gibt die Häufigkeit des Sicherungsvorgangs an. Die Einstellungen auf dem folgenden Bildschirm geben beispielsweise an, dass Sicherungen täglich um 18:00 Uhr und um Mitternacht ausgeführt werden.

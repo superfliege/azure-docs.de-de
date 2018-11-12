@@ -14,12 +14,12 @@ ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 08/03/2016
 ms.author: hascipio;
-ms.openlocfilehash: e1f90650e71345957c2d353774cb8bef62c1868b
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: d4c7dce1876e9838fe986aebb7e38a09e8a82baf
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39715014"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51252971"
 ---
 # <a name="post-production-guide-for-virtual-machine-offers-in-the-azure-marketplace"></a>Postproduktionsleitfaden für Virtual Machine-Angebote im Azure Marketplace
 In diesem Artikel wird beschrieben, wie Sie ein Virtual Machine-Liveangebot im Azure Marketplace aktualisieren können. Sie werden durch die Schritte zum Hinzufügen einer oder mehrerer neuer SKUs zu einem vorhandenen Angebot geführt. Außerdem wird beschrieben, wie Sie ein VM-Liveangebot oder eine SKU vom Marketplace entfernen.
@@ -30,7 +30,7 @@ Sobald ein Angebot/eine SKU im [Azure-Portal](http://portal.azure.com) bereitges
 * **SKU-Bezeichner**: Navigieren Sie im Veröffentlichungsportal zu **Virtual Machines**, und wählen Sie Ihr Angebot aus. Klicken Sie dann auf **SKUS** > **SKU hinzufügen**.
 * **Herausgebernamespace:**: Navigieren Sie im Veröffentlichungsportal zu **Virtual Machines** > **Vorgehensweise** > **Informationen zu Ihrem Unternehmen** (unter „Schritt 2: Registrieren Sie Ihr Unternehmen“)**Herausgebernamespace** > **Namespace**.
 
-Sobald ein Angebot/eine SKU im [Marketplace](http://azure.microsoft.com/marketplace) aufgeführt ist, können Sie die folgenden Textfelder nicht mehr ändern:
+Sobald ein Angebot/eine SKU im [Marketplace](https://azure.microsoft.com/marketplace) aufgeführt ist, können Sie die folgenden Textfelder nicht mehr ändern:
 
 * **Angebotsbezeichner**: Navigieren Sie im Veröffentlichungsportal zu **Virtual Machines**, und wählen Sie Ihr Angebot aus. Klicken Sie dann auf **VM-IMAGES** > **Angebotsbezeichner**.
 * **SKU-Bezeichner**: Navigieren Sie im Veröffentlichungsportal zu **Virtual Machines**, und wählen Sie Ihr Angebot aus. Klicken Sie dann auf **SKUS** > **SKU hinzufügen**.
@@ -70,7 +70,7 @@ Gehen Sie zum Aktualisieren der Angebotsdetails und zum erneuten Veröffentliche
 2. Navigieren Sie zur Registerkarte **Virtual Machines**, und wählen Sie Ihr Angebot aus.
 3. Klicken Sie im Menü auf der linken Seite auf die Registerkarte **MARKETING**.
 4. Klicken Sie auf **English (US)**.
-5. Klicken Sie auf die Registerkarte **DETAILS**. Aktualisieren Sie im Abschnitt **Beschreibung** den **TITEL**, die **ÜBERSICHT** und die **AUSFÜHRLICHE ÜBERSICHT** für das Angebot, und speichern Sie die Einstellungen.
+5. Klicken Sie auf die Registerkarte **DETAILS**. Aktualisieren Sie im Abschnitt Beschreibung den **TITEL**, die **ÜBERSICHT** und die **AUSFÜHRLICHE ÜBERSICHT** für das Angebot, und speichern Sie die Einstellungen.
 
    > [!NOTE]
    > Wenn Sie die Details für die SKU aktualisieren, beachten Sie diese Einschränkungen: 
@@ -99,7 +99,7 @@ Gehen Sie zum Aktualisieren der SKU-Details und zum erneuten Veröffentlichen Ih
 2. Navigieren Sie zur Registerkarte **Virtual Machines**, und wählen Sie Ihr Angebot aus.
 3. Klicken Sie im Menü auf der linken Seite auf die Registerkarte **MARKETING**.
 4. Klicken Sie auf **English (US)**.
-5. Klicken Sie auf die Registerkarte **PLÄNE**. Aktualisieren Sie im Abschnitt **SKUs** den **TITEL**, die **ÜBERSICHT** und die **BESCHREIBUNG** der SKU, und speichern Sie die Änderungen.
+5. Klicken Sie auf die Registerkarte **PLÄNE**. Aktualisieren Sie im Abschnitt SKUs den **TITEL**, die **ÜBERSICHT** und die **BESCHREIBUNG** der SKU, und speichern Sie die Änderungen.
 
    > [!NOTE]
    > Wenn Sie die Details für die SKU aktualisieren, beachten Sie diese Einschränkungen: 

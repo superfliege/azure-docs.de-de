@@ -9,12 +9,12 @@ ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
 ms.author: maghan
-ms.openlocfilehash: ce1e3818edea6e0fdaedd33b6ec0c3214f475340
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 80208c83c96ba78db052017c2baa3bc0db63953f
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43048555"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51258849"
 ---
 # <a name="row-level-security-with-power-bi-workspace-collections"></a>Sicherheit auf Zeilenebene mit Power BI-Arbeitsbereichssammlungen
 
@@ -35,7 +35,7 @@ Um RLS nutzen zu können, ist es wichtig, dass Sie drei Hauptbegriffe verstanden
 
 ### <a name="example"></a>Beispiel
 
-Für den restlichen Teil dieses Artikels geben wir ein Beispiel für die Erstellung von RLS und die anschließende Verwendung in einer eingebetteten Anwendung an. In unserem Beispiel wird die PBIX-Datei [Retail Analysis Sample](http://go.microsoft.com/fwlink/?LinkID=780547) verwendet.
+Für den restlichen Teil dieses Artikels geben wir ein Beispiel für die Erstellung von RLS und die anschließende Verwendung in einer eingebetteten Anwendung an. In unserem Beispiel wird die PBIX-Datei [Retail Analysis Sample](https://go.microsoft.com/fwlink/?LinkID=780547) verwendet.
 
 ![Beispiel: Umsatzbericht](media/row-level-security/scenario-2.png)
 
@@ -87,7 +87,7 @@ Jetzt können Filter auch von der Tabelle „Sales“ zur Tabelle **Item** flie�
 1. **Datei** -> **Optionen und Einstellungen** -> **Vorschaufeatures** -> **Kreuzfilterung in beide Richtungen für DirectQuery aktivieren**.
 2. **Datei** -> **Optionen und Einstellungen** -> **DirectQuery** -> **Unbeschränkte Measures im DirectQuery-Modus zulassen**.
 
-Weitere Informationen zur bidirektionalen Kreuzfilterung erhalten Sie, indem Sie das Whitepaper [Bidirectional cross-filtering in SQL Server Analysis Services 2016 and Power BI Desktop](http://download.microsoft.com/download/2/7/8/2782DF95-3E0D-40CD-BFC8-749A2882E109/Bidirectional%20cross-filtering%20in%20Analysis%20Services%202016%20and%20Power%20BI.docx) (Bidirektionale Kreuzfilterung in SQL Server Analysis Services 2016 und Power BI Desktop) herunterladen.
+Weitere Informationen zur bidirektionalen Kreuzfilterung erhalten Sie, indem Sie das Whitepaper [Bidirectional cross-filtering in SQL Server Analysis Services 2016 and Power BI Desktop](https://download.microsoft.com/download/2/7/8/2782DF95-3E0D-40CD-BFC8-749A2882E109/Bidirectional%20cross-filtering%20in%20Analysis%20Services%202016%20and%20Power%20BI.docx) (Bidirektionale Kreuzfilterung in SQL Server Analysis Services 2016 und Power BI Desktop) herunterladen.
 
 Dies sind die Schritte, die in Power BI Desktop ausgeführt werden müssen. Es ist aber noch ein weiterer Schritt erforderlich, damit die definierten RLS-Regeln in Power BI Embedded funktionieren. Benutzer werden von Ihrer Anwendung authentifiziert und autorisiert, und App-Token werden verwendet, um den Benutzern Zugriff auf einen bestimmten Power BI Embedded-Bericht zu gewähren. Power BI Embedded verfügt nicht über spezifische Informationen darüber, wer der Benutzer ist. Damit RLS funktioniert, müssen Sie im Rahmen Ihres App-Tokens weiteren Kontext übergeben:
 
@@ -114,7 +114,7 @@ Wenn sich nun nach Abschluss all dieser Schritte eine Person bei unserer Anwendu
 
 ## <a name="see-also"></a>Weitere Informationen
 
-[Row-level security (RLS) with Power BI](https://powerbi.microsoft.com/documentation/powerbi-admin-rls/) (Sicherheit auf Zeilenebene)  
+[Sicherheit auf Zeilenebene](https://powerbi.microsoft.com/documentation/powerbi-admin-rls/)  
 [Authenticating and authorizing in Power BI Workspace Collections (Authentifizieren und Autorisieren in Power BI-Arbeitsbereichssammlungen)](app-token-flow.md)  
 [Power BI Desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-get-the-desktop/)  
 [JavaScript-Einbettungsbeispiel](https://microsoft.github.io/PowerBI-JavaScript/demo/)  

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 212afbd605e3a16da7be2c04492ec41875ff5b75
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 378eb8c1f2070e8f4b28c221369938e2ff04e2f3
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38666838"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51255172"
 ---
 # <a name="manage-all-policies-for-a-lab-in-azure-devtest-labs"></a>Verwalten aller Richtlinien für ein Lab in Azure DevTest Labs
 
@@ -27,7 +27,7 @@ Mit Azure DevTest Labs können Sie Kosten und unnötigen Aufwand in Ihren Labs m
 ## <a name="set-allowed-virtual-machine-sizes"></a>Festlegen der zulässigen Größen virtueller Computer
 Die Richtlinie für die zulässigen VM-Größen hilft dabei, unnötigen Aufwand im Lab zu minimieren, indem sie Ihnen ermöglicht, die im Lab zulässigen VM-Größen anzugeben. Wenn diese Richtlinie aktiviert ist, können nur VM-Größen aus dieser Liste zum Erstellen von virtuellen Computern verwendet werden.
 
-1. Wählen Sie im [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040) ein Lab und dann **Konfiguration und Richtlinien** aus.
+1. Wählen Sie im [Azure-Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) ein Lab und dann **Konfiguration und Richtlinien** aus.
 
     ![Zugreifen auf die Konfiguration und die Richtlinien des Labs](./media/devtest-lab-set-lab-policy/policies-menu.png)
 

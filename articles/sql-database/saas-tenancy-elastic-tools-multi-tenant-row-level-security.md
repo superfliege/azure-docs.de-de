@@ -12,12 +12,12 @@ ms.author: vanto
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: d669e7beb2d0e41ff26408d4f71c3e1648c41e3a
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 6d701878886cb1d5cc20a57614a474537f06a728
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50242567"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51242907"
 ---
 # <a name="multi-tenant-applications-with-elastic-database-tools-and-row-level-security"></a>Mehrinstanzenfähige Anwendungen mit elastischen Datenbanktools und zeilenbasierter Sicherheit
 
@@ -41,7 +41,7 @@ Das Ziel ist die Verwendung der APIs der elastischen Datenbank-Clientbibliothek 
 
 - Visual Studio (2012 oder neuere Version)
 - Erstellen von drei Azure SQL-Datenbanken
-- Folgendes Beispielprojekt: [Elastic DB Tools for Azure SQL - Multi-Tenant Shards](http://go.microsoft.com/?linkid=9888163)
+- Folgendes Beispielprojekt: [Elastic DB Tools for Azure SQL - Multi-Tenant Shards](https://go.microsoft.com/?linkid=9888163)
   - Geben Sie die Informationen für Ihre Datenbanken am Anfang der Datei **Program.cs** 
 
 Dieses Projekt stellt eine Erweiterung des unter [Elastische DB-Tools für Azure SQL – Entity Framework-Integration](sql-database-elastic-scale-use-entity-framework-applications-visual-studio.md) beschriebenen Projekts dar, indem Unterstützung für Shard-Datenbanken mit mehreren Mandanten hinzugefügt wird. Das Projekt erstellt eine einfache Konsolenanwendung zum Erstellen von Blogs und Beiträgen. Das Projekt umfasst vier Mandanten sowie zwei mehrinstanzenfähige Sharddatenbanken. Diese Konfiguration ist im vorhergehenden Diagramm dargestellt. 
@@ -254,7 +254,7 @@ GO
 ```
 
 > [!TIP]
-> In einem komplexen Projekt kann es erforderlich sein, das Prädikat zu Hunderten von Tabellen hinzuzufügen, was mühsam sein kann. Es gibt eine gespeicherte Prozedur als Hilfsprogramm, die automatisch eine Sicherheitsrichtlinie generiert und ein Prädikat zu allen Tabellen in einem Schema hinzufügt. Weitere Informationen finden Sie im Blogbeitrag unter [Apply Row-Level Security to all tables – helper script](http://blogs.msdn.com/b/sqlsecurity/archive/2015/03/31/apply-row-level-security-to-all-tables-helper-script) (Anwenden von zeilenbasierter Sicherheit auf alle Tabellen – Hilfsprogrammskript).
+> In einem komplexen Projekt kann es erforderlich sein, das Prädikat zu Hunderten von Tabellen hinzuzufügen, was mühsam sein kann. Es gibt eine gespeicherte Prozedur als Hilfsprogramm, die automatisch eine Sicherheitsrichtlinie generiert und ein Prädikat zu allen Tabellen in einem Schema hinzufügt. Weitere Informationen finden Sie im Blogbeitrag unter [Apply Row-Level Security to all tables – helper script](https://blogs.msdn.com/b/sqlsecurity/archive/2015/03/31/apply-row-level-security-to-all-tables-helper-script) (Anwenden von zeilenbasierter Sicherheit auf alle Tabellen – Hilfsprogrammskript).
 
 Wenn Sie die Beispielanwendung jetzt erneut ausführen, können Mandanten nur Zeilen anzeigen, die zu ihnen gehören. Darüber hinaus kann die Anwendung keine Zeilen einfügen, die Mandanten gehören, die nicht derzeit mit der Sharddatenbank verbunden sind. Außerdem kann die Anwendung die „TenantId“ nicht in allen Zeilen aktualisieren, die sie sehen kann. Wenn die Anwendung versucht, eine dieser Aktionen auszuführen, wird eine „DbUpdateException“ ausgelöst.
 
@@ -342,7 +342,7 @@ GO
 ### <a name="maintenance"></a>Wartung 
 
 - **Neue Shards hinzufügen**: Führen Sie das T-SQL-Skript zum Aktivieren von RLS auf allen neuen Shards aus. Andernfalls werden Abfragen für diese Shards nicht gefiltert.
-- **Neue Tabellen hinzufügen**: Fügen Sie den Sicherheitsrichtlinien aller Shards ein FILTER- und BLOCK-Prädikat hinzu, wenn eine neue Tabelle erstellt wird. Andernfalls werden Abfragen für die neue Tabelle nicht gefiltert. Dies kann mithilfe eines DDL-Triggers automatisiert werden, wie im Blogbeitrag [Apply Row-Level Security automatically to newly created tables](http://blogs.msdn.com/b/sqlsecurity/archive/2015/05/22/apply-row-level-security-automatically-to-newly-created-tables.aspx) (Automatisches Anwenden der Sicherheit auf Zeilenebene auf neu erstellte Tabellen) beschrieben.
+- **Neue Tabellen hinzufügen**: Fügen Sie den Sicherheitsrichtlinien aller Shards ein FILTER- und BLOCK-Prädikat hinzu, wenn eine neue Tabelle erstellt wird. Andernfalls werden Abfragen für die neue Tabelle nicht gefiltert. Dies kann mithilfe eines DDL-Triggers automatisiert werden, wie im Blogbeitrag [Apply Row-Level Security automatically to newly created tables](https://blogs.msdn.com/b/sqlsecurity/archive/2015/05/22/apply-row-level-security-automatically-to-newly-created-tables.aspx) (Automatisches Anwenden der Sicherheit auf Zeilenebene auf neu erstellte Tabellen) beschrieben.
 
 ## <a name="summary"></a>Zusammenfassung
 
@@ -358,7 +358,7 @@ Elastische Datenbanktools und zeilenbasierte Sicherheit können zusammen zum hor
 
 ## <a name="questions-and-feature-requests"></a>Fragen und Funktionswünsche
 
-Falls Sie Fragen haben, kontaktieren Sie uns im [SQL-Datenbank-Forum](http://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted). Featureanforderungen können im [SQL-Datenbank-Feedbackforum](https://feedback.azure.com/forums/217321-sql-database/) hinzugefügt werden.
+Falls Sie Fragen haben, kontaktieren Sie uns im [SQL-Datenbank-Forum](https://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted). Featureanforderungen können im [SQL-Datenbank-Feedbackforum](https://feedback.azure.com/forums/217321-sql-database/) hinzugefügt werden.
 
 
 <!--Image references-->

@@ -9,12 +9,12 @@ ms.service: search
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 05/19/2017
-ms.openlocfilehash: 83f7f29471d49c4dbbf1630b4e8e9006144638cc
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 5b7f454fed6206ac57799d6f1e86152cd52dc9e9
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31797786"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51254416"
 ---
 # <a name="query-your-azure-search-index-using-the-net-sdk"></a>Abfragen des Azure Search-Index mit dem .NET SDK
 > [!div class="op_single_selector"]
@@ -30,7 +30,7 @@ Dieser Artikel beschreibt, wie Sie einen Index mithilfe des [Azure Search .NET S
 [Erstellen Sie einen Azure Search-Index](search-what-is-an-index.md) und [füllen Sie ihn mit Daten](search-what-is-data-import.md), bevor Sie mit dieser exemplarischen Vorgehensweise beginnen.
 
 > [!NOTE]
-> Der gesamte Beispielcode in diesem Artikel wurde in C# geschrieben. Den vollständigen Quellcode finden Sie [auf GitHub](http://aka.ms/search-dotnet-howto). Eine ausführlichere exemplarische Vorgehensweise für den Beispielcode finden Sie auch unter [Verwenden von Azure Search aus einer .NET-Anwendung](search-howto-dotnet-sdk.md).
+> Der gesamte Beispielcode in diesem Artikel wurde in C# geschrieben. Den vollständigen Quellcode finden Sie [auf GitHub](https://aka.ms/search-dotnet-howto). Eine ausführlichere exemplarische Vorgehensweise für den Beispielcode finden Sie auch unter [Verwenden von Azure Search aus einer .NET-Anwendung](search-howto-dotnet-sdk.md).
 
 ## <a name="identify-your-azure-search-services-query-api-key"></a>Identifizieren des Abfrage-API-Schlüssel Ihres Azure Search-Diensts
 Nach der Erstellung eines Azure Search-Index sind Sie nun fast bereit, Abfragen mit dem .NET SDK auszugeben. Zunächst müssen Sie aber einen der Abfrage-API-Schlüssel abrufen, die für den bereitgestellten Suchdienst generiert wurden. Das .NET SDK sendet diesen API-Schlüssel für jede Anforderung an Ihren Dienst. Ein gültiger Schlüssel stellt anforderungsbasiert eine Vertrauensstellung her zwischen der Anwendung, die die Anforderung versendet, und dem Dienst, der sie verarbeitet.
@@ -49,7 +49,7 @@ Zum Abfragen eines Indexes können Sie einen der Abfrageschlüssel verwenden. Ad
 ## <a name="create-an-instance-of-the-searchindexclient-class"></a>Erstellen einer Instanz der SearchIndexClient-Klasse
 Damit Sie Abfragen mit dem Azure Search .NET SDK ausgeben können, müssen Sie eine Instanz der Klasse `SearchIndexClient` erstellen. Diese Klasse verfügt über mehrere Konstruktoren. Für den gewünschten Konstruktor werden der Name Ihres Suchdiensts, der Indexname und ein `SearchCredentials` -Objekt als Parameter verwendet. `SearchCredentials` umfasst Ihren API-Schlüssel.
 
-Der folgende Code erstellt ein neues `SearchIndexClient`-Element für den Index „hotels“ (der in [Erstellen eines Azure Search-Indexes mit dem .NET SDK](search-create-index-dotnet.md) erstellt wurde). Dazu werden Werte für den Suchdienstnamen und den API-Schlüssel verwendet, die in der Konfigurationsdatei der Anwendung gespeichert sind (`appsettings.json` im Fall der [Beispielanwendung](http://aka.ms/search-dotnet-howto)):
+Der folgende Code erstellt ein neues `SearchIndexClient`-Element für den Index „hotels“ (der in [Erstellen eines Azure Search-Indexes mit dem .NET SDK](search-create-index-dotnet.md) erstellt wurde). Dazu werden Werte für den Suchdienstnamen und den API-Schlüssel verwendet, die in der Konfigurationsdatei der Anwendung gespeichert sind (`appsettings.json` im Fall der [Beispielanwendung](https://aka.ms/search-dotnet-howto)):
 
 ```csharp
 private static SearchIndexClient CreateSearchIndexClient(IConfigurationRoot configuration)

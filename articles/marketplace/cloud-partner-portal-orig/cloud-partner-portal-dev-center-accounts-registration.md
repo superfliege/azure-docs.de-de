@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: bdcd1d0cc9f9979d898410180d364716b344d641
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 8bfd4ca6a9bdac999653fa9448bf7e754e9e6180
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48806300"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51254467"
 ---
 <a name="create-a-microsoft-developer-account"></a>Erstellen eines Microsoft-Entwicklerkontos
 ====================================
@@ -133,7 +133,7 @@ Das Microsoft Developer Center wird für die einmalige Registrierung der Unterne
 
    ![Registrierung für Bezahlung](./media/cloud-partner-portal-create-dev-center-registration/imgRegisterCo_09.png)
 
-10. Überprüfen Sie Ihre Kontoinformationen, und bestätigen Sie, dass alles korrekt ist. Lesen und akzeptieren Sie die Nutzungsbedingungen der [Microsoft Azure Marketplace-Herausgebervereinbarung](http://go.microsoft.com/fwlink/?LinkID=699560). Aktivieren Sie das Kontrollkästchen, um anzugeben, dass Sie die Bedingungen gelesen und akzeptiert haben.
+10. Überprüfen Sie Ihre Kontoinformationen, und bestätigen Sie, dass alles korrekt ist. Lesen und akzeptieren Sie die Nutzungsbedingungen der [Microsoft Azure Marketplace-Herausgebervereinbarung](https://go.microsoft.com/fwlink/?LinkID=699560). Aktivieren Sie das Kontrollkästchen, um anzugeben, dass Sie die Bedingungen gelesen und akzeptiert haben.
 
 11. Wählen Sie **Fertig stellen**, um die Registrierung zu bestätigen. Es wird eine Bestätigungsnachricht an Ihre E-Mail-Adresse gesendet.
 

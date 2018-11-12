@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/23/2018
 ms.author: alkohli
-ms.openlocfilehash: 23fde5fab8f223ff1d958a8fac6a31818f1fdd7c
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: a638487fb0a622f899095989ca5341013299e181
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42818915"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51234407"
 ---
 # <a name="migrate-data-from-storsimple-5000-7000-series-to-8000-series-device"></a>Migrieren von Daten von einem Gerät der Serie StorSimple 5000 - 7000 zu einem Gerät der Serie 8000
 
@@ -57,7 +57,7 @@ Eine hostseitige Migration ermöglicht das unabhängige Einrichten der Serie 800
 | 3.   | Nach einer erfolgreichen Migration sind alle Daten lokal auf der Appliance vorhanden. Beim Zugreifen auf Daten kommt es nicht zu Wartezeiten. | Es wird mehr Azure-Speicher verbraucht, bis die Daten vom Gerät der Serie 5000/7000 gelöscht werden.                                                                                                        |
 | 4.   |                                                                                                                           | Wenn das Gerät der Serie 7000/5000 eine große Menge von Daten enthält, müssen diese Daten während der Migration aus Azure heruntergeladen werden. Hierfür fallen Kosten und Wartezeiten für das Herunterladen von Daten aus Azure an. |
 
-In diesem Artikel geht es nur um das Feature für die Migration von einem Gerät der Serie 5000/7000 zu 8000. Weitere Informationen zur hostseitigen Migration finden Sie unter [Migration from other storage devices](http://download.microsoft.com/download/9/4/A/94AB8165-CCC4-430B-801B-9FD40C8DA340/Migrating%20Data%20to%20StorSimple%20Volumes_09-02-15.pdf) (Migration von anderen Speichergeräten).
+In diesem Artikel geht es nur um das Feature für die Migration von einem Gerät der Serie 5000/7000 zu 8000. Weitere Informationen zur hostseitigen Migration finden Sie unter [Migration from other storage devices](https://download.microsoft.com/download/9/4/A/94AB8165-CCC4-430B-801B-9FD40C8DA340/Migrating%20Data%20to%20StorSimple%20Volumes_09-02-15.pdf) (Migration von anderen Speichergeräten).
 
 ## <a name="migration-prerequisites"></a>Voraussetzungen für die Migration
 

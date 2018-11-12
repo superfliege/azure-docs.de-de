@@ -15,19 +15,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: szark
-ms.openlocfilehash: 67796cc3cbb925bb18a917d17b8abb7c085de370
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: 3aa2803550c445e0b30ff998cf3adb779515e487
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49638199"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51235971"
 ---
 # <a name="information-for-non-endorsed-distributions"></a>Informationen zu nicht unterstützten Distributionen
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
-Das Azure-Plattform-SLA gilt für virtuelle Computer unter dem Betriebssystem Linux nur dann, wenn eine der [unterstützten Distributionen](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) verwendet wird. Für diese unterstützten Distributionen stehen im Azure Marketplace vorab konfigurierte Linux-Images zur Verfügung.
+Das Azure-Plattform-SLA gilt für virtuelle Computer unter dem Betriebssystem Linux nur dann, wenn eine der [bestätigten Distributionen](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) verwendet wird. Für diese unterstützten Distributionen stehen im Azure Marketplace vorab konfigurierte Linux-Images zur Verfügung.
 
-* [Linux auf von Azure unterstützten Distributionen](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [Linux auf von Azure unterstützten Verteilungen](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Unterstützung für Linux-Images in Microsoft Azure](https://support.microsoft.com/kb/2941892)
 
 Für alle Distributionen, die in Azure ausgeführt werden, gelten einige Voraussetzungen. In diesem Artikel können nicht alle Aspekte abgedeckt werden, da jede Distribution anders ist. Auch wenn alle unten genannten Kriterien erfüllt sind, müssen Sie Ihr Linux-System unter Umständen noch erheblich anpassen, damit es ordnungsgemäß ausgeführt wird.
@@ -76,7 +76,7 @@ VHD-Images in Azure benötigen eine virtuelle Größe, die auf 1 MB ausgerichtet
 
 * Die VHD „http://<mystorageaccount>.blob.core.windows.net/vhds/MyLinuxVM.vhd“ weist eine nicht unterstützte virtuelle Größe von 21475270656 Bytes auf. Die Größe muss eine ganze Zahl (in MB) sein.
 
-Ändern Sie in diesem Fall die Größe des virtuellen Computers über die Hyper-V-Manager-Konsole oder mit dem PowerShell-Cmdlet [Resize-VHD](http://technet.microsoft.com/library/hh848535.aspx).  Wenn Sie nicht in einer Windows-Umgebung arbeiten, sollten Sie `qemu-img` verwenden, um (falls erforderlich) die Konvertierung durchzuführen und die Größe der virtuellen Festplatte zu ändern.
+Ändern Sie in diesem Fall die Größe des virtuellen Computers über die Hyper-V-Manager-Konsole oder mit dem PowerShell-Cmdlet [Resize-VHD](https://technet.microsoft.com/library/hh848535.aspx).  Wenn Sie nicht in einer Windows-Umgebung arbeiten, sollten Sie `qemu-img` verwenden, um (falls erforderlich) die Konvertierung durchzuführen und die Größe der virtuellen Festplatte zu ändern.
 
 > [!NOTE]
 > Es gibt einen [bekannten Fehler in den qemu-img](https://bugs.launchpad.net/qemu/+bug/1490611)-Versionen >= 2.2.1, der zu einer nicht ordnungsgemäßen Formatierung der virtuellen Festplatte führt. Dieses Problem wurde in QEMU 2.6 behoben. Es wird empfohlen, entweder `qemu-img` 2.2.0 oder niedriger oder 2.6 oder höher zu verwenden.
@@ -125,7 +125,7 @@ VHD-Images in Azure benötigen eine virtuelle Größe, die auf 1 MB ausgerichtet
 
 Die Treiber für die Linux-Integrationsdienste (Linux Integration Services, LIS) für Hyper-V und Azure tragen direkt zum Linux-Upstream-Kernel bei. Viele Distributionen, die eine neue Linux-Kernelversion (z.B. 3.x) enthalten, verfügen bereits über diese Treiber oder bieten andernfalls zurückportierte Versionen dieser Treiber mit ihren Kernels.  Diese Treiber werden im Upstreamkernel ständig mit neuen Fehlerbehebungen und Features aktualisiert. Daher empfiehlt sich, nach Möglichkeit eine [unterstützte Distribution](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) auszuführen, die diese Fehlerbehebungen und Updates enthält.
 
-Wenn Sie eine Variante der Red Hat Enterprise Linux-Versionen 6.0 bis 6.3 ausführen, müssen Sie die [neuesten LIS-Treiber für Hyper-V](http://go.microsoft.com/fwlink/p/?LinkID=254263&clcid=0x409) installieren. Ab RHEL 6.4+ (und Ableitungen) sind die LIS-Treiber bereits im Kernel enthalten, sodass keine zusätzlichen Installationspakete nötig sind.
+Wenn Sie eine Variante der Red Hat Enterprise Linux-Versionen 6.0 bis 6.3 ausführen, müssen Sie die [neuesten LIS-Treiber für Hyper-V](https://go.microsoft.com/fwlink/p/?LinkID=254263&clcid=0x409) installieren. Ab RHEL 6.4+ (und Ableitungen) sind die LIS-Treiber bereits im Kernel enthalten, sodass keine zusätzlichen Installationspakete nötig sind.
 
 Wenn ein benutzerdefinierter Kernel erforderlich ist, empfiehlt es sich, eine neue Kernelversion (z.B. 3.8+) zu verwenden. Bei Distributionen oder Anbietern, die ihren Kernel selbst verwalten, müssen Sie die LIS-Treiber regelmäßig vom Upstreamkernel zu Ihrem benutzerdefinierten Kernel zurückportieren.  Selbst wenn Sie bereits eine relativ aktuelle Kernelversion ausführen, wird dringend empfohlen, die Upstreamfehlerbehebungen in den LIS-Treibern nachzuverfolgen und diese bei Bedarf zurückzuportieren. Die Speicherorte der LIS-Treiberquelldateien sind in der Datei [MAINTAINERS](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/tree/MAINTAINERS) in der Linux-Kernelquellstruktur angegeben:
 ```

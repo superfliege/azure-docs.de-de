@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: asgang
-ms.openlocfilehash: c83cf9fb319c21881f0db8bd94dc9a94a3b811bc
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 1f38cd62a1394d45716e7224cc03a059fcaf9e13
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50211722"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51247754"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sap-netweaver-app-deployment"></a>Einrichten der Notfallwiederherstellung für die Bereitstellung einer SAP NetWeaver-App mit mehreren Ebenen
 
@@ -167,5 +167,5 @@ Weitere Informationen finden Sie unter [Testfailover nach Azure in Site Recovery
 Weitere Informationen finden Sie unter [Failover in Site Recovery](site-recovery-failover.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Weitere Informationen zum Erstellen einer Lösung für die Notfallwiederherstellung für SAP NetWeaver-Bereitstellungen mithilfe von Site Recovery finden Sie unter den herunterladbaren Whitepapers [SAP NetWeaver: Erstellen einer Notfallwiederherstellungslösung mit Azure Site Recovery](http://aka.ms/asr-sap). Das Whitepaper behandelt auch Empfehlungen für unterschiedliche SAP-Architekturen, listet unterstützte Anwendungen und VM-Typen für SAP in Azure auf und beschreibt Testplanoptionen für Ihre Notfallwiederherstellungslösung.
+* Weitere Informationen zum Erstellen einer Lösung für die Notfallwiederherstellung für SAP NetWeaver-Bereitstellungen mithilfe von Site Recovery finden Sie unter den herunterladbaren Whitepapers [SAP NetWeaver: Erstellen einer Notfallwiederherstellungslösung mit Azure Site Recovery](https://aka.ms/asr-sap). Das Whitepaper behandelt auch Empfehlungen für unterschiedliche SAP-Architekturen, listet unterstützte Anwendungen und VM-Typen für SAP in Azure auf und beschreibt Testplanoptionen für Ihre Notfallwiederherstellungslösung.
 * Erfahren Sie mehr über das [Replizieren anderer Workloads](site-recovery-workload.md) mit Site Recovery.

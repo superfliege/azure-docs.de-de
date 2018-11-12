@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
 ms.component: common
-ms.openlocfilehash: c1effeba7e4b0750d5af3a5a82b755704379af68
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: d7a9da4ac3560e67a6f7bc8b79a7c2dd37995d4d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44021845"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51258009"
 ---
 # <a name="creating-an-import-job-for-the-azure-importexport-service"></a>Erstellen eines Importauftrags für den Azure Import/Export-Dienst
 
@@ -35,7 +35,7 @@ Zum Erstellen eines Importauftrags für den Microsoft Azure Import/Export-Dienst
 
 Die Schritte zum Vorbereiten von Laufwerken für einen Importauftrag sind für die Erstellung des Auftrags über das Portal und per REST-API identisch.
 
-Unten finden Sie eine kurze Übersicht über die Vorbereitung von Laufwerken. Eine ausführliche Anleitung finden Sie unter [Using the Azure Import/Export Tool (v1)](storage-import-export-tool-how-to-v1.md) (Verwenden des Azure Import/Export-Tools (v1)). Sie können das Azure Import/Export-Tool [hier](http://go.microsoft.com/fwlink/?LinkID=301900) herunterladen.
+Unten finden Sie eine kurze Übersicht über die Vorbereitung von Laufwerken. Eine ausführliche Anleitung finden Sie unter [Using the Azure Import/Export Tool (v1)](storage-import-export-tool-how-to-v1.md) (Verwenden des Azure Import/Export-Tools (v1)). Sie können das Azure Import/Export-Tool [hier](https://go.microsoft.com/fwlink/?LinkID=301900) herunterladen.
 
 Die Vorbereitung des Laufwerks umfasst Folgendes:
 

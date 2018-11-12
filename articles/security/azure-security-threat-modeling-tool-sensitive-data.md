@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: bcd2b2199628a7f717a7ce1d8eba032f5778379b
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 7f1bb400650a223a9f0b4249c33f7c480a1bc009
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43301460"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51262368"
 ---
 # <a name="security-frame-sensitive-data--mitigations"></a>Sicherheitsrahmen: Sensible Daten | Gegenmaßnahmen 
 | Produkt/Dienst | Artikel |
@@ -32,7 +32,7 @@ ms.locfileid: "43301460"
 | **Azure IaaS-VM-Vertrauensstellungsgrenze** | <ul><li>[Verwenden von Azure Disk Encryption zum Verschlüsseln von Datenträgern, die von virtuellen Computern verwendet werden](#disk-vm)</li></ul> | 
 | **Service Fabric-Vertrauensstellungsgrenze** | <ul><li>[Verschlüsseln von Geheimnissen in Service Fabric-Anwendungen](#fabric-apps)</li></ul> | 
 | **Dynamics CRM** | <ul><li>[Durchführen der Sicherheitsmodellierung und Verwenden von Geschäftseinheiten/Teams nach Bedarf](#modeling-teams)</li><li>[Einschränken des Zugriffs auf die Funktion „Freigeben“ für kritische Entitäten](#entities)</li><li>[Schulen von Benutzern in Bezug auf die Risiken der Funktion „Freigeben“ von Dynamics CRM und bewährte Sicherheitsmethoden](#good-practices)</li><li>[Einbinden einer Entwicklungsstandardregel, die das Anzeigen von Konfigurationsdetails bei der Ausnahmeverwaltung vorschreibt](#exception-mgmt)</li></ul> | 
-| **Azure Storage** | <ul><li>[Verwenden von Azure Storage Service Encryption (SSE) für ruhende Daten (Vorschau)](#sse-preview)</li><li>[Verwenden der clientseitigen Verschlüsselung zum Speichern von sensiblen Daten in Azure Storage](#client-storage)</li></ul> | 
+| **Azure Storage (in englischer Sprache)** | <ul><li>[Verwenden von Azure Storage Service Encryption (SSE) für ruhende Daten (Vorschau)](#sse-preview)</li><li>[Verwenden der clientseitigen Verschlüsselung zum Speichern von sensiblen Daten in Azure Storage](#client-storage)</li></ul> | 
 | **Mobiler Client** | <ul><li>[Verschlüsseln von sensiblen Daten oder personenbezogenen Daten, die in den lokalen Speicher von Smartphones geschrieben werden](#pii-phones)</li><li>[Verschleiern von generierten Binärdateien vor der Verteilung an Endbenutzer](#binaries-end)</li></ul> | 
 | **WCF** | <ul><li>[Festlegen von „clientCredentialType“ auf „Certificate“ oder „Windows“](#cert)</li><li>[WCF-Sicherheitsmodus ist nicht aktiviert](#security)</li></ul> | 
 
@@ -141,7 +141,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 | **SDL-Phase**               | Entwickeln |  
 | **Zutreffende Technologien** | Allgemein |
 | **Attribute**              | N/V  |
-| **Referenzen**              | [MSDN: autocomplete-Attribut](http://msdn.microsoft.com/library/ms533486(VS.85).aspx), [Verwenden von AutoComplete in HTML-Formularen](http://msdn.microsoft.com/library/ms533032.aspx), [Sicherheitsanfälligkeit bezüglich HTML-Bereinigung](http://technet.microsoft.com/security/bulletin/MS10-071), [Autocomplete – Schon wieder?!](http://blog.mindedsecurity.com/2011/10/autocompleteagain.html) |
+| **Referenzen**              | [MSDN: autocomplete-Attribut](https://msdn.microsoft.com/library/ms533486(VS.85).aspx), [Verwenden von AutoComplete in HTML-Formularen](https://msdn.microsoft.com/library/ms533032.aspx), [Sicherheitsanfälligkeit bezüglich HTML-Bereinigung](https://technet.microsoft.com/security/bulletin/MS10-071), [Autocomplete – Schon wieder?!](http://blog.mindedsecurity.com/2011/10/autocompleteagain.html) |
 | **Schritte** | Mit dem Attribut „autocomplete“ wird angegeben, ob die automatische Vervollständigung für ein Formular aktiviert oder deaktiviert sein soll. Bei aktivierter automatischer Vervollständigung werden die Werte im Browser automatisch basierend auf den Werten vervollständigt, die vom Benutzer vorher eingegeben wurden. Wenn in einem Formular beispielsweise ein neuer Name und ein neues Kennwort eingegeben werden und das Formular übermittelt wird, wird im Browser die Frage angezeigt, ob das Kennwort gespeichert werden soll. Danach werden der Name und das Kennwort beim Anzeigen des Formulars automatisch eingefügt oder beim Eingeben des Namens vervollständigt. Ein Angreifer mit lokalem Zugriff hätte die Möglichkeit, das Klartext-Kennwort aus dem Browsercache zu entwenden. Die automatische Vervollständigung ist standardmäßig aktiviert und muss explizit deaktiviert werden. |
 
 ### <a name="example"></a>Beispiel

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2018
 ms.author: bwren
-ms.openlocfilehash: 3377a0b4e6440d83962d103b3e1770ccf43bd785
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: 53020eeb96927143b2fb7394aee64f9b7ea55df9
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36752920"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51248961"
 ---
 # <a name="management-solutions-in-azure"></a>Verwaltungslösungen in Azure
 Verwaltungslösungen nutzen Dienste in Azure, um zusätzliche Erkenntnisse zum Betrieb einer bestimmten Anwendung oder eines bestimmten Diensts zu liefern. Dieser Artikel enthält eine kurze Übersicht über Verwaltungslösungen in Azure sowie Details zu deren Verwendung und Installation.
@@ -104,5 +104,5 @@ Wenn Sie eine installierte Lösung entfernen möchten, suchen Sie sie in der [Li
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Rufen Sie eine [Liste mit Verwaltungslösungen von Microsoft](monitoring-solutions-inventory.md) ab.
-* Machen Sie sich mit dem [Erstellen von Abfragen](../log-analytics/log-analytics-log-searches.md) für die Analyse der von Verwaltungslösungen gesammelten Daten vertraut.
+* Machen Sie sich mit dem [Erstellen von Abfragen](../log-analytics/log-analytics-queries.md) für die Analyse der von Verwaltungslösungen gesammelten Daten vertraut.
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: bryanla
-ms.openlocfilehash: 00a2c0d50a2476995dfb0d16d0cdbc5bd0ec313b
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: c5677dc07326fa16960e0d748f88e26f259c0485
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50138995"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51262272"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>Informationen zu Schlüsseln, Geheimnissen und Zertifikaten
 
@@ -398,7 +398,7 @@ Bevor ein Zertifikatsaussteller in einer Key Vault-Instanz erstellt werden kann,
 
     -   Stellt die Konfiguration zum Erstellen eines Ausstellerobjekts des Anbieters im Schlüsseltresor bereit  
 
-Weitere Informationen zum Erstellen von Ausstellerobjekten im Zertifikateportal finden Sie im [Blog zu Key Vault-Zertifikaten](http://aka.ms/kvcertsblog).  
+Weitere Informationen zum Erstellen von Ausstellerobjekten im Zertifikateportal finden Sie im [Blog zu Key Vault-Zertifikaten](https://aka.ms/kvcertsblog).  
 
 Key Vault ermöglicht die Erstellung mehrerer Ausstellerobjekte mit unterschiedlicher Ausstelleranbieterkonfiguration. Sobald ein Ausstellerobjekt erstellt ist, kann in einer oder mehreren Zertifikatrichtlinien auf seinen Namen verwiesen werden. Beim Verweis auf das Ausstellerobjekt wird Key Vault angewiesen, die Konfiguration gemäß den Angaben im Ausstellerobjekt zu verwenden, wenn das X509-Zertifikat bei Zertifikaterstellung und -verlängerung beim CA-Anbieter angefordert wird.  
 

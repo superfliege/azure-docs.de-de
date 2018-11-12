@@ -10,12 +10,12 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: f168018a23d03ffb957da2dd1f67881420a21208
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: e9a3b0a2be58313266b949b907e4eb49a318a6dc
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39171102"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51260073"
 ---
 # <a name="how-to-use-entity-detection-callback"></a>Verwenden des Rückrufs zur Entitätserkennung
 
@@ -23,10 +23,10 @@ Dieses Tutorial veranschaulicht den Rückruf zur Entitätserkennung und demonstr
 
 ## <a name="video"></a>Video
 
-[![Tutorial 10 – Vorschau](http://aka.ms/cl-tutorial-10-preview)](http://aka.ms/blis-tutorial-10)
+[![Tutorial 10 – Vorschau](https://aka.ms/cl-tutorial-10-preview)](https://aka.ms/blis-tutorial-10)
 
 ## <a name="requirements"></a>Requirements (Anforderungen)
-Für dieses Tutorial muss der `tutorialEntityDetectionCallback`-Bot ausgeführt werden:
+Für dieses Tutorial muss der `tutorialEntityDetectionCallback`-Bot ausgeführt werden.
 
     npm run tutorial-entity-detection
 
@@ -47,7 +47,7 @@ In diesem Modell sind drei Entitäten definiert.
 2. „CityUnknown“ (UnbekannteStadt) ist eine programmgesteuerte Entität. Diese Entität wird vom System aufgefüllt. Sie besteht aus einer Kopie der Benutzereingabe, wenn das System die gesuchte Stadt nicht erkennt.
 3. „CityResolved“ (AufgelösteStadt) ist die Stadt, die vom System erkannt wird. Dabei handelt es sich um den kanonischen Namen der Stadt – z. B. wird „Big Apple“ in „New York“ aufgelöst.
 
-### <a name="actions"></a>Actions
+### <a name="actions"></a>Aktionen
 
 In diesem Modell sind drei Aktionen definiert.
 
@@ -104,10 +104,10 @@ Fügen Sie einen weiteren Beispieldialog hinzu:
 5. Klicken Sie auf „Bewertungsaktionen“.
 6. Wählen Sie „Ich kenne diese Stadt nicht, ‚$CityUknown‘. Welche Stadt möchten Sie?“ aus.
 7. Geben Sie „New York“ ein.
-8. Klicken Sie auf „Bewertungsaktionen“.
+8. Klicken Sie auf „Score Actions“ (Bewertungsaktionen).
     - `CityUknown` wurde gelöscht und `CityResolved` wird aufgefüllt.
 6. Wählen Sie „Sie haben ‚$City‘ gesagt, und ich habe das in ‚$CityResolved‘ aufgelöst“ aus.
-7. Klicken Sie auf „Training abgeschlossen“.
+7. Klicken Sie auf „Done Teaching“ (Training abgeschlossen).
 
 ![](../media/tutorial10_bigapple.PNG)
 

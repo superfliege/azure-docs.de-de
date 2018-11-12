@@ -9,19 +9,19 @@ ms.component: content-moderator
 ms.topic: article
 ms.date: 06/25/2017
 ms.author: sajagtap
-ms.openlocfilehash: 911d62fc2baa50cce6d40f8b5bcc455f308d21d7
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: 5910961ee54c953ea241baf9bce78b79b0dfeaea
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49309654"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51260090"
 ---
 # <a name="manage-credentials"></a>Verwalten von Anmeldeinformationen
 
 Ihre Content Moderator-Anmeldeinformationen werden in den folgenden Speicherorten erstellt:
 
 - [Azure-Portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator)
-- [Content Moderator-Prüfungstool](http://contentmoderator.cognitive.microsoft.com/)
+- [Content Moderator-Prüfungstool](https://contentmoderator.cognitive.microsoft.com/)
 
 Dieser Artikel beschreibt, wo Sie sie finden können, und wie sie miteinander in Beziehung stehen.
 

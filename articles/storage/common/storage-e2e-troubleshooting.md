@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 03/15/2017
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 41e7f5b4c36ad0bfed0ef5a9a31565474cf4d823
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: cf183b0a78ff3f7e442ea8052f37fc2df58aac54
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "40038226"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51262317"
 ---
 # <a name="end-to-end-troubleshooting-using-azure-storage-metrics-and-logging-azcopy-and-message-analyzer"></a>End-to-End-Problembehandlung mit Azure Storage-Metriken und -Protokollierung sowie AzCopy und Message Analyzer
 [!INCLUDE [storage-selector-portal-e2e-troubleshooting](../../../includes/storage-selector-portal-e2e-troubleshooting.md)]
@@ -37,7 +37,7 @@ Um Probleme in Clientanwendungen mit Microsoft Azure-Speicher zu beheben, könne
   
     Informationen zum Konfigurieren der Überwachung im Azure-Portal finden Sie unter [Überwachen eines Speicherkontos im Azure-Portal](storage-monitor-storage-account.md).
 * **AzCopy**. Serverprotokolle für den Azure-Speicher werden als Blobs gespeichert, damit Sie AzCopy verwenden können, um die Protokoll-Blobs für die Analyse mithilfe von Microsoft Message Analyzer in ein lokales Verzeichnis zu kopieren. Weitere Informationen zu AzCopy finden Sie unter [Übertragen von Daten mit dem Befehlszeilenprogramm AzCopy](storage-use-azcopy.md) .
-* **Microsoft Message Analyzer**. Message Analyzer ist ein Tool, das Protokolldateien in einem grafischen Format anzeigt, das es Ihnen erleichtert, Protokolldaten zu filtern, zu durchsuchen und zu gruppieren und so nützliche Zusammenstellungen für die Analyse von Fehlern und Leistungsproblemen zu erhalten. Weitere Informationen zu Message Analyzer finden Sie unter [Microsoft Message Analyzer Operating Guide](http://technet.microsoft.com/library/jj649776.aspx) (in englischer Sprache).
+* **Microsoft Message Analyzer**. Message Analyzer ist ein Tool, das Protokolldateien in einem grafischen Format anzeigt, das es Ihnen erleichtert, Protokolldaten zu filtern, zu durchsuchen und zu gruppieren und so nützliche Zusammenstellungen für die Analyse von Fehlern und Leistungsproblemen zu erhalten. Weitere Informationen zu Message Analyzer finden Sie unter [Microsoft Message Analyzer Operating Guide](https://technet.microsoft.com/library/jj649776.aspx) (in englischer Sprache).
 
 ## <a name="about-the-sample-scenario"></a>Informationen zum Beispielszenario
 Für dieses Lernprogramm wird ein Szenario untersucht, in dem Metriken des Azure-Speichers für eine Anwendung, die den Azure-Speicher aufruft, eine niedrige prozentuale Erfolgsrate anzeigen. Die Metrik zur niedrigen prozentualen Erfolgsrate (im [Azure-Portal](https://portal.azure.com) und den Metrikentabellen als **PercentSuccess** angezeigt) erfasst Vorgänge, die zwar erfolgreich waren, aber einen HTTP-Statuscode über 299 zurückgeben. In den serverseitigen Speicher-Protokollierungsdateien sind diese Vorgänge mit dem Transaktionsstatus **ClientOtherErrors**erfasst. Ausführliche Informationen zur Metrik zur niedrigen prozentualen Erfolgsrate finden Sie unter [Metriken zeigen niedrigen PercentSuccess an, oder Analyse-Protokolleinträge enthalten Vorgänge mit Transaktionsstatus "ClientOtherErrors"](storage-monitoring-diagnosing-troubleshooting.md#metrics-show-low-percent-success).
@@ -51,7 +51,7 @@ Nachdem wir in unserem Beispielszenario eingerichtet haben, dass die Metrik für
 ### <a name="some-causes-of-400-range-errors"></a>Einige Ursachen von Fehlern im Bereich von 400
 Die Beispiele unten zeigen Stichproben einiger Fehler im Bereich von 400 für Anfragen an Azure Blob Storage sowie ihre möglichen Ursachen. Jeder dieser Fehler sowie Fehler im Bereich von 300 und 500 können die geringere prozentuale Erfolgsrate verursachen.
 
-Beachten Sie, dass die folgenden Listen nicht vollständig sind. Informationen zu allgemeinen Azure-Speicherfehlern und Fehlern der einzelnen Speicherdienste finden Sie unter [Status- und Fehlercodes](http://msdn.microsoft.com/library/azure/dd179382.aspx) auf MSDN.
+Beachten Sie, dass die folgenden Listen nicht vollständig sind. Informationen zu allgemeinen Azure-Speicherfehlern und Fehlern der einzelnen Speicherdienste finden Sie unter [Status- und Fehlercodes](https://msdn.microsoft.com/library/azure/dd179382.aspx) auf MSDN.
 
 **Beispiele für Statuscode 404 (Nicht gefunden)**
 
@@ -79,7 +79,7 @@ In diesem Lernprogramm verwenden wir Message Analyzer, um mit drei verschiedenen
 * Das **HTTP-Netzwerk-Ablaufverfolgungsprotokoll**, das Daten zur HTTP/HTTPS-Anfrage und zur Antwort sammelt, einschließlich der Vorgänge im Azure-Speicher. In diesem Lernprogramm generieren wir die Netzwerkablaufverfolgung über Message Analyzer.
 
 ### <a name="configure-server-side-logging-and-metrics"></a>Konfigurieren der serverseitigen Protokollierung und Metriken
-Zunächst müssen wir die Azure-Speicherprotokollierung und -metriken konfigurieren, damit uns Daten von der Clientanwendung zur Analyse vorliegen. Sie können die Protokollierung und die Metriken auf verschiedene Arten konfigurieren: über das [Azure-Portal](https://portal.azure.com), mithilfe von PowerShell oder programmgesteuert. Weitere Informationen zum Konfigurieren der Protokollierung und der Metriken finden Sie unter [Aktivieren der Speichermetriken und Anzeigen von Metrikdaten](http://msdn.microsoft.com/library/azure/dn782843.aspx) und [Aktivieren der Speicherprotokollierung und Zugreifen auf Protokolldaten](http://msdn.microsoft.com/library/azure/dn782840.aspx) auf MSDN.
+Zunächst müssen wir die Azure-Speicherprotokollierung und -metriken konfigurieren, damit uns Daten von der Clientanwendung zur Analyse vorliegen. Sie können die Protokollierung und die Metriken auf verschiedene Arten konfigurieren: über das [Azure-Portal](https://portal.azure.com), mithilfe von PowerShell oder programmgesteuert. Weitere Informationen zum Konfigurieren der Protokollierung und der Metriken finden Sie unter [Aktivieren der Speichermetriken und Anzeigen von Metrikdaten](https://msdn.microsoft.com/library/azure/dn782843.aspx) und [Aktivieren der Speicherprotokollierung und Zugreifen auf Protokolldaten](https://msdn.microsoft.com/library/azure/dn782840.aspx) auf MSDN.
 
 **Über das Azure-Portal**
 
@@ -124,7 +124,7 @@ Informationen zum Einstieg in PowerShell für Azure finden Sie unter [Installier
     ```
 
 ### <a name="configure-net-client-side-logging"></a>Konfigurieren der clientseitigen .NET-Protokollierung
-Aktivieren Sie zum Konfigurieren der clientseitigen Protokollierung für eine .NET-Anwendung die .NET-Diagnose in der Konfigurationsdatei der Anwendung (web.config oder app.config). Weitere Informationen finden Sie unter [Clientseitige Protokollierung mit der .NET Storage Client Library](http://msdn.microsoft.com/library/azure/dn782839.aspx) und [Clientseitige Protokollierung mit dem Microsoft Azure Storage SDK für Java](http://msdn.microsoft.com/library/azure/dn782844.aspx) auf der MSDN-Website.
+Aktivieren Sie zum Konfigurieren der clientseitigen Protokollierung für eine .NET-Anwendung die .NET-Diagnose in der Konfigurationsdatei der Anwendung (web.config oder app.config). Weitere Informationen finden Sie unter [Clientseitige Protokollierung mit der .NET Storage Client Library](https://msdn.microsoft.com/library/azure/dn782839.aspx) und [Clientseitige Protokollierung mit dem Microsoft Azure Storage SDK für Java](https://msdn.microsoft.com/library/azure/dn782844.aspx) auf der MSDN-Website.
 
 Das clientseitige Protokoll enthält detaillierte Informationen darüber, wie der Client die Anfrage vorbereitet und die Antwort empfängt und verarbeitet.
 
@@ -160,7 +160,7 @@ Erfassen und speichern Sie für das Lernprogramm zunächst eine Netzwerkablaufve
 > 
 > 
 
-Weitere Informationen finden Sie unter [Using the Network Tracing Features](http://technet.microsoft.com/library/jj674819.aspx) (in englischer Sprache) auf Technet.
+Weitere Informationen finden Sie unter [Using the Network Tracing Features](https://technet.microsoft.com/library/jj674819.aspx) (in englischer Sprache) auf Technet.
 
 ## <a name="review-metrics-data-in-the-azure-portal"></a>Überprüfen der Metrikdaten im Azure-Portal
 Sobald die Anwendung über einen bestimmten Zeitraum hinweg ausgeführt wurde, können Sie die Metrikdiagramme überprüfen, die im [Azure-Portal](https://portal.azure.com) zur Untersuchung der Dienstleistung angezeigt werden.
@@ -186,15 +186,15 @@ AzCopy.exe /Source:http://<storageaccountname>.blob.core.windows.net/$logs /Dest
 ```
 AzCopy steht zum Download auf der Seite [Azure-Downloads](https://azure.microsoft.com/downloads/) zur Verfügung. Details zur Verwendung von AzCopy finden Sie unter [Übertragen von Daten mit dem Befehlszeilenprogramm AzCopy](storage-use-azcopy.md).
 
-Weitere Informationen zum Herunterladen serverseitiger Protokolle finden Sie unter [Herunterladen von Protokolldaten der Speicherprotokollierung](http://msdn.microsoft.com/library/azure/dn782840.aspx#DownloadingStorageLogginglogdata).
+Weitere Informationen zum Herunterladen serverseitiger Protokolle finden Sie unter [Herunterladen von Protokolldaten der Speicherprotokollierung](https://msdn.microsoft.com/library/azure/dn782840.aspx#DownloadingStorageLogginglogdata).
 
 ## <a name="use-microsoft-message-analyzer-to-analyze-log-data"></a>Analysieren von Protokolldaten mithilfe von Microsoft Message Analyzer
-Microsoft Message Analyzer ist ein Tool zum Erfassen, Anzeigen und Analysieren von Messagingverkehr, -ereignissen und anderen System- oder Anwendungsnachrichten in Problembehandlungs- und Diagnoseszenarien. Message Analyzer ermöglicht außerdem das Laden, Zusammenfassen und Analysieren von Daten aus dem Protokoll und den gespeicherten Ablaufverfolgungsdateien. Weitere Informationen zu Message Analyzer finden Sie unter [Microsoft Message Analyzer Operating Guide](http://technet.microsoft.com/library/jj649776.aspx)(in englischer Sprache).
+Microsoft Message Analyzer ist ein Tool zum Erfassen, Anzeigen und Analysieren von Messagingverkehr, -ereignissen und anderen System- oder Anwendungsnachrichten in Problembehandlungs- und Diagnoseszenarien. Message Analyzer ermöglicht außerdem das Laden, Zusammenfassen und Analysieren von Daten aus dem Protokoll und den gespeicherten Ablaufverfolgungsdateien. Weitere Informationen zu Message Analyzer finden Sie unter [Microsoft Message Analyzer Operating Guide](https://technet.microsoft.com/library/jj649776.aspx)(in englischer Sprache).
 
 Message Analyzer enthält Ressourcen für Azure Storage, mit denen Sie Server-, Client- und Netzwerkprotokolle analysieren können. In diesem Abschnitt beschreiben wir die Verwendung dieser Tools zum Umgang mit Problemen niedriger prozentualer Erfolgsraten in den Speicherprotokollen.
 
 ### <a name="download-and-install-message-analyzer-and-the-azure-storage-assets"></a>Herunterladen und Installieren von Message Analyzer und der Azure-Speicherressourcen
-1. Laden Sie [Message Analyzer](http://www.microsoft.com/download/details.aspx?id=44226) aus dem Microsoft Download Center herunter, und führen Sie das Installationsprogramm aus.
+1. Laden Sie [Message Analyzer](https://www.microsoft.com/download/details.aspx?id=44226) aus dem Microsoft Download Center herunter, und führen Sie das Installationsprogramm aus.
 2. Starten Sie Message Analyzer.
 3. Wählen Sie im Menü **Extras** die Option **Asset-Manager**. Wählen Sie im Dialogfeld **Asset-Manager** die Option **Downloads**, und filtern Sie die Anzeige nach **Azure Storage**. Die Azure-Speicherressourcen werden angezeigt, wie in der folgenden Abbildung dargestellt.
 4. Klicken Sie auf **Sync All Displayed Items** , um die Azure-Speicherressourcen zu installieren. Die verfügbaren Ressourcen umfassen:
@@ -231,7 +231,7 @@ Bestimmen Sie zunächst den Zeitraum, den Sie überprüfen möchten, und halten 
 
 Wenn Sie dennoch über eine große Menge von Protokolldaten verfügen, empfiehlt es sich möglicherweise, einen Sitzungsfilter festzulegen, der die Protokolldaten vor dem Laden filtert. Klicken Sie im Feld **Session Filter** (Sitzungsfilter) auf die Schaltfläche **Library** (Bibliothek), um einen vordefinierten Filter auszuwählen. Wählen Sie beispielsweise **Global Time Filter I** (Globaler Zeitfilter I) in den Azure-Speicherfiltern aus, um nach einem Zeitraum zu filtern. Anschließend können Sie die Filterkriterien bearbeiten, um das Start- und Enddatum des gewünschten Zeitraums festzulegen. Sie können auch nach bestimmten Status filtern: Sie können z. B. auswählen, dass nur Protokolleinträge mit dem Statuscode 404 geladen werden.
 
-Weitere Informationen zum Importieren von Daten in Microsoft Message Analyzer finden Sie unter [Retrieving Message Data](http://technet.microsoft.com/library/dn772437.aspx) (in englischer Sprache) auf TechNet.
+Weitere Informationen zum Importieren von Daten in Microsoft Message Analyzer finden Sie unter [Retrieving Message Data](https://technet.microsoft.com/library/dn772437.aspx) (in englischer Sprache) auf TechNet.
 
 ### <a name="use-the-client-request-id-to-correlate-log-file-data"></a>Verwenden der Client-ID zum Zuordnen von Protokolldaten
 Die Azure-Speicherclientbibliothek erzeugt automatisch eine eindeutige Clientanfragen-ID für jede Anfrage. Dieser Wert wird in das Clientprotokoll, das Serverprotokoll und die Netzwerkablaufverfolgung geschrieben, damit Sie sie zum Zuordnen der Daten zu den drei Protokollen in Message Analyzer verwenden können. Weitere Informationen zur Clientanfragen-ID finden Sie unter [Clientanfrage-ID](storage-monitoring-diagnosing-troubleshooting.md#client-request-id) .
@@ -337,7 +337,7 @@ Durch Verwenden der in den Ansichtslayouts auf diesen beiden Registerkarten ange
 Wenn Sie die Adresse des Blobs kennen, der den 404-Fehler verursacht hat, können Sie weitere Untersuchungen anstellen. Wenn Sie die Protokolleinträge für andere Nachrichten durchsuchen möchten, die mit den Vorgängen desselben Blobs zusammenhängen, können Sie überprüfen, ob der Client die Entität zuvor gelöscht hat.
 
 ## <a name="analyze-other-types-of-storage-errors"></a>Analysieren anderer Arten von Speicherfehlern
-Nachdem Sie nun mit der Verwendung von Message Analyzer zum Analysieren Ihrer Daten vertraut sind, können Sie andere Arten von Fehlern mithilfe von Ansichtslayouts, Farbregeln und Such-/Filterfunktionen analysieren. Einige mögliche Probleme und die erforderlichen Filterkriterien zum Finden dieser Probleme sind in den folgenden Tabellen aufgeführt. Weitere Informationen zum Erstellen von Filtern und zur Filtersyntax von Message Analyzer finden Sie unter [Filtering Message Data](http://technet.microsoft.com/library/jj819365.aspx)(in englischer Sprache).
+Nachdem Sie nun mit der Verwendung von Message Analyzer zum Analysieren Ihrer Daten vertraut sind, können Sie andere Arten von Fehlern mithilfe von Ansichtslayouts, Farbregeln und Such-/Filterfunktionen analysieren. Einige mögliche Probleme und die erforderlichen Filterkriterien zum Finden dieser Probleme sind in den folgenden Tabellen aufgeführt. Weitere Informationen zum Erstellen von Filtern und zur Filtersyntax von Message Analyzer finden Sie unter [Filtering Message Data](https://technet.microsoft.com/library/jj819365.aspx)(in englischer Sprache).
 
 | Zum Untersuchen von... | Verwenden Sie folgenden Filterausdruck... | Ausdruck gilt für Protokoll (Client, Server, Netzwerk, Alle) |
 | --- | --- | --- |
@@ -361,7 +361,7 @@ Nachdem Sie nun mit der Verwendung von Message Analyzer zum Analysieren Ihrer Da
 Weitere Informationen zur Problembehandlung in End-to-End-Szenarien im Azure-Speicher finden Sie hier:
 
 * [Microsoft Azure-Speicher: Überwachung, Diagnose und Problembehandlung](storage-monitoring-diagnosing-troubleshooting.md)
-* [Speicheranalyse](http://msdn.microsoft.com/library/azure/hh343270.aspx)
+* [Speicheranalyse](https://msdn.microsoft.com/library/azure/hh343270.aspx)
 * [Überwachen eines Speicherkontos im Azure-Portal](storage-monitor-storage-account.md)
 * [Übertragen von Daten mit dem Befehlszeilenprogramm AzCopy](storage-use-azcopy.md)
-* [Microsoft Message Analyzer Operating Guide (in englischer Sprache)](http://technet.microsoft.com/library/jj649776.aspx)
+* [Microsoft Message Analyzer Operating Guide (in englischer Sprache)](https://technet.microsoft.com/library/jj649776.aspx)
