@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: ea2687c61239e893f46dfa12c5b822a51823e1f3
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: b96e83980f746fde2c421a9247da17ace4a9efda
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33783519"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51235359"
 ---
 # <a name="upload-vhd-file-to-labs-storage-account-using-powershell"></a>Hochladen von VHD-Dateien in das Speicherkonto des Labs mithilfe von PowerShell
 
@@ -31,7 +31,7 @@ In Azure DevTest Labs können VHD-Dateien verwendet werden, um benutzerdefiniert
 
 Die folgenden Schritte führen Sie durch das Hochladen einer VHD-Datei in Azure DevTest Labs mithilfe von PowerShell. 
 
-1. Melden Sie sich auf dem [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040)an.
+1. Melden Sie sich beim [Azure-Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) an.
 
 1. Wählen Sie **Alle Dienste** und dann in der Liste die Option **DevTest Labs**.
 

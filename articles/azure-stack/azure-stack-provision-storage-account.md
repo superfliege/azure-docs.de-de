@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/12/2018
 ms.author: mabrigg
-ms.openlocfilehash: ae6539900e201f0559d998ad2d9be24c39d42e3b
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 608525a1f06a396c7df7d764f236f33af77dccc6
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44713492"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51235342"
 ---
 # <a name="storage-accounts-in-azure-stack"></a>Speicherkonten in Azure Stack
 Speicherkonten enthalten Blob-und Tabellenspeicherdienste und den eindeutigen Namespace für Ihre Speicherdatenobjekte. Standardmäßig sind die Daten in Ihrem Konto nur für Sie als Speicherkontobesitzer verfügbar.
@@ -34,8 +34,8 @@ Speicherkonten enthalten Blob-und Tabellenspeicherdienste und den eindeutigen Na
     ![](media/azure-stack-provision-storage-account/image03.png)
 
 ### <a name="next-steps"></a>Nächste Schritte
-[Verwenden von Azure Resource Manager-Vorlagen](user/azure-stack-arm-templates.md)
+[Verwenden von Azure-Ressourcen-Manager-Vorlagen](user/azure-stack-arm-templates.md)
 
 [Informationen zu Azure-Speicherkonten](../storage/common/storage-create-storage-account.md)
 
-[Herunterladen des Azure Stack-Überprüfungshandbuchs für mit Azure konsistentem Speicher](http://aka.ms/azurestacktp1doc)
+[Herunterladen des Azure Stack-Überprüfungshandbuchs für mit Azure konsistentem Speicher](https://aka.ms/azurestacktp1doc)

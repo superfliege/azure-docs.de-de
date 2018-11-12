@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/30/2018
 ms.author: mikeray
-ms.openlocfilehash: 7dbbfb2d97b7015118edca3db3ae050ad07c51ee
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 42a4ea1e4dc352e56fbd65f69c9ed71e3b0c1038
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43667446"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238074"
 ---
 # <a name="configure-always-on-availability-group-in-azure-vm-manually"></a>Manuelles Konfigurieren von AlwaysOn-Verfügbarkeitsgruppen auf virtuellen Azure-Computern
 
@@ -35,7 +35,7 @@ Das Diagramm veranschaulicht, was Sie im Rahmen dieses Tutorials erstellen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Für dieses Tutorial werden Grundkenntnisse über SQL Server AlwaysOn-Verfügbarkeitsgruppen vorausgesetzt. Weitere Informationen finden Sie in der [Übersicht über Always On-Verfügbarkeitsgruppen (SQL Server)](http://msdn.microsoft.com/library/ff877884.aspx).
+Für dieses Tutorial werden Grundkenntnisse über SQL Server AlwaysOn-Verfügbarkeitsgruppen vorausgesetzt. Weitere Informationen finden Sie in der [Übersicht über Always On-Verfügbarkeitsgruppen (SQL Server)](https://msdn.microsoft.com/library/ff877884.aspx).
 
 Die folgende Tabelle gibt Aufschluss über die Voraussetzungen, die erfüllt sein müssen, bevor Sie mit dem Tutorial beginnen:
 
@@ -119,7 +119,7 @@ Fügen Sie die andere SQL Server-Instanz dem Cluster hinzu.
 
 ### <a name="add-a-cluster-quorum-file-share"></a>Hinzufügen einer Clusterquorum-Dateifreigabe
 
-In diesem Beispiel erstellt der Windows-Cluster mithilfe einer Dateifreigabe ein Clusterquorum. In diesem Tutorial wird ein Quorum vom Typ „Knoten- und Dateifreigabemehrheit“ verwendet. Weitere Informationen finden Sie unter [Grundlegendes zu Quorumkonfigurationen in einem Failovercluster](http://technet.microsoft.com/library/cc731739.aspx).
+In diesem Beispiel erstellt der Windows-Cluster mithilfe einer Dateifreigabe ein Clusterquorum. In diesem Tutorial wird ein Quorum vom Typ „Knoten- und Dateifreigabemehrheit“ verwendet. Weitere Informationen finden Sie unter [Grundlegendes zu Quorumkonfigurationen in einem Failovercluster](https://technet.microsoft.com/library/cc731739.aspx).
 
 1. Stellen Sie über eine Remotedesktopsitzung eine Verbindung mit dem Dateifreigabenzeuge-Mitgliedsserver her.
 
@@ -168,7 +168,7 @@ Legen Sie als Nächstes das Clusterquorum fest.
 1. Klicken Sie unter **Quorumzeuge auswählen** auf **Dateifreigabenzeugen konfigurieren**.
 
    >[!TIP]
-   >Windows Server 2016 unterstützt einen Cloudzeugen. Bei Verwendung dieser Art von Zeuge benötigen Sie keinen Dateifreigabenzeugen. Weitere Informationen finden Sie unter [Deploy a cloud witness for a Failover Cluster](http://technet.microsoft.com/windows-server-docs/failover-clustering/deploy-cloud-witness) (Bereitstellen eines Cloudzeugen für einen Failovercluster). In diesem Tutorial wird ein Dateifreigabenzeuge verwendet, der von älteren Betriebssystemen unterstützt wird.
+   >Windows Server 2016 unterstützt einen Cloudzeugen. Bei Verwendung dieser Art von Zeuge benötigen Sie keinen Dateifreigabenzeugen. Weitere Informationen finden Sie unter [Deploy a cloud witness for a Failover Cluster](https://technet.microsoft.com/windows-server-docs/failover-clustering/deploy-cloud-witness) (Bereitstellen eines Cloudzeugen für einen Failovercluster). In diesem Tutorial wird ein Dateifreigabenzeuge verwendet, der von älteren Betriebssystemen unterstützt wird.
 
 1. Geben Sie unter **Dateifreigabenzeugen konfigurieren** den Pfad für die erstellte Freigabe ein. Klicken Sie auf **Weiter**.
 
@@ -455,7 +455,7 @@ Die WSFC IP-Adresse muss auf dem Lastenausgleich ebenfalls vorhanden sein.
    | Einstellung | BESCHREIBUNG | Beispiel
    | --- | --- |---
    | **Name** | Text | WSFCEndPoint |
-   | **Front-End-IP-Adresse** | Wählen Sie eine Adresse aus. |Verwenden Sie die Adresse, die Sie beim Konfigurieren der WSFC-IP-Adresse erstellt haben. Diese unterscheidet sich von der IP-Adresse des Listeners. |
+   | **Frontend IP address** (Front-End-IP-Adresse) | Wählen Sie eine Adresse aus. |Verwenden Sie die Adresse, die Sie beim Konfigurieren der WSFC-IP-Adresse erstellt haben. Diese unterscheidet sich von der IP-Adresse des Listeners. |
    | **Protokoll** | Wählen Sie „TCP“ aus. |TCP |
    | **Port** | Verwenden Sie den Port für die Cluster-IP-Adresse. Dies ist ein verfügbarer Port, der nicht als Listenertestport verwendet wird. | 58888 |
    | **Back-End-Port** | Dieses Feld wird nicht verwendet, wenn für Direct Server Return die Option „Floating IP“ festgelegt ist. | 58888 |
@@ -515,7 +515,7 @@ Gehen Sie wie folgt vor, um die Verbindung zu testen:
 Die sqlcmd-Verbindung wird automatisch mit der SQL Server-Instanz hergestellt, die das primäre Replikat hostet.
 
 > [!TIP]
-> Vergewissern Sie sich, dass der angegebene Port in der Firewall beider SQL Server geöffnet ist. Beide Server benötigen eine eingehende Regel für den TCP-Port, den Sie verwenden möchten. Weitere Informationen finden Sie unter [Hinzufügen oder Bearbeiten einer Firewallregel](http://technet.microsoft.com/library/cc753558.aspx).
+> Vergewissern Sie sich, dass der angegebene Port in der Firewall beider SQL Server geöffnet ist. Beide Server benötigen eine eingehende Regel für den TCP-Port, den Sie verwenden möchten. Weitere Informationen finden Sie unter [Hinzufügen oder Bearbeiten einer Firewallregel](https://technet.microsoft.com/library/cc753558.aspx).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

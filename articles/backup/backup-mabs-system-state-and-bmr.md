@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: markgal
-ms.openlocfilehash: d35f8667cb1ca9a0b3abd08450ebc647d6d12276
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 7cb87847d6a1e191fb20dfa9cdf263066704eb6d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34607207"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238810"
 ---
 # <a name="back-up-system-state-and-restore-to-bare-metal-with-azure-backup-server"></a>Sichern des Systemstatus und Bare-Metal-Wiederherstellung mit Azure Backup Server
 
@@ -96,16 +96,16 @@ Nach Abschluss der Sicherung wird die Datei auf den Backup Server-Computer über
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-1.  **Stellen Sie Azure Backup Server bereit**. Überprüfen Sie, ob Backup Server ordnungsgemäß bereitgestellt ist. Weitere Informationen finden Sie unter 
-    * [Systemanforderungen für Azure Backup Server](http://docs.microsoft.com/system-center/dpm/install-dpm#setup-prerequisites)
+1.  **Stellen Sie Azure Backup Server bereit**. Überprüfen Sie, ob Backup Server ordnungsgemäß bereitgestellt ist. Weitere Informationen finden Sie unter
+    * [Systemanforderungen für Azure Backup Server](https://docs.microsoft.com/system-center/dpm/install-dpm#setup-prerequisites)
     * [Backup Server-Schutzmatrix](backup-mabs-protection-matrix.md)
 
 2.  **Richten Sie Speicher ein**. Sie können mit Azure Sicherungsdaten auf Datenträger, auf Band und in der Cloud speichern. Weitere Informationen finden Sie unter [Vorbereiten des Datenspeichers](https://docs.microsoft.com/system-center/dpm/plan-long-and-short-term-data-storage).
 
-3.  **Richten Sie den Schutz-Agent ein**. Installieren Sie den Schutz-Agent auf dem Computer, den Sie sichern möchten. Weitere Informationen finden Sie unter [Bereitstellen des DPM-Schutz-Agents](http://docs.microsoft.com/system-center/dpm/deploy-dpm-protection-agent).
+3.  **Richten Sie den Schutz-Agent ein**. Installieren Sie den Schutz-Agent auf dem Computer, den Sie sichern möchten. Weitere Informationen finden Sie unter [Bereitstellen des DPM-Schutz-Agents](https://docs.microsoft.com/system-center/dpm/deploy-dpm-protection-agent).
 
 ## <a name="back-up-system-state-and-bare-metal"></a>Sichern von Systemstatus und BMR
-Richten Sie gemäß den Anweisungen unter [Bereitstellen von Schutzgruppen](http://docs.microsoft.com/system-center/dpm/create-dpm-protection-groups) eine Schutzgruppe ein. Sie können BMR und den Systemstatus nicht für denselben Computer in unterschiedlichen Gruppen schützen. Bei Wahl von BMR wird der Systemstatus automatisch aktiviert.
+Richten Sie gemäß den Anweisungen unter [Bereitstellen von Schutzgruppen](https://docs.microsoft.com/system-center/dpm/create-dpm-protection-groups) eine Schutzgruppe ein. Sie können BMR und den Systemstatus nicht für denselben Computer in unterschiedlichen Gruppen schützen. Bei Wahl von BMR wird der Systemstatus automatisch aktiviert.
 
 
 1.  Wählen Sie zum Öffnen des Assistenten zum Erstellen einer neuen Schutzgruppe in der Backup Server-Verwaltungskonsole **Schutz** > **Aktionen** > **Schutzgruppe erstellen** aus.
@@ -114,7 +114,7 @@ Richten Sie gemäß den Anweisungen unter [Bereitstellen von Schutzgruppen](http
 
 3.  Erweitern Sie auf der Seite **Gruppenmitglieder auswählen** den Computer, und wählen Sie dann entweder **BMR** oder **Systemstatus** aus.
 
-    Zur Erinnerung: Sie können BMR und den Systemstatus nicht für denselben Computer in unterschiedlichen Gruppen schützen. Bei Wahl von BMR wird der Systemstatus automatisch aktiviert. Weitere Informationen finden Sie unter [Bereitstellen von Schutzgruppen](http://docs.microsoft.com/system-center/dpm/create-dpm-protection-groups).
+    Zur Erinnerung: Sie können BMR und den Systemstatus nicht für denselben Computer in unterschiedlichen Gruppen schützen. Bei Wahl von BMR wird der Systemstatus automatisch aktiviert. Weitere Informationen finden Sie unter [Bereitstellen von Schutzgruppen](https://docs.microsoft.com/system-center/dpm/create-dpm-protection-groups).
 
 4.  Wählen Sie auf der Seite **Datenschutzmethode auswählen** aus, wie Sie die kurz- und langfristige Sicherung handhaben möchten. Die kurzfristige Sicherung erfolgt immer zuerst auf Datenträger, mit der Option der Sicherung vom Datenträger in der Azure-Cloud mithilfe von Azure Backup (kurz- oder langfristig). Eine Alternative zur langfristigen Sicherung in der Cloud ist das Einrichten einer langfristigen Sicherung auf einem eigenständigen Bandgerät oder in einer Bandbibliothek, das bzw. die mit Backup Server verbunden ist.
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2016
 ms.author: ccompy
-ms.openlocfilehash: 1751d33b5f6f6a506654daedd15bbd75ae271483
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 1c05a50f82f5c235c76ff234efe183172e0863bf
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
-ms.locfileid: "26628844"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51232979"
 ---
 # <a name="create-and-manage-hybrid-connections"></a>Erstellen und Verwalten von Hybridverbindungen
 
@@ -105,7 +105,7 @@ You can also download the Hybrid Connection Manager MSI file and copy the file t
 [Azure App Service Hybrid Connections](../app-service/app-service-hybrid-connections.md) ist ebenfalls eine geeignete Ressource.
 
 #### <a name="use-group-policy-to-control-the-on-premises-resources-used-by-a-hybrid-connection"></a>Verwenden Sie Gruppenrichtlinien, um die von einer Hybridverbindung verwendeten lokalen Ressourcen zu steuern.
-1. Laden Sie die [administrativen Vorlagen des Hybrid Connection Manager](http://www.microsoft.com/download/details.aspx?id=42963)herunter.
+1. Laden Sie die [administrativen Vorlagen des Hybrid Connection Manager](https://www.microsoft.com/download/details.aspx?id=42963)herunter.
 2. Extrahieren Sie die Dateien.
 3. Gehen Sie auf dem Computer, der die Gruppenrichtlinie ändert, wie folgt vor:  
    
@@ -117,8 +117,8 @@ Nach dem Kopieren können Sie den Gruppenrichtlinien-Editor verwenden, um die Ri
 ## <a name="next"></a>Next (Weiter)
 [Übersicht über Hybridverbindungen](integration-hybrid-connection-overview.md)
 
-## <a name="see-also"></a>Weitere Informationen
-[REST API für die Verwaltung von BizTalk Services unter Microsoft Azure](http://msdn.microsoft.com/library/azure/dn232347.aspx)  
+## <a name="see-also"></a>Siehe auch
+[REST API für die Verwaltung von BizTalk Services unter Microsoft Azure](https://msdn.microsoft.com/library/azure/dn232347.aspx)  
 [BizTalk Services: Editionsübersicht](biztalk-editions-feature-chart.md)  
 [Erstellen eines BizTalk Service](biztalk-provision-services.md)  
 [BizTalk Services: Registerkarten "Dashboard", "Überwachen" und "Skalieren"](biztalk-dashboard-monitor-scale-tabs.md)

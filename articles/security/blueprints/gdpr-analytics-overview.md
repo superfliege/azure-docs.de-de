@@ -8,19 +8,19 @@ ms.service: security
 ms.topic: article
 ms.date: 05/14/2018
 ms.author: jomolesk
-ms.openlocfilehash: f744a1126e12766980727e31d5c50ce4aa17934c
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 3d15e747c129d2591f4cc70030d1cf858bcee49e
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49408777"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51237653"
 ---
 # <a name="azure-security-and-compliance-blueprint-analytics-for-gdpr"></a>Vorlage für Azure Security and Compliance: Analyse für die DSGVO
 
 ## <a name="overview"></a>Übersicht
 Die Datenschutz-Grundverordnung (DSGVO) enthält viele Anforderungen für das Sammeln, Speichern und Verwenden personenbezogener Daten. Diese umfassen auch das Identifizieren und Schützen dieser Daten durch Organisationen, die Einhaltung der Transparenzanforderungen, das Erkennen und Melden von Sicherheitsverletzungen im Zusammenhang mit personenbezogenen Daten sowie das Schulen von Datenschutzbeauftragten und anderen Mitarbeitern. Die DSGVO bietet Einzelpersonen mehr Kontrolle über ihre persönlichen Daten und ist mit vielen neuen Pflichten für Organisationen verbunden, die personenbezogene Daten sammeln, verarbeiten oder analysieren. Die DSGVO enthält neue Vorschriften für Organisationen, die Menschen in der Europäischen Union (EU) Waren und Dienstleistungen anbieten oder Daten in Bezug auf EU-Bürger sammeln und analysieren. Die DSGVO gilt unabhängig vom Standort der Organisation.
 
-Microsoft hat Azure basierend auf branchenweit führenden Sicherheitsmaßnahmen und Datenschutzrichtlinien zum Schutz von Daten in der Cloud entwickelt, zu denen auch personenbezogene Daten gehören, die der DSGVO unterliegen. Gemäß den eigenen [Vertragsbedingungen](http://aka.ms/Online-Services-Terms) muss Microsoft die Anforderungen von datenverarbeitenden Organisationen einhalten.
+Microsoft hat Azure basierend auf branchenweit führenden Sicherheitsmaßnahmen und Datenschutzrichtlinien zum Schutz von Daten in der Cloud entwickelt, zu denen auch personenbezogene Daten gehören, die der DSGVO unterliegen. Gemäß den eigenen [Vertragsbedingungen](https://aka.ms/Online-Services-Terms) muss Microsoft die Anforderungen von datenverarbeitenden Organisationen einhalten.
 
 Diese Vorlage für Azure Security and Compliance enthält eine Anleitung für das Bereitstellen einer Datenanalysearchitektur in Azure, die hilft, die Anforderungen der DSGVO zu erfüllen. Diese Lösung zeigt Möglichkeiten, mit denen Kunden bestimmte Sicherheits- und Konformitätsanforderungen erfüllen können, und sie dient Kunden als Grundlage für das Erstellen und Konfigurieren eigener Datenanalyselösungen in Azure. Kunden können diese Referenzarchitektur nutzen und für die Einhaltung der DSGVO den aus [vier Schritten bestehenden Prozess](https://aka.ms/gdprebook) von Microsoft befolgen:
 1. Ermitteln: Identifizieren Sie, welche personenbezogenen Daten vorhanden sind und wo sie sich befinden.
@@ -43,7 +43,7 @@ Sobald Daten in Azure SQL-Datenbank hochgeladen und von Azure Machine Learning t
 
 Die gesamte Lösung baut auf dem Service Azure Storage auf, den Kunden mit einem Konto über das Azure-Portal konfigurieren. Azure Storage verschlüsselt alle Daten über die Speicherdienstverschlüsselung, um die Vertraulichkeit von ruhenden Daten zu bewahren. Über einen sogenannten georedundanten Speicher (GRS) wird sichergestellt, dass es bei einem Zwischenfall im primären Rechenzentrum des Kunden nicht zu einem Datenverlust kommt, da eine zweite Kopie an einem weiteren Standort mehrere Hundert Kilometer entfernt gespeichert wird.
 
-Aus Sicherheitsgründen verwaltet diese Architektur Ressourcen über Azure Active Directory und Azure Key Vault. Die Systemintegrität wird durch Log Analytics und Azure Monitor überwacht. Der Kunde konfiguriert das Überwachen von Diensten zum Speichern von Protokollen und Anzeigen der Systemintegration in nur einem Dashboard, durch das man leicht navigieren kann.
+Aus Sicherheitsgründen verwaltet diese Architektur Ressourcen über Azure Active Directory und Azure Key Vault. Die Systemintegrität wird mit Log Analytics und Azure Monitor überwacht. Der Kunde konfiguriert das Überwachen von Diensten zum Speichern von Protokollen und Anzeigen der Systemintegration in nur einem Dashboard, durch das man leicht navigieren kann.
 
 Azure SQL-Datenbank wird in der Regel über SQL Server Management Studio (SSMS) verwaltet. SSMS wird über einen lokalen Computer ausgeführt, der für den Zugriff auf Azure SQL-Datenbank über eine sichere VPN- oder ExpressRoute-Verbindung konfiguriert ist. **Azure empfiehlt das Konfigurieren einer VPN- oder ExpressRoute-Verbindung für die Verwaltung und den Datenimport in die Ressourcengruppe der Referenzarchitektur.**
 

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/07/2018
 ms.author: sethm
 ms.reviewer: jeffgo
-ms.openlocfilehash: a50f91d5cbbc0eac7080437c96144014dad651ee
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: d520a33fd6729f4a9d4778cfdb8d3380c9ac09b0
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44161764"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51237841"
 ---
 # <a name="use-azure-resource-manager-templates-in-azure-stack"></a>Verwenden von Azure-Ressourcen-Manager-Vorlagen in Azure Stack
 
@@ -30,7 +30,7 @@ Mit Azure Resource Manager-Vorlagen können Sie alle Ressourcen für Ihre Anwend
 
 Diese Vorlagen können mit dem Microsoft Azure Stack-Portal, PowerShell, über die Befehlszeile und Visual Studio bereitgestellt werden.
 
-Die folgenden Schnellstartvorlagen sind auf [GitHub](http://aka.ms/azurestackgithub)verfügbar:
+Die folgenden Schnellstartvorlagen sind auf [GitHub](https://aka.ms/azurestackgithub)verfügbar:
 
 ## <a name="deploy-sharepoint-server-non-high-availability-deployment"></a>Bereitstellen von SharePoint Server (Bereitstellung ohne Hochverfügbarkeit)
 
@@ -81,4 +81,4 @@ Verwenden Sie zum Abbrechen der Ausführung einer Vorlagenbereitstellung das Pow
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Bereitstellen von Vorlagen mit dem Portal](azure-stack-deploy-template-portal.md)
-* [Übersicht über den Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md)
+* [Übersicht über den Azure-Ressourcen-Manager](../../azure-resource-manager/resource-group-overview.md)

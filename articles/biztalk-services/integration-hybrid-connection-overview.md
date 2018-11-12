@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 10/18/2016
 ms.author: ccompy
-ms.openlocfilehash: 819af52bb10c9ffcb7e1133437f6d0afbe6105ae
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: fa38d0ef3d00bf5fdb886703cd882ec5ba552b95
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
-ms.locfileid: "26629685"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51234033"
 ---
 # <a name="hybrid-connections-overview"></a>Überblick über Hybridverbindungen
 
@@ -93,8 +93,8 @@ Die folgenden TCP-Ports werden von Hybridverbindungen verwendet:
 ## <a name="next-steps"></a>Nächste Schritte
 [Create and manage Hybrid Connections](integration-hybrid-connection-create-manage.md)
 
-## <a name="see-also"></a>Weitere Informationen
-[REST API für die Verwaltung von BizTalk Services unter Microsoft Azure](http://msdn.microsoft.com/library/azure/dn232347.aspx)  
+## <a name="see-also"></a>Siehe auch
+[REST API für die Verwaltung von BizTalk Services unter Microsoft Azure](https://msdn.microsoft.com/library/azure/dn232347.aspx)  
 [BizTalk Services: Editionsübersicht](biztalk-editions-feature-chart.md)  
 [Erstellen eines BizTalk Service](biztalk-provision-services.md)  
 [BizTalk Services: Registerkarten "Dashboard", "Überwachen" und "Skalieren"](biztalk-dashboard-monitor-scale-tabs.md)  

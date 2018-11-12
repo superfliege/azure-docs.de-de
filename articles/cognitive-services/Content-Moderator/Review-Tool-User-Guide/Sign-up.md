@@ -9,15 +9,15 @@ ms.component: content-moderator
 ms.topic: article
 ms.date: 02/03/2017
 ms.author: sajagtap
-ms.openlocfilehash: c7d1c1e01dfc31383bfd25c2f577a271cbe5d02b
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: cd477a630178754e84fe67bbf3225b6b7e450ba5
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35372731"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51237943"
 ---
 # <a name="sign-up-for-content-moderator"></a>Registrieren für Content Moderator #
-Navigieren Sie zur Seite [Content Moderator-Registrierung](http://contentmoderator.cognitive.microsoft.com/Account/Signup). Sie können sich mit Ihrem Microsoft-Konto registrieren oder Sie erstellen ein Konto auf der Content Moderator-Webseite.
+Navigieren Sie zur Seite [Content Moderator-Registrierung](https://contentmoderator.cognitive.microsoft.com/Account/Signup). Sie können sich mit Ihrem Microsoft-Konto registrieren oder Sie erstellen ein Konto auf der Content Moderator-Webseite.
 
 ![Registrieren](images/0-signup-1.PNG)
 

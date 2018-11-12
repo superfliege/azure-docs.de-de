@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
 ms.date: 06/01/2017
 ms.author: danlep
-ms.openlocfilehash: 4a6327fcfe6f6e6f3b8b5c6ecbd14b832b4134c5
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: f5b8d3aa69d6a141394395f012e5cc57873cafaf
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39421211"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51235937"
 ---
 # <a name="get-started-running-excel-and-soa-workloads-on-an-hpc-pack-cluster-in-azure"></a>Erste Schritte mit Excel- und SOA-Workloads in einem HPC Pack-Cluster in Azure
 In diesem Artikel erfahren Sie, wie Sie einen Microsoft HPC Pack 2012 R2-Cluster mithilfe einer Azure-Schnellstartvorlage oder optional eines Azure PowerShell-Bereitstellungsskripts für Azure-VMs bereitstellen. Der Cluster verwendet VM-Images aus Azure Marketplace, die für die Ausführung von Microsoft Excel- oder SOA-Workloads mit HPC Pack konzipiert sind. Mit dem Cluster können Sie Excel-HPC- und SOA-Dienste über einen lokalen Clientcomputer ausführen. Zu den Excel-HPC-Diensten zählen die Abladung von Excel-Arbeitsmappen sowie benutzerdefinierte Funktionen (User-Defined Functions, UDFs) von Excel.
@@ -225,7 +225,7 @@ Führen Sie die folgenden Schritte durch, um eine Excel-Arbeitsmappe für die Au
         </startup>
     </configuration>
     ```
-1. Richten Sie den Client zum Übermitteln von Aufträgen an den HPC Pack-Cluster ein. Eine Option ist, die vollständige [HPC Pack 2012 R2 Update 3-Installation](http://www.microsoft.com/download/details.aspx?id=49922) herunterzuladen und den HPC Pack-Client zu installieren. Alternativ können Sie auch die [HPC Pack 2012 R2 Update 3-Clienthilfsprogramme](https://www.microsoft.com/download/details.aspx?id=49923) und die entsprechende weitervertreibbare Visual C++ 2010-Komponente für Ihren Computer ([x64](http://www.microsoft.com/download/details.aspx?id=14632) oder [x86](https://www.microsoft.com/download/details.aspx?id=5555)) herunterladen und installieren.
+1. Richten Sie den Client zum Übermitteln von Aufträgen an den HPC Pack-Cluster ein. Eine Option ist, die vollständige [HPC Pack 2012 R2 Update 3-Installation](https://www.microsoft.com/download/details.aspx?id=49922) herunterzuladen und den HPC Pack-Client zu installieren. Alternativ können Sie auch die [HPC Pack 2012 R2 Update 3-Clienthilfsprogramme](https://www.microsoft.com/download/details.aspx?id=49923) und die entsprechende weitervertreibbare Visual C++ 2010-Komponente für Ihren Computer ([x64](https://www.microsoft.com/download/details.aspx?id=14632) oder [x86](https://www.microsoft.com/download/details.aspx?id=5555)) herunterladen und installieren.
 1. In diesem Beispiel verwenden wir eine Excel-Beispielarbeitsmappe namens „ConvertiblePricing_Complete.xlsb“. Sie können es [hier](https://www.microsoft.com/en-us/download/details.aspx?id=2939)herunterladen.
 1. Kopieren Sie die Excel-Arbeitsmappe in einen Ordner (beispielsweise „D:\Excel\Run“).
 1. Öffnen Sie die Excel-Arbeitsmappe. Klicken Sie auf dem Menüband **Entwickeln** auf **COM-Add-Ins**, und vergewissern Sie sich, dass das HPC Pack-Excel-COM-Add-In erfolgreich geladen wurde.
@@ -262,7 +262,7 @@ Wenn Sie Excel-UDFs verwenden möchten, führen Sie zur Einrichtung des Clientco
 > 
 > 
 
-Führen Sie nach erfolgreicher Bereitstellung des Clusters die folgenden Schritte durch, um eine integrierte Beispiel-Excel-UDF auszuführen. Wenn Sie angepasste Excel-UDFs benötigen, sehen Sie sich [diese Ressourcen](http://social.technet.microsoft.com/wiki/contents/articles/1198.windows-hpc-and-microsoft-excel-resources-for-building-cluster-ready-workbooks.aspx) an, um die XLLs zu erstellen und auf dem IaaS-Cluster bereitzustellen.
+Führen Sie nach erfolgreicher Bereitstellung des Clusters die folgenden Schritte durch, um eine integrierte Beispiel-Excel-UDF auszuführen. Wenn Sie angepasste Excel-UDFs benötigen, sehen Sie sich [diese Ressourcen](https://social.technet.microsoft.com/wiki/contents/articles/1198.windows-hpc-and-microsoft-excel-resources-for-building-cluster-ready-workbooks.aspx) an, um die XLLs zu erstellen und auf dem IaaS-Cluster bereitzustellen.
 
 1. Öffnen Sie eine neue Excel-Arbeitsmappe. Klicken Sie auf dem Menüband **Entwickeln** auf **Add-Ins**. Klicken Sie im Dialogfeld auf **Durchsuchen**, navigieren Sie zum Ordner „%CCP_HOME%Bin\XLL32“, und wählen Sie das Beispiel „ClusterUDF32.xll“ aus. Wenn ClusterUDF32 auf dem Clientcomputer nicht vorhanden ist, kopieren Sie es aus dem Ordner „%CCP_HOME%Bin\XLL32“ auf dem Hauptknoten.
    
@@ -280,7 +280,7 @@ Führen Sie nach erfolgreicher Bereitstellung des Clusters die folgenden Schritt
 Um allgemeine SOA-Anwendungen auf dem HPC Pack-IaaS-Cluster auszuführen, wenden Sie zuerst eine der Methoden in Schritt 1 zur Bereitstellung des Clusters an. Geben Sie in diesem Fall ein generisches Serverknotenimage an, da Sie Excel auf den Serverknoten nicht benötigen. Führen Sie dann die folgenden Schritte durch:
 
 1. Rufen Sie das Clusterzertifikat ab, und importieren Sie es anschließend auf dem Clientcomputer unter „Cert:\<Aktueller Benutzer>\Root“.
-1. Installieren Sie das [HPC Pack 2012 R2 Update 3-SDK](http://www.microsoft.com/download/details.aspx?id=49921) und die [HPC Pack 2012 R2 Update 3-Clienthilfsprogramme](https://www.microsoft.com/download/details.aspx?id=49923). Diese Tools ermöglichen Ihnen, SOA-Clientanwendungen zu entwickeln und auszuführen.
+1. Installieren Sie das [HPC Pack 2012 R2 Update 3-SDK](https://www.microsoft.com/download/details.aspx?id=49921) und die [HPC Pack 2012 R2 Update 3-Clienthilfsprogramme](https://www.microsoft.com/download/details.aspx?id=49923). Diese Tools ermöglichen Ihnen, SOA-Clientanwendungen zu entwickeln und auszuführen.
 1. Laden Sie den [Beispielcode](https://www.microsoft.com/download/details.aspx?id=41633)„HelloWorldR2“ herunter. Öffnen Sie „HelloWorldR2.sln“ in Visual Studio 2010 oder 2012. (Dieses Beispiel ist derzeit nicht mit neueren Versionen von Visual Studio kompatibel.)
 1. Erstellen Sie zuerst das EchoService-Projekt. Stellen Sie dann den Dienst auf dem IaaS-Cluster bereit. Gehen Sie dabei auf die gleiche Weise vor wie bei der Bereitstellung auf einem lokalen Cluster. Ausführliche Schritte finden Sie in der Infodatei in „HelloWordR2“. Ändern und erstellen Sie „HelloWorldR2“ und andere Projekte wie im folgenden Abschnitt beschrieben, um die SOA-Clientanwendungen zu generieren, die auf einem Azure IaaS-Cluster ausgeführt werden.
 
@@ -343,7 +343,7 @@ Bei Verwendung der NetTcp-Bindung wird eine ähnliche Konfiguration verwendet wi
 Für die SOA-Clientanwendung muss lediglich der Hauptname auf den vollständigen Namen des IaaS-Clusters festgelegt werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Weitere Informationen zum Ausführen von Excel-Workloads mit HPC Pack finden Sie [hier](http://social.technet.microsoft.com/wiki/contents/articles/1198.windows-hpc-and-microsoft-excel-resources-for-building-cluster-ready-workbooks.aspx) .
+* Weitere Informationen zum Ausführen von Excel-Workloads mit HPC Pack finden Sie [hier](https://social.technet.microsoft.com/wiki/contents/articles/1198.windows-hpc-and-microsoft-excel-resources-for-building-cluster-ready-workbooks.aspx) .
 * Weitere Informationen zum Bereitstellen und Verwalten von SOA-Diensten mit HPC Pack finden Sie unter [Verwalten von SOA-Diensten in Microsoft HPC Pack](https://technet.microsoft.com/library/ff919412.aspx) .
 
 <!--Image references-->

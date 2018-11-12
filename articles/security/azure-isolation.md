@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 5710ebc1c52737e27aafa88eef5e9ae402f8e53f
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: a56d595ca88541779f5213c6b0ec88fc87913b6a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45579844"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51239048"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Isolation in der öffentlichen Azure-Cloud
 ##  <a name="introduction"></a>Einführung
@@ -111,7 +111,7 @@ Weitere Beispiele für Azure Active Directory-Funktionen sind:
 - [Azure Active Directory B2C](https://azure.microsoft.com/services/active-directory-b2c/) bietet einen hoch verfügbaren, globalen Identitätsverwaltungsdienst für kundenorientierte Anwendungen, der für Millionen von Identitäten skaliert werden kann. Er kann über mobile und Webplattformen integriert werden. Ihre Kunden können sich über eine anpassbare Oberfläche bei all Ihren Anwendungen anmelden und zu diesem Zweck entweder vorhandene Konten aus sozialen Netzwerken nutzen oder Anmeldeinformationen festlegen.
 
 ### <a name="isolation-from-microsoft-administrators--data-deletion"></a>Isolation gegenüber Microsoft-Administratoren und Datenlöschung
-Microsoft ergreift strenge Maßnahmen, um Ihre Daten vor unerwünschtem Zugriff und dem Zugriff durch unbefugte Personen zu schützen. Diese auf den Betrieb bezogenen Prozesse und Kontrollen basieren auf den [Nutzungsbedingungen für Online Services](http://aka.ms/Online-Services-Terms), die vertragliche Zusagen zum Zugriff auf Ihre Daten enthalten.
+Microsoft ergreift strenge Maßnahmen, um Ihre Daten vor unerwünschtem Zugriff und dem Zugriff durch unbefugte Personen zu schützen. Diese auf den Betrieb bezogenen Prozesse und Kontrollen basieren auf den [Nutzungsbedingungen für Online Services](https://aka.ms/Online-Services-Terms), die vertragliche Zusagen zum Zugriff auf Ihre Daten enthalten.
 
 -   Microsoft-Techniker haben standardmäßig keinen Zugriff auf Ihre Daten in der Cloud. Sie erhalten nur bei Bedarf und unter Aufsicht der Managementebene Zugriff. Dieser Zugriff wird sorgfältig kontrolliert und protokolliert und widerrufen, wenn er nicht mehr benötigt wird.
 
@@ -119,7 +119,7 @@ Microsoft ergreift strenge Maßnahmen, um Ihre Daten vor unerwünschtem Zugriff 
 
 Unternehmensdienstleistungen, die Prüfzertifizierungen unterliegen (z.B. ISO/IEC 27001), werden von Microsoft und akkreditierten Prüfunternehmen regelmäßig überprüft. Diese Überprüfungen werden stichprobenartig durchgeführt, um nachzuweisen, dass der Zugriff nur zu zulässigen geschäftlichen Zwecken erfolgt. Auf Ihre eigenen Kundendaten können Sie jederzeit und aus jedem Grund zugreifen.
 
-Wenn Sie Daten löschen, werden diese Daten von Microsoft Azure gelöscht, einschließlich zwischengespeicherte Daten und Sicherungskopien. Für Dienste innerhalb des Gültigkeitsbereichs wird dieser Löschvorgang innerhalb von 90 Tagen nach dem Ende des Aufbewahrungszeitraums durchgeführt. (Dienste innerhalb des Gültigkeitsbereichs sind im Abschnitt mit den Bedingungen zur Datenverarbeitung in den [Nutzungsbedingungen für Online Services](http://aka.ms/Online-Services-Terms) definiert.)
+Wenn Sie Daten löschen, werden diese Daten von Microsoft Azure gelöscht, einschließlich zwischengespeicherte Daten und Sicherungskopien. Für Dienste innerhalb des Gültigkeitsbereichs wird dieser Löschvorgang innerhalb von 90 Tagen nach dem Ende des Aufbewahrungszeitraums durchgeführt. (Dienste innerhalb des Gültigkeitsbereichs sind im Abschnitt mit den Bedingungen zur Datenverarbeitung in den [Nutzungsbedingungen für Online Services](https://aka.ms/Online-Services-Terms) definiert.)
 
 Wenn für einen zum Speichern verwendeten Datenträger ein Hardwarefehler auftritt, wird er auf sichere Weise [gelöscht oder zerstört](https://microsoft.com/en-us/trustcenter/privacy/you-own-your-data), bevor er von Microsoft zwecks Austausch oder Reparatur an den Hersteller zurückgeschickt wird. Die Daten auf dem Laufwerk werden überschrieben, um sicherzustellen, dass die Daten nicht mehr wiederhergestellt werden können.
 

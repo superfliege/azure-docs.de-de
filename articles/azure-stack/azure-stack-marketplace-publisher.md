@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/24/2018
 ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: 98a7ae31aeeae29b81a1053b38992d3bc4e0e03f
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: 4758c29d1cdb7e09c397524574ba1ab6701efeeb
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50085308"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238025"
 ---
 #  <a name="add-marketplace-items-using-publishing-tool"></a>Hinzufügen von Marketplace-Elementen mithilfe des Veröffentlichungstools
 
@@ -32,7 +32,7 @@ Durch Hinzufügen Ihrer Inhalte zum [Azure Stack-Marketplace](azure-stack-market
 
  - Laden Sie die [Azure Stack-Schnellstartvorlagen](https://github.com/Azure/AzureStack-QuickStart-Templates/archive/master.zip) herunter, und extrahieren Sie sie.
 
- - Laden Sie das [Azure Gallery Packaging-Tool](http://aka.ms/azurestackmarketplaceitem) (AzureGalleryPackage.exe) herunter. 
+ - Laden Sie das [Azure Gallery Packaging-Tool](https://aka.ms/azurestackmarketplaceitem) (AzureGalleryPackage.exe) herunter. 
 
  - Für die Veröffentlichung in Marketplace werden Symbole und eine Miniaturansichtsdatei benötigt. Sie können entweder eigene Inhalte verwenden oder die [Beispieldateien](azure-stack-marketplace-publisher.md#support-files) für dieses Beispiel lokal speichern.
 

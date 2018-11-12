@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: overview
-ms.date: 09/28/2018
+ms.date: 10/30/2018
 ms.author: alkohli
-ms.openlocfilehash: 8acb808e4b60926fbe6b3faa3fa6a7174a190884
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 5e4461a910f13c5047c4a2aadd7326c4e12c533f
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49094240"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238130"
 ---
 # <a name="what-is-azure-data-box-disk-preview"></a>Was ist ein Azure Data Box-Datenträger? (Vorschau)
 
@@ -44,10 +44,10 @@ Datenträger werden mithilfe der Microsoft-BitLocker-Laufwerkverschlüsselung ve
 A. Sie profitieren von der Verwendung von Data Box-Datenträgern, wenn Sie über 40 TB an Daten (oder weniger) verfügen, die Sie an Azure übertragen möchten.
 
 ### <a name="q-what-is-the-price-of-data-box-disks"></a>F: Was kosten Data Box-Datenträger?
-A. Während der Vorschauphase sind Data Box-Datenträger kostenlos verfügbar. Auch der Versand ist kostenlos, aber es fallen die Gebühren für den Azure-Speicher an.
+A. Informationen zum Preis von Data Box Disks finden Sie auf der [Seite mit der Preisübersicht](https://azure.microsoft.com/pricing/details/storage/databox/disk/).
 
 ### <a name="q-how-do-i-get-data-box-disks"></a>F: Wie erhalte ich Data Box-Datenträger? 
-A.  Um Azure Data Box-Datenträger zu erhalten, müssen Sie sich zunächst für [Data Box-Datenträger (Vorschauversion)](http://aka.ms/AzureDataBox) registrieren. Melden Sie sich als Nächstes am Azure-Portal an, und erstellen Sie einen Data Box-Auftrag für Datenträger. Geben Sie Ihre Kontaktinformationen und Benachrichtigungsdetails an. Nachdem Sie den Auftrag erstellt haben, werden die Datenträger je nach Verfügbarkeit innerhalb von zehn Tagen an Sie gesendet.   
+A.  Um Azure Data Box-Datenträger zu erhalten, müssen Sie sich zunächst für [Data Box-Datenträger (Vorschauversion)](https://aka.ms/AzureDataBox) registrieren. Melden Sie sich als Nächstes am Azure-Portal an, und erstellen Sie einen Data Box-Auftrag für Datenträger. Geben Sie Ihre Kontaktinformationen und Benachrichtigungsdetails an. Nachdem Sie den Auftrag erstellt haben, werden die Datenträger je nach Verfügbarkeit innerhalb von zehn Tagen an Sie gesendet.   
 
 ### <a name="q-what-is-the-maximum-amount-of-data-i-can-transfer-with-data-box-disks-in-one-instance"></a>F: Welche Menge von Daten kann ich mit Data Box-Datenträgern auf einmal übertragen?
 A. Für fünf Datenträger mit jeweils 8 TB (7 TB nutzbare Kapazität) ergibt sich eine maximal nutzbare Kapazität von 35 TB. Sie können also 35 TB an Daten auf einmal übertragen.  Um eine größere Datenmenge zu übertragen, können Sie weitere Datenträger bestellen.
@@ -72,7 +72,7 @@ A.  Navigieren Sie im Azure-Portal zu Ihrem Auftrag für Data Box-Datenträger u
 Eine Schritt-für-Schritt-Anleitung finden Sie unter den Informationen zum [Entsperren von Datenträgern auf einem Windows-Client](data-box-disk-deploy-set-up.md#unlock-disks-on-windows-client) bzw. [Entsperren von Datenträgern auf einem Linux-Client](data-box-disk-deploy-set-up.md#unlock-disks-on-linux-client).
 
 ### <a name="q-can-i-use-a-linux-host-computer-to-connect-and-copy-the-data-on-to-the-data-box-disks"></a>F: Kann ich einen Linux-Hostcomputer verwenden, um eine Verbindung herzustellen und die Daten auf die Data Box-Datenträger zu kopieren?
-A.  Ja. Sowohl der Linux- als auch der Windows-Client können verwendet werden, um eine Verbindung herzustellen und Daten auf die Data Box-Datenträger zu kopieren. Weitere Informationen finden Sie in der Liste mit den [unterstützten Betriebssystemen](data-box-disk-system-requirements.md) für Ihren Hostcomputer.
+A.  Ja. Sowohl der Linux- als auch der Windows-Client können verwendet werden, um eine Verbindung herzustellen und Daten in Data Box Disk zu kopieren. Weitere Informationen finden Sie in der Liste mit den [unterstützten Betriebssystemen](data-box-disk-system-requirements.md) für Ihren Hostcomputer.
 
 ### <a name="q-my-disks-are-dispatched-but-now-i-want-to-cancel-this-order-why-is-the-cancel-button-not-available"></a>F: Meine Datenträger wurden versendet, aber ich möchte den Auftrag jetzt stornieren. Warum ist die Schaltfläche zum Stornieren nicht verfügbar?
 A.  Sie können den Auftrag nur stornieren, wenn die Datenträger bestellt, aber noch nicht versendet wurden. Nachdem die Datenträger versendet wurden, ist eine Stornierung des Auftrags nicht mehr möglich. Während der Vorschauphase können Sie Ihre Datenträger kostenlos zurücksenden, aber dies wird sich voraussichtlich ändern, wenn die Lösung die Phase der allgemeinen Verfügbarkeit erreicht. 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 09/24/2018
 ms.author: alkohli
-ms.openlocfilehash: 8ecef86841bcf13a469f9c0dc81f114bd54acdba
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 0a5b7f93f9ac6cc5b1076881727a42fd5b95ff4b
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46946515"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51235155"
 ---
 # <a name="what-is-azure-data-box-heavy-preview"></a>Was ist Azure Data Box Heavy? (Vorschau)
 
@@ -31,7 +31,7 @@ Data Box Heavy ist derzeit in der Vorschauphase. Sie können sich über das Azur
 
 > [!IMPORTANT]
 > - Data Box Heavy ist in der Vorschauphase. Lesen Sie die [Azure-Vertragsbedingungen für Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/), bevor Sie diese Lösung bereitstellen. 
-> - Registrieren Sie sich im [Vorschauportal](http://aka.ms/), um ein Gerät zu bestellen.
+> - Registrieren Sie sich im [Vorschauportal](https://aka.ms/), um ein Gerät zu bestellen.
 > - In der Vorschauphase kann Data Box Heavy an Kunden in den USA und Europa versendet werden. Weitere Informationen finden Sie unter [Regionale Verfügbarkeit](#region-availability).
 
 ## <a name="use-cases"></a>Anwendungsfälle
@@ -46,7 +46,7 @@ Data Box Heavy eignet sich ideal für die Übertragung von Datenmengen von mehr 
  - **Erste Massenübertragung**: Die Ausführung einer ersten Massenübertragung mithilfe von Data Box Heavy (Seeding) gefolgt von inkrementellen Übertragungen über das Netzwerk. 
      - Beispielsweise werden Partner im Bereich Sicherungslösungen wie Commvault und Data Box Heavy herangezogen, um die erste große Sicherung von Verlaufsdaten in Azure zu verschieben. Im Anschluss werden die inkrementellen Daten über das Netzwerk in Azure Storage übertragen.
 
- - **Regelmäßige Uploads**: Erfolgen, wenn große Datenmengen regelmäßig generiert werden und in Azure verschoben werden müssen. Ein Beispiel hierfür ist die Exploration in der Energiebranche, bei der Videodaten auf Bohrinseln und für Windfarmen generiert werden.      
+ - **Periodische Uploads**: Werden verwendet, wenn regelmäßig große Datenmengen generiert werden und in Azure verschoben werden müssen. Ein Beispiel hierfür ist die Exploration in der Energiebranche, bei der Videodaten auf Bohrinseln und für Windfarmen generiert werden.      
 
 ## <a name="benefits"></a>Vorteile
 
@@ -128,7 +128,7 @@ Data Box Heavy ist in der Vorschauphase. Sie müssen sich für den Dienst regist
 
     <!--![The Data Box Heavy sign up 1]()-->
 
-3. Klicken Sie auf **Erstellen**.
+3. Klicken Sie auf **Create**.
 
     <!--![The Data Box Heavy sign up 2]()-->
 

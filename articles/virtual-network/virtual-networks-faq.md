@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: jdial
-ms.openlocfilehash: 2291136cf50439b7845c3a344be3218277257b34
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: 6c429931a7a17ab62892ecc774a5cca15a532f72
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48269478"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51237633"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure Virtual Network – häufig gestellte Fragen
 
@@ -213,7 +213,7 @@ Ja. Ausführliche Informationen finden Sie im Artikel [Die Netzwerksicherheit in
 ## <a name="apis-schemas-and-tools"></a>APIs, Schemas und Tools
 
 ### <a name="can-i-manage-vnets-from-code"></a>Können VNets programmgesteuert verwaltet werden?
-Ja. Sie können REST-APIs für VNETs im Rahmen des [Azure Resource Manager-Bereitstellungsmodells](/rest/api/virtual-network) und des [klassischen Bereitstellungsmodells (Dienstverwaltung)](http://go.microsoft.com/fwlink/?LinkId=296833) verwenden.
+Ja. Sie können REST-APIs für VNETs im Rahmen des [Azure Resource Manager-Bereitstellungsmodells](/rest/api/virtual-network) und des [klassischen Bereitstellungsmodells (Dienstverwaltung)](https://go.microsoft.com/fwlink/?LinkId=296833) verwenden.
 
 ### <a name="is-there-tooling-support-for-vnets"></a>Sind Tools zur Unterstützung von VNets verfügbar?
 Ja. Weitere Informationen zur Verwendung von folgenden Tools:

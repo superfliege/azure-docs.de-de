@@ -3,19 +3,19 @@ layout: HubPage
 hide_bc: true
 title: Microsoft Azure-Dokumentation
 description: Erfahren Sie, wie Sie mit Microsoft Azure-Clouddiensten leistungsstarke Anwendungen erstellen und verwalten. Laden Sie die Dokumentation, Beispielcode, Tutorials und vieles mehr herunter.
-ms.openlocfilehash: e1f01a63de4d9b2eaf45fa2b83875db6b1770418
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: a2c778f38c4a211f9a2ba1b73317478202adfcd5
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49388259"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51232678"
 ---
 <div id="main" class="v2">
     <div class="container">
         <h1 class="screenReader">Microsoft Azure-Dokumentation</h1>
         <ul class="cardsY panelContent featuredContent">
             <li>
-                <a href="http://aka.ms/azuredevgetstarted/">
+                <a href="https://aka.ms/azuredevgetstarted/">
                     <div class="cardSize">
                         <div class="cardPadding">
                             <div class="card">
@@ -3343,13 +3343,13 @@ ms.locfileid: "49388259"
                                                     <a href="/azure/xplat-cli-install?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json">Erste Schritte</a>
                                                 </p>
                                                 <p>
-                                                    <a href="http://aka.ms/linux-azure-cli">Herunterladen der Azure CLI für Linux</a>
+                                                    <a href="https://aka.ms/linux-azure-cli">Herunterladen der Azure CLI für Linux</a>
                                                 </p>
                                                 <p>
-                                                    <a href="http://aka.ms/mac-azure-cli">Herunterladen der Azure CLI für Mac</a>
+                                                    <a href="https://aka.ms/mac-azure-cli">Herunterladen der Azure CLI für Mac</a>
                                                 </p>
                                                 <p>
-                                                    <a href="http://aka.ms/webpi-azure-cli">Herunterladen der Azure CLI für Windows</a>
+                                                    <a href="https://aka.ms/webpi-azure-cli">Herunterladen der Azure CLI für Windows</a>
                                                 </p>
                                                 <p>
                                                     <a href="/azure/virtual-machines/azure-cli-arm-commands?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json">Referenz</a>
@@ -3453,13 +3453,13 @@ ms.locfileid: "49388259"
                                                     <a href="/azure/vs-azure-tools-storage-manage-with-storage-explorer">Erste Schritte</a>
                                                 </p>
                                                 <p>
-                                                     <a  href="http://go.microsoft.com/fwlink/?LinkId=722418">Herunterladen für Linux</a>
+                                                     <a  href="https://go.microsoft.com/fwlink/?LinkId=722418">Herunterladen für Linux</a>
                                                 </p>
                                                 <p>
-                                                    <a href="http://go.microsoft.com/fwlink/?LinkId=708342">Herunterladen für Mac</a>
+                                                    <a href="https://go.microsoft.com/fwlink/?LinkId=708342">Herunterladen für Mac</a>
                                                 </p>
                                                 <p>
-                                                    <a href="http://go.microsoft.com/fwlink/?LinkId=708343">Herunterladen für Windows</a>
+                                                    <a href="https://go.microsoft.com/fwlink/?LinkId=708343">Herunterladen für Windows</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -3477,10 +3477,10 @@ ms.locfileid: "49388259"
                                             </div>
                                             <div class="cardText">
                                                 <h3>
-                                                    <a href="http://aka.ms/ptvs">Python-Tools</a>
+                                                    <a href="https://aka.ms/ptvs">Python-Tools</a>
                                                 </h3>
                                                 <p>
-                                                    <a href="http://aka.ms/ptvsdocs">Erste Schritte mit Visual Studio</a>
+                                                    <a href="https://aka.ms/ptvsdocs">Erste Schritte mit Visual Studio</a>
                                                 </p>
                                                 <p>
                                                     <a href="https://code.visualstudio.com/docs/python/python-tutorial">Erste Schritte mit Visual Studio Code</a>

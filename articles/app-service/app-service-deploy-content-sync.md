@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: cephalin;dariagrigoriu
-ms.openlocfilehash: 3781010c74daa51c92813db85ee03eaa4c02a4cf
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 3796f5c8956b633a4789baaf31a439746dc96b96
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35233586"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51233761"
 ---
 # <a name="sync-content-from-a-cloud-folder-to-azure-app-service"></a>Synchronisieren von Inhalt aus einem Cloudordner in Azure App Service
-Dieser Artikel zeigt Ihnen, wie Sie Ihre Inhalte in Dropbox und auf OneDrive mit [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) synchronisieren. 
+Dieser Artikel zeigt Ihnen, wie Sie Ihre Inhalte in Dropbox und auf OneDrive mit [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) synchronisieren. 
 
 Die bedarfsabhängige Bereitstellung einer Inhaltssynchronisierung wird von der [Kudu-Bereitstellungs-Engine](https://github.com/projectkudu/kudu/wiki) in App Service unterstützt. Sie können mit Ihrem App-Code und Inhalt in einem festgelegten Cloudordner arbeiten und dann mit einem Klick auf eine Schaltfläche eine Synchronisierung mit App Service durchführen. Zur Inhaltssynchronisierung wird der Kudu-Buildserver verwendet. 
 
@@ -42,7 +42,7 @@ Wählen Sie auf der Seite **Konfigurieren** den Ordner aus, den Sie synchronisie
 * **OneDrive**: `Apps\Azure Web Apps`
 * **Dropbox**: `Apps\Azure`
 
-Klicken Sie auf **Weiter**, wenn Sie fertig sind.
+Klicken Sie abschließend auf **Weiter**.
 
 Überprüfen Sie auf der Seite **Zusammenfassung** die Optionen, und klicken Sie dann auf **Fertig stellen**.
 

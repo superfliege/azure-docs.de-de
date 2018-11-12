@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/07/2017
 ms.author: rwike77
-ms.openlocfilehash: a87dd6f4afa152aebafdde24defcabe841ae2e9c
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 4d5e74b9ecffbf8f1161cf6c5ef948cd154d993f
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34206464"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51233164"
 ---
 # <a name="your-service-fabric-application-and-next-steps"></a>Ihre Service Fabric-Anwendung und nächste Schritte
 Ihre Azure Service Fabric-Anwendung wurde erstellt. In diesem Artikel werden einige Tutorials zum Ausprobieren, der Aufbau Ihres Projekts, weitere interessante Informationen und mögliche nächste Schritte beschrieben.
@@ -35,7 +35,7 @@ Oder probieren Sie eine der folgenden exemplarischen Vorgehensweisen aus, und er
 - [Ausführbaren Gastdienst unter Windows](quickstart-guest-app.md) 
 - [Windows-Containeranwendung](service-fabric-get-started-containers.md) 
 
-Vielleicht sind Sie auch daran interessiert, unsere [Beispielanwendungen](http://aka.ms/servicefabricsamples) auszuprobieren.
+Vielleicht sind Sie auch daran interessiert, unsere [Beispielanwendungen](https://aka.ms/servicefabricsamples) auszuprobieren.
 
 ## <a name="have-questions-or-feedback--need-to-report-an-issue"></a>Haben Sie Fragen oder Feedback?  Möchten Sie ein Problem melden?
 Lesen Sie die [häufig gestellte Fragen](service-fabric-common-questions.md) und finden Sie Antworten zu den Funktionen und zur Verwendung von Service Fabric.

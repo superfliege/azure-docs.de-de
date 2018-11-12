@@ -16,12 +16,12 @@ ms.date: 11/13/2017
 ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: a3cbbf887c4b7df57f2df89dfb8649967d6d9b1b
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 9f02c6779b3561f6eea57512ecb27dd2fd451d90
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47434754"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238147"
 ---
 # <a name="define-data-protection-strategy-for-your-hybrid-identity-solution"></a>Definieren der Datenschutzstrategie für Ihre Hybrididentitätslösung
 In dieser Aufgabe definieren Sie die Datenschutzstrategie für Ihre Hybrididentitätslösung, um die geschäftlichen Anforderungen zu erfüllen, die Sie hier definiert haben:
@@ -74,7 +74,7 @@ Ein wesentlicher Bestandteil des Content Managements ist, zu verstehen, wer auf 
 * Hinzufügen oder Entfernen von Lizenzen
 
 > [!NOTE]
-> Lesen Sie [Microsoft Azure Sicherheits- und Überwachungsprotokollverwaltung](http://download.microsoft.com/download/B/6/C/B6C0A98B-D34A-417C-826E-3EA28CDFC9DD/AzureSecurityandAuditLogManagement_11132014.pdf) , um weitere Informationen zu Protokollierungsfunktionen in Azure zu erhalten.
+> Lesen Sie [Microsoft Azure Sicherheits- und Überwachungsprotokollverwaltung](https://download.microsoft.com/download/B/6/C/B6C0A98B-D34A-417C-826E-3EA28CDFC9DD/AzureSecurityandAuditLogManagement_11132014.pdf) , um weitere Informationen zu Protokollierungsfunktionen in Azure zu erhalten.
 > Je nachdem, wie Sie die Fragen in [Bestimmen der Content Management-Anforderungen](plan-hybrid-identity-design-considerations-contentmgt-requirements.md)beantwortet haben, sollten Sie bestimmen können, wie der Inhalt in Ihrer Hybrididentitätslösung verwaltet werden soll. Obgleich alle Optionen, die in Tabelle 6 aufgeführt werden, in Azure AD integriert werden können, ist es wichtig, zu definieren, welche für Ihre geschäftlichen Anforderungen besser geeignet sind.
 >
 >

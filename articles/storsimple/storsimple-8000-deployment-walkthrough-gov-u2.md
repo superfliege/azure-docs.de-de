@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/22/2017
 ms.author: alkohli
-ms.openlocfilehash: 5a622eb5ae14a6c6b0c2dd4eceb6ffdb9733dcff
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 4f093251ce3c711cc060369abb27770157024d91
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38681535"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238691"
 ---
 # <a name="deploy-your-on-premises-storsimple-device-in-the-government-portal"></a>Bereitstellen lokaler StorSimple-Geräte im Government-Portal
 
@@ -67,7 +67,7 @@ Führen Sie die folgenden erforderlichen Schritte zum Konfigurieren Ihres StorSi
 ## <a name="deployment-configuration-checklist"></a>Konfigurationsprüfliste für die Bereitstellung
 Bevor Sie Ihr StorSimple-Gerät bereitstellen, müssen Sie Informationen zum Konfigurieren der Software auf Ihrem Gerät sammeln. Wenn Sie einige dieser Informationen im Voraus erfassen, beschleunigt dies die Bereitstellung des StorSimple-Geräts in Ihrer Umgebung. Laden Sie die diese Prüfliste herunter, und verwenden Sie sie, um während der Bereitstellung des Geräts die Konfigurationsdetails zu notieren.
 
-[Konfigurationsprüfliste für StorSimple-Bereitstellung herunterladen (in englischer Sprache)](http://www.microsoft.com/download/details.aspx?id=49159)
+[Konfigurationsprüfliste für StorSimple-Bereitstellung herunterladen (in englischer Sprache)](https://www.microsoft.com/download/details.aspx?id=49159)
 
 ## <a name="deployment-prerequisites"></a>Voraussetzungen für die Bereitstellung
 In den folgenden Abschnitten werden die Konfigurationsvoraussetzungen für den StorSimple-Geräte-Manager-Dienst und das StorSimple-Gerät beschrieben.

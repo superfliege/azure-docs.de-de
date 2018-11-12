@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 23e219fa49146158c97f392427eee7c42c347a7a
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: b4b6e91f9b20166f63a4710f42726bf1d4090022
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43307419"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51251558"
 ---
 # <a name="security-frame-authentication--mitigations"></a>Sicherheitsrahmen: Authentifizierung | Gegenmaßnahmen 
 | Produkt/Dienst | Artikel |
@@ -36,7 +36,7 @@ ms.locfileid: "43307419"
 | **Azure AD** | <ul><li>[Verwenden Sie von Azure Active Directory unterstützte Standardauthentifizierungsszenarien.](#authn-aad)</li><li>[Überschreiben Sie den standardmäßigen ADAL-Tokencache mit einer skalierbaren Alternative.](#adal-scalable)</li><li>[Verwenden Sie TokenReplayCache, um die Wiedergabe von ADAL-Authentifizierungstoken zu verhindern.](#tokenreplaycache-adal)</li><li>[Verwenden Sie ADAL-Bibliotheken, um Tokenanforderungen von OAuth2-Clients an AAD (oder lokales AD) zu verwalten.](#adal-oauth2)</li></ul> |
 | **Zwischengeschaltetes IoT-Gateway** | <ul><li>[Authentifizieren Sie Geräte, die eine Verbindung mit dem zwischengeschalteten Gateway herstellen.](#authn-devices-field)</li></ul> |
 | **IoT-Cloudgateway** | <ul><li>[Stellen Sie sicher, dass Geräte, die eine Verbindung mit dem Cloudgateway herstellen, authentifiziert werden.](#authn-devices-cloud)</li><li>[Verwenden Sie gerätespezifische Anmeldeinformationen für die Authentifizierung.](#authn-cred)</li></ul> |
-| **Azure Storage** | <ul><li>[Stellen Sie sicher, dass nur die erforderlichen Container und Blobs anonymen Lesezugriff erhalten.](#req-containers-anon)</li><li>[Gewähren Sie mithilfe von SAS oder SAP eingeschränkten Zugriff auf Objekte im Azure-Speicher.](#limited-access-sas)</li></ul> |
+| **Azure Storage (in englischer Sprache)** | <ul><li>[Stellen Sie sicher, dass nur die erforderlichen Container und Blobs anonymen Lesezugriff erhalten.](#req-containers-anon)</li><li>[Gewähren Sie mithilfe von SAS oder SAP eingeschränkten Zugriff auf Objekte im Azure-Speicher.](#limited-access-sas)</li></ul> |
 
 ## <a id="standard-authn-web-app"></a>Verwenden Sie ggf. einen Standardauthentifizierungsmechanismus zur Authentifizierung bei Webanwendungen.
 
@@ -156,7 +156,7 @@ ms.locfileid: "43307419"
 | **SDL-Phase**               | Entwickeln |  
 | **Zutreffende Technologien** | Lokal, SQL Azure |
 | **Attribute**              | SQL-Version: MSSQL2012, SQL-Version: V12 |
-| **Referenzen**              | [Bewährte Methoden für die Sicherheit eigenständiger Datenbanken](http://msdn.microsoft.com/library/ff929055.aspx) |
+| **Referenzen**              | [Bewährte Methoden für die Sicherheit eigenständiger Datenbanken](https://msdn.microsoft.com/library/ff929055.aspx) |
 | **Schritte** | Ohne erzwungene Kennwortrichtlinie erhöht sich das Risiko, dass in einer eigenständigen Datenbank unsichere Anmeldeinformationen eingerichtet werden. Nutzen Sie die Windows-Authentifizierung. |
 
 ## <a id="authn-sas-tokens"></a>Verwenden Sie gerätespezifische Authentifizierungsanmeldeinformationen mit SAS-Token.

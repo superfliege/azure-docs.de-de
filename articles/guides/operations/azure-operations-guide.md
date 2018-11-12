@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 08/24/2018
 ms.author: mibender
-ms.openlocfilehash: c10e071100410f6d5d995d88657bdd85c08a9715
-ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
+ms.openlocfilehash: 07faf5efd1c7eec3e209a5d971185655cc949bb9
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47423492"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51250780"
 ---
 # <a name="get-started-for-azure-it-operators"></a>Erste Schritte für Azure-IT-Operatoren
 
@@ -185,7 +185,7 @@ Administratoren können auf Azure PowerShell und die Azure CLI über eine browse
 
 ## <a name="azure-subscriptions"></a>Azure-Abonnements
 
-Ein Abonnement ist eine logische Gruppierung von Azure-Diensten, die mit einem Azure-Konto verknüpft ist. Ein einzelnes Azure-Konto kann mehrere Abonnements enthalten. Die Abrechnung für Azure-Dienste erfolgt auf Abonnementbasis. Azure-Abonnements verfügen über einen Kontoadministrator, der die volle Kontrolle über das Abonnement hat, und einen Dienstadministrator, der die Kontrolle über alle Dienste des Abonnements hat. Informationen über Administratoren für klassische Abonnements finden Sie unter [Hinzufügen oder Ändern von Azure-Abonnementadministratoren](../../billing/billing-add-change-azure-subscription-administrator.md). Zusätzlich zu Administratoren kann einzelnen Konten über die [rollenbasierte Zugriffssteuerung (RBAC)](../../role-based-access-control/overview.md) detaillierte Kontrolle über Azure-Ressourcen gewährt werden.
+Ein Abonnement ist eine logische Gruppierung von Azure-Diensten, die mit einem Azure-Konto verknüpft ist. Ein einzelnes Azure-Konto kann mehrere Abonnements enthalten. Die Abrechnung für Azure-Dienste erfolgt auf Abonnementbasis. Azure-Abonnements verfügen über einen Kontoadministrator, der die vollständige Kontrolle über das Abonnement hat, und einen Dienstadministrator, der die Kontrolle über alle Dienste des Abonnements hat. Informationen über Administratoren für klassische Abonnements finden Sie unter [Hinzufügen oder Ändern von Azure-Abonnementadministratoren](../../billing/billing-add-change-azure-subscription-administrator.md). Zusätzlich zu Administratoren kann einzelnen Konten über die [rollenbasierte Zugriffssteuerung (RBAC)](../../role-based-access-control/overview.md) detaillierte Kontrolle über Azure-Ressourcen gewährt werden.
 
 ### <a name="select-and-enable-an-azure-subscription"></a>Auswählen und Aktivieren eines Azure-Abonnements
 
@@ -227,7 +227,7 @@ Weitere Informationen finden Sie unter [Gewinnen von Einblicken in den Ressource
 
 ### <a name="forecast-cost-with-the-pricing-calculator"></a>Vorhersagen von Kosten mit dem Preisrechner
 
-Die Preise für die einzelnen Dienste in Azure sind unterschiedlich. Viele Azure-Dienste verfügen über die Tarife „Basic“, „Standard“ und „Premium“. Normalerweise hat jeder Tarif mehrere Preis- und Leistungsebenen. Mit dem [Online-Preisrechner](http://azure.microsoft.com/pricing/calculator) können Sie Preisschätzungen erstellen. Der Preisrechner ermöglicht Ihnen das flexible Schätzen von Kosten für eine einzelne Ressource oder eine Gruppe von Ressourcen.
+Die Preise für die einzelnen Dienste in Azure sind unterschiedlich. Viele Azure-Dienste verfügen über die Tarife „Basic“, „Standard“ und „Premium“. Normalerweise hat jeder Tarif mehrere Preis- und Leistungsebenen. Mit dem [Online-Preisrechner](https://azure.microsoft.com/pricing/calculator) können Sie Preisschätzungen erstellen. Der Preisrechner ermöglicht Ihnen das flexible Schätzen von Kosten für eine einzelne Ressource oder eine Gruppe von Ressourcen.
 
 ## <a name="azure-resource-manager"></a>Azure Resource Manager
 

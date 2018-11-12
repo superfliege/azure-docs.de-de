@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: cshoe
-ms.openlocfilehash: 3066da9a492fc12dd8b333a089b8aabbbb647414
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 3f7b216be79be1307a5668d6686fd73a27ae5574
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50421355"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51237858"
 ---
 # <a name="run-a-cassandra-cluster-on-linux-in-azure-with-nodejs"></a>Ausführen eines Cassandra-Clusters unter Linux in Azure mit Node.js
 
@@ -49,7 +49,7 @@ Cassandra kann in einer einzelnen Azure-Region oder in mehreren Regionen basiere
 ### <a name="single-region-deployment"></a>Bereitstellung in einer Region
 Beginnen Sie mit der Bereitstellung in einer Region, und nutzen Sie dann die gewonnenen Erfahrungen beim Erstellen eines Modells für mehrere Regionen. Virtuelle Azure-Netzwerke werden zum Erstellen isolierter Subnetze verwendet, damit die oben genannten Anforderungen an die Netzwerksicherheit erfüllt werden können.  Für die Vorgehensweise, in der die Bereitstellung in einer Region beschrieben wird, werden Ubuntu 14.04 LTS und Cassandra 2.08 verwendet. Die Vorgehensweise kann jedoch problemlos für andere Linux-Varianten übernommen werden. Die folgenden systemischen Merkmale gelten für eine Bereitstellung in einer Region.  
 
-**Hochverfügbarkeit**: Die in Abbildung 1 gezeigten Cassandra-Knoten werden für zwei Verfügbarkeitsgruppen bereitgestellt, sodass die Knoten auf mehrere Fehlerdomänen verteilt sind und Hochverfügbarkeit gewährleisten. Virtuelle Computer, die mit Anmerkungen zu jeder Verfügbarkeitsgruppe versehen sind, werden zwei Fehlerdomänen zugeordnet. Für Azure wird das Konzept der Fehlerdomäne verwendet, um ungeplante Ausfallzeiten (z. B. Hardware- oder Softwarefehler) zu verwalten. Das Konzept der Upgradedomäne (z. B. Host- oder Gastbetriebssystem-Patches und -Upgrades bzw. Anwendungsupgrades) wird verwendet, um geplante Ausfallzeiten zu verwalten. Welche Rolle Fehler- und Upgradedomänen zum Erreichen der Hochverfügbarkeit spielen, lesen Sie unter [Notfallwiederherstellung und Hochverfügbarkeit für Azure-Anwendungen](http://msdn.microsoft.com/library/dn251004.aspx).
+**Hochverfügbarkeit**: Die in Abbildung 1 gezeigten Cassandra-Knoten werden für zwei Verfügbarkeitsgruppen bereitgestellt, sodass die Knoten auf mehrere Fehlerdomänen verteilt sind und Hochverfügbarkeit gewährleisten. Virtuelle Computer, die mit Anmerkungen zu jeder Verfügbarkeitsgruppe versehen sind, werden zwei Fehlerdomänen zugeordnet. Für Azure wird das Konzept der Fehlerdomäne verwendet, um ungeplante Ausfallzeiten (z. B. Hardware- oder Softwarefehler) zu verwalten. Das Konzept der Upgradedomäne (z. B. Host- oder Gastbetriebssystem-Patches und -Upgrades bzw. Anwendungsupgrades) wird verwendet, um geplante Ausfallzeiten zu verwalten. Welche Rolle Fehler- und Upgradedomänen zum Erreichen der Hochverfügbarkeit spielen, lesen Sie unter [Notfallwiederherstellung und Hochverfügbarkeit für Azure-Anwendungen](https://msdn.microsoft.com/library/dn251004.aspx).
 
 ![Bereitstellung in einer Region](./media/cassandra-nodejs/cassandra-linux1.png)
 

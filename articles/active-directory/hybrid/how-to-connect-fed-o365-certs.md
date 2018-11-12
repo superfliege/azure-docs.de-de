@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/20/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 0205552c073bf03c40da4d108256fa09e71fbbe3
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 311c16ba0c6b3378fd743b77e263a5d91f8b6a37
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46309889"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51237094"
 ---
 # <a name="renew-federation-certificates-for-office-365-and-azure-active-directory"></a>Erneuern von Verbundzertifikaten für Office 365 und Azure Active Directory
 ## <a name="overview"></a>Übersicht
@@ -51,9 +51,9 @@ Azure AD versucht, die Verbundmetadaten zu überwachen und die Tokensignaturzert
 > [!IMPORTANT]
 > Wenn Sie AD FS verwenden, überprüfen Sie zur Gewährleistung der Geschäftskontinuität, ob auf Ihren Servern die folgenden Updates installiert sind, damit keine Authentifizierungsfehler aufgrund von bereits bekannten Problemen auftreten. Dadurch werden bekannte AD FS-Proxyserverprobleme bei dieser Erneuerung und künftigen Erneuerungsperioden vermieden:
 >
-> Server 2012 R2 – [Windows Server May 2014 rollup](http://support.microsoft.com/kb/2955164)
+> Server 2012 R2 – [Windows Server May 2014 rollup](https://support.microsoft.com/kb/2955164)
 >
-> Server 2008 R2 und 2012 – [Authentication through proxy fails in Windows Server 2012 or Windows 2008 R2 SP1](http://support.microsoft.com/kb/3094446)
+> Server 2008 R2 und 2012 – [Authentication through proxy fails in Windows Server 2012 or Windows 2008 R2 SP1](https://support.microsoft.com/kb/3094446)
 >
 >
 

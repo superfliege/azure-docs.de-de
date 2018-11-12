@@ -10,18 +10,18 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: mmercuri
 manager: femila
-ms.openlocfilehash: dcf31bd6b128115962e30dd6653364c4cd65047d
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: b4a816c887d1cca78ff845858dce29049946b09f
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48240970"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51235988"
 ---
 # <a name="azure-blockchain-workbench-messaging-integration"></a>Integration von Nachrichten in Azure Blockchain Workbench
 
 Neben der Bereitstellung einer REST-API bietet Azure Blockchain Workbench auch eine nachrichtenbasierte Integration. Workbench veröffentlicht ledgerorientierte Ereignisse über Azure Event Grid, sodass Downstreamconsumer Daten erfassen oder basierend auf diesen Ereignissen Aktionen ausführen können. Für Clients, die eine zuverlässige Nachrichtenübermittlung erfordern, liefert Azure Blockchain Workbench zudem Nachrichten an einen Azure Service Bus-Endpunkt.
 
-Entwickler haben auch Interesse an der Möglichkeit geäußert, dass externe Systeme Transaktionen initiieren, um Benutzer und Verträge zu erstellen sowie Verträge in einem Ledger zu aktualisieren. Obwohl diese Funktionalität derzeit nicht in der öffentlichen Vorschau enthalten ist, finden Sie ein Beispiel zu dieser Funktion unter [http://aka.ms/blockchain-workbench-integration-sample](http://aka.ms/blockchain-workbench-integration-sample).
+Entwickler haben auch Interesse an der Möglichkeit geäußert, dass externe Systeme Transaktionen initiieren, um Benutzer und Verträge zu erstellen sowie Verträge in einem Ledger zu aktualisieren. Obwohl diese Funktionalität derzeit nicht in der öffentlichen Vorschau enthalten ist, finden Sie ein Beispiel zu dieser Funktion unter [http://aka.ms/blockchain-workbench-integration-sample](https://aka.ms/blockchain-workbench-integration-sample).
 
 ## <a name="event-notifications"></a>Ereignisbenachrichtigungen
 

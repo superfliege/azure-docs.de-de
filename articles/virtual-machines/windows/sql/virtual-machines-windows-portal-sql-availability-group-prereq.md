@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/29/2018
 ms.author: mikeray
-ms.openlocfilehash: d75bb780a17653aaacbc74413fb4240a8052a983
-ms.sourcegitcommit: e45b2aa85063d33853560ec4bc867f230c1c18ce
+ms.openlocfilehash: 2d8a98e6ab38f4156b6e2f5bda81b44e1789a6ed
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43371484"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51253073"
 ---
 # <a name="complete-the-prerequisites-for-creating-always-on-availability-groups-on-azure-virtual-machines"></a>Erfüllen der Voraussetzungen für die Erstellung von AlwaysOn-Verfügbarkeitsgruppen in Azure Virtual Machines
 
@@ -35,14 +35,14 @@ Das folgende Diagramm veranschaulicht, was Sie im Rahmen dieses Tutorials erstel
 
 ## <a name="review-availability-group-documentation"></a>Lesen der Dokumentation zu Verfügbarkeitsgruppen
 
-Für dieses Tutorial werden Grundkenntnisse über SQL Server AlwaysOn-Verfügbarkeitsgruppen vorausgesetzt. Wenn Sie mit dieser Technologie nicht vertraut sind, lesen Sie die [Übersicht über AlwaysOn-Verfügbarkeitsgruppen (SQL Server)](http://msdn.microsoft.com/library/ff877884.aspx).
+Für dieses Tutorial werden Grundkenntnisse über SQL Server AlwaysOn-Verfügbarkeitsgruppen vorausgesetzt. Wenn Sie mit dieser Technologie nicht vertraut sind, lesen Sie die [Übersicht über AlwaysOn-Verfügbarkeitsgruppen (SQL Server)](https://msdn.microsoft.com/library/ff877884.aspx).
 
 
 ## <a name="create-an-azure-account"></a>Erstellen eines Azure-Kontos
 Sie benötigen ein Azure-Konto. Sie können entweder ein [kostenloses Azure-Konto erstellen](https://signup.azure.com/signup?offer=ms-azr-0044p&appId=102&ref=azureplat-generic&redirectURL=https:%2F%2Fazure.microsoft.com%2Fget-started%2Fwelcome-to-azure%2F&correlationId=24f9d452-1909-40d7-b609-2245aa7351a6&l=en-US) oder [Visual Studio-Abonnementvorteile aktivieren](https://docs.microsoft.com/visualstudio/subscriptions/subscriber-benefits).
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
-1. Melden Sie sich beim [Azure-Portal](http://portal.azure.com)an.
+1. Melden Sie sich beim [Azure-Portal](http://portal.azure.com) an.
 2. Klicken Sie auf **+**, um ein neues Objekt im Portal zu erstellen.
 
    ![Neues Objekt](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/01-portalplus.png)
@@ -349,7 +349,7 @@ Nachdem Sie die Konfiguration von Active Directory und den Benutzerobjekten abge
 
 ## <a name="create-sql-server-vms"></a>Erstellen der virtuellen SQL Server-Computer
 
-Erstellen Sie drei zusätzliche virtuelle Computer. Die Lösung erfordert zwei virtuelle Computer mit SQL Server-Instanzen. Ein dritter virtueller Computer fungiert als Zeuge. Windows Server 2016 kann einen [Cloudzeugen](http://docs.microsoft.com/windows-server/failover-clustering/deploy-cloud-witness) verwenden, aus Gründen der Konsistenz mit älteren Betriebssystemen wird in diesem Dokument jedoch als Zeuge ein virtueller Computer verwendet.  
+Erstellen Sie drei zusätzliche virtuelle Computer. Die Lösung erfordert zwei virtuelle Computer mit SQL Server-Instanzen. Ein dritter virtueller Computer fungiert als Zeuge. Windows Server 2016 kann einen [Cloudzeugen](https://docs.microsoft.com/windows-server/failover-clustering/deploy-cloud-witness) verwenden, aus Gründen der Konsistenz mit älteren Betriebssystemen wird in diesem Dokument jedoch als Zeuge ein virtueller Computer verwendet.  
 
 Bevor Sie fortfahren, sollten Sie die folgenden Entwurfsentscheidungen treffen.
 

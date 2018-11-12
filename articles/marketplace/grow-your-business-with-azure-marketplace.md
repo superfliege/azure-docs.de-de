@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 07/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 6c2f20f74ce90f2876ff4040d34a2ede94c92fb1
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: d193cfcd03eb4e686ba829e121fbf77e2e0c18a6
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39577327"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51233013"
 ---
 # <a name="grow-your-business-in-the-marketplace"></a>Fördern Ihres Unternehmenswachstums im Marketplace 
 Nachdem Sie Ihr Angebot in AppSource oder im Azure Marketplace veröffentlicht haben, können Sie Ihren Eintrag als Ausgangspunkt für gemeinsame Markteinführungsaktivitäten (GTM) mit Microsoft verwenden. Das Erzeugen von Datenverkehr zu Ihrem Marketplace-Angebot und das Fördern von Marketplace-Leads sind beispielsweise hervorragende Möglichkeiten, um Ihr Unternehmenswachstum zu beschleunigen. 
@@ -227,9 +227,9 @@ Das MPN bietet Anleitungen für Folgendes:
 
 Sehen Sie sich die folgende Tabelle an, um sich über weitere Vorteile und Ressourcen zum Bewerben Ihres Angebots oder Ihrer App zu informieren:
 
-| Vorteile | angeben |
+| Vorteile | Ressourcen |
 |:--- |:--- |
-| Nutzen Sie Ihre Kernleistungen. | Im Rahmen Ihrer Mitgliedschaft im Microsoft Partner Network profitieren Sie von zentralen Vorteilen, mit denen Sie Zeit und Geld sparen. Diese Leistungen helfen Ihnen auch dabei, Ihre Kompetenzen auszubauen, Kunden besser zu betreuen und Kontakte zu knüpfen, um Ihr Geschäftspotenzial vollständig auszuschöpfen.<br>Weitere Informationen zu den Hauptvorteilen finden Sie unter [Wichtige Leistungen und Voraussetzungen](http://partner.microsoft.com/membership/core-benefits). |
+| Nutzen Sie Ihre Kernleistungen. | Im Rahmen Ihrer Mitgliedschaft im Microsoft Partner Network profitieren Sie von zentralen Vorteilen, mit denen Sie Zeit und Geld sparen. Diese Leistungen helfen Ihnen auch dabei, Ihre Kompetenzen auszubauen, Kunden besser zu betreuen und Kontakte zu knüpfen, um Ihr Geschäftspotenzial vollständig auszuschöpfen.<br>Weitere Informationen zu den Hauptvorteilen finden Sie unter [Wichtige Leistungen und Voraussetzungen](https://partner.microsoft.com/membership/core-benefits). |
 | Erwerben Sie Cloud Platform-Kompetenz. | Eine Kompetenz hilft dabei, sich von anderen Microsoft-Partnern hervorzuheben. Zudem steht eine erworbene Kompetenz für technische Kenntnisse und Kundenerfolg im Markt. Kompetenzen sind auch Voraussetzungen für viele wichtige Partnerprogramme wie z.B. Co-Selling.<br> Weitere Informationen zur Kompetenz „Cloudplattform“ finden Sie unter [Kompetenz „Cloudplattform“](https://partner.microsoft.com/membership/cloud-platform-competency). |
 | Machen Sie sich bereit für IP-Co-Selling | Möglicherweise sind Sie für das IP-Co-Selling-Programm berechtigt, das Ihnen die direkte Zusammenarbeit mit Microsoft-Verkäufern und anderen Partnern bei Chancen mit Zielkunden und der Kontoplanung ermöglicht. Microsoft-Verkäufer können Ihre Lösung in ihrem Lösungskatalog sehen. Microsoft-Verkäufer werden für die Zusammenarbeit mit Ihnen und den gemeinsamen Erfolg belohnt.<br> Weitere Informationen zur Co-Selling-Programm, einschließlich der Voraussetzungen, finden Sie unter [Bringen Sie Ihr Unternehmen groß raus](https://partner.microsoft.com/reach-customers/promote-your-business). |
 

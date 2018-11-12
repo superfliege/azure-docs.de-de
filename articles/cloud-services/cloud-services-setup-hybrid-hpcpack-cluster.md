@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/22/2017
 ms.author: danlep
-ms.openlocfilehash: ad5c13723eef352148a40e3e7f4f2ff616867296
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 55dfd7e5ea93ae941d73612cc70ed82d48db725a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2017
-ms.locfileid: "23985305"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51236737"
 ---
 # <a name="set-up-a-hybrid-high-performance-computing-hpc-cluster-with-microsoft-hpc-pack-and-on-demand-azure-compute-nodes"></a>Einrichten eines HPC-Hybridclusters (High Performance Computing) mit Microsoft HPC Pack und bedarfsgesteuerten Azure-Computeknoten
 Nutzen Sie Microsoft HPC Pack 2012 R2 und Azure für die Einrichtung eines kleinen HPC-Hybridclusters (High Performance Computing). Der in diesem Artikel gezeigte Cluster besteht aus einem lokalen HPC Pack-Hauptknoten und verschiedenen Computeknoten, die Sie bei Bedarf in einem Azure-Clouddienst bereitstellen. Dann können Sie auf dem Hybrid-Cluster Rechenaufträge (Compute Jobs) ausführen.
@@ -29,7 +29,7 @@ Nutzen Sie Microsoft HPC Pack 2012 R2 und Azure für die Einrichtung eines klein
 
 Dieses Tutorial veranschaulicht einen Ansatz zum Verwenden skalierbarer, bei Bedarf verfügbarer Computeressourcen in Azure zum Ausführen rechenintensiver Anwendungen.
 
-In diesem Tutorial wird davon ausgegangen, dass Sie noch keine Erfahrung mit Serverclustern oder HPC Pack haben. Es soll Ihnen lediglich helfen, ein Hybrid-Rechencluster für Demonstrationszwecke schnell bereitzustellen. Welche Überlegungen und Schritte zur Bereitstellung eines größeren Hybridclusters mit HPC Pack in einer Produktionsumgebung anzustellen bzw. auszuführen sind oder wie Sie HPC Pack 2016 verwenden, ist in der [ausführlichen Anleitung](http://go.microsoft.com/fwlink/p/?LinkID=200493) beschrieben. Informationen zu weiteren Szenarios mit HPC Pack, z.B. zur automatischen Bereitstellung von Clustern auf virtuellen Azure-Computern, finden Sie unter [Optionen zum Erstellen und Verwalten eines Windows HPC-Clusters (High Performance Computing) in Azure mit Microsoft HPC Pack](../virtual-machines/windows/hpcpack-cluster-options.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+In diesem Tutorial wird davon ausgegangen, dass Sie noch keine Erfahrung mit Serverclustern oder HPC Pack haben. Es soll Ihnen lediglich helfen, ein Hybrid-Rechencluster für Demonstrationszwecke schnell bereitzustellen. Welche Überlegungen und Schritte zur Bereitstellung eines größeren Hybridclusters mit HPC Pack in einer Produktionsumgebung anzustellen bzw. auszuführen sind oder wie Sie HPC Pack 2016 verwenden, ist in der [ausführlichen Anleitung](https://go.microsoft.com/fwlink/p/?LinkID=200493) beschrieben. Informationen zu weiteren Szenarios mit HPC Pack, z.B. zur automatischen Bereitstellung von Clustern auf virtuellen Azure-Computern, finden Sie unter [Optionen zum Erstellen und Verwalten eines Windows HPC-Clusters (High Performance Computing) in Azure mit Microsoft HPC Pack](../virtual-machines/windows/hpcpack-cluster-options.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 * **Azure-Abonnement** – Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie in wenigen Minuten ein [kostenloses Konto](https://azure.microsoft.com/free/) einrichten.
@@ -38,10 +38,10 @@ In diesem Tutorial wird davon ausgegangen, dass Sie noch keine Erfahrung mit Ser
   * Der Computer muss in eine Active Directory-Domäne eingebunden werden. Zu Testzwecken können Sie den Hauptknotencomputer als Domänencontroller konfigurieren. Informationen zum Hinzufügen der Serverrolle „Active Directory Domain Services“ und Höherstufen des Hauptknotencomputers zum Domänencontroller finden Sie in der Windows Server-Dokumentation.
   * Damit das HPC Pack unterstützt werden kann, muss das Betriebssystem in einer der folgenden Sprachen installiert werden: Englisch, Japanisch oder Chinesisch (vereinfacht).
   * Stellen Sie sicher, dass wichtige und kritische Updates installiert wurden.
-* **HPC Pack 2012 R2** - [Laden Sie hier das Installationspaket für die neueste Version kostenlos herunter](http://go.microsoft.com/fwlink/p/?linkid=328024), und kopieren Sie die Dateien auf den Hauptknotencomputer. Wählen Sie Installationsdateien in derselben Sprache aus wie für die Installation von Windows Server.
+* **HPC Pack 2012 R2** - [Laden Sie hier das Installationspaket für die neueste Version kostenlos herunter](https://go.microsoft.com/fwlink/p/?linkid=328024), und kopieren Sie die Dateien auf den Hauptknotencomputer. Wählen Sie Installationsdateien in derselben Sprache aus wie für die Installation von Windows Server.
 
     >[!NOTE]
-    > Wenn Sie HPC Pack 2016 anstelle von HPC Pack 2012 R2 verwenden möchten, sind zusätzliche Konfigurationsschritte erforderlich. Informationen finden Sie in der [ausführlichen Anleitung](http://go.microsoft.com/fwlink/p/?LinkID=200493).
+    > Wenn Sie HPC Pack 2016 anstelle von HPC Pack 2012 R2 verwenden möchten, sind zusätzliche Konfigurationsschritte erforderlich. Informationen finden Sie in der [ausführlichen Anleitung](https://go.microsoft.com/fwlink/p/?LinkID=200493).
     > 
 * **Domänenkonto** : Dieses Konto muss für die HPC Pack-Installation mit lokalen Administratorberechtigungen auf dem Hauptknoten konfiguriert werden.
 * **TCP-Konnektivität an Port 443** vom Hauptknoten zu Azure.
@@ -268,7 +268,7 @@ Nachdem Sie den Cluster getestet haben, können Sie die Azure-Knoten stoppen, um
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Lesen Sie die Dokumentation zu [HPC Pack](https://technet.microsoft.com/library/cc514029).
-* Informationen zum Einrichten einer umfangreicheren HPC Pack-Hybridclusterbereitstellung finden Sie unter [Burst to Azure with Microsoft HPC Pack](http://go.microsoft.com/fwlink/p/?LinkID=200493)(Burst zu Azure mit Microsoft HPC Pack).
+* Informationen zum Einrichten einer umfangreicheren HPC Pack-Hybridclusterbereitstellung finden Sie unter [Burst to Azure with Microsoft HPC Pack](https://go.microsoft.com/fwlink/p/?LinkID=200493)(Burst zu Azure mit Microsoft HPC Pack).
 * Andere Methoden zum Erstellen eines HPC Pack-Clusters in Azure (einschließlich Azure Resource Manager-Vorlagen) sind unter [Optionen zum Erstellen und Verwalten eines Windows HPC-Clusters (High Performance Computing) in Azure mit Microsoft HPC Pack](../virtual-machines/windows/hpcpack-cluster-options.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) beschrieben.
 
 

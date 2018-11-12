@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: timlt
-ms.openlocfilehash: ad77f1f0a99fbdb355163e1bc83461c8c4eb75fa
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 7b2dd4e97d23f37c8261e51f3f65e78436493ddc
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50157699"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238731"
 ---
 # <a name="device-connectivity-in-azure-iot-central"></a>Gerätekonnektivität in Azure IoT Central
 
@@ -150,7 +150,7 @@ Es sind drei Hauptschritte erforderlich, um für Geräte mit X.509-Zertifikaten 
     
     Unten sind einige Hilfstools für die Befehlszeile angegeben, die Sie zum Generieren von Zertifizierungsstellenzertifikaten und Gerätezertifikaten verwenden können.
 
-    * Bei Verwendung von MxChip können Sie [dieses Befehlszeilentool](http://aka.ms/iotcentral-docs-dicetool) nutzen, um Zertifizierungsstellenzertifikate zu generieren. Fügen Sie es Ihrer IoT Central-App hinzu, und verifizieren Sie die Zertifikate. 
+    * Bei Verwendung von MxChip können Sie [dieses Befehlszeilentool](https://aka.ms/iotcentral-docs-dicetool) nutzen, um Zertifizierungsstellenzertifikate zu generieren. Fügen Sie es Ihrer IoT Central-App hinzu, und verifizieren Sie die Zertifikate. 
 
     *   Verwenden Sie [dieses Befehlszeilentool](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md ) für Folgendes:
         * Erstellen Sie die Zertifikatskette (Schritt 2 in den GitHub-Dokumenten). 
@@ -165,7 +165,7 @@ Es sind drei Hauptschritte erforderlich, um für Geräte mit X.509-Zertifikaten 
     Programmieren Sie das Gerät mit den Informationen des Bereitstellungsdiensts, damit beim Einschalten die Verbindungsdetails verfügbar sind und die Zuweisung der IoT Central-App erfolgen kann.    
 
     **Weitere Referenzen** 
-    *   Beispielimplementierung für [Raspberry Pi](http://aka.ms/iotcentral-docs-Raspi-releases).  
+    *   Beispielimplementierung für [Raspberry Pi](https://aka.ms/iotcentral-docs-Raspi-releases).  
 
     *   [Beispiel für einen Geräteclient in C](https://github.com/Azure/azure-iot-sdk-c/blob/dps_symm_key/provisioning_client/devdoc/using_provisioning_client.md).
 
@@ -226,7 +226,7 @@ Ein Gerät wird in folgenden Fällen registriert:
 
 1. **Bereitgestellt**: Wenn das Gerät mit gültigen Anmeldeinformationen eine Verbindung herstellt, führt IoT Central als nächsten Schritt die Bereitstellung durch (indem das Gerät in IoT Hub erstellt wird). Anschließend wird die Verbindungszeichenfolge an das Gerät zurückgegeben und mit dem Senden von Daten begonnen. Der *Bereitstellungsstatus* wird für das Gerät jetzt von **Registriert** in **Bereitgestellt** geändert.
 
-1.  **Blockiert**: Der Bediener kann ein Gerät blockieren. Das Gerät kann dann keine Daten an IoT Central senden und muss zurückgesetzt werden. Für blockierte Geräte ist der *Bereitstellungsstatus* auf **Blockiert** festgelegt. Der Operator kann die Blockierung des Geräts auch aufheben. Nachdem die Blockierung des Geräts aufgehoben wurde, verfügt es wieder über den ** vorherigen *Bereitstellungsstatus* („Registriert“ oder „Bereitgestellt“). 
+1.  **Blockiert**: Der Bediener kann ein Gerät blockieren. Das Gerät kann dann keine Daten an IoT Central senden und muss zurückgesetzt werden. Für blockierte Geräte ist der *Bereitstellungsstatus* auf **Blockiert** festgelegt. Der Operator kann die Blockierung des Geräts auch aufheben. Nachdem die Blockierung des Geräts aufgehoben wurde, verfügt es wieder über den vorherigen *Bereitstellungsstatus* („Registriert“ oder „*Bereitgestellt*“). 
 
 ## <a name="getting-device-connection-string"></a>Abrufen der Geräte-Verbindungszeichenfolge
 Sie können die IoT Hub-Geräte-Verbindungszeichenfolge in Azure IoT Hub abrufen, indem Sie die folgenden Schritte ausführen: 

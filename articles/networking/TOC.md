@@ -72,7 +72,7 @@
 ## [Verfassen von Vorlagen](/azure/azure-resource-manager/resource-group-authoring-templates?toc=%2fazure%2fnetworking%2ftoc.json)
 ## [Azure-Roadmap](https://azure.microsoft.com/roadmap/?category=networking)
 ## [Communityvorlagen](https://azure.microsoft.com/resources/templates/)
-## [Netzwerkblog](http://azure.microsoft.com/blog/topics/networking)
+## [Netzwerkblog](https://azure.microsoft.com/blog/topics/networking)
 ## [Preise](https://azure.microsoft.com/pricing)
 ## [Preisrechner](https://azure.microsoft.com/pricing/calculator/)
 ## [Regionale Verfügbarkeit](https://azure.microsoft.com/regions/services/)

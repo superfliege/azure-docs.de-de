@@ -9,12 +9,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: mayg
-ms.openlocfilehash: 51d435d9edea5e341127cac89bc96a71c7bc8bb4
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: f96ed8659fc2f49b89199a813f9fab9d5f4af5a1
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50211892"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51232170"
 ---
 # <a name="set-up-disaster-recovery-for-active-directory-and-dns"></a>Einrichten der Notfallwiederherstellung für Active Directory und DNS
 
@@ -44,7 +44,7 @@ Mit Site Recovery können Sie den virtuellen Computer schützen, der den Domäne
 Der mithilfe von Site Recovery replizierte Domänencontroller wird für ein [Testfailover](#test-failover-considerations) verwendet. Stellen Sie sicher, dass folgende Anforderungen erfüllt sind:
 
 1. Der Domänencontroller ist ein globaler Katalogserver.
-2. Der Domänencontroller sollte der FSMO-Rollenbesitzer für Rollen sein, die während eines Testfailovers erforderlich sind. Andernfalls müssen diese Rollen nach dem Failover [übertragen](http://aka.ms/ad_seize_fsmo) werden.
+2. Der Domänencontroller sollte der FSMO-Rollenbesitzer für Rollen sein, die während eines Testfailovers erforderlich sind. Andernfalls müssen diese Rollen nach dem Failover [übertragen](https://aka.ms/ad_seize_fsmo) werden.
 
 ### <a name="configure-vm-network-settings"></a>Konfigurieren von VM-Netzwerkeinstellungen
 Konfigurieren Sie für die VM, die den Domänencontroller bzw. DNS hostet, die Netzwerkeinstellungen in Site Recovery unter den Einstellungen für **Compute und Netzwerk** des replizierten virtuellen Computers. So wird sichergestellt, dass der virtuelle Computer nach einem Failover mit dem richtigen Netzwerk verbunden wird.
@@ -93,7 +93,7 @@ Bei den meisten Anwendungen muss ein Domänencontroller oder ein DNS-Server vorh
 
 
 ### <a name="remove-references-to-other-domain-controllers"></a>Entfernen von Verweisen auf andere Domänencontroller
-Wenn Sie ein Testfailover initiieren, beziehen Sie nicht alle Domänencontroller im Testnetzwerk ein. Um Verweise auf andere in der Produktionsumgebung vorhandene Domänencontroller zu entfernen, müssen Sie für fehlende Domänencontroller ggf. [FSMO-Funktionen von Active Directory-Rollen übernehmen](http://aka.ms/ad_seize_fsmo) und [Metadaten bereinigen](https://technet.microsoft.com/library/cc816907.aspx).
+Wenn Sie ein Testfailover initiieren, beziehen Sie nicht alle Domänencontroller im Testnetzwerk ein. Um Verweise auf andere in der Produktionsumgebung vorhandene Domänencontroller zu entfernen, müssen Sie für fehlende Domänencontroller ggf. [FSMO-Funktionen von Active Directory-Rollen übernehmen](https://aka.ms/ad_seize_fsmo) und [Metadaten bereinigen](https://technet.microsoft.com/library/cc816907.aspx).
 
 
 ### <a name="issues-caused-by-virtualization-safeguards"></a>Probleme aufgrund von Virtualisierungssicherheitsmechanismen
@@ -180,7 +180,7 @@ Wenn die oben genannten Bedingungen erfüllt sind, ist es wahrscheinlich, dass d
 
     `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Lsa\IgnoreGCFailures`
 
-    Weitere Informationen finden Sie unter [Deaktivieren der Anforderung, dass ein globaler Katalogserver zur Überprüfung der Benutzeranmeldung verfügbar sein muss](http://support.microsoft.com/kb/241789).
+    Weitere Informationen finden Sie unter [Deaktivieren der Anforderung, dass ein globaler Katalogserver zur Überprüfung der Benutzeranmeldung verfügbar sein muss](https://support.microsoft.com/kb/241789).
 
 ### <a name="dns-and-domain-controller-on-different-machines"></a>DNS und Domänencontroller auf unterschiedlichen Computern
 

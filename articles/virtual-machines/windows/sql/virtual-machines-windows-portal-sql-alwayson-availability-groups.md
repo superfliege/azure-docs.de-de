@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/17/2017
 ms.author: mikeray
-ms.openlocfilehash: a612ffd5a68e34cb0a367a6a883495ef26aeb4bc
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: bddc83d55c8909412f7f935a4324a6f316a82cd7
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
-ms.locfileid: "29401020"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238164"
 ---
 # <a name="configure-always-on-availability-groups-in-azure-virtual-machines-automatically-resource-manager"></a>Automatisches Konfigurieren einer AlwaysOn-Verfügbarkeitsgruppe in Azure Virtual Machines: Resource Manager
 
@@ -42,12 +42,12 @@ Alle Ressourcen in dieser Lösung gehören zu einer einzigen Ressourcengruppe.
 
 Bevor Sie dieses Tutorial beginnen, prüfen Sie Folgendes:
 
-* Sie besitzen bereits ein Azure-Abonnement. Falls Sie noch keines besitzen, können Sie sich für ein [Testkonto registrieren](http://azure.microsoft.com/pricing/free-trial/).
+* Sie besitzen bereits ein Azure-Abonnement. Falls Sie noch keines besitzen, können Sie sich für ein [Testkonto registrieren](https://azure.microsoft.com/pricing/free-trial/).
 * Sie wissen bereits, wie ein virtueller SQL Server-Computer mithilfe der GUI aus dem Katalog virtueller Computer bereitgestellt wird. Weitere Informationen finden Sie unter [Bereitstellen eines virtuellen Computers mit SQL Server in Azure](virtual-machines-windows-portal-sql-server-provision.md).
-* Sie verfügen bereits über solide Kenntnisse über Verfügbarkeitsgruppen. Weitere Informationen finden Sie unter [AlwaysOn-Verfügbarkeitsgruppen (SQL Server)](http://msdn.microsoft.com/library/hh510230.aspx).
+* Sie verfügen bereits über solide Kenntnisse über Verfügbarkeitsgruppen. Weitere Informationen finden Sie unter [AlwaysOn-Verfügbarkeitsgruppen (SQL Server)](https://msdn.microsoft.com/library/hh510230.aspx).
 
 > [!NOTE]
-> Wenn Sie an der Verwendung von Verfügbarkeitsgruppen mit SharePoint interessiert sind, finden Sie Informationen hierzu unter [Konfigurieren von SQL Server 2012 AlwaysOn-Verfügbarkeitsgruppen für SharePoint 2013](http://technet.microsoft.com/library/jj715261.aspx).
+> Wenn Sie an der Verwendung von Verfügbarkeitsgruppen mit SharePoint interessiert sind, finden Sie Informationen hierzu unter [Konfigurieren von SQL Server 2012 AlwaysOn-Verfügbarkeitsgruppen für SharePoint 2013](https://technet.microsoft.com/library/jj715261.aspx).
 >
 >
 
@@ -125,7 +125,7 @@ Wählen Sie unter **Größe des virtuellen Computers, Speichereinstellungen** ei
 * **Größe des virtuellen Computers mit SQL Server** ist die Größe der beiden virtuellen Computer mit SQL Server. Wählen Sie eine für Ihre Workload angemessene Größe für die virtuellen Computer aus. Wenn Sie diese Umgebung für das Tutorial erstellen, verwenden Sie **DS2**. Wählen Sie für Produktionsworkloads für den virtuellen Computer eine Größe, die den jeweiligen Workload unterstützen kann. Viele Produktionsworkloads erfordern mindestens **DS4**. Die Vorlage erstellt zwei virtuelle Computer dieser Größe und installiert auf jedem SQL Server. Weitere Informationen finden Sie unter [Größen für virtuelle Computer](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 > [!NOTE]
-> Azure installiert die Enterprise Edition von SQL Server. Die Kosten hängen von der Edition und der Größe des virtuellen Computers ab. Ausführliche Informationen zu aktuellen Kosten finden Sie unter [Virtual Machines – Preise](http://azure.microsoft.com/pricing/details/virtual-machines/#Sql).
+> Azure installiert die Enterprise Edition von SQL Server. Die Kosten hängen von der Edition und der Größe des virtuellen Computers ab. Ausführliche Informationen zu aktuellen Kosten finden Sie unter [Virtual Machines – Preise](https://azure.microsoft.com/pricing/details/virtual-machines/#Sql).
 >
 >
 
@@ -161,8 +161,8 @@ Weitere Optimierungen hängen von der Größe der SQL Server-Datenträger ab. F�
 
 Weitere Informationen zu Speicherplatz und Speicherpools finden Sie unter:
 
-* [Speicherplätze – Übersicht](http://technet.microsoft.com/library/hh831739.aspx)
-* [Windows Server-Sicherung und -Speicherpools](http://technet.microsoft.com/library/dn390929.aspx)
+* [Speicherplätze – Übersicht](https://technet.microsoft.com/library/hh831739.aspx)
+* [Windows Server-Sicherung und -Speicherpools](https://technet.microsoft.com/library/dn390929.aspx)
 
 Weitere Informationen zu bewährten Methoden für die SQL Server-Konfiguration finden Sie unter [Bewährte Methoden zur Leistung für SQL Server auf virtuellen Azure-Computern](virtual-machines-windows-sql-performance.md).
 

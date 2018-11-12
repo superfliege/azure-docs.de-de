@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 511a0122b37f5f34097da38a645790d99212ad18
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: b8a9973738ac28a686488a816da0f7da5fe2ac3e
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45737412"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238521"
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>Verarbeiten umfangreicher Datasets mit Azure Data Factory und Azure Batch
 > [!NOTE]
@@ -61,9 +61,9 @@ Sie können auch benutzerdefinierte.NET-Aktivitäten erstellen, um Daten mit Ihr
 ## <a name="architecture-of-a-sample-solution"></a>Architektur einer Beispiellösung
   Die in diesem Artikel beschriebene Architektur ist für eine einfache Lösung gedacht. Sie ist aber auch für komplexe Szenarien relevant, z.B. Risikomodellierung durch Finanzdienstleister, Bildverarbeitung und -rendering sowie Genomanalysen.
 
-Das Diagramm veranschaulicht, wie Data Factory die Datenverschiebung und -verarbeitung orchestriert. Es zeigt auch, wie Batch die Daten parallel verarbeitet. Laden Sie zum einfachen Nachschlagen das Diagramm herunter, und drucken Sie es (im A3-Format) aus. Informationen zum Zugriff auf das Diagramm und zu seinem Ausdruck finden Sie unter [HPC und Datenorchestrierung mit Batch und Data Factory](http://go.microsoft.com/fwlink/?LinkId=717686).
+Das Diagramm veranschaulicht, wie Data Factory die Datenverschiebung und -verarbeitung orchestriert. Es zeigt auch, wie Batch die Daten parallel verarbeitet. Laden Sie zum einfachen Nachschlagen das Diagramm herunter, und drucken Sie es (im A3-Format) aus. Informationen zum Zugriff auf das Diagramm und zu seinem Ausdruck finden Sie unter [HPC und Datenorchestrierung mit Batch und Data Factory](https://go.microsoft.com/fwlink/?LinkId=717686).
 
-[![Diagramm der Verarbeitung großer Datenmengen](./media/data-factory-data-processing-using-batch/image1.png)](http://go.microsoft.com/fwlink/?LinkId=717686)
+[![Diagramm der Verarbeitung großer Datenmengen](./media/data-factory-data-processing-using-batch/image1.png)](https://go.microsoft.com/fwlink/?LinkId=717686)
 
 Die folgende Liste enthält die grundlegenden Schritte des Prozesses. Die Lösung enthält Code und Erklärungen zum Erstellen der End-to-End-Lösung.
 

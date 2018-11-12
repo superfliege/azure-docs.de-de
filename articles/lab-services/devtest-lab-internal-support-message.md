@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 2d12ca26fb2aa5abddcf44b2e634b2f08b1fb01b
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: deb98c2c633200ab4be1d763a94fd2a04979a3b1
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38696249"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51235699"
 ---
 # <a name="add-an-internal-support-statement-to-a-lab-in-azure-devtest-labs"></a>Hinzufügen eines internen Supporthinweises zu einem Lab in Azure DevTest Labs
 
@@ -31,7 +31,7 @@ Sie können einen Supporthinweis einfach deaktivieren oder bearbeiten, wenn er n
 
 ## <a name="steps-to-add-a-support-statement-to-an-existing-lab"></a>Schritte zum Hinzufügen eines Supporthinweises zu einem vorhandenen Lab
 
-1. Melden Sie sich auf dem [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040)an.
+1. Melden Sie sich beim [Azure-Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) an.
 1. Wählen Sie ggf. **Alle Dienste** und dann in der Liste die Option **DevTest Labs**. (Ihr Lab wird im Dashboard unter Umständen bereits unter **Alle Ressourcen** angezeigt.)
 1. Wählen Sie in der Liste der Labs das Lab aus, dem Sie einen Supporthinweis hinzufügen möchten.  
 1. Wählen Sie im Bereich **Übersicht** des Labs die Option **Konfiguration und Richtlinien** aus.  
@@ -55,7 +55,7 @@ Wenn dieser Supporthinweis den Benutzern Ihres Labs nicht mehr angezeigt werden 
 
 ## <a name="steps-for-users-to-view-the-support-message"></a>Benutzerschritte zur Anzeige der Supportnachricht
 
-1. Wählen Sie im [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040) ein Lab aus.
+1. Wählen Sie im [Azure-Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) ein Lab aus.
 
 1. Klicken Sie im Bereich **Übersicht** für das Lab auf **Interner Support**.  
 

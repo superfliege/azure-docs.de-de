@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/16/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: 2fd0fe55b975010a1eaafeb455d61a6cb3ebff77
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 8e13ba0bcbd24dcc3cd08a0d2886f1da9d85de79
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46970922"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51249913"
 ---
 # <a name="structure-projects-with-the-team-data-science-process-template"></a>Strukturieren von Projekten mit Team Data Science-Prozessvorlagen
 
@@ -54,7 +54,7 @@ Wir haben zuvor ein [GitHub-Repository für die TDSP-Projektstruktur und -Vorlag
 * Inhalte (außer denen, die im Ordner „docs“ bereits vorhanden sind) müssen kleiner als 25 MB sein. Siehe den Hinweis, der auf diese Liste folgt.
 * Der Ordner „sample\_data“ ist nur für kleine Datendateien (weniger als 5 MB) gedacht, mit denen Sie Ihren Code testen oder eine frühen Entwicklung starten können.
 * Durch Speichern von Dateien wie Word- und PowerPoint-Dateien kann sich die Größe des Ordners „docs“ wesentlich erhöhen. Es wird empfohlen, eine auf Zusammenarbeit ausgelegte Ressource wie ein Wiki, [SharePoint](https://products.office.com/sharepoint/collaboration) o.ä. zu bestimmen, um solche Dateien zu speichern.
-* Informationen zum Umgang mit großen Dateien und Ausgaben in Machine Learning finden Sie unter [Beibehalten von Änderungen und Arbeiten mit großen Dateien](http://aka.ms/aml-largefiles).
+* Informationen zum Umgang mit großen Dateien und Ausgaben in Machine Learning finden Sie unter [Beibehalten von Änderungen und Arbeiten mit großen Dateien](https://aka.ms/aml-largefiles).
 
 > [!NOTE]
 > Alle auf die Dokumentation bezogenen Inhalte (Text, Markdowns, Bilder, andere Dokumentdateien), die *nicht* während der Ausführung des Projekts verwendet werden, müssen sich im Ordner „docs“ (Kleinbuchstaben) befinden. Der Ordner „docs“ ist ein spezieller Ordner, der von der Machine Learning-Ausführung ignoriert wird, sodass die Inhalte in diesem Ordner nicht unnötig auf das Computeziel kopiert werden. Objekte in diesem Ordner werden auch nicht auf die 25-MB-Obergrenze für die Projektgröße angerechnet. Der Ordner „docs“ ist z.B. der Speicherort für große Bilddateien, die Sie in Ihrer Dokumentation benötigen. Diese Dateien werden von Git weiterhin im Ausführungsverlauf nachverfolgt. 
