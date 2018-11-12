@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: robb
 ms.component: diagnostic-extension
-ms.openlocfilehash: a40917ec24ede1107f7d8ae7f5fb2f0f03d1094c
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 752a0262503550b9995ac76f648a132429203cce
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51278326"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50961431"
 ---
 # <a name="what-is-azure-diagnostics-extension"></a>Was ist die Azure-Diagnoseerweiterung?
 Die Azure-Diagnoseerweiterung ist ein Agent innerhalb von Azure, mit dem Diagnosedaten für eine bereitgestellte Anwendung erfasst werden können. Sie können die Diagnoseerweiterung von einer Reihe verschiedener Quellen aus verwenden. Derzeit werden die Web- und Workerrollen des Azure-Clouddiensts (klassisch), Virtual Machines, Virtual Machine Scale Sets und Service Fabric unterstützt. Andere Azure-Dienste haben unterschiedliche Diagnosemethoden. Siehe [Übersicht über die Überwachung in Microsoft Azure](../azure-monitor/overview.md).
@@ -60,7 +60,7 @@ Siehe [Azure-Diagnoseerweiterung – Versionen und Verlauf des Konfigurationssch
 Wählen Sie, zu welchem Dienst Sie Diagnoseinformationen erfassen möchten, und lesen Sie zum Einstieg die folgenden Artikel. Verwenden Sie die allgemeinen Links zur Azure-Diagnose als Referenz für bestimmte Aufgaben.
 
 ## <a name="cloud-services-using-azure-diagnostics"></a>Clouddienste mit der Azure-Diagnose
-* Wenn Sie Visual Studio verwenden, finden Sie unter [Verfolgen einer Cloud Services-Anwendung mit Visual Studio](/visualstudio/azure/vs-azure-tools-debug-cloud-services-virtual-machines) Informationen für den Einstieg. Andernfalls finden Sie weitere Informationen in folgenden Artikeln:
+* Wenn Sie Visual Studio verwenden, finden Sie unter [Verfolgen einer Cloud Services-Anwendung mit Visual Studio](../vs-azure-tools-debug-cloud-services-virtual-machines.md) Informationen für den Einstieg. Andernfalls finden Sie weitere Informationen in folgenden Artikeln:
 * [Überwachen von Clouddiensten mit der Azure-Diagnose](../cloud-services/cloud-services-how-to-monitor.md)
 * [Einrichten der Azure-Diagnose in einer Cloud Services-Anwendung](../cloud-services/cloud-services-dotnet-diagnostics.md)
 
@@ -71,8 +71,8 @@ Fortgeschrittenere Themen finden Sie in folgenden Artikeln:
 * [Verwenden von PowerShell zum Einrichten der Diagnose für Cloud Services](../virtual-machines/extensions/diagnostics-windows.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
 ## <a name="virtual-machines"></a>Virtual Machines
-* Wenn Sie Visual Studio verwenden, finden Sie unter [Verfolgen von Azure Virtual Machines mit Visual Studio](/visualstudio/azure/vs-azure-tools-debug-cloud-services-virtual-machines) Informationen für den Einstieg. Andernfalls finden Sie weitere Informationen in folgenden Artikeln:
-* [Einrichten der Azure-Diagnose auf einem virtuellen Azure-Computer](/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines)
+* Wenn Sie Visual Studio verwenden, finden Sie unter [Verfolgen von Azure Virtual Machines mit Visual Studio](../vs-azure-tools-debug-cloud-services-virtual-machines.md) Informationen für den Einstieg. Andernfalls finden Sie weitere Informationen in folgenden Artikeln:
+* [Einrichten der Azure-Diagnose auf einem virtuellen Azure-Computer](../virtual-machines/virtual-machines-dotnet-diagnostics.md)
 
 Fortgeschrittenere Themen finden Sie in folgenden Artikeln:
 

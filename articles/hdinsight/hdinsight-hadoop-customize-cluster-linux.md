@@ -2,19 +2,19 @@
 title: Anpassen von HDInsight-Clustern mit Skriptaktionen – Azure
 description: Erfahren Sie, wie Sie mit Skriptaktionen Linux-basierten HDInsight-Clustern benutzerdefinierte Komponenten hinzufügen. Bei Skriptaktionen handelt es sich um Bash-Skripts. Sie können zum Anpassen der Clusterkonfiguration oder zum Hinzufügen zusätzlicher Dienste und Hilfsprogramme wie Hue, Solr oder R verwendet werden.
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/01/2018
-ms.author: jasonh
-ms.openlocfilehash: e9662a0a0def91fa2cace1eb47dceffed5ff1ae6
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.author: hrasheed
+ms.openlocfilehash: 17273a572e61d2282e7930d4ea1f44bfaf29d734
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46978028"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51012978"
 ---
 # <a name="customize-linux-based-hdinsight-clusters-using-script-actions"></a>Anpassen Linux-basierter HDInsight-Cluster mithilfe von Skriptaktionen
 
@@ -154,13 +154,13 @@ HDInsight verfügt über Skripts zum Installieren der folgenden Komponenten auf 
 
 | NAME | Skript |
 | --- | --- |
-| **Hinzufügen eines Azure Storage-Kontos** |https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh(Fixierte Verbindung) festgelegt ist(Fixierte Verbindung) festgelegt ist. Siehe [Hinzufügen von zusätzlichem Speicher zu einem HDInsight-Cluster](hdinsight-hadoop-add-storage.md). |
-| **Installieren von Hue** |https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh(Fixierte Verbindung) festgelegt ist(Fixierte Verbindung) festgelegt ist. Siehe [Installieren und Verwenden von Hue in HDInsight-Clustern](hdinsight-hadoop-hue-linux.md). |
-| **Installieren von Presto** |https://raw.githubusercontent.com/hdinsight/presto-hdinsight/master/installpresto.sh(Fixierte Verbindung) festgelegt ist(Fixierte Verbindung) festgelegt ist. Weitere Informationen finden Sie unter [Installieren und Verwenden von Presto in HDInsight-Clustern](hdinsight-hadoop-install-presto.md). |
-| **Installieren von Solr** |https://hdiconfigactions.blob.core.windows.net/linuxsolrconfigactionv01/solr-installer-v01.sh(Fixierte Verbindung) festgelegt ist(Fixierte Verbindung) festgelegt ist. Siehe [Installieren und Verwenden von Solr in HDInsight-Clustern](hdinsight-hadoop-solr-install-linux.md). |
-| **Installieren von Giraph** |https://hdiconfigactions.blob.core.windows.net/linuxgiraphconfigactionv01/giraph-installer-v01.sh(Fixierte Verbindung) festgelegt ist(Fixierte Verbindung) festgelegt ist. Siehe [Installieren und Verwenden von Giraph in HDInsight-Clustern](hdinsight-hadoop-giraph-install-linux.md). |
-| **Vorabladen von Hive-Bibliotheken** |https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh(Fixierte Verbindung) festgelegt ist(Fixierte Verbindung) festgelegt ist. Weitere Informationen finden Sie unter [Hinzufügen von Hive-Bibliotheken zu HDInsight-Clustern](hdinsight-hadoop-add-hive-libraries.md). |
-| **Installieren oder Aktualisieren von Mono** | https://hdiconfigactions.blob.core.windows.net/install-mono/install-mono.bash(Fixierte Verbindung) festgelegt ist(Fixierte Verbindung) festgelegt ist. Weitere Informationen finden Sie unter [Installieren oder Aktualisieren von Mono in HDInsight](hdinsight-hadoop-install-mono.md). |
+| **Hinzufügen eines Azure Storage-Kontos** |https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh. Siehe [Hinzufügen von zusätzlichem Speicher zu einem HDInsight-Cluster](hdinsight-hadoop-add-storage.md). |
+| **Installieren von Hue** |https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh. Siehe [Installieren und Verwenden von Hue in HDInsight-Clustern](hdinsight-hadoop-hue-linux.md). |
+| **Installieren von Presto** |https://raw.githubusercontent.com/hdinsight/presto-hdinsight/master/installpresto.sh. Weitere Informationen finden Sie unter [Installieren und Verwenden von Presto in HDInsight-Clustern](hdinsight-hadoop-install-presto.md). |
+| **Installieren von Solr** |https://hdiconfigactions.blob.core.windows.net/linuxsolrconfigactionv01/solr-installer-v01.sh. Siehe [Installieren und Verwenden von Solr in HDInsight-Clustern](hdinsight-hadoop-solr-install-linux.md). |
+| **Installieren von Giraph** |https://hdiconfigactions.blob.core.windows.net/linuxgiraphconfigactionv01/giraph-installer-v01.sh. Siehe [Installieren und Verwenden von Giraph in HDInsight-Clustern](hdinsight-hadoop-giraph-install-linux.md). |
+| **Vorabladen von Hive-Bibliotheken** |https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh. Weitere Informationen finden Sie unter [Hinzufügen von Hive-Bibliotheken zu HDInsight-Clustern](hdinsight-hadoop-add-hive-libraries.md). |
+| **Installieren oder Aktualisieren von Mono** | https://hdiconfigactions.blob.core.windows.net/install-mono/install-mono.bash. Weitere Informationen finden Sie unter [Installieren oder Aktualisieren von Mono in HDInsight](hdinsight-hadoop-install-mono.md). |
 
 ## <a name="use-a-script-action-during-cluster-creation"></a>Verwenden einer Skriptaktion während der Clustererstellung
 

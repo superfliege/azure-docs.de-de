@@ -15,15 +15,15 @@ ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 9a981b80921b8fea60941a994595b19933b61a21
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 5e736992b16782b87c62ccb59f88798cbce925a6
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48042375"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51015110"
 ---
 # <a name="create-custom-views-by-using-view-designer-in-log-analytics"></a>Erstellen benutzerdefinierter Ansichten mithilfe des Ansicht-Designers in Log Analytics
-Mithilfe des Ansicht-Designers in [Azure Log Analytics](log-analytics-overview.md) können Sie verschiedene benutzerdefinierten Ansichten im Azure-Portal erstellen, in denen Sie Daten in Ihrem Log Analytics-Arbeitsbereich visualisieren können. Dieser Artikel bietet eine Übersicht über den Ansicht-Designer und die Verfahren zum Erstellen und Bearbeiten von benutzerdefinierten Ansichten.
+Mithilfe des Ansicht-Designers in [Azure Log Analytics](log-analytics-queries.md) können Sie verschiedene benutzerdefinierten Ansichten im Azure-Portal erstellen, in denen Sie Daten in Ihrem Log Analytics-Arbeitsbereich visualisieren können. Dieser Artikel bietet eine Übersicht über den Ansicht-Designer und die Verfahren zum Erstellen und Bearbeiten von benutzerdefinierten Ansichten.
 
 Weitere Informationen zum Ansicht-Designer finden Sie in folgenden Artikeln:
 
@@ -42,7 +42,7 @@ Die mit dem Ansicht-Designer erstellten Ansichten enthalten die in der folgenden
 |:--- |:--- |
 | Kacheln | Werden auf der Seite **Übersicht** Ihres Log Analytics-Arbeitsbereichs angezeigt. In jeder Kachel wird eine visuelle Zusammenfassung der jeweils dargestellten benutzerdefinierten Ansicht angezeigt. Jeder Kacheltyp enthält eine unterschiedliche Visualisierung Ihrer Datensätze. Zum Anzeigen einer benutzerdefinierten Ansicht wählen Sie die entsprechende Kachel aus. |
 | Benutzerdefinierte Ansicht | Wird angezeigt, wenn Sie eine Kachel auswählen. Jede Ansicht enthält eine oder mehrere Visualisierungskomponenten. |
-| Visualisierungskomponenten | Stellen eine Visualisierung von Daten im Log Analytics-Arbeitsbereich basierend auf einem oder mehreren [Protokollsuchvorgängen](log-analytics-log-searches.md) dar. Die meisten Komponenten weisen eine Kopfzeile mit einer allgemeinen Visualisierung und eine Liste mit den wichtigsten Ergebnissen auf. Die einzelnen Komponententypen enthalten unterschiedliche Visualisierungen der Datensätze im Log Analytics-Arbeitsbereich. Sie wählen Elemente in der Komponente aus, um einen Protokollsuchvorgang auszuführen, der detaillierte Datensätze bereitstellt. |
+| Visualisierungskomponenten | Stellen eine Visualisierung von Daten im Log Analytics-Arbeitsbereich basierend auf einem oder mehreren [Protokollsuchvorgängen](log-analytics-queries.md) dar. Die meisten Komponenten weisen eine Kopfzeile mit einer allgemeinen Visualisierung und eine Liste mit den wichtigsten Ergebnissen auf. Die einzelnen Komponententypen enthalten unterschiedliche Visualisierungen der Datensätze im Log Analytics-Arbeitsbereich. Sie wählen Elemente in der Komponente aus, um einen Protokollsuchvorgang auszuführen, der detaillierte Datensätze bereitstellt. |
 
 
 ## <a name="work-with-an-existing-view"></a>Verwenden einer vorhandenen Ansicht

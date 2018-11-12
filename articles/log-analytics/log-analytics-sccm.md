@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: dfa0a4b637153d6fa3cce5c9b402587950686341
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: a5deccbe87bc8de6f6438259c2a43cc4618c24ab
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50418074"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51016702"
 ---
 # <a name="connect-configuration-manager-to-log-analytics"></a>Herstellen einer Verbindung zwischen Configuration Manager und Log Analytics
 Sie können Ihre System Center Configuration Manager-Umgebung mit Azure Log Analytics verbinden, um die Daten der Gerätesammlung zu synchronisieren und auf diese Sammlungen in Log Analytics und Azure Automation zu verweisen.  
@@ -65,11 +65,11 @@ Zum Hinzufügen einer Log Analytics-Verbindung muss für die Configuration Manag
 1. Wählen Sie im Arbeitsbereich **Verwaltung** des Configuration Manager **OMS-Connector**. Daraufhin wird der **Assistent zum Hinzufügen einer Log Analytics-Verbindung** geöffnet. Klicken Sie auf **Weiter**.
 
    >[!NOTE]
-   >OMS wird ab sofort als Log Analytics bezeichnet.
+   >OMS wird jetzt als Log Analytics bezeichnet.
    
 2. Auf dem Bildschirm **Allgemein** vergewissern Sie sich, dass Sie die folgenden Aktionen durchgeführt haben und dass Sie für jedes Element Detailinformationen haben, und wählen Sie anschließend **Weiter** aus.
 
-   1. Im Azure-Portal haben Sie Configuration Manager als Webanwendung und/oder Web API-App registriert, und Sie haben die [Client-ID von der Registrierung](../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md) vorliegen.
+   1. Im Azure-Portal haben Sie Configuration Manager als Webanwendung und/oder Web API-App registriert, und Sie haben die [Client-ID von der Registrierung](../active-directory/develop/quickstart-v1-add-azure-ad-app.md) vorliegen.
    2. Im Azure-Portal haben Sie einen geheimen App-Schlüssel für die registrierte Anwendung in Azure Active Directory erstellt.  
    3. Im Azure-Portal haben Sie der registrierten Web-App eine Zugriffsberechtigung für Log Analytics erteilt.  
       ![Verbindung mit Log Analytics: Seite „Allgemein“ des Assistenten](./media/log-analytics-sccm/sccm-console-general01.png)
@@ -113,7 +113,7 @@ Nach dem Import der Sammlungen können Sie sehen, wie viele Computer mit Sammlun
 
 ![Computergruppen – Registerkarte „SCCM“](./media/log-analytics-sccm/sccm-computer-groups02.png)
 
-Wenn Sie auf eine klicken, wird die Suche geöffnet, wobei entweder alle importierten Gruppen oder alle Computer angezeigt werden, die zu jeder Gruppe gehören. Mithilfe der [Protokollsuche](log-analytics-log-searches.md) können Sie detaillierte Analysen für Configuration Manager-Daten starten.
+Wenn Sie auf eine klicken, wird die Suche geöffnet, wobei entweder alle importierten Gruppen oder alle Computer angezeigt werden, die zu jeder Gruppe gehören. Mithilfe der [Protokollsuche](log-analytics-queries.md) können Sie detaillierte Analysen für Configuration Manager-Daten starten.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Verwenden Sie [Protokollsuche](log-analytics-log-searches.md) für ausführliche Informationen zu den Configuration Manager-Daten.
+* Verwenden Sie [Protokollsuche](log-analytics-queries.md) für ausführliche Informationen zu den Configuration Manager-Daten.

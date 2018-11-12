@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 4f9882ce94827e490b676fdf421095eae40420d5
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 96163188fad464bc4b94457f7061a78b3f4997a9
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49407723"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51014498"
 ---
 # <a name="optimize-your-sql-environment-with-the-sql-server-health-check-solution-in-log-analytics"></a>Optimieren der SQL-Umgebung mit der SQL Server-Integritätsüberprüfung-Lösung in Log Analytics
 
@@ -53,7 +53,7 @@ Nachdem Sie die Lösung hinzugefügt haben und eine Bewertung durchgeführt wurd
 
 Um die Integritätsüberprüfung für Ihre SQL Server-Server auszuführen, sind ein Agent und Konnektivität mit Log Analytics mithilfe einer der folgenden unterstützten Methoden erforderlich:
 
-1. Installieren Sie den [Microsoft Monitoring Agent (MMA)](log-analytics-windows-agent.md), wenn der Server nicht bereits durch System Center 2016 – Operations Manager oder Operations Manager 2012 R2 überwacht wird.
+1. Installieren Sie den [Microsoft Monitoring Agent (MMA)](log-analytics-agent-windows.md), wenn der Server nicht bereits durch System Center 2016 – Operations Manager oder Operations Manager 2012 R2 überwacht wird.
 2. Wenn er mit System Center 2016 – Operations Manager oder Operations Manager 2012 R2 überwacht wird, und die Verwaltungsgruppe nicht in den Log Analytics-Dienst integriert ist, kann der Server mit Log Analytics mehrfach vernetzt werden, um Daten zu sammeln und an den Dienst weiterzuleiten, wobei er weiterhin von Operations Manager überwacht wird.  
 3. Wenn Ihre Operations Manager-Verwaltungsgruppe andernfalls in den Dienst integriert ist, müssen Sie die Domänencontroller für die Datensammlung durch den Dienst hinzufügen, indem Sie die Schritte unter [Herstellen einer Verbindung zwischen Operations Manager und OMS](log-analytics-om-agents.md#connecting-operations-manager-to-log-analytics) nach der Aktivierung der Lösung in Ihrem Arbeitsbereich ausführen.  
 
@@ -184,7 +184,7 @@ Wenn Sie Empfehlungen ignorieren möchten, können Sie eine Textdatei erstellen,
     ```
 
     >[!NOTE]
-    > Wenn für Ihren Arbeitsbereich ein Upgrade auf die [neue Log Analytics-Abfragesprache](log-analytics-log-search-upgrade.md) durchgeführt wurde, muss die obige Abfrage wie folgt geändert werden.
+    > Wenn für Ihren Arbeitsbereich ein Upgrade auf die [neue Log Analytics-Abfragesprache](log-analytics-queries.md) durchgeführt wurde, muss die obige Abfrage wie folgt geändert werden.
     >
     > `SQLAssessmentRecommendation | where RecommendationResult == "Failed" | sort by Computer asc | project Computer, RecommendationId, Recommendation`
 
@@ -209,7 +209,7 @@ Wenn Sie Empfehlungen ignorieren möchten, können Sie eine Textdatei erstellen,
     ```
 
     >[!NOTE]
-    > Wenn für Ihren Arbeitsbereich ein Upgrade auf die [neue Log Analytics-Abfragesprache](log-analytics-log-search-upgrade.md) durchgeführt wurde, muss die obige Abfrage wie folgt geändert werden.
+    > Wenn für Ihren Arbeitsbereich ein Upgrade auf die [neue Log Analytics-Abfragesprache](log-analytics-queries.md) durchgeführt wurde, muss die obige Abfrage wie folgt geändert werden.
     >
     > `SQLAssessmentRecommendation | where RecommendationResult == "Ignored" | sort by Computer asc | project Computer, RecommendationId, Recommendation`
 
@@ -265,4 +265,4 @@ Wenn Sie Empfehlungen ignorieren möchten, können Sie eine Textdatei erstellen,
 * Ja, siehe oben stehenden Abschnitt [Ignorieren von Empfehlungen](#ignore-recommendations) .
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Durchsuchen Sie Protokolle](log-analytics-log-searches.md), um zu erfahren, wie Sie detaillierte Daten und Empfehlungen der SQL-Integritätsüberprüfung analysieren.
+* [Durchsuchen Sie Protokolle](log-analytics-queries.md), um zu erfahren, wie Sie detaillierte Daten und Empfehlungen der SQL-Integritätsüberprüfung analysieren.

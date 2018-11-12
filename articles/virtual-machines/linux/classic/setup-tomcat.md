@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2015
 ms.author: ningk
-ms.openlocfilehash: 161a56a019f8c2c8ce5e3890e73ad5c5710e7b82
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 8c04c9fffbb85bb4db7a369b0dbbad6279f5d6f6
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
-ms.locfileid: "30841614"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50420080"
 ---
 # <a name="set-up-tomcat7-on-a-linux-virtual-machine-with-azure"></a>Einrichten von Tomcat7 auf einem virtuellen Linux-Computer mit Microsoft Azure
 Apache Tomcat (oder einfach Tomcat, früher auch Jakarta Tomcat) ist ein Open-Source-Webserver und Servlet-Container und wurde von der Apache Software Foundation (ASF) entwickelt. Tomcat implementiert das Java-Servlet und die Java Server Pages-Spezifikationen (JSP) von Sun Microsystems. Tomcat bietet eine reine Java-HTTP-Webserverumgebung, in der Java-Code ausgeführt wird. In der einfachsten Konfiguration wird Tomcat in einem einzelnen Betriebssystem-Prozess ausgeführt. Dieser Prozess führt eine Java Virtual Machine (JVM) aus. Jede HTTP-Anforderung von einem Browser an Tomcat wird als separater Thread im Tomcat-Prozess verarbeitet.  
@@ -130,52 +130,19 @@ Sie können ein beliebiges SSH-Tool für das Herstellen einer Verbindung mit Ihr
 In dieser Phase installieren Sie die Java-Laufzeitumgebung, Tomcat7 und andere Tomcat7-Komponenten.  
 
 ### <a name="java-runtime-environment"></a>Java-Laufzeitumgebung
-Tomcat wird in Java geschrieben. Es gibt zwei Arten von Java Development Kits (JDKs): OpenJDK und Oracle JDK. Sie können das Gewünschte auswählen.  
-
-> [!NOTE]
-> Beide JDKs haben fast den gleichen Code für die Klassen in der Java-API, aber der Code für den virtuellen Computer ist unterschiedlich. OpenJDK verwendet eher offene Bibliotheken, während Oracle JDK eher geschlossene Bibliotheken verwendet. Oracle JDK bietet mehr Klassen sowie verschiedene Fehlerkorrekturen und ist stabiler als OpenJDK.
-
-#### <a name="install-openjdk"></a>Installieren von OpenJDK  
-
-Verwenden Sie den folgenden Befehl aus, um OpenJDK herunterzuladen.   
-
-    sudo apt-get update  
-    sudo apt-get install openjdk-7-jre  
+Tomcat wird in Java geschrieben. Informationen zum Abrufen vollumfänglich unterstützter Java Runtimes finden Sie unter [Azure supported JDKs](https://aka.ms/azure-jdks) (Von Azure unterstützte JDKs). Sie können auch eine eigene verwenden, allerdings befasst sich der Rest dieses Artikels mit den von Azure unterstützten Versionen.
 
 
-* So erstellen Sie ein Verzeichnis, dass die JDK-Dateien enthält:  
+#### <a name="install-azure-supported-jdk"></a>Installieren eines von Azure unterstützten JDKs
 
-        sudo mkdir /usr/lib/jvm  
-* So extrahieren Sie die JDK-Dateien in das Verzeichnis "/usr/lib/jvm/":  
-
-        sudo tar -zxf jdk-8u5-linux-x64.tar.gz  -C /usr/lib/jvm/
-
-#### <a name="install-oracle-jdk"></a>Installieren von Oracle JDK
-
-
-Verwenden Sie den folgenden Befehl, um Oracle JDK von der Oracle-Website herunterzuladen.  
-
-     wget --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u5-b13/jdk-8u5-linux-x64.tar.gz  
-* So erstellen Sie ein Verzeichnis, dass die JDK-Dateien enthält:  
-
-        sudo mkdir /usr/lib/jvm  
-* So extrahieren Sie die JDK-Dateien in das Verzeichnis "/usr/lib/jvm/":  
-
-        sudo tar -zxf jdk-8u5-linux-x64.tar.gz  -C /usr/lib/jvm/  
-* So legen Sie Oracle JDK als Standard-JVM (Java Virtual Machine) fest  
-
-        sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk1.8.0_05/bin/java 100  
-
-        sudo update-alternatives --install /usr/bin/javac javac /usr/lib/jvm/jdk1.8.0_05/bin/javac 100  
+Befolgen Sie die `apt-get`-Installationsanweisungen, die auf der [Azul Zulu Enteprise für Azure](https://www.azul.com/downloads/azure-only/zulu/#apt-repo)-Website dokumentiert sind.
 
 #### <a name="confirm-that-java-installation-is-successful"></a>Bestätigen, dass die Java-Installation erfolgreich war
 Sie können einen Befehl wie den folgenden verwenden, um zu testen, ob die Java-Laufzeitumgebung ordnungsgemäß installiert ist:  
+    Java-Version  
 
-    java -version  
+Es sollte eine Meldung wie die folgende angezeigt werden: ![Meldung zur erfolgreichen Installation von OpenJDK][14]
 
-Wenn Sie OpenJDK installiert haben, sollte eine Meldung wie die folgende angezeigt werden: ![Meldung zur erfolgreichen Installation von OpenJDK][14]
-
-Wenn Sie Oracle JDK installiert haben, sollte eine Meldung wie die folgende angezeigt werden: ![Meldung zur erfolgreichen Installation von Oracle JDK][15]
 
 ### <a name="install-tomcat7"></a>Installieren von Tomcat7
 Geben Sie den folgenden Befehl für die Installation von Tomcat7 ein.  

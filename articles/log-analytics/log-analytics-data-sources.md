@@ -15,19 +15,19 @@ ms.workload: infrastructure-services
 ms.date: 06/26/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: b8c3a2cc67c47753957963fc04b52f934b10ddfc
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: d514728b892126522a73827bb79952612f34704b
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48041712"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51014022"
 ---
 # <a name="data-sources-in-log-analytics"></a>Datenquellen in Log Analytics
 Log Analytics sammelt Daten aus Ihren verbundenen Quellen und speichert diese in Ihrem Log Analytics-Arbeitsbereich.  Welche Daten gesammelt werden, wird durch die von Ihnen konfigurierten Datenquellen definiert.  Daten in Log Analytics werden als Datensatzgruppe gespeichert.  Jede Datenquelle erstellt Datensätze eines bestimmten Typs, von denen jeder über einen eigenen Satz von Eigenschaften verfügt.
 
 ![Log Analytics-Datensammlung](./media/log-analytics-data-sources/overview.png)
 
-Datenquellen unterscheiden sich von [Verwaltungslösungen](log-analytics-add-solutions.md), die ebenfalls Daten aus verbundenen Quellen sammeln und Datensätze in Log Analytics erstellen.  Neben der Sammlung von Daten beinhalten Lösungen in der Regel Protokollsuchvorgänge und Ansichten, mit denen Sie den Betrieb einer bestimmten Anwendung oder eines Diensts analysieren können.
+Datenquellen unterscheiden sich von [Verwaltungslösungen](../monitoring/monitoring-solutions.md), die ebenfalls Daten aus verbundenen Quellen sammeln und Datensätze in Log Analytics erstellen.  Neben der Sammlung von Daten beinhalten Lösungen in der Regel Protokollsuchvorgänge und Ansichten, mit denen Sie den Betrieb einer bestimmten Anwendung oder eines Diensts analysieren können.
 
 
 ## <a name="summary-of-data-sources"></a>Übersicht über Datenquellen
@@ -68,5 +68,5 @@ Alle von Log Analytics gesammelten Daten werden im Arbeitsbereich als Datensätz
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Erfahren Sie mehr über [Lösungen](../monitoring/monitoring-solutions.md), die Log Analytics um zusätzliche Funktionen erweitern und ebenfalls Daten für den Arbeitsbereich sammeln.
-* Erfahren Sie mehr über [Protokollsuchvorgänge](log-analytics-log-searches.md) zum Analysieren der aus Datenquellen und Lösungen gesammelten Daten.  
-* Konfigurieren Sie [Warnungen](log-analytics-alerts.md), damit Sie bei kritischen Daten, die aus Datenquellen und Lösungen gesammelt werden, direkt benachrichtigt werden.
+* Erfahren Sie mehr über [Protokollsuchvorgänge](log-analytics-queries.md) zum Analysieren der aus Datenquellen und Lösungen gesammelten Daten.  
+* Konfigurieren Sie [Warnungen](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md), damit Sie bei kritischen Daten, die aus Datenquellen und Lösungen gesammelt werden, direkt benachrichtigt werden.

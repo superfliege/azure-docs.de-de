@@ -15,24 +15,24 @@ ms.workload: infrastructure-services
 ms.date: 05/04/2017
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 297967f165e921fedbc7e7e952366a399fedc642
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: c6206d4aa98ab3c9744f1f82840817b4bdb000ef
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48043939"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51016334"
 ---
 # <a name="take-action-with-an-automation-runbook-from-a-log-analytics-log-search-result"></a>Führen Sie die Aktion mit einem Automation-Runbook über ein Log Analytics-Protokollsuchergebnis aus
 
 Sie können in einem Protokollsuchergebnis in Azure Log Analytics nun **Take action** (Aktion ausführen) auswählen, um ein Automation-Runbook auszuführen.  Das Runbook kann verwendet werden, um das Problem zu beheben oder eine andere Aktion auszuführen, z.B. Informationen zur Problembehandlung sammeln, eine E-Mail senden oder eine Dienstanforderung erstellen. 
 
 ## <a name="components-and-features-used"></a>Verwendete Komponenten und Features
-* [Azure Automation-Konto](../automation/automation-offering-get-started.md)
-* [Log Analytics-Arbeitsbereich](../log-analytics/log-analytics-overview.md)
+* [Azure Automation-Konto](../automation/automation-quickstart-create-account.md)
+* [Log Analytics-Arbeitsbereich](log-analytics-queries.md)
 
 ## <a name="to-initiate-runbook-from-log-search"></a>So initiieren Sie ein Runbook über die Protokollsuche
 
-Zum Ausführen einer Aktion zu einem Ereignis und Initiieren eines Runbooks über die Protokollsuchergebnisse erstellen Sie zuerst eine Protokollsuche. Über die Ergebnisse können Sie bei Bedarf ein Runbook aufrufen.  Dieser Schritt kann über die Protokollsuchfunktion im [Azure-Portal](../log-analytics/log-analytics-log-search-new.md) ausgeführt werden.  In diesem Beispiel führen Sie eine Protokollsuche über das Azure-Portal mit einer einfachen Demonstration dieser Funktion aus.
+Zum Ausführen einer Aktion zu einem Ereignis und Initiieren eines Runbooks über die Protokollsuchergebnisse erstellen Sie zuerst eine Protokollsuche. Über die Ergebnisse können Sie bei Bedarf ein Runbook aufrufen.  Dieser Schritt kann über die Protokollsuchfunktion im [Azure-Portal](log-analytics-queries.md) ausgeführt werden.  In diesem Beispiel führen Sie eine Protokollsuche über das Azure-Portal mit einer einfachen Demonstration dieser Funktion aus.
 
 1. Klicken Sie im Azure-Portal auf **Alle Dienste**, und wählen Sie **Log Analytics** aus.  
 2. Wählen Sie Ihren Log Analytics-Arbeitsbereich aus.
@@ -47,9 +47,9 @@ Zum Ausführen einer Aktion zu einem Ereignis und Initiieren eines Runbooks übe
 
 6. Nachdem Sie auf **Ausführen** geklickt haben, wird die Seite mit Runbookaufträgen geöffnet, auf der Sie den Status des Auftrags überprüfen können.   
 
-Wenn Sie ein Runbook auswählen, das so konfiguriert wurde, dass es [von einer Log Analytics-Warnung aufgerufen wird](../automation/automation-invoke-runbook-from-omsla-alert.md), hat es einen Eingabeparameter mit dem Namen **WebhookData**, der vom Typ **Object** ist.  Wenn der Eingabeparameter obligatorisch ist, müssen Sie die Suchergebnisse an das Runbook übergeben, damit es die JSON-formatierte Zeichenfolge in einen Objekttyp konvertieren kann, sodass Sie nach bestimmten Elementen filtern können, auf die Sie in Runbook-Aktivitäten verweisen.  Wählen Sie dazu **Suchergebnis (Objekt)** in der Dropdownliste aus.<br><br> ![Wählen Sie das Webhook-Datenobjekt für den Runbook-Parameter aus](media/log-analytics-log-search-takeaction/select-runbook-and-properties.png)   
+Wenn Sie ein Runbook auswählen, das so konfiguriert wurde, dass es [von einer Log Analytics-Warnung aufgerufen wird](../automation/automation-create-alert-triggered-runbook.md), hat es einen Eingabeparameter mit dem Namen **WebhookData**, der vom Typ **Object** ist.  Wenn der Eingabeparameter obligatorisch ist, müssen Sie die Suchergebnisse an das Runbook übergeben, damit es die JSON-formatierte Zeichenfolge in einen Objekttyp konvertieren kann, sodass Sie nach bestimmten Elementen filtern können, auf die Sie in Runbook-Aktivitäten verweisen.  Wählen Sie dazu **Suchergebnis (Objekt)** in der Dropdownliste aus.<br><br> ![Wählen Sie das Webhook-Datenobjekt für den Runbook-Parameter aus](media/log-analytics-log-search-takeaction/select-runbook-and-properties.png)   
     
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Lesen Sie sich die [Referenz zur Log Analytics-Suche](log-analytics-search-reference.md) durch, um sich über alle Suchfelder und Facetten zu informieren, die in Log Analytics verfügbar sind.
-* Informationen zum automatischen Aufrufen eines Automation-Runbooks finden Sie unter [Aufrufen eines Azure Automation-Runbooks über eine Log Analytics-Warnung](../automation/automation-invoke-runbook-from-omsla-alert.md).  
+* Lesen Sie sich die [Referenz zur Log Analytics-Suche](log-analytics-queries.md) durch, um sich über alle Suchfelder und Facetten zu informieren, die in Log Analytics verfügbar sind.
+* Informationen zum automatischen Aufrufen eines Automation-Runbooks finden Sie unter [Aufrufen eines Azure Automation-Runbooks über eine Log Analytics-Warnung](../automation/automation-create-alert-triggered-runbook.md).  

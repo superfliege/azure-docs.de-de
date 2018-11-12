@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 02/09/2017
 ms.author: richrund
 ms.component: ''
-ms.openlocfilehash: be0a12bbb84db1e4016bd7126a38e750e6c0c3ad
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: d8f2fd40712017cb7f44156b8735ee93e123fcd2
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50412821"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51016147"
 ---
 # <a name="azure-key-vault-analytics-solution-in-log-analytics"></a>Azure Key Vault Analytics-Lösung in Log Analytics
 
@@ -38,7 +38,7 @@ Wenn Sie die Lösung verwenden möchten, müssen Sie die Protokollierung für Az
 ## <a name="install-and-configure-the-solution"></a>Installieren und Konfigurieren der Lösung
 Gehen Sie folgendermaßen vor, um die Azure Key Vault-Lösung zu installieren und zu konfigurieren:
 
-1. Aktivieren Sie die Azure Key Vault-Lösung mithilfe des [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.KeyVaultAnalyticsOMS?tab=Overview) oder des unter [Hinzufügen von Log Analytics-Lösungen aus dem Lösungskatalog](log-analytics-add-solutions.md) beschriebenen Prozesses.
+1. Aktivieren Sie die Azure Key Vault-Lösung mithilfe des [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.KeyVaultAnalyticsOMS?tab=Overview) oder des unter [Hinzufügen von Log Analytics-Lösungen aus dem Lösungskatalog](../monitoring/monitoring-solutions.md) beschriebenen Prozesses.
 2. Aktivieren Sie entweder im [Portal](#enable-key-vault-diagnostics-in-the-portal) oder mit [PowerShell](#enable-key-vault-diagnostics-using-powershell) die Diagnoseprotokollierung für die zu überwachenden Key Vault-Ressourcen.
 
 ### <a name="enable-key-vault-diagnostics-in-the-portal"></a>Aktivieren der Key Vault-Diagnose im Portal
@@ -136,7 +136,7 @@ Im Januar 2017 wurde die Methode geändert, mit der das Senden von Protokollen a
 So verwenden Sie die aktualisierte Lösung:
 
 1. [Konfigurieren Sie, dass die Diagnose von Key Vault aus direkt an Log Analytics gesendet wird.](#enable-key-vault-diagnostics-in-the-portal)  
-2. Aktivieren Sie die Azure Key Vault-Lösung mithilfe des unter [Hinzufügen von Log Analytics-Lösungen aus dem Lösungskatalog](log-analytics-add-solutions.md) beschriebenen Prozesses.
+2. Aktivieren Sie die Azure Key Vault-Lösung mithilfe des unter [Hinzufügen von Log Analytics-Lösungen aus dem Lösungskatalog](../monitoring/monitoring-solutions.md) beschriebenen Prozesses.
 3. Aktualisieren Sie alle gespeicherten Abfragen, Dashboards oder Warnungen zur Verwendung des neuen Datentyps.
   + Typänderung: von KeyVaults zu AzureDiagnostics. Sie können ResourceType verwenden, um nach Key Vault-Protokollen zu filtern.
   - Verwenden Sie `AzureDiagnostics | where ResourceType'=="VAULTS"` statt `KeyVaults`.
@@ -153,4 +153,4 @@ Daten, die vor der Änderung gesammelt wurden, werden in der neuen Lösung nicht
 [!INCLUDE [log-analytics-troubleshoot-azure-diagnostics](../../includes/log-analytics-troubleshoot-azure-diagnostics.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Verwenden Sie [Protokollsuchen in Log Analytics](log-analytics-log-searches.md), um ausführliche Azure Key Vault-Daten anzuzeigen.
+* Verwenden Sie [Protokollsuchen in Log Analytics](log-analytics-queries.md), um ausführliche Azure Key Vault-Daten anzuzeigen.

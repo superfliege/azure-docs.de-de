@@ -15,16 +15,16 @@ ms.topic: conceptual
 ms.date: 05/03/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 81eacf464c90d56c4ebeae1d1cefbd6f2f0fdab8
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: f96d18c2e1a00008f2e391302a41d145d6b47efd
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49408539"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51016604"
 ---
 # <a name="computer-groups-in-log-analytics-log-searches"></a>Computergruppen in Log Analytics-Protokollsuchen
 
-Mit Computergruppen in Log Analytics können Sie [Protokollsuchvorgänge](log-analytics-log-search-new.md) auf eine bestimmte Gruppe von Computern eingrenzen.  Die einzelnen Gruppen werden über eine von Ihnen definierte Abfrage mit Computern aufgefüllt oder indem Sie Gruppen aus verschiedenen Quellen importieren.  Wenn die Gruppe in eine Protokollsuche eingeschlossen wird, sind die Ergebnisse auf Datensätze beschränkt, die Computern in der Gruppe entsprechen.
+Mit Computergruppen in Log Analytics können Sie [Protokollsuchvorgänge](log-analytics-queries.md) auf eine bestimmte Gruppe von Computern eingrenzen.  Die einzelnen Gruppen werden über eine von Ihnen definierte Abfrage mit Computern aufgefüllt oder indem Sie Gruppen aus verschiedenen Quellen importieren.  Wenn die Gruppe in eine Protokollsuche eingeschlossen wird, sind die Ergebnisse auf Datensätze beschränkt, die Computern in der Gruppe entsprechen.
 
 ## <a name="creating-a-computer-group"></a>Erstellen einer Computergruppe
 Sie können eine Computergruppe in Log Analytics mithilfe einer der Methoden in der folgenden Tabelle erstellen.  Einzelheiten zu den einzelnen Methoden finden Sie in den Abschnitten unten. 
@@ -136,5 +136,5 @@ Im Log Analytics-Arbeitsbereich wird für jede Mitgliedschaft in einer Computerg
 | TimeGenerated |Das Datum und die Uhrzeit der Erstellung oder letzten Aktualisierung der Computergruppe |
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Erfahren Sie mehr über [Protokollsuchvorgänge](log-analytics-log-searches.md) zum Analysieren der aus Datenquellen und Lösungen gesammelten Daten.  
+* Erfahren Sie mehr über [Protokollsuchvorgänge](log-analytics-queries.md) zum Analysieren der aus Datenquellen und Lösungen gesammelten Daten.  
 

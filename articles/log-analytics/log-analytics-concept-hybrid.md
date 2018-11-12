@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 10/15/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 03133c6d6518444f8e6fb15cfa425969dbafdedc
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: b50e6de9de6498f57fd9b599c45a35f2367b84ba
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49406873"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51012138"
 ---
 # <a name="collect-data-in-a-hybrid-environment-with-log-analytics-agent"></a>Sammeln von Daten in einer Hybridumgebung mit dem Log Analytics-Agent
 
@@ -127,6 +127,6 @@ Die direkte Verbindung Ihrer lokalen Computer mit Log Analytics kann je nach Ihr
 
 * Lesen Sie [Datenquellen](log-analytics-data-sources.md), um die Datenquellen zu verstehen, die für die Erfassung von Daten aus Ihrem Windows- oder Linux-System zur Verfügung stehen. 
 
-* Erfahren Sie mehr über [Protokollsuchvorgänge](log-analytics-log-searches.md) zum Analysieren der aus Datenquellen und Lösungen gesammelten Daten. 
+* Erfahren Sie mehr über [Protokollsuchvorgänge](log-analytics-queries.md) zum Analysieren der aus Datenquellen und Lösungen gesammelten Daten. 
 
-* Erfahren Sie mehr über [Lösungen](log-analytics-add-solutions.md), die Log Analytics um zusätzliche Funktionen erweitern und ebenfalls Daten für den Log Analytics-Arbeitsbereich sammeln.
+* Erfahren Sie mehr über [Lösungen](../monitoring/monitoring-solutions.md), die Log Analytics um zusätzliche Funktionen erweitern und ebenfalls Daten für den Log Analytics-Arbeitsbereich sammeln.

@@ -1,5 +1,5 @@
 ---
-title: Senden von Gastbetriebssystemmetriken an den Metrikspeicher von Azure Monitor unter Verwendung einer Resource Manager-Vorlage für eine VM-Skalierungsgruppe von Windows
+title: Senden von Gastbetriebssystemmetriken an den Metrikspeicher von Azure Monitor unter Verwendung einer Azure Resource Manager-Vorlage für eine VM-Skalierungsgruppe von Windows
 description: Senden von Gastbetriebssystemmetriken an den Metrikspeicher von Azure Monitor unter Verwendung einer Resource Manager-Vorlage für eine VM-Skalierungsgruppe von Windows
 author: anirudhcavale
 services: azure-monitor
@@ -8,33 +8,33 @@ ms.topic: howto
 ms.date: 09/24/2018
 ms.author: ancav
 ms.component: metrics
-ms.openlocfilehash: 7b600bd699ce7f9e4a6c7cba1a41b6bdece16bf0
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: b7ffb5487eceb83e8961af8dfddf2416ee11dd64
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49343724"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50417666"
 ---
-# <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-using-a-resource-manager-template-for-a-windows-virtual-machine-scale-set"></a>Senden von Gastbetriebssystemmetriken an den Metrikspeicher von Azure Monitor unter Verwendung einer Resource Manager-Vorlage für eine VM-Skalierungsgruppe von Windows
+# <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-by-using-an-azure-resource-manager-template-for-a-windows-virtual-machine-scale-set"></a>Senden von Gastbetriebssystemmetriken an den Metrikspeicher von Azure Monitor unter Verwendung einer Azure Resource Manager-Vorlage für eine VM-Skalierungsgruppe von Windows
 
-Die [Windows Azure-Diagnoseerweiterung](azure-diagnostics.md) (WAD) von Azure Monitor ermöglicht es Ihnen, Metriken und Protokolle vom Gastbetriebssystem zu erfassen, das als Teil eines virtuellen Computers, eines Clouddiensts oder eines Service Fabric-Clusters ausgeführt wird.  Die Erweiterung kann Telemetriedaten an viele verschiedene Standorte senden, die im zuvor verlinkten Artikel aufgeführt sind.  
+Die [WAD-Erweiterung](azure-diagnostics.md) (Windows Azure-Diagnose) von Azure Monitor ermöglicht es Ihnen, Metriken und Protokolle von einem Gastbetriebssystem zu erfassen, das als Teil eines virtuellen Computers, eines Clouddiensts oder eines Azure Service Fabric-Clusters ausgeführt wird. Die Erweiterung kann Telemetriedaten an viele verschiedene Standorte senden, die im zuvor verlinkten Artikel aufgeführt sind.  
 
-In diesem Artikel wird der Prozess zum Senden von Leistungsmetriken des Gastbetriebssystems für eine VM-Skalierungsgruppe von Windows an den Azure Monitor-Datenspeicher beschrieben. Ab WAD Version 1.11 können Sie Metriken direkt in den Azure Monitor-Metrikspeicher schreiben, in dem bereits Metriken der Standardplattformen gesammelt werden. Wenn Sie sie an dieser Position speichern, können Sie auf die gleichen Aktionen zugreifen, die auch für Plattformmetriken verfügbar sind.  Zu den Maßnahmen gehören zeitnahe Benachrichtigung, Diagrammerstellung, Routing, Zugriff über die REST-API und vieles mehr.  In der Vergangenheit hat die WAD-Erweiterung in Azure Storage geschrieben, aber nicht der Azure Monitor-Datenspeicher.  
+In diesem Artikel wird der Prozess zum Senden von Leistungsmetriken des Gastbetriebssystems für eine VM-Skalierungsgruppe von Windows an den Azure Monitor-Datenspeicher beschrieben. Ab Version 1.11 von Windows Azure-Diagnose können Sie Metriken direkt in den Azure Monitor-Metrikspeicher schreiben, in dem bereits Metriken der Standardplattformen gesammelt werden. Wenn Sie diesen Speicherort verwenden möchten, können Sie die gleichen Aktionen wie für Plattformmetriken nutzen. Zu den Aktionen gehören Benachrichtigung nahezu in Echtzeit, Diagrammerstellung, Routing, Zugriff über eine REST-API und vieles mehr. In der Vergangenheit hat die Windows Azure-Diagnoseerweiterung in Azure Storage geschrieben, aber nicht in den Azure Monitor-Datenspeicher.  
 
-Wenn Sie noch nicht mit Resource Manager-Vorlagen vertraut sind, erfahren Sie mehr über [Vorlagenbereitstellungen](../azure-resource-manager/resource-group-overview.md) sowie deren Struktur und Syntax.  
+Wenn Sie noch nicht mit Resource Manager-Vorlagen vertraut sind, informieren Sie sich über [Vorlagenbereitstellungen](../azure-resource-manager/resource-group-overview.md) sowie deren Struktur und Syntax.  
 
-## <a name="pre-requisites"></a>Voraussetzungen
+## <a name="prerequisites"></a>Voraussetzungen
 
-- Ihr Abonnement muss mit [Microsoft.Insights](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-6.8.1) registriert werden. 
+- Ihr Abonnement muss mit [Microsoft.Insights](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-supported-services#portal) registriert werden. 
 
-- Sie müssen entweder [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-6.8.1) installiert haben, oder Sie können [Azure CloudShell](https://docs.microsoft.com/azure/cloud-shell/overview.md) verwenden. 
+- Sie müssen [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-6.8.1) installiert haben, oder Sie können [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) verwenden. 
 
 
 ## <a name="set-up-azure-monitor-as-a-data-sink"></a>Einrichten von Azure Monitor als Datensenke 
-Die Azure-Diagnoseerweiterung verwendet eine Funktion namens „Datensenken“, um Metriken und Protokolle an verschiedene Standorte zu leiten.  Die folgenden Schritte zeigen, wie Sie eine Resource Manager-Vorlage und PowerShell verwenden, um eine VM mit der neuen Datensenke „Azure Monitor“ bereitzustellen. 
+Die Azure-Diagnoseerweiterung verwendet eine Feature namens **Datensenken**, um Metriken und Protokolle an verschiedene Orte zu leiten. Die folgenden Schritte zeigen, wie Sie eine Resource Manager-Vorlage und PowerShell verwenden, um eine VM mit der neuen Datensenke „Azure Monitor“ bereitzustellen. 
 
-## <a name="author-resource-manager-template"></a>Erstellen von Resource Manager-Vorlagen 
-Für dieses Beispiel können Sie eine öffentlich zugängliche Beispielvorlage verwenden. Die Startvorlagen befinden sich unter https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-windows-autoscale.  
+## <a name="author-a-resource-manager-template"></a>Erstellen einer Resource Manager-Vorlage 
+Für dieses Beispiel können Sie eine öffentlich verfügbare [Beispielvorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-windows-autoscale) verwenden:  
 
 - **Azuredeploy.json** ist eine vorkonfigurierte Resource Manager-Vorlage für die Bereitstellung einer VM-Skalierungsgruppe.
 
@@ -43,30 +43,30 @@ Für dieses Beispiel können Sie eine öffentlich zugängliche Beispielvorlage v
 Laden Sie beide Dateien herunter und speichern Sie sie lokal. 
 
 ###  <a name="modify-azuredeployparametersjson"></a>Ändern von azuredeploy.parameters.json
-Öffnen Sie die Datei *azuredeploy.parameters.json*. 
-
-- Stellen Sie eine **vmSKU** bereit, die Sie implementieren möchten (Empfehlung: Standard_D2_v3). 
-- Geben Sie eine **windowsOSVersion** an, die Sie für Ihre VM-Skalierungsgruppe verwenden möchten (Empfehlung: 2016-Datacenter). 
-- Benennen Sie die bereitzustellende VM-Skalierungsgruppe unter Verwendung einer **vmssName**-Eigenschaft. Beispiel: *VMSS-WAD-TEST*.    
-- Geben Sie die Anzahl der VMs an, die Sie für die VM-Skalierungsgruppe ausführen möchten, die über die Eigenschaft **instanceCount** festgelegt wurde.
-- Geben Sie Werte für **adminUsername** und **adminPassword** für die VM-Skalierungsgruppe ein. Diese Parameter werden für den Remotezugriff auf die VMs in der Skalierungsgruppe verwendet. Diese Parameter werden für den Remotezugriff auf die VMs verwendet. Verwenden Sie NICHT die in dieser Vorlage enthaltenen Parameter, um zu vermeiden, dass Ihre VM das Opfer eines Hijacking-Vorgangs wird. Bots durchsuchen das Internet nach Benutzernamen und Kennwörtern in öffentlichen Github-Repositorys. Es ist wahrscheinlich, dass sie VMs mit diesen Standardwerten testen. 
+Öffnen Sie die Datei **azuredeploy.parameters.json**:  
+ 
+- Geben Sie eine **vmSKU** an, die Sie bereitstellen möchten. Empfehlung: Standard_D2_v3. 
+- Geben Sie eine **windowsOSVersion** an, die Sie für Ihre VM-Skalierungsgruppe verwenden möchten. Empfehlung: 2016-Datacenter. 
+- Benennen Sie die bereitzustellende VM-Skalierungsgruppe mithilfe einer **vmssName**-Eigenschaft. Beispiel: **VMSS-WAD-TEST**.    
+- Geben Sie über die **instanceCount**-Eigenschaft die Anzahl der VMs an, die Sie in der VM-Skalierungsgruppe ausführen möchten.
+- Geben Sie Werte für **adminUsername** und **adminPassword** für die VM-Skalierungsgruppe ein. Diese Parameter werden für den Remotezugriff auf die VMs in der Skalierungsgruppe verwendet. Verwenden Sie **nicht** die in dieser Vorlage enthaltenen Werte, um eine Übernahme Ihrer VM zu vermeiden. Bots durchsuchen das Internet nach Benutzernamen und Kennwörtern in öffentlichen GitHub-Repositorys. Es ist wahrscheinlich, dass sie VMs mit diesen Standardwerten testen. 
 
 
 ###  <a name="modify-azuredeployjson"></a>Ändern von azuredeploy.json
-Öffnen Sie die Datei *azuredeploy.json*. 
+Öffnen Sie die Datei **azuredeploy.json**. 
 
-Fügen Sie eine Variable hinzu, um die Informationen zum Speicherkonto in der Resource Manager-Vorlage zu speichern. Sie müssen im Rahmen der Installation der Diagnoseerweiterung weiterhin ein Speicherkonto angeben. Alle Protokolle und/oder Leistungsindikatoren, die in der Diagnosekonfigurationsdatei angegeben sind, werden in das angegebene Speicherkonto geschrieben und zusätzlich an den Metrikspeicher von Azure Monitor gesendet. 
+Fügen Sie eine Variable hinzu, um die Informationen zum Speicherkonto in der Resource Manager-Vorlage zu speichern. Alle Protokolle und Leistungsindikatoren, die in der Diagnosekonfigurationsdatei angegeben sind, werden in den Metrikspeicher von Azure Monitor und das angegebene Speicherkonto geschrieben: 
 
 ```json
 "variables": { 
 //add this line       
 "storageAccountName": "[concat('storage', uniqueString(resourceGroup().id))]", 
- ```
+```
  
-Suchen Sie die Definition der VM-Skalierungsgruppe im Ressourcenbereich und fügen Sie der Konfiguration den Abschnitt „identity“ hinzu. Dadurch wird sichergestellt, dass Azure eine Systemidentität zuweist. Dieser Schritt stellt sicher, dass die VMs in der Skalierungsgruppe Gastmetriken über sich selbst an Azure Monitor senden können.  
+Suchen Sie die Definition der VM-Skalierungsgruppe im Abschnitt „resources“, und fügen Sie der Konfiguration den Abschnitt **identity** hinzu. Mit dieser Ergänzung wird sichergestellt, dass Azure eine Systemidentität zuweist. Dieser Schritt stellt auch sicher, dass die VMs in der Skalierungsgruppe Gastmetriken über sich selbst an Azure Monitor senden können:  
 
 ```json
-  { 
+    { 
       "type": "Microsoft.Compute/virtualMachineScaleSets", 
       "name": "[variables('namingInfix')]", 
       "location": "[resourceGroup().location]", 
@@ -76,14 +76,14 @@ Suchen Sie die Definition der VM-Skalierungsgruppe im Ressourcenbereich und füg
            "type": "systemAssigned" 
        }, 
        //end of lines to add
- ```
+```
 
 Suchen Sie in der VM-Skalierungsgruppenressource den Abschnitt **virtualMachineProfile**. Fügen Sie ein neues Profil namens **extensionsProfile** hinzu, um Erweiterungen zu verwalten.  
 
 
-Fügen Sie in **extensionProfile** eine neue Erweiterung zur Vorlage hinzu, wie im Abschnitt zur **VMSS-WAD-Erweiterung** veranschaulicht.  Dieser Abschnitt ist die Erweiterung für verwaltete Identitäten für Azure-Ressourcen, die sicherstellt, dass die ausgegebenen Metriken von Azure Monitor akzeptiert werden. Das Feld **Name** kann einen beliebigen Namen enthalten. 
+Fügen Sie der Vorlage in **extensionProfile** eine neue Erweiterung hinzu, wie im Abschnitt zur **VMSS-WAD-Erweiterung** veranschaulicht.  Dieser Abschnitt ist die Erweiterung für verwaltete Identitäten für Azure-Ressourcen, die sicherstellt, dass die ausgegebenen Metriken von Azure Monitor akzeptiert werden. Das Feld **Name** kann einen beliebigen Namen enthalten. 
 
-Mit dem unten angegebenen Code aus der MSI-Erweiterung wird die Diagnoseerweiterung und -konfiguration der VM-Skalierungsgruppenressource auch als Erweiterungsressource hinzugefügt. Sie können Leistungsindikatoren nach Bedarf hinzufügen/entfernen. 
+Mit dem folgenden Code aus der MSI-Erweiterung wird die Diagnoseerweiterung und -konfiguration der VM-Skalierungsgruppenressource auch als Erweiterungsressource hinzugefügt. Sie können Leistungsindikatoren nach Bedarf hinzufügen oder entfernen: 
 
 ```json
           "extensionProfile": { 
@@ -195,30 +195,32 @@ Mit dem unten angegebenen Code aus der MSI-Erweiterung wird die Diagnoseerweiter
 ```
 
 
-Fügen Sie ein „dependsOn“ für das Speicherkonto hinzu, um sicherzustellen, dass es in der richtigen Reihenfolge erstellt wird. 
+Fügen Sie **dependsOn** für das Speicherkonto hinzu, um sicherzustellen, dass es in der richtigen Reihenfolge erstellt wird: 
+
 ```json
 "dependsOn": [ 
 "[concat('Microsoft.Network/loadBalancers/', variables('loadBalancerName'))]", 
 "[concat('Microsoft.Network/virtualNetworks/', variables('virtualNetworkName'))]" 
 //add this line below
 "[concat('Microsoft.Storage/storageAccounts/', variables('storageAccountName'))]" 
- ```
+```
 
-Erstellen Sie ein Speicherkonto, wenn dieses nicht bereits in der Vorlage erstellt wurde.  
+Erstellen Sie ein Speicherkonto, wenn dieses nicht bereits in der Vorlage erstellt wurde: 
+
 ```json
 "resources": [
-  // add this code    
-  {
-     "type": "Microsoft.Storage/storageAccounts",
-     "name": "[variables('storageAccountName')]",
-     "apiVersion": "2015-05-01-preview",
-     "location": "[resourceGroup().location]",
-     "properties": {
-       "accountType": "Standard_LRS"
-      }
-  },
-  // end added code
-  { 
+// add this code    
+{
+    "type": "Microsoft.Storage/storageAccounts",
+    "name": "[variables('storageAccountName')]",
+    "apiVersion": "2015-05-01-preview",
+    "location": "[resourceGroup().location]",
+    "properties": {
+    "accountType": "Standard_LRS"
+    }
+},
+// end added code
+{ 
     "type": "Microsoft.Network/virtualNetworks",
     "name": "[variables('virtualNetworkName')]",
 ```
@@ -227,62 +229,63 @@ Speichern und schließen Sie beide Dateien.
 
 ## <a name="deploy-the-resource-manager-template"></a>Bereitstellen der Resource Manager-Vorlage 
 
-> [!NOTE]
-> Sie müssen die Azure-Diagnoseerweiterung Version 1.5 oder höher ausführen UND für die Eigenschaft „autoUpgradeMinorVersion“ den Wert *true* in Ihrer Resource Manager-Vorlage festgelegt haben.  Azure lädt dann die richtige Erweiterung, wenn die VM gestartet wird. Wenn diese Einstellungen in Ihrer Vorlage nicht vorhanden sind, ändern Sie sie und stellen Sie die Vorlage erneut bereit. 
+> [!NOTE]  
+> Sie müssen die Azure-Diagnoseerweiterung Version 1.5 oder höher ausführen **und** die **autoUpgradeMinorVersion:**-Eigenschaft in Ihrer Resource Manager-Vorlage auf **TRUE** festgelegt haben. Azure lädt dann die richtige Erweiterung, wenn die VM gestartet wird. Wenn diese Einstellungen in Ihrer Vorlage nicht vorhanden sind, ändern Sie sie, und stellen Sie die Vorlage erneut bereit. 
 
 
-Für die Bereitstellung der Resource Manager-Vorlage wird hier Azure PowerShell verwendet.  
+Für die Bereitstellung der Resource Manager-Vorlage wird Azure PowerShell verwendet:  
 
-1. Starten von PowerShell 
+1. Starten Sie PowerShell. 
 1. Melden Sie sich mit `Login-AzureRmAccount` bei Azure an.
 1. Rufen Sie Ihre Liste der Abonnements mit `Get-AzureRmSubscription` ab.
-1. Legen Sie das Abonnement fest, in dem Sie den virtuellen Computer erstellen/aktualisieren möchten. 
+1. Legen Sie das Abonnement fest, das Sie erstellen, oder aktualisieren Sie den virtuellen Computer: 
 
    ```PowerShell
    Select-AzureRmSubscription -SubscriptionName "<Name of the subscription>" 
    ```
-1. Erstellen Sie eine neue Ressourcengruppe für die bereitzustellende VM und führen Sie den folgenden Befehl aus. 
+1. Erstellen Sie eine neue Ressourcengruppe für die bereitzustellende VM. Führen Sie den folgenden Befehl aus: 
 
    ```PowerShell
     New-AzureRmResourceGroup -Name "VMSSWADtestGrp" -Location "<Azure Region>" 
    ```
 
    > [!NOTE]  
-   > Denken Sie daran, eine Azure-Region zu verwenden, die für benutzerdefinierte Metriken aktiviert ist. Hier eine Liste mit Ressourcen: 
+   > Denken Sie daran, eine Azure-Region zu verwenden, in der benutzerdefinierte Metriken aktiviert sind. Denken Sie daran, eine [Azure-Region zu verwenden, in der benutzerdefinierte Metriken aktiviert sind](https://github.com/MicrosoftDocs/azure-docs-pr/pull/metrics-custom-overview.md#supported-regions).
  
-1. Führen Sie die folgenden Befehle aus, um die VM bereitzustellen.  
-   > [!NOTE] 
-   > Wenn Sie eine bestehende Skalierungsgruppe aktualisieren möchten, fügen Sie einfach *-Mode Incremental* am Ende des folgenden Befehls hinzu. 
+1. Führen Sie die folgenden Befehle aus, um den virtuellen Computers bereitzustellen:  
+
+   > [!NOTE]  
+   > Wenn Sie eine bestehende Skalierungsgruppe aktualisieren möchten, fügen Sie an das Ende des folgenden Befehls **-Mode Incremental** an. 
  
    ```PowerShell
    New-AzureRmResourceGroupDeployment -Name "VMSSWADTest" -ResourceGroupName "VMSSWADtestGrp" -TemplateFile "<File path of your azuredeploy.JSON file>" -TemplateParameterFile "<File path of your azuredeploy.parameters.JSON file>"  
    ```
 
-1. Nach dem erfolgreichen Bereitstellen Ihres virtuellen Computers sollten Sie in der Lage sein, die VM-Skalierungsgruppe im Azure-Portal zu finden, und sie sollte Metriken für Azure Monitor ausgeben. 
+1. Nach der erfolgreichen Bereitstellung sollte die VM-Skalierungsgruppe im Azure-Portal angezeigt werden. Sie sollte Metriken an Azure Monitor ausgeben. 
 
-   > [!NOTE] 
-   > Es kann vorkommen, dass in der Umgebung des ausgewählten „vmSkuSize“ Fehler auftreten. Wechseln Sie in diesem Fall zurück zu Ihrer Datei „azuredeploy.json“ und aktualisieren Sie den Standardwert des Parameters „vmSkuSize“. In diesem Fall wird empfohlen, es mit „Standard_DS1_v2“ zu versuchen. 
+   > [!NOTE]  
+   > Möglicherweise treten im Bereich um die **vmSkuSize** Fehler auf. Wechseln Sie in diesem Fall zurück zu Ihrer Datei **azuredeploy.json**, und aktualisieren Sie den Standardwert des Parameters **vmSkuSize**. Es wird empfohlen, **Standard_DS1_v2** zu versuchen. 
 
 
 ## <a name="chart-your-metrics"></a>Erfassen Ihrer Metriken 
 
-1. Melden Sie sich auf dem Azure-Portal an. 
+1. Melden Sie sich beim Azure-Portal an. 
 
-1. Klicken Sie im linken Menü auf **Überwachen**. 
+1. Wählen Sie im Menü auf der linken Seite **Überwachen** aus. 
 
-1. Klicken Sie auf der Seite „Überwachen“ auf **Metriken**. 
+1. Wählen Sie auf der Seite **Überwachen** die Option **Metriken** aus. 
 
-   ![Seite „Metriken“](./media/metrics-store-custom-rest-api/metrics.png) 
+   ![Monitor – Seite „Metriken“](media/metrics-store-custom-guestos-resource-manager-vmss/metrics.png) 
 
 1. Ändern Sie den Aggregationszeitraum in **Letzte 30 Minuten**.  
 
-1. Wählen Sie in der Dropdownliste der Ressourcen die VM-Skalierungsgruppe aus, die Sie gerade erstellt haben.  
+1. Wählen Sie im Dropdownliste mit den Ressourcen die VM-Skalierungsgruppe aus, die Sie erstellt haben.  
 
-1. Wählen Sie in der Dropdownliste der Namespaces **azure.vm.windows.guest** aus. 
+1. Wählen Sie im Dropdownmenü mit den Namespaces **azure.vm.windows.guest** aus. 
 
-1. Wählen Sie in der Dropdownliste der Metriken **Arbeitsspeicher\%Verwendete zugesicherte Bytes** aus.  
+1. Wählen Sie im Dropdownmenü mit den Metriken **Memory\%Committed Bytes in Use** aus.  
 
-Sie können dann auch die Dimensionen dieser Metrik verwenden, um diese Metrik für eine bestimmte VM in der Skalierungsgruppe zu erfassen oder um jede VM in der Skalierungsgruppe zu erfassen. 
+Sie können dann auch die Verwendung der Dimensionen zu dieser Metrik auswählen, um diese für eine bestimmte VM oder für jede VM in der Skalierungsgruppe zu zeichnen. 
 
 
 

@@ -2,19 +2,19 @@
 title: Verwenden von Data Lake Store mit Hadoop in Azure HDInsight
 description: Erfahren Sie, wie Sie Daten in Azure Data Lake Store abfragen und die Ergebnisse Ihrer Analyse speichern.
 services: hdinsight,storage
-author: jasonwhowell
-ms.author: jasonh
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 07/23/2018
-ms.openlocfilehash: d205a46c672523e029816b573742d991de79b2ae
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 4fe2eb9e55415f76cbbce0ee69c92ccac29c4627
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49956730"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51016640"
 ---
 # <a name="use-data-lake-store-with-azure-hdinsight-clusters"></a>Verwenden von Data Lake Store mit Azure HDInsight-Clustern
 
