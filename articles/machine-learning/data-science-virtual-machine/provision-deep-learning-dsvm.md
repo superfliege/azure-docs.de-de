@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
-ms.openlocfilehash: 2172acfd61188c09693b9c7dacf37ff7a638d7f4
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 9d64ad70ea49f7fbffd8bd6a5a77177fe490b832
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32169940"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51229661"
 ---
 # <a name="provision-a-deep-learning-virtual-machine-on-azure"></a>Bereitstellen einer Data Science Virtual Machine in Azure 
 
-Die Deep Learning Virtual Machine (DLVM) ist eine speziell konfigurierte Variante der [Data Science Virtual Machine](http://aka.ms/dsvm) (DSVM), die ein einfacheres und schnelleres Training von Deep Learning-Modellen anhand GPU-basierter VM-Instanzen ermöglicht. Sie wird von Windows 2016 oder der Ubuntu DSVM als Basis unterstützt. Die DLVM nutzt dieselben VM-Kernimages und daher das gesamte umfangreiche Toolset, das von der DSVM geboten wird. 
+Die Deep Learning Virtual Machine (DLVM) ist eine speziell konfigurierte Variante der [Data Science Virtual Machine](https://aka.ms/dsvm) (DSVM), die ein einfacheres und schnelleres Training von Deep Learning-Modellen anhand GPU-basierter VM-Instanzen ermöglicht. Sie wird von Windows 2016 oder der Ubuntu DSVM als Basis unterstützt. Die DLVM nutzt dieselben VM-Kernimages und daher das gesamte umfangreiche Toolset, das von der DSVM geboten wird. 
 
 Die DLVM bietet mehrere Tools für AI einschließlich GPU-Editionen beliebter Deep Learning-Frameworks wie Microsoft Cognitive Toolkit, TensorFlow, Keras, Caffe2, Chainer. Ferner bietet sie Tools zum Abrufen und Vorverarbeiten von Bild- und Textdaten, Tools für Data Science-Modellierungs- und Entwicklungsaktivitäten wie Microsoft R Server Developer Edition, Anaconda Python, Jupyter-Notebooks für Python und R, IDEs für Python und R, SQL-Datenbanken und zahlreiche weitere Data Science- und ML-Tools. 
 

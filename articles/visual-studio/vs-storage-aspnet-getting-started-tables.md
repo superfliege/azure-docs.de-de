@@ -12,12 +12,12 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 12/21/2016
 ms.author: ghogen
-ms.openlocfilehash: c9d9cd9616b263ca002e6fe7ad6c875cce10289b
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 518e14b991aa110a6ed55f984a66cd386a618f0f
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "40246550"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51228962"
 ---
 # <a name="get-started-with-azure-table-storage-and-visual-studio-connected-services-aspnet"></a>Erste Schritte mit Azure Table Storage und verbundenen Visual Studio-Diensten (ASP.NET)
 [!INCLUDE [storage-try-azure-tools-tables](../../includes/storage-try-azure-tools-tables.md)]
@@ -173,7 +173,7 @@ Die folgenden Schritte veranschaulichen, wie Sie eine Tabelle erstellen:
   
     ![Tabelle erstellen](./media/vs-storage-aspnet-getting-started-tables/create-table-results.png)
 
-    Wie bereits erwähnt, gibt die **CloudTable.CreateIfNotExists**-Methode nur dann **true** zurück, wenn die Tabelle nicht vorhanden ist und erstellt wird. Aus diesem Grund gibt die Methode **false** zurück, wenn Sie die App ausführen, wenn die Tabelle vorhanden ist. Um die App mehrere Male auszuführen, müssen Sie die Tabelle vor dem erneuten Ausführen der App löschen. Das Löschen der Tabelle kann mit der **CloudTable.Delete**-Methode durchgeführt werden. Sie können die Tabelle auch über das [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040) oder den [Microsoft Azure Storage-Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) löschen.  
+    Wie bereits erwähnt, gibt die **CloudTable.CreateIfNotExists**-Methode nur dann **true** zurück, wenn die Tabelle nicht vorhanden ist und erstellt wird. Aus diesem Grund gibt die Methode **false** zurück, wenn Sie die App ausführen, wenn die Tabelle vorhanden ist. Um die App mehrere Male auszuführen, müssen Sie die Tabelle vor dem erneuten Ausführen der App löschen. Das Löschen der Tabelle kann mit der **CloudTable.Delete**-Methode durchgeführt werden. Sie können die Tabelle auch über das [Azure-Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) oder den [Microsoft Azure Storage-Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) löschen.  
 
 ## <a name="add-an-entity-to-a-table"></a>Hinzufügen einer Entität zu einer Tabelle
 

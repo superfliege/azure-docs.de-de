@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/03/2018
 ms.author: v-daljep
 ms.component: ''
-ms.openlocfilehash: 3c80007a8188fb239a13aaa0ccc9ef2237a2d8d1
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: b20a142007b3422d071de47410f4c9cdd1ff62a7
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50025667"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51006735"
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>Überwachen von Azure SQL-Datenbank mithilfe von Azure SQL-Analyse (Vorschauversion)
 
@@ -46,8 +46,8 @@ Da die Lösung keine Agents für die Verbindung mit dem Log Analytics-Dienst ver
 | --- | --- | --- |
 | **[Azure-Diagnose](log-analytics-azure-storage.md)** | **Ja** | Metrik- und Protokolldaten von Azure werden direkt von Azure an Log Analytics gesendet. |
 | [Azure-Speicherkonto](log-analytics-azure-storage.md) | Nein  | Log Analytics liest keine Daten aus einem Speicherkonto. |
-| [Windows-Agents](log-analytics-windows-agent.md) | Nein  | Direkte Windows-Agents werden von der Lösung nicht verwendet. |
-| [Linux-Agents](log-analytics-linux-agents.md) | Nein  | Direkte Linux-Agents werden von der Lösung nicht verwendet. |
+| [Windows-Agents](log-analytics-agent-windows.md) | Nein  | Direkte Windows-Agents werden von der Lösung nicht verwendet. |
+| [Linux-Agents](log-analytics-quick-collect-linux-computer.md) | Nein  | Direkte Linux-Agents werden von der Lösung nicht verwendet. |
 | [SCOM-Verwaltungsgruppe](log-analytics-om-agents.md) | Nein  | Von der Lösung wird keine direkte Verbindung zwischen SCOM-Agent und Log Analytics verwendet. |
 
 ## <a name="configuration"></a>Konfiguration
@@ -192,7 +192,7 @@ Automatisierte Warnungen in der Lösung basieren auf dem Schreiben einer Log Ana
 
 ### <a name="creating-alerts-for-azure-sql-database"></a>Erstellen von Warnungen für Azure SQL-Datenbank
 
-Sie können problemlos [Warnungen](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md) mit den Daten erstellen, die aus Azure SQL-Datenbank-Ressourcen stammen. Hier sind einige nützliche Abfragen für die [Protokollsuche](log-analytics-log-searches.md), die Sie mit einer Protokollwarnung verwenden können:
+Sie können problemlos [Warnungen](../monitoring-and-diagnostics/alert-metric.md) mit den Daten erstellen, die aus Azure SQL-Datenbank-Ressourcen stammen. Hier sind einige nützliche Abfragen für die [Protokollsuche](log-analytics-queries.md), die Sie mit einer Protokollwarnung verwenden können:
 
 *Hohe CPU in Azure SQL-Datenbank*
 
@@ -289,6 +289,6 @@ Obwohl die Lösung kostenlos verwendet werden kann, fallen für die Nutzung von 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Verwenden Sie die [Protokollsuche](log-analytics-log-searches.md) in Log Analytics, um ausführliche Azure SQL-Daten anzuzeigen.
+- Verwenden Sie die [Protokollsuche](log-analytics-queries.md) in Log Analytics, um ausführliche Azure SQL-Daten anzuzeigen.
 - [Erstellen eigener Dashboards](log-analytics-dashboards.md), die Azure SQL-Daten anzeigen
-- [Erstellen von Warnungen](log-analytics-alerts.md), wenn bestimmte Azure SQL-Ereignisse auftreten
+- [Erstellen von Warnungen](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md), wenn bestimmte Azure SQL-Ereignisse auftreten

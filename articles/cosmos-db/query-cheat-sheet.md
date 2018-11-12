@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/20/2018
 ms.author: sngun
-ms.openlocfilehash: 432f61adaf736180a720aa23a7275e96fed4c733
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 22f8384105ed31ac2b11e0c6094b01549a270144
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43696930"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51230868"
 ---
 # <a name="azure-cosmos-db-query-cheat-sheets"></a>Abfragespickzettel für Azure Cosmos DB
 
@@ -25,7 +25,7 @@ Wählen Sie zwischen einem Download im Letter- oder A3-Format.
 
 ## <a name="letter-sized-cheat-sheets"></a>Spickzettel im Letter-Format
 
-Laden Sie die [Abfragespickzettel für Azure Cosmos DB im Letter-Format](http://go.microsoft.com/fwlink/?LinkId=623215) herunter, wenn Sie auf Papier im Letter-Format (8,5" x 11") drucken möchten.
+Laden Sie die [Abfragespickzettel für Azure Cosmos DB im Letter-Format](https://go.microsoft.com/fwlink/?LinkId=623215) herunter, wenn Sie auf Papier im Letter-Format (8,5" x 11") drucken möchten.
 
 ![Azure Cosmos DB-Abfragespickzettel – im Letter-Format, mit Abfragen und Funktionen für SQL-API, JavaScript, MongoDB-API, Gremlin-API und Tabellen-API](./media/query-cheat-sheet/azure-cosmos-db-cheat-sheet-letter.png)
 

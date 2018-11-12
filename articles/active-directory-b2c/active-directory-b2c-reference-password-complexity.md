@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/16/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 4b027f6cd57dfa48ba2e230371ffcad97b1f8ec4
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: b16ac10e10655bbc7e41d9336378228097ca19ff
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37445108"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51014719"
 ---
 # <a name="azure-ad-b2c-configure-complexity-requirements-for-passwords"></a>Azure AD B2C: Konfigurieren von Komplexitätsanforderungen für Kennwörter
 
@@ -38,11 +38,10 @@ In folgenden Typen von Richtlinien kann die Kennwortkomplexität konfiguriert we
 
 ## <a name="how-to-configure-password-complexity"></a>Gewusst wie: Konfigurieren der Kennwortkomplexität
 
-1. Führen Sie die folgenden Schritte aus, um zu den [Azure AD B2C-Einstellungen](active-directory-b2c-app-registration.md#navigate-to-b2c-settings) zu wechseln.
 1. Öffnen Sie **Registrierungs- oder Anmelderichtlinien**.
-1. Wählen Sie eine Richtlinie, und klicken Sie auf **Bearbeiten**.
-1. Öffnen Sie **Kennwortkomplexität**.
-1. Ändern Sie die Kennwortkomplexität für diese Richtlinie in **Einfach**, **Stark** oder **Benutzerdefiniert**.
+2. Wählen Sie eine Richtlinie, und klicken Sie auf **Bearbeiten**.
+3. Öffnen Sie **Kennwortkomplexität**.
+4. Ändern Sie die Kennwortkomplexität für diese Richtlinie in **Einfach**, **Stark** oder **Benutzerdefiniert**.
 
 ### <a name="comparison-chart"></a>Vergleichsdiagramm
 
