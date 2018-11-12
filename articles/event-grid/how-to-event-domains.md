@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.author: babanisa
 ms.topic: conceptual
 ms.date: 10/30/2018
-ms.openlocfilehash: 48a5356b03e38e864ba76f048febdb0b040893f5
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: d6da1ee603c85556693b145ba17d1e0cd0dfabd7
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50669297"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51034539"
 ---
 # <a name="manage-topics-and-publish-events-using-event-domains"></a>Verwalten von Themen und Veröffentlichen von Ereignissen mithilfe von Ereignisdomänen
 
@@ -84,7 +84,7 @@ Berechtigungen, die für ein Thema festgelegt sind, werden in Azure Active Direc
 
 ## <a name="manage-access-to-topics"></a>Verwalten des Zugriffs auf Themen
 
-Das Verwalten des Zugriffs auf Themen erfolgt über eine [Rollenzuweisung](https://docs.microsoft.com/en-us/azure/role-based-access-control/role-assignments-cli). Die Rollenzuweisung verwendet rollenbasierten Zugriff (RBAC), um die Vorgänge mit Azure-Ressourcen auf autorisierte Benutzer in einem bestimmten Bereich einzuschränken.
+Das Verwalten des Zugriffs auf Themen erfolgt über eine [Rollenzuweisung](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli). Die Rollenzuweisung verwendet rollenbasierten Zugriff (RBAC), um die Vorgänge mit Azure-Ressourcen auf autorisierte Benutzer in einem bestimmten Bereich einzuschränken.
 
 Event Grid verfügt über zwei integrierte Rollen, mit denen Sie bestimmten Benutzern Zugriff auf verschiedene Themen innerhalb einer Domäne zuweisen können. Diese Rollen sind `EventGrid EventSubscription Contributor (Preview)` (ermöglicht das Erstellen und Löschen von Abonnements) und `EventGrid EventSubscription Reader (Preview)` (ermöglicht nur das Auflisten von Ereignisabonnements).
 

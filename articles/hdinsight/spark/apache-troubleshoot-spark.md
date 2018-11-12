@@ -3,16 +3,16 @@ title: Problembehandlung für Spark in Azure HDInsight
 description: Hier erhalten Sie Antworten auf häufig gestellte Fragen zum Arbeiten mit Apache Spark und Azure HDInsight.
 services: hdinsight
 ms.service: hdinsight
-author: jasonwhowell
-ms.author: jasonh
+author: hrasheed-msft
+ms.author: hrasheed
 ms.topic: conceptual
 ms.date: 11/2/2017
-ms.openlocfilehash: 7c7f89864d9394ff4527f9a0354b9276f7c01c49
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 835a56413a4274a2be2511278b4dedd7f83c54c3
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39591736"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51016674"
 ---
 # <a name="troubleshoot-spark-by-using-azure-hdinsight"></a>Problembehandlung bei Spark mit Azure HDInsight
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: johnkem
 ms.component: logs
-ms.openlocfilehash: 6efcb7bccfdfab18a57e709d9fdfa8492b159b34
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: ab7689cb18dcd11926abc2e9806885b1072e3886
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51278088"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50960173"
 ---
 # <a name="archive-azure-diagnostic-logs"></a>Archivieren von Azure-Diagnoseprotokollen
 
@@ -26,7 +26,7 @@ In diesem Artikel erfahren Sie, wie Sie Ihre [Azure-Diagnoseprotokolle](monitori
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Bevor Sie beginnen, müssen Sie [ein Speicherkonto erstellen](../storage/common/storage-quickstart-create-account.md) , in dem Sie Ihre Diagnoseprotokolle archivieren können. Um den Zugriff auf Überwachungsdaten besser steuern zu können, wird dringend davon abgeraten, ein bereits vorhandenes Speicherkonto mit anderen, nicht überwachungsbezogenen Daten zu verwenden. Wenn Sie jedoch auch Ihr Aktivitätsprotokoll und Ihre Diagnosemetriken in einem Speicherkonto archivieren, ist es unter Umständen sinnvoll, dieses Speicherkonto auch für Ihre Diagnoseprotokolle zu verwenden, damit sich alle Überwachungsdaten an einem zentralen Ort befinden.
+Bevor Sie beginnen, müssen Sie [ein Speicherkonto erstellen](../storage/common/storage-create-storage-account.md) , in dem Sie Ihre Diagnoseprotokolle archivieren können. Um den Zugriff auf Überwachungsdaten besser steuern zu können, wird dringend davon abgeraten, ein bereits vorhandenes Speicherkonto mit anderen, nicht überwachungsbezogenen Daten zu verwenden. Wenn Sie jedoch auch Ihr Aktivitätsprotokoll und Ihre Diagnosemetriken in einem Speicherkonto archivieren, ist es unter Umständen sinnvoll, dieses Speicherkonto auch für Ihre Diagnoseprotokolle zu verwenden, damit sich alle Überwachungsdaten an einem zentralen Ort befinden.
 
 > [!NOTE]
 >  Sie können derzeit keine Daten in einem Speicherkonto archivieren, das sich hinter einem geschützten virtuellen Netzwerk befindet.
@@ -161,7 +161,7 @@ Die einzelnen Ereignisse werden innerhalb der Datei „PT1H.json“ im folgenden
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Herunterladen von Blobs für die Analyse](../storage/blobs/storage-quickstart-blobs-dotnet.md)
+* [Herunterladen von Blobs für die Analyse](../storage/blobs/storage-dotnet-how-to-use-blobs.md)
 * [Streamen von Diagnoseprotokollen an einen Event Hubs-Namespace](monitoring-stream-diagnostic-logs-to-event-hubs.md)
 * [Archivieren von Azure Active Directory-Protokollen mit Azure Monitor](../active-directory/reports-monitoring/quickstart-azure-monitor-route-logs-to-storage-account.md)
 * [Weitere Informationen zu Diagnoseprotokollen](monitoring-overview-of-diagnostic-logs.md)
