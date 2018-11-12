@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/09/2017
 ms.author: juliako
-ms.openlocfilehash: e4f786eeb8994e44f827e5158811cae4a60453cc
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 2bb56ff6eaf311bee33b07ecb319127645db9961
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33780635"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51235104"
 ---
 # <a name="how-to-perform-live-streaming-with-on-premises-encoders-using-the-azure-portal"></a>Durchführen von Livestreaming mit lokalen Encodern im Azure-Portal
 > [!div class="op_single_selector"]
@@ -50,7 +50,7 @@ In den folgenden Schritten werden Aufgaben beschrieben, die beim Erstellen von g
 >[!NOTE]
 >Stellen Sie sicher, dass sich der Streamingendpunkt, von dem aus Sie die Inhalte streamen möchten, im Status **Wird ausgeführt** befindet. 
     
-1. Schließen Sie eine Videokamera an einen Computer an. Starten und konfigurieren Sie einen lokalen Liveencoder, der einen RTMP- oder Fragmented MP4-Datenstrom mit mehreren Bitraten ausgibt. Weitere Informationen finden Sie unter [Microsoft Azure Media Services RTMP-Support und Liveencoder](http://go.microsoft.com/fwlink/?LinkId=532824).
+1. Schließen Sie eine Videokamera an einen Computer an. Starten und konfigurieren Sie einen lokalen Liveencoder, der einen RTMP- oder Fragmented MP4-Datenstrom mit mehreren Bitraten ausgibt. Weitere Informationen finden Sie unter [Microsoft Azure Media Services RTMP-Support und Liveencoder](https://go.microsoft.com/fwlink/?LinkId=532824).
    
     Dieser Schritt kann auch nach der Erstellung des Kanals ausgeführt werden.
 2. Erstellen und starten Sie einen Pass-Through-Kanal.

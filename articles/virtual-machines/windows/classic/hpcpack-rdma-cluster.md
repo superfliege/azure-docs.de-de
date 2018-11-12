@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
 ms.date: 03/06/2018
 ms.author: danlep
-ms.openlocfilehash: 7bb49e48f3777304aa6f40cee40e0b7147994201
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 52338cc21e46b544c2abb79cd7094615c837a2e8
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49345236"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51233778"
 ---
 # <a name="set-up-a-windows-rdma-cluster-with-hpc-pack-to-run-mpi-applications"></a>Einrichten eines Windows RDMA-Clusters mit HPC Pack zum Ausführen von MPI-Anwendungen
 Richten Sie anhand der Informationen unter [Microsoft HPC Pack](https://technet.microsoft.com/library/cc514029) und [Größen von virtuellen HPC-Computern (High Performance Computing)](../sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#rdma-capable-instances) (Abschnitt „RDMA-fähige Instanzen“) einen Windows RDMA-Cluster in Azure ein, um parallele MPI-Anwendungen (Message Passing Interface) auszuführen. Wenn Sie RDMA-fähige, Windows Server-basierte Knoten in einem HPC Pack-Cluster einrichten, wird die Kommunikation der MPI-Anwendungen in Azure effizient über ein auf RDMA-Technologie (Remote Direct Memory Access) basierendes Netzwerk mit niedriger Latenz und hohem Durchsatz abgewickelt.
@@ -51,19 +51,19 @@ Im Anschluss finden Sie Überlegungen und Schritte zum Burst auf RDMA-fähige Az
     Laden Sie das HPC Pack-Installationspaket aus dem [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=49922) herunter. Voraussetzungen und Anleitungen für die Vorbereitung der Azure-Burstbereitstellung finden Sie unter [Burst to Azure with Microsoft HPC Pack](https://technet.microsoft.com/library/gg481749.aspx) (Burst auf Azure-Workerinstanzen mit Microsoft HPC Pack).
 2. **Konfigurieren eines Verwaltungszertifikats im Azure-Abonnement**
    
-    Konfigurieren Sie ein Zertifikat, um die Verbindung zwischen dem Hauptknoten und Azure zu sichern. Optionen und Verfahren finden Sie unter [Szenarien zum Konfigurieren des Azure-Verwaltungszertifikats für HPC Pack](http://technet.microsoft.com/library/gg481759.aspx). Für Testbereitstellungen installiert HPC Pack ein Zertifikat mit dem Namen „Default Microsoft HPC Azure Management“, das Sie schnell in Ihr Azure-Abonnement hochladen können.
+    Konfigurieren Sie ein Zertifikat, um die Verbindung zwischen dem Hauptknoten und Azure zu sichern. Optionen und Verfahren finden Sie unter [Szenarien zum Konfigurieren des Azure-Verwaltungszertifikats für HPC Pack](https://technet.microsoft.com/library/gg481759.aspx). Für Testbereitstellungen installiert HPC Pack ein Zertifikat mit dem Namen „Default Microsoft HPC Azure Management“, das Sie schnell in Ihr Azure-Abonnement hochladen können.
 3. **Erstellen eines neuen Clouddiensts und eines Speicherkontos**
    
     Verwenden Sie das Azure-Portal, um einen Clouddienst (klassisch) und ein Speicherkonto (klassisch) für die Bereitstellung zu erstellen. Erstellen Sie diese Ressourcen in einer Region, in der die H-Serie bzw. die gewünschte Größe (A8 oder A9) verfügbar ist. Informationen finden Sie unter [Verfügbare Produkte nach Region](https://azure.microsoft.com/regions/services/).
 
 4. **Erstellen einer Azure-Knotenvorlage**
    
-    Verwenden Sie den Assistenten zum Erstellen von Knotenvorlagen in HPC Cluster Manager. Die Schritte finden Sie unter [Erstellen einer Azure-Knotenvorlage](http://technet.microsoft.com/library/gg481758.aspx#BKMK_Templ) im Thema mit den Schritten zum Bereitstellen von Azure-Knoten mit Microsoft HPC Pack.
+    Verwenden Sie den Assistenten zum Erstellen von Knotenvorlagen in HPC Cluster Manager. Die Schritte finden Sie unter [Erstellen einer Azure-Knotenvorlage](https://technet.microsoft.com/library/gg481758.aspx#BKMK_Templ) im Thema mit den Schritten zum Bereitstellen von Azure-Knoten mit Microsoft HPC Pack.
    
     Für Anfangstests wird empfohlen, eine manuelle Verfügbarkeitsrichtlinie in der Vorlage zu konfigurieren.
 5. **Hinzufügen von Knoten zum Cluster**
    
-    Verwenden Sie den Assistenten zum Hinzufügen von Knoten in HPC Cluster Manager. Weitere Informationen finden Sie unter [Hinzufügen von Azure-Knoten zum Windows HPC-Cluster](http://technet.microsoft.com/library/gg481758.aspx#BKMK_Add).
+    Verwenden Sie den Assistenten zum Hinzufügen von Knoten in HPC Cluster Manager. Weitere Informationen finden Sie unter [Hinzufügen von Azure-Knoten zum Windows HPC-Cluster](https://technet.microsoft.com/library/gg481758.aspx#BKMK_Add).
    
     Wählen Sie beim Angeben der Knotengröße eine der RDMA-fähigen Instanzgrößen aus.
    
@@ -76,7 +76,7 @@ Im Anschluss finden Sie Überlegungen und Schritte zum Burst auf RDMA-fähige Az
     Wählen Sie die Knoten aus, und verwenden Sie die Aktion **Starten** in HPC Cluster Manager. Wenn die Bereitstellung abgeschlossen ist, wählen Sie die Knoten aus, und verwenden Sie die Aktion **Online schalten** in HPC Cluster Manager. Die Knoten sind zum Ausführen von Aufträgen bereit.
 7. **Übermitteln von Aufträgen an den Cluster**
    
-   Verwenden Sie HPC Pack-Tools zur Auftragsübermittlung, um Clusteraufträge auszuführen. Weitere Informationen finden Sie unter [Microsoft HPC Pack: Auftragsverwaltung](http://technet.microsoft.com/library/jj899585.aspx).
+   Verwenden Sie HPC Pack-Tools zur Auftragsübermittlung, um Clusteraufträge auszuführen. Weitere Informationen finden Sie unter [Microsoft HPC Pack: Auftragsverwaltung](https://technet.microsoft.com/library/jj899585.aspx).
 8. **Beenden von Knoten (Aufheben der Bereitstellung)**
    
    Wenn Sie die Aufträge ausgeführt haben, schalten Sie die Knoten offline, und verwenden Sie die Aktion **Beenden** in HPC Cluster Manager.

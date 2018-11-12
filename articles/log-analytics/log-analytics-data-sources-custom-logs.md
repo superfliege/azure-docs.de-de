@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 09/27/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 5eab8e4bf6b1aa90a9eef3e26dfc3020e3e3179b
-ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
+ms.openlocfilehash: c8ae6ab818fe88aa5fb79a8911c0242ea3a0ec3b
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47423509"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51012019"
 ---
 # <a name="custom-logs-in-log-analytics"></a>Benutzerdefinierte Protokolle in Log Analytics
 Mithilfe der Datenquelle „Custom Logs“ (Benutzerdefinierte Protokolle) in Log Analytics können Ereignisse aus Textdateien auf Windows- und Linux-Computern gesammelt werden. Viele Anwendungen protokollieren Informationen nicht in standardmäßigen Protokollierungsdiensten wie Windows-Ereignisprotokoll oder Syslog, sondern in Textdateien.  Mithilfe des Log Analytics-Features [Benutzerdefinierte Felder](log-analytics-custom-fields.md) können gesammelte Datensätze im Protokoll individuell analysiert und einzelnen Feldern zugeordnet werden.
@@ -182,4 +182,4 @@ Wir definieren mithilfe benutzerdefinierter Felder die Felder *EventTime*, *Code
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Verwenden Sie [benutzerdefinierte Felder](log-analytics-custom-fields.md), um die Einträge des benutzerdefinierten Protokolls in einzelne Felder aufzuschlüsseln.
-* Erfahren Sie mehr über [Protokollsuchvorgänge](log-analytics-log-searches.md) zum Analysieren der aus Datenquellen und Lösungen gesammelten Daten.
+* Erfahren Sie mehr über [Protokollsuchvorgänge](log-analytics-queries.md) zum Analysieren der aus Datenquellen und Lösungen gesammelten Daten.

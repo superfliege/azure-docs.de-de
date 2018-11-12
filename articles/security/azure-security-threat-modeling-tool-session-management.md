@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 97953779f1132d89c7ad07abdb4e08c0f476f4b9
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.openlocfilehash: 182a0232b5317b1a375a20bdd4c6467578dc775b
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43841812"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51232741"
 ---
 # <a name="security-frame-session-management"></a>Sicherheitsrahmen: Sitzungsverwaltung
 | Produkt/Dienst | Artikel |
@@ -157,7 +157,7 @@ Außerdem sollte die Sitzung des Benutzers durch den Aufruf der Session.Abandon(
 | **SDL-Phase**               | Entwickeln |  
 | **Zutreffende Technologien** | Allgemein |
 | **Attribute**              | EnvironmentType – OnPrem |
-| **Referenzen**              | [httpCookies-Element (ASP.NET-Einstellungsschema)](http://msdn.microsoft.com/library/ms228262(v=vs.100).aspx), [HttpCookie.Secure-Eigenschaft](http://msdn.microsoft.com/library/system.web.httpcookie.secure.aspx) |
+| **Referenzen**              | [httpCookies-Element (ASP.NET-Einstellungsschema)](https://msdn.microsoft.com/library/ms228262(v=vs.100).aspx), [HttpCookie.Secure-Eigenschaft](https://msdn.microsoft.com/library/system.web.httpcookie.secure.aspx) |
 | **Schritte** | Auf Cookies kann normalerweise nur über die Domäne zugegriffen werden, für die sie zugeordnet wurden. Die Definition von „Domäne“ enthält leider nicht das Protokoll, sodass auf Cookies, die per HTTPS erstellt werden, über HTTP zugegriffen werden kann. Mit dem Attribut „secure“ wird für den Browser angegeben, dass das Cookie nur per HTTPS verfügbar gemacht werden sollte. Stellen Sie sicher, dass für alle Cookies, die per HTTPS festgelegt werden, das Attribut **secure** verwendet wird. Die Anforderung kann in der Datei „web.config“ erzwungen werden, indem das Attribut „requireSSL“ auf „TRUE“ festgelegt wird. Dies ist der bevorzugte Ansatz, da hiermit das Attribut **secure** für alle aktuellen und zukünftigen Cookies erzwungen wird, ohne dass zusätzliche Codeänderungen vorgenommen werden müssen.|
 
 ### <a name="example"></a>Beispiel

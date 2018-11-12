@@ -12,12 +12,12 @@ ms.author: mireks
 ms.reviewer: vanto, carlrab
 manager: craigg
 ms.date: 10/05/2018
-ms.openlocfilehash: e0cc8759de6e204ec419053a70d263e21ca0dcf6
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: 75108853929ea514a6b8660388d71736e74013e0
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48868631"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51234730"
 ---
 # <a name="configure-and-manage-azure-active-directory-authentication-with-sql"></a>Konfigurieren und Verwalten der Azure Active Directory-Authentifizierung mit SQL
 
@@ -202,7 +202,7 @@ Weitere Informationen zu CLI-Befehlen finden Sie unter [SQL – az sql](https://
 Auf allen Clientcomputern, über die Ihre Anwendungen oder Benutzer unter Verwendung von Azure AD-Identitäten eine Verbindung mit der Azure SQL-Datenbank oder mit Azure SQL Data Warehouse herstellen, muss die folgende Software installiert werden:
 
 - .NET Framework 4.6 oder höher aus [https://msdn.microsoft.com/library/5a4x27ek.aspx](https://msdn.microsoft.com/library/5a4x27ek.aspx).
-- Die Azure Active Directory-Authentifizierungsbibliothek für SQL Server (**ADALSQL.DLL**) steht in verschiedenen Sprachen (sowohl x86 als auch amd64) im Downloadcenter unter [Microsoft Active Directory-Authentifizierungsbibliothek für Microsoft SQL Server](http://www.microsoft.com/download/details.aspx?id=48742)bereit.
+- Die Azure Active Directory-Authentifizierungsbibliothek für SQL Server (**ADALSQL.DLL**) steht in verschiedenen Sprachen (sowohl x86 als auch amd64) im Downloadcenter unter [Microsoft Active Directory-Authentifizierungsbibliothek für Microsoft SQL Server](https://www.microsoft.com/download/details.aspx?id=48742)bereit.
 
 Sie können diese Anforderungen folgendermaßen erfüllen:
 
@@ -249,14 +249,14 @@ CREATE USER [appName] FROM EXTERNAL PROVIDER;
 > [!TIP]
 > Sie können einen Benutzer nur direkt aus der Azure Active Directory-Instanz erstellen, die Ihrem Azure-Abonnement zugeordnet ist. Mitglieder anderer Active Directory-Instanzen, die importierte Benutzer der zugeordneten Active Directory-Instanz sind (bekannt als externe Benutzer) können jedoch einer Active Directory-Gruppe des Active Directory-Mandanten hinzugefügt werden. Indem Sie einen eigenständigen Datenbankbenutzer für diese AD-Gruppe erstellen, können die Benutzer aus der externen Active Directory-Instanz auf die SQL-Datenbank zugreifen.
 
-Weitere Informationen zum Erstellen eigenständiger Datenbankbenutzer basierend auf Azure Active Directory-Identitäten finden Sie unter [CREATE USER (Transact-SQL)](http://msdn.microsoft.com/library/ms173463.aspx).
+Weitere Informationen zum Erstellen eigenständiger Datenbankbenutzer basierend auf Azure Active Directory-Identitäten finden Sie unter [CREATE USER (Transact-SQL)](https://msdn.microsoft.com/library/ms173463.aspx).
 
 > [!NOTE]
 > Wenn der Azure Active Directory-Administrator für die Azure SQL Server-Instanz entfernt wird, können Azure AD-Authentifizierungsbenutzer keine Verbindung mehr mit dem Server herstellen. Nicht mehr verwendbare Azure AD-Benutzer können bei Bedarf manuell von einem SQL-Datenbankadministrator gelöscht werden.
 > [!NOTE]
 > Wenn Sie die Benachrichtigung **Das Verbindungstimeout ist abgelaufen.** erhalten, müssen Sie möglicherweise den Parameter `TransparentNetworkIPResolution` der Verbindungszeichenfolge auf FALSE festlegen. Weitere Informationen finden Sie unter [Connection timeout issue with .NET Framework 4.6.1 – TransparentNetworkIPResolution](https://blogs.msdn.microsoft.com/dataaccesstechnologies/2016/05/07/connection-timeout-issue-with-net-framework-4-6-1-transparentnetworkipresolution/) (Verbindungstimeout-Problem mit .NET Framework 4.6.1 – TransparentNetworkIPResolution).
 
-Wenn Sie einen Datenbankbenutzer erstellen, erhält dieser Benutzer die Berechtigung **VERBINDEN** und kann sich als Mitglied der Rolle **ÖFFENTLICH** mit dieser Datenbank verbinden. Anfänglich stehen dem Benutzer nur die Berechtigungen zur Verfügung, die der Rolle **ÖFFENTLICH** gewährt wurden, sowie sämtliche Berechtigungen, die Azure AD-Gruppen erteilt wurden, denen der Benutzer angehört. Nachdem Sie einen Azure AD-basierten eigenständigen Datenbankbenutzer bereitgestellt haben, können Sie dem Benutzer zusätzliche Berechtigungen gewähren. Die Vorgehensweise ist hierbei mit der Berechtigungszuweisung für alle weiteren Benutzertypen identisch. Typischerweise gewähren Sie Datenbankrollen die gewünschten Berechtigungen, und weisen diesen Rollen anschließend Benutzer zu. Weitere Informationen finden Sie unter [Erste Schritte mit Berechtigungen für die Datenbank-Engine](http://social.technet.microsoft.com/wiki/contents/articles/4433.database-engine-permission-basics.aspx). Weitere Informationen zu besonderen SQL-Datenbankrollen finden Sie unter [Verwalten von Datenbanken und Anmeldungen in Azure SQL-Datenbank](sql-database-manage-logins.md).
+Wenn Sie einen Datenbankbenutzer erstellen, erhält dieser Benutzer die Berechtigung **VERBINDEN** und kann sich als Mitglied der Rolle **ÖFFENTLICH** mit dieser Datenbank verbinden. Anfänglich stehen dem Benutzer nur die Berechtigungen zur Verfügung, die der Rolle **ÖFFENTLICH** gewährt wurden, sowie sämtliche Berechtigungen, die Azure AD-Gruppen erteilt wurden, denen der Benutzer angehört. Nachdem Sie einen Azure AD-basierten eigenständigen Datenbankbenutzer bereitgestellt haben, können Sie dem Benutzer zusätzliche Berechtigungen gewähren. Die Vorgehensweise ist hierbei mit der Berechtigungszuweisung für alle weiteren Benutzertypen identisch. Typischerweise gewähren Sie Datenbankrollen die gewünschten Berechtigungen, und weisen diesen Rollen anschließend Benutzer zu. Weitere Informationen finden Sie unter [Erste Schritte mit Berechtigungen für die Datenbank-Engine](https://social.technet.microsoft.com/wiki/contents/articles/4433.database-engine-permission-basics.aspx). Weitere Informationen zu besonderen SQL-Datenbankrollen finden Sie unter [Verwalten von Datenbanken und Anmeldungen in Azure SQL-Datenbank](sql-database-manage-logins.md).
 Ein Verbunddomänen-Benutzerkonto, das als externer Benutzer in eine verwaltete Domäne importiert wird, muss die Identität der verwalteten Domäne verwenden.
 
 > [!NOTE]
@@ -354,7 +354,7 @@ Weitere Informationen finden Sie im [SQL Server Security Blog](https://blogs.msd
 
 ### <a name="sqlcmd"></a>sqlcmd
 
-Die folgenden Anweisungen stellen eine Verbindung mithilfe von Version 13.1 von SQLCMD her, die im [Download Center](http://go.microsoft.com/fwlink/?LinkID=825643)verfügbar ist.
+Die folgenden Anweisungen stellen eine Verbindung mithilfe von Version 13.1 von SQLCMD her, die im [Download Center](https://go.microsoft.com/fwlink/?LinkID=825643)verfügbar ist.
 
 ```cmd
 sqlcmd -S Target_DB_or_DW.testsrv.database.windows.net  -G  

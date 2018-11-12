@@ -11,22 +11,22 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/31/2018
+ms.date: 10/29/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: cb2b4bdee445587b32516c8db869170ab067b8d3
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: c94ecc223c4e2c0533c23e58823bb203064ceef6
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49406856"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50250453"
 ---
 # <a name="troubleshooting-errors-during-synchronization"></a>Beheben von Fehlern während der Synchronisierung
 Fehler können auftreten, wenn Identitätsdaten aus Windows Server Active Directory (AD DS) mit Azure Active Directory (Azure AD) synchronisiert werden. Dieser Artikel bietet einen Überblick über verschiedene Fehlertypen, die während der Synchronisierung auftreten können, einige der möglichen Szenarios, die solche Fehler verursachen, und Möglichkeiten, diese Fehler zu beheben. In diesem Artikel werden die häufigsten Fehlertypen behandelt, daher sind eventuell nicht alle möglichen Fehler enthalten.
 
  In diesem Artikel wird vorausgesetzt, dass der Leser mit den zugrunde liegenden [Designkonzepten von Azure AD und Azure AD Connect](plan-connect-design-concepts.md) vertraut ist.
 
-Mit der neuesten Version von Azure AD Connect \(August 2016 oder höher\) ist nun ein Bericht der Synchronisierungsfehler im [Azure-Portal](https://aka.ms/aadconnecthealth) als Teil von Azure AD Connect Health für die Synchronisierung verfügbar.
+Mit der neuesten Version von Azure AD Connect, \(August 2016 oder höher\), ist nun ein Bericht der Synchronisierungsfehler im [Azure-Portal](https://aka.ms/aadconnecthealth) als Teil von Azure AD Connect Health für die Synchronisierung verfügbar.
 
 Ab 1. September 2016 wird das Feature [Azure Active Directory Resilienz bei doppelten Attributen](how-to-connect-syncservice-duplicate-attribute-resiliency.md) standardmäßig für alle *neuen* Azure Active Directory-Mandanten aktiviert. Dieses Feature wird in den kommenden Monaten automatisch für bereits bestehende Mandanten aktiviert.
 
@@ -219,6 +219,29 @@ Wenn ein Attribut die maximal zulässigen Grenzwerte für Größe, Länge oder A
 
 ### <a name="how-to-fix"></a>So behebt man den Fehler
 1. Stellen Sie sicher, dass das Attribut, das den Fehler verursacht, innerhalb der zulässigen Einschränkungen ist.
+
+## <a name="existing-admin-role-conflict"></a>Konflikt mit vorhandener Administratorrolle
+
+### <a name="description"></a>BESCHREIBUNG
+Ein **Konflikt mit vorhandener Administratorrolle** tritt bei einem Benutzerobjekt während der Synchronisierung auf, wenn dieses Benutzerobjekt:
+
+- administrative Berechtigungen aufweist und
+- denselben „UserPrincipalName“ wie ein vorhandenes Azure AD-Objekt besitzt.
+
+Azure AD Connect darf keinen Soft Match eines Benutzerobjekts aus dem lokalen AD mit einem Benutzerobjekt in Azure AD vornehmen, dem eine Administratorrolle zugewiesen ist.  Weitere Informationen finden Sie unter [Auffüllung des UserPrincipalName-Attributs in Azure AD](plan-connect-userprincipalname.md).
+
+![Vorhandener Administrator](media/tshoot-connect-sync-errors/existingadmin.png)
+
+
+### <a name="how-to-fix"></a>So behebt man den Fehler
+Führen Sie einen der folgenden Schritte aus, um dieses Problem zu beheben:
+
+
+- Ändern Sie den „UserPrincipalName“ in einen Wert, der nicht dem eines Administratorbenutzers in Azure AD entspricht – hierdurch wird ein neuer Benutzer in Azure AD mit übereinstimmendem „UserPrincipalName“ erstellt.
+- Entfernen Sie die Administratorrolle von dem Administratorbenutzer in Azure AD, wodurch ein Soft Match zwischen dem lokalen Benutzerobjekt und dem vorhandenen Azure AD-Benutzerobjekt ermöglicht wird.
+
+>[!NOTE]
+>Sie können die Administratorrolle dem vorhandenen Benutzerobjekt erneut zuweisen, nachdem der Soft Match zwischen dem lokalen Benutzerobjekt und dem Azure AD-Benutzerobjekt abgeschlossen ist.
 
 ## <a name="related-links"></a>Verwandte Links
 * [In Active Directory-Verwaltungscenter nach Active Directory-Objekten suchen](https://technet.microsoft.com/library/dd560661.aspx)

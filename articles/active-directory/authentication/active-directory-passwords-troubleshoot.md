@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 668882b8b39052c3c8e7d7b72c881a64c5c05a10
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 044a3bae75cb385e7a3542b920e0cb3b5bcedcd0
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49321797"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51233625"
 ---
 # <a name="troubleshoot-self-service-password-reset"></a>Behandeln von Problemen mit der Self-Service-Kennwortzurücksetzung
 
@@ -99,7 +99,7 @@ Eine bewährte Methode bei der Problembehandlung für das Kennwortrückschreiben
 | Code | Name oder Meldung | BESCHREIBUNG |
 | --- | --- | --- |
 | 6329 | BAIL: MMS(4924) 0x80230619: “A restriction prevents the password from being changed to the current one specified.” (BAIL: MMS(4924) 0x80230619: Eine Einschränkung verhindert, dass das Kennwort in die aktuelle Angabe geändert wird.) | Dieses Ereignis tritt auf, wenn der Dienst für das Kennwortrückschreiben versucht, ein Kennwort für Ihr lokales Verzeichnis festzulegen, das die in der Domäne geltenden Anforderungen im Hinblick auf Alter, Verlauf, Komplexität oder Filterung für Kennwörter nicht erfüllt. <br> <br> Wenn Sie ein Mindestkennwortalter festgelegt haben und das Kennwort kürzlich geändert wurde, können Sie das Kennwort erst wieder ändern, wenn es das für Ihre Domäne festgelegte Kennwortalter erreicht hat. Zu Testzwecken sollte das Mindestalter auf 0 festgelegt werden. <br> <br> Wenn Sie Anforderungen für den Kennwortverlauf festgelegt haben, müssen Sie ein Kennwort auswählen, das die letzten *n* Male nicht verwendet wurde, wobei *n* für die Einstellung des Kennwortverlaufs steht. Wenn Sie ein Kennwort auswählen, das die letzten *n* Male verwendet wurde, tritt ein Fehler auf. Zu Testzwecken sollte der Kennwortverlauf auf 0 festgelegt werden. <br> <br> Wenn Anforderungen an die Kennwortkomplexität gelten, werden diese erzwungen, wenn der Benutzer versucht, ein Kennwort zu ändern oder zurückzusetzen. <br> <br> Wenn Sie Kennwortfilter aktiviert haben und ein Benutzer versucht, ein Kennwort auszuwählen, das nicht den Filterkriterien entspricht, tritt bei der Kennwortänderung oder -zurücksetzung ein Fehler auf. |
-| 6329 | MMS(3040): admaexport.cpp(2837): Die LDAP-Kennwortrichtliniensteuerung ist auf dem Server nicht vorhanden. | Dieses Problem tritt auf, wenn die Steuerung „LDAP_SERVER_POLICY_HINTS_OID“ (1.2.840.113556.1.4.2066) auf den DCs nicht aktiviert ist. Die Steuerung muss aktiviert werden, um das Kennwortrückschreiben-Feature verwenden zu können. Hierzu müssen die DCs mindestens über Windows Server 2008 (mit dem neuesten SP) verfügen. Falls Ihre Domänencontroller mit 2008 (vor R2) betrieben werden, müssen Sie auch den [Hotfix KB2386717](http://support.microsoft.com/kb/2386717) anwenden. |
+| 6329 | MMS(3040): admaexport.cpp(2837): Die LDAP-Kennwortrichtliniensteuerung ist auf dem Server nicht vorhanden. | Dieses Problem tritt auf, wenn die Steuerung „LDAP_SERVER_POLICY_HINTS_OID“ (1.2.840.113556.1.4.2066) auf den DCs nicht aktiviert ist. Die Steuerung muss aktiviert werden, um das Kennwortrückschreiben-Feature verwenden zu können. Hierzu müssen die DCs mindestens über Windows Server 2008 (mit dem neuesten SP) verfügen. Falls Ihre Domänencontroller mit 2008 (vor R2) betrieben werden, müssen Sie auch den [Hotfix KB2386717](https://support.microsoft.com/kb/2386717) anwenden. |
 | HR 8023042 | Synchronization Engine returned an error hr=80230402, message=An attempt to get an object failed because there are duplicated entries with the same anchor. (Das Synchronisierungsmodul hat einen Fehler zurückgegeben: hr=80230402, message=Fehler beim Abrufen eines Objekts aufgrund von doppelten Einträgen mit dem gleichen Anker.) | Dieser Fehler tritt auf, wenn die gleiche Benutzer-ID in mehreren Domänen aktiviert ist. So tritt er beispielsweise auf, wenn Sie Konto- und Ressourcengesamtstrukturen synchronisieren und dabei in den einzelnen Gesamtstrukturen die gleiche Benutzer-ID vorhanden und aktiviert ist. <br> <br> Der Fehler kann auch auftreten, wenn Sie ein nicht eindeutiges Ankerattribut (etwa einen Alias oder UPN) verwenden und sich zwei Benutzer dieses Ankerattribut teilen. <br> <br> Stellen Sie zur Behebung dieses Problems sicher, dass kein Benutzer in Ihren Domänen doppelt vorhanden ist und für jeden Benutzer ein eindeutiges Ankerattribut verwendet wird. |
 
 ### <a name="if-the-source-of-the-event-is-passwordresetservice"></a>Ereignisquelle „PasswordResetService“
@@ -215,7 +215,7 @@ Es empfiehlt sich, vor diesem Schritt zunächst die beiden zuvor beschriebenen S
 > Falls Sie die integrierten Synchronisierungsregeln angepasst haben, *sichern Sie diese, bevor Sie mit dem Upgrade fortfahren, und stellen Sie die Anpassungen nach dem Upgrade manuell wieder bereit*.
 >
 
-1. Laden Sie die neueste Version von Azure AD Connect aus dem [Microsoft Download Center](http://go.microsoft.com/fwlink/?LinkId=615771) herunter.
+1. Laden Sie die neueste Version von Azure AD Connect aus dem [Microsoft Download Center](https://go.microsoft.com/fwlink/?LinkId=615771) herunter.
 1. Da Sie Azure AD Connect bereits installiert haben, müssen Sie ein direktes Upgrade Ihrer Azure AD Connect-Installation auf die aktuelle Version durchführen.
 1. Führen Sie das heruntergeladene Paket aus, und folgen Sie den Bildschirmanweisungen zum Aktualisieren Ihres Azure AD Connect-Computers.
 

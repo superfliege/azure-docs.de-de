@@ -12,12 +12,12 @@ ms.date: 09/18/2018
 ms.author: lizross
 ms.reviewer: elkuzmen
 ms.custom: it-pro
-ms.openlocfilehash: 59743df45cf2c7810404d9e6c636790c2855cf74
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 77c2247281fde4aa2b67388464b386b276fe6437
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50023116"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51233336"
 ---
 # <a name="how-to-add-your-custom-domain-name-using-the-azure-active-directory-portal"></a>Hinzufügen Ihres benutzerdefinierten Domänennamens über das Azure Active Directory-Portal
 Jeder neue Azure AD-Mandant verfügt über einen anfänglichen Domänennamen im Format „*domänenname*.onmicrosoft.com“. Der anfängliche Domänenname kann nicht geändert oder gelöscht werden, Sie können der Liste jedoch die Namen Ihrer Organisation hinzufügen. Durch das Hinzufügen von benutzerdefinierten Domänennamen können Sie Benutzernamen erstellen, die Ihren Benutzern vertraut sind, beispielsweise *alain@contoso.com*.
@@ -33,7 +33,7 @@ Nachdem Sie Ihren Domänennamen erhalten haben, können Sie Ihr erstes Azure AD-
     ![Screenshot des Azure-Portals](media/active-directory-access-create-new-tenant/azure-ad-portal.png)
 
     >[!TIP]
-    > Wenn Sie planen, Ihre lokale Windows Server AD mit Azure AD in einen Verbund aufzunehmen, müssen Sie das Kontrollkästchen **Ich möchte diese Domäne für einmaliges Anmelden bei meinem lokalen Active Directory konfigurieren** aktivieren, wenn Sie zum Synchronisieren Ihrer Verzeichnisse das Tool Azure AD Connect ausführen. Sie müssen den Domänennamen, den Sie für den Verbund mit Ihrem lokalen Verzeichnis im Schritt **Azure AD-Domäne** des Assistenten auswählen, außerdem registrieren. In [dieser Anleitung](../hybrid/how-to-connect-install-custom.md#verify-the-azure-ad-domain-selected-for-federation) wird veranschaulicht, wie der Schritt im Assistenten aussieht. Falls Sie nicht über das Azure AD Connect-Tool verfügen, können Sie es [hier herunterladen](http://go.microsoft.com/fwlink/?LinkId=615771).
+    > Wenn Sie planen, Ihre lokale Windows Server AD mit Azure AD in einen Verbund aufzunehmen, müssen Sie das Kontrollkästchen **Ich möchte diese Domäne für einmaliges Anmelden bei meinem lokalen Active Directory konfigurieren** aktivieren, wenn Sie zum Synchronisieren Ihrer Verzeichnisse das Tool Azure AD Connect ausführen. Sie müssen den Domänennamen, den Sie für den Verbund mit Ihrem lokalen Verzeichnis im Schritt **Azure AD-Domäne** des Assistenten auswählen, außerdem registrieren. In [dieser Anleitung](../hybrid/how-to-connect-install-custom.md#verify-the-azure-ad-domain-selected-for-federation) wird veranschaulicht, wie der Schritt im Assistenten aussieht. Falls Sie nicht über das Azure AD Connect-Tool verfügen, können Sie es [hier herunterladen](https://go.microsoft.com/fwlink/?LinkId=615771).
 
 2. Erstellen Sie Ihr neues Verzeichnis, indem Sie den Schritten unter [Create a new tenant for your organization](active-directory-access-create-new-tenant.md#create-a-new-tenant-for-your-organization) (Erstellen eines neuen Mandanten für Ihre Organisation) folgen.
 

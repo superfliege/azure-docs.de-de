@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: juliako
-ms.openlocfilehash: 43e2b2b7f398e8adce0760678c6f0a5208c24c34
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: d485195b868b6cbca587c736ac02663491742cdb
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50240527"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51236873"
 ---
 # <a name="azure-media-services-error-codes"></a>Azure Media Services-Fehlercodes
 Wenn Sie Microsoft Azure Media Services verwenden, erhalten Sie möglicherweise HTTP-Fehlercodes vom Dienst, abhängig von Problemen wie dem Ablaufen von Authentifizierungstoken und Aktionen, die in Media Services nicht unterstützt werden. Im Folgenden werden die **HTTP-Fehlercodes** aufgelistet, die von Media Services zurückgegeben werden könnten, sowie mögliche Ursachen für diese Fehlercodes.  
@@ -117,7 +117,7 @@ Zum Behandeln dieses Fehlers wird empfohlen, die exponentielle Backoff-Wiederhol
 > 
 
 ## <a name="see-also"></a>Siehe auch
-[Media Services Management Error Codes (Media Services Management-Fehlercodes)](http://msdn.microsoft.com/library/windowsazure/dn167016.aspx)
+[Media Services Management Error Codes (Media Services Management-Fehlercodes)](https://msdn.microsoft.com/library/windowsazure/dn167016.aspx)
 
 ## <a name="next-steps"></a>Nächste Schritte
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

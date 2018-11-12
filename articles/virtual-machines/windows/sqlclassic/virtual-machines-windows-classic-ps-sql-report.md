@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/11/2017
 ms.author: maghan
-ms.openlocfilehash: 32be46fb0c41909ce8a8014b13843970555d366f
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 32be473ab93231805cdae097e3e984a2e74da973
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42146513"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51233081"
 ---
 # <a name="use-powershell-to-create-an-azure-vm-with-a-native-mode-report-server"></a>Verwenden von PowerShell zum Erstellen einer Azure-VM mit einem Berichtsserver im einheitlichen Modus
 > [!IMPORTANT] 
@@ -90,7 +90,7 @@ In diesem Thema wird beschrieben und sind Anleitungen enthalten, wie ein SQL Ser
 
 Wenn Sie HTTPS auf dem virtuellen Computer verwenden möchten, benötigen Sie ein vertrauenswürdiges SSL-Zertifikat. Abhängig von Ihrem Szenario können Sie eine der beiden folgenden Methoden verwenden:
 
-* Ein gültiges SSL-Zertifikat, das von einer Zertifizierungsstelle ausgegeben wurde und von Microsoft als vertrauenswürdig eingestuft ist. Die Stammzertifikate einer Zertifizierungsstelle müssen über das Microsoft-Programm für Stammzertifikate (Microsoft Root Certificate Program) verteilt werden. Weitere Informationen zu diesem Programm finden Sie unter [Windows and Windows Phone 8 SSL Root Certificate Program (Member CAs)](http://social.technet.microsoft.com/wiki/contents/articles/14215.windows-and-windows-phone-8-ssl-root-certificate-program-member-cas.aspx) (SSL-Programm für Stammzertifikate für Windows und Windows Phone 8 (Mitgliedszertifizierungsstelle)) und [Introduction to The Microsoft Root Certificate Program](http://social.technet.microsoft.com/wiki/contents/articles/3281.introduction-to-the-microsoft-root-certificate-program.aspx) (Einführung in das Microsoft-Programm für Stammzertifikate).
+* Ein gültiges SSL-Zertifikat, das von einer Zertifizierungsstelle ausgegeben wurde und von Microsoft als vertrauenswürdig eingestuft ist. Die Stammzertifikate einer Zertifizierungsstelle müssen über das Microsoft-Programm für Stammzertifikate (Microsoft Root Certificate Program) verteilt werden. Weitere Informationen zu diesem Programm finden Sie unter [Windows and Windows Phone 8 SSL Root Certificate Program (Member CAs)](https://social.technet.microsoft.com/wiki/contents/articles/14215.windows-and-windows-phone-8-ssl-root-certificate-program-member-cas.aspx) (SSL-Programm für Stammzertifikate für Windows und Windows Phone 8 (Mitgliedszertifizierungsstelle)) und [Introduction to The Microsoft Root Certificate Program](https://social.technet.microsoft.com/wiki/contents/articles/3281.introduction-to-the-microsoft-root-certificate-program.aspx) (Einführung in das Microsoft-Programm für Stammzertifikate).
 * Ein selbstsigniertes Zertifikat. Selbstsignierte Zertifikate werden für Produktionsumgebungen nicht empfohlen.
 
 ### <a name="to-use-a-certificate-created-by-a-trusted-certificate-authority-ca"></a>So verwenden Sie ein Zertifikat, das von einer vertrauenswürdigen Zertifizierungsstelle erstellt wurde
@@ -597,7 +597,7 @@ In der folgende Tabelle sind einige der Optionen zusammengefasst, mit denen vorh
 > Um die Kosten für Ihre virtuellen Azure-Computer zu minimieren, fahren Sie die virtuellen Computer über das Azure-Portal herunter, wenn diese nicht verwendet werden. Wenn Sie einen virtuellen Computer über dessen Windows-Energieoptionen herunterfahren, werden Ihnen weiterhin dieselben Kosten für den virtuellen Computer in Rechnung gestellt. Wenn Sie die Kosten verringern möchten, müssen Sie den virtuellen Computer im Azure-Portal herunterfahren. Wenn Sie den virtuellen Computer nicht mehr benötigen, sollten Sie den virtuellen Computer und die zugehörigen VHD-Dateien löschen, um Speicherkosten zu vermeiden. Weitere Informationen finden Sie im Abschnitt „FAQ“ unter [Virtual Machine – Preisdetails](https://azure.microsoft.com/pricing/details/virtual-machines/).
 
 ## <a name="more-information"></a>Weitere Informationen
-### <a name="resources"></a>angeben
+### <a name="resources"></a>Ressourcen
 * Ähnliche Inhalte hinsichtlich einer Einzelserver-Bereitstellung von SQL Server Business Intelligence und SharePoint 2013 finden Sie unter [Verwenden von PowerShell zum Erstellen eines virtuellen Azure-Computers mit SQL Server BI und SharePoint 2013](https://blogs.technet.microsoft.com/ptsblog/2013/10/24/use-powershell-to-create-a-windows-azure-vm-with-sql-server-bi-and-sharepoint-2013/).
 * Allgemeine Informationen hinsichtlich Bereitstellungen von SQL Server Business Intelligence auf virtuellen Azure-Computern finden Sie unter [SQL Server Business Intelligence auf virtuellen Azure-Computern](virtual-machines-windows-classic-ps-sql-bi.md).
 * Weitere Informationen zu den Kosten von Azure-Features finden Sie auf der Registerkarte „Virtuelle Computer“ von [Azure-Preisrechner](https://azure.microsoft.com/pricing/calculator/?scenario=virtual-machines).
