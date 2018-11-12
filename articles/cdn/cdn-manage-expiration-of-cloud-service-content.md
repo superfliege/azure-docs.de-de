@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/15/2018
 ms.author: magattus
-ms.openlocfilehash: d4ae0c4d5924fab8fcdaf1b4da5c8183a3a5fd0f
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 19f928d854618a5e29841dc45d7846faf7fb83b4
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49092472"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51253124"
 ---
 # <a name="manage-expiration-of-web-content-in-azure-cdn"></a>Verwalten des Ablaufs von Webinhalten in Azure CDN
 > [!div class="op_single_selector"]
@@ -109,7 +109,7 @@ Das folgende Beispiel einer XML-Konfigurationsdatei veranschaulicht, wie Sie das
 Um das **cacheControlMaxAge**-Attribut zu verwenden, müssen Sie den Wert für das **cacheControlMode**-Attribut auf `UseMaxAge` festlegen. Diese Einstellung führt dazu, dass der HTTP-Header und die HTTP-Anweisung `Cache-Control: max-age=<nnn>` zur Antwort hinzugefügt werden. Das Format des timespan-Werts für das **cacheControlMaxAge**-Attribut ist `<days>.<hours>:<min>:<sec>`. Der Wert wird in Sekunden konvertiert und als Wert der `Cache-Control` `max-age`-Anweisung verwendet. Weitere Informationen zum `<clientCache>`-Element finden Sie unter [Clientcache<clientCache>](http://www.iis.net/ConfigReference/system.webServer/staticContent/clientCache).  
 
 ## <a name="setting-cache-control-headers-programmatically"></a>Programmgesteuertes Festlegen von Cache-Control-Headern
-Bei ASP.NET-Anwendungen steuern Sie das Verhalten von CDN beim Zwischenspeichern mithilfe der **HttpResponse.Cache**-Eigenschaft der .NET-API programmgesteuert. Informationen zur **HttpResponse.Cache**-Eigenschaft finden Sie unter [HttpResponse.Cache-Eigenschaft](http://msdn.microsoft.com/library/system.web.httpresponse.cache.aspx) und [HttpCachePolicy-Klasse](http://msdn.microsoft.com/library/system.web.httpcachepolicy.aspx).  
+Bei ASP.NET-Anwendungen steuern Sie das Verhalten von CDN beim Zwischenspeichern mithilfe der **HttpResponse.Cache**-Eigenschaft der .NET-API programmgesteuert. Informationen zur **HttpResponse.Cache**-Eigenschaft finden Sie unter [HttpResponse.Cache-Eigenschaft](https://msdn.microsoft.com/library/system.web.httpresponse.cache.aspx) und [HttpCachePolicy-Klasse](https://msdn.microsoft.com/library/system.web.httpcachepolicy.aspx).  
 
 Führen Sie diese Schritte aus, um Anwendungsinhalt in ASP.NET programmgesteuert zwischenzuspeichern:
    1. Stellen Sie sicher, dass der Inhalt als für die Zwischenspeicherung geeignet gekennzeichnet ist, indem Sie `HttpCacheability` auf `Public` festlegen. 
@@ -132,6 +132,6 @@ Sie können die Einstellungen für die Gültigkeitsdauer Ihres Webinhalts ganz e
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Lesen Sie ausführliche Informationen zum **clientCache**-Element.](http://www.iis.net/ConfigReference/system.webServer/staticContent/clientCache)
-* [Lesen Sie die Dokumentation für die **HttpResponse.Cache**-Eigenschaft.](http://msdn.microsoft.com/library/system.web.httpresponse.cache.aspx) 
-* [Lesen Sie die Dokumentation für die **HttpCachePolicy-Klasse**](http://msdn.microsoft.com/library/system.web.httpcachepolicy.aspx).  
+* [Lesen Sie die Dokumentation für die **HttpResponse.Cache**-Eigenschaft.](https://msdn.microsoft.com/library/system.web.httpresponse.cache.aspx) 
+* [Lesen Sie die Dokumentation für die **HttpCachePolicy-Klasse**](https://msdn.microsoft.com/library/system.web.httpcachepolicy.aspx).  
 * [Informationen zu Cachekonzepten](cdn-how-caching-works.md)

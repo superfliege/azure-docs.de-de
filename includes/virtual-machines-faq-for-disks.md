@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/03/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: c0045af02b307bff686d47dd8fc4aabb290711a4
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: dadff0dc501c20ef525fdfb7578cb391f29b3302
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49400422"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51264335"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Häufig gestellte Fragen zu Azure-IaaS-VM-Datenträgern sowie zu verwalteten und nicht verwalteten Premium-Datenträgern
 
@@ -292,7 +292,7 @@ Es gibt keinen Nachteil bei der Verwendung von TRIM auf Azure-Datenträger auf P
 
 **Welche ist die maximale Größe verwalteter Datenträger, die für Betriebssystemdatenträger und Datenträger für Daten unterstützt wird?**
 
-Der Partitionstyp, den Azure für einen Betriebssystemdatenträger unterstützt, ist der Master Boot Record (MBR). Das MBR-Format unterstützt eine Datenträgergröße von bis zu 2 TiB. Die maximale Größe, die Azure für einen Betriebssystemdatenträger unterstützt, beträgt 2 TiB. Für verwaltete Datenträger unterstützt Azure bis zu 32 TiB. Größen verwalteter Datenträger von mehr als 4 TiB befinden sich in der Vorschau. Weitere Informationen finden Sie in unserem [Blogbeitrag](http://aka.ms/azure-large-disk-32TB-preview-blog).
+Der Partitionstyp, den Azure für einen Betriebssystemdatenträger unterstützt, ist der Master Boot Record (MBR). Das MBR-Format unterstützt eine Datenträgergröße von bis zu 2 TiB. Die maximale Größe, die Azure für einen Betriebssystemdatenträger unterstützt, beträgt 2 TiB. Für verwaltete Datenträger unterstützt Azure bis zu 32 TiB. Größen verwalteter Datenträger von mehr als 4 TiB befinden sich in der Vorschau. Weitere Informationen finden Sie in unserem [Blogbeitrag](https://aka.ms/azure-large-disk-32TB-preview-blog).
 
 **Welche ist die maximale Größe nicht verwalteter Datenträger, die für Betriebssystemdatenträger und Datenträger für Daten unterstützt wird?**
 
@@ -309,7 +309,7 @@ Sie müssen Ihre vorhandenen Azure-Tools nicht aktualisieren, um Datenträger, d
 |Azure-Tools      | Unterstützte Versionen                                |
 |-----------------|---------------------------------------------------|
 |Azure PowerShell | Versionsnummer 4.1.0: Version Juni 2017 oder höher|
-|Azure-CLI V1     | Versionsnummer 0.10.13: Version Mai 2017 oder höher|
+|Azure-CLI V1     | Versionsnummer 0.10.13: Version Mai 2017 oder höher|
 |Azure CLI v2     | Versionsnummer 2.0.12: Release von Juli 2017 oder höher|
 |AzCopy           | Versionsnummer 6.1.0: Version Juni 2017 oder höher|
 

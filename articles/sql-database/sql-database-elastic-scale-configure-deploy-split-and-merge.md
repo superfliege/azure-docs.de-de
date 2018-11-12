@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 10/05/2018
-ms.openlocfilehash: 3aca6e29f7701a09fa54e778da180a0ead55deb2
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 253a50f50e94888a5d764e51a4ff49cc0c1424c6
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50240731"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51253532"
 ---
 # <a name="deploy-a-split-merge-service-to-move-data-between-sharded-databases"></a>Bereitstellen eines Split-Merge-Diensts, um Daten zwischen Sharddatenbanken zu verschieben
 
@@ -63,7 +63,7 @@ Ausführliche Anweisungen zum Konfigurieren der Dienstsicherheit finden Sie unte
 Für eine einfache Testbereitstellung, die für dieses Tutorial geeignet ist, führen Sie einige wenige Konfigurationsschritte aus, um den Dienst zu aktivieren und auszuführen. Durch diese Schritte werden nur ein Computer und Konto für die Kommunikation mit dem Dienst aktiviert.
 
 ### <a name="create-a-self-signed-certificate"></a>Erstellen eines selbstsignierten Zertifikats
-Erstellen Sie ein neues Verzeichnis, und führen Sie aus diesem Verzeichnis über ein Fenster [Developer-Eingabeaufforderung für Visual Studio](http://msdn.microsoft.com/library/ms229859.aspx) folgenden Befehl aus:
+Erstellen Sie ein neues Verzeichnis, und führen Sie aus diesem Verzeichnis über ein Fenster [Developer-Eingabeaufforderung für Visual Studio](https://msdn.microsoft.com/library/ms229859.aspx) folgenden Befehl aus:
 
    ```
     makecert ^

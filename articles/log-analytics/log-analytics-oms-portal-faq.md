@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: e644f8f0db9e310e8a3c77ebd04de160bcb7fa28
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 442371ffc63e32906d9faafc3b803bb5e6386905
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51008911"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51283443"
 ---
 # <a name="common-questions-for-transition-from-oms-portal-to-azure-portal-for-log-analytics-users"></a>Häufig gestellte Fragen zum Übergang vom OMS-Portal zum Azure-Portal für Log Analytics-Benutzer
 Log Analytics verwendete zunächst ein eigenes Portal, das OMS-Portal, um die Konfiguration zu verwalten und gesammelte Daten zu analysieren.  Alle Funktionen dieses Portals wurden in das Azure-Portal übernommen, wo sie weiter entwickelt werden.
@@ -35,7 +35,7 @@ Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim 
 ![Log Analytics-Arbeitsbereich](media/log-analytics-oms-portal-faq/log-analytics.png)
 
 ## <a name="how-do-i-manage-permissions"></a>Wie verwalte ich Berechtigungen?
-Wenn Sie keinen Zugriff auf Ihren Log Analytics-Arbeitsbereich im Azure-Portal haben, müssen Sie Ihre Berechtigungen über den [rollenbasierten Zugriff von Azure](../active-directory/role-based-access-control-configure.md) konfigurieren. Weitere Informationen zum Verwalten von Berechtigungen für den Arbeitsbereich finden Sie unter [Verwalten von Arbeitsbereichen](../log-analytics/log-analytics-manage-access.md#manage-accounts-and-users). Informationen zur Verwaltung von Berechtigungen für Warnungen finden Sie unter [Erste Schritte mit Rollen, Berechtigungen und Sicherheit in Azure Monitor](../monitoring-and-diagnostics/monitoring-roles-permissions-security.md).
+Wenn Sie keinen Zugriff auf Ihren Log Analytics-Arbeitsbereich im Azure-Portal haben, müssen Sie Ihre Berechtigungen über den [rollenbasierten Zugriff von Azure](../role-based-access-control/role-assignments-portal.md) konfigurieren. Weitere Informationen zum Verwalten von Berechtigungen für den Arbeitsbereich finden Sie unter [Verwalten von Arbeitsbereichen](../log-analytics/log-analytics-manage-access.md#manage-accounts-and-users). Informationen zur Verwaltung von Berechtigungen für Warnungen finden Sie unter [Erste Schritte mit Rollen, Berechtigungen und Sicherheit in Azure Monitor](../monitoring-and-diagnostics/monitoring-roles-permissions-security.md).
 
 ## <a name="how-do-i-create-a-new-workspace"></a>Wie erstelle ich einen neuen Arbeitsbereich? 
 Klicken Sie im Azure-Portal in der Liste der Arbeitsbereiche auf **Hinzufügen**.  Sämtliche Informationen finden Sie unter [Erstellen eines Log Analytics-Arbeitsbereichs im Azure-Portal](../log-analytics/log-analytics-quick-create-workspace.md).
