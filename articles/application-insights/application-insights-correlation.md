@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 04/09/2018
 ms.reviewer: sergkanz
 ms.author: mbullwin
-ms.openlocfilehash: d9b6f5c08eed5efceafc71feaf654ad8f4fcafa0
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 76e55dabf2ce6da4ecf03f1ebbe065cf595872cc
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49341122"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51037922"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Telemetriekorrelation in Application Insights
 
@@ -156,7 +156,7 @@ public class CloudRoleNameInitializer extends WebTelemetryInitializerBase {
     }
   }
 ```
-Über die [Gerätekontextklasse](https://docs.microsoft.com/et-ee/java/api/com.microsoft.applicationinsights.extensibility.context._device_context) (nur dieses Telemetrieelement wird gekennzeichnet)
+Über die [Gerätekontextklasse](https://docs.microsoft.com/java/api/com.microsoft.applicationinsights.extensibility.context._device_context) (nur dieses Telemetrieelement wird gekennzeichnet)
 ```Java
 telemetry.getContext().getDevice().setRoleName("My Component Name");
 ```
