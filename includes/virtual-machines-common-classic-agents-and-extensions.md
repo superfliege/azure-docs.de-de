@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: b83e1ef752fede446b41153e3d486a872c2707f3
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 9158e6bfe07fc5d06b0685d77eff26644b594a8b
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50227221"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51264421"
 ---
 VM-Erweiterungen helfen Ihnen bei folgenden Aufgaben:
 
@@ -42,10 +42,10 @@ Der VM-Agent wird in den folgenden Situationen aktiviert:
       $vm.VM.ProvisionGuestAgent = $TRUE
       Update-AzureVM –Name $name –VM $vm.VM –ServiceName $svc
 
-* Wenn Sie ein Image eines virtuellen Computers mit einem installierten VM-Agent erstellen. Sobald das Image mit dem VM-Agent vorhanden ist, können Sie es in Azure hochladen. Laden Sie für einen virtuellen Windows-Computer die [MSI-Datei des Windows-VM-Agents](http://go.microsoft.com/fwlink/?LinkID=394789) herunter, und installieren Sie den VM-Agent. Installieren Sie den VM-Agent bei einem virtuellen Linux-Computer über das GitHub-Repository unter <https://github.com/Azure/WALinuxAgent>. Weitere Informationen zum Installieren des VM-Agents unter Linux finden Sie im [Benutzerhandbuch für den Azure Linux-VM-Agent](../articles/virtual-machines/extensions/agent-linux.md).
+* Wenn Sie ein Image eines virtuellen Computers mit einem installierten VM-Agent erstellen. Sobald das Image mit dem VM-Agent vorhanden ist, können Sie es in Azure hochladen. Laden Sie für einen virtuellen Windows-Computer die [MSI-Datei des Windows-VM-Agents](https://go.microsoft.com/fwlink/?LinkID=394789) herunter, und installieren Sie den VM-Agent. Installieren Sie den VM-Agent bei einem virtuellen Linux-Computer über das GitHub-Repository unter <https://github.com/Azure/WALinuxAgent>. Weitere Informationen zum Installieren des VM-Agents unter Linux finden Sie im [Benutzerhandbuch für den Azure Linux-VM-Agent](../articles/virtual-machines/extensions/agent-linux.md).
 
 > [!NOTE]
-> In PaaS heißt der VM-Agent **WindowsAzureGuestAgent** und ist auf virtuellen Computern mit der Web- und Workerrolle immer verfügbar. (Weitere Informationen finden Sie unter [Azure Role Architecture](http://blogs.msdn.com/b/kwill/archive/2011/05/05/windows-azure-role-architecture.aspx) (Azure-Rollenarchitektur).) Der VM-Agent für Rollen-VMs kann jetzt den Clouddienst-VMs auf die gleiche Weise Erweiterungen hinzufügen wie den dauerhaften virtuellen Computern. Der größte Unterschied zwischen VM-Erweiterungen für Rollen-VMs und dauerhafte virtuelle Computer besteht darin, wann die VM-Erweiterungen hinzugefügt werden. Bei Rollen-VMs werden Erweiterungen zuerst dem Clouddienst und anschließend den Bereitstellungen mit diesem Clouddienst hinzugefügt.
+> In PaaS heißt der VM-Agent **WindowsAzureGuestAgent** und ist auf virtuellen Computern mit der Web- und Workerrolle immer verfügbar. (Weitere Informationen finden Sie unter [Azure Role Architecture](https://blogs.msdn.com/b/kwill/archive/2011/05/05/windows-azure-role-architecture.aspx) (Azure-Rollenarchitektur).) Der VM-Agent für Rollen-VMs kann jetzt den Clouddienst-VMs auf die gleiche Weise Erweiterungen hinzufügen wie den dauerhaften virtuellen Computern. Der größte Unterschied zwischen VM-Erweiterungen für Rollen-VMs und dauerhafte virtuelle Computer besteht darin, wann die VM-Erweiterungen hinzugefügt werden. Bei Rollen-VMs werden Erweiterungen zuerst dem Clouddienst und anschließend den Bereitstellungen mit diesem Clouddienst hinzugefügt.
 >
 > Verwenden Sie das Cmdlet [Get-AzureServiceAvailableExtension](https://msdn.microsoft.com/library/azure/dn722498.aspx) zum Auflisten aller verfügbaren Rollen-VM-Erweiterungen.
 >

@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 45a6bd349169265ef411d01a3601a27551847633
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 37dc96cf965181c5acba74449c684a08035e37b2
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50226445"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51264056"
 ---
 Dieser Artikel enthält die am häufigsten gestellten Fragen zu virtuellen Azure-Computern, die mit dem klassischen Bereitstellungsmodell erstellt wurden.
 
@@ -22,9 +22,9 @@ Ja. Anweisungen zur Migration Sie unter:
 ## <a name="what-can-i-run-on-an-azure-vm"></a>Was kann ich auf einem virtuellen Azure-Computer ausführen?
 Alle Abonnenten können Serversoftware auf einem virtuellen Azure-Computer ausführen. Sie können die neuesten Versionen von Windows Server sowie eine Vielzahl von Linux-Distributionen ausführen. Supportinformationen finden Sie unter:
 
-• Virtuelle Windows-Computer: [Unterstützung für Microsoft-Serversoftware für virtuelle Azure-Computer](http://go.microsoft.com/fwlink/p/?LinkId=393550)
+• Virtuelle Windows-Computer: [Unterstützung für Microsoft-Serversoftware für virtuelle Azure-Computer](https://go.microsoft.com/fwlink/p/?LinkId=393550)
 
-• Virtuelle Linux-Computer: [Linux auf von Azure unterstützten Verteilungen](http://go.microsoft.com/fwlink/p/?LinkId=393551)
+• Virtuelle Linux-Computer: [Linux auf von Azure unterstützten Verteilungen](https://go.microsoft.com/fwlink/p/?LinkId=393551)
 
 Für Windows-Client-Images stehen bestimmte Versionen von Windows 7 und Windows 8.1 für MSDN-Abonnenten von Azure-Vorteilen und Abonnenten von MSDN-Entwicklung und Tests mit nutzungsbasierter Zahlung für Entwicklungs- und Testzwecke bereit. Weitere Informationen, u.a. Anleitungen und Einschränkungen, finden Sie unter [Windows Client images for MSDN subscribers](https://azure.microsoft.com/blog/2014/05/29/windows-client-images-on-azure/) (Windows-Clientimages für MSDN-Abonnenten).
 
@@ -38,10 +38,10 @@ Affinitätsgruppenfeatures wurden im Azure Resource Manager-Bereitstellungsmodel
 ## <a name="how-much-storage-can-i-use-with-a-virtual-machine"></a>Wie viel Speicher kann mit einem virtuellen Computer verwendet werden?
 Jeder Datenträger kann bis zu 1 TB groß sein. Die Anzahl der Datenträger, die Sie verwenden können, hängt von der Größe des virtuellen Computers ab. Ausführliche Informationen finden Sie unter [Größen für virtuelle Computer](../articles/virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-Azure-Speicherkonten bieten Speicher für Betriebssystem-Datenträger und Datenträger für Daten. Bei jedem Datenträger handelt es sich um eine VHD-Datei, die als Seiten-Blob gespeichert wird. Ausführliche Informationen zu Preisen finden Sie unter [Speicherpreisübersicht](http://go.microsoft.com/fwlink/p/?LinkId=396819).
+Azure-Speicherkonten bieten Speicher für Betriebssystem-Datenträger und Datenträger für Daten. Bei jedem Datenträger handelt es sich um eine VHD-Datei, die als Seiten-Blob gespeichert wird. Ausführliche Informationen zu Preisen finden Sie unter [Speicherpreisübersicht](https://go.microsoft.com/fwlink/p/?LinkId=396819).
 
 ## <a name="which-virtual-hard-disk-types-can-i-use"></a>Welche Arten von virtuellen Festplatten kann ich verwenden?
-Azure unterstützt nur virtuelle Festplatten mit fester Größe im VHD-Format. Wenn Sie einen Datenträger im VHDX-Format in Azure verwenden möchten, konvertieren Sie ihn zuerst mit dem Hyper-V-Manager oder dem Cmdlet [convert-VHD](http://go.microsoft.com/fwlink/p/?LinkId=393656) . Laden Sie danach mit dem Cmdlet [Add-AzureVHD](https://msdn.microsoft.com/library/azure/dn495173.aspx) (im Dienstverwaltungsmodus) die virtuelle Festplatte in ein Speicherkonto in Azure hoch, damit Sie sie mit virtuellen Computern verwenden können.
+Azure unterstützt nur virtuelle Festplatten mit fester Größe im VHD-Format. Wenn Sie einen Datenträger im VHDX-Format in Azure verwenden möchten, konvertieren Sie ihn zuerst mit dem Hyper-V-Manager oder dem Cmdlet [convert-VHD](https://go.microsoft.com/fwlink/p/?LinkId=393656) . Laden Sie danach mit dem Cmdlet [Add-AzureVHD](https://msdn.microsoft.com/library/azure/dn495173.aspx) (im Dienstverwaltungsmodus) die virtuelle Festplatte in ein Speicherkonto in Azure hoch, damit Sie sie mit virtuellen Computern verwenden können.
 
 * Anweisungen für Linux finden Sie unter [Erstellen und Hochladen einer virtuellen Festplatte, die das Linux-Betriebssystem enthält](../articles/virtual-machines/linux/classic/create-upload-vhd-classic.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json).
 
@@ -50,7 +50,7 @@ In vielerlei Hinsicht ähneln sie Hyper-V-Computer der "ersten Generation", sie 
 
 * Azure stellt keinen Konsolenzugriff auf einem virtuellen Computer bereit. Es gibt keine Möglichkeit, auf einen virtuellen Computer zuzugreifen, bevor dieser vollständig gestartet wurde.
 * Virtuelle Azure-Computer der meisten [Größen](../articles/virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) verfügen nur über einen einzelnen virtuellen Netzwerkadapter und können daher auch nur eine einzelne externe IP-Adresse besitzen. (Bei den Größen A8 und A9 wird ein zweiter Netzwerkadapter für die Anwendungskommunikation zwischen Instanzen in begrenzten Szenarien verwendet.)
-* Virtuelle Azure-Computer unterstützen keine Hyper-V-VM-Funktionen der zweiten Generation. Ausführliche Informationen zu diesen Funktionen finden Sie unter [Spezifikationen des virtuellen Computers für Hyper-V in Windows Server 2012 R2](http://technet.microsoft.com/library/dn592184.aspx) sowie unter [Virtuelle Computer der Generation 2 (Übersicht)](https://technet.microsoft.com/library/dn282285.aspx).
+* Virtuelle Azure-Computer unterstützen keine Hyper-V-VM-Funktionen der zweiten Generation. Ausführliche Informationen zu diesen Funktionen finden Sie unter [Spezifikationen des virtuellen Computers für Hyper-V in Windows Server 2012 R2](https://technet.microsoft.com/library/dn592184.aspx) sowie unter [Virtuelle Computer der Generation 2 (Übersicht)](https://technet.microsoft.com/library/dn282285.aspx).
 
 ## <a name="can-these-virtual-machines-use-my-existing-on-premises-networking-infrastructure"></a>Können diese virtuellen Computer meine vorhandene lokale Netzwerkinfrastruktur verwenden?
 Für virtuelle Computer, die im klassischen Bereitstellungsmodus erstellt wurden, können Sie Azure Virtual Network verwenden, um Ihre vorhandene Infrastruktur zu erweitern. Dieser Ansatz entspricht dem Einrichten einer Filiale. Sie können in Azure virtuelle private Netzwerke (VPN) bereitstellen und verwalten und diese sicher mit Ihrer IT-Infrastruktur vor Ort verbinden. Weitere Informationen finden Sie unter [Virtuelle Netzwerke im Überblick](../articles/virtual-network/virtual-networks-overview.md).
@@ -85,7 +85,7 @@ Der Begriff des Upgrades bezeichnet im Allgemeinen die Umstellung auf eine neuer
 * Verwenden Sie für virtuelle Linux-Computer die für die Distribution geeigneten Paketverwaltungstools und -verfahren.
 * Für einen virtuellen Windows-Computer müssen Sie den Server z. B. mit den Windows Server-Migrationstools migrieren. Versuchen Sie nicht, das Gastbetriebssystem zu aktualisieren, während es sich in Azure befindet. Dies wird nicht unterstützt, da der Zugriff auf den virtuellen Computer verloren gehen kann. Wenn während des Upgrades Probleme auftreten, können Sie möglicherweise keine Remotedesktopsitzung mehr starten und die Probleme nicht beheben.
 
-Allgemeine Informationen zu Tools und Verfahren zum Migrieren von Windows Server finden Sie unter [Migrieren von Rollen und Features zu Windows Server](http://go.microsoft.com/fwlink/p/?LinkId=396940).
+Allgemeine Informationen zu Tools und Verfahren zum Migrieren von Windows Server finden Sie unter [Migrieren von Rollen und Features zu Windows Server](https://go.microsoft.com/fwlink/p/?LinkId=396940).
 
 ## <a name="whats-the-default-user-name-and-password-on-the-virtual-machine"></a>Wie lauten der Standardbenutzername und das Kennwort auf dem virtuellen Computer?
 Die von Azure bereitgestellten Images verfügen nicht über einen vorkonfigurierten Benutzernamen und ein Kennwort. Wenn Sie die virtuellen Computer mit einem dieser Images erstellen, müssen Sie einen Benutzernamen und ein Kennwort angeben, mit denen Sie sich beim virtuellen Computer anmelden.
@@ -100,8 +100,8 @@ Weitere Details:
 ## <a name="can-azure-run-anti-virus-on-my-virtual-machines"></a>Kann Azure Antivirenprogramme auf meinen virtuellen Computern ausführen?
 Azure bietet verschiedene Optionen für Virenschutz-Softwarelösungen. Ihre Verwaltung ist jedoch Ihnen überlassen. Sie benötigen z.B. möglicherweise ein separates Abonnement für Antischadsoftware und müssen entscheiden, wann Scans ausgeführt und Updates installiert werden. Sie können die Unterstützung für Antiviruslösungen mit einer VM-Erweiterung für Microsoft Antimalware, Symantec Endpoint Protection oder TrendMicro Deep Security Agent beim Erstellen eines virtuellen Windows-Computers oder zu einem späteren Zeitpunkt hinzufügen. Für die Erweiterungen für Symantec und TrendMicro können Sie ein kostenloses Testabonnement für einen begrenzten Zeitraum oder ein vorhandenes Enterprise-Abonnement verwenden. Microsoft Antimalware ist kostenlos. Einzelheiten dazu finden Sie hier:
 
-* [Gewusst wie: Installieren und Konfigurieren von Symantec Endpoint Protection auf einem virtuellen Azure-Computer](http://go.microsoft.com/fwlink/p/?LinkId=404207)
-* [Installieren und Konfigurieren von Trend Micro Deep Security als Dienst auf einem virtuellen Azure-Computer](http://go.microsoft.com/fwlink/p/?LinkId=404206)
+* [Gewusst wie: Installieren und Konfigurieren von Symantec Endpoint Protection auf einem virtuellen Azure-Computer](https://go.microsoft.com/fwlink/p/?LinkId=404207)
+* [Installieren und Konfigurieren von Trend Micro Deep Security als Dienst auf einem virtuellen Azure-Computer](https://go.microsoft.com/fwlink/p/?LinkId=404206)
 * [Deploying Antimalware Solutions on Azure Virtual Machines (Bereitstellen von Antischadsoftware-Lösungen auf virtuellen Azure-Computern, in englischer Sprache)](https://azure.microsoft.com/blog/2014/05/13/deploying-antimalware-solutions-on-azure-virtual-machines/)
 
 ## <a name="what-are-my-options-for-backup-and-recovery"></a>Welche Optionen sind für Sicherung und Wiederherstellung verfügbar?

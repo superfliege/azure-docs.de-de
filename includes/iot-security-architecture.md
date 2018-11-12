@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/07/2018
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: ac51dc8b7cbfa08ebca201c42c0c82356b7d5b6c
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 7407bed746f863a5daecfc98d2df89175ff35b5f
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50254555"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51264270"
 ---
 # <a name="internet-of-things-security-architecture"></a>Internet der Dinge – Sicherheitsarchitektur
 
@@ -252,7 +252,7 @@ Jedes Gerät und Bereichsgateway verfügt über eine Art von Speicher (temporär
 
 Ein Cloudgateway ist ein System, das die Remotekommunikation von und zu Geräten oder Bereichsgateways von mehreren unterschiedlichen Standorten über das öffentliche Netzwerk ermöglicht. Dies erfolgt normalerweise auf Grundlage eines cloudbasierten Systems für die Steuerung und Datenanalyse bzw. eines Partnerverbunds dieser Systeme. In einigen Fällen ist mit einem Cloudgateway der unmittelbare Zugriff von Terminals wie Tablets oder Smartphones auf Geräte für spezielle Zwecke möglich. Im hier beschriebenen Kontext ist mit „Cloud“ ein dediziertes Datenverarbeitungssystem gemeint, das nicht wie die verbundenen Geräte oder Bereichsgateways an einen Standort gebunden ist und bei dem der physische Zugang durch betriebliche Maßnahmen verhindert wird. Es geht nicht unbedingt um eine „Public Cloud“-Infrastruktur. Ein Cloudgateway kann auch einem Overlay für die Netzwerkvirtualisierung zugeordnet werden, um das Cloudgateway und alle verbundenen Geräte oder Bereichsgateways gegenüber anderem Netzwerk-Datenverkehr zu isolieren. Das Cloudgateway selbst ist weder ein Gerätesteuerungssystem noch eine Verarbeitungs- oder Speichereinrichtung für Gerätedaten. Diese Einrichtungen sind über Schnittstellen mit dem Cloudgateway verbunden. Die Cloudgateway-Zone enthält das Cloudgateway selbst sowie alle Bereichsgateways und Geräte, die direkt oder indirekt damit verbunden sind.
 
-Beim Cloudgateway handelt es sich meist um eine speziell erstellte Software, die als Dienst ausgeführt wird und verfügbar gemachte Endpunkte aufweist, mit denen das Bereichsgateway und die Geräte Verbindungen herstellen können. Aus diesem Grund muss beim Entwerfen schon von Anfang an die Sicherheit im Blick behalten werden. Halten Sie sich an den [SDL](http://www.microsoft.com/sdl)-Prozess zum Entwerfen und Erstellen dieses Diensts.
+Beim Cloudgateway handelt es sich meist um eine speziell erstellte Software, die als Dienst ausgeführt wird und verfügbar gemachte Endpunkte aufweist, mit denen das Bereichsgateway und die Geräte Verbindungen herstellen können. Aus diesem Grund muss beim Entwerfen schon von Anfang an die Sicherheit im Blick behalten werden. Halten Sie sich an den [SDL](https://www.microsoft.com/sdl)-Prozess zum Entwerfen und Erstellen dieses Diensts.
 
 #### <a name="services-zone"></a>Dienstzone
 

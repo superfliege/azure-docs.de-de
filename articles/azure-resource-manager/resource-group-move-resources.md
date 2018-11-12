@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: tomfitz
-ms.openlocfilehash: e99d5d36fa46e9972e706d580e4dfb1d5f9e8bbc
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: e2d1ccbc6532da3600c952236c3904c9e55294c8
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50093824"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51279415"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement
 
@@ -112,7 +112,7 @@ Wenden Sie sich in folgenden Fällen an den [Support](https://portal.azure.com/#
 
 ## <a name="validate-move"></a>Überprüfen der Verschiebung
 
-Der [Vorgang zum Überprüfen der Verschiebung](/rest/api/resources/resources/resources_validatemoveresources) ermöglicht Ihnen, Ihr Verschiebungsszenario zu testen, ohne tatsächlich Ressourcen zu verschieben. Verwenden Sie diesen Vorgang, um zu ermitteln, ob die Verschiebung erfolgreich ausgeführt wird. Um diesen Vorgang ausführen zu können, benötigen Sie Folgendes:
+Der [Vorgang zum Überprüfen der Verschiebung](/rest/api/resources/resources/validatemoveresources) ermöglicht Ihnen, Ihr Verschiebungsszenario zu testen, ohne tatsächlich Ressourcen zu verschieben. Verwenden Sie diesen Vorgang, um zu ermitteln, ob die Verschiebung erfolgreich ausgeführt wird. Um diesen Vorgang ausführen zu können, benötigen Sie Folgendes:
 
 * Name der Quellressourcengruppe
 * Ressourcen-ID der Zielressourcengruppe

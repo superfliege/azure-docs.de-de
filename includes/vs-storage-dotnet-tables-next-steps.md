@@ -1,6 +1,6 @@
 Nachdem Sie sich nun mit den Grundlagen von Azure Table Storage vertraut gemacht haben, folgen Sie diesen Links, um zu erfahren, wie komplexere Speicheraufgaben ausgeführt werden.
 
-* Vollständige Informationen zu verfügbaren APIs finden Sie in der Referenzdokumentation zum Tabellenspeicherdienst unter [Referenz zur Azure Storage-Clientbibliothek für .NET](http://go.microsoft.com/fwlink/?LinkID=390731) .
+* Vollständige Informationen zu verfügbaren APIs finden Sie in der Referenzdokumentation zum Tabellenspeicherdienst unter [Referenz zur Azure Storage-Clientbibliothek für .NET](https://go.microsoft.com/fwlink/?LinkID=390731) .
 * Unter [Was ist das Azure WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki)
 * Weitere Informationen zu zusätzlichen Optionen für das Speichern von Daten in Azure finden Sie in den anderen Featureleitfäden.
   * Informationen zum Arbeiten mit Azure Storage-Blobs finden Sie unter [Erste Schritte mit Azure Blob Storage mithilfe von .NET](../articles/storage/blobs/storage-dotnet-how-to-use-blobs.md).

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/28/2018
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: bf73f64cc1e1789b770d7fae5f62e0ec27425263
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.openlocfilehash: 8c8f3cd67186450fdcf65c177ea0353d297a3b01
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42915204"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51263991"
 ---
 ## <a name="generate-the-certificate-signing-request-file"></a>Erstellen der Zertifikatsignierungsanforderungs-Datei
 
@@ -41,7 +41,7 @@ Als Nächstes registrieren Sie Ihre App bei Apple, aktivieren Pushbenachrichtigu
 
 Um Pushbenachrichtigungen an eine iOS-App senden zu können, muss diese bei Apple registriert und auch für Pushbenachrichtigungen angemeldet werden.  
 
-1. Falls Sie Ihre App noch nicht registriert haben, navigieren Sie im Apple Developer Center zum [iOS-Bereitstellungsportal](http://go.microsoft.com/fwlink/p/?LinkId=272456). Melden Sie sich mit Ihrer Apple-ID an, klicken Sie auf **Identifiers**, dann auf **App IDs** und schließlich auf das Symbol **+**, um eine neue App zu registrieren.
+1. Falls Sie Ihre App noch nicht registriert haben, navigieren Sie im Apple Developer Center zum [iOS-Bereitstellungsportal](https://go.microsoft.com/fwlink/p/?LinkId=272456). Melden Sie sich mit Ihrer Apple-ID an, klicken Sie auf **Identifiers**, dann auf **App IDs** und schließlich auf das Symbol **+**, um eine neue App zu registrieren.
 
     ![iOS-Bereitstellungsportal: Seite mit App-IDs](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-ios-appids.png)
 
@@ -111,7 +111,7 @@ Um Pushbenachrichtigungen an eine iOS-App senden zu können, muss diese bei Appl
 
 ## <a name="create-a-provisioning-profile-for-the-app"></a>Erstellen eines Bereitstellungsprofils für die App
 
-1. Klicken Sie im [iOS-Bereitstellungsportal](http://go.microsoft.com/fwlink/p/?LinkId=272456) auf **Provisioning Profiles** > **All**, und klicken Sie schließlich auf die Plusschaltfläche (**+**), um ein neues Profil zu erstellen. Der Assistent **Add iOS Provisioning Profile** wird angezeigt:
+1. Klicken Sie im [iOS-Bereitstellungsportal](https://go.microsoft.com/fwlink/p/?LinkId=272456) auf **Provisioning Profiles** > **All**, und klicken Sie schließlich auf die Plusschaltfläche (**+**), um ein neues Profil zu erstellen. Der Assistent **Add iOS Provisioning Profile** wird angezeigt:
 
     ![Bereitstellungsprofilliste](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-new-provisioning-profile.png)
 

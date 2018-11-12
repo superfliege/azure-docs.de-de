@@ -8,12 +8,12 @@ ms.assetid: 5c7e209a-458c-4bb4-96bb-7ed178f9528a
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
-ms.openlocfilehash: 9aaba38b7dc0cd2bf659c9d91c9d7660bd17a6dd
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: f08825c17c1ba61fc09edc1d8f2c226af8d4266f
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47409183"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51231463"
 ---
 # <a name="azure-data-catalog-frequently-asked-questions"></a>Häufig gestellte Fragen zu Azure Data Catalog
 Dieser Artikel bietet Antworten auf häufig gestellte Fragen im Zusammenhang mit dem Azure Data Catalog-Dienst.
@@ -99,7 +99,7 @@ Sie können ein Objekt aus Data Catalog löschen, indem Sie das Objekt im Portal
 Ein Experte ist eine Person, die über fundiertes Wissen zu einem Datenobjekt verfügt. Ein Objekt kann mehrere Experten haben. Ein Experte muss nicht unbedingt der Besitzer eines Objekts sein. Es handelt sich lediglich um eine Person, die weiß, wie die Daten verwendet werden können und sollten.
 
 ## <a name="how-do-i-share-information-with-the-data-catalog-team-if-i-encounter-problems"></a>Wie stelle ich Informationen für das Data Catalog-Team bereit, wenn Probleme auftreten?
-Nutzen Sie bitte [Azure Data Catalog-Forum](http://go.microsoft.com/fwlink/?LinkID=616424&clcid=0x409), um Probleme zu melden, Informationen zu teilen und Fragen zu stellen.
+Nutzen Sie bitte [Azure Data Catalog-Forum](https://go.microsoft.com/fwlink/?LinkID=616424&clcid=0x409), um Probleme zu melden, Informationen zu teilen und Fragen zu stellen.
 
 ## <a name="does-the-catalog-work-with-another-data-source-that-im-interested-in"></a>Funktioniert der Katalog mit einer anderen Datenquelle, die mich interessiert?
 Wir arbeiten aktiv daran, Data Catalog weitere Datenquellen hinzuzufügen. Wenn Sie für eine bestimmte Datenquelle Unterstützung wünschen, können Sie diese in den [Azure-Foren für Feedback zu Data Catalog](https://feedback.azure.com/forums/906052-data-catalog) vorschlagen (oder eine ggf. bereits vorhandene Anfrage unterstützen).
@@ -127,4 +127,4 @@ Wählen Sie die Datenobjekte in Data Catalog aus, und klicken Sie auf die Schalt
 Zum Aktualisieren der Metadaten für Datenobjekte, die im Katalog bereits registriert sind, registrieren Sie die Datenquelle mit den Datenobjekten einfach erneut. Alle Änderungen in der Datenquelle, z.B. hinzugefügte oder entfernte Spalten in Tabellen oder Ansichten, werden im Katalog aktualisiert, aber alle von Benutzern angegebenen Anmerkungen werden beibehalten.
 
 ## <a name="my-question-isnt-answered-here-where-can-i-go-for-answers"></a>Meine Frage wird hier nicht beantwortet wird. Wo finde ich Antworten?
-Besuchen Sie das [Azure Data Catalog-Forum](http://go.microsoft.com/fwlink/?LinkID=616424&clcid=0x409). Fragen, die dort gestellt werden, werden in diesen Artikel aufgenommen.
+Besuchen Sie das [Azure Data Catalog-Forum](https://go.microsoft.com/fwlink/?LinkID=616424&clcid=0x409). Fragen, die dort gestellt werden, werden in diesen Artikel aufgenommen.

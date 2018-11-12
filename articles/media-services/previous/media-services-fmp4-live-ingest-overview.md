@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2017
 ms.author: cenkd;juliako
-ms.openlocfilehash: 88c152872ef8b571b8bc3e3f06ce486943e724b1
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: c6ff386913ed66cf4f74cb577bb8ca58e6932ada
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39443527"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51228877"
 ---
 # <a name="azure-media-services-fragmented-mp4-live-ingest-specification"></a>Spezifikation der Fragmented MP4-Echtzeiterfassung für Azure Media Services
 Diese Spezifikation beschreibt das Protokoll und Format für die fragmentierte MP4-basierte Livestreamingerfassung für Azure Media Services. Media Services bietet einen Livestreamingdienst, mit dem Kunden Liveereignisse und Sendungsinhalte mit Azure als Cloudplattform in Echtzeit streamen können. In diesem Dokument werden auch optimale Verfahren zur Erstellung hoch redundanter und stabiler Mechanismen der Echtzeiterfassung beschrieben.
@@ -38,7 +38,7 @@ In der folgenden schematischen Darstellung ist die allgemeine Architektur des Li
 ![Erfassungsdatenfluss][image1]
 
 ## <a name="3-bitstream-format--iso-14496-12-fragmented-mp4"></a>3. Bitstromformat – ISO 14496-12, fragmentiertes MP4
-Das in diesem Dokument beschriebene Übertragungsformat zur Erfassung des Livestreamings basiert auf [ISO-14496-12]. Eine ausführliche Erläuterung des fragmentierten MP4-Formats und der Erweiterungen für Video-on-Demand-Dateien und die Livestreamingerfassung finden Sie unter [[MS-SSTR]](http://msdn.microsoft.com/library/ff469518.aspx).
+Das in diesem Dokument beschriebene Übertragungsformat zur Erfassung des Livestreamings basiert auf [ISO-14496-12]. Eine ausführliche Erläuterung des fragmentierten MP4-Formats und der Erweiterungen für Video-on-Demand-Dateien und die Livestreamingerfassung finden Sie unter [[MS-SSTR]](https://msdn.microsoft.com/library/ff469518.aspx).
 
 ### <a name="live-ingest-format-definitions"></a>Definitionen für Liveerfassungsformat
 Es folgt eine Liste der speziellen Formatdefinitionen, die für die Echtzeiterfassung in Azure Media Services gelten:

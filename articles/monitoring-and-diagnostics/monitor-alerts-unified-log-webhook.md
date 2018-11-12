@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 8201e1569bd3030a205ab0ec5adb8a1f39a0ecc3
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 0ee38eb32886c050eb87b2d6ed91252ee7bcfea0
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50960734"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51280701"
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>Webhookaktionen für Protokollwarnungsregeln
 Wenn eine [Protokollwarnung in Azure erstellt](alert-log.md) wird, haben Sie die Möglichkeit [mithilfe von Aktionsgruppen die Ausführung von Aktionen zu konfigurieren](monitoring-action-groups.md).  Dieser Artikel beschreibt die verschiedenen verfügbaren Webhookaktionen und Details zur Konfiguration des benutzerdefinierten JSON-basierten Webhooks.
@@ -79,7 +79,7 @@ Um Suchergebnisse in eine benutzerdefinierte Nutzlast einzuschließen, muss **In
 Dieser Abschnitt zeigt eine Beispielnutzlast für den Webhook für Protokollwarnungen, einschließlich Fällen mit Standardnutzlast und benutzerdefinierter Nutzlast.
 
 > [!NOTE]
-> Zum Gewährleisten der Abwärtskompatibilität ist die Standard-Webhooknutzlast für Warnungen mit Azure Log Analytics identisch mit der [Log Analytics-Warnungsverwaltung](../log-analytics/log-analytics-alerts-creating.md). Für Protokollwarnungen mit [Application Insights](../application-insights/app-insights-analytics.md) basiert die Standard-Webhooknutzlast aber auf dem Aktionsgruppenschema.
+> Zum Gewährleisten der Abwärtskompatibilität ist die Standard-Webhooknutzlast für Warnungen mit Azure Log Analytics identisch mit der [Log Analytics-Warnungsverwaltung](../monitoring-and-diagnostics/alert-metric.md). Für Protokollwarnungen mit [Application Insights](../application-insights/app-insights-analytics.md) basiert die Standard-Webhooknutzlast aber auf dem Aktionsgruppenschema.
 
 ### <a name="standard-webhook-for-log-alerts"></a>Standardwebhook für Protokollwarnungen 
 In beiden Beispielen wurde eine Pseudonutzlast mit nur zwei Spalten und zwei Zeilen angegeben.

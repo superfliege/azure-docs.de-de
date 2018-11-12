@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: cafb3ec2da335165a3b66c18d83930008c6d72e5
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 3f3b20ac21c0a871d3baad50098700b7cf3b3b9c
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33782539"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51235393"
 ---
 # <a name="upload-vhd-file-to-labs-storage-account-using-microsoft-azure-storage-explorer"></a>Hochladen einer VHD-Datei in das Speicherkonto eines Labs mithilfe des Microsoft Azure Storage-Explorers
 
@@ -35,7 +35,7 @@ Die folgenden Schritte führen Sie durch das Hochladen einer VHD-Datei in DevTes
 
 1. Rufen Sie den Namen des Labspeicherkontos im Azure-Portal ab:
 
-    1. Melden Sie sich auf dem [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040)an.
+    1. Melden Sie sich beim [Azure-Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) an.
     
     1. Wählen Sie **Alle Dienste** und dann in der Liste die Option **DevTest Labs**.
     

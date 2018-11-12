@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/25/2018
 ms.author: magoedte
-ms.openlocfilehash: 8cca69109f07cbcffe2a5d796262e51fc9233cc5
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: 8591e723cad1c44e9cc8d00008485e6b304fc4d3
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50914684"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51283364"
 ---
 # <a name="how-to-onboard-the-azure-monitor-for-vms-preview"></a>Onboardingmethoden für den Azure Monitor für VMs (Vorschau)
 In diesem Artikel wird beschrieben, wie Sie Azure Monitor for VMs für die Überwachung der Betriebssystemintegrität Ihrer Azure-VMs und für die Erkennung und Zuordnung von Anwendungsabhängigkeiten der auf ihnen ggf. gehosteten Anwendungen einrichten.  
@@ -337,7 +337,7 @@ Wenn Sie die Azure CLI verwenden möchten, müssen Sie sie zuerst installieren u
     ```
 
 ### <a name="enable-using-azure-policy"></a>Aktivieren mithilfe von Azure Policy
-Um Azure Monitor für VMs im großen Maßstab in einer Weise bereitzustellen, die durchgehende Compliance und automatische Aktivierung für neu bereitgestellte VMs sicherstellt, wird die Verwendung von [Azure Policy](../azure-policy/azure-policy-introduction.md) empfohlen. Diese Richtlinien:
+Um Azure Monitor für VMs im großen Maßstab in einer Weise bereitzustellen, die durchgehende Compliance und automatische Aktivierung für neu bereitgestellte VMs sicherstellt, wird die Verwendung von [Azure Policy](../governance/policy/overview.md) empfohlen. Diese Richtlinien:
 
 * Bereitstellen von Log Analytics-Agent und Dependency-Agent 
 * Complianceergebnisse werden gemeldet 

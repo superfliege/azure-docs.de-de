@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 10/27/2016
 ms.author: sumuth
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: f145e879dab4484d647cf8ea21582958df0f0cd4
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: cce6555c71829110781a6dd13757078b105dbb41
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43665721"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51230630"
 ---
 # <a name="faq-for-cleardb-mysql-databases-with-azure-app-service"></a>Häufig gestellte Fragen zur Verwendung von ClearDB MySql-Datenbanken mit Azure App Service
 In diesem Dokument werden häufige gestellte Fragen zu Verwendung und Erwerb von ClearDB MySQL-Datenbanken für Azure-Web-Apps beantwortet.
@@ -106,7 +106,7 @@ Indirekte EA-Kunden finden ihre Azure Marketplace-Abonnements im Enterprise Port
 Der Zugriff auf Azure Marketplace für Dienste von Drittanbietern kann von Ihren EA-Administratoren für die Azure-Registrierung verwaltet werden. Sie können den Zugriff auf Drittanbieterkäufe über den Store im Enterprise Portal im Abschnitt „Konten“ unter „Konten verwalten“ und „Abonnements“ deaktivieren bzw. erneut aktivieren.
 
 ## <a name="who-do-i-contact-for-questions-about-my-bill-for-cleardb-services-in-my-ea-subscription"></a>An wen wende ich mich bei Fragen zu meiner Rechnung für ClearDB-Dienste in meinem EA-Abonnement?
-Wenden Sie sich an den [Support für EA-Kunden](http://aka.ms/AzureEntSupport) , wenn Sie Fragen zur Abrechnung über Ihre EA-Registrierung haben. Der Supportteam des EA-Portals beantwortet Ihre Fragen und hilft beim Lösen Ihres Problems.
+Wenden Sie sich an den [Support für EA-Kunden](https://aka.ms/AzureEntSupport) , wenn Sie Fragen zur Abrechnung über Ihre EA-Registrierung haben. Der Supportteam des EA-Portals beantwortet Ihre Fragen und hilft beim Lösen Ihres Problems.
 
 ## <a name="more-information"></a>Weitere Informationen
 [Azure Marketplace – häufig gestellte Fragen](https://azure.microsoft.com/marketplace/faq/)

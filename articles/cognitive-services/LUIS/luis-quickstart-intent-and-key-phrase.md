@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 8fa183c22b9b6830c57b0a16b7f5d20ca38e3ef3
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: d6feb24b1e59aee70204d8438f1a4c51f71d1835
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47166519"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51281811"
 ---
 # <a name="tutorial-8-extract-key-phrases-of-utterance"></a>Tutorial 8: Extrahieren von Schlüsselbegriffen einer Äußerung
 In diesem Tutorial verwenden Sie die vordefinierte keyPhrase-Entität, um Schlüsselinhalte aus Äußerungen zu extrahieren. Sie müssen Äußerungen nicht mit vordefinierten Entitäten bezeichnen. Die Entität wird automatisch erkannt.
@@ -37,7 +37,7 @@ Ihre Clientanwendung kann diese Werte zusammen mit anderen extrahierten Entität
 > * Hinzufügen der keyPhrase-Entität 
 > * Trainieren
 > * Veröffentlichen
-> * Abrufen von Absichten und Entitäten von einem Endpunkt
+> * Abrufen von Absichten und Entitäten vom Endpunkt
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
@@ -56,11 +56,11 @@ Wenn Sie nicht über die HumanResources-App aus dem vorhergehenden Tutorial verf
 ## <a name="add-keyphrase-entity"></a>Hinzufügen der keyPhrase-Entität 
 Fügen Sie die vordefinierte keyPhrase-Entität hinzu, um Schlüsselinhalte aus Äußerungen zu extrahieren.
 
-1. [!include[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
+1. [!INCLUDE[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
 2. Wählen Sie im linken Menü die Option **Entitäten**.
 
-3. Wählen Sie **Manage prebuilt entities** (Vordefinierte Entitäten verwalten) aus.
+3. Wählen Sie **Add prebuilt entity** (Vordefinierte Entität hinzufügen) aus.
 
 4. Klicken Sie im Popupdialogfenster auf **keyPhrase** und anschließend auf **Fertig**. 
 
