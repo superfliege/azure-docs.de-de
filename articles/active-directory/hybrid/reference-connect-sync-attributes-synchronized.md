@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/05/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 9ea901d51403096166b367a1586cb26d2d914e2d
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 08633b52e6b7cfef28635925ad9fcf34e065e9bf
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46306529"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51251797"
 ---
 # <a name="azure-ad-connect-sync-attributes-synchronized-to-azure-active-directory"></a>Azure AD Connect-Synchronisierung: Mit Azure Active Directory synchronisierte Attribute
 In diesem Thema werden die Attribute aufgelistet, die bei der Azure AD Connect-Synchronisierung synchronisiert werden.  
@@ -376,7 +376,7 @@ In diesem Fall beginnen Sie mit der in diesem Thema angegebenen Liste von Attrib
 Diese Gruppe umfasst einen Satz von Attributen. Es handelt sich um die Attribute, die für eine generische Workload oder Anwendung mindestens benötigt werden. Dieser Attributsatz kann für eine oben nicht aufgeführte Workload oder für eine Nicht-Microsoft-App verwendet werden. Der Satz wird explizit für Folgendes verwendet:
 
 * Yammer (nur „Benutzer“ wird genutzt)
-* [Organisationsübergreifende Hybrid-B2B-Zusammenarbeit über Ressourcen wie SharePoint (siehe SharePoint Business to Business Collaboration: Extranet for Partners with Office 365 (SharePoint Business-to-Business-Zusammenarbeit: Extranet für Partner mit Office 365))](http://go.microsoft.com/fwlink/?LinkId=747036)
+* [Organisationsübergreifende Hybrid-B2B-Zusammenarbeit über Ressourcen wie SharePoint (siehe SharePoint Business to Business Collaboration: Extranet for Partners with Office 365 (SharePoint Business-to-Business-Zusammenarbeit: Extranet für Partner mit Office 365))](https://go.microsoft.com/fwlink/?LinkId=747036)
 
 Diese Gruppe umfasst einen Satz von Attributen, die verwendet werden können, wenn das Azure AD-Verzeichnis nicht zur Unterstützung von Office 365, Dynamics oder Intune verwendet wird. Er umfasst eine kleine Gruppe von Kernattributen.
 

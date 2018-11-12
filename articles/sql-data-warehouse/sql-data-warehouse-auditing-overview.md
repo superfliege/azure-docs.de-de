@@ -10,12 +10,12 @@ ms.component: manage
 ms.date: 04/11/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: 18a6234eb56902625fdcc8f150a41b7551d229cc
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 199095c3cffc8df7f9755f1f2c4bb5a1acba3748
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49318536"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51260379"
 ---
 # <a name="auditing-in-azure-sql-data-warehouse"></a>Überwachung in Azure SQL Data Warehouse
 
@@ -150,7 +150,7 @@ Es gibt verschiedene Methoden zum Anzeigen von Blobüberwachungsprotokollen:
 ### <a name="database-level-policy-audit-logs"></a>Überwachungsprotokolle der Richtlinie auf Datenbankebene
 Überwachungsprotokolle auf Datenbankebene werden im Azure-Speicherkonto, das Sie während der Einrichtung ausgewählt haben, in einer einzelnen Azure-Speichertabelle mit dem Präfix **SQLDBAuditLogs** zusammengefasst. Sie können Protokolldateien mithilfe eines Tools wie dem [Azure Storage-Explorer](http://azurestorageexplorer.codeplex.com) anzeigen.
 
-Eine vorkonfigurierte Dashboardberichtvorlage steht als [herunterladbares Excel-Arbeitsblatt](http://go.microsoft.com/fwlink/?LinkId=403540) zur Verfügung, mit dem Sie Protokolldaten schnell analysieren können. Damit Sie die Vorlage für Ihre Überwachungsprotokolle verwenden können, benötigen Sie Excel 2013 oder höher und Power Query, das [hier](http://www.microsoft.com/download/details.aspx?id=39379)heruntergeladen werden kann.
+Eine vorkonfigurierte Dashboardberichtvorlage steht als [herunterladbares Excel-Arbeitsblatt](https://go.microsoft.com/fwlink/?LinkId=403540) zur Verfügung, mit dem Sie Protokolldaten schnell analysieren können. Damit Sie die Vorlage für Ihre Überwachungsprotokolle verwenden können, benötigen Sie Excel 2013 oder höher und Power Query, das [hier](https://www.microsoft.com/download/details.aspx?id=39379)heruntergeladen werden kann.
 
 Die Vorlage enthält fiktionale Beispieldaten, und Sie können Power Query so einrichten, dass das Überwachungsprotokoll direkt aus Ihrem Azure-Speicherkonto importiert wird.
 

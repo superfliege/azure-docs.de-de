@@ -8,12 +8,12 @@ ms.author: yanacai
 ms.reviewer: jasonwhowell
 ms.topic: conceptual
 ms.date: 03/01/2017
-ms.openlocfilehash: ae5334dcb93e34569131ab51dca99c310831082d
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 6a73ef058a76152678099eca3f1bd15590b0b03d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43052086"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238793"
 ---
 # <a name="run-and-test-u-sql-with-azure-data-lake-u-sql-sdk"></a>Ausführen und Testen von U-SQL mit dem Azure Data Lake U-SQL SDK
 
@@ -36,7 +36,7 @@ Für das Data Lake-U-SQL-SDK sind die folgenden Komponenten erforderlich:
 
     ![Windows 10 SDK für lokale Testläufe der Data Lake-Tools für Visual Studio](./media/data-lake-analytics-data-lake-tools-local-run/data-lake-tools-for-visual-studio-local-run-windows-10-sdk.png)
 
-    - Installieren Sie [Data Lake-Tools für Visual Studio](http://aka.ms/adltoolsvs). Die vorkonfigurierten Visual C++- und Windows SDK-Dateien finden Sie unter „C:\Programme (x86)\Microsoft Visual Studio 14.0\Common7\IDE\Extensions\Microsoft\ADL Tools\X.X.XXXX.X\CppSDK“. In diesem Fall findet das lokale U-SQL-Compilerskript diese erforderlichen Komponenten nicht automatisch. Sie müssen für das Skripts den CppSDK-Pfad angeben. Sie können die Dateien an einen anderen Speicherort kopieren oder ohne Änderungen verwenden.
+    - Installieren Sie [Data Lake-Tools für Visual Studio](https://aka.ms/adltoolsvs). Die vorkonfigurierten Visual C++- und Windows SDK-Dateien finden Sie unter „C:\Programme (x86)\Microsoft Visual Studio 14.0\Common7\IDE\Extensions\Microsoft\ADL Tools\X.X.XXXX.X\CppSDK“. In diesem Fall findet das lokale U-SQL-Compilerskript diese erforderlichen Komponenten nicht automatisch. Sie müssen für das Skripts den CppSDK-Pfad angeben. Sie können die Dateien an einen anderen Speicherort kopieren oder ohne Änderungen verwenden.
 
 ## <a name="understand-basic-concepts"></a>Grundlegende Konzepte
 

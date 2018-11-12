@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 9/11/2018
 ms.author: dekapur
-ms.openlocfilehash: 7357577ea7aff467288578673110b1a6dda7ccef
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: c505feb20321d785a86cad0422470aa5c9a4311b
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44391046"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51259087"
 ---
 <a id="preparemachines"></a>
 
@@ -74,7 +74,7 @@ Hier sind einige empfohlene Spezifikationen für jeden Computer aufgeführt, den
 Der Clusteradministrator, der den Cluster bereitstellt und konfiguriert, muss auf jedem Computer [Administratorrechte](https://social.technet.microsoft.com/wiki/contents/articles/13436.windows-server-2012-how-to-add-an-account-to-a-local-administrator-group.aspx) besitzen. Service Fabric kann nicht auf einem Domänencontroller installiert werden.
 
 ## <a name="download-the-service-fabric-standalone-package-for-windows-server"></a>Herunterladen des eigenständigen Service Fabric-Pakets für Windows Server
-[Downloadlink: Service Fabric Standalone Package – Windows Server](http://go.microsoft.com/fwlink/?LinkId=730690). Laden Sie das Paket herunter, und entpacken Sie es entweder auf einem Bereitstellungscomputer, der nicht Teil des Clusters ist, oder auf einem der Computer, die Teil des Clusters sein werden.
+[Downloadlink: Service Fabric Standalone Package – Windows Server](https://go.microsoft.com/fwlink/?LinkId=730690). Laden Sie das Paket herunter, und entpacken Sie es entweder auf einem Bereitstellungscomputer, der nicht Teil des Clusters ist, oder auf einem der Computer, die Teil des Clusters sein werden.
 
 ## <a name="modify-cluster-configuration"></a>Ändern der Clusterkonfiguration
 Um einen eigenständigen Cluster zu erstellen, müssen Sie eine ClusterConfig.json-Datei für die Konfiguration des eigenständigen Clusters erstellen, die die Spezifikation des Clusters beschreibt. Als Grundlage für die Konfigurationsdatei können Sie die Vorlagen verwenden, die Sie unter dem nachfolgenden Link finden. <br>

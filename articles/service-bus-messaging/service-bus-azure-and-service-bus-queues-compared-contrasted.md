@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 09/05/2018
 ms.author: spelluru
-ms.openlocfilehash: f48e9a5600dca1e13d6ee94a675d5bc824915118
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 0254762de49f37c591a7847fe9b40b3ecbabe1bd
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47393960"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51261059"
 ---
 # <a name="storage-queues-and-service-bus-queues---compared-and-contrasted"></a>Storage-Warteschlangen und Service Bus-Warteschlangen – Vergleich und Gegenüberstellung
 In diesem Artikel werden die Unterschiede und Ähnlichkeiten zwischen den beiden Warteschlangentypen analysiert, die zurzeit von Microsoft Azure angeboten werden: Storage-Warteschlangen und Service Bus-Warteschlangen. Mithilfe dieser Informationen können Sie die beiden Technologien vergleichen und abgrenzen und sind in der Lage, besser informierte Entscheidungen darüber zu treffen, welche Lösung Ihre Anforderungen am besten erfüllt.
@@ -70,7 +70,7 @@ In diesem Abschnitt werden einige der grundlegenden Warteschlangenfunktionen ver
 | Reihenfolgengarantie |**Nein** <br/><br>Weitere Informationen finden Sie in der ersten Anmerkung im Abschnitt „Weitere Informationen“.</br> |**Ja – First In, First Out (FIFO)**<br/><br>(durch Verwendung von Messagingsitzungen) |
 | Zustellungsgarantie |**At-Least-Once** |**At-Least-Once**<br/><br/>**At-Most-Once** |
 | Unterstützung für atomare Operationen |**Nein** |**Ja**<br/><br/> |
-| Empfangsverhalten |**Nicht blockierend**<br/><br/>(wird sofort beendet, wenn keine neue Nachricht gefunden wird) |**Blockieren mit/ohne Timeout**<br/><br/>(bietet ein langes Abrufintervall oder die [„Comet-Technik“](http://go.microsoft.com/fwlink/?LinkId=613759))<br/><br/>**Nicht blockierend**<br/><br/>(nur durch die Verwendung von .NET-verwalteter API) |
+| Empfangsverhalten |**Nicht blockierend**<br/><br/>(wird sofort beendet, wenn keine neue Nachricht gefunden wird) |**Blockieren mit/ohne Timeout**<br/><br/>(bietet ein langes Abrufintervall oder die [„Comet-Technik“](https://go.microsoft.com/fwlink/?LinkId=613759))<br/><br/>**Nicht blockierend**<br/><br/>(nur durch die Verwendung von .NET-verwalteter API) |
 | API im Pushstil |**Nein** |**Ja**<br/><br/>[OnMessage](/dotnet/api/microsoft.servicebus.messaging.queueclient.onmessage#Microsoft_ServiceBus_Messaging_QueueClient_OnMessage_System_Action_Microsoft_ServiceBus_Messaging_BrokeredMessage__)- und **OnMessage**-Sitzungs-.NET-API. |
 | Empfangsmodus |**Peek &amp; Lease** |**Peek &amp; Lock**<br/><br/>**Receive &amp; Delete** |
 | Exklusiver Zugriffsmodus |**Leasebasiert** |**Sperrenbasiert** |

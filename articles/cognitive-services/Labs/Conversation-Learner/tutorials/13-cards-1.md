@@ -10,12 +10,12 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 988a2433f098f41bca4796299825293efd4de44b
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: da261beeec4f02dfa7c7cf9071e51dc17cf5c7cd
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39171133"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51254382"
 ---
 # <a name="how-to-use-cards-part-1-of-2"></a>Verwenden von Karten (Teil 1 von 2)
 
@@ -26,7 +26,7 @@ Dieses Tutorial zeigt, wie Sie einfache Karte in Ihrem Bot hinzufügen und verwe
 
 ## <a name="video"></a>Video
 
-[![Tutorial 13 – Vorschau](http://aka.ms/cl-tutorial-13-preview)](http://aka.ms/blis-tutorial-13)
+[![Tutorial 13 – Vorschau](https://aka.ms/cl-tutorial-13-preview)](https://aka.ms/blis-tutorial-13)
 
 ## <a name="requirements"></a>Requirements (Anforderungen)
 Für dieses Tutorial muss der allgemeine Tutorialbot ausgeführt werden.
@@ -53,7 +53,7 @@ Das System geht davon aus, dass Ihre Kartendefinitionen sich in diesem Kartenver
 > Beachten Sie den Textkörper `TextBlock` und den Platzhalter `{{question}}` im Textfeld.
 > Es gibt zwei Schaltflächen zum Übermitteln, für die jeweils ein anderer Text gesendet wird.
 
-### <a name="actions"></a>Actions
+### <a name="actions"></a>Aktionen
 
 Wir haben drei Aktionen erstellt. Wie Sie unten sehen, ist die erste Aktion eine Karte.
 
