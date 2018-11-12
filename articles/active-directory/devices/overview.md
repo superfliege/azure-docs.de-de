@@ -16,12 +16,12 @@ ms.topic: overview
 ms.date: 08/25/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 3baa48113022bed1bdc7caa5854a231334c975af
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: f239b3ef6881f9ea1be043b7d27f061e015ae3be
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47224629"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51037360"
 ---
 # <a name="what-is-device-management-in-azure-active-directory"></a>Worum handelt es sich bei der Geräteverwaltung in Azure Active Directory?
 
@@ -45,7 +45,7 @@ Um ein Gerät über Azure AD zu steuern, haben Sie zwei Möglichkeiten:
 
 Durch **Registrieren** eines Geräts bei Azure AD können Sie die Identität des Geräts verwalten. Wenn ein Gerät registriert wird, stellt Azure AD Device Registration eine Identität für das Gerät bereit, die bei der Anmeldung eines Benutzers bei Azure AD zum Authentifizieren des Geräts dient. Sie können die Identität zum Aktivieren oder Deaktivieren eines Geräts verwenden.
 
-In Kombination mit einer Lösung für die Verwaltung mobiler Geräte, wie z.B. Microsoft Intune, werden die Geräteattribute in Azure AD mit zusätzlichen Informationen über das Gerät aktualisiert. So können Sie Regeln für den bedingten Zugriff erstellen, die erzwingen, dass der Zugriff von Geräten Ihren Standards für Sicherheit und Kompatibilität entspricht. Weitere Informationen zum Registrieren von Geräten in Microsoft Intune finden Sie unter „Registrieren von Geräten für die Verwaltung in Intune“.
+In Kombination mit einer Lösung für die Verwaltung mobiler Geräte, wie z.B. Microsoft Intune, werden die Geräteattribute in Azure AD mit zusätzlichen Informationen über das Gerät aktualisiert. So können Sie Regeln für den bedingten Zugriff erstellen, die erzwingen, dass der Zugriff von Geräten Ihren Standards für Sicherheit und Kompatibilität entspricht. Weitere Informationen zum Registrieren von Geräten in Microsoft Intune finden Sie unter [Registrieren von Geräten für die Verwaltung in Intune](https://docs.microsoft.com/intune/device-enrollment#supported-device-platforms).
 
 Das **Einbinden** eines Geräts stellt eine Erweiterung der Registrierung eines Geräts dar. Das bedeutet, Sie profitieren von allen Vorteilen der Registrierung eines Geräts, und darüber hinaus wird der lokale Status des Geräts geändert. Durch Änderung des lokalen Status können sich Ihre Benutzer an einem Gerät anstatt mit einem persönlichen Konto mit einem Geschäfts-, Schul- oder Unikonto anmelden.
 

@@ -4,12 +4,16 @@ items:
 - name: Übersicht
   items:
   - name: Machine Learning Studio
+    displayName: overview
     href: what-is-ml-studio.md
   - name: ML Studio-Funktionen
+    displayName: overview
     href: studio-overview-diagram.md
   - name: Grundlagen von ML Studio (Infografik)
+    displayName: algorithm, algorithms
     href: basics-infographic-with-algorithm-examples.md
   - name: Häufig gestellte Fragen
+    displayName: FAQ
     href: faq.md
   - name: Neuerungen
     href: whats-new.md
@@ -17,6 +21,7 @@ items:
 - name: Erste Schritte
   items:
   - name: Erstellen Ihres ersten Experiments
+    displayName: quickstart
     href: create-experiment.md
   - name: Exemplarische Vorgehensweise
     items:
@@ -31,8 +36,10 @@ items:
     - name: 4 – Trainieren und Bewerten
       href: walkthrough-4-train-and-evaluate-models.md
     - name: 5 – Bereitstellen des Webdiensts
+      displayName: publish
       href: walkthrough-5-publish-web-service.md
     - name: 6 – Zugreifen auf den Webdienst
+      displayName: consume
       href: walkthrough-6-access-web-service.md
   - name: Data Science für Einsteiger
     items:
@@ -63,6 +70,7 @@ items:
       - name: Bereitstellen mithilfe von ARM
         href: deploy-with-resource-manager-template.md
       - name: Anzeigen und Löschen von Studio-Kontodaten
+        displayName: export
         href: export-delete-personal-data-dsr.md
   - name: Abrufen und Verstehen von Daten
     items:
@@ -77,6 +85,7 @@ items:
       - name: Aus einem Experiment
         href: import-data-from-an-experiment.md
       - name: Verwenden von lokaler SQL
+        displayName: on-premises
         href: use-data-from-an-on-premises-sql-server.md
   - name: Entwickeln von Modellen
     items:
@@ -87,6 +96,7 @@ items:
       - name: Verwalten von Experimentiterationen
         href: manage-experiment-iterations.md
       - name: Verwenden von PowerShell zum Erstellen von Modellen
+        displayName: endpoint, endpoints
         href: create-models-and-endpoints-with-powershell.md
       - name: Auswählen von Algorithmen
         items:
@@ -103,6 +113,7 @@ items:
         - name: Auswerten der Leistung
           href: evaluate-model-performance.md
         - name: Optimieren von Parametern
+          displayName: optimization
           href: algorithm-parameters-optimize.md
         - name: Interpretieren von Ergebnissen
           href: interpret-model-results.md
@@ -117,20 +128,25 @@ items:
         - name: Ausführen von Python-Skripts
           href: execute-python-scripts.md
   - name: Operationalisieren von Modellen
+    displayName: deploy
     items:
     - name: Übersicht
+      displayName: deploy, consume, web service
       href: deploy-consume-web-service-guide.md
     - name: Bereitstellen von Modellen
       items:
       - name: Bereitstellen eines Webdiensts
+        displayName: publish
         href: publish-a-machine-learning-web-service.md
       - name: So funktioniert's
         href: model-progression-experiment-to-web-service.md
       - name: Vorbereiten der Bereitstellung
         href: convert-training-experiment-to-scoring-experiment.md
       - name: Verwenden externer Daten
+        displayName: import, export
         href: web-services-that-use-import-export-modules.md
       - name: Bereitstellen in mehreren Regionen
+        displayName: multiple regions
         href: how-to-deploy-to-multiple-regions.md
       - name: Verwenden von Webdienstparametern
         href: web-service-parameters.md
@@ -141,6 +157,7 @@ items:
       - name: Verwenden des Web Services-Portals
         href: manage-new-webservice.md
       - name: Verwalten mit APIs
+        displayName: endpoint, endpoints
         href: manage-web-service-endpoints-using-api-management.md
       - name: Erstellen von Endpunkten
         href: create-endpoint.md
@@ -238,9 +255,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-machine-learning
   - name: Videos
     href: https://azure.microsoft.com/resources/videos/index/?services=machine-learning
-ms.openlocfilehash: b7c5cea35e8b1441bc8a08e8d8582141cd430868
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 77caf4b0144b8c7d7a7a48053d55864bfa9ae286
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47431524"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51287590"
