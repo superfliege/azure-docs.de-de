@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 05/02/2017
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: a1f28103f8faabae166f09185db3f3e1fee7a5ab
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 29fa8d0216ac5b986a758ef553814d53834793d9
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49404595"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51009724"
 ---
 # <a name="collect-data-from-collectd-on-linux-agents-in-log-analytics"></a>Sammeln von Daten mit Linux-Agenten aus CollectD in Log Analytics
 [CollectD](https://collectd.org/) ist ein Open-Source-Linux-Deamon, der regelmäßig Leistungsmetriken aus Anwendungen und Informationen aus der Betriebssystemebene sammelt. Beispiele für diese Anwendungen sind Java Virtual Machine (JVM), MySQL Server und Nginx. In diesem Artikel wird beschrieben, wie Leistungsdaten aus CollectD in Log Analytics gesammelt werden.
@@ -124,6 +124,6 @@ Um ein vertrautes Modell zwischen den bereits vom Log Analytics-Agent für Linux
 | values[] | CounterValue |
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Erfahren Sie mehr über [Protokollsuchvorgänge](log-analytics-log-searches.md) zum Analysieren der aus Datenquellen und Lösungen gesammelten Daten. 
+* Erfahren Sie mehr über [Protokollsuchvorgänge](log-analytics-queries.md) zum Analysieren der aus Datenquellen und Lösungen gesammelten Daten. 
 * Verwenden Sie [benutzerdefinierte Felder](log-analytics-custom-fields.md) , um Daten aus Syslog-Datensätzen in einzelnen Feldern zu analysieren.
 

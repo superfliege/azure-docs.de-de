@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: b6f1185a94f865578d9a6514fb6841f8811b2230
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 58992c80344902674b2b21a71b07925c752911a4
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42143217"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51230942"
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>Häufig gestellte Fragen zu Azure Multi-Factor Authentication
 
@@ -145,7 +145,7 @@ Wenn Ihre Organisation keine Legacyclients verwendet, sollten Sie die Erstellung
 
 Die Übermittlung von SMS und der Empfang von Antworten auf bidirektionale SMS können nicht garantiert werden, da die Zuverlässigkeit des Diensts durch unkontrollierbare Faktoren beeinträchtigt werden kann. Unter diese Faktoren fallen das Bestimmungsland, der Mobilfunkanbieter und die Signalstärke.
 
-Falls Ihre Benutzer häufig SMS-Empfangsprobleme haben, fordern Sie sie auf, die mobile App oder die Telefonanrufmethode zu verwenden. Die mobile App kann sowohl über Mobilfunk- als auch WLAN-Verbindungen Benachrichtigungen empfangen. Darüber hinaus kann die mobile App Überprüfungscodes auch dann generieren, wenn das Gerät noch gar kein Signal empfangen hat. Die Microsoft Authenticator-App ist für [Android](http://go.microsoft.com/fwlink/?Linkid=825072), [iOS](http://go.microsoft.com/fwlink/?Linkid=825073) und [Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071) verfügbar.
+Falls Ihre Benutzer häufig SMS-Empfangsprobleme haben, fordern Sie sie auf, die mobile App oder die Telefonanrufmethode zu verwenden. Die mobile App kann sowohl über Mobilfunk- als auch WLAN-Verbindungen Benachrichtigungen empfangen. Darüber hinaus kann die mobile App Überprüfungscodes auch dann generieren, wenn das Gerät noch gar kein Signal empfangen hat. Die Microsoft Authenticator-App ist für [Android](https://go.microsoft.com/fwlink/?Linkid=825072), [iOS](https://go.microsoft.com/fwlink/?Linkid=825073) und [Windows Phone](https://go.microsoft.com/fwlink/?Linkid=825071) verfügbar.
 
 Wenn Sie Textnachrichten benutzen müssen, sollte nach Möglichkeit die unidirektionale SMS der bidirektionalen SMS vorgezogen werden. Das unidirektionale SMS-Verfahren ist zuverlässiger und verhindert, dass für die Benutzer zusätzliche SMS-Gebühren entstehen, wenn sie z.B. auf eine SMS antworten, die aus einem anderen Land gesendet wurde.
 

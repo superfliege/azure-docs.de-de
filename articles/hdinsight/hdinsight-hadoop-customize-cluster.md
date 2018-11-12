@@ -2,19 +2,19 @@
 title: Anpassen von HDInsight-Clustern mithilfe von Skriptaktionen – Azure
 description: Erfahren Sie, wie Sie mit Skriptaktionen HDInsight-Cluster anpassen können.
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/05/2016
-ms.author: jasonh
+ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 6c4652e65f0f320063d989f97a5428510913005b
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 8923dcb4c35bbf90a6f68bd296bb9a862c5ff07d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43105923"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51230800"
 ---
 # <a name="customize-windows-based-hdinsight-clusters-using-script-action"></a>Anpassen Windows-basierter HDInsight-Cluster mithilfe von Skriptaktionen
 **Script Action** kann während der Clustererstellung zum Aufrufen [benutzerdefinierter Skripts](hdinsight-hadoop-script-actions.md) verwendet werden, um zusätzliche Software auf einem Cluster zu installieren.
@@ -48,11 +48,11 @@ HDInsight verfügt über mehrere Skripts zum Installieren der folgenden Komponen
 
 | NAME | Skript |
 | --- | --- |
-| **Installieren von Spark** | `https://hdiconfigactions.blob.core.windows.net/sparkconfigactionv03/spark-installer-v03.ps1`(Fixierte Verbindung) festgelegt ist(Fixierte Verbindung) festgelegt ist. Siehe [Installieren und Verwenden von Spark in HDInsight-Clustern][hdinsight-install-spark]. |
-| **Installieren von R** | `https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1`(Fixierte Verbindung) festgelegt ist(Fixierte Verbindung) festgelegt ist. Siehe [Installieren und Verwenden von R in HDInsight-Clustern](r-server/r-server-hdinsight-manage.md#install-additional-r-packages-on-the-cluster). |
-| **Installieren von Solr** | `https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1`(Fixierte Verbindung) festgelegt ist(Fixierte Verbindung) festgelegt ist. Siehe [Installieren und Verwenden von Solr in HDInsight-Clustern](hdinsight-hadoop-solr-install.md). |
-| **Installieren von Giraph** | `https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1`(Fixierte Verbindung) festgelegt ist(Fixierte Verbindung) festgelegt ist. Siehe [Installieren und Verwenden von Giraph in HDInsight-Clustern](hdinsight-hadoop-giraph-install.md). |
-| **Vorabladen von Hive-Bibliotheken** | `https://hdiconfigactions.blob.core.windows.net/setupcustomhivelibsv01/setup-customhivelibs-v01.ps1`(Fixierte Verbindung) festgelegt ist(Fixierte Verbindung) festgelegt ist. Siehe [Hinzufügen von Hive-Bibliotheken zu HDInsight-Clustern](hdinsight-hadoop-add-hive-libraries.md). |
+| **Installieren von Spark** | `https://hdiconfigactions.blob.core.windows.net/sparkconfigactionv03/spark-installer-v03.ps1`. Siehe [Installieren und Verwenden von Spark in HDInsight-Clustern][hdinsight-install-spark]. |
+| **Installieren von R** | `https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1`. Siehe [Installieren und Verwenden von R in HDInsight-Clustern](r-server/r-server-hdinsight-manage.md#install-additional-r-packages-on-the-cluster). |
+| **Installieren von Solr** | `https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1`. Siehe [Installieren und Verwenden von Solr in HDInsight-Clustern](hdinsight-hadoop-solr-install.md). |
+| **Installieren von Giraph** | `https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1`. Siehe [Installieren und Verwenden von Giraph in HDInsight-Clustern](hdinsight-hadoop-giraph-install.md). |
+| **Vorabladen von Hive-Bibliotheken** | `https://hdiconfigactions.blob.core.windows.net/setupcustomhivelibsv01/setup-customhivelibs-v01.ps1`. Siehe [Hinzufügen von Hive-Bibliotheken zu HDInsight-Clustern](hdinsight-hadoop-add-hive-libraries.md). |
 
 ## <a name="call-scripts-using-the-azure-portal"></a>Aufrufen von Skripts über das Azure-Portal
 **Im Azure-Portal**
@@ -279,7 +279,7 @@ Das folgende Beispiel veranschaulicht das Installieren von Spark auf HDInsight-C
 5. Drücken Sie **F5**, um die Anwendung auszuführen.
 
 ## <a name="support-for-open-source-software-used-on-hdinsight-clusters"></a>Unterstützung für Open-Source-Software in HDInsight-Clustern
-Der Microsoft Azure HDInsight-Dienst ist eine flexible Plattform, die es Ihnen ermöglicht, Big Data-Anwendungen in der Cloud innerhalb des Ökosystems der Open-Source-Technologien rund um Hadoop zu erstellen. Microsoft Azure bietet allgemeinen Support für Open-Source-Technologien. Siehe den Abschnitt **Supportumfang** auf der Website <a href="http://azure.microsoft.com/support/faq/" target="_blank">Azure-Support-FAQ</a>. Der HDInsight-Dienst bietet, wie nachstehend beschrieben, zusätzliche Unterstützung für einige der Komponenten.
+Der Microsoft Azure HDInsight-Dienst ist eine flexible Plattform, die es Ihnen ermöglicht, Big Data-Anwendungen in der Cloud innerhalb des Ökosystems der Open-Source-Technologien rund um Hadoop zu erstellen. Microsoft Azure bietet allgemeinen Support für Open-Source-Technologien. Siehe den Abschnitt **Supportumfang** auf der Website <a href="https://azure.microsoft.com/support/faq/" target="_blank">Azure-Support-FAQ</a>. Der HDInsight-Dienst bietet, wie nachstehend beschrieben, zusätzliche Unterstützung für einige der Komponenten.
 
 Es gibt zwei Arten von Open-Source-Komponenten, die im HDInsight-Dienst verfügbar sind:
 

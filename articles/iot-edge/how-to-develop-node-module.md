@@ -9,12 +9,12 @@ ms.author: xshi
 ms.date: 09/21/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: a1459e3cbd433e2997ffd822b961ac781a72ca90
-ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
+ms.openlocfilehash: b05492941defc6ac3aa252d6bb29043d55e6b66c
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47423526"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51261773"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-nodejs-modules-for-azure-iot-edge"></a>Verwenden von Visual Studio Code zum Entwickeln und Debuggen von Node.js-Modulen für Azure IoT Edge
 
@@ -37,7 +37,7 @@ Um ein Modul zu erstellen, benötigen Sie Node.js (enthält npm) zum Erstellen d
 * [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) oder [Docker Hub](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags)
    * Sie können anstelle einer Cloudregistrierung auch eine lokale Docker-Registrierung für Prototyp- bzw. Testzwecke verwenden. 
 
-Zum Einrichten der lokalen Entwicklungsumgebung, in der Sie Ihre IoT Edge-Projektmappe debuggen, ausführen und testen, benötigen Sie das [Entwicklertool für Azure IoT EdgeHub](https://pypi.org/project/iotedgehubdev/). Installieren Sie [Python (2.7/3.6) und Pip](https://www.python.org/). Pip ist im Python-Installationsprogramm enthalten. Installieren Sie anschließend iotedgehubdev, indem Sie den folgenden Befehl in Ihrem Terminal ausführen.
+Zum Einrichten der lokalen Entwicklungsumgebung, in der Sie Ihre IoT Edge-Projektmappe debuggen, ausführen und testen, benötigen Sie das [Entwicklertool für Azure IoT EdgeHub](https://pypi.org/project/iotedgehubdev/). Installieren Sie [Python (2.7/3.6) und Pip](https://www.python.org/). Pip ist im Python-Installationsprogramm enthalten. Installieren Sie anschließend **iotedgehubdev**, indem Sie den folgenden Befehl in Ihrem Terminal ausführen.
 
    ```cmd
    pip install --upgrade iotedgehubdev
@@ -123,7 +123,7 @@ Das IoT Edge-Node.js-Modul hängt vom Geräte-SDK für Azure IoT-Node.js ab. Ini
 
 5. Führen Sie im integrierten VS Code-Terminal den folgenden Befehl aus, um die Nachricht **Hello World** an Ihr Modul zu senden. Dies ist der Befehl, der in vorherigen Schritten gezeigt wurde, wenn der IoT Edge-Simulator erfolgreich installiert wurde. Möglicherweise müssen Sie ein weiteres integriertes Terminal erstellen oder dorthin wechseln, wenn das aktuelle blockiert wird.
 
-    ```cmd
+    ```bash
     curl --header "Content-Type: application/json" --request POST --data '{"inputName": "input1","data":"hello world"}' http://localhost:53000/api/v1/messages
     ```
 

@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: a70bb09edb5ccaf4e216785933af80e2fcb2153a
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: 924fea7a8a8e6fb1ab25584a49f38b25156d1ec6
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49363605"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51230511"
 ---
 # <a name="tutorial-create-and-use-a-custom-image-for-virtual-machine-scale-sets-with-azure-powershell"></a>Tutorial: Erstellen und Verwenden eines benutzerdefinierten Images für VM-Skalierungsgruppen mit Azure PowerShell
 Wenn Sie eine Skalierungsgruppe erstellen, geben Sie ein Image an, das beim Bereitstellen der VM-Instanzen verwendet wird. Sie können ein benutzerdefiniertes VM-Image verwenden, um die Anzahl von Aufgaben zu reduzieren, nachdem VM-Instanzen bereitgestellt wurden. Dieses benutzerdefinierte VM-Image enthält alle erforderlichen Anwendungsinstallationen oder -konfigurationen. Für alle VM-Instanzen, die in der Skalierungsgruppe erstellt werden, wird das benutzerdefinierte VM-Image verwendet, und die VM-Instanzen sind für die Bereitstellung Ihres Anwendungsdatenverkehrs bereit. In diesem Tutorial lernen Sie Folgendes:
@@ -76,7 +76,7 @@ Installieren Sie einen einfachen Webserver, um Ihre VM anzupassen. Wenn die VM-I
 Install-WindowsFeature -name Web-Server -IncludeManagementTools
 ```
 
-Im letzten Schritt der Vorbereitung Ihrer VM für die Nutzung als benutzerdefiniertes Image generalisieren Sie die VM. Sysprep entfernt Ihre gesamten persönlichen Kontoinformationen und -konfigurationen und setzt die VM für zukünftige Bereitstellungen in einen bereinigten Zustand zurück. Weitere Informationen finden Sie unter [How to Use Sysprep: An Introduction](http://technet.microsoft.com/library/bb457073.aspx) (Verwenden von Sysprep: Eine Einführung).
+Im letzten Schritt der Vorbereitung Ihrer VM für die Nutzung als benutzerdefiniertes Image generalisieren Sie die VM. Sysprep entfernt Ihre gesamten persönlichen Kontoinformationen und -konfigurationen und setzt die VM für zukünftige Bereitstellungen in einen bereinigten Zustand zurück. Weitere Informationen finden Sie unter [How to Use Sysprep: An Introduction](https://technet.microsoft.com/library/bb457073.aspx) (Verwenden von Sysprep: Eine Einführung).
 
 Führen Sie zum Generalisieren der VM Sysprep aus, und richten Sie für die VM eine sofort einsatzbereite Benutzeroberfläche ein. Wenn Sie fertig sind, können Sie Sysprep anweisen, die VM herunterzufahren:
 

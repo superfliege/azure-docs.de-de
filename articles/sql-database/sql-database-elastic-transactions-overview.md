@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 3147061f527621ba98dee84f4d347a6e883d61c0
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 02cf72bf9fe06993ef859d1789983b7611c8472e
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47166468"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51257468"
 ---
 # <a name="distributed-transactions-across-cloud-databases"></a>Verteilte Transaktionen über Clouddatenbanken
 Mithilfe elastischer Datenbanktransaktionen für Azure SQL-Datenbank (SQL-DB) können Sie übergreifende Transaktionen für mehrere Datenbanken in SQL-DB ausführen. Elastische Datenbanktransaktionen für SQL-DB stehen für .NET-Anwendungen über ADO.NET zur Verfügung und lassen sich mithilfe der Klassen vom Typ [System.Transaction](https://msdn.microsoft.com/library/system.transactions.aspx) in die vertraute Programmierumgebung integrieren. Informationen zum Abrufen der Bibliothek finden Sie unter [.NET Framework 4.6.1 (Webinstaller)](https://www.microsoft.com/download/details.aspx?id=49981).
@@ -143,7 +143,7 @@ Derzeit gelten für elastische Datenbanktransaktionen in SQL-DB folgende Einschr
 * Transaktionen über WCF-Dienste werden nicht unterstützt. Nehmen wir beispielsweise eine WCF-Dienstmethode, die eine Transaktion ausführt. Das Umschließen des Aufrufs innerhalb eines Transaktionsbereichs schlägt als [System.ServiceModel.ProtocolException](https://msdn.microsoft.com/library/system.servicemodel.protocolexception)fehl.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Bei Fragen erreichen Sie uns im [Forum für SQL-Datenbank](http://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted), Featureanforderungen können Sie im [Feedbackforum für SQL-Datenbank](https://feedback.azure.com/forums/217321-sql-database/) einreichen.
+Bei Fragen erreichen Sie uns im [Forum für SQL-Datenbank](https://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted), Featureanforderungen können Sie im [Feedbackforum für SQL-Datenbank](https://feedback.azure.com/forums/217321-sql-database/) einreichen.
 
 <!--Image references-->
 [1]: ./media/sql-database-elastic-transactions-overview/distributed-transactions.png

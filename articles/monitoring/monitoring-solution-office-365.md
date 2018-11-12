@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2018
 ms.author: bwren
-ms.openlocfilehash: d1fdec8e3a959aaeb68d4b63a1c71d6ef1ddd054
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 04211a00bcdce3baf8060e00a9ce81831a39acb9
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49406320"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51257662"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Office 365-Verwaltungslösung in Azure (Vorschau)
 
@@ -30,7 +30,7 @@ Mit der Office 365-Verwaltungslösung können Sie Ihre Office 365-Umgebung in Lo
 - Überwachen Sie Administratoraktivitäten, um Konfigurationsänderungen oder Vorgänge mit erhöhten Rechten nachzuverfolgen.
 - Ermitteln und untersuchen Sie unerwünschtes Benutzerverhalten. Dies kann an die Anforderungen Ihrer Organisation angepasst werden.
 - Demonstrieren Sie Überwachung und Compliance. Beispielsweise können Sie Dateizugriffe auf vertrauliche Dateien überwachen und so den Überwachungs- und Complianceprozess unterstützen.
-- Führen Sie eine operative Problembehandlung mithilfe der [Protokollsuchen](../log-analytics/log-analytics-log-search.md) in den Office 365-Aktivitätsdaten Ihrer Organisation durch.
+- Führen Sie eine operative Problembehandlung mithilfe der [Protokollsuchen](../log-analytics/log-analytics-queries.md) in den Office 365-Aktivitätsdaten Ihrer Organisation durch.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Folgendes ist erforderlich, bevor diese Lösung installiert und konfiguriert wird.
@@ -709,6 +709,6 @@ Die folgende Tabelle enthält Beispiele für Protokollsuchen für Updatedatensä
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Verwenden Sie die Protokollsuche in [Log Analytics](../log-analytics/log-analytics-log-searches.md), um ausführliche Daten zu Updates anzuzeigen.
+* Verwenden Sie die Protokollsuche in [Log Analytics](../log-analytics/log-analytics-queries.md), um ausführliche Daten zu Updates anzuzeigen.
 * [Erstellen Sie eigene Dashboards](../log-analytics/log-analytics-dashboards.md), um Ihre bevorzugten Office 365-Suchabfragen anzuzeigen.
-* [Erstellen Sie Warnungen](../log-analytics/log-analytics-alerts.md), um proaktiv über wichtige Office 365-Aktivitäten benachrichtigt zu werden.  
+* [Erstellen Sie Warnungen](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md), um proaktiv über wichtige Office 365-Aktivitäten benachrichtigt zu werden.  

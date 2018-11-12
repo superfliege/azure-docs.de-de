@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 10/16/2018
 ms.author: sutalasi
-ms.openlocfilehash: f8f690a4f94ee56cfaa5532fa090fada1a33bddf
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 4b008cc119951e50567218e332818585fb017e5a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50214782"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51229406"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-hyper-v-vms-using-powershell-and-azure-resource-manager"></a>Einrichten der Notfallwiederherstellung in Azure für Hyper-V-VMs mithilfe von PowerShell und Azure Resource Manager
 
@@ -24,7 +24,7 @@ Dieser Artikel beschreibt, wie Sie Windows PowerShell zusammen mit Azure Resourc
 
 Azure PowerShell stellt Cmdlets zum Verwalten von Azure mit Windows PowerShell zur Verfügung. Mit PowerShell-Cmdlets für Site Recovery, die mit Azure PowerShell für den Azure Resource Manager verfügbar sind, können Sie Ihre Server in Azure schützen und wiederherstellen.
 
-Sie müssen kein PowerShell-Experte sein, um diesen Artikel verwenden zu können. Sie müssen jedoch mit den grundlegenden Konzepten wie Modulen, Cmdlets und Sitzungen vertraut sein. Lesen Sie [Erste Schritte mit Windows PowerShell](http://technet.microsoft.com/library/hh857337.aspx) und [Verwenden von Azure PowerShell mit Azure Resource Manager](../powershell-azure-resource-manager.md).
+Sie müssen kein PowerShell-Experte sein, um diesen Artikel verwenden zu können. Sie müssen jedoch mit den grundlegenden Konzepten wie Modulen, Cmdlets und Sitzungen vertraut sein. Lesen Sie [Erste Schritte mit Windows PowerShell](https://technet.microsoft.com/library/hh857337.aspx) und [Verwenden von Azure PowerShell mit Azure Resource Manager](../powershell-azure-resource-manager.md).
 
 > [!NOTE]
 > Microsoft-Partner im CSP-Programm (Cloud Solution Provider, Cloud-Lösungsanbieter) können den Schutz der Server ihrer Kunden in den entsprechenden CSP-Abonnements (Mandantenabonnements) konfigurieren und verwalten.

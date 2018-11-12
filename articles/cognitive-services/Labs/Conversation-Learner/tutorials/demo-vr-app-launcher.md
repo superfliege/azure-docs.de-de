@@ -10,12 +10,12 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 896ec007c03e30e5c20a5344430be040271bc00b
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 31efcb2b2f05bd7a49701be708a89db8f2ef26f7
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39171146"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51229696"
 ---
 # <a name="demo-virtual-reality-app-launcher"></a>Demo: Virtual Reality-App-Startfeld
 
@@ -23,7 +23,7 @@ Diese Demo veranschaulicht einen Virtual Reality-Modellstarter, der Befehle wie 
 
 ## <a name="video"></a>Video
 
-[![Demo-VR-App – Vorschau](http://aka.ms/cl-demo-vrapp-preview)](http://aka.ms/blis-demo-vrapp)
+[![Demo-VR-App – Vorschau](https://aka.ms/cl-demo-vrapp-preview)](https://aka.ms/blis-demo-vrapp)
 
 ## <a name="requirements"></a>Requirements (Anforderungen)
 
@@ -46,7 +46,7 @@ Wir haben vier Entitäten erstellt:
 
 ![](../media/tutorial_vrapplauncher_entities.PNG)
 
-### <a name="actions"></a>Actions
+### <a name="actions"></a>Aktionen
 
 Wir haben eine Reihe von Aktionen erstellt, die eine API namens LaunchApp enthalten, die den Funktionsaufruf zum Starten einer App startet.
 
@@ -65,7 +65,7 @@ Probieren Sie als Beispiel eine Trainingssitzung aus.
 3. Klicken Sie zum Auswählen auf „Welche App möchten Sie starten?“
 4. Geben Sie „Outlook“ ein.
     - LUIS erkennt dies als Entität.
-5. Klicken Sie auf „Bewertungsaktionen“.
+5. Klicken Sie auf „Score Actions“ (Bewertungsaktionen).
 3. Klicken Sie zum Auswählen auf „Wo soll sie platziert werden?“
 4. Geben Sie „an der Wand“ ein.
     - LUIS erkennt dies als PlacementLocation.
@@ -85,10 +85,10 @@ Als Nächstes beginnen wir mit einer anderen Trainingssitzung für den Umgang mi
     - Das Modell erkennt OneNote als App-Name. Die im Code definierte Funktion `EntityDetectionCallback` löst den vom Benutzer eingegebenen Namen in einen App-Namen auf, indem sie ihn mit der im Code definierten App-Liste abgleicht. Anschließend wird der Satz aller übereinstimmenden Apps zurückgegeben. 
     - Wenn die Liste der Übereinstimmungen dem Wert „Null“ entspricht, bedeutet dies, dass die App nicht installiert ist. Sie wird in „UnknownAppName“ abgelegt.
     - Wird mehr als eine App gefunden, werden die Apps in `DisambigAppNames` kopiert, und die Entität „AppName“ wird gelöscht.
-2. Klicken Sie auf „Bewertungsaktionen“.
+2. Klicken Sie auf „Score Action“ (Bewertungsaktion).
 3. Klicken Sie zum Auswählen auf „Leider kenne ich die App $UnknownAppName nicht“.
 4. Geben Sie „start Amazon“ ein. Wir probieren den anderen Pfad aus.
-5. Klicken Sie auf „Bewertungsaktionen“.
+5. Klicken Sie auf „Score Actions“ (Bewertungsaktionen).
     - Amazon Video und Amazon Music befinden sich jetzt im `DisambigAppNames`-Speicher, und OneNote wurde gelöscht.
 3. Klicken Sie zum Auswählen auf „Es gibt einige Apps, die so klingen“.
     - Die Bewertung ist nicht sehr hoch, weil wir bis zu diesem Zeitpunkt nur wenige Trainingsdialoge hinzugefügt haben. Durch die Definition weiterer Trainingsdialoge trifft das Modell noch bessere Entscheidungen.

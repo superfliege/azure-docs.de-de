@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: ca93d97c3e0ddab0377ef437a04e7e3e31197b97
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 6967805044bb11e9aed3fe66d580df059f7a461a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47166367"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51231396"
 ---
 # <a name="split-merge-security-configuration"></a>Split-Merge-Sicherheitskonfiguration
 Zur Verwendung des Split-Merge-Diensts müssen Sie die Sicherheit ordnungsgemäß konfigurieren. Der Dienst ist Teil der Funktion Elastic Scale von Microsoft Azure SQL-Datenbank. Weitere Informationen finden Sie im [Lernprogramm zum Split-Merge-Dienst für die elastische Skalierung](sql-database-elastic-scale-configure-deploy-split-and-merge.md).
@@ -29,21 +29,21 @@ Zertifikate werden auf zwei Arten konfiguriert.
 2. [So konfigurieren Sie Clientzertifikate](#to-configure-client-certificates) 
 
 ## <a name="to-obtain-certificates"></a>So rufen Sie Zertifikate ab
-Zertifikate können von öffentlichen Zertifizierungsstellen (CAs) oder vom [Windows-Zertifikatdienst](http://msdn.microsoft.com/library/windows/desktop/aa376539.aspx)abgerufen werden. Dies sind die bevorzugten Methoden für den Erhalt von Zertifikaten.
+Zertifikate können von öffentlichen Zertifizierungsstellen (CAs) oder vom [Windows-Zertifikatdienst](https://msdn.microsoft.com/library/windows/desktop/aa376539.aspx)abgerufen werden. Dies sind die bevorzugten Methoden für den Erhalt von Zertifikaten.
 
 Wenn diese Optionen nicht verfügbar sind, können Sie **selbstsignierte Zertifikate**generieren.
 
 ## <a name="tools-to-generate-certificates"></a>Tools zum Erstellen von Zertifikaten
-* [makecert.exe](http://msdn.microsoft.com/library/bfsktky3.aspx)
-* [pvk2pfx.exe](http://msdn.microsoft.com/library/windows/hardware/ff550672.aspx)
+* [makecert.exe](https://msdn.microsoft.com/library/bfsktky3.aspx)
+* [pvk2pfx.exe](https://msdn.microsoft.com/library/windows/hardware/ff550672.aspx)
 
 ### <a name="to-run-the-tools"></a>So führen Sie die Tools aus
-* An einer Developer-Eingabeaufforderung für Visual Studio; weitere Einzelheiten finden Sie unter [Visual Studio-Eingabeaufforderung](http://msdn.microsoft.com/library/ms229859.aspx) 
+* An einer Developer-Eingabeaufforderung für Visual Studio; weitere Einzelheiten finden Sie unter [Visual Studio-Eingabeaufforderung](https://msdn.microsoft.com/library/ms229859.aspx) 
   
     Falls installiert, gehen Sie zu:
   
         %ProgramFiles(x86)%\Windows Kits\x.y\bin\x86 
-* Abrufen des WDK von [Windows 8.1: Herunterladen von Kits und Tools](http://msdn.microsoft.com/windows/hardware/gg454513#drivers)
+* Abrufen des WDK von [Windows 8.1: Herunterladen von Kits und Tools](https://msdn.microsoft.com/windows/hardware/gg454513#drivers)
 
 ## <a name="to-configure-the-ssl-certificate"></a>So konfigurieren Sie das SSL-Zertifikat
 Ein SSL-Zertifikat ist zum Verschlüsseln der Kommunikation und Authentifizieren des Servers erforderlich. Wählen Sie das zutreffende unter den folgenden drei Szenarien, und führen Sie alle zugehörigen Schritte aus:

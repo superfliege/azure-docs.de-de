@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: update-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 10/25/2018
+ms.date: 11/05/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 90a5be07b6939df1850bb1574c71254bb896f004
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 6d981d9dc7433d957819d0beb6aa6265882f1890
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50093826"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51037395"
 ---
 # <a name="update-management-solution-in-azure"></a>Lösung für die Updateverwaltung in Azure
 
@@ -35,7 +35,7 @@ Das folgende Diagramm enthält eine konzeptionelle Darstellung des Verhaltens un
 
 ![Ablauf des Updateverwaltungsprozesses](media/automation-update-management/update-mgmt-updateworkflow.png)
 
-Die Updateverwaltung kann für das systeminterne Integrieren von Computern in mehrere Abonnements im selben Mandanten verwendet werden. Zum Verwalten von Computern in einem anderen Mandanten müssen Sie diese als [Nicht-Azure-Computer](automation-onboard-solutions-from-automation-account.md#onboard-a-non-azure-machine) integrieren.
+Die Updateverwaltung kann für das systeminterne Integrieren von Computern in mehrere Abonnements im selben Mandanten verwendet werden.
 
 Nachdem ein CVE-Release veröffentlicht wurde, dauert es 2 bis 3 Stunden, bis der Patch für Linux-Computer für die Bewertung angezeigt wird.  Bei Windows-Computern dauert es 12 bis 15 Stunden, bis der Patch nach der Veröffentlichung für die Bewertung angezeigt wird.
 

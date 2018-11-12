@@ -3,19 +3,19 @@ title: Hochverfügbarkeit für Hadoop – Azure HDInsight
 description: Erfahren Sie, wie HDInsight-Cluster durch die Verwendung eines zusätzlichen Hauptknotens eine höhere Zuverlässigkeit und Verfügbarkeit bieten. Sie erfahren, wie dies Hadoop-Dienste wie Ambari und Hive beeinflusst, und wie eine Verbindung mit jedem Hauptknoten über SSH hergestellt wird.
 services: hdinsight
 ms.reviewer: jasonh
-author: jasonwhowell
+author: hrasheed-msft
 keywords: Hochverfügbarkeit, Hadoop
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 03/22/2018
-ms.author: jasonh
-ms.openlocfilehash: 33458794ad74b367f1278364d7b4ace30f7d13a8
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.author: hrasheed
+ms.openlocfilehash: 6ddb42cd1d8b7041586caf374b7be433ca28de12
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46953586"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51007076"
 ---
 # <a name="availability-and-reliability-of-hadoop-clusters-in-hdinsight"></a>Verfügbarkeit und Zuverlässigkeit von Hadoop-Clustern in HDInsight
 
