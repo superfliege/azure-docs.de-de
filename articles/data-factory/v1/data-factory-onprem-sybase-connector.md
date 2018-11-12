@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 02/02/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 75fbfe1e682f0022385bb5c406d772bb217180fd
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 0832d5a3f5b529a815046bb6f12755ad733ff03c
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37045268"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51260566"
 ---
 # <a name="move-data-from-sybase-using-azure-data-factory"></a>Verschieben von Daten aus Sybase mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -42,7 +42,7 @@ Das Gateway ist auch erforderlich, wenn die Sybase-Datenbank auf einem virtuelle
 > Unter [Problembehandlung bei Gateways](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) finden Sie Tipps zur Behandlung von Verbindungs- bzw. Gatewayproblemen.
 
 ## <a name="supported-versions-and-installation"></a>Unterstützte Versionen und Installation
-Damit das Datenverwaltungsgateway eine Verbindung mit der Sybase-Datenbank herstellt, müssen Sie den [Datenanbieter für Sybase iAnywhere.Data.SQLAnywhere](http://go.microsoft.com/fwlink/?linkid=324846) 16 oder höher auf dem System mit dem Datenverwaltungsgateway installieren. 
+Damit das Datenverwaltungsgateway eine Verbindung mit der Sybase-Datenbank herstellt, müssen Sie den [Datenanbieter für Sybase iAnywhere.Data.SQLAnywhere](https://go.microsoft.com/fwlink/?linkid=324846) 16 oder höher auf dem System mit dem Datenverwaltungsgateway installieren. 
 
 SAP Sybase SQL Anywhere (ASA) Version 16 und höher wird unterstützt; IQ und ASE werden nicht unterstützt.
 
@@ -67,14 +67,14 @@ Die folgende Tabelle enthält eine Beschreibung der JSON-Elemente, die für den 
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
-| type |Die "type"-Eigenschaft muss auf **OnPremisesSybase** |Ja |
-| server |Name des Sybase-Servers. |Ja |
-| database |Name der Sybase-Datenbank. |Ja |
+| type |Die "type"-Eigenschaft muss auf **OnPremisesSybase** |JA |
+| server |Name des Sybase-Servers. |JA |
+| database |Name der Sybase-Datenbank. |JA |
 | schema |Name des Schemas in der Datenbank. |Nein  |
-| authenticationType |Typ der Authentifizierung für die Verbindung mit der Sybase-Datenbank. Mögliche Werte: Anonymous, Basic und Windows. |Ja |
+| authenticationType |Typ der Authentifizierung für die Verbindung mit der Sybase-Datenbank. Mögliche Werte: Anonymous, Basic und Windows. |JA |
 | username |Geben Sie den Benutzernamen an, wenn Sie die Standard- oder Windows-Authentifizierung verwenden. |Nein  |
 | password |Geben Sie das Kennwort für das Benutzerkonto an, das Sie für den Benutzernamen angegeben haben. |Nein  |
-| gatewayName |Name des Gateways, das der Data Factory-Dienst zum Herstellen einer Verbindung mit der lokalen Sybase-Datenbank verwenden soll. |Ja |
+| gatewayName |Name des Gateways, das der Data Factory-Dienst zum Herstellen einer Verbindung mit der lokalen Sybase-Datenbank verwenden soll. |JA |
 
 ## <a name="dataset-properties"></a>Dataset-Eigenschaften
 Eine vollständige Liste der Abschnitte und Eigenschaften, die zum Definieren von Datasets zur Verfügung stehen, finden Sie im Artikel [Erstellen von Datasets](data-factory-create-datasets.md). Abschnitte wie „structure“, „availability“ und „policy“ des JSON-Codes eines Datasets sind bei allen Dataset-Typen (Azure SQL, Azure-Blob, Azure-Tabelle usw.) ähnlich.

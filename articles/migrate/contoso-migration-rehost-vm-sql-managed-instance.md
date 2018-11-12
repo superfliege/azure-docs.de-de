@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: 0e4576ad4f7eece543ef572073919bcf3ca3a4e9
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: ae719e6daa3c07ffe298cfefcc5a0a2846a49032
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49116141"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51231820"
 ---
 # <a name="contoso-migration-rehost-an-on-premises-app-on-an-azure-vm-and-sql-database-managed-instance"></a>Contoso-Migration: Zuweisen eines neuen Hosts für eine lokale App auf einer Azure-VM und einer verwalteten Azure SQL-Datenbank-Instanz
 
@@ -40,7 +40,7 @@ Artikel 4: Zuweisen eines neuen Hosts für eine App auf einer Azure-VM und einer
 [Artikel 11: Umgestalten von Team Foundation Server in Azure DevOps Services](contoso-migration-tfs-vsts.md) | Contoso migriert die lokale Team Foundation Server-Bereitstellung durch Migration zu Azure DevOps Services in Azure. | Verfügbar
 [Artikel 12: Umstrukturieren einer App in einen Azure-Container und Azure SQL-Datenbank](contoso-migration-rearchitect-container-sql.md) | Contoso migriert seine SmartHotel-App zu Azure und strukturiert die App anschließend um. Contoso strukturiert die App-Webschicht in einen Windows-Container und die App-Datenbank mithilfe von Azure SQL-Datenbank um. | Verfügbar
 [Artikel 13: Neuerstellen einer App in Azure](contoso-migration-rebuild.md) | Contoso erstellt seine SmartHotel-App neu, indem verschiedene Azure-Funktionen und -Dienste verwendet werden, z.B. Azure App Service, Azure Kubernetes Service, Azure Functions, Azure Cognitive Services und Azure Cosmos DB. | Verfügbar
-[Artikel 14: Migration zu Azure in großem Umfang](contoso-migration-scale.md) | Nachdem Contoso verschiedene Kombinationen für die Migration getestet hat, bereitet das Unternehmen sich jetzt auf eine vollständige Migration nach Azure in großem Umfang vor. | Verfügbar
+[Artikel 14: Skalieren einer Migration zu Azure](contoso-migration-scale.md) | Nachdem Contoso verschiedene Kombinationen für die Migration getestet hat, bereitet das Unternehmen sich jetzt auf eine vollständige Migration nach Azure in großem Umfang vor. | Verfügbar
 
 
 
@@ -366,7 +366,7 @@ Nach dem Failover in Azure möchte Contoso eine Verbindung mit den replizierten 
 Die Contoso-Administratoren müssen außerdem Folgendes überprüfen, wenn sie ein Failover durchführen:
 
 - Auf dem virtuellen Computer sollten keine ausstehenden Windows-Updates vorhanden sein, wenn ein Failover ausgelöst wird. Falls Windows-Updates ausstehen, kann sich Contoso erst bei der VM anmelden, nachdem das Update abgeschlossen ist.
-- Nach dem Failover sollten die Administratoren die **Startdiagnose** überprüfen, um einen Screenshot des virtuellen Computers anzuzeigen. Wenn die Startdiagnose nicht anzeigt werden kann, sollte überprüft werden, ob die VM ausgeführt wird. Anschließend sollten die [Tipps zur Problembehandlung](http://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx) beachtet werden.
+- Nach dem Failover sollten die Administratoren die **Startdiagnose** überprüfen, um einen Screenshot des virtuellen Computers anzuzeigen. Wenn die Startdiagnose nicht anzeigt werden kann, sollte überprüft werden, ob die VM ausgeführt wird. Anschließend sollten die [Tipps zur Problembehandlung](https://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx) beachtet werden.
 
 ## <a name="step-5-replicate-the-on-premises-vms-to-azure"></a>Schritt 5: Replizieren der lokalen VMs in Azure
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: roiyz
-ms.openlocfilehash: 720b8584c201826e55099ad31667478b6aa57b27
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: bf6eca33eb1448eb84065fb7fe184d01e77feb61
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50024513"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51036990"
 ---
 # <a name="virtual-machine-extensions-and-features-for-linux"></a>Informationen zu Erweiterungen und Features für virtuelle Computer für Linux
 
@@ -64,7 +64,7 @@ Manche Erweiterung werden nicht auf allen Betriebssystemen unterstützt. In dies
 Erweiterungspakete werden aus dem Azure Storage-Erweiterungsrepository heruntergeladen, und Uploads des Erweiterungsstatus werden in Azure Storage gepostet. Wenn Sie unterstütze Versionen der Agents verwenden (siehe [Minimum version support for virtual machine agents in Azure (Unterstütze Mindestversion für VM-Agents in Azure)](https://support.microsoft.com/en-us/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)), müssen Sie den Zugriff auf Azure Storage in der VM-Region nicht zulassen. Sie können den Agent verwenden, um die Kommunikation mit Agents an den Azure Fabric Controller umzuleiten. Wenn Sie eine nicht unterstützte Version des Agents verwenden, müssen Sie in dieser Region den von der VM ausgehenden Zugriff auf Azure Storage zulassen.
 
 > [!IMPORTANT]
-> Wenn Sie den Zugriff auf *168.63.129.1* mit der Gastfirewall blockiert haben, schlagen die Erweiterungen unabhängig von den gerade beschriebenen Szenarios fehl.
+> Wenn Sie den Zugriff auf *168.63.129.16* mit der Gastfirewall blockiert haben, schlagen die Erweiterungen unabhängig von den gerade beschriebenen Szenarios fehl.
 
 Agents können nur zum Herunterladen von Erweiterungspaketen und für Statusberichte verwendet werden. Wenn z.B. bei der Installation einer Erweiterung ein Skript aus GitHub heruntergeladen werden muss (Custom Script) oder Zugriff auf Azure Storage (Azure Backup) notwendig ist, müssen zusätzliche Firewallports/Netzwerksicherheitsgruppen-Ports geöffnet werden. Verschiedene Erweiterungen haben verschiedene Voraussetzungen, da es sich bei ihnen um eigenständige Anwendungen handelt. Für Erweiterungen, die Zugriff auf Azure Storage benötigen, können Sie den Zugriff über Azure-NSG-Diensttags für [Storage](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags) gewähren.
 

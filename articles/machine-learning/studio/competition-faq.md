@@ -15,17 +15,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/18/2017
-ms.openlocfilehash: 693fd7b80d69c20971315d8636f27daeb0cacaee
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 28be219c35d382cbd141bb050b35893da02ab775
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50240884"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51256447"
 ---
 # <a name="microsoft-cortana-intelligence-competitions-faq"></a>Microsoft Cortana Intelligence-Wettbewerbe – Häufig gestellte Fragen
 **Was sind Cortana Intelligence-Wettbewerbe?**
 
-Die Microsoft Cortana Intelligence-Wettbewerbe vereinen eine globale Community Datenbegeisterter durch das gemeinsame Lösen einiger der komplexesten Data Science-Probleme der Welt. Cortana Intelligence-Wettbewerbe ermöglichen Datenbegeisterten aus der ganzen Welt, zu wetteifern und äußerst präzise und intelligente Data Science-Modelle zu erstellen. Diese ausgerichteten Wettbewerbe basieren auf eindeutigen Datasets, die erstmals öffentlich verfügbar gemacht wurden. Teilnehmer können Preise gewinnen oder über die öffentliche Bestenliste (Top 10) Anerkennung erhalten. Sie können über [aka.ms/CIComp](http://aka.ms/CIComp) auf die Wettbewerbshomepage zugreifen.
+Die Microsoft Cortana Intelligence-Wettbewerbe vereinen eine globale Community Datenbegeisterter durch das gemeinsame Lösen einiger der komplexesten Data Science-Probleme der Welt. Cortana Intelligence-Wettbewerbe ermöglichen Datenbegeisterten aus der ganzen Welt, zu wetteifern und äußerst präzise und intelligente Data Science-Modelle zu erstellen. Diese ausgerichteten Wettbewerbe basieren auf eindeutigen Datasets, die erstmals öffentlich verfügbar gemacht wurden. Teilnehmer können Preise gewinnen oder über die öffentliche Bestenliste (Top 10) Anerkennung erhalten. Sie können über [aka.ms/CIComp](https://aka.ms/CIComp) auf die Wettbewerbshomepage zugreifen.
 
 **Wie oft wird Microsoft neue Wettbewerbe veröffentlichen?**
 
@@ -37,7 +37,7 @@ Allgemeine Fragen können Sie im [Microsoft Azure Machine Learning-Forum](https:
 
 **Wie kann ich an einem Wettbewerb teilnehmen?**
 
-Greifen Sie in [Azure AI Gallery](https://gallery.cortanaintelligence.com/) auf die Homepage mit den [Wettbewerben](https://gallery.cortanaintelligence.com/competitions) zu, oder besuchen Sie [http://aka.ms/CIComp](http://aka.ms/CIComp). Auf der Startseite sind alle aktuellen Wettbewerbe aufgeführt. Auf der Anmeldeseite jedes Wettbewerbs finden Sie genaue Anweisungen und Teilnahmeregeln, Preise und die Dauer des Wettbewerbs.
+Greifen Sie in [Azure AI Gallery](https://gallery.cortanaintelligence.com/) auf die Homepage mit den [Wettbewerben](https://gallery.cortanaintelligence.com/competitions) zu, oder besuchen Sie [http://aka.ms/CIComp](https://aka.ms/CIComp). Auf der Startseite sind alle aktuellen Wettbewerbe aufgeführt. Auf der Anmeldeseite jedes Wettbewerbs finden Sie genaue Anweisungen und Teilnahmeregeln, Preise und die Dauer des Wettbewerbs.
 
 1. Suchen Sie nach dem Wettbewerb, an dem Sie teilnehmen möchten, lesen Sie sich alle Anweisungen durch, und sehen Sie sich das Videotutorial an. Klicken Sie anschließend auf die Schaltfläche **Enter Competition** (Am Wettbewerb teilnehmen), um das Starterexperiment in Ihren vorhandenen Azure Machine Learning-Arbeitsbereich zu kopieren. Wenn Sie noch keinen Zugriff auf einen Arbeitsbereich haben, müssen Sie vorab einen erstellen. Führen Sie das Starterexperiment aus und beobachten Sie die Leistungsmetrik. Nutzen Sie anschließend Ihre Kreativität, um die Leistung des Modells zu verbessern. Sie werden wahrscheinlich den Großteil Ihrer Zeit für diesen Schritt aufwenden.   
 
@@ -98,7 +98,7 @@ Microsoft überprüft die Ergebnisse der privaten Bestenliste und nimmt dann Kon
 
 **Wie erhalte ich das Preisgeld, wenn ich einen Wettbewerb gewinne?**
 
-Wenn Sie einen Wettbewerb gewonnen haben, müssen Sie eine Teilnahmeberechtigungs- und Lizenzerklärung sowie ein Freigabeformular unterschreiben. Dieses Formular bekräftigt die Wettbewerbsregeln. Gewinner müssen ein US-Steuerformular „W-9“ oder „W-8BEN“ ausfüllen, wenn Sie keine Steuerzahler in den USA sind. Wir werden im Rahmen des Preisauszahlungsprozesses alle Gewinner über Ihre Registrierungs-E-Mail-Adresse benachrichtigen. Weitere Informationen finden Sie in unseren [Geschäftsbedingungen](http://aka.ms/comptermsandconditions) .
+Wenn Sie einen Wettbewerb gewonnen haben, müssen Sie eine Teilnahmeberechtigungs- und Lizenzerklärung sowie ein Freigabeformular unterschreiben. Dieses Formular bekräftigt die Wettbewerbsregeln. Gewinner müssen ein US-Steuerformular „W-9“ oder „W-8BEN“ ausfüllen, wenn Sie keine Steuerzahler in den USA sind. Wir werden im Rahmen des Preisauszahlungsprozesses alle Gewinner über Ihre Registrierungs-E-Mail-Adresse benachrichtigen. Weitere Informationen finden Sie in unseren [Geschäftsbedingungen](https://aka.ms/comptermsandconditions) .
 
 **Was geschieht, wenn mehr als ein Beitrag dieselbe Bewertung erhält?**
 
@@ -114,5 +114,5 @@ Die Wettbewerbsplattform unterstützt derzeit nur die Einreichung von Beiträgen
 
 **Bewahren wir die Lösungen/Beiträge der Benutzer aus den Wettbewerben auf?**
 
-Benutzerbeiträge werden nur zu Bewertungszwecken, also zum Ermitteln der Gewinnerlösungen aufbewahrt. Weitere Informationen finden Sie in unseren [Geschäftsbedingungen](http://aka.ms/comptermsandconditions) .
+Benutzerbeiträge werden nur zu Bewertungszwecken, also zum Ermitteln der Gewinnerlösungen aufbewahrt. Weitere Informationen finden Sie in unseren [Geschäftsbedingungen](https://aka.ms/comptermsandconditions) .
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/10/2017
 ms.author: dekapur
-ms.openlocfilehash: 3ce47d631e8a2ec7daf96ef95200001e5d4f8327
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: f91a6b305a3d531aa1c733685f6d896ed07054ae
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42818580"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51257604"
 ---
 # <a name="create-a-standalone-cluster-running-on-windows-server"></a>Erstellen eines eigenständigen Clusters unter Windows Server
 Mithilfe von Azure Service Fabric können Sie Service Fabric-Cluster auf beliebigen virtuellen oder physischen Computern erstellen, auf denen Windows Server ausgeführt wird. So können Sie Service Fabric-Anwendungen in jeder Umgebung bereitstellen und ausführen, in der sich miteinander verbundene Windows Server-Computer befinden – lokal oder bei einem Cloudanbieter. Service Fabric stellt ein Setuppaket zum Erstellen von Service Fabric-Clustern bereit. Es wird als eigenständiges Paket für Windows Server bezeichnet.
@@ -27,7 +27,7 @@ Mithilfe von Azure Service Fabric können Sie Service Fabric-Cluster auf beliebi
 Dieser Artikel führt Sie durch den Vorgang zum Erstellen eines eigenständigen Service Fabric-Clusters.
 
 > [!NOTE]
-> Dieses eigenständige Windows Server-Paket ist im Handel erhältlich und für Produktionsbereitstellungen geeignet. Das Paket enthält unter Umständen neue Service Fabric-Features, die sich in der Vorschauphase befinden. Scrollen Sie nach unten zum Abschnitt [Features in der Vorschauphase in diesem Paket](#previewfeatures_anchor), um zur Liste mit den Vorschaufeatures zu gelangen. Sie können jetzt [eine Kopie des Endbenutzer-Lizenzvertrags herunterladen](http://go.microsoft.com/fwlink/?LinkID=733084).
+> Dieses eigenständige Windows Server-Paket ist im Handel erhältlich und für Produktionsbereitstellungen geeignet. Das Paket enthält unter Umständen neue Service Fabric-Features, die sich in der Vorschauphase befinden. Scrollen Sie nach unten zum Abschnitt [Features in der Vorschauphase in diesem Paket](#previewfeatures_anchor), um zur Liste mit den Vorschaufeatures zu gelangen. Sie können jetzt [eine Kopie des Endbenutzer-Lizenzvertrags herunterladen](https://go.microsoft.com/fwlink/?LinkID=733084).
 > 
 > 
 
@@ -35,7 +35,7 @@ Dieser Artikel führt Sie durch den Vorgang zum Erstellen eines eigenständigen 
 
 ## <a name="get-support-for-the-service-fabric-for-windows-server-package"></a>Support für das Service Fabric-Paket für Windows Server
 * Befragen Sie im [Azure Service Fabric-Forum](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=AzureServiceFabric?) die Community zum eigenständigen Service Fabric-Paket für Windows Server.
-* Erstellen Sie ein Ticket für [Professional Support für Service Fabric](http://support.microsoft.com/oas/default.aspx?prid=16146).  Weitere Informationen zu Professional Support von Microsoft finden Sie [hier](https://support.microsoft.com/en-us/gp/offerprophone?wa=wsignin1.0).
+* Erstellen Sie ein Ticket für [Professional Support für Service Fabric](https://support.microsoft.com/oas/default.aspx?prid=16146).  Weitere Informationen zu Professional Support von Microsoft finden Sie [hier](https://support.microsoft.com/en-us/gp/offerprophone?wa=wsignin1.0).
 * Support für dieses Paket erhalten Sie auch im Rahmen von [Microsoft Premier Support](https://support.microsoft.com/en-us/premier).
 * Weitere Informationen finden Sie unter [Supportoptionen für Azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-support).
 * Führen Sie zum Erfassen der Protokolle für den Support den [eigenständigen Service Fabric-Protokollsammler](service-fabric-cluster-standalone-package-contents.md) aus.
@@ -44,7 +44,7 @@ Dieser Artikel führt Sie durch den Vorgang zum Erstellen eines eigenständigen 
 
 ## <a name="download-the-service-fabric-for-windows-server-package"></a>Herunterladen des Service Fabric-Pakets für Windows Server
 Verwenden Sie zum Erstellen des Clusters das Service Fabric-Paket für Windows Server (ab Windows Server 2012 R2): <br>
-[Downloadlink: Service Fabric Standalone Package – Windows Server](http://go.microsoft.com/fwlink/?LinkId=730690)
+[Downloadlink: Service Fabric Standalone Package – Windows Server](https://go.microsoft.com/fwlink/?LinkId=730690)
 
 Informationen zum Inhalt des Pakets finden Sie [hier](service-fabric-cluster-standalone-package-contents.md).
 

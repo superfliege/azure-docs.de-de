@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/02/2018
 ms.author: yurid
-ms.openlocfilehash: b180acfb74f503447212044f0b6be5589e2dd452
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 454cfc97aa203d5de7b00f47e1f87fd0aed0d28a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44158788"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51255948"
 ---
 # <a name="azure-security-center-planning-and-operations-guide"></a>Planungs- und Betriebshandbuch für Azure Security Center
 Dieses Handbuch ist für IT-Experten, IT-Architekten, Informationssicherheitsanalysten und Cloudadministratoren konzipiert, deren Organisation Azure Security Center verwenden möchte.
@@ -126,7 +126,7 @@ Eine Sicherheitsrichtlinie definiert die gewünschte Konfiguration Ihrer Workloa
 
 Security Center-Richtlinien enthalten folgende Komponenten:
 - [Datensammlung:](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection) Agent-Bereitstellung und Datensammlungseinstellungen.
-- [Sicherheitsrichtlinie:](https://docs.microsoft.com/azure/security-center/security-center-policies) Eine Azure-Richtlinie, die festlegt, welche Kontrollen von Security Center überwacht und empfohlen werden. Sie können aber auch [Azure Policy](http://docs.microsoft.com/azure/azure-policy/azure-policy-introduction) verwenden, um neue Definitionen zu erstellen, zusätzliche Richtlinien zu definieren und verwaltungsgruppenübergreifende Richtlinien zuzuweisen.
+- [Sicherheitsrichtlinie:](https://docs.microsoft.com/azure/security-center/security-center-policies) Eine Azure-Richtlinie, die festlegt, welche Kontrollen von Security Center überwacht und empfohlen werden. Sie können aber auch [Azure Policy](https://docs.microsoft.com/azure/azure-policy/azure-policy-introduction) verwenden, um neue Definitionen zu erstellen, zusätzliche Richtlinien zu definieren und verwaltungsgruppenübergreifende Richtlinien zuzuweisen.
 - [E-Mail-Benachrichtigungen:](https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details) Sicherheitskontakte und Benachrichtigungseinstellungen.
 - [Tarif:](https://docs.microsoft.com/azure/security-center/security-center-pricing) Der gewählte Tarif (Free oder Standard) bestimmt, welche Security Center-Features für Ressourcen innerhalb des Gültigkeitsbereichs verfügbar sind. (Kann für Abonnements, Ressourcengruppen und Arbeitsbereiche angegeben werden.)
 
@@ -262,5 +262,5 @@ In diesem Dokument haben Sie erfahren, wie Sie die Einführung von Security Cent
 * [Überwachen der Sicherheitsintegrität in Azure Security Center:](security-center-monitoring.md) Erfahren Sie, wie Sie die Integrität Ihrer Azure-Ressourcen überwachen.
 * [Überwachen von Partnerlösungen mit Azure Security Center](security-center-partner-solutions.md) : Erfahren Sie, wie der Integritätsstatus Ihrer Partnerlösungen überwacht wird.
 * [Azure Security Center – Häufig gestellte Fragen:](security-center-faq.md) Hier finden Sie häufig gestellte Fragen zur Verwendung des Diensts.
-* [Azure Security Blog](http://blogs.msdn.com/b/azuresecurity/) (Blog zur Azure-Sicherheit): Hier finden Sie Blogbeiträge zur Azure-Sicherheit und -Compliance.
+* [Azure Security Blog](https://blogs.msdn.com/b/azuresecurity/) (Blog zur Azure-Sicherheit): Hier finden Sie Blogbeiträge zur Azure-Sicherheit und -Compliance.
 

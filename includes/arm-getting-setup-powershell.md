@@ -19,7 +19,7 @@ Sie erhalten den folgenden Informationstyp:
     PSRemotingProtocolVersion      2.2
 
 
-Überprüfen Sie, dass der Wert der **PSVersion** 3.0 oder 4.0 ist. Falls nicht, finden Sie weitere Informationen unter [Windows Management Framework 3.0](http://www.microsoft.com/download/details.aspx?id=34595) oder [Windows Management Framework 4.0](http://www.microsoft.com/download/details.aspx?id=40855).
+Überprüfen Sie, dass der Wert der **PSVersion** 3.0 oder 4.0 ist. Falls nicht, finden Sie weitere Informationen unter [Windows Management Framework 3.0](https://www.microsoft.com/download/details.aspx?id=34595) oder [Windows Management Framework 4.0](https://www.microsoft.com/download/details.aspx?id=40855).
 
 ### <a name="set-your-azure-account-and-subscription"></a>Festlegen Ihres Azure-Kontos und -Abonnements
 Wenn Sie noch kein Abonnement haben, können Sie Ihre [MSDN-Abonnentenvorteile](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) aktivieren oder sich für eine [kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial/) registrieren.

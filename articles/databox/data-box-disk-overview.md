@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: overview
-ms.date: 09/04/2018
+ms.date: 10/30/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand what Data Box Disk is and how it works so I can use it to import on-premises data into Azure.
-ms.openlocfilehash: 322c398bd6384821697e2b672825cc0805eb43ad
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: f965d455b3ada48caabb80458d44e841329cf787
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49092897"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51229610"
 ---
 # <a name="what-is-azure-data-box-disk-preview"></a>Was ist ein Azure Data Box-Datenträger? (Vorschau)
 
@@ -25,7 +25,7 @@ Sie können die Datenträger über den Data Box-Dienst im Azure-Portal schnell k
 
 > [!IMPORTANT]
 > - Data Box-Datenträger befinden sich in der Vorschauphase. Lesen Sie die [Azure-Vertragsbedingungen für Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/), bevor Sie diese Lösung bereitstellen. 
-> - Sie müssen sich für diesen Dienst registrieren. Navigieren Sie zum [Vorschauportal](http://aka.ms/azuredataboxfromdiskdocs), um sich zu registrieren.
+> - Sie müssen sich für diesen Dienst registrieren. Navigieren Sie zum [Vorschauportal](https://aka.ms/azuredataboxfromdiskdocs), um sich zu registrieren.
 > - Während der Vorschauphase kann der Data Box-Datenträger an Kunden in den USA und in der Europäischen Union gesendet werden. Weitere Informationen finden Sie unter [Regionale Verfügbarkeit](#region-availability).
 
 ## <a name="use-cases"></a>Anwendungsfälle
@@ -112,7 +112,7 @@ Während der Vorschauphase können per Data Box-Datenträger Daten in die folgen
 
 ## <a name="pricing"></a>Preise
 
-Während der Vorschauphase sind Data Box-Datenträger kostenlos verfügbar. Dies ändert sich, wenn Data Box-Datenträger die Phase der allgemeinen Verfügbarkeit erreichen.
+Informationen zu den Preisen finden Sie auf der [Seite mit der Preisübersicht](https://azure.microsoft.com/pricing/details/storage/databox/disk/).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

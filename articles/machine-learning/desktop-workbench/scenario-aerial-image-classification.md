@@ -12,12 +12,12 @@ services: machine-learning
 ms.workload: data-services
 ms.date: 12/13/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: 5ca47c8234239b56a2d829903828dda8220d53cb
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: e71de2d543c8f29b7195e74d574855bcbe739162
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46967607"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51260549"
 ---
 # <a name="aerial-image-classification"></a>Klassifizierung von Luftbildern
 
@@ -154,7 +154,7 @@ Wir erstellen nun das Speicherkonto, das die Projektdateien hostet, auf die HDIn
     az storage share create --account-name %STORAGE_ACCOUNT_NAME% --account-key %STORAGE_ACCOUNT_KEY% --name baitshare
     ```
 1. Laden Sie die Datei `settings.cfg` aus dem Unterverzeichnis „Code“ des Azure Machine Learning Workbench-Projekts in Ihrem bevorzugten Text-Editor, und fügen Sie den Speicherkontonamen und Schlüssel wie angegeben ein. Speichern und schließen Sie die `settings.cfg`-Datei.
-1. Wenn nicht bereits geschehen, laden Sie das Hilfsprogramm [AzCopy](http://aka.ms/downloadazcopy) herunter und installieren es. Stellen Sie sicher, dass sich die ausführbare AzCopy-Datei in Ihrem Systempfad befindet, indem Sie „AzCopy“ eingeben und die EINGABETASTE drücken, um die zugehörige Dokumentation anzuzeigen.
+1. Wenn nicht bereits geschehen, laden Sie das Hilfsprogramm [AzCopy](https://aka.ms/downloadazcopy) herunter und installieren es. Stellen Sie sicher, dass sich die ausführbare AzCopy-Datei in Ihrem Systempfad befindet, indem Sie „AzCopy“ eingeben und die EINGABETASTE drücken, um die zugehörige Dokumentation anzuzeigen.
 1. Geben Sie die folgenden Befehle aus, um alle Beispieldaten, vortrainierten Modelle und Modelltrainingsskripts in die entsprechenden Speicherorte in Ihrem Speicherkonto zu kopieren:
 
     ```

@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 11/14/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2126ff7ffd503e1d7b30997f3f32f30429cffefb
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 2d87642b93d58d92660a2df71f2561ffe502315a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42143021"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51257264"
 ---
 # <a name="deploy-storsimple-virtual-array---prepare-the-azure-portal"></a>Bereitstellen von StorSimple Virtual Array – Vorbereiten des Azure-Portals
 
@@ -43,7 +43,7 @@ Sehen Sie sich die folgenden Artikel in der angegebenen Reihenfolge an, um Ihr S
 | **#** | **Schritt** | **Aktion** | **Verwendete Dokumente** |
 | --- | --- | --- | --- |
 | 1. |**Einrichten des Azure-Portals** |Erstellen und konfigurieren Sie Ihren StorSimple-Geräte-Manager-Dienst, bevor Sie ein StorSimple Virtual Array bereitstellen. |[Vorbereiten des Portals](storsimple-virtual-array-deploy1-portal-prep.md) |
-| 2. |**Bereitstellen des Virtual Array** |Stellen Sie für Hyper-V ein StorSimple Virtual Array auf einem Hostsystem mit Hyper-V unter Windows Server 2012 R2, Windows Server 2012 oder Windows Server 2008 R2 bereit, und stellen Sie die Verbindung her. <br></br> <br></br> Stellen Sie für VMware ein StorSimple Virtual Array auf einem Hostsystem mit VMware ESXi 5.0, 5.5 oder 6.0 bereit, und stellen Sie eine Verbindung her.<br></br> |[Bereitstellen eines virtuellen Arrays in Hyper-V](storsimple-virtual-array-deploy2-provision-hyperv.md) <br></br> <br></br> [Bereitstellen eines virtuellen Arrays in VMware](storsimple-virtual-array-deploy2-provision-vmware.md) |
+| 2. |**Bereitstellen des Virtual Array** |Stellen Sie für Hyper-V ein StorSimple Virtual Array auf einem Hostsystem mit Hyper-V unter Windows Server 2012 R2, Windows Server 2012 oder Windows Server 2008 R2 bereit, und stellen Sie die Verbindung her. <br></br> <br></br> Stellen Sie für VMware ein StorSimple Virtual Array auf einem Hostsystem mit VMware ESXi 5.0, 5.5 oder 6.0 bereit, und stellen Sie eine Verbindung her.<br></br> |[Bereitstellen eines Virtual Arrays in Hyper-V](storsimple-virtual-array-deploy2-provision-hyperv.md) <br></br> <br></br> [Bereitstellen eines virtuellen Arrays in VMware](storsimple-virtual-array-deploy2-provision-vmware.md) |
 | 3. |**Einrichten des Virtual Array** |Führen Sie für Ihren Dateiserver das anfängliche Setup durch, registrieren Sie Ihren StorSimple-Dateiserver, und führen Sie die Geräteinstallation durch. Anschließend können Sie die SMB-Freigaben bereitstellen. <br></br> <br></br> Führen Sie für Ihren iSCSI-Server das anfängliche Setup durch, registrieren Sie Ihren StorSimple-iSCSI-Server, und führen Sie die Geräteinstallation durch. Anschließend können Sie die iSCSI-Volumes bereitstellen. |[Einrichten des virtuellen Arrays als Dateiserver](storsimple-virtual-array-deploy3-fs-setup.md)<br></br> <br></br>[Einrichten des virtuellen Arrays als iSCSI-Server](storsimple-virtual-array-deploy3-iscsi-setup.md) |
 
 Sie können jetzt mit der Einrichtung des Azure-Portals beginnen.
@@ -52,8 +52,8 @@ Sie können jetzt mit der Einrichtung des Azure-Portals beginnen.
 
 Die Prüfliste für die Konfiguration enthält die Informationen, die Sie vor der Konfiguration der Software auf dem StorSimple Virtual Array zusammenstellen müssen. Wenn Sie diese Informationen im Voraus sammeln, können Sie das StorSimple-Gerät in Ihrer Umgebung schneller bereitstellen. Welche der folgenden Prüflisten Sie benötigen, hängt davon ab, ob Sie das StorSimple Virtual Array als Dateiserver oder iSCSI-Server bereitstellen.
 
-* Laden Sie die PDF-Datei [StorSimple Virtual Array File Server Configuration Checklist](http://download.microsoft.com/download/E/E/6/EE690BB0-B442-4B84-8165-4731EE727ACF/MicrosoftAzureStorSimpleVirtualArrayFileServerConfigurationChecklist.pdf)(Konfigurationsprüfliste für StorSimple Virtual Array-Dateiserver) herunter.
-* Laden Sie die PDF-Datei [StorSimple Virtual Array iSCSI Server Configuration Checklist](http://download.microsoft.com/download/E/E/6/EE690BB0-B442-4B84-8165-4731EE727ACF/MicrosoftAzureStorSimpleVirtualArrayiSCSIServerConfigurationChecklist.pdf)(Konfigurationsprüfliste für StorSimple Virtual Array-iSCSI-Server) herunter.
+* Laden Sie die PDF-Datei [StorSimple Virtual Array File Server Configuration Checklist](https://download.microsoft.com/download/E/E/6/EE690BB0-B442-4B84-8165-4731EE727ACF/MicrosoftAzureStorSimpleVirtualArrayFileServerConfigurationChecklist.pdf)(Konfigurationsprüfliste für StorSimple Virtual Array-Dateiserver) herunter.
+* Laden Sie die PDF-Datei [StorSimple Virtual Array iSCSI Server Configuration Checklist](https://download.microsoft.com/download/E/E/6/EE690BB0-B442-4B84-8165-4731EE727ACF/MicrosoftAzureStorSimpleVirtualArrayiSCSIServerConfigurationChecklist.pdf)(Konfigurationsprüfliste für StorSimple Virtual Array-iSCSI-Server) herunter.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

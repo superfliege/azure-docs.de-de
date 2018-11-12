@@ -15,12 +15,12 @@ ms.workload: TBD
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c2d081604c0ca01f47c3ff2aab7477859d280963
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 21c10c4bf19d4bf72c4ec5005bb95353ed00c7aa
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23110168"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51256951"
 ---
 # <a name="install-updates-on-your-storsimple-virtual-array---azure-portal"></a>Installieren von Updates auf einem StorSimple Virtual Array – Azure-Portal
 
@@ -49,7 +49,7 @@ Führen Sie die folgenden Schritte aus, um das Softwareupdate aus dem Microsoft 
 
 #### <a name="to-download-the-update-or-the-hotfix"></a>So laden sie das Update oder den Hotfix herunter
 
-1. Starten Sie Internet Explorer, und navigieren Sie zu [http://catalog.update.microsoft.com](http://catalog.update.microsoft.com).
+1. Starten Sie Internet Explorer, und navigieren Sie zu [http://catalog.update.microsoft.com](https://catalog.update.microsoft.com).
 
 2. Falls Sie den Microsoft Update-Katalog zum ersten Mal auf diesem Computer verwenden, klicken Sie auf **Installieren** , wenn Sie zum Installieren des Add-Ons für den Microsoft Update-Katalog aufgefordert werden.
 
@@ -79,7 +79,7 @@ Verwenden Sie diese Methode zum Installieren von Updates auf einem Gerät, auf d
    
     ![Gerät aktualisieren](./media/storsimple-virtual-array-install-update/update1m.png)
 
-2. Geben Sie in **Updatedateipfad**den Dateinamen für das Update oder den Hotfix ein. Sie können auch zur Installationsdatei des Updates oder Hotfixes navigieren, sofern sie auf einer Netzwerkfreigabe abgelegt wurde. Klicken Sie auf **Übernehmen**.
+2. Geben Sie in **Updatedateipfad**den Dateinamen für das Update oder den Hotfix ein. Sie können auch zur Installationsdatei des Updates oder Hotfixes navigieren, sofern sie auf einer Netzwerkfreigabe abgelegt wurde. Klicken Sie auf **Anwenden**.
    
     ![Gerät aktualisieren](./media/storsimple-virtual-array-install-update/update2m.png)
 
