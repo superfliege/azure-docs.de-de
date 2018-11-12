@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/16/2018
 ms.author: bwren
-ms.openlocfilehash: b4f54358f4bc1db973d6fe7163411e3a313c3cf4
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: a0d543ebe435b616306690bfb5e3de63ecc1ff6c
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33887430"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51259121"
 ---
 # <a name="views-in-management-solutions-preview"></a>Ansichten in Verwaltungslösungen (Vorschau)
 > [!NOTE]
@@ -90,7 +90,7 @@ Beachten Sie, dass Sie die gesamte Ansichtsressource aus Ihrer exportierten Ansi
 * Variablen sollten in der Lösung definiert und in den entsprechenden Eigenschaften verwendet werden.
 
 ### <a name="log-analytics-api-version"></a>Log Analytics-API-Version
-Alle in einer Resource Manager-Vorlage definierten Log Analytics-Ressourcen verfügen über die Eigenschaft **apiVersion**, die die Version der API definiert, die von der Ressource verwendet werden soll.  Diese Version unterscheidet sich für Ansichten mit Abfragen, die die [ältere und die aktualisierte Abfragesprache](../log-analytics/log-analytics-log-search-upgrade.md) verwenden.  
+Alle in einer Resource Manager-Vorlage definierten Log Analytics-Ressourcen verfügen über die Eigenschaft **apiVersion**, die die Version der API definiert, die von der Ressource verwendet werden soll.  Diese Version unterscheidet sich für Ansichten mit Abfragen, die die [ältere und die aktualisierte Abfragesprache](../log-analytics/log-analytics-queries.md) verwenden.  
 
  In der folgenden Tabelle werden die Log Analytics-API-Versionen für Ansichten in älteren und aktualisierten Arbeitsbereichen angegeben: 
 

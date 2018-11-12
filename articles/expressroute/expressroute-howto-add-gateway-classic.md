@@ -4,29 +4,22 @@ description: Konfigurieren Sie ein VNet-Gateway für ein über das klassische Be
 documentationcenter: na
 services: expressroute
 author: charwen
-manager: carmonm
-editor: ''
-tags: azure-service-management
-ms.assetid: 85ee0bc1-55be-4760-bfb4-34d9f2c96f30
 ms.service: expressroute
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 03/21/2017
+ms.date: 11/05/2018
 ms.author: charwen
-ms.openlocfilehash: ec7e4a326bc0d5e9393db28c83c9d859a93dc8a3
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: d0425b68f1b241bde4b2100d13d60165e5a1f1fe
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42143811"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51255170"
 ---
 # <a name="configure-a-virtual-network-gateway-for-expressroute-using-powershell-classic"></a>Konfigurieren eines Gateways für ein virtuelles Netzwerk für ExpressRoute mit PowerShell (klassisch)
 > [!div class="op_single_selector"]
 > * [Resource Manager – PowerShell](expressroute-howto-add-gateway-resource-manager.md)
 > * [Klassisch – PowerShell](expressroute-howto-add-gateway-classic.md)
-> * [Video – Azure-Portal](http://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-vpn-gateway-for-your-virtual-network)
+> * [Video – Azure-Portal](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-vpn-gateway-for-your-virtual-network)
 > 
 > 
 

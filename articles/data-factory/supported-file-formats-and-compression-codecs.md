@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/21/2018
 ms.author: jingwang
-ms.openlocfilehash: 844440d22bc0a524e9e61bde457ee9f43fd367b2
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: 6cab6559cb38b7d6d1dc2105b694acbcac85108c
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42444611"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51262045"
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory"></a>Unterstützte Dateiformate und Komprimierungscodecs in Azure Data Factory
 
@@ -434,7 +434,7 @@ Wenn Sie ORC-Dateien analysieren oder die Daten im ORC-Format schreiben möchten
 ```
 
 > [!IMPORTANT]
-> Wenn Sie bei Kopiervorgängen mithilfe einer selbstgehosteten Integration Runtime-Infrastruktur, z.B. zwischen lokalen Datenspeichern und der Cloud, ORC-Dateien nicht **unverändert** kopieren, müssen Sie JRE 8 (Java Runtime Environment) auf Ihrem IR-Computer installieren. Ein 64-Bit-IR-Computer erfordert die 64-Bit-JRE. Beide Versionen finden Sie [hier](http://go.microsoft.com/fwlink/?LinkId=808605).
+> Wenn Sie bei Kopiervorgängen mithilfe einer selbstgehosteten Integration Runtime-Infrastruktur, z.B. zwischen lokalen Datenspeichern und der Cloud, ORC-Dateien nicht **unverändert** kopieren, müssen Sie JRE 8 (Java Runtime Environment) auf Ihrem IR-Computer installieren. Ein 64-Bit-IR-Computer erfordert die 64-Bit-JRE. Beide Versionen finden Sie [hier](https://go.microsoft.com/fwlink/?LinkId=808605).
 >
 
 Beachten Sie folgende Punkte:
@@ -478,7 +478,7 @@ Wenn Sie ORC-Dateien analysieren oder die Daten im ORC-Format schreiben möchten
 ```
 
 > [!IMPORTANT]
-> Wenn Sie bei Kopiervorgängen mithilfe einer selbstgehosteten Integration Runtime-Infrastruktur, z.B. zwischen lokalen Datenspeichern und der Cloud, Parquet-Dateien nicht **unverändert** kopieren, müssen Sie JRE 8 (Java Runtime Environment) auf Ihrem IR-Computer installieren. Ein 64-Bit-IR-Computer erfordert die 64-Bit-JRE. Beide Versionen finden Sie [hier](http://go.microsoft.com/fwlink/?LinkId=808605).
+> Wenn Sie bei Kopiervorgängen mithilfe einer selbstgehosteten Integration Runtime-Infrastruktur, z.B. zwischen lokalen Datenspeichern und der Cloud, Parquet-Dateien nicht **unverändert** kopieren, müssen Sie JRE 8 (Java Runtime Environment) auf Ihrem IR-Computer installieren. Ein 64-Bit-IR-Computer erfordert die 64-Bit-JRE. Beide Versionen finden Sie [hier](https://go.microsoft.com/fwlink/?LinkId=808605).
 >
 
 Beachten Sie folgende Punkte:

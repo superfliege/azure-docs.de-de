@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/30/2018
 ms.author: TomSh
-ms.openlocfilehash: a61f3572037b1c62ea5ed4e0ac4496b057e2b96d
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 7ead955be3835f4ce3e602fe27a06c00d014195c
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50249050"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51262198"
 ---
 # <a name="azure-database-security-overview"></a>Übersicht über die Sicherheit der Azure-Datenbank
 
@@ -35,7 +35,7 @@ Darüber hinaus bietet Microsoft noch weitere Verschlüsselungsmöglichkeiten f�
 
 Mit der Azure SQL-Datenbanküberwachung können Unternehmen Ereignisse in einem Überwachungsprotokoll in Azure Storage erfassen. SQL-Datenbanküberwachung kann auch in Microsoft Power BI integriert werden, um detaillierte Berichte und Analysen leichter zu ermöglichen.
 
-Azure SQL-Datenbanken können umfassend geschützt werden, um die meisten gesetzlichen oder sicherheitsbezogenen Anforderungen (einschließlich HIPAA, ISO 27001/27002 und PCI-DSS Level 1) zu erfüllen. Eine aktuelle Liste mit Sicherheitszertifizierungen finden Sie im [Microsoft Azure Trust Center](http://azure.microsoft.com/support/trust-center/services/).
+Azure SQL-Datenbanken können umfassend geschützt werden, um die meisten gesetzlichen oder sicherheitsbezogenen Anforderungen (einschließlich HIPAA, ISO 27001/27002 und PCI-DSS Level 1) zu erfüllen. Eine aktuelle Liste mit Sicherheitszertifizierungen finden Sie im [Microsoft Azure Trust Center](https://azure.microsoft.com/support/trust-center/services/).
 
 In diesem Artikel werden die Grundlagen für den Schutz von Microsoft Azure SQL-Datenbanken für strukturierte, tabellarische und relationale Daten erörtert. In diesem Artikel erhalten Sie vor allem die ersten Informationen zu den Ressourcen zum Schützen von Daten, zum Steuern des Zugriffs und für die proaktive Überwachung.
 
@@ -44,7 +44,7 @@ In diesem Artikel werden die Grundlagen für den Schutz von Microsoft Azure SQL-
 Mit SQL-Datenbank können Sie Ihre Daten mithilfe der folgenden Verschlüsselungsmöglichkeiten schützen:
 
 - Verschlüsseln von Daten während der Übertragung durch [Transport Layer Security (TLS)](https://support.microsoft.com/kb/3135244).
-- Verschlüsseln von ruhenden Daten durch [transparente Datenverschlüsselung](http://go.microsoft.com/fwlink/?LinkId=526242).
+- Verschlüsseln von ruhenden Daten durch [transparente Datenverschlüsselung](https://go.microsoft.com/fwlink/?LinkId=526242).
 - Verschlüsseln verwendeter Daten durch [Always Encrypted](https://msdn.microsoft.com/library/mt163865.aspx).
 
 Es gibt noch weitere Möglichkeiten zum Verschlüsseln Ihrer Daten:

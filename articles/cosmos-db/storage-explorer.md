@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/20/2018
 ms.author: jejiang
-ms.openlocfilehash: b45328425cff978377d5e05de487d42e786c063b
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 1e18db960b9e07ae412d0c41c4544ef6bb35977c
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37345106"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51261159"
 ---
 # <a name="manage-azure-cosmos-db-in-azure-storage-explorer"></a>Verwalten von Azure Cosmos DB in Azure Storage-Explorer
 
@@ -130,7 +130,7 @@ Indem Sie mit der rechten Maustaste auf ein Abonnement im Explorer-Bereich klick
 
 2. Wählen Sie **Unbegrenzt**, um den Partitionsschlüssel angeben zu können, und klicken Sie dann auf **OK**, um den Vorgang abzuschließen.
 
-    Wenn zum Erstellen einer Sammlung ein Partitionsschlüssel verwendet wird, kann der Partitionsschlüsselwert für die Auflistung nach Abschluss der Erstellung nicht mehr geändert werden. Informationen über Partitionsschlüsseleinstellungen finden Sie unter [Entwerfen für Partitionierung](partition-data.md#designing-for-partitioning).
+    Wenn zum Erstellen einer Sammlung ein Partitionsschlüssel verwendet wird, kann der Partitionsschlüsselwert für die Auflistung nach Abschluss der Erstellung nicht mehr geändert werden.
 
     ![Partitionsschlüssel](./media/storage-explorer/partitionkey.png)
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/05/2018
 ms.author: spelluru
-ms.openlocfilehash: 13535dae82ef2c8896dad7d6221553d15e4e6a95
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: e616df772bf11d1247f96c78bea2392252f5e5d0
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38573810"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51259750"
 ---
 # <a name="view-the-monthly-estimated-lab-cost-trend-in-azure-devtest-labs"></a>Anzeigen des monatlichen geschätzten Labkostentrends in Azure DevTest Labs
 Mithilfe des DevTest Labs-Features für das Kostenmanagement können Sie die Kosten Ihres Labs nachverfolgen. Dieser Artikel veranschaulicht, wie Sie das Diagramm **Monatlicher geschätzter Kostentrend** verwenden, um die bisherigen geschätzten Kosten für den aktuellen Kalendermonat sowie die veranschlagten Kosten am Monatsende für den aktuellen Kalendermonat anzuzeigen. Außerdem wird in diesem Artikel beschrieben, wie Sie die Labkosten besser verwalten können, indem Sie Ausgabenziele und Schwellenwerte festlegen, bei denen beim Erreichen des entsprechenden Werts das Melden der Ergebnisse durch DevTest Labs ausgelöst wird.
@@ -27,7 +27,7 @@ Mithilfe des DevTest Labs-Features für das Kostenmanagement können Sie die Kos
 ## <a name="viewing-the-monthly-estimated-cost-trend-chart"></a>Anzeigen des Diagramms „Monatlicher geschätzter Kostentrend“
 Führen Sie folgende Schritte aus, um das Diagramm „Monatlicher geschätzter Kostentrend“ anzuzeigen: 
 
-1. Melden Sie sich auf dem [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040)an.
+1. Melden Sie sich beim [Azure-Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) an.
 1. Wählen Sie ggf. **Alle Dienste** und dann in der Liste die Option **DevTest Labs**. (Ihr Lab wird im Dashboard unter Umständen bereits unter **Alle Ressourcen** angezeigt.)
 1. Wählen Sie in der Liste der Labs das gewünschte Lab aus.  
 1. Wählen Sie im Bereich **Übersicht** des Labs die Option **Konfiguration und Richtlinien** aus.   

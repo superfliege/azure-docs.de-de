@@ -14,12 +14,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 04/12/2017
 ms.author: cenkd;juliako
-ms.openlocfilehash: d08ac9f2cbdf98493b3132fa9dd3a3e973576451
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: e2d65c107d57d50bc15d5a1cd1698491bb607e25
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37098816"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51262232"
 ---
 # <a name="live-streaming-with-on-premises-encoders-that-create-multi-bitrate-streams"></a>Livestreaming mit lokalen Encodern, die Datenströme mit Mehrfachbitrate erstellen
 
@@ -54,7 +54,7 @@ Im folgenden Diagramm ist ein Livestreaming-Workflow dargestellt, der über eine
 ## <a id="scenario"></a>Allgemeines Livestreamingszenario
 Die folgenden Schritte beschreiben die Aufgaben zum Erstellen von häufig verwendeten Livestreaminganwendungen.
 
-1. Schließen Sie eine Videokamera an einen Computer an. Starten und konfigurieren Sie einen lokalen Liveencoder, der einen RTMP- oder Fragmentiertes MP4-Datenstrom (Smooth Streaming) mit Mehrfachbitrate ausgibt. Weitere Informationen finden Sie unter [Microsoft Azure Media Services RTMP-Support und Liveencoder](http://go.microsoft.com/fwlink/?LinkId=532824).
+1. Schließen Sie eine Videokamera an einen Computer an. Starten und konfigurieren Sie einen lokalen Liveencoder, der einen RTMP- oder Fragmentiertes MP4-Datenstrom (Smooth Streaming) mit Mehrfachbitrate ausgibt. Weitere Informationen finden Sie unter [Microsoft Azure Media Services RTMP-Support und Liveencoder](https://go.microsoft.com/fwlink/?LinkId=532824).
 
     Sie können diesen Schritt auch nach der Erstellung Ihres Kanals ausführen.
 2. Erstellen Sie einen Kanal, und starten Sie ihn.
@@ -105,7 +105,7 @@ Verwenden Sie die sekundäre URL, um die Beständigkeit und Fehlertoleranz des E
 
     Bei diesem Szenario senden beide Encoder Daten an primäre und sekundäre URLs. Dies bietet die höchste Zuverlässigkeit und Fehlertoleranz sowie Datenredundanz. Bei diesem Szenario kann sowohl ein Encoderausfall als auch eine Trennung der Verbindung toleriert werden. Dies gilt auch, wenn einer der Encoder nicht mehr funktioniert. Hierbei wird davon ausgegangen, dass die Encoder zeitlich synchronisiert sind und exakt die gleichen Daten bereitstellen.  
 
-Informationen zu RTMP-Liveencodern finden Sie unter [Azure Media Services RTMP Support and Live Encoders](http://go.microsoft.com/fwlink/?LinkId=532824)(in englischer Sprache).
+Informationen zu RTMP-Liveencodern finden Sie unter [Azure Media Services RTMP Support and Live Encoders](https://go.microsoft.com/fwlink/?LinkId=532824)(in englischer Sprache).
 
 #### <a name="ingest-urls-endpoints"></a>Erfassungs-URLs (Endpunkte)
 Ein Kanal stellt einen Eingabeendpunkt (Erfassungs-URL) dar, den Sie im Liveencoder angeben, damit dieser Datenströme an die Kanäle übertragen kann.   
@@ -187,7 +187,7 @@ In der folgenden Tabelle ist die Zuordnung der Kanalstatus zu den Abrechnungsmod
 | Kanalstatus | Portal-UI-Indikatoren | In Rechnung gestellt? |
 | --- | --- | --- | --- |
 | **Wird gestartet** |**Wird gestartet** |Nein (Übergangsstatus) |
-| **Wird ausgeführt** |**Bereit** (keine ausgeführten Programme)<p><p>oder<p>**Streaming** (mindestens ein ausgeführtes Programm) |Ja |
+| **Wird ausgeführt** |**Bereit** (keine ausgeführten Programme)<p><p>oder<p>**Streaming** (mindestens ein ausgeführtes Programm) |JA |
 | **Wird beendet** |**Wird beendet** |Nein (Übergangsstatus) |
 | **Beendet** |**Beendet** |Nein  |
 

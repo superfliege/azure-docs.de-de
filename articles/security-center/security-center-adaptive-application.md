@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2018
 ms.author: rkarlin
-ms.openlocfilehash: cd5530cf27b88f0f1ccba392c0ea2d714fedcd66
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: ddf9c5e30a27a829a74ccf0985dce30a68f9bbb7
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46129776"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51256647"
 ---
 # <a name="adaptive-application-controls-in-azure-security-center"></a>Adaptive Anwendungssteuerungen in Azure Security Center
 In dieser exemplarischen Vorgehensweise erfahren Sie, wie Sie die Anwendungssteuerung in Azure Security Center verwenden.
@@ -40,13 +40,13 @@ Mit adaptiven Anwendungssteuerungen können Sie eine Gruppe von Anwendungen defi
 1. Öffnen Sie das Dashboard **Security Center**.
 2. Wählen Sie im linken Bereich unter **Erweiterter Cloudschutz** die Option **Adaptive Anwendungssteuerung**.
 
-    ![Schutz](./media/security-center-adaptive-application/security-center-adaptive-application-fig1-new.png)
+    ![Verteidigung](./media/security-center-adaptive-application/security-center-adaptive-application-fig1-new.png)
 
 Die Seite **Adaptive Anwendungssteuerung** wird angezeigt.
 
-![Steuerung](./media/security-center-adaptive-application/security-center-adaptive-application-fig2.png)
+![controls](./media/security-center-adaptive-application/security-center-adaptive-application-fig2.png)
 
-Der Abschnitt **VM-Gruppen** enthält drei Registerkarten:
+Der Abschnitt **Groups of VMs** (VM-Gruppen) enthält drei Registerkarten:
 
 * **Konfiguriert**: Liste der Gruppen mit den virtuellen Computern, für die die Anwendungssteuerung bereits konfiguriert ist.
 * **Empfohlen**: Liste der Gruppen, für die die Anwendungssteuerung empfohlen wird. Security Center nutzt Machine Learning, um geeignete virtuelle Computer für die Anwendungssteuerung basierend darauf zu ermitteln, ob die virtuellen Computer konsistent die gleichen Anwendungen ausführen.
@@ -160,4 +160,4 @@ In diesem Dokument haben Sie erfahren, wie Sie Anwendungen, die auf virtuellen A
 * [Verstehen der Sicherheitswarnungen in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-alerts-type). Hier finden Sie Informationen zu den unterschiedlichen Arten von Sicherheitswarnungen.
 * [Azure Security Center – Handbuch zur Problembehandlung](https://docs.microsoft.com/azure/security-center/security-center-troubleshooting-guide). Hier erfahren Sie, wie Sie allgemeine Probleme in Security Center behandeln.
 * [Azure Security Center – häufig gestellte Fragen](security-center-faq.md)festgelegt ist. Enthält häufig gestellte Fragen zur Verwendung des Diensts.
-* [Azure Security-Blog](http://blogs.msdn.com/b/azuresecurity/). Hier finden Sie Blogbeiträge zur Sicherheit und Compliance von Azure.
+* [Azure Security-Blog](https://blogs.msdn.com/b/azuresecurity/). Hier finden Sie Blogbeiträge zur Sicherheit und Compliance von Azure.

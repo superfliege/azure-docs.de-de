@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 09/26/2018
+ms.date: 10/29/2018
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect remote users to my VNets using Virtual WAN and I don't want to go through a Virtual WAN partner.
-ms.openlocfilehash: 8a4c0c1426200e6c2d5041131fd0dd9cde4761cf
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: e3d1a79dc7dd775cea71df2f36a5f34d85f3e240
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47409285"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51261807"
 ---
 # <a name="tutorial-create-a-point-to-site-connection-using-azure-virtual-wan-preview"></a>Tutorial: Erstellen einer Point-to-Site-Verbindung per Azure Virtual WAN (Vorschauversion)
 
@@ -79,7 +79,7 @@ Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Network
 
 ## <a name="openvwan"></a>2. Erstellen eines virtuellen WAN
 
-Navigieren Sie in einem Browser zum [Azure-Portal (Vorschauversion)](http://aka.ms/azurevirtualwanpreviewfeatures), und melden Sie sich mit Ihrem Azure-Konto an.
+Navigieren Sie in einem Browser zum [Azure-Portal (Vorschauversion)](https://aka.ms/azurevirtualwanpreviewfeatures), und melden Sie sich mit Ihrem Azure-Konto an.
 
 [!INCLUDE [Create a virtual WAN](../../includes/virtual-wan-tutorial-vwan-include.md)]
 
@@ -111,12 +111,13 @@ Eine P2S-Konfiguration definiert die Parameter für das Herstellen der Verbindun
 
 ## <a name="hub"></a>5. Bearbeiten der Hub-Zuweisung
 
-1. Klicken Sie auf der Seite für Ihr Virtual WAN auf **Point-to-Site-Konfigurationen**.
-2. Unter **Hub** wird eine Liste mit Konfigurationen angezeigt, für die noch keine Verbindung mit einem Hub erstellt wurde.
-3. Wählen Sie die Konfiguration aus, die Sie zuordnen möchten, und klicken Sie auf **Edit hub assignment** (Hub-Zuweisung bearbeiten).
-4. Wählen Sie in der Dropdownliste den bzw. die Hubs aus, denen Sie die Konfiguration zuordnen möchten.
-5. Klicken Sie auf **Zuweisen**. 
-6. Es kann bis zu 30 Minuten dauern, bis der Vorgang abgeschlossen ist.
+1. Klicken Sie auf der Seite für Ihr virtuelles WAN auf **Hubs**.
+2. Wählen Sie den Hub aus, dem Sie die Point-to-Site-Konfiguration zuweisen möchten.
+3. Klicken Sie auf **„...“**, und wählen Sie **Virtuellen Hub bearbeiten**.
+4. Aktivieren Sie **Point-to-Site-Gateway einschließen**.
+5. Wählen Sie **Gatewayskalierungseinheiten** und die **Point-to-Site-Konfiguration** sowie einen **Adresspool** für die Clients aus.
+6. Klicken Sie auf **Confirm** (Bestätigen). 
+7. Dieser Vorgang kann bis zu 30 Minuten dauern.
 
 ## <a name="vnet"></a>6. Verbinden Ihres VNET mit einem Hub
 
@@ -135,9 +136,10 @@ In diesem Schritt erstellen Sie die Peeringverbindung zwischen Ihrem Hub und ein
 
 Verwenden Sie das VPN-Profil, um Ihre Clients zu konfigurieren.
 
-1. Klicken Sie auf der Seite für Ihr Virtual WAN auf **Point-to-Site-Konfigurationen**.
-2. Klicken Sie oben auf der Seite auf **Point-to-Site-Profil herunterladen**. 
-3. Nachdem die Erstellung der Datei abgeschlossen wurde, können Sie auf den Link klicken, um sie herunterzuladen.
+1. Klicken Sie auf der Seite für Ihr virtuelles WAN auf **Hubs**.
+2. Wählen Sie den Hub aus, für den Sie das Profil herunterladen möchten.
+3. Klicken Sie auf **„...“**, und wählen Sie **Profil herunterladen**. 
+4. Nachdem die Erstellung der Datei abgeschlossen wurde, können Sie auf den Link klicken, um sie herunterzuladen.
 4. Verwenden Sie die Profildatei, um die Point-to-Site-Clients zu konfigurieren.
 
 ## <a name="device"></a>8. Konfigurieren von Point-to-Site-Clients

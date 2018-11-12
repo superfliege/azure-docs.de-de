@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 06/08/2017
 ms.author: trinadhk
-ms.openlocfilehash: 32eba23202eca1c71c4f3b01dcb364281cb2eb60
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 62b2744494fcd4d98bf75892dc95d86130dd04bb
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "40246502"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51261739"
 ---
 # <a name="security-features-to-help-protect-hybrid-backups-that-use-azure-backup"></a>Sicherheitsfeatures für den Schutz von Hybridsicherungen mit Azure Backup
 Die Sorgen bezüglich Sicherheitsproblemen wie Schadsoftware, Ransomware und Eindringlingen werden immer größer. Diese Sicherheitsprobleme können erhebliche Daten- und finanzielle Verluste mit sich bringen. Zum Schutz gegen solche Angriffe bietet Azure Backup jetzt neue Sicherheitsfeatures für den Schutz von Hybridsicherungen. In diesem Artikel werden Aktivierung und Verwendung dieser Features mit einem Azure Recovery Services-Agent und Azure Backup Server beschrieben. Zu den Features zählen:
@@ -114,6 +114,6 @@ Die in diesem Artikel genannten Sicherheitsfeatures bieten Abwehrmechanismen geg
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Erste Schritte mit Azure Recovery Services-Tresor](backup-azure-vms-first-look-arm.md), um diese Features zu aktivieren.
-* [Laden Sie den neuesten Azure Recovery Services-Agent herunter](http://aka.ms/azurebackup_agent), um Ihre Windows-Computer und Ihre Sicherungsdaten gegen Angriffe zu schützen.
+* [Laden Sie den neuesten Azure Recovery Services-Agent herunter](https://aka.ms/azurebackup_agent), um Ihre Windows-Computer und Ihre Sicherungsdaten gegen Angriffe zu schützen.
 * [Laden Sie die neueste Version von Azure Backup Server herunter](https://aka.ms/latest_azurebackupserver), um Ihre Workloads und Sicherungsdaten gegen Angriffe zu schützen.
 * Laden Sie [UR12 für System Center 2012 R2 Data Protection Manager](https://support.microsoft.com/help/3209592/update-rollup-12-for-system-center-2012-r2-data-protection-manager) oder [UR2 für System Center 2016 Data Protection Manager](https://support.microsoft.com/help/3209593/update-rollup-2-for-system-center-2016-data-protection-manager) herunter, um Workloads und Ihre Sicherungsdaten vor Angriffen zu schützen.

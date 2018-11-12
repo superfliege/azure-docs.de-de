@@ -16,15 +16,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/03/2016
 ms.author: cephalin
-ms.openlocfilehash: 3ec67488b238118067e771baf3dd5124308a84cf
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: b1ae61b5372fa1061448c02e7b5c589a167888c9
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44296192"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51237212"
 ---
 # <a name="troubleshoot-slow-web-app-performance-issues-in-azure-app-service"></a>Problembehandlung bei niedriger Web-App-Leistung in Azure App Service
-In diesem Artikel erfahren Sie, wie Sie Web-App-Leistungsprobleme in [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714)beheben.
+In diesem Artikel erfahren Sie, wie Sie Web-App-Leistungsprobleme in [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714)beheben.
 
 Wenn Sie beim Lesen dieses Artikels feststellen, dass Sie weitere Hilfe benötigen, können Sie Ihre Frage im [MSDN Azure-Forum oder im Stack Overflow-Forum](https://azure.microsoft.com/support/forums/)stellen, um dort Hilfe von Azure-Experten zu erhalten. Alternativ dazu haben Sie die Möglichkeit, einen Azure-Supportfall zu erstellen. Rufen Sie die [Azure-Support-Website](https://azure.microsoft.com/support/options/) auf, und klicken Sie auf **Support erhalten**.
 

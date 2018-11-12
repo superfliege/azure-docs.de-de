@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: ponatara
-ms.openlocfilehash: 3e26e40c26a27fdab1ec565dd4112b40acdd17d2
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: ae212bebf5a34e9a80f49a750735137d7a8814be
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39213366"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51232663"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms-after-migration-to-azure"></a>Einrichten der Notfallwiederherstellung für Azure-VMs nach der Migration in Azure 
 
@@ -32,7 +32,7 @@ Bevor Sie die Notfallwiederherstellung einrichten, stellen Sie sicher, dass die 
 Der Azure-[VM-Agent](../virtual-machines/extensions/agent-windows.md) muss auf der VM installiert sein, damit Site Recovery sie replizieren kann.
 
 
-1. Um den VM-Agent in VMs unter Windows zu installieren, laden Sie das [Agent-Installationsprogramm](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409) herunter, und führen Sie es aus. Zum Durchführen der Installation benötigen Sie Administratorberechtigungen für die VM.
+1. Um den VM-Agent in VMs unter Windows zu installieren, laden Sie das [Agent-Installationsprogramm](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409) herunter, und führen Sie es aus. Zum Durchführen der Installation benötigen Sie Administratorberechtigungen für die VM.
 2. Um den VM-Agent in VMs mit Linux zu installieren, installieren Sie den neuesten [Linux-Agent](../virtual-machines/extensions/agent-linux.md). Zum Durchführen der Installation benötigen Sie Administratorberechtigungen. Es wird empfohlen, den Agent aus dem Repository Ihrer Distribution zu installieren. Es wird nicht empfohlen, den Linux-VM-Agent direkt von GitHub zu installieren. 
 
 

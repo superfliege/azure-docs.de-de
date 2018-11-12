@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: pbutlerm
-ms.openlocfilehash: f12a15a0d739ae6e98be3871fa8bb4104f49565c
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 74cde720af012b3355b813cf6da2b2bdf10b9b8e
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48806734"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51257206"
 ---
 # <a name="publish-a-cortana-intelligence-offer-using-the-cloud-partner-portal"></a>Veröffentlichen eines Cortana Intelligence-Angebots über das Cloud-Partnerportal
 
@@ -29,7 +29,7 @@ In diesem Artikel ist beschrieben, wie ein Cortana Intelligence-Angebot über da
 
 Das Cloud-Partnerportal unterstützt rollenbasierten Zugriff auf das Portal, sodass Mitwirkende bei der Veröffentlichung eines Angebots zusammenarbeiten können. Weitere Informationen finden Sie unter [Verwalten von Benutzern im Cloud-Partnerportal](./cloud-partner-portal-manage-users.md).
 
-Bevor ein Angebot im Auftrag eines Herausgeberkontos veröffentlicht werden kann, muss eine der Personen mit \"Besitzer\"-Rolle bestätigen, dass die [Nutzungsbedingungen](https://azure.microsoft.com/support/legal/website-terms-of-use/), die [Datenschutzerklärung von Microsoft](http://www.microsoft.com/privacystatement/default.aspx) und die [Microsoft Azure Certified-Programmvereinbarung](https://azure.microsoft.com/support/legal/marketplace/certified-program-agreement/) eingehalten werden.
+Bevor ein Angebot im Auftrag eines Herausgeberkontos veröffentlicht werden kann, muss eine der Personen mit \"Besitzer\"-Rolle bestätigen, dass die [Nutzungsbedingungen](https://azure.microsoft.com/support/legal/website-terms-of-use/), die [Datenschutzerklärung von Microsoft](https://www.microsoft.com/privacystatement/default.aspx) und die [Microsoft Azure Certified-Programmvereinbarung](https://azure.microsoft.com/support/legal/marketplace/certified-program-agreement/) eingehalten werden.
 
 ## <a name="to-start-creating-a-cortana-inteligence-offer"></a>So beginnen Sie mit dem Erstellen eines Cortana Intelligence-Angebots
 
@@ -216,7 +216,7 @@ Partner können zwei Typen von Testversionen in AppSource bereitstellen.
 
         - [Bestandsoptimierung bei Neal Analytics](https://appsource.microsoft.com/product/web-apps/neal_analytics.8066ad01-1e61-40cd-bd33-9b86c65fa73a?tab=Overview&tag=CISHome)
 
-- Die Option **Testversion anfordern** (**partnergesteuerte Testversionen**) erfordert, dass der Kunde ein Kontaktformular ausfüllt, um Partnernachverfolgung zu ermöglichen. Der Partner verfolgt nach und stellt eine Demonstration oder Testversion der App bereit. Weitere Informationen finden Sie im Video [AppSource trial experience walkthrough](http://aka.ms/trialexperienceforwebapps), das eine allgemeine Übersicht bietet.
+- Die Option **Testversion anfordern** (**partnergesteuerte Testversionen**) erfordert, dass der Kunde ein Kontaktformular ausfüllt, um Partnernachverfolgung zu ermöglichen. Der Partner verfolgt nach und stellt eine Demonstration oder Testversion der App bereit. Weitere Informationen finden Sie im Video [AppSource trial experience walkthrough](https://aka.ms/trialexperienceforwebapps), das eine allgemeine Übersicht bietet.
 
 >[!Note]
 >Durch Daten lässt sich belegen, dass **kundengesteuerte Testversionen** ein höhere Potenzial zur Leadgenerierung haben als **partnergesteuerte Testversionen**.
@@ -234,7 +234,7 @@ In diesem Feld werden die Länder/Regionen bestimmt, in denen Ihr Angebot für T
 
 ### <a name="supported-languages"></a>Unterstützte Sprachen
 
-Wählen Sie die Sprachen, die von Ihrer App unterstützt werden. Wenn Ihre App Sprachen unterstützt, die nicht in dieser Liste enthalten sind, veröffentlichen Sie Ihr Angebot, und senden Sie uns eine E-Mail (<appsource@microsoft.com>), um uns über die Unterstützung anderer Sprachen zu informieren.
+Wählen Sie die Sprachen aus, die von Ihrer App unterstützt werden. Wenn Ihre App Sprachen unterstützt, die nicht in dieser Liste enthalten sind, veröffentlichen Sie Ihr Angebot, und senden Sie uns eine E-Mail (<appsource@microsoft.com>), um uns über die Unterstützung anderer Sprachen zu informieren.
 
 ### <a name="app-version"></a>App-Version
 
@@ -283,7 +283,7 @@ Geben Sie die URL für die Datenschutzrichtlinie Ihrer App ein.
 
 ### <a name="terms-of-use"></a>Nutzungsbedingungen
 
-Geben Sie die Nutzungsbedingungen Ihrer App an. AppSource-Kunden müssen diese Bedingungen akzeptieren, bevor sie Ihre App testen können.
+Geben Sie die Nutzungsbedingungen Ihrer App ein. AppSource-Kunden müssen diese Bedingungen akzeptieren, bevor sie Ihre App testen können.
 
 >[!Note]
 >In diesem Feld wird Inhalt mit HTML-Tags unterstützt, z. B.  <p\>, <h1\> und <li\>. Mit diesen Tags können Sie den jeweiligen Inhalt formatieren. 

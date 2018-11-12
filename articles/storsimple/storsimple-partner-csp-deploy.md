@@ -14,14 +14,14 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/08/2017
 ms.author: alkohli
-ms.openlocfilehash: c8cb51093142146fc7d43b51a62d949f6cc38988
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0dac86a696599a391cb243ad11e16931e00b8921
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23109578"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238929"
 ---
-# <a name="deploy-storsimple-virtual-array-for-cloud-solution-provider-program"></a>Bereitstellen von StorSimple Virtual Array für das Cloudlösungsanbieter-Programm
+# <a name="deploy-storsimple-virtual-array-for-cloud-solution-provider-program"></a>Bereitstellen von StorSimple Virtual Array für das Cloud Solution Provider-Programm
 
 ## <a name="overview"></a>Übersicht
 
@@ -34,13 +34,13 @@ Dieser Artikel beschreibt, wie ein CSP-Partner einen neuen Kunden oder einem Bes
 Bevor Sie beginnen, müssen diese Voraussetzungen erfüllt sein:
 
 - Sie sind beim CSP-Programm registriert.
-- Sie verfügen über gültige [Partner Center](http://partnercenter.microsoft.com/)-Anmeldeinformationen. Die Anmeldeinformationen ermöglichen Ihnen das Anmelden beim Partnerportal, um Neukunden hinzuzufügen, Kunden zu suchen oder im Partnerdashboard zu einem Kundenkonto zu wechseln. Der CSP kann im Auftrag des Kunden im Azure-Portal als StorSimple-Administrator fungieren.
+- Sie verfügen über gültige [Partner Center](https://partnercenter.microsoft.com/)-Anmeldeinformationen. Die Anmeldeinformationen ermöglichen Ihnen das Anmelden beim Partnerportal, um Neukunden hinzuzufügen, Kunden zu suchen oder im Partnerdashboard zu einem Kundenkonto zu wechseln. Der CSP kann im Auftrag des Kunden im Azure-Portal als StorSimple-Administrator fungieren.
                              
 ## <a name="add-a-customer"></a>Hinzufügen eines Kunden
 
 Wenn Sie einen Kunden hinzufügen, wird automatisch ein Abonnement erstellt. Um einen Kunden hinzuzufügen (und automatisch ein Abonnement zu erstellen), führen Sie im Partnerportal die folgenden Schritte aus.
 
-1. Wechseln Sie zum [Partner Center](http://partnercenter.microsoft.com/), und melden Sie sich mit Ihren CSP-Anmeldeinformationen an. Klicken Sie auf **Dashboard**.
+1. Wechseln Sie zum [Partner Center](https://partnercenter.microsoft.com/), und melden Sie sich mit Ihren CSP-Anmeldeinformationen an. Klicken Sie auf **Dashboard**.
 
      ![Dashboard im Partner Center](./media/storsimple-partner-csp-deploy/image1.png)
                               
@@ -77,7 +77,7 @@ Wenn Sie einen Kunden hinzufügen, wird automatisch ein Abonnement erstellt. Um 
 
 Möglicherweise gibt es schon einen Bestandskunden, dem Sie ein Abonnement hinzufügen müssen. Um einem Bestandskunden ein Abonnement hinzuzufügen, führen Sie im Partnerportal die folgenden Schritte aus.
 
-1. Wechseln Sie zum [Partner Center](http://partnercenter.microsoft.com/), und melden Sie sich mit Ihren CSP-Anmeldeinformationen an. Klicken Sie auf **Dashboard**.
+1. Wechseln Sie zum [Partner Center](https://partnercenter.microsoft.com/), und melden Sie sich mit Ihren CSP-Anmeldeinformationen an. Klicken Sie auf **Dashboard**.
 
      ![Dashboard im Partner Center](./media/storsimple-partner-csp-deploy/image1.png)
                               

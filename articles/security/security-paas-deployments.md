@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/21/2018
 ms.author: terrylan
-ms.openlocfilehash: 35650eec65fa9181d035c52e6b466985b483500c
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 98eee29dc6810d35ee1792c601e6d2f147602cae
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47036506"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51262181"
 ---
 # <a name="securing-paas-deployments"></a>Schützen von PaaS-Bereitstellungen
 
@@ -151,7 +151,7 @@ Webanwendungen sind zunehmend Ziele böswilliger Angriffe, die allgemein bekannt
 ## <a name="monitor-the-performance-of-your-applications"></a>Überwachen der Leistung Ihrer Anwendungen
 Überwachung ist das Erfassen und Analysieren von Daten, um die Leistung, Integrität und Verfügbarkeit Ihrer Anwendung zu bestimmen. Eine effektive Überwachungsstrategie hilft Ihnen, den detaillierten Einsatz der verschiedenen Komponenten Ihrer Anwendung zu verstehen. Sie hilft Ihnen, die Betriebszeit zu erhöhen, da Sie über kritische Probleme benachrichtigt werden und diese beheben können, bevor sie auftreten. Außerdem können Sie Anomalien erkennen, die möglicherweise sicherheitsrelevant sind.
 
-Verwenden Sie [Azure Application Insights](http://azure.microsoft.com/documentation/services/application-insights), um die Verfügbarkeit, Leistung und Nutzung Ihrer in der Cloud oder lokal gehosteten Anwendung zu überwachen. Durch Verwendung von Application Insights können Sie Fehler in Ihrer Anwendung schnell erkennen und diagnostizieren, ohne darauf warten zu müssen, dass diese Fehler von Benutzern gemeldet werden. Mit den gesammelten Informationen können Sie fundierte Entscheidungen zu Wartung und Verbesserung Ihrer Anwendung vornehmen.
+Verwenden Sie [Azure Application Insights](https://azure.microsoft.com/documentation/services/application-insights), um die Verfügbarkeit, Leistung und Nutzung Ihrer in der Cloud oder lokal gehosteten Anwendung zu überwachen. Durch Verwendung von Application Insights können Sie Fehler in Ihrer Anwendung schnell erkennen und diagnostizieren, ohne darauf warten zu müssen, dass diese Fehler von Benutzern gemeldet werden. Mit den gesammelten Informationen können Sie fundierte Entscheidungen zu Wartung und Verbesserung Ihrer Anwendung vornehmen.
 
 Application Insights verfügt über umfassende Tools für die Interaktion mit den gesammelten Daten. Application Insights speichert die Daten in einem gemeinsamen Repository. Sie können gemeinsame Funktionen wie Warnungen, Dashboards und umfassende Analysen mit der Log Analytics-Abfragesprache nutzen.
 
@@ -162,7 +162,7 @@ In diesem Artikel standen die Sicherheitsvorteile einer Azure-PaaS-Bereitstellun
 
 - [Azure App Service](security-paas-applications-using-app-services.md)
 - [Azure SQL-Datenbank und Azure SQL Data Warehouse](security-paas-applications-using-sql.md)
-- [Azure Storage](security-paas-applications-using-storage.md)
+- [Azure Storage (in englischer Sprache)](security-paas-applications-using-storage.md)
 - Azure Redis Cache
 - Azure-Servicebus
 - Web Application Firewalls
@@ -170,7 +170,7 @@ In diesem Artikel standen die Sicherheitsvorteile einer Azure-PaaS-Bereitstellun
 Weitere bewährte Methoden für die Sicherheit, die Sie beim Entwerfen, Bereitstellen und Verwalten Ihrer Cloudlösungen mithilfe von Azure verwenden können, finden Sie unter [Sicherheit in Azure: bewährte Methoden und Muster](security-best-practices-and-patterns.md).
 
 Die folgenden Ressourcen enthalten allgemeinere Informationen zur Sicherheit in Azure und verwandten Microsoft-Diensten:
-* [Azure Security Team Blog](https://blogs.msdn.microsoft.com/azuresecurity/) (Blog für Teams, die für die Azure-Sicherheit verantwortlich sind): Hier finden Sie Informationen über den aktuellen Stand der Azure-Sicherheit.
+* [Blog des Azure-Sicherheitsteams](https://blogs.msdn.microsoft.com/azuresecurity/): Hier finden Sie Informationen über den aktuellen Stand der Azure-Sicherheit.
 * [Microsoft Security Response Center](https://technet.microsoft.com/library/dn440717.aspx): Hier können Sie Microsoft-Sicherheitsrisiken, z.B. Probleme mit Azure, melden oder eine E-Mail an secure@microsoft.com schreiben.
 
 <!--Image references-->

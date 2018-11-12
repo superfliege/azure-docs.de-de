@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/14/2018
 ms.author: dimazaid
-ms.openlocfilehash: 14b9a4ed66995a73f00234f4b25f52fccbcbe556
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: e055b51af19ad3958c0c9155490c598ed0f4a80e
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38562603"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51235206"
 ---
 # <a name="tutorial-push-notifications-to-windows-phone-apps-by-using-azure-notification-hubs"></a>Tutorial: Erste Schritte mit Azure Notification Hubs für Windows Phone-Apps
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
@@ -61,7 +61,7 @@ Das Abschließen dieses Lernprogramms ist eine Voraussetzung für alle anderen N
     Der Hub ist jetzt erstellt und so konfiguriert, dass nicht authentifizierte Benachrichtigungen für Windows Phone gesendet werden.
 
     > [!NOTE]
-    > Dieses Lernprogramm verwendet MPNS im nicht authentifizierten Modus. Im nicht authentifizierten MPNS-Modus liegen Einschränkungen für Benachrichtigungen vor, die Sie an jeden Kanal senden können. Notification Hubs unterstützt den [authentifizierten MPNS-Modus](http://msdn.microsoft.com/library/windowsphone/develop/ff941099.aspx) , wodurch Sie Ihr Zertifikat hochladen können.
+    > Dieses Lernprogramm verwendet MPNS im nicht authentifizierten Modus. Im nicht authentifizierten MPNS-Modus liegen Einschränkungen für Benachrichtigungen vor, die Sie an jeden Kanal senden können. Notification Hubs unterstützt den [authentifizierten MPNS-Modus](https://msdn.microsoft.com/library/windowsphone/develop/ff941099.aspx) , wodurch Sie Ihr Zertifikat hochladen können.
 
 ## <a name="create-a-windows-phone-application"></a>Erstellen einer Windows Phone-Anwendung
 In diesem Abschnitt erstellen Sie eine Windows Phone-Anwendung, die sich selbst bei Ihrem Notification Hub registriert. 

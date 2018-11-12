@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 02/24/2017
 ms.author: juliako
-ms.openlocfilehash: 9a69253129cdedc4f5d7e736d5bd8d6a68f95a1e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 01a02296354ebe3d60f0e1fda6a6da8554a265fd
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "22986575"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51239065"
 ---
 # <a name="azure-sdk-for-net-27-and-net-271-release-notes"></a>Versionshinweise zum Azure SDK für .NET 2.7 und .NET 2.7.1
 ## <a name="overview"></a>Übersicht
@@ -28,11 +28,11 @@ Dieses Dokument enthält auch die Versionshinweise für das Azure SDK für .NET�
 
 Azure SDK 2.7 wird nur in Visual Studio 2015 und Visual Studio 2013 unterstützt. [Azure SDK 2.6](https://azure.microsoft.com/downloads/) ist das letzte unterstützte SDK für Visual Studio 2012.
 
-Ausführliche Informationen zu dieser Version finden Sie im [Ankündigungsbeitrag zu Azure SDK 2.7](https://azure.microsoft.com/blog/2015/07/20/announcing-the-azure-sdk-2-7-for-net/) und im [Ankündigungsbeitrag zu Azure SDK 2.7.1](http://go.microsoft.com/fwlink/?LinkId=623850).
+Ausführliche Informationen zu dieser Version finden Sie im [Ankündigungsbeitrag zu Azure SDK 2.7](https://azure.microsoft.com/blog/2015/07/20/announcing-the-azure-sdk-2-7-for-net/) und im [Ankündigungsbeitrag zu Azure SDK 2.7.1](https://go.microsoft.com/fwlink/?LinkId=623850).
 
 ## <a name="azure-sdk-for-net-27"></a>Azure SDK für .NET 2.7
 ### <a name="sign-in-improvements-for-visual-studio-2015"></a>Verbesserungen bei der Anmeldung für Visual Studio 2015
-Azure SDK 2.7 für Visual Studio 2015 unterstützt die neuen Identitätsverwaltungsfunktionen in Visual Studio 2015.  Dies umfasst die Unterstützung für Konten, bei denen der Zugriff auf Azure über die rollenbasierte Access Control, Cloud-Lösungsanbieter und DreamSpark erfolgt, und für andere Konto- und Abonnementtypen.
+Azure SDK 2.7 für Visual Studio 2015 unterstützt die neuen Identitätsverwaltungsfunktionen in Visual Studio 2015.  Dies umfasst die Unterstützung für Konten, bei denen der Zugriff auf Azure über die rollenbasierte Access Control, Cloud Solution Provider und DreamSpark erfolgt, und für andere Konto- und Abonnementtypen.
 
 Diese Verbesserungen bei der Anmeldung im Azure SDK 2.7 sind nur in Visual Studio 2015 verfügbar. Die Unterstützung für Visual Studio 2013 ist im Azure SDK 2.7.1 enthalten.
 
@@ -43,7 +43,7 @@ Aktualisierte **Mobile Apps** -Vorlagen entsprechend dem neuesten [NuGet-Paket](
 Allgemeine Fehlerbehebungen und Verbesserungen. Ausführliche Informationen zu Updates und Funktionen finden Sie in den Versionshinweisen zum neuesten [Service Bus NuGet-Paket](http://www.nuget.org/packages/WindowsAzure.ServiceBus/)(in englischer Sprache).
 
 ### <a name="hdinsight-tools"></a>HDInsight-Tools
-In dieser Version wurden die folgenden Aktualisierungen vorgenommen. Diese Aktualisierungen befinden sich in der Vorschauphase. Weitere Informationen finden Sie in [diesem Blog](http://go.microsoft.com/fwlink/?LinkId=619108).
+In dieser Version wurden die folgenden Aktualisierungen vorgenommen. Diese Aktualisierungen befinden sich in der Vorschauphase. Weitere Informationen finden Sie in [diesem Blog](https://go.microsoft.com/fwlink/?LinkId=619108).
 
 * Hive-Diagramme für Hive unter Tez-Aufträge
 * Vollständige IntelliSense-Unterstützung für Hive-DML
@@ -51,8 +51,8 @@ In dieser Version wurden die folgenden Aktualisierungen vorgenommen. Diese Aktua
 * Storm-Vorlagen für Azure-Dienste
 
 #### <a name="breaking-changes"></a>Wichtige Änderungen
-* Das alte **Storm** -Projekt muss bei Verwendung dieser Version der Tools aktualisiert werden. Weitere Informationen finden Sie in [diesem Blog](http://go.microsoft.com/fwlink/?LinkId=619108).
-* Visual Studio Web Express wird nicht mehr unterstützt. Weitere Informationen finden Sie in [diesem Blog](http://go.microsoft.com/fwlink/?LinkId=619108).
+* Das alte **Storm** -Projekt muss bei Verwendung dieser Version der Tools aktualisiert werden. Weitere Informationen finden Sie in [diesem Blog](https://go.microsoft.com/fwlink/?LinkId=619108).
+* Visual Studio Web Express wird nicht mehr unterstützt. Weitere Informationen finden Sie in [diesem Blog](https://go.microsoft.com/fwlink/?LinkId=619108).
 
 ### <a name="azure-app-service-tools"></a>Azure App Service Tools
 In dieser Version wurden die folgenden Aktualisierungen an den Erweiterungen für Webtools vorgenommen. Weitere Informationen finden Sie in [diesem](https://azure.microsoft.com/blog/2015/07/20/announcing-the-azure-sdk-2-7-for-net/) Blog. 
@@ -83,12 +83,12 @@ Die Azure-Ressourcen-Manager-Tools wurden so aktualisiert, dass die rollenbasier
 
 Wenn Sie ein Azure-Ressourcengruppenprojekt aus einer früheren SDK-Version mit dem SDK 2.7 verwenden, ist bei der Bereitstellung mithilfe eines neuen Speicherkontos anstatt mit einem klassischen Speicher ein neues Bereitstellungsskript erforderlich.  Bevor Änderungen an dem Projekt vorgenommen werden, werden Sie aufgefordert, das neue Skript hinzuzufügen.  Das alte Skript wird umbenannt, und Sie müssen alle Änderungen an dem neuen Skript manuell vornehmen.
 
-### <a name="storage-explorer-tools"></a>Speicher-Explorer-Tools
-* Unterstützung für das Anzeigen von Anfügeblobs. Weitere Informationen finden Sie in [diesem Blogbeitrag](http://blogs.msdn.com/b/windowsazurestorage/archive/2015/04/13/introducing-azure-storage-append-blob.aspx)(in englischer Sprache). 
+### <a name="storage-explorer-tools"></a>Storage-Explorer-Tools
+* Unterstützung für das Anzeigen von Anfügeblobs. Weitere Informationen finden Sie in [diesem Blogbeitrag](https://blogs.msdn.com/b/windowsazurestorage/archive/2015/04/13/introducing-azure-storage-append-blob.aspx)(in englischer Sprache). 
 * Unterstützung für das Anzeigen von Storage Premium-Konten über Server-Explorer. In Server-Explorer werden nur Seitenblobs für Storage Premium-Konten angezeigt, da sie als einziger Typ in Storage Premium-Konten unterstützt werden.
 
 ### <a name="azure-data-factory-tools-for-visual-studio"></a>Azure Data Factory-Tools für Visual Studio
-Einführung von **Azure Data Factory-Tools** für Visual Studio. Es folgt eine Aufstellung der aktivierten Funktionen. Weitere Informationen finden Sie in [diesem Blog](http://go.microsoft.com/fwlink/?LinkId=617530) .
+Einführung von **Azure Data Factory-Tools** für Visual Studio. Es folgt eine Aufstellung der aktivierten Funktionen. Weitere Informationen finden Sie in [diesem Blog](https://go.microsoft.com/fwlink/?LinkId=617530) .
 
 * **Vorlagenbasierte Dokumenterstellung**: Sie können Vorlagen basierend auf Anwendungsfällen, Datenverschiebungsvorlagen oder Datenverarbeitungsvorlagen auswählen, um eine End-to-End-Datenintegrationslösung bereitzustellen, und so schnell Ihre Arbeit mit Daten Factory beginnen. 
 * **Integration im Projektmappen-Explorer zum Erstellen und Bereitstellen von Data Factory-Entitäten:** Pipelines und zugehörige Entitäten können als Visual Studio-Projekte erstellt und bereitgestellt werden. 
@@ -102,7 +102,7 @@ Einführung von **Azure Data Factory-Tools** für Visual Studio. Es folgt eine A
 Der folgende Abschnitt enthält Updates, die mit dem Azure SDK für .NET 2.7.1 eingeführt wurden.
 
 ### <a name="hdinsight-tools"></a>HDInsight-Tools
-Eine ausführlichere Erläuterung zu den Updates für die HDInsight-Tools finden Sie in [diesem Blog](http://go.microsoft.com/fwlink/?LinkId=623831)(in englischer Sprache).
+Eine ausführlichere Erläuterung zu den Updates für die HDInsight-Tools finden Sie in [diesem Blog](https://go.microsoft.com/fwlink/?LinkId=623831)(in englischer Sprache).
 
 * Ansicht für Hive-Auftragsoperatoren (neues Feature)
   
@@ -120,10 +120,10 @@ Eine ausführlichere Erläuterung zu den Updates für die HDInsight-Tools finden
   
     IntelliSense wurde verbessert, indem weitere benutzerfreundliche Vorschläge hinzugefügt wurden. Beispielsweise können in IntelliSense jetzt auch Tabellenaliase vorgeschlagen werden, damit Sie Ihre Abfrage leichter schreiben können. Darüber hinaus haben wir das Laden von Hive-Metadaten verbessert, sodass es nur noch einige Sekunden dauert, bis alle Datenbanken, Tabellen und Spalten des Hive-Metastores aufgelistet werden.
 
-Eine ausführlichere Erläuterung zu den Updates für die HDInsight-Tools finden Sie in [diesem Blog](http://go.microsoft.com/fwlink/?LinkId=623831)(in englischer Sprache).
+Eine ausführlichere Erläuterung zu den Updates für die HDInsight-Tools finden Sie in [diesem Blog](https://go.microsoft.com/fwlink/?LinkId=623831)(in englischer Sprache).
 
 ### <a name="improvements-in-visual-studio-2013"></a>Verbesserungen in Visual Studio 2013
-* Das Azure SDK 2.7.1 ermöglicht Visual Studio 2013, über die rollenbasierte Zugriffssteuerung, Cloud-Lösungsanbieter und Dreamspark auf Azure-Konten und -Abonnements zuzugreifen.
+* Das Azure SDK 2.7.1 ermöglicht Visual Studio 2013, über die rollenbasierte Zugriffssteuerung, Cloud Solution Provider und Dreamspark auf Azure-Konten und -Abonnements zuzugreifen.
 * Mit Azure SDK 2.7.1 steht das neue Cloud Explorer-Toolfenster jetzt auch in Visual Studio 2013 zur Verfügung.
 
 ### <a name="known-issues"></a>Bekannte Probleme
@@ -132,7 +132,7 @@ Bei der Installation des Azure SDK 2.6 oder 2.7.1 für Visual Studio Community 2
 LightSwitch-Projekte sind mit dieser Version nicht kompatibel. Dieses Problem wird in der nächsten SDK-Version behoben.
 
 ## <a name="also-see"></a>Siehe auch
-[Ankündigungsbeitrag zu Azure SDK 2.7.1 (in englischer Sprache)](http://go.microsoft.com/fwlink/?LinkId=623850)
+[Ankündigungsbeitrag zu Azure SDK 2.7.1 (in englischer Sprache)](https://go.microsoft.com/fwlink/?LinkId=623850)
 
 [Ankündigungsbeitrag zu Azure SDK 2.7 (in englischer Sprache)](https://azure.microsoft.com/blog/2015/07/20/announcing-the-azure-sdk-2-7-for-net/)
 

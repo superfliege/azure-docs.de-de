@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: hrasheed
-ms.openlocfilehash: 6ddb42cd1d8b7041586caf374b7be433ca28de12
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: d3326ef4bba5649f5420c1d92b6117d44edba47b
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51007076"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51281981"
 ---
 # <a name="availability-and-reliability-of-hadoop-clusters-in-hdinsight"></a>Verfügbarkeit und Zuverlässigkeit von Hadoop-Clustern in HDInsight
 
@@ -23,8 +23,7 @@ HDInsight-Cluster stellen zwei Hauptknoten bereit, um die Verfügbarkeit und Zuv
 
 Hadoop erzielt Hochverfügbarkeit und Zuverlässigkeit durch das Replizieren von Diensten und Daten über mehrere Knoten in einem Cluster. Hadoop-Standarddistributionen weisen jedoch typischerweise nur einen einzigen Hauptknoten auf. Jeder Ausfall dieses Hauptknotens kann dazu führen, dass der Cluster nicht mehr funktioniert. HDInsight bietet zwei Hauptknoten, um die Verfügbarkeit und Zuverlässigkeit von Hadoop zu verbessern.
 
-> [!IMPORTANT]
-> Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Welche Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?](hdinsight-component-versioning.md#hdinsight-windows-retirement).
+[!INCLUDE [windows-retirement-notice](../../includes/windows-retirement-notice.md)]
 
 ## <a name="availability-and-reliability-of-nodes"></a>Verfügbarkeit und Zuverlässigkeit von Knoten
 

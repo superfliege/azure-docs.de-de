@@ -10,12 +10,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: db61c300ad82270e59d315fa3372d9e4390c7a21
-ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
+ms.openlocfilehash: 6d4f96a2c1d288648543a92614cab0f8cf5ee2ea
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2017
-ms.locfileid: "24099020"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51255999"
 ---
 # <a name="use-azure-application-insights-to-understand-how-customers-are-using-your-application"></a>Verwenden von Azure Application Insights zur Analyse der Kundeninteraktion mit Ihrer Anwendung
 
@@ -38,13 +38,13 @@ Für dieses Tutorial benötigen Sie Folgendes:
 - Installieren Sie [Visual Studio 2017](https://www.visualstudio.com/downloads/) mit den folgenden Workloads:
     - ASP.NET und Webentwicklung
     - Azure-Entwicklung
-- Laden Sie den [Visual Studio Snapshot Debugger](http://aka.ms/snapshotdebugger) herunter, und installieren Sie diesen.
+- Laden Sie den [Visual Studio Snapshot Debugger](https://aka.ms/snapshotdebugger) herunter, und installieren Sie diesen.
 - Stellen Sie eine .NET-Anwendung in Azure bereit, und [aktivieren Sie das Application Insights SDK](app-insights-asp-net.md). 
 - [Senden Sie Telemetriedaten aus Ihrer Anwendung](app-insights-usage-overview.md#send-telemetry-from-your-app) zum Hinzufügen von benutzerdefinierten Ereignis-/Seitenansichten.
 - Senden Sie [Benutzerkontext-IDs](https://docs.microsoft.com/azure/application-insights/app-insights-usage-send-user-context), um Benutzeraktivitäten über einen bestimmten Zeitraum nachzuverfolgen und alle Nutzungsfunktionen zu verwenden.
 
 ## <a name="log-in-to-azure"></a>Anmelden an Azure
-Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) im Azure-Portal an.
+Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim Azure-Portal an.
 
 ## <a name="get-information-about-your-users"></a>Auswerten von Benutzerdaten
 Im Bereich **Benutzer** können Sie wichtige Benutzerdaten auf unterschiedliche Weise analysieren. Beispielsweise können Sie hier benutzerbezogene Informationen wie den Ort der Verbindungsherstellung, Clientdaten und bestimmte Anwendungsbereiche nachvollziehen, auf die zugegriffen wurde. 

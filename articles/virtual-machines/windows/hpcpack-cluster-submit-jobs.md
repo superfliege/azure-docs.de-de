@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-multiple
 ms.workload: big-compute
 ms.date: 05/14/2018
 ms.author: danlep
-ms.openlocfilehash: f2cf26bc9f980729e74c4a4e0b4e3f4b311fd754
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: ce8e2457c1d575e890174de3b9cf7faf6e16a7cb
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39421133"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51258815"
 ---
 # <a name="submit-hpc-jobs-from-an-on-premises-computer-to-an-hpc-pack-cluster-deployed-in-azure"></a>Übermitteln von HPC-Aufträgen von einem lokalen Computer an einen in Azure bereitgestellten HPC Pack-Cluster
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
@@ -37,7 +37,7 @@ Konfigurieren Sie einen lokalen Clientcomputer, um Aufträge an einen [Microsoft
 ## <a name="step-1-install-and-configure-the-web-components-on-the-head-node"></a>Schritt 1: Installieren und Konfigurieren der Webkomponenten auf dem Hauptknoten
 Um für eine REST-Schnittstelle die Übermittlung von Aufträgen an den Cluster per HTTPS zu ermöglichen, müssen Sie sicherstellen, dass die HPC Pack-Webkomponenten auf dem HPC Pack-Hauptknoten konfiguriert sind. Falls noch nicht geschehen, installieren Sie zuerst die Webkomponenten, indem Sie die Installationsdatei „HpcWebComponents.msi“ ausführen. Anschließend konfigurieren Sie die Komponenten, indem Sie das HPC PowerShell-Skript **Set-HPCWebComponents.ps1**ausführen.
 
-Ausführliche Verfahren finden Sie unter [Installieren der Microsoft HPC Pack-Webkomponenten](http://technet.microsoft.com/library/hh314627.aspx).
+Ausführliche Verfahren finden Sie unter [Installieren der Microsoft HPC Pack-Webkomponenten](https://technet.microsoft.com/library/hh314627.aspx).
 
 > [!TIP]
 > Bestimmte Azure-Schnellstartvorlagen für HPC Pack-Cluster installieren und konfigurieren die Webkomponenten automatisch.
@@ -169,7 +169,7 @@ Zum Überprüfen der Konfiguration können Sie versuchen, Aufträge im Cluster i
 1. Klicken Sie zum Anzeigen der Ergebnisse des von Ihnen übermittelten Auftrags auf die Auftrags-ID, und klicken Sie anschließend auf **Aufgaben anzeigen**, um die Befehlsausgabe anzuzeigen (unter **Ausgabe**).
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Sie können auch mit der [HPC Pack-REST-API](http://social.technet.microsoft.com/wiki/contents/articles/7737.creating-and-submitting-jobs-by-using-the-rest-api-in-microsoft-hpc-pack-windows-hpc-server.aspx)Aufträge an den Azure-Cluster übermitteln.
+* Sie können auch mit der [HPC Pack-REST-API](https://social.technet.microsoft.com/wiki/contents/articles/7737.creating-and-submitting-jobs-by-using-the-rest-api-in-microsoft-hpc-pack-windows-hpc-server.aspx)Aufträge an den Azure-Cluster übermitteln.
 * Wenn Sie Clusteraufträge von einem Linux-Client übermitteln möchten, können Sie sich hierzu das Python-Beispiel im [HPC Pack 2012 R2 SDK und Beispielcode](https://www.microsoft.com/download/details.aspx?id=41633)ansehen.
 
 <!--Image references-->

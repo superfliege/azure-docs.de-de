@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/08/2018
 ms.author: alkohli
-ms.openlocfilehash: 5a0da47b854e625f2f4a2fcf4c95ec566ba63093
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 3a76063b05327e0dcb3ce5c8c9a46113a4c63ef8
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47095677"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51255130"
 ---
 # <a name="migrate-subscriptions-and-storage-accounts-associated-with-storsimple-device-manager-service"></a>Migrieren von Abonnements und Speicherkonten, die dem StorSimple-Geräte-Manager-Dienst zugeordnet sind
 
@@ -29,8 +29,8 @@ Sie müssen möglicherweise den StorSimple-Dienst zu einer neuen Registrierung o
 
 | Können Sie Folgendes verschieben?| Unterstützt| Ausfallzeit| Azure-Supportprozess| Vorgehensweise|
 |-----|-----|-----|-----|-----|
-| Ein gesamtes Abonnement (einschließlich StorSimple-Dienst und Speicherkonten) zu einer anderen Registrierung | JA       | Nein        | **Übertragung der Registrierung**<br>Verwendung:<li>Wenn Sie eine neue Azure-Verpflichtung im Rahmen eines neuen Vertrags erwerben.</li><li>Sie möchten alle Konten und Abonnements von der alten Registrierung zur neuen migrieren. Dies schließt alle Azure-Dienste unter dem alten Abonnement ein.</li> | **Schritt 1: Öffnen Sie ein Azure Enterprise Operation Support-Ticket.**<li>Navigieren Sie zu [http://aka.ms/AzureEntSupport](http://aka.ms/AzureEntSupport).</li><li> Wählen Sie **Registrierungsverwaltung** und dann **Übertragung von einer Registrierung zu einer neuen Registrierung**.<br>**Schritt 2: Geben Sie die angeforderten Informationen an**<br>Inklusive:<li>Quellenregistrierungsnummer</li><li> Zielregistrierungsnummer</li><li>Datum des Inkrafttretens der Übertragung|
-| StorSimple-Dienst aus einem vorhandenen Konto zu einer neuen Registrierung    | JA       | Nein        | **Kontoübertragung**<br>Verwendung:<li>Wenn Sie keine vollständige Registrierungsübertragung wünschen.</li><li>Sie möchten nur bestimmte Konten zu einer neuen Registrierung verschieben.</li>| **Schritt 1: Öffnen Sie ein Azure Enterprise Operation Support-Ticket.**<li>Navigieren Sie zu [http://aka.ms/AzureEntSupport](http://aka.ms/AzureEntSupport).</li><li>Wählen Sie **Registrierungsverwaltung** und dann **Übertragung eines EA-Kontos zu einer neuen Registrierung**.<br>**Schritt 2: Geben Sie die angeforderten Informationen an**<br>Inklusive:<li>Quellenregistrierungsnummer</li><li> Zielregistrierungsnummer</li><li>Datum des Inkrafttretens der Übertragung|
+| Ein gesamtes Abonnement (einschließlich StorSimple-Dienst und Speicherkonten) zu einer anderen Registrierung | JA       | Nein        | **Übertragung der Registrierung**<br>Verwendung:<li>Wenn Sie eine neue Azure-Verpflichtung im Rahmen eines neuen Vertrags erwerben.</li><li>Sie möchten alle Konten und Abonnements von der alten Registrierung zur neuen migrieren. Dies schließt alle Azure-Dienste unter dem alten Abonnement ein.</li> | **Schritt 1: Öffnen Sie ein Azure Enterprise Operation Support-Ticket.**<li>Navigieren Sie zu [http://aka.ms/AzureEntSupport](https://aka.ms/AzureEntSupport).</li><li> Wählen Sie **Registrierungsverwaltung** und dann **Übertragung von einer Registrierung zu einer neuen Registrierung**.<br>**Schritt 2: Geben Sie die angeforderten Informationen an**<br>Inklusive:<li>Quellenregistrierungsnummer</li><li> Zielregistrierungsnummer</li><li>Datum des Inkrafttretens der Übertragung|
+| StorSimple-Dienst aus einem vorhandenen Konto zu einer neuen Registrierung    | JA       | Nein        | **Kontoübertragung**<br>Verwendung:<li>Wenn Sie keine vollständige Registrierungsübertragung wünschen.</li><li>Sie möchten nur bestimmte Konten zu einer neuen Registrierung verschieben.</li>| **Schritt 1: Öffnen Sie ein Azure Enterprise Operation Support-Ticket.**<li>Navigieren Sie zu [http://aka.ms/AzureEntSupport](https://aka.ms/AzureEntSupport).</li><li>Wählen Sie **Registrierungsverwaltung** und dann **Übertragung eines EA-Kontos zu einer neuen Registrierung**.<br>**Schritt 2: Geben Sie die angeforderten Informationen an**<br>Inklusive:<li>Quellenregistrierungsnummer</li><li> Zielregistrierungsnummer</li><li>Datum des Inkrafttretens der Übertragung|
 | StorSimple-Dienst von einem Abonnement zu einem anderen Abonnement      | Nein         |    JA         | Weder noch, dies ist ein manueller Prozess.|<li>Migrieren Sie die Daten aus dem StorSimple-Gerät.</li><li>Führen Sie eine Zurücksetzung des Geräts auf die Werkseinstellungen durch. Damit werden alle lokalen Daten auf dem Gerät gelöscht.</li><li>Registrieren Sie das Gerät mit dem neuen Abonnement bei einem StorSimple-Geräte-Manager-Dienst.</li><li>Migrieren Sie die Daten zurück zum Gerät.|
   |Kann ich den Besitz eines Azure-Abonnements auf ein anderes Konto übertragen? | JA       | Nein        | Zuordnen eines vorhandenen Abonnements zu Ihrem Azure AD-Verzeichnis | Informationen finden Sie unter [So weisen Sie Ihrem Azure AD-Verzeichnis ein vorhandenes Abonnement zu](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md). Es kann bis zu zehn Minuten dauern, bis alles richtig angezeigt wird.|
 | StorSimple-Gerät von einem StorSimple-Geräte-Manager-Dienst zu einem anderen Dienst in einer anderen Region      | Nein         | JA            | Weder noch, dies ist ein manueller Prozess. |Wie oben.|

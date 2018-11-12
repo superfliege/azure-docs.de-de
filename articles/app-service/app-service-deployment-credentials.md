@@ -13,15 +13,15 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 01/05/2016
 ms.author: dariagrigoriu
-ms.openlocfilehash: a17260770f0b2e0a73585ce4108bd5625ac22229
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 79841887ce8413970cb7dff0ca0099d4e0745a68
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39436147"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51259308"
 ---
 # <a name="configure-deployment-credentials-for-azure-app-service"></a>Konfigurieren von Anmeldeinformationen für die Azure App Service-Bereitstellung
-[Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) unterstützt zwei Arten von Anmeldeinformationen für [lokale Git-Bereitstellungen](app-service-deploy-local-git.md) und [FTP/S-Bereitstellungen](app-service-deploy-ftp.md). Diese sind nicht identisch mit Ihren Azure Active Directory-Anmeldeinformationen.
+[Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) unterstützt zwei Arten von Anmeldeinformationen für [lokale Git-Bereitstellungen](app-service-deploy-local-git.md) und [FTP/S-Bereitstellungen](app-service-deploy-ftp.md). Diese sind nicht identisch mit Ihren Azure Active Directory-Anmeldeinformationen.
 
 * **Anmeldeinformationen auf Benutzerebene**: ein Satz von Anmeldeinformationen für das gesamte Azure-Konto. Hiermit können Sie App Service für alle Apps in allen Abonnements bereitstellen, für die das Azure-Konto über Zugriffsberechtigungen verfügt. Dies ist der Standardsatz von Anmeldeinformationen, den Sie in **App Services** > **&lt;App-Name>** > **Anmeldeinformationen für Bereitstellung** konfigurieren. Dies ist auch der Standardsatz, der auf der Benutzeroberfläche des Portals angezeigt wird (z.B. **Übersicht** und **Eigenschaften** auf der [Ressourcenseite](../azure-resource-manager/resource-group-portal.md#manage-resources) Ihrer App).
 

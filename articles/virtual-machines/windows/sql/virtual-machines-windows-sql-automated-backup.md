@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/03/2018
 ms.author: jroth
-ms.openlocfilehash: 43ce94653197933a13830003dd07e5b21be2a585
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 0a1ad6d50c624115bab7ad09ff0e30a36e7df500
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33895003"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51256611"
 ---
 # <a name="automated-backup-for-sql-server-2014-virtual-machines-resource-manager"></a>Automatisierte Sicherung für SQL Server 2014-VMs (Resource Manager)
 
@@ -101,7 +101,7 @@ Falls Sie die automatisierte Sicherung zum ersten Mal aktivieren, konfiguriert A
 
 Die automatisierte Sicherung kann mithilfe von PowerShell konfiguriert werden. Führen Sie zur Vorbereitung folgende Schritte aus:
 
-- [Laden Sie die aktuelle Version von Azure PowerShell herunter, und installieren Sie sie.](http://aka.ms/webpi-azps)
+- [Laden Sie die aktuelle Version von Azure PowerShell herunter, und installieren Sie sie.](https://aka.ms/webpi-azps)
 - Öffnen Sie Windows PowerShell, und stellen Sie mit dem Befehl **Connect-AzureRmAccount** eine Verknüpfung mit Ihrem Konto her.
 
 ### <a name="install-the-sql-iaas-extension"></a>Installieren der SQL-IaaS-Erweiterung

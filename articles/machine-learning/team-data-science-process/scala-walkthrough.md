@@ -15,15 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: deguhath
-ms.openlocfilehash: 16e4af4dd7f5c2bd14d70cc28225dfc750ce3bea
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: b90603490af851d9b7ca735b00ee7d6ca5d53951
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34838509"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51233523"
 ---
 # <a name="data-science-using-scala-and-spark-on-azure"></a>Data Science unter Verwendung von Scala und Spark in Azure
-Dieser Artikel zeigt Ihnen die Verwendung von Scala für überwachte Machine Learning-Aufgaben mit der skalierbaren Machine Learning-Bibliothek (MLlib) von Spark und Spark ML-Paketen auf einem Azure HDInsight Spark-Cluster. Sie werden durch die Aufgaben geführt, aus denen der [Data Science-Prozess](http://aka.ms/datascienceprocess)besteht: Erfassen und Durchsuchen von Daten, Visualisierung, Featureentwicklung, Modellierung und Modellnutzung. Die im Artikel behandelten Modelle beinhalten logistische und lineare Regression, zufällige Gesamtstrukturen und Gradient-Boosted-Strukturen (Gradient-boosted Trees, GBTs) neben zwei häufig überwachten Machine Learning-Aufgaben:
+Dieser Artikel zeigt Ihnen die Verwendung von Scala für überwachte Machine Learning-Aufgaben mit der skalierbaren Machine Learning-Bibliothek (MLlib) von Spark und Spark ML-Paketen auf einem Azure HDInsight Spark-Cluster. Sie werden durch die Aufgaben geführt, aus denen der [Data Science-Prozess](https://aka.ms/datascienceprocess)besteht: Erfassen und Durchsuchen von Daten, Visualisierung, Featureentwicklung, Modellierung und Modellnutzung. Die im Artikel behandelten Modelle beinhalten logistische und lineare Regression, zufällige Gesamtstrukturen und Gradient-Boosted-Strukturen (Gradient-boosted Trees, GBTs) neben zwei häufig überwachten Machine Learning-Aufgaben:
 
 * Regressionsproblem: Vorhersage des Trinkgeldbetrags ($) für eine Taxifahrt
 * Binäre Klassifizierung: Vorhersage für eine Taxifahrt, ob Trinkgeld gegeben wird oder nicht (1/0)
@@ -1104,7 +1104,7 @@ Optimieren Sie als Nächstes das Modell mit benutzerdefiniertem Code, und identi
 Zeit zum Ausführen der Zelle: 61 Sekunden.
 
 ## <a name="consume-spark-built-machine-learning-models-automatically-with-scala"></a>Automatische Nutzung mit Spark erstellter Machine Learning-Modelle mit Scala
-Eine Übersicht zu Themen, die Sie durch die Aufgaben führen, die den Data Science-Prozess in Azure umfassen, finden Sie unter [Team Data Science-Prozess (TDSP)](http://aka.ms/datascienceprocess).
+Eine Übersicht zu Themen, die Sie durch die Aufgaben führen, die den Data Science-Prozess in Azure umfassen, finden Sie unter [Team Data Science-Prozess (TDSP)](https://aka.ms/datascienceprocess).
 
 [Exemplarische Vorgehensweisen für den Team Data Science-Prozess](walkthroughs.md) beschreibt andere exemplarische End-to-End-Vorgehensweisen, in denen die Schritte im Team Data Science-Prozess für bestimmte Szenarien veranschaulicht werden. Die exemplarischen Vorgehensweisen zeigen auch, wie Cloud- und lokale Tools und Dienste in einem Workflow oder einer Pipeline zum Erstellen einer intelligenten Anwendung kombiniert werden.
 

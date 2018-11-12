@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 09/06/2018
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f8b7d2620b5b972c9476332f2b662a891a0b3765
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 9edbb9d916840f348a7df589c6e7cb2110419cb3
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49430339"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51262402"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Azure Virtual Machines – Planung und Implementierung für SAP NetWeaver
 
@@ -541,7 +541,7 @@ Microsoft Azure Virtual Machines nutzt verschiedene Speichertypen. Bei der Imple
 * Nicht permanenter, temporärer Speicher.
 * Permanenter Speicher.
 
-Azure-VMs bieten Datenträger mit flüchtigem Speicher, nachdem eine VM bereitgestellt wurde. Bei einem Neustart der VM werden alle Inhalte auf diesen Laufwerken gelöscht. Deswegen sollten Datendateien und Protokoll- bzw. Wiederholungsdateien von Datenbanken unter keinen Umständen auf diesen nicht permanenten Laufwerken gespeichert werden. Es gibt möglicherweise Ausnahmen für einige der Datenbanken, in denen diese nicht permanenten Laufwerke für tempdb und temporäre Tabellenbereiche geeignet sind. Verwenden Sie diese Laufwerke jedoch nicht für VMs der A-Serie, da diese nicht permanenten Laufwerke mit diesen VMs nur einen begrenzten Durchsatz ermöglichen. Weitere Informationen finden Sie im Artikel [Understanding the temporary drive on Windows Azure Virtual Machines](https://blogs.msdn.microsoft.com/mast/2013/12/06/understanding-the-temporary-drive-on-windows-azure-virtual-machines/) (Grundlegendes zum temporären Laufwerk in Windows Azure Virtual Machines).
+Azure-VMs bieten Datenträger mit flüchtigem Speicher, nachdem eine VM bereitgestellt wurde. Bei einem Neustart der VM werden alle Inhalte auf diesen Laufwerken gelöscht. Deswegen sollten Datendateien und Protokoll- bzw. Wiederholungsdateien von Datenbanken unter keinen Umständen auf diesen nicht permanenten Laufwerken gespeichert werden. Es gibt möglicherweise Ausnahmen für einige der Datenbanken, in denen diese nicht permanenten Laufwerke für tempdb und temporäre Tabellenbereiche geeignet sind. Verwenden Sie diese Laufwerke jedoch nicht für VMs der A-Serie, da diese nicht permanenten Laufwerke mit diesen VMs nur einen begrenzten Durchsatz ermöglichen. Weitere Informationen finden Sie im Artikel [Understanding the temporary drive on Windows Azure Virtual Machines](https://blogs.msdn.microsoft.com/mast/2013/12/06/understanding-the-temporary-drive-on-windows-azure-virtual-machines/) (Grundlegendes zum temporären Laufwerk auf virtuellen Windows-Computern in Azure).
 
 - - -
 > ![Windows][Logo_Windows] Windows
@@ -1259,7 +1259,7 @@ Aus den letzten zwei Jahren der SAP-Bereitstellung ziehen wir einige Rückschlü
 >
 > * [Konfigurieren von Software-RAID unter Linux][virtual-machines-linux-configure-raid]
 > * [Konfigurieren von LVM auf einem virtuellen Linux-Computer in Azure][virtual-machines-linux-configure-lvm]
-> * [Geheime Schlüssel für Azure Storage und E/A-Optimierungen unter Linux](http://blogs.msdn.com/b/igorpag/archive/2014/10/23/azure-storage-secrets-and-linux-i-o-optimizations.aspx)
+> * [Geheime Schlüssel für Azure Storage und E/A-Optimierungen unter Linux](https://blogs.msdn.com/b/igorpag/archive/2014/10/23/azure-storage-secrets-and-linux-i-o-optimizations.aspx)
 >
 >
 
@@ -1316,7 +1316,7 @@ Die Georeplikation von Azure erfolgt lokal und individuell für jede VHD einer V
 > Wie Sie die automatische Bereitstellung aktivieren, können Sie der Dokumentation zum Befehlszeilentool „diskpart.exe“ entnehmen:
 >
 > * [Befehlszeilenoptionen für DiskPart](https://technet.microsoft.com/library/bb490893.aspx)
-> * [Automatische Bereitstellung](http://technet.microsoft.com/library/cc753703.aspx)
+> * [Automatische Bereitstellung](https://technet.microsoft.com/library/cc753703.aspx)
 >
 > Öffnen Sie das Windows-Befehlszeilenfenster als Administrator.
 >

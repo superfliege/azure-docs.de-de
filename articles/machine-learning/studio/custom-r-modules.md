@@ -15,12 +15,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 11/29/2017
-ms.openlocfilehash: 555672df5b0b86858d460ff7606bc6ca23f4f103
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 1a578e8cc05b42d05a8dfb31c0baeefb4822e3e5
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34834354"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51261109"
 ---
 # <a name="author-custom-r-modules-in-azure-machine-learning"></a>Benutzerdefinierte R-Module in Azure Machine Learning
 In diesem Thema erfahren Sie, wie ein benutzerdefiniertes R-Modul erstellt und in Azure Machine Learning bereitgestellt wird. Es wird beschrieben, was ein benutzerdefiniertes R-Modul ist und welche Dateien verwendet werden, um es zu definieren. Es veranschaulicht, wie die Dateien erstellt werden, die ein Modul definieren, und wie dieses Modul zur Bereitstellung in einem Machine Learning-Arbeitsbereich registriert wird. Die in der Definition des benutzerdefinierten Moduls verwendeten Elemente und Attribute werden dann ausführlicher beschrieben. Ebenfalls wird erläutert, wie zusätzliche Funktionen und Dateien sowie mehrere Ausgaben zu verwenden sind. 
@@ -41,7 +41,7 @@ Ein benutzerdefiniertes R-Modul wird durch eine ZIP-Datei definiert, die mindest
 Weitere Zusatzdateien können auch in die ZIP-Datei eingeschlossen werden, die Funktionen bereitstellt, auf die vom benutzerdefinierten Modul zugegriffen werden kann. Diese Option wird im Teil **Argumente** des Referenzabschnitts **Elemente in der XML-Definitionsdatei** im Anschluss an das Schnellstartbeispiel behandelt.
 
 ## <a name="quickstart-example-define-package-and-register-a-custom-r-module"></a>Schnellstartbeispiel: Definieren, Packen und Registrieren eines benutzerdefinierten R-Moduls
-In diesem Beispiel wird veranschaulicht, wie die erforderlichen Dateien für ein benutzerdefiniertes R-Modul erstellt und in einer ZIP-Datei komprimiert werden und dann das Modul im Machine Learning-Arbeitsbereich registriert wird. Das Beispiel-ZIP-Paket und die Beispiel-Dateien können [hier](http://go.microsoft.com/fwlink/?LinkID=524916&clcid=0x409)heruntergeladen werden.
+In diesem Beispiel wird veranschaulicht, wie die erforderlichen Dateien für ein benutzerdefiniertes R-Modul erstellt und in einer ZIP-Datei komprimiert werden und dann das Modul im Machine Learning-Arbeitsbereich registriert wird. Das Beispiel-ZIP-Paket und die Beispiel-Dateien können [hier](https://go.microsoft.com/fwlink/?LinkID=524916&clcid=0x409)heruntergeladen werden.
 
 ## <a name="the-source-file"></a>Die Quelldatei
 Stellen Sie sich z.B. ein Modul mit dem Namen **Custom Add Rows** vor, das die Standardimplementierung des Moduls **Add Rows** ändert, das zum Verketten von Zeilen (Vorkommen) aus zwei Datasets (Datenrahmen) verwendet wird. Das Standardmodul **Add Rows** hängt die Zeilen des zweiten Eingabedatasets mithilfe des `rbind`-Algorithmus an das erste Eingabedataset an. Die benutzerdefinierte `CustomAddRows` -Funktion akzeptiert ebenfalls zwei Datasets, aber auch einen booleschen Swap-Parameter als zusätzliche Eingabe. Wenn der Swap-Parameter **FALSE**ist, wird das gleiche Dataset zurückgegeben wie bei der Standard-Implementierung. Ist der Swap-Parameter hingegen **TRUE**, werden stattdessen Zeilen des ersten Eingabedatasets an das zweite Dataset angehängt. Die Datei „CustomAddRows.R“, welche die Implementierung der `CustomAddRows` -R-Funktion enthält, die vom Modul **Custom Add Rows** verfügbar gemacht wird, enthält den folgenden R-Code:

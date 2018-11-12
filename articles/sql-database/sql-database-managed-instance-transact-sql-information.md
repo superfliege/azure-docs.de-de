@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: carlrab, bonova
 manager: craigg
 ms.date: 10/24/2018
-ms.openlocfilehash: 6ffa09343560e4ac55b1fd62325fd4e3bd370848
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: c51df7aeef136fee42b061cd422cc62d67f33e96
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50242176"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51258917"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>T-SQL-Unterschiede zwischen einer verwalteten Azure SQL-Datenbank-Instanz und SQL Server
 
@@ -287,7 +287,7 @@ Externe Tabellen, die auf die Dateien in HDFS oder Azure Blob Storage verweisen,
 
 ### <a name="replication"></a>Replikation
 
-Die Replikation ist für die Public Preview der verwalteten Instanz verfügbar. Informationen zur Replikation finden Sie unter [SQL Server-Replikation](http://docs.microsoft.com/sql/relational-databases/replication/replication-with-sql-database-managed-instance).
+Die Replikation ist für die Public Preview der verwalteten Instanz verfügbar. Informationen zur Replikation finden Sie unter [SQL Server-Replikation](https://docs.microsoft.com/sql/relational-databases/replication/replication-with-sql-database-managed-instance).
 
 ### <a name="restore-statement"></a>RESTORE-Anweisung
 

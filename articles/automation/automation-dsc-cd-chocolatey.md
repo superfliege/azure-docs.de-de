@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 08/08/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 43f4a37ce0425503337cffa58570f3468fca6b29
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: f685b584b701d2772ec5b3915facb97f0d15658a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45634251"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51259172"
 ---
 # <a name="usage-example-continuous-deployment-to-virtual-machines-using-automation-state-configuration-and-chocolatey"></a>Anwendungsbeispiel: Continuous Deployment auf virtuellen Computern mit Azure Automation State Configuration und Chocolatey
 
@@ -87,7 +87,7 @@ Es gibt auch eine manuelle Vorgehensweise. Die Ordnerstruktur eines PowerShell-I
 Hierfür ist es erforderlich, dass Sie eine kleine Optimierung vornehmen. Dies ist aber nicht schwierig und muss nur einmal pro Ressource durchgeführt werden (es sei denn, Sie möchten später ein Upgrade durchführen). Weitere Informationen zum Erstellen von PowerShell-Integrationsmodulen finden Sie im Artikel [Erstellen von Integrationsmodulen für Azure Automation](https://azure.microsoft.com/blog/authoring-integration-modules-for-azure-automation/).
 
 - Installieren Sie das Modul, das Sie auf Ihrer Arbeitsstation benötigen, wie folgt:
-  - Installieren Sie [Windows Management Framework 5.0](http://aka.ms/wmf5latest) (unter Windows 10 nicht erforderlich).
+  - Installieren Sie [Windows Management Framework 5.0](https://aka.ms/wmf5latest) (unter Windows 10 nicht erforderlich).
   - `Install-Module –Name MODULE-NAME` &lt;— Ruft das Modul aus dem PowerShell-Katalog ab.
 - Kopieren Sie den Modulordner unter `c:\Program Files\WindowsPowerShell\Modules\MODULE-NAME` in einen temporären Ordner.
 - Löschen Sie Beispiele und Dokumentation aus dem Hauptordner.

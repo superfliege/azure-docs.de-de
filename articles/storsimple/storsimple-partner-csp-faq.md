@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/08/2017
 ms.author: alkohli
-ms.openlocfilehash: 4dc5ae7d3feae769a8366f68f412f3b79fa8eb00
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 76b89c15a12810f98e6324ca93cf581f9b852c88
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23109058"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51259937"
 ---
 # <a name="storsimple-for-cloud-solutions-provider-program-frequently-asked-questions"></a>StorSimple für das Programm für Cloudlösungsanbieter: häufig gestellte Fragen
 
@@ -72,7 +72,7 @@ Informationen zu Incentives finden Sie auf der [Website des CSP-Programms](https
 Über das Partner Center können Sie dem Konto Ihrer Kunden StorSimple Virtual Array-Abonnements hinzufügen. Und über das Azure-Portal können Sie den Abonnements Benutzer hinzufügen.
 
 ### <a name="is-the-azure-portal-approach-the-same-as-other-services-for-csp"></a>Ist der Azure-Portal-Ansatz der gleiche wie bei anderen Diensten für CSP? 
-Ja. Bei StorSimple Virtual Array für CSP können Partner am besten über das [Partner Center](http://partnercenter.microsoft.com/) (in dem sie Kunden und Abonnements verwalten können) auf das Azure-Portal zugreifen. Zur Verwaltung von StorSimple-Abonnements muss sich der Partner oder Kunde (je nach gewährten Berechtigungen) beim Azure-Portal anmelden. 
+Ja. Bei StorSimple Virtual Array für CSP können Partner am besten über das [Partner Center](https://partnercenter.microsoft.com/) (in dem sie Kunden und Abonnements verwalten können) auf das Azure-Portal zugreifen. Zur Verwaltung von StorSimple-Abonnements muss sich der Partner oder Kunde (je nach gewährten Berechtigungen) beim Azure-Portal anmelden. 
 
 ### <a name="is-microsoft-shipping-a-new-portal-for-storsimple-for-csp"></a>Stellt Microsoft für StorSimple für CSP ein neues Portal bereit? 
 Nein. Sie können StorSimple Virtual Array im CSP über das Azure-Portal verwalten.
@@ -93,8 +93,8 @@ Das Supportmodell für StorSimple im CSP ist das gleiche wie bei anderen Azure-D
 
 Weitere Informationen zu StorSimple für CSP finden Sie unter den folgenden Links:
 
-- [Programm für Microsoft Cloud-Lösungsanbieter](https://partner.microsoft.com/Membership)
-- [Partner Center](http://partnercenter.microsoft.com/) 
+- [Programm für Microsoft Cloud Solution Provider](https://partner.microsoft.com/Membership)
+- [Partner Center](https://partnercenter.microsoft.com/) 
 
 
 ## <a name="next-steps"></a>Nächste Schritte

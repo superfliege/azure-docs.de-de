@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 09/05/2018
 ms.author: bryanla
-ms.openlocfilehash: 3dc80c97a43c35295deacefc37a76471912c9b42
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: 9ab399ae50f9b04acad411b225797f89547a2824
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45603990"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51237535"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Entwicklerhandbuch zu Azure-Schlüsseltresor
 
@@ -48,8 +48,8 @@ Dieses Video zeigt Ihnen, wie Sie selbst einen Schlüsseltresor erstellen und di
 
 Im Video erwähnte Ressourcen:
 
-- [Azure PowerShell](http://go.microsoft.com/fwlink/p/?linkid=320376&clcid=0x409)
-- [Azure Key Vault-Beispielcode](http://go.microsoft.com/fwlink/?LinkId=521527&clcid=0x409)
+- [Azure PowerShell](https://go.microsoft.com/fwlink/p/?linkid=320376&clcid=0x409)
+- [Azure Key Vault-Beispielcode](https://go.microsoft.com/fwlink/?LinkId=521527&clcid=0x409)
 
 ## <a name="creating-and-managing-key-vaults"></a>Erstellen und Verwalten von Schlüsseltresoren
 
@@ -151,12 +151,12 @@ Diese Artikel enthalten Informationen zu anderen Szenarien und Diensten, in dene
 
 ## <a name="social"></a>Soziale Netzwerke
 
-- [Key Vault Blog](http://aka.ms/kvblog)
-- [Key Vault Forum](http://aka.ms/kvforum)
+- [Key Vault Blog](https://aka.ms/kvblog)
+- [Key Vault Forum](https://aka.ms/kvforum)
 
 ## <a name="supporting-libraries"></a>Unterstützung von Bibliotheken
 
 - Die [Microsoft Azure Key Vault-Kernbibliothek](http://www.nuget.org/packages/Microsoft.Azure.KeyVault.Core) bietet die Schnittstellen **IKey** und **IKeyResolver**, um Schlüssel von Bezeichnern zu ermitteln und mit diesen Schlüsseln Vorgänge auszuführen.
-- [Microsoft Azure Key Vault-Erweiterungen](http://www.nuget.org/packages/Microsoft.Azure.KeyVault.Extensions) bieten erweiterte Funktionen für Azure Key Vault.
+- [Microsoft Azure-Schlüsseltresorerweiterungen](http://www.nuget.org/packages/Microsoft.Azure.KeyVault.Extensions) bieten erweiterte Funktionen für den Azure-Schlüsseltresor.
 
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/17/2017
 ms.author: mikeray
-ms.openlocfilehash: fe7384baa6740d316fb5a8ec7b1894f337d88080
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 584fca3df4fee24a4f1c7b93d5371c48be059f7b
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
-ms.locfileid: "29401289"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51257934"
 ---
 # <a name="configure-the-always-on-availability-group-on-an-azure-vm-with-powershell"></a>Konfigurieren von AlwaysOn-Verfügbarkeitsgruppen auf einer Azure-VM mit PowerShell
 > [!div class="op_single_selector"]
@@ -482,7 +482,7 @@ Abschließend können Sie die Verfügbarkeitsgruppe konfigurieren. Sie verwenden
         $svc2.WaitForStatus([System.ServiceProcess.ServiceControllerStatus]::Stopped,$timeout)
         $svc2.Start();
         $svc2.WaitForStatus([System.ServiceProcess.ServiceControllerStatus]::Running,$timeout)
-7. Laden Sie **CreateAzureFailoverCluster.ps1** von [Create Failover Cluster for Always On Availability Groups in Windows Azure VM](http://gallery.technet.microsoft.com/scriptcenter/Create-WSFC-Cluster-for-7c207d3a) (Erstellen eines Failoverclusters für Always On-Verfügbarkeitsgruppen in virtuellen Azure-Computern) in das lokale Arbeitsverzeichnis herunter. Dieses Skript unterstützt Sie beim Erstellen eines funktionsfähigen Failoverclusters. Wichtige Informationen zum Zusammenwirken von Windows-Failoverclustering mit dem Azure-Netzwerk finden Sie unter [Hochverfügbarkeit und Notfallwiederherstellung für SQL Server auf virtuellen Azure-Computern](../sql/virtual-machines-windows-sql-high-availability-dr.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json).
+7. Laden Sie **CreateAzureFailoverCluster.ps1** von [Create Failover Cluster for Always On Availability Groups in Windows Azure VM](https://gallery.technet.microsoft.com/scriptcenter/Create-WSFC-Cluster-for-7c207d3a) (Erstellen eines Failoverclusters für Always On-Verfügbarkeitsgruppen in virtuellen Azure-Computern) in das lokale Arbeitsverzeichnis herunter. Dieses Skript unterstützt Sie beim Erstellen eines funktionsfähigen Failoverclusters. Wichtige Informationen zum Zusammenwirken von Windows-Failoverclustering mit dem Azure-Netzwerk finden Sie unter [Hochverfügbarkeit und Notfallwiederherstellung für SQL Server auf virtuellen Azure-Computern](../sql/virtual-machines-windows-sql-high-availability-dr.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json).
 8. Wechseln Sie in das Arbeitsverzeichnis, und erstellen Sie mithilfe des heruntergeladenen Skripts den Failovercluster.
 
         Set-ExecutionPolicy Unrestricted -Force

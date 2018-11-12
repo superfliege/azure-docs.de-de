@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/11/2017
 ms.author: wesmc
-ms.openlocfilehash: 885258379e71ea945e41c4b43c34b35b16dd4a7a
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 91a2b112000e970b73420abaa26efc7de1caa626
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42140769"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51261453"
 ---
 # <a name="how-to-scale-azure-redis-cache"></a>Skalieren von Azure Redis Cache
 Für Azure Redis Cache stehen verschiedene Cacheangebote bereit, die Flexibilität bei der Auswahl von Cachegröße und -funktionen bieten. Nach dem Erstellen des Caches können Sie Größe und Tarif des Caches skalieren, wenn sich die Anforderungen Ihrer Anwendung ändern. In diesem Artikel wird erläutert, wie Sie Ihren Cache im Azure-Portal mithilfe von Tools wie Azure PowerShell und der Azure-Befehlszeilenschnittstelle skalieren.
@@ -81,7 +81,7 @@ Wenn Sie die Azure Redis Cache-Instanzen über die Azure-Befehlszeilenschnittste
 Weitere Informationen zum Skalieren über die Azure-Befehlszeilenschnittstelle finden Sie unter [Ändern der Einstellungen eines vorhandenen Redis-Cache](cache-manage-cli.md#scale).
 
 ### <a name="scale-using-maml"></a>Skalieren mithilfe der Microsoft Azure-Verwaltungsbibliotheken
-Wenn Sie die Azure Redis Cache-Instanzen mithilfe der [Microsoft Azure-Verwaltungsbibliotheken](http://azure.microsoft.com/updates/management-libraries-for-net-release-announcement/) (MAML, Microsoft Azure Management Libraries) skalieren möchten, rufen Sie die Methode `IRedisOperations.CreateOrUpdate` auf und übergeben die neue Größe für `RedisProperties.SKU.Capacity`.
+Wenn Sie die Azure Redis Cache-Instanzen mithilfe der [Microsoft Azure-Verwaltungsbibliotheken](https://azure.microsoft.com/updates/management-libraries-for-net-release-announcement/) (MAML, Microsoft Azure Management Libraries) skalieren möchten, rufen Sie die Methode `IRedisOperations.CreateOrUpdate` auf und übergeben die neue Größe für `RedisProperties.SKU.Capacity`.
 
     static void Main(string[] args)
     {

@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/27/2016
-ms.openlocfilehash: ff30afdcfebe51d914d2f7504ab3bf530309c222
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: d201d8848891038355fad01f610070259ad1e42a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42142191"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51259189"
 ---
 # <a name="application-lifecycle-management-in-azure-machine-learning-studio"></a>Application Lifecycle Management in Azure Machine Learning Studio
 Azure Machine Learning Studio ist ein Tool, mit dem Machine Learning-Experimente entwickelt und auf der Azure-Cloudplattform ausgeführt werden. Es ist vergleichbar mit der Zusammenführung der Visual Studio IDE mit skalierbaren Clouddiensten zu einer einzelnen Plattform. Sie können standardmäßige ALM-Vorgehensweisen (Application Lifecycle Management) – von der Versionsverwaltung verschiedener Ressourcen bis zur automatischen Ausführung und Bereitstellung – in Azure Machine Learning Studio integrieren. In diesem Artikel werden einige der Optionen und Ansätze behandelt.
@@ -43,7 +43,7 @@ Nach dem Öffnen können Sie das Momentaufnahmenexperiment als neues Experiment 
 Beim Löschen des Experiments werden alle Momentaufnahmen dieses Experiments gelöscht.
 
 ### <a name="exportimport-experiment-in-json-format"></a>Exportieren/Importieren des Experiments im JSON-Format
-Die „Run History“-Momentaufnahmen dienen zum Beibehalten einer unveränderlichen Version des Experiments in Azure Machine Learning Studio jedes Mal, wenn es zur Ausführung übermittelt wird. Sie können auch eine lokale Kopie des Experiments speichern und sie in Ihrem bevorzugten Quellcodeverwaltungssystem einchecken, z.B. Team Foundation Server, und später anhand dieser lokalen Datei ein Experiment neu erstellen. Sie können hierzu die [Azure Machine Learning PowerShell](http://aka.ms/amlps)-Cmdlets [*Export-AmlExperimentGraph*](https://github.com/hning86/azuremlps#export-amlexperimentgraph) und [*Import-AmlExperimentGraph*](https://github.com/hning86/azuremlps#import-amlexperimentgraph) verwenden.
+Die „Run History“-Momentaufnahmen dienen zum Beibehalten einer unveränderlichen Version des Experiments in Azure Machine Learning Studio jedes Mal, wenn es zur Ausführung übermittelt wird. Sie können auch eine lokale Kopie des Experiments speichern und sie in Ihrem bevorzugten Quellcodeverwaltungssystem einchecken, z.B. Team Foundation Server, und später anhand dieser lokalen Datei ein Experiment neu erstellen. Sie können hierzu die [Azure Machine Learning PowerShell](https://aka.ms/amlps)-Cmdlets [*Export-AmlExperimentGraph*](https://github.com/hning86/azuremlps#export-amlexperimentgraph) und [*Import-AmlExperimentGraph*](https://github.com/hning86/azuremlps#import-amlexperimentgraph) verwenden.
 
 Die JSON-Datei ist eine Textdarstellung des Experimentdiagramms, die möglicherweise Verweise auf Ressourcen im Arbeitsbereich enthält, z.B. ein Dataset oder ein trainiertes Modell. Sie enthält keine serialisierte Version des Assets. Wenn Sie versuchen, das JSON-Dokument wieder in den Arbeitsbereich zu importieren, müssen die referenzierten Assets bereits mit den gleichen Asset-IDs vorhanden sein, auf die im Experiment verwiesen wird. Andernfalls können Sie nicht auf das importierte Experiment zugreifen.
 
@@ -85,7 +85,7 @@ Wenn Sie einen neuen Webdienst auf Azure Resource Manager-Basis erstellen, ist d
 Nachdem Sie die WSD-Datei exportiert haben und ihre Version verwalten, können Sie auch die WSD in einem anderen Webdienstplan in einer anderen Azure-Region als neuen Webdienst bereitstellen. Achten Sie nur darauf, dass Sie sowohl die richtige Speicherkontokonfiguration als auch die neue Webdienstplan-ID angeben. Um in verschiedenen iLearner-Dateien zu patchen, können Sie die WSD-Datei ändern und den Speicherortverweis des trainierten Modells aktualisieren und als neuen Webdienst bereitstellen.
 
 ## <a name="automate-experiment-execution-and-deployment"></a>Automatisieren von Ausführung und Bereitstellung des Experiments
-Ein wichtiger Aspekt von ALM ist die Möglichkeit, den Ausführungs- und Bereitstellungsprozess der Anwendung zu automatisieren. In Azure Machine Learning erreichen Sie dies mithilfe des [PowerShell-Moduls](http://aka.ms/amlps). Hier ist ein Beispiel aller Schritte, die für einen standardmäßigen automatisierten ALM-Ausführungs-/Bereitstellungsprozess mit dem [Azure Machine Learning Studio PowerShell-Modul](http://aka.ms/amlps) relevant sind. Jeder Schritt ist mit mindestens einem PowerShell-Cmdlet verknüpft, das Sie nutzen können, um diesen Schritt auszuführen.
+Ein wichtiger Aspekt von ALM ist die Möglichkeit, den Ausführungs- und Bereitstellungsprozess der Anwendung zu automatisieren. In Azure Machine Learning erreichen Sie dies mithilfe des [PowerShell-Moduls](https://aka.ms/amlps). Hier ist ein Beispiel aller Schritte, die für einen standardmäßigen automatisierten ALM-Ausführungs-/Bereitstellungsprozess mit dem [Azure Machine Learning Studio PowerShell-Modul](https://aka.ms/amlps) relevant sind. Jeder Schritt ist mit mindestens einem PowerShell-Cmdlet verknüpft, das Sie nutzen können, um diesen Schritt auszuführen.
 
 1. [Laden Sie ein Dataset hoch.](https://github.com/hning86/azuremlps#upload-amldataset)
 2. Kopieren Sie ein Trainingsexperiment aus einem [Arbeitsbereich](https://github.com/hning86/azuremlps#copy-amlexperiment) oder [Katalog](https://github.com/hning86/azuremlps#copy-amlexperimentfromgallery) in den Arbeitsbereich, oder [importieren](https://github.com/hning86/azuremlps#import-amlexperimentgraph) Sie ein [exportiertes](https://github.com/hning86/azuremlps#export-amlexperimentgraph) Experiment vom lokalen Datenträger.
@@ -99,6 +99,6 @@ Ein wichtiger Aspekt von ALM ist die Möglichkeit, den Ausführungs- und Bereits
 10. Testen Sie den [RRS](https://github.com/hning86/azuremlps#invoke-amlwebservicerrsendpoint)- oder [BES](https://github.com/hning86/azuremlps#invoke-amlwebservicebesendpoint)-Endpunkt des Webdiensts.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Laden Sie das [Azure Machine Learning Studio PowerShell](http://aka.ms/amlps)-Modul herunter, und starten Sie die Automatisierung Ihrer ALM-Aufgaben.
+* Laden Sie das [Azure Machine Learning Studio PowerShell](https://aka.ms/amlps)-Modul herunter, und starten Sie die Automatisierung Ihrer ALM-Aufgaben.
 * Erfahren Sie, wie Sie über PowerShell und die API zum Umtrainieren [eine große Anzahl von ML-Modellen mit nur einem einzigen Experiment erstellen und verwalten](create-models-and-endpoints-with-powershell.md).
 * Erfahren Sie mehr über [das Bereitstellen von Azure Machine Learning-Webdiensten](publish-a-machine-learning-web-service.md).

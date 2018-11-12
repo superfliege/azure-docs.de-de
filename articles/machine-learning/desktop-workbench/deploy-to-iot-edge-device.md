@@ -11,18 +11,18 @@ ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 08/24/2018
-ms.openlocfilehash: 24d3cf0c4b1a1283e7a6a7f61f0bb23dae7143d5
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 7322b07740d5dec85b6217e122fb262647527c96
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43113554"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51258407"
 ---
 # <a name="deploy-an-azure-machine-learning-model-to-an-azure-iot-edge-device"></a>Bereitstellen eines Azure Machine Learning-Modells auf einem Azure IoT Edge-Gerät
 
 Azure Machine Learning-Modelle können als Docker-basierte Webdiensts in Container gepackt werden. Azure IoT Edge ermöglicht Ihnen die Remotebereitstellung von Containern auf Geräten. Verwenden Sie diese Dienste gemeinsam, um Ihre Modelle im Edge-Bereich auszuführen und schnellere Antwortzeiten zu erzielen sowie die Datenübertragung zu reduzieren. 
 
-Zusätzliche Skripts und Anweisungen finden Sie im [AI-Toolkit für Azure IoT Edge](http://aka.ms/AI-toolkit).
+Zusätzliche Skripts und Anweisungen finden Sie im [AI-Toolkit für Azure IoT Edge](https://aka.ms/AI-toolkit).
 
 ## <a name="operationalize-the-model"></a>Operationalisieren des Modells
 

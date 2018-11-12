@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/19/2017
 ms.author: alkohli
-ms.openlocfilehash: 9a5be85b917682afeaecd67a4176edb7040d5b4b
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 5e461f340e1c58f64c6d645a1e47cfd811bc4de5
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50215428"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51261705"
 ---
 # <a name="manage-your-storsimple-device-controllers"></a>Verwalten von StorSimple-Gerätecontrollern
 
@@ -117,7 +117,7 @@ Führen Sie die folgenden Schritte aus, um das Microsoft Azure StorSimple-Gerät
    
     `Reset-HcsFactoryDefault`
    
-    Um stattdessen einen einzelnen Controller zurückzusetzen, verwenden Sie das Cmdlet [Reset-HcsFactoryDefault](http://technet.microsoft.com/library/dn688132.aspx) mit dem Parameter `-scope`.)
+    Um stattdessen einen einzelnen Controller zurückzusetzen, verwenden Sie das Cmdlet [Reset-HcsFactoryDefault](https://technet.microsoft.com/library/dn688132.aspx) mit dem Parameter `-scope`.)
    
     Das System wird mehrmals neu gestartet. Sie werden benachrichtigt, wenn das Zurücksetzen erfolgreich abgeschlossen wurde. Je nach Systemmodell kann es 45 bis 60 Minuten dauern, bis dieser Prozess für ein Gerät der Serie 8100 beendet ist. Für ein Gerät der Serie 8600 kann dieser Prozess 60 bis 90 Minuten dauern.
    

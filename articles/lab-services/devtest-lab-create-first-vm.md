@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 0240bbdf2055ac44f8836adfaad3bf6c44893b77
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 93ce9feaf52282b9477d49eaf270d6d89dca7811
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33781819"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51232527"
 ---
 # <a name="create-your-first-vm-in-a-lab-in-azure-devtest-labs"></a>Erstellen Ihres ersten virtuellen Computers in einem Lab in Azure DevTest Labs
 
@@ -28,7 +28,7 @@ Wenn Sie erstmals auf DevTest Labs zugreifen und Ihren ersten virtuellen Compute
 Dieses Tutorial führt Sie durch die Verwendung des Azure-Portals zum Hinzufügen Ihres ersten virtuellen Computers zu einem Lab in DevTest Labs.
 
 ## <a name="steps-to-add-your-first-vm-to-a-lab-in-azure-devtest-labs"></a>Schritte zum Hinzufügen Ihres ersten virtuellen Computers zu einem Lab in Azure DevTest Labs
-1. Melden Sie sich auf dem [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040)an.
+1. Melden Sie sich beim [Azure-Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) an.
 1. Wählen Sie **Alle Dienste** und dann in der Liste die Option **DevTest Labs**.
 1. Wählen Sie in der Liste der Labs das Lab aus, in dem Sie den neuen virtuellen Computer (VM, Virtual Machine) erstellen möchten.  
 1. Wählen Sie auf dem Blatt **Übersicht** des Labs die Option **+Hinzufügen** aus.  

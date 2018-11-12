@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: ee2440171b54e1279571ec4fcb0c5be7bec207a1
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 901b44b829398ef92e63f94e0b35549e63cdd3db
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37045737"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51262249"
 ---
 # <a name="move-data-from-teradata-using-azure-data-factory"></a>Verschieben von Daten aus Teradate mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -42,7 +42,7 @@ Das Gateway ist auch erforderlich, wenn Teradata auf einem virtuellen Azure IaaS
 > Unter [Problembehandlung bei Gateways](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) finden Sie Tipps zur Behandlung von Verbindungs- bzw. Gatewayproblemen.
 
 ## <a name="supported-versions-and-installation"></a>Unterstützte Versionen und Installation
-Damit das Datenverwaltungsgateway eine Verbindung mit der Teradata-Datenbank herstellt, müssen Sie den [.NET-Datenanbieter für Teradata](http://go.microsoft.com/fwlink/?LinkId=278886) Version 14 oder höher auf dem System mit dem Datenverwaltungsgateway installieren. Teradata Version 12 und höher wird unterstützt.
+Damit das Datenverwaltungsgateway eine Verbindung mit der Teradata-Datenbank herstellt, müssen Sie den [.NET-Datenanbieter für Teradata](https://go.microsoft.com/fwlink/?LinkId=278886) Version 14 oder höher auf dem System mit dem Datenverwaltungsgateway installieren. Teradata Version 12 und höher wird unterstützt.
 
 ## <a name="getting-started"></a>Erste Schritte
 Sie können eine Pipeline mit einer Kopieraktivität erstellen, die Daten mithilfe verschiedener Tools/APIs aus einem lokalen Teradata-Datenspeicher verschiebt. 
@@ -65,12 +65,12 @@ Die folgende Tabelle enthält eine Beschreibung der JSON-Elemente, die für den 
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
-| type |Die "type"-Eigenschaft muss auf **OnPremisesTeradata** |Ja |
-| server |Name des Teradata-Servers. |Ja |
-| authenticationType |Typ der Authentifizierung für die Verbindung mit der Teradata-Datenbank. Mögliche Werte: Anonymous, Basic und Windows. |Ja |
+| type |Die "type"-Eigenschaft muss auf **OnPremisesTeradata** |JA |
+| server |Name des Teradata-Servers. |JA |
+| authenticationType |Typ der Authentifizierung für die Verbindung mit der Teradata-Datenbank. Mögliche Werte: Anonymous, Basic und Windows. |JA |
 | username |Geben Sie den Benutzernamen an, wenn Sie die Standard- oder Windows-Authentifizierung verwenden. |Nein  |
 | password |Geben Sie das Kennwort für das Benutzerkonto an, das Sie für den Benutzernamen angegeben haben. |Nein  |
-| gatewayName |Name des Gateways, das der Data Factory-Dienst zum Herstellen einer Verbindung mit der lokalen Teradata-Datenbank verwenden soll. |Ja |
+| gatewayName |Name des Gateways, das der Data Factory-Dienst zum Herstellen einer Verbindung mit der lokalen Teradata-Datenbank verwenden soll. |JA |
 
 ## <a name="dataset-properties"></a>Dataset-Eigenschaften
 Eine vollständige Liste der Abschnitte und Eigenschaften, die zum Definieren von Datasets zur Verfügung stehen, finden Sie im Artikel [Erstellen von Datasets](data-factory-create-datasets.md). Abschnitte wie „structure“, „availability“ und „policy“ des JSON-Codes eines Datasets sind bei allen Dataset-Typen (Azure SQL, Azure-Blob, Azure-Tabelle usw.) ähnlich.
@@ -86,7 +86,7 @@ Wenn die Quelle vom Typ **RelationalSource** (wozu Teradata gehört) ist, sind i
 
 | Eigenschaft | BESCHREIBUNG | Zulässige Werte | Erforderlich |
 | --- | --- | --- | --- |
-| query |Verwendet die benutzerdefinierte Abfrage zum Lesen von Daten. |SQL-Abfragezeichenfolge. Beispiel: select * from MyTable. |Ja |
+| query |Verwendet die benutzerdefinierte Abfrage zum Lesen von Daten. |SQL-Abfragezeichenfolge. Beispiel: select * from MyTable. |JA |
 
 ### <a name="json-example-copy-data-from-teradata-to-azure-blob"></a>JSON-Beispiel: Kopieren von Daten aus Teradata in Azure-Blob
 Das folgende Beispiel stellt JSON-Beispieldefinitionen bereit, die Sie zum Erstellen einer Pipeline mit dem [Azure-Portal](data-factory-copy-activity-tutorial-using-azure-portal.md), mit [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) oder mit [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) verwenden können. Darin wird veranschaulicht, wie Sie Daten aus Teradata in Azure Blob Storage kopieren. Daten können jedoch auch mithilfe der Kopieraktivität in Azure Data Factory in eine beliebige der [hier](data-factory-data-movement-activities.md#supported-data-stores-and-formats) aufgeführten Senken kopiert werden.   

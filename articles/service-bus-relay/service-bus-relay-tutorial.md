@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/02/2017
 ms.author: spelluru
-ms.openlocfilehash: 12902fef0a27aa0af5995d2fd6ab87d951413d1d
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 9c76e535fe0585ec6ff08a0c9dcab700d8eb5424
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48857974"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51262011"
 ---
 # <a name="azure-wcf-relay-tutorial"></a>Tutorial zu Azure WCF Relay
 
@@ -35,7 +35,7 @@ Die letzten drei Schritte beschreiben das Erstellen einer Clientanwendung, das K
 
 Für dieses Tutorial benötigen Sie Folgendes:
 
-* [Microsoft Visual Studio 2015 oder höher](http://visualstudio.com) In diesem Tutorial wird Visual Studio 2017 verwendet.
+* [Microsoft Visual Studio 2015 oder höher](https://visualstudio.com) In diesem Tutorial wird Visual Studio 2017 verwendet.
 * Ein aktives Azure-Konto. Falls Sie nicht über ein Konto verfügen, können Sie in nur wenigen Minuten ein kostenloses Konto erstellen. Ausführliche Informationen finden Sie unter [Kostenlose Azure-Testversion](https://azure.microsoft.com/free/).
 
 ## <a name="create-a-service-namespace"></a>Erstellen eines Dienstnamespaces
@@ -81,7 +81,7 @@ Der Dienstvertrag gibt an, welche Vorgänge (Webdienstterminologie für Methoden
     ```
 
    > [!NOTE]
-   > In der Regel enthält der Dienstvertragsnamespace ein Benennungsschema, das Versionsinformationen umfasst. Durch das Einbeziehen von Versionsinformationen im Dienstvertragsnamespace können Dienste größere Änderungen isolieren, indem ein neuer Dienstvertrag mit einem neuen Namespace definiert und an einem neuen Endpunkt bereitgestellt wird.  Auf diese Weise können Clients weiterhin den alten Dienstvertrag verwenden, ohne dass sie aktualisiert werden müssen. Versionsinformationen können aus einer Datumsangabe oder einer Buildnummer bestehen. Weitere Informationen finden Sie unter [Dienstversionsverwaltung](http://go.microsoft.com/fwlink/?LinkID=180498). In diesem Tutorial enthält das Benennungsschema des Dienstvertragsnamespace keine Versionsinformationen.
+   > In der Regel enthält der Dienstvertragsnamespace ein Benennungsschema, das Versionsinformationen umfasst. Durch das Einbeziehen von Versionsinformationen im Dienstvertragsnamespace können Dienste größere Änderungen isolieren, indem ein neuer Dienstvertrag mit einem neuen Namespace definiert und an einem neuen Endpunkt bereitgestellt wird.  Auf diese Weise können Clients weiterhin den alten Dienstvertrag verwenden, ohne dass sie aktualisiert werden müssen. Versionsinformationen können aus einer Datumsangabe oder einer Buildnummer bestehen. Weitere Informationen finden Sie unter [Dienstversionsverwaltung](https://go.microsoft.com/fwlink/?LinkID=180498). In diesem Tutorial enthält das Benennungsschema des Dienstvertragsnamespace keine Versionsinformationen.
    >
    >
 8. Deklarieren Sie innerhalb der Schnittstelle `IEchoContract` eine Methode für den einzelnen Vorgang, den der Vertrag `IEchoContract` in der Schnittstelle bereitstellt, und wenden Sie das Attribut `OperationContractAttribute` auf die Methode an, die Sie als Teil des öffentlichen WCF-Relayvertrags bereitstellen möchten:

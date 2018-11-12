@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 2ae2ea14bc712563867f32b83eddbd9d4129ac1d
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: c7d8ab8beced055d10cebcecf36d957b155c63b7
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49409491"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51256220"
 ---
 # <a name="azure-operational-security"></a>Azure Operational Security
 ## <a name="introduction"></a>Einführung
@@ -65,7 +65,7 @@ Mit Log Analytics können Sie beliebige Instanzen in beliebigen Clouds (einschli
 
 Die Kernfunktionen von Log Analytics werden durch eine Reihe von Diensten bereitgestellt, die in Azure ausgeführt werden. Jeder Dienst bietet eine bestimmte Verwaltungsfunktion, und Sie können Dienste miteinander kombinieren, um verschiedene Verwaltungsszenarien zu bewältigen.
 
-| Dienst  | Beschreibung|
+| Dienst  | BESCHREIBUNG|
 | :------------- | :-------------|
 | Log Analytics | Dient zur Überwachung und Analyse der Verfügbarkeit und Leistung verschiedener Ressourcen (einschließlich physischer und virtueller Computer). |
 |Automation | Dient zur Automatisierung manueller Prozesse sowie zur Erzwingung von Konfigurationen für physische und virtuelle Computer. |
@@ -74,7 +74,7 @@ Die Kernfunktionen von Log Analytics werden durch eine Reihe von Diensten bereit
 
 ### <a name="log-analytics"></a>Log Analytics
 
-[Log Analytics](http://azure.microsoft.com/documentation/services/log-analytics) sammelt Daten von verwalteten Ressourcen in einem zentralen Repository und stellt so Überwachungsdienste bereit. Bei diesen Daten kann es sich um Ereignisse, Leistungsdaten oder benutzerdefinierte Daten handeln, die über die API bereitgestellt wurden. Die gesammelten Daten können für Warnungen und Analysen genutzt und exportiert werden.
+[Log Analytics](https://azure.microsoft.com/documentation/services/log-analytics) sammelt Daten von verwalteten Ressourcen in einem zentralen Repository und stellt so Überwachungsdienste bereit. Bei diesen Daten kann es sich um Ereignisse, Leistungsdaten oder benutzerdefinierte Daten handeln, die über die API bereitgestellt wurden. Die gesammelten Daten können für Warnungen und Analysen genutzt und exportiert werden.
 
 
 Mithilfe dieser Methode können Sie Daten aus verschiedenen Quellen zusammenfassen, um Daten aus Ihren Azure-Diensten mit Ihrer vorhandenen lokalen Umgebung zu kombinieren. Die Datensammlung wird außerdem klar von der Aktion getrennt, die für diese Daten ausgeführt wird, sodass alle Aktionen für alle Arten von Daten verfügbar sind.
@@ -92,7 +92,7 @@ Der Log Analytics-Dienst verwaltet Ihre Daten in der Cloud sicher mithilfe der f
 
 ### <a name="azure-backup"></a>Azure Backup
 
-[Azure Backup](http://azure.microsoft.com/documentation/services/backup) bietet Dienste zum Sichern und Wiederherstellen von Daten und ist Teil der Log Analytics-Suite von Produkten und Diensten.
+[Azure Backup](https://azure.microsoft.com/documentation/services/backup) bietet Dienste zum Sichern und Wiederherstellen von Daten und ist Teil der Log Analytics-Suite von Produkten und Diensten.
 Es schützt Ihre Anwendungsdaten und bewahrt sie jahrelang ohne Kapitaleinsatz und mit minimalen Betriebskosten auf. Mit diesem Dienst können neben Anwendungsworkloads wie SQL Server und SharePoint Daten von physischen und virtuellen Windows-Servern gesichert werden. Zudem kann er von [System Center Data Protection Manager (DPM)](https://en.wikipedia.org/wiki/System_Center_Data_Protection_Manager) verwendet werden, um geschützte Daten zur Redundanz und langfristigen Speicherung in Azure zu replizieren.
 
 

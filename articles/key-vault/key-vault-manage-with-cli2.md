@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/28/2018
 ms.author: barclayn
-ms.openlocfilehash: 16b5aed4d034d989bf34b92975b2a743b82903b0
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: f3b91e73cbfe9972969f5a061768a2c2bbfa7d1b
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49954339"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51256448"
 ---
 # <a name="manage-key-vault-using-the-azure-cli"></a>Verwalten von Key Vault mit der Azure CLI 
 
@@ -50,7 +50,7 @@ Für die Verwendung der Azure CLI-Befehle in diesem Artikel benötigen Sie Folge
 
 * Ein Abonnement für Microsoft Azure. Falls Sie über kein Azure-Abonnement verfügen, können Sie sich für eine [kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial) registrieren.
 * Azure-Befehlszeilenschnittstelle Version 2.0 oder höher. Unter [Install the Azure CLI (Installieren der Azure CLI)](/cli/azure/install-azure-cli) erhalten Sie Informationen zur Installation der neuesten Version.
-* Eine Anwendung, die zur Verwendung des Schlüssels oder Kennworts konfiguriert wird, den bzw. das Sie in diesem Artikel erstellen. Eine Beispielanwendung erhalten Sie im [Microsoft Download Center](http://www.microsoft.com/download/details.aspx?id=45343). Anweisungen finden Sie in der enthaltenen Infodatei.
+* Eine Anwendung, die zur Verwendung des Schlüssels oder Kennworts konfiguriert wird, den bzw. das Sie in diesem Artikel erstellen. Eine Beispielanwendung erhalten Sie im [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=45343). Anweisungen finden Sie in der enthaltenen Infodatei.
 
 ### <a name="getting-help-with-azure-cross-platform-command-line-interface"></a>Hilfestellung für die plattformübergreifende Azure-Befehlszeilenschnittstelle
 

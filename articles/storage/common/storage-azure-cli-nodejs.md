@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/30/2017
 ms.author: seguler
 ms.component: common
-ms.openlocfilehash: e563c7000b600bed917f42d8ffb87df883564ef8
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 28c9e342aec3eb3ba61b46f4f80c7d097b0653b6
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46979327"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51258713"
 ---
 # <a name="using-the-azure-classic-cli-with-azure-storage"></a>Verwenden der klassischen Azure CLI mit Azure Storage
 
@@ -122,7 +122,7 @@ export AZURE_STORAGE_CONNECTION_STRING=<connection_string>
 ```
 
 ## <a name="create-and-manage-blobs"></a>Erstellen und Verwalten von Blobs
-Azure Blob Storage ist ein Dienst zur Speicherung großer Mengen unstrukturierter Daten, beispielsweise Text- oder Binärdaten, auf die von überall auf der Welt über HTTP oder HTTPS zugegriffen werden kann. Dieser Abschnitt setzt voraus, dass Sie mit den Konzepten von Azure Blob Storage bereits vertraut sind. Ausführliche Informationen finden Sie unter [Erste Schritte mit Azure Blob Storage mit .NET](../blobs/storage-dotnet-how-to-use-blobs.md) und [Konzepte des Blob-Diensts](http://msdn.microsoft.com/library/azure/dd179376.aspx).
+Azure Blob Storage ist ein Dienst zur Speicherung großer Mengen unstrukturierter Daten, beispielsweise Text- oder Binärdaten, auf die von überall auf der Welt über HTTP oder HTTPS zugegriffen werden kann. Dieser Abschnitt setzt voraus, dass Sie mit den Konzepten von Azure Blob Storage bereits vertraut sind. Ausführliche Informationen finden Sie unter [Erste Schritte mit Azure Blob Storage mit .NET](../blobs/storage-dotnet-how-to-use-blobs.md) und [Konzepte des Blob-Diensts](https://msdn.microsoft.com/library/azure/dd179376.aspx).
 
 ### <a name="create-a-container"></a>Erstellen eines Containers
 Jeder Blob im Azure-Speicher muss sich in einem Container befinden. Mit dem Befehl `azure storage container create` können Sie einen privaten Container erstellen:
@@ -137,7 +137,7 @@ azure storage container create mycontainer
 >
 
 ### <a name="upload-a-blob-into-a-container"></a>Hochladen eines Blobs in einen Container
-Azure Blob Storage unterstützt Block- und Seitenblobs. Weitere Informationen finden Sie unter [Grundlagen zu Blockblobs, Anfügeblobs und Seitenblobs](http://msdn.microsoft.com/library/azure/ee691964.aspx).
+Azure Blob Storage unterstützt Block- und Seitenblobs. Weitere Informationen finden Sie unter [Grundlagen zu Blockblobs, Anfügeblobs und Seitenblobs](https://msdn.microsoft.com/library/azure/ee691964.aspx).
 
 Um Blobs in einen Container hochzuladen, können Sie den Befehl `azure storage blob upload`verwenden. Dieser Befehl lädt standardmäßig die lokalen Dateien in einen Blockblob hoch. Um den Blob-Typ anzugeben, können Sie den Parameter `--blobtype` verwenden.
 

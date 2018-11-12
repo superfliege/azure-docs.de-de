@@ -14,12 +14,12 @@ ms.date: 09/11/2018
 ms.author: barbkess
 ms.reviewer: asmalser
 ms.custom: it-pro
-ms.openlocfilehash: db008953b9aa596a64aceccacc0e4632ebfff596
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 72665ed4c25d2719ac5030bce59157a3ccd9dec7
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44720122"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51236005"
 ---
 # <a name="what-is-application-access-and-single-sign-on-with-azure-active-directory"></a>Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?
 Einmaliges Anmelden bedeutet, dass Sie Zugriff auf sämtliche für Ihre Geschäftsaktivitäten benötigten Anwendungen und Ressourcen erhalten, indem Sie sich nur einmal mit einem einzigen Benutzerkonto anmelden. Nach der Anmeldung können Sie auf alle benötigten Anwendungen zugreifen, ohne sich ein zweites Mal (z.B. durch Eingabe eines Kennworts) authentifizieren zu müssen.
@@ -102,7 +102,7 @@ Der [Azure Active Directory-Anwendungskatalog](https://azure.microsoft.com/marke
 Nachfolgend finden Sie einige Tipps für die Suche nach Apps unter Berücksichtigung der Funktionen, die sie unterstützen:
 
 * Azure AD unterstützt die automatische Bereitstellung und Aufhebung der Bereitstellung für alle "Top"-Apps im [Azure Active Directory-Anwendungskatalog](https://azure.microsoft.com/marketplace/active-directory/all/).
-* Eine Liste der Verbundanwendungen, die speziell die einmalige Verbundanmeldung mithilfe eines Protokolls wie z.B. WS-Verbund, SAML oder OpenID Connect unterstützen, finden Sie [hier](http://social.technet.microsoft.com/wiki/contents/articles/20235.azure-active-directory-application-gallery-federated-saas-apps.aspx).
+* Eine Liste der Verbundanwendungen, die speziell die einmalige Verbundanmeldung mithilfe eines Protokolls wie z.B. WS-Verbund, SAML oder OpenID Connect unterstützen, finden Sie [hier](https://social.technet.microsoft.com/wiki/contents/articles/20235.azure-active-directory-application-gallery-federated-saas-apps.aspx).
 
 Wenn Sie Ihre Anwendung gefunden haben, können Sie mithilfe der ausführlichen Anweisungen im App-Katalog und im Azure-Portal die einmalige Anmeldung aktivieren.
 
@@ -112,7 +112,7 @@ Wenn Sie Ihre Anwendung nicht im Azure AD-Anwendungskatalog finden, haben Sie fo
 * **Fügen Sie eine nicht gelistete App hinzu, die Sie verwenden** – Verwenden Sie die Kategorie „Benutzerdefiniert“ im App-Katalog des Azure-Portals, um eine nicht gelistete Anwendung zu verbinden, die in Ihrer Organisation verwendet wird. Sie können jede Anwendung hinzufügen, die SAML 2.0 als Verbund-App unterstützt, oder jede Anwendung für die kennwortbasierte einmalige Anmeldung, die über eine HTML-basierte Anmeldeseite verfügt. Weitere Informationen finden Sie in diesem Artikel unter [Hinzufügen Ihrer eigenen Anwendung](configure-federated-single-sign-on-non-gallery-applications.md).
 * **Hinzufügen Ihrer eigenen, selbst entwickelten App** – Wenn Sie die Anwendung selbst entwickelt haben, befolgen Sie die Richtlinien in der Azure AD-Entwicklerdokumentation, um die einmalige Verbundanmeldung oder die Bereitstellung mithilfe der Azure AD Graph-API zu implementieren. Weitere Informationen finden Sie in den folgenden Ressourcen:
   
-  * [Authentifizierungsszenarios für Azure AD](../develop/authentication-scenarios.md)
+  * [Authentifizierungsszenarien für Azure AD](../develop/authentication-scenarios.md)
   * [https://github.com/AzureADSamples/WebApp-MultiTenant-OpenIdConnect-DotNet](https://github.com/AzureADSamples/WebApp-MultiTenant-OpenIdConnect-DotNet)
   * [https://github.com/AzureADSamples/WebApp-WebAPI-MultiTenant-OpenIdConnect-DotNet](https://github.com/AzureADSamples/WebApp-WebAPI-MultiTenant-OpenIdConnect-DotNet)
   * [https://github.com/AzureADSamples/NativeClient-WebAPI-MultiTenant-WindowsStore](https://github.com/AzureADSamples/NativeClient-WebAPI-MultiTenant-WindowsStore)

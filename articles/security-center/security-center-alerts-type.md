@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/21/2018
 ms.author: yurid
-ms.openlocfilehash: 6261f78b4943afdbf74236bc40bea6db5cc62329
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 0573442568115fc872cc4cf4cf8c369cd635028e
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44159383"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51262113"
 ---
 # <a name="understanding-security-alerts-in-azure-security-center"></a>Verstehen der Sicherheitswarnungen in Azure Security Center
 In diesem Artikel werden die verschiedenen Arten von Sicherheitswarnungen und verwandte Informationen beschrieben, die in Azure Security Center verfügbar sind. Weitere Informationen zur Verwaltung von Warnungen und Vorfällen finden Sie unter [Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center](security-center-managing-and-responding-alerts.md).
@@ -204,4 +204,4 @@ In diesem Artikel wurden die unterschiedlichen Arten von Sicherheitswarnungen in
 * [Azure Security Center-Erkennungsfunktionen](security-center-detection-capabilities.md)
 * [Planungs- und Betriebshandbuch für Azure Security Center](security-center-planning-and-operations-guide.md)
 * [Azure Security Center – Häufig gestellte Fragen:](security-center-faq.md) Hier finden Sie häufig gestellte Fragen zur Verwendung des Diensts.
-* [Azure Security Blog](http://blogs.msdn.com/b/azuresecurity/) (Blog zur Azure-Sicherheit): Hier finden Sie Blogbeiträge zur Sicherheit und Konformität von Azure.
+* [Azure Security Blog](https://blogs.msdn.com/b/azuresecurity/) (Blog zur Azure-Sicherheit): Hier finden Sie Blogbeiträge zur Sicherheit und Konformität von Azure.

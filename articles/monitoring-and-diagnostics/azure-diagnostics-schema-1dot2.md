@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 05/15/2017
 ms.author: robb
 ms.component: diagnostic-extension
-ms.openlocfilehash: 8c3980231404e5c8068dbd011d20759f207d7fff
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: 322cd75fe9198bae459e7c22bed794f583d13363
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36937953"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51260294"
 ---
 # <a name="azure-diagnostics-12-configuration-schema"></a>Konfigurationsschema für die Azure-Diagnose 1.2
 > [!NOTE]
@@ -32,7 +32,7 @@ Dieses Schema definiert die möglichen Werte, die Sie verwenden können, um beim
 (Get-AzureServiceAvailableExtension -ExtensionName 'PaaSDiagnostics' -ProviderNamespace 'Microsoft.Azure.Diagnostics').PublicConfigurationSchema | Out-File –Encoding utf8 -FilePath 'C:\temp\WadConfig.xsd'  
 ```  
 
- Weitere Informationen zur Verwendung der Azure-Diagnose erhalten Sie unter [Aktivieren der Diagnose in Azure Cloud Services](http://azure.microsoft.com/documentation/articles/cloud-services-dotnet-diagnostics/).  
+ Weitere Informationen zur Verwendung der Azure-Diagnose erhalten Sie unter [Aktivieren der Diagnose in Azure Cloud Services](https://azure.microsoft.com/documentation/articles/cloud-services-dotnet-diagnostics/).  
 
 ## <a name="example-of-the-diagnostics-configuration-file"></a>Beispiel der Diagnosekonfigurationsdatei  
  Das folgende Beispiel zeigt eine typische Diagnosekonfigurationsdatei:  
@@ -154,11 +154,11 @@ Definiert Konfigurationseinstellungen für die Telemetriedaten, die gesammelt we
 
 |Elementname|BESCHREIBUNG|  
 |------------------|-----------------|  
-|**EtwEventSourceProviderConfiguration**|Konfiguriert die Erfassung von Ereignissen, die über die [EventSource-Klasse](http://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource\(v=vs.110\).aspx) generiert wurden. Erforderliches Attribut:<br /><br /> **provider**: Der Klassenname des EventSource-Ereignisses<br /><br /> Optionale Attribute sind:<br /><br /> -                     **scheduledTransferLogLevelFilter**: Der minimale Schweregrad, der in Ihr Speicherkonto übertragen wird<br /><br /> -                     **scheduledTransferPeriod**: Das Intervall zwischen geplanten Datenübertragungen an den Speicher (minutengenau gerundet) Der Wert ist ein [Dauer-Datentyp im XML-Format](http://www.w3schools.com/xml/schema_dtypes_date.asp).|  
+|**EtwEventSourceProviderConfiguration**|Konfiguriert die Erfassung von Ereignissen, die über die [EventSource-Klasse](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource\(v=vs.110\).aspx) generiert wurden. Erforderliches Attribut:<br /><br /> **provider**: Der Klassenname des EventSource-Ereignisses<br /><br /> Optionale Attribute sind:<br /><br /> -                     **scheduledTransferLogLevelFilter**: Der minimale Schweregrad, der in Ihr Speicherkonto übertragen wird<br /><br /> -                     **scheduledTransferPeriod**: Das Intervall zwischen geplanten Datenübertragungen an den Speicher (minutengenau gerundet) Der Wert ist ein [Dauer-Datentyp im XML-Format](http://www.w3schools.com/xml/schema_dtypes_date.asp).|  
 |**EtwManifestProviderConfiguration**|Erforderliches Attribut:<br /><br /> **provider**: Die GUID des Ereignisanbieters<br /><br /> Optionale Attribute sind:<br /><br /> - **scheduledTransferLogLevelFilter**: Der minimale Schweregrad, der in Ihr Speicherkonto übertragen wird<br /><br /> -                     **scheduledTransferPeriod**: Das Intervall zwischen geplanten Datenübertragungen an den Speicher (minutengenau gerundet) Der Wert ist ein [Dauer-Datentyp im XML-Format](http://www.w3schools.com/xml/schema_dtypes_date.asp).|  
 
 ## <a name="etweventsourceproviderconfiguration-element"></a>EtwEventSourceProviderConfiguration-Element  
- Konfiguriert die Erfassung von Ereignissen, die über die [EventSource-Klasse](http://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource\(v=vs.110\).aspx) generiert wurden. Die folgende Tabelle beschreibt die untergeordneten Elemente:  
+ Konfiguriert die Erfassung von Ereignissen, die über die [EventSource-Klasse](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource\(v=vs.110\).aspx) generiert wurden. Die folgende Tabelle beschreibt die untergeordneten Elemente:  
 
 |Elementname|BESCHREIBUNG|  
 |------------------|-----------------|  

@@ -2,19 +2,19 @@
 title: Verwenden von Ambari-Ansichten für die Arbeit mit Hive in HDInsight (Hadoop) – Azure
 description: Erfahren Sie, wie Sie die Hive-Ansicht im Webbrowser zum Übermitteln von Hive-Abfragen verwenden. Die Hive-Ansicht ist Teil der Ambari-Webbenutzeroberfläche, die mit dem Linux-basierten HDInsight-Cluster bereitgestellt wird.
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
-ms.author: jasonh
-ms.openlocfilehash: 43b82070ced57c0654d646fbea5a12aeab7c2a31
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.author: hrasheed
+ms.openlocfilehash: c481889eda53ff46a8899676da2529fe4165dfd5
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43048520"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51233155"
 ---
 # <a name="use-ambari-hive-view-with-hadoop-in-hdinsight"></a>Verwenden der Ambari-Hive-Ansicht mit Hadoop in HDInsight
 
@@ -166,7 +166,7 @@ Sie können die UDF dann in Ihrer Abfrage verwenden. Beispiel: `SELECT myawesome
 Weitere Informationen zur Verwendung von UDFs mit Hive unter HDInsight finden Sie in den folgenden Artikeln:
 
 * [Verwenden von Python mit Hive und Pig in HDInsight](python-udf-hdinsight.md)
-* [How to add a custom Hive UDF to HDInsight (in englischer Sprache)](http://blogs.msdn.com/b/bigdatasupport/archive/2014/01/14/how-to-add-custom-hive-udfs-to-hdinsight.aspx)
+* [How to add a custom Hive UDF to HDInsight (in englischer Sprache)](https://blogs.msdn.com/b/bigdatasupport/archive/2014/01/14/how-to-add-custom-hive-udfs-to-hdinsight.aspx)
 
 ## <a name="hive-settings"></a>Hive-Einstellungen
 

@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 09/06/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 93bd141b591cda5ec6ff1d9d042222070d3146e6
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 1f74538deab38db536bfcdc6d0f703d455039d51
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49390311"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51235903"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Versionsveröffentlichungsverlauf
 Das Azure Active Directory-Team (Azure AD) aktualisiert Azure AD Connect regelmäßig mit neuen Features und Funktionen. Nicht alle Erweiterungen gelten für alle Benutzergruppen.
@@ -35,8 +35,38 @@ Thema |  Details
 Schritte zum Upgrade von Azure AD Connect | Verschiedene Methoden zum [Aktualisieren von einer früheren Version auf die aktuelle Version](how-to-upgrade-previous-version.md) von Azure AD Connect.
 Erforderliche Berechtigungen | Informationen zu den zum Anwenden eines Updates erforderlichen Berechtigungen finden Sie unter [Konten und Berechtigungen](reference-connect-accounts-permissions.md#upgrade).
 
-Download | [Azure AD Connect herunterladen](http://go.microsoft.com/fwlink/?LinkId=615771).
+Download | [Azure AD Connect herunterladen](https://go.microsoft.com/fwlink/?LinkId=615771).
 
+## <a name="12650"></a>1.2.65.0 
+
+### <a name="release-status"></a>Releasestatus 
+
+25.10.2018: für den Download veröffentlicht
+
+ 
+### <a name="new-features-and-improvements"></a>Neue Features und Verbesserungen 
+
+
+- Die Funktionalität des Attributzurückschreibens wurde geändert, um sicherzustellen, dass gehostete Voicemail wie erwartet funktioniert.  In bestimmten Szenarien hat Azure AD das Attribut „msExchUcVoicemailSettings“ während des Zurückschreibens mit einem Nullwert überschrieben.  Azure AD löscht jetzt nicht mehr den lokalen Wert dieses Attributs, wenn der Cloudwert nicht festgelegt ist.
+- Im Azure AD Connect-Assistenten wurde eine Diagnose zur Untersuchung und Identifizierung von Konnektivitätsproblemen mit Azure AD hinzugefügt. Dieselben Diagnosen können auch direkt über die PowerShell ausgeführt werden, wobei das Cmdlet „Test-AdSyncAzureServiceConnectivity“ verwendet wird. 
+- Im Azure AD Connect-Assistenten wurde eine Diagnose zur Untersuchung und Identifizierung von Konnektivitätsproblemen mit AD hinzugefügt. Dieselben Diagnosen können auch direkt über die PowerShell ausgeführt werden, wobei die Funktion „Start-ConnectivityValidation“ im PowerShell-Modul „ADConnectivityTools“ verwendet wird.  Weitere Informationen finden Sie unter [Was ist das PowerShell-Modul „ADConnectivityTool“?](how-to-connect-adconnectivitytools.md).
+- Eine Vorüberprüfung der AD-Schemaversion für Hybrid Azure Active Directory-Beitritt und -Gerätezurückschreiben wurde hinzugefügt. 
+- Die Attributsuche auf der Seite „Verzeichniserweiterung“ wurde so geändert, dass Groß-/Kleinschreibung nicht berücksichtigt wird.
+-   Vollständige Unterstützung für TLS 1.2 wurde hinzugefügt. Dieser Release unterstützt, dass alle anderen Protokolle deaktiviert und nur TLS 1.2 auf dem Computer aktiviert wird, auf dem Azure AD Connect installiert ist.  Weitere Informationen finden Sie unter [Erzwingen von TLS 1.2 für Azure AD Connect](reference-connect-tls-enforcement.md).
+
+ 
+
+### <a name="fixed-issues"></a>Behobene Probleme   
+
+- Korrektur eines Fehlers, bei dem ein Azure AD Connect-Upgrade fehlschlug, wenn SQL Always On verwendet wurde. 
+- Korrektur eines Fehlers, damit OE-Namen, die einen Schrägstrich enthalten, ordnungsgemäß analysiert werden. 
+- Korrektur eines Problems, bei dem Passthrough-Authentifizierung für eine Neuinstallation im Stagingmodus deaktiviert wurde. 
+- Korrektur eines Fehlers, der verhindert hat, dass das PowerShell-Modul geladen wurde, wenn die Tools zur Problembehandlung ausgeführt werden. 
+- Korrektur eines Fehlers, der Kunden an der Verwendung numerischer Werte als erstes Zeichen eines Hostnamens gehindert hat. 
+- Korrektur eines Fehlers, bei dem Azure AD Connect ungültige Partitionen und Containerauswahl zugelassen hat. 
+- Die Fehlermeldung „Ungültiges Kennwort“, wenn Desktop-SSO aktiviert ist, wurde behoben. 
+- Verschiedene Fehlerkorrekturen für AD FS-Vertrauensstellungsverwaltung.  
+- Beim Konfigurieren des Gerätezurückschreibens – die Schemaüberprüfung wurde dahingehend korrigiert, dass sie nach der Objektklasse „msDs-DeviceContainer“ sucht (eingeführt in WS2012 R2).
 
  
 ## <a name="118820"></a>1.1.882.0  

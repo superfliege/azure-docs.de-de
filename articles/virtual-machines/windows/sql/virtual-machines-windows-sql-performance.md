@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 09/26/2018
 ms.author: jroth
-ms.openlocfilehash: 0119c6642d68db6a90af07395882e620b1af08c6
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 395994e2ac017bcdadaca4defad4ec0f910cea17
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47394949"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51258128"
 ---
 # <a name="performance-guidelines-for-sql-server-in-azure-virtual-machines"></a>Leistungsrichtlinien für SQL Server in Azure Virtual Machines
 
@@ -43,7 +43,7 @@ Im folgenden finden eine kurze Checkliste für die optimale Leistung von SQL Ser
 | [Speicher](#storage-guidance) |Verwenden Sie [Storage Premium](../premium-storage.md). Storage Standard empfiehlt sich nur für Entwicklungs- und Testumgebungen.<br/><br/>Speichern Sie das [Speicherkonto](../../../storage/common/storage-create-storage-account.md) und die SQL Server-VM in derselben Region.<br/><br/>Deaktivieren Sie auf dem Speicherkonto den [georedundanten Azure-Speicher](../../../storage/common/storage-redundancy.md) (Georeplikation). |
 | [Datenträger](#disks-guidance) |Verwenden Sie mindestens 2 [P30-Datenträger](../premium-storage.md#scalability-and-performance-targets) (1 für Protokolldateien; 1 für Datendateien, einschließlich „TempDB“).<br/><br/>Vermeiden Sie die Verwendung von Betriebssystem- oder temporären Datenträgern für die Datenbankspeicherung oder Protokollierung.<br/><br/>Aktivieren Sie das Caching für Lesevorgänge auf den Datenträgern, auf denen die Datendateien und TempDB-Datendateien gehostet werden.<br/><br/>Aktivieren Sie kein Caching auf Datenträgern, auf denen die Protokolldatei gehostet wird.<br/><br/>Wichtig: Beenden Sie den SQL Server-Dienst, wenn Sie die Cacheeinstellungen für einen Azure-VM-Datenträger ändern.<br/><br/>Erstellen Sie ein Stripeset mehrerer Azure-Datenträger für Daten, um einen höheren E/A-Durchsatz zu erzielen.<br/><br/>Formatieren Sie mit dokumentierten Zuordnungsgrößen. |
 | [E/A](#io-guidance) |Aktivieren Sie die Datenbankseitenkomprimierung.<br/><br/>Aktivieren Sie die sofortige Dateiinitialisierung für Datendateien.<br/><br/>Begrenzen Sie die automatische Vergrößerung der Datenbank.<br/><br/>Deaktivieren Sie die automatische Verkleinerung der Datenbank.<br/><br/>Verschieben Sie alle Datenbanken, einschließlich der Systemdatenbanken, auf Datenträger für Daten.<br/><br/>Verschieben Sie die Verzeichnisse für das SQL Server-Fehlerprotokoll und die Ablaufverfolgungsdateien auf die Datenträger für Daten.<br/><br/>Richten Sie standardmäßige Dateispeicherorte für Sicherungen und Datenbanken ein.<br/><br/>Aktivieren Sie gesperrte Seiten.<br/><br/>Wenden Sie SQL Server-Leistungs-Hotfixpakete an. |
-| [Featurespezifisch](#feature-specific-guidance) |Sichern Sie direkt in den Blobspeicher. |
+| [Funktionsspezifisch](#feature-specific-guidance) |Sichern Sie direkt in den Blobspeicher. |
 
 Weitere Informationen dazu, *wie* und *warum* diese Optimierungen vorgenommen werden, finden Sie in den Details und den Leitfäden in den folgenden Abschnitten.
 
@@ -166,7 +166,7 @@ Für virtuelle Computer, die Storage Premium unterstützen (DS-Serie, DSv2-Serie
     ![Datenprotokoll- und Sicherungsdateien für SQL](./media/virtual-machines-windows-sql-performance/sql_server_default_data_log_backup_locations.png)
 * Aktivieren Sie gesperrte Seiten, um E/A- und Auslagerungsaktivitäten zu verringern. Weitere Informationen finden Sie unter [Aktivieren der Option zum Sperren von Seiten im Speicher (Windows)](https://msdn.microsoft.com/library/ms190730.aspx).
 
-* Wenn Sie SQL Server 2012 ausführen, installieren Sie Service Pack 1, kumulatives Update 10. Dieses Update enthält ein Fix für schlechte E/A-Leistung beim Ausführen von SELECT in temporären Tabellenanweisungen in SQL Server 2012 Informationen hierzu finden Sie in diesem [Knowledge Base-Artikel](http://support.microsoft.com/kb/2958012).
+* Wenn Sie SQL Server 2012 ausführen, installieren Sie Service Pack 1, kumulatives Update 10. Dieses Update enthält ein Fix für schlechte E/A-Leistung beim Ausführen von SELECT in temporären Tabellenanweisungen in SQL Server 2012 Informationen hierzu finden Sie in diesem [Knowledge Base-Artikel](https://support.microsoft.com/kb/2958012).
 
 * Es könnte auch sinnvoll sein, alle Datendateien beim Übertragen in bzw. aus Azure zu komprimieren.
 

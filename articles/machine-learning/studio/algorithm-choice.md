@@ -1,5 +1,5 @@
 ---
-title: Auswählen von Algorithmen für das maschinelle Lernen | Microsoft-Dokumentation
+title: Auswählen von Algorithmen für das maschinelle Lernen | Microsoft Docs
 description: So wählen Sie einen Azure Machine Learning Studio-Algorithmus für überwachtes und nicht überwachtes Lernen bei Clustering-, Klassifizierungs- oder Regressionsexperimenten aus.
 services: machine-learning
 author: pakalra
@@ -12,18 +12,18 @@ ms.service: machine-learning
 ms.component: studio
 ms.topic: article
 ms.date: 12/18/2017
-ms.openlocfilehash: 92db2a86f5f698945cd2252476e951d658dc75ac
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: c3aa1bfe2cc1513d636452031de62da814af6cd7
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46959205"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51262300"
 ---
 # <a name="how-to-choose-algorithms-for-azure-machine-learning-studio"></a>Auswählen von Algorithmen für Azure Machine Learning Studio
 
 Die Antwort auf die Frage „Welchen Algorithmus für Machine Learning sollte ich verwenden?“ lautet immer „Kommt darauf an“. Es hängt von der Größe, Qualität und Art der Daten ab. Es hängt davon ab, was Sie mit der Antwort anfangen möchten. Es hängt davon ab, wie die mathematische Logik des Algorithmus in Anweisungen für den Computer übersetzt wurde, den Sie verwenden. Und es hängt davon ab, wie viel Zeit Sie haben. Selbst der erfahrenste Datenanalyst kann Ihnen nicht sagen, welcher Algorithmus die besten Ergebnisse liefert, bevor er ihn ausprobiert hat.
 
-## <a name="the-machine-learning-algorithm-cheat-sheet"></a>Das Cheat Sheet für Machine Learning-Algorithmen
+## <a name="the-machine-learning-algorithm-cheat-sheet"></a>Das "Machine Learning – Cheat Sheet für Algorithmen"
 
 Das **Cheat Sheet für Microsoft Azure Machine Learning-Algorithmen** erleichtert Ihnen die Auswahl des richtigen Lernalgorithmus für Predictive Analytics-Lösungen aus der Azure Machine Learning Studio-Algorithmusbibliothek.
 In diesem Artikel werden Sie durch seine Verwendung geführt.
@@ -121,7 +121,7 @@ Einige Lernalgorithmen treffen bestimmte Annahmen über die Struktur der Daten o
 | [Decision Forest (Entscheidungswald)](https://msdn.microsoft.com/library/azure/dn906008.aspx) |● |○ | |6 | |
 | [Decision Jungle (Entscheidungsdschungel)](https://msdn.microsoft.com/library/azure/dn905976.aspx) |● |○ | |6 |Niedriger Speicherbedarf |
 | [Boosted Decision Tree (Verstärkter Entscheidungsbaum)](https://msdn.microsoft.com/library/azure/dn906025.aspx) |● |○ | |6 |Hoher Speicherbedarf |
-| [Neuronales Netzwerk](https://msdn.microsoft.com/library/azure/dn905947.aspx) |● | | |9 |[Zusätzliche Anpassung möglich](http://go.microsoft.com/fwlink/?LinkId=402867) |
+| [Neuronales Netzwerk](https://msdn.microsoft.com/library/azure/dn905947.aspx) |● | | |9 |[Zusätzliche Anpassung möglich](https://go.microsoft.com/fwlink/?LinkId=402867) |
 | [Averaged Perceptron (gemitteltes Perzeptron)](https://msdn.microsoft.com/library/azure/dn906036.aspx) |○ |○ |● |4 | |
 | [Support Vector Machine (Stützvektormethode)](https://msdn.microsoft.com/library/azure/dn905835.aspx) | |○ |● |5 |Für große Merkmalssätze geeignet |
 | [Locally Deep Support Vector Machine (lokal tiefe SVM)](https://msdn.microsoft.com/library/azure/dn913070.aspx) |○ | | |8 |Für große Merkmalssätze geeignet |
@@ -130,7 +130,7 @@ Einige Lernalgorithmen treffen bestimmte Annahmen über die Struktur der Daten o
 | [Logistische Regression](https://msdn.microsoft.com/library/azure/dn905853.aspx) | |● |● |5 | |
 | [Decision Forest (Entscheidungswald)](https://msdn.microsoft.com/library/azure/dn906015.aspx) |● |○ | |6 | |
 | [Decision Jungle (Entscheidungsdschungel) ](https://msdn.microsoft.com/library/azure/dn905963.aspx) |● |○ | |6 |Niedriger Speicherbedarf |
-| [Neuronales Netzwerk](https://msdn.microsoft.com/library/azure/dn906030.aspx) |● | | |9 |[Zusätzliche Anpassung möglich](http://go.microsoft.com/fwlink/?LinkId=402867) |
+| [Neuronales Netzwerk](https://msdn.microsoft.com/library/azure/dn906030.aspx) |● | | |9 |[Zusätzliche Anpassung möglich](https://go.microsoft.com/fwlink/?LinkId=402867) |
 | [one-v-all](https://msdn.microsoft.com/library/azure/dn905887.aspx) |- |- |- |- |Siehe die Eigenschaften der ausgewählten zweiklassigen Methode |
 | **Regression** | | | | | |
 | [linear](https://msdn.microsoft.com/library/azure/dn905978.aspx) | |● |● |4 | |
@@ -138,7 +138,7 @@ Einige Lernalgorithmen treffen bestimmte Annahmen über die Struktur der Daten o
 | [Decision Forest (Entscheidungswald)](https://msdn.microsoft.com/library/azure/dn905862.aspx) |● |○ | |6 | |
 | [Boosted Decision Tree (Verstärkter Entscheidungsbaum)](https://msdn.microsoft.com/library/azure/dn905801.aspx) |● |○ | |5 |Hoher Speicherbedarf |
 | [fast forest quantile](https://msdn.microsoft.com/library/azure/dn913093.aspx) |● |○ | |9 |Verteilungen anstelle von Punktvorhersagen |
-| [Neuronales Netzwerk](https://msdn.microsoft.com/library/azure/dn905924.aspx) |● | | |9 |[Zusätzliche Anpassung möglich](http://go.microsoft.com/fwlink/?LinkId=402867) |
+| [Neuronales Netzwerk](https://msdn.microsoft.com/library/azure/dn905924.aspx) |● | | |9 |[Zusätzliche Anpassung möglich](https://go.microsoft.com/fwlink/?LinkId=402867) |
 | [Poisson](https://msdn.microsoft.com/library/azure/dn905988.aspx) | | |● |5 |Technically log-linear. Für die Vorhersage von Anzahlen |
 | [ordinal](https://msdn.microsoft.com/library/azure/dn906029.aspx) | | | |0 |Für die Vorhersage von Rangreihenfolgen |
 | **Anomalieerkennung** | | | | | |
@@ -190,7 +190,7 @@ Verstärkte Entscheidungsbäume (Boosted Decision Trees) vermeiden eine Überanp
 Neuronale Netzwerke sind vom Gehirn inspirierte Lernalgorithmen, die [mehrklassige](https://msdn.microsoft.com/library/azure/dn906030.aspx), [zweiklassige](https://msdn.microsoft.com/library/azure/dn905947.aspx) und [Regressionsprobleme](https://msdn.microsoft.com/library/azure/dn905924.aspx) abdecken. Es gibt eine unendliche Vielfalt von neuronalen Netzwerken, aber alle in Azure Machine Learning enthaltenen haben die Form von gerichteten azyklischen Graphen (Directed Acyclic Graphs, DAG). Das bedeutet, dass Eingabemerkmale durch eine Abfolge von Schichten vorwärts weitergegeben werden (niemals zurück), bevor sie in Ausgaben umgewandelt werden. In jeder Schicht werden Eingaben in verschiedenen Kombinationen gewichtet, summiert und an die nächste Schicht übergeben. Diese Kombination aus einfachen Berechnungen resultiert in der Fähigkeit, komplexe Klassengrenzen und Datentrends lernen zu können – fast schon Zauberei. Netzwerke dieser Art mit vielen Schichten führen das "tiefe Lernen" aus, das den Stoff für so viele Technikberichte und Science-Fiction liefert.
 
 Diese hohe Leistung gibt es jedoch nicht umsonst. Das Training neuronaler Netzwerke kann sehr lange dauern, insbesondere bei großen Datasets mit vielen Merkmalen. Sie verfügen außerdem über mehr Parameter als die meisten Algorithmen, was bedeutet, dass "Parameter Sweeping" die Trainingsdauer extrem verlängert.
-Und für die Streber, die [ihre eigene Netzwerkstruktur spezifizieren](http://go.microsoft.com/fwlink/?LinkId=402867)möchten, sind die Möglichkeiten geradezu unerschöpflich.
+Und für die Streber, die [ihre eigene Netzwerkstruktur spezifizieren](https://go.microsoft.com/fwlink/?LinkId=402867)möchten, sind die Möglichkeiten geradezu unerschöpflich.
 
 ![Von neuronalen Netzwerken gelernte Grenzen][6]
 ***Die von neuronalen Netzwerken gelernten Grenzen können komplex und unregelmäßig sein.***

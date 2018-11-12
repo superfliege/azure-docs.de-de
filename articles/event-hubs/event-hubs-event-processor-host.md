@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/16/2018
 ms.author: shvija
-ms.openlocfilehash: 63cc8a698c9e383c4b5908286d28b51d89842bdc
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: 236103861ce8a296c77f708dbb4a7cc7e03f10f3
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47585695"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51258951"
 ---
 # <a name="azure-event-hubs-event-processor-host-overview"></a>Übersicht über den Azure Event Hubs-Ereignisprozessorhost
 
 Azure Event Hubs ist ein leistungsfähiger Dienst zur Erfassung von Telemetriedaten, der zum Streamen von Millionen von Ereignissen zu geringen Kosten verwendet werden kann. In diesem Artikel wird beschrieben, wie erfasste Ereignisse mithilfe des *Ereignisprozessorhosts* (Event Processor Host, EPH) genutzt und verarbeitet werden. Dabei handelt es sich um einen intelligenten Consumer-Agent, der die Verwaltung von Prüfpunkten, Leasing und parallelen Ereignislesern vereinfacht.  
 
-Der Schlüssel zur Skalierung in Event Hubs ist das Konzept der partitionierten Consumer. Im Gegensatz zum Muster der [konkurrierenden Consumer](http://msdn.microsoft.com/library/dn568101.aspx) ermöglicht das Muster der partitionierten Consumer hohe Skalierbarkeit durch Beseitigen des Konfliktengpasses und Vereinfachen der End-to-End-Parallelität.
+Der Schlüssel zur Skalierung in Event Hubs ist das Konzept der partitionierten Consumer. Im Gegensatz zum Muster der [konkurrierenden Consumer](https://msdn.microsoft.com/library/dn568101.aspx) ermöglicht das Muster der partitionierten Consumer hohe Skalierbarkeit durch Beseitigen des Konfliktengpasses und Vereinfachen der End-to-End-Parallelität.
 
 ## <a name="home-security-scenario"></a>Szenario zur Haussicherheit
 

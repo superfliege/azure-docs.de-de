@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/27/2017
 ms.author: mikeray
-ms.openlocfilehash: e9b4ca959b93e097bb52a841cec02cc476ef5f48
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 463ef5f4a655617074915078fb4ced9e596f8957
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
-ms.locfileid: "29401258"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51257713"
 ---
 # <a name="high-availability-and-disaster-recovery-for-sql-server-in-azure-virtual-machines"></a>Hochverfügbarkeit und Notfallwiederherstellung für SQL Server auf virtuellen Azure-Computern
 
@@ -59,7 +59,7 @@ Sie können eine Notfallwiederherstellungslösung für Ihre SQL Server-Datenbank
 | Technologie | Beispielarchitekturen |
 | --- | --- |
 | **Verfügbarkeitsgruppen** |Die Replikate für die Verfügbarkeit werden in mehreren Rechenzentren auf virtuellen Azure-Computern für die Notfallwiederherstellung ausgeführt. Diese regionsübergreifende Lösung bietet einen Schutz vor dem Ausfall einzelner Standorte. <br/> ![Verfügbarkeitsgruppen](./media/virtual-machines-windows-sql-high-availability-dr/azure_only_dr_alwayson.png)<br/>Alle Replikate innerhalb einer Region sollten sich in demselben Clouddienst und im gleichen VNet befinden. Da jede Region ein gesondertes VNet besitzt, benötigen diese Lösungen VNet-zu-VNet-Verbindungen. Weitere Informationen finden Sie unter [Konfigurieren einer VNET-zu-VNET-Verbindung mit dem Azure-Portal](../../../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md). Ausführliche Anweisungen finden Sie unter [Konfigurieren einer SQL Server-Verfügbarkeitsgruppe in Azure Virtual Machines in verschiedenen Regionen](virtual-machines-windows-portal-sql-availability-group-dr.md).|
-| **Spiegeln von Datenbanken** |Prinzipale, Spiegelungen und Server werden in verschiedenen Rechenzentren für die Notfallwiederherstellung ausgeführt. Da sich eine Active Directory-Domäne über mehrere Rechenzentren erstrecken kann, müssen Sie die Bereitstellung mithilfe von Serverzertifikaten durchführen.<br/>![Spiegeln von Datenbanken](./media/virtual-machines-windows-sql-high-availability-dr/azure_only_dr_dbmirroring.gif) |
+| **Datenbankspiegelung** |Prinzipale, Spiegelungen und Server werden in verschiedenen Rechenzentren für die Notfallwiederherstellung ausgeführt. Da sich eine Active Directory-Domäne über mehrere Rechenzentren erstrecken kann, müssen Sie die Bereitstellung mithilfe von Serverzertifikaten durchführen.<br/>![Spiegeln von Datenbanken](./media/virtual-machines-windows-sql-high-availability-dr/azure_only_dr_dbmirroring.gif) |
 | **Sicherung und Wiederherstellung mit dem Azure Blob Storage-Dienst** |Die Produktionsdatenbanken werden direkt im Blob-Speicher in einem anderen Rechenzentrum für die Notfallwiederherstellung gesichert.<br/>![Sichern und Wiederherstellen](./media/virtual-machines-windows-sql-high-availability-dr/azure_only_dr_backup_restore.gif)<br/>Weitere Informationen finden Sie unter [Sicherung und Wiederherstellung für SQL Server auf virtuellen Azure-Computern](virtual-machines-windows-sql-backup-recovery.md). |
 | **Replikation und Failover von SQL-Server zu Azure mit Azure Site Recovery** |Der SQL-Server für die Produktion eines Azure-Rechenzentrums, der zur Notfallwiederherstellung direkt in Azure Storage eines anderen Azure-Rechenzentrums repliziert wurde.<br/>![Replikation mithilfe von Azure Site Recovery](./media/virtual-machines-windows-sql-high-availability-dr/azure_only_dr_standalone_sqlserver-asr.png)<br/>Weitere Informationen finden Sie unter [Schützen von SQL Server mit der Notfallwiederherstellung von SQL Server und Azure Site Recovery](../../../site-recovery/site-recovery-sql.md). |
 
@@ -93,7 +93,7 @@ Beachten Sie folgendes Szenario, wenn ein Cluster mit zwei Knoten erstellt und o
 5. Wenn KNOTEN2 versucht, eine Verbindung mit KNOTEN1 herzustellen, verlassen für KNOTEN1 bestimmten Pakete niemals KNOTEN2, da die IP-Adresse von KNOTEN1 zu sich selbst aufgelöst wird. KNOTEN2 kann keine Verbindung mit KNOTEN1 herstellen, verliert daraufhin das Quorum und fährt den Cluster herunter.
 6. In der Zwischenzeit kann KNOTEN1 Pakete an KNOTEN2 senden, aber KNOTEN2 kann nicht antworten. KNOTEN1 verliert das Quorum und fährt den Cluster herunter.
 
-Dieses Szenario kann vermieden werden, indem Sie dem Netzwerknamen des Clusters eine nicht verwendete statische IP-Adresse zuweisen, z. B. eine verbindungslokale IP-Adresse wie 169.254.1.1, um diesen online zu schalten. Informationen zur Vereinfachung dieses Vorgangs finden Sie unter [How to Configure Windows Failover Cluster in Azure for Availability Groups (Konfigurieren eines Windows-Failoverclusters in Azure für Verfügbarkeitsgruppen)](http://social.technet.microsoft.com/wiki/contents/articles/14776.configuring-windows-failover-cluster-in-windows-azure-for-alwayson-availability-groups.aspx).
+Dieses Szenario kann vermieden werden, indem Sie dem Netzwerknamen des Clusters eine nicht verwendete statische IP-Adresse zuweisen, z. B. eine verbindungslokale IP-Adresse wie 169.254.1.1, um diesen online zu schalten. Informationen zur Vereinfachung dieses Vorgangs finden Sie unter [How to Configure Windows Failover Cluster in Azure for Availability Groups (Konfigurieren eines Windows-Failoverclusters in Azure für Verfügbarkeitsgruppen)](https://social.technet.microsoft.com/wiki/contents/articles/14776.configuring-windows-failover-cluster-in-windows-azure-for-alwayson-availability-groups.aspx).
 
 Weitere Informationen finden Sie unter [Konfigurieren von Verfügbarkeitsgruppen in Azure (GUI)](virtual-machines-windows-portal-sql-alwayson-availability-groups.md).
 
@@ -120,7 +120,7 @@ Weitere Informationen zur Clientkonnektivität finden Sie unter:
 
 * [Verwenden von Schlüsselwörtern für Verbindungszeichenfolgen mit SQL Server Native Client](https://msdn.microsoft.com/library/ms130822.aspx)
 * [Verbinden von Clients mit einer Datenbank-Spiegelungssitzung (SQL Server)](https://technet.microsoft.com/library/ms175484.aspx)
-* [Connecting to Availability Group Listener in Hybrid IT (in englischer Sprache)](http://blogs.msdn.com/b/sqlalwayson/archive/2013/02/14/connecting-to-availability-group-listener-in-hybrid-it.aspx)
+* [Connecting to Availability Group Listener in Hybrid IT (in englischer Sprache)](https://blogs.msdn.com/b/sqlalwayson/archive/2013/02/14/connecting-to-availability-group-listener-in-hybrid-it.aspx)
 * [Verfügbarkeitsgruppenlistener, Clientkonnektivität und Anwendungsfailover (SQL Server)](https://technet.microsoft.com/library/hh213417.aspx)
 * [Verwenden von Verbindungszeichenfolgen für die Datenbankspiegelung mit Verfügbarkeitsgruppen](https://technet.microsoft.com/library/hh213417.aspx)
 
@@ -139,5 +139,5 @@ Weitere Informationen zum Ausführen von SQL Server auf virtuellen Azure-Comput
 
 ### <a name="other-resources"></a>Weitere Ressourcen
 * [Installieren einer neuen Active Directory-Gesamtstruktur in Azure](../../../active-directory/active-directory-new-forest-virtual-machine.md)
-* [Create Failover Cluster for Availability Groups in Azure VM (Erstellen eines Failoverclusters für Verfügbarkeitsgruppen auf virtuellen Azure-Computern)](http://gallery.technet.microsoft.com/scriptcenter/Create-WSFC-Cluster-for-7c207d3a)
+* [Create Failover Cluster for Availability Groups in Azure VM (Erstellen eines Failoverclusters für Verfügbarkeitsgruppen auf virtuellen Azure-Computern)](https://gallery.technet.microsoft.com/scriptcenter/Create-WSFC-Cluster-for-7c207d3a)
 

@@ -10,12 +10,12 @@ ms.component: bing-video-search
 ms.topic: overview
 ms.date: 04/15/2017
 ms.author: scottwhi
-ms.openlocfilehash: cf37db9bffa8b2a54a6327c29ec806e0eefc8c91
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: e48a0a056628e0c863330de792f8edfaa48aae34
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47225411"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51261858"
 ---
 # <a name="what-is-bing-video-search"></a>Worum handelt es sich bei der Bing-Videosuche?
 
@@ -47,7 +47,7 @@ Alle Anforderungen müssen über einen Server erfolgen.
 
 Wenn Sie zuvor noch keine der Bing-APIs aufgerufen haben, lassen Sie den Client-ID-Header weg. Schließen Sie die Client-ID nur ein, wenn Sie bereits eine Bing-API aufgerufen haben und Bing eine Client-ID für die Kombination aus Benutzer und Gerät zurückgegeben hat.
 
-Wenn Sie Videos aus einer bestimmten Domäne abrufen möchten, verwenden Sie den Abfrageoperator [site:](http://msdn.microsoft.com/library/ff795613.aspx).
+Wenn Sie Videos aus einer bestimmten Domäne abrufen möchten, verwenden Sie den Abfrageoperator [site:](https://msdn.microsoft.com/library/ff795613.aspx).
 
 ```http
 GET https://api.cognitive.microsoft.com/bing/v7.0/videos/search?q=sailing+dinghies+site:contososailing.com&mkt=en-us HTTP/1.1
@@ -131,7 +131,7 @@ Die Videosuche-API gibt standardmäßig alle Videos zurück, die für die Abfrag
 - [videoLength](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#videolength): Filtert Videos nach Länge des Videos (z. B. Videos, die weniger als fünf Minuten lang sind).
 - [freshness](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#freshness): Filtert Videos nach Alter (beispielsweise Videos, die von Bing in der letzten Woche gefunden wurden).
 
-Um Videos von einer bestimmten Domäne zu erhalten, schließen Sie den Abfrageoperator [site:](http://msdn.microsoft.com/library/ff795613.aspx) in die Abfragezeichenfolge ein.
+Um Videos von einer bestimmten Domäne zu erhalten, schließen Sie den Abfrageoperator [site:](https://msdn.microsoft.com/library/ff795613.aspx) in die Abfragezeichenfolge ein.
 
 > [!NOTE]
 > Bei Verwendung des Abfrageoperators `site:` kann es je nach Abfrage vorkommen, dass die Antwort nicht jugendfreie Inhalte enthält (unabhängig von der Einstellung [safeSearch](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#safesearch)). Verwenden Sie `site:` nur, wenn Sie wissen, welche Inhalte die Website enthält, und wenn in Ihrem Szenario ggf. auch nicht jugendfreie Inhalte zulässig sind.

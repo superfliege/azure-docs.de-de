@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2018
 ms.author: deguhath
-ms.openlocfilehash: e6601093577eb9e3dfba4ed27e1e0510cad17de7
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: b703cb4d3ddd8b62895c9c40c7fa2fba728e884e
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39421048"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51262274"
 ---
 # <a name="vehicle-telemetry-analytics-solution-template-power-bi-dashboard-setup-instructions"></a>Lösungsvorlage „Analyse von Telemetriedaten für Fahrzeuge“ – Anweisungen zur Einrichtung des Power BI-Dashboards
 Dieses Menü bietet Links zu den Kapiteln in diesem Playbook: 
@@ -30,7 +30,7 @@ Die Lösung zur Fahrzeugtelemetrieanalyse zeigt, wie Autohändler, Hersteller un
 
 ## <a name="prerequisites"></a>Voraussetzungen
 * Stellen Sie die Lösung [Analyse von Telemetriedaten für Fahrzeuge](https://gallery.cortanaintelligence.com/Solution/5bdb23f3abb448268b7402ab8907cc90) bereit. 
-* Installieren Sie [Power BI Desktop](http://www.microsoft.com/download/details.aspx?id=45331).
+* Installieren Sie [Power BI Desktop](https://www.microsoft.com/download/details.aspx?id=45331).
 * Schließen Sie ein [Azure-Abonnement](https://azure.microsoft.com/pricing/free-trial/) ab. Wenn Sie kein Abonnement haben, verwenden Sie zunächst ein kostenloses Azure-Abonnement.
 * Erstellen Sie ein Power BI-Konto.
 
@@ -348,7 +348,7 @@ Sie haben das Echtzeit-Dashboard erfolgreich erstellt. Wenn Sie „CarEventGener
 
 ### <a name="configure-power-bi-reports"></a>Konfigurieren von Power BI-Berichten
 
-1. Öffnen Sie mit Power BI Desktop die Designerdatei **ConnectedCarsPbiReport.pbix**. Falls noch nicht geschehen, installieren Sie Power BI Desktop von der [Installationswebsite für Power BI Desktop](http://www.microsoft.com/download/details.aspx?id=45331).
+1. Öffnen Sie mit Power BI Desktop die Designerdatei **ConnectedCarsPbiReport.pbix**. Falls noch nicht geschehen, installieren Sie Power BI Desktop von der [Installationswebsite für Power BI Desktop](https://www.microsoft.com/download/details.aspx?id=45331).
 
 1. Wählen Sie **Abfragen bearbeiten** aus.
 

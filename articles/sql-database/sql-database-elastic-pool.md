@@ -12,12 +12,12 @@ ms.author: moslake
 ms.reviewer: ninarn, carlrab
 manager: craigg
 ms.date: 10/15/2018
-ms.openlocfilehash: 6721b260960cd38b68173a5d973a5716b99a26c0
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: a6e2be02f9954a036fdcb67a15c73cc82670834b
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50241207"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51283562"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>Pools für elastische Datenbanken als Hilfe beim Verwalten und Skalieren mehrerer Azure SQL-Datenbank-Instanzen
 
@@ -113,11 +113,11 @@ Wenn Sie keine Tools verwenden können, kann Ihnen die folgende Anleitung dabei 
 
 1. Schätzen Sie die für den Pool benötigten eDTUs oder V-Kerne nach der folgenden Methode:
 
-   Für DTU-basiertes Kaufmodell: MAX(<*Gesamtanzahl Datenbanken* x *durchschnittliche DTU-Nutzung pro Datenbank* >,<br>
+   Für DTU-basiertes Kaufmodell: MAX(<*Gesamtanzahl Datenbanken* x *durchschnittliche DTU-Nutzung pro Datenbank* >,<br>  
    < *Anzahl gleichzeitiger Datenbanken mit Spitzenauslastung* X *DTU-Spitzenauslastung pro Datenbank* )
 
-   Für V-Kern-basiertes Kaufmodell: MAX(< *Gesamtanzahl Datenbanken* x *durchschnittliche V-Kern-Nutzung pro Datenbank* >,<br>
-   <*Anzahl gleichzeitiger Datenbanken mit Spitzenauslastung* X *V-Kern-Spitzenauslastung pro Datenbank*)
+   Für V-Kern-basiertes Kaufmodell: MAX(< *Gesamtanzahl Datenbanken* x *durchschnittliche V-Kern-Nutzung pro Datenbank* >,<br>  
+   < *Anzahl gleichzeitiger Datenbanken mit Spitzenauslastung* X *V-Kern-Spitzenauslastung pro Datenbank* )
 
 2. Schätzen Sie den für den Pool benötigten Speicherplatz, indem Sie die Menge der für alle Datenbanken im Pool benötigten Bytes addieren. Ermitteln Sie dann die eDTU-Poolgröße, die diese Menge an Speicher bietet.
 3. Verwenden Sie für das DTU-basierte Kaufmodell die größere der eDTU-Schätzungen aus Schritt 1 und Schritt 2. Verwenden Sie für das V-Kern-basierte Kaufmodell die V-Kern-Schätzung aus Schritt 1.

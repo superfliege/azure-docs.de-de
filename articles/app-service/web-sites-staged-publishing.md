@@ -15,17 +15,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/16/2016
 ms.author: cephalin
-ms.openlocfilehash: 35027b4eadba72776fd27826a389763cc0832eee
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: ea9167404034911a0e917374fbdb9962da1578d5
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48044313"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51257832"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Einrichten von Stagingumgebungen in Azure App Service
 <a name="Overview"></a>
 
-Sie können die Bereitstellung Ihrer Web-App, Web-App unter Linux, Ihres mobilen Back-Ends oder Ihrer API-App in [App Service](http://go.microsoft.com/fwlink/?LinkId=529714) in einem separaten Bereitstellungsslot anstelle des Standardproduktionsslots vornehmen, wenn die Ausführung im Tarif **Standard** oder **Premium** des App Service-Plans erfolgt. Bereitstellungsslots sind tatsächlich aktive Apps mit eigenen Hostnamen. Elemente für App-Inhalte und -Konfigurationen können zwischen zwei Bereitstellungsslots, einschließlich des Produktionsslots, ausgetauscht werden. Die Bereitstellung von Anwendungen in einem Bereitstellungsslot hat die folgenden Vorteile:
+Sie können die Bereitstellung Ihrer Web-App, Web-App unter Linux, Ihres mobilen Back-Ends oder Ihrer API-App in [App Service](https://go.microsoft.com/fwlink/?LinkId=529714) in einem separaten Bereitstellungsslot anstelle des Standardproduktionsslots vornehmen, wenn die Ausführung im Tarif **Standard** oder **Premium** des App Service-Plans erfolgt. Bereitstellungsslots sind tatsächlich aktive Apps mit eigenen Hostnamen. Elemente für App-Inhalte und -Konfigurationen können zwischen zwei Bereitstellungsslots, einschließlich des Produktionsslots, ausgetauscht werden. Die Bereitstellung von Anwendungen in einem Bereitstellungsslot hat die folgenden Vorteile:
 
 * Sie können App-Änderungen in einem Stagingbereitstellungsslot überprüfen, bevor Sie die App in den Produktionsslot überführen.
 * Indem Sie eine App zuerst in einem Slot bereitstellen und sie dann in den Produktionsslot überführen, stellen Sie sicher, dass alle Instanzen erst nach einer Anlaufzeit in den Produktionsslot übernommen werden. Dadurch vermeiden Sie Ausfallzeiten bei der Bereitstellung der App. Die Verkehrsweiterleitung ist nahtlos, und es werden keine Anfragen aufgrund von Überführungsoperationen fallengelassen. Dieser gesamte Workflow kann durch Konfigurieren von [Automatisch tauschen](#Auto-Swap) automatisiert werden, wenn keine Überprüfung vor dem Austauschen erforderlich ist.

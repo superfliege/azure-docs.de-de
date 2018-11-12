@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: overview
 ms.date: 09/24/2018
 ms.author: alkohli
-ms.openlocfilehash: 6422482a31ad8022b795cb357c37ad8560781767
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: e99a3a7db7a934a8a72695c38ab952786579a640
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49166592"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51232205"
 ---
 # <a name="what-is-azure-data-box-edge-preview"></a>Was ist Azure Data Box Edge (Vorschauversion)? 
 
@@ -60,7 +60,7 @@ Data Box Edge bietet die folgenden Funktionen:
 |Funktion |BESCHREIBUNG  |
 |---------|---------|
 |Hohe Leistung     | Vollständig automatisierte und stark optimierte Datenübertragung und Bandbreite.|
-|Unterstützte Protokolle     | Für die Datenerfassung werden die Standardprotokolle SMB und NFS unterstützt. <br> Weitere Informationen zu unterstützten Versionen finden Sie unter [Systemanforderungen für Data Box Edge](http://aka.ms/dbe-docs).|
+|Unterstützte Protokolle     | Für die Datenerfassung werden die Standardprotokolle SMB und NFS unterstützt. <br> Weitere Informationen zu unterstützten Versionen finden Sie unter [Systemanforderungen für Data Box Edge](https://aka.ms/dbe-docs).|
 |Computing       |Ermöglicht das Analysieren, Verarbeiten und Filtern von Daten.|
 |Datenzugriff     | Direkter Datenzugriff aus Azure Storage-Blobs und Azure Files über Cloud-APIs zur zusätzlichen Datenverarbeitung in der Cloud.|
 |Schneller Zugriff     | Lokaler Cache auf dem Gerät für schnellen Zugriff auf zuletzt verwendete Dateien.|
@@ -96,13 +96,13 @@ Die Data Box Edge-Lösung umfasst die Data Box Edge-Ressource, ein physisches Da
 
     <!--![The Data Box Edge service in Azure portal](media/data-box-overview/data-box-Edge-service1.png)-->
 
-    Weitere Informationen finden Sie unter [Verwalten Ihres Data Box Edge-Geräts mithilfe des Data Box Edge-Diensts](http://aka.ms/dbe-docs).
+    Weitere Informationen finden Sie unter [Verwalten Ihres Data Box Edge-Geräts mithilfe des Data Box Edge-Diensts](https://aka.ms/dbe-docs).
 
 * **Lokale Webbenutzeroberfläche für Data Box**: Auf der lokalen Webbenutzeroberfläche können Sie Diagnosen ausführen, das Data Box Edge-Gerät herunterfahren und neu starten, Kopierprotokolle anzeigen und den Microsoft-Support kontaktieren, um eine Serviceanfrage zu stellen.
 
     <!--![The Data Box Edge local web UI](media/data-box-Edge-overview/data-box-Edge-local-web-ui.png)-->
 
-    Informationen zur Verwendung der webbasierten Benutzeroberfläche finden Sie unter [Verwenden der webbasierten Benutzeroberfläche zum Verwalten Ihrer Data Box](http://aka.ms/dbe-docs).
+    Informationen zur Verwendung der webbasierten Benutzeroberfläche finden Sie unter [Verwenden der webbasierten Benutzeroberfläche zum Verwalten Ihrer Data Box](https://aka.ms/dbe-docs).
 
 
 ## <a name="region-availability"></a>Regionale Verfügbarkeit
@@ -137,9 +137,9 @@ Data Box Edge ist in der Vorschauphase. Sie müssen sich für den Dienst registr
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Sehen Sie sich die [Data Box Edge-Systemanforderungen](http://aka.ms/dbe-docs) an.
-- Machen Sie sich mit den [Data Box Edge-Einschränkungen](http://aka.ms/dbe-docs) vertraut.
-- Stellen Sie [Azure Data Box Edge](http://aka.ms/dbe-docs) im Azure-Portal bereit.
+- Sehen Sie sich die [Data Box Edge-Systemanforderungen](https://aka.ms/dbe-docs) an.
+- Machen Sie sich mit den [Data Box Edge-Einschränkungen](https://aka.ms/dbe-docs) vertraut.
+- Stellen Sie [Azure Data Box Edge](https://aka.ms/dbe-docs) im Azure-Portal bereit.
 
 
 

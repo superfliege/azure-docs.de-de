@@ -10,12 +10,12 @@ ms.component: design
 ms.date: 04/17/2018
 ms.author: cakarst
 ms.reviewer: igorstan
-ms.openlocfilehash: facd9a98b2f2d866574dd1f9bf180fa2a9618f31
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: d004ad1f24448da0c7404761ca0865826b3000b3
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43301329"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51261280"
 ---
 # <a name="designing-extract-load-and-transform-elt-for-azure-sql-data-warehouse"></a>Entwerfen von ELT-Prozessen für Azure SQL Data Warehouse
 
@@ -41,7 +41,7 @@ Obwohl es viele Varianten für die Implementierung von ELT für SQL Data Warehou
 
 Ein Tutorial zum Ladevorgang finden Sie unter [Verwenden von PolyBase zum Laden von Daten aus Azure Blob Storage in Azure SQL Data Warehouse](load-data-from-azure-blob-storage-using-polybase.md).
 
-Weitere Informationen finden Sie im Blog [Lademuster](http://blogs.msdn.microsoft.com/sqlcat/2017/05/17/azure-sql-data-warehouse-loading-patterns-and-strategies/). 
+Weitere Informationen finden Sie im Blog [Lademuster](https://blogs.msdn.microsoft.com/sqlcat/2017/05/17/azure-sql-data-warehouse-loading-patterns-and-strategies/). 
 
 ## <a name="options-for-loading-with-polybase"></a>Optionen beim Laden mit PolyBase
 
