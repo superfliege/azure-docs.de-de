@@ -1,1 +1,0 @@
-Temporäre Datei
