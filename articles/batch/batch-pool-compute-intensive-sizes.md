@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/01/2018
 ms.author: danlep
-ms.openlocfilehash: 5a73e926b5979e573ccb0402ff2d23eae2463232
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 6969f0c6a05ebf5b34fb746d2a83b884687ad710
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2018
-ms.locfileid: "29762440"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51258254"
 ---
 # <a name="use-rdma-capable-or-gpu-enabled-instances-in-batch-pools"></a>Verwenden RDMA-fähiger oder GPU-fähiger Instanzen in Batch-Pools
 
@@ -105,7 +105,7 @@ Die Batch-APIs und -Tools bietet eine Reihe von Optionen für die Installation d
 
 Um Windows-MPI-Anwendungen in einem Pool von Azure A8-Knoten auszuführen, müssen Sie eine unterstützte MPI-Implementierung installieren. Im Folgenden finden Sie eine exemplarische Vorgehensweise für das Installieren von [Microsoft MPI](https://msdn.microsoft.com/library/bb524831(v=vs.85).aspx) in einem Windows-Pool mit einem Batch-Anwendungspaket.
 
-1. Laden Sie das [Installationspaket](http://go.microsoft.com/FWLink/p/?LinkID=389556) („MSMpiSetup.exe“) für die neueste Version von Microsoft MPI herunter.
+1. Laden Sie das [Installationspaket](https://go.microsoft.com/FWLink/p/?LinkID=389556) („MSMpiSetup.exe“) für die neueste Version von Microsoft MPI herunter.
 2. Erstellen Sie eine ZIP-Datei des Pakets.
 3. Laden Sie das Paket in Ihr Batch-Konto hoch. Anweisungen finden Sie in der Anleitung zum [Anwendungspaket](batch-application-packages.md). Geben Sie eine Anwendungs-ID (z.B. *MSMPI*) und eine Version (z.B. *8.1*) an. 
 4. Erstellen Sie mit den Batch-APIs oder dem Azure-Portal einen Pool in der Konfiguration „Clouddienst“ mit der gewünschten Anzahl von Knoten und der gewünschten Skalierung. Die folgende Tabelle zeigt Beispieleinstellungen zum Einrichten von MPI im unbeaufsichtigten Modus mithilfe einer Startaufgabe:

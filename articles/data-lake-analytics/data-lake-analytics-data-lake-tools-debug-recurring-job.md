@@ -9,16 +9,16 @@ ms.assetid: dc9b21d8-c5f4-4f77-bcbc-eff458f48de2
 ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 05/20/2018
-ms.openlocfilehash: 33c3b91e7bf9fa64e3ba3f98a9396045753d0c2a
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 5a2935d559a967151c5bdc01c4b0806fe52179b4
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43045693"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51260039"
 ---
 # <a name="troubleshoot-an-abnormal-recurring-job"></a>Problembehandlung für einen nicht normalen periodischen Auftrag
 
-In diesem Artikel erfahren Sie, wie Sie mithilfe von [Azure Data Lake Tools für Visual Studio](http://aka.ms/adltoolsvs) Probleme mit periodischen Aufträgen behandeln. Im [Blog zu Azure Data Lake und Azure HDInsight](https://blogs.msdn.microsoft.com/azuredatalake/2017/09/19/managing-pipeline-recurring-jobs-in-azure-data-lake-analytics-made-easy/) erfahren Sie mehr zur Pipeline und zu periodischen Aufträgen.
+In diesem Artikel erfahren Sie, wie Sie mithilfe von [Azure Data Lake Tools für Visual Studio](https://aka.ms/adltoolsvs) Probleme mit periodischen Aufträgen behandeln. Im [Blog zu Azure Data Lake und Azure HDInsight](https://blogs.msdn.microsoft.com/azuredatalake/2017/09/19/managing-pipeline-recurring-jobs-in-azure-data-lake-analytics-made-easy/) erfahren Sie mehr zur Pipeline und zu periodischen Aufträgen.
 
 Periodische Aufträge verwenden in der Regel die gleiche Abfragelogik und ähnliche Eingabedaten. Ein Beispiel wäre ein periodischer Auftrag, der jeden Montag um 8 Uhr ausgeführt wird, um die wöchentlich aktiven Benutzer der letzten Woche zu zählen. Die Skripts für diese Aufträge teilen sich eine Skriptvorlage, die die Abfragelogik enthält. Die Eingaben für diese Aufträge sind die Nutzungsdaten der letzten Woche. Die gemeinsame Nutzung derselben Abfragelogik und ähnlicher Eingaben bedeutet in der Regel, dass die Leistung dieser Aufträge vergleichbar und stabil ist. Wenn einer Ihrer periodischen Aufträge plötzlich eine abnormale Leistung liefert, fehlschlägt oder sich stark verlangsamt, sollten Sie Folgendes tun:
 
@@ -39,7 +39,7 @@ Um ein Problem mit einem periodischen Auftrag unter Verwendung der Ansicht für 
  
 ### <a name="case-2-you-have-the-pipeline-for-the-recurring-job-but-not-the-url"></a>Fall 2: Sie verfügen über die Pipeline für den periodischen Auftrag, aber nicht über die URL.
 
-In Visual Studio können Sie unter **Server-Explorer > <Ihr Azure Data Lake Analytics-Konto> > Pipelines** den Pipelinebrowser öffnen. (Wenn Sie diesen Knoten im Server-Explorer nicht finden, [laden Sie hier das neueste Plug-In herunter](http://aka.ms/adltoolsvs).) 
+In Visual Studio können Sie unter **Server-Explorer > <Ihr Azure Data Lake Analytics-Konto> > Pipelines** den Pipelinebrowser öffnen. (Wenn Sie diesen Knoten im Server-Explorer nicht finden, [laden Sie hier das neueste Plug-In herunter](https://aka.ms/adltoolsvs).) 
 
 ![Auswählen des Knotens „Pipelines“](./media/data-lake-analytics-data-lake-tools-debug-recurring-job/pipeline-browser.png)
 

@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 09/29/2017
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 6f09e523b70e541c724ea53d0bd47215ad44d623
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 77d47b1f4946a8539b58b9335b967321b6bbf2e9
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48041985"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51259869"
 ---
 # <a name="automate-log-analytics-processes-with-the-connector-for-microsoft-flow"></a>Automatisieren von Log Analytics-Prozessen mit dem Connector für Microsoft Flow
 Mit [Microsoft Flow](https://ms.flow.microsoft.com) können Sie automatisierte Workflows erstellen, indem Sie Hunderte von Aktionen für eine Vielzahl von Diensten verwenden. Die Ausgabe einer Aktion kann als Eingabe einer anderen Aktion genutzt werden, damit Sie die Integration zwischen unterschiedlichen Diensten erstellen können.  Mit dem Azure Log Analytics-Connector für Microsoft Flow können Sie Workflows mit Daten erstellen, die von Protokollsuchen in Log Analytics abgerufen werden.
@@ -29,7 +29,7 @@ Im Tutorial in diesem Artikel wird gezeigt, wie Sie einen Flow erstellen, bei de
 
 
 ## <a name="step-1-create-a-flow"></a>Schritt 1: Erstellen eines Flow
-1. Melden Sie sich an [Microsoft Flow](http://flow.microsoft.com) an, und wählen Sie **Meine Flows**.
+1. Melden Sie sich an [Microsoft Flow](https://flow.microsoft.com) an, und wählen Sie **Meine Flows**.
 2. Klicken Sie auf **+ Ohne Vorlage erstellen**.
 
 ## <a name="step-2-create-a-trigger-for-your-flow"></a>Schritt 2: Erstellen eines Triggers für Ihren Flow
@@ -79,7 +79,7 @@ Im Tutorial in diesem Artikel wird gezeigt, wie Sie einen Flow erstellen, bei de
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Informieren Sie sich über [Protokollsuchen in Log Analytics](log-analytics-log-search-new.md).
+- Informieren Sie sich über [Protokollsuchen in Log Analytics](log-analytics-queries.md).
 - Erfahren Sie mehr über [Microsoft Flow](https://ms.flow.microsoft.com).
 
 

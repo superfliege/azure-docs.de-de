@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: ecfaf24d1122b711a93e1335b79acbbc4235bdae
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: eedab085098c34cdac3c49a3892f7cb0d5824f1b
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39049948"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51259920"
 ---
 # <a name="post-an-announcement-to-a-lab-in-azure-devtest-labs"></a>Posten einer Ankündigung in einem Lab in Azure DevTest Labs
 
@@ -35,7 +35,7 @@ Das Ankündigungsfeature ist für vorübergehende Ankündigungen gedacht.  Sie k
 
 ## <a name="steps-to-post-an-announcement-in-an-existing-lab"></a>Schritte zum Bereitstellen einer Ankündigung in einem vorhandenen Lab
 
-1. Melden Sie sich auf dem [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040)an.
+1. Melden Sie sich beim [Azure-Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) an.
 1. Wählen Sie ggf. **Alle Dienste** und dann in der Liste die Option **DevTest Labs**. (Ihr Lab wird im Dashboard unter Umständen bereits unter **Alle Ressourcen** angezeigt.)
 1. Wählen Sie in der Liste mit den Labs das Lab aus, in dem Sie eine Ankündigung posten möchten.  
 1. Wählen Sie im Bereich **Übersicht** des Labs die Option **Konfiguration und Richtlinien** aus.  
@@ -70,7 +70,7 @@ Wenn diese Ankündigung den Lab-Benutzern nicht mehr angezeigt werden soll, kön
 
 ## <a name="steps-for-users-to-view-an-announcement"></a>Schritte für Benutzer zum Anzeigen einer Ankündigung
 
-1. Wählen Sie im [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040) ein Lab aus.
+1. Wählen Sie im [Azure-Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) ein Lab aus.
 
 1. Wenn für das Lab eine Ankündigung gepostet wird, wird oben auf der Seite „Übersicht“ des Labs ein Hinweis mit entsprechenden Informationen angezeigt. Dieser Hinweis enthält den Ankündigungstitel, der bei der Erstellung der Ankündigung angegeben wurde.
 
@@ -162,7 +162,7 @@ Sie können eine Azure Resource Manager-Vorlage auf eine der folgenden Arten ber
 
 - [Azure-Portal](../azure-resource-manager/resource-group-template-deploy-portal.md)
 - [Azure PowerShell](../azure-resource-manager/resource-group-template-deploy.md)
-- [Azure-CLI](../azure-resource-manager/resource-group-template-deploy-cli.md)
+- [Azure-Befehlszeilenschnittstelle](../azure-resource-manager/resource-group-template-deploy-cli.md)
 - [REST-API](../azure-resource-manager/resource-group-template-deploy-rest.md)
 
 ## <a name="next-steps"></a>Nächste Schritte

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/08/2018
 ms.author: mbullwin
-ms.openlocfilehash: f1a1c0bd759a88b2e84584f1d52458ac6f56d97f
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: c54d8b870d6d8c187dcf145b56e3cbae257889a5
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46999700"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51259291"
 ---
 # <a name="set-up-application-insights-dependency-tracking"></a>Einrichten von Application Insights: Abhängigkeitsüberwachung
 Eine *Abhängigkeit* ist eine externe Komponente, die von Ihrer App aufgerufen wird. In der Regel handelt es sich um einen Dienst, der über HTTP oder eine Datenbank oder ein Dateisystem aufgerufen wird. [Application Insights](app-insights-overview.md) misst, wie lange die Anwendung auf Abhängigkeiten wartet, und wie oft ein Abhängigkeitsaufruf nicht funktioniert. Sie können bestimmte Aufrufe untersuchen, und diese mit Anforderungen und Ausnahmen in Verbindung bringen.
@@ -44,7 +44,7 @@ Teilinformationen von Abhängigkeiten werden automatisch durch das [Application 
 
 | Plattform | Installieren |
 | --- | --- |
-| IIS-Server |[Installieren Sie den Statusmonitor auf dem Server,](app-insights-monitor-performance-live-website-now.md), oder [aktualisieren Sie Ihre Anwendung auf .NET Framework 4.6 oder höher](http://go.microsoft.com/fwlink/?LinkId=528259), und installieren Sie das [Application Insights SDK](app-insights-asp-net.md) in Ihrer App. |
+| IIS-Server |[Installieren Sie den Statusmonitor auf dem Server,](app-insights-monitor-performance-live-website-now.md), oder [aktualisieren Sie Ihre Anwendung auf .NET Framework 4.6 oder höher](https://go.microsoft.com/fwlink/?LinkId=528259), und installieren Sie das [Application Insights SDK](app-insights-asp-net.md) in Ihrer App. |
 | Azure-Web-App |[Öffnen Sie das Blatt „Application Insights“ in der Systemsteuerung Ihrer Web-App](app-insights-azure-web-apps.md) und wählen Sie bei Aufforderung „Installieren“ aus. |
 | Azure Cloud Service |[Verwenden Sie die Startaufgabe](app-insights-cloudservices.md), oder [Installieren Sie .NET Framework 4.6 oder höher](../cloud-services/cloud-services-dotnet-install-dotnet.md) |
 
@@ -207,7 +207,7 @@ Sehen Sie in der Tabelle unten nach, und stellen Sie sicher, dass Sie die richti
 
 | Plattform | Installieren |
 | --- | --- |
-| IIS-Server |Entweder [Installieren Sie Statusmonitor auf Ihrem Server](app-insights-monitor-performance-live-website-now.md), oder [aktualisieren Sie Ihre Anwendung auf .NET Framework 4.6 oder höher](http://go.microsoft.com/fwlink/?LinkId=528259), und installieren Sie das [Application Insights SDK](app-insights-asp-net.md) in Ihrer App. |
+| IIS-Server |Entweder [Installieren Sie Statusmonitor auf Ihrem Server](app-insights-monitor-performance-live-website-now.md), oder [aktualisieren Sie Ihre Anwendung auf .NET Framework 4.6 oder höher](https://go.microsoft.com/fwlink/?LinkId=528259), und installieren Sie das [Application Insights SDK](app-insights-asp-net.md) in Ihrer App. |
 | Azure-Web-App |[Öffnen Sie das Blatt „Application Insights“ in der Systemsteuerung Ihrer Web-App](app-insights-azure-web-apps.md) und wählen Sie bei Aufforderung „Installieren“ aus. |
 | Azure Cloud Service |[Verwenden Sie die Startaufgabe](app-insights-cloudservices.md), oder [Installieren Sie .NET Framework 4.6 oder höher](../cloud-services/cloud-services-dotnet-install-dotnet.md) |
 

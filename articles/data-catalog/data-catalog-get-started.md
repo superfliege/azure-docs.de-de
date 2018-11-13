@@ -8,12 +8,12 @@ ms.assetid: 03332872-8d84-44a0-8a78-04fd30e14b18
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
-ms.openlocfilehash: 4386f87b6986e6ab1742a8d3c14a100fea112182
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: dd3cb108844cd009d74de42630511073021d94b1
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47406310"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238487"
 ---
 # <a name="get-started-with-azure-data-catalog"></a>Erste Schritte mit Azure Data Catalog
 Azure Data Catalog ist ein vollständig verwalteter Clouddienst, der als Registrierungs- und Ermittlungssystem für Datenassets von Unternehmen dient. Eine ausführliche Übersicht finden Sie unter [Was ist Azure Data Catalog?](data-catalog-what-is-data-catalog.md).
@@ -96,7 +96,7 @@ Die Adventure Works-Datenbank unterstützt Standardszenarien zur Onlinetransakti
 So installieren Sie die Adventure Works-Beispieldatenbank:
 
 1. Laden Sie [Adventure Works 2014 Full Database Backup.zip](https://msftdbprodsamples.codeplex.com/downloads/get/880661) von CodePlex herunter.
-2. Folgen Sie zum Wiederherstellen der Datenbank auf Ihrem Computer den Anweisungen unter [Wiederherstellen einer Datenbanksicherung (SQL Server Management Studio)](http://msdn.microsoft.com/library/ms177429.aspx), oder führen Sie die folgenden Schritte aus:
+2. Folgen Sie zum Wiederherstellen der Datenbank auf Ihrem Computer den Anweisungen unter [Wiederherstellen einer Datenbanksicherung (SQL Server Management Studio)](https://msdn.microsoft.com/library/ms177429.aspx), oder führen Sie die folgenden Schritte aus:
    1. Öffnen Sie SQL Server Management Studio, und stellen Sie eine Verbindung mit der SQL Server-Datenbank-Engine her.
    2. Klicken Sie mit der rechten Maustaste auf **Datenbanken**, und klicken Sie anschließend auf **Datenbank wiederherstellen**.
    3. Klicken Sie unter **Datenbank wiederherstellen** für **Quelle** auf die Option **Gerät** und dann auf **Durchsuchen**.

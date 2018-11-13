@@ -9,12 +9,12 @@ ms.service: search
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 01/13/2017
-ms.openlocfilehash: fb8fb153c7393af0e084cb96ee2f5e82fba5b220
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: dc59531b282f6c99dd399ac384a8c6264ee260ea
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31798052"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51258764"
 ---
 # <a name="upload-data-to-azure-search-using-the-net-sdk"></a>Hochladen von Daten in Azure Search mit dem .NET SDK
 > [!div class="op_single_selector"]
@@ -29,7 +29,7 @@ In diesem Artikel erfahren Sie, wie Sie das [Azure Search .NET SDK](https://aka.
 [Erstellen Sie einen Azure Search-Index](search-what-is-an-index.md), bevor Sie mit dieser exemplarischen Vorgehensweise beginnen. Dieser Artikel setzt auch voraus, dass Sie bereits wie unter [Erstellen eines Azure Search-Index mit dem .NET SDK](search-create-index-dotnet.md#CreateSearchServiceClient) beschrieben ein `SearchServiceClient`-Objekt erstellt haben.
 
 > [!NOTE]
-> Der gesamte Beispielcode in diesem Artikel wurde in C# geschrieben. Den vollständigen Quellcode finden Sie [auf GitHub](http://aka.ms/search-dotnet-howto). Eine ausführlichere exemplarische Vorgehensweise für den Beispielcode finden Sie auch unter [Verwenden von Azure Search aus einer .NET-Anwendung](search-howto-dotnet-sdk.md).
+> Der gesamte Beispielcode in diesem Artikel wurde in C# geschrieben. Den vollständigen Quellcode finden Sie [auf GitHub](https://aka.ms/search-dotnet-howto). Eine ausführlichere exemplarische Vorgehensweise für den Beispielcode finden Sie auch unter [Verwenden von Azure Search aus einer .NET-Anwendung](search-howto-dotnet-sdk.md).
 
 Gehen Sie wie folgt vor, um Dokumente mit dem .NET SDK in Ihren Index zu übertragen:
 
@@ -54,7 +54,7 @@ ISearchIndexClient indexClient = serviceClient.Indexes.GetClient("hotels");
 ## <a name="decide-which-indexing-action-to-use"></a>Entscheiden Sie, welche Indizierungsaktion verwendet werden soll.
 Zum Importieren von Daten mit dem .NET SDK müssen Sie Ihre Daten in einem `IndexBatch`-Objekt verpacken. Ein `IndexBatch`-Element kapselt eine Sammlung mit `IndexAction`-Objekten. Jedes Objekt enthält ein Dokument und eine Eigenschaft, die Azure Search mitteilt, welche Aktion für das jeweilige Dokument durchgeführt werden soll (Hochladen, Zusammenführen, Löschen usw.). Je nachdem, welche der folgenden Aktionen Sie wählen, müssen für jedes Dokument nur bestimmte Felder eingefügt werden:
 
-| anzuzeigen. | BESCHREIBUNG | Erforderliche Felder für jedes Dokument | Notizen |
+| Aktion | BESCHREIBUNG | Erforderliche Felder für jedes Dokument | Notizen |
 | --- | --- | --- | --- |
 | `Upload` |Eine `Upload` -Aktion entspricht „upsert“, wobei neue Dokumente eingefügt und bestehende Dokumente aktualisiert/ersetzt werden. |Schlüssel und alle anderen zu definierenden Felder |Wenn ein bestehendes Dokument aktualisiert/ersetzt wird, werden alle in der Anforderung nicht festgelegten Felder auf `null`festgelegt. Dies tritt auch auf, wenn das Feld zuvor auf einen Wert festgelegt wurde, der nicht Null ist. |
 | `Merge` |Aktualisiert ein bestehendes Dokument mit den angegebenen Feldern. Wenn das Dokument im Index nicht vorhanden ist, schlägt die Zusammenführung fehl. |Schlüssel und alle anderen zu definierenden Felder |Jedes Feld, das Sie in einer Zusammenführung angeben, ersetzt das vorhandene Feld im Dokument. Dies beinhaltet auch Felder vom Typ `DataType.Collection(DataType.String)`. Wenn das Dokument beispielsweise das Feld `tags` mit dem Wert `["budget"]` enthält und Sie eine Zusammenführung mit dem Wert `["economy", "pool"]` für `tags` durchführen, hat das Feld `tags` am Ende den Wert `["economy", "pool"]`. Der Wert lautet nicht `["budget", "economy", "pool"]`. |
