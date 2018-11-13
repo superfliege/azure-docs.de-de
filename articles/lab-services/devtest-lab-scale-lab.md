@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 5a179c0c6b777ee6b2afdd0f2e9267d247665d8d
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 00f64deaa5e02f9bb74baaf86bfdf71690a3345d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38675964"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51248247"
 ---
 # <a name="scale-quotas-and-limits-in-devtest-labs"></a>Skalierungskontingente und -beschränkungen in DevTest Labs
 Bei der Arbeit mit DevTest Labs werden Sie möglicherweise feststellen, dass bestimmte Standardbeschränkungen für Azure-Ressourcen gelten, die sich auf den DevTest Labs-Dienst auswirken können. Diese Beschränkungen werden als **Kontingente** bezeichnet.
@@ -35,7 +35,7 @@ Unter [Beschränkungen des Azure-Abonnements und -Diensts](https://docs.microsof
 ## <a name="view-your-usage-and-quotas"></a>Anzeigen von Nutzungsdaten und Kontingenten
 In den folgenden Schritten wird gezeigt, wie die aktuellen Kontingente in Ihrem Abonnement für bestimmte Azure-Ressourcen angezeigt werden und der Prozentsatz von jedem Kontingent, das Sie genutzt haben, ermittelt wird.
 
-1. Melden Sie sich auf dem [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040)an.
+1. Melden Sie sich beim [Azure-Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) an.
 1. Wählen Sie **Weitere Dienste** und in der Liste dann **Abrechnung** aus.
 1. Wählen Sie auf dem Blatt „Abrechnung“ ein Abonnement aus.
 4. Wählen Sie **Nutzung + Kontingente** aus.
@@ -49,7 +49,7 @@ In den folgenden Schritten wird gezeigt, wie die aktuellen Kontingente in Ihrem 
 ## <a name="requesting-more-resources-in-your-subscription"></a>Anfordern von weiteren Ressourcen im Abonnement
 Wenn Sie eine Kontingentgrenze erreichen, kann die Standardbeschränkung einer Ressource in einem Abonnement bis zu einem Höchstwert erhöht werden, wie unter [Azure-Abonnement und Dienstbeschränkungen](https://docs.microsoft.com/azure/azure-subscription-service-limits) beschrieben wird.
 
-In diesen Schritten wird erläutert, wie Sie eine Kontingenterhöhung über das [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040) anfordern.
+In diesen Schritten wird erläutert, wie Sie eine Kontingenterhöhung über das [Azure-Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) anfordern.
 
 1. Wählen Sie **Weitere Dienste**, **Abrechnung** und dann **Nutzung + Kontingente** aus.
 1. Wählen Sie auf dem Blatt „Nutzung + Kontingente“ die Schaltfläche **Erhöhung anfordern** aus.

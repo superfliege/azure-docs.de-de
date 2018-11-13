@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/25/2016
 ms.author: cephalin
-ms.openlocfilehash: 92ab7bf64445ff772f33a18e7f7946a7e0be333a
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: 5e4dfec4bdc9deaf1a57413c1cba4ceefa5195d6
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34824039"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51246343"
 ---
 # <a name="controlling-azure-app-service-traffic-with-azure-traffic-manager"></a>Steuern des Azure App Service-Datenverkehrs mit Azure Traffic Manager
 > [!NOTE]
@@ -57,5 +57,5 @@ Beachten Sie die folgenden Aspekte, wenn Sie Azure Traffic Manager mit Azure ver
 ## <a name="next-steps"></a>Nächste Schritte
 Einen Überblick über die Konzepte und technischen Aspekte von Azure Traffic Manager finden Sie unter [Traffic Manager-Übersicht](../traffic-manager/traffic-manager-overview.md).
 
-Weitere Informationen zur Verwendung von Traffic Manager mit App Service finden Sie in den Blogbeiträgen [Using Azure Traffic Manager with Azure Web Sites](http://blogs.msdn.com/b/waws/archive/2014/03/18/using-windows-azure-traffic-manager-with-waws.aspx) (Verwenden von Azure Traffic Manager mit Azure-Websites) und [Azure Traffic Manager can now integrate with Azure Web Sites](https://azure.microsoft.com/blog/2014/03/27/azure-traffic-manager-can-now-integrate-with-azure-web-sites/) (Azure Traffic Manager kann jetzt in Azure-Websites integriert werden).
+Weitere Informationen zur Verwendung von Traffic Manager mit App Service finden Sie in den Blogbeiträgen [Using Azure Traffic Manager with Azure Web Sites](https://blogs.msdn.com/b/waws/archive/2014/03/18/using-windows-azure-traffic-manager-with-waws.aspx) (Verwenden von Azure Traffic Manager mit Azure-Websites) und [Azure Traffic Manager can now integrate with Azure Web Sites](https://azure.microsoft.com/blog/2014/03/27/azure-traffic-manager-can-now-integrate-with-azure-web-sites/) (Azure Traffic Manager kann jetzt in Azure-Websites integriert werden).
 

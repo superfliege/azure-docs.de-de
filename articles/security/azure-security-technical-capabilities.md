@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/01/2017
 ms.author: TomSh
-ms.openlocfilehash: 862143aec0ac54abb3c62677c5a1ab1c15007edb
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: b58d6315c4399a7bb23514eb90ab5a94acda2592
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49405564"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51249029"
 ---
 # <a name="azure-security-technical-capabilities"></a>Technische Funktionen der Azure-Sicherheit
 
@@ -238,7 +238,7 @@ Für PaaS v1 wird Azure Disk Encryption derzeit nicht unterstützt. Daher müsse
 
 Für die meisten Dienste sollte versucht werden, die Verschlüsselung eines Anbieters von Speicherressourcen zu nutzen. Für einige Dienste muss eine explizite Verschlüsselung durchgeführt werden. Beispielsweise müssen alle persistent gemachten wichtigen Daten (Zertifikate, Stamm-/Hauptschlüssel) in Key Vault gespeichert werden.
 
-Wenn Sie die serverseitige Verschlüsselung mit vom Kunden verwalteten Schlüsseln unterstützen, muss für den Kunden die Möglichkeit bestehen, uns den Schlüssel zur Verfügung zu stellen. Die unterstützte und empfohlene Vorgehensweise ist hierbei die Integration in Azure Key Vault (AKV). Kunden können ihre Schlüssel dann in Azure Key Vault hinzufügen und verwalten. Ein Kunde kann sich unter [Erste Schritte mit dem Azure-Schlüsseltresor](http://go.microsoft.com/fwlink/?linkid=521402) darüber informieren, wie AKV genutzt wird.
+Wenn Sie die serverseitige Verschlüsselung mit vom Kunden verwalteten Schlüsseln unterstützen, muss für den Kunden die Möglichkeit bestehen, uns den Schlüssel zur Verfügung zu stellen. Die unterstützte und empfohlene Vorgehensweise ist hierbei die Integration in Azure Key Vault (AKV). Kunden können ihre Schlüssel dann in Azure Key Vault hinzufügen und verwalten. Ein Kunde kann sich unter [Erste Schritte mit dem Azure-Schlüsseltresor](https://go.microsoft.com/fwlink/?linkid=521402) darüber informieren, wie AKV genutzt wird.
 
 Für die Integration in Azure Key Vault fügen Sie Code hinzu, mit dem bei Bedarf für die Entschlüsselung ein Schlüssel von AKV angefordert wird.
 
@@ -283,7 +283,7 @@ Bei der Planung der Einführung von Azure RMS empfehlen wir Folgendes:
 
 - Erstellen Sie [benutzerdefinierte Vorlagen](https://technet.microsoft.com/library/dn642472.aspx), entsprechend Ihrer Geschäftsanforderungen. Beispiel: Eine Vorlage für streng geheime Daten, die für alle E-Mails im Zusammenhang mit streng geheimen Informationen verwendet werden soll.
 
-Organisationen, die in Hinsicht auf die [Datenklassifizierung (in englischer Sprache)](http://download.microsoft.com/download/0/A/3/0A3BE969-85C5-4DD2-83B6-366AA71D1FE3/Data-Classification-for-Cloud-Readiness.pdf) und den Dateischutz Schwächen haben, sind möglicherweise anfälliger für Datenlecks. Ohne richtigen Dateischutz ist es Organisationen nicht möglich, Einblicke in das Unternehmen zu erhalten, eine Überwachung in Hinsicht auf Missbrauch durchzuführen und böswilligen Zugriff auf Dateien zu verhindern.
+Organisationen, die in Hinsicht auf die [Datenklassifizierung (in englischer Sprache)](https://download.microsoft.com/download/0/A/3/0A3BE969-85C5-4DD2-83B6-366AA71D1FE3/Data-Classification-for-Cloud-Readiness.pdf) und den Dateischutz Schwächen haben, sind möglicherweise anfälliger für Datenlecks. Ohne richtigen Dateischutz ist es Organisationen nicht möglich, Einblicke in das Unternehmen zu erhalten, eine Überwachung in Hinsicht auf Missbrauch durchzuführen und böswilligen Zugriff auf Dateien zu verhindern.
 
 > [!Note]
 > Erfahren Sie mehr über Azure RMS, indem Sie den Artikel [Erste Schritte mit Azure Rights Management](https://technet.microsoft.com/library/jj585016.aspx) lesen.
@@ -408,7 +408,7 @@ Mit Log Analytics können Sie beliebige Instanzen in beliebigen Clouds (einschli
 
 ### <a name="log-analytics"></a>Log Analytics
 
-[Log Analytics](http://azure.microsoft.com/documentation/services/log-analytics) sammelt Daten von verwalteten Ressourcen in einem zentralen Repository und stellt so Überwachungsdienste bereit. Bei diesen Daten kann es sich um Ereignisse, Leistungsdaten oder benutzerdefinierte Daten handeln, die über die API bereitgestellt wurden. Die gesammelten Daten können für Warnungen und Analysen genutzt und exportiert werden.
+[Log Analytics](https://azure.microsoft.com/documentation/services/log-analytics) sammelt Daten von verwalteten Ressourcen in einem zentralen Repository und stellt so Überwachungsdienste bereit. Bei diesen Daten kann es sich um Ereignisse, Leistungsdaten oder benutzerdefinierte Daten handeln, die über die API bereitgestellt wurden. Die gesammelten Daten können für Warnungen und Analysen genutzt und exportiert werden.
 
 ![Log Analytics](media/azure-security-technical-capabilities/azure-security-technical-capabilities-fig9.png)
 

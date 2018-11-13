@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/21/2018
 ms.author: markgal
-ms.openlocfilehash: 9fad5876ce177129d6178052916843b94b33ccf1
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: c9b3b027a52a6847c566c385c304edc195f7fdda
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42445466"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51250695"
 ---
 # <a name="monitor-and-manage-recovery-services-vaults"></a>Überwachen und Verwalten von Recovery Services-Tresoren
 
@@ -296,4 +296,4 @@ A3. Ja. In den folgenden Situationen werden keine Benachrichtigungen gesendet.
 ## <a name="next-steps"></a>Nächste Schritte
 * [Wiederherstellen von Windows-Servern oder Windows-Clients aus Azure](backup-azure-restore-windows-server.md)
 * Weitere Informationen zu Azure Backup finden Sie unter [Azure Backup – Übersicht](backup-introduction-to-azure-backup.md)
-* Besuchen Sie das [Azure Backup-Forum](http://go.microsoft.com/fwlink/p/?LinkId=290933)
+* Besuchen Sie das [Azure Backup-Forum](https://go.microsoft.com/fwlink/p/?LinkId=290933)
