@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 54de8d6aa1ee06c1d9500490eb93a5ea37ecb6a4
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 5b6fd87720b57b34429489c72ec60bc77b3870bc
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46961194"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51568868"
 documentType: LandingData
 title: Azure Database for MariaDB – Dokumentation
 metadata:
@@ -43,7 +43,7 @@ sections:
   - type: list
     style: ordered
     items:
-    - html: Entwerfen einer Datenbank&#58; <a href="/azure/mariadb/tutorial-design-database-using-portal">Azure-Portal</a>
+    - html: Erstellen einer Datenbank&#58; <a href="/azure/mariadb/tutorial-design-database-using-portal">Azure-Portal</a> | <a href="/azure/mariadb/tutorial-design-database-cli">Azure CLI</a>
 - title: Verweis
   items:
   - type: list
@@ -51,4 +51,4 @@ sections:
     className: cardsD
     items:
     - title: Befehlszeile
-      html: <p><a href="/cli/azure/mariadb">Azure-CLI</a></p>
+      html: <p><a href="/cli/azure/mariadb">Azure-Befehlszeilenschnittstelle</a></p>
