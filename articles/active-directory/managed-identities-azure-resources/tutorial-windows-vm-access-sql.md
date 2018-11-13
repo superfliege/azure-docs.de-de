@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/20/2017
+ms.date: 11/07/2018
 ms.author: daveba
-ms.openlocfilehash: 57f9def09f498c3fc644cbee979d5ae552f2206c
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 61b176f4f1fccbb975ee53de497d5afcc8ede060
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46369392"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238113"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-sql"></a>Tutorial: Verwenden einer systemseitig zugewiesenen verwalteten Identität eines virtuellen Windows-Computers für den Zugriff auf Azure SQL
 
@@ -29,9 +29,8 @@ In diesem Tutorial erfahren Sie, wie Sie eine systemseitig zugewiesene Identitä
 
 > [!div class="checklist"]
 > * Gewähren des Zugriffs auf eine Azure SQL-Server durch Ihre VM
-> * Erstellen einer Gruppe in Azure AD und Hinzufügen der systemseitig zugewiesenen verwalteten Identität des virtuellen Computers zu dieser Gruppe
 > * Aktivieren der Azure AD-Authentifizierung für den SQL-Server
-> * Erstellen eines in der Datenbank enthaltenen Benutzers, der die Azure AD-Gruppe darstellt
+> * Erstellen eines in der Datenbank enthaltenen Benutzers, der die vom System zugewiesene Identität des virtuellen Computers darstellt
 > * Abrufen eines Zugriffstokens mithilfe der VM-Identität und Verwenden dieses Zugriffstokens zum Aufrufen eines Azure SQL-Servers
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -48,74 +47,16 @@ In diesem Tutorial erfahren Sie, wie Sie eine systemseitig zugewiesene Identitä
 
 ## <a name="grant-your-vm-access-to-a-database-in-an-azure-sql-server"></a>Gewähren des Zugriffs auf eine Datenbank auf einem Azure SQL-Server durch Ihre VM
 
-Nun können Sie Ihrer VM den Zugriff auf eine Datenbank auf einem Azure SQL-Server gewähren.  Für diesen Schritt können Sie einen vorhandenen SQL-Server verwenden oder einen neuen erstellen.  Zum Erstellen eines neuen Servers und einer Datenbank mithilfe des Azure-Portals befolgen Sie diesen [Azure SQL-Schnellstart](https://docs.microsoft.com/azure/sql-database/sql-database-get-started-portal). Es gibt in der [Azure SQL-Dokumentation](https://docs.microsoft.com/azure/sql-database/) auch Schnellstarts, in denen die Azure-Befehlszeilenschnittstelle und Azure PowerShell verwendet werden.
+Um Ihrem virtuellen Computer Zugriff auf eine Datenbank in einer Azure SQL Server-Instanz zu gewähren, können Sie eine bereits vorhandene SQL Server-Instanz verwenden oder eine neue erstellen.  Zum Erstellen eines neuen Servers und einer Datenbank mithilfe des Azure-Portals befolgen Sie diesen [Azure SQL-Schnellstart](https://docs.microsoft.com/azure/sql-database/sql-database-get-started-portal). Es gibt in der [Azure SQL-Dokumentation](https://docs.microsoft.com/azure/sql-database/) auch Schnellstarts, in denen die Azure-Befehlszeilenschnittstelle und Azure PowerShell verwendet werden.
 
-Das Gewähren des Zugriffs durch eine VM auf eine Datenbank umfasst drei Schritte:
-1.  Erstellen einer Gruppe in Azure AD und Hinzufügen der systemseitig zugewiesenen verwalteten Identität des virtuellen Computers zu dieser Gruppe
-2.  Aktivieren der Azure AD-Authentifizierung für den SQL-Server
-3.  Erstellen eines in der Datenbank **enthaltenen Benutzers**, der die Azure AD-Gruppe darstellt
+Zur Gewährung des Datenbankzugriffs für Ihren virtuellen Computer sind zwei Schritte erforderlich:
 
-> [!NOTE]
-> Normalerweise würden Sie einen enthaltenen Benutzer erstellen, der direkt der systemseitig zugewiesenen verwalteten Identität des virtuellen Computers zugeordnet ist.  Mit Azure SQL ist es derzeit nicht möglich, den Azure AD-Dienstprinzipal, der die systemseitig zugewiesene verwaltete Identität des virtuellen Computers darstellt, einem enthaltenen Benutzer zuzuordnen.  Zur Umgehung dieser Einschränkung machen Sie die systemseitig zugewiesene verwaltete Identität des virtuellen Computers zu einem Mitglied einer Azure AD-Gruppe und erstellen dann einen enthaltenen Benutzer in der Datenbank, der die Gruppe darstellt.
-
-
-## <a name="create-a-group-in-azure-ad-and-make-the-vms-system-assigned-managed-identity-a-member-of-the-group"></a>Erstellen einer Gruppe in Azure AD und Hinzufügen der systemseitig zugewiesenen verwalteten Identität des virtuellen Computers zu dieser Gruppe
-
-Sie können eine vorhandene Azure AD-Gruppe verwenden oder mithilfe von Azure AD PowerShell eine neue erstellen.  
-
-Installieren Sie zunächst das [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2)-Modul. Melden Sie sich mit `Connect-AzureAD` an, und führen Sie den folgenden Befehl aus, um die Gruppe zu erstellen und in einer Variable zu speichern:
-
-```powershell
-$Group = New-AzureADGroup -DisplayName "VM managed identity access to SQL" -MailEnabled $false -SecurityEnabled $true -MailNickName "NotSet"
-```
-
-Die Ausgabe ähnelt der folgenden, die auch den Wert der Variable untersucht:
-
-```powershell
-$Group = New-AzureADGroup -DisplayName "VM managed identity access to SQL" -MailEnabled $false -SecurityEnabled $true -MailNickName "NotSet"
-$Group
-ObjectId                             DisplayName          Description
---------                             -----------          -----------
-6de75f3c-8b2f-4bf4-b9f8-78cc60a18050 VM managed identity access to SQL
-```
-
-Fügen Sie als Nächstes die systemseitig zugewiesene verwaltete Identität des virtuellen Computers der Gruppe hinzu.  Sie benötigen die Objekt-ID (**ObjectId**) der systemseitig zugewiesenen verwalteten Identität. Diese ID können Sie mit Azure PowerShell abrufen.  Laden Sie zunächst [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps) herunter. Melden Sie sich anschließend mit `Connect-AzureRmAccount` an, und führen Sie die folgenden Befehle aus:
-- Wenn Sie über mehrere Azure-Abonnements verfügen, stellen Sie sicher, dass der Sitzungskontext auf das richtige festgelegt ist.
-- Listen Sie die verfügbaren Ressourcen in Ihrem Azure-Abonnement auf, und überprüfen Sie die Ressourcengruppe und die Namen der virtuellen Computer.
-- Rufen Sie die Eigenschaften der systemseitig zugewiesenen verwalteten Identität des virtuellen Computers ab, und verwenden Sie dabei die passenden Werte für `<RESOURCE-GROUP>` und `<VM-NAME>`.
-
-```powershell
-Set-AzureRMContext -subscription "bdc79274-6bb9-48a8-bfd8-00c140fxxxx"
-Get-AzureRmResource
-$VM = Get-AzureRmVm -ResourceGroup <RESOURCE-GROUP> -Name <VM-NAME>
-```
-
-Die Ausgabe sieht in etwa wie die folgende Ausgabe aus, in der auch die Objekt-ID des Dienstprinzipals der systemseitig zugewiesenen verwalteten Identität des virtuellen Computers untersucht wird:
-```powershell
-$VM = Get-AzureRmVm -ResourceGroup DevTestGroup -Name DevTestWinVM
-$VM.Identity.PrincipalId
-b83305de-f496-49ca-9427-e77512f6cc64
-```
-
-Fügen Sie nun die systemseitig zugewiesene verwaltete Identität des virtuellen Computers der Gruppe hinzu.  Sie können einen Dienstprinzipal nur mit Azure AD PowerShell einer Gruppe hinzufügen.  Führen Sie den folgenden Befehl aus:
-```powershell
-Add-AzureAdGroupMember -ObjectId $Group.ObjectId -RefObjectId $VM.Identity.PrincipalId
-```
-
-Wenn Sie danach auch die Gruppenmitgliedschaft untersuchen, sieht die Ausgabe wie folgt aus:
-
-```powershell
-Add-AzureAdGroupMember -ObjectId $Group.ObjectId -RefObjectId $VM.Identity.PrincipalId
-Get-AzureAdGroupMember -ObjectId $Group.ObjectId
-
-ObjectId                             AppId                                DisplayName
---------                             -----                                -----------
-b83305de-f496-49ca-9427-e77512f6cc64 0b67a6d6-6090-4ab4-b423-d6edda8e5d9f DevTestWinVM
-```
+1.  Aktivieren der Azure AD-Authentifizierung für den SQL-Server
+2.  Erstellen eines in der Datenbank **enthaltenen Benutzers**, der die vom System zugewiesene Identität des virtuellen Computers darstellt
 
 ## <a name="enable-azure-ad-authentication-for-the-sql-server"></a>Aktivieren der Azure AD-Authentifizierung für den SQL-Server
 
-Nachdem Sie die Gruppe erstellt und ihr die systemseitig zugewiesene verwaltete Identität des virtuellen Computers als Mitglied hinzugefügt haben, können Sie die [Azure AD-Authentifizierung für den SQL-Server konfigurieren](/azure/sql-database/sql-database-aad-authentication-configure#provision-an-azure-active-directory-administrator-for-your-azure-sql-server). Gehen Sie dazu wie folgt vor:
+[Konfigurieren Sie die Azure AD-Authentifizierung für die SQL Server-Instanz](/azure/sql-database/sql-database-aad-authentication-configure#provision-an-azure-active-directory-administrator-for-your-azure-sql-server) mithilfe der folgenden Schritte:
 
 1.  Wählen Sie im Azure-Portal im Navigationsbereich links **SQL-Server** aus.
 2.  Klicken Sie auf den SQL-Server, für den die Azure AD-Authentifizierung aktiviert werden soll.
@@ -124,7 +65,7 @@ Nachdem Sie die Gruppe erstellt und ihr die systemseitig zugewiesene verwaltete 
 5.  Wählen Sie ein Azure AD-Benutzerkonto als Administrator des Servers aus, und klicken Sie auf **Auswählen**.
 6.  Klicken Sie auf der Befehlsleiste auf **Speichern**.
 
-## <a name="create-a-contained-user-in-the-database-that-represents-the-azure-ad-group"></a>Erstellen eines in der Datenbank enthaltenen Benutzers, der die Azure AD-Gruppe darstellt
+## <a name="create-a-contained-user-in-the-database-that-represents-the-vms-system-assigned-identity"></a>Erstellen eines in der Datenbank enthaltenen Benutzers, der die vom System zugewiesene Identität des virtuellen Computers darstellt
 
 Für den nächsten Schritt benötigen Sie [Microsoft SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) (SSMS). Bevor Sie beginnen, sollten Sie die folgenden Artikel mit Hintergrundinformationen zur Azure AD-Integration lesen:
 
@@ -140,17 +81,23 @@ Für den nächsten Schritt benötigen Sie [Microsoft SQL Server Management Studi
 7.  Klicken Sie auf **Verbinden**.  Schließen Sie den Anmeldevorgang ab.
 8.  Erweitern Sie im **Objekt-Explorer** den Ordner **Datenbanken**.
 9.  Klicken Sie mit der rechten Maustaste auf eine Benutzerdatenbank, und klicken Sie dann auf **Neue Abfrage**.
-10.  Geben Sie im Abfragefenster die folgende Zeile ein, und klicken Sie auf der Symbolleiste auf **Ausführen**:
+10. Geben Sie im Abfragefenster die folgende Zeile ein, und klicken Sie auf der Symbolleiste auf **Ausführen**:
+
+    > [!NOTE]
+    > Im folgenden Befehl ist `VMName` der Name des virtuellen Computers, auf dem Sie im Abschnitt mit den Voraussetzungen die vom System zugewiesene Identität aktiviert haben.
     
      ```
-     CREATE USER [VM managed identity access to SQL] FROM EXTERNAL PROVIDER
+     CREATE USER [VMName] FROM EXTERNAL PROVIDER
      ```
     
-     Der Befehl sollte erfolgreich abgeschlossen werden und den enthaltenen Benutzer für die Gruppe erstellen.
+     Der Befehl sollte erfolgreich ausgeführt werden und den enthaltenen Benutzer für die vom System zugewiesene Identität des virtuellen Computers erstellen.
 11.  Leeren Sie das Abfragefenster, geben Sie die folgende Zeile ein, und klicken Sie auf der Symbolleiste auf **Ausführen**:
+
+    > [!NOTE]
+    > Im folgenden Befehl ist `VMName` der Name des virtuellen Computers, auf dem Sie im Abschnitt mit den Voraussetzungen die vom System zugewiesene Identität aktiviert haben.
      
      ```
-     ALTER ROLE db_datareader ADD MEMBER [VM managed identity access to SQL]
+     ALTER ROLE db_datareader ADD MEMBER [VMName]
      ```
 
      Der Befehl sollte erfolgreich abgeschlossen werden und dem enthaltenen Benutzer die Möglichkeit gewähren, die gesamte Datenbank zu lesen.

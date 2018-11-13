@@ -4,21 +4,21 @@ description: Erstellen, Definieren und Bereitstellen von Artefakten mithilfe von
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 09/18/2018
+ms.date: 11/07/2018
 ms.topic: quickstart
 ms.service: blueprints
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: b873ee869b2044977ebefcfd65331567c24e7ec8
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: b600eeff0482944a8b9b18ad39c23ee6ea4700ce
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46974203"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51283545"
 ---
 # <a name="define-and-assign-an-azure-blueprint-with-rest-api"></a>Definieren und Zuweisen einer Azure-Blaupause mit der REST-API
 
-Die Kenntnis, wie Blaupausen in Azure erstellt und zugewiesen werden, ermöglicht einer Organisation, allgemeine Konsistenzmuster zu definieren und wiederverwendbare und schnell bereitstellbare Konfigurationen zu entwickeln, die auf Resource Manager-Vorlagen, Richtlinien, Sicherheit usw. basieren. In diesem Tutorial erfahren Sie, wie Sie mithilfe von Azure Blueprint einige allgemeine Aufgaben im Zusammenhang mit der organisationsweiten Erstellung, Veröffentlichung und Zuweisung einer Blaupause ausführen:
+Wenn Sie mit der Erstellung und Zuweisung von Blaupausen vertraut sind, können Sie allgemeine Muster definieren, um wiederverwendbare und schnell bereitstellbare Konfigurationen zu entwickeln, die auf Resource Manager-Vorlagen, Richtlinien, Sicherheit usw. basieren. In diesem Tutorial erfahren Sie, wie Sie mithilfe von Azure Blueprint einige allgemeine Aufgaben im Zusammenhang mit der organisationsweiten Erstellung, Veröffentlichung und Zuweisung einer Blaupause ausführen:
 
 > [!div class="checklist"]
 > - Erstellen einer neuen Blaupause und Hinzufügen verschiedener unterstützter Artefakte
@@ -32,7 +32,9 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="getting-started-with-rest-api"></a>Erste Schritte mit der REST-API
 
-Wenn Sie mit der REST-API nicht vertraut sind, erhalten Sie unter [Azure REST-API-Referenz](/rest/api/azure/) eine allgemeine Übersicht über die REST-API, insbesondere über den Anforderungs-URI und den Anforderungstext. In diesem Artikel dienen diese Konzepte als Grundlage für die Anweisungen zur Verwendung von Azure Blueprint. Aus diesem Grund werden entsprechende Grundkenntnisse vorausgesetzt. Mit Tools wie [ARMClient](https://github.com/projectkudu/ARMClient) kann die Autorisierung automatisch durchgeführt werden. Diese Tools werden für Anfänger empfohlen.
+Sollten Sie noch nicht mit der REST-API vertraut sein, finden Sie unter [Azure REST-API-Referenz](/rest/api/azure/) eine allgemeine Übersicht über die REST-API (insbesondere über den Anforderungs-URI und den Anforderungstext). In diesem Artikel dienen diese Konzepte als Grundlage für die Anweisungen zur Verwendung von Azure Blueprint. Aus diesem Grund werden entsprechende Grundkenntnisse vorausgesetzt. Mit Tools wie [ARMClient](https://github.com/projectkudu/ARMClient) kann die Autorisierung automatisch durchgeführt werden. Diese Tools werden für Anfänger empfohlen.
+
+Die Spezifikationen zur Blaupause finden Sie unter [Azure Blueprints REST API](/rest/api/blueprints/) (REST-API für Azure-Blaupausen).
 
 ### <a name="rest-api-and-powershell"></a>REST-API und PowerShell
 
@@ -59,7 +61,7 @@ Ersetzen Sie `{subscriptionId}` in der Variable **$restUri** oben, um Informatio
 
 ## <a name="create-a-blueprint"></a>Erstellen einer Blaupause
 
-Im ersten Schritt beim Definieren eines Standardmusters für die Konformität wird eine Blaupause aus den verfügbaren Ressourcen erstellt. In diesem Beispiel erstellen Sie die Blaupause „MyBlueprint“, um Rollen- und Richtlinienzuweisungen für das Abonnement zu konfigurieren. Anschließend fügen Sie eine Ressourcengruppe hinzu und erstellen eine Resource Manager-Vorlage und eine Rollenzuweisung für die Ressourcengruppe.
+Im ersten Schritt beim Definieren eines Standardmusters für die Konformität wird eine Blaupause aus den verfügbaren Ressourcen erstellt. Wir erstellen eine Blaupause namens „MyBlueprint“, um Rollen- und Richtlinienzuweisungen für das Abonnement zu konfigurieren. Anschließend fügen wir eine Ressourcengruppe, eine Resource Manager-Vorlage und eine Rollenzuweisung für die Ressourcengruppe hinzu.
 
 > [!NOTE]
 > Bei Verwendung der REST-API wird zuerst das _blueprint_-Objekt erstellt. Für jedes hinzugefügte _Artefakt_, das über Parameter verfügt, müssen die Parameter vorab in der anfänglichen _Blaupause_ definiert werden.
@@ -69,7 +71,7 @@ In jedem REST-API-URI gibt es Variablen, die Sie durch Ihre eigenen Werte ersetz
 - Ersetzen Sie `{YourMG}` durch den Namen Ihrer Verwaltungsgruppe.
 - Ersetzen Sie `{subscriptionId}` durch Ihre Abonnement-ID.
 
-1. Erstellen Sie das anfängliche _blueprint_-Objekt. Der **Anforderungstext** enthält Eigenschaften der Blaupause, alle zu erstellenden Ressourcengruppen und alle Parameter auf Blaupausenebene, die bei der Zuweisung festgelegt und von den in späteren Schritten hinzugefügten Artefakten verwendet werden.
+1. Erstellen Sie das anfängliche _blueprint_-Objekt. Der **Anforderungstext** enthält Eigenschaften der Blaupause, alle zu erstellenden Ressourcengruppen und alle Parameter auf Blaupausenebene. Die Parameter werden im Rahmen der Zuweisung festgelegt und von den in späteren Schritten hinzugefügten Artefakten verwendet.
 
    - REST-API-URI
 
@@ -148,7 +150,7 @@ In jedem REST-API-URI gibt es Variablen, die Sie durch Ihre eigenen Werte ersetz
      }
      ```
 
-1. Fügen Sie eine Richtlinienzuweisung für das Abonnement hinzu. Der **Anforderungstext** definiert die _Art_ des Artefakts sowie die Eigenschaften, die an einer Richtlinie oder Initiativdefinition ausgerichtet sind. Er konfiguriert außerdem die Richtlinienzuweisung zur Verwendung der definierten Blaupausenparameter, die bei der Blaupausenzuweisung konfiguriert werden müssen.
+1. Fügen Sie eine Richtlinienzuweisung für das Abonnement hinzu. Der **Anforderungstext** definiert die _Art_ des Artefakts sowie die Eigenschaften, die sich an einer Richtlinie oder Initiativdefinition orientieren. Er konfiguriert außerdem die Richtlinienzuweisung für die Verwendung der definierten Blaupausenparameter, die im Rahmen der Blaupausenzuweisung konfiguriert werden.
 
    - REST-API-URI
 
@@ -176,7 +178,7 @@ In jedem REST-API-URI gibt es Variablen, die Sie durch Ihre eigenen Werte ersetz
      }
      ```
 
-1. Fügen Sie eine weitere Richtlinienzuweisung für das Storage-Tag (unter Wiederverwendung des Parameters _storageAccountType_) für das Abonnement hinzu. Dieses zusätzliche Artefakt der Richtlinienzuweisung veranschaulicht, dass ein für die Blaupause definierter Parameter von mehreren Artefakten verwendet werden kann. Im Beispiel wird mit dem Parameter **storageAccountType** ein Tag für die Ressourcengruppe festgelegt, um Informationen zu dem Speicherkonto anzugeben, das im nächsten Schritt erstellt wird.
+1. Fügen Sie eine weitere Richtlinienzuweisung für das Storage-Tag (unter Wiederverwendung des Parameters _storageAccountType_) für das Abonnement hinzu. Dieses zusätzliche Artefakt der Richtlinienzuweisung veranschaulicht, dass ein für die Blaupause definierter Parameter von mehreren Artefakten verwendet werden kann. In dem Beispiel wird **storageAccountType** verwendet, um ein Tag für die Ressourcengruppe festzulegen. Dieser Wert stellt Informationen zum im nächsten Schritt erstellten Speicherkonto bereit.
 
    - REST-API-URI
 
@@ -204,7 +206,7 @@ In jedem REST-API-URI gibt es Variablen, die Sie durch Ihre eigenen Werte ersetz
      }
      ```
 
-1. Fügen Sie eine Vorlage unter der Ressourcengruppe hinzu. Der **Anforderungstext** für eine Resource Manager-Vorlage enthält die normale JSON-Komponente der Vorlage, definiert die Zielressourcengruppe mit **properties.resourceGroup** und verwendet erneut die Blaupausenparameter **storageAccountType**, **tagName** und **tagValue**, indem diese jeweils in der Vorlage angegeben werden. Die Blaupausenparameter werden durch Definieren von **properties.parameters** in der Vorlage verfügbar gemacht. Im JSON-Code der Vorlage wird der Wert mit diesem Schlüssel-Wert-Paar eingefügt. Die Namen der Blaupausen- und Vorlagenparameter können identisch sein, sind hier jedoch unterschiedlich, um zu veranschaulichen, wie sie jeweils von der Blaupause an das Vorlagenartefakt übergeben werden.
+1. Fügen Sie eine Vorlage unter der Ressourcengruppe hinzu. Der **Anforderungstext** für eine Resource Manager-Vorlage enthält die normale JSON-Komponente der Vorlage und definiert die Zielressourcengruppe mit **properties.resourceGroup**. Darüber hinaus verwendet die Vorlage auch die Vorlagenparameter **storageAccountType**, **tagName** und **tagValue** wieder, indem sie jeweils an die Vorlage übergeben werden. Die Blaupausenparameter sind für die Vorlage durch die Definition von **properties.parameters** verfügbar, und innerhalb des JSON-Codes der Vorlage wird der Wert mithilfe dieses Schlüssel-Wert-Paars eingefügt. Die Namen der Blaupausen- und Vorlagenparameter können identisch sein, sind hier jedoch unterschiedlich, um zu veranschaulichen, wie sie jeweils von der Blaupause an das Vorlagenartefakt übergeben werden.
 
    - REST-API-URI
 
@@ -325,7 +327,7 @@ Der Wert für `{BlueprintVersion}` ist eine Zeichenfolge mit Buchstaben, Zahlen 
 
 ## <a name="assign-a-blueprint"></a>Zuweisen einer Blaupause
 
-Nach dem Veröffentlichen einer Blaupause mit der REST-API kann sie einem Abonnement zugewiesen werden. Weisen Sie die erstellte Blaupause einem der Abonnements unter Ihrer Verwaltungsgruppenhierarchie zu. Der **Anforderungstext** gibt die zuzuweisende Blaupause, den Namen und Speicherort aller Ressourcengruppen in der Blaupausendefinition sowie alle Parameter, die in der Blaupause definiert wurden und von einem oder mehreren angefügten Artefakten verwendet werden, an.
+Nach dem Veröffentlichen einer Blaupause mit der REST-API kann sie einem Abonnement zugewiesen werden. Weisen Sie die erstellte Blaupause einem der Abonnements unter Ihrer Verwaltungsgruppenhierarchie zu. Der **Anforderungstext** gibt die zuzuweisende Blaupause, den Namen und Standort für alle Ressourcengruppen in der Blaupausendefinition sowie alle Parameter an, die in der Blaupause definiert sind und von einem oder mehreren angefügten Artefakten verwendet werden.
 
 1. Geben Sie für den Azure Blueprint-Dienstprinzipal die Rolle **Besitzer** für das Zielabonnement an. Die AppId ist statisch (`f71766dc-90d9-4b7d-bd9d-4499c4331c3f`), aber die Dienstprinzipal-IDs variieren je nach Mandant. Details für Ihren Mandanten können mit der folgenden REST-API angefordert werden. Sie verwendet die [Azure Active Directory Graph-API](../../active-directory/develop/active-directory-graph-api.md), die eine andere Autorisierung aufweist.
 
@@ -388,7 +390,7 @@ Nach dem Veröffentlichen einer Blaupause mit der REST-API kann sie einem Abonne
 
 ## <a name="unassign-a-blueprint"></a>Aufheben der Zuweisung einer Blaupause
 
-Blaupausen können aus einem Abonnement entfernt werden, wenn sie nicht mehr benötigt werden oder durch neuere Blaupausen mit neueren Mustern, Richtlinien und Entwürfen ersetzt wurden. Wenn eine Blaupause entfernt wird, werden die als Teil der Blaupause zugewiesenen Artefakte beibehalten. Verwenden Sie den folgenden REST-API-Vorgang, um eine Blaupausenzuweisung zu entfernen:
+Sie können eine Blaupause aus einem Abonnement entfernen. Dieser Schritt wird häufig ausgeführt, wenn die Artefaktressourcen nicht mehr benötigt werden. Wenn eine Blaupause entfernt wird, werden die als Teil der Blaupause zugewiesenen Artefakte beibehalten. Verwenden Sie den folgenden REST-API-Vorgang, um eine Blaupausenzuweisung zu entfernen:
 
 - REST-API-URI
 
@@ -410,7 +412,7 @@ Verwenden Sie den folgenden REST-API-Vorgang, um die Blaupause zu löschen:
 
 - Erfahren Sie mehr über den [Lebenszyklus von Blaupausen](./concepts/lifecycle.md).
 - Machen Sie sich mit der Verwendung [statischer und dynamischer Parameter](./concepts/parameters.md) vertraut.
-- Erfahren Sie, wie Sie die [Abfolge von Blaupausen](./concepts/sequencing-order.md) anpassen.
-- Erfahren Sie, wie Sie [Ressourcen in Blaupausen sperren](./concepts/resource-locking.md).
+- Erfahren Sie, wie Sie die [Abfolge von Blueprints](./concepts/sequencing-order.md) anpassen können.
+- Erfahren Sie, wie Sie [Ressourcen in Blueprints sperren](./concepts/resource-locking.md) können.
 - Lernen Sie, wie Sie [vorhandene Zuweisungen aktualisieren](./how-to/update-existing-assignments.md).
-- Beheben Sie anhand der [allgemeinen Problembehandlung](./troubleshoot/general.md) Probleme während der Zuweisung einer Blaupause.
+- Beheben Sie Probleme bei der Blueprintzuweisung mithilfe des [allgemeinen Leitfadens zur Problembehandlung](./troubleshoot/general.md).

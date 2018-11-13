@@ -7,16 +7,16 @@ ms.component: dsc
 keywords: DSC, Konfiguration, Automatisierung
 author: KrisBash
 ms.author: krbash
-ms.date: 12/17/2017
+ms.date: 11/06/2018
 ms.topic: quickstart
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 959171963bcdc721c81823fcf4f9769174b32636
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 7a9e394213ef40b995cb048c71f14a190e5e7970
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34053714"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51243691"
 ---
 # <a name="configure-a-linux-virtual-machine-with-desired-state-configuration"></a>Konfigurieren eines virtuellen Linux-Computers per Desired State Configuration
 
@@ -30,20 +30,20 @@ Für die Durchführung dieses Schnellstarts benötigen Sie Folgendes:
 * Ein Azure Automation-Konto. Informationen zum Erstellen eines ausführenden Azure Automation-Kontos finden Sie unter [Azure Run As Account](automation-sec-configure-azure-runas-account.md)(Ausführendes Azure-Konto).
 * Eine Azure Resource Manager-VM (nicht klassisch) mit Red Hat Enterprise Linux, CentOS oder Oracle Linux. Eine Anleitung zum Erstellen einer VM finden Sie unter [Erstellen Ihres ersten virtuellen Linux-Computers im Azure-Portal](../virtual-machines/linux/quick-create-portal.md).
 
-## <a name="log-in-to-azure"></a>Anmelden an Azure
-Anmelden bei Azure unter https://portal.azure.com
+## <a name="sign-in-to-azure"></a>Anmelden bei Azure
+Melden Sie sich unter https://portal.azure.com bei Azure an.
 
 ## <a name="onboard-a-virtual-machine"></a>Integrieren eines virtuellen Computers
 Es gibt viele verschiedene Methoden zum Integrieren eines Computers und Aktivieren der Desired State Configuration. In dieser Schnellstartanleitung wird die Integration über ein Automation-Konto behandelt. Weitere Informationen zu den unterschiedlichen Methoden zum Integrieren Ihrer Computer in die Desired State Configuration finden Sie im Artikel zur [Integration](https://docs.microsoft.com/azure/automation/automation-dsc-onboarding).
 
 1. Wählen Sie links im Azure-Portal die Option **Automation-Konten**. Falls die Option im linken Bereich nicht sichtbar ist, können Sie auf **Alle Dienste** klicken und in den angezeigten Ergebnissen danach suchen.
 1. Wählen Sie in der Liste ein Automation-Konto aus.
-1. Wählen Sie im linken Bereich des Automation-Kontos die Option **DSC-Knoten**.
-1. Klicken Sie auf die Menüoption **Azure-VM hinzufügen**.
-1. Suchen Sie nach dem virtuellen Computer, für den Sie DSC aktivieren möchten. Sie können das Suchfeld verwenden und die Optionen filtern, um einen bestimmten virtuellen Computer zu ermitteln.
-1. Klicken Sie auf den virtuellen Computer, und wählen Sie dann die Option **Verbinden**.
-1. Wählen Sie die gewünschten DSC-Einstellungen für den virtuellen Computer aus. Wenn Sie bereits eine Konfiguration vorbereitet haben, können Sie sie unter *Name der Knotenkonfiguration* angeben. Sie können den [Konfigurationsmodus](https://docs.microsoft.com/powershell/dsc/metaconfig) festlegen, um das Konfigurationsverhalten für den Computer zu steuern.
-1. Klicken Sie auf **OK**
+1. Wählen Sie im linken Bereich des Automation-Kontos die Option **Zustandskonfiguration (DSC)** aus.
+2. Klicken Sie auf **Hinzufügen**, um die Seite zum Auswählen des virtuellen Computers zu öffnen.
+3. Suchen Sie nach dem virtuellen Computer, für den Sie DSC aktivieren möchten. Sie können das Suchfeld verwenden und die Optionen filtern, um einen bestimmten virtuellen Computer zu ermitteln.
+4. Klicken Sie auf den virtuellen Computer, und wählen Sie dann die Option **Verbinden**.
+5. Wählen Sie die gewünschten DSC-Einstellungen für den virtuellen Computer aus. Wenn Sie bereits eine Konfiguration vorbereitet haben, können Sie sie unter *Name der Knotenkonfiguration* angeben. Sie können den [Konfigurationsmodus](https://docs.microsoft.com/powershell/dsc/metaconfig) festlegen, um das Konfigurationsverhalten für den Computer zu steuern.
+6. Klicken Sie auf **OK**
 
 ![Integrieren einer Azure-VM in DSC](./media/automation-quickstart-dsc-configuration/dsc-onboard-azure-vm.png)
 
@@ -101,10 +101,10 @@ configuration LAMPServer {
 
 Gehen Sie wie folgt vor, um die Konfiguration zu importieren:
 
-1. Wählen Sie im linken Bereich des Automation-Kontos die Option **DSC-Konfigurationen**.
-1. Klicken Sie auf die Menüoption**Konfiguration hinzufügen**.
-1. Wählen Sie die *Konfigurationsdatei* aus, die Sie im vorherigen Schritt gespeichert haben.
-1. Klicken Sie auf **OK**
+1. Wählen Sie im linken Bereich des Automation-Kontos die Option **Zustandskonfiguration (DSC)** aus, und klicken Sie anschließend auf die Registerkarte **Konfigurationen**.
+2. Klicken Sie auf **+ Hinzufügen**.
+3. Wählen Sie die *Konfigurationsdatei* aus, die Sie im vorherigen Schritt gespeichert haben.
+4. Klicken Sie auf **OK**
 
 ## <a name="compile-a-configuration"></a>Kompilieren einer Konfiguration
 
@@ -112,18 +112,16 @@ DSC-Konfigurationen müssen in eine Kontenkonfiguration (MOF-Dokument) kompilier
 
 Gehen Sie wie folgt vor, um die Konfiguration zu kompilieren:
 
-1. Wählen Sie im linken Bereich des Automation-Kontos die Option **DSC-Konfigurationen**.
+1. Wählen Sie im linken Bereich des Automation-Kontos die Option **Zustandskonfiguration (DSC)** aus, und klicken Sie anschließend auf die Registerkarte **Konfigurationen**.
 1. Wählen Sie die Konfiguration aus, die Sie in einem vorherigen Schritt importiert haben („LAMPServer“).
 1. Klicken Sie in den Menüoptionen auf **Kompilieren** und dann auf **Ja**.
 1. In der Ansicht „Konfiguration“ wird ein neuer *Kompilierungsauftrag* in die Warteschlange eingereiht. Nachdem der Auftrag erfolgreich abgeschlossen wurde, können Sie mit dem nächsten Schritt fortfahren. Falls Fehler vorhanden sind, können Sie auf den Kompilierungsauftrag klicken, um die Details anzuzeigen.
-
-![Status des Kompilierungsauftrags](./media/automation-quickstart-dsc-configuration/dsc-compilationjob.png)
 
 ## <a name="assign-a-node-configuration"></a>Zuweisen einer Knotenkonfiguration
 
 Eine kompilierte *Knotenkonfiguration* kann DSC-Knoten zugewiesen werden. Bei der Zuweisung wird die Konfiguration dem Computer zugewiesen und eine Überwachung (bzw. automatische Korrektur) durchgeführt, um zu ermitteln, ob sich Abweichungen von dieser Konfiguration ergeben.
 
-1. Wählen Sie im linken Bereich des Automation-Kontos die Option **DSC-Knoten**.
+1. Wählen Sie im linken Bereich des Automation-Kontos die Option „Zustandskonfiguration (DSC)“ aus, und klicken Sie anschließend auf die Registerkarte **Knoten**.
 1. Wählen Sie den Knoten aus, dem Sie eine Konfiguration zuweisen möchten.
 1. Klicken Sie auf **Knotenkonfiguration zuweisen**.
 1. Wählen Sie die *Knotenkonfiguration* - **LAMPServer.localhost** für die Zuweisung aus, und klicken Sie auf **OK**.
@@ -133,7 +131,7 @@ Eine kompilierte *Knotenkonfiguration* kann DSC-Knoten zugewiesen werden. Bei de
 
 ## <a name="viewing-node-status"></a>Anzeigen des Knotenstatus
 
-Den Status aller verwalteten Knoten finden Sie im Automation-Konto in der Ansicht **DSC-Knoten**. Sie können die Anzeige nach Status, Knotenkonfiguration oder Name filtern. 
+Der Status aller verwalteten Knoten wird unter **Zustandskonfiguration (DSC)** sowie auf der Registerkarte **Knoten** im Automation-Konto angezeigt. Sie können die Anzeige nach Status, Knotenkonfiguration oder Name filtern.
 
 ![DSC-Knotenstatus](./media/automation-quickstart-dsc-configuration/dsc-node-status.png)
 

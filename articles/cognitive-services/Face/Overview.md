@@ -1,97 +1,77 @@
 ---
-title: Was ist der Gesichtserkennungs-API-Dienst?
+title: Was ist die Gesichtserkennungs-API?
 titleSuffix: Azure Cognitive Services
-description: In diesem Thema werden der Gesichtserkennungs-API-Dienst sowie entsprechende Begriffe erläutert.
+description: Es wird beschrieben, wie Sie den Gesichtserkennungsdienst zum Erkennen und Analysieren von Gesichtern in Bildern verwenden.
 author: SteveMSFT
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: face-api
 ms.topic: overview
-ms.date: 10/11/2018
+ms.date: 10/29/2018
 ms.author: sbowles
-ms.openlocfilehash: 6c1e0d0a51bc01c581c05e7ce3215f5501b4be76
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: 3fe9dd713bef509b1972b51cb07d4f942c544544
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49310367"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50914191"
 ---
-# <a name="what-is-the-face-api-service"></a>Was ist der Gesichtserkennungs-API-Dienst?
+# <a name="what-is-the-azure-face-api"></a>Was ist die Azure-Gesichtserkennungs-API?
 
-Der Gesichtserkennungs-API-Dienst ist ein cloudbasierter Dienst, der Algorithmen für die Analyse menschlicher Gesichter auf Bildern und in Videos bereitstellt. Die Gesichtserkennungs-API erfüllt zwei Hauptfunktionen: Gesichtserfassung mit Attributen und Gesichtserkennung.
+Die Azure-Gesichtserkennungs-API ist ein „Cognitive Service“, über den Algorithmen zum Erkennen und Analysieren von menschlichen Gesichtern in Bildern bereitgestellt werden. Die Möglichkeit der Verarbeitung von Informationen zu menschlichen Gesichtern ist in vielen verschiedenen Softwareszenarien wichtig, z.B. Sicherheit, natürliche Benutzeroberfläche, Bildinhaltsanalyse und -verwaltung, mobile Apps und Robotik.
 
-## <a name="face-detection"></a>Gesichtserfassung
+Die Gesichtserkennungs-API verfügt über mehrere unterschiedliche Funktionen, die in den folgenden Abschnitten beschrieben werden. Lesen Sie weiter, um weitere Informationen zu den einzelnen Funktionen zu erhalten und zu ermitteln, ob diese Ihre Anforderungen erfüllen.
 
-Die Gesichtserkennungs-API kann auf einem Bild bis zu 64 menschliche Gesichter erfassen und deren jeweilige Position mit hoher Präzision bestimmen. Als Bild kann eine Datei (Bytedatenstrom) oder eine gültige URL angegeben werden.
+## <a name="face-detection"></a>Gesichtserkennung
 
-![Übersicht – Gesichtserfassung](./Images/Face.detection.jpg)
+Mit der Gesichtserkennungs-API können menschliche Gesichter in einem Bild erkannt und die Rechteckkoordinaten ihrer Positionen zurückgegeben werden. Optional kann die Gesichtserfassung eine Reihe gesichtsbezogener Attribute extrahieren, z.B. Pose, Geschlecht, Alter, Kopfhaltung, Gesichtsbehaarung und Brille.
 
-Das Gesichtsrechteck (links, oben, Breite und Höhe), das die Position des Gesichts im Bild angibt, wird zusammen mit dem jeweils erfassten Gesicht zurückgegeben. Optional extrahiert die Gesichtserfassung eine Reihe gesichtsbezogener Attribute wie z.B. Pose, Geschlecht, Alter, Kopfhaltung, Gesichtsbehaarung und Brille. Weitere Informationen finden Sie unter [Face - Detect](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236).
+![Bild von einer Frau und einem Mann mit Rechtecken um die Gesichter und Anzeige von Alter und Geschlecht](./Images/Face.detection.jpg)
 
-## <a name="face-recognition"></a>Gesichtserkennung
+Das Feature für die Gesichtserkennung ist auch über die [Maschinelles Sehen-API](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) verfügbar, aber wenn Sie weitere Vorgänge für Gesichtsdaten durchführen möchten, sollten Sie die Gesichtserkennungs-API (dieser Dienst) nutzen. Weitere Informationen zur Gesichtserkennung finden Sie unter [Detect API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) (Erkennungs-API).
 
-Eine Gesichtserkennung ist in vielen Szenarien hilfreich. Hierzu zählen beispielsweise Sicherheit, natürliche Benutzeroberflächen, Analyse und Verwaltung von Bildinhalten sowie mobile Apps und Robotik. Der Gesichtserkennungs-API-Dienst bietet vier Gesichtserkennungsfunktionen: Gesichtsüberprüfung, Suchen ähnlicher Gesichter, Gesichtsgruppierung und Personenidentifizierung.
+## <a name="face-verification"></a>Gesichtsüberprüfung
 
-### <a name="face-verification"></a>Gesichtsüberprüfung
+Mit der API für die Überprüfung wird eine Authentifizierung anhand von zwei erfassten Gesichtern oder anhand eines erfassten Gesichts und eines Personenobjekts durchgeführt. Es wird praktisch ausgewertet, ob zwei Gesichter zu derselben Person gehören. Dies kann für Sicherheitsszenarien nützlich sein. Weitere Informationen finden Sie unter [Verify API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a) (Überprüfungs-API).
 
-Bei der Gesichtsüberprüfung wird eine Authentifizierung anhand von zwei erfassten Gesichtern oder anhand eines erfassten Gesichts und eines Personenobjekts durchgeführt. Ausführlichere Informationen finden Sie unter [Face - Verify](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a).
+## <a name="find-similar-faces"></a>Suchen ähnlicher Gesichter
 
-### <a name="finding-similar-faces"></a>Suchen ähnlicher Gesichter
+Bei der API vom Typ „Ähnliches suchen“ werden ein Zielgesicht und mehrere Kandidatengesichter verwendet, und es wird eine kleinere Gruppe von Gesichtern ermittelt, die dem Zielgesicht am ähnlichsten sehen. Es werden zwei Arbeitsmodi unterstützt: **matchPerson** und **matchFace**. Im Modus **matchPerson** werden ähnliche Gesichter zurückgegeben, nachdem nach derselben Person gefiltert wurde (mit der [Überprüfungs-API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a)). Im Modus **matchFace** wird die Filterung nach derselben Person ignoriert und eine Liste mit ähnlichen Kandidatengesichtern zurückgegeben, die unter Umständen zu derselben Person gehören.
 
-Bei Vorgabe eines erfassten Zielgesichts und einer Reihe möglicher Gesichter für die Suche sucht der Dienst nach einer kleinen Gruppe von Gesichtern, die dem Zielgesicht am meisten ähneln. Zur Verfügung stehen zwei Modi: **matchFace** und **matchPerson**. Der Modus **matchPerson** gibt ähnliche Gesichter zurück, nachdem ein von [Face - Verify](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a) abgeleiteter Schwellenwert für die Personenübereinstimmung angewendet wurde. Beim Modus **matchFace** wird der Schwellenwert für die Personenübereinstimmung ignoriert, und es werden mögliche Gesichter mit der größten Ähnlichkeit zurückgegeben. Im folgenden Beispiel werden mögliche Gesichter aufgelistet.
-![Übersicht – Suchen ähnlicher Gesichter](./Images/FaceFindSimilar.Candidates.jpg) Hier sehen Sie das Abfragegesicht:
-![Übersicht – Suchen ähnlicher Gesichter](./Images/FaceFindSimilar.QueryFace.jpg)
+Im folgenden Beispiel wird dieses Zielgesicht verwendet:
 
-Für die Suche nach vier ähnlichen Gesichtern gibt der Modus **matchPerson** (a) und (b) zurück. Diese zeigen die gleiche Person wie das Abfragegesicht. Der Modus **matchFace** gibt (a), (b), (c) und (d) zurück, also genau vier mögliche Gesichter, selbst wenn einige nur eine geringe Ähnlichkeit aufweisen. Weitere Informationen finden Sie unter [Face - Find Similar](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237).
+![Lächelnde Frau](./Images/FaceFindSimilar.QueryFace.jpg)
 
-### <a name="face-grouping"></a>Gesichtsgruppierung
+Und dies sind die Kandidatengesichter:
 
-Bei Vorgabe einer Gruppe unbekannter Gesichter unterteilt die Gesichtsgruppierungs-API diese auf der Grundlage der Ähnlichkeit automatisch in mehrere Gruppen. Jede Gruppe ist eine separate echte Teilmenge der ursprünglichen Gruppe unbekannter Gesichter und enthält ähnliche Gesichter. Alle Gesichter in der gleichen Gruppe können als zur gleichen Person gehörig betrachtet werden. Weitere Informationen finden Sie unter [Face - Group](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395238).
+![Fünf Bilder mit lächelnden Personen. Die Bilder a) und b) gehören zu derselben Person.](./Images/FaceFindSimilar.Candidates.jpg)
 
-### <a name="person-identification"></a>Personenidentifizierung
+Für die Suche nach vier ähnlichen Gesichtern gibt der Modus **matchPerson** (a) und (b) zurück. Diese zeigen die gleiche Person wie das Zielgesicht. Im Modus **matchFace** werden (a), (b), (c) und (d) zurückgegeben, also genau vier Kandidaten – auch wenn es sich teilweise um andere Personen handelt oder die Ähnlichkeit nur gering ist. Weitere Informationen finden Sie unter [Find Similar API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237) (API „Ähnliches suchen“).
 
-Die Gesichtserkennungs-API kann zum Identifizieren von Personen auf Grundlage eines erfassten Gesichts und einer Personendatenbank verwendet werden. Die Datenbank wird im Voraus erstellt und kann im Laufe der Zeit bearbeitet werden.
+## <a name="face-grouping"></a>Gesichtsgruppierung
 
-Die folgende Abbildung zeigt ein Beispiel für eine Datenbank namens „myfriends“. Jede Gruppe kann bis zu 1.000.000/10.000 unterschiedliche Personenobjekte enthalten. Für jedes Personenobjekt können bis zu 248 Gesichter registriert sein.
+Mit der API für die Gruppierung wird eine Gruppe von unbekannten Gesichtern anhand der Ähnlichkeit in mehrere Untergruppen aufgeteilt. Jede Gruppe ist eine zusammenhanglose korrekte Teilmenge der ursprünglichen Gesichtergruppe. Für alle Gesichter einer Gruppe ist die Wahrscheinlichkeit hoch, dass sie zu derselben Person gehören, aber es kann für eine Person auch mehrere unterschiedliche Gruppen geben (Unterscheidung durch einen anderen Faktor, z.B. den Ausdruck). Weitere Informationen finden Sie unter [Group API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395238) (Gruppierungs-API).
 
-![Übersicht – LargePersonGroup/PersonGroup](./Images/person.group.clare.jpg)
+## <a name="person-identification"></a>Personenidentifizierung
 
-Nachdem eine Datenbank erstellt und trainiert wurde, kann anhand der Gruppe eine Identifizierung mit einem neu erfassten Gesicht durchgeführt werden. Wenn das Gesicht als eine Person aus der Gruppe erkannt wird, wird das Personenobjekt zurückgegeben.
+Die API für die Identifizierung kann zum Identifizieren eines erkannten Gesichts anhand einer Datenbank mit Personen verwendet werden. Dies kann bei der automatischen Bildmarkierung von Software für die Fotoverwaltung hilfreich sein. Die Datenbank wird im Voraus erstellt und kann im Laufe der Zeit bearbeitet werden.
 
-Weitere Informationen zur Personenidentifizierung finden Sie in den folgenden API-Leitfäden:
+Die folgende Abbildung enthält ein Beispiel für eine Datenbank mit dem Namen „myfriends“. Jede Gruppe kann bis zu 1.000.000 unterschiedliche Personenobjekte enthalten, und für jedes Personenobjekt können bis zu 248 Gesichter registriert werden.
 
-[Face - Identify](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239)  
-[PersonGroup - Create](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395244)  
-[PersonGroup Person - Create](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523c)  
-[PersonGroup - Train](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395249)  
-[LargePersonGroup - Create](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599acdee6ac60f11b48b5a9d)  
-[LargePersonGroup Person - Create](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599adcba3a7b9412a4d53f40)  
-[LargePersonGroup - Train](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599ae2d16ac60f11b48b5aa4)  
+![Raster mit drei Spalten für unterschiedliche Personen, jeweils mit drei Zeilen mit Bildern von Gesichtern](./Images/person.group.clare.jpg)
 
-#### <a name="face-storage-and-pricing"></a>Gesichtserkennungsspeicher und Preise
+Nachdem eine Datenbank erstellt und trainiert wurde, können Sie die Identifizierung eines neuen erkannten Gesichts für die Gruppe durchführen. Wenn das Gesicht als eine Person aus der Gruppe erkannt wird, wird das Personenobjekt zurückgegeben.
 
-Mit dem Gesichtserkennungsspeicher kann ein Standardabonnement bei Verwendung von „LargePersonGroup/PersonGroup Person“-Objekten ([PersonGroup Person - Add Face](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b)/[LargePersonGroup Person - Add Face](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599adf2a3a7b9412a4d53f42)) oder „LargeFaceLists/FaceLists“ ([FaceList - Add Face](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395250)/[LargeFaceList - Add Face](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a158c10d2de3616c086f2d3)) zusätzliche Gesichter für die Identifikation oder den Ähnlichkeitsabgleich mithilfe der Gesichtserkennungs-API speichern. Die gespeicherten Bilder werden mit 0,50 US-Dollar pro 1.000 Gesichter abgerechnet. Diese Rate wird täglich anteilig berechnet. Abonnements im Free-Tarif sind auf eine Gesamtanzahl von 1.000 Personen begrenzt.
-
-Beispiel: In Ihrem Konto wurden in der ersten Monatshälfte täglich 10.000 Gesichter gespeichert und in der zweiten Monatshälfte keines. In diesem Fall werden Ihnen lediglich die 10.000 Gesichter in Rechnung gestellt, die für diese Tage gespeichert wurden. Wenn Sie jeden Tag im Monat 1.000 Gesichter für einige Stunden speichern und diese jede Nacht löschen, werden Ihnen dennoch 1.000 gespeicherte Gesichter in Rechnung gestellt.
+Weitere Informationen zur Personenidentifizierung finden Sie unter [Identify API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239) (Identifizierungs-API).
 
 ## <a name="sample-apps"></a>Beispiel-Apps
 
-Sehen Sie sich diese Beispielanwendungen an, bei denen die Gesichtserkennungs-API verwendet wird.
+In den folgenden Beispielanwendungen werden einige Vorgehensweisen veranschaulicht, die mit der Gesichtserkennungs-API möglich sind.
 
-- [Gesichtserkennungs-API von Microsoft: Windows-Clientbibliothek und Beispiel](https://github.com/Microsoft/Cognitive-Face-Windows)
-  - WPF-Beispiel-App, die mehrere Szenarien der Erfassung, Analyse und Identifizierung von Gesichtern veranschaulicht.
-- [UWP-App FamilyNotes](https://github.com/Microsoft/Windows-appsample-familynotes)
-  - UWP-Beispiel-App (Universelle Windows-Plattform), bei der die Verwendung von Sprache, Cortana, Freihand und Kamera in einem Szenario gemeinsam verwendeter Familiennotizen gezeigt wird.
-- [Beispiel einer Videobildanalyse](https://github.com/microsoft/cognitive-samples-videoframeanalysis)
-  - Win32-Beispiel-App, die das Analysieren von Videolivestreams nahezu in Echtzeit mithilfe von APIs für Gesichtserkennung, maschinelles Sehen und Emotionen veranschaulicht.
-
-## <a name="tutorials"></a>Lernprogramme
-Die folgenden Tutorials zeigen die grundlegenden Funktionen und Abonnementprozesse der Gesichtserkennungs-API:
-- [Tutorial für erste Schritte mit der Gesichtserkennungs-API in C#](Tutorials/FaceAPIinCSharpTutorial.md)
-- [Tutorial für erste Schritte mit der Gesichtserkennungs-API in Java für Android](Tutorials/FaceAPIinJavaForAndroidTutorial.md)
-- [Tutorial für erste Schritte mit der Gesichtserkennungs-API in Python](Tutorials/FaceAPIinPythonTutorial.md)
+- [Microsoft Face API: Windows Client Library & Sample](https://github.com/Microsoft/Cognitive-Face-Windows) (Microsoft-Gesichtserkennungs-API: Windows-Clientbibliothek und -Beispiel): Eine WPF-App, mit der verschiedene Szenarien der Gesichtserkennung, -analyse und -identifizierung veranschaulicht werden.
+- [FamilyNotes UWP app](https://github.com/Microsoft/Windows-appsample-familynotes) (FamilyNotes-UWP-App): Eine UWP-App (Universelle Windows-Plattform), bei der die Gesichtsidentifizierung zusammen mit Spracheingabe, Cortana, Freihand und Kamera in einem Szenario zum Austauschen von Familiennotizen genutzt wird.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Implementieren Sie anhand einer Schnellstartanleitung ein einfaches Szenario für die Gesichtserkennungs-API.
-- [Schnellstart: Erkennen von Gesichtern in einem Bild mit C#](quickstarts/csharp.md) (auch für andere Sprachen verfügbar)
+Arbeiten Sie eine Schnellstartanleitung zum Implementieren eines einfachen Gesichtserkennungsszenarios im Code durch.
+- [Schnellstart: Erkennen von Gesichtern in einem Bild mit dem .NET SDK und C#](quickstarts/csharp.md) (auch für andere Sprachen verfügbar)

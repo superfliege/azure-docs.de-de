@@ -3,7 +3,7 @@ title: Verwenden von Azure Event Grid zum Automatisieren der Größenänderung h
 description: Azure Event Grid kann bei Blob-Uploads in Azure Storage ausgelöst werden. Sie können diese Funktion verwenden, um in Azure Storage hochgeladene Bilddateien an andere Dienste (z. B. Azure Functions) für die Größenänderung und andere Optimierungen zu senden.
 services: event-grid, functions
 author: ggailey777
-manager: cfowler
+manager: jpconnoc
 editor: ''
 ms.service: event-grid
 ms.tgt_pltfrm: na
@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 09/29/2018
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 2d94389ade02cb6e61f192e9b9e8adb8f8ceec31
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: 2a60084577255b9aa88700509129b8d917c43a79
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47585576"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51282503"
 ---
 # <a name="automate-resizing-uploaded-images-using-event-grid"></a>Automatisieren der Größenänderung von hochgeladenen Bildern mit Event Grid
 
@@ -158,19 +158,18 @@ Ein Ereignisabonnement gibt an, welche vom Anbieter generierten Ereignisse an ei
 
 3. Verwenden Sie die in der Tabelle angegebenen Einstellungen für das Ereignisabonnement.
     
-    ![Erstellen eines Ereignisabonnements aus der Funktion im Azure-Portal](./media/resize-images-on-storage-blob-upload-event/event-subscription-create-flow.png)
+    ![Erstellen eines Ereignisabonnements aus der Funktion im Azure-Portal](./media/resize-images-on-storage-blob-upload-event/event-subscription-create.png)
 
-    | Einstellung      | Empfohlener Wert  | Beschreibung                                        |
+    | Einstellung      | Empfohlener Wert  | BESCHREIBUNG                                        |
     | ------------ |  ------- | -------------------------------------------------- |
-    | **Name** | imageresizersub | Der Name, der Ihr neues Ereignisabonnement angibt. | 
     | **Thementyp** |  Speicherkonten | Wählen Sie den Speicherkonto-Ereignisanbieter aus. | 
     | **Abonnement** | Ihr Azure-Abonnement | Ihr aktuelles Azure-Abonnement ist standardmäßig ausgewählt.   |
     | **Ressourcengruppe** | myResourceGroup | Wählen Sie **Vorhandene verwenden** und anschließend die Ressourcengruppe aus, die Sie in diesem Tutorial verwendet haben.  |
-    | **Instanz** |  Ihr Blob Storage-Konto |  Wählen Sie das Blob Storage-Konto aus, das Sie erstellt haben. |
+    | **Ressource** |  Ihr Blob Storage-Konto |  Wählen Sie das Blob Storage-Konto aus, das Sie erstellt haben. |
     | **Ereignistypen** | Blob erstellt | Deaktivieren Sie alle Typen außer **Blob erstellt**. Nur Ereignistypen mit `Microsoft.Storage.BlobCreated` werden an die Funktion übergeben.| 
-    | **Abonnententyp** |  Webhook |  „Webhook“ oder „Event Hubs“ stehen zur Auswahl. |
+    | **Abonnententyp** |  Automatisch generiert |  Als Webhook vordefiniert |
     | **Abonnentenendpunkt** | Automatisch generiert | Verwenden Sie die Endpunkt-URL, die für Sie generiert wird. | 
-    | **Präfixfilter** | /blobServices/default/containers/images/blobs/ | Filtert Speicherereignisse nur für den Container **images**.| 
+    | **Name** | imageresizersub | Der Name, der Ihr neues Ereignisabonnement angibt. | 
 
 4. Klicken Sie auf **Erstellen**, um das Ereignisabonnement hinzuzufügen. Dadurch wird ein Ereignisabonnement erstellt, das `imageresizerfunc` auslöst, wenn ein Blob dem Container *images* hinzugefügt wird. Die Funktion passt die Größe der Bilder an und fügt sie dem Container *thumbnails* hinzu.
 

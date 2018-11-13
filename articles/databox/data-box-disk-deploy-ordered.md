@@ -6,19 +6,19 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 09/04/2018
+ms.date: 11/05/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: bd90d3c4c9207374d6a6085df6a3962ef42b68a9
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: fae5771afea742b2746c32e1ed6ae88c511876e6
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49091427"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51037948"
 ---
 # <a name="tutorial-order-an-azure-data-box-disk-preview"></a>Tutorial: Bestellen eines Azure Data Box-Datenträgers (Vorschau)
 
-Azure Data Box Disk ist eine Hybrid Cloud-Lösung, die es Ihnen ermöglicht, Ihre lokalen Daten auf schnelle, einfache und zuverlässige Weise in Azure zu importieren. Sie übertragen Ihre Daten auf SSDs, die von Microsoft bereitgestellt werden, und senden die Datenträger dann zurück. Diese Daten werden dann in Azure hochgeladen. 
+Azure Data Box Disk ist eine Hybrid Cloud-Lösung, die es Ihnen ermöglicht, Ihre lokalen Daten auf schnelle, einfache und zuverlässige Weise in Azure zu importieren. Sie übertragen Ihre Daten auf SSDs, die von Microsoft bereitgestellt werden, und senden die Datenträger dann zurück. Diese Daten werden dann in Azure hochgeladen.
 
 In diesem Tutorial wird beschrieben, wie Sie einen Azure Data Box-Datenträger bestellen können. In diesem Tutorial lernen Sie Folgendes kennen:
 
@@ -34,7 +34,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 > - Data Box-Datenträger befinden sich in der Vorschauphase. Lesen Sie die [Azure-Vertragsbedingungen für Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/), bevor Sie diese Lösung bestellen und bereitstellen. 
 > - Während der Vorschauphase kann Data Box Disk an Kunden in den USA, in West- und Nordeuropa, Kanada und Australien gesendet werden. Weitere Informationen finden Sie unter [Regionale Verfügbarkeit](data-box-disk-overview.md#region-availability).
 
-## <a name="sign-up"></a>Registrieren 
+## <a name="sign-up"></a>Registrieren
 
 Der Data Box-Datenträger liegt in einer Vorschauversion vor, und Sie müssen sich für den Dienst registrieren. Führen Sie die folgenden Schritte aus, um sich für den Data Box-Dienst zu registrieren:
 
@@ -64,7 +64,7 @@ Führen Sie die folgenden Schritte im [Azure-Portal](https://aka.ms/azuredatabox
     |Azure-Zielregion|Wählen Sie die Azure-Region aus, in die Daten übertragen werden sollen.|
 
   
-5.  Wählen Sie **Data Box-Datenträger** aus. Die maximale Kapazität der Lösung für eine einzelne Bestellung von 5 Datenträgern beträgt 35 TB. Sie können ggf. mehrere Bestellungen für größere Datenmengen erstellen. 
+5.  Wählen Sie **Data Box-Datenträger** aus. Die maximale Kapazität der Lösung für eine einzelne Bestellung von 5 Datenträgern beträgt 35 TB. Sie können ggf. mehrere Bestellungen für größere Datenmengen erstellen.
 
      ![Auswählen der Option „Data Box-Datenträger“](media/data-box-disk-deploy-ordered/select-data-box-sku-zoom.png)
 
@@ -77,6 +77,7 @@ Führen Sie die folgenden Schritte im [Azure-Portal](https://aka.ms/azuredatabox
     |Azure-Zielregion| Wählen Sie eine Region für Ihr Speicherkonto aus.<br> Zurzeit werden Speicherkonten in allen Regionen in den USA sowie in West- und Nordeuropa, Kanada und Australien unterstützt. |
     |Speicherkonten|Wählen Sie basierend auf der angegebenen Azure-Region aus der gefilterten Liste ein vorhandenes Speicherkonto aus. <br>Sie können auch ein neues universelles v1- oder v2-Konto erstellen. |
     |Geschätzte Datengröße in TB| Geben Sie einen geschätzten Wert in TB ein. <br>Basierend auf der Größe der Daten sendet Microsoft Ihnen eine geeignete Anzahl von SSDs mit jeweils 8 TB (7 TB nutzbare Kapazität) zu. <br>Die maximal nutzbare Kapazität von 5 Datenträgern beträgt bis zu 35 TB. |
+    |Hauptschlüssel für Datenträger| Geben Sie den Hauptschlüssel für Datenträger an, wenn Sie **Benutzerdefinierten Schlüssel anstelle eines von Azure generierten Hauptschlüssels verwenden** aktivieren. <br> Geben Sie einen alphanumerischen Schlüssel mit 12 bis 32 Zeichen ein, der mindestens ein numerisches Zeichen und ein Sonderzeichen enthält. Zulässige Sonderzeichen: `@?_+`. <br> Sie können diese Option überspringen und den von Azure generierten Hauptschlüssel verwenden, um Ihre Datenträger zu entsperren.|
 
 13. Klicken Sie auf **Weiter**. 
 

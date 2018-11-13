@@ -14,12 +14,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: a7e5051248a579b0943fa69620215b060bd1e235
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 6820b44309ac2b3dbeb5ad6f0beb460c8712e9af
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47092692"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50912118"
 ---
 # <a name="publish-multiple-versions-of-your-api"></a>Veröffentlichen mehrerer Versionen Ihrer API 
 
@@ -37,8 +37,9 @@ In diesem Tutorial lernen Sie Folgendes:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Absolvieren Sie den folgenden Schnellstart: [Erstellen einer Azure API Management-Instanz](get-started-create-service-instance.md).
-* Schließen Sie darüber hinaus das folgende Tutorial ab: [Importieren und Veröffentlichen Ihrer ersten API](import-and-publish.md).
++ Machen Sie sich mit der [Azure API Management-Terminologie](api-management-terminology.md) vertraut.
++ Absolvieren Sie den folgenden Schnellstart: [Erstellen einer Azure API Management-Instanz](get-started-create-service-instance.md).
++ Schließen Sie darüber hinaus das folgende Tutorial ab: [Importieren und Veröffentlichen Ihrer ersten API](import-and-publish.md).
 
 ## <a name="add-a-new-version"></a>Hinzufügen einer neuen Version
 
@@ -48,8 +49,8 @@ In diesem Tutorial lernen Sie Folgendes:
 2. Klicken Sie auf das Kontextmenü (**...**) daneben.
 3. Klicken Sie auf **+ Version hinzufügen**.
 
-    > [!TIP]
-    > Versionen können auch beim Erstellen einer neuen API aktiviert werden. Wählen Sie hierzu auf dem Bildschirm **API hinzufügen** die Option **Versionsverwaltung für diese API?** aus.
+> [!TIP]
+> Versionen können auch beim Erstellen einer neuen API aktiviert werden. Wählen Sie hierzu auf dem Bildschirm **API hinzufügen** die Option **Versionsverwaltung für diese API?** aus.
 
 ## <a name="choose-a-versioning-scheme"></a>Auswählen eines Schemas für die Versionsverwaltung
 
@@ -58,34 +59,38 @@ Mit Azure API Management können Sie auswählen, wie Aufrufer angeben können, w
 ![Bildschirm zum Hinzufügen von Versionen](media/api-management-getstarted-publish-versions/AddVersion.PNG)
 
 1. Lassen Sie **Pfad** als **Schema für Versionsverwaltung** ausgewählt.
-2. Fügen Sie **v1** als **Namen** und **Versionsbezeichner** hinzu.
+2. Geben Sie **demo-conference-api-v1** in das Feld **Name** ein.
+
+    > [!NOTE]
+    > Die Version ist tatsächlich eine neue API, die auf der API-Revision basiert. **Name** ist der Name der neuen API. Er muss in der gesamten API Management-Instanz eindeutig sein.
+
+3. Geben Sie **v1** in das Feld **Versionsbezeichner** ein.
 
     > [!TIP]
     > Wenn Sie **Header** oder **Abfragezeichenfolge** als Schema für die Versionsverwaltung auswählen, müssen Sie einem zusätzlichen Wert (den Namen des Headers oder Abfragezeichenfolgen-Parameters) angeben.
 
-3. Klicken Sie auf **Erstellen**, um Ihre neue Version einzurichten.
-4. In der API-Liste werden unter **Demo Conference API** nun zwei unterschiedliche APIs angezeigt: **Original** und **v1**.
+4. Klicken Sie auf **Erstellen**, um Ihre neue Version einzurichten.
+5. In der API-Liste werden unter **Demo Conference API** nun zwei unterschiedliche APIs angezeigt: **Original** und **v1**.
 
     ![Unter einer API aufgeführte Versionen im Azure-Portal](media/api-management-getstarted-publish-versions/VersionList.PNG)
 
     > [!Note]
     > Wenn Sie einer API ohne Versionsverwaltung eine Version hinzufügen, wird automatisch ein **Original** erstellt, das auf die Standard-URL reagiert. Dadurch wird sichergestellt, dass bereits vorhandene Aufrufer durch das Hinzufügen einer Version nicht beeinträchtigt werden. Wenn Sie Versionen gleich bei der Erstellung einer neuen API aktivieren, wird kein Original erstellt.
 
-5. Nun können Sie **v1** als eine API bearbeiten und konfigurieren, die vom **Original** getrennt ist. Änderungen an einer Version haben keine Auswirkungen auf die andere.
+6. Nun können Sie **v1** als eine API bearbeiten und konfigurieren, die vom **Original** getrennt ist. Änderungen an einer Version haben keine Auswirkungen auf die andere.
 
 ## <a name="add-the-version-to-a-product"></a>Hinzufügen der Version zu einem Produkt
 
 Damit Aufrufern die neue Version angezeigt wird, muss sie einem **Produkt** hinzugefügt werden.
 
+![API Management-Produkte](media/api-management-getstarted-publish-versions/08-AddMultipleVersions-03-AddVersionToProduct.png)
+
 1. Klicken Sie auf der Seite des klassischen Bereitstellungsmodells auf **Produkte**.
-
-    ![API Management-Produkte](media/api-management-getstarted-publish-versions/Products.png)
-
 2. Klicken Sie auf **Unbegrenzt**.
 3. Klicken Sie auf **APIs**.
 4. Wählen Sie **Hinzufügen**.
 5. Wählen Sie **Demo Conference API, Version v1** aus.
-6. Navigieren Sie zur Dienstverwaltungsseite, und klicken Sie auf **APIs**.
+6. Klicken Sie auf **Auswählen**.
 
 ## <a name="browse-the-developer-portal-to-see-the-version"></a>Anzeigen der Version im Entwicklerportal
 

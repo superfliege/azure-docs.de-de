@@ -11,12 +11,12 @@ ms.topic: quickstart
 description: Schnelle Kubernetes-Entwicklung mit Containern und Microservices in Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container
 manager: mmontwil
-ms.openlocfilehash: 7fcdd2d41f5fe76776acd5642cda11ef8a65f82d
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 9e0d90dc4e5e4782802233dd311d10fc1cbe969c
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353757"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50978535"
 ---
 # <a name="quickstart-create-a-kubernetes-dev-space-with-azure-dev-spaces-java-and-vs-code"></a>Schnellstart: Erstellen eines Kubernetes-Entwicklungsbereichs mit Azure Dev Spaces (Java und VS Code)
 
@@ -34,7 +34,7 @@ In diesem Leitfaden lernen Sie Folgendes:
 - Ein Azure-Abonnement. Falls Sie über keins verfügen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free) erstellen.
 - [Visual Studio Code](https://code.visualstudio.com/download).
 - [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) Version 2.0.43 oder höher.
-- Ein Kubernetes-Cluster mit Kubernetes 1.10.3 oder höher in der Region „USA, Osten“, „USA, Mitte“, „USA, Westen 2“, „Europa, Westen“, „Kanada, Mitte“ oder „Kanada, Osten“ mit aktiviertem **HTTP-Anwendungsrouting**.
+- Ein Kubernetes-Cluster mit Kubernetes 1.10.3 oder höher in der Region „EastUS“, „EastUS2“, „CentralUS“, „WestUS2“, „WestEurope“, „SoutheastAsia“, „CanadaCentral“ oder „CanadaEast“ mit aktiviertem **HTTP-Anwendungsrouting**.
 
     ```cmd
     az group create --name MyResourceGroup --location <region>

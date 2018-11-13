@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 08/29/2018
 ms.author: ryanwi,v-steg
 ms.custom: mvc
-ms.openlocfilehash: 5ec898465b550a136db71ee731be5943c7441dcd
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: db0abf2c70ac79356496c78275dc658d1ee29a23
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44382027"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51035905"
 ---
 # <a name="tutorial-deploy-a-container-application-with-cicd-to-a-service-fabric-cluster"></a>Tutorial: Bereitstellen einer Containeranwendung mit CI/CD in einem Service Fabric-Cluster
 
@@ -76,6 +76,9 @@ Eine Team Services-Releasedefinition beschreibt einen Workflow, der ein Anwendun
 Navigieren Sie in einem Webbrowser zu Ihrem neuen Teamprojekt: [https://&lt;IhrKonto&gt;.visualstudio.com/Voting/Voting%20Team/_git/Voting](https://myaccount.visualstudio.com/Voting/Voting%20Team/_git/Voting).
 
 Wählen Sie die Registerkarte **Build und Release** und die Option **Builds** aus, und klicken Sie dann auf **Neue Pipeline**.
+
+>[!NOTE]
+>Wird die Builddefinitionsvorlage nicht angezeigt, vergewissern Sie sich, dass das Feature **Neue Benutzeroberfläche zum Erstellen einer YAML-Pipeline** deaktiviert ist. Dieses Feature wird in Ihrem DevOps-Konto im Abschnitt **Featurevorschau** konfiguriert.
 
 ![Neue Pipeline][new-pipeline]
 

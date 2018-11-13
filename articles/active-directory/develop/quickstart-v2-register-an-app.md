@@ -13,16 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 09/24/2018
+ms.date: 11/02/2018
 ms.author: celested
 ms.reviewer: lenalepa
 ms.custom: aaddev
-ms.openlocfilehash: b2dea11b6573be8f574bd18fa69ee76658d6d698
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: c0bf5bbdf496a23a5ed66a149933f25a059984a9
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46975809"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50913277"
 ---
 # <a name="quickstart-register-an-app-with-the-azure-active-directory-v20-endpoint"></a>Schnellstart: Registrieren einer App mit dem Azure AD v2.0-Endpunkt
 
@@ -30,8 +30,10 @@ ms.locfileid: "46975809"
 
 Um eine App zu erstellen, die die Anmeldung sowohl für ein persönliches Microsoft-Konto (MSA) als auch für ein Geschäfts-, Schul- oder Unikonto (Azure AD) zulässt, müssen Sie zunächst eine App mit dem Azure Active Directory (Azure AD) v2.0-Endpunkt registrieren. Derzeit können Sie keine in Azure AD oder MSA vorhandenen Apps nutzen, stattdessen müssen Sie eine neue App erstellen.
 
+Nicht alle Szenarien und Features von Azure AD werden vom v2.0-Endpunkt unterstützt. Lesen Sie die Informationen zu den [Einschränkungen des v2.0-Endpunkts](active-directory-v2-limitations.md), um zu bestimmen, ob Sie den v2.0-Endpunkt verwenden sollten.
+
 > [!NOTE]
-> Nicht alle Szenarien und Features von Azure AD werden vom v2.0-Endpunkt unterstützt. Lesen Sie die Informationen zu den [Einschränkungen des v2.0-Endpunkts](active-directory-v2-limitations.md), um zu bestimmen, ob Sie den v2.0-Endpunkt verwenden sollten.
+> Sie registrieren eine neue App? Probieren Sie die neue Benutzeroberfläche für **App-Registrierungen (Vorschauversion)** im Azure-Portal aus. Informationen zu den ersten Schritten finden Sie unter [Schnellstart: Registrieren einer Anwendung bei der Microsoft Identity Platform (Vorschauversion)](quickstart-register-app.md).
 
 ## <a name="step-1-sign-in-to-the-microsoft-application-registration-portal"></a>Schritt 1: Anmelden am Anwendungsregistrierungsportal von Microsoft
 

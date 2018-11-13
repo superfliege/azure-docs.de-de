@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 10/08/2018
+ms.date: 11/01/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to install Data Box Edge in datacenter so I can use it to transfer data to Azure.
-ms.openlocfilehash: 21ac3de793f5ce559c3a03de2a09f11ccb86b12a
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 6bd3c1b2cdbd83673a181ee7e088adb39749036e
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49167357"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50963845"
 ---
 # <a name="tutorial-install-azure-data-box-edge-preview"></a>Tutorial: Installieren von Azure Data Box Edge (Vorschauversion)
 
@@ -111,8 +111,14 @@ Bevor Sie mit dem Verkabeln des Geräts beginnen können, benötigen Sie Folgend
 
 - Das physische Edgegerät (ausgepackt und im Rack montiert)
 - Zwei Netzkabel 
-- Zwei Netzwerkkabel (1 GbE, RJ45) und vier Kupferkabel (25 GbE, SFP+)
+- Mindestens ein Netzwerkkabel (1 GbE, RJ45) zum Anschließen an die Verwaltungsschnittstelle. Das Gerät verfügt über zwei 1-GbE-Netzwerkschnittstellen: eine für die Verwaltung und eine für Daten.
+- Ein SFP+-Kupferkabel (25 GbE) für jede zu konfigurierende Datennetzwerkschnittstelle. Mindestens eine Datennetzwerkschnittstelle („PORT 2“, „PORT 3“, „PORT 4“, „PORT 5“ oder PORT 6“) muss mit dem Internet verbunden sein (Azure-Konnektivität).
 - Zugang zu zwei PDUs (Power Distribution Units) (empfohlen)
+
+> [!NOTE]
+> - Wenn Sie nur eine einzelne Datennetzwerkschnittstelle anschließen, sollten Sie eine 25-GbE-Netzwerkschnittstelle wie „PORT 3“, „PORT 4“, „PORT 5“ oder „PORT 6“ verwenden, um Daten an Azure zu senden. 
+> - Aus Leistungsgründen und für die Verarbeitung großer Datenmengen empfiehlt es sich, alle Datenports zu verwenden.
+> - Das Edgegerät sollte mit dem Datencenternetzwerk verbunden sein, um Daten von Datenquellservern erfassen zu können. 
 
 Ihr Edgegerät verfügt über acht NVMe-SSDs. Am vorderen Bedienfeld befinden sich außerdem Status-LEDs und Netzschalter. An der Rückseite des Geräts befinden sich redundante Netzteile (Power Supply Units, PSUs). Ihr Gerät verfügt über sechs Netzwerkschnittstellen: zwei mit 1 GBit/s und vier mit 25 GBit/s. Ihr Gerät ist mit einem Baseboard-Verwaltungscontroller (Baseboard Management Controller, BMC) ausgestattet. Machen Sie sich mit den verschiedenen Anschlüssen an der Geräterückseite vertraut.
  
@@ -123,13 +129,7 @@ Gehen Sie wie folgt vor, um Ihr Gerät an die Stromversorgung und an das Netzwer
 1. Schließen Sie die Netzkabel an die PSUs des Gehäuses an. Zur Gewährleistung hoher Verfügbarkeit müssen beide PSUs installiert und an unterschiedliche Stromquellen angeschlossen werden.
 2. Schließen Sie die Netzkabel an die PDUs des Racks an. Stellen Sie sicher, dass die beiden PSUs separate Stromquellen verwenden.
 3. Verbinden Sie die 1-GbE-Netzwerkschnittstelle „PORT 1“ mit dem Computer, der zum Konfigurieren des physischen Geräts verwendet wird. „PORT 1“ ist die dedizierte Verwaltungsschnittstelle.
-4. Verbinden Sie die 1-GbE-Netzwerkschnittstelle „PORT 2“ per RJ45-Netzwerkkabel mit dem Datencenternetzwerk/Internet. 
-5. Verbinden Sie die vier 25-GbE-Netzwerkschnittstellen „PORT 3“, „PORT 4“, „PORT 5“ und „PORT 6“ per SFP+-Kupferkabel mit dem Datencenternetzwerk/Internet. 
-
-> [!NOTE]
-> - Mindestens eine Datennetzwerkschnittstelle („PORT 2“, „PORT 3“, „PORT 4“, „PORT 5“ oder PORT 6“) muss mit dem Internet (Azure-Konnektivität) verbunden sein. 
-> - Wir empfehlen, eine 25-GbE-Netzwerkschnittstelle wie „PORT 3“, „PORT 4“, „PORT 5“ oder „PORT 6“ zu verwenden, um Daten an Azure zu senden. 
-> - Das Edgegerät sollte mit dem Datencenternetzwerk verbunden sein, um Daten von Datenquellservern erfassen zu können.  
+4. Verbinden Sie mindestens einen der Ports 2, 3, 4, 5 oder 6 mit dem Datencenternetzwerk/Internet. Wenn Sie sich für „PORT 2“ entscheiden, verwenden Sie das RJ45-Netzwerkkabel. Verwenden Sie für die 25-GbE-Netzwerkschnittstellen die SFP+-Kupferkabel.  
 
 
 ## <a name="next-steps"></a>Nächste Schritte

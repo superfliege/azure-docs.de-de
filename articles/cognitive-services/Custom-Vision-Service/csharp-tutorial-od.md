@@ -1,239 +1,112 @@
 ---
-title: 'Tutorial: Erstellen eines Objekterkennungsprojekts mit dem Custom Vision SDK für C# – Custom Vision Service'
+title: 'Schnellstart: Erstellen eines Objekterkennungsprojekts mit dem Custom Vision SDK für C#'
 titlesuffix: Azure Cognitive Services
-description: Erstellen Sie ein Projekt, fügen Sie Tags hinzu, laden Sie Bilder hoch, und erstellen Sie eine Vorhersage mit dem Standardendpunkt.
+description: Erstellen Sie ein Projekt, fügen Sie Tags hinzu, laden Sie Bilder hoch, trainieren Sie Ihr Projekt, und erkennen Sie Objekte unter Verwendung des .NET SDK mit C#.
 services: cognitive-services
 author: areddish
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: custom-vision
-ms.topic: tutorial
-ms.date: 05/07/2018
+ms.topic: quickstart
+ms.date: 10/31/2018
 ms.author: areddish
-ms.openlocfilehash: 222a17f1d39bc52d1e5ff34e421d0203d80dd1bd
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 926e9feaa5061c84ce8de6d828da820e133700ce
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49958500"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51278859"
 ---
-# <a name="tutorial-create-an-object-detection-project-with-the-custom-vision-sdk-for-c"></a>Tutorial: Erstellen eines Objekterkennungsprojekts mit dem Custom Vision SDK für C#
+# <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-net-sdk"></a>Schnellstart: Erstellen eines Objekterkennungsprojekts mit dem Custom Vision SDK für .NET
 
-Erfahren Sie, wie Sie eine grundlegende Windows-Anwendung verwenden können, die die Custom Vision-API zum Erstellen eines Objekterkennungsprojekts verwendet. Nachdem es erstellt wurde, können Sie markierte Bereiche hinzufügen, Bilder hochladen, das Projekt trainieren, die Standardendpunkt-URL für Vorhersagen des Projekts abrufen und den Endpunkt für die programmgesteuerte Überprüfung eines Bilds verwenden. Verwenden Sie dieses Open-Source-Beispiel als Vorlage zum Erstellen Ihrer eigenen App für Windows, indem Sie die Custom Vision-API verwenden.
+Dieser Artikel enthält Informationen und Beispielcode für die ersten Schritte mit dem Custom Vision SDK und C# und unterstützt Sie beim Erstellen eines Objekterkennungsmodells. Nachdem es erstellt wurde, können Sie markierte Bereiche hinzufügen, Bilder hochladen, das Projekt trainieren, die Standardendpunkt-URL für Vorhersagen des Projekts abrufen und den Endpunkt für die programmgesteuerte Überprüfung eines Bilds verwenden. Verwenden Sie dieses Beispiel als Vorlage für die Erstellung Ihrer eigenen .NET-Anwendung. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-### <a name="get-the-custom-vision-sdk-and-samples"></a>Abrufen des Custom Vision SDK und von Beispielen
-Die folgenden Custom Vision SDK NuGet-Pakete sind zum Erstellen dieses Beispiels erforderlich:
+- Eine beliebige Edition von [Visual Studio 2015 oder 2017](https://www.visualstudio.com/downloads/)
+
+## <a name="get-the-custom-vision-sdk-and-sample-code"></a>Abrufen von Custom Vision SDK und Beispielcode
+Wenn Sie eine .NET-App schreiben möchten, die Custom Vision verwendet, benötigen Sie die NuGet-Pakete für Custom Vision. Diese sind in dem Beispielprojekt enthalten, das Sie herunterladen. Sie können hier aber auch einzeln auf sie zugreifen:
 
 * [Microsoft.Azure.CognitiveServices.Vision.CustomVision.Training](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.CustomVision.Training/)
 * [Microsoft.Azure.CognitiveServices.Vision.CustomVision.Prediction](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.CustomVision.Prediction/)
 
-Sie können die Bilder zusammen mit den [C#-Beispielen](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/CustomVision) herunterladen.
+Klonen Sie das Projekt [Cognitive Services .NET Samples](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples) (Cognitive Services-Beispiele für .NET), oder laden Sie es herunter. Navigieren Sie zum Ordner **CustomVision/ObjectDetection**, und öffnen Sie „ObjectDetection.csproj“ in Visual Studio.
 
-## <a name="get-the-training-and-prediction-keys"></a>Abrufen der Trainings- und Vorhersageschlüssel
+Dieses Visual Studio-Projekt erstellt ein neues Custom Vision-Projekt namens __My New Project__, auf das über die [Custom Vision-Website](https://customvision.ai/) zugegriffen werden kann. Anschließend werden Bilder zum Trainieren und Testen eines Objekterkennungsmodells hochgeladen. In diesem Projekt wird das Modell für die Erkennung von Gabeln und Scheren auf Bildern trainiert.
 
-Besuchen Sie die [Custom Vision-Webseite](https://customvision.ai), und klicken Sie in der oberen rechten Ecke auf das __Zahnradsymbol__, um die in diesem Beispiel verwendeten Schlüssel abzurufen. Kopieren Sie aus dem Abschnitt __Accounts__ (Konten) die Werte der Felder __Training Key__ (Trainingsschlüssel) und __Prediction Key__ (Vorhersageschlüssel).
+[!INCLUDE [get-keys](includes/get-keys.md)]
 
-![Abbildung der Schlüsselbenutzeroberfläche](./media/csharp-tutorial/training-prediction-keys.png)
+## <a name="understand-the-code"></a>Grundlegendes zum Code
 
-## <a name="step-1-create-a-console-application"></a>Schritt 1: Erstellen einer Konsolenanwendung
+Öffnen Sie die Datei _Program.cs_, und sehen Sie sich den Code an. Fügen Sie Ihre Abonnementschlüssel in die entsprechenden Definitionen in der Methode **Main** ein.
 
-In diesem Schritt erstellen Sie eine Konsolenanwendung und bereiten den Trainingsschlüssel sowie die Bilder vor, die für das Beispiel benötigt werden:
+[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ObjectDetection/Program.cs?range=18-27)]
 
-1. Starten Sie Visual Studio 2015 Community Edition 
-2. Erstellen Sie eine neue Konsolenanwendung.
-3. Fügen Sie Verweise auf diese beiden NuGet-Pakete hinzu:
-    * Microsoft.Azure.CognitiveServices.Vision.CustomVision.Training
-    * Microsoft.Azure.CognitiveServices.Vision.CustomVision.Prediction
+### <a name="create-a-new-custom-vision-service-project"></a>Erstellen eines neuen Custom Vision Service-Projekts
 
-4. Ersetzen Sie den Inhalt von **Program.cs** durch den folgenden Code:
+Der nächste Teil des Codes erstellt ein Objekterkennungsprojekt. Das erstellte Projekt wird auf der [Custom Vision-Website](https://customvision.ai/) angezeigt, die Sie zuvor besucht haben. 
 
-```csharp
-using Microsoft.Azure.CognitiveServices.Vision.CustomVision.Prediction;
-using Microsoft.Azure.CognitiveServices.Vision.CustomVision.Training;
-using Microsoft.Azure.CognitiveServices.Vision.CustomVision.Training.Models;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading;
+[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ObjectDetection/Program.cs?range=29-35)]
 
-namespace SampleObjectDetection
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            // Add your training key from the settings page of the portal
-            string trainingKey = "<your key here>";
+### <a name="add-tags-to-the-project"></a>Hinzufügen von Tags zum Projekt
 
-            // Create the Api, passing in the training key
-            TrainingApi trainingApi = new TrainingApi() { ApiKey = trainingKey };
-        }        
-    }
-}
+[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ObjectDetection/Program.cs?range=37-39)]
+
+### <a name="upload-and-tag-images"></a>Hochladen und Kennzeichnen von Bildern
+
+Wenn Sie Bilder in Objekterkennungsprojekten mit Tags versehen, müssen Sie mithilfe normalisierter Koordinaten die Region des jeweiligen markierten Objekts angeben. Im folgenden Code wird jedem der Beispielbilder die entsprechende markierte Region zugeordnet.
+
+[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ObjectDetection/Program.cs?range=41-84)]
+
+Auf der Grundlage dieser Zuordnungen werden dann die einzelnen Bilder zusammen mit den jeweiligen Regionskoordinaten hochgeladen.
+
+[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ObjectDetection/Program.cs?range=86-104)]
+
+Nun sind alle Bilder hochgeladen, und jedes Bild verfügt über ein Tag für Gabel (**fork**) oder Schere (**scissors**) sowie über ein zugeordnetes Pixelrechteck für das Tag.
+
+### <a name="train-the-project"></a>Trainieren des Projekts
+
+Dieser Code erstellt die erste Trainingsiteration im Projekt.
+
+[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ObjectDetection/Program.cs?range=106-117)]
+
+### <a name="set-the-current-iteration-as-default"></a>Festlegen der aktuellen Iteration als Standard
+
+Dieser Code markiert die aktuelle Iteration als Standarditeration. Die Standarditeration spiegelt die Version des Modells wider, die auf Vorhersageanforderungen reagiert. Sie sollte immer aktualisiert werden, wenn Sie das Modell neu trainieren.
+
+[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ObjectDetection/Program.cs?range=119-124)]
+
+### <a name="create-a-prediction-endpoint"></a>Erstellen eines Vorhersageendpunkts
+
+[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ObjectDetection/Program.cs?range=126-131)]
+
+### <a name="use-the-prediction-endpoint"></a>Verwenden des Vorhersageendpunkts
+
+Dieser Teil des Skripts lädt das Testbild, fragt den Modellendpunkt ab und gibt Vorhersagedaten an die Konsole aus.
+
+[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ObjectDetection/Program.cs?range=133-145)]
+
+## <a name="run-the-application"></a>Ausführen der Anwendung
+
+Während der Anwendungsausführung sollte ein Konsolenfenster mit folgender Ausgabe geöffnet werden:
+
 ```
+Creating new project:
+        Training
+Done!
 
-## <a name="step-2-create-a-custom-vision-service-project"></a>Schritt 2: Erstellen eines Custom Vision Service-Projekts
-
-Fügen Sie den folgenden Code am Ende der **Main()**-Methode hinzu, um ein neues Custom Vision Service-Projekt zu erstellen.
-
-```csharp
-    // Find the object detection domain
-    var domains = trainingApi.GetDomains();
-    var objDetectionDomain = domains.FirstOrDefault(d => d.Type == "ObjectDetection");
-
-    // Create a new project
-    Console.WriteLine("Creating new project:");
-    var project = trainingApi.CreateProject("My New Project", null, objDetectionDomain.Id);
+Making a prediction:
+        fork: 98.2% [ 0.111609578, 0.184719115, 0.6607002, 0.6637112 ]
+        scissors: 1.2% [ 0.112389535, 0.119195729, 0.658031344, 0.7023591 ]
 ```
+Daraufhin können Sie sich vergewissern, dass das Testbild (unter **Images/Test/**) ordnungsgemäß gekennzeichnet und die Erkennungsregion korrekt ist. Drücken Sie eine beliebige Taste, um die Anwendung zu beenden.
 
-## <a name="step-3-add-tags-to-your-project"></a>Schritt 3: Hinzufügen von Tags in das Projekt
+[!INCLUDE [clean-od-project](includes/clean-od-project.md)]
 
-Fügen Sie den folgenden Code nach dem Aufruf von **CreateProject()** ein, um dem Projekt Tags hinzuzufügen:
+## <a name="next-steps"></a>Nächste Schritte
 
-```csharp
-    // Make two tags in the new project
-    var forkTag = trainingApi.CreateTag(project.Id, "fork");
-    var scissorsTag = trainingApi.CreateTag(project.Id, "scissors");
-```
+Sie wissen nun, wie die einzelnen Schritte des Objekterkennungsprozesses im Code ausgeführt werden. In diesem Beispiel wird eine einzelne Trainingsiteration ausgeführt. Zur Verbesserung der Genauigkeit muss ein Modell jedoch häufig mehrmals trainiert und getestet werden. In der folgenden Anleitung wird die Bildklassifizierung behandelt. Die Prinzipien sind jedoch mit denen der Objekterkennung vergleichbar.
 
-## <a name="step-4-upload-images-to-the-project"></a>Schritt 4: Hochladen von Bildern in das Projekt
-
-Für Objekterkennungsprojekte muss der Bereich des Objekts mithilfe normalisierter Koordinaten und einem Tag identifiziert werden. Fügen Sie den folgenden Code am Ende der **Main()**-Methode ein, um Bilder und markierte Bereiche hinzuzufügen:
-
-```csharp
-    Dictionary<string, double[]> fileToRegionMap = new Dictionary<string, double[]>()
-    {
-        // The bounding box is specified in normalized coordinates.
-        //  Normalized Left = Left / Width (in Pixels)
-        //  Normalized Top = Top / Height (in Pixels)
-        //  Normalized Bounding Box Width = (Right - Left) / Width (in Pixels)
-        //  Normalized Bounding Box Height = (Bottom - Top) / Height (in Pixels)
-        // FileName, Left, Top, Width, Height of the bounding box.
-        {"scissors_1", new double[] { 0.4007353, 0.194068655, 0.259803921, 0.6617647 } },
-        {"scissors_2", new double[] { 0.426470578, 0.185898721, 0.172794119, 0.5539216 } },
-        {"scissors_3", new double[] { 0.289215684, 0.259428144, 0.403186262, 0.421568632 } },
-        {"scissors_4", new double[] { 0.343137264, 0.105833367, 0.332107842, 0.8055556 } },
-        {"scissors_5", new double[] { 0.3125, 0.09766343, 0.435049027, 0.71405226 } },
-        {"scissors_6", new double[] { 0.379901975, 0.24308826, 0.32107842, 0.5718954 } },
-        {"scissors_7", new double[] { 0.341911763, 0.20714055, 0.3137255, 0.6356209 } },
-        {"scissors_8", new double[] { 0.231617644, 0.08459154, 0.504901946, 0.8480392 } },
-        {"scissors_9", new double[] { 0.170343131, 0.332957536, 0.767156839, 0.403594762 } },
-        {"scissors_10", new double[] { 0.204656869, 0.120539248, 0.5245098, 0.743464053 } },
-        {"scissors_11", new double[] { 0.05514706, 0.159754932, 0.799019635, 0.730392158 } },
-        {"scissors_12", new double[] { 0.265931368, 0.169558853, 0.5061275, 0.606209159 } },
-        {"scissors_13", new double[] { 0.241421565, 0.184264734, 0.448529422, 0.6830065 } },
-        {"scissors_14", new double[] { 0.05759804, 0.05027781, 0.75, 0.882352948 } },
-        {"scissors_15", new double[] { 0.191176474, 0.169558853, 0.6936275, 0.6748366 } },
-        {"scissors_16", new double[] { 0.1004902, 0.279036, 0.6911765, 0.477124184 } },
-        {"scissors_17", new double[] { 0.2720588, 0.131977156, 0.4987745, 0.6911765 } },
-        {"scissors_18", new double[] { 0.180147052, 0.112369314, 0.6262255, 0.6666667 } },
-        {"scissors_19", new double[] { 0.333333343, 0.0274019931, 0.443627447, 0.852941155 } },
-        {"scissors_20", new double[] { 0.158088237, 0.04047389, 0.6691176, 0.843137264 } },
-        {"fork_1", new double[] { 0.145833328, 0.3509314, 0.5894608, 0.238562092 } },
-        {"fork_2", new double[] { 0.294117659, 0.216944471, 0.534313738, 0.5980392 } },
-        {"fork_3", new double[] { 0.09191177, 0.0682516545, 0.757352948, 0.6143791 } },
-        {"fork_4", new double[] { 0.254901975, 0.185898721, 0.5232843, 0.594771266 } },
-        {"fork_5", new double[] { 0.2365196, 0.128709182, 0.5845588, 0.71405226 } },
-        {"fork_6", new double[] { 0.115196079, 0.133611143, 0.676470637, 0.6993464 } },
-        {"fork_7", new double[] { 0.164215669, 0.31008172, 0.767156839, 0.410130739 } },
-        {"fork_8", new double[] { 0.118872553, 0.318251669, 0.817401946, 0.225490168 } },
-        {"fork_9", new double[] { 0.18259804, 0.2136765, 0.6335784, 0.643790841 } },
-        {"fork_10", new double[] { 0.05269608, 0.282303959, 0.8088235, 0.452614367 } },
-        {"fork_11", new double[] { 0.05759804, 0.0894935, 0.9007353, 0.3251634 } },
-        {"fork_12", new double[] { 0.3345588, 0.07315363, 0.375, 0.9150327 } },
-        {"fork_13", new double[] { 0.269607842, 0.194068655, 0.4093137, 0.6732026 } },
-        {"fork_14", new double[] { 0.143382356, 0.218578458, 0.7977941, 0.295751631 } },
-        {"fork_15", new double[] { 0.19240196, 0.0633497, 0.5710784, 0.8398692 } },
-        {"fork_16", new double[] { 0.140931368, 0.480016381, 0.6838235, 0.240196079 } },
-        {"fork_17", new double[] { 0.305147052, 0.2512582, 0.4791667, 0.5408496 } },
-        {"fork_18", new double[] { 0.234068632, 0.445702642, 0.6127451, 0.344771236 } },
-        {"fork_19", new double[] { 0.219362751, 0.141781077, 0.5919118, 0.6683006 } },
-        {"fork_20", new double[] { 0.180147052, 0.239820287, 0.6887255, 0.235294119 } }
-    };
-
-    // Add all images for fork
-    var imagePath = Path.Combine("Images", "fork");
-    var imageFileEntries = new List<ImageFileCreateEntry>();
-    foreach (var fileName in Directory.EnumerateFiles(imagePath))
-    {
-        var region = fileToRegionMap[Path.GetFileNameWithoutExtension(fileName)];
-        imageFileEntries.Add(new ImageFileCreateEntry(fileName, File.ReadAllBytes(fileName), null, new List<Region>(new Region[] { new Region(forkTag.Id, region[0], region[1], region[2], region[3]) })));
-    }
-    trainingApi.CreateImagesFromFiles(project.Id, new ImageFileCreateBatch(imageFileEntries));
-
-    // Add all images for scissors
-    imagePath = Path.Combine("Images", "scissors");
-    imageFileEntries = new List<ImageFileCreateEntry>();
-    foreach (var fileName in Directory.EnumerateFiles(imagePath))
-    {
-        var region = fileToRegionMap[Path.GetFileNameWithoutExtension(fileName)];
-        imageFileEntries.Add(new ImageFileCreateEntry(fileName, File.ReadAllBytes(fileName), null, new List<Region>(new Region[] { new Region(scissorsTag.Id, region[0], region[1], region[2], region[3]) })));
-    }
-    trainingApi.CreateImagesFromFiles(project.Id, new ImageFileCreateBatch(imageFileEntries));
-```
-
-## <a name="step-5-train-the-project"></a>Schritt 5: Trainieren des Projekts
-
-Da Sie Ihrem Projekt Tags und Bilder hinzugefügt haben, können Sie es nun trainieren: 
-
-1. Fügen Sie den folgenden Code am Ende von **Main()** ein. Dadurch wird die erste Iteration im Projekt erstellt.
-2. Markieren Sie diese Iteration als Standarditeration.
-
-```csharp
-    // Now there are images with tags start training the project
-    Console.WriteLine("\tTraining");
-    var iteration = trainingApi.TrainProject(project.Id);
-
-    // The returned iteration will be in progress, and can be queried periodically to see when it has completed
-    while (iteration.Status != "Completed")
-    {
-        Thread.Sleep(1000);
-
-        // Re-query the iteration to get its updated status
-        iteration = trainingApi.GetIteration(project.Id, iteration.Id);
-    }
-
-    // The iteration is now trained. Make it the default project endpoint
-    iteration.IsDefault = true;
-    trainingApi.UpdateIteration(project.Id, iteration.Id, iteration);
-    Console.WriteLine("Done!\n");
-```
-
-## <a name="step-6-get-and-use-the-default-prediction-endpoint"></a>Schritt 6: Abrufen und Verwenden des Standardendpunkts für Vorhersagen
-
-Jetzt sind Sie bereit dazu, das Modell für Vorhersagen zu verwenden: 
-
-1. Rufen Sie den Endpunkt ab, der der Standarditeration zugeordnet ist, indem Sie den folgenden Code am Ende von **Main()** einfügen. 
-2. Senden Sie ein Testbild an das Projekt, indem Sie diesen Endpunkt verwenden.
-
-```csharp
-    // Now there is a trained endpoint, it can be used to make a prediction
-
-    // Add your prediction key from the settings page of the portal
-    // The prediction key is used in place of the training key when making predictions
-    string predictionKey = "<your key here>";
-
-    // Create a prediction endpoint, passing in the obtained prediction key
-    PredictionEndpoint endpoint = new PredictionEndpoint() { ApiKey = predictionKey };
-
-    // Make a prediction against the new project
-    Console.WriteLine("Making a prediction:");
-    var imageFile = Path.Combine("Images", "test", "test_image.jpg");
-    using (var stream = File.OpenRead(imageFile))
-    {
-        var result = endpoint.PredictImage(project.Id, File.OpenRead(imageFile));
-
-        // Loop over each prediction and write out the results
-        foreach (var c in result.Predictions)
-        {
-            Console.WriteLine($"\t{c.TagName}: {c.Probability:P1} [ {c.BoundingBox.Left}, {c.BoundingBox.Top}, {c.BoundingBox.Width}, {c.BoundingBox.Height} ]");
-        }
-    }
-```
-
-## <a name="step-7-run-the-example"></a>Schritt 7: Ausführen des Beispiels
-
-Erstellen Sie das Projekt, und führen Sie es aus. Die Ergebnisse der Vorhersage werden in der Konsole angezeigt.
+> [!div class="nextstepaction"]
+> [Testen und erneutes Trainieren eines Modells mit Custom Vision Service](test-your-model.md)

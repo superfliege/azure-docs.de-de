@@ -4,17 +4,17 @@ description: Azure Policy ist ein Dienst in Azure, mit dem Sie Richtliniendefini
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 09/18/2018
+ms.date: 11/06/2018
 ms.topic: overview
 ms.service: azure-policy
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: dbdffc7a6f77f3f34ce7937c60eb7a53e5f72590
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: c016e21ff59d5f68afee79b2159218d10e90a7ec
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46961279"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51252818"
 ---
 # <a name="what-is-azure-policy"></a>Was ist Azure Policy?
 
@@ -35,12 +35,14 @@ Bei einer Richtlinie stehen Ressourceneigenschaften während der Bereitstellung 
 
 ### <a name="rbac-permissions-in-azure-policy"></a>RBAC-Berechtigungen in Azure Policy
 
-Azure Policy verfügt über Berechtigungen, die als Vorgänge in zwei verschiedenen Ressourcenanbietern dargestellt werden:
+Azure Policy verfügt über verschiedene Berechtigungen (als Vorgänge bezeichnet) in zwei Ressourcenanbietern:
 
 - [Microsoft.Authorization](../../role-based-access-control/resource-provider-operations.md#microsoftauthorization)
-- [Microsoft.PolicyInsight](../../role-based-access-control/resource-provider-operations.md#microsoftpolicyinsights)
+- [Microsoft.PolicyInsights](../../role-based-access-control/resource-provider-operations.md#microsoftpolicyinsights)
 
-Mehrere integrierte Rollen weisen verschiedene Berechtigungsebenen für Azure Policy-Ressourcen auf, z.B. **Sicherheitsadministrator**, womit Richtlinienzuweisungen und -definitionen verwaltet, aber keine Konformitätsinformationen angezeigt werden können. Ein weiteres Beispiel ist **Leser**, womit Details zu Richtlinienzuweisungen und -definitionen gelesen, aber keine Änderungen vorgenommen oder Konformitätsinformationen angezeigt werden können. Während die Rolle **Besitzer** über die vollständigen Rechte verfügt, ist **Mitwirkender** nicht mit Azure Policy-Berechtigungen verbunden. Erstellen Sie eine [benutzerdefinierte Rolle](../../role-based-access-control/custom-roles.md), um die Berechtigung zum Anzeigen von Policy-Konformitätsdetails zu gewähren.
+Zahlreiche integrierte Rollen erteilen Berechtigungen für Azure Policy-Ressourcen. Die Rolle **Mitwirkender an Ressourcenrichtlinien (Vorschau)** beinhaltet die meisten Policy-Vorgänge, und die Rolle **Besitzer** verfügt über die vollständigen Berechtigungen. Sowohl die Rolle **Mitwirkender** als auch die Rolle **Leser** kann alle Details in Bezug auf Policy lesen, die Rolle **Mitwirkender** kann jedoch auch die Wartung auslösen.
+
+Wenn keine der integrierten Rollen über die erforderlichen Berechtigungen verfügt, erstellen Sie eine [benutzerdefinierte Rolle](../../role-based-access-control/custom-roles.md).
 
 ## <a name="policy-definition"></a>Richtliniendefinition
 

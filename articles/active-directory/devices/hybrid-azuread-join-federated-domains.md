@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/25/2018
+ms.date: 11/07/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: c7396d7322958442fab51417eb350f26f7ada78e
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: e40c18edadebae1f92cf811ea054503b9cd6b1ae
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49352659"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51277969"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-federated-domains"></a>Tutorial: Konfigurieren der Azure Active Directory-Hybrideinbindung für Verbunddomänen
 
@@ -156,6 +156,8 @@ Wenn es sich bei einigen Ihrer in die Domäne eingebundenen Geräte um kompatibl
  
 - Konfigurieren der lokalen Intraneteinstellungen für die Geräteregistrierung
 
+- Steuern kompatibler Windows-Geräte 
+
 
 ### <a name="update-device-settings"></a>Geräteeinstellungen aktualisieren 
 
@@ -176,8 +178,6 @@ Um die Einbindung in Hybrid-Azure AD für Ihre kompatiblen Windows-Geräte erfol
 
 - `https://device.login.microsoftonline.com`
 
-- `https://device.login.microsoftonline.com`
-
 - Der Sicherheitstokendienst Ihrer Organisation (STS – Verbunddomänen)
 
 - `https://autologon.microsoftazuread-sso.com` (für nahtloses einmaliges Anmelden).
@@ -185,6 +185,10 @@ Um die Einbindung in Hybrid-Azure AD für Ihre kompatiblen Windows-Geräte erfol
 Außerdem müssen Sie in der lokalen Intranetzone des Benutzers die Option **Aktualisierungen der Statusleiste per Skript zulassen** aktivieren.
 
 
+
+### <a name="control-windows-down-level-devices"></a>Steuern kompatibler Windows-Geräte 
+
+Zum Registrieren von kompatiblen Windows-Geräten müssen Sie ein Windows Installer-Paket (.msi) aus dem Download Center herunterladen und installieren. Klicken Sie [hier](hybrid-azuread-join-control.md#control-windows-down-level-devices), um weitere Informationen zu erhalten. 
 
 ## <a name="verify-the-registration"></a>Überprüfen der Registrierung
 

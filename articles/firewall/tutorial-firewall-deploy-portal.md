@@ -1,36 +1,38 @@
 ---
-title: Bereitstellen und Konfigurieren von Azure Firewall über das Azure-Portal
+title: 'Tutorial: Bereitstellen und Konfigurieren von Azure Firewall über das Azure-Portal'
 description: In diesem Tutorial erfahren Sie, wie Sie Azure Firewall über das Azure-Portal bereitstellen und konfigurieren.
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 10/30/2018
+ms.date: 11/6/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 47a04df843ec307b54cc1d6597f9a3cf8668e291
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 4873da97b790df98b6d10ae8b7a57fc39b534755
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50238827"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51278581"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>Tutorial: Bereitstellen und Konfigurieren von Azure Firewall über das Azure-Portal
 
-Für die Steuerung des ausgehenden Zugriffs stehen in Azure Firewall zwei Arten von Regeln zur Verfügung:
+Die Steuerung des ausgehenden Netzwerkzugriffs ist ein wichtiger Teil eines umfassenden Netzwerksicherheitsplans. So kann es beispielsweise empfehlenswert sein, den Zugriff auf Websites oder auf ausgehende IP-Adressen und Ports einzuschränken.
 
-- **Anwendungsregeln**
+Eine Möglichkeit zur Steuerung des ausgehenden Netzwerkzugriffs aus einem Subnetz ist Azure Firewall. Mit Azure Firewall können Sie Folgendes konfigurieren:
 
-   Ermöglichen das Konfigurieren vollqualifizierter Domänennamen (Fully Qualified Domain Names, FQDNs), auf die von einem Subnetz aus zugegriffen werden kann. So können Sie beispielsweise den Zugriff auf *github.com* aus Ihrem Subnetz zulassen.
-- **Netzwerkregeln**
-
-   Ermöglichen das Konfigurieren von Regeln mit Quelladresse, Protokoll, Zielport und Zieladresse. So können Sie beispielsweise eine Regel erstellen, um Datenverkehr über Port 53 (DNS) für die IP-Adresse Ihres DNS-Servers aus Ihrem Subnetz zuzulassen.
+* Anwendungsregeln, die vollqualifizierte Domänennamen (Fully Qualified Domain Names, FQDNs) definieren, auf die von einem Subnetz aus zugegriffen werden kann.
+* Netzwerkregeln, die die Quelladresse, das Protokoll, den Zielport und die Zieladresse definieren.
 
 Die konfigurierten Firewallregeln werden auf den Netzwerkdatenverkehr angewendet, wenn Sie Ihren Netzwerkdatenverkehr an die Firewall als Subnetz-Standardgateway weiterleiten.
 
-Anwendungs- und Netzwerkregeln werden in *Regelsammlungen* gespeichert. Eine Regelsammlung ist eine Liste von Regeln mit gleicher Aktion und Priorität.  Eine Netzwerkregelsammlung ist eine Liste von Netzwerkregeln; eine Anwendungsregelsammlung ist eine Liste von Anwendungsregeln.
+In diesem Tutorial erstellen Sie der Einfachheit halber ein einzelnes vereinfachtes VNET mit drei Subnetzen. Für Produktionsbereitstellungen empfiehlt sich die Verwendung eines [Hub- und Spoke-Modells](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke), bei dem sich die Firewall in einem eigenen VNet befindet und die Workloadserver sich in mittels Peering verknüpften VNets in der gleichen Region mit mindestens einem Subnetz befinden.
 
-Weitere Informationen zur Logik für die Azure Firewall-Regelverarbeitung finden Sie unter [Logik für die Azure Firewall-Regelverarbeitung](rule-processing.md).
+- **AzureFirewallSubnet:** Das Subnetz mit der Firewall.
+- **Workload-SN:** Das Subnetz mit dem Workloadserver. Der Netzwerkdatenverkehr dieses Subnetzes durchläuft die Firewall.
+- **Jump-SN:** Das Subnetz mit dem Sprungserver. Der Sprungserver besitzt eine öffentliche IP-Adresse, mit der Sie eine Remotedesktopverbindung herstellen können. Von dort aus können Sie dann über einen weiteren Remotedesktop eine Verbindung mit dem Workloadserver herstellen.
+
+![Netzwerkinfrastruktur des Tutorials](media/tutorial-firewall-rules-portal/Tutorial_network.png)
 
 In diesem Tutorial lernen Sie Folgendes:
 
@@ -38,29 +40,22 @@ In diesem Tutorial lernen Sie Folgendes:
 > * Einrichten einer Netzwerkumgebung zu Testzwecken
 > * Bereitstellen einer Firewall
 > * Erstellen einer Standardroute
-> * Konfigurieren von Anwendungsregeln
-> * Konfigurieren von Netzwerkregeln
+> * Konfigurieren einer Anwendung, um den Zugriff auf „github.com“ zuzulassen
+> * Konfigurieren einer Netzwerkregel, um den Zugriff auf externe DNS-Server zuzulassen
 > * Testen der Firewall
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
-In diesem Tutorial erstellen Sie ein einzelnes VNet mit drei Subnetzen:
-- **FW-SN:** Das Subnetz mit der Firewall.
-- **Workload-SN:** Das Subnetz mit dem Workloadserver. Der Netzwerkdatenverkehr dieses Subnetzes durchläuft die Firewall.
-- **Jump-SN:** Das Subnetz mit dem Sprungserver. Der Sprungserver besitzt eine öffentliche IP-Adresse, mit der Sie eine Remotedesktopverbindung herstellen können. Von dort aus können Sie dann über einen weiteren Remotedesktop eine Verbindung mit dem Workloadserver herstellen.
-
-![Netzwerkinfrastruktur des Tutorials](media/tutorial-firewall-rules-portal/Tutorial_network.png)
-
-In diesem Tutorial wird eine vereinfachte Netzwerkkonfiguration verwendet, um die Bereitstellung zu vereinfachen. Für Produktionsbereitstellungen empfiehlt sich die Verwendung eines [Hub- und Spoke-Modells](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke), bei dem sich die Firewall in einem eigenen VNet befindet und die Workloadserver sich in mittels Peering verknüpften VNets in der gleichen Region mit mindestens einem Subnetz befinden.
-
-## <a name="set-up-the-network-environment"></a>Einrichten der Netzwerkumgebung
+## <a name="set-up-the-network"></a>Einrichten des Netzwerks
 
 Erstellen Sie zunächst eine Ressourcengruppe für die Ressourcen, die zum Bereitstellen der Firewall benötigt werden. Erstellen Sie dann ein VNet, Subnetze und Testserver.
 
 ### <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
+Die Ressourcengruppe enthält alle Ressourcen für das Tutorial.
+
 1. Melden Sie sich unter [http://portal.azure.com](http://portal.azure.com) beim Azure-Portal an.
-2. Klicken Sie auf der Startseite des Azure-Portals auf **Ressourcengruppen** und anschließend auf **Hinzufügen**.
+2. Klicken Sie auf der Startseite des Azure-Portals auf **Ressourcengruppen** > **Hinzufügen**.
 3. Geben Sie unter **Ressourcengruppenname** die Zeichenfolge **Test-FW-RG** ein.
 4. Wählen Sie unter **Abonnement** Ihr Abonnement aus.
 5. Wählen Sie unter **Ressourcengruppenstandort** einen Standort aus. Alle weiteren Ressourcen, die Sie erstellen, müssen sich am gleichen Standort befinden.
@@ -68,13 +63,15 @@ Erstellen Sie zunächst eine Ressourcengruppe für die Ressourcen, die zum Berei
 
 ### <a name="create-a-vnet"></a>Erstellen eines VNET
 
+Dieses VNET soll drei Subnetze enthalten.
+
 1. Klicken Sie auf der Startseite des Azure-Portals auf **Alle Dienste**.
 2. Klicken Sie unter **Netzwerk** auf **Virtuelle Netzwerke**.
 3. Klicken Sie auf **Hinzufügen**.
 4. Geben Sie unter **Name** die Zeichenfolge **Test-FW-VN** ein.
 5. Geben Sie unter **Adressraum** die Zeichenfolge **10.0.0.0/16** ein.
 6. Wählen Sie unter **Abonnement** Ihr Abonnement aus.
-7. Klicken Sie unter **Ressourcengruppe** auf **Vorhandene verwenden**, und wählen Sie anschließend **Test-FW-RG** aus.
+7. Wählen Sie unter **Ressourcengruppe** die Option **Vorhandene verwenden** > **Test-FW-RG** aus.
 8. Wählen Sie unter **Standort** den gleichen Standort aus wie zuvor.
 9. Geben Sie unter **Subnetz** als **Name** die Zeichenfolge **AzureFirewallSubnet** ein. Die Firewall befindet sich diesem Subnetz, und der Subnetzname **muss** „AzureFirewallSubnet“ lauten.
 10. Geben Sie unter **Adressbereich** die Zeichenfolge **10.0.1.0/24** ein.
@@ -87,9 +84,9 @@ Erstellen Sie zunächst eine Ressourcengruppe für die Ressourcen, die zum Berei
 
 Erstellen Sie als Nächstes Subnetze für den Sprungserver sowie ein Subnetz für die Workloadserver.
 
-1. Klicken Sie auf der Startseite des Azure-Portals auf **Ressourcengruppen** und anschließend auf **Test-FW-RG**.
+1. Klicken Sie auf der Startseite des Azure-Portals auf **Ressourcengruppen** > **Test-FW-RG**.
 2. Klicken Sie auf das virtuelle Netzwerk **Test-FW-VN**.
-3. Klicken Sie auf **Subnetze** und anschließend auf **+Subnetz**.
+3. Klicken Sie auf **Subnetze** > **+Subnetz**.
 4. Geben Sie unter **Name** die Zeichenfolge **Workload-SN** ein.
 5. Geben Sie unter **Adressbereich** die Zeichenfolge **10.0.2.0/24** ein.
 6. Klicken Sie auf **OK**.
@@ -109,7 +106,7 @@ Erstellen Sie nun die virtuellen Sprung- und Workloadcomputer, und platzieren Si
 1. Geben Sie unter **Name** die Zeichenfolge **Srv-Jump** ein.
 5. Geben Sie einen Benutzernamen und ein Kennwort ein.
 6. Wählen Sie unter **Abonnement** Ihr Abonnement aus.
-7. Klicken Sie unter **Ressourcengruppe** auf **Vorhandene verwenden**, und wählen Sie **Test-FW-RG** aus.
+7. Klicken Sie unter **Ressourcengruppe** auf **Vorhandene verwenden** > **Test-FW-RG**.
 8. Wählen Sie unter **Standort** den gleichen Standort aus wie zuvor.
 9. Klicken Sie auf **OK**.
 
@@ -143,9 +140,11 @@ Konfigurieren Sie die **Einstellungen** für den virtuellen Computer „Srv-Work
 
 ## <a name="deploy-the-firewall"></a>Bereitstellen der Firewall
 
+Stellen Sie die Firewall im VNET bereit.
+
 1. Klicken Sie auf der Startseite des Portals auf **Ressource erstellen**.
 2. Klicken Sie auf **Netzwerk** und nach **Empfohlen** auf **Alle anzeigen**.
-3. Klicken Sie auf **Firewall** und anschließend auf **Erstellen**. 
+3. Klicken Sie auf **Firewall** > **Erstellen**. 
 4. Konfigurieren Sie die Firewall auf der Seite **Firewall erstellen** anhand der folgenden Tabelle:
    
    |Einstellung  |Wert  |
@@ -177,15 +176,12 @@ Konfigurieren Sie die ausgehende Standardroute für das Subnetz **Workload-SN** 
 7. Wählen Sie unter **Standort** den gleichen Standort aus wie zuvor.
 8. Klicken Sie auf **Create**.
 9. Klicken Sie auf **Aktualisieren** und anschließend auf die Routingtabelle **Firewall-route**.
-10. Klicken Sie auf **Subnetze** und anschließend auf **Zuordnen**.
-11. Klicken Sie auf **Virtuelles Netzwerk**, und wählen Sie **Test-FW-VN** aus.
-12. Klicken Sie unter **Subnetz** auf **Workload-SN**.
-
-    > [!IMPORTANT]
-    > Stellen Sie sicher, dass Sie nur das Subnetz **Workload-SN** für diese Route auswählen. Andernfalls funktioniert die Firewall nicht korrekt.
+10. Klicken Sie auf **Subnetze** > **Zuordnen**.
+11. Klicken Sie auf **Virtuelles Netzwerk** > **Test-FW-VN**.
+12. Klicken Sie unter **Subnetz** auf **Workload-SN**. Stellen Sie sicher, dass Sie nur das Subnetz **Workload-SN** für diese Route auswählen. Andernfalls funktioniert die Firewall nicht korrekt.
 
 13. Klicken Sie auf **OK**.
-14. Klicken Sie auf **Routen** und dann auf **Hinzufügen**.
+14. Klicken Sie auf **Routen** > **Hinzufügen**.
 15. Geben Sie unter **Routenname** die Zeichenfolge **FW-DG** ein.
 16. Geben Sie unter **Adresspräfix** die Zeichenfolge **0.0.0.0/0** ein.
 17. Wählen Sie unter **Typ des nächsten Hops** die Option **Virtuelles Gerät** aus.
@@ -194,7 +190,9 @@ Konfigurieren Sie die ausgehende Standardroute für das Subnetz **Workload-SN** 
 18. Geben Sie unter **Adresse des nächsten Hops** die private IP-Adresse für die Firewall ein, die Sie sich zuvor notiert haben.
 19. Klicken Sie auf **OK**.
 
-## <a name="configure-application-rules"></a>Konfigurieren von Anwendungsregeln
+## <a name="configure-an-application-rule"></a>Konfigurieren einer Anwendungsregel
+
+Hierbei handelt es sich um die Anwendungsregel, die ausgehenden Zugriff auf „github.com“ ermöglicht.
 
 1. Öffnen Sie **Test-FW-RG**, und klicken Sie auf die Firewall **Test-FW01**.
 2. Klicken Sie auf der Seite **Test-FW01** unter **Einstellungen** auf **Regeln**.
@@ -204,13 +202,15 @@ Konfigurieren Sie die ausgehende Standardroute für das Subnetz **Workload-SN** 
 6. Wählen Sie für **Aktion** die Option **Zulassen** aus.
 7. Geben Sie unter **Regeln** für **Name** die Zeichenfolge **AllowGH** ein.
 8. Geben Sie unter **Quelladressen** die Zeichenfolge **10.0.2.0/24** ein.
-9. Geben Sie unter **Protokoll:Port** die Zeichenfolge **http, https** ein. 
+9. Geben Sie unter **Protokoll:Port** die Zeichenfolge **http, https** ein.
 10. Geben Sie unter **Ziel-FQDNs** die Zeichenfolge **github.com** ein.
 11. Klicken Sie auf **Hinzufügen**.
 
 Azure Firewall enthält eine integrierte Regelsammlung für Infrastruktur-FQDNs, die standardmäßig zulässig sind. Diese FQDNs sind plattformspezifisch und können nicht für andere Zwecke verwendet werden. Weitere Informationen finden Sie unter [Infrastruktur-FQDNs](infrastructure-fqdns.md).
 
-## <a name="configure-network-rules"></a>Konfigurieren von Netzwerkregeln
+## <a name="configure-a-network-rule"></a>Konfigurieren einer Netzwerkregel
+
+Hierbei handelt es sich um die Netzwerkregel, die ausgehenden Zugriff auf zwei IP-Adressen am Port 53 (DNS) zulässt.
 
 1. Klicken Sie auf **Netzwerkregelsammlung hinzufügen**.
 2. Geben Sie unter **Name** die Zeichenfolge **Net-Coll01** ein.
@@ -226,7 +226,7 @@ Azure Firewall enthält eine integrierte Regelsammlung für Infrastruktur-FQDNs,
 
 ### <a name="change-the-primary-and-secondary-dns-address-for-the-srv-work-network-interface"></a>Ändern der primären und sekundären DNS-Adresse für die Netzwerkschnittstelle **Srv-Work**
 
-In diesem Tutorial konfigurieren Sie zu Testzwecken die primäre und sekundäre DNS-Serveradresse. Hierbei handelt es sich nicht um eine generelle Azure Firewall-Anforderung. 
+In diesem Tutorial konfigurieren Sie zu Testzwecken die primäre und sekundäre DNS-Serveradresse. Hierbei handelt es sich nicht um eine generelle Azure Firewall-Anforderung.
 
 1. Öffnen Sie über das Azure-Portal die Ressourcengruppe **Test-FW-RG**.
 2. Klicken Sie auf die Netzwerkschnittstelle für den virtuellen Computer **Srv-Work**.
@@ -238,11 +238,13 @@ In diesem Tutorial konfigurieren Sie zu Testzwecken die primäre und sekundäre 
 
 ## <a name="test-the-firewall"></a>Testen der Firewall
 
+Testen Sie nun die Firewall, um sicherzustellen, dass sie wie erwartet funktioniert.
+
 1. Überprüfen Sie im Azure-Portal die Netzwerkeinstellungen für den virtuellen Computer **Srv-Work**, und notieren Sie sich die private IP-Adresse.
 2. Stellen Sie eine Remotedesktopverbindung mit dem virtuellen Computer **Srv-Jump** her, und öffnen Sie dort eine Remotedesktopverbindung mit der privaten IP-Adresse von **Srv-Work**.
 
 5. Navigieren Sie in Internet Explorer zu http://github.com.
-6. Klicken Sie auf **OK** und anschließend in den Sicherheitswarnungen auf **Schließen**.
+6. Klicken Sie in den Sicherheitswarnungen auf **OK** > **Schließen**.
 
    Daraufhin sollte die GitHub-Startseite angezeigt werden.
 
@@ -260,17 +262,6 @@ Damit haben Sie sich vergewissert, dass die Firewallregeln funktionieren:
 Sie können die Firewallressourcen für das nächste Tutorial behalten oder die Ressourcengruppe **Test-FW-RG** löschen, wenn Sie sie nicht mehr benötigen. Dadurch werden alle firewallbezogenen Ressourcen gelöscht.
 
 ## <a name="next-steps"></a>Nächste Schritte
-
-In diesem Tutorial haben Sie Folgendes gelernt:
-
-> [!div class="checklist"]
-> * Einrichten des Netzwerks
-> * Erstellen einer Firewall
-> * Erstellen einer Standardroute
-> * Konfigurieren von Anwendungs- und Netzwerkfirewallregeln
-> * Testen der Firewall
-
-Als Nächstes können Sie die Azure Firewall-Protokolle überwachen.
 
 > [!div class="nextstepaction"]
 > [Tutorial: Überwachen von Azure Firewall-Protokollen](./tutorial-diagnostics.md)

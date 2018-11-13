@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 10/09/2018
+ms.date: 11/01/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 7bc8b3ba415f8fe701098a9fa7e51d60ffb9df4e
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 807453d6af67fd2dccf06a1b4a2beaca47dc865a
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49092455"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50913804"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-disk-and-verify"></a>Tutorial: Kopieren von Daten auf den Azure Data Box-Datenträger und Durchführen der Überprüfung
 
@@ -31,14 +31,15 @@ In diesem Tutorial lernen Sie Folgendes:
 Stellen Sie Folgendes sicher, bevor Sie beginnen:
 - Sie haben das [Tutorial: Installieren und Konfigurieren Ihres Azure Data Box-Datenträgers](data-box-disk-deploy-set-up.md) durchgearbeitet.
 - Ihre Datenträger sind entsperrt und mit einem Clientcomputer verbunden.
-- Auf Ihrem Clientcomputer, der zum Kopieren von Daten auf die Datenträger verwendet wird, muss ein [unterstütztes Betriebssystem](data-box-disk-system-requirements.md) ausgeführt werden.
+- Auf Ihrem Clientcomputer, der zum Kopieren von Daten auf die Datenträger verwendet wird, muss ein [unterstütztes Betriebssystem](data-box-disk-system-requirements.md##supported-operating-systems-for-clients) ausgeführt werden.
+- Stellen Sie sicher, dass der gewünschte Speichertyp für Ihre Daten den [unterstützten Datentypen](data-box-disk-system-requirements.md#supported-storage-types) entspricht.
 
 
 ## <a name="copy-data-to-disks"></a>Kopieren von Daten auf Datenträger
 
 Führen Sie die folgenden Schritte aus, um eine Verbindung herzustellen und Daten von Ihrem Computer auf den Data Box-Datenträger zu kopieren.
 
-1. Zeigen Sie den Inhalt des entsperrten Laufwerks an. 
+1. Zeigen Sie den Inhalt des entsperrten Laufwerks an.
 
     ![Anzeigen des Laufwerkinhalts](media/data-box-disk-deploy-copy-data/data-box-disk-content.png)
  
@@ -229,7 +230,7 @@ Nach Abschluss des Kopiervorgangs müssen die kopierten Daten überprüft werden
 
 Führen Sie die folgenden Schritte aus, um die Daten zu überprüfen.
 
-1. Führen Sie die Datei `DataBoxDiskValidation.cmd` für die Überprüfung der Prüfsumme im Ordner *AzureImportExport* Ihres Laufwerks aus. 
+1. Führen Sie die Datei `DataBoxDiskValidation.cmd` für die Überprüfung der Prüfsumme im Ordner *DataBoxDiskImport* Ihres Laufwerks aus. 
     
     ![Ausgabe des Data Box Disk-Überprüfungstools](media/data-box-disk-deploy-copy-data/data-box-disk-validation-tool-output.png)
 

@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/25/2018
+ms.date: 11/01/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: c3c0d9bb6da00272cc7da0ad9f4fae978552c39b
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 48bedff0cd09c3f0dbffdabe6a94847d035a0cf9
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49352609"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50963930"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>Tutorial: Konfigurieren der Azure Active Directory-Hybrideinbindung für verwaltete Domänen
 
@@ -140,6 +140,9 @@ Wenn es sich bei einigen Ihrer in die Domäne eingebundenen Geräte um kompatibl
  
 - Konfigurieren der lokalen Intraneteinstellungen für die Geräteregistrierung
 
+- Steuern kompatibler Windows-Geräte 
+
+
 ### <a name="update-device-settings"></a>Geräteeinstellungen aktualisieren 
 
 Zum Registrieren von kompatiblen Windows-Geräten müssen Sie sicherstellen, dass die Geräteeinstellungen festgelegt sind, mit der Benutzer Geräte in Azure AD registrieren können. Im Azure-Portal finden Sie diese Einstellung unter:
@@ -163,6 +166,12 @@ Um die Einbindung in Hybrid-Azure AD für Ihre kompatiblen Windows-Geräte erfol
 - `https://autologon.microsoftazuread-sso.com`.
 
 Außerdem müssen Sie in der lokalen Intranetzone des Benutzers die Option **Aktualisierungen der Statusleiste per Skript zulassen** aktivieren.
+
+
+### <a name="control-windows-down-level-devices"></a>Steuern kompatibler Windows-Geräte 
+
+Zum Registrieren von kompatiblen Windows-Geräten müssen Sie ein Windows Installer-Paket (.msi) aus dem Download Center herunterladen und installieren. Klicken Sie [hier](hybrid-azuread-join-control.md#control-windows-down-level-devices), um weitere Informationen zu erhalten. 
+
 
 ## <a name="verify-the-registration"></a>Überprüfen der Registrierung
 

@@ -1,57 +1,52 @@
 ---
-title: 'Tutorial: Erstellen eines Objekterkennungsprojekts mit dem Custom Vision SDK für Python: Custom Vision Service'
+title: 'Schnellstart: Erstellen eines Objekterkennungsprojekts mit dem Custom Vision SDK für Python'
 titlesuffix: Azure Cognitive Services
-description: Erstellen Sie ein Projekt, fügen Sie Kategorien hinzu, laden Sie Bilder hoch, trainieren Sie Ihr Projekt, und machen Sie eine Vorhersage, die den Standardendpunkt verwendet.
+description: Erstellen Sie ein Projekt, fügen Sie Tags hinzu, laden Sie Bilder hoch, trainieren Sie Ihr Projekt, und erkennen Sie Objekte unter Verwendung des Python SDK.
 services: cognitive-services
 author: areddish
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: custom-vision
-ms.topic: tutorial
-ms.date: 05/03/2018
+ms.topic: quickstart
+ms.date: 11/5/2018
 ms.author: areddish
-ms.openlocfilehash: 36b283965766130e86e079c807139998cd01c8a6
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 35548284302dead41df1a4b9bf6218d842214e11
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49958532"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51278751"
 ---
-# <a name="tutorial-create-an-object-detection-project-with-the-custom-vision-sdk-for-python"></a>Tutorial: Erstellen eines Objekterkennungsprojekts mit dem Custom Vision SDK für Python
+# <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-python-sdk"></a>Schnellstart: Erstellen eines Objekterkennungsprojekts mit dem Custom Vision SDK für Python
 
-Erfahren Sie mehr über ein grundlegendes Python-Skript, das die Maschinelles Sehen-API zum Erstellen eines Objekterkennungsprojekts verwendet. Nachdem dieses Skript erstellt wurde, können Sie markierte Bereiche hinzufügen, Bilder hochladen, das Projekt trainieren, die Standardendpunkt-URL für Vorhersagen des Projekts abrufen und den Endpunkt für die programmgesteuerte Überprüfung eines Bilds verwenden. Verwenden Sie dieses Open-Source-Beispiel als Vorlage zum Erstellen Ihrer eigenen App mithilfe der Custom Vision-API.
+Dieser Artikel enthält Informationen und Beispielcode für die ersten Schritte mit dem Custom Vision SDK und Python und unterstützt Sie beim Erstellen eines Objekterkennungsmodells. Nachdem es erstellt wurde, können Sie markierte Bereiche hinzufügen, Bilder hochladen, das Projekt trainieren, die Standardendpunkt-URL für Vorhersagen des Projekts abrufen und den Endpunkt für die programmgesteuerte Überprüfung eines Bilds verwenden. Verwenden Sie dieses Beispiel als Vorlage für die Erstellung Ihrer eigenen Python-Anwendung.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Zum Verwenden des Tutorials müssen Sie die folgenden Schritte ausführen:
+- [Python 2.7+ oder 3.5+](https://www.python.org/downloads/)
+- [Pip](https://pip.pypa.io/en/stable/installing/)-Tool
 
-- Installieren Sie entweder Python 2.7+ oder Python 3.5+.
-- Installieren Sie pip.
+## <a name="install-the-custom-vision-sdk"></a>Installieren des Custom Vision SDK
 
-### <a name="platform-requirements"></a>Plattformanforderungen
-Dieses Beispiel wurde für Python entwickelt.
+Führen Sie den folgenden Befehl in PowerShell aus, um das Custom Vision Service SDK für Python zu installieren:
 
-### <a name="get-the-custom-vision-sdk"></a>Abrufen des Custom Vision SDK
-
-Damit Sie dieses Beispiel erstellen können, müssen Sie das Python SDK für die Custom Vision-API installieren:
-
-```
+```PowerShell
 pip install azure-cognitiveservices-vision-customvision
 ```
 
 Sie können die Bilder zusammen mit den [Python-Beispielen](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples) herunterladen.
 
-## <a name="step-1-get-the-training-and-prediction-keys"></a>Schritt 1: Abrufen der Trainings- und Vorhersageschlüssel
+[!INCLUDE [get-keys](includes/get-keys.md)]
 
-Besuchen Sie die [Custom Vision-Website](https://customvision.ai), und klicken Sie in der oberen rechten Ecke auf das __Zahnradsymbol__, um die in diesem Beispiel verwendeten Schlüssel zu abzurufen. Kopieren Sie die Werte aus den Feldern __Training Key__ (Trainingsschlüssel) und __Prediction Key__ (Vorhersageschlüssel) aus dem Abschnitt __Konten__.
+[!INCLUDE [python-get-images](includes/python-get-images.md)]
 
-![Abbildung der Schlüsselbenutzeroberfläche](./media/python-tutorial/training-prediction-keys.png)
+## <a name="add-the-code"></a>Hinzufügen des Codes
 
-Dieses Beispiel verwendet die Bilder von diesem [Speicherort](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/tree/master/samples/vision/images).
+Erstellen Sie in Ihrem bevorzugten Projektverzeichnis eine neue Datei namens *sample.py*.
 
-## <a name="step-2-create-a-custom-vision-service-project"></a>Schritt 2: Erstellen eines Custom Vision Service-Projekts
+### <a name="create-the-custom-vision-service-project"></a>Erstellen des Custom Vision Service-Projekts
 
-Erstellen Sie eine sample.py-Skriptdatei, und fügen Sie die folgenden Inhalte hinzu, damit Sie ein neues Custom Vision Service-Projekt erstellen können. Beachten Sie, dass der Unterschied zwischen dem Erstellen einer Objekterkennung und eines Projekts zur Bildklassifizierung in der Domäne liegt, die für den create_project-Aufruf angegeben ist.
+Fügen Sie Ihrem Skript den folgenden Code hinzu, um ein neues Custom Vision Service-Projekt zu erstellen. Fügen Sie Ihre Abonnementschlüssel in die entsprechenden Definitionen ein. Beachten Sie, dass der Unterschied zwischen dem Erstellen einer Objekterkennung und eines Projekts zur Bildklassifizierung in der Domäne liegt, die für den **create_project**-Aufruf angegeben ist.
 
 ```Python
 from azure.cognitiveservices.vision.customvision.training import training_api
@@ -71,9 +66,9 @@ print ("Creating project...")
 project = trainer.create_project("My Detection Project", domain_id=obj_detection_domain.id)
 ```
 
-## <a name="step-3-add-tags-to-your-project"></a>Schritt 3: Hinzufügen von Tags zu Ihrem Projekt
+### <a name="create-tags-in-the-project"></a>Erstellen von Tags im Projekt
 
-Wenn Sie Tags zu Ihrem Projekt hinzufügen möchten, fügen Sie den folgenden Code ein, über den Sie zwei Tags erstellen können:
+Um Ihrem Projekt Klassifizierungstags hinzuzufügen, fügen Sie den folgenden Code am Ende der Datei *sample.py* hinzu:
 
 ```Python
 # Make two tags in the new project
@@ -81,14 +76,13 @@ fork_tag = trainer.create_tag(project.id, "fork")
 scissors_tag = trainer.create_tag(project.id, "scissors")
 ```
 
-## <a name="step-4-upload-images-to-the-project"></a>Schritt 4: Hochladen von Bildern in das Projekt
+### <a name="upload-and-tag-images"></a>Hochladen und Kennzeichnen von Bildern
 
-Für ein Projekt zur Objekterkennung müssen Sie ein Bild, Bereiche und Tags hochladen. Der Bereich befindet sich innerhalb normalisierter Koordinaten und gibt den Speicherort des markierten Objekts an.
+Wenn Sie Bilder in Objekterkennungsprojekten mit Tags versehen, müssen Sie mithilfe normalisierter Koordinaten die Region des jeweiligen markierten Objekts angeben.
 
-Wenn Sie Bilder, Bereiche und Tags zu dem Projekt hinzufügen möchten, fügen Sie nach der Tagerstellung den folgenden Code ein. Beachten Sie, dass die Bereiche für dieses Tutorial inline mit dem Code hartcodiert werden. Die Bereiche geben den Begrenzungsrahmen in normalisierte Koordinaten an.
+Wenn Sie Bilder, Tags und Regionen zum Projekt hinzufügen möchten, fügen Sie nach der Tagerstellung den folgenden Code ein. Beachten Sie, dass die Bereiche für dieses Tutorial inline mit dem Code hartcodiert werden. Die Regionen geben den Begrenzungsrahmen in normalisierten Koordinaten an, und die Koordinaten werden in der folgenden Reihenfolge angegeben: links, oben, Breite, Höhe.
 
 ```Python
-
 fork_image_regions = {
     "fork_1": [ 0.145833328, 0.3509314, 0.5894608, 0.238562092 ],
     "fork_2": [ 0.294117659, 0.216944471, 0.534313738, 0.5980392 ],
@@ -134,7 +128,10 @@ scissors_image_regions = {
     "scissors_19": [ 0.333333343, 0.0274019931, 0.443627447, 0.852941155 ],
     "scissors_20": [ 0.158088237, 0.04047389, 0.6691176, 0.843137264 ]
 }
+```
+Laden Sie dann auf der Grundlage dieser Zuordnungen die einzelnen Bilder zusammen mit den jeweiligen Regionskoordinaten hoch. Fügen Sie den folgenden Code hinzu:
 
+```Python
 # Go through the data table above and create the images
 print ("Adding images...")
 tagged_images_with_regions = []
@@ -157,12 +154,9 @@ for file_name in scissors_image_regions.keys():
 trainer.create_images_from_files(project.id, images=tagged_images_with_regions)
 ```
 
-## <a name="step-5-train-the-project"></a>Schritt 5: Trainieren des Projekts
+### <a name="train-the-project"></a>Trainieren des Projekts
 
-Da Sie Ihrem Projekt jetzt Tags und Bilder hinzugefügt haben, können Sie es nun trainieren: 
-
-1. Fügen Sie den folgenden Code ein. Dadurch wird die erste Iteration im Projekt erstellt. 
-2. Markieren Sie diese Iteration als Standarditeration.
+Dieser Code erstellt die erste Iteration im Projekt und kennzeichnet sie als Standarditeration. Die Standarditeration spiegelt die Version des Modells wider, die auf Vorhersageanforderungen reagiert. Sie sollte immer aktualisiert werden, wenn Sie das Modell neu trainieren.
 
 ```Python
 import time
@@ -179,12 +173,9 @@ trainer.update_iteration(project.id, iteration.id, is_default=True)
 print ("Done!")
 ```
 
-## <a name="step-6-get-and-use-the-default-prediction-endpoint"></a>Schritt 6: Abrufen und Verwenden des Standardendpunkts für Vorhersagen
+### <a name="get-and-use-the-default-prediction-endpoint"></a>Abrufen und Verwenden des Standardendpunkts für Vorhersagen
 
-Jetzt können Sie das Modell für Vorhersagen verwenden: 
-
-1. Rufen Sie den Endpunkt ab, der der Standarditeration zugeordnet ist. 
-2. Senden Sie ein Testbild an das Projekt, indem Sie diesen Endpunkt verwenden.
+Um ein Bild an den Vorhersageendpunkt zu senden und die Vorhersage abzurufen, fügen Sie am Ende der Datei den folgenden Code hinzu:
 
 ```Python
 from azure.cognitiveservices.vision.customvision.prediction import prediction_endpoint
@@ -203,10 +194,21 @@ for prediction in results.predictions:
     print ("\t" + prediction.tag_name + ": {0:.2f}%".format(prediction.probability * 100), prediction.bounding_box.left, prediction.bounding_box.top, prediction.bounding_box.width, prediction.bounding_box.height)
 ```
 
-## <a name="step-7-run-the-example"></a>Schritt 7: Ausführen des Beispiels
+## <a name="run-the-application"></a>Ausführen der Anwendung
 
-Führen Sie die Lösung aus. Die Ergebnisse der Vorhersage werden in der Konsole angezeigt.
+Führen Sie *sample.py* aus.
 
-```
+```PowerShell
 python sample.py
 ```
+
+Die Ausgabe der Anwendung sollte in der Konsole angezeigt werden. Daraufhin können Sie sich vergewissern, dass das Testbild (unter **samples/vision/images/Test**) ordnungsgemäß gekennzeichnet und die Erkennungsregion korrekt ist.
+
+[!INCLUDE [clean-od-project](includes/clean-od-project.md)]
+
+## <a name="next-steps"></a>Nächste Schritte
+
+Sie wissen nun, wie die einzelnen Schritte des Objekterkennungsprozesses im Code ausgeführt werden. In diesem Beispiel wird eine einzelne Trainingsiteration ausgeführt. Zur Verbesserung der Genauigkeit muss ein Modell jedoch häufig mehrmals trainiert und getestet werden. In der folgenden Anleitung wird die Bildklassifizierung behandelt. Die Prinzipien sind jedoch mit denen der Objekterkennung vergleichbar.
+
+> [!div class="nextstepaction"]
+> [Testen und erneutes Trainieren eines Modells mit Custom Vision Service](test-your-model.md)

@@ -8,20 +8,24 @@ services: digital-twins
 ms.devlang: csharp
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 10/02/2018
+ms.date: 11/7/2018
 ms.author: alinast
-ms.openlocfilehash: e0b47b1322a520ad8b09fd2fe2967e628b5e4e03
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 6e83ca543937948ad8028969cceca0f8787972c9
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49322873"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51281217"
 ---
 # <a name="quickstart-find-available-rooms-using-azure-digital-twins"></a>Schnellstart: Suchen nach verfügbaren Räumen mithilfe von Azure Digital Twins
 
 Mit dem Azure Digital Twins-Dienst können Sie Ihre physische Umgebung digital abbilden. Anschließend können Sie durch Ereignisse in Ihrer Umgebung benachrichtigt werden und Ihre Reaktionen anpassen. 
 
 In dieser Schnellstartanleitung wird ein [.NET-Beispielpaar](https://github.com/Azure-Samples/digital-twins-samples-csharp) verwendet, um ein imaginäres Bürogebäude zu digitalisieren und die Suche nach verfügbaren Räumen in diesem Gebäude zu veranschaulichen. Mit Digital Twins können Sie mehrere Sensoren mit Ihrer Umgebung verknüpfen. Neben der Raumverfügbarkeit können Sie dank eines simulierten CO2-Sensors auch ermitteln, ob die Luftqualität des verfügbaren Raums gut genug ist. Eine der Beispielanwendungen generiert willkürliche Sensordaten, damit Sie sich das Szenario besser vorstellen können.
+
+Im folgenden Video wird die Schnellstarteinrichtung zusammengefasst:
+
+> [!VIDEO https://www.youtube.com/embed/1izK266tbMI]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -36,7 +40,7 @@ In dieser Schnellstartanleitung wird ein [.NET-Beispielpaar](https://github.com/
 
 Erstellen Sie über das [Portal](https://portal.azure.com) mithilfe der Schritte in diesem Abschnitt eine neue Instanz von Digital Twins.
 
-[!INCLUDE [create-digital-twins-portal](../../includes/create-digital-twins-portal.md)]
+[!INCLUDE [create-digital-twins-portal](../../includes/digital-twins-create-portal.md)]
 
 ## <a name="set-permissions-for-your-app"></a>Festlegen von Berechtigungen für Ihre App
 

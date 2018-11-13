@@ -4,26 +4,22 @@ description: Übersicht über Features, Architektur und Implementierung des Azur
 services: load-balancer
 documentationcenter: na
 author: KumudD
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: load-balancer
 Customer intent: As an IT administrator, I want to learn more about the Azure Load Balancer service and what I can use it for.
 ms.devlang: na
-ms.topic: article
+ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/20/2018
 ms.author: kumud
-ms.custom: mvc
-ms.openlocfilehash: 618b00906a799e1b8cfcfac5ee6bcc3a714c2f87
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.openlocfilehash: 6368b47400f6ea06babfe538cf6f58b18cc49117
+ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42918741"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51219578"
 ---
-# <a name="what-is-azure-load-balancer"></a>Was ist Azure Load Balancer?
+# <a name="what-is-azure-load-balancer"></a>Was versteht man unter Azure Load Balancer?
 
 Mit Azure Load Balancer können Sie Ihre Anwendungen skalieren und Dienste mit Hochverfügbarkeit bereitstellen. Load Balancer unterstützt Szenarios mit eingehenden sowie ausgehenden Verbindungen, bietet niedrige Latenzen und einen hohen Durchsatz und skaliert Datenflüsse aller TCP- und UDP-Anwendungen im Millionenbereich hoch.  
 
@@ -70,14 +66,14 @@ Load Balancer stellt die folgenden grundlegenden Funktionen für TCP und UDP-Anw
 
 * **Portweiterleitung**
 
-    Mit Load Balancer können Sie eine Regel für die Netzwerkadressenübersetzung für eingehenden Datenverkehr erstellen, um den Datenverkehr von einem bestimmten Port einer bestimmten Front-End-IP-Adresse auf einen bestimmten Port einer bestimmten Back-End-Instanz im virtuellen Netzwerk zu übertragen. Dies wird auch durch dieselbe hashbasierte Verteilung wie beim Lastausgleich erreicht. Allgemeine Szenarios für diese Fähigkeit sind Remotedesktopprotokoll- oder Secure Shell-Sitzungen für einzelne VM-Instanzen im Azure Virtual Network. Sie können unterschiedlichen Ports mehrere interne Endpunkte unter derselben Front-End-IP-Adresse zuordnen. Diese können Sie dazu verwenden, Ihre virtuellen Computer remote über das Internet zu verwalten, ohne dass Sie eine zusätzliche Jumpbox benötigen.
+    Mit Load Balancer können Sie eine Regel für die Netzwerkadressenübersetzung für eingehenden Datenverkehr erstellen, um den Datenverkehr von einem bestimmten Port einer bestimmten Front-End-IP-Adresse auf einen bestimmten Port einer bestimmten Back-End-Instanz im virtuellen Netzwerk zu übertragen. Dies wird auch durch dieselbe hashbasierte Verteilung wie beim Lastausgleich erreicht. Allgemeine Szenarios für diese Fähigkeit sind Remotedesktopprotokoll- oder Secure Shell-Sitzungen für einzelne VM-Instanzen im Azure Virtual Network. Sie können unterschiedlichen Ports mehrere interne Endpunkte unter derselben Front-End-IP-Adresse zuordnen. Sie können die Front-End-IP-Adressen dazu verwenden, Ihre virtuellen Computer remote über das Internet zu verwalten, ohne dass Sie eine zusätzliche Jumpbox benötigen.
 
 * **Anwendungsunabhängig und transparent**
 
     Der Load Balancer interagiert nicht direkt mit TCP, UDP oder der Anwendungsschicht, und jedes TCP- oder UDP-basierte Anwendungsszenario kann unterstützt werden.  Der Load Balancer beendet oder startet keine Flows, interagiert nicht mit der Payload des Flows, stellt keine Gateway-Funktion auf Anwendungsschicht bereit und Protokollhandshakes werden immer direkt zwischen dem Client und der Back-End-Poolinstanz ausgeführt.  Bei einer Antwort auf einen eingehenden Flow handelt es sich immer um die Antwort eines virtuellen Computers.  Wenn der Flow auf dem virtuellen Computer eingeht, wird auch die IP-Adresse der ursprünglichen Quelle gespeichert.  Nachfolgend sind einige Beispiele aufgeführt, um die Transparenz besser zu verdeutlichen:
     - Jeder Endpunkt erhält nur über eine VM eine Antwort.  Zum Beispiel wird ein TCP-Handshake immer zwischen dem Client und dem ausgewählten virtuellen Back-End-Computer ausgeführt.  Antworten auf Anforderungen auf ein Front-End werden von einem virtuellen Back-End-Computer generiert. Wenn Sie erfolgreich die Konnektivität auf ein Front-End überprüfen, bedeutet das, dass Sie eine End-to-End-Konnektivität für mindestens einen virtuellen Back-End-Computer überprüfen.
     - Anwendungspayloads sind für Load Balancer sichtbar, und jede beliebige UDP- oder TCP-Anwendung kann unterstützt werden. Für Workloads, die eine Verarbeitung pro HTTP-Anforderung oder eine Manipulation der Payloads auf Anwendungsschicht (z.B. Analysieren von HTTP-URLs) erfordern, sollten Sie einen Lastenausgleich der siebten Schicht (z.B. [Application Gateway](https://azure.microsoft.com/services/application-gateway)) verwenden.
-    - Da Load Balancer unabhängig von der TCP-Payload ist und keine TLS-Abladung (SSL) bereitgestellt wird, können Sie verschlüsselte End-to-End-Szenarios mithilfe von Load Balancer erstellen und erhalten dadurch ein hohes Maß an Skalierung für TLS-Anwendungen, indem Sie die TLS-Verbindung auf der VM beenden.  Beispielsweise ist die TLS-Funktion zum erstellen von Sitzungsschlüsseln vom Typ und der Nummer der virtuellen Computer beschränkt, die Sie dem Back-End-Pool hinzufügen.  Wenn Sie eine „SSL-Abladung“ oder eine Behandlung der Anwendungsschicht verlangen oder die Zertifikatverwaltung auf Azure übertragen möchten, sollten Sie stattdessen den Lastenausgleich von Azure auf der siebten Schicht verwenden ([Application Gateway](https://azure.microsoft.com/services/application-gateway)).
+    - Da Load Balancer unabhängig von der TCP-Payload ist und keine TLS-Abladung (SSL) bereitgestellt wird, können Sie verschlüsselte End-to-End-Szenarien mithilfe von Load Balancer erstellen und erhalten dadurch ein hohes Maß an horizontaler Skalierung für TLS-Anwendungen, indem Sie die TLS-Verbindung auf dem virtuellen Computer selbst beenden.  Beispielsweise ist die TLS-Funktion zum erstellen von Sitzungsschlüsseln vom Typ und der Nummer der virtuellen Computer beschränkt, die Sie dem Back-End-Pool hinzufügen.  Wenn Sie eine „SSL-Abladung“ oder eine Behandlung der Anwendungsschicht verlangen oder die Zertifikatverwaltung auf Azure übertragen möchten, sollten Sie stattdessen den Lastenausgleich von Azure auf der siebten Schicht verwenden ([Application Gateway](https://azure.microsoft.com/services/application-gateway)).
         
 
 * **Automatische Neukonfiguration**
@@ -90,7 +86,7 @@ Load Balancer stellt die folgenden grundlegenden Funktionen für TCP und UDP-Anw
      
     Load Balancer bietet [verschiedene Integritätstesttypen](load-balancer-custom-probe-overview.md#types) für TCP-, HTTP- und HTTPS-Endpunkte.
 
-    Zudem ist bei der Verwendung von klassischen Clouddiensten ein weiterer Typ zulässig: [Gast-Agent](load-balancer-custom-probe-overview.md#guestagent).  Dieser sollte als letzte Option für den Integritätstest gelten und nicht eingesetzt werden, wenn andere Optionen nicht praktikabel sind.
+    Zudem ist bei der Verwendung von klassischen Clouddiensten ein weiterer Typ zulässig: [Gast-Agent](load-balancer-custom-probe-overview.md#guestagent).  Dieser sollte als letzte Option für den Integritätstest gelten und nicht eingesetzt werden, wenn andere Optionen genutzt werden können.
     
 * **Ausgehende (SNAT-)Verbindungen**
 

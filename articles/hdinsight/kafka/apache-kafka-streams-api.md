@@ -8,13 +8,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: tutorial
-ms.date: 04/17/2018
-ms.openlocfilehash: 9e4073fa54b7dda5ee9c413b84050510e2357893
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.date: 11/06/2018
+ms.openlocfilehash: b22a701d9e876ca011381810e330fed60b7177d4
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51013172"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51278700"
 ---
 # <a name="tutorial-apache-kafka-streams-api"></a>Tutorial: Apache Kafka Streams-API
 
@@ -84,7 +84,7 @@ Wichtige Informationen zur `pom.xml`-Datei:
 
 ### <a name="streamjava"></a>Stream.Java
 
-Die `Stream.java`-Datei implementiert mit der Streams-API eine Wörterzählanwendung. Sie liest Daten aus einem Kafka-Thema mit dem Namen `test` und schreibt die Wörterzahlen in ein Thema namens `wordcounts`.
+Die Datei [Stream.java](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/blob/master/Streaming/src/main/java/com/microsoft/example/Stream.java) implementiert mit der Streams-API eine Wörterzählanwendung. Sie liest Daten aus einem Kafka-Thema mit dem Namen `test` und schreibt die Wörterzahlen in ein Thema namens `wordcounts`.
 
 Der folgende Code definiert die Wörterzählanwendung:
 

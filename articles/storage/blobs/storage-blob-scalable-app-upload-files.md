@@ -10,12 +10,12 @@ ms.date: 02/20/2018
 ms.author: rogarana
 ms.custom: mvc
 ms.component: blobs
-ms.openlocfilehash: 557dd1d89fc05d82f1839a7b02356857f41164c6
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: d5eb450386419c68d06bbb98ac4e33076d11ab2d
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39399735"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51009452"
 ---
 # <a name="upload-large-amounts-of-random-data-in-parallel-to-azure-storage"></a>Paralleles Hochladen großer Mengen von Zufallsdaten in ein Azure Storage-Konto
 
@@ -196,6 +196,6 @@ Im zweiten Teil der Reihe haben Sie gelernt, wie Sie große Mengen von Zufallsda
 Wechseln Sie zum dritten Teil der Reihe, um große Datenmengen aus einem Speicherkonto herunterzuladen.
 
 > [!div class="nextstepaction"]
-> [Paralleles Hochladen großer Mengen von Zufallsdaten in ein Azure Storage-Konto](storage-blob-scalable-app-download-files.md)
+> [Herunterladen großer Mengen von Zufallsdaten von Azure Storage](storage-blob-scalable-app-download-files.md)
 
 [previous-tutorial]: storage-blob-scalable-app-create-vm.md

@@ -9,16 +9,16 @@ ms.reviewer: jasonwhowell
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/27/2018
-ms.openlocfilehash: 96114270c246e23db0423dec7871e4c24fe1be10
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 5c1684f7367aec2d283cd6ad310657def49dd3cb
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50024349"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51282559"
 ---
 # <a name="tutorial-extract-transform-and-load-data-using-azure-databricks"></a>Tutorial: Extrahieren, Transformieren und Laden von Daten mithilfe von Azure Databricks
 
-In diesem Tutorial führen Sie einen ETL-Vorgang (Extrahieren, Transformieren und Laden von Daten) aus, um Daten aus Azure Data Lake Storage Gen2 (Vorschauversion) unter Verwendung von Azure Databricks in Azure SQL Data Warehouse zu verschieben.
+In diesem Tutorial führen Sie einen ETL-Vorgang (Extrahieren, Transformieren und Laden von Daten) aus, um Daten aus einem Azure Storage-Konto mit Azure Data Lake Storage Gen2 unter Verwendung von Azure Databricks in Azure SQL Data Warehouse zu verschieben.
 
 In der folgenden Abbildung ist der Anwendungsfluss dargestellt:
 
@@ -52,7 +52,7 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
 ## <a name="create-an-azure-databricks-workspace"></a>Erstellen eines Azure Databricks-Arbeitsbereichs
 
-In diesem Abschnitt erstellen Sie einen Azure Databricks-Arbeitsbereich über das Azure-Portal. 
+In diesem Abschnitt erstellen Sie einen Azure Databricks-Arbeitsbereich über das Azure-Portal.
 
 1. Klicken Sie im Azure-Portal auf **Ressource erstellen** > **Analysen** > **Azure Databricks**.
 
@@ -138,7 +138,7 @@ Im nächsten Schritt wird eine Beispieldatendatei in das Speicherkonto hochgelad
 
 2. Laden Sie als Nächstes die Beispieldaten in Ihr Speicherkonto. Mit welcher Methode Sie die Daten in Ihr Speicherkonto hochladen, hängt davon ab, ob der hierarchische Namespace aktiviert ist.
 
-    Wenn der hierarchische Namespace für Ihr Azure Storage-Speicherkonto aktiviert ist, das für das Gen2-Konto erstellt wurde, können Sie Azure Data Factory, distp oder AzCopy (Version 10) für den Upload verwenden. Die AzCopy-Version 10 steht nur Vorschaukunden zur Verfügung. Fügen Sie den folgenden Code in ein Befehlsfenster ein, um AzCopy zu verwenden:
+    Wenn der hierarchische Namespace für Ihr Azure Storage-Speicherkonto aktiviert ist, können Sie Azure Data Factory, distp oder AzCopy (Version 10) für den Upload verwenden. Die AzCopy-Version 10 steht derzeit nur als Vorschauversion zur Verfügung. Fügen Sie den folgenden Code in ein Befehlsfenster ein, um AzCopy zu verwenden:
 
     ```bash
     set ACCOUNT_NAME=<ACCOUNT_NAME>

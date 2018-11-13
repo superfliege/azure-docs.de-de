@@ -10,12 +10,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 08/01/2018
 ms.author: shvija
-ms.openlocfilehash: 5493819efb32fa594cf27695b2ab5d1273225756
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: f3f9abfb8373e7257237b39d16dfb3f36259ddd5
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49429892"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51281913"
 ---
 # <a name="what-is-azure-event-hubs"></a>Was ist Azure Event Hubs?
 
@@ -58,9 +58,9 @@ Mit Event Hubs können Sie mit Datenströmen in Megabytes anfangen und zu Gigaby
 
 ## <a name="rich-ecosystem"></a>Umfangreiches Ökosystem
 
-Mit [Event Hubs für Apache Kafka-Ökosysteme](event-hubs-for-kafka-ecosystem-overview.md) können [Apache Kafka-Clients (1.0 und höher)](https://kafka.apache.org/) und -Anwendungen mit Event Hubs kommunizieren, ohne dass Cluster verwaltet werden müssen.
+Mit [Event Hubs für Apache Kafka-Ökosysteme](event-hubs-for-kafka-ecosystem-overview.md) können [Apache Kafka-Clients und -Anwendungen (1.0 und höher)](https://kafka.apache.org/) mit Event Hubs kommunizieren, ohne dass Cluster verwaltet werden müssen.
  
-Mit einem umfassenden Ökosystem in verschiedenen [Sprachen (.NET, Java, Python, Go, Node.js)](https://github.com/Azure/azure-event-hubs) können Sie über Event Hubs problemlos mit der Verarbeitung Ihrer Datenströme beginnen. Mit allen unterstützten Clientsprachen wird tiefgreifende Integration gewährleistet.
+Mit einem umfassenden Ökosystem in verschiedenen [Sprachen (.NET, Java, Python, Go, Node.js)](https://github.com/Azure/azure-event-hubs) können Sie über Event Hubs problemlos mit der Verarbeitung Ihrer Datenströme beginnen. Mit allen unterstützten Clientsprachen wird tiefgreifende Integration gewährleistet. Das Ökosystem ermöglicht darüber hinaus die nahtlose Integration in Azure-Dienste wie Stream Analytics und Azure Functions und damit die Erstellung serverloser Architekturen.
 
 ## <a name="key-architecture-components"></a>Wichtige Komponenten der Architektur
 

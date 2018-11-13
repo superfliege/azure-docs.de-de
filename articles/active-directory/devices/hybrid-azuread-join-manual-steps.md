@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/18/2018
+ms.date: 11/01/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: 33fc8a3822def68cc0baad4670233f57044d1985
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: a3c35057af883eb790c44b3547072031eaf4ad2f
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49408406"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50962009"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>Tutorial: Manuelles Konfigurieren von in Azure Active Directory eingebundenen Hybridgeräten 
 
@@ -504,6 +504,9 @@ Wenn es sich bei einigen Ihrer in die Domäne eingebundenen Geräte um kompatibl
  
 - Fügen Sie den Endpunkt für die Azure AD-Geräteauthentifizierung den lokalen Intranetzonen hinzu, um beim Authentifizieren des Geräts Zertifikataufforderungen zu vermeiden.
 
+- Steuern kompatibler Windows-Geräte 
+
+
 ### <a name="set-policy-in-azure-ad-to-enable-users-to-register-devices"></a>Festlegen einer Richtlinie in Azure AD, um Benutzern das Registrieren von Geräten zu ermöglichen
 
 Zum Registrieren von kompatiblen Windows-Geräten müssen Sie sicherstellen, dass die Einstellung festgelegt ist, mit der Benutzer Geräte in Azure AD registrieren können. Im Azure-Portal finden Sie diese Einstellung unter:
@@ -551,6 +554,12 @@ In AD FS müssen Sie eine Ausstellungstransformationsregel hinzufügen, die die 
 Um die Anzeige von Zertifikataufforderungen zu vermeiden, wenn Benutzer beim Registrieren von Geräten die Authentifizierung für Azure AD durchführen, können Sie eine Richtlinie auf Ihre in die Domäne eingebundenen Geräte übertragen, um die folgende URL in Internet Explorer den lokalen Intranetzonen hinzuzufügen:
 
 `https://device.login.microsoftonline.com`
+
+
+### <a name="control-windows-down-level-devices"></a>Steuern kompatibler Windows-Geräte 
+
+Zum Registrieren von kompatiblen Windows-Geräten müssen Sie ein Windows Installer-Paket (.msi) aus dem Download Center herunterladen und installieren. Klicken Sie [hier](hybrid-azuread-join-control.md#control-windows-down-level-devices), um weitere Informationen zu erhalten. 
+
 
 
 ## <a name="verify-joined-devices"></a>Überprüfen der eingebundenen Geräte

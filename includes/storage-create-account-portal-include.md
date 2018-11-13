@@ -8,31 +8,35 @@ ms.topic: include
 ms.date: 09/18/2018
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: f21710354572c9b54dbf0e08d02809bb68a8e120
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 3b770c3e51b17fa5d70abb03360e17e1073974d8
+ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49805041"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51222144"
 ---
 Führen Sie diese Schritte aus, wenn Sie ein allgemeines Speicherkonto vom Typ „General Purpose v2“ über das Azure-Portal erstellen möchten:
 
-1. Erweitern Sie im Azure-Portal das Menü auf der linken Seite, um das Menü mit den Diensten zu öffnen, und klicken Sie auf **Alle Dienste**. Scrollen Sie anschließend nach unten zu **Speicher** und klicken Sie auf **Speicherkonten**. Klicken Sie im angezeigten Fenster **Speicherkonten** auf **Hinzufügen**.
+1. Wählen Sie im Azure-Portal **Alle Dienste** aus. Geben Sie in der Liste mit den Ressourcen **Speicherkonten** ein. Sobald Sie mit der Eingabe beginnen, wird die Liste auf der Grundlage Ihrer Eingabe gefiltert. Wählen Sie **Speicherkonten**.
+1. Klicken Sie im angezeigten Fenster **Speicherkonten** auf **Hinzufügen**.
 1. Wählen Sie das Abonnement aus, in dem das Speicherkonto erstellt werden soll.
-1. Klicken Sie unter dem Feld **Ressourcengruppe** auf **Neu erstellen**. Geben Sie einen Namen für die neue Ressourcengruppe an, wie in der folgenden Abbildung dargestellt.
+1. Wählen Sie unter dem Feld **Ressourcengruppe** die Option **Neu erstellen**. Geben Sie einen Namen für die neue Ressourcengruppe an, wie in der folgenden Abbildung dargestellt.
 
-    ![Screenshot des Erstellens einer Ressourcengruppe im Portal](./media/storage-create-account-portal-include/create-resource-group.png)
+    ![Screenshot: Erstellen einer Ressourcengruppe im Portal](./media/storage-create-account-portal-include/create-resource-group.png)
 
-1. Geben Sie als Nächstes einen Namen für Ihr Speicherkonto ein. Der ausgewählte Name muss in Azure eindeutig sein und zwischen 3 und 24 Zeichen aufweisen, und er darf nur Zahlen und Kleinbuchstaben enthalten.
+1. Geben Sie als Nächstes einen Namen für Ihr Speicherkonto ein. Der gewählte Name muss innerhalb von Azure eindeutig sein. Der Name muss ebenfalls zwischen 3 und 24 Zeichen lang sein und darf nur Zahlen und Kleinbuchstaben enthalten.
 1. Wählen Sie einen Standort für Ihr Speicherkonto aus, oder verwenden Sie den Standardstandort.
 1. Behalten Sie die Standardwerte für diese Felder bei:
-    - Das Feld **Bereitstellungsmodell** ist standardmäßig auf **Resource Manager** festgelegt.
-    - Das Feld **Leistung** ist standardmäßig auf **Standard** festgelegt.
-    - Das Feld **Kontoart** ist standardmäßig auf **StorageV2 (general-purpose v2)** festgelegt.
-    - Das Feld **Replikation** ist standardmäßig auf **Lokal redundanter Speicher (LRS)** festgelegt.
-    - Das Feld **Zugriffsebene** ist standardmäßig auf **Heiß** festgelegt.
 
-1. Klicken Sie auf **Überprüfen + erstellen**, um die Speicherkontoeinstellungen zu überprüfen und das Konto zu erstellen.
-1. Klicken Sie auf **Create**.
+   |Feld  |Wert  |
+   |---------|---------|
+   |Bereitstellungsmodell     |Ressourcen-Manager         |
+   |Leistung     |Standard         |
+   |Kontoart     |StorageV2 (universell v2)         |
+   |Replikation     |Lokal redundanter Speicher (LRS)         |
+   |Zugriffsebene     |Heiß         |
+
+1. Wählen Sie **Überprüfen + erstellen**, um die Speicherkontoeinstellungen zu überprüfen und das Konto zu erstellen.
+1. Klicken Sie auf **Erstellen**.
 
 Weitere Informationen zu den Arten von Speicherkonten und anderen Speicherkontoeinstellungen finden Sie unter [Übersicht über Azure Storage-Konten](https://docs.microsoft.com/azure/storage/common/storage-account-overview). Weitere Informationen zu Ressourcengruppen finden Sie unter [Übersicht über den Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview). 

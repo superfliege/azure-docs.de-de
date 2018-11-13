@@ -12,12 +12,12 @@ ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: azure-cli
 manager: jeconnoc
-ms.openlocfilehash: 07a079e00963f1f5aff96369649e2e4fb248aae0
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: fdee336298212f2536c2408e49f40e25e2c24161
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49985997"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51227687"
 ---
 # <a name="create-your-first-function-from-the-command-line"></a>Erstellen Ihrer ersten Funktion über die Befehlszeile
 
@@ -108,17 +108,19 @@ Nach Erstellung der Funktionen-App zeigt die Azure-CLI Informationen wie im folg
 }
 ```
 
-## <a name="configure-the-function-app"></a>Konfigurieren der Funktions-App
+### <a name="configure-the-function-app-nodejs"></a>Konfigurieren der Funktions-App (Node.js)
 
-Core Tools-Version 2.x erstellt Projekte mithilfe von Vorlagen für die Azure Functions 2.x-Runtime. Aus diesem Grund müssen Sie sicherstellen, dass die Version 2.x-Runtime in Azure verwendet wird. Durch das Festlegen der Anwendungseinstellung `FUNCTIONS_WORKER_RUNTIME` auf `~2` wird für die Funktions-App die aktuelle 2.x-Version festgelegt. Legen Sie Anwendungseinstellungen mit dem Befehl [az functionapp config appsettings set](https://docs.microsoft.com/cli/azure/functionapp/config/appsettings#set) fest.
+Beim Erstellen einer JavaScript-Funktions-App müssen Sie sie unbedingt auf die richtige Node.js-Version ausrichten. Für Version 2.x der Functions-Runtime ist Node.js-Version 8.x erforderlich. Die Anwendungseinstellung `WEBSITE_NODE_DEFAULT_VERSION` steuert die Version von Node.js, die von der Funktions-App in Azure verwendet wird. Legen Sie die Node.js-Version mit dem Befehl [az functionapp config appsettings set](https://docs.microsoft.com/cli/azure/functionapp/config/appsettings#set) auf `8.11.1` fest.
 
 Im folgenden Azure CLI-Befehl steht „<app_name>“ für den Namen Ihrer Funktions-App.
 
 ```azurecli-interactive
 az functionapp config appsettings set --name <app_name> \
 --resource-group myResourceGroup \
---settings FUNCTIONS_WORKER_RUNTIME=~2
+--settings WEBSITE_NODE_DEFAULT_VERSION=8.11.1
 ```
+
+Überprüfen Sie die neue Einstellung in der Ausgabe.
 
 [!INCLUDE [functions-publish-project](../../includes/functions-publish-project.md)]
 
@@ -127,3 +129,4 @@ az functionapp config appsettings set --name <app_name> \
 [!INCLUDE [functions-cleanup-resources](../../includes/functions-cleanup-resources.md)]
 
 [!INCLUDE [functions-quickstart-next-steps-cli](../../includes/functions-quickstart-next-steps-cli.md)]
+

@@ -16,12 +16,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
-ms.openlocfilehash: 7e2225a173562be28840cb0a66913b9f8c9657ff
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 4608e9ec0cd67b6c0f7ac23e27761b0355a5d738
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46962044"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50911863"
 ---
 # <a name="quickstart-register-an-app-with-the-azure-active-directory-v10-endpoint"></a>Schnellstart: Registrieren einer App mit dem Azure AD v1.0-Endpunkt
 
@@ -31,7 +31,10 @@ Unternehmensentwickler und SaaS-Anbieter (Software-as-a-Service) können kommerz
 
 Jede Anwendung muss zunächst in einem Azure AD-Mandanten registriert werden, um die Funktionen von Azure AD nutzen zu können. Dieser Registrierungsvorgang umfasst das Angeben von Details zu Ihrer Anwendung in Azure AD. Beispielsweise muss die URL für den Speicherort angegeben werden, die URL, an die nach der Authentifizierung eines Benutzers Antworten gesendet werden sollen, die URI zum Identifizieren der App usw.
 
-Dieser Schnellstart zeigt Ihnen, wie Sie eine Anwendung in Azure AD hinzufügen und registrieren können.
+In dieser Schnellstartanleitung wird gezeigt, wie Sie im Azure-Portal über die Benutzeroberfläche für **App-Registrierungen** eine Anwendung in Azure AD hinzufügen und registrieren.
+
+> [!NOTE]
+> Sie registrieren eine neue App? Probieren Sie die neue Benutzeroberfläche für **App-Registrierungen (Vorschauversion)** im Azure-Portal aus. Informationen zu den ersten Schritten finden Sie unter [Schnellstart: Registrieren einer Anwendung bei der Microsoft Identity Platform (Vorschauversion)](quickstart-register-app.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

@@ -9,18 +9,18 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 06/27/2018
 ms.author: jamesbak
-ms.openlocfilehash: 2dae7938c63ee141ea6705ab4c324882f575e298
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 41f25496d089a5c6487176afee01f7cb06330794
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49426871"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51281556"
 ---
-# <a name="quickstart-create-an-azure-data-lake-storage-gen2-preview-storage-account"></a>Schnellstart: Erstellen eines Speicherkontos in Azure Data Lake Storage Gen2 (Vorschauversion)
+# <a name="quickstart-create-a-storage-account-for-analytics"></a>Schnellstart: Erstellen eines Speicherkontos für die Analyse
 
-Konten in Azure Data Lake Storage Gen2 (Vorschauversion) [unterstützen einen hierarchischen Namespacedienst](introduction.md), der ein natives verzeichnisbasiertes Dateisystem für die Verwendung mit Hadoop Distributed File System (HDFS) bereitstellt. Wenn Sie über Hadoop Distributed File System auf Data Lake Storage Gen2-Daten zugreifen möchten, ist dies über den [ABFS-Treiber](abfs-driver.md) möglich.
+Speicherkonten, für die Azure Data Lake Storage Gen2 (Vorschauversion) aktiviert ist, [unterstützen einen hierarchischen Namespacedienst](introduction.md), der ein natives verzeichnisbasiertes Dateisystem für die Verwendung mit Hadoop Distributed File System (HDFS) bereitstellt. Wenn Sie über Hadoop Distributed File System auf Data Lake Storage Gen2-Daten zugreifen möchten, ist dies über den [ABFS-Treiber](abfs-driver.md) möglich.
 
-Wenn Sie Data Lake Storage Gen2-Funktionen für Ihr Speicherkonto aktivieren möchten, [füllen Sie das Formular für die Vorschauversion aus, um Zugriff anzufordern](https://aka.ms/adlsgen2signup). Nach der Genehmigung können Sie ein neues Data Lake Storage Gen2-Konto erstellen. In dieser Schnellstartanleitung wird gezeigt, wie Sie ein Konto mit dem [Azure-Portal](https://portal.azure.com/), mit [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) oder mit der [Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) erstellen.
+Wenn Sie Data Lake Storage Gen2-Funktionen für Ihr Speicherkonto aktivieren möchten, [füllen Sie das Formular für die Vorschauversion aus, um Zugriff anzufordern](https://aka.ms/adlsgen2signup). Nach der Genehmigung können Sie ein Speicherkonto erstellen, für das Data Lake Storage Gen2 aktiviert wurde. In dieser Schnellstartanleitung wird gezeigt, wie Sie ein Konto mit dem [Azure-Portal](https://portal.azure.com/), mit [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) oder mit der [Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) erstellen.
 
 > [!NOTE]
 > Die Benutzeroberfläche für die Kontoerstellung im Azure-Portal wird aktualisiert, sobald die Genehmigung zum Erstellen eines Data Lake Storage Gen2-Kontos für Sie erteilt wurde. Analog dazu können auch die PowerShell- und CLI-Argumente für Data Lake Storage Gen2 erst verwendet werden, wenn die Genehmigung für die Vorschauversion erteilt wurde.
@@ -51,7 +51,7 @@ Die Schaltfläche öffnet eine interaktive Shell, mit der Sie die Schritte in di
 
 Sie können die Azure-Befehlszeilenschnittstelle auch lokal installieren und verwenden. Für diese Schnellstartanleitung müssen Sie mindestens Version 2.0.38 der Azure-Befehlszeilenschnittstelle (Azure CLI) ausführen. Führen Sie `az --version` aus, um die Version zu finden. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI](/cli/azure/install-azure-cli).
 
-## <a name="overview-of-creating-an-azure-data-lake-storage-gen2-account"></a>Übersicht über das Erstellen eines Azure Data Lake Storage Gen2-Kontos
+## <a name="create-a-storage-account-with-azure-data-lake-storage-gen2-enabled"></a>Erstellen eines Speicherkontos mit aktivierter Azure Data Lake Storage Gen2-SKU
 
 Erstellen Sie vor der Erstellung des Kontos zunächst eine Ressourcengruppe, die als logischer Container für Speicherkonten oder andere von Ihnen erstellte Azure-Ressourcen fungiert. Um die Ressourcen zu bereinigen, die im Rahmen dieser Schnellstartanleitung erstellt wurden, können Sie einfach die Ressourcengruppe löschen. Wenn Sie die Ressourcengruppe löschen, werden sowohl das zugeordnete Speicherkonto als auch alle anderen Ressourcen gelöscht, die der Ressourcengruppe zugeordnet sind. Weitere Informationen zu Ressourcengruppen finden Sie unter [Übersicht über Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md).
 
@@ -135,7 +135,7 @@ Starten Sie anschließend Ihre Shell neu.
 Wenn Sie eine neue Ressourcengruppe mithilfe von PowerShell erstellen möchten, verwenden Sie den Befehl [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup): 
 
 > [!NOTE]
-> > Der hierarchische Namespace steht derzeit in allen öffentlichen Regionen, aber in keiner der privaten Regionen zur Verfügung. In Sovereign Clouds ist er nicht verfügbar.
+> > Der hierarchische Namespace steht derzeit in allen öffentlichen Regionen zur Verfügung. In Sovereign Clouds ist er nicht verfügbar.
 
 ```powershell
 # put resource group in a variable so you can use the same group name going forward,
@@ -222,6 +222,6 @@ az group delete --name myResourceGroup
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In dieser Schnellstartanleitung haben Sie ein Data Lake Storage Gen2-Speicherkonto erstellt. Weitere Informationen zum Hoch- und Herunterladen von Blobs in Ihr bzw. aus Ihrem Speicherkonto finden Sie in der Schnellstartanleitung für Blob Storage.
+In diesem Schnellstart haben Sie ein Speicherkonto mit Data Lake Storage Gen2-Funktionen erstellt. Weitere Informationen zum Hoch- und Herunterladen von Blobs in Ihr bzw. aus Ihrem Speicherkonto finden Sie in der Schnellstartanleitung für Blob Storage.
 
 * [Verschieben von Daten in und aus Azure Blob Storage mithilfe von AzCopy](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/move-data-to-azure-blob-using-azcopy)
