@@ -116,7 +116,7 @@ In der Äußerung `Where is Request relocation from employee new to the company 
 
 1. Wählen Sie im Abschnitt **Erstellen** im linken Bereich die Option **Entitäten** und dann **Neue Entität erstellen**.
 
-1. Geben Sie im Dialogfeld **Entität hinzufügen** den Namen in das Feld „Entitätsname“ ein, und wählen Sie **Pattern.any** als **Entitätstyp** aus.
+1. Geben Sie im Dialogfeld **Entität hinzufügen** in das Feld „Entitätsname“ den Namen „HumanResourcesFormTitle“ ein, und wählen Sie **Pattern.any** als **Entitätstyp** aus.
 
     Um die pattern.any-Entität zu verwenden, fügen Sie auf der Seite **Muster** im Abschnitt **Improve app performance** (App-Leistung verbessern) mit der richtigen Syntax mit geschweiften Klammern ein Muster ein, z.B. `Where is **{HumanResourcesFormTitle}** on the server?`.
 
