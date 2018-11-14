@@ -70,6 +70,38 @@ items:
   expanded: true
 - name: Konzepte
   items:
+  - name: Arbeiten mit einem Azure Cosmos-Konto
+    href: account-overview.md
+  - name: Container und Elemente
+    items:
+    - name: Arbeiten mit Datenbanken, Containern und Elementen
+      href: databases-containers-items.md
+    - name: Indizierung
+      items:
+      - name: Übersicht
+        href: index-overview.md
+      - name: Indizierungsrichtlinie
+        href: index-policy.md
+      - name: Indextypen
+        href: index-types.md
+      - name: Indexpfade
+        href: index-paths.md
+    - name: Änderungsfeed
+      items:
+      - name: Übersicht
+        href: change-feed.md
+      - name: Lesen des Änderungsfeeds
+        href: read-change-feed.md
+      - name: Change Feed Processor
+        href: change-feed-processor.md
+      - name: Änderungsfeed mit Azure Functions
+        href: change-feed-functions.md
+    - name: Gültigkeitsdauer
+      href: time-to-live.md
+    - name: Einschränkungen für eindeutige Schlüssel
+      href: unique-keys.md
+    - name: Transaktionen und optimistische Nebenläufigkeit
+      href: database-transactions-optimistic-concurrency.md
   - name: Ressourcenmodell
     href: sql-api-resources.md
   - name: Globale Verteilung
@@ -86,7 +118,7 @@ items:
       href: consistency-levels-tradeoffs.md
     - name: Hochverfügbarkeit
       href: high-availability.md
-    - name: Globale Skalierung des Durchsatzes
+    - name: Globales Skalieren von bereitgestelltem Durchsatz
       href: scaling-throughput.md
     - name: Konfliktlösungsrichtlinien
       href: conflict-resolution-policies.md
@@ -106,14 +138,6 @@ items:
       href: request-units.md
     - name: Bereitstellen des Durchsatzes für Container und Datenbanken
       href: set-throughput.md
-  - name: Indizierung
-    href: indexing-policies.md
-  - name: Änderungsfeed
-    href: change-feed.md
-  - name: Gültigkeitsdauer
-    href: time-to-live.md
-  - name: Eindeutige Schlüssel
-    href: unique-keys.md
   - name: Sicherheit
     items:
     - name: Übersicht
@@ -122,9 +146,9 @@ items:
       href: database-encryption-at-rest.md
     - name: Sicherer Zugriff auf Daten
       href: secure-access-to-data.md
-    - name: Firewallunterstützung
+    - name: IP-Firewall
       href: firewall-support.md
-    - name: Einrichten eines VNET-Endpunkts
+    - name: Zugriff über virtuelle Netzwerke
       href: vnet-service-endpoint.md
     - name: Unterstützung für Schlüsseltresore
       href: access-secrets-from-keyvault.md
@@ -393,6 +417,38 @@ items:
   expanded: true
 - name: Anleitungen
   items:
+  - name: Verwalten von Datenbankkonten
+    href: how-to-manage-database-account.md
+  - name: Konfigurieren der Gültigkeitsdauer (TTL)
+    href: how-to-time-to-live.md
+  - name: Globale Verteilung
+    items:
+    - name: Verwalten der Konsistenz
+      href: how-to-manage-consistency.md
+    - name: Verwalten von Konflikten
+      href: how-to-manage-conflicts.md
+  - name: Bereitgestellter Durchsatz
+    items:
+    - name: Bereitstellen des Containerdurchsatzes
+      href: how-to-provision-container-throughput.md
+    - name: Bereitstellen des Datenbankdurchsatzes
+      href: how-to-provision-database-throughput.md
+  - name: Arbeiten mit Containern und Elementen
+    items:
+    - name: Erstellen eines Containers
+      href: how-to-create-container.md
+    - name: Abfragen eines Containers
+      href: how-to-query-container.md
+  - name: Indizierung
+    items:
+    - name: Konfigurieren der Indizierung
+      href: how-to-manage-indexing-policy.md
+  - name: Sicherheit
+    items:
+    - name: Konfigurieren der IP-Firewall
+      href: how-to-configure-firewall.md
+    - name: Konfigurieren des Zugriffs über virtuelle Netzwerke
+      href: how-to-configure-vnet-service-endpoint.md
   - name: Verwalten
     items:
     - name: Verwalten mit PowerShell
@@ -403,8 +459,6 @@ items:
       href: storage-explorer.md
     - name: Verwalten mithilfe des Daten-Explorers
       href: data-explorer.md
-    - name: Verwalten Ihres Kontos
-      href: manage-account.md
   - name: Protokollierung
     items:
     - name: Diagnoseprotokollierung
@@ -427,26 +481,6 @@ items:
       href: https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb
   - name: Einrichten der Azure DevOps-CI/CD-Pipeline
     href: tutorial-setup-ci-cd.md
-  - name: Globale Verteilung
-    items:
-    - name: Verwalten von Datenbankkonten
-      href: how-to-manage-database-account.md
-    - name: Verwalten der Konsistenz
-      href: how-to-manage-consistency.md
-    - name: Verwalten von Konflikten
-      href: how-to-manage-conflicts.md
-  - name: Bereitgestellter Durchsatz
-    items:
-    - name: Bereitstellen des Containerdurchsatzes
-      href: how-to-provision-container-throughput.md
-    - name: Bereitstellen des Datenbankdurchsatzes
-      href: how-to-provision-database-throughput.md
-  - name: Arbeiten mit Containern und Elementen
-    items:
-    - name: Erstellen eines Containers
-      href: how-to-create-container.md
-    - name: Abfragen eines Containers
-      href: how-to-query-container.md
   - name: Bewährte Methoden
     items:
     - name: Leistungstipps
@@ -535,9 +569,9 @@ items:
       href: use-cases.md
     - name: Apps für soziale Medien
       href: social-media-apps.md
-ms.openlocfilehash: 139bf5c5edfb808e912f2da07ea1bcab57636c55
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 5301ed8dad542a03ddd7be617668db9b25417de6
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51244269"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51622464"

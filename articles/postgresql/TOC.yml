@@ -106,6 +106,16 @@ items:
   items:
   - name: Erstellen von Benutzern
     href: howto-create-users.md
+  - name: Optimierung
+    items:
+    - name: Masseneinfügungen
+      href: howto-optimize-bulk-inserts.md
+    - name: Autovacuum
+      href: howto-optimize-autovacuum.md
+    - name: Sammlung mit Abfragestatistiken
+      href: howto-optimize-query-stats-collection.md
+    - name: Strategie für TOAST-Tabellen
+      href: howto-optimize-query-time-with-toast-table-storage-strategy.md
   - name: Verwalten der Firewall
     items:
     - name: Azure-Portal
@@ -204,9 +214,9 @@ items:
     href: partners-migration-postgresql.md
   - name: Leitfaden zur Datenbankmigration
     href: https://datamigration.microsoft.com/
-ms.openlocfilehash: 72cb09c49c25cd994a66ab0e32a324aeefeb06a7
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 435201a225f2e6e2d3695f71fec93796d3437436
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51280128"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51622821"

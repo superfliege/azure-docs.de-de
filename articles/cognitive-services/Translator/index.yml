@@ -1,9 +1,15 @@
 ### YamlMime:YamlDocument
+ms.openlocfilehash: d74ef4b68545c349c8df2cb7090ee8c26e2cd3e4
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51622856"
 documentType: LandingData
-title: Dokumentation zur Textübersetzungs-API
+title: Dokumentation zur Textübersetzung
 metadata:
   title: 'Dokumentation zur Textübersetzung: Schnellstarts, Tutorials, API-Referenz – Azure Cognitive Services | Microsoft-Dokumentation'
-  description: Hier erfahren Sie, wie sie die Textübersetzungs-API zum Übersetzen von Text in mehreren Sprachen verwenden.
+  description: Hier erfahren Sie, wie Sie die Textübersetzung zum Übersetzen von Text in mehreren Sprachen verwenden.
   services: cognitive-services
   author: Jann-Skotdal
   manager: Chris.Wendt
@@ -11,17 +17,32 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 10/30/2017
+  ms.date: 11/06/18
   ms.author: v-jansko
-  ms.openlocfilehash: 85ef860a742c114d01696b9189f57ac9207c0bc5
-  ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
-  ms.translationtype: HT
-  ms.contentlocale: de-DE
-  ms.lasthandoff: 07/20/2018
-  ms.locfileid: "39185872"
 abstract:
-  description: Die Textübersetzungs-API von Microsoft ist ein cloudbasierter Übersetzungsdienst. Mit dieser API können Sie über einen einfachen REST-API-Aufruf Text aus beliebigen Apps oder Diensten nahezu in Echtzeit übersetzen. Die API verwendet modernste neuronale Technologie für die maschinelle Übersetzung (Machine Translation, MT) und bietet darüber hinaus statistische Technologie für die maschinelle Übersetzung. Eine Liste der unterstützten Sprachen für neuronale MT und statistische MT finden Sie unter <a href="languages.md">Supported languages in the Microsoft Translator Text API</a> (Unterstützte Sprachen in der Textübersetzungs-API von Microsoft).
+  description: Textübersetzung ist ein cloudbasierter Dienst zur maschinellen Übersetzung, mit dem Sie durch einen einfachen REST-API-Aufruf Text nahezu in Echtzeit übersetzen können. Die API verwendet moderne Technologie für die neuronale maschinelle Übersetzung (Machine Translation, MT) und bietet Technologie für die statistische maschinelle Übersetzung. Custom Translator ist eine Erweiterung der Textübersetzungs-API und ermöglicht die Erstellung neuronaler Übersetzungssysteme. Mit dem angepassten Übersetzungssystem kann Text mit der Textübersetzungs-API oder mit <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/">Microsoft Speech Services</a> übersetzt werden. Eine Liste der unterstützten Sprachen für neuronale MT und statistische MT finden Sie unter <a href="languages.md">Sprach- und Regionsunterstützung für die Textübersetzungs-API</a>.
 sections:
+- items:
+  - type: list
+    style: cards
+    className: cardsM
+    columns: 3
+    items:
+    - href: /azure/cognitive-services/translator/translator-info-overview
+      html: <p>Informationen zur Textübersetzungs-API</p>
+      image:
+        src: ../media/index/i_overview.svg
+      title: Was ist die Textübersetzungs-API?
+    - href: /azure/cognitive-services/translator/custom-translator/overview
+      html: <p>Informationen zu Custom Translator</p>
+      image:
+        src: ../media/index/i_overview.svg
+      title: Worum handelt es sich bei Custom Translator (Vorschauversion)?
+    - href: /azure/cognitive-services/translator/custom-translator/quickstart-build-deploy-custom-model
+      html: <p>Hier erhalten Sie Informationen zu den ersten Schritten mit Custom Translator.</p>
+      image:
+        src: ../media/index/i_get-started.svg
+      title: Schnellstart zu Custom Translator
 - title: Fünfminütige Schnellstarts
   items:
   - type: paragraph
