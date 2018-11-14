@@ -11,15 +11,15 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlrab, srbozovi, bonova
 manager: craigg
-ms.date: 09/13/2018
-ms.openlocfilehash: 08b8e37493ea7bc549a2352aaa6714ef7c65bfdb
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.date: 11/01/2018
+ms.openlocfilehash: 97362cb91c16f91d637283df7a583f685124a21b
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47159515"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50913669"
 ---
-# <a name="configure-azure-vm-to-connect-to-an-azure-sql-database-managed-instance"></a>Konfigurieren einer Azure-VM für das Herstellen einer Verbindung mit einer verwalteten Azure SQL-Datenbank-Instanz
+# <a name="quickstart-configure-azure-vm-to-connect-to-an-azure-sql-database-managed-instance"></a>Schnellstart: Konfigurieren einer Azure-VM für das Herstellen einer Verbindung mit einer verwalteten Azure SQL-Datenbank-Instanz
 
 In diesem Schnellstart wird gezeigt, wie Sie eine Azure-VM für das Herstellen einer Verbindung mit einer verwalteten Azure SQL-Datenbank-Instanz über SQL Server Management Studio (SSMS) konfigurieren. Eine Schnellstartanleitung, die zeigt, wie Sie von einem lokalen Clientcomputer über eine Point-to-Site-Verbindung eine Verbindung herstellen, finden Sie unter [Konfigurieren einer Point-to-Site-Verbindung](sql-database-managed-instance-configure-p2s.md). 
 

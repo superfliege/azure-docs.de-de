@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
 ms.component: common
-ms.openlocfilehash: ffb355b4471bd8455f67e657d9557c3f372c3f4e
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 4f0558f9619aa06557cf89e885154f6326d4b150
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49470319"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51281777"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure Storage-Explorer – Leitfaden zur Problembehandlung
 
@@ -59,6 +59,9 @@ Wenn Sie sich in einer Schleife für eine erneute Authentifizierung befinden ode
 1. Entfernen Sie alle Konten, und schließen Sie dann den Storage-Explorer.
 2. Löschen Sie den Ordner „.IdentityService“ von Ihrem Computer. Der Ordner befindet sich unter Windows unter `C:\users\<username>\AppData\Local`. Bei Mac und Linux finden Sie den Ordner im Stammverzeichnis Ihres Benutzerverzeichnisses.
 3. Wenn Sie Mac oder Linux verwenden, müssen Sie auch den Eintrag „Microsoft.Developer.IdentityService“ aus Ihrem Betriebssystemkeystore löschen. Unter Mac ist der Keystore die Anwendung „Gnome Keychain“. Bei Linux wird die Anwendung in der Regel als „Schlüsselbund“ bezeichnet, der Name kann jedoch abhängig von Ihrer Distribution abweichen.
+
+### <a name="conditional-access"></a>Bedingter Zugriff
+Bedingter Zugriff wird nicht unterstützt, wenn Storage-Explorer unter Windows 10, Linux oder macOS verwendet wird. Dies liegt an einer Einschränkung der AAD-Bibliothek, die Storage-Explorer verwendet.
 
 ## <a name="mac-keychain-errors"></a>Mac-Keychainfehler
 Die macOS-Keychain kann sich manchmal in einem Zustand befinden, der Probleme in Verbindung mit der Storage Explorer-Authentifizierungsbibliothek verursacht. Versuchen Sie, diesen Zustand der Keychain mit folgenden Schritte aufzuheben:
@@ -143,6 +146,12 @@ Wenn Ihre Proxyeinstellungen richtig sind, müssen Sie sich möglicherweise an d
 ## <a name="unable-to-retrieve-children-error-message"></a>Fehlermeldung: Untergeordnete Elemente können nicht abgerufen werden
 
 Wenn Sie die Verbindung mit Azure über einen Proxy hergestellt haben, überprüfen Sie, ob die Proxyeinstellungen richtig sind. Wenn Ihnen vom Besitzer des Abonnements oder Kontos Zugriff auf eine Ressource erteilt wurde, vergewissern Sie sich, dass Sie über die Berechtigung zum Lesen oder Auflisten für diese Ressource verfügen.
+
+## <a name="connection-string-does-not-have-complete-configuration-settings"></a>Verbindungszeichenfolge weist keine vollständigen Konfigurationseinstellungen auf.
+
+Wenn Sie diese Fehlermeldung erhalten, verfügen Sie möglicherweise nicht über die erforderlichen Berechtigungen zum Abrufen der Schlüssel für Ihr Speicherkonto. Um zu überprüfen, ob dies der Fall ist, navigieren Sie zum Portal, und suchen Sie Ihr Speicherkonto. Klicken Sie dazu einfach mit der rechten Maustaste auf den Knoten für Ihr Speicherkonto, und klicken Sie dann auf „Open in Portal“ (Im Portal öffnen). Wechseln Sie dann zum Blatt „Zugriffsschlüssel“. Wenn Sie nicht über Berechtigungen zum Anzeigen von Schlüsseln verfügen, wird eine Seite mit der Meldung „Sie haben keinen Zugriff“ angezeigt. Um dieses Problem zu umgehen, können Sie den Kontoschlüssel von einer anderen Person erhalten und mit Name und Schlüssel anfügen, oder Sie können eine andere Person um die SAS für das Speicherkonto bitten und mit dieser das Speicherkonto anfügen.
+
+Wenn die Kontoschlüssel angezeigt werden, melden Sie ein Problem bei GitHub, damit wir Ihnen beim Beheben des Problems helfen können.
 
 ## <a name="issues-with-sas-url"></a>Probleme mit der SAS-URL
 Wenn Sie eine Verbindung mit einem Dienst über eine SAS-URL herstellen und dieser Fehler auftritt:

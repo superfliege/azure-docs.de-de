@@ -4,16 +4,16 @@ description: Beschreibt, wie die von Azure Policy verwendete Definition von Ress
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 09/18/2018
+ms.date: 10/30/2018
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 0ff56b86243956d1fa6b51a6dfd14af9e00d8367
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: b5c7d0c6d54272518b19ffec0d8f02ebbcfe55d9
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50212776"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51283290"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktur von Azure Policy-Definitionen
 
@@ -123,12 +123,12 @@ In der Richtlinienregel wird die folgende Syntax für die `parameters`Bereitstel
 
 ## <a name="definition-location"></a>Definitionsspeicherort
 
-Beim Erstellen einer Initiative oder Richtliniendefinition ist es wichtig, den Definitionsspeicherort anzugeben.
+Beim Erstellen einer Initiative oder Richtlinie muss der Definitionsspeicherort angegeben werden. Der Definitionsspeicherort muss eine Verwaltungsgruppe oder ein Abonnement sein. Er legt den Bereich fest, dem die Initiative oder Richtlinie zugewiesen werden kann. Ressourcen müssen direkte Mitglieder oder untergeordnete Elemente innerhalb der Hierarchie des Definitionsspeicherorts für die Zuweisung sein.
 
-Der Definitionsspeicherort bestimmt den Bereich, dem die Initiative oder Richtliniendefinition zugewiesen werden kann. Der Speicherort kann als Verwaltungsgruppe oder Abonnement angegeben werden.
+Für den Definitionsspeicherort gilt Folgendes:
 
-> [!NOTE]
-> Wenn Sie diese Richtliniendefinition auf mehrere Abonnements anwenden möchten, muss der Speicherort eine Verwaltungsgruppe sein, die die Abonnements enthält, denen Sie die Initiative oder Richtlinie zuweisen.
+- **Abonnement:** Die Richtlinie kann nur Ressourcen innerhalb dieses Abonnements zugewiesen werden.
+- **Verwaltungsgruppe:** Die Richtlinie kann nur Ressourcen innerhalb untergeordneter Verwaltungsgruppen und untergeordneter Abonnements zugewiesen werden. Wenn Sie diese Richtliniendefinition auf mehrere Abonnements anwenden möchten, muss der Speicherort eine Verwaltungsgruppe sein, die diese Abonnements enthält.
 
 ## <a name="display-name-and-description"></a>Anzeigename und Beschreibung
 
@@ -146,7 +146,7 @@ Im **Then**-Block definieren Sie die Wirkung, die eintritt, wenn die **If**-Bedi
         <condition> | <logical operator>
     },
     "then": {
-        "effect": "deny | audit | append | auditIfNotExists | deployIfNotExists"
+        "effect": "deny | audit | append | auditIfNotExists | deployIfNotExists | disabled"
     }
 }
 ```
@@ -233,6 +233,7 @@ Die Richtlinie unterstützt die folgenden Arten von Effekten:
 - **Append** fügt der Anforderung verschiedene definierte Felder hinzu.
 - **AuditIfNotExists** aktiviert das Überwachen, wenn eine Ressource nicht vorhanden ist.
 - **DeployIfNotExists** stellt eine Ressource bereit, falls noch keine vorhanden ist.
+- **Deaktiviert** wertet Ressourcen nicht auf Konformität mit der Richtlinienregel aus.
 
 Für **append**müssen Sie die folgenden Details angeben:
 
@@ -247,6 +248,18 @@ Für **append**müssen Sie die folgenden Details angeben:
 Der Wert kann entweder eine Zeichenfolge oder ein Objekt im JSON-Format sein.
 
 Mit **AuditIfNotExists** und **DeployIfNotExists** können Sie das Vorhandensein einer zugehörigen Ressource auswerten und eine Regel anwenden, wenn diese Ressource nicht vorhanden ist. Sie können z.B. erforderlich machen, dass ein Network Watcher für alle virtuellen Netzwerke bereitgestellt wird. Ein Beispiel für das Überwachen, wenn keine VM-Erweiterung bereitgestellt wird, finden Sie unter [Audit if extension does not exist (Überwachen bei nicht vorhandener Erweiterung)](../samples/audit-ext-not-exist.md).
+
+Der Effekt **DeployIfNotExists** erfordert die **roleDefinitionId**-Eigenschaft im Bereich **details** der Richtlinienregel. Weitere Informationen finden Sie unter [Korrigieren nicht konformer Ressourcen](../how-to/remediate-resources.md#configure-policy-definition).
+
+```json
+"details": {
+    ...
+    "roleDefinitionIds": [
+        "/subscription/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/{roleGUID}",
+        "/providers/Microsoft.Authorization/roleDefinitions/{builtinroleGUID}"
+    ]
+}
+```
 
 Umfassende Informationen zu den einzelnen Auswirkungen, zur Reihenfolge der Auswertung und zu Eigenschaften sowie Beispiele finden Sie unter [Grundlegendes zu Richtlinienauswirkungen](effects.md).
 

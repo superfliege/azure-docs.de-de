@@ -1,24 +1,24 @@
 ---
-title: Verwenden der Ambari-Tez-Ansicht mit HDInsight – Azure
-description: Erfahren Sie, wie Sie die Ambari-Tez-Ansicht zum Debuggen von Tez-Aufträgen in HDInsight verwenden.
+title: Verwenden der Apache Ambari-Tez-Ansicht mit HDInsight – Azure
+description: Erfahren Sie, wie Sie die Apache Ambari-Tez-Ansicht zum Debuggen von Tez-Aufträgen in HDInsight verwenden.
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
-ms.author: jasonh
-ms.openlocfilehash: 576460f4b68d670e534e0ddeed920f7ac99e1458
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.author: hrasheed
+ms.openlocfilehash: c85ad59acc8e307de05f41365855f3a9669ac2b5
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43108885"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51034675"
 ---
-# <a name="use-ambari-views-to-debug-tez-jobs-on-hdinsight"></a>Debuggen von Tez-Aufträgen in HDInsight mithilfe von Ambari-Ansichten
+# <a name="use-apache-ambari-views-to-debug-apache-tez-jobs-on-hdinsight"></a>Debuggen von Apache Tez-Aufträgen in HDInsight mithilfe von Apache Ambari-Ansichten
 
-Die Ambari-Webbenutzeroberfläche für HDInsight enthält eine Tez-Ansicht, die verwendet werden kann, um Aufträge zu verstehen und zu debuggen, die Tez nutzen. Die Tez-Ansicht ermöglicht Ihnen das Visualisieren des Auftrags als Graphen verbundener Elemente, einen Drilldown in die einzelnen Elemente und das Abrufen von Statistiken und Protokollinformationen.
+Die Apache Ambari-Webbenutzeroberfläche für HDInsight enthält eine Apache Tez-Ansicht, mit der Sie Aufträge besser verstehen und debuggen können, die Tez nutzen. Die Tez-Ansicht ermöglicht Ihnen das Visualisieren des Auftrags als Graphen verbundener Elemente, einen Drilldown in die einzelnen Elemente und das Abrufen von Statistiken und Protokollinformationen.
 
 > [!IMPORTANT]
 > Die Schritte in diesem Dokument erfordern einen HDInsight-Cluster mit Linux. Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [HDInsight-Komponentenversionen](hdinsight-component-versioning.md#hdinsight-windows-retirement).
@@ -28,9 +28,9 @@ Die Ambari-Webbenutzeroberfläche für HDInsight enthält eine Tez-Ansicht, die 
 * Ein Linux-basierter HDInsight-Cluster. Anweisungen zum Erstellen eines Clusters finden Sie unter [Erste Schritte mit Linux-basierten HDInsight-Clustern](hadoop/apache-hadoop-linux-tutorial-get-started.md).
 * Ein zeitgemäßer Webbrowser, der HTML5 unterstützt.
 
-## <a name="understanding-tez"></a>Grundlegendes zu Tez
+## <a name="understanding-apache-tez"></a>Grundlegendes zu Apache Tez
 
-Tez ist ein erweiterbares Framework für die Datenverarbeitung in Hadoop, das eine schnellere Verarbeitung als übliche MapReduce-Verfahren bietet. Bei Linux-basierten Clustern ist Tez die Standard-Engine für Hive.
+Tez ist ein erweiterbares Framework für die Datenverarbeitung in Apache Hadoop, das eine schnellere Verarbeitung als übliche MapReduce-Verfahren bietet. Bei Linux-basierten Clustern ist Tez die Standard-Engine für Hive.
 
 Tez erstellt einen gerichteten azyklischen Graphen (Directed Acyclic Graph, DAG), der die Reihenfolge der Aktionen beschreibt, die für Aufgaben erforderlich sind. Einzelne Aktionen werden auch Scheitelpunkte genannt und führen einen Teil des gesamten Auftrags aus. Die tatsächliche Ausführung des Auftrags, die von einem Scheitelpunkt beschrieben wird, heißt Aufgabe und kann auf mehrere Knoten im Cluster verteilt werden.
 

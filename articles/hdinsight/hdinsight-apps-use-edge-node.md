@@ -1,24 +1,24 @@
 ---
-title: Verwenden leerer Edgeknoten in Hadoop-Clustern in HDInsight – Azure
+title: Verwenden leerer Edgeknoten in Apache Hadoop-Clustern in HDInsight – Azure
 description: Hier erfahren Sie, wie Sie einem HDInsight-Cluster einen leeren Edgeknoten hinzufügen, der als Client verwendet werden kann, und wie Sie Ihre HDInsight-Anwendungen testen/hosten.
 services: hdinsight
 ms.reviewer: jasonh
-author: jasonwhowell
+author: hrasheed-msft
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 04/23/2018
-ms.author: jasonh
-ms.openlocfilehash: 1111f3c21e3c3718a9a010284a42ea469e04473d
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.date: 11/06/2018
+ms.author: hrasheed
+ms.openlocfilehash: 276f11bf889927ee74fa4e9078e147db6df78b9e
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43090387"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51281369"
 ---
-# <a name="use-empty-edge-nodes-on-hadoop-clusters-in-hdinsight"></a>Verwenden leerer Edgeknoten in Hadoop-Clustern in HDInsight
+# <a name="use-empty-edge-nodes-on-apache-hadoop-clusters-in-hdinsight"></a>Verwenden leerer Edgeknoten in Apache Hadoop-Clustern in HDInsight
 
-Hier erfahren Sie, wie Sie einem HDInsight-Cluster einen leeren Edgeknoten hinzufügen. Ein leerer Edgeknoten ist ein virtueller Linux-Computer, auf dem die gleichen Clienttools installiert und konfiguriert sind wie auf den Hauptknoten, aber keine Hadoop-Dienste ausgeführt werden. Sie können den Edgeknoten zum Zugreifen auf den Cluster sowie zum Testen und Hosten Ihrer Clientanwendungen verwenden. 
+Hier erfahren Sie, wie Sie einem HDInsight-Cluster einen leeren Edgeknoten hinzufügen. Ein leerer Edgeknoten ist ein virtueller Linux-Computer, auf dem die gleichen Clienttools installiert und konfiguriert sind wie auf den Hauptknoten, aber keine Apache Hadoop-Dienste ausgeführt werden. Sie können den Edgeknoten zum Zugreifen auf den Cluster sowie zum Testen und Hosten Ihrer Clientanwendungen verwenden. 
 
 Sie können einen leeren Edgeknoten zu einem vorhandenen HDInsight-Cluster oder zu einem neuen Cluster hinzufügen, wenn Sie den Cluster erstellen. Einen leeren Edgeknoten fügen Sie mit der Azure Resource Manager-Vorlage hinzu.  Im folgenden Beispiel sehen Sie, wie dies mithilfe einer Vorlage erfolgt:
 
@@ -66,7 +66,7 @@ Nach der Erstellung eines Edgeknotens können Sie über SSH eine Verbindung zum 
 > Bei Verwendung einer Apache-Technologie finden Sie hilfreiche Informationen ggf. auf den Apache-Projektwebsites unter [http://apache.org](http://apache.org) (beispielsweise auf der Website für [Hadoop](http://hadoop.apache.org/)).
 
 > [!NOTE]
-> Genauso wie bei Clustern werden auch die Patches von Edgeknoten verwaltet.  Weitere Informationen finden Sie unter [Patchen des Betriebssystems für HDInsight](./hdinsight-os-patching.md).
+> Wie bei den anderen Clusterknoten werden die Patches von Edgeknoten ebenfalls verwaltet.  Weitere Informationen finden Sie unter [Patchen des Betriebssystems für HDInsight](./hdinsight-os-patching.md).
 
 ## <a name="add-an-edge-node-to-an-existing-cluster"></a>Hinzufügen eines Edgeknotens zu einem vorhandenen Cluster
 In diesem Abschnitt verwenden Sie eine Resource Manager-Vorlage, um einen Edgeknoten zu einem vorhandenen HDInsight-Cluster hinzuzufügen.  Die Resource Manager-Vorlage finden Sie in [GitHub](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-add-edge-node/). Die Resource Manager-Vorlage ruft eine Skriptaktion auf, die sich unter https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-hdinsight-linux-add-edge-node/scripts/EmptyNodeSetup.sh befindet. Das Skript führt keine Aktionen aus.  Es demonstriert das Aufrufen der Skriptaktion aus einer Resource Manager-Vorlage.
@@ -116,7 +116,7 @@ In diesem Abschnitt verwenden Sie eine Resource Manager-Vorlage, um HDInsight-Cl
 
 ## <a name="add-multiple-edge-nodes"></a>Hinzufügen mehrerer Edgeknoten
 
-Sie können zu einem HDInsight-Cluster mehrere Edgeknoten hinzufügen.  Die Konfiguration mehrerer Edgeknoten kann nur mithilfe von Azure Resource Manager-Vorlagen durchgeführt werden.  Sehen Sie sich auch das Vorlagenbeispiel am Anfang dieses Artikels an.  Sie müssen **targetInstanceCount** aktualisieren, um die Anzahl der zu erstellenden Edgeknoten widerzuspiegeln.
+Sie können zu einem HDInsight-Cluster mehrere Edgeknoten hinzufügen.  Die Konfiguration mehrerer Edgeknoten kann nur mithilfe von Azure Resource Manager-Vorlagen durchgeführt werden.  Sehen Sie sich auch das Vorlagenbeispiel am Anfang dieses Artikels an.  Sie müssen **targetInstanceCount** auf die Anzahl der zu erstellenden Edgeknoten aktualisieren.
 
 ## <a name="access-an-edge-node"></a>Zugreifen auf einen Edgeknoten
 Der ssh-Endpunkt des Edgeknotens ist &lt;Edgeknotenname>.&lt;Clustername>-ssh.azurehdinsight.net:22.  Beispiel: new-edgenode.myedgenode0914-ssh.azurehdinsight.net:22.

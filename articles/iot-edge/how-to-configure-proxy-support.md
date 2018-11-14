@@ -4,16 +4,16 @@ description: Erläutert das Konfigurieren der Azure IoT Edge-Runtime und der IoT
 author: kgremban
 manager: ''
 ms.author: kgremban
-ms.date: 09/24/2018
+ms.date: 11/01/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 6e6a1d2f758cabca41ac405a01de1f0d8bfd0a7b
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 72855058c5e8294eece55f8dbcdc501025c9aabf
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47037455"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50913222"
 ---
 # <a name="configure-an-iot-edge-device-to-communicate-through-a-proxy-server"></a>Konfigurieren eines IoT Edge-Geräts für die Kommunikation über einen Proxyserver
 
@@ -25,6 +25,18 @@ Das Konfigurieren eines IoT Edge-Geräts zur Nutzung eines Proxyservers erfolgt 
 2. Konfigurieren Sie den Docker-Daemon und den IoT Edge-Daemon auf Ihrem Gerät, sodass sie den Proxyserver verwenden.
 3. Konfigurieren Sie die edgeAgent-Eigenschaften in der Datei „config.yaml“ auf Ihrem Gerät.
 4. Legen Sie Umgebungsvariablen für die IoT Edge-Runtime und andere IoT Edge-Module im Bereitstellungsmanifest fest. 
+
+## <a name="know-your-proxy-url"></a>Ermitteln der Webproxy-URL
+
+Um den Docker-Daemon und IoT Edge auf Ihrem Gerät zu konfigurieren, müssen Sie Ihre Webproxy-URL kennen. 
+
+Proxy-URLs haben das folgende Format: **Protokoll**://**Proxyhost**:**Proxyport**. 
+
+* Das **Protokoll** ist entweder HTTP oder HTTPS. Der Docker-Daemon kann abhängig von den Einstellungen Ihrer Containerregistrierung mit beiden Protokollen konfiguriert werden, aber für den IoT Edge-Daemon und die Runtimecontainer sollte immer HTTPS verwendet werden.
+
+* Der **Proxyhost** ist eine Adresse für den Proxyserver. Wenn Ihr Proxyserver eine Authentifizierung erfordert, können Sie Ihre Anmeldeinformationen als Teil von „Proxyhost“ im Format **Benutzer**:**Kennwort**@**Proxyhost** eingeben. 
+
+* Der **Proxyport** ist der Netzwerkport, an dem der Proxy auf Netzwerkdatenverkehr antwortet. 
 
 ## <a name="install-the-runtime"></a>Installieren der Runtime
 
@@ -47,7 +59,7 @@ Die Docker- und IoT Edge-Daemons, die auf Ihrem IoT Edge-Gerät ausgeführt werd
 
 ### <a name="docker-daemon"></a>Docker-Daemon
 
-In der Docker-Dokumentation wird erläutert, wie der Docker-Daemon mit Umgebungsvariablen konfiguriert wird. Die meisten Containerregistrierungen (einschließlich DockerHub und Azure Container Registry) unterstützen HTTPS-Anforderungen, daher sollten Sie die Variable **HTTPS_PROXY** festlegen. Wenn Sie Images aus einer Registrierung abrufen, die Transport Layer Security (TLS) nicht unterstützt, sollten Sie **HTTP_PROXY** festlegen. 
+In der Docker-Dokumentation wird erläutert, wie der Docker-Daemon mit Umgebungsvariablen konfiguriert wird. Die meisten Containerregistrierungen (einschließlich DockerHub und Azure Container Registry-Instanzen) unterstützen HTTPS-Anforderungen, daher sollten Sie den Parameter **HTTPS_PROXY** festlegen. Wenn Sie Images aus einer Registrierung abrufen, die Transport Layer Security (TLS) nicht unterstützt, sollten Sie den Parameter **HTTP_PROXY** festlegen. 
 
 Wählen Sie den Artikel aus, der für Ihre Docker-Version gilt: 
 
@@ -113,7 +125,9 @@ Der Edge-Agent ist das erste Modul, das auf einem IoT Edge-Gerät gestartet wird
 
 Suchen Sie in der Datei „config.yaml“ nach dem Abschnitt **Edge Agent module spec**. Die Edge-Agent-Definition enthält einen **env**-Parameter, dem Sie Umgebungsvariablen hinzufügen können. 
 
-![edgeAgent-Definition](./media/how-to-configure-proxy-support/edgeagent-unedited.png)
+<!--
+![edgeAgent definition](./media/how-to-configure-proxy-support/edgeagent-unedited.png)
+-->
 
 Entfernen Sie die geschweiften Klammern, die Platzhalter für den env-Parameter darstellen, und fügen Sie die neue Variable in einer neuen Zeile hinzu. Denken Sie daran, dass Einzüge in YAML zwei Leerzeichen sind. 
 
@@ -201,7 +215,7 @@ Wenn Sie die Umgebungsvariable **UpstreamProtocol** in die Datei „confige.yaml
 ```json
 "env": {
     "https_proxy": {
-        "value": "<proxy URL"
+        "value": "<proxy URL>"
     },
     "UpstreamProtocol": {
         "value": "AmqpWs"

@@ -2,18 +2,18 @@
 title: Erweitern von HDInsight mit Virtual Network – Azure
 description: Erfahren Sie, wie Sie HDInsight mithilfe von Azure Virtual Network mit anderen Cloud-Ressourcen oder Ressourcen in Ihrem Rechenzentrum verbinden.
 services: hdinsight
-author: jasonwhowell
-ms.author: jasonh
+author: hrasheed-msft
+ms.author: hrasheed
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/08/2018
-ms.openlocfilehash: 5ee249aee5d95f22f2e1f52d6356f09ea41ccd68
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.date: 11/06/2018
+ms.openlocfilehash: 62502e946922928b8b4179d38ce9f9ae55f9930d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945755"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238980"
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>Erweitern von Azure HDInsight per Azure Virtual Network
 
@@ -25,7 +25,7 @@ Es wird beschrieben, wie Sie HDInsight mit einem [Azure Virtual Network](../virt
 
 * Herstellen einer Verbindung für HDInsight mit Datenspeichern in einem Azure Virtual Network
 
-* Direktes Zuweisen von Hadoop-Diensten, die nicht öffentlich über das Internet verfügbar sind (Beispiele: Kafka-APIs oder die HBase-Java-API)
+* Direktes Zuweisen von Apache Hadoop-Diensten, die nicht öffentlich über das Internet verfügbar sind (Beispiele: Kafka-APIs oder die HBase-Java-API)
 
 > [!WARNING]
 > Für die Informationen in diesem Dokument ist es erforderlich, dass Sie mit TCP/IP-Netzwerken vertraut sind. Falls Sie nicht mit TCP/IP-Netzwerken vertraut sind, sollten Sie sich an eine Person wenden, die über die entsprechenden Kenntnisse verfügt, bevor Sie Änderungen an Produktionsnetzwerken vornehmen.
@@ -64,7 +64,7 @@ Führen Sie die Schritte in diesem Abschnitt aus, um zu erfahren, wie Sie einen 
 
     Nach dem Verknüpfen kann die Installation von HDInsight im Resource Manager-Netzwerk mit Ressourcen im klassischen Netzwerk interagieren.
 
-2. Verwenden Sie die Tunnelerzwingung? Die Tunnelerzwingung ist eine Subnetzeinstellung, bei der für ausgehenden Internetdatenverkehr der Umweg über ein Gerät zur Untersuchung und Protokollierung erzwungen wird. HDInsight weist keine Unterstützung der Tunnelerzwingung auf. Entfernen Sie entweder die Tunnelerzwingung, bevor Sie HDInsight in einem Subnetz installieren, oder erstellen Sie ein neues Subnetz für HDInsight.
+2. Verwenden Sie die Tunnelerzwingung? Die Tunnelerzwingung ist eine Subnetzeinstellung, bei der für ausgehenden Internetdatenverkehr der Umweg über ein Gerät zur Untersuchung und Protokollierung erzwungen wird. HDInsight weist keine Unterstützung der Tunnelerzwingung auf. Entfernen Sie entweder die Tunnelerzwingung, bevor Sie HDInsight in einem vorhandenen Subnetz bereitstellen, oder erstellen Sie ein neues Subnetz ohne Tunnelerzwingung für HDInsight.
 
 3. Verwenden Sie Netzwerksicherheitsgruppen, benutzerdefinierte Routen oder virtuelle Network Appliances, um Datenverkehr einzuschränken, der in das bzw. aus dem virtuellen Netzwerk fließt?
 
@@ -121,7 +121,7 @@ Die größte Herausforderung bei der Konfiguration von mehreren Netzwerken ist d
 
 Azure ermöglicht die Namensauflösung für Azure-Dienste, die in einem virtuellen Netzwerk installiert sind. Diese integrierte Namensauflösung erlaubt HDInsight das Herstellen einer Verbindung mit den folgenden Ressourcen, indem ein vollqualifizierter Domänenname (FQDN) verwendet wird:
 
-* Alle Ressourcen, die im Internet verfügbar sind. Beispiel: „microsoft.com“, „google.com“.
+* Alle Ressourcen, die im Internet verfügbar sind. Beispiel: „microsoft.com“, „windowsupdate.com“.
 
 * Alle Ressourcen, die sich in demselben Azure Virtual Network befinden, indem der __interne DNS-Name__ der Ressource verwendet wird. Beim Verwenden der Standardnamensauflösung sind dies Beispiele für interne DNS-Namen, die HDInsight-Workerknoten zugewiesen werden:
 
@@ -173,7 +173,7 @@ Weitere Informationen finden Sie im Dokument [Namensauflösung für virtuelle Co
 
 ## <a name="directly-connect-to-hadoop-services"></a>Herstellen einer direkten Verbindung mit Hadoop-Diensten
 
-Sie können unter https://CLUSTERNAME.azurehdinsight.net eine Verbindung mit dem Cluster herstellen. Diese Adresse verwendet eine öffentliche IP-Adresse, auf die möglicherweise nicht zugegriffen werden kann, wenn Sie NSGs oder benutzerdefinierte Routen verwendet haben, um eingehenden Datenverkehr aus dem Internet einzuschränken. Darüber hinaus können Sie bei der Bereitstellung des Clusters in einem VNET mithilfe des privaten Endpunkts https://CLUSTERNAME-int.azurehdinsight.net darauf zugreifen. Dieser Endpunkt wird in eine private IP-Adresse innerhalb des VNET für den Clusterzugriff aufgelöst.
+Sie können unter https://CLUSTERNAME.azurehdinsight.net eine Verbindung mit dem Cluster herstellen. Diese Adresse verwendet eine öffentliche IP-Adresse, die möglicherweise nicht erreichbar sind, wenn Sie NSGs verwendet haben, um eingehenden Datenverkehr aus dem Internet einzuschränken. Darüber hinaus können Sie bei der Bereitstellung des Clusters in einem VNET mithilfe des privaten Endpunkts https://CLUSTERNAME-int.azurehdinsight.net darauf zugreifen. Dieser Endpunkt wird in eine private IP-Adresse innerhalb des VNET für den Clusterzugriff aufgelöst.
 
 Verwenden Sie die folgenden Schritte, um über das virtuelle Netzwerk eine Verbindung mit Ambari und anderen Webseiten herzustellen:
 
@@ -213,13 +213,13 @@ Sie können den Netzwerkdatenverkehr in einem Azure Virtual Network mit den folg
 * Mit **Netzwerksicherheitsgruppen** (NSGs) können Sie ein- und ausgehenden Datenverkehr für das Netzwerk filtern. Weitere Informationen finden Sie im Dokument [Filtern des Netzwerkdatenverkehrs mit Netzwerksicherheitsgruppen](../virtual-network/security-overview.md).
 
     > [!WARNING]
-    > HDInsight unterstützt keine Einschränkung des ausgehenden Datenverkehrs.
+    > HDInsight unterstützt keine Einschränkung des ausgehenden Datenverkehrs. Der gesamte ausgehende Datenverkehr sollte zugelassen werden.
 
 * **Benutzerdefinierte Routen** (UDR) definieren, wie Datenverkehr zwischen Ressourcen im Netzwerk fließt. Weitere Informationen finden Sie im Dokument [Benutzerdefinierte Routen und IP-Weiterleitung](../virtual-network/virtual-networks-udr-overview.md).
 
 * **Virtuelle Netzwerkgeräte** replizieren die Funktionalität von Geräten, z.B. Firewalls und Routern. Weitere Informationen finden Sie im Dokument [Network Appliances](https://azure.microsoft.com/solutions/network-appliances).
 
-Als verwalteter Dienst benötigt HDInsight uneingeschränkten Zugriff auf Integritäts- und Verwaltungsdienste von Azure in der Azure-Cloud. Beim Verwenden von NSGs und UDRs müssen Sie sicherstellen, dass diese Dienste weiterhin mit HDInsight kommunizieren können.
+Als verwalteter Dienst benötigt HDInsight uneingeschränkten Zugriff auf die HDInsight-Integritäts- und -Verwaltungsdienste für eingehenden und ausgehenden Datenverkehr aus dem VNET. Beim Verwenden von NSGs und UDRs müssen Sie sicherstellen, dass diese Dienste weiterhin mit dem HDInsight-Cluster kommunizieren können.
 
 HDInsight macht Dienste auf mehreren Ports verfügbar. Wenn Sie die Firewall eines virtuellen Geräts verwenden, müssen Sie den Datenverkehr für die Ports zulassen, die für diese Dienste verwendet werden. Weitere Informationen finden Sie im Abschnitt [Erforderliche Ports].
 
@@ -233,8 +233,8 @@ Wenn Sie planen, **Netzwerksicherheitsgruppen** oder **benutzerdefinierte Routen
 
 3. Erstellen oder ändern Sie die Netzwerksicherheitsgruppen oder benutzerdefinierten Routen für das Subnetz, in dem Sie HDInsight installieren möchten.
 
-    * __Netzwerksicherheitsgruppen__: Lassen Sie __eingehenden__ Datenverkehr über Port __443__ für die IP-Adressen zu.
-    * __Benutzerdefinierte Routen__: Erstellen Sie eine Route zu jeder IP-Adresse, und legen Sie __Typ des nächsten Hops__ auf __Internet__ fest.
+    * __Netzwerksicherheitsgruppen__: Lassen Sie __eingehenden__ Datenverkehr über Port __443__ für die IP-Adressen zu. Dadurch wird sichergestellt, dass HDInsight-Verwaltungsdienste den Cluster außerhalb des VNET erreichen können.
+    * __Benutzerdefinierte Routen__: Wenn Sie benutzerdefinierte Routen verwenden möchten, erstellen Sie eine Route zu jeder IP-Adresse, und legen Sie __Typ des nächsten Hops__ auf __Internet__ fest. Sie sollten auch jeglichen anderen ausgehenden Datenverkehr vom VNET ohne Einschränkung zulassen. Beispielsweise können Sie den gesamten verbliebenen Datenverkehr zu Überwachungszwecken an Ihre Azure-Firewall oder die virtuelle Netzwerkappliance (in Azure gehostet) weiterleiten, der ausgehende Datenverkehr sollte jedoch nicht blockiert werden.
 
 Weitere Informationen zu Netzwerksicherheitsgruppen oder benutzerdefinierten Routen finden Sie in der folgenden Dokumentation:
 
@@ -242,9 +242,9 @@ Weitere Informationen zu Netzwerksicherheitsgruppen oder benutzerdefinierten Rou
 
 * [Benutzerdefinierte Routen](../virtual-network/virtual-networks-udr-overview.md)
 
-#### <a name="forced-tunneling"></a>Tunnelerzwingung
+#### <a name="forced-tunneling-to-on-premise"></a>Tunnelerzwingung für lokale Netzwerke
 
-Die Tunnelerzwingung ist eine benutzerdefinierte Routingkonfiguration, bei der für den gesamten Datenverkehr eines Subnetzes die Weiterleitung in ein bestimmtes Netzwerk bzw. an einen bestimmten Standort erzwungen wird, z.B. Ihr lokales Netzwerk. HDInsight weist __keine__ Unterstützung der Tunnelerzwingung auf.
+Die Tunnelerzwingung ist eine benutzerdefinierte Routingkonfiguration, bei der für den gesamten Datenverkehr eines Subnetzes die Weiterleitung in ein bestimmtes Netzwerk bzw. an einen bestimmten Standort erzwungen wird, z.B. Ihr lokales Netzwerk. HDInsight bietet __keine__ Unterstützung für die Tunnelerzwingung für die lokalen Netzwerke. Wenn Sie Azure Firewall oder eine in Azure gehostete virtuelle Netzwerkappliance verwenden, können Sie zur Überwachung mithilfe von benutzerdefinierten Routen Datenverkehr an diese weiterleiten und den gesamten ausgehenden Datenverkehr zulassen.
 
 ## <a id="hdinsight-ip"></a>Erforderliche IP-Adressen
 

@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 10/23/2018
 ms.author: juliako
-ms.openlocfilehash: 90aa3551bb9e2d903fb0f66e3a9b464b0f4be928
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: a087c1a069e340c01f2eda657a3d0ecce768168c
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49987612"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51228129"
 ---
 # <a name="analyzing-video-and-audio-files"></a>Analysieren von Video- und Audiodateien
 
@@ -27,18 +27,27 @@ Um Ihren Inhalt mit Media Services v3 zu analysieren, erstellen Sie eine **Trans
 > [!NOTE]
 > Wenn Sie Voreinstellungen eines Video- oder Audioanalysetools verwenden, legen Sie über das Azure-Portal für Ihr Konto zehn reservierte Einheiten für Medien (S3) fest. Weitere Informationen finden Sie unter [Skalieren der Medienverarbeitung](../previous/media-services-scale-media-processing-overview.md).
 
-## <a name="audioanalyzerpreset"></a>AudioAnalyzerPreset
+## <a name="built-in-presets"></a>Integrierte Voreinstellungen
 
-**AudioAnalyzerPreset** ermöglicht Ihnen, mehrere Audioinformationen aus einer Audio- oder Videodatei zu extrahieren. Die Ausgabe enthält eine JSON-Datei (mit allen Informationen) und eine VTT-Datei für die Audiotranskription. Diese Voreinstellung akzeptiert eine Eigenschaft, die die Sprache der Eingabedatei in Form einer [BCP47](https://tools.ietf.org/html/bcp47)-Zeichenfolge angibt. Die Audioinformationen umfassen Folgendes:
+Media Services unterstützt derzeit die folgenden integrierten Analysevoreinstellungen:  
+
+|**Name der Voreinstellung**|**Szenario**|**Details**|
+|---|---|---|
+|**AudioAnalyzerPreset**|Analysieren von Audioinhalten|Die Voreinstellung wendet einen vordefinierten Satz von AI-basierten Analysevorgängen, einschließlich Sprachtranskription, an. Die Voreinstellung unterstützt derzeit die Verarbeitung von Inhalten mit einer einzelnen Audiospur.<br/>Sie können die Sprache für die Audio-Nutzlast in der Eingabe angeben. Dazu verwenden Sie das BCP-47-Format des Tags zur Identifizierung von Sprache und Region (z. B. „en-US“). Folgende Sprachen werden unterstützt: „en-US“, „en-GB“, „es-ES“, „es-MX“, „fr-FR“, „It-IT“, „ja-JP“, „pt-BR“, „zh-CN“.|
+|**VideoAnalyzerPreset**|Analysieren von Audio und Video|Extrahiert Erkenntnisse (umfangreiche Metadaten) von Audio- und Videoinhalten und gibt eine Datei im JSON-Format aus. Beim Verarbeiten einer Videodatei können Sie angeben, ob Sie nur Audioerkenntnisse erhalten möchten. Weitere Informationen finden Sie unter [Analysieren von Videos](analyze-videos-tutorial-with-api.md).|
+
+### <a name="audioanalyzerpreset"></a>AudioAnalyzerPreset
+
+Die Voreinstellung ermöglicht Ihnen, mehrere Audioinformationen aus einer Audio- oder Videodatei zu extrahieren. Die Ausgabe enthält eine JSON-Datei (mit allen Informationen) und eine VTT-Datei für die Audiotranskription. Diese Voreinstellung akzeptiert eine Eigenschaft, die die Sprache der Eingabedatei in Form einer [BCP47](https://tools.ietf.org/html/bcp47)-Zeichenfolge angibt. Die Audioinformationen umfassen Folgendes:
 
 * Audiotranskription: Ein Transkript der gesprochenen Worte mit Zeitstempeln. Mehrere Sprachen werden unterstützt.
 * Sprecherindizierung: Eine Zuordnung der Sprecher und der entsprechenden gesprochenen Worte
 * Standpunktanalyse der Sprache: Die Ausgabe der auf die Audiotranskription angewendeten Standpunktanalyse.
 * Stichwörter: Aus der Audiotranskription extrahierte Schlüsselbegriffe.
 
-## <a name="videoanalyzerpreset"></a>VideoAnalyzerPreset
+### <a name="videoanalyzerpreset"></a>VideoAnalyzerPreset
 
-**VideoAnalyzerPreset** ermöglicht Ihnen, mehrere Audio- und Videoinformationen aus einer Videodatei zu extrahieren. Die Ausgabe enthält eine JSON-Datei (mit allen Informationen), eine VTT-Datei für die Videotranskription und eine Sammlung von Miniaturbildern. Diese Voreinstellung akzeptiert auch eine [BCP47](https://tools.ietf.org/html/bcp47)-Zeichenfolge (die die Sprache des Videos darstellt) als Eigenschaft. Die Videoinformationen umfassen alle oben genannten Audioinformationen sowie die folgenden zusätzlichen Elemente:
+Die Voreinstellung ermöglicht Ihnen, mehrere Audio- und Videoinformationen aus einer Videodatei zu extrahieren. Die Ausgabe enthält eine JSON-Datei (mit allen Informationen), eine VTT-Datei für die Videotranskription und eine Sammlung von Miniaturbildern. Diese Voreinstellung akzeptiert auch eine [BCP47](https://tools.ietf.org/html/bcp47)-Zeichenfolge (die die Sprache des Videos darstellt) als Eigenschaft. Die Videoinformationen umfassen alle oben genannten Audioinformationen sowie die folgenden zusätzlichen Elemente:
 
 * Gesichtsverfolgung: Die Zeit, während der Gesichter im Video zu sehen sind. Jedes Gesicht weist eine Gesichts-ID und eine entsprechende Sammlung von Miniaturbildern auf.
 * Sichtbarer Text: Der Text, der über optische Zeichenerkennung erkannt wird. Der Text ist mit einem Zeitstempel versehen und wird auch zum Extrahieren von Stichwörtern verwendet (zusätzlich zum Audiotranskript).

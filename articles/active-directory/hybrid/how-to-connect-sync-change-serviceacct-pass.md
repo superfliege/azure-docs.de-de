@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2017
+ms.date: 10/31/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: b0b88622069801124aff5b44dc4b813838f41c73
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 331c536970445dacdb9afc9d3cfa5711b82bfbf0
+ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46310479"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50747251"
 ---
 # <a name="changing-the-azure-ad-connect-sync-service-account-password"></a>Ändern des Kennworts für das Azure AD Connect-Synchronisierungsdienstkonto
 Wenn Sie das Kennwort für das Dienstkonto der Azure AD Connect-Synchronisierung ändern, kann der Synchronisierungsdienst nicht ordnungsgemäß gestartet werden, bis der Verschlüsselungsschlüssel verworfen und das Kennwort für das Dienstkonto der Azure AD Connect-Synchronisierung erneut initialisiert wurde. 
@@ -44,7 +44,7 @@ Zunächst müssen Sie das Kennwort im Windows-Dienststeuerungs-Manager ändern. 
 Zweitens kann der Synchronisierungsdienst unter bestimmten Bedingungen bei Aktualisierung des Kennworts nicht mehr über DPAPI auf den Verschlüsselungsschlüssel zugreifen. Ohne den Verschlüsselungsschlüssel kann der Synchronisierungsdienst die Kennwörter nicht entschlüsseln, die zum Synchronisieren nach/aus dem lokalen AD und Azure AD erforderlich sind.
 Ihnen werden beispielsweise folgende Fehler angezeigt:
 
-- Wenn Sie im Windows-Dienststeuerungs-Manager versuchen, den Synchronisierungsdienst zu starten, und der Verschlüsselungsschlüssel kann nicht abgerufen werden, erhalten Sie den Fehler **Der Microsoft Azure AD-Synchronisierungsdienst konnte auf dem lokalen Computer nicht gestartet werden.** Weitere Informationen finden Sie im Systemereignisprotokoll. **Setzen Sie sich mit dem Diensthersteller in Verbindung, wenn es sich um einen Nicht-Microsoft-Dienst handelt. Beziehen Sie sich auf den dienstspezifischen Fehlercode \*\*-21451857952**\*\*.
+- Wenn Sie im Windows-Dienststeuerungs-Manager versuchen, den Synchronisierungsdienst zu starten, und der Verschlüsselungsschlüssel kann nicht abgerufen werden, erhalten Sie den Fehler **Der Microsoft Azure AD-Synchronisierungsdienst konnte auf dem lokalen Computer nicht gestartet werden. Weitere Informationen finden Sie im Systemereignisprotokoll. **Setzen Sie sich mit dem Diensthersteller in Verbindung, wenn es sich um einen Nicht-Microsoft-Dienst handelt. Beziehen Sie sich auf den dienstspezifischen Fehlercode \*\*-21451857952**\*\*.
 - In der Windows-Ereignisanzeige enthält das Anwendungsereignisprotokoll einen Fehler mit der **Ereignis-ID 6028** und die Fehlermeldung *„**Auf den Serververschlüsselungsschlüssel kann nicht zugegriffen werden**“*.
 
 Um sicherzustellen, dass Sie diese Fehler nicht erhalten, führen Sie beim Ändern des Kennworts die Verfahren unter [Verwerfen des Verschlüsselungsschlüssels der Azure AD Connect-Synchronisierung](#abandoning-the-azure-ad-connect-sync-encryption-key) aus.
@@ -59,6 +59,8 @@ Verwenden Sie die folgenden Verfahren, um den Verschlüsselungsschlüssel zu ver
 
 Wenn Sie den Verschlüsselungsschlüssel verwerfen müssen, verwenden Sie dazu die folgenden Verfahren.
 
+1. [Beenden des Synchronisierungsdiensts](#stop-the-synchronization-service)
+
 1. [Verwerfen des vorhandenen Verschlüsselungsschlüssels](#abandon-the-existing-encryption-key)
 
 2. [Angeben des Kennworts für das AD DS-Konto](#provide-the-password-of-the-ad-ds-account)
@@ -66,6 +68,13 @@ Wenn Sie den Verschlüsselungsschlüssel verwerfen müssen, verwenden Sie dazu d
 3. [Erneutes Initialisieren des Kennworts für das Azure AD-Synchronisierungskonto](#reinitialize-the-password-of-the-azure-ad-sync-account)
 
 4. [Starten des Synchronisierungsdiensts](#start-the-synchronization-service)
+
+#### <a name="stop-the-synchronization-service"></a>Beenden des Synchronisierungsdiensts
+Zunächst können Sie den Dienst im Dienststeuerungs-Manager von Windows beenden.  Stellen Sie sicher, dass der Dienst nicht ausgeführt wird, wenn Sie versuchen, ihn zu beenden.  Wenn er ausgeführt wird, warten Sie, bis er abgeschlossen ist, und beenden Sie ihn dann.
+
+
+1. Wechseln Sie zum Windows-Dienststeuerungs-Manager („START“ → „Dienste“).
+2. Wählen Sie **Microsoft Azure AD-Synchronisierung** aus, und klicken Sie auf „Beenden“.
 
 #### <a name="abandon-the-existing-encryption-key"></a>Verwerfen des vorhandenen Verschlüsselungsschlüssels
 Verwerfen Sie den vorhandenen Verschlüsselungsschlüssel, damit der neue Verschlüsselungsschlüssels erstellt werden kann:

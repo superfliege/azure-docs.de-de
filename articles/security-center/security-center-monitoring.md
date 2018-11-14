@@ -1,6 +1,6 @@
 ---
-title: Ressourcensicherheit in Azure Security Center | Microsoft-Dokumentation
-description: Dieser Artikel bietet eine Einführung in die Überwachung der Ressourcensicherheit in Azure Security Center.
+title: Stärken Ihres Sicherheitsstatus mit Azure Security Center | Microsoft-Dokumentation
+description: Dieser Artikel hilft Ihnen dabei, durch Überwachung Ihrer Ressourcen in Azure Security Center Ihren Sicherheitsstatus zu stärken.
 services: security-center
 documentationcenter: na
 author: rkarlin
@@ -12,22 +12,21 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 9/21/2018
+ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: 361fc2c6931dcfaed062bd39b75be7bef059b467
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 23369ac9f6cef74bac045017e8f956470e9a1159
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46122065"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51248859"
 ---
-# <a name="monitoring-resource-security-hygiene-in-azure-security-center"></a>Überwachen der Ressourcensicherheit in Azure Security Center
-Dieser Artikel unterstützt Sie beim Sicherstellen möglichst hoher Ressourcensicherheit und dem Überwachen der Richtliniencompliance mithilfe der Überwachungsfunktionen von Azure Security Center.
+# <a name="strengthen-your-security-posture-with-azure-security-center"></a>Stärken Ihres Sicherheitsstatus mit Azure Security Center
+Dieser Artikel hilft Ihnen dabei, Ihren Sicherheitsstatus zu stärken. Stellen Sie mithilfe der Überwachungsfunktionen von Azure Security Center möglichst hohe Ressourcensicherheit sicher, und überwachen Sie die Einhaltung von Richtlinien.
 
-## <a name="what-is-resource-security-hygiene"></a>Was ist Ressourcensicherheit?
-Überwachung wird häufig als Beobachten und Warten auf ein Eintreten eines Ereignisses aufgefasst, damit auf diese Situation reagiert werden kann. Ressourcensicherheit bezieht sich auf eine proaktive Strategie, bei der Ihre Ressourcen überwacht werden, um Systeme zu erkennen, die nicht den Unternehmensstandards oder bewährten Methoden entsprechen.
+## <a name="how-do-you-strengthen-your-security-posture"></a>Wie stärken Sie Ihren Sicherheitsstatus?
+Überwachung wird häufig als Beobachten und Warten auf ein Eintreten eines Ereignisses aufgefasst, damit auf diese Situation reagiert werden kann. Das Stärken des Sicherheitsstatus bezeichnet eine proaktive Strategie, bei der Ihre Ressourcen überwacht werden, um Systeme zu erkennen, die nicht den Unternehmensstandards oder bewährten Methoden entsprechen.
 
-## <a name="resource-security-hygiene"></a>Ressourcensicherheit
 Nach Aktivierung der [Sicherheitsrichtlinien](security-center-policies.md) für die Ressourcen eines Abonnements analysiert Security Center die Sicherheit Ihrer Ressourcen, um mögliche Sicherheitsrisiken zu erkennen. Informationen zur Netzwerkkonfiguration sind sofort verfügbar. Abhängig davon, auf wie vielen Ihrer (virtuellen und physischen) Computer der Agent installiert ist, kann es eine Stunde oder länger dauern, bis die Konfigurationsinformationen für die Computer (beispielsweise Sicherheitsupdatestatus und Betriebssystemkonfiguration) gesammelt wurden und verfügbar sind. Eine vollständige Liste der Probleme und Möglichkeiten zum Erhöhen der Sicherheit Ihres Netzwerks und Beheben von Risiken enthält die Kachel **Empfehlungen**.
 
 Sie können den Sicherheitsstatus Ihrer Ressourcen sowie ggf. vorliegende Probleme nach Ressourcentyp anzeigen:
@@ -54,4 +53,4 @@ In diesem Artikel haben Sie erfahren, wie Sie die Überwachungsfunktionen in Azu
 * [Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center:](security-center-managing-and-responding-alerts.md) Hier erfahren Sie, wie Sie Sicherheitswarnungen verwalten und darauf reagieren.
 * [Überwachen von Partnerlösungen mit Azure Security Center:](security-center-partner-solutions.md) Hier erfahren Sie, wie Sie den Integritätsstatus Ihrer Partnerlösungen überwachen.
 * [Azure Security Center – Häufig gestellte Fragen:](security-center-faq.md) Hier finden Sie häufig gestellte Fragen zur Verwendung des Diensts.
-* [Azure Security Blog](http://blogs.msdn.com/b/azuresecurity/) (Blog zur Azure-Sicherheit): Hier finden Sie Blogbeiträge zur Azure-Sicherheit und -Compliance.
+* [Azure Security Blog](https://blogs.msdn.com/b/azuresecurity/) (Blog zur Azure-Sicherheit): Hier finden Sie Blogbeiträge zur Azure-Sicherheit und -Compliance.

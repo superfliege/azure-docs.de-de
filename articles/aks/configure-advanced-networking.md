@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 10/11/2018
 ms.author: iainfou
-ms.openlocfilehash: 4c60474c07a3853e409436359713578178b639fb
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 289aa893a0ffa598d5b9fae67a81e9bf0c9782f7
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50024857"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51014396"
 ---
 # <a name="configure-advanced-networking-in-azure-kubernetes-service-aks"></a>Konfigurieren von erweiterten Netzwerken in Azure Kubernetes Service (AKS)
 
@@ -35,12 +35,21 @@ Für Cluster, für die die Netzwerkoption „Advanced“ (Erweitert) konfigurier
 
 IP-Adressen für die Pods und die Knoten des Clusters werden über das angegebene Subnetz im virtuellen Netzwerk zugewiesen. Jeder Knoten wird mit einer primären IP-Adresse konfiguriert. Standardmäßig werden 30 zusätzliche IP-Adressen durch Azure CNI vorkonfiguriert, die den im Knoten geplanten Pods zugewiesen werden. Wenn Sie Ihren Cluster horizontal hochskalieren, wird jeder Knoten auf ähnliche Weise mit IP-Adressen aus dem Subnetz konfiguriert. Sie können auch die [maximale Anzahl von Pods pro Knoten](#maximum-pods-per-node) anzeigen.
 
+> [!IMPORTANT]
+> Die Anzahl der erforderlichen IP-Adressen sollte Überlegungen für Upgrade- und Skalierungsvorgänge beinhalten. Wenn Sie den IP-Adressbereich so einstellen, dass er nur eine feste Anzahl von Knoten unterstützt, können Sie Ihren Cluster nicht aktualisieren oder skalieren.
+>
+> - Wenn Sie Ihren AKS-Cluster **aktualisieren**, wird im Cluster ein neuer Knoten bereitgestellt. Dienste und Workloads werden auf dem neuen Knoten ausgeführt, und ein älterer Knoten wird aus dem Cluster entfernt. Dieser rollende Aktualisierungsprozess erfordert, dass mindestens ein zusätzlicher Block von IP-Adressen verfügbar ist. Die Knotenanzahl ist dann `n + 1`.
+>
+> - Wenn Sie Ihren AKS-Cluster **skalieren**, wird im Cluster ein neuer Knoten bereitgestellt. Dienste und Workloads werden auf dem neuen Knoten ausgeführt. Bei Ihrem IP-Adressbereich muss berücksichtigt werden, wie Sie die Anzahl der Knoten und Pods, die Ihr Cluster unterstützen kann, vergrößern können. Es sollte auch ein zusätzlicher Knoten für Aktualisierungsvorgänge integriert werden. Die Knotenanzahl ist dann `n + number-of-additional-scaled-nodes-you-anticipate + 1`.
+
+Wenn Sie erwarten, dass Ihre Knoten die maximale Anzahl von Pods ausführen und regelmäßig Pods zerstören und bereitstellen, sollten Sie auch einige zusätzliche IP-Adressen pro Knoten berücksichtigen. Diese zusätzlichen IP-Adressen berücksichtigen, dass es einige Sekunden dauern kann, bis ein Dienst gelöscht und die IP-Adresse für einen neuen Dienst freigegeben wird und die Adresse erworben wird.
+
 Der IP-Adressplan eines AKS-Clusters enthält neben einem virtuellen Netzwerk mindestens ein Subnetz für Knoten und Pods sowie einen Kubernetes-Dienstadressbereich.
 
 | Adressbereich/Azure-Ressourcen | Grenzen und Kontingente |
 | --------- | ------------- |
 | Virtuelles Netzwerk | Das virtuelle Azure-Netzwerk kann eine Größe von /8 haben, ist aber auf 65.536 konfigurierte IP-Adressen beschränkt. |
-| Subnetz | Muss groß genug für die Knoten, Pods und alle Kubernetes- und Azure-Ressourcen sein, die in Ihrem Cluster bereitgestellt werden können. Wenn Sie beispielsweise einen internen Azure Load Balancer bereitstellen, werden dessen Front-End-IP-Adressen aus dem Clusternetzwerk zugeordnet, nicht die öffentlichen IP-Adressen. <p/>So wird die *mindestens erforderliche* Subnetzgröße berechnet: `(number of nodes) + (number of nodes * maximum pods per node that you configure)` <p/>Beispiel für einen Cluster mit 50 Knoten: `(50) + (50 * 30 (default)) = 1,550` (/ 21 oder mehr)<p>Wenn Sie beim Erstellen des Clusters keine maximale Anzahl von Pods pro Knoten angeben, wird diese auf *30* festgelegt. Die mindestens erforderliche Anzahl von IP-Adressen basiert auf diesem Wert. Wenn Sie Ihre mindestens erforderliche Anzahl von IP-Adressen anhand eines anderen Maximalwerts berechnen, finden Sie Informationen zum Festlegen dieses Werts beim Bereitstellen Ihres Clusters unter [Konfigurieren der maximalen Anzahl von Pods pro Knoten](#configure-maximum---new-clusters). |
+| Subnetz | Muss groß genug für die Knoten, Pods und alle Kubernetes- und Azure-Ressourcen sein, die in Ihrem Cluster bereitgestellt werden können. Wenn Sie beispielsweise einen internen Azure Load Balancer bereitstellen, werden dessen Front-End-IP-Adressen aus dem Clusternetzwerk zugeordnet, nicht die öffentlichen IP-Adressen. Die Größe des Subnetzes sollte auch Aktualisierungsvorgänge oder zukünftige Skalierungsanforderungen berücksichtigen.<p />So berechnen Sie die *Mindestsubnetzgröße* mit einem zusätzlichen Knoten für Aktualisierungsvorgänge: `(number of nodes + 1) + ((number of nodes + 1) * maximum pods per node that you configure)`<p/>Beispiel für einen Cluster mit 50 Knoten: `(51) + (51  * 30 (default)) = 1,581` (/ 21 oder mehr)<p/>Beispiel für einen 50-Knoten-Cluster, der auch die Möglichkeit beinhaltet, ihn um weitere 10 Knoten hochzuskalieren: `(61) + (61 * 30 (default)) = 2,440` (/20 oder größer)<p>Wenn Sie beim Erstellen des Clusters keine maximale Anzahl von Pods pro Knoten angeben, wird diese auf *30* festgelegt. Die mindestens erforderliche Anzahl von IP-Adressen basiert auf diesem Wert. Wenn Sie Ihre mindestens erforderliche Anzahl von IP-Adressen anhand eines anderen Maximalwerts berechnen, finden Sie Informationen zum Festlegen dieses Werts beim Bereitstellen Ihres Clusters unter [Konfigurieren der maximalen Anzahl von Pods pro Knoten](#configure-maximum---new-clusters). |
 | Kubernetes-Dienstadressbereich | Dieser Bereich darf nicht von Netzwerkelementen verwendet werden, die sich in diesem virtuellen Netzwerk befinden oder damit verbunden sind. Das Dienstadress-CIDR darf höchstens eine Größe von /12 aufweisen. |
 | Kubernetes-DNS-Dienst – IP-Adresse | Die IP-Adresse im Kubernetes-Dienstadressbereich wird bei der Clusterdienstermittlung (kube-dns) verwendet. |
 | Docker-Bridge-Adresse | Die IP-Adresse (in CIDR-Schreibweise) wird auf Knoten als Docker-Bridge-Adresse verwendet. Standard 172.17.0.1/16. |
@@ -73,7 +82,7 @@ Beim Erstellen eines AKS-Clusters können folgende Parameter für erweiterte Net
 
 **Virtuelles Netzwerk**: Das virtuelle Netzwerk, in dem Sie den Kubernetes-Cluster bereitstellen möchten. Wenn Sie ein neues virtuelles Netzwerk für Ihren Cluster erstellen möchten, können Sie *Neu erstellen* wählen und die Schritte im Abschnitt *Erstellen eines virtuellen Netzwerks* ausführen. Weitere Informationen zu Grenzwerten und Kontingenten für virtuelle Azure-Netzwerke finden Sie unter [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](../azure-subscription-service-limits.md#azure-resource-manager-virtual-networking-limits).
 
-**Subnetz**: Das Subnetz im virtuellen Netzwerk, in dem Sie den Cluster bereitstellen möchten. Wenn Sie ein neues Subnetz im virtuellen Netzwerk für Ihren Cluster erstellen möchten, können Sie *Neu erstellen* wählen und die Schritte im Abschnitt *Erstellen eines Subnetzes* ausführen.
+**Subnetz**: Das Subnetz im virtuellen Netzwerk, in dem Sie den Cluster bereitstellen möchten. Wenn Sie ein neues Subnetz im virtuellen Netzwerk für Ihren Cluster erstellen möchten, können Sie *Neu erstellen* wählen und die Schritte im Abschnitt *Erstellen eines Subnetzes* ausführen. Bei Hybridkonnektivität sollte sich der Adressbereich nicht mit anderen virtuellen Netzwerken in Ihrer Umgebung überschneiden.
 
 **Kubernetes-Dienstadressbereich**: Dies ist der Satz von virtuellen IP-Adressen, die Kubernetes [Diensten][services] in Ihrem Cluster zuweist. Sie können jeden privaten Adressbereich verwenden, der die folgenden Anforderungen erfüllen:
 

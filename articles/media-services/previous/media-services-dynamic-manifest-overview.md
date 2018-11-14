@@ -4,7 +4,7 @@ description: In diesem Thema wird erläutert, wie Sie Filter erstellen, mit dene
 services: media-services
 documentationcenter: ''
 author: cenkdin
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: ff102765-8cee-4c08-a6da-b603db9e2054
 ms.service: media-services
@@ -12,22 +12,22 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 01/22/2018
+ms.date: 11/06/2018
 ms.author: cenkd;juliako
-ms.openlocfilehash: 982af37a866f73292192b0c889e9eeb1e1291030
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 6060f294820281df3124fb2fc702ece59a006af1
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33783719"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51282406"
 ---
 # <a name="filters-and-dynamic-manifests"></a>Filter und dynamische Manifeste
-Ab Version 2.17 können Sie mit Media Services Filter für Ihre Medienobjekte definieren. Diese Filter sind serverseitige Regeln, mit denen Ihre Kunden verschiedene Aktionen ausführen können, z. B. Wiedergabe bestimmter Videoabschnitte (anstelle des gesamten Videos). Sie können zudem nur eine Teilmenge von Audio- und Videowiedergaben (anstelle von allen mit dem Medienobjekt verknüpften Wiedergaben) angeben, die für das Gerät eines Kunden geeignet sind. Diese Filterung der Medienobjekte erfolgt durch **dynamische Manifeste**, die auf Anfrage des Kunden zum Streamen von Videos basierend auf bestimmten Filtern erstellt werden.
+Ab Version 2.17 können Sie mit Media Services Filter für Ihre Medienobjekte definieren. Diese Filter sind serverseitige Regeln, mit denen Ihre Kunden verschiedene Aktionen ausführen können, z.B. Wiedergabe bestimmter Videoabschnitte (anstelle des gesamten Videos). Sie können zudem nur eine Teilmenge von Audio- und Videowiedergaben (anstelle von allen mit dem Medienobjekt verknüpften Wiedergaben) angeben, die für das Gerät eines Kunden geeignet sind. Diese Filterung der Medienobjekte erfolgt über **dynamische Manifeste**, die auf Anfrage des Kunden zum Streamen von Videos basierend auf bestimmten Filtern erstellt werden.
 
 In diesem Thema werden allgemeine Szenarien behandelt, bei denen die Verwendung von Filtern für Ihre Kunden von großem Nutzen sein kann. Außerdem werden Links zu Themen vorgestellt, in denen die programmgesteuerte Erstellung von Filtern erläutert wird.
 
 ## <a name="overview"></a>Übersicht
-Bei der Übermittlung Ihrer Inhalte für Kunden (Streaming von Liveereignissen oder Video-on-Demand) besteht Ihr Ziel darin, qualitativ hochwertige Videos für unterschiedliche Geräte unter verschiedenen Netzwerkbedingungen zu übermitteln. Gehen Sie wie folgt vor, um dieses Ziel zu erreichen:
+Bei der Übermittlung Ihrer Inhalte an Kunden (Streaming von Liveveranstaltungen oder Video-on-Demand) besteht Ihr Ziel darin, qualitativ hochwertige Videos für unterschiedliche Geräte unter verschiedenen Netzwerkbedingungen zu übermitteln. Gehen Sie wie folgt vor, um dieses Ziel zu erreichen:
 
 * Codieren Sie den Stream in einen Videostream mit mehreren Bitraten ([mit adaptiver Bitrate](http://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)) (dies betrifft die Qualität und die Netzwerkbedingungen), und 
 * verwenden Sie [Media Services Dynamic Packaging](media-services-dynamic-packaging-overview.md) , um den Stream dynamisch erneut in verschiedene Protokolle zu packen (dies betrifft das Streaming auf verschiedenen Geräten). Media Services unterstützt die folgenden Technologien mit Adaptive Bitrate Streaming: HTTP Live Streaming (HLS), Smooth Streaming und MPEG-DASH. 
@@ -70,7 +70,7 @@ Hier ein Beispiel für eine Manifestdatei:
 ### <a name="dynamic-manifests"></a>Dynamische Manifeste
 Es gibt bestimmte [Szenarios](media-services-dynamic-manifest-overview.md#scenarios) , für die Ihre Kunden eine größere Flexibilität benötigen, als dies in den Einstellungen der Standardmanifestdatei des Medienobjekts beschrieben ist. Beispiel: 
 
-* Gerätespezifisch: Übermitteln nur der angegebenen Wiedergaben und/oder Sprachen, die von dem Gerät unterstützt werden, das für die Wiedergabe der Inhalte verwendet wird ("Filtern der Wiedergabe"). 
+* Gerätespezifisch: Übermitteln nur der angegebenen Wiedergaben und/oder Sprachen, die von dem Gerät unterstützt werden, das für die Wiedergabe der Inhalte verwendet wird („Filtern der Wiedergabe“). 
 * Reduzieren des Manifests, um einen Subclip eines Liveereignisses anzuzeigen ("Filtern von Subclips").
 * Kürzen des Starts eines Videos ("Kürzen eines Videos").
 * Anpassen des Präsentationsfensters (DVR), um eine begrenzte Größe des DVR-Fensters im Player anzugeben ("Anpassen des Präsentationsfensters").
@@ -115,7 +115,7 @@ Mit dynamischen Manifesten können Sie Geräteprofile erstellen, z. B. für Mob
 
 ![Beispiel für das Filtern der Wiedergabe][renditions2]
 
-Im folgenden Beispiel wurde ein Encoder zum Codieren eines Zwischenassets in sieben ISO-MP4s-Videowiedergaben (von 180p bis 1080p) verwendet. Das codierte Medienobjekt kann dynamisch in eines der folgenden Streamingprotokolle gepackt werden: HLS, Smooth Streaming und MPEG-DASH.  Oben in der Abbildung ist das HLS-Manifest für das Medienobjekt ohne Filter dargestellt (es enthält alle sieben Wiedergaben).  Links unten ist das HLS-Manifest abgebildet, auf das der Filter "ott" angewendet wurde. Der Filter "ott" gibt an, dass alle Bitraten unter 1 MBit/s entfernt werden. Dies führte dazu, dass zwei Qualitätsstufen in der Antwort entfernt wurden.  Rechts unten ist das HLS-Manifest abgebildet, auf das der Filter „mobile“ angewendet wurde. Der Filter "mobile" gibt an, dass Wiedergaben mit einer größeren Auflösung als 720p entfernt werden. Dies führte dazu, dass zwei Wiedergaben mit 1080p gelöscht wurden.
+Im folgenden Beispiel wurde ein Encoder zum Codieren eines Zwischenassets in sieben ISO-MP4s-Videowiedergaben (von 180p bis 1080p) verwendet. Das codierte Medienobjekt kann dynamisch in eines der folgenden Streamingprotokolle gepackt werden: HLS, Smooth Streaming und MPEG-DASH.  Oben in der Abbildung ist das HLS-Manifest für das Medienobjekt ohne Filter dargestellt (es enthält alle sieben Wiedergaben).  Links unten ist das HLS-Manifest abgebildet, auf das der Filter "ott" angewendet wurde. Der Filter "ott" gibt an, dass alle Bitraten unter 1 MBit/s entfernt werden. Dies führte dazu, dass zwei Qualitätsstufen in der Antwort entfernt wurden. Rechts unten ist das HLS-Manifest abgebildet, auf das der Filter „mobile“ angewandt wurde. Der Filter "mobile" gibt an, dass Wiedergaben mit einer größeren Auflösung als 720p entfernt werden. Dies führte dazu, dass zwei Wiedergaben mit 1080p gelöscht wurden.
 
 ![Filtern der Wiedergabe][renditions1]
 
@@ -181,7 +181,7 @@ Weitere Informationen finden Sie in [diesem](https://azure.microsoft.com/blog/az
 
 ## <a name="know-issues-and-limitations"></a>Bekannte Probleme und Einschränkungen
 * Dynamische Manifeste werden in GOP-Grenzen (Keyframes) ausgeführt, daher weisen Kürzungen GOP-Genauigkeit auf. 
-* Sie können die gleichen Filternamen für lokale und globale Filter verwenden. Beachten Sie, dass lokale Filter Vorrang vor globalen Filtern haben und diese überschreiben.
+* Sie können die gleichen Filternamen für lokale und globale Filter verwenden. Lokale Filter haben Vorrang vor globalen Filtern und überschreiben diese.
 * Wenn Sie einen Filter aktualisieren, kann es bis zu 2 Minuten dauern, bis die Regeln am Streamingendpunkt aktualisiert wurden. Wenn der Inhalt mit einigen Filtern verarbeitet (und in Proxys und CDN-Caches zwischengespeichert) wurde, können durch Aktualisieren dieser Filter Player-Fehler auftreten. Es wird empfohlen, den Cache nach dem Aktualisieren des Filters zu leeren. Wenn dies nicht möglich ist, empfiehlt sich die Verwendung eines anderen Filters.
 
 ## <a name="media-services-learning-paths"></a>Media Services-Lernpfade

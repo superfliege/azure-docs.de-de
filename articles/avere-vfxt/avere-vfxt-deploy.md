@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: v-erkell
-ms.openlocfilehash: 47773f9375927e4d8dfbfec922e4cf11e42ade04
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 359ada08f1d9df6b60fc27ca385f6003af498e17
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50670047"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50958600"
 ---
 # <a name="deploy-the-vfxt-cluster"></a>Bereitstellen des vFXT-Clusters
 
@@ -30,7 +30,7 @@ Weitere Informationen zu den Schritten und der Planung der Clusterbereitstellung
 
 Nachdem Sie die Anweisungen in diesem Dokument befolgt haben, verfügen Sie über ein virtuelles Netzwerk, ein Subnetz, einen Controller und einen vFXT-Cluster, wie in der folgenden Abbildung dargestellt:
 
-![Diagramm, das das VNet mit optionalem Blobspeicher und ein Subnetz mit drei gruppierten virtuellen Computern mit der Bezeichnung „vFXT-Knoten/vFXT-Cluster“ und einem virtuellen Computer mit der Bezeichnung „Clustercontroller“ zeigt.](media/avere-vfxt-deployment-500px.png)
+![Diagramm, das das VNet mit optionalem Blobspeicher und ein Subnetz mit drei gruppierten virtuellen Computern mit der Bezeichnung „vFXT-Knoten/vFXT-Cluster“ und einem virtuellen Computer mit der Bezeichnung „Clustercontroller“ zeigt.](media/avere-vfxt-deployment.png)
 
 Vergewissern Sie sich vor dem Start, dass diese Voraussetzungen erfüllt sind:  
 
@@ -198,9 +198,7 @@ Sie können auch fehlende Informationen finden, indem Sie zur Informationsseite 
 
 Gehen Sie wie folgt vor, um diese Informationen in der Resource Manager-Vorlagenausgabe zu finden:
 
-1. Klicken Sie über das Benachrichtigungssymbol in der oberen Leiste des Azure-Portals auf **Zu Ressourcengruppe wechseln**. Dadurch wird die neue Ressourcengruppe angezeigt, die Ihren Controller und Ihr VNet enthält.
-
-   ![Benachrichtigungsbereich des Portals mit der Meldung „Bereitstellung erfolgreich“ und den Schaltflächen „Zu Ressourcengruppe wechseln“ und „An Dashboard anheften“.](media/avere-vfxt-browse-to-rg.png)
+1. Navigieren Sie zu der Ressourcengruppe für Ihren Clustercontroller.
 
 1. Klicken Sie auf der linken Seite auf **Bereitstellungen** und dann auf **Microsoft.Template**.
 

@@ -1,5 +1,5 @@
 ---
-title: Leistungstipps für Azure Cosmos DB und .NET | Microsoft-Dokumentation
+title: Leistungstipps für Azure Cosmos DB und .NET | Microsoft Docs
 description: Machen Sie sich mit Clientkonfigurationsoptionen zur Verbesserung der Leistung von Azure Cosmos DB-Datenbanken vertraut.
 keywords: "So wird's gemacht: Verbessern der Datenbankleistung"
 services: cosmos-db
@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/24/2018
 ms.author: sngun
-ms.openlocfilehash: a805294ecb416d18f3ce13981d26a7d25cd5a204
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 3e724301d235db49ab9332dedc877d7315460ecc
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47432850"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51256169"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Leistungstipps für Azure Cosmos DB und .NET
 
@@ -25,7 +25,7 @@ ms.locfileid: "47432850"
 > * [.NET](performance-tips.md)
 > 
 
-Azure Cosmos DB ist eine schnelle und flexible verteilte Datenbank mit nahtloser Skalierung, garantierter Latenz und garantiertem Durchsatz. Die Skalierung Ihrer Datenbank mit Azure Cosmos DB erfordert weder aufwendige Änderungen an der Architektur noch das Schreiben von komplexem Code. Zentrales Hoch- und Herunterskalieren ist ebenso problemlos möglich wie das Aufrufen einer einzelnen API oder [SDK-Methode](set-throughput.md#set-throughput-sdk). Weil der Zugriff auf Azure Cosmos DB jedoch über Netzwerkaufrufe erfolgt, können Sie clientseitige Optimierungen vornehmen, um bei Verwendung des [SQL .NET SDK](documentdb-sdk-dotnet.md) eine optimale Leistung zu erzielen.
+Azure Cosmos DB ist eine schnelle und flexible verteilte Datenbank mit nahtloser Skalierung, garantierter Latenz und garantiertem Durchsatz. Die Skalierung Ihrer Datenbank mit Azure Cosmos DB erfordert weder aufwendige Änderungen an der Architektur noch das Schreiben von komplexem Code. Zentrales Hoch- und Herunterskalieren ist ebenso problemlos möglich wie ein einzelner API-Aufruf. Weitere Informationen finden Sie unter [Bereitstellen von Containerdurchsatz](how-to-provision-container-throughput.md) und [Bereitstellen von Datenbankdurchsatz](how-to-provision-database-throughput.md). Weil der Zugriff auf Azure Cosmos DB jedoch über Netzwerkaufrufe erfolgt, können Sie clientseitige Optimierungen vornehmen, um bei Verwendung des [SQL .NET SDK](documentdb-sdk-dotnet.md) eine optimale Leistung zu erzielen.
 
 Im Anschluss finden Sie einige Optionen zur Optimierung der Datenbankleistung:
 
@@ -118,7 +118,7 @@ Im Anschluss finden Sie einige Optionen zur Optimierung der Datenbankleistung:
     In einigen Fällen kann es hilfreich sein, die Häufigkeit zu verringern, mit der die Garbage Collection ausgeführt wird. Legen Sie [gcServer](https://msdn.microsoft.com/library/ms229357.aspx) in .NET auf „True“ fest.
 6. **Implementieren eines Backoffs in RetryAfter-Intervallen**
 
-    Es empfiehlt sich, die Last während Leistungstests so lange erhöhen, bis eine geringe Menge von Anforderungen gedrosselt wird. Wenn es sich um eine gedrosselte Anwendung handelt, sollte die Clientanwendung diese Drosselung für das vom Server angegebene Wiederholungsintervall aussetzen. Durch das Aussetzen wird die geringstmögliche Wartezeit zwischen den Wiederholungsversuchen gewährleistet. Wiederholungsrichtlinien werden ab Version 1.8.0 von SQL ([.NET](sql-api-sdk-dotnet.md) und [Java](sql-api-sdk-java.md)) bzw. ab Version 1.9.0 ([Node.js](sql-api-sdk-node.md) und [Python](sql-api-sdk-python.md)) und in allen unterstützten Versionen der [.NET Core](sql-api-sdk-dotnet-core.md)-SDKs unterstützt. Weitere Informationen finden Sie unter [Überschreiten von Grenzwerten für den reservierten Durchsatz](request-units.md#RequestRateTooLarge) sowie unter [RetryAfter](https://msdn.microsoft.com/library/microsoft.azure.documents.documentclientexception.retryafter.aspx).
+    Es empfiehlt sich, die Last während Leistungstests so lange erhöhen, bis eine geringe Menge von Anforderungen gedrosselt wird. Wenn es sich um eine gedrosselte Anwendung handelt, sollte die Clientanwendung diese Drosselung für das vom Server angegebene Wiederholungsintervall aussetzen. Durch das Aussetzen wird die geringstmögliche Wartezeit zwischen den Wiederholungsversuchen gewährleistet. Wiederholungsrichtlinien werden ab Version 1.8.0 von SQL ([.NET](sql-api-sdk-dotnet.md) und [Java](sql-api-sdk-java.md)) bzw. ab Version 1.9.0 ([Node.js](sql-api-sdk-node.md) und [Python](sql-api-sdk-python.md)) und in allen unterstützten Versionen der [.NET Core](sql-api-sdk-dotnet-core.md)-SDKs unterstützt. Weitere Informationen finden Sie unter [RetryAfter](https://msdn.microsoft.com/library/microsoft.azure.documents.documentclientexception.retryafter.aspx).
     
     .NET SDK ab Version 1.19 verfügt über einen Mechanismus zum Protokollieren zusätzlicher Diagnoseinformationen und zum Beheben von Problemen mit der Latenz, wie im folgenden Beispiel gezeigt. Sie können die Diagnosezeichenfolge für Anforderungen protokollieren, die eine höhere Leselatenz aufweisen. Mithilfe der erfassten Diagnosezeichenfolge können Sie ermitteln, wie häufig bei einer bestimmten Anforderung der Fehler 429 aufgetreten ist.
     ```csharp

@@ -9,12 +9,12 @@ ms.date: 06/25/2018
 ms.topic: troubleshooting
 ms.service: service-fabric-mesh
 manager: timlt
-ms.openlocfilehash: d0ae7fbb22f6d98662f83968158182d447a75394
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: f80f61cbfc1f7b719e73d7d29c6948bebe84aa6c
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39501966"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51278309"
 ---
 # <a name="commonly-asked-service-fabric-mesh-questions"></a>Häufig gestellte Fragen zu Service Fabric Mesh
 Azure Service Fabric Mesh ist ein vollständig verwalteter Dienst, der es Entwicklern ermöglicht, Microservicesanwendungen zu implementieren, ohne virtuelle Computer, Speicher oder Netzwerke verwalten zu müssen. Dieser Artikel bietet Antworten auf häufig gestellte Fragen.
@@ -27,24 +27,54 @@ Im [GitHub-Repository service-fabric-mesh-preview](https://aka.ms/sfmeshissues) 
 
 **Wie hoch sind die Kosten für die Teilnahme an der Vorschauversion?**
 
-Es fallen keine Kosten für die Bereitstellung von Anwendungen oder Containern in der Vorschauversion von Mesh an. Sie werden jedoch gebeten, die von Ihnen bereitgestellten Ressourcen zu löschen und sie nicht weiter auszuführen, es sei denn, Sie testen sie aktiv.
+Es fallen derzeit keine Kosten für die Bereitstellung von Anwendungen oder Containern in der Vorschauversion von Mesh an. Sie werden jedoch gebeten, die von Ihnen bereitgestellten Ressourcen zu löschen und nicht weiter auszuführen, es sei denn, Sie testen sie aktiv.
 
 **Gibt es eine Kontingentgrenze für die Anzahl der Kerne und den Arbeitsspeicher?**
 
-Ja, die Kontingente für jedes Abonnement sind wie folgt:
+Ja, die Kontingente für jedes Abonnement sind wie folgt festgelegt:
 
 - Anzahl von Anwendungen: 5 
-- Anzahl der Kerne je Anwendung: 12 
+- Kerne pro Anwendung: 12 
 - RAM insgesamt pro Anwendung: 48 GB 
-- Anzahl der Netzwerk- und Eingangsendpunkte: 5  
-- Anzahl der anfügbaren Azure-Volumes: 10 
+- Netzwerk- und Eingangsendpunkte: 5  
+- Anfügbare Azure-Volumes: 10 
 - Anzahl der Dienstreplikate: 3 
 - Der größte Container, den Sie bereitstellen können, ist auf 4 Kerne und 16 GB RAM beschränkt.
 - Sie können Ihren Containern Teilkerne in Schritten von 0,5 Kernen bis maximal 6 Kernen zuweisen.
 
-**Kann ich meine Anwendung über Nacht laufen lassen?**
+**Wie lange kann ich meine Anwendung bereitgestellt lassen?**
 
-Ja, das ist möglich. Sie werden jedoch gebeten, die von Ihnen bereitgestellten Ressourcen zu löschen und sie nicht weiter auszuführen, es sei denn, Sie testen sie aktiv. Diese Richtlinie kann sich in Zukunft ändern, und die Ressourcen können gelöscht werden, wenn sie unsachgemäß verwendet werden.
+Wir haben die Lebensdauer einer Anwendung zurzeit auf zwei Tage beschränkt. Dadurch soll die Verwendung der für die Vorschau reservierten freien Kerne maximiert werden. Daher dürfen Sie eine bestimmten Bereitstellung nur für 48 Stunden durchgehend ausführen. Nach Ablauf dieser Zeit wird sie durch das System heruntergefahren. Wenn dies geschieht, können Sie bestätigen, dass das System sie heruntergefahren hat, indem Sie in der Azure-Befehlszeilenschnittstelle den Befehl `az mesh app show` ausführen und überprüfen, ob er `"status": "Failed", "statusDetails": "Stopped resource due to max lifetime policies for an application during preview. Delete the resource to continue."` zurückgibt. 
+
+Beispiel:  
+
+```cli
+chackdan@Azure:~$ az mesh app show --resource-group myResourceGroup --name helloWorldApp
+{
+  "debugParams": null,
+  "description": "Service Fabric Mesh HelloWorld Application!",
+  "diagnostics": null,
+  "healthState": "Ok",
+  "id": "/subscriptions/1134234-b756-4979-84re-09d671c0c345/resourcegroups/myResourceGroup/providers/Microsoft.ServiceFabricMesh/applications/helloWorldApp",
+  "location": "eastus",
+  "name": "helloWorldApp",
+  "provisioningState": "Succeeded",
+  "resourceGroup": "myResourceGroup",
+  "serviceNames": [
+    "helloWorldService"
+  ],
+  "services": null,
+  "status": "Failed",
+  "statusDetails": "Stopped resource due to max lifetime policies for an application during preview. Delete the resource to continue.",
+  "tags": {},
+  "type": "Microsoft.ServiceFabricMesh/applications",
+  "unhealthyEvaluation": null
+}
+```
+
+Um dieselbe Anwendung in Mesh weiterhin bereitzustellen, sollten Sie die der Anwendung zugeordnete Ressourcengruppe löschen oder die Anwendung und alle zugehörigen Mesh-Ressourcen (einschließlich des Netzwerks) einzeln entfernen. 
+
+Um die Ressourcengruppe zu löschen, verwenden Sie den Befehl `az group delete <nameOfResourceGroup>`. 
 
 ## <a name="supported-container-os-images"></a>Unterstützte Images von Containerbetriebssystemen
 Die folgenden Images von Containerbetriebssystemen können beim Bereitstellen von Diensten verwendet werden.

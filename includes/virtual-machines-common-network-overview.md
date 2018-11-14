@@ -5,15 +5,15 @@ services: virtual-machines-windows
 author: cynthn
 ms.service: virtual-machines-windows
 ms.topic: include
-ms.date: 03/11/2018
+ms.date: 11/01/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: d750ac7a5ac847a8c1eb5a9c91bb42804c2eebe0
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 73273447bcf534f6ffd4584673756c40e8509e21
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49437014"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50973809"
 ---
 Beim Erstellen eines virtuellen Azure-Computers (VM) müssen Sie ein [virtuelles Netzwerk](../articles/virtual-network/virtual-networks-overview.md) (VNet) erstellen oder ein vorhandenes VNet verwenden. Außerdem müssen Sie entscheiden, wie auf Ihre VMs im VNet zugegriffen werden soll. Es ist wichtig, [vor dem Erstellen von Ressourcen einen Plan aufzustellen](../articles/virtual-network/virtual-network-vnet-plan-design-arm.md) und sicherzustellen, dass Sie die [Einschränkungen von Netzwerkressourcen](../articles/azure-subscription-service-limits.md#networking-limits) verstehen.
 
@@ -36,9 +36,7 @@ Zusätzlich zu diesen grundlegenden Ressourcen sollten Sie auch die folgenden op
 
 Eine [Netzwerkschnittstelle (NIC)](../articles/virtual-network/virtual-network-network-interface.md) ist die Verbindung zwischen einer VM und einem virtuellen Netzwerk (VNet). Eine VM muss mindestens eine NIC haben. Es können je nach der Größe Ihrer erstellten VM aber auch mehr sein. Informieren Sie sich darüber, wie viele Netzwerkkarten jede VM-Größe für [Windows](../articles/virtual-machines/windows/sizes.md) oder [Linux](../articles/virtual-machines/linux/sizes.md) unterstützt.
 
-Sie können eine VM mit mehreren Netzwerkkarten erstellen und über den Lebenszyklus einer VM hinweg Netzwerkkarten hinzufügen oder entfernen. Bei mehreren Netzwerkkarten kann eine VM eine Verbindung mit verschiedenen Subnetzen herstellen und Datenverkehr über die am besten geeignete Schnittstelle senden oder empfangen.
-
-Wenn die VM einer Verfügbarkeitsgruppe hinzugefügt wird, müssen alle VMs in der Verfügbarkeitsgruppe über mindestens eine NIC verfügen. VMs mit mehr als einer NIC müssen nicht die gleiche Anzahl von NICs aufweisen, aber sie müssen alle mindestens über zwei NICs verfügen.
+Sie können eine VM mit mehreren Netzwerkkarten erstellen und über den Lebenszyklus einer VM hinweg Netzwerkkarten hinzufügen oder entfernen. Bei mehreren Netzwerkkarten kann eine VM eine Verbindung mit verschiedenen Subnetzen herstellen und Datenverkehr über die am besten geeignete Schnittstelle senden oder empfangen. In einer Verfügbarkeitsgruppe können VMs mit bis zu der von der VM-Größe unterstützten Anzahl von Netzwerkschnittstellen vertreten sein. 
 
 Jede NIC, die an eine VM angefügt ist, muss sich an demselben Standort und unter demselben Abonnement wie die VM befinden. Jede NIC muss mit einem VNET verbunden werden, das in derselben Azure-Region und unter demselben Abonnement wie die NIC vorhanden ist. Sie können das Subnetz, mit dem eine VM verbunden ist, nach der Erstellung ändern, aber eine Änderung des VNet ist nicht möglich. Jeder NIC, die an eine VM angefügt ist, wird eine MAC-Adresse zugewiesen, die sich nicht ändert, bis die VM gelöscht wird.
 
@@ -151,7 +149,7 @@ In dieser Tabelle sind die Methoden aufgeführt, die Sie zum Erstellen eines int
 
 VMs können in demselben VNet erstellt werden, und die Verbindung dazwischen kann über private IP-Adressen hergestellt werden. Das Herstellen der Verbindung ist auch dann möglich, wenn sie sich in unterschiedlichen Subnetzen befinden, ohne dass Gateways konfiguriert oder öffentliche IP-Adressen verwendet werden müssen. Zum Einfügen von VMs in ein VNet erstellen Sie das VNet und weisen es dann beim Erstellen der einzelnen VMs dem VNet und dem Subnetz zu. VMs beschaffen sich ihre Netzwerkeinstellungen während der Bereitstellung oder des Startvorgangs.  
 
-VMs wird eine IP-Adresse zugewiesen, wenn sie bereitgestellt werden. Falls Sie mehrere VMs in einem VNet oder Subnetz bereitstellen, werden dafür beim Starten IP-Adressen zugewiesen. Eine dynamische IP-Adresse (DIP) ist die interne IP-Adresse, die einer VM zugeordnet ist. Sie können eine statische DIP einer VM zuordnen. Beim Zuordnen einer statischen DIP sollten Sie die Verwendung eines spezifischen Subnetzes erwägen, um zu verhindern, dass versehentlich eine statische DIP für eine andere VM wiederverwendet wird.  
+VMs wird eine IP-Adresse zugewiesen, wenn sie bereitgestellt werden. Falls Sie mehrere VMs in einem VNet oder Subnetz bereitstellen, werden dafür beim Starten IP-Adressen zugewiesen. Sie können auch eine statische IP einer VM zuordnen. Erwägen Sie beim Zuordnen einer statischen IP die Verwendung eines spezifischen Subnetzes, um zu verhindern, dass eine statische IP versehentlich für eine andere VM wiederverwendet wird.  
 
 Wenn Sie eine VM erstellen und diese später in ein VNet migrieren möchten, ist dies keine einfache Änderung der Konfiguration. Sie müssen die VM im VNet neu bereitstellen. Die einfachste Möglichkeit zur erneuten Bereitstellung ist das Löschen der VM, ohne dass aber die daran angefügten Datenträger gelöscht werden. Anschließend wird die VM mit den Originaldatenträgern im VNet neu erstellt. 
 

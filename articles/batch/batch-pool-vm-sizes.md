@@ -12,14 +12,14 @@ ms.workload: ''
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/12/2018
+ms.date: 11/07/2018
 ms.author: danlep
-ms.openlocfilehash: 987cbcc642152a4077cc895ad06e43ac56113497
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: 35e5d13ac358fa5edcb778253340de0f9e15c067
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45544063"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51281277"
 ---
 # <a name="choose-a-vm-size-for-compute-nodes-in-an-azure-batch-pool"></a>Auswählen einer VM-Größe für Computeknoten in einem Azure Batch-Pool
 
@@ -42,8 +42,14 @@ Batch-Pools in der Konfiguration des virtuellen Computers unterstützen alle VM-
 | A-Serie | Standard_A0 |
 | B-Serie | Alle |
 
-Virtuelle Computer der M-Serie werden nur für Knoten mit niedriger Priorität unterstützt.
+Die folgenden VM-Größen werden nur für Knoten mit niedriger Priorität unterstützt:
 
+| Familie  | Unterstützte Größen  |
+|---------|---------|
+| M-Serie | Standard_M64ms |
+| M-Serie | Standard_M128s |
+
+Andere VM-Größen der M-Serie werden derzeit nicht unterstützt.
 
 ### <a name="pools-in-cloud-service-configuration"></a>Pools in der Clouddienstkonfiguration
 
@@ -55,6 +61,7 @@ Batch-Pools in der Clouddienstkonfiguration unterstützen alle [VM-Größen für
 | Av2-Serie | Standard_A1_v2, Standard_A2_v2, Standard_A2m_v2 |
 
 ## <a name="restricted-vm-families"></a>Eingeschränkte VM-Familien
+
 Die folgenden VM-Familien können in Batch-Pools zugewiesen werden, Sie müssen jedoch eine bestimmte Kontingenterhöhung anfordern (siehe [dieser Artikel](batch-quota-limit.md#increase-a-quota)):
 * NCv2-Serie
 * NCv3-Serie

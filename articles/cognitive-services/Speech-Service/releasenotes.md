@@ -1,5 +1,5 @@
 ---
-title: 'Spracherkennungsdienst-SDK: Dokumentation'
+title: 'Speech Service SDK: Dokumentation'
 titlesuffix: Azure Cognitive Services
 description: Versionshinweise – Änderungen in den neuesten Versionen
 services: cognitive-services
@@ -8,18 +8,49 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: conceptual
-ms.date: 10/12/2018
+ms.date: 11/06/2018
 ms.author: wolfma
-ms.openlocfilehash: b5e4d239121b2449a45dfce826c99765f1c3f4be
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: e2c676932541866df081f6db54fa0b1ec4da7088
+ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49471136"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51218592"
 ---
 # <a name="release-notes"></a>Versionshinweise
 
-## <a name="speech-service-sdk-101"></a>Speech-Dienst-SDK 1.0.1
+## <a name="speech-service-sdk-110"></a>Speech Service SDK 1.1.0
+
+**Neue Features**
+
+* Unterstützung für Android x86/x64.
+* Proxyunterstützung: Im SpeechConfig-Objekt können Sie jetzt eine Funktion aufrufen, um die Proxyinformationen (Hostname, Port, Benutzername und Kennwort) festzulegen. Dieses Feature ist in iOS noch nicht verfügbar.
+* Verbesserte Fehlercodes und Meldungen. Wenn eine Erkennung einen Fehler zurückgab, wurde dadurch bereits `Reason` (im abgebrochenen Ereignis) oder `CancellationDetails` (im Erkennungsergebnis) auf `Error` festgelegt. Das abgebrochene Ereignis enthält jetzt zwei zusätzliche Member: `ErrorCode` und `ErrorDetails`. Wenn der Server zusätzliche Fehlerinformationen mit dem Fehler zurückgibt, sind diese jetzt in den neuen Membern verfügbar.
+
+**Verbesserungen**
+
+* In der Konfiguration der Erkennung wurde eine zusätzliche Überprüfung hinzugefügt, und es wurde eine zusätzliche Fehlermeldung hinzugefügt.
+* Die Verarbeitung von langen Pausen mitten in einer Audiodatei wurde verbessert.
+* NuGet-Paket: Für .NET Framework-Projekte wird die Erstellung mit AnyCPU-Konfiguration verhindert.
+
+**Fehlerbehebungen**
+
+* In Erkennungen wurden verschiedene Ausnahmen behoben. Darüber hinaus werden Ausnahmen abgefangen und in abgebrochene Ereignisse konvertiert.
+* Ein Arbeitsspeicherverlust in der Eigenschaftenverwaltung wurde behoben.
+* Es wurde ein Fehler behoben, bei dem eine Audioeingabedatei zum Absturz der Erkennung führen konnte.
+* Es wurde ein Fehler behoben, bei dem nach dem Ereignis zum Beenden einer Sitzung weiter Ereignisse empfangen werden konnten.
+* Einige Racebedingungen im Threading wurden korrigiert.
+* Ein iOS-Kompatibilitätsproblem wurde behoben, das zu einem Absturz führen konnte.
+* Verbesserungen bei der Stabilität für die Android-Mikrofonunterstützung.
+* Es wurde ein Fehler behoben, bei dem eine Erkennung in JavaScript die Erkennungssprache ignorierte.
+* Es wurde ein Fehler behoben, der (in einigen Fällen) das Festlegen der EndpointId in JavaScript verhinderte.
+* Die Parameterreihenfolge in AddIntent in JavaScript wurde geändert, und es wurde eine fehlende JavaScript-Signatur für AddIntent hinzugefügt.
+
+**Beispiele**
+
+* Unserem [Beispielrepository](https://aka.ms/csspeech/samples) wurde ein C++-Beispiel für die Verwendung von Pull- und Pushstreams hinzugefügt.
+
+## <a name="speech-service-sdk-101"></a>Speech Service SDK 1.0.1
 
 Verbesserte Zuverlässigkeit und Fehlerbehebungen:
 
