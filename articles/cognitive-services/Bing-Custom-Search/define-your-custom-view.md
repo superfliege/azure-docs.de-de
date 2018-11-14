@@ -10,12 +10,12 @@ ms.component: bing-custom-search
 ms.topic: conceptual
 ms.date: 09/28/2017
 ms.author: v-brapel
-ms.openlocfilehash: a74e6a6a90a242d4d1b2fd71a5fc6cf949ea55cb
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 5e168608202f81f698221b52315de83e9713feab
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48815255"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51282922"
 ---
 # <a name="configure-your-custom-search-experience"></a>Konfigurieren der Benutzeroberfläche für die benutzerdefinierte Suche
 
@@ -64,7 +64,7 @@ Auf ähnliche Weise können Sie der Liste „Blockiert“ Segmente hinzufügen (
 
 ## <a name="pinned-list"></a>Angeheftete Liste
 
-Im Portal können auch eine bestimmte Webseite am Anfang des Suchergebnisses anheften, wenn der Benutzer einen bestimmten Suchbegriff eingibt. Die Registerkarte **Angeheftet** enthält eine Liste mit Abfragebegriff- und Webseitenpaaren, die die Webseite angeben, die als oberstes Ergebnis für eine bestimmte Abfrage angezeigt wird. Weitere Informationen zum Anheften von Ergebnissen finden Sie unter [Anpassen der Rangfolge](#adjustrank).
+Im Portal können auch eine bestimmte Webseite am Anfang des Suchergebnisses anheften, wenn der Benutzer einen bestimmten Suchbegriff eingibt. Die Registerkarte **Angeheftet** enthält eine Liste mit Abfragebegriff- und Webseitenpaaren, die die Webseite angeben, die als oberstes Ergebnis für eine bestimmte Abfrage angezeigt wird. Außerdem werden nur indizierte Webseiten in Suchvorgängen angezeigt. Weitere Informationen zum Anheften von Ergebnissen finden Sie unter [Anpassen der Rangfolge](#adjustrank). 
 
 Das Anheften von Ergebnissen ist nicht für die Bildersuche und die Videosuche verfügbar.
 

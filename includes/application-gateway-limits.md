@@ -15,8 +15,9 @@
 | Anforderungstimeout max. |24 Stunden | |
 | Anzahl der Websites |20 |1 pro HTTP-Listener |
 | URL-Zuordnungen pro Listener |1 | |
+| Gleichzeitige WebSocket-Verbindungen |5.000| |
 |Maximale URL-Länge|8.000|
 | Maximale Dateiuploadgröße (Standard) |2 GB | |
-| Maximale Dateiuploadgröße (WAF) |100 MB| |
+| Maximale Dateiuploadgröße (WAF) |Mittlere WAF-Gateways – 100 MB<br>Große WAF-Gateways – 500 MB| |
 |WAF-Textgrößenbeschränkung (ohne Dateien)|128 KB|
 

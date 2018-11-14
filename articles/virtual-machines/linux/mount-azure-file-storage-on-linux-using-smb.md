@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/28/2018
 ms.author: cynthn
-ms.openlocfilehash: 7cd7f0f37f0d351d1d50d4c15e7132f072b5125d
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: fde8892f7a32d7b5405eef6661bbf29098325178
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46982204"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50958677"
 ---
 # <a name="mount-azure-file-storage-on-linux-vms-using-smb"></a>Bereitstellen von Azure File Storage auf Linux-VMs per SMB
 
@@ -100,6 +100,7 @@ Stellen Sie die Azure-Dateifreigabe für das lokale Verzeichnis bereit.
 sudo mount -t cifs //$STORAGEACCT.file.core.windows.net/myshare /mnt/MyAzureFileShare -o vers=3.0,username=$STORAGEACCT,password=$STORAGEKEY,dir_mode=0777,file_mode=0777,serverino
 ```
 
+Der obige Befehl verwendet den Befehl [mount](https://linux.die.net/man/8/mount), um die Azure-Dateifreigabe und die für [cifs](https://linux.die.net/man/8/mount.cifs) angegebenen Optionen einzubinden. Insbesondere die Optionen „file_mode“ und „dir_mode“ legen für Dateien und Verzeichnisse die Berechtigung `0777` fest. Die Berechtigung `0777` gewährt allen Benutzern Lese-, Schreib- und Ausführungszugriff. Sie können diese Berechtigungen ändern, indem Sie die Werte durch andere [chmod-Berechtigungen](https://en.wikipedia.org/wiki/Chmod) ersetzen. Sie können auch andere [cifs](https://linux.die.net/man/8/mount.cifs)-Optionen wie GID oder UID verwenden. 
 
 
 ## <a name="persist-the-mount"></a>Beibehalten der Bereitstellung

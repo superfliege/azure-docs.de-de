@@ -1,107 +1,117 @@
 ---
-title: Lokales Bereitstellen der Remoteüberwachungslösung – Azure | Microsoft-Dokumentation
+title: Lokales Bereitstellen der Lösung für die Remoteüberwachung (über Visual Studio-IDE) – Azure | Microsoft-Dokumentation
 description: In dieser Schrittanleitung wird gezeigt, wie der Solution Accelerator für die Remoteüberwachung zu Test- und Entwicklungszwecken auf Ihrem lokalen Computer bereitgestellt wird.
-author: asdonald
-manager: timlt
-ms.author: asdonald
+author: avneet723
+manager: hegate
+ms.author: avneet723
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.date: 09/26/2018
+ms.date: 10/25/2018
 ms.topic: conceptual
-ms.openlocfilehash: 7007b1406dbcfab3af4700418ac2ce07b9e521c0
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: c667782ef49f41cda8ccefc2f56e5f1265531037
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47407432"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51278819"
 ---
-# <a name="deploy-the-remote-monitoring-solution-accelerator-locally"></a>Lokales Bereitstellen des Solution Accelerators für die Remoteüberwachung
+# <a name="deploy-the-remote-monitoring-solution-accelerator-locally---visual-studio"></a>Lokales Bereitstellen des Solution Accelerators für die Remoteüberwachung – Visual Studio
 
-In diesem Artikel wird gezeigt, wie der Solution Accelerator für die Remoteüberwachung zu Test- und Entwicklungszwecken auf Ihrem lokalen Computer bereitgestellt wird. Der in diesem Artikel beschriebene Ansatz stellt die Microservices in einem lokalen Docker-Container bereit und nutzt IoT Hub-, Cosmos DB- und Azure Time Series Insights-Dienste in der Cloud. Wenn Sie erfahren möchten, wie der Solution Accelerator für die Remoteüberwachung in einer IDE auf Ihrem lokalen Computer ausgeführt wird, lesen Sie [Starten von Microservices in lokaler Umgebung](https://github.com/Azure/remote-monitoring-services-java/blob/master/docs/LOCAL_DEPLOYMENT.md) auf GitHub.
+[!INCLUDE [iot-accelerators-selector-local](../../includes/iot-accelerators-selector-local.md)]
+
+In diesem Artikel wird gezeigt, wie der Solution Accelerator für die Remoteüberwachung zu Test- und Entwicklungszwecken auf Ihrem lokalen Computer bereitgestellt wird. In diesem Artikel wird erläutert, wie Sie die Microservices in Visual Studio ausführen. Bei einer lokalen Bereitstellung von Microservices werden die folgenden Clouddienste verwendet: IoT Hub, Cosmos DB, Azure Stream Analytics und Azure Time Series Insights-Dienste in der Cloud.
+
+Wenn Sie den Solution Accelerator für die Remoteüberwachung auf Ihrem lokalen Computer in Docker ausführen möchten, finden Sie entsprechende Informationen unter [Lokales Bereitstellen des Solution Accelerators für die Remoteüberwachung – Docker](iot-accelerators-remote-monitoring-deploy-local-docker.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Für die Bereitstellung der vom Solution Accelerator für die Remoteüberwachung benötigten Azure-Dienste benötigen Sie ein aktives Azure-Abonnement.
 
-Wenn Sie über kein Konto verfügen, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Ausführliche Informationen finden Sie unter [Kostenlose Azure-Testversion](http://azure.microsoft.com/pricing/free-trial/).
+Wenn Sie über kein Konto verfügen, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Ausführliche Informationen finden Sie unter [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
+
+### <a name="machine-setup"></a>Einrichtung des Computers
 
 Um die lokale Bereitstellung abzuschließen, müssen die folgenden Tools auf dem lokalen Entwicklungscomputer installiert sein:
 
 * [Git-Client](https://git-scm.com/)
 * [Docker](https://www.docker.com)
-* [Docker Compose](https://docs.docker.com/compose/install/)
+* [Visual Studio](https://visualstudio.microsoft.com/)
+* [Nginx](http://nginx.org/en/download.html)
 * [Node.js v8](https://nodejs.org/) – Diese Software ist eine Voraussetzung für die PCS-CLI, die von den Skripts zum Erstellen von Azure-Ressourcen genutzt wird. Verwenden Sie nicht Node.js v10.
 
 > [!NOTE]
-> Diese Tools sind auf vielen Plattformen einschließlich Windows, Linux und iOS verfügbar.
+> Visual Studio ist für Windows und Mac verfügbar.
 
-### <a name="download-the-source-code"></a>Herunterladen des Quellcodes
+[!INCLUDE [iot-accelerators-local-setup](../../includes/iot-accelerators-local-setup.md)]
 
-Das GitHub-Quellcoderepository für die Remoteüberwachung umfasst die Docker-Konfigurationsdateien, die Sie benötigen, um die Docker-Images, die die Microservices enthalten, herunterzuladen, zu konfigurieren und auszuführen. Um eine lokale Version des Repositorys zu klonen und zu erstellen, navigieren Sie über Ihre Befehlszeilenumgebung zu einem geeigneten Ordner auf dem lokalen Computer, und führen Sie einen der folgenden Befehle aus:
+## <a name="run-the-microservices"></a>Ausführen der Microservices
 
-Um die neueste Version der Java-Microservice-Implementierungen herunterzuladen, führen Sie Folgendes aus:
+In diesem Abschnitt führen Sie die Microservices für die Remoteüberwachung aus. Sie führen die Webbenutzeroberfläche nativ, den Gerätesimulationsdienst in Docker und die Microservices in Visual Studio aus.
 
-```cmd/sh
-git clone https://github.com/Azure/remote-monitoring-services-java.git
+### <a name="run-the-web-ui"></a>Ausführen der Webbenutzeroberfläche
+
+In diesem Schritt starten Sie die Webbenutzeroberfläche. Navigieren Sie in der lokalen Kopie des Repositorys zum Ordner **webui**, und führen Sie die folgenden Befehle aus:
+
+```cmd
+npm install
+npm start
 ```
 
-Um die neueste Version der .NET-Microservice-Implementierungen herunterzuladen, führen Sie Folgendes aus:
+### <a name="run-the-device-simulation-service"></a>Ausführen des Gerätesimulationsdiensts
 
-```cmd\sh
-git clone https://github.com/Azure/remote-monitoring-services-dotnet.git
+Führen Sie den folgenden Befehl aus, um den Docker-Container für den Gerätesimulationsdienst zu starten. Der Dienst simuliert Geräte für die Lösung für die Remoteüberwachung.
+
+```cmd
+<path_to_cloned_repository>\services\device-simulation\scripts\docker\run.cmd
 ```
 
-> [!NOTE]
-> Diese Befehle laden den Quellcode für alle Microservices zusätzlich zu den Skripts herunter, mit denen Sie die Microservices lokal ausführen. Obwohl Sie den Quellcode zum Ausführen der Microservices in Docker nicht benötigen, ist er hilfreich, wenn Sie den Solution Accelerator später ändern und Ihre Änderungen lokal testen möchten.
+### <a name="deploy-all-other-microservices-on-local-machine"></a>Bereitstellen aller anderen Microservices auf dem lokalen Computer
 
-## <a name="deploy-the-azure-services"></a>Bereitstellen von Azure-Diensten
+In den folgenden Schritten wird erläutert, wie Sie die Microservices für die Remoteüberwachung in Visual Studio 2017 ausführen:
 
-In diesem Artikel erfahren Sie zwar, wie Sie die Microservices lokal ausführen, doch sie hängen von Azure-Diensten ab, die in der Cloud ausgeführt werden. Sie können diese Azure-Dienste [manuell über das Azure-Portal](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Manual-steps-to-create-azure-resources-for-local-setup) bereitstellen oder das dafür vorgesehene Skript verwenden. Bei den nachstehenden Skriptbeispielen wird davon ausgegangen, dass Sie das .NET-Repository auf einem Windows-Computer verwenden. Wenn Sie in einer anderen Umgebung arbeiten, passen Sie die Pfade, Dateierweiterungen und Pfadtrennzeichen entsprechend an. So verwenden Sie die bereitgestellten Skripts für folgende Aufgaben:
+1. Starten Sie Visual Studio 2017.
+1. Öffnen Sie die Projektmappe **remote-monitoring.sln** im Ordner **services** in der lokalen Kopie des Repositorys.
+1. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf die Projektmappe, und klicken Sie dann auf **Eigenschaften**.
+1. Wählen Sie **Allgemeine Eigenschaften > Startprojekt** aus.
+1. Wählen Sie **Mehrere Startprojekte** aus, und legen Sie **Aktion** für die folgenden Projekte auf **Starten** fest:
+    * WebService (asa-manager\WebService)
+    * WebService (auth\WebService)
+    * WebService (config\WebService)
+    * WebService (device-telemetry\WebService)
+    * WebService (iothub-manager\WebService)
+    * WebService (storage-adapter\WebService)
+1. Klicken Sie zum Speichern der Auswahl auf **OK**.
+1. Klicken Sie auf **Debuggen > Debuggen starten**, um die Webdienste auf dem lokalen Computer zu erstellen und auszuführen.
 
-### <a name="create-new-azure-resources"></a>Erstellen neuer Azure-Ressourcen
+Für jeden Webdienst werden eine Eingabeaufforderung und ein Webbrowserfenster geöffnet. An der Eingabeaufforderung wird die Ausgabe von dem ausgeführten Dienst angezeigt, und im Browserfenster können Sie den Status überwachen. Schließen Sie die Eingabeaufforderungen und Webseiten nicht, dadurch werden die Webdienste beendet.
 
-Wenn Sie die erforderlichen Azure-Ressourcen noch nicht erstellt haben, führen Sie die folgenden Schritte aus:
+### <a name="start-the-stream-analytics-job"></a>Starten des Stream Analytics-Auftrags
 
-1. Navigieren Sie in Ihrer Befehlszeilenumgebung zum Ordner **remote-monitoring-services-dotnet\scripts\local\launch** in Ihrer geklonten Kopie des Repositorys.
+Führen Sie folgende Schritte aus, um den Stream Analytics-Auftrag zu starten:
 
-2. Führen Sie das Skript **start.cmd** aus, und folgen Sie den Anweisungen. Das Skript fordert Sie auf, sich bei Ihrem Azure-Konto anzumelden und das Skript neu zu starten. Anschließend fordert es Sie zur Eingabe der folgenden Informationen auf:
-    * Ein Lösungsname.
-    * Das zu verwendende Azure-Abonnement.
-    * Der Speicherort des zu verwendenden Azure-Rechenzentrums.
+1. Navigieren Sie zum [Azure-Portal](https://portal.azure.com).
+1. Navigieren Sie zu der für Ihre Projektmappe erstellten **Ressourcengruppe**. Der Name der Ressourcengruppe ist der Name der Projektmappe, den Sie beim Ausführen des Skripts **start.cmd** ausgewählt haben**.
+1. Klicken Sie in der Liste der Ressourcen auf den **Stream Analytics-Auftrag**.
+1. Klicken Sie auf der Seite **Übersicht** des Stream Analytics-Auftrags auf die Schaltfläche **Starten**. Klicken Sie dann auf **Starten**, um den Auftrag direkt zu starten.
 
-    Das Skript erstellt die Ressourcengruppe in Azure mit dem Namen Ihrer Projektmappe. Diese Ressourcengruppe enthält die Azure-Ressourcen, die der Solution Accelerator verwendet.
+### <a name="configure-and-run-nginx"></a>Konfigurieren und Ausführen von NGINX
 
-3. Nachdem das Skript abgeschlossen wurde, zeigt es eine Liste von Umgebungsvariablen an. Folgen Sie den Anweisungen in der Befehlsausgabe, um diese Variablen in der Datei **remote-monitoring-services-dotnet\\scripts\\local\\.env** zu speichern.
+Richten Sie einen Reverseproxyserver ein, um die Webanwendung und die Microservices zu verknüpfen, die auf dem lokalen Computer ausgeführt werden:
 
-### <a name="use-existing-azure-resources"></a>Verwenden vorhandener Azure-Ressourcen
+* Kopieren Sie die Datei **nginx.conf** aus dem Ordner **webui\scripts\localhost** in das Installationsverzeichnis **nginx\conf**.
+* Führen Sie **NGINX** aus.
 
-Wenn Sie die erforderlichen Azure-Ressourcen bereits erstellt haben, bearbeiten Sie die Definitionen der Umgebungsvariablen in der Datei **remote-monitoring-services-dotnet\\scripts\\local\\.env** mit den erforderlichen Werten. Die **.env**-Datei enthält detaillierte Informationen zum Speicherort der erforderlichen Werte.
+Weitere Informationen zum Ausführen von **NGINX** finden Sie unter [nginx for Windows](http://nginx.org/en/docs/windows.html) (nginx für Windows).
 
-## <a name="run-the-microservices-in-docker"></a>Ausführen der Microservices in Docker
+### <a name="connect-to-the-dashboard"></a>Verbinden mit dem Dashboard
 
-Die in den lokalen Docker-Containern ausgeführten Microservices müssen auf die in Azure ausgeführten Dienste zugreifen. Sie können die Internetkonnektivität Ihrer Docker-Umgebung mit dem folgenden Befehl testen, der einen kleinen Container startet und versucht, eine Internetadresse zu pingen:
-
-```cmd/sh
-docker run --rm -ti library/alpine ping google.com
-```
-
-Navigieren Sie zum Ausführen des Solution Accelerators zum Ordner **remote-monitoring-services-dotnet\\scripts\\local** in Ihrer Befehlszeilenumgebung, und führen Sie den folgenden Befehl aus:
-
-```cmd\sh
-docker-compose up
-```
-
-Wenn Sie diesen Befehl zum ersten Mal ausführen, lädt Docker die Microservice-Images vom Docker-Hub herunter, um die Container lokal zu erstellen. Bei nachfolgenden Ausführungen führt Docker die Container sofort aus.
-
-Sie können zum Anzeigen der Protokolle aus dem Container eine separate Shell verwenden. Suchen Sie zuerst die Container-ID mithilfe des `docker ps -a`-Befehls. Verwenden Sie dann `docker logs {container-id} --tail 1000` zur Anzeige der letzten 1.000 Protokolleinträge für den angegebenen Container.
-
-Navigieren Sie für den Zugriff auf das Dashboard der Remoteüberwachungslösung in Ihrem Browser zu [http://localhost:8080](http://localhost:8080).
+Navigieren Sie für den Zugriff auf das Dashboard der Remoteüberwachungslösung in Ihrem Browser zu [http://localhost:9000](http://localhost:9000).
 
 ## <a name="clean-up"></a>Bereinigen
 
-Um unnötige Gebühren zu vermeiden, entfernen Sie nach Abschluss Ihrer Tests die Clouddienste aus Ihrem Azure-Abonnement. Am einfachsten entfernen Sie die Dienste, indem Sie zum [Azure-Portal](https://ms.portal.azure.com) navigieren und die Ressourcengruppe löschen, die bei der Ausführung des Skripts **start.cmd** erstellt wurde.
+Um unnötige Gebühren zu vermeiden, entfernen Sie nach Abschluss Ihrer Tests die Clouddienste aus Ihrem Azure-Abonnement. Navigieren Sie zum Entfernen der Dienste zum [Azure-Portal](https://ms.portal.azure.com), und löschen Sie die Ressourcengruppe, die mit dem Skript **start.cmd** erstellt wurde.
 
-Entfernen Sie mit dem `docker-compose down --rmi all`-Befehl die Docker-Images, und geben Sie Speicherplatz auf dem lokalen Computer frei. Sie können auch die lokale Kopie des Remoteüberwachungsrepositorys löschen, die erstellt wurde, als Sie den Quellcode aus GitHub geklont haben.
+Sie können auch die lokale Kopie des Remoteüberwachungsrepositorys löschen, die erstellt wurde, als Sie den Quellcode aus GitHub geklont haben.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -113,6 +123,6 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 > * Bereitstellen des Solution Accelerators
 > * Anmelden beim Solution Accelerator
 
-Nach Bereitstellung der Remoteüberwachungslösung können Sie sich als Nächstes [mit den Funktionen des Lösungsdashboards vertraut machen](quickstart-remote-monitoring-deploy.md).
+Nach Bereitstellung der Lösung für die Remoteüberwachung können Sie sich als Nächstes [mit den Funktionen des Lösungsdashboards vertraut machen](quickstart-remote-monitoring-deploy.md).
 
 <!-- Next tutorials in the sequence -->

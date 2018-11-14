@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 7/20/2018
 ms.author: msfussell
-ms.openlocfilehash: 70ea33f2c3e3a79d1754b72d12e8fc27689e38ea
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 434f0639baa45dc83ee2fae4ec8b67a80517db14
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49387937"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51035914"
 ---
 # <a name="dns-service-in-azure-service-fabric"></a>DNS-Dienst in Azure Service Fabric
 Der DNS-Dienst ist ein optionaler Systemdienst, den Sie in Ihrem Cluster aktivieren können, um andere Dienste mithilfe des DNS-Protokolls zu ermitteln. 
@@ -43,6 +43,9 @@ Das folgende Diagramm zeigt, wie der DNS-Dienst für partitionierte zustandsbeha
 Dynamische Ports werden vom DNS-Dienst nicht unterstützt. Verwenden Sie zum Auflösen der Dienste, die über dynamische Ports verfügbar gemacht werden, den [Reverseproxydienst](./service-fabric-reverseproxy.md).
 
 ## <a name="enabling-the-dns-service"></a>Aktivieren des DNS-Diensts
+> [!NOTE]
+> Der DNS-Dienst für Service Fabric-Dienste wird unter Linux noch nicht unterstützt.
+
 Wenn Sie einen Cluster mithilfe des Portals erstellen, ist der DNS-Dienst im Kontrollkästchen **DNS-Dienst einschließen** im Menü **Clusterkonfiguration** standardmäßig aktiviert:
 
 ![Aktivieren des DNS-Diensts über das Portal](./media/service-fabric-dnsservice/enable-dns-service.png)
@@ -251,6 +254,8 @@ public class ValuesController : Controller
 
 ## <a name="known-issues"></a>Bekannte Probleme
 * Bei Service Fabric ab Version 6.3 besteht ein Problem mit DNS-Lookups für Dienstnamen, die einen Bindestrich im DNS-Namen enthalten. Weitere Informationen zu diesem Problem finden Sie in [diesem GitHub-Problem](https://github.com/Azure/service-fabric-issues/issues/1197). Eine Fehlerbehebung ist für das nächste 6.3-Update vorgesehen. 
+
+* Der DNS-Dienst für Service Fabric-Dienste wird unter Linux noch nicht unterstützt. Der DNS-Dienst wird für Container unter Linux unterstützt. Eine manuelle Auflösung mithilfe von Fabric Client/ServicePartitionResolver ist die verfügbare Alternative.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Erfahren Sie mehr über Dienstkommunikation innerhalb des Clusters unter [Herstellung einer Verbindung mit Diensten und Kommunikation mit diesen Diensten](service-fabric-connect-and-communicate-with-services.md).

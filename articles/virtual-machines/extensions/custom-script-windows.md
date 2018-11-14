@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/24/2018
 ms.author: roiyz
-ms.openlocfilehash: 7396277c58b079dc2f0c68b7832a6f2ca57ee287
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 2c8ac43d96c100f0c26281fea1d4e9eba41bc178
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50212300"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51282327"
 ---
 # <a name="custom-script-extension-for-windows"></a>CustomScript-Erweiterung für Windows
 
@@ -201,7 +201,7 @@ Set-AzureRmVMExtension -ResourceGroupName myRG
 ### <a name="how-to-run-custom-script-more-than-once-with-cli"></a>Mehrmaliges Ausführen der Erweiterung für benutzerdefinierte Skripts über die Befehlszeilenschnittstelle
 Wenn Sie die Erweiterung für benutzerdefinierte Skripts mehrmals ausführen möchten, ist dies nur unter folgenden Bedingungen möglich:
 1. Der Parameter „Name“ der Erweiterung ist identisch mit der vorherigen Bereitstellung der Erweiterung.
-2. Sie müssen die Konfiguration aktualisieren, andernfalls wird der Befehl nicht erneut ausgeführt. Sie können beispielsweise eine dynamische Eigenschaft im Befehl (z.B. einen Zeitstempel) hinzufügen. 
+2. Sie müssen die Konfiguration aktualisieren, andernfalls wird der Befehl nicht erneut ausgeführt. Sie können beispielsweise eine dynamische Eigenschaft im Befehl hinzufügen, etwa einen Zeitstempel. 
 
 ## <a name="troubleshoot-and-support"></a>Problembehandlung und Support
 

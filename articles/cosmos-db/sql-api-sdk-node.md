@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 09/24/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b6983b49135b5a8adbef1d0cfc5a407cb7b0c7ac
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 0dc7daebe91199cc6c54ac5e3a2d8f43e1592a73
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46960548"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51282423"
 ---
 # <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Node.js SDK für SQL-API: Versionshinweise und Ressourcen
 > [!div class="op_single_selector"]
@@ -45,6 +45,26 @@ ms.locfileid: "46960548"
 | Aktuell unterstützte Plattform | [Node.js Version 6.x](https://nodejs.org/en/blog/release/v6.10.3/): für SDK-Version 2.0.0 und höher erforderlich.<br/>[Node.js v4.2.0](https://nodejs.org/en/blog/release/v4.2.0/)<br/> [Node.js v0.12](https://nodejs.org/en/blog/release/v0.12.0/)<br/> [Node.js v0.10](https://nodejs.org/en/blog/release/v0.10.0/) 
 
 ## <a name="release-notes"></a>Versionshinweise
+
+### <a name="2.0.5"/>2.0.5</a>
+* Schnittstelle für Knoten-Agent-Typ hinzugefügt. Typescript-Benutzer müssen @types/node nicht mehr als Abhängigkeit installieren.
+* Bevorzugte Standorte werden jetzt ordnungsgemäß berücksichtigt.
+* Verbesserungen bei der Mitarbeit an der Entwicklerdokumentation
+* Verschiedene Tippfehler wurden behoben.
+
+### <a name="2.0.4"/>2.0.4</a>
+* Das in 2.0.3 eingeführte Problem mit Typdefinitionen wurde behoben.
+
+### <a name="2.0.3"/>2.0.3</a>
+* Die Abhängigkeit `big-integer` wurde entfernt.
+* Wechsel zu Verweisdirektiven für den AsyncIterable-Typ. Typescript-Benutzer müssen die Einstellung „lib“ nicht mehr anpassen.
+* Tippfehler wurden korrigiert.
+
+### <a name="2.0.2"/>2.0.2</a>
+* Verknüpfungen der Readme-Datei wurden korrigiert.
+
+### <a name="2.0.1"/>2.0.1</a>
+* Fehler beim Wiederholen der Schnittstellenimplementierung wurden behoben.
 
 ### <a name="2.0.0"/>2.0.0</a>
 * Allgemeine Verfügbarkeit von Version 2.0.0 des JavaScript SDK

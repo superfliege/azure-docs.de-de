@@ -1,6 +1,6 @@
 ---
 title: Installieren einer veröffentlichten Anwendung – Datameer – Azure HDInsight
-description: Installieren und verwenden Sie die Hadoop-Drittanbieteranwendung Datameer.
+description: Installieren und verwenden Sie die Apache Hadoop-Drittanbieteranwendung Datameer.
 services: hdinsight
 author: ashishthaps
 ms.reviewer: jasonh
@@ -9,16 +9,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: ashish
-ms.openlocfilehash: a428bb7bc9cc6a6a2e28989271ad1998700438cf
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 97d99aa59c490cf2dcdd4a69f32411a051942d36
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43107747"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51037803"
 ---
 # <a name="install-published-application---datameer"></a>Installieren einer veröffentlichten Anwendung – Datameer
 
-In diesem Artikel erfahren Sie, wie Sie die veröffentlichte Hadoop-Anwendung [Datameer](https://www.datameer.com/) in Azure HDInsight installieren und ausführen. Eine Übersicht der HDInsight-Anwendungsplattform und eine Liste mit den verfügbaren veröffentlichten Anwendungen unabhängiger Softwarehersteller (Independent Software Vendors, ISVs) finden Sie unter [Installieren von Hadoop-Anwendungen von Drittanbietern](hdinsight-apps-install-applications.md). Eine Anleitung zur Installation Ihrer eigenen Anwendung finden Sie unter [Installieren benutzerdefinierter HDInsight-Anwendungen](hdinsight-apps-install-custom-applications.md).
+In diesem Artikel wird beschrieben, wie Sie die veröffentlichte Apache Hadoop-Anwendung [Datameer](https://www.datameer.com/) in Azure HDInsight installieren und ausführen. Eine Übersicht der HDInsight-Anwendungsplattform und eine Liste mit den verfügbaren veröffentlichten Anwendungen unabhängiger Softwarehersteller (Independent Software Vendors, ISVs) finden Sie unter [Installieren von Hadoop-Anwendungen von Drittanbietern](hdinsight-apps-install-applications.md). Eine Anleitung zur Installation Ihrer eigenen Anwendung finden Sie unter [Installieren benutzerdefinierter HDInsight-Anwendungen](hdinsight-apps-install-custom-applications.md).
 
 ## <a name="about-datameer"></a>Informationen zu Datameer
 

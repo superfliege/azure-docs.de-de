@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/22/2017
 ms.author: maxluk
-ms.openlocfilehash: 4438cff0dcf5e896f39729d9871d4deb3207b4b8
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: c3bdad6f1c199dda867370126eb7dcf5c296a12d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43107994"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51230426"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>Kapazitätsplanung für HDInsight-Cluster
 
@@ -38,7 +38,7 @@ HDInsight ist in vielen Azure-Regionen verfügbar. Die nächstgelegene Region fi
 
 ### <a name="location-of-default-storage"></a>Speicherort des Standardspeichers
 
-Der Standardspeicher, ein Azure Storage-Konto oder Azure Data Lake Store, muss sich am gleichen Speicherort wie Ihr Cluster befinden. Azure Storage ist an allen Speicherorten verfügbar. Data Lake Store ist in einigen Regionen verfügbar – unter *Speicher* in [Verfügbare Produkte nach Region](https://azure.microsoft.com/regions/services/) können Sie sich über die aktuelle Verfügbarkeit von Data Lake Store informieren.
+Der Standardspeicher, ein Azure Storage-Konto oder Azure Data Lake Store, muss sich am gleichen Speicherort wie Ihr Cluster befinden. Azure Storage ist an allen Speicherorten verfügbar. Data Lake Storage Gen1 ist in einigen Regionen verfügbar – unter *Speicher* auf der Seite [Verfügbare Produkte nach Region](https://azure.microsoft.com/regions/services/) können Sie sich über die aktuelle Verfügbarkeit von Data Lake Store informieren.
 
 ### <a name="location-of-existing-data"></a>Speicherort der vorhandenen Daten
 
@@ -48,7 +48,7 @@ Wenn Sie bereits ein Speicherkonto oder einen Data Lake Store haben, wo Ihre Dat
 
 Nachdem Sie einen HDInsight-Cluster bereitgestellt haben, können Sie zusätzliche Azure Storage-Konten anfügen oder auf andere Data Lake Stores zugreifen. Alle Ihre Speicherkonten müssen sich an demselben Speicherort wie Ihr Cluster befinden. Ein Data Lake Store kann sich an einem anderen Speicherort befinden, obwohl dies zu einer gewissen Latenz beim Lese/Schreiben von Daten führen kann.
 
-Für Azure Storage gelten einige [Kapazitätsgrenzen](../azure-subscription-service-limits.md#storage-limits), während Data Lake Store praktisch unbegrenzt ist.
+Für Azure Storage gelten einige [Kapazitätsgrenzen](../azure-subscription-service-limits.md#storage-limits), während Data Lake Storage Gen1 praktisch unbegrenzt ist.
 
 Ein Cluster kann auf eine Kombination verschiedener Speicherkonten zugreifen. Typische Beispiele hierfür sind:
 

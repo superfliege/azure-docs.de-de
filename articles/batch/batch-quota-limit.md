@@ -12,15 +12,15 @@ ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/10/2018
+ms.date: 11/06/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 25a8150a2fcf7cdd4e3c82478c0b3db3dad870b4
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: a7d77c0a2ce334c9909a621c55866a67e036f9cb
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48887563"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51282780"
 ---
 # <a name="batch-service-quotas-and-limits"></a>Batch-Dienst – Kontingente und Limits
 
@@ -45,17 +45,27 @@ Wenn Sie Produktionsworkloads in Batch ausführen möchten, müssen Sie möglich
 
 Wenn Sie ein Batch-Konto erstellen, bei dem der Poolzuordnungsmodus auf **Benutzerabonnement** festgelegt ist, werden Kontingente unterschiedlich angewendet. In diesem Modus werden Batch-VMs und andere Ressourcen direkt in Ihrem Abonnement erstellt, wenn ein Pool erstellt wird. Die Kontingente für Kerne von Azure Batch gilt nicht für Konten, die in diesem Modus erstellt werden. Stattdessen werden die Kontingente in Ihrem Abonnement für regionale Computekerne und andere Ressourcen angewendet. Weitere Informationen zu diesen Kontingenten finden Sie unter [Einschränkungen für Azure-Abonnements und -Dienste, Kontingente und Einschränkungen](../azure-subscription-service-limits.md).
 
+## <a name="pool-size-limits"></a>Poolgrößenbeschränkungen
+
+| **Ressource** | **Maximales Limit** |
+| --- | --- |
+| **Serverknoten im Pool mit [aktivierter Kommunikation zwischen den Knoten](batch-mpi.md)**  ||
+| Poolzuordnungsmodus für den Batch-Dienst | 100 |
+| Poolzuordnungsmodus für das Batch-Abonnement | 80 |
+| **Serverknoten im [mit benutzerdefinierten VM-Images erstellten Pool](batch-custom-images.md)**<sup>1</sup> ||
+| Dedizierte Knoten | 2000 |
+| Knoten mit niedriger Priorität | 1000 |
+
+<sup>1</sup> Für Pools, bei denen die Kommunikation zwischen den Knoten aktiviert ist.
+
 ## <a name="other-limits"></a>Andere Limits
 
 | **Ressource** | **Maximales Limit** |
 | --- | --- |
-| [Gleichzeitige Aufgaben](batch-parallel-node-tasks.md) pro Computeknoten |4 x Anzahl der Kerne des Knotens |
-| [Anwendungen](batch-application-packages.md) pro Batch-Konto |20 |
-| Anwendungspakete pro Anwendung. |40 |
+| [Gleichzeitige Aufgaben](batch-parallel-node-tasks.md) pro Computeknoten | 4 x Anzahl der Kerne des Knotens |
+| [Anwendungen](batch-application-packages.md) pro Batch-Konto | 20 |
+| Anwendungspakete pro Anwendung. | 40 |
 | Maximale Lebensdauer von Tasks | 7 Tage<sup>1</sup> |
-| Computeknoten im [Pool mit aktivierter Kommunikation zwischen den Knoten](batch-mpi.md) | 100 |
-| Dedizierte Computeknoten im [mit benutzerdefinierten VM-Images erstellten Pool](batch-custom-images.md) | 2500 |
-| Computeknoten mit niedriger Priorität im [mit benutzerdefinierten VM-Images erstellten Pool](batch-custom-images.md) | 1000 |
 
 <sup>1</sup> Die maximale Lebensdauer eines Tasks (vom Hinzufügen zum Auftrag bis zum Abschluss) beträgt sieben Tage. Abgeschlossene Tasks bleiben unbegrenzt lange erhalten. Daten für Tasks, die nicht innerhalb der maximalen Lebensdauer abgeschlossen wurden, stehen hingegen nicht zur Verfügung.
 

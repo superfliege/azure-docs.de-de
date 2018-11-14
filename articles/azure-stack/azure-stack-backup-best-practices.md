@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/01/2018
+ms.date: 11/05/2018
 ms.author: jeffgilb
 ms.reviewer: hectorl
-ms.openlocfilehash: 08d8822410545fb0ae3a2a99de00b38566c9834c
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: ec17f6923fc1c928f24fcb762daedbaea5b688ac
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "41946396"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51035100"
 ---
 # <a name="infrastructure-backup-service-best-practices"></a>Bewährte Methoden für den Infrastructure Backup-Dienst
 
@@ -52,9 +52,8 @@ Der Schlüssel muss in einem sicheren Speicherort (z.B. öffentliches Azure Key 
 
 ### <a name="backups"></a>Backups
 
- - Infrastructure Backup Controller muss bedarfsgesteuert ausgelöst werden. Es wird empfohlen, mindestens zweimal pro Tag eine Sicherung durchzuführen.
  - Sicherungsaufträge werden während der Ausführung des Systems ausgeführt, sodass bei der Verwaltung und in den Benutzeranwendungen keine Ausfallzeiten entstehen. Die Sicherungsaufträge für eine Lösung mit angemessener Last dauern erwartungsgemäß 20 bis 40 Minuten.
- - Entsprechend der OEM-Anweisung sollten manuell gesicherte Netzwerkswitches und der Hardwarelebenszyklushost (HLH) auf der gleichen Sicherungsfreigabe gespeichert werden, auf der Infrastructure Backup Controller Sicherungsdaten auf Steuerungsebene speichert. Es empfiehlt sich, Switch- und HLH-Konfigurationen im Ordner der Region zu speichern. Bei mehreren Azure Stack-Instanzen in derselben Region empfiehlt sich die Verwendung eines Bezeichners für jede Konfiguration, die zu einer Skalierungseinheit gehört.
+ - Entsprechend den OEM-Anweisungen sollten manuell gesicherte Netzwerkswitches und der Hardwarelebenszyklushost (HLH) auf der gleichen Sicherungsfreigabe gespeichert werden, auf der Infrastructure Backup-Controller Sicherungsdaten auf Steuerungsebene speichert. Es empfiehlt sich, Switch- und HLH-Konfigurationen im Ordner der Region zu speichern. Bei mehreren Azure Stack-Instanzen in derselben Region empfiehlt sich die Verwendung eines Bezeichners für jede Konfiguration, die zu einer Skalierungseinheit gehört.
 
 ### <a name="folder-names"></a>Ordnernamen
 
@@ -95,5 +94,6 @@ Die folgenden Warnungen werden vom System unterstützt:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
- - Sehen Sie sich das Referenzmaterial für den [Infrastructure Backup-Dienst](azure-stack-backup-reference.md) an.  
- - Aktivieren Sie den [Infrastructure Backup-Dienst](azure-stack-backup-enable-backup-console.md).
+Sehen Sie sich das Referenzmaterial für den [Infrastructure Backup-Dienst](azure-stack-backup-reference.md) an.
+
+Aktivieren Sie den [Infrastructure Backup-Dienst](azure-stack-backup-enable-backup-console.md).

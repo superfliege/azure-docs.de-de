@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 12/12/2017
 ms.author: daveba
-ms.openlocfilehash: 2a759aea4288af2e90335b47244408d6a537e24b
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: fa872c184429e69eb46fb4da112c08ee9432f1c4
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44295580"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50913987"
 ---
 # <a name="faqs-and-known-issues-with-managed-identities-for-azure-resources"></a>Häufig gestellte Fragen und bekannte Probleme mit verwalteten Identitäten für Azure-Ressourcen
 
@@ -60,7 +60,7 @@ Weitere Informationen zum Azure Instance Metadata Service finden Sie in der [IMD
 
 Alle Linux-Distributionen, die von Azure IaaS unterstützt werden, können über den IMDS-Endpunkt für verwaltete Identitäten für Azure-Ressourcen verwendet werden. 
 
-Hinweis: Die VM-Erweiterung für verwaltete Identitäten für Azure-Ressourcen (die Einstellung ist für Januar 2019 vorgesehen) unterstützt nur die folgenden Linux-Distributionen:
+Die VM-Erweiterung für verwaltete Identitäten für Azure-Ressourcen (Einstellung voraussichtlich Januar 2019) unterstützt nur die folgenden Linux-Distributionen:
 - CoreOS Stable
 - CentOS 7.1
 - Red Hat 7.2
@@ -124,16 +124,23 @@ Nachdem der virtuelle Computer gestartet wurde, kann das Tag mithilfe des folgen
 az vm update -n <VM Name> -g <Resource Group> --remove tags.fixVM
 ```
 
-## <a name="known-issues-with-user-assigned-identities"></a>Bekannte Probleme mit vom Benutzer zugewiesenen Identitäten
+### <a name="vm-extension-provisioning-fails"></a>Fehlschlagen der Bereitstellung der VM-Erweiterung
 
-- Die Zuweisung von Identitäten, die vom Benutzer zugewiesen werden, ist nur für virtuelle Computer (VM) und VM-Skalierungsgruppen (VMSS) möglich. WICHTIG: An der Zuweisung von vom Benutzer zugewiesenen Identitäten werden in den kommenden Monaten Änderungen vorgenommen.
-- Doppelte vom Benutzer zugewiesene Identitäten auf der gleichen VM/VMSS verursachen Fehler bei der VM/VMSS. Dies betrifft Identitäten, die mit abweichender Groß-/Kleinschreibung hinzugefügt werden. Beispiel: „MyUserAssignedIdentity“ vs. „myuserassignedidentity“. 
-- Die Bereitstellung der VM-Erweiterung (die Einstellung ist für Januar 2019 vorgesehen) kann auf einem virtuellen Computer möglicherweise aufgrund von Fehlern beim DNS-Lookup nicht ausgeführt werden. Starten Sie den virtuellen Computer neu, und wiederholen Sie den Vorgang. 
-- Das Hinzufügen einer nicht vorhandenen vom Benutzer zugewiesenen Identität führt dazu, dass auf der VM ein Fehler auftritt. 
-- Das Erstellen einer vom Benutzer zugewiesenen Identität mit Sonderzeichen (d.h. Unterstrich) im Namen wird nicht unterstützt.
-- Namen von Identitäten, die vom Benutzer zugewiesen werden, können in End-to-End-Szenarien maximal 24 Zeichen enthalten. Vom Benutzer zugewiesene Identitäten, deren Namen mehr als 24 Zeichen enthalten, können nicht zugewiesen werden.
+Die Bereitstellung der VM-Erweiterung kann aufgrund von Fehlern beim DNS-Lookup fehlschlagen. Starten Sie den virtuellen Computer neu, und wiederholen Sie den Vorgang.
+ 
+> [!NOTE]
+> Die VM-Erweiterung wird voraussichtlich im Januar 2019 eingestellt. Es wird empfohlen, dass Sie stattdessen den IMDS-Endpunkt verwenden.
+
+### <a name="transferring-a-subscription-between-azure-ad-directories"></a>Übertragen eines Abonnements zwischen Azure AD-Verzeichnissen
+
+Verwaltete Identitäten werden nicht aktualisiert, wenn ein Abonnement in ein anderes Verzeichnis verschoben/übertragen wird. Infolgedessen tritt für alle vorhandenen system- oder benutzerseitig zugewiesenen verwalteten Identitäten ein Fehler auf. 
+
+Um das Problem nach der Abonnementverschiebung zu umgehen, können Sie systemseitig zugewiesene verwaltete Identitäten deaktivieren und wieder aktivieren. Ebenso können Sie alle benutzerseitig zugewiesenen verwalteten Identitäten löschen und erneut herstellen. 
+
+## <a name="known-issues-with-user-assigned-managed-identities"></a>Bekannte Probleme mit benutzerseitig zugewiesenen verwalteten Identitäten
+
+- Das Erstellen einer benutzerseitig zugewiesenen verwalteten Identität mit Sonderzeichen (d.h. Unterstrich) im Namen wird nicht unterstützt.
+- Namen von benutzerseitig zugewiesenen Identitäten dürfen maximal 24 Zeichen enthalten. Wenn der Name mehr als 24 Zeichen umfasst, kann die Identität einer Ressource (d.h. einer VM) nicht zugewiesen werden.
 - Bei Verwendung der VM-Erweiterung für verwaltete Identitäten (die Einstellung ist für Januar 2019 vorgesehen) ist die Begrenzung auf Unterstützung von 32 vom Benutzer zugewiesenen verwalteten Identitäten festgelegt. Ohne die VM-Erweiterung für verwaltete Identität ist die Begrenzung auf Unterstützung von 512 Identitäten festgelegt.  
-- Beim Hinzufügen einer zweiten vom Benutzer zugewiesenen Identität kann die clientID möglicherweise keine Token für die VM-Erweiterung anfordern. Starten Sie zum Umgehen dieses Problems die VM-Erweiterung der verwalteten Identitäten für Azure-Ressourcen mit den folgenden beiden Bash-Befehlen neu:
- - `sudo bash -c "/var/lib/waagent/Microsoft.ManagedIdentity.ManagedIdentityExtensionForLinux-1.0.0.8/msi-extension-handler disable"`
- - `sudo bash -c "/var/lib/waagent/Microsoft.ManagedIdentity.ManagedIdentityExtensionForLinux-1.0.0.8/msi-extension-handler enable"`
-- Wenn eine VM über eine vom Benutzer zugewiesene Identität, aber nicht über eine vom System zugewiesene Identität verfügt, werden die verwalteten Identitäten für Azure-Ressourcen auf der Portalbenutzeroberfläche als deaktiviert dargestellt. Um die vom System zugewiesene Identität zu aktivieren, verwenden Sie eine Azure Resource Manager-Vorlage, die Azure-Befehlszeilenschnittstelle oder ein SDK.
+- Beim Verschieben einer benutzerseitig zugewiesenen verwalteten Identität in eine andere Ressourcengruppe tritt ein Fehler für die Identität auf. Infolgedessen können Sie keine Token für diese Identität anfordern. 
+- Wenn Sie ein Abonnement in ein anderes Verzeichnis übertragen, wird für alle vorhandenen benutzerseitig zugewiesenen verwalteten Identitäten ein Fehler ausgelöst. 

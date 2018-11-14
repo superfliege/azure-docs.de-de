@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.reviewer: cawa
 ms.date: 08/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: 28de0f8bdcaa730c5beea0c630d4e86e15642809
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 6013c0a1b404336ad7cca21edafb7adec5c7f7ca
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50142851"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50978841"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>Behandeln von Problemen mit dem Aktivieren oder Anzeigen von Application Insights Profiler
 
@@ -46,16 +46,16 @@ Der Profiler schreibt Meldungen zur Ablaufverfolgung und benutzerdefinierten Ere
 
 1. Wenn während des Zeitraums, in dem der Profiler ausgeführt wurde, Anforderungen gesendet wurden, stellen Sie sicher, dass diese Anforderungen von der Komponente Ihrer Anwendung verarbeitet werden, die den Profiler aktiviert hat. Manchmal bestehen Anwendungen aus mehreren Komponenten, aber der Profiler ist nur für einige dieser Komponenten aktiviert. Die Seite „Application Insights-Profiler konfigurieren“ zeigt die Komponenten an, die Ablaufverfolgungen hochgeladen haben.
 
-### <a name="net-core-21-bug"></a>**Fehler in .NET Core 2.1** 
+### <a name="net-core-21-bug"></a>Fehler in .NET Core 2.1
 Ein Fehler im Profiler-Agent verhindert das Hochladen von Ablaufverfolgungen von Anwendungen, die unter ASP.NET Core 2.1 ausgeführt werden. Wir arbeiten an einer Lösung und werden sie bald vorstellen. Die Behebung dieses Fehlers wird Ende Oktober bereitgestellt.
 
-### <a name="other-things-to-check"></a>**Überprüfen Sie Folgendes:**
+### <a name="other-things-to-check"></a>Überprüfen Sie Folgendes:
 * Ihre App wird unter .NET Framework 4.6 ausgeführt.
 * Wenn Ihre Web-App eine ASP.NET Core-Anwendung ist, muss sie mindestens ASP.NET Core 2.0 ausführen.
 * Falls die Daten, die Sie anzeigen möchten, bereits mehrere Wochen alt sind, schränken Sie Ihren Zeitfilter ein, und versuchen Sie es noch mal. Ablaufverfolgungen werden nach sieben Tagen gelöscht.
 * Stellen Sie sicher, dass der Zugriff auf https://gateway.azureserviceprofiler.net nicht durch Proxys oder durch eine Firewall blockiert wird.
 
-### <a id="double-counting"></a>**Doppelte Erfassung in parallelen Threads**
+### <a id="double-counting"></a>Doppelte Erfassung in parallelen Threads
 
 Manchmal übersteigt die Gesamtzeitmetrik im Stapel-Viewer die Dauer der Anforderung.
 
@@ -63,11 +63,11 @@ Diese Situation kann eintreten, wenn einer Anforderung mehrere Threads zugeordne
 
 Wenn Ihnen in Ihren Ablaufverfolgungen parallele Threads auffallen, bestimmen Sie die wartenden Threads, um den kritischen Pfad für die Anforderung ermitteln zu können. In den meisten Fällen wartet der Thread, der schnell in einen Wartezustand wechselt, einfach auf den Abschluss der anderen Threads. Konzentrieren Sie sich auf die anderen Threads, und ignorieren Sie die Zeit in den wartenden Threads.
 
-### <a name="error-report-in-the-profiling-viewer"></a>**Fehlerbericht im Profilerstellungs-Viewer**
+### <a name="error-report-in-the-profile-viewer"></a>Fehlerbericht im Profil-Viewer
 Senden Sie ein Supportticket über das Portal. Geben Sie dabei die Korrelations-ID aus der Fehlermeldung an.
 
 ## <a name="troubleshooting-profiler-on-app-services"></a>Problembehandlung für den Profiler in App Services
-### <a name="for-the-profiler-to-work-properly"></a>**Damit der Profiler ordnungsgemäß funktioniert, müssen folgende Voraussetzungen erfüllt sein:**
+### <a name="for-the-profiler-to-work-properly"></a>Damit der Profiler ordnungsgemäß funktioniert, müssen die folgenden Voraussetzungen erfüllt sein:
 * Für die Web-App muss mindestens ein App Service-Plan mit Basic-Tarif verwendet werden.
 * Für Ihre Web-App muss die Application Insights-Erweiterung für App Services (2.6.5) installiert sein.
 * Für Ihre Web-App muss die App-Einstellung **APPINSIGHTS_INSTRUMENTATIONKEY** mit dem gleichen Instrumentierungsschlüssel konfiguriert sein, der auch vom Application Insights SDK verwendet wird.
@@ -82,7 +82,7 @@ Senden Sie ein Supportticket über das Portal. Geben Sie dabei die Korrelations-
     
     ![profiler-webjob-log]
 
-### <a name="manual-installation"></a>**Manuelle Installation**
+### <a name="manual-installation"></a>Manuelle Installation
 
 Wenn Sie Profiler konfigurieren, werden an den Einstellungen der Web-App Aktualisierungen vorgenommen. Sie können die Updates manuell anwenden, wenn dies für Ihre Umgebung erforderlich ist. Beispiel: Ihre Anwendung wird in einer Web-Apps-Umgebung für PowerApps ausgeführt.
 
@@ -97,9 +97,9 @@ Wenn Sie Profiler konfigurieren, werden an den Einstellungen der Web-App Aktuali
 1. Installieren Sie **Application Insights** aus dem Katalog der Azure-Web-Apps.
 1. Starten Sie die Web-App neu.
 
-### <a name="too-many-active-profiling-sessions"></a>**Zu viele aktive Profilerstellungssitzungen**
+### <a name="too-many-active-profiling-sessions"></a>Zu viele aktive Profilerstellungssitzungen
 
-Zurzeit können Sie Profiler für maximal vier Azure Web-Apps und Bereitstellungsslots aktivieren, die im selben Serviceplan ausgeführt werden. Wenn der Profiler-Webauftrag zu viele aktive Profilerstellungssitzungen meldet, verschieben Sie einige Web-Apps in einen anderen Serviceplan.
+Zurzeit können Sie Profiler für maximal vier Azure Web-Apps und Bereitstellungsslots aktivieren, die im selben Serviceplan ausgeführt werden. Wenn Sie über mehr Web-Apps verfügen, als in einem App Service-Plan ausgeführt werden, gibt der Profiler ggf. die Meldung „Microsoft.ServiceProfiler.Exceptions.TooManyETWSessionException“ aus. Der Profiler wird für jede Web-App separat ausgeführt und versucht, für jede App eine ETW-Sitzung zu starten. Es gibt jedoch eine begrenzte Anzahl von ETW-Sitzungen, die gleichzeitig aktiv sein können. Wenn der Profiler-Webauftrag zu viele aktive Profilerstellungssitzungen meldet, verschieben Sie einige Web-Apps in einen anderen Serviceplan.
 
 ### <a name="deployment-error-directory-not-empty-dhomesitewwwrootappdatajobs"></a>Bereitstellungsfehler: Verzeichnis nicht leer 'D:\\home\\site\\wwwroot\\App_Data\\jobs'
 

@@ -11,13 +11,13 @@ author: aamalvea
 ms.author: aamalvea
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 09/14/2018
-ms.openlocfilehash: 27f807c8f2f6b6a65ef95136047f5eed1b3aab02
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.date: 11/02/2018
+ms.openlocfilehash: 11777013eca0ba3a759635ef99c2cfa04104e24b
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47159311"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50978994"
 ---
 # <a name="use-azure-portal-to-create-alerts-for-azure-sql-database-and-data-warehouse"></a>Verwenden des Azure-Portals zum Erstellen von Warnungen für Azure SQL-Datenbanken und Data Warehouse
 
@@ -44,19 +44,15 @@ Sie haben folgende Möglichkeiten zum Konfigurieren von Warnregeln und Abrufen z
 
 ## <a name="create-an-alert-rule-on-a-metric-with-the-azure-portal"></a>Erstellen einer Warnungsregel anhand einer Metrik mit dem Azure-Portal
 1. Suchen Sie im [Portal](https://portal.azure.com/)die Ressource, die Sie überwachen möchten, und wählen Sie sie aus.
-2. Dieser Schritt ist für SQL-Datenbank und Pools für elastische Datenbanken im Vergleich zu SQL DW unterschiedlich: 
-
-   - **Nur SQL-Datenbank und Pools für elastische Datenbanken**: Wählen Sie im Abschnitt ÜBERWACHUNG **Warnungen** oder **Warnungsregeln** aus. Text und Symbol können je nach Ressource geringfügig variieren.  
+2. Wählen Sie im Abschnitt „ÜBERWACHUNG“ die Option **Warnungen (klassisch)** aus. Text und Symbol können je nach Ressource geringfügig variieren.  
    
-     ![Überwachung](../monitoring-and-diagnostics/media/insights-alerts-portal/AlertRulesButton.png)
+     ![Überwachung](../monitoring-and-diagnostics/media/insights-alerts-portal/AlertsClassicButton.JPG)
   
-   - **NUR SQL DW**: Wählen Sie unter dem Abschnitt ALLGEMEINE AUFGABEN **Überwachung** aus. Klicken Sie auf den Graphen **DWU-Nutzung**.
+   - **Nur SQL DW**: Klicken Sie auf den Graphen **DWU-Nutzung**. Wählen Sie **Klassische Warnungen anzeigen** aus.
 
-     ![ALLGEMEINE AUFGABEN](../monitoring-and-diagnostics/media/insights-alerts-portal/AlertRulesButtonDW.png)
-
-3. Wählen Sie den Befehl **Warnung hinzufügen** aus, und füllen Sie die Felder aus.
+3. Wählen Sie die Schaltfläche **Metrikwarnung hinzufügen (klassisch)** aus, und füllen Sie die Felder aus.
    
-    ![Warnung hinzufügen](../monitoring-and-diagnostics/media/insights-alerts-portal/AddDBAlertPage.png)
+    ![Warnung hinzufügen](../monitoring-and-diagnostics/media/insights-alerts-portal/AddDBAlertPageClassic.JPG)
 4. **Benennen** Sie Ihre Warnungsregel, und wählen Sie eine **Beschreibung** aus, die auch in Benachrichtigungs-E-Mails angezeigt wird.
 5. Wählen Sie die **Metrik** aus, die Sie überwachen möchten, und dann je einen Wert für **Bedingung** und **Schwellenwert** für die Metrik aus. Wählen Sie auch den **Zeitraum** der Metrikregel aus, der erfüllt sein muss, ehe die Warnung ausgelöst wird. Wenn Sie z.B. den Zeitraum „PT5M“ wählen, und die Warnung nach einer CPU-Auslastung von über 80 % sucht, wird die Warnung ausgelöst, wenn die **durchschnittliche** CPU-Auslastung 5 Minuten über 80 % lag. Nachdem der erste Trigger ausgelöst wurde, erfolgt ein erneutes Auslösen, wenn die durchschnittliche CPU-Auslastung 5 Minuten unter 80 % bleibt. Die CPU-Messung erfolgt minütlich. In der folgenden Tabelle finden Sie unterstützte Zeitfenster und den Aggregationstyp für die einzelnen Warnungen – nicht alle Warnungen verwenden den durchschnittlichen Wert.   
 6. Aktivieren Sie **E-Mail-Besitzer...** , wenn Sie möchten, dass Administratoren und Co-Administratoren per E-Mail benachrichtigt werden, wenn die Warnung ausgelöst wird.

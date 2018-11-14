@@ -1,23 +1,23 @@
 ---
-title: Analysieren von Daten zu Flugverspätungen mit Hadoop in HDInsight – Azure
+title: Analysieren von Daten zu Flugverspätungen mit Apache Hadoop in HDInsight – Azure
 description: Erfahren Sie, wie Sie mithilfe eines Windows PowerShell-Skripts einen HDInsight-Cluster erstellen, einen Hive-Auftrag ausführen, einen Sqoop-Auftrag ausführen und den Cluster löschen.
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/25/2017
-ms.author: jasonh
+ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 1d39fd1cf40834781375b2c7bd6cb801ccd3cb97
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: a7700de9bed7e5cfc003481a8e7d93720a767928
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43091897"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51036154"
 ---
 # <a name="analyze-flight-delay-data-by-using-hive-in-hdinsight"></a>Analysieren von Flugverspätungsdaten mit Hive in HDInsight
-Hive ermöglicht die Ausführung eines Hadoop MapReduce-Auftrags über eine SQL-ähnliche Skriptsprache namens *[HiveQL][hadoop-hiveql]*, die zur Zusammenfassung, Abfrage und Analyse großer Datenmengen verwendet werden kann.
+Hive ermöglicht die Ausführung eines Apache Hadoop MapReduce-Auftrags über eine SQL-ähnliche Skriptsprache namens *[HiveQL][hadoop-hiveql]*, die zur Zusammenfassung, Abfrage und Analyse großer Datenmengen verwendet werden kann.
 
 > [!IMPORTANT]
 > Die Schritte in diesem Dokument erfordern einen Windows-basierten HDInsight-Cluster. Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Welche Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?](hdinsight-component-versioning.md#hdinsight-windows-retirement). Schritte für Linux-basierte Cluster finden Sie unter [Analysieren von Flugverspätungsdaten mit Hive in HDInsight (Linux)](hdinsight-analyze-flight-delay-data-linux.md).

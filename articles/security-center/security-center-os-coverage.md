@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/10/2018
+ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: 279818e6b43e53206deb9e33591f75ef381a8962
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: f4bc90b2d1a80125ae88b4b5c4c11e42a34a985a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49319981"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51240425"
 ---
 # <a name="platforms-and-features-supported-by-azure-security-center"></a>Von Azure Security Center unterstützte Features und Plattformen
 
@@ -80,16 +80,16 @@ VMs, die in einem Clouddienst ausgeführt werden, werden ebenfalls unterstützt.
 |Sicherheitskonfigurationen|✔|✔|✔|✔|
 |Antischadsoftware|✔|✔|X|X|
 |JIT-VM-Zugriff|✔|X|✔|X|
-|Adaptive Anwendungssteuerungen|✔ (nur Azure)|X|X|X|
+|Adaptive Anwendungssteuerungen|✔|X|X|X|
 |FIM|✔|✔|✔|✔|
 |Datenträgerverschlüsselung|✔|X|✔|X|
 |Bereitstellung durch Drittanbieter|✔|X|✔|X|
 |NSGs|✔|X|✔|X|
-|Filess V1|✔|✔|X|X|
+|Dateibedrohungserkennung|✔|✔|X|X|
 |Netzwerkübersicht|✔|X|✔|X|
-|Adaptives Erhöhen des Netzwerkschutzes|✔|X|✔|X|
+|Adaptive Netzwerksteuerungen|✔|X|✔|X|
 
-* Diese Features werden derzeit in der öffentlichen Vorschau unterstützt.
+\* Diese Features werden derzeit in der öffentlichen Vorschau unterstützt.
 
 
 ## <a name="supported-paas-features"></a>Unterstützte PaaS-Features
@@ -103,26 +103,17 @@ VMs, die in einem Clouddienst ausgeführt werden, werden ebenfalls unterstützt.
 |Blob-Speicherkonten*|✔| ✔|
 |App Services|✔| ✔|
 |Clouddienste|✔| X|
-|Redis-Cache|✔| X|
-|Service Fabric|✔| X|
-|Azure Automation|✔| X|
-|Data Lake |✔| X|
-|Schlüsseltresor|✔| X|
-|Service Bus|✔| X|
-|Stream Analytics|✔| X|
-|Batch|✔| X|
-|Logik-Apps|✔| X|
 |VNETs|✔| Nicht verfügbar|
 |Subnetze|✔| Nicht verfügbar|
 |NICs|✔| ✔|
 |NSGs|✔| Nicht verfügbar|
 |Abonnement|✔| ✔|
 
-* Diese Features werden derzeit in der öffentlichen Vorschau unterstützt.
+\* Diese Features werden derzeit in der öffentlichen Vorschau unterstützt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Planungs- und Betriebshandbuch für Azure Security Center:](security-center-planning-and-operations-guide.md) Hier erfahren Sie, wie Sie die Einführung von Azure Security Center planen, und Sie erhalten grundlegende Informationen zu Entwurfsaspekten.
 - [Security alerts by type in Azure Security Center (Sicherheitswarnungen nach Typ in Azure Security Center):](security-center-alerts-type.md#virtual-machine-behavioral-analysis) Hier finden Sie Informationen zur Verhaltensanalyse bei virtuellen Computern und zur Absturzabbild-Speicheranalyse in Security Center.
 - [Azure Security Center – Häufig gestellte Fragen](security-center-faq.md) : Hier finden Sie häufig gestellte Fragen zur Verwendung des Diensts.
-- [Azure Security Blog (Blog zur Azure-Sicherheit):](http://blogs.msdn.com/b/azuresecurity/) Hier finden Sie Blogbeiträge zur Azure-Sicherheit und -Compliance.
+- [Azure Security Blog (Blog zur Azure-Sicherheit):](https://blogs.msdn.com/b/azuresecurity/) Hier finden Sie Blogbeiträge zur Azure-Sicherheit und -Compliance.

@@ -4,40 +4,46 @@ description: Die Azure Policy-Definition hat verschiedene Auswirkungen, mit dene
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 09/18/2018
+ms.date: 10/30/2018
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 54562401c830232d0a4bf90405cc5a2dbedcd8bc
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: 4668b1fe6e59898d81fc71558e21acd1a89be767
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47055967"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51279496"
 ---
 # <a name="understand-policy-effects"></a>Grundlegendes zu Richtlinienauswirkungen
 
 Jede Richtliniendefinition in Azure Policy hat eine einzelne Auswirkung. Diese bestimmt, was beim Überprüfen geschieht, wenn das **if**-Segment der Richtlinienregel für die überprüfte Ressource ausgewertet wird. Die Auswirkungen für eine neue Ressource, eine aktualisierte Ressource oder eine vorhandene Ressource können hierbei unterschiedlich sein.
 
-Aktuell werden in einer Richtliniendefinition fünf Auswirkungen unterstützt:
+Aktuell werden in einer Richtliniendefinition sechs Auswirkungen unterstützt:
 
 - Anfügen
 - Audit
 - Auswirkung „AuditIfNotExists“
 - Verweigern
 - Auswirkung „DeployIfNotExists“
+- Deaktiviert
 
 ## <a name="order-of-evaluation"></a>Reihenfolge der Auswertung
 
 Wenn über den Azure Resource Manager eine Anforderung zum Erstellen oder Aktualisieren einer Ressource gesendet wird, verarbeitet Azure Policy verschiedene Auswirkungen, bevor die Anforderung an den geeigneten Ressourcenanbieter übergeben wird.
 Auf diese Weise wird eine unnötige Verarbeitung durch einen Ressourcenanbieter verhindert, wenn eine Ressource nicht den konfigurierten Governancevorgaben von Azure Policy entspricht. Azure Policy erstellt eine Liste aller – per Richtlinie oder Initiative – zugewiesenen Richtliniendefinitionen, die gemäß Bereich (abzüglich der Ausnahmen) für die Ressource gelten, und bereitet die Auswertung der Ressource anhand jeder Definition vor.
 
-- Zuerst wird **append** ausgewertet. Die Anforderung kann durch „append“ geändert werden, deshalb kann eine über „append“ durchgeführte Änderung die Auslösung der Auswirkungen „audit“ oder „deny“ verhindern.
+- Zuerst wird **Deaktiviert** überprüft, um zu ermitteln, ob die Richtlinienregel ausgewertet werden soll.
+- Anschließend wird **Anfügen** ausgewertet. Die Anforderung kann durch „append“ geändert werden, deshalb kann eine über „append“ durchgeführte Änderung die Auslösung der Auswirkungen „audit“ oder „deny“ verhindern.
 - Anschließend wird **deny** ausgewertet. Durch die Auswertung von „deny“ vor „audit“ wird eine zweimalige Protokollierung einer unerwünschten Ressource verhindert.
 - Anschließend wird **audit** ausgewertet, bevor die Anforderung an den Ressourcenanbieter weitergeleitet wird.
 
 Sobald die Anforderung an den Ressourcenanbieter übergeben wurde und der Ressourcenanbieter einen Erfolgsstatuscode zurückgibt, werden **AuditIfNotExists** und **DeployIfNotExists** ausgewertet, um zu bestimmen, ob eine anschließende Konformitätsprotokollierung oder -aktion erforderlich ist.
+
+## <a name="disabled"></a>Deaktiviert
+
+Dieser Effekt ist hilfreich in Testsituationen und nach dem Parametrisieren des Effekts durch die Richtliniendefinition. Es ist möglich, eine einzelne Zuweisung dieser Richtlinie zu deaktivieren, indem der Zuweisungsparameter des Effekts geändert wird, anstatt alle Zuweisungen der Richtlinie zu deaktivieren.
 
 ## <a name="append"></a>Anfügen
 
@@ -331,7 +337,7 @@ Weil jede Zuweisung einzeln ausgewertet wird, ist es nicht möglich, dass eine R
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Sehen Sie sich die Beispiele unter [Azure Policy-Beispiele](../samples/index.md) an.
+- Unter [Azure Policy-Beispiele](../samples/index.md) finden Sie Beispiele
 - Befassen Sie sich mit der [Struktur von Azure Policy-Definitionen](definition-structure.md).
 - Informieren Sie sich über das [programmgesteuerte Erstellen von Richtlinien](../how-to/programmatically-create.md).
 - Informieren Sie sich über das [Abrufen von Konformitätsdaten](../how-to/getting-compliance-data.md).

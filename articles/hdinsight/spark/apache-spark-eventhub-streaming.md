@@ -8,13 +8,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive,mvc
 ms.topic: conceptual
-ms.date: 06/14/2018
-ms.openlocfilehash: b705333d90d22fa037319df5fdf66f8a3d333365
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.date: 11/06/2018
+ms.openlocfilehash: eb2145d2e7b787bafa0b546449282454f7059999
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51012172"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51283409"
 ---
 # <a name="tutorial-process-tweets-using-azure-event-hubs-and-spark-in-hdinsight"></a>Tutorial: Verarbeiten von Tweets mit Azure Event Hubs und Spark in HDInsight
 
@@ -73,18 +73,14 @@ Sie verwenden diesen Event Hub zum Speichern von Tweets.
     ![Angeben eines Event Hub-Namens für das Spark-Streamingbeispiel](./media/apache-spark-eventhub-streaming/hdinsight-provide-event-hub-name-for-spark-streaming.png "Angeben eines Event Hub-Namens für das Spark-Streamingbeispiel")
 5. Klicken Sie auf **Erstellen**, um den Namespace zu erstellen.
 
-6. Führen Sie die folgenden Schritte aus, um den Event Hub-Namespace zu öffnen:
+7. Führen Sie die folgenden Schritte aus, um den Event Hub-Namespace zu öffnen:
 
     1. Wählen Sie im Portal die Option **Alle Dienste** aus.
     2. Geben Sie **Event Hubs** in das Feld „Filter“ ein.
-    3. Doppelklicken Sie auf den Namespace, den Sie erstellt haben.
+    3. Wählen Sie den neu erstellten Namespace aus.
     4. Klicken Sie auf **+ Event Hub**.
 
-6. Wählen Sie in der Liste der Event Hubs-Namespaces den neu erstellten Namespace aus.      
-5. Wählen Sie **Event Hubs** und dann **+ Event Hub** aus, um einen neuen Event Hub zu erstellen.
-  
-
-6. Geben Sie die folgenden Werte ein:
+8. Geben Sie die folgenden Werte ein:
 
     - Name: Geben Sie einen Namen für den Event Hub ein.
     - Anzahl Partitionen: 10.
@@ -92,12 +88,12 @@ Sie verwenden diesen Event Hub zum Speichern von Tweets.
    
     ![Angeben von Event Hub-Informationen für das Spark-Streamingbeispiel](./media/apache-spark-eventhub-streaming/hdinsight-provide-event-hub-details-for-spark-streaming-example.png "Angeben von Event Hub-Informationen für das Spark-Streamingbeispiel")
 
-7. Klicken Sie auf **Erstellen**.
-8. Wählen Sie **Richtlinien für gemeinsamen Zugriff** für den Namespace aus (Achtung: Dies sind nicht die Richtlinien für gemeinsamen Zugriff für den Event Hub). Wählen Sie dann **RootManageSharedAccessKey** aus.
+9. Klicken Sie auf **Erstellen**.
+10. Wählen Sie **Richtlinien für gemeinsamen Zugriff** für den Namespace aus (Achtung: Dies sind nicht die Richtlinien für gemeinsamen Zugriff für den Event Hub). Wählen Sie dann **RootManageSharedAccessKey** aus.
     
      ![Festlegen von Event Hub-Richtlinien für das Spark-Streamingbeispiel](./media/apache-spark-eventhub-streaming/hdinsight-set-event-hub-policies-for-spark-streaming-example.png "Festlegen von Event Hub-Richtlinien für das Spark-Streamingbeispiel")
 
-9. Speichern Sie die Werte für **Primärschlüssel** und **Verbindungszeichenfolge – Primärschlüssel**, um sie später im Tutorial zu verwenden.
+11. Speichern Sie die Werte für **Primärschlüssel** und **Verbindungszeichenfolge – Primärschlüssel**, um sie später im Tutorial zu verwenden.
 
      ![Anzeigen der Event Hub-Richtlinienschlüssel für das Spark-Streamingbeispiel](./media/apache-spark-eventhub-streaming/hdinsight-view-event-hub-policy-keys.png "Anzeigen der Event Hub-Richtlinienschlüssel für das Spark-Streamingbeispiel")
 
@@ -222,7 +218,7 @@ Sie müssen ein weiteres Jupyter-Notebook mit dem Namen **ReadTweetsFromEventHub
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Mit HDInsight werden Ihre Daten in Azure Storage oder Azure Data Lake Store gespeichert, sodass Sie einen Cluster ohne Weiteres löschen können, wenn er nicht verwendet wird. Für einen HDInsight-Cluster fallen auch dann Gebühren an, wenn er nicht verwendet wird. Da die Gebühren für den Cluster erheblich höher sind als die Kosten für den Speicher, ist es sinnvoll, nicht verwendete Cluster zu löschen. Wenn Sie vorhaben, sofort mit dem nächsten Tutorial fortzufahren, können Sie den Cluster beibehalten.
+Mit HDInsight werden Ihre Daten in Azure Storage oder Azure Data Lake Store gespeichert, sodass Sie einen Cluster ohne Weiteres löschen können, wenn er nicht verwendet wird. Für einen HDInsight-Cluster fallen auch dann Gebühren an, wenn er nicht verwendet wird. Wenn Sie vorhaben, sofort mit dem nächsten Tutorial fortzufahren, sollten Sie den Cluster beibehalten, andernfalls können Sie ihn nun löschen.
 
 Öffnen Sie den Cluster im Azure-Portal, und wählen Sie **Löschen** aus.
 

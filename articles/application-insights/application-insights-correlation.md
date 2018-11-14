@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 04/09/2018
 ms.reviewer: sergkanz
 ms.author: mbullwin
-ms.openlocfilehash: 76e55dabf2ce6da4ecf03f1ebbe065cf595872cc
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: eb14a3bc76fef37cdff4ed49cdbb6a99eac40928
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51037922"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51280162"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Telemetriekorrelation in Application Insights
 
@@ -66,7 +66,7 @@ Nachdem Sie den `GET /api/stock/value`-Aufruf an einen externen Dienst getätigt
 
 ## <a name="correlation-headers"></a>Korrelations-Header
 
-Wir arbeiten an RFC-Vorschlägen für das [Korrelations-HTTP-Protokoll](https://github.com/lmolkova/correlation/blob/master/http_protocol_proposal_v1.md). Diese Vorschläge definieren zwei Header:
+Wir arbeiten an RFC-Vorschlägen für das [Korrelations-HTTP-Protokoll](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md). Diese Vorschläge definieren zwei Header:
 
 - `Request-Id` enthält die global eindeutige ID des Aufrufs.
 - `Correlation-Context` enthält die Sammlung an Name/Wert-Paaren der Eigenschaften von verteilten Ablaufverfolgungen.
@@ -77,7 +77,7 @@ Application Insights definiert die [Erweiterung](https://github.com/lmolkova/cor
 
 ### <a name="w3c-distributed-tracing"></a>W3C – Verteilte Ablaufverfolgung
 
-Wir gehen über zu (W3C-Format für verteilte Ablaufverfolgung)[https://w3c.github.io/distributed-tracing/report-trace-context.html]. Dieses definiert:
+Wir gehen über zu [W3C-Format für verteilte Ablaufverfolgung](https://w3c.github.io/trace-context/). Dieses definiert:
 - `traceparent` – trägt eine global eindeutige Vorgangs-ID sowie einen eindeutigen Bezeichner des Aufrufs.
 - `tracestate` – trägt einen für das Ablaufverfolgungssystem spezifischen Kontext.
 

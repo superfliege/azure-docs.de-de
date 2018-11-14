@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/23/2018
+ms.date: 11/7/2018
 ms.author: shlo
-ms.openlocfilehash: 3db32dfe2d7b65535f7d30f76241b33ecca96c15
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 7a0d72ac67b329cb6d25be955205a2bbcef38e81
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49957954"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51281692"
 ---
 # <a name="visual-authoring-in-azure-data-factory"></a>Visuelles Erstellen in Azure Data Factory
 Mithilfe der Azure Data Factory-Benutzeroberfläche (UX) können Sie Ressourcen für Ihre Data Factory visuell erstellen und bereitstellen, ohne Code schreiben zu müssen. Sie können Aktivitäten auf eine Pipelinecanvas ziehen, Testläufe ausführen, iterativ debuggen sowie Ihre Pipelineausführungen bereitstellen und überwachen. Die Benutzeroberfläche kann auf zwei Arten zum visuellen Erstellen verwendet werden:
@@ -142,7 +142,9 @@ Nachdem Sie die Änderungen des Kollaborationsbranchs zusammengeführt haben (`m
 
 ## <a name="author-with-github-integration"></a>Erstellen der GitHub-Integration
 
-Das visuelle Erstellen mit GitHub-Integration unterstützt Quellcodeverwaltung und Kollaboration beim Arbeiten an den Data Factory-Pipelines. Sie können eine Data Factory einem GitHub-Kontorepository für die Quellcodeverwaltung, Kollaboration und Versionsverwaltung zuordnen. Ein einzelnes GitHub-Konto kann über mehrere Repositorys verfügen. Allerdings kann ein GitHub-Repository nur einer einzigen Data Factory zugeordnet werden. Wenn Sie noch nicht über ein GitHub-Konto oder -Repository verfügen, folgen Sie [diesen Anweisungen](https://github.com/join) zum Erstellen der Ressourcen. Die GitHub-Integration von Data Factory unterstützt sowohl das öffentliche GitHub als auch GitHub Enterprise.
+Das visuelle Erstellen mit GitHub-Integration unterstützt Quellcodeverwaltung und Kollaboration beim Arbeiten an den Data Factory-Pipelines. Sie können eine Data Factory einem GitHub-Kontorepository für die Quellcodeverwaltung, Kollaboration und Versionsverwaltung zuordnen. Ein einzelnes GitHub-Konto kann über mehrere Repositorys verfügen. Allerdings kann ein GitHub-Repository nur einer einzigen Data Factory zugeordnet werden. Wenn Sie noch nicht über ein GitHub-Konto oder -Repository verfügen, folgen Sie  [diesen Anweisungen](https://github.com/join)  zum Erstellen der Ressourcen.
+
+Die GitHub-Integration von Data Factory unterstützt sowohl das öffentliche GitHub (also [https://github.com](https://github.com)) als auch GitHub Enterprise. Sie können öffentliche und private GitHub-Repositorys mit Data Factory verwenden, sofern Sie über Lese- und Schreibberechtigungen für das Repository in GitHub verfügen.
 
 Zum Konfigurieren eines GitHub-Repositorys müssen Sie über Administratorberechtigungen für das verwendete Azure-Abonnement verfügen.
 
@@ -164,11 +166,11 @@ Es gibt zwei Methoden zum Konfigurieren eines GitHub-Repositorys mit einer Data 
 
 **Konfigurationsmethode 1 (öffentliches Repository): Seite „Erste Schritte“**
 
-Wechseln Sie in Azure Data Factory zur Seite **Erste Schritte**. Wählen Sie **Coderepository konfigurieren** aus:
+Wechseln Sie in Azure Data Factory zur Seite  **Erste Schritte** . Wählen Sie  **Coderepository konfigurieren** aus:
 
 ![Seite „Erste Schritte“ von Data Factory](media/author-visually/github-integration-image1.png)
 
-Der Konfigurationsbereich **Repositoryeinstellungen** wird angezeigt:
+Der Konfigurationsbereich  **Repositoryeinstellungen**  wird angezeigt:
 
 ![GitHub-Repositoryeinstellungen](media/author-visually/github-integration-image2.png)
 
@@ -181,14 +183,14 @@ In dem Bereich werden die folgenden Einstellungen für das Coderepository für A
 | **Repositoryname**                                       | Der Name Ihres GitHub-Coderepositorys. GitHub-Konten enthalten Git-Repositorys zum Verwalten Ihres Quellcodes. Sie können ein neues Repository erstellen oder ein vorhandenes Repository verwenden, das sich bereits in Ihrem Konto befindet.                                                                                                                                                                                                                              |                    |
 | **Collaboration branch** (Kollaborationsbranch)                                 | Ihr Branch für die GitHub-Kollaboration, der für die Veröffentlichung verwendet wird. Standardmäßig ist dies „master“. Ändern Sie diese Einstellung, falls Sie Ressourcen eines anderen Branchs veröffentlichen möchten.                                                                                                                                                                                                                                                               |                    |
 | **Stammordner**                                          | Ihr Stammordner im Branch für die GitHub-Kollaboration.                                                                                                                                                                                                                                                                                                                                                                             |                    |
-| **Vorhandene Data Factory-Ressourcen in Repository importieren** | Gibt an, ob vorhandene Data Factory-Ressourcen aus der **UX-Canvas für die Erstellung** in ein GitHub-Repository importiert werden sollen. Aktivieren Sie das Kontrollkästchen, um Ihre Data Factory-Ressourcen in das zugehörige Git-Repository im JSON-Format zu importieren. Diese Aktion exportiert jede Ressource einzeln (d. h. die verknüpften Dienste und Datasets werden in separate JSONs exportiert). Ist dieses Kontrollkästchen nicht aktiviert, werden die vorhandenen Ressourcen nicht importiert. | Aktiviert (Standardeinstellung) |
+| **Vorhandene Data Factory-Ressourcen in Repository importieren** | Gibt an, ob vorhandene Data Factory-Ressourcen aus der  **UX-Canvas für die Erstellung**  in ein GitHub-Repository importiert werden sollen. Aktivieren Sie das Kontrollkästchen, um Ihre Data Factory-Ressourcen in das zugehörige Git-Repository im JSON-Format zu importieren. Diese Aktion exportiert jede Ressource einzeln (d. h. die verknüpften Dienste und Datasets werden in separate JSONs exportiert). Ist dieses Kontrollkästchen nicht aktiviert, werden die vorhandenen Ressourcen nicht importiert. | Aktiviert (Standardeinstellung) |
 | **Branch zum Importieren der Ressource**                       | Gibt an, in welchen Branch die Data Factory-Ressourcen (Pipelines, Datasets, verknüpfte Dienste usw.) importiert werden. Sie können Ressourcen in einen der folgenden Branches importieren: a. Kollaboration b. Neu erstellen c. Vorhandene verwenden                                                                                                                                                                                                     |                    |
 
 #### <a name="configuration-method-2-public-repo-ux-authoring-canvas"></a>Konfigurationsmethode 2 (öffentliches Repository): UX-Canvas für die Erstellung
 
-Suchen Sie in Azure Data Factory in der **UX-Canvas** für die Erstellung nach Ihrer Data Factory. Klicken Sie auf das Dropdownmenü **Data Factory**, und wählen Sie dann **Coderepository konfigurieren** aus.
+Suchen Sie in Azure Data Factory in der  **UX-Canvas für die Erstellung** nach Ihrer Data Factory. Wählen Sie das Dropdownmenü  **Data Factory**  und dann  **Coderepository konfigurieren** aus.
 
-Ein Konfigurationsbereich wird angezeigt. Ausführliche Informationen zu den Konfigurationseinstellungen finden Sie in den obigen Beschreibungen zu *Konfigurationsmethode 1*.
+Ein Konfigurationsbereich wird angezeigt. Ausführliche Informationen zu den Konfigurationseinstellungen finden Sie in den obigen Beschreibungen zur  *Konfigurationsmethode 1*.
 
 ### <a name="configure-a-github-enterprise-repository-with-azure-data-factory"></a>Konfigurieren eines GitHub Enterprise-Repositorys mit Azure Data Factory
 
@@ -196,11 +198,11 @@ Es gibt zwei Methoden zum Konfigurieren eines GitHub Enterprise-Repositorys mit 
 
  #### <a name="configuration-method-1-enterprise-repo-lets-get-started-page"></a>Konfigurationsmethode 1 (Enterprise-Repository): Seite „Erste Schritte“
 
-Wechseln Sie in Azure Data Factory zur Seite **Erste Schritte**. Wählen Sie **Coderepository konfigurieren** aus:
+Wechseln Sie in Azure Data Factory zur Seite  **Erste Schritte** . Wählen Sie  **Coderepository konfigurieren** aus:
 
 ![Seite „Erste Schritte“ von Data Factory](media/author-visually/github-integration-image1.png)
 
-Der Konfigurationsbereich **Repositoryeinstellungen** wird angezeigt:
+Der Konfigurationsbereich  **Repositoryeinstellungen**  wird angezeigt:
 
 ![GitHub-Repositoryeinstellungen](media/author-visually/github-integration-image3.png)
 
@@ -215,14 +217,14 @@ In dem Bereich werden die folgenden Einstellungen für das Coderepository für A
 | **Repositoryname**                                       | Der Name Ihres GitHub-Coderepositorys. GitHub-Konten enthalten Git-Repositorys zum Verwalten Ihres Quellcodes. Sie können ein neues Repository erstellen oder ein vorhandenes Repository verwenden, das sich bereits in Ihrem Konto befindet.                                                                                                                                                                                                                              |                    |
 | **Collaboration branch** (Kollaborationsbranch)                                 | Ihr Branch für die GitHub-Kollaboration, der für die Veröffentlichung verwendet wird. Standardmäßig ist dies „master“. Ändern Sie diese Einstellung, falls Sie Ressourcen eines anderen Branchs veröffentlichen möchten.                                                                                                                                                                                                                                                               |                    |
 | **Stammordner**                                          | Ihr Stammordner im Branch für die GitHub-Kollaboration.                                                                                                                                                                                                                                                                                                                                                                             |                    |
-| **Vorhandene Data Factory-Ressourcen in Repository importieren** | Gibt an, ob vorhandene Data Factory-Ressourcen aus der **UX-Canvas für die Erstellung** in ein GitHub-Repository importiert werden sollen. Aktivieren Sie das Kontrollkästchen, um Ihre Data Factory-Ressourcen in das zugehörige Git-Repository im JSON-Format zu importieren. Diese Aktion exportiert jede Ressource einzeln (d. h. die verknüpften Dienste und Datasets werden in separate JSONs exportiert). Ist dieses Kontrollkästchen nicht aktiviert, werden die vorhandenen Ressourcen nicht importiert. | Aktiviert (Standardeinstellung) |
+| **Vorhandene Data Factory-Ressourcen in Repository importieren** | Gibt an, ob vorhandene Data Factory-Ressourcen aus der  **UX-Canvas für die Erstellung**  in ein GitHub-Repository importiert werden sollen. Aktivieren Sie das Kontrollkästchen, um Ihre Data Factory-Ressourcen in das zugehörige Git-Repository im JSON-Format zu importieren. Diese Aktion exportiert jede Ressource einzeln (d. h. die verknüpften Dienste und Datasets werden in separate JSONs exportiert). Ist dieses Kontrollkästchen nicht aktiviert, werden die vorhandenen Ressourcen nicht importiert. | Aktiviert (Standardeinstellung) |
 | **Branch zum Importieren der Ressource**                       | Gibt an, in welchen Branch die Data Factory-Ressourcen (Pipelines, Datasets, verknüpfte Dienste usw.) importiert werden. Sie können Ressourcen in einen der folgenden Branches importieren: a. Kollaboration b. Neu erstellen c. Vorhandene verwenden                                                                                                                                                                                                     |                    |
 
 #### <a name="configuration-method-2-enterprise-repo-ux-authoring-canvas"></a>Konfigurationsmethode 2 (Enterprise-Repository): UX-Canvas für die Erstellung
 
-Suchen Sie in Azure Data Factory in der **UX-Canvas** für die Erstellung nach Ihrer Data Factory. Klicken Sie auf das Dropdownmenü **Data Factory**, und wählen Sie dann **Coderepository konfigurieren** aus.
+Suchen Sie in Azure Data Factory in der  **UX-Canvas für die Erstellung** nach Ihrer Data Factory. Wählen Sie das Dropdownmenü  **Data Factory**  und dann  **Coderepository konfigurieren** aus.
 
-Ein Konfigurationsbereich wird angezeigt. Ausführliche Informationen zu den Konfigurationseinstellungen finden Sie in den obigen Beschreibungen zu *Konfigurationsmethode 1*.
+Ein Konfigurationsbereich wird angezeigt. Ausführliche Informationen zu den Konfigurationseinstellungen finden Sie in den obigen Beschreibungen zur  *Konfigurationsmethode 1*.
 
 ## <a name="use-the-expression-language"></a>Verwenden der Ausdruckssprache
 Sie können Ausdrücke für Eigenschaftswerte angeben, indem sie die Ausdruckssprache verwenden, die von Azure Data Factory unterstützt wird.

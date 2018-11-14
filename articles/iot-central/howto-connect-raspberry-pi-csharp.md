@@ -1,19 +1,19 @@
 ---
 title: Verbinden eines Raspberry Pi-Geräts mit Ihrer Azure IoT Central-Anwendung (C#) | Microsoft-Dokumentation
 description: In diesem Artikel erfahren Sie, wie Sie als Geräteentwickler ein Raspberry Pi-Gerät mit Ihrer Azure IoT Central-Anwendung über C# verbinden.
-author: dominicbetts
-ms.author: dobett
-ms.date: 01/22/2018
+author: viv-liu
+ms.author: viviali
+ms.date: 10/31/2018
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-manager: timlt
-ms.openlocfilehash: a9390ac9046ad1e0ec5a1689052ee99bf76ec6f4
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+manager: peterpr
+ms.openlocfilehash: 489a644bd2d17e2be3232ec522b9ed7e37d246ad
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45734234"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50956722"
 ---
 # <a name="connect-a-raspberry-pi-to-your-azure-iot-central-application-c"></a>Verbinden eines Raspberry Pi-Geräts mit Ihrer Azure IoT Central-Anwendung (C#)
 
@@ -23,10 +23,10 @@ In diesem Artikel wird beschrieben, wie Sie als Geräteentwickler ein Raspberry 
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-Damit Sie die in diesem Artikel aufgeführten Schritte ausführen können, benötigen Sie Folgendes:
+Um die in diesem Artikel aufgeführten Schritte auszuführen, benötigen Sie die folgenden Komponenten:
 
 * [.NET Core 2](https://www.microsoft.com/net) muss auf dem Entwicklungscomputer installiert sein. Außerdem benötigen Sie einen geeigneten Code-Editor wie z.B. [Visual Studio Code](https://code.visualstudio.com/).
-* Eine Azure IoT Central-Anwendung, die mit der Anwendungsvorlage **Beispiel-Entwickler-Kits** erstellt wurde. Weitere Informationen finden Sie unter [Erstellen Ihrer Azure IoT Central-Anwendung](howto-create-application.md).
+* Eine Azure IoT Central-Anwendung, die mit der Anwendungsvorlage **Beispiel-Entwickler-Kits** erstellt wurde. Weitere Informationen finden Sie unter [Schnellstart: Erstellen einer Anwendung](quick-deploy-iot-central.md).
 * Sie verfügen über ein Raspberry Pi-Gerät, auf dem das Raspbian-Betriebssystem ausgeführt wird.
 
 
@@ -34,10 +34,21 @@ Damit Sie die in diesem Artikel aufgeführten Schritte ausführen können, benö
 
 Eine Anwendung, die mit der Anwendungsvorlage **Beispiel-Entwickler-Kits** erstellt wurde, enthält eine Gerätevorlage **Raspberry Pi** mit den folgenden Eigenschaften: 
 
-- Telemetriedaten, die die Messwerte für das Gerät enthalten: **Luftfeuchtigkeit**, **Temperatur**, **Druck**, **Magnometer** (entlang der X-, Y- und Z-Achse gemessen), **Beschleunigungssensor** (entlang der X-, Y- und Z-Achse gemessen) und **Gyroskop** (entlang der X-, Y- und Z-Achse gemessen)
-- Einstellungen für **Spannung**, **Stromstärke** und **Lüftergeschwindigkeit** und eine Umschaltschaltfläche namens **IR**
-- Eigenschaften mit der Geräteeigenschaft **Nummer** und der Cloudeigenschaft **Standort**
-
+- Telemetriedaten, darunter die folgenden vom Gerät gesammelten Messungen:
+    - Luftfeuchtigkeit
+    - Temperatur
+    - Pressure
+    - Magnetometer (X, Y, Z)
+    - Beschleunigungsmesser (X, Y, Z)
+    - Gyroskop (X, Y, Z)
+- Einstellungen
+    - Spannung
+    - Aktuell
+    - Lüfterdrehzahl
+    - IR-Umschalter
+- Eigenschaften
+    - Geräteeigenschaft „Nummer“
+    - Cloudeigenschaft „Standort“
 
 Vollständige Informationen zur Konfiguration der Gerätevorlage finden Sie unter [Details zur Raspberry Pi-Gerätevorlage](howto-connect-raspberry-pi-csharp.md#raspberry-pi-device-template-details).
 

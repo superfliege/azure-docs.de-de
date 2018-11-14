@@ -1,5 +1,5 @@
 ---
-title: Arbeiten mit Geodaten in Azure Cosmos DB | Microsoft-Dokumentation
+title: Arbeiten mit Geodaten im Azure Cosmos DB-SQL-API-Konto | Microsoft-Dokumentation
 description: Grundlegendes zum Erstellen, Indizieren und Abfragen räumlicher Objekte mit Azure Cosmos DB und der SQL-API.
 services: cosmos-db
 author: SnehaGunda
@@ -7,18 +7,18 @@ manager: kfile
 ms.service: cosmos-db
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/20/2017
+ms.date: 11/01/2017
 ms.author: sngun
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1b1dcd9ba428618e1b234d76d5ad459eab0662aa
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 6ad59f14a0ade305bc9b1f9f125c21e9bdc39c0d
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50417557"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50961907"
 ---
-# <a name="working-with-geospatial-and-geojson-location-data-in-azure-cosmos-db"></a>Arbeiten mit Geodaten und GeoJSON-Standortdaten in Azure Cosmos DB
-Dieser Artikel bietet eine Einführung in die Funktionalität für Geodaten in [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/). Nach dem Lesen dieses Artikels können Sie die folgenden Fragen beantworten:
+# <a name="use-geospatial-and-geojson-location-data-with-azure-cosmos-db-sql-api-account"></a>Verwenden von Geodaten und Standortdaten im GeoJSON-Format im Azure Cosmos DB-SQL-API-Konto
+
+Dieser Artikel bietet eine Einführung in die Funktionalität von Geodaten in Azure Cosmos DB. Das Speichern und Zugreifen auf Geodaten wird derzeit nur von Cosmos DB-SQL-API-Konten unterstützt. Nach dem Lesen dieses Artikels können Sie die folgenden Fragen beantworten:
 
 * Wie werden Geodaten in Azure Cosmos DB gespeichert?
 * Wie kann ich Geodaten in Azure Cosmos DB in SQL und LINQ abfragen?
@@ -133,9 +133,6 @@ public class UserProfile
     [JsonProperty("location")]
     public Point Location { get; set; }
 
-    [JsonProperty("profiletype")]
-    public string ProfileType { get; set; }
-
     // More properties
 }
 
@@ -154,7 +151,7 @@ Wenn Sie die Informationen zu Breiten- und Längengrad nicht haben, aber über d
 Nachdem wir einen Blick auf das Einfügen von Geodaten geworfen haben, wollen wir uns nun das Abfragen dieser Daten mithilfe von Azure Cosmos DB sowie SQL und LINQ ansehen.
 
 ### <a name="spatial-sql-built-in-functions"></a>Integrierte räumliche SQL-Funktionen
-Azure Cosmos DB unterstützt die folgenden integrierten OGC-Funktionen (Open Geospatial Consortium ) für das Abfragen von Geodaten. Weitere Informationen zu sämtlichen integrierten Funktionen in der SQL-Sprache finden Sie unter [Abfragen von Azure Cosmos DB](sql-api-sql-query.md).
+Azure Cosmos DB unterstützt die folgenden integrierten OGC-Funktionen (Open Geospatial Consortium ) für das Abfragen von Geodaten. Weitere Informationen zu sämtlichen integrierten Funktionen in der SQL-Sprache finden Sie unter [Abfragen von Azure Cosmos DB-Daten](sql-api-sql-query.md).
 
 <table>
 <tr>
@@ -279,7 +276,7 @@ Hier ist ein Beispiel einer LINQ-Abfrage, die alle Dokumente in der Azure Cosmos
 **LINQ-Abfrage der Entfernung**
 
     foreach (UserProfile user in client.CreateDocumentQuery<UserProfile>(UriFactory.CreateDocumentCollectionUri("db", "profiles"))
-        .Where(u => u.ProfileType == "Public" && u.Location.Distance(new Point(32.33, -4.66)) < 30000))
+        .Where(u => u.ProfileType == "Public" && a.Location.Distance(new Point(32.33, -4.66)) < 30000))
     {
         Console.WriteLine("\t" + user);
     }

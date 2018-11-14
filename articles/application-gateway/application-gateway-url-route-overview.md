@@ -1,25 +1,18 @@
 ---
-title: URL-basiertes Inhaltsrouting – Übersicht | Microsoft Docs
+title: URL-basiertes Inhaltsrouting – Übersicht | Microsoft-Dokumentation
 description: Diese Seite bietet eine Übersicht über das URL-basierte Inhaltsrouting mit Application Gateway sowie über das urlPathMap-Konfigurationselement und die PathBasedRouting-Regel.
-documentationcenter: na
 services: application-gateway
 author: vhorne
 manager: jpconnock
-editor: ''
-ms.assetid: 4409159b-e22d-4c9a-a103-f5d32465d163
 ms.service: application-gateway
-ms.devlang: na
-ms.topic: hero-article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 05/09/2017
+ms.date: 11/7/2018
 ms.author: victorh
-ms.openlocfilehash: f6108b5ac628b8bc2c1d74dcc871f96115094859
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: bc123307a3cc3a5040e93e517c60604dc75fc7e7
+ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32770337"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51218422"
 ---
 # <a name="url-path-based-routing-overview"></a>Routing auf URL-Pfadbasis – Übersicht
 
@@ -70,7 +63,7 @@ Mit dem urlPathMap-Element werden Pfadmuster für Zuordnungen zu Back-End-Server
 ```
 
 > [!NOTE]
-> PathPattern: Diese Einstellung ist eine Liste der abzustimmenden Pfadmuster. Jedes muss mit „/“ beginnen, und ein „*“ ist nur am Ende nach „/“ zulässig. Die Zeichenfolge, die für den Pfadabgleicher bereitgestellt wird, enthält keinen Text nach dem ersten „?“ oder „#“, und diese Zeichen sind hier nicht zulässig.
+> PathPattern: Diese Einstellung ist eine Liste der abzustimmenden Pfadmuster. Jedes muss mit „/“ beginnen, und ein „*“ ist nur am Ende nach „/“ zulässig. Die Zeichenfolge, die in den Pfadabgleich eingegeben wird, enthält keinen Text nach dem ersten Fragezeichen (?) oder der ersten Raute (#), und diese Zeichen sind hier nicht zulässig. Ansonsten sind in PathPattern alle Zeichen zulässig, die auch in einer URL zulässig sind.
 
 Weitere Informationen erhalten Sie in einer [Resource Manager-Vorlage mit URL-basiertem Routing](https://azure.microsoft.com/documentation/templates/201-application-gateway-url-path-based-routing) .
 

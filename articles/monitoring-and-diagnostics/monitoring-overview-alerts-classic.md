@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: robb
 ms.component: alerts
-ms.openlocfilehash: 7046a0c6ac84ad5f156098a26dcef2b8accd50af
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 02e69a9e3442f276e89e8515fb506ddd876ad2d2
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46987644"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51015773"
 ---
 # <a name="what-are-classic-alerts-in-microsoft-azure"></a>Was sind klassische Warnungen in Microsoft Azure?
 
@@ -29,7 +29,7 @@ In der Vergangenheit verfügten Azure Monitor, Application Insights, Log Analyti
 
 Sie können klassische Warnungen nur auf dem Benutzerbildschirm für klassische Warnungen im Azure-Portal anzeigen. Sie erhalten diesen Bildschirm über die Schaltfläche **Klassische Warnungen anzeigen** auf dem Bildschirm „Warnungen“. 
 
- ![Warnungsoptionen im Azure-Portal](./media/monitoring-overview-alerts-classic/monitor-alert-screen2.png) 
+ ![Warnungsoptionen im Azure-Portal](./media/monitoring-overview-alerts-classic/monitor-alert-screen2.png)
 
 Die neuere Benutzeroberfläche „Warnungen“ bietet gegenüber der Oberfläche für klassische Warnungen folgende Vorteile:
 -   **Besseres Benachrichtigungssystem:** – Alle neuere Warnungen verwenden Aktionsgruppen. Hierbei handelt es sich um benannte Gruppen von Benachrichtigungen und Aktionen, die in mehreren Warnungen wiederverwendet werden können. Klassische Metrikwarnungen und ältere Log Analytics-Warnungen verwenden keine Aktionsgruppen.
@@ -89,14 +89,14 @@ Webhooks ermöglichen die Automatisierung und Fehlerbehebung, z.B. mit folgenden
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen über Warnregeln und ihre Konfiguration erhalten Sie hier:
 
-* Weitere Informationen zu [Metriken](monitoring-overview-metrics.md)
-* Konfigurieren von [klassischen Metrikwarnungen über das Azure-Portal](insights-alerts-portal.md)
-* Konfigurieren von [klassischen Metrikwarnungen mit PowerShell](insights-alerts-powershell.md)
-* Konfigurieren von [klassischen Metrikwarnungen über die Befehlszeilenschnittstelle (CLI)](insights-alerts-command-line-interface.md)
+* Weitere Informationen zu [Metriken](../monitoring/monitoring-data-collection.md)
+* Konfigurieren von [klassischen Metrikwarnungen über das Azure-Portal](alert-metric-classic.md)
+* Konfigurieren von [klassischen Metrikwarnungen mit PowerShell](alert-metric-classic.md)
+* Konfigurieren von [klassischen Metrikwarnungen über die Befehlszeilenschnittstelle (CLI)](alert-metric-classic.md)
 * Konfigurieren von [klassischen Metrikwarnungen mithilfe der Azure Monitor-REST-API](https://msdn.microsoft.com/library/azure/dn931945.aspx)
 * Weitere Informationen zu [Aktivitätsprotokollen](monitoring-overview-activity-logs.md)
 * Konfigurieren von [Aktivitätsprotokollwarnungen über das Azure-Portal](monitoring-activity-log-alerts.md)
-* Konfigurieren von [Aktivitätsprotokollwarnungen über den Resource Manager](monitoring-create-activity-log-alerts-with-resource-manager-template.md)
+* Konfigurieren von [Aktivitätsprotokollwarnungen über den Resource Manager](alert-activity-log.md)
 * Weitere Informationen zum [Webhookschema für Aktivitätsprotokollwarnungen](monitoring-activity-log-alerts-webhook.md)
 * Erfahren Sie mehr über [Aktionsgruppen](monitoring-action-groups.md).
-* Konfigurieren [neuerer Warnungen](monitor-alerts-unified-usage.md)
+* Konfigurieren [neuerer Warnungen](alert-metric.md)

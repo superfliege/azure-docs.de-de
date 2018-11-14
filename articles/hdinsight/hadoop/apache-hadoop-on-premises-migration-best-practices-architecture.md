@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: 02db6b4691beb4bfefa3815c87cf54f350219d81
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 62e15b5845ed9faa605f978f0d2fd427c9c3ee9b
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50418006"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51008180"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---architecture-best-practices"></a>Migrieren lokaler Apache Hadoop-Cluster zu Azure HDInsight – bewährte Methoden für die Architektur
 
@@ -31,7 +31,7 @@ Azure HDInsight-Cluster sind für einen bestimmten Typ von Computenutzung ausgel
 |Batchverarbeitung (ETL/ELT)|Hadoop, Spark|
 |Data Warehousing|Hadoop, Spark, Interactive Query|
 |IoT/Streaming|Kafka, Storm, Spark|
-|NoSQL-Transaktionsverarbeitung|HBase|
+|NoSQL-Transaktionsverarbeitung|hbase|
 |Interaktive und schnellere Abfragen mit speicherinternem Caching|Interactive Query|
 |Data Science|ML Services, Spark|
 

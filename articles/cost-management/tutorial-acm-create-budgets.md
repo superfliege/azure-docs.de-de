@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 10/01/2018
+ms.date: 11/02/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 50bd22559c3695ac4161932652eb191084e2b46e
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: 338035014cb8e34caa7aea688028a96d039b028c
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48017357"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50977667"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>Tutorial: Erstellen und Verwalten von Azure-Budgets
 
@@ -33,9 +33,9 @@ In diesem Tutorial lernen Sie Folgendes:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Budgets stehen allen Azure EA-Kunden zur Verfügung. Zum Erstellen und Verwalten von Budgets benötigen Sie Lesezugriff auf ein Azure EA-Abonnement. EA-Abrechnungskonten werden von Budgets nicht unterstützt.
+Budgets stehen allen Azure EA-Kunden zur Verfügung. Zum Erstellen und Verwalten von Budgets benötigen Sie Lesezugriff auf ein Azure EA-Abonnement. Sie können individuelle Budgets für EA-Abonnements und Ressourcengruppen erstellen. Sie können jedoch keine Budgets für EA-Abrechnungskonten erstellen.
 
-Budgets werden einzeln entweder auf der Ebene des Abonnements oder der Ressourcengruppe angelegt. Die folgenden Azure-Berechtigungen werden pro Abonnement für Budgets nach Benutzer und Gruppe unterstützt:
+Die folgenden Azure-Berechtigungen werden pro Abonnement für Budgets nach Benutzer und Gruppe unterstützt:
 
 - Besitzer – kann Budgets für ein Abonnement erstellen, ändern oder löschen.
 - Mitwirkende – kann eigene Budgets erstellen, ändern oder löschen. Kann den Betrag für von anderen Personen erstellten Budgets ändern.

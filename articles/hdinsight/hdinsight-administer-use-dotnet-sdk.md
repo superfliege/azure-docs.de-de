@@ -1,22 +1,22 @@
 ---
-title: Verwalten von Hadoop-Clustern in HDInsight mit dem .NET SDK – Azure
-description: Hier erfahren Sie, wie Sie administrative Aufgaben für Hadoop-Cluster in HDInsight mit HDInsight .NET SDK ausführen.
+title: Verwalten von Apache Hadoop-Clustern in HDInsight mit dem .NET SDK – Azure
+description: Hier erfahren Sie, wie Sie mit dem HDInsight .NET SDK administrative Aufgaben für die Apache Hadoop-Cluster in HDInsight ausführen.
 services: hdinsight
 ms.reviewer: jasonh
-author: jasonwhowell
+author: hrasheed-msft
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2018
-ms.author: jasonh
-ms.openlocfilehash: 0d8238d5f1dca15aaba0f8f5a6580df97164006a
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.author: hrasheed
+ms.openlocfilehash: a7c06d53e3823bd81707608f566f581fa44638fc
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43110798"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51037755"
 ---
-# <a name="manage-hadoop-clusters-in-hdinsight-by-using-net-sdk"></a>Verwalten von Hadoop-Clustern in HDInsight mit .NET SDK
+# <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-net-sdk"></a>Verwalten von Apache Hadoop-Clustern in HDInsight mit dem .NET SDK
 [!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]
 
 Erfahren Sie, wie Sie HDInsight-Cluster mit dem [HDInsight.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight)verwalten.
@@ -142,12 +142,12 @@ Mithilfe der Clusterskalierung können Sie die Anzahl der von einem in Azure HDI
 
 Auswirkungen der Änderung der Anzahl von Datenknoten für die von HDInsight unterstützten Clustertypen:
 
-* Hadoop
+* Apache Hadoop
   
     Sie können die Anzahl der Workerknoten in einem aktiven Hadoop-Cluster problemlos ohne Auswirkungen auf ausstehende oder aktive Aufträge erhöhen. Neue Aufträge können auch während des Vorgangs gesendet werden. Fehler bei einer Skalierung werden ordnungsgemäß behandelt, sodass der Cluster immer in einem funktionsfähigen Zustand verbleibt.
   
     Wenn ein Hadoop-Cluster durch Verringern der Anzahl der Datenknoten zentral herunterskaliert wird, werden einige der Dienste im Cluster neu gestartet. Dies führt beim Abschluss des Skalierungsvorgangs bei allen aktiven und ausstehenden Aufträgen zu einem Fehler. Sie können die Aufträge jedoch nach Abschluss des Vorgangs erneut senden.
-* hbase
+* Apache HBase
   
     Sie können Knoten reibungslos Ihrem HBase-Cluster hinzufügen oder aus diesem entfernen, während er aktiv ist. Regionale Server werden innerhalb weniger Minuten nach Abschluss des Skalierungsvorgangs automatisch ausgeglichen. Allerdings können Sie die regionalen Server auch manuell ausgleichen, indem Sie sich am Hauptknoten des Clusters anmelden und in einem Eingabeaufforderungsfenster die folgenden Befehle ausführen:
   
@@ -156,7 +156,7 @@ Auswirkungen der Änderung der Anzahl von Datenknoten für die von HDInsight unt
     >hbase shell
     >balancer
     ```
-* Storm
+* Apache Storm
   
     Sie können Datenknoten übergangslos zum Storm-Cluster hinzufügen oder aus diesem entfernen, während er aktiv ist. Nach erfolgreichen Abschluss des Skalierungsvorgangs müssen Sie die Topologie neu ausgleichen.
   
@@ -192,9 +192,9 @@ In HDInsight-Clustern stehen die folgenden HTTP-Webdienste zur Verfügung (alle 
 
 * ODBC
 * JDBC
-* Ambari
-* Oozie
-* Templeton
+* Apache Ambari
+* Apache Oozie
+* Apache Templeton
 
 Der Zugriff auf diese Dienste wird standardmäßig gewährt. Sie können den Zugriff widerrufen/gewähren. Zum Widerrufen:
 
@@ -246,19 +246,19 @@ foreach (var key in results.Configuration.Keys)
 
 Weitere Informationen finden Sie unter [Ausführen der Hadoop-Beispiele in HDInsight](hadoop/apache-hadoop-run-samples-linux.md).
 
-**So übermitteln Sie Hive-Aufträge** 
+**So übermitteln Sie Apache Hive-Aufträge** 
 
 Weitere Informationen finden Sie unter [Ausführen von Hive-Abfragen per HDInsight .NET-SDK](hadoop/apache-hadoop-use-hive-dotnet-sdk.md).
 
-**So übermitteln Sie Pig-Aufträge**
+**So übermitteln Sie Apache Pig-Aufträge**
 
 Weitere Informationen finden Sie unter [Ausführen von Pig-Aufträgen mithilfe des .NET SDK für Hadoop in HDInsight](hadoop/apache-hadoop-use-pig-dotnet-sdk.md).
 
-**So übermitteln Sie Sqoop-Aufträge**
+**So übermitteln Sie Apache Sqoop-Aufträge**
 
 Weitere Informationen finden Sie unter [Verwenden von Sqoop mit HDInsight](hadoop/apache-hadoop-use-sqoop-dotnet-sdk.md).
 
-**So übermitteln Sie Oozie-Aufträge**
+**So übermitteln Sie Apache Oozie-Aufträge**
 
 Weitere Informationen finden Sie unter [Verwenden von Oozie mit Hadoop zum Definieren und Ausführen eines Workflows in HDInsight](hdinsight-use-oozie-linux-mac.md).
 

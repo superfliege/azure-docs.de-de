@@ -4,37 +4,37 @@ description: Azure AD-Kennwortschutz (Vorschauversion) – Vorgänge und Bericht
 services: active-directory
 ms.service: active-directory
 ms.component: authentication
-ms.topic: conceptual
-ms.date: 07/11/2018
+ms.topic: article
+ms.date: 11/02/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: jsimmons
-ms.openlocfilehash: 14aa52b6d424423f4863efa63f3e2e66b84dac70
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 92c8de0961f64eea8eef830ad99c7baa268099d9
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39163562"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51007585"
 ---
-# <a name="preview-azure-ad-password-protection-post-deployment"></a>Vorschauversion: Azure AD-Kennwortschutz – nach der Bereitstellung
+# <a name="preview-azure-ad-password-protection-operational-procedures"></a>Vorschau: Betriebsverfahren des Azure AD-Kennwortschutzes
 
 |     |
 | --- |
-| Azure AD-Kennwortschutz und die benutzerdefinierte Liste der gesperrten Kennwörter sind in der öffentlichen Vorschau befindliche Features von Azure Active Directory. Weitere Informationen zu Vorschauversionen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).|
+| Azure AD-Kennwortschutz ist eine öffentliche Vorschaufunktion für Azure Active Directory. Weitere Informationen zu Vorschauversionen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).|
 |     |
 
-Nachdem Sie die Installation des [Azure AD-Kennwortschutzes](howto-password-ban-bad-on-premises.md) vor Ort abgeschlossen haben, müssen einige Elemente im Azure-Portal konfiguriert werden.
+Nachdem Sie die Installation des [Azure AD-Kennwortschutzes](howto-password-ban-bad-on-premises-deploy.md) vor Ort abgeschlossen haben, müssen einige Elemente im Azure-Portal konfiguriert werden.
 
 ## <a name="configure-the-custom-banned-password-list"></a>Konfigurieren der Liste benutzerdefinierter gesperrter Kennwörter
 
-Befolgen Sie die Anweisungen im Artikel [Konfigurieren der Liste benutzerdefinierter gesperrter Kennwörter](howto-password-ban-bad.md), um die Liste benutzerdefinierter Kennwörter für Ihre Organisation anzupassen.
+Befolgen Sie die Anweisungen im Artikel [Konfigurieren der Liste benutzerdefinierter gesperrter Kennwörter](howto-password-ban-bad-configure.md), um die Liste benutzerdefinierter Kennwörter für Ihre Organisation anzupassen.
 
 ## <a name="enable-password-protection"></a>Aktivieren des Kennwortschutzes
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und navigieren Sie zu **Azure Active Directory**, **Authentifizierungsmethoden** und **Kennwortschutz (Vorschauversion)**.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und navigieren Sie zu **Azure Active Directory**, **Authentifizierungsmethoden** und **Kennwortschutz (Vorschau)**.
 1. Legen Sie **Kennwortschutz für Windows Server Active Directory aktivieren** auf **Ja** fest.
-1. Wie im [Bereitstellungshandbuch](howto-password-ban-bad-on-premises.md#deployment-strategy) bereits erwähnt, wird empfohlen, den **Modus** zunächst auf **Überwachung** festzulegen.
+1. Wie im [Bereitstellungshandbuch](howto-password-ban-bad-on-premises-deploy.md#deployment-strategy) bereits erwähnt, wird empfohlen, den **Modus** zunächst auf **Überwachung** festzulegen.
    * Wenn Sie mit dem Feature vertraut sind, können Sie zum **Modus** **Erzwingen** wechseln.
 1. Klicken Sie unten auf der Seite auf **Speichern**.
 
@@ -51,19 +51,23 @@ Der Überwachungsmodus ist als Möglichkeit gedacht, die Software in einem „Wa
 
 Der Erzwingungsmodus dient als endgültigen Konfiguration. Genauso wie beim oben aufgeführten Überwachungsmodus wertet jeder DC-Agentendienst eingehende Kennwörter entsprechend der aktuell aktiven Richtlinie aus. Ist allerdings der Erzwingungsmodus aktiviert, wird ein Kennwort, das entsprechend der Richtlinie als unsicher angesehen wird, abgelehnt.
 
-Wenn ein Kennwort im Erzwingungsmodus vom DC-Agenten des Azure AD Kennwortschutzes abgelehnt wird, ist die sichtbare Auswirkung für den Endbenutzer identisch mit dem, was er sehen würde, wenn sein Kennwort von der herkömmlichen lokalen Kennwortkomplexitätserzwingung abgelehnt werden würde. Zum Beispiel könnte ein Benutzer die folgende herkömmliche Fehlermeldung auf dem Bildschirm zum Anmelden bzw. zum Ändern des Kennworts sehen:
+Wenn ein Kennwort im Erzwingungsmodus vom DC-Agenten des Azure AD Kennwortschutzes abgelehnt wird, ist die sichtbare Auswirkung für den Endbenutzer identisch mit dem, was er sehen würde, wenn sein Kennwort von der herkömmlichen lokalen Kennwortkomplexitätserzwingung abgelehnt werden würde. Zum Beispiel könnte ein Benutzer die folgende herkömmliche Fehlermeldung im Windows-Bildschirm zum Anmelden bzw. Ändern des Kennworts sehen:
 
-„Kennwort konnte nicht aktualisiert werden. Der Wert für das neue Kennwort erfüllt nicht die Anforderungen der Domäne hinsichtlich Länge, Komplexität oder Verlauf.“
+`Unable to update the password. The value provided for the new password does not meet the length, complexity, or history requirements of the domain.`
 
 Diese Meldung ist nur ein Beispiel von mehreren möglichen Ergebnissen. Die spezifische Fehlermeldung kann je nach Software oder Szenario, das versucht, ein unsicheres Kennwort festzulegen, variieren.
 
 Betroffene Endbenutzer müssen sich möglicherweise bei ihren IT-Mitarbeitern über die neuen Anforderungen informieren, um sichere Kennwörter wählen zu können.
 
+## <a name="enable-mode"></a>Modus aktivieren
+
+Diese Einstellung sollte normalerweise im standardmäßig aktivierten Zustand (Ja) bleiben. Wenn Sie diese Einstellung auf deaktiviert (Nein) festlegen, führt dies dazu, dass alle bereitgestellten DC-Agents für den Azure AD-Kennwortschutz in einen Ruhemodus wechseln, in dem alle Kennwörter vorbehaltlos akzeptiert werden und keinerlei Validierungsaktivitäten ausgeführt werden (z. B. werden nicht einmal Überwachungsereignisse ausgelöst).
+
 ## <a name="usage-reporting"></a>Nutzungsberichte
 
 Das `Get-AzureADPasswordProtectionSummaryReport`-Cmdlet kann verwendet werden, um eine zusammenfassende Darstellung der Aktivität zu erstellen. Eine Beispielausgabe dieses Cmdlets lautet folgendermaßen:
 
-```
+```PowerShell
 Get-AzureADPasswordProtectionSummaryReport -DomainController bplrootdc2
 DomainController                : bplrootdc2
 PasswordChangesValidated        : 6677
@@ -79,8 +83,27 @@ PasswordSetErrors               : 1
 Der Umfang der Berichterstellung des Cmdlets kann mit einem der -Forest, -Domain- oder -DomainController-Parameter beeinflusst werden. Keine Angabe eines Parameters bedeutet –Forest.
 
 > [!NOTE]
+> Dieses Cmdlet funktioniert, indem es eine PowerShell-Sitzung mit jedem Domänencontroller öffnet. Damit dies gelingt, muss die Unterstützung für PowerShell-Remotesitzungen auf jedem Domänencontroller aktiviert sein, und der Client muss über ausreichende Berechtigungen verfügen. Weitere Informationen zu Anforderungen für PowerShell-Remotesitzungen führen Sie in einem PowerShell-Fenster „Get-Help about_Remote_Troubleshooting“ aus.
+
+> [!NOTE]
 > Dieses Cmdlet funktioniert durch Remoteabfrage des Admin-Ereignisprotokolls jedes DC-Agentendienstes. Wenn die Ereignisprotokolle eine große Anzahl von Ereignissen enthalten, kann es lange dauern, bis das Cmdlet abgeschlossen ist. Darüber hinaus können umfangreiche Netzwerkabfragen großer Datenmengen die Leistung des Domänencontrollers beeinträchtigen. Daher sollte dieses Cmdlet in Produktionsumgebungen sorgfältig verwendet werden.
+
+## <a name="dc-agent-discovery"></a>DC-Agent-Ermittlung
+
+Mit dem `Get-AzureADPasswordProtectionDCAgent`-Cmdlet können grundlegende Informationen über die verschiedenen DC-Agents angezeigt werden, die in einer Domäne oder Gesamtstruktur ausgeführt werden. Diese Informationen werden aus den serviceConnectionPoint-Objekten abgerufen, die von den ausgeführten DC-Agent-Diensten registriert werden. Eine Beispielausgabe dieses Cmdlets lautet folgendermaßen:
+
+```PowerShell
+Get-AzureADPasswordProtectionDCAgent
+ServerFQDN            : bplChildDC2.bplchild.bplRootDomain.com
+Domain                : bplchild.bplRootDomain.com
+Forest                : bplRootDomain.com
+Heartbeat             : 2/16/2018 8:35:01 AM
+```
+
+Die verschiedenen Eigenschaften werden von jedem DC-Agent-Dienst ungefähr stündlich aktualisiert. Die Daten unterliegen nach wie vor der Replikationswartezeit von Active Directory.
+
+Der Bereich der Cmdlet-Abfrage wird möglicherweise durch die Verwendung entweder des Parameters „–Forest“ oder „–Domain“ beeinflusst.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Überwachung, Berichterstellung und Problembehandlung beim Azure AD-Kennwortschutz](howto-password-ban-bad-on-premises-troubleshoot.md)
+[Problembehandlung und Überwachung beim Azure AD-Kennwortschutz](howto-password-ban-bad-on-premises-troubleshoot.md)

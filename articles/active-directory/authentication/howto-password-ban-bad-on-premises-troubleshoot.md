@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.component: authentication
 ms.topic: conceptual
-ms.date: 10/30/2018
+ms.date: 11/02/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: jsimmons
-ms.openlocfilehash: 6832f6f9d09cbbfea6ccaa69160ad93209c7ac8c
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: 1e5782ce3421cc5f0d2e0e51484d4bbe6b9eb6ab
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50741180"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50978637"
 ---
 # <a name="preview-azure-ad-password-protection-monitoring-reporting-and-troubleshooting"></a>Vorschau: Überwachung, Berichterstellung und Problembehandlung beim Azure AD-Kennwortschutz
 
@@ -24,13 +24,15 @@ ms.locfileid: "50741180"
 | Azure AD-Kennwortschutz ist eine öffentliche Vorschaufunktion für Azure Active Directory. Weitere Informationen zu Vorschauversionen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).|
 |     |
 
-Nach der Bereitstellung von Azure AD-Kennwortschutz sind Überwachung und Berichterstattung wichtige Aufgaben. Dieser Artikel geht ins Detail, damit Sie verstehen, wo jeder Dienst Informationen protokolliert, und wie über die Verwendung von Azure AD-Kennwortschutz berichtet wird.
+Nach der Bereitstellung des Azure AD-Kennwortschutzes sind Überwachung und Berichterstellung wichtige Aufgaben. Dieser Artikel geht ins Detail, damit Sie verstehen, wo jeder Dienst Informationen protokolliert, und wie über die Verwendung von Azure AD-Kennwortschutz berichtet wird.
 
 ## <a name="on-premises-logs-and-events"></a>Lokale Protokolle und Ereignisse
 
-### <a name="dc-agent-service"></a>DC-Agent-Dienst
+### <a name="dc-agent-admin-log"></a>DC-Agent-Administratorprotokoll
 
-Auf jedem Domänencontroller schreibt die DC-Agent-Dienstsoftware die Ergebnisse der Kennwortüberprüfungen (und andere Status) in ein lokales Ereignisprotokoll: \Applications and Services Logs\Microsoft\AzureADPasswordProtection\DCAgent\Admin.
+Auf jedem Domänencontroller schreibt die DC-Agent-Dienstsoftware die Ergebnisse der Kennwortüberprüfungen (und andere Status) in ein lokales Ereignisprotokoll:
+
+`\Applications and Services Logs\Microsoft\AzureADPasswordProtection\DCAgent\Admin`
 
 Ereignisse werden durch die verschiedenen DC-Agent-Komponenten mit den folgenden Bereichen protokolliert:
 
@@ -64,103 +66,155 @@ Die wichtigsten auf die Kennwortüberprüfung bezogenen Ereignisse sind wie folg
 
 #### <a name="sample-event-log-message-for-event-id-10014-successful-password-set"></a>Beispiel einer Ereignisprotokollmeldung für Ereignis-ID 10014 – Kennwort erfolgreich festgelegt
 
-Das geänderte Kennwort für den angegebenen Benutzer wurde als konform mit der aktuellen Azure-Kennwortrichtlinie validiert.
+```
+The changed password for the specified user was validated as compliant with the current Azure password policy.
 
- UserName: BPL_02885102771 FullName:
+ UserName: BPL_02885102771
+ FullName:
+```
 
 #### <a name="sample-event-log-message-for-event-id-10017-and-30003-failed-password-set"></a>Beispiel einer Ereignisprotokollmeldung für Ereignis-ID 10017 und 30003 – Kennwort nicht erfolgreich festgelegt
 
 10017:
 
-Das zurückgesetzte Kennwort für den angegebenen Benutzer wurde zurückgewiesen, weil es nicht mit der aktuellen Azure-Kennwortrichtlinie übereinstimmt. Weitere Details finden Sie in der korrelierten Ereignisprotokollmeldung.
+```
+The reset password for the specified user was rejected because it did not comply with the current Azure password policy. Please see the correlated event log message for more details.
 
- UserName: BPL_03283841185 FullName:
+ UserName: BPL_03283841185
+ FullName:
+```
 
 30003:
 
-Das Zurücksetzen des Kennworts für den angegebenen Benutzer wurde zurückgewiesen, da es mit mindestens einem der Tokens in der Liste pro Mandant gesperrter Kennwörter der aktuellen Azure-Kennwortrichtlinie übereinstimmte.
+```
+The reset password for the specified user was rejected because it matched at least one of the tokens present in the per-tenant banned password list of the current Azure password policy.
 
- UserName: BPL_03283841185 FullName:
+ UserName: BPL_03283841185
+ FullName:
+```
 
-Einige andere wichtige, zu berücksichtigende Ereignisprotokollmeldungen sind:
+#### <a name="sample-event-log-message-for-event-id-30001-password-accepted-due-to-no-policy-available"></a>Beispiel einer Ereignisprotokollmeldung für Ereignis-ID 30001 – Kennwort akzeptiert, da keine Richtlinie verfügbar
 
-#### <a name="sample-event-log-message-for-event-id-30001"></a>Beispiel einer Ereignisprotokollmeldung für Ereignis-ID 30001
+```
+The password for the specified user was accepted because an Azure password policy is not available yet
 
-Das Kennwort für den angegebenen Benutzer wurde angenommen, da eine Azure-Kennwortrichtlinie noch nicht verfügbar ist.
+UserName: SomeUser
+FullName: Some User
 
-UserName: SomeUser FullName: Some User
+This condition may be caused by one or more of the following reasons:%n
 
-Für diese Bedingung kommen eine oder mehrere der folgenden Ursachen infrage:%n.
+1. The forest has not yet been registered with Azure.
 
-1. Die Gesamtstruktur wurde noch nicht in Azure registriert.
+   Resolution steps: an administrator must register the forest using the Register-AzureADPasswordProtectionForest cmdlet.
 
-   Lösungsschritte: Ein Administrator muss die Gesamtstruktur mit dem Cmdlet „Register-AzureADPasswordProtectionForest“ registrieren.
+2. An Azure AD password protection Proxy is not yet available on at least one machine in the current forest.
 
-2. Ein Azure AD-Kennwortschutzproxy ist auf mindestens einem Computer in der aktuellen Gesamtstruktur noch nicht verfügbar.
+   Resolution steps: an administrator must install and register a proxy using the Register-AzureADPasswordProtectionProxy cmdlet.
 
-   Lösungsschritte: Ein Administrator muss einen Proxy mit dem Cmdlet „Register-AzureADPasswordProtectionProxy“ installieren und registrieren.
+3. This DC does not have network connectivity to any Azure AD password protection Proxy instances.
 
-3. Dieser Domänencontroller verfügt nicht über Netzwerkkonnektivität mit Azure AD-Kennwortschutzproxy-Instanzen.
+   Resolution steps: ensure network connectivity exists to at least one Azure AD password protection Proxy instance.
 
-   Lösungsschritte: Stellen Sie sicher, dass Netzwerkkonnektivität mit mindestens einer Azure AD-Kennwortschutzproxy-Instanz besteht.
+4. This DC does not have connectivity to other domain controllers in the domain.
 
-4. Dieser Domänencontroller verfügt nicht über Konnektivität mit anderen Domänencontrollern in der Domäne.
+   Resolution steps: ensure network connectivity exists to the domain.
+```
 
-   Lösungsschritte: Stellen Sie sicher, dass Netzwerkkonnektivität mit der Domäne besteht.
+#### <a name="sample-event-log-message-for-event-id-30006-new-policy-being-enforced"></a>Beispiel einer Ereignisprotokollmeldung für Ereignis-ID 30006 – neue Richtlinie wird erzwungen
 
-#### <a name="sample-event-log-message-for-event-id-30006"></a>Beispiel einer Ereignisprotokollmeldung für Ereignis-ID 30006
+```
+The service is now enforcing the following Azure password policy.
 
-Der Dienst erzwingt jetzt die Durchsetzung der folgenden Azure-Kennwortrichtlinie.
-
+ Enabled: 1
  AuditOnly: 1
+ Global policy date: ‎2018‎-‎05‎-‎15T00:00:00.000000000Z
+ Tenant policy date: ‎2018‎-‎06‎-‎10T20:15:24.432457600Z
+ Enforce tenant policy: 1
+```
 
- Datum der globalen Richtlinie: 2018-05-15T00:00:00.000000000Z
+#### <a name="dc-agent-operational-log"></a>DC-Agent-Betriebsprotokoll
 
- Datum der Mandantenrichtlinie: 2018-06-10T20:15:24.432457600Z
+Der DC-Agent-Dienst protokolliert auch betriebsbedingte Ereignisse im folgenden Protokoll:
 
- Mandantenrichtlinie erzwingen: 1
+`\Applications and Services Logs\Microsoft\AzureADPasswordProtection\DCAgent\Operational`
 
-#### <a name="dc-agent-log-locations"></a>DC-Agent-Protokollspeicherorte
+#### <a name="dc-agent-trace-log"></a>DC-Agent-Ablaufprotokoll
 
-Der DC-Agent-Dienst protokolliert auch vorgangsbezogene Ereignisse in folgendem Protokoll: \Applications and Services Logs\Microsoft\AzureADPasswordProtection\DCAgent\Operational.
+Der DC-Agent-Dienst kann auch ausführliche Ablaufverfolgungsereignisse auf Debugebene im folgenden Protokoll protokollieren:
 
-Der DC-Agent-Dienst kann auch ausführlich auf Debugebene Ereignisse in folgendem Protokoll protokollieren: \Applications and Services Logs\Microsoft\AzureADPasswordProtection\DCAgent\Trace.
+`\Applications and Services Logs\Microsoft\AzureADPasswordProtection\DCAgent\Trace`
+
+Das Ablaufprotokoll ist standardmäßig deaktiviert.
 
 > [!WARNING]
-> Das Ablaufverfolgungsprotokoll ist standardmäßig deaktiviert. Wenn aktiviert, empfängt dieses Protokoll eine große Anzahl von Ereignissen und kann sich auf die Leistung des Domänencontrollers auswirken. Aus diesem Grund sollte dieses verbesserte Protokoll nur aktiviert werden, wenn ein Problem genauere Untersuchung erfordert, und dann nur für einen minimalen Zeitraum.
+>  Wenn es aktiviert ist, empfängt es eine große Anzahl von Ereignissen. Das kann sich auf die Leistung des Domänencontrollers auswirken. Aus diesem Grund sollte dieses verbesserte Protokoll nur aktiviert werden, wenn ein Problem genauere Untersuchung erfordert, und dann nur für einen minimalen Zeitraum.
+
+#### <a name="dc-agent-text-logging"></a>DC-Agent-Textprotokoll
+
+Der DC-Agent-Dienst kann zum Schreiben in ein Textprotokoll konfiguriert werden, indem der folgende Registrierungswert festgelegt wird:
+
+HKLM\System\CurrentControlSet\Services\AzureADPasswordProtectionDCAgent\Parameters!EnableTextLogging = 1 (REG_DWORD-Wert)
+
+Das Textprotokoll ist standardmäßig deaktiviert. Damit Änderungen an diesem Wert wirksam werden, ist ein Neustart des DC-Agent-Diensts erforderlich. Wenn der Dienst aktiviert ist, schreibt er in eine Protokolldatei unter folgendem Pfad:
+
+`%ProgramFiles%\Azure AD Password Protection DC Agent\Logs`
+
+> [!TIP]
+> Das Textprotokoll empfängt die gleichen Einträge auf Debugebene, die im Ablaufprotokoll protokolliert werden können, hat jedoch i.d.R. ein zur Überprüfung und Analyse besser geeignetes Format.
+
+> [!WARNING]
+> Wenn aktiviert, empfängt dieses Protokoll eine große Anzahl von Ereignissen und kann sich auf die Leistung des Domänencontrollers auswirken. Aus diesem Grund sollte dieses verbesserte Protokoll nur aktiviert werden, wenn ein Problem genauere Untersuchung erfordert, und dann nur für einen minimalen Zeitraum.
 
 ### <a name="azure-ad-password-protection-proxy-service"></a>Azure AD-Kennwortschutz-Proxydienst
 
-Der Kennwortschutz-Proxydienst gibt einen minimalen Satz von Ereignissen in folgendem Ereignisprotokoll aus: \Applications and Services Logs\Microsoft\AzureADPasswordProtection\ProxyService\Operational
+#### <a name="proxy-service-event-logs"></a>Proxydienst-Ereignisprotokolle
 
-Der Kennwortschutz-Proxydienst kann auch ausführlich auf Debugebene Ereignisse in folgendem Protokoll protokollieren: \Applications and Services Logs\Microsoft\AzureADPasswordProtection\ProxyService\Trace.
+Der Proxydienst sendet einen Mindestsatz von Ereignissen an die folgenden Ereignisprotokolle:
+
+`\Applications and Services Logs\Microsoft\AzureADPasswordProtection\ProxyService\Admin`
+
+`\Applications and Services Logs\Microsoft\AzureADPasswordProtection\ProxyService\Operational`
+
+Der Proxydienst kann auch ausführliche Ablaufverfolgungsereignisse auf Debugebene im folgenden Protokoll protokollieren:
+
+`\Applications and Services Logs\Microsoft\AzureADPasswordProtection\ProxyService\Trace`
+
+Das Ablaufprotokoll ist standardmäßig deaktiviert.
 
 > [!WARNING]
-> Das Ablaufverfolgungsprotokoll ist standardmäßig deaktiviert. Wenn aktiviert, empfängt dieses Protokoll eine große Anzahl von Ereignissen, und dies kann sich auf die Leistung des Proxyhosts auswirken. Aus diesem Grund sollte dieses Protokoll nur aktiviert werden, wenn ein Problem genauere Untersuchung erfordert, und dann nur für einen minimalen Zeitraum.
+> Wenn es aktiviert ist, empfängt es eine große Anzahl von Ereignissen. Das kann sich auf die Leistung des Proxyhosts auswirken. Aus diesem Grund sollte dieses Protokoll nur aktiviert werden, wenn ein Problem genauere Untersuchung erfordert, und dann nur für einen minimalen Zeitraum.
 
-### <a name="dc-agent-discovery"></a>DC-Agent-Ermittlung
+#### <a name="proxy-service-text-logging"></a>Proxydienst-Textprotokoll
 
-Mit dem `Get-AzureADPasswordProtectionDCAgent`-Cmdlet können grundlegende Informationen über die verschiedenen DC-Agents angezeigt werden, die in einer Domäne oder Gesamtstruktur ausgeführt werden. Diese Informationen werden aus den serviceConnectionPoint-Objekten abgerufen, die von den ausgeführten DC-Agent-Diensten registriert werden. Eine Beispielausgabe dieses Cmdlets lautet folgendermaßen:
+Der Proxydienst kann zum Schreiben in ein Textprotokoll konfiguriert werden, indem der folgende Registrierungswert festgelegt wird:
 
-```
-PS C:\> Get-AzureADPasswordProtectionDCAgent
-ServerFQDN            : bplChildDC2.bplchild.bplRootDomain.com
-Domain                : bplchild.bplRootDomain.com
-Forest                : bplRootDomain.com
-Heartbeat             : 2/16/2018 8:35:01 AM
-```
+HKLM\System\CurrentControlSet\Services\AzureADPasswordProtectionProxy\Parameters!EnableTextLogging = 1 (REG_DWORD-Wert)
 
-Die verschiedenen Eigenschaften werden von jedem DC-Agent-Dienst ungefähr stündlich aktualisiert. Die Daten unterliegen nach wie vor der Replikationswartezeit von Active Directory.
+Das Textprotokoll ist standardmäßig deaktiviert. Damit Änderungen an diesem Wert wirksam werden, ist ein Neustart des Proxydiensts erforderlich. Wenn der Proxydienst aktiviert ist, schreibt er in eine Protokolldatei unter folgendem Pfad:
 
-Der Bereich der Cmdlet-Abfrage wird möglicherweise durch die Verwendung entweder des Parameters „–Forest“ oder „–Domain“ beeinflusst.
+`%ProgramFiles%\Azure AD Password Protection Proxy\Logs`
+
+> [!TIP]
+> Das Textprotokoll empfängt die gleichen Einträge auf Debugebene, die im Ablaufprotokoll protokolliert werden können, hat jedoch i.d.R. ein zur Überprüfung und Analyse besser geeignetes Format.
+
+> [!WARNING]
+> Wenn aktiviert, empfängt dieses Protokoll eine große Anzahl von Ereignissen und kann sich auf die Leistung des Domänencontrollers auswirken. Aus diesem Grund sollte dieses verbesserte Protokoll nur aktiviert werden, wenn ein Problem genauere Untersuchung erfordert, und dann nur für einen minimalen Zeitraum.
+
+#### <a name="powershell-cmdlet-logging"></a>PowerShell-Cmdlet-Protokoll
+
+Die meisten PowerShell-Cmdlets des Azure AD-Kennwortschutzes schreiben in ein Textprotokoll unter folgendem Pfad:
+
+`%ProgramFiles%\Azure AD Password Protection Proxy\Logs`
+
+Wenn ein Cmdlet-Fehler auftritt und sich die Ursache und/oder Lösung nicht direkt ermitteln lässt, können Sie auch diese Textprotokolle anzeigen.
 
 ### <a name="emergency-remediation"></a>Notfallbereinigung
 
-Wenn eine ungünstige Situation eintritt, in der der DC-Agent-Dienst Probleme verursacht, kann der DC-Agent-Dienst sofort heruntergefahren werden. Die DC-Agent-Kennwortfilter-DLL versucht, den nicht ausgeführten Dienst aufzurufen, und protokolliert die Warnungsereignisse (10012, 10013), aber alle eingehenden Kennwörter werden während dieser Zeit akzeptiert. Der DC-Agent-Dienst kann dann auch bei Bedarf über den Dienststeuerungs-Manager von Windows mit dem Starttyp „Disabled“ konfiguriert werden.
+Wenn der DC-Agent-Dienst Probleme verursacht, kann er sofort heruntergefahren werden. Die DC-Agent-Kennwortfilter-DLL versucht weiterhin, den nicht ausgeführten Dienst aufzurufen, und protokolliert die Warnungsereignisse (10012, 10013), aber alle eingehenden Kennwörter werden währenddessen akzeptiert. Der DC-Agent-Dienst kann dann auch bei Bedarf über den Dienststeuerungs-Manager von Windows mit dem Starttyp „Disabled“ konfiguriert werden.
 
 ### <a name="performance-monitoring"></a>Leistungsüberwachung
 
-Die DC-Agent-Dienstsoftware installiert ein Leistungsindikatorobjekt mit dem Namen **Azure AD password protection**. Die folgenden Leistungsindikatoren sind derzeit verfügbar:
+Die DC-Agent-Dienstsoftware installiert ein Leistungsindikatorobjekt mit dem Namen **Azure AD-Kennwortschutz**. Die folgenden Leistungsindikatoren sind derzeit verfügbar:
 
 |Name des Leistungsindikators | BESCHREIBUNG|
 | --- | --- |
@@ -182,6 +236,7 @@ Wenn der Domänencontroller im Reparaturmodus für Verzeichnisdienste gestartet 
 ## <a name="domain-controller-demotion"></a>Herabstufung des Domänencontrollers
 
 Dies wird unterstützt, um einen Domänencontroller herabzustufen, der noch die DC-Agent-Software ausführt. Administratoren sollten jedoch bedenken, dass die DC-Agent-Software weiterhin ausgeführt wird und weiterhin während der Herabstufung die Durchsetzung der aktuellen Kennwortrichtlinie erzwingt. Das neue lokale Kennwort des Administratorkontos (angegeben als Teil des Herabstufungsvorgangs) wird wie jedes andere Kennwort überprüft. Microsoft empfiehlt, als Teil eines DC-Herabstufungsvorgangs sichere Kennwörter für lokale Administratorkonten auszuwählen. Jedoch kann die Überprüfung des neuen lokalen Kennworts des Administratorkontos durch die DC-Agent-Software bereits vorhandene Herabstufungsvorgänge stören.
+
 Wenn die Herabstufung erfolgreich abgeschlossen, der Domänencontroller neu gestartet wurde und wieder als normaler Mitgliedsserver ausgeführt wird, kehrt die DC-Agent-Software zur Ausführung im passiven Modus zurück. Sie kann dann zu einem beliebigen Zeitpunkt deinstalliert werden.
 
 ## <a name="removal"></a>Entfernen
@@ -189,35 +244,36 @@ Wenn die Herabstufung erfolgreich abgeschlossen, der Domänencontroller neu gest
 Wenn die Software der öffentlichen Vorschau deinstalliert und jeder zugehörige Status in Domänen und Gesamtstruktur bereinigt werden soll, kann diese Aufgabe mit den folgenden Schritten erzielt werden:
 
 > [!IMPORTANT]
-> Es ist wichtig, diese Schritte der Reihe nach auszuführen. Wenn die Ausführung einer Instanz des Kennwortschutz-Proxydiensts beibehalten wird, erstellt sie in regelmäßigen Abständen sowohl ihr serviceConnectionPoint-Objekt als auch den SYSVOL-Status neu.
+> Es ist wichtig, diese Schritte der Reihe nach auszuführen. Wenn eine Instanz des Proxydiensts weiterhin ausgeführt wird, wird sie ihr „serviceConnectionPoint“-Objekt regelmäßig neu erstellen. Wenn eine Instanz des DC-Agent-Diensts weiterhin ausgeführt wird, wird sie ihr „serviceConnectionPoint“-Objekt und den „sysvol“-Status regelmäßig neu erstellen.
 
 1. Deinstallieren Sie die Kennwortschutz-Proxysoftware von allen Computern. Dieser Schritt erfordert **keinen** Neustart.
 2. Deinstallieren Sie die DC-Agent-Software von allen Domänencontrollern. Dieser Schritt **erfordert** einen Neustart.
 3. Entfernen Sie manuell alle Proxydienst-Verbindungspunkte in jedem Domänennamenkontext. Der Speicherort dieser Objekte kann möglicherweise mit dem folgenden Active Directory-Powershell-Befehl erkannt werden:
-   ```
+
+   ```Powershell
    $scp = "serviceConnectionPoint"
-   $keywords = "{EBEFB703-6113-413D-9167-9F8DD4D24468}*"
+   $keywords = "{ebefb703-6113-413d-9167-9f8dd4d24468}*"
    Get-ADObject -SearchScope Subtree -Filter { objectClass -eq $scp -and keywords -like $keywords }
    ```
 
    Lassen Sie nicht das Sternchen („*“) am Ende des Variablenwerts „$keywords“ aus.
 
-   Das über den `Get-ADObject`-Befehl gefundene resultierende Objekt kann dann an `Remove-ADObject` weitergereicht oder manuell gelöscht werden. 
+   Die mit dem Befehl `Get-ADObject` gefundenen Ergebnisobjekte können dann an `Remove-ADObject` weitergeleitet oder manuell gelöscht werden. 
 
 4. Entfernen Sie manuell alle DC-Agent-Verbindungspunkte in jedem Domänennamenkontext. Es gibt möglicherweise eines dieser Objekte pro Domänencontroller in der Gesamtstruktur, je nachdem, wie umfassend die Software der öffentlichen Vorschau bereitgestellt wurde. Der Speicherort dieser Objekte kann möglicherweise mit dem folgenden Active Directory-Powershell-Befehl erkannt werden:
 
-   ```
+   ```Powershell
    $scp = "serviceConnectionPoint"
-   $keywords = "{B11BB10A-3E7D-4D37-A4C3-51DE9D0F77C9}*"
+   $keywords = "{2bac71e6-a293-4d5b-ba3b-50b995237946}*"
    Get-ADObject -SearchScope Subtree -Filter { objectClass -eq $scp -and keywords -like $keywords }
    ```
 
-   Das über den `Get-ADObject`-Befehl gefundene resultierende Objekt kann dann an `Remove-ADObject` weitergereicht oder manuell gelöscht werden.
+   Die mit dem Befehl `Get-ADObject` gefundenen Ergebnisobjekte können dann an `Remove-ADObject` weitergeleitet oder manuell gelöscht werden.
 
 5. Entfernen Sie manuell den Konfigurationsstatus auf Gesamtstrukturebene. Der Konfigurationsstatus der Gesamtstruktur wird in einem Container im Active Directory-Konfigurationsnamenskontext beibehalten. Er kann wie folgt ermittelt und gelöscht werden:
 
-   ```
-   $passwordProtectonConfigContainer = "CN=Azure AD password protection,CN=Services," + (Get-ADRootDSE).configurationNamingContext
+   ```Powershell
+   $passwordProtectonConfigContainer = "CN=Azure AD Password Protection,CN=Services," + (Get-ADRootDSE).configurationNamingContext
    Remove-ADObject $passwordProtectonConfigContainer
    ```
 

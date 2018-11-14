@@ -4,7 +4,8 @@ description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active 
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: femila
+ms.reviewer: joflore
 ms.assetid: c2a3e5aa-7b5a-4fe4-9285-45dbe6e8efcc
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -12,15 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/17/2018
+ms.date: 11/02/2018
 ms.author: jeedes
-ms.reviewer: jeedes
-ms.openlocfilehash: 3f640d729d002e89c4968442e8d8ab761f78d090
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: b5968b83fc9beb481e2ad2c0cd44d2c284747fa1
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49115163"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51010812"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-freshdesk"></a>Tutorial: Azure Active Directory-Integration mit Freshdesk
 
@@ -28,31 +28,30 @@ In diesem Tutorial erfahren Sie, wie Sie Freshdesk in Azure Active Directory (Az
 
 Die Integration von Freshdesk in Azure AD bietet die folgenden Vorteile:
 
-- Sie können in Azure AD steuern, wer Zugriff auf Freshdesk hat.
+- Sie können in Azure AD steuern, wer Zugriff auf FreshDesk hat.
 - Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Freshdesk anzumelden (einmaliges Anmelden, SSO).
-- Sie können Ihre Konten an einem zentralen Ort verwalten – im Azure-Portal.
+- Sie können Ihre Konten über das Azure-Portal an einem zentralen Ort verwalten.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Um die Azure AD-Integration mit Freshdesk konfigurieren zu können, benötigen Sie Folgendes:
 
 - Ein Azure AD-Abonnement
-- Ein Freshdesk-Abonnement, für das einmaliges Anmelden aktiviert ist
+- Ein FreshDesk-Abonnement, für das einmaliges Anmelden aktiviert ist
 
 > [!NOTE]
 > Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden.
 
 Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen beachten:
 
-- Sie sollten keine Produktionsumgebung verwenden, sofern dies nicht erforderlich ist.
-- Wenn Sie keine Azure AD-Testumgebung haben, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/)eine einmonatige Testversion anfordern.
+- Verwenden Sie die Produktionsumgebung nur, wenn dies unbedingt erforderlich ist.
+- Wenn Sie keine Azure AD-Testumgebung haben, können Sie eine [einmonatige Testversion anfordern](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 
-In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung.
-Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptbestandteilen:
+In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptbestandteilen:
 
 1. Hinzufügen von Freshdesk aus dem Katalog
 2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
@@ -65,27 +64,25 @@ Zum Konfigurieren der Integration von Freshdesk in Azure AD müssen Sie Freshdes
 
 1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**. 
 
-    ![Active Directory][1]
+    ![Schaltfläche „Azure Active Directory“][1]
 
 2. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
 
-    ![ANWENDUNGEN][2]
+    ![Blatt „Unternehmensanwendungen“][2]
 
-3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Hinzufügen**.
+3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
 
-    ![ANWENDUNGEN][3]
+    ![Schaltfläche „Neue Anwendung“][3]
 
-4. Geben Sie im Suchfeld als Suchbegriff **Freshdesk** ein. Wählen Sie im Ergebnisbereich **FreshDesk** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
+4. Geben Sie im Suchfeld **FreshDesk** ein, wählen Sie im Ergebnisbereich **FreshDesk** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
-    ![Erstellen eines Azure AD-Testbenutzers](./media/freshdesk-tutorial/tutorial_freshdesk_addfromgallery.png)
+    ![FreshDesk in der Ergebnisliste](./media/freshdesk-tutorial/tutorial_freshdesk_addfromgallery.png)
 
-## <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
 
 In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden mit Azure AD bei Freshdesk basierend auf einem Testbenutzer mit dem Namen Britta Simon.
 
 Damit einmaliges Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in Freshdesk als Entsprechung zu einem Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Freshdesk muss eine Linkbeziehung eingerichtet werden.
-
-Diese Linkbeziehung wird hergestellt, indem Sie den **Benutzernamen** in Azure AD als Wert für die **E-Mail-Adresse** in FreshDesk zuweisen.
 
 Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei Freshdesk sind die folgenden Bausteine erforderlich:
 
@@ -93,7 +90,7 @@ Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei Freshdesk 
 2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit der Testbenutzerin Britta Simon zu testen.
 3. **[Erstellen eines Freshdesk-Testbenutzers](#creating-a-freshdesk-test-user)**, um eine Entsprechung von Britta Simon in Freshdesk zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
 4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Testing Single Sign-On](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
+5. **[Testen der einmaligen Anmeldung](#testing-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens von Azure AD
 
@@ -103,55 +100,65 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **FreshDesk** auf **Einmaliges Anmelden**.
 
-    ![Configure single sign-on][4]
+    ![Konfigurieren des Links für einmaliges Anmelden][4]
 
-2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
+2. Klicken Sie im Dialogfeld **SSO-Methode auswählen** für den Modus **SAML** auf **Auswählen**, um einmaliges Anmelden zu aktivieren.
 
-    ![Configure single sign-on](./media/freshdesk-tutorial/tutorial_freshdesk_samlbase.png)
+    ![Configure single sign-on](common/tutorial_general_301.png)
 
-3. Führen Sie im Abschnitt **Domäne und URLs für FreshDesk** die folgenden Schritte aus:
+3. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Symbol **Bearbeiten**, um das Dialogfeld **Grundlegende SAML-Konfiguration** zu öffnen.
 
-    ![Configure single sign-on](./media/freshdesk-tutorial/tutorial_freshdesk_url.png)
+    ![Configure single sign-on](common/editconfigure.png)
+
+4. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus:
+
+    ![SSO-Informationen zur Domäne und zu den URLs für FreshDesk](./media/freshdesk-tutorial/tutorial_freshdesk_url.png)
 
     a. Geben Sie im Textfeld **Anmelde-URL** eine URL im Format `https://<tenant-name>.freshdesk.com` oder einen anderen von FreshDesk vorgeschlagenen Wert an.
 
-    > [!NOTE]
-    > Hinweis: Hierbei handelt es sich um einen Beispielwert. Sie müssen den Wert durch die richtige Anmelde-URL ersetzen. Wenden Sie sich an das [Supportteam von Freshdesk](https://freshdesk.com/helpdesk-software?utm_source=Google-AdWords&utm_medium=Search-IND-Brand&utm_campaign=Search-IND-Brand&utm_term=freshdesk&device=c&gclid=COSH2_LH7NICFVUDvAodBPgBZg), um diesen Wert zu erhalten.
-
-4. Die Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt ein Beispiel für diese Attributzuordnungen: Der Standardwert von **Benutzer-ID** lautet **user.userprincipalname**, aber **FreshDesk** erwartet, dass dieser Wert der E-Mail-Adresse des Benutzers zugeordnet ist. Hierfür können Sie das **user.mail**-Attribut aus der Liste verwenden oder den entsprechenden Attributwert gemäß der Konfiguration in Ihrer Organisation angeben.
-
-    ![Configure single sign-on](./media/freshdesk-tutorial/tutorial_attribute.png)
-
-5. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
-
-    ![Configure single sign-on](./media/freshdesk-tutorial/tutorial_freshdesk_certificate.png)
+    b. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** eine URL im Format `https://<tenant-name>.freshdesk.com` oder einen anderen von FreshDesk vorgeschlagenen Wert an.
 
     > [!NOTE]
-    > Wenn Probleme auftreten, lesen Sie die Informationen unter [diesem Link](https://support.freshdesk.com/support/discussions/topics/317543).
+    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner. Wenden Sie sich an das [Supportteam von FreshDesk](https://freshdesk.com/helpdesk-software?utm_source=Google-AdWords&utm_medium=Search-IND-Brand&utm_campaign=Search-IND-Brand&utm_term=freshdesk&device=c&gclid=COSH2_LH7NICFVUDvAodBPgBZg), um diese Werte zu erhalten.
 
-6. Klicken Sie auf die Schaltfläche **Save** .
+5. Die FreshDesk-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt ein Beispiel für diese Attributzuordnungen: Der Standardwert von **Benutzer-ID** lautet **user.userprincipalname**, aber **FreshDesk** erwartet, dass dieser Wert der E-Mail-Adresse des Benutzers zugeordnet ist. Hierfür können Sie das **user.mail**-Attribut aus der Liste verwenden oder den entsprechenden Attributwert gemäß der Konfiguration in Ihrer Organisation angeben.
 
-    ![Configure single sign-on](./media/freshdesk-tutorial/tutorial_general_400.png)
+    ![image](./media/freshdesk-tutorial/i4-attribute.png)
 
-7. Installieren Sie **OpenSSL** auf Ihrem System, sofern noch nicht geschehen.
+6. Konfigurieren Sie im Dialogfeld **Benutzerattribute und Ansprüche** im Abschnitt **Benutzeransprüche** das SAML-Tokenattribut wie in der obigen Abbildung gezeigt, und führen Sie die folgenden Schritte aus:
+    
+    a. Klicken Sie auf das Symbol **Bearbeiten**, um das Dialogfeld **Benutzeransprüche verwalten** zu öffnen.
+
+    ![image](./media/freshdesk-tutorial/i2-attribute.png)
+
+    ![image](./media/freshdesk-tutorial/i3-attribute.png)
+
+    b. Wählen Sie in der Liste **Quellattribut** den Eintrag **user.mail** aus.
+
+    c. Klicken Sie auf **Speichern**.
+
+7. Klicken Sie auf der Seite **SAML-Signaturzertifikat** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen**, um das **Zertifikat (Base64)** herunterzuladen. Speichern Sie die Zertifikatsdatei anschließend auf Ihrem Computer.
+
+    ![Downloadlink für das Zertifikat](./media/freshdesk-tutorial/tutorial_freshdesk_certificate.png)
 
 8. Öffnen Sie eine **Eingabeaufforderung**, und führen Sie die folgenden Befehle aus:
 
-    a. Geben Sie in der Eingabeaufforderung den Wert `openssl x509 -inform DER -in FreshDesk.cer -out certificate.crt` ein.
+    a. Geben Sie in der Eingabeaufforderung den Wert `certutil.exe -dump FreshDesk.cer` ein.
 
     > [!NOTE]
     > In diesem Fall ist **FreshDesk.cer** das Zertifikat, das Sie aus dem Azure-Portal heruntergeladen haben.
 
-    b. Geben Sie in der Eingabeaufforderung den Wert `openssl x509 -noout -fingerprint -sha256 -inform pem -in certificate.crt` ein. 
-    
-    > [!NOTE]
-    > In diesem Fall ist **certificate.crt** das Ausgabezertifikat, das im vorherigen Schritt erstellt wird.
+    b. Kopieren Sie den Wert für **Cert Hash(sha256)**, und fügen Sie ihn in Notepad ein. 
 
-    c. Kopieren Sie den Wert für **Fingerabdruck**, und fügen Sie ihn in Editor ein. Entfernen Sie die Doppelpunkte aus dem Fingerabdruck, um den endgültigen Fingerabdruckwert zu erhalten.
+9. Kopieren Sie im Abschnitt **FreshDesk einrichten** die entsprechenden URLs gemäß Ihren Anforderungen.
 
-9. Klicken Sie im Abschnitt **Freshdesk-Konfiguration** auf **Freshdesk konfigurieren**, um das Fenster „Anmeldung konfigurieren“ zu öffnen. Kopieren Sie die URL für den SAML-SSO-Dienst und die Abmelde-URL aus dem Abschnitt **Kurzübersicht**.
+    a. Anmelde-URL
 
-    ![Configure single sign-on](./media/freshdesk-tutorial/tutorial_freshdesk_configure.png)
+    b. Azure AD-Bezeichner
+
+    c. Abmelde-URL
+
+    ![FreshDesk-Konfiguration](common/configuresection.png)
 
 10. Melden Sie sich in einem anderen Webbrowserfenster bei der Freshdesk-Unternehmenswebsite als Administrator an.
 
@@ -163,11 +170,11 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     b. Wählen Sie **SAML-SSO**aus.
 
-    c. Fügen Sie im Textfeld **SAML-Anmelde-URL** den Wert der **SAML-Dienst-URL für einmaliges Anmelden** ein, den Sie aus dem Azure-Portal kopiert haben.
+    c. Fügen Sie im Textfeld **SAML-Anmelde-URL** den Wert der **Anmelde-URL** ein, den Sie aus dem Azure-Portal kopiert haben.
 
     d. Fügen Sie im Textfeld **Abmelde-URL** den Wert der **Abmelde-URL** ein, den Sie aus dem Azure-Portal kopiert haben.
 
-    e. Fügen Sie im Textfeld **Fingerabdruck des Sicherheitszertifikats** den Wert für **Fingerabdruck** ein, den Sie zuvor durch Entfernen der Doppelpunkte erhalten haben.
+    e. Fügen Sie im Textfeld **Fingerabdruck des Sicherheitszertifikats** den Wert für **Cert Hash(sha256)** ein, den Sie zuvor erhalten haben.
   
     f. Klicken Sie auf **Speichern**.
 
@@ -175,33 +182,26 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta Simon im Azure-Portal.
 
-![Azure AD-Benutzer erstellen][100]
+1. Wählen Sie im Azure-Portal im linken Bereich die Option **Azure Active Directory**, **Benutzer** und dann **Alle Benutzer** aus.
 
-**Um einen Testbenutzer in Azure AD zu erstellen, führen Sie die folgenden Schritte aus:**
+    ![Azure AD-Benutzer erstellen][100]
 
-1. Klicken Sie im linken Navigationsbereich des **Azure-Portals** auf das Symbol für **Azure Active Directory**.
+2. Wählen Sie oben im Bildschirm die Option **Neuer Benutzer** aus.
 
-    ![Erstellen eines Azure AD-Testbenutzers](./media/freshdesk-tutorial/create_aaduser_01.png) 
+    ![Erstellen eines Azure AD-Testbenutzers](common/create_aaduser_01.png) 
 
-2. Wechseln Sie zu **Benutzer und Gruppen**, und klicken Sie auf **Alle Benutzer**, um die Liste der Benutzer anzuzeigen.
+3. Führen Sie in den Benutzereigenschaften die folgenden Schritte aus.
 
-    ![Erstellen eines Azure AD-Testbenutzers](./media/freshdesk-tutorial/create_aaduser_02.png) 
+    ![Erstellen eines Azure AD-Testbenutzers](common/create_aaduser_02.png)
 
-3. Klicken Sie oben im Dialogfeld auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
+    a. Geben Sie im Feld **Name** den Namen **BrittaSimon** ein.
+  
+    b. Geben Sie im Feld **Benutzername** **brittasimon@yourcompanydomain.extension** ein.  
+    Zum Beispiel, BrittaSimon@contoso.com
 
-    ![Erstellen eines Azure AD-Testbenutzers](./media/freshdesk-tutorial/create_aaduser_03.png) 
+    c. Wählen Sie **Eigenschaften** aus, aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich dann den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-4. Führen Sie auf der Dialogfeldseite **Benutzer** die folgenden Schritte aus:
-
-    ![Erstellen eines Azure AD-Testbenutzers](./media/freshdesk-tutorial/create_aaduser_04.png) 
-
-    a. Geben Sie in das Textfeld **Name** den Namen **BrittaSimon** ein.
-
-    b. Geben Sie in das Textfeld **Benutzername** die **E-Mail-Adresse** von Britta Simon ein.
-
-    c. Wählen Sie **Kennwort anzeigen** aus, und notieren Sie sich den Wert des **Kennworts**.
-
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
 
 ### <a name="creating-a-freshdesk-test-user"></a>Erstellen eines Freshdesk-Testbenutzers
 
@@ -214,11 +214,11 @@ Im Fall von Freshdesk ist die Bereitstellung eine manuelle Aufgabe.
 
 2. Klicken Sie oben im Menü auf **Administrator**.
 
-   ![Admin](./media/freshdesk-tutorial/IC776772.png "Admin")
+    ![Admin](./media/freshdesk-tutorial/IC776772.png "Admin")
 
 3. Klicken Sie auf der Registerkarte **Allgemeine Einstellungen** auf **Agents**.
   
-   ![Agents](./media/freshdesk-tutorial/IC776773.png "Agents")
+    ![Agents](./media/freshdesk-tutorial/IC776773.png "Agents")
 
 4. Klicken Sie auf **Neuer Agent**.
 
@@ -226,15 +226,15 @@ Im Fall von Freshdesk ist die Bereitstellung eine manuelle Aufgabe.
 
 5. Führen Sie im Dialogfeld „Agent-Informationen“ die folgenden Schritte aus:
 
-   ![Agent-Informationen](./media/freshdesk-tutorial/IC776775.png "Agent-Informationen")
+    ![Agent-Informationen](./media/freshdesk-tutorial/IC776775.png "Agent-Informationen")
 
-   a. Geben Sie im Textfeld **E-Mail** die E-Mail-Adresse des Azure AD-Kontos ein, das Sie bereitstellen möchten.
+    a. Geben Sie im Textfeld **E-Mail** die E-Mail-Adresse des Azure AD-Kontos ein, das Sie bereitstellen möchten.
 
-   b. Geben Sie im Textfeld **Vollständiger Name** den Namen des Azure AD-Kontos ein, das Sie bereitstellen möchten.
+    b. Geben Sie im Textfeld **Vollständiger Name** den Namen des Azure AD-Kontos ein, das Sie bereitstellen möchten.
 
-   c. Geben Sie im Textfeld **Titel** den Titel des Azure AD-Kontos ein, das Sie bereitstellen möchten.
+    c. Geben Sie im Textfeld **Titel** den Titel des Azure AD-Kontos ein, das Sie bereitstellen möchten.
 
-   d. Klicken Sie auf **Speichern**.
+    d. Klicken Sie auf **Speichern**.
 
     >[!NOTE]
     >Der Besitzer des Azure AD-Kontos erhält eine E-Mail mit einem Link zur Bestätigung des Kontos, bevor es aktiv wird.
@@ -244,19 +244,15 @@ Im Fall von Freshdesk ist die Bereitstellung eine manuelle Aufgabe.
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
-In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf Box gewähren.
+In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf FreshDesk gewähren.
 
-![Benutzer zuweisen][200]
-
-**Um Britta Simon Freshdesk zuzuweisen, führen Sie die folgenden Schritte aus:**
-
-1. Öffnen Sie im Azure-Portal die Anwendungsansicht, navigieren Sie zur Verzeichnisansicht, wechseln Sie dann zu **Unternehmensanwendungen**, und klicken Sie auf **Alle Anwendungen**.
+1. Wählen Sie im Azure-Portal die Option **Unternehmensanwendungen** und dann **Alle Anwendungen** aus.
 
     ![Benutzer zuweisen][201]
 
 2. Wählen Sie in der Anwendungsliste **Freshdesk** aus.
 
-    ![Configure single sign-on](./media/freshdesk-tutorial/tutorial_freshdesk_app.png) 
+    ![Configure single sign-on](./media/freshdesk-tutorial/tutorial_freshdesk_app.png)
 
 3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
@@ -266,17 +262,16 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
     ![Benutzer zuweisen][203]
 
-5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus.
+5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **Britta Simon** aus, und klicken Sie dann unten im Bildschirm auf die Schaltfläche **Auswählen**.
 
-6. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
-
-7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf **Zuweisen**.
+6. Wählen Sie im Dialogfeld **Zuweisung hinzufügen** die Schaltfläche **Zuweisen** aus.
 
 ### <a name="testing-single-sign-on"></a>Testen der einmaligen Anmeldung
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „Freshdesk“ klicken, sollten Sie zur Anmeldeseite Ihrer Freshdesk-Anwendung weitergeleitet werden.
+Wenn Sie im Zugriffsbereich auf die Kachel „FreshDesk“ klicken, sollten Sie automatisch bei Ihrer FreshDesk-Anwendung angemeldet werden.
+Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
@@ -285,14 +280,13 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Freshdesk“ klicken, sollten Sie 
 
 <!--Image references-->
 
-[1]: ./media/freshdesk-tutorial/tutorial_general_01.png
-[2]: ./media/freshdesk-tutorial/tutorial_general_02.png
-[3]: ./media/freshdesk-tutorial/tutorial_general_03.png
-[4]: ./media/freshdesk-tutorial/tutorial_general_04.png
+[1]: common/tutorial_general_01.png
+[2]: common/tutorial_general_02.png
+[3]: common/tutorial_general_03.png
+[4]: common/tutorial_general_04.png
 
-[100]: ./media/freshdesk-tutorial/tutorial_general_100.png
+[100]: common/tutorial_general_100.png
 
-[200]: ./media/freshdesk-tutorial/tutorial_general_200.png
-[201]: ./media/freshdesk-tutorial/tutorial_general_201.png
-[202]: ./media/freshdesk-tutorial/tutorial_general_202.png
-[203]: ./media/freshdesk-tutorial/tutorial_general_203.png
+[201]: common/tutorial_general_201.png
+[202]: common/tutorial_general_202.png
+[203]: common/tutorial_general_203.png

@@ -9,22 +9,22 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: mjbrown
-ms.openlocfilehash: ed08b90b9e216ee8713bfe445e98144bf2ba02d4
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 974531cd5907e4f69e7d064125d3e51fa4974949
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50243995"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50956382"
 ---
-# <a name="consistency-levels-and-cosmos-db-apis"></a>Konsistenzebenen und Cosmos DB-APIs
+# <a name="consistency-levels-and-azure-cosmos-db-apis"></a>Konsistenzebenen und Azure Cosmos DB-APIs
 
-Die fünf Konsistenzmodelle werden nativ von der SQL-API unterstützt, die bei Verwendung von Cosmos DB die Standard-API ist. Zusätzlich zur SQL-API bietet Cosmos DB auch native Unterstützung für Wire Protocol-kompatible APIs für gängige Datenbanken wie MongoDB, Apache Cassandra, Gremlin und Azure Tables. Diese Datenbanken bieten weder genau definierte Konsistenzmodelle noch die SLA-gestützten Garantien für die Konsistenzebenen und stellen in der Regel nur eine Teilmenge der fünf Konsistenzmodelle dar, die Cosmos DB bietet. Für die SQL-API, die Gremlin-API und die Tabellen-API wird die im Cosmos-Konto konfigurierte Standardkonsistenzebene verwendet.
+Die fünf von Azure Cosmos DB bereitgestellten Konsistenzmodelle werden nativ von der Cosmos DB-SQL-API unterstützt, der Standard-API bei Verwendung von Cosmos DB. Zusätzlich zur SQL-API bietet Cosmos DB auch native Unterstützung für Wire Protocol-kompatible APIs für gängige Datenbanken wie MongoDB, Apache Cassandra, Gremlin und Azure Tables. Diese Datenbanken bieten weder genau definierte Konsistenzmodelle noch von der SLA unterstützte Garantien für die Konsistenzstufen. Diese Datenbanken bieten in der Regel nur eine Teilmenge der fünf von Cosmos DB angebotenen Konsistenzmodelle. Für die SQL-, Gremlin und Tabellen-API wird die im Cosmos-Konto konfigurierte Standardkonsistenzebene verwendet.
 
-Die folgende Tabelle zeigt die Zuordnung zwischen der von einem OSS-Clienttreiber angeforderten Datenkonsistenz für Apache Cassandra 4.x und MongoDB 3.4 bei Verwendung der Cassandra-API bzw. MongoDB-API und den entsprechenden Cosmos DB-Konsistenzebenen.
+Die folgenden Abschnitte zeigen das Mapping zwischen der von einem OSS-Clienttreiber angeforderten Datenkonsistenz für Apache Cassandra 4.x und MongoDB 3.4 bei Verwendung der Cassandra-API bzw. MongoDB-API und die entsprechenden Cosmos DB-Konsistenzebenen.
 
-## <a id="cassandra-mapping"></a>Zuordnen von Apache Cassandra- und Cosmos DB-Konsistenzebenen
+## <a id="cassandra-mapping"></a>Mapping zwischen Apache Cassandra und Cosmos DB-Konsistenzebenen
 
-Die folgende Tabelle zeigt die Zuordnung für die Lesekonsistenz zwischen dem Apache Cassandra 4.x-Client und der Cosmos DB-Konsistenzebene „Standard“ für eine Bereitstellung sowohl in mehreren Regionen wie auch in einer einzelnen Region.
+Die folgende Tabelle zeigt das Mapping für die Lesekonsistenz zwischen dem Apache Cassandra 4.x-Client und der Cosmos DB-Standardkonsistenzebene für Bereitstellungen in mehreren Regionen sowie in einer einzelnen Region.
 
 | **Apache Cassandra 4.x** | **Cosmos DB (mehrere Regionen)** | **Cosmos DB (einzelne Region)** |
 | - | - | - |
@@ -36,7 +36,7 @@ Die folgende Tabelle zeigt die Zuordnung für die Lesekonsistenz zwischen dem Ap
 
 ## <a id="mongo-mapping"></a>Zuordnung zwischen MongoDB 3.4- und Cosmos DB-Konsistenzebenen
 
-Die folgende Tabelle zeigt die Zuordnung für die „Lesebestätigungen“ der MongoDB 3.4- und der Cosmos DB-Konsistenzebene „Standard“ für eine Bereitstellung sowohl in mehreren Regionen wie auch in einer einzelnen Region.
+Die folgende Tabelle zeigt das Mapping für das Leseinteresse zwischen dem MongoDB 3.4-Client und der Cosmos DB-Standardkonsistenzebene für Bereitstellungen in mehreren Regionen sowie in einer einzelnen Region.
 
 | **MongoDB 3.4** | **Cosmos DB (mehrere Regionen)** | **Cosmos DB (einzelne Region)** |
 | - | - | - |

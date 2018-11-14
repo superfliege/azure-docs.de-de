@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 10/16/2018
 ms.author: raiye
-ms.openlocfilehash: 5a9f8e332aae72d6fb0ce2f697a41391a51c44b6
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: c153e87224c596929440d814d30b94cc49d7ba76
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49376668"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50978739"
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Azure-Gastbetriebssystemversionen und SDK-Kompatibilitätsmatrix
 Bietet Ihnen aktuelle Informationen zu den neuesten Azure-Gastbetriebssystemreleases für Cloud Services. Anhand dieser Informationen können Sie Ihren Upgradepfad planen, bevor ein Gastbetriebssystem abgekündigt wird. Wenn Sie die Rollen so konfigurieren, dass die *automatischen* Gast-BS-Updates, wie unter [Updateeinstellungen für Azure-Gast-BS][Azure Guest OS Update Settings] beschrieben, verwendet werden, müssen Sie diese Seite nicht unbedingt lesen. 
@@ -66,7 +66,7 @@ Das Gastbetriebssystem für April wurde veröffentlicht.
 ## <a name="family-5-releases"></a>Releases von Familie 5
 **Windows Server 2016**
 
-Installierte .NET Framework-Versionen: 4.0, 4.5, 4.5.1, 4.5.2, 4.6, 4.6.1, 4.6.2
+Installierte .NET Framework-Versionen: 3.5, 4.6.2
 
 > [!NOTE]
 > Das RDP-Kennwort für Betriebssystemfamilie 5 muss mindestens zehn Zeichen umfassen.
@@ -84,7 +84,7 @@ Installierte .NET Framework-Versionen: 4.0, 4.5, 4.5.1, 4.5.2, 4.6, 4.6.1, 4.6.2
 ## <a name="family-4-releases"></a>Releases von Familie 4
 **Windows Server 2012 R2**
 
-Installierte .NET Framework-Versionen: 4.0, 4.5, 4.5.1, 4.5.2
+Installierte .NET Framework-Versionen: 3.5, 4.5.1
 
 | Konfigurationszeichenfolge | Herausgabedatum | Deaktivierungsdatum |
 | --- | --- | --- |
@@ -98,7 +98,7 @@ Installierte .NET Framework-Versionen: 4.0, 4.5, 4.5.1, 4.5.2
 ## <a name="family-3-releases"></a>Releases von Familie 3
 **Windows Server 2012**
 
-Installierte .NET Framework-Versionen: 4.0, 4.5, 4.5.1, 4.5.2
+Installierte .NET Framework-Versionen: 3.5, 4.5
 
 | Konfigurationszeichenfolge | Herausgabedatum | Deaktivierungsdatum |
 | --- | --- | --- |
@@ -112,7 +112,7 @@ Installierte .NET Framework-Versionen: 4.0, 4.5, 4.5.1, 4.5.2
 ## <a name="family-2-releases"></a>Releases von Familie 2
 **Windows Server 2008 R2 SP1**
 
-Installierte .NET Framework-Versionen: 3.5, 4.0, 4.5, 4.5.1, 4.5.2
+Installierte .NET Framework-Versionen: 3.5 (einschließlich 2.0 und 3.0)
 
 | Konfigurationszeichenfolge | Herausgabedatum | Deaktivierungsdatum |
 | --- | --- | --- |

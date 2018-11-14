@@ -9,18 +9,20 @@ ms.author: minxia
 author: mx-iao
 ms.reviewer: sgilley
 ms.date: 09/24/2018
-ms.openlocfilehash: 615ab592c040eedf7d31e3a3036f558ea6c09740
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 79e26d4d2cf5743abae6dc0f1fb58585e1b9b9db
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46990806"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50977905"
 ---
 # <a name="how-to-access-data-during-training"></a>Zugreifen auf Daten während des Trainings
-In Azure Machine Learning Services ist ein Datenspeicher eine Abstraktion von [Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-introduction). Der Datenspeicher kann entweder auf einen [Azure-Blobcontainer](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction) oder eine [Azure-Dateifreigabe](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) als zugrunde liegenden Speicher verweisen. Mit Datenspeichern können Sie während Ihrer Azure Machine Learning-Workflows auf einfache Weise über das Python SDK oder die Befehlszeilenschnittstelle auf Ihren gespeicherten Daten zugreifen und damit interagieren.
+Verwenden Sie einen Datenspeicher, um auf Ihre Daten in den Azure Machine Learning-Workflows zuzugreifen und mit diesen zu arbeiten.
+
+In Azure Machine Learning Services stellt ein Datenspeicher eine Abstraktion von [Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-introduction) dar. Der Datenspeicher kann entweder auf einen [Azure-Blobcontainer](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction) oder eine [Azure-Dateifreigabe](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) als zugrunde liegenden Speicher verweisen. 
 
 ## <a name="create-a-datastore"></a>Erstellen eines Datenspeichers
-Um Datenspeicher verwenden zu können, brauchen Sie zuerst einen [Arbeitsbereich](concept-azure-machine-learning-architecture.md#workspace). Sie können entweder einen neuen Arbeitsbereich erstellen oder einen vorhandenen Arbeitsbereich abrufen:
+Wenn Sie einen Datenspeicher verwenden möchten, benötigen Sie zunächst einen [Arbeitsbereich](concept-azure-machine-learning-architecture.md#workspace). Sie können entweder einen [neuen Arbeitsbereich erstellen](quickstart-create-workspace-with-python.md) oder einen vorhandenen Arbeitsbereich abrufen:
 
 ```Python
 import azureml.core
@@ -30,7 +32,7 @@ ws = Workspace.from_config()
 ```
 
 ### <a name="use-the-default-datastore"></a>Verwenden des Standarddatenspeichers
-Jeder Arbeitsbereich verfügt über einen Standarddatenspeicher, den Sie sofort verwenden können, sodass Sie keine eigenen Speicherkonten erstellen und konfigurieren müssen.
+Sie müssen kein Speicherkonto erstellen oder konfigurieren.  Jeder Arbeitsbereich verfügt über einen Standarddatenspeicher, den Sie sofort verwenden können.
 
 So rufen Sie den Standarddatenspeicher des Arbeitsbereichs ab:
 ```Python
@@ -38,7 +40,7 @@ ds = ws.get_default_datastore()
 ```
 
 ### <a name="register-a-datastore"></a>Registrieren eines Datenspeichers
-Wenn Sie Azure Storage bereits verwenden, können Sie diesen Speicher als Datenspeicher in Ihrem Arbeitsbereich registrieren. Azure Machine Learning bietet die Funktionalität zum Registrieren eines Azure-Blobcontainers oder einer Azure-Dateifreigabe als Datenspeicher. Alle Registriermethoden befinden sich in der `Datastore`-Klasse und weisen das Format `register_azure_*` auf.
+Wenn Sie bereits über eine Azure Storage-Instanz verfügen, können Sie diesen Speicher als Datenspeicher in Ihrem Arbeitsbereich registrieren. Sie haben auch die Möglichkeit, einen Azure-Blobcontainer oder eine Azure-Dateifreigabe als Datenspeicher zu registrieren. Alle Registriermethoden befinden sich in der `Datastore`-Klasse und weisen das Format `register_azure_*` auf.
 
 #### <a name="azure-blob-container-datastore"></a>Azure-Blobcontainer-Datenspeicher
 So registrieren Sie einen Azure-Blobcontainer-Datenspeicher:
@@ -77,14 +79,14 @@ for name, ds in datastores.items(),
     print(name, ds.datastore_type)"
 ```
 
-Wenn Sie einen Ihrer registrierten Datenspeicher der Einfachheit halber als Standarddatenspeicher für Ihren Arbeitsbereich festlegen möchten, gehen Sie wie folgt vor:
+Legen Sie der Einfachheit halber einen Ihrer registrierten Datenspeicher als Standarddatenspeicher für Ihren Arbeitsbereich fest:
 ```Python
 ws.set_default_datastore('your datastore name')
 ```
 
 ## <a name="upload-and-download-data"></a>Hochladen und Herunterladen von Daten
 ### <a name="upload"></a>Hochladen
-Sie können entweder ein Verzeichnis oder einzelne Dateien über das Python SDK in den Datenspeicher hochladen.
+Laden Sie entweder ein Verzeichnis oder einzelne Dateien mit dem Python SDK in den Datenspeicher hoch.
 
 So laden Sie ein Verzeichnis in einen Datenspeicher `ds` hoch:
 ```Python
@@ -95,10 +97,10 @@ ds.upload(src_dir='your source directory',
 ```
 `target_path` gibt den Speicherort in der Dateifreigabe (oder im Blobcontainer) für den Upload an. Standardmäßig lautet er `None`. In diesem Fall werden die Daten in den Stamm hochgeladen. `overwrite=True` überschreibt alle vorhandenen Daten in `target_path`.
 
-Über die `upload_files()`-Methode des Datenspeichers können Sie auch eine Liste einzelner Dateien in den Datenspeicher hochladen.
+Alternativ können Sie eine Liste einzelner Dateien mithilfe der `upload_files()`-Methode des Datenspeichers in den Datenspeicher hochladen.
 
 ### <a name="download"></a>Download
-Auf ähnliche Weise können Sie Daten aus einem Datenspeicher in Ihr lokales Dateisystem herunterladen.
+Ebenso lassen sich Daten aus einem Datenspeicher in Ihr lokales Dateisystem herunterladen.
 
 ```Python
 ds.download(target_path='your target path',
@@ -108,20 +110,20 @@ ds.download(target_path='your target path',
 `target_path` ist der Speicherort des lokalen Verzeichnisses, in das die Daten heruntergeladen werden sollen. Um einen Pfad zu dem Ordner in der Dateifreigabe (oder im Blobcontainer) für den Download anzugeben, geben Sie diesen Pfad mit `prefix` an. Wenn `prefix` gleich `None` ist, werden alle Inhalte Ihrer Dateifreigabe (oder Ihres Blobcontainers) heruntergeladen.
 
 ## <a name="access-datastores-for-training"></a>Zugreifen auf Datenspeicher für das Training
-Sie können während einer Trainingsausführung über das Python SDK auf einen Datenspeicher auf einem Remotecomputeziel zugreifen (z.B. zum Abrufen von Trainings- oder Überprüfungsdaten). 
+Sie können während einer Trainingsausführung mit dem Python SDK auf einen Datenspeicher auf einem Remotecomputeziel zugreifen (z.B. zum Abrufen von Trainings- oder Überprüfungsdaten). 
 
 Es gibt zwei unterstützte Methoden, um Ihren Datenspeicher auf der Remotecomputeressource zur Verfügung zu stellen:
 * **Einbinden**  
 `ds.as_mount()`: Durch Angabe dieses Einbindungsmodus wird der Datenspeicher für Sie in die Remotecomputeressource eingebunden. 
 * **Herunterladen/Hochladen**  
-    * `ds.as_download(path_on_compute='your path on compute')`: Mit diesem Downloadmodus werden die Daten von Ihrem Datenspeicher auf die Remotecomputeressource in den durch `path_on_compute` angegebenen Speicherort heruntergeladen.
-    * Umgekehrt können Sie Daten, die in Ihrer Trainingsausführung erstellt wurden, auch in einen Datenspeicher hochladen. Wenn Ihr Trainingsskript beispielsweise eine Datei `foo.pkl` im aktuellen Arbeitsverzeichnis auf der Remotecomputeressource erstellt, können Sie angeben, dass diese nach Ausführung des Skripts in Ihren Datenspeicher hochgeladen wird: `ds.as_upload(path_on_compute='./foo.pkl')`. Dadurch wird die Datei in den Stamm Ihres Datenspeichers hochgeladen.
+    * `ds.as_download(path_on_compute='your path on compute')`: Durch diese Angabe werden Daten aus Ihrem Datenspeicher auf die Remotecomputeressource in den durch `path_on_compute` angegebenen Speicherort heruntergeladen.
+    * `ds.as_upload(path_on_compute='yourfilename'`: Durch diese Angabe werden Daten in den Datenspeicher hochgeladen.  Angenommen, Ihr Trainingsskript erstellt eine `foo.pkl`-Datei im aktuellen Arbeitsverzeichnis auf der Remotecomputeressource. Wenn das Skript die Datei erstellt hat, laden Sie sie mit `ds.as_upload(path_on_compute='./foo.pkl')` in Ihren Datenspeicher hoch. Die Datei wird in den Stamm Ihres Datenspeichers hochgeladen.
     
-Wenn Sie auf einen bestimmten Ordner oder eine Datei in Ihrem Datenspeicher verweisen möchten, können Sie die Funktion **`path`** des Datenspeichers verwenden. Wenn Ihr Datenspeicher beispielsweise ein Verzeichnis mit dem relativen Pfad `./bar` enthält und Sie nur den Inhalt dieses Ordners in das Computeziel herunterladen möchten, gehen Sie wie folgt vor: `ds.path('./bar').as_download()`
+Um auf einen bestimmten Ordner oder eine bestimmte Datei in Ihrem Datenspeicher zu verweisen, verwenden Sie die Datenspeicherfunktion **`path`**. Um beispielsweise den Inhalt des Verzeichnisses `./bar` aus dem Datenspeicher in Ihr Computeziel herunterzuladen, verwenden Sie `ds.path('./bar').as_download()`.
 
 Jedes `ds`- oder `ds.path`-Objekt wird in den Namen einer Umgebungsvariablen des Formats `"$AZUREML_DATAREFERENCE_XXXX"` aufgelöst, deren Wert für den Einbindungs-/Downloadpfad auf der Remotecomputeressource steht. Der Datenspeicherpfad auf der Remotecomputeressource stimmt möglicherweise nicht mit dem Ausführungspfad für das Skript überein.
 
-Um während des Trainings auf Ihren Datenspeicher zuzugreifen, können Sie ihn mit `script_params` als Befehlszeilenargument an das Trainingsskript übergeben:
+Um während des Trainings auf Ihren Datenspeicher zuzugreifen, übergeben Sie ihn mit `script_params` als Befehlszeilenargument an das Trainingsskript:
 
 ```Python
 from azureml.train.estimator import Estimator
@@ -137,7 +139,7 @@ est = Estimator(source_directory='your code directory',
 ```
 `as_mount()` ist der Standardmodus für einen Datenspeicher, daher können Sie `ds` auch direkt an das `'--data_dir'`-Argument übergeben.
 
-Alternativ dazu können Sie eine Liste von Datenspeichern an den Parameter `inputs` des Estimator-Konstruktors übergeben, um Einbindungs- oder Kopiervorgänge in oder aus Ihren Datenspeichern durchzuführen:
+Alternativ können Sie eine Liste von Datenspeichern an den Parameter `inputs` des Estimatorkonstruktors übergeben, um Einbindungs- oder Kopiervorgänge in oder aus Ihren Datenspeichern auszuführen:
 
 ```Python
 est = Estimator(source_directory='your code directory',

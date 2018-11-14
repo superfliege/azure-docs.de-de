@@ -9,12 +9,12 @@ ms.date: 04/12/2018
 ms.topic: article
 ms.service: active-directory
 ms.workload: identity
-ms.openlocfilehash: a322edbc6825261dde0fd926a362ca037739e06e
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: f1fd60774f5790a514e540984812fc1aaf6e38e0
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49388057"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238912"
 ---
 # <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>Wählen der richtigen Authentifizierungsmethode für Ihre Azure Active Directory-Hybrididentitätslösung 
 
@@ -68,6 +68,18 @@ Der folgende Abschnitt hilft Ihnen, anhand einer Entscheidungsstruktur die für 
 ## <a name="decision-tree"></a>Entscheidungsstruktur
 
 ![Entscheidungsstruktur zur Azure AD-Authentifizierung](media/azure-ad/azure-ad-authn-image1.png)
+
+Informationen zu Entscheidungsfragen:
+
+1. Azure AD kann die Anmeldung für Benutzer verarbeiten, ohne auf lokale Komponenten zur Überprüfung von Kennwörtern angewiesen zu sein.
+2. Azure AD kann die Benutzeranmeldung an einen vertrauenswürdigen Authentifizierungsanbieter übergeben, z.B. Microsoft AD FS.
+3. Azure AD benötigt einige lokale Komponenten, wenn Sie Active Directory-Sicherheitsrichtlinien auf Benutzerebene anwenden müssen, z.B. für abgelaufene Konten, deaktivierte Konten, abgelaufene Kennwörter, gesperrte Konten und Anmeldezeiten für Benutzeranmeldungen.
+4. Anmeldefeatures, die nicht nativ durch Azure AD unterstützt werden:
+   * Melden Sie sich mit Smartcards oder Zertifikaten an.
+   * Melden Sie sich mit einem lokalen MFA-Server an.
+   * Melden Sie sich mit einer Authentifizierungslösung eines Drittanbieters an.
+   * Lokale Authentifizierungslösung für mehrere Standorte.
+5. Azure AD Identity Protection benötigt für die Bereitstellung des Bericht „Benutzer mit kompromittierten Anmeldeinformationen“ Kennworthashsynchronisierung, unabhängig davon, welche Anmeldemethode Sie auswählen. Organisationen können ein Failover zur Kennworthashsynchronisierung ausführen, wenn bei der primären Anmeldemethode ein Fehler auftritt und diese vor dem Fehlerereignis konfiguriert wurde.
 
 ## <a name="detailed-considerations"></a>Ausführliche Überlegungen
 
@@ -207,4 +219,4 @@ In der heutigen Welt sind Bedrohungen 24 Stunden am Tag präsent und kommen von 
 
 [Beginnen Sie](https://docs.microsoft.com/azure/active-directory/get-started-azure-ad) mit Azure AD, und setzen Sie die richtige Authentifizierungslösung für Ihre Organisation ein.
 
-Wenn Sie eine Migration von der Verbund- zur Cloudauthentifizierung erwägen, helfen Ihnen die Informationen unter [Ändern der Benutzeranmeldungsmethode](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-user-signin#changing-the-user-sign-in-method) weiter. Verwenden Sie als Hilfe beim Planen und Implementieren der Migration [diese Pläne für die Projektbereitstellung](http://aka.ms/deploymentplans).
+Wenn Sie eine Migration von der Verbund- zur Cloudauthentifizierung erwägen, helfen Ihnen die Informationen unter [Ändern der Benutzeranmeldungsmethode](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-user-signin#changing-the-user-sign-in-method) weiter. Verwenden Sie als Hilfe beim Planen und Implementieren der Migration [diese Pläne für die Projektbereitstellung](https://aka.ms/deploymentplans).

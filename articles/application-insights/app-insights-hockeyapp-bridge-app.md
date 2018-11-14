@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/30/2017
 ms.author: mbullwin
-ms.openlocfilehash: ce8946e5a022eea9281898d1518cc3e8bfb50ee5
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 1951f001de1b9d0667e5d4430454b32b5a3c890e
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47092504"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50957487"
 ---
 # <a name="exploring-hockeyapp-data-in-application-insights"></a>Untersuchen von HockeyApp-Daten in Application Insights
 
@@ -34,7 +34,7 @@ Die HockeyApp-Brücken-App ist das Hauptfeature, das Ihnen über die Funktionen 
 
 ![HockeyApp-API-Token abrufen](./media/app-insights-hockeyapp-bridge-app/01.png)
 
-Öffnen Sie das Microsoft Azure-Portal, und [erstellen Sie eine Application Insights-Ressource](app-insights-create-new-resource.md). Legen Sie als Anwendungstyp „HockeyApp bridge application“ (HockeyApp-Brückenanwendung) fest:
+Öffnen Sie das Microsoft Azure-Portal, und [erstellen Sie eine Application Insights-Ressource](app-insights-create-new-resource.md). Legen Sie als Anwendungstyp „HockeyApp-Brücken-App“ fest:
 
 ![Neue Application Insights-Ressource](./media/app-insights-hockeyapp-bridge-app/02.png)
 
@@ -44,7 +44,7 @@ Die Felder für die HockeyApp-Brücke werden angezeigt.
 
 ![Brückenfelder eingeben](./media/app-insights-hockeyapp-bridge-app/03.png)
 
-Geben Sie das zuvor notierte HockeyApp-Token ein. Mit dieser Aktion wird das Dropdownmenü „HockeyApp Application” (HockeyApp-Anwendung) mit allen HockeyApp-Anwendungen aufgefüllt. Wählen Sie die gewünschte Anwendung aus, und füllen Sie die übrigen Felder aus. 
+Geben Sie das zuvor notierte HockeyApp-Token ein. Mit dieser Aktion wird das Dropdownmenü „HockeyApp-Anwendung“ mit allen HockeyApp-Anwendungen aufgefüllt. Wählen Sie die gewünschte Anwendung aus, und füllen Sie die übrigen Felder aus. 
 
 Öffnen Sie die neue Ressource. 
 
@@ -52,7 +52,7 @@ Beachten Sie, dass es eine Weile dauert, bis der Datenfluss beginnt.
 
 ![Application Insights-Ressource, die auf Daten wartet](./media/app-insights-hockeyapp-bridge-app/04.png)
 
-Fertig! Alle benutzerdefinierten und Ablaufverfolgungsdaten, die ab diesem Zeitpunk in Ihrer mit HockeyApp instrumentierten App erfasst werden, stehen Ihnen nun auch in den Funktionen für Analytics und fortlaufenden Export von Application Insights zur Verfügung.
+Das ist alles! Alle benutzerdefinierten und Ablaufverfolgungsdaten, die ab diesem Zeitpunk in Ihrer mit HockeyApp instrumentierten App erfasst werden, stehen Ihnen nun auch in den Funktionen für Analytics und fortlaufenden Export von Application Insights zur Verfügung.
 
 Sehen wir uns kurz die einzelnen verfügbaren Features an.
 
@@ -61,7 +61,7 @@ Analytics ist ein leistungsstarkes Tool für die Ad-hoc-Abfrage Ihrer Daten. Es 
 
 ![Analytics](./media/app-insights-hockeyapp-bridge-app/05.png)
 
-* [Weitere Informationen zu Analytics](app-insights-analytics-tour.md)
+* [Weitere Informationen zu Analytics](../log-analytics/query-language/get-started-analytics-portal.md)
 
 ## <a name="continuous-export"></a>Fortlaufendem Export
 Mit der Funktion „Fortlaufender Export“ können Sie Ihre Daten in einen Azure Blob Storage-Container exportieren. Dies ist sehr nützlich, wenn Sie Ihre Daten länger speichern müssen, als dies durch die von Application Insights angebotene Aufbewahrungsdauer vorgesehen ist. Sie können die Daten im Blobspeicher speichern oder in eine SQL-Datenbank bzw. eine andere bevorzugte Data Warehousing-Lösung konvertieren.
@@ -69,5 +69,5 @@ Mit der Funktion „Fortlaufender Export“ können Sie Ihre Daten in einen Azur
 [Weitere Informationen zum fortlaufenden Export](app-insights-export-telemetry.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Anwenden von Analytics auf Ihre Daten](app-insights-analytics-tour.md)
+* [Anwenden von Analytics auf Ihre Daten](../log-analytics/query-language/get-started-analytics-portal.md)
 

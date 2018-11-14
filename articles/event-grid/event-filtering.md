@@ -5,14 +5,14 @@ services: event-grid
 author: tfitzmac
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 10/29/2018
+ms.date: 11/05/2018
 ms.author: tomfitz
-ms.openlocfilehash: 24337863d4e3f8e093c2e33afbb39364ec37516d
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: fd33ca723bd00b4a9c25009ef5b4f444487244f0
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50252102"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51281947"
 ---
 # <a name="understand-event-filtering-for-event-grid-subscriptions"></a>Grundlegendes zur Ereignisfilterung für Event Grid-Abonnements
 
@@ -57,9 +57,9 @@ Die JSON-Syntax für das Filtern nach Ereignistyp lautet:
 
 Um nach Werten in den Datenfeldern zu filtern und den Vergleichsoperator anzugeben, verwenden Sie die erweiterte Filteroption. Bei der erweiterten Filterung können Sie folgende Informationen angeben:
 
-* Operator – den Typ des Vergleichs.
+* Operatortyp – Typ des Vergleichs.
 * Schlüssel – Feld in den Ereignisdaten, die Sie für die Filterung verwenden. Sie können eine Zahl, boolescher Wert oder Zeichenfolge eingeben.
-* Werte – Werte, die mit dem Schlüssel verglichen werden sollen.
+* Wert oder Werte – Werte, die mit dem Schlüssel verglichen werden sollen.
 
 Die JSON-Syntax für die Verwendung der erweiterten Filterung lautet:
 
@@ -67,14 +67,14 @@ Die JSON-Syntax für die Verwendung der erweiterten Filterung lautet:
 "filter": {
   "advancedFilters": [
     {
-      "Operator": "NumberGreaterThanOrEquals",
-      "Key": "Data.Key1",
-      "Values": 5
+      "operatorType": "NumberGreaterThanOrEquals",
+      "key": "Data.Key1",
+      "value": 5
     },
     {
-      "Operator": "StringContains",
-      "Key": "Subject",
-      "Values": ["container1", "container2"]
+      "operatorType": "StringContains",
+      "key": "Subject",
+      "values": ["container1", "container2"]
     }
   ]
 }
@@ -122,7 +122,7 @@ Verwenden Sie für Ereignisse im Cloud Events-Schema die folgenden Werte für de
 * EventTypeVersion
 * Ereignisdaten (z.B. Data.key1)
 
-Verwenden Sie für ein benutzerdefiniertes Eingabeschema die Ereignisdatenfelder (z.B. Data.key1 Data.key1.key2).
+Verwenden Sie für ein benutzerdefiniertes Eingabeschema die Ereignisdatenfelder (z.B. Data.key1).
 
 ### <a name="values"></a>Werte
 
@@ -140,7 +140,7 @@ Für die erweiterte Filterung gelten folgende Einschränkungen:
 * Fünf erweiterte Filter pro Event Grid-Abonnement
 * 512 Zeichen pro Zeichenfolgenwert
 * Fünf Werte für **in**- und **not in**-Operatoren
-* Der Schlüssel kann nur zwei Schachtelungsebenen (z.B. data.key1.key2) haben.
+* Der Schlüssel darf nur eine Schachtelungsebene aufweisen (z.B. data.key1).
 
 Der gleiche Schlüssel kann in mehr als einem Filter verwendet werden.
 

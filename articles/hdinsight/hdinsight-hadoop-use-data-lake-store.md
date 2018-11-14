@@ -8,13 +8,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 07/23/2018
-ms.openlocfilehash: 4fe2eb9e55415f76cbbce0ee69c92ccac29c4627
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.date: 11/06/2018
+ms.openlocfilehash: 0859e480df0111e26d5b64bf835f94b3852b3414
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51016640"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51277357"
 ---
 # <a name="use-data-lake-store-with-azure-hdinsight-clusters"></a>Verwenden von Data Lake Store mit Azure HDInsight-Clustern
 
@@ -40,16 +40,17 @@ Zum aktuellen Zeitpunkt unterstützen nur einige der HDInsight-Clustertypen/-ver
 
 | HDInsight-Clustertyp | Data Lake Store als Standardspeicher | Data Lake Store als Zusatzspeicher| Notizen |
 |------------------------|------------------------------------|---------------------------------------|------|
-| HDInsight-Version 3.6 | Ja | Ja | |
+| HDInsight-Version 3.6 | Ja | JA | Mit Ausnahme von HBase|
 | HDInsight-Version 3.5 | Ja | JA | Mit Ausnahme von HBase|
 | HDInsight-Version 3.4 | Nein  | JA | |
 | HDInsight, Version 3.3 | Nein  | Nein  | |
 | HDInsight, Version 3.2 | Nein  | Ja | |
 | Storm | | |Sie können Data Lake Store verwenden, um dort Daten aus einer Storm-Topologie zu schreiben. Sie können Data Lake Store auch zum Speichern von Verweisdaten verwenden, die anschließend von einer Storm-Topologie gelesen werden.|
 
+[!WARNING]
+> HDInsight HBase wird mit Azure Data Lake Storage Gen1 nicht unterstützt.
+
 Das Verwenden von Data Lake Store als zusätzliches Speicherkonto wirkt sich nicht auf die Leistung oder die Fähigkeit aus, Daten aus dem Cluster in Azure Storage zu lesen bzw. zu schreiben.
-
-
 ## <a name="use-data-lake-store-as-default-storage"></a>Verwenden von Data Lake Store als Standardspeicher
 
 Wenn HDInsight mit Data Lake Store als Standardspeicher bereitgestellt wird, werden die clusterbezogenen Dateien in Data Lake Store am folgenden Ort gespeichert:

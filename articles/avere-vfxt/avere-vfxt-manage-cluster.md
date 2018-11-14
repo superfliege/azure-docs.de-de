@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: v-erkell
-ms.openlocfilehash: f5b91329f5287c1d8f76c98f27d9bc2fd464a11a
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 9eba9eef315f1ec6eb25ea21c1d4747ab002d078
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50670147"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50958915"
 ---
 # <a name="manage-the-avere-vfxt-cluster"></a>Verwalten des Avere vFXT-Clusters
 
@@ -83,7 +83,7 @@ Wie bei der Avere-Systemsteuerung versuchen die vfxt.py-Operationen sicherzustel
 
 vfxt.py ist auf der Clustercontroller-VM vorinstalliert. <!-- (If you want to install it on another system, refer to http://github.com/Azure/AvereSDK) xxx change when this repo goes  public -->
 
-Ein vollständiges Benutzerhandbuch zu vfxt.py ist auf GitHub verfügbar: <https://github.com/AvereSystems/vFXT.py/blob/master/docs/README.md> 
+Ein vollständiges Benutzerhandbuch zu vfxt.py finden Sie in GitHub: [Verwalten von Cloudclustern mit vfxt.py](https://github.com/azure/averesdk/blob/master/docs/README.md).
 
 ### <a name="add-cluster-nodes-with-vfxtpy"></a>Hinzufügen von Clusterknoten mit vfxt.py
 
@@ -115,7 +115,7 @@ Wenn Sie den Prototyp nicht verwenden, müssen Sie einen Befehl wie den folgende
    --log ~/vfxt.log
 ```
 
-Weitere Informationen finden Sie unter [Hinzufügen von Knoten zu einem Cluster](https://github.com/AvereSystems/vFXT.py/blob/master/docs/using_vfxt_py.md#add-nodes-to-a-cluster) im Benutzerhandbuch zu vfxt.py.
+Weitere Informationen finden Sie unter [Hinzufügen von Knoten zu einem Cluster](https://github.com/Azure/AvereSDK/blob/master/docs/using_vfxt_py.md#add-nodes-to-a-cluster) im Benutzerhandbuch zu vfxt.py.
 
 ### <a name="stop-a-cluster-with-vfxtpy"></a>Beenden eines Clusters mit vfxt.py
 
@@ -129,7 +129,7 @@ vfxt.py --cloud-type azure --from-environment --stop --resource-group GROUPNAME 
 vfxt.py --cloud-type azure --from-environment --start --resource-group GROUPNAME --admin-password PASSWORD --management-address ADMIN_IP --location LOCATION --azure-network NETWORK --azure-subnet SUBNET --instances INSTANCE1_ID INSTANCE2_ID INSTANCE3_ID ...
 ```    
 
-Da der Cluster beendet wird, müssen Sie Instanzbezeichner übergeben, um die Clusterknoten anzugeben. Weitere Informationen finden Sie im Benutzerhandbuch zu vfxt.py unter [Angeben des zu ändernden Clusters](https://github.com/AvereSystems/vFXT.py/blob/master/docs/using_vfxt_py.md#specifying-which-cluster-to-modify).
+Da der Cluster beendet wird, müssen Sie Instanzbezeichner übergeben, um die Clusterknoten anzugeben. Weitere Informationen finden Sie im Benutzerhandbuch zu vfxt.py unter [Angeben des zu ändernden Clusters](https://github.com/Azure/AvereSDK/blob/master/docs/using_vfxt_py.md#specifying-which-cluster-to-modify).
 
 ### <a name="destroy-a-cluster-with-vfxtpy"></a>Zerstören eines Clusters mit vfxt.py
 
@@ -139,8 +139,7 @@ vfxt.py --cloud-type azure --from-environment --destroy --resource-group GROUPNA
 
 Die Option ``--quick-destroy`` kann verwendet werden, wenn Sie geänderte Daten nicht aus dem Clustercache schreiben möchten.
 
-Weitere Informationen finden Sie im [Benutzerhandbuch zu vfxt.py](<https://github.com/AvereSystems/vFXT.py/blob/master/docs/README.md>).  
-<!-- change to final location when available -->
+Weitere Informationen finden Sie im [Benutzerhandbuch zu vfxt.py](<https://github.com/Azure/AvereSDK/blob/master/docs/README.md>).  
 
 ## <a name="manage-cluster-vms-from-the-azure-portal"></a>Verwalten von virtuellen Clustercomputern über das Azure-Portal 
 

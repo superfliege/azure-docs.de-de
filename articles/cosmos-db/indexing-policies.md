@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: rafats
-ms.openlocfilehash: fea3455b31ff2ea7119fa4146aa84f855a3b6e35
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: cd3b5f49788282b535f07c6f84bf7e4002132ab9
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44054671"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51237586"
 ---
 # <a name="how-does-azure-cosmos-db-index-data"></a>Unterstützen von Indexdaten durch Azure Cosmos DB
 
@@ -140,7 +140,7 @@ Azure Cosmos DB modelliert JSON-Dokumente und den Index als Strukturen. Sie kön
 
 Indexpfade beginnen mit dem Stamm (/) und enden in der Regel mit dem Platzhalterzeichen "?", Platzhalteroperator. Dies bedeutet, dass es mehrere mögliche Werte für das Präfix gibt. Für SELECT * FROM Families F WHERE F.familyName = "Andersen" müssen Sie z. B. einen Indexpfad für /familyName/? in die Indexrichtlinie der Sammlung einbinden.
 
-Indexpfade können auch das Platzhalterzeichen \* verwenden, um das Verhalten für Pfade rekursiv unter dem Präfix anzugeben. Beispielsweise kann „/payload/*“ dazu verwendet werden, um sämtliche Elemente unter der payload-Eigenschaft von der Indizierung auszuschließen.
+Indexpfade können auch das Platzhalterzeichen \*verwenden, um das Verhalten für Pfade rekursiv unter dem Präfix anzugeben. Beispielsweise kann „/payload/*“ dazu verwendet werden, um sämtliche Elemente unter der payload-Eigenschaft von der Indizierung auszuschließen.
 
 Im Folgenden sind die allgemeinen Muster zum Angeben von Indexpfaden aufgeführt:
 
@@ -276,7 +276,7 @@ Hier sehen Sie die unterstützten Indexarten und Beispiele für Abfragen, für d
 
 | Indexart | Beschreibung/Anwendungsfall                                                                                                                                                                                                                                                                                                                                                                                                              |
 | ---------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Hash       | Hash über /prop/? (oder /) kann verwendet werden, um die folgenden Abfragen effizient zu bedienen:<br><br>SELECT FROM collection c WHERE c.prop = "value"<br><br>Hash über /props/[]/? (oder / oder /props/) kann verwendet werden, um die folgenden Abfragen effizient zu bedienen:<br><br>SELECT tag FROM collection c JOIN tag IN c.props WHERE tag = 5                                                                                                                       |
+| Hash       | Hash über /prop/? (oder /) kann verwendet werden, um die folgenden Abfragen effizient zu bedienen:<br><br>SELECT FROM collection c WHERE c.prop = "value"<br><br>Hash über /props/[]/? (or / or /props/) kann verwendet werden, um die folgenden Abfragen effizient zu bedienen:<br><br>SELECT tag FROM collection c JOIN tag IN c.props WHERE tag = 5                                                                                                                       |
 | Range      | Bereich über /prop/? (oder /) kann verwendet werden, um die folgenden Abfragen effizient zu bedienen:<br><br>SELECT FROM collection c WHERE c.prop = "value"<br><br>SELECT FROM collection c WHERE c.prop > 5<br><br>SELECT FROM collection c ORDER BY c.prop                                                                                                                                                                                                              |
 | Spatial     | Bereich über /prop/? (oder /) kann verwendet werden, um die folgenden Abfragen effizient zu bedienen:<br><br>SELECT FROM collection c<br><br>WHERE ST_DISTANCE(c.prop, {"type": "Point", "coordinates": [0.0, 10.0]}) < 40<br><br>SELECT FROM collection c WHERE ST_WITHIN(c.prop, {"type": "Polygon", ... }) --mit aktivierter Indizierung nach Punkten<br><br>SELECT FROM collection c WHERE ST_WITHIN({"type": "Point", ... }, c.prop) --mit aktivierter Indizierung nach Polygonen              |
 
@@ -323,7 +323,7 @@ Sie können wählen, ob die Sammlung automatisch alle Dokumente indizieren soll.
 
 Mit deaktivierter automatischer Indizierung können Sie lediglich bestimmte Dokumente weiterhin zum Index hinzufügen. Umgekehrt können Sie die automatische Indizierung aktiviert lassen und nur bestimmte Dokumente einzeln ausschließen. Konfigurationen mit aktivierter/deaktivierter Indizierung sind hilfreich, wenn nur eine Teilmenge der Dokumente abgefragt werden muss.
 
-Im folgenden Beispiel wird das explizite Einbeziehen eines Dokuments mithilfe des [SQL API .NET SDK](https://docs.microsoft.com/azure/cosmos-db/sql-api-sdk-dotnet) und der [RequestOptions.IndexingDirective](http://msdn.microsoft.com/library/microsoft.azure.documents.client.requestoptions.indexingdirective.aspx)-Eigenschaft veranschaulicht.
+Im folgenden Beispiel wird das explizite Einbeziehen eines Dokuments mithilfe des [SQL API .NET SDK](https://docs.microsoft.com/azure/cosmos-db/sql-api-sdk-dotnet) und der [RequestOptions.IndexingDirective](https://msdn.microsoft.com/library/microsoft.azure.documents.client.requestoptions.indexingdirective.aspx)-Eigenschaft veranschaulicht.
 
     // If you want to override the default collection behavior to either
     // exclude (or include) a document in indexing,
@@ -413,7 +413,7 @@ Warum sollten Sie Änderungen an der Indizierungsrichtlinie Ihrer Azure Cosmos D
 ## <a name="performance-tuning"></a>Leistungsoptimierung
 Die SQL-APIs enthalten Informationen zu Leistungsindikatoren, z. B. dem genutzten Indexspeicher, und zu den Durchsatzkosten (Anforderungseinheiten) für jeden Vorgang. Sie können diese Informationen zum Vergleichen verschiedener Indizierungsrichtlinien und zum Optimieren der Leistung verwenden.
 
-Um das Speicherkontingent und die Verwendung einer Sammlung zu überprüfen, führen Sie eine **HEAD**- oder **GET**-Anforderung für die Sammlungsressource aus. Überprüfen Sie dann die Header **x-ms-request-quota** und **x-ms-request-usage**. Im .NET SDK enthalten die Eigenschaften [DocumentSizeQuota](http://msdn.microsoft.com/library/dn850325.aspx) und [DocumentSizeUsage](http://msdn.microsoft.com/library/azure/dn850324.aspx) in [ResourceResponse<T\>](http://msdn.microsoft.com/library/dn799209.aspx) diese entsprechenden Werte.
+Um das Speicherkontingent und die Verwendung einer Sammlung zu überprüfen, führen Sie eine **HEAD**- oder **GET**-Anforderung für die Sammlungsressource aus. Überprüfen Sie dann die Header **x-ms-request-quota** und **x-ms-request-usage**. Im .NET SDK enthalten die Eigenschaften [DocumentSizeQuota](https://msdn.microsoft.com/library/dn850325.aspx) und [DocumentSizeUsage](https://msdn.microsoft.com/library/azure/dn850324.aspx) in [ResourceResponse<T\>](https://msdn.microsoft.com/library/dn799209.aspx) diese entsprechenden Werte.
 
      // Measure the document size usage (which includes the index size) against   
      // different policies.
@@ -421,7 +421,7 @@ Um das Speicherkontingent und die Verwendung einer Sammlung zu überprüfen, fü
      Console.WriteLine("Document size quota: {0}, usage: {1}", collectionInfo.DocumentQuota, collectionInfo.DocumentUsage);
 
 
-Um den Indizierungsaufwand für jeden Schreibvorgang (Erstellen, Aktualisieren oder Löschen) zu messen, überprüfen Sie den Header **x-ms-request-charge** (oder die entsprechende [RequestCharge](http://msdn.microsoft.com/library/dn799099.aspx)-Eigenschaft in [ResourceResponse<T\>](http://msdn.microsoft.com/library/dn799209.aspx) im .NET SDK). Dabei können Sie die Anzahl der Anforderungseinheiten messen, die von diesen Vorgängen verwendet werden.
+Um den Indizierungsaufwand für jeden Schreibvorgang (Erstellen, Aktualisieren oder Löschen) zu messen, überprüfen Sie den Header **x-ms-request-charge** (oder die entsprechende [RequestCharge](https://msdn.microsoft.com/library/dn799099.aspx)-Eigenschaft in [ResourceResponse<T\>](https://msdn.microsoft.com/library/dn799209.aspx) im .NET SDK). Dabei können Sie die Anzahl der Anforderungseinheiten messen, die von diesen Vorgängen verwendet werden.
 
      // Measure the performance (request units) of writes.     
      ResourceResponse<Document> response = await client.CreateDocumentAsync(UriFactory.CreateDocumentCollectionUri("db", "coll"), myDocument);              

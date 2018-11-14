@@ -1,6 +1,6 @@
 ---
-title: Beratungsdienste | Microsoft-Dokumentation
-description: Anleitung zum Definieren und Veröffentlichen eines Beratungsdienstangebots.
+title: Azure- und Dynamics 365-Beratungsdienstangebot | Microsoft-Dokumentation
+description: Dies ist ein Leitfaden für die Definition und Veröffentlichung eines Azure- oder Dynamics 365-Beratungsdienstangebots im Cloud-Partnerportal.
 services: Azure, Marketplace, Cloud Partner Portal,
 documentationcenter: ''
 author: dan-wesley
@@ -12,19 +12,29 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 09/13/2018
+ms.date: 11/01/2018
 ms.author: pbutlerm
-ms.openlocfilehash: b3f6b9166afce9ca0cdeaa1c9dd6e10a5a976453
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 43f1e71486cedbeccb2c02388147a68756581e50
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48806368"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51037761"
 ---
-<a name="defining-and-publishing-your-consulting-services-offer"></a>Definieren und Veröffentlichen eines Beratungsdienstangebots
-======================================================
+# <a name="azure-and-dynamics-365-consulting-service-offer"></a>Azure- und Dynamics 365-Beratungsdienstangebot
 
-Diese Anleitung soll Ihnen dabei helfen, Ihr Beratungsdienstangebot im Cloud-Partnerportal zu definieren und zu veröffentlichen.
+<table> <tr> <td>Dieser Abschnitt erläutert, wie Sie einen Beratungsdienst im Microsoft <a href="https://azuremarketplace.microsoft.com">Azure Marketplace</a> oder im <a href="https://appsource.microsoft.com">AppSource Marketplace</a> veröffentlichen. Lösungen, die auf Microsoft <a href="https://dynamics.microsoft.com">Dynamics 365</a>, <a href="https://products.office.com">Office 365</a>, <a href="https://powerbi.microsoft.com">Power BI</a> und <a href="https://powerapps.microsoft.com">PowerApps</a> basieren, können in AppSource gelistet werden. Andere Angebote, die auf anderen Microsoft <a href="https://azure.microsoft.com/services">Azure-Diensten</a> basieren, können im Azure Marketplace gelistet werden. </td> <td><img src="./media/consulting-services-publishing-offer/consulting-icon1.png"  alt="Microsoft consulting icon" /></td> </tr> </table>
+
+
+# <a name="publishing-benefits"></a>Vorteile der Veröffentlichung
+
+Die Veröffentlichung in einem der Marketplaces von Microsoft bietet erhebliche Vorteile:
+
+- Bewerben Sie Ihr Unternehmen durch Nutzung der Marke Microsoft.
+- In AppSource können Sie mehr als 100 Millionen Office 365- und Dynamics 365-Benutzer erreichen, in Azure Marketplace über 200.000 Organisationen.
+- Gewinnen Sie hochwertige Leads in diesen Marketplaces.
+- Lassen Sie Ihre Dienste durch die Außendienst- und Telefonmarketingteams von Microsoft bewerben.
+
 
 <a name="define-your-consulting-services-offer"></a>Definieren Ihres Beratungsdienstangebots
 -------------------------------------
@@ -52,30 +62,23 @@ Führen Sie die folgenden Schritte aus, um ein neues Angebot zu erstellen:
 
 ### <a name="define-offer-settings"></a>Definieren der Angebotseinstellungen
 
-Der erste Schritt im Bildschirm „Neues Angebot“ besteht darin, die Angebots-ID zu erstellen.
-Eine Angebots-ID besteht aus drei Teilen:
-
-1.  Angebots-ID
-2.  Herausgeber-ID
-3.  NAME
-
-Jeder dieser Teile ist in den nachstehenden Abschnitten beschrieben.
+Der erste Schritt im Bildschirm „Neues Angebot“ besteht darin, die Identität des Angebots zu erstellen.  Die Angebotsidentität besteht aus drei Teilen: **Angebots-ID**, **Herausgeber-ID** und **Name**.  Jeder dieser Teile ist in den nachstehenden Abschnitten beschrieben.
 
 #### <a name="offer-id"></a>Angebots-ID
 
-Dies ist ein eindeutiger Name, den Sie erstellen, wenn Sie das Angebot erstmals absenden. Dieser Name darf nur klein geschriebene alphanumerische Zeichen, Bindestriche und Unterstriche enthalten. Die ID ist in der URL sichtbar und wirkt sich auf Suchmaschinenergebnisse aus. Beispiel: *nameihresunternehmens\_beispieldienst*
+Dieser Bezeichner ist ein eindeutiger Name, den Sie bei der ersten Übermittlung des Angebots erstellen. Dieser Name darf nur klein geschriebene alphanumerische Zeichen, Bindestriche und Unterstriche enthalten. Die Angebots-ID ist in der URL sichtbar und wirkt sich auf Suchmaschinenergebnisse aus. Beispiel: *nameihresunternehmens\_beispieldienst*
 
-Wie im Beispiel gezeigt ist, wird die Angebots-ID an Ihre Herausgeber-ID angefügt, um einen eindeutigen Bezeichner zu erstellen. Dieser Bezeichner wird als permanenter Link verfügbar gemacht, der abonniert werden kann und von Suchmaschinen indiziert wird.
+Wie im Beispiel gezeigt ist, wird die Angebots-ID an Ihre Herausgeber-ID angefügt, um einen eindeutigen Bezeichner zu erstellen. Dieser Bezeichner wird als permanenter Link verfügbar gemacht, der abonniert werden kann und von Suchmaschinen indiziert wird. 
 
-**Nachdem ein Angebot freigeschaltet (live geschaltet\' ) wurde, kann es nicht mehr aktualisiert werden**.
+*Nachdem ein Angebot live geschaltet wurde, kann der Bezeichner nicht mehr aktualisiert werden.*
 
 #### <a name="publisher-id"></a>Herausgeber-ID
 
-Diese ID bezieht sich auf Ihr Konto. Wenn Sie sich mit Ihrem Organisationskonto angemeldet haben, wird Ihre Herausgeber-ID im Dropdownmenü angezeigt.
+Dieser Bezeichner bezieht sich auf Ihr Konto. Wenn Sie sich mit Ihrem Organisationskonto angemeldet haben, wird Ihre Herausgeber-ID im Dropdownmenü angezeigt.
 
 #### <a name="name"></a>NAME
 
-Dies ist die Zeichenfolge, die als der Angebotsname in AppSource oder Azure Marketplace angezeigt wird.
+Dies ist die Zeichenfolge, die als Angebotsname in AppSource oder Azure Marketplace angezeigt wird.
 
 **Wichtig:** Geben Sie hier nur den Namen des eigentlichen Diensts ein. Fügen Sie weder die Dauer noch den Typ des Diensts hinzu.
 
@@ -85,10 +88,10 @@ Das folgende Beispiel von Edgewater Fullscope zeigt, wie der Angebotsname aufgeb
 
 Ein Angebotsname besteht aus vier Teilen:
 
--   **Dauer:** Die Dauer definieren Sie im Editor auf der Registerkarte „Details der digitalen Ladenzeile“. Eine Dauer kann in Stunden, Tagen oder Wochen ausgedrückt werden.
--   **Diensttyp:** Den Diensttyp definieren Sie im Editor auf der Registerkarte „Details der digitalen Ladenzeile“. Diensttypen sind Bewertung, Einweisung, Implementierung, Proof of Concept und Workshop.
--   **Präposition:** Wird vom Prüfer eingefügt.
--   **Name:** Dies ist der Name, den Sie auf der Seite „Angebotseinstellungen“ angegeben haben.
+-   **Dauer**: Die Dauer wird im Editor auf der Registerkarte **Details der digitalen Ladenzeile** definiert. Eine Dauer kann in Stunden, Tagen oder Wochen ausgedrückt werden.
+-   **Diensttyp**: Der Diensttyp wird im Editor auf der Registerkarte **Details der digitalen Ladenzeile** definiert. Die Diensttypen lauten `Assessment` (Bewertung), `Briefing` (Einweisung), `Implementation` (Implementierung), `Proof of concept` und `Workshop`.
+-   **Präposition**: Die Präposition wird vom Prüfer eingefügt.
+-   **Name**: Der Name wird auf der Seite **Angebotseinstellungen** definiert.
 
 In der folgenden Liste sind einige ordnungsgemäß benannte Angebote aufgeführt:
 
@@ -124,7 +127,7 @@ Der Abschnitt für Angebotsdetails enthält die folgenden Felder:
 
 ##### <a name="offer-summary"></a>Angebotszusammenfassung
 
-Die Angebotszusammenfassung ist eine kurze Beschreibung Ihres Angebots, die direkt unter dem Angebotsnamen angezeigt wird. Sie sollten unformatierten Text verwenden, wenn Sie die Angebotszusammenfassung eingeben, und es sollten keine Zeilenumbrüche enthalten sein. Im Folgenden sind gute Beispiele für Angebotszusammenfassungen samt deren entsprechenden Angebotsnamen aufgeführt:
+Die Angebotszusammenfassung ist eine kurze Beschreibung Ihres Angebots, die direkt unter dem Angebotsnamen angezeigt wird. Verwenden Sie unformatierten Text, wenn Sie die Angebotszusammenfassung eingeben, und es sollten keine Zeilenumbrüche enthalten sein. Im Folgenden sind gute Beispiele für Angebotszusammenfassungen samt deren entsprechenden Angebotsnamen aufgeführt:
 
 *Beispiel 1*
 
@@ -151,17 +154,17 @@ Die Angebotszusammenfassung ist eine kurze Beschreibung Ihres Angebots, die dire
 -   **Angebotsname:** Dynamics und Projekte: 3-Tag Bewertung
 -   **Angebotszusammenfassung:** Anforderungserfassung und -bewertung für eine ERP-Lösung, die für Dienstleistungsunternehmen und projektausführende Unternehmen konzipiert ist.
 
-##### <a name="offer-description"></a>Angebotsbeschreibung
+##### <a name="offer-description"></a>Beschreibung des Angebots
 
-Dies ist eine Beschreibung des Beratungsdienstangebots. Eine gute Angebotsbeschreibung enthält genaue Angaben darüber, wie das Projekt aussieht und wie sich das Endergebnis für den Kunden darstellt. Der Beschreibung sollte ein Kunde klar entnehmen können, welche Leistung er bekommt.
+Beschreibung des Beratungsdienstangebots. Eine gute Angebotsbeschreibung enthält genaue Angaben darüber, wie das Projekt aussieht und wie sich das Endergebnis für den Kunden darstellt. Der Beschreibung sollte ein Kunde klar entnehmen können, welche Leistung er bekommt.
 
 Fügen Sie in Ihre Angebotsbeschreibung keine E-Mail-Links oder Telefonnummern ein, über die Sie zu erreichen sind. Es wird eine „Kontakt mit mir aufnehmen“-Schaltfläche in Ihrem Angebot geben, über die Leads in das Leadverwaltungsziel hochgeladen werden, das Sie in Ihrem Angebot angeben.
 
-Sie geben die Angebotsbeschreibung im Markdown-Format ein. Wenn Sie mit Markdown oder Formatierung für HTML nicht vertraut sind, sollten Sie die entsprechenden Artikel auf der [Microsoft Docs-Website](https://docs.microsoft.com/contribute/how-to-write-use-markdown) lesen.
+Sie geben die Angebotsbeschreibung im Markdown-Format ein. Wenn Sie mit Markdown oder Formatierung für HTML nicht vertraut sind, sollten Sie die entsprechenden Artikel auf der [Microsoft Dokumentationswebsite](https://docs.microsoft.com/contribute/how-to-write-use-markdown) lesen.
 
 Durch Verwenden dieser Formate wird sichergestellt, dass Ihr Angebot eine optimale Lesbarkeit für Kunden hat.
 
-Achten Sie darauf, dass Ihre Angebotsbeschreibung kurz bleibt, und halten Sie sich an die Beschränkung für die Zeichenzahl, da Benutzer nicht gerne viel Text lesen. Sie haben immer noch die Option, Marketingbroschüren, Merkblätter und andere Dokumente hochzuladen, in denen Ihr Angebot ausführlicher beschrieben ist.
+Achten Sie darauf, dass Ihre Angebotsbeschreibung kurz bleibt, und halten Sie sich an die Beschränkung für die Zeichenzahl, da Benutzer nicht gerne sehr langen Text lesen. Sie haben immer noch die Option, Marketingbroschüren, Merkblätter und andere Dokumente hochzuladen, in denen Ihr Angebot ausführlicher beschrieben ist.
 
 Im folgenden Beispiel werden eine gut gestaltete Angebotsbeschreibung und deren zugehöriger Name und zugehörige Zusammenfassung veranschaulicht:
 
@@ -223,7 +226,7 @@ Die neue Partner Center-ID, sofern Sie eine solche haben.
 **MPN-ID**
 
 Geben Sie einen geheimen Schlüssel ein, um eine Vorschau Ihres Angebots in AppSource anzuzeigen, bevor Sie das Angebot freischalten.
-Das ist kein Kennwort.
+Dieser Bezeichner ist kein Kennwort.
 
 #### <a name="listing-details"></a>Auflistungsdetails
 
@@ -287,4 +290,4 @@ Laden Sie bis zu fünf Bilder hoch, die weitere Informationen über das Angebot,
 
 Nachdem Sie die Felder für Angebotseinstellungen, Details der digitalen Ladenzeile und Kontakte ausgefüllt haben, wählen Sie **Veröffentlichen** aus, und geben Sie eine E-Mail-Adresse an. Sobald Microsoft zum Veröffentlichen Ihres Angebots bereit ist, erhalten Sie eine E-Mail, damit Sie eine Vorschau Ihres Angebots anzeigen können, bevor es freigeschaltet wird. Sie können zum Portal zurückkehren, um jederzeit den Status Ihres Angebots zu prüfen.
 
-Während des Veröffentlichungsprozesses kann ein Angebot im Status „Veröffentlichen abgebrochen“ oder „Veröffentlichungsfehler“ angezeigt werden. Dies ist ein normaler Zustand des Prozesses und versetzt Microsoft in die Lage, Ihr Angebot zu überarbeiten. Wenn Sie sehen, dass Ihr Angebot den Status „Veröffentlichen abgebrochen“, belassen sie es in diesem Status.
+Während des Veröffentlichungsprozesses kann ein Angebot im Status „Veröffentlichen abgebrochen“ oder „Veröffentlichungsfehler“ angezeigt werden. Dies ist ein normaler Bestandteil des Prozesses und ermöglicht es Microsoft, Ihr Angebot zu bearbeiten. Wenn Sie sehen, dass Ihr Angebot den Status „Veröffentlichen abgebrochen“ aufweist, belassen Sie es in diesem Status.

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/17/2018
 ms.author: cynthn
-ms.openlocfilehash: 2ec712dcce1295a91f552176ddcf6572d3f23ecc
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 8bf87f9d1d1ab6da4b034890f1fbe058199eca41
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46993560"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51007135"
 ---
 # <a name="log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Anmelden bei einem virtuellen Linux-Computer in Azure mit der Azure Active Directory-Authentifizierung (Vorschau)
 
@@ -147,6 +147,20 @@ Geben Sie bei der entsprechenden Aufforderung Ihre Azure AD-Anmeldeinformationen
     You have signed in to the Microsoft Azure Linux Virtual Machine Sign-In application on your device.
 
 Schließen Sie das Browserfenster, kehren Sie zur SSH-Eingabeaufforderung zurück, und drücken Sie die **Eingabetaste**. Sie sind nun mit den entsprechend zugewiesenen Rollenberechtigungen (z.B. *VM-Benutzer* oder *VM-Administrator*) bei dem virtuellen Azure Linux-Computer angemeldet. Wenn Ihrem Benutzerkonto die Rolle *VM-Administratoranmeldung* zugewiesen ist, können Sie `sudo` verwenden, um Befehle auszuführen, für die Root-Berechtigungen erforderlich sind.
+
+## <a name="sudo-and-aad-login"></a>Sudo- und AAD-Anmeldung
+
+Wenn Sie sudo das erste Mal ausführen, werden Sie aufgefordert, sich ein zweites Mal zu authentifizieren. Wenn Sie sich zur Ausführung von Sudo nicht erneut authentifizieren möchten, können Sie Ihre sudo-Datei `/aad/etc/sudoers.d/aad_admins` bearbeiten und diese Zeile ersetzen:
+
+```bash
+%aad_admins ALL=(ALL) ALL
+```
+Durch diese Zeile:
+
+```bash
+%aad_admins ALL=(ALL) NOPASSWD:ALL
+```
+
 
 ## <a name="troubleshoot-sign-in-issues"></a>Beheben von Problemen bei der Anmeldung
 

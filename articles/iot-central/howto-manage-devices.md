@@ -3,23 +3,23 @@ title: Verwalten der Geräte in Ihrer Azure IoT Central-Anwendung | Microsoft-Do
 description: Erfahren Sie, wie Sie als Operator Gerätegruppen in der Azure IoT Central-Anwendung verwalten.
 author: ellenfosborne
 ms.author: elfarber
-ms.date: 01/21/2018
+ms.date: 11/02/2018
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 4b4ded86075e49277bca84f5261b6762b0f4fcae
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: dc241612149de5c4ea5c1d2e698741e77d429fc7
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45737310"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51004882"
 ---
 # <a name="manage-devices-in-your-azure-iot-central-application"></a>Verwalten von Geräten in Ihrer Azure IoT Central-Anwendung
 
-In diesem Artikel wird beschrieben, wie Sie als Operator Gerätegruppen in Ihrer Microsoft Azure IoT Central-Anwendung verwalten. Als Operator können Sie folgende Aktionen ausführen:
+In diesem Artikel wird beschrieben, wie Sie als Operator Gerätegruppen in Ihrer Azure IoT Central-Anwendung verwalten. Als Operator können Sie folgende Aktionen ausführen:
 
-- Mit der **Explorer**-Seite Geräte anzeigen, hinzufügen und löschen, die mit Ihrer Azure IoT Central-Anwendung verbunden sind.
+- Sie können mit der **Device Explorer**-Seite Geräte anzeigen, hinzufügen und löschen, die mit Ihrer Azure IoT Central-Anwendung verbunden sind.
 - Verwalten Sie ein aktuelles Inventar Ihrer Geräte.
 - Halten Sie Ihre Gerätemetadaten durch Ändern der in den Geräteeigenschaften gespeicherten Werte auf dem neuesten Stand.
 - Steuern Sie das Verhalten Ihrer Geräte, indem Sie eine Einstellung auf einem bestimmten Gerät auf der Seite **Einstellungen** aktualisieren.
@@ -28,11 +28,11 @@ In diesem Artikel wird beschrieben, wie Sie als Operator Gerätegruppen in Ihrer
 
 So zeigen Sie ein einzelnes Gerät an:
 
-1. Wählen Sie im Navigationsmenü auf der linken Seite die Option **Explorer** aus. Hier sehen Sie eine Liste Ihrer [Gerätevorlagen](howto-set-up-template.md).
+1. Wählen Sie im **Device Explorer** auf der linken Seite die Option Explorer aus. Hier sehen Sie eine Liste Ihrer [Gerätevorlagen](howto-set-up-template.md).
 
-1. Wählen Sie eine **Gerätevorlage** im linken Bereich aus.
+1. Wählen Sie eine Gerätevorlage unter „Vorlagen“ im linken Bereich aus.
 
-1. Im rechten Bereich sehen Sie eine Liste von Geräten, die anhand dieser Gerätevorlage erstellt wurden. Wählen Sie ein einzelnes Gerät aus, um die Seite **Gerätedetails** für dieses Gerät anzuzeigen:
+1. Im rechten Bereich der Device Explorer-Seite sehen Sie eine Liste von Geräten, die anhand dieser Gerätevorlage erstellt wurden, wie unten dargestellt. Wählen Sie ein einzelnes Gerät aus, um die Seite „Gerätedetails“ für dieses Gerät anzuzeigen:
 
     [![Seite „Gerätedetails“](./media/howto-manage-devices/image1.png)](./media/howto-manage-devices/image1.png#lightbox)
 
@@ -40,7 +40,7 @@ So zeigen Sie ein einzelnes Gerät an:
 
 So fügen Sie ein Gerät Ihrer Azure IoT Central-Anwendung hinzu:
 
-1. Wählen Sie im Navigationsmenü auf der linken Seite die Option **Explorer** aus.
+1. Wählen Sie im **Device Explorer** auf der linken Seite die Option Explorer aus.
 
 1. Wählen Sie die Gerätevorlage aus, von der Sie ein Gerät erstellen möchten.
 
@@ -51,14 +51,14 @@ So fügen Sie ein Gerät Ihrer Azure IoT Central-Anwendung hinzu:
 
 ## <a name="import-devices"></a>Importieren von Geräten
 
-Um eine Verbindung einer großen Anzahl von Geräten mit Ihrer Anwendung herzustellen, ermöglicht Azure IoT Central das Massenimportieren von Geräten über eine CSV-Datei. Die CSV-Datei sollten die folgenden Spalten (und Kopfzeilen) aufweisen:
-1.  IOTC_DeviceID **<span style="color:Red">(sollten Kleinbuchstaben sein)</span>**
+Um eine Verbindung einer großen Anzahl von Geräten mit Ihrer Anwendung herzustellen, ermöglicht Azure IoT Central das Massenimportieren von Geräten über eine CSV-Datei. Die CSV-Datei sollte die folgenden Spalten (und Kopfzeilen) aufweisen:
+1.  IOTC_DeviceID **<span style="color:Red">(Kleinbuchstaben)</span>**
 1.  IOTC_DeviceName (optional)
 
 
 So führen Sie die Massenregistrierung von Geräten in Ihrer Anwendung durch:
 
-1. Wählen Sie im Navigationsmenü auf der linken Seite die Option **Explorer** aus.
+1. Wählen Sie im **Device Explorer** auf der linken Seite die Option Explorer aus.
 
 1. Wählen Sie im linken Bereich die Gerätevorlage aus, für die Sie das Massenerstellen der Geräte ausführen möchten.
 
@@ -83,7 +83,7 @@ Wenn beim Geräteimport ein Fehler auftritt, wird auf dem Geräteraster eine Feh
 **Verknüpfen von Geräten mit einer Vorlage**
 
 Wenn Sie Geräte registrieren, indem Sie den Import unter **Nicht zugeordnete Geräte** starten, dann werden die Geräte ohne Gerätevorlagenzuordnung erstellt. Das Gerät muss mit einer Vorlage verknüpft sein, um damit ein Zugriff auf Daten und andere Details zum Gerät möglich ist. Führen Sie die folgenden Schritte aus, um Geräte mit einer Vorlage zu verknüpfen:
-1. Wählen Sie im Navigationsmenü auf der linken Seite die Option **Explorer** aus.
+1. Wählen Sie im **Device Explorer** auf der linken Seite die Option Explorer aus.
 1. Wählen Sie im linken Bereich **Nicht zugeordnete Geräte**.
     [![Nicht zugeordnete Geräte](./media/howto-manage-devices/UnassociatedDevices1.png)](./media/howto-manage-devices/UnassociatedDevices1.png#lightbox)
 1. Wählen Sie die Geräte aus, die Sie mit einer Vorlage verknüpfen möchten.
@@ -100,7 +100,7 @@ Wenn Sie Geräte registrieren, indem Sie den Import unter **Nicht zugeordnete Ge
 Um Geräte für die Verbindung mit IoT Central bereitzustellen, benötigen Sie die Verbindungszeichenfolge des Geräts, die von IoT Central generiert wird. Sie können das Feature „Export“ verwenden, um einen Massenkopiervorgang der Verbindungszeichenfolgen und anderen Eigenschaften der Geräte aus Ihrer Anwendung vorzunehmen. Durch „Export“ wird eine CSV-Datei mit der Geräteidentität, dem Gerätenamen sowie eine primäre Verbindungszeichenfolge für alle ausgewählten Geräte erstellt.
 
 So führen Sie den Massenexport von Geräten aus Ihrer Anwendung durch:
-1. Wählen Sie im Navigationsmenü auf der linken Seite die Option **Explorer** aus.
+1. Wählen Sie im **Device Explorer** auf der linken Seite die Option Explorer aus.
 
 1. Wählen Sie im linken Bereich die Gerätevorlage aus, für die Sie die Geräte exportieren möchten.
 
@@ -128,7 +128,7 @@ So führen Sie den Massenexport von Geräten aus Ihrer Anwendung durch:
 
 So löschen Sie entweder ein reales oder simuliertes Gerät aus Ihrer Azure IoT Central-Anwendung:
 
-1. Wählen Sie im Navigationsmenü die Option **Explorer** aus.
+1. Wählen Sie im Navigationsmenü die Option **Device Explorer** aus.
 
 1. Wählen Sie die Gerätevorlage des Geräts aus, das Sie löschen möchten.
 
@@ -140,7 +140,7 @@ So löschen Sie entweder ein reales oder simuliertes Gerät aus Ihrer Azure IoT 
 
 Einstellungen steuern das Verhalten eines Geräts. D.h., damit können Sie Eingaben für Ihr Gerät bereitstellen. Sie können Geräteeinstellungen auf der Seite **Gerätedetails** anzeigen und aktualisieren.
 
-1. Wählen Sie im Navigationsmenü die Option **Explorer** aus.
+1. Wählen Sie im Navigationsmenü die Option **Device Explorer** aus.
 
 1. Wählen Sie die Gerätevorlage des Geräts aus, dessen Einstellungen Sie ändern möchten.
 
@@ -154,15 +154,13 @@ Einstellungen steuern das Verhalten eines Geräts. D.h., damit können Sie Einga
 
 Eigenschaften sind die dem Gerät zugeordneten Gerätemetadaten, z.B. der Ort und die Seriennummer. Sie können Eigenschaften auf der Seite **Gerätedetails** anzeigen und aktualisieren.
 
-1. Wählen Sie im Navigationsmenü die Option **Explorer** aus.
+1. Wählen Sie im Navigationsmenü die Option **Device Explorer** aus.
 
 1. Wählen Sie die Gerätevorlage des Geräts aus, dessen Eigenschaften Sie ändern möchten.
 
 1. Wählen Sie die Registerkarte **Eigenschaften** aus, auf der alle Eigenschaften angezeigt werden.
 
-1. Ändern Sie die Eigenschaften in Ihre gewünschten Werte. Sie können mehrere Eigenschaften auf einmal ändern und alle gleichzeitig aktualisieren.
-
-1. Wählen Sie **Aktualisieren** aus.
+1. Ändern Sie die Anwendungseigenschaften in Ihre gewünschten Werte. Sie können mehrere Eigenschaften auf einmal ändern und alle gleichzeitig aktualisieren. Wählen Sie **Aktualisieren** aus.
 
 > [!NOTE]
 > Sie können den Wert der _Geräteeigenschaften_ nicht ändern. Geräteeigenschaften werden vom Gerät festgelegt und sind in der Azure IoT Central-Anwendung schreibgeschützt.

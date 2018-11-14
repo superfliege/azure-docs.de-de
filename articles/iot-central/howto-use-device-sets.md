@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpfr
-ms.openlocfilehash: 28706ad77f48ae826b621ebdd920d26f3b87178a
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: a5dd018197ff78ff0563349fd941308c3684a456
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45731978"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51004118"
 ---
 # <a name="use-device-sets-in-your-azure-iot-central-application"></a>Verwenden von Gerätegruppen in Ihrer Azure IoT Central-Anwendung
 
-In diesem Artikel wird beschrieben, wie Sie als Operator Gerätegruppen in Ihrer Microsoft Azure IoT Central-Anwendung verwenden.
+In diesem Artikel wird beschrieben, wie Sie als Operator Gerätegruppen in Ihrer Azure IoT Central-Anwendung verwenden.
 
 Eine Gerätegruppe ist eine Liste der Geräte, die zusammen gruppiert werden, da sie alle einigen der angegebenen Kriterien entsprechen. Gerätegruppen helfen Ihnen bei der Verwaltung, Visualisierung und Analyse aller im Umfang enthaltenen Geräte, indem sie Geräte in kleinere, logische Gruppen zusammenfassen. Beispielsweise erstellen Sie eine Liste aller Klimageräte in Seattle, damit der Techniker in Seattle alle Geräte finden kann, für die er verantwortlich ist. In diesem Artikel erfahren Sie, wie Sie Gerätegruppen erstellen und konfigurieren.
 
@@ -73,7 +73,7 @@ Nachdem Sie Ihre Gerätegruppe erstellt haben, können Sie deren **Dashboard** k
         ![Auswählen von „Raster“](media/howto-use-device-sets/image8.png)
 
     1. Geben Sie für Ihr Raster einen **Titel** ein.
-    1. Wählen Sie über die Schaltfläche „Einstellungen“ die Spalten aus, die angezeigt werden sollen. Im eingeblendeten Bereich wählen Sie nun die gewünschte Spalte und anschließend den Pfeil nach rechts, um sie auszuwählen.
+    1. Wählen Sie über die Spalten aus, die angezeigt werden sollen über **Hinzufügen/Entfernen**. Im eingeblendeten Bereich wählen Sie nun die gewünschte Spalte und anschließend den Pfeil nach rechts, um sie auszuwählen.
     1. Klicken Sie auf **OK**.
     1. Wählen Sie **Speichern** aus.
 
@@ -101,9 +101,10 @@ Damit Sie Ihrem Gerätegruppen-Dashboard eine Standortkarte hinzufügen können,
 
 2. Geben Sie einen Titel ein, und wählen Sie die Standorteigenschaft aus, die Sie zuvor als Teil Ihrer Geräteeigenschaft konfiguriert haben.
 3. Nach dem Speichern wird in der Kartenkachel der Standort Ihrer Geräte in der Gerätegruppe angezeigt.
-4. Wenn ein Benutzer das Gerätegruppen-Dashboard anzeigt, sieht er jetzt alle von Ihnen konfigurierten Kacheln, einschließlich der Standortkarte, in der er die visualisierten Gerätestandorte auf einen Blick erfassen kann. 
+4. Wenn ein Operator das Gerätegruppen-Dashboard anzeigt, sieht er jetzt alle von Ihnen konfigurierten Kacheln, einschließlich der Standortkarte, in der er die visualisierten Gerätestandorte auf einen Blick erfassen kann. 
     
-[!NOTE] Sie können die Karte auf die gewünschte Größe ändern. Durch Klicken auf einen Pin auf der Karte werden Geräteinformationen, Name und Standort angezeigt. Sie können auf das Popupfenster klicken, um zur Seite „Geräteeigenschaft“ zu wechseln.  
+> [!NOTE] 
+> Sie können die Karte auf die gewünschte Größe ändern. Durch Klicken auf einen Pin auf der Karte werden Geräteinformationen, Name und Standort angezeigt. Sie können auf das Popupfenster klicken, um zur Seite „Geräteeigenschaft“ zu wechseln.  
 
 
 ## <a name="configure-the-list-for-your-device-set"></a>Konfigurieren der Liste für Ihre Gerätegruppe

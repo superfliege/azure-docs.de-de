@@ -1,24 +1,24 @@
 ---
-title: Installieren von eigenen benutzerdefinierten Hadoop-Anwendungen in Azure HDInsight
+title: Installieren von eigenen benutzerdefinierten Apache Hadoop-Anwendungen in Azure HDInsight
 description: Hier erfahren Sie, wie Sie Hadoop-Anwendungen in HDInsight installieren.
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2018
-ms.author: jasonh
-ms.openlocfilehash: 5e3194b856766502e4cc8c68ffa4bb936634adfa
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.author: hrasheed
+ms.openlocfilehash: b5870d53053511cb56f668943678aeb91bf23b3b
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46983139"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51035355"
 ---
-# <a name="install-custom-hadoop-applications-on-azure-hdinsight"></a>Installieren von benutzerdefinierten Hadoop-Anwendungen in Azure HDInsight
+# <a name="install-custom-apache-hadoop-applications-on-azure-hdinsight"></a>Installieren von benutzerdefinierten Apache Hadoop-Anwendungen in Azure HDInsight
 
-In diesem Artikel erfahren Sie, wie Sie eine Hadoop-Anwendung in Azure HDInsight installieren, die noch nicht im Azure-Portal veröffentlicht wurde. Die Anwendung, die Sie in diesem Artikel installieren, hat den Namen [Hue](http://gethue.com/).
+In diesem Artikel erfahren Sie, wie Sie eine Apache Hadoop-Anwendung in Azure HDInsight installieren, die noch nicht im Azure-Portal veröffentlicht wurde. Die Anwendung, die Sie in diesem Artikel installieren, hat den Namen [Hue](http://gethue.com/).
 
 Eine HDInsight-Anwendung kann von Benutzern in einem Linux-basierten HDInsight-Cluster installiert werden.  Diese Anwendungen können von Microsoft oder von unabhängigen Softwareanbietern (Independent Software Vendors, ISVs) bezogen oder aber selbst entwickelt werden.  
 

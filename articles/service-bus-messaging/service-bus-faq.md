@@ -6,14 +6,14 @@ author: spelluru
 manager: timlt
 ms.service: service-bus-messaging
 ms.topic: article
-ms.date: 09/05/2018
+ms.date: 11/05/2018
 ms.author: spelluru
-ms.openlocfilehash: c851c8a9384acf909dc88d3565d49021e1ee67e9
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: a000c599ecf8287af57aec2f6e9d550bbe61f280
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49362014"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51279880"
 ---
 # <a name="service-bus-faq"></a>Service Bus – Häufig gestellte Fragen
 
@@ -21,7 +21,7 @@ In diesem Artikel werden einige häufig gestellte Fragen zu Microsoft Azure Serv
 
 ## <a name="general-questions-about-azure-service-bus"></a>Allgemeine Fragen zu Azure Service Bus
 ### <a name="what-is-azure-service-bus"></a>Was ist Azure Service Bus?
-[Azure Service Bus](service-bus-messaging-overview.md) ist eine asynchrone Cloudplattform für Messaging, mit der Sie Daten zwischen entkoppelten Systemen senden können. Microsoft stellt dieses Feature als Dienst bereit. Dies bedeutet, dass Sie Ihre Hardware nicht selbst hosten müssen, um sie verwenden zu können.
+[Azure Service Bus](service-bus-messaging-overview.md) ist eine asynchrone Cloudplattform für Messaging, mit der Sie Daten zwischen entkoppelten Systemen senden können. Microsoft stellt dieses Feature als Dienst bereit, sodass Sie Ihre Hardware nicht selbst hosten müssen, um sie verwenden zu können.
 
 ### <a name="what-is-a-service-bus-namespace"></a>Was ist ein Service Bus-Namespace?
 Ein [Namespace](service-bus-create-namespace-portal.md) ist ein Bereichscontainer für die Adressierung von Service Bus-Ressourcen innerhalb Ihrer Anwendung. Die Namespace-Erstellung ist für die Verwendung von Service Bus erforderlich und ist einer der ersten Schritte.
@@ -78,6 +78,9 @@ Microsoft behält sich das Recht vor, ein Kundenkonto zu deaktivieren, das die N
 
 Genau wie andere Dienste in Azure setzt Service Bus eine Reihe spezifischer Kontingente durch, die eine faire Nutzung der Ressourcen sicherstellen. Ausführlichere Informationen zu diesen Kontingenten finden Sie in der [Übersicht über Service Bus-Kontingente][Quotas overview].
 
+### <a name="how-to-handle-messages-of-size--1-mb"></a>Wie werden Nachrichten mit einer Größe über 1 MB behandelt?
+Service Bus-Messagingdienste (Warteschlangen und Themen/Abonnements) ermöglichen Anwendungen, Nachrichten mit einer Größe bis zu 256 KB (Standard-Tarif) oder 1 MB (Premium-Tarif) zu senden. Wenn Ihre Nachrichten eine Größe über 1 MB aufweisen, verwenden Sie das [in diesem Blogbeitrag](https://www.serverless360.com/blog/deal-with-large-service-bus-messages-using-claim-check-pattern) beschriebene Anspruchsprüfungsmuster.
+
 ## <a name="troubleshooting"></a>Problembehandlung
 ### <a name="what-are-some-of-the-exceptions-generated-by-azure-service-bus-apis-and-their-suggested-actions"></a>Welche Beispiele gibt es für Ausnahmen, die von Azure Service Bus-APIs generiert werden, und die vorgeschlagenen Aktionen?
 Eine Liste der möglichen Service Bus-Ausnahmen finden Sie in der [Übersicht über Ausnahmen][Exceptions overview].
@@ -112,7 +115,7 @@ Move-AzureRmResource -DestinationResourceGroupName 'targetRG' -DestinationSubscr
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zu Service Bus finden Sie in den folgenden Artikeln:
 
-* [Einführung in Azure Service Bus Premium (Blogbeitrag)](http://azure.microsoft.com/blog/introducing-azure-service-bus-premium-messaging/)
+* [Einführung in Azure Service Bus Premium (Blogbeitrag)](https://azure.microsoft.com/blog/introducing-azure-service-bus-premium-messaging/)
 * [Einführung in Azure Service Bus Premium (Channel9)](https://channel9.msdn.com/Blogs/Subscribe/Introducing-Azure-Service-Bus-Premium-Messaging)
 * [Übersicht über Service Bus](service-bus-messaging-overview.md)
 * [Erste Schritte mit Service Bus-Warteschlangen](service-bus-dotnet-get-started-with-queues.md)

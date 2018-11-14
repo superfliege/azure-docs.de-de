@@ -5,23 +5,23 @@ services: active-directory
 ms.service: active-directory
 ms.component: B2B
 ms.topic: reference
-ms.date: 05/11/2018
+ms.date: 10/29/2018
 ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: b4407ac6b7a0d9fdbf52b84fb94223c32868f0c5
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 9f82deaa3ca048342c3501e111470eaea2ed9437
+ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45983851"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50748407"
 ---
 # <a name="azure-active-directory-b2b-collaboration-faqs"></a>Häufig gestellte Fragen zur Azure Active Directory B2B-Zusammenarbeit
 
 Diese häufig gestellten Fragen (FAQs) zur Azure AD B2B-Zusammenarbeit (Azure Active Directory Business-to-Business) werden regelmäßig mit neuen Themen aktualisiert.
 
-### <a name="can-we-customize-our-sign-in-page-so-it-is-more-intuitive-for-our-b2b-collaboration-guest-users"></a>Können wir unsere Anmeldeseite anpassen, damit sie für Gastbenutzer der B2B-Zusammenarbeit intuitiver ist?
+### <a name="can-we-customize-our-sign-in-page-so-its-more-intuitive-for-our-b2b-collaboration-guest-users"></a>Können wir unsere Anmeldeseite anpassen, damit sie für Gastbenutzer der B2B-Zusammenarbeit intuitiver ist?
 Auf jeden Fall. Lesen Sie unseren [Blogbeitrag zu diesem Feature](https://blogs.technet.microsoft.com/enterprisemobility/2017/04/07/improving-the-branding-logic-of-azure-ad-login-pages/). Weitere Informationen zum Anpassen der Anmeldeseite Ihrer Organisation finden Sie unter [Hinzufügen von Unternehmensbranding zu Anmelde- und Zugriffsbereichsseiten](../fundamentals/customize-branding.md).
 
 ### <a name="can-b2b-collaboration-users-access-sharepoint-online-and-onedrive"></a>Können B2B-Zusammenarbeitsbenutzer auf SharePoint Online und OneDrive zugreifen?
@@ -46,13 +46,13 @@ Dieses Feature ist für ein zukünftiges Release geplant. Sie können dann besti
 Es kann vorkommen, dass eine Organisation Benutzer der B2B-Zusammenarbeit hinzufügen, diese bei Bedarf für Anwendungen bereitstellen und erst dann die Einladungen senden möchte. Sie können die Einladungs-API für die B2B-Zusammenarbeit verwenden, um den Onboardingworkflow benutzerdefiniert anzupassen.
 
 ### <a name="can-i-make-guest-users-visible-in-the-exchange-global-address-list"></a>Kann ich Gastbenutzer in der globalen Adressliste von Exchange sichtbar machen?
-Ja. Standardmäßig sind Gastobjekte in der globalen Adressliste Ihres Unternehmens nicht sichtbar. Sie können jedoch Azure Active Directory PowerShell verwenden, um diese sichtbar zu machen. Weitere Informationen finden Sie unter **Can I make guest objects visible in the global address list? (Kann ich Gastobjekte in der globalen Adressliste sichtbar machen?)** im Artikel [Gastzugriff in Office 365-Gruppen](https://support.office.com/article/guest-access-in-office-365-groups-bfc7a840-868f-4fd6-a390-f347bf51aff6#PickTab=FAQ).
+Ja. Gastobjekte sind in der globalen Adressliste Ihres Unternehmens standardmäßig nicht sichtbar. Sie können jedoch Azure Active Directory PowerShell verwenden, um diese sichtbar zu machen. Informationen finden Sie unter **Kann ich Gastobjekte in der globalen Adressliste sichtbar machen?** im Artikel [Gastzugriff in Office 365-Gruppen](https://support.office.com/article/guest-access-in-office-365-groups-bfc7a840-868f-4fd6-a390-f347bf51aff6#PickTab=FAQ).
 
 ### <a name="can-i-make-a-guest-user-a-limited-administrator"></a>Kann ich einen Gastbenutzer in einen eingeschränkten Administrator konvertieren?
 Absolut. Weitere Informationen finden Sie unter [Zuweisen einer Rolle für Gastbenutzer](add-guest-to-role.md).
 
 ### <a name="does-azure-ad-b2b-collaboration-allow-b2b-users-to-access-the-azure-portal"></a>Erlaubt die Azure AD B2B-Zusammenarbeit B2B-Benutzern den Zugriff auf das Azure-Portal?
-B2B-Zusammenarbeitsbenutzer benötigen keinen Zugriff auf das Azure-Portal, sofern ihnen nicht eine Administratorrolle mit eingeschränkten Berechtigungen oder eine globale Administratorrolle zugewiesen wurde. Allerdings können B2B-Zusammenarbeitsbenutzer, denen eine Administratorrolle mit eingeschränkten Berechtigungen oder eine globale Administratorrolle zugewiesen ist, auf das Portal zugreifen. Auch wenn ein Gastbenutzer, dem keine dieser Administratorrollen zugewiesen ist, auf das Portal zugreift, kann der Benutzer auf bestimmte Funktionen zugreifen. Die Rolle des Gastbenutzers ist mit einigen Berechtigungen im Verzeichnis versehen.
+B2B-Zusammenarbeitsbenutzer benötigen keinen Zugriff auf das Azure-Portal, sofern ihnen nicht eine Administratorrolle mit eingeschränkten Berechtigungen oder eine globale Administratorrolle zugewiesen wurde. Allerdings können B2B-Zusammenarbeitsbenutzer, denen eine Administratorrolle mit eingeschränkten Berechtigungen oder eine globale Administratorrolle zugewiesen ist, auf das Portal zugreifen. Auch wenn ein Gastbenutzer, dem keine dieser Administratorrollen zugewiesen ist, auf das Portal zugreift, kann der Benutzer möglicherweise auf bestimmte Funktionen zugreifen. Die Rolle des Gastbenutzers ist mit einigen Berechtigungen im Verzeichnis versehen.
 
 ### <a name="can-i-block-access-to-the-azure-portal-for-guest-users"></a>Kann ich den Zugriff auf das Azure-Portal für Gastbenutzer sperren?
 Ja. Gehen Sie beim Konfigurieren dieser Richtlinie umsichtig vor, um zu vermeiden, dass versehentlich der Zugriff für Mitglieder und Administratoren gesperrt wird.
@@ -68,19 +68,16 @@ Um den Zugriff eines Gastbenutzers auf das [Azure-Portal](https://portal.azure.c
 ### <a name="does-azure-ad-b2b-collaboration-support-multi-factor-authentication-and-consumer-email-accounts"></a>Unterstützt die Azure AD B2B-Zusammenarbeit Multi-Factor Authentication und E-Mail-Konten für Consumer?
 Ja. Sowohl Multi-Factor Authentication als auch E-Mail-Konten für Consumer werden für die Azure AD B2B-Zusammenarbeit unterstützt.
 
-### <a name="do-you-plan-to-support-password-reset-for-azure-ad-b2b-collaboration-users"></a>Ist die Unterstützung der Kennwortzurücksetzung für Azure AD B2B-Zusammenarbeitsbenutzer geplant?
-Ja. Die folgenden Informationen sind für SSPR (Self-Service Password Reset, selbstständige Kennwortrücksetzung) für einen B2B-Benutzer wichtig, der aus einer Partnerorganisation eingeladen wird:
+### <a name="do-you-support-password-reset-for-azure-ad-b2b-collaboration-users"></a>Wird die Kennwortzurücksetzung für Azure AD B2B-Zusammenarbeitsbenutzer unterstützt?
+Wenn Ihr Azure AD-Mandant das Basisverzeichnis für einen Benutzer ist, können Sie [das Kennwort des Benutzers über das Azure-Portal zurücksetzen](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-reset-password-azure-portal#how-to-reset-the-password-for-a-user). Aber Sie können das Kennwort für einen Gastbenutzer nicht direkt zurücksetzen, wenn er sich mit einem Konto anmeldet, das von einem anderen Azure AD-Verzeichnis oder einem externen Identitätsanbieter verwaltet wird. Nur der Gastbenutzer oder ein Administrator im Basisverzeichnis des Benutzers kann das Kennwort zurücksetzen. Hier sind einige Beispiele für die Funktionsweise der Kennwortzurücksetzung für Gastbenutzer:
  
-* SSPR erfolgt nur im Identitätsmandanten des B2B-Benutzers.
-* Der Identitätsmandant ist ein Microsoft-Konto – er verwendet den SSPR-Mechanismus für Microsoft-Konten.
-* Wenn der Identitätsmandant ein Just-in-Time-Mandant (JIT) oder „viraler“ Mandant ist, wird eine E-Mail für die Kennwortzurücksetzung gesendet.
-* Bei anderen Mandanten wird der standardmäßige SSPR-Prozess für B2B-Benutzer durchgeführt. Wie bei Mitglieds-SSPR für B2B-Benutzer werden Mandanten im Kontext der Ressource blockiert. 
-
-### <a name="is-password-reset-available-for-guest-users-in-a-just-in-time-jit-or-viral-tenant-who-accepted-invitations-with-a-work-or-school-email-address-but-who-didnt-have-a-pre-existing-azure-ad-account"></a>Ist die Kennwortrücksetzung bei Gastbenutzern eines JIT- (Just-In-Time) oder „viralen“ Mandanten verfügbar, der Einladungen mit einer Geschäfts-, Schul- oder Uni-E-Mail-Adresse akzeptiert, jedoch zuvor über kein Azure AD-Konto verfügt hat?
-Ja. Es kann eine E-Mail für die Kennwortrücksetzung gesendet werden, über die ein Benutzer sein Kennwort im JIT-Mandanten zurücksetzen kann.
+* Gastbenutzer, die sich mit einem Microsoft-Konto anmelden (z.B. guestuser@live.com), können ihre eigenen Kennwörter über die Self-Service-Kennwortzurücksetzung (SSPR) für Microsoft-Konten zurücksetzen. Informationen finden Sie unter [Zurücksetzen des Kennworts Ihres Microsoft-Kontos](https://support.microsoft.com/help/4026971/microsoft-account-how-to-reset-your-password).
+* Gastbenutzer, die sich mit einem Google-Konto oder einem anderen externen Identitätsanbieter anmelden, können ihre eigenen Kennwörter mit der SSPR-Methode ihres Identitätsanbieters zurücksetzen. Beispielsweise kann ein Gastbenutzer mit dem Google-Konto guestuser@gmail.com sein Kennwort mithilfe der Anweisungen in [Passwort ändern oder zurücksetzen](https://support.google.com/accounts/answer/41078) zurücksetzen.
+* Wenn der Identitätsmandant ein Just-In-Time-Mandant (JIT) oder ein „viraler“ Mandant ist (es sich also um einen separaten, nicht verwalteten Azure-Mandanten handelt), kann nur der Gastbenutzer sein Kennwort zurücksetzen.
+* Wenn das Basisverzeichnis des Gastbenutzers Ihr Azure AD-Mandant ist, können Sie das Kennwort des Benutzers zurücksetzen. Sie könnten beispielsweise einen Benutzer erstellen oder einen Benutzer über Ihr lokales Active Directory-Verzeichnis synchronisieren und „UserType“ auf „Gast“ festlegen. Da sich dieser Benutzer in Ihrem Verzeichnis befindet, können Sie sein Kennwort über das Azure-Portal zurücksetzen.
 
 ### <a name="does-microsoft-dynamics-365-provide-online-support-for-azure-ad-b2b-collaboration"></a>Bietet Microsoft Dynamics 365 Onlineunterstützung für die Azure AD B2B-Zusammenarbeit?
-Ja, Dynamics 365 (online) bietet Unterstützung für die Azure AD B2B-Zusammenarbeit. Weitere Informationen finden Sie im Dynamics 365-Artikel [Laden Sie Benutzer zu Dynamics 365 mit Azure Active Directory B2B Zusammenarbeit ein](https://docs.microsoft.com/dynamics365/customer-engagement/admin/invite-users-azure-active-directory-b2b-collaboration).
+Ja, Dynamics 365 (online) unterstützt die Azure AD B2B-Zusammenarbeit. Weitere Informationen finden Sie im Dynamics 365-Artikel [Laden Sie Benutzer zu Dynamics 365 mit Azure Active Directory B2B Zusammenarbeit ein](https://docs.microsoft.com/dynamics365/customer-engagement/admin/invite-users-azure-active-directory-b2b-collaboration).
 
 ### <a name="what-is-the-lifetime-of-an-initial-password-for-a-newly-created-b2b-collaboration-user"></a>Wie lang ist ein anfängliches Kennwort für einen neu erstellten B2B-Zusammenarbeitsbenutzer gültig?
 Azure AD verfügt über einen festen Satz von Anforderungen an Zeichen, Kennwortstärke und Kontosperre, die gleichermaßen für alle Azure AD-Cloudbenutzerkonten gelten. Cloudbenutzerkonten sind Konten, die nicht mit einem anderen Identitätsanbieter verbunden sind, z.B. 
@@ -92,15 +89,15 @@ Azure AD verfügt über einen festen Satz von Anforderungen an Zeichen, Kennwort
 Bei Verbundkonten richtet sich die Kennwortrichtlinie nach der Richtlinie, die im lokalen Mandanten und den Einstellungen des Microsoft-Kontos des Benutzers angewendet wird.
 
 ### <a name="an-organization-might-want-to-have-different-experiences-in-their-applications-for-tenant-users-and-guest-users-is-there-standard-guidance-for-this-is-the-presence-of-the-identity-provider-claim-the-correct-model-to-use"></a>Eine Organisation möchte ggf. verschiedene Funktionen in ihren Anwendungen für Mandanten- und Gastbenutzer bereitstellen. Gibt es dafür eine Standardanleitung? Ist das Vorhandensein des Identitätsanbieteranspruchs das richtige Modell dafür?
- Ein Gastbenutzer kann einem beliebigen Identitätsanbieter zur Authentifizierung verwenden. Weitere Informationen finden Sie unter [Eigenschaften eines B2B-Zusammenarbeitsbenutzers](user-properties.md). Verwenden Sie die **UserType**-Eigenschaft, um die Benutzerfreundlichkeit zu bestimmen. Der **UserType**-Anspruch ist derzeit nicht im Token enthalten. Anwendungen sollten zur Abfrage des Verzeichnisses nach dem Benutzer und zum Abrufen seiner UserType-Eigenschaft die Graph-API verwenden.
+Ein Gastbenutzer kann einem beliebigen Identitätsanbieter zur Authentifizierung verwenden. Weitere Informationen finden Sie unter [Eigenschaften eines B2B-Zusammenarbeitsbenutzers](user-properties.md). Verwenden Sie die **UserType**-Eigenschaft, um die Benutzerfreundlichkeit zu bestimmen. Der **UserType**-Anspruch ist derzeit nicht im Token enthalten. Anwendungen sollten zur Abfrage des Verzeichnisses nach dem Benutzer und zum Abrufen seiner UserType-Eigenschaft die Graph-API verwenden.
 
 ### <a name="where-can-i-find-a-b2b-collaboration-community-to-share-solutions-and-to-submit-ideas"></a>Wo finde ich eine Community für die B2B-Zusammenarbeit, um dort Lösungen und Ideen zu teilen?
-Ihr Feedback zur Verbesserung der B2B-Zusammenarbeit nehmen wir sehr ernst. Wir würden uns freuen, wenn Sie uns Ihre Benutzerszenarien und bewährten Methoden mitteilen und uns wissen lassen würden, was Ihnen an der Azure AD B2B-Zusammenarbeit gefällt. Werden Sie Teil der [Microsoft Tech Community](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-B2B/bd-p/AzureAD_B2b) und posten Sie Diskussionsbeiträge.
- 
+Ihr Feedback zur Verbesserung der B2B-Zusammenarbeit nehmen wir sehr ernst. Teilen Sie uns Ihre Benutzerszenarien und bewährten Methoden mit, und lassen Sie uns wissen, was Ihnen an der Azure AD B2B-Zusammenarbeit gefällt. Werden Sie Teil der [Microsoft Tech Community](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-B2B/bd-p/AzureAD_B2b) und posten Sie Diskussionsbeiträge.
+ 
 Senden Sie uns zudem über die Website [B2B Collaboration Ideas](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-B2B-Ideas/idb-p/AzureAD_B2B_Ideas) Ihre Anregungen und Ideen, und stimmen Sie über zukünftige Features ab.
 
 ### <a name="can-we-send-an-invitation-that-is-automatically-redeemed-so-that-the-user-is-just-ready-to-go-or-does-the-user-always-have-to-click-through-to-the-redemption-url"></a>Können eine automatisch eingelöste Einladung gesendet werden, damit der Benutzer sofort loslegen kann, oder muss sich der Benutzer stets bis zur Einlöse-URL durchklicken?
-Ein Einladender kann andere Benutzer aus der Partnerorganisation über die Benutzeroberfläche, über PowerShell-Skripts oder über APIs einladen. Anschließend kann der Einladende dem Gastbenutzer einen direkten Link zu einer freigegebenen App senden. In den meisten Fällen muss der Eingeladene keine E-Mail-Einladung mehr öffnen und auf eine Einlösungs-URL klicken. Weitere Informationen finden Sie unter [Azure Active Directory B2B-Zusammenarbeit: Einlösen von Einladungen](redemption-experience.md).
+Sie können andere Benutzer aus der Partnerorganisation über die Benutzeroberfläche, über PowerShell-Skripts oder über APIs einladen. Dann können Sie dem Gastbenutzer einen direkten Link zu einer freigegebenen App senden. In den meisten Fällen muss der Eingeladene keine E-Mail-Einladung mehr öffnen und auf eine Einlösungs-URL klicken. Informationen finden Sie unter [Azure Active Directory B2B-Zusammenarbeit: Einlösen von Einladungen](redemption-experience.md).
 
 ### <a name="how-does-b2b-collaboration-work-when-the-invited-partner-is-using-federation-to-add-their-own-on-premises-authentication"></a>Wie erfolgt die B2B-Zusammenarbeit, wenn der eingeladene Partner den Partnerverbund verwendet, um die eigene lokale Authentifizierung hinzuzufügen?
 Wenn der Partner über einen Azure AD-Mandanten verfügt, der über einen Verbund in die lokale Authentifizierungsinfrastruktur eingebunden ist, wird automatisch lokales einmaliges Anmelden (Single Sign-On, SSO) ausgeführt. Wenn der Partner keinen Azure AD-Mandanten aufweist, wird für neue Benutzer ein Azure AD-Konto erstellt. 
@@ -109,7 +106,7 @@ Wenn der Partner über einen Azure AD-Mandanten verfügt, der über einen Verbun
 Wir heben die Unterschiede zwischen der B2B- und B2C-Zusammenarbeit (Business-to-Consumer) im Hinblick auf die unterstützten Identitäten auf. Die verwendete Identität ist kein gutes Kriterium für die Entscheidung zwischen der Verwendung von B2B und B2C. Informationen zur Auswahl der Option für die Zusammenarbeit finden Sie unter [Vergleich der B2B- und B2C-Zusammenarbeit in Azure Active Directory](compare-with-b2c.md).
 
 ### <a name="what-applications-and-services-support-azure-b2b-guest-users"></a>Welche Anwendungen und Dienste unterstützen Azure B2B-Gastbenutzer?
-Alle in Azure AD integrierte Anwendungen unterstützen Azure B2B-Gastbenutzer. 
+Alle in Azure AD integrierten Anwendungen unterstützen Azure B2B-Gastbenutzer, aber sie müssen einen Mandantenendpunkt verwenden, um Gastbenutzer zu authentifizieren. Sie müssen möglicherweise auch [die Ansprüche im SAML-Token anpassen](claims-mapping.md), das ausgegeben wird, wenn sich ein Gastbenutzer bei der App authentifiziert. 
 
 ### <a name="can-we-force-multi-factor-authentication-for-b2b-guest-users-if-our-partners-dont-have-multi-factor-authentication"></a>Kann Multi-Factor Authentication für B2B-Gastbenutzer erzwungen werden, wenn unsere Partner nicht über Multi-Factor Authentication verfügen?
 Ja. Weitere Informationen finden Sie unter [Bedingter Zugriff für Benutzer der B2B-Zusammenarbeit](conditional-access.md).

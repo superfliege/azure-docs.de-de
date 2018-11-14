@@ -1,6 +1,6 @@
 ---
-title: Grundlegendes zum Verwenden von Azure Digital Twins Swagger | Microsoft-Dokumentation
-description: Verwenden von Azure Digital Twins Swagger
+title: Grundlegendes zum Verwenden von Azure Digital Twins-Swagger | Microsoft-Dokumentation
+description: Verwenden von Azure Digital Twins-Swagger
 author: kingdomofends
 manager: alinast
 ms.service: digital-twins
@@ -8,18 +8,18 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: adgera
-ms.openlocfilehash: 3bc365c204ab75a2f136c3e26c4b598b25f66114
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 69b8f64574427a6b3d3d2cf0312eac88d86e5907
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50093488"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50960196"
 ---
-# <a name="how-to-use-azure-digital-twins-swagger"></a>Verwenden von Azure Digital Twins Swagger
+# <a name="use-azure-digital-twins-swagger"></a>Verwenden von Azure Digital Twins-Swagger
 
 Jede bereitgestellte Azure Digital Twins-Instanz enthält ihre eigene automatisch generierte Swagger-Referenzdokumentation.
 
-[Swagger](https://swagger.io/) (oder [OpenAPI](https://www.openapis.org/)) vereinigt komplexe API-Informationen in einer interaktiven und sprachunabhängigen Referenzressource. Insbesondere stellt Swagger wichtiges Referenzmaterial dazu bereit, welche JSON-Nutzlasten, HTTP-Methoden und speziellen Endpunkte zu verwenden sind, um Vorgänge für eine API auszuführen.
+[Swagger](https://swagger.io/) (oder [OpenAPI](https://www.openapis.org/)) vereinigt komplexe API-Informationen in einer interaktiven und sprachunabhängigen Referenzressource. Swagger stellt wichtiges Referenzmaterial dazu bereit, welche JSON-Nutzlasten, HTTP-Methoden und speziellen Endpunkte zum Ausführen von Vorgängen für eine API zu verwenden sind.
 
 ## <a name="swagger-summary"></a>Swagger-Zusammenfassung
 
@@ -28,16 +28,16 @@ Swagger stellt eine interaktive Zusammenfassung Ihrer API bereit. Dazu gehören:
 * API- und Objektmodellinformationen
 * REST-API-Endpunkte, die erforderliche Anforderungsnutzlasten, Header, Parameter, Kontextpfade und HTTP-Methoden angeben
 * Testen von API-Funktionalitäten
-* Beispielantwortinformationen zur Überprüfung und Bestätigung von HTTP-Antworten
+* Beispielantwortinformationen zum Überprüfen und Bestätigen von HTTP-Antworten
 * Fehlercodeinformationen
 
-Swagger ist daher ein hervorragendes Tool zur Unterstützung beim Entwickeln und Testen von Aufrufen, die an die Verwaltungs-API gesendet werden.
+Swagger ist ein hervorragendes Tool zur Unterstützung beim Entwickeln und Testen von Aufrufen, die an die Verwaltungs-API gesendet werden.
 
 > [!TIP]
-> Zu Referenzzwecken wird eine Swagger-Vorschau bereitgestellt, um den API-Funktionsumfang zu veranschaulichen.
+> Es wird eine Swagger-Vorschau bereitgestellt, um den API-Funktionsumfang zu veranschaulichen.
 > Diese Vorschau finden Sie unter [docs.westcentralus.azuresmartspaces.net/management/swagger](https://docs.westcentralus.azuresmartspaces.net/management/swagger).
 
-Auf Ihre eigene generierte Verwaltungs-API-Swagger-Dokumentation können Sie hier zugreifen:
+Ihre eigene generierte Dokumentation von Verwaltungs-API-Swagger finden Sie unter:
 
 ```plaintext
 https://yourInstanceName.yourLocation.azuresmartspaces.net/management/swagger
@@ -50,21 +50,21 @@ https://yourInstanceName.yourLocation.azuresmartspaces.net/management/swagger
 
 ## <a name="reference-material"></a>Referenzmaterial
 
-In automatisch generiertem Referenzmaterial werden entscheidende Konzepte und Objektmodelle erläutert.
+In automatisch generiertem Referenzmaterial werden wichtige Konzepte und Objektmodelle erläutert.
 
-In einer präzisen Zusammenfassung wird die API beschrieben:
+Eine präzise Zusammenfassung beschreibt die API.
 
 ![Swagger-Einstieg][1]
 
-Kern-API-Objektmodelle werden ebenfalls aufgelistet:
+Kern-API-Objektmodelle werden ebenfalls aufgelistet.
 
 ![Swagger-Modelle][2]
 
-Sie können auf jedes aufgelistete Objektmodell klicken, um eine detailliertere Übersicht über Schlüsselattribute zu erhalten:
+Sie können jedes aufgelistete Objektmodell auswählen, um eine detailliertere Zusammenfassung der Schlüsselattribute zu erhalten.
 
 ![Swagger-Modell][3]
 
-Die generierten Swagger-Objektmodelle sind praktisch, um alle verfügbaren Azure Digital Twins[-Objekte und -APIs](./concepts-objectmodel-spatialgraph.md) zu sehen. Dies ist eine großartige Ressource für Entwickler, die sie bei der Entwicklung von Lösungen für Azure Digital Twins nutzen können.
+Die generierten Swaggerobjektmodelle eignen sich ideal zum Anzeigen aller verfügbaren [Objekte und APIs](./concepts-objectmodel-spatialgraph.md) von Azure Digital Twins. Entwickler können diese Ressource nutzen, wenn sie Lösungen in Azure Digital Twins erstellen.
 
 ## <a name="endpoint-summary"></a>Zusammenfassung der Endpunkte
 
@@ -74,29 +74,29 @@ Für jeden aufgelisteten Endpunkt werden auch die erforderlichen Anforderungsinf
 
 * Erforderliche Parameter
 * Datentypen der erforderlichen Parameter
-* Die HTTP-Methode zum Zugreifen auf die Ressource
+* HTTP-Methode zum Zugreifen auf die Ressource
 
 ![Swagger-Endpunkte][4]
 
-Es kann auf jede Ressource geklickt werden, um eine detailliertere Übersicht zu sehen.
+Wählen Sie eine Ressource aus, um eine detailliertere Übersicht zu erhalten.
 
-## <a name="using-swagger-to-test-endpoints"></a>Verwenden von Swagger, um Endpunkte zu testen
+## <a name="use-swagger-to-test-endpoints"></a>Verwenden von Swagger zum Testen von Endpunkten
 
-Eine der von Swagger bereitgestellten leistungsfähigen Funktionalitäten ist die Möglichkeit, über **Jetzt ausprobieren** einen API-Endpunkt direkt aus der UI-Dokumentation zu testen.
+Eine der leistungsstarken Funktionalitäten von Swagger besteht darin, einen API-Endpunkt direkt über die Benutzeroberfläche der Dokumentation zu testen.
 
-Nach dem Klicken auf einen bestimmten Endpunkt sehen Sie eine **Jetzt ausprobieren**-Schaltfläche:
+Nachdem Sie einen bestimmten Endpunkt ausgewählt haben, wird **Jetzt ausprobieren** angezeigt.
 
 ![Swagger vor Test][5]
 
-Nach Erweitern dieses Abschnitts werden Eingabefelder für jeden erforderlichen und optionalen Parameter angezeigt. Geben Sie die entsprechenden Werte ein, und klicken Sie auf **Ausführen**:
+Erweitern Sie diesen Abschnitt, um Eingabefelder für jeden erforderlichen und optionalen Parameter anzuzeigen. Geben Sie die entsprechenden Werte ein, und wählen Sie **Ausführen** aus.
 
 ![Swagger nach Test][6]
 
-Nach dem Ausführen des Tests können Sie die Antwortdaten überprüfen.
+Wenn Sie den Test ausgeführt haben, können Sie die Antwortdaten überprüfen.
 
 ## <a name="swagger-response-data"></a>Swagger-Antwortdaten
 
-Jeder aufgelistete Endpunkt enthält auch Antworttextdaten, um Ihre Entwicklung und Tests zu überprüfen. Diese Beispiele enthalten die gewünschten Statuscodes und JSON-Objekte für erfolgreiche HTTP-Anforderungen.
+Jeder aufgelistete Endpunkt enthält auch Antworttextdaten, um Ihre Entwicklung und Tests zu überprüfen. Diese Beispiele enthalten die Statuscodes und JSON-Objekte, die für erfolgreiche HTTP-Anforderungen angezeigt werden sollen.
 
 ![Swagger-Antwort][7]
 
@@ -108,9 +108,9 @@ Informationen, wie Sie Anforderungen für API-Ressourcen, die durch OAuth 2.0 ge
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wenn Sie weitere Informationen zu Azure Digital Twins-Objektmodellen und Raumintelligenzgraphen wünschen, lesen Sie [diesen Artikel](./concepts-objectmodel-spatialgraph.md).
+Weitere Informationen zu Azure Digital Twins-Objektmodellen und zum Raumintelligenzgraph finden Sie unter [Grundlegendes zum Azure Digital Twins-Objektmodell](./concepts-objectmodel-spatialgraph.md).
 
-Informationen dazu, wie ein Authentifizieren über Ihre Verwaltungs-API erfolgt, finden Sie unter [Verbinden mit und Authentifizieren über APIs](./security-authenticating-apis.md).
+Wie eine Authentifizierung über Ihre Verwaltungs-API erfolgt, erfahren Sie unter [Authentifizieren über APIs](./security-authenticating-apis.md).
 
 <!-- Images -->
 [1]: media/how-to-use-swagger/swagger_management_top.PNG

@@ -8,23 +8,23 @@ ms.topic: article
 ms.date: 06/27/2018
 ms.author: artek
 ms.component: data-lake-storage-gen2
-ms.openlocfilehash: c59331c772e140fccfefb89eef086a35837171e1
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: c5f11cbb12b727f5f308d7a71c51706fa8ec373f
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45576974"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51277085"
 ---
 # <a name="using-the-hdfs-cli-with-data-lake-storage-gen2"></a>Verwenden der HDFS-CLI mit Data Lake Storage Gen2
 
-Azure Data Lake Storage Gen2 (Vorschauversion) ermöglicht einen mit einem [Hadoop Distributed File System (HDFS)](http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html) vergleichbaren Zugriff auf Daten und deren Verwaltung. Unabhängig davon, ob ein HDInsight-Cluster angehängt ist oder ein Apache Spark-Auftrag mithilfe von Azure Databricks ausgeführt wird, um Analysen für in Azure Data Lake Storage Gen2 gespeicherte Daten vorzunehmen, können Sie die Befehlszeilenschnittstelle (CLI) zum Abrufen und Bearbeiten der geladenen Daten verwenden. Im weiteren Verlauf des Artikels sind die Optionen angegeben, die Ihnen bereitstehen, während [das Azure Storage-Team an zusätzlicher Unterstützung für Azure Storage-Explorer und das Azure-Portal arbeitet](https://azure.microsoft.com/roadmap/).
+Azure Data Lake Storage Gen2 (Vorschauversion) ermöglicht einen mit einem [Hadoop Distributed File System (HDFS)](http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html) vergleichbaren Zugriff auf Daten und deren Verwaltung. Unabhängig davon, ob ein HDInsight-Cluster angehängt ist oder ein Apache Spark-Auftrag mithilfe von Azure Databricks ausgeführt wird, um Analysen für in einem Azure Storage-Konto gespeicherte Daten vorzunehmen, können Sie die Befehlszeilenschnittstelle (CLI) zum Abrufen und Bearbeiten der geladenen Daten verwenden.
 
 ## <a name="hdfs-cli-with-hdinsight"></a>HDFS-CLI mit HDInsight
 
 HDInsight bietet Zugang zum verteilten Dateisystem, das lokal an die Rechenknoten angefügt ist. Auf dieses Dateisystem kann mithilfe der Shell zugegriffen werden, die direkt mit dem HDFS interagiert, sowie anderen Dateisystemen, die von Hadoop unterstützt werden. Nachfolgend sind die häufig verwendeten Befehle und Links zu nützlichen Ressourcen aufgeführt.
 
 >[!IMPORTANT]
->Die Abrechnung für einen HDInsight-Cluster beginnt, sobald der Cluster erstellt wurde, und endet mit dem Löschen des Clusters. Die Gebühren werden anteilig nach Minuten erhoben. Daher sollten Sie Ihren Cluster immer löschen, wenn Sie ihn nicht mehr verwenden (Informationen zum [Löschen eines Clusters](../../hdinsight/hdinsight-delete-cluster.md)). In Azure Data Lake Storage Gen2 gespeicherte Daten bleiben jedoch auch nach dem Löschen eines HDInsight-Clusters erhalten.
+>Die Abrechnung für einen HDInsight-Cluster beginnt, nachdem der Cluster erstellt wurde, und endet mit dem Löschen des Clusters. Die Gebühren werden anteilig nach Minuten erhoben. Daher sollten Sie Ihren Cluster immer löschen, wenn Sie ihn nicht mehr verwenden. Informationen zum Löschen eines Clusters finden Sie in unserem [Artikel zum Thema](../../hdinsight/hdinsight-delete-cluster.md). In einem Speicherkonto mit aktiviertem Data Lake Storage Gen2 gespeicherte Daten bleiben jedoch auch nach dem Löschen eines HDInsight-Clusters erhalten.
 
 So rufen Sie eine Liste von Dateien oder Verzeichnissen ab:
 

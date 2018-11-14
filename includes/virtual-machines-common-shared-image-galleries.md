@@ -8,21 +8,21 @@ ms.topic: include
 ms.date: 09/20/2018
 ms.author: akjosh; cynthn
 ms.custom: include file
-ms.openlocfilehash: 6ad38d2dc1c5c41dc10685d680f70c59e7983cd2
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 8eca04478fd5aba292fcc47abac37b740b552dff
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50035168"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51209852"
 ---
-Katalog mit geteilten Images ist ein Dienst, der Ihnen hilft, Ihre benutzerdefinierten VM-Images zu strukturieren und organisieren. Der Katalog mit geteilten Images bietet drei Hauptwertbeiträge
+Katalog mit geteilten Images ist ein Dienst, der Ihnen hilft, Ihre benutzerdefinierten VM-Images zu strukturieren und organisieren. Der Katalog mit geteilten Images bietet drei Hauptwertbeiträge:
 - Einfache Verwaltung
 - Skalieren Ihrer benutzerdefinierten Images
 - Teilen Ihrer Images – Teilen Sie Ihre Images mit verschiedenen Benutzern, Dienstprinzipalen oder AD-Gruppen in Ihrer Organisation sowie mit verschiedenen Regionen, indem Sie die Replikation in mehrere Regionen verwenden.
 
-Ein verwaltetes Image ist eine Kopie entweder einer vollständigen VM (einschließlich sämtlicher angefügter Datenträger) oder lediglich des Betriebssystemdatenträgers, je nachdem, wie Sie das Image erstellen. Wenn Sie aus dem Image einen virtuellen Computer erstellen, werden die Kopien der virtuellen Festplatten in dem Image verwendet, um die Datenträger für die neue VM zu erstellen. Das verwaltete Image verbleibt im Speicher und kann immer wieder zum Erstellen neuer VMs verwendet werden.
+Ein verwaltetes Image ist eine Kopie entweder einer vollständigen VM (einschließlich sämtlicher angefügter Datenträger) oder lediglich des Betriebssystemdatenträgers, je nachdem, wie Sie das Image erstellen. Wenn Sie aus dem Image einen virtuellen Computer erstellen, werden Kopien der virtuellen Festplatten in dem Image verwendet, um die Datenträger für die neue VM zu erstellen. Das verwaltete Image verbleibt im Speicher und kann immer wieder zum Erstellen neuer VMs verwendet werden.
 
-Wenn Sie eine große Anzahl verwalteter Images haben, die Sie pflegen müssen und im gesamten Unternehmen zur Verfügung stellen möchten, können Sie einen Katalog mit geteilten Images als Repository verwenden, mit dem sie Ihre Images ganz einfach aktualisieren und teilen können. Die Gebühren für die Verwendung eines Katalogs mit geteilten Images sind lediglich die Kosten für den von den Images verwendeten Speicher, zuzüglich aller Kosten für ausgehenden Netzwerkdatenverkehr für die Replikation von Images aus der Quellregion in die veröffentlichten Regionen.
+Wenn Sie eine große Anzahl verwalteter Images haben, die Sie verwalten müssen und im gesamten Unternehmen zur Verfügung stellen möchten, können Sie einen Katalog mit geteilten Images als Repository verwenden, mit dem Sie Ihre Images ganz einfach aktualisieren und freigeben können. Die Gebühren für die Verwendung eines Katalogs mit freigegebenen Images sind lediglich die Kosten für den von den Images verwendeten Speicher, zuzüglich aller Kosten für ausgehenden Netzwerkdatenverkehr für die Replikation von Images aus der Quellregion in die veröffentlichten Regionen.
 
 Die Funktion „Katalog mit geteilten Images“ verfügt über mehrere Ressourcentypen:
 
@@ -40,7 +40,7 @@ Die Funktion „Katalog mit geteilten Images“ verfügt über mehrere Ressource
 
 ### <a name="regional-support"></a>Regionsunterstützung
 
-Die Regionsunterstützung für Kataloge mit geteilten Images ist beschränkt, wird aber im Laufe der Zeit erweitert. Für die Preview finden Sie hier die Listen der Orte, an denen Sie Kataloge erstellen, sowie die Regionen, in die Sie jeden Katalog replizieren können: 
+Die Regionsunterstützung für Kataloge mit geteilten Images befindet sich in einer eingeschränkten Vorschau, wird aber im Lauf der Zeit erweitert. Hier finden Sie für die eingeschränkte Vorschauversion die Liste der Regionen, in denen Sie Kataloge erstellen können, und die Liste der Regionen, in denen Sie beliebige Katalogimages replizieren können: 
 
 | Katalog erstellen in  | Version replizieren in |
 |--------------------|----------------------|
@@ -61,44 +61,44 @@ Die Regionsunterstützung für Kataloge mit geteilten Images ist beschränkt, wi
 
 
 ## <a name="scaling"></a>Skalieren
-Katalog mit geteilten Images gestatten Ihnen die Angabe der Anzahl der Replikate, die Azure für die Images pflegen soll. Dies ist in Szenarien mit mehreren VM-Bereitstellungen hilfreich, da die VM-Bereitstellungen auf verschiedene Replikate verteilt werden können, wodurch die Wahrscheinlichkeit verringert wird, dass der Instanzerstellungsprozess gedrosselt wird, weil ein einzelnes Replikat überlastet wird.
+Im Katalog mit freigegebenen Images können Sie die Anzahl der Replikate angeben, die Azure für die Images verwalten soll. Dies ist in Szenarien mit mehreren VM-Bereitstellungen hilfreich, da die VM-Bereitstellungen auf verschiedene Replikate verteilt werden können. Dadurch wird die Wahrscheinlichkeit verringert, dass der Instanzerstellungsprozess durch die Überlastung eines einzelnen Replikats gedrosselt wird.
 
 ![Eine Abbildung, die zeigt, wie Sie Images skalieren können](./media/shared-image-galleries/scaling.png)
 
 
 ## <a name="replication"></a>Replikation
-Der Katalog mit geteilten Images ermöglicht Ihnen außerdem die automatische Replikation Ihrer Images in andere Azure-Regionen. Jede freigegebene Imageversion kann in unterschiedliche Regionen repliziert werden, je nachdem, was für Ihre Organisation sinnvoll ist. Ein Beispiel ist, immer das neueste Image in mehrere Regionen zu replizieren, während alle ältere Versionen nur in einer Region zur Verfügung stehen. Dadurch können Speicherkosten für geteilte Imageversionen gesenkt werden. Die Regionen, in die eine geteilte Imageversion repliziert wird, können nach dem Zeitpunkt der Erstellung aktualisiert werden. Der Zeitaufwand für die Replikation in verschiedene Regionen hängt von der Datenmenge ab, die kopiert wird, sowie der Anzahl der Regionen, in die die Version repliziert wird. Dies kann in manchen Fällen einige Stunden dauern. Während die Replikation durchgeführt wird, können Sie den Status der Replikation pro Region anzeigen. Sobald die Imagereplikation in einer Region abgeschlossen ist, können Sie einen virtuellen Computer oder eine VMSS unter Verwendung dieser Version in der Region bereitstellen.
+Der Katalog mit geteilten Images ermöglicht Ihnen außerdem die automatische Replikation Ihrer Images in andere Azure-Regionen. Jede Version eines freigegebenen Images kann entsprechend den Anforderungen Ihrer Organisation in unterschiedliche Regionen repliziert werden. Ein Beispiel ist, immer das neueste Image in mehrere Regionen zu replizieren, während alle ältere Versionen nur in einer Region zur Verfügung stehen. Dadurch können die Speicherkosten für Versionen freigegebener Images gesenkt werden. Die Regionen, in die eine Versionen eines freigegebenen Images repliziert wird, können nach der Erstellung aktualisiert werden. Der Zeitaufwand für die Replikation in verschiedene Regionen hängt von der kopierten Datenmenge ab sowie von der Anzahl der Regionen, in die die Version repliziert wird. Dies kann in einigen Fällen mehrere Stunden dauern. Während die Replikation durchgeführt wird, können Sie den Status der Replikation pro Region anzeigen. Sobald die Imagereplikation in einer Region abgeschlossen ist, können Sie einen virtuellen Computer oder eine VMSS unter Verwendung dieser Version in der Region bereitstellen.
 
 ![Eine Abbildung, die zeigt, wie Sie Images replizieren können](./media/shared-image-galleries/replication.png)
 
 
 ## <a name="access"></a>Access
-Da es sich bei dem Katalog mit geteilten Images, dem geteilten Image und der geteilten Imageversion alles um Ressourcen handelt, lassen sie sich mithilfe der integrierten nativen Azure-RBAC-Steuerelemente teilen. Mithilfe der rollenbasierten Zugriffssteuerung können Sie diese Ressourcen mit anderen Benutzern, Dienstprinzipalen und Gruppen in Ihrer Organisation teilen. Der Umfang des Teilens dieser Ressourcen liegt innerhalb desselben AD-Mandanten. Sobald ein Benutzer Zugriff auf die geteilte Imageversion hat, kann er einen virtuellen Computer oder eine VM-Skalierungsgruppe in jedem der Abonnements bereitstellen, auf die er Zugriff im selben AD-Mandanten wie die geteilte Imageversion hat.  Im Folgenden finden Sie die Matrix für das Teilen, die dabei hilft, zu verstehen, worauf der Benutzer Zugriff erhält:
+Da es sich bei dem Katalog mit freigegebenen Images, dem freigegebenen Image und der Version des freigegebenen Images um Ressourcen handelt, lassen sich alle mithilfe der integrierten nativen Azure-RBAC-Steuerelemente freigeben. Mithilfe der rollenbasierten Zugriffssteuerung können Sie diese Ressourcen mit anderen Benutzern, Dienstprinzipalen und Gruppen in Ihrer Organisation teilen. Der Gültigkeitsbereich der Freigabe dieser Ressourcen ist derselbe Azure AD-Mandant. Sobald ein Benutzer Zugriff auf die Version des freigegebenen Images hat, kann er einen virtuellen Computer oder eine VM-Skalierungsgruppe in allen Abonnements im selben Azure AD-Mandanten wie die Version des freigegebenen Images, auf die er Zugriff hat, bereitstellen.  Im Folgenden finden Sie die Matrix für das Teilen, die dabei hilft, zu verstehen, worauf der Benutzer Zugriff erhält:
 
-| Geteilt mit Benutzer     | Gemeinsamer Image-Katalog | Geteiltes Image | Version eines geteilten Images |
+| Geteilt mit Benutzer     | Gemeinsamer Image-Katalog | Geteiltes Image | Version eines freigegebenen Images |
 |----------------------|----------------------|--------------|----------------------|
 | Gemeinsamer Image-Katalog | JA                  | Ja          | JA                  |
 | Geteiltes Image         | Nein                    | Ja          | JA                  |
-| Version eines geteilten Images | Nein                    | Nein            | JA                  |
+| Version eines freigegebenen Images | Nein                    | Nein            | JA                  |
 
 
 
 ## <a name="billing"></a>Abrechnung
 Für die Verwendung des Katalogs mit geteilten Images fällt keine zusätzliche Gebühren an. Für folgende Ressourcen werden Gebühren berechnet:
-- Speicherkosten der Speicherung der geteilten Imageversionen. Dies hängt von der Anzahl der Replikate der Version ab sowie der Anzahl der Regionen, in die die Version repliziert wird.
+- Speicherkosten für die Speicherung der Versionen freigegebener Images. Dies hängt von der Anzahl der Replikate der Version ab sowie der Anzahl der Regionen, in die die Version repliziert wird.
 - Gebühren für ausgehenden Netzwerkdatenverkehr für die Replikation aus der Quellregion der Version in die replizierten Regionen.
 
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen 
 
 **F.** Wie registriere ich mich für die öffentliche Preview des Katalogs mit geteilten Images?
  
- A. Um sich für die öffentliche Preview des Katalogs mit geteilten Images zu registrieren, müssen Sie sich für die Funktion registrieren, indem Sie die folgenden Befehle aus jedem der Abonnements ausführen, in dem Sie beabsichtigen, einen Katalog mit geteilten Images, eine Imagedefinition oder Imageversionsressourcen zu erstellen, und ebenfalls wo Sie beabsichtigen, mithilfe der Imageversionen virtuelle Computer bereitzustellen.
+ A. Um sich für die Public Preview des Katalogs mit freigegebenen Images zu registrieren, müssen Sie sich für das Feature registrieren, indem Sie die folgenden Befehle aus jedem der Abonnements ausführen, in dem Sie beabsichtigen, einen Katalog mit freigegebenen Images, eine Imagedefinition oder Imageversionsressourcen zu erstellen oder mithilfe der Imageversionen virtuelle Computer bereitzustellen.
 
 **CLI**: 
 
 ```bash 
 az feature register --namespace Microsoft.Compute --name GalleryPreview
-az provider register -n Microsoft.Compute
+az provider register -name Microsoft.Compute
 ```
 
 **PowerShell**: 
@@ -119,7 +119,7 @@ Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Compute
  
  Um die Imagedefinitionen und Imageversionen anzuzeigen, sollten Sie ebenfalls **Ausgeblendete Typen anzeigen** auswählen.
  
- Um alle Ressourcen eines Katalogs mit geteilten Images über Abonnements hinweg aufzulisten, auf die Sie Zugriff haben, verwenden Sie den folgenden Befehl in der Azure CLI:
+ Um alle Ressourcen eines Katalogs mit freigegebenen Images für die Abonnements, auf die Sie Zugriff haben, aufzulisten, verwenden Sie den folgenden Befehl in der Azure-Befehlszeilenschnittstelle:
 
  ```bash
  az account list -otsv --query "[].id" | xargs -n 1 az sig list --subscription
@@ -146,12 +146,12 @@ Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Compute
 
 **F.** Kann ich eine Imageversion von einem speziellen Datenträger erstellen?
 
- A. Nein, zurzeit unterstützen wir keine speziellen Datenträger als Images. Wenn Sie einen speziellen Datenträger haben, müssen Sie [einen virtuellen Computers aus der VHD erstellen](https://docs.microsoft.com/azure/virtual-machines/windows/create-vm-specialized-portal#create-a-vm-from-a-disk), indem Sie den speziellen Datenträger einem neuen virtuellen Computer anfügen. Wenn Sie einen virtuellen Computer haben, der ausgeführt wird, befolgen Sie die Anweisungen, um ein verwaltetes Image auf der Grundlage des [virtuellen Windows-Computers](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-custom-images) oder des [virtuellen Linux-Computers](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-custom-images) zu erstellen. Nachdem Sie ein generalisiertes, verwaltetes Image haben, können Sie den Prozess zum Erstellen einer geteilten Imagebeschreibung und Imageversion starten.
+ A. Nein, zurzeit unterstützen wir keine speziellen Datenträger als Images. Wenn Sie einen speziellen Datenträger haben, müssen Sie [einen virtuellen Computer aus der VHD erstellen](https://docs.microsoft.com/azure/virtual-machines/windows/create-vm-specialized-portal#create-a-vm-from-a-disk), indem Sie den speziellen Datenträger an einen neuen virtuellen Computer anfügen. Wenn Sie einen virtuellen Computer haben, der ausgeführt wird, befolgen Sie die Anweisungen, um ein verwaltetes Image auf der Grundlage des [virtuellen Windows-Computers](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-custom-images) oder des [virtuellen Linux-Computers](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-custom-images) zu erstellen. Nachdem Sie ein generalisiertes, verwaltetes Image haben, können Sie den Prozess zum Erstellen einer geteilten Imagebeschreibung und Imageversion starten.
 
 
 **F.** Kann ich einen Katalog mit geteilten Images, eine Imagedefinition und eine Imageversion über das Azure-Portal erstellen?
 
- A. Nein, zurzeit unterstützen wir keine Erstellung jeglicher Ressourcen von Katalogen mit geteilten Images über das Azure-Portal. Wir unterstützen aber die Erstellung der Ressourcen von Katalogen mit geteilten Images mittels CLI, Vorlagen und SDKs. PowerShell wird ebenfalls bald freigegeben.
+ A. Nein, zurzeit unterstützen wir keine Erstellung jeglicher Ressourcen von Katalogen mit geteilten Images über das Azure-Portal. Wir unterstützen aber die Erstellung der Ressourcen von Katalogen mit geteilten Images mittels CLI, Vorlagen und SDKs. PowerShell wird ebenfalls demnächst freigegeben.
 
  
 **F.** Kann ich nach der Erstellung die Imagedefinition oder die Imageversion aktualisieren? Welche Arten von Details kann ich ändern?
@@ -186,9 +186,9 @@ Imageversion:
 
  A. Nein, Sie können die Imageversionen zwischen Regionen in einem Abonnement replizieren und mittels rollenbasierter Zugriffssteuerung in anderen Abonnements verwenden.
 
-**F.** Kann ich Imageversionen zwischen AD-Mandanten teilen? 
+**F.** Kann ich Imageversionen zwischen Azure AD-Mandanten freigeben? 
 
- A. Nein, zurzeit unterstützt der Katalog mit geteilten Images kein Teilen von Imageversionen zwischen AD-Mandanten. Allerdings können Sie das Feature „Private Angebote“ im Azure Marketplace verwenden, um dies zu erreichen.
+ A. Nein, zurzeit unterstützt der Katalog mit freigegebenen Images keine Freigabe von Imageversionen zwischen Azure AD-Mandanten. Allerdings können Sie das Feature „Private Angebote“ im Azure Marketplace verwenden, um dies zu erreichen.
 
 
 **F.** Wie lange dauert die Replikation von Imageversionen zwischen Zielregionen?
@@ -198,7 +198,7 @@ Imageversion:
 
 **F.** Wie viele Kataloge mit geteilten Images kann ich in einem Abonnement erstellen?
 
- A. Das Standardkontingent ist 
+ A. Das Standardkontingent lautet: 
 - 10 Kataloge mit geteilten Images pro Abonnement und Region
 - 200 Imagedefinitionen pro Abonnement und Region
 - 2000 Imageversionen pro Abonnement und Region
@@ -239,4 +239,4 @@ Um die allgemeine Replikatanzahl in der CLI anzugeben, verwenden Sie das Argumen
 
 **F.** Welche API-Version sollte ich verwenden, um einen Katalog mit geteilten Images, eine Imagedefinition, eine Imageversion und aus der Imageversion eine VM/VMSS zu erstellen?
 
- A. Für Bereitstellungen von VMs und VM-Skalierungsgruppen mithilfe einer Imageversion empfehlen wir Ihnen die Verwendung der API-Version 2018-04-01 oder höher. Um mit Katalogen mit geteilten Images, Imagedefinitionen und Imageversionen zu arbeiten, empfehlen wir Ihnen die Verwendung der API-Version 2018-06-01. 
+ A. Für Bereitstellungen von VMs und VM-Skalierungsgruppen mithilfe einer Imageversion wird die Verwendung der API-Version 2018-04-01 oder höher empfohlen. Um mit Katalogen mit geteilten Images, Imagedefinitionen und Imageversionen zu arbeiten, empfehlen wir Ihnen die Verwendung der API-Version 2018-06-01. 

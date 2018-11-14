@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/14/2018
 ms.author: mbullwin
-ms.openlocfilehash: cfcdf13f8aa4dfab9b361ccbb82ea4b2c3e2ca0d
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 5550bbb95b24e12510c69bc3952c346250786994
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42141367"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50960003"
 ---
 # <a name="import-data-into-analytics"></a>Importieren von Daten in Analytics
 
@@ -120,14 +120,14 @@ JSON-Format
  
 Jede Spalte wird durch ihre Position, ihren Namen und ihren Typ identifiziert.
 
-* Position: Im DSV-Format die Position des zugeordneten Werts. Im JSON-Format der „jpath“ des zugeordneten Schlüssels.
+* Position: Für das Dateiformat mit Trennzeichen die Position des zugeordneten Werts. Im JSON-Format der „jpath“ des zugeordneten Schlüssels.
 * Name: Der Anzeigename der Spalte.
 * Typ: Der Datentyp der Spalte.
- 
+
 > [!NOTE]
 > Bei Verwendung von Beispieldaten in einem Dateiformat mit Trennzeichen müssen in der Schemadefinition alle Spalten zugeordnet sein, wobei neue Spalten am Ende hinzugefügt werden.
 > 
-> JSON unterstützt auch eine partielle Datenzuordnung. Daher müssen in der Schemadefinition im JSON-Format nicht alle in den Beispieldaten vorkommenden Schlüssel zugeordnet sein. In der Definition können auch Spalten zugeordnet sein, die nicht in den Beispieldaten enthalten sind. 
+> JSON unterstützt auch eine partielle Datenzuordnung. Deswegen müssen in der Schemadefinition im JSON-Format nicht alle in den Beispieldaten vorkommenden Schlüssel zugeordnet sein. In der Definition können auch Spalten zugeordnet sein, die nicht in den Beispieldaten enthalten sind. 
 
 ## <a name="import-data"></a>Daten importieren
 
@@ -137,7 +137,7 @@ Zum Importieren von Daten laden Sie sie in Azure-Speicher hoch, erstellen einen 
 
 Sie können den folgenden Vorgang manuell ausführen oder ein automatisiertes System einrichten, um ihn in regelmäßigen Abständen ausführen zu lassen. Sie müssen diese Schritte für jeden Datenblock ausführen, den Sie importieren möchten.
 
-1. Laden Sie die Daten in [Azure Blob Storage](../storage/blobs/storage-dotnet-how-to-use-blobs.md) hoch. 
+1. Laden Sie die Daten in [Azure Blob Storage](../storage/blobs/storage-quickstart-blobs-dotnet.md) hoch. 
 
  * Blobs können eine maximale unkomprimierte Größe bis zu 1 GB haben. Große Blobs mit Hunderten von MB sind aus Leistungssicht ideal.
  * Sie können Blobs mit Gzip komprimieren, um die Hochladezeit und Latenz der Daten zu verbessern, die zum Abfragen verfügbar sein sollen. Verwenden Sie die Dateierweiterung `.gz`.
@@ -369,5 +369,5 @@ Verwenden Sie für jedes Blob diesen Code.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Tour durch die Log Analytics-Abfragesprache](app-insights-analytics-tour.md)
+* [Tour durch die Log Analytics-Abfragesprache](../log-analytics/query-language/get-started-analytics-portal.md)
 * Verwenden Sie bei Nutzung von Logstash das [Logstash-Plug-In, um Daten an Application Insights zu senden](https://github.com/Microsoft/logstash-output-application-insights).

@@ -6,14 +6,14 @@ author: charwen
 manager: rossort
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 09/07/2018
+ms.date: 11/05/2018
 ms.author: charwen
-ms.openlocfilehash: c267e5002fbd603e4bb749550c19e8d022ce4d54
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 96e2eb85bc96075e0673359910522f8e35bf5a5c
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44162341"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51243810"
 ---
 # <a name="configure-expressroute-and-site-to-site-coexisting-connections-using-powershell"></a>Konfigurieren von parallel bestehenden ExpressRoute- und Standort-zu-Standort-Verbindungen mithilfe von PowerShell
 > [!div class="op_single_selector"]
@@ -27,7 +27,9 @@ Das Konfigurieren paralleler Site-to-Site-VPN- und ExpressRoute-Verbindungen bie
 * Sie können ein Site-to-Site-VPN als sicheren Failoverpfad für ExpressRoute konfigurieren. 
 * Alternativ hierzu können Sie Site-to-Site-VPNs nutzen, um Standorte zu verbinden, die nicht per ExpressRoute verbunden sind. 
 
-Dieser Artikel enthält die Schritte für die Konfiguration beider Szenarien. Dieser Artikel gilt für das Resource Manager-Bereitstellungsmodell und für die Verwendung von PowerShell. Sie können diese Szenarien auch über das Azure-Portal konfigurieren – für diese Vorgehensweise steht jedoch noch keine Dokumentation zur Verfügung.
+Dieser Artikel enthält die Schritte für die Konfiguration beider Szenarien. Dieser Artikel gilt für das Resource Manager-Bereitstellungsmodell und für die Verwendung von PowerShell. Sie können diese Szenarien auch über das Azure-Portal konfigurieren – für diese Vorgehensweise steht jedoch noch keine Dokumentation zur Verfügung. Sie können ein beliebiges Gateway zuerst konfigurieren. Beim Hinzufügen eines neuen Gateways oder einer Gatewayverbindung treten in der Regel keine Ausfallzeiten auf.
+
+
 
 >[!NOTE]
 >Wenn Sie ein Site-to-Site-VPN über eine ExpressRoute-Verbindung erstellen möchten, lesen Sie [diesen Artikel](site-to-site-vpn-over-microsoft-peering.md).
@@ -209,7 +211,7 @@ Wenn Sie über virtuelles Netzwerk mit nur einem zugehörigen Gateway (Standort-
 5. Sie verfügen nun über ein virtuelles Netzwerk ohne Gateways. Zum Erstellen neuer Gateways und Einrichten der Verbindungen führen Sie die Schritte im vorherigen Abschnitt aus.
 
 ## <a name="to-add-point-to-site-configuration-to-the-vpn-gateway"></a>So fügen Sie dem VPN Gateway eine Punkt-zu-Standort-Konfiguration hinzu
-Sie können die unten angegebenen Schritte ausführen, um dem VPN Gateway bei einer parallelen Einrichtung eine Punkt-zu-Standort-Konfiguration hinzuzufügen.
+Sie können die unten angegebenen Schritte ausführen, um dem VPN-Gateway bei einer parallelen Einrichtung eine Punkt-zu-Standort-Konfiguration hinzuzufügen.
 
 1. Fügen Sie einen VPN-Clientadresspool hinzu.
 
@@ -224,7 +226,8 @@ Sie können die unten angegebenen Schritte ausführen, um dem VPN Gateway bei ei
   $p2sCertMatchName = "RootErVpnCoexP2S" 
   $p2sCertToUpload=get-childitem Cert:\CurrentUser\My | Where-Object {$_.Subject -match $p2sCertMatchName} 
   if ($p2sCertToUpload.count -eq 1){write-host "cert found"} else {write-host "cert not found" exit} 
-  $p2sCertData = [System.Convert]::ToBase64String($p2sCertToUpload.RawData) Add-AzureRmVpnClientRootCertificate -VpnClientRootCertificateName $p2sCertFullName -VirtualNetworkGatewayname $azureVpn.Name -ResourceGroupName $resgrp.ResourceGroupName -PublicCertData $p2sCertData
+  $p2sCertData = [System.Convert]::ToBase64String($p2sCertToUpload.RawData) 
+  Add-AzureRmVpnClientRootCertificate -VpnClientRootCertificateName $p2sCertFullName -VirtualNetworkGatewayname $azureVpn.Name -ResourceGroupName $resgrp.ResourceGroupName -PublicCertData $p2sCertData
   ```
 
 Weitere Informationen zu Punkt-zu-Standort-VPN-Verbindungen finden Sie unter [Konfigurieren einer Punkt-zu-Standort-Verbindung](../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md).

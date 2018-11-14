@@ -5,15 +5,15 @@ author: johnkemnetz
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 8/21/2018
+ms.date: 11/01/2018
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: 18c0f8176a85eef79000fff8ed717ad7e57f20d8
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 0c85b65e9b6eabcb5c74e1d178c0f26235cdf624
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46954839"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50961822"
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub-for-consumption-by-an-external-tool"></a>Streamen von Azure-Überwachungsdaten an einen Event Hub für die Verwendung durch ein externes Tool
 
@@ -27,8 +27,8 @@ In Ihrer Azure-Umgebung gibt es mehrere Schichten von Überwachungsdaten, weshal
 
 - **Überwachungsdaten zur Anwendung:** Daten zur Leistung und Funktionalität des von Ihnen geschriebenen Codes, den Sie in Azure ausführen. Zu Anwendungsüberwachungsdaten zählen z.B. Leistungsablaufverfolgungen, Anwendungsprotokolle und benutzerspezifische Telemetriedaten. Anwendungsüberwachungsdaten werden in der Regel auf einer der folgenden Arten gesammelt:
   - Durch Instrumentieren des Codes mit einem SDK wie dem [Application Insights-SDK](../application-insights/app-insights-overview.md)
-  - Durch Ausführen eines Überwachungs-Agents, der nach neuen Anwendungsprotokollen auf dem Computer lauscht, auf dem Ihre Anwendung ausgeführt wird (z.B. der [Azure-Diagnose-Agent für Windows](./azure-diagnostics.md) oder [Azure-Diagnose-Agent für Linux](../virtual-machines/linux/diagnostic-extension.md))
-- **Überwachungsdaten zum Gast-BS:** Daten zum Betriebssystem, unter dem die Anwendung ausgeführt wird. Zu Überwachungsdaten zum Gast-BS zählen z.B. das Linux-Syslog oder Windows-Systemereignisse. Um diesen Typ von Daten zu sammeln, müssen Sie einen Agent wie den [Azure-Diagnose-Agent für Windows](./azure-diagnostics.md) oder [Azure-Diagnose-Agent für Linux](../virtual-machines/linux/diagnostic-extension.md) installieren.
+  - Durch Ausführen eines Überwachungs-Agents, der nach neuen Anwendungsprotokollen auf dem Computer lauscht, auf dem Ihre Anwendung ausgeführt wird (z.B. der [Azure-Diagnose-Agent für Windows](./azure-diagnostics.md) oder [Azure-Diagnose-Agent für Linux](../virtual-machines/extensions/diagnostics-linux.md))
+- **Überwachungsdaten zum Gast-BS:** Daten zum Betriebssystem, unter dem die Anwendung ausgeführt wird. Zu Überwachungsdaten zum Gast-BS zählen z.B. das Linux-Syslog oder Windows-Systemereignisse. Um diesen Typ von Daten zu sammeln, müssen Sie einen Agent wie den [Azure-Diagnose-Agent für Windows](./azure-diagnostics.md) oder [Azure-Diagnose-Agent für Linux](../virtual-machines/extensions/diagnostics-linux.md) installieren.
 - **Überwachungsdaten zu Azure-Ressourcen:** Daten zum Betrieb einer Azure-Ressource. Bei einigen Arten von Azure-Ressourcen wie virtuellen Computern gibt es ein Gast-BS und Anwendungen, die für die Überwachung innerhalb dieses Azure-Diensts vorgesehen sind. Bei anderen Azure-Ressourcen wie Netzwerksicherheitsgruppen sind Überwachungsdaten zu Ressourcen in der höchsten Datenschicht verfügbar (da weder ein Gast-BS noch eine Anwendung in diesen Ressourcen ausgeführt wird). Diese Daten können mithilfe von [Ressourcendiagnoseeinstellungen](./monitoring-overview-of-diagnostic-logs.md#diagnostic-settings) gesammelt werden.
 - **Überwachungsdaten zum Azure-Abonnement:** Daten zum Betrieb und zur Verwaltung eines Azure-Abonnements sowie Daten zur Integrität und zum Betrieb von Azure selbst. Das [Aktivitätsprotokoll](./monitoring-overview-activity-logs.md) enthält die meisten Überwachungsdaten zum Abonnement, z. B. zu Dienstintegritätsvorfällen und Azure Resource Manager-Überwachungen. Sie können diese Daten mit einem Protokollprofil sammeln.
 - **Überwachungsdaten zu Azure-Mandanten:** Daten zum Betrieb von Azure-Diensten auf Mandantenebene, z. B. Azure Active Directory. Azure Active Directory-Überwachungen und -Anmeldungen sind Beispiele für Mandantenüberwachungsdaten. Diese Daten können mithilfe einer Diagnoseeinstellung für Mandanten gesammelt werden.
@@ -54,7 +54,7 @@ Lesen Sie auch die Informationen unter [Azure Event Hubs – häufig gestellte F
 
 ### <a name="azure-active-directory-data"></a>Azure Active Directory-Daten
 
-Um Daten aus dem Azure Active Directory-Protokoll an einen Event Hubs-Namespace zu senden, richten Sie eine Mandantendiagnoseeinstellung für Ihren AAD-Mandanten ein. [Befolgen Sie diese Anleitung](../active-directory/reports-monitoring/quickstart-azure-monitor-stream-logs-to-event-hub.md), um eine Diagnoseeinstellung für Mandanten einzurichten.
+Um Daten aus dem Azure Active Directory-Protokoll an einen Event Hubs-Namespace zu senden, richten Sie eine Mandantendiagnoseeinstellung für Ihren AAD-Mandanten ein. [Befolgen Sie diese Anleitung](../active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md), um eine Diagnoseeinstellung für Mandanten einzurichten.
 
 ## <a name="azure-subscription-monitoring-data"></a>Überwachungsdaten zum Azure-Abonnement
 
@@ -71,7 +71,7 @@ Um Daten aus dem Azure-Aktivitätsprotokoll an Event Hubs-Namespaces zu senden, 
 
 Azure-Ressourcen geben zwei Arten von Überwachungsdaten aus:
 1. [Ressourcendiagnoseprotokolle](./monitoring-overview-of-diagnostic-logs.md)
-2. [Metriken](monitoring-overview-metrics.md)
+2. [Metriken](../monitoring/monitoring-data-collection.md)
 
 Beide Arten von Daten werden mithilfe einer Ressourcendiagnoseeinstellung an einen Event Hub gesendet. [Befolgen Sie die Schritte in diesem Handbuch](./monitoring-stream-diagnostic-logs-to-event-hubs.md) zum Einrichten einer Ressourcendiagnoseeinstellung für eine bestimmte Ressource. Legen Sie für jede Ressource, für die Protokolle gesammelt werden sollen, eine Ressourcendiagnoseeinstellung fest.
 
@@ -113,10 +113,11 @@ Die Weiterleitung Ihrer Überwachungsdaten an einen Event Hub mit Azure Monitor 
     1. [Das Azure Monitor-Add-On für Splunk](https://splunkbase.splunk.com/app/3534/) steht in der Splunkbase und in einem Open Source-Projekt zur Verfügung. Die Dokumentation finden Sie [hier](https://github.com/Microsoft/AzureMonitorAddonForSplunk/wiki/Azure-Monitor-Addon-For-Splunk).
     2. Wenn Sie in Ihrer Splunk-Instanz ein Add-On nicht installieren können (etwa bei Verwendung eines Proxys oder bei Ausführung in Splunk Cloud), können Sie diese Ereignisse an die HTTP-Ereignissammlung von Splunk weiterleiten. Verwenden Sie dazu [diese Funktion, die durch neue Nachrichten im Event Hub ausgelöst wird](https://github.com/Microsoft/AzureFunctionforSplunkVS).
 * **SumoLogic**: Anweisungen zum Einrichten von SumoLogic für die Nutzung von Daten aus einem Event Hub sind [hier](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure-Audit/02Collect-Logs-for-Azure-Audit-from-Event-Hub) verfügbar.
+* **ArcSight**: Der intelligente Azure Event Hub-Connector von ArcSight wird im Rahmen [dieser ArcSight-Kollektion von intelligenten Connectors](https://community.softwaregrp.com/t5/Discussions/Announcing-General-Availability-of-ArcSight-Smart-Connectors-7/m-p/1671852) zur Verfügung gestellt.
 * **Syslog-Server:** Wenn Sie Azure Monitor-Daten direkt an einen Syslog-Server streamen möchten, können Sie sich [dieses GitHub-Repository](https://github.com/miguelangelopereira/azuremonitor2syslog/) ansehen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Archivieren Sie das Aktivitätsprotokoll mithilfe eines Speicherkontos.](monitoring-archive-activity-log.md)
 * [Lesen Sie die Übersicht über das Azure-Aktivitätsprotokoll.](monitoring-overview-activity-logs.md)
-* [Richten Sie eine Warnung ein, die auf einem Aktivitätsprotokollereignis basiert.](insights-auditlog-to-webhook-email.md)
+* [Richten Sie eine Warnung ein, die auf einem Aktivitätsprotokollereignis basiert.](monitor-alerts-unified-log-webhook.md)
 

@@ -8,12 +8,12 @@ ms.date: 06/26/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 4b4f9bd1c7390d64a0db08b55bfb777498a10cb0
-ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
+ms.openlocfilehash: 343264f90ecf067786db9c0096625b87b2dbd319
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2018
-ms.locfileid: "43382704"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51004407"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-azure-functions-for-azure-iot-edge"></a>Verwenden von Visual Studio Code zum Entwickeln und Debuggen von Azure-Funktionen für Azure IoT Edge
 
@@ -74,7 +74,7 @@ Es gibt vier Elemente in der Projektmappe:
 
 ## <a name="develop-your-module"></a>Entwickeln Ihres Moduls
 
-Der im Lieferumfang der Projektmappe enthaltene standardmäßige Azure-Funktionscode befindet sich unter **modules** > [Name Ihres Moduls] > **EdgeHubTrigger-Csharp** > **run.csx**. Das Modul und die Datei „deployment.template.json“ werden so eingerichtet, dass Sie die Projektmappe erstellen, in Ihre Containerregistrierung verschieben und zum Starten des Tests für ein Gerät bereitstellen können, ohne Code ändern zu müssen. Das Modul ist so konzipiert, dass es einfach eine Eingabe aus einer Quelle akzeptiert (in diesem Fall das Daten simulierende tempSensor-Modul) und IoT Hub übergibt. 
+Der im Lieferumfang der Projektmappe enthaltene standardmäßige Azure-Funktionscode befindet sich unter**modules** > [Name Ihres Moduls] > **modulname.cs**. Das Modul und die Datei „deployment.template.json“ werden so eingerichtet, dass Sie die Projektmappe erstellen, in Ihre Containerregistrierung verschieben und zum Starten des Tests für ein Gerät bereitstellen können, ohne Code ändern zu müssen. Das Modul ist so konzipiert, dass es einfach eine Eingabe aus einer Quelle akzeptiert (in diesem Fall das Daten simulierende tempSensor-Modul) und IoT Hub übergibt. 
 
 Wenn Sie bereit sind, die Azure Function-Vorlage mit Ihrem eigenen Code anzupassen, erstellen Sie mit den [Azure IoT Hub SDKs](../iot-hub/iot-hub-devguide-sdks.md) Module, die die wesentlichen Anforderungen für IoT-Lösungen wie Sicherheit, Geräteverwaltung und Zuverlässigkeit berücksichtigen. 
 
@@ -93,7 +93,7 @@ Wenn Sie bereit sind, die Azure Function-Vorlage mit Ihrem eigenen Code anzupass
 
    ![Auswählen der Debugkonfiguration](./media/how-to-debug-csharp-function/select-debug-configuration.jpg)
 
-2. Navigieren Sie zu `run.csx`. Fügen Sie in der Funktion einen Haltepunkt hinzu.
+2. Navigieren Sie zu `modulename.cs`. Fügen Sie in der Funktion einen Haltepunkt hinzu.
 3. Wählen Sie **Debuggen starten** oder **F5** aus. Wählen Sie den Prozess zum Anfügen aus.
 4. In der Debugansicht von VS Code sehen Sie die Variablen im linken Bereich. 
 

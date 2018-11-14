@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/26/2018
+ms.date: 11/07/2018
 ms.author: sethm
 ms.reviewer: misainat
-ms.openlocfilehash: 284a964162a2374287b42698b9a2021be36590dd
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 8e8518cdf95e1b97bd4b641322c1b2a3fdc3bf9e
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50158158"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51282457"
 ---
 # <a name="asdk-release-notes"></a>Versionshinweise zum ASDK  
 Dieser Artikel bietet Informationen zu Verbesserungen, Fehlerbehebungen und bekannten Problemen in Azure Stack Development Kit (ASDK). Wenn Sie nicht sicher sind, welche Version ausgeführt wird, können Sie diese im [Portal überprüfen](.\.\azure-stack-updates.md#determine-the-current-version).
@@ -99,6 +99,9 @@ Weitere Informationen finden Sie unter [Azure Stack-Syslog-Weiterleitung](../azu
 
 
 #### <a name="compute"></a>Compute 
+
+<!-- TBD – IS, ASDK -->
+- Das erneute Anfügen eines abgetrennten Datenträgers an denselben virtuellen Computer mit dem gleichen Namen und der gleichen LUN führt zu einem Fehler wie **Datenträger „Datenträger“ kann nicht an VM „vm1“ angefügt werden**. Der Fehler tritt auf, da der Datenträger derzeit getrennt wird oder beim letzten Trennvorgang ein Fehler aufgetreten ist. Warten Sie, bis der Datenträger vollständig getrennt wurde, und versuchen Sie es dann erneut, oder löschen/trennen Sie den Datenträger explizit erneut. Die Problemumgehung besteht darin, ihn unter einem anderen Namen oder mit einer anderen LUN erneut anzufügen. 
 
 <!-- 3235634 – IS, ASDK -->
 - Um VMs mit Größen bereitzustellen, die das Suffix **v2** enthalten – z.B. **Standard_A2_v2** –, geben Sie das Suffix mit klein geschriebenem „v“ an: **Standard_A2_v2**. Verwenden Sie nicht **Standard_A2_V2** mit groß geschriebenem „V“. Dies funktioniert in der globalen Azure-Umgebung und ist eine Inkonsistenz in Azure Stack.

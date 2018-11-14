@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: e4e793ac5735f7f3b07d285dea027a8f603b7964
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: 0c9c254625ccca27a3525c45da0303f5e045ef44
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48237896"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50914327"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Planung für die Bereitstellung einer Azure-Dateisynchronisierung
 Mit der Azure-Dateisynchronisierung können Sie die Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Mit der Azure-Dateisynchronisierung werden Ihre Windows Server-Computer zu einem schnellen Cache für Ihre Azure-Dateifreigabe. Sie können ein beliebiges Protokoll verwenden, das unter Windows Server verfügbar ist, um lokal auf Ihre Daten zuzugreifen, z.B. SMB, NFS und FTPS. Sie können weltweit so viele Caches wie nötig nutzen.
@@ -242,7 +242,9 @@ Die Azure-Dateisynchronisierung ist nur in den folgenden Regionen verfügbar:
 | Asien, Osten | Hongkong |
 | USA (Ost) | Virginia |
 | USA (Ost 2) | Virginia |
+| USA Nord Mitte | Illinois |
 | Nordeuropa | Irland |
+| USA Süd Mitte | Texas |
 | Indien (Süden) | Chennai |
 | Asien, Südosten | Singapur |
 | UK, Süden | London |
@@ -269,6 +271,7 @@ Um die Failoverintegration zwischen georedundantem Speicher und der Azure-Dateis
 | USA (Ost)             | USA (Westen)            |
 | USA (Ost) 2           | USA (Mitte)         |
 | Nordeuropa        | Europa, Westen        |
+| USA Nord Mitte    | USA Süd Mitte   |
 | Indien (Süden)         | Indien, Mitte      |
 | Asien, Südosten      | Asien, Osten          |
 | UK, Süden            | UK, Westen            |

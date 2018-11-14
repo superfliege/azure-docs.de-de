@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/12/2016
 ms.author: crdun
-ms.openlocfilehash: bfbb72d6fd101932f00e12ad18ab079ec30a0d3a
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: c137f6cfdff9d043a656783f38ec9b894e644338
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42818819"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50913018"
 ---
 # <a name="add-push-notifications-to-your-windows-app"></a>Hinzufügen von Pushbenachrichtigungen zu Ihrer Windows-App
 
@@ -37,21 +37,23 @@ Wenn Sie das heruntergeladene Schnellstart-Serverprojekt nicht verwenden, müsse
 
 ## <a name="register-your-app-for-push-notifications"></a>Registrieren der App für Pushbenachrichtigungen
 
-Sie müssen Ihre App an den Microsoft Store übermitteln und dann Ihr Serverprojekt für die Integration in die Windows-Benachrichtigungsdienste (Windows Notification Services, WNS) konfigurieren, um Pushbenachrichtigungen senden zu können.
+Sie müssen Ihre App an den Microsoft Store übermitteln und dann Ihr Serverprojekt für die Integration in die [Windows-Benachrichtigungsdienste (Windows Notification Services, WNS)](https://docs.microsoft.com/windows/uwp/design/shell/tiles-and-notifications/windows-push-notification-services--wns--overview) konfigurieren, um Pushbenachrichtigungen senden zu können.
 
 1. Klicken Sie im Projektmappen-Explorer von Visual Studio mit der rechten Maustaste auf das UWP-App-Projekt, und klicken Sie dann auf **Store** > **App mit Store verknüpfen...**.
 
     ![Verknüpfen der App mit Microsoft Store](./media/app-service-mobile-windows-store-dotnet-get-started-push/notification-hub-associate-uwp-app.png)
+
 2. Klicken Sie im Assistenten auf **Weiter**, melden Sie sich mit Ihrem Microsoft-Konto an, geben Sie unter **App-Namen reservieren** einen Namen für Ihre App ein, und klicken Sie dann auf **Reservieren**.
 3. Nachdem die App-Registrierung erfolgreich erstellt wurde, wählen Sie den Namen der neuen App aus, klicken Sie auf **Weiter** und dann auf **Zuordnen**. Dadurch werden die erforderlichen Microsoft Store-Registrierungsinformationen zum Anwendungsmanifest hinzugefügt.
-4. Navigieren Sie zum [Windows Dev Center](https://dev.windows.com/en-us/overview), melden Sie sich mit Ihrem Microsoft-Konto an, klicken Sie unter **Meine Apps** auf die neue App-Registrierung, und erweitern Sie dann **Dienste** > **Pushbenachrichtigungen**.
-5. Klicken Sie auf der Seite **Pushbenachrichtigungen** unter **Microsoft Azure Mobile Services** auf **Live Services-Website**.
-6. Notieren Sie sich den auf der Registrierungsseite unter **Anwendungsgeheimnisse** angezeigten Wert sowie die **Paket-SID**. Sie benötigen diese Daten später beim Konfigurieren des Back-Ends für die mobile App.
+4. Navigieren Sie zum [Portal für die Anwendungsregistrierung](https://apps.dev.microsoft.com/), und melden Sie sich mit Ihrem Microsoft-Konto an. Klicken Sie auf die Windows Store-App, die Sie im vorherigen Schritt zugeordnet haben.
+5. Notieren Sie sich den auf der Registrierungsseite unter **Anwendungsgeheimnisse** angezeigten Wert sowie die **Paket-SID**. Sie benötigen diese Daten später beim Konfigurieren des Back-Ends für die mobile App.
 
     ![Verknüpfen der App mit Microsoft Store](./media/app-service-mobile-windows-store-dotnet-get-started-push/app-service-mobile-uwp-app-push-auth.png)
 
    > [!IMPORTANT]
    > Der geheime Clientschlüssel und die Paket-SID sind wichtige Sicherheitsanmeldeinformationen. Geben Sie diese Werte nicht weiter, und verteilen Sie sie nicht mit Ihrer Anwendung. Die **Anwendungs-ID** wird zusammen mit dem geheimen Schlüssel zum Konfigurieren der Microsoft-Kontoauthentifizierung verwendet.
+
+[App Center](https://docs.microsoft.com/appcenter/sdk/push/uwp#prerequisite---register-your-app-for-windows-notification-services-wns) bietet außerdem Anleitungen zum Konfigurieren von UWP-Apps für Pushbenachrichtigungen.
 
 ## <a name="configure-the-backend-to-send-push-notifications"></a>Konfigurieren des Back-Ends zum Senden von Pushbenachrichtigungen
 

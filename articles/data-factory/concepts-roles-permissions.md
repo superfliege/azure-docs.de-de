@@ -4,7 +4,7 @@ description: Dieser Artikel beschreibt die Rollen und Berechtigungen, die erford
 author: douglaslMS
 ms.author: douglasl
 manager: craigg
-ms.date: 10/08/2018
+ms.date: 11/5/2018
 ms.topic: conceptual
 ms.service: data-factory
 services: data-factory
@@ -12,12 +12,12 @@ documentationcenter: ''
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.openlocfilehash: 10f325f3b7c93b91180b6a170c8b7accb75eb03b
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 82c0ec4d114ec198ecba475b247a3c9952a6069a
+ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48883770"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51218762"
 ---
 # <a name="roles-and-permissions-for-azure-data-factory"></a>Rollen und Berechtigungen für Azure Data Factory
 
@@ -50,6 +50,8 @@ Weitere Informationen zu dieser Rolle finden Sie unter [Mitwirkender von Data Fa
 ### <a name="resource-manager-template-deployment"></a>Resource Manager-Vorlagenbereitstellung
 
 Die Rolle **Data Factory-Mitwirkender** auf Ressourcengruppenebene oder höher ermöglicht Benutzern die Bereitstellung von Resource Manager-Vorlagen. Daher können Mitglieder dieser Rolle Resource Manager-Vorlagen verwenden, um sowohl Data Factorys also auch deren untergeordnete Ressourcen bereitzustellen, z.B. Datasets, verknüpfte Dienste, Pipelines, Trigger und Integration Runtimes. Die Mitgliedschaft in dieser Rolle ermöglicht den Benutzern allerdings nicht die Erstellung anderer Ressourcen.
+
+Berechtigungen für Azure Repos und GitHub sind unabhängig von Data Factory-Berechtigungen. Daher kann ein Benutzer mit Berechtigungen für ein Repository, der nur Mitglied der Rolle „Leser“ ist, untergeordnete Data Factory-Ressourcen bearbeiten und Änderungen an das Repository committen, diese Änderungen aber nicht veröffentlichen.
 
 > [!IMPORTANT]
 > Die Resource Manager-Vorlagenbereitstellung mit der Rolle **Data Factory-Mitwirkender** erhöht Ihre Berechtigungen nicht. Ein Beispiel: Wenn Sie eine Vorlage bereitstellen, die einen virtuellen Azure-Computer erstellt, und nicht über die Berechtigung zum Erstellen virtueller Computer verfügen, tritt bei der Bereitstellung ein Autorisierungsfehler auf.

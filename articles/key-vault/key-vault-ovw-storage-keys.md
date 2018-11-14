@@ -9,12 +9,12 @@ author: bryanla
 ms.author: bryanla
 manager: mbaldwin
 ms.date: 10/03/2018
-ms.openlocfilehash: 02fffe7c4a3acff6ce6d68046eee4286003b1766
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: f3f310c247aea3842b5ec7a9a1409032d5bdc0bf
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50232221"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50912916"
 ---
 # <a name="azure-key-vault-storage-account-keys"></a>Azure Key Vault-Speicherkontoschlüssel
 
@@ -34,9 +34,12 @@ ms.locfileid: "50232221"
     - Führen Sie die Schritte in diesem [Dokument](https://docs.microsoft.com/azure/storage/) aus, um ein Speicherkonto zu erstellen.  
     - **Benennungsrichtlinien:** Speicherkontonamen müssen zwischen 3 und 24 Zeichen lang sein und dürfen nur Zahlen und Kleinbuchstaben enthalten.        
       
-<a name="step-by-step-instructions"></a>Schrittweise Anleitung
--------------------------
+<a name="step-by-step-instructions-on-how-to-use-key-vault-to-manage-storage-account-keys"></a>Schritt-für-Schritt-Anweisungen zur Verwendung von Key Vault zum Verwalten von Speicherkontoschlüsseln
+--------------------------------------------------------------------------------
 In den unten stehenden Anweisungen weisen wir Key Vault als Dienst zu, der Operatorberechtigungen für Ihr Speicherkonto haben soll.
+
+> [!NOTE]
+> Beachten Sie: Sobald Sie die mit Azure Key Vault verwalteten Speicherkontoschlüssel eingerichtet haben, sollten sie **NUR** noch über Key Vault geändert werden. Verwaltete Speicherkontoschlüssel bedeuten, dass Key Vault das Wechseln des Speicherkontoschlüssels verwaltet.
 
 1. Führen Sie nach dem Erstellen eines Speicherkontos den folgenden Befehl aus, um die Ressourcen-ID des Speicherkontos zu erhalten, das Sie verwalten möchten.
 
@@ -71,6 +74,8 @@ In den unten stehenden Anweisungen weisen wir Key Vault als Dienst zu, der Opera
 
     az keyvault set-policy --name <YourVaultName> --object-id <ObjectId> --storage-permissions backup delete list regeneratekey recover     purge restore set setsas update
     ```
+### <a name="relavant-azure-cli-cmdlets"></a>Relevante Azure CLI-Cmdlets
+- [Azure CLI-Storage-Cmdlets](https://docs.microsoft.com/cli/azure/keyvault/storage?view=azure-cli-latest)
 
 ### <a name="relevant-powershell-cmdlets"></a>Relevante PowerShell-Cmdlets
 

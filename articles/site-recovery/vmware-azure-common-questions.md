@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 10/29/2018
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: 086acdd74932836627c600b5545bc4353052ad6f
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 05f878d244647a79a2b3e9d0c789ba811dad71ee
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50215445"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51012104"
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>Allgemeine Fragen – VMware-zu-Azure-Replikation
 
@@ -59,6 +59,8 @@ Wählen Sie zum Ermitteln der ersten Schritte zum Bereitstellen des Konfiguratio
 ### <a name="where-do-on-premises-vms-replicate-to"></a>Zu welchem Speicher werden lokale virtuelle Computer repliziert?
 Daten werden zu Azure-Speicher repliziert. Wenn Sie ein Failover zu Azure ausführen, erstellt Site Recovery automatisch Azure-VMs aus dem Speicherkonto.
 
+## <a name="replication"></a>Replikation
+
 ### <a name="what-apps-can-i-replicate"></a>Welche Apps kann ich replizieren?
 Sie können jede App oder Arbeitsauslastung, auf einer VMware-VM ausführen, die mit den [Replikationsanforderungen](vmware-physical-azure-support-matrix.md##replicated-machines) kompatibel ist. Site Recovery bietet Unterstützung für die anwendungsorientierte Replikation, sodass für Apps ein Failover und ein Failback zum „intelligenten Zustand“ ausgeführt werden kann. Site Recovery kann in Microsoft-Anwendungen wie SharePoint, Exchange, Dynamics, SQL Server und Active Directory integriert werden. Zudem kann Site Recovery eng in die Produkte führender Anbieter wie Oracle, SAP, IBM und Red Hat eingebunden werden. [Erfahren Sie mehr](site-recovery-workload.md) über den Schutz von Workloads.
 
@@ -74,18 +76,17 @@ Ja, mit ExpressRoute können VMs zu Azure repliziert werden. Site Recovery repli
 Wenn Sie zu Azure replizieren, erreicht der Replikationsdatenverkehr die öffentlichen Endpunkte eines Azure Storage-Kontos. Das bedeutet Sie können nur über das öffentliche Internet mit ExpressRoute replizieren (öffentliches Peering). VPN ist nicht verfügbar.
 
 
-
-## <a name="what-are-the-replicated-vm-requirements"></a>Welche Anforderungen stellt die Replikation an virtuelle Computer?
+### <a name="what-are-the-replicated-vm-requirements"></a>Welche Anforderungen stellt die Replikation an virtuelle Computer?
 
 Für die Replikation muss auf einer VMware-VM ein unterstütztes Betriebssystem ausgeführt werden. Darüber hinaus muss der virtuelle Computer die Anforderungen für Azure-VMs erfüllen. [Erfahren Sie mehr](vmware-physical-azure-support-matrix.md##replicated-machines) in der Unterstützungsmatrix.
 
-## <a name="how-often-can-i-replicate-to-azure"></a>Wie oft kann ich zu Azure replizieren?
+### <a name="how-often-can-i-replicate-to-azure"></a>Wie oft kann ich zu Azure replizieren?
 Beim Replizieren von VMware-VMs zu Azure ist die Replikation fortlaufend.
 
-## <a name="can-i-extend-replication"></a>Kann ich die Replikation erweitern?
+### <a name="can-i-extend-replication"></a>Kann ich die Replikation erweitern?
 Eine erweiterte oder verkettete Replikation wird nicht unterstützt. Fordern Sie dieses Feature im [Feedbackforum](http://feedback.azure.com/forums/256299-site-recovery/suggestions/6097959-support-for-exisiting-extended-replication).
 
-## <a name="can-i-do-an-offline-initial-replication"></a>Kann ich eine erste Offlinereplikation durchführen?
+### <a name="can-i-do-an-offline-initial-replication"></a>Kann ich eine erste Offlinereplikation durchführen?
 Dies wird nicht unterstützt. Fordern Sie dieses Feature im [Feedbackforum](http://feedback.azure.com/forums/256299-site-recovery/suggestions/6227386-support-for-offline-replication-data-transfer-from).
 
 ### <a name="can-i-exclude-disks"></a>Kann ich Datenträger ausschließen?
@@ -141,7 +142,7 @@ Es wird empfohlen, regelmäßige geplante Sicherungen des Konfigurationsservers 
 Die Installationsprogramme befinden sich im **%ProgramData%\ASR\home\svsystems\pushinstallsvc\repository**-Ordner auf dem Konfigurationsserver.
 
 ## <a name="how-do-i-install-the-mobility-service"></a>Wie installiere ich den Mobility Service?
-Sie installieren ihn auf jedem virtuellen Computer, den Sie replizieren möchten, mithilfe einer [Pushinstallation](vmware-azure-install-mobility-service.md#install-mobility-service-by-push-installation-from-azure-site-recovery), manuellen Installation in [der Benutzeroberfläche](vmware-azure-install-mobility-service.md#install-mobility-service-manually-by-using-the-gui) oder [PowerShell](vmware-azure-install-mobility-service.md#install-mobility-service-manually-at-a-command-prompt). Alternativ können Sie ein Bereitstellungstool wie [System Center Configuration Manager](vmware-azure-mobility-install-configuration-mgr.md) oder [Azure Automation und DSC](vmware-azure-mobility-deploy-automation-dsc.md) verwenden.
+Sie installieren ihn auf jedem virtuellen Computer, den Sie replizieren möchten, mithilfe einer [Pushinstallation](vmware-azure-install-mobility-service.md) oder einer [manuellen Installation](vmware-physical-mobility-service-install-manual.md) auf der Benutzeroberfläche oder in PowerShell. Alternativ können Sie ein Bereitstellungstool wie [System Center Configuration Manager](vmware-azure-mobility-install-configuration-mgr.md) verwenden.
 
 
 

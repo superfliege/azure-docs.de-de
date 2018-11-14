@@ -12,22 +12,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/21/2018
+ms.date: 11/5/2018
 ms.author: rkarlin
-ms.openlocfilehash: fc521db9ad753c4162b65abfd2f9f23c318fa994
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 3a377441758fcd7dd91deefb5cae91579e881498
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46131060"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51007050"
 ---
 # <a name="improve-your-secure-score-in-azure-security-center"></a>Verbessern des Secure Score in Azure Security Center
 
 
-Bei so vielen Diensten, die Sicherheitsvorteile bieten, ist es oft schwierig zu wissen, welche Schritte zum Sichern und Schützen Ihrer Workload zuerst ausgeführt werden sollten. Secure Score in Azure Security Center überprüft Ihre Sicherheitsempfehlungen und priorisiert diese für Sie. Auf diese Weise wissen Sie, welche Empfehlungen zuerst umgesetzt werden müssen. Außerdem erhalten Sie Unterstützung bei der Identifizierung der schwerwiegendsten Sicherheitsrisiken, sodass Sie deren Untersuchung priorisieren können. Secure Score ist ein Bemessungstool, mit dessen Hilfe Sie die Sicherheit erhöhen und somit sichere Workloads erzielen können.
-
-[!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
-
+Bei so vielen Diensten, die Sicherheitsvorteile bieten, ist es oft schwierig zu wissen, welche Schritte zum Sichern und Schützen Ihrer Workload zuerst ausgeführt werden sollten. Der Azure Secure Score überprüft Ihre Sicherheitsempfehlungen und priorisiert sie für Sie, damit Sie wissen, welche Empfehlungen Sie zuerst durchführen sollten. Dies hilft Ihnen, die schwerwiegendsten Sicherheitsrisiken zu finden, damit Sie die Untersuchung priorisieren können. Secure Score ist ein Tool, mit dem Sie den Sicherheitsstatus bewerten können.
 
 ![Secure Score-Dashboard](./media/security-center-secure-score/secure-score-dashboard.png)
 
@@ -36,14 +33,11 @@ Bei so vielen Diensten, die Sicherheitsvorteile bieten, ist es oft schwierig zu 
 Security Center ahmt die Arbeit des Sicherheitsanalysten nach, überprüft die Sicherheitsempfehlungen und wendet erweiterte Algorithmen an, um zu bestimmen, wie wichtig die jeweiligen Empfehlungen sind.
 Azure Security Center überprüft ständig die aktiven Empfehlungen und berechnet auf dieser Grundlage Ihren Secure Score. Die jeweilige Bewertung einer Empfehlung ergibt sich aus deren Schweregrad und bewährten Methoden für die Sicherheit, die sich am stärksten auf die Sicherheit Ihrer Workload auswirken.
 
-Der **Secure Score** ist eine Berechnung, die auf dem Verhältnis zwischen fehlerfreien Ressourcen und der Gesamtzahl Ihrer Ressourcen basiert. Wenn die Anzahl der fehlerfreien Ressourcen der Gesamtzahl der Ressourcen entspricht, erhalten Sie den maximalen Secure Score von 50. Um Ihren Secure Score dem maximalen Wert anzunähern, beheben Sie die fehlerhaften Ressourcen, indem Sie den Empfehlungen folgen.
-
-Security Center bietet Ihnen auch einen Secure Score-Gesamtwert. 
+Security Center bietet Ihnen auch einen **Secure Score-Gesamtwert**. 
 
 Beim **Secure Score-Gesamtwert** handelt es sich um eine Ansammlung aller Ihrer Empfehlungen. Sie können den Secure Score-Gesamtwert je nach Auswahl für alle Abonnements oder Verwaltungsgruppen anzeigen. Die Bewertung variiert je nach ausgewähltem Abonnement und aktiven Empfehlungen für diese Abonnements.
 
  
-
 Um zu überprüfen, welche Empfehlungen die größte Auswirkung auf den Secure Score haben, können Sie die drei Empfehlungen mit den größten Auswirkungen im Security Center-Dashboard anzeigen, oder Sie können die Empfehlungen auf dem Listenblatt mithilfe der Spalte **Secure Score-Auswirkung** sortieren.
 
 
@@ -59,7 +53,7 @@ So zeigen Sie den Secure Score-Gesamtwert an:
 
 Sie können auch einzelne Secure Scores anzeigen. Diese sind auf dem Blatt mit einzelnen Empfehlungen enthalten.  
 
-Der **Secure Score für Empfehlungen** ist eine Berechnung, die auf dem Verhältnis zwischen fehlerfreien Ressourcen und der Gesamtzahl Ihrer Ressourcen basiert. Wenn die Anzahl der fehlerfreien Ressourcen der Gesamtzahl der Ressourcen entspricht, erhalten Sie den maximalen Secure Score für die Empfehlung. Um Ihren Secure Score dem maximalen Wert anzunähern, beheben Sie die fehlerhaften Ressourcen, indem Sie die Schritte zur Behebung ausführen.
+Der **Secure Score für Empfehlungen** ist eine Berechnung, die auf dem Verhältnis zwischen fehlerfreien Ressourcen und der Gesamtzahl Ihrer Ressourcen basiert. Wenn die Anzahl der fehlerfreien Ressourcen der Gesamtzahl der Ressourcen entspricht, erhalten Sie den maximalen Secure Score von 50 für die Empfehlung. Um Ihren Secure Score dem maximalen Wert anzunähern, beheben Sie die fehlerhaften Ressourcen, indem Sie den Empfehlungen folgen.
 
 Anhand der **Auswirkungen der Empfehlung** können Sie sehen, um wie viel sich der Secure Score verbessert, wenn Sie die empfohlenen Schritte ausführen. Wenn Ihr Secure Score beispielsweise 42 beträgt und für **Auswirkungen der Empfehlung** der Wert +3 angegeben ist, verbessert sich der Secure Score bei Ausführung der in der Empfehlung angegebenen Schritte auf 45.
 
@@ -68,7 +62,7 @@ Die Empfehlung zeigt, welche Bedrohungen für Ihre Workload bestehen, falls die 
 ![Secure Score für einzelne Empfehlung](./media/security-center-secure-score/indiv-recommendation-secure-score.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
-In diesem Artikel wurde gezeigt, wie Sie den Sicherheitsstatus mithilfe von **Secure Score** in Azure Security Center verbessern. Weitere Informationen zu Security Center finden Sie in den folgenden Quellen:
+In diesem Artikel wurde gezeigt, wie Sie den Sicherheitsstatus mithilfe von **Secure Score** in Azure Security Center verbessern. Weitere Informationen zu Security Center finden Sie unter folgendem Link:
 
 * [Azure Security Center – Häufig gestellte Fragen](security-center-faq.md): Hier finden Sie häufig gestellte Fragen zur Verwendung des Diensts.
 * [Überwachen der Sicherheitsintegrität in Azure Security Center](security-center-monitoring.md): Hier erfahren Sie, wie Sie die Integrität Ihrer Azure-Ressourcen überwachen.

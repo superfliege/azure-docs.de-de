@@ -7,17 +7,17 @@ ms.subservice: development
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: oslake
-ms.author: moslake
+author: srdan-bozovic-msft
+ms.author: srbozovi
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 01/24/2018
-ms.openlocfilehash: ca1ef9c402b370a8d1228e13d7fe3e13fd225f79
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.date: 11/02/2018
+ms.openlocfilehash: 11133a24f4446478dcc7f38ed50eb36de8843442
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49986320"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50978400"
 ---
 # <a name="azure-sql-database-connectivity-architecture"></a>Verbindungsarchitektur der Azure SQL-Datenbank
 
@@ -31,19 +31,30 @@ Das folgende Diagramm bietet einen allgemeinen Überblick über die Verbindungsa
 
 In den folgenden Schritte wird beschrieben, wie eine Verbindung zu einer Azure SQL-Datenbank mithilfe des Software Load Balancers (SLB) von Azure SQL-Datenbank und des Gateways von Azure SQL-Datenbank hergestellt wird.
 
-- Clients innerhalb von Azure oder außerhalb von Azure stellen eine Verbindung mit dem SLB her, der über eine öffentliche IP-Adresse verfügt und auf dem Port 1433 lauscht.
-- Der SLB leitet Datenverkehr an das Azure SQL-Datenbank-Gateway.
-- Das Gateway leitet den Datenverkehr an die korrekte Proxy-Middleware.
-- Die Proxy-Middleware leitet den Datenverkehr an die entsprechende Azure SQL-Datenbank.
+- Clients stellen eine Verbindung mit dem SLB her, der über eine öffentliche IP-Adresse verfügt und an Port 1433 lauscht.
+- Der SLB leitet Datenverkehr an das Gateway der Azure SQL-Datenbank weiter.
+- Je nach effektiver Verbindungsrichtlinie leitet das Gateway den Datenverkehr an die richtige Proxymiddleware um oder fungiert als Proxy.
+- Die Proxymiddleware leitet den Datenverkehr an die entsprechende Azure SQL-Datenbank weiter.
 
 > [!IMPORTANT]
 > In jede dieser Komponenten ist Denial-of Service-Schutz (DDoS) auf Ebene des Netzwerks und der App integriert.
 
+## <a name="connection-policy"></a>Verbindungsrichtlinie
+
+Die Azure SQL-Datenbank unterstützt diese drei Optionen zum Festlegen der Verbindungsrichtlinie für einen SQL-Datenbankserver:
+
+- **Umleiten (empfohlen)**: Clients stellen Verbindungen direkt mit dem Knoten her, der die Datenbank hostet. Zum Aktivieren der Konnektivität müssen die Clients ausgehende Firewallregeln für alle Azure-IP-Adressen in der Region zulassen (verwenden Sie Netzwerksicherheitsgruppen (NSG) mit [Diensttags](../virtual-network/security-overview.md#service-tags)) – nicht nur für IP-Adressen des Azure SQL-Datenbankgateways. Da Pakete direkt an die Datenbank gesendet werden, haben Latenz und Durchsatz die Leistung verbessert.
+- **Proxy**: In diesem Modus werden alle Verbindungen über die Azure SQL-Datenbankgateways hergestellt. Zum Aktivieren der Konnektivität müssen Clients über ausgehende Firewallregeln verfügen, die nur die IP-Adressen des Azure SQL-Datenbankgateways zulassen (i.d.R. zwei IP-Adressen pro Region). Dieser Modus kann je nach Workload höhere Latenzen und geringeren Durchsatz verursachen. Es wird empfohlen, die Verbindungsrichtlinie „Umleiten“ statt der Verbindungsrichtlinie „Proxy“ zu verwenden, um die niedrigste Latenz und den höchsten Durchsatz zu erzielen.
+- **Standard**: Diese Verbindungsrichtlinie ist nach dem Erstellen auf allen Servern aktiv, es sei denn, Sie ändern sie explizit in „Proxy“ oder „Umleiten“. Die effektive Richtlinie hängt davon ab, ob Verbindungen innerhalb von Azure (Umleiten) oder außerhalb von Azure (Proxy) hergestellt werden.
+
 ## <a name="connectivity-from-within-azure"></a>Verbindung aus Azure
 
-Wenn Sie eine Verbindung aus Azure herstellen, verfügen Ihre Verbindungen standardmäßig über die Verbindungsrichtlinie **Redirect**. Die Verbindungsrichtlinie **Redirect** bedeutet, dass Verbindungen nach TCP-Sitzungen mit der Azure-Datenbank hergestellt werden. Anschließend wird die Clientsitzung an die Proxy-Middleware weitergeleitet. Dabei wird die virtuelle Ziel-IP von der des Gateways der Azure SQL-Datenbank in die der Proxy-Middleware geändert. Danach fließen alle nachfolgenden Pakete direkt über die Proxy-Middleware, wobei das Gateway für die Azure SQL-Datenbank umgangen wird. Das folgende Diagramm veranschaulicht diesen Datenverkehrfluss.
+Wenn Sie in Azure eine Verbindung auf einem Server herstellen, der nach dem 10. November 2018 erstellt wurde, verfügen Ihre Verbindungen standardmäßig über die Verbindungsrichtlinie **Umleiten**. Die Verbindungsrichtlinie **Redirect** bedeutet, dass Verbindungen nach TCP-Sitzungen mit der Azure-Datenbank hergestellt werden. Anschließend wird die Clientsitzung an die Proxy-Middleware weitergeleitet. Dabei wird die virtuelle Ziel-IP von der des Gateways der Azure SQL-Datenbank in die der Proxy-Middleware geändert. Danach fließen alle nachfolgenden Pakete direkt über die Proxy-Middleware, wobei das Gateway für die Azure SQL-Datenbank umgangen wird. Das folgende Diagramm veranschaulicht diesen Datenverkehrfluss.
 
 ![Architekturübersicht](./media/sql-database-connectivity-architecture/connectivity-from-within-azure.png)
+
+> [!IMPORTANT]
+> Wenn Sie den SQL-Datenbankserver vor dem 10. November 2018 erstellt haben, wurde Ihre Verbindungsrichtlinie explizit auf **Proxy** festgelegt. Beim Verwenden von Dienstendpunkten wird empfohlen, die Verbindungsrichtlinie in **Umleiten** zu ändern, um die Leistung zu verbessern. Wenn Sie Ihre Verbindungsrichtlinie in **Umleiten** ändern, reicht es nicht aus, ausgehende Verbindungen für Ihre NSG mit den unten aufgeführten Azure SQL-Datenbankgateway-IPs zuzulassen. Sie müssen ausgehende Verbindungen für alle Azure SQL-Datenbank-IPs zulassen. Dies ist mithilfe von Dienst-Tags für Netzwerksicherheitsgruppen (NSGs) möglich. Weitere Informationen finden Sie unter [Dienst-Tags](../virtual-network/security-overview.md#service-tags).
 
 ## <a name="connectivity-from-outside-of-azure"></a>Verbindung von außerhalb von Azure
 
@@ -51,19 +62,11 @@ Wenn Sie von außerhalb von Azure eine Verbindung herstellen, verfügen Ihre Ver
 
 ![Architekturübersicht](./media/sql-database-connectivity-architecture/connectivity-from-outside-azure.png)
 
-> [!IMPORTANT]
-> Bei der Verwendung von Dienstendpunkten mit Azure SQL-Datenbank lautet die standardmäßige Richtlinie **Proxy**. Um die Konnektivität aus Ihrem VNET zu aktivieren, müssen Sie ausgehende Verbindungen zu den in der folgenden Liste angegebenen IP-Adressen für den Azure SQL-Datenbank-Gateway zulassen.
-
-Beim Verwenden von Dienstendpunkten empfehlen wir Ihnen dringend, Ihre Verbindungsrichtlinie in **Umleiten** zu ändern, um die Leistung zu verbessern. Wenn Sie Ihre Verbindungsrichtlinie in **Umleiten** ändern, reicht dies nicht aus, um ausgehende Verbindungen für Ihre NSG mit den unten aufgeführten Azure SQL-Datenbank-Gateway-IPs zuzulassen. Sie müssen ausgehende Verbindungen für alle Azure SQL-Datenbank-IPs zulassen. Dies ist mithilfe von Dienst-Tags für Netzwerksicherheitsgruppen (NSGs) möglich. Weitere Informationen finden Sie unter [Dienst-Tags](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags).
-
 ## <a name="azure-sql-database-gateway-ip-addresses"></a>IP-Adressen vom Gateway von Azure SQL-Datenbank
 
 Zur Verbindung mit einer Azure SQL-Datenbank von einer lokalen Ressource aus müssen Sie ausgehenden Netzwerkdatenverkehr auf dem Gateway von Azure SQL-Datenbank für Ihre Azure-Region zulassen. Ihre Verbindungen erfolgen nur über das Gateway, wenn Sie eine Verbindung im Proxymodus herstellen. Dies ist die Standardeinstellung bei der Verbindung von lokalen Ressourcen aus.
 
 Die folgende Tabelle enthält die primäre und sekundäre IP-Adressen des Gateways von Azure SQL-Datenbank für alle Datenregionen. Für einige Regionen gibt es zwei IP-Adressen. In diesen Regionen ist die primäre IP-Adresse die aktuelle IP-Adresse des Gateways, und die zweite IP-Adresse ist eine Failover-IP-Adresse. Die Failoveradresse ist die Adresse, wohin wir möglicherweise Ihren Server verschieben, um die Verfügbarkeit des Dienst hoch zu halten. Für diese Regionen wird empfohlen, dass Sie ausgehenden Verkehr an beide IP-Adressen zulassen. Die zweite IP-Adresse ist Eigentum von Microsoft und belauscht keine Dienste von Azure SQL-Datenbank. Dies macht sie erst, wenn Sie zulassen, dass Azure SQL-Datenbank Verbindungen annimmt.
-
-> [!IMPORTANT]
-> Wenn Sie die Verbindung aus Azure herstellen, lautet Ihre Verbindungsrichtlinie standardmäßig **Umleiten** (sofern Sie keine Dienstendpunkte verwenden). Es reicht nicht aus, die folgenden IP-Adressen zuzulassen. Sie müssen alle IP-Adressen von Azure SQL-Datenbank zulassen. Wenn Sie die Verbindung aus einem VNet herstellen, können Sie dazu Diensttags für Netzwerksicherheitsgruppen (NSGs) verwenden. Weitere Informationen finden Sie unter [Dienst-Tags](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags).
 
 | Name der Region | Primäre IP-Adresse | Sekundäre IP-Adresse |
 | --- | --- |--- |

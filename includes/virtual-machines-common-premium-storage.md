@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/24/2018
 ms.author: ramankum
 ms.custom: include file
-ms.openlocfilehash: 97e4e670d5db646cea28cb30e9ca95633cea2a8a
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 7fa7e6126c415a0a33b77b78975e8f4a533c4675
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49437027"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51263286"
 ---
 # <a name="high-performance-premium-storage-and-managed-disks-for-vms"></a>Storage Premium-Hochleistungsspeicher und verwaltete Datenträger für VMs
 
@@ -97,7 +97,7 @@ Dies sind einige der unterstützten Features auf Storage Premium-fähigen virtue
     Sie können Premium- und Standard-Datenträger auf derselben Storage Premium-VM verwenden. Mit Storage Premium können Sie eine VM bereitstellen und mehrere permanente Datenträger an die VM anfügen. Bei Bedarf können Sie Daten über die Datenträger verteilen, um die Kapazität und die Leistung des Volumes zu erhöhen.
 
     > [!NOTE]
-    > Wenn Sie [Speicherplätze](http://technet.microsoft.com/library/hh831739.aspx) für die Verteilung auf Premium-Speicherdatenträger nutzen, sollten Sie Speicherplätze mit einer Spalte für jeden verwendeten Datenträger einrichten. Andernfalls kann die Gesamtleistung des Stripesetvolume aufgrund ungleicher Verteilung des Datenverkehrs auf die Datenträger niedriger als erwartet sein. In Server-Manager können Sie standardmäßig Spalten für bis zu acht Datenträger einrichten. Wenn Sie mehr als acht Datenträger haben, können Sie PowerShell nutzen, um das Volume zu erstellen. Geben Sie die Anzahl von Spalten manuell an. Andernfalls verwendet die Server-Manager-Benutzeroberfläche weiterhin acht Spalten, auch wenn Sie mehr Datenträger besitzen. Wenn bei Ihnen beispielsweise 32 Datenträger in einem einzelnen Stripeset enthalten sind, geben Sie 32 Spalten an. Verwenden Sie zum Angeben der Anzahl von Spalten, die vom virtuellen Datenträger verwendet werden, im [New-VirtualDisk](http://technet.microsoft.com/library/hh848643.aspx)-PowerShell-Cmdlet den Parameter *NumberOfColumns*. Weitere Informationen finden Sie unter [Übersicht über Speicherplätze](http://technet.microsoft.com/library/hh831739.aspx) und [Häufig gestellte Fragen zu Speicherplätzen](http://social.technet.microsoft.com/wiki/contents/articles/11382.storage-spaces-frequently-asked-questions-faq.aspx).
+    > Wenn Sie [Speicherplätze](https://technet.microsoft.com/library/hh831739.aspx) für die Verteilung auf Premium-Speicherdatenträger nutzen, sollten Sie Speicherplätze mit einer Spalte für jeden verwendeten Datenträger einrichten. Andernfalls kann die Gesamtleistung des Stripesetvolume aufgrund ungleicher Verteilung des Datenverkehrs auf die Datenträger niedriger als erwartet sein. In Server-Manager können Sie standardmäßig Spalten für bis zu acht Datenträger einrichten. Wenn Sie mehr als acht Datenträger haben, können Sie PowerShell nutzen, um das Volume zu erstellen. Geben Sie die Anzahl von Spalten manuell an. Andernfalls verwendet die Server-Manager-Benutzeroberfläche weiterhin acht Spalten, auch wenn Sie mehr Datenträger besitzen. Wenn bei Ihnen beispielsweise 32 Datenträger in einem einzelnen Stripeset enthalten sind, geben Sie 32 Spalten an. Verwenden Sie zum Angeben der Anzahl von Spalten, die vom virtuellen Datenträger verwendet werden, im [New-VirtualDisk](https://technet.microsoft.com/library/hh848643.aspx)-PowerShell-Cmdlet den Parameter *NumberOfColumns*. Weitere Informationen finden Sie unter [Übersicht über Speicherplätze](https://technet.microsoft.com/library/hh831739.aspx) und [Häufig gestellte Fragen zu Speicherplätzen](https://social.technet.microsoft.com/wiki/contents/articles/11382.storage-spaces-frequently-asked-questions-faq.aspx).
     >
     > 
 
@@ -151,7 +151,9 @@ Wenn Sie Storage Premium-Konten für nicht verwaltete Datenträger verwenden und
 ### <a name="premium-storage-disk-limits"></a>Grenzwerte für Storage Premium-Datenträger
 Wenn Sie einen Storage Premium-Datenträger bereitstellen, wird anhand der Größe des Datenträgers der maximale IOPS- und Durchsatzwert (Bandbreite) ermittelt. Azure bietet acht GA-Typen von Storage Premium-Datenträgern: P4 (nur Managed Disks), P6 (nur Managed Disks), P10, P15 (nur Managed Disks), P20, P30, P40 und P50. Dazu kommen drei Datenträgergrößen in der Vorschauversion: P60, P70 und P80. Für jeden Typ von Storage Premium-Datenträger gelten für IOPS und den Durchsatz bestimmte Grenzwerte. Die Grenzwerte für die Datenträgertypen sind in der folgenden Tabelle beschrieben:
 
-| Premium-Datenträgertyp  | P4    | P6    | P10    | P15    | P20    | P30              | P40             | P50             | P60             | P70                | P80                |
+Größen, die mit einem Sternchen gekennzeichnet sind, befinden sich derzeit in der Vorschau.
+
+| Premium-Datenträgertyp  | P4    | P6    | P10    | P15    | P20    | P30              | P40             | P50             | P60*            | P70*               | P80*               |
 |---------------------|-------|-------|--------|--------|--------|------------------|-----------------|-----------------|-----------------|--------------------|--------------------|
 | Datenträgergröße           | 32 GiB| 64 GiB| 128 GB| 256 GiB| 512 GB| 1.024 GiB (1 TiB) | 2.048 GiB (2 TiB)| 4.096 GiB (4 TiB)| 8192 GiB (8 TiB)| 16384 GiB (16 TiB)| 32767 GiB (32 TiB)|
 | IOPS pro Datenträger       | 120   | 240   | 500    | 1100   | 2.300   | 5.000             | 7.500            | 7.500            | 12.500          | 15.000             | 20.000             |
@@ -237,7 +239,7 @@ Für Momentaufnahmen von Storage Premium-Blobs gelten folgende Grenzwerte:
 
 Um georedundante Kopien Ihrer Momentaufnahmen aufzubewahren, können Sie Momentaufnahmen aus einem Premium-Speicherkonto mithilfe von "AzCopy" oder "Copy Blob" in ein georedundantes Standardspeicherkonto kopieren. Weitere Informationen finden Sie unter [Übertragen von Daten mit dem Befehlszeilenprogramm AzCopy](../articles/storage/common/storage-use-azcopy.md) und [Copy Blob](/rest/api/storageservices/Copy-Blob).
 
-Ausführliche Informationen zum Durchführen von REST-Vorgängen für Seitenblobs in einem Storage Premium-Konto finden Sie unter [Using Blob Service Operations with Azure Premium Storage](http://go.microsoft.com/fwlink/?LinkId=521969) (Verwenden von Blob-Dienstvorgängen mit Azure Storage Premium).
+Ausführliche Informationen zum Durchführen von REST-Vorgängen für Seitenblobs in einem Storage Premium-Konto finden Sie unter [Using Blob Service Operations with Azure Premium Storage](https://go.microsoft.com/fwlink/?LinkId=521969) (Verwenden von Blob-Dienstvorgängen mit Azure Storage Premium).
 
 ### <a name="managed-disks"></a>Verwaltete Datenträger
 
@@ -267,12 +269,12 @@ Die folgenden Linux-Distributionen wurden für Azure Storage Premium überprüft
 | SUSE | SLES 12| 3.12.36-38.1+| suse-sles-12-priority-v20150213 <br> suse-sles-12-v20150213 |
 | SUSE | SLES 11 SP4 | 3.0.101-0.63.1+ | &nbsp; |
 | CoreOS | 584.0.0+| 3.18.4+ | CoreOS 584.0.0 |
-| CentOS | 6.5, 6.6, 6.7, 7.0 | &nbsp; | [LIS4 erforderlich](http://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) <br> *Siehe Hinweis im nächsten Abschnitt* |
-| CentOS | 7.1+ | 3.10.0-229.1.2.el7+ | [LIS4 empfohlen](http://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) <br> *Siehe Hinweis im nächsten Abschnitt* |
+| CentOS | 6.5, 6.6, 6.7, 7.0 | &nbsp; | [LIS4 erforderlich](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) <br> *Siehe Hinweis im nächsten Abschnitt* |
+| CentOS | 7.1+ | 3.10.0-229.1.2.el7+ | [LIS4 empfohlen](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) <br> *Siehe Hinweis im nächsten Abschnitt* |
 | Red Hat Enterprise Linux (RHEL) | 6.8+, 7.2+ | &nbsp; | &nbsp; |
 | Oracle | 6.0+, 7.2+ | &nbsp; | UEK4 oder RHCK |
-| Oracle | 7.0-7.1 | &nbsp; | UEK4 oder RHCK mit [LIS 4.1+](http://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) |
-| Oracle | 6.4-6.7 | &nbsp; | UEK4 oder RHCK mit [LIS 4.1+](http://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) |
+| Oracle | 7.0-7.1 | &nbsp; | UEK4 oder RHCK mit [LIS 4.1+](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) |
+| Oracle | 6.4-6.7 | &nbsp; | UEK4 oder RHCK mit [LIS 4.1+](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) |
 
 
 ### <a name="lis-drivers-for-openlogic-centos"></a>LIS-Treiber für OpenLogic CentOS

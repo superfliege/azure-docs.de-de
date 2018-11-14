@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/09/2018
 ms.author: iainfou
-ms.openlocfilehash: bd7f8748dc5260ed6574a1b48632318e9399bca0
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 0dc0421baf1e5cb19be925072b5fffb989e23a3b
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48042120"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50979249"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service"></a>Integrieren von Azure Active Directory in Azure Kubernetes Service
 
@@ -68,7 +68,9 @@ Die erste Azure AD-Anwendung wird verwendet, um eine Azure AD-Gruppenmitgliedsch
 
   ![Festlegen von Anwendungsberechtigungen für Graph](media/aad-integration/delegated-permissions.png)
 
-7. Wählen Sie **Fertig** aus, wählen Sie in der Liste der APIs *Microsoft Graph* aus, und wählen Sie dann **Berechtigungen erteilen** aus. Dieser Schritt schlägt fehl, wenn das aktuelle Konto keinem Mandantenadministrator gehört.
+  Wählen Sie **Fertig**aus.
+
+7. Wählen Sie in der Liste der APIs *Microsoft Graph* aus, und wählen Sie dann **Berechtigungen erteilen** aus. Dieser Schritt schlägt fehl, wenn das aktuelle Konto keinem Mandantenadministrator gehört.
 
   ![Festlegen von Anwendungsberechtigungen für Graph](media/aad-integration/grant-permissions.png)
 
@@ -98,7 +100,9 @@ Die zweite Azure AD-Anwendung wird beim Anmelden mit der Kubernetes-CLI (kubectl
 
   ![Auswählen des Endpunkts für die AKS-AAD-Serveranwendung](media/aad-integration/select-server-app.png)
 
-4. Wählen Sie **Fertig** und **Berechtigungen erteilen** aus, um diesen Schritt abzuschließen.
+  Wählen Sie **Fertig**aus.
+
+4. Wählen Sie Ihre Server-API aus der Liste aus, und wählen Sie dann **Berechtigungen erteilen** aus:
 
   ![Erteilen von Berechtigungen](media/aad-integration/grant-permissions-client.png)
 

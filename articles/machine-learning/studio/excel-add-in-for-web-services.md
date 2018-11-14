@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 2/1/2018
-ms.openlocfilehash: 0d0274b88a15688106f185ede87f576443bdadb0
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: ed3fc6d1d2a4b674e2866d2e168fb72490575869
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51229354"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51281832"
 ---
 # <a name="excel-add-in-for-azure-machine-learning-studio-web-services"></a>Excel-Add-In für Azure Machine Learning Studio-Webdienste
 Mit Excel können Webdienste auf einfache Weise direkt aufgerufen werden, ohne dafür Code erstellen zu müssen.
@@ -28,7 +28,7 @@ Mit Excel können Webdienste auf einfache Weise direkt aufgerufen werden, ohne d
 1. Öffnen Sie die [Excel-Beispieldatei](https://aka.ms/amlexcel-sample-2), die das Excel-Add-In und Daten zu den Passagieren auf der Titanic enthält. 
  
 > [!NOTE]
-> Es wird eine Liste der Webdienste angezeigt, die der Datei zugeordnet sind, und unten ein Kontrollkästchen für die automatische Vorhersage. Wenn Sie die automatische Vorhersage aktivieren, werden die Vorhersagen **aller** Ihrer Dienste bei jeder Änderung bei den Eingaben aktualisiert. Wenn die Option nicht aktiviert ist, müssen Sie zum Aktualisieren auf "Predict All" (Alle vorhersagen) klicken. Informationen zum Aktivieren der automatischen Vorhersage auf Dienstebene finden Sie unter Schritt 6.
+> Es wird eine Liste der Webdienste angezeigt, die der Datei zugeordnet sind, und unten ein Kontrollkästchen für die automatische Vorhersage. Wenn Sie die automatische Vorhersage aktivieren, werden die Vorhersagen **aller** Ihrer Dienste bei jeder Änderung in den Eingaben aktualisiert. Wenn die Option nicht aktiviert ist, müssen Sie zum Aktualisieren auf "Predict All" (Alle vorhersagen) klicken. Informationen zum Aktivieren der automatischen Vorhersage auf Dienstebene finden Sie unter Schritt 6.
 
 2. Wählen Sie den Webdienst aus, indem Sie darauf klicken – in diesem Beispiel ist das „Titanic Survivor Predictor (Excel-Add-In-Beispiel) [Ergebnis]“.
    

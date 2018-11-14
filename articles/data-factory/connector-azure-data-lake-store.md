@@ -10,14 +10,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 08/31/2018
+ms.date: 11/05/2018
 ms.author: jingwang
-ms.openlocfilehash: d8bbc3a5e4ac14ed60fcd6e5f19bdf1df03455a6
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: aed1ab14072da3e3d3e49060b7117a24eeecdb56
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48817023"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51010251"
 ---
 # <a name="copy-data-to-or-from-azure-data-lake-storage-gen1-by-using-azure-data-factory"></a>Kopieren von Daten nach und aus Azure Data Lake Storage Gen1 mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -44,9 +44,6 @@ Der Azure Data Lake Store-Connector unterstützt insbesondere Folgendes:
 > Eine exemplarische Vorgehensweise zur Verwendung des Azure Data Lake Store-Connectors finden Sie unter [Laden von Daten in Azure Data Lake Store](load-azure-data-lake-store.md).
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
-
->[!NOTE]
->Wenn Sie das Tool zum Kopieren von Daten zum Erstellen einer Kopierpipeline bzw. die ADF-UI zum Testen von Verbindungs-/Navigationsordnern während der Erstellung verwenden, muss die Berechtigung des Dienstprinzipals oder MSI auf Stammebene gewährt werden. Die Ausführung von Kopiervorgängen kann jedoch funktionieren, solange die Berechtigung für die zu kopierenden Daten erteilt wird. Sie können die Erstellungsvorgänge überspringen, wenn Sie die Berechtigung einschränken möchten.
 
 Die folgenden Abschnitte enthalten Details zu Eigenschaften, die zum Definieren von Data Factory-Entitäten speziell für Azure Data Lake Store verwendet werden:
 
@@ -79,6 +76,9 @@ Wenn Sie die Dienstprinzipalauthentifizierung verwenden möchten, registrieren S
 > Erteilen Sie dem Dienstprinzipal die korrekte Berechtigung in Azure Data Lake Store:
 >- Erteilen Sie **als Quelle** im Daten-Explorer unter „Zugriff“ mindestens die Berechtigung **Lesen und Ausführen**, um die Dateien in Ordnern/Unterordnern aufzulisten und zu kopieren, oder die Berechtigung **Lesen**, um eine einzelne Datei zu kopieren, und wählen Sie das Hinzufügen zu **diesem Ordner und allen Unterordnern** für „rekursiv“ und das Hinzufügen als **ein Zugriffsberechtigungseintrag und ein Standardberechtigungseintrag** aus. Es gelten keine Anforderungen für die Zugriffssteuerung (IAM) auf Kontoebene.
 >- Erteilen Sie **als Senke** im Daten-Explorer unter „Zugriff“ mindestens die Berechtigung **Schreiben und Ausführen**, um untergeordnete Elemente im Ordner zu erstellen, und wählen Sie das Hinzufügen zu **diesem Ordner und allen Unterordnern** für „rekursiv“ und das Hinzufügen als **ein Zugriffsberechtigungseintrag und ein Standardberechtigungseintrag** aus. Wenn Sie Azure IR für die Erstellung von Kopien verwenden (sowohl Quelle als auch Senke befinden sich in der Cloud), erteilen Sie in der Kontozugriffssteuerung (IAM) mindestens die Rolle **Leser**, um Data Factory die Erkennung der Data Lake Store-Region zu ermöglichen. Wenn Sie diese IAM-Rolle vermeiden möchten, [erstellen Sie explizit eine Azure IR-Instanz](create-azure-integration-runtime.md#create-azure-ir) mit dem Standort von Data Lake Store, und ordnen Sie sie wie im folgenden Beispiel im verknüpften Data Lake Store-Dienst zu.
+
+>[!NOTE]
+>Wenn Sie das **Tool zum Kopieren von Daten** zum Erstellen einer Kopierpipeline bzw. die **ADF-UI** zum Testen von Verbindungs-/Navigationsordnern während der Erstellung verwenden, muss die Berechtigung des Dienstprinzipals **auf Stammebene mit der Berechtigung „Execute“** gewährt werden, um Ordner aufzuführen, die im Stamm beginnen. Die Ausführung von Kopiervorgängen kann jedoch funktionieren, solange die Berechtigung für die zu kopierenden Daten erteilt wird. Sie können die Erstellungsvorgänge überspringen, wenn Sie die Berechtigung einschränken möchten.
 
 Folgende Eigenschaften werden unterstützt:
 
@@ -127,6 +127,9 @@ So verwenden Sie verwaltete Identitäten für die Azure-Ressourcenauthentifizier
 > Stellen Sie sicher, dass Sie der Data Factory-Dienstidentität die richtige Berechtigung in Azure Data Lake Store gewähren:
 >- Erteilen Sie **als Quelle** im Daten-Explorer unter „Zugriff“ mindestens die Berechtigung **Lesen und Ausführen**, um die Dateien in Ordnern/Unterordnern aufzulisten und zu kopieren, oder die Berechtigung **Lesen**, um eine einzelne Datei zu kopieren, und wählen Sie das Hinzufügen zu **diesem Ordner und allen Unterordnern** für „rekursiv“ und das Hinzufügen als **ein Zugriffsberechtigungseintrag und ein Standardberechtigungseintrag** aus. Es gelten keine Anforderungen für die Zugriffssteuerung (IAM) auf Kontoebene.
 >- Erteilen Sie **als Senke** im Daten-Explorer unter „Zugriff“ mindestens die Berechtigung **Schreiben und Ausführen**, um untergeordnete Elemente im Ordner zu erstellen, und wählen Sie das Hinzufügen zu **diesem Ordner und allen Unterordnern** für „rekursiv“ und das Hinzufügen als **ein Zugriffsberechtigungseintrag und ein Standardberechtigungseintrag** aus. Wenn Sie Azure IR für die Erstellung von Kopien verwenden (sowohl Quelle als auch Senke befinden sich in der Cloud), erteilen Sie in der Kontozugriffssteuerung (IAM) mindestens die Rolle **Leser**, um Data Factory die Erkennung der Data Lake Store-Region zu ermöglichen. Wenn Sie diese IAM-Rolle vermeiden möchten, [erstellen Sie explizit eine Azure IR-Instanz](create-azure-integration-runtime.md#create-azure-ir) mit dem Standort von Data Lake Store, und ordnen Sie sie wie im folgenden Beispiel im verknüpften Data Lake Store-Dienst zu.
+
+>[!NOTE]
+>Wenn Sie das **Tool zum Kopieren von Daten** zum Erstellen einer Kopierpipeline bzw. die **ADF-UI** zum Testen von Verbindungs-/Navigationsordnern während der Erstellung verwenden, muss die Berechtigung **auf Stammebene mit der Berechtigung „Execute“** gewährt werden, um Ordner aufzuführen, die im Stamm beginnen. Die Ausführung von Kopiervorgängen kann jedoch funktionieren, solange die Berechtigung für die zu kopierenden Daten erteilt wird. Sie können die Erstellungsvorgänge überspringen, wenn Sie die Berechtigung einschränken möchten.
 
 In Azure Data Factory müssen Sie außer den allgemeinen Data Lake Store-Informationen im verknüpften Dienst keine weiteren Eigenschaften angeben.
 

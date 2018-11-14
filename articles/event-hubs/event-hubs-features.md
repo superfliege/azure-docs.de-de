@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2018
 ms.author: shvija
-ms.openlocfilehash: c4a9a3189f3de101528871e4dba95bf7a76b9846
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: a3f7245d8a648249a4e7179cc02982eae8561037
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42746913"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51280575"
 ---
 # <a name="event-hubs-features-overview"></a>Event Hubs-Features im Überblick
 
@@ -28,13 +28,21 @@ Dieser Artikel setzt auf den Informationen in der [Übersichtsartikel](event-hub
 ## <a name="namespace"></a>Namespace
 Ein Event Hubs-Namespace stellt einen eindeutigen Bereichscontainer bereit, auf den über den [vollqualifizierten Domänennamen](https://en.wikipedia.org/wiki/Fully_qualified_domain_name) verwiesen wird, und in dem Sie mindestens einen Event Hub bzw. mindestens ein Kafka-Thema erstellen. 
 
+## <a name="event-hubs-for-apache-kafka"></a>Event Hubs für Apache Kafka
+
+[Dieses Feature](event-hubs-for-kafka-ecosystem-overview.md) stellt einen Endpunkt bereit, der Kunden die Kommunikation mit Event Hubs über das Kafka-Protokoll ermöglicht. Mit dieser Integration verfügen Kunden über einen Kafka-Endpunkt. Dadurch können Kunden ihre vorhandenen Kafka-Anwendungen so konfigurieren, dass die Kommunikation mit Event Hubs ermöglicht wird. Dies stellt eine Alternative zum Ausführen ihrer eigenen Kafka-Cluster dar. Event Hubs für Apache Kafka unterstützt das Kafka-Protokoll 1.0 und höher. 
+
+Mit dieser Integration ist es nicht erforderlich, dass Sie Kafka-Cluster ausführen oder mit ZooKeeper verwalten. So können Sie auch einige der anspruchsvollsten Features von Event Hubs verwenden, z.B. Capture, automatische Vergrößerung und georedundante Notfallwiederherstellung.
+
+Außerdem können durch diese Integration Anwendungen wie Mirror Maker oder Frameworks wie Kafka Connect nur durch Konfigurationsänderungen ohne Cluster verwendet werden. 
+
 ## <a name="event-publishers"></a>Ereignisherausgeber
 
-Jede Entität, die Daten an einen Event Hub sendet, ist ein Ereigniserzeuger bzw. *Ereignisherausgeber*. Ereignisherausgeber können Ereignisse über HTTPS oder AMQP 1.0 veröffentlichen. Ereignisherausgeber identifizieren sich mit einem SAS-Token (Shared Access Signature) bei einem Event Hub und können eine eindeutige Identität aufweisen oder ein gemeinsames SAS-Token verwenden.
+Jede Entität, die Daten an einen Event Hub sendet, ist ein Ereigniserzeuger bzw. *Ereignisherausgeber*. Ereignisherausgeber können Ereignisse über HTTPS, AMQP 1.0 oder Kafka 1.0 und höher veröffentlichen. Ereignisherausgeber identifizieren sich mit einem SAS-Token (Shared Access Signature) bei einem Event Hub und können eine eindeutige Identität aufweisen oder ein gemeinsames SAS-Token verwenden.
 
 ### <a name="publishing-an-event"></a>Veröffentlichen eines Ereignisses
 
-Sie können ein Ereignis über AMQP 1.0 oder HTTPS veröffentlichen. Event Hubs stellt [Clientbibliotheken und Klassen](event-hubs-dotnet-framework-api-overview.md) zum Veröffentlichen von Ereignissen für einen Event Hub von .NET-Clients bereit. Für andere Runtimes und Plattformen können beliebige AMQP 1.0-Clients verwendet werden, z.B. [Apache Qpid](http://qpid.apache.org/). Sie können Ereignisse einzeln oder als Batch veröffentlichen. Jede Veröffentlichung (Ereignisdateninstanz) ist auf 256 KB beschränkt, unabhängig davon, ob es sich um ein einzelnes Ereignis oder einen Batch handelt. Das Veröffentlichen von Ereignissen, die größer als dieser Schwellenwert sind, führt zu einem Fehler. Es ist eine bewährte Methode für Herausgeber, die Partitionen innerhalb des Event Hubs nicht zu beachten und nur einen *Partitionsschlüssel* (im nächsten Abschnitt beschrieben) oder die eigene Identität über das SAS-Token anzugeben.
+Sie können ein Ereignis über AMQP 1.0, Kafka 1.0 (und höher) oder HTTPS veröffentlichen. Event Hubs stellt [Clientbibliotheken und Klassen](event-hubs-dotnet-framework-api-overview.md) zum Veröffentlichen von Ereignissen für einen Event Hub von .NET-Clients bereit. Für andere Runtimes und Plattformen können beliebige AMQP 1.0-Clients verwendet werden, z.B. [Apache Qpid](http://qpid.apache.org/). Sie können Ereignisse einzeln oder als Batch veröffentlichen. Jede Veröffentlichung (Ereignisdateninstanz) ist auf 1 MB beschränkt, unabhängig davon, ob es sich um ein einzelnes Ereignis oder einen Batch handelt. Das Veröffentlichen von Ereignissen, die größer als dieser Schwellenwert sind, führt zu einem Fehler. Es ist eine bewährte Methode für Herausgeber, die Partitionen innerhalb des Event Hubs nicht zu beachten und nur einen *Partitionsschlüssel* (im nächsten Abschnitt beschrieben) oder die eigene Identität über das SAS-Token anzugeben.
 
 Die Wahl zwischen AMQP oder HTTPS ist auf das Verwendungsszenario bezogen. AMQP erfordert die Einrichtung eines persistenten bidirektionalen Sockets zusätzlich zu TLS (Transport Level Security) oder SSL/TLS. AMQP weist höhere Netzwerkkosten beim Initialisieren der Sitzung auf, HTTPS erfordert jedoch zusätzlichen SSL-Mehraufwand für jede Anfrage. AMQP verfügt über eine höhere Leistung für häufige Herausgeber.
 

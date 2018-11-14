@@ -1,18 +1,18 @@
 ---
 title: Grundlegendes zur Azure IoT Hub-Abfragesprache | Microsoft Docs
 description: 'Entwicklerhandbuch: Beschreibung der SQL-ähnlichen IoT Hub-Abfragesprache, die zum Abrufen von Informationen zu Geräte-/Modulzwillingen und Aufträgen von IoT Hub verwendet wird.'
-author: fsautomata
+author: rezasherafat
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 02/26/2018
-ms.author: elioda
-ms.openlocfilehash: f28a41f4a80806df14e314dae05405b7b45449b1
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.date: 10/29/2018
+ms.author: rezas
+ms.openlocfilehash: b7919a86c5f0b6b6990b465ed0c563fb42ea8bbc
+ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49318247"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50747914"
 ---
 # <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>IoT Hub-Abfragesprache für Geräte- und Modulzwillinge, Aufträge und Nachrichtenrouting
 
@@ -389,6 +389,11 @@ GROUP BY <group_by_element>
 **Attribute_name** bezieht sich auf jede Eigenschaft des JSON-Dokuments in der FROM-Sammlung.
 
 Die GROUP BY-Klausel wird derzeit nur für Abfragen von Gerätezwillingen unterstützt.
+
+> [!IMPORTANT]
+> Der Begriff `group` wird derzeit in Abfragen als spezielles Schlüsselwort behandelt. Wenn Sie `group` als Eigenschaftenname verwenden, sollten Sie ihn zur Vermeidung von Fehlern in doppelte Klammern einschließen, z.B. `SELECT * FROM devices WHERE tags.[[group]].name = 'some_value'`.
+>
+>
 
 ## <a name="expressions-and-conditions"></a>Ausdrücke und Bedingungen
 Auf hoher Ebene wird ein *Ausdruck*:

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/07/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 32a887d54a239db0c1e40458e1b304d899befff5
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: 0f53d71cca70f9340689d3d01fb9c67090f917c5
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48870552"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51277545"
 ---
 # <a name="azure-ad-b2c-use-the-azure-ad-graph-api"></a>Azure AD B2C: Verwenden der Azure AD-Graph-API
 
@@ -66,8 +66,8 @@ Sie verfügen jetzt über eine Anwendung mit der Berechtigung zum Erstellen, Les
 > 
 > 
 
-## <a name="configure-delete-permissions-for-your-application"></a>Konfigurieren der Löschberechtigungen für Ihre Anwendung
-Derzeit schließt die Berechtigung *Lese- und Schreibzugriff auf Verzeichnisdaten* **NICHT** die Möglichkeit ein, Löschvorgänge wie z.B. das Löschen von Benutzern durchzuführen. Wenn Ihre Anwendung die Möglichkeit erhalten soll, Benutzer zu löschen, müssen Sie diese zusätzlichen Schritte mit PowerShell ausführen, andernfalls können Sie mit dem nächsten Abschnitt fortfahren.
+## <a name="configure-delete-or-update-password-permissions-for-your-application"></a>Konfigurieren der Berechtigungen für das Löschen oder Aktualisieren des Kennworts für Ihre Anwendung
+Derzeit schließt die Berechtigung *Lese- und Schreibzugriff auf Verzeichnisdaten* **NICHT** die Möglichkeit ein, Benutzer zu löschen oder Benutzerkennwörter zu ändern. Wenn Ihre Anwendung die Möglichkeit erhalten soll, Benutzer zu löschen oder Kennwörter zu ändern, müssen Sie diese zusätzlichen Schritte mit PowerShell ausführen, andernfalls können Sie mit dem nächsten Abschnitt fortfahren.
 
 Installieren Sie zunächst das [Azure AD PowerShell v1-Modul (MSOnline)](https://docs.microsoft.com/powershell/azure/active-directory/install-msonlinev1?view=azureadps-1.0), wenn es noch nicht installiert ist:
 
@@ -84,7 +84,7 @@ Nachdem Sie das PowerShell-Modul installiert haben, stellen Sie eine Verbindung 
 Connect-MsolService
 ```
 
-Nun verwenden Sie im Skript unten die **Anwendungs-ID**, um der Anwendung die Benutzerrolle des Kontoadministrators zuzuweisen, die es der Anwendung ermöglicht, Benutzer zu löschen. Diese Rollen haben allgemein bekannte Bezeichner, daher müssen Sie lediglich in das Skript unten Ihre **Anwendungs-ID** einfügen.
+Nun verwenden Sie im Skript unten die **Anwendungs-ID**, um der Anwendung die Benutzerrolle des Kontoadministrators zuzuweisen. Diese Rollen haben allgemein bekannte Bezeichner, daher müssen Sie lediglich in das Skript unten Ihre **Anwendungs-ID** einfügen.
 
 ```powershell
 $applicationId = "<YOUR_APPLICATION_ID>"
@@ -92,7 +92,7 @@ $sp = Get-MsolServicePrincipal -AppPrincipalId $applicationId
 Add-MsolRoleMember -RoleObjectId fe930be7-5e62-47db-91af-98c3a49a38b1 -RoleMemberObjectId $sp.ObjectId -RoleMemberType servicePrincipal
 ```
 
-Die Anwendung verfügt jetzt außerdem über die Berechtigung zum Löschen von Benutzern aus Ihrem B2C-Mandanten.
+Die Anwendung verfügt jetzt außerdem über die Berechtigungen zum Löschen von Benutzern und zum Aktualisieren von Kennwörtern in Ihrem B2C-Mandanten.
 
 ## <a name="download-configure-and-build-the-sample-code"></a>Herunterladen, Konfigurieren und Erstellen des Beispielcodes
 Laden Sie zunächst den Beispielcode herunter, und bereiten Sie ihn für die Ausführung vor. Dann sehen wir ihn uns genauer an.  Sie können den [Beispielcode als ZIP-Datei herunterladen](https://github.com/AzureADQuickStarts/B2C-GraphAPI-DotNet/archive/master.zip). Sie können ihn auch in einem Verzeichnis Ihrer Wahl klonen:

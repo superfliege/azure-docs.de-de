@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/02/2018
 ms.author: shants
 ms.custom: include file
-ms.openlocfilehash: b3f71c4710bd9711a3209dd55f8e680f63627c1b
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: b8d759c7b55608be780389991e6bb393f4f3fe9f
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50035361"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50981483"
 ---
 ## <a name="view-vms-scheduled-for-maintenance-in-the-portal"></a>Anzeigen der virtuellen Computer mit geplanter Wartung im Portal
 
@@ -49,17 +49,9 @@ Sie können im Azure-Portal nach VMs suchen, für die eine Wartung geplant ist.
 
 ## <a name="notification-and-alerts-in-the-portal"></a>Benachrichtigungen und Warnungen im Portal
 
-Azure sendet eine E-Mail an die Gruppe der Abonnementbesitzer und -mitbesitzer, um sie über den Zeitplan für eine geplante Wartung zu informieren. Sie können Azure-Aktivitätsprotokollwarnungen erstellen, um weitere Empfänger und Kanäle hinzuzufügen. Weitere Informationen finden Sie unter [Überwachen der Abonnementaktivität mit dem Azure-Aktivitätsprotokoll](../articles/monitoring-and-diagnostics/monitoring-overview-activity-logs.md).
+Azure sendet eine E-Mail an die Gruppe der Abonnementbesitzer und -mitbesitzer, um sie über den Zeitplan für eine geplante Wartung zu informieren. Sie können Azure-Aktivitätsprotokollwarnungen erstellen, um weitere Empfänger und Kanäle hinzuzufügen. Weitere Informationen finden Sie unter [Erstellen von Aktivitätsprotokollwarnungen zu Dienstbenachrichtigungen](../articles/monitoring-and-diagnostics/monitoring-activity-log-alerts-on-service-notifications.md).
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-2. Klicken Sie im Menü auf der linken Seite auf **Überwachen**. 
-3. Klicken Sie im Bereich **Überwachen – Warnungen (klassisch)** auf **+ Aktivitätsprotokollwarnung hinzufügen**.
-5. Füllen Sie die Informationen auf der Seite **Aktivitätsprotokollwarnung hinzufügen** aus, und legen Sie die folgenden **Kriterien** fest:
-   - **Ereigniskategorie:** Dienstintegrität
-   - **Dienste:** Virtual Machine Scale Sets und Virtual Machines
-   - **Typ:** geplante Wartung 
-    
-Weitere Informationen zum Konfigurieren von Aktivitätsprotokollwarnungen finden Sie unter [Erstellen von Aktivitätsprotokollwarnungen](../articles/monitoring-and-diagnostics/monitoring-activity-log-alerts.md).
+Stellen Sie sicher, dass Sie den **Ereignistyp** als **Planmäßige Wartung** und **Dienste** als **VM-Skalierungsgruppe** und/oder **VM** einstellen.
     
     
 ## <a name="start-maintenance-on-your-vm-from-the-portal"></a>Starten der Wartung für Ihren virtuellen Computer über das Portal

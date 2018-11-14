@@ -10,23 +10,23 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: maquaran
-ms.openlocfilehash: 3c97c89bde40357981d82dce8dd53febff25c8f3
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: bc31c7ebec7c1f7a02be65b15805fb48b1ef275d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50239881"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51260311"
 ---
 # <a name="going-social-with-azure-cosmos-db"></a>Soziale Medien mit Azure Cosmos DB
 Da Sie in einer hochgradig vernetzten Welt leben, werden Sie irgendwann Teil **sozialer Netzwerke**. Sie verwenden diese Netzwerke, um mit Freunden, Kollegen und der Familie in Kontakt zu bleiben oder auch, um das, was Sie bewegt, mit Menschen mit den gleichen Interessen zu teilen.
 
 Als Ingenieur oder Entwickler haben Sie sich möglicherweise gefragt, wie diese Netzwerke Ihre Daten speichern und verknüpfen. Möglicherweise wurden Sie sogar bereits mit dem Entwurf und der Erstellung eines neuen sozialen Netzwerks für einen bestimmten Nischenmarkt beauftragt. Spätestens dann stellt sich die entscheidende Frage: Wie werden all diese Daten gespeichert?
 
-Nehmen wir an, dass Sie ein nagelneues soziales Netzwerk erschaffen, in dem die Benutzer Artikel mit den dazugehörigen Medien wie Bilder, Videos oder sogar Musik posten können. Die Benutzer sollen Beiträge darüber hinaus kommentieren und durch Punktvergabe bewerten können. Über einen Feed auf der Hauptseite sollen Benutzer Beiträge lesen und mit ihnen interagieren können. Das klingt (anfänglich) nicht gerade komplex, der Einfachheit halber hören wir aber an dieser Stelle auf. (Wir könnten uns weiter mit von Beziehungen beeinflussten, benutzerdefinierten Feeds beschäftigen, aber das geht über das Ziel dieses Artikels hinaus).
+Nehmen wir an, dass Sie ein nagelneues soziales Netzwerk erschaffen, in dem die Benutzer Artikel mit den dazugehörigen Medien wie Bilder, Videos oder sogar Musik posten können. Die Benutzer sollen Beiträge darüber hinaus kommentieren und durch Punktvergabe bewerten können. Über einen Feed auf der Hauptseite sollen Benutzer Beiträge lesen und mit ihnen interagieren können. Diese Methode klingt (anfänglich) nicht gerade komplex, der Einfachheit halber hören wir aber an dieser Stelle auf. (Wir könnten uns weiter mit von Beziehungen beeinflussten, benutzerdefinierten Feeds beschäftigen, aber das geht über das Ziel dieses Artikels hinaus).
 
 Wie und wo speichern Sie also die Daten?
 
-Viele von Ihnen haben möglicherweise bereits Erfahrungen mit SQL-Datenbanken gesammelt, oder kennen zumindest das Konzept der [relationalen Datenmodellierung](https://en.wikipedia.org/wiki/Relational_model) und könnten daher versucht sein, so etwas Ähnliches zu zeichnen:
+Sie haben möglicherweise bereits Erfahrungen mit SQL-Datenbanken gesammelt oder kennen zumindest das Konzept der [relationalen Datenmodellierung](https://en.wikipedia.org/wiki/Relational_model) und könnten daher versucht sein, etwas wie das Folgende zu zeichnen:
 
 ![Diagramm zur Veranschaulichung eines relativen relationalen Modells](./media/social-media-apps/social-media-apps-sql.png) 
 
@@ -34,9 +34,9 @@ Eine vollkommen normale und ordentliche Datenstruktur – die nicht skalierbar i
 
 Nicht falsch verstehen, ich habe mein ganzes Leben lang mit SQL-Datenbanken gearbeitet. Sie sind großartig, aber wie jedes Muster, jede Praxis und Softwareplattform eignen sie sich nicht uneingeschränkt für jedes Szenario.
 
-Warum ist SQL in diesem Szenario nicht die beste Option? Sehen wir uns die Struktur eines einzelnen Beitrags an. Wenn ich den Beitrag auf einer Website oder in einer Anwendung anzeigen möchte, muss ich eine Abfrage mit ... Acht Tabellenjoins (!) ausführen, um nur einen einzigen Beitrag anzuzeigen. Stellen Sie sich nun einen Stream von Beiträgen vor, die dynamisch geladen und angezeigt werden, und Sie werden das Problem begreifen.
+Warum ist SQL in diesem Szenario nicht die beste Option? Sehen wir uns die Struktur eines einzelnen Beitrags an. Wenn ich den Beitrag auf einer Website oder in einer Anwendung anzeigen möchte, muss ich eine Abfrage mit ... Acht Tabellenjoins (!) ausführen, um nur einen einzigen Beitrag anzuzeigen. Stellen Sie sich nun einen Stream von Beiträgen vor, die dynamisch geladen und angezeigt werden, dann wird das Problem schnell deutlich.
 
-Sie könnten dafür natürlich eine riesige SQL-Instanz mit ausreichend Leistung, um Tausende von Abfragen mit so vielen Verknüpfungen zu bearbeiten, verwenden. Aber, offen gestanden, warum sollten Sie, wenn Sie eine einfachere Lösung zur Hand haben?
+Sie könnten dafür eine riesige SQL-Instanz mit ausreichend Leistung, um Tausende von Abfragen mit so vielen Verknüpfungen zu bearbeiten, verwenden. Aber warum sollten Sie, wenn Sie eine einfachere Lösung zur Hand haben?
 
 ## <a name="the-nosql-road"></a>Der Weg mit NoSQL
 In diesem Artikel wird beschrieben, wie Sie Ihre Daten für soziale Plattformen mit der Azure-NoSQL-Datenbank [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) auf kostengünstige Weise modellieren können. Dabei werden auch andere Azure Cosmos DB-Features wie die [Gremlin-API](../cosmos-db/graph-introduction.md) eingesetzt. Mithilfe eines [NoSQL](https://en.wikipedia.org/wiki/NoSQL)-Ansatzes, der Datenspeicherung im JSON-Format und der [Denormalisierung](https://en.wikipedia.org/wiki/Denormalization) kann der zuvor komplizierte Beitrag in ein einziges [Dokument](https://en.wikipedia.org/wiki/Document-oriented_database) transformiert werden:
@@ -59,7 +59,7 @@ In diesem Artikel wird beschrieben, wie Sie Ihre Daten für soziale Plattformen 
         ]
     }
 
-Und dies erfolgt mit einer einzigen Abfrage und keinerlei Joins. Diese Lösung ist sehr viel unkomplizierter und erfordert auch von Budgetseite weniger Ressourcen, um ein besseres Ergebnis zu erzielen.
+Und dies erfolgt mit einer einzigen Abfrage und keinerlei Joins. Diese Abfrage ist sehr viel unkomplizierter und erfordert auch von Budgetseite weniger Ressourcen, um ein besseres Ergebnis zu erzielen.
 
 Azure Cosmos DB stellt sicher, dass alle Eigenschaften mit der automatischen Indizierung indiziert werden. Diese kann sogar [angepasst](indexing-policies.md) werden. Der schemafreie Ansatz ermöglicht es, Dokumente mit verschiedenen und dynamischen Strukturen zu speichern. Wenn den Beiträgen morgen eine Liste von Kategorien oder Hashtags zugeordnet werden soll, wird Cosmos DB die neuen Dokumente mit den hinzugefügten Attributen bearbeiten, ohne zusätzlichen Arbeitsaufwand Ihrerseits.
 
@@ -216,12 +216,12 @@ Nun, da ich Ihr Interesse geweckt habe, glauben Sie wahrscheinlich, dass Sie ein
 
 Um diese Machine Learning-Szenarien zu realisieren, können Sie [Azure Data Lake](https://azure.microsoft.com/services/data-lake-store/) zum Erfassen der Informationen aus verschiedenen Quellen verwenden und [U-SQL](https://azure.microsoft.com/documentation/videos/data-lake-u-sql-query-execution/), um die Informationen zu verarbeiten und eine Ausgabe zu generieren, die von Azure Machine Learning verarbeitet werden kann.
 
-Eine andere Option ist die Verwendung von [Microsoft Cognitive Services](https://www.microsoft.com/cognitive-services) zum Analysieren der Benutzerinhalte. Sie können sie nicht nur besser verstehen (durch die Analyse ihrer Texte mit der [Textanalyse-API](https://www.microsoft.com/cognitive-services/en-us/text-analytics-api)), sondern auch unerwünschte oder nicht jugendfreie Inhalte erkennen und mithilfe der [Maschinelles Sehen-API](https://www.microsoft.com/cognitive-services/en-us/computer-vision-api) entsprechend agieren. Die Cognitive Services bieten viele Standardlösungen, für deren Nutzung keinerlei Machine Learning-Kenntnisse erforderlich sind.
+Eine andere Option ist die Verwendung von [Azure Cognitive Services](https://www.microsoft.com/cognitive-services) zum Analysieren der Benutzerinhalte. Sie können sie nicht nur besser verstehen (durch die Analyse ihrer Texte mit der [Textanalyse-API](https://www.microsoft.com/cognitive-services/en-us/text-analytics-api)), sondern auch unerwünschte oder nicht jugendfreie Inhalte erkennen und mithilfe der [Maschinelles Sehen-API](https://www.microsoft.com/cognitive-services/en-us/computer-vision-api) entsprechend agieren. Die Cognitive Services bieten viele Standardlösungen, für deren Nutzung keinerlei Machine Learning-Kenntnisse erforderlich sind.
 
 ## <a name="a-planet-scale-social-experience"></a>Eine soziale Erfahrung im globalen Maßstab
 Es gibt ein letztes, aber wichtiges Thema, das angesprochen werden muss : **Skalierbarkeit**. Beim Entwerfen einer Architektur ist es wichtig, dass jede Komponente unabhängig skalierbar sein muss, entweder, weil Sie mehr Daten verarbeiten müssen oder weil Sie einen geografisch größeren Bereich abdecken möchten (oder beides!). Glücklicherweise gestaltet sich eine so komplexe Aufgabe mit Cosmos DB ähnlich einfach wie der **schlüsselfertige** Bezug eines Hauses.
 
-Cosmos DB unterstützt ohne Konfiguration [dynamische Partitionierung](https://azure.microsoft.com/blog/10-things-to-know-about-documentdb-partitioned-collections/) durch automatisches Erstellen von Partitionen auf der Grundlage eines angegebenen **Partitionsschlüssels** (der als eins der Attribute in Ihren Dokumenten definiert ist). Das Definieren des richtigen Partitionsschlüssels muss zur Entwurfszeit unter Berücksichtigung der verfügbaren [bewährten Methoden](../cosmos-db/partition-data.md#designing-for-partitioning) erfolgen; im Fall von sozialen Anwendungen muss Ihre Partitionierungsstrategie an der Art Ihrer Abfragen (Lesevorgänge sollten möglichst innerhalb der gleichen Partition erfolgen) und Schreibvorgänge (Vermeidung von „Hot Spots“ durch Verteilen von Schreibvorgängen auf mehrere Partitionen) ausgerichtet sein. Einige Optionen dafür sind: Partitionen auf der Grundlage eines temporalen Schlüssels (Tag/Monat/Woche), nach Inhaltskategorie, nach geografischer Region, nach Benutzer; es hängt wirklich ganz davon ab, wie Sie die Daten abfragen und in Ihrer sozialen Anwendung anzeigen. 
+Cosmos DB unterstützt ohne Konfiguration [dynamische Partitionierung](https://azure.microsoft.com/blog/10-things-to-know-about-documentdb-partitioned-collections/) durch automatisches Erstellen von Partitionen auf der Grundlage eines angegebenen **Partitionsschlüssels** (der als eins der Attribute in Ihren Dokumenten definiert ist). Das Definieren des richtigen Partitionsschlüssels muss zur Entwurfszeit ausgeführt werden. Weitere Informationen finden Sie im Artikel [Auswählen des richtigen Partitionsschlüssels](partitioning-overview.md#choose-partitionkey). Im Fall von sozialen Anwendungen muss Ihre Partitionierungsstrategie an der Art Ihrer Abfragen (Lesevorgänge sollten möglichst innerhalb der gleichen Partition erfolgen) und Schreibvorgänge (Vermeidung von „Hot Spots“ durch Verteilen von Schreibvorgängen auf mehrere Partitionen) ausgerichtet sein. Einige Optionen dafür sind: Partitionen auf der Grundlage eines temporalen Schlüssels (Tag/Monat/Woche), nach Inhaltskategorie, nach geografischer Region, nach Benutzer; es hängt wirklich ganz davon ab, wie Sie die Daten abfragen und in Ihrer sozialen Anwendung anzeigen. 
 
 Ein erwähnenswerter interessanter Punkt ist, dass Cosmos DB Ihre Abfragen (einschließlich [Aggregaten](https://azure.microsoft.com/blog/planet-scale-aggregates-with-azure-documentdb/)) transparent über alle Ihre Partitionen ausführt; bei wachsendem Datenbestand brauchen Sie keinerlei Logik hinzuzufügen.
 

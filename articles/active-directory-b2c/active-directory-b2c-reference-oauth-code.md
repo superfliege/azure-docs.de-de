@@ -10,17 +10,15 @@ ms.topic: conceptual
 ms.date: 08/16/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: c6ab5ede0b8af6c601cc53e044a3e6902fbd2e11
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: d388242b4b0c882d60a83227a37af997b1ceb1f6
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43340809"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51282644"
 ---
 # <a name="azure-active-directory-b2c-oauth-20-authorization-code-flow"></a>Azure Active Directory B2C: OAuth 2.0-Autorisierungscodefluss
 Durch Gewähren des OAuth 2.0-Autorisierungcodes in Apps, die auf einem Gerät installiert sind, können Sie auf geschützte Ressourcen wie Web-APIs zugreifen. Mithilfe der Azure Active Directory B2C(Azure AD B2C)-Implementierung von OAuth 2.0 können Sie Ihre mobilen und Desktop-Apps Aufgaben zur Registrierung, Anmeldung und Identitätsverwaltung hinzufügen. Dieser Artikel ist sprachunabhängig. In dem Artikel wird beschrieben, wie HTTP-Nachrichten ohne Verwendung von Open Source-Bibliotheken gesendet und empfangen werden.
-
-<!-- TODO: Need link to libraries -->
 
 Der OAuth 2.0-Autorisierungscodefluss wird in [Abschnitt 4.1 der OAuth 2.0-Spezifikation](http://tools.ietf.org/html/rfc6749)beschrieben. Sie können ihn zum Ausführen der Authentifizierung und Autorisierung bei den meisten [Anwendungstypen](active-directory-b2c-apps.md) verwenden, einschließlich Webanwendungen und nativ installierten Anwendungen. Über den OAuth 2.0-Autorisierungscodeflow können Sie Zugriffstoken und Aktualisierungstoken für Ihre Anwendungen auf sichere Weise abrufen, die für den Zugriff auf mit einem [Autorisierungsserver](active-directory-b2c-reference-protocols.md) geschützte Ressourcen verwendet werden können.  Mit dem Aktualisierungstoken kann der Client neue Zugriffstoken (und Aktualisierungstoken) beschaffen, nachdem das Zugriffstoken abgelaufen ist. Dies ist meist nach einer Stunde der Fall.
 
@@ -80,7 +78,7 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 | redirect_uri |Erforderlich |Der Umleitungs-URI der App, in dem Authentifizierungsantworten gesendet und von der App empfangen werden. Er muss genau mit einem der Umleitungs-URIs übereinstimmen, die Sie im Portal registriert haben, mit dem Unterschied, dass er URL-codiert sein muss. |
 | scope |Erforderlich |Eine durch Leerzeichen getrennte Liste von Bereichen. Ein einzelner Bereichswert gibt Azure Active Directory (Azure AD) an, dass beide Berechtigungen angefordert werden. Mit der Verwendung der Client-ID als Bereich wird angegeben, dass für die App ein Zugriffstoken erforderlich ist, das für Ihren eigenen Dienst oder die Web-API mit derselben Client-ID verwendet werden kann.  Der Bereich `offline_access` gibt an, dass Ihre App ein Aktualisierungstoken für den langfristigen Zugriff auf Ressourcen benötigt. Außerdem können Sie den Bereich `openid` verwenden, um ein ID-Token von Azure AD B2C anzufordern. |
 | response_mode |Empfohlen |Die Methode, die zum Senden des resultierenden Autorisierungscodes zurück an Ihre App verwendet wird. Es kann sich um `query`, `form_post` oder `fragment` handeln. |
-| state |Empfohlen |Ein in der Anforderung enthaltener Wert, der in der Tokenantwort zurückgegeben wird. Es kann sich um eine Zeichenfolge mit jedem beliebigen zu verwendenden Inhalt handeln. Normalerweise wird ein zufällig generierter eindeutiger Wert verwendet, um eine websiteübergreifende Anforderungsfälschung zu verhindern. Der Status wird außerdem verwendet, um Informationen über den Status des Benutzers in der App zu codieren, bevor die Authentifizierungsanforderung aufgetreten ist. (z.B. die Seite, die der Benutzer besucht hat, oder die ausgeführte Richtlinie). |
+| state |Empfohlen |Ein Wert in der Anforderung, der eine Zeichenfolge mit beliebigem Inhalt Ihrer Wahl sein kann. Normalerweise wird ein zufällig generierter eindeutiger Wert verwendet, um eine websiteübergreifende Anforderungsfälschung zu verhindern. Der Status wird außerdem verwendet, um Informationen über den Status des Benutzers in der App zu codieren, bevor die Authentifizierungsanforderung aufgetreten ist. (z.B. die Seite, die der Benutzer besucht hat, oder die ausgeführte Richtlinie). |
 | p |Erforderlich |Die Richtlinie, die ausgeführt wird. Dies ist der Name einer Richtlinie, die in Ihrem Azure AD B2C-Verzeichnis erstellt wird. Der Wert für den Richtliniennamen muss mit **b2c\_1\_** beginnen. Weitere Informationen zu Richtlinien finden Sie unter [Integrierte Azure AD B2C-Richtlinien](active-directory-b2c-reference-policies.md). |
 | prompt |Optional |Der Typ der erforderlichen Benutzerinteraktion. Gegenwärtig ist der einzige gültige Wert `login`, der den Benutzer zur Eingabe seiner Anmeldeinformationen für diese Anforderung zwingt. Einmaliges Anmelden wird nicht verwendet. |
 

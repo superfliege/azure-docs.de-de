@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 9/12/2018
+ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: b1f7120b3758e35d818aedbcc3b85feca44f8c33
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: a7f21d0ebebbe2c811470de384cc5ee9a34ab060
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46129657"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51006157"
 ---
 # <a name="protect-your-network-resources-in-azure-security-center"></a>Schützen Ihrer Netzwerkressourcen in Azure Security Center
 Azure Security Center analysiert ständig den Sicherheitsstatus Ihrer Azure-Ressourcen anhand bewährter Methoden für Netzwerksicherheit. Werden potenzielle Sicherheitslücken erkannt, erstellt Security Center Empfehlungen, die Sie beim Konfigurieren der erforderlichen Steuerelemente zum Sichern und Schützen Ihrer Ressourcen unterstützen.
@@ -112,7 +112,7 @@ Um auf diese Informationen zuzugreifen, klicken Sie auf dem Blatt „Netzwerk“
 
 ![Legacynetzwerk](./media/security-center-network-recommendations/legacy-networking.png)
 
-### <a name="internet-facing-endpoints-section"></a>Abschnitt „Endpunkte mit Internetzugriff“
+### <a name="internet-facing-endpoints-section"></a>Abschnitt „Endpunkte mit Internetanbindung“
 Im Abschnitt **Endpunkte mit Internetzugriff** werden die virtuellen Computer, die derzeit mit einem Endpunkt mit Internetzugriff konfiguriert sind, und der jeweilige Status angezeigt.
 
 Diese Tabelle enthält den Endpunktnamen, die Internet-IP-Adresse und den aktuellen Status der Netzwerksicherheitsgruppe und die NGFW-Empfehlungen. Die Tabelle ist nach Schweregrad sortiert.
@@ -126,6 +126,20 @@ In dieser Topologieansicht werden auf der ersten Ebene VNETs angezeigt. Die zwei
 
 Die dritte Ebene zeigt virtuelle Computer, ähnlich wie in der Beschreibung oben. Sie können auf eine beliebige Ressource klicken, um weitere Informationen zu erhalten oder die erforderliche Sicherheitskontrolle/-konfiguration anzuwenden.
 
+## <a name="network-recommendations"></a>Netzwerkempfehlungen
+
+|Ressourcentyp|Sicherheitsbewertung|Empfehlung|BESCHREIBUNG|
+|----|----|----|----|
+|Computer|40|Netzwerksicherheitsgruppen auf virtuellen Computern aktivieren|Aktivieren Sie Netzwerksicherheitsgruppen zum Steuern des Netzwerkzugriffs für Ihre virtuellen Computer.|
+|Subnetz|35|Netzwerksicherheitsgruppen in Subnetzen aktivieren |Aktivieren Sie Netzwerksicherheitsgruppen zum Steuern des Netzwerkzugriffs für in Ihren Subnetzen bereitgestellte Ressourcen.|
+|Computer|30|JIT-Netzwerkzugriffssteuerung anwenden|Wenden Sie die JIT-VM-Zugriffssteuerung an, um den Zugriff auf ausgewählte Ports dauerhaft zu sperren und autorisierten Benutzern zu ermöglichen, sie über den gleichen Mechanismus und für eine begrenzte Zeitspanne zu öffnen.|
+|Computer|20|Zugriff über Endpunkt mit Internetzugriff einschränken|Stärken Sie die Netzwerksicherheitsgruppen Ihrer VMs mit Internetzugriff, indem Sie den Zugriff auf Ihre bestehenden Zulassungsregeln einschränken.|
+|Computer|10|Hinzufügen einer Firewall der nächsten Generation|Fügen Sie eine Lösung für eine Firewall der nächsten Generation (NGFW) hinzu, um Ihre virtuellen Computer mit Internetzugriff besser zu schützen.|
+|Computer|5|Datenverkehr nur über die Firewall der Netzwerkgateway leiten|Um die Bereitstellung Ihrer Firewalllösung der nächsten Generation abzuschließen, sollte der Datenverkehr zu Ihren geschützten VMs mit Internetzugriff nur über die Firewalllösung der nächsten Generation geleitet werden.|
+|VNet|5|DDoS Protection Standard aktivieren|Anwendungen mit öffentlichen IPs in diesen virtuellen Netzwerken sind nicht mit dem DDOS Protection-Dienststandard geschützt. Es wird empfohlen, diesen zu aktivieren, um die Eindämmung von volumetrischen Netzwerk- und Protokollangriffen zu ermöglichen.|
+|Computer|10|Hinzufügen einer Firewall der nächsten Generation|Fügen Sie eine Lösung für eine Firewall der nächsten Generation (NGFW) hinzu, um Ihre virtuellen Computer mit Internetzugriff besser zu schützen.|
+|Computer|5|Datenverkehr nur über die Firewall der Netzwerkgateway leiten|Um die Bereitstellung Ihrer Firewalllösung der nächsten Generation abzuschließen, sollte der Datenverkehr zu Ihren geschützten VMs mit Internetzugriff nur über die Firewalllösung der nächsten Generation geleitet werden.|
+VNet|5|DDoS Protection Standard aktivieren|Anwendungen mit öffentlichen IP-Adressen in diesen virtuellen Netzwerken sind nicht mit dem DDOS Protection-Dienststandard geschützt. Es wird empfohlen, diesen zu aktivieren, um die Eindämmung von volumetrischen Netzwerk- und Protokollangriffen zu ermöglichen.|
 ## <a name="see-also"></a>Weitere Informationen
 Weitere Informationen zu Empfehlungen für andere Arten von Azure-Ressourcen finden Sie in den folgenden Themen:
 

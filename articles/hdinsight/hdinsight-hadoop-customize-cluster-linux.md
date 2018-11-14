@@ -7,14 +7,14 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/01/2018
+ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: 17273a572e61d2282e7930d4ea1f44bfaf29d734
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 24fecd73876228b3665cde21ae312963ec979df6
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51012978"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51279718"
 ---
 # <a name="customize-linux-based-hdinsight-clusters-using-script-actions"></a>Anpassen Linux-basierter HDInsight-Cluster mithilfe von Skriptaktionen
 
@@ -67,7 +67,7 @@ Eine Skriptaktion ist ein Bash-Skript, das auf den Knoten in einem HDInsight-Clu
         URIs finden Sie z.B. im Abschnitt [Script Action-Beispielskripts](#example-script-action-scripts).
 
         > [!WARNING]
-        > HDInsight unterstützt nur __allgemeine__ Azure Storage-Konten. Der Kontotyp __Blobspeicher__ wird derzeit nicht unterstützt.
+        > HDInsight unterstützt nur Blobs in Azure Storage-Konten im Standard-Tarif. 
 
 * Sie können auf die **ausschließliche Ausführung auf bestimmten Knotentypen** beschränkt werden, z.B. Hauptknoten oder Workerknoten.
 

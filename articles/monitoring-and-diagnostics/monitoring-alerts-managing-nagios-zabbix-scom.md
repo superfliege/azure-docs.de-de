@@ -1,5 +1,5 @@
 ---
-title: Verwalten von Warnungen aus anderen Überwachungsdiensten
+title: Verwalten von Warnungen aus anderen Überwachungsdiensten in Azure Monitor
 description: Verwalten von Nagios-, Zabbix- und SCOM-Warnungen in Azure Monitor
 author: anantr
 services: monitoring
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: anantr
 ms.component: alerts
-ms.openlocfilehash: d9d0cb326fb063e0a6bbfaab6a85961ab2b35416
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: bc597d42fe89c0e03c4af1db3a935031b9043a98
+ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49389383"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50748271"
 ---
 # <a name="manage-alerts-from-other-monitoring-services"></a>Verwalten von Warnungen aus anderen Überwachungsdiensten
 
@@ -25,7 +25,7 @@ Alle Datensätze im Log Analytics-Repository mit einem Warnungstyp werden in die
 1. Für **System Center Operations Manager**-Warnungen müssen Sie Ihre [Operations Manager-Verwaltungsgruppe mit Ihrem Log Analytics-Arbeitsbereich verbinden](https://docs.microsoft.com/azure/log-analytics/log-analytics-om-agents). Alle in System Center Operations Manager erstellten Warnungen werden in Log Analytics importiert.
 
 ## <a name="view-your-alert-instances"></a>Anzeigen Ihrer Warnungsinstanzen
-Nachdem Sie den Import in Log Analytics konfiguriert haben, können Sie mit der Anzeige von Warnungsinstanzen aus diesen Überwachungsdiensten in die [einheitliche Oberfläche „Warnungen“](https://aka.ms/azure-alerts-overview) beginnen. Sobald sie auf der einheitlichen Oberfläche „Warnungen“ vorhanden sind, können Sie [Ihre Warnungsinstanzen verwalten](https://aka.ms/managing-alert-instances), [die für diese Warnungen erstellten intelligenten Gruppen verwalten](https://aka.ms/managing-smart-groups) und [den Zustand der Warnungen und intelligenten Gruppen ändern](https://aka.ms/managing-alert-smart-group-states).
+Nachdem Sie den Import in Log Analytics konfiguriert haben, können Sie mit der Anzeige von Warnungsinstanzen aus diesen Überwachungsdiensten in der [einheitlichen Oberfläche „Warnungen“](https://aka.ms/azure-alerts-overview) beginnen. Sobald sie auf der einheitlichen Oberfläche „Warnungen“ vorhanden sind, können Sie [Ihre Warnungsinstanzen verwalten](https://aka.ms/managing-alert-instances), [die für diese Warnungen erstellten intelligenten Gruppen verwalten](https://aka.ms/managing-smart-groups) und [den Zustand der Warnungen und intelligenten Gruppen ändern](https://aka.ms/managing-alert-smart-group-states).
 
 > [!NOTE]
 >  Nagios-Warnungen sind auf der einheitlichen Oberfläche „Warnungen“ nicht zustandsbehaftet. Die [Überwachungsbedingung](https://aka.ms/azure-alerts-overview) einer Warnung wechselt z. B. nicht von „Ausgelöst“ zu „Gelöst“. Stattdessen werden sowohl „Ausgelöst“ als auch „Gelöst“ als separate Warnungsinstanzen angezeigt. 

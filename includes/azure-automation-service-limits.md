@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/05/2018
 ms.author: gwallace
 ms.custom: include file
-ms.openlocfilehash: 34cae9172d9b024bd6866742d39d82ad496bfc52
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: abe7668ed16ddd5cc1b247207d3e80f7c1118137
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45570459"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50964564"
 ---
 | Ressource | Maximales Limit |Notizen|
 | --- | --- |---|
@@ -31,5 +31,6 @@ ms.locfileid: "45570459"
 | Maximale Größe der Runbookauftragsparameter   | 512 KB||
 | Maximale Anzahl von Runbookparametern   | 50|Sie können einen JSON- oder XML-Zeichenfolge an einen Parameter übergeben und ihn mit dem Runbook analysieren, wenn Sie das Limit von 50 Parametern erreichen.|
 | Maximale Größe für Webhooknutzlast |  512 KB|
+| Max. Anzahl von Tagen, die Auftragsdaten aufbewahrt werden|30 Tage|
 
 **<sup>1</sup>** Eine Sandbox ist eine gemeinsam verwendete Umgebung, die von mehreren Aufträgen verwendet werden kann. Aufträge, die eine gemeinsame Sandbox verwenden, sind durch die Ressourceneinschränkungen der Sandbox gebunden.

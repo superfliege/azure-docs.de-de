@@ -8,13 +8,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/02/2018
-ms.openlocfilehash: 5f47ce84203d88604183d13f6e9282e2bb846451
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.date: 11/06/2018
+ms.openlocfilehash: da98873b133d69d78271494b991b67caea1d5a11
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51006004"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51283069"
 ---
 # <a name="connect-to-kafka-on-hdinsight-through-an-azure-virtual-network"></a>Herstellen einer Verbindung mit Kafka in HDInsight über ein virtuelles Azure-Netzwerk
 
@@ -35,7 +35,7 @@ HDInsight erlaubt keine direkten Verbindungen zu Kafka über das öffentliche In
     2. Erstellen Sie ein VPN-Gateway, das eine Standort-zu-Standort-Konfiguration verwendet. Die in diesem Dokument verwendete Konfiguration stellt eine Verbindung zu einem VPN-Gateway-Gerät in Ihrem lokalen Netzwerk her.
     3. Erstellen Sie einen DNS-Server im virtuellen Netzwerk.
     4. Konfigurieren Sie die Weiterleitung zwischen den DNS-Servern in jedem Netzwerk.
-    5. Installieren Sie HDInsight im virtuellen Netzwerk .
+    5. Erstellen Sie einen Kafka-Cluster in HDInsight-Cluster im virtuellen Netzwerk.
 
     Weitere Informationen finden Sie im Abschnitt [Herstellen einer Verbindung mit Kafka aus einem lokalen Netzwerk](#on-premises). 
 
@@ -43,8 +43,8 @@ HDInsight erlaubt keine direkten Verbindungen zu Kafka über das öffentliche In
 
     1. Erstellen Sie ein virtuelles Netzwerk.
     2. Erstellen Sie ein VPN-Gateway, das eine Punkt-zu-Standort-Konfiguration verwendet. Diese Konfiguration kann sowohl für Windows- als auch macOS-Clients verwendet werden.
-    3. Installieren Sie HDInsight im virtuellen Netzwerk .
-    4. Konfigurieren Sie Kafka zum Ankündigen der IP-Adresse. Diese Konfiguration ermöglicht dem Client das Herstellen einer Verbindung mithilfe der IP-Adressierung anstelle von Domänennamen.
+    3. Erstellen Sie einen Kafka-Cluster in HDInsight-Cluster im virtuellen Netzwerk.
+    4. Konfigurieren Sie Kafka zum Ankündigen der IP-Adresse. Diese Konfiguration ermöglicht dem Client das Herstellen einer Verbindung mithilfe von Broker-IP-Adressen anstelle von Domänennamen.
     5. Laden Sie den VPN-Client auf dem Entwicklungssystem herunter, und verwenden Sie ihn.
 
     Weitere Informationen finden Sie im Abschnitt [Herstellen einer Verbindung mit Kafka über einen VPN-Client](#vpnclient).

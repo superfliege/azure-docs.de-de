@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: ccompy
-ms.openlocfilehash: 5f2dd31488ae61bec061a81986a208bd328bf39b
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: ce0123528b3fb2454d8b83d59b5916363ae0e944
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49093619"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51251575"
 ---
 # <a name="locking-down-an-app-service-environment"></a>Sperren einer App Service-Umgebung
 
@@ -28,7 +28,7 @@ Eine App Service-Umgebung weist zahlreiche Abhängigkeiten für den eingehenden 
 
 Die Abhängigkeiten der App Service-Umgebung für den ausgehenden Datenverkehr werden fast ausschließlich mit FQDNs definiert, hinter denen sich keine statischen Adressen befinden. Das Fehlen statischer Adressen bedeutet, dass Netzwerksicherheitsgruppen (NSGs) nicht verwendet werden können, um den ausgehenden Datenverkehr einer App Service-Umgebung zu sperren. Die Adressen ändern sich häufig, sodass keine Regeln auf Grundlage der aktuellen Auflösung aufgestellt und keine NSGs damit erstellt werden können. 
 
-Die Lösung zum Sichern ausgehender Adressen besteht in der Verwendung eines Firewallgeräts, das den ausgehenden Datenverkehr basierend auf Domänennamen kontrolliert. Das Azure-Netzwerkteam hat ein neues Netzwerkgerät – Azure Firewall – entwickelt, das sich in der Vorschau befindet. Azure Firewall kann den ausgehenden HTTP- und HTTPS-Datenverkehr basierend auf dem Ziel-DNS-Namen einschränken.  
+Die Lösung zum Sichern ausgehender Adressen besteht in der Verwendung eines Firewallgeräts, das den ausgehenden Datenverkehr basierend auf Domänennamen kontrolliert. Azure Firewall kann ausgehenden HTTP- und HTTPS-Datenverkehr basierend auf den FQDN des Ziels beschränken.  
 
 ## <a name="configuring-azure-firewall-with-your-ase"></a>Konfigurieren von Azure Firewall mit Ihrer App Service-Umgebung 
 
@@ -36,11 +36,11 @@ Gehen Sie wie folgt vor, um den ausgehenden Datenverkehr Ihrer App Service-Umgeb
 
 1. Erstellen Sie eine Azure Firewall-Instanz in dem VNET, in dem sich Ihre App Service-Umgebung befindet bzw. befinden wird. Weitere Informationen finden Sie in der [Azure Firewall-Dokumentation](https://docs.microsoft.com/azure/firewall/).
 2. Wählen Sie in der Azure Firewall-Benutzeroberfläche den FQDN-Tag der App Service-Umgebung aus.
-3. Erstellen Sie eine Routingtabelle mit den Verwaltungsadressen aus [Verwaltungsadressen der App Service-Umgebung]( https://docs.microsoft.com/azure/app-service/environment/management-addresses) mit dem nächsten Hop zum Internet. Die Routingtabelleneinträge werden benötigt, um asymmetrische Routingprobleme zu vermeiden. 
-4. Fügen Sie mit dem nächsten Hop zum Internet den IP-Adressabhängigkeiten (s. weiter unten „IP-Adressabhängigkeiten“) Routen hinzu. 
-5. Fügen Sie Ihrer Routingtabelle eine Route für 0.0.0.0/0 hinzu, wobei als nächster Hop Ihr Azure Firewall-Netzwerkgerät festgelegt ist.
+3. Erstellen Sie eine Routingtabelle mit den Verwaltungsadressen aus [Verwaltungsadressen der App Service-Umgebung]( https://docs.microsoft.com/azure/app-service/environment/management-addresses) mit dem nächsten Hop zum Internet. Die Routingtabelleneinträge werden benötigt, um asymmetrische Routingprobleme zu vermeiden.
+4. Fügen Sie mit dem nächsten Hop zum Internet den IP-Adressabhängigkeiten (s. weiter unten „IP-Adressabhängigkeiten“) Routen hinzu.
+5. Fügen Sie Ihrer Routingtabelle eine Route für 0.0.0.0/0 hinzu, wobei als nächster Hop Azure Firewall festgelegt ist.
 6. Erstellen Sie Dienstendpunkte für das Subnetz Ihrer App Service-Umgebung für Azure SQL und Azure Storage.
-7. Weisen Sie die erstellte Routingtabelle dem Subnetz Ihrer App Service-Umgebung zu.  
+7. Weisen Sie die erstellte Routingtabelle dem Subnetz Ihrer App Service-Umgebung zu.
 
 ## <a name="application-traffic"></a>Anwendungsdatenverkehr 
 

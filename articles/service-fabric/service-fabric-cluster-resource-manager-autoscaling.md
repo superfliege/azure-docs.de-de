@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/17/2018
 ms.author: miradic
-ms.openlocfilehash: fbaf6b92a2605d284a749365d542c223e09f730d
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: 8e57c071c9fd93a8581d574aeec2b23b38b3ab95
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49362601"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51281658"
 ---
 # <a name="introduction-to-auto-scaling"></a>Einführung in die automatische Skalierung
 Die automatische Skalierung ist eine weitere Funktion von Service Fabric, mit der Ihre Dienste basierend auf der Last, die von Diensten gemeldet wird, oder basierend auf ihrer Ressourcennutzung dynamisch skaliert werden können. Die automatische Skalierung bietet eine hervorragende Flexibilität und ermöglicht die Bereitstellung zusätzlicher Instanzen oder Partitionen Ihres Diensts bei Bedarf. Der gesamte Prozess der automatischen Skalierung ist automatisiert und transparent. Sobald Sie Ihre Richtlinien für einen Dienst eingerichtet haben, müssen Sie keine manuellen Skalierungsvorgänge auf Dienstebene mehr durchführen. Die automatische Skalierung kann während der Erstellung des Diensts oder zu einem beliebigen Zeitpunkt durch Aktualisieren des Diensts aktiviert werden.
@@ -28,7 +28,9 @@ Ein häufiges Szenario, in dem die automatische Skalierung hilfreich ist, ist, w
 * Wenn alle Instanzen des Gateways durchschnittlich mehr als zwei Kerne verwenden, skalieren Sie den Gatewaydienst horizontal hoch, indem Sie eine weitere Instanz hinzufügen. Tun Sie dies stündlich, die Instanzenanzahl sollte jedoch nie über sieben liegen.
 * Wenn alle Instanzen des Gateways im Durchschnitt weniger als 0,5 Kerne verwenden, skalieren Sie den Dienst durch das Entfernen einer Instanz horizontal herunter. Tun Sie dies stündlich, die Instanzenanzahl sollte jedoch nie unter drei liegen.
 
-Die automatische Skalierung wird für Container und für reguläre Service Fabric-Dienste unterstützt. Im weiteren Verlauf dieses Artikels werden die Skalierungsrichtlinien und Verfahren zum Aktivieren oder Deaktivieren der automatischen Skalierung beschrieben. Außerdem werden Beispiele zur Verwendung dieses Features aufgeführt.
+Die automatische Skalierung wird für Container und für reguläre Service Fabric-Dienste unterstützt. Um die automatische Skalierung zu verwenden, müssen Sie mindestens Version 6.2 der Service Fabric-Runtime ausführen. 
+
+Im weiteren Verlauf dieses Artikels werden die Skalierungsrichtlinien und Verfahren zum Aktivieren oder Deaktivieren der automatischen Skalierung beschrieben. Außerdem werden Beispiele zur Verwendung dieses Features aufgeführt.
 
 ## <a name="describing-auto-scaling"></a>Beschreibung der automatischen Skalierung
 Richtlinien für die automatische Skalierung können für jeden Dienst in einem Service Fabric-Cluster definiert werden. Jede Skalierungsrichtlinie besteht aus zwei Teilen:
@@ -41,7 +43,7 @@ Alle Trigger, die derzeit unterstützt werden, arbeiten entweder mit [logischen 
 Es gibt zwei Mechanismen, die derzeit für die automatische Skalierung unterstützt werden. Der erste ist für zustandslose Dienste oder für Container vorgesehen, bei denen die automatische Skalierung ausgeführt wird, indem [Instanzen](service-fabric-concepts-replica-lifecycle.md) hinzugefügt oder entfernt werden. Für zustandsbehaftete und zustandslose Dienste kann die automatische Skalierung auch ausgeführt werden, indem benannte [Partitionen](service-fabric-concepts-partitioning.md) des Diensts hinzugefügt oder entfernt werden.
 
 > [!NOTE]
-> Derzeit wird nur eine Skalierungsrichtlinie pro Dienst unterstützt.
+> Derzeit wird nur eine Skalierungsrichtlinie pro Dienst und nur ein Skalierungsauslöser pro Skalierungsrichtlinie unterstützt.
 
 ## <a name="average-partition-load-trigger-with-instance-based-scaling"></a>Trigger für die durchschnittliche Partitionslast mit instanzbasierter Skalierung
 Der erste Triggertyp basiert auf der Last von Instanzen in einer zustandslosen Dienstpartition. Metriklasten werden zuerst geglättet, um die Last für jede Instanz einer Partition zu erhalten. Dann wird der Mittelwert dieser Werte über alle Instanzen der Partition gebildet. Es gibt drei Faktoren, die bestimmen, wann der Dienst skaliert wird:

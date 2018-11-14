@@ -8,16 +8,16 @@ ms.topic: article
 ms.date: 06/27/2018
 ms.author: jamesbak
 ms.component: data-lake-storage-gen2
-ms.openlocfilehash: 44eec21f4687d2df64c59d41cdb02c6ef2268f82
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: b5d3a735bd490468e989ac29c9f082475cc7eab3
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39528696"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51283365"
 ---
 # <a name="azure-data-lake-storage-gen2-preview-hierarchical-namespace"></a>Hierarchischer Namespace für Azure Data Lake Storage Gen2 (Vorschauversion)
 
-Ein Schlüsselmechanismus, der es Azure Data Lake Storage Gen2 (Vorschauversion) ermöglicht, Dateisystemleistung im Umfang und zu Preisen eines Objektspeichers bereitzustellen, ist das Hinzufügen eines **hierarchischen Namespace**. Dadurch kann die Sammlung von Objekten/Dateien innerhalb eines Kontos in einer Hierarchie von Verzeichnissen und geschachtelten Unterverzeichnissen auf gleiche Weise wie beim Dateisystem auf Ihrem Computer organisiert werden. Bei aktiviertem hierarchischen Namespace bietet Data Lake Storage Gen2 die Skalierbarkeit und Kosteneffizienz eines Objektspeichers mit einer Dateisystemsemantik, die Analyse-Engines und Frameworks vertraut ist.
+Ein Schlüsselmechanismus, der es Azure Data Lake Storage Gen2 (Vorschauversion) ermöglicht, Dateisystemleistung im Umfang und zu Preisen eines Objektspeichers bereitzustellen, ist das Hinzufügen eines **hierarchischen Namespace**. Dadurch kann die Sammlung von Objekten/Dateien innerhalb eines Kontos in einer Hierarchie von Verzeichnissen und geschachtelten Unterverzeichnissen auf gleiche Weise wie beim Dateisystem auf Ihrem Computer organisiert werden. Bei aktiviertem hierarchischem Namespace kann ein Speicherkonto die Skalierbarkeit und Kosteneffizienz eines Objektspeichers mit einer Dateisystemsemantik bereitstellen, die Analyse-Engines und -Frameworks vertraut ist.
 
 ## <a name="the-benefits-of-the-hierarchical-namespace"></a>Vorteile des hierarchischen Namespace
 
@@ -26,7 +26,7 @@ Ein Schlüsselmechanismus, der es Azure Data Lake Storage Gen2 (Vorschauversion)
 
 Dateisysteme, die einen hierarchischen Namespace über Blob-Daten implementieren, bieten folgende Vorteile:
 
-- **Atomarische Verzeichnisbearbeitung:** Objektspeicher nähern sich einer Verzeichnishierarchie, indem eine Konvention mit Einbettung von Schrägstrichen (/) im Objektnamen zur Angabe von Pfadsegmenten übernommen wird. Diese Konvention funktioniert zwar beim Organisieren von Objekten, stellt aber keine Hilfe bei Aktionen wie dem Verschieben, Umbenennen oder Löschen von Verzeichnissen dar. Ohne wirkliche Verzeichnisse müssen Anwendungen möglicherweise Millionen einzelner Blobs zur Ausführung von Aufgaben auf Verzeichnisebene verarbeiten. Der hierarchische Namespace hingegen verarbeitet diese Aufgaben durch Aktualisieren eines einzelnen Eintrags (des übergeordneten Verzeichnisses). 
+- **Atomarische Verzeichnisbearbeitung:** Objektspeicher nähern sich einer Verzeichnishierarchie, indem eine Konvention mit Einbettung von Schrägstrichen (/) in den Objektnamen zur Angabe von Pfadsegmenten übernommen wird. Diese Konvention funktioniert zwar beim Organisieren von Objekten, stellt aber keine Hilfe bei Aktionen wie dem Verschieben, Umbenennen oder Löschen von Verzeichnissen dar. Ohne wirkliche Verzeichnisse müssen Anwendungen möglicherweise Millionen einzelner Blobs zur Ausführung von Aufgaben auf Verzeichnisebene verarbeiten. Der hierarchische Namespace hingegen verarbeitet diese Aufgaben durch Aktualisieren eines einzelnen Eintrags (des übergeordneten Verzeichnisses).
 
     Diese wesentliche Verbesserung ist für viele Big Data-Analyseframeworks von besonderer Bedeutung. Tools wie Hive, Spark usw. schreiben häufig die Ausgabe an temporäre Speicherorte und benennen dann bei Abschluss des Auftrags den Speicherort um. Ohne hierarchischen Namespace kann dieses Umbenennen häufig länger dauern als der eigentliche Analyseprozess. Eine niedrigere Auftragslatenz bedeutet auch niedrigere Gesamtkosten für Analyseworkloads.
 

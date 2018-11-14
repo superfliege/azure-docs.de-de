@@ -7,12 +7,12 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/16/2018
-ms.openlocfilehash: 05bdc841108bf1fb909375b6f2c6399f8121ceeb
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 45d1f55e60763724aeb1b1685c5c69696475a424
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49344650"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50958099"
 ---
 # <a name="create-users-in-azure-database-for-postgresql-server"></a>Erstellen von Benutzern auf einem Azure Database for PostgreSQL-Server 
 In diesem Artikel wird beschrieben, wie Sie Benutzer auf einem Azure Database for PostgreSQL-Server erstellen können.
@@ -36,7 +36,7 @@ Mit dem Konto des Serveradministratorbenutzers können zusätzliche Benutzer ers
    Für die Verbindungsherstellung mit Ihrem Datenbankserver benötigen Sie den vollständigen Servernamen und die Administratoranmeldeinformationen. Der Servername und die Anmeldeinformationen sind auf der Seite **Übersicht** des Servers oder auf der Seite **Eigenschaften** im Azure-Portal leicht zu finden. 
 
 2. Verwenden Sie das Administratorkonto und das Kennwort zum Herstellen einer Verbindung mit Ihrem Datenbankserver. Verwenden Sie Ihr bevorzugtes Clienttool, etwa pgAdmin oder psql.
-   Wenn Sie nicht sicher sind, wie Sie eine Verbindung herstellen können, sehen Sie sich die Informationen unter [Herstellen einer Verbindung mit der PostgreSQL-Datenbank mithilfe von psql in Cloud Shell](./quickstart-create-server-database-portal.md#connect-to-the-postgresql-database-by-using-psql-in-cloud-shell) an.
+   Wenn Sie sich nicht sicher sind, wie Sie eine Verbindung herstellen sollen, lesen Sie den [Schnellstart](./quickstart-create-server-database-portal.md).
 
 3. Bearbeiten Sie den folgenden SQL-Code, und führen Sie ihn aus. Fügen Sie für den Platzhalterwert „<new_user>“ den neuen Benutzernamen und für das Platzhalterkennwort Ihr eigenes sicheres Kennwort ein. 
 

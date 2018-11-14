@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/11/2016
 ms.author: mbullwin
-ms.openlocfilehash: bb1b1e2934de052479f39d40bfe143345e91bc26
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: e5915f18799386ae92019073fb50dac96da107ea
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47094090"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50960105"
 ---
 # <a name="system-performance-counters-in-application-insights"></a>Systemleistungsindikatoren in Application Insights
 Windows bietet eine Vielzahl von [Leistungsindikatoren](http://www.codeproject.com/Articles/8590/An-Introduction-To-Performance-Counters) wie z.B. CPU-Belegung, Arbeitsspeicher, Datenträger und Netzwerkverwendung. Sie können auch eigene definieren. Diese Leistungsindikatoren können in [Application Insights](app-insights-overview.md) angezeigt werden, sofern Ihre Anwendung unter IIS auf einem lokalen Host oder auf einem virtuellen Computer ausgeführt wird, auf den Sie Administratorzugriff haben. In den Diagrammen werden die für Ihre aktive Anwendung verfügbaren Ressourcen angezeigt. Zudem können Sie anhand der Diagramme eine unausgeglichene Belastung der Serverinstanzen erkennen.
@@ -27,7 +27,7 @@ Leistungsindikatoren werden auf dem Blatt „Server“ angezeigt, das eine nach 
 
 ![In Application Insights gemeldete Leistungsindikatoren](./media/app-insights-performance-counters/counters-by-server-instance.png)
 
-(Leistungsindikatoren sind für Azure-Web-Apps nicht verfügbar. Sie können jedoch [Azure-Diagnosedaten an Application Insights senden](app-insights-azure-diagnostics.md).)
+(Leistungsindikatoren sind für Azure-Web-Apps nicht verfügbar. Sie können jedoch [Azure-Diagnosedaten an Application Insights senden](../monitoring-and-diagnostics/azure-diagnostics-configure-application-insights.md).)
 
 ## <a name="view-counters"></a>Anzeigen von Indikatoren
 Auf dem Blatt „Server“ wird ein Standardsatz von Leistungsindikatoren angezeigt. 
@@ -96,7 +96,7 @@ Alternativ können Sie dieselben Schritte mit von Ihnen erstellten benutzerdefin
 ## <a name="performance-counters-in-analytics"></a>Leistungsindikatoren in Analytics
 In [Analytics](app-insights-analytics.md) können Sie nach Leistungsindikatorberichten suchen und diese anzeigen.
 
-Das Schema **performanceCounters** zeigt die `category`, den `counter`-Namen und `instance`-Namen der einzelnen Leistungsindikatoren.  In den Telemetriedaten jeder Anwendung sehen Sie nur die Indikatoren für diese Anwendung. Beispielsweise, um verfügbare Leistungsindikatoren anzuzeigen: 
+Das Schema **performanceCounters** zeigt die `category`, den `counter`-Namen und `instance`-Namen der einzelnen Leistungsindikatoren.  Die Telemetriedaten jeder Anwendung zeigen nur die Indikatoren für ebendiese an. Beispielsweise, um verfügbare Leistungsindikatoren anzuzeigen: 
 
 ![Leistungsindikatoren in der Application Insights-Analyse](./media/app-insights-performance-counters/analytics-performance-counters.png)
 

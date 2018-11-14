@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: troubleshooting
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 55e4195e2666aed371a5a5664b331184afcf5e36
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 9511e4f90348d58c7b5f6e85d9a5eb74af276461
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50420964"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51260498"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Beheben von Azure Backup-Fehlern: Probleme mit dem Agent oder der Erweiterung
 
@@ -48,7 +48,6 @@ Nachdem Sie eine VM für den Azure Backup-Dienst registriert und geplant haben, 
 
 **Fehlercode**: UserErrorRpCollectionLimitReached <br>
 **Fehlermeldung**: The Restore Point collection max limit has reached (Maximale Grenze der Wiederherstellungspunktsammlung wurde erreicht). <br>
-Beschreibung:  
 * Dieses Problem kann auftreten, wenn eine Sperre für den Wiederherstellungspunkt der Ressourcengruppe besteht, die eine automatische Bereinigung des Wiederherstellungspunkts verhindert.
 * Dieses Problem kann auch auftreten, wenn mehrere Sicherungen pro Tag ausgelöst werden. Zurzeit wird nur eine Sicherung pro Tag empfohlen, da die Instant RPs 7 Tage lang aufbewahrt werden und nur 18 Instant RPs gleichzeitig mit einem virtuellen Computer verknüpft werden können. <br>
 
@@ -96,6 +95,21 @@ Nachdem Sie eine VM für den Azure Backup-Dienst registriert und geplant haben, 
 **Ursache 5: [Die Sicherungserweiterung kann nicht aktualisiert oder geladen werden](#the-backup-extension-fails-to-update-or-load)**  
 **Ursache 6: [Der Sicherungsdienst ist aufgrund einer Ressourcengruppensperre nicht berechtigt, die alten Wiederherstellungspunkte zu löschen](#backup-service-does-not-have-permission-to-delete-the-old-restore-points-due-to-resource-group-lock)**
 
+## <a name="usererrorunsupporteddisksize---currently-azure-backup-does-not-support-disk-sizes-greater-than-1023gb"></a>UserErrorUnsupportedDiskSize – Azure Backup unterstützt derzeit keine Datenträgergrößen von über 1.023 GB.
+
+**Fehlercode**: UserErrorUnsupportedDiskSize <br>
+**Fehlermeldung**: Azure Backup unterstützt derzeit keine Datenträgergrößen von über 1.023 GB <br>
+
+Beim Sicherungsvorgang kann ein Fehler auftreten, wenn Sie eine VM mit einer Datenträgergröße von über 1.023 GB sichern, da für Ihren Tresor kein Upgrade auf den Azure-VM-Sicherungsstapel v2 durchgeführt wird. Ein Upgrade auf den Azure-VM-Sicherungsstapel v2 bietet Unterstützung für bis zu 4 TB. Sehen Sie sich [diese Vorteile](backup-upgrade-to-vm-backup-stack-v2.md) und [Überlegungen](backup-upgrade-to-vm-backup-stack-v2.md#considerations-before-upgrade) an, und führen Sie anschließend ein Upgrade mithilfe [dieser Anweisungen](backup-upgrade-to-vm-backup-stack-v2.md#upgrade) durch.  
+
+## <a name="usererrorstandardssdnotsupported---currently-azure-backup-does-not-support-standard-ssd-disks"></a>UserErrorStandardSSDNotSupported – Azure Backup unterstützt derzeit keine SSD Standard-Datenträger.
+
+**Fehlercode**: UserErrorStandardSSDNotSupported <br>
+**Fehlermeldung**: Azure Backup unterstützt derzeit keine SSD Standard-Datenträger. <br>
+
+Azure Backup unterstützt derzeit nur SSD Standard-Datenträger für Tresore, für die ein Upgrade auf den Azure-VM-Sicherungsstapel v2 durchgeführt wurde. Sehen Sie sich [diese Vorteile](backup-upgrade-to-vm-backup-stack-v2.md) und [Überlegungen](backup-upgrade-to-vm-backup-stack-v2.md#considerations-before-upgrade) an, und führen Sie anschließend ein Upgrade mithilfe [dieser Anweisungen](backup-upgrade-to-vm-backup-stack-v2.md#upgrade) durch.
+
+
 ## <a name="causes-and-solutions"></a>Ursachen und Lösungen
 
 ### <a name="the-vm-has-no-internet-access"></a>Der virtuelle Computer verfügt nicht über Internetzugriff
@@ -139,7 +153,7 @@ Der VM-Agent wurde möglicherweise beschädigt, oder der Dienst wurde angehalten
 1. Ermitteln Sie, ob der Windows-Gast-Agent-Dienst in den VM-Diensten ausgeführt wird (services.msc). Starten Sie den Windows-Gast-Agent-Dienst neu, und initiieren Sie die Sicherung.    
 2. Wenn der Windows-Gast-Agent-Dienst in den Diensten nicht angezeigt wird, wechseln Sie in der Systemsteuerung zu **Programme und Funktionen**, um zu ermitteln, ob der Windows-Gast-Agent-Dienst installiert ist.
 4. Wenn der Windows-Gast-Agent unter **Programm und Funktionen** angezeigt wird, deinstallieren Sie ihn.
-5. Laden Sie die [aktuelle Version der Agent-MSI-Datei](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409) herunter, und installieren Sie sie. Zum Durchführen der Installation benötigen Sie Administratorberechtigungen.
+5. Laden Sie die [aktuelle Version der Agent-MSI-Datei](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409) herunter, und installieren Sie sie. Zum Durchführen der Installation benötigen Sie Administratorberechtigungen.
 6. Überprüfen Sie, ob der Windows-Gast-Agent-Dienst in den Diensten angezeigt wird.
 7. Führen Sie eine bedarfsgesteuerten Sicherung aus:
     * Wählen Sie im Portal die Option **Jetzt sichern** aus.
@@ -207,8 +221,8 @@ Wenn die VMSnapshot-Erweiterung im Azure-Portal nicht angezeigt wird, [aktualisi
 Diese Schritte bewirken, dass die Erweiterung während der nächsten Sicherung neu installiert wird.
 
 ### <a name="remove_lock_from_the_recovery_point_resource_group"></a>Entfernen der Sperre von der Wiederherstellungspunkt-Ressourcengruppe
-1. Melden Sie sich am [Azure-Portal](http://portal.azure.com/) an.
-2. Navigieren Sie zur Option **Alle Ressourcen**, und wählen Sie die Wiederherstellungspunktsammlungs-Ressourcengruppe im folgenden Format aus: AzureBackupRG_<Geo>_<number>.
+1. Melden Sie sich beim [Azure-Portal](http://portal.azure.com/) an.
+2. Navigieren Sie zur Option **Alle Ressourcen**, und wählen Sie die Wiederherstellungspunktsammlungs-Ressourcengruppe im folgenden Format aus: AzureBackupRG_`<Geo>`_`<number>`.
 3. Wählen Sie im Abschnitt **Einstellungen** die Option **Sperren** aus, um die Sperren anzuzeigen.
 4. Um die Sperre zu entfernen, wählen Sie die Auslassungspunkte aus, und klicken Sie dann auf **Löschen**.
 
@@ -217,18 +231,18 @@ Diese Schritte bewirken, dass die Erweiterung während der nächsten Sicherung n
 ### <a name="clean_up_restore_point_collection"></a>Bereinigen der Wiederherstellungspunktsammlung
 Nach dem Entfernen der Sperre müssen die Wiederherstellungspunkte bereinigt werden. Um die Wiederherstellungspunkte zu bereinigen, verwenden Sie eine der folgenden Methoden:<br>
 * [Bereinigen der Wiederherstellungspunktsammlung durch Ausführen einer Ad-hoc-Sicherung](#clean-up-restore-point-collection-by-running-ad-hoc-backup)<br>
-* [Bereinigen der Wiederherstellungspunktsammlung aus dem Portal, die vom Sicherungsdienst erstellt wurde](#clean-up-restore-point-collection-from-portal-created-by-backup-service)<br>
+* [Bereinigen der Wiederherstellungspunktsammlung über das Azure-Portal](#clean-up-restore-point-collection-from-azure-portal)<br>
 
 #### <a name="clean-up-restore-point-collection-by-running-ad-hoc-backup"></a>Bereinigen der Wiederherstellungspunktsammlung durch Ausführen einer Ad-hoc-Sicherung
 Nach dem Entfernen der Sperre lösen Sie eine Ad-Hoc-/manuelle Sicherung aus. Dadurch wird sichergestellt, dass die Wiederherstellungspunkte automatisch bereinigt werden. Es ist davon auszugehen, dass dieser Ad-hoc-/manuelle Vorgang beim ersten Mal fehlschlägt. Er gewährleistet jedoch eine automatische Bereinigung anstelle des manuellen Löschens von Wiederherstellungspunkten. Nach der Bereinigung sollte die nächste geplante Sicherung erfolgreich sein.
 
 > [!NOTE]
-    > Die automatische Bereinigung erfolgt einige Stunden nach dem Auslösen der Ad-Hoc-/manuellen Sicherung. Wenn bei der geplanten Sicherung weiterhin ein Fehler auftritt, löschen Sie die Wiederherstellungspunktsammlung manuell, indem Sie die [hier](#clean-up-restore-point-collection-from-portal-created-by-backup-service) aufgeführten Schritte verwenden.
+    > Die automatische Bereinigung erfolgt einige Stunden nach dem Auslösen der Ad-Hoc-/manuellen Sicherung. Wenn bei der geplanten Sicherung weiterhin ein Fehler auftritt, löschen Sie die Wiederherstellungspunktsammlung manuell, indem Sie die [hier](#clean-up-restore-point-collection-from-azure-portal) aufgeführten Schritte verwenden.
 
-#### <a name="clean-up-restore-point-collection-from-portal-created-by-backup-service"></a>Bereinigen der Wiederherstellungspunktsammlung aus dem Portal, die vom Sicherungsdienst erstellt wurde<br>
+#### <a name="clean-up-restore-point-collection-from-azure-portal"></a>Bereinigen der Wiederherstellungspunktsammlung über das Azure-Portal <br>
 
 Um die Wiederherstellungspunktsammlung, die aufgrund der Sperre der Ressourcengruppe nicht bereinigt wird, manuell zu bereinigen, führen Sie die folgenden Schritte aus:
-1. Melden Sie sich am [Azure-Portal](http://portal.azure.com/) an.
+1. Melden Sie sich beim [Azure-Portal](http://portal.azure.com/) an.
 2. Klicken Sie im Menü **Hub** auf **Alle Ressourcen**, und wählen Sie die Ressourcengruppe mit dem folgenden Format AzureBackupRG_`<Geo>`_`<number>` aus, in der sich Ihr virtueller Computer befindet.
 
     ![Löschen der Sperre ](./media/backup-azure-arm-vms-prepare/resource-group.png)

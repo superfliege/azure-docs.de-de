@@ -10,12 +10,12 @@ ms.component: design
 ms.date: 04/17/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 1fa31b23aa8df73b13e73da80096596bf1ce2db3
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 92e16104edb46298d6e503b7546449ed71041047
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44093298"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51005749"
 ---
 # <a name="azure-sql-data-warehouse---massively-parallel-processing-mpp-architecture"></a>Azure SQL Data Warehouse – MPP-Architektur (Massively Parallel Processing)
 In diesem Artikel erfahren Sie, wie in Azure SQL Data Warehouse durch Kombination von Massively Parallel Processing (MPP) und Azure Storage hohe Leistung und Skalierbarkeit erzielt werden. 
@@ -23,7 +23,7 @@ In diesem Artikel erfahren Sie, wie in Azure SQL Data Warehouse durch Kombinatio
 > [!VIDEO https://www.youtube.com/embed/PlyQ8yOb8kc]
 
 ## <a name="mpp-architecture-components"></a>Komponenten der MPP-Architektur
-SQL Data Warehouse nutzt eine horizontal hochskalierte Architektur zur Verteilung der Berechnungsverarbeitung von Daten auf mehrere Knoten. Die Skalierungseinheit ist eine Abstraktion der Computeleistung, die als Data Warehouse-Einheit bezeichnet wird. In SQL Data Warehouse sind Compute- und Speicherressourcen getrennt, sodass Sie die Computedaten unabhängig von den Daten in Ihrem System skalieren können.
+SQL Data Warehouse nutzt eine horizontal hochskalierte Architektur zur Verteilung der Berechnungsverarbeitung von Daten auf mehrere Knoten. Die Skalierungseinheit ist eine Abstraktion der Computeleistung, die als [Data Warehouse-Einheit](what-is-a-data-warehouse-unit-dwu-cdwu.md) bezeichnet wird. In SQL Data Warehouse sind Compute- und Speicherressourcen getrennt, sodass Sie die Computedaten unabhängig von den Daten in Ihrem System skalieren können.
 
 ![SQL Data Warehouse-Architektur](media/massively-parallel-processing-mpp-architecture/massively-parallel-processing-mpp-architecture.png)
 

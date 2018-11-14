@@ -7,51 +7,46 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/06/2016
+ms.date: 11/01/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 3d18e1b2e45aba4e83989e29c533cfc7bf5033fc
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: eabae0f3575719c6cb93affefe0a393dd13d1439
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37442707"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51014005"
 ---
-# <a name="azure-active-directory-b2c-enable-multi-factor-authentication-in-your-consumer-facing-applications"></a>Azure Active Directory B2C: Aktivieren der Multi-Factor Authentication in kundenorientierten Anwendungen
-Azure Active Directory (Azure AD) B2C bietet eine direkte Integration in die [Azure Multi-Factor Authentication](../active-directory/authentication/multi-factor-authentication.md) , damit Sie eine zweite Sicherheitsebene zu Registrierungs- und Anmeldeoberflächen in kundenorientierten Anwendungen hinzufügen können. Sie erreichen dies, ohne eine einzige Codezeile schreiben zu müssen. Derzeit wird eine Überprüfung per Telefonanruf und Textnachricht unterstützt. Sie können die Multi-Factor Authentication auch dann aktivieren, wenn Sie bereits Registrierungs- und Anmelderichtlinien erstellt haben.
+# <a name="enable-multi-factor-authentication-in-azure-active-directory-b2c"></a>Aktivieren der Multi-Factor Authentication in Azure Active Directory B2C
 
-> [!NOTE]
-> Die Multi-Factor Authentication kann auch beim Erstellen von Registrierungs- und Anmelderichtlinien aktiviert werden und nicht nur durch Bearbeiten von vorhandenen Richtlinien.
-> 
-> 
+Azure Active Directory (Azure AD) B2C bietet eine direkte Integration in die [Azure Multi-Factor Authentication](../active-directory/authentication/multi-factor-authentication.md), damit Sie eine zweite Sicherheitsebene zu Registrierungs- und Anmeldeoberflächen in Anwendungen hinzufügen können. Sie können die Multi-Factor Authentication aktivieren, ohne eine einzige Codezeile schreiben zu müssen. Sie können die Multi-Factor Authentication auch dann aktivieren, wenn Sie bereits Registrierungs- und Anmelderichtlinien erstellt haben.
 
 Mithilfe dieses Features können Anwendungen z. B. folgende Szenarios bewältigen:
 
-* Für den Zugriff auf eine Anwendung ist keine Multi-Factor Authentication erforderlich, jedoch für den Zugriff auf eine andere Anwendung. Beispielsweise kann sich der Kunde bei der Anwendung einer Kfz-Versicherung mit einem lokalen Konto oder dem Konto eines sozialen Netzwerks anmelden. Er muss jedoch seine Telefonnummer bestätigen, bevor er auf die Anwendung für die Hausversicherung zugreifen kann, die im selben Verzeichnis registriert ist.
-* Die Multi-Factor Authentication ist allgemein für den Zugriff auf eine Anwendung nicht erforderlich, jedoch für vertrauliche Unterbereiche dieser Anwendung. Beispielsweise kann sich der Kunde bei einer Onlinebanking-Anwendung mit einem lokalen Konto oder dem Konto eines sozialen Netzwerks anmelden, um den Kontostand abzufragen. Um eine Überweisung zu tätigen, ist jedoch die Bestätigung der Telefonnummer erforderlich.
+- Für den Zugriff auf eine Anwendung ist keine Multi-Factor Authentication erforderlich, jedoch für den Zugriff auf eine andere Anwendung. Beispielsweise kann sich der Kunde bei der Anwendung einer Kfz-Versicherung mit einem lokalen Konto oder dem Konto eines sozialen Netzwerks anmelden. Er muss jedoch seine Telefonnummer bestätigen, bevor er auf die Anwendung für die Hausversicherung zugreifen kann, die im selben Verzeichnis registriert ist.
+- Die Multi-Factor Authentication ist allgemein für den Zugriff auf eine Anwendung nicht erforderlich, jedoch für vertrauliche Unterbereiche dieser Anwendung. Beispielsweise kann sich der Kunde bei einer Onlinebanking-Anwendung mit einem lokalen Konto oder dem Konto eines sozialen Netzwerks anmelden, um den Kontostand abzufragen. Um eine Überweisung zu tätigen, ist jedoch die Bestätigung der Telefonnummer erforderlich.
 
-## <a name="modify-your-sign-up-policy-to-enable-multi-factor-authentication"></a>Ändern der Registrierungsrichtlinie zur Aktivierung der Multi-Factor Authentication
-1. [Führen Sie diese Schritte aus, um im Azure-Portal zum Blatt „B2C-Funktionen“ zu navigieren](active-directory-b2c-app-registration.md#navigate-to-b2c-settings).
-2. Klicken Sie auf **Registrierungsrichtlinien**.
-3. Klicken Sie auf die Registrierungsrichtlinie (z. B. „B2C_1_SiUp“), um sie zu öffnen.
-4. Klicken Sie auf **Multi-Factor Authentication**, und legen Sie den **Status** auf **EIN** fest. Klicken Sie auf **OK**.
-5. Klicken Sie oben auf dem Blatt auf **Speichern** .
+## <a name="set-multi-factor-authentication"></a>Festlegen der Multi-Factor Authentication
 
-Mit dem Feature "Jetzt ausführen" für die Richtlinie können Sie die Benutzererfahrung überprüfen. Überprüfen Sie Folgendes:
+Wenn Sie eine Richtlinie erstellen, gibt es die Option zum Aktivieren von Multi-Factor Authentication.
 
-In Ihrem Verzeichnis wird ein Kundenkonto erstellt, bevor der Schritt für die Multi-Factor Authentication ausgeführt wird. Während dieses Schritts wird der Kunde aufgefordert, seine Telefonnummer anzugeben und zu bestätigen. Wenn die Überprüfung erfolgreich ist, wird die Telefonnummer zur späteren Verwendung an das Kundenkonto angefügt. Auch wenn der Kunde den Vorgang abbricht, kann er bei der nächsten Anmeldung aufgefordert werden, eine Telefonnummer erneut zu bestätigen (bei aktivierter Multi-Factor Authentication).
+![Festlegen der Multi-Factor Authentication](./media/active-directory-b2c-reference-mfa/add-policy.png)
 
-## <a name="modify-your-sign-in-policy-to-enable-multi-factor-authentication"></a>Ändern der Anmelderichtlinie zur Aktivierung der Multi-Factor Authentication
-1. [Führen Sie diese Schritte aus, um im Azure-Portal zum Blatt „B2C-Funktionen“ zu navigieren](active-directory-b2c-app-registration.md#navigate-to-b2c-settings).
-2. Klicken Sie auf **Anmelderichtlinien**.
-3. Klicken Sie auf die Anmelderichtlinie (z. B. „B2C_1_SiIn“), um sie zu öffnen. Klicken Sie oben auf dem Blatt auf **Bearbeiten**.
-4. Klicken Sie auf **Multi-Factor Authentication**, und legen Sie den **Status** auf **EIN** fest. Klicken Sie auf **OK**.
-5. Klicken Sie oben auf dem Blatt auf **Speichern** .
+Legen Sie für **Zustand** **Ein** fest.
 
-Mit dem Feature "Jetzt ausführen" für die Richtlinie können Sie die Benutzererfahrung überprüfen. Überprüfen Sie Folgendes:
+Sie können **Jetzt ausführen** für die Richtlinie verwenden, um den Vorgang zu überprüfen. Bestätigen Sie das folgende Szenario:
 
-Wenn sich der Kunde (mit einem lokalen Konto oder dem Konto eines sozialen Netzwerks) anmeldet und eine bestätigte Telefonnummer an das Kundenkonto angefügt wurde, wird der aufgefordert, diese zu bestätigen. Wenn keine Telefonnummer angefügt wurde, wird der Kunde aufgefordert, eine Telefonnummer anzugeben und zu bestätigen. Bei erfolgreicher Überprüfung wird die Telefonnummer zur späteren Verwendung an das Kundenkonto angefügt.
+In Ihrem Mandanten wird ein Kundenkonto erstellt, bevor der Schritt für die Multi-Factor Authentication ausgeführt wird. Während dieses Schritts wird der Kunde aufgefordert, seine Telefonnummer anzugeben und zu bestätigen. Wenn die Überprüfung erfolgreich ist, wird die Telefonnummer zur späteren Verwendung an das Kundenkonto angefügt. Auch wenn der Kunde den Vorgang abbricht, kann er bei der nächsten Anmeldung aufgefordert werden, eine Telefonnummer erneut zu bestätigen (bei aktivierter Multi-Factor Authentication).
 
-## <a name="multi-factor-authentication-on-other-policies"></a>Multi-Factor Authentication in anderen Richtlinien
-Wie für Registrierungs- und Anmeldungsrichtlinien oben beschrieben, ist es auch möglich, die mehrstufige Authentifizierung für Registrierungs- und Anmeldungsrichtlinien sowie für Richtlinien zur Kennwortrücksetzung zu aktivieren. Dies ist bald auch für Richtlinien zur Profilbearbeitung möglich.
+## <a name="add-multi-factor-authentication"></a>Hinzufügen der Multi-Factor Authentication
+
+Es ist möglich, die Multi-Factor Authentication für eine Richtlinie zu aktivieren, die Sie zuvor erstellt haben. 
+
+So aktivieren Sie die Multi-Factor Authentication:
+
+1. Öffnen Sie die Richtlinie, und wählen Sie dann **Bearbeiten**. 
+2. Wählen Sie **Multi-Factor Authentication** aus.
+3. Legen Sie für **Zustand** **Ein** fest.
+4. Klicken Sie oben auf der Seite auf **Speichern**.
+
 

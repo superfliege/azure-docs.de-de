@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 09/21/2018
 ms.author: saudas
-ms.openlocfilehash: d8da717b83b43395309c695a4f9edaeda8144a8b
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: a17e2fa4bef6890d59f7e66c6ede349f8dee3b8a
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49379194"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51280452"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Unterstützte Kubernetes-Versionen in Azure Kubernetes Service (AKS)
 
@@ -29,7 +29,7 @@ AKS unterstützt vier Nebenversionen von Kubernetes:
 
 Wenn AKS zum Beispiel heute *1.11.x* einführt, werden auch *1.10.a* + *1.10.b*, *1.9.c* + *1.9d* und *1.8.e* + *1.8f* unterstützt (wobei die Buchstaben der Patchreleases für die beiden letzten stabilen Builds stehen).
 
-Wenn eine neue Nebenversion eingeführt wird, werden die älteste Nebenversion und die unterstützten Patchreleases deaktiviert. 15 Tage vor der Veröffentlichung der neuen Nebenversion und der bevorstehenden Deaktivierung der Version gibt es eine Ankündigung über die Updatekanäle von Azure. Im Beispiel oben wird *1.11.x* veröffentlicht, und die Versionen *1.7.g* + *1.7.h* werden deaktiviert.
+Wenn eine neue Nebenversion eingeführt wird, werden die älteste Nebenversion und die unterstützten Patchreleases deaktiviert. 15 Tage vor der Veröffentlichung der neuen Nebenversion und der bevorstehenden Außerbetriebnahme der Version gibt es eine Ankündigung über die [Azure-Updatekanäle][azure-update-channel]. Im Beispiel oben wird *1.11.x* veröffentlicht, und die Versionen *1.7.g* + *1.7.h* werden deaktiviert.
 
 Wenn Sie einen AKS-Cluster im Portal oder mit der Azure CLI bereitstellen, wird der Cluster immer auf die Nebenversion n-1 und den neuesten Patch festgelegt. Wenn AKS zum Beispiel *1.11.x*, *1.10.a* + *1.10.b*, *1.9.c* + *1.9d* und *1.8.e* + *1.8f* unterstützt, ist die Standardversion des neuen Clusters *1.10.b*.
 
@@ -85,6 +85,7 @@ Weitere Informationen zum Upgrade Ihres Clusters finden Sie unter [Durchführen 
 
 <!-- LINKS - External -->
 [acs-engine]: https://github.com/Azure/acs-engine
+[azure-update-channel]: https://azure.microsoft.com/updates/?product=kubernetes-service
 
 <!-- LINKS - Internal -->
 [aks-upgrade]: upgrade-cluster.md

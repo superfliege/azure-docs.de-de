@@ -11,14 +11,14 @@ ms.workload: identity
 ms.topic: article
 ms.date: 09/06/2018
 ms.author: barbkess
-ms.reviewer: harshja
+ms.reviewer: japere
 ms.custom: it-pro
-ms.openlocfilehash: 5f103e9fe410374a551eb43d456d5993bdd36627
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 55e262e1855eb6ab50c2d32e7e8cd4bb9175a593
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44056751"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50962553"
 ---
 # <a name="application-proxy-and-qlik-sense"></a>Anwendungsproxy und Qlik Sense 
 Die Partnerschaft von Azure Active Directory-Anwendungsproxy und Qlik Sense soll sicherstellen, dass Sie mit dem Anwendungsproxy problemlos Remotezugriff für Ihre Qlik Sense-Bereitstellung bereitstellen können.  
@@ -57,7 +57,11 @@ Führen Sie die gleichen Schritte aus wie für Anwendung 1 – mit folgenden Aus
 ## <a name="testing"></a>Testen 
 Ihre Anwendung kann jetzt getestet werden. Greifen Sie auf die externe URL zu, die Sie zum Veröffentlichen von Qlik Sense in Anwendung 1 verwendet haben, und melden Sie sich als Benutzer an, der beiden Anwendungen zugewiesen ist.  
 
+## <a name="additional-references"></a>Zusätzliche Verweise
+Weitere Informationen zum Veröffentlichen von Qlik Sense mit Anwendungsproxy finden Sie in der Qlik-Community im Artikel [Azure AD mit integrierter Windows-Authentifizierung unter Verwendung einer eingeschränkten Kerberos-Delegierung mit Qlik Sense](https://community.qlik.com/docs/DOC-20183) (in englischer Sprache).
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Veröffentlichen von Anwendungen mit dem Anwendungsproxy](application-proxy-publish-azure-portal.md)
-- [Veröffentlichen von Anwendungen in getrennten Netzwerken und an getrennten Standorten mit Connectorgruppen](application-proxy-connector-groups.md).
+- [Arbeiten mit Anwendungsproxyconnectors](application-proxy-connector-groups.md)
+

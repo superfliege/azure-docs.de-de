@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2018
 ms.author: tomsh
-ms.openlocfilehash: 0f738348dd0a000df8b1da299bb7b58ebc5a1165
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: cceea9fa613d2a2428427bfe73eb50550db6c69a
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47040096"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51281624"
 ---
 # <a name="azure-database-security-best-practices"></a>Bewährte Methoden für die Azure-Datenbanksicherheit
-Sicherheit ist einer der wichtigsten Aspekte beim Verwalten von Datenbanken und hat auch bei [Azure SQL-Datenbank](https://docs.microsoft.com/azure/sql-database/) höchste Priorität. Ihre Datenbanken können umfassend geschützt werden, um die meisten gesetzlichen oder sicherheitsbezogenen Anforderungen (HIPAA, ISO 27001/27002, PCI-DSS Level 1) zu erfüllen. Eine aktuelle Liste mit Sicherheitszertifizierungen finden Sie auf der [Microsoft Trust Center-Website](http://azure.microsoft.com/support/trust-center/services/). Sie können Ihre Datenbanken auch gemäß den jeweils geltenden rechtlichen Anforderungen in spezifischen Azure-Datencentern anordnen.
+Sicherheit ist einer der wichtigsten Aspekte beim Verwalten von Datenbanken und hat auch bei [Azure SQL-Datenbank](https://docs.microsoft.com/azure/sql-database/) höchste Priorität. Ihre Datenbanken können umfassend geschützt werden, um die meisten gesetzlichen oder sicherheitsbezogenen Anforderungen (HIPAA, ISO 27001/27002, PCI-DSS Level 1) zu erfüllen. Eine aktuelle Liste mit Sicherheitszertifizierungen finden Sie auf der [Microsoft Trust Center-Website](https://azure.microsoft.com/support/trust-center/services/). Sie können Ihre Datenbanken auch gemäß den jeweils geltenden rechtlichen Anforderungen in spezifischen Azure-Datencentern anordnen.
 
 In diesem Artikel werden die bewährten Methoden für die Azure-Datenbanksicherheit beschrieben. Diese bewährten Methoden sind aus unseren Erfahrungen mit der Azure-Datenbanksicherheit und den Erfahrungen von Kunden wie Ihnen abgeleitet.
 
@@ -72,22 +72,18 @@ Daraus ergeben sich u. a. die folgenden Vorteile:
 
 > [!NOTE]
 > Für die SQL Server-Authentifizierung kann das Kerberos-Sicherheitsprotokoll nicht verwendet werden.
->
->
 
 Bei Verwendung der SQL Server-Authentifizierung ist Folgendes erforderlich:
 
 - Sie verwalten die sicheren Anmeldeinformationen selbst.
 - Sie schützen die Anmeldeinformationen in der Verbindungszeichenfolge.
-- Sie schützen (falls zutreffend) die Anmeldeinformationen, die über das Netzwerk vom Webserver an die Datenbank übergeben werden. Weitere Informationen finden Sie unter [How To: Connect to SQL Server Using SQL Authentication in ASP.NET 2.0 (Vorgehensweise: Herstellen einer Verbindung mit SQL Server mit SQL-Authentifizierung in ASP.NET 2.0)](https://msdn.microsoft.com/library/ms998300.aspx).
+- Sie schützen (falls zutreffend) die Anmeldeinformationen, die über das Netzwerk vom Webserver an die Datenbank übergeben werden. Weitere Informationen finden Sie unter [How To: Connect to SQL Server Using SQL Authentication in ASP.NET 2.0 (Vorgehensweise: Herstellen einer Verbindung mit SQL Server mit SQL-Authentifizierung in ASP.NET 2.0)](/previous-versions/msp-n-p/ff648340(v=pandp.10)).
 
 ### <a name="azure-active-directory-ad-authentication"></a>*Azure Active Directory-Authentifizierung*
 Die [Azure Active Directory](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md)-Authentifizierung ist ein Mechanismus zum Herstellen einer Verbindung mit Azure SQL-Datenbank und SQL Data Warehouse unter Verwendung von Identitäten in Azure Active Directory (Azure AD). Mithilfe der Azure AD-Authentifizierung können Sie die Identitäten von Datenbankbenutzern und anderen Microsoft-Diensten zentral verwalten. Die zentrale ID-Verwaltung ermöglicht eine einheitliche Verwaltung von Datenbankbenutzern und vereinfacht die Berechtigungsverwaltung.
 
 > [!NOTE]
 > Es wird empfohlen, die Azure AD-Authentifizierung zu verwenden.
->
->
 
 Daraus ergeben sich u. a. die folgenden Vorteile:
 
@@ -112,12 +108,12 @@ Die Konfigurationsschritte schließen die folgenden Verfahren zum Konfigurieren 
 
 Ausführlichere Informationen finden Sie unter [Verwenden der Azure Active Directory-Authentifizierung für die Authentifizierung bei SQL-Datenbank, der verwalteten Instanz oder SQL Data Warehouse](../sql-database/sql-database-aad-authentication.md).
 
-## <a name="protect-your-data-by-using-encryption"></a>Schützen Ihrer Daten durch Verschlüsselung
-Durch [Transparent Data Encryption in Azure SQL-Datenbank](https://msdn.microsoft.com/library/dn948096.aspx) können Sie Daten auf einem Datenträger schützen und gleichzeitig unbefugten Hardwarezugriff vermeiden. TDE ver- und entschlüsselt die Datenbank, die zugehörigen Sicherungen und die Transaktionsprotokolldateien im Ruhezustand in Echtzeit, ohne dass Änderungen an der Anwendung erforderlich sind. Die transparente Datenverschlüsselung verschlüsselt den Speicher einer gesamten Datenbank mithilfe eines symmetrischen Schlüssels, der als Datenbankverschlüsselungsschlüssel bezeichnet wird.
+## <a name="protect-your-data-by-using-encryption-and-row-level-security"></a>Schützen Ihrer Daten durch Verschlüsselung und Sicherheit auf Zeilenebene
+Durch [Transparent Data Encryption in Azure SQL-Datenbank](../sql-database/transparent-data-encryption-azure-sql.md) können Sie Daten auf einem Datenträger schützen und gleichzeitig unbefugten Hardwarezugriff vermeiden. TDE ver- und entschlüsselt die Datenbank, die zugehörigen Sicherungen und die Transaktionsprotokolldateien im Ruhezustand in Echtzeit, ohne dass Änderungen an der Anwendung erforderlich sind. Die transparente Datenverschlüsselung verschlüsselt den Speicher einer gesamten Datenbank mithilfe eines symmetrischen Schlüssels, der als Datenbankverschlüsselungsschlüssel bezeichnet wird.
 
 Auch wenn der gesamte Speicher verschlüsselt ist, ist es sehr wichtig, dass Sie Ihre Datenbank selbst ebenfalls verschlüsseln. Dies ist eine Implementierung des Defense-in-Depth-Ansatzes (mehrschichtiger Schutz) für den Datenschutz. Falls Sie Azure SQL-Datenbank verwenden und sensible Daten wie beispielsweise Kreditkarteninformationen oder US-Sozialversicherungsnummern schützen möchten, können Sie Datenbanken mithilfe der FIPS 140-2-zertifizierten AES-Verschlüsselung (256 Bit) verschlüsseln. Diese Verschlüsselung erfüllt die Anforderungen aller Industriestandards (z.B. HIPAA und PCI).
 
-Dateien, die mit der [Pufferpoolerweiterung (Buffer Pool Extension, BPE)](https://docs.microsoft.com/sql/database-engine/configure-windows/buffer-pool-extension) in Zusammenhang stehen, werden nicht verschlüsselt, wenn Sie eine Datenbank mit Transparent Data Encryption verschlüsseln. Sie müssen Verschlüsselungstools auf Dateisystemebene wie [BitLocker](https://technet.microsoft.com/library/cc732774) oder das [Verschlüsselnde Dateisystem (Encrypting File System, EFS)]() für Dateien verwenden, die mit der Pufferpoolerweiterung in Zusammenhang stehen.
+Dateien, die mit der [Pufferpoolerweiterung (Buffer Pool Extension, BPE)](https://docs.microsoft.com/sql/database-engine/configure-windows/buffer-pool-extension) in Zusammenhang stehen, werden nicht verschlüsselt, wenn Sie eine Datenbank mit Transparent Data Encryption verschlüsseln. Sie müssen Verschlüsselungstools auf Dateisystemebene wie [BitLocker](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc732774(v=ws.11)) oder das [Verschlüsselnde Dateisystem (Encrypting File System, EFS)](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc749610(v%3dws.10)) für Dateien verwenden, die mit der Pufferpoolerweiterung in Zusammenhang stehen.
 
 Da ein autorisierter Benutzer, wie beispielsweise ein Sicherheits- oder Datenbankadministrator, auf die Daten zugreifen kann, selbst wenn Sie mit TDE verschlüsselt sind, sollten Sie auch die folgenden Empfehlungen befolgen:
 
@@ -126,11 +122,11 @@ Da ein autorisierter Benutzer, wie beispielsweise ein Sicherheits- oder Datenban
 - Achten Sie darauf, dass Benutzer und Anwendungen verschiedene Konten verwenden, um sich zu authentifizieren. Auf diese Weise können Sie die Anzahl von Benutzern und Anwendungen gewährten Berechtigungen beschränken und das Risiko böswilliger Aktivitäten reduzieren.
 - Implementieren Sie Sicherheit auf Datenbankebene mithilfe von festen Datenbankrollen (wie z.B. db_datareader oder db_datawriter). Alternativ können sie benutzerdefinierte Rollen für Ihre Anwendung erstellen, um bestimmten Datenbankobjekten explizite Berechtigungen zu gewähren.
 
-Es gibt noch weitere Möglichkeiten zum Verschlüsseln Ihrer Daten:
+Es gibt noch weitere Möglichkeiten zum Absichern Ihrer Daten:
 
-- [Verschlüsselung auf Zellenebene](https://msdn.microsoft.com/library/ms179331.aspx) werden bestimmte Spalten oder sogar Zellen, die Daten enthalten, mit unterschiedlichen Verschlüsselungsschlüsseln verschlüsselt.
-- Mit [Always Encrypted](https://msdn.microsoft.com/library/mt163865.aspx) können Clients vertrauliche Daten in Clientanwendungen verschlüsseln, ohne die Verschlüsselungsschlüssel für die Datenbank-Engine (SQL-Datenbank oder SQL Server) jemals offenzulegen. Zu diesem Zweck ermöglicht Always Encrypted eine Trennung zwischen den Besitzern der Daten (die diese anzeigen dürfen) und den Personen, die die Daten verwalten (aber ansonsten keinen Zugriff haben).
-- Bei der [Sicherheit auf Zeilenebene](https://msdn.microsoft.com/library/dn765131) können Kunden den Zugriff auf Zeilen in einer Datenbanktabelle basierend auf den Merkmalen des Benutzers steuern, der eine Abfrage ausführt. (Beispielmerkmale sind eine Gruppenmitgliedschaft und ein Ausführungskontext.)
+- [Verschlüsselung auf Zellenebene](/sql/relational-databases/security/encryption/encrypt-a-column-of-data) werden bestimmte Spalten oder sogar Zellen, die Daten enthalten, mit unterschiedlichen Verschlüsselungsschlüsseln verschlüsselt.
+- Mit [Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine) können Clients vertrauliche Daten in Clientanwendungen verschlüsseln, ohne die Verschlüsselungsschlüssel für die Datenbank-Engine (SQL-Datenbank oder SQL Server) jemals offenzulegen. Zu diesem Zweck ermöglicht Always Encrypted eine Trennung zwischen den Besitzern der Daten (die diese anzeigen dürfen) und den Personen, die die Daten verwalten (aber ansonsten keinen Zugriff haben).
+- Bei der [Sicherheit auf Zeilenebene](/sql/relational-databases/security/row-level-security) können Kunden den Zugriff auf Zeilen in einer Datenbanktabelle basierend auf den Merkmalen des Benutzers steuern, der eine Abfrage ausführt. (Beispielmerkmale sind eine Gruppenmitgliedschaft und ein Ausführungskontext.)
 
 Organisationen, die keine Verschlüsselung auf Datenbankebene verwenden, sind möglicherweise anfälliger für Angriffe, die in SQL-Datenbanken gespeicherte Daten kompromittieren.
 
@@ -181,4 +177,4 @@ Weitere bewährte Methoden für die Sicherheit, die Sie beim Entwerfen, Bereitst
 
 Die folgenden Ressourcen enthalten allgemeinere Informationen zur Sicherheit in Azure und verwandten Microsoft-Diensten:
 * [Blog des Azure-Sicherheitsteams](https://blogs.msdn.microsoft.com/azuresecurity/): Hier finden Sie Informationen über den aktuellen Stand der Azure-Sicherheit.
-* [Microsoft Security Response Center](https://technet.microsoft.com/library/dn440717.aspx): Hier können Sie Microsoft-Sicherheitsrisiken (z.B. Probleme mit Azure) melden oder eine E-Mail an secure@microsoft.com schreiben.
+* [Microsoft Security Response Center](https://technet.microsoft.com/library/dn440717.aspx): Hier können Sie Microsoft-Sicherheitsrisiken, z.B. Probleme mit Azure, melden oder eine E-Mail an secure@microsoft.com schreiben.

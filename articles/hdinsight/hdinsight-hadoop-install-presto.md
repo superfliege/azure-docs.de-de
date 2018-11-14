@@ -2,23 +2,25 @@
 title: Installieren von Presto in Azure HDInsight-Linux-Clustern
 description: Erfahren Sie, wie Sie Presto und Airpal auf Linux-basierten HDInsight Hadoop-Clustern mit Skriptaktionen installieren.
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 02/21/2018
-ms.author: jasonh
-ms.openlocfilehash: b9ac9c49e633906e47244eedcb18a4cda4a6228d
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.date: 11/06/2018
+ms.author: hrasheed
+ms.openlocfilehash: ea806a1004cf268fb7da75fa45013bdbaf882d86
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46978952"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51227500"
 ---
 # <a name="install-and-use-presto-on-hdinsight-hadoop-clusters"></a>Installieren und Verwenden von Presto in HDInsight Hadoop-Clustern
 
 In diesem Dokument erfahren Sie, wie Sie Presto mithilfe von Skriptaktionen in HDInsight Hadoop-Clustern installieren. Sie erfahren außerdem, wie Sie Airpal auf einem vorhandenen Presto HDInsight-Cluster installieren.
+
+HDInsight bietet außerdem die Anwendung Starburst Presto für Apache Hadoop-Cluster. Weitere Informationen finden Sie unter [Installieren von Apache Hadoop-Anwendungen von Drittanbietern in Azure HDInsight](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-apps-install-applications).
 
 > [!IMPORTANT]
 > Die Schritte in diesem Dokument erfordern einen **HDInsight 3.5 Hadoop-Cluster** mit Linux. Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [HDInsight-Versionen](hdinsight-component-versioning.md).
@@ -42,17 +44,17 @@ Dieser Abschnitt enthält Anweisungen zur Verwendung des Beispielskripts währen
 
     * Er muss ein Hadoop-Cluster mit der HDInsight-Version 3.6 sein.
 
-    * Er muss Azure Storage als Datenspeicher verwenden. Die Verwendung von Presto in einem Cluster, der Azure Data Lake Store als Speicheroption verwendet, wird noch nicht unterstützt. 
+    * Er muss Azure Storage als Datenspeicher verwenden. Die Verwendung von Presto in einem Cluster, der Azure Data Lake Storage als Speicheroption verwendet, ist noch nicht möglich.
 
     ![Erstellen von HDInsight-Clustern mit benutzerdefinierten Optionen](./media/hdinsight-hadoop-install-presto/hdinsight-install-custom.png)
 
-2. Wählen Sie im Bereich **Erweiterte Einstellungen** die Option **Skriptaktionen** aus, und geben Sie die folgenden Informationen an:
+2. Wählen Sie im Bereich **Erweiterte Einstellungen** die Option **Skriptaktionen** aus, und geben Sie die folgenden Informationen an: Sie können auch die Option „Presto installieren“ für den Skripttyp auswählen.
    
    * **NAME**: Geben Sie einen Anzeigenamen für die Skriptaktion ein.
    * **Bash-Skript-URI**: `https://raw.githubusercontent.com/hdinsight/presto-hdinsight/master/installpresto.sh`
    * **HEAD**: Aktivieren Sie diese Option.
    * **WORKER**: Aktivieren Sie diese Option.
-   * **ZOOKEEPER:** Deaktivieren Sie dieses Kontrollkästchen.
+   * **ZOOKEEPER**: Lassen Sie dieses Kontrollkästchen deaktiviert.
    * **PARAMETERS**: Lassen Sie dieses Feld leer.
 
 

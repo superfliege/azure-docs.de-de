@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/12/2018
 ms.author: dukek
 ms.component: alerts
-ms.openlocfilehash: 6163a099894a823614355f71a3e1af4a6a9026ec
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 3ce7c5111fa176bb7fa734f54084b9e14e7afbef
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44717674"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51016045"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Erstellen und Verwalten von Aktionsgruppen im Azure-Portal
 ## <a name="overview"></a>Übersicht ##
@@ -24,8 +24,8 @@ In diesem Artikel wird beschrieben, wie Sie Aktionsgruppen im Azure-Portal erste
 Jede Aktion besteht aus den folgenden Eigenschaften:
 
 * **Name:** ein eindeutiger Bezeichner innerhalb der Aktionsgruppe.  
-* **Aktionstyp**: einen Sprachanruf oder eine SMS senden, eine E-Mail senden, einen Webhook aufrufen, Daten an ein ITSM-Tool senden, eine Logik-App aufrufen, eine Pushbenachrichtigung an die Azure-App senden oder ein Automation-Runbook ausführen.
-* **Details**: Die entsprechende Telefonnummer oder E-Mail-Adresse, die entsprechenden Details zur ITSM-Verbindung oder der entsprechende Webhook-URI.
+* **Aktionstyp**: die auszuführende Aktion. Beispiele sind das Senden eines Sprachanrufs, SMS, E-Mail oder das Auslösen verschiedener Arten von automatisierten Aktionen. Siehe „Typen“ weiter unten in diesem Artikel. 
+* **Details**: die entsprechenden Details, die je nach *Aktionstyp* variieren können. 
 
 Weitere Informationen zum Verwenden von Azure Resource Manager-Vorlagen zur Konfigurierung von Aktionsgruppen finden Sie unter [Aktionsgruppen-Resource Manager-Vorlagen](monitoring-create-action-group-with-resource-manager-template.md).
 
@@ -57,64 +57,45 @@ Weitere Informationen zum Verwenden von Azure Resource Manager-Vorlagen zur Konf
 
 1. Wählen Sie **OK**, um die Aktionsgruppe zu erstellen.
 
-## <a name="action-specific-information"></a>Aktionsspezifische Informationen
-<dl>
-<dt>Azure-App-Push</dt>
-<dd>Eine Aktionsgruppe kann bis zu zehn Azure-App-Aktionen enthalten.</dd>
-<dd>Derzeit werden für Azure-App-Aktionen nur ServiceHealth-Warnungen unterstützt. Alle anderen Warnungen werden ignoriert. Weitere Informationen finden Sie unter [Konfigurieren von Warnungen, wenn eine Dienstintegritätsbenachrichtigung gesendet wird](monitoring-activity-log-alerts-on-service-notifications.md).</dd>
-
-<dt>E-Mail</dt>
-<dd>E-Mails werden von den folgenden E-Mail-Adressen gesendet. Achten Sie darauf, dass Ihre E-Mail-Filterung ordnungsgemäß konfiguriert ist.
-<ul>
-    <li>azure-noreply@microsoft.com</li>
-    <li>azureemail-noreply@microsoft.com</li>
-    <li>alerts-noreply@mail.windowsazure.com</li>
-</ul>
-</dd>
-<dd>Eine Aktionsgruppe kann bis zu 1000 E-Mail-Aktionen enthalten.</dd>
-<dd>Weitere Informationen finden Sie im Artikel [Ratenlimits für Sprache, SMS-Nachrichten, E-Mail-Nachrichten, Azure App-Pushbenachrichtigungen und Webhookbeiträge](./monitoring-alerts-rate-limiting.md).</dd>
-
-<dt>ITSM</dt>
-<dd>Eine Aktionsgruppe kann bis zu zehn ITSM-Aktionen enthalten.</dd>
-<dd>Für eine ITSM-Aktion muss eine ITSM-Verbindung hergestellt werden. Informieren Sie sich, wie Sie [eine ITSM-Verbindung erstellen](../log-analytics/log-analytics-itsmc-overview.md).</dd>
-
-<dt>Logik-App</dt>
-<dd>Eine Aktionsgruppe kann bis zu zehn Logik-App-Aktionen enthalten.</dd>
-
-<dt>Runbook</dt>
-<dd>Eine Aktionsgruppe kann bis zu zehn Runbookaktionen enthalten.</dd>
-<dd>Informationen zu den Einschränkungen für Runbook-Nutzlasten, finden Sie unter [Azure-Abonnementdienstgrenzen](../azure-subscription-service-limits.md).</dd>
-
-<dt>SMS</dt>
-<dd>Eine Aktionsgruppe kann bis zu zehn SMS-Aktionen enthalten.</dd>
-<dd>Weitere Informationen finden Sie im Artikel [Ratenlimits für Sprache, SMS-Nachrichten, E-Mail-Nachrichten, Azure App-Pushbenachrichtigungen und Webhookbeiträge](./monitoring-alerts-rate-limiting.md).</dd>
-<dd>Weitere Informationen finden Sie im Artikel [SMS-Warnungsverhalten in Aktionsgruppen](monitoring-sms-alert-behavior.md).</dd>
-
-<dt>Sprachanruf</dt>
-<dd>Eine Aktionsgruppe kann bis zu zehn Sprachanrufaktionen enthalten.</dd>
-<dd>Weitere Informationen finden Sie im Artikel [Ratenlimits für Sprache, SMS-Nachrichten, E-Mail-Nachrichten, Azure App-Pushbenachrichtigungen und Webhookbeiträge](./monitoring-alerts-rate-limiting.md).</dd>
-
-<dt>Webhook</dt>
-<dd>Eine Aktionsgruppe kann bis zu zehn Webhookaktionen enthalten.
-<dd>Wiederholungslogik – Die Timeoutperiode für eine Antwort beträgt 10 Sekunden. Es wird maximal zweimal versucht, den Webhookaufruf durchzuführen, wenn die HTTP-Statuscodes 408, 429, 503 oder 504 zurückgegeben werden oder der HTTP-Endpunkt nicht reagiert. Der erste Wiederholungsversuch erfolgt nach 10 Sekunden. Der zweite und letzte Wiederholungsversuch erfolgt nach 100 Sekunden.</dd>
-<dd>Quell-IP-Adressbereiche
-<ul>
-    <li>13.106.57.181</li>
-    <li>13.106.54.3</li>
-    <li>13.106.54.19</li>
-    <li>13.106.38.142</li>
-    <li>13.106.38.148</li>
-    <li>13.106.57.196</li>
-</ul>
-Um Updates über Änderungen an diesen IP-Adressen zu erhalten, empfehlen wir Ihnen, eine [Service Health-Warnung](./monitoring-service-notifications.md) zu konfigurieren, die eine Überwachung auf Informationsbenachrichtigungen des Aktionsgruppendiensts ausführt.
-</dd>
-</dl>
-
 ## <a name="manage-your-action-groups"></a>Verwalten von Aktionsgruppen ##
 Nachdem Sie eine Aktionsgruppe erstellt haben, wird diese im Abschnitt **Aktionsgruppen** des Diensts **Überwachen** angezeigt. Wählen Sie die Aktionsgruppe, die Sie verwalten möchten, um Folgendes zu tun:
 
 * Fügen Sie Aktionen hinzu, bearbeiten oder entfernen Sie diese.
 * Löschen der Aktionsgruppe.
+
+## <a name="action-specific-information"></a>Aktionsspezifische Informationen
+**Azure-App-Push**: eine Aktionsgruppe kann bis zu zehn Azure-App-Aktionen enthalten. Derzeit werden für Azure-App-Aktionen nur ServiceHealth-Warnungen unterstützt. Alle anderen Warnungen werden ignoriert. Weitere Informationen finden Sie unter [Konfigurieren von Warnungen, wenn eine Dienstintegritätsbenachrichtigung gesendet wird](monitoring-activity-log-alerts-on-service-notifications.md).
+
+**E-Mail**: E-Mails werden von den folgenden E-Mail-Adressen gesendet. Achten Sie darauf, dass Ihre E-Mail-Filterung ordnungsgemäß konfiguriert ist.
+   - azure-noreply@microsoft.com
+   - azureemail-noreply@microsoft.com
+   - alerts-noreply@mail.windowsazure.com
+
+Eine Aktionsgruppe kann bis zu 1.000 E-Mail-Aktionen enthalten. Weitere Informationen finden Sie im Artikel [Ratenlimits für Sprache, SMS-Nachrichten, E-Mail-Nachrichten, Azure App-Pushbenachrichtigungen und Webhookbeiträge](./monitoring-alerts-rate-limiting.md).
+
+**ITSM**: Eine Aktionsgruppe kann bis zu zehn ITSM-Aktionen enthalten. Für eine ITSM-Aktion ist eine ITSM-Verbindung erforderlich. Informieren Sie sich, wie Sie [eine ITSM-Verbindung erstellen](../log-analytics/log-analytics-itsmc-overview.md).
+
+**Logik-App**: Eine Aktionsgruppe kann bis zu zehn Logik-App-Aktionen enthalten.
+
+**Runbook**: Eine Aktionsgruppe kann bis zu zehn Runbookaktionen enthalten. Informationen zu den Einschränkungen für Runbook-Nutzlasten, die für Protokollwarnungen über Azure-Aktionsgruppen ausgelöst werden, finden Sie unter [Azure-Abonnementdienstgrenzen](../azure-subscription-service-limits.md).
+
+**SMS**: Eine Aktionsgruppe kann bis zu zehn SMS-Aktionen enthalten. Weitere Informationen finden Sie in den Artikeln [Informationen zu Ratenbegrenzungen](./monitoring-alerts-rate-limiting.md) und [Verhalten von SMS-Benachrichtigungen](monitoring-sms-alert-behavior.md).
+
+**Sprachanruf**: Eine Aktionsgruppe kann bis zu zehn Sprachanrufaktionen enthalten.</dd>
+Weitere Informationen finden Sie im Artikel [Ratenlimits für Sprache, SMS-Nachrichten, E-Mail-Nachrichten, Azure App-Pushbenachrichtigungen und Webhookbeiträge](./monitoring-alerts-rate-limiting.md).</dd>
+
+**Webhook**: Eine Aktionsgruppe kann bis zu zehn Webhookaktionen enthalten. Wiederholungslogik – Die Timeoutperiode für eine Antwort beträgt 10 Sekunden. Es wird maximal zweimal versucht, den Webhookaufruf durchzuführen, wenn die HTTP-Statuscodes 408, 429, 503 oder 504 zurückgegeben werden oder der HTTP-Endpunkt nicht reagiert. Der erste Wiederholungsversuch erfolgt nach 10 Sekunden. Der zweite und letzte Wiederholungsversuch erfolgt nach 100 Sekunden.
+
+Quell-IP-Adressbereiche
+    - 13.106.57.181
+    - 13.106.54.3
+    - 13.106.54.19
+    - 13.106.38.142
+    - 13.106.38.148
+    - 13.106.57.196
+
+Um Updates über Änderungen an diesen IP-Adressen zu erhalten, empfehlen wir Ihnen, eine [Service Health-Warnung](./monitoring-service-notifications.md) zu konfigurieren, die eine Überwachung auf Informationsbenachrichtigungen des Aktionsgruppendiensts ausführt.
+
 
 ## <a name="next-steps"></a>Nächste Schritte ##
 * Erfahren Sie mehr über das [SMS-Warnungsverhalten in Aktionsgruppen](monitoring-sms-alert-behavior.md).  

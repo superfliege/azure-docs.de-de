@@ -12,35 +12,33 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.topic: article
-ms.date: 09/25/2017
+ms.date: 10/17/2018
 ms.author: cynthn
-ms.openlocfilehash: 64b33fcd25582f6b1d3e7efe12aba85bb17c4cca
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: a9caaaa0dfe402339ba01be899073bb17de15906
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46951201"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50962043"
 ---
 # <a name="create-a-copy-of-a-linux-vm-by-using-azure-cli-and-managed-disks"></a>Erstellen einer Kopie Ihrer Linux-VM mithilfe von Azure CLI und Managed Disks
 
-In diesem Artikel erfahren Sie, wie Sie eine Kopie des virtuellen Azure-Computers unter Linux mit der Azure CLI und dem Azure Resource Manager-Bereitstellungsmodell erstellen. 
+In diesem Artikel erfahren Sie, wie Sie eine Kopie des virtuellen Azure-Computers (VM) unter Linux mit der Azure CLI und dem Azure Resource Manager-Bereitstellungsmodell erstellen. 
 
 Sie können auch [einen virtuellen Computer aus einer VHD hochladen und erstellen](upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
+-   Installieren Sie die [Azure CLI](/cli/azure/install-az-cli2).
 
--   [Azure-Befehlszeilenschnittstelle](/cli/azure/install-az-cli2)
-
--   Melden Sie sich mit [az login](/cli/azure/reference-index#az_login) bei einem Azure-Konto an.
+-   Melden Sie sich mit [az login](/cli/azure/reference-index#az-login) bei einem Azure-Konto an.
 
 -   Halten Sie eine Azure-VM zur Verwendung als Quelle für die Kopie bereit.
 
-## <a name="step-1-stop-the-source-vm"></a>Schritt 1: Beenden des virtuellen Quellcomputers
+## <a name="stop-the-source-vm"></a>Beenden der Quell-VM
 
-
-Heben Sie die Zuordnung des virtuellen Quellcomputers mit [az vm deallocate](/cli/azure/vm#az_vm_deallocate) auf.
-Im folgenden Beispiel wird die Zuordnung für die VM **myVM** in der Ressourcengruppe **myResourceGroup** aufgehoben:
+Heben Sie die Zuordnung des virtuellen Quellcomputers mit [az vm deallocate](/cli/azure/vm#az-vm-deallocate) auf.
+Im folgenden Beispiel wird die Zuordnung für die VM *myVM* in der Ressourcengruppe *myResourceGroup* aufgehoben:
 
 ```azurecli
 az vm deallocate \
@@ -48,14 +46,13 @@ az vm deallocate \
     --name myVM
 ```
 
-## <a name="step-2-copy-the-source-vm"></a>Schritt 2: Kopieren des virtuellen Quellcomputers
+## <a name="copy-the-source-vm"></a>Kopieren der Quell-VM
 
-
-Zum Kopieren eines virtuellen Computers erstellen Sie eine Kopie der zugrunde liegenden virtuellen Festplatte. Dieser Prozess erstellt eine spezialisierte VHD als Managed Disk, die die gleiche Konfiguration und die gleichen Einstellungen wie der virtuelle Quellcomputer aufweist.
+Zum Kopieren eines virtuellen Computers erstellen Sie eine Kopie der zugrunde liegenden virtuellen Festplatte. Dieser Prozess erstellt eine spezialisierte VHD als verwalteten Datenträger, der die gleiche Konfiguration und die gleichen Einstellungen wie die Quell-VM aufweist.
 
 Weitere Informationen zu Azure Managed Disks finden Sie in der [Übersicht über Azure Managed Disks](../windows/managed-disks-overview.md). 
 
-1.  Listen Sie die einzelnen virtuellen Computer und den Namen des dazugehörigen Betriebssystemdatenträgers mit [az vm list](/cli/azure/vm#az_vm_list) auf. Im folgenden Beispiel werden alle virtuellen Computer in der Ressourcengruppe **myResourceGroup** aufgelistet:
+1.  Listen Sie die einzelnen virtuellen Computer und den Namen des dazugehörigen Betriebssystemdatenträgers mit [az vm list](/cli/azure/vm#az-vm-list) auf. Im folgenden Beispiel werden alle virtuellen Computer in der Ressourcengruppe *myResourceGroup* aufgelistet:
     
     ```azurecli
     az vm list -g myResourceGroup \
@@ -71,30 +68,29 @@ Weitere Informationen zu Azure Managed Disks finden Sie in der [Übersicht über
     myVM    myDisk
     ```
 
-1.  Kopieren Sie den Datenträger, indem Sie einen neuen verwalteten Datenträger mit [az disk create](/cli/azure/disk#az_disk_create) erstellen. Im folgenden Beispiel wird ein Datenträger mit dem Namen **myCopiedDisk** auf Grundlage des verwalteten Datenträgers **myDisk** erstellt:
+1.  Kopieren Sie den Datenträger, indem Sie einen neuen verwalteten Datenträger erstellen und [az disk create](/cli/azure/disk#az-disk-create) verwenden. Im folgenden Beispiel wird ein Datenträger mit dem Namen *myCopiedDisk* auf Grundlage des verwalteten Datenträgers *myDisk* erstellt:
 
     ```azurecli
     az disk create --resource-group myResourceGroup \
          --name myCopiedDisk --source myDisk
     ``` 
 
-1.  Überprüfen Sie die verwalteten Datenträger jetzt in der Ressourcengruppe mit [az disk list](/cli/azure/disk#az_disk_list). Im folgenden Beispiel werden alle verwalteten Datenträger in der Ressourcengruppe **myResourceGroup** aufgelistet:
+1.  Überprüfen Sie die verwalteten Datenträger jetzt in der Ressourcengruppe mit [az disk list](/cli/azure/disk#az-disk-list). Im folgenden Beispiel werden alle verwalteten Datenträger in der Ressourcengruppe *myResourceGroup* aufgelistet:
 
     ```azurecli
     az disk list --resource-group myResourceGroup --output table
     ```
 
 
-## <a name="step-3-set-up-a-virtual-network"></a>Schritt 3: Einrichten eines virtuellen Netzwerks
-
+## <a name="set-up-a-virtual-network"></a>Einrichten eines virtuellen Netzwerks
 
 Mit den folgenden optionalen Schritten erstellen Sie ein neues virtuelles Netzwerk, ein neues Subnetz, eine neue öffentliche IP-Adresse und eine neue virtuelle Netzwerkschnittstellenkarte (Network Interface Card, NIC).
 
 Wenn Sie einen virtuellen Computer zur Problembehandlung oder für zusätzliche Bereitstellungen kopieren, kann es sein, dass Sie keinen virtuellen Computer in einem vorhandenen virtuellen Netzwerk verwenden möchten.
 
-Führen Sie die nächsten Schritte aus, wenn Sie eine VM-Infrastruktur für Ihre kopierten VMs erstellen möchten. Falls Sie kein virtuelles Netzwerk erstellen möchten, können Sie mit [Schritt 4: Erstellen eines virtuellen Computers](#step-4-create-a-vm) fortfahren.
+Führen Sie die nächsten Schritte aus, wenn Sie eine VM-Infrastruktur für Ihre kopierten VMs erstellen möchten. Wenn Sie kein virtuelles Netzwerk erstellen möchten, fahren Sie mit [Erstellen einer VM](#create-a-vm) fort.
 
-1.  Erstellen Sie das virtuelle Netzwerk mit [az network vnet create](/cli/azure/network/vnet#az_network_vnet_create). Im folgenden Beispiel werden ein virtuelles Netzwerk mit dem Namen **myVnet** und ein Subnetz mit dem Namen **mySubnet** erstellt:
+1.  Erstellen Sie das virtuelle Netzwerk mit [az network vnet create](/cli/azure/network/vnet#az-network-vnet-create). Im folgenden Beispiel werden ein virtuelles Netzwerk mit dem Namen *myVnet* und ein Subnetz mit dem Namen *mySubnet* erstellt:
 
     ```azurecli
     az network vnet create --resource-group myResourceGroup \
@@ -104,7 +100,7 @@ Führen Sie die nächsten Schritte aus, wenn Sie eine VM-Infrastruktur für Ihre
         --subnet-prefix 192.168.1.0/24
     ```
 
-1.  Erstellen Sie mit [az network public-ip create](/cli/azure/network/public-ip#az_network_public_ip_create) eine öffentliche IP-Adresse. Im folgenden Beispiel wird eine öffentliche IP-Adresse namens **myPublicIP** mit dem DNS-Namen **mypublicdns** erstellt. (Der DNS-Name muss eindeutig sein. Geben Sie daher einen eindeutigen Namen an.)
+1.  Erstellen Sie mit [az network public-ip create](/cli/azure/network/public-ip#az-network-public-ip-create) eine öffentliche IP-Adresse. Im folgenden Beispiel wird eine öffentliche IP-Adresse namens *myPublicIP* mit dem DNS-Namen *mypublicdns* erstellt. Da der DNS-Name eindeutig sein muss, geben Sie einen eindeutigen Namen an.
 
     ```azurecli
     az network public-ip create --resource-group myResourceGroup \
@@ -112,8 +108,8 @@ Führen Sie die nächsten Schritte aus, wenn Sie eine VM-Infrastruktur für Ihre
         --allocation-method static --idle-timeout 4
     ```
 
-1.  Erstellen Sie die NIC mit [az network nic create](/cli/azure/network/nic#az_network_nic_create).
-    Im folgenden Beispiel wird die NIC **myNic** erstellt, die an das Subnetz **mySubnet** angefügt ist:
+1.  Erstellen Sie die NIC mit [az network nic create](/cli/azure/network/nic#az-network-nic-create).
+    Im folgenden Beispiel wird die NIC *myNic* erstellt, die an das Subnetz *mySubnet* angefügt ist:
 
     ```azurecli
     az network nic create --resource-group myResourceGroup \
@@ -122,11 +118,11 @@ Führen Sie die nächsten Schritte aus, wenn Sie eine VM-Infrastruktur für Ihre
         --public-ip-address myPublicIP
     ```
 
-## <a name="step-4-create-a-vm"></a>Schritt 4: Erstellen eines virtuellen Computers
+## <a name="create-a-vm"></a>Erstellen einer VM
 
-Sie können nun mit [az vm create](/cli/azure/vm#az_vm_create) einen virtuellen Computer erstellen.
+Erstellen Sie mit [az vm create](/cli/azure/vm#az-vm-create) eine VM.
 
-Geben Sie wie folgt den kopierten verwalteten Datenträger an, der als Betriebssystemdatenträger (--attach-os-disk) verwendet werden soll:
+Geben Sie wie folgt den kopierten verwalteten Datenträger an, der als Betriebssystemdatenträger (`--attach-os-disk`) verwendet werden soll:
 
 ```azurecli
 az vm create --resource-group myResourceGroup \

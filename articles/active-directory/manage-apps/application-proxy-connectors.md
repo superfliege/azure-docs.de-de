@@ -15,12 +15,12 @@ ms.date: 10/17/2018
 ms.author: barbkess
 ms.reviewer: japere
 ms.custom: it-pro
-ms.openlocfilehash: c9c21b9beb891a685d7e264ec55817c0045455bc
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 62738cda8ce37ec7ca50e1e3f285dc71a37113f7
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49406276"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51036036"
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>Grundlegendes zu Azure AD-Anwendungsproxyconnectors
 
@@ -32,7 +32,7 @@ Bei Connectors handelt es sich um einfache Agents, die lokal eingerichtet sind u
 
 ## <a name="requirements-and-deployment"></a>Anforderungen und Bereitstellung
 
-Für die erfolgreiche Bereitstellung des Anwendungsproxys benötigen Sie mindestens einen Connector, aber es wird empfohlen, für größere Resilienz über mindestens zwei zu verfügen. Installieren Sie den Connector auf einem Computer mit Windows Server 2012 R2 oder 2016. Der Connector muss mit dem Anwendungsproxydienst und mit den lokalen Anwendungen, die Sie veröffentlichen, kommunizieren können. 
+Für die erfolgreiche Bereitstellung des Anwendungsproxys benötigen Sie mindestens einen Connector, aber es wird empfohlen, für größere Resilienz über mindestens zwei zu verfügen. Installieren Sie den Connector auf einem Computer mit Windows Server 2012 R2 oder 2016. Der Connector muss mit dem Anwendungsproxydienst und mit den lokalen Anwendungen, die Sie veröffentlichen, kommunizieren können. Der Anwendungsproxy erfordert auch die Ausführung von TLS 1.2 auf dem zugrunde liegenden Betriebssystem. Um zu TLS 1.2 zu wechseln, führen Sie die Schritte unter [Aktivieren von TLS 1.2](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-prerequisites#enable-tls-12-for-azure-ad-connect) aus. Die Inhalte beziehen sich zwar auf Azure AD Connect, aber dieses Verfahren ist für alle .NET-Clients identisch.
 
 Weitere Informationen zu den Netzwerkanforderungen für den Connectorserver finden Sie unter [Erste Schritte mit dem Anwendungsproxy und Installieren des Connectors](application-proxy-enable.md).
 

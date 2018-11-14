@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 05/31/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 85df34445622a13488df590f5cb53bedb7b6ea93
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: ce06c72c9974b4887cc441344fd755bfd156a1ca
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42145370"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50914718"
 ---
 # <a name="sign-in-activity-report-error-codes-in-the-azure-active-directory-portal"></a>Fehlercodes des Berichts mit den Anmeldeaktivitäten im Azure Active Directory-Portal
 
@@ -117,10 +117,10 @@ Der folgende Abschnitt enthält eine vollständige Übersicht über alle möglic
 |50135|Aufgrund eines Risikos, das für das Konto besteht, ist eine Kennwortänderung erforderlich.|
 |50136|Umleitung der MSA-Sitzung an die App: Einzelne MSA-Sitzung erkannt |
 |50140|Dieser Fehler ist aufgetreten, weil beim Anmelden des Benutzers der Interrupt-Vorgang „Angemeldet bleiben“ aufgetreten ist. [Öffnen Sie ein Supportticket](../fundamentals/active-directory-troubleshooting-support-howto.md) mit der Korrelations-ID, Anforderungs-ID und dem Fehlercode, um weitere Details anzuzeigen. |
-|50143|Sitzungskonflikt: Die Sitzung ist ungültig, weil der Benutzermandant aufgrund einer anderen Ressource nicht mit dem Domänenhinweis übereinstimmt. [Öffnen Sie ein Supportticket](../fundamentals/active-directory-troubleshooting-support-howto.md) mit der Korrelations-ID, Anforderungs-ID und dem Fehlercode, um weitere Details anzuzeigen.|
+|50143|Sitzungskonflikt: Die Sitzung ist ungültig, weil der Benutzermandant aufgrund einer anderen Ressource nicht mit dem Domänenhinweis übereinstimmt.  [Öffnen Sie ein Supportticket](../fundamentals/active-directory-troubleshooting-support-howto.md) mit Korrelations-ID, Anforderungs-ID und Fehlercode, um weitere Informationen dazu zu erhalten.|
 |50144|Das Active Directory-Kennwort des Benutzers ist abgelaufen. Generieren Sie ein neues Kennwort für den Benutzer, oder bitten Sie ihn, das Self-Service-Tool für die Zurücksetzung zu nutzen.|
 |50146|Diese Anwendung muss mit einem anwendungsspezifischen Signaturschlüssel konfiguriert werden. Entweder ist dies nicht der Fall, oder der Schlüssel ist abgelaufen oder noch nicht gültig. Wenden Sie sich an den Besitzer der Anwendung.|
-|50148|Der „code_verifier“ stimmt in der Autorisierungsanforderung für PKCE nicht mit dem „code_challenge“-Element überein. Wenden Sie sich an den Anwendungsentwickler. |
+|50148|Der „code_verifier“ stimmt in der Autorisierungsanforderung für PKCE nicht mit dem „code_challenge“-Element überein. Wenden Sie sich an den Anwendungsentwickler. |
 |50155|Fehler bei der Geräteauthentifizierung für diesen Benutzer.|
 |50158|Externe Sicherheitsabfrage wurde nicht erfüllt.|
 |50161|Vom externen Anbieter gesendete Ansprüche sind nicht ausreichend, oder vom externen Anbieter angeforderter Anspruch fehlt.|
@@ -128,7 +128,7 @@ Der folgende Abschnitt enthält eine vollständige Übersicht über alle möglic
 |50169|Der Bereich ist kein konfigurierter Bereich des aktuellen Dienstnamespace.|
 |50172|Der externe Anspruchsanbieter ist nicht genehmigt. Wenden Sie sich an den Administrator des Mandanten.|
 |50173|Aktuelles Autorisierungstoken erforderlich. Bitten Sie den Benutzer, sich mit aktuellen Anmeldeinformationen erneut anzumelden.|
-|50177|Die externe Überprüfung wird für Passthrough-Benutzer nicht unterstützt.|
+|50177|Die externe Überprüfung wird für Passthroughbenutzer nicht unterstützt.|
 |50178|Die Sitzungssteuerung wird für Passthrough-Benutzer nicht unterstützt.|
 |50180|Integrierte Windows-Authentifizierung ist erforderlich. Aktivieren Sie den Mandanten für das nahtlose einmalige Anmelden.|
 |51001|Domänenhinweis ist für lokale Sicherheits-ID nicht vorhanden – Lokaler UPN|
@@ -152,7 +152,7 @@ Der folgende Abschnitt enthält eine vollständige Übersicht über alle möglic
 |70007|Die Anwendung hat beim Anfordern eines Tokens den nicht unterstützten Wert „response_mode“ zurückgegeben. Wenden Sie sich an den Besitzer der App.|
 |70008|Der bereitgestellte Autorisierungscode oder das Aktualisierungstoken ist abgelaufen: - Wurde widerrufen. Bitten Sie den Benutzer, die Anmeldung noch einmal durchzuführen.|
 |70011|Der von der Anwendung angeforderte Bereich ist ungültig. Wenden Sie sich an den Besitzer der Anwendung.|
-|70012|Beim Authentifizieren eines MSA-Benutzers (Consumer) ist ein Serverfehler aufgetreten. Versuchen Sie es erneut. [Öffnen Sie ein Supportticket](../fundamentals/active-directory-troubleshooting-support-howto.md), wenn der Fehler weiterhin auftritt. |
+|70012|Beim Authentifizieren eines MSA-Benutzers (Consumer) ist ein Serverfehler aufgetreten. Versuchen Sie es erneut. [Öffnen Sie ein Supportticket](../fundamentals/active-directory-troubleshooting-support-howto.md) , wenn der Fehler weiterhin auftritt.|
 |70018|Ungültiger Überprüfungscode, weil der Benutzer den falschen Benutzercode für den Gerätecode-Datenfluss eingegeben hat. Die Autorisierung wird nicht genehmigt.|
 |70019|Der Überprüfungscode ist abgelaufen. Bitten Sie den Benutzer, die Anmeldung erneut durchzuführen.|
 |70037|Falsche Überprüfungsantwort angegeben. Die Remote-Authentifizierungssitzung wurde verweigert.|
@@ -180,6 +180,7 @@ Der folgende Abschnitt enthält eine vollständige Übersicht über alle möglic
 |90014| Ein Pflichtfeld für eine Protokollmeldung fehlt. Wenden Sie sich an den Besitzer der Anwendung. Wenn Sie der Besitzer der Anwendung sind, stellen Sie sicher, dass Sie über alle erforderlichen Parameter für die Anmeldeanforderung verfügen. |
 |90072| Das Konto muss zunächst als externer Benutzer im Mandanten hinzugefügt werden. Melden Sie sich ab, und melden Sie sich mit einem anderen Azure AD-Konto erneut an.|
 |90094| Für die Gewährung sind Administratorberechtigungen erforderlich. Bitten Sie den Mandantenadministrator, Zustimmung für diese Anwendung bereitzustellen.|
+|500133| Die Assertion befindet sich nicht im gültigen Zeitbereich. Überprüfen Sie, ob das Zugriffstoken abgelaufen ist, bevor Sie es für die Benutzerassertion verwenden oder ein neues Token anfordern.|
 
 ## <a name="next-steps"></a>Nächste Schritte
 

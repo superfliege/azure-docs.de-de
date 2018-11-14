@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/14/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: f8ca716f4ab991fecca52ca2d5fed080e6f4c177
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 7c7671578dc22926dabfe7735038186ab1c2c2b3
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47060850"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51264439"
 ---
 # <a name="standard-ssd-managed-disks-for-azure-virtual-machine-workloads"></a>Verwaltete Standard-SSD-Datenträger für Workloads virtueller Azure-Computer
 
@@ -22,7 +22,7 @@ Verwaltete Azure Standard-SSD-Datenträger stellen eine kostengünstige Speicher
 ## <a name="standard-ssd-features"></a>Standard-SSD-Features
 
 **Verwalteter Datenträger:** Standard-SSD-Datenträger sind nur als verwaltete Datenträger verfügbar. Nicht verwaltete Datenträger und Seitenblobs werden nicht für die Option „SSD Standard“ unterstützt. Legen Sie beim Erstellen des verwalteten Datenträgers als Datenträgertyp „SSD Standard“ fest, und geben Sie die Größe des Datenträgers an. Azure erstellt und verwaltet daraufhin den Datenträger für Sie.
-Standard-SSDs unterstützen alle Dienstverwaltungsvorgänge, die auch für verwaltete Datenträger angeboten werden. Beispielsweise können Sie verwaltete SSD-Standard-Datenträger auf die gleiche Weise erstellen, kopieren und Momentaufnahmen für diese anfertigen wie im Fall von verwalteten Datenträgern.
+Standard-SSDs unterstützen alle Vorgänge des klassischen Bereitstellungsmodells, die durch Managed Disks angeboten werden. Beispielsweise können Sie verwaltete SSD-Standard-Datenträger auf die gleiche Weise erstellen, kopieren und Momentaufnahmen für diese anfertigen wie im Fall von verwalteten Datenträgern.
 
 **Virtuelle Computer:** Standard-SSDs können mit allen virtuellen Azure-Computern einschließlich derjenigen, die keine Premium-Datenträger unterstützen, verwendet werden. Wenn Sie beispielsweise einen virtuellen Azure-Computer der Serie A, N oder DS verwenden, können Sie Standard-SSDs mit diesem virtuellen Computer verwenden. Mit der Einführung von Standard-SSDs können zahlreiche Workloads genutzt werden, für die vorher ein Wechsel von HDD- zu SSD-Datenträgern durchgeführt werden musste. Zusätzlich kann eine konstante Leistung, höhere Verfügbarkeit und eine verbesserte Latenz erzielt werden. Des Weiteren lassen sich alle Vorteile nutzen, die SSDs mit sich bringen.
 
@@ -32,7 +32,7 @@ Standard-SSDs unterstützen alle Dienstverwaltungsvorgänge, die auch für verwa
 
 ## <a name="scalability-and-performance-targets"></a>Skalierbarkeits- und Leistungsziele
 
-Die folgende Tabelle enthält die Datenträgergrößen, die derzeit für „Standard SSD“ angeboten werden.
+Die folgende Tabelle enthält die Datenträgergrößen, die derzeit für „Standard SSD“ angeboten werden. Größen, die mit einem Sternchen gekennzeichnet sind, befinden sich derzeit in der Vorschau.
 
 |Standard-SSD-Datenträgertyp  |Datenträgergröße  |IOPS pro Datenträger  |Durchsatz pro Datenträger  |
 |---------|---------|---------|---------|
@@ -42,9 +42,9 @@ Die folgende Tabelle enthält die Datenträgergrößen, die derzeit für „Stan
 |E30     |1.024 GiB       |Bis zu 500         |Bis zu 60 MiB pro Sekunde         |
 |E40     |2.048 GiB       |Bis zu 500         |Bis zu 60 MiB pro Sekunde         |
 |E50     |4.095 GiB       |Bis zu 500         |Bis zu 60 MiB pro Sekunde         |
-|E60     |8.192 GiB       |Bis zu 1.300       |Bis zu 300 MiB pro Sekunde        |
-|E70     |16.384 GiB      |Bis zu 2000       |Bis zu 500 MiB pro Sekunde        |
-|E80     |32767 GiB      |Bis zu 2000       |Bis zu 500 MiB pro Sekunde        |
+|E60*     |8.192 GiB       |Bis zu 1.300       |Bis zu 300 MiB pro Sekunde        |
+|E70*    |16.384 GiB      |Bis zu 2.000       |Bis zu 500 MiB pro Sekunde        |
+|E80*    |32767 GiB      |Bis zu 2.000       |Bis zu 500 MiB pro Sekunde        |
 
 Standard-SSDs sind dafür ausgelegt, Latenzen im einstelligen Millisekundenbereich für die meisten E/A-Vorgänge zu erzielen sowie IOPS und Durchsätze bis zu den in der obigen Tabelle genannten Grenzwerten bereitzustellen. Die Istwerte für IOPS und Durchsätze können in einigen Fällen je nach Datenverkehrsmuster variieren. Standard-SSDs stellen eine konstantere Leistung und geringere Latenzen als HDD-Datenträger bereit.
 

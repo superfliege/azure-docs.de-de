@@ -13,19 +13,19 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 10/16/2018
 ms.author: juliako
-ms.openlocfilehash: 533aa505c38d3cbfb46d70acecd43cc66614b13d
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: c8e4e84d7ae0defdb053108dc668956062c47ea5
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49378135"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50962383"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>Livestreaming mit Azure Media Services v3
 
 Beim Bereitstellen von Livestreamingereignissen mit Azure Media Services sind häufig die folgenden Komponenten beteiligt:
 
 * Eine Kamera, mit der ein Ereignis übertragen wird.
-* Ein Liveencoder, der Signale von der Kamera (oder einem anderen Gerät, z. B. Laptop) in Streams konvertiert, die an den Livestreamingdienst gesendet werden. Die Signale können auch Werbeblöcke und -einblendungen gemäß dem Standard SCTE-35 enthalten. 
+* Ein Livevideoencoder, der Signale von der Kamera (oder einem anderen Gerät wie Laptop) in Streams konvertiert, die an den Livestreamingdienst gesendet werden. Die Signale können auch Werbeblöcke und -einblendungen gemäß dem Standard SCTE-35 enthalten. 
 * Mit dem Livestreamingdienst Media Services können Sie die Inhalte erfassen, in einer Vorschau anzeigen, packen, aufzeichnen, verschlüsseln und zur weiteren Verteilung an Ihre Kunden oder ein CDN senden.
 
 Dieser Artikel bietet einen detaillierten Überblick und enthält Diagramme der wichtigsten Komponenten für Livestreaming mit Media Services.

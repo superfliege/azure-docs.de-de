@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: barbkess
 ms.reviewer: jeedes
-ms.openlocfilehash: d7a5bf23f2855b43c4a2e4022568028d852c094b
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 0f6e690bc80ae8004fba4faf53c0403b0cb7edd9
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44719578"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51035335"
 ---
 # <a name="manage-certificates-for-federated-single-sign-on-in-azure-active-directory"></a>Verwalten von Zertifikaten für die einmalige Verbundanmeldung in Azure Active Directory
 In diesem Artikel werden häufige gestellte Fragen im Zusammenhang mit den Zertifikaten behandelt, die Azure Active Directory (Azure AD) erstellt, um die einmalige Verbundanmeldung (Single Sign-On, SSO) für Ihre SaaS-Anwendungen einzurichten. Fügen Sie Anwendungen aus dem Azure AD-App-Katalog oder über Anwendungsvorlagen hinzu, die nicht aus dem Katalog stammen. Konfigurieren der Anwendung mit der Option für Verbund-SSO.
@@ -76,11 +76,15 @@ Die folgenden Schritte zur Erneuerung sollten zu keinen wesentlichen Ausfallzeit
 
     ![Neues Zertifikat generieren](./media/manage-certificates-for-federated-single-sign-on/create_new_certficate.png)
 
-2. Wählen Sie das gewünschte Ablaufdatum inklusive Uhrzeit für das neue Zertifikat aus, und klicken Sie dann auf die Schaltfläche **Speichern**.
+2. Wählen Sie das gewünschte Ablaufdatum inklusive Uhrzeit für das neue Zertifikat aus, und klicken Sie dann auf die Schaltfläche **Speichern**. Indem Sie ein Datum auswählen, das sich mit dem vorhandenen Zertifikat überschneidet, stellen Sie sicher, dass Ausfallzeiten aufgrund von Zertifikatablauf begrenzt sind. 
 
-3. Laden Sie das Zertifikat über die Option **SAML-Signaturzertifikat** herunter. Laden Sie das neue Zertifikat im Bestätigungsbildschirm der einmaligen Anmeldung der SaaS-Anwendung hoch. Informationen zur Vorgehensweise für Ihre spezifische SaaS-Anwendung erhalten Sie unter dem Link **Tutorial zur Anzeige der Anwendungskonfiguration**.
+3. Wenn Sie App ein automatisches Rollover des Zertifikats ausführen kann, legen Sie das neue Zertifikat als „aktiv“ fest.  Melden Sie sich bei der App an, um zu überprüfen, ob sie funktioniert.
+
+4. Wenn die App das neue Zertifikat nicht automatisch auswählt, aber mehr als ein Signaturzertifikat verarbeiten kann, laden Sie das neue Zertifikat in die App hoch, bevor das alte abläuft. Markieren Sie das neue Zertifikat dann im Portal als aktives Zertifikat. 
+
+5. Wenn die App nur jeweils ein Zertifikat verarbeiten kann, wählen Sie ein Zeitfenster für den App-Ausfall aus, und laden Sie das neue Zertifikat herunter. Laden Sie das Zertifikat dann in die App hoch, und markieren Sie es im Azure-Portal als neues Zertifikat. 
    
-4. Um das neue Zertifikat in Azure AD zu aktivieren, aktivieren Sie das Kontrollkästchen **Als neues Zertifikat festlegen**, und klicken Sie dann oben auf der Seite auf die Schaltfläche **Speichern**. Hierdurch wird ein Rollover zum neuen Zertifikat in Azure AD durchgeführt. Der Status des Zertifikats ändert sich von **Neu** in **Aktiv**. Von diesem Zeitpunkt an verwendet Azure AD das neue Zertifikat zum Signieren der Antwort. 
+6. Um das neue Zertifikat in Azure AD zu aktivieren, aktivieren Sie das Kontrollkästchen **Als neues Zertifikat festlegen**, und klicken Sie dann oben auf der Seite auf die Schaltfläche **Speichern**. Hierdurch wird ein Rollover zum neuen Zertifikat in Azure AD durchgeführt. Der Status des Zertifikats ändert sich von **Neu** in **Aktiv**. Von diesem Zeitpunkt an verwendet Azure AD das neue Zertifikat zum Signieren der Antwort. 
    
     ![Neues Zertifikat generieren](./media/manage-certificates-for-federated-single-sign-on/new_certificate_download.png)
 

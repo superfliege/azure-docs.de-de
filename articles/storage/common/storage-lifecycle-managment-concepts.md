@@ -1,36 +1,36 @@
 ---
 title: Verwalten des Azure Storage-Lebenszyklus
-description: Erfahren Sie, wie Sie Regeln für Lebenszyklusrichtlinien erstellen können, um den Übergang von alternden Daten von heißen zu kalten und zu Archivebenen zu steuern.
+description: Erfahren Sie, wie Sie Regeln für Lebenszyklusrichtlinien erstellen, um alternde Daten von heißen zu kalten und zu Archivebenen zu übertragen.
 services: storage
 author: yzheng-msft
 ms.service: storage
 ms.topic: article
-ms.date: 04/30/2018
+ms.date: 11/01/2018
 ms.author: yzheng
 ms.component: common
-ms.openlocfilehash: 05e7a7e3c2824a9b47ff723e91103611871d7ed2
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: c6647ff97b078ca5afa5c66833a1617f6b3ec0f1
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49429557"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50978807"
 ---
 # <a name="managing-the-azure-blob-storage-lifecycle-preview"></a>Verwalten des Azure Blob Storage-Lebenszyklus (Vorschau)
 
-Datasets haben eindeutige Lebenszyklen. Auf manche Daten wird früh in ihrem Lebenszyklus häufig zugegriffen, aber die Notwendigkeit für den Zugriff sinkt mit zunehmendem Alter der Daten dramatisch. Außerdem gibt es Daten, die in der Cloud lediglich vorgehalten werden und auf die nach der Speicherung nur selten zugegriffen wird. Einige Daten laufen Tage oder Monate nach der Erstellung ab, während andere Daten im Verlauf ihres gesamten Lebens aktiv gelesen und geändert werden. Die Azure Blob Storage-Lebenszyklusverwaltung (Vorschau) bietet eine umfassende, regelbasierte Richtlinie, mit deren Hilfe Sie den Übergang Ihrer Daten in die optimale Zugriffsebene und den Ablauf der Daten am Ende ihres Lebenszyklus umsetzen können.
+Datasets haben eindeutige Lebenszyklen. Auf manche Daten wird früh in ihrem Lebenszyklus häufig zugegriffen, aber die Notwendigkeit für den Zugriff sinkt mit zunehmendem Alter der Daten dramatisch. Außerdem gibt es Daten, die in der Cloud lediglich vorgehalten werden und auf die nach der Speicherung nur selten zugegriffen wird. Einige Daten laufen Tage oder Monate nach der Erstellung ab, während andere Daten im Verlauf ihres gesamten Lebens aktiv gelesen und geändert werden. Die Azure Blob Storage-Lebenszyklusverwaltung (Vorschau) bietet eine umfassende, regelbasierte Richtlinie, mit der Sie Daten in Ihren GPv2- (General Purpose v2) und Blob Storage-Konten in die entsprechende Zugriffsebene übertragen können. Außerdem lässt sich damit das Ablaufen von Daten am Ende ihres Lebenszyklus steuern.
 
 Die Richtlinie zur Lebenszyklusverwaltung unterstützt Sie in diesen Punkten:
 
 - Übergang von Blobs in eine kühlere Speicherebene (Heiß nach kalt, heiß nach Archiv oder kalt nach Archiv), um Leistung und Kosten zu optimieren
 - Löschen von Blobs am Ende ihres Lebenszyklus
-- Definieren von Regeln für die Ausführung einmal täglich auf Speicherkontoebene (sowohl GPv2- als auch Blob-Speicherkonten werden unterstützt)
+- Festlegen von Regeln, die einmal täglich auf Speicherkontoebene ausgeführt werden
 - Anwenden von Regeln auf Container oder eine Teilmenge von Blobs (durch Einsatz von Präfixen als Filter)
 
-Betrachten Sie eine Menge von Daten, auf die in der Frühphase des Lebenszyklus häufig zugegriffen wird, die nach zwei Wochen nur noch gelegentlich benötigt wird und auf die nach einem Monat oder später nur noch selten zugegriffen wird. In diesem Szenario ist die heiße Speicherebene in den frühen Phasen optimal, die kalte Speicherebene am besten für den gelegentlichen Zugriff geeignet und Archivspeicher die beste Wahl für die Ebene, nachdem die Daten das Alter von einem Monat überschritten haben. Durch Anpassen der Speicherebenen im Hinblick auf das Alter der Daten können Sie die kostengünstigsten Speicheroptionen für Ihre Anforderungen entwerfen. Um diesen Übergang zu vollziehen, stehen Richtlinien zur Lebenszyklusverwaltung zur Verfügung, um alternde Daten in kühlere Ebenen zu verschieben.
+Betrachten Sie eine Menge von Daten, auf die in der Frühphase des Lebenszyklus häufig zugegriffen wird, die nach zwei Wochen nur noch gelegentlich benötigt wird und auf die nach einem Monat oder später nur noch selten zugegriffen wird. In diesem Szenario ist die heiße Speicherebene in den frühen Phasen optimal, die kalte Speicherebene am besten für den gelegentlichen Zugriff geeignet und Archivspeicher die beste Wahl für die Ebene, nachdem die Daten das Alter von einem Monat überschritten haben. Durch Anpassen der Speicherebenen im Hinblick auf das Alter der Daten können Sie die kostengünstigsten Speicheroptionen für Ihre Anforderungen entwerfen. Für diesen Übergang stehen Richtlinienregeln für die Lebenszyklusverwaltung zur Verfügung, um alternde Daten in kühlere Ebenen zu verschieben.
 
 ## <a name="storage-account-support"></a>Speicherkontounterstützung
 
-Richtlinien zur Lebenszyklusverwaltung sind sowohl für das GPv2-Konto (General Purpose v2) als auch für das Blob-Speicherkonto erhältlich. Ein vorhandenes GPv1-Konto (General Purpose v1) kann in einem einfachen Prozess im Azure-Portal mit einem Mausklick in ein GPv2-Konto konvertiert werden. Weitere Informationen zu Speicherkonten finden Sie unter [Azure-Speicherkonto – Übersicht](../common/storage-account-overview.md).  
+Richtlinien zur Lebenszyklusverwaltung sind sowohl für das GPv2-Konto (General Purpose v2) als auch für das Blob-Speicherkonto erhältlich. Ein vorhandenes GPv1-Konto lässt sich im Azure-Portal mit nur einem Mausklick und ohne Downtime in ein GPv2-Konto upgraden. Weitere Informationen zu Speicherkonten finden Sie unter [Azure-Speicherkonto – Übersicht](../common/storage-account-overview.md).  
 
 ## <a name="pricing"></a>Preise 
 
@@ -67,9 +67,9 @@ az feature show --namespace Microsoft.Storage --name DLM
 Wenn die Funktion genehmigt und ordnungsgemäß registriert wurde, sollte der Status „Registriert“ zurückgegeben werden. 
 
 
-## <a name="add-or-remove-policies"></a>Hinzufügen oder Entfernen von Richtlinien 
+## <a name="add-or-remove-a-policy"></a>Hinzufügen oder Entfernen einer Richtlinie 
 
-Sie können eine Richtlinie über das Azure-Portal bzw. mit [PowerShell](https://www.powershellgallery.com/packages/AzureRM.Storage/5.0.3-preview), [REST-APIs](https://docs.microsoft.com/rest/api/storagerp/managementpolicies/managementpolicies_createorupdate) oder Clienttools in den folgenden Sprachen hinzufügen, bearbeiten oder entfernen: [.NET](https://www.nuget.org/packages/Microsoft.Azure.Management.Storage/8.0.0-preview), [Python](https://pypi.org/project/azure-mgmt-storage/2.0.0rc3/), [Node.js]( https://www.npmjs.com/package/azure-arm-storage/v/5.0.0) und [Ruby](   https://rubygems.org/gems/azure_mgmt_storage/versions/0.16.2). 
+Sie können eine Richtlinie über das Azure-Portal bzw. mit [PowerShell](https://www.powershellgallery.com/packages/AzureRM.Storage/5.0.3-preview), [REST-APIs](https://docs.microsoft.com/rest/api/storagerp/managementpolicies/createorupdate) oder Clienttools in den folgenden Sprachen hinzufügen, bearbeiten oder entfernen: [.NET](https://www.nuget.org/packages/Microsoft.Azure.Management.Storage/8.0.0-preview), [Python](https://pypi.org/project/azure-mgmt-storage/2.0.0rc3/), [Node.js]( https://www.npmjs.com/package/azure-arm-storage/v/5.0.0) und [Ruby](  https://rubygems.org/gems/azure_mgmt_storage/versions/0.16.2). 
 
 ### <a name="azure-portal"></a>Azure-Portal
 
@@ -77,7 +77,7 @@ Sie können eine Richtlinie über das Azure-Portal bzw. mit [PowerShell](https:/
 
 2. Navigieren Sie zu Ihrem Speicherkonto, wählen Sie „Alle Ressourcen“, und wählen Sie dann Ihr Speicherkonto aus.
 
-3. Klicken Sie auf dem Blatt „Einstellungen“ auf **Lebenszyklusverwaltung**, die unter „Blob-Dienst“ gruppiert ist, um Richtlinien anzuzeigen und/oder zu ändern.
+3. Klicken Sie auf dem Blatt „Einstellungen“ unter der Gruppe „Blobdienst“ auf **Lebenszyklusverwaltung**, um Ihre Richtlinie anzuzeigen und/oder zu ändern.
 
 ### <a name="powershell"></a>PowerShell
 
@@ -92,7 +92,7 @@ Get-AzureRmStorageAccountManagementPolicy -ResourceGroupName [resourceGroupName]
 > [!NOTE]
 Wenn Sie Firewallregeln für Ihr Speicherkonto aktivieren, werden Anforderungen für die Lebenszyklusverwaltung möglicherweise blockiert. Sie können die Sperre durch Bereitstellen von Ausnahmen aufheben. Weitere Informationen finden Sie im Abschnitt „Ausnahmen“ unter [Konfigurieren von Firewalls und virtuellen Netzwerken](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions).
 
-## <a name="policies"></a>Richtlinien
+## <a name="policy"></a>Richtlinie
 
 Eine Richtlinie zur Lebenszyklusverwaltung ist eine Sammlung von Regeln in einem JSON-Dokument:
 
@@ -122,7 +122,7 @@ In einer Richtlinie sind zwei Parameter erforderlich:
 | Version        | Eine Zeichenfolge, die als `x.x` ausgedrückt ist. | Die Versionsnummer der Vorschau ist 0.5. |
 | Regeln          | Ein Array von Regelobjekten | Jede Richtlinie muss mindestens eine Regel enthalten. In der Vorschauphase können Sie bis zu vier Regeln pro Richtlinie angeben. |
 
-Parameter, die innerhalb einer Regel erforderlich sind:
+Jede Regel erfordert drei Parameter:
 
 | Parametername | Parametertyp | Notizen |
 |----------------|----------------|-------|
@@ -132,10 +132,13 @@ Parameter, die innerhalb einer Regel erforderlich sind:
 
 ## <a name="rules"></a>Regeln
 
-Jede Regeldefinition enthält einen Filtersatz und einen Aktionssatz. Die folgende Beispielregel ändert die Ebene für Basis-Blockblobs mit dem Präfix `container1/foo`. In der Richtlinie sind diese Regeln wie folgt definiert:
+Jede Regeldefinition enthält einen Filtersatz und einen Aktionssatz. Der [Filtersatz](#rule-filters) wird verwendet, um Regelaktionen auf eine bestimmte Menge von Objekten innerhalb eines Containers oder auf Objektnamen zu beschränken. Der [Aktionssatz](#rule-actions) wendet die Ebenen- oder Löschaktionen auf den gefilterten Satz von Objekten an.
 
-- Blob 30 Tage nach der letzten Änderung in die kalte Speicherebene verschieben
-- Blob 90 Tage nach der letzten Änderung in die Archivspeicherebene verschieben
+### <a name="sample-rule"></a>Beispielregel
+Die folgende Beispielregel filtert das Konto so, dass Aktionen nur auf `container1/foo` ausgeführt werden. Für alle Objekte, die sich innerhalb von `container1` befinden **UND** mit `foo` beginnen, werden diese Aktionen ausgeführt: 
+
+- Blob 30 Tage nach der letzten Änderung in die kalte Ebene verschieben
+- Blob 90 Tage nach der letzten Änderung in die Archivebene verschieben
 - Blob 2.555 Tage (7 Jahre) nach der letzten Änderung löschen
 - Blob-Momentaufnahmen 90 Tage nach der Erstellung der Momentaufnahmen löschen
 
@@ -177,7 +180,7 @@ Diese Filter sind in der Vorschauphase gültig:
 | Filtername | Filtertyp | Notizen | Ist erforderlich |
 |-------------|-------------|-------|-------------|
 | blobTypes   | Ein Array von vordefinierten Enumerationswerten. | In der Vorschauversion wird nur `blockBlob` unterstützt. | JA |
-| prefixMatch | Ein Array von Zeichenfolgen für Präfixe, mit denen Übereinstimmung erzielt werden soll. Eine Präfixzeichenfolge muss mit einem Containernamen beginnen. Wenn beispielsweise alle Blobs unter https://myaccount.blob.core.windows.net/mycontainer/mydir/.. für eine Regel gefunden werden, ist das Präfix „mycontainer/mydir“. | Wenn es nicht definiert ist, gilt diese Regel für alle Blobs im Konto. | Nein  |
+| prefixMatch | Ein Array von Zeichenfolgen für Präfixe, mit denen Übereinstimmung erzielt werden soll. Eine Präfixzeichenfolge muss mit einem Containernamen beginnen. Wenn beispielsweise alle Blobs unter https://myaccount.blob.core.windows.net/container1/foo/.. für eine Regel gefunden werden, lautet „prefixMatch“ „container1/foo“. | Wenn „prefixMatch“ nicht definiert ist, gelten die Regeln für alle Blobs im Konto. | Nein  |
 
 ### <a name="rule-actions"></a>Regelaktionen
 

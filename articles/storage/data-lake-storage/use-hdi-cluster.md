@@ -7,20 +7,20 @@ ms.service: storage
 ms.topic: article
 ms.date: 06/27/2018
 ms.author: jamesbak
-ms.openlocfilehash: 04e2e32de90283da2563395f8b24dbb4b1dab888
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 8c79107a0081b1c7478ffe8ceb44ec67e1f618c4
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51241758"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51283664"
 ---
 # <a name="use-azure-data-lake-storage-gen2-preview-with-azure-hdinsight-clusters"></a>Verwenden von Azure Data Lake Storage Gen2 Preview mit Azure HDInsight-Clustern
 
-Zum Analysieren von Daten im HDInsight-Cluster können Sie die Daten in einer beliebigen Kombination von Azure Storage, Azure Data Lake Storage Gen1 oder Azure Data Lake Storage Gen2 Preview speichern. Alle Speichervarianten ermöglichen das sichere Löschen von HDInsight-Clustern, die für Berechnungen verwendet werden, ohne dass Benutzerdaten verloren gehen.
+Zum Analysieren von Daten in einem HDInsight-Cluster können Sie die Daten in einer beliebigen Kombination von Azure Blob Storage, Azure Blob Storage mit Azure Data Lake Storage Gen2 (Vorschau) oder Azure Data Lake Storage Gen1 speichern. Alle Speichervarianten ermöglichen das sichere Löschen von HDInsight-Clustern, die für Berechnungen verwendet werden, ohne dass Benutzerdaten verloren gehen.
 
-Hadoop unterstützt eine Variante des Standarddateisystems. Das Standarddateisystem gibt ein Standardschema und eine Standardautorität vor. Es kann auch zur Auflösung relativer Pfade verwendet werden. Während der Erstellung des HDInsight-Clusters können Sie einen Blobcontainer in Azure Storage oder Azure Data Lake Storage als Standarddateisystem angeben. Mit HDInsight 3.5 können Sie (mit einigen Ausnahmen) entweder Azure Storage oder Azure Data Lake Store als Standarddateisystem auswählen.
+Hadoop unterstützt eine Variante des Standarddateisystems. Das Standarddateisystem gibt ein Standardschema und eine Standardautorität vor. Es kann auch zur Auflösung relativer Pfade verwendet werden. Bei der Erstellung des HDInsight-Clusters können Sie einen Blobcontainer in Azure Storage oder den von Azure Data Lake Storage Gen2 angebotenen hierarchischen Namespace als Standarddateisystem angeben. Mit HDInsight 3.5 können Sie (mit einigen Ausnahmen) einen Container oder den hierarchischen Namespace als Standarddateisystem auswählen.
 
-In diesem Artikel erfahren Sie, wie Azure Data Lake Storage Gen2 mit HDInsight-Clustern funktioniert. Weitere Informationen zum Erstellen eines HDInsight-Clusters finden Sie unter [Einrichten von HDInsight-Clustern mithilfe von Azure Data Lake Storage mit u.a. Hadoop, Spark und Kafka](quickstart-create-connect-hdi-cluster.md).
+In diesem Artikel erfahren Sie, wie Data Lake Storage Gen2 mit HDInsight-Clustern funktioniert. Weitere Informationen zum Erstellen eines HDInsight-Clusters finden Sie unter [Einrichten von HDInsight-Clustern mithilfe von Azure Data Lake Storage mit u.a. Hadoop, Spark und Kafka](quickstart-create-connect-hdi-cluster.md).
 
 Azure Storage stellt eine robuste, universelle Speicherlösung dar, die problemlos mit HDInsight integriert werden kann. In HDInsight kann Azure Data Lake Storage als Standarddateisystem für den Cluster verwendet werden. Über eine HDFS-Schnittstelle (Hadoop Distributed File System) können sämtliche Komponenten in HDInsight direkt mit Dateien in Azure Data Lake Storage arbeiten.
 
@@ -80,13 +80,13 @@ Bestimmte MapReduce-Aufträge und -Pakete können zu Zwischenergebnissen führen
 > [!NOTE]
 > Die meisten HDFS-Befehle (z.B. `ls`, `copyFromLocal` und `mkdir`) funktionieren weiterhin wie erwartet. Nur die für das DFS spezifischen Befehle wie `fschk` und `dfsadmin` zeigen in Azure Storage ein anderes Verhalten.
 
-## <a name="create-an-data-lake-storage-file-system"></a>Erstellen eines Data Lake Storage-Dateisystems
+## <a name="create-a-data-lake-storage-file-system"></a>Erstellen eines Data Lake Storage-Dateisystems
 
 Um das Dateisystem verwenden zu können, müssen Sie zuerst ein [Azure Storage-Konto][azure-storage-create] erstellen. Hierbei liegen Sie eine Azure-Region fest, in der das Speicherkonto erstellt wird. Cluster und Speicherkonto müssen sich in der gleichen Region befinden. Die SQL Server-Datenbanken für den Hive- und Oozie-Metastore müssen sich ebenfalls in der gleichen Region befinden.
 
-Ein Blob gehört unabhängig davon, wo es sich befindet, stets zu einem Dateisystem in Ihrem Azure Data Lake Storage-Konto. 
+Ein Blob gehört unabhängig davon, wo es sich befindet, stets zu einem Dateisystem in Ihrem Speicherkonto.
 
-Das standardmäßige Data Lake Storage-Dateisystem speichert clusterspezifische Informationen wie etwa Auftragsverlauf und Protokolle. Geben Sie ein standardmäßiges Data Lake Storage-Dateisystem nicht für mehrere HDInsight-Cluster frei. Dies kann zu einer Beschädigung des Auftragsverlaufs führen. Es wird empfohlen, unterschiedliche Dateisysteme für die einzelnen Cluster zu verwenden und freigegebene Daten nicht im Standardspeicherkonto, sondern in einem verknüpften Speicherkonto abzulegen, das in der Bereitstellung aller relevanten Cluster angegeben wird. Weitere Informationen zum Konfigurieren verknüpfter Speicherkonten finden Sie unter [Erstellen von HDInsight-Clustern][hdinsight-creation]. Sie können ein standardmäßiges Speicherdateisystem jedoch auch wiederverwenden, nachdem der ursprüngliche HDInsight-Cluster gelöscht wurde. Bei HBase-Clustern können Sie das HBase-Tabellenschema sowie die darin enthaltenen Daten beibehalten, indem Sie einen neuen HBase-Cluster mit dem Standardblobcontainer erstellen, der von einem gelöschten HBase-Cluster verwendet wurde.
+Das Standarddateisystem von Data Lake Storage Gen2 speichert clusterspezifische Informationen wie etwa Auftragsverlauf und Protokolle. Geben Sie ein Standarddateisystem von Data Lake Storage Gen2 nicht für mehrere HDInsight-Cluster frei. Dies kann zu einer Beschädigung des Auftragsverlaufs führen. Es wird empfohlen, unterschiedliche Dateisysteme für die einzelnen Cluster zu verwenden und freigegebene Daten nicht im Standardspeicherkonto, sondern in einem verknüpften Speicherkonto abzulegen, das in der Bereitstellung aller relevanten Cluster angegeben wird. Weitere Informationen zum Konfigurieren verknüpfter Speicherkonten finden Sie unter [Erstellen von HDInsight-Clustern][hdinsight-creation]. Sie können ein standardmäßiges Speicherdateisystem jedoch auch wiederverwenden, nachdem der ursprüngliche HDInsight-Cluster gelöscht wurde. Bei HBase-Clustern können Sie das HBase-Tabellenschema sowie die darin enthaltenen Daten beibehalten, indem Sie einen neuen HBase-Cluster mit dem Standardblobcontainer erstellen, der von einem gelöschten HBase-Cluster verwendet wurde.
 
 [!INCLUDE [secure-transfer-enabled-storage-account](../../../includes/hdinsight-secure-transfer.md)]
 
@@ -132,7 +132,7 @@ Nach dem [Installieren und Konfigurieren von Azure PowerShell][powershell-instal
     New-AzureStorageContainer -Name $containerName -Context $destContext
 
 > [!NOTE]
-> Das Erstellen eines Containers ist gleichbedeutend mit dem Erstellen eines Dateisystems in Azure Data Lake Storage.
+> Das Erstellen eines Containers ist gleichbedeutend mit dem Erstellen eines Dateisystems in Data Lake Storage Gen2.
 
 ### <a name="use-azure-cli"></a>Mithilfe der Azure-Befehlszeilenschnittstelle
 
@@ -164,7 +164,7 @@ Zum Erstellen eines Containers verwenden Sie den folgenden Befehl:
     azure storage container create <CONTAINER_NAME> --account-name <STORAGE_ACCOUNT_NAME> --account-key <STORAGE_ACCOUNT_KEY>
 
 > [!NOTE]
-> Das Erstellen eines Containers ist gleichbedeutend mit dem Erstellen eines Dateisystems in Azure Data Lake Storage.
+> Das Erstellen eines Containers ist gleichbedeutend mit dem Erstellen eines Dateisystems in Data Lake Storage Gen2.
 
 ## <a name="address-files-in-azure-storage"></a>Zugreifen auf Dateien in Azure-Speicher
 
@@ -174,7 +174,7 @@ Das URI-Schema für den Zugriff auf Dateien in Azure-Speicher aus HDInsight laut
 
 Das URI-Schema ermöglicht unverschlüsselten Zugriff (mit dem Präfix *abfs:*) wie auch mit SSL verschlüsselten Zugriff (mit *abfss*). Wir empfehlen die Verwendung von *abfss*, und zwar auch für den Zugriff auf Daten, die sich in derselben Azure-Region befinden.
 
-* &lt;FILE_SYSTEM_NAME&gt; gibt den Pfad des Dateisystems in Azure Data Lake Storage an.
+* &lt;FILE_SYSTEM_NAME&gt; gibt den Pfad des Dateisystems in Data Lake Storage Gen2 an.
 * &lt;ACCOUNT_NAME&gt; gibt den Namen des Azure Storage-Kontos an. Ein vollqualifizierter Domänenname (FQDN) ist erforderlich.
 
     Wenn weder Werte für &lt;FILE_SYSTEM_NAME&gt; noch für &lt;ACCOUNT_NAME&gt; angegeben wurden, wird das Standarddateisystem verwendet. Für die Dateien im Standarddateisystem können Sie relative oder absolute Pfade verwenden. Auf die Datei *hadoop-mapreduce-examples.jar*, die sich in HDInsight-Clustern befindet, kann z.B. mithilfe eines der folgenden Pfade verwiesen werden:
@@ -205,9 +205,9 @@ In diesem Artikel wurde beschrieben, wie Sie HDFS-kompatiblen Azure Storage mit 
 Weitere Informationen finden Sie unter
 
 * [Der ABFS-Hadoop-Dateisystemtreiber für Azure Data Lake Storage Gen2](abfs-driver.md)
-* [Einführung in Azure Data Lake Storage](introduction.md)
-* [Einrichten von HDInsight-Clustern mithilfe von Azure Data Lake Storage mit u.a. Hadoop, Spark und Kafka](quickstart-create-connect-hdi-cluster.md)
-* [Erfassen von Daten in Azure Data Lake Storage mit distcp](use-distcp.md)
+* [Einführung in Azure Data Lake Storage Gen2](introduction.md)
+* [Einrichten von HDInsight-Clustern mithilfe von Azure Data Lake Storage Gen2 mit Hadoop, Spark, Kafka und anderen](quickstart-create-connect-hdi-cluster.md)
+* [Erfassen von Daten in Azure Data Lake Storage Gen2 mit DistCp](use-distcp.md)
 
 [powershell-install]: /powershell/azureps-cmdlets-docs
 [hdinsight-creation]: ../../hdinsight/hdinsight-hadoop-provision-linux-clusters.md

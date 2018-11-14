@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 08/19/2018
 ms.author: laviswa
-ms.openlocfilehash: 33614628926e53354db14886530d7ca44da61f0a
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: 762997492d18e9b14525dc6a196f98815f27fbbb
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42144353"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50979504"
 ---
 # <a name="azure-cosmos-db-sql-syntax-reference"></a>Azure Cosmos DB-SQL-Syntaxreferenz
 
@@ -2656,20 +2656,30 @@ ARRAY_SLICE (<arr_expr>, <num_expr> [, <num_expr>])
   
 -   `num_expr`  
   
-     Ist ein beliebiger gültiger numerischer Ausdruck.  
-  
+     Nullbasierter numerischer Index, bei dem das Array beginnt. Negative Werte können verwendet werden, um den Startindex relativ zum letzten Element des Arrays anzugeben, d.h. -1 bezieht sich auf das letzte Element des Arrays.  
+
+-   `num_expr`  
+
+     Maximale Anzahl von Elementen im resultierenden Array.    
+
  **Rückgabetypen**  
   
- Gibt einen booleschen Wert zurück.  
+ Gibt einen Arrayausdruck zurück.  
   
  **Beispiele**  
   
- Das folgende Beispiel zeigt, wie ein Teil eines Arrays mit ARRAY_SLICE abgerufen wird.  
+ Das folgende Beispiel zeigt, wie Sie mit ARRAY_SLICE verschiedene Slices eines Arrays abgerufen können.  
   
 ```  
 SELECT   
            ARRAY_SLICE(["apples", "strawberries", "bananas"], 1),  
-           ARRAY_SLICE(["apples", "strawberries", "bananas"], 1, 1)  
+           ARRAY_SLICE(["apples", "strawberries", "bananas"], 1, 1),
+           ARRAY_SLICE(["apples", "strawberries", "bananas"], -2, 1),
+           ARRAY_SLICE(["apples", "strawberries", "bananas"], -2, 2),
+           ARRAY_SLICE(["apples", "strawberries", "bananas"], 1, 0),
+           ARRAY_SLICE(["apples", "strawberries", "bananas"], 1, 1000),
+           ARRAY_SLICE(["apples", "strawberries", "bananas"], 1, -100)      
+  
 ```  
   
  Hier ist das Resultset.  
@@ -2677,10 +2687,15 @@ SELECT
 ```  
 [{  
            "$1": ["strawberries", "bananas"],   
-           "$2": ["strawberries"]  
-       }]  
+           "$2": ["strawberries"],
+           "$3": ["strawberries"],  
+           "$4": ["strawberries", "bananas"], 
+           "$5": [],
+           "$6": ["strawberries", "bananas"],
+           "$7": [] 
+}]  
 ```  
-  
+ 
 ###  <a name="bk_spatial_functions"></a> Räumliche Funktionen  
  Die folgenden Skalarfunktionen führen einen Vorgang für einen Raumobjekt-Eingabewert durch und geben einen numerischen oder booleschen Wert zurück.  
   

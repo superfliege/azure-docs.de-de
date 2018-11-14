@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/29/2018
+ms.date: 11/01/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: 28344ac7c50b48b472ba6f907b116b3b202de454
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: ebf5a23743d1fdd9553b391bb0518c2887ddb096
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50238796"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50959986"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Planen der Implementierung einer Azure Active Directory-Hybrideinbindung
 
@@ -49,6 +49,7 @@ Um Ihre Azure AD-Hybridimplementierung zu planen, sollten Sie sich mit folgenden
 |---|---|
 |![Prüfen][1]|Überprüfung unterstützter Geräte|
 |![Prüfen][1]|Überprüfung wichtiger Informationen|
+|![Prüfen][1]|Steuern von Azure AD Hybrid Join für Ihre Geräte|
 |![Prüfen][1]|Auswahl Ihres Szenarios|
 
 
@@ -112,6 +113,11 @@ Wenn Ihre Organisation Internetzugriff über einen authentifizierten ausgehenden
 Die Azure AD-Hybrideinbindung ist ein Prozess für die automatische Registrierung Ihrer lokalen in die Domäne eingebundenen Geräte bei Azure AD. Es kann auch vorkommen, dass Sie nicht alle Ihre Geräte automatisch registrieren möchten. In diesem Fall finden Sie weitere Informationen unter [Steuern der Azure AD-Hybrideinbindung für Ihre Geräte](hybrid-azuread-join-control.md).
 
 
+## <a name="review-how-to-control-the-hybrid-azure-ad-join-of-your-devices"></a>Steuern von Azure AD Hybrid Join für Ihre Geräte
+
+Die Azure AD-Hybrideinbindung ist ein Prozess für die automatische Registrierung Ihrer lokalen in die Domäne eingebundenen Geräte bei Azure AD. In einigen Fällen sollten Sie nicht alle Ihre Geräte automatisch registrieren. Dies gilt beispielsweise während des anfänglichen Rollouts, um sicherzustellen, dass alles wie erwartet funktioniert.
+
+Weitere Informationen finden Sie unter [Steuern von Azure AD Hybrid Join für Ihre Geräte](hybrid-azuread-join-control.md).
 
 ## <a name="select-your-scenario"></a>Auswahl Ihres Szenarios
 

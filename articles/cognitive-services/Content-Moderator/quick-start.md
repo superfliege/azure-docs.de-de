@@ -10,12 +10,12 @@ ms.component: content-moderator
 ms.topic: conceptual
 ms.date: 10/10/2018
 ms.author: sajagtap
-ms.openlocfilehash: f25434814a7fb3d0f49cab539b394970c9bcfb3b
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 79fe761bc6d8bb9561701fd11b06b010bf3454f6
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50023439"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51260005"
 ---
 # <a name="quickstart-get-familiar-with-content-moderator"></a>Schnellstart: Erste Schritte mit Content Moderator
 
@@ -26,7 +26,7 @@ In diesem Schnellstart verwenden Sie das Onlineprüfungstool Content Moderator, 
 - Aus einem Webbrowser
 
 ## <a name="set-up-the-review-tool"></a>Einrichten des Prüfungstools
-Das Content Moderator-Prüfungstool ist ein webbasiertes Tool, mit dem menschliche Reviewer Cognitive Services bei der Entscheidungsfindung unterstützen können. In dieser Anleitung werden Sie durch den kurzen Einrichtungsprozess für das Prüfungstool geführt, sodass Sie sehen können, wie der Content Moderator-Dienst funktioniert. Navigieren Sie zur Website des [Content Moderator-Prüfungstools](http://contentmoderator.cognitive.microsoft.com/), und registrieren Sie sich.
+Das Content Moderator-Prüfungstool ist ein webbasiertes Tool, mit dem menschliche Reviewer Cognitive Services bei der Entscheidungsfindung unterstützen können. In dieser Anleitung werden Sie durch den kurzen Einrichtungsprozess für das Prüfungstool geführt, sodass Sie sehen können, wie der Content Moderator-Dienst funktioniert. Navigieren Sie zur Website des [Content Moderator-Prüfungstools](https://contentmoderator.cognitive.microsoft.com/), und registrieren Sie sich.
 
 ![Content Moderator-Homepage](images/homepage.PNG)
 
@@ -48,7 +48,7 @@ Sie können nun Beispielinhalte hochladen. Wählen Sie **Testen > Bild**, **Test
 
 ## <a name="review-moderation-tags"></a>Überprüfen der Moderationstags
 
-Überprüfen Sie die angewandten Moderationstags. Sie können sehen, welche Tags auf Ihre Inhalte angewandt wurden und welche Bewertungen die einzelnen Kategorien enthalten.
+Überprüfen Sie die angewandten Moderationstags. Sie können sehen, welche Tags auf Ihre Inhalte angewandt wurden und welche Bewertungen die einzelnen Kategorien enthalten. Weitere Informationen zur Bedeutung der unterschiedlichen Inhaltstags finden Sie unter den Themen zur [Bild-](image-moderation-api.md), [Text-](text-moderation-api.md) und [Videomoderation](video-moderation-api.md).
 
 ![Überprüfen der Ergebnisse](images/reviewresults_text.png)
 
@@ -70,4 +70,4 @@ Sie können auch mit den nächsten Schritten fortfahren, um sich über die Verwe
 Erfahren Sie, wie Sie die Moderations-APIs selbst in Ihrer App verwenden.
 - Implementieren Sie die Bildmoderation. Nutzen Sie die [API-Konsole](try-image-api.md) oder den [C#-Schnellstart](image-moderation-quickstart-dotnet.md), um Bilder zu überprüfen und anzügliche sowie nur für Erwachsene geeignete Inhalte mithilfe von Tags, Zuverlässigkeitsbewertungen und anderen extrahierten Informationen zu erkennen.
 - Implementieren Sie die Textmoderation. Nutzen Sie die [API-Konsole](try-text-api.md) oder den [C#-Schnellstart](text-moderation-quickstart-dotnet.md), um Textinhalte auf obszöne, computergestützte unerwünschte Textklassifizierung (Vorschau) und personenbezogene Informationen zu überprüfen. 
-- Implementieren Sie die Videomoderation. Nutzen Sie den [C#-Schnellstart](video-moderation-api.md), um Videos zu überprüfen und anzügliche sowie nur für Erwachsene geeignete Inhalte zu erkennen. 
+- Implementieren Sie die Videomoderation. Befolgen Sie die [Anleitung zur Videomoderation für C#](video-moderation-api.md), um Videos zu scannen und potenziell jugendgefährdende und freizügige Inhalte zu erkennen. 

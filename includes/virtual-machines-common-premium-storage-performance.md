@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/24/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: f0ed4b20f9dbfef4824f66eab3ab953a5dbcfaae
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 4960ee485ac8c6b233eacc569cdac6748481887d
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47060807"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50746367"
 ---
 # <a name="azure-premium-storage-design-for-high-performance"></a>Azure Storage Premium: Entwurf für hohe Leistung
 
@@ -30,6 +30,10 @@ In diesem Artikel werden häufig gestellte Fragen zum Optimieren der Anwendungsl
 * Wie kann eine Optimierung hinsichtlich IOPS, Bandbreite und Latenz erfolgen?  
 
 Wir stellen diese Leitlinien speziell für Storage Premium bereit, da in Storage Premium ausgeführte Workloads überaus leistungsabhängig sind. Sofern hilfreich, stellen wir Beispiele bereit. Einige dieser Leitlinien können auch für Anwendungen befolgt werden, die auf virtuellen IaaS-Computern mit Storage Standard-Datenträgern ausgeführt werden.
+
+> [!NOTE]
+> Manchmal ist ein vermutetes Leistungsproblem tatsächlich ein Engpass. In solchen Fällen sollten Sie Ihre [Netzwerkleistung](../articles/virtual-network/virtual-network-optimize-network-bandwidth.md) optimieren.
+> Sie sollten auch sicherstellen, dass Ihr virtueller Computer einen beschleunigten Netzwerkbetrieb unterstützt. Wenn dies der Fall ist, können Sie ihn noch nach der Bereitstellung auf virtuellen [Windows](../articles/virtual-network/create-vm-accelerated-networking-powershell.md#enable-accelerated-networking-on-existing-vms)- und [Linux](../articles/virtual-network/create-vm-accelerated-networking-cli.md#enable-accelerated-networking-on-existing-vms)-Computern aktivieren.
 
 Falls Sie noch nicht mit Storage Premium vertraut sind, lesen Sie zunächst die Artikel [Storage Premium: Hochleistungsspeicher für Workloads in Azure Virtual Machine](../articles/virtual-machines/windows/premium-storage.md) und [Skalierbarkeits- und Leistungsziele für Azure Storage](../articles/storage/common/storage-scalability-targets.md).
 
@@ -221,11 +225,11 @@ Mit Azure Storage Premium erhalten Sie unter Windows und Linux das gleiche Maß 
 
 Azure Storage Premium bietet acht allgemein verfügbare Datenträgergrößen und drei Datenträgergrößen, die sich derzeit in der Vorschau befinden. Jede Datenträgergröße hat ein anderes Skalierungslimit hinsichtlich IOPS, Bandbreite und Speicher. Wählen Sie abhängig von den Anwendungsanforderungen und der Größe der Hochleistungs-VM die richtige Storage Premium-Datenträgergröße. Die folgende Tabelle zeigt die elf verschiedenen Datenträgergrößen und ihre Funktionen. Die Datenträgergrößen P4, P6, P15, P60, P70 und P80 werden aktuell nur für verwaltete Datenträger unterstützt.
 
-| Premium-Datenträgertyp  | P4    | P6    | P10   | P15 | P20   | P30   | P40   | P50   | P60   | P70   | P80   |
+| Premium-Datenträgertyp  | P4    | P6    | P10   | P15 | P20   | P30   | P40   | P50   | P60   | P70   | P80   |
 |---------------------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|
-| Datenträgergröße           | 32 GiB | 64 GiB | 128 GB| 256 GiB| 512 GB            | 1024 GiB (1 TiB)    | 2048 GiB (2 TiB)    | 4095 GiB (4 TiB)    | 8192 GiB (8 TiB)    | 16384 GiB (16 TiB)    | 32767 GiB (32 GiB)    |
-| IOPS pro Datenträger       | 120   | 240   | 500   | 1100 | 2.300              | 5.000              | 7.500              | 7.500              | 12.500              | 15.000              | 20.000              |
-| Durchsatz pro Datenträger | 25 MiB pro Sekunde  | 50 MiB pro Sekunde  | 100 MiB pro Sekunde |125 MiB pro Sekunde | 150 MiB pro Sekunde | 200 MiB pro Sekunde | 250 MiB pro Sekunde | 250 MiB pro Sekunde | 480 MiB pro Sekunde | 750 MiB pro Sekunde | 750 MiB pro Sekunde |
+| Datenträgergröße           | 32 GiB | 64 GiB | 128 GB| 256 GiB| 512 GB            | 1024 GiB (1 TiB)    | 2048 GiB (2 TiB)    | 4095 GiB (4 TiB)    | 8192 GiB (8 TiB)    | 16384 GiB (16 TiB)    | 32767 GiB (32 GiB)    |
+| IOPS pro Datenträger       | 120   | 240   | 500   | 1100 | 2.300              | 5.000              | 7.500              | 7.500              | 12.500              | 15.000              | 20.000              |
+| Durchsatz pro Datenträger | 25 MiB pro Sekunde  | 50 MiB pro Sekunde  | 100 MiB pro Sekunde |125 MiB pro Sekunde | 150 MiB pro Sekunde | 200 MiB pro Sekunde | 250 MiB pro Sekunde | 250 MiB pro Sekunde | 480 MiB pro Sekunde | 750 MiB pro Sekunde | 750 MiB pro Sekunde |
 
 Die zu wählende Anzahl von Datenträgern hängt von der gewählten Datenträgergröße ab. Zum Erfüllen Ihrer Anwendungsanforderung können Sie entweder einen einzelnen P50- oder mehrere P10-Datenträger verwenden. Berücksichtigen Sie bei Ihrer Wahl die nachstehenden Aspekte.
 

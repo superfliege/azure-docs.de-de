@@ -5,21 +5,21 @@ services: storage
 author: tolandmike
 ms.service: storage
 ms.topic: article
-ms.date: 03/20/2018
+ms.date: 10/24/2018
 ms.author: jeking
 ms.component: common
-ms.openlocfilehash: 0a4ebefd89414fa62ca69f2f9cc726f471694bee
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: b310c06f508395635976009005dd2c4db2917abc
+ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45733615"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51218735"
 ---
 # <a name="zone-redundant-storage-zrs-highly-available-azure-storage-applications"></a>Zonenredundanter Speicher (ZRS): Hochverfügbare Azure Storage-Anwendungen
 [!INCLUDE [storage-common-redundancy-ZRS](../../../includes/storage-common-redundancy-zrs.md)]
 
 ## <a name="support-coverage-and-regional-availability"></a>Supportabdeckung und regionale Verfügbarkeit
-ZRS unterstützt derzeit Standardkonten vom Typ „Allgemein v2“. Weitere Informationen zu Speicherkontotypen finden Sie unter [Azure-Speicherkonten – Übersicht](storage-account-overview.md).
+ZRS unterstützt derzeit Standardkonten vom Typ „Allgemein v2“. Weitere Informationen zu Arten von Speicherkontotypen finden Sie unter [Übersicht über Azure Storage-Konten](storage-account-overview.md).
 
 ZRS ist für Blockblobs, Seitenblobs ohne Datenträger, Dateien, Tabellen und Warteschlangen verfügbar
 
@@ -37,58 +37,68 @@ ZRS ist in den folgenden Regionen verfügbar:
 Microsoft arbeitet daran, ZRS in weiteren Azure-Regionen zu aktivieren. Sehen Sie regelmäßig auf der Seite [Azure-Updates](https://azure.microsoft.com/updates/) nach, um Informationen zu neuen Regionen zu erhalten.
 
 ## <a name="what-happens-when-a-zone-becomes-unavailable"></a>Was geschieht, wenn eine Zone nicht mehr verfügbar ist?
-Ihre Daten bleiben erhalten, wenn eine Zone ausfällt. Microsoft empfiehlt, die Vorgehensweisen für vorübergehende Fehler einzuhalten. Dazu gehört z.B. die Implementierung von Wiederholungsrichtlinien mit exponentiellem Backoff. Wenn eine Zone nicht verfügbar ist, führt Azure Netzwerkupdates durch, z.B. durch die Festlegung neuer DNS-Ziele. Diese Updates können sich auf Ihre Anwendung auswirken, wenn Sie auf Ihre Daten zugreifen, bevor sie abgeschlossen wurden.
+Auf Ihre Daten kann weiterhin zugegriffen werden, auch wenn eine Zone nicht mehr verfügbar ist. Microsoft empfiehlt, Vorgehensweisen für die Behandlung vorübergehender Fehler anzuwenden. Zu diesen Vorgehensweisen gehört die Implementierung von Wiederholungsrichtlinien mit exponentiellem Backoff.
+
+Wenn eine Zone nicht verfügbar ist, führt Azure Netzwerkupdates durch, z.B. durch die Festlegung neuer DNS-Ziele. Diese Updates können sich auf Ihre Anwendung auswirken, wenn Sie auf Ihre Daten zugreifen, bevor die Updates abgeschlossen sind.
 
 ZRS kann Ihre Daten nicht vor einem regionalen Notfall schützen, bei dem mehrere Zonen dauerhaft betroffen sind. ZRS bietet stattdessen Resilienz für Ihre Daten bei einem temporären Ausfall. Für den Schutz vor regionalen Ausfällen empfiehlt Microsoft die Verwendung von georedundantem Speicher (GRS). Weitere Informationen zu GRS finden Sie unter [Georedundanter Speicher (GRS): regionsübergreifende Replikation für Azure Storage](storage-redundancy-grs.md).
 
 ## <a name="converting-to-zrs-replication"></a>Wechseln zur ZRS-Replikation
-Sie können derzeit das Azure-Portal oder die Storage-Ressourcenanbieter-API verwenden, um den Redundanztyp Ihres Kontos zu ändern, sofern Sie eine Migration zu oder von LRS, GRS und RA-GRS durchführen. Mit ZRS ist die Migration jedoch nicht so einfach, da die Daten physisch aus einem einzelnen Speicherstempel in mehrere Stempel innerhalb einer Region verschoben werden müssen. 
+Die Migration von oder zu LRS, GRS und RA-GRS ist ein einfacher Prozess. Verwenden Sie das Azure-Portal oder die Speicherressourcenanbieter-API, um den Redundanztyp Ihres Kontos zu ändern. Azure repliziert Ihre Daten dann entsprechend. 
 
-Ihnen stehen zwei primäre Optionen für die Migration zu oder von ZRS zur Verfügung. Sie können Daten manuell aus Ihrem vorhandenen Konto in ein neues ZRS-Konto kopieren oder verschieben. Sie können auch eine Livemigration anfordern. Microsoft empfiehlt dringend, Sie eine manuelle Migration auszuführen, da es keine Garantie gibt, wann eine Livemigration abgeschlossen sein wird. Eine manuelle Migrationsroute bietet mehr Flexibilität als eine Livemigration, und Sie haben volle Kontrolle über den zeitlichen Ablauf der Migration.
+Für die Migration von Daten von oder zu ZRS ist eine andere Strategie erforderlich. Die ZRS-Migration umfasst die physische Verlagerung von Daten von einem einzelnen Speicherstempel auf mehrere Stempel in einer Region.
 
-Für eine manuelle Migration steht Ihnen eine Vielzahl von Optionen zur Verfügung:
-- Verwenden Sie vorhandene Tools wie AzCopy, das Storage SDK, Tools von zuverlässigen Drittanbietern usw.
-- Wenn Sie mit Hadoop oder HDInsight vertraut sind, können Sie das Quell- und Zielkonto (ZRS) an Ihren Cluster anfügen und beispielsweise DistCp verwenden, um den Kopiervorgang der Daten hochgradig zu parallelisieren.
-- Erstellen Sie eigene Tools, die das Storage SDK nutzen.
+Es gibt zwei primäre Optionen für die Migration zu oder von ZRS: 
 
-Wenn eine manuelle Migration allerdings zu Anwendungsausfallzeiten führt und Sie dies auf Ihrer Seite nicht auffangen können, bietet Microsoft als Option eine Livemigration an. Eine Livemigration ist eine direkte Migration, bei der Sie Ihr vorhandenes Speicherkonto weiterverwenden können, während die Daten zwischen Quell- und Zielspeicherstempel migriert werden. Während der Migration verfügen Sie über das gleiche Maß an Dauerhaftigkeit und Verfügbarkeit gemäß SLA, wie Sie es gewohnt sind.
+- Kopieren oder verschieben Sie Daten manuell aus einem vorhandenen Konto in ein neues ZRS-Konto.
+- Fordern Sie eine Livemigration an.
 
-Trotzdem gelten für Livemigrationen gewisse Einschränkungen. Diese werden unten aufgeführt.
+Microsoft empfiehlt dringend die Ausführung einer manuellen Migration. Eine manuelle Migration bietet mehr Flexibilität als eine Livemigration. Bei einer manuellen Migration können Sie den zeitlichen Ablauf steuern.
 
-- Auch wenn Microsoft auf Ihre Anforderung zur Livemigration sofort reagiert, gibt es keine Garantie, wann die Migration abgeschlossen sein wird. Wenn Sie Ihre Daten zu einem bestimmten Zeitpunkt im ZRS benötigen, sollten Sie eine manuelle Migration durchführen. Grundsätzlich gilt: Je mehr Daten Sie in Ihrem Konto haben, desto länger dauert die Migration dieser Daten. 
-- Sie können eine Livemigration nur über ein Konto mit LRS- oder GRS-Replikation ausführen. Wenn Ihr Konto RA-GRS verwendet, müssen Sie zunächst zu einem dieser Replikationstypen migrieren, bevor Sie fortfahren können. Dieser Zwischenschritt stellt sicher, dass der sekundäre schreibgeschützte-Endpunkt, den RA-GRS bereitstellt, vor der Migration entfernt wird.
+Für eine manuelle Migration stehen Ihnen zwei Optionen zur Verfügung:
+- Verwenden Sie vorhandene Tools wie AzCopy, eine der Azure Storage-Clientbibliotheken oder zuverlässige Drittanbietertools.
+- Wenn Sie mit Hadoop oder HDInsight vertraut sind, fügen Sie sowohl das Quell- als auch das Zielkonto (ZRS) an Ihren Cluster an. Danach parallelisieren Sie den Datenkopiervorgang mit einem Tool wie z.B. DistCp.
+- Verwenden Sie eine der Azure Storage-Clientbibliotheken, um eigene Tools zu erstellen.
+
+Eine manuelle Migration kann zu Ausfallzeiten der Anwendung führen. Wenn Ihre Anwendung eine hohe Verfügbarkeit erfordert, bietet Microsoft auch eine Option für eine Livemigration. Eine Livemigration ist eine direkte Migration. 
+
+Während einer Livemigration können Sie Ihr Speicherkonto weiter verwenden, während Ihre Daten zwischen dem Quell- und dem Zielspeicher migriert werden. Während des Migrationsprozesses verfügen Sie über das gleiche Maß an Dauerhaftigkeit und Verfügbarkeit gemäß SLA, wie es normalerweise der Fall ist.
+
+Beachten Sie die folgenden Einschränkungen bei Livemigrationen:
+
+- Auch wenn Microsoft auf Ihre Anforderung zur Livemigration sofort reagiert, gibt es keine Garantie, zu welchem Zeitpunkt eine Livemigration abgeschlossen sein wird. Wenn Ihre Daten bis zu einem bestimmten Datum zu ZRS migriert werden müssen, empfiehlt Microsoft die Durchführung einer manuellen Migration. Grundsätzlich gilt: Je mehr Daten in Ihrem Konto vorhanden sind, desto länger dauert die Migration dieser Daten. 
+- Die Livemigration wird nur für Speicherkonten unterstützt, die LRS- oder GRS-Replikation nutzen. Wenn Ihr Konto RA-GRS verwendet, müssen Sie zuerst den Replikationstyp Ihres Kontos auf LRS oder GRS ändern, bevor Sie fortfahren. Dieser Zwischenschritt entfernt vor der Migration den sekundären schreibgeschützten Endpunkt, der von RA-GRS bereitgestellt wird.
 - Ihr Konto muss Daten enthalten.
-- Es werden nur Migrationen innerhalb einer Region unterstützt. Wenn Sie Ihre Daten in ein ZRS-Konto zu einer anderen Region als das Quellkonto migrieren möchten, müssen Sie eine manuelle Migration ausführen.
-- Es werden nur Storage Standard-Konten unterstützt. Sie können nicht von einem Storage Premium-Konto migrieren.
+- Sie können Daten nur innerhalb der gleichen Region migrieren. Wenn Sie Ihre Daten in ein ZRS-Konto zu einer anderen Region als das Quellkonto migrieren möchten, müssen Sie eine manuelle Migration ausführen.
+- Nur Standard-Speicherkontotypen unterstützen die Livemigration. Premium-Speicherkonten müssen manuelle migriert werden.
 
-Anforderungen zur Livemigration erfolgen über das Azure-Support-Portal. Sie wählen über das Portal das Speicherkonto aus, das Sie in ZRS konvertieren möchten.
-1. Klicken Sie auf **Neue Supportanfrage**.
-2. Überprüfen Sie die Grundlagen. Klicken Sie auf **Weiter**. 
-3. Gehen Sie im Abschnitt **Problem** folgendermaßen vor: 
-    - Lassen Sie den Schweregrad unverändert.
-    - Problemtyp = **Datenmigration**
-    - Kategorie = **Migrieren zu ZRS innerhalb einer Region**
-    - Titel = **ZRS-Kontomigration** (oder eine Beschreibung)
-    - Details = Ich möchte in der Region ______ von [LRS, GRS] zu ZRS migrieren. 
-4. Klicken Sie auf **Weiter**.
-5. Überprüfen Sie, ob die Kontaktinformationen auf dem Blatt „Kontaktinformationen“ korrekt sind.
-6. Klicken Sie auf **Submit**.
+Sie können eine Livemigration über das [Azure-Support-Portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) anfordern. Wählen Sie im Portal das Speicherkonto aus, das Sie in ZRS konvertieren möchten.
+1. Wählen Sie **Neue Supportanfrage** aus.
+2. Geben Sie die **Grundlagen** basierend auf den Informationen Ihres Kontos an. Wählen Sie im Abschnitt **Dienst** den Eintrag **Speicherkontoverwaltung** und die Ressource aus, die Sie in ZRS konvertieren möchten. 
+3. Klicken Sie auf **Weiter**. 
+4. Geben Sie im Abschnitt **Problem** die folgenden Werte an: 
+    - **Schweregrad**: Behalten Sie den Standardwert bei.
+    - **Problemtyp**: Wählen Sie **Datenmigration** aus.
+    - **Kategorie**: Wählen Sie **Innerhalb einer Region zu ZRS migrieren** aus.
+    - **Titel**: Geben Sie einen aussagekräftigen Titel ein, z.B. **ZRS-Kontomigration**.
+    - **Details**: Geben Sie im Feld **Details** weitere Informationen ein, z.B. „Ich möchte von [LRS, GRS] in der Region ______ zu ZRS migrieren“. 
+5. Klicken Sie auf **Weiter**.
+6. Überprüfen Sie, ob die Kontaktinformationen auf dem Blatt **Kontaktinformationen** korrekt sind.
+7. Klicken Sie auf **Erstellen**.
 
-Ein Supportmitarbeiter wird mit Ihnen in Kontakt treten. Diese Person bietet Ihnen ggf. erforderliche Unterstützung. 
+Ein Supportmitarbeiter wird sich mit Ihnen in Verbindung setzen und Sie nach Bedarf und Wunsch unterstützen. 
 
 ## <a name="zrs-classic-a-legacy-option-for-block-blobs-redundancy"></a>ZRS Classic: eine ältere Option für die Redundanz von Blockblobs
 > [!NOTE]
-> Microsoft wird ZRS Classic-Konten am 31. März 2021 als veraltet markieren und migrieren. Bevor die Komponenten als veraltet gekennzeichnet werden, erhalten ZRS Classic-Kunden weitere Informationen. 
+> Microsoft wird ZRS Classic-Konten am 31. März 2021 als veraltet markieren und migrieren. Bevor die Option als veraltet gekennzeichnet wird, erhalten ZRS Classic-Kunden weitere Informationen. 
 >
-> Sobald der ZRS in einer Region [allgemein verfügbar](#support-coverage-and-regional-availability) wird, können Kunden ein ZRS Classic-Konto nicht mehr über das Portal in dieser Region erstellen. Die Verwendung von Microsoft PowerShell und der Azure CLI zum Erstellen von ZRS Classic-Konten wird unterstützt, bis ZRS Classic als veraltet gekennzeichnet wird.
+> Sobald der zonenredundante Speicher in einer Region [allgemein verfügbar](#support-coverage-and-regional-availability) wird, können Kunden im Portal in dieser Region kein ZRS Classic-Konto mehr erstellen. Die Verwendung von Microsoft PowerShell und der Azure CLI zum Erstellen von ZRS Classic-Konten ist eine Option, bis ZRS Classic als veraltet gekennzeichnet wird.
 
-ZRS Classic repliziert Daten asynchron zwischen Rechenzentren in einer oder zwei Regionen. Ein Replikat ist ggf. erst wieder verfügbar, wenn von Microsoft das Failover in der sekundären Region initiiert wird. Ein ZRS Classic-Konto kann nicht in bzw. aus LRS oder GRS konvertiert werden und verfügt nicht über Metriken oder Protokollierungsfunktionen.
+ZRS Classic repliziert Daten asynchron zwischen Rechenzentren in einer oder zwei Regionen. Replizierte Daten sind möglicherweise erst wieder verfügbar, wenn Microsoft das Failover auf die sekundäre Region initiiert. Ein ZRS Classic-Konto kann nicht zu oder aus LRS, GRS oder RA-GRS konvertiert werden. ZRS Classic-Konten unterstützen zudem weder Metriken noch Protokollierungen.
 
 ZRS Classic ist nur für **Blockblobs** in Speicherkonten vom Typ „Allgemein v1 (GPv1)“ verfügbar. Weitere Informationen zu Speicherkonten finden Sie unter [Azure-Speicherkonto – Übersicht](storage-account-overview.md).
 
-ZRS Classic-Konten können nicht in oder aus LRS, GRS oder RA-GRS konvertiert werden. ZRS Classic-Konten unterstützen zudem weder Metriken noch Protokollierungen.
-
-Um manuell ZRS-Kontodaten zu oder von einem LRS-, ZRS Classic-, GRS- oder RA-GRS-Konto zu migrieren, verwenden Sie AzCopy, Azure Storage-Explorer, Azure PowerShell oder die Azure-Befehlszeilenschnittstelle. Sie können auch Ihre eigene Migrationslösung mit einer der Azure Storage-Clientbibliotheken erstellen.
+Um ZRS-Kontodaten manuell zu oder von einem LRS-, ZRS Classic-, GRS- oder RA-GRS-Konto zu migrieren, verwenden Sie eins der folgenden Tools: AzCopy, Azure Storage-Explorer, Azure PowerShell oder die Azure-Befehlszeilenschnittstelle. Sie können auch Ihre eigene Migrationslösung mit einer der Azure Storage-Clientbibliotheken erstellen.
 
 ## <a name="see-also"></a>Weitere Informationen
 - [Azure Storage-Replikation](storage-redundancy.md)

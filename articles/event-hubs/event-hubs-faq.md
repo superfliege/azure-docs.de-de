@@ -7,18 +7,21 @@ author: ShubhaVijayasarathy
 manager: timlt
 ms.service: event-hubs
 ms.topic: article
-ms.date: 08/07/2018
+ms.date: 10/07/2018
 ms.author: shvija
-ms.openlocfilehash: 50491515c7a553107666e29dcba2b4bd0836f409
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: 4e0f762a69451ce0dc9ec00db5992fce0707f275
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42746228"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51282440"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Häufig gestellte Fragen zu Event Hubs
 
 ## <a name="general"></a>Allgemein
+
+### <a name="what-is-an-event-hubs-namespace"></a>Was ist ein Event Hubs-Namespace?
+Ein Namespace ist ein Bereichscontainer für Event Hub- und Kafka-Themen. Dadurch erhalten Sie einen eindeutigen [FQDN](https://en.wikipedia.org/wiki/Fully_qualified_domain_name). Ein Namespace dient als Anwendungscontainer, der mehrere Event Hub- und Kafka-Themen aufnehmen kann. 
 
 ### <a name="what-is-the-difference-between-event-hubs-basic-and-standard-tiers"></a>Was ist der Unterschied zwischen den Event Hubs-Ebenen Basic und Standard?
 
@@ -28,30 +31,13 @@ Im Standard-Tarif von Azure Event Hubs stehen Ihnen mehr Funktionen als im Basic
 * Zusätzliche Brokerverbindungen (Bei Überschreitung der enthaltenen Anzahl fällt eine Zusatzgebühr an.)
 * Mehr als eine [Consumergruppe](event-hubs-features.md#consumer-groups)
 * [Capture](event-hubs-capture-overview.md)
+* [Kafka-Integration](event-hubs-for-kafka-ecosystem-overview.md)
 
 Weitere Informationen zu Tarifen, u.a. für Event Hubs Dedicated, finden Sie unter [Event Hubs – Preisdetails](https://azure.microsoft.com/pricing/details/event-hubs/).
 
-### <a name="what-are-event-hubs-throughput-units"></a>Was sind Event Hubs-Durchsatzeinheiten?
+### <a name="where-is-azure-event-hubs-available"></a>Wo steht Azure Event Hubs zur Verfügung?
 
-Sie wählen die Event Hubs-Durchsatzeinheiten explizit aus, entweder über das Azure-Portal oder mithilfe von Event Hubs Resource Manager-Vorlagen. Durchsatzeinheiten betreffen alle Event Hubs in einem Event Hubs-Namespace, und durch jede Durchsatzeinheit erhält der Namespace die Berechtigung für folgende Funktionen:
-
-* Eingangsereignisse bis zu 1 MB pro Sekunde (Ereignisse, die an einen Event Hub gesendet werden), aber nicht mehr als 1.000 Eingangsereignisse, Verwaltungsvorgänge oder Steuer-API-Aufrufe pro Sekunde.
-* Ausgangsereignisse (Ereignisse, die von einem Event Hub genutzt werden) mit bis zu 2 MB pro Sekunde, aber maximal 4096 Ausgangsereignissen
-* Bis zu 84 GB Ereignisspeicher (ausreichend für die Standardbeibehaltungsdauer im 24-Stunden-Format).
-
-Event Hubs-Durchsatzeinheiten werden stündlich abgerechnet, basierend auf der maximalen Anzahl an ausgewählten Einheiten in der betreffenden Stunde. Sie können mit dem Feature „Automatische Vergrößerung“ bei zunehmender Nutzung automatisch [die Anzahl der Durchsatzeinheiten steigern](event-hubs-auto-inflate.md).
-
-### <a name="how-are-event-hubs-throughput-unit-limits-enforced"></a>Wie werden Beschränkungen für Event Hubs-Durchsatzeinheiten durchgesetzt?
-
-Wenn der gesamte eingehende Durchsatz oder die gesamte eingehende Ereignisrate über alle Event Hubs hinweg in einem Namespace das Einheitenkontingent für den aggregierten Durchsatz überschreitet, werden Absender gedrosselt und erhalten die Fehlermeldung, dass das Eingangskontingent überschritten wurde.
-
-Wenn der gesamte ausgehende Durchsatz oder die gesamte ausgehende Ereignisrate über alle Event Hubs hinweg in einem Namespace das Einheitenkontingent für den aggregierten Durchsatz überschreitet, werden Empfänger gedrosselt und erhalten die Fehlermeldung, dass das Ausgangskontingent überschritten wurde. Eingangs-und Ausgangskontingente werden separat durchgesetzt, sodass kein Absender die Verlangsamung der Nutzung herbeiführen kann und kein Empfänger verhindern kann, dass Ereignisse an einen Event Hub gesendet werden.
-
-### <a name="is-there-a-limit-on-the-number-of-throughput-units-that-can-be-selected"></a>Gibt es eine Beschränkung für die Anzahl der Durchsatzeinheiten, die ausgewählt werden können?
-
-Es gibt ein Kontingent von 20 Durchsatzeinheiten pro Namespace. Sie können ein größeres Kontingent an Durchsatzeinheiten anfordern, indem Sie ein Supportticket ausfüllen. Über das Limit von 20 Durchsatzeinheiten hinaus sind Pakete in 20 bis 100 Durchsatzeinheiten verfügbar. Beachten Sie, dass es bei Verwendung von mehr als 20 Durchsatzeinheiten nicht die Möglichkeit gibt, die Anzahl der Durchsatzeinheiten zu ändern, ohne ein Supportticket auszufüllen.
-
-Sie können mit dem Feature [Automatische Vergrößerung](event-hubs-auto-inflate.md) bei zunehmender Nutzung automatisch die Anzahl der Durchsatzeinheiten steigern.
+Azure Event Hubs ist in allen unterstützten Azure-Regionen verfügbar. Eine Liste finden Sie auf der Seite [Azure-Regionen](https://azure.microsoft.com/regions/).  
 
 ### <a name="can-i-use-a-single-amqp-connection-to-send-and-receive-from-multiple-event-hubs"></a>Kann ich eine einzelne AMQP-Verbindung zum Senden und Empfangen von mehreren Event Hubs verwenden?
 
@@ -59,21 +45,101 @@ Ja, solange sich alle Event Hubs im gleichen Namespace befinden.
 
 ### <a name="what-is-the-maximum-retention-period-for-events"></a>Was ist die maximale Beibehaltungsdauer für Ereignisse?
 
-Die Standard-Ebene für Event Hubs unterstützt derzeit einen maximalen Aufbewahrungszeitraum von 7 Tagen. Beachten Sie, dass Event Hubs nicht als dauerhafter Datenspeicher vorgesehen sind. Beibehaltungsdauern größer als 24 Stunden sind für Szenarien vorgesehen, in denen es praktisch ist, einen Stream von Ereignissen in die gleichen Systeme wiederzugeben, wenn Sie beispielsweise ein neues Computerlernmodell für vorhandene Daten trainieren oder überprüfen wollen. Wenn Sie Nachrichten länger als sieben Tage aufbewahren möchten, werden die Daten durch Aktivieren von [Event Hubs Capture](event-hubs-capture-overview.md) in Ihrem Event Hub von Ihrem Event Hub per Pull in das Storage-Konto oder das von Ihnen gewünschte Azure Data Lake-Dienstkonto übertragen. Abhängig von Ihrer erworbenen Durchsatzeinheit entstehen durch das Aktivieren von „Capture“ Kosten.
+Im Standard-Tarif für Event Hubs wird derzeit ein maximaler Aufbewahrungszeitraum von sieben Tagen unterstützt. Event Hubs sind nicht als dauerhafter Datenspeicher vorgesehen. Beibehaltungsdauern größer als 24 Stunden sind für Szenarien vorgesehen, in denen es praktisch ist, einen Stream von Ereignissen in die gleichen Systeme wiederzugeben, wenn Sie beispielsweise ein neues Computerlernmodell für vorhandene Daten trainieren oder überprüfen wollen. Wenn Sie Nachrichten länger als sieben Tage aufbewahren möchten, werden die Daten durch Aktivieren von [Event Hubs Capture](event-hubs-capture-overview.md) in Ihrem Event Hub von Ihrem Event Hub per Pull in das Storage-Konto oder das von Ihnen ausgewählte Azure Data Lake-Dienstkonto übertragen. Abhängig von Ihrer erworbenen Durchsatzeinheit entstehen durch das Aktivieren von „Capture“ Kosten.
 
-### <a name="where-is-azure-event-hubs-available"></a>Wo steht Azure Event Hubs zur Verfügung?
+### <a name="how-do-i-monitor-my-event-hubs"></a>Wie überwache ich Event Hubs?
+Event Hubs gibt umfassende Metriken aus, die den Zustand Ihrer Ressourcen in [Azure Monitor](../azure-monitor/overview.md) angeben. Mit den Metriken können Sie zudem die allgemeine Integrität des Event Hubs-Diensts nicht nur auf Namespaceebene, sondern auch auf Entitätsebene bewerten. Erfahren Sie mehr über die angebotene Überwachung für [Azure Event Hubs](event-hubs-metrics-azure-monitor.md).
 
-Azure Event Hubs ist in allen unterstützten Azure-Regionen verfügbar. Eine Liste finden Sie auf der Seite [Azure-Regionen](https://azure.microsoft.com/regions/).  
+## <a name="apache-kakfa-integration"></a>Apache Kafka-Integration
+
+### <a name="how-do-i-integrate-my-existing-kafka-application-with-event-hubs"></a>Wie integriere ich meine vorhandene Kafka-Anwendung in Event Hubs?
+Event Hubs stellt einen Kafka-Endpunkt bereit, der in Ihren vorhandenen Apache Kafka-basierten Anwendungen verwendet werden kann. Es ist lediglich eine Konfigurationsänderung erforderlich, damit Sie die PaaS-Kafka-Funktionen nutzen können. Dies stellt eine Alternative zum Ausführen eines eigenen Kafka-Clusters dar. Event Hubs unterstützt Apache Kafka 1.0 und neuere Clientversionen und kann mit Ihren vorhandenen Kafka-Anwendungen, -Tools und -Frameworks verwendet werden. Weitere Informationen finden Sie unter [Event Hubs für Kafka-Repository](https://github.com/Azure/azure-event-hubs-for-kafka).
+
+### <a name="what-configuration-changes-need-to-be-done-for-my-existing-application-to-talk-to-event-hubs"></a>Welche Konfigurationsänderungen muss ich an meiner vorhandenen Anwendung für die Kommunikation mit Event Hubs vornehmen?
+Um eine Verbindung mit einem Kafka-fähigen Event Hub herzustellen, müssen Sie die Kafka-Clientkonfigurationen aktualisieren. Dies erfolgt durch Erstellen eines Event Hubs-Namespace und Abrufen der [Verbindungszeichenfolge](event-hubs-get-connection-string.md). Ändern Sie „bootstrap.servers“ so, dass der Event Hubs-FQDN und der Port auf 9093 verweisen. Aktualisieren Sie „sasl.jaas.config“ so, dass der Kafka-Client mit der richtigen Authentifizierung wie folgt an den Kafka-fähigen Event Hubs-Endpunkt geleitet wird (dabei handelt es sich um die abgerufene Verbindungszeichenfolge):
+
+bootstrap.servers={YOUR.EVENTHUBS.FQDN}:9093 request.timeout.ms=60000 security.protocol=SASL_SSL sasl.mechanism=PLAIN sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="{YOUR.EVENTHUBS.CONNECTION.STRING}";
+
+Beispiel:
+
+bootstrap.servers=dummynamespace.servicebus.windows.net:9093 request.timeout.ms=60000 security.protocol=SASL_SSL sasl.mechanism=PLAIN sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="Endpoint=sb://dummynamespace.servicebus.windows.net/;SharedAccessKeyName=DummyAccessKeyName;SharedAccessKey=5dOntTRytoC24opYThisAsit3is2B+OGY1US/fuL3ly=";
+
+Hinweis: Wenn „sasl.jaas.config“ in Ihrem Framework als Konfiguration nicht unterstützt wird, müssen Sie die Konfigurationen suchen, die zum Festlegen des SASL-Benutzernamens und -Kennworts verwendet werden, und sie verwenden. Legen Sie den Benutzernamen auf $ConnectionString und das Kennwort auf Ihre Event Hubs-Verbindungszeichenfolge fest.
+
+### <a name="what-is-the-messageevent-size-for-kafka-enabled-event-hubs"></a>Welche Nachrichten- oder Ereignisgröße gilt für Kafka-fähige Event Hubs?
+Die maximal zulässige Nachrichtengröße für Kafka-fähige Event Hubs beträgt 1 MB.
+
+## <a name="throughput-units"></a>Durchsatzeinheiten
+
+### <a name="what-are-event-hubs-throughput-units"></a>Was sind Event Hubs-Durchsatzeinheiten?
+Mit dem Durchsatz wird in Event Hubs die Menge der Daten in Megabyte oder die Anzahl der 1-KB-Ereignisse (in Tausenderschritten) definiert, die über Event Hubs ein- oder ausgehen. Dieser Durchsatz wird in Durchsatzeinheiten (Throughput Units, TUs) gemessen. Damit Sie den Event Hubs-Dienst verwenden können, müssen Sie zunächst TUs erwerben. Sie können Event Hubs-Durchsatzeinheiten über das Portal oder mithilfe von Event Hubs-Resource Manager-Vorlagen explizit auswählen. 
+
+
+### <a name="do-throughput-units-apply-to-all-event-hubs-in-a-namespace"></a>Werden Durchsatzeinheiten auf alle Event Hubs in einem Namespace angewandt?
+Ja, Durchsatzeinheiten (Throughput Units, TUs) werden auf alle Event Hubs in einem Event Hubs-Namespace angewandt. Das bedeutet, dass Sie TUs auf Namespaceebene erwerben und diese auf die Event Hubs unter dem Namespace aufgeteilt werden. Durch jede TU erhält der Namespace die Berechtigung für folgende Funktionen:
+
+- Eingangsereignisse bis zu 1 MB pro Sekunde (Ereignisse, die an einen Event Hub gesendet werden), aber nicht mehr als 1000 Eingangsereignisse, Verwaltungsvorgänge oder Steuer-API-Aufrufe pro Sekunde
+- Ausgangsereignisse (Ereignisse, die von einem Event Hub genutzt werden) mit bis zu 2 MB pro Sekunde, aber maximal 4096 Ausgangsereignissen
+- Bis zu 84 GB Ereignisspeicher (ausreichend für die Standardaufbewahrungsdauer im 24-Stunden-Format)
+
+### <a name="how-are-throughput-units-billed"></a>Wie werden Durchsatzeinheiten abgerechnet?
+Durchsatzeinheiten (Throughput Units, TUs) werden auf Stundenbasis abgerechnet. Die Abrechnung basiert auf der maximalen Anzahl von Einheiten, die während der jeweiligen Stunde ausgewählt wurden. 
+
+### <a name="how-can-i-optimize-the-usage-on-my-throughput-units"></a>Wie kann ich die Nutzung für meine Durchsatzeinheiten optimieren?
+Sie können mit nur einer Durchsatzeinheit (Throughput Unit, TU) beginnen und die [automatische Vergrößerung](event-hubs-auto-inflate.md) aktivieren. Mit dem Feature für die automatische Vergrößerung können Sie die TUs erhöhen, wenn sich der Datenverkehr oder die Nutzlast erhöht. Sie können zudem eine Obergrenze für die Anzahl von TUs festlegen.
+
+### <a name="how-does-auto-inflate-feature-of-event-hubs-work"></a>Wie funktioniert das Feature für die automatische Vergrößerung von Event Hubs?
+Mit dem Feature für die automatische Vergrößerung können Sie die Durchsatzeinheiten (Throughput Units, TUs) zentral hochskalieren. Das bedeutet, dass Sie zunächst eine geringe Anzahl von TUs erwerben können und die TUs über die Funktion für die automatische Vergrößerung zentral hochskaliert werden, wenn der eingehende Datenverkehr zunimmt. Dies bietet Ihnen eine kostengünstige Option und die vollständige Kontrolle über die Anzahl der zu verwaltenden TUs. Dieses Feature betrifft nur das **zentrale Hochskalieren**, das zentrale Herunterskalieren der Anzahl von TUs können Sie vollständig steuern, indem Sie sie aktualisieren. 
+
+Sie können mit einer niedrigen Anzahl von Durchsatzeinheiten (TUs) beginnen, z.B. mit 2 TUs. Wenn Sie davon ausgehen, dass der Datenverkehr möglicherweise bis auf 15 TUs ansteigen kann, aktivieren Sie das Feature für die automatische Vergrößerung für den Namespace, und legen Sie die maximale Anzahl auf 15 TUs fest. Damit werden die TUs bei zunehmendem Datenverkehr nun automatisch erhöht.
+
+### <a name="is-there-a-cost-associated-when-i-turn-on-the-auto-inflate-feature"></a>Fallen Kosten an, wenn ich das Feature für die automatische Vergrößerung aktiviere?
+Mit diesem Feature sind **keine Kosten** verbunden. 
+
+### <a name="how-are-throughput-limits-enforced"></a>Wie werden Durchsatzlimits durchgesetzt?
+Wenn der gesamte eingehende Durchsatz oder die gesamte eingehende Ereignisrate über alle Event Hubs hinweg in einem Namespace das Einheitenkontingent für den aggregierten Durchsatz überschreitet, werden Absender gedrosselt und erhalten die Fehlermeldung, dass das Eingangskontingent überschritten wurde.
+
+Wenn der gesamte ausgehende Durchsatz oder die gesamte ausgehende Ereignisrate über alle Event Hubs hinweg in einem Namespace das Einheitenkontingent für den aggregierten Durchsatz überschreitet, werden Empfänger gedrosselt und erhalten die Fehlermeldung, dass das Ausgangskontingent überschritten wurde. Eingangs-und Ausgangskontingente werden separat durchgesetzt, sodass kein Absender die Verlangsamung der Nutzung herbeiführen kann und kein Empfänger verhindern kann, dass Ereignisse an einen Event Hub gesendet werden.
+
+### <a name="is-there-a-limit-on-the-number-of-throughput-units-tus-that-can-be-reservedselected"></a>Gibt es eine Beschränkung für die Anzahl der Durchsatzeinheiten (TUs), die reserviert und ausgewählt werden können?
+Bei einem mehrinstanzenfähigen Angebot können die Durchsatzeinheiten auf maximal 40 TUs erhöht werden. (Sie können bis zu 20 TUs im Portal auswählen und ein Supportticket erstellen, um diese Anzahl für den Namespace auf 40 TUs zu erhöhen.) Für eine Anzahl über 40 TUs umfasst Event Hubs das ressourcen- und kapazitätsbasierte Modell der **Event Hubs Dedicated-Cluster**. Dedicated-Cluster werden in Kapazitätseinheiten (Capacity Units, CUs) angeboten.
+
+## <a name="dedicated-clusters"></a>Dedicated-Cluster
+
+### <a name="what-are-event-hubs-dedicated-clusters"></a>Was sind Event Hubs Dedicated-Cluster?
+Event Hubs Dedicated-Cluster bieten Bereitstellungen mit einem Mandanten für Kunden mit äußerst anspruchsvollen Anforderungen. Bei diesem Angebot wird ein kapazitätsbasierter Cluster erstellt, der nicht durch Durchsatzeinheiten gebunden ist. Das heißt, dass Sie den Cluster verwenden können, um Daten nach Vorgabe von CPU und Speicherauslastung des Clusters zu erfassen und zu streamen. Weitere Informationen finden Sie unter [Event Hubs Dedicated-Cluster](event-hubs-dedicated-overview.md).
+
+### <a name="how-much-does-a-single-capacity-unit-let-me-achieve"></a>Welche Limits gelten für eine Kapazitätseinheit?
+Welche Datenmengen Sie für einen dedizierten Cluster erfassen und streamen können, hängt von verschiedenen Faktoren ab, z.B. von den Producern, den Consumern, der Rate für die Erfassung und Verarbeitung und vielem mehr. 
+
+In der folgenden Tabelle sind die Ergebnisse aufgeführt, die bei unseren Vergleichstests erreicht wurden:
+
+| Form der Nutzlast | Empfänger | Eingangsbandbreite| Eingangsnachrichten | Ausgangsbandbreite | Ausgangsnachrichten | TUs gesamt | TUs pro CU |
+| ------------- | --------- | ---------------- | ------------------ | ----------------- | ------------------- | --------- | ---------- |
+| Batches von 100 x 1 KB | 2 | 400 MB/s | 400.000 Nachrichten/s | 800 MB/s | 800.000 Nachrichten/s | 400 TUs | 100 TUs | 
+| Batches von 10 x 10 KB | 2 | 666 MB/s | 666.000 Nachrichten/s | 1,33 GB/s | 133.000 Nachrichten/s | 666 TUs | 166 TUs |
+| Batches von 6 x 32 KB | 1 | 1,05 GB/s | 34.000 Nachrichten/s | 1,05 GB/s | 34.000 Nachrichten/s | 1.000 TUs | 250 TUs |
+
+Bei den Tests wurden folgende Kriterien verwendet:
+
+- Es wurde ein dedizierter Event Hubs-Cluster mit vier Kapazitätseinheiten (Capacity Units, CUs) verwendet. 
+- Der für die Erfassung verwendete Event Hub umfasste 200 Partitionen. 
+- Die erfassten und von allen Partitionen eingehenden Daten wurden von zwei Empfängeranwendungen empfangen.
+
+Anhand dieser Ergebnisse bekommen Sie eine Vorstellung davon, was mit einem dedizierten Event Hubs-Cluster möglich ist. Zudem ist bei einem dedizierten Cluster Event Hub Capture für Szenarien mit Microbatch und Langzeitaufbewahrung aktiviert.
+
+### <a name="how-do-i-create-an-event-hubs-dedicated-cluster"></a>Wie erstelle ich einen Event Hubs Dedicated-Cluster?
+Einen Event Hub Dedicated-Cluster erstellen Sie, indem Sie eine [Supportanfrage zur Kontingenterhöhung](https://portal.azure.com/#create/Microsoft.Support) senden oder sich an das [Event Hubs-Team](mailto:askeventhubs@microsoft.com) wenden. Es dauert in der Regel etwa zwei Wochen, bis der Cluster bereitgestellt und Ihnen zur Verwendung zur Verfügung gestellt wird. Dieser Vorgang ist vorübergehend, bis ein vollständiger Self-Service über das Azure-Portal oder Azure Resource Manager-Vorlagen zur Verfügung steht, bei dem der Cluster nach etwa zwei Stunden bereitgestellt wird.
 
 ## <a name="best-practices"></a>Bewährte Methoden
 
 ### <a name="how-many-partitions-do-i-need"></a>Wie viele Partitionen benötige ich?
 
-Beachten Sie, dass die Anzahl von Partitionen auf einem Event Hub nach der Einrichtung nicht mehr geändert werden kann. Vor diesem Hintergrund ist es wichtig, dass Sie vor Beginn genau überlegen, wie viele Partitionen Sie benötigen. 
+Die Anzahl von Partitionen auf einem Event Hub kann nach der Einrichtung nicht mehr geändert werden. Vor diesem Hintergrund ist es wichtig, dass Sie vor Beginn genau überlegen, wie viele Partitionen Sie benötigen. 
 
 Event Hubs ist für einen einzelnen Partitionsleser pro Verbrauchergruppe ausgelegt. In den meisten Fällen reicht die Standardeinstellung von vier Partitionen aus. Wenn Sie Ihre Ereignisverarbeitung skalieren möchten, möchten Sie vielleicht die Möglichkeit haben, das Hinzufügen weiterer Partitionen zu erwägen. Es gibt keine bestimmte Durchsatzbegrenzung für eine Partition, aber der aggregierte Durchsatz in Ihrem Namespace ist durch die Anzahl der Durchsatzeinheiten beschränkt. Wenn Sie die Anzahl der Durchsatzeinheiten in Ihrem Namespace erhöhen, wünschen Sie vielleicht zusätzliche Partitionen, um gleichzeitigen Lesern zu ermöglichen, ihren eigenen maximalen Durchsatz zu erzielen.
 
-Aber wenn Sie über ein Modell verfügen, in dem die Anwendung eine bestimmte Partition bevorzugt, ist eine höhere Anzahl von Partitionen für Sie nicht unbedingt von Vorteil. Weitere Informationen hierzu finden Sie unter [Verfügbarkeit und Konsistenz](event-hubs-availability-and-consistency.md).
+Aber wenn Sie über ein Modell verfügen, in dem die Anwendung eine bestimmte Partition bevorzugt, ist eine höhere Anzahl von Partitionen für Sie nicht unbedingt von Vorteil. Weitere Informationen finden Sie unter [Verfügbarkeit und Konsistenz](event-hubs-availability-and-consistency.md).
 
 ## <a name="pricing"></a>Preise
 
@@ -83,7 +149,7 @@ Umfassende Informationen zu den Preisen von Event Hubs finden Sie unter [Event H
 
 ### <a name="is-there-a-charge-for-retaining-event-hubs-events-for-more-than-24-hours"></a>Gibt es eine Gebühr für die Beibehaltung von Event Hubs-Ereignissen für mehr als 24 Stunden?
 
-Der Standard-Tarif für Event Hubs erlaubt eine Aufbewahrung von Nachrichten länger als 24 Stunden, maximal 7 Tage. Wenn die Größe der Gesamtanzahl der gespeicherten Ereignisse das Speicherkontingent für die Anzahl der ausgewählten Durchsatzeinheiten (84 GB pro Durchsatzeinheit) überschreitet, wird die überschrittene Größe zur veröffentlichten Rate für den Azure Blob Storage in Rechnung gestellt. Das Speicherkontingent in allen Durchsatzeinheiten deckt alle Speicherkosten für die Aufbewahrungsdauer von 24 Stunden (Standard), selbst, wenn die Durchsatzeinheit bis zum maximal erlaubten Eingang verbraucht ist.
+Der Standard-Tarif für Event Hubs ermöglicht eine Aufbewahrung von Nachrichten länger als 24 Stunden, maximal 7 Tage. Wenn die Größe der Gesamtanzahl der gespeicherten Ereignisse das Speicherkontingent für die Anzahl der ausgewählten Durchsatzeinheiten (84 GB pro Durchsatzeinheit) überschreitet, wird die überschrittene Größe zur veröffentlichten Rate für den Azure Blob Storage in Rechnung gestellt. Das Speicherkontingent in allen Durchsatzeinheiten deckt alle Speicherkosten für die Aufbewahrungsdauer von 24 Stunden (Standard), selbst, wenn die Durchsatzeinheit bis zum maximal erlaubten Eingang verbraucht ist.
 
 ### <a name="how-is-the-event-hubs-storage-size-calculated-and-charged"></a>Wie wird die Event Hubs-Speichergröße berechnet und in Rechnung gestellt?
 
@@ -91,7 +157,7 @@ Die Gesamtgröße aller gespeicherten Ereignisse, einschließlich des gesamten i
 
 ### <a name="how-are-event-hubs-ingress-events-calculated"></a>Wie werden Eingangsereignisse von Event Hubs berechnet?
 
-Jedes an einen Event Hub gesendete Ereignis wird als abrechenbare Nachricht gezählt. Ein *Eingangsereignis* ist als eine Dateneinheit definiert, die kleiner oder gleich 64 KB ist. Jedes Ereignis, das kleiner als oder gleich 64 KB ist, gilt als kostenpflichtig. Wenn das Ereignis größer als 64 KB ist, wird die Anzahl der abzurechnenden Ereignisse gemäß der Ereignisgröße in Vielfachen von 64 KB berechnet. Beispielsweise wird ein an ein Event Hub gesendetes 8-KB-Ereignis als ein Ereignis abgerechnet, aber eine Nachricht in der Größe von 96 KB, die an den Event Hub gesendet wird, wird als zwei Ereignisse in Rechnung gestellt.
+Jedes an einen Event Hub gesendete Ereignis wird als abrechenbare Nachricht gezählt. Ein *Eingangsereignis* ist als eine Dateneinheit definiert, die kleiner oder gleich 64 KB ist. Jedes Ereignis, das kleiner als oder gleich 64 KB ist, gilt als kostenpflichtig. Wenn das Ereignis größer als 64 KB ist, wird die Anzahl der abzurechnenden Ereignisse gemäß der Ereignisgröße in Vielfachen von 64 KB berechnet. Beispielsweise wird ein an einen Event Hub gesendetes 8-KB-Ereignis als ein Ereignis abgerechnet, aber eine Nachricht mit einer Größe von 96 KB, die an den Event Hub gesendet wird, wird als zwei Ereignisse in Rechnung gestellt.
 
 Von einem Event Hub genutzte Ereignisse sowie Verwaltungsvorgänge und Kontrollaufrufe wie etwa Checkpoints werden nicht als abzurechnende Eingangsereignisse gezählt, sondern bis zur erlaubten Durchsatzeinheit angesammelt.
 
@@ -103,7 +169,7 @@ Verbindungsgebühren fallen nur an, wenn das AMQP-Protokoll verwendet wird. Es g
 
 Capture wird aktiviert, wenn für eine Event Hub-Instanz im Namespace die Capture-Option aktiviert wird. Event Hubs Capture wird stundenweise pro erworbener Durchsatzeinheit abgerechnet. Wenn die Anzahl von Durchsatzeinheiten erhöht oder verringert wird, werden diese Änderungen bei der Abrechnung für Event Hubs Capture in Schritten ganzer Stunden übernommen. Weitere Informationen zur Abrechnung von Event Hubs Capture finden Sie unter [Event Hubs Preise](https://azure.microsoft.com/pricing/details/event-hubs/).
 
-### <a name="will-i-be-billed-for-the-storage-account-i-select-for-event-hubs-capture"></a>Werden Speichergebühren für das für Event Hubs Capture ausgewählte Speicherkonto abgerechnet?
+### <a name="do-i-get-billed-for-the-storage-account-i-select-for-event-hubs-capture"></a>Werden Speichergebühren für das für Event Hubs Capture ausgewählte Speicherkonto abgerechnet?
 
 Capture verwendet ein Speicherkonto, das Sie angeben, wenn es auf einem Event Hub aktiviert ist. Da es sich um Ihr Speicherkonto handelt, werden alle Änderungen an dieser Konfiguration über Ihr Azure-Abonnement abgerechnet.
 

@@ -11,15 +11,15 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 10/19/2018
-ms.openlocfilehash: 053dbc27908b14e70fa2c7502ec7c4e3ae652bf5
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.date: 11/01/2018
+ms.openlocfilehash: 913e374e51b968650b14d3f6563f64c217b76ad0
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49469757"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50913796"
 ---
-# <a name="import-a-bacpac-file-to-a-new-azure-sql-database"></a>Importieren einer BACPAC-Datei in eine neue Azure SQL-Datenbank
+# <a name="quickstart-import-a-bacpac-file-to-a-new-azure-sql-database"></a>Schnellstart: Importieren einer BACPAC-Datei in eine neue Azure SQL-Datenbank
 
 Wenn Sie eine Datenbank aus einem Archiv importieren müssen oder eine Migration von einer anderen Plattform durchführen, können Sie das Datenbankschema und die Datenbankdaten aus einer [BACPAC](https://msdn.microsoft.com/library/ee210546.aspx#Anchor_4)-Datei importieren. Eine BACPAC-Datei ist eine ZIP-Datei mit der Erweiterung BACPAC. Sie enthält die Metadaten und Daten aus einer SQL Server-Datenbank. Sie können eine BACPAC-Datei aus Azure Blob Storage (nur Standardspeicher) oder aus dem lokalen Speicher an einem lokalen Speicherort importieren. Um die Importgeschwindigkeit zu maximieren, wird empfohlen, eine höhere Dienstebene und Computegröße, z.B. P6, anzugeben und sie anschließend nach Bedarf herunterzuskalieren, nachdem der Import erfolgreich abgeschlossen wurde. Außerdem beruht der Datenbank-Kompatibilitätsgrad nach dem Import auf dem Kompatibilitätsgrad der Quelldatenbank.
 

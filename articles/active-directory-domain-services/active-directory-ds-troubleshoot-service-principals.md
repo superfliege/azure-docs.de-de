@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: ergreenl
-ms.openlocfilehash: 5bc1212cc6e894cd82a60abb42f92893c0bb2d43
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: bba7c70a5078d309a55f898c24389d42a8a604ab
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39579543"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51035034"
 ---
 # <a name="troubleshoot-invalid-service-principal-configuration-for-your-managed-domain"></a>Beheben von Problemen bei einer ungültigen Konfiguration des Dienstprinzipals für verwaltete Domänen
 
@@ -45,7 +45,7 @@ Ermitteln Sie anhand der folgenden Schritte, welche Dienstprinzipale neu erstell
 | 2565bd9d-da50-47d4-8b85-4c97f669dc36 | [Erneutes Erstellen eines fehlenden Dienstprinzipals mit PowerShell](#recreate-a-missing-service-principal-with-powershell) |
 | 443155a6-77f3-45e3-882b-22b3a8d431fb | [Erneutes Registrieren beim Namespace „Microsoft.AAD“](#re-register-to-the-microsoft-aad-namespace-using-the-azure-portal) |
 | abba844e-bc0e-44b0-947a-dc74e5d09022  | [Erneutes Registrieren beim Namespace „Microsoft.AAD“](#re-register-to-the-microsoft-aad-namespace-using-the-azure-portal) |
-| d87dcbc6-a371-462e-88e3-28ad15ec4e64 | [Dienstprinzipale mit Selbstkorrektur](#service-principals-that-self-correct) |
+| d87dcbc6-a371-462e-88e3-28ad15ec4e64 | [Erneutes Registrieren beim Namespace „Microsoft.AAD“](#re-register-to-the-microsoft-aad-namespace-using-the-azure-portal) |
 
 ## <a name="recreate-a-missing-service-principal-with-powershell"></a>Erneutes Erstellen eines Dienstprinzipals mit PowerShell
 Gehen Sie folgendermaßen vor, wenn ein Dienstprinzipal mit der ID ```2565bd9d-da50-47d4-8b85-4c97f669dc36``` in Ihrem Azure AD-Verzeichnis fehlt.
@@ -76,7 +76,7 @@ Um dieses Problem zu beheben, geben Sie die folgenden Befehle in einem PowerShel
 
 
 ## <a name="re-register-to-the-microsoft-aad-namespace-using-the-azure-portal"></a>Erneutes Registrieren beim Namespace „Microsoft.AAD“ über das Azure-Portal
-Gehen Sie folgendermaßen vor, wenn ein Dienstprinzipal mit einer der IDs ```443155a6-77f3-45e3-882b-22b3a8d431fb``` oder ```abba844e-bc0e-44b0-947a-dc74e5d09022``` in Ihrem Azure AD-Verzeichnis fehlt.
+Gehen Sie folgendermaßen vor, wenn ein Dienstprinzipal mit einer der IDs ```443155a6-77f3-45e3-882b-22b3a8d431fb```, ```abba844e-bc0e-44b0-947a-dc74e5d09022``` oder ```d87dcbc6-a371-462e-88e3-28ad15ec4e64``` in Ihrem Azure AD-Verzeichnis fehlt.
 
 **Lösung:** Stellen Sie Domänendienste anhand der folgenden Schritte in Ihrem Verzeichnis wieder her:
 
@@ -85,12 +85,6 @@ Gehen Sie folgendermaßen vor, wenn ein Dienstprinzipal mit einer der IDs ```443
 3. Wählen Sie links auf der Navigationsleiste **Ressourcenanbieter** aus.
 4. Suchen Sie in der Tabelle nach „Microsoft.AAD“, und klicken Sie auf **Erneut registrieren**.
 5. Um sicherzustellen, dass die Warnung aufgelöst wurde, zeigen Sie die Integritätsseite für Ihre verwaltete Domäne nach zwei Stunden an.
-
-
-## <a name="service-principals-that-self-correct"></a>Dienstprinzipale mit Selbstkorrektur
-Gehen Sie folgendermaßen vor, wenn ein Dienstprinzipal mit der ID ```d87dcbc6-a371-462e-88e3-28ad15ec4e64``` in Ihrem Azure AD-Verzeichnis fehlt.
-
-**Lösung:** Azure AD Domain Services kann erkennen, wenn dieser spezielle Dienstprinzipal fehlt, falsch konfiguriert ist oder gelöscht wurde. Der Dienst erstellt diesen Dienstprinzipal automatisch neu. Sie müssen aber die Anwendung und das Objekt, das für die gelöschte Anwendung verwendet wurde, löschen. Wenn für die Zertifizierung ein Rollover erfolgt, ist es nämlich nicht mehr möglich, die Anwendung und das Objekt mit dem neuen Dienstprinzipal zu ändern. Dies führt zu einem neuen Fehler in Ihrer Domäne. Führen Sie die Schritte aus, die im [Abschnitt für AADDS105](#alert-aadds105-password-synchronization-application-is-out-of-date) beschrieben sind, um dieses Problem zu verhindern. Überprüfen Sie die Integrität Ihrer verwalteten Domäne nach zwei Stunden erneut, um sicherzustellen, dass der neue Dienstprinzipal neu erstellt wurde.
 
 
 ## <a name="alert-aadds105-password-synchronization-application-is-out-of-date"></a>Warnung AADDS105: Die Kennwortsynchronisierungsanwendung ist veraltet.
@@ -110,8 +104,8 @@ Um dieses Problem zu beheben, geben Sie die folgenden Befehle in einem PowerShel
 2. Löschen der alten Anwendung und des Objekts mit den folgenden PowerShell-Befehlen
 
     ```powershell
-    $app = Get-AzureADApplication -Filter "IdentifierUris eq 'https://sync.aaddc.activedirectory.windowsazure.com'"
-    Remove-AzureADApplication -ObjectId $app.ObjectId
+    $app = Get-AzureADApplication -Filter "IdentifierUris eq 'https://sync.aaddc.activedirectory.windowsazure.com'"
+    Remove-AzureADApplication -ObjectId $app.ObjectId
     $spObject = Get-AzureADServicePrincipal -Filter "DisplayName eq 'Azure AD Domain Services Sync'"
     Remove-AzureADServicePrincipal -ObjectId $app.ObjectId
     ```

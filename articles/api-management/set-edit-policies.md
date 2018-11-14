@@ -3,7 +3,7 @@ title: Festlegen oder Bearbeiten von Azure API Management-Richtlinien | Microsof
 description: In diesem Thema wird erläutert, wie Sie Azure API Management-Richtlinien festlegen oder bearbeiten.
 services: api-management
 documentationcenter: ''
-author: vladvino
+author: mikebudzynski
 manager: cflower
 editor: ''
 ms.service: api-management
@@ -11,14 +11,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/27/2017
+ms.date: 11/01/2018
 ms.author: apimpm
-ms.openlocfilehash: aaf86a440328e27c8c47b809536951eeaf2104b9
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 3d1847b6001ef8e32f00a4e1cd9728d5ca0662f8
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33936696"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51008265"
 ---
 # <a name="how-to-set-or-edit-azure-api-management-policies"></a>Festlegen oder Bearbeiten von Azure API Management-Richtlinien
 
@@ -33,15 +33,14 @@ Führen Sie zum Festlegen oder Bearbeiten einer Richtlinie die folgenden Schritt
 1. Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim Azure-Portal an.
 2. Navigieren Sie zu Ihrer APIM-Instanz.
 3. Klicken Sie auf die Registerkarte **APIs**.
+
+    ![Richtlinie bearbeiten](./media/set-edit-policies/code-editor.png)
+
 4. Wählen Sie eine der APIs aus, die Sie zuvor importiert haben.
 5. Klicken Sie auf die Registerkarte **Entwurf**.
 6. Wählen Sie einen Vorgang aus, auf den die Richtlinie angewendet werden soll. Wenn die Richtlinie auf alle Vorgänge angewendet werden soll, klicken Sie auf **Alle Vorgänge**.
-7. Klicken Sie neben dem Stiftsymbol für **eingehend** oder **ausgehend** auf das Dreieck.
-8. Klicken Sie auf **Code-Editor**.
-
-    ![Richtlinie bearbeiten](./media/set-edit-policies/set-edit-policies01.png)
-
-9. Fügen Sie den gewünschten Richtliniencode in einen der entsprechenden Blöcke ein.
+7. Wählen Sie das Symbol **</>** (Codeeditor) im Abschnitt **Eingehende Verarbeitung** oder **Ausgehende Verarbeitung**.
+8. Fügen Sie den gewünschten Richtliniencode in einen der entsprechenden Blöcke ein.
          
         <policies>
              <inbound>

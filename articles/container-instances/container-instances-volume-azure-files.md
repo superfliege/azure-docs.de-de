@@ -2,23 +2,23 @@
 title: Einbinden eines Azure Files-Volumes in Azure Container Instances
 description: Erfahren Sie, wie Sie ein Azure Files-Volume einbinden, sodass der Zustand bei Azure Container Instances beibehalten wird.
 services: container-instances
-author: seanmck
+author: dlepow
 manager: jeconnoc
 ms.service: container-instances
 ms.topic: article
-ms.date: 02/20/2018
-ms.author: seanmck
+ms.date: 11/05/2018
+ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 83c86d8310aff80f148e878261ba33b01846006b
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: f3d4bfa7d8ffda1ab2789927d03a777fab0ed89c
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39441322"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51281580"
 ---
 # <a name="mount-an-azure-file-share-in-azure-container-instances"></a>Einbinden einer Azure-Dateifreigabe in Azure Container Instances
 
-Standardmäßig ist Azure Container Instances zustandslos. Wenn der Container abstürzt oder beendet wird, gehen alle Zustände verloren. Um den Zustand nach Ablauf der Lebensdauer des Containers beizubehalten, müssen Sie ein Volume aus einem externen Speicher einbinden. In diesem Artikel wird das Einbinden einer Azure-Dateifreigabe für die Verwendung mit Azure Container Instances veranschaulicht.
+Standardmäßig ist Azure Container Instances zustandslos. Wenn der Container abstürzt oder beendet wird, gehen alle Zustände verloren. Um den Zustand nach Ablauf der Lebensdauer des Containers beizubehalten, müssen Sie ein Volume aus einem externen Speicher einbinden. In diesem Artikel wird das Einbinden einer mit [Azure Files](../storage/files/storage-files-introduction.md) erstellten Azure-Dateifreigabe für die Verwendung mit Azure Container Instances veranschaulicht. Azure Files bietet vollständig verwaltete Dateifreigaben in der Cloud, auf die über das Branchenstandardprotokoll Server Message Block (SMB) zugegriffen werden kann. Durch das Verwenden einer Azure-Dateifreigabe mit Azure Container Instances werden Dateifreigabefeatures bereitgestellt, die Azure-Dateifreigaben mit virtuellen Azure-Computern ähneln.
 
 > [!NOTE]
 > Zurzeit ist das Einbinden einer Azure-Dateifreigabe in Linux-Container eingeschränkt. Bis alle Features auch für Windows-Container verfügbar sind, finden Sie die aktuellen Plattformunterschiede unter [Kontingente und Regionsverfügbarkeit für Azure Container Instances](container-instances-quotas.md).
@@ -41,29 +41,24 @@ az storage account create \
     --location $ACI_PERS_LOCATION \
     --sku Standard_LRS
 
-# Export the connection string as an environment variable. The following 'az storage share create' command
-# references this environment variable when creating the Azure file share.
-export AZURE_STORAGE_CONNECTION_STRING=`az storage account show-connection-string --resource-group $ACI_PERS_RESOURCE_GROUP --name $ACI_PERS_STORAGE_ACCOUNT_NAME --output tsv`
-
 # Create the file share
-az storage share create -n $ACI_PERS_SHARE_NAME
+az storage share create --name $ACI_PERS_SHARE_NAME --account-name $ACI_PERS_STORAGE_ACCOUNT_NAME
 ```
 
 ## <a name="get-storage-credentials"></a>Erhalten der Zugriffsinformationen für das Azure-Speicherkonto
 
 Um eine Azure-Dateifreigabe als Volume in Azure Container Instances einzubinden, benötigen Sie drei Werte: den Namen des Speicherkontos, den Freigabenamen und den Speicherzugriffsschlüssel.
 
-Wenn Sie das oben angegebene Skript verwendet haben, wurde der Name des Speicherkontos mit einem zufälligen Wert am Ende erstellt. Um die endgültige Zeichenfolge (einschließlich des zufälligen Teils) abzufragen, verwenden Sie die folgenden Befehle:
+Wenn Sie das obige Skript verwendet haben, wurde der Name des Speicherkontos in der Variable $ACI_PERS_STORAGE_ACCOUNT_NAME gespeichert. Um den Kontonamen einzusehen, geben Sie Folgendes ein:
 
-```azurecli-interactive
-STORAGE_ACCOUNT=$(az storage account list --resource-group $ACI_PERS_RESOURCE_GROUP --query "[?contains(name,'$ACI_PERS_STORAGE_ACCOUNT_NAME')].[name]" --output tsv)
-echo $STORAGE_ACCOUNT
+```console
+echo $ACI_PERS_STORAGE_ACCOUNT_NAME
 ```
 
 Der Freigabename ist bereits bekannt (im Skript oben festgelegt als *acishare*), daher verbleibt nur der Speicherkontoschlüssel, der mit dem folgenden Befehl gesucht werden kann:
 
 ```azurecli-interactive
-STORAGE_KEY=$(az storage account keys list --resource-group $ACI_PERS_RESOURCE_GROUP --account-name $STORAGE_ACCOUNT --query "[0].value" --output tsv)
+STORAGE_KEY=$(az storage account keys list --resource-group $ACI_PERS_RESOURCE_GROUP --account-name $ACI_PERS_STORAGE_ACCOUNT_NAME --query "[0].value" --output tsv)
 echo $STORAGE_KEY
 ```
 
@@ -88,7 +83,7 @@ Der Wert `--dns-name-label` muss innerhalb der Azure-Region, in der Sie die Cont
 
 ## <a name="manage-files-in-mounted-volume"></a>Verwalten von Dateien in eingebundenen Datenträgern
 
-Nachdem der Container gestartet wurde, können Sie mithilfe der einfachen Web-App, die über das Image [microsoft/aci-hellofiles][aci-hellofiles] bereitgestellt wird, die Dateien in der Azure-Dateifreigabe unter dem von Ihnen angegebenen Einbindungspfad verwalten. Beziehen Sie den vollqualifizierten Domänennamen (FQDN) für die Web-App mit dem Befehl [az container show][az-container-show]:
+Nachdem der Container gestartet wurde, können Sie mithilfe der einfachen Web-App, die über das Image [microsoft/aci-hellofiles][aci-hellofiles] bereitgestellt wird, kleine Textdateien in der Azure-Dateifreigabe unter dem angegebenen Einbindungspfad erstellen. Beziehen Sie den vollqualifizierten Domänennamen (FQDN) für die Web-App mit dem Befehl [az container show][az-container-show]:
 
 ```azurecli-interactive
 az container show --resource-group $ACI_PERS_RESOURCE_GROUP --name hellofiles --query ipAddress.fqdn
@@ -98,11 +93,11 @@ Mithilfe des [Azure-Portals][portal] oder eines Tools wie [Microsoft Azure Stora
 
 ## <a name="mount-multiple-volumes"></a>Einbinden mehrerer Volumes
 
-Sie können mehrere Volumes in eine Containerinstanz einbinden, indem Sie zum Bereitstellen eine [Azure Resource Manager-Vorlage](/azure/templates/microsoft.containerinstance/containergroups) verwenden.
+Sie können mehrere Volumes in eine Containerinstanz einbinden, indem Sie zum Bereitstellen eine [Azure Resource Manager-Vorlage](/azure/templates/microsoft.containerinstance/containergroups) oder eine YAML-Datei verwenden.
 
-Stellen Sie hierzu zuerst die Freigabedetails bereit und legen die Volumes fest, indem Sie das Array `volumes` im Abschnitt `properties` der Vorlage auffüllen. Wenn Sie z.B. zwei Azure Files-Freigaben mit den Namen *share1* und *share2* im Speicherkonto *MyStorageAccount* erstellt haben, wird das Array `volumes` ähnlich wie im folgenden Beispiel aussehen:
+Stellen Sie zum Verwenden einer Vorlage die Freigabedetails bereit, und definieren Sie die Volumes, indem Sie das Array `volumes` im Abschnitt `properties` der Vorlage ausfüllen. Wenn Sie z.B. zwei Azure Files-Freigaben mit den Namen *share1* und *share2* im Speicherkonto *MyStorageAccount* erstellt haben, wird das Array `volumes` ähnlich wie im folgenden Beispiel aussehen:
 
-```json
+```JSON
 "volumes": [{
   "name": "myvolume1",
   "azureFile": {
@@ -123,7 +118,7 @@ Stellen Sie hierzu zuerst die Freigabedetails bereit und legen die Volumes fest,
 
 Füllen Sie als Nächstes für jeden Container in der Containergruppe, in den Sie die Volumes einbinden möchten, das Array `volumeMounts` im Abschnitt `properties` der Containerdefinition auf. Dadurch werden beispielsweise die beiden zuvor definierten Volumes *myvolume1* und *myvolume2* eingebunden:
 
-```json
+```JSON
 "volumeMounts": [{
   "name": "myvolume1",
   "mountPath": "/mnt/share1/"
@@ -134,7 +129,7 @@ Füllen Sie als Nächstes für jeden Container in der Containergruppe, in den Si
 }]
 ```
 
-Ein Beispiel für die Bereitstellung der Containerinstanzen mit einer Azure Resource Manager-Vorlage finden Sie unter [Bereitstellen von Gruppen mit mehreren Containern in Azure Container Instances](container-instances-multi-container-group.md).
+Ein Beispiel für die Bereitstellung der Containerinstanzen mit einer Azure Resource Manager-Vorlage finden Sie unter [Bereitstellen einer Containergruppe](container-instances-multi-container-group.md). Ein Beispiel mit einer YAML-Datei finden Sie unter [Bereitstellen einer Gruppe mit mehreren Containern mit YAML](container-instances-multi-container-yaml.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

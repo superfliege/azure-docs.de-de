@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: bc273b8979b29057163e02dc9605e631aef173f1
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 28c943b2588270af823c0712d4e510a4f018da3e
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50226419"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50981484"
 ---
 # <a name="use-infrastructure-automation-tools-with-virtual-machines-in-azure"></a>Verwenden von Infrastrukturautomatisierungstools mit virtuellen Computern in Azure
 Für die umfangreiche konsistente Erstellung und Verwaltung virtueller Azure-Computer (Virtual Machines, VMs) empfiehlt sich in der Regel eine Form der Automatisierung. Es gibt zahlreiche Tools und Lösungen, mit denen Sie die gesamte Azure-Infrastrukturbereitstellung und den gesamten Verwaltungslebenszyklus automatisieren können. In diesem Artikel werden einige der Infrastrukturautomatisierungstools vorgestellt, die Sie in Azure verwenden können. Diese Tools lassen sich in der Regel einem der folgenden Konzepte zuordnen:
@@ -129,9 +129,9 @@ In diesem Artikel werden folgende Themen erläutert:
 ## <a name="azure-devops-services"></a>Azure DevOps Services
 [Azure DevOps Services](https://www.visualstudio.com/team-services/) ist eine Suite von Tools, mit denen Sie Code freigeben und nachverfolgen, automatisierte Builds verwenden und eine vollständige CI/CD-Pipeline (Continuous Integration/Continuous Development) erstellen können. Azure DevOps Services lässt sich zur Vereinfachung in Visual Studio und andere Editoren integrieren. Mit Azure DevOps Services können Sie auch virtuelle Azure-Computer erstellen und konfigurieren und anschließend Code für sie bereitstellen.
 
-In diesem Artikel werden folgende Themen erläutert:
+Weitere Informationen:
 
-- [Erstellen einer Continuous Integration-Pipeline mit Azure DevOps Services](../articles/virtual-machines/windows/tutorial-vsts-iis-cicd.md)
+- [Azure DevOps Services](https://docs.microsoft.com/azure/devops/user-guide/index?view=vsts).
 
 
 ## <a name="jenkins"></a>Jenkins

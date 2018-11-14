@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/25/2018
 ms.author: johnkem
 ms.component: activitylog
-ms.openlocfilehash: 7a5372174fcc7cd9552c00c9d283772c9863b815
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: 41965c4a498cfa4c1f0dfefaf7615e43083eb94c
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39257997"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51011832"
 ---
 # <a name="stream-the-azure-activity-log-to-event-hubs"></a>Streamen des Azure-Aktivitätsprotokolls an Event Hubs
 Sie können das [Azure-Aktivitätsprotokoll](monitoring-overview-activity-logs.md) nahezu in Echtzeit in jede beliebige Anwendung streamen, indem Sie eine der folgenden Möglichkeiten nutzen:
@@ -39,10 +39,10 @@ Wenn Sie dem Protokollprofil für das Aktivitätsprotokoll das Streamingfeature 
 ### <a name="via-the-azure-portal"></a>Über das Azure-Portal
 1. Navigieren Sie zum Abschnitt **Aktivitätsprotokoll**, indem Sie die Suche **Alle Dienste** auf der linken Seite des Portals verwenden.
    
-   ![Auswählen des Aktivitätsprotokolls aus der Liste mit den Diensten im Portal](./media/monitoring-stream-activity-logs-event-hubs/activity.png)
-2. Wählen Sie oben im Protokoll die Schaltfläche **Exportieren**.
+   ![Auswählen des Aktivitätsprotokolls aus der Liste mit den Diensten im Portal](./media/monitoring-stream-activity-logs-event-hubs/activity-logs-portal-navigate-v2.png)
+2. Wählen Sie oben im Protokoll die Schaltfläche **In Event Hub exportieren**.
    
-   ![Schaltfläche „Exportieren“ im Portal](./media/monitoring-stream-activity-logs-event-hubs/export.png)
+   ![Schaltfläche „Exportieren“ im Portal](./media/monitoring-stream-activity-logs-event-hubs/activity-logs-portal-export-v2.png)
 
    Beachten Sie, dass die Filtereinstellungen, die Sie beim Anzeigen des Aktivitätsprotokolls in der vorherigen Ansicht angewendet haben, keine Auswirkung auf Ihre Exporteinstellungen haben. Diese sind nur zum Filtern der Anzeige für das Aktivitätsprotokoll im Portal bestimmt.
 3. Wählen Sie im angezeigten Abschnitt die Option **Alle Regionen**. Wählen Sie keine bestimmten Regionen aus.
@@ -101,5 +101,5 @@ Das Schema für das Aktivitätsprotokoll ist unter [Überwachen der Abonnementak
 ## <a name="next-steps"></a>Nächste Schritte
 * [Archivieren Sie das Aktivitätsprotokoll mithilfe eines Speicherkontos.](monitoring-archive-activity-log.md)
 * [Lesen Sie die Übersicht über das Azure-Aktivitätsprotokoll.](monitoring-overview-activity-logs.md)
-* [Richten Sie eine Warnung ein, die auf einem Aktivitätsprotokollereignis basiert.](insights-auditlog-to-webhook-email.md)
+* [Richten Sie eine Warnung ein, die auf einem Aktivitätsprotokollereignis basiert.](monitor-alerts-unified-log-webhook.md)
 

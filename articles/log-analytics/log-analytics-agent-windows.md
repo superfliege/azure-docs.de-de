@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/12/2018
+ms.date: 11/06/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 2b9e7615fc0c2262c33ab5d7be39bdb99bc752bd
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: a16230b6f51f0ce93f4a9bf53591abbcd6b4bd3b
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50412957"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51283681"
 ---
 # <a name="connect-windows-computers-to-the-log-analytics-service-in-azure"></a>Verbinden von Windows-Computern mit dem Log Analytics-Dienst in Azure
 
@@ -98,7 +98,7 @@ In der folgenden Tabelle sind die spezifischen Log Analytics-Parameter aufgefüh
 
 ## <a name="install-the-agent-using-dsc-in-azure-automation"></a>Installieren des Agents mithilfe von DSC in Azure Automation
 
-Sie können das folgende Skriptbeispiel verwenden, um den Agent mit Azure Automation DSC zu installieren.   Wenn Sie über kein Automation-Konto verfügen, finden Sie unter [Erste Schritte mit Azure Automation](../automation/automation-offering-get-started.md) Informationen zu den Anforderungen und Schritten zum Erstellen eines Automation-Kontos, die vor der Verwendung von Automation DSC erforderlich sind.  Wenn Sie nicht mit Automation DSC vertraut sind, finden Sie entsprechende Informationen unter [Erste Schritte mit Azure Automation DSC](../automation/automation-dsc-getting-started.md).
+Sie können das folgende Skriptbeispiel verwenden, um den Agent mit Azure Automation DSC zu installieren.   Wenn Sie über kein Automation-Konto verfügen, finden Sie unter [Erste Schritte mit Azure Automation](/azure/automation/) Informationen zu den Anforderungen und Schritten zum Erstellen eines Automation-Kontos, die vor der Verwendung von Automation DSC erforderlich sind.  Wenn Sie nicht mit Automation DSC vertraut sind, finden Sie entsprechende Informationen unter [Erste Schritte mit Azure Automation DSC](../automation/automation-dsc-getting-started.md).
 
 Im folgenden Beispiel wird der vom `URI`-Wert identifizierte 64-Bit-Agent installiert. Sie können auch die 32-Bit-Version installieren, indem Sie den URI-Wert ersetzen. Die URIs für beide Versionen lauten:
 
@@ -109,7 +109,7 @@ Im folgenden Beispiel wird der vom `URI`-Wert identifizierte 64-Bit-Agent instal
 >[!NOTE]
 >Mit diesem Verfahren und dem Skriptbeispiel kann der bereits auf einem Windows-Computer bereitgestellte Agent nicht aktualisiert werden.
 
-Die 32-Bit- und die 64-Bit-Version des Agent-Pakets weisen unterschiedliche Produktcodes auf. Auch neu veröffentlichten Versionen ist ein eindeutiger Wert zugewiesen.  Der Produktcode ist eine GUID, die als hauptsächliche Identifikation einer Anwendung oder eines Produkts dient und durch die Windows Installer-Eigenschaft **ProductCode** angegeben wird.  `ProductId value` im Skript **MMAgent.ps1** muss mit dem Produktcode aus dem Installationspaket für den 32-Bit- oder 64-Bit-Agent übereinstimmen.
+Die 32-Bit- und die 64-Bit-Version des Agent-Pakets weisen unterschiedliche Produktcodes auf. Auch neu veröffentlichten Versionen ist ein eindeutiger Wert zugewiesen.  Der Produktcode ist eine GUID, die als hauptsächliche Identifikation einer Anwendung oder eines Produkts dient und durch die Windows Installer-Eigenschaft **ProductCode** angegeben wird.  Der Wert `ProductId` im Skript **MMAgent.ps1** muss mit dem Produktcode aus dem Installationspaket für den 32-Bit- oder 64-Bit-Agent übereinstimmen.
 
 Den Produktcode können Sie mithilfe von „Orca.exe“ aus [Windows SDK Components for Windows Installer Developers](https://msdn.microsoft.com/library/windows/desktop/aa370834%28v=vs.85%29.aspx), bei dem es sich um eine Komponente des Windows Software Development Kit handelt, oder über PowerShell entsprechend einem von einem MVP (Microsoft Valuable Professional) geschriebenen [Beispielskript](http://www.scconfigmgr.com/2014/08/22/how-to-get-msi-file-information-with-powershell/) direkt aus dem Installationspaket für den Agent abrufen.  Für beide Vorgehensweisen müssen Sie zuerst die Datei **MOMAgent.msi** aus dem MMASetup-Installationspaket extrahieren.  Dies wird weiter oben im ersten Schritt im Abschnitt [Installieren des Agents über die Befehlszeile](#install-the-agent-using-the-command-line) gezeigt.  
 
@@ -153,7 +153,8 @@ Den Produktcode können Sie mithilfe von „Orca.exe“ aus [Windows SDK Compone
 
     ```
 
-4. [Importieren Sie das Konfigurationsskript „MMAgent.ps1“](../automation/automation-dsc-getting-started.md#importing-a-configuration-into-azure-automation) in Ihr Automation-Konto. 
+4. Aktualisieren Sie den Wert `ProductId` im Skript mithilfe der zuvor empfohlenen Methoden mit dem Produktcode, den Sie aus der neuesten Version des Agent-Installationspakets extrahiert haben. 
+5. [Importieren Sie das Konfigurationsskript „MMAgent.ps1“](../automation/automation-dsc-getting-started.md#importing-a-configuration-into-azure-automation) in Ihr Automation-Konto. 
 5. [Weisen Sie einen Windows-Computer oder -Knoten](../automation/automation-dsc-getting-started.md#onboarding-an-azure-vm-for-management-with-azure-automation-state-configuration) der Konfiguration hinzu. Innerhalb von 15 Minuten prüft der Knoten die Konfiguration, und der Agent wird auf den Knoten gepusht.
 
 ## <a name="verify-agent-connectivity-to-log-analytics"></a>Überprüfen der Agent-Konnektivität mit Log Analytics

@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 10/30/2018
+ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 7f5e1f2141a58f666367d253d5fc313499e64c9f
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 8b12e3cdc53b926f660e12b7cf4b79a8cb6f40c2
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50239389"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50960156"
 ---
 # <a name="troubleshoot-an-rdp-general-error-in-azure-vm"></a>Beheben eines allgemeinen RDP-Fehlers auf einer Azure-VM
 
@@ -65,7 +65,7 @@ Um dieses Problem zu lösen [sichern Sie den Betriebssystemdatenträger](../wind
 
 ### <a name="serial-console"></a>Serielle Konsole
 
-#### <a name="step-1-turn-on-remote-deskop"></a>Schritt 1: Remotedesktop einschalten
+#### <a name="step-1-turn-on-remote-desktop"></a>Schritt 1: Aktivieren des Remotedesktops
 
 1. Greifen Sie auf die [serielle Konsole](serial-console-windows.md) zu, indem Sie **Support und Problembehandlung** > **Serielle Konsole (Vorschau)** auswählen. Wenn dieses Feature auf der VM aktiviert ist, können Sie erfolgreich eine Verbindung mit der VM herstellen.
 
@@ -76,94 +76,91 @@ Um dieses Problem zu lösen [sichern Sie den Betriebssystemdatenträger](../wind
    ```
    ch -si 1
    ```
-4. Überprüfen Sie die Werte der Registrierungsschlüssel:
 
-   1. Stellen Sie sicher, dass die RDP-Komponente aktiviert ist.
+#### <a name="step-2-check-the-values-of-rdp-registry-keys"></a>Schritt 2: Überprüfen der Werte des RDP-Registrierungsschlüssels
+
+1. Überprüfen Sie, ob das RDP durch Richtlinien deaktiviert wurde.
 
       ```
-      REM Get the local policy
+      REM Get the local policy 
       reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server " /v fDenyTSConnections
 
       REM Get the domain policy if any
       reg query "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v fDenyTSConnections
       ```
 
-      Wenn eine Domänenrichtlinie existiert, ist das Setup in der lokalen Richtlinie außer Kraft gesetzt.
+      - Wenn eine Domänenrichtlinie existiert, ist das Setup in der lokalen Richtlinie außer Kraft gesetzt.
+      - Wenn die Domänenrichtlinie angibt, dass RDP deaktiviert (1) ist, aktualisieren Sie die AD-Richtlinie im Domänencontroller.
+      - Wenn die Domänenrichtlinie angibt, dass RDP aktiviert (0) ist, ist kein Update erforderlich.
+      - Wenn keine Domänenrichtlinie vorhanden ist und die lokale Richtlinie angibt, dass RDP deaktiviert (1) ist, aktivieren Sie RDP mithilfe des folgenden Befehls: 
+      
+            reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 0 /f
+                  
 
-         - Wenn die Domänenrichtlinie angibt, dass RDP deaktiviert (1) ist, aktualisieren Sie die AD-Richtlinie im Domänencontroller.
-         - Wenn die Domänenrichtlinie angibt, dass RDP aktiviert (0) ist, ist kein Update erforderlich.
-
-      Wenn keine Domänenrichtlinie vorhanden ist und die lokale Richtlinie angibt, dass RDP deaktiviert (1) ist, aktivieren Sie RDP mithilfe des folgenden Befehls:
-
-         ```
-         reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 0 /f
-         ```
-
-   2. Überprüfen Sie die aktuelle Konfiguration des Terminalservers.
+2. Überprüfen Sie die aktuelle Konfiguration des Terminalservers.
 
       ```
       reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v TSEnabled
       ```
 
-   3. Wenn der Befehl „0“ zurückgibt, ist der Terminalserver deaktiviert. Aktivieren Sie in diesem Fall den Terminalserver wie folgt:
+      Wenn der Befehl „0“ zurückgibt, ist der Terminalserver deaktiviert. Aktivieren Sie in diesem Fall den Terminalserver wie folgt:
 
       ```
       reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v TSEnabled /t REG_DWORD /d 1 /f
       ```
 
-   4. Das Terminalservermodul ist auf den Ausgleichsmodus festgelegt, wenn sich der Server in einer Terminalserverfarm (RDS oder Citrix) befindet. Überprüfen Sie den aktuellen Modus des Terminalservermoduls.
+3. Das Terminalservermodul ist auf den Ausgleichsmodus festgelegt, wenn sich der Server in einer Terminalserverfarm (RDS oder Citrix) befindet. Überprüfen Sie den aktuellen Modus des Terminalservermoduls.
 
       ```
       reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v TSServerDrainMode
       ```
 
-   5. Wenn der Befehl „1“ zurückgibt, ist das Terminalservermodul auf den Ausgleichsmodus festgelegt. Legen Sie das Modul anschließend wie folgt auf den Funktionsmodus fest:
+      Wenn der Befehl „1“ zurückgibt, ist das Terminalservermodul auf den Ausgleichsmodus festgelegt. Legen Sie das Modul anschließend wie folgt auf den Funktionsmodus fest:
 
       ```
       reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v TSServerDrainMode /t REG_DWORD /d 0 /f
       ```
 
-   6. Überprüfen Sie, ob Sie eine Verbindung mit dem Terminalserver herstellen können.
+4. Überprüfen Sie, ob Sie eine Verbindung mit dem Terminalserver herstellen können.
 
       ```
       reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v TSUserEnabled
       ```
 
-   7. Wenn der Befehl „1“ zurückgibt, können Sie keine Verbindung mit dem Terminalserver herstellen. Aktivieren Sie in diesem Fall die Verbindung wie folgt:
+      Wenn der Befehl „1“ zurückgibt, können Sie keine Verbindung mit dem Terminalserver herstellen. Aktivieren Sie in diesem Fall die Verbindung wie folgt:
 
       ```
       reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v TSUserEnabled /t REG_DWORD /d 0 /f
       ```
-
-   8. Überprüfen Sie die aktuelle Konfiguration des RDP-Listeners.
+5. Überprüfen Sie die aktuelle Konfiguration des RDP-Listeners.
 
       ```
       reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\Winstations\RDP-Tcp" /v fEnableWinStation
       ```
 
-   9. Wenn der Befehl „0“ zurückgibt, ist der RDP-Listener deaktiviert. Aktivieren Sie in diesem Fall den Listener wie folgt:
+      Wenn der Befehl „0“ zurückgibt, ist der RDP-Listener deaktiviert. Aktivieren Sie in diesem Fall den Listener wie folgt:
 
       ```
       reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\Winstations\RDP-Tcp" /v fEnableWinStation /t REG_DWORD /d 1 /f
       ```
 
-   10. Überprüfen Sie, ob Sie eine Verbindung mit dem RDP-Listener herstellen können.
+6. Überprüfen Sie, ob Sie eine Verbindung mit dem RDP-Listener herstellen können.
 
       ```
       reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\Winstations\RDP-Tcp" /v fLogonDisabled
       ```
 
-   11. Wenn der Befehl „1“ zurückgibt, können Sie keine Verbindung mit dem RDP-Listener herstellen. Aktivieren Sie in diesem Fall die Verbindung wie folgt:
+   Wenn der Befehl „1“ zurückgibt, können Sie keine Verbindung mit dem RDP-Listener herstellen. Aktivieren Sie in diesem Fall die Verbindung wie folgt:
 
       ```
       reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\Winstations\RDP-Tcp" /v fLogonDisabled /t REG_DWORD /d 0 /f
       ```
 
-6. Starten Sie den virtuellen Computer neu.
+7. Starten Sie den virtuellen Computer neu.
 
-7. Beenden Sie die CMD-Instanz durch Eingabe von `exit`, und drücken Sie dann zweimal die **EINGABETASTE**.
+8. Beenden Sie die CMD-Instanz durch Eingabe von `exit`, und drücken Sie dann zweimal die **EINGABETASTE**.
 
-8. Starten Sie die VM neu, indem Sie `restart` eingeben.
+9. Starten Sie die VM neu, indem Sie `restart` eingeben, und stellen Sie dann eine Verbindung mit der VM her.
 
 Wenn das Problem weiterhin auftritt, fahren Sie mit Schritt 2 fort.
 
@@ -177,13 +174,13 @@ Weitere Informationen finden Sie unter [Häufiges Trennen der Remotedesktopverbi
 
 ### <a name="offline-repair"></a>Offlinereparatur
 
-#### <a name="step-1-turn-on-remote-deskop"></a>Schritt 1: Remotedesktop einschalten
+#### <a name="step-1-turn-on-remote-desktop"></a>Schritt 1: Aktivieren des Remotedesktops
 
 1. [Fügen Sie den Betriebssystemdatenträger an einen virtuellen Computer für die Wiederherstellung an](../windows/troubleshoot-recovery-disks-portal.md).
 2. Stellen Sie eine Remotedesktopverbindung mit dem virtuellen Wiederherstellungscomputer her.
 3. Stellen Sie sicher, dass der Datenträger in der Datenträgerverwaltungskonsole als **Online** gekennzeichnet ist. Notieren Sie sich den Laufwerkbuchstaben des angefügten Betriebssystemdatenträgers.
-3. Stellen Sie eine Remotedesktopverbindung mit dem virtuellen Wiederherstellungscomputer her.
-4. Öffnen Sie eine Eingabeaufforderungssitzung mit erhöhten Rechten (**Als Administrator ausführen**). Führen Sie die folgenden Skripts aus. In diesem Skript wird davon ausgegangen, dass der dem angefügten Betriebssystemdatenträger zugewiesene Laufwerkbuchstabe „F“ ist. Ersetzen Sie diesen durch den entsprechenden Wert für Ihren virtuellen Computer.
+4. Stellen Sie eine Remotedesktopverbindung mit dem virtuellen Wiederherstellungscomputer her.
+5. Öffnen Sie eine Eingabeaufforderungssitzung mit erhöhten Rechten (**Als Administrator ausführen**). Führen Sie die folgenden Skripts aus. In diesem Skript wird davon ausgegangen, dass der dem angefügten Betriebssystemdatenträger zugewiesene Laufwerkbuchstabe „F“ ist. Ersetzen Sie diesen durch den entsprechenden Wert für Ihren virtuellen Computer.
 
       ```
       reg load HKLM\BROKENSYSTEM F:\windows\system32\config\SYSTEM.hiv 
@@ -219,21 +216,21 @@ Weitere Informationen finden Sie unter [Häufiges Trennen der Remotedesktopverbi
       reg unload HKLM\BROKENSOFTWARE 
       ```
 
-3. Wenn die VM einer Domäne beigetreten ist, überprüfen Sie den folgenden Registrierungsschlüssel, um zu ermitteln, ob eine Gruppenrichtlinie vorhanden ist, die RDP deaktiviert. 
+6. Wenn die VM einer Domäne beigetreten ist, überprüfen Sie den folgenden Registrierungsschlüssel, um zu ermitteln, ob eine Gruppenrichtlinie vorhanden ist, die RDP deaktiviert. 
 
-   ```
-   HKLM\BROKENSOFTWARE\Policies\Microsoft\Windows NT\Terminal Services\fDenyTSConnectionS
-   ```
-
+      ```
+      HKLM\BROKENSOFTWARE\Policies\Microsoft\Windows NT\Terminal Services\fDenyTSConnectionS
+      ```
 
       Wenn der Wert dieses Schlüssel „1“ lautet, bedeutet dies, dass RDP von der Richtlinie deaktiviert wurde. Um Remotedesktop über die GPO-Richtlinie zu aktivieren, ändern Sie die folgende Richtlinie auf dem Domänencontroller:
 
-   ```
-   Computer Configuration\Policies\Administrative Templates: Policy definitions\Windows Components\Remote Desktop Services\Remote Desktop Session Host\Connections\Allow users to connect remotely by using Remote Desktop Services
-   ```
+   
+      **Computerkonfiguration\Richtlinien\Administrative Vorlagen:**
 
-4. Trennen Sie den Datenträger von der Wiederherstellungs-VM.
-5. [Erstellen Sie eine neue VM auf Grundlage des Datenträgers](../windows/create-vm-specialized.md).
+      Richtliniendefinitionen\Windows-Komponenten\Remotedesktopdienste\Remotedesktop-Sitzungshost\Verbindungen\Remoteverbindungen für Benutzer mithilfe der Remotedesktopdienste zulassen
+  
+7. Trennen Sie den Datenträger von der Wiederherstellungs-VM.
+8. [Erstellen Sie eine neue VM auf Grundlage des Datenträgers](../windows/create-vm-specialized.md).
 
 Wenn das Problem weiterhin auftritt, fahren Sie mit Schritt 2 fort.
 

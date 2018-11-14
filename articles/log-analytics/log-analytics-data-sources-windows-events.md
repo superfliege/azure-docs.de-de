@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 12/11/2017
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 4e21c011f54382466bf614dc01fb9d51b514d998
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: f2f6472fc485691b95305337dd608126d001aa27
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48044245"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51010707"
 ---
 # <a name="windows-event-log-data-sources-in-log-analytics"></a>Datenquellen für Windows-Ereignisprotokolle in Log Analytics
 Windows-Ereignisprotokolle sind eine der häufigsten [Datenquellen](log-analytics-data-sources.md) zum Sammeln von Daten mithilfe von Windows-Agents, da viele Anwendungen Daten in das Windows-Ereignisprotokoll schreiben.  Sie können Ereignisse aus Standardprotokollen wie beispielsweise dem System- und dem Anwendungsprotokoll sammeln und darüber hinaus benutzerdefinierte Protokolle angeben, die von den zu überwachenden Anwendungen erstellt werden.
@@ -40,7 +40,7 @@ Während der Eingabe des Namens des Ereignisprotokolls bietet Log Analytics Vors
 Log Analytics sammelt jedes Ereignis mit einem ausgewählten Schweregrad aus einem überwachten Ereignisprotokoll, sobald das Ereignis erstellt wird.  Der Agent zeichnet seine Position in jedem Ereignisprotokoll auf, aus dem er Daten sammelt.  Wenn der Agent für einen bestimmten Zeitraum offline geht, sammelt Log Analytics Ereignisse ab dem Zeitpunkt der letzten Sammlung, unabhängig davon, ob die Ereignisse erstellt wurden, während der Agent offline war.  Es kann vorkommen, dass diese Ereignisse nicht erfasst werden, falls das Ereignisprotokoll umgebrochen wird und nicht erfasste Ereignisse überschrieben werden, während der Agent offline ist.
 
 >[!NOTE]
->Log Analytics erfasst keine Überwachungsereignisse, die von SQL Server aus der Quelle *MSSQLSERVER* mit der Ereignis-ID 18453 erstellt wurden und die Schlüsselwörter *Klassisch* oder *Überwachung erfolgreich* sowie das Schlüsselwort *0xa0000000000000* enthalten.
+>Log Analytics erfasst keine Überwachungsereignisse, die von SQL Server aus der Quelle *MSSQLSERVER* mit der Ereignis-ID 18453 erstellt wurden und die Schlüsselwörter  *Klassisch* oder *Überwachung erfolgreich* sowie das Schlüsselwort *0xa0000000000000* enthalten.
 >
 
 ## <a name="windows-event-records-properties"></a>Eigenschaften von Windows-Ereignisdatensätzen
@@ -76,6 +76,6 @@ Die folgende Tabelle zeigt verschiedene Beispiele für Protokollsuchvorgänge, d
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Konfigurieren Sie Log Analytics für die Sammlung von Daten aus anderen [Datenquellen](log-analytics-data-sources.md) zur Analyse.
-* Erfahren Sie mehr über [Protokollsuchvorgänge](log-analytics-log-searches.md) zum Analysieren der aus Datenquellen und Lösungen gesammelten Daten.  
+* Erfahren Sie mehr über [Protokollsuchvorgänge](log-analytics-queries.md) zum Analysieren der aus Datenquellen und Lösungen gesammelten Daten.  
 * Verwenden Sie [benutzerdefinierte Felder](log-analytics-custom-fields.md) , um die Ereignisdatensätze in einzelnen Feldern zu analysieren.
 * Konfigurieren Sie die [Sammlung von Leistungsindikatoren](log-analytics-data-sources-performance-counters.md) aus Ihren Windows-Agents.

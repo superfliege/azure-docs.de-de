@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/26/2018
 ms.author: barbkess
-ms.reviewer: harshja
+ms.reviewer: japere
 ms.custom: it-pro
-ms.openlocfilehash: 5227f756e807a30573733bd408144d869caac9ec
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 59ca9ca7711904fe7882aac4878bd62c597645d8
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39366474"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51034965"
 ---
 # <a name="get-started-with-application-proxy-and-install-the-connector"></a>Erste Schritte mit dem Anwendungsproxy und Installieren des Connectors
 In diesem Artikel wird anhand der erforderlichen Schritte beschrieben, wie Sie den Microsoft Azure AD-Anwendungsproxy für Ihr Cloudverzeichnis in Azure AD aktivieren.
@@ -33,6 +33,7 @@ Bevor Sie die Anwendungsproxydienste aktivieren und verwenden können, benötige
 * Ein [Basic- oder Premium-Abonnement](../fundamentals/active-directory-whatis.md) für Microsoft Azure AD und ein Azure AD-Verzeichnis, für das Sie als globaler Administrator fungieren.
 * Ein Server, auf dem Windows Server 2012 R2 bzw. Windows Server 2016 oder höher installiert ist und auf dem Sie den Anwendungsproxy-Connector installieren können. Der Server muss eine Verbindung mit den Anwendungsproxydiensten in der Cloud sowie mit den lokalen Anwendungen herstellen können, die Sie veröffentlichen.
   * Für das einmalige Anmelden bei Ihren veröffentlichten Anwendungen mithilfe der eingeschränkten Kerberos-Delegierung muss dieser Computer in dieselbe AD-Domäne wie die veröffentlichten Anwendungen eingebunden sein. Weitere Informationen finden Sie unter [Eingeschränkte Kerberos-Delegierung für das einmalige Anmelden mit Anwendungsproxy](application-proxy-configure-single-sign-on-with-kcd.md).
+* TLS 1.2 wird auf dem zugrunde liegenden Betriebssystem ausgeführt. Um zu TLS 1.2 zu wechseln, führen Sie die Schritte unter [Aktivieren von TLS 1.2](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-prerequisites#enable-tls-12-for-azure-ad-connect) aus. Die Inhalte beziehen sich zwar auf Azure AD Connect, aber dieses Verfahren ist für alle .NET-Clients identisch.
 
 Wenn Ihre Organisation Proxyserver zum Herstellen einer Verbindung mit dem Internet verwendet, finden Sie unter [Verwenden von vorhandenen lokalen Proxyservern](application-proxy-configure-connectors-with-proxy-servers.md) Informationen dazu, wie Sie diese konfigurieren, bevor Sie mit dem Anwendungsproxy beginnen.
 

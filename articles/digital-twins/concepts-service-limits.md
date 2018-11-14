@@ -1,6 +1,6 @@
 ---
 title: Diensteinschränkungen der öffentlichen Vorschauversion von Azure Digital Twins | Microsoft-Dokumentation
-description: Grundlegendes zu den Diensteinschränkungen der öffentlichen Vorschauversion von Azure Digital Twins
+description: Grundlegendes zu den Diensteinschränkungen der Public Preview von Azure Digital Twins
 author: dwalthermsft
 manager: deshner
 ms.service: digital-twins
@@ -8,28 +8,28 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 10/26/2018
 ms.author: dwalthermsft
-ms.openlocfilehash: f9a3d934de47630ac3fd2356001014d006c2a4eb
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 86ae75118dd1311ea2ae92fb718fe4c58b8e5673
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50212266"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50961754"
 ---
 # <a name="public-preview-service-limits"></a>Diensteinschränkungen der öffentlichen Vorschauversion
 
-Während der öffentlichen Vorschau (**Public Preview**) gelten für Azure Digital Twins temporäre Abonnement-, Instanz- und Anzahlgrenzwerte, die nachstehend beschrieben sind.
+Für die Public Preview von Azure Digital Twins gelten die nachfolgend beschriebenen temporären Abonnement-, Instanz- und Anzahlgrenzwerte.
 
 Diese Einschränkungen gibt es, um das Kennenlernen des neuen Diensts und seiner zahlreichen Funktionen vereinfachen.
 
 > [!NOTE]
-> Diese Grenzwerte werden erhöht oder entfernt, wenn **Allgemeine Verfügbarkeit** (General Availability, **GA**) gegeben ist.
+> Die Grenzwerte werden gemäß der allgemeinen Verfügbarkeit erhöht oder entfernt.
 
 ## <a name="per-subscription-limits"></a>Grenzwerte pro Abonnement
 
-Während der **Public Preview** kann in jedem Azure-Abonnement nur jeweils genau eine Azure Digital Twins-Instanz erstellt oder ausgeführt werden.
+In der Public Preview kann jedes Azure-Abonnement jeweils genau eine Azure Digital Twins-Instanz erstellen oder ausführen.
 
 > [!TIP]
-> Wenn Sie Ihre Instanz gelöscht haben, können Sie eine neue Instanz erstellen.
+> Wenn Sie Ihre Instanz löschen, können Sie eine neue erstellen.
 
 ## <a name="per-instance-limits"></a>Grenzwerte pro Instanz
 
@@ -44,10 +44,10 @@ Der Reihe nach kann jede Azure Digital Twins-Instanz Folgendes haben:
 Die Anforderungsanzahlgrenzwerte für eine Verwaltungs-API sind wie folgt:
 
 - 100 Anforderungen pro Sekunde an die Verwaltungs-API
-- Eine einzelne Verwaltungs-API-Abfrage kann bis zu 1000 Objekte zurückgeben
+- Bis zu 1.000 Objekte, die von einer einzelnen Verwaltungs-API-Abfrage zurückgegeben werden 
 
 > [!IMPORTANT]
-> Wird der Grenzwert von 1000 Objekten überschritten, erhalten Sie einen Fehler, und Sie müssen die Abfrage vereinfachen.
+> Beim Überschreiten des Grenzwerts von 1.000 Objekten tritt ein Fehler auf, und Sie müssen die Abfrage vereinfachen.
 
 ## <a name="udf-rate-limits"></a>Grenzwerte für die Aufrufanzahl von benutzerdefinierten Funktionen
 
@@ -57,10 +57,10 @@ Es gelten die folgenden Grenzwerte für die Gesamtanzahl der Aufrufe, die von be
 - 100 **SendNotification**-Aufrufe pro Sekunde
 
 > [!NOTE]
-> Die folgenden Aktionen können dazu führen, dass temporär zusätzliche Anzahlgrenzwerte wirksam werden:
-> - Bearbeiten der Metadaten von Topologieobjekten
-> - Aktualisierungen von benutzerdefinierten Funktionen
-> - Geräte, die erstmalig Telemetriedaten senden
+> Die folgenden Aktionen führen ggf. dazu, dass temporär zusätzliche Anzahlgrenzwerte angewendet werden:
+> - Bearbeitungen an den Metadaten von Topologieobjekten
+> - Updates von Definitionen benutzerdefinierter Funktionen
+> - Erstmaliges Senden von Telemetriedaten von Geräten
 
 ## <a name="device-telemetry-limits"></a>Grenzwerte für Gerätetelemetrie
 

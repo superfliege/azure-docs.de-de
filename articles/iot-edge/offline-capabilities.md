@@ -8,12 +8,12 @@ ms.date: 09/20/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 30b85f15d8718e21af66634db5a4afd5623a77e6
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: c4ab33f4d706eb677b2b790ff871c1fb900846ff
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49340170"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51235631"
 ---
 # <a name="understand-extended-offline-capabilities-for-iot-edge-devices-modules-and-child-devices-preview"></a>Grundlegendes zu erweiterten Offlinefunktionen für IoT Edge-Geräte und -Module sowie untergeordnete Geräte (Vorschau)
 
@@ -46,7 +46,7 @@ Das folgende Beispiel veranschaulicht ein IoT Edge-Szenario im Offlinemodus:
 
 ## <a name="restrictions-and-limits"></a>Einschränkungen
 
-Die in diesem Artikel beschriebenen erweiterten Offlinefunktionen sind in [ab IoT Edge-Version 1.0.2](https://github.com/Azure/azure-iotedge/releases) verfügbar. Frühere Versionen verfügen nur über einen Teil dieser Offlinefunktionen. Für vorhandene IoT Edge-Geräte, die über keine erweiterten Offlinefunktionen verfügen, kann kein Upgrade durch Ändern der Runtime-Version ausgeführt werden. Stattdessen sind sie mit einer neuen IoT Edge-Geräteidentität zu konfigurieren, damit diese Funktionen verfügbar werden. 
+Die in diesem Artikel beschriebenen erweiterten Offlinefunktionen sind unter [IoT Edge-Version 1.0.4 oder höher](https://github.com/Azure/azure-iotedge/releases) verfügbar. Frühere Versionen verfügen nur über einen Teil dieser Offlinefunktionen. Für vorhandene IoT Edge-Geräte, die über keine erweiterten Offlinefunktionen verfügen, kann kein Upgrade durch Ändern der Runtime-Version ausgeführt werden. Stattdessen sind sie mit einer neuen IoT Edge-Geräteidentität zu konfigurieren, damit diese Funktionen verfügbar werden. 
 
 Erweiterte Offlinefunktionen werden in allen Regionen unterstützt, in denen IoT Hub verfügbar ist, mit Ausnahme von USA (Osten) und Europa, Westen. 
 
@@ -56,34 +56,7 @@ IoT Edge-Geräte und deren zugewiesene untergeordnete Geräte können nach der e
 
 ## <a name="set-up-an-edge-device"></a>Einrichten eines IoT Edge-Geräts
 
-Konfigurieren Sie für IoT Edge-Geräte, die über längere Zeiträume offline betrieben werden sollen, die IoT Edge-Runtime für die Kommunikation über MQTT. 
-
 Damit ein IoT Edge-Gerät seine erweiterten Offlinefunktionen auf untergeordnete IoT-Geräte ausweiten kann, müssen Sie die Beziehungen über- und untergeordneter Elemente im Azure-Portal deklarieren.
-
-### <a name="set-the-upstream-protocol-to-mqtt"></a>Festlegen des Upstream-Protokolls auf MQTT
-
-Konfigurieren Sie den Edge Hub und den Edge-Agent für die Kommunikation mit MQTT als Upstream-Protokoll. Dieses Protokoll wird mit Umgebungsvariablen im Bereitstellungsmanifest deklariert. 
-
-Im Azure-Portal können Sie auf die Moduldefinitionen von Edge Hub und Edge-Agent zugreifen, indem Sie beim Festlegen von Modulen für eine Bereitstellung auf die Schaltfläche **Erweiterte Einstellungen für die Edge-Laufzeit konfigurieren** klicken. Erstellen Sie für beide Module eine Umgebungsvariable mit dem Namen **UpstreamProtocol**, und legen Sie deren Wert auf **MQTT** fest. 
-
-In der JSON-Bereitstellungsvorlage werden Umgebungsvariablen wie im folgenden Beispiel deklariert: 
-
-```json
-"edgeHub": {
-    "type": "docker",
-    "settings": {
-        "image": "mcr.microsoft.com/azureiotedge-hub:1.0",
-        "createOptions": "{\"HostConfig\":{\"PortBindings\":{\"8883/tcp\":[{\"HostPort\":\"8883\"}],\"443/tcp\":[{\"HostPort\":\"443\"}],\"5671/tcp\":[{\"HostPort\":\"5671\"}]}}}"
-    },
-    "env": {
-        "UpstreamProtocol": {
-            "value": "MQTT"
-        }
-    },
-    "status": "running",
-    "restartPolicy": "always"
-}
-```
 
 ### <a name="assign-child-devices"></a>Zuweisen von untergeordneten Geräten
 
@@ -142,4 +115,4 @@ Ersetzen Sie `<HostStoragePath>` und `<ModuleStoragePath>` durch den Speicherpfa
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Aktivieren Sie erweiterte Offlinevorgänge in Ihren transparenten Gatewayszenarien für [Linux](how-to-create-transparent-gateway-linux.md)- oder [Windows](how-to-create-transparent-gateway-windows.md)-Geräte.
+Aktivieren Sie erweiterte Offlinevorgänge in Ihren [transparenten Gatewayszenarien](how-to-create-transparent-gateway.md).

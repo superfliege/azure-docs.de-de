@@ -1,22 +1,22 @@
 ---
-title: Aktivieren von Heapdumps für Hadoop-Dienste in HDInsight – Azure
-description: Aktivieren Sie Heapdumps für Hadoop-Dienste von Linux-basierten HDInsight-Clustern zum Debuggen und für Analysen.
+title: Aktivieren von Heapdumps für Apache Hadoop-Dienste in HDInsight – Azure
+description: Aktivieren Sie Heapdumps für Apache Hadoop-Dienste von Linux-basierten HDInsight-Clustern zum Debuggen und für Analysen.
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
-ms.author: jasonh
-ms.openlocfilehash: 7fa0ebb1946a856d02296b4ec752113ff8fecbd5
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.author: hrasheed
+ms.openlocfilehash: 966f05fba96cc829c3a11331e2a66609705f6f4f
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43095581"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51037684"
 ---
-# <a name="enable-heap-dumps-for-hadoop-services-on-linux-based-hdinsight"></a>Aktivieren von Heapdumps für Hadoop-Dienste auf Linux-basierten HDInsight-Clustern
+# <a name="enable-heap-dumps-for-apache-hadoop-services-on-linux-based-hdinsight"></a>Aktivieren von Heapdumps für Apache Hadoop-Dienste in Linux-basiertem HDInsight
 
 [!INCLUDE [heapdump-selector](../../includes/hdinsight-selector-heap-dump.md)]
 
@@ -29,11 +29,11 @@ Heapdumps enthalten eine Momentaufnahme des Speichers der Anwendung, einschließ
 
 Sie können Heapdumps für die folgenden Dienste aktivieren:
 
-* **hcatalog** : tempelton
-* **hive** : hiveserver2, metastore, derbyserver
-* **mapreduce** : jobhistoryserver
-* **yarn** : resourcemanager, nodemanager, timelineserver
-* **hdfs** : datanode, secondarynamenode, namenode
+* **Apache hcatalog**: tempelton
+* **Apache hive**: hiveserver2, metastore, derbyserver
+* **mapreduce**: jobhistoryserver
+* **Apache yarn**: resourcemanager, nodemanager, timelineserver
+* **Apache hdfs**: datanode, secondarynamenode, namenode
 
 Sie können Heapdumps auch für die Mapper- und Reducer-Prozesse aktivieren, die von HDInsight ausgeführt wurden.
 
@@ -49,7 +49,7 @@ Mapper- und Reducer-Prozesse unterscheiden sich geringfügig, da diese untergeor
 * **mapreduce.admin.reduce.child.java.opts**
 
 > [!NOTE]
-> Wir empfehlen die Verwendung von Ambari zum Ändern der Skripts und der Einstellungen in „mapred-site.xml“, da mit Ambari das Replizieren von Änderungen auf Knoten im Cluster verarbeitet wird. Unter [Verwenden von Ambari](#using-ambari) finden Sie die detaillierten Schritte.
+> Wir empfehlen die Verwendung von Apache Ambari zum Ändern der Skripts und der Einstellungen in „mapred-site.xml“, da Ambari das Replizieren von Änderungen auf Knoten im Cluster verarbeitet. Unter [Verwenden von Ambari](#using-ambari) finden Sie die detaillierten Schritte.
 
 ### <a name="enable-heap-dumps"></a>Aktivieren von Heapdumps
 

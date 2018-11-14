@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.date: 08/09/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 9cd5789cd2ee6e167f3d3ed05c2fde077f7ec9a3
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 2043e0fc9fa63903073311856e7e8d31fb34c506
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43344940"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51015348"
 ---
 # <a name="azure-ad-b2c-requesting-access-tokens"></a>Azure AD B2C: Anfordern von Zugriffstokens
 
-Ein Zugriffstoken (in den Antworten von Azure AD B2C als **access\_token** bezeichnet) ist eine Form von Sicherheitstoken, mit dem ein Client auf Ressourcen zugreifen kann, die mit einem [Autorisierungsserver](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-protocols#the-basics) wie etwa einer Web-API geschützt sind. Zugriffstokens werden als [JWTs](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-tokens#types-of-tokens) dargestellt und enthalten Informationen zu dem gewünschten Ressourcenserver und den für den Server erteilten Berechtigungen. Beim Aufrufen des Ressourcenservers muss das Zugriffstoken in der HTTP-Anforderung vorhanden sein.
+Ein Zugriffstoken (in den Antworten von Azure AD B2C als **access\_token** bezeichnet) ist eine Form von Sicherheitstoken, mit dem ein Client auf Ressourcen zugreifen kann, die mit einem  [Autorisierungsserver](active-directory-b2c-reference-protocols.md) wie etwa einer Web-API geschützt sind. Zugriffstokens werden als [JWTs](active-directory-b2c-reference-tokens.md) dargestellt und enthalten Informationen zu dem gewünschten Ressourcenserver und den für den Server erteilten Berechtigungen. Beim Aufrufen des Ressourcenservers muss das Zugriffstoken in der HTTP-Anforderung vorhanden sein.
 
 In diesem Artikel wird das Konfigurieren einer Clientanwendung und Web-API zum Abrufen eines **access\_token** erläutert.
 
@@ -37,22 +37,22 @@ Vor der Anforderung eines Zugriffstokens müssen Sie zuerst eine Web-API registr
 ### <a name="register-a-web-api"></a>Registrieren einer Web-API
 
 1. Klicken Sie im Menü „Azure AD B2C-Funktionen“ im Azure-Portal auf **Anwendungen**.
-1. Klicken Sie oben im Menü auf **+Hinzufügen**.
-1. Geben Sie einen **Namen** für die Anwendung ein, der die Funktion der Anwendung für Kunden beschreibt. Sie könnten z.B. „Contoso API“ eingeben.
-1. Stellen Sie den Schalter **Web-App/Web-API einschließen** auf **Ja**.
-1. Geben Sie einen beliebigen Wert für die **Antwort-URLs** ein. Geben Sie z. B. Folgendes ein: `https://localhost:44316/`. Der Wert spielt keine Rolle, da eine API das Token nicht direkt von Azure AD B2C empfangen sollte.
-1. Geben Sie einen **App-ID-URI** ein. Dies ist der Bezeichner, der für Ihre Web-API verwendet wird. Geben Sie z.B. „notes“ in das Feld ein. Der **App-ID-URI** wäre dann `https://{tenantName}.onmicrosoft.com/notes`.
-1. Klicken Sie auf **Erstellen** , um Ihre Anwendung zu registrieren.
-1. Klicken Sie auf die soeben erstellte Anwendung, und notieren Sie sich die global eindeutige **Anwendungsclient-ID** zur späteren Verwendung in Ihrem Code.
+2. Klicken Sie oben im Menü auf **+Hinzufügen**.
+3. Geben Sie einen **Namen** für die Anwendung ein, der die Funktion der Anwendung für Kunden beschreibt. Sie könnten z.B. „Contoso API“ eingeben.
+4. Stellen Sie den Schalter **Web-App/Web-API einschließen** auf **Ja**.
+5. Geben Sie einen beliebigen Wert für die **Antwort-URLs** ein. Geben Sie z. B. Folgendes ein: `https://localhost:44316/`. Der Wert spielt keine Rolle, da eine API das Token nicht direkt von Azure AD B2C empfangen sollte.
+6. Geben Sie einen **App-ID-URI** ein. Dies ist der Bezeichner, der für Ihre Web-API verwendet wird. Geben Sie z.B. „notes“ in das Feld ein. Der **App-ID-URI** wäre dann `https://{tenantName}.onmicrosoft.com/notes`.
+7. Klicken Sie auf **Erstellen** , um Ihre Anwendung zu registrieren.
+8. Klicken Sie auf die soeben erstellte Anwendung, und notieren Sie sich die global eindeutige **Anwendungsclient-ID** zur späteren Verwendung in Ihrem Code.
 
 ### <a name="publishing-permissions"></a>Veröffentlichungsberechtigungen
 
 Zu Berechtigungen analoge Bereiche sind erforderlich, wenn Ihre App eine API aufruft. Einige Beispiele für Bereiche sind „read“ oder „write“. Angenommen, Sie möchten, dass Ihre Web oder native App aus einer API „liest“. Ihre App würde Azure AD B2C aufrufen und ein Zugriffstoken anfordern, das Zugriff auf den Bereich „read“ gewährt. Damit Azure AD B2C ein solches Zugriffstoken ausgeben kann, muss der App die Berechtigung „read“ aus der bestimmten API gewährt werden. Zu diesem Zweck muss Ihre API zuerst den Bereich „read“ veröffentlichen.
 
 1. Öffnen Sie im Menü **Anwendungen** von Azure AD B2C die Web-API-Anwendung („Contoso-API“).
-1. Klicken Sie auf **Published scopes** (Veröffentlichte Bereiche). Hier definieren Sie die Berechtigungen (Bereiche), die anderen Anwendungen gewährt werden können.
-1. Fügen Sie **Bereichswerte** (z.B. „read“) nach Bedarf hinzu. Standardmäßig wird der Bereich „user_impersonation“ definiert. Wenn Sie möchten, können Sie dies ignorieren. Geben Sie eine Beschreibung des Bereichs in die Spalte **Bereichsname** ein.
-1. Klicken Sie auf **Speichern**.
+2. Klicken Sie auf **Published scopes** (Veröffentlichte Bereiche). Hier definieren Sie die Berechtigungen (Bereiche), die anderen Anwendungen gewährt werden können.
+3. Fügen Sie **Bereichswerte** (z.B. „read“) nach Bedarf hinzu. Standardmäßig wird der Bereich „user_impersonation“ definiert. Wenn Sie möchten, können Sie dies ignorieren. Geben Sie eine Beschreibung des Bereichs in die Spalte **Bereichsname** ein.
+4. Klicken Sie auf **Speichern**.
 
 > [!IMPORTANT]
 > Der **Bereichsname** ist die Beschreibung für den **Bereichswert**. Wenn Sie den Bereich verwenden, achten Sie darauf, den **Bereichswert** zu verwenden.
@@ -62,11 +62,11 @@ Zu Berechtigungen analoge Bereiche sind erforderlich, wenn Ihre App eine API auf
 Sobald eine API konfiguriert ist, um Bereiche zu veröffentlichen, müssen der Clientanwendung Berechtigungen für diese Bereiche über das Azure Portal erteilt werden.
 
 1. Navigieren Sie zum Menü **Anwendungen** im Menü „Azure AD B2C-Funktionen“.
-1. Sofern nicht bereits geschehen, registrieren Sie eine Clientanwendung ([Web-App](active-directory-b2c-app-registration.md#register-a-web-app) oder [Nativer Client](active-directory-b2c-app-registration.md#register-a-mobile-or-native-app)). Wenn Sie dieses Handbuch als Ausgangspunkt nutzen, müssen Sie eine Clientanwendung registrieren.
-1. Klicken Sie auf **API-Zugriff**.
-1. Klicken Sie auf **Hinzufügen**.
-1. Wählen Sie Ihre Web-API und die Bereiche (Berechtigungen), die Sie erteilen möchten.
-1. Klicken Sie auf **OK**.
+2. Sofern nicht bereits geschehen, registrieren Sie eine Clientanwendung ([Web-App](active-directory-b2c-app-registration.md) oder [Nativer Client](active-directory-b2c-app-registration.md)). Wenn Sie dieses Handbuch als Ausgangspunkt nutzen, müssen Sie eine Clientanwendung registrieren.
+3. Klicken Sie auf **API-Zugriff**.
+4. Klicken Sie auf **Hinzufügen**.
+5. Wählen Sie Ihre Web-API und die Bereiche (Berechtigungen), die Sie erteilen möchten.
+6. Klicken Sie auf **OK**.
 
 > [!NOTE]
 > Azure AD B2C bittet die Benutzer Ihrer Clientanwendung nicht um deren Zustimmung. Stattdessen erfolgt die Zustimmung abhängig von den Berechtigungen, die zwischen den oben beschriebenen Anwendungen konfiguriert sind, ausschließlich über den Administrator. Wenn eine Berechtigung für eine Anwendung widerrufen wurde, wird diese Berechtigung allen Benutzern, die zuvor diese Berechtigung beziehen konnten, verwehrt.

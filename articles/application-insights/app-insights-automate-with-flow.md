@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/25/2017
 ms.author: mbullwin
-ms.openlocfilehash: 449a6274b67f3eb72ea6d8bd19f555fc59158d7e
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 65909e13c75ae4d2577ea29f562b841a1eb20477
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44299099"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51256424"
 ---
 # <a name="automate-azure-application-insights-processes-with-the-connector-for-microsoft-flow"></a>Automatisieren von Azure Application Insights-Prozessen mit dem Connector für Microsoft Flow
 
@@ -34,7 +34,7 @@ Sie können auch weitere Aktionen hinzufügen. Mit Microsoft Flow stehen Ihnen H
 In diesem Tutorial erfahren Sie, wie Sie einen Flow erstellen, der zum Gruppieren von Attributen in den Daten für eine Webanwendung den Autoclusteralgorithmus von Analytics verwendet. Die Ergebnisse werden automatisch per E-Mail gesendet. Dies ist nur eins von vielen Beispielen für die gemeinsame Verwendung von Microsoft Flow und Application Insights Analytics. 
 
 ### <a name="step-1-create-a-flow"></a>Schritt 1: Erstellen eines Flow
-1. Melden Sie sich bei [Microsoft Flow](http://flow.microsoft.com) an, und wählen Sie **Meine Flows** aus.
+1. Melden Sie sich bei [Microsoft Flow](https://flow.microsoft.com) an, und wählen Sie **Meine Flows** aus.
 1. Klicken Sie auf **Flow ohne Vorlage erstellen**.
 
 ### <a name="step-2-create-a-trigger-for-your-flow"></a>Schritt 2: Erstellen eines Triggers für Ihren Flow
@@ -125,7 +125,7 @@ Wenn der Flow ausgeführt wird, erhalten die Empfänger, die Sie in der E-Mail-L
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie mehr über die Erstellung von [Analytics-Abfragen](app-insights-analytics-using.md).
+- Erfahren Sie mehr über die Erstellung von [Analytics-Abfragen](../log-analytics/query-language/get-started-queries.md).
 - Erfahren Sie mehr über [Microsoft Flow](https://ms.flow.microsoft.com).
 
 

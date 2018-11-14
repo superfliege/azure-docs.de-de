@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.component: compliance
-ms.date: 10/30/2018
+ms.date: 11/02/2018
 ms.author: rolyon
-ms.openlocfilehash: 87b08ce138cde5cc70c5a80cc414c68dd7aea743
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 8fddcdbb8aa523cf3a98a8f2b203440ceedbdf06
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50249800"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51015203"
 ---
 # <a name="azure-active-directory-terms-of-use-feature"></a>Nutzungsbedingungsfeature für Azure Active Directory
 Mit den Azure AD-Nutzungsbedingungen können Organisationen komfortabel Informationen für Endbenutzer anzeigen. Dadurch wird sichergestellt, dass Benutzern relevante Haftungsausschlüsse angezeigt werden, um rechtliche oder compliancebezogene Anforderungen zu erfüllen. Dieser Artikel enthält eine Einführung in die Verwendung der Nutzungsbedingungen.
@@ -218,7 +218,7 @@ Richtlinien für den bedingten Zugriff werden sofort wirksam. In diesem Fall wer
 
 **F: Wie sehe ich, wann/ob ein Benutzer Nutzungsbedingungen akzeptiert hat?**</br>
 A: Klicken Sie auf dem Nutzungsbedingungenblatt auf die Zahl unter **Akzeptiert**. Sie können die Zustimmungsaktivität auch in den Azure AD-Überwachungsprotokollen anzeigen oder suchen. Weitere Informationen finden Sie unter [Anzeigen des Berichts über abgelehnte und akzeptierte Nutzungsbedingungen](#view-who-has-accepted-and-declined) und [Anzeigen der Azure AD-Überwachungsprotokolle](#view-azure-ad-audit-logs).
- 
+
 **F: Wie lange werden die Informationen gespeichert?**</br>
 A: Die Benutzeranzahl im Bericht zu den Nutzungsbedingungen sowie die Angabe, wer die Bedingungen akzeptiert/abgelehnt hat, werden für die Lebensdauer der Nutzungsbedingungen gespeichert. Die Azure AD-Überwachungsprotokolle werden 30 Tage lang gespeichert.
 
@@ -245,12 +245,15 @@ A: Sie können eine Richtlinie für den bedingten Zugriff für Unternehmensanwen
 
 **F: Kann ich einem bestimmten Benutzer oder einer bestimmten App mehrere Nutzungsbedingungen hinzufügen?**</br>
 A: Ja. Erstellen Sie hierzu mehrere Richtlinien für den bedingten Zugriff, und richten Sie sie auf die entsprechenden Gruppen oder Anwendungen aus. Wenn für einen Benutzer mehrere Nutzungsbedingungen gelten, muss er die Nutzungsbedingungen nacheinander akzeptieren.
- 
+
 **F: Was passiert, wenn ein Benutzer die Nutzungsbedingungen ablehnt?**</br>
 A: Der Benutzer kann nicht auf die Anwendung zugreifen. Wenn er auf die Anwendung zugreifen möchte, muss er sich erneut anmelden und die Bedingungen akzeptieren.
- 
+
 **F: Ist es möglich, die Zustimmung zu Nutzungsbedingungen rückgängig zu machen, die bereits akzeptiert wurden?**</br>
 A: Sie können [zuvor akzeptierte Nutzungsbedingungen überprüfen](#how-users-can-review-their-terms-of-use), aber zurzeit besteht keine Möglichkeit, die Zustimmung rückgängig zu machen.
+
+**F: Was geschieht, wenn ich auch Intune-Geschäftsbedingungen verwende?**</br>
+A: Wenn Sie sowohl Azure AD Nutzungsbedingungen als auch [Intune-Geschäftsbedingungen](/intune/terms-and-conditions-create) konfiguriert haben, muss der Benutzer beide akzeptieren. Weitere Informationen finden Sie im Blogbeitrag [Choosing the right Terms solution for your organization](https://go.microsoft.com/fwlink/?linkid=2010506&clcid=0x409) (Auswählen der richtigen Lösung für Bestimmungen für Ihre Organisation).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

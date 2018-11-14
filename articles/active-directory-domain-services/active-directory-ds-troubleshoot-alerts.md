@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/25/2018
+ms.date: 11/02/2018
 ms.author: ergreenl
-ms.openlocfilehash: a6928b5a849f35456a6fb7699acd7720f686c2aa
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: c4aa5786ea1dfbef32c40306de6291ebeb2fe6f8
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50243060"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51036137"
 ---
 # <a name="azure-ad-domain-services---troubleshoot-alerts"></a>Azure AD Domain Services – Problembehandlung von Warnungen
 Dieser Artikel enthält Leitfäden für die Problembehandlung aller Warnungen, denen Sie in Ihrer verwalteten Domäne begegnen können.
@@ -39,13 +39,15 @@ Verwenden Sie die Problembehandlungsschritte für die ID oder Meldung in der War
 | AADDS105 | *Der Dienstprinzipal mit der Anwendungs-ID „d87dcbc6-a371-462e-88e3-28ad15ec4e64“ wurde gelöscht und dann neu erstellt. Die Wiederherstellung hinterlässt inkonsistente Berechtigungen für Azure AD Domain Services-Ressourcen, die für Ihre verwaltete Domäne benötigt werden. Die Synchronisierung von Kennwörtern in Ihrer verwalteten Domäne kann beeinträchtigt werden.* | [Die Kennwortsynchronisierungsanwendung ist veraltet.](active-directory-ds-troubleshoot-service-principals.md#alert-aadds105-password-synchronization-application-is-out-of-date) |
 | AADDS106 | *Ihr Azure-Abonnement, das Ihrer verwalteten Domäne zugeordnet ist, wurde gelöscht.  Azure AD Domain Services erfordert ein aktives Abonnement, um weiterhin ordnungsgemäß zu funktionieren.* | [Azure-Abonnement nicht gefunden](#aadds106-your-azure-subscription-is-not-found) |
 | AADDS107 | *Ihr Azure-Abonnement, das Ihrer verwalteten Domäne zugeordnet ist, ist inaktiv.  Azure AD Domain Services erfordert ein aktives Abonnement, um weiterhin ordnungsgemäß zu funktionieren.* | [Azure-Abonnement deaktiviert](#aadds107-your-azure-subscription-is-disabled) |
-| AADDS108 | *Eine Ressource, die für Ihre verwaltete Domäne verwendet wird, wurde gelöscht. Diese Ressource ist erforderlich, damit Azure AD Domain Services ordnungsgemäß funktioniert.* | [Eine Ressource wurde gelöscht.](#aadds108-resources-for-your-managed-domain-cannot-be-found) |
-| AADDS109 | *Das für die Bereitstellung von Azure AD Domain Services ausgewählte Subnetz ist voll und hat keinen Platz für den zusätzlichen Domänencontroller, der erstellt werden muss.* | [Subnetz ist voll](#aadds109-the-subnet-associated-with-your-managed-domain-is-full) |
-| AADDS110 | *Das Subnetz des virtuellen Netzwerks in dieser Domäne verfügt möglicherweise nicht über genügend IP-Adressen. Azure AD Domain Services benötigt mindestens zwei verfügbare IP-Adressen innerhalb des Subnetzes, in dem es aktiviert ist. Es wird empfohlen, mindestens 3 bis 5 freie IP-Adressen innerhalb des Subnetzes bereitzuhalten. Dies kann aufgetreten sein, wenn andere virtuelle Computer innerhalb des Subnetzes bereitgestellt wurden und damit die Anzahl der verfügbaren IP-Adressen ausgeschöpft wurde oder wenn die Anzahl der verfügbaren IP-Adressen im Subnetz beschränkt ist.* | [Nicht genügend IP-Adressen](#aadds110-not-enough-ip-address-in-the-managed-domain) |
-| AADDS111 | *Mindestens eine der Netzwerkressourcen, die von der verwalteten Domäne verwendet werden, kann nicht betrieben werden, da der Zielbereich gesperrt wurde.* | [Ressourcen gesperrt](#aadds111-resources-are-locked) |
-| AADDS112 | *Mindestens eine der Netzwerkressourcen, die von der verwalteten Domäne verwendet werden, kann aufgrund von Richtlinienbeschränkungen nicht betrieben werden.* | [Ressourcen nicht verwendbar](#aadds112-resources-are-unusable) |
+| AADDS108 | *Das von Azure AD Domain Services verwendete Abonnement wurde in ein anderes Verzeichnis verschoben. Für eine ordnungsgemäße Funktionsweise von Azure AD Domain Services muss ein aktives Abonnement im gleichen Verzeichnis vorhanden sein.* | [Verzeichnisse durch Abonnement verschoben](#aadds108-subscription-moved-directories) |
+| AADDS109 | *Eine Ressource, die für Ihre verwaltete Domäne verwendet wird, wurde gelöscht. Diese Ressource ist erforderlich, damit Azure AD Domain Services ordnungsgemäß funktioniert.* | [Eine Ressource wurde gelöscht.](#aadds109-resources-for-your-managed-domain-cannot-be-found) |
+| AADDS110 | *Das für die Bereitstellung von Azure AD Domain Services ausgewählte Subnetz ist voll und hat keinen Platz für den zusätzlichen Domänencontroller, der erstellt werden muss.* | [Subnetz ist voll](#aadds110-the-subnet-associated-with-your-managed-domain-is-full) |
+| AADDS111 | *Ein Dienstprinzipal, den Azure AD Domain Services für Ihre Domäne verwendet, ist für das Verwalten von Ressourcen im Azure-Abonnement nicht autorisiert. Der Dienstprinzipal muss die entsprechenden Berechtigungen für Ihre verwaltete Domäne erhalten.* * | [Dienstprinzipal nicht autorisiert](#aadds111-service-principal-unauthorized) |
+| AADDS112 | *Das Subnetz des virtuellen Netzwerks in dieser Domäne verfügt möglicherweise nicht über genügend IP-Adressen. Azure AD Domain Services benötigt mindestens zwei verfügbare IP-Adressen innerhalb des Subnetzes, in dem es aktiviert ist. Es wird empfohlen, mindestens 3 bis 5 freie IP-Adressen innerhalb des Subnetzes bereitzuhalten. Dies kann aufgetreten sein, wenn andere virtuelle Computer innerhalb des Subnetzes bereitgestellt wurden und damit die Anzahl der verfügbaren IP-Adressen ausgeschöpft wurde oder wenn die Anzahl der verfügbaren IP-Adressen im Subnetz beschränkt ist.* | [Nicht genügend IP-Adressen](#aadds112-not-enough-ip-address-in-the-managed-domain) |
 | AADDS113 | *Für die von Azure AD Domain Services verwendeten Ressourcen wurde ein unerwarteter Zustand erkannt, und sie können nicht wiederhergestellt werden.* | [Ressourcen nicht wiederherstellbar](#aadds113-resources-are-unrecoverable) |
-| AADDS114 | * Die Domänencontroller von Azure AD Domain Services können nicht auf Port 443 zugreifen. Dieser ist zum Betreiben, Verwalten und Aktualisieren Ihrer verwaltete Domäne erforderlich. * | [Port 442 blockiert](#aadds114-port-443-blocked) |
+| AADDS114 | *Das für die Bereitstellung von Azure AD Domain Services ausgewählte Subnetz ist ungültig und kann nicht verwendet werden.* * | [Subnetz ungültig](#aadds114-subnet-invalid) |
+| AADDS115 | *Mindestens eine der Netzwerkressourcen, die von der verwalteten Domäne verwendet werden, kann nicht betrieben werden, da der Zielbereich gesperrt wurde.* | [Ressourcen gesperrt](#aadds115-resources-are-locked) |
+| AADDS116 | *Mindestens eine der Netzwerkressourcen, die von der verwalteten Domäne verwendet werden, kann aufgrund von Richtlinienbeschränkungen nicht betrieben werden.* | [Ressourcen nicht verwendbar](#aadds116-resources-are-unusable) |
 | AADDS500 | *Die verwaltete Domäne wurde zuletzt am [Datum] mit Azure AD synchronisiert. Benutzer können sich möglicherweise nicht bei der verwalteten Domäne anmelden, oder Gruppenmitgliedschaften sind möglicherweise nicht mit Azure AD synchronisiert.* | [Die Synchronisierung wurde eine Weile nicht durchgeführt.](#aadds500-synchronization-has-not-completed-in-a-while) |
 | AADDS501 | *Die verwaltete Domäne wurde zuletzt am [Datum] gesichert.* | [Eine Sicherung wurde eine Weile nicht durchgeführt.](#aadds501-a-backup-has-not-been-taken-in-a-while) |
 | AADDS502 | *Das Secure LDAP-Zertifikat für die verwaltete Domäne läuft am [Datum] ab.* | [Ablauf des sicheren LDAP-Zertifikats](active-directory-ds-troubleshoot-ldaps.md#aadds502-secure-ldap-certificate-expiring) |
@@ -138,7 +140,17 @@ Azure AD Domain Services benötigt ein Abonnement und kann nicht in ein anderes 
 1. [Erneuern Sie Ihr Azure-Abonnement.](https://docs.microsoft.com/azure/billing/billing-subscription-become-disable)
 2. Nachdem das Abonnement erneuert wurde, erhält Azure AD Domain Services eine Benachrichtigung von Azure, um Ihre verwaltete Domäne erneut zu aktivieren.
 
-## <a name="aadds108-resources-for-your-managed-domain-cannot-be-found"></a>AADDS108: Ressourcen für Ihre verwaltete Domäne wurden nicht gefunden.
+## <a name="aadds108-subscription-moved-directories"></a>AADDS108: Verzeichnisse durch Abonnement verschoben
+
+**Warnmeldung:**
+
+*Das von Azure AD Domain Services verwendete Abonnement wurde in ein anderes Verzeichnis verschoben. Für eine ordnungsgemäße Funktionsweise von Azure AD Domain Services muss ein aktives Abonnement im gleichen Verzeichnis vorhanden sein.*
+
+**Lösung:**
+
+Sie können das mit Azure AD Domain Services verknüpfte Abonnement wieder in das vorherige Verzeichnis verschieben. Alternativ dazu müssen Sie [Ihre verwaltete Domäne aus dem vorhandenen Verzeichnis löschen](active-directory-ds-disable-aadds.md) und im ausgewählten Verzeichnis neu erstellen (entweder mit einem neuen Abonnement oder indem Sie das Verzeichnis ändern, in dem sich Ihre Azure AD Domain Services-Instanz befindet).
+
+## <a name="aadds109-resources-for-your-managed-domain-cannot-be-found"></a>AADDS109: Ressourcen für Ihre verwaltete Domäne nicht gefunden
 
 **Warnmeldung:**
 
@@ -149,15 +161,15 @@ Azure AD Domain Services benötigt ein Abonnement und kann nicht in ein anderes 
 Azure AD Domain Services erstellt für eine ordnungsgemäße Funktion bestimmte Ressourcen während der Bereitstellung, einschließlich öffentlicher IP-Adressen, Netzwerkkarten und Load Balancer. Wenn eine der genannten Ressourcen gelöscht wird, führt dies dazu, dass Ihre verwaltete Domäne in einen nicht unterstützten Zustand übergeht und damit nicht mehr verwaltet werden kann. Diese Warnung tritt auf, wenn eine Person, die Azure AD Domain Services-Ressourcen bearbeiten kann, eine erforderliche Ressource löscht. Die folgenden Schritte beschreiben, wie Sie Ihre verwaltete Domäne wiederherstellen.
 
 1.  Navigieren Sie zur Statusseite von Azure AD Domain Services.
-  1.    Navigieren Sie im Azure-Portal zur Seite [Azure AD Domain Services]().
+  1.    Navigieren Sie im Azure-Portal zur Seite [Azure AD Domain Services](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.AAD%2FdomainServices).
   2.    Klicken Sie im linken Navigationsbereich auf **Integrität**.
 2.  Überprüfen Sie, ob die Warnung weniger als 4 Stunden alt ist.
-  1.    Klicken Sie auf der Seite „Integrität“ auf die Warnung mit der ID **AADDS108**.
+  1.    Klicken Sie auf der Seite „Integrität“ auf die Warnung mit der ID **AADDS109**.
   2.    Die Warnung hat einen Zeitstempel für das erste Auftreten. Wenn dieser Zeitstempel weniger als 4 Stunden alt ist, besteht die Möglichkeit, dass Azure AD Domain Services die gelöschte Ressource wiederherstellen kann.
 3.  Wenn die Warnung mehr als 4 Stunden alt ist, kann die verwaltete Domäne nicht wiederhergestellt werden. Sie müssen Azure AD Domain Services löschen und neu erstellen.
 
 
-## <a name="aadds109-the-subnet-associated-with-your-managed-domain-is-full"></a>AADDS109: Das Subnetz, das Ihrer verwalteten Domäne zugeordnet ist, ist voll.
+## <a name="aadds110-the-subnet-associated-with-your-managed-domain-is-full"></a>AADDS110: Das Ihrer verwalteten Domäne zugeordnete Subnetz ist voll
 
 **Warnmeldung:**
 
@@ -167,8 +179,21 @@ Azure AD Domain Services erstellt für eine ordnungsgemäße Funktion bestimmte 
 
 Dieser Fehler ist nicht behebbar. Um das Problem zu lösen, müssen Sie [Ihre vorhandene verwaltete Domäne löschen](active-directory-ds-disable-aadds.md) und [sie neu erstellen](active-directory-ds-getting-started.md).
 
+## <a name="aaddds111-service-principal-unauthorized"></a>AADDDS111: Dienstprinzipal nicht autorisiert
 
-## <a name="aadds110-not-enough-ip-address-in-the-managed-domain"></a>AADDS110: Nicht genügend IP-Adressen in der verwalteten Domäne verfügbar.
+**Warnmeldung:**
+
+*Ein Dienstprinzipal, den Azure AD Domain Services für Ihre Domäne verwendet, ist für das Verwalten von Ressourcen im Azure-Abonnement nicht autorisiert. Der Dienstprinzipal muss die entsprechenden Berechtigungen für Ihre verwaltete Domäne erhalten.*
+
+**Lösung:**
+
+Unsere Dienstprinzipale benötigen Zugriff, um Ressourcen in Ihrer verwalteten Domäne zu erstellen und zu verwalten. Jemand hat dem Dienstprinzipal den Zugriff verweigert, daher kann dieser die Ressourcen nicht verwalten. Führen Sie die folgenden Schritte aus, um Ihrem Dienstprinzipal Zugriff zu gewähren.
+
+1. Weitere Informationen finden Sie unter [Verwalten des Zugriffs mithilfe der RBAC und des Azure-Portals](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal).
+2. Überprüfen Sie den Zugriff des Dienstprinzipals mit der ID ```abba844e-bc0e-44b0-947a-dc74e5d09022```, und gewähren Sie den Zugriff, der zu einem früheren Zeitpunkt verweigert wurde.
+
+
+## <a name="aadds112-not-enough-ip-address-in-the-managed-domain"></a>AADDS112: Nicht genügend IP-Adressen in der verwalteten Domäne
 
 **Warnmeldung:**
 
@@ -189,29 +214,6 @@ Dieser Fehler ist nicht behebbar. Um das Problem zu lösen, müssen Sie [Ihre vo
 4. Um den Beitritt Ihrer virtuellen Computer zu Ihrer neuen Domäne zu realisieren, befolgen Sie die Anweisungen in [diesem Handbuch](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-admin-guide-join-windows-vm-portal).
 5. Überprüfen Sie in zwei Stunden die Integrität Ihrer Domäne, um sicherzustellen, dass Sie die Schritte ordnungsgemäß abgeschlossen haben.
 
-## <a name="aadds111-resources-are-locked"></a>AADDS111: Ressourcen gesperrt
-
-**Warnmeldung:**
-
-*Mindestens eine der Netzwerkressourcen, die von der verwalteten Domäne verwendet werden, kann nicht betrieben werden, da der Zielbereich gesperrt wurde.*
-
-**Lösung:**
-
-1.  Überprüfen Sie die Vorgangsprotokolle von Resource Manager auf den Netzwerkressourcen (diese sollten Informationen zu der Sperre enthalten, die eine Änderung verhindert).
-2.  Entfernen Sie die Sperren für die Ressourcen, sodass der Dienstprinzipal von Azure AD Domain Services sie wieder verwenden kann.
-
-
-## <a name="aadds112-resources-are-unusable"></a>AADDS112: Ressourcen nicht verwendbar
-
-**Warnmeldung:**
-
-*Mindestens eine der Netzwerkressourcen, die von der verwalteten Domäne verwendet werden, kann aufgrund von Richtlinienbeschränkungen nicht betrieben werden.*
-
-**Lösung:**
-
-1.  Überprüfen Sie die Vorgangsprotokolle von Resource Manager auf den Netzwerkressourcen für Ihre verwaltete Domäne.
-2.  Heben Sie einige Einschränkungen in der Richtlinie für die Ressourcen auf, sodass der Dienstprinzipal von AAD DS sie verwenden kann.
-
 ## <a name="aadds113-resources-are-unrecoverable"></a>AADDS113: Resources nicht wiederherstellbar
 
 **Warnmeldung:**
@@ -222,15 +224,38 @@ Dieser Fehler ist nicht behebbar. Um das Problem zu lösen, müssen Sie [Ihre vo
 
 Dieser Fehler ist nicht behebbar. Um das Problem zu lösen, müssen Sie [Ihre vorhandene verwaltete Domäne löschen](active-directory-ds-disable-aadds.md) und [sie neu erstellen](active-directory-ds-getting-started.md).
 
-## <a name="aadds114-port-443-blocked"></a>AADDS114: Port 443 blockiert
+## <a name="aadds114-subnet-invalid"></a>AADDS114: Subnetz ungültig
 
 **Warnmeldung:**
 
-*Die Domänencontroller von Azure AD Domain Services können nicht auf Port 443 zugreifen. Dieser ist zum Betreiben, Verwalten und Aktualisieren Ihrer verwaltete Domäne erforderlich.*
+*Das für die Bereitstellung von Azure AD Domain Services ausgewählte Subnetz ist ungültig und kann nicht verwendet werden.*
 
 **Lösung:**
 
-Erlauben Sie eingehenden Zugriff über Port 443 in Ihrer Netzwerksicherheitsgruppe für Azure AD Domain Services.
+Dieser Fehler ist nicht behebbar. Um das Problem zu lösen, müssen Sie [Ihre vorhandene verwaltete Domäne löschen](active-directory-ds-disable-aadds.md) und [sie neu erstellen](active-directory-ds-getting-started.md).
+
+## <a name="aadds115-resources-are-locked"></a>AADDS115: Ressourcen gesperrt
+
+**Warnmeldung:**
+
+*Mindestens eine der Netzwerkressourcen, die von der verwalteten Domäne verwendet werden, kann nicht betrieben werden, da der Zielbereich gesperrt wurde.*
+
+**Lösung:**
+
+1.  Überprüfen Sie die Vorgangsprotokolle von Resource Manager auf den Netzwerkressourcen (diese sollten Informationen zu der Sperre enthalten, die eine Änderung verhindert).
+2.  Entfernen Sie die Sperren für die Ressourcen, sodass der Dienstprinzipal von Azure AD Domain Services sie wieder verwenden kann.
+
+## <a name="aadds116-resources-are-unusable"></a>AADDS116: Ressourcen nicht verwendbar
+
+**Warnmeldung:**
+
+*Mindestens eine der Netzwerkressourcen, die von der verwalteten Domäne verwendet werden, kann aufgrund von Richtlinienbeschränkungen nicht betrieben werden.*
+
+**Lösung:**
+
+1.  Überprüfen Sie die Vorgangsprotokolle von Resource Manager in den Netzwerkressourcen für Ihre verwaltete Domäne.
+2.  Heben Sie einige Einschränkungen in der Richtlinie für die Ressourcen auf, sodass der Dienstprinzipal von AAD DS sie verwenden kann.
+
 
 
 ## <a name="aadds500-synchronization-has-not-completed-in-a-while"></a>AADDS500: Synchronisierung wurde nicht in kurzer Zeit abgeschlossen
@@ -255,7 +280,7 @@ Einige häufige Gründe, warum die Synchronisierung in verwalteten Domänen unte
 
 **Lösung:**
 
-[Überprüfen Sie die Integrität Ihrer Domäne](active-directory-ds-check-health.md) auf Warnungen, die auf Probleme in Ihrer Konfiguration der verwalteten Domäne hinweisen könnten. In einigen Fällen können Probleme mit der Konfiguration die Fähigkeit von Microsoft zum Synchronisieren Ihrer verwalteten Domäne blockieren. Wenn Sie Warnungen auflösen können, warten Sie zwei Stunden, und überprüfen Sie dann, ob die Synchronisierung abgeschlossen ist.
+[Überprüfen Sie die Integrität Ihrer Domäne](active-directory-ds-check-health.md) auf Warnungen, die auf Probleme in Ihrer Konfiguration der verwalteten Domäne hinweisen könnten. In einigen Fällen können Probleme mit der Konfiguration verhindern, dass Microsoft Ihre verwaltete Domäne sichern kann. Wenn Sie Warnungen auflösen können, warten Sie zwei Stunden, und überprüfen Sie dann, ob die Sicherung abgeschlossen ist.
 
 
 ## <a name="aadds503-suspension-due-to-disabled-subscription"></a>AADDS503: Anhalten aufgrund eines deaktivierten Abonnements

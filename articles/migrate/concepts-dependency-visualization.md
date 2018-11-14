@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 09/25/2018
 ms.author: raynew
-ms.openlocfilehash: 923a2a137bb4510e9490ce4077f744a43619a2c6
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 04ae28ca566e97570ec64e78d3408ea8bd1e3d42
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47165023"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51010319"
 ---
 # <a name="dependency-visualization"></a>Visualisierung von Abhängigkeiten
 
@@ -38,6 +38,12 @@ Azure Migrate verwendet für die Abhängigkeitsvisualisierung die [Dienstzuordnu
     ![Navigieren zum Log Analytics-Arbeitsbereich](./media/concepts-dependency-visualization/oms-workspace.png)
 
 Zur Verwendung der Abhängigkeitsvisualisierung müssen Sie Agents auf alle lokalen Computer, die Sie analysieren möchten, herunterladen und dort installieren.  
+
+- Der [Microsoft Monitoring Agent(MMA)](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-windows) muss auf jedem Computer installiert werden.
+- Der [Dependency-Agent](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure) muss auf jedem Computer installiert werden.
+- Falls Sie über Computer ohne Internetverbindung verfügen, ist es außerdem erforderlich, dafür das Log Analytics-Gateway herunterzuladen und zu installieren.
+
+Sie benötigen diese Agenten nicht auf Computern, die Sie bewerten möchten, sofern Sie keine Abhängigkeitsvisualisierung verwenden.
 
 ## <a name="do-i-need-to-pay-for-it"></a>Fallen dadurch Kosten an?
 

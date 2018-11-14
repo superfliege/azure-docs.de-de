@@ -1,68 +1,72 @@
 ---
-title: 'Schnellstart: Überprüfen von Videoinhalten in C# – Content Moderator'
+title: Analysieren von Videoinhalten auf anstößiges Material in C#
 titlesuffix: Azure Cognitive Services
-description: Überprüfen von Videoinhalten auf nicht jugendfreies oder anzügliches Material mit dem Content Moderator-SDK für C#
+description: Hier erfahren Sie, wie Sie Videoinhalte unter Verwendung des Content Moderator SDK für .NET auf verschiedenes anstößiges Material analysieren.
 services: cognitive-services
 author: sanjeev3
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
 ms.topic: conceptual
-ms.date: 10/10/2018
+ms.date: 10/31/2018
 ms.author: sajagtap
-ms.openlocfilehash: cb97eebcf398137653988ab3b6ef663f987fb57a
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: 80635354b228edc1a8c1334e5d59cf530a10083e
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49310503"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51008282"
 ---
-# <a name="quickstart-check-video-content-in-c"></a>Schnellstart: Überprüfen von Videoinhalten in C#
+# <a name="analyze-video-content-for-objectionable-material-in-c"></a>Analysieren von Videoinhalten auf anstößiges Material in C#
 
-Heutzutage generieren Online-Viewer Milliarden von Videoaufrufen auf beliebten und regionalen Websites und Apps von sozialen Medien. Durch das Anwenden von Diensten, die auf maschinellem Lernen basieren, um mögliche nicht jugendfreie und anzügliche Inhalte zu erkennen, können Sie Ihren Moderationsaufwand senken.
+Dieser Artikel enthält Informationen und Codebeispiele, die Ihnen den Einstieg in die Verwendung des [Content Moderator SDK für .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) erleichtern, um Videos auf jugendgefährdende oder anzügliche Inhalte zu überprüfen.
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen. 
 
-## <a name="sign-up-for-the-content-moderator-media-processor-preview"></a>Anmelden für den Content Moderator-Medienprozessor (Preview)
+## <a name="prerequisites"></a>Voraussetzungen
+- Eine beliebige Edition von [Visual Studio 2015 oder 2017](https://www.visualstudio.com/downloads/)
+
+## <a name="set-up-azure-resources"></a>Einrichten von Azure-Ressourcen
+
+Die Videomoderationsfunktion von Content Moderator ist als **Medienprozessor** in der kostenlosen öffentlichen Vorschauversion in Azure Media Services (AMS) verfügbar. Azure Media Services ist ein spezieller Azure-Dienst für das Speichern und Streamen von Videoinhalten. 
 
 ### <a name="create-an-azure-media-services-account"></a>Erstellen eines Azure Media Services-Kontos
 
-Die Videofunktion von Content Moderator ist als **Medienprozessor** in der öffentlichen Vorschauversion in Azure Media Services (AMS) kostenlos verfügbar. [Erstellen Sie ein Azure Media Services-Konto](https://docs.microsoft.com/azure/media-services/media-services-portal-create-account) in Ihrem Azure-Abonnement.
+Befolgen Sie die Anweisungen in [Erstellen eines Azure Media Services-Kontos](https://docs.microsoft.com/azure/media-services/media-services-portal-create-account), um AMS zu abonnieren und ein zugeordnetes Azure Storage-Konto zu erstellen. Erstellen Sie in diesem Speicherkonto einen neuen Blob Storage-Container.
 
-### <a name="get-azure-active-directory-credentials"></a>Erhalten der Azure Active Directory-Anmeldeinformationen
+### <a name="create-an-azure-active-directory-application"></a>Erstellen einer Azure Active Directory-Anwendung
 
-   1. Lesen Sie den Artikel zum [Azure Media Services-Portal](https://docs.microsoft.com/azure/media-services/media-services-portal-get-started-with-aad), um zu erfahren, wie Sie das Azure-Portal verwenden können, um Ihre Anmeldeinformationen für die Azure Active Directory-Authentifizierung zu erhalten.
-   1. Lesen Sie den Artikel [Verwenden der Azure AD-Authentifizierung zum Zugreifen auf die Azure Media Services-API mit .NET](https://docs.microsoft.com/azure/media-services/media-services-dotnet-get-started-with-aad), um zu erfahren, wie Sie Ihre Azure Active Directory-Anmeldeinformationen mit dem .NET SDK verwenden.
+Navigieren Sie zu Ihrem neuen AMS-Abonnement im Azure-Portal, und wählen Sie **API-Zugriff** aus im seitlichen Menü. Wählen Sie **Verbindung mit Azure Media Services über Dienstprinzipal herstellen** aus. Notieren Sie den Wert im Feld **REST-API-Endpunkt**. Diesen benötigen Sie später.
 
-   > [!NOTE]
-   > Der Beispielcode in diesem Schnellstart verwendet die Methode der **Dienstprinzipalauthentifizierung**, die in beiden obigen Artikeln beschrieben wird.
+Wählen Sie im Abschnitt **Azure AD-App** die Option **Neue erstellen** und benennen Sie Ihre neue Azure AD-Anwendungsregistrierung (z.B. „VideoModADApp“). Klicken Sie auf **Speichern**, und warten Sie einige Minuten, während die Anwendung konfiguriert wird. Ihre neue App-Registrierung sollte dann im Abschnitt **Azure AD-App** der Seite angezeigt werden.
 
-Sobald Sie Ihre AMS-Anmeldeinformationen erhalten haben, gibt es zwei Möglichkeiten, um den Content Moderator-Medienprozessor zu testen.
+Wählen Sie Ihre App-Registrierung, und klicken Sie darunter auf **Anwendung verwalten**. Notieren Sie den Wert im Feld **Anwendungs-ID**. Diesen benötigen Sie später. Wählen Sie **Einstellungen** > **Schlüssel** aus, und geben Sie eine Beschreibung für einen neuen Schlüssel ein (z.B. „VideoModKey“). Klicken Sie auf **Speichern**, und notieren Sie den neuen Schlüsselwert. Kopieren Sie diese Zeichenfolge, und speichern Sie sie an einem sicheren Ort.
+
+Eine ausführlichere Erläuterung für das oben beschriebene Verfahren finden Sie unter [Erste Schritte mit Azure AD-Authentifizierung](https://docs.microsoft.com/azure/media-services/media-services-portal-get-started-with-aad).
+
+Wenn Sie fertig sind, können Sie die Videomoderation des Medienprozessors auf zwei unterschiedliche Arten verwenden.
 
 ## <a name="use-azure-media-services-explorer"></a>Verwenden des Azure Media Services-Explorers
 
-Verwenden Sie den interaktiven [Azure Media Services-Explorer (AMS)](https://azure.microsoft.com/blog/managing-media-workflows-with-the-new-azure-media-services-explorer-tool/), um Ihr AMS-Konto zu durchsuchen, Videos hochzuladen und Scans mit dem Content Moderator-Medienprozessor durchzuführen. [Laden Sie diesen von GitHub herunter](https://github.com/Azure/Azure-Media-Services-Explorer/releases), installieren Sie ihn, und [durchsuchen Sie den Quellcode](http://github.com/Azure/Azure-Media-Services-Explorer), um in die Verwendung des AMS SDK einzusteigen.
+Der Azure Media Services Explorer ist ein benutzerfreundliches Front-End für AMS. Verwenden Sie ihn, um Ihr AMS-Konto zu durchsuchen, Videos hochzuladen und Scans von Inhalten mit dem Content Moderator-Medienprozessor durchzuführen. Laden Sie [GitHub](https://github.com/Azure/Azure-Media-Services-Explorer/releases) herunter und installieren Sie es, oder lesen Sie den Blogbeitrag [Azure Media Services Explorer](https://azure.microsoft.com/blog/managing-media-workflows-with-the-new-azure-media-services-explorer-tool/).
 
 ![Azure Media Services-Explorer mit Content Moderator](images/ams-explorer-content-moderator.PNG)
 
-## <a name="quickstart-with-visual-studio-and-c"></a>Schnellstart mit Visual Studio und C#
+## <a name="create-the-visual-studio-project"></a>Erstellen des Visual Studio-Projekts
 
-1. Fügen Sie Ihrer Projektmappe ein neues Projekt vom Typ **Konsolen-App (.NET Framework)** hinzu.
+1. Erstellen Sie in Visual Studio ein neues Projekt vom Typ **Konsolen-App (.NET Framework)**, und nennen Sie es **VideoModeration**. 
+1. Sollte Ihre Projektmappe noch andere Projekte enthalten, wählen Sie dieses Projekt als das alleinige Startprojekt aus.
+1. Rufen Sie die erforderlichen NuGet-Pakete ab. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt, wählen Sie **NuGet-Pakete verwalten** aus, suchen Sie nach den folgenden Paketen, und installieren Sie sie:
+    - windowsazure.mediaservices
+    - windowsazure.mediaservices.extensions
 
-   Versehen Sie das Projekt im Beispielcode mit dem Namen **VideoModeration**.
+## <a name="add-video-moderation-code"></a>Hinzufügen von Videomoderationscode
 
-1. Wählen Sie dieses Projekt als einzelnes Startprojekt für die Projektmappe aus.
-
-### <a name="install-required-packages"></a>Installieren erforderlicher Pakete
-
-Installieren Sie die folgenden NuGet-Pakete, die auf [NuGet](https://www.nuget.org/) verfügbar sind.
-
-- windowsazure.mediaservices
-- windowsazure.mediaservices.extensions
+Kopieren Sie als nächstes den Code aus dieser Anleitung, und fügen Sie ihn in Ihr Projekt ein, um ein einfaches Inhaltsmoderationsszenario zu implementieren.
 
 ### <a name="update-the-programs-using-statements"></a>Aktualisieren der using-Anweisungen des Programms
 
-Fügen Sie die folgenden `using`-Anweisungen hinzu:
+Fügen Sie am Anfang der Datei _Program.cs_ die folgenden `using`-Anweisungen hinzu:
 
 ```csharp
 using System;
@@ -77,9 +81,9 @@ using Microsoft.WindowsAzure.Storage.Auth;
 using System.Collections.Generic;
 ```
 
-### <a name="initialize-application-specific-settings"></a>Initialisieren anwendungsspezifischer Einstellungen
+### <a name="set-up-resource-references"></a>Einrichten von Ressourcenverweisen
 
-Fügen Sie der Klasse **Program** in _Program.cs_ die folgenden statischen Felder hinzu.
+Fügen Sie der Klasse **Program** in _Program.cs_ die folgenden statischen Felder hinzu. Diese Felder enthalten die Informationen, die für die Verbindung zu Ihrem AMS-Abonnement erforderlich sind. Geben Sie hier die Werte ein, die Sie in den vorherigen Schritten erhalten haben. Beachten Sie, dass `CLIENT_ID` der Wert für **Anwendungs-ID** für Ihre Azure AD-App und `CLIENT_SECRET` der Wert von „VideoModKey“ ist, den Sie für diese App erstellt haben.
 
 ```csharp
 // declare constants and globals
@@ -94,9 +98,9 @@ static string STORAGE_CONTAINER_NAME = "YOUR BLOB CONTAINER FOR VIDEO FILES";
 
 private static StorageCredentials _StorageCredentials = null;
 
-// Azure Media Services authentication. See the quickstart for how to get these.
+// Azure Media Services authentication. 
 private const string AZURE_AD_TENANT_NAME = "microsoft.onmicrosoft.com";
-private const string CLIENT_ID = "YOUR CLIENT ID"
+private const string CLIENT_ID = "YOUR CLIENT ID";
 private const string CLIENT_SECRET = "YOUR CLIENT SECRET";
 
 // REST API endpoint, for example "https://accountname.restv2.westcentralus.media.azure.net/API".      
@@ -108,23 +112,25 @@ private const string MEDIA_PROCESSOR = "Azure Media Content Moderator";
 // Input and Output files in the current directory of the executable
 private const string INPUT_FILE = "VIDEO FILE NAME";
 private const string OUTPUT_FOLDER = "";
-```
 
-### <a name="create-a-preset-file-json"></a>Erstellen einer Voreinstellungsdatei (JSON)
-
-Erstellen Sie eine JSON-Datei im aktuellen Verzeichnis mit der Versionsnummer.
-
-```csharp
-//Example file content:
-//        {
-//             "version": "2.0"
-//        }
+// JSON settings file
 private static readonly string CONTENT_MODERATOR_PRESET_FILE = "preset.json";
+
 ```
 
-### <a name="add-the-following-code-to-the-main-method"></a>Code zum Hinzufügen zur Main-Methode
+Wenn Sie eine lokale Videodatei verwenden möchten (einfachster Fall), fügen Sie sie dem Projekt hinzu und geben Sie ihren Pfad als Wert `INPUT_FILE` ein (relative Pfade sind relativ zum Ausführungsverzeichnis).
 
-Die Main-Methode erstellt zunächst einen Azure-Medienkontext und anschließend einen Azure-Speicherkontext, falls Ihre Videos sich in Blob Storage befinden. Der restliche Code überprüft ein Video aus einem lokalen Ordner, einem Blob oder mehreren Blogs innerhalb eines Azure-Speichercontainers. Sie können alle Optionen testen, indem Sie die anderen Codezeilen auskommentieren.
+Sie müssen auch die Datei _preset.json_ im aktuellen Verzeichnis erstellen und damit eine Versionsnummer angeben. Beispiel: 
+
+```JSON
+{
+    "version": "2.0"
+}
+```
+
+### <a name="load-the-input-videos"></a>Laden des/der Eingabevideos
+
+Die **Main**-Methode der **Program**-Klasse erstellt zunächst einen Azure-Medienkontext und anschließend einen Azure-Speicherkontext, falls Ihre Videos sich in Blob Storage befinden. Der restliche Code überprüft ein Video aus einem lokalen Ordner, einem Blob oder mehreren Blogs innerhalb eines Azure-Speichercontainers. Sie können alle Optionen testen, indem Sie die anderen Codezeilen auskommentieren.
 
 ```csharp
 // Create Azure Media Context
@@ -134,7 +140,7 @@ CreateMediaContext();
 CreateStorageContext();
 
 // Use a file as the input.
-// IAsset asset = CreateAssetfromFile();
+IAsset asset = CreateAssetfromFile();
 
 // -- OR ---
 
@@ -142,20 +148,20 @@ CreateStorageContext();
 // IAsset asset = CreateAssetfromBlob((CloudBlockBlob)GetBlobsList().First());
 
 // Then submit the asset to Content Moderator
-// RunContentModeratorJob(asset);
+RunContentModeratorJob(asset);
 
 //-- OR ----
 
 // Just run the content moderator on all blobs in a list (from a Blob Container)
-RunContentModeratorJobOnBlobs();
+// RunContentModeratorJobOnBlobs();
 ```
 
-### <a name="add-the-code-to-create-an-azure-media-context"></a>Code zum Erstellen eines Azure-Medienkontexts
+### <a name="create-an-azure-media-context"></a>Erstellen eines Azure-Medienkontexts
+
+Fügen Sie der **Program**-Klasse die folgende Methode hinzu. Dabei werden Ihre AMS-Anmeldeinformationen zum Zulassen der Kommunikation mit AMS verwendet.
 
 ```csharp
-/// <summary>
-/// Creates a media context from azure credentials
-/// </summary>
+// Creates a media context from azure credentials
 static void CreateMediaContext()
 {
     // Get Azure AD credentials
@@ -172,12 +178,11 @@ static void CreateMediaContext()
 ```
 
 ### <a name="add-the-code-to-create-an-azure-storage-context"></a>Code zum Erstellen eines Azure-Speicherkontexts
-Sie verwenden den Speicherkontext, der mithilfe Ihrer Storage-Anmeldeinformationen erstellt wurden, um auf Blob Storage zuzugreifen.
+
+Fügen Sie der **Program**-Klasse die folgende Methode hinzu. Sie verwenden den Speicherkontext, der mithilfe Ihrer Storage-Anmeldeinformationen erstellt wurden, um auf Blob Storage zuzugreifen.
 
 ```csharp
-/// <summary>
-/// Creates a storage context from the AMS associated storage name and key
-/// </summary>
+// Creates a storage context from the AMS associated storage name and key
 static void CreateStorageContext()
 {
     // Get a reference to the storage account associated with a Media Services account. 
@@ -190,24 +195,18 @@ static void CreateStorageContext()
 ```
 
 ### <a name="add-the-code-to-create-azure-media-assets-from-local-file-and-blob"></a>Code zum Erstellen von Azure-Medienobjekten aus lokalen Dateien und Blobs
+
 Der Content Moderator-Medienprozessor führt Aufträge für **Objekte** innerhalb der Azure Media Services-Plattform aus.
 Diese Methoden erstellen die Objekte aus einer lokalen Datei oder einem zugeordneten Blob.
 
 ```csharp
-/// <summary>
-/// Creates an Azure Media Services Asset from the video file
-/// </summary>
-/// <returns>Asset</returns>
+// Creates an Azure Media Services Asset from the video file
 static IAsset CreateAssetfromFile()
 {
     return _context.Assets.CreateFromFile(INPUT_FILE, AssetCreationOptions.None); ;
 }
 
-/// <summary>
-/// Creates an Azure Media Services asset from your blog storage
-/// </summary>
-/// <param name="Blob"></param>
-/// <returns>Asset</returns>
+// Creates an Azure Media Services asset from your blog storage
 static IAsset CreateAssetfromBlob(CloudBlockBlob Blob)
 {
     // Create asset from the FIRST blob in the list and return it
@@ -218,9 +217,7 @@ static IAsset CreateAssetfromBlob(CloudBlockBlob Blob)
 ### <a name="add-the-code-to-scan-a-collection-of-videos-as-blobs-within-a-container"></a>Code zum Überprüfen mehrerer Videos (als Blobs) innerhalb eines Containers
 
 ```csharp
-/// <summary>
-/// Runs the Content Moderator Job on all Blobs in a given container name
-/// </summary>
+// Runs the Content Moderator Job on all Blobs in a given container name
 static void RunContentModeratorJobOnBlobs()
 {
     // Get the reference to the list of Blobs. See the following method.
@@ -239,10 +236,7 @@ static void RunContentModeratorJobOnBlobs()
     }
 }
 
-/// <summary>
-/// Get all blobs in your container
-/// </summary>
-/// <returns></returns>
+// Get all blobs in your container
 static IEnumerable<IListBlobItem> GetBlobsList()
 {
     // Get a reference to the Container within the Storage Account
@@ -259,10 +253,7 @@ static IEnumerable<IListBlobItem> GetBlobsList()
 ### <a name="add-the-method-to-run-the-content-moderator-job"></a>Methode zum Hinzufügen des Content Moderator-Auftrags
 
 ```csharp
-/// <summary>
-/// Run the Content Moderator job on the designated Asset from local file or blob storage
-/// </summary>
-/// <param name="asset"></param>
+// Run the Content Moderator job on the designated Asset from local file or blob storage
 static void RunContentModeratorJob(IAsset asset)
 {
     // Grab the presets

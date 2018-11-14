@@ -9,14 +9,14 @@ tags: top-support-issue,azure-service-management,azure-resource-manager
 ms.service: virtual-machines
 ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
-ms.date: 05/01/2018
+ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: 2ec5caab32e12411f5ccab4a9a6b98d3c4e57c0b
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 1de70b3ddea84fc0067a0e20ec613f01024f0ed4
+ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47412528"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50748033"
 ---
 # <a name="troubleshoot-storage-resource-deletion-errors"></a>Behebung von Problemen mit Speicherressourcen-Löschfehlern
 
@@ -69,10 +69,7 @@ Wenn Sie diese Schritte durchgeführt haben, versuchen Sie erneut, das Speicherk
 
 ### <a name="scenario-3-deleting-storage-account---identify-all-blobs-within-storage-account-that-are-attached-to-vms"></a>Szenario 3: Löschen eines Speicherkontos – Identifizieren aller Blobs in einem an VMs angefügten Speicherkonto
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-2. Wählen Sie im Menü „Hub“ die Option **Alle Ressourcen** aus. Wechseln Sie zum Speicherkonto, und wählen Sie unter **Blobdienst** die Option **Container** aus.
-
-    ![Screenshot des Portals, in dem die Speicherkontocontainer und die Option „Leasezustand“ mit dem Wert „Geleast“ hervorgehoben sind](./media/troubleshoot-vhds/utd-containers-sm.png)
-
+2. Wählen Sie im Menü „Hub“ die Option **Alle Ressourcen** aus. Wechseln Sie zum Speicherkonto, und wählen Sie unter **Blobdienst** die Option **Blobs** aus.
 3. Identifizieren Sie im Bereich **Container** alle Container, die als **Leasezustand** den Wert **Geleast** aufweisen, und führen Sie für jeden Container mit dem Zustand **Geleast** die Schritte von [Szenario 2](#scenario-2-deleting-a-container---identify-all-blobs-within-container-that-are-attached-to-vms) durch.
 4. Führen Sie [Schritt 2](#step-2-delete-vm-to-detach-os-disk) und [Schritt 3](#step-3-detach-data-disk-from-the-vm) durch, um VMs mit Datenträgern vom Typ **OSDisk** zu löschen und Datenträger vom Typ **DataDisk** zu trennen. 
 

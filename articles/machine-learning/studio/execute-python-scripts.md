@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2017
-ms.openlocfilehash: 537839295deb631c3b9811c8d40db8608954e8a1
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 7520780060f603a7e394b100549529a2c1b6fe4b
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34835252"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51228163"
 ---
 # <a name="execute-python-machine-learning-scripts-in-azure-machine-learning-studio"></a>Ausführen von Python-Machine Learning-Skripts in Azure Machine Learning Studio
 
@@ -67,7 +67,7 @@ Abbildung 1. Das **Execute Python Script** -Modul
 Das [Execute Python Script][execute-python-script]-Modul in Azure ML Studio akzeptiert genau wie sein R-Äquivalent, das [Execute R Script][execute-r-script]-Modul, bis zu drei Eingaben und erzeugt bis zu zwei Ausgaben (siehe Erläuterungen im folgenden Abschnitt). Der auszuführende Python-Code wird in das Parameterfeld als speziell benannte Einstiegspunktfunktion namens `azureml_main`eingegeben. Im Folgenden sind die wichtigsten Entwurfsprinzipien zur Implementierung dieses Moduls aufgeführt:
 
 1. *Muss für Python-Benutzer idiomatisch sein.* Die meisten Python-Benutzer gestalten ihren Code als Funktionen in Modulen. Dass eine Vielzahl von ausführbaren Anweisungen in ein Modul auf oberster Ebene platziert wird, kommt daher äußerst selten vor. Demzufolge akzeptiert das Skriptfeld auch eine speziell benannte Python-Funktion und nicht nur eine Sequenz von Anweisungen. Die in der Funktion verfügbar gemachten Objekte sind Standardtypen der Python-Bibliothek, z.B. [Pandas](http://pandas.pydata.org/)-Datenrahmen und [NumPy](http://www.numpy.org/)-Arrays.
-2. *Erfordert eine hohe Genauigkeit zwischen lokalen und Cloudausführungen.* Das zum Ausführen des Python-Codes verwendete Back-End basiert auf [Anaconda](https://store.continuum.io/cshop/anaconda/), einer weitverbreiteten plattformübergreifenden, wissenschaftlichen Python-Distribution. Sie wird mit knapp 200 der gängigsten Python-Pakete geliefert. Daher können Datenanalysten ihren Code in ihrer lokalen mit Azure Machine Learning kompatiblen Anaconda-Umgebung debuggen und qualifizieren. Sie können anschließend vorhandene Entwicklungsumgebungen wie [IPython](http://ipython.org/) Notebook oder [Python Tools für Visual Studio](http://aka.ms/ptvs) nutzen, um ihren Code als Teil eines Azure ML-Experiments auszuführen. Beim `azureml_main`-Einstiegspunkt handelt es sich um eine einfache Python-Funktion, die ****ohne spezifischen Azure ML-Code und ohne Installation des SDK erstellt werden kann.
+2. *Erfordert eine hohe Genauigkeit zwischen lokalen und Cloudausführungen.* Das zum Ausführen des Python-Codes verwendete Back-End basiert auf [Anaconda](https://store.continuum.io/cshop/anaconda/), einer weitverbreiteten plattformübergreifenden, wissenschaftlichen Python-Distribution. Sie wird mit knapp 200 der gängigsten Python-Pakete geliefert. Daher können Datenanalysten ihren Code in ihrer lokalen mit Azure Machine Learning kompatiblen Anaconda-Umgebung debuggen und qualifizieren. Sie können anschließend vorhandene Entwicklungsumgebungen wie [IPython](http://ipython.org/) Notebook oder [Python Tools für Visual Studio](https://aka.ms/ptvs) nutzen, um ihren Code als Teil eines Azure ML-Experiments auszuführen. Beim `azureml_main`-Einstiegspunkt handelt es sich um eine einfache Python-Funktion, die ****ohne spezifischen Azure ML-Code und ohne Installation des SDK erstellt werden kann.
 3. *Muss nahtlos mit anderen Azure Machine Learning-Modulen einsetzbar sein.* Das [Execute Python Script][execute-python-script]-Modul akzeptiert Azure Machine Learning-Standard-Datasets als Eingabe und Ausgabe. Das zugrunde liegende Framework verbindet auf transparente und effiziente Weise die Azure ML-Laufzeit und die Python-Laufzeit. Python kann daher in Verbindung mit vorhandenen Azure ML-Workflows eingesetzt werden, auch mit solchen, die R- und SQLite-Aufrufe verwenden. Als Ergebnis dessen könnte ein Datenanalyst Workflows erstellen, für die Folgendes gilt:
    * Verwenden von Python und Pandas zur Datenvorbereitung und -bereinigung
    * Übergeben von Daten an eine SQL-Transformation, wobei mehrere Datasets zu Features verknüpft werden
@@ -190,7 +190,8 @@ Dies ist die Python-Funktion zum Berechnen der Wichtigkeitsbewertungen und zum S
 ![Bild11](./media/execute-python-scripts/figure8.png)
 
 Abbildung 10. Funktion zum Klassifizieren von Features nach Bewertungen.
-  Der folgende Versuch berechnet anschließend die Wichtigkeitsbewertungen der Features und gibt sie im Dataset „Pima Indian Diabetes“ in Azure Machine Learning aus:
+ 
+Der folgende Versuch berechnet anschließend die Wichtigkeitsbewertungen der Features und gibt sie im Dataset „Pima Indian Diabetes“ in Azure Machine Learning aus:
 
 ![image12](./media/execute-python-scripts/figure9a.png)
 ![image13](./media/execute-python-scripts/figure9b.png)    

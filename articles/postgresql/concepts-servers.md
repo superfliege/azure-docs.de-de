@@ -7,13 +7,13 @@ ms.author: raagyema
 editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
-ms.date: 09/27/2018
-ms.openlocfilehash: 8fcb5e8371d6c813eb7f0ab4d23a5aac5c41fb3b
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.date: 11/07/2018
+ms.openlocfilehash: b482a43236885f4b5574a9ba3319f74b083df33a
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47404638"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51281259"
 ---
 # <a name="azure-database-for-postgresql-servers"></a>Azure Database for PostgreSQL-Server
 Dieser Artikel enthält Erwägungen und Richtlinien für die Arbeit mit Azure-Datenbank für PostgreSQL-Server.
@@ -28,7 +28,7 @@ Ein Azure-Datenbank für PostgreSQL-Server weist folgende Eigenschaften auf:
 - Sie stellt einen Namespace für Datenbanken bereit.
 - Sie ist ein Container mit einer Semantik von hoher Lebensdauer. Beim Löschen eines Servers werden die enthaltenen Datenbanken gelöscht.
 - Sie stellt Ressourcen in einer Region zusammen.
-- Sie stellt einen Verbindungsendpunkt für den Server- und Datenbankzugriff (.postgresql.database.azure.com) bereit.
+- Sie stellt einen Verbindungsendpunkt für den Server- und Datenbankzugriff bereit. 
 - Sie stellt den Bereich für Verwaltungsrichtlinien bereit, die auf die jeweiligen Datenbanken angewendet werden (Anmeldungen, Firewalls, Benutzer, Rollen, Konfigurationen etc.).
 - Sie ist in mehreren Versionen verfügbar. Weitere Informationen finden Sie unter [Unterstützte PostgreSQL-Datenbankversionen](concepts-supported-versions.md).
 - Sie kann von Benutzern erweitert werden. Weitere Informationen finden Sie im Artikel zu [PostgreSQL-Erweiterungen](concepts-extensions.md).
@@ -43,7 +43,7 @@ Mithilfe der folgenden Elemente kann ein sicherer Zugriff auf Ihre Datenbank sic
 | **Authentifizierung und Autorisierung** | Der Azure-Datenbank für PostgreSQL-Server unterstützt die systemeigene PostgreSQL-Authentifizierung. Mithilfe der Anmeldeinformationen für Serveradministrator können Sie eine Verbindung zum Server herstellen und diesen authentifizieren. |
 | **Protokoll** | Der Dienst unterstützt ein nachrichtenbasiertes Protokoll, das von PostgreSQL verwendet wird. |
 | **TCP/IP** | Das Protokoll wird über TCP/IP- und Unix-Domänensockets unterstützt. |
-| **Firewall** | Zum Schutz Ihrer Daten verhindert eine Firewallregel jeglichen Zugriff auf Ihren Server und auf dessen Datenbanken, solange Sie nicht angeben, welche Computer zugriffsberechtigt sind. Weitere Informationen finden Sie unter [Firewallregeln für Azure-Datenbank für PostgreSQL-Server](concepts-firewall-rules.md). |
+| **Firewall** | Zum Schutz Ihrer Daten verhindert eine Firewallregel jeglichen Zugriff auf Ihren Server und auf dessen Datenbanken, solange Sie nicht angeben, welche Computer zugriffsberechtigt sind. Weitere Informationen finden Sie unter  [Firewallregeln für Azure Database for PostgreSQL-Server](concepts-firewall-rules.md). |
 
 ## <a name="managing-your-server"></a>Verwalten Ihres Servers
 Sie können Azure Database for PostgreSQL-Server mithilfe des [Azure-Portals](https://portal.azure.com) oder der [Azure CLI](/cli/azure/postgres) verwalten.
@@ -52,7 +52,7 @@ Beim Erstellen eines Servers richten Sie die Anmeldeinformationen für Ihren Adm
 
 Das PostgreSQL-Superuser-Attribut ist dem „azure_superuser“ zugewiesen, der dem verwalteten Dienst angehört. Sie haben keinen Zugriff auf diese Rolle.
 
-Ein Azure Database for PostgreSQL-Server verfügt über zwei Standarddatenbanken: 
+Ein Azure Database for PostgreSQL-Server verfügt über Standarddatenbanken: 
 - **postgres**: Eine Standarddatenbank, mit der Sie nach der Erstellung Ihres Servers eine Verbindung herstellen können.
 - **azure_maintenance**: Diese Datenbank wird verwendet, um die Prozesse, die den verwalteten Dienst bereitstellen, von den Benutzeraktionen zu trennen. Sie haben keinen Zugriff auf diese Datenbank.
 - **azure_sys**: Eine Datenbank für den Abfragespeicher. Diese Datenbank sammelt keine Daten, wenn der Abfragespeicher deaktiviert ist (Standardeinstellung). Weitere Informationen finden Sie in der [Übersicht über den Abfragespeicher](concepts-query-store.md).
@@ -65,7 +65,7 @@ Da es sich um einen verwalteten Dienst für Postgres handelt, stellen die konfig
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-- Einen Überblick über den Dienst finden Sie unter [Azure-Datenbank für PostgreSQL – Überblick](overview.md).
-- Informationen zu bestimmten Ressourcenkontingenten und -beschränkungen basierend auf Ihrem **Diensttarif** finden Sie unter [Diensttarife](concepts-pricing-tiers.md).
-- Informationen zum Herstellen einer Verbindung mit dem Dienst finden Sie unter [Datenverbindungsbibliotheken für Azure-Datenbank für PostgreSQL](concepts-connection-libraries.md).
+- Eine Übersicht über den Dienst finden Sie unter  [Azure Database for PostgreSQL – Übersicht](overview.md).
+- Informationen zu bestimmten Ressourcenkontingenten und -beschränkungen basierend auf Ihrem  **Diensttarif** finden Sie unter  [Diensttarife](concepts-pricing-tiers.md).
+- Informationen zum Herstellen einer Verbindung mit dem Dienst finden Sie unter  [Datenverbindungsbibliotheken für Azure Database for PostgreSQL](concepts-connection-libraries.md).
 - Sie können Serverparameter über das [Azure-Portal](howto-configure-server-parameters-using-portal.md) oder die [Azure CLI](howto-configure-server-parameters-using-cli.md) anzeigen und bearbeiten.

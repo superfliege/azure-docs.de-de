@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.author: tomfitz
-ms.openlocfilehash: 2a288cdb96a1e1ff7e261d4782f7e02aee12868f
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 89f0f5847f157cff59a57f7958508e4f260355c3
+ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39621200"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50747557"
 ---
 # <a name="concepts-in-azure-event-grid"></a>Begriffe in Azure Event Grid
 
@@ -58,9 +58,17 @@ Beispiele für das Erstellen von Abonnements finden Sie unter:
 
 Weitere Informationen zum Abfragen Ihrer aktuellen Event Grid-Abonnements finden Sie unter [Abfragen von Event Grid-Abonnements](query-event-subscriptions.md).
 
+## <a name="event-subscription-expiration"></a>Ereignisabonnementablauf
+
+Mit der [Event Grid-Erweiterung](/cli/azure/azure-cli-extensions-list) für Azure CLI können Sie beim Erstellen eines Ereignisabonnements ein Ablaufdatum festlegen. Wenn Sie die REST-API verwenden, verwenden Sie `api-version=2018-09-15-preview`
+
+Das Ereignisabonnement läuft nach diesem Datum automatisch ab. Legen Sie ein Ablaufdatum für Ereignisabonnements fest, die nur für einen begrenzten Zeitraum erforderlich sind und um deren Bereinigung Sie sich nicht kümmern möchten. Beispielsweise könnten Sie beim Erstellen eines Ereignisabonnements zum Testen eines Szenarios ein Ablaufdatum festlegen. 
+
+Ein Beispiel für das Festlegen eines Ablaufdatums finden Sie unter [Abonnieren mit erweiterten Filtern](how-to-filter-events.md#subscribe-with-advanced-filters).
+
 ## <a name="event-handlers"></a>Ereignishandler
 
-In Bezug auf Event Grid ist ein Ereignishandler das Ziel, an den das Ereignis gesendet wird. Der Handler ergreift zur Verarbeitung des Ereignisses weitere Maßnahmen. Event Grid unterstützt mehrere Handlertypen. Sie können einen unterstützten Azure-Dienst oder einen eigenen Webhook als Handler verwenden. Je nach Handlertyp übermittelt Event Grid die Ereignisse auf unterschiedliche Art und Weise. Bei HTTP-Webhookereignishandlern wird das Ereignis solange wiederholt, bis der Handler einen Statuscode von `200 – OK` zurückgibt. Bei Azure Storage Queue werden die Ereignisse solange wiederholt, bis der Warteschlangendienst den Nachrichtenpush in der Warteschlange verarbeiten kann.
+In Bezug auf Event Grid ist ein Ereignishandler das Ziel, an den das Ereignis gesendet wird. Der Handler ergreift zur Verarbeitung des Ereignisses weitere Maßnahmen. Event Grid unterstützt verschiedene Handlertypen. Sie können einen unterstützten Azure-Dienst oder einen eigenen Webhook als Handler verwenden. Je nach Handlertyp übermittelt Event Grid die Ereignisse auf unterschiedliche Art und Weise. Bei HTTP-Webhookereignishandlern wird das Ereignis solange wiederholt, bis der Handler einen Statuscode von `200 – OK` zurückgibt. Bei Azure Storage Queue werden die Ereignisse solange wiederholt, bis der Warteschlangendienst den Nachrichtenpush in der Warteschlange verarbeitet.
 
 Informationen zum Implementieren der unterstützten Event Grid-Handler finden Sie unter [Ereignishandler in Azure Event Grid](event-handlers.md).
 

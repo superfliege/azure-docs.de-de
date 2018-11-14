@@ -1,6 +1,6 @@
 ---
 title: Wiederherstellen von Daten in Azure auf einem Windows Server- oder Windows-Computer
-description: Es wird beschrieben, wie Sie in Azure gespeicherte Daten auf einem Windows Server- oder Windows-Computer wiederherstellen.
+description: Erfahren Sie, wie Sie in Azure gespeicherte Daten auf einem Windows-Server oder einem Windows-Computer wiederherstellen.
 services: backup
 author: saurabhsensharma
 manager: shivamg
@@ -8,24 +8,24 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 9/7/2018
 ms.author: saurse
-ms.openlocfilehash: 20d2f289f4d40d773fde9f6b770dc49b87c34804
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 1e8e9365567c19400b86dc60d966eb965b83591d
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44297246"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51281749"
 ---
-# <a name="restore-files-to-a-windows-server-or-windows-client-machine-using-resource-manager-deployment-model"></a>Wiederherstellen von Dateien auf einem Windows-Server- oder Windows-Clientcomputer mit dem Resource Manager-Bereitstellungsmodell
+# <a name="restore-files-to-windows-by-using-the-azure-resource-manager-deployment-model"></a>Wiederherstellen von Dateien in Windows mit dem Azure Resource Manager-Bereitstellungsmodell
 
-In diesem Artikel wird das Wiederherstellen von Daten aus einem Sicherungstresor erläutert. Zum Wiederherstellen von Daten verwenden Sie den Assistenten zum Wiederherstellen von Daten im Microsoft Azure Recovery Services-Agent (MARS). Bei der Datenwiederherstellung ist Folgendes möglich:
+In diesem Artikel wird das Wiederherstellen von Daten aus einem Sicherungstresor erläutert. Zum Wiederherstellen von Daten verwenden Sie den Assistenten zum Wiederherstellen von Daten im Microsoft Azure Recovery Services-Agent (MARS). Ihre Möglichkeiten:
 
 * Wiederherstellen von Daten auf dem gleichen Computer, auf dem die Sicherungen erstellt wurden
 * Wiederherstellen auf einem anderen Computer.
 
-Im Januar 2017 hat Microsoft ein Vorschau-Update für den MARS-Agent veröffentlicht. Dieses Update bietet Fehlerbehebungen sowie eine sofortige Wiederherstellung, wodurch Sie eine Wiederherstellungspunkt-Momentaufnahme mit Schreibzugriff als Wiederherstellungsvolume bereitstellen können. Sie können dann das Wiederherstellungsvolume durchsuchen und Dateien auf einen lokalen Computer kopieren, wodurch Sie Dateien selektiv wiederherstellen können.
+Verwenden Sie das Feature für sofortige Wiederherstellung, um eine beschreibbare Wiederherstellungspunkt-Momentaufnahme als Wiederherstellungsvolume einzubinden. Sie können dann das Wiederherstellungsvolume durchsuchen und Dateien auf einen lokalen Computer kopieren und so Dateien selektiv wiederherstellen.
 
 > [!NOTE]
-> Das [Azure Backup-Update vom Januar 2017](https://support.microsoft.com/en-us/help/3216528?preview) ist erforderlich, wenn Sie die sofortige Wiederherstellung verwenden möchten, um Daten wiederherzustellen. Außerdem müssen die Sicherungsdaten in Tresoren an einem der Orte geschützt sein, die im Supportartikel aufgeführt sind. Unter [Azure Backup-Update vom Januar 2017](https://support.microsoft.com/en-us/help/3216528?preview) finden Sie die neueste Liste der Regionen, in denen die sofortige Wiederherstellung unterstützt wird. Die sofortige Wiederherstellung ist derzeit **nicht** in allen Regionen verfügbar.
+> Das [Azure Backup-Update vom Januar 2017](https://support.microsoft.com/en-us/help/3216528?preview) ist erforderlich, wenn Sie die sofortige Wiederherstellung verwenden möchten, um Daten wiederherzustellen. Außerdem müssen die Sicherungsdaten in Tresoren an einem der Orte, die im Supportartikel aufgeführt sind, geschützt sein. Unter [Azure Backup-Update vom Januar 2017](https://support.microsoft.com/en-us/help/3216528?preview) finden Sie die neueste Liste der Regionen, in denen die sofortige Wiederherstellung unterstützt wird.
 >
 
 Verwenden Sie im Azure-Portal die sofortige Wiederherstellung mit Recovery Services-Tresoren. Wenn Sie Daten in Sicherungstresoren gespeichert haben, wurden sie automatisch in Recovery Services-Tresore geändert. Wenn Sie die sofortige Wiederherstellung einsetzen möchten, laden Sie das MARS-Update herunter und befolgen Sie die Verfahren, in denen die sofortige Wiederherstellung erwähnt wird.
@@ -34,55 +34,55 @@ Verwenden Sie im Azure-Portal die sofortige Wiederherstellung mit Recovery Servi
 
 ## <a name="use-instant-restore-to-recover-data-to-the-same-machine"></a>Verwenden der sofortigen Wiederherstellung zum Wiederherstellen von Daten auf demselben Computer
 
-Wenn Sie versehentlich eine Datei gelöscht haben und sie auf demselben Computer wiederherstellen möchten (auf dem die Sicherung erstellt wurde), können Sie die folgenden Schritte zum Wiederherstellen der Daten ausführen.
+Wenn Sie versehentlich eine Datei gelöscht haben und sie auf demselben Computer (auf dem die Sicherung erstellt wurde) wiederherstellen möchten, können Sie die folgenden Schritte zum Wiederherstellen der Daten ausführen.
 
-1. Öffnen Sie das Snap-In **Microsoft Azure Backup** . Falls Sie nicht wissen, wo das Snap-In installiert wurde, können Sie den für **Microsoft Azure Backup** verwendeten Computer oder Server durchsuchen.
+1. Öffnen Sie das Snap-In **Microsoft Azure Backup**. Falls Sie nicht wissen, wo das Snap-In installiert wurde, können Sie den für **Microsoft Azure Backup** verwendeten Computer oder Server durchsuchen.
 
     Die Desktop-App sollten in den Suchergebnissen angezeigt werden.
 
-2. Klicken Sie auf **Daten wiederherstellen**, um den Assistenten zu starten.
+2. Wählen Sie **Daten wiederherstellen** aus, um den Assistenten zu starten.
 
-    ![Daten wiederherstellen](./media/backup-azure-restore-windows-server/recover.png)
+    ![Screenshot von Azure Backup mit hervorgehobener Option „Daten wiederherstellen“](./media/backup-azure-restore-windows-server/recover.png)
 
-3. Wählen Sie im Bereich **Erste Schritte** die Option **Dieser Server (`<server name>`)**, um die Daten auf demselben Server oder Computer wiederherzustellen, und klicken Sie auf **Weiter**.
+3. Wählen Sie im Bereich **Erste Schritte** die Option **Dieser Server (`<server name>`)** > **Weiter** aus, um die Daten auf demselben Server oder Computer wiederherzustellen.
 
-    ![Auswählen der Option „Dieser Server“ zum Wiederherstellen der Daten auf demselben Computer](./media/backup-azure-restore-windows-server/samemachine_gettingstarted_instantrestore.png)
+    ![Screenshot der Seite „Erste Schritte“ des Assistenten zum Wiederherstellen von Daten](./media/backup-azure-restore-windows-server/samemachine_gettingstarted_instantrestore.png)
 
-4. Wählen Sie im Bereich **Wiederherstellungsmodus auswählen** die Option **Einzelne Dateien und Ordner**, und klicken Sie auf **Weiter**.
+4. Wählen Sie auf der Seite **Wiederherstellungsmodus auswählen** die Option **Individual Files and Folders (Einzelne Dateien und Ordner)** > **Weiter** aus.
 
-    ![Dateien durchsuchen](./media/backup-azure-restore-windows-server/samemachine_selectrecoverymode_instantrestore.png)
-> [!IMPORTANT]
-> Für die Option zum Wiederherstellen von *einzelnen Dateien und Ordnern* wird .NET Framework 4.5.2 oder höher benötigt. Falls die Option *Individual Files and Folders* (Einzelne Dateien und Ordner) nicht angezeigt wird, müssen Sie .NET Framework auf Version 4.5.2 oder höher aktualisieren und es erneut versuchen.
+    ![Screenshot der Seite „Wiederherstellungsmodus auswählen“ des Assistenten zum Wiederherstellen von Daten](./media/backup-azure-restore-windows-server/samemachine_selectrecoverymode_instantrestore.png)
+  > [!IMPORTANT]
+  > Für die Option zum Wiederherstellen von einzelnen Dateien und Ordnern ist .NET Framework 4.5.2 oder höher erforderlich. Falls die Option **Individual Files and Folders** (Einzelne Dateien und Ordner) nicht angezeigt wird, müssen Sie .NET Framework auf Version 4.5.2 oder höher aktualisieren und es erneut versuchen.
 
-> [!TIP]
-> Die Option *Einzelne Dateien und Ordner* ermöglicht den schnellen Zugriff auf Daten des Wiederherstellungspunkts. Sie eignet sich für die Wiederherstellung einzelner Dateien mit Größen bis maximal 80 GB und bietet dabei Übertragungs-/Kopiergeschwindigkeiten von bis zu 6 MB/s während der Wiederherstellung. Die Option *Volume* stellt alle gesicherten Daten auf einem bestimmten Volume wieder her. Mit dieser Option erreichen Sie höhere Übertragungsgeschwindigkeiten (bis zu 60 MB/s), sodass sie sich ideal für das Wiederherstellen großer Daten oder ganzer Volumes eignet.
+  > [!TIP]
+  > Die Option **Individual Files and Folders** (Einzelne Dateien und Ordner) ermöglicht den schnellen Zugriff auf Daten des Wiederherstellungspunkts. Sie eignet sich für die Wiederherstellung einzelner Dateien bis maximal 80 GB und bietet während der Wiederherstellung Übertragungs- oder Kopiergeschwindigkeiten von bis zu 6 MB/s. Die Option **Volume** stellt alle gesicherten Daten auf einem angegebenen Volume wieder her. Mit dieser Option erreichen Sie höhere Übertragungsgeschwindigkeiten (bis zu 60 MB/s), sodass sie sich ideal für das Wiederherstellen großer Daten oder ganzer Volumes eignet.
 
-5. Wählen Sie im Bereich **Volume und Datum auswählen** das Volume aus, dass die wiederherzustellenden Dateien bzw. Ordner enthält.
+5. Wählen Sie auf der Seite **Volume und Datum auswählen** das Volume aus, das die wiederherzustellenden Dateien und Ordner enthält.
 
-    Wählen Sie im Kalender einen Wiederherstellungspunkt aus. Sie können den Zustand eines beliebigen Wiederherstellungszeitpunkts wiederherstellen. Wenn Datumsangaben in **Fettdruck** angezeigt werden, ist dies ein Hinweis darauf, dass mindestens ein Wiederherstellungszeitpunkt verfügbar ist. Falls mehrere Wiederherstellungspunkte verfügbar sind, müssen Sie nach dem Auswählen eines Datums im Dropdownmenü **Uhrzeit** den jeweiligen Wiederherstellungspunkt auswählen.
+    Wählen Sie im Kalender einen Wiederherstellungspunkt aus. Wenn Datumsangaben in **Fettdruck** angezeigt werden, ist dies ein Hinweis darauf, dass mindestens ein Wiederherstellungszeitpunkt verfügbar ist. Falls mehrere Wiederherstellungspunkte für ein einzelnes Datum verfügbar sind, wählen Sie im Dropdownmenü **Uhrzeit** den jeweiligen Wiederherstellungspunkt aus.
 
-    ![Volume und Datum](./media/backup-azure-restore-windows-server/samemachine_selectvolumedate_instantrestore.png)
+    ![Screenshot der Seite „Volume und Datum auswählen“ des Assistenten zum Wiederherstellen von Daten](./media/backup-azure-restore-windows-server/samemachine_selectvolumedate_instantrestore.png)
 
-6. Klicken Sie auf **Bereitstellen**, nachdem Sie den Wiederherstellungspunkt ausgewählt haben, der wiederhergestellt werden soll.
+6. Wählen Sie nach dem Auswählen des wiederherzustellenden Wiederherstellungspunkts **Einbinden** aus.
 
     Azure Backup stellt den lokalen Wiederherstellungspunkt bereit und verwendet ihn als Wiederherstellungsvolume.
 
-7. Klicken Sie im Bereich **Dateien suchen und wiederherstellen** auf **Durchsuchen**, um Windows-Explorer zu öffnen und nach den gewünschten Dateien und Ordnern zu suchen.
+7. Wählen Sie auf der Seite **Browse and Recover Files** (Dateien durchsuchen und wiederherstellen) die Option **Durchsuchen** aus, um Windows-Explorer zu öffnen und nach den gewünschten Dateien und Ordnern zu suchen.
 
-    ![Wiederherstellungsoptionen](./media/backup-azure-restore-windows-server/samemachine_browserecover_instantrestore.png)
-
-
-8. Kopieren Sie in Windows-Explorer die wiederherzustellenden Dateien bzw. Ordner, und fügen Sie sie an einem lokalen Speicherort auf dem Server oder Computer ein. Sie können die Dateien direkt vom Wiederherstellungsvolume öffnen oder streamen und überprüfen, ob Sie die richtigen Versionen wiederherstellen.
-
-    ![Kopieren und Einfügen von Dateien und Ordnern vom bereitgestellten Volume am lokalen Speicherort](./media/backup-azure-restore-windows-server/samemachine_copy_instantrestore.png)
+    ![Screenshot der Seite „Browse and Recover Files“ (Dateien durchsuchen und wiederherstellen) des Assistenten zum Wiederherstellen von Daten](./media/backup-azure-restore-windows-server/samemachine_browserecover_instantrestore.png)
 
 
-9. Klicken Sie im Bereich **Dateien suchen und wiederherstellen** auf **Bereitstellung aufheben**, wenn Sie die Wiederherstellung der Dateien bzw. Ordner abgeschlossen haben. Klicken Sie anschließend auf **Ja**, um zu bestätigen, dass Sie die Bereitstellung des Volumes aufheben möchten.
+8. Kopieren Sie in Windows-Explorer die wiederherzustellenden Dateien und Ordner, und fügen Sie sie an einem lokalen Speicherort auf dem Server oder Computer ein. Sie können die Dateien direkt vom Wiederherstellungsvolume öffnen oder streamen und überprüfen, ob Sie die richtigen Versionen wiederherstellen.
 
-    ![Aufheben der Bereitstellung des Volumes und Bestätigen des Vorgangs](./media/backup-azure-restore-windows-server/samemachine_unmount_instantrestore.png)
+    ![Screenshot von Windows-Explorer mit hervorgehobener Option „Kopieren“](./media/backup-azure-restore-windows-server/samemachine_copy_instantrestore.png)
+
+
+9. Wenn Sie fertig sind, wählen Sie auf der Seite **Browse and Recover Files** (Dateien durchsuchen und wiederherstellen) die Option **Bereitstellung aufheben** aus. Wählen Sie anschließend **Ja** aus, um zu bestätigen, dass Sie die Einbindung des Volumes aufheben möchten.
+
+    ![Screenshot der Seite „Browse and Recover Files“ (Dateien durchsuchen und wiederherstellen) des Assistenten zum Wiederherstellen von Daten](./media/backup-azure-restore-windows-server/samemachine_unmount_instantrestore.png)
 
     > [!Important]
-    > Wenn Sie nicht auf „Bereitstellung aufheben“ klicken, bleibt die Bereitstellung des Wiederherstellungsvolumes ab dem Bereitstellungszeitpunkt sechs Stunden lang bestehen. Im Falle eines laufenden Dateikopiervorgangs wird die Bereitstellungszeit jedoch auf bis zu 24 Stunden verlängert. Während der Bereitstellung des Volumes werden keine Sicherungsvorgänge durchgeführt. Alle Sicherungsvorgänge, deren Ausführung für den Zeitraum der Volumebereitstellung geplant ist, werden ausgeführt, nachdem die Bereitstellung des Wiederherstellungsvolumes aufgehoben wurde.
+    > Wenn Sie nicht **Bereitstellung aufheben** auswählen, bleibt die Einbindung des Wiederherstellungsvolumes ab dem Einbindungszeitpunkt sechs Stunden lang bestehen. Im Fall eines laufenden Dateikopiervorgangs wird die Einbindungszeit jedoch auf bis zu 24 Stunden verlängert. Während der Bereitstellung des Volumes werden keine Sicherungsvorgänge durchgeführt. Alle Sicherungsvorgänge, deren Ausführung für den Zeitraum der Volumeeinbindung geplant ist, werden ausgeführt, nachdem die Einbindung des Wiederherstellungsvolumes aufgehoben wurde.
     >
 
 
@@ -90,65 +90,65 @@ Wenn Sie versehentlich eine Datei gelöscht haben und sie auf demselben Computer
 Wenn der gesamte Server verloren geht, können Sie Daten aus Azure Backup dennoch auf einem anderen Computer wiederherstellen. Der Workflow wird in den folgenden Schritten beschrieben.
 
 
-In diesen Schritten wird folgende Terminologie verwendet:
+Bei diesen Schritte wird die folgende Terminologie verwendet:
 
-* *Quellcomputer* – Der ursprüngliche Computer, von dem die Sicherung erstellt wurde und der zurzeit nicht verfügbar ist.
+* *Quellcomputer:* der ursprüngliche Computer, von dem die Sicherung erstellt wurde und der zurzeit nicht verfügbar ist.
 * *Zielcomputer* – Der Computer, auf dem die Daten wiederhergestellt werden.
-* *Beispieltresor* – Der Recovery Services-Tresor, bei dem der *Quellcomputer* und der *Zielcomputer* registriert sind. <br/>
+* *Beispieltresor:* der Recovery Services-Tresor, bei dem der Quellcomputer und der Zielcomputer registriert sind. <br/>
 
 > [!NOTE]
 > Sicherungen können nicht auf einem Zielcomputer wiederhergestellt werden, auf dem eine ältere Version des Betriebssystems ausgeführt wird. Beispielsweise kann eine Sicherung, die von einem Windows 7-Computer erstellt wurde, auf einem Windows 8-Computer (oder höher) wiederhergestellt werden. Es ist aber nicht möglich, eine Sicherung, die von einem Windows 8-Computer erstellt wurde, auf einem Windows 7-Computer wiederherzustellen.
 >
 >
 
-1. Öffnen Sie das Snap-In **Microsoft Azure Backup** auf dem *Zielcomputer*.
+1. Öffnen Sie das Snap-In **Microsoft Azure Backup** auf dem Zielcomputer.
 
-2. Stellen Sie sicher, dass der *Zielcomputer* und der *Quellcomputer* bei demselben Recovery Services-Tresor registriert sind.
+2. Stellen Sie sicher, dass der Zielcomputer und der Quellcomputer beim selben Recovery Services-Tresor registriert sind.
 
-3. Klicken Sie auf **Daten wiederherstellen**, um den **Assistenten zum Wiederherstellen von Daten** zu öffnen.
+3. Wählen Sie **Daten wiederherstellen** aus, um den **Assistenten zum Wiederherstellen von Daten** zu öffnen.
 
-    ![Daten wiederherstellen](./media/backup-azure-restore-windows-server/recover.png)
+    ![Screenshot von Azure Backup mit hervorgehobener Option „Daten wiederherstellen“](./media/backup-azure-restore-windows-server/recover.png)
 
-4. Wählen Sie im Bereich **Erste Schritte** die Option **Anderer Server**.
+4. Wählen Sie auf der Seite **Erste Schritte** die Option **Anderer Server** aus.
 
-    ![Anderer Server](./media/backup-azure-restore-windows-server/alternatemachine_gettingstarted_instantrestore.png)
+    ![Screenshot der Seite „Erste Schritte“ des Assistenten zum Wiederherstellen von Daten](./media/backup-azure-restore-windows-server/alternatemachine_gettingstarted_instantrestore.png)
 
-5. Geben Sie die Datei mit den Tresoranmeldeinformationen an, die dem *Beispieltresor* entspricht, und klicken Sie auf **Weiter**.
+5. Geben Sie die Datei mit den Tresoranmeldeinformationen an, die dem Beispieltresor entspricht, und wählen Sie **Weiter** aus.
 
-    Wenn die Datei mit den Tresoranmeldeinformationen ungültig (oder abgelaufen) ist, laden Sie eine neue Anmeldeinformationsdatei für den Tresor aus dem *Beispieltresor* im Azure-Portal herunter. Nachdem Sie gültige Tresoranmeldeinformationen angegeben haben, wird der Name des entsprechenden Sicherungstresors angezeigt.
+    Wenn die Datei mit den Tresoranmeldeinformationen ungültig (oder abgelaufen) ist, laden Sie eine neue Anmeldeinformationsdatei für den Tresor aus dem Beispieltresor im Azure-Portal herunter. Nachdem Sie gültige Tresoranmeldeinformationen angegeben haben, wird der Name des entsprechenden Sicherungstresors angezeigt.
 
 
-6. Wählen Sie im Bereich **Sicherungsserver auswählen** in der Liste mit den angezeigten Computern den *Quellcomputer* aus, und geben Sie die Passphrase an. Klicken Sie auf **Weiter**.
+6. Wählen Sie auf der Seite **Sicherungsserver auswählen** in der Liste mit den angezeigten Computern den Quellcomputer aus, und geben Sie die Passphrase an. Klicken Sie anschließend auf **Weiter**.
 
-    ![Liste der Computer](./media/backup-azure-restore-windows-server/alternatemachine_selectmachine_instantrestore.png)
+    ![Screenshot der Seite „Sicherungsserver auswählen“ des Assistenten zum Wiederherstellen von Daten](./media/backup-azure-restore-windows-server/alternatemachine_selectmachine_instantrestore.png)
 
-7. Wählen Sie im Bereich **Wiederherstellungsmodus auswählen** die Option **Einzelne Dateien und Ordner**, und klicken Sie auf **Weiter**.
+7. Wählen Sie auf der Seite **Wiederherstellungsmodus auswählen** die Option **Individual Files and Folders (Einzelne Dateien und Ordner)** > **Weiter** aus.
 
-    ![Suchen,](./media/backup-azure-restore-windows-server/alternatemachine_selectrecoverymode_instantrestore.png)
+    ![Screenshot der Seite „Wiederherstellungsmodus auswählen“ des Assistenten zum Wiederherstellen von Daten](./media/backup-azure-restore-windows-server/alternatemachine_selectrecoverymode_instantrestore.png)
 
-8. Wählen Sie im Bereich **Volume und Datum auswählen** das Volume aus, dass die wiederherzustellenden Dateien bzw. Ordner enthält.
+8. Wählen Sie auf der Seite **Volume und Datum auswählen** das Volume aus, das die wiederherzustellenden Dateien und Ordner enthält.
 
-    Wählen Sie im Kalender einen Wiederherstellungspunkt aus. Sie können den Zustand eines beliebigen Wiederherstellungszeitpunkts wiederherstellen. Wenn Datumsangaben in **Fettdruck** angezeigt werden, ist dies ein Hinweis darauf, dass mindestens ein Wiederherstellungszeitpunkt verfügbar ist. Falls mehrere Wiederherstellungspunkte verfügbar sind, müssen Sie nach dem Auswählen eines Datums im Dropdownmenü **Uhrzeit** den jeweiligen Wiederherstellungspunkt auswählen.
+    Wählen Sie im Kalender einen Wiederherstellungspunkt aus. Wenn Datumsangaben in **Fettdruck** angezeigt werden, ist dies ein Hinweis darauf, dass mindestens ein Wiederherstellungszeitpunkt verfügbar ist. Falls mehrere Wiederherstellungspunkte für ein einzelnes Datum verfügbar sind, wählen Sie im Dropdownmenü **Uhrzeit** den jeweiligen Wiederherstellungspunkt aus.
 
-    ![Elemente suchen](./media/backup-azure-restore-windows-server/alternatemachine_selectvolumedate_instantrestore.png)
+    ![Screenshot der Seite „Volume und Datum auswählen“ des Assistenten zum Wiederherstellen von Daten](./media/backup-azure-restore-windows-server/alternatemachine_selectvolumedate_instantrestore.png)
 
-9. Klicken Sie auf **Bereitstellen**, um den Wiederherstellungspunkt lokal als Wiederherstellungsvolume auf Ihrem *Zielcomputer* bereitzustellen.
+9. Wählen Sie **Einbinden** aus, um den Wiederherstellungspunkt lokal als Wiederherstellungsvolume auf Ihrem Zielcomputer einzubinden.
 
-10. Klicken Sie im Bereich **Dateien suchen und wiederherstellen** auf **Durchsuchen**, um Windows-Explorer zu öffnen und nach den gewünschten Dateien und Ordnern zu suchen.
+10. Wählen Sie auf der Seite **Browse and Recover Files** (Dateien durchsuchen und wiederherstellen) die Option **Durchsuchen** aus, um Windows-Explorer zu öffnen und nach den gewünschten Dateien und Ordnern zu suchen.
 
-    ![Verschlüsselung](./media/backup-azure-restore-windows-server/alternatemachine_browserecover_instantrestore.png)
+    ![Screenshot der Seite „Browse and Recover Files“ (Dateien durchsuchen und wiederherstellen) des Assistenten zum Wiederherstellen von Daten](./media/backup-azure-restore-windows-server/alternatemachine_browserecover_instantrestore.png)
 
-11. Kopieren Sie in Windows-Explorer die Dateien bzw. Ordner vom Wiederherstellungsvolume, und fügen Sie sie am Speicherort auf Ihrem *Zielcomputer* ein. Sie können die Dateien direkt vom Wiederherstellungsvolume öffnen oder streamen und überprüfen, ob die richtigen Versionen wiederhergestellt werden.
+11. Kopieren Sie in Windows-Explorer die Dateien und Ordner vom Wiederherstellungsvolume, und fügen Sie sie am Speicherort auf dem Zielcomputer ein. Sie können die Dateien direkt vom Wiederherstellungsvolume öffnen oder streamen und überprüfen, ob die richtigen Versionen wiederhergestellt werden.
 
-    ![Verschlüsselung](./media/backup-azure-restore-windows-server/alternatemachine_copy_instantrestore.png)
+    ![Screenshot von Windows-Explorer mit hervorgehobener Option „Kopieren“](./media/backup-azure-restore-windows-server/alternatemachine_copy_instantrestore.png)
 
-12. Klicken Sie im Bereich **Dateien suchen und wiederherstellen** auf **Bereitstellung aufheben**, wenn Sie die Wiederherstellung der Dateien bzw. Ordner abgeschlossen haben. Klicken Sie anschließend auf **Ja**, um zu bestätigen, dass Sie die Bereitstellung des Volumes aufheben möchten.
+12. Wenn Sie fertig sind, wählen Sie auf der Seite **Browse and Recover Files** (Dateien durchsuchen und wiederherstellen) die Option **Bereitstellung aufheben** aus. Wählen Sie anschließend **Ja** aus, um zu bestätigen, dass Sie die Einbindung des Volumes aufheben möchten.
 
-    ![Verschlüsselung](./media/backup-azure-restore-windows-server/alternatemachine_unmount_instantrestore.png)
+    ![Screenshot der Seite „Browse and Recover Files“ (Dateien durchsuchen und wiederherstellen) des Assistenten zum Wiederherstellen von Daten](./media/backup-azure-restore-windows-server/alternatemachine_unmount_instantrestore.png)
 
     > [!Important]
-    > Wenn Sie nicht auf „Bereitstellung aufheben“ klicken, bleibt die Bereitstellung des Wiederherstellungsvolumes ab dem Bereitstellungszeitpunkt sechs Stunden lang bestehen. Im Falle eines laufenden Dateikopiervorgangs wird die Bereitstellungszeit jedoch auf bis zu 24 Stunden verlängert. Während der Bereitstellung des Volumes werden keine Sicherungsvorgänge durchgeführt. Alle Sicherungsvorgänge, deren Ausführung für den Zeitraum der Volumebereitstellung geplant ist, werden ausgeführt, nachdem die Bereitstellung des Wiederherstellungsvolumes aufgehoben wurde.
+    > Wenn Sie nicht **Bereitstellung aufheben** auswählen, bleibt die Einbindung des Wiederherstellungsvolumes ab dem Einbindungszeitpunkt sechs Stunden lang bestehen. Im Fall eines laufenden Dateikopiervorgangs wird die Einbindungszeit jedoch auf bis zu 24 Stunden verlängert. Während der Bereitstellung des Volumes werden keine Sicherungsvorgänge durchgeführt. Alle Sicherungsvorgänge, deren Ausführung für den Zeitraum der Volumeeinbindung geplant ist, werden ausgeführt, nachdem die Einbindung des Wiederherstellungsvolumes aufgehoben wurde.
     >
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Nachdem Sie nun Ihre Dateien und Ordner wiederhergestellt haben, können Sie [Ihre Sicherungen verwalten](backup-azure-manage-windows-server.md).
+Nachdem Sie nun Ihre Dateien und Ordner wiederhergestellt haben, können Sie [Ihre Sicherungen verwalten](backup-azure-manage-windows-server.md).

@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 05/04/2017
 ms.reviewer: antonfr
 ms.author: mbullwin
-ms.openlocfilehash: b0256e899d47e3b6f8141218c11e1a7a62ca8e1a
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 099e597982172bcea39fedd0fd1445f466eb2bc1
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50419723"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50960819"
 ---
 # <a name="smart-detection---performance-anomalies"></a>Intelligente Erkennung – Leistungsabweichungen
 
@@ -161,7 +161,7 @@ Sie enthält folgende Angaben:
 
 Application Insights ermittelt Leistungsprobleme, die sich möglicherweise nur auf einige Benutzer auswirken oder nur in bestimmten Fällen eine Auswirkung für Benutzer darstellen. Beispielsweise werden Sie benachrichtigt, wenn Seiten mit einem Browsertyp deutlich langsamer als bei anderen Browsertypen geladen werden oder wenn Anforderungen über einen bestimmten Server deutlich langsamer bereitgestellt werden. Außerdem können Probleme mit Kombinationen von Eigenschaften erkannt werden, z.B. das langsame Laden von Seiten in einem geografischen Bereich mit Clients, die ein bestimmtes Betriebssystem verwenden.  
 
-Anomalien dieser Art sind nicht leicht zu erkennen, wenn nur die Daten untersucht werden, aber sie kommen häufiger vor, als man denkt. Sie erfahren davon meistens erst, wenn Sie Beschwerden von Kunden erhalten. Dann ist es bereits zu spät: Die betroffenen Benutzer wandern zur Konkurrenz ab!
+Anomalien dieser Art sind nicht leicht zu erkennen, wenn nur die Daten untersucht werden, aber sie kommen häufiger vor, als man denkt. Sie erfahren davon meistens erst, wenn Sie Beschwerden von Kunden erhalten. Doch dann ist es bereits zu spät: Die betroffenen Benutzer wandern zur Konkurrenz ab.
 
 Derzeit überprüfen wir mit unseren Algorithmen die Seitenladezeiten, Reaktionszeiten auf Anforderungen auf dem Server und Reaktionszeiten von Abhängigkeiten.  
 
@@ -185,8 +185,8 @@ Mit den folgenden Diagnosetools können Sie die Telemetrie Ihrer App untersuchen
 
 * [Profiler](app-insights-profiler.md) 
 * [Snapshot Debugger](app-insights-snapshot-debugger.md)
-* [Analyse](app-insights-analytics-tour.md)
-* [Intelligente Analysediagnose](app-insights-analytics-diagnostics.md)
+* [Analyse](../log-analytics/query-language/get-started-analytics-portal.md)
+* [Intelligente Analysediagnose](app-insights-analytics.md)
 
 Intelligente Erkennungen sind vollkommen automatisch. Vielleicht möchten Sie aber weitere Warnungen einrichten?
 

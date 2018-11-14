@@ -5,21 +5,21 @@ services: virtual-machines
 author: jonbeck7
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 07/06/2018
+ms.date: 11/06/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 0c071fbfb962de1bf077dfa720cd66bc06e42178
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: 3bd4adcd6df07aa47312223c559f0e9ed4fc0b14
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49312502"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51264303"
 ---
 <!-- F-series, Fs-series* -->
 
 Compute-optimierte VM-Größen weisen ein großes Verhältnis von CPU zu Arbeitsspeicher auf und eignen sich gut für Webserver mit mittlerem Durchsatz, Netzwerkappliances, Batchprozesse und Anwendungsserver. Dieser Artikel enthält Informationen zur Anzahl von vCPUs, Datenträgern und NICs sowie zum Speicherdurchsatz und zur Netzwerkbandbreite der einzelnen Größen in dieser Gruppe.
 
-Die Fsv2-Serie basiert auf dem Prozessor Intel® Xeon® Platinum 8168 mit einer Basiskernfrequenz von 2,7 GHz und einer maximalen Einzelkern-Turbofrequenz von 3,7 GHz. Intel® AVX-512-Anweisungen, die auf Intel Scalable Processors neu sind, können bei Gleitkommaoperationen mit einfacher und doppelter Genauigkeit mit Vektorverarbeitungeworkloads die Leistung verdoppeln. D.h., sie bewältigen alle Rechenworkloads wirklich schnell. 
+Die Fsv2-Serie basiert auf dem Prozessor Intel® Xeon® Platinum 8168 mit einer durchgehenden Turbotaktfrequenz von 3,4 GHz und einer maximalen Einzelkern-Turbofrequenz von 3,7 GHz. Intel® AVX-512-Anweisungen, die auf Intel Scalable Processors neu sind, können bei Gleitkommaoperationen mit einfacher und doppelter Genauigkeit mit Vektorverarbeitungeworkloads die Leistung verdoppeln. D.h., sie bewältigen alle Rechenworkloads wirklich schnell. 
 
 Die Fsv2-Serie hat einen niedrigeren Listenpreis pro Stunde und bietet auf Basis der Azure-Compute-Einheit (Azure Compute Unit, ACU) das beste Preis-Leistungs-Verhältnis pro vCPU im Azure-Portfolio. 
 

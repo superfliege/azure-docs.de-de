@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: raynew
-ms.openlocfilehash: 42994a38aeab7f6da552f2f9073a806142511531
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 2ba6fefb9c1d952fbfdb6942694d69565a299c2e
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50095527"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51241258"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup – häufig gestellte Fragen
 In diesem Artikel werden allgemeine Fragen um Azure Backup-Dienst beantwortet.
@@ -44,7 +44,7 @@ Nein. In einem Tresor gespeicherte Sicherungsdaten können nicht in einen andere
 Nein. Die Speicheroptionen eines Recovery Services-Tresors können nur geändert werden, bevor Sicherungen gespeichert wurden.
 
 ### <a name="can-i-do-an-item-level-restore-ilr-for-vms-backed-up-to-a-recovery-services-vault"></a>Kann ich für virtuelle Computer, die in einem Recovery Services-Tresor gesichert wurden, eine Wiederherstellung auf Elementebene durchführen?
-Nein, die Wiederherstellung auf Elementebene wird nicht unterstützt. 
+Nein, die Wiederherstellung auf Elementebene wird nicht unterstützt.
 
 
 ## <a name="azure-backup-agent"></a>Azure Backup-Agent
@@ -75,7 +75,7 @@ Sie benötigen für den VMware-/Hyper-V-Schutz keine separate Lizenzierung.
 
 ### <a name="which-dpm-versions-are-supported"></a>Welche DPM-Versionen werden unterstützt?
 
-Die unterstützten DPM-Versionen sind in der [Unterstützungsmatrix](backup-azure-dpm-introduction.md#prerequisites-and-limitations) zusammengefasst. Es wird empfohlen, die neuesten DPM-Updates zu installieren und die [neueste Version](http://aka.ms/azurebackup_agent) des Azure Backup-Agents auf dem DPM-Server auszuführen.
+Die unterstützten DPM-Versionen sind in der [Unterstützungsmatrix](backup-azure-dpm-introduction.md#prerequisites-and-limitations) zusammengefasst. Es wird empfohlen, die neuesten DPM-Updates zu installieren und die [neueste Version](https://aka.ms/azurebackup_agent) des Azure Backup-Agents auf dem DPM-Server auszuführen.
 
 ### <a name="can-i-register-the-server-to-multiple-vaults"></a>Kann ich den Server für mehrere Tresore registrieren?
 
@@ -99,7 +99,7 @@ Ja. Sie sollten jedoch zuerst DPM einrichten und dann den Azure Backup-Agent ins
 ## <a name="general-backup"></a>Allgemeine Sicherung
 
 ### <a name="are-there-limits-on-backup-scheduling"></a>Gibt es Beschränkungen bei der Planung der Sicherung?
-Ja. 
+Ja.
 - Sie können Computer mit Windows Server und Windows bis zu dreimal täglich sichern. Sie können die Planungsrichtlinie auf tägliche oder wöchentliche Zeitpläne festlegen.
 - Sie können DPM bis zu zweimal täglich sichern. Sie können die Planungsrichtlinie auf tägliche, wöchentliche, monatliche oder jährliche Zeitpläne festlegen.
 - Sie sichern Azure-VMs einmal täglich.
@@ -110,12 +110,12 @@ Azure Backup unterstützt diese Betriebssysteme für die Sicherung von Dateien u
 
 **Betriebssystem**| **SKU** |**Details**
 --- | --- | ---
-Arbeitsstation | | 
+Arbeitsstation | |
 Windows 10, 64 Bit | Enterprise, Pro, Home | Auf Computern müssen die neuesten Service Packs und Updates ausgeführt werden.
 Windows 8.1, 64 Bit | Enterprise, Pro | Auf Computern müssen die neuesten Service Packs und Updates ausgeführt werden.
 Windows 8, 64 Bit | Enterprise, Pro | Auf Computern müssen die neuesten Service Packs und Updates ausgeführt werden.
 Windows 7, 64 Bit | Ultimate, Enterprise, Professional, Home Premium, Home Basic, Starter | Auf Computern müssen die neuesten Service Packs und Updates ausgeführt werden.
-Server | | 
+Server | |
 Windows Server 2016, 64 Bit | Standard, Datacenter, Essentials | Mit den neuesten Service Packs/Updates.
 Windows Server 2012 R2, 64 Bit | Standard, Datacenter, Foundation | Mit den neuesten Service Packs/Updates.
 Windows Server 2012, 64 Bit | Datacenter, Foundation, Standard | Mit den neuesten Service Packs/Updates.
@@ -133,20 +133,20 @@ Für Sicherungen von virtuellen Azure-Computern mit Linux unterstützt Azure Bac
 Die folgenden Größengrenzwerte gelten:
 
 
-Betriebssystem/Computer | Größengrenzwert der Datenquelle 
---- | --- | --- 
-Windows 8 oder höher | 54.400 GB 
-Windows 7 |1.700 GB 
-Windows Server 2012 oder höher | 54.400 GB 
-Windows Server 2008, Windows Server 2008 R2 | 1.700 GB 
-Azure-VM | 32 Datenträger für Daten<br/><br/> Datenträger bis 4.095 GB
+Betriebssystem/Computer | Größengrenzwert der Datenquelle
+--- | --- | ---
+Windows 8 oder höher | 54.400 GB
+Windows 7 |1.700 GB
+Windows Server 2012 oder höher | 54.400 GB
+Windows Server 2008, Windows Server 2008 R2 | 1.700 GB
+Azure-VM | 16 Datenträger<br/><br/> Datenträger bis 4.095 GB
 
 ## <a name="how-is-the-data-source-size-determined"></a>Wie wird die Größe der Datenquelle bestimmt?
 
 In der folgenden Tabelle wird beschrieben, wie die einzelnen Datenquellengrößen bestimmt werden.
 
 **Datenquelle** | **Details**
---- | --- 
+--- | ---
 Volume |Die Datenmenge, die von einem virtuellen Computer mit einem Volume gesichert wird.
 SQL Server-Datenbank |Größe einer einzelnen zu sichernden SQL-Datenbank
 SharePoint | Summe der Inhalts- und Konfigurationsdatenbanken in einer zu sichernden SharePoint-Farm
@@ -158,7 +158,7 @@ BMR/Systemstatus |Jede einzelne Kopie der BMR oder des Systemstatus des zu siche
 
 Es gibt keine Beschränkung für die Menge der Daten, die in einem Recovery Services-Tresor gesichert werden können.
 
-### <a name="if-i-cancel-a-backup-job-once-it-has-started-is-the-transferred-backup-data-deleted"></a>Werden die übertragenen Sicherungsdaten gelöscht, wenn ich einen Sicherungsauftrag nach dem Starten abbreche? 
+### <a name="if-i-cancel-a-backup-job-once-it-has-started-is-the-transferred-backup-data-deleted"></a>Werden die übertragenen Sicherungsdaten gelöscht, wenn ich einen Sicherungsauftrag nach dem Starten abbreche?
 Nein. Alle Daten, die vor dem Abbrechen des Sicherungsauftrags in den Tresor übertragen wurden, bleiben im Tresor erhalten. Azure Backup nutzt einen Prüfpunktmechanismus, um den Sicherungsdaten während des Sicherungsvorgangs von Zeit zu Zeit Prüfpunkte hinzuzufügen. Da in den Sicherungsdaten Prüfpunkte vorhanden sind, kann der nächste Sicherungsprozess die Integrität der Dateien überprüfen. Der nächste Sicherungsauftrag erfolgt inkrementell bezogen auf die zuvor gesicherten Daten. Inkrementelle Sicherungen übertragen nur neue oder geänderte Daten, wodurch eine bessere Nutzung der Bandbreite zustande kommt.
 
 Wenn Sie einen Sicherungsauftrag für eine Azure-VM abbrechen, werden die übertragenen Daten ignoriert. Beim nächsten Sicherungsauftrag werden die Daten inkrementell bezogen auf den letzten erfolgreichen Sicherungsauftrag übertragen.
@@ -186,7 +186,7 @@ Nein. Alle Daten, die vor dem Abbrechen des Sicherungsauftrags in den Tresor üb
 ### <a name="are-the-retention-policies-for-dpm-and-windows-machines-without-dpm-the-same"></a>Sind die Aufbewahrungsrichtlinien für DPM und Windows-Computer ohne DPM gleich?
 Ja, für beide gelten tägliche, wöchentliche, monatliche und jährliche Aufbewahrungsrichtlinien.
 
-### <a name="can-i-customize-retention-policies"></a>Kann ich Aufbewahrungsrichtlinien anpassen? 
+### <a name="can-i-customize-retention-policies"></a>Kann ich Aufbewahrungsrichtlinien anpassen?
 Ja, es gibt Anpassungsrichtlinien. Beispielsweise können Sie Anforderungen für wöchentliche und tägliche Aufbewahrung, jedoch nicht jährliche und monatliche, konfigurieren.
 
 ### <a name="can-i-use-different-times-for-backup-scheduling-and-retention-policies"></a>Kann ich unterschiedliche Zeiten für den Sicherungszeitplan und für Aufbewahrungsrichtlinien verwenden?
@@ -208,7 +208,7 @@ Die Speicherarchitektur von Azure Backup bietet Ihnen die Vorteile beider Ansät
 
 ### <a name="is-there-a-limit-on-the-number-of-recovery-points-that-can-be-created"></a>Gibt es eine Beschränkung für die Anzahl von Wiederherstellungspunkten, die erstellt werden können?
 
-Pro geschützter Instanz können bis zu 9.999 Wiederherstellungspunkte erstellt werden. Geschützte Instanzen sind Computer, Server (physisch oder virtuell) oder Workloads, die in Azure gesichert werden. 
+Pro geschützter Instanz können bis zu 9.999 Wiederherstellungspunkte erstellt werden. Geschützte Instanzen sind Computer, Server (physisch oder virtuell) oder Workloads, die in Azure gesichert werden.
 
 - Erfahren Sie mehr über [Sicherung und Wiederherstellung](./backup-introduction-to-azure-backup.md#backup-and-retention).
 - Erfahren Sie etwas über [geschützte Instanzen](./backup-introduction-to-azure-backup.md#what-is-a-protected-instance).
@@ -238,7 +238,7 @@ Ja. Die Daten in Azure sind im Ruhezustand verschlüsselt.
 - Für die lokale Sicherung erfolgt eine Verschlüsselung im Ruhezustand über die beim Sichern in Azure bereitgestellte Passphrase.
 - Für virtuelle Azure-Computer werden die Daten mit Storage Service Encryption (SSE) im Ruhezustand verschlüsselt.
 
-Die Sicherungsdaten werden zu keinem Zeitpunkt von Microsoft entschlüsselt. 
+Die Sicherungsdaten werden zu keinem Zeitpunkt von Microsoft entschlüsselt.
 
 
 ### <a name="what-is-the-minimum-length-of-encryption-the-key-used-to-encrypt-backup-data"></a>Wie lang muss der Verschlüsselungsschlüssel zur Verschlüsselung von Sicherungsdaten mindestens sein?

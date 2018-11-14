@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: sngun
-ms.openlocfilehash: 554718f0bb465ca757fc4dcf6c22d3b0dd80f2fb
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 3f0bf2c6c58afbbf9a1256fa5901591e535fe20c
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50251089"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51250763"
 ---
 # <a name="azure-cosmos-db-faq"></a>Azure Cosmos DB – Häufig gestellte Fragen
 ## <a name="azure-cosmos-db-fundamentals"></a>Azure DB Cosmos-Grundlagen
@@ -36,7 +36,7 @@ Azure Cosmos DB ist eine gute Wahl für neue Web-, Mobil-, Gaming- und IoT-Anwen
 ### <a name="how-does-azure-cosmos-db-offer-predictable-performance"></a>Wie wird bei Azure Cosmos DB für eine vorhersagbare Leistung gesorgt?
 In Azure Cosmos DB wird der Durchsatz in [Anforderungseinheiten](request-units.md) (Request Units, RUs) gemessen. Ein Durchsatz von einer Anforderungseinheit entspricht dem Durchsatz der GET-Anforderung für ein Dokument mit einer Größe von 1 KB. Jeder Vorgang in Azure Cosmos DB (einschließlich der Ausführung von Lese- und Schreibvorgängen, SQL-Abfragen sowie gespeicherten Prozeduren) verfügt über einen deterministischen Wert für die Anforderungseinheiten, der auf dem erforderlichen Durchsatz zum Abschließen des Vorgangs basiert. Im Hinblick auf den Durchsatz Ihrer Anwendung müssen Sie sich also keine Gedanken um das Zusammenspiel von CPU, E/A-Leistung und Arbeitsspeicher machen, sondern können mit einer einzigen Kennzahl arbeiten: der Anforderungseinheit.
 
-Sie können jeden Azure Cosmos DB-Container mit bereitgestelltem Durchsatz reservieren (Anforderungseinheiten des Durchsatzes pro Sekunde). Für Anwendungen jeder Größe können Sie Vergleichstests einzelner Anforderungen durchführen, um deren Werte für die Anforderungseinheiten zu messen. Außerdem können Sie einen Container bereitstellen, um die Gesamtsumme der Anforderungseinheiten über alle Anforderungen hinweg zu verarbeiten. Sie können den Durchsatz des Containers auch zentral hoch- oder herunterskalieren, wenn sich die Anforderungen Ihrer Anwendung ändern. Weitere Informationen zu Anforderungseinheiten und Hilfe zum Ermitteln Ihrer Containeranforderungen finden Sie unter [Schätzen der Durchsatzanforderungen](request-units.md#estimating-throughput-needs). Probieren Sie außerdem den [Durchsatzrechner](https://www.documentdb.com/capacityplanner) aus. Der Begriff *Container* bezieht sich hier auf eine SQL-API-Sammlung, einen Gremlin-API-Graphen, eine MongoDB-API-Sammlung und eine Tabellen-API-Tabelle. 
+Sie können jeden Azure Cosmos DB-Container mit bereitgestelltem Durchsatz reservieren (Anforderungseinheiten des Durchsatzes pro Sekunde). Für Anwendungen jeder Größe können Sie Vergleichstests einzelner Anforderungen durchführen, um deren Werte für die Anforderungseinheiten zu messen. Außerdem können Sie einen Container bereitstellen, um die Gesamtsumme der Anforderungseinheiten über alle Anforderungen hinweg zu verarbeiten. Sie können den Durchsatz des Containers auch zentral hoch- oder herunterskalieren, wenn sich die Anforderungen Ihrer Anwendung ändern. Um mehr über Anforderungseinheiten zu erfahren und Hilfe zum Ermitteln Ihrer Containeranforderungen zu erhalten, testen Sie den [Durchsatzrechner](https://www.documentdb.com/capacityplanner). Der Begriff *Container* bezieht sich hier auf eine SQL-API-Sammlung, einen Gremlin-API-Graphen, eine MongoDB-API-Sammlung und eine Tabellen-API-Tabelle. 
 
 ### <a name="how-does-azure-cosmos-db-support-various-data-models-such-as-keyvalue-columnar-document-and-graph"></a>Wie unterstützt Azure Cosmos DB verschiedene Datenmodelle wie Schlüssel/Wert-, einspaltige, Dokument- und Diagrammdaten?
 
@@ -462,7 +462,7 @@ Die RU-Gebühr basiert auf dem Arbeits-DataSet des Durchlaufs und nicht auf dem 
 
 ### <a name="whats-the-maximum-scale-that-a-graph-database-can-have-in-azure-cosmos-db-gremlin-api"></a>Was ist die maximale mögliche Skalierung einer Graphdatenbank in der Azure Cosmos DB-Gremlin-API? 
 
-Azure Cosmos DB nutzt [horizontale Partitionierung](partition-data.md), um einem Anstieg der Speicher- und Durchsatzanforderungen automatisch gerecht zu werden. Das Höchstmaß an Durchsatz und Speicherkapazität einer Workload richtet sich nach der Menge von Partitionen, die einer bestimmten Sammlung zugeordnet sind. Eine Gremlin-API-Sammlung weist jedoch einen bestimmten Satz von Richtlinien auf, um eine optimale bedarfsorientierte Leistung zu gewährleisten. Weitere Informationen und bewährte Methoden finden Sie im Dokument [Best Practices für die Partitionierung](partition-data.md#best-practices-when-choosing-a-partition-key). 
+Azure Cosmos DB nutzt [horizontale Partitionierung](partition-data.md), um einem Anstieg der Speicher- und Durchsatzanforderungen automatisch gerecht zu werden. Das Höchstmaß an Durchsatz und Speicherkapazität einer Workload richtet sich nach der Menge von Partitionen, die einer bestimmten Sammlung zugeordnet sind. Eine Gremlin-API-Sammlung weist jedoch einen bestimmten Satz von Richtlinien auf, um eine optimale bedarfsorientierte Leistung zu gewährleisten. Weitere Informationen zur Partitionierung und zu Best Practices finden Sie im Artikel [Partitionieren und horizontales Skalieren in Azure Cosmos DB](partition-data.md). 
 
 ### <a name="how-can-i-protect-against-injection-attacks-using-gremlin-drivers"></a>Wie kann ich mithilfe von Gremlin-Treibern vor Einschleusungsangriffen schützen? 
 

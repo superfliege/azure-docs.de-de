@@ -13,20 +13,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: dcd4d28341e766baeaf6d581a69312cc33a0282a
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 803fa89145d3a38b2df34666754fe8949a74eb53
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
-ms.locfileid: "30233825"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51262334"
 ---
 # <a name="api-management-advanced-policies"></a>API Management – Erweiterte Richtlinien
-Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinien. Weitere Informationen zum Hinzufügen und Konfigurieren von Richtlinien finden Sie unter [Richtlinien in API Management](http://go.microsoft.com/fwlink/?LinkID=398186).
+Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinien. Weitere Informationen zum Hinzufügen und Konfigurieren von Richtlinien finden Sie unter [Richtlinien in API Management](https://go.microsoft.com/fwlink/?LinkID=398186).
 
 ##  <a name="AdvancedPolicies"></a> Erweiterte Richtlinien
 
 -   [Ablaufsteuerung](api-management-advanced-policies.md#choose) – Bedingte Anwendung von Richtlinienanweisungen basierend auf den Ergebnissen der Auswertung von booleschen [Ausdrücken](api-management-policy-expressions.md)
--   [Anforderung weiterleiten](#ForwardRequest) – Leitet die Anforderung an den Back-End-Dienst.
+-   [Anforderung weiterleiten](#ForwardRequest) – leitet die Anforderung an den Back-End-Dienst.
 -   [Parallelität einschränken:](#LimitConcurrency) verhindert die Ausführung der eingeschlossenen Richtlinien durch mehr als die angegebene Anzahl von Anforderungen gleichzeitig.
 -   [Protokoll an Event Hub](#log-to-eventhub) – Sendet Nachrichten im angegebenen Format an einen von einem Protokollierungstool definierten Event Hub.
 -   [Modellantwort](#mock-response) – bricht die Pipelineausführung ab und gibt die Modellantwort unmittelbar an den Aufrufer zurück.
@@ -125,18 +125,18 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
 
 |Element|BESCHREIBUNG|Erforderlich|
 |-------------|-----------------|--------------|
-|choose|Stammelement|Ja|
-|when|Die Bedingung, die für die Teile `if` oder `ifelse` der `choose`-Richtlinie verwendet werden soll. Wenn die `choose`-Richtlinie über mehrere `when`-Abschnitte verfügt, werden diese nacheinander ausgewertet. Wenn die Bedingung (`condition`) eines when-Elements bei der Auswertung `true` ergibt, werden keine weiteren `when`-Bedingungen ausgewertet.|Ja|
+|choose|Stammelement|JA|
+|when|Die Bedingung, die für die Teile `if` oder `ifelse` der `choose`-Richtlinie verwendet werden soll. Wenn die `choose`-Richtlinie über mehrere `when`-Abschnitte verfügt, werden diese nacheinander ausgewertet. Wenn die Bedingung (`condition`) eines when-Elements bei der Auswertung `true` ergibt, werden keine weiteren `when`-Bedingungen ausgewertet.|JA|
 |otherwise|Enthält den Richtliniencodeausschnitt, der verwendet werden soll, wenn die Auswertung für keine `when`-Bedingung `true` ergibt.|Nein |
 
 ### <a name="attributes"></a>Attribute
 
 |Attribut|BESCHREIBUNG|Erforderlich|
 |---------------|-----------------|--------------|
-|condition="boolescher Ausdruck &#124; boolesche Konstante"|Der boolesche Ausdruck bzw. die Konstante, der bzw. die ausgewertet werden soll, wenn die enthaltende `when`-Richtlinienanweisung ausgewertet wird.|Ja|
+|condition="boolescher Ausdruck &#124; boolesche Konstante"|Der boolesche Ausdruck bzw. die Konstante, der bzw. die ausgewertet werden soll, wenn die enthaltende `when`-Richtlinienanweisung ausgewertet wird.|JA|
 
 ###  <a name="ChooseUsage"></a> Verwendung
- Diese Richtlinie kann in den folgenden [Abschnitten](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.
+ Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.
 
 -   **Richtlinienabschnitte:** inbound, outbound, backend, on-error
 
@@ -237,7 +237,7 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
 
 |Element|BESCHREIBUNG|Erforderlich|
 |-------------|-----------------|--------------|
-|forward-request|Stammelement|Ja|
+|forward-request|Stammelement|JA|
 
 ### <a name="attributes"></a>Attribute
 
@@ -247,7 +247,7 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
 |follow-redirects="true &#124; false"|Gibt an, ob Umleitungen vom Back-End-Dienst vom Gateway verfolgt oder an den Aufrufer zurückgegeben werden.|Nein |false|
 
 ### <a name="usage"></a>Verwendung
- Diese Richtlinie kann in den folgenden [Abschnitten](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.
+ Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.
 
 -   **Richtlinienabschnitte:** backend
 -   **Richtlinienbereiche:** alle Bereiche
@@ -284,17 +284,17 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
 
 |Element|BESCHREIBUNG|Erforderlich|
 |-------------|-----------------|--------------|
-|limit-concurrency|Stammelement|Ja|
+|limit-concurrency|Stammelement|JA|
 
 ### <a name="attributes"></a>Attribute
 
 |Attribut|BESCHREIBUNG|Erforderlich|Standard|
 |---------------|-----------------|--------------|--------------|
-|key|Eine Zeichenfolge. Ausdruck zulässig. Gibt den Bereich der Parallelität an. Kann von mehreren Richtlinien verwendet werden.|Ja|N/V|
-|max-count|Eine ganze Zahl. Gibt eine maximale Anzahl von Anforderungen an, die an die Richtlinie weitergeleitet werden können|Ja|N/V|
+|key|Eine Zeichenfolge. Ausdruck zulässig. Gibt den Bereich der Parallelität an. Kann von mehreren Richtlinien verwendet werden.|JA|N/V|
+|max-count|Eine ganze Zahl. Gibt eine maximale Anzahl von Anforderungen an, die an die Richtlinie weitergeleitet werden können|JA|N/V|
 
 ### <a name="usage"></a>Verwendung
- Diese Richtlinie kann in den folgenden [Abschnitten](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.
+ Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.
 
 -   **Richtlinienabschnitte:** inbound, outbound, backend, on-error
 
@@ -334,18 +334,18 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
 
 |Element|BESCHREIBUNG|Erforderlich|
 |-------------|-----------------|--------------|
-|log-to-eventhub|Stammelement Der Wert dieses Elements ist die Zeichenfolge für die Protokollierung in Ihrem Event Hub.|Ja|
+|log-to-eventhub|Stammelement Der Wert dieses Elements ist die Zeichenfolge für die Protokollierung in Ihrem Event Hub.|JA|
 
 ### <a name="attributes"></a>Attribute
 
 |Attribut|BESCHREIBUNG|Erforderlich|
 |---------------|-----------------|--------------|
-|logger-id|Die ID des Protokollierungstools, das bei Ihrem API Management-Dienst registriert ist.|Ja|
+|logger-id|Die ID des Protokollierungstools, das bei Ihrem API Management-Dienst registriert ist.|JA|
 |partition-id|Gibt den Index der Partition an, an die Nachrichten gesendet werden.|Optional. Dieses Attribut darf nicht genutzt werden, wenn `partition-key` verwendet wird.|
 |partition-key|Gibt den Wert an, der für die Partitionszuweisung verwendet wird, wenn Nachrichten gesendet werden.|Optional. Dieses Attribut darf nicht genutzt werden, wenn `partition-id` verwendet wird.|
 
 ### <a name="usage"></a>Verwendung
- Diese Richtlinie kann in den folgenden [Abschnitten](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.
+ Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.
 
 -   **Richtlinienabschnitte:** inbound, outbound, backend, on-error
 
@@ -377,7 +377,7 @@ status code and media type. If no example or schema found, the content is empty.
 
 |Element|BESCHREIBUNG|Erforderlich|
 |-------------|-----------------|--------------|
-|mock-response|Stammelement|Ja|
+|mock-response|Stammelement|JA|
 
 ### <a name="attributes"></a>Attribute
 
@@ -387,7 +387,7 @@ status code and media type. If no example or schema found, the content is empty.
 |Inhaltstyp|Gibt den Headerwert `Content-Type` für die Antwort an und wird verwendet, um ein passendes Beispiel oder Schema auszuwählen|Nein |Keine|
 
 ### <a name="usage"></a>Verwendung
- Diese Richtlinie kann in den folgenden [Abschnitten](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.
+ Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.
 
 -   **Richtlinienabschnitte:** inbound, outbound, on-error
 
@@ -433,15 +433,15 @@ status code and media type. If no example or schema found, the content is empty.
 
 |Element|BESCHREIBUNG|Erforderlich|
 |-------------|-----------------|--------------|
-|retry|Stammelement Kann beliebige andere Richtlinien als untergeordnete Elemente enthalten.|Ja|
+|retry|Stammelement Kann beliebige andere Richtlinien als untergeordnete Elemente enthalten.|JA|
 
 ### <a name="attributes"></a>Attribute
 
 |Attribut|BESCHREIBUNG|Erforderlich|Standard|
 |---------------|-----------------|--------------|-------------|
-|condition|Ein boolesches Literal oder ein [Ausdruck](api-management-policy-expressions.md), mit dem angegeben wird, ob Wiederholungsversuche beendet (`false`) oder fortgesetzt (`true`) werden sollen.|Ja|N/V|
-|count|Eine positive Zahl, mit der die maximale Anzahl von Wiederholungsversuchen angegeben wird.|Ja|N/V|
-|interval|Ein positiver Wert in Sekunden, mit dem das Warteintervall zwischen den Wiederholungsversuchen angegeben wird.|Ja|N/V|
+|condition|Ein boolesches Literal oder ein [Ausdruck](api-management-policy-expressions.md), mit dem angegeben wird, ob Wiederholungsversuche beendet (`false`) oder fortgesetzt (`true`) werden sollen.|JA|N/V|
+|count|Eine positive Zahl, mit der die maximale Anzahl von Wiederholungsversuchen angegeben wird.|JA|N/V|
+|interval|Ein positiver Wert in Sekunden, mit dem das Warteintervall zwischen den Wiederholungsversuchen angegeben wird.|JA|N/V|
 |max-interval|Ein positiver Wert in Sekunden, mit dem das maximale Warteintervall zwischen den Wiederholungsversuchen angegeben wird. Wird zum Implementieren eines exponentiellen Wiederholungsalgorithmus verwendet.|Nein |N/V|
 |delta|Ein positiver Wert in Sekunden, mit dem das Inkrement für das Warteintervall angegeben wird. Wird zum Implementieren der linearen und exponentiellen Wiederholungsalgorithmen verwendet.|Nein |N/V|
 |first-fast-retry|Wenn `true` festgelegt ist, wird der erste Wiederholungsversuch sofort durchgeführt.|Nein |`false`|
@@ -452,7 +452,7 @@ status code and media type. If no example or schema found, the content is empty.
 > Wenn `interval`, `max-interval` und `delta` angegeben sind, wird ein Wiederholungsalgorithmus mit **exponentiellem** Intervall angewendet, bei dem die Wartezeit zwischen den Wiederholungsversuchen gemäß der folgenden Formel vom Wert von `interval` exponentiell auf den Wert `max-interval` anwächst: `min(interval + (2^count - 1) * random(delta * 0.8, delta * 1.2), max-interval)`.
 
 ### <a name="usage"></a>Verwendung
- Diese Richtlinie kann in den folgenden [Abschnitten](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden. Beachten Sie, dass Nutzungseinschränkungen von untergeordneten Richtlinien von dieser Richtlinie geerbt werden.
+ Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden. Beachten Sie, dass Nutzungseinschränkungen von untergeordneten Richtlinien von dieser Richtlinie geerbt werden.
 
 -   **Richtlinienabschnitte:** inbound, outbound, backend, on-error
 
@@ -488,7 +488,7 @@ status code and media type. If no example or schema found, the content is empty.
 
 |Element|BESCHREIBUNG|Erforderlich|
 |-------------|-----------------|--------------|
-|return-response|Stammelement|Ja|
+|return-response|Stammelement|JA|
 |set-header|Eine [set-header](api-management-transformation-policies.md#SetHTTPheader)-Richtlinienanweisung.|Nein |
 |set-body|Eine [set-body](api-management-transformation-policies.md#SetBody)-Richtlinienanweisung.|Nein |
 |set-status|Eine [set-status](api-management-advanced-policies.md#SetStatus)-Richtlinienanweisung.|Nein |
@@ -500,7 +500,7 @@ status code and media type. If no example or schema found, the content is empty.
 |response-variable-name|Der Name der Kontextvariablen, auf die beispielsweise von einer vorgelagerten [send-request](api-management-advanced-policies.md#SendRequest)-Richtlinie verwiesen wird und die ein `Response`-Objekt enthält.|Optional.|
 
 ### <a name="usage"></a>Verwendung
- Diese Richtlinie kann in den folgenden [Abschnitten](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.
+ Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.
 
 -   **Richtlinienabschnitte:** inbound, outbound, backend, on-error
 
@@ -555,7 +555,7 @@ status code and media type. If no example or schema found, the content is empty.
 
 |Element|BESCHREIBUNG|Erforderlich|
 |-------------|-----------------|--------------|
-|send-one-way-request|Stammelement|Ja|
+|send-one-way-request|Stammelement|JA|
 |URL|Die URL der Anforderung.|„Nein“, wenn „mode=copy“, andernfalls „Ja“.|
 |method|Die HTTP-Methode für die Anforderung.|„Nein“, wenn „mode=copy“, andernfalls „Ja“.|
 |Header|Anforderungsheader. Verwenden Sie mehrere Headerelemente für mehrere Anforderungsheader.|Nein |
@@ -568,11 +568,11 @@ status code and media type. If no example or schema found, the content is empty.
 |Attribut|BESCHREIBUNG|Erforderlich|Standard|
 |---------------|-----------------|--------------|-------------|
 |mode="string"|Bestimmt, ob dies eine neue Anforderung oder eine Kopie der aktuellen Anforderung ist. Im Ausgangsmodus wird der Anforderungstext durch „mode=copy“ nicht initialisiert.|Nein |Neu|
-|name|Gibt den Namen des festzulegenden Headers an.|Ja|N/V|
+|name|Gibt den Namen des festzulegenden Headers an.|JA|N/V|
 |exists-action|Gibt die auszuführende Aktion an, wenn ein Header bereits angegeben wurde. Dieses Attribut muss einen der folgenden Werte aufweisen.<br /><br /> – override – Ersetzt den Wert des vorhandenen Headers.<br />– skip – Ersetzt den vorhandenen Headerwert nicht.<br />– append – Fügt den Wert an den vorhandenen Headerwert an.<br />– delete – Entfernt den Header aus der Anforderung.<br /><br /> Bei `override` führt die Auflistung mehrerer Einträge mit demselben Namen dazu, dass der Header gemäß aller Einträge festgelegt wird (die mehrfach aufgeführt sind); nur die aufgelisteten Werte werden im Ergebnis festgelegt.|Nein |override|
 
 ### <a name="usage"></a>Verwendung
- Diese Richtlinie kann in den folgenden [Abschnitten](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.
+ Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.
 
 -   **Richtlinienabschnitte:** inbound, outbound, backend, on-error
 
@@ -637,7 +637,7 @@ status code and media type. If no example or schema found, the content is empty.
 
 |Element|BESCHREIBUNG|Erforderlich|
 |-------------|-----------------|--------------|
-|send-request|Stammelement|Ja|
+|send-request|Stammelement|JA|
 |URL|Die URL der Anforderung.|„Nein“, wenn „mode=copy“, andernfalls „Ja“.|
 |method|Die HTTP-Methode für die Anforderung.|„Nein“, wenn „mode=copy“, andernfalls „Ja“.|
 |Header|Anforderungsheader. Verwenden Sie mehrere Headerelemente für mehrere Anforderungsheader.|Nein |
@@ -649,14 +649,14 @@ status code and media type. If no example or schema found, the content is empty.
 |Attribut|BESCHREIBUNG|Erforderlich|Standard|
 |---------------|-----------------|--------------|-------------|
 |mode="string"|Bestimmt, ob dies eine neue Anforderung oder eine Kopie der aktuellen Anforderung ist. Im Ausgangsmodus wird der Anforderungstext durch „mode=copy“ nicht initialisiert.|Nein |Neu|
-|response-variable-name="string"|Falls nicht vorhanden, wird `context.Response` verwendet.|Nein |N/V|
+|response-variable-name="string"|Der Name der Kontextvariable, die ein Antwortobjekt empfängt. Wenn die Variable nicht vorhanden ist, wird sie bei erfolgreicher Ausführung der Richtlinie erstellt und ist über die Sammlung [`context.Variable`](api-management-policy-expressions.md#ContextVariables) zugänglich.|JA|N/V|
 |timeout="integer"|Das Zeitüberschreitungsintervall in Sekunden, bis für den Aufruf der URL ein Fehler auftritt.|Nein |60|
 |ignore-error|Bei „true“ und einem Fehler für die Anforderung:<br /><br /> -   Wenn „response-variable-name“ angegeben wurde, ist dies ein Nullwert.<br />-   Wenn „response-variable-name“ nicht angegeben wurde, wird „context.Request“ nicht aktualisiert.|Nein |false|
-|name|Gibt den Namen des festzulegenden Headers an.|Ja|N/V|
+|name|Gibt den Namen des festzulegenden Headers an.|JA|N/V|
 |exists-action|Gibt die auszuführende Aktion an, wenn ein Header bereits angegeben wurde. Dieses Attribut muss einen der folgenden Werte aufweisen.<br /><br /> – override – Ersetzt den Wert des vorhandenen Headers.<br />– skip – Ersetzt den vorhandenen Headerwert nicht.<br />– append – Fügt den Wert an den vorhandenen Headerwert an.<br />– delete – Entfernt den Header aus der Anforderung.<br /><br /> Bei `override` führt die Auflistung mehrerer Einträge mit demselben Namen dazu, dass der Header gemäß aller Einträge festgelegt wird (die mehrfach aufgeführt sind); nur die aufgelisteten Werte werden im Ergebnis festgelegt.|Nein |override|
 
 ### <a name="usage"></a>Verwendung
- Diese Richtlinie kann in den folgenden [Abschnitten](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.
+ Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.
 
 -   **Richtlinienabschnitte:** inbound, outbound, backend, on-error
 
@@ -684,18 +684,18 @@ Beachten Sie die Verwendung von [Eigenschaften](api-management-howto-properties.
 
 |Element|BESCHREIBUNG|Erforderlich|
 |-------------|-----------------|--------------|
-|proxy|Stammelement|Ja|
+|proxy|Stammelement|JA|
 
 ### <a name="attributes"></a>Attribute
 
 |Attribut|BESCHREIBUNG|Erforderlich|Standard|
 |---------------|-----------------|--------------|-------------|
-|url="string"|Proxy-URL im Format http://host:port.|Ja|N/V|
+|url="string"|Proxy-URL im Format http://host:port.|JA|N/V|
 |username="string"|Der Benutzername, der für die Authentifizierung mit dem Proxy verwendet wird.|Nein |N/V|
 |password="string"|Kennwort, das für die Authentifizierung mit dem Proxy verwendet wird.|Nein |N/V|
 
 ### <a name="usage"></a>Verwendung
- Diese Richtlinie kann in den folgenden [Abschnitten](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.
+ Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.
 
 -   **Richtlinienabschnitte**: inbound
 
@@ -744,10 +744,10 @@ Beachten Sie die Verwendung von [Eigenschaften](api-management-howto-properties.
 
 |Element|BESCHREIBUNG|Erforderlich|
 |-------------|-----------------|--------------|
-|set-method|Stammelement Mit dem Wert des Elements wird die HTTP-Methode angegeben.|Ja|
+|set-method|Stammelement Mit dem Wert des Elements wird die HTTP-Methode angegeben.|JA|
 
 ### <a name="usage"></a>Verwendung
- Diese Richtlinie kann in den folgenden [Abschnitten](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.
+ Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.
 
 -   **Richtlinienabschnitte:** inbound, on-error
 
@@ -784,17 +784,17 @@ Beachten Sie die Verwendung von [Eigenschaften](api-management-howto-properties.
 
 |Element|BESCHREIBUNG|Erforderlich|
 |-------------|-----------------|--------------|
-|set-status|Stammelement|Ja|
+|set-status|Stammelement|JA|
 
 ### <a name="attributes"></a>Attribute
 
 |Attribut|BESCHREIBUNG|Erforderlich|Standard|
 |---------------|-----------------|--------------|-------------|
-|code="integer"|Der zurückzugebende HTTP-Statuscode.|Ja|N/V|
-|reason="string"|Eine Beschreibung des Grunds zum Zurückgeben des Statuscodes.|Ja|N/V|
+|code="integer"|Der zurückzugebende HTTP-Statuscode.|JA|N/V|
+|reason="string"|Eine Beschreibung des Grunds zum Zurückgeben des Statuscodes.|JA|N/V|
 
 ### <a name="usage"></a>Verwendung
- Diese Richtlinie kann in den folgenden [Abschnitten](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.
+ Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.
 
 -   **Richtlinienabschnitte:** outbound, backend, on-error
 -   **Richtlinienbereiche:** alle Bereiche
@@ -819,17 +819,17 @@ Beachten Sie die Verwendung von [Eigenschaften](api-management-howto-properties.
 
 |Element|BESCHREIBUNG|Erforderlich|
 |-------------|-----------------|--------------|
-|set-variable|Stammelement|Ja|
+|set-variable|Stammelement|JA|
 
 ### <a name="attributes"></a>Attribute
 
 |Attribut|BESCHREIBUNG|Erforderlich|
 |---------------|-----------------|--------------|
-|name|Der Name der Variablen.|Ja|
-|value|Der Wert der Variablen. Dies kann ein Ausdruck oder ein Literalwert sein.|Ja|
+|name|Der Name der Variablen.|JA|
+|value|Der Wert der Variablen. Dies kann ein Ausdruck oder ein Literalwert sein.|JA|
 
 ### <a name="usage"></a>Verwendung
- Diese Richtlinie kann in den folgenden [Abschnitten](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.
+ Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.
 
 -   **Richtlinienabschnitte:** inbound, outbound, backend, on-error
 -   **Richtlinienbereiche:** alle Bereiche
@@ -886,16 +886,16 @@ Beachten Sie die Verwendung von [Eigenschaften](api-management-howto-properties.
 
 |Element|BESCHREIBUNG|Erforderlich|
 |-------------|-----------------|--------------|
-|Ablaufverfolgung|Stammelement|Ja|
+|Ablaufverfolgung|Stammelement|JA|
 
 ### <a name="attributes"></a>Attribute
 
 |Attribut|BESCHREIBUNG|Erforderlich|Standard|
 |---------------|-----------------|--------------|-------------|
-|Quelle|Das Zeichenfolgenliteral ist für die Ablaufverfolgungsanzeige aussagekräftig und gibt die Quelle der Nachricht an.|Ja|N/V|
+|Quelle|Das Zeichenfolgenliteral ist für die Ablaufverfolgungsanzeige aussagekräftig und gibt die Quelle der Nachricht an.|JA|N/V|
 
 ### <a name="usage"></a>Verwendung
- Diese Richtlinie kann in den folgenden [Abschnitten](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.
+ Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.
 
 -   **Richtlinienabschnitte:** inbound, outbound, backend, on-error
 
@@ -953,7 +953,7 @@ Beachten Sie die Verwendung von [Eigenschaften](api-management-howto-properties.
 
 |Element|BESCHREIBUNG|Erforderlich|
 |-------------|-----------------|--------------|
-|wait|Stammelement Darf nur die Richtlinien `send-request`, `cache-lookup-value` und `choose` als untergeordnete Elemente enthalten.|Ja|
+|wait|Stammelement Darf nur die Richtlinien `send-request`, `cache-lookup-value` und `choose` als untergeordnete Elemente enthalten.|JA|
 
 ### <a name="attributes"></a>Attribute
 
@@ -963,7 +963,7 @@ Beachten Sie die Verwendung von [Eigenschaften](api-management-howto-properties.
 
 ### <a name="usage"></a>Verwendung
 
-Diese Richtlinie kann in den folgenden [Abschnitten](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.
+Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.
 
 -   **Richtlinienabschnitte:** inbound, outbound, backend
 -   **Richtlinienbereiche:** alle Bereiche

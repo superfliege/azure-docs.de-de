@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/09/2017
 ms.author: xpouyat
-ms.openlocfilehash: b4472f522571e0056ce6b28d67a69b0dcabba8a6
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 71cb4ff7c5948067dfb039caf69241cfa9e22408
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33785819"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51243895"
 ---
 # <a name="licensing-microsoft-smooth-streaming-client-porting-kit"></a>Lizenzierung des Microsoft® Smooth Streaming Client Porting Kit
 ## <a name="overview"></a>Übersicht
@@ -43,7 +43,7 @@ SSPK ist zu Bedingungen lizenziert, die einen großen Mehrwert für Ihr Unterneh
   * Programmierschnittstellen für die Interaktion mit Hardware-A/V-Decodern (Decodieren, Rendern)
 * Digital Rights Management (DRM)-Schnittstelle 
   * Programmierschnittstellen für die Handhabung von DRM über die DRM-Abstraktionsschicht (DRM Abstraction Layer, DAL)
-  * Das Microsoft PlayReady Porting Kit ist separat erhältlich und wird über diese Schnittstelle integriert. Weitere Informationen zur Lizenzierung von Microsoft PlayReady Device finden Sie [hier](http://www.microsoft.com/playready/licensing/device_technology.mspx#pddipdl).
+  * Das Microsoft PlayReady Porting Kit ist separat erhältlich und wird über diese Schnittstelle integriert. Weitere Informationen zur Lizenzierung von Microsoft PlayReady Device finden Sie [hier](https://www.microsoft.com/playready/licensing/device_technology.mspx#pddipdl).
 * Beispiele für die Implementierung 
   * PAL-Implementierungsbeispiel für Linux
   * HAL-Implementierungsbeispiel für GStreamer

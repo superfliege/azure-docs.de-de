@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 10/11/2018
 ms.author: johnkem
 ms.component: logs
-ms.openlocfilehash: 3b665ed0539a41ffeca87511154f3607a57cff4a
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: 035b12c85720817501da9f4ad580aa8e7da8fdc4
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49116192"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51280515"
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-diagnostic-logs"></a>Unterstützte Dienste, Schemas und Kategorien für Azure-Diagnoseprotokolle
 
@@ -47,7 +47,7 @@ Das Schema für Diagnoseprotokolle für Ressourcen variiert abhängig von der Re
 
 | Dienst | Schema und Dokumente |
 | --- | --- |
-| Azure Active Directory | [Übersicht](../active-directory/reports-monitoring/overview-activity-logs-in-azure-monitor.md), [Überwachungsprotokollschema](../active-directory/reports-monitoring/reference-azure-monitor-audit-log-schema.md) und [Anmeldeschema](../active-directory/reports-monitoring/reference-azure-monitor-sign-ins-log-schema.md) |
+| Azure Active Directory | [Übersicht](../active-directory/reports-monitoring/concept-activity-logs-azure-monitor.md), [Überwachungsprotokollschema](../active-directory/reports-monitoring/reference-azure-monitor-audit-log-schema.md) und [Anmeldeschema](../active-directory/reports-monitoring/reference-azure-monitor-sign-ins-log-schema.md) |
 | Analysis Services | https://azure.microsoft.com/blog/azure-analysis-services-integration-with-azure-diagnostic-logs/ |
 | API Management | [API Management-Diagnoseprotokolle](../api-management/api-management-howto-use-azure-monitor.md#diagnostic-logs) |
 | Anwendungsgateways |[Diagnoseprotokollierung für Application Gateway](../application-gateway/application-gateway-diagnostics.md) |
@@ -92,9 +92,11 @@ Das Schema für Diagnoseprotokolle für Ressourcen variiert abhängig von der Re
 |Microsoft.Batch/batchAccounts|ServiceLog|Dienstprotokolle|
 |Microsoft.Cdn/profiles/endpoints|CoreAnalytics|Ruft die Metriken des Endpunkts ab, z.B. Bandbreite, ausgehenden Datenverkehr usw.|
 |Microsoft.ClassicNetwork/networksecuritygroups|Regelflussereignis der Netzwerksicherheitsgruppe|Regelflussereignis der Netzwerksicherheitsgruppe|
-|Microsoft.CognitiveServices/accounts|Audit|Audit|
+|Microsoft.CognitiveServices/accounts|Audit|Überwachungsprotokolle|
+|Microsoft.CognitiveServices/accounts|RequestResponse|Anforderungs- und Antwortprotokolle|
 |Microsoft.ContainerService/managedClusters|kube-apiserver|Kubernetes-API-Server|
 |Microsoft.ContainerService/managedClusters|kube-controller-manager|Kubernetes-Controller-Manager|
+|Microsoft.ContainerService/managedClusters|cluster-autoscaler|Automatische Kubernetes-Clusterskalierung|
 |Microsoft.ContainerService/managedClusters|kube-scheduler|Kubernetes-Scheduler|
 |Microsoft.ContainerService/managedClusters|guard|Authentifizierungs-Webhook|
 |Microsoft.CustomerInsights/hubs|AuditEvents|AuditEvents|
@@ -105,7 +107,7 @@ Das Schema für Diagnoseprotokolle für Ressourcen variiert abhängig von der Re
 |Microsoft.DataLakeAnalytics/accounts|Requests|Anforderungsprotokolle|
 |Microsoft.DataLakeStore/accounts|Audit|Überwachungsprotokolle|
 |Microsoft.DataLakeStore/accounts|Requests|Anforderungsprotokolle|
-|Microsoft.DBforMySQL/servers|MySqlSlowLogs|MySQL-Protokolle für langsame Abfragen|
+|Microsoft.DBforMySQL/servers|MySqlSlowLogs|MySQL Server-Protokolle|
 |Microsoft.DBforPostgreSQL/servers|PostgreSQLLogs|PostgreSQL-Serverprotokolle|
 |Microsoft.Devices/IotHubs|Verbindungen|Verbindungen|
 |Microsoft.Devices/IotHubs|DeviceTelemetry|Gerätetelemetrie|
@@ -128,6 +130,14 @@ Das Schema für Diagnoseprotokolle für Ressourcen variiert abhängig von der Re
 |Microsoft.EventHub/namespaces|ArchiveLogs|Archivprotokolle|
 |Microsoft.EventHub/namespaces|OperationalLogs|Betriebsprotokolle|
 |Microsoft.EventHub/namespaces|AutoScaleLogs|Protokolle zur automatischen Skalierung|
+|Microsoft.Insights/AutoscaleSettings|AutoscaleEvaluations|Bewertungen der Autoskalierung|
+|Microsoft.Insights/AutoscaleSettings|AutoscaleScaleActions|Skalierungsaktionen der Autoskalierung|
+|Microsoft.IoTSpaces/Graph|Trace|Trace|
+|Microsoft.IoTSpaces/Graph|Bei Betrieb|Bei Betrieb|
+|Microsoft.IoTSpaces/Graph|Audit|Audit|
+|Microsoft.IoTSpaces/Graph|UserDefinedFunction|UserDefinedFunction|
+|Microsoft.IoTSpaces/Graph|Eingehende Daten|Eingehende Daten|
+|Microsoft.IoTSpaces/Graph|Ausgehende Daten|Ausgehende Daten|
 |Microsoft.KeyVault/vaults|AuditEvent|Überwachungsprotokolle|
 |Microsoft.Logic/workflows|WorkflowRuntime|Diagnoseereignisse zur Workflowlaufzeit|
 |Microsoft.Logic/integrationAccounts|IntegrationAccountTrackingEvents|Integrationskonto –Nachverfolgen von Ereignissen|
@@ -136,6 +146,8 @@ Das Schema für Diagnoseprotokolle für Ressourcen variiert abhängig von der Re
 |Microsoft.Network/loadBalancers|LoadBalancerAlertEvent|Load Balancer-Warnereignisse|
 |Microsoft.Network/loadBalancers|LoadBalancerProbeHealthStatus|Integritätsstatus der Load Balancer-Stichprobe|
 |Microsoft.Network/publicIPAddresses|DDoSProtectionNotifications|DDoS-Schutz-Benachrichtigungen|
+|Microsoft.Network/publicIPAddresses|DDoSMitigationFlowLogs|Datenflussprotokolle von Entscheidungen zur DDoS-Risikominderung|
+|Microsoft.Network/publicIPAddresses|DDoSMitigationReports|Berichte zur DDoS-Risikominderung|
 |Microsoft.Network/virtualNetworks|VMProtectionAlerts|VM-Schutz-Warnungen|
 |Microsoft.Network/applicationGateways|ApplicationGatewayAccessLog|Application Gateway-Zugriffsprotokoll|
 |Microsoft.Network/applicationGateways|ApplicationGatewayPerformanceLog|Application Gateway-Leistungsprotokoll|
@@ -151,6 +163,8 @@ Das Schema für Diagnoseprotokolle für Ressourcen variiert abhängig von der Re
 |Microsoft.Network/virtualNetworkGateways|P2SDiagnosticLog|P2S-Diagnoseprotokolle|
 |Microsoft.Network/trafficManagerProfiles|ProbeHealthStatusEvents|Traffic Manager-Testintegritätsergebnisse (Ereignis)|
 |Microsoft.Network/expressRouteCircuits|PeeringRouteLog|Routentabellenprotokolle zum Peering|
+|Microsoft.Network/frontdoors|FrontdoorAccessLog|Frontdoor-Zugriffsprotokoll|
+|Microsoft.Network/frontdoors|FrontdoorWebApplicationFirewallLog|Frontdoor-Web Application Firewall-Protokoll|
 |Microsoft.PowerBIDedicated/capacities|Motor|Motor|
 |Microsoft.RecoveryServices/Vaults|AzureBackupReport|Azure Backup-Berichtsdaten|
 |Microsoft.RecoveryServices/Vaults|AzureSiteRecoveryJobs|Azure Site Recovery-Aufträge|
@@ -173,10 +187,21 @@ Das Schema für Diagnoseprotokolle für Ressourcen variiert abhängig von der Re
 |Microsoft.Sql/servers/databases|Deadlocks|Deadlocks|
 |Microsoft.Sql/servers/databases|Audit|Überwachungsprotokolle|
 |Microsoft.Sql/servers/databases|SQLSecurityAuditEvents|SQL-Sicherheitsüberwachungsereignis|
-|Microsoft.Sql/servers/databases|SqlDw_Requests|SQL Data Warehouse-Anforderungen|
-|Microsoft.Sql/servers/databases|SqlDw_RequestSteps|SQL Data Warehouse-Anforderungsschritte|
+|Microsoft.Sql/servers/databases|DmsWorkers|DMS-Worker|
+|Microsoft.Sql/servers/databases|ExecRequests|Ausführungsanforderungen|
+|Microsoft.Sql/servers/databases|RequestSteps|Anforderungsschritte|
+|Microsoft.Sql/servers/databases|SqlRequests|SQL-Anforderungen|
+|Microsoft.Sql/servers/databases|Waits|Wartevorgänge|
+|Microsoft.Sql/managedInstances|ResourceUsageStats|Nutzungsstatistiken zu Ressourcen|
+|Microsoft.Sql/managedInstances|SQLSecurityAuditEvents|SQL-Sicherheitsüberwachungsereignis|
+|Microsoft.Sql/managedInstances/databases|SQLInsights|SQL-Informationen|
+|Microsoft.Sql/managedInstances/databases|QueryStoreRuntimeStatistics|Laufzeitstatistik des Abfragespeichers|
+|Microsoft.Sql/managedInstances/databases|QueryStoreWaitStatistics|Wartestatistik des Abfragespeichers|
+|Microsoft.Sql/managedInstances/databases|Errors|Errors|
 |Microsoft.StreamAnalytics/streamingjobs|Ausführung|Ausführung|
 |Microsoft.StreamAnalytics/streamingjobs|Erstellen|Erstellen|
+|microsoft.web/sites|FunctionExecutionLogs|Protokolle zur Funktionsausführung|
+|microsoft.web/sites/slots|FunctionExecutionLogs|Protokolle zur Funktionsausführung|
 
 ## <a name="next-steps"></a>Nächste Schritte
 

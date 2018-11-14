@@ -1,5 +1,5 @@
 ---
-title: Serielle Konsole für virtuelle Azure-Computer | Microsoft-Dokumentation
+title: Serielle Konsole für Azure-VMs unter Linux | Microsoft-Dokumentation
 description: Bidirektionale serielle Konsole für virtuelle Azure-Computer.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: harijay
-ms.openlocfilehash: 22128f027f0a218756e413653aa92ee097064587
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: a3d59d0e7575721dbb719944f27fd673ba41f469
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50741707"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50963817"
 ---
 # <a name="virtual-machine-serial-console-for-linux"></a>Serielle Konsole für virtuelle Computer für Linux
 
@@ -33,17 +33,17 @@ Die Dokumentation zur seriellen Konsole für Windows-VMs finden Sie unter [Serie
 
 ## <a name="prerequisites"></a>Voraussetzungen 
 
-* Der virtuelle Computer, in dem Sie auf eine serielle Konsole zugreifen, muss das Ressourcenverwaltungs-Bereitstellungsmodell verwenden. Klassische Bereitstellungen werden nicht unterstützt. 
+- Die VM, auf der Sie auf eine serielle Konsole zugreifen, muss das Ressourcenverwaltungs-Bereitstellungsmodell verwenden. Klassische Bereitstellungen werden nicht unterstützt. 
 
-* Auf dem virtuellen Computer, auf dem Sie auf eine serielle Konsole zugreifen, muss [Startdiagnose](boot-diagnostics.md) aktiviert sein. Wählen Sie im Abschnitt **Support + Problembehandlung** **Startdiagnose** aus.
+- Auf der VM, auf der Sie auf eine serielle Konsole zugreifen, muss [Startdiagnose](boot-diagnostics.md) aktiviert sein. 
 
     ![Einstellungen der Startdiagnose](./media/virtual-machines-serial-console/virtual-machine-serial-console-diagnostics-settings.png)
 
-Ein Konto, das eine serielle Konsole verwendet, muss die Rolle [Mitwirkender für virtuelle Computer](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) für die VM und das Speicherkonto [Startdiagnose](boot-diagnostics.md) aufweisen: 
+- Ein Konto, das eine serielle Konsole verwendet, muss die Rolle [Mitwirkender für virtuelle Computer](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) für die VM und das Speicherkonto [Startdiagnose](boot-diagnostics.md) aufweisen: 
 
-* Der virtuelle Computer, auf dem Sie auf eine serielle Konsole zugreifen, muss über ein kennwortbasiertes Konto verfügen. Mit der Funktion [Kennwort zurücksetzen](https://docs.microsoft.com/azure/virtual-machines/extensions/vmaccess#reset-password) der Erweiterungen für den Zugriff auf virtuelle Computer können Sie eines erstellen. Wählen Sie im Abschnitt **Support + Problembehandlung** **Kennwort zurücksetzen** aus. 
+    - Die VM, auf der Sie auf eine serielle Konsole zugreifen, muss über ein kennwortbasiertes Konto verfügen. Mit der Funktion [Kennwort zurücksetzen](https://docs.microsoft.com/azure/virtual-machines/extensions/vmaccess#reset-password) der Erweiterungen für den Zugriff auf virtuelle Computer können Sie eines erstellen. Wählen Sie im Abschnitt **Support + Problembehandlung** **Kennwort zurücksetzen** aus. 
 
-* Spezifische Einstellungen für Linux-Distributionen finden Sie unter [Verfügbarkeit der seriellen Konsole in Linux-Distributionen](#serial-console-linux-distribution-availability).
+    - Spezifische Einstellungen für Linux-Distributionen finden Sie unter [Verfügbarkeit der seriellen Konsole in Linux-Distributionen](#serial-console-linux-distribution-availability).
 
 
 
@@ -51,12 +51,14 @@ Ein Konto, das eine serielle Konsole verwendet, muss die Rolle [Mitwirkender fü
 Auf die serielle Konsole für virtuelle Computer kann nur über das Azure-Portal zugegriffen werden:
 
   1. Öffnen Sie das [Azure-Portal](https://portal.azure.com).
+
   1. Wählen Sie im linken Menü **Virtual Machines** (Virtuelle Computer) aus.
+
   1. Wählen Sie in der Liste eine VM aus. Die Übersichtsseite für die VM wird geöffnet.
+
   1. Scrollen Sie nach unten zum Abschnitt **Support + Problembehandlung**, und wählen Sie **Serielle Konsole** aus. Ein neuer Bereich mit der seriellen Konsole wird geöffnet, und die Verbindung wird hergestellt.
 
-   ![Fenster der seriellen Konsole unter Linux](./media/virtual-machines-serial-console/virtual-machine-linux-serial-console-connect.gif)
-
+     ![Fenster der seriellen Konsole unter Linux](./media/virtual-machines-serial-console/virtual-machine-linux-serial-console-connect.gif)
 
 
 > [!NOTE] 
@@ -156,10 +158,10 @@ Verwenden Sie die **TAB**-Taste auf der Tastatur, um im Azure-Portal in der seri
 ### <a name="use-the-serial-console-with-a-screen-reader"></a>Verwenden der seriellen Konsole mit einer Sprachausgabe
 Die serielle Konsole bietet integrierte Unterstützung für die Sprachausgabe. Beim Navigieren mit aktivierter Sprachausgabe kann der Alternativtext für die aktuell ausgewählte Schaltfläche von der Sprachausgabe vorgelesen werden.
 
-## <a name="errors"></a>Fehler
+## <a name="errors"></a>Errors
 Da die meisten Fehler vorübergehend sind, können sie oftmals durch Wiederherstellen der Verbindung behoben werden. Die folgende Tabelle zeigt eine Liste von Fehlern und deren Behebung.
 
-Fehler                            |   Lösung 
+Error                            |   Lösung 
 :---------------------------------|:--------------------------------------------|
 Die Startdiagnoseeinstellungen für *&lt;VMNAME&gt;* können nicht abgerufen werden. Damit Sie die serielle Konsole verwenden können, stellen Sie sicher, dass die Startdiagnose für diesen virtuellen Computer aktiviert ist. | Stellen Sie sicher, dass für den virtuellen Computer [Startdiagnose](boot-diagnostics.md) aktiviert ist. 
 Der virtuelle Computer befindet sich in einem beendeten Zustand mit aufgehobener Zuordnung. Starten Sie den virtuellen Computer neu, und wiederholen Sie die Verbindung mit der seriellen Konsole. | Die VM muss sich im gestarteten Zustand befinden, um auf die serielle Konsole zugreifen zu können.

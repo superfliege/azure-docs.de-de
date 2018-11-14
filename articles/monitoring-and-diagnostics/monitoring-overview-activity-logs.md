@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: johnkem
 ms.component: activitylog
-ms.openlocfilehash: 7538951b1ac8290b574180779b83c6b8e79fcf1f
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 538481088d6355729486c1d9fbaaa6af16a1b841
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50094362"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51006021"
 ---
 # <a name="monitor-subscription-activity-with-the-azure-activity-log"></a>Überwachen der Abonnementaktivität per Azure-Aktivitätsprotokoll
 
@@ -33,10 +33,7 @@ Das Aktivitätsprotokoll unterscheidet sich von [Diagnoseprotokollen](monitoring
 Sie können Ereignisse per Azure-Portal, Befehlszeilenschnittstelle, PowerShell-Cmdlets und Azure Monitor-REST-API aus dem Aktivitätsprotokoll abrufen.
 
 > [!NOTE]
->  Die [neueren Warnungen](monitoring-overview-unified-alerts.md) bieten eine erweiterte Benutzeroberfläche für die Erstellung und Verwaltung von Warnungsregeln für Aktivitätsprotokolle.  [Weitere Informationen](monitoring-activity-log-alerts-new-experience.md).
-
-Sehen Sie sich dieses Video zum Aktivitätsprotokoll an.
-> [!VIDEO https://channel9.msdn.com/Blogs/Seth-Juarez/Logs-John-Kemnetz/player]
+>  Die [neueren Warnungen](monitoring-overview-unified-alerts.md) bieten eine erweiterte Benutzeroberfläche für die Erstellung und Verwaltung von Warnungsregeln für Aktivitätsprotokolle.  [Weitere Informationen](alert-activity-log.md).
 
 
 ## <a name="categories-in-the-activity-log"></a>Kategorien im Aktivitätsprotokoll
@@ -70,7 +67,7 @@ Hier sind einige Verwendungsmöglichkeiten für das Aktivitätsprotokoll aufgef�
 Im Azure-Portal können Sie Ihr Aktivitätsprotokoll an mehreren Stellen anzeigen:
 * Das **Aktivitätsprotokoll**, auf das Sie zugreifen können, indem Sie im Navigationsbereich auf der linken Seite unter **Alle Dienste** nach dem Aktivitätsprotokoll suchen.
 * **Monitor** wird standardmäßig im linken Navigationsbereich angezeigt. Das Aktivitätsprotokoll ist ein Abschnitt von Azure Monitor.
-* In jeder **Ressource** einer Ressource, z.B. auf dem Konfigurationsblatt für einen virtuellen Computer. Das Aktivitätsprotokoll ist einer der Abschnitte auf den meisten dieser Ressourcenblätter. Wenn Sie darauf klicken, werden die Ereignisse automatisch so gefiltert, dass nur die Ereignisse für die jeweilige Ressource angezeigt werden.
+* Bei den meisten **Ressourcen**, z.B. auf dem Konfigurationsblatt für einen virtuellen Computer. Das Aktivitätsprotokoll ist ein Abschnitt auf den meisten Ressourcenblättern. Wenn Sie darauf klicken, werden die Ereignisse automatisch so gefiltert, dass nur die Ereignisse für die jeweilige Ressource angezeigt werden.
 
 Im Azure-Portal können Sie Ihr Aktivitätsprotokoll nach diesen Feldern filtern:
 * Zeitraum: Die Start- und Endzeit für die Ereignisse.
@@ -84,11 +81,9 @@ Im Azure-Portal können Sie Ihr Aktivitätsprotokoll nach diesen Feldern filtern
 * Ereignis initiiert von: Der „Aufrufer“ oder Benutzer, der den Vorgang durchgeführt hat.
 * Open search (Freie Suche): Dies ist ein Feld für eine offene Textsuche, bei der in allen Feldern aller Ereignisse nach der Zeichenfolge gesucht wird.
 
-Nachdem Sie eine Gruppe mit Filtern definiert haben, können Sie diese als Abfrage speichern. Sie wird für den Fall beibehalten, dass Sie die gleiche Abfrage mit diesen Filtern zu einem späteren Zeitpunkt noch einmal durchführen müssen. Sie haben auch die Möglichkeit, eine Abfrage in Ihrem Azure-Dashboard anzuheften, um immer den Überblick über bestimmte Ereignisse zu haben.
+Nachdem Sie eine Gruppe von Filtern definiert haben, können Sie eine Abfrage in Ihrem Azure-Dashboard anheften, um immer den Überblick über bestimmte Ereignisse zu haben.
 
-Wenn Sie auf „Übernehmen“ klicken, wird Ihre Abfrage ausgeführt, und es werden alle übereinstimmenden Ereignisse angezeigt. Wenn Sie in der Liste auf ein Ereignis klicken, werden eine Zusammenfassung dieser Ereignisse und der vollständige unformatierte JSON-Code des Ereignisses angezeigt.
-
-Sie haben noch mehr Optionen, wenn Sie auf das Symbol **Protokollsuche** klicken, über das Ihre Aktivitätsprotokolldaten in der [Log Analytics-Lösung für Aktivitätsprotokolle](../log-analytics/log-analytics-activity.md) angezeigt werden. Das Blatt „Aktivitätsprotokoll“ enthält eine einfache Filter-/Suchoberfläche für Protokolle, aber mit Log Analytics haben Sie effektivere Möglichkeiten, Ihre Daten zu pivotieren, abzufragen und zu visualisieren.
+Sie haben noch mehr Optionen, wenn Sie auf das Symbol **Protokolle** klicken, über das Ihre Aktivitätsprotokolldaten in der [Log Analytics-Lösung für Aktivitätsprotokolle](../log-analytics/log-analytics-activity.md) angezeigt werden. Das Blatt „Aktivitätsprotokoll“ enthält eine einfache Filter-/Suchoberfläche für Protokolle, aber mit Log Analytics haben Sie effektivere Möglichkeiten, Ihre Daten zu pivotieren, abzufragen und zu visualisieren.
 
 ## <a name="export-the-activity-log-with-a-log-profile"></a>Exportieren des Aktivitätsprotokolls mit einem Protokollprofil
 Mit einem **Protokollprofil** wird gesteuert, wie das Aktivitätsprotokoll exportiert wird. Mit einem Protokollprofil können Sie Folgendes konfigurieren:
@@ -114,14 +109,14 @@ Sie können ein Speicherkonto oder Event Hub-Namespace verwenden, das sich nicht
 Diese Einstellungen können über die Option „Exportieren“ auf dem Blatt „Aktivitätsprotokoll“ im Portal konfiguriert werden. Sie können auch [mithilfe der Azure Monitor-REST-API](https://msdn.microsoft.com/library/azure/dn931927.aspx), über PowerShell-Cmdlets oder über die Befehlszeilenschnittstelle programmgesteuert konfiguriert werden. Ein Abonnement kann nur über ein Protokollprofil verfügen.
 
 ### <a name="configure-log-profiles-using-the-azure-portal"></a>Konfigurieren von Protokollprofilen mit dem Azure-Portal
-Sie können das Aktivitätsprotokoll an einen Event Hub streamen oder in einem Speicherkonto speichern, indem Sie im Azure-Portal die Option „Exportieren“ verwenden.
+Sie können das Aktivitätsprotokoll an einen Event Hub streamen oder in einem Speicherkonto speichern, indem Sie im Azure-Portal die Option „In Event Hub exportieren“ verwenden.
 
 1. Navigieren Sie zu **Aktivitätsprotokoll**, indem Sie das Menü auf der linken Seite des Portals verwenden.
 
-    ![Navigation zum Aktivitätsprotokoll im Portal](./media/monitoring-overview-activity-logs/activity-logs-portal-navigate.png)
-2. Klicken Sie oben auf dem Blatt auf die Schaltfläche **Exportieren** .
+    ![Navigation zum Aktivitätsprotokoll im Portal](./media/monitoring-overview-activity-logs/activity-logs-portal-navigate-v2.png)
+2. Klicken Sie oben auf dem Blatt auf die Schaltfläche **In Event Hub exportieren**.
 
-    ![Schaltfläche „Exportieren“ im Portal](./media/monitoring-overview-activity-logs/activity-logs-portal-export.png)
+    ![Schaltfläche „Exportieren“ im Portal](./media/monitoring-overview-activity-logs/activity-logs-portal-export-v2.png)
 3. Auf dem daraufhin angezeigten Blatt können Sie Folgendes auswählen:  
   * Regionen, die für die Ereignisse exportiert werden sollen
   * das Speicherkonto, in dem Sie Ereignisse speichern möchten

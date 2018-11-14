@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/05/2018
+ms.date: 11/02/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 3cb44779f376dca1844f42f346ed0fa3bfaa93cf
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: 50ec49c22c64780c8f887b12eef1dd0e75c379ed
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48269444"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51010603"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Häufig gestellte Fragen zu Azure Active Directory Connect
 
@@ -75,6 +75,9 @@ Nein. Azure AD Connect unterstützt keine lokalen Gesamtstrukturen oder Domänen
 
 **F: Wird eine reine IPv6-Umgebung unterstützt?**  
 Nein, Azure AD Connect unterstützt keine reine IPv6-Umgebung.
+
+**F: Ich habe eine Umgebung mit mehreren Gesamtstrukturen und das Netzwerk zwischen den beiden Gesamtstrukturen verwendet NAT (Network Address Translation). Wird die Verwendung von Azure AD Connect zwischen diesen beiden Gesamtstrukturen unterstützt?**</br>
+ Nein, die Verwendung von Azure AD Connect für NAT wird nicht unterstützt. 
 
 ## <a name="federation"></a>Verbund
 **F: Was muss ich tun, wenn ich eine E-Mail erhalte, in der ich aufgefordert werde, mein Office 365-Zertifikat zu erneuern?**  

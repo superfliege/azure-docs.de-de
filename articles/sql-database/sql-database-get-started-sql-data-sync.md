@@ -11,15 +11,15 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
-ms.date: 10/05/2018
-ms.openlocfilehash: 98d30d2987d42a2c4893e00c3ba2ea6acd471bef
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.date: 11/07/2018
+ms.openlocfilehash: 0a248ec5137a6de43910b1d11184dfeda18601f5
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49318808"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51280346"
 ---
-# <a name="set-up-sql-data-sync-to-sync-data-between-azure-sql-database-and-sql-server-on-premises"></a>Einrichten der SQL-Datensynchronisierung zum Synchronisieren von Daten zwischen Azure SQL-Datenbank und lokalem SQL Server
+# <a name="tutorial-set-up-sql-data-sync-to-sync-data-between-azure-sql-database-and-sql-server-on-premises"></a>Tutorial: Einrichten der SQL-Datensynchronisierung zum Synchronisieren von Daten zwischen Azure SQL-Datenbank und lokalem SQL Server
 
 In diesem Tutorial erfahren Sie, wie sie Azure SQL-Datensynchronisierung einrichten können, indem Sie eine hybride Synchronisierungsgruppe erstellen, die Azure SQL-Datenbank und SQL Server-Instanzen enthält. Die neue Synchronisierungsgruppe ist vollständig konfiguriert und synchronisiert mit dem von Ihnen festgelegten Zeitplan.
 
@@ -129,7 +129,7 @@ Führen Sie auf der Seite **Lokale Konfiguration** die folgenden Schritte aus:
 
     Wenn Sie **Neuen Agent erstellen**, führen Sie folgende Schritte aus:
 
-   1. Laden Sie die Software für den Clientsynchronisierungs-Agent unter dem bereitgestellten Link herunter, und installieren Sie diese auf dem Computer, auf dem sich der SQL-Server befindet.
+   1. Laden Sie die Software für den Clientsynchronisierungs-Agent unter dem bereitgestellten Link herunter, und installieren Sie diese auf dem Computer, auf dem sich der SQL-Server befindet. Sie können den Datensynchronisierungs-Agent auch direkt unter [SQL Azure Data Sync Agent](https://www.microsoft.com/download/details.aspx?id=27693) herunterladen.
 
         > [!IMPORTANT]
         > Sie müssen den ausgehenden TCP-Port 1433 in der Firewall öffnen, damit der Client-Agent mit dem Server kommunizieren kann.
@@ -253,35 +253,7 @@ Nachdem Sie eine Datenbank als `.bacpac`-Datei exportiert und die Datei zum Erst
 
 ## <a name="faq-about-the-client-agent"></a>Häufig gestellte Fragen zum Client-Agent
 
-### <a name="why-do-i-need-a-client-agent"></a>Wozu benötige ich einen Client-Agent?
-
-Der Dienst der SQL-Datensynchronisierung kommuniziert über den Client-Agent mit SQL Server-Datenbanken. Diese Sicherheitsfunktion verhindert die direkte Kommunikation mit Datenbanken hinter einer Firewall. Bei der Kommunikation des Diensts der SQL-Datensynchronisierung mit dem Agent werden verschlüsselte Verbindungen und ein eindeutiges Token bzw. ein eindeutiger *Agent-Schlüssel* verwendet. Die SQL Server-Datenbanken authentifizieren den Agent mit der Verbindungszeichenfolge und dem Agent-Schlüssel. Diese Vorgehensweise bietet ein hohes Maß an Sicherheit für Ihre Daten.
-
-### <a name="how-many-instances-of-the-local-agent-ui-can-be-run"></a>Wie viele Instanzen der lokalen Agent-Benutzeroberfläche können ausgeführt werden?
-
-Es kann nur eine Instanz der Benutzeroberfläche ausgeführt werden.
-
-### <a name="how-can-i-change-my-service-account"></a>Wie kann ich mein Dienstkonto ändern?
-
-Nach der Installation eines Client-Agents besteht die einzige Möglichkeit zum Ändern des Dienstkontos darin, ihn zu deinstallieren und einen neuen Client-Agent mit dem neuen Dienstkonto zu installieren.
-
-### <a name="how-do-i-change-my-agent-key"></a>Wie ändere ich meinen Agent-Schlüssel?
-
-Ein Agent-Schlüssel kann nur einmal von einem Agent verwendet werden. Er kann nicht wiederverwendet werden, wenn Sie einen Agent entfernen und dann einen neuen Agent installieren, und er kann nicht von mehreren Agents verwendet werden. Wenn Sie einen neuen Schlüssel für einen vorhandenen Agent erstellen müssen, müssen Sie sicherstellen, dass derselbe Schlüssel beim Client-Agent und beim Dienst der SQL-Datensynchronisierung hinterlegt wird.
-
-### <a name="how-do-i-retire-a-client-agent"></a>Wie setze ich einen Client-Agent außer Kraft?
-
-Wenn Sie einen Agent umgehend für ungültig erklären oder außer Kraft setzen möchten, generieren Sie erneut seinen Schlüssel im Portal, übergeben ihn jedoch nicht an die Agent-Benutzeroberfläche. Durch das erneute Generieren eines Schlüssels wird der vorherige Schlüssel ungültig gemacht – unabhängig davon, ob der entsprechende Agent online oder offline ist.
-
-### <a name="how-do-i-move-a-client-agent-to-another-computer"></a>Wie verschiebe ich einen Client-Agent auf einen anderen Computer?
-
-Wenn Sie den lokalen Agent auf einem anderen Computer als dem ausführen möchten, auf dem er sich gerade befindet, führen Sie folgende Schritte aus:
-
-1. Installieren Sie den Agent auf dem gewünschten Computer.
-2. Melden Sie sich beim Portal der SQL-Datensynchronisierung an, und generieren Sie erneut einen Agent-Schlüssel für den neuen Agent.
-3. Übergeben Sie den neuen Agent-Schlüssel über die Benutzeroberfläche des neuen Agents.
-4. Warten Sie, während der Client-Agent die Liste der zuvor registrierten lokalen Datenbanken herunterlädt.
-5. Geben Sie Datenbankanmeldeinformationen für alle Datenbanken ein, die als nicht erreichbar angezeigt werden. Diese Datenbanken müssen auf dem neuen Computer erreichbar sein, auf denen der Agent installiert ist.
+Häufig gestellte Fragen zum Client-Agent finden Sie unter [Agent – Häufig gestellte Fragen](sql-database-data-sync-agent.md#agent-faq).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

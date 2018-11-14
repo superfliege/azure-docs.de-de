@@ -12,12 +12,12 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.date: 10/26/2018
 ms.author: glenga
-ms.openlocfilehash: 1918ed664a79a46f25cfc5162a28b311bea29cd8
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: f99c0fe798baa272bc2c74e8a171dd6bc7ca4304
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50740449"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51036545"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>JavaScript-Entwicklerhandbuch für Azure Functions
 
@@ -76,7 +76,7 @@ Bei der Verwendung der Deklaration [`async function`](https://developer.mozilla.
 
 Beim folgenden Beispiel handelt es sich um eine einfache Funktion, die ihre Auslösung protokolliert und dann die Ausführung abschließt.
 
-``` javascript
+```javascript
 module.exports = async function (context) {
     context.log('JavaScript trigger function processed a request.');
 };
@@ -109,22 +109,27 @@ module.exports = async function (context, req) {
 ## <a name="bindings"></a>Bindungen 
 In JavaScript werden [Bindungen](functions-triggers-bindings.md) in der Datei „function.json“ einer Funktion konfiguriert und definiert. Funktionen interagieren auf verschiedene Weise mit Bindungen.
 
-### <a name="reading-trigger-and-input-data"></a>Lesen von Triggern und Eingabedaten
-Trigger und Eingabebindungen (Bindungen des Typs `direction === "in"`) können von einer Funktion auf drei Arten gelesen werden:
+### <a name="inputs"></a>Eingaben
+Eingaben werden in Azure Functions in zwei Kategorien unterteilt: die Triggereingabe und die zusätzliche Eingabe. Trigger und andere Eingabebindungen (Bindungen des Typs `direction === "in"`) können von einer Funktion auf drei Arten gelesen werden:
  - **_[Empfohlen]_ Als an die Funktion übergebene Parameter.** Sie werden in der Reihenfolge, in der sie in *function.json* definiert sind, an die Funktion übergeben. Beachten Sie, dass die in *function.json* definierte `name`-Eigenschaft nicht mit dem Namen des Parameters übereinstimmen muss, obwohl dies empfehlenswert ist.
-   ``` javascript
+ 
+   ```javascript
    module.exports = async function(context, myTrigger, myInput, myOtherInput) { ... };
    ```
+   
  - **Als Member des [`context.bindings`](#contextbindings-property)-Objekts.** Jeder Member wird durch die in *function.json* definierte `name`-Eigenschaft benannt.
-   ``` javascript
+ 
+   ```javascript
    module.exports = async function(context) { 
        context.log("This is myTrigger: " + context.bindings.myTrigger);
        context.log("This is myInput: " + context.bindings.myInput);
        context.log("This is myOtherInput: " + context.bindings.myOtherInput);
    };
    ```
+   
  - **Als Eingaben unter Verwendung des JavaScript-Objekts [`arguments`](https://msdn.microsoft.com/library/87dw3w1k.aspx).** Dies entspricht im Wesentlichen dem Übergeben von Eingaben als Parameter, ermöglicht jedoch die dynamische Verarbeitung der Eingaben.
-   ``` javascript
+ 
+   ```javascript
    module.exports = async function(context) { 
        context.log("This is myTrigger: " + arguments[1]);
        context.log("This is myInput: " + arguments[2]);
@@ -132,12 +137,13 @@ Trigger und Eingabebindungen (Bindungen des Typs `direction === "in"`) können v
    };
    ```
 
-### <a name="writing-data"></a>Schreiben von Daten
+### <a name="outputs"></a>Ausgaben
 Ausgaben (Bindungen des Typs `direction === "out"`) können von einer Funktion auf verschiedene Arten geschrieben werden. In allen Fällen entspricht die in *function.json* definierte `name`-Eigenschaft der Bindung dem Namen des Objektmembers, der in die Funktion geschrieben wird. 
 
 Sie können Ausgabebindungen mit einer der folgenden Methoden Daten zuweisen. Diese Methoden sollten nicht kombiniert werden.
 - **_[Empfohlen für mehrere Ausgaben]_ Zurückgeben eines Objekts.** Bei Verwendung einer asynchronen Funktion (mit Rückgabe einer Zusage) kann ein Objekt mit zugewiesenen Ausgabedaten zurückgegeben werden. Im folgenden Beispiel werden die Ausgabebindungen in *function.json* mit „httpResponse“ und „queueOutput“ benannt.
-  ``` javascript
+
+  ```javascript
   module.exports = async function(context) {
       let retMsg = 'Hello, world!';
       return {
@@ -148,10 +154,12 @@ Sie können Ausgabebindungen mit einer der folgenden Methoden Daten zuweisen. Di
       };
   };
   ```
+  
   Bei Verwendung einer synchronen Funktion kann dieses Objekt mithilfe von [`context.done`](#contextdone-method) zurückgegeben werden (siehe Beispiel).
 - **_[Empfohlen für eine einzelne Ausgabe]_ Direktes Zurückgeben eines Werts und Verwenden des Bindungsnamens „$return“.** Dies ist nur bei asynchronen Funktionen (mit Rückgabe einer Zusage) möglich. Siehe dazu das Beispiel unter [Exportieren einer Async-Funktion](#exporting-an-async-function). 
 - **Zuweisen von Werten zu `context.bindings`.** Sie können „context.bindings“ direkt Werte zuweisen.
-  ``` javascript
+
+  ```javascript
   module.exports = async function(context) {
       let retMsg = 'Hello, world!';
       context.bindings.httpResponse = {

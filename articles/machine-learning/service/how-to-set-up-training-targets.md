@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.component: core
 ms.topic: article
 ms.date: 09/24/2018
-ms.openlocfilehash: 2c4255b70ae9eb3b31b6fdfce33853f0d517aa1f
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 7eacc475145dac61db1717f1860e22cedd022262
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50215479"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51231446"
 ---
 # <a name="select-and-use-a-compute-target-to-train-your-model"></a>Auswählen und Verwenden eines Computeziels zum Trainieren Ihres Modells
 
@@ -463,7 +463,7 @@ Eine Trainingsausführung kann auf zwei Arten übermittelt werden:
 * Übermitteln eines `Pipeline`-Objekts
 
 > [!IMPORTANT]
-> Die Azure Databricks-, Azure Datalake Analytics- und Azure HDInsight-Computeziele können nur in einer Pipeline verwendet werden.
+> Die Azure Databricks- und Azure Data Lake Analytics-Computeziele können nur in einer Pipeline verwendet werden.
 > Das lokale Computeziel kann nicht in einer Pipeline verwendet werden.
 
 ### <a name="submit-using-scriptrunconfig"></a>Übermitteln mithilfe von `ScriptRunConfig`
@@ -591,7 +591,7 @@ Rufen Sie die Notebooks ab: [!INCLUDE [aml-clone-in-azure-notebook](../../../inc
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [What is the Azure Machine Learning SDK for Python?](http://aka.ms/aml-sdk) (Was ist das Azure Machine Learning-SDK für Python?)
+* [What is the Azure Machine Learning SDK for Python?](https://aka.ms/aml-sdk) (Was ist das Azure Machine Learning-SDK für Python?)
 * [Train an image classification model with Azure Machine Learning](tutorial-train-models-with-aml.md) (Trainieren eines Bildklassifizierungsmodells mit Azure Machine Learning)
 * [Deploy models with the Azure Machine Learning service](how-to-deploy-and-where.md) (Bereitstellen von Modellen mit dem Azure Machine Learning-Dienst)
 * [Pipelines and Azure Machine Learning](concept-ml-pipelines.md) (Pipelines und Azure Machine Learning)

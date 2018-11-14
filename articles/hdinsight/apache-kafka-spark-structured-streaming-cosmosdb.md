@@ -2,27 +2,27 @@
 title: Strukturiertes Apache Spark-Streaming von Kafka zu Azure Cosmos DB– Azure HDInsight
 description: Erfahren Sie, wie Sie strukturiertes Apache Spark-Streaming verwenden, um Daten aus Apache Kafka zu lesen und in Azure Cosmos DB zu speichern. In diesem Beispiel streamen Sie Daten mithilfe eines Jupyter Notebooks aus Spark auf HDInsight.
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 03/26/2018
-ms.author: jasonh
-ms.openlocfilehash: 8f0a16320091f8b2efa98ee96a63801e841c082e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.date: 11/06/2018
+ms.author: hrasheed
+ms.openlocfilehash: fcedf4a9335a0d70cfbab5a7f803b68cb154e209
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46971313"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51278904"
 ---
-# <a name="use-spark-structured-streaming-with-kafka-and-azure-cosmos-db"></a>Verwenden von strukturiertem Spark-Streaming mit Kafka und Apache Cosmos DB
+# <a name="use-apache-spark-structured-streaming-with-kafka-and-azure-cosmos-db"></a>Verwenden von strukturiertem Apache Spark-Streaming mit Kafka und Azure Cosmos DB
 
-Erfahren Sie, wie Sie strukturiertes Spark-Streaming verwenden, um Daten aus Apache Kafka in Azure HDInsight zu lesen und dann in Azure Cosmos DB zu speichern.
+Erfahren Sie, wie Sie strukturiertes Apache Spark-Streaming verwenden, um Daten aus Apache Kafka in Azure HDInsight zu lesen und dann in Azure Cosmos DB zu speichern.
 
 Azure Cosmos DB ist eine global verteilte Datenbank mit Unterstützung mehrerer Modelle. Dieses Beispiel verwendet ein SQL-API-Datenbankmodell. Weitere Informationen finden Sie im Dokument [Willkommen bei Azure Cosmos DB](../cosmos-db/introduction.md).
 
-Strukturiertes Spark-Streaming ist eine auf Spark SQL basierende Stream-Verarbeitungs-Engine. Sie können damit Streamingberechnungen genauso wie Batchberechnung auf statischen Daten ausdrücken. Weitere Informationen zu strukturiertem Streaming finden Sie unter [Structured Streaming Programming Guide [Alpha]](http://spark.apache.org/docs/2.1.0/structured-streaming-programming-guide.html) (Programmierhandbuch zu strukturiertem Streaming [Alpha]) auf Apache.org.
+Strukturiertes Spark-Streaming ist eine auf Spark SQL basierende Stream-Verarbeitungs-Engine. Sie können damit Streamingberechnungen genauso wie Batchberechnung auf statischen Daten ausdrücken. Weitere Informationen zu strukturiertem Streaming finden Sie unter [Structured Streaming Programming Guide](https://spark.apache.org/docs/2.2.0/structured-streaming-programming-guide.html) (Programmierhandbuch zu strukturiertem Streaming) auf Apache.org.
 
 > [!IMPORTANT]
 > In diesem Beispiel wird Spark 2.2 auf HDInsight 3.6 verwendet.
@@ -95,7 +95,7 @@ Es ist zwar möglich, ein virtuelles Azure-Netzwerk, einen Kafka-Cluster und ein
 
 3. Lesen Sie die **Geschäftsbedingungen**, und wählen Sie anschließend die Option **Ich stimme den oben genannten Geschäftsbedingungen zu**.
 
-4. Aktivieren Sie zum Schluss **An Dashboard anheften**, und wählen Sie dann **Kaufen** aus. Das Erstellen der Cluster dauert ca. 20 Minuten.
+4. Wählen Sie abschließend **Kaufen** aus. Das Erstellen der Cluster dauert ca. 20 Minuten.
 
 > [!IMPORTANT]
 > Das Erstellen des Clusters, des virtuellen Netzwerks und des Cosmos DB-Kontos kann bis zu 45 Minuten dauern.

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/09/2018
 ms.author: shtabriz
 ms.component: alerts
-ms.openlocfilehash: 221434a391f963a764ef36b9533cc8cfd0e16c01
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: a86a7188c488a634de7b0ac71657bea0105381c7
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43123447"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50961890"
 ---
 # <a name="create-activity-log-alerts-on-service-notifications"></a>Erstellen von Aktivitätsprotokollwarnungen zu Dienstbenachrichtigungen
 ## <a name="overview"></a>Übersicht
@@ -36,7 +36,7 @@ Sie können auch konfigurieren, an wen die Warnung gesendet werden soll:
 
 Weitere Informationen zu Aktionsgruppen finden Sie unter [Erstellen und Verwalten von Aktionsgruppen im Azure-Portal](monitoring-action-groups.md).
 
-Informationen zum Konfigurieren von Dienstintegritätsbenachrichtigungs-Warnungen mithilfe von Azure Resource Manager-Vorlagen siehe [Resource Manager-Vorlagen](monitoring-create-activity-log-alerts-with-resource-manager-template.md).
+Informationen zum Konfigurieren von Dienstintegritätsbenachrichtigungs-Warnungen mithilfe von Azure Resource Manager-Vorlagen siehe [Resource Manager-Vorlagen](alert-activity-log.md).
 
 ## <a name="create-an-alert-on-a-service-health-notification-for-a-new-action-group-by-using-the-azure-portal"></a>Erstellen einer Warnung zu einer Dienstintegritätsbenachrichtigung für eine neue Aktionsgruppe mit dem Azure-Portal
 1. Wählen Sie im [Portal](https://portal.azure.com) die Option **Dienstintegrität** aus.
@@ -70,7 +70,7 @@ Informationen zum Konfigurieren von Dienstintegritätsbenachrichtigungs-Warnunge
 
 1. Definieren Sie eine Liste von Empfängern, indem Sie folgende Daten der Empfänger angeben:
 
-    a. **Name:** Geben Sie Name, Alias oder Bezeichner des Empfängers ein.
+    a. **Name**: Geben Sie den Empfängernamen, sein Alias oder den Bezeichner ein.
 
     b. **Aktionstyp**: Wählen Sie „SMS“, „E-Mail“, „Webhook“ „Azure-App“ usw. aus.
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/08/2016
 ms.author: mandia
-ms.openlocfilehash: 05470e75fc7b46603c8fce3a98c66ac6a24758a8
-ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
+ms.openlocfilehash: bbe1288a42db307001ac778394ac410206f1df21
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2017
-ms.locfileid: "24102741"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51228197"
 ---
 # <a name="what-you-can-and-cant-do-using-the-biztalk-service-state"></a>BizTalk Services: eine Dienststatusübersicht
 
@@ -33,14 +33,14 @@ Sie stellen beispielsweise einen neuen BizTalk-Dienst bereit. Wenn dieser Vorgan
 
 ## <a name="view-the-possible-states"></a>Anzeigen der möglichen Status
 
-Die folgenden Tabellen enthalten alle Vorgänge oder Aktionen, die ausgeführt werden können, wenn sich der BizTalk-Dienst in einem spezifischen Status befindet. Ein ✔ bedeutet dabei, dass der Vorgang zulässig ist, wenn der betreffende Status zutrifft. Ein leerer Eintrag bedeutet dagegen, dass der Vorgang nicht ausgeführt werden kann, wenn der betreffende Status zutrifft.
+Die folgenden Tabellen enthalten alle Vorgänge oder Aktionen, die ausgeführt werden können, wenn sich der BizTalk-Dienst in einem spezifischen Status befindet. Ein ✔ bedeutet, dass der Vorgang in diesem Zustand zulässig ist. Ein leerer Eintrag bedeutet dagegen, dass der Vorgang nicht ausgeführt werden kann, wenn der betreffende Status zutrifft.
 
-| Dienstzustand | Start | Beenden | Neu starten | Anhalten | Fortfahren | Löschen | Skalieren | Aktualisieren <br/> Konfiguration | Sicherung |
+| Dienstzustand | Start | Beenden | Neu starten | Anhalten | Fortfahren | Löschen | Skalieren | Aktualisieren <br/> Konfiguration | Backup |
 | --- | --- | --- | --- | --- | --- | --- |--- | --- | --- |
 | Aktiv |  | ✔ | ✔ | ✔ |  | ✔ |✔ |✔ |✔ |
 | Deaktiviert |  |  |  |  |  | ✔ | |  |  | 
 | Ausgesetzt |  |  |  |  | ✔ | ✔ | |  | ✔ |
-| Stopped | ✔ |  | ✔ |  |  | ✔ | |  | ✔ |
+| Beendet | ✔ |  | ✔ |  |  | ✔ | |  | ✔ |
 | Dienst-Update fehlgeschlagen |  |  |  |  |  | ✔ | |  |  | 
 | DisableFailed |  |  |  |  |  | ✔ | |  |  | 
 | EnableFailed |  |  |  |  |  | ✔ | |  |  | 
@@ -52,11 +52,11 @@ Die folgenden Tabellen enthalten alle Vorgänge oder Aktionen, die ausgeführt w
 
 
 
-## <a name="see-also"></a>Weitere Informationen
-* [BizTalk Services: Registerkarten „Dashboard“, „Überwachen“ und „Skalieren“](http://go.microsoft.com/fwlink/p/?LinkID=302281)<br/>
-* [BizTalk Services: Editionsübersicht](http://go.microsoft.com/fwlink/p/?LinkID=302279)<br/>
-* [BizTalk Services: Sichern und Wiederherstellen](http://go.microsoft.com/fwlink/p/?LinkID=329873)<br/>
-* [BizTalk Services: Drosselung](http://go.microsoft.com/fwlink/p/?LinkID=302282)<br/>
-* [BizTalk Services: Name und Schlüssel des Ausstellers](http://go.microsoft.com/fwlink/p/?LinkID=303941)<br/>
-* [Wie verwende ich das Azure BizTalk Services SDK?](http://go.microsoft.com/fwlink/p/?LinkID=302335)
+## <a name="see-also"></a>Siehe auch
+* [BizTalk Services: Registerkarten „Dashboard“, „Überwachen“ und „Skalieren“](https://go.microsoft.com/fwlink/p/?LinkID=302281)<br/>
+* [BizTalk Services: Editionsübersicht](https://go.microsoft.com/fwlink/p/?LinkID=302279)<br/>
+* [BizTalk Services: Sichern und Wiederherstellen](https://go.microsoft.com/fwlink/p/?LinkID=329873)<br/>
+* [BizTalk Services: Drosselung](https://go.microsoft.com/fwlink/p/?LinkID=302282)<br/>
+* [BizTalk Services: Name und Schlüssel des Ausstellers](https://go.microsoft.com/fwlink/p/?LinkID=303941)<br/>
+* [Wie verwende ich das Azure BizTalk Services SDK?](https://go.microsoft.com/fwlink/p/?LinkID=302335)
 

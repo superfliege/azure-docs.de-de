@@ -8,12 +8,12 @@ ms.date: 09/18/2018
 ms.topic: conceptual
 ms.service: iot-central
 manager: peterpr
-ms.openlocfilehash: 86128abd82ee41459a84fc7d9169042179807793
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 3231a956648b80d88059b7b0fc8f790e0e58be99
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47034908"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50962791"
 ---
 # <a name="export-your-data-in-azure-iot-central"></a>Exportieren von Daten in Azure IoT Central
 
@@ -26,10 +26,10 @@ In diesem Artikel wird beschrieben, wie Sie in Azure IoT Central das Feature fü
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Eine erweiterte 30-Tage-Testversion der IoT Central-Anwendung oder eine kostenpflichtige Anwendung.
-- Ein Azure-Konto mit einem Azure-Abonnement.
-- Dasselbe Azure-Konto ist ein Administratorkonto in Ihrer IoT Central-Anwendung.
-- Dasselbe Azure-Konto weist Berechtigungen zum Erstellen eines Speicherkontos oder Zugreifen auf ein vorhandenes Speicherkonto in demselben Azure-Abonnement auf.
+- Eine Anwendung mit nutzungsbasierter Zahlung
+- Einen Administrator in Ihrer IoT Central-Anwendung, der über Folgendes verfügt:
+    - Ein Azure-Konto im Azure-Abonnement, in dem sich Ihre IoT Central-Anwendung befindet
+    - Berechtigungen zum Erstellen eines Speicherkontos oder Zugreifen auf ein vorhandenes Speicherkonto in diesem Azure-Abonnement
 
 ## <a name="types-of-data-to-export"></a>Typen der zu exportierenden Daten
 

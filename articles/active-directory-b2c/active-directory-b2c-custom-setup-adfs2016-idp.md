@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/20/2018
+ms.date: 11/07/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 6f7fced5163476dc1de866474484f98d546d1901
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 31ae13fb84453a7014b66499c983e1f52554775e
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945721"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51279125"
 ---
 # <a name="add-adfs-as-a-saml-identity-provider-using-custom-policies-in-azure-active-directory-b2c"></a>Hinzufügen von AD FS als SAML-Identitätsanbieter mithilfe benutzerdefinierter Richtlinien in Azure Active Directory B2C
 
@@ -26,11 +26,11 @@ In diesem Artikel erfahren Sie, wie Sie die Anmeldung für ein AD FS-Benutzerkon
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Führen Sie die unter [Erste Schritte mit benutzerdefinierten Richtlinien in Azure Active Directory B2C](active-directory-b2c-get-started-custom.md) beschriebenen Schritte aus.
-- Vergewissern Sie sich, dass Sie Zugriff auf die PFX-Zertifikatsdatei mit dem privaten Schlüssel, der von AD FS ausgestellt wurde, haben.
+- Vergewissern Sie sich, dass Sie Zugriff auf die PFX-Zertifikatsdatei mit einem privaten Schlüssel haben. Sie können ein eigenes signiertes Zertifikat generieren und in Azure AD B2C hochladen. Azure AD B2C verwendet dieses Zertifikat zum Signieren der SAML-Anforderung, die an Ihren SAML-Identitätsanbieter gesendet wird.
 
 ## <a name="create-a-policy-key"></a>Erstellen eines Richtlinienschlüssels
 
-Sie müssen Ihr AD FS-Zertifikat in Ihrem Azure AD B2C-Mandanten speichern.
+Sie müssen Ihr Zertifikat in Ihrem Azure AD B2C-Mandanten speichern.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 2. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält, indem Sie im oberen Menü auf den **Verzeichnis- und Abonnementfilter** klicken und das entsprechende Verzeichnis auswählen.
@@ -38,7 +38,7 @@ Sie müssen Ihr AD FS-Zertifikat in Ihrem Azure AD B2C-Mandanten speichern.
 4. Wählen Sie auf der Seite „Übersicht“ die Option **Identity Experience Framework – PREVIEW** (Framework für die Identitätsfunktion – VORSCHAU) aus.
 5. Klicken Sie erst auf **Richtlinienschlüssel** und anschließend auf **Hinzufügen**.
 6. Klicken Sie unter **Optionen** auf `Upload`.
-7. Geben Sie einen **Namen** für den Richtlinienschlüssel ein. Beispiel: `ADFSSamlCert`. Dem Namen Ihres Schlüssels wird automatisch das Präfix `B2C_1A_` hinzugefügt.
+7. Geben Sie einen **Namen** für den Richtlinienschlüssel ein. Beispiel: `SamlCert`. Dem Namen Ihres Schlüssels wird automatisch das Präfix `B2C_1A_` hinzugefügt.
 8. Navigieren Sie zur PFX-Datei Ihres Zertifikats mit dem privaten Schlüssel, und wählen Sie sie aus.
 9. Klicken Sie auf **Create**.
 
@@ -64,6 +64,7 @@ Sie können ein AD FS-Konto als Anspruchsanbieter definieren, indem Sie es in de
           <Metadata>
             <Item Key="WantsEncryptedAssertions">false</Item>
             <Item Key="PartnerEntity">https://your-ADFS-domain/federationmetadata/2007-06/federationmetadata.xml</Item>
+            <Item Key=" XmlSignatureAlgorithm">Sha256</Item>
           </Metadata>
           <CryptographicKeys>
             <Key Id="SamlAssertionSigning" StorageReferenceId="B2C_1A_ADFSSamlCert"/>
@@ -165,6 +166,15 @@ Ersetzen Sie die folgenden Werte:
 9. Wählen Sie **Regel hinzufügen** aus.  
 10. Wählen Sie in **Anspruchsregelvorlage** die Option **Senden von LDAP-Attributen als Ansprüche** aus.
 11. Geben Sie einen **Anspruchsregelnamen** an. Wählen Sie als **Attributspeicher** **Active Directory** aus. Fügen Sie die folgenden Ansprüche hinzu, und klicken Sie auf **Fertig stellen** und **OK**.
+
+    | LDAP-Attribut | Typ des ausgehenden Anspruchs |
+    | -------------- | ------------------- |
+    | Benutzerprinzipalname | userPricipalName |
+    | Surname | family_name |
+    | Vorname | given_name |
+    | E-Mail-Adresse | E-Mail |
+    | Anzeigename | name |
+    
 12.  Basierend auf Ihrem Zertifikattyp müssen Sie möglicherweise den Hashalgorithmus festlegen. Wählen Sie im Eigenschaftenfenster der Vertrauensstellung der vertrauenden Seite (B2C-Demo) die Registerkarte **Erweitert** aus, und ändern Sie **Sicherer Hashalgorithmus** in `SHA-1` oder `SHA-256`. Klicken Sie auf **OK**.  
 13. Wählen Sie im Server-Manager **Tools** und dann **AD FS-Verwaltung** aus.
 14. Wählen Sie die Vertrauensstellung der vertrauenden Seite, die Sie erstellt haben, und **Update from Federation Metadata** (Von Verbundmetadaten aktualisieren) aus, und klicken Sie dann auf **Aktualisieren**. 

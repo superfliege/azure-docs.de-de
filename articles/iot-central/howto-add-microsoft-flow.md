@@ -8,12 +8,12 @@ ms.date: 09/18/2018
 ms.topic: conceptual
 ms.service: iot-central
 manager: peterpr
-ms.openlocfilehash: cc54a3a375fa2780e289a20b699df5d65aaf08cc
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: c06939ccb920954c08ef02f38e6d12471ac267db
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50155574"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50959289"
 ---
 # <a name="build-workflows-with-the-iot-central-connector-in-microsoft-flow"></a>Erstellen von Workflows mit dem IoT Central-Connector in Microsoft Flow
 
@@ -21,8 +21,10 @@ ms.locfileid: "50155574"
 
 Verwenden Sie Microsoft Flow, um Workflows viele für Geschäftskunden unverzichtbare Anwendungen und Dienste übergreifend zu automatisieren. Mit dem IoT Central-Connector in Microsoft Flow können Sie Workflows auslösen, wenn eine Regel in IoT Central ausgelöst wird. In einem von IoT Central ausgelösten Workflow oder einer anderen Anwendung können Sie die Aktionen im IoT Central-Connector zum Erstellen eines Geräts, Aktualisieren der Eigenschaften und Einstellungen eines Geräts oder Löschen eines Geräts einsetzen. Machen Sie sich mit [diesen Microsoft Flow-Vorlagen](https://aka.ms/iotcentralflowtemplates) vertraut, die eine Verbindung von IoT Central mit anderen Diensten wie mobilen Benachrichtigungen und Microsoft Teams herstellen.
 
-> [!NOTE] 
-> Sie müssen sich mit einem persönlichen, Geschäfts-, Schul- oder Unikonto bei Microsoft Flow anmelden. [Hier](https://aka.ms/microsoftflowplans) erfahren Sie mehr über Microsoft Flow-Pläne.
+## <a name="prerequisites"></a>Voraussetzungen
+
+- Eine Anwendung mit nutzungsbasierter Bezahlung
+- Ein persönliches oder Geschäfts-, Schul- oder Unikonto für die Anmeldung bei Microsoft Flow ([weitere Informationen zu Microsoft Flow-Tarifen](https://aka.ms/microsoftflowplans))
 
 ## <a name="trigger-a-workflow-when-a-rule-is-triggered"></a>Auslösen eines Workflows bei Auslösen einer Regel
 

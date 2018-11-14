@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: sanpil
 author: sanpil
-ms.date: 09/24/2018
-ms.openlocfilehash: 45aa954d2f85267b2c7c9aa2a7ba04e436765433
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.date: 11/07/2018
+ms.openlocfilehash: 59a35cd7ca3af446853d518fc7e7d48d2321ff10
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50023925"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51278972"
 ---
 # <a name="pipelines-and-azure-machine-learning"></a>Pipelines und Azure Machine Learning
 
@@ -22,11 +22,11 @@ In diesem Artikel lernen Sie die Machine Learning-Pipelines, die Sie mit dem Azu
 
 ## <a name="what-are-machine-learning-pipelines"></a>Einführung in Machine Learning-Pipelines
 
-Machine Learning-Pipelines werden von Data Scientists verwendet, um Workflows für das maschinelle Lernen zu erstellen, zu optimieren und zu verwalten. Eine gewöhnliche Pipeline besteht aus mehreren Schritten, die die folgenden Bereiche abdecken:
-
+Mithilfe von Pipelines für maschinelles Lernen können Datenanalysten, Dateningenieure und IT-Experten an den Schritten für Folgendes zusammenarbeiten:
 + Datenaufbereitung, z.B. Normalisierung und Transformation
-+ Modelltraining, z.B. Hyperparameteroptimierung und Überprüfung
-+ Modellimplementierung und -bewertung  
++ Modelltraining
++ Modellauswertung
++ Bereitstellung 
 
 Das folgende Diagramm zeigt eine Beispielpipeline:
 
@@ -38,11 +38,13 @@ Das [Azure Machine Learning SDK für Python](#the-python-sdk-for-pipelines) kann
 
 Mit Pipelines können Sie Ihren Workflow durch Einfachheit, Geschwindigkeit, Portabilität und Wiederverwendung optimieren. Beim Erstellen von Pipelines mit Azure Machine Learning können Sie sich auf das Wesentliche konzentrieren &mdash; nämlich maschinelles Lernen &mdash; und nicht auf die Infrastruktur.
 
-Da verschiedene Schritte verwendet werden, können Sie nur die Schritte erneut ausführen, die Sie zum Optimieren und Testen Ihres Workflows benötigen. Ein Schritt ist eine Computeeinheit in der Pipeline. Wie in der obigen Abbildung dargestellt, kann die Aufgabe der Datenaufbereitung viele Schritte umfassen, unter anderem Normalisierung, Transformation, Überprüfung und Featurebereitstellung.
+Da verschiedene Schritte verwendet werden, können Sie nur die Schritte erneut ausführen, die Sie zum Optimieren und Testen Ihres Workflows benötigen. Ein Schritt ist eine Computeeinheit in der Pipeline. Wie in der obigen Abbildung dargestellt, kann die Aufgabe der Datenaufbereitung viele Schritte umfassen, unter anderem Normalisierung, Transformation, Überprüfung und Featurebereitstellung. Datenquellen und Zwischendaten werden in der gesamten Pipeline wiederverwendet, um Rechenzeit und Ressourcen zu sparen. 
 
 Nachdem die Pipeline entworfen wurde, wird ihr Trainingsprozess i.d.R. weiter optimiert. Wenn Sie eine Pipeline erneut ausführen, springt die Ausführung zu den Schritten, die wiederholt werden müssen, z.B. zu einem aktualisierten Trainingsskript, und überspringt, was sich nicht geändert hat. Das gleiche gilt für unveränderte Skripts, die zum Ausführen des Schritts verwendet werden. 
 
 Mit Azure Machine Learning können Sie verschiedene Toolkits und Frameworks wie Microsoft Cognitive Toolkit oder TensorFlow für jeden Pipelineschritt verwenden. Azure koordiniert zwischen den verschiedenen [Computezielen](concept-azure-machine-learning-architecture.md), die Sie verwenden, sodass Ihre Zwischendaten problemlos für die nachgelagerten Computeziele freigegeben werden können. 
+
+Sie können [die Metriken für Ihre Pipelineexperimente direkt im Azure-Portal verfolgen](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-track-experiments). 
 
 ## <a name="key-advantages"></a>Hauptvorteile
 
@@ -59,7 +61,7 @@ Die Übersicht enthält die wichtigsten Argumente, die für das Erstellen von Pi
 
 Verwenden Sie Python, um Ihre Machine Learning-Pipelines zu erstellen. Das Azure Machine Learning SDK bietet imperative Konstrukte zum Sequenzieren und Parallelisieren der Pipelineschritte, wenn keine Datenabhängigkeit besteht. Sie können damit in Jupyter Notebook oder in einer anderen bevorzugten IDE interagieren. 
 
-Mit deklarativen Datenabhängigkeiten können Sie Ihre Aufgaben optimieren. Das SDK enthält ein Framework von vorgefertigten Modulen für allgemeine Aufgaben wie Datenübertragung, Computezielerstellung und Modellveröffentlichung. Sie können das Framework erweitern, um eigene Konventionen zu modellieren. Implementieren Sie dafür benutzerdefinierte Schritte, die über Pipelines hinweg wiederverwendbar sind.
+Mit deklarativen Datenabhängigkeiten können Sie Ihre Aufgaben optimieren. Das SDK enthält ein Framework von vordefinierten Modulen für allgemeine Aufgaben wie Datenübertragung und Modellveröffentlichung. Sie können das Framework erweitern, um eigene Konventionen zu modellieren. Implementieren Sie dafür benutzerdefinierte Schritte, die über Pipelines hinweg wiederverwendbar sind. Computeziele und Speicherressourcen können ebenfalls direkt vom SDK verwaltet werden.
 
 Pipelines lassen sich als Vorlagen speichern und auf einem REST-Endpunkt bereitstellen, damit Sie Batchbewertungen und erneute Trainingsaufträge planen können.
 

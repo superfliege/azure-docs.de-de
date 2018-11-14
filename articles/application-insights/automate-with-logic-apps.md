@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/29/2017
 ms.author: mbullwin
-ms.openlocfilehash: 91b5c2c23445e5cd3445d1d5b640cb3ecb8e5e7a
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 1e9170c955f2a36d68600372e3dcdac2a63056c1
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44301190"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50957744"
 ---
 # <a name="automate-application-insights-processes-by-using-logic-apps"></a>Automatisieren von Application Insights-Prozessen mithilfe von Logic Apps
 
@@ -51,7 +51,7 @@ In diesem Tutorial erfahren Sie, wie Sie eine Logik-App erstellen, die den autom
 
 1. Geben Sie im Suchfeld **Aktion auswählen** den Text **Azure Application Insights** ein.
 
-1. Klicken Sie unter **Aktionen** auf **Azure Application Insights – Visualize Analytics query Preview** (Azure Application Insights – Analytics-Abfrage visualisieren (Vorschau)).
+1. Klicken Sie unter **Aktionen** auf **Azure Application Insights – Analytics-Abfrage visualisieren (Vorschau)**.
 
     ![Logik-App-Designer-Fenster „Aktion auswählen“](./media/automate-with-logic-apps/flow2.png)
 
@@ -132,7 +132,7 @@ Wenn Ihre Logik-App ausgeführt wird, erhalten die Empfänger, die Sie in der E-
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie mehr über die Erstellung von [Analytics-Abfragen](app-insights-analytics-using.md).
+- Erfahren Sie mehr über die Erstellung von [Analytics-Abfragen](../log-analytics/query-language/get-started-queries.md).
 - Informieren Sie sich ausführlicher über [Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-what-are-logic-apps).
 
 

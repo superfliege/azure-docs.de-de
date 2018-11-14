@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/07/2018
 ms.author: cherylmc
-ms.openlocfilehash: 19b1090a37ae1f97537fcabe128e7958fc26a96a
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 52c7734c2af80d29433c20191d8b5b7c0ee0fe48
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35235888"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51252004"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-p2s-radius-authentication"></a>Erstellen und Installieren von Clientkonfigurationsdateien für P2S-RADIUS-Authentifizierung
 
@@ -35,7 +35,7 @@ Wenn Sie die RADIUS-Authentifizierung verwenden, stehen mehrere Authentifizierun
 Der Konfigurationsworkflow für die P2S-RADIUS-Authentifizierung lautet wie folgt:
 
 1. [Richten Sie das Azure-VPN-Gateway für P2S-Konnektivität ein](point-to-site-how-to-radius-ps.md).
-2. [Richten Sie den RADIUS-Server für die Authentifizierung ein](point-to-site-how-to-radius-ps.md#radius). 
+2. [Richten Sie den RADIUS-Server für die Authentifizierung ein](point-to-site-how-to-radius-ps.md#radius). 
 3. **Rufen Sie die VPN-Clientkonfiguration für die gewünschte Authentifizierungsoption ab, um den VPN-Client damit einzurichten** (dieser Artikel).
 4. [Schließen Sie die P2S-Konfiguration ab, und stellen Sie eine Verbindung her](point-to-site-how-to-radius-ps.md).
 
@@ -56,17 +56,17 @@ Sie können beim Konfigurieren der Authentifizierung per Benutzername/Kennwort n
 
 Generieren Sie VPN-Clientkonfigurationsdateien zur Verwendung für die Authentifizierung mit Benutzername und Kennwort. Sie können die VPN-Clientkonfigurationsdateien mit dem folgenden Befehl generieren:
 
-```powershell 
+```powershell 
 New-AzureRmVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW" -AuthenticationMethod "EapMSChapv2"
 ```
- 
-Bei Ausführung des Befehls wird ein Link zurückgegeben. Kopieren Sie den Link, und fügen Sie ihn in einen Webbrowser ein, um **VpnClientConfiguration.zip** herunterzuladen. Entzippen Sie die Datei, um die folgenden Ordner anzuzeigen: 
- 
-* **WindowsAmd64** und **WindowsX86**: Diese Ordner enthalten das Windows-64-Bit- bzw. das 32-Bit-Installer-Paket. 
+ 
+Bei Ausführung des Befehls wird ein Link zurückgegeben. Kopieren Sie den Link, und fügen Sie ihn in einen Webbrowser ein, um **VpnClientConfiguration.zip** herunterzuladen. Entzippen Sie die Datei, um die folgenden Ordner anzuzeigen: 
+ 
+* **WindowsAmd64** und **WindowsX86**: Diese Ordner enthalten das Windows-64-Bit- bzw. das 32-Bit-Installer-Paket. 
 * **Generic**: Dieser Ordner enthält allgemeine Informationen zum Erstellen Ihrer eigenen VPN-Clientkonfiguration. Dieser Ordner wird für Konfigurationen der Authentifizierung mit Benutzername und Kennwort nicht benötigt.
 * **Mac**: Wenn Sie beim Erstellen des Gateways für virtuelle Netzwerke IKEv2 konfiguriert haben, wird ein Ordner mit dem Namen **Mac** angezeigt, der die Datei **mobileconfig** enthält. Diese Datei wird zum Konfigurieren von Mac-Clients verwendet.
 
-Wenn Sie die Clientkonfigurationsdateien bereits erstellt haben, können Sie diese mithilfe des Cmdlets `Get-AzureRmVpnClientConfiguration` abrufen. Wenn Sie jedoch Änderungen an der P2S-VPN-Konfiguration (beispielsweise am VPN-Protokolltyp oder -Authentifizierungstyp) vornehmen, wird die Konfiguration nicht automatisch aktualisiert. Sie müssen das Cmdlet `New-AzureRmVpnClientConfiguration` ausführen, um einen neuen Konfigurationsdownload zu erstellen.
+Wenn Sie die Clientkonfigurationsdateien bereits erstellt haben, können Sie diese mithilfe des Cmdlets `Get-AzureRmVpnClientConfiguration` abrufen. Wenn Sie jedoch Änderungen an der P2S-VPN-Konfiguration (beispielsweise am VPN-Protokolltyp oder -Authentifizierungstyp) vornehmen, wird die Konfiguration nicht automatisch aktualisiert. Sie müssen das Cmdlet  `New-AzureRmVpnClientConfiguration` ausführen, um einen neuen Konfigurationsdownload zu erstellen.
 
 Um zuvor generierte Clientkonfigurationsdateien abzurufen, verwenden Sie den folgenden Befehl:
 
@@ -81,7 +81,7 @@ Sie können die folgenden VPN-Clients konfigurieren:
 * [Windows](#adwincli)
 * [Mac (OS X)](#admaccli)
 * [Linux über strongSwan](#adlinuxcli)
- 
+ 
 #### <a name="adwincli"></a>Setup für Windows-VPN-Clients
 
 Sie können auf jedem Windows-Clientcomputer das gleiche VPN-Clientkonfigurationspaket verwenden – vorausgesetzt, es handelt sich dabei um die passende Version für die Architektur des jeweiligen Clients. Die Liste mit den unterstützten Clientbetriebssystemen finden Sie in den [häufig gestellten Fragen](vpn-gateway-vpn-faq.md#P2S).
@@ -90,7 +90,7 @@ Führen Sie die folgenden Schritte aus, um den nativen Windows-VPN-Client für d
 
 1. Wählen Sie die VPN-Clientkonfigurationsdateien, die der Architektur des Windows-Computers entsprechen. Wählen Sie für eine 64-Bit-Prozessorarchitektur das Installer-Paket **VpnClientSetupAmd64** aus. Wählen Sie für eine 32-Bit-Prozessorarchitektur das Installer-Paket **VpnClientSetupX86** aus. 
 2. Installieren Sie das Paket per Doppelklick. Wenn ein SmartScreen-Popupelement angezeigt wird, wählen Sie **Weitere Informationen** > **Trotzdem ausführen**.
-3. Navigieren Sie auf dem Clientcomputer zu **Netzwerkeinstellungen**, und wählen Sie **VPN** aus. Die VPN-Verbindung zeigt den Namen des virtuellen Netzwerks an, mit dem eine Verbindung hergestellt wird. 
+3. Navigieren Sie auf dem Clientcomputer zu **Netzwerkeinstellungen**, und wählen Sie **VPN** aus. Die VPN-Verbindung zeigt den Namen des virtuellen Netzwerks an, mit dem eine Verbindung hergestellt wird. 
 
 #### <a name="admaccli"></a>Setup des Mac-VPN-Clients (OS X)
 
@@ -99,31 +99,46 @@ Führen Sie die folgenden Schritte aus, um den nativen Windows-VPN-Client für d
 2. Navigieren Sie auf dem Mac zur Datei **mobileconfig**.
 
    ![Speicherort der Datei „mobilconfig“](./media/point-to-site-vpn-client-configuration-radius/admobileconfigfile.png)
-3. Doppelklicken Sie auf das Profil, um es zu installieren, und wählen Sie **Weiter** aus. Der Profilname ist identisch mit dem Namen Ihres virtuellen Netzwerks.
+
+3. Optionaler Schritt: Wenn Sie ein benutzerdefiniertes DNS angeben möchten, fügen Sie der Datei **mobileconfig** die folgenden Zeilen hinzu:
+```
+    <key>DNS</key>
+    <dict>
+      <key>ServerAddresses</key>
+        <array>
+            <string>10.0.0.132</string>
+        <array>
+      <key>SupplementalMatchDomains</key>
+        <array>
+            <string>TestDomain.com</string>
+        </array>
+    </dict> 
+```
+4. Doppelklicken Sie auf das Profil, um es zu installieren, und wählen Sie **Weiter** aus. Der Profilname ist identisch mit dem Namen Ihres virtuellen Netzwerks.
 
    ![Installationsmeldung](./media/point-to-site-vpn-client-configuration-radius/adinstall.png)
-4. Wählen Sie **Weiter**, um dem Absender des Profils zu vertrauen und die Installation fortzusetzen.
+5. Wählen Sie **Weiter**, um dem Absender des Profils zu vertrauen und die Installation fortzusetzen.
 
    ![Bestätigungsmeldung](./media/point-to-site-vpn-client-configuration-radius/adcontinue.png)
-5. Während der Profilinstallation haben Sie die Möglichkeit, den Benutzernamen und das Kennwort für die VPN-Authentifizierung anzugeben. Es ist nicht erforderlich, diese Informationen einzugeben. Wenn Sie sie angegeben, werden die Informationen gespeichert und automatisch verwendet, wenn Sie eine Verbindung initiieren. Wählen Sie **Installieren**, um den Vorgang fortzusetzen.
+6. Während der Profilinstallation haben Sie die Möglichkeit, den Benutzernamen und das Kennwort für die VPN-Authentifizierung anzugeben. Es ist nicht erforderlich, diese Informationen einzugeben. Wenn Sie sie angegeben, werden die Informationen gespeichert und automatisch verwendet, wenn Sie eine Verbindung initiieren. Wählen Sie **Installieren**, um den Vorgang fortzusetzen.
 
    ![Felder für Benutzername und Kennwort für VPN](./media/point-to-site-vpn-client-configuration-radius/adsettings.png)
-6. Geben Sie einen Benutzernamen und ein Kennwort für die Berechtigungen ein, die zum Installieren des Profils auf Ihrem Computer erforderlich sind. Klicken Sie auf **OK**.
+7. Geben Sie einen Benutzernamen und ein Kennwort für die Berechtigungen ein, die zum Installieren des Profils auf Ihrem Computer erforderlich sind. Klicken Sie auf **OK**.
 
    ![Felder für Benutzername und Kennwort für die Profilinstallation](./media/point-to-site-vpn-client-configuration-radius/adusername.png)
-7. Nach der Installation des Profils wird es im Dialogfeld **Profile** angezeigt. Dieses Dialogfeld kann später auch über **Systemeinstellungen** geöffnet werden.
+8. Nach der Installation des Profils wird es im Dialogfeld **Profile** angezeigt. Dieses Dialogfeld kann später auch über **Systemeinstellungen** geöffnet werden.
 
    ![Dialogfeld „Profile“](./media/point-to-site-vpn-client-configuration-radius/adsystempref.png)
-8. Öffnen Sie zum Zugreifen auf die VPN-Verbindung über **Systemeinstellungen** das Dialogfeld **Netzwerk**.
+9. Öffnen Sie zum Zugreifen auf die VPN-Verbindung über **Systemeinstellungen** das Dialogfeld **Netzwerk**.
 
    ![Symbole in den Systemeinstellungen](./media/point-to-site-vpn-client-configuration-radius/adnetwork.png)
-9. Die VPN-Verbindung wird als **IkeV2-VPN** angezeigt. Sie können den Namen durch Aktualisieren der Datei **mobileconfig** ändern.
+10. Die VPN-Verbindung wird als **IkeV2-VPN** angezeigt. Sie können den Namen durch Aktualisieren der Datei **mobileconfig** ändern.
 
    ![Details für die VPN-Verbindung](./media/point-to-site-vpn-client-configuration-radius/adconnection.png)
-10. Wählen Sie **Authentifizierungseinstellungen**. Wählen Sie in der Liste **Benutzername**, und geben Sie Ihre Anmeldeinformationen ein. Wenn Sie die Anmeldeinformationen zuvor eingegeben haben, wird **Benutzername** in der Liste automatisch ausgewählt, und Benutzername und Kennwort werden vorab aufgefüllt. Wählen Sie **OK**, um die Einstellungen zu speichern.
+11. Wählen Sie **Authentifizierungseinstellungen**. Wählen Sie in der Liste **Benutzername**, und geben Sie Ihre Anmeldeinformationen ein. Wenn Sie die Anmeldeinformationen zuvor eingegeben haben, wird **Benutzername** in der Liste automatisch ausgewählt, und Benutzername und Kennwort werden vorab aufgefüllt. Wählen Sie **OK**, um die Einstellungen zu speichern.
 
     ![Authentifizierungseinstellungen](./media/point-to-site-vpn-client-configuration-radius/adauthentication.png)
-11. Zurück im Dialogfeld **Netzwerk** wählen Sie **Anwenden** um die Änderungen zu speichern. Wählen Sie **Verbinden** aus, um die Verbindung zu initiieren.
+12. Zurück im Dialogfeld **Netzwerk** wählen Sie **Anwenden** um die Änderungen zu speichern. Wählen Sie **Verbinden** aus, um die Verbindung zu initiieren.
 
 #### <a name="adlinuxcli"></a>Einrichtung des Linux-VPN-Clients über strongSwan
 
@@ -155,7 +170,7 @@ Die folgenden Anweisungen wurden über von strongSwan 5.5.1 auf Ubuntu 17.0.4 er
    ![Verbindung „VPN-Radius“ im Netzwerk-Manager](./media/point-to-site-vpn-client-configuration-radius/ConnectRADIUS.png)
 
 ## <a name="certeap"></a>Zertifikatauthentifizierung
- 
+ 
 Sie können VPN-Clientkonfigurationsdateien für die RADIUS-Zertifikatauthentifizierung erstellen, die das EAP-TLS-Protokoll nutzt. In der Regel wird ein vom Unternehmen ausgestelltes Zertifikat zum Authentifizieren eines Benutzers für VPN verwendet. Stellen Sie sicher, dass alle Benutzer, die eine Verbindung herstellen, ein Zertifikat auf ihren Geräten installiert haben und das Zertifikat von Ihrem RADIUS-Server überprüft werden kann.
 
 >[!NOTE]
@@ -171,24 +186,24 @@ Auf jedem VPN-Client-Gerät muss ein Clientzertifikat installiert werden. In ein
 ### <a name="certfiles"></a>1. Generieren der VPN-Clientkonfigurationsdateien
 
 Generieren Sie VPN-Clientkonfigurationsdateien zur Verwendung für die Zertifikatauthentifizierung. Sie können die VPN-Clientkonfigurationsdateien mit dem folgenden Befehl generieren:
- 
+ 
 ```powershell
 New-AzureRmVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW" -AuthenticationMethod "EapTls" -RadiusRootCert <full path name of .cer file containing the RADIUS root> -ClientRootCert <full path name of .cer file containing the client root> | fl
 ```
 
 Bei Ausführung des Befehls wird ein Link zurückgegeben. Kopieren Sie den Link, und fügen Sie ihn in einen Webbrowser ein, um „VpnClientConfiguration.zip“ herunterzuladen. Entzippen Sie die Datei, um die folgenden Ordner anzuzeigen:
 
-* **WindowsAmd64** und **WindowsX86**: Diese Ordner enthalten das Windows-64-Bit- bzw. das 32-Bit-Installer-Paket. 
+* **WindowsAmd64** und **WindowsX86**: Diese Ordner enthalten das Windows-64-Bit- bzw. das 32-Bit-Installer-Paket. 
 * **GenericDevice**: Dieser Ordner enthält allgemeine Informationen zum Erstellen Ihrer eigenen VPN-Clientkonfiguration.
 
-Wenn Sie die Clientkonfigurationsdateien bereits erstellt haben, können Sie diese mithilfe des Cmdlets `Get-AzureRmVpnClientConfiguration` abrufen. Wenn Sie jedoch Änderungen an der P2S-VPN-Konfiguration (beispielsweise am VPN-Protokolltyp oder -Authentifizierungstyp) vornehmen, wird die Konfiguration nicht automatisch aktualisiert. Sie müssen das Cmdlet `New-AzureRmVpnClientConfiguration` ausführen, um einen neuen Konfigurationsdownload zu erstellen.
+Wenn Sie die Clientkonfigurationsdateien bereits erstellt haben, können Sie diese mithilfe des Cmdlets `Get-AzureRmVpnClientConfiguration` abrufen. Wenn Sie jedoch Änderungen an der P2S-VPN-Konfiguration (beispielsweise am VPN-Protokolltyp oder -Authentifizierungstyp) vornehmen, wird die Konfiguration nicht automatisch aktualisiert. Sie müssen das Cmdlet  `New-AzureRmVpnClientConfiguration` ausführen, um einen neuen Konfigurationsdownload zu erstellen.
 
 Um zuvor generierte Clientkonfigurationsdateien abzurufen, verwenden Sie den folgenden Befehl:
 
 ```powershell
 Get-AzureRmVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW" | fl
 ```
- 
+ 
 ### <a name="setupusername"></a> 2. VPN-Clients konfigurieren
 
 Sie können die folgenden VPN-Clients konfigurieren:
@@ -227,7 +242,7 @@ Führen Sie die folgenden Schritte aus, um den nativen VPN-Client auf dem Mac f�
 4. Kopieren Sie aus der Datei **VpnSettings.xml** im Ordner **Allgemein** den Tagwert **VpnServer**. Fügen Sie diesen Wert in die Felder **Serveradresse** und **Remote-ID** des Profils ein. Lassen Sie das Feld **Local ID** (Lokale ID) leer.
 
    ![Serverinformationen](./media/point-to-site-vpn-client-configuration-radius/servertag.png)
-5. Wählen Sie **Authentifizierungseinstellungen** und dann **Zertifikat** aus. 
+5. Wählen Sie **Authentifizierungseinstellungen** und dann **Zertifikat** aus. 
 
    ![Authentifizierungseinstellungen](./media/point-to-site-vpn-client-configuration-radius/certoption.png)
 6. Klicken Sie auf **Auswählen**, um das Zertifikat auszuwählen, das Sie für die Authentifizierung verwenden möchten.
@@ -248,7 +263,7 @@ Wenn Sie einen anderen Authentifizierungstyp (etwa OTP) oder ein anderes Authent
 1. Generieren Sie mit dem Cmdlet `Get-AzureRmVpnClientConfiguration` die VPN-Clientkonfiguration für EapMSChapv2. Anweisungen hierzu finden Sie in [diesem Abschnitt](#ccradius) des Artikels.
 
 2. Entzippen Sie die Datei „VpnClientConfiguration.zip“, und suchen Sie den Ordner **GenericDevice**. Ignorieren Sie die Ordner mit den Windows-Installationsprogrammen für 64-Bit- und 32-Bit-Architekturen.
- 
+ 
 3. Der Ordner **GenericDevice** enthält eine XML-Datei mit dem Namen **VpnSettings**. Diese Datei enthält alle erforderlichen Informationen:
 
    * **VpnServer**: FQDN des Azure-VPN-Gateways. Dies ist die Adresse, mit der der Client eine Verbindung herstellt.

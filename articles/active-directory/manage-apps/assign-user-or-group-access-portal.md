@@ -1,5 +1,5 @@
 ---
-title: Assign a user or group to an enterprise app in Azure Active Directory | Microsoft Docs
+title: Assign a user or group to an enterprise app in Azure Active Directory | Microsoft-Dokumentation
 description: Auswählen einer Unternehmens-App zum Zuweisen eines Benutzers oder einer Gruppe in der Azure Active Directory-Vorschau
 services: active-directory
 documentationcenter: ''
@@ -12,21 +12,21 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/06/2018
+ms.date: 11/05/2018
 ms.author: barbkess
 ms.reviewer: luleon
-ms.openlocfilehash: f23c9976dacc1ca696772d6bf02b5d59e3e0b4d5
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: ee0b14123e193f219e403d2608368c27f953013d
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39368688"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51037973"
 ---
 # <a name="assign-a-user-or-group-to-an-enterprise-app-in-azure-active-directory"></a>Zuweisen eines Benutzers oder einer Gruppe zu einer Unternehmens-App in Azure Active Directory
 Zum Zuweisen eines Benutzers oder einer Gruppe zu einer Unternehmens-App benötigen Sie die entsprechenden Berechtigungen zum Verwalten der Unternehmens-App, und Sie müssen globaler Administrator für das Verzeichnis sein.
 
 > [!NOTE]
-> Für die in diesem Artikel behandelten Features wird eine Azure Active Directory Premium-Lizenz (P1 oder P2) benötigt. Weitere Informationen finden Sie auf der [Preisseite für Azure Active Directory](https://azure.microsoft.com/pricing/details/active-directory).
+> Informationen zu Lizenzanforderungen für die in diesem Artikel erläuterten Features finden Sie in der [Preisübersicht für Azure Active Directory](https://azure.microsoft.com/pricing/details/active-directory).
 
 > [!NOTE]
 > Verwenden Sie für Microsoft-Anwendungen (etwa Office 365-Apps) PowerShell, um einer Unternehmens-App Benutzer hinzuzufügen.
@@ -35,7 +35,7 @@ Zum Zuweisen eines Benutzers oder einer Gruppe zu einer Unternehmens-App benöti
 ## <a name="how-do-i-assign-user-access-to-an-enterprise-app-in-the-azure-portal"></a>Wie weise ich im Azure-Portal Benutzerzugriff auf eine Unternehmens-App zu?
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) über ein Konto an, das als globaler Administrator für das Verzeichnis konfiguriert ist.
 2. Wählen Sie **Alle Dienste** aus, geben Sie „Azure Active Directory“ in das Textfeld ein, und drücken Sie die **EINGABETASTE**.
-3. Wählen Sie auf dem Blatt **Azure Active Directory – *Verzeichnisname*** (d.h. dem Azure AD-Blatt für das Verzeichnis, das Sie verwalten) **Unternehmensanwendungen** aus.
+3. Wählen Sie **Unternehmensanwendungen**.
 
     ![Öffnen von Unternehmens-Apps](./media/assign-user-or-group-access-portal/open-enterprise-apps.png)
 4. Wählen Sie auf dem Blatt **Unternehmensanwendungen** die Einstellung **Alle Anwendungen** aus. Dadurch werden die Apps aufgeführt, die Sie verwalten können.

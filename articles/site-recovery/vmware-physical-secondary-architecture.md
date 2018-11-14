@@ -1,20 +1,20 @@
 ---
-title: Architektur der Notfallwiederherstellung für VMware- und physische Server in Azure Site Recovery | Microsoft-Dokumentation
-description: Dieser Artikel enthält eine Übersicht über die Komponenten und die Architektur, die bei der Notfallwiederherstellung für lokale VMware-VMs oder physische Server unter Windows oder Linux an einen sekundären VMware-Standort mit Azure Site Recovery verwendet werden.
+title: Architektur für die Notfallwiederherstellung eines VMware- oder physischen Servers an einem sekundären Standort mit Azure Site Recovery | Microsoft-Dokumentation
+description: Dieser Artikel enthält eine Übersicht über die Komponenten und die Architektur, die bei der Notfallwiederherstellung für lokale VMware-VMs oder physische Server unter Windows oder Linux an einem sekundären VMware-Standort mit Azure Site Recovery verwendet werden.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: raynew
-ms.openlocfilehash: 16e8a9719280b55e86d1d4622a32470b37287dd4
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 77387b52003923dffce7519df9cca47fad8f6e6c
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50215122"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51007432"
 ---
-# <a name="vmware-vmphysical-server-to-vmware-disaster-recovery-architecture"></a>Architektur der Notfallwiederherstellung für VMware-VMs/physische Server zu VMware
+# <a name="architecture-for-vmwarephysical-server-replication-to-a-secondary-on-premises-site"></a>Architektur für die Replikation von VMware- oder physischen Servern an einem sekundären lokalen Standort
 
 Dieser Artikel beschreibt die Architektur und Prozesse, die beim Einrichten der Replikation, der Ausführung eines Failovers und dem Wiederherstellen von lokalen virtuellen VMware-Computern (VMs) oder physischen Windows-/Linux-Servern für die Notfallwiederherstellung an einem sekundären VMware-Standort mithilfe von [Azure Site Recovery](site-recovery-overview.md) verwendet werden.
 

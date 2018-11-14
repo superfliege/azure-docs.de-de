@@ -7,21 +7,21 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/16/2017
+ms.date: 11/01/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 6b5cc1eff5c6d080854754ec5b3b62068f1cbb9c
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: 8cec3d3695eaff8719757dd022951b969de99f6a
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39264714"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51010642"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure Active Directory B2C: Häufig gestellte Fragen 
 Auf dieser Seite werden häufig gestellte Fragen zu Azure Active Directory (Azure AD) B2C beantwortet. Die Seite wird bei Bedarf aktualisiert.
 
 ### <a name="why-cant-i-access-the-azure-ad-b2c-extension-in-the-azure-portal"></a>Warum kann ich nicht auf die Azure AD B2C-Erweiterung im Azure-Portal zugreifen?
-Es gibt zwei häufige Gründe, warum Sie nicht auf die Azure AD-Erweiterung zugreifen können.  In Azure AD B2C muss Ihnen im Verzeichnis die Benutzerrolle „Globaler Administrator“ zugewiesen sein.  Wenden Sie sich an den Administrator, wenn Sie denken, dass Sie Zugriff haben sollten.  Wenn Sie über globale Administratorrechte verfügen, stellen Sie sicher, dass Sie sich in einem Azure AD B2C-Verzeichnis und nicht in einem Azure Active Directory-Verzeichnis befinden.  Anweisungen zum Erstellen eines Azure AD B2C-Verzeichnisses finden Sie [hier](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant).
+Es gibt zwei häufige Gründe, warum Sie nicht auf die Azure AD-Erweiterung zugreifen können.  In Azure AD B2C muss Ihnen im Verzeichnis die Benutzerrolle „Globaler Administrator“ zugewiesen sein.  Wenden Sie sich an den Administrator, wenn Sie denken, dass Sie Zugriff haben sollten.  Wenn Sie über globale Administratorrechte verfügen, stellen Sie sicher, dass Sie sich in einem Azure AD B2C-Verzeichnis und nicht in einem Azure Active Directory-Verzeichnis befinden.  Hier finden Sie Anweisungen zum [Erstellen eines Azure AD B2C-Mandanten](tutorial-create-tenant.md).
 
 ### <a name="can-i-use-azure-ad-b2c-features-in-my-existing-employee-based-azure-ad-tenant"></a>Kann ich Azure AD B2C-Features in meinem vorhandenen mitarbeiterbasierten Azure AD Directory-Mandanten nutzen?
 Azure AD und Azure AD B2C sind separate Produktangebote, die nicht zusammen unter demselben Mandanten verwendet werden können.  Ein Azure AD-Mandant repräsentiert eine Organisation.  Ein Azure AD B2C-Mandant repräsentiert eine Sammlung mit Identitäten, die mit Anwendungen der vertrauenden Seite verwendet werden sollen.  Mit benutzerdefinierten Richtlinien (öffentliche Vorschauversion) kann Azure AD B2C einen Verbund mit Azure AD herstellen, um die Authentifizierung von Mitarbeitern einer Organisation zu ermöglichen.
@@ -39,12 +39,12 @@ Benutzerkonten für Anwendungen müssen immer über eine Registrierungsrichtlini
 ### <a name="which-social-identity-providers-do-you-support-now-which-ones-do-you-plan-to-support-in-the-future"></a>Welche Identitätsanbieter aus sozialen Netzwerken werden derzeit unterstützt? Welche sollen in Zukunft unterstützt werden?
 Wir unterstützen derzeit Facebook, Google+, LinkedIn, Amazon, Twitter (Vorschau), WeChat (Vorschau), Weibo (Vorschau) und QQ (Vorschau). Die Unterstützung für andere beliebte soziale Identitätsanbieter wird je nach Kundennachfrage hinzugefügt.
 
-Azure AD B2C bietet auch zusätzliche Unterstützung für [benutzerdefinierte Richtlinien](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-overview-custom).  Durch derartige [benutzerdefinierte Richtlinien](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-overview-custom) können Entwickler eigene Richtlinien mit einem beliebigen Identitätsanbieter erstellen, der [OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html) oder SAML unterstützt. 
+Azure AD B2C bietet auch zusätzliche Unterstützung für [benutzerdefinierte Richtlinien](active-directory-b2c-overview-custom.md).  Durch derartige [benutzerdefinierte Richtlinien](active-directory-b2c-overview-custom.md) können Entwickler eigene Richtlinien mit einem beliebigen Identitätsanbieter erstellen, der [OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html) oder SAML unterstützt. 
 
 Machen Sie sich durch das [Starter Pack für benutzerdefinierte Richtlinien](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack) mit benutzerdefinierten Richtlinien vertraut.
 
 ### <a name="can-i-configure-scopes-to-gather-more-information-about-consumers-from-various-social-identity-providers"></a>Kann ich Bereiche konfigurieren, um von verschiedenen Identitätsanbietern aus sozialen Netzwerken mehr Informationen zu Endkunden zu erhalten?
-Nein, aber dieses Feature ist geplant. Die Standardbereiche für unsere unterstützten sozialen Identitätsanbieter sind:
+Nein. Die Standardbereiche für unsere unterstützten sozialen Identitätsanbieter sind:
 
 * Facebook: email
 * Google+: email
@@ -56,7 +56,7 @@ Nein, aber dieses Feature ist geplant. Die Standardbereiche für unsere unterst�
 Nein, Sie können Ihre Anwendung überall hosten (in der Cloud oder lokal). Für die Interaktion mit Azure AD B2C muss nur die Fähigkeit zum Senden und Empfangen von HTTP-Anforderungen über öffentlich zugängliche Endpunkte möglich sein.
 
 ### <a name="i-have-multiple-azure-ad-b2c-tenants-how-can-i-manage-them-on-the-azure-portal"></a>Ich habe mehrere Azure AD B2C-Mandanten. Wie kann ich sie im Azure-Portal verwalten?
-Vor dem Öffnen von „Azure AD B2C“ im Menü auf der linken Seite im Azure-Portal müssen Sie zum Verzeichnis wechseln, das Sie verwalten möchten.  Wechseln Sie Verzeichnisse, indem Sie rechts oben im Azure-Portal auf Ihre Identität klicken und dann ein Verzeichnis in der Dropdownliste auswählen, die angezeigt wird.  Eine detaillierte Anleitung mit Abbildungen finden Sie unter [Navigieren zu Azure AD B2C-Einstellungen](active-directory-b2c-app-registration.md#navigate-to-b2c-settings).
+Vor dem Öffnen von „Azure AD B2C“ im Menü auf der linken Seite im Azure-Portal müssen Sie zum Verzeichnis wechseln, das Sie verwalten möchten.  Wechseln Sie Verzeichnisse, indem Sie rechts oben im Azure-Portal auf Ihre Identität klicken und dann ein Verzeichnis in der Dropdownliste auswählen, die angezeigt wird.
 
 ### <a name="how-do-i-customize-verification-emails-the-content-and-the-from-field-sent-by-azure-ad-b2c"></a>Wie kann ich Bestätigungs-E-Mails anpassen (Inhalt und das Feld „Von:“), die von Azure AD B2C gesendet werden?
 Sie können das [Feature für Unternehmensbranding](../active-directory/fundamentals/customize-branding.md) verwenden, um den Inhalt von Bestätigungs-E-Mails anzupassen. Insbesondere diese beiden Elemente einer E-Mail können angepasst werden:
@@ -74,13 +74,13 @@ Die E-Mail-Signatur enthält den Namen des Azure AD B2C-Mandanten, den Sie bei d
 1. Ändern Sie das Feld **Name**.
 1. Klicken Sie oben auf der Seite auf **Speichern**.
 
-Zurzeit besteht keine Möglichkeit, das Feld „Von:“ der E-Mail zu ändern. Sie können unter [feedback.azure.com](https://feedback.azure.com/forums/169401-azure-active-directory/suggestions/15334335-fully-customizable-verification-emails) Ihre Stimme abgeben, wenn Sie an der Anpassung des Texts der Überprüfungs-E-Mail interessiert sind.
+Zurzeit besteht keine Möglichkeit, das Feld „Von:“ der E-Mail zu ändern.
 
 ### <a name="how-can-i-migrate-my-existing-user-names-passwords-and-profiles-from-my-database-to-azure-ad-b2c"></a>Wie kann ich meine vorhandenen Benutzernamen, Kennwörter und Profile von meiner Datenbank zu Azure AD B2C migrieren?
 Sie können Ihr Migrationstool mithilfe der Azure AD Graph-API schreiben. Weitere Informationen finden Sie im [Handbuch für die Benutzermigration](active-directory-b2c-user-migration.md).
 
 ### <a name="what-password-policy-is-used-for-local-accounts-in-azure-ad-b2c"></a>Welche Kennwortrichtlinie wird für lokale Konten in Azure AD B2C verwendet?
-Die Kennwortrichtlinie von Azure AD B2C für lokale Konten basiert auf der Kennwortrichtlinie von Azure AD. Die Azure AD B2C-Richtlinien zur Registrierung, Anmeldung und Kennwortrücksetzung verwenden sichere Kennwörter, und die Kennwörter laufen nicht ab. Weitere Informationen finden Sie in der [Kennwortrichtlinie von Azure AD](https://msdn.microsoft.com/library/azure/jj943764.aspx) .
+Die Kennwortrichtlinie von Azure AD B2C für lokale Konten basiert auf der Kennwortrichtlinie von Azure AD. Die Azure AD B2C-Richtlinien zur Registrierung, Anmeldung und Kennwortrücksetzung verwenden sichere Kennwörter, und die Kennwörter laufen nicht ab. Weitere Informationen finden Sie in der [Kennwortrichtlinie von Azure AD](https://msdn.microsoft.com/library/azure/jj943764.aspx) . Informationen zu Kontosperren und Kennwörtern finden Sie unter [Verwalten von Bedrohungen für Ressourcen und Daten in Azure Active Directory B2C](active-directory-b2c-reference-threat-management.md).
 
 ### <a name="can-i-use-azure-ad-connect-to-migrate-consumer-identities-that-are-stored-on-my-on-premises-active-directory-to-azure-ad-b2c"></a>Kann ich Azure AD Connect zum Migrieren von Endkundenidentitäten, die in meinem lokalen Active Directory gespeichert sind, zu Azure AD B2C verwenden?
 Nein. Azure AD Connect ist nicht für die Verwendung mit Azure AD B2C ausgelegt. Sie können erwägen, die [Graph-API](active-directory-b2c-devquickstarts-graph-dotnet.md) für die Benutzermigration zu verwenden.  Weitere Informationen finden Sie im [Handbuch für die Benutzermigration](active-directory-b2c-user-migration.md).
@@ -113,8 +113,7 @@ Derzeit ist dies nicht möglich. Dieses Feature ist aber geplant. Sie erreichen 
 ### <a name="how-do-i-delete-my-azure-ad-b2c-tenant"></a>Wie lösche ich meinen Azure AD B2C-Mandanten?
 Führen Sie die folgenden Schritte aus, um Ihren Azure AD B2C-Mandanten zu löschen:
 
-1. Führen Sie die folgenden Schritte aus, um im Azure-Portal zu den [Azure AD B2C-Einstellungen](active-directory-b2c-app-registration.md#navigate-to-b2c-settings) zu wechseln.
-1. Navigieren Sie zu **Anwendungen**, **Identitätsanbieter** und **Alle Richtlinien**, und löschen Sie jeweils alle Einträge.
+1. Löschen Sie alle Richtlinien in Ihrem Azure AD B2C-Mandanten.
 1. Melden Sie sich nun beim [Azure-Portal](https://portal.azure.com/) als Abonnementadministrator an. (Verwenden Sie dasselbe Geschäfts-, Schul- oder Unikonto bzw. dasselbe Microsoft-Konto, mit dem Sie sich bei Azure registriert haben.)
 1. Wechseln Sie zu dem Azure AD B2C-Mandanten, den Sie löschen möchten.
 2. Navigieren Sie zum Active Directory-Menü auf der linken Seite.
