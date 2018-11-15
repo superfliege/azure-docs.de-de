@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 11/02/2018
 ms.author: qianw211
-ms.openlocfilehash: 3679981a335c380b54d7349d16f94bb7e5e1fee3
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 1ab00e51aa8677f71990cf3da8bf01c9ab62ce4c
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51258866"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51683135"
 ---
 # <a name="azure-appsource-and-marketplace-review-policies"></a>Bewertungsrichtlinien für Azure AppSource und Marketplace
 
@@ -52,12 +52,3 @@ Die Bewertungs- und Rezensionsrichtlinien für Azure AppSource und Marketplace s
 * Achten Sie darauf, dass Sichtweisen in Ihrer Bewertung ausgewogen und neutral ausgedrückt sind.
 * Denken Sie daran, dass Sie Beiträge in einem öffentlichen Forum veröffentlichen, und verhalten Sie sich entsprechend.
 
-## <a name="review-guidelines-for-publishers"></a>Bewertungsrichtlinien für Herausgeber
-
-* Veröffentlichen Sie keine Inhalte, die möglicherweise gegen die [Bewertungsrichtlinie für Azure AppSource und Marketplace](./rating-review-policies.md) verstoßen.
-* Ihr Kommentar darf keine Marketinginhalte oder Werbung enthalten.
-* Bewerben Sie in Ihrem Kommentar keine anderen Apps oder Dienste.
-* Ihre Antwort muss sich direkt auf die jeweilige App und Bewertung beziehen.
-* Verwenden Sie keine vordefinierten Antworten, und veröffentlichen Sie keine vordefinierten Inhalte für mehrere Bewertungen.
-* Manipulieren Sie keine Bewertungen, indem Sie z.B. Entschädigung oder Anreize für das Ändern von Bewertungen und Rezensionen anbieten.
-* Seien Sie stets höflich, und denken Sie daran, dass zufriedene Kunden die beste Werbung für Ihre App sind.
