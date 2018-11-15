@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/20/2018
 ms.author: mjbrown
-ms.openlocfilehash: 8f36026c7e5802994b8cf22d60c6ecea052e6382
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 0e4105d6f56a8eb45a83e970c85319cf25041781
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50963046"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51514773"
 ---
 # <a name="availability-and-performance-tradeoffs-for-various-consistency-levels-in-azure-cosmos-db"></a>Kompromisse in Bezug auf Verfügbarkeit und Leistung für verschiedene Konsistenzebenen in Azure Cosmos DB
 
@@ -33,20 +33,6 @@ Verteilte Datenbanken, die auf Replikation angewiesen sind, um Hochverfügbarkei
 - Für die gleiche Anzahl von Anforderungseinheiten (RUs) bieten die Sitzungskonsistenz, Präfixkonsistenz und letztliche Konsistenz den etwa 2-fachen Lesedurchsatz im Vergleich zur starken Konsistenz und der begrenzten Veraltung.
 
 - Für bestimmte Schreibvorgänge (z.B. Einfügen, Ersetzen, Upsert, Löschen) ist der Schreibdurchsatz für RUs für alle Konsistenzebenen identisch.
-
-## <a name="consistency-levels-and-durability"></a>Konsistenzebenen und Dauerhaftigkeit
-
-Bevor ein Schreibvorgang dem Client gegenüber bestätigt wird, wird von einem Quorum von Replikaten in der Region, die die Schreibvorgänge akzeptiert, ein dauerhaftes Commit ausgeführt. Wenn der Container mit einer konsistenten Indizierungsrichtlinie konfiguriert ist, wird der Index außerdem synchron aktualisiert, repliziert und das Quorum der Replikate führt ein dauerhaftes Commit dafür aus, bevor die Bestätigung des Schreibvorgangs an den Client gesendet wird.
-
-Die folgende Tabelle fasst den Bereich des potenziellen Datenverlusts im Falle eines regionalen Ausfalls für die Cosmos-Konten mit mehreren Regionen zusammen.
-
-| **Konsistenzebene** | **Bereich des potenziellen Datenverlusts bei einem regionalen Ausfall** |
-| - | - |
-| STARK (Strong) | Null |
-| Begrenzte Veraltung (Bounded staleness) | Beschränkt auf das für das Cosmos-Konto konfigurierte Veraltungszeitfenster |
-| Sitzung | Bis zu 5 Sekunden |
-| Präfixkonsistenz | Bis zu 5 Sekunden |
-| Letztlich (Eventual) | Bis zu 5 Sekunden |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

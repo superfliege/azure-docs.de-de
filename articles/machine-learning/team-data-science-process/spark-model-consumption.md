@@ -15,15 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/15/2017
 ms.author: deguhath
-ms.openlocfilehash: 95403e71367f111877c6f317c63811333bd054dd
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 76b67112ade2d160f281533c4be7d41c98087398
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49395189"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51345537"
 ---
 # <a name="operationalize-spark-built-machine-learning-models"></a>Operationalisieren von Machine Learning-Modellen, die mit Spark erstellt wurden
-[!INCLUDE [machine-learning-spark-modeling](../../../includes/machine-learning-spark-modeling.md)]
 
 In diesem Thema wird gezeigt, wie ein gespeichertes Machine Learning-Modell (ML) mithilfe von Python in HDInsight Spark-Clustern operationalisiert wird. Es wird beschrieben, wie Machine Learning-Modelle geladen werden, die mit Spark MLlib erstellt und in Azure Blob Storage (WASB) gespeichert wurden, und wie diese Modelle mit ebenfalls in WASB gespeicherten Datasets bewertet werden. Es zeigt, wie eingegebene Daten vorab verarbeitet, Funktionen mithilfe der Indizierungs- und Codierungsfunktionen im MLlib-Toolkit transformiert werden und ein bezeichnetes Datenpunktobjekt erstellt wird, das als Eingabe für die Bewertung der ML-Modelle verwendet werden kann. Zu den für die Bewertung verwendeten Modellen zählen lineare Regression, logistische Regression, Random Forest-Modelle und Gradient-Boosted-Strukturmodelle.
 

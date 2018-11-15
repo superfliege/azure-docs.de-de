@@ -2,16 +2,16 @@
 title: Einführung in die Web Application Firewall (WAF) für Azure Application Gateway
 description: Dieser Artikel enthält eine Übersicht über die Web Application Firewall (WAF) für Application Gateway.
 services: application-gateway
-author: amsriva
+author: vhorne
 ms.service: application-gateway
-ms.date: 10/11/2018
+ms.date: 11/7/2018
 ms.author: amsriva
-ms.openlocfilehash: 10a67eab142287cf9303e54005b6b167e9890df0
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 4b03065c59eed8f0d72e2724e60b6d8908518727
+ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49068450"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51219527"
 ---
 # <a name="web-application-firewall-waf"></a>Web Application Firewall (WAF)
 
@@ -39,7 +39,7 @@ Application Gateway und Web Application Firewall bieten folgende zentrale Vortei
 
 * Überwachen Sie Ihre Webanwendung zum Schutz vor Angriffen mithilfe eines WAF-Echtzeitprotokolls. Dieses Protokoll ist in [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview.md) integriert und dient zum Nachverfolgen von WAF-Warnungen und -protokollen sowie zum Überwachen von Trends.
 
-* Die WAF wird demnächst in Azure Security Center integriert. Mit Azure Security Center können Sie sich an einem zentralen Ort über den Sicherheitsstatus sämtlicher Azure-Ressourcen informieren.
+* WAF ist in Azure Security Center integriert. Mit Azure Security Center können Sie sich an einem zentralen Ort über den Sicherheitsstatus sämtlicher Azure-Ressourcen informieren.
 
 ### <a name="customization"></a>Anpassung
 
@@ -52,8 +52,8 @@ Application Gateway und Web Application Firewall bieten folgende zentrale Vortei
 - Schutz vor allgemeinen Webangriffen wie Befehlseinschleusung, HTTP Request Smuggling, HTTP Response Splitting und Remote File Inclusion
 - Schutz vor Verletzungen des HTTP-Protokolls
 - Schutz vor HTTP-Protokollanomalien, z.B. fehlende user-agent- und accept-Header des Hosts
-- Verhindern von Bots, Crawlern und Scannern
-- Erkennung häufiger Fehler bei der Anwendungskonfiguration (d. h. Apache, IIS usw.)
+- Verhinderung des Einsatzes von Bots, Crawlern und Scannern
+- Erkennung häufiger Fehler bei der Anwendungskonfiguration (Apache, IIS usw.)
 
 ### <a name="public-preview-features"></a>Features der öffentlichen Vorschau
 
@@ -79,8 +79,8 @@ Die Web Application Firewall ist standardmäßig mit CRS 3.0 vorkonfiguriert, Si
 - Schutz vor allgemeinen Webangriffen wie Befehlseinschleusung, HTTP Request Smuggling, HTTP Response Splitting und Remote File Inclusion
 - Schutz vor Verletzungen des HTTP-Protokolls
 - Schutz vor HTTP-Protokollanomalien, z.B. fehlende user-agent- und accept-Header des Hosts
-- Verhindern von Bots, Crawlern und Scannern
-- Erkennung häufiger Fehler bei der Anwendungskonfiguration (d.h. Apache, IIS usw.)
+- Verhinderung des Einsatzes von Bots, Crawlern und Scannern
+- Erkennung häufiger Fehler bei der Anwendungskonfiguration (Apache, IIS usw.)
 
 Eine ausführlichere Liste mit Regeln und Informationen zum entsprechenden Schutz finden Sie in den [Kernregelsätzen](#core-rule-sets).
 

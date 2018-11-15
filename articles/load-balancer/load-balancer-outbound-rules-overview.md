@@ -4,8 +4,6 @@ description: Verwenden Sie Ausgangsregeln, um ausgehende Netzwerkadressenüberse
 services: load-balancer
 documentationcenter: na
 author: KumudD
-manager: jpconnock
-tags: azure-resource-manager
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -13,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/19/2018
 ms.author: kumud
-ms.openlocfilehash: 0ba7ed902c6ecb7a328aa6db3d3855b88bed2813
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: ab09eb939d760a0f06be758fdf83591565aaf7d0
+ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49637561"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51219374"
 ---
 # <a name="load-balancer-outbound-rules"></a>Load Balancer-Ausgangsregeln
 
@@ -67,11 +65,11 @@ Die API-Version „2018-07-01“ lässt eine Ausgangsregeldefinition mit der fol
 
 ### <a name="scale"></a> Skalieren der NAT für ausgehenden Datenverkehr mit mehreren IP-Adressen
 
-Ausgangsregeln können jeweils mit nur einer einzigen öffentlichen IP-Adresse verwendet werden und erleichtern die Konfiguration beim Skalieren der NAT für ausgehenden Datenverkehr. Sie können mehrere IP-Adressen verwenden, um umfangreiche Szenarien zu planen. Mithilfe von Ausgangsregeln lassen sich außerdem die anfälligen Muster der [SNAT-Überlastung](load-balancer-outbound-connections.md#snatexhaust) reduzieren.  
+Ausgangsregeln können jeweils mit nur einer einzigen öffentlichen IP-Adresse verwendet werden und erleichtern die Konfiguration beim Skalieren der NAT für ausgehenden Datenverkehr. Sie können mehrere IP-Adressen verwenden, um umfangreiche Szenarien zu planen. Mithilfe von Ausgangsregeln lassen sich außerdem die für die [SNAT-Überlastung](load-balancer-outbound-connections.md#snatexhaust) anfälligen Muster reduzieren.  
 
-Jede zusätzliche IP-Adresse, die von einem Front-End bereitgestellt wird, stellt 64.000 kurzlebige Ports zur Verfügung, die Load Balancer als SNAT-Ports verwenden kann. Beim Lastenausgleich und bei NAT-Eingangsregeln steht ein einziges Front-End zur Verfügung. Die Ausgangsregel erweitert das Front-End-Konzept und lässt mehrere Front-Ends pro Regel zu.  Bei mehreren Front-Ends pro Regel wird die Anzahl von verfügbaren SNAT-Ports mit jeder öffentlichen IP-Adresse multipliziert. So werden auch sehr umfangreiche Szenarien unterstützt.
+Jede zusätzliche IP-Adresse, die von einem Front-End bereitgestellt wird, stellt 64.000 kurzlebige Ports zur Verfügung, die Load Balancer als SNAT-Ports verwenden kann. Beim Lastenausgleich und bei NAT-Eingangsregeln steht ein einziges Front-End zur Verfügung. Die Ausgangsregel erweitert das Front-End-Konzept und lässt mehrere Front-Ends pro Regel zu.  Bei mehreren Front-Ends pro Regel wird die Anzahl von verfügbaren SNAT-Ports mit jeder öffentlichen IP-Adresse multipliziert. So können auch umfangreiche Szenarien unterstützt werden.
 
-Darüber hinaus können Sie ein [Präfix für öffentliche IP-Adressen](https://aka.ms/lbpublicipprefix) direkt mit einer Ausgangsregel verwenden.  So ist es einfacher, Datenfluss aus Ihrer Azure-Bereitstellung zu skalieren und auf die Whitelist zu setzen. Sie können eine Front-End-IP-Konfiguration innerhalb der Load Balancer-Ressource konfigurieren, um direkt auf den Präfix einer öffentlichen IP-Adresse zu verweisen.  Dies ermöglicht Load Balancer die exklusive Steuerung über das Präfix für öffentliche IP-Adressen, und die Ausgangsregel verwendet automatisch alle öffentlichen IP-Adressen, die im Präfix für öffentliche IP-Adressen für ausgehende Verbindungen enthalten sind.  Jede IP-Adresse im Präfixbereich für öffentliche IP-Adressen bietet 64.000 kurzlebige Ports pro IP-Adresse, die Load Balancer als SNAT-Ports verwenden kann.   
+Darüber hinaus können Sie ein [Präfix für öffentliche IP-Adressen](https://aka.ms/lbpublicipprefix) direkt mit einer Ausgangsregel verwenden.  Durch die Verwendung von öffentlichen IP-Präfixen ist es einfacher, Datenflüsse aus Ihrer Azure-Bereitstellung zu skalieren und auf die Whitelist zu setzen. Sie können eine Front-End-IP-Konfiguration innerhalb der Load Balancer-Ressource konfigurieren, um direkt auf den Präfix einer öffentlichen IP-Adresse zu verweisen.  Dies ermöglicht Load Balancer die exklusive Steuerung über das Präfix für öffentliche IP-Adressen, und die Ausgangsregel verwendet automatisch alle öffentlichen IP-Adressen, die im Präfix für öffentliche IP-Adressen für ausgehende Verbindungen enthalten sind.  Jede IP-Adresse im Präfixbereich für öffentliche IP-Adressen bietet 64.000 kurzlebige Ports pro IP-Adresse, die Load Balancer als SNAT-Ports verwenden kann.   
 
 Wenn Sie diese Option nutzen, können Sie keine einzelnen Ressourcen für öffentliche IP-Adressen aus dem Präfix für öffentliche IP-Adressen erstellen, da die Ausgangsregel die vollständige Kontrolle über das Präfix haben muss.  Wenn Sie eine differenziertere Steuerung wünschen, können Sie aus dem Präfix für öffentliche IP-Adressen eine individuelle öffentliche IP-Adressressource erstellen und mehrere öffentliche IP-Adressen einzeln dem Front-End einer Ausgangsregel zuweisen.
 

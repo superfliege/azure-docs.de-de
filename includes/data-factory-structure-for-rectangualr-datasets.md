@@ -1,3 +1,16 @@
+---
+author: linda33wj
+ms.service: data-factory
+ms.topic: include
+ms.date: 11/09/2018
+ms.author: jingwang
+ms.openlocfilehash: 1ab404b838af65dcb75395dfeee1ca0553e497a1
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51572171"
+---
 ## <a name="specifying-structure-definition-for-rectangular-datasets"></a>Angeben der Strukturdefinition für rechteckige Datasets
 Der Abschnitt „structure“ in der JSON von Datasets ist ein **optionaler** Abschnitt für rechteckige Tabellen (mit Zeilen und Spalten) und enthält eine Auflistung der Spalten der Tabelle. Sie verwenden den Abschnitt "structure" entweder zum Angeben von Typinformationen für Typumwandlungen oder für Spaltenzuordnungen. In den folgenden Abschnitten werden diese Features ausführlich beschrieben. 
 

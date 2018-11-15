@@ -16,12 +16,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 265d34c91a8c803256e718899f5b6ce2738a88e5
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: ecb95f0440751a6cdbf81dbf02c62bed6b5e780b
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49956426"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51286689"
 ---
 # <a name="about-v20"></a>Informationen zu v2.0
 
@@ -32,7 +32,7 @@ Der v2.0-Endpunkt und die -Plattform wurden in einer Vorschau vorgestellt und ko
 
 Die Entwicklerbenutzeroberfläche des Azure Portals wurde erheblich aktualisiert, um nun alle Ihre mit ADAL oder MSAL erstellten Anwendungen zu integrieren und die Benutzerfreundlichkeit zu verbessern.
 
-In der Vergangenheit benötigten Anwendungsentwickler, die sowohl persönliche Microsoft-Konten als auch Geschäftskonten über Azure Active Directory (Azure AD) unterstützen wollten, eine Integration für zwei separate Systeme. Der v2.0-Endpunkt und die -Plattform bieten eine Version der Authentifizierungs-API, die diesen Vorgang vereinfacht. Mit dem v2.0-Endpunkt ist die Anmeldung über beide Arten von Konten mit einer einzelnen Integration möglich. Anwendungen, die den v2.0-Endpunkt verwenden, können auch die REST-APIs aus der [Microsoft Graph-API](https://graph.microsoft.io) mit beiden Kontotypen nutzen.
+In der Vergangenheit benötigten Anwendungsentwickler, die sowohl persönliche Microsoft-Konten als auch Geschäftskonten über Azure Active Directory (Azure AD) unterstützen wollten, eine Integration für zwei separate Systeme. Der v2.0-Endpunkt und die -Plattform bieten eine Version der Authentifizierungs-API, die diesen Vorgang vereinfacht. Mit dem v2.0-Endpunkt ist die Anmeldung über beide Arten von Konten mit einer einzelnen Integration möglich. Anwendungen, die den v2.0-Endpunkt verwenden, können auch die REST-APIs aus der [Microsoft Graph-API](https://developer.microsoft.com/graph) mit beiden Kontotypen nutzen.
 
 ## <a name="getting-started"></a>Erste Schritte
 
@@ -56,10 +56,10 @@ Hier erhalten Sie detaillierte Informationen zu v2.0:
 
 * [v2.0-Protokollreferenz](active-directory-v2-protocols.md)
 * [Zugriffstokenreferenz](access-tokens.md)
-* [`id_tokens`-Referenz](id-tokens.md)
+* [ID-Tokenreferenz](id-tokens.md)
 * [Referenz zu den v2.0-Authentifizierungsbibliotheken](reference-v2-libraries.md)
-* [Bereiche und Zustimmung in v2. 0](v2-permissions-and-consent.md)
-* [Microsoft Graph-API](https://graph.microsoft.io)
+* [Berechtigungen und Zustimmung in v2.0](v2-permissions-and-consent.md)
+* [Microsoft Graph-API](https://developer.microsoft.com/graph)
 
 > [!NOTE]
 > Wenn Sie nur Geschäfts-, Schul- und Unikonten aus Azure Active Directory anmelden müssen, lesen Sie das [Azure AD-Entwicklerhandbuch](v1-overview.md). Der v2.0-Endpunkt ist für die Verwendung durch Entwickler vorgesehen, die sich explizit bei persönlichen Microsoft-Konten anmelden müssen.

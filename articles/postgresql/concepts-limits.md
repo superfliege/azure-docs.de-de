@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
 ms.date: 06/30/2018
-ms.openlocfilehash: 0bd894e99fd575fca734a101a1cde0f0a2979682
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: f24f15134bf189097f20f75ff0b23b72a3e48363
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45983755"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51299605"
 ---
 # <a name="limitations-in-azure-database-for-postgresql"></a>Einschränkungen in Azure-Datenbank für PostgreSQL
 In den folgenden Abschnitten werden die Kapazitäts- und funktionalen Beschränkungen im Datenbankdienst beschrieben.
@@ -31,10 +31,10 @@ Die folgende Tabelle enthält die maximale Anzahl von Verbindungen nach Tarif un
 |Allgemeiner Zweck| 8| 480|
 |Allgemeiner Zweck| 16| 950|
 |Allgemeiner Zweck| 32| 1500|
-|Arbeitsspeicheroptimiert| 2| 150|
-|Arbeitsspeicheroptimiert| 4| 250|
-|Arbeitsspeicheroptimiert| 8| 480|
-|Arbeitsspeicheroptimiert| 16| 950|
+|Arbeitsspeicheroptimiert| 2| 300|
+|Arbeitsspeicheroptimiert| 4| 500|
+|Arbeitsspeicheroptimiert| 8| 960|
+|Arbeitsspeicheroptimiert| 16| 1.900|
 
 Wenn Verbindungen den Grenzwert übersteigen, erhalten Sie möglicherweise den folgenden Fehler:
 > SCHWERWIEGEND: Es sind bereits zu viele Clients vorhanden.

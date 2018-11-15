@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: implement
-ms.date: 07/26/2018
+ms.date: 11/14/2018
 ms.author: anvang
 ms.reviewer: igorstan
-ms.openlocfilehash: 7c6445624b2c03497c881b0c34bac8256fa28a98
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: aa1d98f5ea2db0cc549b60e33769c8628181721b
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43302042"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51686601"
 ---
 # <a name="sql-data-warehouse-capacity-limits"></a>Kapazitätsgrenzen von SQL Data Warehouse
 Die maximalen Werte, die für verschiedene Komponenten von Azure SQL Data Warehouse zulässig sind.
@@ -35,7 +35,7 @@ Die maximalen Werte, die für verschiedene Komponenten von Azure SQL Data Wareho
 |:--- |:--- |:--- |
 | Datenbank |Max. Größe | Gen1: 240 TB, komprimiert auf dem Datenträger. Dieser Speicherplatz ist unabhängig von „tempdb“ oder vom Protokollspeicherplatz und daher für permanente Tabellen reserviert.  Komprimierung von gruppiertem Columnstore wird auf 5X geschätzt.  Diese Komprimierung ermöglicht der Datenbank einen Zuwachs auf ungefähr 1PB, wenn alle Tabellen mit gruppiertem Columnstore konfiguriert sind (die Standardtabellentyp). <br/><br/> Gen2: 240 TB für Rowstore- und unbegrenzter Speicher für Columnstore-Tabellen |
 | Table |Max. Größe |60 TB komprimiert auf dem Datenträger |
-| Table |Tabellen pro Datenbank |10.000 |
+| Table |Tabellen pro Datenbank | 100.000 |
 | Table |Spalten pro Tabelle |1024 Spalten |
 | Table |Bytes pro Spalte |Abhängig von der Spalte [Datentyp](sql-data-warehouse-tables-data-types.md). Grenzwert ist 8.000 für Char-Datentypen, 4.000 für Nvarchar oder 2GB für MAX-Datentypen. |
 | Table |Bytes pro Zeile, definierte Größe |8.060 Bytes<br/><br/>Die Anzahl von Bytes pro Zeile wird auf die gleiche Weise wie bei SQL Server mit aktivierter Seitenkomprimierung berechnet. Wie SQL Server unterstützt SQL Data Warehouse die Speicherung von Zeilenüberlaufsdaten, sodass **Spalten variabler Länge** aus der Zeile verschoben werden können. Wenn Zeilen variabler Länge aus der Zeile verschoben werden, wird nur der 24-Byte-Stamm im Hauptdatensatz gespeichert. Weitere Informationen finden Sie unter [Zeilenüberlaufdaten mit über 8 KB](https://msdn.microsoft.com/library/ms186981.aspx). |
@@ -69,7 +69,7 @@ Die maximalen Werte, die für verschiedene Komponenten von Azure SQL Data Wareho
 | SELECT |Spalten pro JOIN |1024 Spalten<br/><br/>Für einen JOIN sind maximal 1.024 Spalten zulässig. Es gibt keine Garantie, dass Sie stets über 1024 verfügen. Wenn der JOIN-Plan eine temporäre Tabelle mit mehr Spalten als das JOIN-Ergebnis erfordert, gilt die Grenze von 1024 für die temporäre Tabelle. |
 | SELECT |Bytes pro GROUP BY-Spalten. |8.060<br/><br/>Die Maximalgröße von Spalten in der GROUP BY-Klausel beträgt 8.060 Bytes. |
 | SELECT |Bytes pro ORDER BY-Spalten |8.060 Bytes<br/><br/>Die Maximalgröße von Spalten in der ORDER BY-Klausel beträgt 8.060 Bytes. |
-| Bezeichner pro Anweisung |Anzahl referenzierter Bezeichner |65.535<br/><br/>SQL Data Warehouse beschränkt die Anzahl von Bezeichnern, die in einem einzelnen Ausdruck einer Abfrage enthalten sein können. Das Überschreiten dieses Werts führt zum SQL Server-Fehler 8632. Weitere Informationen finden Sie unter [Interner Fehler: ein Ausdrucksdienstlimit wurde erreicht][Interner Fehler: ein Ausdrucksdienstlimit wurde erreicht]. |
+| Bezeichner pro Anweisung |Anzahl referenzierter Bezeichner |65.535<br/><br/>SQL Data Warehouse beschränkt die Anzahl von Bezeichnern, die in einem einzelnen Ausdruck einer Abfrage enthalten sein können. Das Überschreiten dieses Werts führt zum SQL Server-Fehler 8632. Weitere Informationen finden Sie unter [Interner Fehler: ein Ausdrucksdienstelimit wurde erreicht](https://support.microsoft.com/en-us/help/913050/error-message-when-you-run-a-query-in-sql-server-2005-internal-error-a). |
 | Zeichenfolgenliterale | Anzahl von Zeichenfolgenliteralen in einer Anweisung | 20.000 <br/><br/>SQL Data Warehouse beschränkt die Anzahl von Zeichenfolgenkonstanten in einem einzelnen Ausdruck einer Abfrage. Das Überschreiten dieses Werts führt zum SQL Server-Fehler 8632.|
 
 ## <a name="metadata"></a>Metadaten

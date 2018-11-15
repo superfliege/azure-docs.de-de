@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 5f07488e526a15fb067d6ea7a265d069fbe3aee3
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 5601c6c5b85b144b853c40e89c81a22f87b7880f
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51009554"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51614990"
 ---
 # <a name="monitor-surface-hubs-with-log-analytics-to-track-their-health"></a>Überwachen von Surface Hubs mit Log Analytics zum Verfolgen ihrer Integrität
 
@@ -84,8 +84,8 @@ Das Überwachen Ihrer Surface Hubs mit Log Analytics gleicht dem Überwachen and
 
    ![Surface Hub-Dashboard](./media/log-analytics-surface-hubs/surface-hub-dashboard.png)
 
-Sie können [Warnungen](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md) auf der Grundlage von vorhandenen oder benutzerdefinierten Protokollsuchvorgängen erstellen. Mit den Daten, die Log Analytics auf Surface Hubs sammelt, können Sie nach Problemen suchen und Warnungen für die Bedingungen ausgegeben, die Sie für Ihre Geräte definieren.
+Sie können [Warnungen](../monitoring-and-diagnostics/monitoring-overview-alerts.md) auf der Grundlage von vorhandenen oder benutzerdefinierten Protokollsuchvorgängen erstellen. Mit den Daten, die Log Analytics auf Surface Hubs sammelt, können Sie nach Problemen suchen und Warnungen für die Bedingungen ausgegeben, die Sie für Ihre Geräte definieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Verwenden Sie die [Protokollsuche in Log Analytics](log-analytics-queries.md), um ausführliche Surface Hub-Daten anzuzeigen.
-* Erstellen Sie [Warnungen](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md), um benachrichtigt zu werden, wenn Probleme mit Surface Hubs auftreten.
+* Erstellen Sie [Warnungen](../monitoring-and-diagnostics/monitoring-overview-alerts.md), um benachrichtigt zu werden, wenn Probleme mit Surface Hubs auftreten.

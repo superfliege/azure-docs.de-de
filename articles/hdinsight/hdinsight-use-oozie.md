@@ -10,12 +10,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/25/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: ee9fabc89bdf694453f29fe6c929e26f80b0dc7a
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: affef85c917804f0b99200dcfa8e53f6d08fcbe4
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51008707"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51684221"
 ---
 # <a name="use-oozie-with-hadoop-to-define-and-run-a-workflow-in-hdinsight"></a>Verwenden von Oozie mit Hadoop zum Definieren und Ausführen eines Workflows in HDInsight
 [!INCLUDE [oozie-selector](../../includes/hdinsight-oozie-selector.md)]
@@ -63,7 +63,7 @@ Bevor Sie mit diesem Tutorial beginnen können, benötigen Sie Folgendes:
 
 ## <a name="define-oozie-workflow-and-the-related-hiveql-script"></a>Definieren des Oozie-Workflows und des zugehörigen HiveQL-Skripts
 Definitionen von Oozie-Workflows werden in hPDL (eine XML-Prozessdefinitionssprache) geschrieben. Der Standardname der Workflow-Datei lautet *workflow.xml*. Es folgt die Workflowdatei, die Sie in diesem Tutorial verwenden.
-
+```xml
     <workflow-app name="useooziewf" xmlns="uri:oozie:workflow:0.2">
         <start to = "RunHiveScript"/>
 
@@ -118,7 +118,7 @@ Definitionen von Oozie-Workflows werden in hPDL (eine XML-Prozessdefinitionsspra
 
         <end name="end"/>
     </workflow-app>
-
+```
 Im Workflow sind zwei Aktionen definiert. Die Startaktion lautet *RunHiveScript*. Wenn die Aktion erfolgreich war, wird die nächste Aktion *RunSqoopExport*ausgeführt.
 
 Das RunHiveScript enthält mehrere Variablen. Die Werte werden übergeben, wenn Sie den Oozie-Auftrag mit Azure PowerShell von Ihrer Arbeitsstation senden.
@@ -191,7 +191,7 @@ Das PowerShell-Skript in diesem Abschnitt führt die folgenden Schritte aus:
     Um die Ergebnisse des Oozie-Jobs zu überprüfen, verwenden Sie Visual Studio oder andere Tools, um eine Verbindung zur Azure SQL-Datenbank herzustellen.
 
 Hier ist das Skript.  Sie können das Skript mit Windows PowerShell ISE ausführen. Sie müssen nur die ersten sieben Variablen konfigurieren.
-
+```powershell
     #region - provide the following values
 
     $subscriptionID = "<Enter your Azure subscription ID>"
@@ -200,7 +200,7 @@ Hier ist das Skript.  Sie können das Skript mit Windows PowerShell ISE ausführ
     $sqlDatabaseLogin = "<Enter SQL Database Login Name>"
     $sqlDatabasePassword = "<Enter SQL Database Login Password>"
 
-    # HDInsight cluster HTTP user credential used for creating and connectin
+    # HDInsight cluster HTTP user credential used for creating and connecting
     $httpUserName = "admin"  # The default name is "admin"
     $httpPassword = "<Enter HDInsight Cluster HTTP User Password>"
 
@@ -243,7 +243,7 @@ Hier ist das Skript.  Sie können das Skript mit Windows PowerShell ISE ausführ
     }
     #endregion
 
-    #region - Create Azure resouce group
+    #region - Create Azure resource group
     Write-Host "`nCreating an Azure resource group ..." -ForegroundColor Green
     try{
         Get-AzureRmResourceGroup -Name $resourceGroupName
@@ -529,8 +529,8 @@ Hier ist das Skript.  Sie können das Skript mit Windows PowerShell ISE ausführ
     $response = Invoke-RestMethod -Method Get -Uri $clusterUriStatus -Credential $httpCredential -OutVariable $OozieServerStatus
 
     $jsonResponse = ConvertFrom-Json (ConvertTo-Json -InputObject $response)
-    $oozieServerSatus = $jsonResponse[0].("systemMode")
-    Write-Host "Oozie server status is $oozieServerSatus."
+    $oozieServerStatus = $jsonResponse[0].("systemMode")
+    Write-Host "Oozie server status is $oozieServerStatus."
 
     # create Oozie job
     Write-Host "Sending the following Payload to the cluster:" -ForegroundColor Green
@@ -570,7 +570,7 @@ Hier ist das Skript.  Sie können das Skript mit Windows PowerShell ISE ausführ
     Write-Host "$(Get-Date -format 'G'): $oozieJobId is in $JobStatus state!" -ForegroundColor Green
 
     #endregion
-
+```
 
 **So führen Sie das Lernprogramm erneut aus**
 
@@ -580,7 +580,7 @@ Um den Workflow zu wiederholen, müssen Sie Folgendes löschen:
 * Die Daten in der log4jLogsCount-Tabelle
 
 Sie können das folgende PowerShell-Beispielskript verwenden:
-
+```powershell
     $resourceGroupName = "<AzureResourceGroupName>"
 
     $defaultStorageAccountName = "<AzureStorageAccountName>"
@@ -610,6 +610,7 @@ Sie können das folgende PowerShell-Beispielskript verwenden:
     $cmd.executenonquery()
 
     $conn.close()
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Tutorial haben Sie gelernt, wie ein Oozie-Workflow definiert und wie ein Oozie-Auftrag mithilfe von PowerShell ausgeführt wird. Weitere Informationen finden Sie in den folgenden Artikeln:
@@ -647,7 +648,6 @@ In diesem Tutorial haben Sie gelernt, wie ein Oozie-Workflow definiert und wie e
 
 [hdinsight-develop-mapreduce]:hadoop/apache-hadoop-develop-deploy-java-mapreduce-linux.md
 
-[sqldatabase-create-configue]: ../sql-database-create-configure.md
 [sqldatabase-get-started]: ../sql-database-get-started.md
 
 [azure-management-portal]: https://portal.azure.com/

@@ -1,5 +1,5 @@
 ---
-title: Aufrufen einer geschützten ASP.NET-Web-API in Azure Active Directory B2C | Microsoft-Dokumentation
+title: Aufrufen einer .NET-Web-API über eine .NET-Web-App in Azure Active Directory B2C | Microsoft-Dokumentation
 description: Es wird beschrieben, wie Sie mithilfe von Azure Active Directory B2C und OAuth 2.0-Zugriffstokens eine .NET-Webanwendung erstellen und eine Web-API aufrufen.
 services: active-directory-b2c
 author: davidmu1
@@ -10,14 +10,14 @@ ms.topic: conceptual
 ms.date: 03/17/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 38ad6d8f3746d856d8c0a73520d55fad9d8344e6
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 7296954a17b21183eb8be2744b42289522cf7f57
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50157920"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51012495"
 ---
-# <a name="azure-ad-b2c-call-a-net-web-api-from-a-net-web-app"></a>Azure AD B2C: Aufrufen einer .NET-Web-API über eine .NET-Webanwendung
+# <a name="call-a-net-web-api-from-a-net-web-app-in-azure-active-directory-b2c"></a>Aufrufen einer .NET-Web-API über eine .NET-Web-App in Azure Active Directory B2C
 
 Mit Azure AD B2C können Sie Ihren Web-Apps und Web-APIs leistungsstarke Features zur Identitätsverwaltung hinzufügen. In diesem Artikel wird beschrieben, wie von einer .NET-Webanwendung mit Aufgabenliste Zugriffstokens von einer .NET-Web-API angefordert und Aufrufe getätigt werden.
 
@@ -31,10 +31,10 @@ Dieser Artikel behandelt nicht das Implementieren der Anmeldung, Registrierung u
 Um eine Webanwendung zu erstellen, die eine Web-API aufruft, sind folgende Schritte erforderlich:
 
 1. [Erstellen eines Azure AD B2C-Mandanten](active-directory-b2c-get-started.md)
-2. [Registrieren einer Web-API](active-directory-b2c-app-registration.md#register-a-web-api)
-3. [Registrieren einer Web-App](active-directory-b2c-app-registration.md#register-a-web-app)
+2. [Registrieren einer Web-API](active-directory-b2c-app-registration.md)
+3. [Registrieren einer Web-App](active-directory-b2c-app-registration.md)
 4. [Einrichten von Richtlinien](active-directory-b2c-reference-policies.md)
-5. [Erteilen von Berechtigungen für die Web-App zur Verwendung der Web-API](active-directory-b2c-access-tokens.md#publishing-permissions)
+5. [Erteilen von Berechtigungen für die Web-App zur Verwendung der Web-API](active-directory-b2c-access-tokens.md)
 
 > [!IMPORTANT]
 > Die Clientanwendung und die Web-API müssen dasselbe Azure AD B2C-Verzeichnis verwenden.

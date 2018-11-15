@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/15/2018
+ms.date: 11/13/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 2720ecece86133bf551ab42c415b2e9a87420e93
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 55a3f3d7ac08554273464ed7c6f665e27661c6f8
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51237824"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51625520"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>Behandeln von Problemen mit dem Log Analytics-Agent für Linux 
 
@@ -85,7 +85,7 @@ Falls sich Ihr Problem durch keinen dieser Schritte beheben lässt, stehen Ihnen
 | --- | --- |
 | 2 | Im omsadmin-Skript wurde eine ungültige Option angegeben. Führen Sie `sudo sh /opt/microsoft/omsagent/bin/omsadmin.sh -h` aus, um Informationen zur Verwendung anzuzeigen. |
 | 3 | Im omsadmin-Skript wurde eine ungültige Konfiguration angegeben. Führen Sie `sudo sh /opt/microsoft/omsagent/bin/omsadmin.sh -h` aus, um Informationen zur Verwendung anzuzeigen. |
-| 4 | Im omsadmin-Skript wurde ein ungültiger Proxy angegeben. Überprüfen Sie den Proxy, und lesen Sie die [Dokumentation zur Verwendung eines HTTP-Proxys](log-analytics-concept-hybrid.md#network-firewall-requirements). |
+| 4 | Im omsadmin-Skript wurde ein ungültiger Proxy angegeben. Überprüfen Sie den Proxy, und lesen Sie die [Dokumentation zur Verwendung eines HTTP-Proxys](log-analytics-agent-overview.md#network-firewall-requirements). |
 | 5 | Vom Log Analytics-Dienst wurde ein 403-HTTP-Fehler empfangen. Details finden Sie in der vollständigen Ausgabe des omsadmin-Skripts. |
 | 6 | Vom Log Analytics-Dienst wurde ein Fehler empfangen, der kein 200-HTTP-Fehler ist. Details finden Sie in der vollständigen Ausgabe des omsadmin-Skripts. |
 | 7 | Mit dem Log Analytics-Dienst kann keine Verbindung hergestellt werden. Details finden Sie in der vollständigen Ausgabe des omsadmin-Skripts. |

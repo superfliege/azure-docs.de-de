@@ -12,21 +12,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/08/2018
+ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: 17fd9907a5e3e3f4485b35c8e74d6e46fecb7fda
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 01c8f864d25a35d42abcd624e31728f4fee0d80c
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44303505"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51012070"
 ---
 # <a name="monitor-identity-and-access-in-azure-security-center-preview"></a>Überwachen der Identität und des Zugriffs im Azure Security Center (Vorschauversion)
 In diesem Artikel erfahren Sie, wie Sie mithilfe von Azure Security Center die Identität und Zugriffsaktivitäten von Benutzern überwachen.
 
 > [!NOTE]
 > Die Überwachung der Identität und des Zugriffs ist als Vorschauversion und im Standard-Tarif vom Security Center verfügbar. Weitere Informationen zu den Tarifen von Security Center finden Sie unter [Preise](security-center-pricing.md).
->
 >
 
 Die Identität sollte die Kontrollebene für Ihr Unternehmen darstellen, und der Schutz der Identität sollte höchste Priorität haben. Der Fokus bei der Entwicklung des Sicherheitsbereichs wurde von der Netzwerkorientierung auf die Identitätsorientierung verlagert. Bei der Sicherheit geht es immer weniger um die Verteidigung Ihres Netzwerks und immer mehr um die Verteidigung Ihrer Daten sowie um die Verwaltung der Sicherheit Ihrer Apps und Benutzer. Da heutzutage jedoch immer mehr Daten und Apps in die Cloud verlagert werden, ist die Identität zur neuen Grenze geworden.
@@ -107,18 +106,25 @@ Unter **Abonnements** finden Sie eine Liste von Abonnements. Die erste Spalte en
 ## <a name="recommendations"></a>Empfehlungen
 Der folgenden Tabelle können Sie entnehmen, welche Identitäts- und Zugriffsempfehlungen verfügbar sind und welche Aktionen bei ihrer Anwendung jeweils ausgeführt werden.
 
-| Empfehlung | BESCHREIBUNG |
-| --- | --- |
-| Mehrere Besitzer für Ihr Abonnement festlegen | Empfiehlt, mehrere Abonnementbesitzer festzulegen, um Redundanz beim Administratorzugriff zu gewährleisten. |
-| Bis zu drei Besitzer für Ihr Abonnement festlegen | Empfiehlt, höchstens drei Abonnementbesitzer festzulegen, um die Möglichkeit einer Sicherheitsverletzung durch einen kompromittierten Besitzer zu verringern. |
-| MFA für Konten mit Besitzerberechtigungen in Ihrem Abonnement aktivieren | Empfiehlt, für alle Abonnementkonten mit Administratorrechten die mehrstufige Authentifizierung (Multi-Factor Authentication, MFA) zu aktivieren, um eine Sicherheitsverletzung von Konten oder Ressourcen zu verhindern. |
-| MFA für Konten mit Schreibberechtigungen in Ihrem Abonnement aktivieren | Empfiehlt, für alle Abonnementkonten mit Schreibberechtigungen die mehrstufige Authentifizierung (Multi-Factor Authentication, MFA) zu aktivieren, um eine Sicherheitsverletzung von Konten oder Ressourcen zu verhindern. |
-| MFA für Konten mit Leseberechtigungen in Ihrem Abonnement aktivieren | Empfiehlt, für alle Abonnementkonten mit Leseberechtigungen die mehrstufige Authentifizierung (Multi-Factor Authentication, MFA) zu aktivieren, um eine Sicherheitsverletzung von Konten oder Ressourcen zu verhindern. |
-| Externe Konten mit Leseberechtigungen aus Ihrem Abonnement entfernen | Empfiehlt, externe Konten mit Leseberechtigungen aus Ihrem Abonnement zu entfernen, um nicht überwachten Zugriff zu verhindern. |
-| Externe Konten mit Schreibberechtigungen aus Ihrem Abonnement entfernen | Empfiehlt, externe Konten mit Schreibberechtigungen aus Ihrem Abonnement zu entfernen, um nicht überwachten Zugriff zu verhindern. |
-| Externe Konten mit Besitzerberechtigungen aus Ihrem Abonnement entfernen | Empfiehlt, externe Konten mit Besitzerberechtigungen aus Ihrem Abonnement zu entfernen, um nicht überwachten Zugriff zu verhindern. |
-| Veraltete Konten aus dem Abonnement entfernen | Empfiehlt, veraltete Konten aus Ihren Abonnements zu entfernen. |
-| Veraltete Konten mit Besitzerberechtigungen aus dem Abonnement entfernen | Empfiehlt, veraltete Konten mit Besitzerberechtigungen aus Ihren Abonnements entfernen. |
+|Ressourcentyp|Sicherheitsbewertung|Empfehlung|BESCHREIBUNG|
+|----|----|----|----|
+|Abonnement|50|MFA für Azure-Verwaltungs-App-Konten mit Besitzerberechtigungen in Ihrem Abonnement aktivieren|Aktivieren Sie für alle Abonnementkonten mit Administratorrechten die mehrstufige Authentifizierung (Multi-Factor Authentication, MFA), um eine Sicherheitsverletzung von Konten oder Ressourcen zu verhindern.|
+|Abonnement|50|Security Center in Ihren Abonnements aktivieren |Aktivieren Sie Security Center in allen Ihren Abonnements, um erweiterte Bedrohungserkennung, JIT, Anwendungswhitelists und erweiterte Empfehlungen zu nutzen. |
+|Abonnement|50|Security Center mit Standard-Tarif in Ihren Abonnements aktivieren |Aktivieren Sie Security Center mit dem Standard-Tarif in allen Ihren Abonnements, um erweiterte Bedrohungserkennung, JIT, Anwendungswhitelists und erweiterte Empfehlungen zu nutzen.|
+|Abonnement|40|MFA für Azure-Verwaltungs-App-Konten mit Schreibberechtigungen in Ihrem Abonnement aktivieren|Aktivieren Sie für alle Abonnementkonten mit Schreibberechtigungen die mehrstufige Authentifizierung (Multi-Factor Authentication, MFA), um eine Sicherheitsverletzung von Konten oder Ressourcen zu verhindern.|
+|Abonnement|30|Externe Konten mit Besitzerberechtigungen aus Ihrem Abonnement entfernen|Entfernen Sie externe Konten mit Besitzerberechtigungen aus Ihrem Abonnement, um nicht überwachten Zugriff zu verhindern. |
+|Abonnement|30|MFA für Azure-Verwaltungs-App-Konten mit Leseberechtigungen in Ihrem Abonnement aktivieren|Aktivieren Sie für alle Abonnementkonten mit Leseberechtigungen die mehrstufige Authentifizierung (Multi-Factor Authentication, MFA), um eine Sicherheitsverletzung von Konten oder Ressourcen zu verhindern.|
+|Abonnement|25|Externe Konten mit Schreibberechtigungen aus Ihrem Abonnement entfernen|Entfernen Sie externe Konten mit Schreibberechtigungen aus Ihrem Abonnement, um nicht überwachten Zugriff zu verhindern. |
+|Abonnement|20|Veraltete Konten mit Besitzerberechtigungen aus Ihrem Abonnement entfernen|Entfernen Sie veraltete Konten mit Besitzerberechtigungen aus Ihrem Abonnement.|
+|Abonnement|5|Veraltete Konten aus Ihrem Abonnement entfernen|Entfernen Sie veraltete Konten aus Ihren Abonnements, um nur den Zugriff auf aktuelle Benutzer zuzulassen. |
+|Abonnement|5|Mehrere Besitzer für Ihr Abonnement festlegen|Legen Sie mehrere Abonnementbesitzer fest, um Redundanz beim Administratorzugriff zu gewährleisten.|
+|Abonnement|5|Bis zu drei Besitzer für Ihr Abonnement festlegen|Legen Sie höchstens drei Abonnementbesitzer fest, um die Möglichkeit einer Sicherheitsverletzung durch einen kompromittierten Besitzer zu verringern.|
+|Schlüsseltresor|5|Diagnoseprotokolle in Key Vault aktivieren|Aktivieren Sie Protokolle, und bewahren Sie sie bis zu einem Jahr lang auf. Auf diese Weise können Sie vergangene Aktivitäten nachvollziehen, wenn Sie Sicherheitsincidents untersuchen oder Ihr Netzwerk gefährdet ist. |
+|Abonnement|15|Externe Konten mit Leseberechtigungen aus Ihrem Abonnement entfernen|Entfernen Sie externe Konten mit Leseberechtigungen aus Ihrem Abonnement, um nicht überwachten Zugriff zu verhindern.|
+|Abonnement|1|Sicherheitskontaktinformationen bereitstellen|Stellen Sie Sicherheitskontaktinformationen für alle Ihre Abonnements bereit. Die Kontaktinformationen bestehen aus einer E-Mail-Adresse und einer Telefonnummer. Die Informationen werden verwendet, um mit Ihnen Kontakt aufzunehmen, sobald unser Sicherheitsteam feststellt, dass Ihre Ressourcen kompromittiert wurden.|
+
+> ![HINWEIS] Wenn Sie eine Richtlinie für bedingten Zugriff erstellt haben, die MFA erfordert, für die jedoch Ausschlüsse festgelegt sind, wird die Richtlinie beim Assessment der MFA-Empfehlung für Security Center als nicht kompatibel eingestuft, da sie zulässt, dass sich einige Benutzer in Azure ohne MFA anmelden.
+>
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zu Empfehlungen für andere Arten von Azure-Ressourcen finden Sie in den folgenden Themen:

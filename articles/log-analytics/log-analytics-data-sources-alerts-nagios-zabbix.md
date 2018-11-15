@@ -15,16 +15,16 @@ ms.workload: infrastructure-services
 ms.date: 04/13/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 469d97385fd86952c2d287e2b5d15d7470a9e34e
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 6050771ee1d129edd4370079c07da721f60d2065
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51008333"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51613544"
 ---
 # <a name="collect-alerts-from-nagios-and-zabbix-in-log-analytics-from-log-analytics-agent-for-linux"></a>Erfassen von Warnungen von Nagios und Zabbix in Log Analytics durch den Log Analytics-Agent für Linux 
 [!INCLUDE [log-analytics-agent-note](../../includes/log-analytics-agent-note.md)]
-[Nagios](https://www.nagios.org/) und [Zabbix](http://www.zabbix.com/) sind Open-Source Überwachungstools. Sie können Warnungen in Log Analytics über diese Tools erfassen, um sie zusammen mit [Warnungen aus anderen Quellen](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md) zu analysieren.  In diesem Artikel wird beschrieben, wie der Log Analytics-Agent für Linux für die Erfassung von Warnungen von diesen Systemen konfiguriert wird.
+[Nagios](https://www.nagios.org/) und [Zabbix](http://www.zabbix.com/) sind Open-Source Überwachungstools. Sie können Warnungen in Log Analytics über diese Tools erfassen, um sie zusammen mit [Warnungen aus anderen Quellen](../monitoring-and-diagnostics/monitoring-overview-alerts.md) zu analysieren.  In diesem Artikel wird beschrieben, wie der Log Analytics-Agent für Linux für die Erfassung von Warnungen von diesen Systemen konfiguriert wird.
  
 ## <a name="prerequisites"></a>Voraussetzungen
 Der Log Analytics-Agent für Linux unterstützt das Erfassen von Warnungen von Nagios bis Version 4.2.x und Zabbix bis Version 2.x.
@@ -118,5 +118,5 @@ Von Zabbix erfasste Datensätze haben den **Typ** **Warnung** und das **SourceSy
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Weitere Informationen zu [Warnungen](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md) finden Sie in Log Analytics.
+* Weitere Informationen zu [Warnungen](../monitoring-and-diagnostics/monitoring-overview-alerts.md) finden Sie in Log Analytics.
 * Erfahren Sie mehr über [Protokollsuchvorgänge](log-analytics-queries.md) zum Analysieren der aus Datenquellen und Lösungen gesammelten Daten. 

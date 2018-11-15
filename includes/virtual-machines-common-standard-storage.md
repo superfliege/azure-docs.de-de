@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/05/2018
 ms.author: yuemlu
 ms.custom: include file
-ms.openlocfilehash: f1fe45283ef2886a50bf6a36e50e7ffe42055ee2
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: e266b239a44907e8e38e60cfc217aa21e46ab17e
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49312505"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51264419"
 ---
 # <a name="cost-effective-standard-storage-and-unmanaged-and-managed-azure-vm-disks"></a>Kostengünstiger Standardspeicher und verwaltete/nicht verwaltete Azure-VM-Datenträger
 
@@ -61,10 +61,10 @@ In diesem Abschnitt werden die Skalierbarkeits- und Leistungsziele beschrieben, 
 | **Ressource** | **Standardlimit** |
 |--------------|-------------------|
 | TB pro Speicherkonto  | 500 TB |
-| Max. Eingang<sup>1</sup> pro Speicherkonto (US-Regionen) | 10 GBit/s bei aktiviertem GRS/ZRS, 20 GBit/s für LRS |
-| Max. Ausgang<sup>1</sup> pro Speicherkonto (US-Regionen) | 20 GBit/s bei aktiviertem RA-GRS/GRS/ZRS, 30 GBit/s für LRS |
-| Max. Eingang<sup>1</sup> pro Speicherkonto (europäische und asiatische Regionen) | 5 GBit/s bei aktiviertem GRS/ZRS, 10 GBit/s für LRS |
-| Max. Ausgang<sup>1</sup> pro Speicherkonto (europäische und asiatische Regionen) | 10 GBit/s bei aktiviertem RA-GRS/GRS/ZRS, 15 GBit/s für LRS |
+| Max. Eingang<sup>1</sup> pro Speicherkonto (US-Regionen) | 10 GBit/s bei aktiviertem GRS/ZRS, 20 GBit/s für LRS |
+| Max. Ausgang<sup>1</sup> pro Speicherkonto (US-Regionen) | 20 GBit/s bei aktiviertem RA-GRS/GRS/ZRS, 30 GBit/s für LRS |
+| Max. Eingang<sup>1</sup> pro Speicherkonto (europäische und asiatische Regionen) | 5 GBit/s bei aktiviertem GRS/ZRS, 10 GBit/s für LRS |
+| Max. Ausgang<sup>1</sup> pro Speicherkonto (europäische und asiatische Regionen) | 10 GBit/s bei aktiviertem RA-GRS/GRS/ZRS, 15 GBit/s für LRS |
 | Gesamtanfragerate (ausgehend von einer Objektgröße von 1 KB) pro Speicherkonto | Bis zu 20.000 IOPS, Entitäten pro Sekunde oder Nachrichten pro Sekunde |
 
 <sup>1</sup> „Eingang“ bezieht sich auf alle Daten (Anforderungen), die an ein Speicherkonto gesendet werden. „Ausgang“ bezieht sich auf alle Daten (Antworten), die von einem Speicherkonto empfangen werden.
@@ -111,7 +111,7 @@ Falls ein verwalteter Datenträger an einen virtuellen Computer angefügt ist, s
 
 Bei Verwendung von Standardspeicher sind folgende Abrechnungsaspekte zu berücksichtigen:
 
-* Nicht verwaltete Standardspeicher-Datenträger/Datengröße 
+* Nicht verwaltete Standardspeicher-Datenträger/Datengröße
 * Verwaltete Standarddatenträger
 * Standardspeicher-Momentaufnahmen
 * Ausgehende Datenübertragungen
@@ -121,16 +121,18 @@ Bei Verwendung von Standardspeicher sind folgende Abrechnungsaspekte zu berücks
 
 **Verwaltete Datenträger:** Die Abrechnung für verwaltete Standard-Datenträger richtet sich nach der bereitgestellten Datenträgergröße. Azure ordnet die bereitgestellte Größe (aufgerundet) der nächstgelegenen Managed Disks-Option zu. Dies ist in den Tabellen unten angegeben. Jeder verwaltete Datenträger wird einer der unterstützten bereitgestellten Größen zugeordnet und entsprechend abgerechnet. Wenn Sie beispielsweise einen verwalteten Standard-Datenträger erstellen und eine bereitgestellte Größe von 200 GiB angeben, erfolgt die Abrechnung gemäß den Preisen für den Datenträgertyp S15.
 
-| **Verwalteter Standard-HDD-<br>Datenträgertyp** | **S4** | **S6** | **S10** | **S15** | **S20** | **S30** | **S40** | **S50** | **S60** | **S70** | **S80** |
+Größen, die mit einem Sternchen gekennzeichnet sind, befinden sich derzeit in der Vorschau.
+
+| **Verwalteter Standard-HDD-<br>Datenträgertyp** | **S4** | **S6** | **S10** | **S15** | **S20** | **S30** | **S40** | **S50** | **S60*** | **S70*** | **S80*** |
 |------------------|---------|---------|--------|--------|--------|----------------|----------------|----------------|----------------|----------------|----------------|
 | Datenträgergröße        | 32 GiB  | 64 GiB  | 128 GB | 256 GiB | 512 GB | 1024 GiB (1 TiB) | 2048 GiB (2 TiB) | 4095 GiB (4 TiB) | 8192 GiB (8 TiB) | 16385 GiB (16 TiB) | 32767 GiB (32 TiB) |
 
 
 **Momentaufnahmen:** Für Momentaufnahmen von Standarddatenträgern wird die zusätzliche Kapazität in Rechnung gestellt, die von den Momentaufnahmen beansprucht wird. Informationen zu Momentaufnahmen finden Sie unter [Erstellen einer Momentaufnahme eines Blobs](/rest/api/storageservices/Creating-a-Snapshot-of-a-Blob).
 
-**Ausgehende Datenübertragungen:**[Ausgehende Datenübertragungen](https://azure.microsoft.com/pricing/details/data-transfers/) (Daten, die von den Azure-Rechenzentren ausgehen) verursachen Kosten bei der Bandbreitenverwendung.
+**Ausgehende Datenübertragungen**: [Ausgehende Datenübertragungen](https://azure.microsoft.com/pricing/details/data-transfers/) (Daten, die von den Azure-Rechenzentren ausgehen) verursachen Kosten für die Bandbreitennutzung.
 
-**Transaktionen:** Bei Azure-Standardspeicher fällt pro 100.000 Transaktionen eine Gebühr von 0,0036 USD an. Transaktionen umfassen Lese- und Schreibvorgänge im Speicher.
+**Transaktionen**: Bei Azure-Standardspeicher fällt pro 100.000 Transaktionen eine Gebühr von 0,0036 USD an. Transaktionen umfassen Lese- und Schreibvorgänge im Speicher.
 
 Ausführliche Informationen zu den Preisen für Standardspeicher, Virtual Machines und Managed Disks finden Sie unter den folgenden Links:
 

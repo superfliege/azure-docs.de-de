@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/07/2018
+ms.date: 11/14/2018
 ms.author: sethm
 ms.reviewer: jeffgo
-ms.openlocfilehash: d520a33fd6729f4a9d4778cfdb8d3380c9ac09b0
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 38e85ede1e984aa3d26fe509d68b4582d11b6c26
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51237841"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51636219"
 ---
 # <a name="use-azure-resource-manager-templates-in-azure-stack"></a>Verwenden von Azure-Ressourcen-Manager-Vorlagen in Azure Stack
 
@@ -34,7 +34,7 @@ Die folgenden Schnellstartvorlagen sind auf [GitHub](https://aka.ms/azurestackgi
 
 ## <a name="deploy-sharepoint-server-non-high-availability-deployment"></a>Bereitstellen von SharePoint Server (Bereitstellung ohne Hochverfügbarkeit)
 
-Verwenden Sie die PowerShell DSC-Erweiterung, um eine [SharePoint Server 2013-Farm zu erstellen](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/AzureStackTechnicalPreview1/sharepoint-2013-non-ha), die folgende Ressourcen enthält:
+Verwenden Sie die PowerShell DSC-Erweiterung, um eine [SharePoint Server 2013-Farm zu erstellen](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/sharepoint-2013-non-ha), die folgende Ressourcen enthält:
 
 * Ein virtuelles Netzwerk
 * Drei Speicherkonten
@@ -45,7 +45,7 @@ Verwenden Sie die PowerShell DSC-Erweiterung, um eine [SharePoint Server 2013-Fa
 
 ## <a name="deploy-ad-non-high-availability-deployment"></a>Bereitstellen von AD (Bereitstellung ohne Hochverfügbarkeit)
 
-Verwenden Sie die PowerShell DSC-Erweiterung, um [einen Server als AD-Domänencontroller zu erstellen](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/AzureStackTechnicalPreview1/ad-non-ha), der folgende Ressourcen enthält:
+Verwenden Sie die PowerShell DSC-Erweiterung, um [einen Server als AD-Domänencontroller zu erstellen](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/ad-non-ha), der folgende Ressourcen enthält:
 
 * Ein virtuelles Netzwerk
 * Ein Speicherkonto
@@ -54,7 +54,7 @@ Verwenden Sie die PowerShell DSC-Erweiterung, um [einen Server als AD-Domänenco
 
 ## <a name="deploy-adsql-non-high-availability-deployment"></a>Bereitstellen von AD/SQL (Bereitstellung ohne Hochverfügbarkeit)
 
-Verwenden Sie die PowerShell DSC-Erweiterung, um [einen eigenständigen Server für SQL Server 2014 zu erstellen](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/AzureStackTechnicalPreview1/sql-2014-non-ha), der folgende Ressourcen enthält:
+Verwenden Sie die PowerShell DSC-Erweiterung, um [einen eigenständigen Server für SQL Server 2014 zu erstellen](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/sql-2014-non-ha), der folgende Ressourcen enthält:
 
 * Ein virtuelles Netzwerk
 * Zwei Speicherkonten
@@ -68,11 +68,11 @@ Verwenden Sie die PowerShell DSC-Erweiterung, um einen vorhandenen lokalen Konfi
 
 ## <a name="create-a-virtual-machine-from-a-user-image"></a>Erstellen eines virtuellen Computers von einem Benutzerimage
 
-[Erstellen Sie einen virtuellen Computer aus einem Benutzerimage.](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/AzureStackTechnicalPreview1/101-vm-from-user-image) Diese Vorlage stellt auch ein virtuelles Netzwerk (mit DNS), eine öffentliche IP-Adresse und eine Netzwerkschnittstelle bereit.
+[Erstellen Sie einen virtuellen Computer aus einem Benutzerimage.](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/101-vm-from-user-image) Diese Vorlage stellt auch ein virtuelles Netzwerk (mit DNS), eine öffentliche IP-Adresse und eine Netzwerkschnittstelle bereit.
 
 ## <a name="basic-virtual-machine"></a>Virtueller Computer im Tarif „Basic“
 
-[Stellen Sie einen virtuellen Windows-Computer bereit](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/AzureStackTechnicalPreview1/101-simple-windows-vm), der ein virtuelles Netzwerk (mit DNS), eine öffentliche IP-Adresse und eine Netzwerkschnittstelle umfasst.
+[Stellen Sie einen virtuellen Windows-Computer bereit](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/101-simple-windows-vm), der ein virtuelles Netzwerk (mit DNS), eine öffentliche IP-Adresse und eine Netzwerkschnittstelle umfasst.
 
 ## <a name="cancel-a-running-template-deployment"></a>Abbrechen der Bereitstellung einer Vorlage
 

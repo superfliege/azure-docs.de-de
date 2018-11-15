@@ -8,14 +8,14 @@ tags: billing
 ms.assetid: 60d848f9-ff26-496e-a5ec-ccf92ad7d125
 ms.service: billing
 ms.topic: article
-ms.date: 09/11/2018
+ms.date: 11/05/2018
 ms.author: byvinyal
-ms.openlocfilehash: efaca1b9506ada02c52ad0833139d3b4e441d456
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: bd20ea58c7693b3be8f583810384aa26dde572d8
+ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47393612"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51219561"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen
 In diesem Dokument sind einige der gängigsten Einschränkungen in Microsoft Azure aufgeführt, die bisweilen auch als „Kontingente“ bezeichnet werden. Dieses Dokument behandelt derzeit nicht alle Azure-Dienste. Mit der Zeit wird diese Liste erweitert, um größere Teile der Plattform abzudecken.
@@ -46,7 +46,7 @@ In den folgenden Grenzwerten wurde eine neue Tabelle hinzugefügt, um alle abwei
 * [App Service](#app-service-limits)
 * [Application Gateway](#application-gateway-limits)
 * [Application Insights](#application-insights-limits)
-* [Automation](#automation-limits)
+* [Automatisierung](#automation-limits)
 * [Azure Cosmos DB](#azure-cosmos-db-limits)
 * [Azure Database for MySQL](#azure-database-for-mysql)
 * [Azure-Datenbank für PostgreSQL](#azure-database-for-postgresql)
@@ -78,7 +78,6 @@ In den folgenden Grenzwerten wurde eine neue Tabelle hinzugefügt, um alle abwei
 * [Log Analytics](#log-analytics-limits)
 * [Verwaltete Identität](#managed-identity-limits)
 * [Media Services](#media-services-limits)
-* [Mobile Engagement](#mobile-engagement-limits)
 * [Mobile Services](#mobile-services-limits)
 * [Multi-Factor Authentication](#multi-factor-authentication)
 * [Netzwerk](#networking-limits)
@@ -93,7 +92,7 @@ In den folgenden Grenzwerten wurde eine neue Tabelle hinzugefügt, um alle abwei
 * [Site Recovery](#site-recovery-limits)
 * [SQL-Datenbank](#sql-database-limits)
 * [SQL Data Warehouse](#sql-data-warehouse-limits)
-* [Storage](#storage-limits)
+* [Speicher](#storage-limits)
 * [StorSimple-System](#storsimple-system-limits)
 * [Stream Analytics](#stream-analytics-limits)
 * [Abonnement](#subscription-limits)
@@ -102,13 +101,13 @@ In den folgenden Grenzwerten wurde eine neue Tabelle hinzugefügt, um alle abwei
 * [Skalierungsgruppen für virtuelle Computer](#virtual-machine-scale-sets-limits)
 
 ### <a name="subscription-limits"></a>Grenzwerte für Abonnements
-#### <a name="subscription-limits"></a>Grenzwerte für Abonnements
+#### <a name="subscription-limits---azure-service-management-classic-resources"></a>Abonnementgrenzwerte – Azure-Dienstverwaltung (klassische Ressourcen)
 [!INCLUDE [azure-subscription-limits](../includes/azure-subscription-limits.md)]
 
 #### <a name="subscription-limits---azure-resource-manager"></a>Abonnementgrenzwerte – Azure Resource Manager
 Die folgenden Grenzwerte gelten bei Verwendung des Azure-Ressourcen-Managers und der Azure-Ressourcengruppen. Grenzwerte, die durch den Azure-Ressourcen-Manager nicht geändert wurden, sind im Folgenden nicht aufgeführt. Diese Grenzwerte finden Sie in der vorherigen Tabelle.
 
-Informationen zum Umgang mit Grenzwerten bei Resource Manager-Anforderungen finden Sie unter [Throttling Resource Manager requests](resource-manager-request-limits.md) (Drosselung von Resource Manager-Anforderungen).
+Informationen zum Umgang mit Grenzwerten für Lese- und Schreibvorgänge bei der Resource Manager-API finden Sie unter [Begrenzen von Resource Manager-Anforderungen](resource-manager-request-limits.md).
 
 [!INCLUDE [azure-subscription-limits-azure-resource-manager](../includes/azure-subscription-limits-azure-resource-manager.md)]
 
@@ -145,6 +144,8 @@ In der folgenden Tabelle werden die Features und Grenzwerte der [Dienstebenen](.
 [!INCLUDE [azure-virtual-network-limits](../includes/azure-virtual-network-limits.md)]
 
 #### <a name="application-gateway-limits"></a>Application Gateway-Grenzwerte
+
+Die folgende Tabelle gilt für v1, v2, Standard und WAF SKUs, sofern nichts anderes angegeben ist.
 [!INCLUDE [application-gateway-limits](../includes/application-gateway-limits.md)]
 
 #### <a name="network-watcher-limits"></a>Network Watcher-Grenzwerte

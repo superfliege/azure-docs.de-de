@@ -11,14 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/24/2018
+ms.date: 11/6/2018
 ms.author: patricka
-ms.openlocfilehash: a1c516ebbeb33d2aa92f6a0e3031a2b2d9fb4e9c
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.reviewer: bryanr
+ms.openlocfilehash: fbf62e53ffe3fc3540086137955417bec56e7825
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50026159"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51240170"
 ---
 # <a name="multi-tenancy-in-azure-stack"></a>Mehrinstanzenfähigkeit in Azure Stack
 
@@ -26,9 +27,9 @@ ms.locfileid: "50026159"
 
 Sie können Azure Stack so konfigurieren, dass Benutzer aus mehreren Azure Active Directory-Mandanten (Azure AD) Dienste in Azure Stack verwenden können. Betrachten Sie beispielsweise das folgende Szenario:
 
- - Sie sind Dienstadministrator von contoso.onmicrosoft.com, wo Azure Stack installiert ist.
- - Mary ist Verzeichnisadministrator von fabrikam.onmicrosoft.com, wo sich Gastbenutzer befinden. 
- - Marys Unternehmen bezieht IaaS- und PaaS-Dienste von Ihrem Unternehmen und muss es Benutzern aus dem Gastverzeichnis (fabrikam.onmicrosoft.com) ermöglichen, sich bei Azure Stack-Ressourcen in contoso.onmicrosoft.com anzumelden und diese zu verwenden.
+- Sie sind Dienstadministrator von contoso.onmicrosoft.com, worunter Azure Stack installiert ist.
+- Mary ist Verzeichnisadministrator von fabrikam.onmicrosoft.com, wo sich Gastbenutzer befinden.
+- Marys Unternehmen bezieht IaaS- und PaaS-Dienste von Ihrem Unternehmen und muss es Benutzern aus dem Gastverzeichnis (fabrikam.onmicrosoft.com) ermöglichen, sich bei Azure Stack-Ressourcen in contoso.onmicrosoft.com anzumelden und diese zu verwenden.
 
 Der vorliegende Leitfaden beschreibt die erforderlichen Schritte – im Kontext dieses Szenarios –, um die Mehrinstanzenfähigkeit in Azure Stack zu konfigurieren. In diesem Szenario müssen sowohl Sie als auch Mary einige Schritte ausführen, um es Benutzern von Fabrikam zu ermöglichen, sich bei der Azure Stack-Bereitstellung in Contoso anzumelden und dort Dienste zu nutzen.  
 
@@ -50,6 +51,8 @@ Bevor Sie die Mehrinstanzenfähigkeit in Azure Stack konfigurieren können, müs
 In diesem Abschnitt konfigurieren Sie Azure Stack so, dass Anmeldungen aus Fabrikam-Azure AD-Verzeichnismandanten zugelassen werden.
 
 Integrieren Sie den Gastverzeichnismandanten (Fabrikam) in Azure Stack, indem Sie Azure Resource Manager so konfigurieren, dass Benutzer und Dienstprinzipale aus dem Gastverzeichnismandanten akzeptiert werden.
+
+Der Dienstadministrator von contoso.onmicrosoft.com führt die folgenden Befehle aus.
 
 ````PowerShell  
 ## The following Azure Resource Manager endpoint is for the ASDK. If you are in a multinode environment, contact your operator or service provider to get the endpoint.
@@ -76,11 +79,11 @@ Register-AzSGuestDirectoryTenant -AdminResourceManagerEndpoint $adminARMEndpoint
 
 ### <a name="configure-guest-directory"></a>Konfigurieren des Gastverzeichnisses
 
-Nachdem Sie die Schritte im Azure Stack-Verzeichnis abgeschlossen haben, muss Mary zustimmen, dass Azure Stack auf das Gastverzeichnis zugreift, und Azure Stack beim Gastverzeichnis registrieren. 
+Nachdem der Azure Stack-Administrator bzw. -Bediener das Fabrikam-Verzeichnis für die Verwendung mit Azure Stack aktiviert hat, muss Mary Azure Stack für den Verzeichnismandanten von Fabrikam registrieren.
 
 #### <a name="registering-azure-stack-with-the-guest-directory"></a>Registrieren von Azure Stack beim Gastverzeichnis
 
-Sobald Mary als Administrator des Gastverzeichnisses dem Zugriff auf das Verzeichnis von Fabrikam durch Azure Stack zugestimmt hat, muss sie Azure Stack beim Fabrikam-Verzeichnismandanten registrieren.
+Mary, die Verzeichnisadministratorin von Fabrikam, führt im Gastverzeichnis „fabrikam.onmicrosoft.com“ die folgenden Befehle aus.
 
 ````PowerShell
 ## The following Azure Resource Manager endpoint is for the ASDK. If you are in a multinode environment, contact your operator or service provider to get the endpoint.
@@ -99,14 +102,14 @@ Register-AzSWithMyDirectoryTenant `
 > Wenn Ihr Azure Stack-Administrator künftig neue Dienste oder Updates installiert, müssen Sie dieses Skript möglicherweise erneut ausführen.
 >
 > Führen Sie dieses Skript zu einem beliebigen Zeitpunkt erneut aus, um den Status der Azure Stack-Anwendungen in Ihrem Verzeichnis zu überprüfen.
-> 
+>
 > Wenn Sie Probleme beim Erstellen von virtuellen Computern in Managed Disks festgestellt haben (eingeführt im Update 1808): Es wurde ein neuer **Datenträger-Ressourcenanbieter** hinzugefügt, der eine erneute Ausführung dieses Skripts erfordert.
 
 ### <a name="direct-users-to-sign-in"></a>Weiterleiten von Benutzern zur Anmeldung
 
 Nachdem Mary und Sie die Schritte zum Integrieren von Marys Verzeichnis abgeschlossen haben, kann Mary Fabrikam-Benutzer zur Anmeldung weiterleiten.  Fabrikam-Benutzer (also Benutzer mit dem Suffix „fabrikam.onmicrosoft.com“) melden sich hier an: https://portal.local.azurestack.external.  
 
-Mary leitet alle [fremden Prinzipale](../role-based-access-control/rbac-and-directory-admin-roles.md) im Fabrikam-Verzeichnis (also Benutzer im Fabrikam-Verzeichnis ohne das Suffix „fabrikam.onmicrosoft.com“) zur Anmeldung bei dieser Adresse weiter: https://portal.local.azurestack.external/fabrikam.onmicrosoft.com.  Wenn diese Benutzer diese URL nicht verwenden, werden sie an ihr Standardverzeichnis (Fabrikam) weitergeleitet und erhalten eine Fehlermeldung, die besagt, dass ihr Administrator nicht zugestimmt hat.
+Mary leitet alle [fremden Prinzipale](../role-based-access-control/rbac-and-directory-admin-roles.md) im Fabrikam-Verzeichnis (also Benutzer im Fabrikam-Verzeichnis ohne das Suffix „fabrikam.onmicrosoft.com“) zur Anmeldung bei dieser Adresse weiter: https://portal.local.azurestack.external/fabrikam.onmicrosoft.com.  Wenn diese Benutzer diese URL nicht verwenden, werden sie an ihr Standardverzeichnis (Fabrikam) weitergeleitet und erhalten eine Fehlermeldung mit dem Hinweis, dass ihr Administrator nicht zugestimmt hat.
 
 ## <a name="disable-multi-tenancy"></a>Deaktivieren der Mehrinstanzenfähigkeit
 

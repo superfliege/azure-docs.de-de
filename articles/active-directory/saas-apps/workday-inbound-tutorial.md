@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 06/18/2018
 ms.author: asmalser
-ms.openlocfilehash: 2ab2ac34132eff65e1d6c77794486bc8d9858b40
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 62dc796de430e7c5926f3231db29ef554f210142
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49408176"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51016776"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning-preview"></a>Tutorial: Konfigurieren von Workday für die automatische Benutzerbereitstellung (Vorschau)
 
@@ -365,7 +365,7 @@ In diesem Abschnitt konfigurieren Sie den Fluss von Benutzerdaten aus Workday in
 | **UserID**    |  cn    |   |   Wird nur bei der Erstellung geschrieben |
 | **Join („@“, [Benutzer-ID] „contoso.com“)**   | userPrincipalName     |     | Wird nur bei der Erstellung geschrieben 
 | **Replace(Mid(Replace(\[UserID\], , "(\[\\\\/\\\\\\\\\\\\\[\\\\\]\\\\:\\\\;\\\\|\\\\=\\\\,\\\\+\\\\\*\\\\?\\\\&lt;\\\\&gt;\])", , "", , ), 1, 20), , "([\\\\.)\*\$](file:///\\.)*$)", , "", , )**      |    sAMAccountName            |     |         Wird nur bei der Erstellung geschrieben |
-| **Switch(\[Active\], , "0", "True", "1",)** |  accountDisabled      |     | Erstellen und aktualisieren |
+| **Switch(\[Active\], , "0", "True", "1", "False")** |  accountDisabled      |     | Erstellen und aktualisieren |
 | **Vorname**   | givenName       |     |    Erstellen und aktualisieren |
 | **Nachname**   |   sn   |     |  Erstellen und aktualisieren |
 | **PreferredNameData**  |  displayName |     |   Erstellen und aktualisieren |

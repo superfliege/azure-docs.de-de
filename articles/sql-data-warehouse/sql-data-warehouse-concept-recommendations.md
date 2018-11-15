@@ -3,19 +3,19 @@ title: SQL Data Warehouse-Empfehlungen – Konzepte | Microsoft-Dokumentation
 description: Erfahren Sie mehr über SQL Data Warehouse-Empfehlungen und wie sie erzeugt werden
 services: sql-data-warehouse
 author: kevinvngo
-manager: craigg
+manager: craigg-msft
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: manage
-ms.date: 07/27/2018
+ms.date: 11/05/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 57bce631a570f549d46a9b0beefcb5adce4decfc
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 712eed36f3a68ee02668849207835e3c8bdb8238
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44380113"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51232153"
 ---
 # <a name="sql-data-warehouse-recommendations"></a>SQL Data Warehouse-Empfehlungen
 
@@ -39,4 +39,28 @@ Suboptimale Statistiken können die Abfrageleistung erheblich beeinträchtigen, 
 
 - [Erstellen und Aktualisieren von Tabellenstatistiken](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistics)
 
-Führen Sie zum Anzeigen der Liste der Tabellen, auf die sich diese Empfehlungen auswirken, dieses [T-SQL-Skript](https://github.com/Microsoft/sql-data-warehouse-samples/blob/master/samples/sqlops/MonitoringScripts/ImpactedTables) aus. Der Advisor führt kontinuierlich dasselbe T-SQL-Skript aus, um die Empfehlungen zu generieren.
+Führen Sie zum Anzeigen der Liste der Tabellen, auf die sich diese Empfehlungen auswirken, [dieses T-SQL-Skript](https://github.com/Microsoft/sql-data-warehouse-samples/blob/master/samples/sqlops/MonitoringScripts/ImpactedTables) aus. Der Advisor führt kontinuierlich das gleiche T-SQL-Skript aus, um diese Empfehlungen zu generieren.
+
+## <a name="replicate-tables"></a>Replizieren von Tabellen
+
+Zur Generierung von Empfehlungen für replizierte Tabellen ermittelt der Advisor Tabellenkandidaten auf der Grundlage folgender physischer Merkmale:
+
+- Größe der replizierten Tabelle
+- Anzahl von Spalten
+- Tabellenverteilungstyp
+- Anzahl von Partitionen
+
+Der Advisor nutzt kontinuierlich workloadbasierte Heuristik wie etwa Tabellenzugriffshäufigkeit, durchschnittlich zurückgegebene Zeilen sowie Schwellenwerte für Data Warehouse-Größe und -Aktivität, um hochwertige Empfehlungen zu generieren. 
+
+Im Anschluss wird die workloadbasierte Heuristik beschrieben, die ggf. im Azure-Portal für die einzelnen Empfehlungen für replizierte Tabellen verfügbar ist:
+
+- Scan avg (Scandurchschnitt): Der durchschnittliche Prozentsatz von Zeilen, die aus der Tabelle zurückgegeben wurden (für jeden Tabellenzugriff in den letzten sieben Tagen).
+- Frequent read, no update (Häufig lesen, keine Aktualisierung): Gibt an, dass die Tabelle in den letzten sieben Tagen nicht aktualisiert wurde, aber Zugriffsaktivitäten festgestellt wurden.
+- Read/update ratio (Verhältnis zwischen Lesen und Aktualisieren): Das Verhältnis zwischen Zugriffs- und Aktualisierungsvorgängen für die Tabelle in den letzten sieben Tagen.
+- Aktivität: Ermittelt die Nutzung anhand der Zugriffsaktivität. Die Tabellenzugriffsaktivität wird dabei mit der durchschnittlichen Tabellenzugriffsaktivität innerhalb des gesamten Data Warehouse während der letzten sieben Tage verglichen. 
+
+Derzeit zeigt der Advisor maximal vier Kandidaten für replizierte Tabellen auf einmal an – mit gruppierten Columnstore-Indizes und unter Priorisierung der höchsten Aktivität.
+
+> [!IMPORTANT]
+> Die Empfehlung für replizierte Tabellen ist nicht narrensicher und berücksichtigt keine Datenverschiebungsvorgänge. Wir arbeiten daran, dies als Heuristik hinzuzufügen, bis dahin empfiehlt es sich jedoch, die Workload nach Anwendung der Empfehlung zu überprüfen. Wenden Sie sich an sqldwadvisor@service.microsoft.com, wenn Ihnen Empfehlungen für replizierte Tabellen auffallen, die zu einer Verschlechterung Ihrer Workload führen. Weitere Informationen zu replizierten Tabellen finden Sie in [dieser Dokumentation](https://docs.microsoft.com/azure/sql-data-warehouse/design-guidance-for-replicated-tables#what-is-a-replicated-table).
+>

@@ -4,9 +4,6 @@ description: In diesem Artikel wird erläutert, wie Azure virtuellen Computern d
 services: load-balancer
 documentationcenter: na
 author: KumudD
-manager: jpconnock
-editor: ''
-ms.assetid: 5f666f2a-3a63-405a-abcd-b2e34d40e001
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -14,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/01/2018
 ms.author: kumud
-ms.openlocfilehash: 58ae89a6b9d7b9e3858358d290e3ecb197e0ac2b
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: 1d851b60909d548a0735e3827cdfc7746fd8121d
+ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48249127"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51219714"
 ---
 # <a name="outbound-connections-in-azure"></a>Ausgehende Verbindungen in Azure
 
@@ -45,7 +42,7 @@ Azure Load Balancer und die zugehörigen Ressourcen werden bei Verwendung von [A
 | --- | --- | --- | --- |
 | [1. Virtuelle Computer mit öffentlicher IP-Adresse auf Instanzebene (mit oder ohne Azure Load Balancer)](#ilpip) | SNAT, keine Portmaskierung | TCP, UDP, ICMP, ESP | In Azure wird die öffentliche IP-Adresse verwendet, die der IP-Konfiguration der NIC einer Instanz zugewiesen ist. Für die Instanz sind alle kurzlebigen Ports verfügbar. |
 | [2. Öffentlicher Lastenausgleich, der einem virtuellen Computer zugewiesen ist (keine öffentliche IP-Adresse auf Instanzebene für die Instanz)](#lb) | SNAT mit Portmaskierung (PAT) unter Verwendung der Front-Ends des Lastenausgleichs | TCP, UDP |In Azure wird die öffentliche Front-End-IP-Adresse des öffentlichen Lastenausgleichs mit mehreren privaten IP-Adressen gemeinsam genutzt. Für PAT verwendet Azure kurzlebige Ports der Front-Ends. |
-| [3. Eigenständiger virtueller Computer (kein Azure Load Balancer, keine öffentliche IP-Adresse auf Instanzebene)](#defaultsnat) | SNAT mit Portmaskierung (PAT) | TCP, UDP | Azure weist SNAT automatisch eine öffentliche IP-Adresse zu, nutzt diese öffentliche IP-Adresse gemeinsam mit mehreren privaten IP-Adressen der Verfügbarkeitsgruppe und verwendet kurzlebige Ports dieser öffentlichen IP-Adresse. Dieses Szenario ist ein Fallbackszenario für die vorherigen Szenarien. Es ist nicht zu empfehlen, wenn Sie Sichtbarkeit und Kontrolle benötigen. |
+| [3. Eigenständiger virtueller Computer (kein Azure Load Balancer, keine öffentliche IP-Adresse auf Instanzebene)](#defaultsnat) | SNAT mit Portmaskierung (PAT) | TCP, UDP | Azure weist SNAT automatisch eine öffentliche IP-Adresse zu, nutzt diese öffentliche IP-Adresse gemeinsam mit mehreren privaten IP-Adressen der Verfügbarkeitsgruppe und verwendet kurzlebige Ports dieser öffentlichen IP-Adresse. Dieses Szenario ist ein Fallback für die vorherigen Szenarien. Es ist nicht zu empfehlen, wenn Sie Sichtbarkeit und Kontrolle benötigen. |
 
 Wenn ein virtueller Computer nicht mit Endpunkten außerhalb von Azure im öffentlichen IP-Adressraum kommunizieren soll, können Sie nach Bedarf zum Blockieren des Zugriffs Netzwerksicherheitsgruppen verwenden. Netzwerksicherheitsgruppen werden im Abschnitt [Verhindern der ausgehenden Konnektivität](#preventoutbound) ausführlicher beschrieben. Das Entwerfen, Implementieren und Verwalten eines virtuellen Netzwerks ohne ausgehenden Zugriff und die entsprechenden Anleitungen hierzu sind nicht Gegenstand dieses Artikels.
 
@@ -75,7 +72,7 @@ Zum Überwachen der Integrität ausgehender Verbindungen mit Load Balancer Basic
 
 ### <a name="defaultsnat"></a>Szenario 3: Eigenständiger virtueller Computer ohne öffentliche IP-Adresse auf Instanzebene
 
-In diesem Szenario gehört die VM nicht zu einem öffentlichen Load Balancer-Pool (und sie ist nicht Teil eines internen Standard Load Balancer-Pools), und ihr ist keine ILPIP-Adresse zugewiesen. Wenn der virtuelle Computer einen ausgehenden Datenfluss einleitet, übersetzt Azure die private IP-Quelladresse für den ausgehenden Datenfluss in eine öffentliche IP-Quelladresse. Die für diesen ausgehenden Datenfluss verwendete öffentliche IP-Adresse ist nicht konfigurierbar und wird nicht auf die Ressourcengrenze des Abonnements für öffentliche IP-Adressen angerechnet. Diese öffentliche IP-Adresse gehört Ihnen nicht und kann nicht reserviert werden. Bei der erneuten Bereitstellung der VM, Verfügbarkeitsgruppe oder VMSS wird diese öffentliche IP-Adresse freigegeben und eine neue öffentliche IP-Adresse angefordert. Verwenden Sie dieses Szenario nicht für die Aufnahme von IP-Adressen in die Whitelist. Verwenden Sie stattdessen eins der anderen zwei Szenarien, in denen Sie das ausgehende Szenario und die für ausgehende Verbindungen zu verwendende IP-Adresse explizit deklarieren.
+In diesem Szenario gehört die VM nicht zu einem öffentlichen Load Balancer-Pool (und sie ist nicht Teil eines internen Standard Load Balancer-Pools), und ihr ist keine ILPIP-Adresse zugewiesen. Wenn der virtuelle Computer einen ausgehenden Datenfluss einleitet, übersetzt Azure die private IP-Quelladresse für den ausgehenden Datenfluss in eine öffentliche IP-Quelladresse. Die für diesen ausgehenden Datenfluss verwendete öffentliche IP-Adresse ist nicht konfigurierbar und wird nicht auf die Ressourcengrenze des Abonnements für öffentliche IP-Adressen angerechnet. Diese öffentliche IP-Adresse gehört Ihnen nicht und kann nicht reserviert werden. Bei der erneuten Bereitstellung der VM, Verfügbarkeitsgruppe oder VM-Skalierungsgruppe wird diese öffentliche IP-Adresse freigegeben und eine neue öffentliche IP-Adresse angefordert. Verwenden Sie dieses Szenario nicht für die Aufnahme von IP-Adressen in die Whitelist. Verwenden Sie stattdessen eins der anderen zwei Szenarien, in denen Sie das ausgehende Szenario und die für ausgehende Verbindungen zu verwendende IP-Adresse explizit deklarieren.
 
 >[!IMPORTANT] 
 >Dieses Szenario gilt auch, wenn __nur__ ein interner Basic Load Balancer verknüpft ist. Szenario 3 ist __nicht verfügbar__, wenn ein interner Standard Load Balancer mit einer VM verknüpft ist.  Sie müssen [Szenario 1](#ilpip) oder [Szenario 2](#lb) zusätzlich zu einem internen Standard Load Balancer explizit erstellen.
@@ -106,7 +103,7 @@ Sie können die Verwendung einer Front-End-IP-Adresse für ausgehende Verbindung
       ]
 ```
 
-Normalerweise ist diese Option auf _false_ voreingestellt und bedeutet, dass diese Regel den ausgehenden SNAT für die zugehörigen VMs im Back-End-Pool der Lastenausgleichsregel programmiert.  Diese kann auf _true_ gesetzt werden, um zu verhindern, dass für den Lastenausgleich die zugehörige Front-End-IP-Adresse für ausgehende Verbindungen der VMs im Back-End-Pool dieser Lastenausgleichsregel verwendet wird.  Zudem können Sie noch immer für ausgehende Datenflüsse eine bestimmte IP-Adresse festlegen, wie unter [Mehrere kombinierte Szenarien](#combinations) beschrieben.
+Standardmäßig ist die Option `disableOutboundSnat` auf _false_ festgelegt. Dies bedeutet, dass diese Regel den ausgehenden SNAT für die zugehörigen VMs im Back-End-Pool der Lastenausgleichsregel programmiert. `disableOutboundSnat` kann auf _true_ festgelegt werden, um zu verhindern, dass für den Lastenausgleich die zugehörige Front-End-IP-Adresse für ausgehende Verbindungen der VMs im Back-End-Pool dieser Lastenausgleichsregel verwendet wird.  Zudem können Sie noch immer für ausgehende Datenflüsse eine bestimmte IP-Adresse festlegen, wie unter [Mehrere kombinierte Szenarien](#combinations) beschrieben.
 
 #### <a name="load-balancer-basic"></a>Load Balancer Basic
 
@@ -187,7 +184,7 @@ SNAT-Portzuordnungen gelten speziell für das jeweilige IP-Transportprotokoll (T
 
 ## <a name="problemsolving"></a> Problembehebung 
 
-Dieser Abschnitt soll dazu beitragen, die SNAT-Überlastung und andere Szenarien, die bei ausgehenden Verbindungen in Azure auftreten können, zu verringern.
+Dieser Abschnitt enthält Informationen dazu, wie Sie das Problem einer SNAT-Überlastung, die bei ausgehenden Verbindungen in Azure auftreten kann, lösen können.
 
 ### <a name="snatexhaust"></a> Verwalten der SNAT-Portauslastung (PAT)
 Für [PAT](#pat) verwendete [kurzlebige Ports](#preallocatedports) sind eine begrenzte Ressource, wie unter [Eigenständiger virtueller Computer ohne öffentliche IP-Adresse auf Instanzebene](#defaultsnat) und [Virtueller Computer mit Lastenausgleich ohne öffentliche IP-Adresse auf Instanzebene](#lb) beschrieben.
@@ -219,7 +216,7 @@ Durch das Zuweisen einer öffentlichen IP-Adresse auf Instanzebene erhalten Sie 
 
 #### <a name="multifesnat"></a>Verwenden mehrerer Front-Ends
 
-Bei Verwendung des öffentlichen Standard Load Balancers vergeben Sie [mehrere Front-End-IP-Adressen für ausgehende Verbindungen](#multife) und [multiplizieren die Anzahl der verfügbaren SNAT-Ports](#preallocatedports).  Sie müssen eine Front-End-IP-Konfiguration, eine Regel und einen Back-End-Pool anlegen, um die Programmierung von SNAT auf die öffentliche IP-Adresse des Front-Ends auszulösen.  Die Regel muss nicht funktionieren, und ein Integritätstest muss nicht erfolgreich sein.  Wenn Sie auch für eingehende (und nicht nur für ausgehende) Datenflüsse mehrere Front-Ends verwenden, sollten Sie benutzerdefinierte Integritätstests verwenden, um die Zuverlässigkeit sicherzustellen.
+Bei Verwendung des öffentlichen Standard Load Balancers vergeben Sie [mehrere Front-End-IP-Adressen für ausgehende Verbindungen](#multife) und [multiplizieren die Anzahl der verfügbaren SNAT-Ports](#preallocatedports).  Erstellen Sie eine Front-End-IP-Konfiguration, eine Regel und einen Back-End-Pool, um die Programmierung von SNAT auf die öffentliche IP-Adresse des Front-Ends auszulösen.  Die Regel muss nicht funktionieren, und ein Integritätstest muss nicht erfolgreich sein.  Wenn Sie auch für eingehende (und nicht nur für ausgehende) Datenflüsse mehrere Front-Ends verwenden, sollten Sie benutzerdefinierte Integritätstests verwenden, um die Zuverlässigkeit sicherzustellen.
 
 >[!NOTE]
 >In den meisten Fällen ist die Überlastung der SNAT-Ports ein Zeichen für ein schlechtes Design.  Stellen Sie sicher, dass die Gründe für die Portüberlastung kennen, bevor Sie weitere Front-Ends verwenden, um SNAT-Ports hinzuzufügen.  Möglicherweise verdecken Sie ein Problem, das später zu Fehlern führen kann.
@@ -228,7 +225,7 @@ Bei Verwendung des öffentlichen Standard Load Balancers vergeben Sie [mehrere F
 
 [Vorab zugeordnete Ports](#preallocatedports) werden anhand der Größe des Back-End-Pools zugewiesen und in Ebenen gruppiert, um Unterbrechungen zu minimieren, wenn einige der Ports neu zugewiesen werden müssen, um die nächstgrößere Back-End-Pool-Größenebene abzudecken.  Sie können möglicherweise die Intensität der SNAT-Portnutzung für ein bestimmtes Front-End erhöhen, indem Sie Ihren Back-End-Pool entsprechend der maximalen Größe einer bestimmten Ebene skalieren.  Dies erfordert, dass die Anwendung effizient horizontal skaliert wird.
 
-Beispielsweise sind für zwei virtuelle Computer im Back-End-Pool 1024 SNAT Ports pro IP-Konfiguration verfügbar, sodass insgesamt 2048 SNAT-Ports für die Bereitstellung zulässig sind.  Soll die Bereitstellung auf 50 virtuelle Computer vergrößert werden, können, obwohl die Anzahl der vorab zugeordneten Ports pro virtuellem Computer konstant bleibt, insgesamt 51.200 (50 x 1024) SNAT-Ports durch die Bereitstellung genutzt werden.  Wenn Sie Ihre Bereitstellung horizontal skalieren möchten, überprüfen Sie die Anzahl von [vorab zugeordneten Ports](#preallocatedports) pro Ebene, um sicherzustellen, dass Sie die horizontale Skalierung entsprechend dem Maximum der jeweiligen Ebene festlegen.  Hätten Sie sich im vorherigen Beispiel zu einer horizontalen Skalierung auf 51 statt 50 Instanzen entschieden, würden Sie zur nächsten Ebene gelangen und somit weniger SNAT-Ports pro VM sowie weniger SNAT-Ports insgesamt erhalten.
+Beispielsweise sind für zwei virtuelle Computer im Back-End-Pool 1.024 SNAT Ports pro IP-Konfiguration verfügbar, sodass insgesamt 2.048 SNAT-Ports für die Bereitstellung zulässig sind.  Soll die Bereitstellung auf 50 virtuelle Computer vergrößert werden, können, obwohl die Anzahl der vorab zugeordneten Ports pro virtuellem Computer konstant bleibt, insgesamt 51.200 (50 x 1024) SNAT-Ports durch die Bereitstellung genutzt werden.  Wenn Sie Ihre Bereitstellung horizontal skalieren möchten, überprüfen Sie die Anzahl von [vorab zugeordneten Ports](#preallocatedports) pro Ebene, um sicherzustellen, dass Sie die horizontale Skalierung entsprechend dem Maximum der jeweiligen Ebene festlegen.  Hätten Sie sich im vorherigen Beispiel zu einer horizontalen Skalierung auf 51 statt 50 Instanzen entschieden, würden Sie zur nächsten Ebene gelangen und somit weniger SNAT-Ports pro VM sowie weniger SNAT-Ports insgesamt erhalten.
 
 Wenn Sie horizontal auf die nächstgrößere Back-End-Poolgröße hochskalieren, erfolgt möglicherweise für einige Ihrer ausgehenden Verbindungen ein Timeout, wenn zugeordnete Ports neu zugeordnet werden müssen.  Wenn Sie nur einige Ihrer SNAT-Ports verwenden, hat das Hochskalieren über die nächstgrößere Back-End-Poolgröße hinaus keine Auswirkungen.  Die Hälfte der vorhandenen Ports wird bei jedem Wechsel zur nächsten Back-End-Poolebene neu zugeordnet.  Soll dies nicht stattfinden, müssen Sie Ihre Bereitstellung an die Ebenengröße anpassen.  Oder Sie stellen sicher, dass Ihre Anwendung geeignet erkennen und wiederholen kann.  TCP-Keepalives können bei der Erkennung unterstützen, wenn SNAT-Ports nicht mehr funktionieren, weil sie neu zugeordnet werden.
 
@@ -254,7 +251,7 @@ Wenn eine Netzwerksicherheitsgruppe Anforderungen von Integritätstests vom Stan
 
 ## <a name="limitations"></a>Einschränkungen
 - „DisableOutboundSnat“ ist bei der Konfiguration einer Lastausgleichsregel im Portal nicht als Option verfügbar.  Verwenden Sie stattdessen REST, eine Vorlage oder Clienttools.
-- Auf Web-Workerrollen ohne VNet und andere Plattformdienste von Microsoft kann aufgrund eines Nebeneffekts der Funktionsweise von Diensten vor VNet und anderen Plattformdiensten nur zugegriffen werden, wenn interner Standard-Load Balancer verwendet wird. Sie dürfen sich nicht auf diesen Nebeneffekt verlassen, da der jeweilige Dienst oder die zugrunde liegende Plattform ohne vorherige Ankündigung geändert werden kann. Sie müssen immer davon ausgehen, dass Sie ausgehende Verbindungen, falls gewünscht, explizit erstellen müssen, wenn Sie nur einen internen Load Balancer im Tarif „Standard“ verwenden. Das in diesem Artikel beschriebene Szenario 3 für [Standard-SNAT](#defaultsnat) ist nicht verfügbar.
+- Auf Web-Workerrollen ohne VNet und andere Plattformdienste von Microsoft kann aufgrund eines Nebeneffekts der Funktionsweise von Diensten vor VNet und anderen Plattformdiensten nur zugegriffen werden, wenn interner Standard-Load Balancer verwendet wird. Verlassen Sie sich nicht auf diesen Nebeneffekt, da der jeweilige Dienst oder die zugrunde liegende Plattform ohne vorherige Ankündigung geändert werden kann. Sie müssen immer davon ausgehen, dass Sie ausgehende Verbindungen, falls gewünscht, explizit erstellen müssen, wenn Sie nur einen internen Load Balancer im Tarif „Standard“ verwenden. Das in diesem Artikel beschriebene Szenario 3 für [Standard-SNAT](#defaultsnat) ist nicht verfügbar.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

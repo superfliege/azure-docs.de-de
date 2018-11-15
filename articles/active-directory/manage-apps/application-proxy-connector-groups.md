@@ -2,7 +2,6 @@
 title: Veröffentlichen von Anwendungen in getrennten Netzwerken und an getrennten Standorten mithilfe von Connectorgruppen im Azure AD-Anwendungsproxy | Microsoft-Dokumentation
 description: Erläutert das Erstellen und Verwalten von Connectorgruppen im Azure AD-Anwendungsproxy.
 services: active-directory
-documentationcenter: ''
 author: barbkess
 manager: mtillman
 ms.service: active-directory
@@ -11,16 +10,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/31/2018
+ms.date: 11/08/2018
 ms.author: barbkess
-ms.reviewer: harshja
-ms.custom: H1Hack27Feb2017; it-pro
-ms.openlocfilehash: e149df09bf424d33fa9abdf8108b3b79534a8599
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.reviewer: japere
+ms.openlocfilehash: aebb042c065652bef568f6bc1be2ee8bfde43988
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39364972"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51622632"
 ---
 # <a name="publish-applications-on-separate-networks-and-locations-using-connector-groups"></a>Veröffentlichen von Anwendungen in getrennten Netzwerken und an getrennten Standorten mithilfe von Connectorgruppen
 
@@ -86,14 +84,14 @@ Mit Azure AD-Anwendungsproxy-Connectorgruppen können Sie einen gemeinsamen Dien
 Die meisten Kunden, die den Anwendungsproxy bereitgestellt haben, verwenden dessen Funktionen zum einmaligen Anmelden (Single Sign-On, SSO) mithilfe der eingeschränkten Kerberos-Delegierung (Kerberos Constrained Delegation, KCD). Zu diesem Zweck müssen die Computer des Connectors einer Domäne beigetreten sein, die die Benutzer an die Anwendung delegieren kann. Die eingeschränkte Kerberos-Delegierung unterstützt gesamtstrukturübergreifende Funktionen. In Unternehmen jedoch, die über Umgebungen mit mehreren Gesamtstrukturen ohne gegenseitige Vertrauensstellung verfügen, kann kein einzelner Connector für alle Gesamtstrukturen verwendet werden. 
 
 In diesem Fall kann für jede Gesamtstruktur ein spezifischer Connector bereitgestellt und für Anwendungen eingerichtet werden, die nur für die Benutzer dieser bestimmten Gesamtstruktur veröffentlicht wurden. Jede Connectorgruppe repräsentiert eine andere Gesamtstruktur. Während der Mandant und der größte Teil der Funktionalität für alle Gesamtstrukturen gleich sind, können Benutzer mithilfe von Azure AD-Gruppen ihren spezifischen Gesamtstrukturanwendungen zugewiesen werden.
- 
+ 
 ### <a name="disaster-recovery-sites"></a>Standorte für die Notfallwiederherstellung
 
 Bei Standorten für die Notfallwiederherstellung gibt es zwei verschiedene Herangehensweisen, je nach Implementierung Ihrer Standorte:
 
 * Wenn Ihr Standort für die Notfallwiederherstellung im Aktiv-Aktiv-Modus erstellt wurde und exakt die gleichen Netzwerk- und AD-Einstellungen wie Ihr Hauptstandort aufweist, können Sie die Connectors im Standort für die Notfallwiederherstellung in der gleichen Connectorgruppe wie für den Hauptstandort erstellen. So kann Azure AD Failover selbstständig erkennen.
 * Wenn Ihr Standort für die Notfallwiederherstellung von Ihrem Hauptstandort getrennt ist, können Sie im Standort für die Notfallwiederherstellung eine andere Connectorgruppe erstellen. Hierbei gibt es zwei Möglichkeiten: Sie erstellen Sicherungsanwendungen, oder Sie leiten die vorhandene Anwendung nach Bedarf an die Connectorgruppe für die Notfallwiederherstellung weiter.
- 
+ 
 ### <a name="serve-multiple-companies-from-a-single-tenant"></a>Bereitstellen von Diensten für mehrere Unternehmen über einen einzigen Mandanten
 
 Es gibt viele verschiedene Möglichkeiten, ein Modell zu implementieren, in dem ein einzelner Dienstanbieter Dienste im Zusammenhang mit Azure AD für mehrere Unternehmen bereitstellt und verwaltet. Connectorgruppen helfen den Administratoren dabei, die Connectors und Anwendungen auf verschiedene Gruppen aufzuteilen. Eine Möglichkeit – die sich für kleinere Unternehmen eignet – besteht darin, einen einzelnen Azure AD-Mandanten einzurichten, während die verschiedenen Unternehmen über einen eigenen Domänennamen und eigene Netzwerke verfügen. Dies gilt auch für M&A-Szenarien (Mergers & Acquisitions) sowie Situationen, in denen eine einzelne IT-Abteilung aus regulatorischen oder geschäftlichen Gründen Dienste für mehrere Unternehmen bereitstellt. 
@@ -101,7 +99,7 @@ Es gibt viele verschiedene Möglichkeiten, ein Modell zu implementieren, in dem 
 ## <a name="sample-configurations"></a>Beispielkonfigurationen
 
 Im Folgenden finden Sie einige Beispiele, die Sie implementieren können, wie etwa die folgenden Connectorgruppen.
- 
+ 
 ### <a name="default-configuration--no-use-for-connector-groups"></a>Standardkonfiguration – nicht für Connectorgruppen
 
 Wenn Sie keine Connectorgruppen verwenden, sieht Ihre Konfiguration in etwa folgendermaßen aus:
@@ -109,7 +107,7 @@ Wenn Sie keine Connectorgruppen verwenden, sieht Ihre Konfiguration in etwa folg
 ![Azure AD – keine Connectorgruppen](./media/application-proxy-connector-groups/application-proxy-sample-config-1.png)
  
 Diese Konfiguration ist für kleine Bereitstellungen und Tests ausreichend. Sie funktioniert auch dann gut, wenn Ihre Organisation über eine flache Netzwerktopologie verfügt.
- 
+ 
 ### <a name="default-configuration-and-an-isolated-network"></a>Standardkonfiguration und ein isoliertes Netzwerk
 
 Diese Konfiguration ist eine Weiterentwicklung der Standardkonfiguration und umfasst eine spezifische App, die in einem isolierten Netzwerk – z.B. einem virtuellen IaaS-Netzwerk – ausgeführt wird: 
@@ -127,6 +125,6 @@ Im folgenden Beispiel verfügt das Unternehmen über zwei Rechenzentren: A und B
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Grundlegendes zu Azure AD-Anwendungsproxyconnectors](application-proxy-connectors.md)
-* [Aktivieren der einmaligen Anmeldung](application-proxy-single-sign-on.md)
+* [Aktivieren der einmaligen Anmeldung](what-is-single-sign-on.md)
 
 

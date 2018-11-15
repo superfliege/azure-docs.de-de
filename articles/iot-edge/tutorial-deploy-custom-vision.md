@@ -3,18 +3,18 @@ title: Bereitstellen von Custom Vision für Azure IoT Edge-Gerät | Microsoft-Do
 description: Hier erfahren Sie, wie Sie mithilfe von Custom Vision und IoT Edge ein als Container ausgeführtes Modell für maschinelles Sehen erstellen.
 services: iot-edge
 author: kgremban
-manager: timlt
+manager: philmea
 ms.author: kgremban
 ms.date: 11/01/2018
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: a3bd7cf5e7c29ee44d696c0a27566b1a73436794
-ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
+ms.openlocfilehash: a8f72c62393f6ba470c31a55668382ae0beb290e
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50749777"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51566481"
 ---
 # <a name="tutorial-perform-image-classification-at-the-edge-with-custom-vision-service"></a>Tutorial: Durchführen von Bildklassifizierungen im Edge-Bereich mit dem Custom Vision Service
 
@@ -72,8 +72,8 @@ Nachdem Sie Ihre Bildklassifizierung erstellt und trainiert haben, können Sie s
 
    | Feld | Wert |
    | ----- | ----- |
-   | Name | Geben Sie einen Namen für Ihr Projekt an (beispielsweise **EdgeTreeClassifier**). |
-   | Beschreibung | Eine optionale Projektbeschreibung. |
+   | NAME | Geben Sie einen Namen für Ihr Projekt an (beispielsweise **EdgeTreeClassifier**). |
+   | BESCHREIBUNG | Eine optionale Projektbeschreibung. |
    | Ressourcengruppe | Übernehmen Sie den Standardwert **Eingeschränkte Testversion**. |
    | Projekttypen | **Klassifizierung** |
    | Klassifizierungstypen | **Multiclass (single tag per image)** (Multiklasse (einzelnes Tag pro Bild)) | 

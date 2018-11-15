@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/25/2018
 ms.author: magoedte
-ms.openlocfilehash: 0f149d09b310553ecd5b03e94601408f279d9c0c
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: 1b9afa89e5d355668defac30afe4c012b684c71e
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50914310"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51614395"
 ---
 # <a name="understand-the-health-of-your-azure-virtual-machines-with-azure-monitor-for-vms-preview"></a>Überwachen der Integrität Ihrer virtuellen Azure-Computer mit Azure Monitor für VMs (Vorschau)
 Azure beinhaltet mehrere Dienste, die einzeln eine bestimmte Rolle oder Aufgabe im Überwachungsbereich ausführen, aber ein tiefgreifender Blick auf die Integrität des auf Azure-VMs gehosteten Betriebssystems war bisher nicht verfügbar.  Zwar konnten Sie mithilfe von Log Analytics oder Azure Monitor verschiedene Bedingungen überwachen, diese waren aber nicht dafür ausgelegt, die Integrität von Kernkomponenten oder die Gesamtintegrität der VM zu modellieren und darzustellen.  Das Integritätsfeature von Azure Monitor for VMs überwacht proaktiv die Verfügbarkeit und Leistung des Windows- oder Linux-Gastbetriebssystems mit einem Modell, das Schlüsselkomponenten und ihre Beziehungen modelliert, und mit Kriterien, die angeben, wie die Integrität dieser Komponenten gemessen wird, und eine Warnung an Sie auslösen, wenn ein Zustand eingeschränkter Integrität erkannt wird.  
@@ -119,7 +119,7 @@ Die Registerkarte **Integrität** stellt die folgenden Informationen dar:
 * Wie viele VMs aufgrund eines bei einem Prozessor, einem Datenträger, beim Arbeitsspeicher oder bei einem Netzwerkadapter erkannten Problems fehlerhaft sind, nach Integritätsstatus kategorisiert  
 * Wie viele VMs aufgrund eines bei einem Kerndienst des Betriebssystems erkannten Problems fehlerhaft sind, nach Integritätsstatus kategorisiert
 
-Hier können Sie die kritischsten der erkannten Probleme anhand der Integritätskriterien, nach denen die VMs proaktiv überwacht werden, schnell identifizieren und die Details der VM-Integritätswarnungen zusammen mit zugeordneten Wissensartikeln durcharbeiten, die Sie bei der Diagnose und Korrektur der Probleme unterstützen.  Klicken Sie auf einen der Schweregrade, um die Seite [Alle Warnungen](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md#all-alerts-page) gefiltert nach diesem Schweregrad zu öffnen.
+Hier können Sie die kritischsten der erkannten Probleme anhand der Integritätskriterien, nach denen die VMs proaktiv überwacht werden, schnell identifizieren und die Details der VM-Integritätswarnungen zusammen mit zugeordneten Wissensartikeln durcharbeiten, die Sie bei der Diagnose und Korrektur der Probleme unterstützen.  Klicken Sie auf einen der Schweregrade, um die Seite [Alle Warnungen](../monitoring-and-diagnostics/monitoring-overview-alerts.md#all-alerts-page) gefiltert nach diesem Schweregrad zu öffnen.
 
 Die Liste **VM-Verteilung nach Betriebssystem** zeigt die VMs nach Windows-Edition oder Linux-Distribution zusammen mit den jeweiligen Versionen an. In jeder Betriebssystemkategorie sind die VMs basierend auf der Integrität weiter aufgeschlüsselt. 
 
@@ -247,7 +247,7 @@ Wenn im Beispiel oben jemand **/mnt (Logischer Datenträger)** auswählt, wird d
 Um den aktualisierten Integritätsstatus anzuzeigen, können sie die Seite „Integritätsdiagnose“ aktualisieren, indem Sie auf den Link **Aktualisieren** klicken.  Wenn basierend auf dem vordefinierten Abrufintervall eine Aktualisierung des Integritätsstatus des Integritätskriteriums erfolgt, können Sie mit dieser Aufgabe Wartezeiten vermeiden und den aktuellen Integritätsstatus anzeigen.  Der **Zustand der Integritätskriterien** ist ein Filter, der es Ihnen ermöglicht, den Bereich der Ergebnisse basierend auf dem ausgewählten Integritätsstatus festzulegen – Fehlerfrei, Warnung, Kritisch, Unbekannt und Alle.  Die Zeitangabe **Letzte Aktualisierung** in der oberen rechten Ecke stellt den Zeitpunkt der letzten Aktualisierung der Seite „Integritätsdiagnose“ dar.  
 
 ## <a name="alerting-and-alert-management"></a>Warnungen und Warnungsverwaltung 
-Das Integritätsfeature von Azure Monitor for VMs ist in [Azure-Warnungen](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md) integriert und löst eine Warnung aus, wenn die vordefinierten Integritätskriterien von „Fehlerfrei“ in einen fehlerhaften Zustand wechseln und der Umstand erkannt wird. Warnungen werden nach dem Schweregrad kategorisiert – Schweregrad 0 bis 4, wobei 0 den höchsten Schweregrad darstellt.  
+Das Integritätsfeature von Azure Monitor for VMs ist in [Azure-Warnungen](../monitoring-and-diagnostics/monitoring-overview-alerts.md) integriert und löst eine Warnung aus, wenn die vordefinierten Integritätskriterien von „Fehlerfrei“ in einen fehlerhaften Zustand wechseln und der Umstand erkannt wird. Warnungen werden nach dem Schweregrad kategorisiert – Schweregrad 0 bis 4, wobei 0 den höchsten Schweregrad darstellt.  
 
 Die Gesamtzahl der VM-Integritätswarnungen, nach Schweregrad kategorisiert, steht auf dem Dashboard **Integrität** im Bereich **Warnungen** zur Verfügung. Wenn Sie entweder die Gesamtzahl der Warnungen oder die einem Schweregrad entsprechende Anzahl auswählen, wird die Seite **Warnungen** geöffnet und listet alle Warnungen auf, die Ihrer Auswahl entsprechen.  Wenn Sie beispielsweise die Zeile auswählen, die **Schweregrad 1** entspricht, sehen Sie eine Ansicht ähnlich der folgenden:
 

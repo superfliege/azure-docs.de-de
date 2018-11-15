@@ -15,23 +15,23 @@ ms.workload: infrastructure-services
 ms.date: 01/19/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: fa76ccf7019097c5f27aa126b0a5a7dc81ffbd41
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: bba008bc6d1214aa4b2ca7cc609586a3d18159fd
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51008146"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51613612"
 ---
 # <a name="alert-management-solution-in-azure-log-analytics"></a>Warnungsverwaltungslösung in Azure Log Analytics
 
 ![Symbol „Alert Management“](media/log-analytics-solution-alert-management/icon.png)
 
-Die Alert Management-Lösung unterstützt Sie beim Analysieren aller Warnungen in Ihrem Log Analytics-Repository.  Diese Warnungen können aus einer Vielzahl von Quellen stammen, einschließlich der [von Log Analytics erstellten](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md) oder [aus Nagios oder Zabbix importierten](log-analytics-quick-collect-linux-computer.md). Die Lösung importiert auch Warnungen aus beliebigen [verbundenen System Center Operations Manager-Verwaltungsgruppen](log-analytics-om-agents.md).
+Die Alert Management-Lösung unterstützt Sie beim Analysieren aller Warnungen in Ihrem Log Analytics-Repository.  Diese Warnungen können aus einer Vielzahl von Quellen stammen, einschließlich der [von Log Analytics erstellten](../monitoring-and-diagnostics/monitoring-overview-alerts.md) oder [aus Nagios oder Zabbix importierten](log-analytics-quick-collect-linux-computer.md). Die Lösung importiert auch Warnungen aus beliebigen [verbundenen System Center Operations Manager-Verwaltungsgruppen](log-analytics-om-agents.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Die Lösung funktioniert mit allen Einträgen im Log Analytics-Repository mit dem Typ **Warnung**, sodass Sie die jeweilige erforderliche Konfiguration ausführen müssen, um diese Datensätze zu sammeln.
 
-- Für Log Analytics-Warnungen müssen Sie [Warnungsregeln erstellen](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md), um Warnungsdatensätze direkt im Repository zu erstellen.
+- Für Log Analytics-Warnungen müssen Sie [Warnungsregeln erstellen](../monitoring-and-diagnostics/monitoring-overview-alerts.md), um Warnungsdatensätze direkt im Repository zu erstellen.
 - Für Warnungen von Nagios und Zabbix müssen Sie [diese Server konfigurieren](log-analytics-quick-collect-linux-computer.md), sodass sie Warnungen an Log Analytics senden.
 - Für System Center Operations Manager-Warnungen müssen Sie [Ihre Operations Manager-Verwaltungsgruppe mit Ihrem Log Analytics-Arbeitsbereich verbinden](log-analytics-om-agents.md).  Alle in System Center Operations Manager erstellten Warnungen werden in Log Analytics importiert.  
 
@@ -123,4 +123,4 @@ Die folgende Tabelle enthält Beispiele für Protokollsuchen nach Warnungsdatens
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Lesen Sie sich die Details zum Generieren von Warnungen aus Log Analytics unter [Warnungen in Log Analytics](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md) durch.
+* Lesen Sie sich die Details zum Generieren von Warnungen aus Log Analytics unter [Warnungen in Log Analytics](../monitoring-and-diagnostics/monitoring-overview-alerts.md) durch.

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/03/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 3e660dbcbfecd57c43ecec6006581364660adb44
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 6ca819b20bd033cc4081fb98a0c22c23aed05a28
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50737232"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51264133"
 ---
 # <a name="azure-managed-disks-overview"></a>Azure Managed Disks – Übersicht
 
@@ -67,21 +67,21 @@ Die einzelnen Optionen werden nun genauer betrachtet.
 
 **Datenträgergröße**: Die Abrechnung für verwaltete Datenträger richtet sich nach der bereitgestellten Datenträgergröße. Azure ordnet die bereitgestellte Größe (aufgerundet) der nächstgelegenen Managed Disks-Option zu. Dies ist in den Tabellen unten angegeben. Jeder verwaltete Datenträger wird einer der unterstützten bereitgestellten Größen zugeordnet und entsprechend abgerechnet. Wenn Sie beispielsweise einen verwalteten Standarddatenträger erstellen und eine bereitgestellte Größe von 200 GB angeben, wird die Abrechnung gemäß den Preisen für den Datenträgertyp S15 durchgeführt.
 
-Hier sind die Datenträgergrößen aufgeführt, die für einen verwalteten Premium-Datenträger verfügbar sind:
+Hier sind die Datenträgergrößen angegeben, die für einen verwalteten Premium-Datenträger verfügbar sind. Größen, die mit einem Sternchen gekennzeichnet sind, befinden sich derzeit in der Vorschauphase:
 
-| **Verwalteter SSD Premium-<br>Datenträgertyp** | **P4** | **P6** | **P10** | **P15** | **P20** | **P30** | **P40** | **P50** | **P60** | **P70** | **P80** |
+| **Verwaltete SSD Premium-Datenträger<br>Datenträgertyp** | **P4** | **P6** | **P10** | **P15** | **P20** | **P30** | **P40** | **P50** | **P60*** | **P70*** | **P80*** |
 |------------------|---------|---------|--------|--------|--------|----------------|----------------|----------------|----------------|----------------|----------------|
 | Datenträgergröße        | 32 GiB  | 64 GiB  | 128 GB | 256 GiB | 512 GB | 1024 GiB (1 TiB) | 2048 GiB (2 TiB) | 4095 GiB (4 TiB) | 8192 GiB (8 TiB) | 16384 GiB (16 TiB) | 32767 GiB (TiB) |
 
-Die folgenden Datenträgergrößen sind für einen verwalteten Standard-SSD-Datenträger verfügbar:
+Hier sind die Datenträgergrößen angegeben, die für einen verwalteten Standard-SSD-Datenträger verfügbar sind. Größen, die mit einem Sternchen gekennzeichnet sind, befinden sich derzeit in der Vorschauphase:
 
-| **Verwalteter Standard-SSD-<br>Datenträgertyp** | **E10** | **E15** | **E20** | **E30** | **E40** | **E50** | **E60** | **E70** | **E80** |
+| **Verwalteter Standard-SSD-<br>Datenträgertyp** | **E10** | **E15** | **E20** | **E30** | **E40** | **E50** | **E60*** | **E70*** | **E80*** |
 |------------------|--------|--------|--------|----------------|----------------|----------------|----------------|----------------|----------------|
 | Datenträgergröße        | 128 GB | 256 GiB | 512 GB | 1024 GiB (1 TiB) | 2048 GiB (2 TiB) | 4095 GiB (4 TiB) | 8192 GiB (8 TiB) | 16384 GiB (16 TiB) | 32767 GiB (TiB) |
 
-Die folgenden Datenträgergrößen sind für einen verwalteten Standard-HDD-Datenträger verfügbar:
+Hier sind die Datenträgergrößen angegeben, die für einen verwalteten Standard-Festplattendatenträger verfügbar sind. Größen, die mit einem Sternchen gekennzeichnet sind, befinden sich derzeit in der Vorschauphase:
 
-| **Verwalteter Standard-HDD-<br>Datenträgertyp** | **S4** | **S6** | **S10** | **S15** | **S20** | **S30** | **S40** | **S50** | **S60** | **S70** | **S80** |
+| **Verwalteter Standard-HDD-<br>Datenträgertyp** | **S4** | **S6** | **S10** | **S15** | **S20** | **S30** | **S40** | **S50** | **S60*** | **S70*** | **S80*** |
 |------------------|---------|---------|--------|--------|--------|----------------|----------------|----------------|----------------|----------------|----------------|
 | Datenträgergröße        | 32 GiB  | 64 GiB  | 128 GB | 256 GiB | 512 GB | 1024 GiB (1 TiB) | 2048 GiB (2 TiB) | 4095 GiB (4 TiB) | 8192 GiB (8 TiB) | 16384 GiB (16 TiB) | 32767 GiB (TiB) |
 

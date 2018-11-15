@@ -10,12 +10,12 @@ ms.component: bing-spell-check
 ms.topic: quickstart
 ms.date: 01/30/2018
 ms.author: v-gedod
-ms.openlocfilehash: 3a6f7511407ba29b8fc6d8d3a41369bcd8cf18bc
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 406936200a39e21d7377e7b2dba19a7ee745de57
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48803103"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51568834"
 ---
 # <a name="quickstart-bing-spell-check-sdk-with-c"></a>Schnellstart: SDK für Bing-Rechtschreibprüfung mit C#
 
@@ -25,7 +25,7 @@ Das SDK für die Bing-Rechtschreibprüfung enthält die Funktionen der REST-API 
 
 Navigieren Sie in Visual Studio über den Projektmappen-Explorer zur Option `Manage NuGet Packages`, um mit dem SDK für die Bing-Rechtschreibprüfung eine Konsolenanwendung einzurichten. Fügen Sie das Paket `Microsoft.Azure.CognitiveServices.SpellCheck` hinzu.
 
-Beim Installieren des [SpellCheck-SDK-Pakets](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.SpellCheck/1.2.0) werden auch Abhängigkeiten installiert. Hierzu zählen unter anderem Folgende:
+Beim Installieren des [SpellCheck-SDK-Pakets](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.SpellCheck/1.2.0) werden auch Abhängigkeiten installiert. Hierzu zählen unter anderem Folgende:
 
 * Microsoft.Rest.ClientRuntime
 * Microsoft.Rest.ClientRuntime.AZure

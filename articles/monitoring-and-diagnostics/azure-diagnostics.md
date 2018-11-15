@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: robb
 ms.component: diagnostic-extension
-ms.openlocfilehash: a40917ec24ede1107f7d8ae7f5fb2f0f03d1094c
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 7da75e052aaf36d0f59a5f23c28e42c0e4661b0a
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51278326"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51615246"
 ---
 # <a name="what-is-azure-diagnostics-extension"></a>Was ist die Azure-Diagnoseerweiterung?
 Die Azure-Diagnoseerweiterung ist ein Agent innerhalb von Azure, mit dem Diagnosedaten für eine bereitgestellte Anwendung erfasst werden können. Sie können die Diagnoseerweiterung von einer Reihe verschiedener Quellen aus verwenden. Derzeit werden die Web- und Workerrollen des Azure-Clouddiensts (klassisch), Virtual Machines, Virtual Machine Scale Sets und Service Fabric unterstützt. Andere Azure-Dienste haben unterschiedliche Diagnosemethoden. Siehe [Übersicht über die Überwachung in Microsoft Azure](../azure-monitor/overview.md).
@@ -47,7 +47,7 @@ Sie können auch an [Application Insights](../application-insights/app-insights-
 ### <a name="azure-monitor"></a>Azure Monitor
 Sie können Ihre Daten auch an Azure Monitor senden. Zur Zeit ist diese Senke nur für Leistungsindikatoren anwendbar. Sie ermöglicht es Ihnen, Leistungsindikatoren, die auf Ihrem virtuellen Computer, Ihrer VMSS oder in Ihrem Clouddienst gesammelt wurden, als benutzerdefinierte Metriken an Azure Monitor zu senden. Die Azure Monitor-Senke unterstützt Folgendes:
 * Abrufen aller Leistungsindikatoren, die über die [APIs der Azure Monitor-Metriken](https://docs.microsoft.com/rest/api/monitor/) an Azure Monitor gesendet wurden.
-* Benachrichtigung für alle Leistungsindikatoren, die über die neue [einheitliche Oberfläche für Warnungen](monitoring-overview-unified-alerts.md) in Azure Monitor an Azure Monitor gesendet werden.
+* Benachrichtigung für alle Leistungsindikatoren, die über die neue [einheitliche Oberfläche für Warnungen](monitoring-overview-alerts.md) in Azure Monitor an Azure Monitor gesendet werden.
 * Behandeln von Platzhalteroperatoren in Leistungsindikatoren als die Dimension „Instanz“ in Ihrer Metrik.  Wenn Sie z. B. den Indikator „LogicalDisk(\*)/DiskWrites/Sek.“ erfasst haben, können Sie die Dimension „Instanz“ filtern und aufteilen, um für jeden logischen Datenträger auf dem virtuellen Computer (C:, D: usw.) Schreibvorgänge pro Sekunde darzustellen oder hinsichtlich dieser Vorgänge Warnungen auszugeben.
 
 Weitere Informationen zur Konfiguration dieser Senke finden Sie in der Dokumentation zum [Azur-Diagnoseschema](azure-diagnostics-schema-1dot3-and-later.md).

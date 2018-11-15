@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/18/2017
 ms.author: chackdan
-ms.openlocfilehash: 70372f30ffaea1fafda3f76d4754489ae89a0a7c
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: cc86a18b0db67bf968006c42f5791e1ad7a093f0
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49390175"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51016692"
 ---
 # <a name="commonly-asked-service-fabric-questions"></a>Häufig gestellte Fragen zu Service Fabric
 
@@ -48,13 +48,9 @@ Einige Aspekte, die zu berücksichtigen sind:
 
 ### <a name="do-service-fabric-nodes-automatically-receive-os-updates"></a>Erhalten Service Fabric-Knoten automatisch Betriebssystemupdates?
 
-Heute noch nicht, aber auch dies ist eine häufig gestellte Anforderung, die Azure umsetzen möchte.
+Sie können das allgemein verfügbare Feature [Automatische Betriebssystemimageupgrades mit Azure-VM-Skalierungsgruppen](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade) nutzen.
 
-In der Zwischenzeit haben wir eine [Anwendung](service-fabric-patch-orchestration-application.md) zum Patchen und Aktualisieren der Betriebssysteme bereitgestellt, die Ihren Service Fabric-Knoten zugrunde liegen.
-
-Die Herausforderung von Betriebssystemupdates besteht darin, dass dafür in der Regel ein Neustart des Computers erforderlich ist, was zu einer vorübergehenden Unterbrechung der Verfügbarkeit führt. Dies ist für sich gesehen noch kein Problem, weil Service Fabric Datenverkehr für diese Dienste automatisch an andere Knoten umleitet. Wenn Betriebssystemupdates jedoch nicht über den Cluster koordiniert werden, besteht die Gefahr, dass viele Knoten gleichzeitig ausfallen. Diese gleichzeitigen Neustarts können für einen Dienst oder zumindest für eine bestimmte Partition (bei einem zustandsbehafteten Dienst) zum vollständigen Verlust der Verfügbarkeit führen.
-
-Wir planen die zukünftige Unterstützung einer Betriebssystemupdate-Richtlinie, die Updatedomänen-übergreifend vollständig automatisiert und koordiniert ist und sicherstellt, dass die Verfügbarkeit trotz Neustarts und anderen unerwarteten Fehlern beibehalten wird.
+Für Cluster, die NICHT in Azure ausgeführt werden, haben wir [eine Anwendung bereitgestellt](service-fabric-patch-orchestration-application.md), mit der die Betriebssysteme unter Ihren Service Fabric-Knoten gepatcht werden können.
 
 ### <a name="can-i-use-large-virtual-machine-scale-sets-in-my-sf-cluster"></a>Kann ich große VM-Skalierungsgruppen in meinem SF-Cluster verwenden? 
 

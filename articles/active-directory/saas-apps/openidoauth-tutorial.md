@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/25/2018
 ms.author: jeedes
-ms.openlocfilehash: 420ec288b81e0bb12ae9f61a5eaf03880205cc55
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 04639e6d27854d9c25b97936b163cfaaa25fc375
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50247979"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51287437"
 ---
 # <a name="configure-an-openidoauth-application-from-the-azure-ad-app-gallery"></a>Konfigurieren einer OpenID/OAuth-Anwendung aus dem Azure AD-App-Katalog
 
@@ -84,7 +84,7 @@ Sie können das Zustimmungsframework von Azure AD verwenden, um mehrinstanzenfä
 
 Das Framework basiert darauf, dass Benutzer oder Administratoren ihre Einwilligung zur Registrierung einer Anwendung in ihrem Verzeichnis erteilen. Die Registrierung kann den Zugriff auf Verzeichnisdaten umfassen. Nach dem Einwilligen kann die Clientanwendung die Microsoft Graph-API im Namen des Benutzers aufrufen und die Informationen nach Bedarf verwenden.
 
-Die [Microsoft Graph-API](https://graph.microsoft.io/) ermöglicht den Zugriff auf Daten in Office 365 wie:
+Die [Microsoft Graph-API](https://developer.microsoft.com/graph/) ermöglicht den Zugriff auf Daten in Office 365 wie:
 
 - Kalender und Nachrichten in Exchange
 - Websites und Listen in SharePoint

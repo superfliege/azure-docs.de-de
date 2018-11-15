@@ -9,16 +9,16 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/20/2017
 ms.author: cshoe
-ms.openlocfilehash: fa429553caf874dd634944a5fca6cd9283194bb4
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 3932ad18ceedb36a4a8c1f9fc78eb8aef27a8a4f
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50251106"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51301015"
 ---
 # <a name="microsoft-graph-bindings-for-azure-functions"></a>Microsoft Graph-Bindungen für Azure Functions
 
-Dieser Artikel erläutert das Konfigurieren von und Arbeiten mit Microsoft Graph-Triggern und -Bindungen in Azure Functions. Mit diesen können Sie mithilfe von Azure Functions Daten, Einblicke und Ereignisse aus [Microsoft Graph](https://graph.microsoft.io) bearbeiten.
+Dieser Artikel erläutert das Konfigurieren von und Arbeiten mit Microsoft Graph-Triggern und -Bindungen in Azure Functions. Mit diesen können Sie mithilfe von Azure Functions Daten, Einblicke und Ereignisse aus [Microsoft Graph](https://developer.microsoft.com/graph) bearbeiten.
 
 Die Microsoft Graph-Erweiterung bietet die folgenden Bindungen:
 - Eine [Autorisierungstoken-Eingabebindung](#token-input) ermöglicht Ihnen die Interaktion mit jeder Microsoft Graph-API.
@@ -834,7 +834,7 @@ Dieser Abschnitt enthält die folgenden Unterabschnitte:
 * [Beispiel](#outlook-output---example)
 * [Attribute](#outlook-output---attributes)
 * [Konfiguration](#outlook-output---configuration)
-* [Verwendung](#outlook-outnput---usage)
+* [Verwendung](#outlook-output---usage)
 
 ### <a name="outlook-output---example"></a>Outlook-Ausgabe: Beispiel
 

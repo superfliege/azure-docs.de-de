@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/22/2018
 ms.author: danlep
 ms.custom: ''
-ms.openlocfilehash: 6d31e6a4d424b8e3c634c9d5075b1f02c512187b
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 8c3c7e94db1f09164d6248cf0b9b093db0cf1d69
+ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49651132"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51578670"
 ---
 # <a name="how-to-use-managed-identities-with-azure-container-instances"></a>Verwenden von verwalteten Identitäten mit Azure Container Instances
 
@@ -38,7 +38,7 @@ Mit einer verwalteten Identität in einem ausgeführten Container können Sie si
 
 ### <a name="enable-a-managed-identity"></a>Aktivieren einer verwalteten Identität
 
- In Azure Container Instances werden verwaltete Identitäten für Azure-Ressourcen ab REST-API-Version 2018-10-01 und in den entsprechenden SDKs und Tools unterstützt. Aktivieren Sie beim Erstellen einer Containergruppe eine oder mehrere verwaltete Identitäten, indem Sie eine [ContainerGroupIdentity](/rest/api/container-instances/containergroups/containergroups_createorupdate#containergroupidentity)-Eigenschaft festlegen. Sie können verwaltete Identitäten auch aktivieren oder aktualisieren, wenn eine Containergruppe bereits ausgeführt wird. In beiden Fällen wird die Containergruppe neu gestartet. Zum Festlegen der Identitäten für eine neue oder vorhandene Containergruppe können Sie die Azure-Befehlszeilenschnittstelle (Azure CLI), eine Resource Manager-Vorlage oder eine YAML-Datei verwenden. 
+ In Azure Container Instances werden verwaltete Identitäten für Azure-Ressourcen ab REST-API-Version 2018-10-01 und in den entsprechenden SDKs und Tools unterstützt. Aktivieren Sie beim Erstellen einer Containergruppe eine oder mehrere verwaltete Identitäten, indem Sie eine [ContainerGroupIdentity](/rest/api/container-instances/containergroups/createorupdate#containergroupidentity)-Eigenschaft festlegen. Sie können verwaltete Identitäten auch aktivieren oder aktualisieren, wenn eine Containergruppe bereits ausgeführt wird. In beiden Fällen wird die Containergruppe neu gestartet. Zum Festlegen der Identitäten für eine neue oder vorhandene Containergruppe können Sie die Azure-Befehlszeilenschnittstelle (Azure CLI), eine Resource Manager-Vorlage oder eine YAML-Datei verwenden. 
 
 Azure Container Instances unterstützt sowohl vom Benutzer als auch vom System zugewiesene verwaltete Azure-Identitäten. In einer Containergruppe können Sie eine vom System zugewiesene Identität, eine oder mehrere vom Benutzer zugewiesene Identitäten oder beide Identitätstypen aktivieren. 
 

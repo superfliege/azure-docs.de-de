@@ -1,3 +1,16 @@
+---
+author: sdwheeler
+ms.service: azure-powershell
+ms.topic: include
+ms.date: 11/09/2018
+ms.author: sewhee
+ms.openlocfilehash: 5f224ab3b0040bcba6b99d8db744e9dbde4a63c9
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51572196"
+---
 ## <a name="setting-up-powershell-for-resource-manager-templates"></a>Einrichten von PowerShell für Ressourcen-Manager-Vorlagen
 Bevor Sie Azure PowerShell mit dem Ressourcen-Manager verwenden können, benötigen Sie die richtigen Power Shell- und Azure PowerShell-Versionen.
 

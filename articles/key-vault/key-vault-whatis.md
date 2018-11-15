@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: barclayn
-ms.openlocfilehash: d1a6da5d599296a11678ee58cadc42d61296e8e7
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: d7de20e1de91e37b2437091e6d7503e2cb2a4590
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230300"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51246530"
 ---
 # <a name="what-is-azure-key-vault"></a>Was ist der Azure-Schlüsseltresor?
 
@@ -35,8 +35,8 @@ Azure Key Vault ist ein Tool zum sicheren Speichern und Zugreifen auf Geheimniss
 
 Grundsätzlich gibt es drei Möglichkeiten für die Authentifizierung bei Key Vault:
 
-1. **Mithilfe der [verwalteten Identitäten für Azure-Ressourcen](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)** (**Empfohlene und bewährte Methode**): Wenn Sie eine App auf einem virtuellen Computer in Azure bereitstellen, können Sie Ihrem virtuellen Computer eine Identität zuweisen, die Zugriff auf Key Vault hat. Sie können Identitäten auch anderen Azure-Ressourcen zuweisen, die [hier](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) aufgeführt sind. Der Vorteil bei diesem Ansatz ist, dass die App bzw. der Dienst die Rotation des ersten Geheimnisses nicht verwaltet. Die Identität wird von Azure automatisch rotiert. 
-2. **Mithilfe von Dienstprinzipal und Zertifikat**: Die zweite Option besteht darin, einen Dienstprinzipal und ein zugehöriges Zertifikat zu verwenden, das Zugriff auf Key Vault hat. Dies wird allerdings nicht empfohlen, da die Verantwortung für die Rotation des Zertifikats liegt beim Anwendungsbesitzer oder -entwickler.
+1. **Mithilfe der [verwalteten Identitäten für Azure-Ressourcen](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)** (**Empfohlene und bewährte Methode**): Wenn Sie eine App auf einem virtuellen Computer in Azure bereitstellen, können Sie Ihrem virtuellen Computer eine Identität zuweisen, die Zugriff auf Key Vault hat. Sie können Identitäten auch anderen Azure-Ressourcen zuweisen, die [hier](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) aufgeführt sind. Der Vorteil bei diesem Ansatz ist, dass die App bzw. der Dienst die Rotation des ersten Geheimnisses nicht verwaltet. Die Identität wird von Azure automatisch gedreht. 
+2. **Mithilfe von Dienstprinzipal und Zertifikat:** Die zweite Option besteht darin, einen Dienstprinzipal und ein zugehöriges Zertifikat zu verwenden, das Zugriff auf Key Vault hat. Dies wird allerdings nicht empfohlen, da die Verantwortung für die Rotation des Zertifikats liegt beim Anwendungsbesitzer oder -entwickler.
 3. **Mithilfe von Dienstprinzipal und Geheimnis**: Die dritte Option (keine bevorzugte Option) besteht darin, zur Authentifizierung beim Key Vault einen Dienstprinzipal und ein Geheimnis zu verwenden.
 
 > [!NOTE]
@@ -75,18 +75,11 @@ Jeder Benutzer mit einem Azure-Abonnement kann Schlüsseltresore erstellen und v
 
 Dieser Administrator kann anschließend den Entwicklern die URIs für den Aufruf der Schlüssel aus ihren Anwendungen und den Sicherheitsadministratoren Protokollinformationen zur Schlüsselverwendung bereitstellen. 
 
-![Übersicht über den Azure-Schlüsseltresor][1]
+![Übersicht über Azure Key Vault][1]
 
 Entwickler können die Schlüssel außerdem durch Verwendung von APIs direkt verwalten. Weitere Informationen finden Sie im [Entwicklerhandbuch für den Schlüsseltresor](key-vault-developers-guide.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Ein Tutorial mit ersten Schritten für Administratoren finden Sie unter [Erste Schritte mit dem Azure-Schlüsseltresor](key-vault-get-started.md).
-
-Weitere Informationen zur Verwendungsprotokollierung für Key Vault finden Sie unter [Azure-Schlüsseltresor-Protokollierung](key-vault-logging.md).
-
-Weitere Informationen zur Verwendung von Schlüsseln und Geheimnissen mit Azure Key Vault finden Sie unter [Informationen zu Schlüsseln, Geheimnissen und Zertifikaten](https://msdn.microsoft.com/library/azure/dn903623\(v=azure.1\).aspx).
-
-<!--Image references-->
-[1]: ./media/key-vault-whatis/AzureKeyVault_overview.png
-Azure-Tresorschlüssel ist in den meisten Regionen verfügbar. Weitere Informationen finden Sie auf der Seite [Preisübersicht für Schlüsseltresor](https://azure.microsoft.com/pricing/details/key-vault/).
+Lesen Sie, wie Sie [Ihren Tresor schützen](key-vault-secure-your-key-vault.md).
+<!--Image references--> [1]: ./media/key-vault-whatis/AzureKeyVault_overview.png Azure Key Vault ist in den meisten Regionen verfügbar. Weitere Informationen finden Sie auf der Seite [Preisübersicht für Schlüsseltresor](https://azure.microsoft.com/pricing/details/key-vault/).

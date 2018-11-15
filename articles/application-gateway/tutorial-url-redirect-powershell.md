@@ -7,15 +7,15 @@ manager: jpconnock
 ms.service: application-gateway
 ms.topic: tutorial
 ms.workload: infrastructure-services
-ms.date: 7/13/2018
+ms.date: 11/13/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 11cd052ca07e074ce8303891f7a372890fdf7291
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 785f3e5f55520b3851e8989b79c340bce55c2135
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45580598"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51566907"
 ---
 # <a name="create-an-application-gateway-with-url-path-based-redirection-using-azure-powershell"></a>Erstellen eines Anwendungsgateways mit Umleitung auf URL-Pfadbasis mithilfe von Azure PowerShell
 
@@ -32,6 +32,8 @@ In diesem Tutorial lernen Sie Folgendes:
 Das folgende Beispiel zeigt Websitedatenverkehr, der von den Ports 8080 und 8081 gesendet und an die gleichen Back-End-Pools geleitet wird:
 
 ![URL-Routingbeispiel](./media/tutorial-url-redirect-powershell/scenario.png)
+
+Sie können für dieses Tutorial auch die [Azure-Befehlszeilenschnittstelle](tutorial-url-redirect-cli.md) verwenden.
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
@@ -516,14 +518,6 @@ Wenn Sie die Ressourcengruppe, das Anwendungsgateway und alle zugehörigen Resso
 Remove-AzureRmResourceGroup -Name myResourceGroupAG
 ```
 ## <a name="next-steps"></a>Nächste Schritte
-
-In diesem Tutorial haben Sie Folgendes gelernt:
-
-> [!div class="checklist"]
-> * Einrichten des Netzwerks
-> * Erstellen eines Anwendungsgateways
-> * Hinzufügen der Listener und Routingregeln
-> * Erstellen von VM-Skalierungsgruppen für Back-End-Pools
 
 > [!div class="nextstepaction"]
 > [Erfahren Sie mehr darüber, was Sie mit dem Anwendungsgateway tun können.](application-gateway-introduction.md)

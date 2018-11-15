@@ -8,16 +8,17 @@ ms.topic: conceptual
 ms.date: 06/29/2018
 ms.author: snmuvva
 ms.component: alerts
-ms.openlocfilehash: 15ecbcafd3397b425b669a48f19bee6073b71149
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 89b412a58291dd542b38cd0cbfa1288795024151
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51279788"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51613714"
 ---
 # <a name="supported-resources-for-metric-alerts-in-azure-monitor"></a>Unterstützte Ressourcen für Metrikwarnungen in Azure Monitor
 
-Azure Monitor unterstützt jetzt einen neuen Metrikwarnungstyp, der erhebliche Vorteile gegenüber den älteren [klassischen Metrikwarnungen](alert-metric-classic.md) aufweist. Metriken stehen für [eine umfangreiche Liste von Azure-Diensten](monitoring-supported-metrics.md) zur Verfügung. Die neueren Warnungen unterstützen eine (stetig wachsende) Teilmenge der Ressourcentypen. In diesem Artikel wird diese Teilmenge aufgeführt.
+Azure Monitor unterstützt jetzt einen [neuen Metrikwarnungstyp](monitoring-overview-alerts.md), der erhebliche Vorteile gegenüber älteren [klassischen Metrikwarnungen](monitoring-overview-alerts-classic.md) aufweist. Metriken stehen für [eine umfangreiche Liste von Azure-Diensten](monitoring-supported-metrics.md) zur Verfügung. Die neueren Warnungen unterstützen eine (stetig wachsende) Teilmenge der Ressourcentypen. In diesem Artikel wird diese Teilmenge aufgeführt.
+
 
 Sie können neuere Metrikwarnungen auch für gängige Log Analytics-Protokolle verwenden, die als Metriken extrahiert wurden. Weitere Informationen finden Sie unter [Metrikwarnungen für Protokolle](monitoring-metric-alerts-logs.md).
 
@@ -120,6 +121,6 @@ Bei Verwendung einer ordnungsgemäß konfigurierten [Aktionsgruppe](monitoring-a
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Erfahren Sie mehr über die [neue Oberfläche „Warnungen“](monitoring-overview-unified-alerts.md).
+* Erfahren Sie mehr über die [neue Oberfläche „Warnungen“](monitoring-overview-alerts.md).
 * Erfahren Sie mehr über [Protokollwarnungen in Azure](monitor-alerts-unified-log.md).
 * Erfahren Sie mehr über [Warnungen in Azure](monitoring-overview-alerts.md).

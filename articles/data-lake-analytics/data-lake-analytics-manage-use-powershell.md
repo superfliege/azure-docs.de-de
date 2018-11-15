@@ -9,12 +9,12 @@ ms.reviewer: jasonwhowell
 ms.assetid: ad14d53c-fed4-478d-ab4b-6d2e14ff2097
 ms.topic: conceptual
 ms.date: 06/29/2018
-ms.openlocfilehash: b6bed1d42f67c2b5d2ef34a547215c280acb50b8
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 5bd8763234aa02d68b6e86b7259fcf10b4ef4ac5
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46963763"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51684277"
 ---
 # <a name="manage-azure-data-lake-analytics-using-azure-powershell"></a>Verwalten von Azure Data Lake Analytics mithilfe von Azure PowerShell
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
@@ -120,7 +120,7 @@ Test-AdlAnalyticsAccount -Name $adla
 Azure Data Lake Analytics unterstützt derzeit die folgenden Datenquellen:
 
 * [Azure Data Lake Store](../data-lake-store/data-lake-store-overview.md)
-* [Azure Storage](../storage/common/storage-introduction.md)
+* [Azure Storage (in englischer Sprache)](../storage/common/storage-introduction.md)
 
 Für jedes Data Lake Analytics-Konto ist ein Data Lake Store-Standardkonto vorhanden. Das Data Lake-Standardspeicherkonto dient zum Speichern von Auftragsmetadaten und -überwachungsprotokollen. 
 
@@ -503,26 +503,26 @@ function Test-Administrator
 Über einen Abonnementnamen:
 
 ```powershell
-function Get-TenantIdFromSubcriptionName( [string] $subname )
+function Get-TenantIdFromSubscriptionName( [string] $subname )
 {
     $sub = (Get-AzureRmSubscription -SubscriptionName $subname)
     $sub.TenantId
 }
 
-Get-TenantIdFromSubcriptionName "ADLTrainingMS"
+Get-TenantIdFromSubscriptionName "ADLTrainingMS"
 ```
 
 Über eine Abonnement-ID:
 
 ```powershell
-function Get-TenantIdFromSubcriptionId( [string] $subid )
+function Get-TenantIdFromSubscriptionId( [string] $subid )
 {
     $sub = (Get-AzureRmSubscription -SubscriptionId $subid)
     $sub.TenantId
 }
 
 $subid = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
-Get-TenantIdFromSubcriptionId $subid
+Get-TenantIdFromSubscriptionId $subid
 ```
 
 Über eine Domänenadresse wie z.B. „contoso.com“:

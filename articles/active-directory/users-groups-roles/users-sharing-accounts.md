@@ -14,12 +14,12 @@ ms.date: 10/29/2018
 ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: it-pro
-ms.openlocfilehash: 58b91388ec81726bd42e57fbf2b83d3d9f368833
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: ddc14c371f2aa56b056dd7f9f1802de081f4ccd9
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50243755"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51620696"
 ---
 # <a name="sharing-accounts-with-azure-ad"></a>Freigeben von Konten in Azure AD
 ## <a name="overview"></a>Übersicht
@@ -51,7 +51,7 @@ Azure AD unterstützt freigegebene Konten für alle lizenzierten Benutzer von En
 
 Zu den Azure AD-Features zur gemeinsamen Nutzung von Konten gehören folgende Funktionen:
 
-* [Einmaliges Anmelden per Kennwort](../manage-apps/what-is-single-sign-on.md#password-based-single-sign-on)
+* [Einmaliges Anmelden per Kennwort](../manage-apps/what-is-single-sign-on.md#password-based-sso)
 * Agent für einmaliges Anmelden per Kennwort
 * [Gruppenzuweisung](groups-self-service-management.md)
 * Apps mit benutzerdefinierten Kennwörtern

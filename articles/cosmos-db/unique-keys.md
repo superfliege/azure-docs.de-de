@@ -1,157 +1,54 @@
 ---
-title: Eindeutige Schlüssel in Azure Cosmos DB | Microsoft-Dokumentation
-description: Erfahren Sie, wie eindeutige Schlüssel in der Azure Cosmos DB-Datenbank verwendet werden.
-services: cosmos-db
-keywords: Einschränkung auf eindeutige Schlüssel, Verstoß gegen Einschränkung auf eindeutige Schlüssel
-author: rafats
-manager: kfile
-editor: monicar
+title: Eindeutige Schlüssel in Azure Cosmos DB
+description: Hier erfahren Sie, wie Sie eindeutige Schlüssel in Ihrer Azure Cosmos DB-Datenbank verwenden.
+author: aliuy
 ms.service: cosmos-db
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/08/2018
-ms.author: rafats
-ms.openlocfilehash: ff432de59e5a5fdfeaad4c3a5361554ee32e21b0
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.date: 10/30/2018
+ms.author: andrl
+ms.openlocfilehash: 006d0ef28d82a7648a56b3bf871c5a3afd6a55a6
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50740007"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51624419"
 ---
 # <a name="unique-keys-in-azure-cosmos-db"></a>Eindeutige Schlüssel in Azure Cosmos DB
 
-Eindeutige Schlüssel bieten Entwicklern die Möglichkeit, ihrer Datenbank eine zusätzliche Datenintegritätsebene hinzuzufügen. Durch das Erstellen eine Richtlinie für eindeutige Schlüssel beim Erstellen eines Containers wird die Eindeutigkeit von einem oder mehreren Werten pro [Partitionsschlüssel](partition-data.md) gewährleistet. Nachdem ein Container mit einer Richtlinie für eindeutige Schlüssel erstellt wurde, ist keine Erstellung neuer oder aktualisierter Elemente mit Werten möglich, die von der Einschränkung auf eindeutige Schlüssel festgelegte Werte duplizieren.   
+Mit eindeutigen Schlüsseln können Sie einem Cosmos-Container eine zusätzliche Datenintegritätsebene hinzuzufügen. Eine Richtlinie für eindeutige Schlüssel wird beim Erstellen eines Cosmos-Containers erstellt. Mit eindeutigen Schlüsseln stellen Sie die Eindeutigkeit von Werten innerhalb einer logischen Partition sicher. (Eindeutigkeit kann pro [Partitionsschlüssel](partition-data.md) garantiert werden.) Nachdem Sie einen Container mit einer Richtlinie für eindeutige Schlüssel erstellt haben, können innerhalb einer logischen Partition keine neuen oder aktualisierten duplizierten Elemente mehr erstellt werden (gemäß Angabe der Einschränkung für eindeutige Werte). Die Kombination aus Partitionsschlüssel und eindeutigem Schlüssel garantiert die Eindeutigkeit eines Elements innerhalb des Containerbereichs.
 
-> [!NOTE]
-> Eindeutige Schlüssel werden von den aktuellen Versionen der [.NET](sql-api-sdk-dotnet.md)- und [.NET Core](sql-api-sdk-dotnet-core.md)-SQL SDKs sowie der [MongoDB-API](mongodb-feature-support.md#unique-indexes) unterstützt. Die Tabellen-API und die Gremlin-API unterstützen derzeit keine eindeutigen Schlüssel. 
-> 
->
+Stellen Sie sich beispielsweise einen Cosmos-Container mit E-Mail-Adresse als Einschränkung für eindeutige Werte und `CompanyID` als Partitionsschlüssel vor. Wenn Sie die E-Mail-Adresse des Benutzers als eindeutigen Schlüssel konfigurieren, stellen Sie sicher, dass jedes Element innerhalb einer bestimmten Unternehmens-ID (`CompanyID`) über eine eindeutige e-Mail-Adresse verfügt. Es können keine zwei Elemente mit der gleichen E-Mail-Adresse und dem gleichen Partitionsschlüsselwert erstellt werden.  
 
-## <a name="use-case"></a>Anwendungsfall
+Wenn Benutzer mehrere Elemente mit der gleichen E-Mail-Adresse erstellen können sollen, nicht jedoch mit der gleichen Kombination aus Vorname, Nachname und E-Mail-Adresse, können Sie der Richtlinie für eindeutige Schlüssel zusätzliche Pfade hinzufügen. Anstatt eines eindeutigen Schlüssels, der auf der E-Mail-Adresse basiert, können Sie auch einen zusammengesetzten eindeutigen Schlüssel mit einer Kombination aus Vorname, Nachname und E-Mail-Adresse erstellen. In diesem Fall ist jede eindeutige Kombination der drei Werte innerhalb einer bestimmten Unternehmens-ID (`CompanyID`) zulässig. Der Container kann also beispielsweise Elemente mit den folgenden Werten enthalten, wobei jedes Element der Einschränkung für eindeutige Schlüssel entspricht:
 
-Sehen wir uns als Beispiel an, wie eine Benutzerdatenbank, die mit einer [sozialen Anwendung](use-cases.md#web-and-mobile-applications) verknüpft ist, von einer Richtlinie für eindeutige Schlüssel für E-Mail-Adressen profitieren kann. Indem Sie die E-Mail-Adresse des Benutzers zu einem eindeutigen Schlüssel machen, stellen Sie sicher, dass in jedem Datensatz eine eindeutige E-Mail-Adresse vorhanden ist und keine neuen Datensätze mit doppelten E-Mail-Adressen erstellt werden können. 
+|CompanyID|Vorname|Nachname|E-Mail-Adresse|
+|---|---|---|---|
+|Contoso|Helga|Kohler|gaby@contoso.com |
+|Contoso|Helga|Kohler|gaby@fabrikam.com|
+|Fabrikam|Helga|Kohler|gaby@fabrikam.com|
+|Fabrikam|Simon|Kohler|gaby@fabrikam.com|
+|Fabrikam|   |Kohler|gaby@fabraikam.com|
+|Fabrikam|   |   |gaby@fabraikam.com|
 
-Wenn Sie Benutzer mehrere Datensätze mit derselben E-Mail-Adresse erstellen können sollen, nicht jedoch mit derselben Kombination aus Vorname, Nachname und E-Mail-Adresse, können Sie der Richtlinie für eindeutige Schlüssel andere Pfade hinzufügen. Anstatt eines eindeutigen Schlüssels, der nur auf einer E-Mail-Adresse basiert, können Sie also einen eindeutigen Schlüssel erstellen, der eine Kombination aus Vorname, Nachname und E-Mail ist. In diesem Fall ist jede eindeutige Kombination der drei Pfade zulässig, sodass die Datenbank Elemente mit den folgenden Pfadwerten enthalten kann. Jeder dieser Datensätze entspricht der Richtlinie für eindeutige Schlüssel.  
+Beim Versuch, ein weiteres Element mit den in der obigen Tabelle aufgeführten Kombinationen einzufügen, erhalten Sie eine Fehlermeldung mit dem Hinweis, dass die Einschränkung für eindeutige Schlüssel nicht erfüllt ist. Die zurückgegebene Meldung lautet entweder „Ressource mit der angegebenen ID ist bereits vorhanden“ oder „Ressource mit der angegebenen ID, dem angegebenen Namen oder dem eindeutigen Index ist bereits vorhanden“.  
 
-**Zulässige Werte für die eindeutigen Schlüssel „firstName“, „lastName“ und „email“**
+## <a name="defining-a-unique-key"></a>Definieren eines eindeutigen Schlüssels
 
-|Vorname|Nachname|E-Mail-Adresse|
-|---|---|---|
-|Helga|Kohler|gaby@contoso.com |
-|Helga|Kohler|gaby@fabrikam.com|
-|Simon|Kohler|gaby@fabrikam.com|
-|    |Kohler|gaby@fabrikam.com|
-|    |       |gaby@fabraikam.com|
+Eindeutige Schlüssel können nur beim Erstellen eines Cosmos-Containers definiert werden. Ein eindeutiger Schlüssel ist auf eine logische Partition begrenzt. Wenn Sie den Container im vorherigen Beispiel auf der Grundlage der Postleitzahl partitionieren, kommt es in jeder logischen Partition zu duplizierten Elementen. Berücksichtigen Sie beim Erstellen eindeutiger Schlüssel die folgenden Eigenschaften:
 
-Beim Versuch, einen anderen Datensatz mit einer der in der obigen Tabelle aufgeführten Kombinationen einzufügen, würden Sie die Fehlermeldung erhalten, dass die Einschränkung auf eindeutige Schlüssel nicht erfüllt ist. Azure CosmosDB gibt einen Fehler wie „Ressource mit der angegebenen ID oder dem angegebenen Namen ist bereits vorhanden“ oder „Ressource mit der angegebenen ID, dem angegebenen Namen oder dem eindeutigen Index ist bereits vorhanden“ zurück. 
+* Sie können einen bereits vorhandenen Container nicht für die Verwendung eines anderen eindeutigen Schlüssels aktualisieren. Anders ausgedrückt: Nachdem ein Container mit einer Richtlinie für eindeutige Schlüssel erstellt wurde, kann die Richtlinie nicht mehr geändert werden.
 
-## <a name="using-unique-keys"></a>Verwendung eindeutiger Schlüssel
+* Wenn Sie einen eindeutigen Schlüssel für einen vorhandenen Container festlegen möchten, müssen Sie einen neuen Container mit der Einschränkung für eindeutige Schlüssel erstellen und mithilfe des entsprechenden Datenmigrationstools die Daten aus dem vorhandenen Container in den neuen Container verschieben. Verwenden Sie für SQL-Container das [Datenmigrationstool](import-data.md), um die Daten zu verschieben. Verwenden Sie für MongoDB-Container [„mongoimport.exe“ oder „mongorestore.exe“](mongodb-migrate.md), um die Daten zu verschieben.
 
-Eindeutige Schlüssel müssen beim Erstellen des Containers definiert werden, und der eindeutige Schlüssel ist auf den Partitionsschlüssel beschränkt. Um das vorherige Beispiel weiterzuführen, könnten Sie die Datensätze aus der Tabelle in jeder Partition duplizieren, wenn Sie basierend auf der Postleitzahl partitionieren.
+* Eine Richtlinie für eindeutige Schlüssel kann maximal 16 Pfadwerte („/firstName“, „/lastName“, „/address/zipCode“ und Ähnliches) enthalten. Jede Richtlinie für eindeutige Schlüssel darf höchstens zehn Einschränkungen für eindeutige Schlüssel oder Kombinationen enthalten, und die kombinierten Pfade der jeweiligen eindeutigen Indexbedingung darf 60 Bytes nicht überschreiten. Die Kombination aus Vorname, Nachname und E-Mail-Adresse im vorherigen Beispiel ist eine einzelne Einschränkung mit drei der 16 möglichen Pfade.
 
-Sie können vorhandene Container nicht so aktualisieren, dass sie eindeutige Schlüssel verwenden.
+* Wenn ein Container über eine Richtlinie für eindeutige Schlüssel verfügt, erhöhen sich geringfügig die Kosten für Anforderungseinheiten (Request Units, RUs) zum Erstellen, Aktualisieren und Löschen eines Elements.
 
-Nachdem ein Container mit einer Richtlinie für eindeutige Schlüssel erstellt wurde, kann die Richtlinie nicht geändert werden, es sei denn, Sie erstellen den Container neu. Wenn Sie für vorhandene Daten eindeutige Schlüssel implementieren möchten, erstellen Sie den neuen Container und verwenden dann das entsprechende Datenmigrationstool, um die Daten in den neuen Container zu verschieben. Verwenden Sie für SQL-Container das [Datenmigrationstool](import-data.md). Für MongoDB-Container verwenden Sie [„mongoimport.exe“ oder „mongorestore.exe“](mongodb-migrate.md).
+* Eindeutige Schlüssel mit geringer Dichte werden nicht unterstützt. Fehlende Werte für eindeutige Pfade werden als Nullwert behandelt und als solche in die Eindeutigkeitseinschränkung einbezogen. Es kann also nur ein einzelnes Element mit Nullwert vorhanden sein, um diese Einschränkung zu erfüllen.
 
-Jeder eindeutige Schlüssel kann höchstens 16 Pfadwerte (z. B. „/firstName“, „/lastName“, „/address/zipCode“ usw.) enthalten. 
-
-Jede Richtlinie für eindeutige Schlüssel darf höchstens zehn Einschränkungen auf eindeutige Schlüssel oder Kombinationen enthalten, und die kombinierten Pfade für alle Eigenschaften eindeutiger Indizes dürfen 60 Zeichen nicht überschreiten. Das vorherige Beispiel, in dem Vorname, Nachname und E-Mail-Adresse verwendet werden, ist also nur eine Einschränkung und verwendet drei der 16 verfügbaren möglichen Pfade. 
-
-Gebühren für Anforderungseinheiten für das Erstellen, Aktualisieren und Löschen eines Elements sind geringfügig höher, wenn eine Richtlinie für eindeutige Schlüssel für den Container gilt. 
-
-Eindeutige Schlüssel mit geringer Dichte werden nicht unterstützt. Wenn Werte für einige eindeutige Pfade fehlen, werden sie als spezieller NULL-Wert behandelt, für den die Eindeutigkeitseinschränkung gilt.
-
-## <a name="sql-api-sample"></a>SQL-API-Beispiel
-
-Im folgenden Codebeispiel wird die Erstellung eines neuen SQL-Containers mit zwei Einschränkungen auf eindeutige Schlüssel veranschaulicht. Die erste Einschränkung ist die firstName- lastName-, email-Einschränkung, die im vorangehenden Beispiel beschrieben wurde. Die zweite Einschränkung betrifft die Adresse und Postleitzahl des Benutzers. Eine JSON-Beispieldatei, die die Pfade in dieser Richtlinie für eindeutige Schlüssel verwendet, folgt dem Codebeispiel. 
-
-```csharp
-// Create a collection with two separate UniqueKeys, one compound key for /firstName, /lastName,
-// and /email, and another for /address/zipCode.
-private static async Task CreateCollectionIfNotExistsAsync(string dataBase, string collection)
-{
-    try
-    {
-        await client.ReadDocumentCollectionAsync(UriFactory.CreateDocumentCollectionUri(dataBase, collection));
-    }
-    catch (DocumentClientException e)
-    {
-        if (e.StatusCode == System.Net.HttpStatusCode.NotFound)
-        {
-            DocumentCollection myCollection = new DocumentCollection();
-            myCollection.Id = collection;
-            myCollection.PartitionKey.Paths.Add("/pk");
-            myCollection.UniqueKeyPolicy = new UniqueKeyPolicy
-            {
-                UniqueKeys =
-                new Collection<UniqueKey>
-                {
-                    new UniqueKey { Paths = new Collection<string> { "/firstName" , "/lastName" , "/email" }}
-                    new UniqueKey { Paths = new Collection<string> { "/address/zipcode" } },
-          }
-            };
-            await client.CreateDocumentCollectionAsync(
-                UriFactory.CreateDatabaseUri(dataBase),
-                myCollection,
-                new RequestOptions { OfferThroughput = 2500 });
-        }
-        else
-        {
-            throw;
-        }
-    }
-```
-
-JSON-Beispieldokument.
-
-```json
-{
-    "id": "1",
-    "pk": "1234",
-    "firstName": "Gaby",
-    "lastName": "Duperre",
-    "email": "gaby@contoso.com",
-    "address": 
-        {            
-            "line1": "100 Some Street",
-            "line2": "Unit 1",
-            "city": "Seattle",
-            "state": "WA",
-            "zipcode": 98012
-        }
-    
-}
-```
-> [!NOTE]
-> Beachten Sie, dass beim Namen des eindeutigen Schlüssels Groß-/Kleinschreibung unterschieden wird. Wie im Beispiel oben gezeigt, ist der eindeutige Name für „address“ (Adresse) und „zipcode“ (Postleitzahl) festgelegt. Wenn Ihre Daten „ZipCode“ enthalten, wird „null“ in den eindeutigen Schlüssel eingefügt, da „zipcode“ nicht gleich „ZipCode“ ist. Und wegen dieser Groß-/Kleinschreibung können alle anderen Datensätze mit „ZipCode“ nicht eingefügt werden, da eine doppelte „Null“ gegen die Einschränkung auf eindeutige Schlüssel verstößt.
-
-## <a name="mongodb-api-sample"></a>Beispiel für MongoDB-API
-
-Im folgenden Befehlsbeispiel wird die Erstellung eines eindeutigen Index für die Felder „firstName“, „lastName“ und „email“ der Auflistung des Benutzers für die MongoDB-API veranschaulicht. Dadurch wird die Eindeutigkeit für eine Kombination aus allen drei Feldern für alle Dokumente in der Auflistung sichergestellt. Für MongoDB-API-Auflistungen wird der eindeutige Index nach dem Erstellen, aber vor dem Auffüllen der Auflistung erstellt.
-
-> [!NOTE]
-> Das eindeutige Schlüsselformat für MongoDB-API-Konten unterscheidet sich von dem der SQL-API-Konten, für die der Schrägstrich (/) vor dem Feldnamen nicht angegeben werden muss. 
-
-```
-db.users.createIndex( { firstName: 1, lastName: 1, email: 1 }, { unique: true } )
-```
-## <a name="configure-unique-keys-by-using-azure-portal"></a>Konfigurieren eindeutiger Schlüssel im Azure-Portal
-
-In den obigen Abschnitten finden Sie Codebeispiele, die zeigen, wie Sie Einschränkung auf eindeutige Schlüssel definieren können, wenn eine Sammlung mit der SQL-API oder MongoDB-API erstellt wird. Es ist jedoch auch möglich, eindeutige Schlüssel zu definieren, wenn Sie eine Sammlung auf der Webbenutzeroberfläche im Azure-Portal erstellen. 
-
-- Navigieren Sie in Ihrem Cosmos DB-Konto zum **Daten-Explorer**.
-- Klicken Sie im Katalogheader auf **Neue Sammlung**
-- Im Abschnitt „Eindeutige Schlüssel“ können Sie die gewünschten Einschränkungen auf eindeutige Schlüssel hinzufügen, indem Sie auf **Eindeutigen Schlüssel hinzufügen** klicken.
-
-![Definieren eindeutiger Schlüssel im Daten-Explorer](./media/unique-keys/unique-keys-azure-portal.png)
-
-- Wenn Sie eine Einschränkung auf eindeutige Schlüssel für den Pfad „lastName“ erstellen möchten, fügen Sie `/lastName` hinzu.
-- Wenn Sie eine Einschränkung auf eindeutige Schlüssel für die Kombination aus „lastName“ und „firstName“ erstellen möchten, fügen Sie `/lastName,/firstName` hinzu.
-
-Wenn Sie fertig sind, klicken Sie auf **OK**, um die Sammlung zu erstellen.
+* Bei den Namen eindeutiger Schlüssel wird die Groß-/Kleinschreibung berücksichtigt. Stellen Sie sich beispielsweise einen Container vor, dessen Einschränkung für eindeutige Schlüssel auf „/address/zipcode“ festgelegt ist. Wenn Ihre Daten ein Feld mit dem Namen „ZipCode“ enthalten, fügt Cosmos DB „null“ als eindeutigen Schlüssel ein, da sich „zipcode“ von „ZipCode“ unterscheidet. Aufgrund der Berücksichtigung der Groß-/Kleinschreibung können die übrigen Datensätze mit „ZipCode“ nicht eingefügt werden, da der duplizierte Nullwert gegen die Einschränkung für eindeutige Schlüssel verstoßen würde.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel haben Sie erfahren, wie eindeutige Schlüssel für Elemente in einer Datenbank erstellt werden. Wenn Sie zum ersten Mal einen Container erstellen, lesen Sie [Partitionierung von Daten in Azure Cosmos DB](partition-data.md), da eindeutige Schlüssel und Partitionsschlüssel voneinander abhängig sind. 
-
-
+* Erfahren Sie mehr über [logische Partitionen](partition-data.md).

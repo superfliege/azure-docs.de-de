@@ -1,3 +1,16 @@
+---
+author: nitinme
+ms.service: cognitive-services
+ms.topic: include
+ms.date: 11/09/2018
+ms.author: nitinme
+ms.openlocfilehash: fccc036a5e0422508f7ebc3370a4b5faa5176dc2
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51572154"
+---
 Für Bing wird die Treffermarkierung unterstützt, bei der Abfrageausdrücke (oder andere Ausdrücke, die von Bing als relevant eingestuft werden) in den Anzeigezeichenfolgen einiger Antworten markiert werden. Mit den Feldern `name`, `displayUrl` und `snippet` können beispielsweise die Abfrageausdrücke markiert werden.
 
 Standardmäßig werden in Bing keine Hervorhebungsmarkierungen in Anzeigezeichenfolgen eingefügt. Fügen Sie zum Einbinden der Markierungen den Abfrageparameter `textDecorations` in Ihre Anforderung ein, und legen Sie ihn auf **true** fest. In Bing werden die Abfrageausdrücke mit den Unicode-Zeichen E000 und E001 markiert, um den Anfang und das Ende des Ausdrucks anzugeben. Falls der Abfrageausdruck beispielsweise „Sailing Dinghy“ lautet und beide Ausdrücke im Feld vorhanden sind, wird der Ausdruck wie im folgenden Beispiel in Zeichen für die Treffermarkierung gesetzt:  

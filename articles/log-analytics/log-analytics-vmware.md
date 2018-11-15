@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/04/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: fe2407f67e2ef7a2eb14105db0fef10917f34ba9
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 5c9f37d326d66e69e87ec846ca6f22d1788203f5
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51005222"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51613986"
 ---
 # <a name="vmware-monitoring-preview-solution-in-log-analytics"></a>VMware-Überwachungslösung (Vorschau) in Log Analytics
 
@@ -165,7 +165,7 @@ Das Speichern von Suchabfragen ist ein Standardfeature in Log Analytics und hilf
 ![Docker-Dashboardansicht](./media/log-analytics-vmware/dockerdashboardview.png)
 
 #### <a name="create-alerts-from-queries"></a>Erstellen von Warnungen aus Abfragen
-Nachdem Sie Ihre Abfragen erstellt haben, könnten Sie die Abfragen dazu verwenden, dass Sie auf bestimmte Ereignisse hingewiesen werden. Informationen zum Erstellen von Warnungen finden Sie unter [Warnungen in Log Analytics](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md). Beispiele für Warnungen durch Abfragen und weitere Beispiele für Abfragen finden Sie im Blogbeitrag [Monitor VMware using Log Analytics](https://blogs.technet.microsoft.com/msoms/2016/06/15/monitor-vmware-using-oms-log-analytics) (Überwachen von VMware mit Log Analytics).
+Nachdem Sie Ihre Abfragen erstellt haben, könnten Sie die Abfragen dazu verwenden, dass Sie auf bestimmte Ereignisse hingewiesen werden. Informationen zum Erstellen von Warnungen finden Sie unter [Warnungen in Log Analytics](../monitoring-and-diagnostics/monitoring-overview-alerts.md). Beispiele für Warnungen durch Abfragen und weitere Beispiele für Abfragen finden Sie im Blogbeitrag [Monitor VMware using Log Analytics](https://blogs.technet.microsoft.com/msoms/2016/06/15/monitor-vmware-using-oms-log-analytics) (Überwachen von VMware mit Log Analytics).
 
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 ### <a name="what-do-i-need-to-do-on-the-esxi-host-setting-what-impact-will-it-have-on-my-current-environment"></a>Was muss ich bei den ESXi-Hosteinstellungen beachten? Wie wirken diese sich auf meine aktuelle Umgebung aus?
@@ -208,4 +208,4 @@ Dafür kann es mehrere Gründe geben:
 ## <a name="next-steps"></a>Nächste Schritte
 * Verwenden Sie [Protokollsuchvorgänge](log-analytics-queries.md) in Log Analytics, um ausführliche VMware-Hostdaten anzuzeigen.
 * [Erstellen Sie eigene Dashboards](log-analytics-dashboards.md), die VMware-Hostdaten anzeigen.
-* [Erstellen Sie Warnungen](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md) für das Auftreten bestimmter VMware-Hostereignisse.
+* [Erstellen Sie Warnungen](../monitoring-and-diagnostics/monitoring-overview-alerts.md) für das Auftreten bestimmter VMware-Hostereignisse.

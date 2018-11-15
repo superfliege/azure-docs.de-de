@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/03/2018
 ms.author: v-daljep
 ms.component: ''
-ms.openlocfilehash: b20a142007b3422d071de47410f4c9cdd1ff62a7
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 5eb398cf981edbcfe9b98ee89c3dd4e12b3f758f
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51006735"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51615492"
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>Überwachen von Azure SQL-Datenbank mithilfe von Azure SQL-Analyse (Vorschauversion)
 
@@ -291,4 +291,4 @@ Obwohl die Lösung kostenlos verwendet werden kann, fallen für die Nutzung von 
 
 - Verwenden Sie die [Protokollsuche](log-analytics-queries.md) in Log Analytics, um ausführliche Azure SQL-Daten anzuzeigen.
 - [Erstellen eigener Dashboards](log-analytics-dashboards.md), die Azure SQL-Daten anzeigen
-- [Erstellen von Warnungen](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md), wenn bestimmte Azure SQL-Ereignisse auftreten
+- [Erstellen von Warnungen](../monitoring-and-diagnostics/monitoring-overview-alerts.md), wenn bestimmte Azure SQL-Ereignisse auftreten

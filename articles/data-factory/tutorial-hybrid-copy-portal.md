@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/11/2018
 ms.author: jingwang
-ms.openlocfilehash: f408d24a5957061bf03d340a555b87bdc6b2aacc
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: f4edd1632203e2f8723fa7880683727f8fb69c4d
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44304134"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51614020"
 ---
 # <a name="copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage"></a>Kopieren von Daten aus einer lokalen SQL Server-Datenbank nach Azure Blob Storage
 In diesem Tutorial verwenden Sie die Benutzeroberfläche (User Interface, UI) von Azure Data Factory, um eine Data Factory-Pipeline zu erstellen, mit der Daten aus einer lokalen SQL Server-Datenbank nach Azure Blob Storage kopiert werden. Sie erstellen und verwenden eine selbstgehostete Integration Runtime, die Daten zwischen lokalen Speichern und Clouddatenspeichern verschiebt.
@@ -111,7 +111,7 @@ In diesem Abschnitt erstellen Sie einen Blobcontainer mit dem Namen **adftutoria
 
 1. Wählen Sie in der Liste mit den Containern die Option **adftutorial**.
 
-    ![Containerauswahl](media/tutorial-hybrid-copy-powershell/seelct-adftutorial-container.png)
+    ![Containerauswahl](media/tutorial-hybrid-copy-powershell/select-adftutorial-container.png)
 
 1. Lassen Sie das Fenster **Container** für **adftutorial** geöffnet. Sie überprüfen darauf am Ende des Tutorials die Ausgabe. Data Factory erstellt den Ausgabeordner automatisch in diesem Container, damit Sie ihn nicht selbst erstellen müssen.
 
@@ -197,7 +197,7 @@ Der Name der Data Factory muss *global eindeutig* sein. Sollte für das Feld „
 
 1. Klicken Sie im Abschnitt **Option 1: Express setup** (Option 1: Express-Setup) auf **Click here to launch the express setup for this computer** (Klicken Sie hier, um das Express-Setup für diesen Computer zu starten). 
 
-    ![Link für das Express-Setup](./media/tutorial-hybrid-copy-portal/click-exress-setup.png)
+    ![Link für das Express-Setup](./media/tutorial-hybrid-copy-portal/click-express-setup.png)
 
 1. Klicken Sie im Fenster **Express-Setup von Integration Runtime (selbstgehostet)** auf **Schließen**. 
 
@@ -237,7 +237,7 @@ Der Name der Data Factory muss *global eindeutig* sein. Sollte für das Feld „
 
 1. Wechseln Sie zur Registerkarte mit der Pipeline **SQLServerToBlobPipeline**, oder klicken Sie in der Strukturansicht auf **SQLServerToBlobPipeline**. 
 
-    ![Pipelineregisterkarte](./media/tutorial-hybrid-copy-portal/pipeliene-tab.png)
+    ![Pipelineregisterkarte](./media/tutorial-hybrid-copy-portal/pipeline-tab.png)
 
 1. Wechseln Sie unten im Fenster **Eigenschaften** zur Registerkarte **Senke**, und klicken Sie auf **+ Neu**. 
 

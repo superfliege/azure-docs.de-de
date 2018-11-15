@@ -10,15 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 10/04/2018
+ms.date: 11/08/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 5d18a1f86e1d870db64199c575450dd475590b55
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 70a7829c14997287ed130b0b4300c7f5aa0f3a30
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49394465"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51345571"
 ---
 # <a name="tutorial-use-azure-deployment-manager-with-resource-manager-templates-private-preview"></a>Tutorial: Verwenden des Azure-Bereitstellungs-Managers mit Resource Manager-Vorlagen (private Vorschau)
 
@@ -48,11 +48,11 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 Damit Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie Folgendes:
 
 * Etwas Erfahrung mit der Entwicklung von [Azure Resource Manager-Vorlagen](./resource-group-overview.md).
-* Der Azure-Bereitstellungs-Manager befindet sich in der privaten Vorschauphase. Füllen Sie das [Registrierungsblatt](https://aka.ms/admsignup) aus, um sich für die Verwendung des Azure-Bereitstellungs-Managers zu registrieren. 
+* Der Azure-Bereitstellungs-Manager befindet sich in der privaten Vorschau. Füllen Sie das [Registrierungsblatt](https://aka.ms/admsignup) aus, um sich für die Verwendung des Azure-Bereitstellungs-Managers zu registrieren. 
 * Azure PowerShell. Weitere Informationen finden Sie unter [Erste Schritte mit Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps).
 * Bereitstellungs-Manager-Cmdlets. Um diese vorab veröffentlichten Cmdlets installieren zu können, benötigen Sie die neueste Version von PowerShellGet. Informationen zum Beziehen der neuesten Version finden Sie unter [Installieren von PowerShellGet](/powershell/gallery/installing-psget). Schließen Sie nach dem Installieren von PowerShellGet das PowerShell-Fenster. Öffnen Sie ein neues PowerShell-Fenster, und führen Sie den folgenden Befehl aus:
 
-    ```
+    ```powershell
     Install-Module -Name AzureRM.DeploymentManager -AllowPrerelease
     ```
 * [Microsoft Azure Storage-Explorer.](https://go.microsoft.com/fwlink/?LinkId=708343&clcid=0x409) Azure Storage-Explorer ist zwar nicht zwingend erforderlich, macht aber vieles einfacher.
@@ -287,7 +287,7 @@ Die Vorlagen können mithilfe von Azure PowerShell bereitgestellt werden.
 
 1. Führen Sie das Skript aus, um die Diensttopologie bereitzustellen.
 
-    ```powershell
+    ```azurepowershell-interactive
     $deploymentName = "<Enter a Deployment Name>"
     $resourceGroupName = "<Enter a Resource Group Name>"
     $location = "Central US"  
@@ -312,7 +312,7 @@ Die Vorlagen können mithilfe von Azure PowerShell bereitgestellt werden.
 
 3. Bereitstellen der Rolloutvorlage:
 
-    ```powershell
+    ```azurepowershell-interactive
     # Create the rollout
     New-AzureRmResourceGroupDeployment `
         -Name $deploymentName `
@@ -323,7 +323,7 @@ Die Vorlagen können mithilfe von Azure PowerShell bereitgestellt werden.
 
 4. Überprüfen Sie den Rolloutstatus mithilfe des folgenden PowerShell-Skripts:
 
-    ```powershell
+    ```azurepowershell-interactive
     # Get the rollout status
     $rolloutname = "<Enter the Rollout Name>"
     Get-AzureRmDeploymentManagerRollout `

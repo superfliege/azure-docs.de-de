@@ -1,29 +1,29 @@
 ---
-title: Bereitstellen der Java-Remoteüberwachungslösung – Azure | Microsoft-Dokumentation
-description: Dieses Tutorial zeigt, wie Sie mithilfe der CLI den Solution Accelerator für die Remoteüberwachung bereitstellen.
+title: 'Bereitstellen der Remoteüberwachungslösung mithilfe der CLI: Azure | Microsoft-Dokumentation'
+description: In dieser Schrittanleitung wird gezeigt, wie Sie mithilfe der CLI den Solution Accelerator für die Remoteüberwachung bereitstellen.
 author: dominicbetts
 manager: timlt
 ms.author: dobett
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.date: 09/12/2018
+ms.date: 10/30/2018
 ms.topic: conceptual
-ms.openlocfilehash: ddb0b5b1a0847200caa7d8d04ecdc9dab4c41d14
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 5704cc21b14d83ebc30cd29f52102c751cfb11f2
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49956696"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51248009"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-using-the-cli"></a>Bereitstellen des Solution Accelerators für die Remoteüberwachung mithilfe der CLI
 
-Dieses Tutorial zeigt, wie Sie den Solution Accelerator für die Remoteüberwachung bereitstellen. Sie stellen die Lösung über die Befehlszeilenschnittstelle bereit. Sie können die Lösung auch über die webbasierte Benutzeroberfläche auf azureiotsuite.com bereitstellen. Informationen zu dieser Möglichkeit finden Sie unter [Bereitstellen des Solution Accelerators für die Remoteüberwachung](quickstart-remote-monitoring-deploy.md).
+In dieser Schrittanleitung wird gezeigt, wie Sie den Solution Accelerator für die Remoteüberwachung bereitstellen. Sie stellen die Lösung über die Befehlszeilenschnittstelle bereit. Sie können die Lösung auch über die webbasierte Benutzeroberfläche auf azureiotsuite.com bereitstellen. Informationen zu dieser Möglichkeit finden Sie im Schnellstart [Ausprobieren einer cloudbasierten Lösung für die Remoteüberwachung](quickstart-remote-monitoring-deploy.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Für die Bereitstellung des Solution Accelerators für die Remoteüberwachung benötigen Sie ein aktives Azure-Abonnement.
 
-Wenn Sie über kein Konto verfügen, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Ausführliche Informationen finden Sie unter [Kostenlose Azure-Testversion](http://azure.microsoft.com/pricing/free-trial/).
+Wenn Sie über kein Konto verfügen, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Ausführliche Informationen finden Sie unter [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
 
 Zum Ausführen der Befehlszeilenschnittstelle muss [Node.js](https://nodejs.org/) auf Ihrem lokalen Computer installiert sein.
 
@@ -37,7 +37,7 @@ npm install iot-solutions -g
 
 ## <a name="sign-in-to-the-cli"></a>Anmelden bei der Befehlszeilenschnittstelle
 
-Damit Sie den Solution Accelerator bereitstellen können, müssen Sie sich wie folgt über die CLI bei Ihrem Azure-Abonnement anmelden:
+Damit Sie den Solution Accelerator bereitstellen können, müssen Sie sich über die CLI bei Ihrem Azure-Abonnement anmelden:
 
 ```cmd/sh
 pcs login
@@ -51,19 +51,20 @@ Beim Bereitstellen des Solution Accelerators sind mehrere Optionen verfügbar, m
 
 | Option | Werte | BESCHREIBUNG |
 | ------ | ------ | ----------- |
-| SKU    | `basic`, `standard`, `local` | Eine Bereitstellung des Typs _basic_ ist für Test- und Demonstrationszwecke vorgesehen. Dabei werden alle Microservices auf einem einzelnen virtuellen Computer bereitgestellt. Eine Bereitstellung des Typs _standard_ ist für die Produktion vorgesehen. Die Microservices werden auf mehreren virtuellen Computern bereitgestellt. Ein _lokale_ Bereitstellung konfiguriert einen Docker-Container für die Ausführung der Microservices auf Ihrem lokalen Computer und verwendet Azure-Dienste wie Storage und Cosmos DB in der Cloud. |
+| SKU    | `basic`, `standard`, `local` | Eine Bereitstellung des Typs _basic_ ist für Test- und Demonstrationszwecke vorgesehen. Dabei werden alle Microservices auf einem einzelnen virtuellen Computer bereitgestellt. Eine Bereitstellung des Typs _Standard_ ist für die Produktion vorgesehen. Die Microservices werden auf mehreren virtuellen Computern bereitgestellt. Ein _lokale_ Bereitstellung konfiguriert einen Docker-Container für die Ausführung der Microservices auf Ihrem lokalen Computer und verwendet Azure-Clouddienste wie Storage und Cosmos DB. |
 | Laufzeit | `dotnet`, `java` | Wählt die Implementierung der Sprache für die Microservices aus. |
 
-Informationen zur Verwendung der lokalen Bereitstellung finden Sie unter [Lokales Ausführen der Remoteüberwachungslösung](iot-accelerators-remote-monitoring-deploy-local.md).
+Informationen zur Verwendung der lokalen Bereitstellung finden Sie unter [Lokales Bereitstellen des Solution Accelerators für die Remoteüberwachung](iot-accelerators-remote-monitoring-deploy-local.md).
 
-## <a name="basic-vs-standard-deployments"></a>Gegenüberstellung von Basic- und Standard-Bereitstellung
+## <a name="basic-and-standard-deployments"></a>Bereitstellungen vom Typ „Basic“ und „Standard“
+
+In diesem Abschnitt werden die wichtigsten Unterschiede zwischen einer Basic- und einer Standard-Bereitstellung zusammengefasst.
 
 ### <a name="basic"></a>Basic
-Die Basic-Bereitstellung ist auf die Demonstration der Lösung ausgelegt. Aus Kostengründen werden hierbei alle Microservices auf einem einzelnen virtuellen Computer bereitgestellt. Diese Architektur ist nicht für eine Produktionsumgebung geeignet.
 
-Wenn Sie eine produktionsbereite, auf Skalierbarkeit und Erweiterbarkeit ausgelegte Architektur anpassen möchten, verwenden Sie die Bereitstellungsoption „Standard“.
+Die Basic-Bereitstellung ist auf die Demonstration der Lösung ausgelegt. Zur Kostensenkung werden alle Microservices auf einem einzelnen virtuellen Computer bereitgestellt. Diese Bereitstellung nutzt keine produktionsbereite Architektur.
 
-Bei der Erstellung einer Basic-Lösung werden folgende Azure-Dienste kostenpflichtig in Ihrem Azure-Abonnement bereitgestellt: 
+Bei einer Bereitstellung vom Typ „Basic“ werden die folgenden Dienste in Ihrem Azure-Abonnement erstellt:
 
 | Count | Ressource                       | Typ         | Verwendung |
 |-------|--------------------------------|--------------|----------|
@@ -78,13 +79,11 @@ Bei der Erstellung einer Basic-Lösung werden folgende Azure-Dienste kostenpflic
 | 1     | [Azure Device Provisioning Service](https://docs.microsoft.com/azure/iot-dps/)        |       S1          | Umfangreiche Bereitstellung von Geräten |
 | 1     | [Azure Time Series Insights](https://azure.microsoft.com/services/time-series-insights/)        |   S1 – 1-Einheit              | Speicher für Nachrichtendaten und ermöglicht eine detaillierte Telemetrieanalyse |
 
-
-
 ### <a name="standard"></a>Standard
-Die Standard-Bereitstellung ist für eine Produktionsumgebung geeignet und kann von einem Entwickler erweitert und an die jeweiligen Anforderungen angepasst werden. Wenn Sie eine produktionsbereite, auf Skalierbarkeit und Erweiterbarkeit ausgelegte Architektur anpassen möchten, verwenden Sie die Bereitstellungsoption „Standard“. Anwendungsmicroservices werden als Docker-Container erstellt und mithilfe von Azure Kubernetes Service (AKS) bereitgestellt. Der Orchestrator ist für die Bereitstellung, Skalierung und Verwaltung der Anwendung zuständig.
 
+Eine Standard-Bereitstellung ist für eine Produktionsumgebung geeignet und kann von einem Entwickler angepasst und erweitert werden. Wenn Sie eine produktionsbereite, auf Skalierbarkeit und Erweiterbarkeit ausgelegte Architektur anpassen möchten, verwenden Sie die Bereitstellungsoption „Standard“. Anwendungsmicroservices werden als Docker-Container erstellt und mithilfe von Azure Kubernetes Service bereitgestellt. Die Microservices werden vom Kubernetes-Orchestrator bereitgestellt, skaliert und verwaltet.
 
-Bei der Erstellung einer Standard-Lösung werden folgende Azure-Dienste kostenpflichtig in Ihrem Azure-Abonnement bereitgestellt:
+Bei einer Bereitstellung vom Typ „Standard“ werden die folgenden Dienste in Ihrem Azure-Abonnement erstellt:
 
 | Count | Ressource                                     | SKU/Größe      | Verwendung |
 |-------|----------------------------------------------|-----------------|----------|
@@ -99,9 +98,12 @@ Bei der Erstellung einer Standard-Lösung werden folgende Azure-Dienste kostenpf
 | 1     | [Azure Device Provisioning Service](https://docs.microsoft.com/azure/iot-dps/)        |       S1          | Umfangreiche Bereitstellung von Geräten |
 | 1     | [Azure Time Series Insights](https://azure.microsoft.com/services/time-series-insights/)        |   S1 – 1-Einheit              | Speicher für Nachrichtendaten und ermöglicht eine detaillierte Telemetrieanalyse |
 
-> Preisinformationen für diese Dienste finden Sie [hier](https://azure.microsoft.com/pricing). Informationen zum Verbrauch sowie Abrechnungsdetails für Ihr Abonnement finden Sie im [Azure-Portal](https://portal.azure.com/).
+> [!NOTE]
+> Preisinformationen für diese Dienste finden Sie unter [https://azure.microsoft.com/pricing](https://azure.microsoft.com/pricing). Ausführliche Informationen zu Verbrauch und Abrechnung für Ihr Abonnement finden Sie im [Azure-Portal](https://portal.azure.com/).
 
 ## <a name="deploy-the-solution-accelerator"></a>Bereitstellen des Solution Accelerators
+
+Bereitstellungsbeispiele:
 
 ### <a name="example-deploy-net-version"></a>Beispiel: Bereitstellen der .NET-Version
 
@@ -128,7 +130,7 @@ Beim Ausführen des Befehls `pcs` zum Bereitstellen einer Lösung müssen Sie fo
 - Einen Speicherort.
 - Anmeldeinformationen für die virtuellen Computer, auf denen die Microservices gehostet werden. Sie können diese Anmeldeinformationen verwenden, um zur Problembehandlung auf die virtuellen Computer zuzugreifen.
 
-Nach Abschluss des Befehls `pcs` wird die URL der neuen Bereitstellung des Solution Accelerators angezeigt. Mit dem Befehl `pcs` wird auch die Datei `{deployment-name}-output.json` mit zusätzlichen Informationen (z.B. dem Namen des bereitgestellten IoT Hub) erstellt.
+Nach Abschluss des Befehls `pcs` wird die URL des neuen Solution Accelerators angezeigt. Mit dem Befehl `pcs` wird auch die Datei `{deployment-name}-output.json` mit Informationen (etwa dem Namen der erstellten IoT Hub-Instanz) erstellt.
 
 Wenn Sie weitere Informationen zu den Befehlszeilenparametern benötigen, führen Sie den folgenden Befehl aus:
 
@@ -140,7 +142,7 @@ Weitere Informationen zur Befehlszeilenschnittstelle finden Sie unter [How to us
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie Folgendes gelernt:
+In dieser Schrittanleitung wurde Folgendes vermittelt:
 
 > [!div class="checklist"]
 > * Konfigurieren des Solution Accelerators
@@ -149,4 +151,4 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 
 Nach Bereitstellung der Remoteüberwachungslösung können Sie sich als Nächstes [mit den Funktionen des Lösungsdashboards vertraut machen](./quickstart-remote-monitoring-deploy.md).
 
-<!-- Next tutorials in the sequence -->
+<!-- Next how-to guides in the sequence -->

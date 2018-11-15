@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 08/14/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: a2b6b3334176cb6fdd86c17b4d11cb03a42dd4bf
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 42697f7f4bb8c6b9ef785eef0fe2f5f33b2b38a7
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45731801"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51615602"
 ---
 # <a name="store-batch-ai-job-input-and-output-with-azure-storage"></a>Speichern von Batch AI-Auftragseingabe und -ausgabe mit Azure Storage
 
@@ -98,7 +98,7 @@ Wenn Ihr Trainingsskript Informationen zu einem Pfad benötigt, sollten Sie ihn 
 
 ### <a name="abbreviate-input-paths"></a>Abkürzen von Eingabepfaden
 
-Um Eingabepfade als Umgebungsvariable abzukürzen, verwenden Sie die `inputDirectories`-Eigenschaft Ihrer Datei `job.json` (oder `models.JobCreateParamters.input_directories` bei Verwendung des Batch AI SDK). Das Schema von `inputDirectories` ist:
+Um Eingabepfade als Umgebungsvariable abzukürzen, verwenden Sie die `inputDirectories`-Eigenschaft Ihrer Datei `job.json` (oder `models.JobCreateParameters.input_directories` bei Verwendung des Batch AI SDK). Das Schema von `inputDirectories` ist:
 
 ```json
 {
@@ -115,7 +115,7 @@ Weitere Informationen finden Sie [hier](https://github.com/Azure/BatchAI/blob/ma
 
 ### <a name="abbreviate-output-paths"></a>Abkürzen von Ausgabepfaden
 
-Um Ausgabepfade als Umgebungsvariable abzukürzen, verwenden Sie die `outputDirectories`-Eigenschaft Ihrer Datei `job.json` (oder `models.JobCreateParamters.output_directories` bei Verwendung des Batch AI SDK). Mit dieser Methode können Sie die Pfade für Ausgabedateien vereinfachen. Das Schema von `outputDirectories` ist:
+Um Ausgabepfade als Umgebungsvariable abzukürzen, verwenden Sie die `outputDirectories`-Eigenschaft Ihrer Datei `job.json` (oder `models.JobCreateParameters.output_directories` bei Verwendung des Batch AI SDK). Mit dieser Methode können Sie die Pfade für Ausgabedateien vereinfachen. Das Schema von `outputDirectories` ist:
 
 ```json
 {

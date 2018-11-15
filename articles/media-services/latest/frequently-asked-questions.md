@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 11/05/2018
 ms.author: juliako
-ms.openlocfilehash: dccbc6e57e970ec7089f81fccb33b741b9c00e74
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 26661a213b5df5424bf9ab9ad799345ae35620ea
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49376719"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51036766"
 ---
 # <a name="azure-media-services-v3-frequently-asked-questions"></a>Häufig gestellte Fragen zu Azure Media Services v3
 
@@ -28,7 +28,7 @@ Bisher nicht. Sie können eines der unterstützten SDKs verwenden. Informationen
 
 ## <a name="is-there-an-api-for-configuring-media-reserved-units"></a>Gibt es eine API zum Konfigurieren von reservierten Einheiten für Medien?
 
-Das Media Services-Team sieht vor, reservierte Einheiten (Reserved Units, RUs) in v3 zu entfernen. Die erforderlichen Arbeiten sind aber noch nicht abgeschlossen. Bis dahin müssen Kunden zum Festlegen von RUs das Azure-Portal oder APIs von AMS v2 verwenden (wie unter [Skalieren der Medienverarbeitung](../previous/media-services-scale-media-processing-overview.md) beschrieben). 
+Derzeit müssen Sie zum Konfigurieren von reservierten Einheiten für Medien APIs von AMS v2 verwenden (wie unter [Skalieren der Medienverarbeitung](../previous/media-services-scale-media-processing-overview.md) beschrieben). 
 
 Wenn Sie **VideoAnalyzerPreset** und/oder **AudioAnalyzerPreset** verwenden, legen Sie Ihr Media Services-Konto auf zehn reservierte S3-Einheiten für Medien fest.
 

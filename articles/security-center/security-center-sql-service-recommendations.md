@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/03/2017
+ms.date: 10/28/2018
 ms.author: terrylan
-ms.openlocfilehash: 45f5dc840f015793912e314ab3d47e54a409708e
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 177deb779ca3e3e9575a41ab9a37bb51d5e79df8
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46126665"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51008078"
 ---
 # <a name="protecting-azure-sql-service-and-data-in-azure-security-center"></a>Schützen des Azure SQL-Diensts und Ihrer Daten in Azure Security Center
 Azure Security Center analysiert den Sicherheitsstatus Ihrer Azure-Ressourcen. Werden potenzielle Sicherheitslücken erkannt, erstellt Security Center Empfehlungen, die Sie beim Konfigurieren der erforderlichen Steuerelemente unterstützen.  Die Empfehlungen gelten für folgende Azure-Ressourcentypen: virtuelle Computer (Virtual Machines, VMs), Netzwerk, SQL, Daten und Anwendungen.
@@ -49,12 +49,26 @@ Wenn Sie auf die Datenbank klicken, um die Empfehlung zu implementieren, erschei
 
 Um die Überwachung zu aktivieren, wählen Sie für **Überwachung** die Option **EIN** aus.
 
-## <a name="available-sql-service-and-data-recommendations"></a>Verfügbare Empfehlungen für den SQL-Dienst und die Daten
-| Empfehlung | BESCHREIBUNG |
-| --- | --- |
-| [Aktivieren der Überwachung und Bedrohungserkennung auf SQL-Servern](security-center-enable-auditing-on-sql-servers.md) |Empfiehlt Ihnen, die Überwachung und die Bedrohungserkennung für Azure SQL-Server zu aktivieren (nur Azure SQL-Dienst, keine Ausführung von SQL auf Ihren virtuellen Computern). |
-| [Aktivieren der Überwachung und Bedrohungserkennung in SQL-Datenbanken](security-center-enable-auditing-on-sql-databases.md) |Empfiehlt Ihnen, die Überwachung und die Bedrohungserkennung für Azure SQL-Datenbanken zu aktivieren (nur Azure SQL-Dienst, keine Ausführung von SQL auf Ihren virtuellen Computern). |
-| [Transparent Data Encryption für SQL-Datenbanken aktivieren](security-center-enable-transparent-data-encryption.md) |Empfiehlt Ihnen, die Verschlüsselung für SQL-Datenbanken zu aktivieren (nur Azure SQL-Dienst). |
+## <a name="data-and-storage-recommendations"></a>Empfehlungen für Daten und Speicher
+
+|Ressourcentyp|Sicherheitsbewertung|Empfehlung|BESCHREIBUNG|
+|----|----|----|----|
+|Speicherkonto|20|Sichere Übertragung zum Speicherkonto erforderlich|Sichere Übertragung ist eine Option, die erzwingt, dass Ihr Storage-Konto nur Anforderungen von sicheren Verbindungen (HTTPS) akzeptiert. Durch die Verwendung von HTTPS wird eine Authentifizierung zwischen dem Server und dem Dienst sichergestellt, und die übertragenen Daten werden vor Angriffen auf Netzwerkebene geschützt, wie z.B. Man-in-the-Middle-Angriffe, Abhörangriffe und Session Hijacking.|
+|Redis|20|Nur sichere Verbindungen mit Redis Cache aktivieren|Aktivieren Sie nur Verbindungen über SSL mit Redis-Cache. Durch die Verwendung sicheren Verbindungen wird eine Authentifizierung zwischen dem Server und dem Dienst sichergestellt, und die übertragenen Daten werden vor Angriffen auf Netzwerkebene geschützt, wie z.B. Man-in-the-Middle-Angriffe, Abhörangriffe und Session Hijacking.|
+|SQL|15|Transparent Data Encryption für SQL-Datenbanken aktivieren|Aktivieren Sie die transparente Datenverschlüsselung, um ruhende Daten zu schützen und Konformitätsanforderungen zu erfüllen.|
+|SQL|15|Überwachung für SQL-Server aktivieren|Aktivieren Sie die Überwachung für Azure SQL-Server. (Nur Azure SQL-Dienst. Schließt nicht die Ausführung von SQL auf Ihren virtuellen Computern mit ein.)|
+|SQL|15|Überwachung für SQL-Datenbanken aktivieren|Aktivieren Sie die Überwachung für Azure SQL-Datenbanken. (Nur Azure SQL-Dienst. Schließt nicht die Ausführung von SQL auf Ihren virtuellen Computern mit ein.)|
+|Data Lake Analytics|15|Verschlüsselung ruhender Daten von Data Lake Analytics aktivieren|Aktivieren Sie transparente Datenverschlüsselung, um ruhende Daten in Ihrer Data Lake Analytics-Instanz zu sichern. Die Verschlüsselung ruhender Daten ist transparent, d.h. Data Lake Analytics verschlüsselt Daten vor der persistenten Speicherung automatisch und entschlüsselt sie vor dem Abrufen. In Anwendungen und Diensten, die mit Data Lake Analytics interagieren, sind keine verschlüsselungsbedingten Änderungen erforderlich. Die Verschlüsselung ruhender Daten minimiert das Risiko von Datenverlust durch physischen Diebstahl und trägt auch zur Einhaltung gesetzlicher Bestimmungen bei.|
+|Data Lake Store|15|Verschlüsselung ruhender Daten für Data Lake Store aktivieren|Aktivieren Sie transparente Datenverschlüsselung, um ruhende Daten in Ihrer Data Lake Store-Instanz zu sichern. Die Verschlüsselung ruhender Daten ist transparent, d.h. Data Lake Store verschlüsselt Daten vor der persistenten Speicherung automatisch und entschlüsselt sie vor dem Abrufen. Sie müssen keine Änderungen in den Anwendungen und Diensten vornehmen, die mit Data Lake Store interagieren, um Verschlüsselung zu ermöglichen. Die Verschlüsselung ruhender Daten minimiert das Risiko von Datenverlust durch physischen Diebstahl und trägt auch zur Einhaltung gesetzlicher Bestimmungen bei.|
+|Speicherkonto|15|Verschlüsselung für Azure Storage-Konto aktivieren|Aktivieren Sie die Azure-Speicherdienstverschlüsselung für ruhende Daten. Storage Service Encryption (SSE) verschlüsselt die Daten, wenn diese in Azure Storage geschrieben werden, und entschlüsselt sie vor dem Abrufen. SSE steht zurzeit nur für den Azure Blob-Dienst zur Verfügung und kann für Blockblobs, Seitenblobs und Anfügeblobs verwendet werden.|
+|Data Lake Analytics|5|Diagnoseprotokolle in Data Lake Analytics aktivieren|Aktivieren Sie Protokolle, und bewahren Sie sie bis zu ein Jahr lang auf. Auf diese Weise können Sie vergangene Aktivitäten nachvollziehen, wenn Sie Sicherheitsincidents untersuchen oder Ihr Netzwerk gefährdet ist. |
+|Data Lake Store|5|Diagnoseprotokolle in Azure Data Lake Store aktivieren|Aktivieren Sie Protokolle, und bewahren Sie sie bis zu ein Jahr lang auf. Auf diese Weise können Sie vergangene Aktivitäten nachvollziehen, wenn Sie Sicherheitsincidents untersuchen oder Ihr Netzwerk gefährdet ist. |
+|SQL|30|Sicherheitsrisiken in SQL-Datenbanken beseitigen|Die SQL-Sicherheitsrisikobewertung überprüft Ihre Datenbank auf Sicherheitsrisiken und zeigt Abweichungen von bewährten Methoden wie z. B. Fehlkonfigurationen, übermäßige Berechtigungen und ungeschützte vertrauliche Daten an. Durch das Beseitigen der Sicherheitsrisiken kann die Sicherheit Ihrer Datenbank deutlich verbessert werden.|
+|SQL|20|Azure AD-Administrator für SQL Server bereitstellen|Stellen Sie einen Azure AD-Administrator für Ihren SQL-Server bereit, um Azure AD-Authentifizierung zu aktivieren. Die Azure AD-Authentifizierung ermöglicht eine vereinfachte Verwaltung von Berechtigungen und eine zentralisierte Identitätsverwaltung von Datenbankbenutzern und anderen Microsoft-Diensten.|
+|Speicherkonto|15|Uneingeschränkten Netzwerkzugriff auf Speicherkonto deaktivieren|Überwachen Sie uneingeschränkten Netzwerkzugriff in den Firewalleinstellungen Ihres Speicherkontos. Konfigurieren Sie stattdessen Netzwerkregeln, sodass nur Anwendungen aus zulässigen Netzwerken auf ein Speicherkonto zugreifen können. Um Verbindungen von bestimmten Internetclients oder lokalen Clients zuzulassen, kann Zugriff für Datenverkehr aus bestimmten virtuellen Azure-Netzwerken oder an IP-Adressbereiche im öffentlichen Internet gewährt werden.|
+|Speicherkonto|1||Speicherkonten zu neuen AzureRM-Ressourcen migrieren|Verwenden Sie den neuen Azure Resource Manager v2 für Ihre Speicherkonten, um von den folgenden Sicherheitsverbesserungen zu profitieren: strengere Zugriffssteuerung (RBAC), bessere Überwachung, Resource Manager-basierte Bereitstellung und Governance, Zugriff auf verwaltete Identitäten, Zugriff auf Schlüsseltresore für Geheimnisse, Azure AD-basierte Authentifizierung und Unterstützung für Markierungen und Ressourcengruppen für eine einfachere Sicherheitsverwaltung.|
+
+
 
 ## <a name="see-also"></a>Weitere Informationen
 Weitere Informationen zu Empfehlungen für andere Arten von Azure-Ressourcen finden Sie in den folgenden Themen:

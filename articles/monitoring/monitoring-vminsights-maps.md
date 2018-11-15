@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/25/2018
 ms.author: magoedte
-ms.openlocfilehash: af3d2b997a4d58f2d32705c55151c4cf13bdcc7c
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: ac96de2669a75a5966650afc0b49cc2f926537fa
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50095477"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51614207"
 ---
 # <a name="using-azure-monitor-for-vms-preview-map-to-understand-application-components"></a>Verwenden der Zuordnung in Azure Monitor für VMs (Vorschau) zum Verstehen von Anwendungskomponenten
 Das Anzeigen der ermittelten Anwendungskomponenten auf virtuellen Windows- und Linux-Computern, die in Ihrer Azure-Umgebung ausgeführt werden, kann mit Azure Monitor für VMs auf zwei Arten erfolgen: direkt in einem virtuellen Computer oder übergreifend für eine Gruppe von VMs in Azure Monitor. 
@@ -44,7 +44,7 @@ Klicken Sie auf der rechten Seite des Bereichs auf das Symbol **Protokollereigni
 
 ![Protokollsuchliste im Bereich „Eigenschaften“](./media/monitoring-vminsights-maps/properties-pane-logs-01.png)
 
-Schließen Sie *Protokolle*\*, kehren Sie zum Bereich **Eigenschaften** zurück, und wählen Sie **Warnungen** aus, um Warnungen anzuzeigen, die von den Integritätskriterien für die VM ausgelöst wurden. Die Zuordnung ist in Azure-Warnungen integriert, um Warnungen für den ausgewählten Server anzuzeigen, die im ausgewählten Zeitraum ausgelöst werden. Für den Server wird ein Symbol angezeigt, wenn aktuelle Warnungen vorliegen, und im Computerwarnungsbereich werden die Warnungen aufgelistet. 
+Schließen Sie *Protokolle**, kehren Sie zum Bereich **Eigenschaften** zurück, und wählen Sie **Warnungen** aus, um Warnungen anzuzeigen, die von den Integritätskriterien für die VM ausgelöst wurden. Die Zuordnung ist in Azure-Warnungen integriert, um Warnungen für den ausgewählten Server anzuzeigen, die im ausgewählten Zeitraum ausgelöst werden. Für den Server wird ein Symbol angezeigt, wenn aktuelle Warnungen vorliegen, und im Computerwarnungsbereich werden die Warnungen aufgelistet. 
 
 ![Computerwarnungen im Bereich „Eigenschaften“](./media/monitoring-vminsights-maps/properties-pane-alerts-01.png)
 
@@ -52,7 +52,7 @@ Damit das Zuordnungsfeature die relevanten Warnungen anzeigen kann, müssen Sie 
 - Beziehen Sie eine Klausel zur Gruppierung nach Computer ein (z.B. **by Computer interval 1 minute**).
 - Wählen Sie die Warnung auf Basis der Metrikmessung.
 
-Weitere Informationen zu Azure-Warnungen und zum Erstellen von Warnungsregeln finden Sie unter [Einheitliche Oberfläche für Warnungen in Azure Monitor](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md)
+Weitere Informationen zu Azure-Warnungen und zum Erstellen von Warnungsregeln finden Sie unter [Einheitliche Oberfläche für Warnungen in Azure Monitor](../monitoring-and-diagnostics/monitoring-overview-alerts.md)
 
 Die Option **Legende** in der oberen rechten Ecke beschreibt die Symbole und Rollen auf einer Zuordnung.  Um die Ansicht zu vergrößern, damit Sie einen genaueren Blick auf Ihre Zuordnung werfen können, und um in ihr zu navigieren, kann die Vergrößerung mit den Zoomsteuerelementen unten rechts auf der Seite festgelegt und die Seite an die Größe der aktuellen Seite angepasst werden.  
 

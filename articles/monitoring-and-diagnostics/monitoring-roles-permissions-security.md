@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/27/2017
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: 6a197cf5667e1668b2007a5f552b813cb8ed68d3
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: caa1b4b3bf1f9b8fb1a34bd58dde04f13fbc6c88
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50957827"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51614565"
 ---
 # <a name="get-started-with-roles-permissions-and-security-with-azure-monitor"></a>Erste Schritte mit Rollen, Berechtigungen und Sicherheit in Azure Monitor
 Viele Teams müssen den Zugriff auf Überwachungsdaten und -einstellungen streng regulieren. Wenn einige Ihrer Teammitglieder beispielsweise ausschließlich an der Überwachung arbeiten (Supporttechniker, DevOps-Techniker) oder wenn Sie einen verwalteten Dienstanbieter verwenden, sollten Sie diesen nur Zugriff auf Überwachungsdaten erteilen und deren Möglichkeit zum Erstellen, Ändern oder Löschen von Ressourcen einschränken. Dieser Artikel beschreibt, wie Sie schnell eine integrierte RBAC-Rolle zur Überwachung auf einen Benutzer in Azure anwenden oder Ihre eigene benutzerdefinierte Rolle für einen Benutzer erstellen, der eingeschränkte Überwachungsberechtigungen benötigt. Anschließend werden Sicherheitsaspekte für Ihre Azure Monitor-Ressourcen erörtert, und es wird beschrieben, wie Sie den Zugriff auf die darin enthaltenen Daten beschränken können.
@@ -25,7 +25,7 @@ Die in Azure Monitor integrierten Rollen unterstützen Sie dabei, den Zugriff au
 Personen, denen die Überwachungsleserrolle zugewiesen wird, können alle Überwachungsdaten in einem Abonnement anzeigen, aber keine Ressourcen ändern oder Einstellungen im Zusammenhang mit der Ressourcenüberwachung bearbeiten. Diese Rolle eignet sich für Benutzer in einer Organisation, beispielsweise Support- oder Betriebstechniker, die folgende Aufgaben erfüllen müssen:
 
 * Anzeigen von Überwachungsdashboards im Portal und Erstellen ihrer eigenen privaten Überwachungsdashboards.
-* Anzeigen von in [Azure-Warnungen](monitoring-overview-unified-alerts.md) definierten Warnungsregeln
+* Anzeigen von in [Azure-Warnungen](monitoring-overview-alerts.md) definierten Warnungsregeln
 * Abfragen von Metriken über die [Azure Monitor-REST-API](https://msdn.microsoft.com/library/azure/dn931930.aspx), [PowerShell-Cmdlets](insights-powershell-samples.md) oder die [plattformübergreifende Befehlszeilenschnittstelle](insights-cli-samples.md).
 * Abfragen des Aktivitätsprotokolls über das Portal, die Azure Monitor-REST-API, PowerShell-Cmdlets oder die plattformübergreifende Befehlszeilenschnittstelle.
 * Anzeigen der [Diagnoseeinstellungen](monitoring-overview-of-diagnostic-logs.md#diagnostic-settings) für eine Ressource.
@@ -51,7 +51,7 @@ Personen, denen die Rolle für Überwachungsmitwirkende zugewiesen wird, können
 * Veröffentlichen von Überwachungsdashboards als freigegebenes Dashboard.
 * Festlegen von [Diagnoseeinstellungen](monitoring-overview-of-diagnostic-logs.md#diagnostic-settings) für eine Ressource.*
 * Festlegen des [Protokollprofils](monitoring-overview-activity-logs.md#export-the-activity-log-with-a-log-profile) für ein Abonnement.*
-* Festlegen der Aktivität und der Einstellungen für Warnungsregeln über [Azure-Warnungen](monitoring-overview-unified-alerts.md).
+* Festlegen der Aktivität und der Einstellungen für Warnungsregeln über [Azure-Warnungen](monitoring-overview-alerts.md).
 * Erstellen von Application Insights-Webtests und -Komponenten.
 * Auflisten gemeinsam verwendeter Arbeitsbereichsschlüssel aus Log Analytics
 * Aktivieren oder Deaktivieren von Intelligence Packs zu Log Analytics

@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: conceptual
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: fbd11eb23b10800e115a63549f233e0239763420
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: 09c869bf28b804d8fabe331c4a9c2d222accc1e5
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49638144"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51300369"
 ---
 # <a name="patterns-improve-prediction-accuracy"></a>Verbessern der Vorhersagegenauigkeit mit Mustern
 Muster werden entworfen, um die Genauigkeit zu erhöhen, wenn mehrere Äußerungen sehr ähnlich sind.  Ein Muster ermöglicht es Ihnen, größere Genauigkeit für eine Absicht zu erreichen, ohne viele weitere Äußerungen anzugeben. 
@@ -89,7 +89,7 @@ Um der Mustervorlage eine **Pattern.any**-Entität hinzuzufügen, schließen Sie
 In diesen Beispielen für Buchtitel führen die Kontextwörter des Buchtitels bei LUIS nicht zu Verwirrung. LUIS weiß, wo der Buchtitel endet, weil er sich in einem Muster befindet und mit einer Pattern.any-Entität gekennzeichnet ist.
 
 ### <a name="explicit-lists"></a>Explizite Listen
-Wenn Ihr Muster eine Pattern.any-Entität enthält und die Mustersyntax auf der Grundlage der Äußerung die Möglichkeit einer falschen Entitätsextraktion zulässt, erstellen Sie eine [explizite Liste](https://aka.ms/ExplicitList) mithilfe der Verfasser-API, um die Ausnahme zuzulassen. 
+Wenn Ihr Muster eine Pattern.any-Entität enthält und die Mustersyntax auf der Grundlage der Äußerung die Möglichkeit einer falschen Entitätsextraktion zulässt, erstellen Sie eine [explizite Liste](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5ade550bd5b81c209ce2e5a8) mithilfe der Verfasser-API, um die Ausnahme zuzulassen. 
 
 Nehmen wir beispielsweise an, Sie haben ein Muster, das sowohl optionale Syntax `[]` als auch Entitätssyntax `{}` in einer Kombination enthält, die zu einer fehlerhaften Extraktion der Daten führt.
 
@@ -102,7 +102,7 @@ Betrachten Sie das Muster ‚[Suche] E-Mail zu {Betreff} [von {Person}]‘. In d
 
 In der vorstehenden Tabelle sollte in der Äußerung `email about the man from La Mancha` der Betreff `the man from La Mancha` (ein Buchtitel) sein, aber da der Betreff das optionale Wort `from` enthält, wird der Titel falsch vorhergesagt. 
 
-Um diese Ausnahme im Muster zu beheben, fügen Sie mithilfe der [Verfasser-API für explizite Listen](https://aka.ms/ExplicitList) `the man from la mancha` als expliziten Listentreffer für die {Betreff}-Entität hinzu.
+Um diese Ausnahme im Muster zu beheben, fügen Sie mithilfe der [Verfasser-API für explizite Listen](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5ade550bd5b81c209ce2e5a8) `the man from la mancha` als expliziten Listentreffer für die {Betreff}-Entität hinzu.
 
 ### <a name="syntax-to-mark-optional-text-in-a-template-utterance"></a>Syntax zum Kennzeichnen von optionalem Text in einer Vorlagenäußerung
 Kennzeichnen Sie optionalen Text in der Äußerung mithilfe der Syntax für eckige Klammern in regulären Ausdrücken, `[]`. In optionalem Text können eckige Klammern nur bis zu einer Tiefe von zwei Klammern verschachtelt werden.

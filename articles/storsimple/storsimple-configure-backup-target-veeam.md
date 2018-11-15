@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/06/2016
 ms.author: hkanna
-ms.openlocfilehash: cc1c7a3f77af76c451bb6e97a081a01c119333b5
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: f06b74493bad546997f82ed6eef0a89cffb7c75b
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
-ms.locfileid: "23112428"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51261977"
 ---
 # <a name="storsimple-as-a-backup-target-with-veeam"></a>StorSimple als Sicherungsziel mit Veeam
 
@@ -482,7 +482,7 @@ Es empfiehlt sich, die Sicherungsrichtlinie für StorSimple-Cloudmomentaufnahmen
 
 Wiederherstellungen aus einem StorSimple-Gerät funktionieren ähnlich wie Wiederherstellungen aus anderen Blockspeichergeräten. Bei Daten, die per Tiering in der Cloud gespeichert wurden, erfolgt die Wiederherstellung mit der Geschwindigkeit der Cloud. Bei lokalen Daten erfolgt die Wiederherstellung mit der Geschwindigkeit des lokalen Datenträgers des Geräts.
 
-Mit Veeam erhalten Sie eine schnelle, genau definierte Wiederherstellung auf Dateiebene per StorSimple. Dabei werden die integrierten Explorer-Ansichten in der Veeam-Konsole verwendet. Verwenden Sie die Veeam-Explorer, um einzelne Elemente, z.B. E-Mail-Nachrichten, Active Directory-Objekte und SharePoint-Elemente, aus Sicherungen wiederherzustellen. Die Wiederherstellung kann ohne Unterbrechung der lokalen virtuellen Computer erfolgen. Sie können auch eine Zeitpunktwiederherstellung für Azure SQL-Datenbank und Oracle-Datenbanken durchführen. Mit Veeam und StorSimple ist die Wiederherstellung auf Elementebene aus Azure schnell und einfach. Informationen zum Ausführen einer Wiederherstellung finden Sie in der Veeam-Dokumentation:
+Mit Veeam erhalten Sie eine schnelle, genau definierte Wiederherstellung auf Dateiebene per StorSimple. Dabei werden die integrierten Explorer-Ansichten in der Veeam-Konsole verwendet. Verwenden Sie die Veeam-Explorer, um einzelne Elemente (etwa E-Mail-Nachrichten, Active Directory-Objekte und SharePoint-Elemente) aus Sicherungen wiederherzustellen. Die Wiederherstellung kann ohne Unterbrechung der lokalen virtuellen Computer erfolgen. Sie können auch eine Zeitpunktwiederherstellung für Azure SQL-Datenbank und Oracle-Datenbanken durchführen. Mit Veeam und StorSimple ist die Wiederherstellung auf Elementebene aus Azure schnell und einfach. Informationen zum Ausführen einer Wiederherstellung finden Sie in der Veeam-Dokumentation:
 
 - Für [Exchange Server](https://www.veeam.com/microsoft-exchange-recovery.html)
 - Für [Active Directory](https://www.veeam.com/microsoft-active-directory-explorer.html)
@@ -510,9 +510,9 @@ Ein Notfall kann durch eine Vielzahl von Faktoren verursacht werden. In der folg
 Folgende Dokumente haben als Referenz für diesen Artikel gedient:
 
 - [StorSimple multipath I/O setup](storsimple-configure-mpio-windows-server.md) (StorSimple: Einrichten von Multipfad-E/A)
-- [Storage scenarios: Thin provisioning](http://msdn.microsoft.com/library/windows/hardware/dn265487.aspx) (Speicherszenarien: schlanke Speicherzuweisung)
-- [Using GPT drives](http://msdn.microsoft.com/windows/hardware/gg463524.aspx#EHD) (Verwenden von GPT-Laufwerken)
-- [Einrichten von Schattenkopien für freigegebene Ordner](http://technet.microsoft.com/library/cc771893.aspx)
+- [Storage scenarios: Thin provisioning](https://msdn.microsoft.com/library/windows/hardware/dn265487.aspx) (Speicherszenarien: schlanke Speicherzuweisung)
+- [Using GPT drives](https://msdn.microsoft.com/windows/hardware/gg463524.aspx#EHD) (Verwenden von GPT-Laufwerken)
+- [Einrichten von Schattenkopien für freigegebene Ordner](https://technet.microsoft.com/library/cc771893.aspx)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

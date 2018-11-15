@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 09/26/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: 28ff8dbf073596e5f9565c56ae903af6af68f3e2
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 8a5ca4f94a6f1186b6d1a26b1c7e12357cd9e799
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353715"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51616366"
 ---
 # <a name="tutorial-create-an-edge-machine-learning-solution-with-azure-and-azure-stack"></a>Tutorial: Erstellen einer Machine Learning-Edge-Lösung mit Azure und Azure Stack
 
@@ -992,7 +992,7 @@ Die Docker-Engine muss lokal ausgeführt werden, um die folgenden Schritte zum O
 1.  Stellen Sie sicher, dass der Azure-Ressourcenanbieter **Microsoft.ContainerRegistry** im Abonnement registriert ist. Registrieren Sie diesen Ressourcenanbieter, bevor Sie in Schritt 3 eine Umgebung erstellen. Überprüfen Sie, ob die Registrierung bereits durchgeführt wurde, indem Sie den folgenden Befehl verwenden:
 
     ```CLI
-        az provider list --query "\[\].{Provider:namespace, Status:registrationState}" --out table
+        az provider list --query "[].{Provider:namespace, Status:registrationState}" --out table
     ```
 
     Zeigen Sie die folgende Ausgabe an:
@@ -1175,7 +1175,7 @@ Verwenden Sie in der „Windows-Subsystem für Linux“-Sitzung die folgenden Be
 
 ### <a name="create-a-service-principal-in-azure-ad"></a>Erstellen eines Dienstprinzipals in Azure AD
 
-1.  Melden Sie sich am globalen [*Azure-Portal*](http://www.poartal.azure.com/) an.
+1.  Melden Sie sich am globalen [*Azure-Portal*](http://portal.azure.com/) an.
 
 2.  Melden Sie sich mit dem Azure AD-Mandanten an, der der Azure Stack-Instanz zugeordnet ist.
 
@@ -1271,10 +1271,8 @@ Führen Sie in der WSL-Umgebung die folgenden Befehle aus, um kubectl in der WSL
 
 ```Bash  
     apt-get update && apt-get install -y apt-transport-https
-    curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
-    cat <<EOF >/etc/apt/sources.list.d/kubernetes.list
-    deb http://apt.kubernetes.io/ kubernetes-xenial main
-    EOF
+    curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add
+    sudo apt-add-repository "deb http://apt.kubernetes.io/ kubernetes-xenial main"
     apt-get update
     apt-get install -y kubectl
 ```

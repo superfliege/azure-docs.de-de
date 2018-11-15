@@ -2,19 +2,19 @@
 title: Übermittlung von Aufträgen an einen Spark-Cluster in Azure HDInsight mithilfe von Livy Spark
 description: Erfahren Sie, wie Sie die Apache Spark-REST-API verwenden, um Spark-Aufträge remote an einen Azure HDInsight-Cluster übermitteln.
 services: hdinsight
-author: jasonwhowell
-ms.author: jasonh
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 07/18/2018
-ms.openlocfilehash: 677c7d27d34725b75c5dfed70cc377735f5d7d61
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.date: 11/06/2018
+ms.openlocfilehash: 86a047fe291c7872fe275ba7246b9f3e59044723
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43045211"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51236822"
 ---
 # <a name="use-apache-spark-rest-api-to-submit-remote-jobs-to-an-hdinsight-spark-cluster"></a>Übermitteln von Remoteaufträgen an einen HDInsight Spark-Cluster mithilfe der Apache Spark-REST-API
 
@@ -152,9 +152,9 @@ Führen Sie die folgenden Schritte aus:
    
     Die letzte Zeile der Ausgabe zeigt, dass der Batch erfolgreich gelöscht wurde. Beim Löschen eines ausgeführten Auftrags wird dieser gleichzeitig beendet. Beim Löschen eines (erfolgreich oder anderweitig) abgeschlossenen Auftrags werden die Auftragsinformationen vollständig gelöscht.
 
-## <a name="using-livy-spark-on-hdinsight-35-clusters"></a>Verwenden von Livius Spark in HDInsight 3.5-Clustern
+## <a name="updates-to-livy-configuration-starting-with-hdinsight-35-version"></a>Aktualisierungen der Livy-Konfiguration ab Version 3.5 von HDInsight
 
-Der HDInsight 3.5-Cluster deaktiviert standardmäßig die Verwendung der lokalen Dateipfade für den Zugriff auf Beispieldatendateien oder JAR-Dateien. Wir empfehlen Ihnen stattdessen die Verwendung des `wasb://`-Pfads, um aus dem Cluster auf Beispieldatendateien oder JAR-Dateien zuzugreifen. Wenn Sie den lokalen Pfad verwenden möchten, müssen Sie die Ambari-Konfiguration entsprechend aktualisieren. Gehen Sie dazu wie folgt vor:
+HDInsight-Cluster mit Version 3.5 und höheren Versionen deaktivieren standardmäßig die Verwendung der lokalen Dateipfade für den Zugriff auf Beispieldatendateien oder JAR-Dateien. Wir empfehlen Ihnen stattdessen die Verwendung des `wasb://`-Pfads, um aus dem Cluster auf Beispieldatendateien oder JAR-Dateien zuzugreifen. Wenn Sie den lokalen Pfad verwenden möchten, müssen Sie die Ambari-Konfiguration entsprechend aktualisieren. Gehen Sie dazu wie folgt vor:
 
 1. Besuchen Sie das Ambari-Portal für den Cluster. Die Ambari-Webbenutzeroberfläche ist in Ihrem HDInsight-Cluster unter „https://**CLUSTERNAME**.azurehdidnsight.net“ verfügbar, wobei CLUSTERNAME der Name Ihres Clusters ist.
 

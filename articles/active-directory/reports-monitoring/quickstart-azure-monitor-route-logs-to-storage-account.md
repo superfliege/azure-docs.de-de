@@ -13,15 +13,15 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: report-monitor
-ms.date: 07/13/2018
+ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: cf69fdf87f1ce64bd78478f07e575d7ae75c16e0
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 9d41c0ceeed2a69884b8ef481c79feb495fc89c0
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49394242"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51621207"
 ---
 # <a name="tutorial-archive-azure-ad-logs-to-an-azure-storage-account-preview"></a>Tutorial: Archivieren von Azure AD-Protokollen in einem Azure-Speicherkonto (Vorschauversion)
 
@@ -68,9 +68,8 @@ Sie benötigen Folgendes, um dieses Feature verwenden zu können:
 
     ![Diagnoseeinstellungen](./media/quickstart-azure-monitor-route-logs-to-storage-account/DiagnosticSettings.png)
 
-12. Überprüfen Sie nach ungefähr 15 Minuten, ob die Protokolle in Ihr Speicherkonto gepusht werden. Navigieren Sie zum [Azure-Portal](https://portal.azure.com), klicken Sie auf **Speicherkonten**, wählen Sie das Speicherkonto aus, das Sie zuvor verwendet haben, und klicken Sie dann auf **BLOBs**. 
+12. Überprüfen Sie nach ungefähr 15 Minuten, ob die Protokolle in Ihr Speicherkonto gepusht werden. Navigieren Sie zum [Azure-Portal](https://portal.azure.com), klicken Sie auf **Speicherkonten**, wählen Sie das Speicherkonto aus, das Sie zuvor verwendet haben, und klicken Sie dann auf **BLOBs**. Wählen Sie für **Überwachungsprotokolle** die Option **insights-log-audit** aus. Wählen Sie für **Anmeldeprotokolle** die Option **insights-logs-signin** aus.
 
-13. Wählen Sie für **Überwachungsprotokolle** die Option **insights-log-audit** aus. Wählen Sie für **Anmeldeprotokolle** die Option **insights-logs-signin** aus.
     ![Speicherkonto](./media/quickstart-azure-monitor-route-logs-to-storage-account/StorageAccount.png)
 
 ## <a name="next-steps"></a>Nächste Schritte

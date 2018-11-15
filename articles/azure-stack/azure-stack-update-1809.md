@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/29/2018
+ms.date: 11/01/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: 38a8cd35d123f58d6379ade4d900e86b36b416ec
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: cca9307fd849f6b8537cf7484d2e56e1a710295b
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50240136"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51257189"
 ---
 # <a name="azure-stack-1809-update"></a>Azure Stack-Update 1809
 
@@ -39,7 +39,7 @@ Die Buildnummer des Azure Stack-Updates 1809 ist **1.1809.0.90**.
 
 Dieses Update enthält die folgenden Verbesserungen für Azure Stack:
 
-- Mit diesem Release unterstützen integrierte Azure Stack-Systeme Konfigurationen mit 4 bis 16 Knoten. Sie können den [Azure Stack Capacity Planner](http://aka.ms/azstackcapacityplanner) verwenden, um Unterstützung bei der Planung der Azure Stack-Kapazität und -Konfiguration zu erhalten.
+- Mit diesem Release unterstützen integrierte Azure Stack-Systeme Konfigurationen mit 4 bis 16 Knoten. Sie können den [Azure Stack Capacity Planner](https://aka.ms/azstackcapacityplanner) verwenden, um Unterstützung bei der Planung der Azure Stack-Kapazität und -Konfiguration zu erhalten.
 
 - <!--  2712869   | IS  ASDK --> **Azure Stack-Syslog-Client (Allgemeine Verfügbarkeit)**: Dieser Client ermöglicht die Weiterleitung von Überwachungen, Warnungen und Sicherheitsprotokollen der Azure Stack-Infrastruktur an einen Syslog-Server oder an SIEM-Software (Security Information and Event Management) außerhalb von Azure Stack. Der Syslog-Client unterstützt jetzt die Angabe des Ports, an dem der Syslog-Server lauscht.
 
@@ -154,7 +154,8 @@ Weitere Informationen zu diesen Sicherheitslücken erhalten Sie durch Klicken au
 
 ### <a name="post-update-steps"></a>Schritte nach dem Update
 
-*Für Update 1809 sind keine weiteren Schritte nach dem Update erforderlich.*
+> [!Important]  
+> Bereiten Sie Ihre Azure Stack-Bereitstellung für den Erweiterungshost vor, der mit dem nächsten Updatepaket aktiviert wird. Bereiten Sie Ihr System mithilfe der folgenden Anleitung vor: [Vorbereiten auf den Erweiterungshost für Azure Stack](azure-stack-extension-host-prepare.md).
 
 <!-- After the installation of this update, install any applicable Hotfixes. For more information view the following knowledge base articles, as well as our [Servicing Policy](azure-stack-servicing-policy.md).  
  - [Link to KB]()  
@@ -184,7 +185,7 @@ Im Folgenden werden bekannte Probleme nach der Installation zu dieser Buildversi
 - Das Konto, mit dem Sie sich beim Administrator- oder Benutzerportal von Azure Stack anmelden, wird als **Unbekannter Benutzer** angezeigt. Diese Meldung wird angezeigt, wenn für das Konto kein *Vorname* oder *Nachname* angegeben wurde. Um dieses Problem zu umgehen, bearbeiten Sie das Benutzerkonto so, dass der Vor- oder Nachname angegeben wird. Sie müssen sich dann abmelden und erneut am Portal anmelden.  
 
 <!--  2873083 - IS ASDK --> 
--  Wenn Sie das Portal verwenden, um eine VM-Skalierungsgruppe zu erstellen, wird das Dropdownmenü *Instanzgröße* bei Verwendung von Internet Explorer nicht ordnungsgemäß geladen. Um dieses Problem zu umgehen, nutzen Sie einen anderen Browser beim Verwenden des Portals zum Erstellen einer VM-Skalierungsgruppe.  
+-  Wenn Sie das Portal verwenden, um eine VM-Skalierungsgruppe zu erstellen, wird das Dropdownmenü *Instanzgröße* bei Verwendung von Internet Explorer nicht ordnungsgemäß geladen. Um dieses Problem zu umgehen, nutzen Sie einen anderen Browser beim Verwenden des Portals zum Erstellen einer VMSS.  
 
 <!-- 2931230 – IS  ASDK --> 
 - Pläne, die einem Benutzerabonnement als Add-On-Plan hinzugefügt wurden, können nicht gelöscht werden, auch wenn Sie den Plan aus dem Benutzerabonnement entfernen. Der Plan ist so lange vorhanden, bis die Abonnements gelöscht werden, die auf den Add-On-Plan verweisen. 

@@ -10,12 +10,12 @@ ms.workload: identity
 ms.date: 10/12/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: ced100f0bdd20841648ca84dfcab1847bdcd3096
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: d7097886b746c225bb420f9a96e2b7ef5c95c913
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49362482"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51684733"
 ---
 # <a name="track-user-behavior-in-azure-active-directory-b2c-using-application-insights"></a>Nachverfolgen des Benutzerverhaltens in Azure Active Directory B2C mithilfe von Application Insights
 
@@ -31,7 +31,7 @@ Bei Verwendung von Azure Active Directory (Azure AD) B2C zusammen mit Azure Appl
 
 ## <a name="how-it-works"></a>So funktioniert's
 
-Das Framework für die Identitätsfunktion in Azure AD B2C enthält den Anbieter `Handler="Web.TPEngine.Providers.UserJourneyContextProvider, Web.TPEngine, Version=1.0.0.0`. Er sendet Ereignisdaten mithilfe des für Azure AD B2C bereitgestellten Instrumentierungsschlüssels direkt an Application Insights.
+Das Framework für die Identitätsfunktion in Azure AD B2C enthält den Anbieter `Handler="Web.TPEngine.Providers.AzureApplicationInsightsProvider, Web.TPEngine, Version=1.0.0.0`. Er sendet Ereignisdaten mithilfe des für Azure AD B2C bereitgestellten Instrumentierungsschlüssels direkt an Application Insights.
 
 Ein technisches Profil verwendet diesen Anbieter zum Definieren eines Ereignisses aus Azure AD B2C. Das Profil gibt den Namen des Ereignisses, die aufzuzeichnenden Ansprüche und den Instrumentierungsschlüssel an. Um ein Ereignis zu senden, wird das technische Profil dann als `orchestration step` oder `validation technical profile` einer benutzerdefinierten User Journey hinzugefügt.
 

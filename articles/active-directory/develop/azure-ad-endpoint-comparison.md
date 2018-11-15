@@ -17,12 +17,12 @@ ms.date: 09/27/2018
 ms.author: andret
 ms.reviewer: hirsin, andret
 ms.custom: aaddev
-ms.openlocfilehash: e393851535c36eb604d57cc4d7c7561a3ebb201b
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 215e0abe196620624dcca7f430aec4ee9b9612f2
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49955435"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51288202"
 ---
 # <a name="comparing-the-azure-ad-v20-endpoint-with-the-v10-endpoint"></a>Vergleich: Azure AD v2.0-Endpunkt und v1.0-Endpunkt
 
@@ -41,7 +41,7 @@ Beim Entwickeln einer neuen Anwendung ist es wichtig, dass Sie die Unterschiede 
 
 * Sowohl für v1.0- als auch für v2.0-Endpunkte werden außerdem Anmeldungen von *[Gastbenutzern](https://docs.microsoft.com/azure/active-directory/b2b/what-is-b2b)* eines Azure AD-Verzeichnisses für Anwendungen akzeptiert, die für *[einen Mandanten](single-and-multi-tenant-apps.md)* konfiguriert sind, oder für Anwendungen mit *mehreren Mandanten*, für die ein Verweis auf den mandantenspezifischen Endpunkt (`https://login.microsoftonline.com/{TenantId_or_Name}`) konfiguriert ist.
 
-Mit dem v2.0-Endpunkt können Sie Apps schreiben, die eine Anmeldung sowohl für persönliche Konten als auch für Geschäfts-, Schul- und Unikonten akzeptieren, sodass Sie Ihre App vollständig „kontoagnostisch“ schreiben können. Wenn Ihre App beispielsweise [Microsoft Graph](https://graph.microsoft.io) aufruft, sind einige zusätzliche Funktionen und Daten für Geschäftskonten verfügbar, z.B. SharePoint-Websites oder Verzeichnisdaten. Aber für viele Aktionen, z.B. das [Lesen der E-Mail eines Benutzers](https://graph.microsoft.io/docs/api-reference/v1.0/resources/message), kann mit demselben Code auf E-Mails für persönliche Konten und auch für Geschäfts-, Schul- und Unikonten zugegriffen werden.
+Mit dem v2.0-Endpunkt können Sie Apps schreiben, die eine Anmeldung sowohl für persönliche Konten als auch für Geschäfts-, Schul- und Unikonten akzeptieren, sodass Sie Ihre App vollständig „kontoagnostisch“ schreiben können. Wenn Ihre App beispielsweise [Microsoft Graph](https://developer.microsoft.com/graph) aufruft, sind einige zusätzliche Funktionen und Daten für Geschäftskonten verfügbar, z.B. SharePoint-Websites oder Verzeichnisdaten. Aber für viele Aktionen, z.B. das [Lesen der E-Mail eines Benutzers](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/message), kann mit demselben Code auf E-Mails für persönliche Konten und auch für Geschäfts-, Schul- und Unikonten zugegriffen werden.
 
 Für den v2.0-Endpunkt können Sie eine einzelne Bibliothek (MSAL) nutzen, um Zugriff auf die Bereiche für Konsumenten, Weiterbildung und Unternehmen zu erhalten.
 

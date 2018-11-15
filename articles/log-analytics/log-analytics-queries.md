@@ -14,16 +14,16 @@ ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 2ab7e0c5d4a62b9c4fa0492b9bc9a19dfab36c74
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 0a8a1ab41972aa2ae184b900c2dab94ec58f3e7c
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51005052"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51612747"
 ---
 # <a name="analyze-log-analytics-data-in-azure-monitor"></a>Analysieren von Log Analytics-Daten in Azure Monitor
 
-Die von Azure Monitor gesammelten Protokolldaten werden in einem Log Analytics-Arbeitsbereich gespeichert, der auf dem [Azure Daten-Explorer](/data-explorer) basiert. Er sammelt Telemetriedaten aus einer Vielzahl von Quellen und verwendet zum Abrufen und Analysieren der Daten die [Abfragesprache des Daten-Explorers](/kusto).
+Die von Azure Monitor gesammelten Protokolldaten werden in einem Log Analytics-Arbeitsbereich gespeichert, der auf dem [Azure Daten-Explorer](/azure/data-explorer) basiert. Er sammelt Telemetriedaten aus einer Vielzahl von Quellen und verwendet zum Abrufen und Analysieren der Daten die [Abfragesprache des Daten-Explorers](/azure/kusto/query).
 
 > [!NOTE]
 > Log Analytics wurde zuvor als eigener Dienst in Azure behandelt. Es wird jetzt als Bestandteil von Azure Monitor angesehen und legt den Schwerpunkt auf die Speicherung und Analyse von Protokolldaten mithilfe seiner Abfragesprache. Features, die als Teil von Log Analytics betrachtet wurden, wie etwa Windows- und Linux-Agents zur Datensammlung, Ansichten zum Visualisieren vorhandener Daten und Warnungen zur proaktiven Benachrichtigung von Benutzern über Probleme haben sich nicht geändert, werden aber jetzt als Teil von Azure Monitor angesehen.
@@ -41,12 +41,12 @@ Sie benötigen eine Protokollabfrage, um Daten beliebiger Art aus Log Analytics 
 Dies sind einige der verschiedenen Möglichkeiten, wie Sie Abfragen in Log Analytics verwenden können:
 
 - **Portale.** Sie können im [Azure-Portal](log-analytics-log-search-portals.md) eine interaktive Analyse von Protokolldaten durchführen.  Dadurch können Sie Ihre Abfrage bearbeiten und die Ergebnisse in einer Vielzahl von Formaten und Visualisierungen analysieren.  
-- **Warnungsregeln.** [Warnungsregeln](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md) identifizieren proaktiv Probleme durch die Daten in Ihrem Arbeitsbereich.  Jede Warnungsregel basiert auf einer Protokollsuche, die in regelmäßigen Abständen automatisch ausgeführt wird.  Die Ergebnisse werden überprüft, um zu ermitteln, ob eine Warnung erstellt werden soll.
+- **Warnungsregeln.** [Warnungsregeln](../monitoring-and-diagnostics/monitoring-overview-alerts.md) identifizieren proaktiv Probleme durch die Daten in Ihrem Arbeitsbereich.  Jede Warnungsregel basiert auf einer Protokollsuche, die in regelmäßigen Abständen automatisch ausgeführt wird.  Die Ergebnisse werden überprüft, um zu ermitteln, ob eine Warnung erstellt werden soll.
 - **Dashboards.** Sie können die Ergebnisse beliebiger Abfragen in einem [Azure-Dashboard]() anheften, was es Ihnen ermöglicht, Protokoll- und Metrikdaten gemeinsam zu visualisieren und optional mit anderen Azure-Benutzern zu teilen. 
 - **Ansichten.**  Sie können mit [Ansicht-Designer](log-analytics-view-designer.md) Visualisierungen von Daten erstellen, die in Benutzerdashboards einbezogen werden sollen.  Protokollabfragen stellen die von [Kacheln](log-analytics-view-designer-tiles.md) und [Visualisierungsparts](log-analytics-view-designer-parts.md) in jeder Ansicht verwendeten Daten bereit.  
 - **Export:**  Wenn Sie Daten aus dem Log Analytics-Arbeitsbereich nach Excel oder [Power BI](log-analytics-powerbi.md) importieren, erstellen Sie eine Protokollabfrage, um die zu exportierenden Daten zu definieren.
 - **PowerShell.** Sie können ein PowerShell-Skript über eine Befehlszeile oder ein Azure Automation-Runbook ausführen, das Daten mithilfe von [Get-AzureRmOperationalInsightsSearchResults](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/get-azurermoperationalinsightssearchresults?view=azurermps-4.0.0) von Log Analytics abruft.  Dieses Cmdlet erfordert eine Abfrage, um die abzurufenden Daten festzulegen.
-- **Log Analytics-API.**  Die [Log Analytics-Protokollsuch-API](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md) ermöglicht einem beliebigen REST-API-Client, Protokolldaten aus einem Arbeitsbereich abzurufen.  Die API-Anforderung enthält eine Abfrage, die für Log Analytics ausgeführt wird, um die abzurufenden Daten zu ermitteln.
+- **Log Analytics-API.**  Die [Log Analytics-Protokollsuch-API](../monitoring-and-diagnostics/monitoring-overview-alerts.md) ermöglicht einem beliebigen REST-API-Client, Protokolldaten aus einem Arbeitsbereich abzurufen.  Die API-Anforderung enthält eine Abfrage, die für Log Analytics ausgeführt wird, um die abzurufenden Daten zu ermitteln.
 
 ![Protokollsuchvorgänge](media/log-analytics-queries/queries-overview.png)
 

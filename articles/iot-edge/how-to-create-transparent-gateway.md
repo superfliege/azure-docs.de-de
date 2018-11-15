@@ -2,18 +2,18 @@
 title: Erstellen eines transparenten Gateways mit Azure IoT Edge | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie ein Azure IoT Edge-Gerät als transparentes Gateway verwenden, das Informationen für mehrere Geräte verarbeiten kann.
 author: kgremban
-manager: timlt
+manager: philmea
 ms.author: kgremban
 ms.date: 11/01/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: a48699507fbba18b20cb94e404c4814f25d31f44
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: a867122aef5dd9d2152bca3ac10c11459ffc03f5
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50915066"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51568470"
 ---
 # <a name="configure-an-iot-edge-device-to-act-as-a-transparent-gateway"></a>Konfigurieren eines IoT Edge-Geräts als transparentes Gateway
 

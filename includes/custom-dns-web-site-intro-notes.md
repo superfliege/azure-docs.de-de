@@ -1,3 +1,16 @@
+---
+author: cephalin
+ms.service: app-service-web
+ms.topic: include
+ms.date: 11/09/2018
+ms.author: cephalin
+ms.openlocfilehash: 4ab12a4ccb3aa4acecabd076c774558f904297a1
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51572136"
+---
 Dieser Artikel bezieht sich auf Azure App Service (Web-Apps, API-Apps, mobile Apps, Logic Apps). Informationen zu Cloud Services finden Sie unter [Konfigurieren eines benutzerdefinierten Domänennamens für einen Azure-Clouddienst](../articles/cloud-services/cloud-services-custom-domain-name.md).
 
 > [!NOTE]

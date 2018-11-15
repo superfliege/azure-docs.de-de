@@ -10,14 +10,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/25/2018
+ms.date: 11/08/2018
 ms.author: tomfitz
-ms.openlocfilehash: e2d1ccbc6532da3600c952236c3904c9e55294c8
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: c65f5364ccd4943d1d3e703ed27099408d3a2a27
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51279415"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51346591"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement
 
@@ -28,11 +28,10 @@ Beim Verschieben von Ressourcen werden die Quell- und Zielgruppe für die Dauer 
 Sie können den Speicherort der Ressource nicht ändern. Wenn Sie ein Ressource verschieben, wird sie nur in eine neue Ressourcengruppe verschoben. Die neue Ressourcengruppe hat möglicherweise einen anderen Speicherort, das heißt jedoch nicht, dass der Speicherort der Ressource geändert wird.
 
 > [!NOTE]
-> In diesem Artikel wird beschrieben, wie Sie Ressourcen in einem vorhandenen Azure-Kontoangebot verschieben. Wenn Sie Ihr Azure-Kontoangebot ändern möchten (z.B. Upgrade von Free auf nutzungsbasierte Bezahlung), müssen Sie Ihr Abonnement konvertieren. 
+> In diesem Artikel wird beschrieben, wie Sie Ressourcen in einem vorhandenen Azure-Kontoangebot verschieben. Wenn Sie Ihr Azure-Kontoangebot ändern möchten (z.B. Upgrade von Free auf nutzungsbasierte Bezahlung), müssen Sie Ihr Abonnement konvertieren.
 > * Falls Sie für eine kostenlose Testversion ein Upgrade durchführen möchten, helfen Ihnen die Informationen unter [Aktualisieren Ihrer kostenlosen Testversion oder Ihres Microsoft Imagine Azure-Abonnements auf nutzungsbasierte Bezahlung](..//billing/billing-upgrade-azure-subscription.md) weiter.
 > * Informationen zum Ändern eines Kontos mit nutzungsbasierter Bezahlung finden Sie unter [Ändern Ihres Azure-Abonnements mit nutzungsbasierter Bezahlung in ein anderes Angebot](../billing/billing-how-to-switch-azure-offer.md).
 > * Wenn Sie das Abonnement nicht konvertieren können, können Sie [eine Azure-Supportanfrage erstellen](../azure-supportability/how-to-create-azure-support-request.md). Wählen Sie **Abonnementverwaltung** als Problemtyp aus.
->
 
 ## <a name="checklist-before-moving-resources"></a>Checkliste vor dem Verschieben von Ressourcen
 
@@ -42,7 +41,7 @@ Beim Verschieben einer Ressource sollten Sie einige wichtige Schritte ausführen
 
   Verwenden Sie für Azure PowerShell Folgendes:
 
-  ```powershell
+  ```azurepowershell-interactive
   (Get-AzureRmSubscription -SubscriptionName <your-source-subscription>).TenantId
   (Get-AzureRmSubscription -SubscriptionName <your-destination-subscription>).TenantId
   ```
@@ -63,14 +62,14 @@ Beim Verschieben einer Ressource sollten Sie einige wichtige Schritte ausführen
 
   Verwenden Sie für PowerShell die folgenden Befehle zum Abrufen des Registrierungsstatus:
 
-  ```powershell
+  ```azurepowershell-interactive
   Set-AzureRmContext -Subscription <destination-subscription-name-or-id>
   Get-AzureRmResourceProvider -ListAvailable | Select-Object ProviderNamespace, RegistrationState
   ```
 
   Verwenden Sie zum Registrieren eines Ressourcenanbieters Folgendes:
 
-  ```powershell
+  ```azurepowershell-interactive
   Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Batch
   ```
 
@@ -325,7 +324,6 @@ Im Folgenden werden Einschränkungen aufgeführt, die noch nicht unterstützt we
 * VM-Skalierungsgruppen mit dem Lastenausgleich der Standard-SKU oder der öffentlichen IP-Adresse der Standard-SKU können nicht verschoben werden
 * Von Marketplace-Ressourcen erstellte virtuelle Computer, an die Pläne angefügt sind, können nicht ressourcengruppen- oder abonnementübergreifend verschoben werden. Heben Sie die Bereitstellung des virtuellen Computers im aktuellen Abonnement auf, und stellen Sie ihn im neuen Abonnement erneut bereit.
 
-
 ## <a name="virtual-networks-limitations"></a>Einschränkungen von virtuellen Netzwerken
 
 Wenn Sie ein virtuelles Netzwerk verschieben, müssen Sie auch dessen abhängige Ressourcen verschieben. Bei VPN-Gateways müssen Sie IP-Adressen, Gateways für virtuelle Netzwerke und alle zugehörigen Verbindungsressourcen verschieben. Gateways des lokalen Netzwerks können sich in einer anderen Ressourcengruppe befinden.
@@ -346,9 +344,9 @@ Beim Verschieben einer Web-App _innerhalb desselben Abonnements_ können Sie die
 
 Wenn Sie das SSL-Zertifikat mit der Web-App verschieben möchten, gehen Sie folgendermaßen vor:
 
-1.  Löschen Sie das hochgeladene Zertifikat aus der Web-App.
-2.  Verschieben Sie die Web-App.
-3.  Laden Sie das Zertifikat in die verschobene Web-App hoch.
+1. Löschen Sie das hochgeladene Zertifikat aus der Web-App.
+2. Verschieben Sie die Web-App.
+3. Laden Sie das Zertifikat in die verschobene Web-App hoch.
 
 ### <a name="moving-across-subscriptions"></a>Abonnementübergreifendes Verschieben
 
@@ -503,7 +501,7 @@ Sobald der Vorgang abgeschlossen ist, werden Sie über das Ergebnis informiert.
 
 Verwenden Sie zum Verschieben vorhandener Ressourcen in eine andere Ressourcengruppe oder ein anderes Abonnement den Befehl [Move-AzureRmResource](/powershell/module/azurerm.resources/move-azurermresource) . Im folgenden Beispiel wird veranschaulicht, wie mehrere Ressourcen in eine neue Ressourcengruppe verschoben werden:
 
-```powershell
+```azurepowershell-interactive
 $webapp = Get-AzureRmResource -ResourceGroupName OldRG -ResourceName ExampleSite
 $plan = Get-AzureRmResource -ResourceGroupName OldRG -ResourceName ExamplePlan
 Move-AzureRmResource -DestinationResourceGroupName NewRG -ResourceId $webapp.ResourceId, $plan.ResourceId

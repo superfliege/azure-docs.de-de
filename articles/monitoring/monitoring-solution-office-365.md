@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2018
 ms.author: bwren
-ms.openlocfilehash: 04211a00bcdce3baf8060e00a9ce81831a39acb9
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 22e22a2eb6eefb84c6745de9b19e7710913b4ee7
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51257662"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51616281"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Office 365-Verwaltungslösung in Azure (Vorschau)
 
@@ -711,4 +711,4 @@ Die folgende Tabelle enthält Beispiele für Protokollsuchen für Updatedatensä
 ## <a name="next-steps"></a>Nächste Schritte
 * Verwenden Sie die Protokollsuche in [Log Analytics](../log-analytics/log-analytics-queries.md), um ausführliche Daten zu Updates anzuzeigen.
 * [Erstellen Sie eigene Dashboards](../log-analytics/log-analytics-dashboards.md), um Ihre bevorzugten Office 365-Suchabfragen anzuzeigen.
-* [Erstellen Sie Warnungen](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md), um proaktiv über wichtige Office 365-Aktivitäten benachrichtigt zu werden.  
+* [Erstellen Sie Warnungen](../monitoring-and-diagnostics/monitoring-overview-alerts.md), um proaktiv über wichtige Office 365-Aktivitäten benachrichtigt zu werden.  

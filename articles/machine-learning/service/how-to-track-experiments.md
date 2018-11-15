@@ -9,19 +9,19 @@ ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/24/2018
-ms.openlocfilehash: 054cd54827dc11e57f249a270542ff81ff670912
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: da92f59c4e25ec012cd9ad389c9afac410ba28e1
+ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49649991"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51219306"
 ---
 # <a name="track-experiments-and-training-metrics-in-azure-machine-learning"></a>Nachverfolgen von Experimenten und Trainingsmetriken in Azure Machine Learning
 
 Mit dem Azure Machine Learning-Dienst können Sie Ihre Experimente verfolgen und Metriken überwachen, um den Prozess der Modellerstellung zu verbessern. In diesem Artikel erfahren Sie mehr über die verschiedenen Möglichkeiten, wie Sie die Protokollierung zu Ihrem Trainingsskript hinzufügen können, wie Sie das Experiment mit **start_logging** und **ScriptRunConfig** übermitteln, wie Sie den Fortschritt eines laufenden Auftrags überprüfen und wie Sie die Ergebnisse eines Durchlaufs anzeigen können. 
 
 >[!NOTE]
-> Der Code in diesem Artikel wurde mit Version 0.168 des Azure Machine Learning SDK getestet. 
+> Der Code in diesem Artikel wurde mit Version 0.1.74 des Azure Machine Learning SDK getestet. 
 
 ## <a name="list-of-training-metrics"></a>Liste der Trainingsmetriken 
 
@@ -67,7 +67,6 @@ Bevor Sie die Protokollierung hinzufügen und ein Experiment übermitteln, müss
 
   # make up an arbitrary name
   experiment_name = 'train-in-notebook'
-  exp = Experiment(workspace_object = ws, name = experiment_name)
   ```
   
 ## <a name="option-1-use-startlogging"></a>Option 1: Verwenden von start_logging
@@ -103,7 +102,8 @@ Das folgende Beispiel trainiert ein einfaches Sklearn Ridge-Modell lokal in eine
 2. Fügen Sie die Experimentnachverfolgung mit dem Azure Machine Learning Service SDK hinzu und laden Sie ein persistentes Modell in die Ausführungsaufzeichnung des Experiments hoch. Der folgende Code fügt Tags und Protokolle hinzu und lädt eine Modelldatei in die Ausführung des Experiments hoch.
 
   ```python
-  run = Run.start_logging(experiment = exp)
+  experiment = Experiment(workspace = ws, name = experiment_name)
+  run = experiment.start_logging()
   run.tag("Description","My first run!")
   run.log('alpha', 0.03)
   reg = Ridge(alpha = 0.03)
@@ -209,8 +209,8 @@ Dieses Beispiel erweitert das grundlegende sklearn Ridge-Modell von oben. Es fü
   ```python
   from azureml.core import ScriptRunConfig
 
-  src = ScriptRunConfig(source_directory = script_folder, script = 'train.py', run_config = run_config_user_managed)
-  run = exp.submit(src)
+  src = ScriptRunConfig(source_directory = './', script = 'train.py', run_config = run_config_user_managed)
+  run = experiment.submit(src)
   ```
   
 ## <a name="view-run-details"></a>Anzeigen von Ausführungsdetails
@@ -248,11 +248,22 @@ Der Link für die Ausführung leitet Sie direkt zur Detailseite für die Ausfüh
   ![Screenshot vom Ausführungsdetails im Azure-Portal](./media/how-to-track-experiments/run-details-page-web.PNG)
 
 Sie können auch alle Ausgaben oder Protokolle für die Ausführung anzeigen oder die Momentaufnahme des von Ihnen übermittelten Experiments herunterladen, damit Sie den Experimentordner mit anderen teilen können.
+### <a name="viewing-charts-in-run-details"></a>Anzeigen von Diagrammen in Ausführungsdetails
+
+Es gibt verschiedene Möglichkeiten, wie Sie die Protokollierungs-APIs während einer Ausführung zum Aufzeichnen verschiedener Arten von Metriken und zum Anzeigen als Diagramme im Azure-Portal nutzen können. 
+
+|Protokollierter Wert|Beispielcode| Anzeigen im Portal|
+|----|----|----|
+|Protokollieren eines Arrays mit numerischen Werten| `run.log_list(name='Fibonacci', value=[0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89])`|Liniendiagramm mit nur einer Variablen|
+|Protokollieren eines einzelnen numerischen Werts mit mehrfacher Verwendung desselben Metriknamens (z.B. in einer for-Schleife)| `for i in tqdm(range(-10, 10)):    run.log(name='Sigmoid', value=1 / (1 + np.exp(-i))) angle = i / 2.0`| Liniendiagramm mit nur einer Variablen|
+|Wiederholtes Protokollieren einer Zeile mit zwei numerischen Spalten|`run.log_row(name='Cosine Wave', angle=angle, cos=np.cos(angle))   sines['angle'].append(angle)      sines['sine'].append(np.sin(angle))`|Liniendiagramm mit zwei Variablen|
+|Protokollieren einer Tabelle mit zwei numerischen Spalten|`run.log_table(name='Sine Wave', value=sines)`|Liniendiagramm mit zwei Variablen|
 
 ## <a name="example-notebooks"></a>Beispielnotebooks
 Die folgenden Notebooks verdeutlichen die Konzepte in diesem Artikel:
 * [01.getting-started/01.train-within-notebook/01.train-within-notebook.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/01.train-within-notebook)
 * [01.getting-started/02.train-on-local/02.train-on-local.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/02.train-on-local)
+* [01.getting-started/06.logging-api/06.logging-api.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/06.logging-api/06.logging-api.ipynb)
 
 Rufen Sie die Notebooks ab: [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 

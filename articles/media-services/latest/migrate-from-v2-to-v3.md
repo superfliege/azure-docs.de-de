@@ -13,136 +13,104 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 10/16/2018
+ms.date: 11/05/2018
 ms.author: juliako
-ms.openlocfilehash: a17bad5beb651aaa085c626296c200a00c30647e
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 2f5c0ef63ba150fdad4aea1a0c65269611d56815
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49376361"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51247686"
 ---
-# <a name="migrate-from-media-services-v2-to-v3"></a>Migrieren von Media Services V2 zu V3
+# <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>Hinweise zur Migration von Media Services v2 zu v3
 
-Dieser Artikel beschreibt Änderungen, die in Azure Media Services V3 eingeführt wurden, und zeigt die Unterschiede zwischen den beiden Versionen.
+Dieser Artikel beschreibt Änderungen, die in Azure Media Services V3 eingeführt wurden, zeigt Unterschiede zwischen den beiden Versionen und enthält die Migrationsanleitung.
 
-## <a name="why-should-you-move-to-v3"></a>Warum sollten Sie zu V3 wechseln?
+Wenn Sie derzeit über einen Videodienst verfügen, der auf Basis von der [älteren APIs von Media Services v2](../previous/media-services-overview.md) entwickelt wurden, überprüfen Sie vor der Migration zu den v3-APIs die folgenden Richtlinien und Überlegungen. Die v3-API bietet zahlreiche Vorteile und neue Features, die die Entwicklungsumgebung und Funktionen von Media Services verbessern. Wie im Abschnitt [Bekannte Probleme](#known-issues) dieses Artikels erläutert, gibt es auch einige Einschränkungen aufgrund von Änderungen zwischen den API-Versionen. Diese Seite wird laufend aktualisiert, da das Media Services-Team die v3-APIs weiterhin verbessert und die Diskrepanz zwischen den Versionen behebt. 
+
+## <a name="benefits-of-media-services-v3"></a>Vorteile von Media Services v3
 
 ### <a name="api-is-more-approachable"></a>Besser zugängliche API
 
-*  V3 basiert auf einer einheitlichen API-Oberfläche, die sowohl Verwaltungs- als auch Betriebsfunktionen auf der Basis von Azure Resource Manager bereitstellt. Azure Resource Manager-Vorlagen können zum Erstellen und Bereitstellen von Transformationen, Streamingendpunkten, LiveEvents und mehr verwendet werden.
-* Open API (oder auch Swagger)-Spezifikationsdokument.
-* SDKs verfügbar für .NET, .Net Core, Node.js, Python, Java, Ruby.
-* Azure-CLI-Integration.
+*  v3 basiert auf einer vereinheitlichten API-Oberfläche, die sowohl Verwaltungs- als auch Betriebsfunktionen auf der Basis von Azure Resource Manager bereitstellt. Azure Resource Manager-Vorlagen können zum Erstellen und Bereitstellen von Transformationen, Streamingendpunkten, LiveEvents und mehr verwendet werden.
+* [Open API (oder auch Swagger)](https://aka.ms/ams-v3-rest-sdk)-Spezifikationsdokument.
+    Macht das Schema für alle Dienstkomponenten verfügbar, einschließlich dateibasierter Codierung.
+* SDKs verfügbar für [.NET](https://aka.ms/ams-v3-dotnet-ref), .NET Core, [Node.js](https://aka.ms/ams-v3-nodejs-ref), [Python](https://aka.ms/ams-v3-python-ref), [Java](https://aka.ms/ams-v3-java-ref), [Go](https://aka.ms/ams-v3-go-ref) und Ruby.
+* [Azure CLI](https://aka.ms/ams-v3-cli-ref)-Integration für einfache Skriptunterstützung.
 
 ### <a name="new-features"></a>Neue Funktionen
 
-* Die Codierung unterstützt jetzt HTTPS-Erfassung (URL-gestützte Eingabe).
-* Transformationen sind neu in V3. Eine Transformation wird zum Freigeben von Konfigurationen, zum Erstellen von Azure Resource Manager-Vorlagen und zum Isolieren von Codierungseinstellungen für einen bestimmten Kunden oder Mandanten verwendet. 
-* Ein Medienobjekt kann mehrere StreamingLocators mit verschiedenen Einstellungen für die dynamische Paketerstellung und dynamische Verschlüsselung haben.
-* Der Inhaltsschutz unterstützt Features mit mehreren Schlüsseln. 
+* Für dateibasierte Auftragsverarbeitung können Sie als Eingabe eine HTTP(S)-URL verwenden.
+    Sie müssen noch keine Inhalte in Azure gespeichert haben und müssen auch keine Objekte erstellen.
+* Führt das Konzept von [Transformationen](transforms-jobs-concept.md) für dateibasierte Auftragsverarbeitung ein. Eine Transformation kann verwendet werden, um wiederverwendbare Konfigurationen und Azure Resource Manager-Vorlagen zu erstellen, und um Verarbeitungseinstellungen zwischen mehreren Kunden oder Mandanten zu isolieren.
+* Ein Medienobjekt kann [mehrere StreamingLocators](streaming-locators-concept.md) mit verschiedenen Einstellungen für die dynamische Paketerstellung und dynamische Verschlüsselung haben.
+* Der [Inhaltsschutz](content-key-policy-concept.md) unterstützt Features mit mehreren Schlüsseln.
+* Sie können Liveereignisse streamen, die bis zu 24 Stunden lang sind.
+* Neue Unterstützung für Livestreaming mit niedriger Latenz für LiveEvents.
 * Die LiveEvent-Vorschau unterstützt die dynamische Paketerstellung und dynamische Verschlüsselung. Dadurch wird in der Vorschau der Inhaltsschutz sowie auch die Paketerstellung für DASH und HLS ermöglicht.
-* LiveOuput ist einfacher zu verwenden als die ältere Programmentität. 
-* RBAC-Unterstützung für Entitäten wurde hinzugefügt.
+* LiveOutput ist einfacher zu verwenden als die Programmentität in den v2-APIs. 
+* Sie verfügen über rollenbasierte Zugriffssteuerung (RBAC) für Ihre Entitäten. 
 
 ## <a name="changes-from-v2"></a>Änderungen von V2
 
-* In Media Services v3 wird Speicherverschlüsselung (AES-256-Verschlüsselung) nur für die Abwärtskompatibilität unterstützt, wenn Ihre Ressourcen mit Media Services v2 erstellt wurden. Dies bedeutet, dass v3 mit vorhandenen speicherverschlüsselten Ressourcen funktioniert, jedoch nicht die Erstellung neuer zulässt.
-
-    Für Ressourcen, die mit v3 erstellt wurden, unterstützt Media Services die serverseitige Speicherverschlüsselung, siehe [Azure Storage Service Encryption für ruhende Daten](https://docs.microsoft.com/azure/storage/common/storage-service-encryption?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
-    
-* Die Media Services-SDKs wurden vom Storage-SDK entkoppelt, wodurch sich eine bessere Kontrolle über das verwendete Storage-SDK ergibt und Versionsprobleme vermieden werden. 
-* In V3 werden alle Codierungsbitraten in Bits pro Sekunde angegeben. Dies unterscheidet sich von den Voreinstellungen von REST V2 Media Encoder Standard. Beispielsweise würde die Bitrate in V2 mit 128, in V3 jedoch mit 128.000 angegeben. 
-* AssetFiles, AccessPolicies, IngestManifests sind in V3 nicht vorhanden.
-* ContentKeys sind keine Entität mehr, sondern eine Eigenschaft von StreamingLocator.
+* Für Ressourcen, die mit v3 erstellt wurden, unterstützt Media Services nur die serverseitige Speicherverschlüsselung, siehe [Azure Storage Service Encryption für ruhende Daten](https://docs.microsoft.com/azure/storage/common/storage-service-encryption).
+    * Sie können v3-APIs mit Ressourcen verwenden, die mit v2-APIs erstellt wurden, sofern für diese [Speicherverschlüsselung](../previous/media-services-rest-storage-encryption.md) (AES-256) von Media Services bereitgestellt wurde.
+    * Mit der älteren AES-256-[Speicherverschlüsselung](../previous/media-services-rest-storage-encryption.md) können Sie mithilfe von v3-APIs keine neuen Medienobjekte erstellen.
+* Die v3-SDKs sind jetzt vom Storage-SDK entkoppelt, wodurch sich eine bessere Kontrolle über das zu verwendende Storage-SDK ergibt und Versionsprobleme vermieden werden. 
+* In den v3-APIs werden alle Codierungsbitraten in Bits pro Sekunde angegeben. Dies unterscheidet sich von den Voreinstellungen von v2 Media Encoder Standard. Beispielsweise würde die Bitrate in v2 mit 128 (Kbit/s), in v3 jedoch mit 12.8000 (Bits/Sekunde) angegeben. 
+* Entities AssetFiles, AccessPolicies und IngestManifests sind in v3 nicht vorhanden.
+* ContentKeys ist jetzt keine Entität mehr, sondern eine Eigenschaft von StreamingLocator.
 * Die Event Grid-Unterstützung ersetzt NotificationEndpoints.
-* Einige Entitäten wurden umbenannt
+* Die folgenden Entitäten wurden umbenannt:
+    * JobOutput ersetzt Aufgabe und ist jetzt Teil eines Auftrags.
+    * StreamingLocator ersetzt Locator.
+    * LiveEvent ersetzt Kanal.
+        
+        Die LiveEvents-Abrechnung basiert auf Livekanal-Verbrauchseinheiten. Weitere Informationen finden Sie in der [Livestreaming-Übersicht](live-streaming-overview.md#billing) unter [Preise](https://azure.microsoft.com/pricing/details/media-services/).
+    * LiveOutput ersetzt Programm.
+* LiveOutputs müssen nicht explizit gestartet werden, sie werden bei der Erstellung gestartet und beim Löschen beendet. In den v2-APIs haben Programme anders funktioniert, sie mussten nach der Erstellung gestartet werden.
 
-  * JobOutput ersetzt Aufgabe, jetzt nur Teil des Auftrags.
-  * LiveEvent ersetzt Kanal.
-  * LiveOutput ersetzt Programm.
-  * StreamingLocator ersetzt Locator.
+## <a name="feature-gaps-with-respect-to-v2-apis"></a>Featurelücken in Bezug auf v2-APIs
 
-## <a name="code-changes"></a>Änderungen am Code
+Die v3-API weist in Bezug auf die v2-API die folgenden Featurelücken auf. Am Schließen der Lücken wird derzeit gearbeitet.
 
-### <a name="create-an-asset-and-upload-a-file"></a>Erstellen eines Medienobjekts und Hochladen einer Datei 
+* Der Zugriff auf den [Premium-Encoder](../previous/media-services-premium-workflow-encoder-formats.md) und die älteren [Media Analytics-Prozessoren](../previous/media-services-analytics-overview.md) (Azure Media Services Indexer 2 Preview, Face Redactor usw.) ist über v3 nicht möglich.
 
-#### <a name="v2"></a>V2
+    Kunden, die eine Migration von der Media Indexer 1- oder 2-Vorschauversion durchführen möchten, können sofort die AudioAnalyzer-Voreinstellung in der v3-API verwenden.  Diese neue Voreinstellung enthält mehr Funktionen als die ältere Media Indexer 1- oder 2-Version. 
 
-```csharp
-IAsset asset = context.Assets.Create(assetName, storageAccountName, options);
+* Viele der erweiterten Features von Media Encoder Standard in v2-APIs sind derzeit in v3 nicht verfügbar, z.B.:
+    * Ausschneiden (für On-Demand- und Live-Szenarien)
+    * Zusammenfügen von Medienobjekten
+    * Überlagerungen
+    * Zuschneiden
+    * Miniaturbild-Sprites
+* LiveEvents mit Transcodierung unterstützen derzeit keine Slate-Einfügungen beim Streamen, benutzerdefinierte Voreinstellungen oder Werbemarkereinfügungen über API-Aufruf. 
 
-IAssetFile assetFile = asset.AssetFiles.Create(assetFileName);
+> [!NOTE]
+> Erstellen Sie ein Lesezeichen für diesen Artikel, und überprüfen Sie ihn regelmäßig auf Aktualisierungen.
 
-assetFile.Upload(filePath);
-```
+## <a name="code-differences"></a>Codeunterschiede
 
-#### <a name="v3"></a>V3
+Die folgende Tabelle zeigt die Codeunterschiede zwischen v2 und v3 für gängige Szenarien.
 
-```csharp
-Asset asset = client.Assets.CreateOrUpdate(resourceGroupName, accountName, assetName, new Asset());
+|Szenario|V2-API|V3-API|
+|---|---|---|
+|Erstellen eines Medienobjekts und Hochladen einer Datei |[Beispiel für v2-.NET](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L113)|[Beispiel für v3-.NET](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#L169)|
+|Übermitteln eines Auftrags|[Beispiel für v2-.NET](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L146)|[Beispiel für v3-.NET](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#L298)<br/><br/>Zeigt, wie zuerst eine Transformation erstellt und dann ein Auftrag übermittelt wird.|
+|Veröffentlichen eines Medienobjekts mit AES-Verschlüsselung |1. Erstellen von ContentKeyAuthorizationPolicyOption<br/>2. Erstellen von ContentKeyAuthorizationPolicy<br/>3. Erstellen von AssetDeliveryPolicy<br/>4. Erstellen eines Medienobjekts und Hochladen von Inhalten ODER Übermitteln eines Auftrags und Verwenden des Ausgabemedienobjekts<br/>5. Zuordnen von AssetDeliveryPolicy zu Medienobjekt<br/>6. Erstellen von ContentKey<br/>7. Zuordnen von ContentKey zu einem Medienobjekt<br/>8. Erstellen von AccessPolicy<br/>9. Erstellen von Locator<br/><br/>[Beispiel für v2-.NET](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L64)|1. Erstellen einer Richtlinie für Inhaltsschlüssel<br/>2. Erstellen eines Medienobjekts<br/>3. Hochladen von Inhalten oder Verwenden von Medienobjekt als JobOutput<br/>4. Erstellen von StreamingLocator<br/><br/>[Beispiel für v3-.NET](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithAES/Program.cs#L105)|
 
-var response = client.Assets.ListContainerSas(resourceGroupName, accountName, assetName, permissions: AssetContainerPermission.ReadWrite, expiryTime: DateTime.Now.AddHours(1));
+## <a name="known-issues"></a>Bekannte Probleme
 
-var sasUri = new Uri(response.AssetContainerSasUrls.First());
-CloudBlobContainer container = new CloudBlobContainer(sasUri);
-
-var blob = container.GetBlockBlobReference(Path.GetFileName(fileToUpload));
-blob.UploadFromFile(fileToUpload);
-```
-
-### <a name="submit-a-job"></a>Übermitteln eines Auftrags
-
-#### <a name="v2"></a>V2
-
-```csharp
-IMediaProcessor processor = context.MediaProcessors.GetLatestMediaProcessorByName(mediaProcessorName);
-
-IJob job = jobs.Create($"Job for {inputAsset.Name}");
-
-ITask task = job.Tasks.AddNew($"Task for {inputAsset.Name}", processor, taskConfiguration);
-
-task.InputAssets.Add(inputAsset);
-
-task.OutputAssets.AddNew(outputAssetName, outputAssetStorageAccountName, outputAssetOptions);
-
-job.Submit();
-```
-
-#### <a name="v3"></a>V3
-
-```csharp
-client.Assets.CreateOrUpdate(resourceGroupName, accountName, outputAssetName, new Asset());
-
-JobOutput[] jobOutputs = { new JobOutputAsset(outputAssetName)};
-
-JobInput jobInput = JobInputAsset(assetName: assetName);
-
-Job job = client.Jobs.Create(resourceGroupName,
-accountName, transformName, jobName,
-new Job {Input = jobInput, Outputs = jobOutputs});
-```
-
-### <a name="publish-an-asset-with-aes-encryption"></a>Veröffentlichen eines Medienobjekts mit AES-Verschlüsselung 
-
-#### <a name="v2"></a>V2
-
-1. Erstellen von ContentKeyAuthorizationPolicyOption
-2. Erstellen von ContentKeyAuthorizationPolicy
-3. Erstellen von AssetDeliveryPolicy
-4. Erstellen eines Medienobjekts und Hochladen von Inhalten ODER Übermitteln eines Auftrags und Verwenden des Ausgabemedienobjekts
-5. Zuordnen von AssetDeliveryPolicy zu Medienobjekt
-6. Erstellen von ContentKey
-7. Zuordnen von ContentKey zu einem Medienobjekt
-8. Erstellen von AccessPolicy
-9. Erstellen von Locator
-
-#### <a name="v3"></a>V3
-
-1. Erstellen einer Richtlinie für Inhaltsschlüssel
-2. Erstellen eines Medienobjekts
-3. Hochladen von Inhalten oder Verwenden von Medienobjekt als JobOutput
-4. Erstellen von StreamingLocator
+* Derzeit können Sie das Azure-Portal nicht für die Verwaltung von v3-Ressourcen verwenden. Verwenden Sie die [REST-API](https://aka.ms/ams-v3-rest-sdk), CLI oder eines der unterstützten SDKs.
+* Derzeit können reservierte Einheiten für Medien nur mithilfe der Media Services v2-API verwaltet werden. Weitere Informationen finden Sie unter [Übersicht über das Skalieren der Medienverarbeitung](../previous/media-services-scale-media-processing-overview.md).
+* Mit der v3-API erstellte Media Services-Entitäten können von der v2-API nicht verwaltet werden.  
+* Es wird nicht empfohlen, mit v2-APIs erstellte Entitäten über die v3-APIs zu verwalten. Es folgen Beispiele für die Unterschiede, aufgrund deren die Entitäten in zwei Versionen nicht kompatibel sind:   
+    * In v2 erstellte Aufträge und Aufgaben werden in v3 nicht angezeigt, da sie keiner Transformation zugeordnet sind. Es wird empfohlen, zu v3-Transformationen und -Aufträge zu wechseln. Während des Wechsels müssen die aktiven v2-Aufträge für einen relativ kurzen Zeitraum überwacht werden.
+    * Mit v2 erstellte Kanäle und Programme (die LiveEvents und LiveOutputs in v3 zugeordnet sind) können nicht mehr mit v3 verwaltet werden. Es wird empfohlen, zu einem günstigen Zeitpunkt (beim Beenden des Kanals) zu v3-LiveEvents und LiveOutputs zu wechseln.
+    
+        Derzeit können Sie kontinuierlich ausgeführte Kanäle nicht migrieren.  
+> [!NOTE]
+> Erstellen Sie ein Lesezeichen für diesen Artikel, und überprüfen Sie ihn regelmäßig auf Aktualisierungen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

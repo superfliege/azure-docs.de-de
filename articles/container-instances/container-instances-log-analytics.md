@@ -7,12 +7,12 @@ ms.service: container-instances
 ms.topic: overview
 ms.date: 07/17/2018
 ms.author: danlep
-ms.openlocfilehash: 5d3ba4ac4a86b6051ea5dafbff8c038c9198108c
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 7f4af06222141eb0e143e67ba4bfcdcb2f5f92fa
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51279550"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51614003"
 ---
 # <a name="container-instance-logging-with-azure-log-analytics"></a>Protokollierung für Containerinstanzen mit Azure Log Analytics
 
@@ -134,8 +134,9 @@ ContainerInstanceLog_CL
 
 Weitere Informationen zum Abfragen von Protokollen und Konfigurieren von Warnungen in Azure Log Analytics finden Sie in den folgenden Themen:
 
-* [Grundlegendes zu Protokollsuchvorgängen in Log Analytics](../log-analytics/log-analytics-queries.md)
-* [Die neue Oberfläche „Warnungen“ in Azure Monitor](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md)
+* [Grundlegendes zu Protokollsuchvorgängen in Log Analytics](../log-analytics/log-analytics-log-search.md)
+* [Die neue Oberfläche „Warnungen“ in Azure Monitor](../monitoring-and-diagnostics/monitoring-overview-alerts.md)
+
 
 ### <a name="monitor-container-cpu-and-memory"></a>Überwachen von Container-CPU und -Arbeitsspeicher
 

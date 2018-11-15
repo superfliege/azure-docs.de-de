@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/10/2018
+ms.date: 01/09/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: f52a849fee4005628fb6a8ad567d89f5046d4765
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 43a682568708ab0286328cf3e483ddc3d5cf9dd8
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46968068"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51515351"
 ---
 # <a name="how-to-optimize-your-cloud-investment-with-azure-cost-management"></a>Optimieren der Cloudinvestitionen mit Azure Cost Management
 
@@ -186,10 +186,6 @@ Weitere Informationen finden Sie unter [Was sind Azure-Reservierungen?](../billi
 Wenn in Ihren lokalen Bereitstellungen Windows Server- oder SQL Server-Lizenzen vorhanden sind, können Sie den Azure-Hybridvorteil nutzen, um in Azure bares Geld zu sparen. Beim Vorteil für Windows Server deckt jede Lizenz die Kosten des Betriebssystems (auf bis zu zwei virtuellen Computern) ab, und Sie zahlen nur die grundlegenden Computekosten. Sie können vorhandene SQL Server-Lizenzen verwenden, um bei auf virtuellen Kernen basierenden SQL-Datenbank-Optionen bis zu 55 Prozent zu sparen. Zu den Optionen gehören SQL Server in Azure Virtual Machines und SQL Server Integration Services.
 
 Weitere Informationen finden Sie unter [Einsparungsrechner für den Azure-Hybridvorteil](https://azure.microsoft.com/pricing/hybrid-benefit/).
-
-#### <a name="monetary-commitment"></a>Finanzielle Verpflichtung
-
-Kunden mit Enterprise Agreement können vorab eine Mindestabnahme mit Microsoft vereinbaren. Eine solche Mindestabnahme ist nicht nur eine einfache Möglichkeit, Budgets zu Cloudressourcen zuzuordnen, sondern bietet Ihnen auch niedrigere Preise in Azure. Diese reduzierten Preise können erhebliche Kostenersparnisse für Ihre Organisation bedeuten.
 
 ### <a name="other-resources"></a>Weitere Ressourcen
 
