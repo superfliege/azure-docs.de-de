@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/21/2018
 ms.author: barbkess
-ms.reviewer: asteen
-ms.openlocfilehash: 98dc3981e0f34ebfe7d8881d77b84cfe252e3f4f
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.reviewer: japere
+ms.openlocfilehash: 2d528c04a9301998220b5564330f20ed014b68d6
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44354982"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51036928"
 ---
 # <a name="problem-installing-the-application-proxy-agent-connector"></a>Problem beim Installieren des Anwendungsproxy-Agent-Connectors
 
@@ -63,13 +63,13 @@ Wenn bei der Installation eines Connectors ein Fehler auftritt, entstammt die Ha
 
 ## <a name="verify-admin-is-used-to-install-the-connector"></a>Überprüfen, dass der Connector vom Administrator installiert wird
 
-**Ziel**: Überprüfen Sie, ob der Benutzer, der versucht, den Connector zu installieren, ein Administrator mit den richtigen Anmeldeinformationen ist. Derzeit muss der Benutzer ein globaler Administrator sein, damit die Installation erfolgreich ausgeführt werden kann.
+**Ziel**: Überprüfen Sie, ob der Benutzer, der versucht, den Connector zu installieren, ein Administrator mit den richtigen Anmeldeinformationen ist. Derzeit muss der Benutzer entweder ein Anwendungsadministrator oder ein globaler Administrator sein, damit die Installation erfolgreich ist.
 
 **So überprüfen Sie, ob die Anmeldeinformationen korrekt sind:**
 
 Stellen Sie eine Verbindung mit <https://login.microsoftonline.com> her, und verwenden Sie die gleichen Anmeldeinformationen. Überprüfen Sie, ob die Anmeldung erfolgreich war. Sie können die Benutzerrolle überprüfen, indem Sie zu **Azure Active Directory** -&gt; **Benutzer und Gruppen** -&gt; **Alle Benutzer** wechseln. 
 
-Wählen Sie Ihr Benutzerkonto aus, und klicken Sie dann im daraufhin angezeigten Menü auf „Verzeichnisrolle“. Überprüfen Sie, ob die ausgewählte Rolle „Globaler Administrator“ ist. Wenn Sie im Verlauf dieser Schritte nicht auf die Seiten zugreifen können, sind Sie kein globaler Administrator.
+Wählen Sie Ihr Benutzerkonto aus, und klicken Sie dann im daraufhin angezeigten Menü auf „Verzeichnisrolle“. Stellen Sie sicher, dass die ausgewählte Rolle „Anwendungsadministrator“ oder „Globaler Administrator“ lautet. Wenn Sie in diesen Schritten nicht auf die Seiten zugreifen können, verfügen Sie nicht über die erforderliche Rolle.
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Grundlegendes zu Azure AD-Anwendungsproxyconnectors](application-proxy-connectors.md)

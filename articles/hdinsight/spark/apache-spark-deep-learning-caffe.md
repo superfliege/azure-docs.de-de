@@ -2,25 +2,25 @@
 title: Verwenden von Caffe in Azure HDInsight Spark für verteiltes Deep Learning
 description: Verwenden von Caffe in Azure HDInsight Spark für verteiltes Deep Learning
 services: hdinsight
-author: jasonwhowell
-ms.author: jasonh
+author: hrasheed-msft
+ms.author: hrasheed
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/17/2017
-ms.openlocfilehash: a7873996d83dbc79b4d44c58bd964c274f9c7709
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 71322869eb9272fb59b98a0e21b1f639129572b7
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39622914"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51255921"
 ---
 # <a name="use-caffe-on-azure-hdinsight-spark-for-distributed-deep-learning"></a>Verwenden von Caffe in Azure HDInsight Spark für verteiltes Deep Learning
 
 
 ## <a name="introduction"></a>Einführung
 
-Deep Learning wirkt sich auf zahlreiche Bereiche aus – vom Gesundheitswesen über Logistik bis hin zur Fertigung. Unternehmen nutzen Deep Learning zur Lösung komplexer Probleme, wie [Bildklassifizierung](http://blogs.microsoft.com/next/2015/12/10/microsoft-researchers-win-imagenet-computer-vision-challenge/), [Spracherkennung](http://googleresearch.blogspot.jp/2015/08/the-neural-networks-behind-google-voice.html), Objekterkennung und maschinelle Übersetzung. 
+Deep Learning wirkt sich auf zahlreiche Bereiche aus – vom Gesundheitswesen über Logistik bis hin zur Fertigung. Unternehmen nutzen Deep Learning zur Lösung komplexer Aufgaben wie [Bildklassifizierung](https://blogs.microsoft.com/next/2015/12/10/microsoft-researchers-win-imagenet-computer-vision-challenge/), [Spracherkennung](http://googleresearch.blogspot.jp/2015/08/the-neural-networks-behind-google-voice.html), Objekterkennung und maschinelle Übersetzung. 
 
 Es gibt [viele beliebte Frameworks](https://en.wikipedia.org/wiki/Comparison_of_deep_learning_software), einschließlich [Microsoft Cognitive Toolkit](https://www.microsoft.com/en-us/research/product/cognitive-toolkit/), [Tensorflow](https://www.tensorflow.org/), MXNet, Theano usw. Caffe ist eines der berühmtesten, nicht symbolischen (imperativen) neuronalen Netzwerkframeworks und wird in vielen Bereichen verwendet, einschließlich beim maschinellen Sehen. Darüber hinaus kombiniert [CaffeOnSpark](http://yahoohadoop.tumblr.com/post/139916563586/caffeonspark-open-sourced-for-distributed-deep) Caffe mit Apache Spark, wodurch Deep Learning einfach auf einem vorhandenen Hadoop-Cluster verwendet werden kann. Sie können Deep Learning zusammen mit Spark-ETL-Pipelines verwenden, um die Systemkomplexität und die Wartezeit für das vollständige Lernen von Lösungen zu reduzieren.
 

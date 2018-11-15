@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/07/2016
 ms.author: mandia
-ms.openlocfilehash: 39fc5ef36bb581c3a81c9948fda048f6cb75eb7e
-ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
+ms.openlocfilehash: daab61a0ea9321b0fb918c60688215c80088e0bc
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2017
-ms.locfileid: "24102085"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51243350"
 ---
 # <a name="biztalk-services-throttling"></a>BizTalk Services: Drosselung
 
@@ -30,7 +30,7 @@ Azure BizTalk Services implementiert die Dienstdrosselung basierend auf zwei Bed
 ## <a name="throttling-thresholds"></a>Drosselungsschwellenwerte
 In der folgenden Tabelle sind die Drosselungsquelle und die -schwellenwerte aufgelistet:
 
-|  | Beschreibung | Niedriger Schwellenwert | Hoher Schwellenwert |
+|  | BESCHREIBUNG | Niedriger Schwellenwert | Hoher Schwellenwert |
 | --- | --- | --- | --- |
 | Arbeitsspeicher |% des verfügbaren Gesamtsystemarbeitsspeichers/PageFileBytes. <p><p>Verfügbarer PageFileBytes-Gesamtwert beträgt etwa das Zweifache des RAM des Systems. |60 % |70 % |
 | Nachrichtenverarbeitung |Anzahl der simultan verarbeiteten Nachrichten |40 * Anzahl der Kernspeicher |100 * Anzahl der Kernspeicher |
@@ -42,10 +42,10 @@ Azure BizTalk Services verfolgen den Drosselungsstatus (normaler Status vs. gedr
 ## <a name="runtime-behavior"></a>Laufzeitverhalten
 Wenn Azure BizTalk Services einen Drosselungsstatus erreichen, tritt Folgendes ein:
 
-* Die Drosselung wird pro Rolleninstanz durchgeführt. Beispiel:<br/>
+* Die Drosselung wird pro Rolleninstanz durchgeführt. Beispiel: <br/>
   RoleInstanceA steht für Drosselung. RoleInstanceB wird nicht gedrosselt. In dieser Situation werden die Nachrichten in RoleInstanceB erwartungsgemäß verarbeitet. Die Nachrichten in RoleInstanceA werden verworfen und schlagen mit dem folgenden Fehler fehl:<br/><br/>
   **Der Server ist ausgelastet. Bitte versuchen Sie es später noch einmal.**<br/><br/>
-* Keine der Pullquellen ruft eine Nachricht ab oder lädt eine herunter. Beispiel:<br/>
+* Keine der Pullquellen ruft eine Nachricht ab oder lädt eine herunter. Beispiel: <br/>
   Eine Pipeline ruft Nachrichten per Pullaktion aus einer externen FTP-Quelle ab. Die Rolleninstanz, welche die Pullaktion durchführt, geht in einen Drosselungsstatus über. In dieser Situation setzt die Pipeline das Herunterladen zusätzlicher Nachrichten aus, bis die Rolleninstanz die Drosselung beendet.
 * Eine Antwort wird an den Client gesendet, so dass dieser die Nachricht neu senden kann.
 * Sie müssen solange warten, bis die Drosselung aufgelöst ist. Insbesondere müssen Sie warten, bis ein niedriger Schwellenwert erreicht ist.
@@ -57,15 +57,15 @@ Wenn Azure BizTalk Services einen Drosselungsstatus erreichen, tritt Folgendes e
 * Der Azure SQL-Datenbankserver verfügt ebenfalls über eine integrierte Drosselung.
 
 ## <a name="additional-azure-biztalk-services-topics"></a>Zusätzliche Azure BizTalk Services-Themen
-* [Installieren des Azure BizTalk Services SDK](http://go.microsoft.com/fwlink/p/?LinkID=241589)<br/>
-* [Lernprogramme: Azure BizTalk Services](http://go.microsoft.com/fwlink/p/?LinkID=236944)<br/>
-* [Wie verwende ich das Azure BizTalk Services SDK?](http://go.microsoft.com/fwlink/p/?LinkID=302335)<br/>
-* [BizTalk Services-Dokumentation](http://go.microsoft.com/fwlink/p/?LinkID=303664)<br/>
+* [Installieren des Azure BizTalk Services SDK](https://go.microsoft.com/fwlink/p/?LinkID=241589)<br/>
+* [Tutorials: Azure BizTalk Services](https://go.microsoft.com/fwlink/p/?LinkID=236944)<br/>
+* [Wie verwende ich das Azure BizTalk Services SDK?](https://go.microsoft.com/fwlink/p/?LinkID=302335)<br/>
+* [BizTalk Services-Dokumentation](https://go.microsoft.com/fwlink/p/?LinkID=303664)<br/>
 
-## <a name="see-also"></a>Weitere Informationen
-* [BizTalk Services: Editionsübersicht](http://go.microsoft.com/fwlink/p/?LinkID=302279)<br/>
-* [BizTalk Services: Bereitstellungsstatusübersicht](http://go.microsoft.com/fwlink/p/?LinkID=329870)<br/>
-* [BizTalk Services: Registerkarten "Dashboard", "Überwachen" und "Skalieren"](http://go.microsoft.com/fwlink/p/?LinkID=302281)<br/>
-* [BizTalk Services: Sichern und Wiederherstellen](http://go.microsoft.com/fwlink/p/?LinkID=329873)<br/>
-* [BizTalk Services: Name und Schlüssel des Ausstellers](http://go.microsoft.com/fwlink/p/?LinkID=303941)<br/>
+## <a name="see-also"></a>Siehe auch
+* [BizTalk Services: Editionsübersicht](https://go.microsoft.com/fwlink/p/?LinkID=302279)<br/>
+* [BizTalk Services: Bereitstellungsstatusübersicht](https://go.microsoft.com/fwlink/p/?LinkID=329870)<br/>
+* [BizTalk Services: Registerkarten "Dashboard", "Überwachen" und "Skalieren"](https://go.microsoft.com/fwlink/p/?LinkID=302281)<br/>
+* [BizTalk Services: Sichern und Wiederherstellen](https://go.microsoft.com/fwlink/p/?LinkID=329873)<br/>
+* [BizTalk Services: Name und Schlüssel des Ausstellers](https://go.microsoft.com/fwlink/p/?LinkID=303941)<br/>
 

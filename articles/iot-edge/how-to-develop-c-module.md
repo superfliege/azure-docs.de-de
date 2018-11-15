@@ -4,24 +4,24 @@ description: Verwenden von Visual Studio Code zum Entwickeln, Erstellen und Debu
 services: iot-edge
 keywords: ''
 author: shizn
-manager: timlt
+manager: philmea
 ms.author: xshi
 ms.date: 09/13/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 3ec7f6043c1d2e8e8f090ffc60822768ab9bc9d9
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: d40b82b5beac2da78038e303cb50402d6fa0be7a
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45984000"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51566023"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-c-modules-for-azure-iot-edge"></a>Verwenden von Visual Studio Code zum Entwickeln und Debuggen von C-Modulen für Azure IoT Edge
 
 Sie können Ihre Geschäftslogik in Azure IoT Edge-Module umwandeln. In diesem Artikel wird veranschaulicht, wie Sie Visual Studio Code (VS Code) als wichtigstes Tool zum Entwickeln und Debuggen von C-Modulen verwenden.
 
 ## <a name="prerequisites"></a>Voraussetzungen
-In diesem Artikel wird davon ausgegangen, dass Sie einen Computer oder virtuellen Computer unter Windows oder Linux als Entwicklungscomputer verwenden. Sie simulieren außerdem ein IoT Edge-Gerät auf dem Entwicklungscomputer mit IoT Edge-Sicherheits-Daemon.
+In diesem Artikel wird davon ausgegangen, dass Sie einen Computer oder virtuellen Computer unter Windows oder Linux als Entwicklungscomputer verwenden. Darüber hinaus simulieren Sie Ihr IoT Edge-Gerät auf Ihrem Entwicklungscomputer mit IoT Edge-Sicherheits-Daemon.
 
 > [!NOTE]
 > In diesem Debugartikel werden das Anfügen eines Prozesses in einem Modulcontainer und das Debuggen mit Visual Studio Code beschrieben. Sie können nur C-Module in Containern vom Typ „Linux amd64“ debuggen. Wenn Sie mit den Debugfunktionen von Visual Studio Code nicht vertraut sind, informieren Sie sich über [Debuggen](https://code.visualstudio.com/Docs/editor/debugging).
@@ -94,7 +94,7 @@ In jedem Modulordner gibt es mehrere Docker-Dateien für unterschiedliche Contai
 2. Ersetzen Sie „createOptions“ für das C-Modul in **deployment.template.json** durch den unten angegebenen Code, und speichern Sie die Datei: 
     
     ```json
-    "createOptions": "{\"HostConfig\": {\"Privileged\": true}}"
+    "createOptions": "{\"HostConfig\": {\"Privileged\": true}}"
     ```
 
 2. Geben Sie in der Befehlspalette von Visual Studio Code den Befehl **Azure IoT Edge: Build and Push IoT Edge solution** ein, und führen Sie ihn aus.

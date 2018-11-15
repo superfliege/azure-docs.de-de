@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/28/2018
+ms.date: 11/08/2018
 ms.author: jingwang
-ms.openlocfilehash: d3cddc729e40b5591922fc7b5c7d3d6a258219a7
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 5c45167255ec91030f07e550de223a7ebed93168
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49955812"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51345758"
 ---
 #  <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Kopieren von Daten nach und aus Azure SQL Data Warehouse mithilfe von Azure Data Factory 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you're using:"]
@@ -217,7 +217,7 @@ Legen Sie zum Kopieren von Daten aus bzw. in Azure SQL Data Warehouse die **type
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die **type**-Eigenschaft des Datasets muss auf **AzureSqlDWTable** festgelegt sein. | JA |
-| tableName | Name der Tabelle oder Sicht in der Azure SQL Data Warehouse-Instanz, auf die der verknüpfte Dienst verweist | JA |
+| tableName | Name der Tabelle oder Sicht in der Azure SQL Data Warehouse-Instanz, auf die der verknüpfte Dienst verweist | Quelle: Nein, Senke: Ja |
 
 #### <a name="dataset-properties-example"></a>Beispiel für Dataseteigenschaften
 
@@ -257,7 +257,6 @@ Legen Sie zum Kopieren von Daten aus Azure SQL Data Warehouse die **type**-Eigen
 
 - Wenn **sqlReaderQuery** für **SqlSource** angegeben ist, führt die Kopieraktivität diese Abfrage für die Azure SQL Data Warehouse-Quelle aus, um die Daten abzurufen. Sie können auch eine gespeicherte Prozedur angeben. Geben Sie dazu **sqlReaderStoredProcedureName** und **storedProcedureParameters** an (sofern die gespeicherte Prozedur Parameter akzeptiert).
 - Ohne Angabe von **sqlReaderQuery** oder **sqlReaderStoredProcedureName** werden die im Abschnitt **structure** des JSON-Codes des Datasets definierten Spalten zum Erstellen einer Abfrage verwendet. `select column1, column2 from mytable` wird für Azure SQL Data Warehouse ausgeführt. Falls die Datasetdefinition keinen Abschnitt **structure** enthält, werden alle Spalten der Tabelle ausgewählt.
-- Bei Verwendung von **sqlReaderStoredProcedureName** müssen Sie trotzdem einen Wert für die Dummyeigenschaft **tableName** im JSON-Code des Datasets angeben.
 
 #### <a name="sql-query-example"></a>Beispiel für eine SQL-Abfrage
 

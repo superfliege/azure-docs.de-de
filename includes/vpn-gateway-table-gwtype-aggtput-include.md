@@ -5,22 +5,23 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 10/29/2018
+ms.date: 11/12/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 03af5efcd4a37203a82db503f8bc602b33de734d
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: b698dd03473dd3cb708c47c6554869eebba48bf9
+ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50227133"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51597608"
 ---
-|**SKU**   | **S2S/VNet-zu-VNet-<br>Tunnels** | **P2S<br> SSTP-Verbindungen** | **P2S<br> IKEv2-Verbindungen** | **Benchmark für<br>aggregierten Durchsatz** |
-|---       | ---        | ---       | ---            | ---       |
-|**VpnGw1**| Maximal 30*   | Maximal 128  | Maximal 250       | 650 MBit/s  |
-|**VpnGw2**| Maximal 30*   | Maximal 128  | Maximal 500       | 1 GBit/s    |
-|**VpnGw3**| Maximal 30*   | Maximal 128  | Maximal 1000      | 1,25 GBit/s |
-|**Basic** | Maximal 10    | Maximal 128  | Nicht unterstützt  | 100 MBit/s  | 
+|**SKU**   | **S2S/VNet-zu-VNet-<br>Tunnels** | **P2S<br> SSTP-Verbindungen** | **P2S<br> IKEv2-Verbindungen** | **Benchmark für<br>aggregierten Durchsatz** | **BGP** |
+|---       | ---        | ---       | ---            | ---       | --- |
+|**Basic** | Maximal 10    | Maximal 128  | Nicht unterstützt  | 100 MBit/s  | Nicht unterstützt|
+|**VpnGw1**| Maximal 30*   | Maximal 128  | Maximal 250       | 650 MBit/s  | Unterstützt |
+|**VpnGw2**| Maximal 30*   | Maximal 128  | Maximal 500       | 1 GBit/s    | Unterstützt |
+|**VpnGw3**| Maximal 30*   | Maximal 128  | Maximal 1000      | 1,25 GBit/s | Unterstützt |
+
 
 (\*) Verwenden Sie [Virtual WAN](../articles/virtual-wan/virtual-wan-about.md), wenn Sie mehr als 30 S2S-VPN-Tunnel benötigen.
 

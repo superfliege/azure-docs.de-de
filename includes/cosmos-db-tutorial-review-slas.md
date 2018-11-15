@@ -1,3 +1,16 @@
+---
+author: SnehaGunda
+ms.service: cosmos-db
+ms.topic: include
+ms.date: 11/09/2018
+ms.author: sngun
+ms.openlocfilehash: e07a59ba0484910d87329be94f0fcc58b1011b95
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51572167"
+---
 Durchsatz, Speicher, Verfügbarkeit, Latenz und Konsistenz der Ressourcen in Ihrem Konto werden im Azure-Portal überwacht. Werfen Sie einen kurzen Blick auf diese Metriken. 
 
 1. Klicken Sie im Navigationsmenü auf **Metriken**.

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.author: ramamill
 ms.date: 10/29/2018
-ms.openlocfilehash: c12683fee7022b84e097c2b71628776271611429
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 2051f37656b6717c879a24f6e06c31a0ade0b950
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50210991"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51012325"
 ---
 # <a name="troubleshoot-mobility-service-push-installation-issues"></a>Beheben von Problemen bei Pushinstallationen von Mobility Service
 
@@ -73,7 +73,7 @@ Wenn Sie die Anmeldeinformationen des ausgewählten Benutzerkontos ändern möch
   * Öffnen Sie im Navigationsbereich die folgenden Ordner: „Richtlinie für ,Lokaler Computer‘“, „Benutzerkonfiguration“, „Administrative Vorlagen“, „Windows-Komponenten“ und „Netzwerkfreigabe“.
   * Doppelklicken Sie im Detailbereich auf **Verhindern, dass Benutzer Dateien in ihrem Profil freigeben**. Wenn Sie die Gruppenrichtlinieneinstellung deaktivieren und die Option zum Freigeben von Dateien für den Benutzer aktivieren möchten, klicken Sie auf „Deaktiviert“. Klicken Sie zum Speichern der Änderungen auf „OK“. Klicken Sie [hier](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc754359(v=ws.10)), um weitere Informationen zu erhalten.
 
-Um die Datei- und Druckerfreigabe in **höheren Versionen** zu aktivieren, folgen Sie den [hier](vmware-azure-install-mobility-service.md#install-mobility-service-by-push-installation-from-azure-site-recovery) angegebenen Anweisungen.
+Um die Datei- und Druckerfreigabe in **höheren Versionen** zu aktivieren, befolgen Sie die [hier](vmware-azure-install-mobility-service.md) angegebenen Anweisungen.
 
 ## <a name="windows-management-instrumentation-wmi-configuration-check"></a>Überprüfung der Konfiguration der Windows-Verwaltungsinstrumentation (Windows Management Instrumentation, WMI)
 

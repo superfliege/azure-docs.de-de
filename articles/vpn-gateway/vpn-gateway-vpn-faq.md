@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 07/27/2018
 ms.author: yushwang
-ms.openlocfilehash: 94183b639c02f6a7d74e87e8f8335da67db113d6
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: a232ac111974444848aec82f3c7ab6236f82ac03
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49468176"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51037094"
 ---
 # <a name="vpn-gateway-faq"></a>Häufig gestellte Fragen zum VPN-Gateway
 
@@ -65,7 +65,7 @@ Richtlinienbasierte Gateways implementieren richtlinienbasierte VPNs verwendet. 
 Routenbasierte Gateways implementieren die routenbasierten VPNs. Bei routingbasierten VPNs werden Pakete auf der Grundlage der Routen der IP-Weiterleitungs- oder -Routingtabelle an die entsprechenden VPN-Tunnelschnittstellen weitergeleitet. An den Tunnelschnittstellen werden die Pakete dann ver- bzw. entschlüsselt. Die Richtlinie bzw. der Datenverkehrselektor für routenbasierte VPNs werden im Any-to-Any-Format (bzw. als Platzhalter) konfiguriert.
 
 ### <a name="can-i-update-my-policy-based-vpn-gateway-to-route-based"></a>Kann ich meine richtlinienbasiertes VPN-Gateway zu einem routenbasierten aktualisieren?
-Nein. Ein Azure-VNET-Gatewaytyp kann nicht von richtlinienbasiert zu routenbasiert geändert werden oder umgekehrt. Das Gateway muss gelöscht und neu erstellt werden. Dieser Prozess dauert etwa 60 Minuten. Die IP-Adresse des Gateways und der vorinstallierte Schlüssel (PSK) werden nicht beibehalten.
+Nein. Ein Azure-VNET-Gatewaytyp kann nicht von richtlinienbasiert zu routenbasiert geändert werden oder umgekehrt. Das Gateway muss gelöscht und neu erstellt werden. Dieser Prozess dauert etwa 60 Minuten. Die IP-Adresse des Gateways und der vorinstallierte Schlüssel (PSK) werden nicht beibehalten.
 1. Löschen Sie alle Verbindungen, die dem zu löschenden Gateway zugeordnet sind.
 2. Löschen des Gateways:
 * [Azure-Portal](vpn-gateway-delete-vnet-gateway-portal.md)
@@ -122,11 +122,11 @@ Ja. Informationen finden Sie unter [Konfigurieren der Tunnelerzwingung mit dem k
 
 Ja. Sie können in Azure eigene VPN-Gateways oder -Server bereitstellen (entweder über Azure Marketplace oder durch Erstellung eines eigenen VPN-Routers). Sie müssen in Ihrem virtuellen Netzwerk benutzerdefinierte Routen konfigurieren, um sicherzustellen, dass der Datenverkehr zwischen Ihren lokalen Netzwerken und den Subnetzen Ihres virtuellen Netzwerks richtig weitergeleitet wird.
 
-### <a name="why-are-certain-ports-opened-on-my-vpn-gateway"></a>Warum werden auf meinem VPN-Gateway bestimmte Ports geöffnet?
+### <a name="gatewayports"></a>Warum sind auf meinem Gateway für virtuelle Netzwerke bestimmte Ports geöffnet?
 
 Sie sind für die Kommunikation mit der Azure-Infrastruktur erforderlich. Sie werden von Azure-Zertifikaten geschützt (gesperrt). Ohne die richtigen Zertifikate werden externe Entitäten, einschließlich der Kunden dieser Gateways, sich nicht auf diese Endpunkte auswirken.
 
-Ein VPN-Gateway ist im Grunde ein mehrfach vernetztes Gerät mit einer NIC, die das private Netzwerk des Kunden nutzt, und einer NIC für das öffentliche Netzwerk. Azure-Infrastrukturentitäten können aus Compliance-Gründen keine privaten Netzwerke von Kunden nutzen, sodass sie öffentliche Endpunkte für die Kommunikation der Infrastruktur nutzen müssen. Die öffentlichen Endpunkte werden in regelmäßigen Abständen mit der Azure-Sicherheitsüberwachung überprüft.
+Ein Gateway für virtuelle Netzwerke ist im Grunde ein mehrfach vernetztes Gerät mit einem Netzwerkadapter, der das private Netzwerk des Kunden nutzt, und einem Netzwerkadapter für das öffentliche Netzwerk. Azure-Infrastrukturentitäten können aus Compliance-Gründen keine privaten Netzwerke von Kunden nutzen, sodass sie öffentliche Endpunkte für die Kommunikation der Infrastruktur nutzen müssen. Die öffentlichen Endpunkte werden in regelmäßigen Abständen mit der Azure-Sicherheitsüberwachung überprüft.
 
 ### <a name="more-information-about-gateway-types-requirements-and-throughput"></a>Weitere Informationen zu Gatewaytypen, Anforderungen und Durchsatz
 

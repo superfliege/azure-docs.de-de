@@ -1,6 +1,6 @@
 ---
-title: Hadoop-Komponenten und -Versionen – Azure HDInsight
-description: Erfahren Sie mehr zu den Hadoop-Komponenten und -Versionen in HDInsight und die in dieser Cloud-Distribution von Hortonworks Data Platform verfügbaren Servicelevels.
+title: Apache Hadoop-Komponenten und -Versionen – Azure HDInsight
+description: Erfahren Sie mehr zu den Apache Hadoop-Komponenten und -Versionen in HDInsight und die in dieser Cloud-Distribution von Hortonworks Data Platform verfügbaren Servicelevels.
 keywords: Hadoop-Versionen, Komponenten des Hadoop-Ökosystems, Hadoop-Komponenten, Hadoop-Version überprüfen
 services: hdinsight
 ms.reviewer: jasonh
@@ -10,20 +10,20 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 09/19/2018
 ms.author: kakampf
-ms.openlocfilehash: e299eda50967bee25f76c2e6456afa1ecbd7970c
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: fca83090e6713e4360bd19d49c7fd6b9147fd6ea
+ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50243179"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51219731"
 ---
-# <a name="what-are-the-hadoop-components-and-versions-available-with-hdinsight"></a>Welche Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?
+# <a name="what-are-the-apache-hadoop-components-and-versions-available-with-hdinsight"></a>Welche Apache Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?
 
 Erfahren Sie mehr über die Komponenten und Versionen des Apache Hadoop-Ökosystems in Microsoft Azure HDInsight sowie über das Enterprise Security Package. Darüber hinaus erfahren Sie, wie Sie Hadoop-Komponentenversionen in HDInsight überprüfen. 
 
 Jede HDInsight-Version ist eine Cloud-Distribution von Hortonworks Data Platform (HDP).
 
-## <a name="hadoop-components-available-with-different-hdinsight-versions"></a>Verfügbare Hadoop-Komponenten in verschiedenen Versionen von HDInsight
+## <a name="apache-hadoop-components-available-with-different-hdinsight-versions"></a>Verfügbare Apache Hadoop-Komponenten in verschiedenen Versionen von HDInsight
 Azure HDInsight unterstützt mehrere Hadoop-Clusterversionen, die jederzeit bereitgestellt werden können. Jede ausgewählte Version erstellt eine bestimmte Version der HDP-Distribution und eine Reihe von Komponenten innerhalb dieser Distribution. Ab dem 4. April 2017 ist die in Azure HDInsight derzeit als Standardclusterversion verwendete Version die Version 3.6, die auf HDP 2.6 basiert.
 
 Die den HDInsight-Clusterversionen zugeordneten Komponentenversionen sind in der folgenden Tabelle aufgeführt: 
@@ -50,7 +50,7 @@ Die den HDInsight-Clusterversionen zugeordneten Komponentenversionen sind in der
 | Apache Phoenix |5 |4.7.0 |4.7.0 |4.4.0 |4.4.0 |4.2.0 |4.0.0.2.1.7.0-2162 |-|
 | Apache Spark |2.3.1 |2.3.0, 2.2.0, 2.1.0 |1.6.2, 2.0 |1.6.0 |1.5.2 |1.3.1 (nur für Windows) |-|-|
 | Apache Livy |0,5 |0,4 |0,3 |0,3 |0,2 |-|-|-|
-| Apache Kafka | 1.0.1 |1.1, 1.0, 0.10.1 | 0.10.0 | 0.9.0 |-|-|-|-|
+| Apache Kafka | 1.1 |1.1, 1.0, 0.10.1 | 0.10.0 | 0.9.0 |-|-|-|-|
 | Apache Ambari | 2.7.0 |2.6.0 | 2.4.0 | 2.2.1 | 2.1.0 |-|-|-|
 | Apache Zeppelin | 0.8.0 |0.7.0 |-|-|-|-|-|-|
 | Mono |4.2.1 |4.2.1 |4.2.1 |3.2.8 |-|-|-|
@@ -247,7 +247,7 @@ Die folgenden Tabellen enthalten die Standard-VM-Größen für HDInsight-Cluster
   | Edge – empfohlene VM-Größe | | | | | |Windows: D12 v2, D13 v2, D14 v2; Linux: D4 v2, D12 v2, D13 v2, D14 v2 |
 * Nur „Brasilien, Süden“ und „Japan, Westen“ (hier keine v2-Größen):
 
-  | Clustertyp | Hadoop | hbase | Interactive Query |Storm | Spark | ML-Dienst |
+  | Clustertyp | Hadoop | hbase | Interactive Query |Storm | Spark | ML Services |
   | --- | --- | --- | --- | --- | --- | --- |
   | Head – Standard-VM-Größe |D3 |D3  | D13, D14 |A3 |D12 |D12 |
   | Head – empfohlene VM-Größen |D3, D4, D12 |D3, D4, D12  | D13, D14 |A3, A4, A5 |D12, D13, D14 |D12, D13, D14 |

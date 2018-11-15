@@ -5,21 +5,21 @@ services: iot-central
 ms.service: iot-central
 author: tbhagwat3
 ms.author: tanmayb
-ms.date: 07/09/2018
+ms.date: 10/29/2018
 ms.topic: conceptual
 manager: peterpr
-ms.openlocfilehash: d32e05e99543b30ee92ea455ae2f800b09d83661
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: dbc72e040f3d68ca77c036c41612f57616d1e74e
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39012108"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51016827"
 ---
 # <a name="as-a-csp-create-and-manage-an-azure-iot-central-application-on-behalf-of-your-customer"></a>Erstellen und verwalten Sie eine Azure IoT Central-Anwendung im Auftrag des Kunden als CSP. 
 
 Das Microsoft Cloud-Lösungsanbieter-Programm (CSP, Cloud Solution Provider) ist ein Programm für Microsoft-Vertriebspartner. Unseren Channelpartnern steht damit ein einziges Programm zum Verkauf aller kommerziellen Onlinedienste von Microsoft zur Verfügung. Erfahren Sie mehr über das [Cloud-Lösungsanbieter-Programm](https://partner.microsoft.com/cloud-solution-provider).
 
-Als CSP können Sie Microsoft Azure IoT Central-Anwendungen im Auftrag Ihrer Kunden über die [Microsoft Partner Center](https://partnercenter.microsoft.com/partner/home) erstellen und verwalten. Wenn Azure IoT Central-Anwendungen im Auftrag von CSP-Kunden erstellt werden, verwalten CSPs die Abrechnung für Kunden wie für andere CSP-verwaltete Azure-Dienste. Eine Gebühr für Azure IoT Central wird auf Ihrer Gesamtrechnung im Microsoft Partner Center angezeigt.
+Als CSP können Sie Microsoft Azure IoT Central-Anwendungen im Auftrag Ihrer Kunden über die [Microsoft Partner Center](https://partnercenter.microsoft.com/partner/home) erstellen und verwalten. Wenn Azure IoT Central-Anwendungen im Auftrag von CSP-Kunden erstellt werden, verwalten CSPs die Abrechnung für Kunden wie für andere CSP-verwaltete Azure-Dienste. Eine Gebühr für Azure IoT Central wird in Ihrer Gesamtrechnung im Microsoft Partner Center angezeigt.
 
 Melden Sie sich zum Einstieg bei Ihrem Konto im Microsoft-Partnerportal an, und wählen Sie einen Kunden aus, für den Sie eine Azure IoT Central-Anwendung erstellen möchten. Navigieren Sie vom linken Navigationsbereich zur Dienstverwaltung für den Kunden.
 
@@ -35,13 +35,13 @@ Sie gelangen zur „Anwendungs-Manager“-Seite von Azure IoT Central. Azure IoT
 
 Um eine Azure IoT Central-Anwendung zu erstellen, klicken Sie auf die Kachel **Neue Anwendung**. Dadurch wird die Seite „Anwendungserstellung“ geladen. Sie müssen alle Felder auf dieser Seite ausfüllen und dann **Erstellen** auswählen. Unten finden Sie weitere Informationen zu den einzelnen Feldern.
 
-![Erstellen einer Anwendungsseite für CSPs](media\howto-create-application-asCSP\image4-1.png)
+![Erstellen einer Anwendungsseite für CSPs](media\howto-create-application-asCSP\image4.png)
 
-![Erstellen einer Anwendungsseite für CSPs](media\howto-create-application-asCSP\image4-2.png)
+![Erstellen einer Anwendungsseite für CSPs](media\howto-create-application-asCSP\image4-1.png)
 
 ## <a name="payment-plan"></a>Zahlungsplan
 
-Sie können als CSP nur kostenpflichtige Anwendungen erstellen. Um Ihrem Kunden Azure IoT Central vorzustellen, können Sie separat eine Testanwendung erstellen. Auf der Seite [IoT Central – Preise](https://azure.microsoft.com/pricing/details/iot-central/) erfahren Sie mehr über eine kostenlose Testversion und kostenpflichtige Anwendungen.
+Sie können als CSP nur Anwendungen mit nutzungsbasierter Bezahlung erstellen. Um Ihrem Kunden Azure IoT Central vorzustellen, können Sie separat eine Testanwendung erstellen. Auf der Seite [IoT Central – Preise](https://azure.microsoft.com/pricing/details/iot-central/) erfahren Sie mehr über eine kostenlose Testversion und Anwendungen mit nutzungsbasierter Bezahlung.
 
 ## <a name="application-name"></a>Anwendungsname
 

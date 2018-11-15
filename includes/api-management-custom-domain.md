@@ -1,3 +1,16 @@
+---
+author: vladvino
+ms.service: api-management
+ms.topic: include
+ms.date: 11/09/2018
+ms.author: vlvinogr
+ms.openlocfilehash: f98f750c14666400f41a249b3d8379b423e6dee2
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51572182"
+---
 ## <a name="how-apim-proxy-server-responds-with-ssl-certificates-in-the-tls-handshake"></a>Vorgehensweise der Antwort des APIM-Proxyservers mit SSL-Zertifikaten beim TLS-Handshake
 
 ### <a name="clients-calling-with-sni-header"></a>Aufrufen von Clients mit dem SNI-Header

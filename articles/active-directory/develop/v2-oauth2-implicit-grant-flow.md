@@ -17,12 +17,12 @@ ms.date: 10/02/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 1722f81c55c490d6030dd04e5907e93012051492
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: d063c5e5a5b81f16d8921864ab2e2a0c3504e334
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48817097"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51289018"
 ---
 # <a name="v20-protocols---spas-using-the-implicit-flow"></a>v2.0-Protokolle – SPAs unter Verwendung des impliziten Flusses
 
@@ -145,7 +145,7 @@ Nachdem Sie das ID-Token vollständig überprüft haben, können Sie mit dem Ben
 
 ## <a name="get-access-tokens"></a>Abrufen von Zugriffstoken
 
-Nachdem Sie den Benutzer bei der Single-Page-App angemeldet haben, können Sie Zugriffstoken zum Aufrufen der von Azure AD gesicherten Web-APIs abrufen, etwa [Microsoft Graph](https://graph.microsoft.io). Auch wenn Sie mithilfe des Antworttyps `token` bereits ein Token erhalten haben, können Sie diese Methode zum Abrufen von Token für zusätzliche Ressourcen verwenden, ohne den Benutzer zur erneuten Anmeldung umzuleiten.
+Nachdem Sie den Benutzer bei der Single-Page-App angemeldet haben, können Sie Zugriffstoken zum Aufrufen der von Azure AD gesicherten Web-APIs abrufen, etwa [Microsoft Graph](https://developer.microsoft.com/graph). Auch wenn Sie mithilfe des Antworttyps `token` bereits ein Token erhalten haben, können Sie diese Methode zum Abrufen von Token für zusätzliche Ressourcen verwenden, ohne den Benutzer zur erneuten Anmeldung umzuleiten.
 
 Im herkömmlichen OpenID Connect/OAuth-Fluss senden Sie dazu eine Anforderung an den v2.0-Endpunkt `/token` . Der v2.0-Endpunkt unterstützt jedoch keine CORS-Anforderungen, daher kommen AJAX-Aufrufe zum Abrufen und Aktualisieren von Token nicht infrage. Stattdessen können Sie den impliziten Fluss in einem ausgeblendeten IFrame verwenden, um neue Token für andere Web-APIs zu erhalten: 
 

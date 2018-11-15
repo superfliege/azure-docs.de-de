@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/10/2018
 ms.author: mbullwin
-ms.openlocfilehash: fc651b3bc28e59c5c5a195211d811e206eee3e42
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 71d5c26c8c41c470e188291dea4a4dab2811a67e
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "40246473"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50963114"
 ---
 # <a name="feed-power-bi-from-application-insights"></a>Datenimport nach Power BI aus Application Insights
 [Power BI](http://www.powerbi.com/) ist eine Suite aus Unternehmenstools, mit denen Sie Daten analysieren und Informationen teilen können. Auf jedem Gerät stehen leistungsfähige Dashboards zur Verfügung. Sie können Daten aus vielen Quellen kombinieren, z.B. Analytics-Abfragen aus [Azure Application Insights](app-insights-overview.md).
@@ -41,7 +41,7 @@ Zum Importieren Ihrer Application Insights-Abfrage verwenden Sie die Desktopvers
 Installieren Sie [Power BI Desktop](https://powerbi.microsoft.com/en-us/desktop/).
 
 ### <a name="export-an-analytics-query"></a>Exportieren einer Analytics-Abfrage
-1. [Öffnen Sie Analytics, und schreiben Sie Ihre Abfrage](app-insights-analytics-tour.md).
+1. [Öffnen Sie Analytics, und schreiben Sie Ihre Abfrage](../log-analytics/query-language/get-started-analytics-portal.md).
 2. Testen und optimieren Sie die Abfrage, bis Sie mit den Ergebnissen zufrieden sind. Stellen Sie sicher, dass die Abfrage ordnungsgemäß in Analytics ausgeführt wird, bevor Sie sie exportieren.
 3. Wählen Sie im Menü **Exportieren** die Option **Power BI (M)**. Speichern Sie die Textdatei.
    
@@ -109,7 +109,7 @@ Wenn das Verkleinern des von der Analytics-Abfrage stammenden Datasets Ihre Anfo
    * Ersetzen Sie **https://management.azure.com/subscriptions/...**
    * durch  **https://api.applicationinsights.io/beta/apps/...**
 3. Aktualisieren Sie schließlich die Anmeldeinformationen in „basic“, und verwenden Sie Ihren API-Schlüssel.
-  
+ �
 
 **Vorhandenes Skript**
  ```
@@ -155,5 +155,5 @@ Nach dem anfänglichen Import werden das Dashboard und die Berichte täglich akt
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Power BI – Informationen](http://www.powerbi.com/learning/)
-* [Analytics-Tutorial](app-insights-analytics-tour.md)
+* [Analytics-Tutorial](../log-analytics/query-language/get-started-analytics-portal.md)
 

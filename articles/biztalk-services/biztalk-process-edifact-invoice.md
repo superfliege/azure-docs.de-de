@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 05/31/2016
 ms.author: deonhe
-ms.openlocfilehash: 2ebd6a8cb70f218c3b56bc78c9b853dbf51ab468
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: bb07e3ab8043aab24d6d8c3e3db3f3674b28c6f3
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
-ms.locfileid: "26633865"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51244490"
 ---
 # <a name="tutorial-process-edifact-invoices-using-azure-biztalk-services"></a>Tutorial: Verarbeiten von EDIFACT-Rechnungen mit Azure BizTalk Services
 
@@ -28,10 +28,10 @@ ms.locfileid: "26633865"
 Sie können X12- und EDIFACT-Vereinbarungen im BizTalk Services-Portal konfigurieren und bereitstellen. In diesem Tutorial untersuchen wir das Erstellen einer EDIFACT-Vereinbarung für das Austauschen von Rechnungen zwischen Handelspartnern. Dieses Tutorial basiert auf einer umfassenden Geschäftslösung zwischen den beiden Handelspartnern Northwind und Contoso, die EDIFACT-Nachrichten austauschen.  
 
 ## <a name="sample-based-on-this-tutorial"></a>Auf diesem Tutorial basierendes Beispiel
-Dieses Tutorial basiert auf dem Beispiel **Process EDIFACT Invoices Using Azure BizTalk Services** (Senden von EDIFACT-Rechnungen mit Azure BizTalk Services), das aus der [MSDN Code Gallery](http://go.microsoft.com/fwlink/?LinkId=401005) herunterladen werden kann. Sie können dieses Tutorial anhand des Beispiels durchlaufen, um zu verstehen, wie das Beispiel erstellt wurde. Sie können dieses Tutorial aber auch nutzen, um Ihre eigene Lösung von Grund auf zu erstellen. Dieses Tutorial ist auf den zweiten Ansatz ausgelegt, damit Sie nachvollziehen können, wie diese Lösung entwickelt wurde. Darüber hinaus ist dieses Tutorial so weit wie möglich in Einklang mit dem Beispiel, sodass dieselben Namen für Artefakte (z. B. Schemas und Transformationen) wie im Beispiel verwendet werden.  
+Dieses Tutorial basiert auf dem Beispiel **Process EDIFACT Invoices Using Azure BizTalk Services** (Senden von EDIFACT-Rechnungen mit Azure BizTalk Services), das aus der [MSDN Code Gallery](https://go.microsoft.com/fwlink/?LinkId=401005) herunterladen werden kann. Sie können dieses Tutorial anhand des Beispiels durchlaufen, um zu verstehen, wie das Beispiel erstellt wurde. Sie können dieses Tutorial aber auch nutzen, um Ihre eigene Lösung von Grund auf zu erstellen. Dieses Tutorial ist auf den zweiten Ansatz ausgelegt, damit Sie nachvollziehen können, wie diese Lösung entwickelt wurde. Darüber hinaus ist dieses Tutorial so weit wie möglich in Einklang mit dem Beispiel, sodass dieselben Namen für Artefakte (z. B. Schemas und Transformationen) wie im Beispiel verwendet werden.  
 
 > [!NOTE]
-> Da diese Lösung das Senden einer Nachricht von einer EAI-Brücke an eine EDI-Brücke umfasst, wird das Beispiel [BizTalk Services Bridge chaining sample – EAI to EDI](http://code.msdn.microsoft.com/BizTalk-Bridge-chaining-2246b104) wiederverwendet.  
+> Da diese Lösung das Senden einer Nachricht von einer EAI-Brücke an eine EDI-Brücke umfasst, wird das Beispiel [BizTalk Services Bridge chaining sample – EAI to EDI](https://code.msdn.microsoft.com/BizTalk-Bridge-chaining-2246b104) wiederverwendet.  
 > 
 > 
 
@@ -59,7 +59,7 @@ Zum Vervollständigen dieses Szenarios verwenden wir Service Bus-Warteschlangen 
 * Sie benötigen ein BizTalk Services-Abonnement. Lassen Sie uns für dieses Tutorial annehmen, dass Sie ein BizTalk Services-Abonnement mit dem Namen **contosowabs**haben.
 * Registrieren Sie Ihr BizTalk Services-Abonnement im BizTalk Services-Portal. Anweisungen finden Sie unter [Registrieren einer BizTalk-Service-Bereitstellung im BizTalk Services-Portal](https://msdn.microsoft.com/library/hh689837.aspx)
 * Visual Studio muss installiert sein.
-* Das BizTalk Services SDK muss installiert sein. Sie können das SDK von [http://go.microsoft.com/fwlink/?LinkId=235057](http://go.microsoft.com/fwlink/?LinkId=235057)  
+* Das BizTalk Services SDK muss installiert sein. Sie können das SDK unter [http://go.microsoft.com/fwlink/?LinkId=235057](https://go.microsoft.com/fwlink/?LinkId=235057) herunterladen.  
 
 ## <a name="step-1-create-the-service-bus-queues"></a>Schritt 1: Erstellen der Service Bus-Warteschlangen
 Diese Lösung verwendet zum Austauschen von Nachrichten zwischen Handelspartnern Service Bus-Warteschlangen. Contoso und Northwind senden Nachrichten an die Warteschlangen, die von den EAI- und/oder EDI-Brücken genutzt werden. Für diese Lösung benötigen Sie drei Service Bus-Warteschlangen:
@@ -154,7 +154,7 @@ Das BizTalk Services-Projekt **InvoiceProcessingBridge**, das die Umformung der 
 7. Erweitern Sie im Projektmappen-Explorer **MessageFlowItinerary.bcs**, und doppelklicken Sie auf die Datei **EDIBridge.config**. Ersetzen Sie den Inhalt von **EDIBridge.config** durch Folgendes.
    
    > [!NOTE]
-   > Warum muss ich die CONFIG-Datei bearbeiten? Der externe Dienstendpunkt, den wir dem Zeichenbereich im Brücken-Designer hinzugefügt haben, stellt die EDI-Brücken dar, die wir zuvor bereitgestellt hatten. EDI-Brücken sind bidirektionale Brücken mit einer Sende- und einer Empfangsseite. Die EAI-Brücke, die wir dem Brücken-Designer hinzugefügt haben, ist jedoch eine unidirektionale Brücke. Zum Verarbeiten der verschiedenen Nachrichtenaustauschmuster der beiden Brücken verwenden wir ein benutzerdefiniertes Brückenverhalten, indem wir ihre Konfiguration in die CONFIG-Datei aufnehmen. Darüber hinaus verarbeitet das benutzerdefinierte Verhalten auch die Authentifizierung beim Endpunkt der EDI-Sendebrücke. Dieses benutzerdefinierte Verhalten steht als eigenes Beispiel unter [BizTalk Services Bridge chaining sample – EAI to EDI (BizTalk Services Bridge-Verkettungsbeispiel – EAI zu EDI)](http://code.msdn.microsoft.com/BizTalk-Bridge-chaining-2246b104) zur Verfügung. Das Beispiel wird in dieser Projektmappe wiederverwendet.  
+   > Warum muss ich die CONFIG-Datei bearbeiten? Der externe Dienstendpunkt, den wir dem Zeichenbereich im Brücken-Designer hinzugefügt haben, stellt die EDI-Brücken dar, die wir zuvor bereitgestellt hatten. EDI-Brücken sind bidirektionale Brücken mit einer Sende- und einer Empfangsseite. Die EAI-Brücke, die wir dem Brücken-Designer hinzugefügt haben, ist jedoch eine unidirektionale Brücke. Zum Verarbeiten der verschiedenen Nachrichtenaustauschmuster der beiden Brücken verwenden wir ein benutzerdefiniertes Brückenverhalten, indem wir ihre Konfiguration in die CONFIG-Datei aufnehmen. Darüber hinaus verarbeitet das benutzerdefinierte Verhalten auch die Authentifizierung beim Endpunkt der EDI-Sendebrücke. Dieses benutzerdefinierte Verhalten steht als eigenes Beispiel unter [BizTalk Services Bridge chaining sample – EAI to EDI (BizTalk Services Bridge-Verkettungsbeispiel – EAI zu EDI)](https://code.msdn.microsoft.com/BizTalk-Bridge-chaining-2246b104) zur Verfügung. Das Beispiel wird in dieser Projektmappe wiederverwendet.  
    > 
    > 
    
@@ -228,7 +228,6 @@ In diesem Thema sehen wir uns an, wie die Lösung mithilfe der Anwendung **Tutor
 
 1. Drücken Sie in Visual Studio F5, um den **Tutorialclient**zu starten.
 2. Die Werte auf dem Bildschirm müssen von dem Schritt, in dem die Service Bus-Warteschlangen erstellt wurden, bereits aufgefüllt sein. Klicken Sie auf **Weiter**.
-
 3. Geben Sie im nächsten Fenster ACS-Anmeldeinformationen für das BizTalk Services-Abonnement und die Endpunkte an, an denen die EAI- und EDI-Brücken (Empfangsbrücken) bereitgestellt sind.
    
    Sie hatten den Endpunkt der EAI-Bridge im vorhergehenden Schritt kopiert. Für den Endpunkt der EDI-Empfangsbrücke navigieren Sie im BizTalk Services-Portal zu „Vereinbarung > Empfangseinstellungen > Transport > Endpunkt“.
@@ -255,11 +254,9 @@ Der wichtigste Aspekt beim Arbeiten mit Batches besteht in der eigentlichen Frei
 1. Klicken Sie im BizTalk Services-Portal auf die Vereinbarung, die Sie zuvor erstellt haben. Klicken Sie auf „Sendeeinstellungen > Batchverarbeitung > Batch hinzufügen“.
 2. Geben Sie als Batchnamen **InvoiceBatch** ein, geben Sie eine Beschreibung an, und klicken Sie anschließend auf **Weiter**.
 3. Geben Sie ein Batchkriterium an, das definiert, welche Nachrichten als Batch gesendet werden müssen. In dieser Lösung werden alle Nachrichten im Batch gesendet. Wählen Sie also die Option „Erweiterte Definitionen verwenden“ aus, und geben Sie **1 = 1** ein. Dies ist eine Bedingung, die immer wahr ist. Daher werden alle Nachrichten als Batch gesendet. Klicken Sie auf **Weiter**.
-
    
    ![][17]  
 4. Geben Sie ein Batchfreigabekriterium ein. Wählen Sie im Dropdownfeld **MessageCountBased** aus, und wählen Sie für **Anzahl** den Wert **3** aus. Dies bedeutet, dass ein aus drei Nachrichten bestehender Batch an Northwind gesendet wird. Klicken Sie auf **Weiter**.
-
    
    ![][18]  
 5. Überprüfen Sie die Zusammenfassung, und klicken Sie dann auf **Speichern**. Klicken Sie auf **Bereitstellen** , um die Vereinbarung erneut bereitzustellen.

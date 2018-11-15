@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: a1dbc04a83e80281fb6cd516c546c1dddff6db37
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 614fdae1865f008bdbc2cb8d5e8b96c0addcc112
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50413797"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51036922"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---infrastructure-best-practices"></a>Migrieren lokaler Apache Hadoop-Cluster zu Azure HDInsight – Best Practices für Infrastruktur
 
@@ -45,7 +45,7 @@ Anwendungen oder Komponenten, die in lokalen Clustern verfügbar waren, aber nic
 
 |**Anwendung**|**Integration**
 |---|---|
-|Airflow|IaaS- oder HDInsight-Edgeknoten
+|Luftströmung|IaaS- oder HDInsight-Edgeknoten
 |Alluxio|IaaS  
 |Arcadia|IaaS 
 |Atlas|Keine (nur HDP)
@@ -70,7 +70,7 @@ Anwendungen oder Komponenten, die in lokalen Clustern verfügbar waren, aber nic
 |Palantir|IaaS 
 |Sailpoint|Iaas 
 
-Weitere Informationen finden Sie im Artikel [Verfügbare Hadoop-Komponenten in verschiedenen Versionen von HDInsight](../hdinsight-component-versioning.md#hadoop-components-available-with-different-hdinsight-versions).
+Weitere Informationen finden Sie im Artikel [Welche Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?](../hdinsight-component-versioning.md#apache-hadoop-components-available-with-different-hdinsight-versions).
 
 ## <a name="customize-hdinsight-clusters-using-script-actions"></a>Anpassen von HDInsight-Clustern mit Skriptaktionen
 
