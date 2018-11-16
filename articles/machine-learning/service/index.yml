@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: dd5817cd2c6c3ce3e1205136232253c42a6b1ab6
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: 96efb64ce7d77da567d587857e4a25ae334a3ffc
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51298557"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51707111"
 documentType: LandingData
 title: Azure Machine Learning-Dienst (Vorschauversion) – Dokumentation
 metadata:
@@ -52,14 +52,14 @@ sections:
     - html: <a href="tutorial-auto-train-models">Überlassen Sie uns das automatische Generieren und Optimieren eines Modells für Sie</a>
     - html: <a href="tutorial-deploy-models-with-aml">Bereitstellen eines Modells als Webdienst</a>
   - type: paragraph
-    text: <b>Beispielnotebooks:</b> Erkunden Sie Azure Machine Learning mit <a href="http://aka.ms/aml-notebooks">diesen Jupyter Notebooks</a> (verfügbar auf GitHub).
+    text: <b>Beispielnotebooks:</b> Erkunden Sie Azure Machine Learning mit <a href="https://aka.ms/aml-notebooks">diesen Jupyter Notebooks</a> (verfügbar auf GitHub).
 - title: Verweis
   items:
   - type: list
     style: unordered
     items:
-    - html: <a href="http://aka.ms/data-prep-sdk">Azure Machine Learning – Datenaufbereitungs-SDK</a>
-    - html: <a href="http://aka.ms/aml-sdk">Azure Machine Learning SDK für Python (Haupt-SDK)</a>
+    - html: <a href="https://aka.ms/data-prep-sdk">Azure Machine Learning – Datenaufbereitungs-SDK</a>
+    - html: <a href="https://aka.ms/aml-sdk">Azure Machine Learning SDK für Python (Haupt-SDK)</a>
     - html: <a href="https://aka.ms/aml-monitoring-sdk">Azure Machine Learning-Überwachungs-SDK</a>
 - title: Weitere Azure Machine Learning-Technologien
   items:

@@ -255,6 +255,10 @@ items:
       href: azure-stack-sql-resource-provider-maintain.md
     - name: Entfernen des SQL Server-Ressourcenanbieters
       href: azure-stack-sql-resource-provider-remove.md
+    - name: Versionsanmerkungen zum SQL-Ressourcenanbieter
+      items:
+      - name: Versionsanmerkungen zum SQL-Ressourcenanbieter 1.1.30.0
+        href: azure-stack-sql-resource-provider-11300.md
   - name: Anbieten von MySQL als PaaS
     href: azure-stack-mysql-resource-provider.md
     items:
@@ -270,6 +274,10 @@ items:
       href: azure-stack-mysql-resource-provider-maintain.md
     - name: Entfernen des MySQL Server-Ressourcenanbieters
       href: azure-stack-mysql-resource-provider-remove.md
+    - name: Versionsanmerkungen zum MySQL-Ressourcenanbieter
+      items:
+      - name: Versionsanmerkungen zum MySQL-Ressourcenanbieter 1.1.30.0
+        href: azure-stack-mysql-resource-provider-11300.md
   - name: App Service als PaaS anbieten
     href: azure-stack-app-service-overview.md
     items:
@@ -293,11 +301,11 @@ items:
       href: azure-stack-app-service-configure-deployment-sources.md
     - name: 'App Service in Azure Stack: Versionshinweise'
       items:
-      - name: 'App Service in Azure Stack: Versionshinweise zu Update 1'
+      - name: App Service in Azure Stack – Versionshinweise zu Update 1
         href: azure-stack-app-service-release-notes-update-one.md
-      - name: 'App Service in Azure Stack: Versionshinweise zu Update 2'
+      - name: App Service in Azure Stack – Versionshinweise zu Update 2
         href: azure-stack-app-service-release-notes-update-two.md
-      - name: 'App Service in Azure Stack: Versionshinweise zu Update 3'
+      - name: App Service in Azure Stack – Versionshinweise zu Update 3
         href: azure-stack-app-service-release-notes-update-three.md
       - name: 'App Service in Azure Stack: Versionshinweise zu Update 4'
         href: azure-stack-app-service-release-notes-update-four.md
@@ -390,9 +398,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-stack
   - name: Training und Zertifizierung
     href: https://docs.microsoft.com/azure/azure-stack/azure-stack-train-and-cert
-ms.openlocfilehash: b68cebd2d6e2a7965eef61bf35c50824f7102c8e
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: b339c19e4736ddf55794ae07f2f14b3d993f7762
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51614751"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51686652"

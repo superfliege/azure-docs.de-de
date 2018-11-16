@@ -35,7 +35,7 @@
 # Anleitung
 ## Internetkonnektivität
 ### [Netzwerklastenausgleich – öffentliche Server](../load-balancer/load-balancer-get-started-internet-portal.md?toc=%2fazure%2fnetworking%2ftoc.json)
-### [Anwendungslastenausgleich – öffentliche Server](../application-gateway/application-gateway-create-gateway-portal.md?toc=%2fazure%2fnetworking%2ftoc.json)
+### [Anwendungslastenausgleich – öffentliche Server](../application-gateway/quick-create-portal.md?toc=%2fazure%2fnetworking%2ftoc.json)
 ### [Schützen von Webanwendungen](../application-gateway/application-gateway-web-application-firewall-portal.md?toc=%2fazure%2fnetworking%2ftoc.json)
 ### [Verteilen von Datenverkehrs auf Standorte](../traffic-manager/traffic-manager-configure-geographic-routing-method.md?toc=%2fazure%2fnetworking%2ftoc.json)
 ## Interne Konnektivität

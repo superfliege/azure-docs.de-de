@@ -70,38 +70,6 @@ items:
   expanded: true
 - name: Konzepte
   items:
-  - name: Arbeiten mit einem Azure Cosmos-Konto
-    href: account-overview.md
-  - name: Container und Elemente
-    items:
-    - name: Arbeiten mit Datenbanken, Containern und Elementen
-      href: databases-containers-items.md
-    - name: Indizierung
-      items:
-      - name: Übersicht
-        href: index-overview.md
-      - name: Indizierungsrichtlinie
-        href: index-policy.md
-      - name: Indextypen
-        href: index-types.md
-      - name: Indexpfade
-        href: index-paths.md
-    - name: Änderungsfeed
-      items:
-      - name: Übersicht
-        href: change-feed.md
-      - name: Lesen des Änderungsfeeds
-        href: read-change-feed.md
-      - name: Change Feed Processor
-        href: change-feed-processor.md
-      - name: Änderungsfeed mit Azure Functions
-        href: change-feed-functions.md
-    - name: Gültigkeitsdauer
-      href: time-to-live.md
-    - name: Einschränkungen für eindeutige Schlüssel
-      href: unique-keys.md
-    - name: Transaktionen und optimistische Nebenläufigkeit
-      href: database-transactions-optimistic-concurrency.md
   - name: Globale Verteilung
     items:
     - name: Übersicht
@@ -136,6 +104,38 @@ items:
       href: request-units.md
     - name: Bereitstellen des Durchsatzes für Container und Datenbanken
       href: set-throughput.md
+  - name: Arbeiten mit einem Azure Cosmos-Konto
+    href: account-overview.md
+  - name: Container und Elemente
+    items:
+    - name: Arbeiten mit Datenbanken, Containern und Elementen
+      href: databases-containers-items.md
+    - name: Indizierung
+      items:
+      - name: Übersicht
+        href: index-overview.md
+      - name: Indizierungsrichtlinie
+        href: index-policy.md
+      - name: Indextypen
+        href: index-types.md
+      - name: Indexpfade
+        href: index-paths.md
+    - name: Änderungsfeed
+      items:
+      - name: Übersicht
+        href: change-feed.md
+      - name: Lesen des Änderungsfeeds
+        href: read-change-feed.md
+      - name: Change Feed Processor
+        href: change-feed-processor.md
+      - name: Änderungsfeed mit Azure Functions
+        href: change-feed-functions.md
+    - name: Gültigkeitsdauer
+      href: time-to-live.md
+    - name: Einschränkungen für eindeutige Schlüssel
+      href: unique-keys.md
+    - name: Transaktionen und optimistische Nebenläufigkeit
+      href: database-transactions-optimistic-concurrency.md
   - name: Sicherheit
     items:
     - name: Übersicht
@@ -567,9 +567,9 @@ items:
       href: use-cases.md
     - name: Apps für soziale Medien
       href: social-media-apps.md
-ms.openlocfilehash: 786829ec3052672c4a931d6a31452a3d96058fcd
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.openlocfilehash: 9a9aed84f75d9db93ec02bbfa681412dd1fa97da
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51636559"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51706387"

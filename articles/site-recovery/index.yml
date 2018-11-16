@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: e7a5c7f08b34c91512ad2bf5d9f3fcb82feb9e08
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 5a501ac71ebca7f9327ae30f95d2498948e00b49
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44026095"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51713451"
 documentType: LandingData
 title: Site Recovery-Dokumentation
 metadata:
@@ -50,7 +50,7 @@ sections:
   - type: list
     style: ordered
     items:
-    - html: <a href="tutorial-prepare-azure">Prepare Azure</a> (Vorbereiten von Azure)
+    - html: <a href="tutorial-prepare-azure">Vorbereiten von Azure</a>
     - html: <a href="tutorial-prepare-on-premises-vmware">Prepare on-premises VMware</a> (Lokales Vorbereiten von VMware)
     - html: <a href="tutorial-vmware-to-azure">Set-up disaster recovery</a> (Einrichten der Notfallwiederherstellung)
     - html: <a href="tutorial-dr-drill-azure">Durchführen eines Notfallwiederherstellungsverfahrens</a>
@@ -60,7 +60,7 @@ sections:
   - type: list
     style: ordered
     items:
-    - html: <a href="tutorial-prepare-azure">Prepare Azure</a> (Vorbereiten von Azure)
+    - html: <a href="tutorial-prepare-azure">Vorbereiten von Azure</a>
     - html: <a href="tutorial-prepare-on-premises-hyper-v">Vorbereiten lokaler Hyper-V-Instanzen</a>
     - html: <a href="tutorial-hyper-v-to-azure">Einrichten der Notfallwiederherstellung für virtuelle Hyper-V-Computer</a>
     - html: <a href="tutorial-hyper-v-vmm-to-azure">Einrichten der Notfallwiederherstellung für virtuelle Hyper-V-Computer, die von System Center VMM verwaltet werden</a>
@@ -80,6 +80,6 @@ sections:
     className: cardsD
     items:
     - title: Befehlszeile
-      html: <p><a href="/powershell/module/azurerm.siterecovery>Azure PowerShell</a></p>
+      html: <p><a href="/powershell/module/azurerm.siterecovery/">Azure PowerShell</a></p>
     - title: REST
       html: <p><a href="/rest/api/site-recovery/">REST-API-Referenz</a></p>
