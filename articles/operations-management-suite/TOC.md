@@ -42,9 +42,9 @@
 #### [Office 365](oms-solution-office-365.md)
 #### [Service Fabric-Analysen](../log-analytics/log-analytics-service-fabric.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 #### Dienstzuordnung
-##### [Verwenden Sie](../monitoring/monitoring-service-map.md)
-##### [Konfigurieren](../monitoring/monitoring-service-map-configure.md)
-##### [Operations Manager-Integration](../monitoring/monitoring-service-map-scom.md)
+##### [Verwenden Sie](../azure-monitor/insights/service-map.md)
+##### [Konfigurieren](../azure-monitor/insights/service-map-configure.md)
+##### [Operations Manager-Integration](../azure-monitor/insights/service-map-scom.md)
 #### [SQL-Bewertung](../log-analytics/log-analytics-sql-assessment.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 #### [Surface Hub](../log-analytics/log-analytics-surface-hubs.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 #### [Upgradeanalysen](https://technet.microsoft.com/itpro/windows/deploy/manage-windows-upgrades-with-upgrade-analytics?f=255&MSPPError=-2147217396)
@@ -65,7 +65,7 @@
 ### [bewährten Methoden](../azure-monitor/insights/solutions-best-practices.md)
 
 ## Verwaltungsszenarien
-### [Sammeln von Analysedaten aus Runbook](../monitoring/monitoring-runbook-datacollect.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
+### [Sammeln von Analysedaten aus Runbook](../azure-monitor/platform/runbook-datacollect.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 
 # Ressourcen
 ## [Azure-Roadmap](https://azure.microsoft.com/roadmap/)
