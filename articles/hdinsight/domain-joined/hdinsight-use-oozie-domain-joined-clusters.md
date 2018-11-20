@@ -1,22 +1,22 @@
 ---
-title: Apache Hadoop Oozie-Workflows in in die Domäne eingebundenen Azure HDInsight-Clustern
-description: Verwenden von Hadoop Oozie in einem in die Domäne eingebundenen, Linux-basierten HDInsight-Enterprise-Sicherheitspaket. Erfahren Sie, wie Sie einen Oozie-Workflow definieren und einen Oozie-Auftrag übermitteln können.
+title: Apache Hadoop Oozie-Workflows in Azure HDInsight-Clustern mit Enterprise-Sicherheitspaket
+description: Verwenden Sie Hadoop Oozie in einem Linux-basierten HDInsight-Enterprise-Sicherheitspaket. Erfahren Sie, wie Sie einen Oozie-Workflow definieren und einen Oozie-Auftrag übermitteln können.
 services: hdinsight
 ms.service: hdinsight
 author: omidm1
 ms.author: omidm
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 06/26/2018
-ms.openlocfilehash: 69bf885ad5d6244997c7ce9cf61bdee9e05c1826
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.date: 09/24/2018
+ms.openlocfilehash: 563a4c14d78b7edd228c998817f44c6b3f14efe7
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43048973"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46947495"
 ---
-# <a name="run-apache-oozie-in-domain-joined-hdinsight-hadoop-clusters"></a>Ausführen von Apache Oozie in in die Domäne eingebundenen HDInsight Hadoop-Clustern
+# <a name="run-apache-oozie-in-hdinsight-hadoop-clusters-with-enterprise-security-package"></a>Ausführen von Apache Oozie in HDInsight Hadoop-Clustern mit Enterprise-Sicherheitspaket
 Oozie ist ein Workflow- und Koordinationssystem zur Verwaltung von Hadoop-Aufträgen. Oozie ist in den Hadoop-Stack integriert und unterstützt die folgenden Aufträge:
 - Apache MapReduce
 - Apache Pig
@@ -26,12 +26,12 @@ Oozie ist ein Workflow- und Koordinationssystem zur Verwaltung von Hadoop-Auftr�
 Sie können Oozie auch dazu verwenden, bestimmte Aufträge für ein System zu planen, beispielsweise Java-Programme oder Shellskripts.
 
 ## <a name="prerequisite"></a>Voraussetzung
-- Ein in die Domäne eingebundener Azure HDInsight Hadoop-Cluster. Weitere Informationen finden Sie unter [Konfigurieren von in die Domäne eingebundenen HDInsight-Clustern](./apache-domain-joined-configure-using-azure-adds.md).
+- Azure HDInsight Hadoop-Cluster mit Enterprise-Sicherheitspaket (ESP). Weitere Informationen finden Sie unter [Konfigurieren von HDInsight-Clustern mit Enterprise-Sicherheitspaket](./apache-domain-joined-configure-using-azure-adds.md).
 
     > [!NOTE]
-    > Ausführliche Anweisungen zur Verwendung von Oozie in nicht in die Domäne eingebundenen Clustern finden Sie unter [Verwenden von Hadoop Oozie-Workflows in Linux-basiertem Azure HDInsight](../hdinsight-use-oozie-linux-mac.md).
+    > Eine ausführliche Anleitung zur Verwendung von Oozie in Clustern ohne ESP finden Sie unter [Verwenden von Hadoop Oozie-Workflows in Linux-basiertem Azure HDInsight](../hdinsight-use-oozie-linux-mac.md).
 
-## <a name="connect-to-a-domain-joined-cluster"></a>Herstellen einer Verbindung mit einem in die Domäne eingebundenen Cluster
+## <a name="connect-to-an-esp-cluster"></a>Herstellen einer Verbindung mit einem ESP-Cluster
 
 Weitere Informationen zu Secure Shell (SSH) finden Sie unter [Herstellen einer Verbindung mit HDInsight (Hadoop) per SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
@@ -262,7 +262,7 @@ Sie können die beiden Hive-Skripts für Hive-Server 1 und Hive-Server 2 wie in 
     ```
 
 ## <a name="submit-oozie-jobs"></a>Übermitteln von Oozie-Aufträgen
-Das Übermitteln von Oozie-Aufträgen für in die Domäne eingebundene Cluster erfolgt wie die Übermittlung von Oozie-Aufträgen in nicht in die Domäne eingebundenen Clustern.
+Das Übermitteln von Oozie-Aufträgen für ESP-Cluster erfolgt wie die Übermittlung von Oozie-Aufträgen in Clustern ohne ESP.
 
 Weitere Informationen finden Sie unter [Verwenden von Oozie mit Hadoop zum Definieren und Ausführen eines Workflows in Linux-basiertem Azure HDInsight](../hdinsight-use-oozie-linux-mac.md).
 
@@ -311,7 +311,7 @@ Weitere Informationen finden Sie unter [Oozie Installation and Configuration](ht
 Für Komponenten wie Hive-Server 1, für die das Ranger-Plug-In nicht verfügbar ist oder nicht unterstützt wird, ist nur die undifferenzierte HDFS-Autorisierung möglich. Eine differenzierte Autorisierung ist nur mithilfe von Ranger-Plug-Ins möglich.
 
 ## <a name="get-the-oozie-web-ui"></a>Zugreifen auf die Oozie-Webbenutzeroberfläche
-Die Oozie-Webbenutzeroberfläche bietet eine webbasierte Anzeige des Status von Oozie-Aufträgen im Cluster. Um auf die Webbenutzeroberfläche zuzugreifen, führen Sie die folgenden Schritte in in die Domäne eingebundenen Clustern aus:
+Die Oozie-Webbenutzeroberfläche bietet eine webbasierte Anzeige des Status von Oozie-Aufträgen im Cluster. Um auf die Webbenutzeroberfläche zuzugreifen, führen Sie in ESP-Clustern die folgenden Schritte aus:
 
 1. Fügen Sie einen [Edgeknoten](../hdinsight-apps-use-edge-node.md) hinzu, und aktivieren Sie die [SSH-Kerberos-Authentifizierung](../hdinsight-hadoop-linux-use-ssh-unix.md).
 

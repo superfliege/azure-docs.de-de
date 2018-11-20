@@ -1,21 +1,26 @@
 ---
 title: IIS-Authentifizierung und Azure MFA-Server | Microsoft-Dokumentation
-description: Bereitstellen von IIS-Authentifizierung und Azure Multi-Factor Authentication-Server
+description: Dies ist die Azure Multi-Factor Authentication-Seite, die bei der Bereitstellung der IIS-Authentifizierung und des Azure Multi-Factor Authentication-Servers Unterstützung bietet.
 services: multi-factor-authentication
-ms.service: active-directory
-ms.component: authentication
-ms.topic: conceptual
-ms.date: 07/11/2018
-ms.author: joflore
+documentationcenter: ''
 author: MicrosoftGuyJFlo
 manager: mtillman
-ms.reviewer: michmcla
-ms.openlocfilehash: 6fa0f7250b0714921c631b7f77b3bc9e826b9ba4
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.assetid: d1bf1c8a-2c10-4ae6-9f4b-75f0c3df43eb
+ms.service: multi-factor-authentication
+ms.workload: identity
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: get-started-article
+ms.date: 06/16/2017
+ms.author: joflore
+ms.reviewer: richagi
+ms.custom: H1Hack27Feb2017,it-pro
+ms.openlocfilehash: 00d40b27d9cdbc1ad157ddbfc029da68542b09b8
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39161781"
+ms.lasthandoff: 04/23/2018
+ms.locfileid: "31786875"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-for-iis-web-apps"></a>Konfigurieren des Azure Multi-Factor Authentication-Servers für IIS-Web-Apps
 
