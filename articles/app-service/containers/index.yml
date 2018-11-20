@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: df0b0e945550cbab34f409da9499efdd446be85a
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 0c706130cfa60e0710373b2214e6834789a1b484
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46947301"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52160918"
 documentType: LandingData
 title: App Service unter Linux – Dokumentation
 metadata:
@@ -41,7 +41,7 @@ sections:
     - image:
         src: https://docs.microsoft.com/azure/app-service/media/index/logo_java.svg
       text: Java
-      href: https://docs.microsoft.com/azure/azure-toolkit-for-intellij-hello-world-web-app-linux?toc=/azure/app-service/containers/toc.json
+      href: https://docs.microsoft.com/azure/app-service/containers/quickstart-java
     - image:
         src: https://docs.microsoft.com/azure/app-service/media/index/logo_python.svg
       text: Python
@@ -98,7 +98,7 @@ sections:
   - type: list
     style: ordered
     items:
-    - html: Erstellen einer Anwendung mithilfe von <a href="/azure/app-service/containers/tutorial-dotnetcore-sqldb-app">.NET Core mit Azure SQL-Datenbank</a> oder <a href="/azure/app-service/containers/tutorial-nodejs-mongodb-app">Node.js mit MongoDB</a>
+    - html: Erstellen einer Anwendung mithilfe von <a href="/azure/app-service/containers/tutorial-dotnetcore-sqldb-app">.NET Core mit Azure SQL-Datenbank</a>, <a href="/azure/app-service/containers/tutorial-java-enterprise-postgresql-app">Java Enterprise mit PostgreSQL</a> oder <a href="/azure/app-service/containers/tutorial-nodejs-mongodb-app">Node.js mit MongoDB</a>
     - html: <a href="/azure/app-service/app-service-web-tutorial-custom-domain">Zuordnen einer vorhandenen benutzerdefinierten Domäne zu Ihrer Anwendung</a>
     - html: <a href="/azure/app-service/app-service-web-tutorial-custom-SSL">Binden eines vorhandenen SSL-Zertifikats an Ihre Anwendung</a>
     - html: <a href="/azure/cdn/cdn-add-to-web-app">Hinzufügen eines CDN zur Anwendung</a>
@@ -111,7 +111,7 @@ sections:
     className: spaced noBullet
     items:
     - html: <a href="/powershell/azureps-cmdlets-docs">Azure PowerShell</a>
-    - html: <a href="/cli/azure/appservice">Azure-CLI</a>
+    - html: <a href="/cli/azure/appservice">Azure-Befehlszeilenschnittstelle</a>
 - title: Verweis
   items:
   - type: list
@@ -119,7 +119,7 @@ sections:
     className: cardsD
     items:
     - title: Befehlszeile
-      html: <p><a href="/powershell/azureps-cmdlets-docs">Azure PowerShell</a></p><p><a href="/cli/azure/appservice">Azure-CLI</a></p>
+      html: <p><a href="/powershell/azureps-cmdlets-docs">Azure PowerShell</a></p><p><a href="/cli/azure/appservice">Azure-Befehlszeilenschnittstelle</a></p>
     - title: Sprachen
       html: <p><a href="/dotnet/api">.NET</a></p><p><a href="/java/api/">Java</a></p>
     - title: REST
