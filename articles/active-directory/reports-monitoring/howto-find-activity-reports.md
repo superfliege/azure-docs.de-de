@@ -10,29 +10,31 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.component: report-monitor
-ms.date: 12/06/2017
+ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 182537d6f07b624f2395f591681ed4596579bde0
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: fab94088d1d54012a955b0663b078d03b13d6299
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42145778"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51624911"
 ---
 # <a name="find-activity-reports-in-the-azure-portal"></a>Speicherorte von Aktivitätsberichten im Azure-Portal
 
-In diesem Artikel beschreiben wir, wie Sie Benutzeraktivitätsberichte von Azure Active Directory im Azure-Portal finden.
+In diesem Artikel wird beschrieben, wie Sie Benutzeraktivitätsberichte von Azure Active Directory (Azure AD) im Azure-Portal finden.
 
-## <a name="activity-and-integrated-app-reports"></a>Aktivitätsberichte und Berichte zu integrierten Apps
+## <a name="audit-logs-report"></a>Bericht „Überwachungsprotokolle“
 
-Mit der kontextbasierten Berichterstellung im Azure-Portal werden die vorhandenen Berichte in einer zentralen Ansicht zusammengeführt. Eine einzelne zugrunde liegende API stellt die Daten in der Ansicht bereit.
+Im Bericht „Überwachungsprotokolle“ sind mehrere Berichte zu Anwendungsaktivitäten in einer gemeinsamen Ansicht für die kontextbasierte Berichterstellung kombiniert. Greifen Sie wie folgt auf den Bericht „Überwachungsprotokolle“ zu:
 
-Sie finden diese Ansicht auf dem Blatt **Azure Active Directory** im Abschnitt **AKTIVITÄT** unter **Überwachungsprotokolle**.
+1. Navigieren Sie zum [Azure-Portal](https://portal.azure.com).
+2. Wählen Sie oben rechts Ihr Verzeichnis aus, und wählen Sie dann im linken Navigationsbereich das Blatt **Azure Active Directory**.
+3. Wählen Sie auf dem Blatt „Azure Active Directory“ im Abschnitt **Aktivität** die Option **Überwachungsprotokolle**. 
 
-![Überwachungsprotokolle](./media/howto-find-activity-reports/482.png "Überwachungsprotokolle")
+    ![Überwachungsprotokolle](./media/howto-find-activity-reports/482.png "Überwachungsprotokolle")
 
-Die folgenden Berichte sind in dieser Ansicht zusammengefasst:
+Im Bericht „Überwachungsprotokolle“ sind die folgenden Berichte zusammengefasst:
 
 * Überwachungsbericht
 * Kennwortzurücksetzungsaktivität
@@ -43,26 +45,11 @@ Die folgenden Berichte sind in dieser Ansicht zusammengefasst:
 * Status des Kennwortrollovers
 * Kontobereitstellungsfehler
 
+### <a name="filtering-on-audit-logs"></a>Filtern nach Überwachungsprotokollen
 
-Der Bericht zur Anwendungsnutzung wurde verbessert und ist nun in der Ansicht **Anmeldungen** enthalten. Sie finden diese Ansicht, indem Sie auf dem Blatt **Azure Active Directory** im Abschnitt **AKTIVITÄT** die Option **Anmeldungen** wählen.
+Sie können die erweiterte Filterung im Überwachungsbericht verwenden, um auf eine bestimmte Kategorie von Überwachungsdaten zuzugreifen, indem Sie diese im Filter **Aktivitätskategorie** angeben. Wenn Sie beispielsweise alle Aktivitäten anzeigen möchten, die sich auf die Self-Service-Kennwortzurücksetzung beziehen, wählen Sie die Kategorie **Self-Service-Kennwortzurücksetzung**. 
 
-![Ansicht „Anmeldungen“](./media/howto-find-activity-reports/483.png "Ansicht „Anmeldungen“")
-
-Die Ansicht **Anmeldungen** enthält alle Benutzeranmeldungen. Sie können diese Informationen zum Abrufen von Informationen zur Anwendungsnutzung verwenden. Informationen zur Anwendungsnutzung finden Sie zudem in der Übersicht über die **Unternehmensanwendungen** im Abschnitt **VERWALTEN**.
-
-![Unternehmensanwendungen](./media/howto-find-activity-reports/484.png "Unternehmensanwendungen")
-
-## <a name="access-a-specific-report"></a>Zugreifen auf einen bestimmten Bericht
-
-Obwohl das Azure-Portal eine einzige Ansicht bietet, können Sie auch bestimmte Berichte prüfen.
-
-### <a name="audit-logs"></a>Überwachungsprotokolle
-
-Als Reaktion auf Kundenfeedback Kunden können Sie im Azure-Portal nun über erweiterte Filter auf die gewünschten Daten zugreifen. Ein möglicher Filter ist die *Aktivitätskategorie*. Damit werden die verschiedenen Arten von Aktivitätsprotokollen in Azure AD aufgelistet. Durch Auswahl der gewünschten Kategorie können Sie die Ergebnisse Ihrer Suche eingrenzen.
-
-Wenn Sie beispielsweise nur an Aktivitäten im Zusammenhang mit der Self-Service-Kennwortzurücksetzung interessiert sind, können Sie die Kategorie **Self-Service-Kennwortverwaltung** wählen. Die angezeigten Kategorien basieren auf dem Kontext der Ressource, mit der Sie arbeiten.  
-
-![Kategorieoptionen der Seite mit Filter nach Überwachungsprotokollen](./media/howto-find-activity-reports/06.png "Kategorieoptionen der Seite mit Filter nach Überwachungsprotokollen")
+    ![Category options on the Filter Audit Logs page](./media/howto-find-activity-reports/06.png "Category options on the Filter Audit Logs page")
 
 Zu Aktivitätskategorien zählen:
 
@@ -71,19 +58,36 @@ Zu Aktivitätskategorien zählen:
 - Self-Service-Gruppenverwaltung
 - Kontobereitstellung
 
-### <a name="application-usage"></a>Anwendungsnutzung
 
-Wählen Sie unter **Aktivität** die Option **Anmeldungen**, um die Anwendungsnutzung für alle oder eine einzelne App anzuzeigen. Wenn Sie die Ergebnisse eingrenzen möchten, können Sie anhand des Benutzer- oder Anwendungsnamens filtern.
+## <a name="sign-ins-report"></a>Bericht zu Anmeldeaktivitäten 
+
+Die Ansicht **Anmeldungen** enthält alle Benutzeranmeldungen und den Bericht **Anwendungsnutzung**. Informationen zur Anwendungsnutzung finden Sie zudem in der Übersicht über die **Unternehmensanwendungen** im Abschnitt **Verwalten**.
+
+    ![Enterprise applications](./media/howto-find-activity-reports/484.png "Enterprise applications")
+
+Greifen Sie wie folgt auf den Bericht „Anmeldungen“ zu:
+
+1. Navigieren Sie zum [Azure-Portal](https://portal.azure.com).
+2. Wählen Sie oben rechts Ihr Verzeichnis aus, und wählen Sie dann im linken Navigationsbereich das Blatt **Azure Active Directory**.
+3. Wählen Sie auf dem Blatt „Azure Active Directory“ im Abschnitt **Aktivität** die Option **Anmeldungen**. 
+
+    ![Ansicht „Anmeldungen“](./media/howto-find-activity-reports/483.png "Ansicht „Anmeldungen“")
+
+
+### <a name="filtering-on-application-name"></a>Filtern nach Anwendungsname
+
+Sie können den Bericht „Anmeldungen“ verwenden, um Details zur Anwendungsnutzung anzuzeigen, indem Sie nach dem Benutzernamen oder Anwendungsnamen filtern.
 
 ![Seite mit Filter nach Anmeldeereignissen](./media/howto-find-activity-reports/07.png "Seite mit Filter nach Anmeldeereignissen")
 
-### <a name="security-reports"></a>Sicherheitsberichte
+## <a name="security-reports"></a>Sicherheitsberichte
 
-#### <a name="azure-ad-anomalous-activity-reports"></a>Azure AD-Berichte zu anomalen Aktivitäten
+### <a name="anomalous-activity-reports"></a>Berichte zu anomalen Aktivitäten
 
-Die Azure AD-Sicherheitsberichte zur anormalen Aktivität werden zusammengestellt, um Ihnen einen zentralen Blick auf alle sicherheitsrelevanten Risikoereignisse zu gewähren, die Azure AD ermitteln und melden kann.
+Mit Berichten zu anomalen Aktivitäten werden Informationen zu sicherheitsbezogenen Risikoereignissen bereitgestellt, die von Azure AD erkannt und für die Berichte erstellt werden können.
 
-Die folgende Tabelle listet die Sicherheitsberichte zur anormalen Aktivität von Azure AD und die entsprechenden Risikoereignistypen im Azure-Portal auf.
+Die folgende Tabelle listet die Sicherheitsberichte zur anormalen Aktivität von Azure AD und die entsprechenden Risikoereignistypen im Azure-Portal auf. Weitere Informationen finden Sie unter [Azure Active Directory-Risikoereignisse](concept-risk-events.md).  
+
 
 | Bericht zur anormalen Aktivität von Azure AD |  Typ des Identity Protection-Risikoereignisses|
 | :--- | :--- |
@@ -99,29 +103,18 @@ Folgende Sicherheitsberichte zur anormalen Aktivität von Azure AD gehören nich
 * Anmeldungen nach mehreren Fehlern
 * Anmeldungen aus mehreren geografischen Regionen
 
-Weitere Informationen finden Sie unter [Azure Active Directory-Risikoereignisse](concept-risk-events.md).  
 
+### <a name="detected-risk-events"></a>Erkannte Risikoereignisse
 
-#### <a name="detected-risk-events"></a>Erkannte Risikoereignisse
+Sie können im [Azure-Portal](https://portal.azure.com) auf dem Blatt **Azure Active Directory** im Abschnitt **Sicherheit** auf die Berichte zu erkannten Risikoereignissen zugreifen. Die erkannten Risikoereignisse werden in den folgenden Berichten nachverfolgt:   
 
-Sie können im Azure-Portal auf dem Blatt **Azure Active Directory** unter **SICHERHEIT** auf die Berichte zu erkannten Risikoereignissen zugreifen. Die erkannten Risikoereignisse werden in den folgenden Berichten nachverfolgt:   
+- [Gefährdete Benutzer](concept-user-at-risk.md)
+- [Riskante Anmeldungen](concept-risky-sign-ins.md)
 
-- Gefährdete Benutzer
-- Riskante Anmeldungen
-
-![Sicherheitsberichte](./media/howto-find-activity-reports/04.png "Sicherheitsberichte")
-
-Weitere Informationen zu Sicherheitsberichten finden Sie unter:
-
-- [Sicherheitsbericht „Gefährdete Benutzer“ im Azure Active Directory-Portal](concept-user-at-risk.md)
-- [Bericht „Riskante Anmeldungen“ im Azure Active Directory-Portal](concept-risky-sign-ins.md)
-
-
-Wählen Sie zum Anzeigen des Berichts zur **Anwendungsnutzung** auf dem Blatt **Azure Active Directory** unter **VERWALTEN** die **Unternehmensanwendungen**, und wählen Sie dann **Anmeldevorgänge**.
-
-
-![Anmeldeberichte für Unternehmensanwendungen](./media/howto-find-activity-reports/199.png)
+    ![Sicherheitsberichte](./media/howto-find-activity-reports/04.png "Sicherheitsberichte")
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Eine Übersicht über die Berichterstellung finden Sie unter [Azure Active Directory-Berichterstellung](overview-reports.md).
+* [Berichte zu Überwachungsaktivitäten im Azure Active Directory-Portal](concept-audit-logs.md)
+* [Berichte zu Anmeldeaktivitäten im Azure Active Directory-Portal](concept-sign-ins.md)
+* [Azure Active Directory-Risikoereignisse](concept-risk-events.md)

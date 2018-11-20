@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/16/2017
-ms.openlocfilehash: 73b594aaabd814108dfce813b53a4ea865336e63
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: a9d3b92b9cb3334c8c52a9127a2fab92d187e3d9
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49985062"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51687434"
 ---
 # <a name="azure-stream-analytics-on-iot-edge-preview"></a>Azure Stream Analytics unter IoT Edge (Vorschau)
 
@@ -71,13 +71,17 @@ Ein Speichercontainer ist erforderlich, um die kompilierte ASA-Abfrage und die A
 
 1. Erstellen Sie im Azure-Portal einen neuen „Stream Analytics-Auftrag“. [Hier Direktlink zum Erstellen eines neuen ASA-Auftrags einfügen](https://ms.portal.azure.com/#create/Microsoft.StreamAnalyticsJob)
 
-2. Wählen Sie auf dem Erstellungsbildschirm **Edge** als **Hostingumgebung** aus (siehe folgende Abbildung). ![Auftragserstellung](media/stream-analytics-edge/ASAEdge_create.png)
+2. Wählen Sie auf dem Erstellungsbildschirm **Edge** als **Hostingumgebung** aus (siehe folgende Abbildung).
+
+   ![Auftragserstellung](media/stream-analytics-edge/ASAEdge_create.png)
 3. Auftragsdefinition
     1. **Definieren von Eingabedatenströmen**. Definieren Sie mindestens einen Eingabedatenstrom für Ihren Auftrag.
     2. Definieren von Verweisdaten (optional)
     3. **Definieren von Ausgabedatenströmen**. Definieren Sie mindestens einen Ausgabedatenstrom für Ihren Auftrag. 
     4. **Definieren der Abfrage**. Definieren Sie mit dem Inline-Editor die ASA-Abfrage in der Cloud. Der Compiler führt eine automatische Prüfung auf aktivierte ASA-Edge-Syntax durch. Sie können die Abfrage auch durch Hochladen von Beispieldaten testen. 
+
 4. Legen Sie im Menü **IoT Edge-Einstellungen** die Informationen zum Speichercontainer fest.
+
 5. Festlegen optionaler Einstellungen
     1. **Ereignisreihenfolge**. Sie können im Portal eine Richtlinie für die falsche Reihenfolge konfigurieren. Die zugehörige Dokumentation finden Sie [hier](https://msdn.microsoft.com/library/azure/mt674682.aspx?f=255&MSPPError=-2147217396).
     2. **Gebietsschema**. Hiermit legen Sie das Internationalisierungsformat fest.
@@ -181,20 +185,27 @@ Derzeit werden nur Edge Hub-Typen der Eingabe- und Ausgabestreams unterstützt. 
 
 
 ##### <a name="reference-data"></a>Verweisdaten
-Verweisdaten (auch als Nachschlagetabellen bezeichnet) sind eine begrenzte Menge von Daten, die statisch sind oder sich nur langsam ändern. Sie werden zum Nachschlagen oder Korrelieren mit Ihrem Datenstrom verwendet. Für den Einsatz von Verweisdaten in Ihrem Azure Stream Analytics-Auftrag verwenden Sie in der Regel [Verweisdaten für JOIN-Vorgänge](https://msdn.microsoft.com/library/azure/dn949258.aspx) in Ihrer Abfrage. Weitere Informationen finden Sie in der [ASA-Dokumentation zu Verweisdaten](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-use-reference-data).
+Verweisdaten (auch als Nachschlagetabellen bezeichnet) sind eine begrenzte Menge von Daten, die statisch sind oder sich nur langsam ändern. Sie werden zum Nachschlagen oder Korrelieren mit Ihrem Datenstrom verwendet. Für den Einsatz von Verweisdaten in Ihrem Azure Stream Analytics-Auftrag verwenden Sie in Ihrer Abfrage in der Regel [Verweisdaten für JOIN-Vorgänge](https://docs.microsoft.com/stream-analytics-query/reference-data-join-azure-stream-analytics). Weitere Informationen finden Sie unter[Verwenden von Referenzdaten für Suchvorgänge in Stream Analytics](stream-analytics-use-reference-data.md).
 
-Zur Verwendung von Verweisdaten für ASA unter IoT Edge sind die folgenden Schritte auszuführen: 
+Es werden nur lokale Verweisdaten unterstützt. Wenn ein Auftrag auf einem IoT Edge-Gerät bereitgestellt wird, werden Verweisdaten über den benutzerdefinierten Dateipfad geladen.
+
+Erstellen Sie in Edge wie folgt einen Auftrag mit Verweisdaten:
+
 1. Erstellen Sie eine neue Eingabe für Ihren Auftrag.
+
 2. Wählen Sie **Verweisdaten** als **Quelltyp** aus.
-3. Legen Sie den Dateipfad fest. Der Dateipfad muss ein **absoluter** Dateipfad auf dem Gerät sein. ![Erstellen von Verweisdaten](media/stream-analytics-edge/ReferenceData.png)
-4. Aktivieren Sie **Shared Drives** (freigegebene Laufwerke) in Ihrer Docker-Konfiguration, und stellen Sie sicher, dass das Laufwerk aktiviert ist, bevor Sie mit der Bereitstellung beginnen.
 
-Weitere Informationen finden Sie in der [Docker-Dokumentation für Windows](https://docs.docker.com/docker-for-windows/#shared-drives).
+3. Halten Sie auf dem Gerät eine Verweisdatendatei bereit. Ordnen Sie die Verweisdatendatei für einen Windows-Container auf dem lokalen Laufwerk an, und geben Sie das lokale Laufwerk mit dem Docker-Container frei. Erstellen Sie für einen Linux-Container ein Docker-Volume, und fügen Sie die Datendatei auf dem Volume ein.
 
-> [!Note]
-> Derzeit werden nur lokale Verweisdaten unterstützt.
+4. Legen Sie den Dateipfad fest. Verwenden Sie für ein Windows-Gerät den absoluten Pfad. Verwenden Sie für ein Linux-Gerät den Pfad auf dem Volume.
 
+![Neue Verweisdateneingabe für Azure Stream Analytics-Auftrag in IoT Edge](./media/stream-analytics-edge/ReferenceDataNewInput.png)
 
+Die Aktualisierung der Verweisdaten in IoT Edge wird durch eine Bereitstellung ausgelöst. Nach dem Auslösen wählt das ASA-Modul die aktualisierten Daten aus, ohne die Ausführung des Auftrags zu beenden.
+
+Es gibt zwei Möglichkeiten, die Verweisdaten zu aktualisieren:
+* Aktualisieren des Verweisdatenpfads für Ihren ASA-Auftrag im Azure-Portal
+* Aktualisieren der IoT Edge-Bereitstellung
 
 
 ## <a name="license-and-third-party-notices"></a>Lizenz- und Drittanbieterhinweise

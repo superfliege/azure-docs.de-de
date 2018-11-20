@@ -3,39 +3,39 @@ title: Hinzufügen eines Popupfensters mit Azure Maps | Microsoft-Dokumentation
 description: Hinzufügen eines Popupfensters zu einer JavaScript-Karte
 author: jingjing-z
 ms.author: jinzh
-ms.date: 09/17/2018
+ms.date: 11/09/2018
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 76a7e230491d5e524a1d73437a56d12594cfebe2
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 0be10c155398133887fadb1fe9954068f3afb9d9
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46127436"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51568113"
 ---
 # <a name="add-a-popup-to-the-map"></a>Hinzufügen eines Popupfensters zu der Karte
 
-In diesem Artikel wird gezeigt, wie Sie ein Popupfenster zu einer Karte hinzufügen.  
+In diesem Artikel wird gezeigt, wie Sie ein Popupfenster einem Punkt auf einer Karte hinzufügen.
 
 ## <a name="understand-the-code"></a>Grundlegendes zum Code
 
 <a id="addAPopup"></a>
 
-<iframe height='500' scrolling='no' title='Hinzufügen eines Popupfensters zu einer Karte' src='//codepen.io/azuremaps/embed/zRyKxj/?height=545&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azuremaps/pen/zRyKxj/'>Add a popup to a map</a> (Hinzufügen eines Popupfensters zu einer Karte) von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Hinzufügen eines Popupfensters mit Azure Maps' src='//codepen.io/azuremaps/embed/MPRPvz/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Sehen Sie sich bei <a href='https://codepen.io'>CodePen</a> die Informationen unter <a href='https://codepen.io/azuremaps/pen/MPRPvz/'>Add a pop up using Azure Maps</a> (Hinzufügen eines Popupfensters mit Azure Maps) von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) an.
 </iframe>
 
-Der erste Block des obigen Codes dient zum Erstellen eines Map-Objekts. Eine Anleitung finden Sie unter [Erstellen einer Karte](./map-create.md).
+Mit dem ersten Block des oben gezeigten Codes wird ein Kartenobjekt erstellt. Eine Anleitung finden Sie unter [Erstellen einer Karte](./map-create.md). Außerdem wird HTML-Inhalt erstellt, der im Popupfenster angezeigt wird.
 
-Der zweite Codeblock erstellt eine Stecknadel und fügt diese zur Karte hinzu. Eine Anleitung finden Sie unter [Hinzufügen einer Stecknadel zur Karte](./map-add-pin.md).
+Im zweiten Codeblock wird mit der [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest)-Klasse ein Datenquellenobjekt erstellt. Ein Punkt ist ein [Feature](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.feature?view=azure-iot-typescript-latest) der [Point](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.point?view=azure-iot-typescript-latest)-Klasse. Anschließend wird ein Punktobjekt mit einem Namen und Beschreibungseigenschaften erstellt und der Datenquelle hinzugefügt.
 
-Der dritte Codeblock erzeugt den Inhalt, der im Popupfenster angezeigt wird. Beim Popupinhalt handelt es sich um ein HTML-Element.
+Eine [Symbolebene](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer?view=azure-iot-typescript-latest) verwendet Text oder Symbole zum Rendern punktbasierter Daten, die in [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) als Symbole auf der Karte umschlossen sind.  Im dritten Codeblock wird eine Symbolebene erstellt. Die Datenquelle wird der Symbolebene hinzugefügt, die dann der Karte hinzugefügt wird.
 
-Der vierte Codeblock erstellt ein [Popupobjekt](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest) über `new atlas.Popup()`. Popupeigenschaften, z.B. Inhalte und Position, sind Teil der [PopupOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/models.popupoptions?view=azure-iot-typescript-latest). „PopupOptions“ können Sie im Popupkonstruktor oder über die Funktion [setPopupOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest#setpopupoptions) der Popup-Klasse definieren.
+Der vierte Codeblock erstellt ein [Popupobjekt](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest) über `new atlas.Popup()`. Popupeigenschaften, z.B. „position“ und „pixelOffset“ sind Teil von [PopupOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/models.popupoptions?view=azure-iot-typescript-latest). „PopupOptions“ können Sie im Popupkonstruktor oder über die Funktion [setOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest#setoptions-popupoptions-) der Popup-Klasse definieren. Anschließend wird ein `mouseover`-Ereignislistener für die Symbolebene erstellt.
 
-Im letzten Codeblock wird mithilfe der Funktion [addEventListener](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addeventlistener) der Map-Klasse nach Mouseoverereignissen an den Stecknadeln gelauscht. Zudem wird die Funktion [open](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest#open) der Popup-Klasse verwendet, um bei einem Ereignis das Popupfenster zu öffnen.
+Mit dem letzten Codeblock wird eine Funktion erstellt, die mit dem `mouseover`-Ereignislistener ausgelöst wird. Damit werden der Inhalt und die Eigenschaften des Popupfensters festgelegt, und das Popupobjekt wird der Karte hinzugefügt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

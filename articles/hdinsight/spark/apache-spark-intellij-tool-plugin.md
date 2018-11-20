@@ -7,14 +7,14 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/11/2018
+ms.date: 11/08/2018
 ms.author: maxluk
-ms.openlocfilehash: 90c84130902420dcaa2ace74a5743fc9719622b0
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: ff7cfcd56158bd38d031a29a21247fb9eb6b91f9
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51014260"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51289069"
 ---
 # <a name="use-azure-toolkit-for-intellij-to-create-spark-applications-for-an-hdinsight-cluster"></a>Erstellen von Spark-Anwendungen für einen HDInsight-Cluster mit dem Azure Toolkit für IntelliJ
 
@@ -195,7 +195,7 @@ Nachdem Sie eine Scala-Anwendung erstellt haben, können Sie diese an den Cluste
        > [!NOTE]
        > Informationen zum Hochladen der referenzierten JARs und referenzierten Dateien finden Sie unter [Hochladen von Ressourcen in einen Cluster](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-storage-explorer).
                          
-    * **Upload Path** (Uploadpfad): Sie können den Speicherort für die Übermittlung von JAR- oder Scala-Projektressourcen angeben. Es werden drei Speichertypen unterstützt: **Azure Blob**, **Use Spark interactive session to upload artifacts** (Interaktive Spark-Sitzung zum Hochladen von Artefakten verwenden) und **Use cluster default storage account** (Standardspeicherkonto des Clusters verwenden). Der Screenshot unten ist ein Beispiel für Azure-Blob.
+    * **Upload Path** (Uploadpfad): Sie können den Speicherort für die Übermittlung von JAR- oder Scala-Projektressourcen angeben. Es werden vier Speichertypen unterstützt: **Azure Blob**, **Use Spark interactive session to upload artifacts** (Interaktive Spark-Sitzung zum Hochladen von Artefakten verwenden), **Use cluster default storage account** (Standardspeicherkonto des Clusters verwenden) und **ADLS Gen1**. Der Screenshot unten ist ein Beispiel für Azure-Blob.
 
         ![Dialogfeld für die Spark-Übermittlung](./media/apache-spark-intellij-tool-plugin/hdi-submit-spark-upload-storage-types.png)
 
@@ -258,26 +258,25 @@ Standardmäßig werden mit dem Azure-Toolkit für IntelliJ die Spark-Cluster Ihr
 Sie können eine lokale Spark-Konsole (Scala) oder eine Spark-Konsole mit interaktiver Livy-Sitzung (Scala) ausführen.
 
 ### <a name="spark-local-consolescala"></a>Lokale Spark-Konsole (Scala)
-1. Sie müssen die Abhängigkeiten manuell hinzufügen. Klicken Sie auf **File** (Datei)->**Project Structures** (Projektstrukturen)->**Project Settings** (Projekteinstellungen)->**Libraries** (Bibliotheken), klicken Sie dann auf **+**, und wählen Sie **From Maven...** (Aus Maven...) aus. Geben Sie dann **org.apache.spark:spark-repl_2.11:2.1.0** im Popupdialogfenster ein. Nachdem Sie die Abhängigkeiten in Bibliotheken hinzugefügt haben, müssen Sie die Abhängigkeit im Fenster **Project Structures** (Projektstrukturen) unter **Modules** (Module) in die ersten Zeile verschieben. Ändern Sie vor dem Verschieben **Scope** (Bereich) in **Runtime** (Laufzeit).
-
-    ![Lokale Konsole – Hinzufügen von Abhängigkeiten in Bibliotheken](./media/apache-spark-intellij-tool-plugin/local-console-add-dependency-libraries.png)
-
-    ![Lokale Konsole – Verschieben in erste Zeile](./media/apache-spark-intellij-tool-plugin/local-console-move-first-line.png)
-
-2. Richten Sie die Konfiguration ein, wenn dies bisher noch nicht geschehen ist. Klicken Sie im Fenster **Run/Debug Configurations** (Konfigurationen ausführen/debuggen) auf **+**->**Azure HDInsight Spark**, wählen Sie die Registerkarte **Locally Run** (Lokal ausführen) und dann die Hauptklasse aus, und klicken Sie dann auf **OK**.
+1. Richten Sie die Konfiguration ein, wenn dies bisher noch nicht geschehen ist. Klicken Sie im Fenster **Run/Debug Configurations** (Konfigurationen ausführen/debuggen) auf **+**->**Azure HDInsight Spark**, wählen Sie die Registerkarte **Locally Run** (Lokale Ausführung) und **Remotely Run in Cluster** (Im Cluster remote ausführen), und wählen Sie dann die Hauptklasse aus. Klicken Sie anschließend auf **OK**.
 
     ![Lokale Konsole – Festlegen der Konfiguration](./media/apache-spark-intellij-tool-plugin/console-set-configuration.png)
  
-3. Öffnen Sie die Datei, die der Hauptklassendatei entspricht, klicken Sie mit der rechten Maustaste auf **Spark Console** (Spark-Konsole), und klicken Sie dann auf **Run Spark Local Console(Scala)** (Lokale Spark-Console (Scala) ausführen). Sie können auch zu **Tools**->**Spark Console** (Spark-Konsole)->**Run Spark Local Console(Scala)** (Lokale Spark-Console (Scala) ausführen) wechseln, um die Konsole zu starten.
+2. Öffnen Sie die entsprechende Hauptklassendatei, klicken Sie mit der rechten Maustaste auf **Spark Console** (Spark-Konsole), und klicken Sie dann auf **Run Spark Local Console(Scala)** (Lokale Spark-Console (Scala) ausführen). Sie können auch zu **Tools**->**Spark Console** (Spark-Konsole)->**Run Spark Local Console(Scala)** (Lokale Spark-Console (Scala) ausführen) wechseln, um die Konsole zu starten. Es werden zwei Dialogfelder angezeigt, in denen Sie gefragt werden, ob Sie die automatische Korrektur für die Abhängigkeiten durchführen möchten. Klicken Sie einfach auf die Schaltfläche **Auto Fix** (Automatische Korrektur).
+
+    ![Spark Auto Fix1](./media/apache-spark-intellij-tool-plugin/console-auto-fix1.png)
+
+    ![Spark Auto Fix2](./media/apache-spark-intellij-tool-plugin/console-auto-fix2.png)
 
     ![Lokaler Spark-Einstiegspunkt](./media/apache-spark-intellij-tool-plugin/spark-console-local-entry-script.png)
 
-4. Nachdem Sie die lokale Konsole erfolgreich gestartet haben, sieht sie wie in der folgenden Abbildung aus. Sie können eine gewünschte Aktion ausführen. Geben Sie z.B. **sc.appName** ein, drücken Sie STRG+EINGABETASTE und das Ergebnis wird dann angezeigt.
+3. Nachdem Sie die lokale Konsole erfolgreich gestartet haben, sieht sie wie in der folgenden Abbildung aus. Sie können eine gewünschte Aktion ausführen. Geben Sie z.B. **sc.appName** ein, drücken Sie STRG+EINGABETASTE und das Ergebnis wird dann angezeigt. Sie können die lokale Konsole beenden, indem Sie auf die rote Schaltfläche klicken.
 
     ![Ergebnis in der lokalen Konsole](./media/apache-spark-intellij-tool-plugin/local-console-result.png)
 
+
 ### <a name="spark-livy-interactive-session-consolescala"></a>Spark-Konsole mit interaktiver Livy-Sitzung (Scala)
-Dies wird nur bei IntelliJ 2018.2 unterstützt.
+Dies wird nur für IntelliJ 2018.2 und 2018.3 unterstützt.
 
 1. Richten Sie die Konfiguration ein, wenn dies bisher noch nicht geschehen ist. Klicken Sie im Fenster **Run/Debug Configurations** (Konfigurationen ausführen/debuggen) auf **+**->**Azure HDInsight Spark**, wählen Sie die Registerkarte **Remotely Run in Cluster** (Im Cluster remote ausführen) und dann den Clusternamen und die Hauptklasse aus, und klicken Sie dann auf **OK**.
 
@@ -290,6 +289,11 @@ Dies wird nur bei IntelliJ 2018.2 unterstützt.
 3. Nachdem Sie die Konsole erfolgreich gestartet haben, können Sie eine gewünschte Aktion ausführen. Geben Sie z.B. **sc.appName** ein, drücken Sie STRG+EINGABETASTE und das Ergebnis wird dann angezeigt.
 
     ![Ergebnis in der interaktiven Konsole](./media/apache-spark-intellij-tool-plugin/interactive-console-result.png)
+
+### <a name="send-selection-to-spark-console"></a>Senden einer Auswahl an die Spark-Konsole
+Es ist für Sie komfortabel, das Skriptergebnis vorab zu erhalten, indem Sie Code an die lokale Konsole oder die interaktive Livy-Sitzungskonsole (Scala) senden. Sie können Code in der Scala-Datei hervorheben und dann mit der rechten Maustaste auf **Send Selection To Spark Console** (Auswahl an Spark-Konsole senden) klicken. Der ausgewählte Code wird an die Konsole gesendet und ausgeführt. Das Ergebnis wird in der Konsole jeweils hinter dem Code angezeigt. Falls vorhanden, führt die Konsole eine Überprüfung der Fehler durch. 
+
+   ![Senden einer Auswahl an die Spark-Konsole](./media/apache-spark-intellij-tool-plugin/send-selection-to-console.png)
 
 ## <a name="convert-existing-intellij-idea-applications-to-use-azure-toolkit-for-intellij"></a>Konvertieren vorhandener IntelliJ IDEA-Anwendungen für die Verwendung des Azure-Toolkits für IntelliJ
 Sie können die vorhandenen Spark Scala-Anwendungen, die Sie in IntelliJ IDEA erstellt haben, so umwandeln, dass sie mit dem Azure-Toolkit für IntelliJ kompatibel sind. Anschließend können Sie das Plug-In verwenden, um die Anwendungen an einen HDInsight Spark-Cluster zu übermitteln.
@@ -333,11 +337,7 @@ Diese Fehler treten auf, weil die Heapgröße für die Ausführung von Spark nic
 ![Hinzufügen von Optionen zum Feld „VM options“ (VM-Optionen) in IntelliJ](./media/apache-spark-intellij-tool-plugin/change-heap-size.png)
 
 ## <a name="faq"></a>Häufig gestellte Fragen
-Beim Verknüpfen eines Clusters würde ich empfehlen, die Anmeldeinformationen des Speichers anzugeben.
-
-![Verknüpfen eines Clusters und Bereitstellen der Speicheranmeldeinformationen](./media/apache-spark-intellij-tool-plugin/link-cluster-with-storage-credential-intellij.png)
-
-Es gibt zwei Modi zum Übermitteln der Aufträge. Wenn Speicheranmeldeinformationen bereitgestellt werden, wird der Auftrag im Batchmodus übermittelt. Andernfalls wird der interaktive Modus verwendet. Wenn der Cluster ausgelastet ist, erhalten Sie möglicherweise die folgende Fehlermeldung.
+Wenn der Cluster ausgelastet ist, erhalten Sie möglicherweise die folgende Fehlermeldung.
 
 ![IntelliJ-Fehler beim Abrufen bei ausgelastetem Cluster](./media/apache-spark-intellij-tool-plugin/intellij-interactive-cluster-busy-upload.png)
 

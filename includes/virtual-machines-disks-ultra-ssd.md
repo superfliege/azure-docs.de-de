@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/24/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: bb9a2a884439b00f52adfa9b7c1010a4610a77f7
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 050308e1c8de160f1671ded991e550087299ae2f
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47401656"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51285784"
 ---
 # <a name="ultra-ssd-preview-managed-disks-for-azure-virtual-machine-workloads"></a>Verwaltete SSD Ultra-Datenträger (Preview) für Workloads virtueller Azure-Computer
 
@@ -23,7 +23,7 @@ Azure SSD Ultra (Preview) bietet hohen Durchsatz, hohe IOPS und konsistenten Dat
 
 **Verwaltete Datenträger:** SSD Ultra-Datenträger sind nur als verwaltete Datenträger verfügbar. SSD Ultra-Datenträger können nicht als nicht verwaltete Datenträger oder als Seitenblobs bereitgestellt werden. Beim Erstellen eines verwalteten Datenträgers geben Sie den SKU-Typ des Datenträgers als „UltraSSD_LRS“ an sowie die IOPS und den benötigten Durchsatz. Azure erstellt und verwaltet daraufhin den Datenträger für Sie.  
 
-**Virtuell Computer**: SSD Ultra-Datenträger sind darauf ausgelegt, mit allen SSD Premium-aktivierten Azure Virtual Machine-SKUs zu funktionieren. Zum Zeitpunkt der Preview sind die VM-Größen allerdings noch auf ES/DS v3 VM-Instanzen beschränkt.
+**Virtuelle Computer**: SSD Ultra-Datenträger sind so konzipiert, dass sie mit allen Azure Virtual Machine SKUs funktionieren, die SSD Premium-fähig sind. Aber da sie sich derzeit in der Vorschauphase befinden, haben die VMs die Größe ES/DS v3.
 
 **Dynamische Leistungskonfiguration**: SSD Ultra-Datenträger erlauben es Ihnen, die Datenträgerleistung (IOPS und Durchsatz) dynamisch in Abstimmung mit Ihren Workloadanforderungen ändern zu können, ohne Ihre virtuellen Computer neu starten zu müssen.
 
@@ -55,7 +55,7 @@ Die folgende Tabelle fasst die unterstützten Konfigurationen für die unterschi
 
 ## <a name="pricing-and-billing"></a>Preise und Abrechnung
 
-Bei Verwendung von SSD Ultra-Datenträgern sind folgende Abrechnungsaspekte zu berücksichtigen:
+Bei Verwendung von SSD Ultra-Datenträgern gelten die folgenden Abrechnungsaspekte:
 
 - Größe der verwalteten Datenträger
 - Bereitgestellte IOPS der verwalteten Datenträger
@@ -64,11 +64,11 @@ Bei Verwendung von SSD Ultra-Datenträgern sind folgende Abrechnungsaspekte zu b
 
 ### <a name="managed-disk-size"></a>Größe der verwalteten Datenträger
 
-Verwaltete Datenträger werden nach bereitgestellter Größe abgerechnet. Azure ordnet die bereitgestellte Größe (aufgerundet) dem Angebot für die nächsthöhere Datenträgergröße zu. Details zu den angebotenen Datenträgergrößen finden Sie in der Tabelle im obigen Abschnitt zu Skalierbarkeits- und Leistungszielen. Jeder Datenträger wird der bereitgestellten Datenträgergröße zugeordnet und entsprechend auf Stundenbasis abgerechnet. Wenn Sie z.B. einen SSD Ultra-Datenträger mit 200 GiB bereitstellen und ihn nach 20 Stunden löschen, wird der Datenträger dem Datenträgerangebot mit 256 GiB zugeordnet, und Ihnen werden über einen Zeitraum von 20 Stunden 256 GiB in Rechnung gestellt. Welche Datenmenge tatsächlich auf den Datenträger geschrieben wurde, spielt keine Rolle.
+Managed Disks werden anhand der VM-Größen berechnet, die Sie beim Bereitstellen einer neuen Azure-VM gewählt haben. Azure ordnet die bereitgestellte Größe (aufgerundet) dem Angebot für die nächsthöhere Datenträgergröße zu. Details zu den angebotenen Datenträgergrößen finden Sie in der Tabelle im obigen Abschnitt zu Skalierbarkeits- und Leistungszielen. Jeder Datenträger wird der bereitgestellten Datenträgergröße zugeordnet und entsprechend auf Stundenbasis abgerechnet. Wenn Sie z.B. einen SSD Ultra-Datenträger mit 200 GiB bereitstellen und ihn nach 20 Stunden löschen, wird der Datenträger dem Datenträgerangebot mit 256 GiB zugeordnet, und Ihnen werden über einen Zeitraum von 20 Stunden 256 GiB in Rechnung gestellt. Diese Abrechnung basierte unabhängig von der Menge der Daten, die tatsächlich auf den Datenträger geschrieben wurden, auf den verbrauchten Computestunden.
 
 ### <a name="managed-disk-provisioned-iops"></a>Bereitgestellte IOPS der verwalteten Datenträger
 
-IOPS ist die Anzahl von Anforderungen, die Ihre Anwendung pro Sekunde an die Datenträger sendet. Ein E/A-Vorgang kann sequenziell oder zufällig, ein Lese- oder ein Schreibvorgang sein. Ebenso wie bei der Datenträgergröße erfolgt die Abrechnung der bereitgestellten IOP auf Stundenbasis. Details zu den angebotenen Datenträger-IOPS finden Sie in der Tabelle im obigen Abschnitt zu Skalierbarkeits- und Leistungszielen.
+IOPS ist die Anzahl von Anforderungen, die Ihre Anwendung pro Sekunde an die Datenträger sendet. Ein E/A-Vorgang kann vom Typ „Sequenzielles Lesen/Schreiben“ oder „Zufälliges Lesen/Schreiben“ sein. Basierend auf der Datenträgergröße oder der Anzahl von Datenträgern, die an die VM angefügt sind, wird die durchschnittliche IOPS-Anzahl auf Stundenbasis berechnet. Details zu den angebotenen Datenträger-IOPS finden Sie in der Tabelle im obigen Abschnitt zu Skalierbarkeits- und Leistungszielen.
 
 ### <a name="managed-disk-provisioned-throughput"></a>Bereitgestellter Durchsatz der verwalteten Datenträger
 

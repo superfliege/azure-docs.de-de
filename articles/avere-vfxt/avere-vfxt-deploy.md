@@ -6,16 +6,16 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: v-erkell
-ms.openlocfilehash: 359ada08f1d9df6b60fc27ca385f6003af498e17
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: c8bad3642f1e98cac3857d536f539554235e1a51
+ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50958600"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51578636"
 ---
 # <a name="deploy-the-vfxt-cluster"></a>Bereitstellen des vFXT-Clusters
 
-Um einen vFXT-Cluster zu erstellen, ist es am einfachsten, einen Clustercontroller zu verwenden, d. h. einen virtuellen Computer, der über die erforderlichen Skripts, Vorlagen und Softwareinfrastrukturen für die Erstellung und Verwaltung des vFXT-Clusters verfügt.
+Die einfachste Möglichkeit zum Erstellen eines vFXT-Clusters in Azure ist die Verwendung eines Clustercontrollers. Der Clustercontroller ist eine VM, die die erforderlichen Skripts und Vorlagen sowie die Softwareinfrastruktur zum Erstellen und Verwalten des vFXT-Clusters enthält.
 
 Die Bereitstellung eines neuen vFXT-Clusters umfasst folgende Schritte:
 
@@ -82,7 +82,7 @@ Im Abschnitt **SETTINGS**:
 * Ressourcengruppe, Name und Subnetzname des virtuellen Netzwerks: Geben Sie die Namen der vorhandenen Ressourcen ein (wenn Sie ein bestehendes VNet verwenden), oder geben Sie neue Namen ein, wenn Sie ein neues VNet erstellen.
 * **Controllername**: Legen Sie einen Namen für den virtuellen Controllercomputer fest.
 * Benutzername des Controlleradministrators: Die Standardeinstellung ist `azureuser`.
-* SSH-Schlüssel: Fügen Sie den öffentlichen Schlüssel ein, um ihn dem Administratorbenutzernamen zuzuordnen. Lesen Sie [Erstellen und Verwenden von SSH-Schlüsseln](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys), wenn Sie Hilfe benötigen.
+* SSH-Schlüssel: Fügen Sie den öffentlichen Schlüssel ein, um ihn dem Administratorbenutzernamen zuzuordnen. Lesen Sie [Erstellen und Verwenden von SSH-Schlüsseln](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows), wenn Sie Hilfe benötigen.
 
 Unter den **NUTZUNGSBEDINGUNGEN**: 
 
@@ -91,18 +91,16 @@ Unter den **NUTZUNGSBEDINGUNGEN**:
   > [!NOTE] 
   > Wenn Sie kein Abonnementbesitzer sind, lassen Sie einen Besitzer die Nutzungsbedingungen für Sie akzeptieren, indem Sie die erforderlichen Schritte unter [Akzeptieren der Softwarebedingungen im Voraus](avere-vfxt-prereqs.md#accept-software-terms-in-advance) ausführen. 
 
+
 Klicken Sie auf **Kaufen**, wenn Sie fertig sind. Nach fünf oder sechs Minuten ist Ihr Controllerknoten betriebsbereit.
 
-Sie sollten zur Ausgabeseite wechseln, um Informationen zu sammeln, die für den Cluster erforderlich sind. Weitere Informationen finden Sie unter [Erforderliche Eingaben für die Clustererstellung](#inputs-needed-for-cluster-creation).
+Navigieren Sie zur Seite mit den Ausgaben, um die Controllerinformationen zu sammeln, die Sie zum Erstellen des Clusters benötigen. Weitere Informationen finden Sie unter [Erforderliche Informationen für die Erstellung des Clusters](#information-needed-to-create-the-cluster).
 
 ### <a name="create-controller---azure-marketplace-image"></a>Erstellen des Controllers – Azure Marketplace-Image
 
-Suchen Sie die Controllervorlage, indem Sie im Azure Marketplace nach dem Namen ``Avere`` suchen. Wählen Sie die Vorlage **Avere vFXT für Azure-Controller** aus. 
+Suchen Sie die Controllervorlage, indem Sie im Azure Marketplace nach dem Namen ``Avere`` suchen. Wählen Sie die Vorlage **Avere vFXT für Azure-Controller** aus.
 
 Wenn dies noch nicht geschehen ist, akzeptieren Sie die Nutzungsbedingungen und ermöglichen Sie den programmgesteuerten Zugriff auf das Marketplace-Image, indem Sie auf den Link „Möchten Sie die programmgesteuerte Bereitstellung konfigurieren?“ unter der Schaltfläche **Erstellen** klicken.
-
-> [!NOTE] 
-> In der ersten Woche der allgemeinen Verfügbarkeit (31. Oktober - 7. November 2018) müssen Sie die Befehlszeilenoption verwenden, um Nutzungsbedingungen für zwei Softwareimages zu akzeptieren, anstatt dieses Verfahren zu befolgen. Befolgen Sie die Anweisungen unter [Akzeptieren der Softwarebedingungen im Voraus](avere-vfxt-prereqs.md#accept-software-terms-in-advance). 
 
 ![Screenshot für den Link zum programmgesteuerten Zugriff, der sich unterhalb der Schaltfläche „Erstellen“ befindet](media/avere-vfxt-deploy-programmatically.png)
 
@@ -125,7 +123,7 @@ Geben Sie im ersten Fenster diese grundlegenden Optionen ein oder bestätigen Si
   * Wählen Sie entweder „Benutzername/Kennwort“ oder „Öffentlicher SSH-Schlüssel“ (empfohlen) aus.
   
     > [!TIP] 
-    > Ein SSH-Schlüssel ist sicherer. Lesen Sie [Erstellen und Verwenden von SSH-Schlüsseln](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys), wenn Sie Hilfe benötigen. 
+    > Ein SSH-Schlüssel ist sicherer. Lesen Sie [Erstellen und Verwenden von SSH-Schlüsseln](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows), wenn Sie Hilfe benötigen. 
   * Geben Sie den Benutzernamen an. 
   * Fügen Sie den SSH-Schlüssel ein, oder geben Sie das Kennwort ein und bestätigen Sie es.
 * **Regeln für eingehende Ports**: Wenn Sie eine öffentliche IP-Adresse verwenden, öffnen Sie Port 22 (SSH).
@@ -172,29 +170,31 @@ Wenn Sie Azure-BLOB-Speicher für Ihren Back-End-Datenspeicher verwenden, sollte
 
   ![Screenshot für das Azure-Portal mit Anmerkungen für die Schritte zum Erstellen des Dienstendpunkts](media/avere-vfxt-service-endpoint.png)
 
-## <a name="gather-needed-inputs"></a>Erfassen erforderlicher Eingaben
+## <a name="information-needed-to-create-the-cluster"></a>Erforderliche Informationen für die Erstellung des Clusters
 
-Für die Erstellung des Clusters sind folgende Informationen erforderlich. 
+Stellen Sie nach dem Erstellen des Clustercontrollers sicher, dass Sie über die Informationen verfügen, die Sie für die nächsten Schritte benötigen. 
 
-Wenn Sie den Controllerknoten mithilfe der Resource Manager-Vorlage erstellt haben, können Sie [die Informationen aus der Vorlagenausgabe](#finding-template-output) abrufen. 
+Erforderliche Informationen für die Verbindungsherstellung mit dem Controller: 
 
-Erforderlich für die Verbindung mit dem Controller: 
-
-* Controllernutzername und SSH-Schlüssel oder Kennwort
+* Benutzername und SSH-Schlüssel (oder Kennwort) des Controllers
 * IP-Adresse des Controllers oder eine andere Methode zum Verbinden mit dem virtuellen Controllercomputer
 
-Erforderlich für die Clustererstellung: 
+Erforderliche Informationen für den Cluster: 
 
 * Ressourcengruppenname
 * Azure-Standort 
 * Name des virtuellen Netzwerks
 * Subnetzname
-* Name der Clusterknotenrolle
+* Clusterknoten-Rollenname: Dieser Name wird festgelegt, wenn Sie die Rolle erstellen ([unten](#create-the-cluster-node-access-role) beschrieben).
 * Speicherkontoname beim Erstellen eines Blobcontainers
 
-Sie können auch fehlende Informationen finden, indem Sie zur Informationsseite des virtuellen Controllercomputers navigieren. Klicken Sie z. B. auf **Alle Ressourcen**, und suchen Sie nach dem Controllernamen. Klicken Sie dann auf den Controllernamen, um die Details anzuzeigen.
+Wenn Sie den Controllerknoten mithilfe der Resource Manager-Vorlage erstellt haben, können Sie die Informationen aus der [Vorlagenausgabe](#find-template-output) abrufen. 
 
-### <a name="finding-template-output"></a>Suchen der Vorlagenausgabe
+Wenn Sie das Azure Marketplace-Image zum Erstellen des Controllers verwendet haben, haben Sie die meisten dieser Elemente direkt bereitgestellt. 
+
+Suchen Sie nach fehlenden Elementen, indem Sie zur Seite mit den Controller-VM-Informationen navigieren. Klicken Sie beispielsweise auf **Alle Ressourcen**, und suchen Sie nach dem Controllernamen. Klicken Sie anschließend auf den Controllernamen, um die Details anzuzeigen.
+
+### <a name="find-template-output"></a>Suchen nach der Vorlagenausgabe
 
 Gehen Sie wie folgt vor, um diese Informationen in der Resource Manager-Vorlagenausgabe zu finden:
 
@@ -215,7 +215,7 @@ Sie müssen eine Verbindung mit dem Clustercontroller herstellen, um die restlic
 1. Die Methode zum Herstellen einer Verbindung mit Ihrem Clustercontroller hängt von Ihrem Setup ab.
 
    * Wenn der Controller über eine öffentliche IP-Adresse verfügt, SSH an die IP-Adresse des Controllers als der von Ihnen festgelegte Administratorbenutzername (z.B. ``ssh azureuser@40.117.136.91``).
-   * Wenn der Controller über keine öffentliche IP verfügt, verwenden Sie eine [ExpressRoute](https://docs.microsoft.com/azure/expressroute/) oder eine VPN-Verbindung zu Ihrem VNet.
+   * Wenn der Controller nicht über eine öffentliche IP-Adresse verfügt, können Sie eine VPN- oder [ExpressRoute](https://docs.microsoft.com/azure/expressroute/)-Verbindung mit Ihrem VNET verwenden.
 
 1. Nachdem Sie sich bei Ihrem Controller angemeldet haben, authentifizieren Sie sich, indem Sie `az login` ausführen. Kopieren Sie den von der Shell bereitgestellten Authentifizierungscode, und verwenden Sie dann einen Webbrowser, um [https://microsoft.com/devicelogin](https://microsoft.com/devicelogin) zu laden und sich mit dem Microsoft-System zu authentifizieren. Kehren Sie zur Bestätigung zur Shell zurück.
 
@@ -226,7 +226,9 @@ Sie müssen eine Verbindung mit dem Clustercontroller herstellen, um die restlic
 ## <a name="create-the-cluster-node-access-role"></a>Erstellen der Zugriffsrolle für Clusterknoten
 
 > [!NOTE] 
-> Wenn Sie kein Abonnementbesitzer sind und die Rolle noch nicht erstellt wurde, lassen Sie einen Abonnementbesitzer diese Schritte ausführen oder verwenden Sie die Vorgehensweise unter [Erstellen der Zugriffsrolle für die Avere vFXT-Clusterlaufzeit ohne Controller](avere-vfxt-pre-role.md).
+> * Wenn Sie kein Abonnementbesitzer sind und die Rolle noch nicht erstellt wurde, lassen Sie einen Abonnementbesitzer diese Schritte ausführen oder verwenden Sie die Vorgehensweise unter [Erstellen der Zugriffsrolle für die Avere vFXT-Clusterlaufzeit ohne Controller](avere-vfxt-pre-role.md).
+> 
+> * Interne Microsoft-Benutzer sollten die vorhandene Rolle mit dem Namen „Avere Cluster Runtime Operator“ verwenden, anstatt zu versuchen, eine neue zu erstellen. 
 
 [Rollenbasierte Zugriffssteuerung](https://docs.microsoft.com/azure/role-based-access-control/) (RBAC) gibt den vFXT-Clusterknoten die Berechtigung, erforderliche Aufgaben auszuführen.  
 
@@ -292,15 +294,18 @@ RESOURCE_GROUP=
 Speichern Sie die Datei, und beenden Sie den Vorgang.
 
 ### <a name="run-the-script"></a>Ausführen des Skripts
+
 Führen Sie das Skript aus, indem Sie den von Ihnen erstellten Dateinamen eingeben. (Beispiel: `./create-cloudbacked-cluster-west1`)  
 
-Erwägen Sie, diesen Befehl innerhalb eines [Terminal-Multiplexers](http://linuxcommand.org/lc3_adv_termmux.php) wie `screen` oder `tmux` auszuführen, falls Ihre Verbindung getrennt wird.  
+> [!TIP]
+> Erwägen Sie, diesen Befehl innerhalb eines [Terminal-Multiplexers](http://linuxcommand.org/lc3_adv_termmux.php) wie `screen` oder `tmux` auszuführen, falls Ihre Verbindung getrennt wird.  
+
 Die Ausgabe wird ebenfalls in `~/vfxt.log` protokolliert.
 
 Wenn das Skript abgeschlossen ist, kopieren Sie die Verwaltungs-IP-Adresse, die für die Clusterverwaltung erforderlich ist.
 
 ![Befehlszeilenausgabe des Skripts, das die Verwaltungs-IP-Adresse am Ende anzeigt](media/avere-vfxt-mgmt-ip.png)
 
-### <a name="next-step"></a>Nächster Schritt
+## <a name="next-step"></a>Nächster Schritt
 
 Nachdem der Cluster ausgeführt wird und Sie seine Verwaltungs-IP-Adresse kennen, können Sie sich mit dem [Clusterkonfigurationstool verbinden](avere-vfxt-cluster-gui.md), um den Support zu aktivieren und bei Bedarf Speicher hinzuzufügen.

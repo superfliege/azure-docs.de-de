@@ -13,41 +13,39 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: report-monitor
-ms.date: 04/19/2018
+ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: b6fa26cb7947658af77496831d7239b4331aa1f2
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: 883f521040c67cb8fe9578bc5c490bc3dfccba28
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42144853"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51624657"
 ---
 # <a name="audit-activity-reports-in-the-azure-active-directory-portal"></a>Berichte zu Überwachungsaktivitäten im Azure Active Directory-Portal 
 
-Mit der Berichterstellungsfunktion in Azure Active Directory (Azure AD) können Sie alle Informationen abrufen, die Sie zum Ermitteln des Zustands Ihrer Umgebung benötigen.
+Mit Azure AD-Berichten (Azure Active Directory) können Sie alle Informationen abrufen, die Sie zum Ermitteln des Zustands Ihrer Umgebung benötigen.
 
-Die Architektur für die Berichterstellung in Azure AD umfasst die folgenden Komponenten:
+Diese Architektur für die Berichterstellung umfasst die folgenden Komponenten:
 
 - **Aktivität** 
-    - **Anmeldeaktivitäten** : Informationen zur Nutzung von verwalteten Anwendungen und Aktivitäten der Benutzeranmeldung
-    - **Überwachungsprotokolle:** Ermöglichen die Nachverfolgung sämtlicher Änderungen, die von verschiedenen Features in Azure AD vorgenommen wurden. Hierzu zählen unter anderem Änderungen an Ressourcen in Azure AD wie etwa Benutzer, Apps, Gruppen, Rollen, Richtlinien und Authentifizierungen.
+    - **Anmeldungen:** Der [Bericht „Anmeldungen“](concept-sign-ins.md) enthält Informationen zur Nutzung von verwalteten Anwendungen und Aktivitäten der Benutzeranmeldung.
+    - **Überwachungsprotokolle:** Ermöglichen die Nachverfolgung sämtlicher Änderungen, die von verschiedenen Features in Azure AD vorgenommen wurden. Hierzu zählen unter anderem Änderungen an Ressourcen in Azure AD, z.B. das Hinzufügen oder Entfernen von Benutzern, Apps, Gruppen, Rollen und Richtlinien.
 - **Sicherheit** 
-    - **Riskante Anmeldungen:** Eine riskante Anmeldung ist ein Indikator für einen Anmeldeversuch von einem Benutzer, der nicht der rechtmäßige Besitzer eines Benutzerkontos ist. Weitere Informationen finden Sie unter „Riskante Anmeldungen“.
-    - **Benutzer mit Risikomarkierung:** Ein Benutzer mit Risikomarkierung ist ein Indikator für ein möglicherweise kompromittiertes Benutzerkonto. Weitere Informationen finden Sie unter „Benutzer mit Risikomarkierung“.
+    - **Riskante Anmeldungen:** Eine [riskante Anmeldung](concept-risky-sign-ins.md) ist ein Indikator für einen Anmeldeversuch von einem Benutzer, der nicht der rechtmäßige Besitzer eines Benutzerkontos ist. 
+    - **Benutzer mit Risikomarkierung:** Ein [Benutzer mit Risikomarkierung](concept-user-at-risk.md) ist ein Indikator für ein ggf. kompromittiertes Benutzerkonto.
 
-In diesem Thema erhalten Sie einen Überblick über die Überwachungsaktivitäten.
+Dieser Artikel enthält eine Übersicht über den Überwachungsbericht.
  
 ## <a name="who-can-access-the-data"></a>Wer kann auf die Daten zugreifen?
-* Benutzer mit den Rollen „Sicherheitsadministrator“ oder der Berechtigung „Sicherheit lesen“
-* Globale Administratoren
-* Einzelne Benutzer (Nicht-Administratoren) können eigene Aktivitäten anzeigen.
 
+* Benutzer mit den Rollen **Sicherheitsadministrator**, **Benutzer mit Leseberechtigung für Sicherheitsfunktionen** oder **Globaler Administrator**.
+* Außerdem können alle Benutzer, die keine Administratoren sind, ihre eigenen Überwachungsaktivitäten anzeigen.
 
 ## <a name="audit-logs"></a>Überwachungsprotokolle
 
-Die Überwachungsprotokolle in Azure Active Directory enthalten Datensätze mit Systemaktivitäten, die zum Nachweisen der Konformität verwendet werden können.  
-Ihr erster Einstiegspunkt für alle Überwachungsdaten ist die Option **Überwachungsprotokolle** im Abschnitt **Aktivität** von **Azure Active Directory**.
+Die Azure AD-Überwachungsprotokolle stellen Datensätze mit Systemaktivitäten für Compliancezwecke bereit. Wählen Sie zum Auswählen des Überwachungsberichts in **Azure Active Directory** im Abschnitt **Aktivität** die Option **Überwachungsprotokolle**. 
 
 ![Überwachungsprotokolle](./media/concept-audit-logs/61.png "Überwachungsprotokolle")
 
@@ -68,15 +66,14 @@ So können Sie weitere Felder anzeigen oder bereits angezeigte Felder entfernen.
 
 ![Überwachungsprotokolle](./media/concept-audit-logs/21.png "Überwachungsprotokolle")
 
-
-Wenn Sie in der Listenansicht auf einen Eintrag klicken, werden die dazu verfügbaren Details angezeigt.
+Wählen Sie in der Listenansicht ein Element aus, um ausführlichere Informationen zu erhalten.
 
 ![Überwachungsprotokolle](./media/concept-audit-logs/22.png "Überwachungsprotokolle")
 
 
 ## <a name="filtering-audit-logs"></a>Filtern von Überwachungsprotokollen
 
-Sie können die Überwachungsdaten mit den folgenden Feldern filtern, um die gemeldeten Daten gemäß Ihren Bedürfnissen einzugrenzen:
+Sie können die Überwachungsdaten in den folgenden Feldern filtern:
 
 - Datumsbereich
 - Initiiert von (Akteur)
@@ -85,7 +82,6 @@ Sie können die Überwachungsdaten mit den folgenden Feldern filtern, um die gem
 - Aktivität
 
 ![Überwachungsprotokolle](./media/concept-audit-logs/23.png "Überwachungsprotokolle")
-
 
 Mit dem Filter **Datumsbereich** können Sie einen Zeitrahmen für die zurückgegebenen Daten festlegen.  
 Mögliche Werte:
@@ -97,7 +93,7 @@ Mögliche Werte:
 
 Beim Auswählen eines benutzerdefinierten Zeitraums können Sie eine Startzeit und eine Endzeit konfigurieren.
 
-Bei Verwendung des Filters **Initiiert von** können Sie den Namen eines Akteurs oder dessen Benutzerprinzipalnamen (User Principal Name, UPN) definieren.
+Bei Verwendung des Filters **Initiiert von** können Sie den Namen eines Akteurs oder einen Benutzerprinzipalnamen (User Principal Name, UPN) definieren.
 
 Bei Verwendung des Filters **Kategorie** können Sie eine der folgenden Filteroptionen auswählen:
 
@@ -131,8 +127,7 @@ Wenn Sie als **Aktivitätsressourcentyp** die Option **Gruppe** auswählen, erha
 
 Der Filter **Aktivität** basiert auf der getroffenen Auswahl für „Kategorie“ und „Aktivitätsressourcentyp“. Sie können entweder eine bestimmte Aktivität verwenden oder alle auswählen. 
 
-Sie können die Liste aller Überwachungsaktivitäten mit der Graph-API https://graph.windows.net/$tenantdomain/activities/auditActivityTypes?api-version=beta abrufen. Dabei ist „$tenantdomain“ Ihr Domänenname. Alternativ können Sie die Informationen im Artikel [Berichte zu Überwachungsaktivitäten im Azure Active Directory-Portal](concept-audit-logs.md) lesen.
-
+Sie können die Liste aller Überwachungsaktivitäten mit der Graph-API https://graph.windows.net/$tenantdomain/activities/auditActivityTypes?api-version=beta abrufen. Dabei ist „$tenantdomain“ Ihr Domänenname. Alternativ können Sie die Informationen im Artikel [Berichte zu Überwachungsaktivitäten im Azure Active Directory-Portal](reference-audit-activities.md) lesen.
 
 ## <a name="audit-logs-shortcuts"></a>Verknüpfungen für Überwachungsprotokolle
 
@@ -171,7 +166,7 @@ Mit Überwachungsberichten, die auf Anwendungen basieren, können Sie beispielsw
 
 * Welche Anwendungen wurden hinzugefügt oder aktualisiert?
 * Welche Anwendungen wurden entfernt?
-* Hat sich ein Dienstprinzip für eine Anwendung geändert?
+* Hat sich ein Dienstprinzipal für eine Anwendung geändert?
 * Haben sich die Namen von Anwendungen geändert?
 * Wer hat die Zustimmung zu einer Anwendung erteilt?
 
@@ -179,15 +174,13 @@ Wenn Sie nur Überwachungsdaten überprüfen möchten, die sich auf Ihre Anwendu
 
 ![Überwachungsprotokolle](./media/concept-audit-logs/134.png "Überwachungsprotokolle")
 
-Dieser Ansicht kann weiter nach **Gruppen** oder **Benutzer** gefiltert werden.
+Sie können die Ansicht nach **Gruppen** oder **Benutzern** filtern.
 
 ![Überwachungsprotokolle](./media/concept-audit-logs/25.png "Überwachungsprotokolle")
 
 
-
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Eine Übersicht über die Berichterstellung finden Sie unter [Azure Active Directory-Berichterstellung](overview-reports.md).
-
-- Eine vollständige Liste mit allen Überwachungsaktivitäten finden Sie in der [Referenz zu Überwachungsaktivitäten von Azure AD](reference-audit-activities.md).
-
+- [Referenz zu Überwachungsaktivitäten von Azure AD](reference-audit-activities.md)
+- [Aufbewahrungsrichtlinien für Azure Active Directory-Berichte](reference-reports-data-retention.md)
+- [Latenzen bei Azure Active Directory-Berichten](reference-reports-latencies.md)

@@ -1,19 +1,19 @@
 ---
 title: Skalieren von Azure IoT Hub | Microsoft Docs
 description: Es wird beschrieben, wie Sie Ihre IoT Hub-Instanz skalieren, um den erwarteten Nachrichtendurchsatz und die gewünschten Features zu unterstützen. Enthält eine Zusammenfassung der unterstützten Durchsätze für die einzelnen Ebenen und Optionen für das Sharding.
-author: kgremban
+author: wesmc7777
 manager: timlt
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 04/02/2018
-ms.author: kgremban
-ms.openlocfilehash: 6ae0217ed4b8833eb42a4719a1f2525461f9dcdd
-ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
+ms.author: wesmc
+ms.openlocfilehash: c37492a42322ffc386751c4c63b981c9d93a72f6
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43143647"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51633375"
 ---
 # <a name="choose-the-right-iot-hub-tier-for-your-solution"></a>Wählen des richtigen IoT Hub-Tarifs für Ihre Lösung
 
@@ -31,7 +31,7 @@ Jeder IoT Hub-Tarif ist in drei Größen verfügbar. Die Größe richtet sich da
 
 Im Standard-Tarif von IoT Hub können alle Features genutzt werden. Er ist für alle IoT-Lösungen erforderlich, für die die Funktionen für die bidirektionale Kommunikation verwendet werden sollen. Im Basic-Tarif ist ein Teil der Features aktiviert. Dieser Tarif ist für IoT-Lösungen bestimmt, für die nur die unidirektionale Kommunikation von Geräten in die Cloud erforderlich ist. Beide Tarife verfügen über die gleichen Sicherheits- und Authentifizierungsfeatures.
 
-Nachdem Sie Ihre IoT Hub-Instanz erstellt haben, können Sie ein Upgrade vom Basic-Tarif in den Standard-Tarif durchführen, ohne Ihre vorhandenen Vorgänge zu unterbrechen. Weitere Informationen finden Sie unter [How to upgrade your IoT hub](iot-hub-upgrade.md) (Durchführen eines Upgrades für Ihren IoT Hub). Beachten Sie, dass die Partitionsobergrenze für den IoT Hub-Basictarif 8 und für den Standardtarif 32 beträgt. Die meisten IoT Hub-Instanzen benötigen nur vier Partitionen. Die Partitionsgrenze wird beim Erstellen von IoT Hub ausgewählt und setzt die Gerät-zu-Cloud-Nachrichten in Relation zur Anzahl von gleichzeitigen Lesern der Nachrichten. Dieser Wert ändert sich nicht, wenn Sie vom Basictarif zum Standardtarif migrieren. Beachten Sie außerdem, dass pro IoT Hub-Instanz nur ein [Editionstyp](https://azure.microsoft.com/pricing/details/iot-hub/) in einem Tarif ausgewählt werden kann. Beispielsweise können Sie eine IoT Hub-Instanz mit mehreren S1-Einheiten erstellen- Allerdings ist keine Kombination aus Einheiten verschiedener Editionen möglich, z.B. S1 und B3 oder S1 und S2.
+Pro IoT Hub-Instanz kann nur ein [Editionstyp](https://azure.microsoft.com/pricing/details/iot-hub/) in einem Tarif ausgewählt werden. Beispielsweise können Sie eine IoT Hub-Instanz mit mehreren S1-Einheiten erstellen- Allerdings ist keine Kombination aus Einheiten verschiedener Editionen möglich, z.B. S1 und B3 oder S1 und S2.
 
 | Funktion | Basic-Tarif | Standard-Tarif |
 | ---------- | ---------- | ------------- |
@@ -47,7 +47,22 @@ Nachdem Sie Ihre IoT Hub-Instanz erstellt haben, können Sie ein Upgrade vom Bas
 
 Es gibt auch einen kostenlosen Tarif (Free-Tarif) für IoT Hub, der für Tests und Evaluierungen bestimmt ist. Er verfügt über alle Funktionen des Standard-Tarifs, aber das Messaging ist eingeschränkt. Ein Upgrade aus dem Free-Tarif in den Basic- oder Standard-Tarif ist nicht möglich. 
 
-### <a name="iot-hub-rest-apis"></a>REST-APIs für IoT Hub
+
+## <a name="partitions"></a>Partitionen
+
+Azure IoT Hubs enthalten viele Kernkomponenten von [Azure Event Hubs](../event-hubs/event-hubs-features.md), z.B. [Partitionen](../event-hubs/event-hubs-features.md#partitions). Ereignisdatenströme für IoT Hubs werden normalerweise mit eingehenden Telemetriedaten gefüllt, die von den unterschiedlichen IoT-Geräten gemeldet werden. Die Partitionierung des Ereignisdatenstroms wird genutzt, um die Anzahl von Konflikten zu verringern, die beim gleichzeitigen Lesen von und Schreiben in Ereignisdatenströme auftreten. 
+
+Der Partitionsgrenzwert wird bei der Erstellung von IoT Hub ausgewählt und kann nicht geändert werden. Die Partitionsobergrenze für den IoT Hub-Tarif „Basic“ beträgt 8 und für den Tarif „Standard“ 32. Die meisten IoT Hub-Instanzen benötigen nur vier Partitionen. Weitere Informationen zum Ermitteln der Partitionen finden Sie in den häufig gestellten Fragen zu Event Hubs: [Wie viele Partitionen benötige ich?](../event-hubs/event-hubs-faq.md#how-many-partitions-do-i-need)
+
+
+## <a name="tier-upgrade"></a>Upgrade des Tarifs
+
+Nachdem Sie Ihre IoT Hub-Instanz erstellt haben, können Sie ein Upgrade vom Basic-Tarif in den Standard-Tarif durchführen, ohne Ihre vorhandenen Vorgänge zu unterbrechen. Weitere Informationen finden Sie unter [How to upgrade your IoT hub](iot-hub-upgrade.md) (Durchführen eines Upgrades für Ihren IoT Hub).
+
+Die Partitionskonfiguration ändert sich nicht, wenn Sie vom Tarif „Basic“ zum Tarif „Standard“ migrieren.
+
+
+## <a name="iot-hub-rest-apis"></a>REST-APIs für IoT Hub
 
 Der Unterschied zwischen den unterstützten Funktionen zwischen dem Basic- und dem Standard-Tarif für IoT Hub bedeutet, dass einige API-Aufrufe für Hubs des Basic-Tarifs nicht funktionieren. In der folgenden Tabelle ist angegeben, welche APIs verfügbar sind: 
 
@@ -115,7 +130,7 @@ Eine einzelne IoT Hub-Einheit kann zwar auf Millionen von Geräten skaliert werd
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Weitere Informationen zu Funktionen und Leistungsdetails von IoT Hubs finden Sie unter [IoT Hub – Preise][link-pricing] oder [IoT Hub-Kontingente und -Drosselung][IoT Hub quotas and throttles].
+* Weitere Informationen zu Funktionen und Leistungsdetails von IoT Hub finden Sie unter [IoT Hub – Preise][lnk-pricing] oder [IoT Hub-Kontingente und -Drosselung][IoT Hub quotas and throttles].
 * Führen Sie die Schritte unter [Upgrade your IoT hub](iot-hub-upgrade.md) (Durchführen eines Upgrades für Ihren IoT Hub) aus, um Ihren IoT Hub-Tarif zu ändern.
 
 [lnk-pricing]: https://azure.microsoft.com/pricing/details/iot-hub

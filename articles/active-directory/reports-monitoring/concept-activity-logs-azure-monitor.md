@@ -1,6 +1,6 @@
 ---
 title: Azure Active Directory-Aktivitätsprotokolle in Azure Monitor (Vorschauversion) | Microsoft-Dokumentation
-description: Übersicht über Azure Active Directory-Aktivitätsprotokolle in Azure Monitor (Vorschauversion)
+description: Einführung in Azure Active Directory-Aktivitätsprotokolle in Azure Monitor (Vorschauversion)
 services: active-directory
 documentationcenter: ''
 author: priyamohanram
@@ -13,30 +13,30 @@ ms.topic: concept
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: report-monitor
-ms.date: 07/13/2018
+ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 3a4fc814a40bf370a137a2045c6218d3ee4b8778
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 760110d0ac359f6b7f135bf869e2520b8028ba6e
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49395530"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51625435"
 ---
 # <a name="azure-ad-activity-logs-in-azure-monitor-preview"></a>Azure AD-Aktivitätsprotokolle in Azure Monitor (Vorschauversion)
 
-Sie können Azure Active Directory (Azure AD)-Aktivitätsprotokolle jetzt mithilfe von Azure Monitor an Ihr eigenes Speicherkonto oder Ihren Event Hub weiterleiten. Mit der öffentlichen Vorschauversion von Azure Active Directory-Protokollen in Azure Monitor haben Sie die folgenden Möglichkeiten:
+Sie können Azure AD-Aktivitätsprotokolle (Azure Active Directory) jetzt zur langfristigen Aufbewahrung und Gewinnung von Erkenntnissen zu Daten an mehrere Endpunkte weiterleiten. Die öffentliche Vorschauversion von Azure AD-Protokollen in Azure Monitor ermöglicht Ihnen Folgendes:
 
-* Archivieren Ihrer Überwachungsprotokolle für ein Azure-Speicherkonto, damit Sie die Daten über längere Zeiträume aufbewahren können.
-* Streamen Ihrer Überwachungsprotokolle zum Analysieren an einen Azure Event Hub mithilfe beliebter Security Information & Event Management (SIEM)-Tools wie etwa Splunk und QRadar.
-* Integrieren Ihrer Überwachungsprotokolle in Ihre eigenen benutzerdefinierten Protokolllösungen, indem Sie sie an einen Event Hub streamen.
-* Senden Sie Azure AD-Aktivitätsprotokolle an Log Analytics, um funktionsreiche Visualisierungen, Überwachung und Benachrichtigungen für die verbundenen Daten zu aktivieren.
+* Archivieren von Azure AD-Aktivitätsprotokollen in einem Azure-Speicherkonto, um die Daten für längere Zeit aufzubewahren
+* Streamen von Azure AD-Aktivitätsprotokollen zum Analysieren an einen Azure Event Hub mithilfe von beliebten SIEM-Tools (Security Information & Event Management) wie Splunk und QRadar
+* Integrieren von Azure AD-Aktivitätsprotokollen in Ihre eigenen benutzerdefinierten Protokolllösungen, indem Sie sie an einen Event Hub streamen
+* Senden von Azure AD-Aktivitätsprotokollen an Log Analytics, um funktionsreiche Visualisierungen, Überwachung und Benachrichtigungen für die verbundenen Daten zu aktivieren
 
 > [!VIDEO https://www.youtube.com/embed/syT-9KNfug8]
 
 ## <a name="supported-reports"></a>Unterstützte Berichte
 
-Mit diesem Feature können Sie Aktivitätsprotokolle zu Überwachungen und Anmeldungen an Ihr Azure-Speicherkonto, einen Event Hub oder eine benutzerdefinierte Lösung weiterleiten. 
+Mit diesem Feature können Sie Azure AD-Überwachungsprotokolle und -Anmeldeprotokolle an Ihr Azure-Speicherkonto, einen Event Hub, Log Analytics oder eine benutzerdefinierte Lösung weiterleiten. 
 
 * **Überwachungsprotokolle**: Mit dem [Aktivitätsbericht zu Überwachungsprotokollen](concept-audit-logs.md) erhalten Sie Zugriff auf den Verlauf aller Aufgaben, die in Ihrem Mandanten durchgeführt werden.
 * **Anmeldeprotokolle**: Mit dem [Aktivitätsbericht zu Anmeldungen](concept-sign-ins.md) können Sie ermitteln, von wem die Aufgaben durchgeführt wurden, die in den Überwachungsprotokollen aufgeführt sind.
@@ -101,25 +101,19 @@ Informationen zum Prüfen von Kosten im Zusammenhang mit dem Log Analytics-Arbei
 
 Dieser Abschnitt beantwortet häufig gestellte Fragen und bespricht bekannte Probleme zu Azure AD-Protokollen in Azure Monitor.
 
-**F: Wo soll ich beginnen?** 
-
-**A**: In diesem Artikel wird erläutert, was Sie für die Bereitstellung dieses Features benötigen. Wenn die Voraussetzungen erfüllt sind, erhalten Sie in den Tutorials weitere Informationen zum Konfigurieren und Weiterleiten Ihrer Protokolle an einen Event Hub.
-
----
-
 **F: Welche Protokolle sind enthalten?**
 
 **A:** Sowohl Anmelde- als auch Überwachungsprotokolle sind für das Weiterleiten über dieses Feature verfügbar, aber B2C-bezogene Überwachungsereignisse sind derzeit noch nicht enthalten. Lesen Sie die Informationen zum [Überwachungsprotokollschema](reference-azure-monitor-audit-log-schema.md) und [Anmeldeprotokollschema](reference-azure-monitor-sign-ins-log-schema.md), um zu ermitteln, welche Arten von Protokollen und featurebasierten Protokolle derzeit unterstützt werden. 
 
 ---
 
-**F: Wie lange nach einer Aktion werden die entsprechenden Protokolle in Event Hubs angezeigt?**
+**F: Wie lange nach einer Aktion werden die entsprechenden Protokolle in meinen Event Hubs angezeigt?**
 
 **A**: Die Protokolle werden innerhalb von zwei bis fünf Minuten nachdem die Aktion ausgeführt wurde, in Ihrem Event Hub angezeigt. Weitere Informationen zu Event Hubs finden Sie unter [Was ist Azure Event Hubs?](../../event-hubs/event-hubs-about.md).
 
 ---
 
-**F: Wie lange nach einer Aktion werden die entsprechenden Protokolle in Speicherkonten angezeigt?**
+**F: Wie lange nach einer Aktion werden die entsprechenden Protokolle in meinem Speicherkonto angezeigt?**
 
 **A:** Für Azure-Speicherkonten beträgt die Latenz zwischen 5 und 15 Minuten nach Durchführung der Aktion.
 

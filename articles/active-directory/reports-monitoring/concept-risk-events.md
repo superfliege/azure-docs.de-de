@@ -12,20 +12,26 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.component: report-monitor
-ms.date: 05/14/2018
+ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: e4aa4a87bec8f737405c90bb42bdb5fc60cb379a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 6c1b9fabe89d254524006a21e3a422221791022d
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51232996"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51625265"
 ---
 # <a name="azure-active-directory-risk-events"></a>Azure Active Directory-Risikoereignisse
 
-Die allermeisten Sicherheitsverletzungen kommen vor, wenn Angreifer Zugriff auf eine Umgebung erhalten, indem sie die Identität eines Benutzers stehlen. Die Ermittlung von kompromittierten Identitäten ist keine einfache Aufgabe. Azure Active Directory verwendet adaptive Machine Learning-Algorithmen und -Heuristiken, um verdächtige Aktivitäten im Zusammenhang mit Ihren Benutzerkonten zu erkennen. Jede erkannte verdächtige Aktion wird in einem Datensatz mit dem Namen *Risikoereignis* gespeichert.
+Die allermeisten Sicherheitsverletzungen kommen vor, wenn Angreifer Zugriff auf eine Umgebung erhalten, indem sie die Identität eines Benutzers stehlen. Die Ermittlung von kompromittierten Identitäten ist keine einfache Aufgabe. Azure Active Directory verwendet adaptive Machine Learning-Algorithmen und -Heuristiken, um verdächtige Aktivitäten im Zusammenhang mit Ihren Benutzerkonten zu erkennen. Jede erkannte verdächtige Aktion wird in einem Datensatz gespeichert, der als **Risikoereignis** bezeichnet wird.
 
+Es gibt zwei Bereiche, in denen Sie gemeldete Risikoereignisse überprüfen:
+
+ - **Azure AD-Berichterstellung** – Azure AD-Sicherheitsberichte umfassen Risikoereignisse. Weitere Informationen finden Sie unter [Sicherheitsbericht zu gefährdeten Benutzern](concept-user-at-risk.md) und unter [Sicherheitsbericht zu riskanten Anmeldevorgängen](concept-risky-sign-ins.md).
+
+ - **Azure AD Identity Protection** – Auch die Berichtsfunktionen von [Azure Active Directory Identity Protection](../active-directory-identityprotection.md) umfassen Risikoereignisse.
+    
 Derzeit werden von Azure Active Directory sechs Typen von Risikoereignissen erkannt:
 
 - [Benutzer mit kompromittierten Anmeldeinformationen](#leaked-credentials) 
@@ -35,18 +41,18 @@ Derzeit werden von Azure Active Directory sechs Typen von Risikoereignissen erka
 - [Anmeldungen von IP-Adressen mit verdächtigen Aktivitäten](#sign-ins-from-ip-addresses-with-suspicious-activity) 
 - [Anmeldungen von unbekannten Standorten](#sign-in-from-unfamiliar-locations) 
 
-
 ![Risikoereignis](./media/concept-risk-events/91.png)
 
-Welche Informationen Sie zu einem erkannten Risikoereignis erhalten, richtet sich nach Ihrem Azure AD-Abonnement. Die Azure AD Premium P2-Edition bietet die ausführlichsten Informationen zu allen zugrunde liegenden erkannten Ereignissen. Mit der Azure AD Premium-P1-Edition werden erkannte Ereignisse, die nicht durch Ihre Lizenz abgedeckt sind, als das Risikoereignis **Anmeldung mit erhöhtem Risiko erkannt** angezeigt.
+Welche Informationen Sie zu einem erkannten Risikoereignis erhalten, richtet sich nach Ihrem Azure AD-Abonnement. 
 
+* Die **Azure AD Premium P2-Edition** bietet die ausführlichsten Informationen zu allen zugrunde liegenden erkannten Ereignissen. 
+* Mit der **Azure AD Premium P1-Edition** werden erkannte Ereignisse, die nicht durch Ihre Lizenz abgedeckt sind, als Risikoereignis **Anmeldung mit erhöhtem Risiko erkannt** angezeigt.
 
-Dieser Artikel enthält eine ausführliche Übersicht darüber, was Risikoereignisse sind und wie Sie diese zum Schutz Ihrer Azure AD-Identitäten verwenden können.
-
+Obwohl die Erkennung von Risikoereignissen bereits ein wichtiger Aspekt zum Schutz Ihrer Identitäten darstellt, haben Sie auch die Möglichkeit, diese entweder manuell zu beheben oder durch Konfiguration von Richtlinien für bedingten Zugriff automatisierte Antworten zu implementieren. Weitere Informationen finden Sie unter [Azure Active Directory Identity Protection](../active-directory-identityprotection.md).
 
 ## <a name="risk-event-types"></a>Risikoereignistypen
 
-Die Risikoereignistyp-Eigenschaft ist eine Kennung für die verdächtige Aktivität, für die ein Risikoereignis-Datensatz erstellt wurde.
+Die **Risikoereignistyp**-Eigenschaft ist ein Bezeichner Kennung für die verdächtige Aktivität, für die ein Risikoereignis-Datensatz erstellt wurde.
 
 Die laufenden Investitionen von Microsoft in den Erkennungsprozess führen zu:
 
@@ -62,12 +68,11 @@ Wenn Internetkriminelle an gültige Kennwörter von berechtigten Benutzern gelan
 - Sicherheitsteams bei Microsoft
 - Anderen vertrauenswürdigen Quellen 
 
-Wenn der Dienst Benutzername-Kennwort-Paare erwirbt, werden sie mit aktuell gültigen Anmeldeinformationen von AAD-Benutzern verglichen. Falls eine Übereinstimmung gefunden wird, bedeutet dies, dass das Kennwort eines Benutzers kompromittiert wurde, und es wird ein *Risikoereignis zu offengelegten Anmeldeinformationen* erstellt.
+Wenn der Dienst Benutzername-Kennwort-Paare erwirbt, werden sie mit aktuell gültigen Anmeldeinformationen von AAD-Benutzern verglichen. Falls eine Übereinstimmung gefunden wird, bedeutet dies, dass das Kennwort eines Benutzers kompromittiert wurde, und es wird ein **Risikoereignis zu offengelegten Anmeldeinformationen** erstellt.
 
 ### <a name="sign-ins-from-anonymous-ip-addresses"></a>Anmeldungen von anonymen IP-Adressen
 
 Bei dieser Art von Risikoereignis werden Benutzer identifiziert, die sich erfolgreich unter einer IP-Adresse angemeldet haben, die als anonyme Proxy-IP-Adresse identifiziert wurde. Diese Proxys werden von Personen verwendet, die die IP-Adresse ihres Geräts verbergen möchten, und können in böswilliger Absicht eingesetzt werden.
-
 
 ### <a name="impossible-travel-to-atypical-locations"></a>Unmöglicher Ortswechsel zu atypischen Orten
 
@@ -86,12 +91,11 @@ Identity Protection erkennt Anmeldungen von unbekannten Standorten auch bei der 
 Bei dieser Art von Risikoereignis werden Anmeldungen von Geräten identifiziert, die mit Schadsoftware infiziert sind und für die bekannt ist, dass sie aktiv mit einem Botserver kommunizieren. Dies wird ermittelt, indem IP-Adressen den Benutzergeräts mit IP-Adressen korreliert werden, die in Kontakt mit einem Botserver gestanden haben. 
 
 ### <a name="sign-ins-from-ip-addresses-with-suspicious-activity"></a>Anmeldungen von IP-Adressen mit verdächtigen Aktivitäten
-Bei dieser Art von Risikoereignis werden IP-Adressen identifiziert, für die eine hohe Zahl fehlgeschlagener Anmeldeversuche beobachtet wurde, und zwar mit mehreren Benutzerkonten innerhalb eines kurzen Zeitraums. Dies entspricht Datenverkehrsmustern von IP-Adressen, die von Angreifern verwendet werden, und es ist ein starker Hinweis darauf, dass Konten entweder bereits kompromittiert sind oder dass dies kurz bevorsteht. Dies ist ein Algorithmus für maschinelles Lernen, bei dem offensichtliche „*falsche Positive*“ ignoriert werden, z.B. IP-Adressen, die regelmäßig von anderen Benutzern in der Organisation verwendet werden.  Das System benötigt einen anfänglichen Lernzeitraum von 14 Tagen, in dem es das Anmeldeverhalten eines neuen Benutzers und neuen Mandanten erlernt.
-
+Bei dieser Art von Risikoereignis werden IP-Adressen identifiziert, für die eine hohe Zahl fehlgeschlagener Anmeldeversuche beobachtet wurde, und zwar mit mehreren Benutzerkonten innerhalb eines kurzen Zeitraums. Dies entspricht Datenverkehrsmustern von IP-Adressen, die von Angreifern verwendet werden, und es ist ein starker Hinweis darauf, dass Konten entweder bereits kompromittiert sind oder dass dies kurz bevorsteht. Dies ist ein Algorithmus für maschinelles Lernen, bei dem offensichtliche falsch positive Ergebnisse ignoriert werden, z.B. IP-Adressen, die regelmäßig von anderen Benutzern in der Organisation verwendet werden.  Das System benötigt einen anfänglichen Lernzeitraum von 14 Tagen, in dem es das Anmeldeverhalten eines neuen Benutzers und neuen Mandanten erlernt.
 
 ## <a name="detection-type"></a>Erkennungstyp
 
-Die Erkennungstyp-Eigenschaft ist ein Hinweis auf den Erkennungszeitrahmen (Echtzeit oder Offline) eines Risikoereignisses. Derzeit werden die meisten Risikoereignisse offline in einem Nachverarbeitungsvorgang nach dem Auftreten des Risikoereignisses erkannt.
+Die Erkennungstyp-Eigenschaft ist ein Hinweis auf den Erkennungszeitrahmen (**Echtzeit** oder **Offline**) eines Risikoereignisses. Derzeit werden die meisten Risikoereignisse offline in einem Nachverarbeitungsvorgang nach dem Auftreten des Risikoereignisses erkannt.
 
 In der folgenden Tabelle sind die jeweiligen Zeitspannen bis zur Anzeige eines bestimmten Erkennungstyps in einem entsprechenden Bericht aufgelistet:
 
@@ -115,7 +119,7 @@ Für die von Azure Active Directory erkannten Risikoereignistypen werden folgend
 
 ## <a name="risk-level"></a>Risikostufe
 
-Die Risikoebenen-Eigenschaft eines Risikoereignisses ist ein Hinweis auf den Schweregrad und die Zuverlässigkeit (Hoch, Mittel oder Niedrig) eines Risikoereignisses. Anhand dieser Eigenschaft können Sie die erforderlichen Maßnahmen priorisieren. 
+Die Risikostufe-Eigenschaft eines Risikoereignisses ist ein Hinweis auf den Schweregrad und die Zuverlässigkeit (**Hoch**, **Mittel** oder **Niedrig**) eines Risikoereignisses. Anhand dieser Eigenschaft können Sie die erforderlichen Maßnahmen priorisieren. 
 
 Der Schweregrad des Risikoereignisses steht für die Stärke des Signals, das zum Vorhersagen der Kompromittierung einer Identität dient. Die Zuverlässigkeit gibt die Möglichkeit falsch positiver Ergebnisse an. 
 
@@ -153,38 +157,17 @@ Unbekannte Standorte können ein starker Hinweis darauf sein, dass ein Angreifer
 
 Bei diesem Risikoereignis werden IP-Adressen identifiziert, keine Benutzergeräte. Wenn sich hinter einer einzelnen IP-Adresse mehrere Geräte verbergen und nur einige davon von einem Botnetzwerk kontrolliert werden, kann es sein, dass dieses Ereignis fälschlicherweise bei Anmeldungen von anderen Geräten ausgelöst wird. Dies ist der Grund dafür, warum dieses Risikoereignis die Einstufung **Niedrig** erhält.  
 
-Sie sollten den Benutzer kontaktieren und alle Geräte des Benutzers überprüfen. Es ist auch möglich, dass das persönliche Gerät eines Benutzers infiziert ist oder dass (wie bereits erwähnt) eine andere Person unter der gleichen IP-Adresse wie der Benutzer ein infiziertes Gerät verwendet hat. Infizierte Geräte sind häufig mit Schadsoftware infiziert, die von Antivirensoftware noch nicht identifiziert wurde. Dies kann auch auf schlechte Angewohnheiten des Benutzers hinweisen, die dazu geführt haben, dass das Gerät infiziert wurde.
+Sie sollten den Benutzer kontaktieren und alle Geräte des Benutzers überprüfen. Es ist auch möglich, dass das persönliche Gerät eines Benutzers infiziert ist oder eine andere Person unter der gleichen IP-Adresse wie der Benutzer ein infiziertes Gerät verwendet hat. Infizierte Geräte sind häufig mit Schadsoftware infiziert, die von Antivirensoftware noch nicht identifiziert wurde. Dies kann auch auf schlechte Angewohnheiten des Benutzers hinweisen, die dazu geführt haben, dass das Gerät infiziert wurde.
 
 Weitere Informationen dazu, wie Sie Infektionen durch Schadsoftware behandeln können, finden Sie im [Microsoft-Center zum Schutz vor Schadsoftware](https://go.microsoft.com/fwlink/?linkid=335773&clcid=0x409).
-
 
 ### <a name="sign-ins-from-ip-addresses-with-suspicious-activity"></a>Anmeldungen von IP-Adressen mit verdächtigen Aktivitäten
 
 Es wird empfohlen, sich an den Benutzer zu wenden und zu überprüfen, ob dieser sich tatsächlich mit einer IP-Adresse angemeldet hat, die als verdächtig gekennzeichnet war. Die Risikostufe für diesen Ereignistyp lautet**Mittel**, da sich hinter einer IP-Adresse mehrere Geräte verbergen können, von denen nur einige Geräte für die verdächtige Aktivität verantwortlich sind. 
 
 
- 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Risikoereignisse bilden die Grundlage für den Schutz Ihrer Azure AD-Identitäten. Azure AD kann derzeit sechs Arten von Risikoereignissen erkennen: 
-
-
-| Risikoereignistyp | Risikostufe | Erkennungstyp |
-| :-- | --- | --- |
-| [Benutzer mit kompromittierten Anmeldeinformationen](#leaked-credentials) | Hoch | Offline |
-| [Anmeldungen von anonymen IP-Adressen](#sign-ins-from-anonymous-ip-addresses) | Mittel | Echtzeit |
-| [Unmöglicher Ortswechsel zu atypischen Orten](#impossible-travel-to-atypical-locations) | Mittel | Offline |
-| [Anmeldungen von unbekannten Standorten](#sign-in-from-unfamiliar-locations) | Mittel | Echtzeit |
-| [Anmeldungen von infizierten Geräten](#sign-ins-from-infected-devices) | Niedrig | Offline |
-| [Anmeldungen von IP-Adressen mit verdächtigen Aktivitäten](#sign-ins-from-ip-addresses-with-suspicious-activity) | Mittel | Offline|
-
-Wo finden Sie die Risikoereignisse, die in Ihrer Umgebung erkannt wurden?
-Es gibt zwei Bereiche, in denen Sie gemeldete Risikoereignisse überprüfen:
-
- - **Azure AD-Berichterstellung** – Azure AD-Sicherheitsberichte umfassen Risikoereignisse. Weitere Informationen finden Sie unter [Sicherheitsbericht zu gefährdeten Benutzern](concept-user-at-risk.md) und unter [Sicherheitsbericht zu riskanten Anmeldevorgängen](concept-risky-sign-ins.md).
-
- - **Azure AD Identity Protection** – Auch die Berichtsfunktionen von [Azure Active Directory Identity Protection](../active-directory-identityprotection.md) umfassen Risikoereignisse.
-    
-
-Obwohl die Erkennung von Risikoereignissen bereits ein wichtiger Aspekt zum Schutz Ihrer Identitäten darstellt, haben Sie auch die Möglichkeit, diese entweder manuell zu beheben oder durch Konfiguration von Richtlinien für bedingten Zugriff sogar automatisierte Antworten zu implementieren. Weitere Informationen finden Sie unter [Azure Active Directory Identity Protection](../active-directory-identityprotection.md).
- 
+* [Sicherheitsbericht „Benutzer mit Risikomarkierung“ im Azure Active Directory-Portal](concept-user-at-risk.md)
+* [Bericht „Riskante Anmeldungen“ im Azure Active Directory-Portal](concept-risky-sign-ins.md)
+* [Azure AD Identity Protection](../active-directory-identityprotection.md)

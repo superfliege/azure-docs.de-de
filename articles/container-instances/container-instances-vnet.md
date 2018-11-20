@@ -5,14 +5,14 @@ services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: article
-ms.date: 09/24/2018
+ms.date: 11/05/2018
 ms.author: danlep
-ms.openlocfilehash: cab19cf051efea55a476128e4038aa69efdce8d9
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: e2f0d90a0a4384560c0a4126c028761765cb9e45
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50157087"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51288865"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>Bereitstellen von Containerinstanzen in einem virtuellen Azure-Netzwerk
 
@@ -56,7 +56,7 @@ Für das **Löschen von Netzwerkressourcen** sind [zusätzliche Schritte](#delet
 
 ## <a name="required-network-resources"></a>Erforderliche Netzwerkressourcen
 
-Es gibt drei Azure Virtual Network-Ressourcen, die für die Bereitstellung von Containergruppen in einem virtuellen Netzwerk erforderlich sind: das [virtuelle Netzwerk](#virtual-network) selbst, ein [delegiertes Subnetz](#subnet-delegated) innerhalb des virtuellen Netzwerks und ein [Netzwerkprofil](#network-profile).
+Es gibt drei Azure Virtual Network-Ressourcen, die für die Bereitstellung von Containergruppen in einem virtuellen Netzwerk erforderlich sind: das [virtuelle Netzwerk](#virtual-network) selbst, ein [delegiertes Subnetz](#subnet-delegated) innerhalb des virtuellen Netzwerks und ein [Netzwerkprofil](#network-profile). 
 
 ### <a name="virtual-network"></a>Virtuelles Netzwerk
 
@@ -70,15 +70,17 @@ Das Subnetz, das Sie für Containergruppen verwenden, darf nur Containergruppen 
 
 ### <a name="network-profile"></a>Netzwerkprofil
 
-Ein Netzwerkprofil ist eine Netzwerkkonfigurationsvorlage für Azure-Ressourcen. Es gibt bestimmte Netzwerkeigenschaften für die Ressource an, z.B. das Subnetz, in dem diese bereitgestellt werden sollen. Wenn Sie zum ersten Mal eine Containergruppe für ein Subnetz (und somit ein virtuelles Netzwerk) bereitstellen, erstellt Azure ein Netzwerkprofil für Sie. Sie können dieses Netzwerkprofil dann für zukünftige Bereitstellungen in dem Subnetz verwenden.
+Ein Netzwerkprofil ist eine Netzwerkkonfigurationsvorlage für Azure-Ressourcen. Es gibt bestimmte Netzwerkeigenschaften für die Ressource an, z.B. das Subnetz, in dem diese bereitgestellt werden sollen. Wenn Sie den Befehl [az container create][az-container-create] zum ersten Mal zum Bereitstellen einer Containergruppe in einem Subnetz (und somit einem virtuellen Netzwerk) verwenden, erstellt Azure ein Netzwerkprofil für Sie. Sie können dieses Netzwerkprofil dann für zukünftige Bereitstellungen in dem Subnetz verwenden. 
+
+Sie müssen die vollständige Resource Manager-Ressourcen-ID eines Netzwerkprofils angeben, um eine Resource Manager-Vorlage, YAML-Datei oder programmgesteuerte Methode zum Bereitstellen einer Containergruppe in einem Subnetz verwenden zu können. Sie können ein Profil nutzen, das zuvor mit [az container create][az-container-create] erstellt wurde, oder ein Profil mit einer Resource Manager-Vorlage erstellen (siehe [Referenz](https://docs.microsoft.com/azure/templates/microsoft.network/networkprofiles)). Verwenden Sie den Befehl [az network profile list][az-network-profile-list], um die ID eines zuvor erstellten Profils abzurufen. 
 
 In der folgenden Abbildung wurden mehrere Containergruppen für ein Subnetz bereitgestellt, das an Azure Container Instances delegiert wurde. Nachdem Sie eine Containergruppe für ein Subnetz bereitgestellt haben, können Sie zusätzliche Containergruppen für dieses bereitstellen, indem Sie das gleiche Netzwerkprofil angeben.
 
 ![Containergruppen in einem virtuellen Netzwerk][aci-vnet-01]
 
-## <a name="deploy-to-virtual-network"></a>Bereitstellen von Containergruppen in einem virtuellen Netzwerk
+## <a name="deployment-scenarios"></a>Bereitstellungsszenarien
 
-Sie können Containergruppen für ein neues virtuelles Netzwerk bereitstellen und Azure die Erstellung der erforderlichen Netzwerkressourcen in Ihrem Auftrag erlauben oder Containergruppen für ein vorhandenes virtuelles Netzwerk bereitstellen.
+Sie können [az container create][az-container-create] verwenden, um Containergruppen für ein neues virtuelles Netzwerk bereitzustellen, und Azure die Erstellung der erforderlichen Netzwerkressourcen in Ihrem Auftrag erlauben oder Containergruppen für ein vorhandenes virtuelles Netzwerk bereitstellen. 
 
 ### <a name="new-virtual-network"></a>Neues virtuelles Netzwerk
 
@@ -99,19 +101,21 @@ Um eine Containergruppe in einem vorhandenen virtuellen Netzwerk bereitzustellen
 
 1. Erstellen Sie ein Subnetz in Ihrem vorhandenen virtuellen Netzwerk, oder entfernen Sie *alle* anderen Ressourcen aus einem vorhandenen Subnetz.
 1. Stellen Sie eine Containergruppe mit [az container create][az-container-create] bereit, und geben Sie eine der folgenden Informationen an:
-   * Name des virtuellen Netzwerks und des Subnetzes</br>
-    oder
-   * Name oder ID des Netzwerkprofils
+   * Name des virtuellen Netzwerks und des Subnetzes
+   * VNET-Ressourcen-ID und Subnetzressourcen-ID, um die Verwendung eines virtuellen Netzwerks über eine andere Ressourcengruppe zu ermöglichen
+   * Netzwerkprofilname oder -ID, den bzw. die Sie mit [az network profile list][az-network-profile-list] abrufen können
 
 Sobald Sie Ihre erste Containergruppe für ein vorhandenes Subnetz bereitgestellt haben, delegiert Azure das Subnetz an Azure Container Instances. Sie können dann als Ressourcen nur noch Containergruppen in diesem Subnetz bereitstellen.
 
+## <a name="deployment-examples"></a>Bereitstellungsbeispiele
+
 In den folgenden Abschnitten wird beschrieben, wie mit der Azure CLI Containergruppen für ein virtuelles Netzwerk bereitgestellt werden. Die Befehlsbeispiele sind für die **Bash**-Shell formatiert. Wenn Sie eine andere Shell, wie PowerShell oder die Eingabeaufforderung bevorzugen, passen Sie die Zeilenfortsetzungszeichen entsprechend an.
 
-## <a name="deploy-to-new-virtual-network"></a>Bereitstellen von Containergruppen in einem neuen virtuellen Netzwerk
+### <a name="deploy-to-a-new-virtual-network"></a>Bereitstellen in einem neuen virtuellen Netzwerk
 
 Stellen Sie zunächst eine Containergruppe bereit, und geben Sie die Parameter für ein neues virtuelles Netzwerk und Subnetz an. Wenn Sie diese Parameter angeben, erstellt Azure das virtuelle Netzwerk und Subnetz, delegiert das Subnetz an Azure Container Instances und erstellt außerdem ein Netzwerkprofil. Nachdem diese Ressourcen erstellt wurden, wird Ihre Containergruppe im Subnetz bereitgestellt.
 
-Führen Sie den Befehl [az container create][az-container-create] aus, der Einstellungen für ein neues virtuelles Netzwerk und Subnetz angibt. Dieser Befehl stellt den Container [microsoft/aci-helloworld][aci-helloworld] bereit, der einen kleinen Node.js-Webserver ausführt. Dieser verarbeitet Anforderungen von einer statischen Webseite. Im nächsten Abschnitt stellen Sie eine zweite Containergruppe im gleichen Subnetz bereit und testen die Kommunikation zwischen den beiden Containerinstanzen.
+Führen Sie den Befehl [az container create][az-container-create] aus, der Einstellungen für ein neues virtuelles Netzwerk und Subnetz angibt. Sie müssen den Namen einer Ressourcengruppe angeben, der in einer Region erstellt wurde, für die Containergruppen in einem virtuellen Netzwerk [unterstützt](#preview-limitations) werden. Dieser Befehl stellt den Container [microsoft/aci-helloworld][aci-helloworld] bereit, der einen kleinen Node.js-Webserver ausführt. Dieser verarbeitet Anforderungen von einer statischen Webseite. Im nächsten Abschnitt stellen Sie eine zweite Containergruppe im gleichen Subnetz bereit und testen die Kommunikation zwischen den beiden Containerinstanzen.
 
 ```azurecli
 az container create \
@@ -126,7 +130,7 @@ az container create \
 
 Wenn Sie mit dieser Methode Bereitstellungen in einem neuen virtuellen Netzwerk ausführen, kann es einige Minuten dauern, bis die Netzwerkressourcen im Zuge der Bereitstellung erstellt werden. Nach der Erstbereitstellung werden Bereitstellungen von zusätzlichen Containern schneller ausgeführt.
 
-## <a name="deploy-to-existing-virtual-network"></a>Bereitstellen von Containergruppen in einem vorhandenen virtuellen Netzwerk
+### <a name="deploy-to-existing-virtual-network"></a>Bereitstellen von Containergruppen in einem vorhandenen virtuellen Netzwerk
 
 Nachdem Sie eine Containergruppe in einem neuen virtuellen Netzwerk bereitgestellt haben, stellen Sie eine zweite Containergruppe im gleichen Subnetz bereit, und überprüfen Sie die Kommunikation zwischen den zwei Containerinstanzen.
 
@@ -174,7 +178,7 @@ index.html           100% |*******************************|  1663   0:00:00 ETA
 
 Die Protokollausgabe sollte zeigen, dass `wget` eine Verbindung herstellen und die Indexdatei aus dem ersten Container mithilfe der privaten IP-Adresse im lokalen Subnetz herunterladen konnte. Der Netzwerkdatenverkehr zwischen den zwei Containergruppen fand innerhalb des virtuellen Netzwerks statt.
 
-## <a name="deploy-to-existing-virtual-network---yaml"></a>Bereitstellen von Containergruppen in einem virtuellen Netzwerk: YAML
+### <a name="deploy-to-existing-virtual-network---yaml"></a>Bereitstellen von Containergruppen in einem virtuellen Netzwerk: YAML
 
 Sie können auch mithilfe einer YAML-Datei eine Containergruppe in einem vorhandenen virtuellen Netzwerk bereitstellen. Um eine Bereitstellung in einem Subnetz in einem virtuellen Netzwerk vorzunehmen, geben Sie mehrere zusätzliche Eigenschaften in YAML an:
 
