@@ -239,12 +239,16 @@ items:
       items:
       - name: Knotentypen und VM Scale Sets
         href: service-fabric-cluster-nodetypes.md
+      - name: Aktualisieren von Clustern in Azure
+        href: service-fabric-cluster-upgrade.md
       - name: Skalieren
         href: service-fabric-cluster-scaling.md
       - name: Clusternetzwerkmuster
         href: service-fabric-patterns-networking.md
     - name: Eigenständige Cluster
       items:
+      - name: Aktualisieren von eigenständigen Clustern
+        href: service-fabric-cluster-upgrade-standalone.md
       - name: Skalieren
         href: service-fabric-cluster-scaling-standalone.md
     - name: Clusterressourcen-Manager
@@ -585,19 +589,27 @@ items:
         - name: Horizontales Hochskalieren des Knotentyps der VM-Skalierungsgruppe
           href: virtual-machine-scale-set-scale-node-type-scale-out.md
       - name: Upgrade
-        href: service-fabric-cluster-upgrade.md
-      - name: Festlegen der Zugriffssteuerung
-        href: service-fabric-cluster-security-roles.md
-      - name: Öffnen eines Ports im Lastenausgleichsmodul
-        href: create-load-balancer-rule.md
-      - name: Umstellen des Clusterzertifikats auf den allgemeinen Namen
-        href: service-fabric-cluster-change-cert-thumbprint-to-cn.md
-      - name: Manuelles Durchführen eines Rollovers für Clusterzertifikate
-        href: service-fabric-cluster-rollover-cert-cn.md
-      - name: Verwalten von Clusterzertifikaten
-        href: service-fabric-cluster-security-update-certs-azure.md
-      - name: Herstellen einer Remoteverbindung mit dem virtuellen Clusterknotencomputer
-        href: service-fabric-cluster-remote-connect-to-azure-cluster-node.md
+        items:
+        - name: Aktualisieren der Service Fabric-Version
+          href: service-fabric-cluster-upgrade-version-azure.md
+        - name: Aktualisieren der Clusterkonfiguration
+          href: service-fabric-cluster-config-upgrade-azure.md
+        - name: Patchen von Clusterknoten (Windows)
+          href: service-fabric-patch-orchestration-application.md
+        - name: Patchen von Clusterknoten (Linux)
+          href: service-fabric-patch-orchestration-application-linux.md
+        - name: Festlegen der Zugriffssteuerung
+          href: service-fabric-cluster-security-roles.md
+        - name: Öffnen eines Ports im Lastenausgleichsmodul
+          href: create-load-balancer-rule.md
+        - name: Umstellen des Clusterzertifikats auf den allgemeinen Namen
+          href: service-fabric-cluster-change-cert-thumbprint-to-cn.md
+        - name: Manuelles Durchführen eines Rollovers für Clusterzertifikate
+          href: service-fabric-cluster-rollover-cert-cn.md
+        - name: Verwalten von Clusterzertifikaten
+          href: service-fabric-cluster-security-update-certs-azure.md
+        - name: Herstellen einer Remoteverbindung mit dem virtuellen Clusterknotencomputer
+          href: service-fabric-cluster-remote-connect-to-azure-cluster-node.md
     - name: Eigenständige Cluster
       items:
       - name: Erstellen
@@ -612,20 +624,22 @@ items:
           href: service-fabric-cluster-standalone-package-contents.md
       - name: Skalieren
         href: service-fabric-cluster-windows-server-add-remove-nodes.md
-      - name: Festlegen der Zugriffssteuerung
-        href: service-fabric-cluster-security-roles.md
-      - name: Konfigurieren
-        href: service-fabric-cluster-manifest.md
       - name: Upgrade
-        href: service-fabric-cluster-upgrade-windows-server.md
+        items:
+        - name: Aktualisieren der Service Fabric-Version
+          href: service-fabric-cluster-upgrade-windows-server.md
+        - name: Aktualisieren der Clusterkonfiguration
+          href: service-fabric-cluster-config-upgrade-windows-server.md
+        - name: Konfigurationseinstellungen
+          href: service-fabric-cluster-manifest.md
+        - name: Festlegen der Zugriffssteuerung
+          href: service-fabric-cluster-security-roles.md
+        - name: Patchen von Clusterknoten (Windows)
+          href: service-fabric-patch-orchestration-application.md
     - name: Visualisieren eines Clusters
       href: service-fabric-visualizing-your-cluster.md
     - name: Herstellen einer Verbindung mit einem sicheren Cluster
       href: service-fabric-connect-to-secure-cluster.md
-    - name: Patchen von Clusterknoten (Windows)
-      href: service-fabric-patch-orchestration-application.md
-    - name: Patchen von Clusterknoten (Linux)
-      href: service-fabric-patch-orchestration-application-linux.md
   - name: Überwachen und Diagnostizieren
     items:
     - name: Überwachen von Anwendungen
@@ -767,9 +781,9 @@ items:
     href: https://azure.microsoft.com/updates/?product=service-fabric
   - name: Videos
     href: https://azure.microsoft.com/documentation/videos/index/?services=service-fabric
-ms.openlocfilehash: 810c04b2d6b2b5e7a8db64e21c10225ccddcb117
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 98ca5a1cbf5298931c14d6c696119d0c98893072
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634276"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51853636"
