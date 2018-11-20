@@ -2,21 +2,21 @@
 title: Bereitstellen von Azure-Funktionen mit Azure IoT Edge | Microsoft-Dokumentation
 description: In diesem Tutorial stellen Sie eine Azure-Funktion als Modul auf einem Edge-Gerät bereit.
 author: kgremban
-manager: timlt
+manager: philmea
 ms.author: kgremban
 ms.date: 09/21/2018
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 67540a02aab0880ea1a5c52e42036029b95c4f43
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 27aac9431c3f4cd801d090ddf11114c98edab405
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51006259"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51567314"
 ---
-# <a name="tutorial-deploy-azure-functions-as-iot-edge-modules-preview"></a>Tutorial: Bereitstellen von Azure-Funktionen als IoT Edge-Module (Vorschauversion)
+# <a name="tutorial-deploy-azure-functions-as-iot-edge-modules"></a>Tutorial: Bereitstellen von Azure-Funktionen als IoT Edge-Module
 
 Mithilfe von Azure Functions können Sie Code bereitstellen, mit dem Ihre Geschäftslogik direkt auf Ihren Azure IoT Edge-Geräten implementiert wird. In diesem Tutorial erfahren Sie Schritt für Schritt, wie Sie eine Azure-Funktion erstellen und bereitstellen, die Sensordaten auf dem simulierten IoT Edge-Gerät filtert. Sie verwenden das simulierte IoT Edge-Gerät, das Sie in den Schnellstartanleitungen zum Bereitstellen von Azure IoT Edge auf einem simulierten Gerät unter [Windows](quickstart.md) oder [Linux](quickstart-linux.md) erstellt haben. In diesem Tutorial lernen Sie Folgendes:     
 

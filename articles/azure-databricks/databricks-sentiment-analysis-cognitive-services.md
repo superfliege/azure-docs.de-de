@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.workload: Active
 ms.date: 10/23/2018
 ms.author: alehall
-ms.openlocfilehash: 6868e481a796980be315c466cd79021255355084
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: cf396dea6ee467267ea73379ea04026fc8cc53b2
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50416647"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51636576"
 ---
 # <a name="tutorial-sentiment-analysis-on-streaming-data-using-azure-databricks"></a>Tutorial: Standpunktanalyse für Streamingdaten mit Azure Databricks
 
@@ -579,7 +579,7 @@ Nach Abschluss des Tutorials können Sie den Cluster beenden. Klicken Sie hierzu
 
 ![Beenden eines Databricks-Clusters](./media/databricks-sentiment-analysis-cognitive-services/terminate-databricks-cluster.png "Beenden eines Databricks-Clusters")
 
-Wenn Sie den Cluster nicht manuell beenden, wird er automatisch beendet, sofern Sie bei der Erstellung des Clusters das Kontrollkästchen **Terminate after __ minutes of inactivity** (Nach __ Minuten Inaktivität beenden) aktiviert haben. Der Cluster wird dann automatisch beendet, wenn er für den angegebenen Zeitraum inaktiv war.
+Wenn Sie den Cluster nicht manuell beenden, wird er automatisch beendet, sofern Sie bei der Erstellung des Clusters das Kontrollkästchen **Terminate after \_\_ minutes of inactivity** (Nach __ Minuten Inaktivität beenden) aktiviert haben. Der Cluster wird dann automatisch beendet, wenn er für den angegebenen Zeitraum inaktiv war.
 
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Tutorial wurde beschrieben, wie Sie Azure Databricks zum Streamen von Daten in Azure Event Hubs verwenden und die Streamingdaten dann in Echtzeit von Event Hubs lesen. Es wurde Folgendes vermittelt:

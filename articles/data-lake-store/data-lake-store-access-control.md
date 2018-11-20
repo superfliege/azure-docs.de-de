@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: fce96cf5be9e70863fd75e5d4b3045bc49f638cf
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 08991829c9c3d628b5028e04dbd4836647d94826
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47432622"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51567484"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen1"></a>Zugriffssteuerung in Azure Data Lake Storage Gen1
 
@@ -128,9 +128,11 @@ Der Benutzer, der das Element erstellt hat, ist automatisch der zuständige Benu
 
 In den POSIX-Zugriffssteuerungslisten ist jeder Benutzer einer „primären Gruppe“ zugeordnet. So kann beispielsweise die Benutzerin „Alice“ der Gruppe „finance“ angehören. Alice kann außerdem mehreren Gruppen angehören, aber eine Gruppe wird immer als ihre primäre Gruppe festgelegt. In POSIX gilt: Wenn Alice eine Datei erstellt, wird die zuständige Gruppe der Datei auf ihre primäre Gruppe festgelegt (in diesem Fall „finance“). Andernfalls verhält sich die zuständige Gruppe ähnlich wie zugewiesene Berechtigungen für andere Benutzer oder Gruppen.
 
+Da den Benutzern in Data Lake Storage Gen1 keine „primäre Gruppe“ zugeordnet ist, wird die zuständige Gruppe wie unten angegeben zugewiesen.
+
 **Zuweisen der zuständigen Gruppe für eine neue Datei oder einen neuen Ordner**
 
-* **1. Fall**: Der Stammordner „/“. Dieser Ordner wird erstellt, wenn ein Data Lake Storage Gen1-Konto erstellt wird. In diesem Fall wird die zuständige Gruppe auf den Benutzer festgelegt, der das Konto erstellt hat.
+* **1. Fall**: Der Stammordner „/“. Dieser Ordner wird erstellt, wenn ein Data Lake Storage Gen1-Konto erstellt wird. In diesem Fall wird die zuständige Gruppe auf eine GUID festgelegt, die nur aus Nullen besteht.  Bei diesem Wert ist kein Zugriff zulässig.  Es ist ein Platzhalter, der bis zur Zuweisung einer Gruppe gilt.
 * **2. Fall** (jeder andere Fall): Beim Erstellen eines neuen Elements wird die zuständige Gruppe aus dem übergeordneten Ordner kopiert.
 
 **Ändern der zuständigen Gruppe**
@@ -140,7 +142,9 @@ Die zuständige Gruppe kann von folgenden Benutzern geändert werden:
 * Zuständiger Benutzer, sofern er auch der Zielgruppe angehört
 
 > [!NOTE]
-> Die zuständige Gruppe kann die ACLs einer Datei oder eines Ordners *nicht* ändern.  Im Fall des Stammordners (**Fall 1** weiter oben) wird die zuständige Gruppe zwar auf den Benutzer festgelegt, der das Konto erstellt hat, für die Bereitstellung von Berechtigungen über die zuständige Gruppe ist jedoch kein einzelnes Konto zulässig.  Sie können diese Berechtigung ggf. einer gültigen Benutzergruppe zuweisen.
+> Die zuständige Gruppe kann die ACLs einer Datei oder eines Ordners *nicht* ändern.
+>
+> Für Konten, die bis September 2018 erstellt wurden, wurde die zuständige Gruppe auf den Benutzer festgelegt, der das Konto erstellt hat (für Stammordner siehe **1. Fall** oben).  Ein einzelnes Benutzerkonto ist zum Bereitstellen von Berechtigungen über die zuständige Gruppe nicht gültig, sodass mit dieser Standardeinstellung keine Berechtigungen gewährt werden. Sie können diese Berechtigung einer gültigen Benutzergruppe zuweisen.
 
 
 ## <a name="access-check-algorithm"></a>Algorithmus für die Zugriffsüberprüfung

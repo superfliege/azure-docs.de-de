@@ -10,12 +10,12 @@ ms.component: bing-entity-search
 ms.topic: quickstart
 ms.date: 02/12/2018
 ms.author: v-gedod
-ms.openlocfilehash: 1f2a5f6a1473cde40928ada6e30f6bd9b780543d
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 69bcca7871d9bf4bebf64c0c0ae1b54cd8408927
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48814881"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51684119"
 ---
 # <a name="quickstart-bing-entity-search-sdk-with-node"></a>Schnellstart: Bing-Entitätssuche-SDK mit Node
 
@@ -24,7 +24,9 @@ Das Bing-Entitätssuche-SDK enthält die Funktionalität der REST-API für Entit
 [Beispielquellcode mit dem Bing-Entitätssuche-SDK für C#](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/entitySearch.js) ist bei GitHub verfügbar.
 ## <a name="application-dependencies"></a>Anwendungsabhängigkeiten
 
-Führen Sie zum Einrichten einer Konsolenanwendung mit dem Bing-Entitätssuche-SDK in Ihrer Entwicklungsumgebung `npm install azure-cognitiveservices-entitysearch` aus.
+So richten Sie eine Konsolenanwendung mit dem SDK für die Bing-Entitätssuche ein:
+* Führen Sie `npm install ms-rest-azure` in Ihrer Entwicklungsumgebung aus.
+* Führen Sie `npm install azure-cognitiveservices-entitysearch` in Ihrer Entwicklungsumgebung aus.
 
 ## <a name="entity-search-client"></a>Entitätssuche-Client
 Rufen Sie unter *Suchen* einen [Cognitive Services-Zugriffsschlüssel](https://azure.microsoft.com/try/cognitive-services/) ab. Erstellen Sie eine Instanz der `CognitiveServicesCredentials`:

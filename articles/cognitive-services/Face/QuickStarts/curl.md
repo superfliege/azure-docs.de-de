@@ -1,60 +1,65 @@
 ---
-title: 'Schnellstart: Erkennen von Gesichtern in einem Bild mit der REST-API und cURL'
+title: 'Schnellstart: Erkennen von Gesichtern in einem Bild mit der Azure-REST-API und cURL'
 titleSuffix: Azure Cognitive Services
-description: In diesem Schnellstart verwenden Sie die Gesichtserkennungs-API mit cURL, um Gesichter in einem Bild zu erkennen.
+description: In diesem Schnellstart verwenden Sie die Azure-Gesichtserkennungs-REST-API mit cURL, um Gesichter in einem Bild zu erkennen.
 services: cognitive-services
 author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: face-api
 ms.topic: quickstart
-ms.date: 05/10/2018
+ms.date: 11/09/2018
 ms.author: pafarley
-ms.openlocfilehash: ab403ec6a9db4d1a0dc03074044eeb424e4ba875
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: a9e3b4713e11b5f01ea8343471aa33a327210338
+ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49953347"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51578036"
 ---
-# <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-curl"></a>Schnellstart: Erkennen von Gesichtern in einem Bild mit der REST-API und cURL
+# <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-curl"></a>Schnellstart: Erkennen von Gesichtern in einem Bild mit der Gesichtserkennungs-REST-API und cURL
 
-In diesem Schnellstart verwenden Sie die Gesichtserkennungs-API, um Gesichter in einem Bild zu erkennen.
+In diesem Schnellstart verwenden Sie die Azure-Gesichtserkennungs-REST-API mit cURL, um menschliche Gesichter in einem Bild zu erkennen.
+
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Zum Ausführen des Beispiels benötigen Sie einen Abonnementschlüssel. Über die Seite [Cognitive Services ausprobieren](https://azure.microsoft.com/try/cognitive-services/?api=face-api) können Sie Abonnementschlüssel für eine kostenlose Testversion abrufen.
+- Ein Abonnementschlüssel für die Gesichtserkennungs-API. Über die Seite [Cognitive Services ausprobieren](https://azure.microsoft.com/try/cognitive-services/?api=face-api) können Sie einen Abonnementschlüssel für eine kostenlose Testversion abrufen. Gehen Sie andernfalls wie unter [Schnellstart: Erstellen eines Cognitive Services-Kontos im Azure-Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) beschrieben vor, um den Gesichtserkennungs-API-Dienst zu abonnieren und Ihren Schlüssel zu erhalten.
 
-## <a name="detect-faces-in-an-image"></a>Gesichtserkennung in einem Bild
-
-Verwenden Sie die [Face – Detect](https://westcentralus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)-Methode, um Gesichter in einem Bild zu erkennen und Gesichtsattribute zurückzugeben, z.B.:
-
-* Gesichtserkennungs-API: Eindeutige ID, die in verschiedenen Gesichtserkennungs-API-Szenarien verwendet wird.
-* Gesichtsrechteck: Die Position des linken und oberen Rands sowie die Breite und Höhe, um die Position des Gesichts im Bild anzugeben.
-* Besondere Merkmale: Ein Array mit 27 Punkten zu Gesichtszügen, die auf die wichtigen Positionen von Gesichtskomponenten hinweisen.
-* Dies können Gesichtsattribute wie Alter, Geschlecht, Intensität des Lächelns, Kopfhaltung und Gesichtsbehaarung sein.
-
-Führen Sie zum Ausführen des Beispiels die folgenden Schritte aus:
-
-1. Öffnen Sie eine Eingabeaufforderung.
-2. Ersetzen Sie `<Subscription Key>` durch Ihren gültigen Abonnementschlüssel.
-3. Ändern Sie die URL (`https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect`) ggf. in die Region, in der Sie Ihre Abonnementschlüssel erhalten haben.
-4. Ändern Sie optional das Bild (`"{\"url\":...`), das Sie analysieren möchten.
-5. Fügen Sie den Code in das Befehlsfenster ein.
-6. Führen Sie den Befehl aus.
-
-### <a name="face---detect-request"></a>„Face – Detect“-Anforderung
-
-> [!NOTE]
-> Sie müssen in Ihrem REST-Aufruf den gleichen Standort verwenden, den Sie zum Erwerb Ihrer Abonnementschlüssel verwendet haben. Wenn Sie Ihre Abonnementschlüssel beispielsweise von „westus“ erhalten haben, ersetzen Sie „westcentralus“ in der folgenden URL durch „westus“.
+## <a name="write-the-command"></a>Schreiben des Befehls
+ 
+Mit ungefähr folgendem Befehl rufen Sie die Gesichtserkennungs-API auf und rufen Gesichtsattributdaten aus einem Bild ab. Kopieren Sie den Code zunächst in einen Text-Editor. Sie müssen bestimmte Teile des Befehls ändern, bevor Sie ihn ausführen können.
 
 ```shell
 curl -H "Ocp-Apim-Subscription-Key: <Subscription Key>" "https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect?returnFaceId=true&returnFaceLandmarks=false&returnFaceAttributes=age,gender,headPose,smile,facialHair,glasses,emotion,hair,makeup,occlusion,accessories,blur,exposure,noise" -H "Content-Type: application/json" --data-ascii "{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/c/c3/RH_Louise_Lillian_Gish.jpg\"}"
 ```
 
-### <a name="face---detect-response"></a>„Face – Detect“-Antwort
+### <a name="subscription-key"></a>Abonnementschlüssel
+Ersetzen Sie `<Subscription Key>` durch Ihren gültigen Abonnementschlüssel für die Gesichtserkennungs-API.
 
-Eine erfolgreiche Antwort wird im JSON-Format zurückgegeben.
+### <a name="face-endpoint-url"></a>Endpunkt-URL der Gesichtserkennungs-API
+
+Die URL `https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect` gibt den Endpunkt der Azure-Gesichtserkennungs-API an, der abgefragt werden soll. Sie müssen den ersten Teil dieser URL entsprechend der Region Ihres Abonnementschlüssels ändern (es sei denn, die URL ist bereits korrekt).
+
+### <a name="url-query-string"></a>URL-Abfragezeichenfolge
+
+Die Abfragezeichenfolge der Endpunkt-URL der Gesichtserkennungs-API gibt an, welche Gesichtsattribute abgerufen werden. Sie können diese Zeichenfolge je nach beabsichtigter Verwendung ändern.
+
+```
+?returnFaceId=true&returnFaceLandmarks=false&returnFaceAttributes=age,gender,headPose,smile,facialHair,glasses,emotion,hair,makeup,occlusion,accessories,blur,exposure,noise
+```
+
+### <a name="image-source-url"></a>URL der Bildquelle
+Die Quell-URL gibt das Bild an, das als Eingabe verwendet werden soll. Sie können den Wert ändern, um auf ein beliebiges Bild zu verweisen, das Sie analysieren möchten.
+
+```
+https://upload.wikimedia.org/wikipedia/commons/c/c3/RH_Louise_Lillian_Gish.jpg
+``` 
+
+## <a name="run-the-command"></a>Führen Sie den folgenden Befehl aus:
+
+Wenn Sie die gewünschten Änderungen vorgenommen haben, öffnen Sie eine Eingabeaufforderung, und geben Sie den neuen Befehl ein. Die Gesichtserkennungsinformationen sollten daraufhin als JSON-Daten im Konsolenfenster angezeigt werden. Beispiel: 
 
 ```json
 [
@@ -150,7 +155,7 @@ Eine erfolgreiche Antwort wird im JSON-Format zurückgegeben.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erkunden Sie die Gesichtserkennungs-APIs, die verwendet werden, um in einem Bild menschliche Gesichter zu erkennen, die Gesichter mit Rechtecken zu kennzeichnen und Attribute wie Alter und Geschlecht zurückzugeben.
+In diesem Schnellstart haben Sie einen cURL-Befehl geschrieben, der die Azure-Gesichtserkennungs-API aufruft, um Gesichter in einem Bild zu erkennen und ihre Attribute zurückzugeben. Sehen Sie sich als Nächstes die Referenzdokumentation zur Gesichtserkennungs-API an, um mehr zu erfahren.
 
 > [!div class="nextstepaction"]
-> [Gesichtserkennungs-APIs](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)
+> [Gesichtserkennungs-API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)

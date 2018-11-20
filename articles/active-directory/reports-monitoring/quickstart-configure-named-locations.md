@@ -12,15 +12,15 @@ ms.component: report-monitor
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 07/23/2018
+ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: d99f077449529fb4a4a7f124fe1c0263d4113dee
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 49d0840ff7a41ed48151b65e1351628d32d46d24
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46363444"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51623247"
 ---
 # <a name="quickstart-configure-named-locations-in-azure-active-directory"></a>Schnellstart: Konfigurieren benannter Orte in Azure Active Directory
 
@@ -62,8 +62,6 @@ Für die Durchführung dieses Schnellstarts benötigen Sie Folgendes:
 
 Weitere Informationen finden Sie unter
 
-- [Bedingter Zugriff in Azure Active Directory](../active-directory-conditional-access-azure-portal.md)
-
+- [Bedingter Zugriff auf Azure AD](../active-directory-conditional-access-azure-portal.md)
 - [Standortbedingungen beim bedingten Zugriff in Azure Active Directory](../conditional-access/location-condition.md)
-
-- [Bericht „Riskante Anmeldungen“ im Azure Active Directory-Portal](concept-risky-sign-ins.md)  
+- [Bericht „Riskante Anmeldungen“](concept-risky-sign-ins.md)  

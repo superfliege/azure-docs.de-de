@@ -1,5 +1,5 @@
 ---
-title: Hochladen, Codieren und Streamen mit Azure Media Services | Microsoft Docs
+title: 'Hochladen, Codieren und Streamen mit Azure Media Services: REST | Microsoft-Dokumentation'
 description: Führen Sie die Schritte in diesem Tutorial aus, um eine Datei hochzuladen, das Video zu codieren und Ihre Inhalte mit Azure Media Services unter Verwendung von REST zu streamen.
 services: media-services
 documentationcenter: ''
@@ -10,20 +10,20 @@ ms.service: media-services
 ms.workload: ''
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 10/16/2018
+ms.date: 11/11/2018
 ms.author: juliako
-ms.openlocfilehash: e49b450ef2c731e9ddbafa0c8366d9eae29dc5ef
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 67a0b6ced771519bd97934f8914ba420ee3119ce
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49377430"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51615771"
 ---
 # <a name="tutorial-upload-encode-and-stream-videos-with-rest"></a>Tutorial: Hochladen, Codieren und Streamen von Videos mit REST
 
-In diesem Tutorial erfahren Sie, wie Videodateien mit Azure Media Services hochgeladen, codiert und gestreamt werden.
+Azure Media Services ermöglicht das Codieren Ihrer Mediendateien in Formate, die mit einer Vielzahl von Browsern und Geräten wiedergegeben werden können. So können Sie Ihre Inhalte beispielsweise im HLS-Format von Apple oder im MPEG DASH-Format streamen. Vor dem Streamen sollten Sie Ihre digitale Mediendatei in hoher Qualität codieren. Anleitungen zur Codierung finden Sie unter [Codierungskonzept](encoding-concept.md).
 
-Media Services ermöglicht das Codieren Ihrer Mediendateien in Formate, die mit einer Vielzahl von Browsern und Geräten wiedergegeben werden können. So können Sie Ihre Inhalte beispielsweise im HLS-Format von Apple oder im MPEG DASH-Format streamen. Vor dem Streamen sollten Sie Ihre digitale Mediendatei in hoher Qualität codieren. Anleitungen zur Codierung finden Sie unter [Codierungskonzept](encoding-concept.md).
+In diesem Tutorial erfahren Sie, wie Videodateien mit Azure Media Services und REST hochgeladen, codiert und gestreamt werden. 
 
 ![Video abspielen](./media/stream-files-tutorial-with-api/final-video.png)
 
@@ -42,6 +42,14 @@ Dieses Tutorial veranschaulicht folgende Vorgehensweisen:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
+- Installieren und verwenden Sie die Befehlszeilenschnittelle lokal. Dieser Artikel erfordert mindestens die Azure CLI-Version 2.0. Führen Sie `az --version` aus, um herauszufinden, welche Version Sie haben. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI](/cli/azure/install-azure-cli). 
+
+    Derzeit funktionieren nicht alle Befehle der [Befehlszeilenschnittstelle von Media Services v3](https://aka.ms/ams-v3-cli-ref) in Azure Cloud Shell. Es wird empfohlen, die Befehlszeilenschnittstelle lokal zu verwenden.
+
+- [Erstellen Sie ein Media Services-Konto.](create-account-cli-how-to.md)
+
+    Merken Sie sich die Werte, die Sie für den Namen der Ressourcengruppe und des Media Services-Kontos verwendet haben.
+
 - Installieren Sie den REST-Client von [Postman](https://www.getpostman.com/), um die REST-APIs auszuführen, die in einigen der AMS REST-Tutorials gezeigt werden. 
 
     Wir verwenden **Postman**, aber jedes REST-Tool wäre geeignet. Andere Alternativen sind: **Visual Studio Code** mit dem REST-Plug-In oder **Telerik Fiddler**. 
@@ -53,10 +61,6 @@ Klonen Sie ein GitHub-Repository mit der Postman-Sammlung und den Umgebungsdatei
  ```bash
  git clone https://github.com/Azure-Samples/media-services-v3-rest-postman.git
  ```
-
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
-
-[!INCLUDE [media-services-cli-create-v3-account-include](../../../includes/media-services-cli-create-v3-account-include.md)]
 
 [!INCLUDE [media-services-v3-cli-access-api-include](../../../includes/media-services-v3-cli-access-api-include.md)]
 
@@ -352,11 +356,11 @@ Wählen Sie zum Löschen einer Ressource den Löschvorgang unter der zu löschen
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Wenn Sie keine Ressourcen in Ihrer Ressourcengruppe mehr benötigen, einschließlich der Media Services und Speicherkonten, die Sie für dieses Tutorial erstellt haben, löschen Sie die zuvor erstellte Ressourcengruppe. Sie können das **CloudShell**-Tool verwenden.
+Wenn Sie keine Ressourcen in Ihrer Ressourcengruppe mehr benötigen, einschließlich der Media Services und Speicherkonten, die Sie für dieses Tutorial erstellt haben, löschen Sie die zuvor erstellte Ressourcengruppe.  
 
-Führen Sie in **CloudShell** den folgenden Befehl aus:
+Führen Sie den folgenden CLI-Befehl aus:
 
-```azurecli-interactive
+```azurecli
 az group delete --name amsResourceGroup
 ```
 

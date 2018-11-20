@@ -16,12 +16,12 @@ ms.topic: get-started-article
 ms.date: 07/17/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 5239788f06ed3e738d1f0b62ddcde77c2a13b5f2
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: afc24d75b128c192efe14af061ac1df7521c7ef2
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50241734"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51621258"
 ---
 # <a name="federate-multiple-instances-of-azure-ad-with-single-instance-of-ad-fs"></a>Erstellen eines Verbunds mit mehreren Instanzen von Azure AD und einer Einzelinstanz von AD FS
 
@@ -47,7 +47,7 @@ Damit AD FS in „contoso.com“ Benutzer in „fabrikam.com“ authentifizieren
  
 Für den Verbund zwischen einer einzelnen Domäne und AD FS ist der Standardaussteller http://ADFSServiceFQDN/adfs/services/trust festgelegt (Beispiel: http://fs.contoso.com/adfs/services/trust). Azure Active Directory benötigt für jede Verbunddomäne einen eindeutigen Aussteller. Da die gleiche AD FS-Instanz zwei Domänen zu einem Verbund zusammenfasst, muss der Ausstellerwert so angepasst werden, dass er für jede Domäne eindeutig ist, die AD FS mit Azure Active Directory zu einem Verbund zusammenfasst. 
  
-Öffnen Sie auf dem AD FS-Server Azure AD PowerShell, und führen Sie die folgenden Schritte aus:
+Öffnen Sie auf dem AD FS-Server Azure AD PowerShell. (Stellen Sie sicher, dass das MSOnline-Modul installiert ist.) Führen Sie die folgenden Schritte aus:
  
 Stellen Sie mit „Connect-MsolService“ eine Verbindung mit der Azure Active Directory-Instanz her, die die Domäne „contoso.com“ enthält. Aktualisieren Sie mit „Update-MsolFederatedDomain -DomainName contoso.com –SupportMultipleDomain“ die Verbundeinstellungen für „contoso.com“.
  

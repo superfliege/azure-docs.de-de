@@ -10,25 +10,24 @@ ms.service: media-services
 ms.workload: ''
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 10/16/2018
+ms.date: 11/11/2018
 ms.author: juliako
-ms.openlocfilehash: 404a40f8949add77153d3fbf53b5c68dfb866128
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: d2d648dd02426596e1c070ffd494458c68060085
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49377879"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51613442"
 ---
 # <a name="tutorial-upload-encode-and-stream-videos-using-apis"></a>Tutorial: Hochladen, Codieren und Streamen von Videos mit APIs
 
-Media Services ermöglicht das Codieren Ihrer Mediendateien in Formate, die mit einer Vielzahl von Browsern und Geräten wiedergegeben werden können. So können Sie Ihre Inhalte beispielsweise im HLS-Format von Apple oder im MPEG DASH-Format streamen. Vor dem Streamen sollten Sie Ihre digitale Mediendatei in hoher Qualität codieren. Anleitungen zur Codierung finden Sie im [Codierungskonzept](encoding-concept.md). In diesem Tutorial wird eine lokale Videodatei hochgeladen und die hochgeladene Datei codiert. Sie können auch Inhalt codieren, den Sie über eine HTTPS-URL zugänglich machen. Weitere Informationen finden Sie unter [Erstellen einer Auftragseingabe aus einer HTTP(S)-URL](job-input-from-http-how-to.md).
+Azure Media Services ermöglicht das Codieren Ihrer Mediendateien in Formate, die mit einer Vielzahl von Browsern und Geräten wiedergegeben werden können. So können Sie Ihre Inhalte beispielsweise im HLS-Format von Apple oder im MPEG DASH-Format streamen. Vor dem Streamen sollten Sie Ihre digitale Mediendatei in hoher Qualität codieren. Anleitungen zur Codierung finden Sie im [Codierungskonzept](encoding-concept.md). In diesem Tutorial wird eine lokale Videodatei hochgeladen und die hochgeladene Datei codiert. Sie können auch Inhalt codieren, den Sie über eine HTTPS-URL zugänglich machen. Weitere Informationen finden Sie unter [Erstellen einer Auftragseingabe aus einer HTTP(S)-URL](job-input-from-http-how-to.md).
 
 ![Video abspielen](./media/stream-files-tutorial-with-api/final-video.png)
 
 Dieses Tutorial veranschaulicht folgende Vorgehensweisen:    
 
 > [!div class="checklist"]
-> * Erstellen eines Media Services-Kontos
 > * Zugreifen auf die Media Services-API
 > * Konfigurieren der Beispiel-App
 > * Überprüfen des Codes, mit dem hochgeladen, codiert und gestreamt wird
@@ -40,7 +39,14 @@ Dieses Tutorial veranschaulicht folgende Vorgehensweisen:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Wenn Sie Visual Studio noch nicht installiert haben, können Sie [Visual Studio Community 2017](https://www.visualstudio.com/thank-you-downloading-visual-studio/?sku=Community&rel=15) abrufen.
+- Wenn Sie Visual Studio noch nicht installiert haben, können Sie [Visual Studio Community 2017](https://www.visualstudio.com/thank-you-downloading-visual-studio/?sku=Community&rel=15) abrufen.
+- Installieren und verwenden Sie die Befehlszeilenschnittelle lokal. Dieser Artikel erfordert mindestens die Azure CLI-Version 2.0. Führen Sie `az --version` aus, um herauszufinden, welche Version Sie haben. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI](/cli/azure/install-azure-cli). 
+
+    Derzeit funktionieren nicht alle Befehle der [Befehlszeilenschnittstelle von Media Services v3](https://aka.ms/ams-v3-cli-ref) in Azure Cloud Shell. Es wird empfohlen, die Befehlszeilenschnittstelle lokal zu verwenden.
+
+- [Erstellen Sie ein Media Services-Konto.](create-account-cli-how-to.md)
+
+    Merken Sie sich die Werte, die Sie für den Namen der Ressourcengruppe und des Media Services-Kontos verwendet haben.
 
 ## <a name="download-the-sample"></a>Herunterladen des Beispiels
 
@@ -51,10 +57,6 @@ Klonen Sie ein GitHub-Repository auf Ihren Computer, das das .NET-Streamingbeisp
  ```
 
 Das Beispiel befindet sich im Ordner [UploadEncodeAndStreamFiles](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/tree/master/AMSV3Tutorials/UploadEncodeAndStreamFiles).
-
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
-
-[!INCLUDE [media-services-cli-create-v3-account-include](../../../includes/media-services-cli-create-v3-account-include.md)]
 
 [!INCLUDE [media-services-v3-cli-access-api-include](../../../includes/media-services-v3-cli-access-api-include.md)]
 
@@ -185,11 +187,11 @@ Azure Media Player kann zum Testen verwendet werden, sollte jedoch nicht in eine
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Wenn Sie keine Ressourcen in Ihrer Ressourcengruppe mehr benötigen, einschließlich der Media Services und Speicherkonten, die Sie für dieses Tutorial erstellt haben, löschen Sie die zuvor erstellte Ressourcengruppe. Sie können das **CloudShell**-Tool verwenden.
+Wenn Sie keine Ressourcen in Ihrer Ressourcengruppe mehr benötigen, einschließlich der Media Services und Speicherkonten, die Sie für dieses Tutorial erstellt haben, löschen Sie die zuvor erstellte Ressourcengruppe.
 
-Führen Sie in **CloudShell** den folgenden Befehl aus:
+Führen Sie den folgenden CLI-Befehl aus:
 
-```azurecli-interactive
+```azurecli
 az group delete --name amsResourceGroup
 ```
 

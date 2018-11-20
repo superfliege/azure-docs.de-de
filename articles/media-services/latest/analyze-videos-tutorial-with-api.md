@@ -1,5 +1,5 @@
 ---
-title: Analysieren von Videos mit Azure Media Services | Microsoft Docs
+title: Analysieren von Videos mit Azure Media Services | Microsoft-Dokumentation
 description: Führen Sie die Schritte in diesem Tutorial aus, um Videos mit Azure Media Services zu analysieren.
 services: media-services
 documentationcenter: ''
@@ -10,18 +10,18 @@ ms.service: media-services
 ms.workload: ''
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 10/15/2018
+ms.date: 11/08/2018
 ms.author: juliako
-ms.openlocfilehash: 5bb840be119f5eac380c44e2cf45b3f73a9d981e
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 3f0d6784f7b7c476313c5cc4190cacd99e4c3973
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49985708"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51612753"
 ---
-# <a name="tutorial-analyze-videos-with-azure-media-services"></a>Tutorial: Analysieren von Videos mit Azure Media Services 
+# <a name="tutorial-analyze-videos-with-media-services-v3-using-apis"></a>Tutorial: Analysieren von Videos mit Media Services v3 unter Verwendung von APIs
 
-In diesem Tutorial wird gezeigt, wie Videos mit Azure Media Services analysiert werden. Es gibt viele Szenarien, in denen Sie umfassende Einblicke in aufgezeichnete Videos oder Audioinhalte erlangen möchten. Um beispielsweise eine höhere Kundenzufriedenheit zu erreichen, können Unternehmen eine Spracherkennung ausführen, um Kundensupportaufzeichnungen in einen durchsuchbaren Katalog mit Indizes und Dashboards umzuwandeln. Dann können sie Einblicke in ihr Geschäft erhalten, z.B. eine Liste der häufigsten Beschwerden, Quellen solcher Beschwerden usw.
+In diesem Tutorial wird gezeigt, wie Videos mit Azure Media Services analysiert werden. Es gibt viele Szenarien, in denen Sie umfassende Einblicke in aufgezeichnete Videos oder Audioinhalte erlangen möchten. Um beispielsweise eine höhere Kundenzufriedenheit zu erreichen, können Unternehmen eine Spracherkennung ausführen, um Kundensupportaufzeichnungen in einen durchsuchbaren Katalog mit Indizes und Dashboards umzuwandeln. Dann können sie Einblicke in ihr Geschäft erhalten, etwa eine Liste der häufigsten Beschwerden, Quellen solcher Beschwerden und weitere nützliche Informationen.
 
 Dieses Tutorial veranschaulicht folgende Vorgehensweisen:    
 
@@ -38,7 +38,14 @@ Dieses Tutorial veranschaulicht folgende Vorgehensweisen:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Wenn Sie Visual Studio noch nicht installiert haben, können Sie [Visual Studio Community 2017](https://www.visualstudio.com/thank-you-downloading-visual-studio/?sku=Community&rel=15) abrufen.
+- Wenn Sie Visual Studio noch nicht installiert haben, können Sie [Visual Studio Community 2017](https://www.visualstudio.com/thank-you-downloading-visual-studio/?sku=Community&rel=15) abrufen.
+- Installieren und verwenden Sie die Befehlszeilenschnittelle lokal. Dieser Artikel erfordert mindestens die Azure CLI-Version 2.0. Führen Sie `az --version` aus, um herauszufinden, welche Version Sie haben. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI](/cli/azure/install-azure-cli). 
+
+    Derzeit funktionieren nicht alle Befehle der [Befehlszeilenschnittstelle von Media Services v3](https://aka.ms/ams-v3-cli-ref) in Azure Cloud Shell. Es wird empfohlen, die Befehlszeilenschnittstelle lokal zu verwenden.
+
+- [Erstellen Sie ein Media Services-Konto.](create-account-cli-how-to.md)
+
+    Merken Sie sich die Werte, die Sie für den Namen der Ressourcengruppe und des Media Services-Kontos verwendet haben.
 
 ## <a name="download-the-sample"></a>Herunterladen des Beispiels
 
@@ -49,10 +56,6 @@ Klonen Sie ein GitHub-Repository auf Ihren Computer, das das .NET-Beispiel enth�
  ```
 
 Das Beispiel befindet sich im Ordner [AnalyzeVideos](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/tree/master/AMSV3Tutorials/AnalyzeVideos).
-
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
-
-[!INCLUDE [media-services-cli-create-v3-account-include](../../../includes/media-services-cli-create-v3-account-include.md)]
 
 [!INCLUDE [media-services-v3-cli-access-api-include](../../../includes/media-services-v3-cli-access-api-include.md)]
 
@@ -70,7 +73,7 @@ Mit dem Beispiel werden die folgenden Aktionen durchgeführt:
 6. Herunterladen der durch die Auftragsausführung entstandenen Dateien 
 
 > [!NOTE]
-> Wenn Sie Voreinstellungen eines Video- oder Audioanalysetools verwenden möchten, legen Sie über das Azure-Portal für Ihr Konto zehn reservierte Einheiten für Medien (S3) fest. Weitere Informationen finden Sie unter [Skalieren der Medienverarbeitung](../previous/media-services-scale-media-processing-overview.md).
+> Wenn Sie Voreinstellungen eines Video- oder Audioanalysetools verwenden, legen Sie über das Azure-Portal für Ihr Konto zehn reservierte Einheiten für Medien (S3) fest. Weitere Informationen finden Sie unter [Skalieren der Medienverarbeitung](../previous/media-services-scale-media-processing-overview.md).
 
 ### <a name="start-using-media-services-apis-with-net-sdk"></a>Starten der Verwendung von Media Services-APIs mit dem .NET SDK
 
@@ -154,11 +157,11 @@ Die Ausgabedatei der Analyse von Videos wird als „insights.json“ bezeichnet.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Wenn Sie keine Ressourcen in Ihrer Ressourcengruppe mehr benötigen, einschließlich der Media Services und Speicherkonten, die Sie für dieses Tutorial erstellt haben, löschen Sie die zuvor erstellte Ressourcengruppe. Sie können das **CloudShell**-Tool verwenden.
+Wenn Sie keine Ressourcen in Ihrer Ressourcengruppe mehr benötigen, einschließlich der Media Services und Speicherkonten, die Sie für dieses Tutorial erstellt haben, löschen Sie die zuvor erstellte Ressourcengruppe. 
 
-Führen Sie in **CloudShell** den folgenden Befehl aus:
+Führen Sie den folgenden CLI-Befehl aus:
 
-```azurecli-interactive
+```azurecli
 az group delete --name amsResourceGroup
 ```
 

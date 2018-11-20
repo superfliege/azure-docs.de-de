@@ -1,7 +1,6 @@
 ---
-title: 'Beispiel: Analysieren von Standpunkten mit der Textanalyse-REST-API'
-titleSuffix: Azure Cognitive Services
-description: Erfahren Sie, wie Sie mithilfe der Textanalyse-REST-API Standpunkte ermitteln.
+title: Verwenden der Standpunktanalyse in der Textanalyse-REST-API (Microsoft Cognitive Services in Azure) | Microsoft-Dokumentation
+description: In diesem Tutorial mit exemplarischer Vorgehensweise erfahren Sie, wie Sie mithilfe der Textanalyse-REST-API in Microsoft Cognitive Services in Azure Standpunkte ermitteln.
 services: cognitive-services
 author: HeidiSteen
 manager: cgronlun
@@ -10,12 +9,12 @@ ms.component: text-analytics
 ms.topic: sample
 ms.date: 09/12/2018
 ms.author: heidist
-ms.openlocfilehash: 981e663b6a93abed1da9c2765a1b43063c70ad43
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: bbe9ffd0709157b5f0389ccc68a285b9c3829db9
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45605894"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51632865"
 ---
 # <a name="example-how-to-detect-sentiment-in-text-analytics"></a>Beispiel: Ermitteln von Standpunkten mithilfe der Textanalyse
 
@@ -24,6 +23,9 @@ Die [Standpunktanalyse-API](https://westus.dev.cognitive.microsoft.com/docs/serv
 Diese Funktion ermöglicht die Erkennung positiver und negativer Standpunkte in sozialen Medien, Kundenbewertungen und Diskussionsforen. Sie stellen die Inhalte bereit, der Dienst liefert die Modelle und Trainingsdaten.
 
 Aktuell wird die Standpunktanalyse für Englisch, Deutsch, Spanisch und Französisch unterstützt. Andere Sprachen befinden sich in der Vorschauphase. Weitere Informationen finden Sie unter [Unterstützte Sprachen](../text-analytics-supported-languages.md).
+
+> [!TIP]
+> Die Textanalyse bietet darüber hinaus ein Linux-basiertes Docker-Containerimage für die Standpunktanalyse, damit Sie [den Textanalysecontainer nah bei Ihren Daten installieren und ausführen können](text-analytics-how-to-install-containers.md).
 
 ## <a name="concepts"></a>Konzepte
 
@@ -77,7 +79,7 @@ Details zur Anforderungsdefinition finden Sie unter [Aufrufen der Textanalyse-RE
 
 + Erstellen Sie eine Anforderung vom Typ **POST**. Die API-Dokumentation für diese Anforderung finden Sie [hier](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c9).
 
-+ Legen Sie den HTTP-Endpunkt für die Schlüsselbegriffserkennung fest. Er muss die Ressource `/sentiment` enthalten: `https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/sentiment`.
++ Legen Sie den HTTP-Endpunkt für die Standpunktanalyse entweder mithilfe einer Textanalyseressource in Azure oder mithilfe eines instanziierten [Textanalysecontainers](text-analytics-how-to-install-containers.md) fest. Er muss die Ressource `/sentiment` enthalten: `https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/sentiment`.
 
 + Legen Sie einen Anforderungsheader fest, der den Zugriffsschlüssel für Textanalysevorgänge enthält. Weitere Informationen finden Sie unter [How to find endpoints and access keys](text-analytics-how-to-access-key.md) (Ermitteln von Endpunkten und Zugriffsschlüsseln).
 

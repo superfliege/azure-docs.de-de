@@ -1,6 +1,6 @@
 ---
-title: Einführung in HDInsight und den Hadoop- und Spark-Technologiestapel - Azure
-description: Enthält eine Einführung in HDInsight und den Hadoop- und Spark-Technologiestapel sowie die dazugehörigen Komponenten wie Kafka, Hive und HBase für Big Data-Analysen.
+title: Was sind HDInsight und der Apache Hadoop- und Apache Spark-Technologiestapel? - Azure
+description: Enthält eine Einführung in HDInsight und den Apache Hadoop- und Apache Spark-Technologiestapel sowie die dazugehörigen Komponenten wie Kafka, Hive, Storm und HBase für Big Data-Analysen.
 keywords: Azure Hadoop, Hadoop Azure, Hadoop-Intro, Hadoop-Einführung, Hadoop-Technologiestapel, Einführung in Hadoop, Einführung für Hadoop, was ist ein Hadoop-Cluster, was ist ein Hadoop-Cluster, wozu dient Hadoop
 services: hdinsight
 author: hrasheed-msft
@@ -9,14 +9,14 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017, mvc
 ms.topic: overview
 ms.date: 05/07/2018
-ms.openlocfilehash: 0c617f09c846811f876206e6045b640e63ad90b1
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 190d6203c4a00ed3f448bdbb7366db5bc22c45f8
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51007045"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51634514"
 ---
-# <a name="what-is-azure-hdinsight-and-the-hadoop-technology-stack"></a>Was sind Azure HDInsight und der Hadoop-Technologiestapel?
+# <a name="what-is-azure-hdinsight-and-the-apache-hadoop-technology-stack"></a>Was sind Azure HDInsight und der Apache Hadoop-Technologiestapel?
 
 Dieser Artikel enthält eine Einführung in Apache Hadoop auf Azure HDInsight. Azure HDInsight ist ein umfassender, vollständig verwalteter Open Source-Analysedienst für Unternehmen. Sie können Open Source-Frameworks wie Hadoop, Spark, Hive, LLAP, Kafka, Storm, R und andere verwenden. 
 

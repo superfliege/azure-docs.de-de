@@ -9,12 +9,12 @@ ms.tgt_pltfrm: na
 ms.date: 09/22/2018
 ms.author: bsiva
 ms.custom: MVC
-ms.openlocfilehash: 68a1367eec5392036797612e631a438b076b2cfc
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 1f537a381bbd595e519aaeb4cadb5b9be4657b6b
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50210464"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51566566"
 ---
 # <a name="migrate-servers-running-windows-server-2008-to-azure"></a>Migrieren von Servern mit Windows Server 2008 zu Azure
 
@@ -154,7 +154,10 @@ Führen Sie ein Failover für die zu migrierenden Computer aus.
 2. Wählen Sie in **Failover** einen **Wiederherstellungspunkt** für das Failover aus. Wählen Sie den letzten Wiederherstellungspunkt aus.
 3. Wählen Sie **Computer vor Beginn des Failovers herunterfahren** aus. Site Recovery fährt den Server herunter, bevor das Failover ausgelöst wird. Das Failover wird auch dann fortgesetzt, wenn das Herunterfahren nicht erfolgreich ist. Der Fortschritt des Failovers wird auf der Seite **Aufträge** angezeigt.
 4. Überprüfen Sie, ob die Azure-VM wie erwartet in Azure angezeigt wird.
-5. Klicken Sie in **Replizierte Elemente** mit der rechten Maustaste auf die VM > **Migration abschließen**. Dadurch wird der Migrationsvorgang abgeschlossen, die Replikation für die VM wird beendet, und die Site Recovery-Abrechnung für die VM wird eingestellt.
+5. Klicken Sie in **Replizierte Elemente** mit der rechten Maustaste auf die VM > **Migration abschließen**. Die folgenden Schritte werden ausgeführt:
+
+    - Der Migrationsvorgang wird abgeschlossen, die Replikation für den virtuellen AWS-Computer wird beendet, und die Site Recovery-Abrechnung für den virtuellen Computer wird eingestellt.
+    - In diesem Schritt werden die Replikationsdaten entfernt. Die migrierten virtuellen Computer werden nicht gelöscht.
 
    ![Abschließen der Migration](media/migrate-tutorial-windows-server-2008/complete-migration.png)
 

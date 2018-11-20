@@ -11,12 +11,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 08/16/2017
 ms.author: sngun
-ms.openlocfilehash: 40a80a049e6eb94390bab0b47e1f5ed49b4606b9
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: c4f86b9fa949c854b557812a41aa9d86a11ecc94
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46991198"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51636984"
 ---
 # <a name="azure-cosmos-db-sql-api-getting-started-tutorial"></a>Azure Cosmos DB: SQL-API – Tutorial zu den ersten Schritten
 
@@ -168,7 +168,7 @@ Kopieren Sie die **WriteToConsoleAndPromptToContinue**-Methode, und fügen Sie s
             Console.ReadKey();
     }
 
-Ihre Azure Cosmos DB-[Datenbank](sql-api-resources.md#databases) kann mithilfe der [CreateDatabaseIfNotExistsAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdatabaseifnotexistsasync.aspx)-Methode der **DocumentClient**-Klasse erstellt werden. Eine Datenbank ist ein logischer Container für JSON-Dokumentspeicher, der auf Sammlungen aufgeteilt ist.
+Ihre Azure Cosmos DB-[Datenbank](databases-containers-items.md#azure-cosmos-databases) kann mithilfe der [CreateDatabaseIfNotExistsAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdatabaseifnotexistsasync.aspx)-Methode der **DocumentClient**-Klasse erstellt werden. Eine Datenbank ist ein logischer Container für JSON-Dokumentspeicher, der auf Sammlungen aufgeteilt ist.
 
 Kopieren Sie den folgenden Code, und fügen Sie ihn nach der Clienterstellung in die **GetStartedDemo**-Methode ein. Eine Datenbank mit dem Namen *FamilyDB*wird erstellt.
 
@@ -189,7 +189,7 @@ Glückwunsch! Sie haben erfolgreich eine Azure Cosmos DB-Datenbank erstellt.
 > 
 > 
 
-Eine [Sammlung](sql-api-resources.md#collections) kann mithilfe der [CreateDocumentCollectionIfNotExistsAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdocumentcollectionifnotexistsasync.aspx)-Methode der **DocumentClient**-Klasse erstellt werden. Eine Sammlung ist ein Container für JSON-Dokumente und die zugehörige JavaScript-Anwendungslogik.
+Eine Sammlung kann mithilfe der [CreateDocumentCollectionIfNotExistsAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdocumentcollectionifnotexistsasync.aspx)-Methode der **DocumentClient**-Klasse erstellt werden. Eine Sammlung ist ein Container für JSON-Dokumente und die zugehörige JavaScript-Anwendungslogik.
 
 Kopieren Sie den folgenden Code, und fügen Sie ihn nach der Datenbankerstellung in die **GetStartedDemo**-Methode ein. Hierdurch wird eine Dokumentsammlung namens *FamilyCollection* erstellt.
 
@@ -205,7 +205,7 @@ Drücken Sie **F5** um die Anwendung auszuführen.
 Glückwunsch! Sie haben erfolgreich eine Azure Cosmos DB-Dokumentsammlung erstellt.  
 
 ## <a id="CreateDoc"></a>Schritt 6: Erstellen von JSON-Dokumenten
-Ein [Dokument](sql-api-resources.md#documents) kann mithilfe der [CreateDocumentAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdocumentasync.aspx)-Methode der **DocumentClient**-Klasse erstellt werden. Dokumente sind benutzerdefinierter (beliebiger) JSON-Inhalt. Wir können jetzt eines oder mehrere Dokumente einfügen. Wenn Sie bereits Daten besitzen, die Sie in Ihrer Datenbank speichern möchten, können Sie die Daten mithilfe des [Datenmigrationstools](import-data.md) Azure Cosmos DB in eine Datenbank importieren.
+Ein Dokument kann mithilfe der [CreateDocumentAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdocumentasync.aspx)-Methode der **DocumentClient**-Klasse erstellt werden. Dokumente sind benutzerdefinierter (beliebiger) JSON-Inhalt. Wir können jetzt eines oder mehrere Dokumente einfügen. Wenn Sie bereits Daten besitzen, die Sie in Ihrer Datenbank speichern möchten, können Sie die Daten mithilfe des [Datenmigrationstools](import-data.md) Azure Cosmos DB in eine Datenbank importieren.
 
 Zunächst müssen wir eine **Family**-Klasse erstellen, mit der in diesem Beispiel in Azure Cosmos DB gespeicherte Objekte dargestellt werden. Außerdem erstellen wir die Unterklassen **Parent**, **Child**, **Pet** und **Address**, die in **Family** verwendet werden. Beachten Sie, dass Dokumente eine **Id**-Eigenschaft enthalten müssen, die in JSON als **id** serialisiert wird. Erstellen Sie diese Klassen, indem Sie die folgenden internen Unterklassen nach der **GetStartedDemo** -Methode hinzufügen.
 

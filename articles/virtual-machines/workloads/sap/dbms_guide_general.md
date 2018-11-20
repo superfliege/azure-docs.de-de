@@ -13,15 +13,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/06/2018
+ms.date: 11/06/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3948c226f13f0ff358f9ca467f19cf0e48795911
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: bed053f812cc5c14e6cfe76b8a08b1ffe0cadcb3
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49429886"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51289120"
 ---
 # <a name="considerations-for-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Azure Virtual Machines – DBMS-Bereitstellung für SAP-Workload
 [1114181]:https://launchpad.support.sap.com/#/notes/1114181
@@ -64,7 +64,7 @@ In diesem Dokument werden die folgenden Begriffe verwendet:
 * SAP-Komponente: Eine einzelne SAP-Anwendung wie ECC, BW, Solution Manager oder EP.  SAP-Komponenten können auf herkömmlichen ABAP- oder Java-Technologien oder auf einer Nicht-NetWeaver-basierten Anwendung wie Business Objects basieren.
 * SAP-Umgebung: eine oder mehrere SAP-Komponenten, die logisch gruppiert sind, um eine Geschäftsfunktion wie Entwicklung, QAS, Schulung, DR oder Produktion auszuführen.
 * SAP-Landschaft: Alle SAP-Ressourcen in der IT-Landschaft eines Kunden. Die SAP-Landschaft umfasst alle Produktions- und anderen Umgebungen.
-* SAP-System: Die Kombination aus DBMS-Schicht und Anwendungsschicht, z.B. in einem SAP ERP-Entwicklungssystem, einem SAP BW-Testsystem, einem SAP CRM-Produktionssystem usw. In Azure-Bereitstellungen wird die Aufteilung dieser beiden Ebenen zwischen lokalen Systemen und Azure nicht unterstützt. Das bedeutet, dass ein SAP-System entweder lokal oder in Azure bereitgestellt wird. Allerdings können Sie die verschiedenen Systeme einer SAP-Landschaft in Azure oder lokal bereitstellen. Sie konnte z.B. die SAP CRM-Entwicklungs- und Testsysteme in Azure und die SAP CRM-Produktionssysteme lokal bereitstellen.
+* SAP-System: Die Kombination aus DBMS-Schicht und Anwendungsschicht, z.B. in einem SAP ERP-Entwicklungssystem, einem SAP BW-Testsystem, einem SAP CRM-Produktionssystem usw. In Azure-Bereitstellungen wird die Aufteilung dieser beiden Ebenen zwischen lokalen Systemen und Azure nicht unterstützt. Dies bewirkt, dass ein SAP-System entweder lokal oder in Azure bereitgestellt wird. Allerdings können Sie die verschiedenen Systeme einer SAP-Landschaft in Azure oder lokal bereitstellen. Sie konnte z.B. die SAP CRM-Entwicklungs- und Testsysteme in Azure und die SAP CRM-Produktionssysteme lokal bereitstellen.
 * Standortübergreifend: Beschreibt ein Szenario, in dem VMs mit einem Azure-Abonnement bereitgestellt werden, das Site-to-Site-, Multi-Site- oder ExpressRoute-Konnektivität zwischen den lokalen Rechenzentren und Azure umfasst. In allgemeinen Azure-Dokumentationen werden diese Arten von Bereitstellungen auch als "Cross-Premises"-Szenarien bezeichnet. Durch die Verbindung sollen lokale Domänen, das lokale Active Directory und das lokale DNS auf Azure ausgeweitet werden. Die lokale Landschaft wird auf die Azure-Ressourcen des Abonnements erweitert. Durch diese Erweiterung können die virtuellen Computer Teil der lokalen Domäne sein. Domänenbenutzer der lokalen Domäne können auf die Server zugreifen und Dienste auf diesen virtuellen Computern ausführen (z.B. DBMS-Dienste). Die Kommunikation und Namensauflösung zwischen lokal bereitgestellten virtuellen Computern und in Azure bereitgestellten virtuellen Computern ist möglich. Dieses Szenario ist das gängigste für die Bereitstellung von SAP-Ressourcen in Azure. Weitere Informationen finden Sie unter [Planung und Entwurf für VPN-Gateway](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-plan-design).
 
 > [!NOTE]
@@ -219,11 +219,11 @@ Für Bereitstellungen der M-Serie wird dringend empfohlen, die Azure-Schreibbesc
 Azure-VMs bieten Datenträger mit flüchtigem Speicher, nachdem eine VM bereitgestellt wurde. Bei einem Neustart der VM werden alle Inhalte auf diesen Laufwerken gelöscht. Deswegen sollten Datendateien und Protokoll- bzw. Wiederholungsdateien von Datenbanken unter keinen Umständen auf diesen nicht permanenten Laufwerken gespeichert werden. Es gibt möglicherweise Ausnahmen für einige der Datenbanken, in denen diese nicht permanenten Laufwerke für tempdb und temporäre Tabellenbereiche geeignet sind. Verwenden Sie diese Laufwerke jedoch nicht für VMs der A-Serie, da diese nicht permanenten Laufwerke mit diesen VMs nur einen begrenzten Durchsatz ermöglichen. Weitere Informationen finden Sie im Artikel [Understanding the temporary drive on Windows Azure Virtual Machines](https://blogs.msdn.microsoft.com/mast/2013/12/06/understanding-the-temporary-drive-on-windows-azure-virtual-machines/) (Grundlegendes zum temporären Laufwerk auf virtuellen Windows-Computern in Azure).
 
 - - -
-> ![Windows][Logo_Windows] Windows
+> ![ Windows][Logo_Windows]  Windows
 > 
 > Laufwerk „D:\“ auf einer Azure-VM ist ein nicht permanentes Laufwerk, das durch einige lokale Datenträger im Azure-Serverknoten gesichert wird. Da es nicht permanent ist, bedeutet dies, dass alle Änderungen am Inhalt auf dem Laufwerk „D:\“ verloren gehen, wenn der virtuelle Computer neu gestartet wird. „Alle Änderungen“ beziehen sich u. a. auf gespeicherte Dateien, erstellte Verzeichnisse und installierte Anwendungen.
 > 
-> ![Linux][Logo_Linux] Linux
+> ![ Linux][Logo_Linux]  Linux
 > 
 > Azure-VMs unter Linux stellen ein Laufwerk automatisch unter „/mnt/resource“ bereit. Dies ist ein nicht permanentes Laufwerk, das durch lokale Datenträger im Azure-Serverknoten gesichert wird. Da es nicht permanent ist, bedeutet dies, dass alle Änderungen am Inhalt unter „/mnt/resource“ verloren gehen, wenn die VM neu gestartet wird. „Alle Änderungen“ beziehen sich u. a. auf gespeicherte Dateien, erstellte Verzeichnisse und installierte Anwendungen.
 > 
@@ -276,7 +276,10 @@ Es gibt mehrere Best Practices, die infolge von Hunderten von Kundenbereitstellu
 > [!NOTE]
 > Sie sollten einzelnen virtuellen Netzwerkkarten statische IP-Adressen über Azure-Tools zuweisen. Virtuellen Netzwerkkarten sollten nicht innerhalb des Gastbetriebssystems statische IP-Adressen zugewiesen werden. Einige Azure-Dienste wie der Azure Backup-Dienst basieren darauf, dass mindestens die primäre virtuelle Netzwerkkarte auf DHCP festgelegt ist und nicht auf statische IP-Adressen. Weitere Informationen finden Sie auch im Dokument zur [Problembehandlung bei der Sicherung virtueller Azure-Computer](https://docs.microsoft.com/azure/backup/backup-azure-vms-troubleshoot#networking). Wenn Sie einer VM mehrere statische IP-Adressen zuweisen müssen, müssen Sie ihr auch mehrere virtuelle Netzwerkkarten zuweisen.
 >
->
+
+
+> [!IMPORTANT]
+> Aus Funktionalitätsgründen und – was noch wichtiger ist – aus Leistungsgründen wird die Konfiguration von [virtuellen Azure-Netzwerkgeräten](https://azure.microsoft.com/solutions/network-appliances/) im Kommunikationspfad zwischen der SAP-Anwendung und der DBMS-Schicht eines SAP NetWeaver-, Hybris- oder S/4HANA-basierten SAP-Systems nicht unterstützt. Weitere Szenarien, in denen virtuelle Netzwerkgeräte nicht unterstützt werden, gelten für Kommunikationspfade zwischen Azure-VMs, die Linux Pacemaker-Clusterknoten und SBD-Geräte darstellen. Dies ist unter [Hochverfügbarkeit für SAP NetWeaver auf Azure-VMs auf dem SUSE Linux Enterprise Server for SAP Applications](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse) beschrieben. Oder in Kommunikationspfaden zwischen Azure-VMs und Windows Server SOFS, die wie unter [Gruppieren einer SAP ASCS/SCS-Instanz in einem Windows-Failovercluster per Dateifreigabe in Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-file-share) beschrieben eingerichtet wurden. Mit virtuellen Netzwerkgeräten in Kommunikationspfaden kann die Netzwerklatenz zwischen zwei Kommunikationspartnern auf einfache Weise verdoppelt werden. Außerdem kann der Durchsatz in kritischen Pfaden zwischen der SAP-Anwendungsschicht und der DBMS-Schicht eingeschränkt werden. In einigen Szenarien bei Kunden kann es aufgrund von virtuellen Netzwerkgeräten für Pacemaker Linux-Cluster zu Ausfällen kommen, bei denen die Kommunikation zwischen den Linux Pacemaker-Clusterknoten mit dem SBD-Gerät über ein virtuelles Netzwerkgerät erfolgen muss.   
 
 Wenn Sie zwei VMs für Ihre DBMS-Produktionsbereitstellung in einer Azure-Verfügbarkeitsgruppe und ein separates Routing für die SAP-Anwendungsschicht sowie den Datenverkehr für die Verwaltung und Vorgänge zu den beiden DBMS-VMs verwenden, würde das Diagramm etwa so aussehen:
 
@@ -304,11 +307,11 @@ Um die Netzwerklatenz zwischen Azure-VMs weiter zu reduzieren, wird dringend emp
 >  
 
 - - -
-> ![Windows][Logo_Windows] Windows
+> ![ Windows][Logo_Windows]  Windows
 > 
 > Der Artikel [Erstellen eines virtuellen Windows-Computers mit beschleunigtem Netzwerkbetrieb](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-powershell) behandelt die Verwendung unter Windows. Dort erfahren Sie mehr über die Konzepte und die Bereitstellung von VMs mit beschleunigtem Netzwerkbetrieb.
 > 
-> ![Linux][Logo_Linux] Linux
+> ![ Linux][Logo_Linux]  Linux
 > 
 > Im Artikel [Erstellen eines virtuellen Linux-Computers mit beschleunigtem Netzwerkbetrieb](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli) finden Sie weitere Informationen zur Verwendung unter Linux. 
 > 
@@ -324,7 +327,7 @@ Um die Netzwerklatenz zwischen Azure-VMs weiter zu reduzieren, wird dringend emp
 ## <a name="deployment-of-host-monitoring"></a>Bereitstellen der Hostüberwachung
 Für die produktive Verwendung von SAP-Anwendungen auf Azure-VMs benötigt SAP die Möglichkeit, Hostüberwachungsdaten von den physischen Hosts abzurufen, auf denen die Azure-VMs ausgeführt werden. Es wird eine bestimmte SAP-Host-Agent-Patchebene benötigt, die diese Funktion in SAPOSCOL und SAP-Host-Agent ermöglicht. Die Patchebenen sind in SAP-Hinweis [1409604]genau dokumentiert.
 
-Weitere Informationen zur Bereitstellung von Komponenten, die Hostdaten für SAPOSCOL und SAP-Host-Agent bereitstellen, sowie zur Verwaltung des Lebenszyklus dieser Komponenten finden Sie im [Bereitstellungshandbuch][deployment-guide].
+Weitere Informationen zur Bereitstellung von Komponenten, die Hostdaten für SAPOSCOL und den SAP-Host-Agent bereitstellen, sowie zur Verwaltung des Lebenszyklus dieser Komponenten finden Sie im [Bereitstellungshandbuch][deployment-guide].
 
 
 ## <a name="next-steps"></a>Nächste Schritte

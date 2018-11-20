@@ -13,20 +13,19 @@ ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: report-monitor
-ms.date: 01/15/2018
+ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 220f27ccf2d3eaefd8347e1d52824be2d601d9c9
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 0c3c9b23ac3383eb7e2eda256af4fb92f7f5e0b5
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46364391"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51622158"
 ---
 # <a name="what-are-azure-active-directory-reports"></a>Was sind Azure Active Directory-Berichte?
 
-Mit Azure Active Directory-Berichten erhalten Sie Einblicke in den Leistungszustand Ihrer Umgebung.  
-Die bereitgestellten Daten ermöglichen Ihnen Folgendes:
+Mit Azure Active Directory-Berichten (Azure AD) erhalten Sie einen umfassenden Überblick über Aktivitäten in Ihrer Umgebung. Die bereitgestellten Daten ermöglichen Ihnen Folgendes:
 
 - Ermitteln, wie Ihre Apps und Dienste von Ihren Benutzern genutzt werden
 - Erkennen potenzieller Risiken für die Integrität Ihrer Umgebung
@@ -34,27 +33,25 @@ Die bereitgestellten Daten ermöglichen Ihnen Folgendes:
 
 Die Architektur der Berichterstellung basiert auf zwei Hauptkomponenten:
 
-- Sicherheitsberichte
-- Aktivitätsberichte
+- [Sicherheitsberichte](#security-reports)
+- [Aktivitätsberichte](#activity-reports)
 
 ![Berichterstellung](./media/overview-reports/01.png)
 
 
 ## <a name="security-reports"></a>Sicherheitsberichte
 
-Mit den Sicherheitsberichten in Azure Active Directory können Sie die Identitäten Ihrer Organisation schützen.  
-In Azure Active Directory gibt es zwei Arten von Sicherheitsberichten:
+Mit den Sicherheitsberichten können Sie die Identitäten Ihrer Organisation schützen. Es gibt zwei Arten von Sicherheitsberichten:
 
 - **Benutzer mit Risikomarkierung:** Im [Sicherheitsbericht „Benutzer mit Risikomarkierung“](concept-user-at-risk.md) erhalten Sie eine Übersicht über Benutzerkonten, die unter Umständen kompromittiert wurden.
 
 - **Riskante Anmeldungen:** Mit dem [Sicherheitsbericht „Riskante Anmeldungen“](concept-risky-sign-ins.md) erhalten Sie einen Indikator für Anmeldeversuche von Benutzern, die nicht der rechtmäßige Besitzer eines Benutzerkontos sind. 
 
-**Welche Azure AD-Lizenz benötigen Sie für den Zugriff auf einen Sicherheitsbericht?**  
+### <a name="what-azure-ad-license-do-you-need-to-access-a-security-report"></a>Welche Azure AD-Lizenz benötigen Sie für den Zugriff auf einen Sicherheitsbericht?  
 
-Alle Editionen von Azure Active Directory verfügen über die Sicherheitsberichte „Benutzer mit Risikomarkierung“ und „Riskante Anmeldungen“.  
-Die Granularitätsebene von Berichten kann für die einzelnen Editionen aber variieren: 
+Alle Editionen von Azure AD verfügen über die Sicherheitsberichte „Benutzer mit Risikomarkierung“ und „Riskante Anmeldungen“. Die Granularitätsebene von Berichten kann für die einzelnen Editionen aber variieren: 
 
-- In den **Free- und Basic-Editionen von Azure Active Directory** erhalten Sie bereits die Listen „Benutzer mit Risikomarkierung“ und „Riskante Anmeldungen“. 
+- In den **Free- und Basic-Editionen von Azure Active Directory** erhalten Sie die Listen „Benutzer mit Risikomarkierung“ und „Riskante Anmeldungen“. 
 
 - Mit der Edition **Azure Active Directory Premium 1** wird dieses Modell erweitert, indem Sie zusätzlich jeweils einige zugrunde liegende Risikoereignisse untersuchen können, die für einen Bericht erkannt wurden. 
 
@@ -63,14 +60,16 @@ Die Granularitätsebene von Berichten kann für die einzelnen Editionen aber var
 
 ## <a name="activity-reports"></a>Aktivitätsberichte
 
-In Azure Active Directory gibt es zwei Arten von Aktivitätsberichten:
+Anhand von Aktivitätsberichten können Sie das Verhalten von Benutzern in Ihrer Organisation nachvollziehen. In Azure AD gibt es zwei Arten von Aktivitätsberichten:
 
 - **Überwachungsprotokolle:** Mit dem [Aktivitätsbericht „Überwachungsprotokolle“](concept-audit-logs.md) erhalten Sie Zugriff auf den Verlauf aller Aufgaben, die in Ihrem Mandanten durchgeführt werden.
 
 - **Anmeldungen:** Mit dem [Aktivitätsbericht „Anmeldungen“](concept-sign-ins.md) können Sie ermitteln, von wem die Aufgaben durchgeführt wurden, die im Bericht „Überwachungsprotokolle“ aufgeführt sind.
 
 
-Der **Bericht „Überwachungsprotokolle“** enthält Datensätze zu Systemaktivitäten, die für die Konformität relevant sind. Diese Daten sind in folgenden häufigen Szenarien hilfreich:
+### <a name="audit-logs-report"></a>Bericht „Überwachungsprotokolle“ 
+
+Der [Bericht „Überwachungsprotokolle“](concept-audit-logs.md) enthält Datensätze zu Systemaktivitäten, die für die Konformität relevant sind. Diese Daten sind in folgenden häufigen Szenarien hilfreich:
 
 - Ein Benutzer meines Mandanten hat Zugriff auf eine Administratorgruppe erhalten. Wer hat dem Benutzer den Zugriff gewährt? 
 
@@ -79,28 +78,25 @@ Der **Bericht „Überwachungsprotokolle“** enthält Datensätze zu Systemakti
 - Ich möchte wissen, wie viele Kennwortzurücksetzungen unter meinem Mandanten durchgeführt werden.
 
 
-**Welche Azure AD-Lizenz benötigen Sie, um auf den Bericht „Überwachungsprotokolle“ zuzugreifen?**  
+#### <a name="what-azure-ad-license-do-you-need-to-access-the-audit-logs-report"></a>Welche Azure AD-Lizenz benötigen Sie, um auf den Bericht „Überwachungsprotokolle“ zuzugreifen?  
 
-Der Bericht „Überwachungsprotokolle“ ist für Features verfügbar, für die Sie über Lizenzen verfügen. Wenn Sie im Besitz einer Lizenz für ein bestimmtes Feature sind, haben Sie auch Zugriff auf die dazugehörigen Informationen zum Überwachungsprotokoll.
+Der Bericht „Überwachungsprotokolle“ ist für Features verfügbar, für die Sie über Lizenzen verfügen. Wenn Sie im Besitz einer Lizenz für ein bestimmtes Feature sind, haben Sie auch Zugriff auf die dazugehörigen Informationen zum Überwachungsprotokoll. Weitere Informationen finden Sie unter [Azure Active Directory-Features und -Funktionen](https://www.microsoft.com/cloud-platform/azure-active-directory-features).   
 
-Weitere Informationen finden Sie auf der Seite [Azure Active Directory – Features und Funktionen](https://www.microsoft.com/cloud-platform/azure-active-directory-features) unter **Vergleich: Allgemein verfügbare Features der Editionen Free, Basic und Premium**.   
+### <a name="sign-ins-report"></a>Bericht zu Anmeldeaktivitäten
 
-
-Mit dem **Aktivitätsbericht „Anmeldungen“** können Sie beispielsweise folgende Fragen beantworten:
+Mit dem [Bericht „Anmeldungen“](concept-sign-ins.md) können Sie beispielsweise folgende Fragen beantworten:
 
 - Wie sieht das Anmeldemuster eines Benutzers aus?
 - Wie viele Benutzer sind für Benutzer im Laufe einer Woche angemeldet?
 - Wie lautet der Status dieser Anmeldungen?
 
-
-**Welche Azure AD-Lizenz ist erforderlich, um auf den Aktivitätsbericht „Anmeldungen“ zuzugreifen?**  
+#### <a name="what-azure-ad-license-do-you-need-to-access-the-sign-ins-activity-report"></a>Welche Azure AD-Lizenz benötigen Sie, um auf den Aktivitätsbericht „Anmeldungen“ zuzugreifen?  
 
 Ihrem Mandanten muss eine Azure AD Premium-Lizenz zugewiesen sein, um auf den Aktivitätsbericht „Anmeldungen“ zugreifen zu können.
 
 ## <a name="programmatic-access"></a>Programmgesteuerter Zugriff
 
-Zusätzlich zur Benutzeroberfläche ermöglicht die Azure Active Directory-Berichterstellung Ihnen auch den [programmgesteuerten Zugriff](concept-reporting-api.md) auf die Berichtsdaten. Die Daten dieser Berichte können für Ihre Anwendungen – beispielsweise SIEM-Systeme, Überwachungs- und Business Intelligence-Tools – sehr nützlich sein. Die Azure AD-Berichterstellungs-APIs bieten über einen Satz von REST-basierten APIs programmgesteuerten Zugriff auf die Daten. Sie können diese APIs über verschiedene Programmiersprachen und Tools aufrufen. 
-
+Zusätzlich zur Benutzeroberfläche ermöglicht Azure AD Ihnen über eine Reihe von REST-basierten APIs auch den [programmgesteuerten Zugriff](concept-reporting-api.md) auf die Berichtsdaten. Sie können diese APIs über verschiedene Programmiersprachen und Tools aufrufen. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

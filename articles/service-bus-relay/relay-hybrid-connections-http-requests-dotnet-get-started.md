@@ -12,72 +12,65 @@ ms.devlang: tbd
 ms.topic: get-started-article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 08/16/2018
+ms.date: 11/01/2018
 ms.author: spelluru
-ms.openlocfilehash: 55e97ff95245ce222ccbc2a99f6ae2882cef3715
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: de905466d47774decf864ace5464bb2a68e5e6bc
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51248774"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51611997"
 ---
 # <a name="get-started-with-relay-hybrid-connections-http-requests-in-net"></a>Erste Schritte mit HTTP-Anforderungen von Relay Hybrid Connections in .NET
 [!INCLUDE [relay-selector-hybrid-connections](../../includes/relay-selector-hybrid-connections.md)]
 
-Bei diesem Tutorial handelt es sich um eine Einführung in [Azure Relay Hybrid Connections](relay-what-is-it.md#hybrid-connections). Hier erfahren Sie, wie Sie mit Microsoft .NET eine Clientanwendung erstellen, die Anforderungen an eine entsprechende Listeneranwendung sendet. 
+In dieser Schnellstartanleitung erstellen Sie Sender- und Empfängeranwendungen in .NET, die mithilfe von HTTP Nachrichten senden und empfangen. Die Anwendungen verwenden das Hybrid Connections-Feature von Azure Relay. Allgemeine Informationen zu Azure Relay finden Sie unter [Was ist Azure Relay?](relay-what-is-it.md). 
 
-## <a name="what-will-be-accomplished"></a>Ziele
-Für Hybrid Connections ist sowohl eine Client- als auch eine Serverkomponente erforderlich. In diesem Tutorial führen Sie die folgenden Schritte aus, um zwei Konsolenanwendungen zu erstellen:
+Diese Schnellstartanleitung umfasst folgende Schritte:
 
 1. Erstellen eines Relay-Namespace über das Azure-Portal
 2. Erstellen einer Hybridverbindung in diesem Namespace über das Azure-Portal
-3. Schreiben einer Serverkonsolenanwendung (Listener) zum Empfangen von Anforderungen
-4. Schreiben einer Clientkonsolenanwendung (Absender) zum Senden von Anforderungen
+3. Erstellen einer Serverkonsolenanwendung (Listener) zum Empfangen von Nachrichten
+4. Erstellen einer Clientkonsolenanwendung (Absender) zum Senden von Nachrichten
+5. Ausführen von Anwendungen 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Zum Durchführen dieses Tutorials benötigen Sie Folgendes:
 
-* [Visual Studio 2015 oder eine höhere Version.](https://www.visualstudio.com) Für die Beispiele in diesem Tutorial wird Visual Studio 2017 verwendet.
-* Ein Azure-Abonnement.
+* [Visual Studio 2015 oder eine höhere Version.](http://www.visualstudio.com) Für die Beispiele in diesem Tutorial wird Visual Studio 2017 verwendet.
+* Ein Azure-Abonnement. Falls Sie kein Abonnement besitzen, können Sie ein [kostenloses Konto erstellen](https://azure.microsoft.com/free/), bevor Sie beginnen.
 
-[!INCLUDE [create-account-note](../../includes/create-account-note.md)]
-
-## <a name="1-create-a-namespace-by-using-the-azure-portal"></a>1. Erstellen eines Namespace über das Azure-Portal
-Falls Sie bereits einen Relay-Namespace erstellt haben, fahren Sie mit [Erstellen einer Hybridverbindung über das Azure-Portal](#2-create-a-hybrid-connection-using-the-azure-portal) fort.
-
+## <a name="create-a-namespace"></a>Erstellen eines Namespace
 [!INCLUDE [relay-create-namespace-portal](../../includes/relay-create-namespace-portal.md)]
 
-## <a name="2-create-a-hybrid-connection-by-using-the-azure-portal"></a>2. Erstellen einer Hybridverbindung über das Azure-Portal
-Falls Sie bereits eine Hybridverbindung erstellt haben, fahren Sie mit [Erstellen einer Serveranwendung](#3-create-a-server-application-listener) fort.
-
+## <a name="create-a-hybrid-connection"></a>Hybridverbindung erstellen
 [!INCLUDE [relay-create-hybrid-connection-portal](../../includes/relay-create-hybrid-connection-portal.md)]
 
-## <a name="3-create-a-server-application-listener"></a>3. Erstellen einer Serveranwendung (Listener)
+## <a name="create-a-server-application-listener"></a>Erstellen einer Serveranwendung (Listener)
 Schreiben Sie in Visual Studio eine C#-Konsolenanwendung, um auf Nachrichten des Relays zu lauschen und sie zu empfangen.
 
 [!INCLUDE [relay-hybrid-connections-http-requests-dotnet-get-started-server](../../includes/relay-hybrid-connections-http-requests-dotnet-get-started-server.md)]
 
-## <a name="4-create-a-client-application-sender"></a>4. Erstellen einer Clientanwendung (Absender)
+## <a name="create-a-client-application-sender"></a>Erstellen einer Clientanwendung (Absender)
 Schreiben Sie in Visual Studio eine C#-Konsolenanwendung, um Nachrichten an das Relay zu senden.
 
 [!INCLUDE [relay-hybrid-connections-http-requests-dotnet-get-started-client](../../includes/relay-hybrid-connections-http-requests-dotnet-get-started-client.md)]
 
-## <a name="5-run-the-applications"></a>5. Ausführen der Anwendungen
+## <a name="run-the-applications"></a>Ausführen der Anwendungen
 1. Führen Sie die Serveranwendung aus. Der folgende Text wird im Konsolenfenster angezeigt:
 
     ```
     Online
     Server listening
     ```
-1. Führen Sie die Clientanwendung aus. Sie sehen `hello!` im Clientfenster. Der Client sendet eine HTTP-Anforderung an den Server, und der Server antwortet mit einem `hello!`. 
+1. Führen Sie die Clientanwendung aus. Sie sehen `hello!` im Clientfenster. Der Client sendet eine HTTP-Anforderung an den Server, und der Server antwortet mit `hello!`. 
 3. Um das Konsolenfenster zu schließen, drücken Sie in beiden Konsolenfenstern die **EINGABETASTE**. 
 
 Glückwunsch! Sie haben eine Anwendung für End-to-End-Hybridverbindungen erstellt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Relay – häufig gestellte Fragen](relay-faq.md)
-* [Erstellen eines Namespace](relay-create-namespace-portal.md)
-* [Erste Schritte mit Node](relay-hybrid-connections-node-get-started.md)
+In dieser Schnellstartanleitung haben Sie Client- und Serveranwendungen in .NET erstellt, die mithilfe von HTTP Nachrichten senden und empfangen. Das Hybrid Connections-Feature von Azure Relay unterstützt auch die Verwendung von WebSockets zum Senden und Empfangen von Nachrichten. Informationen zur Verwendung von WebSockets mit Hybrid Connections von Azure Relay finden Sie unter [Erste Schritte mit WebSockets von Relay Hybrid Connections in Node](relay-hybrid-connections-dotnet-get-started.md).
 
+In dieser Schnellstartanleitung haben Sie .NET Framework zum Erstellen von Client- und Serveranwendungen verwendet. Informationen zum Schreiben von Client- und Serveranwendungen mithilfe von Node.js finden Sie unter [Erste Schritte mit WebSockets von Relay Hybrid Connections in Node](relay-hybrid-connections-node-get-started.md) oder [Erste Schritte mit HTTP-Anforderungen von Relay Hybrid Connections in .NET](relay-hybrid-connections-http-requests-dotnet-get-started.md).

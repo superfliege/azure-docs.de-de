@@ -3,29 +3,31 @@ title: Tutorial für C# und Azure IoT Edge | Microsoft-Dokumentation
 description: In diesem Tutorial wird gezeigt, wie Sie ein IoT Edge-Modul mit C#-Code erstellen und dieses Modul auf einem Edge-Gerät bereitstellen.
 services: iot-edge
 author: kgremban
-manager: timlt
+manager: philmea
 ms.author: kgremban
 ms.date: 09/21/2018
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: ec8cd52d8a91c76033d52f9b49ee84dde98eada2
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 4c20ab78ba4da44d4746ef6f68674fe494392347
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50156764"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51633987"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-and-deploy-to-your-simulated-device"></a>Tutorial: Entwickeln und Bereitstellen eines C#-IoT Edge-Moduls für Ihr simuliertes Gerät
 
 Mithilfe von Azure IoT Edge-Modulen können Sie Code bereitstellen, der Ihre Geschäftslogik direkt auf Ihren IoT Edge-Geräten implementiert. In diesem Tutorial wird beschrieben, wie Sie ein IoT Edge-Modul, mit dem Sensordaten gefiltert werden, erstellen und bereitstellen. Sie verwenden das simulierte IoT Edge-Gerät, das Sie in den Schnellstartanleitungen zum Bereitstellen von Azure IoT Edge auf einem simulierten Gerät unter [Windows](quickstart.md) oder [Linux](quickstart-linux.md) erstellt haben. In diesem Tutorial lernen Sie Folgendes:    
 
 > [!div class="checklist"]
-> * Erstellen eines IoT Edge-Moduls auf der Grundlage des .NET Core 2.0 SDK unter Verwendung von Visual Studio Code
+> * Erstellen Sie ein IoT Edge-Modul auf der Grundlage des .NET Core 2.1 SDK unter Verwendung von Visual Studio Code.
 > * Erstellen und Veröffentlichen eines Docker-Images in Ihrer Registrierung unter Verwendung von Visual Studio Code und Docker
 > * Bereitstellen des Moduls auf Ihrem IoT Edge-Gerät
 > * Anzeigen generierter Daten
 
+>[!NOTE]
+>Sie können auch [Visual Studio 2017 zum Entwickeln, Debuggen und Bereitstellen von IoT Edge-Modulen](how-to-visual-studio-develop-csharp-module.md) verwenden.
 
 Das IoT Edge-Modul, das Sie in diesem Tutorial erstellen, filtert die von Ihrem Gerät generierten Temperaturdaten. Es leitet Nachrichten nur dann an nachgeschaltete Geräte weiter, wenn die Temperatur einen angegebenen Schwellenwert überschreitet. Diese Art der Analyse auf Edge-Ebene trägt zur Verringerung der Datenmenge bei, die an die Cloud übermittelt und dort gespeichert wird. 
 

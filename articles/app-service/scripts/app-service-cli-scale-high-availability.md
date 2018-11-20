@@ -1,6 +1,6 @@
 ---
-title: Azure CLI-Skriptbeispiel – weltweites Skalieren einer Web-App mit einer Hochverfügbarkeitsarchitektur | Microsoft-Dokumentation
-description: Azure CLI-Skriptbeispiel – weltweites Skalieren einer Web-App mit einer Hochverfügbarkeitsarchitektur
+title: 'Azure CLI-Skriptbeispiel: Weltweites Skalieren einer Web-App mit einer Hochverfügbarkeitsarchitektur | Microsoft-Dokumentation'
+description: 'Azure CLI-Skriptbeispiel: Weltweites Skalieren einer Web-App mit einer Hochverfügbarkeitsarchitektur'
 services: appservice
 documentationcenter: appservice
 author: syntaxc4
@@ -16,12 +16,12 @@ ms.workload: web
 ms.date: 12/11/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: ae2aaaa35d119b6e4691257333547cb1a3a21e86
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 4403e0081df3120c889b93d642670895252ac47e
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46968480"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51567966"
 ---
 # <a name="scale-a-web-app-worldwide-with-a-high-availability-architecture"></a>Weltweites Skalieren einer Web-App mit einer Hochverfügbarkeitsarchitektur
 

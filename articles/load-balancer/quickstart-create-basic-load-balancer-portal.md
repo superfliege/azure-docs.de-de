@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 03/22/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 7451d6ade7f8b042a68f456e604e2919cacab0a5
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 523f5eba632b15eaaf45f24be820f7b255aae7c0
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44378430"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51616026"
 ---
 # <a name="quickstart-create-a-public-basic-load-balancer-by-using-the-azure-portal"></a>Schnellstart: Erstellen eines öffentlichen Load Balancers im Tarif „Basic“ mit dem Azure-Portal
 
@@ -159,6 +159,7 @@ Damit der Load Balancer im Tarif „Basic“ den Status Ihrer App überwachen ka
    - **myHealthProbe** als Name des Integritätstests
    - **HTTP** als Protokolltyp
    - **80** als Portnummer
+   - **Healthprobe.aspx** für den URI-Pfad. Sie können diesen Wert entweder durch einen beliebigen anderen URI ersetzen oder den Standardpfadwert **"\\"** beibehalten, um den Standard-URI zu erhalten.
    - **15** als **Intervall** (Anzahl von Sekunden zwischen Testversuchen)
    - **2** als **Fehlerschwellenwert** oder Anzahl aufeinander folgender Testfehler, die auftreten müssen, damit ein virtueller Computer als fehlerhaft eingestuft wird
 

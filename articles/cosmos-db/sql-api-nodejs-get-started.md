@@ -10,12 +10,12 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: dech
-ms.openlocfilehash: 7eeb4fdba8272d9bc2b67d8a33dd7b1d210f5e47
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 61d9d33ae7e8e2104e61bbd24862a709dd6d78ec
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51278598"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51636483"
 ---
 # <a name="tutorial-build-a-nodejs-console-app-with-javascript-sdk-to-manage-azure-cosmos-db-sql-api-data"></a>Tutorial: Erstellen einer Node.js-Konsolen-App mit dem JavaScript SDK zum Verwalten von Daten der Azure Cosmos DB-SQL-API
 
@@ -218,7 +218,7 @@ Nachdem Sie nun über den Code zum Initialisieren des Azure Cosmos DB-Clients ve
    const containerId = config.container.id;
    ```
 
-   Eine [Datenbank](sql-api-resources.md#databases) kann mithilfe der Funktion [createIfNotExists](/javascript/api/%40azure/cosmos/databases) oder [create](/javascript/api/%40azure/cosmos/databases) der **Databases**-Klasse erstellt werden. Eine Datenbank ist ein logischer Container für Elemente, die auf Container aufgeteilt sind. 
+   Eine Datenbank kann mithilfe der Funktion [createIfNotExists](/javascript/api/%40azure/cosmos/databases) oder [create](/javascript/api/%40azure/cosmos/databases) der **Databases**-Klasse erstellt werden. Eine Datenbank ist ein logischer Container für Elemente, die auf Container aufgeteilt sind. 
 
 2. Fügen Sie in der Datei „app.js“ die Funktionen **createDatabase** und **readDatabase** unterhalb der Definitionen von ```databaseId``` und ```containerId``` ein. Mit der Funktion **createDatabase** wird eine neue Datenbank mit der ID ```FamilyDatabase``` erstellt, angegeben über das Objekt ```config``` (sofern noch nicht vorhanden). Die Funktion **readDatabase** liest die Definition der Datenbank, um sicherzustellen, dass die Datenbank vorhanden ist.
 

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 10/29/2018
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: 05f878d244647a79a2b3e9d0c789ba811dad71ee
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: c261dd083fed8b9c4a0f3846157c666cbb52083c
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51012104"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51636814"
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>Allgemeine Fragen – VMware-zu-Azure-Replikation
 
@@ -110,6 +110,8 @@ Der Konfigurationsserver führt die lokalen Site Recovery-Komponenten aus, einsc
 - Der Prozessserver, der als Replikationsgateway fungiert. Er empfängt Replikationsdaten, optimiert sie durch Zwischenspeichern, Komprimieren und Verschlüsseln und sendet sie an Azure-Speicher. Der Prozessserver installiert auch Mobility Service auf virtuellen Computern, die Sie replizieren möchten, und führt die automatische Ermittlung von lokalen VMware-VMs durch.
 - Der Masterzielserver, der die Replikationsdaten während des Failbacks von Azure verarbeitet.
 
+[Erfahren Sie mehr](vmware-azure-architecture.md) zu den Komponenten und Prozessen von Konfigurationsservern.
+
 ### <a name="where-do-i-set-up-the-configuration-server"></a>Wo richte ich den Konfigurationsserver ein?
 Für den Konfigurationsserver benötigen Sie eine einzelne hoch verfügbare lokale VMware-VM.
 
@@ -126,15 +128,35 @@ Nein. Zu diesem Zweck müssen Sie in jeder Region eine Konfigurationsserver einr
 ### <a name="can-i-host-a-configuration-server-in-azure"></a>Kann ich einen Konfigurationsserver in Azure hosten?
 Dies ist zwar möglich, aber die Azure-VM, die den Konfigurationsserver ausführt, müsste mit Ihrer lokalen VMware-Infrastruktur und den virtuellen Computern kommunizieren. Dies kann zu höherer Latenz führen und sich auf die laufende Replikation auswirken.
 
-
-### <a name="where-can-i-get-the-latest-version-of-the-configuration-server-template"></a>Wo erhalte ich die neueste Version der Konfigurationsservervorlage?
-Laden Sie die neueste Version aus dem [Microsoft Download Center](https://aka.ms/asrconfigurationserver) herunter.
-
 ### <a name="how-do-i-update-the-configuration-server"></a>Wie aktualisiere ich den Konfigurationsserver?
-Sie installieren Updaterollups. Die neuesten Updateinformationen finden Sie auf der [Wiki-Updatesseite](https://social.technet.microsoft.com/wiki/contents/articles/38544.azure-site-recovery-service-updates.aspx).
+[Erfahren Sie mehr](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server) zur Aktualisierung des Konfigurationsservers. Die neuesten Updateinformationen finden Sie auf der [Seite mit den Azure-Updates](https://azure.microsoft.com/updates/?product=site-recovery). Die neueste Version des Konfigurationsservers können Sie auch direkt im [Microsoft Download Center](https://aka.ms/asrconfigurationserver) herunterladen.
 
 ### <a name="should-i-backup-the-deployed-configuration-server"></a>Soll ich den bereitgestellten Konfigurationsserver sichern?
 Es wird empfohlen, regelmäßige geplante Sicherungen des Konfigurationsservers durchzuführen. Für ein erfolgreiches Failback muss der betreffende virtuelle Computer in der Konfigurationsserverdatenbank vorhanden sein, und der Konfigurationsserver muss ausgeführt werden und verbunden sein. Weitere Informationen zu allgemeinen Aufgaben für die Verwaltung des Konfigurationsservers finden Sie [hier](vmware-azure-manage-configuration-server.md).
+
+### <a name="when-im-setting-up-the-configuration-server-can-i-download-and-install-mysql-manually"></a>Kann ich beim Einrichten des Konfigurationsservers MySQL herunterladen und manuell installieren?
+Ja. Laden Sie MySQL herunter, und speichern Sie die Daten im Ordner **C:\Temp\ASRSetup**. Führen Sie die Installation anschließend manuell durch. Wenn Sie die Konfigurationsserver-VM einrichten und die Bedingungen akzeptieren, wird MySQL unter **Herunterladen und installieren** als **Bereits installiert** aufgeführt.
+
+### <a name="can-i-avoid-downloading-mysql-but-let-site-recovery-install-it"></a>Kann ich das Herunterladen von MySQL vermeiden und Site Recovery die Installation überlassen?
+Ja. Laden Sie das MySQL-Installationsprogramm herunter, und speichern Sie es im Ordner **C:\Temp\ASRSetup**.  Akzeptieren Sie beim Einrichten der Konfigurationsserver-VM die Bedingungen, und klicken Sie auf **Herunterladen und installieren**. Im Portal wird dann das von Ihnen hinzugefügte Installationsprogramm verwendet, um MySQL zu installieren.
+ 
+### <a name="canl-i-use-the-configuration-server-vm-for-anything-else"></a>Kann ich die Konfigurationsserver-VM für andere Zwecke nutzen?
+Nein. Sie sollten die VM nur für den Konfigurationsserver verwenden. 
+
+### <a name="can-i-change-the-vault-registered-in-the-configuration-server"></a>Kann ich den Tresor ändern, der auf dem Konfigurationsserver registriert ist?
+Nein. Nachdem ein Tresor für den Konfigurationsserver registriert wurde, sind daran keine Änderungen mehr möglich.
+
+### <a name="can-i-use-the-same-configuration-server-for-disaster-recovery-of-both-vmware-vms-and-physical-servers"></a>Kann ich denselben Konfigurationsserver für die Notfallwiederherstellung von VMware-VMs und von physischen Servern nutzen?
+Ja. Beachten Sie aber, dass für den physischen Computer nur ein Failback auf eine VMware-VM durchgeführt werden kann.
+
+### <a name="where-can-i-download-the-passphrase-for-the-configuration-server"></a>Wo kann ich die Passphrase für den Konfigurationsserver herunterladen?
+Informationen zum Herunterladen der Passphrase finden Sie in [diesem Artikel](vmware-azure-manage-configuration-server.md#generate-configuration-server-passphrase).
+
+### <a name="where-can-i-download-vault-registration-keys"></a>Wo kann ich die Tresorregistrierungsschlüssel herunterladen?
+
+Im **Recovery Services-Tresor**, **Verwalten** > **Site Recovery-Infrastruktur** > **Konfigurationsserver**. Klicken Sie unter **Server** auf **Registrierungsschlüssel herunterladen**, um die Datei mit den Tresoranmeldeinformationen herunterzuladen.
+
+
 
 ## <a name="mobility-service"></a>Mobilitätsdienst
 

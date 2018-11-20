@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: resource-graph
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: fbbdc4a67cd6f2e7d74031f7acc584bf0004bea4
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: 43cf9f5ec0f9c265efa0e59eadbf6c9bbe4f7c3f
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50085375"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51682878"
 ---
 # <a name="advanced-resource-graph-queries"></a>Erweiterte Resource Graph-Abfragen
 
@@ -72,7 +72,7 @@ Search-AzureRmGraph -Query "project tags | summarize buildschema(tags)"
 ## <a name="vm-regex"></a>Einem regulären Ausdruck entsprechende VMs
 
 Diese Abfrage sucht nach virtuellen Computern, die einem [regulären Ausdruck](/dotnet/standard/base-types/regular-expression-language-quick-reference) (als _RegEx_ bekannt) entsprechen.
-Mit **matches regex @** wird der reguläre Ausdruck für den Abgleich definiert: **^Contoso(.*) [0-9] + $**. Diese RegEx-Definition wird wie folgt erläutert:
+Mit **matches regex @** wird der reguläre Ausdruck für den Abgleich definiert: `^Contoso(.*)[0-9]+$`. Diese RegEx-Definition wird wie folgt erläutert:
 
 - `^` – Die Übereinstimmung muss am Anfang der Zeichenfolge beginnen.
 - `Contoso` – Zeichenfolge mit Beachtung von Groß-/Kleinschreibung

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: overview
-ms.date: 09/24/2018
+ms.date: 11/13/2018
 ms.author: alkohli
-ms.openlocfilehash: e99a3a7db7a934a8a72695c38ab952786579a640
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 60186ee6aa614c83691c9ce4ab9d8124fd5925fd
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51232205"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51685955"
 ---
 # <a name="what-is-azure-data-box-edge-preview"></a>Was ist Azure Data Box Edge (Vorschauversion)? 
 
@@ -84,7 +84,7 @@ Das physische Data Box Edge-Gerät weist die folgenden Merkmale auf:
 | Arbeitsspeicher| 64 GB RAM|
 | Datenträger| 8 NVMe-SSD-Datenträger mit je 1,6 TB <br> Das System fällt aus, sobald ein NVMe-SSD-Datenträger ausfällt. |
 | Lokale Speicherkapazität| 12,8 TB Gesamtkapazität|
-| Netzwerkschnittstellen| 2 Netzwerkschnittstellen (1 GbE), 1 davon zur Verwaltung, nicht vom Benutzer konfigurierbar, dient zur erstmaligen Einrichtung Die andere Datenschnittstelle ist vom Benutzer konfigurierbar und standardmäßig DHCP. <br>2 Netzwerkschnittstellen (25 GbE), die auch als 10-GbE-Schnittstellen betrieben werden können. Diese Datenschnittstellen können vom Benutzer als DHCP (Standard) oder statisch konfiguriert werden. <br> 2 Netzwerkschnittstellen (25 GbE): Diese Datenschnittstellen können vom Benutzer als DHCP (Standard) oder statisch konfiguriert werden.|
+| Netzwerkschnittstellen| 2 Netzwerkschnittstellen (1 GbE), 1 davon zur Verwaltung, nicht vom Benutzer konfigurierbar, dient zur erstmaligen Einrichtung Die andere Schnittstelle ist vom Benutzer konfigurierbar, kann für die Datenübertragung verwendet werden und ist standardmäßig als DHCP-Schnittstelle konfiguriert. <br>2 Netzwerkschnittstellen (25 GbE), die auch als 10-GbE-Schnittstellen betrieben werden können. Diese Datenschnittstellen können vom Benutzer als DHCP (Standard) oder statisch konfiguriert werden. <br> 2 Netzwerkschnittstellen (25 GbE): Diese Datenschnittstellen können vom Benutzer als DHCP (Standard) oder statisch konfiguriert werden.|
 
 ## <a name="components"></a>Komponenten
 

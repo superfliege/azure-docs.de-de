@@ -1,7 +1,6 @@
 ---
-title: 'Beispiel: Sprachenerkennung mit der Textanalyse-REST-API'
-titleSuffix: Azure Cognitive Services
-description: Erfahren Sie, wie Sie mithilfe der Textanalyse-REST-API Sprachen erkennen.
+title: Verwenden der Sprachenerkennung in der Textanalyse-REST-API (Microsoft Cognitive Services in Azure) | Microsoft-Dokumentation
+description: In diesem Tutorial mit exemplarischer Vorgehensweise erfahren Sie, wie Sie mithilfe der Textanalyse-REST-API in Microsoft Cognitive Services in Azure Sprachen erkennen.
 services: cognitive-services
 author: HeidiSteen
 manager: cgronlun
@@ -10,18 +9,21 @@ ms.component: text-analytics
 ms.topic: sample
 ms.date: 09/12/2018
 ms.author: heidist
-ms.openlocfilehash: fa71e4ce2e5cb5967bb583c7314072830de08051
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: 460dfb168894d28d5fbc5e5585a6054917127931
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45604551"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51633563"
 ---
 # <a name="example-how-to-detect-language-in-text-analytics"></a>Beispiel: Erkennen der Sprache mithilfe der Textanalyse
 
 Die [Sprachenerkennungs-API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7) wertet Texteingaben aus und gibt für jedes Dokument Sprachen-IDs mit einer Punktzahl zurück, die die Stärke der Analyse angibt. Die Textanalyse erkennt bis zu 120 Sprachen.
 
 Diese Funktion ist hilfreich für Inhaltsspeicher, die willkürliche Texte mit unbekannter Sprache sammeln. Sie können die Analyseergebnisse analysieren, um die Sprache des Eingabedokuments zu bestimmen. Die Antwort gibt außerdem eine Punktzahl zwischen 0 und 1 zurück, um die Zuverlässigkeit des Modells anzugeben.
+
+> [!TIP]
+> Die Textanalyse bietet darüber hinaus ein Linux-basiertes Docker-Containerimage für die Spracherkennung, damit Sie [den Textanalysecontainer nah bei Ihren Daten installieren und ausführen können](text-analytics-how-to-install-containers.md).
 
 ## <a name="preparation"></a>Vorbereitung
 
@@ -62,7 +64,7 @@ Details zur Anforderungsdefinition finden Sie unter [Aufrufen der Textanalyse-RE
 
 + Erstellen Sie eine Anforderung vom Typ **POST**. Die API-Dokumentation für diese Anforderung finden Sie [hier](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7).
 
-+ Legen Sie den HTTP-Endpunkt für die Sprachenerkennung fest. Er muss die Ressource `/languages` enthalten: `https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/languages`
++ Legen Sie den HTTP-Endpunkt für die Spracherkennung entweder mithilfe einer Textanalyseressource in Azure oder mithilfe eines instanziierten [Textanalysecontainers](text-analytics-how-to-install-containers.md) fest. Er muss die Ressource `/languages` enthalten: `https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/languages`.
 
 + Legen Sie einen Anforderungsheader fest, der den Zugriffsschlüssel für Textanalysevorgänge enthält. Weitere Informationen finden Sie unter [Ermitteln von Endpunkten und Zugriffsschlüsseln](text-analytics-how-to-access-key.md).
 

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 08/24/2018
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: abd751cf867fea2e634161c4cf0b1e84acbe18c6
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: a543561658d593398ca74f8ae68dd6d0d27bcdaa
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49354104"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51636445"
 ---
 # <a name="tutorial-bind-an-existing-custom-ssl-certificate-to-azure-web-apps"></a>Tutorial: Binden eines vorhandenen benutzerdefinierten SSL-Zertifikats an Azure-Web-Apps
 
@@ -260,7 +260,9 @@ New-AzureRmWebAppSSLBinding `
     -SslState SniEnabled
 ```
 ## <a name="public-certificates-optional"></a>Öffentliche Zertifikate (optional)
-Sie können [öffentliche Zertifikate](https://blogs.msdn.microsoft.com/appserviceteam/2017/11/01/app-service-certificates-now-supports-public-certificates-cer/) in Ihre Web-App hochladen, sodass die App auf externe Dienste zugreifen kann, die eine Zertifikatauthentifizierung erfordern.  Weitere Informationen zum Laden und Verwenden eines öffentlichen Zertifikats in Ihrer App finden Sie unter [Verwenden eines SSL-Zertifikats in Ihrem Anwendungscode in Azure App Service](https://docs.microsoft.com/azure/app-service/app-service-web-ssl-cert-load).  Sie können öffentliche Zertifikate auch mit Apps in App Service-Umgebungen verwenden. Wenn Sie das Zertifikat im LocalMachine-Zertifikatspeicher speichern müssen, müssen Sie eine Web-App in der App Service-Umgebung verwenden. Weitere Informationen finden Sie unter [App Service Certificates now supports public certificates (.cer)](https://blogs.msdn.microsoft.com/appserviceteam/2017/11/01/app-service-certificates-now-supports-public-certificates-cer) (App Service-Zertifikate unterstützt jetzt öffentliche Zertifikate [CER].).
+Falls Ihre App als Client auf Remoteressourcen zugreifen muss und die Remoteressource eine Zertifikatauthentifizierung erfordert, können Sie [öffentliche Zertifikate](https://blogs.msdn.microsoft.com/appserviceteam/2017/11/01/app-service-certificates-now-supports-public-certificates-cer/) in Ihre Web-App hochladen. Öffentliche Zertifikate sind für SSL-Bindungen Ihrer App nicht erforderlich.
+
+Weitere Informationen zum Laden und Verwenden eines öffentlichen Zertifikats in Ihrer App finden Sie unter [Verwenden eines SSL-Zertifikats in Ihrem Anwendungscode in Azure App Service](https://docs.microsoft.com/azure/app-service/app-service-web-ssl-cert-load). Sie können öffentliche Zertifikate auch mit Apps in App Service-Umgebungen verwenden. Wenn Sie das Zertifikat im LocalMachine-Zertifikatspeicher speichern müssen, müssen Sie eine Web-App in der App Service-Umgebung verwenden. Weitere Informationen finden Sie unter [App Service Certificates now supports public certificates (.cer)](https://blogs.msdn.microsoft.com/appserviceteam/2017/11/01/app-service-certificates-now-supports-public-certificates-cer) (App Service-Zertifikate unterstützt jetzt öffentliche Zertifikate [CER].).
 
 ![Hochladen eines öffentlichen Zertifikats](./media/app-service-web-tutorial-custom-ssl/upload-certificate-public1.png)
 

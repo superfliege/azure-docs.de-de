@@ -12,15 +12,15 @@ ms.component: report-monitor
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 07/23/2018
+ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: ba2784663a585aebb82ee149be3b54e73920f6dd
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: cd5da2a3c5fa3d9cd67715493eb649926badb694
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48816649"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51622533"
 ---
 # <a name="quickstart-install-azure-active-directory-power-bi-content-pack"></a>Schnellstart: Installieren des Azure Active Directory-Power BI-Inhaltspakets
 
@@ -29,7 +29,7 @@ ms.locfileid: "48816649"
 |Das Azure AD-Power-BI-Inhaltspaket verwendet derzeit die Azure AD Graph-APIs zum Abrufen von Daten des Azure AD-Mandanten. Daher ergibt sich möglicherweise ein Unterschied zwischen den Daten im Inhaltspaket und den Daten, die mit den [Microsoft Graph-APIs für die Berichterstellung](concept-reporting-api.md) abgerufen wurden. |
 |  |
 
-Mit dem Power BI-Inhaltspaket für Azure Active Directory können Sie eingehende Erkenntnisse zu den Vorgängen Ihrer Active Directory-Instanz gewinnen. Sie können das vorab erstellte Inhaltspaket herunterladen und verwenden, um alle Aktivitäten in Ihrem Verzeichnis zu melden, indem Sie die umfassende Visualisierungsumgebung von Power BI nutzen. Sie können auch Ihr eigenes Dashboard erstellen und es auf einfache Weise für alle anderen Benutzer Ihrer Organisation freigeben. 
+Mit dem Power BI-Inhaltspaket für Azure Active Directory (Azure AD) können Sie die Berichtsdaten aus Ihrer Umgebung visualisieren. Sie können das vorab erstellte Inhaltspaket herunterladen und verwenden, um alle Aktivitäten in Ihrem Verzeichnis zu melden, indem Sie die umfassende Visualisierungsumgebung von Power BI nutzen. Sie können auch Ihr eigenes Dashboard erstellen und es auf einfache Weise für alle anderen Benutzer Ihrer Organisation freigeben. 
 
 In dieser Schnellstartanleitung wird beschrieben, wie Sie das Inhaltspaket installieren.
 

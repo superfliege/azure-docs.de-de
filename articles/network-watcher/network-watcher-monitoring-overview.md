@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 04/24/2018
 ms.author: jdial
 ms.custom: mvc
-ms.openlocfilehash: 7cccb47bd7489e88649ee82c4d52c72af0d91e8e
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: 983b966ad304afb467df26193dd609f6f21a1b32
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44390944"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51614276"
 ---
 # <a name="what-is-azure-network-watcher"></a>Was ist Azure Network Watcher?
 
@@ -98,6 +98,9 @@ Weitere Informationen zur NSG-Flussprotokollierung erhalten Sie im Tutorial [Pro
 ### <a name="view-diagnostic-logs-for-network-resources"></a>Anzeigen von Diagnoseprotokollen für Netzwerkressourcen
 
 Sie können die Diagnoseprotokollierung für Azure-Netzwerkressourcen aktivieren, z.B. Netzwerksicherheitsgruppen, öffentliche IP-Adressen, Lastenausgleichsmodule, Gateways eines virtuellen Netzwerks und Anwendungsgateways. Die Funktion *Diagnoseprotokolle* verfügt über eine Benutzeroberfläche zum Aktivieren und Deaktivieren von Diagnoseprotokollen für alle vorhandenen Netzwerkressourcen, die ein Diagnoseprotokoll generieren. Sie können Diagnoseprotokolle anzeigen, indem Sie Tools wie Microsoft Power BI und Azure Log Analytics verwenden. Weitere Informationen zur Analyse von Azure-Netzwerkdiagnoseprotokollen finden Sie unter [Azure-Netzwerküberwachungslösungen in Log Analytics](../log-analytics/log-analytics-azure-networking-analytics.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
+
+## <a name="network-watcher-automatic-enablement"></a>Automatische Aktivierung von Network Watcher
+Beim Erstellen oder Aktualisieren eines virtuellen Netzwerks in Ihrem Abonnement wird Network Watcher automatisch in der Region Ihres virtuellen Netzwerks aktiviert. Die automatische Aktivierung von Network Watcher hat keine Auswirkungen auf Ihre Ressourcen oder die damit verbundene Gebühr. Weitere Informationen finden Sie unter [Erstellen einer Azure Network Watcher-Instanz](network-watcher-create.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

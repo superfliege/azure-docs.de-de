@@ -8,12 +8,12 @@ ms.component: data-lake-storage-gen2
 ms.service: storage
 ms.topic: quickstart
 ms.date: 06/27/2018
-ms.openlocfilehash: 338acd3e26f9b36e5f9afaf90f95f61e7623cebc
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 8c53e86ff18aa0f010bf4bb57b2ac4ccde3f430c
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51281726"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51565801"
 ---
 # <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-portal"></a>Schnellstart: Ausführen eines Spark-Auftrags in Azure Databricks mit dem Azure-Portal
 
@@ -103,10 +103,10 @@ In diesem Abschnitt erstellen Sie ein Notizbuch im Azure Databricks-Arbeitsberei
 4. Ersetzen Sie im folgenden Code den Text **ACCOUNT_NAME** und **ACCOUNT_KEY** durch die Werte, die Sie zu Beginn dieses Schnellstarts notiert haben. Ersetzen Sie außerdem den Text **FILE_SYSTEM_NAME** durch den Namen, den Ihr Dateisystem haben soll. Geben Sie anschließend den Code in der ersten Zelle ein.
 
     ```scala
-    spark.conf.set("fs.azure.account.key.<ACCOUNT_NAME>.dfs.core.windows.net", "<ACCOUNT_KEY>") 
+    spark.conf.set("fs.azure.account.key.<ACCOUNT_NAME>.dfs.core.windows.net", "<ACCOUNT_KEY>")
     spark.conf.set("fs.azure.createRemoteFileSystemDuringInitialization", "true")
     dbutils.fs.ls("abfss://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.windows.net/")
-    spark.conf.set("fs.azure.createRemoteFileSystemDuringInitialization", "false") 
+    spark.conf.set("fs.azure.createRemoteFileSystemDuringInitialization", "false")
     ```
 
     Drücken Sie **UMSCHALT+EINGABE**, um die Codezelle auszuführen.
@@ -152,7 +152,7 @@ Führen Sie die folgenden Aufgaben aus, um einen Spark SQL-Auftrag für die Date
 2. Zum besseren Verständnis der ausgeführten Abfrage sehen wir uns eine Momentaufnahme der JSON-Beispieldaten an. Fügen Sie den folgenden Codeausschnitt in die Codezelle ein, und drücken Sie **UMSCHALT+EINGABE**.
 
     ```sql
-    %sql 
+    %sql
     SELECT * from radio_sample_data
     ```
 
@@ -187,7 +187,7 @@ Am Ende dieses Artikels können Sie den Cluster beenden. Klicken Sie im Azure Da
 
 ![Beenden eines Databricks-Clusters](./media/quickstart-create-databricks-workspace-portal/terminate-databricks-cluster.png "Beenden eines Databricks-Clusters")
 
-Wenn Sie den Cluster nicht manuell beenden, wird er automatisch beendet, sofern Sie bei der Erstellung des Clusters das Kontrollkästchen **Terminate after __ minutes of inactivity** (Nach __ Minuten Inaktivität beenden) aktiviert haben. Bei Verwendung dieser Option wird der Cluster beendet, wenn er für den angegebenen Zeitraum inaktiv war.
+Wenn Sie den Cluster nicht manuell beenden, wird er automatisch beendet, sofern Sie bei der Erstellung des Clusters das Kontrollkästchen **Terminate after \_\_ minutes of inactivity** (Nach __ Minuten Inaktivität beenden) aktiviert haben. Bei Verwendung dieser Option wird der Cluster beendet, wenn er für den angegebenen Zeitraum inaktiv war.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

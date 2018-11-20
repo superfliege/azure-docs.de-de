@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 09/22/2018
 ms.custom: mvc
 ms.author: spelluru
-ms.openlocfilehash: 870cfcf8712cc5bee2674b82d5292e4241433386
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 7b4045737ea2be466a436e6abb0de6a1a61e6a5b
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49342206"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51636592"
 ---
 # <a name="what-is-azure-service-bus"></a>Was ist Azure Service Bus?
 
@@ -39,7 +39,7 @@ Nachrichten werden an *Warteschlangen* gesendet und daraus empfangen. Warteschla
 
 ![Warteschlange](./media/service-bus-messaging-overview/about-service-bus-queue.png)
 
-Nachrichten in Warteschlangen werden bei ihrem Eingang sortiert und mit einem Zeitstempel versehen. Nachdem eine Nachricht akzeptiert wurde, wird sie sicher in redundantem Speicher gespeichert. Nachrichten werden im *Pull-Modus* zugestellt, der Nachrichten auf Anforderung übermittelt.
+Nachrichten in Warteschlangen werden bei ihrem Eingang sortiert und mit einem Zeitstempel versehen. Nachdem eine Nachricht akzeptiert wurde, wird sie sicher in redundantem Speicher gespeichert. Nachrichten werden im  *Pull-Modus* zugestellt, der Nachrichten auf Anforderung übermittelt.
 
 ## <a name="topics"></a>Themen
 
@@ -115,9 +115,9 @@ Service Bus unterstützt Clientbibliotheken für [.NET](https://github.com/Azure
 
 Service Bus lässt sich vollständig in folgende Azure-Dienste integrieren:
 
-- [Event Grid](https://azure.microsoft.com/services/event-grid/) 
-- [Logik-Apps](https://azure.microsoft.com/services/logic-apps/) 
-- [Funktionen](https://azure.microsoft.com/services/functions/) 
+- [Event Grid](https://azure.microsoft.com/services/event-grid/) 
+- [Logik-Apps](https://azure.microsoft.com/services/logic-apps/) 
+- [Funktionen](https://azure.microsoft.com/services/functions/) 
 - [Dynamics 365](https://dynamics.microsoft.com)
 - [Stream Analytics](https://azure.microsoft.com/services/stream-analytics/)
  

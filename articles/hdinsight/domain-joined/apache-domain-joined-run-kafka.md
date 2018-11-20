@@ -1,5 +1,5 @@
 ---
-title: Konfigurieren von Kafka-Richtlinien in HDInsight mit dem Enterprise-Sicherheitspaket – Azure
+title: 'Konfigurieren von Apache Kafka-Richtlinien in HDInsight mit dem Enterprise-Sicherheitspaket: Azure'
 description: Erfahren Sie, wie Sie Apache Ranger-Richtlinien für Kafka in Azure HDInsight mit dem Enterprise-Sicherheitspaket konfigurieren.
 services: hdinsight
 ms.service: hdinsight
@@ -8,16 +8,16 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.topic: tutorial
 ms.date: 09/24/2018
-ms.openlocfilehash: 48cfba6f62d75470efd27e3a4cdcb995e716798b
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: aa6702ccf00faa3d63d5458cfbd77ac15fbfbeaa
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51037140"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51633037"
 ---
-# <a name="tutorial-configure-kafka-policies-in-hdinsight-with-enterprise-security-package-preview"></a>Tutorial: Konfigurieren von Kafka-Richtlinien in HDInsight mit dem Enterprise-Sicherheitspaket (Vorschauversion)
+# <a name="tutorial-configure-apache-kafka-policies-in-hdinsight-with-enterprise-security-package-preview"></a>Tutorial: Konfigurieren von Apache Kafka-Richtlinien in HDInsight mit dem Enterprise-Sicherheitspaket (Vorschauversion)
 
-Erfahren Sie, wie Sie Apache Ranger-Richtlinien für Enterprise-Sicherheitspaket-Kafka-Cluster (ESP) konfigurieren. Es werden Verbindungen von ESP-Clustern mit einer Domäne hergestellt, sodass Benutzer sich mit Anmeldeinformationen für die Domäne authentifizieren können. In diesem Tutorial erstellen Sie zwei Ranger-Richtlinien, um den Zugriff auf die Themen `sales*` und `marketingspend` einzuschränken.
+Hier erfahren Sie, wie Sie Apache Ranger-Richtlinien für Apache Kafka-Cluster mit dem Enterprise-Sicherheitspaket (ESP) konfigurieren. Es werden Verbindungen von ESP-Clustern mit einer Domäne hergestellt, sodass Benutzer sich mit Anmeldeinformationen für die Domäne authentifizieren können. In diesem Tutorial erstellen Sie zwei Ranger-Richtlinien, um den Zugriff auf die Themen `sales*` und `marketingspend` einzuschränken.
 
 In diesem Tutorial lernen Sie Folgendes:
 

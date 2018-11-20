@@ -13,17 +13,17 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: report-monitor
-ms.date: 07/13/2018
+ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: c8157820f7137eb06a0fe10c42645ec91f33edbc
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 7582c578e91fb3e36d7a0ecc1da7ede0cefc0f4c
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46364067"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51623766"
 ---
-# <a name="tutorial-stream-azure-ad-logs-to-an-azure-event-hub-preview"></a>Tutorial: Streamen von Azure AD-Protokollen an einen Azure Event Hub (Vorschauversion)
+# <a name="tutorial-stream-azure-active-directory-logs-to-an-azure-event-hub-preview"></a>Tutorial: Streamen von Azure Active Directory-Protokollen an einen Azure Event Hub (Vorschauversion)
 
 In diesem Tutorial erfahren Sie, wie Sie Azure Monitor-Diagnoseeinstellungen einrichten, um Azure Active Directory-Protokolle (Azure AD) an einen Azure Event Hub zu streamen. Verwenden Sie diesen Mechanismus, um Ihre Protokolle in Security Information & Event Management-Tools (SIEM) von Drittanbietern zu integrieren, beispielsweise Splunk und QRadar.
 
@@ -36,7 +36,7 @@ Sie benötigen Folgendes, um dieses Feature verwenden zu können:
 * Einen Benutzer, der als *globaler Administrator* oder *Sicherheitsadministrator* für den Azure AD-Mandanten fungiert.
 * Einen Event Hubs-Namespace und einen Event Hub in Ihrem Azure-Abonnement. Erfahren Sie, wie Sie einen [Event Hub erstellen](https://docs.microsoft.com/azure/event-hubs/event-hubs-create).
 
-## <a name="archive-logs-to-an-event-hub"></a>Archivieren von Protokollen in einem Event Hub
+## <a name="stream-logs-to-an-event-hub"></a>Streamen von Protokollen an einen Event Hub
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. 
 

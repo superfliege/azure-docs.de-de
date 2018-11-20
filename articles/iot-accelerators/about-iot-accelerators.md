@@ -3,24 +3,24 @@ title: Einführung in Azure IoT Solution Accelerators | Microsoft-Dokumentation
 description: Enthält eine Beschreibung der Azure IoT Solution Accelerators. Bei IoT Solution Accelerators handelt es sich um vollständige End-to-End-IoT-Lösungen, die fertig für die Bereitstellung sind.
 author: dominicbetts
 ms.author: dobett
-ms.date: 07/24/2018
+ms.date: 11/09/2018
 ms.topic: overview
 ms.custom: mvc
 ms.service: iot-accelerators
 services: iot-accelerators
 manager: timlt
-ms.openlocfilehash: 7020d8a1756702d8c2b1998eef5a3fc64809ca5e
-ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
+ms.openlocfilehash: aac079feefde53ff30cbeab942ee0443c113cdc8
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39308111"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51345112"
 ---
 # <a name="what-are-azure-iot-solution-accelerators"></a>Was sind Azure IoT Solution Accelerators?
 
-Für eine cloudbasierte IoT-Lösung werden normalerweise benutzerdefinierter Code und mehrere Clouddienste verwendet, um die Gerätekonnektivität, die Datenverarbeitung und -analyse und die Darstellung zu verwalten.
+Für eine cloudbasierte IoT-Lösung werden normalerweise benutzerdefinierter Code und Clouddienste verwendet, um die Gerätekonnektivität, die Datenverarbeitung und -analyse und die Darstellung zu verwalten.
 
-Bei IoT Solution Accelerators handelt es sich um eine Sammlung mit vollständigen IoT-Lösungen, die fertig für die Bereitstellung sind und mit denen häufige IoT-Szenarien implementiert werden, z.B. Remoteüberwachung, verbundene Factory, Predictive Maintenance und Gerätesimulation. Wenn Sie einen Solution Accelerator bereitstellen, enthält die Bereitstellung alle erforderlichen cloudbasierten Dienste sowie den gesamten erforderlichen Anwendungscode.
+Die IoT Solution Accelerators sind vollständige, sofort bereitstellbare IoT-Lösungen, die allgemeine IoT-Szenarien implementieren. Zu den Szenarien zählen Remoteüberwachung, verbundene Factory, Predictive Maintenance und Gerätesimulation. Wenn Sie einen Solution Accelerator bereitstellen, enthält die Bereitstellung alle erforderlichen cloudbasierten Dienste sowie den gesamten erforderlichen Anwendungscode.
 
 Die Solution Accelerators sind Ausgangspunkte für Ihre eigenen IoT-Lösungen. Der Quellcode für alle Solution Accelerators ist Open-Source-Code und auf GitHub verfügbar. Wir empfehlen Ihnen, die Solution Accelerators herunterzuladen und anzupassen, damit sie Ihre Anforderungen erfüllen.
 
@@ -34,7 +34,7 @@ Derzeit sind vier Solution Accelerators verfügbar, die Sie bereitstellen könne
 
 ### <a name="remote-monitoring"></a>Remoteüberwachung
 
-Verwenden Sie diesen Solution Accelerator, um Telemetriedaten von mehreren Remotegeräten zu erfassen und zu steuern. Beispiele für Geräte sind Kühlsysteme, die beim Kunden installiert sind, oder Ventile in abgelegenen Pumpstationen.
+Verwenden Sie diesen Solution Accelerator, um Telemetriedaten von Remotegeräten zu erfassen und zu steuern. Beispiele für Geräte sind Kühlsysteme, die beim Kunden installiert sind, oder Ventile in abgelegenen Pumpstationen.
 
 Sie können das Remoteüberwachungs-Dashboard verwenden, um die Telemetriedaten Ihrer verbundenen Geräte anzuzeigen, neue Geräte bereitzustellen oder die Firmware auf Ihren verbundenen Geräten zu aktualisieren:
 
@@ -58,7 +58,7 @@ Sie können das Dashboard für vorbeugende Wartung verwenden, um Predictive Main
 
 ### <a name="device-simulation"></a>Gerätesimulation
 
-Verwenden Sie diesen Solution Accelerator, um mehrere simulierte Geräte auszuführen, die realistische Telemetriedaten generieren. Sie können diesen Solution Accelerator nutzen, um das Verhalten der anderen Solution Accelerators oder Ihre eigenen benutzerdefinierten IoT-Lösungen zu testen.
+Verwenden Sie diesen Solution Accelerator, um simulierte Geräte auszuführen, die realistische Telemetriedaten generieren. Sie können diesen Solution Accelerator nutzen, um das Verhalten der anderen Solution Accelerators oder Ihre eigenen benutzerdefinierten IoT-Lösungen zu testen.
 
 Sie können die Gerätesimulations-Web-App zum Konfigurieren und Ausführen von Simulationen verwenden:
 

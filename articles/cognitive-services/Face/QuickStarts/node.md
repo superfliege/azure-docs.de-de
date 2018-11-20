@@ -1,47 +1,35 @@
 ---
-title: 'Schnellstart: Erkennen von Gesichtern in einem Bild mit der REST-API und Node.js'
+title: 'Schnellstart: Erkennen von Gesichtern in einem Bild mit der Azure-REST-API und Node.js'
 titleSuffix: Azure Cognitive Services
-description: In dieser Schnellstartanleitung führen Sie die Gesichtserkennung für ein Bild durch, indem Sie die Gesichtserkennungs-API mit Node.js in Cognitive Services verwenden.
+description: In diesem Schnellstart verwenden Sie die Azure-Gesichtserkennungs-REST-API mit Node.js, um Gesichter in einem Bild zu erkennen.
 services: cognitive-services
 author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: face-api
 ms.topic: quickstart
-ms.date: 06/08/2018
+ms.date: 11/09/2018
 ms.author: pafarley
-ms.openlocfilehash: b5258f1c465732df257a7db85e828effff200ee0
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 76747f7e9f1a95ee14ee570dcc29b42f98c26838
+ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49954097"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51577980"
 ---
-# <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-nodejs"></a>Schnellstart: Erkennen von Gesichtern in einem Bild mit der REST-API und Node.js
+# <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-nodejs"></a>Schnellstart: Erkennen von Gesichtern in einem Bild mit der Gesichtserkennungs-REST-API und Node.js
 
-In dieser Schnellstartanleitung führen Sie die Gesichtserkennung für menschliche Gesichter in einem Bild durch, indem Sie die Gesichtserkennungs-API verwenden.
+In diesem Schnellstart verwenden Sie die Azure-Gesichtserkennungs-REST-API mit Node.js, um Gesichter von Personen in einem Bild zu erkennen.
+
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Zum Ausführen des Beispiels benötigen Sie einen Abonnementschlüssel. Über die Seite [Cognitive Services ausprobieren](https://azure.microsoft.com/try/cognitive-services/?api=face-api) können Sie Abonnementschlüssel für eine kostenlose Testversion abrufen.
+- Ein Abonnementschlüssel für die Gesichtserkennungs-API. Über die Seite [Cognitive Services ausprobieren](https://azure.microsoft.com/try/cognitive-services/?api=face-api) können Sie einen Abonnementschlüssel für eine kostenlose Testversion abrufen. Gehen Sie andernfalls wie unter [Schnellstart: Erstellen eines Cognitive Services-Kontos im Azure-Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) beschrieben vor, um den Gesichtserkennungs-API-Dienst zu abonnieren und Ihren Schlüssel zu erhalten.
 
-## <a name="face---detect-request"></a>„Face – Detect“-Anforderung
+## <a name="create-the-nodejs-script"></a>Erstellen des Node.js-Skripts
 
-Verwenden Sie die [Face – Detect](https://westcentralus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)-Methode, um Gesichter in einem Bild zu erkennen und Gesichtsattribute zurückzugeben, z.B.:
-
-* Gesichtserkennungs-API: Eindeutige ID, die in verschiedenen Gesichtserkennungs-API-Szenarien verwendet wird.
-* Gesichtsrechteck: Die Position des linken und oberen Rands sowie die Breite und Höhe, um die Position des Gesichts im Bild anzugeben.
-* Besondere Merkmale: Ein Array mit 27 Punkten zu Gesichtszügen, die auf die wichtigen Positionen von Gesichtskomponenten hinweisen.
-* Dies können Gesichtsattribute wie Alter, Geschlecht, Intensität des Lächelns, Kopfhaltung und Gesichtsbehaarung sein.
-
-Führen Sie zum Ausführen des Beispiels die folgenden Schritte aus:
-
-1. Kopieren Sie den folgenden Code in einen Editor.
-1. Ersetzen Sie `<Subscription Key>` durch Ihren gültigen Abonnementschlüssel.
-1. Ändern Sie den Wert von `uriBase` ggf. in die Region, in der Sie Ihre Abonnementschlüssel erhalten haben.
-1. Legen Sie optional `imageUri` auf das Bild fest, das Sie analysieren möchten.
-1. Speichern Sie die Datei mit der Erweiterung `.js`.
-1. Öffnen Sie die Node.js-Eingabeaufforderung, und führen Sie die Datei aus, z.B. `node myfile.js`.
+Der folgende Code ruft die Gesichtserkennungs-API auf und ruft Gesichtsattributdaten aus einem Bild ab. Kopieren Sie den Code zunächst in einen Text-Editor. Sie müssen einige Änderungen vornehmen, bevor Sie den Code ausführen können.
 
 ```nodejs
 'use strict';
@@ -88,9 +76,29 @@ request.post(options, (error, response, body) => {
 });
 ```
 
-## <a name="face---detect-response"></a>„Face – Detect“-Antwort
+### <a name="subscription-key"></a>Abonnementschlüssel
+Ersetzen Sie `<Subscription Key>` durch Ihren gültigen Abonnementschlüssel für die Gesichtserkennungs-API.
 
-Eine erfolgreiche Antwort wird im JSON-Format zurückgegeben. Hier sehen Sie ein Beispiel:
+### <a name="face-endpoint-url"></a>Endpunkt-URL der Gesichtserkennungs-API
+
+Die URL `https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect` gibt den Endpunkt der Azure-Gesichtserkennungs-API an, der abgefragt werden soll. Sie müssen den ersten Teil dieser URL entsprechend der Region Ihres Abonnementschlüssels ändern (es sei denn, die URL ist bereits korrekt).
+
+### <a name="url-query-string"></a>URL-Abfragezeichenfolge
+
+Das Feld `returnFaceAttributes` gibt an, welche Gesichtsattribute abgerufen werden sollen. Sie können diese Zeichenfolge je nach beabsichtigter Verwendung ändern.
+
+### <a name="image-source-url"></a>URL der Bildquelle
+Das Feld `imageUrl` gibt das Bild an, das als Eingabe verwendet werden soll. Sie können den Wert ändern, um auf ein beliebiges Bild zu verweisen, das Sie analysieren möchten.
+
+## <a name="save-and-run-the-script"></a>Speichern und Ausführen des Skripts
+
+Nachdem Sie die Änderungen vorgenommen haben, speichern Sie die Datei als JavaScript-Skript (. js). Öffnen Sie anschließend eine Eingabeaufforderung, und führen Sie das Skript mit dem Befehl `node` aus.
+
+```
+node myfile.js
+```
+
+Die Gesichtserkennungsinformationen sollten daraufhin als JSON-Daten im Konsolenfenster angezeigt werden. Beispiel: 
 
 ```json
 [
@@ -273,7 +281,7 @@ Eine erfolgreiche Antwort wird im JSON-Format zurückgegeben. Hier sehen Sie ein
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erkunden Sie die Gesichtserkennungs-APIs, die verwendet werden, um in einem Bild menschliche Gesichter zu erkennen, die Gesichter mit Rechtecken zu kennzeichnen und Attribute wie Alter und Geschlecht zurückzugeben.
+In diesem Schnellstart haben Sie einen cURL-Befehl geschrieben, der die Azure-Gesichtserkennungs-API aufruft, um Gesichter in einem Bild zu erkennen und ihre Attribute zurückzugeben. Sehen Sie sich als Nächstes die Referenzdokumentation zur Gesichtserkennungs-API an, um mehr zu erfahren.
 
 > [!div class="nextstepaction"]
-> [Gesichtserkennungs-APIs](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)
+> [Gesichtserkennungs-API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)

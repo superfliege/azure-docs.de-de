@@ -12,12 +12,12 @@ ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 80011c46b707dba09a66364e0f8a316b118f1daf
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: 11347203b4d21bc046b97c1fb1ddc8348f5046af
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47055355"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51684915"
 ---
 # <a name="use-powershell-to-sync-between-multiple-sql-databases"></a>Verwenden von PowerShell zum Synchronisieren zwischen mehreren SQL-Datenbanken
  
@@ -363,14 +363,18 @@ Zusätzliche PowerShell-Skriptbeispiele für SQL-Datenbank finden Sie unter [Azu
 
 Weitere Informationen zur SQL-Datensynchronisierung finden Sie unter:
 
--   [Synchronisieren von Daten über mehrere Cloud- und lokale Datenbanken mit SQL-Datensynchronisierung](../sql-database-sync-data.md)
--   [Einrichten von Azure SQL-Datensynchronisierung](../sql-database-get-started-sql-data-sync.md)
--   [Best practices for Azure SQL Data Sync (Preview)](../sql-database-best-practices-data-sync.md) (Bewährte Methoden für die Azure SQL-Datensynchronisierung-Vorschauversion)
--   [Überwachen der Azure SQL-Datensynchronisierung mit Log Analytics](../sql-database-sync-monitor-oms.md)
--   [Troubleshoot issues with SQL Data Sync (Preview)](../sql-database-troubleshoot-data-sync.md) (Behandeln von Problemen mit der Azure SQL-Datensynchronisierung-Vorschauversion)
-
--   Vollständige PowerShell-Beispiele, die die Konfiguration der SQL-Datensynchronisierung veranschaulichen:
-    -   [Verwenden von PowerShell zum Synchronisieren zwischen einer Azure SQL-Datenbank und einer lokalen SQL Server-Datenbank](sql-database-sync-data-between-azure-onprem.md)
+-   Übersicht: [Synchronisieren von Daten über mehrere Cloud- und lokale Datenbanken mit SQL-Datensynchronisierung](../sql-database-sync-data.md)
+-   Einrichten der Datensynchronisierung
+    - Im Portal: [Tutorial: Einrichten der SQL-Datensynchronisierung zum Synchronisieren von Daten zwischen Azure SQL-Datenbank und lokalem SQL Server](../sql-database-get-started-sql-data-sync.md)
+    - Mit PowerShell
+        -  [Verwenden von PowerShell zum Synchronisieren zwischen einer Azure SQL-Datenbank und einer lokalen SQL Server-Datenbank](sql-database-sync-data-between-azure-onprem.md)
+-   Datensynchronisierungs-Agent: [Datensynchronisierungs-Agent für die Azure SQL-Datensynchronisierung](../sql-database-data-sync-agent.md)
+-   Bewährte Methoden: [Bewährte Methoden für die Azure SQL-Datensynchronisierung](../sql-database-best-practices-data-sync.md)
+-   Überwachung: [Überwachen der SQL-Datensynchronisierung mit Log Analytics](../sql-database-sync-monitor-oms.md)
+-   Problembehandlung: [Behandeln von Problemen mit der Azure SQL-Datensynchronisierung](../sql-database-troubleshoot-data-sync.md)
+-   Aktualisieren des Synchronisierungsschemas
+    -   Mit Transact-SQL: [Automatisieren der Replikation von Schemaänderungen in der Azure SQL-Datensynchronisierung](../sql-database-update-sync-schema.md)
+    -   Mit PowerShell: [Verwenden von PowerShell zum Aktualisieren des Synchronisierungsschemas in einer bestehenden Synchronisierungsgruppe](sql-database-sync-update-schema.md)
 
 Weitere Informationen zu SQL-Datenbank finden Sie unter:
 

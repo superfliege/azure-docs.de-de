@@ -11,56 +11,51 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: report-monitor
-ms.date: 11/14/2017
+ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: fde063cb593ca1f610dc35cd044fe41e34ab9202
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 9a7a3877970d5ecf3b86471b94fbb1bf6e5efbb4
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45578358"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51621070"
 ---
-# <a name="users-flagged-for-risk-security-report-in-the-azure-active-directory-portal"></a>Sicherheitsbericht „Benutzer mit Risikomarkierung“ im Azure Active Directory-Portal
+# <a name="users-flagged-for-risk-report-in-the-azure-portal"></a>Bericht „Benutzer mit Risikomarkierung“ im Azure-Portal
 
-Mit den Sicherheitsberichten in Azure Active Directory (Azure AD) erhalten Sie Einblicke in die Wahrscheinlichkeit für kompromittierte Benutzerkonten in Ihrer Umgebung. 
+Azure Active Directory (Azure AD) erkennt verdächtige Aktionen im Zusammenhang mit Ihren Benutzerkonten. Für jede erkannte Aktion wird ein Datensatz mit der Bezeichnung [Risikoereignis](concept-risk-events.md) erstellt.
 
-Azure Active Directory erkennt verdächtige Aktionen im Zusammenhang mit Ihren Benutzerkonten. Für jede erkannte Aktion wird ein Datensatz mit der Bezeichnung *Risikoereignis* erstellt. Weitere Informationen finden Sie unter [Azure Active Directory-Risikoereignisse](concept-risk-events.md). 
+Sie können über das [Azure-Portal](https://portal.azure.com) auf die Sicherheitsberichte zugreifen. Wählen Sie dazu das Blatt **Azure Active Directory** aus, und navigieren Sie dann zum Abschnitt **Sicherheit**. 
 
 Die erkannten Risikoereignisse werden zum Berechnen folgender Werte verwendet:
 
-- **Riskante Anmeldungen:** Eine riskante Anmeldung ist ein Indikator für einen Anmeldeversuch von einem Benutzer, der nicht der rechtmäßige Besitzer eines Benutzerkontos ist. Weitere Informationen finden Sie unter [Gewusst wie: Konfigurieren von Richtlinien zum Anmelderisiko](../identity-protection/howto-sign-in-risk-policy.md). 
+- **Riskante Anmeldungen:** Eine riskante Anmeldung ist ein Indikator für einen Anmeldeversuch von einem Benutzer, der nicht der rechtmäßige Besitzer eines Benutzerkontos ist. 
 
-- **Benutzer mit Risikomarkierung:** Ein Benutzer mit Risikomarkierung ist ein Indikator für ein möglicherweise kompromittiertes Benutzerkonto. Weitere Informationen finden Sie unter [Gewusst wie: Konfigurieren von Richtlinien zum Benutzerrisiko](../identity-protection/howto-user-risk-policy.md).  
+- **Benutzer mit Risikomarkierung:** Ein Benutzer mit Risikomarkierung ist ein Indikator für ein möglicherweise kompromittiertes Benutzerkonto. 
 
-Im Azure-Portal befinden sich die Sicherheitsberichte auf dem Blatt **Azure Active Directory** im Abschnitt **Sicherheit**.  
+Weitere Informationen zum Konfigurieren der Richtlinien, die diese Risikoereignisse auslösen, finden Sie unter [Gewusst wie: Konfigurieren der Richtlinie zum Benutzerrisiko](../identity-protection/howto-user-risk-policy.md). 
 
 ![Riskante Anmeldungen](./media/concept-user-at-risk/10.png)
 
 
+## <a name="what-azure-ad-license-do-you-need-to-access-the-users-at-risk-report"></a>Welche Azure AD-Lizenz benötigen Sie, um auf den Bericht „Gefährdete Benutzer“ zuzugreifen?  
 
-## <a name="what-azure-ad-license-do-you-need-to-access-a-security-report"></a>Welche Azure AD-Lizenz benötigen Sie für den Zugriff auf einen Sicherheitsbericht?  
+In allen Editionen von Azure Active Directory stehen Sicherheitsberichte zu Benutzern mit Risikomarkierung zur Verfügung. Die Granularitätsebene von Berichten kann für die einzelnen Editionen aber variieren: 
 
-In allen Editionen von Azure Active Directory stehen Sicherheitsberichte zu Benutzern mit Risikomarkierung zur Verfügung.  
-Die Granularitätsebene von Berichten kann für die einzelnen Editionen aber variieren: 
+- In den **Free- und Basic-Editionen von Azure Active Directory** erhalten Sie eine Liste mit Benutzern mit Risikomarkierung. 
 
-- In den **Free- und Basic-Editionen von Azure Active Directory** erhalten Sie bereits eine Liste mit Benutzern mit Risikomarkierung. 
-
-- Mit der Edition **Azure Active Directory Premium 1** wird dieses Modell erweitert, indem Sie zusätzlich jeweils einige zugrunde liegende Risikoereignisse untersuchen können, die für einen Bericht erkannt wurden. 
+- Darüber hinaus können Sie mit der Edition **Azure Active Directory Premium 1** einige zugrunde liegende Risikoereignisse untersuchen, die für die einzelnen Berichte erkannt wurden. 
 
 - In der Edition **Azure Active Directory Premium 2** erhalten Sie die ausführlichsten Informationen zu allen zugrunde liegenden Risikoereignissen, und Sie können Sicherheitsrichtlinien konfigurieren, mit denen automatisch auf konfigurierte Risikostufen reagiert wird.
 
 
+## <a name="users-at-risk-report-for-azure-ad-free-and-basic-editions"></a>Bericht „Gefährdete Benutzer“ für die Azure AD-Editionen „Free“ und „Basic“
 
-## <a name="azure-active-directory-free-and-basic-edition"></a>Azure Active Directory – Free und Basic Edition
-
-Der Bericht „Benutzer mit Risikomarkierung“ in den Editionen Free und Basic von Azure Active Directory enthält eine Liste mit Benutzerkonten, die unter Umständen kompromittiert wurden. 
-
+Der Bericht „Benutzer mit Risikomarkierung“ in den Editionen „Free“ und „Basic“ von Azure AD enthält eine Liste mit Benutzerkonten, die unter Umständen kompromittiert wurden. 
 
 ![Riskante Anmeldungen](./media/concept-user-at-risk/03.png)
 
-Wenn Sie einen Benutzer auswählen, wird das entsprechende Blatt mit den Benutzerdaten geöffnet.
-Sie können für gefährdete Benutzer den Anmeldeverlauf des Benutzers prüfen und bei Bedarf das Kennwort zurücksetzen.
+Wenn Sie einen Benutzer auswählen, wird das entsprechende Blatt mit den Benutzerdaten geöffnet. Sie können für gefährdete Benutzer den Anmeldeverlauf des Benutzers prüfen und bei Bedarf das Kennwort zurücksetzen.
 
 ![Riskante Anmeldungen](./media/concept-user-at-risk/46.png)
 
@@ -74,9 +69,9 @@ In diesem Dialogfenster steht Ihnen folgende Option zur Verfügung:
 ![Riskante Anmeldungen](./media/concept-user-at-risk/16.png)
 
 
-## <a name="azure-active-directory-premium-editions"></a>Azure Active Directory – Premium Editionen
+## <a name="users-at-risk-report-for-azure-ad-premium-editions"></a>Bericht „Gefährdete Benutzer“ für die Azure AD-Editionen vom Typ „Premium“
 
-Der Bericht „Benutzer mit Risikomarkierung“ in den Premium-Editionen von Azure Active Directory enthält Folgendes:
+Der Bericht „Benutzer mit Risikomarkierung“ in den Premium-Editionen von Azure AD enthält Folgendes:
 
 - Eine Liste mit Benutzerkonten, die unter Umständen kompromittiert wurden 
 
@@ -85,7 +80,6 @@ Der Bericht „Benutzer mit Risikomarkierung“ in den Premium-Editionen von Azu
 - Option zum Herunterladen des Berichts
 
 - Option zum Konfigurieren einer [Richtlinie zum Beheben des Benutzerrisikos](../identity-protection/howto-user-risk-policy.md)  
-
 
 ![Riskante Anmeldungen](./media/concept-user-at-risk/71.png)
 
@@ -99,18 +93,16 @@ Wenn Sie einen Benutzer auswählen, erhalten Sie eine ausführliche Berichtsansi
 
 - Untersuchen der gemeldeten Risikoereignisse für den Benutzer 
 
-
 ![Riskante Anmeldungen](./media/concept-user-at-risk/324.png)
 
-
 Um ein Risikoereignis zu untersuchen, wählen Sie es in der Liste aus, um das Blatt **Details** für dieses Risikoereignis zu öffnen. Auf dem Blatt **Details** können Sie ein Risikoereignis manuell schließen oder ein manuell geschlossenes Risikoereignis wieder aktivieren. 
-
 
 ![Riskante Anmeldungen](./media/concept-user-at-risk/325.png)
 
 
-
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Weitere Informationen zu Azure Active Directory Identity Protection finden Sie unter [Azure Active Directory Identity Protection](../active-directory-identityprotection.md).
+- [Konfigurieren der Richtlinie zum Benutzerrisiko](../identity-protection/howto-user-risk-policy.md)
+- [Konfigurieren der Richtlinie zum Beheben des Benutzerrisikos](../identity-protection/howto-user-risk-policy.md)
+- [Azure Active Directory Identity Protection](../active-directory-identityprotection.md)
 

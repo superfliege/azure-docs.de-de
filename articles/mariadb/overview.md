@@ -7,18 +7,18 @@ editor: jasonwhowell
 services: mariadb
 ms.service: mariadb
 ms.topic: overview
-ms.date: 09/24/2018
 ms.custom: mvc
-ms.openlocfilehash: 696ba68894b4ac5f73c234ea49883fd0aa3db4d5
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.date: 11/14/2018
+ms.openlocfilehash: ed4c05afdc5b061c7779a0b1ca34975f8b06ad7d
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49320916"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51686023"
 ---
 # <a name="what-is-azure-database-for-mariadb"></a>Was ist Azure Database for MariaDB?
 
-Azure Database for MariaDB ist ein relationaler Datenbankdienst in der Microsoft-Cloud. Azure Database for MariaDB basiert auf der Datenbank-Engine [MariaDB Community Edition](https://mariadb.org/download/). Dieser Dienst befindet sich in der öffentlichen Vorschau. 
+Azure Database for MariaDB ist ein relationaler Datenbankdienst in der Microsoft-Cloud. Azure Database for MariaDB basiert auf Version 10.2 der Datenbank-Engine [MariaDB Community Edition](https://mariadb.org/download/). Dieser Dienst befindet sich in der öffentlichen Vorschau. 
 
 Azure Database for MariaDB bietet Folgendes:
 
@@ -43,7 +43,7 @@ For a set of Azure CLI samples, see:
 
 ## <a name="adjust-performance-and-scale-within-seconds"></a>Anpassen von Leistung und Skalierung in nur wenigen Sekunden
 
-Für den Azure Database for MariaDB-Dienst sind in der Vorschauversion verschiedene Dienstebenen verfügbar: „Basic“, „Universell“ und „Arbeitsspeicheroptimiert“. Jeder Tarif bietet verschiedene Leistungsstufen und Funktionen zur Unterstützung geringer und hoher Datenbankworkloads. Sie können Ihre erste App mit einer kleinen Datenbank für wenige USD im Monat erstellen und die Skalierung dann so ändern, dass sie den Anforderungen Ihrer Lösung entspricht. Dank dynamischer Skalierung kann Ihre Datenbank transparent auf schnell wechselnde Ressourcenanforderungen reagieren. Sie bezahlen nur für die benötigten Ressourcen und auch nur dann, wenn Sie sie verwenden. Einzelheiten hierzu finden Sie unter [Tarife](concepts-pricing-tiers.md).
+Für den Azure Database for MariaDB-Dienst sind in der Vorschauversion verschiedene Dienstebenen verfügbar: „Basic“, „Universell“ und „Arbeitsspeicheroptimiert“. Jeder Tarif bietet verschiedene Leistungsstufen und Funktionen zur Unterstützung geringer und hoher Datenbankworkloads. Sie können Ihre erste App mit einer kleinen Datenbank für wenige USD im Monat erstellen und die Skalierung dann so ändern, dass sie den Anforderungen Ihrer Lösung entspricht. Dank dynamischer Skalierung kann Ihre Datenbank transparent auf schnell wechselnde Ressourcenanforderungen reagieren. Sie bezahlen nur für die benötigten Ressourcen und auch nur dann, wenn Sie sie verwenden. Einzelheiten hierzu finden Sie unter  [Tarife](concepts-pricing-tiers.md).
 
 ## <a name="monitoring-and-alerting"></a>Überwachung und Warnung
 

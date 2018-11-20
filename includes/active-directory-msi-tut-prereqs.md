@@ -5,14 +5,17 @@ services: active-directory
 author: daveba
 ms.service: active-directory
 ms.topic: include
-ms.date: 08/30/2018
+ms.date: 11/13/2018
 ms.author: daveba
 ms.custom: include file
-ms.openlocfilehash: 9dbd053aaafe07024bb80460d7a031a21705615b
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 5e4181c8b88b7321e525846ee60fd6916d796503
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43339215"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51626234"
 ---
+- Wenn Sie mit der Funktion für verwaltete Identitäten für Azure-Ressourcen nicht vertraut sind, finden Sie hier eine [Übersicht](../articles/active-directory/msi-overview.md). Wenn Sie kein Azure-Konto haben, sollten Sie sich [für ein kostenloses Konto registrieren](https://azure.microsoft.com/free/), bevor Sie fortfahren.
 - Ihr Konto muss über die Berechtigung „Besitzer“ für den geeigneten Bereich (Ihr Abonnement oder die Ressourcengruppe) verfügen, um die erforderliche Ressourcenerstellung und eine Rollenverwaltung durchführen zu können. Wenn Sie Unterstützung bei der Rollenzuweisung benötigen, finden Sie weitere Informationen unter [Verwenden der rollenbasierten Zugriffssteuerung zum Verwalten des Zugriffs auf Ihre Azure-Abonnementressourcen](../articles/role-based-access-control/role-assignments-portal.md).
+- [Anmelden beim Azure-Portal](https://portal.azure.com)
+- [Erstellen eines virtuellen Computers mit aktivierter systemseitig zugewiesener Identität](/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm#system-assigned-managed-identity)

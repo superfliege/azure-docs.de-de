@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Erste Schritte mit Hadoop und Hive in Azure HDInsight mit der Resource Manager-Vorlage '
+title: 'Schnellstart: Erste Schritte mit Apache Hadoop und Apache Hive in Azure HDInsight mit der Resource Manager-Vorlage '
 description: Erfahren Sie, wie Sie HDInsight-Cluster erstellen und Daten mit Hive abfragen.
 keywords: Erste Schritte mit Hadoop, Hadoop Linux, Hadoop-Schnellstart, erste Schritte mit Hive, Hive-Schnellstart
 services: hdinsight
@@ -10,16 +10,16 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive,hdiseo17may2017,mvc
 ms.topic: quickstart
 ms.date: 05/07/2018
-ms.openlocfilehash: cf5992615f021a986aeb3145f01b27a3b565a17b
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: cc726156273591215e5a311065ae2fe6dd87402c
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51014379"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51634436"
 ---
-# <a name="quickstart-get-started-with-hadoop-and-hive-in-azure-hdinsight-using-resource-manager-template"></a>Schnellstart: Erste Schritte mit Hadoop und Hive in Azure HDInsight mit der Resource Manager-Vorlage
+# <a name="quickstart-get-started-with-apache-hadoop-and-apache-hive-in-azure-hdinsight-using-resource-manager-template"></a>Schnellstart: Erste Schritte mit Apache Hadoop und Apache Hive in Azure HDInsight mit der Resource Manager-Vorlage
 
-In diesem Artikel erfahren Sie, wie Sie mit der Resource Manager-Vorlage [Hadoop](http://hadoop.apache.org/)-Cluster in HDInsight erstellen und dann Hive-Aufträge in HDInsight ausführen. Die meisten Hadoop-Aufträge sind Batchaufträge. Sie erstellen einen Cluster, führen einige Aufträge aus und löschen dann den Cluster. In diesem Artikel führen Sie alle drei Aufgaben durch.
+In diesem Artikel erfahren Sie, wie Sie mit einer Resource Manager-Vorlage [Apache Hadoop](http://hadoop.apache.org/)-Cluster in HDInsight erstellen und dann Hive-Aufträge in HDInsight ausführen. Die meisten Hadoop-Aufträge sind Batchaufträge. Sie erstellen einen Cluster, führen einige Aufträge aus und löschen dann den Cluster. In diesem Artikel führen Sie alle drei Aufgaben durch.
 
 In diesem Schnellstarttutorial verwenden Sie eine Resource Manager-Vorlage, um einen HDInsight-Hadoop-Cluster zu erstellen. Sie können einen Cluster auch im [Azure-Portal](apache-hadoop-linux-create-cluster-get-started-portal.md) erstellen.
 

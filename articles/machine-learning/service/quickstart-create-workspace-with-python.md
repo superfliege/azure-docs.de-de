@@ -8,17 +8,18 @@ ms.topic: quickstart
 ms.reviewer: sgilley
 author: hning86
 ms.author: haining
-ms.date: 09/24/2018
-ms.openlocfilehash: e4624b115143f9f2e6dd77aa8ee79597c86ba31c
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.date: 11/09/2018
+ms.openlocfilehash: fff08131af277b20034ad23c354b70e73ae32f2e
+ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49456192"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51578279"
 ---
 # <a name="quickstart-use-python-to-get-started-with-azure-machine-learning"></a>Schnellstart: Verwenden von Python für die ersten Schritte mit Azure Machine Learning
 
-In dieser Schnellstartanleitung verwenden Sie das Azure Machine Learning SDK für Python, um einen [Arbeitsbereich](concept-azure-machine-learning-architecture.md) für den Machine Learning-Dienst zu erstellen und zu verwenden. Dieser Arbeitsbereich bildet die Grundlage in der Cloud zum Experimentieren, Trainieren und Bereitstellen von Machine Learning-Modellen mit Machine Learning.
+In dieser Schnellstartanleitung verwenden Sie das Azure Machine Learning SDK für Python, um einen [Arbeitsbereich](concept-azure-machine-learning-architecture.md) für den Machine Learning-Dienst zu erstellen und zu verwenden. Dieser Arbeitsbereich bildet die Grundlage in der Cloud zum Experimentieren, Trainieren und Bereitstellen von Machine Learning-Modellen mit Machine Learning. In dieser Schnellstartanleitung beginnen Sie mit dem Konfigurieren Ihrer eigenen Python-Umgebung und eines eigenen Jupyter Notebook-Servers. Für die Ausführung ohne Installation lesen Sie die Informationen unter [Schnellstart: Verwenden des Azure-Portals zum Ausführen der ersten Schritte für Azure Machine Learning](quickstart-get-started.md).
+
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2G9N6]
 
@@ -38,6 +39,9 @@ Folgende Azure-Ressourcen werden Ihrem Arbeitsbereich automatisch hinzugefügt, 
 - [Azure Application Insights](https://azure.microsoft.com/services/application-insights/) 
 - [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)
 
+>[!NOTE]
+> Der Code in diesem Artikel wurde mit Version 0.1.74 des Azure Machine Learning SDK getestet. 
+
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
 
@@ -56,28 +60,31 @@ Führen Sie den [Download](https://conda.io/miniconda.html) für Miniconda durch
 
 Öffnen Sie ein Befehlszeilenfenster. Erstellen Sie mit Python 3.6 eine neue Conda-Umgebung mit dem Namen `myenv`.
 
-```sh
+```shell
 conda create -n myenv -y Python=3.6
 ```
 
 Aktivieren Sie die Umgebung.
 
-  ```sh
+  ```shell
   conda activate myenv
   ```
 
 ### <a name="install-the-sdk"></a>Installieren des SDKs
 
-Installieren Sie in der aktivierten Conda-Umgebung das SDK. Dieser Code installiert die Hauptkomponenten des Machine Learning SDK. Darüber hinaus installiert er einen Jupyter Notebook-Server in der Conda-Umgebung `myenv`. Die Installation dauert **ca. vier Minuten**.
+Installieren Sie in der aktivierten Conda-Umgebung das SDK. Der unten angegebene Code installiert die Hauptkomponenten des Machine Learning SDK. Darüber hinaus installiert er einen Jupyter Notebook-Server in der Conda-Umgebung `myenv`. Der Installationsvorgang dauert abhängig von der Konfiguration Ihres Computers einige Minuten.
 
-```sh
+```shell
+# install the base SDK and Jupyter Notebook
 pip install azureml-sdk[notebooks]
 ```
+
+
 
 ## <a name="create-a-workspace"></a>Erstellen eines Arbeitsbereichs
 
 Geben Sie den folgenden Befehl ein, um das Jupyter Notebook zu starten:
-```sh
+```shell
 jupyter notebook
 ```
 
@@ -85,10 +92,7 @@ Erstellen Sie im Browserfenster ein neues Notebook unter Verwendung des Standard
 
 Geben Sie zum Anzeigen der SDK-Version den folgenden Python-Code in eine Zelle des Notebooks ein, und führen Sie ihn aus:
 
-```python
-import azureml.core
-print(azureml.core.VERSION)
-```
+[!code-python[](~/aml-sdk-samples/ignore/doc-qa/quickstart-create-workspace-with-python/quickstart.py?name=import)]
 
 Erstellen Sie eine neue Azure-Ressourcengruppe und einen neuen Arbeitsbereich.
 
@@ -97,10 +101,10 @@ Suchen Sie in der [Liste mit den Abonnements im Azure-Portal](https://ms.portal.
 ```python
 from azureml.core import Workspace
 ws = Workspace.create(name='myworkspace',
-                      subscription_id='<azure-subscription-id>',
+                      subscription_id='<azure-subscription-id>',    
                       resource_group='myresourcegroup',
                       create_resource_group=True,
-                      location='eastus2' # or other supported Azure region
+                      location='eastus2' # or other supported Azure region  
                      )
 ```
 
@@ -108,9 +112,8 @@ Beim Ausführen des obigen Codes wird ggf. ein neues Browserfenster für die Anm
 
 Geben Sie den folgenden Code ein, um Details des Arbeitsbereichs wie etwa den zugeordneten Speicher, die Containerregistrierung und den Schlüsseltresor anzuzeigen:
 
-```python
-ws.get_details()
-```
+[!code-python[](~/aml-sdk-samples/ignore/doc-qa/quickstart-create-workspace-with-python/quickstart.py?name=getDetails)]
+
 
 ## <a name="write-a-configuration-file"></a>Schreiben einer Konfigurationsdatei
 
@@ -118,14 +121,8 @@ Speichern Sie die Details Ihres Arbeitsbereichs in einer Konfigurationsdatei im 
 
 Diese Konfigurationsdatei für den Arbeitsbereich erleichtert das spätere Laden dieses Arbeitsbereichs. Sie können ihn mit anderen Notebooks und Skripts im gleichen Verzeichnis oder in einem Unterverzeichnis laden. 
 
-```python
-# Create the configuration file.
-ws.write_config()
+[!code-python[](~/aml-sdk-samples/ignore/doc-qa/quickstart-create-workspace-with-python/quickstart.py?name=writeConfig)]
 
-# Use this code to load the workspace from 
-# other scripts and notebooks in this directory.
-# ws = Workspace.from_config()
-```
 
 Mit dem API-Aufruf `write_config()` wird die Konfigurationsdatei im aktuellen Verzeichnis erstellt. Die Datei `config.json` enthält das folgende Skript:
 
@@ -141,24 +138,8 @@ Mit dem API-Aufruf `write_config()` wird die Konfigurationsdatei im aktuellen Ve
 
 Schreiben Sie Code, für den die grundlegenden APIs des SDK genutzt werden, um Experimentausführungen nachzuverfolgen.
 
-```python
-from azureml.core import Experiment
+[!code-python[](~/aml-sdk-samples/ignore/doc-qa/quickstart-create-workspace-with-python/quickstart.py?name=useWs)]
 
-# create a new experiment
-exp = Experiment(workspace=ws, name='myexp')
-
-# start a run
-run = exp.start_logging()
-
-# log a number
-run.log('my magic number', 42)
-
-# log a list (Fibonacci numbers)
-run.log_list('my list', [1, 1, 2, 3, 5, 8, 13, 21, 34, 55]) 
-
-# finish the run
-run.complete()
-```
 
 ## <a name="view-logged-results"></a>Anzeigen der protokollierten Ergebnisse
 Nach Abschluss der Ausführung können Sie die Experimentausführung im Azure-Portal anzeigen. Verwenden Sie den folgenden Code, um eine URL in den Ergebnissen für die letzte Ausführung auszugeben.
@@ -177,9 +158,8 @@ Verwenden Sie den Link, um die protokollierten Werte im Azure-Portal in Ihrem Br
 
 Wenn Sie die hier erstellten Ressourcen nicht mehr benötigen, löschen Sie sie, damit Ihnen keine Kosten entstehen.
 
-```python
-ws.delete(delete_dependent_resources=True)
-```
+[!code-python[](~/aml-sdk-samples/ignore/doc-qa/quickstart-create-workspace-with-python/quickstart.py?name=delete)]
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -191,10 +171,34 @@ Sie benötigen noch einige weitere Pakete in Ihrer Umgebung, um sie in Machine L
 1. Verwenden Sie im Befehlszeilenfenster die Tastenkombination `Ctrl`+`C`, um den Notebookserver zu beenden.
 1. Installieren Sie zusätzliche Pakete.
 
-    ```sh
+    ```shell
     conda install -y cython matplotlib scikit-learn pandas numpy
     pip install azureml-sdk[automl]
+
+    # install run history widget
+    jupyter nbextension install --py --user azureml.train.widgets
+
+    # enable run history widget
+    jupyter nbextension enable --py --user azureml.train.widgets
     ```
+
+    Sie können auch andere zusätzliche Schlüsselwörter zur Installation weiterer Komponenten des SDK verwenden.
+
+    ```shell
+    # install the base SDK and auto ml components
+    pip install azureml-sdk[automl]
+
+    # install the base SDK and model explainability component
+    pip install azureml-sdk[explain]
+
+    # install the base SDK and experimental components
+    pip install azureml-sdk[contrib]
+
+    # install the base SDK and automl components in Azure Databricks environment
+    # read more at: https://github.com/Azure/MachineLearningNotebooks/tree/master/databricks
+    pip install azureml-sdk[databricks]
+    ```
+
 
 Absolvieren Sie nach der Installation dieser Pakete die Tutorials zum Trainieren und Bereitstellen eines Modells. 
 

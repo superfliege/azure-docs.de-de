@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 10/19/2018
+ms.date: 11/09/2018
 ms.topic: quickstart
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 6b935322c9d892793f3695e0922d15f5886c7e25
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 40f3f56c15956a93176a753f7c66f66df1b8f5f4
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49471287"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51515725"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>Schnellstart: Ermitteln und Analysieren von Kosten mit der Kostenanalyse
 
@@ -32,27 +32,14 @@ In dieser Schnellstartanleitung wird Folgendes vermittelt:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Die Kostenanalyse steht allen [EA-Kunden (Enterprise Agreement)](https://azure.microsoft.com/pricing/enterprise-agreement/) zur Verfügung. Zum Aufrufen von Kostendaten benötigen Sie für einen oder mehrere der folgenden Bereiche mindestens Lesezugriff.
+Die Kostenanalyse steht allen [EA-Kunden (Enterprise Agreement)](https://azure.microsoft.com/pricing/enterprise-agreement/) zur Verfügung. Zum Aufrufen von Kostendaten benötigen Sie für einen oder mehrere der folgenden Bereiche mindestens Lesezugriff. Weitere Informationen zum Zuweisen des Zugriffs auf Cost Management-Daten finden Sie unter [Assign access to Cost Management data](assign-access-acm-data.md) (Zuweisen des Zugriffs auf Cost Management-Daten).
 
-
-|**Umfang**|**Definiert unter**|**Erforderlicher Zugriff für umfangsbezogene Kostenanalyse**|**Erforderliche EA-Einstellung**|**Konsolidierungsziel der Abrechnungsdaten**|
-|---                |---                  |---                   |---            |---           |
-|Abrechnungskonto<sup>1</sup>|[https://ea.azure.com ](https://ea.azure.com )|Unternehmensadministrator|Keine|Alle Abonnements aus dem Enterprise Agreement|
-|Abteilung|[https://ea.azure.com ](https://ea.azure.com )|Abteilungsadministrator|„Gebühren anzeigen“ aktiviert (für Abteilungsadministratoren)|Alle Abonnements, die zu einem Registrierungskonto gehören, das mit der Abteilung verknüpft ist|
-|Registrierungskonto<sup>2</sup2>|[https://ea.azure.com ](https://ea.azure.com )|Kontobesitzer|„Gebühren anzeigen“ aktiviert (für Kontobesitzer)|Alle Abonnements aus dem Registrierungskonto|
-|Verwaltungsgruppe|[https://portal.azure.com ](https://portal.azure.com )|Cost Management-Leser (oder Leser)|„Gebühren anzeigen“ aktiviert (für Kontobesitzer)|Alle Abonnements unter der Verwaltungsgruppe|
-|Abonnement|[https://portal.azure.com ](https://portal.azure.com )|Cost Management-Leser (oder Leser)|„Gebühren anzeigen“ aktiviert (für Kontobesitzer)|Alle Ressourcen/Ressourcengruppen im Abonnement|
-|Ressourcengruppe|[https://portal.azure.com ](https://portal.azure.com )|Cost Management-Leser (oder Leser)|„Gebühren anzeigen“ aktiviert (für Kontobesitzer)|Alle Ressourcen in der Ressourcengruppe|
-
-<sup>1</sup> Das Abrechnungskonto wird häufig als Enterprise Agreement oder Registrierung bezeichnet.
-
-<sup>2</sup> Das Registrierungskonto wird häufig als Kontobesitzer bezeichnet.
-
-Weitere Informationen zur Konfiguration der Einstellungen **Gebühren anzeigen (Abteilungsadministrator)** und **Gebühren anzeigen (Kontobesitzer)** finden Sie unter [Aktivieren des Zugriffs auf Kosten](../billing/billing-enterprise-mgmt-grp-troubleshoot-cost-view.md#enabling-access-to-costs).
-
-
-
-
+- Abrechnungskonto
+- Department
+- Registrierungskonto
+- Verwaltungsgruppe
+- Abonnement
+- Ressourcengruppe
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 

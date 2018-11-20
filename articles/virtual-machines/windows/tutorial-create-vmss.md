@@ -13,18 +13,18 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: ''
 ms.topic: tutorial
-ms.date: 03/29/2018
+ms.date: 11/07/2018
 ms.author: zarhoads
 ms.custom: mvc
-ms.openlocfilehash: 915b3d6aed2aa00e29916d2803f56b2172375f60
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: aa4957375a368da193cb27fd3c8c32651f425a2d
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49469555"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51515504"
 ---
 # <a name="tutorial-create-a-virtual-machine-scale-set-and-deploy-a-highly-available-app-on-windows-with-azure-powershell"></a>Tutorial: Erstellen einer VM-Skalierungsgruppe und Bereitstellen einer hoch verfügbaren App unter Windows mit Azure PowerShell
-Mit einer VM-Skalierungsgruppe können Sie eine Gruppe identischer, automatisch skalierender virtueller Computer bereitstellen und verwalten. Sie können die Anzahl der virtuellen Computer in der Skalierungsgruppe manuell skalieren oder basierend auf der Ressourcennutzung gemäß CPU-Auslastung, Speicherbedarf oder Netzwerkdatenverkehr Regeln für die automatische Skalierung definieren. In diesem Tutorial stellen Sie eine Skalierungsgruppe für virtuelle Computer bereit. Folgendes wird vermittelt:
+Mit einer VM-Skalierungsgruppe können Sie eine Gruppe identischer, automatisch skalierender virtueller Computer bereitstellen und verwalten. Sie können die Anzahl virtueller Computer in der Skalierungsgruppe manuell skalieren. Sie können auch basierend auf der Ressourcennutzung wie CPU-Auslastung, Speicherbedarf oder Netzwerkdatenverkehr Regeln für die automatische Skalierung definieren. In diesem Tutorial stellen Sie eine VM-Skalierungsgruppe in Azure bereit und lernen Folgendes:
 
 > [!div class="checklist"]
 > * Verwenden der Benutzerdefinierten Skripterweiterung zum Definieren einer IIS-Website zur Skalierung
@@ -35,11 +35,11 @@ Mit einer VM-Skalierungsgruppe können Sie eine Gruppe identischer, automatisch 
 
 [!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
 
-Wenn Sie PowerShell lokal installieren und nutzen möchten, müssen Sie für dieses Tutorial mindestens Version 5.7.0 des Azure PowerShell-Moduls verwenden. Führen Sie `Get-Module -ListAvailable AzureRM` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-azurerm-ps) Informationen dazu. Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Connect-AzureRmAccount` ausführen, um eine Verbindung mit Azure herzustellen.
+Wenn Sie PowerShell lokal installieren und nutzen möchten, müssen Sie für dieses Tutorial mindestens Version 6.0.0 des Azure PowerShell-Moduls verwenden. Führen Sie `Get-Module -ListAvailable AzureRM` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-azurerm-ps) Informationen dazu. Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Connect-AzureRmAccount` ausführen, um eine Verbindung mit Azure herzustellen.
 
 
 ## <a name="scale-set-overview"></a>Übersicht über Skalierungsgruppen
-Mit einer VM-Skalierungsgruppe können Sie eine Gruppe identischer, automatisch skalierender virtueller Computer bereitstellen und verwalten. Virtuelle Computer in einer Skalierungsgruppe werden in einer oder mehreren *Platzierungsgruppen* auf logische Fehler- und Updatedomänen verteilt. Hierbei handelt es sich um Gruppen ähnlich konfigurierter virtueller Computer, vergleichbar mit [Verfügbarkeitsgruppen](tutorial-availability-sets.md).
+Mit einer VM-Skalierungsgruppe können Sie eine Gruppe identischer, automatisch skalierender virtueller Computer bereitstellen und verwalten. Virtuelle Computer in einer Skalierungsgruppe werden in einer oder mehreren *Platzierungsgruppen* auf logische Fehler- und Updatedomänen verteilt. Bei Platzierungsgruppen handelt es sich um Gruppen ähnlich konfigurierter virtueller Computer, vergleichbar mit [Verfügbarkeitsgruppen](tutorial-availability-sets.md).
 
 Virtuelle Computer werden nach Bedarf in einer Skalierungsgruppe erstellt. Sie können Regeln für die automatische Skalierung definieren, um zu steuern, wie und wann virtuelle Computer in der Skalierungsgruppe hinzugefügt oder entfernt werden. Diese Regeln können basierend auf Metriken wie CPU-Auslastung, Speicherauslastung oder Netzwerkdatenverkehr ausgelöst werden.
 
@@ -47,7 +47,7 @@ Bei Verwendung eines Azure-Plattformimages unterstützen Skalierungsgruppen bis 
 
 
 ## <a name="create-a-scale-set"></a>Erstellen einer Skalierungsgruppe
-Erstellen Sie mit [New-AzureRmVmss](/powershell/module/azurerm.compute/new-azurermvmss) eine VM-Skalierungsgruppe. Im folgenden Beispiel wird eine Skalierungsgruppe mit dem Namen *myScaleSet* erstellt, für die das Plattformimage *Windows Server 2016 Datacenter* verwendet wird. Die Azure-Netzwerkressourcen für virtuelles Netzwerk, öffentliche IP-Adresse und Lastenausgleich werden automatisch erstellt. Geben Sie Ihre gewünschten Administratoranmeldeinformationen für die VM-Instanzen in der Skalierungsgruppe an, wenn Sie dazu aufgefordert werden:
+Erstellen Sie mit [New-AzureRmVmss](/powershell/module/azurerm.compute/new-azurermvmss) eine VM-Skalierungsgruppe. Im folgenden Beispiel wird eine Skalierungsgruppe mit dem Namen *myScaleSet* erstellt, für die das Plattformimage *Windows Server 2016 Datacenter* verwendet wird. Die Azure-Netzwerkressourcen für virtuelles Netzwerk, öffentliche IP-Adresse und Lastenausgleich werden automatisch erstellt. Bei entsprechender Aufforderung können Sie Ihre eigenen Administratoranmeldeinformationen für die VM-Instanzen in der Skalierungsgruppe festlegen:
 
 ```azurepowershell-interactive
 New-AzureRmVmss `
@@ -58,7 +58,7 @@ New-AzureRmVmss `
   -SubnetName "mySubnet" `
   -PublicIpAddressName "myPublicIPAddress" `
   -LoadBalancerName "myLoadBalancer" `
-  -UpgradePolicy "Automatic"
+  -UpgradePolicyMode "Automatic"
 ```
 
 Die Erstellung und Konfiguration aller Ressourcen und virtuellen Computer der Skalierungsgruppe dauert einige Minuten.
@@ -97,8 +97,58 @@ Update-AzureRmVmss `
 ```
 
 
+## <a name="allow-traffic-to-application"></a>Zulassen von Datenverkehr für die Anwendung
+
+Erstellen Sie mit [New-AzureRmNetworkSecurityRuleConfig](/powershell/module/azurerm.compute/new-azurermnetworksecurityruleconfig) und [New-AzureRmNetworkSecurityGroup](/powershell/module/azurerm.compute/new-azurermnetworksecuritygroup) eine Netzwerksicherheitsgruppe, um Zugriff auf die einfache Webanwendung zuzulassen. Weitere Informationen finden Sie unter [Netzwerk für Azure-VM-Skalierungsgruppen](../../virtual-machine-scale-sets/virtual-machine-scale-sets-networking.md).
+
+```azurepowershell-interactive
+# Get information about the scale set
+$vmss = Get-AzureRmVmss `
+            -ResourceGroupName "myResourceGroupScaleSet" `
+            -VMScaleSetName "myScaleSet"
+
+#Create a rule to allow traffic over port 80
+$nsgFrontendRule = New-AzureRmNetworkSecurityRuleConfig `
+  -Name myFrontendNSGRule `
+  -Protocol Tcp `
+  -Direction Inbound `
+  -Priority 200 `
+  -SourceAddressPrefix * `
+  -SourcePortRange * `
+  -DestinationAddressPrefix * `
+  -DestinationPortRange 80 `
+  -Access Allow
+
+#Create a network security group and associate it with the rule
+$nsgFrontend = New-AzureRmNetworkSecurityGroup `
+  -ResourceGroupName  "myResourceGroupScaleSet" `
+  -Location EastUS `
+  -Name myFrontendNSG `
+  -SecurityRules $nsgFrontendRule
+
+$vnet = Get-AzureRmVirtualNetwork `
+  -ResourceGroupName  "myResourceGroupScaleSet" `
+  -Name myVnet
+
+$frontendSubnet = $vnet.Subnets[0]
+
+$frontendSubnetConfig = Set-AzureRmVirtualNetworkSubnetConfig `
+  -VirtualNetwork $vnet `
+  -Name mySubnet `
+  -AddressPrefix $frontendSubnet.AddressPrefix `
+  -NetworkSecurityGroup $nsgFrontend
+
+Set-AzureRmVirtualNetwork -VirtualNetwork $vnet
+
+# Update the scale set and apply the Custom Script Extension to the VM instances
+Update-AzureRmVmss `
+    -ResourceGroupName "myResourceGroupScaleSet" `
+    -Name "myScaleSet" `
+    -VirtualMachineScaleSet $vmss
+```
+
 ## <a name="test-your-scale-set"></a>Testen Ihrer Skalierungsgruppe
-Um Ihre Skalierungsgruppe in Aktion zu sehen, rufen Sie mit [Get-AzureRmPublicIpAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) die öffentliche IP-Adresse Ihres Load Balancers ab. Im folgenden Beispiel wird die IP-Adresse für *myPublicIP* abgerufen, die als Teil der Skalierungsgruppe erstellt wurde:
+Um Ihre Skalierungsgruppe in Aktion zu sehen, rufen Sie mit [Get-AzureRmPublicIpAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) die öffentliche IP-Adresse Ihres Lastenausgleichsmoduls ab. Im folgenden Beispiel wird die IP-Adresse für *myPublicIP* angezeigt, die als Teil der Skalierungsgruppe erstellt wurde:
 
 ```azurepowershell-interactive
 Get-AzureRmPublicIPAddress `

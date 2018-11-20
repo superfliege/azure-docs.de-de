@@ -8,12 +8,12 @@ ms.service: search
 ms.topic: quickstart
 ms.date: 05/01/2018
 ms.author: heidist
-ms.openlocfilehash: 85016ffb412b9f8773606639eb1496ac8ad251a7
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 23a62197d20901347be247d331e21d076bcf9e83
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45729991"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51288032"
 ---
 # <a name="quickstart-create-a-cognitive-search-pipeline-using-skills-and-sample-data"></a>Schnellstart: Erstellen einer Pipeline für die kognitive Suche mithilfe von Qualifikationen und Beispieldaten
 
@@ -26,10 +26,16 @@ Probieren Sie in diesem Schnellstart die Anreicherungspipeline im [Azure-Portal]
 * Führen Sie den Assistenten aus (eine Entitäts-Qualifikation erkennt Personen, Orte und Organisationen)
 * Verwenden Sie den [Suchexplorer](search-explorer.md), um die angereicherten Daten abzufragen.
 
+## <a name="supported-regions"></a> Unterstützte Regionen
+
 Sie können die kognitive Suche in einem Azure Search-Dienst ausprobieren, der in den folgenden Regionen erstellt wurde:
 
+* USA, Westen-Mitte
 * USA Süd Mitte
+* USA (Ost)
 * Europa, Westen
+* Nordeuropa
+* Asien, Südosten
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
@@ -57,7 +63,7 @@ Registrieren Sie sich zunächst beim Azure Search-Dienst.
 
 1. Erstellen Sie unter „Ressourcengruppe“ eine Ressourcengruppe zur Aufnahme aller Ressourcen, die Sie im Rahmen dieses Schnellstarts erstellen. Das macht Ihnen das Bereinigen der Ressourcen nach dem Abschluss des Schnellstarts leichter.
 
-1. Wählen Sie als Standortort entweder **USA, Süden-Mitte** oder **Europa, Westen** aus. Aktuell ist die Vorschau nur in diesen Regionen verfügbar.
+1. Wählen Sie unter „Standort“ eine der [unterstützten Regionen](#supported-regions) für die kognitive Suche aus.
 
 1. Für die Preisstufe können Sie einen **kostenlosen** Dienst erstellen, um Tutorials und Schnellstarts zu absolvieren. Wenn Sie eine gründlichere Untersuchung unter Verwendung Ihrer eigenen Daten wünschen, erstellen Sie einen [kostenpflichtigen Dienst](https://azure.microsoft.com/pricing/details/search/), wie etwa **Basic** oder **Standard**. 
 

@@ -10,65 +10,91 @@ ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.component: develop
 ms.devlang: na
-ms.topic: article
+ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/25/2018
+ms.date: 11/09/2018
 ms.author: andret
 ms.custom: aaddev
-ms.openlocfilehash: 4ab3d0b74e8305d67af862020197c69b15221086
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.openlocfilehash: 4849ffcc6fd71a0b88b270f2e6cbdb23b18ecc76
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48830224"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51611640"
 ---
-# <a name="add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>Hinzufügen von „Bei Microsoft anmelden“ zu einer ASP.NET Core-Web-App
+# <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>Schnellstart: Hinzufügen von „Mit Microsoft anmelden“ zu einer ASP.NET-Web-App
 
 [!INCLUDE [active-directory-develop-applies-v2](../../../includes/active-directory-develop-applies-v2.md)]
 
-Dieser Schnellstart enthält ein Codebeispiel, das zeigt, wie eine ASP.NET Core-Web-App persönliche (hotmail.com, live.com, andere) und Geschäfts-, Schul- oder Unikonten aus einer beliebigen Azure Active Directory-Instanz anmelden kann.
+In diesem Schnellstart erfahren Sie, wie eine ASP. NET Core-Web-App persönliche Konten (hotmail.com, outlook.com, andere) und Geschäfts-, Schul- und Unikonten aus jeder Azure AD-Instanz (Azure Active Directory) anmelden kann.
 
 ![Funktionsweise der in diesem Schnellstart generierten Beispiel-App](media/quickstart-v2-aspnet-core-webapp/aspnetcorewebapp-intro.png)
 
 
 > [!div renderon="docs"]
-> ## <a name="register-your-application-and-download-your-quickstart-app"></a>Registrieren Ihrer Anwendung und Herunterladen Ihrer Schnellstart-App
+> ## <a name="register-and-download-your-quickstart-app"></a>Registrieren und Herunterladen Ihrer Schnellstart-App
+> Die Schnellstartanwendung kann auf zwei Arten gestartet werden:
+> * [Express] [Option 1: Registrieren und automatisches Konfigurieren Ihrer App und anschließendes Herunterladen des Codebeispiels](#option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample)
+> * [Manuell] [Option 2: Registrieren und manuelles Konfigurieren Ihrer Anwendung und des Codebeispiels](#option-2-register-and-manually-configure-your-application-and-code-sample)
 >
-> ### <a name="register-and-configure-your-application-and-code-sample"></a>Registrieren und Konfigurieren Ihrer Anwendung und des Codebeispiels
+> ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>Option 1: Registrieren und automatisches Konfigurieren Ihrer App und anschließendes Herunterladen des Codebeispiels
+>
+> 1. Navigieren Sie zu [Azure-Portal – App-Registrierungen (Vorschau)](https://aka.ms/aspnetcore2-1-aad-quickstart-v2).
+> 1. Geben Sie einen Namen für Ihre Anwendung ein, und wählen Sie **Registrieren** aus.
+> 1. Befolgen Sie die Anweisungen, um Ihre neue Anwendung mit einem Klick herunterzuladen und automatisch zu konfigurieren.
+>
+> ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>Option 2: Registrieren und manuelles Konfigurieren Ihrer Anwendung und des Codebeispiels
+>
 > #### <a name="step-1-register-your-application"></a>Schritt 1: Registrieren Ihrer Anwendung
-> 
-> 1. Navigieren Sie zum [Anwendungsregistrierungsportal von Microsoft](https://apps.dev.microsoft.com/portal/register-app).
-> 1. Geben Sie einen Namen für Ihre Anwendung ein, stellen Sie sicher, dass die Option **Angeleitetes Setup** deaktiviert ist, und klicken Sie auf **Erstellen**.
-> 1. Klicken Sie auf `Add Platform`, und wählen Sie dann `Web` aus.
-> 1. Stellen Sie sicher, dass **Impliziten Fluss zulassen** *aktiviert* ist.
-> 1. Geben Sie `http://localhost:3110/` unter **Umleitungs-URLs** ein.
-> 1. Scrollen Sie auf der Seite nach unten, und klicken Sie auf **Speichern**.
+> Führen Sie die folgenden Schritte aus, um Ihre Anwendung zu registrieren und Ihrer Projektmappe manuell die Registrierungsinformationen Ihrer App hinzuzufügen:
+>
+> 1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim [Azure-Portal](https://portal.azure.com) an.
+> 1. Wenn Sie mit Ihrem Konto auf mehrere Mandanten zugreifen können, klicken Sie rechts oben auf Ihr Konto, und legen Sie Ihre Portalsitzung auf den gewünschten Azure AD-Mandanten fest.
+> 1. Wählen Sie im linken Navigationsbereich den Dienst **Azure Active Directory** und anschließend **App-Registrierungen (Vorschau)** > **Neue Registrierung** aus.
+> 1. Geben Sie auf der daraufhin angezeigten Seite **Anwendung registrieren** die Registrierungsinformationen für Ihre Anwendung ein:
+>    - Geben Sie im Abschnitt **Name** einen aussagekräftigen Anwendungsnamen ein, der den Benutzern der App angezeigt wird (beispielsweise `AspNetCore-Quickstart`).
+>    - Fügen Sie `https://localhost:44321/` unter **Antwort-URL** hinzu, und wählen Sie **Registrieren** aus.
+> 1. Wählen Sie das Menü **Authentifizierung** aus, und fügen Sie dann die folgenden Informationen hinzu:
+>    - Fügen Sie `https://localhost:44321/signin-oidc` unter **Antwort-URL** hinzu, und wählen Sie **Registrieren** aus.
+>    - Legen Sie im Abschnitt **Erweiterte Einstellungen** die Option **Abmelde-URL** auf `https://localhost:44321/signout-oidc` fest.
+>    - Aktivieren Sie unter **Implizite Genehmigung** die Option **ID-Token**.
+>    - Wählen Sie **Speichern**aus.
 
 > [!div class="sxs-lookup" renderon="portal"]
-> #### <a name="step-1-configure-your-application-in-azure-portal"></a>Schritt 1: Konfigurieren Ihrer Anwendung im Azure-Portal
-> Damit das Codebeispiel für diesen Schnellstart funktioniert, müssen Sie einen Antwort-URI als `http://localhost:3110/` hinzufügen.
+> #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>Schritt 1: Konfigurieren Ihrer Anwendung im Azure-Portal
+> Damit das Codebeispiel in dieser Schnellstartanleitung funktioniert, müssen Sie die Antwort-URLs `https://localhost:44321/` und `https://localhost:44321/signin-oidc` und die Abmelde-URL `https://localhost:44321/signout-oidc` hinzufügen und die Ausstellung von ID-Token durch den Autorisierungsendpunkt anfordern.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [Diese Änderung für mich vornehmen]()
 >
 > > [!div id="appconfigured" class="alert alert-info"]
-> > ![Bereits konfiguriert](media/quickstart-v2-aspnet-core-webapp/green-check.png): Ihre Anwendung ist mit diesem Attribut konfiguriert.
+> > ![Bereits konfiguriert](media/quickstart-v2-aspnet-webapp/green-check.png): Ihre Anwendung ist mit diesen Attributen konfiguriert.
 
 #### <a name="step-2-download-your-aspnet-core-project"></a>Schritt 2: Herunterladen des ASP.NET Core-Projekts
 
-- [ASP.NET Core-Projekt herunterladen](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/archive/master.zip)
+- [Visual Studio 2017-Projektmappe herunterladen](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/archive/aspnetcore2-2.zip)
 
-#### <a name="step-3-configure-your-project"></a>Schritt 3: Konfigurieren des Projekts
+#### <a name="step-3-configure-your-visual-studio-project"></a>Schritt 3: Konfigurieren des Visual Studio-Projekts
 
-1. Extrahieren Sie die ZIP-Datei in einen lokalen Ordner, der sich näher am Stammordner befindet, beispielsweise **C:\Azure-Samples**.
-1. Wenn Sie Visual Studio 2017 verwenden, öffnen Sie das Projekt in Visual Studio (optional).
-1. Bearbeiten Sie **appsettings.json**, und ersetzen Sie den Wert für `ClientId` durch die Anwendungs-ID aus der Anwendung, die Sie soeben registriert haben:
+1. Extrahieren Sie die ZIP-Datei in einem lokalen Ordner im Stammordner, etwa **C:\Azure-Samples**.
+1. Wenn Sie Visual Studio 2017 verwenden, öffnen Sie die Projektmappe in Visual Studio (optional).
+1. Bearbeiten Sie die Datei **appsettings.json**. Suchen Sie nach `ClientId`, und ersetzen Sie `Enter_the_Application_Id_here` durch den Wert für **Anwendungs-ID (Client)** der soeben registrierten Anwendung. 
 
     ```json
     "ClientId": "Enter_the_Application_Id_here"
-    "TenantId": "common"
+    "TenantId": "Enter_the_Tenant_Info_Here"
     ```
-1. Wenn Ihre Anwendung eine *Einzelmandantenanwendung* (nur für Konten im aktuellen Verzeichnis) ist, suchen Sie in Ihrer Datei **appsettings.json** nach dem Wert für `TenantId`, und ersetzen Sie `common` durch Ihre **Mandanten-ID** oder den **Mandantennamen** (z.B. contoso.microsoft.com). Sie können den Namen des Mandanten auf der **Seite „Übersicht“** abrufen.
+
+> [!div renderon="docs"]
+> Hinweis:
+> - `Enter_the_Application_Id_here`: Die **Anwendungs-ID (Client)** für die im Azure-Portal registrierte Anwendung. Den Wert für **Anwendungs-ID (Client)** finden Sie auf der Seite **Übersicht** der App.
+> - `Enter_the_Tenant_Info_Here` ist eine der folgenden Optionen:
+>   - Unterstützt Ihre Anwendung **Nur Konten in diesem Organisationsverzeichnis**, ersetzen Sie diesen Wert durch die **Mandanten-ID** oder den **Mandantennamen** (etwa „contoso.microsoft.com“).
+>   - Unterstützt Ihre Anwendung **Konten in einem beliebigen Organisationsverzeichnis**, ersetzen Sie diesen Wert durch `organizations`.
+>   - Unterstützt Ihre Anwendung **Alle Microsoft-Kontobenutzer** ersetzen Sie diesen Wert durch `common`.
+>
+> > [!TIP]
+> > Die Werte für **Anwendungs-ID (Client)**, **Verzeichnis-ID (Mandant)** und **Unterstützte Kontotypen** finden Sie im Azure-Portal auf der Seite **Übersicht** der App.
 
 ## <a name="more-information"></a>Weitere Informationen
 
@@ -81,62 +107,49 @@ Die *Microsoft.AspNetCore.Authentication*-Middleware verwendet eine Startklasse,
 ```csharp
 public void ConfigureServices(IServiceCollection services)
 {
-    services.AddAuthentication(sharedOptions =>
-    {
-        sharedOptions.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-        sharedOptions.DefaultChallengeScheme = OpenIdConnectDefaults.AuthenticationScheme;
-    })
-    .AddAzureAd(options => Configuration.Bind("AzureAd", options))
-    .AddCookie();
+  services.Configure<CookiePolicyOptions>(options =>
+  {
+    // This lambda determines whether user consent for non-essential cookies is needed for a given request.
+    options.CheckConsentNeeded = context => true;
+    options.MinimumSameSitePolicy = SameSiteMode.None;
+  });
 
-    services.AddMvc();
+  services.AddAuthentication(AzureADDefaults.AuthenticationScheme)
+          .AddAzureAD(options => Configuration.Bind("AzureAd", options));
+
+  services.Configure<OpenIdConnectOptions>(AzureADDefaults.OpenIdScheme, options =>
+  {
+    options.Authority = options.Authority + "/v2.0/";         // Azure AD v2.0
+
+    options.TokenValidationParameters.ValidateIssuer = false; // accept several tenants (here simplified)
+  });
+
+  services.AddMvc(options =>
+  {
+     var policy = new AuthorizationPolicyBuilder()
+                     .RequireAuthenticatedUser()
+                     .Build();
+     options.Filters.Add(new AuthorizeFilter(policy));
+  })
+  .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 }
 ```
 
-Die Methode `AddAuthentication` konfiguriert den Dienst zum Hinzufügen von cookiebasierter Authentifizierung. Dies wird in Browserszenarien verwendet als sowie zum Festlegen der Aufforderung auf OpenIdConnect. 
+Die Methode `AddAuthentication` konfiguriert den Dienst zum Hinzufügen von cookiebasierter Authentifizierung, die in Browserszenarien zum Einsatz kommt, sowie zum Festlegen der Aufforderung an OpenID Connect. 
 
-Die Zeile, die `.AddAzureAd` enthält, fügt Ihrer Anwendung Azure Active Directory-Authentifizierung hinzu.
+Die Zeile, die `.AddAzureAd` enthält, fügt Ihrer Anwendung Azure AD-Authentifizierung hinzu. Sie ist dann für die Anmeldung über den Azure AD v2.0-Endpunkt konfiguriert.
 
-Außerdem fügt die Datei **AzureAdAuthenticationBuilderExtensions.cs** der AzureAd-Authentifizierungspipeline eine Erweiterungsmethode hinzu. Diese Erweiterungsmethode konfiguriert die Attribute, die für Azure AD-Authentifizierung erforderlich sind. Die `Configure`-Methode in der `IConfigureNamedOptions`-Schnittstelle enthält Folgendes:
-
-```csharp
-public void Configure(string name, OpenIdConnectOptions options)
-{
-    options.ClientId = _azureOptions.ClientId;
-    options.Authority = $"{_azureOptions.Instance}common/v2.0";   // V2 specific
-    options.UseTokenLifetime = true;
-    options.RequireHttpsMetadata = false;
-    options.TokenValidationParameters.ValidateIssuer = false;     // accept several tenants (here simplified)
-}
-```
 > |Hierbei gilt:  |  |
 > |---------|---------|
-> |ClientId     |Die Anwendungs-ID der im Azure-Portal registrierten Anwendung.|
-> |Authority | Der STS-Endpunkt für den zu authentifizierenden Benutzer. Normalerweise https://login.microsoftonline.com/{tenant}/v2.0 für die öffentliche Cloud, wobei {tenant} der Name Ihres Mandanten, Ihre Mandanten-ID oder *common* für einen Verweis auf den allgemeinen Endpunkt (verwendet für mehrinstanzenfähige Anwendungen) ist.|
-> |UseTokenLifetime |Gibt an, dass das Authentifizierungscookie mit dem Authentifizierungscookie des Authentifizierungstokens übereinstimmen sollte.|
-> |RequireHttpsMetadata     |Erfordern von HTTPS für die Metadatenadresse oder Zertifizierungsstelle. Es wird empfohlen, diesen Wert in `True` zu ändern.|
-> |TokenValidationParameters     | Eine Liste von Parametern für die Tokenüberprüfung. In diesem Fall wird `ValidateIssuer` auf `false` festgelegt, um anzugeben, dass Anmeldungen von beliebigen persönlichen oder Geschäfts-, Schul- oder Unikonten akzeptiert werden können.|
-
-### <a name="initiate-an-authentication-challenge"></a>Initiieren einer Authentifizierungsaufforderung
-
-Sie können den Benutzer zur Anmeldung zwingen, indem Sie eine Authentifizierungsaufforderung in Ihrem Controller anfordern, wie in **AccountController.cs**:
-
-```csharp
-public IActionResult SignIn()
-{
-    var redirectUrl = Url.Action(nameof(HomeController.Index), "Home");
-    return Challenge(
-        new AuthenticationProperties { RedirectUri = redirectUrl },
-        OpenIdConnectDefaults.AuthenticationScheme);
-}
-```
-
-> [!TIP]
-> Das Anfordern einer Authentifizierungsaufforderung mit der Methode oben ist optional und wird häufig verwendet, wenn Sie möchten, dass eine Ansicht sowohl für authentifizierte als auch für nicht authentifizierte Benutzer verfügbar ist. Sie können Controller mit der im nächsten Abschnitt beschriebenen Methode schützen.
+> | ClientId  | Die Anwendungs-ID (Client) der im Azure-Portal registrierten Anwendung |
+> | Authority | Der STS-Endpunkt für den zu authentifizierenden Benutzer. Normalerweise lautet er https://login.microsoftonline.com/{tenant}/v2.0 für die öffentliche Cloud, wobei {tenant} der Name Ihres Mandanten, Ihre Mandanten-ID oder *common* für einen Verweis auf den allgemeinen Endpunkt (verwendet für mehrinstanzenfähige Anwendungen) ist. |
+> | TokenValidationParameters | Eine Liste von Parametern für die Tokenüberprüfung. In diesem Fall wird `ValidateIssuer` auf `false` festgelegt, um anzugeben, dass Anmeldungen von beliebigen persönlichen Konten oder Geschäfts-, Schul- oder Unikonten akzeptiert werden können. |
 
 ### <a name="protect-a-controller-or-a-controllers-method"></a>Schützen eines Controllers oder der Methode eines Controllers
 
-Sie können einen Controller oder Controllermethoden mithilfe des `[Authorize]`-Attributs schützen. Dieses Attribut schränkt den Zugriff auf den Controller oder seine Methoden ein, indem es nur authentifizierte Benutzer zulässt. Dies bedeutet, dass eine Authentifizierungsaufforderung für den Zugriff auf den Controller gestartet werden kann, wenn der Benutzer nicht authentifiziert ist.
+Sie können einen Controller oder Controllermethoden mithilfe des `[Authorize]`-Attributs schützen. Dieses Attribut schränkt den Zugriff auf den Controller oder seine Methoden ein, indem es nur authentifizierte Benutzer zulässt. Das bedeutet, dass eine Authentifizierungsaufforderung für den Zugriff auf den Controller gestartet werden kann, wenn der Benutzer nicht authentifiziert ist.
+
+[!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -145,4 +158,3 @@ Weitere Informationen finden Sie im GitHub-Repository für diesen ASP.NET Core-S
 > [!div class="nextstepaction"]
 > [ASP.NET Core-Web-App-Codebeispiel](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/)
 
-[!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]

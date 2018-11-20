@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 11/01/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: a3c35057af883eb790c44b3547072031eaf4ad2f
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: c85d3ce6ab3e84d454ddbc2550f430b87705c192
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50962009"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51622175"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>Tutorial: Manuelles Konfigurieren von in Azure Active Directory eingebundenen Hybridgeräten 
 
@@ -520,7 +520,7 @@ Die folgende Richtlinie muss auf **Alle** festgelegt sein: **Benutzer dürfen ih
 
 ### <a name="configure-on-premises-federation-service"></a>Konfigurieren eines lokalen Verbunddiensts 
 
-Ihr lokaler Verbunddienst muss das Ausstellen der Ansprüche **authenticationmehod** und **wiaormultiauthn** unterstützen, wenn eine Authentifizierungsanforderung an die vertrauende Seite von Azure AD empfangen wird, die wie unten gezeigt den Parameter „resource_params“ mit einem codierten Wert enthält:
+Ihr lokaler Verbunddienst muss das Ausstellen der Ansprüche **authenticationmethod** und **wiaormultiauthn** unterstützen, wenn eine Authentifizierungsanforderung an die vertrauende Seite von Azure AD empfangen wird, die wie unten gezeigt den Parameter „resource_params“ mit einem codierten Wert enthält:
 
     eyJQcm9wZXJ0aWVzIjpbeyJLZXkiOiJhY3IiLCJWYWx1ZSI6IndpYW9ybXVsdGlhdXRobiJ9XX0
 

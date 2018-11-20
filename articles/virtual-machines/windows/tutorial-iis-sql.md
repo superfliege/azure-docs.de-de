@@ -15,16 +15,16 @@ ms.workload: infrastructure
 ms.date: 02/27/2018
 ms.author: zarhoads
 ms.custom: mvc
-ms.openlocfilehash: 357a81ef3ab23a1e06b88f083c2fcdc35b27853d
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 4909edf6e434e626e89409f01ae0f5fbca5bf442
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49464909"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51515487"
 ---
-# <a name="tutorial-install-the-sql47iis47net-stack-in-a-windows-vm-with-azure-powershell"></a>Tutorial: Installieren des SQL-/IIS-/.NET-Stapels auf einem virtuellen Windows-Computer mit Azure PowerShell
+# <a name="tutorial-install-the-sql-iis-net-stack-in-a-windows-vm-with-azure-powershell"></a>Tutorial: Installieren des SQL-/IIS-/.NET-Stapels auf einem virtuellen Windows-Computer mit Azure PowerShell
 
-In diesem Tutorial installieren wir einen SQL-/IIS-/.NET-Stapel mithilfe von Azure PowerShell. Dieser Stapel besteht aus zwei virtuellen Computern unter Windows Server 2016: einer mit IIS und .NET und der andere mit SQL Server.
+In diesem Tutorial installieren Sie einen SQL-/IIS-/.NET-Stapel mithilfe von Azure PowerShell. Dieser Stapel besteht aus zwei virtuellen Computern unter Windows Server 2016: einer mit IIS und .NET und der andere mit SQL Server.
 
 > [!div class="checklist"]
 > * Erstellen einer VM 
@@ -57,7 +57,7 @@ New-AzureRmVm `
     -OpenPorts 80,3389 
 ```
 
-Installieren Sie IIS und .NET Framework mithilfe der benutzerdefinierten Skripterweiterung.
+Installieren Sie IIS und .NET Framework mit dem Cmdlet [Set-AzureRmVMExtension](/powershell/module/azurerm.compute/set-azurermvmextension) unter Verwendung der benutzerdefinierten Skripterweiterung.
 
 ```azurepowershell-interactive
 Set-AzureRmVMExtension `

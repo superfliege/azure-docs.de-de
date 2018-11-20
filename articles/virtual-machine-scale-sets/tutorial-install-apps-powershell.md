@@ -13,15 +13,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 03/27/2018
+ms.date: 11/08/2018
 ms.author: zarhoads
 ms.custom: mvc
-ms.openlocfilehash: 6cbc7779cc437db5dbe5f406ff5f5c1f9205a0a9
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 75ab381d481e51483db5661fe2f6d473f21670fc
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49470182"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51514790"
 ---
 # <a name="tutorial-install-applications-in-virtual-machine-scale-sets-with-azure-powershell"></a>Tutorial: Installieren von Anwendungen in VM-Skalierungsgruppen mit Azure PowerShell
 Zum Ausführen von Anwendungen auf VM-Instanzen in einer Skalierungsgruppe müssen Sie zuerst die Anwendungskomponenten und erforderlichen Dateien installieren. In einem vorherigen Tutorial wurde beschrieben, wie Sie ein benutzerdefiniertes VM-Image erstellen und verwenden, um Ihre VM-Instanzen bereitzustellen. Dieses benutzerdefinierte Image umfasste manuelle Anwendungsinstallationen und -konfigurationen. Sie können die Installation von Anwendungen auch per Skalierungsgruppe automatisieren, nachdem die einzelnen VM-Instanzen bereitgestellt wurden, oder eine Anwendung aktualisieren, die bereits in einer Skalierungsgruppe ausgeführt wird. In diesem Tutorial lernen Sie Folgendes:
@@ -41,13 +41,13 @@ Wenn Sie PowerShell lokal installieren und nutzen möchten, müssen Sie für die
 ## <a name="what-is-the-azure-custom-script-extension"></a>Was ist die benutzerdefinierte Skripterweiterung von Azure?
 Die benutzerdefinierte Skripterweiterung lädt Skripts auf Azure-VMs herunter und führt sie aus. Diese Erweiterung ist hilfreich bei der Konfiguration nach der Bereitstellung, bei der Softwareinstallation oder bei anderen Konfigurations-/Verwaltungsaufgaben. Skripts können aus Azure Storage oder GitHub heruntergeladen oder dem Azure-Portal zur Laufzeit für die Erweiterung bereitgestellt werden.
 
-Die benutzerdefinierte Skripterweiterung kann in Azure Resource Manager-Vorlagen integriert und auch mit der Azure CLI, Azure PowerShell, dem Azure-Portal oder der REST-API verwendet werden. Weitere Informationen finden Sie unter [Übersicht über benutzerdefinierte Skripterweiterungen](../virtual-machines/windows/extensions-customscript.md).
+Die Erweiterung für benutzerdefinierte Skripts ist in Azure Resource Manager-Vorlagen integriert. Sie kann auch mit der Azure CLI, mit Azure PowerShell, mit dem Azure-Portal oder der REST-API verwendet werden. Weitere Informationen finden Sie unter [Übersicht über benutzerdefinierte Skripterweiterungen](../virtual-machines/windows/extensions-customscript.md).
 
 Wenn Sie die benutzerdefinierte Skripterweiterung in Aktion sehen möchten, können Sie eine Skalierungsgruppe erstellen, mit der der IIS-Webserver installiert und der Hostname einer VM-Instanz der Skalierungsgruppe ausgegeben wird. Mit der Definition der benutzerdefinierten Skripterweiterung wird ein Beispielskript von GitHub heruntergeladen, die erforderlichen Pakete werden installiert, und anschließend wird der Hostname der VM-Instanz auf eine einfache HTML-Seite geschrieben.
 
 
 ## <a name="create-a-scale-set"></a>Erstellen einer Skalierungsgruppe
-Erstellen Sie nun mit [New-AzureRmVmss](/powershell/module/azurerm.compute/new-azurermvmss) eine VM-Skalierungsgruppe. Um Datenverkehr an die einzelnen VM-Instanzen zu verteilen, wird auch ein Lastenausgleich erstellt. Der Lastenausgleich enthält Regeln zum Verteilen von Datenverkehr über TCP-Port 80 und zum Zulassen von Remotedesktop-Datenverkehr über TCP-Port 3389 und PowerShell-Remoting über TCP-Port 5985. Geben Sie Ihre gewünschten Administratoranmeldeinformationen für die VM-Instanzen in der Skalierungsgruppe an, wenn Sie dazu aufgefordert werden:
+Erstellen Sie nun mit [New-AzureRmVmss](/powershell/module/azurerm.compute/new-azurermvmss) eine VM-Skalierungsgruppe. Um Datenverkehr an die einzelnen VM-Instanzen zu verteilen, wird auch ein Lastenausgleich erstellt. Der Lastenausgleich enthält Regeln zum Verteilen von Datenverkehr über TCP-Port 80. Er lässt außerdem Remotedesktop-Datenverkehr über TCP-Port 3389 und PowerShell-Remoting über TCP-Port 5985 zu. Bei entsprechender Aufforderung können Sie Ihre eigenen Administratoranmeldeinformationen für die VM-Instanzen in der Skalierungsgruppe festlegen:
 
 ```azurepowershell-interactive
 New-AzureRmVmss `
@@ -101,8 +101,60 @@ Update-AzureRmVmss `
 Jede VM-Instanz in der Skalierungsgruppe wird heruntergeladen und führt das Skript von GitHub aus. In einem komplexeren Beispiel können auch mehrere Anwendungskomponenten und Dateien installiert werden. Wenn die Skalierungsgruppe zentral hochskaliert wird, wenden die neuen VM-Instanzen automatisch dieselbe Definition der benutzerdefinierten Skripterweiterung an und installieren die erforderliche Anwendung.
 
 
+## <a name="allow-traffic-to-application"></a>Zulassen von Datenverkehr für die Anwendung
+
+Erstellen Sie mit [New-AzureRmNetworkSecurityRuleConfig](/powershell/module/azurerm.compute/new-azurermnetworksecurityruleconfig) und [New-AzureRmNetworkSecurityGroup](/powershell/module/azurerm.compute/new-azurermnetworksecuritygroup) eine Netzwerksicherheitsgruppe, um Zugriff auf die einfache Webanwendung zuzulassen. Weitere Informationen finden Sie unter [Netzwerk für Azure-VM-Skalierungsgruppen](virtual-machine-scale-sets-networking.md).
+
+```azurepowershell-interactive
+# Get information about the scale set
+$vmss = Get-AzureRmVmss `
+            -ResourceGroupName "myResourceGroup" `
+            -VMScaleSetName "myScaleSet"
+
+#Create a rule to allow traffic over port 80
+$nsgFrontendRule = New-AzureRmNetworkSecurityRuleConfig `
+  -Name myFrontendNSGRule `
+  -Protocol Tcp `
+  -Direction Inbound `
+  -Priority 200 `
+  -SourceAddressPrefix * `
+  -SourcePortRange * `
+  -DestinationAddressPrefix * `
+  -DestinationPortRange 80 `
+  -Access Allow
+
+#Create a network security group and associate it with the rule
+$nsgFrontend = New-AzureRmNetworkSecurityGroup `
+  -ResourceGroupName  "myResourceGroup" `
+  -Location EastUS `
+  -Name myFrontendNSG `
+  -SecurityRules $nsgFrontendRule
+
+$vnet = Get-AzureRmVirtualNetwork `
+  -ResourceGroupName  "myResourceGroup" `
+  -Name myVnet
+
+$frontendSubnet = $vnet.Subnets[0]
+
+$frontendSubnetConfig = Set-AzureRmVirtualNetworkSubnetConfig `
+  -VirtualNetwork $vnet `
+  -Name mySubnet `
+  -AddressPrefix $frontendSubnet.AddressPrefix `
+  -NetworkSecurityGroup $nsgFrontend
+
+Set-AzureRmVirtualNetwork -VirtualNetwork $vnet
+
+# Update the scale set and apply the Custom Script Extension to the VM instances
+Update-AzureRmVmss `
+    -ResourceGroupName "myResourceGroup" `
+    -Name "myScaleSet" `
+    -VirtualMachineScaleSet $vmss
+```
+
+
+
 ## <a name="test-your-scale-set"></a>Testen Ihrer Skalierungsgruppe
-Um Ihren Webserver in Aktion zu sehen, rufen Sie mit [Get-AzureRmPublicIpAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) die öffentliche IP-Adresse Ihres Load Balancers ab. Im folgenden Beispiel wird die IP-Adresse abgerufen, die in der Ressourcengruppe *myResourceGroup* erstellt wurde:
+Um Ihren Webserver in Aktion zu sehen, rufen Sie mit [Get-AzureRmPublicIpAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) die öffentliche IP-Adresse Ihres Load Balancers ab. Im folgenden Beispiel wird die IP-Adresse angezeigt, die in der Ressourcengruppe *myResourceGroup* erstellt wurde:
 
 ```azurepowershell-interactive
 Get-AzureRmPublicIpAddress -ResourceGroupName "myResourceGroup" | Select IpAddress
@@ -127,19 +179,15 @@ $customConfigv2 = @{
 }
 ```
 
-Wenden Sie die Konfiguration der benutzerdefinierten Skripterweiterung auf die VM-Instanzen in Ihrer Skalierungsgruppe an, indem Sie [Add-AzureRmVmssExtension](/powershell/module/AzureRM.Compute/Add-AzureRmVmssExtension) verwenden. Die Definition *customConfigv2* wird verwendet, um die aktualisierte Version der Anwendung anzuwenden:
+Aktualisieren Sie die Konfiguration der benutzerdefinierten Skripterweiterung auf die VM-Instanzen in Ihrer Skalierungsgruppe. Die Definition *customConfigv2* wird verwendet, um die aktualisierte Version der Anwendung anzuwenden:
 
 ```azurepowershell-interactive
-# Reapply the Custom Script Extension to install the updated website
-$vmss = Add-AzureRmVmssExtension `
-  -VirtualMachineScaleSet $vmss `
-  -Name "customScript" `
-  -Publisher "Microsoft.Compute" `
-  -Type "CustomScriptExtension" `
-  -TypeHandlerVersion 1.9 `
-  -Setting $customConfigv2
-
-# Update the scale set and reapply the Custom Script Extension to the VM instances
+$vmss = Get-AzureRmVmss `
+          -ResourceGroupName "myResourceGroup" `
+          -VMScaleSetName "myScaleSet"
+ 
+$vmss.VirtualMachineProfile.ExtensionProfile[0].Extensions[0].Settings = $customConfigv2
+ 
 Update-AzureRmVmss `
   -ResourceGroupName "myResourceGroup" `
   -Name "myScaleSet" `

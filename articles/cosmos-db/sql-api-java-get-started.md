@@ -11,12 +11,12 @@ ms.devlang: java
 ms.topic: tutorial
 ms.date: 05/22/2017
 ms.author: sngun
-ms.openlocfilehash: 0cf42245981afb44415b9709be9d45c44255f295
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 158bfedc8c0eb7d49c72d40cda08588d7377d17d
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50417513"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51636848"
 ---
 # <a name="nosql-tutorial-build-a-sql-api-java-console-application"></a>NoSQL-Tutorial: Erstellen einer Java-Konsolenanwendung mit der SQL-API
 
@@ -91,7 +91,7 @@ Navigieren Sie im Azure-Portal zu Ihrem Azure Cosmos DB-Konto, und klicken Sie a
 ![Screenshot des Azure-Portals, das vom NoSQL-Tutorial zum Erstellen einer Java-Konsolenanwendung verwendet wird. Zeigt ein Azure Cosmos DB-Konto, bei dem der AKTIVE Hub, die Schaltfläche „SCHLÜSSEL“ auf dem Blatt „Azure Cosmos DB-Konto“ sowie auf dem Blatt „Schlüssel“ die Werte URI, PRIMÄRSCHLÜSSEL und SEKUNDÄRSCHLÜSSEL hervorgehoben sind.][keys]
 
 ## <a name="step-4-create-a-database"></a>Schritt 4: Erstellen einer Datenbank
-Ihre Azure Cosmos DB-[Datenbank](sql-api-resources.md#databases) kann mithilfe der [createDatabase](/java/api/com.microsoft.azure.documentdb._document_client.createdatabase)-Methode der **DocumentClient**-Klasse erstellt werden. Eine Datenbank ist ein logischer Container für JSON-Dokumentspeicher, der auf Sammlungen aufgeteilt ist.
+Ihre Azure Cosmos DB-[Datenbank](databases-containers-items.md#azure-cosmos-databases) kann mithilfe der [createDatabase](/java/api/com.microsoft.azure.documentdb._document_client.createdatabase)-Methode der **DocumentClient**-Klasse erstellt werden. Eine Datenbank ist ein logischer Container für JSON-Dokumentspeicher, der auf Sammlungen aufgeteilt ist.
 
     Database database = new Database();
     database.setId("familydb");
@@ -103,7 +103,7 @@ Ihre Azure Cosmos DB-[Datenbank](sql-api-resources.md#databases) kann mithilfe d
 > 
 > 
 
-Eine [Sammlung](sql-api-resources.md#collections) kann mithilfe der [createCollection](/java/api/com.microsoft.azure.documentdb._document_client.createcollection)-Methode der **DocumentClient**-Klasse erstellt werden. Eine Sammlung ist ein Container für JSON-Dokumente und die zugehörige JavaScript-Anwendungslogik.
+Eine Sammlung kann mithilfe der [createCollection](/java/api/com.microsoft.azure.documentdb._document_client.createcollection)-Methode der **DocumentClient**-Klasse erstellt werden. Eine Sammlung ist ein Container für JSON-Dokumente und die zugehörige JavaScript-Anwendungslogik.
 
 
     DocumentCollection collectionInfo = new DocumentCollection();
@@ -117,7 +117,7 @@ Eine [Sammlung](sql-api-resources.md#collections) kann mithilfe der [createColle
     this.client.createCollection("/dbs/familydb", collectionInfo, requestOptions);
 
 ## <a id="CreateDoc"></a>Schritt 6: Erstellen von JSON-Dokumenten
-Ein [Dokument](sql-api-resources.md#documents) kann mithilfe der [createDocument](/java/api/com.microsoft.azure.documentdb._document_client.createdocument)-Methode der **DocumentClient**-Klasse erstellt werden. Dokumente sind benutzerdefinierter (beliebiger) JSON-Inhalt. Wir können jetzt eines oder mehrere Dokumente einfügen. Wenn Sie bereits über Daten verfügen, die Sie in der Datenbank speichern möchten, können Sie diese mithilfe des [Datenmigrationstools](import-data.md)von Azure Cosmos DB in eine Datenbank importieren.
+Ein Dokument kann mithilfe der [createDocument](/java/api/com.microsoft.azure.documentdb._document_client.createdocument)-Methode der **DocumentClient**-Klasse erstellt werden. Dokumente sind benutzerdefinierter (beliebiger) JSON-Inhalt. Wir können jetzt eines oder mehrere Dokumente einfügen. Wenn Sie bereits über Daten verfügen, die Sie in der Datenbank speichern möchten, können Sie diese mithilfe des [Datenmigrationstools](import-data.md)von Azure Cosmos DB in eine Datenbank importieren.
 
     // Insert your Java objects as documents 
     Family andersenFamily = new Family();

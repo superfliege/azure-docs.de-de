@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 03/23/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 01e8f74f409271810652a9202b634762ad88dcea
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 5605ac9f3ac4f9a1c85cfedf257cb721205564db
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46981245"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51613425"
 ---
 # <a name="tutorial-create-and-manage-linux-vms-with-the-azure-cli"></a>Tutorial: Erstellen und Verwalten virtueller Linux-Computer mit der Azure CLI
 
@@ -262,7 +262,7 @@ Ein virtueller Azure-Computer kann einen von mehreren Betriebszuständen aufweis
 | Zuordnung aufgehoben | Gibt an, dass der virtuelle Computer aus dem Hypervisor entfernt wurde, auf der Steuerungsebene jedoch weiterhin verfügbar ist. Für virtuelle Computer mit aufgehobener Zuordnung fallen keine Computegebühren an. |
 | - | Gibt an, dass der Betriebszustand des virtuellen Computers nicht bekannt ist. |
 
-### <a name="find-power-state"></a>Ermitteln des Betriebszustands
+### <a name="find-the-power-state"></a>Ermitteln des Energiezustands
 
 Verwenden Sie zum Abrufen des Zustands eines bestimmten virtuellen Computers den Befehl [az vm get-instance-view](/cli/azure/vm#az_vm_get_instance_view). Achten Sie darauf, dass Sie einen gültigen Namen für einen virtuellen Computer und eine Ressourcengruppe angeben. 
 

@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 03/27/18
+ms.date: 11/08/18
 ms.author: zarhoads
-ms.openlocfilehash: 6f37a9cb486f7d40506928e751e189843af69528
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 7c24375cd86700b3b4125447e1aa6dbc7507d8ba
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49467479"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51515810"
 ---
 # <a name="quickstart-create-a-virtual-machine-scale-set-with-azure-powershell"></a>Schnellstart: Erstellen einer VM-Skalierungsgruppe mit Azure PowerShell
 Mit einer VM-Skalierungsgruppe können Sie eine Gruppe identischer, automatisch skalierender virtueller Computer bereitstellen und verwalten. Sie können die Anzahl virtueller Computer in der Skalierungsgruppe manuell skalieren oder basierend auf der Ressourcennutzung, z.B. CPU-Auslastung, Speicherbedarf oder Netzwerkdatenverkehr, Regeln für die automatische Skalierung definieren. Daraufhin wird der Datenverkehr durch einen Azure-Lastenausgleich auf die VM-Instanzen in der Skalierungsgruppe verteilt. In dieser Schnellstartanleitung erstellen Sie eine VM-Skalierungsgruppe und stellen eine Beispielanwendung mit Azure PowerShell bereit.
@@ -34,7 +34,7 @@ Wenn Sie PowerShell lokal installieren und nutzen möchten, müssen Sie für die
 
 
 ## <a name="create-a-scale-set"></a>Erstellen einer Skalierungsgruppe
-Erstellen Sie mit [New-AzureRmVmss](/powershell/module/azurerm.compute/new-azurermvmss) eine VM-Skalierungsgruppe. Im folgenden Beispiel wird eine Skalierungsgruppe mit dem Namen *myScaleSet* erstellt, für die das Plattformimage *Windows Server 2016 Datacenter* verwendet wird. Die Azure-Netzwerkressourcen für virtuelles Netzwerk, öffentliche IP-Adresse und Lastenausgleich werden automatisch erstellt. Geben Sie Ihre gewünschten Administratoranmeldeinformationen für die VM-Instanzen in der Skalierungsgruppe an, wenn Sie dazu aufgefordert werden:
+Erstellen Sie mit [New-AzureRmVmss](/powershell/module/azurerm.compute/new-azurermvmss) eine VM-Skalierungsgruppe. Im folgenden Beispiel wird eine Skalierungsgruppe mit dem Namen *myScaleSet* erstellt, für die das Plattformimage *Windows Server 2016 Datacenter* verwendet wird. Die Azure-Netzwerkressourcen für virtuelles Netzwerk, öffentliche IP-Adresse und Lastenausgleich werden automatisch erstellt. Bei entsprechender Aufforderung können Sie Ihre eigenen Administratoranmeldeinformationen für die VM-Instanzen in der Skalierungsgruppe festlegen:
 
 ```azurepowershell-interactive
 New-AzureRmVmss `
@@ -83,9 +83,58 @@ Update-AzureRmVmss `
     -VirtualMachineScaleSet $vmss
 ```
 
+## <a name="allow-traffic-to-application"></a>Zulassen von Datenverkehr für die Anwendung
+
+ Erstellen Sie mit [New-AzureRmNetworkSecurityRuleConfig](/powershell/module/azurerm.compute/new-azurermnetworksecurityruleconfig) und [New-AzureRmNetworkSecurityGroup](/powershell/module/azurerm.compute/new-azurermnetworksecuritygroup) eine Netzwerksicherheitsgruppe, um Zugriff auf die einfache Webanwendung zuzulassen. Weitere Informationen finden Sie unter [Netzwerk für Azure-VM-Skalierungsgruppen](virtual-machine-scale-sets-networking.md).
+
+ ```azurepowershell-interactive
+ # Get information about the scale set
+ $vmss = Get-AzureRmVmss `
+             -ResourceGroupName "myResourceGroup" `
+             -VMScaleSetName "myScaleSet"
+
+ #Create a rule to allow traffic over port 80
+ $nsgFrontendRule = New-AzureRmNetworkSecurityRuleConfig `
+   -Name myFrontendNSGRule `
+   -Protocol Tcp `
+   -Direction Inbound `
+   -Priority 200 `
+   -SourceAddressPrefix * `
+   -SourcePortRange * `
+   -DestinationAddressPrefix * `
+   -DestinationPortRange 80 `
+   -Access Allow
+
+ #Create a network security group and associate it with the rule
+ $nsgFrontend = New-AzureRmNetworkSecurityGroup `
+   -ResourceGroupName  "myResourceGroup" `
+   -Location EastUS `
+   -Name myFrontendNSG `
+   -SecurityRules $nsgFrontendRule
+
+ $vnet = Get-AzureRmVirtualNetwork `
+   -ResourceGroupName  "myResourceGroup" `
+   -Name myVnet
+
+ $frontendSubnet = $vnet.Subnets[0]
+
+ $frontendSubnetConfig = Set-AzureRmVirtualNetworkSubnetConfig `
+   -VirtualNetwork $vnet `
+   -Name mySubnet `
+   -AddressPrefix $frontendSubnet.AddressPrefix `
+   -NetworkSecurityGroup $nsgFrontend
+
+ Set-AzureRmVirtualNetwork -VirtualNetwork $vnet
+
+ # Update the scale set and apply the Custom Script Extension to the VM instances
+ Update-AzureRmVmss `
+     -ResourceGroupName "myResourceGroup" `
+     -Name "myScaleSet" `
+     -VirtualMachineScaleSet $vmss
+ ```
 
 ## <a name="test-your-scale-set"></a>Testen Ihrer Skalierungsgruppe
-Greifen Sie über einen Webbrowser auf die Beispielwebanwendung zu, um Ihre Skalierungsgruppe in Aktion zu sehen. Rufen Sie mit [Get-AzureRmPublicIpAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) die öffentliche IP-Adresse Ihres Lastenausgleichs ab. Im folgenden Beispiel wird die IP-Adresse abgerufen, die in der Ressourcengruppe *myResourceGroup* erstellt wurde:
+Greifen Sie über einen Webbrowser auf die Beispielwebanwendung zu, um Ihre Skalierungsgruppe in Aktion zu sehen. Rufen Sie mit [Get-AzureRmPublicIpAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) die öffentliche IP-Adresse Ihres Lastenausgleichs ab. Im folgenden Beispiel wird die IP-Adresse angezeigt, die in der Ressourcengruppe *myResourceGroup* erstellt wurde:
 
 ```azurepowershell-interactive
 Get-AzureRmPublicIpAddress -ResourceGroupName "myResourceGroup" | Select IpAddress

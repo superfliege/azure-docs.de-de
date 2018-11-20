@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 11/6/2018
+ms.date: 11/15/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 4873da97b790df98b6d10ae8b7a57fc39b534755
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 8a3a9e4019be0b6039fe43df11a5f6093545f9cd
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51278581"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51685350"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>Tutorial: Bereitstellen und Konfigurieren von Azure Firewall über das Azure-Portal
 
@@ -97,46 +97,36 @@ Erstellen Sie ein weiteres Subnetz namens **Jump-SN** mit dem Adressbereich **10
 
 Erstellen Sie nun die virtuellen Sprung- und Workloadcomputer, und platzieren Sie sie in den entsprechenden Subnetzen.
 
-1. Klicken Sie auf der Startseite des Azure-Portals auf **Alle Dienste**.
-2. Klicken Sie unter **Compute** auf **Virtuelle Computer**.
-3. Klicken Sie auf **Hinzufügen** > **Windows Server** > **Windows Server 2016 Datacenter** > **Erstellen**.
+1. Klicken Sie im Azure-Portal auf **Ressource erstellen**.
+2. Klicken Sie auf **Compute**, und wählen Sie dann in der Liste der ausgewählten Elemente die Option **Windows Server 2016 Datacenter**.
+3. Geben Sie die folgenden Werte für den virtuellen Computer ein:
 
-**Grundlagen**
+    - *Test-FW-RG*: Ressourcengruppe
+    - *Srv-Jump*: Name des virtuellen Computers
+    - *azureuser*: Name des Administratorbenutzers
+    - *Azure123456!* als Kennwort
 
-1. Geben Sie unter **Name** die Zeichenfolge **Srv-Jump** ein.
-5. Geben Sie einen Benutzernamen und ein Kennwort ein.
-6. Wählen Sie unter **Abonnement** Ihr Abonnement aus.
-7. Klicken Sie unter **Ressourcengruppe** auf **Vorhandene verwenden** > **Test-FW-RG**.
-8. Wählen Sie unter **Standort** den gleichen Standort aus wie zuvor.
-9. Klicken Sie auf **OK**.
+4. Klicken Sie unter **Regeln für eingehende Ports** für **Öffentliche Eingangsports** auf **Ausgewählte Ports zulassen**.
+5. Wählen Sie unter **Eingangsports auswählen** die Option **RDP (3389)** aus.
 
-**Größe**
-
-1. Wählen Sie eine angemessene Größe für einen virtuellen Testcomputer unter Windows Server aus. Verwenden Sie beispielsweise **B2ms** (8 GB RAM, 16 GB Speicher).
-2. Klicken Sie auf **Auswählen**.
-
-**Einstellungen**
-
-1. Wählen Sie unter **Netzwerk** für **Virtuelles Netzwerk** die Option **Test-FW-VN** aus.
-2. Wählen Sie unter **Subnetz** die Option **Jump-SN** aus.
-3. Wählen Sie unter **Öffentliche Eingangsports hinzufügen** die Option **RDP (3389)** aus. 
-
-    Es empfiehlt sich zwar, den Zugriff auf Ihre öffentliche IP-Adresse zu beschränken, der Port 3389 muss jedoch geöffnet werden, um eine Remotedesktopverbindung mit dem Sprungserver herstellen zu können. 
-2. Lassen Sie die restlichen Standardeinstellungen unverändert, und klicken Sie auf **OK**.
-
-**Zusammenfassung**
-
-Überprüfen Sie die Zusammenfassung, und klicken Sie anschließend auf **Erstellen**. Dies nimmt einige Minuten in Anspruch.
+6. Übernehmen Sie die anderen Standardwerte, und klicken Sie auf **Weiter: Datenträger**.
+7. Übernehmen Sie die Datenträger-Standardwerte, und klicken Sie auf **Weiter: Netzwerk**.
+8. Stellen Sie sicher, dass als virtuelles Netzwerk **Test-FW-VN** und als Subnetz **Jump-SN** ausgewählt ist.
+9. Klicken Sie unter **Öffentliche IP** auf **Neu erstellen**.
+10. Geben Sie als Namen für die öffentliche IP-Adresse **Srv-Jump-PIP** ein, und klicken Sie auf **OK**.
+11. Übernehmen Sie die anderen Standardwerte, und klicken Sie auf **Weiter: Verwaltung**.
+12. Klicken Sie auf **Aus**, um die Startdiagnose zu deaktivieren. Übernehmen Sie die anderen Standardwerte, und klicken Sie auf **Überprüfen + erstellen**.
+13. Überprüfen Sie die Einstellungen auf der Seite „Zusammenfassung“, und klicken Sie dann auf **Erstellen**.
 
 Wiederholen Sie diesen Prozess, um einen weiteren virtuellen Computer namens **Srv-Work** zu erstellen.
 
-Konfigurieren Sie die **Einstellungen** für den virtuellen Computer „Srv-Work“ mit den Angaben aus der folgenden Tabelle. Die restliche Konfiguration ist mit der Konfiguration des virtuellen Computers „Srv-Jump“ identisch.
+Konfigurieren Sie den virtuellen Computer „Srv-Work“ mit den Angaben aus der folgenden Tabelle. Die restliche Konfiguration ist mit der Konfiguration des virtuellen Computers „Srv-Jump“ identisch.
 
 |Einstellung  |Wert  |
 |---------|---------|
 |Subnetz|Workload-SN|
 |Öffentliche IP-Adresse|Keine|
-|Öffentliche Eingangsports hinzufügen|Keine öffentlichen Eingangsports|
+|Öffentliche Eingangsports|Keine|
 
 ## <a name="deploy-the-firewall"></a>Bereitstellen der Firewall
 
@@ -196,15 +186,16 @@ Hierbei handelt es sich um die Anwendungsregel, die ausgehenden Zugriff auf „g
 
 1. Öffnen Sie **Test-FW-RG**, und klicken Sie auf die Firewall **Test-FW01**.
 2. Klicken Sie auf der Seite **Test-FW01** unter **Einstellungen** auf **Regeln**.
-3. Klicken Sie auf **Anwendungsregelsammlung hinzufügen**.
-4. Geben Sie unter **Name** die Zeichenfolge **App-Coll01** ein.
-5. Geben Sie für **Priorität** den Wert **200** ein.
-6. Wählen Sie für **Aktion** die Option **Zulassen** aus.
-7. Geben Sie unter **Regeln** für **Name** die Zeichenfolge **AllowGH** ein.
-8. Geben Sie unter **Quelladressen** die Zeichenfolge **10.0.2.0/24** ein.
-9. Geben Sie unter **Protokoll:Port** die Zeichenfolge **http, https** ein.
-10. Geben Sie unter **Ziel-FQDNs** die Zeichenfolge **github.com** ein.
-11. Klicken Sie auf **Hinzufügen**.
+3. Klicken Sie auf die Registerkarte **Anwendungsregelsammlung**.
+4. Klicken Sie auf **Anwendungsregelsammlung hinzufügen**.
+5. Geben Sie unter **Name** die Zeichenfolge **App-Coll01** ein.
+6. Geben Sie für **Priorität** den Wert **200** ein.
+7. Wählen Sie für **Aktion** die Option **Zulassen** aus.
+8. Geben Sie unter **Regeln** > **Ziel-FQDNs** für **Name** die Zeichenfolge **AllowGH** ein.
+9. Geben Sie unter **Quelladressen** die Zeichenfolge **10.0.2.0/24** ein.
+10. Geben Sie unter **Protokoll:Port** die Zeichenfolge **http, https** ein.
+11. Geben Sie unter **Ziel-FQDNs** die Zeichenfolge **github.com** ein.
+12. Klicken Sie auf **Hinzufügen**.
 
 Azure Firewall enthält eine integrierte Regelsammlung für Infrastruktur-FQDNs, die standardmäßig zulässig sind. Diese FQDNs sind plattformspezifisch und können nicht für andere Zwecke verwendet werden. Weitere Informationen finden Sie unter [Infrastruktur-FQDNs](infrastructure-fqdns.md).
 
@@ -212,6 +203,7 @@ Azure Firewall enthält eine integrierte Regelsammlung für Infrastruktur-FQDNs,
 
 Hierbei handelt es sich um die Netzwerkregel, die ausgehenden Zugriff auf zwei IP-Adressen am Port 53 (DNS) zulässt.
 
+1. Klicken Sie auf die Registerkarte **Netzwerkregelsammlung**.
 1. Klicken Sie auf **Netzwerkregelsammlung hinzufügen**.
 2. Geben Sie unter **Name** die Zeichenfolge **Net-Coll01** ein.
 3. Geben Sie für **Priorität** den Wert **200** ein.

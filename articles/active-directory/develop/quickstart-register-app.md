@@ -16,18 +16,18 @@ ms.date: 11/02/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
-ms.openlocfilehash: f0220c244bd5ed48393e2f81b7dd8a62fd0423be
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: 1809e7f72afd99de38387317daf2ecb92dbe3cf0
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50912985"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51298720"
 ---
 # <a name="quickstart-register-an-application-with-the-microsoft-identity-platform-preview"></a>Schnellstart: Registrieren einer Anwendung bei der Microsoft Identity Platform (Vorschauversion)
 
 Unternehmensentwickler und SaaS-Anbieter (Software-as-a-Service) können kommerzielle Clouddienste oder Branchenanwendungen entwickeln, die in die Microsoft Identity Platform integriert werden können, um eine sichere Anmeldung und Autorisierung für ihre Dienste bereitzustellen.
 
-In dieser Schnellstartanleitung erfahren Sie, wie Sie eine Anwendung im Azure-Portal unter Verwendung von **App-Registrierungen (Vorschauversion)** hinzufügen und registrieren, um die Anwendung in die Microsoft Identity Platform integrieren zu können.
+In dieser Schnellstartanleitung erfahren Sie, wie Sie eine Anwendung im Azure-Portal unter Verwendung von **App-Registrierungen (Vorschauversion)** hinzufügen und registrieren, um die Anwendung in die Microsoft Identity Platform integrieren zu können. Weitere Informationen zu den neuen Features und den Verbesserungen in der neuen App-Registrierungsumgebung finden Sie in [diesem Blogbeitrag](https://developer.microsoft.com/graph/blogs/new-app-registration/). 
 
 ## <a name="prerequisite"></a>Voraussetzung
 
@@ -43,7 +43,7 @@ Aktivieren Sie zunächst die Vorschauoberfläche für App-Registrierungen im Azu
     - **Name**: Geben Sie einen aussagekräftigen Anwendungsnamen ein, der den Benutzern der App angezeigt wird.
     - **Unterstützte Kontotypen**: Wählen Sie aus, welche Konten von Ihrer Anwendung unterstützt werden sollen.
 
-        | Unterstützte Kontotypen | Beschreibung |
+        | Unterstützte Kontotypen | BESCHREIBUNG |
         |-------------------------|-------------|
         | **Nur Konten in diesem Organisationsverzeichnis** | Wählen Sie diese Option aus, wenn Sie eine Branchenanwendung erstellen. Falls Sie die Anwendung nicht in einem Verzeichnis registrieren, ist diese Option nicht verfügbar.<br><br>Diese Option ist für reine Azure AD-Apps mit einem einzelnen Mandanten vorgesehen.<br><br>Sofern Sie die App nicht außerhalb eines Verzeichnisses registrieren, ist dies die Standardoption. Wird die App außerhalb eines Verzeichnisses registriert, werden standardmäßig mehrinstanzenfähige Azure AD-Konten und persönliche Microsoft-Konten verwendet. |
         | **Konten in einem beliebigen Organisationsverzeichnis** | Wählen Sie diese Option, wenn Sie alle Kunden aus dem Unternehmens- und Bildungsbereich ansprechen möchten.<br><br>Diese Option ist für reine Azure AD-Apps mit mehreren Mandanten vorgesehen.<br><br>Wenn Sie die App als reine Azure AD-App mit einem einzelnen Mandanten registriert haben, können Sie sie über das Blatt **Authentifizierung** in eine Azure AD-App mit mehreren Mandanten (und wieder zurück in eine App mit einem einzelnen Mandanten) verwandeln. |

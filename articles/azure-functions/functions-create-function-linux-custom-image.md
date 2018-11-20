@@ -11,12 +11,12 @@ ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: azure-cli
 manager: jeconnoc
-ms.openlocfilehash: aa3c72c7ff2aa5e25fbff9fc38c33fd2dda34ecd
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: de15d1f8c268e80ac1659c53a141ec39cc6d3cb8
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49985079"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51564808"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-image-preview"></a>Erstellen einer Funktion in Linux mit einem benutzerdefinierten Image (Vorschau)
 
@@ -240,6 +240,13 @@ az functionapp config appsettings set --name <function_app> \
 --settings AzureWebJobsDashboard=$storageConnectionString \
 AzureWebJobsStorage=$storageConnectionString
 ```
+
+> [!NOTE]
+> Ist Ihr Container privat, müssen Sie außerdem die folgenden Anwendungseinstellungen festlegen:  
+> - DOCKER_REGISTRY_SERVER_USERNAME  
+> - DOCKER_REGISTRY_SERVER_PASSWORD  
+>
+> Sie müssen Ihre Funktions-App beenden und dann wieder starten, damit diese Werte übernommen werden.
 
 Sie können jetzt Ihre Funktionen unter Linux in Azure testen.
 

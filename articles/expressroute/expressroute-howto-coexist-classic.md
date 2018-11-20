@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/21/2017
 ms.author: charwen
-ms.openlocfilehash: 09d1649f0ca0cf4ca464d95b29461cad3fe51788
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 30d56acf6bd3a882622af41ca0f2095572f72f71
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2017
-ms.locfileid: "22710132"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51615737"
 ---
 # <a name="configure-expressroute-and-site-to-site-coexisting-connections-classic"></a>Konfigurieren von parallel bestehenden ExpressRoute- und Standort-zu-Standort-Verbindungen (klassisch)
 > [!div class="op_single_selector"]
@@ -29,7 +29,7 @@ ms.locfileid: "22710132"
 > 
 > 
 
-Die Möglichkeit zum Konfigurieren von Standort-zu-Standort-VPN und ExpressRoute bietet mehrere Vorteile. Sie können Standort-zu-Standort-VPNs als sicheren Failoverpfad für ExpressRoute konfigurieren oder für die Verbindung mit Websites nutzen, die nicht über ExpressRoute verbunden sind. Wir werden die Schritte zum Konfigurieren von beiden Szenarien in diesem Artikel behandeln. Dieser Artikel gilt für das klassische Bereitstellungsmodell. Diese Konfiguration ist nicht im Portal verfügbar.
+Die Möglichkeit zum Konfigurieren von Standort-zu-Standort-VPN und ExpressRoute bietet mehrere Vorteile. Sie können ein Site-to-Site-VPN als sicheren Failoverpfad für ExpressRoute konfigurieren oder für Verbindungen mit Websites nutzen, die nicht über ExpressRoute verbunden sind. Wir werden die Schritte zum Konfigurieren von beiden Szenarien in diesem Artikel behandeln. Dieser Artikel gilt für das klassische Bereitstellungsmodell. Diese Konfiguration ist nicht im Portal verfügbar.
 
 [!INCLUDE [expressroute-classic-end-include](../../includes/expressroute-classic-end-include.md)]
 
@@ -80,7 +80,7 @@ Es stehen zwei unterschiedliche Verfahren für die Konfiguration von Verbindunge
     Wenn Sie noch nicht über ein virtuelles Netzwerk verfügen, wird Sie dieses Verfahren durch die Schritte zum Erstellen eines neuen virtuellen Netzwerks mithilfe des klassischen Bereitstellungsmodells und zum Erstellen neuer ExpressRoute- sowie Standort-zu-Standort-VPN-Verbindungen führen. Führen Sie für die Konfiguration die Schritte im Artikel [So erstellen Sie ein neues virtuelles Netzwerk und parallele Verbindungen](#new)durch.
 * Ich verfüge bereits über ein VNET nach klassischem Bereitstellungsmodell.
   
-    Möglicherweise haben Sie bereits ein virtuelles Netzwerk mit einer vorhandenen Standort-zu-Standort-VPN-Verbindung oder einer ExpressRoute-Verbindung. Der Artikelabschnitt [So konfigurieren Sie parallele Verbindungen für ein bereits vorhandenes VNET](#add) enthält die Schritte zum Löschen des Gateways und anschließenden Erstellen neuer ExpressRoute- und Standort-zu-Standort-VPN-Verbindungen. Beachten Sie, dass die Schritte beim Erstellen von neuen Verbindungen in einer ganz bestimmten Reihenfolge ausgeführt werden müssen. Verwenden Sie die Anweisungen nicht in anderen Artikeln, um Ihre Gateways und Verbindungen zu erstellen.
+    Möglicherweise haben Sie bereits ein virtuelles Netzwerk mit einer vorhandenen Standort-zu-Standort-VPN-Verbindung oder einer ExpressRoute-Verbindung. Der Artikelabschnitt [So konfigurieren Sie parallele Verbindungen für ein bereits vorhandenes VNET](#add) enthält die Schritte zum Löschen des Gateways und anschließenden Erstellen neuer ExpressRoute- und Site-to-Site-VPN-Verbindungen. Beachten Sie, dass die Schritte beim Erstellen von neuen Verbindungen in einer ganz bestimmten Reihenfolge ausgeführt werden müssen. Verwenden Sie die Anweisungen nicht in anderen Artikeln, um Ihre Gateways und Verbindungen zu erstellen.
   
     In diesem Verfahren erfordert das Erstellen von gleichzeitig bestehenden Verbindungen das Löschen Ihres Gateway löschen und das anschließende Konfigurieren neuer Gateways. Das bedeutet, dass Sie für Ihre standortübergreifenden Verbindungen Ausfallzeiten haben werden, während Sie Ihr Gateway und Ihre Verbindungen löschen und neu erstellen, aber Sie müssen keine Ihrer VMs oder Dienste auf ein neues virtuelles Netzwerk migrieren. Die VMs und Dienste werden immer noch in der Lage sein, über den Load Balancer zu kommunizieren, während Sie Ihr Gateway konfigurieren, wenn sie zu diesem Zweck konfiguriert sind.
 
@@ -128,7 +128,7 @@ Dieses Verfahren führt Sie durch das Erstellen eines VNET sowie das Erstellen v
 5. Verknüpfen Sie das ExpressRoute-Gateway mit dem ExpressRoute-Schaltkreis. Nachdem dieser Schritt abgeschlossen ist, wird die Verbindung zwischen dem lokalen Netzwerk und Azure durch ExpressRoute eingerichtet.
    
         New-AzureDedicatedCircuitLink -ServiceKey <service-key> -VNetName MyAzureVNET
-6. <a name="vpngw"></a>Erstellen Sie als Nächstes Ihr Standort-zu-Standort-VPN-Gateway. GatewaySKU muss *Standard*, *HighPerformance* oder *UltraPerformance* und GatewayType muss *DynamicRouting* lauten.
+6. <a name="vpngw"></a>Erstellen Sie als Nächstes Ihr Standort-zu-Standort-VPN Gateway. GatewaySKU muss *Standard*, *HighPerformance* oder *UltraPerformance* und GatewayType muss *DynamicRouting* lauten.
    
         New-AzureVirtualNetworkGateway -VNetName MyAzureVNET -GatewayName S2SVPN -GatewayType DynamicRouting -GatewaySKU  HighPerformance
    

@@ -1,5 +1,5 @@
 ---
-title: Livestreaming mit Azure Media Services v3 unter Verwendung von .NET Core | Microsoft-Dokumentation
+title: Livestreaming mit Azure Media Services v3 | Microsoft-Dokumentation
 description: In diesem Tutorial wird Schritt für Schritt das Livestreaming mit Media Services v3 unter Verwendung von .NET Core erläutert.
 services: media-services
 documentationcenter: ''
@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 10/16/2018
+ms.date: 11/08/2018
 ms.author: juliako
-ms.openlocfilehash: bd149177a91bc0d5897723df2fad50fef11a37ef
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 7863f007093b5a86fb5095ee8bf1e14fc01d0348
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49392334"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51613391"
 ---
-# <a name="stream-live-with-azure-media-services-v3-using-net-core"></a>Livestreaming mit Azure Media Services v3 unter Verwendung von .NET Core
+# <a name="tutorial-stream-live-with-media-services-v3-using-apis"></a>Tutorial: Livestreaming mit Media Services v3 unter Verwendung von APIs
 
-In Media Services sind [Liveereignisse](https://docs.microsoft.com/rest/api/media/liveevents) (LiveEvents) für die Verarbeitung von Livestreaminginhalten zuständig. Ein Liveereignis stellt einen Eingabeendpunkt (Erfassungs-URL) bereit, den Sie dann für einen Liveencoder bereitstellen. Das Liveereignis empfängt Live-Eingabestreams aus dem Liveencoder und stellt diese zum Streamen durch einen oder mehrere [Streamingendpunkte](https://docs.microsoft.com/rest/api/media/streamingendpoints) (StreamingEndpoints) zur Verfügung. Zudem stellen Liveereignisse einen Vorschauendpunkt (Vorschau-URL) bereit, mit dem Sie eine Vorschau des Streams anzeigen und überprüfen können, bevor Sie ihn weiter verarbeiten und übermitteln. In diesem Tutorial erfahren Sie, wie Sie unter Verwendung von .NET Core ein Liveereignis vom Typ **Pass-Through** erstellen. 
+In Azure Media Services sind [LiveEvents](https://docs.microsoft.com/rest/api/media/liveevents) für die Verarbeitung von Livestreaminginhalten zuständig. Ein Liveereignis stellt einen Eingabeendpunkt (Erfassungs-URL) bereit, den Sie dann für einen Liveencoder bereitstellen. Das Liveereignis empfängt Live-Eingabestreams aus dem Liveencoder und stellt diese zum Streamen durch einen oder mehrere [Streamingendpunkte](https://docs.microsoft.com/rest/api/media/streamingendpoints) (StreamingEndpoints) zur Verfügung. Zudem stellen Liveereignisse einen Vorschauendpunkt (Vorschau-URL) bereit, mit dem Sie eine Vorschau des Streams anzeigen und überprüfen können, bevor Sie ihn weiter verarbeiten und übermitteln. In diesem Tutorial erfahren Sie, wie Sie unter Verwendung von .NET Core ein Liveereignis vom Typ **Pass-Through** erstellen. 
 
 > [!NOTE]
 > Lesen Sie [Live streaming with Azure Media Services v3](live-streaming-overview.md) (Livestreaming mit Azure Media Services v3), bevor Sie mit diesem Tutorial fortfahren. 
@@ -31,7 +31,6 @@ In Media Services sind [Liveereignisse](https://docs.microsoft.com/rest/api/medi
 Das Tutorial veranschaulicht folgende Vorgehensweisen:    
 
 > [!div class="checklist"]
-> * Erstellen eines Media Services-Kontos
 > * Zugreifen auf die Media Services-API
 > * Konfigurieren der Beispiel-App
 > * Untersuchen des Codes für Livestreaming
@@ -44,9 +43,17 @@ Das Tutorial veranschaulicht folgende Vorgehensweisen:
 
 Zum Abschließen dieses Lernprogramms müssen folgende Voraussetzungen erfüllt sein:
 
-* Installation von Visual Studio Code oder Visual Studio
-* Eine Kamera oder ein Gerät (beispielsweise ein Laptop) zum Übertragen einer Veranstaltung
-* Ein lokaler Liveencoder, der Signale von der Kamera in Datenströme konvertiert, die an den Media Services-Livestreamingdienst gesendet werden. Der Datenstrom muss das Format **RTMP** oder **Smooth Streaming** haben.
+- Installieren Sie Visual Studio Code oder Visual Studio.
+- Installieren und verwenden Sie die Befehlszeilenschnittelle lokal. Dieser Artikel erfordert mindestens die Azure CLI-Version 2.0. Führen Sie `az --version` aus, um herauszufinden, welche Version Sie haben. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI](/cli/azure/install-azure-cli). 
+
+    Derzeit funktionieren nicht alle Befehle der [Befehlszeilenschnittstelle von Media Services v3](https://aka.ms/ams-v3-cli-ref) in Azure Cloud Shell. Es wird empfohlen, die Befehlszeilenschnittstelle lokal zu verwenden.
+
+- [Erstellen Sie ein Media Services-Konto.](create-account-cli-how-to.md)
+
+    Merken Sie sich die Werte, die Sie für den Namen der Ressourcengruppe und des Media Services-Kontos verwendet haben.
+
+- Eine Kamera oder ein Gerät (beispielsweise ein Laptop) zum Übertragen einer Veranstaltung
+- Ein lokaler Liveencoder, der Signale von der Kamera in Datenströme konvertiert, die an den Media Services-Livestreamingdienst gesendet werden. Der Datenstrom muss das Format **RTMP** oder **Smooth Streaming** haben.
 
 ## <a name="download-the-sample"></a>Herunterladen des Beispiels
 
@@ -61,10 +68,6 @@ Das Livestreamingbeispiel befindet sich im Ordner [Live](https://github.com/Azur
 > [!IMPORTANT]
 > In diesem Beispiel wird für alle Ressourcen jeweils ein eindeutiges Suffix verwendet. Wenn Sie das Debuggen abbrechen oder die App beenden, ohne das Beispiel vollständig zu durchlaufen, werden in Ihrem Konto mehrere Liveereignisse generiert. <br/>
 > Die aktiven Liveereignisse müssen unbedingt beendet werden. Andernfalls werden sie Ihnen **in Rechnung gestellt**.
-
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
-
-[!INCLUDE [media-services-cli-create-v3-account-include](../../../includes/media-services-cli-create-v3-account-include.md)]
 
 [!INCLUDE [media-services-v3-cli-access-api-include](../../../includes/media-services-v3-cli-access-api-include.md)]
 
@@ -176,9 +179,9 @@ Das Liveereignis konvertiert Ereignisse automatisch in On-Demand-Inhalt, wenn es
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Wenn Sie keine Ressourcen in Ihrer Ressourcengruppe mehr benötigen, einschließlich der Media Services und Speicherkonten, die Sie für dieses Tutorial erstellt haben, löschen Sie die zuvor erstellte Ressourcengruppe. Sie können das **CloudShell**-Tool verwenden.
+Wenn Sie keine Ressourcen in Ihrer Ressourcengruppe mehr benötigen, einschließlich der Media Services und Speicherkonten, die Sie für dieses Tutorial erstellt haben, löschen Sie die zuvor erstellte Ressourcengruppe.
 
-Führen Sie in **CloudShell** den folgenden Befehl aus:
+Führen Sie den folgenden CLI-Befehl aus:
 
 ```azurecli-interactive
 az group delete --name amsResourceGroup

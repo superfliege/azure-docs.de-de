@@ -1,6 +1,6 @@
 ---
 title: 'Schnellstart: Festlegen eines Geheimnisses und Abrufen des Geheimnisses aus Azure Key Vault mithilfe einer Node-Web-App | Microsoft-Dokumentation'
-description: 'Schnellstart: Festlegen eines Geheimnisses und Abrufen des Geheimnisses aus Azure Key Vault mithilfe einer Node-Web-App'
+description: 'Schnellstart: Festlegen eines Geheimnisses und Abrufen des Geheimnisses aus Azure Key Vault mithilfe einer .NET-Web-App'
 services: key-vault
 author: prashanthyv
 manager: sumedhb
@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 09/12/2018
 ms.author: barclayn
 ms.custom: mvc
-ms.openlocfilehash: 4f7955c013ce7f45ebe6db8bb23eeec92303876e
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: a53130dcc489764ce9284f15b8de0de37e0827e5
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230930"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51686669"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-by-using-a-net-web-app"></a>Schnellstart: Festlegen eines Geheimnisses und Abrufen des Geheimnisses aus Azure Key Vault mithilfe einer .NET-Web-App
 
@@ -175,7 +175,6 @@ Wenn Sie die Anwendung nun ausführen, sollte der Wert des Geheimnisses abgerufe
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Azure Key Vault – Startseite](https://azure.microsoft.com/services/key-vault/)
-* [Dokumentation zu Key Vault](https://docs.microsoft.com/azure/key-vault/)
+* [Weitere Informationen zu Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis)
 * [Azure SDK für .NET](https://github.com/Azure/azure-sdk-for-net)
 * [Azure REST-API-Referenz](https://docs.microsoft.com/rest/api/keyvault/)

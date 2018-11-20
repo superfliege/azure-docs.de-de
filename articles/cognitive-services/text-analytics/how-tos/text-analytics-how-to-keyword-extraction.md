@@ -1,7 +1,6 @@
 ---
-title: 'Beispiel: Extrahieren von Schlüsselbegriffen in der Textanalyse'
-titleSuffix: Azure Cognitive Services
-description: Erfahren Sie, wie Sie mithilfe der Textanalyse-REST-API Schlüsselbegriffe extrahieren.
+title: Verwenden der Schlüsselbegriffserkennung in der Textanalyse-REST-API (Microsoft Cognitive Services in Azure) | Microsoft-Dokumentation
+description: In diesem Tutorial mit exemplarischer Vorgehensweise erfahren Sie, wie Sie mithilfe der Textanalyse-REST-API in Microsoft Cognitive Services in Azure Schlüsselbegriffe extrahieren.
 services: cognitive-services
 author: HeidiSteen
 manager: cgronlun
@@ -10,12 +9,12 @@ ms.component: text-analytics
 ms.topic: sample
 ms.date: 09/12/2018
 ms.author: heidist
-ms.openlocfilehash: 62c078a8a72cd0a3633b7dd5fda1545f01067dbc
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: d38886d40a92d5e75f5d0b6b189dbf7c067e1635
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45605486"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51632389"
 ---
 # <a name="example-how-to-extract-key-phrases-in-text-analytics"></a>Beispiel: Extrahieren von Schlüsselbegriffen in der Textanalyse
 
@@ -24,6 +23,9 @@ Die [Schlüsselbegriffserkennungs-API](https://westus.dev.cognitive.microsoft.co
 Diese Funktion ist nützlich, wenn Sie die wichtigsten Punkte in einer Sammlung von Dokumenten schnell identifizieren müssen. Wenn der eingegebene Text beispielsweise „Das Essen war köstlich, und es gab hervorragendes Personal“ lautet, gibt der Dienst die Kernpunkte „Essen“ und „hervorragendes Personal“ zurück.
 
 Zurzeit unterstützt die Schlüsselbegriffserkennung Englisch, Deutsch, Spanisch und Japanisch. Andere Sprachen befinden sich in der Vorschauphase. Weitere Informationen finden Sie unter [Unterstützte Sprachen](../text-analytics-supported-languages.md).
+
+> [!TIP]
+> Die Textanalyse bietet darüber hinaus ein Linux-basiertes Docker-Containerimage für die Schlüsselbegriffserkennung, damit Sie [den Textanalysecontainer nah bei Ihren Daten installieren und ausführen können](text-analytics-how-to-install-containers.md).
 
 ## <a name="preparation"></a>Vorbereitung
 
@@ -71,7 +73,7 @@ Details zur Anforderungsdefinition finden Sie unter [Aufrufen der Textanalyse-RE
 
 + Erstellen Sie eine Anforderung vom Typ **POST**. Lesen Sie die API-Dokumentation für diese Anforderung: [Schlüsselbegriffs-API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6).
 
-+ Legen Sie den HTTP-Endpunkt für die Schlüsselbegriffserkennung fest. Er muss die Ressource `/keyphrases` enthalten: `https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/keyPhrases`.
++ Legen Sie den HTTP-Endpunkt für die Schlüsselbegriffserkennung entweder mithilfe einer Textanalyseressource in Azure oder mithilfe eines instanziierten [Textanalysecontainers](text-analytics-how-to-install-containers.md) fest. Er muss die Ressource `/keyPhrases` enthalten: `https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/keyPhrases`.
 
 + Legen Sie einen Anforderungsheader fest, der den Zugriffsschlüssel für Textanalysevorgänge enthält. Weitere Informationen finden Sie unter [Ermitteln von Endpunkten und Zugriffsschlüsseln](text-analytics-how-to-access-key.md).
 

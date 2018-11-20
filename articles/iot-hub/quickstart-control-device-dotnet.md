@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 06/20/2018
 ms.author: dobett
-ms.openlocfilehash: 475fda79d3f5d844b494f1b0ae5eab8eba5ed8bc
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: c8ef958b2f39a9271b9fa344f61329d48eccdee4
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49363562"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51514738"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-net"></a>Schnellstart: Steuern eines mit einer IoT Hub-Instanz verbundenen Geräts (.NET)
 
@@ -26,6 +26,7 @@ IoT Hub ist ein Azure-Dienst, mit dem Sie große Mengen von Telemetriedaten von 
 In dieser Schnellstartanleitung werden zwei vorab geschriebene .NET-Anwendungen verwendet:
 
 * Eine simulierte Geräteanwendung, die auf direkte Methoden reagiert, die von einer Back-End-Anwendung aufgerufen werden. Um die Aufrufe der direkten Methode zu empfangen, stellt diese Anwendung eine Verbindung mit einem gerätespezifischen Endpunkt in Ihrer IoT Hub-Instanz her.
+
 * Eine Back-End-Anwendung, die die direkten Methoden auf dem simulierten Gerät aufruft. Um eine direkte Methode auf einem Gerät aufzurufen, stellt diese Anwendung eine Verbindung mit einem dienstseitigen Endpunkt in Ihrer IoT Hub-Instanz her.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
@@ -50,7 +51,7 @@ Laden Sie das C#-Beispielprojekt von https://github.com/Azure-Samples/azure-iot-
 
 Wenn Sie das vorherige Tutorial [Schnellstart: Senden von Telemetriedaten von einem Gerät an eine IoT Hub-Instanz](quickstart-send-telemetry-dotnet.md) abgeschlossen haben, können Sie diesen Schritt überspringen.
 
-[!INCLUDE [iot-hub-quickstarts-create-hub](../../includes/iot-hub-quickstarts-create-hub.md)]
+[!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
 ## <a name="register-a-device"></a>Registrieren eines Geräts
 
@@ -60,21 +61,25 @@ Ein Gerät muss bei Ihrer IoT Hub-Instanz registriert sein, um eine Verbindung h
 
 1. Führen Sie die folgenden Befehle in Azure Cloud Shell aus, um die IoT Hub-CLI-Erweiterung hinzuzufügen und die Geräteidentität zu erstellen. 
 
-   **YourIoTHubName**: Ersetzen Sie diesen Platzhalter unten durch den Namen, den Sie für Ihren IoT Hub wählen.
+   **YourIoTHubName**: Ersetzen Sie diesen Platzhalter unten durch den für Ihren IoT-Hub ausgewählten Namen.
 
    **MyDotnetDevice**: Der für das registrierte Gerät angegebene Name. Verwenden Sie „MyDotnetDevice“ wie gezeigt. Wenn Sie für Ihr Gerät einen anderen Namen wählen, müssen Sie diesen innerhalb des gesamten Artikels verwenden und den Gerätenamen in den Beispielanwendungen aktualisieren, bevor Sie sie ausführen.
 
     ```azurecli-interactive
     az extension add --name azure-cli-iot-ext
-    az iot hub device-identity create --hub-name YourIoTHubName --device-id MyDotnetDevice
+    az iot hub device-identity create \
+      --hub-name YourIoTHubName --device-id MyDotnetDevice
     ```
 
 2. Führen Sie die folgenden Befehle in Azure Cloud Shell aus, um die _Geräteverbindungszeichenfolge_ für das soeben registrierte Gerät abzurufen:
 
-   **YourIoTHubName**: Ersetzen Sie diesen Platzhalter unten durch den Namen, den Sie für Ihren IoT Hub wählen.
+   **YourIoTHubName**: Ersetzen Sie diesen Platzhalter unten durch den für Ihren IoT-Hub ausgewählten Namen.
 
     ```azurecli-interactive
-    az iot hub device-identity show-connection-string --hub-name YourIoTHubName --device-id MyDotnetDevice --output table
+    az iot hub device-identity show-connection-string \
+      --hub-name YourIoTHubName \
+      --device-id MyDotnetDevice 
+      --output table
     ```
 
     Notieren Sie sich die Geräteverbindungszeichenfolge, die wie folgt aussieht:
@@ -121,7 +126,7 @@ Die simulierte Geräteanwendung stellt eine Verbindung mit einem gerätespezifis
 
     Der folgende Screenshot zeigt die Ausgabe, während die Anwendung zur Simulation eines Geräts Telemetriedaten an Ihre IoT Hub-Instanz sendet:
 
-    ![Ausführen des simulierten Geräts](media/quickstart-control-device-dotnet/SimulatedDevice-1.png)
+    ![Ausführen des simulierten Geräts](./media/quickstart-control-device-dotnet/SimulatedDevice-1.png)
 
 ## <a name="call-the-direct-method"></a>Aufrufen der direkten Methode
 
@@ -147,11 +152,11 @@ Die Back-End-Anwendung stellt eine Verbindung mit einem dienstseitigen Endpunkt 
 
     Der folgende Screenshot zeigt die Ausgabe, nachdem die Anwendung einen Aufruf einer direkten Methode an das Gerät gerichtet und eine Bestätigung empfangen hat:
 
-    ![Ausführen der Back-End-Anwendung](media/quickstart-control-device-dotnet/BackEndApplication.png)
+    ![Ausführen der Back-End-Anwendung](./media/quickstart-control-device-dotnet/BackEndApplication.png)
 
     Nachdem Sie die Back-End-Anwendung ausgeführt haben, sehen Sie eine Nachricht im Konsolenfenster, in dem das simulierte Gerät ausgeführt wird, und die Häufigkeit, mit der das Gerät Nachrichten sendet, ändert sich:
 
-    ![Änderung im simulierten Client](media/quickstart-control-device-dotnet/SimulatedDevice-2.png)
+    ![Änderung im simulierten Client](./media/quickstart-control-device-dotnet/SimulatedDevice-2.png)
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

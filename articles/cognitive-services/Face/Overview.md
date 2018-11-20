@@ -9,12 +9,12 @@ ms.component: face-api
 ms.topic: overview
 ms.date: 10/29/2018
 ms.author: sbowles
-ms.openlocfilehash: 3fe9dd713bef509b1972b51cb07d4f942c544544
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: a15b6678b15bf5d1a3078494e12da3a08c57bed3
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50914191"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51633460"
 ---
 # <a name="what-is-the-azure-face-api"></a>Was ist die Azure-Gesichtserkennungs-API?
 
@@ -63,6 +63,10 @@ Die folgende Abbildung enthält ein Beispiel für eine Datenbank mit dem Namen �
 Nachdem eine Datenbank erstellt und trainiert wurde, können Sie die Identifizierung eines neuen erkannten Gesichts für die Gruppe durchführen. Wenn das Gesicht als eine Person aus der Gruppe erkannt wird, wird das Personenobjekt zurückgegeben.
 
 Weitere Informationen zur Personenidentifizierung finden Sie unter [Identify API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239) (Identifizierungs-API).
+
+## <a name="use-containers"></a>Verwenden von Containern
+
+[Verwenden Sie den Gesichtserkennungscontainer](face-how-to-install-containers.md), um Gesichter zu erkennen und zu identifizieren. Installieren Sie dazu einen standardisierten Docker-Container, der sich näher bei Ihren Daten befindet.
 
 ## <a name="sample-apps"></a>Beispiel-Apps
 

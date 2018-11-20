@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: video-indexer
 ms.topic: sample
-ms.date: 09/15/2018
+ms.date: 11/12/2018
 ms.author: juliako
-ms.openlocfilehash: 53dc65c3d2c56308dd298f33bb78047904810ae5
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 513c64ba7c9dad29fbef4a4010f5320dadda3c82
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49377829"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51625181"
 ---
 # <a name="upload-and-index-your-videos"></a>Hochladen und Indizieren Ihrer Videos  
 
@@ -23,6 +23,7 @@ In diesem Artikel wird gezeigt, wie Sie ein Video mit Azure Video Indexer hochla
 
 * Hochladen des Videos von einer URL (bevorzugt)
 * Senden der Videodatei als Bytearray im Hauptteil der Anforderung
+* Verwenden Sie ein vorhandenes Azure Media Services-Medienobjekt, indem Sie die [Medienobjekt-ID](https://docs.microsoft.com/azure/media-services/latest/assets-concept) angeben (wird nur in kostenpflichtigen Konten unterstützt).
 
 In diesem Artikel wird veranschaulicht, wie Sie die API zum [Hochladen eines Videos ](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) verwenden, um Ihre Videos über eine URL hochzuladen und zu indizieren. Das Codebeispiel in diesem Artikel schließt den auskommentierten Code ein, der zeigt, wie Sie das Bytearray hochladen.  
 
@@ -50,6 +51,35 @@ In diesem Abschnitt werden einige optionale Parameter und ihre Anwendung beschri
 
 Dieser Parameter ermöglicht Ihnen das Angeben einer ID, die dem Video zugeordnet wird. Die ID kann auf die externe Systemintegration für die Verwaltung der Videoinhalte (Video Content Management, VCM) angewendet werden. Die Videos, die im Video Indexer-Portal enthalten sind, können anhand der angegebenen externen ID durchsucht werden.
 
+### <a name="callbackurl"></a>callbackUrl
+
+Eine URL, die zum Benachrichtigen des Kunden über die folgenden Ereignisse (mithilfe einer POST-Anforderung) verwendet wird:
+
+- Änderung des Indizierungszustands: 
+    - Eigenschaften:    
+    
+        |NAME|BESCHREIBUNG|
+        |---|---|
+        |id|Die Video-ID|
+        |state|Videozustand|  
+    - Beispiel: https://test.com/notifyme?projectName=MyProject&id=1234abcd&state=Processed
+- Im Video identifizierte Person:
+    - Eigenschaften
+    
+        |NAME|BESCHREIBUNG|
+        |---|---|
+        |id| Die Video-ID|
+        |faceId|Die Gesichts-ID, die im Videoindex angezeigt wird|
+        |knownPersonId|Die Personen-ID, die innerhalb eines Gesichtsmodells eindeutig ist|
+        |personName|Der Name der Person|
+        
+     - Beispiel: https://test.com/notifyme?projectName=MyProject&id=1234abcd&faceid=12&knownPersonId=CCA84350-89B7-4262-861C-3CAC796542A5&personName=Inigo_Montoya 
+
+#### <a name="notes"></a>Notizen
+
+- Video Indexer gibt vorhandene Parameter aus der ursprünglichen URL zurück.
+- Die angegebene URL muss codiert werden.
+
 ### <a name="indexingpreset"></a>indexingPreset
 
 Verwenden Sie diesen Parameter, wenn unformatierte oder externe Aufzeichnungen Hintergrundgeräusche enthalten. Dieser Parameter wird verwendet, um den Indizierungsprozess zu konfigurieren. Sie können die folgenden Werte angeben:
@@ -60,11 +90,11 @@ Verwenden Sie diesen Parameter, wenn unformatierte oder externe Aufzeichnungen H
 
 Der Preis richtet sich nach der gewählten Indizierungsoption.  
 
-### <a name="callbackurl"></a>callbackUrl
+### <a name="priority"></a>priority
 
-Eine POST-URL für die Benachrichtigung, wenn die Indizierung abgeschlossen ist. Video Indexer fügt zwei Abfragezeichenfolgenparameter hinzu: „id“ und „state“. Wenn die Rückruf-URL beispielsweise „https://test.com/notifyme?projectName=MyProject“ lautet, wird die Benachrichtigung mit zusätzlichen Parametern an „https://test.com/notifyme?projectName=MyProject&id=1234abcd&state=Processed“ gesendet.
+Videos werden von Video Indexer gemäß ihrer Priorität indiziert. Geben Sie mithilfe des Parameters **priority** die Indexpriorität an. Die folgenden Werte sind zulässig: **Niedrig**, **Normal** (Standardeinstellung) und **Hoch**.
 
-Sie können der URL auch weitere Parameter hinzufügen, bevor Sie den Aufruf per POST-Vorgang an Video Indexer senden. Diese Parameter werden in den Rückruf einbezogen. Später im Code können Sie die Abfragezeichenfolge analysieren und alle angegebenen Parameter in der Abfragezeichenfolge zurückerhalten (Daten, die Sie ursprünglich an die URL angefügt haben, sowie die von Video Indexer bereitgestellten Informationen). Die URL muss codiert sein.
+Der Parameter **priority** wird nur in kostenpflichtigen Konten unterstützt.
 
 ### <a name="streamingpreset"></a>streamingPreset
 

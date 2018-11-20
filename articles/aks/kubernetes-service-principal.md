@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: get-started-article
 ms.date: 09/26/2018
 ms.author: iainfou
-ms.openlocfilehash: ef3139c4b3f06644b219e177fad0c094ed600fb6
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 4af4cae07f4e02bc8306c0b317da3a58e4586494
+ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47394589"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51578348"
 ---
 # <a name="service-principals-with-azure-kubernetes-service-aks"></a>Dienstprinzipale mit Azure Kubernetes Service (AKS)
 
@@ -24,7 +24,7 @@ Dieser Artikel veranschaulicht das Erstellen und Verwenden eines Dienstprinzipal
 
 Für die Erstellung eines Azure AD-Dienstprinzipals müssen Sie dazu berechtigt sein, eine Anwendung bei Ihrem Azure AD-Mandanten zu registrieren und die Anwendung einer Rolle in Ihrem Abonnement zuzuweisen. Sollten Sie nicht über die erforderlichen Berechtigungen verfügen, können Sie ggf. Ihren Azure AD- oder Abonnementadministrator bitten, Ihnen die erforderlichen Berechtigungen zuzuweisen oder vorab einen Dienstprinzipal für die Verwendung mit dem AKS-Cluster für Sie zu erstellen.
 
-Außerdem muss mindestens Version 2.0.46 oder höher der Azure-Befehlszeilenschnittstelle installiert und konfiguriert sein. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0][install-azure-cli] Informationen dazu.
+Außerdem muss die Version 2.0.46 oder höher der Azure-Befehlszeilenschnittstelle installiert und konfiguriert sein. Führen Sie  `az --version` aus, um die Version zu ermitteln. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie weitere Informationen unter [Installieren der Azure CLI][install-azure-cli].
 
 ## <a name="automatically-create-and-use-a-service-principal"></a>Automatisches Erstellen und Verwenden eines Dienstprinzipals
 
@@ -75,6 +75,45 @@ Wenn Sie einen AKS-Cluster über das Azure-Portal bereitstellen, wählen Sie auf
 
 ![Abbildung der Navigation zu Azure Vote](media/kubernetes-service-principal/portal-configure-service-principal.png)
 
+## <a name="delegate-access-to-other-azure-resources"></a>Delegieren des Zugriffs auf andere Azure-Ressourcen
+
+Der Dienstprinzipal für den AKS-Cluster kann verwendet werden, um auf andere Ressourcen zuzugreifen. Wenn Sie beispielsweise über erweiterte Netzwerke eine Verbindung mit vorhandenen Netzwerken oder eine Verbindung mit Azure Container Registry (ACR) herstellen möchten, müssen Sie den Zugriff an den Dienstprinzipal delegieren.
+
+Um Berechtigungen zu delegieren, erstellen Sie mit dem Befehl [az role assignment create][az-role-assignment-create] eine Rollenzuweisung. Sie weisen die `appId` einem bestimmten Bereich zu, beispielsweise einer Ressourcengruppe oder einer virtuellen Netzwerkressource. Eine Rolle definiert dann wie im folgenden Beispiel gezeigt die Berechtigungen, die der Dienstprinzipal für diese Ressource besitzt:
+
+```azurecli
+az role assignment create --assignee <appId> --scope <resourceScope> --role Contributor
+```
+
+Bei dem `--scope` für eine Ressource muss es sich um eine vollständige Ressourcen-ID handeln, z. B. */subscriptions/\<guid\>/resourceGroups/myResourceGroup* oder */subscriptions/\<guid\>/resourceGroups/myResourceGroupVnet/providers/Microsoft.Network/virtualNetworks/myVnet*.
+
+In den folgenden Abschnitten werden allgemeine Delegierungen, die Sie möglicherweise vornehmen müssen, ausführlicher erläutert.
+
+### <a name="azure-container-registry"></a>Azure Container Registry
+
+Wenn Sie Azure Container Registry (ACR) als Speicher für Containerimages verwenden, müssen Sie Ihrem AKS-Cluster Berechtigungen zum Lesen und Pullen von Images erteilen. An den Dienstprinzipal des AKS-Clusters muss die Rolle *Leser* für die Registrierung delegiert werden. Ausführliche Anweisungen hierzu finden Sie unter [Gewähren von AKS-Zugriff auf ACR][aks-to-acr].
+
+### <a name="networking"></a>Netzwerk
+
+Möglicherweise verwenden Sie erweiterte Netzwerke, in denen sich das virtuelle Netzwerk und das Subnetz oder öffentliche IP-Adressen in einer anderen Ressourcengruppe befinden. Weisen Sie eine der folgenden Gruppen von Rollenberechtigungen zu:
+
+- Erstellen Sie eine [benutzerdefinierte Rolle][rbac-custom-role], und definieren Sie die folgenden Rollenberechtigungen:
+  - *Microsoft.Network/virtualNetworks/subnets/join/action*
+  - *Microsoft.Network/virtualNetworks/subnets/read*
+  - *Microsoft.Network/publicIPAddresses/read*
+  - *Microsoft.Network/publicIPAddresses/write*
+  - *Microsoft.Network/publicIPAddresses/join/action*
+- Alternativ können Sie die integrierte Rolle [Netzwerkmitwirkender][rbac-network-contributor] für das Subnetz im virtuellen Netzwerk zuweisen.
+
+### <a name="storage"></a>Speicher
+
+Möglicherweise müssen Sie auf vorhandene Datenträgerressourcen in einer anderen Ressourcengruppe zugreifen. Weisen Sie eine der folgenden Gruppen von Rollenberechtigungen zu:
+
+- Erstellen Sie eine [benutzerdefinierte Rolle][rbac-custom-role], und definieren Sie die folgenden Rollenberechtigungen:
+  - *Microsoft.Compute/disks/read*
+  - *Microsoft.Compute/disks/write*
+- Alternativ können Sie die integrierte Rolle [Speicherkontomitwirkender][rbac-storage-contributor] für die Ressourcengruppe zuweisen.
+
 ## <a name="additional-considerations"></a>Zusätzliche Überlegungen
 
 Beachten Sie bei Verwendung von AKS und Azure AD-Dienstprinzipalen die folgenden Kriterien.
@@ -107,3 +146,8 @@ Weitere Informationen zu Azure Active Directory-Dienstprinzipalen finden Sie unt
 [az-ad-app-list]: /cli/azure/ad/app#az-ad-app-list
 [az-ad-app-delete]: /cli/azure/ad/app#az-ad-app-delete
 [az-aks-create]: /cli/azure/aks#az-aks-create
+[rbac-network-contributor]: ../role-based-access-control/built-in-roles.md#network-contributor
+[rbac-custom-role]: ../role-based-access-control/custom-roles.md
+[rbac-storage-contributor]: ../role-based-access-control/built-in-roles.md#storage-account-contributor
+[az-role-assignment-create]: /cli/azure/role/assignment#az-role-assignment-create
+[aks-to-acr]: ../container-registry/container-registry-auth-aks.md?toc=%2fazure%2faks%2ftoc.json#grant-aks-access-to-acr

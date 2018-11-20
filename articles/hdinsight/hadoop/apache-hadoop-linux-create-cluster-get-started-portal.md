@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Erste Schritte mit Hadoop und Hive in Azure HDInsight im Azure-Portal '
+title: 'Schnellstart: Erste Schritte mit Apache Hadoop und Apache Hive in Azure HDInsight im Azure-Portal '
 description: Erfahren Sie, wie Sie HDInsight-Cluster im Azure-Portal erstellen und Daten mit Hive abfragen.
 keywords: Erste Schritte mit Hadoop, Hadoop Linux, Hadoop-Schnellstart, erste Schritte mit Hive, Hive-Schnellstart
 services: hdinsight
@@ -10,16 +10,16 @@ ms.custom: hdinsightactive,hdiseo17may2017,mvc
 ms.topic: quickstart
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: 07f9f774e3d133a2a39aad16b06ed77938ad74c8
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 9b6ae9030069f48e1805a657f938595b081271ba
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51281642"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51632950"
 ---
-# <a name="quickstart-get-started-with-hadoop-and-hive-in-azure-hdinsight-using-the-azure-portal"></a>Schnellstart: Erste Schritte mit Hadoop und Hive in Azure HDInsight im Azure-Portal
+# <a name="quickstart-get-started-with-apache-hadoop-and-apache-hive-in-azure-hdinsight-using-the-azure-portal"></a>Schnellstart: Erste Schritte mit Apache Hadoop und Apache Hive in Azure HDInsight im Azure-Portal
 
-In diesem Artikel erfahren Sie, wie Sie über das Azure-Portal [Hadoop](http://hadoop.apache.org/)-Cluster in HDInsight erstellen und dann Hive-Aufträge in HDInsight ausführen. Die meisten Hadoop-Aufträge sind Batchaufträge. Sie erstellen einen Cluster, führen einige Aufträge aus und löschen dann den Cluster. In diesem Artikel führen Sie alle drei Aufgaben durch.
+In diesem Artikel erfahren Sie, wie Sie über das Azure-Portal [Apache Hadoop](http://hadoop.apache.org/)-Cluster in HDInsight erstellen und dann Apache Hive-Aufträge in HDInsight ausführen. Die meisten Hadoop-Aufträge sind Batchaufträge. Sie erstellen einen Cluster, führen einige Aufträge aus und löschen dann den Cluster. In diesem Artikel führen Sie alle drei Aufgaben durch.
 
 In dieser Schnellstartanleitung verwenden Sie das Azure-Portal, um einen HDInsight-Hadoop-Cluster zu erstellen. Sie können einen Cluster auch mithilfe der [Azure Resource Manager-Vorlage](apache-hadoop-linux-tutorial-get-started.md) erstellen.
 

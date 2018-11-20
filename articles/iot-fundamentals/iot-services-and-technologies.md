@@ -7,14 +7,14 @@ services: iot-fundamentals
 ms.topic: overview
 ms.date: 10/09/2018
 ms.author: robinsh
-ms.openlocfilehash: 6834ad6c6915ceb3306284ea738d76027e2c9479
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: ba4f5fcb08d671937c677d8a14c27aaec16bcb1b
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49365355"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51288712"
 ---
-# <a name="azure-iot-technologies-and-solutions-paas-and-saas"></a>Azure IoT-Technologien und -Lösungen: PaaS und SaaS
+# <a name="internet-of-things-iot-technologies-and-solutions-paas-and-saas"></a>IoT-Technologien und -Lösungen (Internet of Things, Internet der Dinge): PaaS und SaaS
 
 Microsoft hat eine Produktpalette entwickelt, die die Bedürfnisse aller Kunden unterstützt und jedem ermöglicht, die Vorteile digitaler Transformation zu nutzen. Das Azure IoT-Produktportfolio gibt einen Überblick über die verfügbaren PaaS-/SaaS-Technologien und -Lösungen. Es stellt die beiden Wege vor, die für den Aufbau einer eigenen Lösung zur Verfügung stehen:
 
@@ -24,7 +24,7 @@ Microsoft hat eine Produktpalette entwickelt, die die Bedürfnisse aller Kunden 
 
 - Software-as-a-Service (SaaS): Steigen Sie mit [Azure IoT Central](https://azure.microsoft.com/services/iot-central/), der neuen SaaS-Lösung zur Entwicklung von IoT-Anwendungen, schnell ein, ohne sich mit der Komplexität von IoT-Lösungen auseinandersetzen zu müssen. Falls Ihrem Unternehmen die Ressourcen zum Erstellen einer eigenen IoT-Lösung fehlen, bietet Azure IoT Central eine codelose IoT-Lösung, mit der Sie in wenigen Minuten Gerätemodelle, Dashboards und Regeln erstellen können.
 
-![Azure IoT-Technologien und -Lösungen](./media/iot-comparison/paas-saas-technologies-solutions.png)
+![Azure IoT-Technologien und -Lösungen](./media/iot-services-and-technologies/paas-saas-technologies-solutions.png)
 
 ## <a name="solutions"></a>Lösungen
 

@@ -9,17 +9,17 @@ editor: jasonwhowell
 ms.custom: mvc
 ms.service: postgresql
 ms.topic: overview
-ms.date: 06/15/2018
-ms.openlocfilehash: 86a8b824479173024b1a14bb8612073ffbfac468
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.date: 11/14/2018
+ms.openlocfilehash: c1e90e9e39bb9ff698b2e53a2b7cf02340e1111f
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47092156"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51685853"
 ---
 # <a name="what-is-azure-database-for-postgresql"></a>Was ist Azure-Datenbank für PostgreSQL?
 
-Azure Database for PostgreSQL ist ein relationaler, für Entwickler konzipierter Datenbankdienst in Microsoft Cloud, der auf der Communityversion des Open-Source-Datenbankmoduls [PostgreSQL](https://www.postgresql.org/) basiert. Azure-Datenbank für PostgreSQL bietet Folgendes:
+Azure Database for PostgreSQL ist ein relationaler, für Entwickler konzipierter Datenbankdienst in Microsoft Cloud, der auf der Communityversion der Open Source-Datenbank-Engine [PostgreSQL](https://www.postgresql.org/) (Version 9.5, 9.6 und 10) basiert. Azure-Datenbank für PostgreSQL bietet Folgendes:
 
 - Integrierte Hochverfügbarkeit ohne zusätzliche Kosten
 - Vorhersagbare Leistung inklusive nutzungsbasierter Bezahlung
@@ -40,7 +40,7 @@ Eine Reihe von Azure CLI-Beispielen finden Sie unter:
 - [Azure CLI-Beispiele für Azure-Datenbank für PostgreSQL](./sample-scripts-azure-cli.md)
 
 ## <a name="adjust-performance-and-scale-within-seconds"></a>Anpassen von Leistung und Skalierung in nur wenigen Sekunden
-Für den Azure Database for PostgreSQL-Dienst sind drei Tarife verfügbar: „Basic“, „Universell“ und „Arbeitsspeicheroptimiert“. Jeder Tarif bietet unterschiedliche Ressourcenfunktionen für Ihre Datenbankworkloads. Sie können Ihre erste App mit einer kleinen Datenbank für wenige USD im Monat erstellen und die Skalierung dann so ändern, dass sie den Anforderungen Ihrer Lösung entspricht. Durch die dynamische Skalierung kann Ihre Datenbank transparent auf schnell wechselnde Ressourcenanforderungen reagieren. Sie bezahlen nur für die benötigten Ressourcen und auch nur dann, wenn Sie sie verwenden. Einzelheiten hierzu finden Sie unter [Tarife](concepts-pricing-tiers.md).
+Für den Azure Database for PostgreSQL-Dienst sind drei Tarife verfügbar: „Basic“, „Universell“ und „Arbeitsspeicheroptimiert“. Jeder Tarif bietet unterschiedliche Ressourcenfunktionen für Ihre Datenbankworkloads. Sie können Ihre erste App mit einer kleinen Datenbank für wenige USD im Monat erstellen und die Skalierung dann so ändern, dass sie den Anforderungen Ihrer Lösung entspricht. Durch die dynamische Skalierung kann Ihre Datenbank transparent auf schnell wechselnde Ressourcenanforderungen reagieren. Sie bezahlen nur für die benötigten Ressourcen und auch nur dann, wenn Sie sie verwenden. Einzelheiten hierzu finden Sie unter  [Tarife](concepts-pricing-tiers.md).
 
 ## <a name="monitoring-and-alerting"></a>Überwachung und Warnung
 Wie entscheiden Sie, wann Sie hoch- oder herunterskalieren? Mit den integrierten Überwachungs- und Warnungsfeatures von Azure. Mit diesen Tools können Sie abhängig von Ihrem aktuellen oder voraussichtlichen Leistungs- oder Speicherbedarf blitzschnell die Auswirkungen des zentralen Hoch- oder Herunterskalierens bewerten. Einzelheiten hierzu finden Sie unter [Warnungen](howto-alert-on-metric.md).

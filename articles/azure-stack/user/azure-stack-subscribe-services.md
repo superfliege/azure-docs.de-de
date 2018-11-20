@@ -13,21 +13,22 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 09/05/2018
+ms.date: 11/13/2018
 ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: aff20cba3bc07924f669420a8c367613b41111a1
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 35b3e6d59cdb1edc59aa211954b8a69a3ce51bc5
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49076099"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51632204"
 ---
 # <a name="tutorial-create-and-test-a-subscription"></a>Tutorial: Erstellen und Testen eines Abonnements
+
 In diesem Tutorial erfahren Sie, wie Sie ein Abonnement mit einem Angebot erstellen und es anschließend testen. Für den Test melden Sie sich beim Azure Stack-Benutzerportal als Cloudadministrator an, abonnieren das Angebot und erstellen dann einen virtuellen Computer.
 
 > [!TIP]
-> Für eine komplexere Evaluierung können Sie [ein Abonnement für einen bestimmten Benutzer erstellen](https://docs.microsoft.com/azure/azure-stack/azure-stack-subscribe-plan-provision-vm#create-a-subscription-as-a-cloud-operator) und sich dann als dieser Benutzer beim Benutzerportal anmelden. 
+> Für eine komplexere Evaluierung können Sie [ein Abonnement für einen bestimmten Benutzer erstellen](../azure-stack-subscribe-plan-provision-vm.md#create-a-subscription-as-a-cloud-operator) und sich dann als dieser Benutzer beim Benutzerportal anmelden. 
 
 In diesem Tutorial erfahren Sie, wie Sie ein Azure Stack-Angebot abonnieren.
 
@@ -38,25 +39,26 @@ Sie lernen Folgendes:
 > * Testen des Angebots
 
 ## <a name="subscribe-to-an-offer"></a>Abonnieren von Angeboten
+
 Wenn Sie als Benutzer ein Angebot abonnieren möchten, müssen Sie sich beim Azure Stack-Benutzerportal anmelden, um die Dienste zu ermitteln, die vom Azure Stack-Betreiber angeboten werden.
 
-1. Melden Sie sich beim Benutzerportal an, und klicken Sie auf **Abonnement erwerben**.
+1. Melden Sie sich beim Benutzerportal an, und wählen Sie **Abonnement erwerben** aus.
 
    ![Erwerben eines Abonnements](media/azure-stack-subscribe-services/get-subscription.png)
 
-2. Geben Sie im Feld **Anzeigenamen** einen Namen für Ihr Abonnement ein. Klicken Sie auf **Angebot**, wählen Sie im Abschnitt **Angebot wählen** eines der verfügbaren Angebote aus, und klicken Sie anschließend auf **Erstellen**.
+2. Geben Sie im Feld **Anzeigenamen** einen Namen für Ihr Abonnement ein. Klicken Sie auf **Angebot**, und wählen Sie im Abschnitt **Angebot wählen** eines der verfügbaren Angebote aus. Klicken Sie anschließend auf **Erstellen**.
 
    ![Erstellen von Angeboten](media/azure-stack-subscribe-services/create-subscription.png)
 
    > [!TIP]
    > Aktualisieren Sie nun das Benutzerportal, um mit der Verwendung Ihres Abonnements zu beginnen.
 
-3. Klicken Sie zum Anzeigen des von Ihnen erstellten Abonnements auf **Alle Dienste**.  Wählen Sie anschließend unter der Kategorie **ALLGEMEIN** die Option **Abonnements** und dann Ihr neues Abonnement aus. Aktualisieren Sie nach dem Abonnieren eines Angebots das Portal, um zu sehen, ob das neue Abonnement neue Dienste beinhaltet. In diesem Beispiel wurde **Virtuelle Computer** hinzugefügt.
+3. Wählen Sie zum Anzeigen des von Ihnen erstellten Abonnements **Alle Dienste** aus. Wählen Sie anschließend unter der Kategorie **ALLGEMEIN** die Option **Abonnements** und dann Ihr neues Abonnement aus. Aktualisieren Sie nach dem Abonnieren eines Angebots das Portal, um zu sehen, ob das neue Abonnement neue Dienste beinhaltet. In diesem Beispiel wurde **Virtuelle Computer** hinzugefügt.
 
    ![Anzeigen des Abonnements](media/azure-stack-subscribe-services/view-subscription.png)
 
-
 ## <a name="test-the-offer"></a>Testen des Angebots
+
 Wenn Sie beim Benutzerportal angemeldet sind, können Sie das Angebot testen, indem Sie einen virtuellen Computer bereitstellen, der die Funktionen des neuen Abonnements verwendet. 
 
 > [!NOTE]
@@ -64,17 +66,17 @@ Wenn Sie beim Benutzerportal angemeldet sind, können Sie das Angebot testen, in
 
 1. Melden Sie sich am Benutzerportal an.
 
-2. Klicken Sie im Benutzerportal auf **Virtual Machines** > **Hinzufügen** > **Windows Server 2016 Datacenter** und anschließend auf **Erstellen**.
+2. Wählen Sie im Benutzerportal **Virtual Machines** > **Hinzufügen** > **Windows Server 2016 Datacenter** aus, und klicken Sie anschließend auf **Erstellen**.
 
 3. Geben Sie im Abschnitt **Grundlagen** einen **Namen**, einen **Benutzernamen** und ein **Kennwort** ein, wählen Sie ein **Abonnement** aus, erstellen Sie eine **Ressourcengruppe** (oder wählen Sie eine vorhandene Ressourcengruppe aus), und klicken Sie dann auf **OK**.
 
-4. Klicken Sie im Abschnitt **Größe auswählen** auf **A1 Standard** und dann auf **Auswählen**.  
+4. Wählen Sie im Abschnitt **Größe auswählen** die Option **A1 Standard** aus, und klicken Sie dann auf **Auswählen**.  
 
-5. Behalten Sie auf dem Einstellungsblatt die Standardwerte bei, und klicken Sie auf **OK**.
+5. Behalten Sie auf dem Blatt **Einstellungen** die Standardwerte bei, und wählen Sie **OK** aus.
 
 6. Klicken Sie im Abschnitt **Zusammenfassung** auf **OK**, um den virtuellen Computer zu erstellen.  
 
-7. Klicken Sie zum Anzeigen Ihres neuen virtuellen Computers auf **Virtuelle Computer**, suchen Sie nach dem neuen virtuellen Computer, und klicken Sie auf den Namen.
+7. Wählen Sie zum Anzeigen Ihres neuen virtuellen Computers **Virtuelle Computer** aus, suchen Sie nach dem neuen virtuellen Computer, und klicken Sie auf seinen Namen.
 
     ![Alle Ressourcen](media/azure-stack-subscribe-services/view-vm.png)
 

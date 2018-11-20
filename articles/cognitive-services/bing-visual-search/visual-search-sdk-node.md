@@ -10,12 +10,12 @@ ms.component: bing-visual-search
 ms.topic: quickstart
 ms.date: 05/18/2018
 ms.author: v-gedod
-ms.openlocfilehash: 0956e88bd293b62935f5c8e2b9ef2d30466af8e4
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: 77b8f956ca2a6985121cb5dbfebc2755fa73a35c
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49456608"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51685972"
 ---
 # <a name="quickstart-bing-visual-search-sdk-node"></a>Schnellstart: SDK für die visuelle Bing-Suche, Node 
 
@@ -32,7 +32,9 @@ Codeszenarien sind unter den folgenden Themen dokumentiert:
 
 ## <a name="application-dependencies"></a>Anwendungsabhängigkeiten
 
-* Führen Sie `npm install Microsoft.Azure.CognitiveServices.Search.VisualSearch`aus.
+So richten Sie eine Konsolenanwendung mit dem SDK für die visuelle Bing-Suche ein:
+* Führen Sie `npm install ms-rest-azure` aus.
+* Führen Sie `npm install azure-cognitiveservices-search-visualSearch`aus.
 
 <a name="client"></a>
 ## <a name="visual-search-client"></a>Client für die thematische Suche

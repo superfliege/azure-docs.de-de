@@ -1,6 +1,6 @@
 ---
-title: Erstellen eines Anwendungsgateways mit Umleitung auf URL-Pfadbasis – Azure-Befehlszeilenschnittstelle
-description: Erfahren Sie, wie Sie mithilfe der Azure-Befehlszeilenschnittstelle ein Anwendungsgateway mit Umleitung des Datenverkehrs auf URL-Pfadbasis erstellen.
+title: 'Tutorial: Erstellen eines Anwendungsgateways mit Umleitung auf URL-Pfadbasis: Azure-Befehlszeilenschnittstelle'
+description: In diesem Tutorial erfahren Sie, wie Sie mithilfe der Azure-Befehlszeilenschnittstelle ein Anwendungsgateway mit Umleitung des Datenverkehrs auf URL-Pfadbasis erstellen.
 services: application-gateway
 author: vhorne
 manager: jpconnock
@@ -10,12 +10,12 @@ ms.workload: infrastructure-services
 ms.date: 7/14/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 3515d603c16bffe911df1b927d02644fcffa0788
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 8489cf79848eb41e3c6334242ca607e925ae0b31
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46947549"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51568147"
 ---
 # <a name="tutorial-create-an-application-gateway-with-url-path-based-redirection-using-the-azure-cli"></a>Tutorial: Erstellen eines Anwendungsgateways mit Umleitung auf URL-Pfadbasis mithilfe der Azure-Befehlszeilenschnittstelle
 
@@ -313,14 +313,6 @@ Entfernen Sie die Ressourcengruppe, das Anwendungsgateway und alle dazugehörige
 az group delete --name myResourceGroupAG --location eastus
 ```
 ## <a name="next-steps"></a>Nächste Schritte
-
-In diesem Tutorial haben Sie Folgendes gelernt:
-
-> [!div class="checklist"]
-> * Einrichten des Netzwerks
-> * Erstellen eines Anwendungsgateways
-> * Hinzufügen der Listener und Routingregeln
-> * Erstellen von VM-Skalierungsgruppen für Back-End-Pools
 
 > [!div class="nextstepaction"]
 > [Erfahren Sie mehr darüber, was Sie mit dem Anwendungsgateway tun können.](application-gateway-introduction.md)

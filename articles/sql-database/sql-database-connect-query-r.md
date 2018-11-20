@@ -12,12 +12,12 @@ ms.author: davidph
 ms.reviewer: ''
 manager: cgronlun
 ms.date: 11/07/2018
-ms.openlocfilehash: 75ec6a3fbfdd45575c46b763f1f5d0b69376e7a7
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 382ac23ea4c8e0ec54314bb754c00a8e6e43e9f6
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51285270"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51300964"
 ---
 # <a name="quickstart-use-machine-learning-services-with-r-in-azure-sql-database-preview"></a>Schnellstart: Verwenden von Machine Learning Services (mit R) in Azure SQL-Datenbank (Vorschauversion)
 
@@ -47,7 +47,7 @@ Sie können eine Verbindung mit der SQL-Datenbank herstellen und die R-Skripts m
 
 Für die Übung [Hinzufügen eines Pakets](#add-package) müssen Sie auch [R](https://www.r-project.org/) und [RStudio Desktop](https://www.rstudio.com/products/rstudio/download/) auf Ihrem lokalen Computer installieren.
 
-Diese Schnellstartanleitung setzt auch voraus, dass Sie eine Firewallregel auf Serverebene konfigurieren. Ein Schnellstartanleitung für die Vorgehensweise finden Sie unter [Erstellen einer SQL-Datenbank-Firewallregel auf Serverebene mithilfe des Azure-Portals](sql-database-get-started-portal-firewall.md).
+Diese Schnellstartanleitung setzt auch voraus, dass Sie eine Firewallregel auf Serverebene konfigurieren. Ein Schnellstartanleitung für die Vorgehensweise finden Sie unter [Erstellen von Firewallregeln auf Serverebene Regel](sql-database-get-started-portal-firewall.md).
 
 ## <a name="different-from-sql-server"></a>Unterschiede gegenüber SQL Server
 

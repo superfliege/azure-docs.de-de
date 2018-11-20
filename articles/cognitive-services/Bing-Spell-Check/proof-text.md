@@ -10,12 +10,12 @@ ms.component: bing-spell-check
 ms.topic: overview
 ms.date: 05/03/2018
 ms.author: nolachar
-ms.openlocfilehash: 4caa05ffa96dbc15922fed85edfdefdb68ead68b
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: 3a277b10561b2756fab0af6455d17557a8d93a53
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49361710"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51345707"
 ---
 # <a name="what-is-bing-spell-check-api"></a>Was ist die Bing-Rechtschreibprüfungs-API?
 
@@ -42,9 +42,12 @@ Der Standardmodus ist `Proof`. Der Rechtschreibmodus `Proof` bietet die umfangre
 <br /><br/>**Hinweis:** Wenn die Länge des Abfragetexts 4.096 Zeichen übersteigt, wird er vor der Verarbeitung auf 4.096 Zeichen gekürzt. 
 ### <a name="spell----for-web-searchesqueries-scenario"></a>Spell (für Websuchvorgänge/-abfragen)
 `Spell` ist aggressiver, um bessere Suchergebnisse zu liefern. Der Modus `Spell` findet zwar die meisten Rechtschreibfehler, aber nicht alle Grammatikfehler, die von `Proof` erkannt werden (beispielsweise Groß-/Kleinschreibung und Wortwiederholungen).
-<br /></br>**HINWEIS:** Angaben zur maximal unterstützten Abfragelänge finden Sie im Anschluss. Ist die Abfrage zu lang, wird die Abfrage nicht geändert und das Ergebnis angezeigt.
-<ul><li>130 Zeichen für folgende Sprachcodes: en, de, es, fr, pl, pt, sv, ru, nl, nb, tr-tr, it, zh, ko. </li>
-<li>65 Zeichen für andere.</li></ul>
+
+> [!NOTE]
+> * Die maximale unterstützte Länge ist unten angegeben. Überschreitet die Abfrage die maximale Länge, werden die Abfrage und ihre Ergebnisse nicht geändert.
+>    * 130 Zeichen für die folgenden Sprachcodes: en, de, es, fr, pl, pt, sv, ru, nl, nb, tr-tr, it, zh, ko. 
+>    * 65 Zeichen für alle anderen Sprachcodes.
+> * Der Rechtschreibprüfungsmodus unterstützt keine eckigen Klammern (`[` und `]`) in Abfragen, was zu inkonsistenten Ergebnissen führen kann. Es wird empfohlen, diese Klammern aus den Abfragen zu entfernen, wenn Sie den Rechtschreibprüfungsmodus nutzen.
 
 ## <a name="market-setting"></a>Markteinstellung
 Der Markt muss im Abfrageparameter der Anforderungs-URL angegeben werden. Andernfalls verwendet die Rechtschreibprüfung den Standardmarkt (basierend auf der IP-Adresse).

@@ -13,15 +13,15 @@ ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: report-monitor
-ms.date: 09/24/2018
+ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 82cd29cf1a635d1cd613d289a5d8db6ef54ee661
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 0afa4f85f443789d1ce7e79d0708967e308a4683
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49398719"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51623196"
 ---
 # <a name="what-is-azure-active-directory-monitoring-preview"></a>Was ist die Azure Active Directory-Überwachung? (Vorschauversion)
 
@@ -29,10 +29,9 @@ Mit der Azure AD-Überwachung (Azure Active Directory) können Sie nun Ihre Azur
 
 Derzeit können die Protokolle an folgende Ziele weitergeleitet werden:
 
-- Azure-Speicherkonto
+- Ein Azure-Speicherkonto.
 - Azure Event Hub (für die Integration in Splunk- und Sumologic-Instanzen)
 - Azure Log Analytics-Arbeitsbereich, in dem Sie die Daten analysieren, ein Dashboard erstellen und Warnungen für bestimmte Ereignisse verwenden können
-
 
 ## <a name="diagnostic-settings-configuration"></a>Konfiguration der Diagnoseeinstellungen
 
@@ -44,7 +43,7 @@ Wenn Sie Überwachungseinstellungen für Azure AD-Aktivitätsprotokolle konfigur
     
 * Klicken Sie auf **Überwachungsprotokolle** oder **Anmeldungen** und anschließend auf **Einstellungen exportieren**. 
 
-    ![Einstellungen exportieren](./media/overview-monitoring/export-settings.png)
+    ![Exporteinstellungen](./media/overview-monitoring/export-settings.png)
 
 
 ## <a name="route-logs-to-storage-account"></a>Senden von Protokollen an ein Speicherkonto
@@ -53,7 +52,7 @@ Wenn Sie Protokolle an ein Azure-Speicherkonto weiterleiten, können Sie sie lä
 
 ## <a name="stream-logs-to-event-hub"></a>Streamen von Protokollen an einen Event Hub
 
-Wenn Sie Protokolle an einen Azure Event Hub weiterleiten, können Sie sie in SIEM-Drittanbietertools wie Sumologic und Splunk integrieren. Diese Integration ermöglicht es Ihnen, Daten des Azure AD-Aktivitätsprotokolls mit anderen Daten zu kombinieren, die von Ihrer SIEM-Lösung verwaltetet werden, um umfassendere Einblicke in Ihre Umgebung zu gewinnen. Informationen zum Streamen von Protokollen an einen Event Hub finden Sie [hier](tutorial-azure-monitor-stream-logs-to-event-hub.md).
+Wenn Sie Protokolle an einen Azure Event Hub weiterleiten, können Sie sie in SIEM-Drittanbietertools wie Sumologic und Splunk integrieren. Diese Integration ermöglicht es Ihnen, Daten des Azure AD-Aktivitätsprotokolls mit anderen Daten zu kombinieren, die von Ihrer SIEM-Lösung verwaltetet werden, um umfassendere Einblicke in Ihre Umgebung zu gewähren. Informationen zum Streamen von Protokollen an einen Event Hub finden Sie [hier](tutorial-azure-monitor-stream-logs-to-event-hub.md).
 
 ## <a name="send-logs-to-log-analytics"></a>Senden von Protokollen an Log Analytics
 

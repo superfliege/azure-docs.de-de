@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: barbkess
-ms.openlocfilehash: d8e390fc185c3cb0b63bcea56feb4b133652673d
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 7a7f959f54281dcce5b8d1349f5d6607f0e5da30
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51258832"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51345792"
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Schreiben von Ausdrücken für Attributzuordnungen in Azure Active Directory
 Wenn Sie die Bereitstellung für eine SaaS-Anwendung konfigurieren, ist einer der Attributzuordnungstypen, die Sie angeben können, eine Ausdruckszuordnung. Für diese müssen Sie einen skriptartigen Ausdruck schreiben, mit dem Sie die Daten Ihrer Benutzer in Formate umwandeln können, die für die SaaS-Anwendung einfacher zu akzeptieren sind.
@@ -37,7 +37,7 @@ Die Syntax für die Ausdrücke für Attributzuordnungen ist den Funktionen von V
 * Bei Zeichenfolgenkonstanten, in denen ein umgekehrter Schrägstrich ( \ ) oder ein Anführungszeichen ( " ) benötigt wird, muss dieser bzw. dieses mit einem umgekehrten Schrägstrichsymbol ( \ ) versehen werden. Beispiel: "Firmenname: \"Contoso\""
 
 ## <a name="list-of-functions"></a>Liste der Funktionen
-[Append](#append) &nbsp;&nbsp;&nbsp;&nbsp; [FormatDateTime](#formatdatetime) &nbsp;&nbsp;&nbsp;&nbsp; [Join](#join) &nbsp;&nbsp;&nbsp;&nbsp; [Mid](#mid) &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; [NormalizeDiacritics](#normalizediacritics) [Not](#not) &nbsp;&nbsp;&nbsp;&nbsp; [Replace](#replace) &nbsp;&nbsp;&nbsp;&nbsp; [SingleAppRoleAssignment](#singleapproleassignment)&nbsp;&nbsp;&nbsp;&nbsp; [StripSpaces](#stripspaces) &nbsp;&nbsp;&nbsp;&nbsp; [Switch](#switch)
+[Append](#append) &nbsp;&nbsp;&nbsp;&nbsp; [FormatDateTime](#formatdatetime) &nbsp;&nbsp;&nbsp;&nbsp; [Join](#join) &nbsp;&nbsp;&nbsp;&nbsp; [Mid](#mid) &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; [NormalizeDiacritics](#normalizediacritics) [Not](#not) &nbsp;&nbsp;&nbsp;&nbsp; [Replace](#replace) &nbsp;&nbsp;&nbsp;&nbsp; [SelectUniqueValue](#selectuniquevalue)&nbsp;&nbsp;&nbsp;&nbsp; [SingleAppRoleAssignment](#singleapproleassignment)&nbsp;&nbsp;&nbsp;&nbsp; [StripSpaces](#stripspaces) &nbsp;&nbsp;&nbsp;&nbsp; [Switch](#switch)
 
 - - -
 ### <a name="append"></a>Anfügen
@@ -68,7 +68,7 @@ Die Syntax für die Ausdrücke für Attributzuordnungen ist den Funktionen von V
 
 - - -
 ### <a name="join"></a>Join
-**Funktion:**<br> Join(Trennzeichen, Quelle1, Quelle2, …)
+**Funktion:**<br>  Join(Trennzeichen, Quelle1, Quelle2, …)
 
 **Beschreibung:**<br> „Join()“ ist vergleichbar mit „Append()“, kann jedoch mehrere **Quellzeichenfolgenwerte** in einer einzelnen Zeichenfolge kombinieren, wobei die Werte jeweils durch eine **Trennzeichenfolge** getrennt werden.
 
@@ -83,9 +83,9 @@ Wenn einer der Quellwerte ein mehrwertiges Attribut ist, werden die einzelnen We
 
 - - -
 ### <a name="mid"></a>Mid
-**Funktion:**<br> Mid(Quelle, Start, Länge)
+**Funktion:**<br>  Mid(Quelle, Start, Länge)
 
-**Beschreibung:**<br> Gibt eine Teilzeichenfolge des Quellwerts zurück. Eine Teilzeichenfolge ist eine Zeichenfolge, die nur einige der Zeichen aus der Quellzeichenfolge enthält.
+**Beschreibung:**<br>  Gibt eine Teilzeichenfolge des Quellwerts zurück. Eine Teilzeichenfolge ist eine Zeichenfolge, die nur einige der Zeichen aus der Quellzeichenfolge enthält.
 
 **Parameter:**<br> 
 
@@ -109,7 +109,7 @@ Wenn einer der Quellwerte ein mehrwertiges Attribut ist, werden die einzelnen We
 
 - - -
 ### <a name="not"></a>not
-**Funktion:**<br> Not(Quelle)
+**Funktion:**<br>  Not(Quelle)
 
 **Beschreibung:**<br> Kehrt den booleschen Wert der **Quelle** um. Lautet der **Quellwert** also *True*, gibt die Funktion *False* zurück. Andernfalls gibt sie "*True*" zurück.
 
@@ -152,6 +152,24 @@ Ersetzt Werte in einer Zeichenfolge. Sie funktioniert unterschiedlich, je nachde
 | **Vorlage** |Optional |Zeichenfolge |Bei Angabe des Werts **Vorlage** wird **AlterWert** in der Vorlage gesucht und durch den Quellwert ersetzt. |
 
 - - -
+### <a name="selectuniquevalue"></a>SelectUniqueValue
+**Funktion:**<br> SelectUniqueValue(uniqueValueRule1, uniqueValueRule2, uniqueValueRule3, …)
+
+**Beschreibung:**<br> Es sind mindestens zwei Argumente erforderlich, bei denen es sich um eindeutige Regeln für die Generierung von Werten handelt, die mit Ausdrücken definiert werden. Mit der Funktion wird jede Regel ausgewertet. Anschließend wird der Wert überprüft, der generiert wurde, um die Eindeutigkeit in der Ziel-App bzw. im Zielverzeichnis sicherzustellen. Der erste eindeutige Wert, der gefunden wird, wird zurückgegeben. Wenn alle Werte am Ziel bereits vorhanden sind, wird der Eintrag hinterlegt, und die Ursache wird in den Überwachungsprotokollen protokolliert. Für die Anzahl von Argumenten, die bereitgestellt werden können, gilt keine Obergrenze.
+
+> [!NOTE]
+>1. Dies ist eine Funktion der obersten Ebene, die nicht geschachtelt werden kann.
+>2. Diese Funktion darf nur für die Erstellung von Einträgen verwendet werden. Legen Sie die Eigenschaft **Zuordnung anwenden** auf **Nur beim Erstellen von Objekten** fest.
+
+
+**Parameter:**<br> 
+
+| NAME | Erforderlich/wiederholt | Typ | Notizen |
+| --- | --- | --- | --- |
+| **uniqueValueRule1  … uniqueValueRuleN ** |Mindestens zwei erforderlich, keine Obergrenze |Zeichenfolge | Liste mit auszuwertenden Regeln für die Generierung eindeutiger Werte |
+
+
+- - -
 ### <a name="singleapproleassignment"></a>SingleAppRoleAssignment
 **Funktion:**<br> SingleAppRoleAssignment([appRoleAssignments])
 
@@ -165,9 +183,9 @@ Ersetzt Werte in einer Zeichenfolge. Sie funktioniert unterschiedlich, je nachde
 
 - - -
 ### <a name="stripspaces"></a>StripSpaces
-**Funktion:**<br> StripSpaces(Quelle)
+**Funktion:**<br>  StripSpaces(Quelle)
 
-**Beschreibung:**<br> Entfernt alle Leerzeichen (" ") aus der Quellzeichenfolge.
+**Beschreibung:**<br>  Entfernt alle Leerzeichen (" ") aus der Quellzeichenfolge.
 
 **Parameter:**<br> 
 
@@ -177,7 +195,7 @@ Ersetzt Werte in einer Zeichenfolge. Sie funktioniert unterschiedlich, je nachde
 
 - - -
 ### <a name="switch"></a>Switch
-**Funktion:**<br> Switch(Quelle, Standardwert, Schlüssel1, Wert1, Schlüssel2, Wert2, …)
+**Funktion:**<br>  Switch(Quelle, Standardwert, Schlüssel1, Wert1, Schlüssel2, Wert2, …)
 
 **Beschreibung:**<br> Wenn der **Quellwert** einem **Schlüssel** entspricht, wird der **Wert** für diesen **Schlüssel** zurückgegeben. Wenn der **Quellwert** keinem Schlüssel entspricht, wird der **Standardwert** zurückgegeben.  **Schlüssel-** und **Wertparameter** müssen immer paarweise angegeben werden. Die Funktion erwartet immer eine gerade Anzahl von Parametern.
 
@@ -193,7 +211,7 @@ Ersetzt Werte in einer Zeichenfolge. Sie funktioniert unterschiedlich, je nachde
 ## <a name="examples"></a>Beispiele
 ### <a name="strip-known-domain-name"></a>Entfernen eines bekannten Domänennamens
 Sie müssen einen bekannten Domänennamen aus der E-Mail-Adresse eines Benutzers entfernen, um einen Benutzernamen zu erhalten. <br>
-Wenn die Domäne beispielsweise "contoso.com" lautet, können Sie den folgenden Ausdruck verwenden:
+ Wenn die Domäne beispielsweise "contoso.com" lautet, können Sie den folgenden Ausdruck verwenden:
 
 **Ausdruck:** <br>
 `Replace([mail], "@contoso.com", , ,"", ,)`
@@ -238,6 +256,7 @@ NormalizeDiacritics([givenName])
 * **AUSGABE**: "Zoe"
 
 ### <a name="output-date-as-a-string-in-a-certain-format"></a>Ausgabedatum eines Datums als Zeichenfolge in einem bestimmten Format
+
 Sie möchten Datumsangaben in einem bestimmten Format an eine SaaS-Anwendung senden. <br>
 Beispielsweise möchten Sie Datumsangaben für ServiceNow formatieren.
 
@@ -251,8 +270,9 @@ Beispielsweise möchten Sie Datumsangaben für ServiceNow formatieren.
 * **AUSGABE**: "2015-01-23"
 
 ### <a name="replace-a-value-based-on-predefined-set-of-options"></a>Ersetzen eines Werts anhand eines vordefinierten Satzes von Optionen
+
 Sie müssen die Zeitzone des Benutzers anhand des Bundesstaatscodes festlegen, der in Azure AD gespeichert ist. <br>
-Wenn der Bundesstaatscode keiner der vordefinierten Optionen entspricht, soll der Standardwert "Australien/Sydney" verwendet werden.
+ Wenn der Bundesstaatscode keiner der vordefinierten Optionen entspricht, soll der Standardwert "Australien/Sydney" verwendet werden.
 
 **Ausdruck:** <br>
 
@@ -262,6 +282,26 @@ Wenn der Bundesstaatscode keiner der vordefinierten Optionen entspricht, soll de
 
 * **EINGABE** (state): "QLD"
 * **AUSGABE**: "Australien/Brisbane"
+
+### <a name="generate-unique-value-for-userprincipalname-upn-attribute"></a>Generieren eines eindeutigen Werts für das Attribut userPrincipalName (UPN)
+
+Basierend auf dem Vornamen, zweiten Vornamen und Nachnamen müssen Sie einen Wert für das UPN-Attribut generieren und die Eindeutigkeit im AD-Zielverzeichnis überprüfen, bevor Sie den Wert dem UPN-Attribut zuweisen.
+
+**Ausdruck:** <br>
+
+    SelectUniqueValue( 
+        Join("@", NormalizeDiacritics(StripSpaces(Join(".",  [PreferredFirstName], [PreferredLastName]))), "contoso.com"), 
+        Join("@", NormalizeDiacritics(StripSpaces(Join(".",  Mid([PreferredFirstName], 1, 1), [PreferredLastName]))), "contoso.com")
+        Join("@", NormalizeDiacritics(StripSpaces(Join(".",  Mid([PreferredFirstName], 1, 2), [PreferredLastName]))), "contoso.com")
+    )
+
+**Beispieleingabe/-ausgabe:**
+
+* **INPUT** (PreferredFirstName): "John"
+* **INPUT** (PreferredLastName): "Smith"
+* **OUTPUT**: "John.Smith@contoso.com", wenn der UPN-Wert John.Smith@contoso.com nicht bereits im Verzeichnis vorhanden ist
+* **OUTPUT**: "J.Smith@contoso.com", wenn der UPN-Wert John.Smith@contoso.com bereits im Verzeichnis vorhanden ist
+* **OUTPUT**: "Jo.Smith@contoso.com", wenn die beiden obigen UPN-Werte bereits im Verzeichnis enthalten sind
 
 ## <a name="related-articles"></a>Verwandte Artikel
 * [Automatisieren der Bereitstellung/Bereitstellungsaufhebung von Benutzern für SaaS-Apps](user-provisioning.md)

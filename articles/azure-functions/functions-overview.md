@@ -13,12 +13,12 @@ ms.topic: overview
 ms.date: 10/03/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: f9b60b9365f8856db8ffd8e14d95d46af3808ffb
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: f2890fa4d8260485fa76478571aa66abe1efd35e
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49116486"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51515402"
 ---
 # <a name="an-introduction-to-azure-functions"></a>Einführung in Azure Functions  
 Azure Functions ist eine Lösung, mit der Sie ganz einfach kleinere Codeelemente (Funktionen) in der Cloud ausführen können. Sie können sich auf das Schreiben des Codes beschränken, der für das jeweilige Problem erforderlich ist, ohne sich über eine gesamte Anwendung oder die Infrastruktur für ihre Ausführung Gedanken machen zu müssen. Mit Functions können Entwickler noch produktiver arbeiten und ihre bevorzugte Programmiersprache verwenden, z.B. C#, F#, Node.js, Java oder PHP. Bezahlen Sie nur für die Zeit, in der Ihr Code ausgeführt wird, und setzen Sie auf die flexiblen Möglichkeiten zur Skalierung von Azure. Mit Azure Functions können Sie in Microsoft Azure [serverlose](https://azure.microsoft.com/solutions/serverless/) Anwendungen entwickeln.
@@ -47,7 +47,7 @@ In Functions stehen unter anderem folgende Vorlagen für zentrale Szenarien zur 
 * **BlobTrigger** : Dient zum Verarbeiten von Azure Storage-Blobs beim Hinzufügen zu Containern. Sie können diese Funktion beispielsweise zum Anpassen der Größe von Bildern verwenden. Weitere Informationen finden Sie unter [Azure Functions – Blob Storage-Bindungen](functions-bindings-storage-blob.md).
 * **QueueTrigger** : Dient zum Reagieren auf eingehende Meldungen der Azure Storage-Warteschlange. Weitere Informationen finden Sie unter [Azure Queue Storage-Bindungen für Azure Functions](functions-bindings-storage-queue.md).
 * **EventGridTrigger**: Reagieren auf Ereignisse, die einem Abonnement in Azure Event Grid übermittelt werden. Unterstützt ein Modell auf Abonnementbasis für den Empfang von Ereignissen, das Filtern einbezieht. Eine gute Lösung für das Erstellen ereignisbasierter Architekturen. Ein Beispiel finden Sie unter [Automatisieren der Größenänderung von hochgeladenen Images per Event Grid](../event-grid/resize-images-on-storage-blob-upload-event.md).
-* **EventHubTrigger**: Reagiert auf Ereignisse, die an einen Azure Event Hub übermittelt werden. Dies ist besonders für Anwendungsinstrumentierung, Benutzeroberflächen oder Workflowverarbeitung sowie für Internet of Things (IoT)-Szenarios geeignet. Weitere Informationen finden Sie unter [Event Hubs-Bindungen für Azure Functions](functions-bindings-event-hubs.md).
+* **EventHubTrigger**: Reagiert auf Ereignisse, die an einen Azure Event Hub übermittelt werden. Dies ist besonders für Anwendungsinstrumentierung, Benutzeroberflächen oder Workflowverarbeitung sowie für IoT-Szenarien (Internet of Things) geeignet. Weitere Informationen finden Sie unter [Event Hubs-Bindungen für Azure Functions](functions-bindings-event-hubs.md).
 * **ServiceBusQueueTrigger**: Dient zum Verknüpfen Ihres Codes mit anderen Azure-Diensten oder lokalen Diensten durch Lauschen auf Meldungswarteschlangen. Weitere Informationen finden Sie unter [Service Bus-Bindungen von Azure Functions](functions-bindings-service-bus.md).
 * **ServiceBusTopicTrigger**: Dient zum Verknüpfen Ihres Codes mit anderen Azure-Diensten oder lokalen Diensten durch Abonnieren von Themen. Weitere Informationen finden Sie unter [Service Bus-Bindungen von Azure Functions](functions-bindings-service-bus.md).
 
@@ -75,11 +75,11 @@ Weitere Informationen zu Hostingplänen finden Sie unter [Vergleich von Hostingp
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Erstellen Sie Ihre erste Funktion in Azure Functions](functions-create-first-azure-function.md)  
-  Legen Sie direkt los, und erstellen Sie Ihre erste Funktion mithilfe der Azure Functions-Schnellstartanleitung. 
+   Legen Sie direkt los, und erstellen Sie Ihre erste Funktion mithilfe der Azure Functions-Schnellstartanleitung. 
 * [Entwicklerreferenz zu Azure Functions](functions-reference.md)  
-  Enthält weitere technische Informationen zur Azure Functions-Laufzeit sowie eine Referenz für das Programmieren von Funktionen sowie für das Festlegen von Triggern und Bindungen.
+   Enthält weitere technische Informationen zur Azure Functions-Laufzeit sowie eine Referenz für das Programmieren von Funktionen sowie für das Festlegen von Triggern und Bindungen.
 * [Testen von Azure Functions](functions-test-a-function.md)  
-  Beschreibt verschiedene Tools und Techniken zum Testen Ihrer Funktionen
+   Beschreibt verschiedene Tools und Techniken zum Testen Ihrer Funktionen
 * [How to scale Azure Functions (Skalieren von Azure Functions) (Skalieren von Azure Functions)](functions-scale.md)  
   Beschreibt die für Azure Functions verfügbaren Servicepläne (einschließlich des Hostingplans „Verbrauchstarif“) und enthält Informationen zur Wahl des geeigneten Plans. 
 * [Was ist Azure App Service?](../app-service/app-service-web-overview.md)  

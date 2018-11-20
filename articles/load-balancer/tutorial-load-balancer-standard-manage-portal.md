@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Erstellen und Verwalten einer Load Balancer Standard-Instanz – Azure-Portal | Microsoft-Dokumentation'
+title: 'Tutorial: Vornehmen eines Lastausgleichs für den Internetdatenverkehr an virtuelle Computer: Azure-Portal | Microsoft-Dokumentation'
 description: In diesem Tutorial wird gezeigt, wie Sie über das Azure-Portal eine Load Balancer Standard-Instanz erstellen und verwalten.
 services: load-balancer
 documentationcenter: na
@@ -17,16 +17,16 @@ ms.workload: infrastructure-services
 ms.date: 08/20/18
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 7c3e5c0cc8297ba60925d36d667e0b72a5072553
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: ef021a89cb1cba5a3240ade5ba67141940413cdc
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44380045"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51687305"
 ---
-# <a name="tutorial-create-and-manage-standard-load-balancer-using-the-azure-portal"></a>Tutorial: Erstellen und Verwalten einer Load Balancer Standard-Instanz mit dem Azure-Portal
+# <a name="tutorial-load-balance-internet-traffic-to-vms-using-the-azure-portal"></a>Tutorial: Vornehmen eines Lastausgleichs für den Internetdatenverkehr an virtuelle Computer mit dem Azure-Portal
 
-Durch die Verteilung der eingehenden Anforderungen auf mehrere virtuelle Computer bietet ein Lastenausgleich ein höheres Maß an Verfügbarkeit und Skalierbarkeit. In diesem Tutorial lernen Sie die verschiedenen Komponenten von Azure Load Balancer Standard kennen, mit denen Datenverkehr verteilt und Hochverfügbarkeit bereitgestellt wird. Folgendes wird vermittelt:
+Durch die Verteilung der eingehenden Anforderungen auf mehrere virtuelle Computer bietet ein Lastenausgleich ein höheres Maß an Verfügbarkeit und Skalierbarkeit. In diesem Tutorial lernen Sie die verschiedenen Komponenten von Azure Load Balancer Standard kennen, mit denen Internetdatenverkehr an virtuelle Computer verteilt und Hochverfügbarkeit bereitgestellt wird. Folgendes wird vermittelt:
 
 
 > [!div class="checklist"]
