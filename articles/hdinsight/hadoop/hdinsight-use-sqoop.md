@@ -1,5 +1,5 @@
 ---
-title: Ausführen von Apache Sqoop-Aufträgen mit Azure HDInsight (Hadoop)
+title: Ausführen von Apache Sqoop-Aufträgen mit Azure HDInsight (Apache Hadoop)
 description: Erfahren Sie, wie Sie Azure PowerShell auf einer Arbeitsstation verwenden können, um Sqoop-Importe und -Exporte zwischen einem Hadoop-Cluster und einer Azure SQL-Datenbank auszuführen.
 ms.reviewer: jasonh
 services: hdinsight
@@ -9,21 +9,21 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
-ms.openlocfilehash: 85753376e33f5392be06f7d3ea89a04367e3c9ab
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 1571480540baedd5910c4153caf23e0687d48922
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51009860"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51684976"
 ---
 # <a name="use-sqoop-with-hadoop-in-hdinsight"></a>Verwenden von Sqoop mit Hadoop in HDInsight
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
 
-Erfahren Sie, wie Sqoop in HDInsight zum Importieren und Exportieren zwischen HDInsight-Cluster und Azure SQL-Datenbank oder SQL Server-Datenbank verwendet werden kann.
+Erfahren Sie, wie Apache Sqoop in HDInsight zum Importieren und Exportieren zwischen HDInsight-Cluster und Azure SQL-Datenbank oder SQL Server-Datenbank verwendet werden kann.
 
-Während Hadoop die beste Wahl für die Verarbeitung unstrukturierter und halbstrukturierter Daten wie z. B. Protokolle und Dateien ist, besteht oft auch Bedarf für die Verarbeitung strukturierter Daten, die in relationalen Datenbanken gespeichert werden.
+Auch wenn Apache Hadoop die beste Wahl für die Verarbeitung unstrukturierter und halbstrukturierter Daten wie z. B. Protokolle und Dateien ist, besteht oft auch Bedarf für die Verarbeitung strukturierter Daten, die in relationalen Datenbanken gespeichert werden.
 
-[Sqoop][sqoop-user-guide-1.4.4] ist ein Tool zum Übertragen von Daten zwischen Hadoop-Clustern und relationalen Datenbanken. Sie können damit Daten aus einem Managementsystem für relationale Datenbanken (RDBMS) wie SQL Server, MySQL oder Oracle in das verteilte Dateisystem von Hadoop (HDFS) importieren, die Daten in Hadoop mit MapReduce oder Hive transformieren und sie anschließend wieder in ein RDBMS exportieren. In diesem Beispiel verwenden Sie eine SQL-Serverdatenbank als relationale Datenbank.
+[Apache Sqoop][sqoop-user-guide-1.4.4] ist ein Tool zum Übertragen von Daten zwischen Hadoop-Clustern und relationalen Datenbanken. Sie können damit Daten aus einem Managementsystem für relationale Datenbanken (RDBMS) wie SQL Server, MySQL oder Oracle in das verteilte Dateisystem von Hadoop (HDFS) importieren, die Daten in Hadoop mit MapReduce oder Hive transformieren und sie anschließend wieder in ein RDBMS exportieren. In diesem Beispiel verwenden Sie eine SQL-Serverdatenbank als relationale Datenbank.
 
 Informationen zu den in HDInsight-Clustern unterstützten Sqoop-Versionen finden Sie unter [Neuheiten in den von HDInsight bereitgestellten Clusterversionen][hdinsight-versions].
 
@@ -90,7 +90,7 @@ Wenn Sie den Cluster und die SQL-Datenbank lieber mit Azure PowerShell erstellen
         
         |NAME|Wert|
         |----|-----|
-        | Name des Standard-Speicherkontos | &lt;Clustername>store |
+        | Name des Standard-Speicherkontos | &lt;ClusterName>store |
         | Servername der Azure SQL-Datenbank | &lt;Clustername>dbserver |
         | Azure SQL-Datenbankname | &lt;Clustername>db |
      
@@ -102,7 +102,7 @@ Wenn Sie die vorhandene Azure SQL-Datenbank oder Microsoft SQL Server verwenden 
 * **Azure SQL-Datenbank**: Sie müssen eine Firewall-Regel für den Azure SQL-Datenbankserver konfigurieren, um Zugriff auf Ihre Arbeitsstation zu erlauben. Anweisungen zur Erstellung einer Azure SQL-Datenbank und zur Konfiguration der Firewall erhalten Sie unter [Erste Schritte mit Azure SQL-Datenbank][sqldatabase-get-started]. 
   
   > [!NOTE]
-  > Eine Azure SQL-Datenbank ermöglicht standardmäßig Verbindungen von Azure-Diensten wie Azure HDInsight. Wenn diese Firewalleinstellung deaktiviert ist, müssen Sie sie im Azure-Portal aktivieren. Anweisungen zum Erstellen einer Azure SQL-Datenbank-Instanz und zum Konfigurieren von Firewallregeln finden Sie unter [Erstellen und Konfigurieren von SQL-Datenbanken][sqldatabase-create-configue].
+  > Eine Azure SQL-Datenbank ermöglicht standardmäßig Verbindungen von Azure-Diensten wie Azure HDInsight. Wenn diese Firewalleinstellung deaktiviert ist, müssen Sie sie im Azure-Portal aktivieren. Anweisungen zum Erstellen einer Azure SQL-Datenbank-Instanz und zum Konfigurieren von Firewallregeln finden Sie unter [Erstellen und Konfigurieren von SQL-Datenbanken][sqldatabase-create-configure].
   > 
   > 
 * **SQL Server**: Falls sich Ihr HDInsight-Cluster im gleichen virtuellen Netzwerk in Azure wie ein SQL Server befindet, können Sie mit den hier beschriebenen Schritten Daten in einer SQL Server-Datenbank importieren und exportieren.
@@ -147,9 +147,9 @@ HDInsight kann Sqoop-Aufträge mit verschiedenen Methoden ausführen. Die folgen
 
 | **Verwenden Sie dies**, wenn Sie Folgendes wünschen: | ... eine **interaktive** Shell | ...**Batchverarbeitung** | ...mit diesem **Clusterbetriebssystem** | ...von diesem **Clientbetriebssystem** |
 |:--- |:---:|:---:|:--- |:--- |
-| [SSH](apache-hadoop-use-sqoop-mac-linux.md) |? |? |Linux |Linux, Unix, Mac OS X oder Windows |
+| [SSH](apache-hadoop-use-sqoop-mac-linux.md) |? |? | Linux |Linux, Unix, Mac OS X oder Windows |
 | [.NET SDK für Hadoop](apache-hadoop-use-sqoop-dotnet-sdk.md) |&nbsp; |? |Linux oder Windows |Windows (vorläufig) |
-| [Azure PowerShell](apache-hadoop-use-sqoop-powershell.md) |&nbsp; |? |Linux oder Windows |Windows |
+| [Azure PowerShell](apache-hadoop-use-sqoop-powershell.md) |&nbsp; |? |Linux oder Windows | Windows |
 
 ## <a name="limitations"></a>Einschränkungen
 * Massenexport: Bei Linux-basiertem HDInsight unterstützt der zum Exportieren von Daten nach Microsoft SQL Server oder Azure SQL-Datenbank verwendete Sqoop-Connector derzeit keine Masseneinfügungen.
@@ -305,7 +305,7 @@ try{Get-AzureRmContext}
 catch{Connect-AzureRmAccount}
 #endregion
 
-#region - Create Azure resouce group
+#region - Create Azure resource group
 Write-Host "`nCreating an Azure resource group ..." -ForegroundColor Green
 try{
     Get-AzureRmResourceGroup -Name $resourceGroupName
@@ -636,7 +636,7 @@ Get-AzureRmHDInsightJobOutput `
 [hdinsight-submit-jobs]:submit-apache-hadoop-jobs-programmatically.md
 
 [sqldatabase-get-started]: ../../sql-database/sql-database-get-started.md
-[sqldatabase-create-configue]: ../../sql-database/sql-database-get-started.md
+[sqldatabase-create-configure]: ../../sql-database/sql-database-get-started.md
 
 [powershell-start]: http://technet.microsoft.com/library/hh847889.aspx
 [powershell-install]: /powershell/azureps-cmdlets-docs

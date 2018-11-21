@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/26/2018
+ms.date: 11/13/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 087e11f906fe7f5c2fe67c43a597de8551dfc951
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 575b3ec5e729b325cad216ae463063acbb68f20b
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51013053"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51685938"
 ---
 # <a name="container-monitoring-solution-in-log-analytics"></a>Containerüberwachungslösung in Log Analytics
 
@@ -49,7 +49,7 @@ Prüfen Sie zunächst anhand der folgenden Informationen, ob die Voraussetzungen
 ### <a name="container-monitoring-solution-support-for-docker-orchestrator-and-os-platform"></a>Unterstützung der Containerüberwachungslösung für Docker Orchestrator und das Betriebssystem
 In der folgenden Tabelle werden die Docker-Orchestrierung und die Unterstützung der Betriebssystemüberwachung von Containerbestand, Leistung und Protokollen mit Log Analytics aufgeführt.   
 
-| | ACS | Linux | Windows | Container<br>Inventory | Image<br>Inventory | Knoten<br>Inventory | Container<br>Leistung | Container<br>Ereignis | Ereignis<br>Protokoll | Container<br>Protokoll |
+| | ACS |  Linux |  Windows | Container<br>Inventory | Image<br>Inventory | Knoten<br>Inventory | Container<br>Leistung | Container<br>Ereignis | Ereignis<br>Protokoll | Container<br>Protokoll |
 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
 | kubernetes | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; |
 | Mesosphere<br>DC/OS | &#8226; | &#8226; | | &#8226; | &#8226; | &#8226; | &#8226;| &#8226; | &#8226; | &#8226; |
@@ -108,7 +108,7 @@ Verwenden Sie die folgenden Informationen zum Installieren und Konfigurieren der
     - Wenn Sie über eine Red Hat OpenShift-Umgebung verfügen, helfen Ihnen die Informationen unter [Konfigurieren eines Log Analytics-Agents für Red Hat OpenShift](#configure-an-oms-agent-for-red-hat-openshift) weiter.
     - Bei einem Kubernetes-Cluster mit Azure Container Service:
        - Siehe [Konfigurieren eines Log Analytics-Linux-Agents für Kubernetes](#configure-an-oms-linux-agent-for-kubernetes)
-       - Siehe [Konfigurieren eines Log Analytics-Windows-Agents für Kubernetes](#configure-an-oms-windows-agent-for-kubernetes)
+       - Lesen Sie [Konfigurieren eines Log Analytics-Windows-Agents für Kubernetes](#configure-an-oms-windows-agent-for-kubernetes).
        - Siehe [Verwenden von Helm zum Bereitstellen des Log Analytics-Agents unter Linux Kubernetes](#use-helm-to-deploy-oms-agent-on-linux-kubernetes)
     - Wenn Sie über einen DC/OS-Cluster in Azure Container Service verfügen, finden Sie unter [Überwachen eines Azure Container Service-DC/OS-Clusters mit Log Analytics](../container-service/dcos-swarm/container-service-monitoring-oms.md) weitere Informationen.
     - Wenn Sie über eine Docker Swarm-Modus-Umgebung verfügen, finden Sie weitere Informationen unter [Konfigurieren eines Log Analytics-Agents für Docker Swarm](#configure-an-oms-agent-for-docker-swarm).
@@ -126,7 +126,7 @@ Verwenden Sie nach dem Installieren von Docker die folgenden Einstellungen für 
 
 **Für alle Linux-Containerhosts mit Ausnahme von CoreOS:**
 
-- Weitere Informationen und Anweisungen zum Installieren des Log Analytics-Agents für Linux finden Sie unter [Verbinden Ihrer Linux-Computer mit Log Analytics](log-analytics-concept-hybrid.md).
+- Weitere Informationen und Anweisungen zum Installieren des Log Analytics-Agents für Linux finden Sie in der [Übersicht zum Log Analytics-Agent für Linux](log-analytics-agent-overview.md).
 
 **Für alle Linux-Containerhosts mit CoreOS:**
 
