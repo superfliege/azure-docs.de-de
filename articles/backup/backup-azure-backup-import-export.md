@@ -109,7 +109,7 @@ Das Hilfsprogramm *AzureOfflineBackupDiskPrep* bereitet die SATA-Laufwerke vor, 
     * Der Kopiercomputer kann über denselben Netzwerkpfad, der während des Workflows **Initiieren der Offlinesicherung** angegeben wurde, auf den Stagingspeicherort für den Offlineseeding-Workflow zugreifen.
     * BitLocker ist auf dem Kopiercomputer aktiviert.
     * Azure PowerShell 3.7.0 wurde installiert.
-    * Die neuesten kompatiblen Browser (Edge oder Internet Explorer 11) sind installiert, und JavaScript ist aktiviert. 
+    * Die neuesten kompatiblen Browser (Microsoft Edge oder Internet Explorer 11) sind installiert, und JavaScript ist aktiviert. 
     * Der Kopiercomputer kann auf das Azure-Portal zugreifen. Sofern erforderlich, kann der Kopiercomputer mit dem Quellcomputer identisch sein.
     
     > [!IMPORTANT] 

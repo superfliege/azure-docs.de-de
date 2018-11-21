@@ -25,7 +25,7 @@ Probleme mit [Analytics in Application Insights](app-insights-analytics.md)? Beg
 
 ## <a name="limits"></a>Einschränkungen
 * Derzeit sind Abfrageergebnisse auf eine Woche alte Daten beschränkt.
-* Getestete Browser: die neuesten Versionen von Chrome, Edge und Internet Explorer.
+* Getestete Browser: die neuesten Versionen von Chrome, Microsoft Edge und Internet Explorer.
 
 ## <a name="known-incompatible-browser-extensions"></a>Bekannte nicht kompatible Browsererweiterungen
 * Ghostery

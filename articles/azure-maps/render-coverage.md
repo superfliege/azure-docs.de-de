@@ -117,7 +117,7 @@ Maps bietet allerdings nicht für alle Regionen das gleiche Maß an Informatione
 | Dominica                  | ✓ | ✓ |
 | Dominikanische Republik        | ✓ | ✓ |
 | Ecuador                   |   | ✓ |
-| Falklandinseln (Malwinen) |   | ✓ |
+| Falklandinseln |   | ✓ |
 | Französisch-Guayana             | ✓ | ✓ |
 | Grönland                 |   | Ø |
 | Grenada                   | ✓ | ✓ |

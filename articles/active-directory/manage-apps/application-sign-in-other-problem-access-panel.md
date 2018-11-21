@@ -92,7 +92,7 @@ Führen Sie zum Installieren der Browsererweiterung für den Zugriffsbereich die
 
 7.  Melden Sie sich beim Zugriffsbereich an, und überprüfen Sie, ob Sie die für kennwortbasiertes SSO konfigurierten Anwendungen **starten** können.
 
-Sie können die Erweiterung für Chrome und Edge auch direkt über die folgenden Links herunterladen:
+Sie können die Erweiterung für Chrome und Microsoft Edge auch direkt über die folgenden Links herunterladen:
 
 -   [Zugriffsbereichserweiterung für Chrome](https://chrome.google.com/webstore/detail/access-panel-extension/ggjhpefgjjfobnfoldnjipclpcfbgbhl)
 
