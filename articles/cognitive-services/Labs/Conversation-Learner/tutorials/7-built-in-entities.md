@@ -10,12 +10,12 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 2dbbf2a47cdc4240e5b0ba38658a4cb8d5307ff8
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: cdd9ad16096c85db21829840b2bfd7acaced5942
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51260056"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51683497"
 ---
 # <a name="how-to-add-pre-built-entities"></a>Hinzufügen von vorgefertigten Entitäten
 In diesem Tutorial erfahren Sie, wie Sie „vorgefertigte“ Entitäten zu Ihrem Unterhaltungslernmodell hinzufügen.
@@ -47,24 +47,25 @@ Vorgefertigte Entitäten erkennen häufig verwendete Entitätstypen wie Nummern,
     - Programmierbare und negierbare Optionen werden deaktiviert, weil sie nicht für vorgefertigte Entitäten gelten.
 3. Klicken Sie auf „Erstellen“.
 
-![](../media/tutorial7_entities.PNG)
+![](../media/tutorial7_entities_a.PNG)
 
 ### <a name="create-two-actions"></a>Erstellen von zwei Aktionen
 
-1. Klicken Sie erst auf „Aktionen“ und dann auf „Neue Aktion“.
-2. Geben Sie in das Antwortfeld „The date is $luis-datetimev2“ (Das Datum ist „$luis-datetimev2“) ein.
-3. Klicken Sie auf „Erstellen“.
+1. Klicken Sie auf „Aktionen“ und dann auf „Neue Aktion“.
+1. Geben Sie in das Antwortfeld „Das Datum ist $builtin-datetimev2“ ein.
+1. Geben Sie als erforderliche Entität „$builtin-datetimev2“ ein.
+1. Klicken Sie auf „Erstellen“.
 
-![](../media/tutorial7_actions.PNG)
+![](../media/tutorial7_actions_a.PNG)
 
 Erstellen Sie dann die zweite Aktion:
 
 1. Klicken Sie erst auf „Aktionen“ und dann auf „Neue Aktion“, um eine zweite Aktion zu erstellen.
-3. Geben Sie in das Antwortfeld die Frage „Wie lautet das Datum?“ ein.
-4. Geben Sie in das Feld „Disqualifizierende Entitäten“ „luis-datetimev2“ ein.
-4. Klicken Sie auf „Erstellen“.
+1. Geben Sie in das Antwortfeld die Frage „Wie lautet das Datum?“ ein.
+1. Geben Sie als disqualifizierende Entität „$builtin-datetimev2“ ein.
+1. Klicken Sie auf „Erstellen“.
 
-![](../media/tutorial7_actions2.PNG)
+![](../media/tutorial7_actions2_a.PNG)
 
 Jetzt sind zwei Aktionen vorhanden.
 
@@ -75,11 +76,11 @@ Jetzt sind zwei Aktionen vorhanden.
 3. Klicken Sie erst auf „Bewertungsaktionen“ und dann auf „Wie lautet das Datum?“.
 2. Geben Sie „heute“ ein. 
     - Beachten Sie, dass „heute“ markiert ist und in der zweiten Zeile angezeigt wird, da es sich dabei um eine vorgefertigte Entität und nicht um eine nicht editierbare Entität handelt.
-5. Klicken Sie auf „Bewertungsaktionen“.
+5. Klicken Sie auf „Score Actions“ (Bewertungsaktionen).
     - Beachten Sie, dass das Datum jetzt im Abschnitt „Entitätsspeicher“ angezeigt wird. 
     - Wenn Sie mit dem Mauszeiger über das Datum fahren, werden Ihnen die zusätzlichen von LUIS zur Verfügung gestellten Daten angezeigt, die verwendet und in Code umgewandelt werden können. 
-6. Klicken Sie auf „The date is $luis-datetimev2“ (Das Datum ist „$luis-datetimev2“).
-7. Klicken Sie auf „Training abgeschlossen“.
+6. Wählen Sie „Das Datum ist $builtin-datetimev2“ aus.
+7. Klicken Sie auf „Done Teaching“ (Training abgeschlossen).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

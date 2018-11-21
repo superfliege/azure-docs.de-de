@@ -1,6 +1,6 @@
 ---
-title: Benutzerdefinierte Java-Funktion (UDF) mit Hive in HDInsight – Azure
-description: Erfahren Sie, wie Sie eine Java-basierte benutzerdefinierte Funktion (UDF) zur Verwendung mit Hive erstellen. Diese benutzerdefinierte Beispielfunktion (UDF) konvertiert eine Tabelle von Textzeichenfolgen in Kleinbuchstaben.
+title: 'Benutzerdefinierte Java-Funktion (UDF) mit Apache Hive in HDInsight: Azure'
+description: Hier erfahren Sie, wie Sie eine Java-basierte benutzerdefinierte Funktion (UDF) zur Verwendung mit Apache Hive erstellen. Diese benutzerdefinierte Beispielfunktion (UDF) konvertiert eine Tabelle von Textzeichenfolgen in Kleinbuchstaben.
 services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -9,16 +9,16 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: 3d8f1d75b8e61bd611f58ed953a8357fb4a47c78
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 562320b49f92d9ebb0c74c06e27fab63681955be
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51006242"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51634072"
 ---
-# <a name="use-a-java-udf-with-hive-in-hdinsight"></a>Verwenden einer benutzerdefinierten Java-Funktion in HDInsight
+# <a name="use-a-java-udf-with-apache-hive-in-hdinsight"></a>Verwenden einer benutzerdefinierten Java-Funktion mit Apache Hive in HDInsight
 
-Erfahren Sie, wie Sie eine Java-basierte benutzerdefinierte Funktion (UDF) zur Verwendung mit Hive erstellen. Die benutzerdefinierte Java-Funktion (UDF) in diesem Beispiel konvertiert eine Tabelle von Textzeichenfolgen in klein geschriebene Zeichen.
+Hier erfahren Sie, wie Sie eine Java-basierte benutzerdefinierte Funktion (UDF) zur Verwendung mit Apache Hive erstellen. Die benutzerdefinierte Java-Funktion (UDF) in diesem Beispiel konvertiert eine Tabelle von Textzeichenfolgen in klein geschriebene Zeichen.
 
 ## <a name="requirements"></a>Requirements (Anforderungen)
 

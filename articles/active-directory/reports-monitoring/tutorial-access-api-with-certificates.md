@@ -12,21 +12,21 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.component: report-monitor
-ms.date: 05/07/2018
+ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 5c54af76fc1e145ea062c6bcb37f354a7de94781
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 0ee756828a50cdf62471923614afbe88e238b9ef
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46364175"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51624556"
 ---
 # <a name="tutorial-get-data-using-the-azure-active-directory-reporting-api-with-certificates"></a>Tutorial: Abrufen von Daten per Berichterstellungs-API von Azure Active Directory mit Zertifikaten
 
 Die [Berichtserstellungs-APIs von Azure Active Directory (Azure AD)](concept-reporting-api.md) bieten Ihnen über eine Gruppe von REST-basierten APIs programmgesteuerten Zugriff auf die Daten. Sie können diese APIs über verschiedene Programmiersprachen und Tools aufrufen. Wenn Sie ohne Benutzereingriff auf die Azure AD-Berichterstellungs-API zugreifen möchten, müssen Sie für Ihren Zugriff die Verwendung von Zertifikaten konfigurieren.
 
-In diesem Tutorial erfahren Sie, wie Sie ein Testzertifikat erstellen und verwenden, um zu Berichterstellungszwecken auf die MS Graph-API zuzugreifen. Wir empfehlen nicht, das Testzertifikat in einer Produktionsumgebung zu verwenden. 
+In diesem Tutorial erfahren Sie, wie Sie ein Testzertifikat verwenden, um zu Berichterstellungszwecken auf die MS Graph-API zuzugreifen. Wir raten von der Verwendung des Testzertifikats in einer Produktionsumgebung ab. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -39,28 +39,24 @@ In diesem Tutorial erfahren Sie, wie Sie ein Testzertifikat erstellen und verwen
     - Zugriffstoken für Benutzer, Anwendungsschlüssel und Zertifikate mit Verwendung von ADAL
     - Graph-API zur Verarbeitung von auf Seiten aufgeteilten Ergebnissen
 
-4. Wenn Sie das Modul erstmalig verwenden, führen Sie **Install-MSCloudIdUtilsModule** aus. Ansonsten können Sie es einfach mit dem PowerShell-Befehl **Import-Module** importieren.
+4. Wenn Sie das Modul erstmalig verwenden, führen Sie **Install-MSCloudIdUtilsModule** aus. Ansonsten können Sie es einfach mit dem PowerShell-Befehl **Import-Module** importieren. Ihre Sitzung sollte etwa wie folgt aussehen:
 
-Ihre Sitzung sollte etwa wie folgt aussehen:
-
-  ![Windows PowerShell](./media/tutorial-access-api-with-certificates/module-install.png)
+        ![Windows Powershell](./media/tutorial-access-api-with-certificates/module-install.png)
   
-## <a name="create-a-test-certificate"></a>Erstellen eines Testzertifikats
-
-1. Verwenden Sie das PowerShell-Cmdlet **New-SelfSignedCertificate**, um ein Testzertifikat zu erstellen.
+5. Verwenden Sie das PowerShell-Cmdlet **New-SelfSignedCertificate**, um ein Testzertifikat zu erstellen.
 
    ```
    $cert = New-SelfSignedCertificate -Subject "CN=MSGraph_ReportingAPI" -CertStoreLocation "Cert:\CurrentUser\My" -KeyExportPolicy Exportable -KeySpec Signature -KeyLength 2048 -KeyAlgorithm RSA -HashAlgorithm SHA256
    ```
 
-2. Verwenden Sie das Cmdlet **Export-Certificate**, um es in eine Zertifikatdatei zu exportieren.
+6. Verwenden Sie das Cmdlet **Export-Certificate**, um es in eine Zertifikatdatei zu exportieren.
 
    ```
    Export-Certificate -Cert $cert -FilePath "C:\Reporting\MSGraph_ReportingAPI.cer"
 
    ```
 
-## <a name="register-the-certificate-in-your-app"></a>Registrieren des Zertifikats in Ihrer App
+## <a name="get-data-using-the-azure-active-directory-reporting-api-with-certificates"></a>Abrufen von Daten per Berichtserstellungs-API von Azure Active Directory mit Zertifikaten
 
 1. Navigieren Sie zum [Azure-Portal](https://portal.azure.com), wählen Sie **Azure Active Directory** aus und dann **App-Registrierungen**, und wählen Sie Ihre Anwendung aus der Liste aus. 
 
@@ -86,29 +82,22 @@ Ihre Sitzung sollte etwa wie folgt aussehen:
 
 6. Speichern Sie das Manifest. 
   
-## <a name="get-an-access-token-for-ms-graph-api"></a>Abrufen eines Zugriffstokens für die MS Graph-API
-
-1. Verwenden Sie das Cmdlet **Get-MSCloudIdMSGraphAccessTokenFromCert** aus dem PowerShell-Modul „MSCloudIdUtils“, und übergeben Sie dabei als Eingabe die Anwendungs-ID und den Fingerabdruck, die Sie im vorherigen Schritt erhalten haben. 
+7. Jetzt können Sie mit diesem Zertifikat ein Zugriffstoken für die MS Graph-API abrufen. Verwenden Sie das Cmdlet **Get-MSCloudIdMSGraphAccessTokenFromCert** aus dem PowerShell-Modul „MSCloudIdUtils“, und übergeben Sie dabei als Eingabe die Anwendungs-ID und den Fingerabdruck, die Sie im vorherigen Schritt erhalten haben. 
 
  ![Azure-Portal](./media/tutorial-access-api-with-certificates/getaccesstoken.png)
 
-## <a name="use-the-access-token-to-call-the-graph-api"></a>Verwenden des Zugriffstokens zum Aufrufen der Graph-API
+8. Verwenden Sie das Zugriffstoken in Ihrem PowerShell-Skript zum Abfragen der Graph-API. Verwenden Sie das Cmdlet **Invoke-MSCloudIdMSGraphQuery** aus „MSCloudIDUtils“, um die Endpunkte „signins“ und „directoryAudits“ aufzuzählen. Mit diesem Cmdlet werden mehrseitige Ergebnisse verarbeitet, die an die PowerShell-Pipeline gesendet werden.
 
-1. Nun können Sie das Zugriffstoken in Ihrem PowerShell-Skript zum Abfragen der Graph-API verwenden. Verwenden Sie das Cmdlet **Invoke-MSCloudIdMSGraphQuery** aus „MSCloudIDUtils“, um die Endpunkte „signins“ und „directoryAudits“ aufzuzählen. Mit diesem Cmdlet werden mehrseitige Ergebnisse verarbeitet, die an die PowerShell-Pipeline gesendet werden.
-
-2. Abfragen des Endpunkts „directoryAudits“, um die Überwachungsprotokolle abzurufen. 
+9. Abfragen des Endpunkts „directoryAudits“, um die Überwachungsprotokolle abzurufen. 
  ![Azure-Portal](./media/tutorial-access-api-with-certificates/query-directoryAudits.png)
 
-3. Abfragen des Endpunkts „signins“, um die Anmeldeprotokolle abzurufen.
+10. Abfragen des Endpunkts „signins“, um die Anmeldeprotokolle abzurufen.
  ![Azure-Portal](./media/tutorial-access-api-with-certificates/query-signins.png)
 
-4. Sie können nun diese Daten in eine CSV-Datei exportieren und Datei in einem SIEM-System speichern. Außerdem können Sie Ihr Skript mit einer geplanten Aufgabe umschließen, mit der Azure AD-Daten regelmäßig aus Ihrem Mandanten abgerufen werden, ohne dass Anwendungsschlüssel im Quellcode gespeichert werden müssen. 
+11. Sie können nun diese Daten in eine CSV-Datei exportieren und Datei in einem SIEM-System speichern. Außerdem können Sie Ihr Skript mit einer geplanten Aufgabe umschließen, mit der Azure AD-Daten regelmäßig aus Ihrem Mandanten abgerufen werden, ohne dass Anwendungsschlüssel im Quellcode gespeichert werden müssen. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Verschaffen eines ersten Eindrucks über die Berichterstellungs-APIs](concept-reporting-api.md)
 * [Referenz zur Überwachungs-API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit) 
 * [Referenz zur Anmeldeaktivitätsbericht-API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin)
-
-
-

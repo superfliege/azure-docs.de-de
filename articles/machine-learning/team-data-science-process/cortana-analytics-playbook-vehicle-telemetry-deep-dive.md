@@ -15,19 +15,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2018
 ms.author: deguhath
-ms.openlocfilehash: fc4b2d0beef1c91cd937ba901974796441657441
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 8c4946ebef8d17d2016d482010768207d5e859ff
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51234764"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51300947"
 ---
 # <a name="vehicle-telemetry-analytics-solution-playbook-deep-dive-into-the-solution"></a>Lösungs-Playbook zur Fahrzeugtelemetrieanalyse: Ausführliche Betrachtung der Lösung
-Dieses Menü enthält Links zu den Abschnitten des Playbooks: 
 
-[!INCLUDE [cap-vehicle-telemetry-playbook-selector](../../../includes/cap-vehicle-telemetry-playbook-selector.md)]
+In diesem Artikel werden die einzelnen in der Lösungsarchitektur dargestellten Stufen beschrieben. Es enthält Anweisungen und Hinweise für die Anpassung. 
 
-In diesem Dokument werden die einzelnen in der Lösungsarchitektur dargestellten Stufen beschrieben. Es enthält Anweisungen und Hinweise für die Anpassung. 
+Eine Zusammenfassungsbeschreibung dieser Lösung finden Sie im [Lösungsplaybook zur Fahrzeugtelemetrieanalyse](cortana-analytics-playbook-vehicle-telemetry.md).
+
 
 ## <a name="data-sources"></a>Datenquellen
 Für die Lösung werden zwei unterschiedliche Datenquellen verwendet:
@@ -675,3 +675,7 @@ In diesem Dokument wird die Projektmappe für die Fahrzeugtelemetrieanalyse (Veh
 * [Funktionen zum Verschieben von Azure Data Factory-Daten](../../data-factory/copy-activity-overview.md)
 * [Azure Data Factory-.NET-Aktivität](../../data-factory/transform-data-using-dotnet-custom-activity.md)
 * [Zum Vorbereiten von Beispieldaten verwendete Visual Studio-Projektmappe „Azure Data Factory-.NET-Aktivität“](https://go.microsoft.com/fwlink/?LinkId=717077) 
+
+## <a name="next-steps"></a>Nächste Schritte
+
+Informationen zum Konfigurieren der Power BI-Berichte und -Dashboards für diese Lösung finden Sie unter [Lösungsvorlage „Analyse von Telemetriedaten für Fahrzeuge“ – Anweisungen zur Einrichtung des Power BI-Dashboards](cortana-analytics-playbook-vehicle-telemetry-powerbi.md).

@@ -13,17 +13,17 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: report-monitor
-ms.date: 07/13/2018
+ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: c60dc354fa0c5f64ece9acae95744477c145bc27
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: e45b175b97b7f395199dbc4521054fa69a4bb4a7
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49393625"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51623777"
 ---
-# <a name="integrate-azure-ad-logs-with-splunk-by-using-azure-monitor-preview"></a>Integrieren von Azure AD-Protokollen in Splunk mit Azure Monitor (Vorschauversion)
+# <a name="integrate-azure-ad-logs-with-splunk-using-azure-monitor-preview"></a>Integrieren von Azure AD-Protokollen in Splunk mit Azure Monitor (Vorschauversion)
 
 In diesem Artikel erfahren Sie, wie Sie Azure Active Directory-Protokolle (Azure AD) in Splunk mit Azure Monitor integrieren. Zunächst leiten Sie die Protokolle an einen Azure Event Hub weiter und integrieren dann den Event Hub in Splunk.
 

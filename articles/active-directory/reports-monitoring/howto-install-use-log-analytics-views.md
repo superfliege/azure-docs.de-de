@@ -13,15 +13,15 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: report-monitor
-ms.date: 10/01/2018
+ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: b1333eda0fa0bffdf3852f24414511f55acc090e
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 7f3db8b16e275ff130cc3d8cb162780d595a7f32
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49395531"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51624640"
 ---
 # <a name="install-and-use-the-log-analytics-views-for-azure-active-directory"></a>Installieren und Verwenden der Log Analytics-Ansichten für Azure Active Directory
 
@@ -42,7 +42,7 @@ Um die Log Analytics-Ansichten zu verwenden, benötigen Sie Folgendes:
 
 1. Navigieren Sie zu Ihrem Log Analytics-Arbeitsbereich. Navigieren Sie hierzu zuerst zum [Azure-Portal](https://portal.azure.com), und wählen Sie **Alle Dienste** aus. Geben Sie **Log Analytics** in das Textfeld ein, und wählen Sie **Log Analytics** aus. Wählen Sie den Arbeitsbereich aus, zu dem Sie die Aktivitätsprotokolle im Rahmen der Voraussetzungen umgeleitet haben.
 2. Wählen Sie **Ansicht-Designer**aus, dann **Importieren**, und wählen Sie dann **Datei auswählen** aus, um die Ansichten von Ihrem lokalen Computer zu importieren.
-3. Wählen Sie die Ansichten aus, die Sie aus den Voraussetzungen heruntergeladen haben, und wählen Sie **Speichern** aus, um den Import zu speichern. Führen Sie diesen Vorgang für die Ansichten **Azure AD-Kontobereitstellungsereignisse**, **Anmeldeereignisse** und **Ihre Einwilligung gebende Benutzer** aus.
+3. Wählen Sie die Ansichten aus, die Sie aus den Voraussetzungen heruntergeladen haben, und wählen Sie **Speichern** aus, um den Import zu speichern. Führen Sie diesen Vorgang für die Ansichten **Azure AD-Kontobereitstellungsereignisse** und **Anmeldeereignisse** aus.
 
 ## <a name="use-the-views"></a>Verwenden der Ansichten
 
@@ -52,7 +52,6 @@ Um die Log Analytics-Ansichten zu verwenden, benötigen Sie Folgendes:
 
     * **Azure AD-Kontobereitstellungsereignisse**: In dieser Ansicht werden Berichte im Zusammenhang mit der Überwachung von Bereitstellungsaktivitäten angezeigt, also z. B. die Anzahl neuer bereitgestellter Benutzer und die Bereitstellungsfehler, die Anzahl aktualisierter Benutzer und die Aktualisierungsfehler sowie die Anzahl aufgehobener Benutzerbereitstellungen und der entsprechenden Fehler.    
     * **Anmeldeereignisse**: In dieser Ansicht werden die relevantesten Berichte zur Überwachung von Anmeldeaktivitäten angezeigt, z. B. Anmeldungen nach Anwendungen, Benutzern, Geräten sowie eine Zusammenfassungsansicht, in der die Anzahl der Anmeldungen im Laufe der Zeit nachverfolgt wird.
-    * **Ihre Einwilligung gebende Benutzer**: In dieser Ansicht werden Berichte im Zusammenhang mit der Benutzereinwilligung angezeigt, z. B. die Einwilligungen nach Benutzern, die Anmeldungen nach Benutzern, die ihre Einwilligung erteilt haben, sowie die Anmeldungen nach Anwendungen für alle einwilligungsabhängigen Anwendungen. 
 
 3. Wählen Sie eine der beiden Ansichten aus, um zu den einzelnen Berichten zu wechseln. Sie können auch Benachrichtigungen für jeden der Berichtsparameter festlegen. Lassen Sie uns zum Beispiel eine Benachrichtigung bei jedem Mal festlegen, wenn es zu einem Anmeldefehler kommt. Zu diesem Zweck wählen Sie zuerst die Ansicht **Anmeldeereignisse** aus, dann den Bericht **Anmeldefehler im Laufe der Zeit**, und wählen Sie dann **Analytics** aus, um die Seite mit den Details zu öffnen, in denen sich die eigentliche Abfrage befindet, die dem Bericht zugrunde liegt. 
 

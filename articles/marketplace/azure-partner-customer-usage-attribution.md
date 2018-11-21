@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/15/2018
 ms.author: yijenj
-ms.openlocfilehash: 7937f3d0db414d7a9cc2adaefd4324d49d734fcb
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 3a1c5341e391c8be1af42eea940fbf147b88e7c8
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51280672"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51685700"
 ---
 # <a name="azure-partner-customer-usage-attribution"></a>Zuordnen der Nutzung durch Kunden von Azure-Partnern
 
@@ -59,12 +59,13 @@ Um einen global eindeutigen Bezeichner (GUID) hinzuzufügen, nehmen Sie an der H
 1. [Überprüfen Sie den Erfolg der GUID in der Vorlagenbereitstellung](#verify-the-guid-deployment).
 
 ### <a name="sample-resource-manager-template-code"></a>Beispielcode für Resource Manager-Vorlage
-Stellen Sie sicher, dass Sie den unten stehenden Beispielcode mit Ihren eigenen Eingaben ändern, wenn Sie ihn zur Hauptvorlagendatei hinzufügen.
+
+Um die Überwachung von Ressourcen für Ihre Vorlage zu aktivieren, müssen Sie im Abschnitt „Resources“ die folgende zusätzliche Ressource hinzufügen. Stellen Sie sicher, dass Sie den unten stehenden Beispielcode mit Ihren eigenen Eingaben ändern, wenn Sie ihn zur Hauptvorlagendatei hinzufügen.
 Die Ressource muss nur in der Datei **mainTemplate.json** oder **azuredeploy.json** hinzugefügt werden, nicht in geschachtelten oder verknüpften Vorlagen.
 ```
 // Make sure to modify this sample code with your own inputs where applicable
 
-{ // add this resource to the mainTemplate.json (do not add the entire file)
+{ // add this resource to the resources section in the mainTemplate.json (do not add the entire file)
     "apiVersion": "2018-02-01",
     "name": "pid-XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX", // use your generated GUID here
     "type": "Microsoft.Resources/deployments",
@@ -126,14 +127,14 @@ Eine GUID ist ein eindeutiger Verweis mit 32 Hexadezimalziffern. Zum Erstellen e
 > [!Note]
 > Es wird dringend empfohlen, dass Sie das [GUID-Generatorformular von Azure Storage](https://aka.ms/StoragePartners) verwenden, um Ihre GUID zu erstellen. Weitere Informationen finden Sie in den [häufig gestellten Fragen](#faq).
 
-Erstellen Sie für jedes Angebot und jeden Distributionskanal eine eindeutige GUID. Wenn Sie mithilfe einer Vorlage zwei Lösungen bereitstellen, die jeweils im Azure Marketplace und auf GitHub verfügbar sind, müssen Sie vier GUIDS erstellen:
+Es empfiehlt sich, für jedes Produkt eine eindeutige GUID für jedes Angebot und jeden Distributionskanal zu erstellen. Sie können festlegen, dass eine einzige GUID für die vielfältigen Verteilungskanäle des Produkts verwendet wird, wenn die Berichterstellung nicht aufgeteilt werden soll. 
 
-*   Angebot A im Azure Marketplace 
-*   Angebot A auf GitHub
-*   Angebot B im Azure Marketplace 
-*   Angebot B auf GitHub
+Wenn Sie ein Produkt mit einer Vorlage bereitstellen und das Produkt sowohl im Azure Marketplace als auch auf GitHub verfügbar ist, können Sie zwei unterschiedliche GUIDs erstellen und registrieren:
 
-Die Berichterstellung erfolgt über den Partnerwert (Microsoft-Partner-ID) und die GUID. 
+*   Produkt A im Azure Marketplace 
+*   Produkt A auf GitHub
+
+Die Berichterstellung erfolgt über den Partnerwert (Microsoft-Partner-ID) und die GUIDs. 
 
 Sie können GUIDs auch auf einer differenzierteren Ebene (z. B. pro SKU) nachverfolgen (wobei SKUs Varianten eines Angebots sind).
 

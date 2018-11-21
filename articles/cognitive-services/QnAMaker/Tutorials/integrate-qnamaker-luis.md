@@ -10,17 +10,19 @@ ms.component: qna-maker
 ms.topic: article
 ms.date: 09/28/2018
 ms.author: diberry
-ms.openlocfilehash: e0f3703d50f20b766b2ac43b96be7e001ff9bc7f
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 27f60f9624af2819663990aeba99b4044045540b
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50957707"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51687366"
 ---
 # <a name="integrate-qna-maker-and-luis-to-distribute-your-knowledge-base"></a>Integrieren Sie QnA Maker und LUIS, um Ihre Wissensdatenbank zu verteilen
 Wenn Ihre QnA Maker-Wissensdatenbank eine bestimmte Größe erreicht, wird es schwierig, sie als einzelnen monolithischen Satz zu warten, und es zeigt sich die Notwendigkeit, die Wissensdatenbank in kleinere logische Abschnitte aufzuteilen.
 
 Zwar ist es ein geradliniger Vorgang, mehrere Wissensdatenbanken in QnA Maker zu erstellen, Sie benötigen jedoch geeignete Logik, um die eingehende Frage an die passende Wissensdatenbank weiterzuleiten. Das können Sie mithilfe von LUIS erledigen.
+
+In diesem Artikel wird das Bot Framework v3 SDK verwendet. Wenn Sie sich für die Bot Framework v4 SDK-Version dieser Informationen interessieren, lesen Sie diesen [Artikel zu Bot Framework](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-dispatch?view=azure-bot-service-4.0&tabs=csharp).
 
 ## <a name="architecture"></a>Architecture
 

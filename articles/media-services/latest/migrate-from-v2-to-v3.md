@@ -13,14 +13,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 11/05/2018
+ms.date: 11/07/2018
 ms.author: juliako
-ms.openlocfilehash: 2f5c0ef63ba150fdad4aea1a0c65269611d56815
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 8c3ff4af3b556614d0b2179dceed6cabd9cbabff
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51247686"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51616009"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>Hinweise zur Migration von Media Services v2 zu v3
 
@@ -45,7 +45,7 @@ Wenn Sie derzeit über einen Videodienst verfügen, der auf Basis von der [älte
 * Führt das Konzept von [Transformationen](transforms-jobs-concept.md) für dateibasierte Auftragsverarbeitung ein. Eine Transformation kann verwendet werden, um wiederverwendbare Konfigurationen und Azure Resource Manager-Vorlagen zu erstellen, und um Verarbeitungseinstellungen zwischen mehreren Kunden oder Mandanten zu isolieren.
 * Ein Medienobjekt kann [mehrere StreamingLocators](streaming-locators-concept.md) mit verschiedenen Einstellungen für die dynamische Paketerstellung und dynamische Verschlüsselung haben.
 * Der [Inhaltsschutz](content-key-policy-concept.md) unterstützt Features mit mehreren Schlüsseln.
-* Sie können Liveereignisse streamen, die bis zu 24 Stunden lang sind.
+* Wenn Media Services zum Transcodieren eines Beitragsfeeds mit Einzelbitrate in einen Ausgabestream mit mehreren Bitraten verwendet wird, können Sie Liveereignisse streamen, die bis zu 24 Stunden lang sind.
 * Neue Unterstützung für Livestreaming mit niedriger Latenz für LiveEvents.
 * Die LiveEvent-Vorschau unterstützt die dynamische Paketerstellung und dynamische Verschlüsselung. Dadurch wird in der Vorschau der Inhaltsschutz sowie auch die Paketerstellung für DASH und HLS ermöglicht.
 * LiveOutput ist einfacher zu verwenden als die Programmentität in den v2-APIs. 
@@ -59,6 +59,7 @@ Wenn Sie derzeit über einen Videodienst verfügen, der auf Basis von der [älte
 * Die v3-SDKs sind jetzt vom Storage-SDK entkoppelt, wodurch sich eine bessere Kontrolle über das zu verwendende Storage-SDK ergibt und Versionsprobleme vermieden werden. 
 * In den v3-APIs werden alle Codierungsbitraten in Bits pro Sekunde angegeben. Dies unterscheidet sich von den Voreinstellungen von v2 Media Encoder Standard. Beispielsweise würde die Bitrate in v2 mit 128 (Kbit/s), in v3 jedoch mit 12.8000 (Bits/Sekunde) angegeben. 
 * Entities AssetFiles, AccessPolicies und IngestManifests sind in v3 nicht vorhanden.
+* Die Eigenschaft „IAsset.ParentAssets“ ist in v3 nicht vorhanden.
 * ContentKeys ist jetzt keine Entität mehr, sondern eine Eigenschaft von StreamingLocator.
 * Die Event Grid-Unterstützung ersetzt NotificationEndpoints.
 * Die folgenden Entitäten wurden umbenannt:

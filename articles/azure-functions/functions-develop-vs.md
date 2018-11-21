@@ -10,12 +10,12 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 10/08/2018
 ms.author: glenga
-ms.openlocfilehash: b2676e8f86955a7601f9656f0a038b5ba904a462
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 888b9a256a68b77b91145bb3ccfeea820c97ccfa
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51036426"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51515372"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>Entwickeln von Azure Functions mithilfe von Visual Studio  
 
@@ -189,7 +189,7 @@ Weitere Informationen über die Verwendung der Azure Functions Core-Tools finden
 
 Alle Einstellungen, die Sie in „local.settings.json“ hinzugefügt haben, müssen auch der Funktions-App in Azure hinzugefügt werden. Diese Einstellungen werden nicht automatisch hochgeladen, wenn Sie das Projekt veröffentlichen.
 
-Die einfachste Möglichkeit zum Hochladen der erforderlichen Einstellungen in Ihre Funktions-App in Azure ist die Verwendung des Links **Anwendungseinstellungen verwalten**, der angezeigt wird, nachdem Sie das Projekt veröffentlicht haben. 
+Die einfachste Möglichkeit zum Hochladen der erforderlichen Einstellungen in Ihre Funktions-App in Azure ist die Verwendung des Links **Anwendungseinstellungen verwalten**, der angezeigt wird, nachdem Sie das Projekt veröffentlicht haben.
 
 ![](./media/functions-develop-vs/functions-vstools-app-settings.png)
 
@@ -197,11 +197,13 @@ Dadurch wird das Dialogfeld **Anwendungseinstellungen** für die Funktions-App a
 
 ![](./media/functions-develop-vs/functions-vstools-app-settings2.png)
 
+**Lokal** stellt einen Einstellungswert in der Datei „local.settings.json“ dar, und **Remote** ist die aktuelle Einstellung in der Funktions-App in Azure.  Wählen Sie **Einstellung hinzufügen**, um eine neue App-Einstellung zu erstellen. Verwenden Sie den Link **Wert aus lokaler Quelle einfügen**, um einen Einstellungswert in das Feld **Remote** zu kopieren. Ausstehende Änderungen werden in die Datei für lokale Einstellungen und die Funktions-App geschrieben, wenn Sie **OK** auswählen.
+
 Sie können die Anwendungseinstellungen auch folgendermaßen verwalten:
 
 * [Mit dem Azure-Portal](functions-how-to-use-azure-function-app-settings.md#settings)
 * [Mit der `--publish-local-settings` Option „Veröffentlichen“ in Azure Functions Core Tools](functions-run-local.md#publish)
-* [Mit der Azure-Befehlszeilenschnittstelle](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) 
+* [Mit der Azure-Befehlszeilenschnittstelle](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set)
 
 ## <a name="monitoring-functions"></a>Überwachen von Funktionen
 

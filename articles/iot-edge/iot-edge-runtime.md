@@ -2,18 +2,18 @@
 title: Grundlegendes zur Azure IoT Edge-Laufzeit | Microsoft-Dokumentation
 description: Hier erhalten Sie Informationen über die Azure IoT Edge-Laufzeit und wie Sie sie für Ihre Edgegeräte nutzen können.
 author: kgremban
-manager: timlt
+manager: philmea
 ms.author: kgremban
 ms.date: 08/13/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 97a2180aaf236d3541cff30d2151f26ce70b14af
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 05c97d21e9acf1bb49418e3a7d0ccf1657f84435
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49393473"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51685190"
 ---
 # <a name="understand-the-azure-iot-edge-runtime-and-its-architecture"></a>Grundlegendes zur Azure IoT Edge-Runtime und ihrer Architektur
 
@@ -31,65 +31,67 @@ Die IoT Edge-Laufzeit führt auf IoT Edge-Geräten die folgenden Funktionen aus:
 
 ![Die IoT Edge-Laufzeit übermittelt an IoT Hub Einblicke und Informationen zur Modulintegrität](./media/iot-edge-runtime/Pipeline.png)
 
-Die Aufgaben der IoT Edge-Laufzeit fallen in zwei Kategorien: Kommunikation und Modulverwaltung. Diese beiden Rollen werden von zwei Komponenten ausgeführt, aus denen die IoT Edge-Laufzeit besteht. Der IoT Edge-Hub ist für die Kommunikation verantwortlich, während der IoT Edge-Agent für die Bereitstellung und Überwachung der Module zuständig ist. 
+Die Aufgaben der IoT Edge-Laufzeit fallen in zwei Kategorien: Kommunikation und Modulverwaltung. Diese beiden Rollen werden von zwei Komponenten ausgeführt, aus denen die IoT Edge-Laufzeit besteht. Der IoT Edge-Hub ist für die Kommunikation verantwortlich, während der IoT Edge-Agent für die Bereitstellung und Überwachung der Module zuständig ist. 
 
 Der Edge-Hub und der Edge-Agent sind Module wie jedes andere auf einem IoT Edge-Gerät ausgeführte Modul. 
 
 ## <a name="iot-edge-hub"></a>IoT Edge-Hub
 
-Der Edge-Hub ist eines der beiden Module, aus denen die Azure IoT Edge-Laufzeit besteht. Er fungiert als lokaler Proxy für IoT Hub, indem er die gleichen Protokollendpunkte wie IoT Hub verfügbar macht. Diese Konsistenz bedeutet, dass Clients (ob Geräte oder Module) auf die gleiche Weise eine Verbindung mit der IoT Edge-Laufzeit wie mit IoT Hub herstellen können. 
+Der Edge-Hub ist eines der beiden Module, aus denen die Azure IoT Edge-Laufzeit besteht. Er fungiert als lokaler Proxy für IoT Hub, indem er die gleichen Protokollendpunkte wie IoT Hub verfügbar macht. Diese Konsistenz bedeutet, dass Clients (ob Geräte oder Module) auf die gleiche Weise eine Verbindung mit der IoT Edge-Laufzeit wie mit IoT Hub herstellen können. 
 
 >[!NOTE]
 >Edge-Hub unterstützt Clients, die sich über MQTT oder AMQP verbinden. Clients, die HTTP verwenden, werden jedoch nicht unterstützt. 
 
-Der Edge-Hub ist keine vollständige Version des lokal ausgeführten IoT Hub. Einige Aufgaben werden vom Edge-Hub automatisch an IoT Hub delegiert. Beispielsweise leitet der Edge-Hub Authentifizierungsanforderungen an IoT Hub weiter, wenn ein Gerät zum ersten Mal eine Verbindung herzustellen versucht. Nachdem die erste Verbindung hergestellt wurde, werden die Sicherheitsinformationen vom Edge-Hub lokal zwischengespeichert. Nachfolgende Verbindungen von diesem Gerät sind zulässig, ohne dass eine Authentifizierung bei der Cloud erforderlich ist. 
+Der Edge-Hub ist keine vollständige Version des lokal ausgeführten IoT Hub. Einige Aufgaben werden vom Edge-Hub automatisch an IoT Hub delegiert. Beispielsweise leitet der Edge-Hub Authentifizierungsanforderungen an IoT Hub weiter, wenn ein Gerät zum ersten Mal eine Verbindung herzustellen versucht. Nachdem die erste Verbindung hergestellt wurde, werden die Sicherheitsinformationen vom Edge-Hub lokal zwischengespeichert. Nachfolgende Verbindungen von diesem Gerät sind zulässig, ohne dass eine Authentifizierung bei der Cloud erforderlich ist. 
 
 >[!NOTE]
 >Die Laufzeit muss immer verbunden sein, wenn sie versucht, ein Gerät zu authentifizieren.
 
-Der Edge-Hub optimiert die Anzahl der tatsächlich hergestellten Verbindungen mit der Cloud, um die von der IoT Edge-Lösung genutzte Bandbreite zu reduzieren. Der Edge-Hub fasst logische Verbindungen von Clients, z.B. Modulen oder Blattknotengeräten, zu einer einzelnen physischen Verbindung mit der Cloud zusammen. Die Details dieses Vorgangs sind für den Rest der Lösung transparent. Clients können nicht erkennen, dass statt einer eigenen Verbindung mit der Cloud für alle Clients eine gemeinsame Verbindung verwendet wird. 
+Der Edge-Hub optimiert die Anzahl der tatsächlich hergestellten Verbindungen mit der Cloud, um die von der IoT Edge-Lösung genutzte Bandbreite zu reduzieren. Der Edge-Hub fasst logische Verbindungen von Clients, z.B. Modulen oder Blattknotengeräten, zu einer einzelnen physischen Verbindung mit der Cloud zusammen. Die Details dieses Vorgangs sind für den Rest der Lösung transparent. Clients können nicht erkennen, dass statt einer eigenen Verbindung mit der Cloud für alle Clients eine gemeinsame Verbindung verwendet wird. 
 
 ![Der Edge-Hub fungiert als Gateway zwischen mehreren physischen Geräten und der Cloud.](./media/iot-edge-runtime/Gateway.png)
 
-Der Edge-Hub kann bestimmen, ob er mit IoT Hub verbunden ist. Wenn die Verbindung unterbrochen wird, speichert der Edge-Hub Nachrichten oder Zwillingsaktualisierungen lokal. Sobald eine Verbindung wieder hergestellt wurde, werden alle Daten synchronisiert. Der Speicherort für diesen temporären Cache wird durch eine Eigenschaft des Modulzwillings des Edge-Hubs bestimmt. Die Größe des Caches wird nicht begrenzt, solange die Speicherkapazität des Geräts ausreicht. 
+Der Edge-Hub kann bestimmen, ob er mit IoT Hub verbunden ist. Wenn die Verbindung unterbrochen wird, speichert der Edge-Hub Nachrichten oder Zwillingsaktualisierungen lokal. Sobald eine Verbindung wieder hergestellt wurde, werden alle Daten synchronisiert. Der Speicherort für diesen temporären Cache wird durch eine Eigenschaft des Modulzwillings des Edge-Hubs bestimmt. Die Größe des Caches wird nicht begrenzt, solange die Speicherkapazität des Geräts ausreicht. 
 
 ### <a name="module-communication"></a>Modulkommunikation
 
-Der Edge-Hub ermöglicht die Kommunikation zwischen Modulen. Die Verwendung des Edge-Hubs als Nachrichtenbroker sorgt dafür, dass die Module unabhängig voneinander bleiben. Module müssen nur die Eingänge, an denen sie Nachrichten akzeptieren, und die Ausgänge, an die sie Nachrichten schreiben, angeben. Anschließend fügt ein Lösungsentwickler diese Eingänge und Ausgänge zusammen, damit die Module Daten in der speziellen Reihenfolge für die Lösung verarbeiten. 
+Der Edge-Hub ermöglicht die Kommunikation zwischen Modulen. Die Verwendung des Edge-Hubs als Nachrichtenbroker sorgt dafür, dass die Module unabhängig voneinander bleiben. Module müssen nur die Eingänge, an denen sie Nachrichten akzeptieren, und die Ausgänge, an die sie Nachrichten schreiben, angeben. Anschließend fügt ein Lösungsentwickler diese Eingänge und Ausgänge zusammen, damit die Module Daten in der speziellen Reihenfolge für die Lösung verarbeiten. 
 
 ![Der Edge-Hub ermöglicht die Kommunikation zwischen Modulen](./media/iot-edge-runtime/ModuleEndpoints.png)
 
 Ein Modul ruft zum Senden von Daten an den Edge-Hub die SendEventAsync-Methode auf. Das erste Argument gibt an, an welchen Ausgang die Nachricht gesendet werden soll. Mit dem folgenden Pseudocode wird eine Nachricht an output1 gesendet:
 
    ```csharp
-   ModuleClient client = new ModuleClient.CreateFromEnvironmentAsync(transportSettings); 
-   await client.OpenAsync(); 
-   await client.SendEventAsync(“output1”, message); 
+   ModuleClient client = new ModuleClient.CreateFromEnvironmentAsync(transportSettings); 
+   await client.OpenAsync(); 
+   await client.SendEventAsync(“output1”, message); 
    ```
 
 Um eine Nachricht zu empfangen, registrieren Sie einen Rückruf, der eingehende Nachrichten an einem speziellen Eingang verarbeitet. Mit dem folgenden Pseudocode wird die Funktion „messageProcessor“ registriert, die für die Verarbeitung aller an input1 empfangenen Nachrichten verwendet werden soll:
 
    ```csharp
-   await client.SetEventHandlerAsync(“input1”, messageProcessor, userContext);
+   await client.SetInputMessageHandlerAsync(“input1”, messageProcessor, userContext);
    ```
+
+Weitere Informationen zur ModuleClient-Klasse und ihre Kommunikationsmethoden finden Sie in der API-Referenz für Ihre bevorzugte SDK-Sprache: [C# ](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient?view=azure-dotnet), [C und Python](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothub-module-client-h), [Java](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device._module_client?view=azure-java-stable) oder [Node.js](https://docs.microsoft.com/javascript/api/azure-iot-device/moduleclient?view=azure-node-latest).
 
 Der Lösungsentwickler muss die Regeln angeben, die bestimmen, wie Nachrichten vom Edge-Hub zwischen Modulen übergeben werden. Routingregeln werden in der Cloud definiert und an den Edge-Hub in dessen Gerätezwilling übertragen. Zum Definieren von Routen zwischen Modulen in Azure IoT Edge wird die gleiche Syntax wie für IoT Hub-Routen verwendet. 
 
-<!--- For more info on how to declare routes between modules, see []. --->   
+<!--- For more info on how to declare routes between modules, see []. --->   
 
 ![Routing zwischen Modulen](./media/iot-edge-runtime/ModuleEndpointsWithRoutes.png)
 
 ## <a name="iot-edge-agent"></a>IoT Edge-Agent
 
-Der IoT Edge-Agent ist das zweite Modul, aus dem die Azure IoT Edge-Laufzeit besteht. Er ist für das Instanziieren von Modulen verantwortlich, stellt sicher, dass sie weiterhin ausgeführt werden, und meldet den Status der Module an IoT Hub. Der Edge-Agent verwendet den Modulzwilling wie jedes andere Modul zum Speichern der Konfigurationsdaten. 
+Der IoT Edge-Agent ist das zweite Modul, aus dem die Azure IoT Edge-Laufzeit besteht. Er ist für das Instanziieren von Modulen verantwortlich, stellt sicher, dass sie weiterhin ausgeführt werden, und meldet den Status der Module an IoT Hub. Der Edge-Agent verwendet den Modulzwilling wie jedes andere Modul zum Speichern der Konfigurationsdaten. 
 
-Die [IoT Edge-Sicherheitsdaemon](iot-edge-security-manager.md) startet den Edge-Agent beim Starten des Geräts. Der Agent ruft den Modulzwilling von IoT Hub ab und überprüft das Bereitstellungsmanifest. Das Bereitstellungsmanifest ist eine JSON-Datei, die die Module deklariert, die gestartet werden müssen. 
+Die [IoT Edge-Sicherheitsdaemon](iot-edge-security-manager.md) startet den Edge-Agent beim Starten des Geräts. Der Agent ruft den Modulzwilling von IoT Hub ab und überprüft das Bereitstellungsmanifest. Das Bereitstellungsmanifest ist eine JSON-Datei, die die Module deklariert, die gestartet werden müssen. 
 
-Jedes Element im Bereitstellungsmanifest enthält spezifische Informationen zu einem Modul und wird vom Edge-Agent zum Steuern des Lebenszyklus des Moduls verwendet. Einige der wichtigeren Eigenschaften lauten: 
+Jedes Element im Bereitstellungsmanifest enthält spezifische Informationen zu einem Modul und wird vom Edge-Agent zum Steuern des Lebenszyklus des Moduls verwendet. Einige der wichtigeren Eigenschaften lauten: 
 
 * **settings.image** – Der Container, der vom Edge-Agent zum Starten des Moduls verwendet wird. Der Edge-Agent muss mit den Anmeldeinformationen für die Containerregistrierung konfiguriert werden, wenn das Image mit einem Kennwort geschützt ist. Anmeldeinformationen für die Containerregistrierung können remote mit dem Bereitstellungsmanifest konfiguriert werden oder auf dem Edge-Gerät selbst durch Aktualisieren der Datei `config.yaml` im Programmordner „IoT Edge“.
-* **settings.createOptions** – Eine Zeichenfolge, die beim Starten des Containers eines Moduls direkt an den Docker-Daemon übergeben wird. Das Hinzufügen von Docker-Optionen in dieser Eigenschaft ermöglicht erweiterte Optionen, z.B. Portweiterleitung oder das Bereitstellen von Volumes im Container eines Moduls.  
-* **status** – Der Status, in den der Edge-Agent das Modul versetzt. Dieser Wert wird in der Regel auf *running* festgelegt, da die meisten Personen möchten, dass der Edge-Agent alle Module auf dem Gerät sofort startet. Sie können jedoch festlegen, dass der Anfangsstatus eines Moduls „Beendet“ lautet, und den Edge-Agent zu einem zukünftigen Zeitpunkt zum Starten eines Moduls auffordern. Der Edge-Agent meldet der Cloud den Status jedes Moduls in den gemeldeten Eigenschaften. Weicht die gemeldete Eigenschaft von der gewünschten Eigenschaft ab, ist dies ein Indikator für ein fehlerhaftes Gerät. Die unterstützten Status lauten:
+* **settings.createOptions** – Eine Zeichenfolge, die beim Starten des Containers eines Moduls direkt an den Docker-Daemon übergeben wird. Das Hinzufügen von Docker-Optionen in dieser Eigenschaft ermöglicht erweiterte Optionen, z.B. Portweiterleitung oder das Bereitstellen von Volumes im Container eines Moduls.  
+* **status** – Der Status, in den der Edge-Agent das Modul versetzt. Dieser Wert wird in der Regel auf *running* festgelegt, da die meisten Personen möchten, dass der Edge-Agent alle Module auf dem Gerät sofort startet. Sie können jedoch festlegen, dass der Anfangsstatus eines Moduls „Beendet“ lautet, und den Edge-Agent zu einem zukünftigen Zeitpunkt zum Starten eines Moduls auffordern. Der Edge-Agent meldet der Cloud den Status jedes Moduls in den gemeldeten Eigenschaften. Weicht die gemeldete Eigenschaft von der gewünschten Eigenschaft ab, ist dies ein Indikator für ein fehlerhaftes Gerät. Die unterstützten Status lauten:
    * Herunterladen
    * Wird ausgeführt
    * Fehlerhaft

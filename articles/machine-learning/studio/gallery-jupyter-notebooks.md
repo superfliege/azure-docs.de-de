@@ -15,18 +15,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
-ms.openlocfilehash: 336949d3c3c23041d1907ae2b2a9151ca626d94f
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 81a2f444012085782c377de050e7cb5445f8ebb3
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34834640"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51344653"
 ---
 # <a name="discover-jupyter-notebooks-in-the-azure-ai-gallery"></a>Erkunden von Jupyter-Notebooks im Azure AI-Katalog
-[!INCLUDE [machine-learning-gallery-item-selector](../../../includes/machine-learning-gallery-item-selector.md)]
 
-## <a name="jupyter-notebooks"></a>Jupyter-Notebooks
-**[Jupyter-Notebooks](https://gallery.cortanaintelligence.com/notebooks)** umfassen Code, Datenvisualisierungen und Dokumentation in einem einzelnen, interaktiven Zeichenbereich.
+**[Jupyter Notebooks](https://gallery.cortanaintelligence.com/notebooks)** in [Azure AI Gallery](http://gallery.cortanaintelligence.com) umfassen Code, Datenvisualisierungen und Dokumentationen in einer einzelnen, interaktiven Canvas.
 Über Notebooks im Katalog werden Tutorials und ausführliche Erklärungen von erweiterten Machine Learning-Verfahren und -Lösungen bereitgestellt.
 
 ## <a name="discover"></a>Entdecken

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/05/2018
 ms.author: spelluru
-ms.openlocfilehash: a91e14afa8325e75507b2f65cd9d71ab38df4524
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 780799103708483fb0092c7a4c15bfaa3269c073
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51235240"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51636454"
 ---
 # <a name="create-a-custom-image-from-a-vm"></a>Erstellen eines benutzerdefinierten Images von einem virtuellen Computer
 
@@ -47,7 +47,7 @@ Sie können ein benutzerdefiniertes Image aus einem bereitgestellten virtuellen 
 
     ![Bereich „Benutzerdefiniertes Image erstellen“](./media/devtest-lab-create-template/create-custom-image-blade.png)
 
-1. Wählen Sie aus, ob „sysprep“ auf dem virtuellen Computer ausgeführt wurde. Wenn „sysprep“ auf dem virtuellen Computer nicht ausgeführt wurde, geben Sie an, ob „sysprep“ ausgeführt werden soll, wenn Sie einen virtuellen Computer anhand dieses benutzerdefinierten Images erstellen.
+1. Wählen Sie aus, ob „sysprep“ auf dem virtuellen Computer ausgeführt wurde. Wenn „sysprep“ auf dem virtuellen Computer nicht ausgeführt wurde, geben Sie an, ob „sysprep“ auf dem virtuellen Computer ausgeführt werden soll, wenn das benutzerdefinierte Image erstellt wird.
 
 1. Wählen Sie **OK** , wenn Sie mit der Erstellung des benutzerdefinierten Images fertig sind.
 

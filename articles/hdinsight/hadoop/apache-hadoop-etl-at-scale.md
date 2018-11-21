@@ -1,6 +1,6 @@
 ---
 title: Bedarfsorientiertes Extrahieren, Transformieren und Laden (ETL) – Azure HDInsight
-description: Erfahren Sie, wie ETL in HDInsight mit Hadoop verwendet wird.
+description: Erfahren Sie, wie ETL in HDInsight mit Apache Hadoop verwendet wird.
 services: hdinsight
 author: ashishthaps
 ms.reviewer: jasonh
@@ -9,16 +9,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: 6af55bf8311efc14687ee16c3226988fd730081d
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 17aeb847a2c701abf03b46d47e34d13b6fb27316
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43049001"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51633324"
 ---
 # <a name="extract-transform-and-load-etl-at-scale"></a>Bedarfsorientiertes Extrahieren, Transformieren und Laden (ETL)
 
-Extrahieren, Transformieren und Laden (ETL) ist der Prozess, mit dem Daten aus verschiedenen Quellen abgerufen, an einem Standardspeicherort gesammelt, bereinigt und verarbeitet, und letztlich in einen Datenspeicher geladen werden, aus dem sie abgefragt werden können. Legacy-ETL-Prozesse importieren Daten, bereinigen Sie am Ursprungsort und speichern sie dann in einer relationalen Daten-Engine. Bei HDInsight unterstützt eine große Vielzahl von Hadoop-Ökosystemkomponenten die Durchführung des bedarfsorientierten ETL. 
+Extrahieren, Transformieren und Laden (ETL) ist der Prozess, mit dem Daten aus verschiedenen Quellen abgerufen, an einem Standardspeicherort gesammelt, bereinigt und verarbeitet, und letztlich in einen Datenspeicher geladen werden, aus dem sie abgefragt werden können. Legacy-ETL-Prozesse importieren Daten, bereinigen Sie am Ursprungsort und speichern sie dann in einer relationalen Daten-Engine. Bei HDInsight unterstützt eine große Vielzahl von Apache Hadoop-Ökosystemkomponenten die Durchführung des bedarfsorientierten ETL. 
 
 Die Verwendung von HDInsight im ETL-Prozess lässt sich in dieser folgenden Pipeline zusammenfassen:
 

@@ -1,5 +1,5 @@
 ---
-title: 'Debuggen von Hadoop in HDInsight: Anzeigen von Protokollen und Verstehen von Fehlermeldungen – Azure '
+title: 'Debuggen von Apache Hadoop in HDInsight: Anzeigen von Protokollen und Verstehen von Fehlermeldungen: Azure '
 description: Lernen Sie die Fehlermeldungen kennen, die Sie bei der Administration von HDInsight mit PowerShell erhalten können und Schritte zu deren Behebung.
 services: hdinsight
 ms.reviewer: jasonh
@@ -9,16 +9,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: 694129fa39a84deac118c35da52a0617fe805d6c
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 1589a5c1cab5a37322249762c840620d9ba4fc7e
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51261148"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51634633"
 ---
 # <a name="analyze-hadoop-logs"></a>Analysieren von Hadoop-Protokollen
 
-Jeder Hadoop-Cluster in Azure HDInsight hat ein Azure-Speicherkonto, das als Standarddateisystem verwendet wird. Dieses Konto wird als Standardspeicherkonto bezeichnet. Der Cluster nutzt im standardmäßigen Speicherkonto Azure Table Storage und Blob Storage zum Speichern seiner Protokolle.  Informationen zum Ermitteln des Standardspeicherkontos für Ihren Cluster finden Sie unter [Verwalten von Hadoop-Clustern in HDInsight](../hdinsight-administer-use-management-portal.md#find-the-default-storage-account). Die Protokolle verbleiben im Speicherkonto, auch nachdem der Cluster gelöscht wurde.
+Jeder Apache Hadoop-Cluster in Azure HDInsight hat ein Azure-Speicherkonto, das als Standarddateisystem verwendet wird. Dieses Konto wird als Standardspeicherkonto bezeichnet. Der Cluster nutzt im standardmäßigen Speicherkonto Azure Table Storage und Blob Storage zum Speichern seiner Protokolle.  Informationen zum Ermitteln des Standardspeicherkontos für Ihren Cluster finden Sie unter [Verwalten von Hadoop-Clustern in HDInsight](../hdinsight-administer-use-management-portal.md#find-the-default-storage-account). Die Protokolle verbleiben im Speicherkonto, auch nachdem der Cluster gelöscht wurde.
 
 ## <a name="logs-written-to-azure-tables"></a>In Azure-Tabellen geschriebene Protokolle
 
@@ -131,7 +131,7 @@ Die in diesem Abschnitt beschriebenen Fehlermeldungen sollen den Benutzern von H
 
 Einige dieser Fehlermeldungen können auch im Azure-Portal angezeigt werden, wenn HDInsight-Cluster darüber verwaltet werden. Andere Fehlermeldungen, auf die Sie möglicherweise stoßen, sind jedoch eventuell weniger differenziert, da in diesem Kontext gewisse Beschränkungen für die Lösungsschritte bestehen. Andere Fehlermeldungen erscheinen in einem Kontext, in dem die Lösung offensichtlich ist. 
 
-### <a id="AtleastOneSqlMetastoreMustBeProvided"></a>AtleastOneSqlMetastoreMustBeProvided
+### <a id="AtLeastOneSqlMetastoreMustBeProvided"></a>AtLeastOneSqlMetastoreMustBeProvided
 * **Beschreibung**: Stellen Sie für mindestens eine Komponente Informationen zur Azure SQL-Datenbank bereit, damit benutzerdefinierte Einstellungen für die Hive- und Oozie-Metastores verwendet werden können.
 * **Lösung**: Der Benutzer muss einen gültigen SQL Azure-Metastore angeben. Dann kann er die Anforderung wiederholen.  
 

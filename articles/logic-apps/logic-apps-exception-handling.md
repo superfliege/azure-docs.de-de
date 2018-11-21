@@ -10,12 +10,12 @@ ms.date: 01/31/2018
 ms.topic: article
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: 7ce5c7007414bfe8e17727c25de9712e7993dc1e
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: 19a715812f1250523fd050ac8b80dee9ec664be4
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39263751"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51686261"
 ---
 # <a name="handle-errors-and-exceptions-in-azure-logic-apps"></a>Behandeln von Fehlern und Ausnahmen in Azure Logic Apps
 
@@ -73,7 +73,7 @@ Oder Sie können die Wiederholungsrichtlinie manuell im Abschnitt `inputs` für 
 
 | Wert | Typ | BESCHREIBUNG |
 |-------|------|-------------|
-| <*retry-policy-type*> | Zeichenfolge | Der Wiederholungsrichtlinientyp, den Sie verwenden möchten: „default“, „none“, „fixed“ oder „exponential“. | 
+| <*retry-policy-type*> | Zeichenfolge | Der Wiederholungsrichtlinientyp, den Sie verwenden möchten: `default`, `none`, `fixed` oder `exponential` | 
 | <*retry-interval*> | Zeichenfolge | Das Wiederholungsintervall, bei dem für den Wert das [ISO 8601-Format](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) verwendet werden muss. Der niedrigste Wert für das Intervall ist `PT5S`, und der höchste Wert ist `PT1D`. Wenn Sie die Richtlinie mit dem exponentiellen Intervall verwenden, können Sie einen anderen Mindest- und Maximalwert angeben. | 
 | <*retry-attempts*> | Ganze Zahl  | Die Anzahl der Wiederholungsversuche, die zwischen 1 und 90 liegen muss | 
 ||||
@@ -221,9 +221,9 @@ Grenzwerte für Bereiche finden Sie unter [Grenzwerte und Konfiguration](../logi
 
 ### <a name="get-context-and-results-for-failures"></a>Abrufen von Kontext und Ergebnissen auf Fehler
 
-Das Abfangen der Fehler eines Bereichs ist nützlich. Aber häufig ist auch der Kontext hilfreich, um genau zu verstehen, für welche Aktionen Fehler aufgetreten sind und welche Fehler oder Statuscodes zurückgegeben wurden. Mit dem Ausdruck „@result()“ wird Kontext zum Ergebnis aller Aktionen in einem Bereich bereitgestellt.
+Das Abfangen der Fehler eines Bereichs ist nützlich. Aber häufig ist auch der Kontext hilfreich, um genau zu verstehen, für welche Aktionen Fehler aufgetreten sind und welche Fehler oder Statuscodes zurückgegeben wurden. Mit dem Ausdruck `@result()` wird Kontext zum Ergebnis aller Aktionen in einem Bereich bereitgestellt.
 
-Der Ausdruck „@result()“ nimmt einen einzelnen Parameter (Bereichsname) an und gibt ein Array mit den Ergebnissen aller Aktionen innerhalb des betreffenden Bereichs zurück. Diese Aktionsobjekte enthalten dieselben Attribute wie die  **@actions()**-Objekte, z.B. Start- und Endzeit der Aktion, Status, Eingaben, Korrelations-IDs und Ausgaben. Sie können eine **@result()**-Funktion problemlos mit einer **runAfter**-Eigenschaft koppeln, um Kontext zu allen Aktionen zu senden, für die im Bereich ein Fehler aufgetreten ist.
+Der Ausdruck `@result()` nimmt einen einzelnen Parameter (Bereichsname) an und gibt ein Array mit den Ergebnissen aller Aktionen innerhalb des betreffenden Bereichs zurück. Diese Aktionsobjekte enthalten dieselben Attribute wie die  **@actions()**-Objekte, z.B. Start- und Endzeit der Aktion, Status, Eingaben, Korrelations-IDs und Ausgaben. Sie können eine **@result()**-Funktion problemlos mit einer **runAfter**-Eigenschaft koppeln, um Kontext zu allen Aktionen zu senden, für die im Bereich ein Fehler aufgetreten ist.
 
 Zum Ausführen einer Aktion für jede Aktion eines Bereichs mit dem Ergebnis **Failed** und zum Filtern des Arrays der Ergebnisse bis hinab zu den fehlerhaften Aktionen können Sie **@result()** mit der Aktion **[Filter Array](../connectors/connectors-native-query.md)** und einer [**For each**](../logic-apps/logic-apps-control-flow-loops.md)-Schleife koppeln. Sie können für das Array mit den gefilterten Ergebnissen eine Aktion für jeden Fehler durchführen, indem Sie die **For each**-Schleife verwenden. 
 
@@ -270,22 +270,22 @@ Hier ist ein Beispiel gefolgt von einer ausführlichen Erklärung angegeben, bei
 
 In dieser ausführlichen exemplarischen Vorgehensweise wird beschrieben, was in diesem Beispiel geschieht:
 
-1. Um das Ergebnis aller Aktionen in „My_Scope“ abzurufen, wird für die Aktion **Filter Array** dieser Filterausdruck verwendet: „@result('My_Scope')“.
+1. Um das Ergebnis aller Aktionen in „My_Scope“ abzurufen, wird für die Aktion **Filter Array** dieser Filterausdruck verwendet: `@result('My_Scope')`
 
-2. Die Bedingung für **Filter Array** ist ein beliebiges „@result()“-Element, das den Status **Failed** aufweist. Mit dieser Bedingung wird das Array mit allen Aktionsergebnissen aus „My_Scope“ bis hinab zu einem Array gefiltert, dass nur die fehlerhaften Aktionen als Ergebnisse enthält.
+2. Die Bedingung für **Filter Array** ist ein beliebiges `@result()`-Element, das den Status **Failed** aufweist. Mit dieser Bedingung wird das Array mit allen Aktionsergebnissen aus „My_Scope“ bis hinab zu einem Array gefiltert, dass nur die fehlerhaften Aktionen als Ergebnisse enthält.
 
 3. Führen Sie eine **For each**-Schleifenaktion für die Ausgaben *gefilterter Arrays* aus. In diesem Schritt wird eine Aktion für jedes Ergebnis einer fehlgeschlagenen Aktion durchgeführt, das zuvor gefiltert wurde.
 
    Wenn für eine einzelne Aktion im Bereich ein Fehler aufgetreten ist, werden die Aktionen in der **For each**-Schleife nur einmal ausgeführt. 
    Mehrere Aktionen mit Fehler lösen eine Aktion pro Fehler aus.
 
-4. Senden Sie HTTP POST für den **For each**-Elementantworttext. Dies ist der Ausdruck „@item()['outputs']['body']“. 
+4. Senden Sie HTTP POST für den **For each**-Elementantworttext. Dies ist der Ausdruck `@item()['outputs']['body']`. 
 
-   Die „@result()“-Elementform ist mit der „@actions()“-Form identisch und kann auch genauso analysiert werden.
+   Die `@result()`-Elementform ist mit der `@actions()`-Form identisch und kann auch genauso analysiert werden.
 
-5. Binden Sie zwei benutzerdefinierte Header mit dem Namen der fehlgeschlagenen Aktion („@item()['name']“) und der Clienttracking-ID der fehlgeschlagenen Ausführung („@item()['clientTrackingId']“) ein.
+5. Binden Sie zwei benutzerdefinierte Header mit dem Namen der fehlerhaften Aktion (`@item()['name']`) und der Clientnachverfolgungs-ID der fehlerhaften Ausführung (`@item()['clientTrackingId']`) ein.
 
-Zu Referenzzwecken ist hier ein Beispiel für ein einzelnes „@result()“-Element angegeben, das die Eigenschaften **name**, **body** und **clientTrackingId** enthält, die im vorherigen Beispiel analysiert werden. Außerhalb einer **For each**-Aktion gibt „@result()“ ein Array mit diesen Objekten zurück.
+Zu Referenzzwecken ist hier ein Beispiel für ein einzelnes `@result()`-Element angegeben, das die Eigenschaften **name**, **body** und **clientTrackingId** enthält, die im vorherigen Beispiel analysiert werden. Außerhalb einer **For each**-Aktion gibt `@result()` ein Array mit diesen Objekten zurück.
 
 ```json
 {

@@ -1,6 +1,6 @@
 ---
-title: MapReduce und Remotedesktop mit Hadoop in HDInsight – Azure
-description: Erfahren Sie, wie Sie mithilfe des Remotedesktops eine Verbindung mit Hadoop in HDInsight herstellen und MapReduce-Aufträge ausführen.
+title: MapReduce und Remotedesktop mit Apache Hadoop in HDInsight – Azure
+description: Hier erfahren Sie, wie Sie mithilfe des Remotedesktops eine Verbindung mit Apache Hadoop in HDInsight herstellen und MapReduce-Aufträge ausführen.
 services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -9,17 +9,17 @@ ms.topic: conceptual
 ms.date: 01/12/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: ee87bd5743307ea5b9ee3ca1258e8cd985a095c5
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: b8cd389bee98058e5362a217268fb53d6aaf3424
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51012927"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51634480"
 ---
-# <a name="use-mapreduce-in-hadoop-on-hdinsight-with-remote-desktop"></a>Verwenden von MapReduce in Hadoop in HDInsight über den Remotedesktop
+# <a name="use-mapreduce-in-apache-hadoop-on-hdinsight-with-remote-desktop"></a>Verwenden von MapReduce in Apache Hadoop in HDInsight per Remotedesktop
 [!INCLUDE [mapreduce-selector](../../../includes/hdinsight-selector-use-mapreduce.md)]
 
-In diesem Artikel erfahren Sie, wie Sie mithilfe des Remotedesktops eine Verbindung mit einem Hadoop-Cluster in HDInsight herstellen und dann MapReduce-Aufträge mit dem Hadoop-Befehl ausführen.
+In diesem Artikel erfahren Sie, wie Sie mithilfe des Remotedesktops eine Verbindung mit einem Apache Hadoop-Cluster in HDInsight herstellen und dann mithilfe des Hadoop-Befehls MapReduce-Aufträge ausführen.
 
 > [!IMPORTANT]
 > Remotedesktop ist nur in Windows-basierten HDInsight-Clustern verfügbar. Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Welche Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?](../hdinsight-component-versioning.md#hdinsight-windows-retirement).

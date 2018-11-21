@@ -9,16 +9,16 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2017
-ms.openlocfilehash: cd62083bc7bd0254084f0fc209540de929c25d06
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: c26b4700f32ce4e0bd8327e862d31df8fea2439d
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43042252"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51632542"
 ---
 # <a name="use-apache-hive-as-an-extract-transform-and-load-etl-tool"></a>Verwenden von Apache Hive als Tool zum Extrahieren, Transformieren und Laden (ETL)
 
-In der Regel müssen Sie eingehende Daten bereinigen und transformieren, bevor Sie sie auf ein Ziel laden, das für Analysezwecke geeignet ist. ETL-Vorgänge (Extrahieren, Transformieren und Laden) werden genutzt, um Daten vorzubereiten und auf ein Datenziel zu laden.  Hive in HDInsight kann unstrukturierte Daten einlesen, die Daten je nach Bedarf verarbeiten und sie dann in ein relationales Data Warehouse für Systeme laden, die der Entscheidungshilfe dienen. Bei diesem Ansatz werden Daten aus der Quelle extrahiert und in skalierbarem Speicher gespeichert, z.B. Azure Storage-Blobs oder Azure Data Lake Store. Die Daten werden dann transformiert, indem eine Sequenz mit Hive-Abfragen verwendet wird, und abschließend in Hive bereitgestellt, um das Massenladen in den Zieldatenspeicher vorzubereiten.
+In der Regel müssen Sie eingehende Daten bereinigen und transformieren, bevor Sie sie auf ein Ziel laden, das für Analysezwecke geeignet ist. ETL-Vorgänge (Extrahieren, Transformieren und Laden) werden genutzt, um Daten vorzubereiten und auf ein Datenziel zu laden.  Apache Hive in HDInsight kann unstrukturierte Daten lesen, die Daten je nach Bedarf verarbeiten und sie dann in ein relationales Data Warehouse für Systeme zur Entscheidungsunterstützung laden. Bei diesem Ansatz werden Daten aus der Quelle extrahiert und in skalierbarem Speicher gespeichert, z.B. Azure Storage-Blobs oder Azure Data Lake Store. Die Daten werden dann transformiert, indem eine Sequenz mit Hive-Abfragen verwendet wird, und abschließend in Hive bereitgestellt, um das Massenladen in den Zieldatenspeicher vorzubereiten.
 
 ## <a name="use-case-and-model-overview"></a>Übersicht über den Anwendungsfall und das Modell
 
