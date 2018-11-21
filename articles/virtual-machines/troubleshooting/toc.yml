@@ -17,6 +17,8 @@ items:
     href: detailed-troubleshoot-rdp.md
   - name: Behandeln eines RDP-Fehlers auf einem virtuellen Computer, der auf das deaktivierte DHCP zurückzuführen ist
     href: troubleshoot-rdp-dhcp-disabled.md
+  - name: Behandeln eines RDP-Fehlers, der auf eine NSG-Einstellung zurückzuführen ist
+    href: troubleshoot-rdp-nsg-problem.md
   - name: Behandeln spezifischer Fehler
     href: troubleshoot-specific-rdp-errors.md
   - name: Beheben von Fehlern, wenn kein Lizenzserver vorhanden ist
@@ -58,15 +60,15 @@ items:
   href: install-vm-agent-offline.md
 - name: Erneutes Bereitstellen eines virtuellen Computers
   items:
-  - name: Linux
+  - name: " Linux"
     href: redeploy-to-new-node-linux.md
-  - name: Windows
+  - name: " Windows"
     href: redeploy-to-new-node-windows.md
 - name: Zurücksetzen des Kennworts des virtuellen Computers
   items:
-  - name: Windows
+  - name: " Windows"
     href: reset-local-password-without-agent.md
-  - name: Linux
+  - name: " Linux"
     href: reset-password.md
 - name: Zurücksetzen der NIC
   href: reset-network-interface.md
@@ -96,27 +98,27 @@ items:
   href: troubleshoot-app-connection.md
 - name: Neue VM-Bereitstellungen
   items:
-  - name: Linux
+  - name: " Linux"
     href: troubleshoot-deployment-new-vm-linux.md
-  - name: Windows
+  - name: " Windows"
     href: troubleshoot-deployment-new-vm-windows.md
 - name: Behandeln von Bereitstellungsproblemen
   items:
-  - name: Linux
+  - name: " Linux"
     href: troubleshoot-deploy-vm-linux.md
-  - name: Windows
+  - name: " Windows"
     href: troubleshoot-deploy-vm-windows.md
 - name: Änderung von Gerätenamen
   href: troubleshoot-device-names-problems.md
 - name: Zugriff auf die VM-Wiederherstellung
   items:
-  - name: Windows
+  - name: " Windows"
     items:
     - name: PowerShell
       href: troubleshoot-recovery-disks-windows.md
     - name: Azure-Portal
       href: troubleshoot-recovery-disks-portal-windows.md
-  - name: Linux
+  - name: " Linux"
     items:
     - name: Befehlszeilenschnittstelle (CLI)
       href: troubleshoot-recovery-disks-linux.md
@@ -149,9 +151,9 @@ items:
   href: understand-vm-reboot.md
 - name: Tools für die Remoteproblembehandlung
   href: remote-tools-troubleshoot-azure-vm-issues.md
-ms.openlocfilehash: 4b4202e0eb155e80b86332287ba4ed3a37a24741
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: fbbc44073d4cb27222800943826ab7a177709833
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51705615"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52260628"
