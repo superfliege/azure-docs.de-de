@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 09/05/2018
 ms.author: pryerram
 ms.custom: mvc
-ms.openlocfilehash: 9cc22e158a9473b7b60f7e8bcb57174abc1fb8cc
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.openlocfilehash: 6e30a181bc69678051e6d6469a2f1c533de811df
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51218551"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51686210"
 ---
 # <a name="tutorial-how-to-use-azure-key-vault-with-azure-web-app-in-net"></a>Tutorial: Verwenden von Azure Key Vault mit Azure-Web-App in .NET
 
@@ -51,7 +51,7 @@ Lesen Sie die Informationen zu [grundlegenden Konzepten](key-vault-whatis.md#bas
   * [.NET Core](https://www.microsoft.com/net/download/dotnet-core/2.1)
 
 ## <a name="what-is-managed-service-identity-and-how-does-it-work"></a>Was ist eine verwaltete Dienstidentität, und wie funktioniert sie?
- Gehen wir zunächst auf das Konzept der verwalteten Dienstidentität (Managed Service Identity, MSI) ein. Azure Key Vault kann Anmeldeinformationen sicher speichern. Dadurch befinden sie sich nicht in Ihrem Code. Zum Abrufen der Anmeldeinformationen ist jedoch eine Authentifizierung bei Azure Key Vault erforderlich. Und für die Authentifizierung bei Key Vault sind Anmeldeinformationen erforderlich. Ein klassisches Bootstrap-Problem. Dank Azure und Azure AD bietet MSI eine „Bootstrap-Identität“, die die ersten Schritte erheblich vereinfacht.
+Gehen wir zunächst auf das Konzept der verwalteten Dienstidentität (Managed Service Identity, MSI) ein. Azure Key Vault kann Anmeldeinformationen sicher speichern. Dadurch befinden sie sich nicht in Ihrem Code. Zum Abrufen der Anmeldeinformationen ist jedoch eine Authentifizierung bei Azure Key Vault erforderlich. Und für die Authentifizierung bei Key Vault sind Anmeldeinformationen erforderlich. Ein klassisches Bootstrap-Problem. Dank Azure und Azure AD bietet MSI eine „Bootstrap-Identität“, die die ersten Schritte erheblich vereinfacht.
 
 Das funktioniert so: Wenn Sie MSI für einen Azure-Dienst wie etwa Virtual Machines, App Service oder Functions aktivieren, erstellt Azure einen [Dienstprinzipal](key-vault-whatis.md#basic-concepts) für die Instanz des Diensts in Azure Active Directory und fügt die Anmeldeinformationen für den Dienstprinzipal in die Instanz des Diensts ein. 
 
@@ -118,7 +118,7 @@ Mit diesem Befehl werden die Geheimnisinformationen einschließlich des URI ange
 
 ## <a name="create-a-net-core-web-app"></a>Erstellen einer .NET Core-Web-App
 
-Gehen Sie wie in [diesem Tutorial](../app-service/app-service-web-get-started-dotnet.md) beschrieben vor, um eine .NET Core-Web-App zu erstellen und in Azure zu **veröffentlichen**. ODER:**** Sehen Sie sich das folgende Video an.
+Gehen Sie wie in [diesem Tutorial](../app-service/app-service-web-get-started-dotnet.md) beschrieben vor, um eine .NET Core-Web-App zu erstellen und in Azure zu **veröffentlichen**. **ODER**: Sehen Sie sich das folgende Video an.
 > [!VIDEO https://www.youtube.com/embed/EdiiEH7P-bU]
 
 ## <a name="open-and-edit-the-solution"></a>Öffnen und Bearbeiten der Lösung
