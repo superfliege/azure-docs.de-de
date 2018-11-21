@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: librown
-ms.openlocfilehash: 81c249c8dc8475428f4cb0014e57f09e28a3d9af
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 3a9fba644bd379f3f54cf07cf35c0a54029756da
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48804326"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51287182"
 ---
 # <a name="password-less-phone-sign-in-with-the-microsoft-authenticator-app-public-preview"></a>Telefonanmeldung ohne Kennwort mit der Microsoft Authenticator-App (Public Preview)
 
@@ -37,11 +37,16 @@ Bei der Public Preview-Version muss ein Administrator zunächst mithilfe von Pow
 
 ### <a name="steps-to-enable"></a>Schritte zum Aktivieren
 
-1. Installieren Sie die [Public Preview-Version des Azure Active Directory V2 PowerShell-Moduls](https://www.powershellgallery.com/packages/AzureADPreview/).  
-2. Führen Sie in PowerShell die beiden folgenden Befehle aus:
-   1. `Connect-AzureAD`
-      1. Melden Sie sich im Authentifizierungsdialogfeld mit einem Konto im Mandanten an. Bei dem Konto muss es sich um einen Sicherheitsadministrator oder globalen Administrator handeln.
-   2. `New-AzureADPolicy -Type AuthenticatorAppSignInPolicy -Definition '{"AuthenticatorAppSignInPolicy":{"Enabled":true}}' -isOrganizationDefault $true -DisplayName AuthenticatorAppSignIn`
+Stellen Sie sicher, dass bei Ihnen die neueste Public Preview-Version des Azure Active Directory V2 PowerShell-Moduls installiert ist. Dazu empfiehlt es sich unter Umständen, das Modul zu deinstallieren und anschließend erneut zu installieren. Führen Sie hierzu die folgenden Befehle aus:
+
+1. `Uninstall-Module -Name AzureADPreview`
+2. `Install-Module -Name AzureADPreview`
+
+In der Vorschauversion können Sie mithilfe der folgenden PowerShell-Befehle die kennwortlose Anmeldung per Telefon aktivieren:
+
+1. `Connect-AzureAD`
+   1. Melden Sie sich im Authentifizierungsdialogfeld mit einem Konto im Mandanten an. Bei dem Konto muss es sich um einen Sicherheitsadministrator oder globalen Administrator handeln.
+1. `New-AzureADPolicy -Type AuthenticatorAppSignInPolicy -Definition '{"AuthenticatorAppSignInPolicy":{"Enabled":true}}' -isOrganizationDefault $true -DisplayName AuthenticatorAppSignIn`
 
 ## <a name="how-do-my-end-users-enable-phone-sign-in"></a>Wie aktivieren Endbenutzer die Anmeldung per Smartphone?
 

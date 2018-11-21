@@ -12,21 +12,21 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/12/2018
+ms.date: 11/13/2018
 ms.author: anwestg
-ms.openlocfilehash: 4b6ad2e237d73d5d8ca414bffc3a679ee552105f
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 54ceadc8173526e8638e70c8c859109eea157fa7
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44718728"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51614037"
 ---
 # <a name="add-an-app-service-resource-provider-to-a-disconnected-azure-stack-environment-secured-by-ad-fs"></a>Hinzufügen eines App Service-Ressourcenanbieters zu einer getrennten, durch AD FS gesicherten Azure Stack-Umgebung
 
 *Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
 > [!IMPORTANT]
-> Wenden Sie Update 1807 auf Ihr integriertes Azure Stack-System an, oder stellen Sie das aktuelle Azure Stack Development Kit vor der Bereitstellung von Azure App Service 1.3 bereit.
+> Wenden Sie Update 1809 auf Ihr integriertes Azure Stack-System an, oder stellen Sie das aktuelle Azure Stack Development Kit vor der Bereitstellung von Azure App Service 1.4 bereit.
 >
 >
 
@@ -84,8 +84,7 @@ Um App Service in einer nicht verbundenen Umgebung bereitzustellen, müssen Sie 
     2. Wählen Sie im Feld **Azure Stack-Abonnements** das **Standardabonnement des Anbieters** aus.
     
     > [!NOTE]
-    > App Service kann derzeit nur im **Abonnement für Standardanbieter** bereitgestellt werden.  In einem zukünftigen Update wird App Service im neuen in Azure Stack 1804 eingeführten Abonnement für Messungen bereitgestellt, auch werden alle vorhandenen Bereitstellungen zu diesem neuen Abonnement migriert.
-    >
+    > App Service kann nur im **Abonnement für Standardanbieter** bereitgestellt werden.
     >
     
     3. Wählen Sie im Feld **Azure Stack-Standorte** den Standort aus, der der Region entspricht, in der die Bereitstellung erfolgen soll. Wählen Sie z.B. **lokal** aus, wenn Ihre Bereitstellung im Azure Stack Development Kit erfolgt.
@@ -170,7 +169,7 @@ Um App Service in einer nicht verbundenen Umgebung bereitzustellen, müssen Sie 
     ![App Service-Installationsprogramm][14]
 
     > [!NOTE]
-    > **Windows Server 2016 Core ist kein unterstütztes Plattformimage für die Verwendung mit Azure App Service in Azure Stack.  Verwenden Sie Evaluierungsimages nicht für Produktionsbereitstellungen.  Azure App Service in Azure Stack setzt voraus, dass auf dem für die Bereitstellung verwendeten Image Microsoft.Net 3.5.1 SP1 aktiviert ist.   Bei syndizierten Marketplace-Images von Windows Server 2016 ist dieses Feature nicht aktiviert.**
+    > **Windows Server 2016 Core ist kein unterstütztes Plattformimage für die Verwendung mit Azure App Service in Azure Stack.  Verwenden Sie Evaluierungsimages nicht für Produktionsbereitstellungen.  Azure App Service in Azure Stack setzt voraus, dass auf dem für die Bereitstellung verwendeten Image Microsoft.Net 3.5.1 SP1 aktiviert ist.   Bei über den Marketplace syndizierte Windows Server 2016-Images ist dieses Feature nicht aktiviert. Daher müssen Sie ein Windows Server 2016-Image erstellen und verwenden, bei dem dies bereits aktiviert ist.**
 
 14. Wählen Sie im Feld **Plattformimage auswählen** aus den VM-Images, die im Computeressourcenanbieter für die App Service-Cloud verfügbar sind, Ihr VM-Bereitstellungsimage für Windows Server 2016 aus. Klicken Sie auf **Weiter**.
 

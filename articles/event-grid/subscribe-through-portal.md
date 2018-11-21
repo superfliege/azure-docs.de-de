@@ -5,14 +5,14 @@ services: event-grid
 author: tfitzmac
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 08/17/2018
+ms.date: 11/08/2018
 ms.author: tomfitz
-ms.openlocfilehash: 72eaa17e78086a4e5338bb3198ef7471c44b785f
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: eb48e40007a25992a9a399176b6a4f93be89efc8
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "40234693"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51344082"
 ---
 # <a name="subscribe-to-events-through-portal"></a>Abonnieren von Ereignissen über das Portal
 
@@ -45,6 +45,16 @@ Befolgen Sie die folgenden Schritte, um ein Event Grid-Abonnement für jede der 
 1. Stellen Sie zusätzliche Details zum Ereignisabonnement bereit, wie etwa den Endpunkt für die Behandlung von Ereignissen sowie einen Abonnementnamen.
 
    ![Abonnementdetails bereitstellen](./media/subscribe-through-portal/provide-subscription-details.png)
+
+1. Wählen Sie **Zusätzliche Features** aus, um die Verarbeitung unzustellbarer Nachrichten zu aktivieren und Wiederholungsrichtlinien anzupassen.
+
+   ![Auswählen zusätzlicher Features](./media/subscribe-through-portal/select-additional-features.png)
+
+1. Wählen Sie einen Container zum Speichern von nicht zugestellten Ereignissen aus, und legen Sie fest, wie Wiederholungen gesendet werden.
+
+   ![Aktivieren der Verarbeitung von unzustellbaren Nachrichten und Wiederholung](./media/subscribe-through-portal/set-deadletter-retry.png)
+
+1. Wählen Sie abschließend die Option **Erstellen**.
 
 ## <a name="create-subscription-on-resource"></a>Erstellen eines Abonnements für die Ressource
 

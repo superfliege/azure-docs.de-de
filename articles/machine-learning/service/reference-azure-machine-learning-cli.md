@@ -1,118 +1,141 @@
 ---
-title: Informationen zur Azure Machine Learning-CLI-Erweiterung
-description: Hier erhalten Sie Informationen zur Machine Learning-CLI-Erweiterung für Azure Machine Learning.
+title: 'Gewusst wie: Verwendung der Azure Machine Learning-CLI-Erweiterung'
+description: Hier erhalten Sie Informationen zur Azure Machine Learning-CLI-Erweiterung für die Azure CLI. Die Azure CLI ist ein plattformübergreifendes Befehlszeilenhilfsprogramm, das das Arbeiten mit Ressourcen in der Azure-Cloud ermöglicht. Die Machine Learning-Erweiterung ermöglicht Ihnen das Arbeiten mit dem Azure Machine Learning-Dienst.
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
-ms.topic: reference
+ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: jordane
 author: jpe316
 ms.date: 09/24/2018
-ms.openlocfilehash: 45ed1867d6d151250340bb21450b4b0d9b00e993
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: f5c74055747cacbede479e12397bbb66ac74d10e
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51243146"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51615635"
 ---
-# <a name="what-is-the-azure-machine-learning-cli"></a>Was ist die Azure Machine Learning-CLI?
+# <a name="use-the-azure-machine-learning-cli-extension"></a>Verwendung der Azure Machine Learning-CLI-Erweiterung
 
-Die Azure Machine Learning-CLI-Erweiterung (Command Line Interface, Befehlszeilenschnittstelle) richtet sich an Data Scientists und Entwickler, die mit dem Azure Machine Learning-Dienst arbeiten. Sie ermöglicht Ihnen eine schnelle Automatisierung von Machine Learning-Workflows und deren Aufnahme in die Produktion:
+Der Azure Machine Learning-CLI ist eine Erweiterung der [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest), eine plattformübergreifende Befehlszeilenschnittstelle für die Azure-Plattform. Diese Erweiterung unterstützt Befehle für die Arbeit mit dem Azure Machine Learning-Dienst über die Befehlszeile. Zudem können Sie Skripts erstellen, die Ihre Machine Learning-Workflows automatisieren. Beispielsweise können Sie Skripts erstellen, die die folgenden Aktionen ausführen:
+
 + Ausführen von Experimenten zum Erstellen von Machine Learning-Modellen
 
 + Registrieren von Machine Learning-Modellen zur Verwendung durch Kunden
 
-+ Paketieren, Bereitstellen und Verfolgen des Lebenszyklus Ihrer Machine Learning-Modelle
++ Paketieren, Bereitstellen und Nachverfolgen des Lebenszyklus Ihrer Machine Learning-Modelle
 
-Diese Machine Learning-CLI ist eine Erweiterung der [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) und basiert auf dem Python-basierten <a href="https://aka.ms/aml-sdk" target="_blank">SDK</a> für den Azure Machine Learning-Dienst.
+Die CLI ist kein Ersatz für das Azure Machine Learning SDK. Sie stellt ein ergänzende Tool dar, das für die Verarbeitung hochgradig parametrisierter Aufgaben optimiert ist:
+
+* Erstellen von Computeressourcen
+
+* Übermittlung parametrisierter Experimente
+
+* Modellregistrierung
+
+* Erstellung von Images
+
+* Dienstbereitstellung
+
+## <a name="prerequisites"></a>Voraussetzungen
+
+* Die [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)
 
 > [!NOTE]
-> Die Befehlszeilenschnittstelle befindet sich derzeit in einer frühen Vorschauphase und wird noch aktualisiert.
+> Für die Verwendung der CLI benötigen Sie ein Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
-## <a name="installing-and-uninstalling"></a>Installation und Deinstallation
+## <a name="install-the-extension"></a>Installieren der Erweiterung
 
-Sie können die CLI mit dem folgenden Befehl über unseren Vorschau-PyPi-Index installieren:
-```AzureCLI
+Um die Machine Learning-CLI-Erweiterung zu installieren, verwenden Sie den folgenden Befehl:
+
+```azurecli-interactive
 az extension add -s https://azuremlsdktestpypi.blob.core.windows.net/wheels/sdk-release/Preview/E7501C02541B433786111FE8E140CAA1/azure_cli_ml-0.1.68-py2.py3-none-any.whl --pip-extra-index-urls  https://azuremlsdktestpypi.azureedge.net/sdk-release/Preview/E7501C02541B433786111FE8E140CAA1
 ```
 
-Mit diesem Befehl können Sie die CLI entfernen:
-```AzureCLI
+Klicken Sie bei Aufforderung auf `y`, um die Erweiterung zu installieren.
+
+Um sicherzustellen, dass die Erweiterung installiert wurde, verwenden Sie den folgenden Befehl zum Anzeigen einer Liste von ML-spezifischen Unterbefehlen:
+
+```azurecli-interactive
+az ml -h
+```
+
+> [!TIP]
+> Um die Erweiterung zu aktualisieren, müssen Sie sie __entfernen__ und dann __installieren__. So wird die aktuelle Version installiert.
+
+## <a name="remove-the-extension"></a>Entfernen der Erweiterung
+
+Verwenden Sie zum Entfernen der CLI-Erweiterung den folgenden Befehl:
+
+```azurecli-interactive
 az extension remove -n azure-cli-ml
 ```
 
-Sie können die CLI mit den oben genannten Schritten **remove** und **add** aktualisieren.
+## <a name="resource-management"></a>Ressourcenverwaltung
 
-## <a name="using-the-cli-vs-the-sdk"></a>Verwenden der CLI im Vergleich zum SDK
-Die CLI eignet sich besser für die Automatisierung durch eine DevOps-Persona oder als Teil einer Continuous Integration- und Continuous Delivery-Pipeline. Sie wurde für die Verarbeitung seltener und hoch parametrisierter Aufgaben optimiert. 
+Die folgenden Befehle veranschaulichen, wie Sie mit der CLI Ressourcen verwalten, die von Azure Machine Learning verwendet werden.
 
-Beispiele:
-- Computebereitstellung
-- Übermittlung parametrisierter Experimente
-- Modellregistrierung, Imageerstellung
-- Dienstbereitstellung
 
-Data Scientists wird die Verwendung des Azure ML SDK empfohlen.
++ Hiermit erstellen Sie einen Azure Machine Learning-Dienstarbeitsbereich:
 
-## <a name="common-machine-learning-cli-commands"></a>Weitere gängige Befehle der Machine Learning-CLI
-> [!NOTE]
-> Beispieldateien, die Sie zur erfolgreichen Ausführung der folgenden Befehle verwenden können, finden Sie [hier](https://github.com/Azure/MachineLearningNotebooks/tree/cli/cli).
-
-Verwenden Sie den umfassenden Satz an `az ml`-Befehlen, um mit dem Dienst in einer beliebigen Befehlszeilenumgebung zu interagieren, einschließlich der Cloud Shell im Azure-Portal.
-
-Hier sehen Sie ein Beispiel für häufig verwendete Befehle:
-
-### <a name="workspace-creation--compute-setup"></a>Arbeitsbereichserstellung und Computeeinrichtung
-
-+ Hiermit erstellen Sie einen Arbeitsbereich für den Azure Machine Learning Service, die Ressource der obersten Ebene für Machine Learning.
-   ```AzureCLI
+   ```azurecli-interactive
    az ml workspace create -n myworkspace -g myresourcegroup
    ```
 
-+ Hiermit richten Sie die CLI so ein, dass dieser Arbeitsbereich standardmäßig verwendet wird.
-   ```AzureCLI
++ Hiermit legen Sie einen Standardarbeitsbereich fest:
+
+   ```azurecli-interactive
    az configure --defaults aml_workspace=myworkspace group=myresourcegroup
    ```
 
 + Hiermit erstellen Sie eine DSVM (Data Science VM). Sie können auch BatchAI-Cluster für verteiltes Training oder AKS-Cluster für die Bereitstellung erstellen.
-  ```AzureCLI
+
+
+  ```azurecli-interactive
   az ml computetarget setup dsvm -n mydsvm
   ```
 
-### <a name="experiment-submission"></a>Experimentübermittlung
-+ Hiermit fügen Sie das Experiment zur Übermittlung an ein Projekt an (Laufzeitkonfiguration). Diese Option wird verwendet, um Experimentausführungen zu verfolgen.
-  ```AzureCLI
-  az ml project attach --experiment-name myhistory
-  ```
+## <a name="experiments"></a>Experimente
 
-+ Hiermit übermitteln Sie ein Experiment für den Azure Machine Learning-Dienst auf dem Computeziel Ihrer Wahl. Dieses Beispiel wird für Ihre lokale Compute-Umgebung ausgeführt. Stellen Sie sicher, dass Ihre Conda-Umgebungsdatei Ihre Python-Abhängigkeiten erfasst.
+Die folgenden Befehle veranschaulichen, wie Sie die CLI zum Arbeiten mit Experimenten verwenden:
 
-  ```AzureCLI
-  az ml run submit -c local train.py
-  ```
+* Hiermit fügen Sie vor dem Absenden eines Experiments ein Projekt an (Laufzeitkonfiguration):
 
-+ Hiermit zeigen Sie eine Liste der übermittelten Experimente an.
-```AzureCLI
-az ml history list
-```
+    ```azurecli-interactive
+    az ml project attach --experiment-name myhistory
+    ```
 
-### <a name="model-registration-image-ceation--deployment"></a>Modellregistrierung, Imageerstellung und Bereitstellung
+* Starten Sie eine Ausführung Ihres Experiments. Wenn Sie diesen Befehl verwenden, geben Sie ein Computeziel an. In diesem Beispiel verwendet `local` den lokalen Computer, um das Modell über das Skript `train.py` zu trainieren:
 
-+ Hiermit registrieren Sie ein Modell bei Azure Machine Learning.
-  ```AzureCLI
+    ```azurecli-interactive
+    az ml run submit -c local train.py
+    ```
+
+* Hiermit zeigen Sie eine Liste der übermittelten Experimente an:
+
+    ```azurecli-interactive
+    az ml history list
+    ```
+
+## <a name="model-registration-image-creation--deployment"></a>Modellregistrierung, Imageerstellung und Bereitstellung
+
+Die folgenden Befehle veranschaulichen, wie ein trainiertes Modell registriert und dann als Produktionsdienst bereitgestellt wird:
+
++ Hiermit registrieren Sie ein Modell bei Azure Machine Learning:
+
+  ```azurecli-interactive
   az ml model register -n mymodel -m sklearn_regression_model.pkl
   ```
 
-+ Hiermit erstellen Sie ein Image, das Ihr Machine Learning-Modell und die zugehörigen Abhängigkeiten enthält. 
-  ```AzureCLI
++ Hiermit erstellen Sie ein Image, das Ihr Machine Learning-Modell und die zugehörigen Abhängigkeiten enthält: 
+
+  ```azurecli-interactive
   az ml image create container -n myimage -r python -m mymodel:1 -f score.py -c myenv.yml
   ```
 
-+ Hiermit stellen Sie Ihr paketiertes Modell für Ziele wie ACI und AKS bereit.
-  ```AzureCLI
++ Hiermit stellen Sie ein Image für ein Computeziel bereit:
+
+  ```azurecli-interactive
   az ml service create aci -n myaciservice --image-id myimage:1
   ```
-    
-## <a name="full-command-list"></a>Vollständige Befehlsliste
-Die vollständige Liste der Befehle für die CLI-Erweiterung (und die jeweils unterstützten Parameter) erhalten Sie, indem Sie ```az ml COMMANDNAME -h``` ausführen. 

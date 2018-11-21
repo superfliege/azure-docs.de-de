@@ -13,24 +13,23 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/09/2017
+ms.date: 11/08/2018
 ms.author: deguhath
-ms.openlocfilehash: 168d2852d8905735b450850c8bb32a1ae07a620d
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 55d92fedbb67d21d34464b792b3600eb6964840b
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34837291"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51345520"
 ---
 # <a name="explore-data-in-the-team-data-science-process"></a>Untersuchen von Daten im Team Data Science-Prozess
-Dieses Dokument beschreibt die Vorgehensweise beim Untersuchen von Daten in vier unterschiedlichen Speicherumgebungen, die in der Regel im Data Science-Prozess verwendet werden:
 
-* **Azure Blob-Container** : Daten werden mithilfe des [Pandas](http://pandas.pydata.org/) -Python-Pakets untersucht.
-* **SQL Server-Daten** : Daten werden mithilfe von SQL und einer Programmiersprache wie Python untersucht.
-* **Hive-Tabellendaten** : Daten werden mit Hive-Abfragen untersucht.
-* **Azure Machine Learning (AML) Studio** : Daten werden mit AML-Modulen untersucht .
+Das Untersuchen von Daten ist ein Schritt im [Team Data Science-Prozess](overview.md).
 
-Das folgende **Menü** enthält Links zu den Themen, in denen die Verwendung dieser Tools zum Untersuchen von Daten aus verschiedenen Speicherumgebungen beschrieben wird. 
+Der folgende Artikel beschreibt die Vorgehensweise beim Untersuchen von Daten in drei unterschiedlichen Speicherumgebungen, die in der Regel im Data Science-Prozess verwendet werden:
 
-[!INCLUDE [cap-explore-data-selector](../../../includes/cap-explore-data-selector.md)]
+* Untersuchen von [Azure Blob-Container](explore-data-blob.md) Daten mithilfe des [Pandas](http://pandas.pydata.org/)-Python-Pakets
+* Untersuchen von [SQL Server-Daten](explore-data-sql-server.md) mithilfe von SQL und einer Programmiersprache wie Python
+* Untersuchen von [Hive-Tabellendaten](explore-data-hive-tables.md) mit Hive-Abfragen
 
+Außerdem werden im Video [Preprocessing Data in Azure Machine Learning Studio](https://azure.microsoft.com/documentation/videos/preprocessing-data-in-azure-ml-studio/) (Vorverarbeiten von Daten in Azure Machine Learning Studio) die häufig verwendeten Module zum Bereinigen und Transformieren von Daten in Azure Machine Learning Studio beschrieben.

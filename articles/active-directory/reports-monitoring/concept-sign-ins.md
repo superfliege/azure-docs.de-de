@@ -13,55 +13,50 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: report-monitor
-ms.date: 06/21/2018
+ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: bc8d3525ab7cdbdf298ecbbc686ced16fa7bc77c
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: ae962cba5e3d08661eb1c93edfc2feb221a9367e
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42141259"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51623770"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Berichte zu Anmeldeaktivitäten im Azure Active Directory-Portal
 
-Mit der Azure Active Directory-Berichterstellungsfunktion (Azure AD) im [Azure-Portal](https://portal.azure.com) können Sie alle Informationen abrufen, die Sie zum Ermitteln des Zustands Ihrer Umgebung benötigen.
-
-Die Architektur für die Berichterstellung in Azure Active Directory umfasst die folgenden Komponenten:
+Die Architektur für die Berichterstellung in Azure Active Directory (Azure AD) umfasst die folgenden Komponenten:
 
 - **Aktivität** 
-    - **Anmeldeaktivitäten** : Informationen zur Nutzung von verwalteten Anwendungen und Aktivitäten der Benutzeranmeldung
-    - **Überwachungsprotokolle:** Systemaktivitätsinformationen zu Benutzern und zur Gruppenverwaltung sowie zu verwalteten Anwendungen und Verzeichnisaktivitäten.
+    - **Anmeldungen**: Informationen zur Nutzung von verwalteten Anwendungen und Aktivitäten der Benutzeranmeldung.
+    - **Überwachungsprotokolle**: [Überwachungsprotokolle](concept-audit-logs.md) stellen Systemaktivitätsinformationen zu Benutzern und zur Gruppenverwaltung, zu verwalteten Anwendungen und zu Verzeichnisaktivitäten bereit.
 - **Sicherheit** 
-    - **Riskante Anmeldungen:** Eine riskante Anmeldung ist ein Indikator für einen Anmeldeversuch von einem Benutzer, der nicht der rechtmäßige Besitzer eines Benutzerkontos ist. Weitere Informationen finden Sie unter „Riskante Anmeldungen“.
-    - **Benutzer mit Risikomarkierung:** Ein Benutzer mit Risikomarkierung ist ein Indikator für ein möglicherweise kompromittiertes Benutzerkonto. Weitere Informationen finden Sie unter „Benutzer mit Risikomarkierung“.
+    - **Riskante Anmeldungen**: Eine [riskante Anmeldung](concept-risky-sign-ins.md) ist ein Indikator für einen Anmeldeversuch von einem Benutzer, der nicht der rechtmäßige Besitzer eines Benutzerkontos ist.
+    - **Benutzer mit Risikomarkierung**: Ein [Benutzer mit Risikomarkierung](concept-user-at-risk.md) ist ein Indikator für ein ggf. kompromittiertes Benutzerkonto.
 
-In diesem Thema erhalten Sie einen Überblick über die Anmeldeaktivitäten.
+In diesem Thema erhalten Sie einen Überblick über den Bericht zu Anmeldeaktivitäten.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 ### <a name="who-can-access-the-data"></a>Wer kann auf die Daten zugreifen?
-* Benutzer mit den Rollen „Sicherheitsadministrator“, „Benutzer mit Leseberechtigung für Sicherheitsfunktionen“ oder „Berichtsleser“
+* Benutzer mit den Rollen „Sicherheitsadministrator“, „Benutzer mit Leseberechtigung für Sicherheitsfunktionen“ und „Berichtsleser“
 * Globale Administratoren
-* Jeder Benutzer (Nicht-Administratoren) kann auf seine eigenen Anmeldungen zugreifen. 
+* Darüber hinaus kann jeder Benutzer (Nicht-Administratoren) auf seine eigenen Anmeldungen zugreifen. 
 
 ### <a name="what-azure-ad-license-do-you-need-to-access-sign-in-activity"></a>Welche Azure AD-Lizenz benötigen Sie für den Zugriff auf die Anmeldeaktivität?
 * Ihrem Mandanten muss eine Azure AD Premium-Lizenz zugewiesen sein, damit der Gesamtbericht für Anmeldeaktivitäten angezeigt werden kann.
 
+## <a name="sign-ins-report"></a>Bericht zu Anmeldeaktivitäten
 
-## <a name="sign-in-activities"></a>Anmeldeaktivitäten
-
-Mit den Informationen, die vom Bericht zur Benutzeranmeldung geliefert werden, können Sie beispielsweise Antworten auf folgende Fragen ermitteln:
+Der Bericht zu Anmeldeaktivitäten enthält Antworten auf die folgenden Fragen:
 
 * Wie sieht das Anmeldemuster eines Benutzers aus?
 * Wie viele Benutzer haben sich im Laufe einer Woche angemeldet?
 * Wie lautet der Status dieser Anmeldungen?
 
-Ihr erster Einstiegspunkt für Daten zu allen Anmeldeaktivitäten ist **Anmeldungen** im Abschnitt „Aktivität“ von **Azure Active Directory**.
-
+Sie können auf den Bericht zu Anmeldeaktivitäten zugreifen, indem Sie im [Azure-Portal](https://portal.azure.com) auf dem Blatt **Azure Active Directory** im Abschnitt **Aktivität** die Option **Anmeldungen** wählen.
 
 ![Anmeldeaktivität](./media/concept-sign-ins/61.png "Anmeldeaktivität")
-
 
 Ein Anmeldungsprotokoll enthält eine Standardlistenansicht mit folgenden Informationen:
 
@@ -82,7 +77,7 @@ Sie können dann weitere Felder anzeigen oder Felder entfernen, die bereits ange
 
 ![Anmeldeaktivität](./media/concept-sign-ins/02.png "Anmeldeaktivität")
 
-Wenn Sie in der Listenansicht auf einen Eintrag klicken, werden alle dazu verfügbaren Details in einer horizontalen Ansicht angezeigt.
+Wählen Sie in der Listenansicht ein Element aus, um ausführlichere Informationen zu erhalten.
 
 ![Anmeldeaktivität](./media/concept-sign-ins/03.png "Anmeldeaktivität")
 
@@ -100,7 +95,7 @@ Sie können die Anmeldungsdaten mit den folgenden Standardfeldern filtern, um di
 - Benutzer
 - Anwendung
 - Anmeldestatus
-- Status der Risikoerkennung
+- Bedingter Zugriff
 - Datum
 
 ![Anmeldeaktivität](./media/concept-sign-ins/04.png "Anmeldeaktivität")
@@ -115,11 +110,12 @@ Für den Filter **Anmeldestatus** können Sie eine der folgenden Optionen auswä
 - Erfolgreich
 - Fehler
 
-Für den Filter **Risiko erkannt** können Sie eine der folgenden Optionen auswählen:
+Mit dem Filter **Bedingter Zugriff** können Sie den Richtlinienstatus des bedingten Zugriffs für die Anmeldung auswählen:
 
 - Alle
-- JA
-- Nein 
+- Nicht angewendet
+- Erfolgreich
+- Fehler
 
 Mit dem Filter **Datum** können Sie einen Zeitrahmen für die zurückgegebenen Daten festlegen.  
 Mögliche Werte:
@@ -149,11 +145,14 @@ Wenn Sie der Anmeldungsansicht zusätzliche Felder hinzufügen, werden diese aut
 
 ## <a name="download-sign-in-activities"></a>Herunterladen von Anmeldeaktivitäten
 
-Sie können die Daten zu Anmeldeaktivitäten herunterladen, wenn Sie sie außerhalb des Azure-Portals verwenden möchten. Wenn Sie auf **Herunterladen** klicken, wird eine CSV-Datei mit den letzten 5.000 Datensätzen erstellt.  Neben einer Downloadschaltfläche steht im Azure-Portal eine Option zum Generieren eines Skripts zum Herunterladen Ihrer Daten zur Verfügung.  
+Sie können die [Daten zu Anmeldungen herunterladen](quickstart-download-sign-in-report.md), wenn Sie sie außerhalb des Azure-Portals verwenden möchten. Wenn Sie auf **Herunterladen** klicken, wird eine CSV-Datei mit den letzten 5.000 Datensätzen erstellt.  Neben einer Downloadschaltfläche steht im Azure-Portal eine Option zum [Generieren eines Skripts zum Herunterladen Ihrer Daten zur Verfügung](tutorial-signin-logs-download-script.md).  
 
 ![Herunterladen](./media/concept-sign-ins/71.png "Herunterladen")
 
 Falls eine höhere Flexibilität erforderlich ist, können Sie die Skriptoption verwenden. Wenn Sie auf **Skript** klicken, wird ein PowerShell-Skript mit allen von Ihnen festgelegten Filtern erstellt. Laden Sie dieses Skript herunter, und führen Sie es im **Administratormodus** aus, um die CSV-Datei zu generieren. 
+
+> [!IMPORTANT]
+> Die Anzahl von Datensätzen, die Sie herunterladen können, ist durch die [Aufbewahrungsrichtlinien für Azure Active Directory-Berichte](reference-reports-data-retention.md) eingeschränkt.  
 
 ### <a name="running-the-script-on-a-windows-10-machine"></a>Ausführen des Skripts auf einem Windows 10-Computer
 
@@ -164,28 +163,18 @@ Wenn Sie das Skript auf einem **Windows 10**-Computer ausführen möchten, müss
 3. Führen Sie **Set-ExecutionPolicy unrestricted**aus, und wählen Sie **Ja, alle** aus. 
 4. Nun können Sie das heruntergeladene PowerShell-Skript im Administratormodus ausführen, um die CSV-Datei zu generieren.
 
-Neben der technischen Implementierung ist die Anzahl der herunterladbaren Datensätze durch die [Aufbewahrungsrichtlinien für Azure Active Directory-Berichte](reference-reports-data-retention.md) eingeschränkt.  
+## <a name="sign-ins-data-shortcuts"></a>Tastenkombinationen für Anmeldedaten
 
-
-## <a name="sign-in-activities-shortcuts"></a>Optionen für Anmeldeaktivitäten
-
-Zusätzlich zu Azure Active Directory enthält das Azure-Portal weitere Einstiegspunkte für Daten zu Anmeldeaktivitäten:
+Zusätzlich zu Azure AD enthält das Azure-Portal weitere Einstiegspunkte für Anmeldedaten:
 
 - Übersicht über Identitätssicherheit und Schutz
 - Benutzer
 - Gruppen
 - Unternehmensanwendungen
 
+### <a name="users-sign-ins-data-in-identity-security-protection"></a>Benutzeranmeldedaten für Identitätssicherheit und Schutz
 
-### <a name="users-sign-ins-activities"></a>Anmeldeaktivitäten von Benutzern
-
-Mit den Informationen, die vom Bericht zur Benutzeranmeldung geliefert werden, können Sie beispielsweise Antworten auf folgende Fragen ermitteln:
-
-- Wie sieht das Anmeldemuster eines Benutzers aus?
-- Wie viele Benutzer sind für Benutzer im Laufe einer Woche angemeldet?
-- Wie lautet der Status dieser Anmeldungen?
-
-Ihr Einstiegspunkt für diese Daten ist der Graph zu Benutzeranmeldungen auf der Übersichtsseite **Identitätssicherheit und Schutz**. Der Graph für die Benutzeranmeldung zeigt wöchentliche Aggregationen von Anmeldungen für alle Benutzer in einem bestimmten Zeitraum an. Die Standardeinstellung für den Zeitraum beträgt 30 Tage.
+Mit dem Graphen für Benutzeranmeldungen auf der Übersichtsseite **Identitätssicherheit und Schutz** werden wöchentliche Aggregationen der Anmeldungen aller Benutzer in einem bestimmten Zeitraum angezeigt. Die Standardeinstellung für den Zeitraum beträgt 30 Tage.
 
 ![Anmeldeaktivität](./media/concept-sign-ins/06.png "Anmeldeaktivität")
 
@@ -211,7 +200,6 @@ Durch Klicken auf ein Element können Sie ausführlichere Informationen zum ents
 - Datum
 - MFA erforderlich
 - Anmeldestatus
-
  
 Wenn Sie auf der Seite **Benutzer** im Abschnitt **Aktivität** auf **Anmeldevorgänge** klicken, wird eine umfassenden Übersicht über alle Benutzeranmeldungen angezeigt.
 
@@ -243,9 +231,9 @@ Mit der Option **Anmeldungen** können Sie eine vollständige Übersicht über a
 
 ![Anmeldeaktivität](./media/concept-sign-ins/11.png "Anmeldeaktivität")
 
-
-
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu Fehlercodes von Anmeldeaktivitäten finden Sie unter [Fehlercodes des Berichts mit den Anmeldeaktivitäten im Azure Active Directory-Portal](reference-sign-ins-error-codes.md).
+* [Fehlercodes des Berichts mit den Anmeldeaktivitäten](reference-sign-ins-error-codes.md)
+* [Aufbewahrungsrichtlinien für Azure Active Directory-Berichte](reference-reports-data-retention.md)
+* [Latenzen bei Azure Active Directory-Berichten](reference-reports-latencies.md)
 

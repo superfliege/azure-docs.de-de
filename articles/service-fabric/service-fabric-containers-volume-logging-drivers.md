@@ -3,7 +3,7 @@ title: Service Fabric Azure Files-Volumetreiber (Vorschau) | Microsoft-Dokumenta
 description: Service Fabric unterstützt die Verwendung von Azure Files zur Sicherung von Volumes aus Ihrem Container. Sie befindet sich derzeit in der Vorschauphase.
 services: service-fabric
 documentationcenter: other
-author: mani-ramaswamy
+author: TylerMSFT
 manager: timlt
 editor: ''
 ms.assetid: ab49c4b9-74a8-4907-b75b-8d2ee84c6d90
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 6/10/2018
-ms.author: subramar
-ms.openlocfilehash: 0ce1ca09327fa0bd7fbbb82b8dc3c3bdc70d5028
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.author: twhitney, subramar
+ms.openlocfilehash: fabb44f9369dd7b7050ae353ab94263f140aae48
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50239371"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51346404"
 ---
 # <a name="service-fabric-azure-files-volume-driver-preview"></a>Service Fabric Azure Files-Volumetreiber (Vorschau)
 Das Azure Files-Volume-Plug-In ist ein [Docker-Volume-Plug-In](https://docs.docker.com/engine/extend/plugins_volume/), das auf [Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) basierende Volumes für Docker-Container bereitstellt. Dieses Docker-Volume-Plug-In wird als Service Fabric-Anwendung verpackt, die in Service Fabric-Clustern bereitgestellt werden kann. Der Zweck ist, auf Azure Files basierende Volumes für andere Service Fabric-Containeranwendungen bereitzustellen, die im Cluster bereitgestellt sind.
@@ -166,12 +166,11 @@ Im Element **Volume** im obigen Codeausschnitt erfordert das Azure Files-Volume-
 - **Destination**: Dieses Tag ist der Speicherort, dem das Volume im ausgeführten Container zugeordnet ist. Das Ziel kann also nicht ein bereits vorhandener Speicherort innerhalb des Containers sein.
 
 Wie mit den **DriverOption**-Elementen im obigen Codeausschnitt dargestellt, unterstützt das Azure Files-Volume-Plug-In die folgenden Treiberoptionen:
-
-Unterstützte Treiberoptionen:
 - **shareName**: Der Name der Azure Files-Dateifreigabe, die das Volume für den Container bereitstellt
 - **storageAccountName**: Der Name des Azure-Speicherkontos, das die Azure Files-Dateifreigabe enthält
 - **storageAccountKey**: Der Zugriffsschlüssel des Azure-Speicherkontos, das die Azure Files-Dateifreigabe enthält
-- **storageAccountFQDN**: Der dem Speicherkonto zugeordnete Domänenname. Wenn storageAccountFQDN nicht angegeben ist, wird der Domänenname mit dem Standardsuffix (.file.core.windows.net) und dem storageAccountName gebildet. 
+- **storageAccountFQDN**: Der dem Speicherkonto zugeordnete Domänenname. Wenn storageAccountFQDN nicht angegeben ist, wird der Domänenname mit dem Standardsuffix (.file.core.windows.net) und dem storageAccountName gebildet.  
+
     ```xml
     - Example1: 
         <DriverOption Name="shareName" Value="myshare1" />
@@ -184,6 +183,7 @@ Unterstützte Treiberoptionen:
         <DriverOption Name="storageAccountKey" Value="mykey2" />
         <DriverOption Name="storageAccountFQDN" Value="myaccount2.file.core.chinacloudapi.cn" />
     ```
+
 ## <a name="using-your-own-volume-or-logging-driver"></a>Verwenden Ihres eigenen Volume- oder Protokollierungstreibers
 Service Fabric ermöglicht auch die Verwendung von benutzerdefinierten [Volume](https://docs.docker.com/engine/extend/plugins_volume/)- oder [Protokollierungstreibern](https://docs.docker.com/engine/admin/logging/overview/). Wenn der Docker-Volume-/Protokollierungstreiber nicht im Cluster installiert ist, können Sie ihn mithilfe der RDP/SSH-Protokolle manuell installieren. Sie können die Installation mit diesen Protokollen über ein [VMSS-Startskript](https://azure.microsoft.com/resources/templates/201-vmss-custom-script-windows/) oder ein [SetupEntryPoint-Skript](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-model#describe-a-service) durchführen.
 

@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.component: fundamentals
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/14/2017
+ms.date: 11/12/2018
 ms.author: lizross
-ms.openlocfilehash: d58e5816c3b0e7c951c7d6bcfc6bfe4d0789f47a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: b004968fc53e368497632cb18d6bb7a254d347e6
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51233795"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51621750"
 ---
 # <a name="azure-active-directory-faq"></a>Häufig gestellte Fragen zu Azure Active Directory
 Azure Active Directory (Azure AD) ist eine umfassende IDaaS-Lösung (Identity as a Service) für sämtliche Aspekte von Identität, Zugriffsverwaltung und Sicherheit.
@@ -171,7 +171,7 @@ Weitere Informationen finden Sie unter
 * Direkte Anmeldung bei Verbund-Apps
 * Deep-Links zu verbundenen, kennwortbasierten oder vorhandene Apps
 
-Weitere Informationen finden Sie unter [Bereitstellen von in Azure AD integrierten Anwendungen für Benutzer](../manage-apps/what-is-single-sign-on.md#deploying-azure-ad-integrated-applications-to-users).
+Weitere Informationen finden Sie unter [End-user experiences for applications in Azure Active Directory](../manage-apps/end-user-experiences.md) (Benutzeroberflächen von Endbenutzern für Anwendungen in Azure Active Directory).
 
 - - -
 **F: Auf welche Arten ermöglicht Azure AD die Authentifizierung und das einmalige Anmelden bei Anwendungen?**
@@ -182,7 +182,7 @@ Weitere Informationen finden Sie unter
 
 * [Authentifizierungsszenarien für Azure AD](../develop/authentication-scenarios.md)
 * [Active Directory-Authentifizierungsprotokolle](https://msdn.microsoft.com/library/azure/dn151124.aspx)
-* [Wie funktioniert das einmalige Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md#how-does-single-sign-on-with-azure-active-directory-work)
+* [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 - - -
 **F: Kann ich lokal ausgeführte Anwendungen hinzufügen?**

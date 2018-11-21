@@ -9,16 +9,33 @@ ms.author: grhuynh
 ms.service: genomics
 ms.topic: article
 ms.date: 12/07/2017
-ms.openlocfilehash: 804076fdc653622336ac3b99c15df0bc027510d9
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 56256a6c10ecb0d06dfd6194668b9c32c5540c0e
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45730144"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51683899"
 ---
 # <a name="microsoft-genomics-common-questions"></a>Microsoft Genomics: Häufig gestellte Fragen
 
 In diesem Artikel finden Sie die wichtigsten Fragen im Zusammenhang mit Microsoft Genomics. Weitere Informationen zum Microsoft Genomics-Dienst finden Sie unter [Was ist Microsoft Genomics?](overview-what-is-genomics.md) Weitere Informationen zur Problembehandlung finden Sie in unserem [Leitfaden zur Problembehandlung](troubleshooting-guide-genomics.md). 
+
+## <a name="what-is-the-microsoft-genomics-service-gatk-4-promotion"></a>Worum geht es bei der Promotion für den Microsoft Genomics-Dienst GATK 4?
+Bis zum Ende des Kalenderjahrs 2018 werden für den Microsoft Genomics-Dienst 20 WGS-Ausführungen mit GATK4 kostenlos angeboten. Registrieren Sie sich [hier](https://aka.ms/msgatk4), um dieses Angebot zu nutzen. 
+
+### <a name="what-are-the-common-issues-i-might-encounter-while-running-the-microsoft-genomics-service-gatk4-promotion"></a>Welche allgemeinen Probleme können bei Ausführung der GATK4-Promotion für den Microsoft Genomics-Dienst auftreten?
+Im Folgenden werden mögliche allgemeine Fehler sowie die empfohlenen Lösungen aufgeführt:
+
+| **Meldung**                                                                                                                                                                                    | **Ursache**                                                                                                    | **Lösung**                                                                                                                                                                                                       |
+|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `gatk4-promo` ist für Ihr Konto nicht aktiviert. Weitere Informationen finden Sie unter https://docs.microsoft.com/azure/genomics/frequently-asked-questions-genomics.                               | Sie versuchen, GATK4-Workflows mit dem Microsoft Genomics-Dienst ohne Aktivierung auszuführen.       | [Hier](https://aka.ms/msgatk4) finden Sie eine Anleitung zur Aktivierung Ihres Kontos. Beachten Sie, dass der Testzeitraum am Ende des Kalenderjahrs 2018 abläuft. Nach diesem Datum können Sie Ihr Konto für die Ausführungen im Rahmen der Promotion nicht mehr aktivieren. |
+| Vielen Dank, dass Sie `gatk4-promo` getestet haben. Ihr Testzeitraum ist abgelaufen. Weitere Informationen finden Sie hier: https://docs.microsoft.com/azure/genomics/frequently-asked-questions-genomics                  | Die GATK4-Testversion ist am Ende des Kalenderjahrs abgelaufen, und Sie versuchen, `gatk4-promo` als process_name aufzurufen.  | Ändern Sie den Parameter „process_name“ in `gatk4` anstelle von `gatk4-promo`. Dies ist die offizielle GATK4-Version, und der Workflow wird in Rechnung gestellt, wenn Sie diesen Parameter verwenden.                                         |
+| Vielen Dank, dass Sie `gatk4-promo` getestet haben. Sie haben alle zugeordneten Ausführungen verwendet. Weitere Informationen finden Sie unter https://docs.microsoft.com/azure/genomics/frequently-asked-questions-genomics. | Sie haben all Ihre 20 Ausführungen im Rahmen der Promotion für GATK4 erfolgreich übermittelt.                               | Senden Sie neue GATK4-Ausführungen, indem Sie das Argument „process_name“ auf `gatk4` anstelle von `gatk4-promo` festlegen. Ihr Workflow wird in Rechnung gestellt, wenn Sie diesen Parameter verwenden.                                                          |        
+
+
+## <a name="can-i-run-gatk4-workflows-on-microsoft-genomics-without-signing-up-for-the-gatk4-promotion"></a>Kann ich GATK4-Workflows in Microsoft Genomics ausführen, ohne mich für die GATK4-Promotion zu registrieren?
+Ja. Legen Sie in der Datei „config.txt“ für den Microsoft Genomics-Dienst den process_name als `gatk4` fest. Beachten Sie, dass die Abrechnung zu den regulären Preisen erfolgt und dass die 20 kostenlosen Ausführungen nicht auf Ihr Microsoft Genomics-Konto angewendet werden.
+
 
 
 ## <a name="what-is-the-sla-for-microsoft-genomics"></a>Wie lautet die Vereinbarung zum Servicelevel für Microsoft Genomics?
@@ -48,7 +65,7 @@ Wechseln Sie zum Azure-Portal, und öffnen Sie die Seite Ihres Genomics-Kontos. 
 Wechseln Sie zum Azure-Portal, und öffnen Sie die Seite Ihres Genomics-Kontos. Klicken Sie unter der Überschrift **Verwaltung** auf **Zugriffsschlüssel**. Dort finden Sie die API-URL und Ihre Zugriffsschlüssel.
 
 ## <a name="why-do-i-need-two-access-keys"></a>Warum benötige ich zwei Zugriffsschlüssel?
-Sie benötigen zwei Zugriffsschlüssel, wenn Sie diese aktualisieren (neu erstellen) möchten, ohne die Nutzung des Diensts zu unterbrechen. Angenommen, Sie möchten den ersten Schlüssel aktualisieren. In diesem Fall schalten Sie alle neuen Workflows auf den zweiten Schlüssel um. Warten Sie dann, bis die bereits ausgeführten Workflows, die den ersten Schlüssel verwenden, beendet sind. Aktualisieren Sie erst dann den Schlüssel.
+Sie benötigen zwei Zugriffsschlüssel, wenn Sie diese aktualisieren (neu erstellen) möchten, ohne die Nutzung des Diensts zu unterbrechen. Wenn Sie beispielsweise den ersten Schlüssel aktualisieren möchten, müssen alle neuen Workflows den zweiten Schlüssel verwenden. Warten Sie dann auf den Abschluss aller Workflows, die den ersten Schlüssel verwenden, bevor Sie den ersten Schlüssel aktualisieren.
 
 ## <a name="do-you-save-my-storage-account-keys"></a>Speichern Sie meine Speicherkontoschlüssel?
 Ihr Speicherkontoschlüssel wird verwendet, um kurzfristige Zugriffstoken für den Microsoft Genomics-Dienst zu erstellen, um Ihre Eingabedateien zu lesen und die Ausgabedateien zu schreiben. Die Standardgültigkeitsdauer von Token beträgt 48 Stunden. Die Tokendauer kann mit der Option `-sas/--sas-duration` des „submit“-Befehls geändert werden. Der Wert wird in Stunden angegeben.

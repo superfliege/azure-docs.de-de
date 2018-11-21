@@ -15,18 +15,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2017
-ms.openlocfilehash: d57e780fbf5187f2481d40bde28b113181c15b4a
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 22432a98a7ac5ecba46201d0166940e069f6031b
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34834657"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51346438"
 ---
 # <a name="discover-experiments-in-azure-ai-gallery"></a>Entdecken und Freigeben von Experimenten im Azure AI-Katalog
-[!INCLUDE [machine-learning-gallery-item-selector](../../../includes/machine-learning-gallery-item-selector.md)]
 
-## <a name="experiments-for-machine-learning-studio"></a>Experimente für Machine Learning Studio
-Der Katalog enthält eine Vielzahl von [Experimenten](https://gallery.cortanaintelligence.com/experiments), die in [Azure Machine Learning Studio](https://studio.azureml.net) entwickelt wurden. Diese Experimente reichen von kurzen Machbarkeitsexperimenten, bei denen ein bestimmtes Verfahren mit maschinellem Lernen veranschaulicht wird, bis zu vollständig entwickelten Lösungen für komplexe Probleme des maschinellen Lernens.
+[Azure AI Gallery](http://gallery.cortanaintelligence.com) enthält eine Vielzahl von [Experimenten](https://gallery.cortanaintelligence.com/experiments), die in [Azure Machine Learning Studio](https://studio.azureml.net) entwickelt wurden. Diese Experimente reichen von kurzen Machbarkeitsexperimenten, bei denen ein bestimmtes Verfahren mit maschinellem Lernen veranschaulicht wird, bis zu vollständig entwickelten Lösungen für komplexe Probleme des maschinellen Lernens.
 
 > [!NOTE]
 > Ein ***Experiment*** ist eine Canvas in Machine Learning Studio, mit der Sie ein Predictive Analysis-Modell erstellen können. Hierzu verknüpfen Sie Daten mit verschiedenen Analysemodulen. Sie können unterschiedliche Ideen ausprobieren, Testläufe durchführen und Ihr Modell unter Azure schließlich als Webdienst bereitstellen. Ein Beispiel für die Erstellung eines grundlegenden Experiments finden Sie unter [Tutorial für maschinelles Lernen: Erstellen des ersten Experiments in Azure Machine Learning Studio](create-experiment.md). Eine ausführlichere exemplarische Vorgehensweise zum Erstellen einer Predictive Analytics-Lösung finden Sie unter [Exemplarische Vorgehensweise: Entwickeln einer Lösung zur Vorhersageanalyse für die Kreditrisikobewertung in Azure Machine Learning](walkthrough-develop-predictive-solution.md).

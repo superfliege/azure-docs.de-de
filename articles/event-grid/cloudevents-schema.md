@@ -6,24 +6,26 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 07/13/2018
+ms.date: 11/07/2018
 ms.author: babanisa
-ms.openlocfilehash: 4f1f0e95ae74ef41ed91be55f4c964671e8f723b
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 3865a94192a65a2cb8a761cc1da30317f605548b
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39044548"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51287199"
 ---
 # <a name="use-cloudevents-schema-with-event-grid"></a>Verwenden des CloudEvents-Schemas mit Event Grid
 
-Zusätzlich zu seinem [Standardereignisschema](event-schema.md) unterstützt Azure Event Grid nativ Ereignisse im [CloudEvents-JSON-Schema](https://github.com/cloudevents/spec/blob/master/json-format.md). [CloudEvents](http://cloudevents.io/) ist eine [Spezifikation eines offenen Standards](https://github.com/cloudevents/spec/blob/master/spec.md) zum allgemeinen Beschreiben von Ereignisdaten.
+Zusätzlich zu seinem [Standardereignisschema](event-schema.md) unterstützt Azure Event Grid nativ Ereignisse im [CloudEvents-JSON-Schema](https://github.com/cloudevents/spec/blob/master/json-format.md). [CloudEvents](http://cloudevents.io/) ist eine [offene Spezifikation](https://github.com/cloudevents/spec/blob/master/spec.md) zur Beschreibung von Ereignisdaten.
 
 CloudEvents vereinfacht die Interoperabilität, indem ein allgemeines Ereignisschema für die Veröffentlichung bereitgestellt wird und cloudbasierte Ereignisse genutzt werden. Dieses Schema ermöglicht einheitliche Tools und Standardmöglichkeiten für Routing und Behandlung von Ereignissen sowie universelle Möglichkeiten, das äußere Ereignisschema zu deserialisieren. Mit einem allgemeinen Schema können Sie Arbeit leichter plattformübergreifend integrieren.
 
 CloudEvents wird von mehreren [Partnern](https://github.com/cloudevents/spec/blob/master/community/contributors.md), einschließlich Microsoft, über die [Cloud Native Compute Foundation](https://www.cncf.io/) erstellt. Es ist derzeit als Version 1.0 verfügbar.
 
 Dieser Artikel beschreibt den Einsatz des CloudEvents-Schemas mit Event Grid.
+
+## <a name="install-preview-feature"></a>Installieren des Vorschaufeatures
 
 [!INCLUDE [event-grid-preview-feature-note.md](../../includes/event-grid-preview-feature-note.md)]
 
@@ -91,12 +93,12 @@ Für alle Ereignisschemas setzt Event Grid beim Veröffentlichen in einem Event 
 
 ### <a name="input-schema"></a>Eingabeschema
 
-Um das Eingabeschema auf ein benutzerdefiniertes Thema in CloudEvents festzulegen, verwenden Sie beim Erstellen Ihres benutzerdefinierten Themas `--input-schema cloudeventv01schema` den folgenden Parameter in Azure CLI. Das benutzerdefinierte Thema erwartet nun eingehende Ereignisse im CloudEvents v0.1-Format.
+Das Eingabeschema für ein benutzerdefiniertes Thema wird beim Erstellen des benutzerdefinierten Themas festgelegt.
 
-Verwenden Sie zum Erstellen eines benutzerdefinierten Event Grid-Themas:
+Verwenden Sie für die Azure-Befehlszeilenschnittstelle den folgenden Befehl:
 
-```azurecli
-# if you have not already installed the extension, do it now.
+```azurecli-interactive
+# If you have not already installed the extension, do it now.
 # This extension is required for preview features.
 az extension add --name eventgrid
 
@@ -107,21 +109,47 @@ az eventgrid topic create \
   --input-schema cloudeventv01schema
 ```
 
+Verwenden Sie für PowerShell Folgendes:
+
+```azurepowershell-interactive
+# If you have not already installed the module, do it now.
+# This module is required for preview features.
+Install-Module -Name AzureRM.EventGrid -AllowPrerelease -Force -Repository PSGallery
+
+New-AzureRmEventGridTopic `
+  -ResourceGroupName gridResourceGroup `
+  -Location westcentralus `
+  -Name <topic_name> `
+  -InputSchema CloudEventV01Schema
+```
+
 Die aktuelle Version von CloudEvents unterstützt nicht die Batchverarbeitung von Ereignissen. Um Ereignisse mit einem CloudEvent-Schema in einem Thema zu veröffentlichen, veröffentlichen Sie jedes Ereignis einzeln.
 
 ### <a name="output-schema"></a>Ausgabeschema
 
-Um das Ausgabeschema auf ein Ereignisabonnement in CloudEvents festzulegen, verwenden Sie beim Erstellen Ihres Ereignisabonnements `--event-delivery-schema cloudeventv01schema` den folgenden Parameter in Azure CLI. Ereignisse für dieses Ereignisabonnement werden jetzt im CloudEvents v0.1-Format übermittelt.
+Das Ausgabeschema wird beim Erstellen des Ereignisabonnements festgelegt.
 
-Verwenden Sie zum Erstellen eines Ereignisabonnements:
+Verwenden Sie für die Azure-Befehlszeilenschnittstelle den folgenden Befehl:
 
-```azurecli
+```azurecli-interactive
+topicID=$(az eventgrid topic show --name <topic-name> -g gridResourceGroup --query id --output tsv)
+
 az eventgrid event-subscription create \
   --name <event_subscription_name> \
-  --topic-name <topic_name> \
-  -g gridResourceGroup \
+  --source-resource-id $topicID \
   --endpoint <endpoint_URL> \
   --event-delivery-schema cloudeventv01schema
+```
+
+Verwenden Sie für PowerShell Folgendes:
+```azurepowershell-interactive
+$topicid = (Get-AzureRmEventGridTopic -ResourceGroupName gridResourceGroup -Name <topic-name>).Id
+
+New-AzureRmEventGridSubscription `
+  -ResourceId $topicid `
+  -EventSubscriptionName <event_subscription_name> `
+  -Endpoint <endpoint_URL> `
+  -DeliverySchema CloudEventV01Schema
 ```
 
 Die aktuelle Version von CloudEvents unterstützt nicht die Batchverarbeitung von Ereignissen. Ein Ereignisabonnement, das für ein CloudEvent-Schema konfiguriert ist, empfängt jedes Ereignis einzeln. Momentan kann für eine Azure Functions-App kein Event Grid-Trigger verwendet werden, wenn das Ereignis im CloudEvents-Schema übermittelt wird. Verwenden Sie einen HTTP-Trigger. Beispiele für die Implementierung eines HTTP-Triggers, der Ereignisse im CloudEvents-Schema empfängt, finden Sie unter [Verwenden eines HTTP-Triggers als Event Grid-Trigger](../azure-functions/functions-bindings-event-grid.md#use-an-http-trigger-as-an-event-grid-trigger).

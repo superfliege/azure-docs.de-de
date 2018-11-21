@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 1ad6ca4abe73336ce9ce3539fdaf2a9d7dd23fa6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7af14143e8ce4924c17a41c6bb1ff33954f4b583
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23036335"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51568725"
 ---
 # <a name="packet-inspection-with-azure-network-watcher"></a>Paketuntersuchung mit Azure Network Watcher
 
@@ -41,7 +41,7 @@ In diesem Szenario führen Sie Folgendes durch:
 
 In diesem Szenario wird veranschaulicht, wie Sie die anfängliche Roundtripzeit (Round Trip Time, RTT) einer TCP-Konversation (Transmission Control Protocol) zwischen zwei Endpunkten anzeigen.
 
-Bei der Herstellung einer TCP-Verbindung basieren die ersten drei Pakete, die für die Verbindung gesendet werden, auf einem Muster, das üblicherweise als Drei-Wege-Handshake bezeichnet wird. Indem die ersten beiden gesendeten Pakete dieses Handshake-Vorgangs untersucht werden (eine erste Anforderung vom Client und eine Antwort vom Server), können wir die Wartezeit bei der Herstellung der Verbindung berechnen. Diese Wartezeit wird als Roundtripzeit (Round Trip Time, RTT) bezeichnet. Weitere Informationen zum TCP-Protokoll und zum Drei-Wege-Handshake finden Sie unter der folgenden Ressource: https://support.microsoft.com/de-de/help/172983/explanation-of-the-three-way-handshake-via-tcp-ip
+Bei der Herstellung einer TCP-Verbindung basieren die ersten drei Pakete, die für die Verbindung gesendet werden, auf einem Muster, das üblicherweise als Drei-Wege-Handshake bezeichnet wird. Indem die ersten beiden gesendeten Pakete dieses Handshake-Vorgangs untersucht werden (eine erste Anforderung vom Client und eine Antwort vom Server), können wir die Wartezeit bei der Herstellung der Verbindung berechnen. Diese Wartezeit wird als Roundtripzeit (Round Trip Time, RTT) bezeichnet. Weitere Informationen zum TCP-Protokoll und zum Drei-Wege-Handshake finden Sie unter der folgenden Ressource: https://support.microsoft.com/en-us/help/172983/explanation-of-the-three-way-handshake-via-tcp-ip
 
 ### <a name="step-1"></a>Schritt 1
 
@@ -85,7 +85,7 @@ Verwenden Sie die gleiche Erfassung wie im vorherigen Szenario, und klicken Sie 
 
 Das Fenster „Protocol Hierarchy“ (Protokollhierarchie) wird angezeigt. Diese Ansicht enthält eine Liste mit allen Protokollen, die während der Erfassungssitzung verwendet wurden, und mit der Anzahl von Paketen, die mit den Protokollen übertragen und empfangen wurden. Diese Ansicht kann hilfreich sein, um auf Ihren virtuellen Computern oder im Netzwerk nach unerwünschtem Netzwerkdatenverkehr zu suchen.
 
-![Geöffnete Protokollhierarchie][3]
+![Protokollhierarchie geöffnet][3]
 
 Im folgenden Screenshot ist zu sehen, dass mit dem BitTorrent-Protokoll Datenverkehr erzeugt wurde. Dieses Protokoll wird für den Peer-to-Peer-Austausch von Dateien verwendet. Als Administrator erwarten Sie keinen BitTorrent-Datenverkehr auf diesen virtuellen Computern. Da Sie nun über diesen Datenverkehr informiert sind, können Sie die Peer-to-Peer-Software entfernen, die auf diesem virtuellen Computer installiert ist, oder den Datenverkehr mit Netzwerksicherheitsgruppen oder einer Firewall blockieren. Außerdem können Sie die Paketerfassungen auch anhand eines Zeitplans durchführen, um die Protokollnutzung auf Ihren virtuellen Computern regelmäßig zu überprüfen. Ein Beispiel dazu, wie Sie Netzwerkaufgaben in Azure automatisieren können, finden Sie unter [Monitor VPN gateways with Network Watcher troubleshooting](network-watcher-monitor-with-azure-automation.md) (Überwachen von VPN Gateways per Network Watcher-Problembehandlung).
 

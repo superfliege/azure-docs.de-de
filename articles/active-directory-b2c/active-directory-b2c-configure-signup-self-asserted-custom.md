@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/29/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 37492e22b5615ae0b266bc8b2bb6d8f039fdaabe
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 6b2a6d84fffecbe30bd2a47c795ee6143458ee2b
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43336854"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51344999"
 ---
 # <a name="azure-active-directory-b2c-modify-sign-up-to-add-new-claims-and-configure-user-input"></a>Azure Active Directory B2C: Ändern der Registrierung zum Hinzufügen von neuen Ansprüchen und Konfigurieren der Benutzereingabe
 
@@ -277,8 +277,8 @@ Im `<TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">`-Element in der Tru
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Fügen Sie den neuen Anspruch dem Ablauf für die Anmeldung an Social Media-Konten hinzu, indem Sie die unten aufgeführten TechnicalProfiles ändern. Diese werden von Anmeldungen für Social Media-/Verbundkonten genutzt, um die Benutzerdaten zu schreiben und zu lesen, indem alternativeSecurityId als Locator verwendet wird.
-```xml
-<TechnicalProfile Id="AAD-UserWriteUsingAlternativeSecurityId">
-<TechnicalProfile Id="AAD-UserReadUsingAlternativeSecurityId">
-```
+Wenn Ihre Richtlinie Social Media-Konten unterstützt, fügen Sie den neuen Anspruch dem Ablauf für die Anmeldung an Social Media-Konten hinzu, indem Sie die unten aufgeführten technischen Profile ändern. Diese Ansprüche werden von der Anmeldung bei Social Media-Konten zum Erfassen und Schreiben von Daten vom Benutzer verwendet.
+
+1. Suchen Sie das technische Profil **SelfAsserted-Social**, und fügen Sie den Ausgabeanspruch hinzu. Die Reihenfolge der Ansprüche in **OutputClaims** bestimmt die Reihenfolge, in der Azure AD B2C die Ansprüche berechnet und auf dem Bildschirm ausgibt. Beispiel: `<OutputClaim ClaimTypeReferenceId="city" />`.
+2. Suchen Sie das technische Profil **AAD-UserWriteUsingAlternativeSecurityId**, und fügen Sie den Persistenzanspruch hinzu. Beispiel: `<PersistedClaim ClaimTypeReferenceId="city" />`.
+3. Suchen Sie das technische Profil **AAD-UserReadUsingAlternativeSecurityId**, und fügen Sie den Ausgabeanspruch hinzu. Beispiel: `<OutputClaim ClaimTypeReferenceId="city" />`.

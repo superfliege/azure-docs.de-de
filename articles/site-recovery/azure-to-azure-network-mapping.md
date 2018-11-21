@@ -7,110 +7,89 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: mayg
-ms.openlocfilehash: 1e8bad9a7a194c96c39be0ab4f1c2f40d79031ea
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 683f8ef89b02679d1f3f1a66f867f0dde757ada1
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50209598"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51564968"
 ---
-# <a name="map-virtual-networks-in-different-azure-regions"></a>Zuordnen virtueller Netzwerke in verschiedenen Azure-Regionen
+# <a name="set-up-network-mapping-and-ip-addressing-for-vnets"></a>Einrichten der Netzwerkzuordnung und IP-Adressierung für VNETs
 
-
-In diesem Artikel wird beschrieben, wie Sie zwei Instanzen von Azure Virtual Network in verschiedenen Azure-Regionen einander zuordnen. Durch die Netzwerkzuordnung wird sichergestellt, dass beim Erstellen eines replizierten virtuellen Computers in der Azure-Zielregion dieser auch im virtuellen Netzwerk erstellt wird, das dem virtuellen Netzwerk des virtuellen Quellcomputers zugeordnet ist.  
+In diesem Artikel wird beschrieben, wie Sie zwei Instanzen von virtuellen Azure-Netzwerken (VNETs) in verschiedenen Azure-Regionen einander zuordnen und IP-Adressierung zwischen Netzwerken einrichten. Die Netzwerkzuordnung stellt sicher, dass eine replizierte VM in der Azure-Zielregion des VNET erstellt wird, das dem VNET der Quell-VM zugeordnet ist.
 
 ## <a name="prerequisites"></a>Voraussetzungen
-Stellen Sie vor dem Zuordnen von Netzwerken sicher, dass Sie sowohl in der Azure-Quellregion als auch in der Azure-Zielregion ein [virtuelles Azure-Netzwerk](../virtual-network/virtual-networks-overview.md) erstellt haben.
 
-## <a name="map-virtual-networks"></a>Zuordnen von virtuellen Netzwerken
+Bevor Sie Netzwerke zuordnen, müssen [Azure-VNETs](../virtual-network/virtual-networks-overview.md) in der Azure-Quell- und -Zielregion vorhanden sein. 
 
-Zum Zuordnen eines virtuellen Azure-Netzwerks, das sich in einer Azure-Region (Quellnetzwerk) befindet, zu einer anderen Region (Zielnetzwerk) wechseln Sie für virtuelle Azure-Computer zu **Site Recovery-Infrastruktur** > **Netzwerkzuordnung**. Erstellen Sie eine Netzwerkzuordnung.
+## <a name="set-up-network-mapping"></a>Einrichten der Netzwerkzuordnung
 
-![Fenster „Netzwerkzuordnungen“ – Erstellen einer Netzwerkzuordnung](./media/site-recovery-network-mapping-azure-to-azure/network-mapping1.png)
+Ordnen Sie Netzwerke wie folgt zu:
 
+1. Klicken Sie unter **Site Recovery-Infrastruktur** auf **+Netzwerkzuordnung**.
 
-Im folgenden Beispiel wird der virtuelle Computer in der Region „Asien, Osten“ ausgeführt. Der virtueller Maschine wird zur Region „Asien, Südosten“ repliziert.
+    ![ Erstellen einer Netzwerkzuordnung](./media/site-recovery-network-mapping-azure-to-azure/network-mapping1.png)
 
-Zum Erstellen einer Netzwerkzuordnung aus der Region „Asien, Osten“ zur Region „Asien, Südosten“ wählen Sie den Standort des Quellnetzwerks und den Standort des Zielnetzwerks aus. Wählen Sie anschließend **OK** aus.
+3. Wählen Sie unter **Netzwerkzuordnung hinzufügen** die Quell- und Zielstandorte aus. In unserem Beispiel wird die Quell-VM in der Region „Asien, Osten“ ausgeführt und in der Region „Asien, Südosten“ repliziert.
 
-![Fenster „Netzwerkzuordnung hinzufügen“ – Auswählen der Quell- und Zielstandorte für das Quellnetzwerk](./media/site-recovery-network-mapping-azure-to-azure/network-mapping2.png)
+    ![Auswählen von Quelle und Ziel ](./media/site-recovery-network-mapping-azure-to-azure/network-mapping2.png)
+3. Nun erstellen Sie eine Netzwerkzuordnung im entgegengesetzten Verzeichnis. In unserem Beispiel ist die Quelle nun „Asien, Südosten“ und das Ziel „Asien, Osten“.
 
-
-Wiederholen Sie den vorhergehenden Vorgang, um eine Netzwerkzuordnung aus der Region „Asien, Südosten“ zur Region „Asien, Osten“ zu erstellen.
-
-![Bereich „Netzwerkzuordnung hinzufügen“ – Auswählen der Quell- und Zielstandorte für das Zielnetzwerk](./media/site-recovery-network-mapping-azure-to-azure/network-mapping3.png)
+    ![Bereich „Netzwerkzuordnung hinzufügen“ – Auswählen der Quell- und Zielstandorte für das Zielnetzwerk](./media/site-recovery-network-mapping-azure-to-azure/network-mapping3.png)
 
 
-## <a name="map-a-network-when-you-enable-replication"></a>Zuordnen eines Netzwerk beim Aktivieren der Replikation
+## <a name="map-networks-when-you-enable-replication"></a>Zuordnen von Netzwerken beim Aktivieren der Replikation
 
-Bei der ersten Replikation eines virtuellen Computers aus einer Azure-Region in eine andere Region können Sie beim Einrichten der Replikation das Zielnetzwerk festlegen, sofern keine Netzwerkzuordnung vorhanden ist. Basierend auf dieser Einstellung erstellt Azure Site Recovery Netzwerkzuordnungen von der Quellregion an die Zielregion und von der Zielregion an die Quellregion.   
+Wenn Sie die Netzwerkzuordnung nicht vorbereitet haben, bevor Sie die Notfallwiederherstellung für Azure-VMs konfigurieren, können Sie ein Zielnetzwerk angeben, wenn Sie [die Replikation einrichten und aktivieren](azure-to-azure-how-to-enable-replication.md). Dabei geschieht Folgendes:
 
-![Bereich „Konfigurieren von Einstellungen“ – Wählen des Zielstandorts](./media/site-recovery-network-mapping-azure-to-azure/network-mapping4.png)
+- Basierend auf dem von Ihnen ausgewählten Ziel erstellt Site Recovery automatisch Netzwerkzuordnungen von der Quellregion zur Zielregion und von der Zielregion zur Quellregion.
+- Site Recovery erstellt standardmäßig ein Netzwerk in der Zielregion, das identisch mit dem Quellnetzwerk ist. Site Recovery fügt den Suffix **-asr** an den Namen des Quellnetzwerks an. Sie können das Zielnetzwerk anpassen.
+- Wenn die Netzwerkzuordnung bereits erfolgt ist, können Sie das virtuelle Zielnetzwerk beim Aktivieren der Replikation nicht ändern. Zum Ändern des virtuellen Zielnetzwerks müssen Sie die vorhandene Netzwerkzuordnung ändern.
+- Achten Sie beim Ändern einer Netzwerkzuordnung von Region A zu Region B darauf, auch die Netzwerkzuordnung von Region B zu Region A zu ändern.
 
-Site Recovery erstellt standardmäßig ein Netzwerk in der Zielregion, das identisch mit dem Quellnetzwerk ist. Site Recovery erstellt ein Netzwerk durch Anfügen des Suffixes **-asr** an den Namen des Quellnetzwerks. Zum Auswählen eines bereits erstellten Netzwerks wählen Sie **Anpassen**.
+## <a name="specify-a-subnet"></a>Angeben eines Subnetzes
 
-![Bereich zum Anpassen von Zieleinstellungen – Festlegen der Namen der Zielressourcengruppe und des virtuellen Zielnetzwerks](./media/site-recovery-network-mapping-azure-to-azure/network-mapping5.png)
+Das Subnetz der Ziel-VM wird basierend auf dem Namen des Subnetzes der Quell-VM ausgewählt.
 
-Wenn die Netzwerkzuordnung bereits erfolgt ist, können Sie das virtuelle Zielnetzwerk beim Aktivieren der Replikation nicht ändern. In diesem Fall müssen Sie zum Ändern des virtuellen Zielnetzwerks die vorhandene Netzwerkzuordnung ändern.  
+- Wenn im Zielnetzwerk ein Subnetz mit demselben Namen wie bei der Quell-VM verfügbar ist, wird dieses Subnetz für die Ziel-VM ausgewählt.
+- Wenn im Zielnetzwerk kein Subnetz mit demselben Namen vorhanden ist, wird das erste Subnetz in der alphabetischen Reihenfolge als Zielsubnetz ausgewählt.
+- Sie können dies in den Einstellungen unter **Compute und Netzwerk** für die VM ändern.
 
-![Bereich zum Anpassen von Zieleinstellungen – Festlegen des Namens der Zielressourcengruppe](./media/site-recovery-network-mapping-azure-to-azure/network-mapping6.png)
-
-![Bereich zum Ändern der Netzwerkzuordnung – Ändern des Namens eines vorhandenen virtuellen Zielnetzwerks](./media/site-recovery-network-mapping-azure-to-azure/modify-network-mapping.png)
-
-> [!IMPORTANT]
-> Achten Sie beim Ändern einer Netzwerkzuordnung von Region A zu Region B darauf, auch die Netzwerkzuordnung von Region B zu Region A zu ändern.
->
->
+    ![Fenster „Eigenschaften für Compute und Netzwerk“](./media/site-recovery-network-mapping-azure-to-azure/modify-subnet.png)
 
 
-## <a name="subnet-selection"></a>Subnetzauswahl
-Das Subnetz des virtuellen Zielcomputers wird basierend auf dem Namen des Subnetzes des virtuellen Quellcomputers ausgewählt. Wenn im Zielnetzwerk ein Subnetz mit demselben Namen wie der virtuelle Quellcomputer verfügbar ist, wird dieses Subnetz für den virtuellen Zielcomputer ausgewählt. Wenn im Zielnetzwerk kein Subnetz mit demselben Namen vorhanden ist, wird das Subnetz als Zielsubnetz ausgewählt, das in der alphabetischen Reihenfolge an erster Stelle steht.
+## <a name="set-up-ip-addressing-for-target-vms"></a>Einrichten der IP-Adressierung für Ziel-VMs
 
-Zum Ändern des Subnetzes rufen Sie die **Compute- und Netzwerkeinstellungen** für den virtuellen Computer auf.
+Die IP-Adresse für die einzelnen Netzwerkkarten auf einem virtuellen Zielcomputer wird wie folgt konfiguriert:
 
-![Fenster „Eigenschaften für Compute und Netzwerk“](./media/site-recovery-network-mapping-azure-to-azure/modify-subnet.png)
-
-
-## <a name="ip-address"></a>IP-Adresse
-
-Die IP-Adresse für jede Netzwerkschnittstelle des virtuellen Zielcomputers wird gemäß der Beschreibung in den folgenden Abschnitten ausgewählt.
-
-### <a name="dhcp"></a>DHCP
-Wenn die Netzwerkschnittstelle des virtuellen Quellcomputers DHCP verwendet, wird die Netzwerkschnittstelle des virtuellen Zielcomputers ebenfalls als DHCP festgelegt.
-
-### <a name="static-ip-address"></a>Statische IP-Adresse
-Wenn die Netzwerkschnittstelle des virtuellen Quellcomputers eine statische IP-Adresse verwendet, wird die Netzwerkschnittstelle des virtuellen Zielcomputers ebenfalls als statische IP-Adresse festgelegt. In den folgenden Abschnitten wird das Festlegen einer statischen IP-Adresse beschrieben.
-
-### <a name="ip-assignment-behavior-during-failover"></a>IP-Zuweisungsverhalten während eines Failovers
-#### <a name="1-same-address-space"></a>1. Gleicher Adressraum
-
-Wenn das Quellsubnetz und das Zielsubnetz über denselben Adressraum verfügen, wird die IP-Adresse der Netzwerkschnittstelle des virtuellen Quellcomputers als Ziel-IP-Adresse festgelegt. Wenn dieselbe IP-Adresse nicht verfügbar ist, wird die nächste verfügbare IP-Adresse als Ziel-IP-Adresse festgelegt.
-
-#### <a name="2-different-address-spaces"></a>2. Verschiedene Adressräume
-
-Wenn das Quellsubnetz und das Zielsubnetz über unterschiedliche Adressräume verfügen, wird die nächste verfügbare IP-Adresse im Zielsubnetz als Ziel-IP-Adresse festgelegt.
+- **DHCP**: Falls die Netzwerkkarte der Quell-VM DHCP verwendet, wird die Netzwerkkarte der Ziel-VM ebenfalls als DHCP festgelegt.
+- **Statische IP-Adresse**: Wenn die Netzwerkkarte der Quell-VM die statische IP-Adressierung verwendet, verwendet die Netzwerkkarte der Ziel-VM auch eine statische IP-Adresse.
 
 
-### <a name="ip-assignment-behavior-during-test-failover"></a>IP-Zuweisungsverhalten während eines Testfailovers
-#### <a name="1-if-the-target-network-chosen-is-the-production-vnet"></a>1. Das ausgewählte Zielnetzwerk ist das Produktions-VNET:
-- Die Wiederherstellungs-IP (Ziel-IP) ist eine statische IP. Dabei handelt es sich jedoch **nicht um dieselbe IP-Adresse**, die für das Failover reserviert ist.
-- Die zugewiesene IP-Adresse ist die nächste verfügbare IP vom Ende des Subnetzadressbereichs.
-- Beispiel: Als statische IP des virtuellen Quellcomputers ist „10.0.0.19“ konfiguriert, und das Testfailover wurde mit dem konfigurierten Produktionsnetzwerk ***dr-PROD-nw*** und dem Subnetzbereich „10.0.0.0/24“ ausgeführt. </br>
-Dem virtuellen Computer, für den das Failover ausgeführt wurde, wird die nächste verfügbare IP vom Ende des Subnetzadressbereichs (10.0.0.254) zugewiesen. </br>
+## <a name="ip-address-assignment-during-failover"></a>IP-Adresszuweisung beim Failover
 
-**Hinweis:** Der Begriff **Produktions-VNET** bezieht sich auf das „Zielnetzwerk“, das während der Konfiguration der Notfallwiederherstellung zugeordnet wird.
-#### <a name="2-if-the-target-network-chosen-is-not-the-production-vnet-but-has-the-same-subnet-range-as-production-network"></a>2. Beim ausgewählten Zielnetzwerk handelt es sich nicht um das Produktions-VNET, es besitzt jedoch den gleichen Subnetzbereich wie das Produktionsnetzwerk:
-
-- Die Wiederherstellungs-IP (Ziel-IP) ist eine statische IP **mit derselben IP-Adresse** (d.h. der konfigurierten statischen IP-Adresse), die für das Failover reserviert ist. Voraussetzung ist, dass die gleiche IP-Adresse verfügbar ist.
-- Wenn die konfigurierte statische IP bereits einem anderen virtuellen Computer/Gerät zugewiesen ist, handelt es sich bei der Wiederherstellungs-IP um die nächste verfügbare IP vom Ende des Subnetzadressbereichs.
-- Beispiel: Als statische IP des virtuellen Quellcomputers ist „10.0.0.19“ konfiguriert, und das Testfailover wurde mit dem Testnetzwerk ***dr-NON-PROD-nw*** und dem gleichen Subnetzbereich wie das des Produktionsnetzwerks ausgeführt: 10.0.0.0/24. </br>
-  Dem virtuellen Computer, für den das Failover ausgeführt wurde, wird die folgende statische IP zugewiesen: </br>
-    - Konfigurierte statische IP: 10.0.0.19 (sofern die IP verfügbar ist)
-    - Nächste verfügbare IP: 10.0.0.254 (falls die IP-Adresse „10.0.0.19“ bereits verwendet wird)
+**Quell- und Zielsubnetze** | **Details**
+--- | ---
+Gleicher Adressraum | Die IP-Adresse der Netzwerkkarte der Quell-VM wird als IP-Adresse der Netzwerkkarte der Ziel-VM festgelegt.<br/><br/> Wenn die Adresse nicht verfügbar ist, wird die nächste verfügbare IP-Adresse als Ziel festgelegt.
+Unterschiedlicher Adressraum<br/><br/> Die nächste verfügbare IP-Adresse im Zielsubnetz wird als Netzwerkkartenadresse der Ziel-VM festgelegt.
 
 
-Zum Ändern der Ziel-IP an den einzelnen Netzwerkschnittstellen rufen Sie die Einstellungen für **Compute und Netzwerk** des virtuellen Computers auf.</br>
-Als bewährte Methode wird immer empfohlen, ein Testnetzwerk für das Testfailover auszuwählen.
+
+## <a name="ip-address-assignment-during-test-failover"></a>IP-Adresszuweisung beim Testfailover
+
+**Zielnetzwerk** | **Details**
+--- | ---
+Das Zielnetzwerk ist das Failover-VNET. | – Die Ziel-IP-Adresse ist statisch, aber nicht die gleiche IP-Adresse, die für das Failover reserviert wurde.<br/><br/>  – Die zugewiesene IP-Adresse ist die nächste verfügbare IP-Adresse vom Ende des Subnetzbereichs.<br/><br/> Beispiel: Wenn die IP-Quelladresse 10.0.0.19 lautet und das Failovernetzwerk den Bereich 10.0.0.0/24 verwendet, lautet die nächste IP-Adresse, die der Ziel-VM zugewiesen wird, 10.0.0.254.
+Das Zielnetzwerk ist nicht das Failover-VNET. | – Die Ziel-IP-Adresse ist statisch und die gleiche IP-Adresse, die für das Failover reserviert wurde.<br/><br/>  – Wenn die IP-Adresse bereits zugewiesen ist, ist die nächste verfügbare IP-Adresse die darauffolgende Adresse des Subnetzbereichs.<br/><br/> Beispiel: Wenn die statische IP-Quelladresse 10.0.0.19 lautet und ein Failover in einem Netzwerk ausgeführt wird, das nicht das Failovernetzwerk mit dem Bereich 10.0.0.0/24 darstellt, lautet die statische IP-Zieladresse 10.0.0.0.19, falls verfügbar, und andernfalls 10.0.0.254.
+
+- Das Failover-VNET ist das Zielnetzwerk, das Sie beim Einrichten der Notfallwiederherstellung auswählen.
+- Es wird empfohlen, immer ein Netzwerk für das Testfailover zu verwenden, das nicht für die Produktion bestimmt ist.
+- Sie können die Ziel-IP-Adresse in den Einstellungen unter **Compute und Netzwerk** der VM ändern.
+
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Lesen Sie den [Netzwerkleitfaden zum Replizieren virtueller Azure-Computer](site-recovery-azure-to-azure-networking-guidance.md).
+- Informationen zur Notfallwiederherstellung bei Azure-VMs finden Sie unter [Grundlegendes zu Netzwerken bei Replikationen mit Azure als Quelle und Ziel](site-recovery-azure-to-azure-networking-guidance.md).
+- Erfahren Sie mehr über [die Beibehaltung von IP-Adressen nach einem Failover](site-recovery-retain-ip-azure-vm-failover.md).
+
+Achten Sie darauf, ob das ausgewählte Zielnetzwerk das Failover-VNET ist und folgende Meldung angezeigt wird: „Wenn sich das ausgewählte Zielnetzwerk vom Failover-VNET unterscheidet, aber es den gleichen Subnetzbereich wie das Failover-VNET aufweist“.

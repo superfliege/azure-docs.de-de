@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/19/2018
+ms.date: 11/14/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 83a36c81ad88ccb37fe4a258f895b1e1cbe9299f
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 6f93d7c4b76d635a221c2711ce9d4ef0de2286f6
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46304549"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51687400"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-technical-deep-dive"></a>Azure Active Directory: Nahtloses einmaliges Anmelden: Technische Einblicke
 
@@ -79,8 +79,8 @@ Anmeldungsablauf auf einem nativen Client:
 
 1. Der Benutzer versucht auf einem in eine Domäne eingebundenen unternehmenseigenen Gerät innerhalb Ihres Netzwerks auf eine native Anwendung zuzugreifen (z.B. auf den Outlook-Client).
 2. Wenn der Benutzer noch nicht angemeldet ist, ruft die native Anwendung den Benutzernamen des Benutzers aus der Windows-Sitzung des Geräts ab.
-3. Die App sendet den Benutzernamen an Azure AD und ruft den WS-Trust-MEX-Endpunkt Ihres Mandanten ab.
-4. Anschließend fragt die App den WS-Trust-MEX-Endpunkt ab, um festzustellen, ob der integrierte Authentifizierungsendpunkt verfügbar ist.
+3. Die App sendet den Benutzernamen an Azure AD und ruft den WS-Trust-MEX-Endpunkt Ihres Mandanten ab. Dieser WS-Trust-Endpunkt wird ausschließlich von der Funktion zur nahtlosen einmaligen Anmeldung verwendet, und er ist keine allgemeine Implementierung des WS-Trust-Protokolls in Azure AD.
+4. Anschließend fragt die App den WS-Trust-MEX-Endpunkt ab, um festzustellen, ob der integrierte Authentifizierungsendpunkt verfügbar ist. Der integrierte Authentifizierungsendpunkt wird ausschließlich von der Funktion zur nahtlosen einmaligen Anmeldung verwendet.
 5. Wenn Schritt 4 erfolgreich ist, wird eine Kerberos-Aufforderung ausgegeben.
 6. Wenn die App das Kerberos-Ticket abrufen kann, wird es bis zum integrierten Authentifizierungsendpunkt von Azure AD weitergeleitet.
 7. Azure AD entschlüsselt das Kerberos-Ticket und überprüft es.

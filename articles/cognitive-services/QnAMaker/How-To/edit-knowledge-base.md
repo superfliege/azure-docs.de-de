@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: article
-ms.date: 11/06/2018
+ms.date: 11/08/2018
 ms.author: tulasim
-ms.openlocfilehash: adcefe8fed927aca2533ea811bac56f0b92288de
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: fa5b5e1998d54c7b22d01e7cc70e84059d482cfb
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51279760"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51623545"
 ---
 # <a name="edit-a-knowledge-base"></a>Bearbeiten einer Wissensdatenbank
 
@@ -29,30 +29,25 @@ Mit QnA Maker können Sie die Inhalte Ihrer Wissensdatenbank auf einer benutzerf
 
     ![Meine Wissensdatenbanken](../media/qnamaker-how-to-edit-kb/my-kbs.png)
 
-2. Wählen Sie eine bestimmte Wissensdatenbank aus, um Änderungen daran vorzunehmen.
+1. Wählen Sie eine bestimmte Wissensdatenbank aus, um Änderungen daran vorzunehmen.
  
-3. Klicken Sie auf **Einstellungen**.
-
-   Hier können Sie das Pflichtfeld „Dienstname“ bearbeiten.
+1. Wählen Sie **Settings**aus. Hier können Sie das Pflichtfeld „Dienstname“ bearbeiten.
   
-   Sie können neue URLs hinzufügen, um neue FAQ-Inhalte zur Wissensdatenbank hinzuzufügen, indem Sie auf den Link **Wissensdatenbank verwalten > „+ URL hinzufügen“** klicken.
-   
-   Sie können vorhandene URLs löschen, indem Sie auf das **Löschsymbol** klicken.
-   
-   Wenn die Wissensdatenbank den neuesten Inhalt vorhandener URLs durchforsten soll, aktivieren Sie das Kontrollkästchen **„Aktualisieren“**, um die Wissensdatenbank mit dem neuesten URL-Inhalt zu aktualisieren.
-   
-Sie können unterstützte Dateidokumente als Teil der Wissensdatenbank hinzufügen, indem Sie auf **Wissensdatenbank verwalten > „+ Datei hinzufügen“** klicken.
+    |Zielsetzung|Aktion|
+    |--|--|
+    |URL hinzufügen|Sie können neue URLs hinzufügen, um der Wissensdatenbank neue FAQ-Inhalte hinzuzufügen, indem Sie auf den Link **Wissensdatenbank verwalten > „+ URL hinzufügen“** klicken.|
+    |URL löschen|Sie können vorhandene URLs löschen, indem Sie das Löschsymbol, d.h. den Papierkorb, auswählen.|
+    |URL-Inhalt aktualisieren|Damit Ihre Wissensdatenbank den neuesten Inhalt vorhandener URLs durchforstet, aktivieren Sie das Kontrollkästchen **Aktualisieren**. Dadurch wird die Wissensdatenbank mit den neuesten URL-Inhalten aktualisiert.|
+    |Datei hinzufügen|Sie können einer Wissensdatenbank ein unterstütztes Dateidokument hinzufügen, indem Sie **Wissensdatenbank verwalten** und dann **+ Datei hinzufügen** auswählen.|
+    |Importieren|Sie können auch vorhandene Wissensdatenbanken importieren, indem Sie die Schaltfläche **Wissensdatenbank importieren** auswählen. |
+    |Aktualisieren|Das Aktualisieren der Wissensdatenbank hängt vom **Verwaltungstarif** ab, der beim Erstellen des QnA Maker-Diensts verwendet wird, der mit Ihrer Wissensdatenbank verknüpft ist. Sie können den Verwaltungstarif auch über das Azure-Portal aktualisieren, wenn erforderlich.
 
-Sie können auch jede vorhandene Wissensdatenbank importieren, indem Sie auf die Schaltfläche **„Wissensdatenbank importieren“** klicken. 
-   
-Die Aktualisierung der Wissensdatenbank hängt davon ab, ob der **Tarif für Verwaltung** bei der Erstellung des QnA Maker-Diensts verwendet wird, der Ihrer Wissensdatenbank zugeordnet ist. Sie können den Verwaltungstarif auch über das Azure-Portal aktualisieren, wenn erforderlich.
-
-4. Nachdem Sie alle Änderungen an der Wissensdatenbank vorgenommen haben, klicken Sie in der oberen rechten Ecke der Seite auf **Speichern und trainieren**, um die Änderungen dauerhaft zu speichern.    
+1. Wenn Sie alle Änderungen an der Wissensdatenbank vorgenommen haben, wählen Sie auf der Seite oben rechts **Speichern und trainieren** aus, um die Änderungen dauerhaft zu speichern.    
 
     ![Speichern und trainieren](../media/qnamaker-how-to-edit-kb/save-and-train.png)
 
-    >[!NOTE]
-    Wenn Sie die Seite verlassen, ohne auf „Speichern und trainieren“ zu klicken, werden die Änderungen nicht beibehalten.
+    >[!CAUTION]
+    >Wenn Sie die Seite verlassen, bevor Sie **Speichern und trainieren** auswählen, gehen alle Änderungen verloren.
 
 ## <a name="add-a-qna-pair"></a>Hinzufügen eines Fragen-und-Antworten-Paars
 
@@ -62,7 +57,7 @@ Wählen Sie **Fragen-und-Antworten-Paar hinzufügen** aus, um der Wissensdatenba
 
 ## <a name="delete-a-qna-pair"></a>Löschen eines Fragen-und-Antworten-Paars
 
-Zum Löschen eines Fragen-und-Antworten-Paars klicken Sie in der Fragen-und-Antworten-Zeile ganz rechts auf das Symbol **Löschen**.
+Zum Löschen eines Fragen-und-Antworten-Paars klicken Sie in der Fragen-und-Antworten-Zeile ganz rechts auf das Symbol **Löschen**. Das Paar wird endgültig gelöscht. Dieser Vorgang kann nicht rückgängig gemacht werden. Es ist ratsam, Ihre Wissensdatenbank auf der Seite **Veröffentlichen** zu exportieren, bevor Sie Paare löschen. 
 
 ![Löschen eines Fragen-und-Antworten-Paars](../media/qnamaker-how-to-edit-kb/delete-qnapair.png)
 
@@ -95,6 +90,10 @@ Fügen Sie Metadatenpaare durch Auswahl des Filtersymbols hinzu.
 Das Löschen einer Wissensdatenbank (Knowledge Base, KB) ist ein endgültiger Vorgang. Dieser Vorgang kann nicht rückgängig gemacht werden. Vor dem Löschen einer Wissensdatenbank, sollten Sie die Wissensdatenbank auf der Seite **Einstellungen** im QnA Maker-Portal exportieren. 
 
 Wenn Sie Ihre Wissensdatenbank für [Projektmitarbeiter](collaborate-knowledge-base.md) freigeben und sie dann löschen, verlieren alle Benutzer den Zugriff auf die Wissensdatenbank. 
+
+## <a name="delete-azure-resources"></a>Löschen von Azure-Ressourcen 
+
+Wenn Sie Azure-Ressourcen löschen, die für Ihre QnA Maker-Wissensdatenbanken verwendet werden, funktionieren diese Wissensdatenbanken nicht mehr. Stellen Sie vor dem Löschen von Ressourcen sicher, dass Sie Ihre Wissensdatenbanken auf der Seite **Einstellungen** exportieren. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

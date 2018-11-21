@@ -3,7 +3,7 @@ title: Azure Service Fabric-Ressourcenkontrolle für Container und Dienste | Mic
 description: Azure Service Fabric ermöglicht Ihnen, Ressourcenlimits für Dienste festzulegen, die innerhalb oder außerhalb von Containern ausgeführt werden.
 services: service-fabric
 documentationcenter: .net
-author: masnider
+author: TylerMSFT
 manager: timlt
 editor: ''
 ms.assetid: ab49c4b9-74a8-4907-b75b-8d2ee84c6d90
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/9/2017
-ms.author: subramar
-ms.openlocfilehash: 49c7e2c99cce13880781a67806543b1cde0c12b6
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.author: twhitney, subramar
+ms.openlocfilehash: f2898de030a70d578eb45e81c9ccbef90bce96c8
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34208011"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51300471"
 ---
 # <a name="resource-governance"></a>Ressourcenkontrolle 
 
@@ -78,12 +78,12 @@ Mit dem folgenden Beispiel weisen Sie Service Fabric an, 50 % der verfügbaren C
 Wenn eine vollständig manuelle Einrichtung der Knotenkapazitäten erforderlich ist, können Sie mit regulären Mechanismen die Knoten im Cluster beschreiben. Im Folgenden finden Sie ein Beispiel für das Einrichten des Knotens mit vier Kernen und 2 GB Arbeitsspeicher: 
 
 ```xml
-    <NodeType Name="MyNodeType">
-      <Capacities>
-        <Capacity Name="servicefabric:/_CpuCores" Value="4"/>
-        <Capacity Name="servicefabric:/_MemoryInMB" Value="2048"/>
-      </Capacities>
-    </NodeType>
+    <NodeType Name="MyNodeType">
+      <Capacities>
+        <Capacity Name="servicefabric:/_CpuCores" Value="4"/>
+        <Capacity Name="servicefabric:/_MemoryInMB" Value="2048"/>
+      </Capacities>
+    </NodeType>
 ```
 
 Wenn die automatische Erkennung der verfügbaren Ressourcen aktiviert ist und die Knotenkapazitäten manuell im Clustermanifest definiert werden, überprüft Service Fabric, ob der Knoten über genügend Ressourcen für die vom Benutzer definierten Kapazität verfügt:
@@ -102,8 +102,8 @@ Die automatische Erkennung der verfügbaren Ressourcen kann deaktiviert werden, 
 Für eine optimale Leistung sollte auch die folgende Einstellung im Clustermanifest aktiviert werden: 
 
 ```xml
-<Section Name="PlacementAndLoadBalancing">
-    <Parameter Name="PreventTransientOvercommit" Value="true" /> 
+<Section Name="PlacementAndLoadBalancing">
+    <Parameter Name="PreventTransientOvercommit" Value="true" /> 
     <Parameter Name="AllowConstraintCheckFixesDuringApplicationUpgrade" Value="true" />
 </Section>
 ```
@@ -131,7 +131,7 @@ Ressourcenkontrollgrenzwerte werden im Anwendungsmanifest (Abschnitt „ServiceM
     </Policies>
   </ServiceManifestImport>
 ```
-  
+  
 In diesem Beispiel erhält das Dienstpaket mit dem Namen **ServicePackageA** einen Kern auf den Knoten, auf denen es platziert wurde. Dieses Dienstpaket enthält zwei Codepakete (**CodeA1** und **CodeA2**), und in beiden ist der Parameter `CpuShares` festgelegt. Der Anteil von CpuShares 512:256 teilt den Kern auf die zwei Codepakete auf. 
 
 Daher erhält „CodeA1“ in diesem Beispiel zwei Drittel eines Kerns, und „CodeA2“ ein Drittel eines Kerns (sowie eine weiche Reservierungsgarantie desselben). Wenn für Codepakete keine CpuShares angegeben sind, teilt Service Fabric die Kerne gleichmäßig auf die Codepakete auf.
@@ -180,8 +180,7 @@ In diesem Beispiel werden Standardparameterwerte für die Produktionsumgebung fe
 </Application>
 ```
 
-> [!IMPORTANT] 
-> Das Angeben der Ressourcenkontrolle mit Anwendungsparameter ist ab Service Fabric Version 6.1 möglich.<br> 
+> [!IMPORTANT]  Das Angeben der Ressourcenkontrolle mit Anwendungsparametern ist ab Service Fabric Version 6.1 möglich.<br> 
 >
 > Wenn die Ressourcenkontrolle mithilfe von Anwendungsparameter angegeben wird, kann Service Fabric nicht auf eine Version vor 6.1 herabgestuft werden. 
 

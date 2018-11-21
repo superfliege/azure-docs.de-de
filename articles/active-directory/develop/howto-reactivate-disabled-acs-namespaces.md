@@ -15,18 +15,18 @@ ms.date: 11/07/2018
 ms.author: celested
 ms.reviewer: jlu
 ms.custom: aaddev
-ms.openlocfilehash: 298afda7549690a9ea0314bff63a714be50a33b9
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 0f0de122dc3dbd770e91a8412430423bee222b30
+ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51019881"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51577946"
 ---
 # <a name="how-to-reactivate-disabled-access-control-service-namespaces"></a>Vorgehensweise: Reaktivieren deaktivierter Access Control Service-Namespaces
 
 Im November 2017 haben wir bekanntgegeben, dass Microsoft Azure Access Control Service (ACS), ein Dienst von Azure Active Directory (Azure AD), wird am 7. November 2018 eingestellt wird.
 
-Wir haben 12 Monate, 9 Monate, 6 Monate, 3 Monate, 1 Monat, 2 Wochen, 1 Woche und 1 Tag vor der Einstellung am 7. November 2018 mehrere E-Mails bezüglich der Einstellung von ACS an die Verwaltungs-E-Mail der ACS-Abonnements gesendet.
+Wir haben 12 Monate, 9 Monate, 6 Monate, 3 Monate, 1 Monat, 2 Wochen, 1 Woche und 1 Tag vor der Einstellung am 7. November 2018 E-Mails bezüglich der Einstellung von ACS an die Verwaltungs-E-Mail der ACS-Abonnements gesendet.
 
 Am 3. Oktober 2018 gaben wir (per E-Mail und [einem Blogbeitrag](https://azure.microsoft.com/blog/one-month-retirement-notice-access-control-service/)) ein Verlängerungsangebot für Kunden bekannt, die ihre Migration nicht vor dem 7. November 2018 abschließen können. Die Ankündigung enthielt auch Anweisungen zum Anfordern der Verlängerung.
 
@@ -35,7 +35,7 @@ Am 3. Oktober 2018 gaben wir (per E-Mail und [einem Blogbeitrag](https://azure.m
 Wenn Sie sich nicht für die Verlängerung entschieden haben, werden wir ab dem 7. November 2018 ACS-Namespaces deaktivieren. Wenn Sie die Mitteilungen verpasst haben und sich trotzdem für die Verlängerung bis zum 4. Februar 2019 entscheiden möchten, folgen Sie den Anweisungen in den folgenden Abschnitten.
 
 > [!NOTE]
-> Sie müssen ein Administrator des Abonnements sein, um die PowerShell-Befehle auszuführen und eine Verlängerung anzufordern.
+> Sie müssen ein Dienstadministrator oder Co-Admin des Abonnements sein, um die PowerShell-Befehle auszuführen und eine Verlängerung anzufordern.
 
 ## <a name="find-and-enable-your-acs-namespaces"></a>Suchen und Aktivieren Ihrer ACS-Namespaces
 
@@ -62,6 +62,9 @@ Sie können ACS PowerShell verwenden, um alle Ihre ACS-Namespaces aufzulisten un
         ```
     
         Hierbei steht `[Command-Name]` für den Namen des ACS-Befehls.
+1. Stellen Sie eine Verbindung mit ACS her, indem Sie das Cmdlet **Connect-AcsAccount** verwenden. 
+
+    Möglicherweise müssen Sie Ihre Ausführungsrichtlinie ändern, indem Sie **Set-ExecutionPolicy** ausführen, bevor Sie den Befehl ausführen können.
 1. Listen Sie Ihre verfügbaren Azure-Abonnements auf, indem Sie das Cmdlet **Get-AcsSubscription** verwenden.
 1. Listen Sie Ihre ACS-Namespaces auf, indem Sie das Cmdlet **Get-AcsNamespace** verwenden.
 1. Bestätigen Sie, dass die Namespaces deaktiviert sind, indem Sie bestätigen, dass `State` `Disabled` ist.

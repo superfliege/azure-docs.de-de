@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: f11012c90ab2b82e945fdb67e224783c3f05c6dd
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 2dd6ebb9e2f35eccae3b267402a4ef9b0e1b2dbe
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51237552"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51567161"
 ---
 # <a name="introduction-to-azure-security"></a>Einführung in Azure Security
 ## <a name="overview"></a>Übersicht
@@ -345,7 +345,7 @@ Patch-Updates bilden die Grundlage zum Ermitteln und Beheben potenzieller Proble
 ### <a name="azure-security-center"></a>Azure Security Center
 Security Center unterstützt Sie beim Vorbeugen, Erkennen und Beheben von Bedrohungen. Mit dieser Cloudlösung gewinnen Sie mehr Transparenz und bessere Kontrolle über die Sicherheit Ihrer Azure-Ressourcen. Es bietet integrierte Sicherheitsüberwachung und Richtlinienverwaltung für Ihre Azure-Abonnements, hilft bei der Erkennung von Bedrohungen, die andernfalls möglicherweise unbemerkt bleiben, und kann gemeinsam mit einem breiten Spektrum an Sicherheitslösungen verwendet werden.
 
-## <a name="identify-and-access-management"></a>Identitäts- und Zugriffsverwaltung
+## <a name="identity-and-access-management"></a>Identitäts- und Zugriffsverwaltung
 
 Das Schützen von Systemen, Anwendungen und Daten beginnt mit der identitätsbasierten Zugriffssteuerung. Die Features zur Identitäts- und Zugriffsverwaltung, die in Microsoft Business-Produkten und -Diensten integriert sind, unterstützen Sie beim Schützen Ihrer organisationsbezogenen und privaten Informationen vor nicht autorisiertem Zugriff, während sie für berechtigte Benutzer jederzeit und überall verfügbar sind.
 

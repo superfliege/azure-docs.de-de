@@ -10,18 +10,18 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 08/19/2018
 ms.author: laviswa
-ms.openlocfilehash: 762997492d18e9b14525dc6a196f98815f27fbbb
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: 4492324b174c97325f40110b7500d5b0e99a926b
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50979504"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51623943"
 ---
 # <a name="azure-cosmos-db-sql-syntax-reference"></a>Azure Cosmos DB-SQL-Syntaxreferenz
 
-Azure Cosmos DB unterstützt Abfragen von Dokumenten mithilfe einer vertrauten, SQL-ähnlichen (Structured Query Language, strukturierte Abfragesprache) Grammatik für hierarchische JSON-Dokumente, ohne dass ein explizites Schema oder die Erstellung sekundärer Indizes erforderlich ist. Dieser Artikel enthält die Referenz-/Syntaxdokumentation für die SQL-Abfragesprache, die mit SQL-API-Konten kompatibel ist. Eine exemplarische Vorgehensweise zu den SQL-Abfragen mit Beispieldaten finden Sie unter [SQL-Abfragen für Azure Cosmos DB](sql-api-sql-query.md).  
+Azure Cosmos DB unterstützt Abfragen von Dokumenten mithilfe einer vertrauten, SQL-ähnlichen (Structured Query Language, strukturierte Abfragesprache) Grammatik für hierarchische JSON-Dokumente, ohne dass ein explizites Schema oder die Erstellung sekundärer Indizes erforderlich ist. Dieser Artikel enthält die Syntaxdokumentation für die SQL-Abfragesprache, die mit SQL-API-Konten kompatibel ist. Eine exemplarische Vorgehensweise mit SQL-Beispielabfragen finden Sie unter [SQL-Abfragen in Cosmos DB](sql-api-sql-query.md).  
   
-Besuchen Sie auch den [Query Playground](http://www.documentdb.com/sql/demo) (Arbeiten mit Abfragen). Dort können Sie Azure Cosmos DB ausprobieren und SQL-Abfragen mit unserem Dataset durchführen.  
+Besuchen Sie auch den [Abfrageplayground](http://www.documentdb.com/sql/demo). Dort können Sie Cosmos DB testen und SQL-Abfragen mit unserem Dataset ausführen.  
   
 ## <a name="select-query"></a>SELECT-Abfrage  
 Jede Abfrage besteht aus einer SELECT-Klausel und optionalen FROM- und WHERE-Klauseln nach ANSI-SQL-Standards. Normalerweise wird in jeder Abfrage die jeweilige Quelle in der From-Klausel aufgelistet. Anschließend wird in der WHERE-Klausel ein Filter auf die Quelle angewendet, um eine Teilmenge der JSON-Dokumente zurückzugeben. Zuletzt wird die SELECT-Klausel verwendet, um die abgefragten JSON-Werte in die ausgewählte Liste zu projizieren. Die Konventionen zum Beschreiben von SELECT-Anweisungen sind im Abschnitt zu Syntaxkonventionen tabellarisch dargestellt. Beispiele finden Sie unter [Beispiele für die SELECT-Abfrage](sql-api-sql-query.md#SelectClause).
@@ -60,7 +60,7 @@ Beachten Sie, dass sich dies von der Reihenfolge unterscheidet, in der sie in de
 
 ### <a name="whitespace-characters-and-comments"></a>Leerzeichen und Kommentare  
 
-Alle Leerzeichen, die nicht Teil einer in Anführungszeichen gesetzten Zeichenfolge oder eines in Anführungszeichen gesetzten Bezeichners sind, sind nicht Bestandteil der Sprachgrammatik und werden während der Analyse ignoriert.  
+Alle Leerzeichen, die nicht Teil einer Zeichenfolge/eines Bezeichners in Anführungszeichen sind, sind nicht Bestandteil der Sprachgrammatik und werden bei der Analyse ignoriert.  
 
 Die Abfragesprache unterstützt Kommentare im T-SQL-Stil wie  
 
@@ -112,7 +112,7 @@ SELECT <select_specification>
   
 Die `SELECT *`-Syntax ist nur gültig, wenn die FROM-Klausel genau einen Alias deklariert hat. `SELECT *` bietet eine Identitätsprojektion, die hilfreich sein kann, wenn keine Projektion erforderlich ist. SELECT * ist nur gültig, wenn die FROM-Klausel angegeben und nur eine einzelne Eingabequelle eingeführt ist.  
   
-Beachten Sie, dass `SELECT <select_list>` und `SELECT *` syntaktische Erleichterungen sind und auch, wie unten gezeigt, mithilfe einfacher SELECT-Anweisungen ausgedrückt werden können.  
+Sowohl `SELECT <select_list>` als auch `SELECT *` sind sogenannter „syntaktischer Zucker“ und können alternativ durch das Verwenden einfacher SELECT-Anweisungen ausgedrückt werden (s. unten).  
   
 1. `SELECT * FROM ... AS from_alias ...`  
   
@@ -132,7 +132,7 @@ Beachten Sie, dass `SELECT <select_list>` und `SELECT *` syntaktische Erleichter
 [SELECT-Klausel](#bk_select_query)  
   
 ##  <a name="bk_from_clause"></a> FROM-Klausel  
-Gibt die Quelle oder verknüpfte Quellen an. Die FROM-Klausel ist optional, es sei denn, die Quelle wird später in der Abfrage gefiltert oder projiziert. Mit dieser Klausel wird die Datenquelle angegeben, auf der die Abfrage operiert. Normalerweise dient die gesamte Sammlung als Quelle, stattdessen kann aber auch eine Teilmenge der Sammlung angegeben werden. Wird diese Klausel nicht angegeben, werden andere Klauseln weiterhin so ausgeführt, als würde die FROM-Klausel ein einzelnes Dokument bereitstellen. Beispiele finden Sie unter [Beispiele für die FROM-Klausel](sql-api-sql-query.md#FromClause).
+Gibt die Quelle oder verknüpfte Quellen an. Die FROM-Klausel ist optional, es sei denn, die Quelle wird später in der Abfrage gefiltert oder projiziert. Mit dieser Klausel wird die Datenquelle angegeben, auf der die Abfrage operiert. Normalerweise dient der gesamte Container als Quelle, doch Sie können stattdessen auch nur eine Teilmenge des Containers angeben. Wird diese Klausel nicht angegeben, werden andere Klauseln weiterhin so ausgeführt, als würde die FROM-Klausel ein einzelnes Dokument bereitstellen. Beispiele finden Sie unter [Beispiele für die FROM-Klausel](sql-api-sql-query.md#FromClause).
   
 **Syntax**  
   
@@ -143,98 +143,98 @@ FROM <from_specification>
         <from_source> {[ JOIN <from_source>][,...n]}  
   
 <from_source> ::=   
-          <collection_expression> [[AS] input_alias]  
-        | input_alias IN <collection_expression>  
+          <container_expression> [[AS] input_alias]  
+        | input_alias IN <container_expression>  
   
-<collection_expression> ::=   
+<container_expression> ::=   
         ROOT   
-     | collection_name  
+     | container_name  
      | input_alias  
-     | <collection_expression> '.' property_name  
-     | <collection_expression> '[' "property_name" | array_index ']'  
+     | <container_expression> '.' property_name  
+     | <container_expression> '[' "property_name" | array_index ']'  
 ```  
   
 **Argumente**  
   
 - `<from_source>`  
   
-  Gibt eine Datenquelle mit oder ohne Alias an. Wenn der Alias nicht angegeben wird, wird er mithilfe der folgenden Regeln aus dem `<collection_expression>` abgeleitet:  
+  Gibt eine Datenquelle mit oder ohne Alias an. Wenn der Alias nicht angegeben wird, wird er mithilfe der folgenden Regeln aus dem `<container_expression>` abgeleitet:  
   
-  -  Wenn der Ausdruck ein „collection_name“ ist, wird „collection_name“ als Alias verwendet.  
+  -  Wenn der Ausdruck „container_name“ ist, wird „container_name“ als Alias verwendet.  
   
-  -  Wenn der Ausdruck `<collection_expression>` ist, wird „property_name“ als Alias verwendet. Wenn der Ausdruck ein „collection_name“ ist, wird „collection_name“ als Alias verwendet.  
+  -  Wenn der Ausdruck `<container_expression>` ist, wird „property_name“ als Alias verwendet. Wenn der Ausdruck „container_name“ ist, wird „container_name“ als Alias verwendet.  
   
 - AS `input_alias`  
   
-  Gibt an, dass der `input_alias` ein Satz von Werten ist, die von dem zugrunde liegenden Sammlungsausdruck zurückgegeben werden.  
+  Gibt an, dass `input_alias` ein Satz von Werten ist, die von dem zugrunde liegenden Containerausdruck zurückgegeben werden.  
  
 - `input_alias` IN  
   
-  Gibt an, dass der `input_alias` den Satz von durch Iteration über alle Arrayelemente jedes Arrays gewonnenen Werten darstellen sollte, die vom zugrunde liegenden Sammlungsausdruck zurückgegeben werden. Jeder vom zugrunde liegenden Sammlungsausdruck zurückgegebene Wert, der kein Array ist, wird ignoriert.  
+  Gibt an, dass `input_alias` den Satz von Werten darstellen soll, die durch Iteration in allen Arrayelementen jedes Arrays gewonnen wurden, das vom zugrunde liegenden Containerausdruck zurückgegeben werden. Jeder vom zugrunde liegenden Containerausdruck zurückgegebene Wert, der kein Array ist, wird ignoriert.  
   
-- `<collection_expression>`  
+- `<container_expression>`  
   
-  Gibt den Sammlungsausdruck an, der zum Abrufen der Dokumente verwendet wird.  
+  Gibt den Containerausdruck an, der zum Abrufen der Dokumente verwendet wird.  
   
 - `ROOT`  
   
-  Gibt an, dass das Dokument von der standardmäßigen, derzeit verbundenen Sammlung abgerufen werden sollte.  
+  Gibt an, dass das Dokument vom standardmäßigen, derzeit verbundenen Container abgerufen werden soll.  
   
-- `collection_name`  
+- `container_name`  
   
-  Gibt an, dass das Dokument von der bereitgestellten Sammlung abgerufen werden sollte. Der Name der Sammlung muss mit dem Namen der Sammlung übereinstimmen, zu der derzeit eine Verbindung besteht.  
+  Gibt an, dass das Dokument vom bereitgestellten Container abgerufen werden soll. Der Name des Containers muss mit dem Namen des aktuell verbundenen Containers übereinstimmen.  
   
 - `input_alias`  
   
   Gibt an, dass das Dokument von der anderen, durch den bereitgestellten Alias definierten Quelle abgerufen werden sollte.  
   
-- `<collection_expression> '.' property_`  
+- `<container_expression> '.' property_`  
   
-  Gibt an, dass das Dokument durch den Zugriff auf die Eigenschaft `property_name` oder das Arrayelement „array_index“ für alle Dokumente, die durch den angegebenen Sammlungsausdruck abgerufen werden, abgerufen werden sollte.  
+  Gibt an, dass das Dokument durch den Zugriff auf die Eigenschaft `property_name` oder das Arrayelement „array_index“ für alle Dokumente abgerufen werden soll, die der angegebene Containerausdruck abruft.  
   
-- `<collection_expression> '[' "property_name" | array_index ']'`  
+- `<container_expression> '[' "property_name" | array_index ']'`  
   
-  Gibt an, dass das Dokument durch den Zugriff auf die Eigenschaft `property_name` oder das Arrayelement „array_index“ für alle Dokumente, die durch den angegebenen Sammlungsausdruck abgerufen werden, abgerufen werden sollte.  
+  Gibt an, dass das Dokument durch den Zugriff auf die Eigenschaft `property_name` oder das Arrayelement „array_index“ für alle Dokumente abgerufen werden soll, die der angegebene Containerausdruck abruft.  
   
 **Anmerkungen**  
   
-Alle in den `<from_source>(`s) bereitgestellten oder abgeleiteten Aliase müssen eindeutig sein. Die Syntax `<collection_expression>.`property_name ist identisch mit `<collection_expression>' ['"property_name"']'`. Die letztgenannte Syntax kann jedoch verwendet werden, wenn ein Eigenschaftenname Nicht-ID-Zeichen enthält.  
+Alle in den `<from_source>(`s) bereitgestellten oder abgeleiteten Aliase müssen eindeutig sein. Die Syntax `<container_expression>.`property_name ist identisch mit `<container_expression>' ['"property_name"']'`. Die letztgenannte Syntax kann jedoch verwendet werden, wenn ein Eigenschaftenname Nicht-ID-Zeichen enthält.  
   
 ### <a name="handling-missing-properties-missing-array-elements-and-undefined-values"></a>Behandeln fehlender Eigenschaften, fehlender Arrayelemente und undefinierter Werte
   
-Wenn ein Sammlungsausdruck auf Eigenschaften oder Arrayelemente zugreift, und dieser Wert nicht vorhanden ist, wird dieser Wert ignoriert und nicht weiter verarbeitet.  
+Wenn ein Containerausdruck auf Eigenschaften oder Arrayelemente zugreift, und der Wert nicht vorhanden ist, wird dieser Wert ignoriert und nicht weiterverarbeitet.  
   
-### <a name="collection-expression-context-scoping"></a>Kontextbereich des Sammlungsausdrucks  
+### <a name="container-expression-context-scoping"></a>Kontextbereich des Containerausdrucks  
   
-Ein Sammlungsausdruck kann sammlungsbezogen oder dokumentbezogen sein:  
+Ein Containerausdruck kann container- oder dokumentbezogen sein:  
   
--   Ein Ausdruck ist sammlungsbezogen, wenn die zugrunde liegende Quelle des Sammlungsausdrucks entweder ROOT oder `collection_name` ist. Ein solcher Ausdruck stellt einen Satz von Dokumenten dar, die direkt aus der Sammlung abgerufen werden, und ist nicht von der Verarbeitung anderer Sammlungsausdrücke abhängig.  
+-   Ein Ausdruck ist containerbezogen, wenn die zugrunde liegende Quelle des Containerausdrucks entweder „ROOT“ oder `container_name` lautet. Ein solcher Ausdruck stellt eine Reihe von Dokumenten dar, die direkt aus dem Container abgerufen werden, und ist nicht von der Verarbeitung anderer Containerausdrücke abhängig.  
   
--   Ein Ausdruck ist dokumentbezogen, wenn die zugrunde liegende Quelle des Sammlungsausdrucks ein früher in der Abfrage eingeführter `input_alias` ist. Ein solcher Ausdruck stellt eine Reihe von Dokumenten dar, die durch das Auswerten des Sammlungsausdrucks im Bereich der einzelnen Dokumente gewonnen werden, die zu dem Satz gehören, der der Aliassammlung zugeordnet ist.  Das Resultset ist eine Vereinigung von Sätzen, die durch die Auswertung des Sammlungsausdrucks für jedes Dokument im zugrunde liegenden Satz gewonnen werden.  
+-   Ein Ausdruck ist dokumentbezogen, wenn die zugrunde liegende Quelle des Containerausdrucks `input_alias` ist und zuvor in der Abfrage eingeführt wurde. Ein solcher Ausdruck stellt eine Reihe von Dokumenten dar, die durch das Auswerten des Containerausdrucks in den einzelnen Dokumenten gewonnen werden, die zu dem Satz gehören, der dem Aliascontainer zugeordnet ist.  Das Resultset ist eine Vereinigung von Sätzen, die durch die Auswertung des Containerausdrucks in jedem Dokument im zugrunde liegenden Satz gewonnen werden.  
   
 ### <a name="joins"></a>Joins 
   
-In der aktuellen Version unterstützt Azure Cosmos DB innere Verknüpfungen. Weitere Verknüpfungsfunktionen sind in Planung. 
+Im aktuellen Release unterstützt Cosmos DB innere Joins. Weitere Verknüpfungsfunktionen sind in Planung. 
 
 Aus inneren Verknüpfungen resultiert ein komplettes Kreuzungsprodukt der an der Verknüpfung beteiligten Sätze. Das Ergebnis einer N-Way-Verknüpfung ist ein Satz von N-Element-Tupeln, wo jeder Wert im Tupel dem an der Verknüpfung beteiligten Aliassatz zugeordnet ist, und der Zugriff auf den Wert durch Verweis auf diesen Alias in anderen Klauseln erfolgen kann. Beispiele finden Sie unter [Beispiele für das JOIN-Schlüsselwort](sql-api-sql-query.md#Joins).
   
 Die Auswertung der Verknüpfung hängt vom Kontextbereich der beteiligten Sätze ab:  
   
--  Eine Verknüpfung zwischen Sammlungssatz A und sammlungsbezogenem Satz B führt zu einem Kreuzprodukt aller Elemente in den Sätzen A und B.
+-  Ein Join zwischen Containersatz A und containerbezogenem Satz B führt zu einem Kreuzprodukt aller Elemente in den Sätzen A und B.
   
 -   Eine Verknüpfung zwischen Satz A und dokumentbezogenem Satz B führt zu einer Vereinigung aller durch die Auswertung des dokumentbezogenen Satzes B für jedes Dokument aus Satz A gewonnenen Sätze.  
   
- In der aktuellen Version wird höchstens ein sammlungsbezogener Ausdruck vom Abfrageprozessor unterstützt.  
+ Im aktuellen Release wird höchstens ein containerbezogener Ausdruck vom Abfrageprozessor unterstützt.  
   
 ### <a name="examples-of-joins"></a>Beispiele für Verknüpfungen  
   
 Betrachten Sie die folgende FROM-Klausel: `<from_source1> JOIN <from_source2> JOIN ... JOIN <from_sourceN>`  
   
- Jede Quelle definiert `input_alias1, input_alias2, …, input_aliasN`. Diese FROM-Klausel gibt einen Satz von N-Tupeln (Tupel mit N-Werten) zurück. Jedes Tupel enthält Werte, die durch Iteration aller Sammlungsaliase über deren jeweilige Sätze entstanden sind.  
+ Jede Quelle definiert `input_alias1, input_alias2, …, input_aliasN`. Diese FROM-Klausel gibt einen Satz von N-Tupeln (Tupel mit N-Werten) zurück. Jedes Tupel enthält Werte, die durch Iteration aller Containeraliase über deren jeweilige Sätze entstanden sind.  
   
 **Beispiel 1** – zwei Quellen  
   
-- `<from_source1>` ist sammlungsbezogen und stellt den Satz {A, B, C} dar.  
+- `<from_source1>` ist containerbezogen und stellt den Satz {A, B, C} dar.  
   
 - `<from_source2>` ist dokumentbezogen, verweist auf „input_alias1“ und stellt folgende Sätze dar:  
   
@@ -252,7 +252,7 @@ Betrachten Sie die folgende FROM-Klausel: `<from_source1> JOIN <from_source2> JO
   
 **Beispiel 2** – drei Quellen  
   
-- `<from_source1>` ist sammlungsbezogen und stellt den Satz {A, B, C} dar.  
+- `<from_source1>` ist containerbezogen und stellt den Satz {A, B, C} dar.  
   
 - `<from_source2>` ist dokumentbezogen, verweist auf `input_alias1` und stellt folgende Sätze dar:  
   
@@ -279,9 +279,9 @@ Betrachten Sie die folgende FROM-Klausel: `<from_source1> JOIN <from_source2> JO
   
 **Beispiel 3** – drei Quellen  
   
-- <from_source1> ist sammlungsbezogen und stellt den Satz {A, B, C} dar.  
+- <from_source1> ist containerbezogen und stellt den Satz {A, B, C} dar.  
   
-- `<from_source1>` ist sammlungsbezogen und stellt den Satz {A, B, C} dar.  
+- `<from_source1>` ist containerbezogen und stellt den Satz {A, B, C} dar.  
   
 - <from_source2> ist dokumentbezogen, verweist auf „input_alias1“ und stellt folgende Sätze dar:  
   
@@ -333,7 +333,7 @@ WHERE <filter_condition>
   
  **Anmerkungen**  
   
- Damit das Dokument zurückgegeben wird, muss ein als Filterbedingung angegebener Ausdruck mit „true“ ausgewertet werden. Nur der boolesche Wert „true“ erfüllt die Bedingung, jeder andere Wert – undefiniert, NULL, false, Number, Array oder Object – erfüllt die Bedingung nicht.  
+ Damit das Dokument zurückgegeben wird, muss ein als Filterbedingung angegebener Ausdruck mit „true“ ausgewertet werden. Nur der boolesche Wert TRUE erfüllt die Bedingung, jeder andere Wert – „undefined“, „NULL“, „FALSE“, „Number“, „Array“ oder „Object“ – erfüllt die Bedingung nicht.  
   
 ##  <a name="bk_orderby_clause"></a> ORDER BY-Klausel  
  Gibt die Sortierreihenfolge für die von der Abfrage zurückgegebenen Ergebnisse an. Beispiele finden Sie unter [Beispiele für die ORDER BY-Klausel](sql-api-sql-query.md#OrderByClause).
@@ -371,12 +371,12 @@ ORDER BY <sort_specification>
   
  **Anmerkungen**  
   
- Die Abfragegrammatik unterstützt mehrere ORDER BY-Eigenschaften, die Abfragelaufzeit von Azure Cosmos DB hingegen nur die Sortierung für eine einzelne Eigenschaft, und nur für Eigenschaftennamen, d.h. nicht für berechnete Eigenschaften. Das Sortieren erfordert auch, dass die Indizierungsrichtlinie einen Bereichsindex für die Eigenschaft und den angegebenen Typ mit der maximalen Genauigkeit enthält. Weitere Informationen finden Sie in der Dokumentation zur Indizierungsrichtlinie.  
+ Die Abfragegrammatik unterstützt mehrere „ORDER BY“-Eigenschaften, die Cosmos DB-Abfragelaufzeit hingegen nur die Sortierung für eine einzelne Eigenschaft und für Eigenschaftennamen, d.h. nicht für berechnete Eigenschaften. Das Sortieren erfordert auch, dass die Indizierungsrichtlinie einen Bereichsindex für die Eigenschaft und den angegebenen Typ mit der maximalen Genauigkeit enthält. Weitere Informationen finden Sie in der Dokumentation zur Indizierungsrichtlinie.  
   
 ##  <a name="bk_scalar_expressions"></a> Skalarausdrücke  
  Ein skalarer Ausdruck ist eine Kombination aus Symbolen und Operatoren, die ausgewertet werden können, um einen einzelnen Wert zu erhalten. Einfache Ausdrücke können Konstanten, Eigenschaftenverweise, Arrayelementverweise, Aliasverweise oder Funktionsaufrufe sein. Einfache Ausdrücke können mit Operatoren in komplexen Ausdrücken kombiniert werden. Beispiele finden Sie unter [Beispiele für skalare Ausdrücke](sql-api-sql-query.md#scalar-expressions).
   
- Ausführliche Informationen zu Werten, die skalare Ausdrücke aufweisen können, finden Sie im Abschnitt [Konstanten](#bk_constants).  
+ Weitere Informationen zu Werten, die Skalarausdrücke aufweisen können, finden Sie im Abschnitt [Konstanten](#bk_constants).  
   
  **Syntax**  
   
@@ -440,7 +440,7 @@ ORDER BY <sort_specification>
   
 -   `udf_scalar_function`  
   
-     Name der benutzerdefinierten skalaren Funktion.  
+     Name der benutzerdefinierten Skalarfunktion.  
   
 -   `builtin_scalar_function`  
   
@@ -460,7 +460,7 @@ ORDER BY <sort_specification>
   
  **Anmerkungen**  
   
- Beim Aufrufen einer integrierten oder benutzerdefinierten skalaren Funktion müssen alle Argumente definiert werden. Wenn eines der Argumente undefiniert ist, wird die Funktion nicht aufgerufen, und das Ergebnis ist undefiniert.  
+ Beim Aufrufen einer integrierten oder benutzerdefinierten Skalarfunktion müssen alle Argumente definiert werden. Wenn eines der Argumente undefiniert ist, wird die Funktion nicht aufgerufen, und das Ergebnis ist undefiniert.  
   
  Beim Erstellen eines Objekts wird jede Eigenschaft, der ein undefinierter Wert zugewiesen ist, übersprungen und nicht in das erstellte Objekt einbezogen.  
   
@@ -517,9 +517,9 @@ ORDER BY <sort_specification>
   
  **Anmerkungen**  
   
- In Azure Cosmos DB sind die Typen von Werten oft nicht bekannt, bis sie tatsächlich aus der Datenbank abgerufen werden. Um die effiziente Ausführung von Abfragen zu ermöglichen, haben die meisten Operatoren strikte Typanforderungen. Außerdem führen Operatoren selbst keine impliziten Konvertierungen aus.  
+ In Cosmos DB sind die Typen von Werten oft nicht bekannt, bis sie aus der Datenbank abgerufen werden. Um die effiziente Ausführung von Abfragen zu ermöglichen, haben die meisten Operatoren strikte Typanforderungen. Außerdem führen Operatoren selbst keine impliziten Konvertierungen aus.  
   
- Dies bedeutet, dass eine Abfrage wie „SELECT * FROM ROOT r WHERE r.Age = 21“ nur Dokumente zurückgibt, deren Eigenschaft „Age“ der Zahl 21 entspricht. Dokumente, deren Eigenschaft „Age“ der Zeichenfolge „21“ oder der Zeichenfolge „0021“ entspricht, stimmen nicht überein, da der Ausdruck „21“ = 21 als undefiniert ausgewertet wird. Dies ermöglicht eine bessere Verwendung von Indizes, da die Suche nach einem bestimmten Wert (d.h. der Zahl 21) schneller ist als die Suche nach einer unbestimmten Anzahl möglicher Übereinstimmungen (d.h. Zahl 21 oder Zeichenfolgen „21“, „021“, „21,0“... ). Dies unterscheidet sich von der Art, in der JavaScript Operatoren für Werte verschiedener Typen auswertet.  
+ Dies bedeutet, dass eine Abfrage wie „SELECT * FROM ROOT r WHERE r.Age = 21“ nur Dokumente zurückgibt, deren Eigenschaft „Age“ der Zahl 21 entspricht. Dokumente, deren Eigenschaft „Age“ der Zeichenfolge „21“ oder der Zeichenfolge „0021“ entspricht, stimmen nicht überein, da der Ausdruck „21“ = 21 als undefiniert ausgewertet wird. Dies ermöglicht eine bessere Verwendung von Indizes, da die Suche nach einem bestimmten Wert (z.B. der Zahl 21) schneller ist als die Suche nach einer unbestimmten Anzahl von möglichen Übereinstimmungen (z.B. der Zahl 21 oder den Zeichenfolgen „21“, „021“, „21,0“ etc.). Dies unterscheidet sich von der Art, in der JavaScript Operatoren für Werte verschiedener Typen auswertet.  
   
  **Arrays und Objekte – Gleichheit und Vergleich**  
   
@@ -632,7 +632,7 @@ ORDER BY <sort_specification>
 |\uXXXX|Ein Unicode-Zeichen, das durch 4 Hexadezimalstellen definiert wird.|U+XXXX|  
   
 ##  <a name="bk_query_perf_guidelines"></a> Leistungsrichtlinien zur Abfrage  
- Damit eine Abfrage für eine große Sammlung effizient ausgeführt werden kann, sollte sie Filter verwenden, die über einen oder mehrere Indizes bedient werden können.  
+ Damit eine Abfrage für einen großen Container effizient ausgeführt werden kann, sollte sie Filter verwenden, die über mindestens einen Index bedient werden können.  
   
  Die folgenden Filter werden für die Indexsuche berücksichtigt:  
   
@@ -640,15 +640,15 @@ ORDER BY <sort_specification>
   
 -   Verwenden von Bereichsoperatoren (<, \<=, >, >=) mit einem Dokumentenpfadausdruck und Zahlenkonstanten.  
   
--   Dokumentenpfadausdruck steht für jeden Ausdruck, der einen Konstantenpfad in den Dokumenten aus der referenzierten Datenbanksammlung identifiziert.  
+-   Der Dokumentenpfadausdruck steht für jeden Ausdruck, der einen Konstantenpfad in den Dokumenten aus dem referenzierten Datenbankcontainer identifiziert.  
   
  **Dokumentenpfadausdruck**  
   
- Dokumentenpfadausdrücke sind Ausdrücke, die ein Eigenschaftenpfad oder Arrayindexer für ein Dokument auswertet, das aus Datenbanksammlungs-Dokumenten stammt. Dieser Pfad kann zur Identifizierung des Speicherorts von Werten verwendet werden, auf die in einem Filter direkt innerhalb der Dokumente in der Datenbanksammlung verwiesen wird.  
+ Dokumentenpfadausdrücke sind Ausdrücke, die ein Eigenschaftenpfad oder Arrayindexer für ein Dokument auswertet, das aus Datenbankcontainerdokumenten stammt. Dieser Pfad kann zur Identifizierung des Speicherorts von Werten verwendet werden, auf die in einem Filter direkt in den Dokumenten im Datenbankcontainer verwiesen wird.  
   
  Für einen Ausdruck, der als Dokumentenpfadausdruck in Betracht kommt, sollten folgende Voraussetzungen gelten:  
   
-1.  Direktes Verweisen auf den Stamm der Sammlung.  
+1.  Direktes Verweisen auf den Stamm des Containers.  
   
 2.  Verweisen auf Eigenschaften- oder Konstantenarrayindexer eines Dokumentenpfadausdrucks.  
   
@@ -674,15 +674,15 @@ ORDER BY <sort_specification>
     |[ ...n ]|Gibt an, dass das vorherige Element n-Mal wiederholt werden kann. Die einzelnen Vorkommen werden durch Leerzeichen getrennt.|  
   
 ##  <a name="bk_built_in_functions"></a> Integrierte Funktionen  
- Azure Cosmos DB bietet viele integrierte SQL-Funktionen. Die Kategorien der integrierten Funktionen sind unten aufgeführt.  
+ Cosmos DB bietet viele integrierte SQL-Funktionen. Die Kategorien der integrierten Funktionen sind unten aufgeführt.  
   
 |Funktion|BESCHREIBUNG|  
 |--------------|-----------------|  
 |[Mathematische Funktionen](#bk_mathematical_functions)|Jede mathematische Funktion führt eine Berechnung durch, üblicherweise basierend auf Eingabewerten, die als Argument bereitgestellt werden, und gibt einen numerischen Wert zurück.|  
 |[Funktionen für die Typüberprüfung](#bk_type_checking_functions)|Mit den Funktionen für die Typprüfung können Sie den Typ eines Ausdrucks in SQL-Abfragen prüfen.|  
 |[Zeichenfolgenfunktionen](#bk_string_functions)|Die folgenden Stringfunktionen führen einen Vorgang für einen Zeichenfolgen-Eingabewert durch und geben eine Zeichenfolge, einen numerischen Wert oder einen booleschen Wert zurück.|  
-|[Arrayfunktionen](#bk_array_functions)|Die Arrayfunktionen führen einen Vorgang für einen Arrayeingabewert durch und geben einen numerischen Wert, booleschen Wert oder Arraywert zurück.|  
-|[Räumliche Funktionen](#bk_spatial_functions)|Die räumlichen Funktionen führen einen Vorgang für einen Raumobjekt-Eingabewert durch und geben einen numerischen oder booleschen Wert zurück.|  
+|[Arrayfunktionen](#bk_array_functions)|Die Arrayfunktionen führen einen Vorgang für einen Arrayeingabewert aus und geben einen numerischen Wert, booleschen Wert oder Arraywert zurück.|  
+|[Räumliche Funktionen](#bk_spatial_functions)|Die räumlichen Funktionen führen einen Vorgang für den Eingabewert eines räumlichen Objekts aus und geben einen numerischen oder booleschen Wert zurück.|  
   
 ###  <a name="bk_mathematical_functions"></a> Mathematische Funktionen  
  Die folgenden Funktionen führen jeweils eine Berechnung durch, üblicherweise basierend auf Eingabewerten, die als Argumente bereitgestellt werden, und geben einen numerischen Wert zurück.  
@@ -1545,7 +1545,7 @@ IS_ARRAY(<expression>)
   
  **Beispiele**  
   
- Das folgende Beispiel überprüft JSON-Objekte des Typs boolesch, Number, String, NULL, Object, Array und undefiniert mithilfe der IS_ARRAY-Funktion.  
+ Das folgende Beispiel überprüft JSON-Objekte des Typs boolesch, „Number“, „String“, „NULL“, „Object“, „Array“ und „undefined“ mithilfe der IS_ARRAY-Funktion.  
   
 ```  
 SELECT   
@@ -1585,7 +1585,7 @@ IS_BOOL(<expression>)
   
  **Beispiele**  
   
- Das folgende Beispiel überprüft JSON-Objekte des Typs boolesch, Number, String, NULL, Object, Array und undefiniert mithilfe der IS_BOOL-Funktion.  
+ Das folgende Beispiel überprüft JSON-Objekte des Typs boolesch, „Number“, „String“, „NULL“, „Object“, „Array“ und „undefined“ mithilfe der IS_BOOL-Funktion.  
   
 ```  
 SELECT   
@@ -1661,7 +1661,7 @@ IS_NULL(<expression>)
   
  **Beispiele**  
   
- Das folgende Beispiel überprüft JSON-Objekte des Typs boolesch, Number, String, NULL, Object, Array und undefiniert mithilfe der IS_NULL-Funktion.  
+ Das folgende Beispiel überprüft JSON-Objekte des Typs boolesch, „Number“, „String“, „NULL“, „Object“, „Array“ und „undefined“ mithilfe der IS_NULL-Funktion.  
   
 ```  
 SELECT   
@@ -1701,7 +1701,7 @@ IS_NUMBER(<expression>)
   
  **Beispiele**  
   
- Das folgende Beispiel überprüft JSON-Objekte des Typs boolesch, Number, String, NULL, Object, Array und undefiniert mithilfe der IS_NULL-Funktion.  
+ Das folgende Beispiel überprüft JSON-Objekte des Typs boolesch, „Number“, „String“, „NULL“, „Object“, „Array“ und „undefined“ mithilfe der IS_NULL-Funktion.  
   
 ```  
 SELECT   
@@ -1741,7 +1741,7 @@ IS_OBJECT(<expression>)
   
  **Beispiele**  
   
- Das folgende Beispiel überprüft JSON-Objekte des Typs boolesch, Number, String, NULL, Object, Array und undefiniert mithilfe der IS_OBJECT-Funktion.  
+ Das folgende Beispiel überprüft JSON-Objekte des Typs boolesch, „Number“, „String“, „NULL“, „Object“, „Array“ und „undefined“ mithilfe der IS_OBJECT-Funktion.  
   
 ```  
 SELECT   
@@ -1761,7 +1761,7 @@ SELECT
 ```  
   
 ####  <a name="bk_is_primitive"></a> IS_PRIMITIVE  
- Gibt einen booleschen Wert zurück, der angibt, ob der angegebene Ausdruck ein Grundtyp ist (Zeichenfolge, boolesch, numerisch oder NULL).  
+ Gibt einen booleschen Wert zurück, der anzeigt, ob der angegebene Ausdruck ein Grundtyp ist (Zeichenfolge, boolesch, numerisch oder NULL).  
   
  **Syntax**  
   
@@ -1821,7 +1821,7 @@ IS_STRING(<expression>)
   
  **Beispiele**  
   
- Das folgende Beispiel überprüft JSON-Objekte des Typs boolesch, Number, String, NULL, Object, Array und undefiniert mithilfe der IS_STRING-Funktion.  
+ Das folgende Beispiel überprüft JSON-Objekte des Typs boolesch, „Number“, „String“, „NULL“, „Object“, „Array“ und „undefined“ mithilfe der IS_STRING-Funktion.  
   
 ```  
 SELECT   
@@ -2697,7 +2697,7 @@ SELECT
 ```  
  
 ###  <a name="bk_spatial_functions"></a> Räumliche Funktionen  
- Die folgenden Skalarfunktionen führen einen Vorgang für einen Raumobjekt-Eingabewert durch und geben einen numerischen oder booleschen Wert zurück.  
+ Die folgenden Skalarfunktionen führen einen Vorgang für den Eingabewert eines räumlichen Objekts aus und geben einen numerischen oder booleschen Wert zurück.  
   
 ||||  
 |-|-|-|  
@@ -2904,7 +2904,7 @@ SELECT ST_ISVALIDDETAILED({
 ```  
   
 ## <a name="next-steps"></a>Nächste Schritte  
- [SQL-Syntax und SQL-Abfrage für Azure Cosmos DB](sql-api-sql-query.md)   
- [Dokumentation für Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/)  
-  
-  
+
+- [SQL-Syntax und SQL-Abfrage für Cosmos DB](sql-api-sql-query.md)
+
+- [Dokumentation für Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/)  

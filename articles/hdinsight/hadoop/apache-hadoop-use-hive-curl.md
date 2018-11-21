@@ -1,6 +1,6 @@
 ---
-title: Verwenden von Hadoop Hive mit Curl in HDInsight – Azure
-description: Erfahren Sie, wie Sie Pig-Aufträge mithilfe von Curl remote an HDInsight übermitteln.
+title: Verwenden von Apache Hadoop Hive mit Curl in HDInsight – Azure
+description: Erfahren Sie, wie Sie Apache Pig-Aufträge mithilfe von Curl remote an HDInsight übermitteln.
 services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -9,18 +9,18 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: ac17c299656cc8134141284e0b31bdf568c0e3e0
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: cff24991263ece54c143e5da8a3eb2a9e5b4af18
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51016946"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51634497"
 ---
-# <a name="run-hive-queries-with-hadoop-in-hdinsight-using-rest"></a>Ausführen von Hive-Abfragen mit Hadoop in HDInsight mit REST
+# <a name="run-hive-queries-with-apache-hadoop-in-hdinsight-using-rest"></a>Ausführen von Hive-Abfragen mit Apache Hadoop in HDInsight mit REST
 
 [!INCLUDE [hive-selector](../../../includes/hdinsight-selector-use-hive.md)]
 
-Erfahren Sie, wie Sie die WebHCat-REST-API verwenden, um Hive-Abfragen mit Hadoop in Azure HDInsight-Clustern auszuführen.
+Erfahren Sie, wie Sie die WebHCat-REST-API verwenden, um Hive-Abfragen mit Apache Hadoop in Azure HDInsight-Clustern auszuführen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

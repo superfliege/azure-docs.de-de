@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/27/2018
+ms.date: 11/08/2018
 ms.author: mabrigg
 ms.reviewer: alfredop
-ms.openlocfilehash: 362ee7e84229c421f69ff0db0c8cfb040b105c97
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 95b63b525365a5a31856c2f14ac965aaa1113cff
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49394510"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51515623"
 ---
 # <a name="frequently-asked-questions-in-azure-stack-usage-api"></a>Häufig gestellte Fragen zur Azure Stack-Nutzungs-API
 
@@ -126,105 +126,165 @@ Der Verbrauch wird für die folgenden Ressourcenanbieter gemeldet:
   
 ### <a name="managed-disks"></a>Managed Disks
 
+**ID der Verbrauchseinheit**: 380874f9-300c-48e0-95a0-d2d9a21ade8f   
+**Name der Verbrauchseinheit**: S4   
+**Einheit**: Anzahl der Datenträger\*Monat   
+**Hinweise**: Managed Disks Standard – 32 GB 
+
+**ID der Verbrauchseinheit**: 1b77d90f-427b-4435-b4f1-d78adec53222   
+**Name der Verbrauchseinheit**: S6   
+**Einheit**: Anzahl der Datenträger\*Monat   
+**Hinweise**: Managed Disks Standard – 64 GB 
+
+**ID der Verbrauchseinheit**: d5f7731b-f639-404a-89d0-e46186e22c8d   
+**Name der Verbrauchseinheit**: S10   
+**Einheit**: Anzahl der Datenträger\*Monat   
+**Hinweise**: Managed Disks Standard – 128 GB 
+
+**ID der Verbrauchseinheit**: ff85ef31-da5b-4eac-95dd-a69d6f97b18a   
+**Name der Verbrauchseinheit**: S15   
+**Einheit**: Anzahl der Datenträger\*Monat   
+**Hinweise**: Managed Disks Standard – 256 GB 
+
+**ID der Verbrauchseinheit**: 88ea9228-457a-4091-adc9-ad5194f30b6e   
+**Name der Verbrauchseinheit**: S20   
+**Einheit**: Anzahl der Datenträger\*Monat      
+**Hinweise**: Managed Disks Standard – 512 GB 
+
+**ID der Verbrauchseinheit**: 5b1db88a-8596-4002-8052-347947c26940   
+**Name der Verbrauchseinheit**: S30   
+**Einheit**: Anzahl der Datenträger\*Monat   
+**Hinweise**: Managed Disks Standard – 1.024 GB 
+
+**ID der Verbrauchseinheit**: 7660b45b-b29d-49cb-b816-59f30fbab011   
+**Name der Verbrauchseinheit**: P4   
+**Einheit**: Anzahl der Datenträger\*Monat   
+**Hinweise**: Managed Disks Premium – 32 GB 
+
+**ID der Verbrauchseinheit**: 817007fd-a077-477f-bc01-b876f27205fd   
+**Name der Verbrauchseinheit**: P6   
+**Einheit**: Anzahl der Datenträger\*Monat   
+**Hinweise**: Managed Disks Premium – 64 GB 
+
+**ID der Verbrauchseinheit**: e554b6bc-96cd-4938-a5b5-0da990278519   
+**Name der Verbrauchseinheit**: P10   
+**Einheit**: Anzahl der Datenträger\*Monat   
+**Hinweise**: Managed Disks Premium – 128 GB  
+
+**ID der Verbrauchseinheit**: cdc0f53a-62a9-4472-a06c-e99a23b02907   
+**Name der Verbrauchseinheit**: P15  
+**Einheit**: Anzahl der Datenträger\*Monat   
+**Hinweise**: Managed Disks Premium – 256 GB 
+
+**ID der Verbrauchseinheit**: b9cb2d1a-84c2-4275-aa8b-70d2145d59aa   
+**Name der Verbrauchseinheit**: P20   
+**Einheit**: Anzahl der Datenträger\*Monat   
+**Hinweise**: Managed Disks Premium – 512 GB 
+
+**ID der Verbrauchseinheit**: 06bde724-9f94-43c0-84c3-d0fc54538369   
+**Name der Verbrauchseinheit**: P30   
+**Einheit**: Anzahl der Datenträger\*Monat   
+**Hinweise**: Managed Disks Premium – 1.024 GB 
+
+**ID der Verbrauchseinheit**: 7ba084ec-ef9c-4d64-a179-7732c6cb5e28   
+**Name der Verbrauchseinheit**: ActualStandardDiskSize   
+**Einheit**: GB\*Monat      
+**Hinweise**: Die tatsächliche Größe auf dem Datenträger von Managed Disks Standard  
+
+**ID der Verbrauchseinheit**: daef389a-06e5-4684-a7f7-8813d9f792d5  
+**Name der Verbrauchseinheit**: ActualPremiumDiskSize   
+**Einheit**: GB\*Monat      
+**Hinweise**: Die tatsächliche Größe auf dem Datenträger von Managed Disks Premium 
+
+**ID der Verbrauchseinheit**: 75d4b707-1027-4403-9986-6ec7c05579c8  
+**Name der Verbrauchseinheit**: ActualStandardSnapshotSize   
+**Einheit**: GB\*Monat   
+**Hinweise**: Die tatsächliche Größe auf dem Datenträger von Managed Disks Snapshot.  
+
+**ID der Verbrauchseinheit**: 5ca1cbb9-6f14-4e76-8be8-1ca91547965e   
+**Name der Verbrauchseinheit**: ActualPremiumSnapshotSize   
+**Einheit**: GB\*Monat   
+**Hinweise**: Die tatsächliche Größe auf dem Datenträger von Managed Premium.   
+
 **ID der Verbrauchseinheit**: 5d76e09f-4567-452a-94cc-7d1f097761f0   
 **Name der Verbrauchseinheit**: S4   
 **Einheit**: Anzahl der Datenträger\*Stunden   
-**Hinweise**: Managed Disks Standard – 32 GB 
+**Hinweise**: Managed Disks Standard: 32 GB (veraltet) 
 
 **ID der Verbrauchseinheit**: dc9fc6a9-0782-432a-b8dc-978130457494   
 **Name der Verbrauchseinheit**: S6   
 **Einheit**: Anzahl der Datenträger\*Stunden   
-**Hinweise**: Managed Disks Standard – 64 GB 
+**Hinweise**: Managed Disks Standard: 64 GB (veraltet) 
 
 **ID der Verbrauchseinheit**: e5572fce-9f58-49d7-840c-b168c0f01fff   
 **Name der Verbrauchseinheit**: S10   
 **Einheit**: Anzahl der Datenträger\*Stunden   
-**Hinweise**: Managed Disks Standard – 128 GB 
+**Hinweise**: Managed Disks Standard: 128 GB (veraltet) 
 
 **ID der Verbrauchseinheit**: 9a8caedd-1195-4cd5-80b4-a4c22f9302b8   
 **Name der Verbrauchseinheit**: S15   
 **Einheit**: Anzahl der Datenträger\*Stunden   
-**Hinweise**: Managed Disks Standard – 256 GB 
+**Hinweise**: Managed Disks Standard: 256 GB (veraltet) 
 
 **ID der Verbrauchseinheit**: 5938f8da-0ecd-4c48-8d5a-c7c6c23546be   
 **Name der Verbrauchseinheit**: S20   
 **Einheit**: Anzahl der Datenträger\*Stunden      
-**Hinweise**: Managed Disks Standard – 512 GB 
+**Hinweise**: Managed Disks Standard: 512 GB (veraltet) 
 
 **ID der Verbrauchseinheit**: 7705a158-bd8b-4b2b-b4c2-0782343b81e6   
 **Name der Verbrauchseinheit**: S30   
 **Einheit**: Anzahl der Datenträger\*Stunden   
-**Hinweise**: Managed Disks Standard – 1.024 GB 
-
-**ID der Verbrauchseinheit**: d9aac1eb-a5d1-42f2-b617-9e3ea94fed88   
-**Name der Verbrauchseinheit**: S40   
-**Einheit**: Anzahl der Datenträger\*Stunden   
-**Hinweise**: Managed Disks Standard – 2.048 GB 
-
-**ID der Verbrauchseinheit**: a54899dd-458e-4a40-9abd-f57cafd936a7   
-**Name der Verbrauchseinheit**: S50   
-**Einheit**: Anzahl der Datenträger\*Stunden   
-**Hinweise**: Managed Disks Standard – 4.096 GB 
+**Hinweise**: Managed Disks Standard: 1024 GB (veraltet) 
 
 **ID der Verbrauchseinheit**: 5c105f5f-cbdf-435c-b49b-3c7174856dcc   
 **Name der Verbrauchseinheit**: P4   
 **Einheit**: Anzahl der Datenträger\*Stunden   
-**Hinweise**: Managed Disks Premium – 32 GB 
+**Hinweise**: Managed Disks Premium: 32 GB (veraltet) 
 
 **ID der Verbrauchseinheit**: 518b412b-1927-4f25-985f-4aea24e55c4f   
 **Name der Verbrauchseinheit**: P6   
 **Einheit**: Anzahl der Datenträger\*Stunden   
-**Hinweise**: Managed Disks Premium – 64 GB 
+**Hinweise**: Managed Disks Premium: 64 GB (veraltet) 
 
 **ID der Verbrauchseinheit**: 5cfb1fed-0902-49e3-8217-9add946fd624   
 **Name der Verbrauchseinheit**: P10   
 **Einheit**: Anzahl der Datenträger\*Stunden   
-**Hinweise**: Managed Disks Premium – 128 GB  
+**Hinweise**: Managed Disks Premium: 128 GB (veraltet)  
 
 **ID der Verbrauchseinheit**: 8de91c94-f740-4d9a-b665-bd5974fa08d4   
 **Name der Verbrauchseinheit**: P15  
 **Einheit**: Anzahl der Datenträger\*Stunden   
-**Hinweise**: Managed Disks Premium – 256 GB 
+**Hinweise**: Managed Disks Premium: 256 GB (veraltet) 
 
 **ID der Verbrauchseinheit**: c7e7839c-293b-4761-ae4c-848eda91130b   
 **Name der Verbrauchseinheit**: P20   
 **Einheit**: Anzahl der Datenträger\*Stunden   
-**Hinweise**: Managed Disks Premium – 512 GB 
+**Hinweise**: Managed Disks Premium: 512 GB (veraltet) 
 
 **ID der Verbrauchseinheit**: 9f502103-adf4-4488-b494-456c95d23a9f   
 **Name der Verbrauchseinheit**: P30   
 **Einheit**: Anzahl der Datenträger\*Stunden   
-**Hinweise**: Managed Disks Premium – 1.024 GB 
-
-**ID der Verbrauchseinheit**: 043757fc-049f-4e8b-8379-45bb203c36b1   
-**Name der Verbrauchseinheit**: P40   
-**Einheit**: Anzahl der Datenträger\*Stunden    
-**Hinweise**: Managed Disks Premium – 2.048 GB 
-
-**ID der Verbrauchseinheit**: c0342c6f-810b-4942-85d3-6eaa561b6570   
-**Name der Verbrauchseinheit**: P50   
-**Einheit**: Anzahl der Datenträger\*Stunden   
-**Hinweise**: Managed Disks Premium – 4.096 GB 
+**Hinweise**: Managed Disks Premium: 1024 GB (veraltet) 
 
 **ID der Verbrauchseinheit**: 8a409390-1913-40ae-917b-08d0f16f3c38   
 **Name der Verbrauchseinheit**: ActualStandardDiskSize   
 **Einheit**: Byte\*Stunden      
-**Hinweise**: Die tatsächliche Größe auf dem Datenträger von Managed Disks Standard  
+**Hinweise**: Die tatsächliche Größe auf dem Datenträger von Managed Disks Standard (veraltet)  
 
 **ID der Verbrauchseinheit**: 1273b16f-8458-4c34-8ce2-a515de551ef6  
 **Name der Verbrauchseinheit**: ActualPremiumDiskSize   
 **Einheit**: Byte\*Stunden      
-**Hinweise**: Die tatsächliche Größe auf dem Datenträger von Managed Disks Premium 
+**Hinweise**: Die tatsächliche Größe auf dem Datenträger von Managed Disks Premium (veraltet) 
 
 **ID der Verbrauchseinheit**: 89009682-df7f-44fe-aeb1-63fba3ddbf4c  
 **Name der Verbrauchseinheit**: ActualStandardSnapshotSize   
 **Einheit**: Byte\*Stunden   
-**Hinweise**: Die tatsächliche Größe auf dem Datenträger von Managed Disks Snapshot.  
+**Hinweise**: Die tatsächliche Größe auf dem Datenträger von Managed Disks Snapshot (veraltet) 
 
 **ID der Verbrauchseinheit**: 95b0c03f-8a82-4524-8961-ccfbf575f536   
 **Name der Verbrauchseinheit**: ActualPremiumSnapshotSize   
 **Einheit**: Byte\*Stunden   
-**Hinweise**: Die tatsächliche Größe auf dem Datenträger von Managed Premium.   
+**Hinweise**: Die tatsächliche Größe auf dem Datenträger von Managed Premium (veraltet) 
 
 ### <a name="sql-rp"></a>Sql RP
   

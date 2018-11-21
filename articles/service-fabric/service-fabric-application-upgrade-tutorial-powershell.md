@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: c1005d60df0b1cfd3b24be954ab4ff1b18c8f7a8
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 0f134bdb4f77034dd124027fc960d172d25db721
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44348768"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51515317"
 ---
 # <a name="service-fabric-application-upgrade-using-powershell"></a>Service Fabric-Anwendungsupgrade mithilfe von PowerShell
 > [!div class="op_single_selector"]
@@ -79,13 +79,13 @@ Erstellen Sie jetzt das Projekt, indem Sie in Visual Studio das Projekt **ActorS
 ## <a name="step-3--decide-on-health-policies-and-upgrade-parameters"></a>Schritt 3: Festlegen der Integritätsrichtlinien und Upgradeparameter
 Machen Sie sich mit den [Anwendungsupgradeparametern](service-fabric-application-upgrade-parameters.md) und dem [Upgradevorgang](service-fabric-application-upgrade.md) vertraut, um sich einen fundierten Überblick über die verschiedenen Upgradeparameter, Timeouts und Integritätskriterien zu verschaffen. In dieser exemplarischen Vorgehensweise ist das Evaluierungskriterium für die Dienstintegrität auf die (empfohlenen) Standardwerte festgelegt, wodurch alle Dienste und Instanzen nach dem Upgrade *fehlerfrei* sein sollten.  
 
-Allerdings erhöhen wir *HealthCheckStableDuration* auf 60 Sekunden, sodass die Dienste mindestens 20 Sekunden fehlerfrei sind, bevor zur nächsten Updatedomäne gewechselt wird.  Wir legen außerdem *UpgradeDomainTimeout* auf 1.200 Sekunden und *UpgradeTimeout* auf 3.000 Sekunden fest.
+Allerdings erhöhen wir *HealthCheckStableDuration* auf 180 Sekunden, sodass die Dienste mindestens 120 Sekunden fehlerfrei sind, bevor zur nächsten Updatedomäne gewechselt wird.  Wir legen außerdem *UpgradeDomainTimeout* auf 1.200 Sekunden und *UpgradeTimeout* auf 3.000 Sekunden fest.
 
 Schließlich legen wir *UpgradeFailureAction* auf „Rollback“ fest. Diese Option fordert von Service Fabric an, die Anwendung auf die vorherige Version zurückzusetzen, falls während des Upgrades Probleme erkannt werden. Daher werden beim Starten des Upgrades (in Schritt 4) die folgenden Parameter angegeben:
 
 FailureAction = Rollback
 
-HealthCheckStableDurationSec = 60
+HealthCheckStableDurationSec = 180
 
 UpgradeDomainTimeoutSec = 1200
 

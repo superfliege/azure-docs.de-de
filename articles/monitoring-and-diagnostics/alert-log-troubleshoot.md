@@ -8,44 +8,47 @@ ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 5572c80879584e7f6df650263ae455a134ee4088
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 68488788f73c9662b5d1eaa3b670f2120941defc
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51283596"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51616485"
 ---
 # <a name="troubleshooting-log-alerts-in-azure-monitor"></a>Behandeln von Aktivitätsprotokollwarnungen in Azure Monitor  
-
 ## <a name="overview"></a>Übersicht
-Dieser Artikel zeigt die Behandlung häufiger Probleme beim Einrichten von Protokollwarnungen in Azure Monitor. Außerdem finden Sie Lösungen zu häufig gestellten Fragen bezüglich der Funktionalität oder der Konfiguration von Protokollwarnungen. Der Begriff **Protokollwarnungen** beschreibt Warnungen basierend auf [Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) oder [Application Insights](../application-insights/app-insights-analytics.md), bei denen das Signal eine benutzerdefinierte Abfrage darstellt. Erfahren Sie mehr über Funktionen, Terminologie und Typen von [Protokollwarnungen – Übersicht](monitor-alerts-unified-log.md).
+Dieser Artikel zeigt die Lösung häufiger Probleme beim Einrichten von Protokollwarnungen in Azure Monitor. Er enthält außerdem Lösungen zu häufig gestellten Fragen bezüglich der Funktionalität oder der Konfiguration von Protokollwarnungen. 
+
+Der Begriff **Protokollwarnungen** beschreibt Warnungen, die basierend auf einer benutzerdefinierten Abfrage in [Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) oder [Application Insights](../application-insights/app-insights-analytics.md) ausgelöst werden. Erfahren Sie mehr über Funktionen, Terminologie und Typen unter [Protokollwarnungen – Übersicht](monitor-alerts-unified-log.md).
 
 > [!NOTE]
-> In diesem Artikel keine Fälle berücksichtigt, in denen die Warnungsregel im Azure-Portal als ausgelöst angezeigt wird und die Benachrichtigung über zugeordnete Aktionsgruppen erfolgt. Informationen zu solchen Situationen finden Sie im Artikel zu [Aktionsgruppen](monitoring-action-groups.md).
+> In diesem Artikel werden keine Fälle berücksichtigt, in denen das Azure-Portal eine ausgelöste Warnungsregel und eine durchgeführte Benachrichtigung über zugeordnete Aktionsgruppen anzeigt. Informationen zu solchen Situationen finden Sie im Artikel zu [Aktionsgruppen](monitoring-action-groups.md).
 
 
 ## <a name="log-alert-didnt-fire"></a>Protokollwarnung wurde nicht ausgelöst.
 
-Im Folgenden finden Sie einige häufige Gründe, warum eine konfigurierte [Protokollwarnungsregel in Azure Monitor](alert-log.md) bei der Anzeige in [Azure-Warnungen](monitoring-alerts-managing-alert-states.md) nicht ausgelöst wird, obwohl Sie eine Auslösung erwarten. 
+Im Folgenden finden Sie einige häufige Gründe, warum ein konfigurierter Status einer [Protokollwarnungsregel in Azure Monitor](alert-log.md) nicht wie erwartet [als *Ausgelöst* angezeigt wird](monitoring-alerts-managing-alert-states.md). 
 
 ### <a name="data-ingestion-time-for-logs"></a>Datenerfassungszeit für Protokolle
-Protokollwarnungen funktionieren, indem in regelmäßigen Abständen vom Kunden bereitgestellte Abfragen anhand von [Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) oder [Application Insights](../application-insights/app-insights-analytics.md) ausgeführt werden. In beiden Fällen wird auf Analytics zurückgegriffen, sodass große Mengen von Protokolldaten verarbeitet und Funktionen zu diesen bereitgestellt werden können. Da beim Log Analytics-Dienst viele Terabyte an Daten von Tausenden Kunden und aus verschiedenen Quellen auf der ganzen Welt verarbeitet werden, ist der Dienst anfällig für zeitliche Verzögerungen. Weitere Informationen finden Sie unter [Datenerfassungszeit in Log Analytics](../log-analytics/log-analytics-data-ingestion-time.md).
+Die Protokollwarnung führt Ihre Abfrage in regelmäßigen Abständen basierend auf [Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) oder [Application Insights](../application-insights/app-insights-analytics.md) aus. Da Log Analytics viele Terabyte an Daten von Tausenden Kunden und aus verschiedenen Quellen auf der ganzen Welt verarbeitet, ist der Dienst anfällig für unterschiedliche zeitliche Verzögerungen. Weitere Informationen finden Sie unter [Datenerfassungszeit in Log Analytics](../log-analytics/log-analytics-data-ingestion-time.md).
 
-Um Verzögerungen bei der Datenerfassung, die in Log Analytics- oder Application Insights-Protokollen auftreten können, zu vermeiden, wird bei Protokollwarnungen gewartet und die Erfassung nach einiger Zeit wiederholt, wenn sich herausstellt, dass die Daten für den Warnungszeitraum noch nicht erfasst wurden. Für die Protokollwarnungen nimmt die Wartezeit exponentiell zu, um sicherzustellen, dass ausreichend lange gewartet wird, bis Daten von Log Analytics erfasst werden. Da die von Ihrer Protokollwarnungsregel abgefragten Protokolle von Verarbeitungsverzögerungen betroffen sind, werden die Protokollwarnungen erst ausgelöst, nachdem die Daten nach der Verarbeitung in Log Analytics verfügbar sind und eine exponentielle Zeit verstrichen ist, in der der Protokollwarnungsdienst mehrere Wiederholungen durchgeführt hat.
+Um Verzögerungen bei der Datenerfassung zu verringern, wartet das System und wiederholt die Warnungsabfrage mehrere Male, falls die benötigten Daten noch nicht erfasst wurden. Für das System ist eine exponentiell zunehmende Wartezeit festgelegt. Die Protokollwarnung wird erst ausgelöst, sobald die Daten verfügbar sind. Ursache für die Verzögerung kann also eine langsame Protokolldatenerfassung sein. 
 
 ### <a name="incorrect-time-period-configured"></a>Falscher Zeitraum konfiguriert
 Wie im Artikel zur [Terminologie für Protokollwarnungen](monitor-alerts-unified-log.md#log-search-alert-rule---definition-and-types) beschrieben, steht der in der Konfiguration angegebene Zeitraum für den Zeitbereich der Abfrage. Die Abfrage gibt nur Datensätze zurück, die innerhalb dieses Zeitbereichs erstellt wurden. Mit dem Zeitraum werden die Daten eingeschränkt, die für eine Protokollabfrage abgerufen werden, um Missbrauch zu verhindern, und alle in einer Protokollabfrage verwendeten Zeitbefehle (z.B. „ago“) werden umgangen. 
-*Wenn der Zeitraum beispielsweise auf 60 Minuten festgelegt ist und die Abfrage um 13:15 Uhr ausgeführt wird, werden nur Datensätze zurückgegeben, die zwischen 12:15 und 13:15 Uhr erstellt wurden, um die Protokollabfrage auszuführen. Falls für die Protokollabfrage ein Zeitbefehl wie „ago (1d)“ verwendet wird, wird die Protokollabfrage nur für Daten zwischen 12:15 und 13:15 Uhr ausgeführt, als ob nur Daten für die letzten 60 Minuten vorhanden wären. Und nicht Daten für sieben Tage, wie in der Protokollabfrage angegeben.*
+*Wenn der Zeitraum beispielsweise auf 60 Minuten festgelegt ist und die Abfrage um 13:15 Uhr ausgeführt wird, werden nur Datensätze, die zwischen 12:15 und 13:15 Uhr erstellt wurden, für die Protokollabfrage verwendet. Wenn die Protokollabfrage einen Zeitbefehl wie *ago (1d)* verwendet, nutzt die Abfrage nach wie vor nur Daten zwischen 12:15 und 13:15 Uhr, da der Zeitraum auf dieses Intervall festgelegt ist.*
 
-Überprüfen Sie basierend auf Ihrer Abfragelogik, ob in der Konfiguration ein angemessener Zeitraum angegeben wurde. Wird das Protokoll im bereits erwähnten Beispiel „ago (1d)“ verwendet (mit grünen Marker dargestellt), sollte der Zeitraum auf 24 Stunden oder 1.440 Minuten (in Rot dargestellt) festgelegt werden, um sicherzustellen, dass die bereitgestellte Abfrage wie geplant ausgeführt wird.
-    ![Zeitraum](./media/monitor-alerts-unified/LogAlertTimePeriod.png)
+Überprüfen Sie also, ob dieser Zeitraum in der Konfiguration mir Ihrer Abfrage übereinstimmt. Wird für die Protokollabfrage aus dem bereits erwähnten Beispiel *ago (1d)* verwendet (mit grünem Marker dargestellt), sollte der Zeitraum auf 24 Stunden oder 1440 Minuten (in Rot dargestellt) festgelegt werden, um sicherzustellen, dass die Abfrage wie geplant ausgeführt wird.
+
+![Zeitraum](./media/monitor-alerts-unified/LogAlertTimePeriod.png)
 
 ### <a name="suppress-alerts-option-is-set"></a>Option „Warnungen unterdrücken“ ist festgelegt.
-Wie in Schritt 8 dieses Artikels zum [Erstellen einer Protokollwarnungsregel im Azure-Portal](alert-log.md#managing-log-alerts-from-the-azure-portal) beschrieben, steht für Protokollwarnungen eine Option zur Verfügung, um die automatische Unterdrückung der Warnungsregel zu konfigurieren und Benachrichtigung/Trigger für einen bestimmten Zeitraum zu verhindern. Die Option zum Unterdrücken von Warnungen bewirkt, dass Protokollwarnungen ausgeführt werden, aber die Aktionsgruppe für die angegebene Zeit in der Option **Warnungen unterdrücken** nicht ausgelöst wird. Der Benutzer hat daher möglicherweise den Eindruck, dass die Warnung nicht ausgelöst wurde, obwohl sie entsprechend der Konfiguration unterdrückt wurde.
-    ![Warnungen unterdrücken](./media/monitor-alerts-unified/LogAlertSuppress.png)
+Wie in Schritt 8 des Artikels über das [Erstellen einer Protokollwarnungsregel im Azure-Portal](alert-log.md#managing-log-alerts-from-the-azure-portal) beschrieben, bieten Protokollwarnungen die Option **Warnungen unterdrücken**, um Auslöse- und Benachrichtigungsaktionen für einen konfigurierten Zeitraum zu unterdrücken. Daher könnten Sie annehmen, dass eine Warnung nicht ausgelöst wurde, obwohl dies eigentlich geschehen ist, sie aber unterdrückt wurde.  
+
+![Warnungen unterdrücken](./media/monitor-alerts-unified/LogAlertSuppress.png)
 
 ### <a name="metric-measurement-alert-rule-is-incorrect"></a>Warnungsregel für metrische Maßeinheit ist falsch.
-Der Typ „Metrische Maßeinheit“ für Protokollwarnungsregeln ist ein Untertyp von Protokollwarnungen, der spezielle Eigenschaften aufweist, jedoch auch Einschränkungen bei der Abfragesyntax der Warnung aufweist. Protokollwarnungsregeln vom Typ „Metrische Maßeinheit“ erfordern, dass die Ausgabe der Warnungsabfrage eine metrische Zeitreihe angibt: eine Tabelle mit voneinander abgehobenen gleich langen Zeiträumen zusammen mit entsprechenden berechneten Werten für AggregatedValue. Darüber hinaus können Benutzer in die Tabelle neben AggregatedValue zusätzliche Variablen wie Computer, Knoten usw. aufnehmen, anhand derer die Daten in der Tabelle sortiert werden können.
+**Protokollwarnungen vom Typ „Metrische Maßeinheit“** sind ein Untertyp von Protokollwarnungen, die spezielle Funktionen und eine eingeschränkte Warnungsabfragesyntax aufweisen. Eine Protokollwarnungsregel vom Typ „Metrische Maßeinheit“ erfordert, dass die Ausgabe der Abfrage eine metrische Zeitreihe ist: eine Tabelle mit eindeutigen gleich langen Zeiträumen zusammen mit entsprechenden aggregierten Werten. Darüber hinaus können Benutzer in die Tabelle neben AggregatedValue zusätzliche Variablen aufnehmen. Diese Variablen können zum Sortieren der Tabelle verwendet werden. 
 
 Beispiel: Eine Protokollwarnungsregel vom Typ „Metrische Maßeinheit“ wurde folgendermaßen konfiguriert:
 - Abfrage: `search *| summarize AggregatedValue = count() by $table, bin(timestamp, 1h)`  
@@ -54,9 +57,9 @@ Beispiel: Eine Protokollwarnungsregel vom Typ „Metrische Maßeinheit“ wurde 
 - Warnungslogik: drei aufeinanderfolgende Sicherheitsverletzungen
 - „Aggregate Upon“: $table
 
-Nach dem Befehl wurde „summarize … by“ mit zwei Variablen verwendet: timestamp und $table. Der Warnungsdienst wählt $table für „Aggregate Upon“ aus, um die Ergebnistabelle nach dem Feld $table zu sortieren, wie unten dargestellt. Nun wird AggregatedValue mehrmals für jeden Tabellentyp (z.B. availabilityResults) überprüft, um festzustellen, ob es mindestens drei aufeinanderfolgende Sicherheitsverletzungen gab.
+Da der Befehl *summarize … by* umfasst und zwei Variablen (timestamp und $table) angibt, wählt das System $table für „Aggregate Upon“ aus. Die Ergebnistabelle wird nach dem Feld *$table* sortiert, wie unten dargestellt. Dann wird AggregatedValue mehrmals für jeden Tabellentyp (z.B. availabilityResults) überprüft, um festzustellen, ob es mindestens drei aufeinanderfolgende Sicherheitsverletzungen gab.
 
-   ![Abfrageausführung für „Metrische Maßeinheit“ mit mehreren Werten](./media/monitor-alerts-unified/LogMMQuery.png)
+![Abfrageausführung für „Metrische Maßeinheit“ mit mehreren Werten](./media/monitor-alerts-unified/LogMMQuery.png)
 
 Da „Aggregate Upon“ den Wert „$table“ hat, werden die Daten nach der Spalte „$table“ sortiert (in Rot dargestellt), dann werden sie gruppiert und auf Typen des Felds „Aggregate Upon“ untersucht, die „$table“ entsprechen. Beispiel: Werte für availabilityResults werden als ein Plot/eine Einheit betrachtet (in Orange dargestellt). In diesem Plot bzw. dieser Entität des Werts sucht der Warnungsdienst nach drei aufeinanderfolgenden Sicherheitsverletzungen (in Grün dargestellt), bei denen eine Warnung für den Tabellenwert „availabilityResults“ ausgelöst wird. Wenn bei einem anderen Wert von „$table“ drei aufeinanderfolgende Sicherheitsverletzungen erkannt werden, wird ebenso eine andere Warnungsbenachrichtigungen ausgelöst, wobei der Warnungsdienst automatisch die Werte in einem Plot bzw. einer Entität nach Zeit sortiert (in Orange dargestellt).
 
@@ -85,4 +88,5 @@ Der Protokollwarnungsdienst führt genau die Angabe im Abschnitt **Query to be e
 
 * Erfahren Sie mehr über [Protokollwarnungen in Azure-Warnungen](monitor-alerts-unified-log.md).
 * Weitere Informationen zu [Application Insights](../application-insights/app-insights-analytics.md)
-* Erfahren Sie mehr über [Log Analytics](../log-analytics/log-analytics-queries.md). 
+* Erfahren Sie mehr über [Log Analytics](../log-analytics/log-analytics-overview.md). 
+

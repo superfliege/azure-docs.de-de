@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: fe7d18cdfa88988e1c7dda7f1120d4750fa52e8c
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: faf3cc6c333ee8f8757ec24ecc8ea8299657c4a7
+ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48269427"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51578483"
 ---
 # <a name="about-technical-profiles-in-azure-active-directory-b2c-custom-policies"></a>Informationen zu technischen Profilen in benutzerdefinierten Azure Active Directory B2C-Richtlinien
 
@@ -38,8 +38,7 @@ Ein technisches Profil ermöglicht die folgenden Szenarien:
 - [SAML2](saml-technical-profile.md) – Verbund mit einem beliebigen Identitätsanbieter für das SAML-Protokoll.
 - [Selbstbestätigt](self-asserted-technical-profile.md) – Interaktion mit dem Benutzer. Beispiel: Sammeln der Anmeldeinformationen des Benutzers für die Anmeldung, Rendern der Anmeldeseite oder Kennwortzurücksetzung.
 - **WsFed** – Verbund mit einem beliebigen Identitätsanbieter für das WsFed-Protokoll. 
-- **Sitzungsverwaltung** – Verarbeiten verschiedener Typen von Sitzungen. 
-- **User Journey-Kontextanbieter**
+- [Sitzungsverwaltung](active-directory-b2c-reference-sso-custom.md) – Verarbeiten verschiedener Typen von Sitzungen. 
 - **Application Insights**
 
 ## <a name="technical-profile-flow"></a>Fluss technischer Profile
@@ -56,7 +55,7 @@ Allen Typen von technischen Profilen liegt das gleiche Konzept zugrunde. Sie sen
     - Erstellen oder aktualisieren Sie das Benutzerkonto.
     - Die MFA-Textnachricht wird gesendet und überprüft.
 4. **ValidationTechnicalProfiles** – Für ein [selbstbestätigtes technisches Profil](self-asserted-technical-profile.md) können Sie eine Eingabe für ein [technisches Validierungsprofil](validation-technical-profile.md) aufrufen. Das technische Validierungsprofil überprüft die vom Benutzer profilierten Daten und gibt eine Fehlermeldung oder „OK“ mit oder ohne Ausgabeansprüche zurück. Beispiel: Bevor Azure AD B2C ein neues Konto erstellt, wird überprüft, ob der Benutzer bereits in den Verzeichnisdiensten vorhanden ist. Sie können ein technisches REST-API-Profil aufrufen, um Ihre eigene Geschäftslogik hinzuzufügen.<p>Der Umfang der Ausgabeansprüche eines technischen Validierungsprofils ist auf das technische Profil, das das technische Validierungsprofil aufruft, und andere technische Validierungsprofile unter demselben technischen Profil beschränkt. Wenn Sie die Ausgabeansprüche im nächsten Orchestrierungsschritt verwenden möchten, müssen Sie die Ausgabeansprüche zu dem technischen Profil hinzufügen, das das technische Validierungsprofil aufruft.
-5. **OutputClaims** – Ansprüche werden an den Anspruchsbehälter zurückgegeben. Sie können diese Ansprüche im nächsten Orchestrierungsschritt bzw. Transformationen von Ausgabeansprüchen verwenden.
+5. **OutputClaims**: Ansprüche werden an den Anspruchsbehälter zurückgegeben. Sie können diese Ansprüche im nächsten Orchestrierungsschritt bzw. Transformationen von Ausgabeansprüchen verwenden.
 6. **OutputClaimsTransformations** – Die Eingabeansprüche jeder [Ausgabeanspruchstransformation](claimstransformations.md) werden dem Anspruchsbehälter entnommen. Bei den Ausgabeansprüchen des technischen Profils aus den vorherigen Schritten kann es sich um Eingabeansprüche einer Ausgabeanspruchstransformation handeln. Nach der Ausführung werden die Ausgabeansprüche wieder im Anspruchsbehälter abgelegt. Bei den Ausgabeansprüchen einer Ausgabeanspruchstransformation kann es sich auch um Eingabeansprüche einer nachfolgenden Ausgabeanspruchstransformation handeln.
 7. **Sitzungsverwaltung für einmaliges Anmelden (Single Sign-On, SSO)** - [Die SSO-Sitzungsverwaltung](active-directory-b2c-reference-sso-custom.md) steuert die Interaktion mit einem Benutzer, nachdem der Benutzer bereits authentifiziert wurde. Der Administrator kann z. B. steuern, ob die Auswahl von Identitätsanbietern angezeigt wird, oder ob lokale Kontodetails erneut eingegeben werden müssen.
 

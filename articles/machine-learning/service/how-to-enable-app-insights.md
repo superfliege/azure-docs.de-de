@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 ms.author: marthalc
 author: marthalc
 ms.date: 10/01/2018
-ms.openlocfilehash: fa425a5ecd8cf8f4c7b3516534b4c4f0f4257850
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: 285486d5fe641d49ee21d7340b62f83d75862553
+ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50085341"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51578296"
 ---
 # <a name="monitor-your-azure-machine-learning-models-in-production-with-application-insights"></a>Überwachen Sie Ihre Azure Machine Learning-Modelle in Produktionsumgebungen mit Application Insights
 
@@ -24,6 +24,10 @@ In diesem Artikel erfahren Sie, wie Sie Azure Application Insights für Ihren Az
 * Ausnahmen.
 
 [Erfahren Sie mehr über Application Insights](../../application-insights/app-insights-overview.md). 
+
+>[!NOTE]
+> Der Code in diesem Artikel wurde mit Version 0.1.74 des Azure Machine Learning SDK getestet.
+
 
 ## <a name="prerequisites"></a>Voraussetzungen
 * Ein Azure-Abonnement. Wenn Sie keins besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
@@ -109,8 +113,11 @@ Verwenden Sie den folgenden Code, um Application Insights zu deaktivieren:
 ## <a name="evaluate-data"></a>Evaluieren von Daten
 Die Daten Ihres Diensts werden in Ihrem Application Insights-Konto in der gleichen Ressourcengruppe gespeichert, in dem sich auch Ihr Azure Machine Learning-Dienst befindet.
 So zeigen Sie sie an:
-1. Wechseln Sie im [Azure-Portal](https://portal.azure.com) zu Ihrer Ressourcengruppe, und navigieren Sie zu Ihrer Application Insights-Ressource. 
-2. Auf der Registerkarte **Übersicht** wird der Standardsatz Metriken für Ihren Dienst angezeigt.
+1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem Machine Learning Service-Arbeitsbereich, und klicken Sie auf den Link „Application Insights“.
+
+    [![AppInsightsLoc](media/how-to-enable-app-insights/AppInsightsLoc.png)](./media/how-to-enable-app-insights/AppInsightsLoc.png#lightbox)
+
+1. Wählen Sie die Registerkarte **Übersicht** aus, um einen Standardsatz von Metriken für Ihren Dienst anzuzeigen.
 
    [![Übersicht](media/how-to-enable-app-insights/overview.png)](./media/how-to-enable-app-insights/overview.png#lightbox)
 
@@ -130,3 +137,7 @@ Im Notebook [00.Getting Started/13.enable-app-insights-in-production-service.ipy
 
 ## <a name="next-steps"></a>Nächste Schritte
 Sie können Daten auch in Ihren Modellen in Produktionsumgebungen sammeln. Lesen Sie den Artikel [Sammeln von Daten für Modelle in der Produktion](how-to-enable-data-collection.md). 
+
+
+## <a name="other-references"></a>Andere Referenzen
+* [Azure Monitor für Container](https://docs.microsoft.com/azure/monitoring/monitoring-container-insights-overview?toc=%2fazure%2fmonitoring%2ftoc.json)

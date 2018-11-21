@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: article
-ms.date: 09/25/2018
+ms.date: 11/08/2018
 ms.author: tulasim
-ms.openlocfilehash: 4c96eb5b49c72fe9bb5ab977c773407889c56805
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: e6c654b00ee6be0ed87feb0fb2a5ccba38e5cbe4
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50213303"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51624876"
 ---
 # <a name="data-sources-for-qna-maker-content"></a>Datenquellen für QnA Maker-Inhalt
 
@@ -26,9 +26,9 @@ Die folgende Tabelle fasst die Inhaltstypen und Dateiformate zusammen, die von Q
 |Quellentyp|Inhaltstyp| Beispiele|
 |--|--|--|
 |URL|FAQs (flach, mit Abschnitten oder mit einer Themenstartseite)|[Einfache FAQ](https://docs.microsoft.com/azure/cognitive-services/qnamaker/faqs), [FAQ mit Links](https://www.microsoft.com/software-download/faq), [FAQ mit Themenstartseite](https://support.microsoft.com/products/windows?os=windows-10)|
-|PDF/DOC|FAQs, Produkthandbücher, Broschüren, Artikel, Flyerrichtlinie, Supporthandbuch, strukturierte QnA usw.|[Strukturiertes QnA.doc](https://qnamakerstore.blob.core.windows.net/qnamakerdata/docs/Bot%20Service%20Sample%20FAQ.docx), [Beispielprodukthandbuch.pdf](https://download.microsoft.com/download/2/9/B/29B20383-302C-4517-A006-B0186F04BE28/surface-pro-4-user-guide-EN.pdf), [semistrukturiertes Beispiel.doc](https://qnamakerstore.blob.core.windows.net/qnamakerdata/docs/Manage%20Azure%20Blob%20Storage.docx), [Beispielewhitepaper.pdf](https://azure.microsoft.com/mediahandler/files/resourcefiles/azure-stack-wortmann-bring-the-power-of-the-public-cloud-into-your-data-center/Azure_Stack_Wortmann_Bring_the_Power_of_the_Public_Cloud_into_Your_Data_Center.pdf)|
-|Excel|Strukturierte QnA-Datei (einschließlich RTF-, HTML-Unterstützung)|[QnA-Beispiel-FAQ.xls](https://qnamakerstore.blob.core.windows.net/qnamakerdata/docs/QnA%20Maker%20Sample%20FAQ.xlsx)|
-|TXT/TSV|Strukturierte QnA-Datei|[Beispielgeplauder.tsv](https://github.com/Microsoft/BotBuilder-PersonalityChat/blob/master/CSharp/Datasets/scenario_responses_the_friend.tsv)|
+|PDF/DOC|FAQs, Produkthandbücher, Broschüren, Artikel, Flyerrichtlinie, Supporthandbuch, strukturierte QnA usw.|[Strukturiertes QnA.doc](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/semi-structured.docx), [Beispielprodukthandbuch.pdf](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/product-manual.pdf), [semistrukturiertes Beispiel.doc](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/semi-structured.docx), [Beispielewhitepaper.pdf](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/white-paper.pdf)|
+|Excel|Strukturierte QnA-Datei (einschließlich RTF-, HTML-Unterstützung)|[QnA-Beispiel-FAQ.xls](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/QnA%20Maker%20Sample%20FAQ.xlsx)|
+|TXT/TSV|Strukturierte QnA-Datei|[Beispielgeplauder.tsv](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/Scenario_Responses_Friendly.tsv)|
 
 ## <a name="faq-urls"></a>FAQ-URLs
 
@@ -131,6 +131,10 @@ Beim Importieren einer Wissensdatenbank wird der Inhalt der vorhandenen Wissensd
 ## <a name="editorially-add-to-knowledge-base"></a>Redaktionelles Hinzufügen zur Wissensdatenbank
 
 Wenn Sie nicht über bereits vorhandene Inhalte zum Füllen der Wissensdatenbank verfügen, können QnAs auch redaktionell zur QnA Maker-Wissensdatenbank hinzufügen. Informationen zum Aktualisieren Ihrer Wissensdatenbank finden Sie [hier](../How-To/edit-knowledge-base.md).
+
+## <a name="formatting-considerations"></a>Überlegungen zur Formatierung
+
+Nach dem Importieren einer Datei oder URL wird diese in Markdown konvertiert und in diesem Format gespeichert. Sollten Links in Ihren Dateien und URLs nicht ordnungsgemäß konvertiert werden, müssen die Fragen und Antworten auf der Seite **Bearbeiten** bearbeitet werden. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

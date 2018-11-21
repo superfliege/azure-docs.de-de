@@ -13,46 +13,41 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: report-monitor
-ms.date: 05/31/2018
+ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: ce06c72c9974b4887cc441344fd755bfd156a1ca
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: b6f8d3c3017a914f261c7e4f8bbe0e42d1edf8a9
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50914718"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51622430"
 ---
-# <a name="sign-in-activity-report-error-codes-in-the-azure-active-directory-portal"></a>Fehlercodes des Berichts mit den Anmeldeaktivitäten im Azure Active Directory-Portal
+# <a name="sign-in-activity-report-error-codes"></a>Fehlercodes des Berichts mit den Anmeldeaktivitäten 
 
-Mit den Informationen, die vom Bericht zur Benutzeranmeldung geliefert werden, können Sie beispielsweise Antworten auf folgende Fragen ermitteln:
+Mit den Informationen, die vom [Bericht zu Benutzeranmeldungen](concept-sign-ins.md) geliefert werden, können Sie beispielsweise Antworten auf folgende Fragen ermitteln:
 
-- Wer hat sich mit Azure Active Directory angemeldet?
-- Für welche Apps wurde die Anmeldung durchgeführt?
-- Für welche Anmeldungen sind Fehler aufgetreten, und was waren die Gründe dafür?
+- Wer hat sich bei meiner Anwendung angemeldet?
+- Bei welchen Anwendungen haben sich Benutzer angemeldet?
+- Welche Anmeldeversuche sind warum fehlgeschlagen?
 
-In diesem Artikel sind die Fehlercodes und die dazugehörigen Beschreibungen aufgeführt. 
+Wenn eine Anmeldung fehlschlägt, sehen Sie einen Fehlercode, der dem Fehler entspricht. In diesem Artikel werden die Fehlercodes und deren Beschreibungen ggf. zusammen mit einer empfohlenen Vorgehensweise aufgeführt. 
 
 ## <a name="how-can-i-display-failed-sign-ins"></a>Wie kann ich Anmeldungen anzeigen, für die Fehler aufgetreten sind? 
 
-Ihr erster Einstiegspunkt für alle Daten zu Anmeldeaktivitäten ist **[Anmeldungen](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/SignIns)** im Abschnitt **Aktivität** von **Azure Active**.
-
+Navigieren Sie im [Azure-Portal](https://portal.azure.com) zum [Anmeldebericht](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/SignIns).
 
 ![Anmeldeaktivität](./media/reference-sign-ins-error-codes/61.png "Anmeldeaktivität")
 
-Im Bericht zu den Anmeldungen können Sie alle fehlgeschlagenen Anmeldungen anzeigen, indem Sie unter **Fehler** die Option **Anmeldestatus** wählen.
+Filtern Sie den Bericht, um alle fehlgeschlagenen Anmeldungen anzuzeigen, indem Sie aus dem Dropdownfeld **Anmeldestatus** die Option **Fehler** auswählen.
 
 ![Anmeldeaktivität](./media/reference-sign-ins-error-codes/06.png "Anmeldeaktivität")
 
-Wenn Sie in der angezeigten Liste auf einen Eintrag klicken, wird das Blatt **Aktivitätsdetails: Anmeldungen** geöffnet. Diese Ansicht enthält alle Details, die von Azure Active Directory zu Anmeldungen nachverfolgt werden, z.B. der **Code des Anmeldefehlers** und eine **Fehlerursache**.
+Wenn Sie in der gefilterten Liste einen Eintrag auswählen, wird das Blatt **Aktivitätsdetails: Anmeldungen** geöffnet. Diese Ansicht enthält weitere Informationen über das fehlgeschlagene Anmeldeereignis, einschließlich des **Fehlercodes der Anmeldung** und der **Fehlerursache**.
 
 ![Anmeldeaktivität](./media/reference-sign-ins-error-codes/05.png "Anmeldeaktivität")
 
-
-Als Alternative zur Verwendung des Azure-Portals für den Zugriff auf Daten zu Anmeldungen können Sie auch die [Berichterstellungs-API](concept-reporting-api.md) verwenden.
-
-
-Der folgende Abschnitt enthält eine vollständige Übersicht über alle möglichen Fehler und die dazugehörigen Beschreibungen. 
+Sie können auch programmgesteuert mithilfe der [Berichterstellungs-API](concept-reporting-api.md) auf die Anmeldedaten zugreifen.
 
 ## <a name="error-codes"></a>Fehlercodes
 
@@ -67,17 +62,17 @@ Der folgende Abschnitt enthält eine vollständige Übersicht über alle möglic
 |40009|Es besteht ein Problem mit Ihrem Verbundidentitätsanbieter. Wenden Sie sich an Ihren Identitätsanbieter, um das Problem zu beheben.|
 |40014|Es besteht ein Problem mit Ihrem Verbundidentitätsanbieter. Wenden Sie sich an Ihren Identitätsanbieter, um das Problem zu beheben.|
 |50000|Es besteht ein Problem mit unserem Anmeldedienst. [Öffnen Sie ein Supportticket](../fundamentals/active-directory-troubleshooting-support-howto.md), um dieses Problem zu beheben.|
-|50001|Der Dienstprinzipalname wurde unter diesem Mandanten nicht gefunden. Dies kann passieren, wenn die Anwendung nicht vom Administrator des Mandanten installiert wurde. Es kann auch sein, dass der Ressourcenprinzipal nicht im Verzeichnis gefunden wurde oder ungültig ist.|
+|50001|Der Dienstprinzipalname wurde unter diesem Mandanten nicht gefunden. Dies kann auftreten, wenn die Anwendung nicht vom Administrator des Mandanten installiert wurde oder wenn der Ressourcenprinzipal im Verzeichnis nicht gefunden wurde oder ungültig ist.|
 |50002|Fehler bei der Anmeldung aufgrund von eingeschränktem Proxyzugriff auf dem Mandanten. Falls es sich um Ihre eigene Mandantenrichtlinie handelt, können Sie die Einschränkungseinstellungen des Mandanten ändern, um dieses Problem zu beheben.|
-|50003|Fehler bei der Anmeldung aufgrund eines fehlenden Signaturschlüssels oder Zertifikats. Der Grund hierfür kann sein, dass in der Anwendung kein Signaturschlüssel konfiguriert wurde. Sehen Sie sich die Lösungen unter [https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#certificate-or-key-not-configured](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#certificate-or-key-not-configured) an. Falls weiterhin Probleme auftreten, können Sie sich an den Besitzer oder Administrator der Anwendung wenden.|
-|50005|Der Benutzer hat versucht, sich über eine Plattform an einem Gerät anzumelden, die aufgrund einer Richtlinie für bedingten Zugriff nicht unterstützt wird.|
-|50006| Fehler bei der Signaturüberprüfung aufgrund einer ungültigen Signatur. Sehen Sie sich die Lösung unter [https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery) an. Falls weiterhin Probleme auftreten, können Sie sich an den Besitzer oder Administrator der App wenden.|
+|50003|Fehler bei der Anmeldung aufgrund eines fehlenden Signaturschlüssels oder Zertifikats. Der Grund hierfür kann sein, dass in der Anwendung kein Signaturschlüssel konfiguriert wurde. Sehen Sie sich die Lösungen unter [https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#certificate-or-key-not-configured](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#certificate-or-key-not-configured) an. Wenn das Problem weiterhin besteht, wenden Sie sich an den Anwendungsbesitzer oder den Anwendungsadministrator.|
+|50005|Der Benutzer hat versucht, sich über eine Plattform an einem Gerät anzumelden, die aufgrund einer Richtlinie für bedingten Zugriff derzeit nicht unterstützt wird.|
+|50006| Fehler bei der Signaturüberprüfung aufgrund einer ungültigen Signatur. Sehen Sie sich die Lösung unter [https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery) an. Wenn das Problem weiterhin besteht, wenden Sie sich an den Anwendungsbesitzer oder den Anwendungsadministrator.|
 |50007|Das Partnerverschlüsselungszertifikat für diese Anwendung wurde nicht gefunden. [Öffnen Sie ein Supportticket](../fundamentals/active-directory-troubleshooting-support-howto.md) bei Microsoft, um dieses Problem zu beheben.|
 |50008|Die SAML-Assertion fehlt oder wurde im Token falsch konfiguriert. Wenden Sie sich an Ihren Verbundanbieter.|
-|50010|Fehler bei der Überprüfung des Benutzergruppen-URI für die Anwendung, da keine Tokenzielgruppen konfiguriert wurden. Wenden Sie sich an den Besitzer der Anwendung.|
-|50011|Die Antwortadresse fehlt, ist falsch konfiguriert oder stimmt nicht mit den für die Anwendung konfigurierten Antwortadressen überein. Versuchen Sie es mit der Lösung, die unter [https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#the-reply-address-does-not-match-the-reply-addresses-configured-for-the-application](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#the-reply-address-does-not-match-the-reply-addresses-configured-for-the-application) angegeben ist. Falls weiterhin Probleme auftreten, können Sie sich an den Besitzer oder Administrator der App wenden.|
+|50010|Fehler bei der Überprüfung des Benutzergruppen-URI für die Anwendung, da keine Tokenzielgruppen konfiguriert wurden. Wenden Sie sich zur Lösung an den Anwendungsbesitzer.|
+|50011|Die Antwortadresse fehlt, ist falsch konfiguriert oder stimmt nicht mit den für die Anwendung konfigurierten Antwortadressen überein. Versuchen Sie es mit der Lösung, die unter [https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#the-reply-address-does-not-match-the-reply-addresses-configured-for-the-application](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#the-reply-address-does-not-match-the-reply-addresses-configured-for-the-application) angegeben ist. Wenn das Problem weiterhin besteht, wenden Sie sich an den Anwendungsbesitzer oder den Anwendungsadministrator.|
 |50012| Dies ist eine generische Fehlermeldung, die angibt, dass ein Authentifizierungsfehler aufgetreten ist. Dies kann z.B. durch fehlende oder ungültige Anmeldeinformationen oder Ansprüche in der Anforderung verursacht werden. Stellen Sie sicher, dass die Anforderung mit den richtigen Anmeldeinformationen und Ansprüchen gesendet wird. |
-|50013|Die Assertion ist aus verschiedenen Gründen ungültig: - Der Aussteller des Tokens stimmt nicht mit der API-Version innerhalb des gültigen Zeitraums überein. - Ist abgelaufen. - Ist falsch formatiert. - Aktualisierungstoken in der Assertion ist kein primäres Aktualisierungstoken.|
+|50013|Die Assertion ist aus verschiedenen Gründen ungültig. Beispiele: Der Aussteller des Tokens stimmt nicht mit der API-Version innerhalb des gültigen Zeitraums überein, das Token ist abgelaufen oder falsch formatiert, oder das Aktualisierungstoken in der Assertion ist kein primäres Aktualisierungstoken.|
 |50017|Fehler bei der Überprüfung der Zertifizierung aus den folgenden Gründen:<ul><li>Das Ausstellerzertifikat kann in der Liste mit den vertrauenswürdigen Zertifikaten nicht gefunden werden.</li><li>Das erwartete CrlSegment-Element kann nicht gefunden werden.</li><li>Das Ausstellerzertifikat kann in der Liste mit den vertrauenswürdigen Zertifikaten nicht gefunden werden.</li><li>Delta-Zertifikatsperrlisten-Verteilungspunkt wurde ohne entsprechenden Zertifikatsperrlisten-Verteilungspunkt konfiguriert.</li><li>Aufgrund einer Zeitüberschreitung können keine gültigen Zertifikatsperrlisten-Segmente abgerufen werden.</li><li>Die Zertifikatsperrliste kann nicht heruntergeladen werden.</li></ul>Wenden Sie sich an den Administrator des Mandanten.|
 |50020|Der Benutzer ist aus einem der folgenden Gründe nicht autorisiert.<ul><li>Der Benutzer versucht, für die Anmeldung ein MSA-Konto mit dem v1-Endpunkt zu verwenden.</li><li>Der Benutzer ist im Mandanten nicht vorhanden.</li></ul> Wenden Sie sich an den Besitzer der Anwendung.|
 |50027|Das JWT-Token ist aus den folgenden Gründen ungültig:<ul><li>Enthält keinen Nonce-Anspruch, untergeordneten Anspruch</li><li>Antragstellerbezeichner stimmt nicht überein</li><li>Doppelter Anspruch in idToken-Ansprüchen</li><li>Unerwarteter Aussteller</li><li>Unerwartete Zielgruppe</li><li>Liegt nicht innerhalb des gültigen Zeitbereichs </li><li>Tokenformat ist fehlerhaft</li><li>Fehler bei Signaturüberprüfung für das Token für die externe ID vom Aussteller.</li></ul>Wenden Sie sich an den Besitzer der Anwendung.|
@@ -90,32 +85,32 @@ Der folgende Abschnitt enthält eine vollständige Übersicht über alle möglic
 |50055|Ungültiges Kennwort. Es wurde ein abgelaufenes Kennwort eingegeben.|
 |50056|Ungültiges oder NULL-Kennwort: Das Kennwort ist für diesen Benutzer nicht im Speicher vorhanden.|
 |50057|Das Benutzerkonto ist deaktiviert. Das Konto wurde von einem Administrator deaktiviert.|
-|50058|Die Anwendung hat versucht, eine automatische Anmeldung durchzuführen, und der Benutzer konnte nicht automatisch angemeldet werden. Die Anwendung muss einen interaktiven Datenfluss starten, um für Benutzer eine Option zum Anmelden bereitzustellen. Wenden Sie sich an den Besitzer der App.|
+|50058|Die Anwendung hat versucht, eine automatische Anmeldung durchzuführen, und der Benutzer konnte nicht automatisch angemeldet werden. Die Anwendung muss einen interaktiven Datenfluss starten, um für Benutzer eine Option zum Anmelden bereitzustellen. Wenden Sie sich an den Anwendungsbesitzer.|
 |50059|Der Benutzer ist nicht im Verzeichnis vorhanden. Wenden Sie sich an den Administrator des Mandanten.|
 |50061|Die Abmeldeanforderung ist ungültig. Wenden Sie sich an den Besitzer der Anwendung.|
 |50072|Benutzer müssen sich für die zweistufige Authentifizierung registrieren (interaktiv).|
 |50074|Der Benutzer hat die MFA-Überprüfung nicht bestanden.|
 |50076|Der Benutzer hat die MFA-Überprüfung nicht bestanden (nicht interaktiv).|
 |50079|Benutzer müssen sich für die zweistufige Authentifizierung registrieren (nicht interaktive Anmeldungen).|
-|50085|Für Aktualisierungstoken ist eine IdP-Anmeldung per sozialem Netzwerk erforderlich. Bitten Sie Benutzer, sich per Benutzername und Kennwort erneut anzumelden.|
-|50089|Flow-Token abgelaufen: Fehler bei der Authentifizierung. Bitten Sie Benutzer, sich per Benutzername und Kennwort erneut anzumelden.|
-|50097|Geräteauthentifizierung erforderlich - DeviceId - DeviceAltSecId-Ansprüche sind null ODER es ist kein Gerät vorhanden, das zum Gerätebezeichner passt|
+|50085|Für Aktualisierungstoken ist eine IdP-Anmeldung per sozialem Netzwerk erforderlich. Bitten Sie Benutzer, sich mit ihrem Benutzernamen und ihrem Kennwort erneut anzumelden.|
+|50089|Flow-Token abgelaufen: Fehler bei der Authentifizierung. Bitten Sie Benutzer, sich mit ihrem Benutzernamen und ihrem Kennwort erneut anzumelden.|
+|50097|Geräteauthentifizierung erforderlich. Ursache könnte sein, dass die DeviceId- oder DeviceAltSecId-Ansprüche **null** sind oder kein Gerät vorhanden ist, das zum Gerätebezeichner passt.|
 |50099|JWT-Signatur ist ungültig. Wenden Sie sich an den Besitzer der Anwendung.|
 |50105|Der angemeldete Benutzer ist keiner Rolle für die angemeldete Anwendung zugewiesen. Weisen Sie den Benutzer der Anwendung zu. Weitere Informationen: [https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#user-not-assigned-a-role](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#user-not-assigned-a-role)|
 |50107|Das angeforderte Verbundbereichsobjekt ist nicht vorhanden. Wenden Sie sich an den Administrator des Mandanten.|
 |50120|Es besteht ein Problem mit dem JWT-Header. Wenden Sie sich an den Administrator des Mandanten.|
 |50124|Die Anspruchstransformation enthält ungültige Eingabeparameter. Wenden Sie sich an den Administrator des Mandanten, um die Richtlinie zu aktualisieren.|
-|50125|Die Anmeldung wurde aufgrund des Zurücksetzens des Kennworts oder eines Kennwortregistrierungs-Eintrags unterbrochen.|
+|50125|Die Anmeldung wurde aufgrund des Zurücksetzens des Kennworts oder eines Kennwortregistrierungseintrags unterbrochen.|
 |50126|Ungültiger Benutzername bzw. ungültiges Kennwort oder ungültiger lokaler Benutzername bzw. ungültiges lokales Kennwort.|
-|50127|Der Benutzer muss für den Zugriff auf diesen Inhalt eine Broker-App installieren.|
+|50127|Der Benutzer muss für den Zugriff auf diesen Inhalt eine Brokeranwendung installieren.|
 |50128|Ungültiger Domänenname: Es wurden keine Informationen zur Identifizierung des Mandanten in der Anforderung gefunden bzw. nicht über angegebene Anmeldeinformationen impliziert.|
-|50129|Das Gerät ist nicht mit dem Arbeitsbereich verbunden: Um das Gerät zu registrieren, ist ein Workplace Join erforderlich.|
+|50129|Das Gerät ist nicht mit dem Arbeitsbereich verbunden: Um das Gerät zu registrieren, ist ein **Workplace Join** erforderlich.|
 |50130|Der Anspruchswert kann nicht als bekannte Authentifizierungsmethode interpretiert werden.|
 |50131|Wird für verschiedene Fehler in Bezug auf den bedingten Zugriff verwendet. Beispiel: Fehlerhafter Windows-Gerätestatus, Blockierung der Anforderung aufgrund von verdächtigen Aktivitäten und Zugriffs- und Sicherheitsrichtlinien-Entscheidungen.|
 |50132|Die Anmeldeinformationen wurden aus den folgenden Gründen widerrufen:<ul><li>Das SSO-Artefakt ist ungültig oder abgelaufen.</li><li>Die Sitzung ist für die Anwendung nicht aktuell genug.</li><li>Eine Anforderung zur automatischen Anmeldung wurde gesendet, aber die Sitzung des Benutzers für Azure AD ist ungültig oder abgelaufen.</li></ul>|
 |50133|Die Sitzung ist ungültig, weil das Kennwort abgelaufen ist oder vor Kurzem geändert wurde.|
 |50135|Aufgrund eines Risikos, das für das Konto besteht, ist eine Kennwortänderung erforderlich.|
-|50136|Umleitung der MSA-Sitzung an die App: Einzelne MSA-Sitzung erkannt |
+|50136|Umleitung der MSA-Sitzung an die Anwendung: Einzelne MSA-Sitzung erkannt. |
 |50140|Dieser Fehler ist aufgetreten, weil beim Anmelden des Benutzers der Interrupt-Vorgang „Angemeldet bleiben“ aufgetreten ist. [Öffnen Sie ein Supportticket](../fundamentals/active-directory-troubleshooting-support-howto.md) mit der Korrelations-ID, Anforderungs-ID und dem Fehlercode, um weitere Details anzuzeigen. |
 |50143|Sitzungskonflikt: Die Sitzung ist ungültig, weil der Benutzermandant aufgrund einer anderen Ressource nicht mit dem Domänenhinweis übereinstimmt.  [Öffnen Sie ein Supportticket](../fundamentals/active-directory-troubleshooting-support-howto.md) mit Korrelations-ID, Anforderungs-ID und Fehlercode, um weitere Informationen dazu zu erhalten.|
 |50144|Das Active Directory-Kennwort des Benutzers ist abgelaufen. Generieren Sie ein neues Kennwort für den Benutzer, oder bitten Sie ihn, das Self-Service-Tool für die Zurücksetzung zu nutzen.|
@@ -129,9 +124,9 @@ Der folgende Abschnitt enthält eine vollständige Übersicht über alle möglic
 |50172|Der externe Anspruchsanbieter ist nicht genehmigt. Wenden Sie sich an den Administrator des Mandanten.|
 |50173|Aktuelles Autorisierungstoken erforderlich. Bitten Sie den Benutzer, sich mit aktuellen Anmeldeinformationen erneut anzumelden.|
 |50177|Die externe Überprüfung wird für Passthroughbenutzer nicht unterstützt.|
-|50178|Die Sitzungssteuerung wird für Passthrough-Benutzer nicht unterstützt.|
+|50178|Die Sitzungssteuerung wird für Passthroughbenutzer nicht unterstützt.|
 |50180|Integrierte Windows-Authentifizierung ist erforderlich. Aktivieren Sie den Mandanten für das nahtlose einmalige Anmelden.|
-|51001|Domänenhinweis ist für lokale Sicherheits-ID nicht vorhanden – Lokaler UPN|
+|51001|Domänenhinweis ist für lokale Sicherheits-ID nicht vorhanden – Lokaler UPN.|
 |51004|Benutzerkonto ist nicht im Verzeichnis vorhanden.|
 |51006|Integrierte Windows-Authentifizierung ist erforderlich. Angemeldeter Benutzer nutzt ein Sitzungstoken ohne wia-Anspruch. Bitten Sie den Benutzer, die Anmeldung erneut durchzuführen.|
 |52004|Der Benutzer hat seine Zustimmung für den Zugriff auf LinkedIn-Ressourcen nicht gegeben. |
@@ -145,23 +140,23 @@ Der folgende Abschnitt enthält eine vollständige Übersicht über alle möglic
 |65005|Die für die Anwendung erforderliche Liste für den Ressourcenzugriff enthält keine Anwendungen, die von der Ressource ermittelt werden können, die Clientanwendung hat den Zugriff auf eine Ressource angefordert, die nicht in der erforderlichen Liste für den Ressourcenzugriff angegeben ist, oder der Graph-Dienst hat „Fehlerhafte Anforderung“ oder „Ressource nicht gefunden“ zurückgegeben. Wenn die Anwendung SAML unterstützt, haben Sie die Anwendung ggf. mit dem falschen Bezeichner (Entität) konfiguriert. Probieren Sie es mit der Lösung, die unter dem folgenden Link für SAML angegeben ist: [https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav#no-resource-in-requiredresourceaccess-list](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav#no-resource-in-requiredresourceaccess-list)|
 |70000|Ungültige Erteilung aus den folgenden Gründen:<ul><li>Die angeforderte SAML 2.0-Assertion verfügt über eine ungültige Methode zur Antragstellerbestätigung.</li><li>OnBehalfOf-App-Datenfluss wird für V2 nicht unterstützt.</li><li>Das primäre Aktualisierungstoken wurde nicht mit dem Sitzungsschlüssel signiert.</li><li>Ungültiges externes Aktualisierungstoken.</li><li>Die Zugriffsberechtigung wurde für einen anderen Mandanten abgerufen.</li></ul>|
 |70001|Die Anwendung mit dem Namen X wurde im Mandanten mit dem Namen Y nicht gefunden. Dies kann auftreten, wenn die Anwendung mit dem Bezeichner X nicht vom Administrator des Mandanten installiert wurde oder wenn sie von den Benutzern des Mandanten keine Zustimmung erhalten hat. Unter Umständen haben Sie den Bezeichnerwert für die Anwendung falsch konfiguriert oder die Authentifizierungsanforderung an den falschen Mandanten gesendet.|
-|70002|Die Anwendung hat ungültige Clientanmeldeinformationen zurückgegeben. Wenden Sie sich an den Besitzer der App.|
-|70003|Die Anwendung hat einen nicht unterstützten Gewährungstyp zurückgegeben. Wenden Sie sich an den Besitzer der App.|
-|70004|Die Anwendung hat einen ungültigen Umleitungs-URI zurückgegeben. Die vom Client angegebene Umleitungsadresse stimmt nicht mit den konfigurierten Adressen oder anderen Adressen in der Liste mit den OIDC-Genehmigungen überein. Wenden Sie sich an den Besitzer der App.|
+|70002|Die Anwendung hat ungültige Clientanmeldeinformationen zurückgegeben. Wenden Sie sich an den Besitzer der Anwendung.|
+|70003|Die Anwendung hat einen nicht unterstützten Gewährungstyp zurückgegeben. Wenden Sie sich an den Besitzer der Anwendung.|
+|70004|Die Anwendung hat einen ungültigen Umleitungs-URI zurückgegeben. Die vom Client angegebene Umleitungsadresse stimmt nicht mit den konfigurierten Adressen oder anderen Adressen in der Liste mit den OIDC-Genehmigungen überein. Wenden Sie sich an den Besitzer der Anwendung.|
 |70005|Die Anwendung hat aus den folgenden Gründen einen nicht unterstützten Antworttyp zurückgegeben:<ul><li>Der Antworttyp „token“ ist für die Anwendung nicht aktiviert.</li><li>Für den Antworttyp „id_token“ ist der Bereich „OpenID“ erforderlich: - Enthält einen nicht unterstützten OAuth-Parameterwert im codierten wctx-Element.</li></ul>Wenden Sie sich an den Besitzer der Anwendung.|
-|70007|Die Anwendung hat beim Anfordern eines Tokens den nicht unterstützten Wert „response_mode“ zurückgegeben. Wenden Sie sich an den Besitzer der App.|
-|70008|Der bereitgestellte Autorisierungscode oder das Aktualisierungstoken ist abgelaufen: - Wurde widerrufen. Bitten Sie den Benutzer, die Anmeldung noch einmal durchzuführen.|
+|70007|Die Anwendung hat beim Anfordern eines Tokens den nicht unterstützten Wert „response_mode“ zurückgegeben. Wenden Sie sich an den Besitzer der Anwendung.|
+|70008|Der bereitgestellte Autorisierungscode oder das Aktualisierungstoken ist abgelaufen oder wurde widerrufen. Bitten Sie den Benutzer, die Anmeldung noch einmal durchzuführen.|
 |70011|Der von der Anwendung angeforderte Bereich ist ungültig. Wenden Sie sich an den Besitzer der Anwendung.|
-|70012|Beim Authentifizieren eines MSA-Benutzers (Consumer) ist ein Serverfehler aufgetreten. Versuchen Sie es erneut. [Öffnen Sie ein Supportticket](../fundamentals/active-directory-troubleshooting-support-howto.md) , wenn der Fehler weiterhin auftritt.|
+|70012|Beim Authentifizieren eines MSA-Benutzers (Consumer) ist ein Serverfehler aufgetreten. Wiederholen Sie die Anmeldung. Wenn das Problem weiterhin besteht, [öffnen Sie ein Supportticket](../fundamentals/active-directory-troubleshooting-support-howto.md) .|
 |70018|Ungültiger Überprüfungscode, weil der Benutzer den falschen Benutzercode für den Gerätecode-Datenfluss eingegeben hat. Die Autorisierung wird nicht genehmigt.|
 |70019|Der Überprüfungscode ist abgelaufen. Bitten Sie den Benutzer, die Anmeldung erneut durchzuführen.|
 |70037|Falsche Überprüfungsantwort angegeben. Die Remote-Authentifizierungssitzung wurde verweigert.|
 |75001|Während der SAML-Nachrichtenbindung ist ein Fehler aufgetreten.|
-|75003|Die Anwendung hat einen Fehler zu einer nicht unterstützten Bindung zurückgegeben (SAML-Protokollantwort kann nicht über andere Bindungen als HTTP POST gesendet werden). Wenden Sie sich an den Besitzer der App.|
-|75005|Azure AD unterstützt die von der Anwendung für einmaliges Anmelden gesendete SAML-Anforderung nicht. Wenden Sie sich an den Besitzer der App.|
-|75008|Die Anforderung von der Anwendung wurde abgelehnt, da die SAML-Anforderung über ein unerwartetes Ziel verfügt. Wenden Sie sich an den Besitzer der App.|
-|75011|Die Authentifizierungsmethode, mit der sich der Benutzer beim Dienst authentifiziert hat, stimmt nicht mit der angeforderten Authentifizierungsmethode überein. Wenden Sie sich an den Besitzer der App.|
-|75016|Die SAML2-Authentifizierungsanforderung verfügt über eine ungültige NameIdPolicy. Wenden Sie sich an den Besitzer der App.|
+|75003|Die Anwendung hat einen Fehler zu einer nicht unterstützten Bindung zurückgegeben (SAML-Protokollantwort kann nicht über andere Bindungen als HTTP POST gesendet werden). Wenden Sie sich an den Besitzer der Anwendung.|
+|75005|Azure AD unterstützt die von der Anwendung für einmaliges Anmelden gesendete SAML-Anforderung nicht. Wenden Sie sich an den Besitzer der Anwendung.|
+|75008|Die Anforderung von der Anwendung wurde abgelehnt, da die SAML-Anforderung über ein unerwartetes Ziel verfügt. Wenden Sie sich an den Besitzer der Anwendung.|
+|75011|Die Authentifizierungsmethode, mit der sich der Benutzer beim Dienst authentifiziert hat, stimmt nicht mit der angeforderten Authentifizierungsmethode überein. Wenden Sie sich an den Besitzer der Anwendung.|
+|75016|Die SAML2-Authentifizierungsanforderung verfügt über eine ungültige NameIdPolicy. Wenden Sie sich an den Besitzer der Anwendung.|
 |80001|Der Authentifizierungs-Agent kann keine Verbindung mit Active Directory herstellen. Stellen Sie sicher, dass der Authentifizierungs-Agent auf einem in die Domäne eingebundenen Computer mit „Sichtverbindung“ zu einem Domänencontroller installiert ist, über den die Anmeldeanforderung des Benutzers bereitgestellt werden kann.|
 |80002|Interner Fehler. Für die Anforderung zur Kennwortüberprüfung ist ein Timeout aufgetreten. Es war nicht möglich, die Authentifizierungsanforderung an den internen Hybrid-Identitätsdienst zu senden. [Öffnen Sie ein Supportticket](../fundamentals/active-directory-troubleshooting-support-howto.md), um weitere Details zum Fehler zu erhalten.|
 |80003|Der Authentifizierungs-Agent hat eine ungültige Antwort erhalten. Beim Versuch, die Authentifizierung über die lokale Active Directory-Instanz durchzuführen, ist ein unbekannter Fehler aufgetreten. [Öffnen Sie ein Supportticket](../fundamentals/active-directory-troubleshooting-support-howto.md), um weitere Details zum Fehler zu erhalten.|
@@ -184,4 +179,5 @@ Der folgende Abschnitt enthält eine vollständige Übersicht über alle möglic
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen finden Sie unter [Berichte zu Anmeldeaktivitäten im Azure Active Directory-Portal](concept-sign-ins.md).
+* [Übersicht über Berichte zu Anmeldungen](concept-sign-ins.md)
+* [Programmgesteuerter Zugriff auf Azure AD-Berichte](concept-reporting-api.md)

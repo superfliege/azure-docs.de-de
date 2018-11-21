@@ -7,18 +7,18 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/26/2018
 ms.author: mjbrown
-ms.openlocfilehash: c682b61a39224f2c80db8fe5fa153ea5e5d82922
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 1b2a122cc8a04d4f0044ecb0fe0341357bc29c0f
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50958553"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51514824"
 ---
 # <a name="conflict-types-and-resolution-policies"></a>Konflikttypen und Konfliktauflösungsrichtlinien
 
 Konflikte und Konfliktauflösungsrichtlinien sind anwendbar, wenn Ihr Cosmos-Konto mit mehreren Schreibregionen konfiguriert ist.
 
-In Cosmos DB-Konten, die mit mehreren Schreibregionen konfiguriert sind, können Updatekonflikte auftreten, wenn mehrere Writer gleichzeitig dasselbe Element in mehreren Regionen aktualisieren. Updatekonflikte lassen sich in diese drei Typen einteilen:
+In Cosmos-Konten, die mit mehreren Schreibregionen konfiguriert sind, können Updatekonflikte auftreten, wenn mehrere Writer gleichzeitig dasselbe Element in mehreren Regionen aktualisieren. Updatekonflikte lassen sich in diese drei Typen einteilen:
 
 1. **Konflikte beim Einfügen** treten ggf. auf, wenn eine Anwendung mindestens zwei Elemente mit dem gleichen eindeutigen Index (z.B. ID-Eigenschaft) aus mindestens zwei Regionen gleichzeitig einfügt. In diesem Fall werden alle Schreibvorgänge zunächst ggf. in der jeweiligen lokalen Region erfolgreich ausgeführt, basierend auf der ausgewählten Konfliktauflösungsrichtlinie wird jedoch nur ein Element mit der ursprünglichen ID committet.
 

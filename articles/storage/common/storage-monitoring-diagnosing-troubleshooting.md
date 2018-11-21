@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/11/2017
 ms.author: fhryo-msft
 ms.component: common
-ms.openlocfilehash: 1b949d2baedc7a7da3230212e267c3ac98b30bbd
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 64e7b6ad79fc26f8ab2ba796bbca2909417b113c
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51239541"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51625996"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Microsoft Azure-Speicher: Überwachung, Diagnose und Problembehandlung
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -642,7 +642,7 @@ Die **PercentSuccess** -Metrik erfasst den Prozentsatz der erfolgreichen Vorgän
 Es ist wichtig zu beachten, dass diese Vorgänge erfolgreich abgeschlossen wurden und somit keinen Einfluss auf andere Metriken wie die Verfügbarkeit haben. Hier sind einige Beispiele für Vorgänge, die erfolgreich ausgeführt werden, aber zu erfolglosen HTTP-Statuscodes führen:
 
 * **ResourceNotFound** (Nicht Gefunden, 404), beispielsweise von einer GET-Anfrage an ein nicht existierendes Blob
-* **ResouceAlreadyExists** (Konflikt, 409), beispielsweise von einem Vorgang des Typs **CreateIfNotExist**, wenn die Ressource bereits vorhanden ist.
+* **ResourceAlreadyExists** (Konflikt, 409), beispielsweise von einem Vorgang des Typs **CreateIfNotExist**, wenn die Ressource bereits vorhanden ist.
 * **ConditionNotMet** (Nicht geändert, 304), beispielsweise von einem bedingten Vorgang, bei dem ein Client einen **ETag**-Wert und einen HTTP-Header vom Typ **If-None-Match** sendet, um ein Image nur dann anzufordern, wenn es seit dem letzten Vorgang aktualisiert wurde.
 
 Eine Liste bekannter REST API-Fehlercodes, die von den Speicherdiensten zurückgegeben werden, finden Sie auf der Seite [Bekannte REST API-Fehlercodes](https://msdn.microsoft.com/library/azure/dd179357.aspx).

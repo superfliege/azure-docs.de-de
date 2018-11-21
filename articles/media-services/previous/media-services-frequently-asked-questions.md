@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/15/2018
 ms.author: juliako
-ms.openlocfilehash: d4b7d8ec5cb162e5fc844f107fbd5eb08fb00639
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: bf5bc66ce55b0b9d6095cd395a11f68b40af1639
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353532"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51685717"
 ---
 # <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 
@@ -28,7 +28,7 @@ In diesem Artikel werden häufig gestellte Fragen behandelt, die in der Benutzer
 
 F: Wie funktioniert das Streaming auf Apple iOS-Geräten?
 
-A: Fügen Sie den Pfad „(format=m3u8-aapl)“ dem Abschnitt „/Manifest“ der URL, um den Ursprungsserver des Streamings anzuweisen, HLS-Inhalte für die Nutzung auf nativen Apple iOS-Geräten zurückzugeben (Details finden Sie unter (Liefern von Inhalt)[media-services-deliver-content-overview.md]).
+A: Fügen Sie dem Abschnitt „/Manifest“ der URL den Pfad „(format=m3u8-aapl)“ hinzu, um den Ursprungsserver des Streamings anzuweisen, HLS-Inhalte für die Nutzung auf nativen Apple iOS-Geräten zurückzugeben. (Details hierzu finden Sie unter [Übermitteln von Inhalten](media-services-deliver-content-overview.md).)
 
 F: Wie wird die Indizierung skaliert?
 

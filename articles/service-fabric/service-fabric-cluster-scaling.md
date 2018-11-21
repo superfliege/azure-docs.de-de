@@ -1,6 +1,6 @@
 ---
 title: Azure Service Fabric-Clusterskalierung | Microsoft-Dokumentation
-description: Es wird beschrieben, wie Sie für Service Fabric-Cluster das horizontale und zentrale Hoch- und Herunterskalieren durchführen.
+description: Hier wird beschrieben, wie Sie für Azure Service Fabric-Cluster das horizontale und zentrale Hoch- und Herunterskalieren durchführen.
 services: service-fabric
 documentationcenter: .net
 author: rwike77
@@ -12,32 +12,26 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 04/09/2018
+ms.date: 11/13/2018
 ms.author: ryanwi
-ms.openlocfilehash: f199e6615109278764b9fcc75346da9ee6171cfa
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 0890ce0342024229b99d92a2eddba5b49cc59595
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48815646"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51633936"
 ---
-# <a name="scaling-service-fabric-clusters"></a>Skalieren von Service Fabric-Clustern
+# <a name="scaling-azure-service-fabric-clusters"></a>Skalieren von Azure Service Fabric-Clustern
 Ein Service Fabric-Cluster enthält eine per Netzwerk verbundene Gruppe von virtuellen oder physischen Computern, auf denen Ihre Microservices bereitgestellt und verwaltet werden. Ein physischer oder virtueller Computer, der Teil eines Clusters ist, wird als Knoten bezeichnet. Cluster können Tausende von Knoten enthalten. Nach dem Erstellen eines Service Fabric-Clusters können Sie den Cluster horizontal (Änderung der Anzahl von Knoten) oder vertikal (Änderung der Ressourcen von Knoten) skalieren.  Sie können die Skalierung für den Cluster jederzeit durchführen – auch bei Ausführung von Workloads im Cluster.  Wenn der Cluster skaliert wird, werden Ihre Anwendungen ebenfalls automatisch skaliert.
 
 Gründe für das Skalieren des Clusters Anwendungsanforderungen ändern sich im Laufe der Zeit.  Unter Umständen müssen Sie die Clusterressourcen erhöhen, um auf eine höhere Anwendungsworkload oder vermehrten Netzwerkdatenverkehr zu reagieren, oder verringern, wenn die Nachfrage nachlässt.
 
-### <a name="scaling-in-and-out-or-horizontal-scaling"></a>Horizontales Herunter- und Hochskalieren
+## <a name="scaling-in-and-out-or-horizontal-scaling"></a>Horizontales Herunter- und Hochskalieren
 Hierbei wird die Anzahl von Knoten im Cluster geändert.  Nachdem die neuen Knoten in den Cluster eingebunden wurden, verschiebt der [Cluster Resource Manager](service-fabric-cluster-resource-manager-introduction.md) Dienste auf diese Knoten, um die Last für die vorhandenen Knoten zu reduzieren.  Sie können die Anzahl von Knoten auch verringern, falls die Ressourcen des Clusters nicht effizient genutzt werden.  Wenn Knoten den Cluster verlassen, werden Dienste von diesen Knoten verschoben, und die Last für die verbleibenden Knoten erhöht sich.  Mit der Reduzierung der Anzahl von Knoten in einem Cluster, der in Azure ausgeführt wird, können Sie Kosten sparen. Der Grund ist, dass Sie für die Anzahl von VMs zahlen, die Sie nutzen, und nicht für die Workload auf diesen VMs.  
 
 - Vorteile: Praktisch unbegrenzte Skalierungsmöglichkeiten.  Wenn Ihre Anwendung auf Skalierbarkeit ausgelegt ist, können Sie sie unbegrenzt erweitern, indem Sie weitere Knoten hinzufügen.  Die Tools in Cloudumgebungen machen das Hinzufügen und Entfernen von Knoten einfach, sodass Sie die Kapazität leicht anpassen können, und Sie zahlen nur für die genutzten Ressourcen.  
 - Nachteile: Anwendungen müssen [für Skalierbarkeit konzipiert sein](service-fabric-concepts-scalability.md).  Für Anwendungsdatenbanken und die Persistenz ist ggf. zusätzlicher Architekturaufwand erforderlich, damit die Skalierung hierfür ebenfalls möglich ist.  [Reliable Collections](service-fabric-reliable-services-reliable-collections.md) in zustandsbehafteten Service Fabric-Diensten erleichtern Ihnen die Skalierung Ihrer Anwendungsdaten aber deutlich.
 
-### <a name="scaling-up-and-down-or-vertical-scaling"></a>Zentrales Hoch- und Herunterskalieren 
-Hierbei werden die Ressourcen (CPU, Arbeitsspeicher oder Speicher) von Knoten im Cluster geändert.
-- Vorteile: Die Software- und Anwendungsarchitektur bleibt gleich.
-- Nachteile: Begrenzte Skalierung, da eine Beschränkung in Bezug auf die Erhöhung von Ressourcen auf einzelnen Knoten besteht. Ausfallzeiten, da physische oder virtuelle Computer offline geschaltet werden müssen, um Ressourcen hinzuzufügen oder zu entfernen.
-
-## <a name="scaling-an-azure-cluster-in-or-out"></a>Horizontales Hoch- oder Herunterskalieren eines Azure-Clusters
 VM-Skalierungsgruppen sind eine Azure-Computeressource, mit der Sie eine Sammlung von virtuellen Computern bereitstellen und verwalten können. Jeder Knotentyp, der in einem Azure-Cluster definiert ist, wird [als separate Skalierungsgruppe eingerichtet](service-fabric-cluster-nodetypes.md). Jeden Knotentyp kann dann unabhängig zentral hoch- oder herunterskaliert werden, bei jedem Typ können unterschiedliche Portgruppen geöffnet sein, und die Typen können verschiedene Kapazitätsmetriken aufweisen. 
 
 Beachten Sie beim Skalieren eines Azure-Clusters die folgenden Richtlinien:
@@ -70,23 +64,11 @@ Der Skalierungscode muss aber nicht als Dienst in dem Cluster ausgeführt werden
 
 Aufgrund dieser Einschränkungen ist es ggf. ratsam, [stärker angepasste Modelle für die automatische Skalierung zu implementieren](service-fabric-cluster-programmatic-scaling.md).
 
+## <a name="scaling-up-and-down-or-vertical-scaling"></a>Zentrales Hoch- und Herunterskalieren 
+Hierbei werden die Ressourcen (CPU, Arbeitsspeicher oder Speicher) von Knoten im Cluster geändert.
+- Vorteile: Die Software- und Anwendungsarchitektur bleibt gleich.
+- Nachteile: Begrenzte Skalierung, da eine Beschränkung in Bezug auf die Erhöhung von Ressourcen auf einzelnen Knoten besteht. Ausfallzeiten, da physische oder virtuelle Computer offline geschaltet werden müssen, um Ressourcen hinzuzufügen oder zu entfernen.
 
-## <a name="scaling-a-standalone-cluster-in-or-out"></a>Horizontales Herunter- oder Hochskalieren eines eigenständigen Clusters
-Mit eigenständigen Clustern können Sie Service Fabric-Cluster lokal oder über den Cloudanbieter Ihrer Wahl bereitstellen.  Knotentypen bestehen je nach Bereitstellung aus physischen oder virtuellen Computern. Verglichen mit Clustern, die in Azure ausgeführt werden, ist der Prozess zum Skalieren eines eigenständigen Clusters etwas aufwändiger.  Sie müssen die Anzahl von Knoten im Cluster manuell ändern und dann ein Upgrade für die Clusterkonfiguration durchführen.
-
-Durch das Entfernen von Knoten werden möglicherweise mehrere Upgrades initiiert. Einige Knoten sind mit dem Tag `IsSeedNode=”true”` gekennzeichnet und können durch Abfragen des Clustermanifests mit [Get-ServiceFabricClusterManifest](/powershell/module/servicefabric/get-servicefabricclustermanifest) ermittelt werden. Das Entfernen solcher Knoten dauert möglicherweise länger als bei anderen Knoten, da die Seed-Knoten in einem solchen Szenario verschoben werden müssen. Der Cluster muss mindestens drei primäre Knotentypen verwalten.
-
-> [!WARNING]
-> Die für den Cluster angegebene Knotenanzahl sollte mindestens der [Clustergröße der Zuverlässigkeitsstufe](service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster) entsprechen. Andernfalls besteht die Gefahr, dass die Replizierung von Service Fabric-Systemdiensten im Cluster beeinträchtigt und der Cluster destabilisiert oder sogar gelöscht wird.
->
-
-Beachten Sie beim Skalieren eines eigenständigen Clusters die folgenden Richtlinien:
-- Das Ersetzen primärer Knoten muss für jeden Knoten einzeln ausgeführt werden. Das Entfernen und Hinzufügen in Batches ist nicht möglich.
-- Überprüfen Sie vor dem Entfernen eines Knotentyps, ob andere Knoten auf den Knotentyp verweisen. Entfernen Sie diese Knoten, bevor Sie den entsprechenden Knotentyp entfernen. Nachdem alle zugehörigen Knoten entfernt wurden, können Sie den NodeType aus der Clusterkonfiguration entfernen und über [Start-ServiceFabricClusterConfigurationUpgrade](/powershell/module/servicefabric/start-servicefabricclusterconfigurationupgrade) ein Konfigurationsupgrade starten.
-
-Weitere Informationen finden Sie unter [Hinzufügen oder Entfernen von Knoten für einen eigenständigen Service Fabric-Cluster unter Windows Server](service-fabric-cluster-windows-server-add-remove-nodes.md).
-
-## <a name="scaling-an-azure-cluster-up-or-down"></a>Zentrales Hoch- oder Herunterskalieren eines Azure-Clusters
 VM-Skalierungsgruppen sind eine Azure-Computeressource, mit der Sie eine Sammlung von virtuellen Computern bereitstellen und verwalten können. Jeder Knotentyp, der in einem Azure-Cluster definiert ist, wird [als separate Skalierungsgruppe eingerichtet](service-fabric-cluster-nodetypes.md). Jeder Knotentyp kann dann separat verwaltet werden.  Das zentrale Hoch- oder Herunterskalieren eines Knotentyps umfasst das Ändern der SKU von VM-Instanzen in der Skalierungsgruppe. 
 
 > [!WARNING]

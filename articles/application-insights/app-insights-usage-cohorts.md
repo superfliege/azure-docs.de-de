@@ -14,12 +14,12 @@ ms.date: 04/10/2018
 ms.reviewer: mbullwin
 ms.pm_owner: daviste;NumberByColors
 ms.author: daviste
-ms.openlocfilehash: 35737b91d8ef0b58223f51530f56408df1c7eb8e
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: d8bb7a975bd5bab8698d20e5d21514b79945eac6
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50138791"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51564917"
 ---
 # <a name="application-insights-cohorts"></a>Application Insights-Kohorten
 
@@ -49,7 +49,7 @@ Ihr Team definiert jede Person als „aktiven Benutzer“, die Ihre App in einem
     Für diese Kohorte sind drei Parameter verfügbar:
     * **Activities** (Aktivitäten): Hier können Sie auswählen, welche Ereignisse und Seitenansichten als „Verwendung“ gezählt werden sollen.
     * **Period** (Zeitraum): Dies ist die Definition eines Monats.
-    * **UsedAtleastCustom** (MindestensVerwendetBenutzerdef): Dies ist die Häufigkeit, mit der Benutzer etwas innerhalb eines Zeitraums verwenden müssen, um als aktive Benutzer zu zählen.
+    * **UsedAtLeastCustom**: Dies ist die Häufigkeit, mit der Benutzer etwas innerhalb eines Zeitraums verwenden müssen, um als aktive Benutzer zu gelten.
 
 4. Ändern Sie **UsedAtleastCustom** in **5+ days** (5+ Tage), und behalten Sie für **Period** (Zeitraum) den Standardwert von 28 Tagen bei.
 

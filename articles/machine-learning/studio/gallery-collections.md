@@ -15,18 +15,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
-ms.openlocfilehash: 6b8cb104c734edf688d875a8e9674a660f2db4e2
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: b586639cc6c9d4e25d65fa9f3a510e22789acfb2
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34834599"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51346034"
 ---
 # <a name="discover-and-share-collections-in-azure-ai-gallery"></a>Entdecken und Freigeben von Sammlungen im Azure AI-Katalog
-[!INCLUDE [machine-learning-gallery-item-selector](../../../includes/machine-learning-gallery-item-selector.md)]
 
-## <a name="collections"></a>Sammlungen
-Mit einer [Sammlung](https://gallery.cortanaintelligence.com/collections) können Sie Experimente, APIs und andere Katalogelemente gruppieren, die Sie für eine bestimmte Lösung oder ein Konzept verwenden. Sie können sie zum späteren Verwenden, zur Bezugnahme oder zum Teilen gruppieren.
+Mit einer [Sammlung](https://gallery.cortanaintelligence.com/collections) in [Azure AI Gallery](http://gallery.cortanaintelligence.com) können Sie Experimente, APIs und andere Katalogelemente gruppieren, die Sie für eine bestimmte Lösung oder ein Konzept verwenden. Sie können sie zum späteren Verwenden, zur Bezugnahme oder zum Teilen gruppieren.
 
 ## <a name="discover"></a>Entdecken
 Wählen Sie zum Durchsuchen von Sammlungen im [Katalog](http://gallery.cortanaintelligence.com) unter **Mehr** die Option **Sammlungen** aus.

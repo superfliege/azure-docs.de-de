@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/25/2017
 ms.author: cbrooks
 ms.component: common
-ms.openlocfilehash: 7c01940c41067029bc3d47d19c2ded1d710cc2c6
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 51404c35b42d1c98116e74b5b7a47afe05b7d2a9
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49470063"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51300556"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Konfigurieren von Firewalls und virtuellen Netzwerken in Azure Storage
 Azure Storage bietet ein mehrstufiges Sicherheitsmodell, mit dem Sie Ihre Speicherkonten für eine bestimmte Gruppe zulässiger Netzwerke sichern können.  Wenn Netzwerkregeln konfiguriert sind, können nur Anwendungen aus zulässigen Netzwerken auf ein Speicherkonto zugreifen.  Anwendungen, die aus einem zulässigen Netzwerk aufgerufen werden, erfordern für den Zugriff auf das Speicherkonto weiterhin eine ordnungsgemäße Autorisierung (einen gültigen Zugriffsschlüssel oder ein gültiges SAS-Token).
@@ -201,7 +201,7 @@ Jedes Speicherkonto unterstützt bis zu 100 IP-Netzwerkregeln, die mit [Regeln f
 ### <a name="configuring-access-from-on-premises-networks"></a>Konfigurieren des Zugriffs aus lokalen Netzwerken
 Um mit einer IP-Netzwerkregel den Zugriff aus den lokalen Netzwerken auf das Speicherkonto zu gewähren, müssen Sie die von Ihrem Netzwerk verwendeten Internet-IP-Adressen ermitteln.  Hilfe erhalten Sie von Ihrem Netzwerkadministrator.
 
-Wenn Ihr Netzwerk mithilfe von [ExpressRoute](/azure/expressroute/expressroute-introduction) mit dem Azure-Netzwerk verbunden ist, ist jede Verbindung mit zwei öffentlichen IP-Adressen bei Microsoft konfiguriert. Diese werden zum Herstellen der Verbindung mit Microsoft-Diensten, z.B. Azure Storage, mithilfe von [öffentlichem Azure-Peering](/azure/expressroute/expressroute-circuit-peerings#expressroute-routing-domains) verwendet.  Um die Kommunikation von Ihrer Verbindung mit Azure Storage zu ermöglichen, müssen Sie IP-Adressregeln für die öffentlichen IP-Adressen Ihrer Verbindungen erstellen.  [Öffnen Sie über das Azure-Portal ein Supportticket für ExpressRoute](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview), um die öffentlichen IP-Adressen Ihrer ExpressRoute-Verbindung zu ermitteln.
+Wenn Ihr Netzwerk mithilfe von [ExpressRoute](/azure/expressroute/expressroute-introduction) mit dem Azure-Netzwerk verbunden ist, ist jede Verbindung mit zwei öffentlichen IP-Adressen bei Microsoft konfiguriert. Diese werden zum Herstellen der Verbindung mit Microsoft-Diensten, z.B. Azure Storage, mithilfe von [öffentlichem Azure-Peering](/azure/expressroute/expressroute-circuit-peerings#expressroute-routing-domains) verwendet.  Um die Kommunikation von Ihrer Verbindung mit Azure Storage zu ermöglichen, müssen Sie IP-Adressregeln für die öffentlichen IP-Adressen Ihrer Verbindungen erstellen.  [Öffnen Sie über das Azure-Portal ein Supportticket für ExpressRoute](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview), um die öffentlichen IP-Adressen Ihrer ExpressRoute-Verbindung zu ermitteln.
 
 
 ### <a name="managing-ip-network-rules"></a>Verwalten von IP-Netzwerkregeln
@@ -294,7 +294,7 @@ Wenn die Ausnahme „Vertrauenswürdige Microsoft-Dienste“ aktiviert ist, wird
 |Azure Event Grid|Microsoft.EventGrid|Aktivieren der Veröffentlichung von Blob Storage-Ereignissen.  [Weitere Informationen](https://docs.microsoft.com/azure/event-grid/overview).|
 |Azure Event Hubs|Microsoft.EventHub|Archivieren von Daten mit Event Hubs Capture.  [Weitere Informationen](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview).|
 |Azure-Netzwerke|Microsoft.Networking|Speichern und Analysieren von Protokollen des Netzwerkdatenverkehrs.  [Weitere Informationen](https://docs.microsoft.com/azure/network-watcher/network-watcher-packet-capture-overview).|
-|Azure Monitor|Microsoft.Insights| Ermöglicht das Schreiben von Überwachungsdaten in ein gesichertes Speicherkonto. [Weitere Informationen](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-roles-permissions-security#monitoring-and-secured-Azure-storage-and-networks).|
+|Azure Monitor|Microsoft.Insights| Ermöglicht das Schreiben von Überwachungsdaten in ein gesichertes Speicherkonto. [Weitere Informationen](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-roles-permissions-security#monitoring-and-secured-Azure-storage-and-networks)|
 |
 
 

@@ -10,12 +10,12 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 3b38cc265b4adfb301dc1165e02b17a8aa7c9589
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: f344424c372f65cd8bfe5779cc65f0e866e58a11
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51252546"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51633970"
 ---
 # <a name="how-to-use-alternative-inputs"></a>Alternative Eingaben
 
@@ -137,8 +137,10 @@ Fügen Sie dem ersten Dialog eine alternative Eingabe hinzu:
     3. Klicken Sie auf „Änderungen übermitteln“.
 4. Klicken Sie zum Auswählen im linken Bereich auf „Denver“:
     1. Geben Sie im Feld „Alternative Eingabe hinzufügen“ „für Denver“ ein.
-    2. Geben Sie „Vorhersage für Austin“ ein.
-        - Der vollständige Ausdruck wird hervorgehoben. Klicken Sie auf den Ausdruck und auf das rote „X“. Wählen Sie „Austin“ aus, und klicken Sie auf „Stadt“.
+    1. Geben Sie „Vorhersage für Austin“ ein.
+        - Die Fehlermeldung „Text Variations must contain the same detected Entities as the original input text.“ (Textvariationen müssen die gleichen ermittelten Entitäten wie der ursprüngliche Eingabetext enthalten.) wird angezeigt.
+        - Klicken Sie auf das Wort „austin“.
+        - Ein Popupfenster wird angezeigt, in dem Sie die Entität für „austin“ auswählen können. Klicken Sie auf **city**.
         - Klicken Sie auf „Änderungen übermitteln“.
     1. Klicken Sie auf „Fertig“. Daraufhin wird das Modell erneut trainiert.
 

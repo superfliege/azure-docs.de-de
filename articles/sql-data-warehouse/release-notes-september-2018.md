@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Data Warehouse – Versionshinweise September 2018 | Microsoft-Dokumentation
+title: 'Azure SQL Data Warehouse: Versionshinweise September 2018 | Microsoft-Dokumentation'
 description: Versionshinweise zu Azure SQL Data Warehouse
 services: sql-data-warehouse
 author: twounder
@@ -10,12 +10,12 @@ ms.component: manage
 ms.date: 10/08/2018
 ms.author: mausher
 ms.reviewer: twounder
-ms.openlocfilehash: f2fe1bc06f4122a1d27b22288784b3db167c300c
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: f8073fd746bc02c23efab914c45c61830942a677
+ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49321698"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51577968"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-september-2018"></a>Neuerungen in Azure SQL Data Warehouse September 2018
 Azure SQL Data Warehouse wird fortlaufend verbessert. In diesem Artikel informieren wir Sie über neue Features und Änderungen, die im September 2018 eingeführt wurden.
@@ -96,7 +96,7 @@ Außerdem wird durch die Verbesserung die Gesamtausführungszeit von Anweisungen
 
 ## <a name="bug-fixes"></a>Fehlerbehebungen
 
-| Titel | Beschreibung |
+| Titel | BESCHREIBUNG |
 |:---|:---|
 | **Fehlerbehebung beim Erstellen von Statistiken zu Verteilungen für UNIQUE-Einschränkungen** | Dies betrifft einen Fehler, der für Benutzer beim Ausführen von UPDATE STATISTICS mit ausschließlicher Angabe der Tabelle auftrat, wenn für die Tabelle eine UNIQUE-Einschränkung definiert war. |
 | **Fehlerbehebung beim Kompilieren von Abfragen über externe Tabellen** | Dies betrifft einen Fehler, der sich auf die Kompilierungszeit für Abfragen unter Einbeziehung externer Tabellen auswirkte.|

@@ -12,26 +12,42 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/06/2017
+ms.date: 11/06/2018
 ms.author: spelluru
-ms.openlocfilehash: a0f2cc0d76ef3c857bb7c13f46f1397f05b60977
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 40562c77cf38ad316d64f68b54dd4174dae6da1a
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51232442"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51614471"
 ---
 # <a name="azure-wcf-relay-rest-tutorial"></a>Tutorial zu Azure WCF Relay mit REST
-
 Dieses Tutorial beschreibt, wie Sie eine einfache Azure Relay-Hostanwendung erstellen, die eine REST-basierte Schnittstelle verfügbar macht. REST ermöglicht einem Webclient, z. B. einem Webbrowser, den Zugriff auf die Service Bus-API über HTTP-Anforderungen.
 
 Das Tutorial verwendet das WCF-REST-Programmiermodell (Windows Communication Foundation) zum Erstellen eines REST-Diensts in Azure Relay. Weitere Informationen finden Sie unter [WCF-REST-Programmiermodell](/dotnet/framework/wcf/feature-details/wcf-web-http-programming-model) und [Entwerfen und Implementieren von Diensten](/dotnet/framework/wcf/designing-and-implementing-services) in der WCF-Dokumentation.
 
-## <a name="step-1-create-a-namespace"></a>Schritt 1: Erstellen eines Namespace
+In diesem Tutorial führen Sie die folgenden Schritte aus:
+
+> [!div class="checklist"]
+> * Erstellen eines Relaynamespace
+> * Definieren eines REST-basierten WCF-Dienstvertrags
+> * Implementieren des REST-basierten WCF-Vertrags
+> * Hosten und Ausführen des REST-basierten WCF-Diensts
+> * Ausführen und Testen des Diensts
+
+## <a name="prerequisites"></a>Voraussetzungen
+
+Zum Durchführen dieses Tutorials benötigen Sie Folgendes:
+
+- Ein Azure-Abonnement. Falls Sie kein Abonnement besitzen, können Sie ein [kostenloses Konto erstellen](https://azure.microsoft.com/free/), bevor Sie beginnen.
+- [Visual Studio 2015 oder eine höhere Version.](http://www.visualstudio.com) Für die Beispiele in diesem Tutorial wird Visual Studio 2017 verwendet.
+- Azure SDK für .NET. Installieren Sie das SDK über die [SDK-Downloadseite](https://azure.microsoft.com/downloads/).
+
+## <a name="create-a-relay-namespace"></a>Erstellen eines Relaynamespace
 
 Um Relay-Features in Azure verwenden zu können, müssen Sie zuerst einen Dienstnamespace erstellen. Ein Namespace ist ein Bereichscontainer für die Adressierung von Azure-Ressourcen innerhalb Ihrer Anwendung. Führen Sie [diese Anleitung](relay-create-namespace-portal.md) aus, um einen Relaynamespace zu erstellen.
 
-## <a name="step-2-define-a-rest-based-wcf-service-contract-to-use-with-azure-relay"></a>Schritt 2: Definieren eines REST-basierten WCF-Dienstvertrags für die Verwendung mit Azure Relay
+## <a name="define-a-rest-based-wcf-service-contract-to-use-with-azure-relay"></a>Definieren eines REST-basierten WCF-Dienstvertrags für die Verwendung mit Azure Relay
 
 Sie müssen den Vertrag definieren, wenn Sie einen WCF-Dienst im REST-Stil erstellen. Der Vertrag gibt an, welche Vorgänge der Host unterstützt. Ein Dienstvorgang ähnelt einer Webdienstmethode. Verträge werden durch die Definition einer C++-, C#- oder Visual Basic-Schnittstelle erstellt. Jede Methode in der Schnittstelle entspricht einem bestimmten Dienstvorgang. Auf jede Schnittstelle muss das Attribut [ServiceContractAttribute](/dotnet/api/system.servicemodel.servicecontractattribute) und auf jeden Vorgang das Attribut [OperationContractAttribute](/dotnet/api/system.servicemodel.operationcontractattribute) angewendet werden. Wenn eine Methode in einer Schnittstelle mit dem Attribut [ServiceContractAttribute](/dotnet/api/system.servicemodel.servicecontractattribute) kein Attribut [OperationContractAttribute](/dotnet/api/system.servicemodel.operationcontractattribute) besitzt, wird diese Methode nicht bereitgestellt. Der für diese Aufgaben verwendete Code wird im Beispiel nach dem Verfahren bereitgestellt.
 
@@ -136,7 +152,7 @@ namespace Microsoft.ServiceBus.Samples
 }
 ```
 
-## <a name="step-3-implement-a-rest-based-wcf-service-contract-to-use-service-bus"></a>Schritt 3: Implementieren eines REST-basierten WCF-Dienstvertrags für die Verwendung von Service Bus
+## <a name="implement-the-rest-based-wcf-service-contract"></a>Implementieren des REST-basierten WCF-Dienstvertrags
 Das Erstellen eines WCF-Relaydiensts im REST-Stil erfordert, dass Sie zuerst den Vertrag erstellen, der über eine Schnittstelle definiert wird. Der nächste Schritt ist das Implementieren der Schnittstelle. Dies umfasst das Erstellen einer Klasse namens **ImageService**, die die benutzerdefinierte **IImageContract**-Schnittstelle implementiert. Nachdem Sie den Vertrag implementiert haben, konfigurieren Sie die Schnittstelle mithilfe einer "App.config"-Datei. Die Konfigurationsdatei enthält die erforderlichen Informationen für die Anwendung, wie z.B. den Namen des Diensts, den Namen des Vertrags und den Typ des Protokolls, das für die Kommunikation mit dem Relaydienst verwendet wird. Der für diese Aufgaben verwendete Code wird im Beispiel nach dem Verfahren bereitgestellt.
 
 Wie bei den vorherigen Schritten gibt es nur wenige Unterschiede zwischen der Implementierung eines Vertrags im REST-Stil und eines WCF-Relayvertrags.
@@ -430,7 +446,7 @@ Das folgende Beispiel zeigt die "App.config"-Datei, die dem Dienst zugeordnet is
 </configuration>
 ```
 
-## <a name="step-4-host-the-rest-based-wcf-service-to-use-azure-relay"></a>Schritt 4: Hosten des REST-basierten WCF-Diensts zur Verwendung von Azure Relay
+## <a name="host-the-rest-based-wcf-service-to-use-azure-relay"></a>Hosten des REST-basierten WCF-Diensts zur Verwendung von Azure Relay
 Dieser Schritt beschreibt, wie ein Webdienst mithilfe einer Konsolenanwendung mit WCF-Relay ausgeführt wird. Eine vollständige Liste des Programmcodes, der in diesem Schritt geschrieben wird, wird in dem Beispiel nach dem Verfahren bereitgestellt.
 
 ### <a name="to-create-a-base-address-for-the-service"></a>So erstellen Sie eine Basisadresse für den Dienst
@@ -476,7 +492,7 @@ Dieser Schritt beschreibt, wie ein Webdienst mithilfe einer Konsolenanwendung mi
     host.Close();
     ```
 
-## <a name="example"></a>Beispiel
+### <a name="example"></a>Beispiel
 Das folgende Beispiel schließt den Dienstvertrag und die Implementierung aus früheren Schritten des Lernprogramms ein und hostet den Dienst in einer Konsolenanwendung. Kompilieren Sie den folgenden Code in eine ausführbare Datei namens „ImageListener.exe“.
 
 ```csharp
@@ -551,7 +567,7 @@ namespace Microsoft.ServiceBus.Samples
 }
 ```
 
-### <a name="compiling-the-code"></a>Kompilieren des Codes
+## <a name="run-and-test-the-service"></a>Ausführen und Testen des Diensts
 Führen Sie nach dem Erstellen der Projektmappe Folgendes aus, um die Anwendung auszuführen:
 
 1. Drücken Sie **F5**, oder navigieren Sie zum Speicherort der ausführbaren Datei (ImageListener\bin\Debug\ImageListener.exe), um den Dienst auszuführen. Führen Sie die App weiter aus, da sie für den nächsten Schritt erforderlich ist.

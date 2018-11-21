@@ -5,21 +5,21 @@ services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: article
-ms.date: 09/24/2018
+ms.date: 10/29/2018
 ms.author: danlep
-ms.openlocfilehash: cdabafc4f70b08076820e7e0d39300b3eb0bc1e7
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 4492e05339c72c371eb2c935d0397b469440c4f6
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48856716"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51632691"
 ---
 # <a name="run-multi-step-build-test-and-patch-tasks-in-acr-tasks"></a>Ausführen von Erstellungs-, Test- und Patchtasks mit mehreren Schritten in ACR Tasks
 
 Tasks mit mehreren Schritten erweitern die ACR Tasks-Funktion zum Erstellen und Pushen einzelner Images um auf mehreren Containern basierende Workflows mit mehreren Schritten. Verwenden Sie Tasks mit mehreren Schritten, um mehrere Images zu erstellen und seriell oder parallel per Push bereitzustellen, und führen Sie diese Image als Befehle innerhalb einer einzigen Taskausführung aus. Jeder Schritt definiert einen Build- oder Pushvorgang für ein Containerimage und kann auch die Ausführung eines Containers definieren. Jeder Schritt in einem Task mit mehreren Schritten verwendet einen Container als Ausführungsumgebung.
 
 > [!IMPORTANT]
-> Wenn Sie in der Vorschauversion bereits Tasks mit dem `az acr build-task`-Befehl erstellt haben, müssen diese Tasks mit dem Befehl [az acr task][az-acr-task] neu erstellt werden.
+> Wenn Sie in der Vorschauversion bereits Aufgaben mit dem `az acr build-task`-Befehl erstellt haben, müssen diese Aufgaben mit dem Befehl [az acr task][az-acr-task] neu erstellt werden.
 
 Sie können z.B. einen Task mit Schritten ausführen, die Folgendes automatisieren:
 
@@ -53,7 +53,7 @@ Ein aus mehreren Schritten bestehender Task in ACR Tasks ist als eine Reihe von 
 * [`push`](container-registry-tasks-reference-yaml.md#push): Pushen von erstellten Images in eine Containerregistrierung. Private Registrierungen wie Azure Container Registry werden ebenso unterstützt wie der öffentliche Docker-Hub.
 * [`cmd`](container-registry-tasks-reference-yaml.md#cmd): Ausführen eines Containers in einer Weise, dass dieser als Funktion im Kontext des ausgeführten Tasks dienen kann. Sie können Parameter an den `[ENTRYPOINT]` des Containers übergeben und Eigenschaften wie „env“, „detach“ sowie weitere bekannte `docker run`-Parameter angeben. Der Schritttyp `cmd` ermöglicht Komponenten- und Funktionstests bei gleichzeitiger Ausführung von Containern.
 
-Tasks mit mehreren Schritten können ganz einfach nur Erstellungs- und Pushvorgänge für ein einzelnes Image umfassen:
+Die folgenden Codeausschnitte zeigen, wie solche Taskschritttypen kombiniert werden. Tasks mit mehreren Schritten können einfach nur das Erstellen eines einzelnen Images aus einem Dockerfile und dessen Übertragung in Ihre Registrierung umfassen. Dabei wird eine ähnliche YAML-Datei wie diese verwendet:
 
 ```yaml
 version: 1.0-preview-1
@@ -62,7 +62,7 @@ steps:
   - push: ["{{.Run.Registry}}/hello-world:{{.Run.ID}}"]
 ```
 
-Sie können auch wesentlich komplexer sein, wie z.B. der folgende Task, der Schritte für Erstellen, Testen, Helm-Paket und Helm-Bereitstellung umfasst:
+Sie können auch komplexer sein, z.B. wie bei dieser fiktiven Definition mit mehreren Schritten für Erstellen, Testen, Helm-Paket und Helm-Bereitstellung (Containerregistrierung und Helm-Repository nicht gezeigt):
 
 ```yaml
 version: 1.0-preview-1
@@ -84,6 +84,8 @@ steps:
   - cmd: {{.Run.Registry}}/functions/helm package --app-version {{.Run.ID}} -d ./helm ./helm/helloworld/
   - cmd: {{.Run.Registry}}/functions/helm upgrade helloworld ./helm/helloworld/ --reuse-values --set helloworld.image={{.Run.Registry}}/helloworld:{{.Run.ID}}
 ```
+
+Unter [Taskbeispiele][task-examples] finden Sie vollständige YAML-Dateien und Dockerfiles mit mehreren Schritten für verschiedene Szenarien.
 
 ## <a name="run-a-sample-task"></a>Ausführen eines Beispieltasks
 
@@ -163,6 +165,7 @@ Hier finden Sie Referenzen und Beispiele für Tasks mit mehreren Schritten:
 
 * [Taskreferenz](container-registry-tasks-reference-yaml.md): Arten von Taskschritten, zugehörige Eigenschaften und Verwendung
 * [Taskbeispiele][task-examples]: `task.yaml`-Beispieldateien für verschiedene Szenarien – von ganz einfachen bis zu hochkomplexen
+* [Cmd-Repository](https://github.com/AzureCR/cmd): Eine Sammlung von Containern als Befehle für ACR-Tasks.
 
 <!-- IMAGES -->
 

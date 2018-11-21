@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 06/18/2018
 ms.author: martincoetzer
-ms.openlocfilehash: d52431b50e37101b0272e3ce4bbf91011a477775
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 8ce75efae2d735c5653f9dae72c670b0714351ac
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51252086"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51567949"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>Fünf Schritte zum Sichern Ihrer Identitätsinfrastruktur
 
@@ -34,6 +34,10 @@ Diese Checkliste erläutert folgende Aspekte und hilft Ihnen dabei, empfohlene w
 > [!NOTE]
 > Viele der Empfehlungen in diesem Dokumentation gelten nur für Anwendungen, die zur Verwendung von Azure Active Directory als Identitätsanbieter konfiguriert sind. Durch Konfigurieren der Apps für das einmalige Anmelden profitieren Sie von folgenden Vorteilen: Richtlinien für Anmeldeinformationen, Bedrohungsermittlung, Überwachung, Protokollierung sowie weiteren Features. Das [einmalige Anmelden über Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-manage-sso) ist das Fundament, auf dem all diese Empfehlungen beruhen.
 
+Die Empfehlungen in diesem Dokument beziehen sich auf die [Identity Secure Score](https://docs.microsoft.com/azure/active-directory/fundamentals/identity-secure-score), eine automatisierte Bewertung der Identitätssicherheitskonfiguration Ihres Azure AD-Mandanten. Organisationen können über die Seite „Identity Secure Score“ im Azure AD-Portal Lücken in ihrer aktuellen Sicherheitskonfiguration aufdecken, um sicherzustellen, dass sie die aktuellen Best Practices zur Sicherheit von Microsoft befolgen. Durch die Implementierung der einzelnen Empfehlungen auf der Seite „Secure Score“ erhöht sich Ihre Bewertung. Zudem können Sie Ihren Fortschritt nachverfolgen und Ihre Implementierung mit denen anderer Organisationen von ähnlicher Größe oder innerhalb Ihrer Branche vergleichen.
+
+![Identity Secure Score](media/azure-ad/azure-ad-sec-steps0.png)
+
 ## <a name="before-you-begin-protect-privileged-accounts-with-mfa"></a>Vor dem Start: Schützen privilegierter Konten mit MFA
 
 Bevor Sie damit beginnen, diese Checkliste durchzuarbeiten, stellen Sie sicher, dass Ihre Organisation nicht bereits gefährdet ist, bevor Sie mit der Checkliste fertig sind. Als Erstes müssen Sie privilegierte Konten schützen.
@@ -44,45 +48,43 @@ Alles fertig? Dann beginnen wir mit der Checkliste.
 
 ## <a name="step-1---strengthen-your-credentials"></a>Schritt 1: Verstärken Sie Ihre Anmeldeinformationen. 
 
-Die meisten Sicherheitsverletzungen in Unternehmen rühren daher, dass ein Konto mithilfe einer von nur wenigen Methoden gefährdet wurde, beispielsweise durch Kennwortspraying, Breach Replay und Phishing. Mehr über diese Angriffsmethoden erfahren Sie in diesem Video (1 Std. 15 Min.):
-> [!VIDEO https://channel9.msdn.com/events/Ignite/Microsoft-Ignite-Orlando-2017/BRK3016/player]
-
-Wenn Benutzer in Ihrem Identitätssystem schwache Kennwörter verwenden und diese nicht mit einer mehrstufigen Authentifizierung verstärken, lautet die Frage nicht, ob oder wann ein Angriff erfolgt, sondern „Wie oft?“.
+Die meisten Sicherheitsverletzungen in Unternehmen rühren daher, dass ein Konto mithilfe einer von nur wenigen Methoden gefährdet wurde, beispielsweise durch Kennwortspraying, Breach Replay und Phishing. Mehr über diese Angriffsmethoden erfahren Sie in diesem Video (45 Min.):
+> [!VIDEO https://www.youtube.com/embed/uy0j1_t5Hd4]
 
 ### <a name="make-sure-your-organization-use-strong-authentication"></a>Sicherstellen, dass Ihre Organisation eine starke Authentifizierung verwendet
 
 Angesichts der Häufigkeit, mit der Kennwörter erraten, per Phishing herausgefunden, mithilfe von Schadsoftware gestohlen oder einfach wiederverwendet werden, ist es von entscheidender Bedeutung, Kennwörter mit sicheren Anmeldeinformationen zu stärken. Erfahren Sie mehr über die [Azure Multi-Factor Authentication](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication).
 
-### <a name="turn-off-traditional-complexity-expiration-rules-and-start-banning-commonly-attacked-passwords-instead"></a>Schluss mit herkömmlichen Komplexitätsanforderungen und Ablaufregeln – sperren Sie stattdessen angriffsanfällige Kennwörter
+### <a name="start-banning-commonly-attacked-passwords-and-turn-off-traditional-complexity-and-expiration-rules"></a>Schluss mit herkömmlichen Komplexitätsanforderungen und Ablaufregeln – sperren Sie stattdessen angriffsanfällige Kennwörter.
 
-Viele Organisationen verwenden die herkömmliche Kennwortkomplexität (z.B. Sonderzeichen) und Regeln für den Ablauf von Kennwörtern. Forschungsergebnisse von Microsoft zeigen, dass diese Richtlinien schädlich sind, da sie Benutzer dazu veranlassen, Kennwörter auszuwählen, die verhältnismäßig einfach zu erraten sind.
+Viele Organisationen verwenden die herkömmliche Kennwortkomplexität (die Erzwingung von Sonderzeichen, Zahlen sowie Groß- und Kleinschreibung) und Regeln für den Ablauf von Kennwörtern. [Forschungsergebnisse von Microsoft](https://aka.ms/passwordguidance) zeigen, dass diese Richtlinien Benutzer dazu veranlassen, Kennwörter auszuwählen, die verhältnismäßig einfach zu erraten sind.
 
-Microsoft empfiehlt in Übereinstimmung mit den [NIST Guidelines](https://pages.nist.gov/800-63-3/sp800-63b.html), folgende drei Richtlinien zu implementieren:
+Das Azure AD-Feature der [dynamisch gesperrten Kennwörter](https://docs.microsoft.com/azure/active-directory/active-directory-secure-passwords) nutzt aktuelle Informationen zum Angreiferverhalten, um Benutzer daran zu hindern, leicht zu erratende Kennwörter festzulegen. Diese Funktion ist immer aktiviert, wenn Benutzer in der Cloud erstellt werden, steht ab sofort auch für Hybridorganisationen bei der Bereitstellung des [Kennwortschutzes für Azure AD für Windows Server Active Directory](https://docs.microsoft.com/azure/active-directory/authentication/concept-password-ban-bad-on-premises) zur Verfügung. Der Azure AD-Kennwortschutz hindert Benutzer daran, diese allgemeinen Kennwörtern auszuwählen und kann erweitert werden, um Kennwörter, die von Ihnen angegebene benutzerdefinierte Schlüsselwörter enthalten, zu blockieren. Beispielsweise können Sie Ihre Benutzer daran hindern, Kennwörter mit Produktnamen Ihres Unternehmens oder Namen eines regionalen Sportteams auszuwählen.
+
+Microsoft empfiehlt, die folgende moderne Kennwortrichtlinie basierend auf dem [NIST-Leitfaden](https://pages.nist.gov/800-63-3/sp800-63b.html) anzuwenden:
 
 1. Fordern Sie Kennwörter mit mindestens 8 Zeichen. Längere Kennwörter sind nicht unbedingt besser, da sie dazu führen, dass Benutzer vorhersagbare Kennwörter verwenden oder ihre Kennwörter in Dateien speichern oder sich aufschreiben.
 2. Deaktivieren Sie Ablaufregeln – diese veranlassen Benutzer dazu, einfach zu erratende Kennwörter wie **Sommer2018!** zu verwenden.
 3. Deaktivieren Sie Anforderungen an die Zeichenzusammensetzung, und hindern Sie Benutzer daran, angriffsanfällige Kennwörter zu verwenden – dies führt dazu, dass Benutzer vorhersagbare Zeichenersetzungen in Kennwörtern verwenden.
 
-Wenn Sie Identitäten direkt in Azure AD erstellen, können Sie den [Kennwortablauf mithilfe von PowerShell verhindern](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-policy). Organisationen, die eine lokale Active Directory-Instanz mit Azure AD Connect verwenden, um Identitäten in Azure AD zu synchronisieren (dies wird auch als Hybridbereitstellung bezeichnet), sollten lokale [intelligente Kennwortrichtlinien](https://aka.ms/passwordguidance) implementieren. Verwenden Sie dazu die [Domänengruppen-Richtlinieneinstellungen](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/hh994572(v%3dws.10)) oder [Windows PowerShell](https://docs.microsoft.com/powershell/module/addsadministration/set-addefaultdomainpasswordpolicy).
-
-Das Azure Active Directory-Feature der [dynamisch gesperrten Kennwörter](https://docs.microsoft.com/azure/active-directory/active-directory-secure-passwords) nutzt aktuelle Informationen zum Angreiferverhalten, um Benutzer daran zu hindern, leicht zu erratende Kennwörter festzulegen. Dieses Feature ist jederzeit aktiv. Organisationen mit Hybridbereitstellungen können von diesem Feature profitieren, indem sie das [Kennwortrückschreiben](https://docs.microsoft.com/azure/active-directory/authentication/howto-sspr-writeback) aktivieren. Alternativ dazu können sie den [AD-Kennwortschutz für Windows Server Active Directory](https://docs.microsoft.com/azure/active-directory/authentication/concept-password-ban-bad-on-premises) bereitstellen. Der Azure AD-Kennwortschutz hindert Benutzer daran, ganz allgemein häufige Kennwörter auszuwählen. Zudem können Sie benutzerdefinierte Kennwörter konfigurieren, die ebenfalls nicht verwendet werden dürfen.
+Wenn Sie Identitäten direkt in Azure AD erstellen, können Sie den [Kennwortablauf mithilfe von PowerShell für Benutzer verhindern](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-policy). Hybridorganisationen sollten diese Richtlinien mit [Domänengruppen-Richtlinieneinstellungen](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/hh994572(v%3dws.10)) oder [Windows PowerShell](https://docs.microsoft.com/powershell/module/addsadministration/set-addefaultdomainpasswordpolicy) implementieren.
 
 ### <a name="protect-against-leaked-credentials-and-add-resilience-against-outages"></a>Schutz vor kompromittierten Anmeldeinformationen und Verstärken der Ausfallsicherung
 
-Wenn Ihre Organisation eine hybride Identitätslösung verwendet, sollten Sie aus den beiden folgenden Gründen die Kennworthashsynchronisierung aktivieren:
+Wenn Ihre Organisation eine Hybrididentitätslösung mit Pass-Through-Authentifizierung oder Verbundauthentifizierung verwendet, sollten Sie aus den beiden folgenden Gründen die Kennworthashsynchronisierung aktivieren:
 
 * Der Bericht zu [Benutzern mit kompromittierten Anmeldeinformationen](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-risk-events) in der Azure AD-Verwaltung warnt Sie vor Kombinationen aus Benutzername und Kennwort, die im „Dark Web“ verbreitet wurden. Eine schier unglaubliche Menge an Kennwörtern wird über drei Wege kompromittiert: Phishing, Schadsoftware und die Wiederverwendung von Kennwörtern auf Drittanbieterwebsites, die später gehackt werden. Microsoft findet eine Vielzahl dieser kompromittierten Anmeldeinformationen und teilt Ihnen in diesem Bericht mit, wenn sie Anmeldeinformationen in Ihrer Organisation entsprechen – aber nur, wenn Sie die [Kennworthashsynchronisierung aktivieren](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-implement-password-hash-synchronization)!
-* Sollte ein lokales System ausfallen (beispielsweise aufgrund eines Ransomwareangriffs), können Sie zur [Cloudauthentifizierung mit Kennworthashsynchronisierung](https://docs.microsoft.com/azure/security/azure-ad-choose-authn) wechseln. Diese Backupmethode für die Authentifizierung ermöglicht es, weiterhin auf Apps zuzugreifen, die für die Authentifizierung mit Azure Active Directory konfiguriert sind, beispielsweise Office 365.
+* Sollte ein lokales System ausfallen (beispielsweise aufgrund eines Ransomware-Angriffs), können Sie zur [Cloudauthentifizierung mit Kennworthashsynchronisierung](https://docs.microsoft.com/azure/security/azure-ad-choose-authn) wechseln. Diese Backupmethode für die Authentifizierung ermöglicht es, weiterhin auf Apps zuzugreifen, die für die Authentifizierung mit Azure Active Directory konfiguriert sind, beispielsweise Office 365. In diesem Fall müssen IT-Mitarbeiter nicht auf persönliche E-Mail-Konten zurückgreifen, um bis zur Behebung des lokalen Ausfalls Daten freizugeben.
 
 Informieren Sie sich, wie die [Kennworthashsynchronisierung](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-implement-password-hash-synchronization) funktioniert.
 
-### <a name="implement-ad-fs-extranet-lockout"></a>Implementieren der AD FS-Extranetsperre
+### <a name="implement-ad-fs-extranet-smart-lockout"></a>Implementieren der intelligenten AD FS-Extranetsperre
 
-Organisationen, die Anwendungen für die direkte Authentifizierung in Azure AD konfigurieren, profitieren von der [intelligenten Kennwortsperrung von Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-secure-passwords). Wenn Sie AD FS in Windows Server 2012 R2 verwenden, implementieren Sie den [Extranetsperrschutz](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-soft-lockout-protection) von AD FS. Wenn Sie AD FS in Windows Server 2016 verwenden, implementieren Sie die [intelligente Extranetsperre](https://support.microsoft.com/en-us/help/4096478/extranet-smart-lockout-feature-in-windows-server-2016). Die intelligente Extranetsperre von AD FS schützt vor Brute-Force-Angriffen auf AD FS und verhindert gleichzeitig, dass Benutzer aus Active Directory ausgesperrt werden.
+Organisationen, die Anwendungen für die direkte Authentifizierung in Azure AD konfigurieren, profitieren von der [intelligenten Kennwortsperrung von Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-secure-passwords). Wenn Sie AD FS in Windows Server 2012 R2 verwenden, implementieren Sie den [Extranetsperrschutz](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-soft-lockout-protection) von AD FS. Wenn Sie AD FS in Windows Server 2016 verwenden, implementieren Sie die [intelligente Extranetsperre](https://support.microsoft.com/help/4096478/extranet-smart-lockout-feature-in-windows-server-2016). Die intelligente Extranetsperre von AD FS schützt vor Brute-Force-Angriffen auf AD FS und verhindert gleichzeitig, dass Benutzer aus Active Directory ausgesperrt werden.
 
 ### <a name="take-advantage-of-intrinsically-secure-easier-to-use-credentials"></a>Die Vorteile von in sich sicheren, einfacher verwendbaren Anmeldeinformationen
 
-Über [Windows Hello](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification) können Sie Kennwörter durch eine starke zweistufige Authentifizierung auf PCs und Mobilgeräten ersetzen. Diese Authentifizierung besteht aus einer neuen Form von Anmeldeinformationen, die an ein Gerät gebunden sind und biometrische Daten oder eine PIN verwenden.
+Über [Windows Hello](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification) können Sie Kennwörter durch eine starke zweistufige Authentifizierung auf PCs und Mobilgeräten ersetzen. Diese Authentifizierung besteht aus einer neuen Form von Anmeldeinformationen, die sicher an ein Gerät gebunden sind und biometrische Daten oder eine PIN verwenden.
 
 ## <a name="step-2---reduce-your-attack-surface"></a>Schritt 2: Verringern Sie die Angriffsfläche.
 
@@ -98,9 +100,11 @@ Apps, die eigene, veraltete Methoden zur Authentifizierung bei Azure AD und zum 
 
 ### <a name="block-invalid-authentication-entry-points"></a>Blockieren von ungültigen Authentifizierungseinstiegspunkten
 
-Sie müssen grundsätzlich davon ausgehen, dass Sicherheitsverletzungen passieren. Vor diesem Hintergrund müssen Sie die Auswirkungen gehackter Benutzeranmeldeinformationen begrenzen, sobald die Sicherheitsverletzung aufgetreten ist. Berücksichtigen Sie für jede App in Ihrer Umgebung die gültigen Anwendungsfälle: Welche Gruppen, welche Netzwerke, welche Geräte und welche weiteren Elemente sind autorisiert? Blockieren Sie den Rest. Achten Sie darauf, die Verwendung von [Konten mit umfangreichen Berechtigungen oder Dienstkonten](https://docs.microsoft.com/azure/active-directory/admin-roles-best-practices) zu beschränken. Mit dem [bedingten Zugriff von Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal) können Sie bestimmte Bedingungen definieren und so steuern, wie autorisierte Benutzer auf ihre Apps und Ressourcen zugreifen.
+Sie müssen grundsätzlich davon ausgehen, dass Sicherheitsverletzungen passieren. Vor diesem Hintergrund müssen Sie die Auswirkungen gehackter Benutzeranmeldeinformationen begrenzen, sobald die Sicherheitsverletzung aufgetreten ist. Berücksichtigen Sie für jede App in Ihrer Umgebung die gültigen Anwendungsfälle: Welche Gruppen, welche Netzwerke, welche Geräte und welche weiteren Elemente sind autorisiert? Blockieren Sie den Rest. Mit dem [bedingten Zugriff von Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal) können Sie bestimmte Bedingungen definieren und so steuern, wie autorisierte Benutzer auf ihre Apps und Ressourcen zugreifen.
 
-Achten Sie besonders auf Dienstkonten (Konten, mit denen Aufgaben automatisiert ausgeführt werden). Mit dem bedingten Zugriff können Sie sicherstellen, dass solche Konten nur für den Dienst, von der IP-Adresse und zu der Tageszeit ausgeführt werden, der bzw. die angemessen ist.
+### <a name="block-end-user-consent"></a>Sperren der Endbenutzerzustimmung
+
+Standardmäßig dürfen alle Benutzer in Azure AD Anwendungen, die OAuth 2.0 und die Berechtigungen des [Microsoft Identity-Zustimmungsframework](https://docs.microsoft.com/azure/active-directory/develop/consent-framework) nutzen, die Berechtigung gewähren, auf Unternehmensdaten zuzugreifen. Zwar können Benutzer durch eine Zustimmung mühelos nützliche Anwendungen erwerben, die sich in Microsoft 365 und Azure integrieren lassen, allerdings kann dies bei nachlässiger Nutzung und Überwachung ein Risiko darstellen. Durch die [Deaktivierung aller zukünftigen Endbenutzer-Zustimmungsvorgänge](https://docs.microsoft.com/azure/active-directory/manage-apps/methods-for-removing-user-access) können Sie die Angriffsfläche und dieses Risiko verringern. Wenn die Endbenutzerzustimmung deaktiviert ist, werden vorherige Zustimmungserteilungen nach wie vor berücksichtigt, aber alle zukünftigen Zustimmungsvorgänge müssen von einem Administrator ausgeführt werden. Bevor Sie diese Funktion deaktivieren, sollten Sie sicherstellen, dass sich Benutzer im Klaren darüber sind, wie die Genehmigung des Administrators für neue Anwendungen eingeholt werden kann. Dies sollte dabei helfen, Benutzerprobleme zu reduzieren, die Menge der Supportanfragen zu minimieren und sicherzustellen, dass sich Benutzer nicht mit anderen Anmeldeinformationen als von Azure AD für Anwendungen registrieren.
 
 ### <a name="implement-azure-ad-privileged-identity-management"></a>Implementieren von Azure AD Privileged Identity Management
 
@@ -113,7 +117,7 @@ Die grundsätzliche Annahme, dass Sicherheitsverletzungen passieren, führt auch
 * Richten Sie Regeln ein, die sicherstellen, dass privilegierte Rollen durch mehrstufige Authentifizierung geschützt sind.
 * Richten Sie Regeln ein, die sicherstellen, dass privilegierte Rollen nur so lange gewährt werden, wie zum Ausführen der entsprechenden Aufgabe erforderlich ist.
 
-Aktivieren Sie Azure AD PIM, sehen Sie sich die Benutzer an, denen Administratorrollen zugewiesen sind, und entfernen Sie nicht benötigte Konten in diesen Rollen. Ändern Sie die Berechtigungen für die verbleibenden privilegierten Benutzer von „dauerhaft“ zu „berechtigt“. Zum Schluss richten Sie geeignete Richtlinien ein, um sicherzustellen, dass Benutzer sicher auf diese privilegierten Rollen zugreifen können, wenn es erforderlich ist.
+Aktivieren Sie Azure AD PIM, sehen Sie sich die Benutzer an, denen Administratorrollen zugewiesen sind, und entfernen Sie nicht benötigte Konten in diesen Rollen. Ändern Sie die Berechtigungen für die verbleibenden privilegierten Benutzer von „dauerhaft“ zu „berechtigt“. Zum Schluss richten Sie geeignete Richtlinien ein, um sicherzustellen, dass Benutzer mit der erforderlichen Änderungssteuerung sicher auf diese privilegierten Rollen zugreifen können, wenn es erforderlich ist.
 
 Wenn Sie den Prozess für die Bereitstellung privilegierter Konten einrichten, befolgen Sie die [bewährten Methoden zum Einrichten von mindestens zwei Notfallkonten](https://docs.microsoft.com/azure/active-directory/admin-roles-best-practices), um sicherzustellen, dass Sie weiterhin Zugriff auf Azure AD haben, falls Sie sich selbst ausgesperrt haben.
 
@@ -151,7 +155,15 @@ Unter [Überwachen von AD FS mithilfe von Azure AD Connect Health](https://docs.
 
 [Azure AD Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection) ist ein Benachrichtigungs-, Überwachungs- und Berichterstattungstool, mit dem Sie potenzielle Sicherheitslücken erkennen können, die Auswirkungen auf die Identitäten Ihrer Organisation haben können. Das Tool erkennt Risikoereignisse, wie z.B. kompromittierte Anmeldeinformationen, unmögliche Ortswechsel und Anmeldungen von infizierten Geräten sowie anonyme IP-Adressen, IP-Adressen in Zusammenhang mit der verdächtigen Aktivität und unbekannte Standorte. Aktivieren Sie die Benachrichtigungen, um E-Mails zu gefährdeten Benutzern und/oder eine wöchentliche Zusammenfassung zu erhalten.
 
+Azure AD Identity Protection bietet zwei wichtige Berichte, die Sie täglich überwachen sollten:
+1. Berichte zu riskanten Anmeldungen behandeln Benutzeranmeldeaktivitäten, denen Sie nachgehen sollten, weil die Anmeldung möglicherweise nicht durch den rechtmäßigen Besitzer erfolgt ist.
+2. In Berichten zu riskanten Benutzern werden Benutzerkonten ermittelt, die möglicherweise kompromittiert sind. Dies kann etwa Ereignisse betreffen, bei denen offengelegte Anmeldeinformationen erkannt wurden oder bei denen sich der Benutzer von verschiedenen Standorten aus angemeldet hat, bei denen ein Ortswechsel durch einen Benutzer unmöglich erscheint. 
+
 ![Benutzer mit Risikokennzeichnung](media/azure-ad/azure-ad-sec-steps3.png)
+
+### <a name="audit-apps-and-consented-permissions"></a>Überwachen von Apps und Berechtigungen, denen zugestimmt wurde
+
+Benutzer können zu einer gefährdeten Website oder App weitergeleitet werden, die Zugriff auf deren Profilinformationen und Benutzerdaten (z.B. die E-Mail-Adresse) erlangt. Ein böswilliger Akteur kann mithilfe der Berechtigungen, denen zugestimmt wurde, Postfachdaten verschlüsseln und ein Lösegeld für die Herausgabe der Postfachdaten fordern. Administratoren sollten die [Berechtigungen, die Benutzern gewährt werden, überprüfen und überwachen](https://blogs.technet.microsoft.com/office365security/defending-against-illicit-consent-grants/).
 
 ## <a name="step-5---enable-end-user-self-help"></a>Schritt 5: Aktivieren der Selbsthilfe für Benutzer
 

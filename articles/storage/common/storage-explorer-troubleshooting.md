@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
 ms.component: common
-ms.openlocfilehash: 4f0558f9619aa06557cf89e885154f6326d4b150
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: ec12da6ccd5b681c85da87d53f944fc4430149b5
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51281777"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51616196"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure Storage-Explorer – Leitfaden zur Problembehandlung
 
@@ -81,7 +81,7 @@ Die macOS-Keychain kann sich manchmal in einem Zustand befinden, der Probleme in
 * Neustart von Storage-Explorer
 * Wenn das Fenster „Authentifizierung“ leer ist, warten Sie mindestens eine Minute, bevor Sie das Dialogfeld für die Authentifizierung schließen.
 * Stellen Sie sicher, dass Ihre Proxy- und Zertifikateinstellungen für Ihren Computer und den Storage-Explorer ordnungsgemäß konfiguriert sind.
-* Wenn Sie unter Windows arbeiten und auf dem gleichen Computer auf Visual Studio 2017 zugreifen und sich anmelden können, versuchen Sie, sich bei Visual Studio 2017 anzumelden. Nach einer erfolgreichen Anmeldung bei Visual Studio 2017 sollten Sie den Storage-Explorer öffnen und Ihr Konto im Kontobereich sehen können. 
+* Wenn Sie unter Windows arbeiten und auf dem gleichen Computer auf Visual Studio 2017 zugreifen und sich anmelden können, versuchen Sie, sich bei Visual Studio 2017 anzumelden. Nach einer erfolgreichen Anmeldung bei Visual Studio 2017 sollten Sie den Storage-Explorer öffnen und Ihr Konto im Kontobereich sehen können.
 
 Wenn keine dieser Methoden funktioniert, [eröffnen Sie auf GitHub ein Problem](https://github.com/Microsoft/AzureStorageExplorer/issues).
 
@@ -115,6 +115,8 @@ Vergewissern Sie sich zunächst, dass Sie die folgenden Informationen richtig ei
 
 * Proxy-URL und Portnummer
 * Benutzername und Kennwort, sofern für den Proxy erforderlich
+
+Beachten Sie, dass der Storage-Explorer keine PAC-Dateien für die Konfiguration von Proxyeinstellungen unterstützt.
 
 ### <a name="common-solutions"></a>Gängige Lösungen
 

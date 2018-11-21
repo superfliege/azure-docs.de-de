@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 10/16/2018
+ms.date: 11/08/2018
 ms.author: juliako
-ms.openlocfilehash: c8e4e84d7ae0defdb053108dc668956062c47ea5
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: a4569505cb9a42f6682391a8b06725dea5e539dc
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50962383"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51344976"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>Livestreaming mit Azure Media Services v3
 
@@ -44,11 +44,11 @@ Auf Wunsch können Sie auch die **dynamische Filterung** anwenden, mit der Sie d
 
 Die folgenden neuen Verbesserungen wurden in der neuesten Version vorgenommen.
 
-- Neuer Modus mit geringer Latenz für den Livebetrieb (10 Sekunden für den End-to-End-Vorgang).
+- Neue Modus für geringe Latenz. Weitere Informationen finden Sie unter [Latenz](#latency).
 - Verbesserte RTMP-Unterstützung (höhere Stabilität und bessere Unterstützung für Quellcodierer).
 - Sichere RTMPS-Erfassung.
 
-    Bei der Erstellung eines Liveereignisses erhalten Sie jetzt vier Erfassungs-URLs. Die vier Erfassungs-URLs sind nahezu identisch und verfügen über das gleiche Streamingtoken (AppId). Nur der Portnummernteil unterscheidet sich. Zwei der URLs dienen als primäre URL und Backup-URL für RTMPS.   
+    Bei der Erstellung eines Liveereignisses erhalten Sie vier Erfassungs-URLs. Die vier Erfassungs-URLs sind nahezu identisch und verfügen über das gleiche Streamingtoken (AppId). Nur der Portnummernteil unterscheidet sich. Zwei der URLs dienen als primäre URL und Backup-URL für RTMPS.   
 - Unterstützung der 24-Stunden-Transcodierung. 
 - Verbesserte Unterstützung für Werbeeinblendungen in RTMP über SCTE35.
 
@@ -82,7 +82,7 @@ Geben Sie beim Erstellen dieses LiveEvent-Typs **None** (LiveEventEncodingType.N
 
 In der folgenden Tabelle werden die Features der beiden LiveEvent-Typen verglichen.
 
-| Feature | LiveEvent „Pass-Through“ | LiveEvent „Basic“ |
+| Feature | LiveEvent „Pass-Through“ | LiveEvent „Standard“ |
 | --- | --- | --- |
 | Die Single-Bitrate-Eingabe wird in mehreren Bitraten in der Cloud codiert. |Nein  |JA |
 | Maximale Auflösung, Anzahl der Ebenen |4Kp30  |720p, 6 Ebenen, 30 fps |
@@ -126,6 +126,20 @@ Ein LiveEvent unterstützt bis zu drei gleichzeitig ausgeführte LiveOutputs, so
 Wenn der Stream an das LiveEvent übertragen wird, können Sie das Streamingereignis starten, indem Sie ein Medienobjekt, einen LiveOutput und StreamingLocator erstellen. Dadurch wird der Stream archiviert und über den [StreamingEndpoint](https://docs.microsoft.com/rest/api/media/streamingendpoints) für die Zuschauer verfügbar gemacht.
 
 Beim Erstellen Ihres Media Services-Kontos wird dem Konto ein Standard-Streamingendpunkt im Zustand „Beendet“ hinzugefügt. Um mit dem Streamen Ihrer Inhalte zu beginnen und die dynamische Paketerstellung und dynamische Verschlüsselung zu nutzen, muss der Streamingendpunkt, von dem Sie Inhalte streamen möchten, den Zustand „Wird ausgeführt“ aufweisen.
+
+## <a name="latency"></a>Latency
+
+Dieser Abschnitt werden typische Ergebnisse beschrieben, die bei der Verwendung der Einstellungen für geringe Latenz und verschiedenen Playern angezeigt werden. Die Ergebnisse variieren basierend auf dem CDN und der Netzwerklatenz.
+
+Um die neue LowLatency-Funktion nutzen zu können, können Sie **StreamOptionsFlag** in LiveEvent auf **LowLatency** festlegen. Sobald der Stream bereit ist, können Sie auf der Demoseite des [Azure Media Players](http://ampdemo.azureedge.net/) (AMP) die Option für die Wiedergabe auf „Low Latency Heuristics Profile“ (Heuristische Profile mit geringer Latenz) festlegen.
+
+### <a name="pass-through-liveevents"></a>LiveEvent „Pass-Through“
+
+||Niedrige Latenz aktiviert (2 Sek. GOP)|Niedrige Latenz aktiviert (1 Sek. GOP)|
+|---|---|---|
+|DASH in AMP|10 Sek.|8 Sek.|
+|HLS in nativem iOS-Player|14 Sek.|10 Sek.|
+|HLS.JS in Mixer Player|30 Sek.|16 Sek.|
 
 ## <a name="billing"></a>Abrechnung
 

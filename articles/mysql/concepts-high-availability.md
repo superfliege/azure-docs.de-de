@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: mysql
 ms.topic: article
 ms.date: 02/28/2018
-ms.openlocfilehash: 90dc603c0ee520774bd22531c7136e0949f6cf90
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 82d6106b7cebf47e6d68347857dd3d8a2d22dc3c
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35264179"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51298686"
 ---
 # <a name="high-availability-concepts-in-azure-database-for-mysql"></a>Hochverfügbarkeitskonzepte von Azure Database for MySQL
 Der Dienst „Azure Database for MySQL“ bietet eine garantiert hohes Verfügbarkeitsniveau. Die finanziell abgesicherte Vereinbarung zum Servicelevel (SLA) beträgt 99,99 % bei allgemeiner Verfügbarkeit. Es gibt praktisch keine Ausfallzeiten bei der Nutzung dieses Diensts.
@@ -35,4 +35,5 @@ Wenn Azure Database for MySQL zentral hoch- oder herunterskaliert wird, wird äh
 Während des Skalierungsvorgangs tritt eine Unterbrechung der Datenbankverbindungen auf. Die Verbindung der Clientanwendungen wird getrennt, und offene Transaktionen ohne Commit werden abgebrochen. Sobald die Clientanwendung die Verbindung wiederherstellt oder eine neue Verbindung herstellt, leitet das Gateway die Verbindung an die Instanz mit der neuen Größe weiter. 
 
 ## <a name="next-steps"></a>Nächste Schritte
-- Einen Überblick über den Dienst finden Sie unter [Azure-Datenbank für MySQL – Überblick](overview.md).
+- Einen Überblick über den Dienst finden Sie unter  [Was ist Azure-Datenbank für MySQL?](overview.md).
+- Eine Übersicht über Wiederholungslogik finden Sie unter [Behandeln vorübergehender Konnektivitätsfehler für Azure Database for MySQL](concepts-connectivity.md).

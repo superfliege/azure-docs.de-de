@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/09/2018
-ms.openlocfilehash: 3cd9b5a2bfed49ee712b89040477389ba9ea7715
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 3f6d6f700ccf232dacb512f22dd1f9fb5d870740
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49389631"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51567042"
 ---
 # <a name="anomaly-detection-in-azure-stream-analytics"></a>Anomalieerkennung in Azure Stream Analytics
 
@@ -31,7 +31,7 @@ Der Operator AnomalyDetection erkennt drei Arten von Anomalien:
 
 * **Langsamer negativer Trend**: Eine langsame Abnahme des Trends im Lauf der Zeit.  
 
-Wenn Sie den AnomalyDetection-Operator verwenden, müssen Sie die **Limit Duration**-Klausel angeben. Diese Klausel gibt das Zeitintervall an (wie weit zurück im Verlauf vor dem aktuellen Ereignis), das bei der Erkennung von Anomalien berücksichtigt werden soll. Dier Operator kann optional ausschließlich auf Ereignisse eingeschränkt werden, die gemäß der  **When** -Klausel mit bestimmten Eigenschaften oder Bedingungen übereinstimmen. Dieser Operator kann optional auch Gruppen von Ereignissen basierend auf dem in der  **Partition by** -Klausel angegebenen Schlüssel separat verarbeiten. Training und Vorhersage treten für jede Partition unabhängig voneinander auf. 
+Wenn Sie den AnomalyDetection-Operator verwenden, müssen Sie die **Limit Duration**-Klausel angeben. Diese Klausel gibt das Zeitintervall an (wie weit zurück im Verlauf vor dem aktuellen Ereignis), das bei der Erkennung von Anomalien berücksichtigt werden soll. Dier Operator kann optional ausschließlich auf Ereignisse eingeschränkt werden, die gemäß der **When**-Klausel mit bestimmten Eigenschaften oder Bedingungen übereinstimmen. Optional kann dieser Operator Gruppen von Ereignissen auch basierend auf dem in der **Partition by**-Klausel angegebenen Schlüssel separat verarbeitet werden. Training und Vorhersage treten für jede Partition unabhängig voneinander auf. 
 
 ## <a name="syntax-for-anomalydetection-operator"></a>Syntax für den AnomalyDetection-Operator
 
@@ -45,11 +45,11 @@ Wenn Sie den AnomalyDetection-Operator verwenden, müssen Sie die **Limit Durati
 
 * **scalar_expression**: Der skalare Ausdruck, über den die Anomalieerkennung ausgeführt wird. Zulässige Werte für diesen Parameter sind Float- oder Bigint-Datentypen, die einen einzelnen (skalaren) Wert zurückgeben. Den Platzhalterausdruck **\*** ist nicht zulässig. Der skalare Ausdruck darf keine anderen analytischen oder externen Funktionen enthalten. 
 
-* **partition_by_clause**: Die `PARTITION BY <partition key>`-Klausel verteilt das Lernen und Training auf separate Partitionen. Das heißt, ein separates Modell würde gemäß dem Wert von `<partition key>` verwendet, und nur Ereignisse mit diesem Wert würden für das Lernen und Trainieren in diesem Modell verwendet. Die folgende Abfrage z.B. trainiert und bewertet einen Messwert nur im Vergleich zu anderen Messwerten desselben Sensors:
+* **partition_by_clause** : Die `PARTITION BY <partition key>`-Klausel verteilt das Lernen und Training auf separate Partitionen. Das heißt, ein separates Modell würde gemäß dem Wert von `<partition key>` verwendet, und nur Ereignisse mit diesem Wert würden für das Lernen und Trainieren in diesem Modell verwendet. Die folgende Abfrage z.B. trainiert und bewertet einen Messwert nur im Vergleich zu anderen Messwerten desselben Sensors:
 
   `SELECT sensorId, reading, ANOMALYDETECTION(reading) OVER(PARTITION BY sensorId LIMIT DURATION(hour, 1)) FROM input`
 
-* **limit_duration-Klausel** `DURATION(<unit>, <length>)`: Gibt das Zeitintervall an (wie weit zurück im Verlauf vor dem aktuellen Ereignis), das bei der Erkennung von Anomalien berücksichtigt werden soll. Eine ausführliche Beschreibung der unterstützten Einheiten und deren Abkürzungen finden Sie unter [DATEDIFF](https://msdn.microsoft.com/azure/stream-analytics/reference/datediff-azure-stream-analytics). 
+* **limit_duration-Klausel** `DURATION(<unit>, <length>)`: Gibt das Zeitintervall an (wie weit zurück im Verlauf vor dem aktuellen Ereignis), das bei der Erkennung von Anomalien berücksichtigt werden soll. Eine ausführliche Beschreibung der unterstützten Einheiten und deren Abkürzungen finden Sie unter [DATEDIFF](https://msdn.microsoft.com/azure/stream-analytics/reference/datediff-azure-stream-analytics). 
 
 * **when_clause**: Gibt eine boolesche Bedingung für die in der Anomalieerkennungsberechnung berücksichtigten Ereignisse an.
 

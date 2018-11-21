@@ -1,5 +1,5 @@
 ---
-title: Den Im-Auftrag-Fluss von OAuth 2.0 für die Dienst-zu-Dienst-Authentifizierung in Azure AD verwenden | Microsoft-Dokumentation
+title: Azure Active Directory-Dienst-zu-Dienst-Authentifizierung unter Verwendung des OAuth 2.0-Spezifikationsentwurfs für „Im Auftrag von“ | Microsoft-Dokumentation
 description: In diesem Artikel wird beschrieben, wie Sie HTTP-Nachrichten zum Implementieren der Dienst-zu-Dienst-Authentifizierung über den Im-Auftrag-von-Fluss von OAuth 2.0 verwenden.
 services: active-directory
 documentationcenter: .net
@@ -17,86 +17,108 @@ ms.date: 06/06/2017
 ms.author: celested
 ms.reviewer: hirsin, nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: a231b79bebd9684281edea48dfe7cf5f57ccdacb
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: ab9f2638de6f74944eb27f024be3000209554cdf
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49986014"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51345135"
 ---
-# <a name="service-to-service-calls-using-delegated-user-identity-in-the-on-behalf-of-flow"></a>Dienst-zu-Dienst-Aufrufe unter Verwendung einer Stellvertreter-Benutzeridentität im Im-Auftrag-Fluss
+# <a name="service-to-service-calls-that-use-delegated-user-identity-in-the-on-behalf-of-flow"></a>Dienst-zu-Dienst-Aufrufe unter Verwendung einer delegierten Benutzeridentität im Im-Auftrag-von-Fluss
 
 [!INCLUDE [active-directory-develop-applies-v1](../../../includes/active-directory-develop-applies-v1.md)]
 
-Der Im-Auftrag-Fluss (On-Behalf-Of, OBO) von OAuth 2.0 wird verwendet, wenn eine Anwendung eine Dienst- oder Web-API aufruft, die wiederum eine andere Dienst- oder Web-API aufrufen muss. Die Idee dabei ist, die delegierte Benutzeridentität und Berechtigungen über die Anforderungskette weiterzugeben. Damit der Dienst auf der mittleren Ebene Authentifizierungsanforderungen an den Downstream-Dienst stellen kann, muss für den Benutzer ein Zugriffstoken aus Azure Active Directory (Azure AD) abgesichert werden.
+Mithilfe des Im-Auftrag-von-Flusses (On-Behalf-Of, OBO) von OAuth 2.0 kann eine Anwendung, die einen Dienst oder eine Web-API aufruft, eine Benutzerauthentifizierung für einen anderen Dienst oder eine andere Web-API übergeben. Der OBO-Fluss gibt die delegierte Benutzeridentität und Berechtigungen über die Anforderungskette weiter. Damit der Dienst auf der mittleren Ebene Authentifizierungsanforderungen an den nachgeschalteten Dienst stellen kann, muss für den Benutzer ein Zugriffstoken aus Azure Active Directory (Azure AD) abgesichert werden.
 
 > [!IMPORTANT]
-> Seit Mai 2018 kann ein `id_token` nicht für den OBO-Fluss verwendet werden. SPAs müssen ein **Zugriffstoken** an einen vertraulichen Client der mittleren Ebene übergeben, um OBO-Flüsse auszuführen. Unter [Einschränkungen](#client-limitations) finden Sie ausführliche Informationen dazu, welche Clients OBO-Aufrufe ausführen können.
+> Ab Mai 2018 kann für den Im-Auftrag-von-Fluss kein `id_token` mehr verwendet werden.  Single-Page-Webanwendungen müssen ein Zugriffstoken an einen vertraulichen Client der mittleren Ebene übergeben, um OBO-Flüsse auszuführen. Unter [Einschränkungen](#client-limitations) finden Sie ausführliche Informationen dazu, welche Clients Im-Auftrag-von-Aufrufe ausführen können.
 
 ## <a name="on-behalf-of-flow-diagram"></a>„Im Auftrag von“-Ablauf
-Es wird davon ausgegangen, dass der Benutzer in einer Anwendung authentifiziert wurde, die den [Autorisierungscode-Vergabefluss von OAuth 2.0](v1-protocols-oauth-code.md) verwendet. In diesem Fall verfügt die Anwendung über ein Zugriffstoken (Token A), das die Benutzeransprüche und die Genehmigung für den Zugriff auf die API der mittleren Ebene enthält (API A). API A muss nun eine authentifizierte Anfrage an die nachgelagerte Web-API stellen (API B).
 
-Die folgenden Schritte entsprechen dem Im-Auftrag-von-Ablauf und werden anhand des folgenden Diagramms erläutert.
+Der OBO-Fluss beginnt, nachdem der Benutzer in einer Anwendung authentifiziert wurde, die den [Autorisierungscode-Vergabefluss von OAuth 2.0](v1-protocols-oauth-code.md) verwendet. Zu diesem Zeitpunkt sendet die Anwendung ein Zugriffstoken (Token A) an die Web-API der mittleren Ebene (API A), das die Ansprüche des Benutzers und die Genehmigung für den Zugriff auf API A enthält. Als Nächstes führt API A eine Authentifizierungsanforderung an die nachgeschaltete Web-API (API B) durch.
 
-![Im-Auftrag-von-Fluss von OAuth2.0](./media/v1-oauth2-on-behalf-of-flow/active-directory-protocols-oauth-on-behalf-of-flow.png)
-
+Diese Schritte bilden den Im-Auftrag-von-Fluss: ![Im-Auftrag-von-Fluss von OAuth 2.0](./media/v1-oauth2-on-behalf-of-flow/active-directory-protocols-oauth-on-behalf-of-flow.png)
 
 1. Die Clientanwendung stellt mit Token A eine Anforderung an die API A.
-2. Die API A wird beim Azure AD-Tokenausstellungs-Endpunkt authentifiziert und fordert ein Token für den Zugriff auf die API B an.
-3. Der Azure AD-Tokenausstellungs-Endpunkt überprüft mit Token A die Anmeldeinformationen von API A und stellt das Zugriffstoken für API B aus (Token B).
-4. Token B wird im Autorisierungsheader der Anforderung an die API B festgelegt.
-5. API B gibt die Daten aus der gesicherten Ressource zurück.
+1. Die API A wird beim Azure AD-Tokenausstellungs-Endpunkt authentifiziert und fordert ein Token für den Zugriff auf die API B an.
+1. Der Azure AD-Tokenausstellungs-Endpunkt überprüft mit Token A die Anmeldeinformationen von API A und stellt das Zugriffstoken für API B aus (Token B).
+1. Die Anforderung an die API B enthält das Token B im Autorisierungsheader.
+1. API B gibt die Daten aus der gesicherten Ressource zurück.
 
 >[!NOTE]
->Der audience-Anspruch in einem Zugriffstoken, der zum Anfordern eines Token für einen nachgeschalteten Dienst verwendet wird, muss die ID des Diensts aufweisen, der die OBO-Anforderung stellt, und das Token muss mit dem globalen Azure Active Directory-Signaturschlüssel signiert werden (dies ist die Standardeinstellung für Anwendungen, die über **App-Registrierungen** im Portal registriert werden).
+>Der Zielgruppenanspruch in einem Zugriffstoken wird zum Anfordern eines Tokens für einen nachgeschalteten Dienst verwendet und muss die ID des Diensts sein, der die OBO-Anforderung durchführt. Das Token muss außerdem mit dem globalen Signaturschlüssel von Azure Active Directory signiert sein. (Dies gilt standardmäßig für Anwendungen, die über **App-Registrierungen** im Portal registriert werden.)
 
 ## <a name="register-the-application-and-service-in-azure-ad"></a>Registrieren der Anwendung und des Diensts in Azure AD
-Registrieren der Clientanwendungen des Diensts auf der mittleren Ebene in Azure AD.
+
+Registrieren Sie den Diensts auf der mittleren Ebene und die Clientanwendung in Azure AD.
+
 ### <a name="register-the-middle-tier-service"></a>Registrieren des Diensts auf der mittleren Ebene
+
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-2. Klicken Sie auf der oberen Leiste auf Ihr Konto, und wählen Sie in der Liste **Verzeichnis** den Active Directory-Mandanten aus, für den Sie Ihre Anwendungen registrieren möchten.
-3. Klicken Sie im linken Navigationsbereich auf **Weitere Dienste**, und wählen Sie **Azure Active Directory** aus.
-4. Klicken Sie auf **App-Registrierungen**, und wählen Sie **Neue Awendungsregistrierung**.
-5. Geben Sie einen Anzeigenamen für die Anwendung ein, und wählen Sie den Anwendungstyp aus. Geben Sie auf Basis des Anwendungsnamens die Anmelde-URL an, oder leiten Sie die URL zur Basis-URL um. Klicken Sie auf **Erstellen**, um die Anwendung zu erstellen.
-6. Wählen Sie im Azure-Portal Ihre Anwendung aus, und klicken Sie auf **Einstellungen**. Wählen Sie im Menü Einstellungen **Schlüssel**, und fügen Sie einen Schlüssel mit einer Schlüsseldauer von ein oder zwei Jahren hinzu. Wenn Sie diese Seite speichern, wird der Schlüsselwert angezeigt. Kopieren und speichern Sie diesen an einem sicheren Ort – Sie benötigen den Schlüssel später, um die Anwendungseinstellungen in Ihrer Implementierung zu konfigurieren. Der Schlüsselwert wird nicht wieder angezeigt und kann auch nicht auf andere Weise ausgegeben werden. Deshalb ist es wichtig, ihn sofort zu speichern, wenn er im Azure-Portal angezeigt wird.
+1. Wählen Sie auf der oberen Leiste Ihr Konto aus, und wählen Sie in der Liste **Verzeichnis** einen Active Directory-Mandanten für Ihre Anwendung aus.
+1. Wählen Sie im linken Bereich **Weitere Dienste** und dann **Azure Active Directory** aus.
+1. Wählen Sie **App-Registrierungen** und dann **Neue Anwendungsregistrierung** aus.
+1. Geben Sie einen Anzeigenamen für die Anwendung ein, und wählen Sie den Anwendungstyp aus.
+    1. Legen Sie abhängig vom Anwendungstyp entweder die Anmelde-URL oder die Umleitungs-URL auf die Basis-URL fest.
+    1. Klicken Sie auf **Erstellen**, um die Anwendung zu erstellen.
+1. Generieren Sie einen geheimen Clientschlüssel, bevor Sie das Azure-Portal beenden.
+    1. Wählen Sie im Azure-Portal Ihre Anwendung und dann **Einstellungen** aus.
+    1. Wählen Sie im Menü „Einstellungen“ die Option **Schlüssel** aus, und fügen Sie einen Schlüssel mit einer Schlüsseldauer von einem oder zwei Jahren hinzu.
+    1. Wenn Sie diese Seite speichern, zeigt das Azure-Portal den Schlüsselwert an. Kopieren Sie den Schlüsselwert, und speichern Sie ihn an einem sicheren Ort.
+
+    > [!IMPORTANT]
+    > Sie benötigen den Schlüssel zum Konfigurieren der Anwendungseinstellungen in Ihrer Implementierung. Dieser Wert wird nicht erneut angezeigt, und er kann auf keine andere Weise abgerufen werden. Notieren Sie ihn, wenn er im Azure-Portal angezeigt wird.
 
 ### <a name="register-the-client-application"></a>Registrieren der Clientanwendung
+
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-2. Klicken Sie auf der oberen Leiste auf Ihr Konto, und wählen Sie in der Liste **Verzeichnis** den Active Directory-Mandanten aus, für den Sie Ihre Anwendungen registrieren möchten.
-3. Klicken Sie im linken Navigationsbereich auf **Weitere Dienste**, und wählen Sie **Azure Active Directory** aus.
-4. Klicken Sie auf **App-Registrierungen**, und wählen Sie **Neue Awendungsregistrierung**.
-5. Geben Sie einen Anzeigenamen für die Anwendung ein, und wählen Sie den Anwendungstyp aus. Geben Sie auf Basis des Anwendungsnamens die Anmelde-URL an, oder leiten Sie die URL zur Basis-URL um. Klicken Sie auf **Erstellen**, um die Anwendung zu erstellen.
-6. Konfigurieren der Berechtigungen für Ihre Anwendung: Wählen Sie im Menü Einstellungen den Abschnitt **Erforderliche Berechtigungen**, klicken Sie auf **Hinzufügen**, **Select an API** (Hiermit wählen Sie eine API aus), und erfassen Sie im Textfeld den Namen der mittleren Ebene. Klicken Sie anschließend auf **Berechtigungen auswählen**, und wählen Sie *Auf den Dienstnamen zugreifen* aus.
+1. Wählen Sie auf der oberen Leiste Ihr Konto aus, und wählen Sie in der Liste **Verzeichnis** einen Active Directory-Mandanten für Ihre Anwendung aus.
+1. Wählen Sie im linken Bereich **Weitere Dienste** und dann **Azure Active Directory** aus.
+1. Wählen Sie **App-Registrierungen** und dann **Neue Anwendungsregistrierung** aus.
+1. Geben Sie einen Anzeigenamen für die Anwendung ein, und wählen Sie den Anwendungstyp aus.
+   1. Legen Sie abhängig vom Anwendungstyp entweder die Anmelde-URL oder die Umleitungs-URL auf die Basis-URL fest.
+   1. Klicken Sie auf **Erstellen**, um die Anwendung zu erstellen.
+1. Konfigurieren Sie die Berechtigungen für Ihre Anwendung.
+   1. Wählen Sie im Menü „Einstellungen“ den Abschnitt **Erforderliche Berechtigungen** und dann **Hinzufügen** und **Hiermit wählen Sie eine API aus** aus.
+   1. Geben Sie den Namen des Diensts der mittleren Ebene in das Textfeld ein.
+   1. Wählen Sie **Berechtigungen auswählen** und dann **Auf den Dienstnamen zugreifen** aus.
 
 ### <a name="configure-known-client-applications"></a>Konfigurieren der bekannten Clientanwendungen
-In diesem Szenario interagiert der Dienst auf der mittleren Ebene nicht mit dem Benutzer, um dessen Zustimmung für den Zugriff auf die Downstream-API zu erlangen. Aus diesem Grund muss die Zugriffsgewährung auf die Downstream-API zuvor als Teil des Genehmigungsschrittes während der Authentifizierung als Option angezeigt werden.
-Führen Sie hierfür die folgenden Schritte aus. Dadurch wird die Registrierung der Clientanwendung in Azure AD explizit mit der Registrierung des Diensts auf der mittleren Ebene verknüpft, wodurch die von dem Client und der mittleren Ebene erzielten Genehmigungen zu einem einzigen Dialog zusammengeführt werden.
-1. Navigieren Sie zu der Registrierung auf der mittleren Ebene, und klicken Sie auf **Manifest**, um den Manifest-Editor zu öffnen.
-2. Suchen Sie im Manifest die Array-Eigenschaft `knownClientApplications`, und fügen Sie die Client-ID der Clientanwendung als Element hinzu.
-3. Speichern Sie das Manifest, indem Sie auf die Schaltfläche „Speichern“ klicken.
+
+In diesem Szenario muss der Dienst auf der mittleren Ebene die Benutzereinwilligung für den Zugriff auf die Downstream-API ohne Benutzereingriff erlangen. Die Zugriffsgewährung auf die Downstream-API muss vorab als Teil des Genehmigungsschrittes während der Authentifizierung angezeigt werden.
+
+Führen Sie die folgenden Schritte aus, um die Registrierung der Client-App in Azure AD explizit an die Registrierung des Diensts auf der mittleren Ebene zu binden. Dadurch werden die erforderlichen Zustimmungen durch den Client und die mittlere Ebene in einem einzigen Dialog zusammengeführt.
+
+1. Navigieren Sie zu der Registrierung auf der mittleren Ebene, und wählen Sie **Manifest** aus, um den Manifest-Editor zu öffnen.
+1. Suchen Sie die Array-Eigenschaft `knownClientApplications`, und fügen Sie die Client-ID der Clientanwendung als Element hinzu.
+1. Speichern Sie das Manifest durch Auswahl von **Speichern**.
 
 ## <a name="service-to-service-access-token-request"></a>Dienst-zu-Dienst-Zugriffstokenanforderung
-Verwenden Sie zum Anfordern eines Zugriffstokens ein HTTP POST-Element für den mandantenspezifischen Azure AD-Endpunkt. Verwenden Sie dabei die folgenden Parameter.
+
+Verwenden Sie zum Anfordern eines Zugriffstokens einen HTTP POST-Aufruf an den mandantenspezifischen Azure AD-Endpunkt unter Verwendung der folgenden Parameter:
 
 ```
 https://login.microsoftonline.com/<tenant>/oauth2/token
 ```
-Es sind zwei Fälle denkbar – je nachdem, ob die Clientanwendung durch ein gemeinsames Geheimnis oder durch ein Zertifikat geschützt wird.
+
+Die Clientanwendung wird durch ein gemeinsames Geheimnis oder durch ein Zertifikat geschützt.
 
 ### <a name="first-case-access-token-request-with-a-shared-secret"></a>Erster Fall: Zugriffstokenanforderung mit einem gemeinsamen Geheimnis
+
 Bei Verwendung eines gemeinsamen Geheimnisses enthält eine Dienst-zu-Dienst-Zugriffstokenanforderung die folgenden Parameter:
 
 | Parameter |  | BESCHREIBUNG |
 | --- | --- | --- |
-| grant_type |required | Typ der Tokenanforderung Da eine OBO-Anforderung ein JWT-Zugriffstoken verwendet, muss der Wert **urn:ietf:params:oauth:grant-type:jwt-bearer** lauten. |
+| grant_type |required | Typ der Tokenanforderung Da eine OBO-Anforderung ein JSON Web Token (JWT) verwendet, muss der Wert **urn:ietf:params:oauth:grant-type:jwt-bearer** lauten. |
 | Assertion |required | Der Wert des bei der Anforderung verwendeten Zugriffstoken. |
-| client_id |required | Die dem aufrufenden Dienst während der Registrierung bei Azure AD zugewiesene App-ID. Klicken Sie zum Ermitteln der App-ID im Azure-Verwaltungsportal nacheinander auf **Active Directory**, das Verzeichnis und den Anwendungsnamen. |
+| client_id |required | Die dem aufrufenden Dienst während der Registrierung bei Azure AD zugewiesene App-ID. Wählen Sie zum Ermitteln der App-ID im Azure-Portal zuerst **Active Directory**, dann das Verzeichnis und schließlich den Anwendungsnamen aus. |
 | client_secret |required | Schlüssel, der für den aufrufenden Dienst in Azure AD registriert ist. Dieser Wert sollte zum Zeitpunkt der Registrierung notiert worden sein. |
-| resource |required | Der App-ID-URI des empfangenden Diensts (geschützte Ressource). Klicken Sie zum Ermitteln des App-ID-URI im Azure-Verwaltungsportal nacheinander auf **Active Directory**, das Verzeichnis, den Anwendungsnamen, **Alle Einstellungen** und **Eigenschaften**. |
+| resource |required | Der App-ID-URI des empfangenden Diensts (geschützte Ressource). Wählen Sie zum Ermitteln des App-ID-URIs im Azure-Portal **Active Directory** und dann das Verzeichnis aus. Wählen Sie den Namen der Anwendung, **Alle Einstellungen** und dann **Eigenschaften** aus. |
 | requested_token_use |required | Gibt an, wie die Anforderung verarbeitet werden soll. Im Im-Auftrag-Fluss muss der Wert **on_behalf_of** lauten. |
 | scope |required | Eine durch Leerzeichen getrennte Liste von Bereichen für die Tokenanforderung. Für OpenID Connect muss der Bereich **openid** angegeben werden.|
 
 #### <a name="example"></a>Beispiel
+
 Mit dem folgenden HTTP POST-Element wird ein Zugriffstoken für die Web-API https://graph.windows.net angefordert. Mit der `client_id` wird der Dienst identifiziert, der das Zugriffstoken anfordert.
 
 ```
@@ -116,22 +138,24 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 ```
 
 ### <a name="second-case-access-token-request-with-a-certificate"></a>Zweiter Fall: Zugriffstokenanforderung mit einem Zertifikat
+
 Eine Dienst-zu-Dienst-Zugriffstokenanforderung mit einem Zertifikat enthält die folgenden Parameter:
 
 | Parameter |  | BESCHREIBUNG |
 | --- | --- | --- |
 | grant_type |required | Typ der Tokenanforderung Da eine OBO-Anforderung ein JWT-Zugriffstoken verwendet, muss der Wert **urn:ietf:params:oauth:grant-type:jwt-bearer** lauten. |
 | Assertion |required | Der Wert des bei der Anforderung verwendeten Tokens. |
-| client_id |required | Die dem aufrufenden Dienst während der Registrierung bei Azure AD zugewiesene App-ID. Klicken Sie zum Ermitteln der App-ID im Azure-Verwaltungsportal nacheinander auf **Active Directory**, das Verzeichnis und den Anwendungsnamen. |
+| client_id |required | Die dem aufrufenden Dienst während der Registrierung bei Azure AD zugewiesene App-ID. Wählen Sie zum Ermitteln der App-ID im Azure-Portal zuerst **Active Directory**, dann das Verzeichnis und schließlich den Anwendungsnamen aus. |
 | client_assertion_type |required |Der Wert muss `urn:ietf:params:oauth:client-assertion-type:jwt-bearer` sein. |
-| client_assertion |required | Eine Assertion (JSON Web Token), die Sie benötigen, um das Zertifikat, das Sie als Anmeldeinformationen für Ihre Anwendung registriert haben, zu erstellen und sich damit anzumelden. Informationen zum Registrieren Ihres Zertifikats sowie zum Format der Assertion finden Sie im Abschnitt [Zertifikatanmeldeinformationen](active-directory-certificate-credentials.md).|
-| resource |required | Der App-ID-URI des empfangenden Diensts (geschützte Ressource). Klicken Sie zum Ermitteln des App-ID-URI im Azure-Verwaltungsportal nacheinander auf **Active Directory**, das Verzeichnis, den Anwendungsnamen, **Alle Einstellungen** und **Eigenschaften**. |
+| client_assertion |required | Ein JSON Web Token, das Sie benötigen, um das Zertifikat, das Sie als Anmeldeinformationen für Ihre Anwendung registriert haben, zu erstellen und zu signieren. Informationen zum Assertionsformat und zum Registrieren Ihres Zertifikats finden Sie unter [Zertifikatanmeldeinformationen](active-directory-certificate-credentials.md).|
+| resource |required | Der App-ID-URI des empfangenden Diensts (geschützte Ressource). Wählen Sie zum Ermitteln des App-ID-URIs im Azure-Portal **Active Directory** und dann das Verzeichnis aus. Wählen Sie den Namen der Anwendung, **Alle Einstellungen** und dann **Eigenschaften** aus. |
 | requested_token_use |required | Gibt an, wie die Anforderung verarbeitet werden soll. Im Im-Auftrag-Fluss muss der Wert **on_behalf_of** lauten. |
 | scope |required | Eine durch Leerzeichen getrennte Liste von Bereichen für die Tokenanforderung. Für OpenID Connect muss der Bereich **openid** angegeben werden.|
 
-Beachten Sie, dass die Parameter nahezu identisch mit den Parametern der Anforderung mit dem gemeinsamen geheimen Schlüssel sind. Einziger Unterschied: Anstelle des Parameters „client_secret“ werden die beiden Parameter „client_assertion_type“ und „client_assertion“ verwendet.
+Diese Parameter sind nahezu identisch mit der Anforderung mit einem gemeinsamen Geheimnis, außer dass `client_secret parameter` durch die beiden Parameter `client_assertion_type` und `client_assertion` ersetzt wird.
 
 #### <a name="example"></a>Beispiel
+
 Mit dem folgenden HTTP POST-Element wird ein Zugriffstoken für die Web-API https://graph.windows.net mit einem Zertifikat angefordert. Mit der `client_id` wird der Dienst identifiziert, der das Zugriffstoken anfordert.
 
 ```
@@ -152,7 +176,8 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 ```
 
 ## <a name="service-to-service-access-token-response"></a>Dienst-zu-Dienst-Zugriffstokenantwort
-Eine erfolgreiche Antwort enthält eine JSON OAuth 2.0-Antwort mit den folgenden Parametern.
+
+Eine erfolgreiche Antwort enthält eine JSON OAuth 2.0-Antwort mit den folgenden Parametern:
 
 | Parameter | BESCHREIBUNG |
 | --- | --- |
@@ -162,10 +187,11 @@ Eine erfolgreiche Antwort enthält eine JSON OAuth 2.0-Antwort mit den folgenden
 | expires_on |Die Uhrzeit, zu der das Zugriffstoken abläuft. Das Datum wird als Anzahl der Sekunden ab 1970-01-01T0:0:0Z UTC bis zur Ablaufzeit dargestellt. Dieser Wert wird verwendet, um die Lebensdauer von zwischengespeicherten Token zu bestimmen. |
 | resource |Der App-ID-URI des empfangenden Diensts (geschützte Ressource). |
 | access_token |Das angeforderte Zugriffstoken. Der aufrufende Dienst kann dieses Token verwenden, um die Authentifizierung für den empfangenden Dienst durchzuführen. |
-| id_token |Das angeforderte ID-Token. Dies kann von dem aufrufenden Dienst dazu verwendet werden, die Identität des Benutzers zu überprüfen und eine Sitzung mit dem Benutzer zu beginnen. |
+| id_token |Das angeforderte ID-Token. Dieses Token kann vom aufrufenden Dienst dazu verwendet werden, die Identität des Benutzers zu überprüfen und eine Sitzung mit dem Benutzer zu beginnen. |
 | refresh_token |Das Aktualisierungstoken für das angeforderte Zugriffstoken. Der aufrufende Dienst kann dieses Token verwenden, um nach Ablauf des aktuellen Zugriffstokens ein neues Zugriffstoken anzufordern. |
 
 ### <a name="success-response-example"></a>Beispiel für eine erfolgreiche Antwort
+
 Das folgende Beispiel zeigt eine erfolgreiche Antwort auf eine Anforderung eines Zugriffstokens für die Web-API https://graph.windows.net.
 
 ```
@@ -184,7 +210,8 @@ Das folgende Beispiel zeigt eine erfolgreiche Antwort auf eine Anforderung eines
 ```
 
 ### <a name="error-response-example"></a>Beispiel für eine fehlerhafte Antwort
-Der Azure AD-Tokenendpunkt gibt bei dem Versuch, ein Zugriffstoken für eine nachgelagerte API zu erhalten, einen Fehler zurück, wenn der Zugriff auf die nachgelagerte API durch eine Richtlinie wie mehrstufige Authentifizierung begrenzt ist. Der Dienst der mittleren Ebene zeigt diesen Fehler der Clientanwendung an, so dass diese der Richtlinie entsprechend die geeignete Benutzerinteraktion bieten kann.
+
+Der Azure AD-Tokenendpunkt gibt eine Fehlerantwort zurück, wenn versucht wird, ein Zugriffstoken für eine Downstream-API abzurufen, für die eine Richtlinie für bedingten Zugriff (z.B. mehrstufige Authentifizierung) festgelegt ist. Der Dienst der mittleren Ebene zeigt diesen Fehler der Clientanwendung an, so dass diese der Richtlinie entsprechend die geeignete Benutzerinteraktion bieten kann.
 
 ```
 {
@@ -199,64 +226,76 @@ Der Azure AD-Tokenendpunkt gibt bei dem Versuch, ein Zugriffstoken für eine nac
 ```
 
 ## <a name="use-the-access-token-to-access-the-secured-resource"></a>Verwenden des Zugriffstokens für den Zugriff auf die gesicherte Ressource
-Der Dienst der mittleren Ebene kann nun mit dem oben erhaltenen Token bei der nachgelagerte Web-API authentifizierte Anforderungen stellen. Hierfür wird das Token in den `Authorization`-Header eingetragen.
+
+Der Dienst der mittleren Ebene kann mit dem erhaltenen Zugriffstoken bei der nachgelagerten Web-API authentifizierte Anforderungen stellen. Hierfür wird das Token in den `Authorization`-Header eingetragen.
 
 ### <a name="example"></a>Beispiel
+
 ```
 GET /me?api-version=2013-11-08 HTTP/1.1
 Host: graph.windows.net
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6InowMzl6ZHNGdWl6cEJmQlZLMVRuMjVRSFlPMCIsImtpZCI6InowMzl6ZHNGdWl6cEJmQlZLMVRuMjVRSFlPMCJ9.eyJhdWQiOiJodHRwczovL2dyYXBoLndpbmRvd3MubmV0IiwiaXNzIjoiaHR0cHM6Ly9zdHMud2luZG93cy5uZXQvMjYwMzljY2UtNDg5ZC00MDAyLTgyOTMtNWIwYzUxMzRlYWNiLyIsImlhdCI6MTQ5MzQyMzE2OCwibmJmIjoxNDkzNDIzMTY4LCJleHAiOjE0OTM0NjY5NTEsImFjciI6IjEiLCJhaW8iOiJBU1FBMi84REFBQUE1NnZGVmp0WlNjNWdBVWwrY1Z0VFpyM0VvV2NvZEoveWV1S2ZqcTZRdC9NPSIsImFtciI6WyJwd2QiXSwiYXBwaWQiOiI2MjUzOTFhZi1jNjc1LTQzZTUtOGU0NC1lZGQzZTMwY2ViMTUiLCJhcHBpZGFjciI6IjEiLCJlX2V4cCI6MzAyNjgzLCJmYW1pbHlfbmFtZSI6IlRlc3QiLCJnaXZlbl9uYW1lIjoiTmF2eWEiLCJpcGFkZHIiOiIxNjcuMjIwLjEuMTc3IiwibmFtZSI6Ik5hdnlhIFRlc3QiLCJvaWQiOiIxY2Q0YmNhYy1iODA4LTQyM2EtOWUyZi04MjdmYmIxYmI3MzkiLCJwbGF0ZiI6IjMiLCJwdWlkIjoiMTAwMzNGRkZBMTJFRDdGRSIsInNjcCI6IlVzZXIuUmVhZCIsInN1YiI6IjNKTUlaSWJlYTc1R2hfWHdDN2ZzX0JDc3kxa1l1ekZKLTUyVm1Zd0JuM3ciLCJ0aWQiOiIyNjAzOWNjZS00ODlkLTQwMDItODI5My01YjBjNTEzNGVhY2IiLCJ1bmlxdWVfbmFtZSI6Im5hdnlhQGRkb2JhbGlhbm91dGxvb2sub25taWNyb3NvZnQuY29tIiwidXBuIjoibmF2eWFAZGRvYmFsaWFub3V0bG9vay5vbm1pY3Jvc29mdC5jb20iLCJ1dGkiOiJ4Q3dmemhhLVAwV0pRT0x4Q0dnS0FBIiwidmVyIjoiMS4wIn0.cqmUVjfVbqWsxJLUI1Z4FRx1mNQAHP-L0F4EMN09r8FY9bIKeO-0q1eTdP11Nkj_k4BmtaZsTcK_mUygdMqEp9AfyVyA1HYvokcgGCW_Z6DMlVGqlIU4ssEkL9abgl1REHElPhpwBFFBBenOk9iHddD1GddTn6vJbKC3qAaNM5VarjSPu50bVvCrqKNvFixTb5bbdnSz-Qr6n6ACiEimiI1aNOPR2DeKUyWBPaQcU5EAK0ef5IsVJC1yaYDlAcUYIILMDLCD9ebjsy0t9pj_7lvjzUSrbMdSCCdzCqez_MSNxrk1Nu9AecugkBYp3UVUZOIyythVrj6-sVvLZKUutQ
 ```
-## <a name="service-to-service-calls-using-a-saml-assertion-obtained-with-an-oauth20-on-behalf-of-flow"></a>Dienst-zu-Dienst-Aufrufe mit einer SAML-Assertion, die mit einem OAuth 2.0-On-Behalf-Of-Fluss abgerufen wird
 
-Einige OAuth-basierte Webdienste benötigen Zugriff auf andere Webdienst-APIs, die SAML-Assertionen in nicht interaktiven Flüssen akzeptieren.  Azure Active Directory kann es eine SAML-Assertion als Antwort auf einen On-Behalf-Of-Fluss mit einem SAML-basierten Webdienst als Zielressource bereitstellen. 
+## <a name="saml-assertions-obtained-with-an-oauth20-obo-flow"></a>SAML-Assertionen, die mit einem OAuth 2.0-OBO-Fluss abgerufen wurden
 
->[!NOTE] 
->Dies ist eine nicht standardmäßige Erweiterung für den OAuth 2.0-On-Behalf-Of-Fluss, der einer OAuth2-basierten Anwendung Zugriff auf Webdienst-API-Endpunkte ermöglicht, die SAML-Token nutzen.  
+Einige OAuth-basierte Webdienste benötigen Zugriff auf andere Webdienst-APIs, die SAML-Assertionen in nicht interaktiven Flüssen akzeptieren. Azure Active Directory kann es eine SAML-Assertion als Antwort auf einen Im-Namen-von-Fluss mit einem SAML-basierten Webdienst als Zielressource bereitstellen.
 
->[!TIP]
->Wenn Sie einen geschützten SAML-Webdienst über eine Front-End-Anwendung aufrufen, können Sie einfach die API aufrufen und einen normalen interaktiven Authentifizierungsfluss initiieren, der die vorhandene Sitzung eines Benutzers verwendet.  Sie müssen lediglich einen OBO-Fluss in Erwägung ziehen, wenn ein Dienst-zu-Dienst-Aufruf ein SAML-Token für die Bereitstellung des Benutzerkontexts erfordert.
+>[!NOTE]
+>Dies ist eine nicht standardmäßige Erweiterung für den OAuth 2.0-Im-Namen-von-Fluss, der einer OAuth2-basierten Anwendung Zugriff auf Webdienst-API-Endpunkte ermöglicht, die SAML-Token nutzen.
 
-### <a name="obtain-a-saml-token-using-an-obo-request-with-a-shared-secret"></a>Abrufen eines SAML-Token anhand einer OBO-Anforderung mit einem gemeinsamen Geheimnis
-Eine Dienst-zu-Dienst-Anforderung zum Abrufen einer SAML-Assertion weist die folgenden Parameter auf:
+> [!TIP]
+> Wenn Sie einen geschützten SAML-Webdienst über eine Front-End-Anwendung aufrufen, können Sie einfach die API aufrufen und einen normalen interaktiven Authentifizierungsfluss initiieren, der die vorhandene Sitzung eines Benutzers verwendet. Sie müssen lediglich einen OBO-Fluss verwenden, wenn ein Dienst-zu-Dienst-Aufruf ein SAML-Token für die Bereitstellung des Benutzerkontexts erfordert.
+
+### <a name="obtain-a-saml-token-by-using-an-obo-request-with-a-shared-secret"></a>Abrufen eines SAML-Tokens mithilfe einer OBO-Anforderung mit einem gemeinsamen Geheimnis
+
+Eine Dienst-zu-Dienst-Anforderung für eine SAML-Assertion weist die folgenden Parameter auf:
 
 | Parameter |  | BESCHREIBUNG |
 | --- | --- | --- |
-| grant_type |required | Typ der Tokenanforderung Bei Anforderungen mit JWT muss der Wert **urn:ietf:params:oauth:grant-type:jwt-bearer** lauten. |
+| grant_type |required | Typ der Tokenanforderung Bei Anforderungen mit einem JWT muss der Wert **urn:ietf:params:oauth:grant-type:jwt-bearer** lauten. |
 | Assertion |required | Der Wert des bei der Anforderung verwendeten Zugriffstoken.|
-| client_id |required | Die dem aufrufenden Dienst während der Registrierung bei Azure AD zugewiesene App-ID. Klicken Sie zum Ermitteln der App-ID im Azure-Verwaltungsportal nacheinander auf **Active Directory**, das Verzeichnis und den Anwendungsnamen. |
+| client_id |required | Die dem aufrufenden Dienst während der Registrierung bei Azure AD zugewiesene App-ID. Wählen Sie zum Ermitteln der App-ID im Azure-Portal zuerst **Active Directory**, dann das Verzeichnis und schließlich den Anwendungsnamen aus. |
 | client_secret |required | Schlüssel, der für den aufrufenden Dienst in Azure AD registriert ist. Dieser Wert sollte zum Zeitpunkt der Registrierung notiert worden sein. |
-| resource |required | Der App-ID-URI des empfangenden Diensts (geschützte Ressource). Dies ist die Ressource, die die Zielgruppe des SAML-Token darstellt.  Klicken Sie zum Ermitteln des App-ID-URI im Azure-Verwaltungsportal nacheinander auf **Active Directory**, das Verzeichnis, den Anwendungsnamen, **Alle Einstellungen** und **Eigenschaften**. |
+| resource |required | Der App-ID-URI des empfangenden Diensts (geschützte Ressource). Dies ist die Ressource, die die Zielgruppe des SAML-Token darstellt. Wählen Sie zum Ermitteln des App-ID-URIs im Azure-Portal **Active Directory** und dann das Verzeichnis aus. Wählen Sie den Namen der Anwendung, **Alle Einstellungen** und dann **Eigenschaften** aus. |
 | requested_token_use |required | Gibt an, wie die Anforderung verarbeitet werden soll. Im Im-Auftrag-Fluss muss der Wert **on_behalf_of** lauten. |
-| requested_token_type | required | Gibt den Typ des angeforderten Token an.  Abhängig von den Anforderungen der Ressource, auf die zugegriffen wird, kann der Wert „urn:Ietf:params:oauth:token-type:saml2“ oder „urn:Ietf:params:oauth:token-type:saml1“ lauten. |
+| requested_token_type | required | Gibt den Typ des angeforderten Token an. Abhängig von den Anforderungen der Ressource, auf die zugegriffen wird, kann der Wert **urn:Ietf:params:oauth:token-type:saml2** oder **urn:Ietf:params:oauth:token-type:saml1** lauten. |
 
+Die Antwort enthält ein UTF8- und Base64url-codiertes SAML-Token.
 
-Die Antwort enthält einen UTF8- und Base64url-codierten SAML-Token. 
+- **SubjectConfirmationData für eine SAML-Assertion, die von einem OBO-Aufruf stammen:** Wenn die Zielanwendung einen Empfängerwert in **SubjectConfirmationData** erfordert, muss der Wert als Antwort-URL ohne Platzhalter in der Konfiguration der Ressourcenanwendung festgelegt werden.
+- **SubjectConfirmationData-Knoten:** Der Knoten kann kein **InResponseTo**-Attribut enthalten, da er nicht Teil einer SAML-Antwort ist. Die Anwendung, die das SAML-Token empfängt, muss die SAML-Assertion ohne **InResponseTo**-Attribut akzeptieren können.
 
-SubjectConfirmationData für eine SAML-Assertion, die von einem OBO-Aufruf stammen: Wenn die Zielanwendung einen Empfängerwert in SubjectConfirmationData erfordert, muss diese als Antwort-URL ohne Platzhalter in der Konfiguration der Ressourcenanwendung festgelegt werden.
-
-Der SubjectConfirmationData-Knoten kann kein InResponseTo-Attribut enthalten, da er nicht Teil einer SAML-Antwort ist.  Die Anwendung, die das SAML-Token empfängt, muss die SAML-Assertion ohne InResponseTo-Attribut akzeptieren können.
-
-Zustimmung: Um ein SAML-Token zu empfangen, das Benutzerdaten zu einem OAuth-Fluss enthält, muss Ihre Zustimmung erteilt worden sein.  Unter https://docs.microsoft.com/azure/active-directory/develop/v1-permissions-and-consent finden Sie Informationen zu Berechtigungen und zum Einholen der Zustimmung des Administrators.
+- **Zustimmung:** Um ein SAML-Token zu empfangen, das Benutzerdaten zu einem OAuth-Fluss enthält, muss Zustimmung erteilt worden sein. Informationen zu Berechtigungen und zum Erhalt der Zustimmung des Administrators finden Sie unter [Berechtigungen und Zustimmung im Azure Active Directory v1.0-Endpunkt](https://docs.microsoft.com/azure/active-directory/develop/v1-permissions-and-consent).
 
 ### <a name="response-with-saml-assertion"></a>Antwort mit SAML-Assertion
 
 | Parameter | BESCHREIBUNG |
 | --- | --- |
-| token_type |Gibt den Wert des Tokentyps an. **Bearertoken**ist der einzige Typ, den Azure AD unterstützt. Weitere Informationen zu Bearertoken finden Sie unter [OAuth 2.0 Authorization Framework: Bearer Token Usage (RFC 6750) (OAuth 2.0-Autorisierungsframework: Verwendung von Bearertoken (RFC 6750))](http://www.rfc-editor.org/rfc/rfc6750.txt). |
+| token_type |Gibt den Wert des Tokentyps an. **Bearertoken**ist der einzige Typ, den Azure AD unterstützt. Weitere Informationen zu Bearertoken finden Sie unter [OAuth 2.0-Autorisierungsframework: Verwendung von Bearertoken (RFC 6750)](http://www.rfc-editor.org/rfc/rfc6750.txt). |
 | scope |Der durch das Token gewährte Zugriffsbereich. |
 | expires_in |Gibt an, wie lange das Zugriffstoken gültig ist (in Sekunden). |
 | expires_on |Die Uhrzeit, zu der das Zugriffstoken abläuft. Das Datum wird als Anzahl der Sekunden ab 1970-01-01T0:0:0Z UTC bis zur Ablaufzeit dargestellt. Dieser Wert wird verwendet, um die Lebensdauer von zwischengespeicherten Token zu bestimmen. |
 | resource |Der App-ID-URI des empfangenden Diensts (geschützte Ressource). |
-| access_token |Die SAML-Assertion wird im Parameter „access_token“ zurückgegeben. |
+| access_token |Der Parameter, der die SAML-Assertion zurückgibt. |
 | refresh_token |Das Aktualisierungstoken. Der aufrufende Dienst kann dieses Token verwenden, um nach Ablauf der aktuellen SAML-Assertion ein neues Zugriffstoken anzufordern. |
 
-token_type: Bearer expires_in:3296 ext_expires_in:0 expires_on:1529627844 resource:https://api.contoso.com access_token: <Saml assertion> issued_token_type:urn:ietf:params:oauth:token-type:saml2 refresh_token: <Refresh token>
+- token_type: Bearer
+- expires_in: 3296
+- ext_expires_in: 0
+- expires_on: 1529627844
+- resource: `https://api.contoso.com`
+- access_token: \<SAML-Assertion\>
+- issued_token_type: urn:ietf:params:oauth:token-type:saml2
+- refresh_token: \<Aktualisierungstoken\>
 
 ## <a name="client-limitations"></a>Clienteinschränkungen
-Öffentliche Clients mit Platzhaltern in Antwort-URLs können `id_token` nicht für OBO-Flüsse verwenden. Allerdings kann ein vertraulicher Client weiterhin Zugriffstoken einlösen, die über den Fluss für die implizite Gewährung erworben wurden, selbst wenn der öffentliche Client einen Umleitungs-URI mit einem Platzhalter registriert hat.
+
+Öffentliche Clients mit Platzhaltern in Antwort-URLs können `id_token` nicht für OBO-Flüsse verwenden. Allerdings kann ein vertraulicher Client weiterhin **Zugriffstoken** einlösen, die über den Fluss für die implizite Genehmigung erworben wurden, selbst wenn der öffentliche Client einen Umleitungs-URI mit einem Platzhalter registriert hat.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Erfahren Sie mehr über das OAuth 2.0-Protokoll und eine andere Möglichkeit, Dienst-zu-Dienst-Authentifizierungen mit Client-Anmeldedaten auszuführen.
+
+Erfahren Sie mehr über das OAuth 2.0-Protokoll und eine andere Möglichkeit, Dienst-zu-Dienst-Authentifizierungen mit Clientanmeldedaten auszuführen:
+
 * [Dienst-zu-Dienst-Authentifizierung mit Vergabe der OAuth 2.0-Client-Anmeldedaten in Azure AD](v1-oauth2-client-creds-grant-flow.md)
 * [OAuth 2.0 in Azure AD](v1-protocols-oauth-code.md)

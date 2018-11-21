@@ -11,13 +11,13 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: mathoma
 manager: craigg
-ms.date: 09/25/2018
-ms.openlocfilehash: eae7f97799e38d5a4b09e3f193a84b423dced780
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.date: 11/09/2018
+ms.openlocfilehash: 44d6135c8a259d3d4c791d359136963483088c5a
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48869328"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51567892"
 ---
 # <a name="replication-to-sql-database-single-and-pooled-databases"></a>Replikation zu SQL-Datenbank-Einzeldatenbanken und in einem Pool zusammengefassten Datenbanken
 
@@ -65,7 +65,7 @@ Die SQL Server-Replikation kann für Einzeldatenbanken und in einem Pool zusamme
 
 1. Erstellen Sie eine Transaktionsreplikationsveröffentlichung in einer lokalen SQL Server-Datenbank-Instanz.  
 2. Erstellen Sie auf der lokalen SQL Server-Instanz mithilfe des **Assistenten für neue Abonnements** oder mithilfe von Transact-SQL-Anweisungen ein Pushabonnement in Azure SQL-Datenbank.  
-3. Beim ersten Dataset handelt es sich in der Regel um eine Momentaufnahme, die vom Momentaufnahmen-Agent erstellt und verteilt und vom Verteilungs-Agent angewendet wird. Das erste Dataset kann auch über eine Sicherung oder andere Mittel wie SQL Server Integration Services bereitgestellt werden.  
+3. Bei Verwendung einzelner und poolbasierter Datenbanken in Azure SQL-Datenbank handelt es sich beim ersten Dataset um eine Momentaufnahme, die vom Momentaufnahmen-Agent erstellt und vom Verteilungs-Agent verteilt und angewendet wird. Bei Verwendung der verwalteten Azure SQL-Datenbank-Instanz können Sie auch eine Datenbanksicherung als Seed für die Abonnentendatenbank verwenden.
 
 ### <a name="data-migration-scenario"></a>Datenmigrationsszenario  
 

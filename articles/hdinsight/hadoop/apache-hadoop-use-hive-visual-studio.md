@@ -1,5 +1,5 @@
 ---
-title: Tools für Hive mit Data Lake (Hadoop) für Visual Studio – Azure HDInsight
+title: Tools für Apache Hive mit Data Lake (Apache Hadoop) für Visual Studio – Azure HDInsight
 description: Erfahren Sie, wie Sie die Data Lake Tools für Visual Studio verwenden, um Apache Hive-Abfragen mit Apache Hadoop in Azure HDInsight auszuführen.
 services: hdinsight
 author: hrasheed-msft
@@ -9,20 +9,20 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: 4cc2012e40fad9e1343804149cdffaa3a1ab9db4
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: bfb53ddf666426253cce08e6f09a5297f5d2f4d3
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51011084"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51634106"
 ---
-# <a name="run-hive-queries-using-the-data-lake-tools-for-visual-studio"></a>Ausführen von Hive-Abfragen mit Data Lake-Tools für Visual Studio
+# <a name="run-apache-hive-queries-using-the-data-lake-tools-for-visual-studio"></a>Ausführen von Apache Hive-Abfragen mit Data Lake-Tools für Visual Studio
 
-Erfahren Sie, wie Sie die Data Lake Tools für Visual Studio für Abfragen in Apache Hive verwenden. Mithilfe der Data Lake Tools können Sie Hive-Abfragen an Hadoop in Azure HDInsight ganz einfach erstellen, übermitteln und überwachen.
+Erfahren Sie, wie Sie die Data Lake Tools für Visual Studio für Abfragen in Apache Hive verwenden. Mithilfe der Data Lake Tools können Sie Hive-Abfragen an Apache Hadoop in Azure HDInsight ganz einfach erstellen, übermitteln und überwachen.
 
 ## <a id="prereq"></a>Voraussetzungen
 
-* Einen Azure HDInsight-Cluster (Hadoop in HDInsight)
+* Ein Azure HDInsight-Cluster (Apache Hadoop in HDInsight)
 
   > [!IMPORTANT]
   > Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Welche Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?](../hdinsight-component-versioning.md#hdinsight-windows-retirement).

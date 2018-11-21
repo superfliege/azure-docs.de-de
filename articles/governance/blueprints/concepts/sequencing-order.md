@@ -4,16 +4,16 @@ description: Erfahren Sie mehr über den Lebenszyklus einer Blaupause und die ei
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 10/25/2018
+ms.date: 11/12/2018
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 4adf427727e7244bbde64a673e7353c1f8270c8a
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: fcfffe6094361c8b47b1cc7ce42cb79561261b15
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50094577"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51620594"
 ---
 # <a name="understand-the-deployment-sequence-in-azure-blueprints"></a>Verstehen der Bereitstellungsreihenfolge in Azure Blueprint
 
@@ -47,6 +47,9 @@ In jedem Artefakt vom Typ **Ressourcengruppe** wird für Artefakte, die innerhal
 Beim Erstellen großer Blaupausen müssen Ressourcen ggf. in einer bestimmten Reihenfolge erstellt werden. Im gängigsten Muster dieses Szenarios enthält eine Blaupause mehrere Azure Resource Manager-Vorlagen. Für diesen Fall ermöglicht Blueprints das Definieren der Reihenfolge.
 
 Zum Angeben der Reihenfolge wird im JSON-Code eine Eigenschaft vom Typ `dependsOn` definiert. Nur die Blaupause (für Ressourcengruppen) und Artefaktobjekte unterstützen diese Eigenschaft. `dependsOn` ist ein Zeichenfolgenarray von Artefaktnamen, das das jeweilige Artefakt im Vorfeld für seine Erstellung benötigt.
+
+> [!NOTE]
+> **Ressourcengruppenartefakte** unterstützen die Eigenschaft `dependsOn`, können jedoch nicht als Ziel von `dependsOn` eines beliebigen Artefakttyps verwendet werden.
 
 ### <a name="example---blueprint-with-ordered-resource-group"></a>Beispiel: Blaupause mit sortierter Ressourcengruppe
 
@@ -112,4 +115,4 @@ Wird eine Artefaktabhängigkeit deklariert, die keine Änderung der Standardreih
 - Machen Sie sich mit der Verwendung [statischer und dynamischer Parameter](parameters.md) vertraut.
 - Erfahren Sie, wie Sie[Ressourcen in Blaupausen sperren](resource-locking.md).
 - Lernen Sie, wie Sie [vorhandene Zuweisungen aktualisieren](../how-to/update-existing-assignments.md).
-- Beheben Sie Probleme bei der Blueprintzuweisung mithilfe des [allgemeinen Leitfadens zur Problembehandlung](../troubleshoot/general.md).
+- Beheben Sie Probleme bei der Blaupausenzuweisung mithilfe des [allgemeinen Leitfadens zur Problembehandlung](../troubleshoot/general.md).

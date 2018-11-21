@@ -6,20 +6,23 @@ manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/25/2018
+ms.date: 11/13/2018
 ms.author: adgera
-ms.openlocfilehash: 69b8f64574427a6b3d3d2cf0312eac88d86e5907
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 737c33f6b8cdf9bcb2530816601ff9b5eb994087
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50960196"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51624249"
 ---
 # <a name="use-azure-digital-twins-swagger"></a>Verwenden von Azure Digital Twins-Swagger
 
 Jede bereitgestellte Azure Digital Twins-Instanz enthält ihre eigene automatisch generierte Swagger-Referenzdokumentation.
 
 [Swagger](https://swagger.io/) (oder [OpenAPI](https://www.openapis.org/)) vereinigt komplexe API-Informationen in einer interaktiven und sprachunabhängigen Referenzressource. Swagger stellt wichtiges Referenzmaterial dazu bereit, welche JSON-Nutzlasten, HTTP-Methoden und speziellen Endpunkte zum Ausführen von Vorgängen für eine API zu verwenden sind.
+
+> [!IMPORTANT]
+> Die Unterstützung für Swagger-Authentifizierung wird während der öffentlichen Vorschauphase vorübergehend deaktiviert.
 
 ## <a name="swagger-summary"></a>Swagger-Zusammenfassung
 
@@ -33,20 +36,7 @@ Swagger stellt eine interaktive Zusammenfassung Ihrer API bereit. Dazu gehören:
 
 Swagger ist ein hervorragendes Tool zur Unterstützung beim Entwickeln und Testen von Aufrufen, die an die Verwaltungs-API gesendet werden.
 
-> [!TIP]
-> Es wird eine Swagger-Vorschau bereitgestellt, um den API-Funktionsumfang zu veranschaulichen.
-> Diese Vorschau finden Sie unter [docs.westcentralus.azuresmartspaces.net/management/swagger](https://docs.westcentralus.azuresmartspaces.net/management/swagger).
-
-Ihre eigene generierte Dokumentation von Verwaltungs-API-Swagger finden Sie unter:
-
-```plaintext
-https://yourInstanceName.yourLocation.azuresmartspaces.net/management/swagger
-```
-
-| Name des benutzerdefinierten Attributs | Ersetzen durch |
-| --- | --- |
-| *yourInstanceName* | Den Namen Ihrer Azure Digital Twins-Instanz |
-| *yourLocation* | Die Serverregion, in der Ihre Instanz gehostet wird |
+[!INCLUDE [Digital Twins Swagger](../../includes/digital-twins-swagger.md)]
 
 ## <a name="reference-material"></a>Referenzmaterial
 
@@ -104,7 +94,10 @@ Die Beispiele enthalten auch Fehlercodes zur Unterstützung beim Debuggen oder V
 
 ## <a name="swagger-oauth-20-authorization"></a>Swagger-OAuth 2.0-Autorisierung
 
-Informationen, wie Sie Anforderungen für API-Ressourcen, die durch OAuth 2.0 geschützt sind, interaktiv testen können, finden Sie in der [offiziellen Dokumentation](https://swagger.io/docs/specification/authentication/oauth2/).
+Weitere Informationen zum interaktiven Testen von Anforderungen, die durch OAuth 2.0 geschützt sind, finden Sie in der [offiziellen Dokumentation](https://swagger.io/docs/specification/authentication/oauth2/).
+
+> [!NOTE]
+> Die Unterstützung für OAuth 2.0-Authentifizierung wird während der öffentlichen Vorschauphase vorübergehend deaktiviert.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

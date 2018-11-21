@@ -1,59 +1,50 @@
 ---
 title: Verwenden von benutzerdefinierten Funktionen in Azure Digital Twins | Microsoft-Dokumentation
-description: Anleitung zum Erstellen von benutzerdefinierten Funktionen, Matchern (Abgleicher) und Rollenzuweisungen mit Azure Digital Twins.
+description: Anleitung zum Erstellen benutzerdefinierter Funktionen, Matcher (Abgleicher) und Rollenzuweisungen mit Azure Digital Twins.
 author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/26/2018
+ms.date: 11/13/2018
 ms.author: alinast
-ms.openlocfilehash: 8094965da5fb0a5fad0313fd96e2878f86d78aa7
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 6a757dca48dc3ff41adfe6f8802fad40e7a4ca81
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50215496"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51636831"
 ---
 # <a name="how-to-use-user-defined-functions-in-azure-digital-twins"></a>Verwenden von benutzerdefinierten Funktionen in Azure Digital Twins
 
 [Benutzerdefinierte Funktionen](./concepts-user-defined-functions.md) ermöglichen es dem Benutzer, benutzerdefinierte Logik für eingehende Telemetrienachrichten und Raumgraphmetadaten auszuführen, sodass der Benutzer Ereignisse an vordefinierte Endpunkte senden kann. In diesem Leitfaden durchlaufen Sie ein Beispiel zur Verarbeitung von Temperaturereignissen, um jede Messung zu erkennen, bei der eine bestimmte Temperatur überschritten wurde, und eine Warnung für eine solche Messung zu senden.
 
-In den folgenden Beispielen bezieht sich `https://yourManagementApiUrl` auf den URI der Digital Twins-APIs:
-
-```plaintext
-https://yourInstanceName.yourLocation.azuresmartspaces.net/management
-```
-
-| Name des benutzerdefinierten Attributs | Ersetzen durch |
-| --- | --- |
-| *yourInstanceName* | Den Namen Ihrer Azure Digital Twins-Instanz |
-| *yourLocation* | Die Serverregion, in der Ihre Instanz gehostet wird |
+[!INCLUDE [Digital Twins Management API](../../includes/digital-twins-management-api.md)]
 
 ## <a name="client-library-reference"></a>Referenz zur Clientbibliothek
 
-Die Funktionen, die als Hilfsmethoden in der Runtime für benutzerdefinierte Funktionen verfügbar sind, sind in der folgenden [Clientreferenz](#Client-Reference) aufgeführt.
+Die Funktionen, die als Hilfsmethoden in der Runtime für benutzerdefinierte Funktionen verfügbar sind, werden im Abschnitt [Clientreferenz](#Client-Reference) aufgeführt.
 
 ## <a name="create-a-matcher"></a>Erstellen eine Matchers
 
-Matchers (Abgleicher) sind Graphobjekte, die bestimmen, welche benutzerdefinierten Funktionen für eine bestimmte Telemetrienachricht ausgeführt werden.
+Matcher (Abgleicher) sind Graphobjekte, die bestimmen, welche benutzerdefinierten Funktionen für eine bestimmte Telemetrienachricht ausgeführt werden.
 
-Gültige Matcherbedingungsvergleiche:
+- Gültige Matcherbedingungsvergleiche:
 
-- `Equals`
-- `NotEquals`
-- `Contains`
+  - `Equals`
+  - `NotEquals`
+  - `Contains`
 
-Gültige Matcherbedingungsziele:
+- Gültige Matcherbedingungsziele:
 
-- `Sensor`
-- `SensorDevice`
-- `SensorSpace`
+  - `Sensor`
+  - `SensorDevice`
+  - `SensorSpace`
 
-Der folgende Beispielmatcher hat den Ergebniswert „true“ für jedes Sensortelemetrieereignis, das den Datentyp `"Temperature"` hat. Sie können mehrere Matcher für eine benutzerdefinierte Funktion erstellen.
+Der folgende Beispielmatcher besitzt den Ergebniswert TRUE für jedes Sensortelemetrieereignis, das den Datentyp `"Temperature"` aufweist. Sie können mehrere Matcher für eine benutzerdefinierte Funktion erstellen:
 
 ```plaintext
-POST https://yourManagementApiUrl/api/v1.0/matchers
+POST YOUR_MANAGEMENT_API_URL/matchers
 {
   "Name": "Temperature Matcher",
   "Conditions": [
@@ -64,48 +55,47 @@ POST https://yourManagementApiUrl/api/v1.0/matchers
       "comparison": "Equals"
     }
   ],
-  "SpaceId": "yourSpaceIdentifier"
+  "SpaceId": "YOUR_SPACE_IDENTIFIER"
 }
 ```
 
-| Name des benutzerdefinierten Attributs | Ersetzen durch |
+| Wert | Ersetzen durch |
 | --- | --- |
-| *yourManagementApiUrl* | Der vollständige URL-Pfad für Ihre Verwaltungs-API  |
-| *yourSpaceIdentifier* | Die Serverregion, in der Ihre Instanz gehostet wird |
+| YOUR_SPACE_IDENTIFIER | Die Serverregion, in der Ihre Instanz gehostet wird |
 
 ## <a name="create-a-user-defined-function-udf"></a>Erstellen einer benutzerdefinierten Funktion (UDF)
 
-Nachdem der Matcher erstellt wurde, laden Sie den Funktionsausschnitt mit dem folgenden POST-Aufruf hoch:
+Nachdem die Matcher erstellt wurden, laden Sie den Funktionsausschnitt mit dem folgenden **POST**-Aufruf hoch:
 
 > [!IMPORTANT]
 > - Legen Sie in den Headern Folgendes fest: `Content-Type: multipart/form-data; boundary="userDefinedBoundary"`.
 > - Der Hauptteil ist mehrteilig:
 >   - Im ersten Teil geht es um die Metadaten, die für die benutzerdefinierte Funktion erforderlich sind.
->   - Der zweite Teil enthält die Javascript-Compute-Logik.
-> - Ersetzen Sie im `userDefinedBoundary`-Abschnitt die `SpaceId`- und die `Machers`-GUID.
+>   - Der zweite Teil enthält die JavaScript-Computelogik.
+> - Ersetzen Sie im Abschnitt **USER_DEFINED_BOUNDARY** die Werte **SpaceId** und **Matchers**.
 
 ```plaintext
-POST https://yourManagementApiUrl/api/v1.0/userdefinedfunctions with Content-Type: multipart/form-data; boundary="userDefinedBoundary"
+POST YOUR_MANAGEMENT_API_URL/userdefinedfunctions with Content-Type: multipart/form-data; boundary="USER_DEFINED_BOUNDARY"
 ```
 
-| Name des benutzerdefinierten Attributs | Ersetzen durch |
+| Parameterwert | Ersetzen durch |
 | --- | --- |
-| *yourManagementApiUrl* | Der vollständige URL-Pfad für Ihre Verwaltungs-API  |
+| *USER_DEFINED_BOUNDARY* | Name für die Begrenzung mehrteiliger Inhalte |
 
-Hauptteil:
+### <a name="body"></a>Body
 
 ```plaintext
---userDefinedBoundary
+--USER_DEFINED_BOUNDARY
 Content-Type: application/json; charset=utf-8
 Content-Disposition: form-data; name="metadata"
 
 {
-  "SpaceId": "yourSpaceIdentifier",
+  "SpaceId": "YOUR_SPACE_IDENTIFIER",
   "Name": "User Defined Function",
   "Description": "The contents of this udf will be executed when matched against incoming telemetry.",
-  "Matchers": ["yourMatcherIdentifier"]
+  "Matchers": ["YOUR_MATCHER_IDENTIFIER"]
 }
---userDefinedBoundary
+--USER_DEFINED_BOUNDARY
 Content-Disposition: form-data; name="contents"; filename="userDefinedFunction.js"
 Content-Type: text/javascript
 
@@ -113,13 +103,13 @@ function process(telemetry, executionContext) {
   // Code goes here.
 }
 
---userDefinedBoundary--
+--USER_DEFINED_BOUNDARY--
 ```
 
-| Name des benutzerdefinierten Attributs | Ersetzen durch |
+| Wert | Ersetzen durch |
 | --- | --- |
-| *yourSpaceIdentifier* | Den Raumbezeichner (Raum-ID)  |
-| *yourMatcherIdentifier* | Die ID des Matchers, den Sie verwenden möchten |
+| YOUR_SPACE_IDENTIFIER | Den Raumbezeichner (Raum-ID)  |
+| YOUR_MATCHER_IDENTIFIER | Die ID des Matchers, den Sie verwenden möchten |
 
 ### <a name="example-functions"></a>Beispielfunktionen
 
@@ -139,7 +129,7 @@ function process(telemetry, executionContext) {
 }
 ```
 
-Der *telemetry*-Parameter macht die Attribute **SensorId** und **Message** verfügbar (entsprechend einer von einem Sensor gesendeten Nachricht). Der *executionContext*-Parameter macht die folgenden Attribute verfügbar:
+Der **telemetry**-Parameter macht die Attribute **SensorId** und **Message** entsprechend einer von einem Sensor gesendeten Nachricht verfügbar. Der **executionContext**-Parameter macht die folgenden Attribute verfügbar:
 
 ```csharp
 var executionContext = new UdfExecutionContext
@@ -151,7 +141,7 @@ var executionContext = new UdfExecutionContext
 };
 ```
 
-Im nächsten Beispiel protokollieren wir eine Nachricht, wenn der Sensortelemetriemesswert einen vordefinierten Schwellenwert überschreitet. Wenn Ihre Diagnoseeinstellungen in der Digital Twins-Instanz aktiviert sind, werden Protokolle von benutzerdefinierten Funktionen ebenfalls weitergeleitet:
+Im nächsten Beispiel protokollieren wir eine Nachricht, wenn der Sensortelemetriemesswert einen vordefinierten Schwellenwert überschreitet. Wenn Ihre Diagnoseeinstellungen in der Azure Digital Twins-Instanz aktiviert sind, werden Protokolle von benutzerdefinierten Funktionen ebenfalls weitergeleitet:
 
 ```JavaScript
 function process(telemetry, executionContext) {
@@ -166,7 +156,7 @@ function process(telemetry, executionContext) {
 }
 ```
 
-Im folgenden Code wird eine Benachrichtigung ausgelöst, wenn die Temperatur den festgelegten Wert der Konstanten überschreitet.
+Im folgenden Code wird eine Benachrichtigung ausgelöst, wenn die Temperatur den festgelegten Wert der Konstanten überschreitet:
 
 ```JavaScript
 function process(telemetry, executionContext) {
@@ -190,87 +180,82 @@ function process(telemetry, executionContext) {
 }
 ```
 
-Ein komplexeres Beispiel einer benutzerdefinierten Funktion finden Sie in der [benutzerdefinierten Funktion zum Prüfen auf verfügbare Räume mit frischer Luft](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/userDefinedFunctions/availability.js).
+Ein komplexeres Beispiel für eine benutzerdefinierte Funktion finden Sie in der [benutzerdefinierten Funktion zum Prüfen auf verfügbare Räume mit frischer Luft](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/userDefinedFunctions/availability.js).
 
 ## <a name="create-a-role-assignment"></a>Erstellen einer Rollenzuweisung
 
-Es muss eine Rollenzuweisung erstellt werden, unter der die benutzerdefinierte Funktion ausgeführt werden kann. Wird keine solche Zuweisung erstellt, hat die Funktion nicht die richtigen Berechtigungen zur Verwendung der Verwaltungs-API, um Aktionen für Graphobjekte auszuführen. Die Aktionen, die in der benutzerdefinierten Funktion ausgeführt werden, sind nicht von der rollenbasierten Zugriffskontrolle in den Digital Twins-Verwaltungs- APIs ausgenommen. Sie können hinsichtlich des Geltungsbereichs eingeschränkt werden, indem bestimmte Rollen oder bestimmte Zugriffssteuerungspfade angegeben werden. Weitere Informationen finden Sie in dem Artikel [Rollenbasierte Zugriffssteuerung](./security-role-based-access-control.md).
+Es muss eine Rollenzuweisung erstellt werden, unter der die benutzerdefinierte Funktion ausgeführt werden kann. Wird keine solche Zuweisung erstellt, hat die Funktion nicht die richtigen Berechtigungen zur Verwendung der Verwaltungs-API, um Aktionen für Graphobjekte auszuführen. Die Aktionen, die in der benutzerdefinierten Funktion ausgeführt werden, sind nicht von der rollenbasierten Zugriffskontrolle in den Azure Digital Twins-Verwaltungs-APIs ausgenommen. Sie können hinsichtlich des Geltungsbereichs eingeschränkt werden, indem bestimmte Rollen oder bestimmte Zugriffssteuerungspfade angegeben werden. Weitere Informationen finden Sie in der Dokumentation zur [rollenbasierten Zugriffssteuerung](./security-role-based-access-control.md).
 
-1. Fragen Sie die Rollen ab, und rufen Sie die ID der Rolle ab, die Sie der benutzerdefinierten Funktion zuweisen möchten. Übergeben Sie die ID an **RoleId** (siehe unten).
+1. Fragen Sie die Rollen ab, und rufen Sie die ID der Rolle ab, die Sie der benutzerdefinierten Funktion zuweisen möchten. Übergeben Sie die ID an **RoleId**:
 
-```plaintext
-GET https://yourManagementApiUrl/api/v1.0/system/roles
-```
+    ```plaintext
+    GET YOUR_MANAGEMENT_API_URL/system/roles
+    ```
 
-| Name des benutzerdefinierten Attributs | Ersetzen durch |
-| --- | --- |
-| *yourManagementApiUrl* | Der vollständige URL-Pfad für Ihre Verwaltungs-API  |
+1. **ObjectId** ist die zuvor erstellte ID der benutzerdefinierten Funktion.
+1. Suchen Sie den Wert von **Path** durch Abfragen Ihrer Räume mit `fullpath`.
+1. Kopieren Sie den zurückgegebenen `spacePaths`-Wert. Sie verwenden diesen Wert im folgenden Code:
 
-2. **ObjectId** ist die zuvor erstellte ID der benutzerdefinierten Funktion.
-3. Suchen Sie den Wert von **Path** durch Abfragen Ihrer Räume mit `fullpath`.
-4. Kopieren Sie den zurückgegebenen `spacePaths`-Wert. Sie verwenden ihn weiter unten.
+    ```plaintext
+    GET YOUR_MANAGEMENT_API_URL/spaces?name=YOUR_SPACE_NAME&includes=fullpath
+    ```
 
-```plaintext
-GET https://yourManagementApiUrl/api/v1.0/spaces?name=yourSpaceName&includes=fullpath
-```
+    | Parameterwert | Ersetzen durch |
+    | --- | --- |
+    | *YOUR_SPACE_NAME* | Der Name des Raums, den Sie verwenden möchten |
 
-| Name des benutzerdefinierten Attributs | Ersetzen durch |
-| --- | --- |
-| *yourManagementApiUrl* | Der vollständige URL-Pfad für Ihre Verwaltungs-API  |
-| *yourSpaceName* | Der Name des Raums, den Sie verwenden möchten |
+1. Fügen Sie den zurückgegebenen `spacePaths`-Wert in **Path** ein, um eine UDF-Rollenzuweisung zu erstellen:
 
-4. Fügen Sie jetzt den zurückgegebenen `spacePaths`-Wert in **Path** ein, um eine UDF-Rollenzuweisung zu erstellen.
+    ```plaintext
+    POST YOUR_MANAGEMENT_API_URL/roleassignments
+    {
+      "RoleId": "YOUR_DESIRED_ROLE_IDENTIFIER",
+      "ObjectId": "YOUR_USER_DEFINED_FUNCTION_ID",
+      "ObjectIdType": "YOUR_USER_DEFINED_FUNCTION_TYPE_ID",
+      "Path": "YOUR_ACCESS_CONTROL_PATH"
+    }
+    ```
 
-```plaintext
-POST https://yourManagementApiUrl/api/v1.0/roleassignments
-{
-  "RoleId": "yourDesiredRoleIdentifier",
-  "ObjectId": "yourUserDefinedFunctionId",
-  "ObjectIdType": "UserDefinedFunctionId",
-  "Path": "yourAccessControlPath"
-}
-```
-
-| Name des benutzerdefinierten Attributs | Ersetzen durch |
-| --- | --- |
-| *yourManagementApiUrl* | Der vollständige URL-Pfad für Ihre Verwaltungs-API  |
-| *yourDesiredRoleIdentifier* | Der Bezeichner für die gewünschte Rolle |
-| *yourUserDefinedFunctionId* | Die ID für die benutzerdefinierte Funktion, die Sie verwenden möchten |
-| *yourAccessControlPath* | Der Zugriffssteuerungspfad |
+    | Ihr Wert | Ersetzen durch |
+    | --- | --- |
+    | YOUR_DESIRED_ROLE_IDENTIFIER | Der Bezeichner für die gewünschte Rolle |
+    | YOUR_USER_DEFINED_FUNCTION_ID | Die ID für die benutzerdefinierte Funktion, die Sie verwenden möchten |
+    | YOUR_USER_DEFINED_FUNCTION_TYPE_ID | Die ID zur Angabe des UDF-Typs |
+    | YOUR_ACCESS_CONTROL_PATH | Der Zugriffssteuerungspfad |
 
 ## <a name="send-telemetry-to-be-processed"></a>Senden der Telemetriedaten, die verarbeitet werden sollen
 
-Telemetriedaten, die von dem Sensor erfasst werden, der im Graphen beschrieben ist, müssen die Ausführung der benutzerdefinierten Funktion auslösen, die hochgeladen wurde. Sobald die Telemetriedaten vom Datenprozessor übernommen wurden, wird ein Ausführungsplan für den Aufruf der benutzerdefinierten Funktion erstellt.
+Die Telemetriedaten, die von dem im Graphen beschriebenen Sensor generiert werden, lösen die Ausführung der hochgeladenen benutzerdefinierten Funktion aus. Die Datenverarbeitung übernimmt die Telemetriedaten. Anschließend wird ein Ausführungsplan für den Aufruf der benutzerdefinierten Funktion erstellt.
 
 1. Rufen Sie die Matcher für den Sensor ab, von dem der Messwert generiert wurde.
 1. Je nachdem, welche Matcher erfolgreich ausgewertet wurden, rufen Sie die zugehörigen benutzerdefinierten Funktionen ab.
-1. Führen Sie jede benutzerdefinierte Funktion aus.
+1. Führen Sie die einzelnen benutzerdefinierten Funktionen aus.
 
 ## <a name="client-reference"></a>Clientreferenz
 
 ### <a name="getspacemetadataid--space"></a>getSpaceMetadata(id) ⇒ `space`
 
-Bei angegebenem Raumbezeichner wird der Raum aus dem Graphen abgerufen.
+Bei angegebenem Raumbezeichner ruft diese Funktion den Raum aus dem Graphen ab.
 
 **Art**: globale Funktion
 
 | Parameter  | Typ                | BESCHREIBUNG  |
-| ------ | ------------------- | ------------ |
+| ---------- | ------------------- | ------------ |
 | *id*  | `guid` | Raumbezeichner |
 
 ### <a name="getsensormetadataid--sensor"></a>getSensorMetadata(id) ⇒ `sensor`
 
-Bei angegebenem Sensorbezeichner wird der Sensor aus dem Graphen abgerufen.
+Bei angegebenem Sensorbezeichner ruft diese Funktion den Sensor aus dem Graphen ab.
 
 **Art**: globale Funktion
 
 | Parameter  | Typ                | BESCHREIBUNG  |
-| ------ | ------------------- | ------------ |
+| ---------- | ------------------- | ------------ |
 | *id*  | `guid` | Sensorbezeichner |
 
 ### <a name="getdevicemetadataid--device"></a>getDeviceMetadata(id) ⇒ `device`
 
-Bei angegebenem Gerätebezeichner wird das Gerät aus dem Graphen abgerufen.
+Bei angegebenem Gerätebezeichner ruft diese Funktion das Gerät aus dem Graphen ab.
 
 **Art**: globale Funktion
 
@@ -280,7 +265,7 @@ Bei angegebenem Gerätebezeichner wird das Gerät aus dem Graphen abgerufen.
 
 ### <a name="getsensorvaluesensorid-datatype--value"></a>getSensorValue(sensorId, dataType) ⇒ `value`
 
-Nach Angabe eines Sensorbezeichners und dessen Datentyps wird der aktuelle Wert dieses Sensors abgerufen.
+Nach Angabe eines Sensorbezeichners und dessen Datentyps ruft diese Funktion den aktuellen Wert dieses Sensors ab.
 
 **Art**: globale Funktion
 
@@ -291,7 +276,7 @@ Nach Angabe eines Sensorbezeichners und dessen Datentyps wird der aktuelle Wert 
 
 ### <a name="getspacevaluespaceid-valuename--value"></a>getSpaceValue(spaceId, valueName) ⇒ `value`
 
-Nach Angabe eines Raumbezeichners und des Wertnamens wird der aktuelle Wert dieser Raumeigenschaft abgerufen.
+Nach Angabe eines Raumbezeichners und des Wertnamens ruft diese Funktion den aktuellen Wert für diese Raumeigenschaft ab.
 
 **Art**: globale Funktion
 
@@ -302,7 +287,7 @@ Nach Angabe eines Raumbezeichners und des Wertnamens wird der aktuelle Wert dies
 
 ### <a name="getsensorhistoryvaluessensorid-datatype--value"></a>getSensorHistoryValues(sensorId, dataType) ⇒ `value[]`
 
-Nach Angabe eines Sensorbezeichners und des Sensordatentyps wird der aktuelle Wert dieses Sensors abgerufen.
+Nach Angabe eines Sensorbezeichners und dessen Datentyps ruft diese Funktion die früheren Werte dieses Sensors ab.
 
 **Art**: globale Funktion
 
@@ -313,7 +298,7 @@ Nach Angabe eines Sensorbezeichners und des Sensordatentyps wird der aktuelle We
 
 ### <a name="getspacehistoryvaluesspaceid-datatype--value"></a>getSpaceHistoryValues(spaceId, dataType) ⇒ `value[]`
 
-Nach Angabe eines Raumbezeichners und des Wertnamens werden die früheren Werte dieser Raumeigenschaft abgerufen.
+Nach Angabe eines Raumbezeichners und des Wertnamens ruft diese Funktion die früheren Werte dieser Raumeigenschaft ab.
 
 **Art**: globale Funktion
 
@@ -324,7 +309,7 @@ Nach Angabe eines Raumbezeichners und des Wertnamens werden die früheren Werte 
 
 ### <a name="getspacechildspacesspaceid--space"></a>getSpaceChildSpaces(spaceId) ⇒ `space[]`
 
-Nach Angabe eines Raumbezeichners werden die untergeordneten Räume dieses übergeordneten Raums abgerufen.
+Nach Angabe eines Raumbezeichners ruft diese Funktion die untergeordneten Räume dieses übergeordneten Raums ab.
 
 **Art**: globale Funktion
 
@@ -334,7 +319,7 @@ Nach Angabe eines Raumbezeichners werden die untergeordneten Räume dieses über
 
 ### <a name="getspacechildsensorsspaceid--sensor"></a>getSpaceChildSensors(spaceId) ⇒ `sensor[]`
 
-Nach Angabe eines Raumbezeichners werden die untergeordneten Sensoren dieses übergeordneten Raums abgerufen.
+Nach Angabe eines Raumbezeichners ruft diese Funktion die untergeordneten Sensoren dieses übergeordneten Raums ab.
 
 **Art**: globale Funktion
 
@@ -344,7 +329,7 @@ Nach Angabe eines Raumbezeichners werden die untergeordneten Sensoren dieses üb
 
 ### <a name="getspacechilddevicesspaceid--device"></a>getSpaceChildDevices(spaceId) ⇒ `device[]`
 
-Nach Angabe eines Raumbezeichners werden die untergeordneten Geräte dieses übergeordneten Raums abgerufen.
+Nach Angabe eines Raumbezeichners ruft diese Funktion die untergeordneten Geräte dieses übergeordneten Raums ab.
 
 **Art**: globale Funktion
 
@@ -354,7 +339,7 @@ Nach Angabe eines Raumbezeichners werden die untergeordneten Geräte dieses übe
 
 ### <a name="getdevicechildsensorsdeviceid--sensor"></a>getDeviceChildSensors(deviceId) ⇒ `sensor[]`
 
-Nach Angabe eines Raumbezeichners werden die untergeordneten Sensoren dieses übergeordneten Geräts abgerufen.
+Nach Angabe eines Gerätebezeichners ruft diese Funktion die untergeordneten Sensoren dieses übergeordneten Geräts ab.
 
 **Art**: globale Funktion
 
@@ -364,7 +349,7 @@ Nach Angabe eines Raumbezeichners werden die untergeordneten Sensoren dieses üb
 
 ### <a name="getspaceparentspacechildspaceid--space"></a>getSpaceParentSpace(childSpaceId) ⇒ `space`
 
-Nach Angabe eines Raumbezeichners wird der übergeordnete Raum dieses Raums abgerufen.
+Nach Angabe eines Raumbezeichners ruft diese Funktion den übergeordneten Raum ab.
 
 **Art**: globale Funktion
 
@@ -374,7 +359,7 @@ Nach Angabe eines Raumbezeichners wird der übergeordnete Raum dieses Raums abge
 
 ### <a name="getsensorparentspacechildsensorid--space"></a>getSensorParentSpace(childSensorId) ⇒ `space`
 
-Nach Angabe eines Sensorbezeichners wird der übergeordnete Raum dieses Sensors abgerufen.
+Nach Angabe eines Sensorbezeichners ruft diese Funktion den übergeordneten Raum ab.
 
 **Art**: globale Funktion
 
@@ -384,7 +369,7 @@ Nach Angabe eines Sensorbezeichners wird der übergeordnete Raum dieses Sensors 
 
 ### <a name="getdeviceparentspacechilddeviceid--space"></a>getDeviceParentSpace(childDeviceId) ⇒ `space`
 
-Nach Angabe eines Gerätebezeichners wird der übergeordnete Raum dieses Geräts abgerufen.
+Nach Angabe eines Gerätebezeichners ruft diese Funktion den übergeordneten Raum ab.
 
 **Art**: globale Funktion
 
@@ -394,7 +379,7 @@ Nach Angabe eines Gerätebezeichners wird der übergeordnete Raum dieses Geräts
 
 ### <a name="getsensorparentdevicechildsensorid--space"></a>getSensorParentDevice(childSensorId) ⇒ `space`
 
-Nach Angabe eines Sensorbezeichners wird das übergeordnete Gerät dieses Sensors abgerufen.
+Nach Angabe eines Sensorbezeichners ruft diese Funktion das übergeordnete Gerät ab.
 
 **Art**: globale Funktion
 
@@ -404,7 +389,7 @@ Nach Angabe eines Sensorbezeichners wird das übergeordnete Gerät dieses Sensor
 
 ### <a name="getspaceextendedpropertyspaceid-propertyname--extendedproperty"></a>getSpaceExtendedProperty(spaceId, propertyName) ⇒ `extendedProperty`
 
-Nach Angabe eines Raumbezeichners und des Namens der Eigenschaft wird deren Wert für den Raum abgerufen.
+Nach Angabe eines Raumbezeichners ruft diese Funktion die Eigenschaft und deren Wert aus dem Raum ab.
 
 **Art**: globale Funktion
 
@@ -415,7 +400,7 @@ Nach Angabe eines Raumbezeichners und des Namens der Eigenschaft wird deren Wert
 
 ### <a name="getsensorextendedpropertysensorid-propertyname--extendedproperty"></a>getSensorExtendedProperty(sensorId, propertyName) ⇒ `extendedProperty`
 
-Nach Angabe eines Sensorbezeichners und des Namens der Eigenschaft wird deren Wert für den Sensor abgerufen.
+Nach Angabe eines Sensorbezeichners ruft diese Funktion die Eigenschaft und deren Wert vom Sensor ab.
 
 **Art**: globale Funktion
 
@@ -426,7 +411,7 @@ Nach Angabe eines Sensorbezeichners und des Namens der Eigenschaft wird deren We
 
 ### <a name="getdeviceextendedpropertydeviceid-propertyname--extendedproperty"></a>getDeviceExtendedProperty(deviceId, propertyName) ⇒ `extendedProperty`
 
-Nach Angabe eines Gerätebezeichners und des Namens der Eigenschaft wird deren Wert für das Gerät abgerufen.
+Nach Angabe eines Gerätebezeichners ruft diese Funktion die Eigenschaft und deren Wert vom Gerät ab.
 
 **Art**: globale Funktion
 
@@ -437,7 +422,7 @@ Nach Angabe eines Gerätebezeichners und des Namens der Eigenschaft wird deren W
 
 ### <a name="setsensorvaluesensorid-datatype-value"></a>setSensorValue(sensorId, dataType, value)
 
-Legt den Wert des Sensorobjekts mit dem angegebenen Datentyp fest.
+Diese Funktion legt den Wert des Sensorobjekts mit dem angegebenen Datentyp fest.
 
 **Art**: globale Funktion
 
@@ -445,11 +430,11 @@ Legt den Wert des Sensorobjekts mit dem angegebenen Datentyp fest.
 | ------ | ------------------- | ------------ |
 | *sensorId* | `guid` | Sensorbezeichner |
 | *dataType*  | `string` | Sensordatentyp |
-| *value*  | `string` | value |
+| *value*  | `string` | Wert |
 
 ### <a name="setspacevaluespaceid-datatype-value"></a>setSpaceValue(spaceId, dataType, value)
 
-Legt den Wert des Raumobjekts mit dem angegebenen Datentyp fest.
+Diese Funktion legt den Wert des Raumobjekts mit dem angegebenen Datentyp fest.
 
 **Art**: globale Funktion
 
@@ -457,11 +442,11 @@ Legt den Wert des Raumobjekts mit dem angegebenen Datentyp fest.
 | ------ | ------------------- | ------------ |
 | *spaceId* | `guid` | Raumbezeichner |
 | *dataType* | `string` | Datentyp |
-| *value* | `string` | value |
+| *value* | `string` | Wert |
 
 ### <a name="logmessage"></a>log(message)
 
-Protokolliert die folgende Meldung in der benutzerdefinierten Funktion.
+Diese Funktion protokolliert die folgende Meldung in der benutzerdefinierten Funktion.
 
 **Art**: globale Funktion
 
@@ -471,19 +456,19 @@ Protokolliert die folgende Meldung in der benutzerdefinierten Funktion.
 
 ### <a name="sendnotificationtopologyobjectid-topologyobjecttype-payload"></a>sendNotification(topologyObjectId, topologyObjectType, payload)
 
-Sendet eine benutzerdefinierte Benachrichtigung, die erledigt werden soll.
+Diese Funktion sendet eine benutzerdefinierte Benachrichtigung, die erledigt werden soll.
 
 **Art**: globale Funktion
 
 | Parameter  | Typ                | BESCHREIBUNG  |
 | ------ | ------------------- | ------------ |
-| *topologyObjectId*  | `guid` | Bezeichner des Graphobjekts (Beispiel: Raum-/Sensor-/Geräte-ID)|
-| *topologyObjectType*  | `string` | (Beispiel: Raum/Sensor/Gerät)|
-| *payload*  | `string` | Die JSON-Nutzlast, die mit der Benachrichtigung gesendet werden soll |
+| *topologyObjectId*  | `guid` | Bezeichner des Graphobjekts. Beispiele: Raum-, Sensor- und Geräte-ID.|
+| *topologyObjectType*  | `string` | Beispiele: Sensor und Gerät.|
+| *payload*  | `string` | Die JSON-Nutzlast, die mit der Benachrichtigung gesendet werden soll. |
 
 ## <a name="return-types"></a>Rückgabetypen
 
-Die folgenden Angaben sind Modelle, die die Rückgabeobjekte aus der obigen Clientreferenz beschreiben.
+Die folgenden Modelle beschreiben die Rückgabeobjekte aus der obigen Clientreferenz.
 
 ### <a name="space"></a>Leerzeichen
 
@@ -502,43 +487,43 @@ Die folgenden Angaben sind Modelle, die die Rückgabeobjekte aus der obigen Clie
 
 #### <a name="parent--space"></a>Parent() ⇒ `space`
 
-Gibt den übergeordneten Raum des aktuellen Raums zurück.
+Diese Funktion gibt den übergeordneten Raum des aktuellen Raums zurück.
 
 #### <a name="childsensors--sensor"></a>ChildSensors() ⇒ `sensor[]`
 
-Gibt die untergeordneten Sensoren des aktuellen Raums zurück.
+Diese Funktion gibt die untergeordneten Sensoren des aktuellen Raums zurück.
 
 #### <a name="childdevices--device"></a>ChildDevices() ⇒ `device[]`
 
-Gibt die untergeordneten Geräte des aktuellen Raums zurück.
+Diese Funktion gibt die untergeordneten Geräte des aktuellen Raums zurück.
 
 #### <a name="extendedpropertypropertyname--extendedproperty"></a>ExtendedProperty(propertyName) ⇒ `extendedProperty`
 
-Gibt die erweiterte Eigenschaft und deren Wert für den aktuellen Raum zurück.
+Diese Funktion gibt die erweiterte Eigenschaft und deren Wert für den aktuellen Raum zurück.
 
 | Parameter  | Typ                | BESCHREIBUNG  |
 | ------ | ------------------- | ------------ |
-| *propertyName* | `string` | Der Name der erweiterten Eigenschaft |
+| *propertyName* | `string` | Name der erweiterten Eigenschaft |
 
 #### <a name="valuevaluename--value"></a>Value(valueName) ⇒ `value`
 
-Gibt den Wert des aktuellen Raums zurück.
+Diese Funktion gibt den Wert des aktuellen Raums zurück.
 
 | Parameter  | Typ                | BESCHREIBUNG  |
 | ------ | ------------------- | ------------ |
-| *valueName* | `string` | Der Name des Werts |
+| *valueName* | `string` | Name des Werts |
 
 #### <a name="historyvaluename--value"></a>History(valueName) ⇒ `value[]`
 
-Gibt die früheren Werte des aktuellen Raums zurück.
+Diese Funktion gibt die früheren Werte des aktuellen Raums zurück.
 
 | Parameter  | Typ                | BESCHREIBUNG  |
 | ------ | ------------------- | ------------ |
-| *valueName* | `string` | Der Name des Werts |
+| *valueName* | `string` | Name des Werts |
 
 #### <a name="notifypayload"></a>Notify(payload)
 
-Sendet eine Benachrichtigung mit der angegebenen Nutzlast.
+Diese Funktion sendet eine Benachrichtigung mit der angegebenen Nutzlast.
 
 | Parameter  | Typ                | BESCHREIBUNG  |
 | ------ | ------------------- | ------------ |
@@ -566,23 +551,23 @@ Sendet eine Benachrichtigung mit der angegebenen Nutzlast.
 
 #### <a name="parent--space"></a>Parent() ⇒ `space`
 
-Gibt den übergeordneten Raum des aktuellen Geräts zurück.
+Diese Funktion gibt den übergeordneten Raum des aktuellen Geräts zurück.
 
 #### <a name="childsensors--sensor"></a>ChildSensors() ⇒ `sensor[]`
 
-Gibt die untergeordneten Sensoren des aktuellen Geräts zurück.
+Diese Funktion gibt die untergeordneten Sensoren des aktuellen Geräts zurück.
 
 #### <a name="extendedpropertypropertyname--extendedproperty"></a>ExtendedProperty(propertyName) ⇒ `extendedProperty`
 
-Gibt die erweiterte Eigenschaft und deren Wert für das aktuelle Gerät zurück.
+Diese Funktion gibt die erweiterte Eigenschaft und deren Wert für das aktuelle Gerät zurück.
 
 | Parameter  | Typ                | BESCHREIBUNG  |
 | ------ | ------------------- | ------------ |
-| *propertyName* | `string` | Der Name der erweiterten Eigenschaft |
+| *propertyName* | `string` | Name der erweiterten Eigenschaft |
 
 #### <a name="notifypayload"></a>Notify(payload)
 
-Sendet eine Benachrichtigung mit der angegebenen Nutzlast.
+Diese Funktion sendet eine Benachrichtigung mit der angegebenen Nutzlast.
 
 | Parameter  | Typ                | BESCHREIBUNG  |
 | ------ | ------------------- | ------------ |
@@ -614,31 +599,31 @@ Sendet eine Benachrichtigung mit der angegebenen Nutzlast.
 
 #### <a name="space--space"></a>Space() ⇒ `space`
 
-Gibt den übergeordneten Raum des aktuellen Sensors zurück.
+Diese Funktion gibt den übergeordneten Raum des aktuellen Sensors zurück.
 
 #### <a name="device--device"></a>Device() ⇒ `device`
 
-Gibt das übergeordnete Gerät des aktuellen Sensors zurück.
+Diese Funktion gibt das übergeordnete Gerät des aktuellen Sensors zurück.
 
 #### <a name="extendedpropertypropertyname--extendedproperty"></a>ExtendedProperty(propertyName) ⇒ `extendedProperty`
 
-Gibt die erweiterte Eigenschaft und deren Wert für den aktuellen Sensor zurück.
+Diese Funktion gibt die erweiterte Eigenschaft und deren Wert für den aktuellen Sensor zurück.
 
 | Parameter  | Typ                | BESCHREIBUNG  |
 | ------ | ------------------- | ------------ |
-| *propertyName* | `string` | Der Name der erweiterten Eigenschaft |
+| *propertyName* | `string` | Name der erweiterten Eigenschaft |
 
 #### <a name="value--value"></a>Value() ⇒ `value`
 
-Gibt den Wert des aktuellen Sensors zurück.
+Diese Funktion gibt den Wert des aktuellen Sensors zurück.
 
 #### <a name="history--value"></a>History() ⇒ `value[]`
 
-Gibt die früheren Werte des aktuellen Sensors zurück.
+Diese Funktion gibt die früheren Werte des aktuellen Sensors zurück.
 
 #### <a name="notifypayload"></a>Notify(payload)
 
-Sendet eine Benachrichtigung mit der angegebenen Nutzlast.
+Diese Funktion sendet eine Benachrichtigung mit der angegebenen Nutzlast.
 
 | Parameter  | Typ                | BESCHREIBUNG  |
 | ------ | ------------------- | ------------ |
@@ -654,7 +639,7 @@ Sendet eine Benachrichtigung mit der angegebenen Nutzlast.
 }
 ```
 
-### <a name="extended-property"></a>Extended-Eigenschaft
+### <a name="extended-property"></a>Erweiterte Eigenschaft
 
 ```JSON
 {
@@ -665,6 +650,6 @@ Sendet eine Benachrichtigung mit der angegebenen Nutzlast.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informationen, wie Digital Twins-Endpunkte erstellt werden, an die Ereignisse gesendet werden sollen, finden Sie unter [Erstellen von Digital Twins-Endpunkten](how-to-egress-endpoints.md).
+- Informieren Sie sich über das [Erstellen von Azure Digital Twins-Endpunkten](how-to-egress-endpoints.md), an die Ereignisse gesendet werden sollen.
 
-Weitere ausführliche Informationen zu Digital Twins-Endpunkten finden Sie unter [Weiterleiten von Ereignissen und Nachrichten](concepts-events-routing.md).
+- Weitere ausführliche Informationen zu Digital Twins-Endpunkten finden Sie in den [weiteren Informationen zu Endpunkten](concepts-events-routing.md).

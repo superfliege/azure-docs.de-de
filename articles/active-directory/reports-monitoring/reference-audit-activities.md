@@ -13,32 +13,31 @@ ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: report-monitor
-ms.date: 04/19/2018
+ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 818f4f4d8ea51cb278190d6e41953f0b04b2e995
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: 4d86bcf99d5b4cf2b04980e72a2bd0a422233dc3
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42141734"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51622873"
 ---
 # <a name="azure-ad-audit-activity-reference"></a>Referenz zu Überwachungsaktivitäten von Azure AD
 
-Mit der Berichterstellungsfunktion in Azure Active Directory (Azure AD) können Sie alle Informationen abrufen, die Sie zum Ermitteln des Zustands Ihrer Umgebung benötigen.
+Mit Azure AD-Berichten (Azure Active Directory) können Sie alle Informationen abrufen, die Sie zum Ermitteln des Zustands Ihrer Umgebung benötigen.
 
 Die Architektur für die Berichterstellung in Azure AD umfasst die folgenden Komponenten:
 
-- **Aktivität** 
-    - **Anmeldeaktivitäten** : Informationen zur Nutzung von verwalteten Anwendungen und Aktivitäten der Benutzeranmeldung
-    - **Überwachungsprotokolle:** Ermöglichen die Nachverfolgung sämtlicher Änderungen, die von verschiedenen Features in Azure AD vorgenommen wurden. Hierzu zählen unter anderem Änderungen an Ressourcen in Azure AD wie etwa Benutzer, Apps, Gruppen, Rollen, Richtlinien und Authentifizierungen.
-- **Sicherheit** 
-    - **Riskante Anmeldungen:** Eine riskante Anmeldung ist ein Indikator für einen Anmeldeversuch von einem Benutzer, der nicht der rechtmäßige Besitzer eines Benutzerkontos ist. Weitere Informationen finden Sie unter „Riskante Anmeldungen“.
-    - **Benutzer mit Risikomarkierung:** Ein Benutzer mit Risikomarkierung ist ein Indikator für ein möglicherweise kompromittiertes Benutzerkonto. Weitere Informationen finden Sie unter „Benutzer mit Risikomarkierung“.
+- **Aktivitätsberichte** 
+    - [Anmeldungen](concept-sign-ins.md): Bietet Informationen zur Nutzung von verwalteten Anwendungen und Aktivitäten der Benutzeranmeldung.
+    - [Überwachungsprotokolle:](concept-audit-logs.md) Ermöglichen die Nachverfolgung sämtlicher Änderungen, die von verschiedenen Features in Azure AD vorgenommen wurden. 
+    
+- **Sicherheitsberichte** 
+    - [Riskante Anmeldungen:](concept-risky-sign-ins.md) Eine riskante Anmeldung ist ein Indikator für einen Anmeldeversuch von einem Benutzer, der nicht der rechtmäßige Besitzer eines Benutzerkontos ist. 
+    - [Benutzer mit Risikomarkierung:](concept-user-at-risk.md) Ein Benutzer mit Risikomarkierung ist ein Indikator für ein möglicherweise kompromittiertes Benutzerkonto. 
 
 Dieser Artikel enthält die Überwachungsaktivitäten, die in Ihren Überwachungsprotokollen protokolliert werden können:
- 
-
 
 ## <a name="access-reviews"></a>Zugriffsüberprüfungen
 
@@ -72,9 +71,6 @@ Dieser Artikel enthält die Überwachungsaktivitäten, die in Ihren Überwachung
 |Benutzerverwaltung|Get V1 applications (V1-Anwendungen abrufen)|
 |Benutzerverwaltung|Get V2 application (V2-Anwendung abrufen)|
 |Benutzerverwaltung|Get V2 applications (V2-Anwendungen abrufen)|
-
-
-
 
 ## <a name="account-provisioning"></a>Kontobereitstellung
 
@@ -593,13 +589,8 @@ Dieser Artikel enthält die Überwachungsaktivitäten, die in Ihren Überwachung
 |Richtlinienverwaltung|User registered for self-service password reset (Für Self-Service-Kennwortzurücksetzung registrierter Benutzer)|
 
 
-
-
 ## <a name="next-steps"></a>Nächste Schritte
 
-Verschaffen Sie sich einen Überblick über Folgendes:
-
-- [Azure Active Directory-Berichterstellung](overview-reports.md)
-
-- [Berichte zu Überwachungsaktivitäten im Azure Active Directory-Portal](concept-audit-logs.md) 
-
+- [Übersicht über Azure AD-Berichte](overview-reports.md)
+- [Bericht „Überwachungsprotokolle“](concept-audit-logs.md) 
+- [Programmgesteuerter Zugriff auf Azure AD-Berichte](concept-reporting-api.md)

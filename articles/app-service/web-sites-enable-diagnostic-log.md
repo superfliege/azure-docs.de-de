@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2016
 ms.author: cephalin
-ms.openlocfilehash: 7ab12c86e01a34e4ba2a9673364c0e1104f6cdba
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 8a58f8722b41944a7be02254e0f00682575c1bbb
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51231622"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51636958"
 ---
 # <a name="enable-diagnostics-logging-for-web-apps-in-azure-app-service"></a>Aktivieren der Diagnoseprotokollierung für Web-Apps in Azure App Service
 ## <a name="overview"></a>Übersicht
 Azure bietet integrierte Diagnosefunktionen zur Unterstützung beim Debuggen einer [App Service-Web-App](https://go.microsoft.com/fwlink/?LinkId=529714). In diesem Artikel erfahren Sie, wie Sie die Diagnoseprotokollierung aktivieren und Ihrer Anwendung Instrumentierung hinzufügen und wie Sie die von Azure protokollierten Informationen abrufen.
 
-In diesem Artikel wird die Verwendung von Diagnoseprotokollen mit dem [Azure-Portal](https://portal.azure.com), Azure PowerShell und der Azure-Befehlszeilenschnittstelle (Azure CLI) beschrieben. Informationen zum Arbeiten mit Diagnoseprotokollen in Visual Studio finden Sie unter [Problembehandlung von Azure in Visual Studio](web-sites-dotnet-troubleshoot-visual-studio.md).
+In diesem Artikel werden das [Azure-Portal](https://portal.azure.com) und die Azure-Befehlszeilenschnittstelle (Azure CLI) verwendet, um mit Diagnoseprotokollen zu arbeiten. Informationen zum Arbeiten mit Diagnoseprotokollen in Visual Studio finden Sie unter [Problembehandlung von Azure in Visual Studio](web-sites-dotnet-troubleshoot-visual-studio.md).
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
@@ -65,7 +65,7 @@ Unter **Anwendungsprotokollierung** können Sie zum Debuggen vorübergehend die 
 
 Unter **Webserverprotokollierung** können Sie **Speicher** oder **Dateisystem** auswählen. Durch Auswahl von **storage** können Sie ein Speicherkonto festlegen und dann einen Blob-Container hinzufügen, in den die Protokolle geschrieben werden. 
 
-Wenn Sie Protokolle im Dateisystem speichern, können diese Dateien über FTP aufgerufen werden oder als ZIP-Archiv mit Azure PowerShell oder mit der Azure-Befehlszeilenschnittstelle (Azure CLI) heruntergeladen werden.
+Wenn Sie Protokolle im Dateisystem speichern, können Sie über FTP auf diese Dateien zugreifen oder die Dateien mithilfe der Azure CLI als ZIP-Archiv herunterladen.
 
 Protokolle werden standardmäßig nicht automatisch gelöscht (ausgenommen bei der Option **Anwendungsprotokollierung (Dateisystem)**). Damit Protokolle automatisch gelöscht werden, legen Sie das Feld **Beibehaltungsdauer (Tage)** fest.
 
@@ -73,24 +73,20 @@ Protokolle werden standardmäßig nicht automatisch gelöscht (ausgenommen bei d
 > Wenn Sie [den Zugriffsschlüssel für Ihr Speicherkonto neu generieren](../storage/common/storage-create-storage-account.md), müssen Sie die jeweilige Protokollierungskonfiguration zur Verwendung der aktualisierten Schlüssel zurücksetzen. Gehen Sie dazu folgendermaßen vor:
 >
 > 1. Stellen Sie auf der Registerkarte **Konfigurieren** das jeweilige Protokollierungsfeature auf **Aus**. Speichern Sie die Einstellungen.
-> 2. Aktivieren Sie die Protokollierung für den Speicherkonto-Blob oder die -Tabelle erneut. Speichern Sie die Einstellungen.
+> 2. Aktivieren Sie die Protokollierung im Speicherkontoblob erneut. Speichern Sie die Einstellungen.
 >
 >
 
-Sie können gleichzeitig eine Kombination aus Dateisystem-, Tabellen- und BLOB-Speicher aktivieren und jeweils individuelle Konfigurationen der Protokollierungsebene festlegen. Sie können beispielsweise Fehler und Warnmeldungen als langfristige Protokollierungslösung im Blob-Speicher protokollieren, während die Dateisystemprotokollierung ausführlich erfolgt.
+Sie können gleichzeitig eine beliebige Kombination aus Speicherung im Dateisystem und in Blob Storage aktivieren und individuelle Protokollierungsebenen konfigurieren. Sie können beispielsweise Fehler und Warnmeldungen als langfristige Protokollierungslösung im Blob-Speicher protokollieren, während die Dateisystemprotokollierung ausführlich erfolgt.
 
-Obwohl alle drei Speicherorte dieselben grundlegenden Informationen zu protokollierten Ereignissen bieten, zeichnen **Table Storage** und **Blob Storage** mehr Informationen, wie Instanz-ID, Thread-ID und einen ausführlicheren Zeitstempel (Tick-Format), als die Protokollierung im **Dateisystem** auf.
+Beide Speicherorte bieten dieselben grundlegenden Informationen zu protokollierten Ereignissen. **Blob Storage**-Protokolle zeichnen jedoch im Vergleich zur Protokollierung im **Dateisystem** mehr Informationen auf, beispielsweise die Instanz-ID, die Thread-ID und einen ausführlicheren Zeitstempel (Taktformat).
 
 > [!NOTE]
-> In **Table Storage** oder **Blob Storage** gespeicherte Informationen können nur über Storage-Clients oder Anwendungen aufgerufen werden, die direkt mit diesen Speichersystemen arbeiten. Beispielsweise enthält Visual Studio 2013 einen Storage-Explorer, mit dem Table Storage oder Blob Storage erkundet werden können, und HDInsight kann auf die in Blob Storage gespeicherten Daten zugreifen. Sie können auch mithilfe der [Azure SDKs](https://azure.microsoft.com/downloads/)eine Anwendung schreiben, die auf den Azure-Speicher zugreift.
->
-> [!NOTE]
-> Diagnosen können auch über die Azure PowerShell mit dem Cmdlet **Set-AzureWebsite** aktiviert werden. Wenn Sie Azure PowerShell nicht installiert haben oder nicht zur Verwendung des Azure-Abonnements konfiguriert haben, finden Sie weitere Informationen unter [Installieren und Konfigurieren von Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-5.6.0).
->
+> In **Blob Storage** gespeicherte Informationen können nur über Storage-Clients oder Anwendungen aufgerufen werden, die direkt mit diesen Speichersystemen arbeiten können. Beispielsweise enthält Visual Studio 2013 einen Speicher-Explorer, mit dem Blob Storage erkundet werden kann, und HDInsight kann auf die in Blob Storage gespeicherten Daten zugreifen. Sie können auch mithilfe der [Azure SDKs](https://azure.microsoft.com/downloads/)eine Anwendung schreiben, die auf den Azure-Speicher zugreift.
 >
 
 ## <a name="download"></a> Vorgehensweise: Herunterladen von Blobs
-Im Dateisystem der Web-App gespeicherte Diagnoseinformationen können direkt über FTP aufgerufen werden. Außerdem können sie als ZIP-Archiv mit Azure PowerShell oder mit der Azure-Befehlszeilenschnittstelle (Azure-CLI) heruntergeladen werden.
+Im Dateisystem der Web-App gespeicherte Diagnoseinformationen können direkt über FTP aufgerufen werden. Sie können auch mithilfe der Azure CLI als ZIP-Archiv heruntergeladen werden.
 
 Protokolle werden in der folgenden Verzeichnisstruktur gespeichert:
 
@@ -106,19 +102,7 @@ Informationen zum Öffnen einer FTP-Verbindung mit dem FTP-Server Ihrer App find
 
 Wenn die Verbindung mit dem FTP/S-Server Ihrer Web-App hergestellt wurde, öffnen Sie den Ordner **LogFiles**, in dem die Protokolldateien gespeichert sind.
 
-### <a name="download-with-azure-powershell"></a>Herunterladen mit Azure PowerShell
-Starten Sie zum Herunterladen der Protokolldateien eine neue Instanz von Azure PowerShell, und führen Sie den folgenden Befehl aus:
-
-    Save-AzureWebSiteLog -Name webappname
-
-Mit diesem Befehl werden die Protokolle für die Web-App, die durch den Parameter **-Name** angegeben wird, in der Datei **logs.zip** im aktuellen Verzeichnis gespeichert.
-
-> [!NOTE]
-> Wenn Sie Azure PowerShell nicht installiert haben oder nicht zur Verwendung des Azure-Abonnements konfiguriert haben, finden Sie weitere Informationen unter [Installieren und Konfigurieren von Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-5.6.0).
->
->
-
-### <a name="download-with-azure-command-line-interface"></a>Herunterladen mit der Azure-Befehlszeilenschnittstelle
+### <a name="download-with-azure-cli"></a>Herunterladen mit der Azure-CLI
 Zum Herunterladen der Protokolldateien mit der Azure-Befehlszeilenschnittstelle öffnen Sie eine neue Eingabeaufforderung, PowerShell-, Bash- oder Terminalsitzung, und geben Sie den folgenden Befehl ein:
 
     az webapp log download --resource-group resourcegroupname --name webappname
@@ -126,7 +110,7 @@ Zum Herunterladen der Protokolldateien mit der Azure-Befehlszeilenschnittstelle 
 Mit diesem Befehl werden die Protokolle für die Web-App mit dem Namen „webappname“ in der Datei **diagnostics.zip** im aktuellen Verzeichnis gespeichert.
 
 > [!NOTE]
-> Wenn Sie die Azure-Befehlszeilenschnittstelle (Azure-CLI) nicht installiert oder nicht für Ihr Azure-Abonnement konfiguriert haben, lesen Sie unter [Installieren der Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest)weiter.
+> Wenn Sie die Azure CLI nicht installiert oder nicht zur Verwendung Ihres Azure-Abonnements konfiguriert haben, gehen Sie wie unter [Verwenden der Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest) beschrieben vor.
 >
 >
 
@@ -143,7 +127,7 @@ Visual Studio Application Insights bietet Tools zum Filtern und Suchen von Proto
 [Erfahren Sie mehr über die Leistungsüberwachung mit Application Insights](../application-insights/app-insights-azure-web-apps.md)
 
 ## <a name="streamlogs"></a> Vorgehensweise: Streaming von Protokollen
-Beim Entwickeln einer Anwendung ist es häufig nützlich, Protokollinformationen nahezu in Echtzeit zu sehen. Sie können Protokollierungsinformationen entweder mit Azure PowerShell oder mit der Azure-Befehlszeilenschnittstelle in die Entwicklungsumgebung streamen.
+Beim Entwickeln einer Anwendung ist es häufig nützlich, Protokollinformationen nahezu in Echtzeit zu sehen. Sie können Protokollierungsinformationen mithilfe der Azure CLI in Ihre Entwicklungsumgebung streamen.
 
 > [!NOTE]
 > Einige Protokolltypen puffern die Schreibvorgänge in die Protokolldatei, was zu Störereignissen im Stream führen kann. Beispielsweise kann ein Anwendungsprotokolleintrag für den Besuch einer Seite im Stream vor dem zugehörigen HTTP-Protokolleintrag für die Seitenanforderung angezeigt werden.
@@ -153,29 +137,7 @@ Beim Entwickeln einer Anwendung ist es häufig nützlich, Protokollinformationen
 >
 >
 
-### <a name="streaming-with-azure-powershell"></a>Streaming mit Azure PowerShell
-Starten Sie zum Streaming der Protokollinformationen eine neue Instanz von Azure PowerShell, und verwenden Sie den folgenden Befehl:
-
-    Get-AzureWebSiteLog -Name webappname -Tail
-
-Mit diesem Befehl wird eine Verbindung zu der Web-App hergestellt, die durch den Parameter **-Name** angegeben ist, und das Streaming von Informationen in das PowerShell-Fenster wird gestartet, sobald Protokollereignisse in der Web-App auftreten. Alle Informationen, die in Dateien mit der Erweiterung TXT, LOG oder HTM im Verzeichnis „/LogFiles“ (d:/home/logfiles) geschrieben werden, werden an die lokale Konsole gestreamt.
-
-Um bestimmte Ereignisse wie beispielsweise Fehler zu filtern, verwenden Sie den Parameter **-Message** . Beispiel: 
-
-    Get-AzureWebSiteLog -Name webappname -Tail -Message Error
-
-Um bestimmte Protokolltypen wie HTTP zu filtern, verwenden Sie den Parameter **-Path** . Beispiel: 
-
-    Get-AzureWebSiteLog -Name webappname -Tail -Path http
-
-Eine Liste der verfügbaren Pfade wird mit dem Parameter "-ListPath" angezeigt.
-
-> [!NOTE]
-> Wenn Sie Azure PowerShell nicht installiert haben oder nicht zur Verwendung des Azure-Abonnements konfiguriert haben, finden Sie weitere Informationen unter [Verwenden von Azure PowerShell](https://azure.microsoft.com/develop/nodejs/how-to-guides/powershell-cmdlets/).
->
->
-
-### <a name="streaming-with-azure-command-line-interface"></a>Streaming mit der Azure-Befehlszeilenschnittstelle
+### <a name="streaming-with-azure-cli"></a>Streamen mit der Azure CLI
 Zum Streaming der Protokollinformationen öffnen Sie eine neue Eingabeaufforderung, PowerShell, Bash- oder Terminalsitzung und geben den folgenden Befehl ein:
 
     az webapp log tail --name webappname --resource-group myResourceGroup
@@ -191,13 +153,15 @@ Um bestimmte Protokolltypen wie HTTP zu filtern, verwenden Sie den Parameter **-
     az webapp log tail --name webappname --resource-group myResourceGroup --path http
 
 > [!NOTE]
-> Wenn Sie die Azure-Befehlszeilenschnittstelle nicht installiert oder nicht für Ihr Azure-Abonnement konfiguriert haben, lesen Sie unter [Installieren der Azure-Befehlszeilenschnittstelle](../cli-install-nodejs.md)weiter.
+> Wenn Sie die Azure CLI nicht installiert oder nicht zur Verwendung Ihres Azure-Abonnements konfiguriert haben, gehen Sie wie unter [Verwenden der Azure CLI](../cli-install-nodejs.md) beschrieben vor.
 >
 >
 
 ## <a name="understandlogs"></a> Vorgehensweise: Verstehen von Diagnoseprotokollen
 ### <a name="application-diagnostics-logs"></a>Anwendungs-Diagnoseprotokolle
-Die Anwendungsdiagnose speichert Informationen in einem bestimmten Format für .NET-Anwendungen, je nachdem, ob Sie Protokolle im Dateisystem, im Tabellenspeicher oder im Blob-Speicher speichern. Der Grunddatensatz ist für alle drei Speichertypen gleich – Datum und Zeit des Ereignisses, Prozess-ID, die das Ereignis erzeugt hat, sowie Ereignistyp (Info, Warnung, Fehler) und Ereignismeldung.
+Die Anwendungsdiagnose speichert Informationen in einem spezifischen Format für .NET-Anwendungen, je nachdem, ob Sie Protokolle im Dateisystem oder in Blob Storage speichern. 
+
+Die grundlegenden Daten, die gespeichert werden, sind für beide Speichertypen gleich: Datum und Uhrzeit des Ereignisses, Prozess-ID, die das Ereignis erzeugt hat, sowie Ereignistyp (Info, Warnung, Fehler) und Ereignismeldung. Die Verwendung des Dateisystems zum Speichern von Protokollen ist nützlich, wenn Sie zum Beheben eines Problems sofortigen Zugriff auf die Protokolle benötigen, da die Protokolldateien nahezu sofort aktualisiert werden. Blob Storage eignet sich zu Archivierungszwecken, da die Dateien zwischengespeichert und dann nach einem Zeitplan in den Speichercontainer geleert werden.
 
 **Dateisystem**
 
@@ -211,27 +175,9 @@ Beispielsweise würde ein Fehlerereignis in etwa wie im folgenden Beispiel ausse
 
 Bei der Protokollierung im Dateisystem erhalten Sie nur die grundlegendsten Informationen der drei verfügbaren Methoden, nämlich Zeit, Prozess-ID, Ereignisebene und Meldung.
 
-**Tabellenspeicherung**
+**Blob Storage**
 
-Bei der Protokollierung im Tabellenspeicher werden zusätzliche Eigenschaften verwendet, um die Suche nach Daten in der Tabelle zu erleichtern und ausführlichere Informationen zum Ereignis anzugeben. Die folgenden Eigenschaften (Spalten) werden für jedes Element (Zeile) in der Tabelle angegeben.
-
-| Eigenschaftenname | Wert/Format |
-| --- | --- |
-| PartitionKey |Datum/Zeit des Ereignisses im Format JJJJMMTTHH |
-| Zeilenschlüssel |Ein GUID-Wert, der das Element eindeutig identifiziert |
-| Zeitstempel |Datum und Zeit des Auftretens des Ereignisses |
-| EventTickCount |Datum und Zeit des Auftretens des Ereignisses im Tick-Format (höhere Präzision) |
-| ApplicationName |Der Name der Web-App |
-| Ebene |Ereignisebene (z.B. Fehler, Warnung, Information) |
-| EventId |Die Ereignis-ID<p><p>Bei fehlender Angabe standardmäßig 0 |
-| InstanceId |Instanz der Web-App, in der das Ereignis auftrat |
-| Pid |Prozess-ID |
-| Tid |Thread-ID des Threads, der das Ereignis erzeugt hat |
-| Message |Meldung zu den Ereignisdetails |
-
-**Blob-Speicher**
-
-Bei der Protokollierung in einem Blob-Speicher werden die Daten im CSV-Format (durch Kommas getrennte Werte) gespeichert. Ähnlich wie beim Tabellenspeicher werden zusätzliche Felder protokolliert, um ausführlichere Informationen zum Ereignis anzugeben. Die folgenden Eigenschaften werden für jede Zeile in der CSV-Datei angegeben:
+Bei der Protokollierung in einem Blob-Speicher werden die Daten im CSV-Format (durch Kommas getrennte Werte) gespeichert. Zusätzliche Felder werden protokolliert, um ausführlichere Informationen zum Ereignis bereitzustellen. Die folgenden Eigenschaften werden für jede Zeile in der CSV-Datei angegeben:
 
 | Eigenschaftenname | Wert/Format |
 | --- | --- |
@@ -251,7 +197,7 @@ In einem Blob gespeicherte Daten sehen in etwa wie im folgenden Beispiel aus:
     2014-01-30T16:36:52,Error,mywebapp,6ee38a,635266966128818593,0,3096,9,An error occurred
 
 > [!NOTE]
-> Die erste Zeile des Protokolls enthält die Spaltentitel, wie in diesem Beispiel angegeben.
+> Für ASP.NET Core erfolgt die Protokollierung mit dem Anbieter [Microsoft.Extensions.Logging.AzureAppServices](https://www.nuget.org/packages/Microsoft.Extensions.Logging.AzureAppServices), der zusätzliche Protokolldateien im Blobcontainer ablegt. Weitere Informationen finden Sie unter [Protokollierung in ASP.NET Core](/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#logging-in-azure).
 >
 >
 

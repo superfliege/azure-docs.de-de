@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 10/11/2018
-ms.openlocfilehash: 1ae350e74a9b56aaaa72b38a9e3a43bddfbefefc
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: f4d8030918804dc30437aae34de87615ce7e82b5
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50232272"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51346699"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Grenzwert- und Konfigurationsinformationen für Azure Logic Apps
 
@@ -321,9 +321,9 @@ Für alle Logik-Apps in einer Region werden dieselben Bereiche von IP-Adressen v
 | UK, Westen | 51.141.48.98, 51.141.51.145, 51.141.53.164, 51.141.119.150 |
 | | |
 
-### <a name="connectors"></a>Connectors
+### <a name="managed-connectors"></a>Verwaltete Connectors
 
-Um die Aufrufe zu unterstützen, die [Connectors](../connectors/apis-list.md) durchführen, richten Sie Ihre Firewallkonfigurationen so ein, dass sie je nachdem, in welchen Regionen sich Ihre Logik-Apps befinden, diese ausgehenden IP-Adressen enthalten.
+Um die Aufrufe zu unterstützen, die [von Microsoft verwaltete Connectors](../connectors/apis-list.md) durchführen, richten Sie Ihre Firewallkonfigurationen so ein, dass sie basierend auf den Regionen Ihrer Logik-Apps diese ausgehenden IP-Adressen enthalten.
 
 > [!IMPORTANT]
 > Aktualisieren Sie ggf. vorhandene Konfigurationen **so bald wie möglich vor dem 1. September 2018**, damit sie die IP-Adressen in dieser Liste für die Regionen, in denen sich Ihre Logik-Apps befinden, enthalten und mit ihnen übereinstimmen. 

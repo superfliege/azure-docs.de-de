@@ -2,18 +2,18 @@
 title: Registrieren eines neuen Azure IoT Edge-Geräts (Visual Studio Code) | Microsoft-Dokumentation
 description: Verwenden von Visual Studio Code zum Erstellen eines neuen IoT Edge-Geräts in Ihrem Azure IoT Hub
 author: kgremban
-manager: timlt
+manager: philmea
 ms.author: kgremban
 ms.date: 06/14/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 7902461f58df1b4fe0c3ed3b577f668fe8be4cc2
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: cf9603c65454f076a494789e784c9352fb7bef33
+ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37034960"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51578704"
 ---
 # <a name="register-a-new-azure-iot-edge-device-from-visual-studio-code"></a>Registrieren eines neuen Azure IoT Edge-Geräts über Visual Studio Code
 
@@ -37,7 +37,7 @@ Sie können die Azure IoT-Erweiterungen für Visual Studio Code verwenden, um Vo
 
    ![Erweitern von „Azure IoT Hub Devices“ (Azure IoT Hub-Geräte)](./media/how-to-register-device-vscode/azure-iot-hub-devices.png)
 
-3. Klicken Sie auf **...** in der Überschrift des Abschnitts **Azure IoT Hub Devices** (Azure IoT Hub-Geräte). Wenn die Ellipse nicht angezeigt wird, zeigen Sie auf den Header. 
+3. Klicken Sie auf **...** in der Überschrift des Abschnitts **Azure IoT Hub Devices** (Azure IoT Hub-Geräte). Wenn die Ellipse nicht angezeigt wird, zeigen Sie auf den Header, oder klicken Sie darauf. 
 
 4. Wählen Sie **Select IoT Hub** (IoT Hub auswählen) aus.
 
@@ -51,7 +51,7 @@ Sie können die Azure IoT-Erweiterungen für Visual Studio Code verwenden, um Vo
 
 1. Erweitern Sie im Visual Studio Code-Explorer den Abschnitt **Azure IoT Hub Devices** (Azure IoT Hub-Geräte). 
 
-2. Klicken Sie auf **...** in der Überschrift des Abschnitts **Azure IoT Hub Devices** (Azure IoT Hub-Geräte). Wenn die Ellipse nicht angezeigt wird, zeigen Sie auf den Header. 
+2. Klicken Sie auf **...** in der Überschrift des Abschnitts **Azure IoT Hub Devices** (Azure IoT Hub-Geräte). Wenn die Ellipse nicht angezeigt wird, zeigen Sie auf den Header, oder klicken Sie darauf. 
 
 3. Wählen Sie **Create IoT Edge Device** (IoT Edge-Gerät erstellen) aus. 
 

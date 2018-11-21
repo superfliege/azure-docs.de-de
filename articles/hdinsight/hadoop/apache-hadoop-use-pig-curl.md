@@ -1,6 +1,6 @@
 ---
-title: Verwenden von Hadoop Pig mit REST in HDInsight – Azure
-description: Dieser Artikel erläutert, wie Sie mit REST Pig Latin-Aufträge in einem Hadoop-Cluster in Azure HDInsight ausführen können.
+title: Verwenden von Apache Hadoop Pig mit REST in HDInsight – Azure
+description: Hier erfahren Sie, wie Sie Pig Latin-Aufträge mithilfe von REST in einem Apache Hadoop-Cluster in Azure HDInsight ausführen können.
 services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -9,21 +9,21 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: hrasheed
-ms.openlocfilehash: bd729d0d2cd095339a82b8a7f38a17a20b709c15
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: cb96933569c18b8c70d8991c9ba19f9f3e1243e6
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51013087"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51633698"
 ---
-# <a name="run-pig-jobs-with-hadoop-on-hdinsight-by-using-rest"></a>Ausführen von Pig-Aufträgen mit Hadoop in HDInsight mithilfe von REST
+# <a name="run-pig-jobs-with-apache-hadoop-on-hdinsight-by-using-rest"></a>Ausführen von Pig-Aufträgen mit Apache Hadoop in HDInsight mithilfe von REST
 
 [!INCLUDE [pig-selector](../../../includes/hdinsight-selector-use-pig.md)]
 
-Erfahren Sie hier, wie Sie mithilfe von REST-Anforderungen in einem Azure HDInsight-Cluster Pig Latin-Aufträge ausführen können. Curl dient zur Veranschaulichung der Interaktion mit HDInsight über die WebHCat REST-API.
+Hier erfahren Sie, wie Sie REST-Anforderungen an einen Azure HDInsight-Cluster richten, um Apache Pig Latin-Aufträge auszuführen. Curl dient zur Veranschaulichung der Interaktion mit HDInsight über die WebHCat REST-API.
 
 > [!NOTE]
-> Wenn Sie bereits mit der Verwendung von Linux-basierten Hadoop-Servern vertraut sind, Ihnen HDInsight jedoch neu ist, finden Sie weitere Informationen unter [Tipps zu Linux-basiertem HDInsight](../hdinsight-hadoop-linux-information.md).
+> Falls Sie bereits mit der Verwendung von Linux-basierten Apache Hadoop-Servern vertraut sind, aber noch keine Erfahrung mit HDInsight haben, finden Sie weitere Informationen unter [Tipps zu Linux-basiertem HDInsight](../hdinsight-hadoop-linux-information.md).
 
 ## <a id="prereq"></a>Voraussetzungen
 

@@ -1,29 +1,29 @@
 ---
 title: Automatische Installation von Azure Backup Server V2
-description: Verwenden Sie ein PowerShell-Skript, um Azure Backup Server v2 automatisch zu installieren. Diese Art der Installation wird auch als unbeaufsichtigte Installation bezeichnet.
+description: Verwenden Sie ein PowerShell-Skript für die automatische Installation von Azure Backup Server v2. Diese Art der Installation wird auch als unbeaufsichtigte Installation bezeichnet.
 services: backup
 author: markgalioto
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 05/30/2017
+ms.date: 11/13/2018
 ms.author: markgal
-ms.openlocfilehash: 126c1971d83a8874c096caf407231fb6dee2ff59
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 8f7bda070e613e5495d3733dd1610cb291e12c36
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34606408"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51612694"
 ---
-# <a name="run-an-unattended-installation-of-azure-backup-server-v2"></a>Ausführen einer unbeaufsichtigten Installation von Azure Backup Server v2
+# <a name="run-an-unattended-installation-of-azure-backup-server"></a>Ausführen einer unbeaufsichtigten Installation von Azure Backup Server
 
-Erfahren Sie, wie Sie eine unbeaufsichtigte Installation von Azure Backup Server v2 ausführen 
+Hier erfahren Sie, wie Sie eine unbeaufsichtigte Installation von Azure Backup Server ausführen.
 
-Diese Schritte gelten nicht, wenn Sie Azure Backup Server v1 installieren.
+Diese Schritte gelten nicht, wenn Sie Azure Backup Server V1 installieren.
 
-## <a name="install-backup-server-v2"></a>Installieren von Backup Server v2
+## <a name="install-backup-server"></a>Installieren von Backup Server
 
-1. Erstellen Sie auf dem Server, der Azure Backup Server v2 hostet, eine Textdatei. (Sie können die Datei in Editor oder einem anderen Texteditor erstellen.) Speichern Sie die Datei als „MABSSetup.ini“. 
+1. Erstellen Sie auf dem Server, der Azure Backup Server V2 oder höher hostet, eine Textdatei. (Sie können die Datei in Editor oder einem anderen Texteditor erstellen.) Speichern Sie die Datei als „MABSSetup.ini“.
 
 2. Fügen Sie den folgenden Code in die Datei „MABSSetup.ini“ ein. Ersetzen Sie den Text in Klammern (\< \>) durch Werte aus Ihrer Umgebung. Der folgende Text ist ein Beispiel:
 

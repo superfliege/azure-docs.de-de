@@ -1,6 +1,6 @@
 ---
-title: Verwenden von MapReduce und cURL mit Hadoop in HDInsight – Azure
-description: Erfahren Sie, wie Sie MapReduce-Aufträge mit Hadoop in HDInsight mithilfe von Curl remote ausführen.
+title: Verwenden von MapReduce und Curl mit Hadoop in HDInsight – Azure
+description: Erfahren Sie, wie Sie MapReduce-Aufträge mit Apache Hadoop in HDInsight mithilfe von Curl remote ausführen.
 services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -9,16 +9,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
-ms.openlocfilehash: 496b7dacdb30507fe5eb2d4d7c5602003a944269
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: afa9b57d9c0e2acf81b5307273ac038e92073655
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51010897"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51632293"
 ---
-# <a name="run-mapreduce-jobs-with-hadoop-on-hdinsight-using-rest"></a>Ausführen von MapReduce-Aufträgen mit Hadoop in HDInsight mithilfe von REST
+# <a name="run-mapreduce-jobs-with-apache-hadoop-on-hdinsight-using-rest"></a>Ausführen von MapReduce-Aufträgen mit Apache Hadoop in HDInsight mithilfe von REST
 
-Erfahren Sie, wie mithilfe der WebHCat-REST-API MapReduce-Aufträge auf einem Hadoop-Cluster in HDInsight ausführen. Curl dient zum Veranschaulichen der Interaktion mit HDInsight über unformatierte HTTP-Anforderungen zum Ausführen von MapReduce-Aufträgen.
+Erfahren Sie, wie mithilfe der WebHCat-REST-API MapReduce-Aufträge auf einem Apache Hadoop-Cluster in HDInsight ausführen. Curl dient zum Veranschaulichen der Interaktion mit HDInsight über unformatierte HTTP-Anforderungen zum Ausführen von MapReduce-Aufträgen.
 
 > [!NOTE]
 > Wenn Sie bereits mit der Verwendung von Linux-basierten Hadoop-Servern vertraut sind, nicht jedoch mit HDInsight, finden Sie weitere Informationen im Artikel [Was Sie über Linux-basiertes Hadoop in HDInsight wissen müssen](../hdinsight-hadoop-linux-information.md).

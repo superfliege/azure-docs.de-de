@@ -15,18 +15,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
-ms.openlocfilehash: 3ca7897455f763237533aa15680fbfcf805cdaf9
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 4ef653a603bccc001a5bbbb4c2af97e5ca0b20a8
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34834725"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51344432"
 ---
 # <a name="discover-and-share-tutorials-in-azure-ai-gallery"></a>Entdecken und Freigeben von Tutorials im Azure AI-Katalog
-[!INCLUDE [machine-learning-gallery-item-selector](../../../includes/machine-learning-gallery-item-selector.md)]
 
-## <a name="tutorials"></a>Tutorials
-Der Azure AI-Katalog bietet mehrere [Tutorials](https://gallery.cortanaintelligence.com/tutorials), die Ihnen die Technologien und Konzepte für maschinelles Lernen näherbringen. In den Tutorials können auch fortgeschrittene Methoden für Probleme im Zusammenhang mit maschinellem Lernen beschrieben sein.
+[Azure AI Gallery](http://gallery.cortanaintelligence.com) bietet mehrere [Tutorials](https://gallery.cortanaintelligence.com/tutorials), die Ihnen die Technologien und Konzepte für maschinelles Lernen näherbringen. In den Tutorials können auch fortgeschrittene Methoden für Probleme im Zusammenhang mit maschinellem Lernen beschrieben sein.
 
 ## <a name="discover"></a>Entdecken
 Zum Durchsuchen der Tutorials im [Katalog](http://gallery.cortanaintelligence.com) wählen Sie unter **Mehr** die Option **Tutorials** aus.

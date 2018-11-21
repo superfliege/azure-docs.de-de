@@ -7,14 +7,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: conceptual
-ms.date: 05/09/2018
+ms.date: 11/12/2018
 ms.author: erhopf
-ms.openlocfilehash: be2f6c49a260477e907f1f8f29f64b9eb08e6926
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: a8aa2600c8f3bcbc9d2ebc7f55ac0d2f038d8ecd
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51038602"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51566617"
 ---
 # <a name="speech-service-rest-apis"></a>REST-APIs des Speech-Diensts
 
@@ -127,14 +127,43 @@ HTTP-Code|Bedeutung|Mögliche Ursache
 
 ### <a name="json-response"></a>JSON-Antwort
 
-Ergebnisse werden im JSON-Format zurückgegeben. Das `simple`-Format schließt nur die folgenden Felder auf oberster Ebene ein.
+Ergebnisse werden im JSON-Format zurückgegeben. Je nach Ihren Abfrageparameter wird das Format `simple` oder `detailed` zurückgegeben.
+
+#### <a name="the-simple-format"></a>Das `simple`-Format 
+
+Dieses Format schließt die folgenden Felder auf oberster Ebene ein.
 
 |Feldname|Inhalt|
 |-|-|
-|`RecognitionStatus`|Status, z.B. `Success` für erfolgreiche Erkennung. Siehe nächste Tabelle.|
+|`RecognitionStatus`|Status, z.B. `Success` für erfolgreiche Erkennung. Beachten Sie diese [Tabelle](rest-apis.md#recognitionstatus).|
 |`DisplayText`|Der erkannte Text nach Großschreibung, Interpunktion, inverser Textnormalisierung (Umwandlung von gesprochenem Text in kürzere Formen, z.B. 200 für „zweihundert“ oder „Dr. Smith“ für „doctor smith“) und Obszönitätenmaskierung. Nur bei Erfolg vorhanden.|
 |`Offset`|Die Zeit (in Einheiten von 100 Nanosekunden), zu der die erkannte Sprache im Audiostream beginnt.|
 |`Duration`|Die Dauer (in Einheiten von 100 Nanosekunden) der erkannten Sprache im Audiostream.|
+
+#### <a name="the-detailed-format"></a>Das `detailed`-Format 
+
+Dieses Format schließt die folgenden Felder auf oberster Ebene ein.
+
+|Feldname|Inhalt|
+|-|-|
+|`RecognitionStatus`|Status, z.B. `Success` für erfolgreiche Erkennung. Beachten Sie diese [Tabelle](rest-apis.md#recognition-status).|
+|`Offset`|Die Zeit (in Einheiten von 100 Nanosekunden), zu der die erkannte Sprache im Audiostream beginnt.|
+|`Duration`|Die Dauer (in Einheiten von 100 Nanosekunden) der erkannten Sprache im Audiostream.|
+|`NBest`|Eine Liste von alternativen Interpretationen derselben Spracheingabe. Die Rangfolge beginnt mit der wahrscheinlichsten und endet mit der am wenigsten wahrscheinlichen Interpretation. Beachten Sie diese [NBest-Beschreibung](rest-apis.md#nbest).|
+
+#### <a name="nbest"></a>NBest
+
+Das `NBest`-Feld ist eine Liste von alternativen Interpretationen derselben Spracheingabe. Die Rangfolge beginnt mit der wahrscheinlichsten und endet mit der am wenigsten wahrscheinlichen Interpretation. Der erste Eintrag ist identisch mit den Haupterkennungsergebnis. Jeder Eintrag enthält die folgenden Felder:
+
+|Feldname|Inhalt|
+|-|-|
+|`Confidence`|Die Zuverlässigkeitsbewertung des Eintrags von 0,0 (keine Zuverlässigkeit) bis 1,0 (volle Zuverlässigkeit)
+|`Lexical`|Die lexikalische Form des erkannten Texts: die tatsächlich erkannten Wörter.
+|`ITN`|Die inverse Textnormalisierung („kanonische Form“) des erkannten Texts mit Telefonnummern, Zahlen, Abkürzungen („doctor smith“ in „dr. smith“) und anderen angewendeten Transformationen.
+|`MaskedITN`| Die ITN-Form mit angewendeter Obszönitätenmaskierung, wenn angefordert.
+|`Display`| Die Anzeigeform des erkannten Texts mit hinzugefügten Satzzeichen und Großschreibung.
+
+#### <a name="recognitionstatus"></a>RecognitionStatus
 
 Das `RecognitionStatus`-Feld kann die folgenden Werte enthalten.
 
@@ -148,17 +177,6 @@ Das `RecognitionStatus`-Feld kann die folgenden Werte enthalten.
 
 > [!NOTE]
 > Wenn die Audiodaten nur aus Obszönitäten bestehen und der `profanity`-Abfrageparameter auf `remove` festgelegt ist, gibt der Dienst kein Sprachergebnis zurück.
-
-
-Das `detailed`-Format enthält die gleichen Felder wie das `simple`-Format sowie ein `NBest`-Feld. Das `NBest`-Feld ist eine Liste von alternativen Interpretationen derselben Spracheingabe. Die Rangfolge beginnt mit der wahrscheinlichsten und endet mit der am wenigsten wahrscheinlichen Interpretation. Der erste Eintrag ist identisch mit den Haupterkennungsergebnis. Jeder Eintrag enthält die folgenden Felder:
-
-|Feldname|Inhalt|
-|-|-|
-|`Confidence`|Die Zuverlässigkeitsbewertung des Eintrags von 0,0 (keine Zuverlässigkeit) bis 1,0 (volle Zuverlässigkeit)
-|`Lexical`|Die lexikalische Form des erkannten Texts: die tatsächlich erkannten Wörter.
-|`ITN`|Die inverse Textnormalisierung („kanonische Form“) des erkannten Texts mit Telefonnummern, Zahlen, Abkürzungen („doctor smith“ in „dr. smith“) und anderen angewendeten Transformationen.
-|`MaskedITN`| Die ITN-Form mit angewendeter Obszönitätenmaskierung, wenn angefordert.
-|`Display`| Die Anzeigeform des erkannten Texts mit hinzugefügten Satzzeichen und Großschreibung. Identisch mit `DisplayText` im Ergebnis der obersten Ebene.
 
 ### <a name="sample-responses"></a>Beispielantworten
 

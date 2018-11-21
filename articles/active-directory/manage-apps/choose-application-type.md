@@ -12,24 +12,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/09/2018
+ms.date: 11/08/2018
 ms.author: barbkess
-ms.openlocfilehash: 3a9f27a92a4bc808ff9bcf04b66523a92f1bcf03
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 3fe268b6491a2a3cc1237173506ef5a91beb7d26
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44354825"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51625080"
 ---
-# <a name="how-to-choose-which-application-type-to-use-when-adding-an-application"></a>Auswählen des zu verwendenden Anwendungstyps beim Hinzufügen einer Anwendung
+# <a name="choosing-the-application-type-when-adding-an-application-in-azure-active-directory"></a>Auswählen des Anwendungstyps beim Hinzufügen einer Anwendung in Azure Active Directory
+Erfahren Sie mehr über die vier Anwendungstypen, die Azure Active Directory (Azure AD) hinzugefügt werden können. Wenn Sie eine Anwendung in Azure Active Directory hinzufügen, werden Sie aufgefordert, einen der vier Anwendungstypen auszuwählen. 
 
-Dieser Artikel bietet Informationen zu den vier wichtigsten Typen von Anwendungen, die Sie in Azure AD integrieren können:
-
-* Unterstützte Features jeder Anwendung
-* Gründe für die Auswahl der Anwendungen
-* Konfigurieren der grundlegenden Eigenschaften der jeweiligen Anwendung, z.B. die Art der **Bereitstellung** von Benutzern oder die zu verwendende Technologie für das **einmalige Anmelden**
-
-## <a name="supported-application-types-in-azure-ad"></a>In Azure AD unterstützte Anwendungstypen
+## <a name="what-are-the-types-of-applications"></a>Was sind diese Anwendungstypen?
 
 Azure AD unterstützt vier wichtige Anwendungstypen, die Sie mithilfe der **Hinzufügen**-Funktion unter **Unternehmensanwendungen** hinzufügen können. Das umfasst:
 
@@ -41,7 +36,7 @@ Azure AD unterstützt vier wichtige Anwendungstypen, die Sie mithilfe der **Hinz
 
 -   **Nicht im Katalog vorhandene Anwendungen**: Nutzen Sie Ihre eigenen Anwendungen (BYOD, Bring Your Own Applications). Hierbei kann es sich um beliebige Weblinks oder Anwendungen handeln, die Felder für Benutzername und Kennwort generieren, SAML oder OpenID Connect-Protokolle oder SCIM unterstützen, und die Sie für das einmalige Anmelden in Azure AD integrieren möchten.
 
-## <a name="features-and-capabilities-supported-by-all-the-preceding-application-types"></a>Von allen vorstehend genannten Anwendungstypen unterstützte Features und Funktionen
+## <a name="features-and-capabilities-supported-by-the-application-types"></a>Von den Anwendungstypen unterstützte Features und Funktionen
 
 Die folgenden Funktionen werden von allen vier vorstehend genannten Anwendungstypen in Azure AD unterstützt:
 

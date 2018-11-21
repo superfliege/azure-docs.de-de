@@ -1,5 +1,5 @@
 ---
-title: Tutorial zu Azure Service Bus WCF Relay | Microsoft-Dokumentation
+title: Verfügbarmachen eines lokalen WCF REST-Diensts für einen externen Client mithilfe von Azure WCF Relay | Microsoft-Dokumentation
 description: Erstellen einer Client- und Dienstanwendung mit WCF-Relay.
 services: service-bus-relay
 documentationcenter: na
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/02/2017
+ms.date: 11/01/2018
 ms.author: spelluru
-ms.openlocfilehash: 9c76e535fe0585ec6ff08a0c9dcab700d8eb5424
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 6927788fa79c567222a199064f5b375546ecf9ad
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51262011"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51615468"
 ---
-# <a name="azure-wcf-relay-tutorial"></a>Tutorial zu Azure WCF Relay
+# <a name="expose-an-on-premises-wcf-rest-service-to-external-client-by-using-azure-wcf-relay"></a>Verfügbarmachen eines lokalen WCF REST-Diensts für einen externen Client mithilfe von Azure WCF Relay
 
 Dieses Tutorial beschreibt das Erstellen einer einfachen Clientanwendung und eines Diensts für WCF-Relay mithilfe von Azure Relay. Ein ähnliches Tutorial, in dem die [Messagingfunktionen von Service Bus](../service-bus-messaging/service-bus-messaging-overview.md) beschrieben werden, finden Sie unter [Erste Schritte mit Service Bus-Warteschlangen](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md).
 
@@ -31,19 +31,32 @@ Nachdem Sie die Themen in diesem Tutorial nacheinander durchgearbeitet haben, ve
 
 Die letzten drei Schritte beschreiben das Erstellen einer Clientanwendung, das Konfigurieren der Clientanwendung sowie das Erstellen und Verwenden eines Clients, der auf die Funktionen des Hosts zugreifen kann.
 
+In diesem Tutorial führen Sie die folgenden Schritte aus:
+
+> [!div class="checklist"]
+> * Erstellen eines Relaynamespace
+> * Erstellen eines WCF-Dienstvertrags
+> * Implementieren des WCF-Vertrags
+> * Hosten und Ausführen des WCF-Diensts für die Registrierung beim Relaydienst
+> * Erstellen eines WCF-Clients für den Dienstvertrag
+> * Konfigurieren des WCF-Clients
+> * Implementieren des WCF-Clients
+> * Ausführen der Anwendungen 
+
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Für dieses Tutorial benötigen Sie Folgendes:
+Zum Durchführen dieses Tutorials benötigen Sie Folgendes:
 
-* [Microsoft Visual Studio 2015 oder höher](https://visualstudio.com) In diesem Tutorial wird Visual Studio 2017 verwendet.
-* Ein aktives Azure-Konto. Falls Sie nicht über ein Konto verfügen, können Sie in nur wenigen Minuten ein kostenloses Konto erstellen. Ausführliche Informationen finden Sie unter [Kostenlose Azure-Testversion](https://azure.microsoft.com/free/).
+- Ein Azure-Abonnement. Falls Sie kein Abonnement besitzen, können Sie ein [kostenloses Konto erstellen](https://azure.microsoft.com/free/), bevor Sie beginnen.
+- [Visual Studio 2015 oder eine höhere Version.](http://www.visualstudio.com) Für die Beispiele in diesem Tutorial wird Visual Studio 2017 verwendet.
+- Azure SDK für .NET. Installieren Sie das SDK über die [SDK-Downloadseite](https://azure.microsoft.com/downloads/).
 
-## <a name="create-a-service-namespace"></a>Erstellen eines Dienstnamespaces
+## <a name="create-a-relay-namespace"></a>Erstellen eines Relaynamespace
+Der erste Schritt umfasst die Einrichtung eines Namespaces und das Abrufen eines [Shared Access Signature](../service-bus-messaging/service-bus-sas.md)-Schlüssels (SAS). Ein Namespace stellt eine Anwendungsgrenze für jede Anwendung bereit, die über den Relaydienst verfügbar gemacht wird. Das System generiert automatisch einen SAS-Schlüssel, wenn ein Dienstnamespace erstellt wird. Dienstnamespace und SAS-Schlüssel bilden gemeinsam die Anmeldeinformationen, mit denen sich Azure für den Zugriff auf die Anwendung authentifiziert.
 
-Der erste Schritt umfasst die Einrichtung eines Namespaces und das Abrufen eines [Shared Access Signature](../service-bus-messaging/service-bus-sas.md)-Schlüssels (SAS). Ein Namespace stellt eine Anwendungsgrenze für jede Anwendung bereit, die über den Relaydienst verfügbar gemacht wird. Das System generiert automatisch einen SAS-Schlüssel, wenn ein Dienstnamespace erstellt wird. Dienstnamespace und SAS-Schlüssel bilden gemeinsam die Anmeldeinformationen, mit denen sich Azure für den Zugriff auf die Anwendung authentifiziert. Führen Sie [diese Anleitung](relay-create-namespace-portal.md) aus, um einen Relaynamespace zu erstellen.
+[!INCLUDE [relay-create-namespace-portal](../../includes/relay-create-namespace-portal.md)]
 
 ## <a name="define-a-wcf-service-contract"></a>Definieren eines WCF-Dienstvertrags
-
 Der Dienstvertrag gibt an, welche Vorgänge (Webdienstterminologie für Methoden oder Funktionen) der Dienst unterstützt. Verträge werden durch die Definition einer C++-, C#- oder Visual Basic-Schnittstelle erstellt. Jede Methode in der Schnittstelle entspricht einem bestimmten Dienstvorgang. Auf jede Schnittstelle muss das Attribut [ServiceContractAttribute](https://msdn.microsoft.com/library/system.servicemodel.servicecontractattribute.aspx) und auf jeden Vorgang das Attribut [OperationContractAttribute](https://msdn.microsoft.com/library/system.servicemodel.operationcontractattribute.aspx) angewendet werden. Wenn eine Methode in einer Schnittstelle das Attribut [ServiceContractAttribute](https://msdn.microsoft.com/library/system.servicemodel.servicecontractattribute.aspx), nicht jedoch das Attribut [OperationContractAttribute](https://msdn.microsoft.com/library/system.servicemodel.operationcontractattribute.aspx) besitzt, wird diese Methode nicht bereitgestellt. Der Code für diese Aufgaben wird im Beispiel im Anschluss an das Verfahren bereitgestellt. Eine ausführlichere Darstellung von Verträgen und Diensten finden Sie in der WCF-Dokumentation unter [Entwerfen und Implementieren von Diensten](https://msdn.microsoft.com/library/ms729746.aspx).
 
 ### <a name="create-a-relay-contract-with-an-interface"></a>Erstellen eines Relayvertrags mit einer Schnittstelle
@@ -51,13 +64,13 @@ Der Dienstvertrag gibt an, welche Vorgänge (Webdienstterminologie für Methoden
 1. Öffnen Sie Visual Studio als Administrator, indem Sie im **Startmenü** mit der rechten Maustaste auf das Programm klicken und dann **Als Administrator ausführen** auswählen.
 2. Erstellen Sie ein neues Konsolenanwendungsprojekt. Klicken Sie auf das Menü **Datei**, wählen Sie **Neu** aus, und klicken Sie auf **Projekt**. Klicken Sie im Dialogfeld **Neues Projekt** auf **Visual C#** (wenn **Visual C#** nicht angezeigt wird, suchen Sie unter **Andere Sprachen**). Klicken Sie auf die Vorlage **Konsolenanwendung (.NET Framework)**, und geben Sie ihr den Namen **EchoService**. Klicken Sie auf **OK**, um das Projekt zu erstellen.
 
-    ![][2]
+    ![Erstellen einer Konsolen-App][2]
 
 3. Installieren Sie das NuGet-Paket für Service Bus. Dieses Paket fügt automatisch Verweise auf die Service Bus-Bibliotheken sowie **System.ServiceModel** (WCF) hinzu. [System.ServiceModel](https://msdn.microsoft.com/library/system.servicemodel.aspx) ist der Namespace, der den programmgesteuerten Zugriff auf die grundlegenden Funktionen von WCF ermöglicht. Service Bus verwendet viele Objekte und Attribute von WCF, um Dienstverträge zu definieren.
 
-    Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt, und klicken Sie dann auf **NuGet-Pakete verwalten**. Klicken Sie auf die Registerkarte Durchsuchen, und suchen Sie nach **WindowsAzure.ServiceBus**. Vergewissern Sie sich, dass im Feld **Version(en)** der Projektname ausgewählt ist. Klicken Sie auf **Installieren**, und akzeptieren Sie die Nutzungsbedingungen.
+    Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt, und klicken Sie dann auf **NuGet-Pakete verwalten**. Klicken Sie auf die Registerkarte **Durchsuchen**, und suchen Sie nach **WindowsAzure.ServiceBus**. Vergewissern Sie sich, dass im Feld **Version(en)** der Projektname ausgewählt ist. Klicken Sie auf **Installieren**, und akzeptieren Sie die Nutzungsbedingungen.
 
-    ![][3]
+    ![Service Bus-Paket][3]
 4. Doppelklicken Sie im Projektmappen-Explorer auf die Datei „Program.cs“, um sie im Editor zu öffnen (sofern sie nicht bereits geöffnet ist).
 5. Fügen Sie am Anfang der Datei die folgenden using-Anweisungen ein:
 
@@ -231,7 +244,7 @@ Der folgende Code zeigt das grundlegende Format der Datei "App.config", die dem 
 </configuration>
 ```
 
-## <a name="host-and-run-a-basic-web-service-to-register-with-the-relay-service"></a>Hosten und Ausführen eines Basiswebdiensts für die Registrierung beim Relaydienst
+## <a name="host-and-run-the-wcf-service-to-register-with-the-relay-service"></a>Hosten und Ausführen des WCF-Diensts für die Registrierung beim Relaydienst
 
 Dieser Schritt beschreibt, wie ein Azure Relay-Dienst ausgeführt wird.
 
@@ -501,7 +514,7 @@ In diesem Schritt erstellen Sie eine App.config-Datei für eine Clientbasisanwen
     In diesem Schritt werden der Name des Endpunkts, der im Dienst definierte Vertrag und die Verwendung von TCP durch die Clientanwendung für die Kommunikation mit Azure Relay definiert. Der Endpunktname wird im nächsten Schritt verwendet, um diese Endpunktkonfiguration mit dem Dienst-URI zu verknüpfen.
 5. Klicken Sie auf **Datei** und anschließend auf **Alles speichern**.
 
-## <a name="example"></a>Beispiel
+### <a name="example"></a>Beispiel
 
 Der folgende Code zeigt die App.config-Datei für den Echo-Client.
 
@@ -607,7 +620,7 @@ Einer der Hauptunterschiede besteht jedoch darin, dass die Clientanwendung einen
     channelFactory.Close();
     ```
 
-## <a name="example"></a>Beispiel
+### <a name="example"></a>Beispiel
 
 Der abgeschlossene Code sollte wie folgt aussehen. Er zeigt, wie eine Clientanwendung erstellt wird, wie die Dienstvorgänge aufgerufen werden und wie der Client geschlossen wird, nachdem der Vorgangsaufruf abgeschlossen wurde.
 
@@ -714,13 +727,10 @@ namespace Microsoft.ServiceBus.Samples
 12. Sie können auf diese Weise weitere Textnachrichten vom Client an den Dienst senden. Wenn Sie fertig sind, drücken Sie die EINGABETASTE in den Client- und Dienstkonsolenfenstern, um beide Anwendungen zu beenden.
 
 ## <a name="next-steps"></a>Nächste Schritte
+Fahren Sie mit dem folgenden Tutorial fort: 
 
-Dieses Tutorial zeigte das Erstellen einer Azure Relay-Clientanwendung und eines Azure Relay-Diensts mithilfe der WCF-Relayfunktionen von Service Bus. Ein ähnliches Tutorial, in dem die [Messagingfunktionen von Service Bus](../service-bus-messaging/service-bus-messaging-overview.md) beschrieben werden, finden Sie unter [Erste Schritte mit Service Bus-Warteschlangen](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md).
-
-Weitere Informationen zu Azure Relay finden Sie in den folgenden Themen:
-
-* [Übersicht über Azure Relay](relay-what-is-it.md)
-* [Verwenden des WCF-Relaydiensts mit .NET](relay-wcf-dotnet-get-started.md)
+> [!div class="nextstepaction"]
+>[Verfügbarmachen eines lokalen WCF-REST-Diensts für einen Client außerhalb Ihres Netzwerks](service-bus-relay-rest-tutorial.md)
 
 [2]: ./media/service-bus-relay-tutorial/create-console-app.png
 [3]: ./media/service-bus-relay-tutorial/install-nuget.png

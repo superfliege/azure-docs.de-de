@@ -10,118 +10,94 @@ ms.reviewer: larryfr
 manager: cgronlun
 ms.topic: conceptual
 ms.date: 11/6/2018
-ms.openlocfilehash: 8ce411e424d538a4a1f94300bfe5510658017f56
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 2fd2d35bde95a3e268f46b398f2163f9d40ab1ee
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238319"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51613952"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Konfigurieren einer Entwicklungsumgebung für Azure Machine Learning
 
-In diesem Artikel wird beschrieben, wie Sie eine Entwicklungsumgebung für die Arbeit mit dem Azure Machine Learning-Dienst konfigurieren, z.B.:
+In diesem Dokument erfahren Sie, wie Sie eine Entwicklungsumgebung für die Arbeit mit dem Azure Machine Learning-Dienst konfigurieren. Der Azure Machine Learning-Dienst ist frameworkunabhängig. Die einzigen Voraussetzungen für die Entwicklungsumgebung sind __Python 3__, __Conda__ (für isolierte Umgebungen) und eine Konfigurationsdatei, die die Informationen zu Ihrem Azure Machine Learning-Arbeitsbereich enthält.
 
-- Erstellen einer Konfigurationsdatei, die Ihre Umgebung einem Azure Machine Learning-Dienstarbeitsbereich zuordnet.
-- Konfigurieren der folgenden Entwicklungsumgebungen:
-  - Jupyter Notebooks auf Ihrem Computer
-  - Visual Studio Code
-  - Benutzerdefinierter Code-Editor
-- Einrichten einer [virtuellen Conda-Umgebung](https://conda.io/docs/user-guide/tasks/manage-environments.html) und Verwenden der Umgebung für Azure Machine Learning. Wir empfehlen Ihnen, Continuum Anaconda zu nutzen, um Ihre Arbeitsumgebung zu isolieren und so Abhängigkeitskonflikte zwischen Paketen zu vermeiden.
+In diesem Dokument werden in erster Linie die folgenden spezifischen Umgebungen und Tools behandelt:
+
+* [Azure Notebooks:](#aznotebooks) ein in der Azure-Cloud gehosteter Jupyter Notebooks-Dienst. Dies ist __die einfachste__ Methode für die ersten Schritte, da das Azure Machine Learning-SDK bereits installiert ist.
+* [Data Science Virtual Machine:](#dsvm) ein virtueller Computer in der Azure-Cloud, der für __Data Science-Zwecke konzipiert__ wurde. Python 3, Conda, Jupyter Notebooks und das Azure Machine Learning-SDK sind bereits installiert. Der virtuelle Computer ist mit verbreiteten ML-Frameworks, Tools und Editoren zum Entwickeln von ML-Lösungen ausgestattet. Dies ist wahrscheinlich __die vollständigste__ Entwicklungsumgebung für Machine Learning auf der Azure-Plattform.
+* [Jupyter Notebooks:](#jupyter) Wenn Sie Jupyter Notebooks bereits verwenden, enthält das SDK einige zusätzliche Elemente, die Sie installieren sollten.
+* [Visual Studio Code:](#vscode) Wenn Sie Visual Studio Code verwenden, gibt es einige nützliche Erweiterungen, die Sie installieren können.
+
+Wenn Sie bereits über eine Python 3-Umgebung verfügen oder nur die grundlegenden Schritte zum Installieren des SDK erhalten möchten, finden Sie weitere Informationen im Abschnitt [Lokaler Computer](#local).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Richten Sie einen Azure Machine Learning-Dienstarbeitsbereich ein. Führen Sie die Schritte unter [Schnellstart: Erste Schritte mit dem Azure Machine Learning-Dienst](quickstart-get-started.md) aus.
-- Installieren Sie als Paket-Manager entweder [Continuum Anaconda](https://www.anaconda.com/download/) oder [Miniconda](https://conda.io/miniconda.html).
-- Nutzen Sie bei Verwendung von Visual Studio Code die [Python-Erweiterung](https://code.visualstudio.com/docs/python/python-tutorial).
+- Ein Azure Machine Learning-Dienstbereich. Führen Sie die Schritte unter [Erste Schritte mit dem Azure Machine Learning-Dienst](quickstart-get-started.md) aus, um einen zu erstellen.
 
-> [!NOTE]
-> Sie können die in diesem Artikel veranschaulichten Shellbefehle testen, indem Sie Bash (unter Linux und Mac OS) oder die Eingabeaufforderung (unter Windows) nutzen.
+- Einen der Paket-Manager [Continuum Anaconda](https://www.anaconda.com/download/) oder [Miniconda](https://conda.io/miniconda.html).
 
-## <a name="create-a-workspace-configuration-file"></a>Erstellen einer Konfigurationsdatei für den Arbeitsbereich
+    > [!IMPORTANT]
+    > Anaconda und Miniconda sind bei Verwendung von Azure Notebooks nicht erforderlich.
 
-Die Konfigurationsdatei für den Arbeitsbereich wird vom Azure Machine Learning SDK zum Kommunizieren mit Ihrem Azure Machine Learning-Dienstarbeitsbereich verwendet.
+- Unter Linux oder macOS benötigen Sie die Bash-Shell.
 
-- Arbeiten Sie die [Schnellstartanleitung für Azure Machine Learning](quickstart-get-started.md) durch, um die Konfigurationsdatei zu erstellen.
-  - Mit dem Schnellstartprozess wird die Datei `config.json` in Azure Notebooks erstellt. Diese Datei enthält die Konfigurationsinformationen für Ihren Arbeitsbereich.
-  - Laden Sie die Datei `config.json` in das Verzeichnis mit den Skripts oder Notebooks herunter, die darauf verweisen, oder kopieren Sie sie dorthin.
+    > [!TIP]
+    > Wenn Sie unter Linux oder macOS eine andere Shell als Bash verwenden (z.B. zsh), werden beim Ausführen einiger Befehle möglicherweise Fehler ausgegeben. Um dieses Problem zu umgehen, starten Sie mit dem Befehl `bash` eine neue Bash-Shell starten, und führen Sie die Befehle in dieser aus.
 
-- Alternativ können Sie die Datei auch manuell erstellen, indem Sie die folgenden Schritte ausführen:
+- Unter Windows benötigen Sie die Eingabeaufforderung oder die Anaconda-Eingabeaufforderung (installiert mit Anaconda und Miniconda).
 
-    1. Öffnen Sie Ihren Arbeitsbereich im [Azure-Portal](https://portal.azure.com). Kopieren Sie den __Arbeitsbereichsnamen__, die __Ressourcengruppe__ und die __Abonnement-ID__. Diese Werte werden verwendet, um die Konfigurationsdatei zu erstellen.
-        ![Azure-Portal](./media/how-to-configure-environment/configure.png)
+## <a id="anotebooks"></a>Azure Notebooks
 
-    1. Erstellen Sie die Datei mit dem folgenden Python-Code, und stellen Sie sicher, dass Sie den Code in demselben Verzeichnis wie die Skripts oder Notebooks ausführen, in denen auf den Arbeitsbereich verwiesen wird:
+[Azure Notebooks](https://notebooks.azure.com) (Vorschauversion) ist eine interaktive Umgebung in der Azure-Cloud. Es handelt sich um die __einfachste__ Methode für die ersten Schritte bei der Azure Machine Learning-Entwicklung.
 
-        ```python
-        from azureml.core import Workspace
+* Das Azure Machine Learning-SDK ist __bereits installiert__.
+* Nachdem Sie im Azure-Portal einen Arbeitsbereich für den Azure Machine Learning-Dienst erstellt haben, können Sie über eine Schaltfläche Ihre Azure Notebook-Umgebung für die Arbeit mit dem Arbeitsbereich automatisch konfigurieren.
 
-        subscription_id ='<subscription-id>'
-        resource_group ='<resource-group>'
-        workspace_name = '<workspace-name>'
+Informationen zum Einstieg in die Entwicklung mit Azure Notebooks finden Sie in den Anweisungen im Dokument [Erste Schritte mit dem Azure Machine Learning-Dienst](quickstart-get-started.md).
 
-        try:
-           ws = Workspace(subscription_id = subscription_id, resource_group = resource_group, workspace_name = workspace_name)
-           ws.write_config()
-           print('Library configuration succeeded')
-        except:
-           print('Workspace not found')
-        ```
-        Mit diesem Code wird die folgende Datei `aml_config/config.json` geschrieben:
+## <a id="dsvm"></a>Data Science Virtual Machine
 
-        ```json
-        {
-        "subscription_id": "<subscription-id>",
-        "resource_group": "<resource-group>",
-        "workspace_name": "<workspace-name>"
-        }
-        ```
-        Sie können das `aml_config`-Verzeichnis oder nur die `config.json`-Datei in ein beliebiges anderes Verzeichnis kopieren, das auf den Arbeitsbereich verweist.
+Die Data Science Virtual Machine (DSVM) ist ein benutzerdefiniertes VM-Image, das für **Data Science-Zwecke konzipiert** wurde.  Sie hat folgenden Inhalt:
 
-       > [!NOTE]
-       > Andere Skripts oder Notebooks in demselben Verzeichnis laden den Arbeitsbereich mithilfe von `ws=Workspace.from_config()`.
-
-## <a name="azure-notebooks-and-data-science-virtual-machines"></a>Azure Notebooks und Data Science Virtual Machines
-
-Azure Notebooks und Azure Data Science Virtual Machines (DSVMs) sind für den Azure Machine Learning-Dienst vorkonfiguriert. Diese Umgebungen enthalten erforderliche Komponenten, z.B. das Azure Machine Learning SDK.
-
-### <a name="azure-notebooks"></a>Azure-Notebooks
-
-- Azure Notebooks ist ein Jupyter Notebook-Dienst in der Azure-Cloud.
-- Für die Verwendung dieser Umgebungen benötigen Sie trotzdem eine Konfigurationsdatei für den Arbeitsbereich.
-
-Ein Beispiel für die Verwendung von Azure Notebooks zusammen mit dem Azure Machine Learning-Dienst finden Sie unter [Schnellstart: Erste Schritte mit dem Azure Machine Learning-Dienst](quickstart-get-started.md).
-
-### <a name="data-science-virtual-machines"></a>Data Science Virtual Machines
-
-- Die Data Science Virtual Machine ist ein benutzerdefiniertes VM-Image, das für Data Science-Zwecke konzipiert wurde. Sie umfasst Folgendes:
   - Beliebte Data Science-Tools
   - Integrierte Entwicklungsumgebungen (IDEs), z.B. PyCharm und RStudio
   - Pakete, z.B. Jupyter Notebooks und Tensorflow
 
-Auf der DSVM sind bereits mehrere Anaconda-Umgebungen installiert. Öffnen Sie zum Nutzen des Azure Machine Learning Python SDK ohne Paketinstallation eine Eingabeaufforderung bzw. Shell, und verwenden Sie einen der folgenden Befehle, um die Umgebung zu aktivieren:
+Das Azure Machine Learning-SDK funktioniert mit der Ubuntu- und der Windows-Version der DSVM. Um die DSVM als Entwicklungsumgebung zu verwenden, führen Sie folgende Schritte aus:
 
-* Verwenden Sie auf der __Ubuntu__-DSVM diesen Befehl:
+1. Um eine Data Science Virtual Machine zu erstellen, befolgen Sie die Schritte in einem der folgenden Dokumente:
 
-    ```shell
-    conda activate py36
+    * [Erstellen einer Ubuntu-Data Science Virtual Machine](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro)
+    * [Erstellen einer Windows-Data Science Virtual Machine](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/provision-vm)
+
+1. Das Azure Machine Learning-SDK ist auf der DSVM **bereits installiert**. Um die Conda-Umgebung mit dem SDK zu verwenden, führen Sie einen der folgenden Befehle aus:
+
+    * Verwenden Sie auf der DSVM unter __Ubuntu__ diesen Befehl:
+
+        ```shell
+        conda activate py36
+        ```
+
+    * Verwenden Sie auf der DSVM unter __Windows__ diesen Befehl:
+
+        ```shell
+        conda activate AzureML
+        ```
+
+1. Um sicherzustellen, dass Sie auf das SDK zugreifen und die Version überprüfen können, verwenden Sie den folgenden Python-Code:
+
+    ```python
+    import azureml.core
+    print(azureml.core.VERSION)
     ```
 
-* Verwenden Sie auf der __Windows__-DSVM diesen Befehl:
-
-    ```shell
-    conda activate AzureML
-    ```
-
-Wenn Sie sich in dieser Umgebung befinden, können Sie das Azure Machine Learning SDK sofort in das Buildtool Ihrer Wahl importieren, ohne das Paket zu installieren.
-
-```python
-import azureml.core
-print(azureml.core.VERSION)
-```
+1. Informationen zum Konfigurieren der DSVM für Ihren Azure Machine Learning-Arbeitsbereich finden Sie im Abschnitt [Konfigurieren des Arbeitsbereichs](#workspace).
 
 Weitere Informationen zu Data Science Virtual Machines finden Sie unter [Data Science Virtual Machines](https://azure.microsoft.com/services/virtual-machines/data-science-virtual-machines/).
 
-## <a name="configure-jupyter-notebooks-on-your-computer"></a>Konfigurieren von Jupyter Notebooks auf Ihrem Computer
+## <a id="local"></a>Lokaler Computer
+
+Wenn Sie einen lokalen Computer verwenden (dabei kann es sich auch um einen virtuellen Remotecomputer handeln), gehen Sie folgendermaßen vor, um eine Conda-Umgebung zu erstellen und das SDK zu installieren:
 
 1. Öffnen Sie eine Eingabeaufforderung oder Shell.
 
@@ -146,10 +122,6 @@ Weitere Informationen zu Data Science Virtual Machines finden Sie unter [Data Sc
     pip install --upgrade azureml-sdk[notebooks,automl] azureml-dataprep
     ```
 
-   Sie finden die Python-Referenzdokumente für Klassen und Methoden in den folgenden SDKs:
-   + [Azure Machine Learning SDK for Python](https://aka.ms/aml-sdk)
-   + [Azure Machine Learning – Datenaufbereitungs-SDK](https://aka.ms/data-prep-sdk)
-
    > [!NOTE]
    > Wenn Sie eine Meldung mit dem Hinweis erhalten, dass `PyYAML` nicht deinstalliert werden kann, können Sie stattdessen den folgenden Befehl verwenden:
    >
@@ -163,7 +135,22 @@ Weitere Informationen zu Data Science Virtual Machines finden Sie unter [Data Sc
     conda install <new package>
     ```
 
-1. Installieren Sie einen Conda-fähigen Jupyter Notebook-Server, und aktivieren Sie Experiment-Widgets (für die Anzeige von Ausführungsinformationen). Verwenden Sie die folgenden Befehle:
+1. Um zu überprüfen, ob das SDK installiert wurde, verwenden Sie folgenden Python-Code:
+
+    ```python
+    import azureml.core
+    azureml.core.VERSION
+    ```
+
+### <a id="jupyter"></a>Jupyter Notebooks
+
+Jupyter Notebooks sind Teil des [Jupyter-Projekts](https://jupyter.org/). Sie stellen eine interaktive Programmierumgebung bereit, mit der Sie Dokumente erstellen können, in denen Livecode mit beschreibendem Text und Grafiken gemischt ist. Jupyter Notebooks sind auch eine hervorragende Möglichkeit, Ihre Ergebnisse mit anderen zu teilen, da Sie die Ausgabe Ihrer Codeabschnitte im Dokument speichern können. Sie können Jupyter Notebooks auf vielen unterschiedlichen Plattformen installieren.
+
+Über die Schritte im Abschnitt [Lokaler Computer](#local) werden optionale Komponenten für Jupyter Notebooks installiert. Um diese Komponenten in Ihrer Jupyter Notebook-Umgebung zu aktivieren, führen Sie die folgenden Schritte aus:
+
+1. Öffnen Sie eine Eingabeaufforderung oder Shell.
+
+1. Um einen Conda-fähigen Jupyter Notebook-Server zu installieren und Experiment-Widgets zu aktivieren, verwenden Sie die folgenden Befehle:
 
     ```shell
     # install Jupyter
@@ -182,63 +169,80 @@ Weitere Informationen zu Data Science Virtual Machines finden Sie unter [Data Sc
     jupyter notebook
     ```
 
-1. Öffnen Sie ein neues Notebook, wählen Sie „myenv“ als Kernel aus, und vergewissern Sie sich dann, dass das Azure Machine Learning SDK installiert ist. Führen Sie den folgenden Befehl in einer Notebookzelle aus:
+1. Um zu überprüfen, ob Jupyter Notebook das SDK verwenden kann, öffnen Sie ein neues Notebook, und wählen Sie als Kernel „myenv“ aus. Führen Sie dann den folgenden Befehl in einer Notebookzelle aus:
 
     ```python
     import azureml.core
     azureml.core.VERSION
     ```
 
-## <a name="configure-visual-studio-code"></a>Konfigurieren von Visual Studio Code
+1. Informationen zum Konfigurieren des Jupyter Notebook für Ihren Azure Machine Learning-Arbeitsbereich finden Sie im Abschnitt [Konfigurieren des Arbeitsbereichs](#workspace).
 
-1. Öffnen Sie eine Eingabeaufforderung oder Shell.
+### <a id="vscode"></a>Visual Studio Code
 
-1. Verwenden Sie die folgenden Befehle, um eine Conda-Umgebung zu erstellen:
+Visual Studio Code ist ein Code-Editor für alle Plattformen. Für Python-Unterstützung benötigt er eine lokale Python 3- und Conda-Installation, aber er bietet zusätzliche Tools für die Arbeit mit künstlicher Intelligenz. Darüber hinaus bietet er Unterstützung für die Auswahl der Conda-Umgebung aus dem Code-Editor heraus.
 
-    ```shell
-    # create a new conda environment with Python 3.6, numpy and cython
-    conda create -n myenv Python=3.6 cython numpy
+Um Visual Studio Code für die Entwicklung zu verwenden, führen Sie die folgenden Schritte aus:
 
-    # activate the conda environment
-    conda activate myenv
+1. Informationen zur Verwendung von Visual Studio Code für die Python-Entwicklung finden Sie im Dokument [Erste Schritte mit Python in VS Code](https://code.visualstudio.com/docs/python/python-tutorial).
 
-    # If you are running Mac OS you should run
-    source activate myenv
-    ```
+1. Um die Conda-Umgebung auszuwählen, öffnen Sie Visual Studio Code, und rufen Sie die __Befehlspalette__ mit __STRG+UMSCHALT+P__ (Linux und Windows) bzw. __BEFEHL+UMSCHALT+P__ (Mac) auf. Geben Sie __Python: Select Interpreter__ ein, und wählen Sie die Conda-Umgebung aus.
 
-1. Installieren Sie das Azure Machine Learning SDK und das SDK für die Datenaufbereitung mit dem folgenden Befehl:
-
-    ```shell
-    pip install --upgrade azureml-sdk[automl] azureml-dataprep
-    ```
-
-1. Installieren Sie die Erweiterung „Visual Studio Code Tools for AI“. Weitere Informationen finden Sie unter [Tools for AI](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-ai).
-
-1. Installieren Sie Pakete für Ihre Machine Learning-Experimente. Verwenden Sie den folgenden Befehl, und ersetzen Sie `<new package>` durch das zu installierende Paket:
-
-    ```shell
-    conda install <new package>
-    ```
-
-1. Öffnen Sie Visual Studio Code, und verwenden Sie dann **STRG+UMSCHALT+P** (unter Windows) bzw. **BEFEHLSTASTE+UMSCHALT+P** (unter Mac OS), um die **Befehlspalette** anzuzeigen. Geben Sie _Python: Select Interpreter_ ein, und wählen Sie die erstellte Conda-Umgebung aus.
-
-   > [!NOTE]
-   > Visual Studio Code erkennt Conda-Umgebungen auf Ihrem Computer automatisch. Weitere Informationen finden Sie in der [Visual Studio Code-Dokumentation](https://code.visualstudio.com/docs/python/environments#_conda-environments).
-
-1. Überprüfen Sie die Konfiguration, indem Sie mit Visual Studio Code eine neue Python-Skriptdatei mit dem folgenden Code erstellen und diese dann ausführen:
+1. Um sicherzustellen dass Sie das SDK verwenden können, erstellen Sie eine neue Python-Datei (.py) mit dem folgenden Code. Führen Sie die Datei dann aus:
 
     ```python
     import azureml.core
     azureml.core.VERSION
     ```
 
-## <a name="configure-a-custom-code-editor"></a>Konfigurieren eines benutzerdefinierten Code-Editors
+1. Informationen zum Installieren der Erweiterung Visual Studio Code Tools for AI finden Sie auf der Seite [Tools for AI](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-ai).
 
-Sie können einen Code-Editor Ihrer Wahl für das Azure Machine Learning SDK verwenden.
+    Weitere Informationen finden Sie im Dokument [Verwenden von Visual Studio Code Tools for AI mit Azure Machine Learning](how-to-vscode-tools.md).
 
-1. Erstellen Sie Ihre Conda-Umgebung, wie in Schritt 2 oben unter [Konfigurieren von Visual Studio Code](#configure-visual-studio-code) beschrieben.
-1. Befolgen Sie jeweils die Anweisungen für den Editor, um die Conda-Umgebung zu verwenden. Beispielsweise können Sie die [PyCharm-Anleitung](https://www.jetbrains.com/help/pycharm/2018.2/conda-support-creating-conda-virtual-environment.html) befolgen.
+## <a id="workspace"></a>Erstellen einer Konfigurationsdatei für den Arbeitsbereich
+
+Die Arbeitsbereichs-Konfigurationsdatei ist ein JSON-Dokument, das das SDK zur Kommunikation mit Ihrem Azure Machine Learning-Dienstarbeitsbereich instruiert. Die Datei hat den Namen `config.json` und das folgende Format:
+
+```json
+{
+    "subscription_id": "<subscription-id>",
+    "resource_group": "<resource-group>",
+    "workspace_name": "<workspace-name>"
+}
+```
+
+Diese Datei muss sich in der Verzeichnisstruktur befinden, die Ihre Python-Skripts oder Jupyter Notebooks enthält. Es kann sich im selben Verzeichnis, in einem Unterverzeichnis mit dem Namen `aml_config` oder in einem übergeordneten Verzeichnis befinden.
+
+Um in Ihrem Code auf diese Datei zuzugreifen, verwenden Sie `ws=Workspace.from_config()`. Dieser Code lädt die Informationen aus der Datei und stellt eine Verbindung mit Ihrem Arbeitsbereich her.
+
+Es gibt drei Möglichkeiten zum Erstellen der Konfigurationsdatei:
+
+* Wenn Sie nach dem [Azure Machine Learning-Schnellstart ](quickstart-get-started.md) vorgehen, wird die Datei `config.json` in Ihrer Azure Notebooks-Bibliothek erstellt. Diese Datei enthält die Konfigurationsinformationen für Ihren Arbeitsbereich. Sie können diese Datei `config.json` in andere Entwicklungsumgebungen herunterladen oder kopieren.
+
+* Sie können **die Datei mit einem Text-Editor manuell erstellen**. Sie finden die Werte dafür in der Konfigurationsdatei in Ihrem Arbeitsbereich im [Azure-Portal](https://portal.azure.com). Kopieren Sie die Werte für __Arbeitsbereichsname__, __Ressourcengruppe__ und __Abonnement-ID__, und verwenden Sie sie in der Konfigurationsdatei.
+        ![Azure-Portal](./media/how-to-configure-environment/configure.png)
+
+* Sie können **die Datei programmgesteuert erstellen**. Der folgende Codeausschnitt veranschaulicht, wie Sie mit der Abonnement-ID, der Ressourcengruppe und dem Arbeitsbereichsnamen eine Verbindung mit einem Arbeitsbereich herstellen. Anschließend wird die Arbeitsbereichskonfiguration in dieser Datei gespeichert:
+
+    ```python
+    from azureml.core import Workspace
+
+    subscription_id = '<subscription-id>'
+    resource_group  = '<resource-group>'
+    workspace_name  = '<workspace-name>'
+
+    try:
+        ws = Workspace(subscription_id = subscription_id, resource_group = resource_group, workspace_name = workspace_name)
+        ws.write_config()
+        print('Library configuration succeeded')
+    except:
+        print('Workspace not found')
+    ```
+
+    Dieser Code schreibt die Konfigurationsdatei in die Datei `aml_config/config.json`.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Trainieren eines Modells in Azure Machine Learning mit dem MNIST-Dataset](tutorial-train-models-with-aml.md)
+- [Azure Machine Learning SDK for Python](https://aka.ms/aml-sdk)
+- [Azure Machine Learning – Datenaufbereitungs-SDK](https://aka.ms/data-prep-sdk)

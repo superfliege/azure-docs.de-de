@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/28/2017
 ms.author: cephalin
-ms.openlocfilehash: a5d031622103183fa9aa7a3f3771a055fc16edb2
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 632558760d0b4a00384763cc30de3b9241bb1ae6
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39049975"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51300165"
 ---
 # <a name="migrate-an-active-dns-name-to-azure-app-service"></a>Migrieren eines aktiven DNS-Namens zu Azure App Service
 
@@ -60,6 +60,13 @@ Welchen TXT-Eintrag Sie benötigen, hängt vom zu migrierenden DNS-Eintrag ab. B
 | \* (Platzhalter) | _awverify.\*_ | _&lt;App-Name&gt;.azurewebsites.net_ |
 
 Beachten Sie auf der Seite mit den DNS-Einträgen den Eintragstyp des DNS-Namens, den Sie migrieren möchten. App Service unterstützt Zuordnungen von CNAME- und A-Einträgen.
+
+> [!NOTE]
+> Für bestimmte Anbieter, z.B. CloudFlare, ist `awverify.*` kein gültiger Datensatz. Verwenden Sie stattdessen nur `*`.
+
+> [!NOTE]
+> Platzhalterdatensätze (`*`) überprüfen keine Unterdomänen mit vorhandenem CNAME-Eintrag. Möglicherweise müssen Sie für jede Unterdomäne explizit einen TXT-Eintrag erstellen.
+
 
 ### <a name="enable-the-domain-for-your-app"></a>Aktivieren der Domäne für Ihre App
 

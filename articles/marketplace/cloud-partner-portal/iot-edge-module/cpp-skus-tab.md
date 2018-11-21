@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: pbutlerm
-ms.openlocfilehash: a216f3ddd89ad92dbbae617c51d5fc9c478c0c03
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 205fd258ed397f5a9588773549368fc3c4aec058
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49432720"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51684816"
 ---
 # <a name="iot-edge-module-skus-tab"></a>Registerkarte „SKUs“ für ein IoT Edge-Modul
 
@@ -90,7 +90,7 @@ In der folgenden Tabelle werden der Zweck, der Inhalt und die Formatierung der F
 
 ## <a name="sku-content"></a>SKU-Inhalt
 
-Geben Sie unter den Edge-Modulimages die Informationen an, die wir benötigen, um Ihr IoT Edge-Modul hochzuladen.
+Geben Sie unter **Edge-Modulimages** die Informationen an, die wir benötigen, um Ihr IoT Edge-Modul hochzuladen.
 
 Geben Sie uns Zugriff auf Ihre [Azure Container Registry-Instanz](https://azure.microsoft.com/services/container-registry/) (ACR), die das IoT Edge-Modulimage enthält, damit wir es hochladen und zertifizieren können. Nach der Veröffentlichung wird Ihr IoT Edge-Modul kopiert und über eine öffentliche Containerregistrierung, die vom Azure Marketplace gehostet wird, verteilt.
 

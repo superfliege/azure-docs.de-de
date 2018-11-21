@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
-ms.openlocfilehash: df29d0a55317d06d656d8444c6bd7754c6c955eb
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: c83c9929019e6e236ead783c0c617e51523a5a8a
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31407213"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51567382"
 ---
 # <a name="data-exploration-and-visualization-tools-on-the-data-science-virtual-machine"></a>Auf der Data Science-VM verfügbare Tools zum Durchsuchen und Visualisieren von Daten
 
-Bei Data Science geht es unter anderem darum, Daten zu verstehen. Hierbei helfen Tools zum Durchsuchen und Visualisieren von Daten. Im Anschluss sind einige Tools aufgeführt, die zur Vereinfachung dieses wichtigen Schritts auf der DSVM zur Verfügung stehen. 
+Bei Data Science geht es unter anderem darum, Daten zu verstehen. Hierbei helfen Tools zum Durchsuchen und Visualisieren von Daten. Im Anschluss sind einige Tools aufgeführt, die zur Vereinfachung dieses wichtigen Schritts in DSVM zur Verfügung stehen. 
 
 ## <a name="apache-drill"></a>Apache Drill
 |    |           |
@@ -60,7 +60,7 @@ Bei Data Science geht es unter anderem darum, Daten zu verstehen. Hierbei helfen
 |    |           |
 | ------------- | ------------- |
 | Was ist das?   | Interaktives Tool für Datenvisualisierung und BI    |
-| Unterstützte DSVM-Versionen      | Windows  |
+| Unterstützte DSVM-Versionen      |  Windows  |
 | Typische Verwendung      |  Datenvisualisierung und Dashboarderstellung   |
 | Verwendung/Ausführung      | Desktopverknüpfung (`C:\Program Files\Microsoft Power BI Desktop\bin\PBIDesktop.exe`)      |
 | Verwandte Tools auf der DSVM      |   Visual Studio 2017, Visual Studio Code, Juno      |

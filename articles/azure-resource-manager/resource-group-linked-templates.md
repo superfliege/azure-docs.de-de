@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/17/2018
 ms.author: tomfitz
-ms.openlocfilehash: ea926a64e3df853d6845266ff20255b76d9ff387
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: fbfe7255f2b848187c74fd832f349186eef5eaef
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49386721"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51287573"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Verwenden von verknüpften und geschachtelten Vorlagen bei der Bereitstellung von Azure-Ressourcen
 
@@ -27,7 +27,7 @@ Um Ihre Lösung bereitzustellen, können Sie entweder eine Einzelvorlage oder ei
 
 Bei kleinen bis mittelgroßen Lösungen lässt sich eine Einzelvorlage einfacher verstehen und verwalten. Sie können alle Ressourcen und Werte in einer einzelnen Datei anzeigen. In erweiterten Szenarien können Sie mithilfe verknüpfter Vorlagen die Lösung in Zielkomponenten unterteilen und Vorlagen wiederverwenden.
 
-Bei Verwendung verknüpfter Vorlagen erstellen Sie eine Hauptvorlage, in der während der Bereitstellung Parameterwerte empfangen werden. Die Hauptvorlage enthält alle verknüpften Vorlagen und übergibt bei Bedarf Werte an diese Vorlagen.
+Bei Verwendung verknüpfter Vorlagen erstellen Sie eine Hauptvorlage, in der die Parameterwerte während der Bereitstellung empfangen werden. Die Hauptvorlage enthält alle verknüpften Vorlagen und übergibt bei Bedarf Werte an diese Vorlagen.
 
 Ein entsprechendes Tutorial finden Sie unter [Tutorial: Erstellen verknüpfter Azure Resource Manager-Vorlagen](./resource-manager-tutorial-create-linked-templates.md).
 

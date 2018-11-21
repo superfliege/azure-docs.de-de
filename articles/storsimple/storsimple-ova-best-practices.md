@@ -1,5 +1,5 @@
 ---
-title: StorSimple Virtual Array – Bewährte Methoden | Microsoft-Dokumentation
+title: StorSimple Virtual Array – Bewährte Methoden | Microsoft Docs
 description: Es werden die bewährten Methoden für die Bereitstellung und Verwaltung des StorSimple Virtual Array beschrieben.
 services: storsimple
 documentationcenter: NA
@@ -12,14 +12,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 03/16/2018
+ms.date: 11/08/2018
 ms.author: alkohli
-ms.openlocfilehash: 46fd818d8ca15515c91bb6e65e99b0a3bc1f1fa4
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: b8e9f12a549f71971c2da3b9865f6a74dad58f61
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/17/2018
-ms.locfileid: "29972839"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51300913"
 ---
 # <a name="storsimple-virtual-array-best-practices"></a>StorSimple Virtual Array – Bewährte Methoden
 ## <a name="overview"></a>Übersicht
@@ -168,7 +168,7 @@ StorSimple unterstützt basierend auf der Nutzung zwei Volume-/Freigabetypen: lo
 Es wird empfohlen, beim Konfigurieren von StorSimple-Volumes bzw. -Freigaben die folgenden bewährten Methoden zu implementieren:
 
 * Identifizieren Sie den Volumetyp basierend auf den Workloads, die Sie bereitstellen möchten, bevor Sie ein Volume erstellen. Verwenden Sie lokale Volumes für Workloads, für die lokale Garantien für Daten (auch während eines Cloudausfalls) und geringe Cloudlatenzen erforderlich sind. Nachdem Sie auf Ihrem virtuellen Array ein Volume erstellt haben, können Sie den Volumetyp nicht von lokal in mehrstufig bzw. *umgekehrt* ändern. Erstellen Sie beispielsweise lokale Volumes, wenn Sie SQL-Workloads oder Workloads mit Hosting von virtuellen Computern (VMs) bereitstellen. Verwenden Sie mehrstufige Volumes für Dateifreigabe-Workloads.
-* Aktivieren Sie die Option für weniger häufig verwendete Archivdaten, wenn Sie mit großen Dateien arbeiten. Wenn diese Option aktiviert ist, wird eine größere Deduplizierungssegmentgröße von 512 KB verwendet, um die Datenübertragung in die Cloud zu beschleunigen.
+
 
 #### <a name="volume-format"></a>Volumeformat
 Nachdem Sie auf Ihrem iSCSI-Server StorSimple-Volumes erstellt haben, müssen Sie die Volumes initialisieren, bereitstellen und formatieren. Dieser Vorgang wird auf dem Host durchgeführt, der mit Ihrem StorSimple-Gerät verbunden ist. Die folgenden bewährten Methoden werden beim Bereitstellen und Formatieren von Volumes auf dem StorSimple-Host empfohlen.
@@ -211,7 +211,7 @@ Häufigkeit und Aufbewahrungsdauer von Standardsicherungen können nicht geände
 * Planen Sie Sicherungen für Zeiten außerhalb der Zeiträume mit Spitzenlast. Die Startzeit der Sicherung sollte nicht mit einer hohen E/A-Auslastung des Hosts zusammentreffen.
 * Initiieren Sie eine manuelle bedarfsgesteuerte Sicherung, wenn Sie die Durchführung eines Gerätefailovers planen, oder vor dem Wartungsfenster, um die Daten in Ihrem virtuellen Array zu schützen.
 
-### <a name="restore"></a>Restore 
+### <a name="restore"></a>Restore
 Sie können die Wiederherstellung für einen Sicherungssatz auf zwei Arten durchführen: Führen Sie die Wiederherstellung auf einem anderen Volume oder einer anderen Freigabe durch, oder wählen Sie die Wiederherstellung auf Elementebene (nur für ein virtuelles Array verfügbar, das als Dateiserver konfiguriert ist). Bei der Wiederherstellung auf Elementebene können Sie die Dateien und Ordner einer Cloudsicherung für alle Freigaben des StorSimple-Geräts präzise wiederherstellen. Weitere Informationen finden Sie unter [Wiederherstellen aus einer Sicherung des StorSimple Virtual Array](storsimple-virtual-array-clone.md).
 
 Beachten Sie beim Durchführen einer Wiederherstellung die folgenden Richtlinien:
@@ -249,7 +249,7 @@ Beachten Sie beim Deaktivieren des virtuellen Arrays die folgenden bewährten Me
 ### <a name="monitoring"></a>Überwachung
 Um sicherzustellen, dass sich das StorSimple Virtual Array fortlaufend in einem fehlerfreien Zustand befindet, müssen Sie das Array überwachen und dafür sorgen, dass Sie vom System Informationen erhalten, z.B. Warnungen. Implementieren Sie die folgenden bewährten Methoden, um den Gesamtzustand des virtuellen Arrays zu überwachen:
 
-* Konfigurieren Sie die Überwachung, um die Datenträgernutzung des virtuellen Arrays und für den Betriebssystem-Datenträger nachzuverfolgen. Bei Ausführung von Hyper-V können Sie eine Kombination aus System Center Virtual Machine Manager (SCVMM) und System Center Operations Manager (SCOM) verwenden, um die Virtualisierungshosts zu überwachen.
+* Konfigurieren Sie die Überwachung, um die Datenträgernutzung des virtuellen Arrays und für den Betriebssystem-Datenträger nachzuverfolgen. Bei Ausführung von Hyper-V können Sie eine Kombination aus System Center Virtual Machine Manager (SCVMM) und System Center Operations Manager verwenden, um die Virtualisierungshosts zu überwachen.
 * Konfigurieren Sie E-Mail-Benachrichtigungen auf dem virtuellen Array, damit Benachrichtigungen für bestimmte Nutzungsebenen gesendet werden.                                                                                                                                                                                                
 
 ### <a name="index-search-and-virus-scan-applications"></a>Anwendungen für Indexsuche und Virenscan

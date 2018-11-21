@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/14/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 7c7671578dc22926dabfe7735038186ab1c2c2b3
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 75b3934a7329b4e83a0f36f79bbc8365eaf8a086
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51264439"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51572165"
 ---
 # <a name="standard-ssd-managed-disks-for-azure-virtual-machine-workloads"></a>Verwaltete Standard-SSD-Datenträger für Workloads virtueller Azure-Computer
 
@@ -46,9 +46,9 @@ Die folgende Tabelle enthält die Datenträgergrößen, die derzeit für „Stan
 |E70*    |16.384 GiB      |Bis zu 2.000       |Bis zu 500 MiB pro Sekunde        |
 |E80*    |32767 GiB      |Bis zu 2.000       |Bis zu 500 MiB pro Sekunde        |
 
-Standard-SSDs sind dafür ausgelegt, Latenzen im einstelligen Millisekundenbereich für die meisten E/A-Vorgänge zu erzielen sowie IOPS und Durchsätze bis zu den in der obigen Tabelle genannten Grenzwerten bereitzustellen. Die Istwerte für IOPS und Durchsätze können in einigen Fällen je nach Datenverkehrsmuster variieren. Standard-SSDs stellen eine konstantere Leistung und geringere Latenzen als HDD-Datenträger bereit.
+Standard-SSDs sind dafür ausgelegt, 99 Prozent der Zeit Wartezeiten im einstelligen Millisekundenbereich für die meisten E/A-Vorgänge zu erzielen sowie IOPS und Durchsätze bis zu den in der obigen Tabelle genannten Grenzwerten bereitzustellen. Die Istwerte für IOPS und Durchsätze können in einigen Fällen je nach Datenverkehrsmuster variieren. Standard-SSDs stellen eine konstantere Leistung und geringere Latenzen als HDD-Datenträger bereit.
 
-Premium-SSDs schneiden wiederum gegenüber Standard-SSDs besser ab, da Erstere niedrigere Latenzen, höhere IOPS-/Durchsatzwerte und eine noch konstantere bereitgestellte Datenträgerleistung aufweisen. Premium-SSDs werden für wichtige Produktionsworkloads empfohlen. Wenn Ihre Workload Datenträgerunterstützung für hohe Leistung und geringe Latenz erfordert, empfiehlt sich unter Umständen die Verwendung von Storage Premium.
+Premium-SSDs schneiden wiederum gegenüber Standard-SSDs besser ab, da Erstere niedrigere Latenzen, höhere IOPS-/Durchsatzwerte und eine noch konstantere bereitgestellte Datenträgerleistung aufweisen. SSD Premium wird für wichtige Produktionsworkloads empfohlen. Wenn Ihre Workload Datenträgerunterstützung für hohe Leistung und geringe Latenz erfordert, empfiehlt sich unter Umständen die Verwendung von Storage Premium.
 
 Standard-SSDs verwenden ebenso wie Premium-SSDs eine E/A-Einheitengröße von 256 KiB. Wenn die übertragenen Daten kleiner als 256 KiB sind, werden sie als eine E/A-Einheit angesehen. Sind die E/A-Daten größer, werden sie als mehrere E/A der Größe 256 KiB gezählt. Beispielsweise wird eine E/A mit 1.100 KiB als fünf E/A-Einheiten gezählt.
 

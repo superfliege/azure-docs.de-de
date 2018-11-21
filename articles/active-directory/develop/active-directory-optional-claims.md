@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/05/2018
+ms.date: 11/08/2018
 ms.author: celested
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
-ms.openlocfilehash: dcc27992c318a970a86f1ff5c60723daeef881b6
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: 0983c2235fba0cacbda53208e5dcad5b2878619c
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50914650"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51345486"
 ---
 # <a name="how-to-provide-optional-claims-to-your-azure-ad-app-public-preview"></a>Vorgehensweise: Bereitstellen optionaler Ansprüche für Ihre Azure AD-App (öffentliche Vorschau)
 
@@ -42,7 +42,7 @@ Eines der Ziele des [v2.0 Azure AD-Endpunkts](active-directory-appmodel-v2-overv
 | Kontotyp | V1.0-Endpunkt | V2.0-Endpunkt  |
 |--------------|---------------|----------------|
 | Persönliches Microsoft-Konto  | Nicht zutreffend – stattdessen werden RPS-Tickets verwendet | Unterstützung in Kürze verfügbar |
-| Azure AD-Konto          | Unterstützt                          | Unterstützt mit Einschränkungen      |
+| Azure AD-Konto          | Unterstützt                          | Unterstützt mit Einschränkungen |
 
 > [!IMPORTANT]
 > Apps, die sowohl persönliche Konten als auch Azure AD unterstützen (registriert über das [App-Registrierungsportal](https://apps.dev.microsoft.com)) können keine optionalen Ansprüche verwenden. Apps, die nur für Azure AD unter Verwendung des Endpunkts v2.0 registriert sind, können jedoch die optionalen Ansprüche abrufen, die sie im Manifest angefordert haben. Im Azure-Portal können Sie den Anwendungsmanifest-Editor in den vorhandenen **App-Registrierungen** verwenden, um Ihre optionalen Ansprüche zu bearbeiten. Allerdings ist diese Funktionalität mit dem Anwendungsmanifest-Editor in der neuen Umgebung für **App-Registrierungen (Vorschau)** noch nicht verfügbar.
@@ -60,8 +60,6 @@ Die Gruppe optionaler Ansprüche, die standardmäßig zur Verwendung in Anwendun
 |-----------------------------|----------------|------------|-----------|--------|
 | `auth_time`                | Zeitpunkt der letzten Authentifizierung des Benutzers. Siehe OpenID Connect-Spezifikation.| JWT        |           |  |
 | `tenant_region_scope`      | Region des Ressourcenmandanten | JWT        |           | |
-| `signin_state`             | Anspruch für Anmeldestatus   | JWT        |           | 6 Rückgabewerte als Flags:<br> „dvc_mngd“: Gerät wird verwaltet.<br> „dvc_cmp“: Gerät ist kompatibel.<br> „dvc_dmjd“: Gerät ist in die Domäne eingebunden.<br> „dvc_mngd_app“: Gerät wird über MDM verwaltet.<br> „inknownntwk“: Gerät befindet sich in einem bekannten Netzwerk.<br> „kmsi“: „Angemeldet bleiben“ wurde verwendet. <br> |
-| `controls`                 | Mehrwertiger Anspruch, der die durch Richtlinien für bedingten Zugriff erzwungenen Sitzungssteuerelemente enthält. | JWT        |           | 3 Werte:<br> „app_res“: Die App muss präzisere Einschränkungen erzwingen. <br> „ca_enf“: Die Durchsetzung des bedingten Zugriffs wurde verzögert und ist immer noch erforderlich. <br> „no_cookie“: Dieses Token ist für den Austausch gegen ein Cookie im Browser nicht ausreichend. <br>  |
 | `home_oid`                 | Bei Gastbenutzern: Die Objekt-ID des Benutzers im Home-Mandanten des Benutzers.| JWT        |           | |
 | `sid`                      | Sitzungs-ID, die zur sitzungsbezogenen Abmeldung des Benutzers verwendet wird. | JWT        |           |         |
 | `platf`                    | Geräteplattform    | JWT        |           | Beschränkt auf verwaltete Geräte, die den Gerätetyp überprüfen können.|
@@ -76,6 +74,7 @@ Die Gruppe optionaler Ansprüche, die standardmäßig zur Verwendung in Anwendun
 | `xms_pl`                   | Bevorzugte Benutzersprache  | JWT ||Die bevorzugte Sprache des Benutzers, falls festgelegt. Wird in Szenarios mit Gastzugriff aus dem Basismandanten abgerufen. Format: Sprachraum-Land (z.B.: en-us) |
 | `xms_tpl`                  | Bevorzugte Mandantensprache| JWT | | Die bevorzugte Sprache des Ressourcenmandanten, falls festgelegt. Format: Sprachraum (z.B.: en) |
 | `ztdid`                    | ID der Bereitstellung ohne manuelles Eingreifen | JWT | | Die für [Windows Autopilot](https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot) verwendete Geräteidentität |
+|`email`                     | Die adressierbaren E-Mail-Adresse dieses Benutzers, wenn der Benutzer über eine verfügt.  | JWT, SAML | | Dieser Wert ist standardmäßig enthalten, wenn der Benutzer ein Gast im Mandanten ist.  Für verwaltete Benutzer (Benutzer innerhalb des Mandanten) muss er über diese optionale Anforderung oder – nur in V2. 0 – mit dem OpenID-Bereich angefordert werden.  Für verwaltete Benutzer muss die E-Mail-Adresse im [Office-Verwaltungsportal](https://portal.office.com/adminportal/home#/users) festgelegt sein.|  
 | `acct`             | Benutzerkontostatus im Mandanten. | JWT, SAML | | Wenn der Benutzer dem Mandanten angehört, lautet der Wert `0`. Bei einem Gastbenutzer lautet der Wert `1`. |
 | `upn`                      | Anspruch „UserPrincipalName“. | JWT, SAML  |           | Obwohl dieser Anspruch automatisch hinzugefügt wird, können Sie ihn als einen optionalen Anspruch angeben, um zusätzliche Eigenschaften zum Ändern des Verhaltens im Fall eines Gastbenutzer anzufügen. <br> Zusätzliche Eigenschaften: <br> `include_externally_authenticated_upn` <br> `include_externally_authenticated_upn_without_hash` |
 

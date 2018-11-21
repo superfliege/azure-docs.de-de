@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/30/2018
+ms.date: 11/13/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 796e10053df79f8f7106d98dd9c9be6083d9f719
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: de464cfeca01e492139e8bf9679d8f9876eedda6
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50964151"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51625622"
 ---
 # <a name="manage-workspaces"></a>Verwalten von Arbeitsbereichen
 
@@ -239,7 +239,7 @@ Der neue Datentarif wird oben auf der Webseite im Menüband des OMS-Portals ange
 ![OMS-Menüband](./media/log-analytics-manage-access/data-plan-changed.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Informationen zum Sammeln von Daten von Computern in Ihrem Datencenter oder einer anderen Cloudumgebung finden Sie unter [Sammeln von Daten von Computern in Ihrer Umgebung mit Log Analytics](log-analytics-concept-hybrid.md).
+* Informationen zum Erfassen der Daten von Computern in Ihrem Datencenter oder einer anderen Cloudumgebung finden Sie unter [Collect log data with the Azure Log Analytics agent](log-analytics-agent-overview.md) (Sammeln von Protokolldaten mit dem Azure Log Analytics-Agent).
 * Informationen zum Konfigurieren der Datensammlung von virtuellen Azure-Computern finden Sie unter [Sammeln von Daten über virtuelle Azure-Computer](log-analytics-quick-collect-azurevm.md).  
 * [Add Log Analytics solutions from the Solutions Gallery](../monitoring/monitoring-solutions.md) (Hinzufügen von Log Analytics-Lösungen aus dem Lösungskatalog) beschreibt das Hinzufügen von Funktionen und das Sammeln von Daten.
 

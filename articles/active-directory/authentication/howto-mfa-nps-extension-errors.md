@@ -5,21 +5,21 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.component: authentication
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 11/13/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: 58bb3ae39ecd5631508ca1d09bf1d9d8f4d75063
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 3820aae1e926e51ffa88fabc94e3572b286162de
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51036664"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51634225"
 ---
 # <a name="resolve-error-messages-from-the-nps-extension-for-azure-multi-factor-authentication"></a>Auflösen von Fehlermeldungen in der NPS-Erweiterung für Azure Multi-Factor Authentication
 
-Wenn Fehler in der NPS-Erweiterung für Azure Multi-Factor Authentication auftreten, können Sie mit diesem Artikel schneller eine Lösung erreichen. 
+Wenn Fehler in der NPS-Erweiterung für Azure Multi-Factor Authentication auftreten, können Sie mit diesem Artikel schneller eine Lösung erreichen. NPS-Erweiterungsprotokolle befinden sich auf dem Server mit der NPS-Erweiterung in der Ereignisanzeige unter **Benutzerdefinierte Ansichten** > **Serverrollen** > **Netzwerkrichtlinien- und Zugriffsdienste**.
 
 ## <a name="troubleshooting-steps-for-common-errors"></a>Schritte zur Problembehandlung bei häufigen Fehlern
 
@@ -36,9 +36,6 @@ Wenn Fehler in der NPS-Erweiterung für Azure Multi-Factor Authentication auftre
 | **REQUEST_MISSING_CODE** | Stellen Sie sicher, dass das Protokoll für die Kennwortverschlüsselung zwischen den NPS- und NAS-Servern die sekundäre Authentifizierungsmethode unterstützt, die Sie verwenden. **PAP** unterstützt alle Authentifizierungsmethoden von Azure MFA in der Cloud: Telefonanruf, unidirektionale Textnachricht, Benachrichtigung über eine mobile App und Überprüfungscode in der mobilen App. **CHAPV2** und **EAP** unterstützt Telefonanruf und Benachrichtigung über eine mobile App. |
 | **USERNAME_CANONICALIZATION_ERROR** | Stellen Sie sicher, dass der Benutzer in Ihrer lokalen Active Directory-Instanz vorhanden ist und dass der NPS-Dienst über Berechtigungen zum Zugriff auf das Verzeichnis verfügt. Wenden Sie sich bei Verwendung von gesamtstrukturübergreifenden Vertrauensstellungen [an den Support](#contact-microsoft-support), um weitere Hilfe zu erhalten. |
 
-
-   
-
 ### <a name="alternate-login-id-errors"></a>Alternative Anmelde-ID-Fehler
 
 | Fehlercode | Fehlermeldung | Schritte zur Problembehandlung |
@@ -46,7 +43,6 @@ Wenn Fehler in der NPS-Erweiterung für Azure Multi-Factor Authentication auftre
 | **ALTERNATE_LOGIN_ID_ERROR** | Fehler: userObjectSid lookup failed (Fehler bei der userObjectSid-Suche) | Stellen Sie sicher, dass der Benutzer in Ihrer lokalen Active Directory-Instanz vorhanden ist. Wenden Sie sich bei Verwendung von gesamtstrukturübergreifenden Vertrauensstellungen [an den Support](#contact-microsoft-support), um weitere Hilfe zu erhalten. |
 | **ALTERNATE_LOGIN_ID_ERROR** | Fehler: Alternate LoginId lookup failed (Fehler bei der Suche nach alternativer Anmelde-ID) | Stellen Sie sicher, dass LDAP_ALTERNATE_LOGINID_ATTRIBUTE auf ein [gültiges Active Directory-Attribut](https://msdn.microsoft.com/library/ms675090(v=vs.85).aspx) festgelegt ist. <br><br> Wenn LDAP_FORCE_GLOBAL_CATALOG auf „TRUE“ festgelegt, oder LDAP_LOOKUP_FORESTS mit einem nicht leeren Wert konfiguriert wurde, stellen Sie sicher, dass Sie einen globalen Katalog konfiguriert haben, und dass das AlternateLoginId-Attribut hinzugefügt wurde. <br><br> Wenn LDAP_LOOKUP_FORESTS mit einem nicht leeren Wert konfiguriert wurde, stellen Sie sicher, dass der Wert richtig ist. Wenn mehr als ein Name der Gesamtstruktur vorhanden ist, müssen die Namen durch Semikolons und nicht durch Leerzeichen getrennt werden. <br><br> Wenn diese Schritte das Problem nicht beheben, [wenden Sie sich an den Support](#contact-microsoft-support), um mehr Unterstützung zu erhalten. |
 | **ALTERNATE_LOGIN_ID_ERROR** | Fehler: Alternate LoginId value is empty (Der AlternateLoginId-Wert ist leer) | Stellen Sie sicher, dass das AlternateLoginId-Attribut für den Benutzer konfiguriert ist. |
-
 
 ## <a name="errors-your-users-may-encounter"></a>Fehler, die bei Ihren Benutzern auftreten können
 
@@ -97,7 +93,7 @@ Wenn einer dieser Fehler auftritt, sollten Sie sich [an den Support wenden](#con
 
 ### <a name="troubleshoot-user-accounts"></a>Problembehandlung bei Benutzerkonten
 
-Wenn Ihre Benutzer [Probleme mit der zweistufigen Überprüfung haben](../user-help/multi-factor-authentication-end-user-troubleshoot.md), unterstützen Sie sie beim Diagnostizieren der Probleme. 
+Wenn Ihre Benutzer [Probleme mit der zweistufigen Überprüfung haben](../user-help/multi-factor-authentication-end-user-troubleshoot.md), unterstützen Sie sie beim Diagnostizieren der Probleme.
 
 ### <a name="contact-microsoft-support"></a>Microsoft-Support kontaktieren
 
@@ -131,5 +127,3 @@ Um Debugprotokolle zur Unterstützung der Diagnose zu erfassen, führen Sie die 
 
 5. Öffnen Sie den Registrierungs-Editor, und wechseln Sie zu „HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureMfa“. Legen Sie **VERBOSE_LOG** auf **FALSE** fest.
 6. Zippen Sie den Inhalt des Ordners „C:\NPS“, und fügen Sie die ZIP-Datei an die Supportanfrage an.
-
-

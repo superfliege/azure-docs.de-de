@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 12/14/2017
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: a6c2ffa619eeff8b455df8a8b2157525af12c640
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: 6ac37c3a53b0cc71bdab85fb86e0e85d998867aa
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/05/2018
-ms.locfileid: "27600887"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51300607"
 ---
 # <a name="view-relative-latency-to-azure-regions-from-specific-locations"></a>Anzeigen der relativen Latenz für Azure-Regionen von bestimmten Standorten aus
 
@@ -60,7 +60,7 @@ Get-AzureRmNetworkWatcherReachabilityReport `
 > Die Region, die Sie im vorherigen Befehl angeben, muss nicht mit der Region übereinstimmen, die Sie beim Abrufen der Komponente zur Netzwerküberwachung angegeben haben. Der vorherige Befehl erfordert lediglich, dass Sie eine vorhandene Komponente zur Netzwerküberwachung angeben. Die Komponente zur Netzwerküberwachung kann sich in einer beliebigen Region befinden. Für `-Country` und `-State` müssen gültige Werte angegeben werden. Bei den Werten wird Groß- und Kleinschreibung unterschieden. Daten sind für eine begrenzte Anzahl von Ländern, US-Bundesstaaten und Städten verfügbar. Führen Sie die Befehle unter [Anzeigen verfügbarer Länder, US-Bundesstaaten, Städte und Anbieter](#view-available) zum Anzeigen einer Liste verfügbarer Länder, Städte und Regionen für die Verwendung mit dem vorherigen Befehl aus. 
 
 > [!WARNING]
-> Geben Sie für `-StartTime` und `-EndTime` ein Datum nach dem 14 November 2017. Wenn Sie ein Datum vor dem 14. November 2017 angeben, werden keine Daten zurückgegeben. 
+> Sie müssen für `-StartTime` und `-EndTime` ein Datum angeben, das maximal 30 Tage zurückliegt. Wenn Sie ein Datum angeben, das weiter zurückliegt, werden keine Daten zurückgegeben.
 
 Die Ausgabe des vorherigen Befehls ist wie folgt:
 

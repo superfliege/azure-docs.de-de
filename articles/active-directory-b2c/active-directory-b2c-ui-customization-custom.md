@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: f36d08a397836f17ec25a61e77cb1db5ce10b9d4
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: d4b4d99ac943749faaca8cd699b1455795b9c399
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945059"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51625793"
 ---
 # <a name="customize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>Anpassen der Benutzeroberfläche einer Anwendung mithilfe einer benutzerdefinierten Richtlinie in Azure Active Directory B2C
 
@@ -99,17 +99,13 @@ Gehen Sie wie folgt vor, um im Blob-Speicher einen öffentlichen Container zu er
 
 Konfigurieren Sie den Blob-Speicher für die Ressourcenfreigabe zwischen verschiedenen Ursprüngen (Cross-Origin Resource Sharing, CORS), indem Sie wie folgt vorgehen:
 
->[!NOTE]
->Möchten Sie mit unserem Beispiel-HTML- und CSS-Inhalt die Funktion zum Anpassen der Benutzeroberfläche testen? Wir haben [ein einfaches Hilfeprogramm](active-directory-b2c-reference-ui-customization-helper-tool.md) bereitgestellt, das unsere Beispielinhalte in Ihr Blob-Speicherkonto hochlädt und konfiguriert. Wenn Sie das Programm verwenden, können Sie mit [Ändern von benutzerdefinierten Registrierungs- oder Anmelderichtlinien](#modify-your-sign-up-or-sign-in-custom-policy) fortfahren.
-
-1. Öffnen Sie auf dem Blatt **Speicher** unter **Einstellungen** die Option **CORS**.
-2. Klicken Sie auf **Hinzufügen**.
-3. Geben Sie unter **Zulässige Ursprünge** ein Sternchen (\*) ein.
-4. Wählen Sie in der Dropdownliste **Zulässige Verben** sowohl **GET** als auch **OPTIONS** aus.
-5. Geben Sie unter **Zulässige Header** ein Sternchen (\*) ein.
-6. Geben Sie unter **Verfügbar gemachte Header** ein Sternchen (\*) ein.
-7. Geben Sie für **Maximales Alter (Sekunden)** den Wert **200** ein.
-8. Klicken Sie auf **Hinzufügen**.
+1. Wählen Sie im Menü **CORS** aus.
+2. Geben Sie für **Zulässige Ursprünge** den Wert `your-tenant-name.b2clogin.com` ein. Ersetzen Sie `your-tenant-name` durch den Namen des Azure AD B2C-Mandanten. Beispiel: `fabrikam.b2clogin.com`.
+3. Wählen Sie für **Zulässige Methoden** sowohl `GET` als auch `OPTIONS` aus.
+4. Geben Sie für **Zulässige Header** ein Sternchen (*) ein.
+5. Geben Sie für **Verfügbar gemachte Header** ein Sternchen (*) ein.
+6. Für **Max. Alter** geben Sie 200 ein.
+7. Klicken Sie auf **Speichern**.
 
 ## <a name="test-cors"></a>Testen von CORS
 

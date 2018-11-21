@@ -11,31 +11,40 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/16/2018
+ms.date: 11/14/2018
 ms.author: jeffgilb
 ms.reviewer: quying
-ms.openlocfilehash: f5aa67ad0588e3f42e68056c8ffca97767975e8b
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: b7af23ccdd379aac9959bb9993fc1781a44e705e
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49361480"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51684025"
 ---
 # <a name="remove-the-sql-resource-provider"></a>Entfernen des SQL-Ressourcenanbieters
 
 Bevor Sie den SQL-Ressourcenanbieter entfernen, müssen Sie alle Anbieterabhängigkeiten entfernen. Außerdem benötigen Sie eine Kopie des Bereitstellungspakets, mit dem der Ressourcenanbieter installiert wurde.
 
-Es müssen verschiedene Bereinigungsaufgaben durchgeführt werden, bevor Sie das Skript _DeploySqlProvider.ps1_ zum Entfernen des Ressourcenanbieters ausführen können.
-Die Mandanten sind für die folgenden Bereinigungsaufgaben verantwortlich:
+  |Azure Stack-Mindestversion|SQL RP Version|
+  |-----|-----|
+  |Version 1808 (1.1808.0.97)|[SQL RP Version 1.1.30.0](https://aka.ms/azurestacksqlrp11300)|
+  |Version 1804 (1.0.180513.1)|[SQL RP Version 1.1.24.0](https://aka.ms/azurestacksqlrp11240)
+  |     |     |
+
+## <a name="dependency-cleanup"></a>Bereinigung von Abhängigkeiten
+
+Es müssen verschiedene Bereinigungsaufgaben durchgeführt werden, bevor Sie das Skript „DeploySqlProvider.ps1“ zum Entfernen des Ressourcenanbieters ausführen können.
+
+Azure Stack-Mandantenbenutzer sind für die folgenden Bereinigungsaufgaben verantwortlich:
 
 * Löschen aller ihrer Datenbanken aus dem Ressourcenanbieter (Die Daten werden dabei nicht gelöscht.)
-* Aufheben der Registrierung des Namespace des Ressourcenanbieters
+* Aufheben der Registrierung des Anbieternamespace
 
-Der Administrator ist für die folgenden Bereinigungsaufgaben verantwortlich:
+Der Azure Stack-Operator ist für die folgenden Bereinigungsaufgaben verantwortlich:
 
-* Löschen der Hostserver aus dem SQL-Ressourcenanbieter
-* Löschen aller Pläne, die auf den SQL-Ressourcenanbieter verweisen
-* Löschen aller Kontingente, die dem SQL-Ressourcenanbieter zugeordnet sind
+* Löschen der Hostserver aus dem MySQL-Adapter
+* Löschen aller Pläne, die auf den MySQL-Adapter verweisen
+* Löschen aller Kontingente, die dem MySQL-Adapter zugeordnet sind
 
 ## <a name="to-remove-the-sql-resource-provider"></a>So entfernen Sie den SQL-Ressourcenanbieter
 

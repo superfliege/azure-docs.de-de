@@ -12,12 +12,12 @@ ms.author: srbozovi
 ms.reviewer: bonova, carlrab
 manager: craigg
 ms.date: 09/14/2018
-ms.openlocfilehash: 0221965c51f2287cb6042c33b9ab3402e104abc3
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: fe73d5a2aa63cf127f5df835484cfcc75ef702aa
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48870477"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51514960"
 ---
 # <a name="connect-your-application-to-azure-sql-database-managed-instance"></a>Herstellen einer Verbindung zwischen einer Anwendung und einer verwalteten Azure SQL-Datenbank-Instanz
 
@@ -83,6 +83,10 @@ Ein spezieller Fall beim Herstellen einer Verbindung zwischen Azure App Service 
 Dieses Szenario ist in der folgenden Abbildung dargestellt:
 
 ![Peering integrierte App](./media/sql-database-managed-instance/integrated-app-peering.png)
+
+>[!NOTE]
+>Die VNET-Integrationsfunktion umfasst keine VNET-App mit einem ExpressRoute-Gateway. Auch wenn das ExpressRoute-Gateway im Koexistenzmodus konfiguriert ist, funktioniert die VNET-Integration nicht. Wenn Sie über eine ExpressRoute-Verbindung auf Ressourcen zugreifen müssen, können Sie dazu eine App Service-Umgebung nutzen, die in Ihrem VNET ausgeführt wird.
+>
  
 ## <a name="troubleshooting-connectivity-issues"></a>Behandlung von Konnektivitätsproblemen
 

@@ -10,12 +10,12 @@ author: raymondlaghaeian
 manager: cgronlun
 ms.reviewer: larryfr
 ms.date: 09/24/2018
-ms.openlocfilehash: 3ab32388e0a35f4abf3866aa0a84ee0628b0570c
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: efaaa196220213877283040120d6c2eeed86dbf3
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49318196"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51346319"
 ---
 # <a name="how-to-deploy-models-from-azure-machine-learning-service-to-azure-kubernetes-service"></a>Bereitstellen von Modellen des Azure Machine Learning-Diensts in Azure Kubernetes Service
 
@@ -63,6 +63,9 @@ Azure Kubernetes Service verwendet Docker-Images. Führen Sie die folgenden Schr
 1. Um das Image zu konfigurieren, müssen Sie ein Bewertungsskript und eine Umgebungsdatei erstellen. Ein Beispiel für das Erstellen des Skripts und der Umgebungsdatei finden Sie in den folgenden Abschnitten des Imageklassifizierungsbeispiels:
 
     * [Erstellen eines Bewertungsskripts („score.py“)](tutorial-deploy-models-with-aml.md#create-scoring-script)
+
+        > [!IMPORTANT]
+        > Das Bewertungsskript erhält von Clients übermittelte Daten und übergibt sie zur Bewertung an das Modell. Dokumentieren Sie die Datenstruktur, die vom Skript und vom Modell erwartet wird. Diese Dokumentation vereinfacht die Erstellung eines Clients zur Nutzung des Webdiensts.
 
     * [Erstellen einer Umgebungsdatei („myenv.yml“)](tutorial-deploy-models-with-aml.md#create-environment-file) 
 
@@ -190,3 +193,7 @@ aks_service.delete()
 image.delete()
 model.delete()
 ```
+
+## <a name="next-steps"></a>Nächste Schritte
+
+Informieren Sie sich über die [Nutzung eines als Webdienst bereitgestellten Azure Machine Learning-Modells](how-to-consume-web-service.md).

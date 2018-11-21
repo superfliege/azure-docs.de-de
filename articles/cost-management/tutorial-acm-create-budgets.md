@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 338035014cb8e34caa7aea688028a96d039b028c
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: 49341b320df98bb08ee4f5c4ee061a51bec29ff2
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50977667"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51686159"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>Tutorial: Erstellen und Verwalten von Azure-Budgets
 
-Budgets in Cost Management helfen Ihnen, die organisatorische Verantwortlichkeit zu planen und zu steigern. Mit Budgets können Sie die Azure-Dienste abrechnen, die Sie in einem bestimmten Zeitraum in Anspruch nehmen oder abonnieren. Sie unterstützen Sie dabei, andere über ihre Ausgaben zu informieren, um die Kosten proaktiv zu steuern und die Entwicklung der Ausgaben im Laufe der Zeit zu überwachen. Sie können sehen, wie sich die Ausgaben über einen bestimmten Zeitraum entwickeln. Wenn die erstellte Budgetschwellenwerte überschritten werden, werden nur Benachrichtigungen ausgelöst. Keines Ihrer Ressourcen wird beeinträchtigt, und die Nutzung wird nicht beendet. Sie können Budgets verwenden, um Ausgaben bei der Kostenanalyse zu vergleichen und zu verfolgen.
+Budgets in Cost Management helfen Ihnen, die organisatorische Verantwortlichkeit zu planen und zu steigern. Mit Budgets können Sie die Azure-Dienste abrechnen, die Sie in einem bestimmten Zeitraum in Anspruch nehmen oder abonnieren. Sie unterstützen Sie dabei, andere über ihre Ausgaben zu informieren, um die Kosten proaktiv zu steuern und die Entwicklung der Ausgaben im Laufe der Zeit zu überwachen. Wenn die erstellte Budgetschwellenwerte überschritten werden, werden nur Benachrichtigungen ausgelöst. Keines Ihrer Ressourcen wird beeinträchtigt, und die Nutzung wird nicht beendet. Sie können Budgets verwenden, um Ausgaben bei der Kostenanalyse zu vergleichen und zu verfolgen.
 
 Die Budgets werden am Ende eines Zeitraums (monatlich, vierteljährlich oder jährlich) auf den gleichen Budgetbetrag automatisch zurückgesetzt, wenn Sie ein zukünftiges Ablaufdatum auswählen. Da sie auf den gleichen Budgetbetrag zurückgesetzt werden, müssen Sie separate Budgets anlegen, wenn die budgetierten Währungsbeträge für zukünftige Zeiträume abweichen.
 
@@ -77,7 +77,7 @@ Im obigen Beispiel haben Sie ein Budget für ein Abonnement erstellt. Sie könne
 
 ## <a name="edit-a-budget"></a>Bearbeiten eines Budgets
 
-Abhängig von Ihrer Zugriffsebene können Sie ein Budget bearbeiten, um seine Eigenschaften zu ändern. Im folgenden Beispiel sind einige der Eigenschaften schreibgeschützt, da der Benutzer nur die Berechtigung „Mitwirkender“ für das Abonnement hat. Derzeit ist das **Ablaufdatum** deaktiviert und kann nach dem Festlegen nicht geändert werden.
+Abhängig von Ihrer Zugriffsebene können Sie ein Budget bearbeiten, um seine Eigenschaften zu ändern. Im folgenden Beispiel sind einige der Eigenschaften schreibgeschützt, da der Benutzer nur die Berechtigung „Mitwirkender“ für das Abonnement besitzt. Derzeit ist das **Ablaufdatum** deaktiviert und kann nach dem Festlegen nicht geändert werden.
 
 ![Budget bearbeiten – Berechtigung „Mitwirkender“](./media/tutorial-acm-create-budgets/edit-budget.png)
 

@@ -1,8 +1,18 @@
 ---
-Titel: Aktivieren der Replikation von virtuellen VMware-Computern für die VMware-Notfallwiederherstellung in Azure mit Azure Site Recovery | Microsoft-Dokumentation Beschreibung: In diesem Artikel wird beschrieben, wie Sie die Replikation virtueller VMware-Computer in Azure mithilfe von Azure Site Recovery aktivieren.
-author: asgang ms.service: site-recovery ms.date: 07/06/2018 ms.topic: conceptual ms.author: asgang
-
-
+title: Aktivieren der Replikation von virtuellen VMware-Computern für die VMware-Notfallwiederherstellung in Azure mit Azure Site Recovery | Microsoft-Dokumentation
+description: In diesem Artikel wird beschrieben, wie Sie mithilfe von Azure Site Recovery die Replikation von virtuellen VMware-Computern für die VMware-Notfallwiederherstellung in Azure aktivieren.
+author: asgang
+ms.service: site-recovery
+ms.date: 07/06/2018
+ms.topic: conceptual
+ms.author: asgang
+ms.openlocfilehash: c6c5aeece9e49a44654d63a7dc243991a62f2d9a
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51566352"
+---
 # <a name="enable-replication-to-azure-for-vmware-vms"></a>Aktivieren der Replikation in Azure für VMware-VMs
 
 
@@ -68,10 +78,7 @@ Wenn Sie VMware-VMs replizieren, beachten Sie Folgendes:
     ![Aktivieren der Replikation](./media/vmware-azure-enable-replication/enable-replication7.png)
 14. Klicken Sie auf **Replikation aktivieren**. Sie können den Fortschritt des Auftrags **Schutz aktivieren** unter **Einstellungen** > **Aufträge** > **Site Recovery-Aufträge** verfolgen. Nachdem der Auftrag **Schutz abschließen** ausgeführt wurde, ist der Computer bereit für das Failover.
 
-> [!NOTE]
-> Wenn der Computer für die Pushinstallation vorbereitet ist, wird die Komponente Mobility Service installiert, wenn der Schutz aktiviert wird. Nachdem die Komponente auf dem Computer installiert wurde, wird ein Schutzauftrag gestartet. Er führt zu einem Fehler. Nach dem Fehler müssen Sie jeden Computer manuell neu starten. Nach dem Neustart wird der Schutzauftrag erneut gestartet, und die erste Replikation wird ausgeführt.
->
->
+
 
 ## <a name="view-and-manage-vm-properties"></a>Anzeigen und Verwalten von VM-Eigenschaften
 

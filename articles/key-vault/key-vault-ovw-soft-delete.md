@@ -7,12 +7,12 @@ author: bryanla
 ms.author: bryanla
 manager: mbaldwin
 ms.date: 09/25/2017
-ms.openlocfilehash: ac34f03c896e9e2180b653c41faa7f7525a40e33
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 12b14b87a02619b21e80436c80a284c4011f8b33
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47407874"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51300318"
 ---
 # <a name="azure-key-vault-soft-delete-overview"></a>Übersicht über die Azure Key Vault-Funktion für vorläufiges Löschen
 
@@ -44,7 +44,9 @@ Vorläufiges Löschen ist ein optionales Key Vault-Verhalten und in dieser Versi
 ### <a name="purge-protection--flag"></a>Bereinigungsschutz-Flag
 Das Bereinigungsschutz-Flag (**--enable-purge-protection** in der Azure CLI) ist in der Standardeinstellung deaktiviert. Wenn dieses Flag aktiviert wird, kann ein Tresor oder ein Objekt im gelöschten Zustand nicht gelöscht werden, bis die Aufbewahrungsdauer von 90 Tagen abgelaufen ist. Solch ein Tresor oder Objekt kann noch wiederhergestellt werden. Dieses Flag versichert Kunden zusätzlich, dass ein Tresor oder ein Objekt nie dauerhaft gelöscht werden kann, bevor die Aufbewahrungsdauer abgelaufen ist. Das Bereinigungsschutz-Flag kann nur aktiviert werden, wenn das Flag für Vorläufiges Löschen aktiviert ist. Sie können auch bei der Tresorerstellung das Flag für Vorläufiges Löschen und das Bereinigungsschutz-Flag aktivieren.
 
-[!NOTE] Damit der Bereinigungsschutz aktiviert werden kann, muss das Vorläufige Löschen aktiviert sein. Der dafür erforderliche Befehl in der Azure CLI 2 ist
+> [!NOTE] 
+   Damit der Bereinigungsschutz aktiviert werden kann, muss das vorläufige Löschen aktiviert sein.
+Der dafür erforderliche Befehl in der Azure CLI 2 ist
 
 ```
 az keyvault create --name "VaultName" --resource-group "ResourceGroupName" --location westus --enable-soft-delete true --enable-purge-protection true

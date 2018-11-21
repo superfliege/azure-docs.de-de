@@ -15,18 +15,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/14/2017
-ms.openlocfilehash: c53bab2e838425dfdd124e64c3d7d3114fa30429
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: fe58b335a029e558ce29871483589908f17c03cd
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34834429"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51345690"
 ---
 # <a name="discover-custom-machine-learning-modules-in-azure-ai-gallery"></a>Entdecken von benutzerdefinierten Machine Learning-Modulen im Azure AI-Katalog
-[!INCLUDE [machine-learning-gallery-item-selector](../../../includes/machine-learning-gallery-item-selector.md)]
 
-## <a name="custom-modules-for-machine-learning-studio"></a>Benutzerdefinierte Module für Machine Learning Studio
-Im Azure AI-Katalog sind einige [benutzerdefinierte Module](https://gallery.cortanaintelligence.com/customModules) verfügbar, die die Funktionen von Azure Machine Learning Studio erweitern. Sie können diese Module zur Verwendung in Ihren Experimenten importieren, um noch fortschrittlichere Predictive Analytics-Lösungen entwickeln zu können.
+In [Azure AI Gallery](http://gallery.cortanaintelligence.com) sind einige [benutzerdefinierte Module](https://gallery.cortanaintelligence.com/customModules) verfügbar, die die Funktionen von Azure Machine Learning Studio erweitern. Sie können diese Module zur Verwendung in Ihren Experimenten importieren, um noch fortschrittlichere Predictive Analytics-Lösungen entwickeln zu können.
 
 Zurzeit bietet der Katalog Module zu *Zeitserienanalysen*, *Zuordnungsregeln*, *Clusteringalgorithmen* (über k-Means hinaus), *Visualisierungen* sowie andere leistungsstarke Hilfsprogramme.
 

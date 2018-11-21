@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: f08d5732939e853785e2cce1d1e9ed8eea7f9ad7
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: c21a5c5b23b709ce6683c51cf96f0e6ff89efc78
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45543138"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51568675"
 ---
 # <a name="define-a-validation-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definieren eines technischen Validierungsprofils in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C
 
@@ -60,7 +60,7 @@ Das **ValidationTechnicalProfile**-Element enthält das folgende Element:
 
 | Element | Vorkommen | BESCHREIBUNG |
 | ------- | ----------- | ----------- |
-| Vorbedingungen | 0:1 | Eine Liste von Vorbedingungen, die für die Ausführung des technischen Validierungsprofil erfüllt sein müssen. |
+| Preconditions | 0:1 | Eine Liste von Vorbedingungen, die für die Ausführung des technischen Validierungsprofil erfüllt sein müssen. |
 
 Das **Precondition**-Element enthält das folgende Attribut:
 
@@ -81,8 +81,8 @@ Das **Precondition**-Element enthält die folgenden Elemente:
 Im folgenden Beispiel werden diese technischen Validierungsprofile verwendet: 
 
 1. Das erste technische Validierungsprofil überprüft Benutzeranmeldeinformationen und wird nicht fortgesetzt, wenn ein Fehler auftritt, z. B. ein ungültiger Benutzername oder ein ungültiges Kennwort. 
-2. Das nächste technische Validierungsprofil wird nicht ausgeführt, wenn der „userType“-Anspruch nicht vorhanden ist oder wenn der Wert von „usertype“ `Partner` ist. Das technische Validierungsprofil versucht, das Benutzerprofil aus der internen Kundendatenbank zu lesen, und wird fortgesetzt, wenn ein Fehler auftritt, z. B. ein nicht verfügbarer REST-API-Dienst oder ein beliebiger interner Fehler.
-3. Das letzte technische Validierungsprofil wird nicht ausgeführt, wenn der „userType“-Anspruch nicht vorhanden war oder wenn der Wert von „usertype“ `Customer` ist. Das technische Validierungsprofil versucht, das Benutzerprofil aus der internen Partnerdatenbank zu lesen, und wird fortgesetzt, wenn ein Fehler auftritt, z. B. ein nicht verfügbarer REST-API-Dienst oder ein beliebiger interner Fehler.
+2. Das nächste technische Validierungsprofil wird nicht ausgeführt, wenn der „userType“-Anspruch nicht vorhanden ist oder wenn der Wert von „usertype“ `Partner` ist. Das technische Validierungsprofil versucht, das Benutzerprofil aus der internen Kundendatenbank zu lesen, und wird fortgesetzt, wenn ein Fehler auftritt, z.B. ein nicht verfügbarer REST-API-Dienst oder ein beliebiger interner Fehler.
+3. Das letzte technische Validierungsprofil wird nicht ausgeführt, wenn der „userType“-Anspruch nicht vorhanden war oder wenn der Wert von „usertype“ `Customer` ist. Das technische Validierungsprofil versucht, das Benutzerprofil aus der internen Partnerdatenbank zu lesen, und wird fortgesetzt, wenn ein Fehler auftritt, z.B. ein nicht verfügbarer REST-API-Dienst oder ein beliebiger interner Fehler.
 
 ```XML
 <ValidationTechnicalProfiles>

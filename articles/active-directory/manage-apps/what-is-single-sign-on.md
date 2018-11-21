@@ -1,199 +1,183 @@
 ---
-title: Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory? | Microsoft-Dokumentation
-description: Verwenden Sie Azure Active Directory, um die einmalige Anmeldung für alle SaaS- und Webanwendungen zu aktivieren, die Sie für Ihr Unternehmen benötigen.
+title: Einmaliges Anmelden bei Anwendungen – Azure Active Directory | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie beim Konfigurieren von Anwendungen in Azure Active Directory (Azure AD) eine Methode für einmaliges Anmelden auswählen. Verwenden Sie einmaliges Anmelden, damit Benutzer sich nicht die Kennwörter für jede Anwendung merken müssen, und um die Kontoverwaltung zu vereinfachen.
 services: active-directory
-documentationcenter: ''
 author: barbkess
 manager: mtillman
-editor: ''
 ms.service: active-directory
-ms.component: users-groups-roles
+ms.component: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/11/2018
+ms.date: 11/12/2018
 ms.author: barbkess
-ms.reviewer: asmalser
-ms.custom: it-pro
-ms.openlocfilehash: 72665ed4c25d2719ac5030bce59157a3ccd9dec7
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.reviewer: arvindh
+ms.openlocfilehash: 3012f07d8c56f2581a087bc8e43aa4a089bf9589
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51236005"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51633511"
 ---
-# <a name="what-is-application-access-and-single-sign-on-with-azure-active-directory"></a>Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?
-Einmaliges Anmelden bedeutet, dass Sie Zugriff auf sämtliche für Ihre Geschäftsaktivitäten benötigten Anwendungen und Ressourcen erhalten, indem Sie sich nur einmal mit einem einzigen Benutzerkonto anmelden. Nach der Anmeldung können Sie auf alle benötigten Anwendungen zugreifen, ohne sich ein zweites Mal (z.B. durch Eingabe eines Kennworts) authentifizieren zu müssen.
+# <a name="single-sign-on-to-applications-in-azure-active-directory"></a>Einmaliges Anmelden bei Anwendungen in Azure Active Directory
+Erfahren Sie, wie Sie beim Konfigurieren von Anwendungen in Azure Active Directory (Azure AD) die am besten geeignete Methode für einmaliges Anmelden auswählen. 
 
-Viele Organisationen nutzen SaaS-Anwendungen (Software-as-a-Service), z.B. Office 365, Box und Salesforce, um die Endbenutzerproduktivität zu steigern. In der Vergangenheit mussten das IT-Personal Benutzerkonten in jeder SaaS-Anwendung individuell erstellen und aktualisieren, und Benutzer mussten sich für jede SaaS-Anwendung ein Kennwort merken.
+- **Mit einmaligem Anmelden** melden sich Benutzer einmal mit einem Konto an, um auf in die Domäne eingebundene Geräte, Unternehmensressourcen, SaaS-Anwendungen (Software-as-a-Service) und Webanwendungen zuzugreifen. Nach der Anmeldung kann der Benutzer Anwendungen aus dem Office 365-Portal oder dem Azure AD-Zugriffsbereich MyApps starten. Administratoren können die Verwaltung von Benutzerkonten zentralisieren und den Benutzerzugriff auf Anwendungen basierend auf der Gruppenmitgliedschaft automatisch hinzufügen oder entfernen. 
 
-Azure Active Directory weitet das lokale Active Directory auf die Cloud aus und ermöglicht es den Benutzern auf diese Weise, sich mit ihrem primären Organisationskonto nicht nur bei den mit ihrer Domäne verbundenen Geräten und Unternehmensressourcen anzumelden, sondern auch bei sämtlichen Web- und SaaS-Anwendungen, die sie für ihre Arbeit benötigen.
+- **Ohne einmaliges Anmelden** müssen sich die Benutzer anwendungsspezifische Kennwörter merken und sich für jede Anwendung anmelden. IT-Mitarbeiter müssen Benutzerkonten für jede Anwendung erstellen und aktualisieren, z.B. Office 365, Box oder Salesforce. Benutzer müssen sich ihre Kennwörter merken und außerdem Zeit für die Anmeldung bei jeder Anwendung verbringen.
 
-Benutzer müssen sich also keine Vielzahl von Benutzernamen und Kennwörtern mehr merken, und der Anwendungszugriff für Benutzer kann basierend auf ihrer Gruppenmitgliedschaft in der Organisation sowie ihrem Mitarbeiterstatus automatisch bereitgestellt oder deaktiviert werden. Azure Active Directory stellt Funktionen zum Steuern von Sicherheit und Zugriff bereit, mit denen Sie den Benutzerzugriff auf SaaS-Anwendungen zentral verwalten können.
+Dieser Artikel beschreibt die Methoden für einmaliges Anmelden und hilft beim Auswählen der besten Methode für Ihre Anwendungen.
 
-Azure AD ermöglicht die einfache Integration in zahlreiche beliebte SaaS-Anwendungen. Es bietet eine Identitäts- und Zugriffsverwaltung  und ermöglicht es Benutzern, sich einmalig direkt bei Anwendungen anzumelden, oder diese über ein Portal wie Office 365 oder den Azure AD-Zugriffsbereich zu ermitteln und zu starten.
+## <a name="choosing-a-single-sign-on-method"></a>Auswählen einer Methode für einmaliges Anmelden
 
-Die Architektur der Integration umfasst die folgenden vier Hauptbausteine:
+Es gibt mehrere Möglichkeiten, eine Anwendung für einmaliges Anmelden zu konfigurieren. Die Auswahl einer Methode für einmaliges Anmelden für eine Anwendung hängt davon ab, wie die Anwendung für die Authentifizierung konfiguriert ist. Alle Methoden für einmaliges Anmelden (mit Ausnahme von „Deaktiviert“) melden Benutzer automatisch ohne zweite Anmeldung bei Anwendungen an.  
 
-* Die einmalige Anmeldung ermöglicht es Benutzern, basierend auf ihrem Organisationskonto in Azure AD auf ihre SaaS-Anwendungen zuzugreifen. Die einmalige Anmeldung ermöglicht es Benutzern, sich mit einem einzelnen Organisationskonto bei einer Anwendung zu authentifizieren.
-* Die Benutzerbereitstellung ermöglicht das Bereitstellen von Benutzern und das Aufheben der Bereitstellung in der SaaS-Zielanwendung, basierend auf Änderungen in Windows Server Active Directory und/oder Azure AD. Ein bereitgestelltes Konto ermöglicht es, Benutzer  zur Verwendung einer Anwendung zu autorisieren, nachdem sie sich durch einmaliges Anmelden authentifiziert haben.
-* Die zentralisierte Verwaltung des Anwendungszugriffs im Azure-Portal ermöglicht SaaS-Anwendungszugriff und -Verwaltung von einem einzelnen Punkt aus. Sie bietet unter anderem die Möglichkeit, die Entscheidungsfindung für den Anwendungszugriff und Genehmigungen an beliebige Benutzer in der Organisation zu delegieren.
-* Einheitliche Berichterstellung und Überwachung der Benutzeraktivität in Azure AD
+- Cloudanwendungen können für einmaliges Anmelden die Methoden „SAML“, „Kennwort“, „Verknüpft“ oder „Deaktiviert“ verwenden. SAML ist die sicherste Methode für einmaliges Anmelden.
+- Lokale Anwendungen können für einmaliges Anmelden die Methoden „Kennwort“, „Integrierte Windows-Authentifizierung“, „Header“, „Verknüpft“ oder „Deaktiviert“ verwenden. Die lokalen Optionen funktionieren, wenn die Anwendungen für den Anwendungsproxy konfiguriert wurden. 
 
-## <a name="how-does-single-sign-on-with-azure-active-directory-work"></a>Wie funktioniert das einmalige Anmelden mit Azure Active Directory?
-Wenn Benutzer sich bei einer Anwendung anmelden, durchlaufen sie einen Authentifizierungsprozess, in dem sie ihre Identität belegen müssen. Ohne die einmalige Anmeldung erfolgt dieser Authentifizierungsprozess in der Regel durch die Eingabe eines in der Anwendung gespeicherten Kennworts, das die Benutzer kennen müssen.
+Dieses Flussdiagramm erleichtert Ihnen die Entscheidung, welche Methode des einmaligen Anmeldens für Ihre Situation am besten geeignet ist. 
 
-Azure AD unterstützt drei verschiedene Methoden für die Anwendungsanmeldung:
+![Auswählen einer Methode für einmaliges Anmelden](./media/what-is-single-sign-on/choose-single-sign-on-method.png)
 
-* **Einmalige Verbundanmeldung** ermöglicht Anwendungen die Umleitung zu Azure AD für die Benutzerauthentifizierung, statt zur Eingabe eines eigenen Kennworts aufgefordert zu werden. Das einmalige Anmelden im Verbund kann für Anwendungen verwendet werden, die Protokolle wie SAML 2.0, WS-Verbund oder OpenID Connect unterstützen, und ist der umfassendste Modus bei der einmaligen Anmeldung.
-* **Kennwortbasierte einmalige Anmeldung** ermöglicht die sichere Speicherung des Anwendungskennworts und dessen Wiedergabe mit einer Webbrowsererweiterung oder einer mobilen App. Bei der kennwortbasierten einmaligen Anmeldung wird der von der Anwendung bereitgestellte vorhandene Vorgang verwendet, die Kennwortverwaltung übernimmt jedoch der Administrator, sodass der Benutzer das Kennwort nicht kennen muss.
-* **Einmaliges Anmelden über Link** ermöglicht Azure AD, eine beliebige Methode, die für die Anwendung eingerichtet wurde, für das einmalige Anmelden zu nutzen. Es ist auch möglich, diese Anwendungen mit dem Office 365- oder dem Azure AD-Zugriffsbereichsportal zu verknüpfen und darüber hinaus die Berichterstellung in Azure AD zu aktivieren, wenn die Anwendungen auf diese Weise gestartet werden.
+In der folgenden Tabelle werden die Methoden für einmaliges Anmelden zusammengefasst und Links zu weiteren Details angegeben. 
 
-Sobald ein Benutzer bei einer Anwendung authentifiziert wurde, muss zu der Anwendung auch ein Kontodatensatz vorhanden sein, dem zu entnehmen ist, wo die Zugriffsberechtigungen und die Zugriffsebene in der Anwendung zu finden sind. Die Bereitstellung dieses Kontodatensatzes kann entweder automatisch oder manuell durch einen Administrator erfolgen, bevor dem Benutzer Zugriff mit einmaliger Anmeldung gewährt wird.
+| Methode für einmaliges Anmelden | Anwendungstypen | Einsatzgebiete |
+| :------ | :------- | :----- |
+| [SAML](#saml-sso) | Nur Cloud | Verwenden Sie nach Möglichkeit SAML. SAML funktioniert, wenn Apps für die Verwendung eines SAML-Protokolls konfiguriert wurden.|
+| [Kennwortbasiert](#password-based-sso) | Cloud und lokal | Verwenden Sie diese Methode, wenn die Anwendung die Authentifizierung mit Benutzername und Kennwort vornimmt. Das kennwortbasierte einmalige Anmelden ermöglicht die sichere Speicherung des Anwendungskennworts und dessen Wiedergabe mit einer Webbrowsererweiterung oder einer mobilen App. Mit dieser Methode wird der von der Anwendung bereitgestellte vorhandene Anmeldevorgang genutzt, die Kennwortverwaltung kann jedoch der Administrator übernehmen. |
+| [Verknüpft](#linked-sso) | Cloud und lokal | Verwenden Sie das verknüpfte einmalige Anmelden, wenn die Anwendung für einmaliges Anmelden bei einem anderen Identitätsanbieterdienst konfiguriert ist. Mit dieser Option wird der Anwendung kein einmaliges Anmelden hinzugefügt. Die Anwendung kann das einmalige Anmelden jedoch möglicherweise bereits über einen anderen Dienst implementiert haben, z.B. Active Directory-Verbunddienste.|
+| [Disabled](#disabled-sso) | Cloud und lokal | Verwenden Sie das deaktivierte einmalige Anmelden, wenn die App nicht für einmaliges Anmelden konfiguriert werden kann. Benutzer müssen bei jedem Start dieser Anwendung ihren Benutzernamen und ihr Kennwort eingeben.|
+| [Integrierte Windows-Authentifizierung (IWA)](#integrated-windows-authentication-iwa-sso) | Nur lokal | Verwenden Sie diese Methode für einmaliges Anmelden für Anwendungen, die die [integrierte Windows-Authentifizierung (IWA)](/aspnet/web-api/overview/security/integrated-windows-authentication) verwenden oder Ansprüche unterstützen. Die Anwendungsproxyconnectors verwenden die eingeschränkte Kerberos-Delegierung (Kerberos Constrained Delegation, KCD), um Benutzer bei der Anwendung zu authentifizieren. | 
+| [Headerbasiert](#header-based-sso) | Nur lokal | Verwenden Sie das headerbasierte einmalige Anmelden, wenn die Anwendung für die Authentifizierung Header verwendet. Headerbasiertes einmaliges Anmelden erfordert PingAccess für Azure Active Directory. Der Anwendungsproxy verwendet Azure AD, um den Benutzer zu authentifizieren, und leitet Datenverkehr dann über den Connectordienst weiter.  | 
 
- Weitere Informationen zu den Modi der einmaligen Anmeldung und zur Bereitstellung erhalten Sie in den folgenden Abschnitten.
+## <a name="saml-sso"></a>SAML SSO
+Mit **SAML SSO** nimmt Azure AD die Authentifizierung bei der Anwendung mithilfe des Azure AD-Kontos des Benutzers vor. Azure AD gibt die Informationen für das einmalige Anmelden über ein Verbindungsprotokoll an die Anwendung weiter. Mit SAML-basiertem einmaligem Anmelden können Sie Benutzer basierend auf Regeln, die Sie in Ihren SAML-Ansprüchen definieren, bestimmten Anwendungsrollen zuordnen.
 
-### <a name="federated-single-sign-on"></a>Einmalige Verbundanmeldung
-Die einmalige Verbundanmeldung ermöglicht die automatische Anmeldung der Benutzer in Ihrer Organisation bei einer Drittanbieter-SaaS-Anwendung durch Azure AD mithilfe der Benutzerkontoinformationen aus Azure AD.
+Für SAML-basiertes einmaliges Anmelden gilt Folgendes:
 
-Wenn Sie bereits bei Azure AD angemeldet sind und auf Ressourcen zugreifen möchten, die von einer Drittanbieter-SaaS-Anwendung gesteuert werden, macht in diesem Szenario der Verbund die erneute Authentifizierung eines Benutzers überflüssig.
+- Sicherer als kennwortbasiertes einmaliges Anmelden und alle anderen Anmeldemethoden
+- Die empfohlene Methode für einmaliges Anmelden
 
-Azure AD kann die einmalige Verbundanmeldung für Anwendungen unterstützen, die Protokolle wie SAML 2.0, WS-Verbund oder OpenID Connect unterstützen.
+SAML-basiertes einmaliges Anmelden wird für Anwendungen unterstützt, die eines dieser Protokolle verwenden:
 
-Siehe auch: [Verwalten von Zertifikaten für die einmalige Verbundanmeldung](manage-certificates-for-federated-single-sign-on.md)
+- SAML 2.0
+- WS-Federation-
+- OpenID Connect
 
-### <a name="password-based-single-sign-on"></a>Kennwortbasiertes einmaliges Anmelden
-Das Konfigurieren der kennwortbasierten einmaligen Anmeldung ermöglicht die automatische Anmeldung der Benutzer in Ihrer Organisation bei einer Drittanbieter-SaaS-Anwendung durch Azure AD mithilfe der Benutzerkontoinformationen aus der Drittanbieter-SaaS-Anwendung. Wenn Sie dieses Feature aktivieren, sammelt Azure AD die Benutzerkontoinformationen und das zugehörige Kennwort und speichert sie sicher.
+Informationen zum Konfigurieren einer Anwendung für SAML-basiertes einmaliges Anmelden finden Sie unter [Konfigurieren des SAML-basierten einmaligen Anmeldens](configure-single-sign-on-portal.md). Darüber hinaus gibt es für viele Anwendungen [anwendungsspezifische Tutorials](../saas-apps/tutorial-list.md), die Sie durch die Konfiguration des SAML-basierten einmaligen Anmeldens für bestimmte Anwendungen führen. 
 
-Azure AD kann das kennwortbasierte einmalige Anmelden für jede cloudbasierte App unterstützen, die über eine HTML-basierte Anmeldeseite verfügt. Mithilfe eines benutzerdefinierten Browser-Plug-Ins automatisiert AAD das Anmeldeverfahren über den sicheren Abruf von Anmeldeinformationen der Anwendung, z.B. Benutzername und Kennwort, aus dem Verzeichnis und trägt diese Anmeldeinformationen für die Benutzer in die Anmeldeseite der Anwendung ein. Es gibt zwei Anwendungsfälle:
+Weitere Informationen zur Funktionsweise des SAML-Protokolls finden Sie unter [SAML-Protokoll für einmaliges Anmelden](../develop/single-sign-on-saml-protocol.md).
 
-1. **Administrator verwaltet Anmeldeinformationen:** Administratoren können Anmeldeinformationen von Anwendungen erstellen und verwalten und weisen diese Anmeldeinformationen Benutzern oder Gruppen zu, die auf die Anwendung zugreifen müssen. In diesen Fällen müssen die Endbenutzer die Anmeldeinformationen nicht kennen, erhalten aber weiterhin einfach durch Klicken auf die Anwendung in ihrem Zugriffsbereich oder über einen bereitgestellten Link durch einmaliges Anmelden Zugriff auf die Anwendung. Dieser Vorgang ermöglicht zum einen die Lebenszyklusverwaltung der Anmeldeinformationen durch den Administrator und bietet zum anderen den Endbenutzern den Komfort, dass sie sich App-spezifische Kennwörter weder merken noch verwalten müssen. Die Anmeldeinformationen werden während des automatisierten Anmeldevorgangs vor dem Endbenutzer verborgen. Der Benutzer kann sie jedoch mithilfe von Webdebugtools technisch sichtbar machen, und Benutzer und Administratoren sollten die gleichen Sicherheitsrichtlinien befolgen, die auch für direkt vom Benutzer eingegebene Anmeldeinformationen gelten. Vom Administrator bereitgestellte Anmeldeinformationen sind hilfreich beim Bereitstellen von Kontozugriff bei Anwendungen, die von vielen Benutzern gemeinsam genutzt werden, wie z.B. bei sozialen Medien oder Anwendungen zur gemeinsamen Nutzung von Dokumenten.
-2. **Benutzer verwaltet Anmeldeinformationen** – Administratoren können Endbenutzern oder Gruppen Anwendungen zuweisen und Endbenutzern die direkte Eingabe ihrer Anmeldeinformationen beim erstmaligen Zugriff auf die Anwendung in ihrem Zugriffsbereich ermöglichen. Dies stellt einen Komfort für Endbenutzer dar, da sie nicht ständig für jeden Zugriff auf die Anwendung die App-spezifischen Kennwörter eingeben müssen. Benutzer können mit dem Verwalten ihrer Kennwörter fortfahren, indem sie diese je nach Bedarf aktualisieren oder löschen. Dieser Anwendungsfall kann auch als Hilfe zum Einstieg in die administrative Verwaltung der Anmeldeinformationen dienen, wobei der Administrator neue Anmeldeinformationen für die Anwendung zu einem späteren Zeitpunkt festlegen kann, ohne die Benutzerfreundlichkeit für den App-Zugriff einzuschränken.
+## <a name="password-based-sso"></a>Kennwortbasiertes einmaliges Anmelden
+Bei der kennwortbasierten Anmeldung führt die Anwendung die Authentifizierung mit einem Benutzernamen und einem Kennwort durch. Endbenutzer melden sich beim ersten Zugriff auf die Anwendung bei dieser an. Nach der ersten Anmeldung werden der Benutzername und das Kennwort von Azure Active Directory für die Anwendung bereitgestellt. 
 
-In beiden Fällen werden Anmeldeinformationen verschlüsselt im Verzeichnis gespeichert und nur beim automatisierten Anmelden über HTTPS übergeben. Mit dem kennwortbasierten einmaligen Anmelden bietet Azure AD eine bequeme Lösung zur Identitäts- und Zugriffsverwaltung für Apps, die keine Verbundprotokolle unterstützen können.
+Beim kennwortbasierten einmaligen Anmelden wird der vorhandene Authentifizierungsvorgang der Anwendung verwendet. Wenn Sie einmaliges Anmelden per Kennwort für eine Anwendung aktivieren, sammelt Azure AD Benutzernamen und Kennwörter für die Anwendung und speichert diese sicher. Anmeldeinformationen des Benutzers werden in einem verschlüsselten Zustand im Verzeichnis gespeichert. 
 
-Das kennwortbasierte einmalige Anmelden nutzt eine Browsererweiterung, um die Anwendung und benutzerspezifische Informationen sicher aus Azure AD abzurufen und auf den Dienst anzuwenden. Die meisten von Azure AD unterstützten Drittanbieter-SaaS-Anwendungen unterstützen dieses Feature.
+Verwenden Sie das kennwortbasierte einmalige Anmelden in folgenden Fällen:
 
-Für kennwortbasiertes SSO eignen sich folgende Browser des Endbenutzers:
-* Internet Explorer 11 – unter Windows 7 oder höher
-* Microsoft Edge in Windows 10 Anniversary Edition oder höher 
-* Chrome – unter Windows 7 oder höher und MacOS x oder höher
-* Firefox 26.0 oder höher – unter Windows XP SP2 oder höher und Mac OS X 10.6 oder höher
+- Eine Anwendung kann das SAML-SSO-Protokoll nicht unterstützen.
+- Eine Anwendung authentifiziert sich mit Benutzername und Kennwort anstelle von Zugriffstoken und Headern.
 
-### <a name="linked-single-sign-on"></a>Einmaliges Anmelden (SSO) über Link
-Wenn Sie einmaliges Anmelden für eine Anwendung konfigurieren, bietet das Azure-Portal eine dritte Option für „Einmaliges Anmelden über Link“. Diese Option ermöglicht es dem Administrator, einfach eine Verknüpfung zu einer Anwendung zu erstellen, und sie für ausgewählte Benutzer im Zugriffsbereich zu platzieren.
+Das kennwortbasierte einmalige Anmelden wird für jede cloudbasierte Anwendung unterstützt, die über eine HTML-basierte Anmeldeseite verfügt. Der Benutzer kann jeden der folgenden Browser verwenden:
 
-Wenn beispielsweise eine Anwendung vorhanden ist, die so konfiguriert ist, dass Benutzer mit Active Directory-Verbunddienste (AD FS) 2.0 authentifiziert werden, kann ein Administrator die Option „Einmaliges Anmelden über Link“ verwenden, um einen Link dorthin im Zugriffsbereich zu erstellen. Wenn Benutzer auf den Link zugreifen, werden sie mit Active Directory Federation Services 2.0 oder einer beliebigen anderen Lösung für einmaliges Anmelden authentifiziert, die von der Anwendung bereitgestellt wird.
+- Internet Explorer 11 unter Windows 7 oder höher
+- Microsoft Edge in Windows 10 Anniversary Edition oder höher 
+- Chrome unter Windows 7 oder höher und macOS X oder höher
+- Firefox 26.0 oder höher unter Windows XP SP2 oder höher und Mac OS X 10.6 oder höher
 
-### <a name="user-provisioning"></a>Benutzerbereitstellung
-Für bestimmte Anwendungen aktiviert Azure AD die automatisierte Benutzerbereitstellung und Aufhebung der Bereitstellung von Konten in Drittanbieter-SaaS-Anwendungen über das Azure-Portal. Hierbei werden Identitätsinformationen aus Windows Server Active Directory oder Azure AD genutzt. Wenn ein Benutzer Berechtigungen für eine dieser Anwendungen in Azure AD erhält, kann automatisch ein Konto in der SaaS-Zielanwendung erstellt (bereitgestellt) werden.
+Informationen zum Konfigurieren einer Cloudanwendung für kennwortbasiertes einmaliges Anmelden finden Sie unter [Konfigurieren der Anwendung für das einmalige Anmelden per Kennwort](application-sign-in-problem-password-sso-gallery.md#configure-the-application-for-password-single-sign-on).
 
-Wenn ein Benutzer gelöscht wird oder sich seine Informationen in Azure AD ändern, spiegeln sich diese Änderungen auch in der SaaS-Anwendung wider. Dies bedeutet, dass die Konfiguration der automatisierten Verwaltung des Identitätslebenszyklus es Administratoren ermöglicht, die automatische Bereitstellung und Aufhebung der Bereitstellung von SaaS-Anwendungen zu steuern und bereitzustellen. In Azure AD wird diese Automatisierung der Verwaltung des Identitätslebenszyklus durch die Benutzerbereitstellung aktiviert.
+Informationen zum Konfigurieren einer lokalen Anwendung für einmaliges Anmelden über den Anwendungsproxy finden Sie unter [Kennworttresore (Password Vaulting) für einmaliges Anmelden mit Anwendungsproxy](application-proxy-configure-single-sign-on-password-vaulting.md).
 
-Weitere Informationen finden Sie unter [Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory](user-provisioning.md)
+### <a name="managing-credentials-for-password-based-sso"></a>Verwalten von Anmeldeinformationen für kennwortbasiertes einmaliges Anmelden
 
-## <a name="get-started-with-the-azure-ad-application-gallery"></a>Erste Schritte mit dem Azure AD-Anwendungskatalog
-Wollen Sie loslegen? Um das einmalige Anmelden zwischen Azure AD und in Ihrer Organisation verwendeten SaaS-Anwendungen bereitzustellen, befolgen Sie diese Richtlinien.
+Um einen Benutzer bei einer Anwendung zu authentifizieren, ruft Azure AD die Anmeldeinformationen des Benutzers aus dem Verzeichnis ab und gibt sie auf der Anmeldeseite der Anwendung ein.  Azure AD übermittelt die Anmeldeinformationen des Benutzers sicher über eine Webbrowsererweiterung oder eine mobile App. Durch diesen Vorgang können Administratoren Anmeldeinformationen von Benutzern verwalten, ohne dass Benutzer sich ihr Kennwort merken müssen.
 
-### <a name="using-the-azure-ad-application-gallery"></a>Verwenden des Azure AD-Anwendungskatalogs
-Der [Azure Active Directory-Anwendungskatalog](https://azure.microsoft.com/marketplace/active-directory/all/) enthält eine Liste der Anwendungen, die bekanntermaßen eine Form der einmaligen Anmeldung mit Azure Active Directory unterstützen.
+> [!IMPORTANT]
+> Die Anmeldeinformationen werden während des automatisierten Anmeldevorgangs vor dem Endbenutzer verborgen. Die Anmeldeinformationen können jedoch mithilfe von Webdebugtools ermittelt werden. Benutzer und Administratoren müssen die gleichen Sicherheitsrichtlinien befolgen, als wären die Anmeldeinformationen direkt vom Benutzer eingegeben worden.
 
-![Azure-Online-App-Katalog](media/what-is-single-sign-on/onlineappgallery.png)
+Die Kennwörter für die einzelnen Anwendungen können vom Azure AD-Administrator oder von den Benutzern verwaltet werden.
 
-Nachfolgend finden Sie einige Tipps für die Suche nach Apps unter Berücksichtigung der Funktionen, die sie unterstützen:
+Wenn der Azure AD-Administrator die Anmeldeinformationen verwaltet, gilt Folgendes:  
 
-* Azure AD unterstützt die automatische Bereitstellung und Aufhebung der Bereitstellung für alle "Top"-Apps im [Azure Active Directory-Anwendungskatalog](https://azure.microsoft.com/marketplace/active-directory/all/).
-* Eine Liste der Verbundanwendungen, die speziell die einmalige Verbundanmeldung mithilfe eines Protokolls wie z.B. WS-Verbund, SAML oder OpenID Connect unterstützen, finden Sie [hier](https://social.technet.microsoft.com/wiki/contents/articles/20235.azure-active-directory-application-gallery-federated-saas-apps.aspx).
+- Der Benutzer muss seinen Benutzernamen und sein Kennwort nicht zurücksetzen oder sie sich merken. Der Benutzer kann durch Klicken auf die Anwendung in seinem Zugriffsbereich oder über einen bereitgestellten Link auf diese zugreifen.
+- Der Administrator kann Verwaltungsaufgaben für die Anmeldeinformationen ausführen. Beispielsweise kann der Administrator den Anwendungszugriff entsprechend Gruppenmitgliedschaften und dem Mitarbeiterstatus des Benutzers aktualisieren.
+- Der Administrator kann mithilfe von administrativen Anmeldeinformationen Zugriff auf Anwendungen bereitstellen, die von vielen Benutzern gemeinsam verwendet werden. Beispielsweise kann der Administrator jeder Person mit Zugriff auf eine Anwendung den Zugriff auf eine Anwendung für sozialen Medien oder zum Freigeben von Dokumenten gewähren.
 
-Wenn Sie Ihre Anwendung gefunden haben, können Sie mithilfe der ausführlichen Anweisungen im App-Katalog und im Azure-Portal die einmalige Anmeldung aktivieren.
+Wenn der Endbenutzer die Anmeldeinformationen verwaltet, gilt Folgendes:
 
-### <a name="application-not-in-the-gallery"></a>Die Anwendung ist nicht im Katalog enthalten?
-Wenn Sie Ihre Anwendung nicht im Azure AD-Anwendungskatalog finden, haben Sie folgende Möglichkeiten:
+- Benutzer können ihre Kennwörter verwalten, indem Sie sie nach Bedarf aktualisieren oder löschen. 
+- Administratoren können weiterhin neue Anmeldeinformationen für die Anwendung festlegen.
 
-* **Fügen Sie eine nicht gelistete App hinzu, die Sie verwenden** – Verwenden Sie die Kategorie „Benutzerdefiniert“ im App-Katalog des Azure-Portals, um eine nicht gelistete Anwendung zu verbinden, die in Ihrer Organisation verwendet wird. Sie können jede Anwendung hinzufügen, die SAML 2.0 als Verbund-App unterstützt, oder jede Anwendung für die kennwortbasierte einmalige Anmeldung, die über eine HTML-basierte Anmeldeseite verfügt. Weitere Informationen finden Sie in diesem Artikel unter [Hinzufügen Ihrer eigenen Anwendung](configure-federated-single-sign-on-non-gallery-applications.md).
-* **Hinzufügen Ihrer eigenen, selbst entwickelten App** – Wenn Sie die Anwendung selbst entwickelt haben, befolgen Sie die Richtlinien in der Azure AD-Entwicklerdokumentation, um die einmalige Verbundanmeldung oder die Bereitstellung mithilfe der Azure AD Graph-API zu implementieren. Weitere Informationen finden Sie in den folgenden Ressourcen:
-  
-  * [Authentifizierungsszenarien für Azure AD](../develop/authentication-scenarios.md)
-  * [https://github.com/AzureADSamples/WebApp-MultiTenant-OpenIdConnect-DotNet](https://github.com/AzureADSamples/WebApp-MultiTenant-OpenIdConnect-DotNet)
-  * [https://github.com/AzureADSamples/WebApp-WebAPI-MultiTenant-OpenIdConnect-DotNet](https://github.com/AzureADSamples/WebApp-WebAPI-MultiTenant-OpenIdConnect-DotNet)
-  * [https://github.com/AzureADSamples/NativeClient-WebAPI-MultiTenant-WindowsStore](https://github.com/AzureADSamples/NativeClient-WebAPI-MultiTenant-WindowsStore)
-* **Anfordern einer App-Integration** – Fordern Sie über das [Feedback-Forum für Azure AD](https://feedback.azure.com/forums/169401-azure-active-directory/)Unterstützung für die Anwendung an.
 
-### <a name="using-the-azure-portal"></a>Verwenden des Azure-Portals
-Sie können die Active Directory-Erweiterung im Azure-Portal zum Konfigurieren des einmaligen Anmeldens für die Anwendung verwenden. Im ersten Schritt müssen Sie ein Verzeichnis aus dem Active Directory-Abschnitt im Portal auswählen:
+## <a name="linked-sso"></a>Verknüpftes einmaliges Anmelden
+Über das verknüpfte einmalige Anmelden kann Azure AD einmaliges Anmelden bei einer Anwendung, die bereits in einem anderen Dienst für einmaliges Anmelden konfiguriert ist, bereitstellen. Die verknüpfte Anwendung kann Endbenutzern im Office 365-Portal oder im Azure AD-MyApps-Portal angezeigt werden. Beispielsweise kann ein Benutzer eine Anwendung, die für einmaliges Anmelden in Active Directory-Verbunddienste 2.0 (AD FS) konfiguriert ist, über das Office 365-Portal starten. Für verknüpfte Anwendungen, die über das Office 365-Portal oder das Azure AD-MyApps-Portal gestartet werden, steht außerdem eine zusätzliche Berichterstellung zur Verfügung. 
 
-![](./media/what-is-single-sign-on/azuremgmtportal.png)
+Verwenden Sie verknüpftes einmaliges Anmelden für Folgendes:
 
-Um Ihre SaaS-Anwendungen von Drittanbietern zu verwalten, können Sie zur Registerkarte "Anwendungen" des ausgewählten Verzeichnisses wechseln. Über diese Ansicht können Administratoren die folgenden Aufgaben ausführen:
+- Bereitstellen einer konsistenten Benutzererfahrung während der Migration von Anwendungen über einen längeren Zeitraum. Wenn Sie Anwendungen in Azure Active Directory migrieren, können Sie mithilfe des verknüpften einmaligen Anmeldens schnell Links für alle Anwendungen veröffentlichen, die Sie migrieren möchten.  Benutzer können alle Links im [MyApps-Portal](../user-help/active-directory-saas-access-panel-introduction.md) und im [Office 365-Anwendungsstarter](https://support.office.com/article/meet-the-office-365-app-launcher-79f12104-6fed-442f-96a0-eb089a3f476a) finden. Benutzer erkennen nicht, dass sie auf eine verknüpfte Anwendung bzw. eine migrierte Anwendung zugreifen.  
 
-* Hinzufügen neuer Anwendungen aus dem Azure AD-Katalog und Hinzufügen von selbst entwickelten Apps
-* Löschen integrierter Anwendungen
-* Verwalten der Anwendungen, die bereits integriert wurden
+Nachdem ein Benutzer sich mit einer verknüpften Anwendung authentifiziert hat, muss ein Kontodatensatz erstellt werden, bevor der Endbenutzer Zugriff durch das einmalige Anmelden erhält. Die Bereitstellung dieses Kontodatensatzes kann automatisch oder manuell durch einen Administrator erfolgen.
 
-Typische Verwaltungsaufgaben für eine SaaS-Anwendung von Drittanbietern sind:
+## <a name="disabled-sso"></a>Deaktiviertes einmaliges Anmelden
 
-* Aktivieren der einmaligen Anmeldung bei Azure AD mithilfe von Kennwort-SSO oder, sofern für die SaaS-Zielanwendung verfügbar, Verbund-SSO
-* Optional: Aktivieren der Benutzerbereitstellung zum Bereitstellen von Benutzern und Aufheben der Bereitstellung (Verwaltung des Identitätslebenszyklus)
-* Für Anwendungen, 
-* bei denen die Benutzerbereitstellung aktiviert ist, Auswahl der Benutzer mit Zugriff auf diese Anwendung
+Der deaktivierte Modus bedeutet, dass einmaliges Anmelden nicht für die Anwendung verwendet wird. Wenn einmaliges Anmelden deaktiviert ist, müssen sich Benutzer möglicherweise zweimal authentifizieren. Beim ersten Mal authentifizieren die Benutzer sich in Azure AD, danach melden sie sich bei der Anwendung an. 
 
-Für Katalog-Apps, die die einmalige Verbundanmeldung unterstützen, müssen Sie bei der Konfiguration normalerweise zusätzliche Konfigurationseinstellungen bereitstellen, z. B. Zertifikate und Metadaten zum Erstellen einer Verbundvertrauensstellung zwischen der Drittanbieter-App und Azure AD. Der Konfigurations-Assistent führt Sie durch die Details und bietet einfachen Zugriff auf die spezifischen Daten und Anweisungen der SaaS-Anwendung.
+Verwenden Sie den deaktivierten Modus für das einmalige Anmelden in folgenden Fällen:
 
-Für Katalog-Apps, die eine automatische Benutzerbereitstellung unterstützen, müssen Sie die entsprechenden Azure AD-Berechtigungen erteilen, um Ihre Konten in der SaaS-Anwendung verwalten zu können. Zumindest müssen Sie Anmeldeinformationen angeben, die Azure AD bei der Authentifizierung bei der Zielanwendung verwenden soll. Ob zusätzliche Konfigurationseinstellungen bereitgestellt werden müssen, hängt von den Anforderungen der Anwendung ab.
+- Wenn Sie noch nicht bereit sind, diese Anwendung in das einmalige Anmelden mit Azure AD-SSO zu integrieren
+- Wenn Sie andere Aspekte der Anwendung testen
+- Als Sicherheitsebene für eine lokale Anwendung, die keine Authentifizierung von Benutzern erfordert. Im deaktivierten Modus muss der Benutzer sich authentifizieren. 
 
-## <a name="deploying-azure-ad-integrated-applications-to-users"></a>Bereitstellen von in Azure AD integrierten Anwendungen für Benutzer
-Azure AD bietet mehrere anpassbare Möglichkeiten zum Bereitstellen von Anwendungen für Endbenutzer in Ihrer Organisation:
+## <a name="integrated-windows-authentication-iwa-sso"></a>Einmaliges Anmelden mit der integrierten Windows-Authentifizierung (IWA)
 
-* Azure AD-Zugriffsbereich
-* Office 365-Anwendungsstartprogramm
-* Direkte Anmeldung bei Verbund-Apps
-* Deep-Links zu verbundenen, kennwortbasierten oder vorhandene Apps
+Der Azure AD-Anwendungsproxy ermöglicht einmaliges Anmelden (SSO) für Anwendungen, die die [integrierte Windows-Authentifizierung (IWA)](/aspnet/web-api/overview/security/integrated-windows-authentication) verwenden oder Ansprüche unterstützen. Wenn Ihre Anwendung die integrierte Windows-Authentifizierung verwendet, authentifiziert sich der Anwendungsproxy mithilfe der eingeschränkten Kerberos-Delegierung (Kerberos Constrained Delegation, KCD) bei der Anwendung. Bei einer Anwendung, die Ansprüche unterstützt und Azure Active Directory vertraut, funktioniert das einmalige Anmelden, da der Benutzer bereits über Azure AD authentifiziert wurde.
 
-Welche Methode(n) Sie zur Bereitstellung in Ihrer Organisation wählen, liegt in Ihrem eigenen Ermessen.
+Verwenden des einmaligen Anmeldens im Modus der integrierten Windows-Authentifizierung für Folgendes:
 
-### <a name="azure-ad-access-panel"></a>Azure AD-Zugriffsbereich
-Der Zugriffsbereich unter https://myapps.microsoft.com ist ein webbasiertes Portal, das es einem Endbenutzer mit einem Organisationskonto in Azure Active Directory ermöglicht, cloudbasierte Anwendungen anzuzeigen und zu starten, für die der Azure AD-Administrator Zugriff gewährt hat. Als Endbenutzer mit [Azure Active Directory Premium](https://azure.microsoft.com/pricing/details/active-directory/) können Sie auch die Funktionen zur Self-Service-Gruppenverwaltung über den Zugriffsbereich verwenden.
+- Zum Bereitstellen des einmaligen Anmeldens für eine lokale App, bei der die Authentifizierung über IWA erfolgt. 
 
-![Azure AD-Zugriffsbereich](media/what-is-single-sign-on/azure-ad-access-panel.png)
+Informationen zum Konfigurieren einer lokalen App für IWA finden Sie unter [Eingeschränkte Kerberos-Delegierung für einmaliges Anmelden bei Ihren Anwendungen mit dem Anwendungsproxy](application-proxy-configure-single-sign-on-with-kcd.md). 
 
-Der Zugriffsbereich ist unabhängig vom Azure-Portal und setzt nicht voraus, dass Benutzer über ein Azure- oder Office 365-Abonnement verfügen.
+### <a name="how-single-sign-on-with-kcd-works"></a>So funktioniert das einmalige Anmelden mit KCD
+Dieses Diagramm erläutert die Vorgänge, die bei einem Zugriff eines Benutzers auf eine lokale Anwendung, die IWA verwendet, ablaufen.
 
-Weitere Informationen zum Azure AD-Zugriffsbereich finden Sie in der [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md).
+![Flussdiagramm für Microsoft AAD-Authentifizierung](./media/application-proxy-configure-single-sign-on-with-kcd/AuthDiagram.png)
 
-### <a name="office-365-application-launcher"></a>Office 365-Anwendungsstartprogramm
-Für Organisationen, die Office 365 bereitgestellt haben, werden Anwendungen, die Benutzern über Azure AD zugewiesen werden, auch im Office 365-Portal unter https://portal.office.com/myapps angezeigt. So können Benutzer in einer Organisation auf einfache und komfortable Weise ihre Apps starten, ohne ein zweites Portal verwenden zu müssen. Diese Lösung für den App-Start wird für Unternehmen empfohlen, die Office 365 einsetzen.
+1. Der Benutzer gibt die URL ein, um über den Anwendungsproxy auf die lokale Anwendung zuzugreifen.
+2. Der Anwendungsproxy leitet die Anforderung zur Vorauthentifizierung an Azure AD-Authentifizierungsdienste weiter. Zu diesem Zeitpunkt wendet Azure AD alle gültigen Authentifizierungs- und Autorisierungsrichtlinien an, wie z. B. mehrstufige Authentifizierung. Nachdem der Benutzer überprüft wurde, erstellt Azure AD ein Token und sendet es an den Benutzer.
+3. Der Benutzer übergibt das Token an den Anwendungsproxy.
+4. Der Anwendungsproxy überprüft das Token und ruft den Benutzerprinzipalnamen aus dem Token ab. Dann sendet er die Anforderung, den UPN und den Dienstprinzipalnamen über einen zweifach authentifizierten sicheren Kanal an den Connector.
+5. Der Connector führt eine KCD-Aushandlung mit dem lokalen AD aus und nimmt dabei die Identität des Benutzers an, um ein Kerberos-Token für die Anwendung zu erhalten.
+6. Active Directory sendet das Kerberos-Token für die Anwendung an den Connector.
+7. Der Connector sendet die ursprüngliche Anforderung an den Anwendungsserver und verwendet dabei das von AD empfangene Kerberos-Token.
+8. Die Anwendung sendet die Antwort an den Connector, die dann an den Anwendungsproxydienst und schließlich an den Benutzer zurückgegeben wird.
 
-![](./media/what-is-single-sign-on/officeapphub.png)
+## <a name="header-based-sso"></a>Headerbasiertes einmaliges Anmelden
 
-Weitere Informationen zum Office 365-Anwendungsstartprogramm finden Sie unter [Anzeige Ihrer App im Office 365-Anwendungsstartprogramm](https://msdn.microsoft.com/office/office365/howto/connect-your-app-to-o365-app-launcher).
+Das headerbasierte einmalige Anmelden funktioniert für Anwendungen, die für die Authentifizierung HTTP-Header verwenden. Diese Anmeldemethode verwendet einen Drittanbieter-Authentifizierungsdienst mit dem Namen PingAccess. Ein Benutzer muss sich nur bei Azure AD authentifizieren. 
 
-### <a name="direct-sign-on-to-federated-apps"></a>Direkte Anmeldung bei Verbund-Apps
-Die meisten Verbundanwendungen, die SAML 2.0, WS-Verbund oder OpenID Connect unterstützen, bieten die Möglichkeit, dass Benutzer die Anwendung aufrufen, und dann entweder durch automatische Umleitung oder Klicken auf einen Link zur Anmeldung über Azure AD angemeldet werden. Dies bezeichnet man als vom Dienstanbieter initiierte Anmeldung, und die meisten Verbundanwendungen im Azure AD-Anwendungskatalog unterstützen diese Form der Anmeldung (weitere Informationen finden Sie in der Dokumentation, die Sie im Azure-Portal über einen Link im Assistenten zum Konfigurieren der einmaligen Anmeldung für eine App aufrufen können).
+Verwenden Sie das headerbasierte einmalige Anmelden in folgenden Fällen:
 
-![](./media/what-is-single-sign-on/workdaymobile.png)
+- Anwendungsproxy und PingAccess sind für die Anwendung konfiguriert.
 
-### <a name="direct-sign-on-links-for-federated-password-based-or-existing-apps"></a>Links zur direkten Anmeldung für Verbund-Apps, kennwortbasierte oder vorhandene Apps
-Azure AD unterstützt auch Direktlinks für die einmalige Anmeldung bei einzelnen Anwendungen, die eine kennwortbasierte einmalige Anmeldung, einmaliges Anmelden über Link und eine beliebige Art der einmaligen Verbundanmeldung unterstützen.
+Informationen zum Konfigurieren der headerbasierten Authentifizierung finden Sie unter [Headerbasierte Authentifizierung für einmaliges Anmelden mit Anwendungsproxy und PingAccess](application-proxy-configure-single-sign-on-with-ping-access.md). 
 
-Diese Links sind speziell gestaltete URLs, die einen Benutzer durch den Azure AD-Anmeldevorgang für eine bestimmte Anwendung leiten, ohne dass der Benutzer die Anwendung aus dem Azure AD-Zugriffsbereich oder Office 365 starten muss. Diese URLs für die einmalige Anmeldung finden Sie auf der Registerkarte „Dashboard“ aller vorab integrierten Anwendungen im Active Directory-Abschnitt des Azure-Portals, wie im folgenden Screenshot gezeigt.
+### <a name="what-is-pingaccess-for-azure-ad"></a>Was ist PingAccess für Azure AD?
 
-![](./media/what-is-single-sign-on/deeplink.png)
+Mit PingAccess für Azure AD können Benutzer auf Anwendungen zugreifen, die Header für die Authentifizierung verwenden, und sich bei diesen einmalig anmelden. Der Anwendungproxy behandelt diese Anwendungen wie alle anderen und verwendet Azure AD zum Authentifizieren des Zugriffs und zum Leiten des Datenverkehrs durch den Connectordienst. Nach der Authentifizierung übersetzt der PingAccess-Dienst das Azure AD-Zugriffstoken in ein Headerformat, das an die Anwendung gesendet wird.
 
-Diese Links können Sie kopieren und überall dort einfügen, wo Sie einen Anmeldelink zur ausgewählten Anwendung bereitstellen möchten. Dies kann eine E-Mail oder ein beliebiges benutzerdefiniertes webbasiertes Portal sein, das Sie für den Benutzerzugriff auf eine Anwendung eingerichtet haben. Hier sehen Sie ein Beispiel für eine Azure AD-Direkt-URL zur einmaligen Anmeldung für Twitter:
+Ihre Benutzer bemerken keinen Unterschied, wenn sie sich für die Nutzung Ihrer Unternehmensanwendungen anmelden. Sie können weiterhin überall und auf beliebigen Geräten arbeiten. Die Anwendungsproxyconnectors leiten Remotedatenverkehr an alle Apps weiter und sorgen auch weiterhin für automatischen Lastenausgleich.
 
-`https://myapps.microsoft.com/signin/Twitter/230848d52c8745d4b05a60d29a40fced`
+### <a name="how-do-i-get-a-license-for-pingaccess"></a>Wie erhalte ich eine Lizenz für PingAccess?
 
-Ähnlich wie organisationsspezifische URLs für den Zugriffsbereich können Sie diese URL durch Hinzufügen der aktiven oder überprüften Domänen für Ihr Verzeichnis nach der Domäne "myapps.microsoft.com" weiter anpassen. So wird sichergestellt, dass jegliches Organisationsbranding sofort auf der Anmeldeseite geladen wird, ohne dass Benutzer vorher ihre Benutzer-ID eingeben müssen:
+Da dieses Szenario im Rahmen einer Partnerschaft von Azure Active Directory und PingAccess angeboten wird, benötigen Sie Lizenzen für beide Dienste. Azure Active Directory Premium-Abonnements enthalten aber eine grundlegende PingAccess-Lizenz, die bis zu 20 Anwendungen abdeckt. Wenn Sie mehr als 20 headerbasierte Anwendungen veröffentlichen müssen, können Sie bei PingAccess eine weitere Lizenz erhalten. 
 
-`https://myapps.microsoft.com/contosobuild.com/signin/Twitter/230848d52c8745d4b05a60d29a40fced`
-
-Wenn autorisierte Benutzer auf einen dieser anwendungsspezifischen Links klicken, sehen sie zuerst die Anmeldeseite der Organisation (vorausgesetzt, dass sie noch nicht angemeldet sind), und nach dem Anmelden werden sie ohne Zwischenschritt über den Zugriffsbereich zu ihrer App umgeleitet. Wenn Voraussetzungen für den Zugriff auf die Anwendung nicht erfüllt sind, wenn z. B. die kennwortbasierte Browsererweiterung zur einmaligen Anmeldung fehlt, wird der Benutzer über den Link zur Installation der fehlenden Erweiterung aufgefordert. Die Link-URL bleibt auch dann unverändert, wenn die Konfiguration für die einmalige Anmeldung geändert wird.
-
-Diese Links verwenden die gleichen Mechanismen der Zugriffssteuerung wie der Zugriffsbereich und Office 365, und nur die Benutzer oder Gruppen, die der Anwendung im Azure-Portal zugewiesen wurden, können sich authentifizieren. Alle nicht autorisierten Benutzer werden in einer Meldung darüber informiert, dass ihnen kein Zugriff gewährt wurde. Anschließend wird ein Link zum Laden des Zugriffsbereichs angezeigt, um verfügbare Anwendungen anzuzeigen, auf die zugegriffen werden kann.
+Weitere Informationen finden Sie unter [Azure Active Directory-Editionen](../fundamentals/active-directory-whatis.md).
 
 ## <a name="related-articles"></a>Verwandte Artikel
-* [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](../saas-apps/tutorial-list.md)
-* [Einrichten von Cloud Discovery](/cloud-app-security/set-up-cloud-discovery)
-* [Einführung in die Verwaltung des Zugriffs auf Apps](what-is-access-management.md)
-* [Vergleich von Funktionen zum Verwalten externer Identitäten in Azure AD](../active-directory-b2b-compare-b2c.md)
+* [Tutorials zur Integration von SaaS-Anwendungen in Azure Active Directory](../saas-apps/tutorial-list.md)
+* [Tutorial zum Konfigurieren des einmaligen Anmeldens](configure-single-sign-on-portal.md)
+* [Einführung in die Verwaltung des Zugriffs auf Anwendungen](what-is-access-management.md)
+* Downloadlink: [Bereitstellungsplan für einmaliges Anmelden](http://aka.ms/SSODeploymentPlan)
 
 

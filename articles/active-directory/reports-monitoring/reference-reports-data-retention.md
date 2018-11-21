@@ -13,24 +13,21 @@ ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.component: report-monitor
-ms.date: 05/10/2018
+ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 68028fd1ba116251860e5c370e9e9ce61fd314bb
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 601169cc62a99438f661adc06ab166b545606edb
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47106695"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51624589"
 ---
 # <a name="azure-active-directory-report-retention-policies"></a>Aufbewahrungsrichtlinien für Azure Active Directory-Berichte
 
+Dieser Artikel enthält Informationen zu den Datenaufbewahrungsrichtlinien für die unterschiedlichen Aktivitätsberichte in Azure Active Directory. 
 
-Dieser Artikel enthält Antworten auf die am häufigsten gestellten Fragen zur Datenaufbewahrung für die verschiedenen Aktivitätsberichte in Azure Active Directory. 
-
-### <a name="q-how-can-you-get-the-collection-of-activity-data-started"></a>F: Wie wird die Erfassung von Aktivitätsdaten gestartet?
-
-**A:**
+### <a name="when-does-azure-ad-start-collecting-data"></a>Wann beginnt Azure AD mit der Datensammlung?
 
 | Azure AD-Edition | Start der Erfassung |
 | :--              | :--   |
@@ -38,25 +35,21 @@ Dieser Artikel enthält Antworten auf die am häufigsten gestellten Fragen zur D
 | Azure AD Free | Beim ersten Öffnen des Blatts [Azure Active Directory](https://ms.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) oder bei der ersten Verwendung der [Berichterstellungs-APIs](https://aka.ms/aadreports)  |
 
 ---
-### <a name="q-when-is-your-activity-data-available-in-the-azure-portal"></a>F: Wann sind die Aktivitätsdaten im Azure-Portal verfügbar?
 
-**A:**
+### <a name="when-is-the-activity-data-available-in-the-azure-portal"></a>Wann stehen die Aktivitätsdaten im Azure-Portal zur Verfügung?
 
 - **Sofort**, wenn Sie bereits Berichte im Azure-Portal verwendet haben.
 - **Innerhalb von 2 Stunden**, wenn Sie die Berichterstellung im Azure-Portal nicht aktiviert haben.
 
 ---
 
-### <a name="q-how-can-you-get-the-collection-of-security-signals-started"></a>F: Wie wird die Erfassung von Sicherheitssignalen gestartet?  
+### <a name="when-does-azure-ad-start-collecting-security-signal-data"></a>Wann beginnt Azure AD mit der Sammlung von Sicherheitssignaldaten?  
 
-**A:** Bei Sicherheitssignalen wird der Erfassungsprozess gestartet, wenn Sie sich für die Verwendung von Identity Protection Center entscheiden. 
-
+Die Erfassung von Sicherheitssignalen beginnt, wenn Sie sich für die Verwendung von **Identity Protection Center** entscheiden. 
 
 ---
 
-### <a name="q-for-how-long-is-the-collected-data-stored"></a>F: Wie lange werden die gesammelten Daten gespeichert?
-
-**A:**
+### <a name="how-long-does-azure-ad-store-the-data"></a>Wie lange speichert Azure AD die Daten?
 
 **Aktivitätsberichte**    
 

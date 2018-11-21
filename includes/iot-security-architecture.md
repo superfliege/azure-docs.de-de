@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 08/07/2018
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: 7407bed746f863a5daecfc98d2df89175ff35b5f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: a6564877c05dcd5c611c6bbf7a09c65ac2f1f406
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51264270"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51293188"
 ---
-# <a name="internet-of-things-security-architecture"></a>Internet der Dinge – Sicherheitsarchitektur
+# <a name="internet-of-things-iot-security-architecture"></a>Internet der Dinge (IoT) – Sicherheitsarchitektur
 
 Beim Entwerfen eines Systems ist es wichtig zu verstehen, welche potenziellen Bedrohungen es für das System gibt. Anschließend müssen beim Entwerfen und Zusammenstellen des Systems die richtigen Abwehrmaßnahmen ergriffen werden. Es ist besonders wichtig, schon zu Beginn des Entwurfsprozesses für das Produkt an die Sicherheit zu denken. Indem ein Verständnis entwickelt wird, wie Angreifer ein System unter Umständen kompromittieren können, wird sichergestellt, dass von Anfang an für geeignete Lösungen gesorgt ist.
 
@@ -27,23 +27,23 @@ Das Ziel der Bedrohungsmodellierung besteht darin zu verstehen, wie ein Angreife
 
 Viele Entwicklungsteams leisten hervorragende Arbeit, was die Erfassung der Funktionsanforderungen für das System betrifft, die für Kunden Vorteile bedeuten. Die Identifizierung von nicht offensichtlichen Wegen, auf denen Personen das System missbrauchen können, stellt eine größere Herausforderung dar. Anhand der Bedrohungsmodellierung können Entwicklungsteams besser verstehen, was ein Angreifer unternehmen kann und warum dies möglich ist. Die Bedrohungsmodellierung ist ein strukturierter Prozess, bei dem Diskussionen zu folgenden Punkten angestoßen werden: Sicherheitsentwurfsentscheidungen im System und Änderungen am Entwurf, die während des Prozesses vorgenommen werden und die Sicherheit betreffen. Ein Bedrohungsmodell ist zwar lediglich ein Dokument, aber diese Dokumentation ist auch ein idealer Weg, um die Kontinuität des Wissens sicherzustellen, Erkenntnisse aufzuzeichnen und neue Teams schneller einzuarbeiten. Ein weiteres Ergebnis der Bedrohungsmodellierung ist, dass Sie auch andere Sicherheitsaspekte berücksichtigen können, z.B. welche Sicherheitszusagen Sie gegenüber Ihren Kunden machen möchten. Diese Zusagen liefern zusammen mit der Bedrohungsmodellierung die Informationen und die Grundlage für das Testen Ihrer Lösung für das Internet der Dinge (IoT).
 
-### <a name="when-to-threat-model"></a>Zeitpunkt der Erstellung eines Bedrohungsmodells
+### <a name="when-to-do-threat-modeling"></a>Wann sollte eine Bedrohungsmodellierung durchgeführt werden?
 
 Die [Bedrohungsmodellierung](https://www.microsoft.com/en-us/sdl/adopt/threatmodeling.aspx) hat den größten Nutzen, wenn sie in die Entwurfsphase eingebunden wird. Beim Entwerfen haben Sie die größtmögliche Flexibilität, um Änderungen vorzunehmen, mit denen Bedrohungen beseitigt werden sollen. Das gewünschte Ergebnis ist, Bedrohungen standardmäßig zu beseitigen. Dies ist viel einfacher als das Hinzufügen von Abhilfemaßnahmen, das Testen dieser Maßnahmen und die Sicherstellung, dass sie stets aktuell sind. Außerdem ist eine Beseitigung auf diese Art nicht immer möglich. Es wird schwieriger, Bedrohungen zu beseitigen, wenn ein Produkt einen höheren Entwicklungsgrad erreicht. Darüber hinaus sind letztendlich mehr Arbeitsschritte und deutlich mehr Kompromisse als bei der Bedrohungsmodellierung zu einem frühen Zeitpunkt der Entwicklung erforderlich.
 
-### <a name="what-to-threat-model"></a>Ausrichtung des Bedrohungsmodells
+### <a name="what-to-consider-for-threat-modeling"></a>Was muss bei der Bedrohungsmodellierung berücksichtigt werden?
 
-Sie sollten das Bedrohungsmodell für die gesamte Lösung entwerfen und sich zudem auf die folgenden Bereiche konzentrieren:
+Es empfiehlt sich, die Lösung als Ganzes zu betrachten und sich auf folgende Bereiche zu konzentrieren:
 
 * Sicherheits- und Datenschutzfeatures
 * Features, deren Ausfall sicherheitsrelevant ist
 * Features, die eine Vertrauensgrenze betreffen
 
-### <a name="who-threat-models"></a>Wer erstellt Bedrohungsmodelle?
+### <a name="who-performs-threat-modeling"></a>Wer kümmert sich um die Bedrohungsmodellierung?
 
 Die Bedrohungsmodellierung ist ein Vorgang wie jeder andere. Es ist ratsam, das Bedrohungsmodell-Dokument genau wie andere Komponenten der Lösung zu behandeln und zu validieren. Viele Entwicklungsteams leisten hervorragende Arbeit, was die Erfassung der Funktionsanforderungen für das System betrifft, die für Kunden Vorteile bedeuten. Die Identifizierung von nicht offensichtlichen Wegen, auf denen Personen das System missbrauchen können, stellt eine größere Herausforderung dar. Anhand der Bedrohungsmodellierung können Entwicklungsteams besser verstehen, was ein Angreifer unternehmen kann und warum dies möglich ist.
 
-### <a name="how-to-threat-model"></a>Vorgehensweise für Bedrohungsmodelle
+### <a name="how-to-perform-threat-modeling"></a>Wie wird die Bedrohungsmodellierung durchgeführt?
 
 Der Vorgang zum Erstellen von Bedrohungsmodellen besteht aus den folgenden vier Schritten:
 
@@ -57,16 +57,21 @@ Der Vorgang zum Erstellen von Bedrohungsmodellen besteht aus den folgenden vier 
 Befolgen Sie beim Erstellen eines Bedrohungsmodells diese drei Faustregeln:
 
 1. Erstellen Sie ein Diagramm der Referenzarchitektur.
-1. Beginnen Sie mit einem „breiten“ Ansatz. Verschaffen Sie sich einen Überblick, und entwickeln Sie ein Verständnis des gesamten Systems, bevor Sie in die Tiefe gehen. Durch diese Herangehensweise ist sichergestellt, dass Sie an den richtigen Stellen in die Tiefe gehen.
-1. Treiben Sie den Prozess voran, und lassen Sie sich nicht vom Prozess vorantreiben. Falls in der Modellierungsphase ein Problem auftritt und Sie dieses untersuchen möchten, dann tun Sie es! Sie müssen die angegebenen Schritte nicht sklavisch ausführen.
+
+2. Beginnen Sie mit einem „breiten“ Ansatz. Verschaffen Sie sich einen Überblick, und entwickeln Sie ein Verständnis des gesamten Systems, bevor Sie in die Tiefe gehen. Durch diese Herangehensweise ist sichergestellt, dass Sie an den richtigen Stellen in die Tiefe gehen.
+
+3. Treiben Sie den Prozess voran, und lassen Sie sich nicht vom Prozess vorantreiben. Falls in der Modellierungsphase ein Problem auftritt und Sie dieses untersuchen möchten, dann tun Sie es! Sie müssen die angegebenen Schritte nicht sklavisch ausführen.
 
 #### <a name="threats"></a>Bedrohungen
 
 Die vier Kernelemente eines Bedrohungsmodells sind:
 
 * Prozesse wie Webdienste, Win32-Dienste oder *nix-Daemons. Einige komplexe Entitäten (z.B. Bereichsgateways und Sensoren) können als Prozess abstrahiert werden, wenn in diesen Bereichen kein technischer Drilldown möglich ist.
+
 * Datenspeicher (alle Speicherorte von Daten, z.B. eine Konfigurationsdatei oder eine Datenbank)
+
 * Datenfluss (Daten werden zwischen anderen Elementen in der Anwendung verschoben)
+
 * Externe Entitäten (alle Elemente, die mit dem System interagieren, aber nicht von der Anwendung kontrolliert werden, z.B. Benutzer und Satelliten-Feeds)
 
 Alle Elemente im Architekturdiagramm unterliegen verschiedenen Bedrohungen. In diesem Artikel wird der mnemonische STRIDE-Code verwendet. Weitere Informationen zu den STRIDE-Elementen finden Sie unter [Threat Modeling Again, STRIDE](https://blogs.msdn.microsoft.com/larryosterman/2007/09/04/threat-modeling-again-stride/) (Noch einmal Bedrohungsmodellierung: STRIDE).
@@ -135,7 +140,7 @@ Verbundene Geräte für spezielle Zwecke verfügen über eine erhebliche Anzahl 
 
 Wenn Sie bei der Bedrohungsmodellierung die Interaktionsmuster untersuchen, wenden Sie die gleiche Aufmerksamkeit auf „Gerätesteuerung“ und „Gerätedaten“ an. „Gerätesteuerung“ kann als alle Informationen klassifiziert werden, die für ein Gerät von einer Partei mit dem Ziel bereitgestellt werden, sein Verhalten gegenüber seinem Zustand oder dem Zustand der Umgebung zu beeinflussen. „Gerätedaten“ können als alle Informationen deklariert werden, die von einem Gerät in Bezug auf seinen Zustand und den beobachteten Zustand seiner Umgebung an andere Parteien weitergegeben werden.
 
-## <a name="threat-modeling-the-azure-iot-reference-architecture"></a>Durchführen der Bedrohungsmodellierung für die Azure IoT-Referenzarchitektur
+## <a name="performing-threat-modeling-for-the-azure-iot-reference-architecture"></a>Bedrohungsmodellierung für die Azure IoT-Referenzarchitektur
 
 Microsoft nutzt das zuvor beschriebene Framework, um die Bedrohungsmodellierung für Azure IoT durchzuführen. Im nachstehenden Abschnitt wird daher das konkrete Beispiel der Azure IoT-Referenzarchitektur verwendet, um zu veranschaulichen, wie die Bedrohungsmodellierung für IoT angegangen und den identifizierten Bedrohungen begegnet werden sollte. In diesem Beispiel werden vier Hauptbereiche identifiziert:
 

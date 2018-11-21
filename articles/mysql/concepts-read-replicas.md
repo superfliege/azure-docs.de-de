@@ -7,13 +7,13 @@ ms.author: andrela
 editor: jasonwhowell
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 10/30/2018
-ms.openlocfilehash: b4e79723072a19f2637bea16d0534cb85588e9e3
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.date: 11/13/2018
+ms.openlocfilehash: 82f80fc1342f0c76cb880b020dcd835a23635b0a
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50412447"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51632559"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Lesereplikate in Azure Database for MySQL
 
@@ -60,12 +60,15 @@ Replikatserver werden unter Verwendung der gleichen Serverkonfigurationen wie be
 - Aufbewahrungszeitraum der Sicherung
 - Option für Sicherungsredundanz
 - MySQL-Engine-Version
+- Firewallregeln
 
 Nachdem ein Replikat erstellt wurde, können Sie den Tarif (Ausnahme: Wechsel zu oder aus Basic), die Computegeneration, die virtuellen Kernen, den Speicher und die Sicherungsaufbewahrung unabhängig vom Masterserver ändern.
 
 ### <a name="master-server-configuration"></a>Masterserverkonfiguration
 
-Wenn die Konfiguration eines Masterservers (z.B. virtuelle Kerne oder Speicher) aktualisiert wird, sollten die Konfigurationen der Replikate ebenfalls auf die gleichen oder höhere Werte aktualisiert werden. Andernfalls kann der Replikatserver bei Änderungen, die am Master vorgenommen werden, nicht mehr folgen und stürzt möglicherweise ab. 
+Wenn die Konfiguration eines Masterservers (z.B. virtuelle Kerne oder Speicher) aktualisiert wird, sollten die Konfigurationen der Replikate ebenfalls auf die gleichen oder höhere Werte aktualisiert werden. Andernfalls kann der Replikatserver bei Änderungen, die am Master vorgenommen werden, nicht mehr folgen und stürzt möglicherweise ab.
+
+Neue Firewallregeln, die dem Masterserver nach der Erstellung eines Replikatservers hinzugefügt werden, werden nicht auf dem Replikat repliziert. Das Replikat muss ebenfalls mit dieser neuen Firewallregel aktualisiert werden.
 
 ### <a name="deleting-the-master-server"></a>Löschen des Masterservers
 
@@ -87,7 +90,4 @@ Benutzer auf dem Masterserver werden an die Lesereplikate repliziert. Sie könne
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Erfahren Sie, wie Sie [Lesereplikate über das Azure-Portal erstellen und verwalten](howto-read-replicas-portal.md).
-
-<!--
-- Learn how to [create and manage read replicas using the Azure CLI](howto-read-replicas-using-cli.md)
--->
+- Erfahren Sie, wie Sie [Lesereplikate über die Azure CLI erstellen und verwalten](howto-read-replicas-cli.md).

@@ -9,12 +9,12 @@ ms.author: raymondl
 author: raymondlaghaeian
 ms.reviewer: sgilley
 ms.date: 09/24/2018
-ms.openlocfilehash: 8a736516a598eee051b416834d2b737211e66b96
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: b004abb3959bbfe36fc200bf762114f88f3d2ead
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49429458"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51345045"
 ---
 # <a name="deploy-web-services-to-azure-container-instances"></a>Bereitstellen von Webdiensten in Azure Container Instances 
 
@@ -48,9 +48,12 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 ## <a name="configure-an-image"></a>Konfigurieren eines Image
 
 Konfigurieren Sie das Docker-Image, das zum Speichern aller Modelldateien verwendet wird.
-1. Erstellen Sie [anhand dieser Anweisungen](tutorial-deploy-models-with-aml.md#create-scoring-script) ein Skript (score.py).
+1. Erstellen Sie anhand [dieser Anweisungen](tutorial-deploy-models-with-aml.md#create-scoring-script) ein Skript (score.py).
 
-1. Erstellen Sie [anhand dieser Anweisungen](tutorial-deploy-models-with-aml.md#create-environment-file) eine Umgebungsdatei (myenv.yml). 
+    > [!IMPORTANT]
+    > Das Bewertungsskript erhält von Clients übermittelte Daten und übergibt sie zur Bewertung an das Modell. Dokumentieren Sie die Datenstruktur, die vom Skript und vom Modell erwartet wird. Diese Dokumentation vereinfacht die Erstellung eines Clients zur Nutzung des Webdiensts.
+
+1. Erstellen Sie anhand [dieser Anweisungen](tutorial-deploy-models-with-aml.md#create-environment-file) eine Umgebungsdatei (myenv.yml).
 
 1. Verwenden Sie diese beiden Dateien, um das Docker-Image in Python mithilfe des SDK zu erstellen:
 
@@ -217,8 +220,7 @@ Mit dieser Option haben Sie die größtmögliche Kontrolle über die Erstellung 
 
 Jetzt können Sie den Webdienst testen.
 
-<a name='test-web-service'/>
-## <a name="test-the-web-service"></a>Testen des Webdiensts
+## <a name="a-nametest-web-servicetest-the-web-service"></a><a name='test-web-service'/>Testen des Webdiensts
 
 Der Webdienst ist unabhängig von der verwendeten Methode immer der gleiche.  Um Vorhersagen zu erhalten, verwenden Sie die `run`-Methode des Diensts.  
 
@@ -261,4 +263,5 @@ service.delete()
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erfahren Sie, wie Sie Modelle für umfangreichere Szenarien [im Azure Kubernetes Service bereitstellen](how-to-deploy-to-aks.md). 
+* Informieren Sie sich über die [Nutzung eines als Webdienst bereitgestellten Azure Machine Learning-Modells](how-to-consume-web-service.md).
+* Erfahren Sie, wie Sie Modelle für umfangreichere Szenarien [im Azure Kubernetes Service bereitstellen](how-to-deploy-to-aks.md). 

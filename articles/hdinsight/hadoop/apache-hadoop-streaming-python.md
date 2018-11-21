@@ -1,6 +1,6 @@
 ---
 title: Entwickeln von Python MapReduce-Aufträgen für das Streaming mit HDInsight – Azure
-description: Erfahren Sie, wie Sie Python für Streaming-MapReduce-Aufträge verwenden. Hadoop stellt eine Streaming-API für MapReduce zur Verfügung, mit der Sie in anderen Sprachen als Java schreiben können.
+description: Erfahren Sie, wie Sie Python für Streaming-MapReduce-Aufträge verwenden. Apache Hadoop stellt eine Streaming-API für MapReduce zur Verfügung, mit der Sie in anderen Sprachen als Java schreiben können.
 services: hdinsight
 keyword: mapreduce python,python map reduce,python mapreduce
 author: hrasheed-msft
@@ -10,20 +10,20 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: hrasheed
-ms.openlocfilehash: 5ed61eb05d0aa4360e042097d6b8c632c17ea59c
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: d6a9de293d62ec6f25bd3a665d5ced5a1ac671ae
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51008724"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51634021"
 ---
 # <a name="develop-python-streaming-mapreduce-programs-for-hdinsight"></a>Entwickeln von Streaming-MapReduce-Programmen für HDInsight mit Python
 
-Erfahren Sie, wie Sie Python für Vorgänge in Streaming-MapReduce-Aufträgen verwenden. Hadoop stellt eine Streaming-API für MapReduce zur Verfügung, mit der Sie Map- und Reduce-Funktionen in anderen Sprache als Java schreiben können. Die Schritte in diesem Dokument haben die Komponenten für Mapper und Reducer in Python implementiert.
+Erfahren Sie, wie Sie Python für Vorgänge in Streaming-MapReduce-Aufträgen verwenden. Apache Hadoop stellt eine Streaming-API für MapReduce zur Verfügung, mit der Sie Map- und Reduce-Funktionen in anderen Sprache als Java schreiben können. Die Schritte in diesem Dokument haben die Komponenten für Mapper und Reducer in Python implementiert.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein Linux-basierter Hadoop-Cluster in HDInsight
+* Ein Linux-basierter Apache Hadoop-Cluster in HDInsight
 
   > [!IMPORTANT]
   > Die Schritte in diesem Dokument erfordern einen HDInsight-Cluster mit Linux. Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Welche Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?](../hdinsight-component-versioning.md#hdinsight-windows-retirement).

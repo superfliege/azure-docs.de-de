@@ -1,6 +1,6 @@
 ---
 title: VM-Start bleibt bei „Windows wird vorbereitet. Computer nicht ausschalten.“ hängen. in Azure | Microsoft-Dokumentation
-description: Hier werden die Schritte zur Behebung des Problems erläutert, bei dem der virtuelle Computer beim Starten hängen bleibt und die Meldung „Windows wird vorbereitet. Computer nicht ausschalten“ angezeigt wird.
+description: 'Hier werden die Schritte zur Behebung des Problems erläutert, bei dem der virtuelle Computer beim Starten hängen bleibt und die folgende Meldung angezeigt wird: „Windows wird vorbereitet. Computer nicht ausschalten.“'
 services: virtual-machines-windows
 documentationcenter: ''
 author: Deland-Han
@@ -14,20 +14,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: delhan
-ms.openlocfilehash: e0ad7a8b083a72a9d3c630fa53601aa8fb6ad601
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 2bcdb2b458327a5e87dc36e4a5f50f0ac46bf96a
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48862732"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51621026"
 ---
 # <a name="vm-startup-is-stuck-on-getting-windows-ready-dont-turn-off-your-computer-in-azure"></a>VM-Start bleibt bei „Windows wird vorbereitet. Computer nicht ausschalten.“ hängen. in Azure
 
-In diesem Artikel wird beschrieben, wie Sie das Problem beheben, wenn Ihr virtueller Computer (Virtual Machine, VM) in der Startphase hängen bleibt und die Meldung „Windows wird vorbereitet. Computer nicht ausschalten.“ angezeigt wird.
+In diesem Artikel wird beschrieben, wie Sie das Problem beheben, wenn Ihr virtueller Computer (Virtual Machine, VM) in der Startphase hängen bleibt und die Meldung „Windows wird vorbereitet. Computer nicht ausschalten.“ hängen. angezeigt wird.
 
 ## <a name="symptoms"></a>Symptome
 
-Beim Verwenden der **Startdiagnose** zum Anzeigen des Screenshots eines virtuellen Computers wird das Betriebssystem nicht vollständig gestartet. Darüber hinaus wird auf dem virtuellen Computer die Meldung **„Windows wird vorbereitet. Computer nicht ausschalten.“** angezeigt.
+Beim Verwenden der **Startdiagnose** zum Anzeigen des Screenshots eines virtuellen Computers wird das Betriebssystem nicht vollständig gestartet. Darüber hinaus wird auf dem virtuellen Computer die Meldung **„Windows wird vorbereitet. Computer nicht ausschalten.“** Meldung.
 
 ![Meldungsbeispiel](./media/troubleshoot-vm-configure-update-boot/message1.png)
 
@@ -184,12 +184,12 @@ $osDiskName = "OsDiskName";
 $DataDiskName = "DataDiskName"
 
 #This can be found by selecting the Managed Disks you wish you use in the Azure Portal if the format below doesn't match
-$osDiskResouceId = "/subscriptions/$subid/resourceGroups/$rgname/providers/Microsoft.Compute/disks/$osDiskName";
+$osDiskResourceId = "/subscriptions/$subid/resourceGroups/$rgname/providers/Microsoft.Compute/disks/$osDiskName";
 $dataDiskResourceId = "/subscriptions/$subid/resourceGroups/$rgname/providers/Microsoft.Compute/disks/$DataDiskName";
 
 $vm = New-AzureRmVMConfig -VMName $vmName -VMSize $vmSize;
 
-#Uncomment to add Availabilty Set
+#Uncomment to add Availability Set
 #$avSet = Get-AzureRmAvailabilitySet –Name $avName –ResourceGroupName $rgName;
 #$vm = New-AzureRmVMConfig -VMName $vmName -VMSize $vmSize -AvailabilitySetId $avSet.Id;
 
@@ -202,12 +202,12 @@ $vm = Add-AzureRmVMNetworkInterface -VM $vm -Id $nic1.Id -Primary;
 #$vm = Add-AzureRmVMNetworkInterface -VM $vm -Id $nic2.Id;
 
 #Windows VM
-$vm = Set-AzureRmVMOSDisk -VM $vm -ManagedDiskId $osDiskResouceId -name $osDiskName -CreateOption Attach -Windows;
+$vm = Set-AzureRmVMOSDisk -VM $vm -ManagedDiskId $osDiskResourceId -name $osDiskName -CreateOption Attach -Windows;
 
 #Linux VM
-#$vm = Set-AzureRmVMOSDisk -VM $vm -ManagedDiskId $osDiskResouceId -name $osDiskName -CreateOption Attach -Linux;
+#$vm = Set-AzureRmVMOSDisk -VM $vm -ManagedDiskId $osDiskResourceId -name $osDiskName -CreateOption Attach -Linux;
 
-#Uncomment to add additnal Data Disk
+#Uncomment to add additional Data Disk
 #Add-AzureRmVMDataDisk -VM $vm -ManagedDiskId $dataDiskResourceId -Name $dataDiskName -Caching None -DiskSizeInGB 1024 -Lun 0 -CreateOption Attach;
 
 New-AzureRmVM -ResourceGroupName $rgName -Location $loc -VM $vm;

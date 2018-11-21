@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/21/2018
+ms.date: 11/14/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: c16da55540faaf165faa592c3565b317a8eab922
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: 6d6b8d2bddcd3ac622a2a5f51ebe78cbecc29c29
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50914089"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51687332"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Azure AD Connect: Nahtloses einmaliges Anmelden – Schnellstart
 
@@ -91,7 +91,7 @@ Befolgen Sie diese Anweisungen, um zu überprüfen, ob die nahtlose SSO ordnungs
 ![Azure-Portal: Bereich „Azure AD Connect“](./media/how-to-connect-sso-quick-start/sso10.png)
 
 >[!IMPORTANT]
-> Für das nahtlose einmalige Anmelden wird das Computerkonto `AZUREADSSOACC` (das Azure AD darstellt) in jeder AD-Gesamtstruktur in Ihrem lokalen Active Directory (AD) erstellt. Dieses Computerkonto ist erforderlich, damit das Feature funktioniert. Verschieben das `AZUREADSSOACC`-Computerkonto zu einer Organisationseinheit (Organization Unit, OU), in der andere Computerkonten gespeichert sind, um sicherzustellen, dass es auf die gleiche Weise verwaltet und nicht gelöscht wird.
+> Für das nahtlose einmalige Anmelden wird das Computerkonto `AZUREADSSOACC` (das Azure AD darstellt) in jeder AD-Gesamtstruktur in Ihrem lokalen Active Directory (AD) erstellt. Dieses Computerkonto ist erforderlich, damit das Feature funktioniert. Wenn Sie Pass-the-Hash- und Credential Theft Mitigation-Architekturen in Ihrer lokalen Umgebung verwenden, stellen Sie sicher, dass das `AZUREADSSOACC`-Computerkonto nicht im Quarantänecontainer landet. Nehmen Sie die entsprechenden Änderungen vor, um das Computerkonto im Container „Computer“ zu erstellen. Nachdem nahtloses einmaliges Anmelden im Azure AD Connect-Assistenten erfolgreich aktiviert wurde, verschieben Sie das `AZUREADSSOACC`-Computerkonto zu einer Organisationseinheit (OE), in der andere Computerkonten verwaltet werden, um sicherzustellen, dass es nicht versehentlich gelöscht wird.
 
 ## <a name="step-3-roll-out-the-feature"></a>Schritt 3: Ausrollen des Features
 

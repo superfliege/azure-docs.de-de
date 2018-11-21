@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/16/2018
 ms.author: jdial
 ms.custom: include file
-ms.openlocfilehash: d1c5c9a8709467c9f9ca87c841cffcf77a5b5f0b
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 3a7c91f4a83cd69bdb87ffaccce555b04eca67cc
+ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51219892"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51597609"
 ---
 <a name="virtual-networking-limits-classic"></a>Die folgenden Grenzwerte gelten nur für Netzwerkressourcen, die über das klassische Bereitstellungsmodell verwaltet werden (pro Abonnement). Erfahren Sie, wie Sie [die aktuelle Ressourcennutzung anhand der Grenzwerte Ihres Abonnements anzeigen](../articles/networking/check-usage-against-limits.md).
 
@@ -45,11 +45,11 @@ Die folgenden Grenzwerte gelten nur für Netzwerkressourcen, die über den Azure
 | Virtuelle Netzwerke |1000 |
 | Subnetze pro virtuellem Netzwerk |3000 |
 | VNET-Peerings pro virtuellem Netzwerk |100 |
-| DNS-Server pro virtuellem Netzwerk |25 |
+| DNS-Server pro virtuellem Netzwerk |20 |
 | Private IP-Adressen pro virtuellem Netzwerk |65536 |
 | Private IP-Adressen pro Netzwerkschnittstelle |256 |
 | Parallele TCP-Flüsse pro NIC eines virtuellen Computers bzw. einer Rolleninstanz |500K |
-| Netzwerkschnittstellen |24.000 |
+| Netzwerkschnittstellen |65536 |
 | Netzwerksicherheitsgruppen |5.000 |
 | NSG-Regeln pro NSG |1000 |
 | Angegebene IP-Adressen und -Bereiche für die Quelle oder das Ziel in einer Sicherheitsgruppe |4000 |
@@ -64,28 +64,27 @@ Die folgenden Grenzwerte gelten nur für Netzwerkressourcen, die über den Azure
 | Netzwerkschnittstellen-TAP-Konfigurationen pro virtuellem Netzwerk-TAP |100 |
 
 #### <a name="publicip-address"></a>Grenzwerte für öffentliche IP-Adressen
-
 | Ressource | Standardlimit | Maximales Limit |
 | --- | --- | --- |
-| Öffentliche IP-Adressen – dynamisch |(Basic) 200 |an den Support wenden |
+| Öffentliche IP-Adressen – dynamisch |(Basic) 1000 |an den Support wenden |
 | Öffentliche IP-Adressen – statisch |(Basic) 200 |an den Support wenden |
 | Öffentliche IP-Adressen – statisch |(Standard) 200 |an den Support wenden |
 
 #### <a name="load-balancer"></a>Load Balancer-Grenzwerte
 Die folgenden Grenzwerte gelten nur für Netzwerkressourcen, die über den Azure Resource Manager pro Region pro Abonnement verwaltet werden. Erfahren Sie, wie Sie [die aktuelle Ressourcennutzung im Vergleich zu den Grenzwerten Ihres Abonnements anzeigen](../articles/networking/check-usage-against-limits.md).
 
-| Ressource | Standardlimit | Maximales Limit |
+| Ressource | Standardlimit |
 | --- | --- | --- |
-| Load Balancer | 100 | 1000 |
-| Regeln pro Ressource, Basic | 250 | 250 |
-| Regeln pro Ressource, Standard | 1500 | 1500 |
-| Regeln pro IP-Konfiguration | 299 |299 |
-| Front-End-IP-Konfiguration, Basic | 10 | 200 |
-| Front-End-IP-Konfiguration, Standard | 10 | 600 |
-| Back-End-Pool, Basic | 100, eine Verfügbarkeitsgruppe | 100, eine Verfügbarkeitsgruppe |
-| Back-End-Pool, Standard | 1000, einzelnes VNET | 1000, einzelnes VNET |
-| Back-End-Ressourcen pro Lastenausgleich, Standard * | 150 | 150 |
-| Hochverfügbarkeitsports, Standard | 1 pro internem Front-End | 1 pro internem Front-End |
+| Load Balancer | 1000 | 
+| Regeln pro Ressource, Basic | 250 |
+| Regeln pro Ressource, Standard | 1500 | 
+| Regeln pro IP-Konfiguration | 299 |
+| Front-End-IP-Konfiguration, Basic | 200 |
+| Front-End-IP-Konfiguration, Standard | 600 |
+| Back-End-Pool, Basic | 100, eine Verfügbarkeitsgruppe |
+| Back-End-Pool, Standard | 1000, einzelnes VNET |
+| Back-End-Ressourcen pro Lastenausgleich, Standard * | 150 |
+| Hochverfügbarkeitsports, Standard | 1 pro internem Front-End |
 
 ** Bis zu 150 Ressourcen, jede Kombination aus eigenständigen virtuellen Computern, Verfügbarkeitsgruppen und VM-Skalierungsgruppen.
 

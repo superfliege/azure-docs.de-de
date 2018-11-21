@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: f899c2fb871ee528219bd48e94de62746626447f
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 82792414da9df32524e48031089dc18d2dc521cc
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50416119"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51288117"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---motivation-and-benefits"></a>Migrieren lokaler Apache Hadoop-Cluster zu Azure HDInsight – Motivation und Vorteile
 
@@ -103,7 +103,7 @@ Dieser Abschnitt enthält Musterfragebögen zum Sammeln wichtiger Informationen 
 |Masterknotenkonfiguration|m/y, CPU, Datenträger usw.|
 |Datenknotenkonfiguration|m/y, CPU, Datenträger usw.|
 |Edgeknotenkonfiguration|m/y, CPU, Datenträger usw.|
-|HDFS-Verschlüsselung?|Ja|
+|HDFS-Verschlüsselung?|JA|
 |Hochverfügbarkeit|HDFS-Hochverfügbarkeit, Metastore-Hochverfügbarkeit|
 |Notfallwiederherstellung/Sicherung|Cluster sichern?|  
 |Systeme, die vom Cluster abhängig sind|SQL Server, Teradata, Power BI, MongoDB|
@@ -139,10 +139,10 @@ Dieser Abschnitt enthält Musterfragebögen zum Sammeln wichtiger Informationen 
 |Datenziele|HDFS, RDBMS, Kafka, MPP ||
 |**Thema**: **Metadaten**|||
 |Hive-Datenbanktyp|Mysql, Postgres||
-|Anzahl der Hive-Metastores|2||
-|Anzahl der Hive-Tabellen|100||
-|Anzahl der Ranger-Richtlinien|20||
-|Anzahl der Oozie-Workflows|100||
+| Nein. der Hive-Metastores|2||
+| Nein. der Hive-Tabellen|100||
+| Nein. der Ranger-Richtlinien|20||
+| Nein. der Oozie-Workflows|100||
 |**Thema**: **Skalierung**|||
 |Datenvolumen einschließlich Replikation|100 TB||
 |Tägliches Datenerfassungsvolumen|50 GB||
@@ -152,13 +152,13 @@ Dieser Abschnitt enthält Musterfragebögen zum Sammeln wichtiger Informationen 
 |Durchschnittliche CPU-Nutzung in %|60 %||
 |Durchschnittliche Arbeitsspeichernutzung in %|75 %||
 |Speicherplatznutzung|75 %||
-|Durchschnittliche Netzwerknutzung in %|25 %
+|Durchschnittliche Netzwerknutzung in %|25%
 |**Thema**: **Personal**|||
-|Anzahl der Administratoren|2||
-|Anzahl der Entwickler|10||
-|Anzahl der Endbenutzer|100||
+| Nein. der Administratoren|2||
+| Nein. der Entwickler|10||
+| Nein. der Endbenutzer|100||
 |Fähigkeiten|Hadoop, Spark||
-|Anzahl der verfügbaren Ressourcen für Migrationsaufwand|2||
+| Nein. der verfügbaren Ressourcen für Migrationsaufwand|2||
 |**Thema**: **Einschränkungen**|||
 |Aktuelle Einschränkungen|Latenz ist hoch||
 |Aktuelle Herausforderungen|Parallelitätsproblem||
@@ -169,8 +169,8 @@ Dieser Abschnitt enthält Musterfragebögen zum Sammeln wichtiger Informationen 
 |---|---|---|
 |**Frage**|**Beispiel**|**Antwort**|
 | Bevorzugte Region|USA, Osten||
-|VNet bevorzugt?|Ja||
-|Hochverfügbarkeit/Notfallwiederherstellung erforderlich?|Ja||
+|VNet bevorzugt?|JA||
+|Hochverfügbarkeit/Notfallwiederherstellung erforderlich?|JA||
 |Integration in andere Clouddienste?|ADF, CosmosDB||
 |**Thema**: **Datenverschiebung**  |||
 |Einstellung für ersten Ladevorgang|DistCp, Data Box, ADF, WANDisco||
@@ -179,27 +179,27 @@ Dieser Abschnitt enthält Musterfragebögen zum Sammeln wichtiger Informationen 
 |**Thema**: **Überwachung und Warnung** |||
 |Azure-Überwachung und -Warnungen oder Integration einer Drittanbieter-Überwachungslösung|Azure-Überwachung und -Warnungen||
 |**Thema**: **Sicherheitspräferenzen** |||
-|Private und geschützte Datenpipeline?|Ja||
-|In die Domäne eingebundener Cluster (ESPP)?|     Ja||
-|Synchronisierung von lokalem AD mit Cloud?|     Ja||
-|Anzahl zu synchronisierender AD-Benutzer?|          100||
-|Dürfen Kennwörter in Cloud synchronisiert werden?|    Ja||
-|Nur Cloudbenutzer?|                 Ja||
-|MFA erforderlich?|                       Nein|| 
-|Anforderungen an die Datenautorisierung?|  Ja||
-|Rollenbasierte Zugriffssteuerung?|        Ja||
-|Überwachung erforderlich?|                  Ja||
-|Datenverschlüsselung ruhender Daten?|          Ja||
-|Datenverschlüsselung während der Übertragung?|       Ja||
+|Private und geschützte Datenpipeline?|JA||
+|In die Domäne eingebundener Cluster (ESP)?|     JA||
+|Synchronisierung von lokalem AD mit Cloud?|     JA||
+| Nein. zu synchronisierender AD-Benutzer?|          100||
+|Dürfen Kennwörter in Cloud synchronisiert werden?|    JA||
+|Nur Cloudbenutzer?|                 JA||
+|MFA erforderlich?|                       Nein || 
+|Anforderungen an die Datenautorisierung?|  JA||
+|Rollenbasierte Zugriffssteuerung?|        JA||
+|Überwachung erforderlich?|                  JA||
+|Datenverschlüsselung ruhender Daten?|          JA||
+|Datenverschlüsselung während der Übertragung?|       JA||
 |**Thema**: **Präferenzen für Umgestaltung der Architektur** |||
 |Einzelner Cluster oder bestimmte Clustertypen|Bestimmte Clustertypen||
 |Am gleichen Ort vorhandener Speicher oder Remotespeicher?|Remotespeicher||
 |Kleinere Clustergröße, da Daten remote gespeichert werden?|Kleinere Clustergröße||
 |Verwendung mehrerer kleinerer Cluster anstelle eines einzelnen großen Clusters?|Verwendung mehrerer kleinerer Cluster||
-|Verwendung eines Remote-Metastore?|Ja||
-|Freigeben von Metastores zwischen verschiedenen Clustern?|Ja||
+|Verwendung eines Remote-Metastore?|JA||
+|Freigeben von Metastores zwischen verschiedenen Clustern?|JA||
 |Dekonstruieren von Workloads?|Ersetzen von Hive-Aufträgen durch Spark-Aufträge||
-|Verwendung von ADF zur Datenorchestrierung?|Nein||
+|Verwendung von ADF zur Datenorchestrierung?|Nein ||
 |HDInsight oder Hortonworks Data Platform in IaaS?|HDInsight||
 
 ## <a name="next-steps"></a>Nächste Schritte

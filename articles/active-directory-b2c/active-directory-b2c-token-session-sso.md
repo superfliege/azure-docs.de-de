@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/16/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 0058ce8316fa8202cf53eaa1048a44b77efdecb5
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 15064e90690064e67b296e7a46749f27773c0814
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51012444"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51636899"
 ---
 # <a name="token-session-and-single-sign-on-configuration-in-azure-active-directory-b2c"></a>Azure Active Directory B2C: Token, Sitzung und einmaliges Anmelden – Konfiguration
 
@@ -26,9 +26,9 @@ Diese Funktion ermöglicht Ihnen eine präzisere Steuerung der folgenden Einstel
 - Formate wichtiger Ansprüche in den von Azure AD B2C ausgegebenen Sicherheitstoken
 - App- und richtlinienübergreifendes SSO-Verhalten in Ihrem Azure AD B2C-Mandanten
 
-Für integrierte Richtlinien können Sie dieses Feature in Ihrem Azure AD B2C-Verzeichnis wie folgt verwenden:
+Sie können diese Funktion für jeden Richtlinientyp verwenden. In diesem Beispiel wird veranschaulicht, wie Sie sie mit einer Registrierungs- oder Anmelderichtlinie nutzen. Für integrierte Richtlinien können Sie dieses Feature in Ihrem Azure AD B2C-Verzeichnis wie folgt verwenden:
 
-1. Klicken Sie auf **Registrierungs- oder Anmelderichtlinien**. *Hinweis: Sie können dieses Feature für jeden Richtlinientyp verwenden, nicht nur für **Registrierungs- oder Anmelderichtlinien*\*\*.
+1. Klicken Sie auf **Registrierungs- oder Anmelderichtlinien**.
 2. Öffnen Sie eine Richtlinie, indem Sie darauf klicken. Klicken Sie z.B. auf **B2C_1_SiUpIn**.
 3. Klicken Sie oben im Menü auf **Bearbeiten**.
 4. Klicken Sie auf **Token, Sitzung und einmaliges Anmelden**.

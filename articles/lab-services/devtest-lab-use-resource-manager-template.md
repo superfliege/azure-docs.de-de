@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 99d835d1d0e18bf62d6e64b7e5af45b6c53d809e
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 4fd9f76223adba20028288b46037586f8f54fd1a
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51239507"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51686380"
 ---
 # <a name="create-virtual-machines-using-an-azure-resource-manager-template"></a>Erstellen von virtuellen Computern mit einer Azure Resource Manager-Vorlage 
 
@@ -42,7 +42,7 @@ Es gibt zwei Möglichkeiten zum Erstellen von VMs in DevTest Labs mit einer Reso
 
    VMs derselben Umgebung können zusammen verwaltet werden und verfügen über den gleichen Lebenszyklus. Benutzer, denen eine DevTest Labs-Benutzerrolle zugewiesen ist, können mit diesen Vorlagen Umgebungen erstellen, sofern der Administrator das Lab entsprechend konfiguriert hat.
 
-Im restlichen Teil dieses Artikels werden Resource Manager-Vorlagen beschrieben, für die „Mirosoft.DevTestLab/labs/virtualmachines“ verwendet wird. Sie werden von Lab-Administratoren zum Automatisieren der Erstellung von Lab-VMs (z.B. abrufbare VMs) oder der Generierung von Gold-Images (z.B. Imagefactorys) verwendet.
+Im restlichen Teil dieses Artikels werden Resource Manager-Vorlagen beschrieben, für die „Microsoft.DevTestLab/labs/virtualmachines“ verwendet wird. Sie werden von Lab-Administratoren zum Automatisieren der Erstellung von Lab-VMs (z.B. abrufbare VMs) oder der Generierung von Gold-Images (z.B. Imagefactorys) verwendet.
 
 Unter [Bewährte Methoden für das Erstellen von Azure Resource Manager-Vorlagen](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-template-best-practices) finden Sie zuverlässige und leicht anzuwendende Richtlinien und Vorschläge zum Erstellen einer Azure Resource Manager-Vorlage.
 

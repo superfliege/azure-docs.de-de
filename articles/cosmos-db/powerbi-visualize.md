@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/03/2018
 ms.author: sngun
-ms.openlocfilehash: 90f5caa13bf95fb5298a06bda5a03e9bc17bcb1a
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 782de7dc6e099fade0d2f1099ac19b9398562023
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945177"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51622090"
 ---
 # <a name="visualize-azure-cosmos-db-data-by-using-the-power-bi-connector"></a>Visualisieren von Azure Cosmos DB-Daten mit dem Power BI-Connector
 
@@ -76,11 +76,11 @@ Sie rufen die Daten zu Vulkanen aus dem Cosmos DB-Konto ab und visualisieren sie
 
 5. Klicken Sie auf der Seite **Connector (Vorschau)** auf **Fortfahren**. Das Fenster **Azure Cosmos DB** wird angezeigt.
 
-6. Geben Sie die Endpunkt-URL des Azure Cosmos DB-Kontos an, von dem Sie die Daten abrufen möchten, wie unten dargestellt, und klicken Sie dann auf **OK**. Um Ihr eigenes Konto zu verwenden, können Sie die URL aus dem Feld „URI“ auf dem Blatt **[Schlüssel](manage-account.md#keys)** des Azure-Portals abrufen. Optional können Sie den Datenbanknamen oder den Namen der Sammlung angeben oder den Navigator verwenden, um die Datenbank und die Sammlung auszuwählen, um festzustellen, woher die Daten stammen.
+6. Geben Sie die Endpunkt-URL des Azure Cosmos DB-Kontos an, von dem Sie die Daten abrufen möchten, wie unten dargestellt, und klicken Sie dann auf **OK**. Um Ihr eigenes Konto zu verwenden, können Sie die URL aus dem Feld „URI“ auf dem Blatt **Schlüssel** des Azure-Portals abrufen. Optional können Sie den Datenbanknamen oder den Namen der Sammlung angeben oder den Navigator verwenden, um die Datenbank und die Sammlung auszuwählen, um festzustellen, woher die Daten stammen.
    
-7. Wenn Sie zum ersten Mal eine Verbindung mit diesem Endpunkt herstellen, werden Sie aufgefordert, den Kontoschlüssel anzugeben. Für Ihr eigenes Konto können Sie den Schlüssel aus dem Feld **Primärschlüssel** auf dem Blatt **[Schreibgeschützte Schlüssel](manage-account.md#keys)** des Azure-Portals abrufen. Geben Sie den richtigen Schlüssel ein, und klicken Sie dann auf **Verbinden**.
+7. Wenn Sie zum ersten Mal eine Verbindung mit diesem Endpunkt herstellen, werden Sie aufgefordert, den Kontoschlüssel anzugeben. Für Ihr eigenes Konto können Sie den Schlüssel aus dem Feld **Primärschlüssel** auf dem Blatt **Schreibgeschützte Schlüssel** des Azure-Portals abrufen. Geben Sie den richtigen Schlüssel ein, und klicken Sie dann auf **Verbinden**.
    
-   Es wird empfohlen, den Schlüssel mit Leseberechtigung beim Erstellen von Berichten zu verwenden. Dadurch wird verhindert, dass der Hauptschlüssel unnötig potenziellen Sicherheitsrisiken ausgesetzt wird. Der schreibgeschützte Schlüssel ist auf dem Blatt [Schlüssel](manage-account.md#keys) des Azure-Portals verfügbar. 
+   Es wird empfohlen, den Schlüssel mit Leseberechtigung beim Erstellen von Berichten zu verwenden. Dadurch wird verhindert, dass der Hauptschlüssel unnötig potenziellen Sicherheitsrisiken ausgesetzt wird. Der schreibgeschützte Schlüssel ist auf dem Blatt **Schlüssel** des Azure-Portals verfügbar. 
     
 8. Wenn das Konto erfolgreich verbunden wurde, wird der Bereich **Navigator** angezeigt. Der **Navigator** zeigt eine Liste der Datenbanken für das Konto an.
 

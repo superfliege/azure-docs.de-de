@@ -1,6 +1,6 @@
 ---
 title: Azure Data Explorer – Zeitreihenanalysen
-description: Informationen zu Zeitreihenanalysen in Azure Data Explorer
+description: 'Informationen zu Zeitreihenanalysen in Azure Data Explorer '
 services: data-explorer
 author: orspod
 ms.author: v-orspod
@@ -8,12 +8,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/30/2018
-ms.openlocfilehash: fafaf0b4721c45b002e67896223877da43d66e56
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.openlocfilehash: 53ef96b561ccaa1480125f2c509381e980084b7a
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51220013"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51636678"
 ---
 # <a name="time-series-analysis-in-azure-data-explorer"></a>Zeitreihenanalysen in Azure Data Explorer
 
@@ -57,10 +57,10 @@ demo_make_series1
 | render timechart 
 ```
 
-- Verwenden Sie den Operator [`make-series`](https://docs.microsoft.com/azure/kusto/query/make-seriesoperator), um einen Satz aus drei Zeitreihen zu erstellen, wobei Folgendes gilt:
+- Verwenden Sie den Operator [`make-series`](/azure/kusto/query/make-seriesoperator), um einen Satz aus drei Zeitreihen zu erstellen, wobei Folgendes gilt:
     - `num=count()`: Zeitreihe für den Datenverkehr.
     - `range(min_t, max_t, 1h)`: Die Zeitreihe wird im Zeitbereich in Abschnitten von jeweils einer Stunde erstellt (ältester und neuester Zeitstempel der Tabellendatensätze).
-    - `default=0`: Geben Sie eine Füllmethode für fehlende Zeitabschnitte an, um eine reguläre Zeitreihe zu erstellen. Verwenden Sie alternativ dazu [`series_fill_const()`](https://docs.microsoft.com/azure/kusto/query/series-fill-constfunction), [`series_fill_forward()`](https://docs.microsoft.com/azure/kusto/query/series-fill-forwardfunction), [`series_fill_backward()`](https://docs.microsoft.com/azure/kusto/query/series-fill-backwardfunction) und [`series_fill_linear()`](https://docs.microsoft.com/azure/kusto/query/series-fill-linearfunction), um Änderungen zu berücksichtigen.
+    - `default=0`: Geben Sie eine Füllmethode für fehlende Zeitabschnitte an, um eine reguläre Zeitreihe zu erstellen. Verwenden Sie alternativ dazu [`series_fill_const()`](/azure/kusto/query/series-fill-constfunction), [`series_fill_forward()`](/azure/kusto/query/series-fill-forwardfunction), [`series_fill_backward()`](/azure/kusto/query/series-fill-backwardfunction) und [`series_fill_linear()`](/azure/kusto/query/series-fill-linearfunction), um Änderungen zu berücksichtigen.
     - `byOsVer`: Partitioniert nach Betriebssystem.
 - Die tatsächliche Datenstruktur der Zeitreihen ist ein numerisches Array des aggregierten Werts pro Zeitabschnitt. Wir verwenden `render timechart` für die Visualisierung.
 
@@ -71,14 +71,14 @@ In der oben stehenden Tabelle haben wir drei Partitionen. Wir können separate Z
 ## <a name="time-series-analysis-functions"></a>Analysefunktionen für Zeitreihen
 
 In diesem Abschnitt führen wir typische Funktionen zum Verarbeiten von Zeitreihen aus.
-Sobald ein Satz Zeitreihen erstellt wurde, unterstützt Azure Data Explorer eine wachsende Liste von Funktionen zur Verarbeitung und Analyse, die Sie in der [Dokumentation zu Zeitreihen](https://docs.microsoft.com/azure/kusto/query/machine-learning-and-tsa) finden. Im Folgenden werden einige repräsentative Funktionen zum Verarbeiten und Analysieren von Zeitreihen beschrieben.
+Sobald ein Satz Zeitreihen erstellt wurde, unterstützt Azure Data Explorer eine wachsende Liste von Funktionen zur Verarbeitung und Analyse, die Sie in der [Dokumentation zu Zeitreihen](/azure/kusto/query/machine-learning-and-tsa) finden. Im Folgenden werden einige repräsentative Funktionen zum Verarbeiten und Analysieren von Zeitreihen beschrieben.
 
 ### <a name="filtering"></a>Filterung
 
 Die Filterung ist ein gängiges Verfahren zur Signalverarbeitung und eignet sich gut für Aufgaben zur Verarbeitung von Zeitreihen (z.B. zum Glätten eines Signals mit Rauschen oder zum Erkennen von Änderungen).
 - Es gibt zwei allgemeine Filterfunktionen:
-    - [`series_fir()`](https://docs.microsoft.com/azure/kusto/query/series-firfunction): Anwenden eines FIR-Filters. Wird zur einfachen Berechnung des gleitenden Durchschnitts und zur Differenzierung der Zeitreihe zum Erkennen von Änderungen verwendet.
-    - [`series_iir()`](https://docs.microsoft.com/azure/kusto/query/series-iirfunction): Anwenden eines IIR-Filters. Wird zur exponentiellen Glättung und für kumulative Summen verwendet.
+    - [`series_fir()`](/azure/kusto/query/series-firfunction): Anwenden eines FIR-Filters. Wird zur einfachen Berechnung des gleitenden Durchschnitts und zur Differenzierung der Zeitreihe zum Erkennen von Änderungen verwendet.
+    - [`series_iir()`](/azure/kusto/query/series-iirfunction): Anwenden eines IIR-Filters. Wird zur exponentiellen Glättung und für kumulative Summen verwendet.
 - `Extend`: Erweitern Sie die Zeitreihe, indem Sie der Abfrage eine neue Reihe für den gleitenden Durchschnitt von Abschnitten der Größe 5 (namens *ma_num*) hinzufügen:
 
 ```kusto
@@ -95,8 +95,8 @@ demo_make_series1
 ### <a name="regression-analysis"></a>Regressionsanalyse
 
 Azure Data Explorer unterstützt die segmentierte lineare Regressionsanalyse, um den Trend einer Zeitreihe zu einzuschätzen.
-- Verwenden Sie [series_fit_line()](https://docs.microsoft.com/azure/kusto/query/series-fit-linefunction), um zum Erkennen eines allgemeinen Trends die beste angepasste Linie für eine Zeitreihe zu ermitteln.
-- Verwenden Sie [series_fit_2lines()](https://docs.microsoft.com/azure/kusto/query/series-fit-2linesfunction), um Trendänderungen relativ zur Baseline zu erkennen – diese sind in Überwachungsszenarien nützlich.
+- Verwenden Sie [series_fit_line()](/azure/kusto/query/series-fit-linefunction), um zum Erkennen eines allgemeinen Trends die beste angepasste Linie für eine Zeitreihe zu ermitteln.
+- Verwenden Sie [series_fit_2lines()](/azure/kusto/query/series-fit-2linesfunction), um Trendänderungen relativ zur Baseline zu erkennen – diese sind in Überwachungsszenarien nützlich.
 
 Beispiel für die Funktionen `series_fit_line()` und `series_fit_2lines()` in einer Zeitreihenabfrage:
 
@@ -128,8 +128,9 @@ demo_series3
 
 ![Saisonalität von Zeitreihen](media/time-series-analysis/time-series-seasonality.png)
 
-- Verwenden Sie [series_periods_detect()](https://docs.microsoft.com/azure/kusto/query/series-periods-detectfunction), um die Zeiträume in der Zeitreihe automatisch zu erkennen. 
-- Verwenden Sie [series_periods_validate()](https://docs.microsoft.com/azure/kusto/query/series-periods-validatefunction), wenn Sie wissen, dass eine Metrik bestimmte Zeiträume aufweisen sollte und Sie überprüfen möchten, ob diese tatsächlich vorhanden sind.
+- Verwenden Sie [series_periods_detect()](/azure/kusto/query/series-periods-detectfunction), um die Zeiträume in der Zeitreihe automatisch zu erkennen. 
+- Verwenden Sie [series_periods_validate()](/azure/kusto/query/series-periods-validatefunction), wenn Sie wissen, dass eine Metrik bestimmte Zeiträume aufweisen sollte und Sie überprüfen möchten, ob diese tatsächlich vorhanden sind.
+
 > [!NOTE]
 > Wenn bestimmte Zeiträume nicht vorhanden sind, handelt es sich um eine Anomalie.
 
@@ -150,7 +151,7 @@ Die Funktion erkennt tägliche und wöchentliche Saisonalität. Der Trefferwert 
 
 ### <a name="element-wise-functions"></a>Elementbezogene Funktionen
 
-In einer Zeitreihe können arithmetische und logische Operationen durchgeführt werden. Mit [series_subtract()](https://docs.microsoft.com/azure/kusto/query/series-subtractfunction) können wir eine residuale Zeitreihe berechnen, also den Unterschied zwischen der ursprünglichen Rohdatenmetrik und einer geglätteten Metrik, und nach Anomalien im verbleibenden Signal suchen:
+In einer Zeitreihe können arithmetische und logische Operationen durchgeführt werden. Mit [series_subtract()](/azure/kusto/query/series-subtractfunction) können wir eine residuale Zeitreihe berechnen, also den Unterschied zwischen der ursprünglichen Rohdatenmetrik und einer geglätteten Metrik, und nach Anomalien im verbleibenden Signal suchen:
 
 ```kusto
 let min_t = toscalar(demo_make_series1 | summarize min(TimeStamp));
@@ -165,7 +166,9 @@ demo_make_series1
 
 ![Zeitreihenoperationen](media/time-series-analysis/time-series-operations.png)
 
-Blau: ursprüngliche Zeitreihe. Rot: geglättete Zeitreihe. Grün: residuale Zeitreihe.
+- Blau: ursprüngliche Zeitreihe
+- Rot: geglättete Zeitreihe
+- Grün: residuale Zeitreihe
 
 ## <a name="time-series-workflow-at-scale"></a>Zeitreihenworkflow für eine große Anzahl von Vorgängen
 
@@ -255,6 +258,6 @@ demo_many_series1
 |   | Loc 15 | -3207352159611332166 | 1151 | -102743.910227889 |
 |   | Loc 13 | -3207352159611332166 | 1249 | -86303.2334644601 |
 
-In weniger als zwei Minuten hat Azure Data Explorer aus 23115 Zeitreihen zwei anomale Zeitreihen erkannt, in denen die Anzahl von Lesevorgängen plötzlich sehr stark gesunken ist.
+In weniger als zwei Minuten hat Azure Data Explorer 20.000 Zeitreihen analysiert und zwei anomale Zeitreihen erkannt, in denen die Anzahl von Lesevorgängen plötzlich sehr stark gesunken ist.
 
 Diese erweiterte Funktionalität und die hohe Verarbeitungsgeschwindigkeit von Azure Data Explorer sorgen für eine einzigartige, leistungsstarke Lösung für die Analyse von Zeitreihen.

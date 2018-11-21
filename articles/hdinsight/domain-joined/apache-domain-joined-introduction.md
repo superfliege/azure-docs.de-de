@@ -1,5 +1,5 @@
 ---
-title: Einführung in die Hadoop-Sicherheit mit dem Enterprise-Sicherheitspaket
+title: Einführung in die Apache Hadoop-Sicherheit mit dem Enterprise-Sicherheitspaket
 description: Hier erfahren Sie, wie das Enterprise-Sicherheitspaket die vier Grundsäulen der Unternehmenssicherheit unterstützt.
 services: hdinsight
 ms.service: hdinsight
@@ -9,23 +9,23 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: cf94ba73d57763f5e05ed9b33d10bb335103400a
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 270227204af9cf50f0244b8aa11ebf9aa8cdc3ce
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46946390"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51631998"
 ---
-# <a name="an-introduction-to-hadoop-security-with-enterprise-security-package"></a>Einführung in die Hadoop-Sicherheit mit dem Enterprise-Sicherheitspaket
+# <a name="an-introduction-to-apache-hadoop-security-with-enterprise-security-package"></a>Einführung in die Apache Hadoop-Sicherheit mit dem Enterprise-Sicherheitspaket
 
-Azure HDInsight unterstützte bislang nur einen einzelnen lokalen Administratorbenutzer. Für kleinere Anwendungsteams oder Abteilungen hat das hervorragend funktioniert. Mit der zunehmenden Verbreitung von Hadoop-basierten Workloads im Unternehmenssektor gewinnen jedoch professionelle Funktionen wie Active Directory-basierte Authentifizierung, Unterstützung mehrerer Benutzer und rollenbasierte Zugriffssteuerung immer mehr an Bedeutung. 
+Azure HDInsight unterstützte bislang nur einen einzelnen lokalen Administratorbenutzer. Für kleinere Anwendungsteams oder Abteilungen hat das hervorragend funktioniert. Mit der zunehmenden Verbreitung von Apache Hadoop-basierten Workloads im Unternehmenssektor gewinnen jedoch professionelle Funktionen wie Active Directory-basierte Authentifizierung, Unterstützung mehrerer Benutzer und rollenbasierte Zugriffssteuerung immer mehr an Bedeutung. 
 
 Mit dem Enterprise-Sicherheitspaket können Sie einen HDInsight-Cluster erstellen, der in eine Active Directory-Domäne eingebunden ist. Sie können dann eine Liste mit Mitarbeitern des Unternehmens konfigurieren, die eine Authentifizierung per Azure Active Directory für die Anmeldung am HDInsight-Cluster durchführen können. Externe Benutzer können sich nicht bei dem HDInsight-Cluster anmelden oder darauf zugreifen. 
 
-Der Unternehmensadministrator kann mithilfe von [Apache Ranger](http://hortonworks.com/apache/ranger/) die rollenbasierte Zugriffskontrolle (Role-based Access Control, RBAC) für Hive-Sicherheit konfigurieren. und so den Datenzugriff nur auf die erforderlichen Informationen beschränken. Darüber hinaus kann der Administrator den Datenzugriff von Mitarbeitern und jegliche Änderung der Zugriffssteuerungsrichtlinien überwachen. Der Administrator kann dann ein hohes Maß an Kontrolle über Unternehmensressourcen erreichen.
+Der Unternehmensadministrator kann mithilfe von [Apache Ranger](http://hortonworks.com/apache/ranger/) die rollenbasierte Zugriffskontrolle (Role-based Access Control, RBAC) für Apache Hive-Sicherheit konfigurieren. und so den Datenzugriff nur auf die erforderlichen Informationen beschränken. Darüber hinaus kann der Administrator den Datenzugriff von Mitarbeitern und jegliche Änderung der Zugriffssteuerungsrichtlinien überwachen. Der Administrator kann dann ein hohes Maß an Kontrolle über Unternehmensressourcen erreichen.
 
 > [!NOTE]
-> Die in diesem Artikel beschriebenen neuen Features sind in der Vorschau nur für die folgenden Clustertypen verfügbar: Hadoop, Spark und Interactive Query. Oozie ist nun für Enterprise-Sicherheitspaket-Cluster aktiviert. Benutzer müssen [Tunneln](../hdinsight-linux-ambari-ssh-tunnel.md) aktivieren, um auf die Oozie-Webbenutzeroberfläche zugreifen zu können.
+> Oozie ist nun für Enterprise-Sicherheitspaket-Cluster aktiviert. Benutzer müssen [Tunneln](../hdinsight-linux-ambari-ssh-tunnel.md) aktivieren, um auf die Oozie-Webbenutzeroberfläche zugreifen zu können.
 
 Die Unternehmenssicherheit basiert auf vier Hauptsäulen: Umgebungssicherheit, Authentifizierung, Autorisierung und Verschlüsselung.
 
@@ -63,6 +63,6 @@ Beide Datenspeicher für HDInsight-Cluster – Azure Blob Storage und Azure Data
 * [Planen für HDInsight-Cluster mit Enterprise-Sicherheitspaket](apache-domain-joined-architecture.md)
 * [Konfigurieren von HDInsight-Clustern mit Enterprise-Sicherheitspaket](apache-domain-joined-configure.md)
 * [Verwalten von HDInsight-Clustern mit Enterprise-Sicherheitspaket](apache-domain-joined-manage.md)
-* [Konfigurieren von Hive-Richtlinien für HDInsight-Cluster mit Enterprise-Sicherheitspaket](apache-domain-joined-run-hive.md)
+* [Konfigurieren von Hive-Richtlinien in HDInsight mit dem Enterprise-Sicherheitspaket](apache-domain-joined-run-hive.md)
 * [Verwenden von SSH mit HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined)
 

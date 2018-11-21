@@ -5,23 +5,327 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 10/1/2018
+ms.date: 11/12/2018
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: mmercuri
 manager: femila
-ms.openlocfilehash: b4a816c887d1cca78ff845858dce29049946b09f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: f8f3584475415cf9ca19458f6da78d34df37f438
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51235988"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51614360"
 ---
 # <a name="azure-blockchain-workbench-messaging-integration"></a>Integration von Nachrichten in Azure Blockchain Workbench
 
 Neben der Bereitstellung einer REST-API bietet Azure Blockchain Workbench auch eine nachrichtenbasierte Integration. Workbench veröffentlicht ledgerorientierte Ereignisse über Azure Event Grid, sodass Downstreamconsumer Daten erfassen oder basierend auf diesen Ereignissen Aktionen ausführen können. Für Clients, die eine zuverlässige Nachrichtenübermittlung erfordern, liefert Azure Blockchain Workbench zudem Nachrichten an einen Azure Service Bus-Endpunkt.
 
-Entwickler haben auch Interesse an der Möglichkeit geäußert, dass externe Systeme Transaktionen initiieren, um Benutzer und Verträge zu erstellen sowie Verträge in einem Ledger zu aktualisieren. Obwohl diese Funktionalität derzeit nicht in der öffentlichen Vorschau enthalten ist, finden Sie ein Beispiel zu dieser Funktion unter [http://aka.ms/blockchain-workbench-integration-sample](https://aka.ms/blockchain-workbench-integration-sample).
+## <a name="input-apis"></a>Eingabe-APIs
+
+Wenn Sie Transaktionen von externen Systemen initiieren möchten, um Benutzer oder Verträge zu erstellen und Verträge zu aktualisieren, können Sie Transaktionen mithilfe von Messagingeingabe-APIs in einem Ledger durchführen. Ein Beispiel zu Eingabe-APIs finden Sie unter [Beispiele zur Integration von Nachrichten](https://aka.ms/blockchain-workbench-integration-sample).
+
+Im Folgenden werden die derzeit verfügbaren Eingabe-APIs aufgeführt.
+
+### <a name="create-user"></a>Benutzer erstellen
+
+Diese Anforderung erstellt einen neuen Benutzer.
+
+Für die Anforderung sind folgende Felder erforderlich:
+
+| **Name**             | **Beschreibung**                                      |
+|----------------------|------------------------------------------------------|
+| requestId            | Vom Client bereitgestellte GUID                                |
+| firstName            | Vorname des Benutzers                              |
+| lastName             | Nachname des Benutzers                               |
+| emailAddress         | E-Mail-Adresse des Benutzers                           |
+| externalId           | Azure AD-Objekt-ID des Benutzers                      |
+| connectionId         | Eindeutiger Bezeichner für die Blockchainverbindung |
+| messageSchemaVersion | Schemaversion für Nachrichten                            |
+| messageName          | **CreateUserRequest**                               |
+
+Beispiel:
+
+``` json
+{
+    "requestId": "e2264523-6147-41fc-bbbb-edba8e44562d",
+    "firstName": "Ali",
+    "lastName": "Alio",
+    "emailAddress": "aa@contoso.com",
+    "externalId": "6a9b7f65-ffff-442f-b3b8-58a35abd1bcd",
+    "connectionId": 1,
+    "messageSchemaVersion": "1.0.0",
+    "messageName": "CreateUserRequest"
+}
+```
+
+Blockchain Workbench gibt eine Antwort mit den folgenden Feldern zurück:
+
+| **Name**              | **Beschreibung**                                                                                                             |
+|-----------------------|-----------------------------------------------------------------------------------------------------------------------------|
+| requestId             | Vom Client bereitgestellte GUID |
+| userId                | ID des erstellten Benutzers |
+| userChainIdentifier   | Adresse des Benutzers, der im Blockchainnetzwerk erstellt wurde. In Ethereum ist die Adresse des Benutzers  **on-chain** . |
+| connectionId          | Eindeutiger Bezeichner für die Blockchainverbindung|
+| messageSchemaVersion  | Schemaversion für Nachrichten |
+| messageName           | **CreateUserUpdate** |
+| status                | Status der Anforderung zum Erstellen des Benutzers.  Bei einer erfolgreichen Ausführung lautet der Wert **Success**. Bei einem Fehler lautet der Wert **Failure**.     |
+| additionalInformation | Weitere Informationen basierend auf dem Status |
+
+Beispiel für eine erfolgreiche Antwort auf **create user** von Blockchain Workbench:
+
+``` json
+{ 
+    "requestId": "e2264523-6147-41fc-bb59-edba8e44562d", 
+    "userId": 15, 
+    "userChainIdentifier": "0x9a8DDaCa9B7488683A4d62d0817E965E8f248398", 
+    "connectionId": 1, 
+    "messageSchemaVersion": "1.0.0", 
+    "messageName": "CreateUserUpdate", 
+    "status": "Success", 
+    "additionalInformation": { } 
+} 
+```
+
+Wenn die Anforderung nicht erfolgreich war, werden Details zum Fehler bei den zusätzlichen Informationen bereitgestellt.
+
+``` json
+{
+    "requestId": "e2264523-6147-41fc-bb59-edba8e44562d", 
+    "userId": 15, 
+    "userChainIdentifier": null, 
+    "connectionId": 1, 
+    "messageSchemaVersion": "1.0.0", 
+    "messageName": "CreateUserUpdate", 
+    "status": "Failure", 
+    "additionalInformation": { 
+        "errorCode": 4000, 
+        "errorMessage": "User cannot be provisioned on connection." 
+    }
+}
+```
+
+### <a name="create-contract"></a>Erstellen eines Vertrags
+
+Diese Anforderung erstellt einen neuen Vertrag.
+
+Für die Anforderung sind folgende Felder erforderlich:
+
+| **Name**             | **Beschreibung**                                                                                                           |
+|----------------------|---------------------------------------------------------------------------------------------------------------------------|
+| requestId            | Vom Client bereitgestellte GUID |
+| userChainIdentifier  | Adresse des Benutzers, der im Blockchainnetzwerk erstellt wurde. In Ethereum ist diese Adresse die **on chain**-Adresse des Benutzers. |
+| applicationName      | Name der Anwendung |
+| workflowName         | Name des Workflows |
+| Parameter           | Parametereingabe für die Vertragserstellung |
+| connectionId         | Eindeutiger Bezeichner für die Blockchainverbindung |
+| messageSchemaVersion | Schemaversion für Nachrichten |
+| messageName          | **CreateContractRequest** |
+
+Beispiel:
+
+``` json
+{ 
+    "requestId": "ce3c429b-a091-4baa-b29b-5b576162b211", 
+    "userChainIdentifier": "0x9a8DDaCa9B7488683A4d62d0817E965E8f248398", 
+    "applicationName": "AssetTransfer", 
+    "workflowName": "AssetTransfer", 
+    "parameters": [ 
+        { 
+            "name": "description", 
+            "value": "a 1969 dodge charger" 
+        }, 
+        { 
+            "name": "price", 
+            "value": "12345" 
+        } 
+    ], 
+    "connectionId": 1, 
+    "messageSchemaVersion": "1.0.0", 
+    "messageName": "CreateContractRequest" 
+}
+```
+
+Blockchain Workbench gibt eine Antwort mit den folgenden Feldern zurück:
+
+| **Name**                 | **Beschreibung**                                                                   |
+|--------------------------|-----------------------------------------------------------------------------------|
+| requestId                | Vom Client bereitgestellte GUID                                                             |
+| contractId               | Eindeutiger Bezeichner für den Vertrag innerhalb von Azure Blockchain Workbench. |
+| contractLedgerIdentifier | Adresse des Vertrags im Ledger                                            |
+| connectionId             | Eindeutiger Bezeichner für die Blockchainverbindung                               |
+| messageSchemaVersion     | Schemaversion für Nachrichten                                                         |
+| messageName              | **CreateContractUpdate**                                                      |
+| status                   | Status der Anforderung zum Erstellen des Vertrags.  Mögliche Werte: **Submitted**, **Committed**, **Failure**.  |
+| additionalInformation    | Weitere Informationen basierend auf dem Status                              |
+
+Beispiel für eine übermittelte Antwort auf **create contract** von Blockchain Workbench:
+
+``` json
+{
+    "requestId": "ce3c429b-a091-4baa-b29b-5b576162b211",
+    "contractId": 55,
+    "contractLedgerIdentifier": "0xde0B295669a9FD93d5F28D9Ec85E40f4cb697BAe",
+    "connectionId": 1,
+    "messageSchemaVersion": "1.0.0",
+    "messageName": "CreateContractUpdate",
+    "status": "Submitted"
+    "additionalInformation": { }
+}
+```
+
+Beispiel für eine committete Antwort auf **create contract** von Blockchain Workbench:
+
+``` json
+{
+    "requestId": "ce3c429b-a091-4baa-b29b-5b576162b211",
+    "contractId": 55,
+    "contractLedgerIdentifier": "0xde0B295669a9FD93d5F28D9Ec85E40f4cb697BAe",
+    "connectionId": 1,
+    "messageSchemaVersion": "1.0.0",
+    "messageName": "CreateContractUpdate",
+    "status": "Committed",
+    "additionalInformation": { }
+}
+```
+
+Wenn die Anforderung nicht erfolgreich war, werden Details zum Fehler bei den zusätzlichen Informationen bereitgestellt.
+
+``` json
+{
+    "requestId": "ce3c429b-a091-4baa-b29b-5b576162b211",
+    "contractId": 55,
+    "contractLedgerIdentifier": null,
+    "connectionId": 1,
+    "messageSchemaVersion": "1.0.0",
+    "messageName": "CreateContractUpdate",
+    "status": "Failure"
+    "additionalInformation": {
+        "errorCode": 4000,
+        "errorMessage": "Contract cannot be provisioned on connection."
+    }
+}
+```
+
+### <a name="create-contract-action"></a>Aktion zum Erstellen eines Vertrags
+
+Diese Anforderung erstellt eine neue Vertragsaktion.
+
+Für die Anforderung sind folgende Felder erforderlich:
+
+| **Name**                 | **Beschreibung**                                                                                                           |
+|--------------------------|---------------------------------------------------------------------------------------------------------------------------|
+| requestId                | Vom Client bereitgestellte GUID |
+| userChainIdentifier      | Adresse des Benutzers, der im Blockchainnetzwerk erstellt wurde. In Ethereum ist dies die **on chain**-Adresse des Benutzers. |
+| contractLedgerIdentifier | Adresse des Vertrags im Ledger |
+| workflowFunctionName     | Name der Workflowfunktion |
+| Parameter               | Parametereingabe für die Vertragserstellung |
+| connectionId             | Eindeutiger Bezeichner für die Blockchainverbindung |
+| messageSchemaVersion     | Schemaversion für Nachrichten |
+| messageName              | **CreateContractActionRequest** |
+
+Beispiel:
+
+``` json
+{
+    "requestId": "a5530932-9d6b-4eed-8623-441a647741d3",
+    "userChainIdentifier": "0x9a8DDaCa9B7488683A4d62d0817E965E8f248398",
+    "contractLedgerIdentifier": "0xde0B295669a9FD93d5F28D9Ec85E40f4cb697BAe",
+    "workflowFunctionName": "modify",
+    "parameters": [
+        {
+            "name": "description",
+            "value": "a 1969 dodge charger"
+        },
+        {
+            "name": "price",
+            "value": "12345"
+        }
+    ],
+    "connectionId": 1,
+    "messageSchemaVersion": "1.0.0",
+    "messageName": "CreateContractActionRequest"
+}
+```
+
+Blockchain Workbench gibt eine Antwort mit den folgenden Feldern zurück:
+
+| **Name**              | **Beschreibung**                                                                   |
+|-----------------------|-----------------------------------------------------------------------------------|
+| requestId             | Vom Client bereitgestellte GUID|
+| contractId            | Eindeutiger Bezeichner für den Vertrag innerhalb von Azure Blockchain Workbench. |
+| connectionId          | Eindeutiger Bezeichner für die Blockchainverbindung |
+| messageSchemaVersion  | Schemaversion für Nachrichten |
+| messageName           | **CreateContractActionUpdate** |
+| status                | Status der Anforderung zum Erstellen der Vertragsaktion. Mögliche Werte: **Submitted**, **Committed**, **Failure**.                         |
+| additionalInformation | Weitere Informationen basierend auf dem Status |
+
+Beispiel für eine übermittelte Antwort auf **create contract action** von Blockchain Workbench:
+
+``` json
+{
+    "requestId": "a5530932-9d6b-4eed-8623-441a647741d3",
+    "contractId": 105,
+    "connectionId": 1,
+    "messageSchemaVersion": "1.0.0",
+    "messageName": "CreateContractActionUpdate",
+    "status": "Submitted",
+    "additionalInformation": { }
+}
+```
+
+Beispiel für eine committete Antwort auf **create contract action** von Blockchain Workbench:
+
+``` json
+{
+    "requestId": "a5530932-9d6b-4eed-8623-441a647741d3",
+    "contractId": 105,
+    "connectionId": 1,
+    "messageSchemaVersion": "1.0.0",
+    "messageName": "CreateContractActionUpdate",
+    "status": "Committed"
+    "additionalInformation": { }
+}
+```
+
+Wenn die Anforderung nicht erfolgreich war, werden Details zum Fehler bei den zusätzlichen Informationen bereitgestellt.
+
+``` json
+{
+    "requestId": "a5530932-9d6b-4eed-8623-441a647741d3",
+    "contractId": 105,
+    "connectionId": 1,
+    "messageSchemaVersion": "1.0.0",
+    "messageName": "CreateContractActionUpdate",
+    "status": "Failure"
+    "additionalInformation": {
+        "errorCode": 4000,
+        "errorMessage": "Contract action cannot be provisioned on connection."
+    }
+}
+```
+
+### <a name="input-api-error-codes-and-messages"></a>Eingabe-API-Fehlercodes und -meldungen
+
+**Fehlercode 4000: Fehler – Ungültige Anforderung**
+- Ungültige Verbindungs-ID
+- Fehler bei der Deserialisierung von CreateUserRequest
+- Fehler bei der Deserialisierung von CreateContractRequest
+- Fehler bei der Deserialisierung von CreateContractActionRequest
+- Die Anwendung {identifiziert durch Anwendungsnamen} ist nicht vorhanden.
+- Die Anwendung {identifiziert durch Anwendungsnamen} enthält keinen Workflow.
+- UserChainIdentifier ist nicht vorhanden.
+- Der Vertrag {identifiziert durch Ledger-ID} ist nicht vorhanden.
+- Der Vertrag {identifiziert durch Ledger-ID} enthält keine Funktion {Name der Workflowfunktion}
+- UserChainIdentifier ist nicht vorhanden.
+
+**Fehlercode 4090: Konfliktfehler**
+- Der Benutzer ist bereits vorhanden.
+- Der Vertrag ist bereits vorhanden.
+- Die Vertragsaktion ist bereits vorhanden.
+
+**Fehlercode 5000: Interner Serverfehler**
+- Ausnahmemeldungen
 
 ## <a name="event-notifications"></a>Ereignisbenachrichtigungen
 
@@ -92,15 +396,15 @@ Gibt an, dass eine Anforderung zum Einfügen oder Aktualisieren eines Vertrags i
 
 | NAME | BESCHREIBUNG |
 |-----|--------------|
-| ChainID | Ein eindeutiger Bezeichner für die mit der Anforderung verknüpften Kette|
-| BlockId | Der eindeutige Bezeichner für einen Block im Ledger|
-| ContractId | Ein eindeutiger Bezeichner für den Vertrag|
-| ContractAddress |       Die Adresse des Vertrags im Ledger|
-| TransactionHash  |     Der Hash des Übergangs zum Ledger|
-| OriginatingAddress |   Die Adresse des Erstellers des Übergangs|
-| ActionName       |     Der Name der Aktion|
-| IsUpdate        |      Identifiziert, ob es sich um ein Update handelt.|
-| Parameter       |     Eine Liste von Objekten, die den Namen, den Wert und den Datentyp der an eine Aktion gesendeten Parameter identifizieren.|
+| ChainID | Eindeutiger Bezeichner für die mit der Anforderung verknüpfte Kette |
+| BlockId | Eindeutiger Bezeichner für einen Block im Ledger |
+| ContractId | Ein eindeutiger Bezeichner für den Vertrag |
+| ContractAddress |       Die Adresse des Vertrags im Ledger |
+| TransactionHash  |     Der Hash der Transaktion im Ledger |
+| OriginatingAddress |   Die Adresse des Erstellers der Transaktion |
+| ActionName       |     Der Name der Aktion |
+| IsUpdate        |      Identifiziert, ob es sich um ein Update handelt. |
+| Parameter       |     Eine Liste von Objekten, die den Namen, den Wert und den Datentyp der an eine Aktion gesendeten Parameter identifizieren. |
 | TopLevelInputParams |  In Szenarien, in denen ein Vertrag mit mindestens einem anderen Vertrag verbunden ist, sind dies die Parameter aus dem übergeordneten Vertrag. |
 
 ``` csharp
@@ -126,18 +430,17 @@ Gibt an, dass eine Anforderung zum Ausführen einer Aktion für einen bestimmten
 
 | NAME                     | BESCHREIBUNG                                                                                                                                                                   |
 |--------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| ContractActionId         | Der eindeutige Bezeichner für diese Vertragsaktion                                                                                                                                |
-| ChainIdentifier          | Der eindeutige Bezeichner für diese Kette                                                                                                                                           |
-| ConnectionId             | Der eindeutige Bezeichner für die Verbindung                                                                                                                                      |
-| UserChainIdentifier      | Adresse des Benutzers, der im Blockchainnetzwerk erstellt wurde. In Ethereum wäre dies die „On-Chain“-Adresse des Benutzers.                                                     |
-| ContractLedgerIdentifier | Die Adresse des Vertrags im Ledger                                                                                                                                        |
-| WorkflowFunctionName     | Der Name der Workflowfunktion                                                                                                                                                |
-| WorkflowName             | Der Name des Workflows                                                                                                                                                         |
-| WorkflowBlobStorageURL   | Die URL des Vertrags im Blobspeicher                                                                                                                                      |
-| ContractActionParameters | Parameter für die Vertragsaktion                                                                                                                                           |
-| TransactionHash          | Der Hash des Übergangs zum Ledger                                                                                                                                    |
-| Bereitstellungsstatus      | Der aktuelle Bereitstellungsstatus der Aktion</br>0 – Erstellt</br>1 – In Bearbeitung</br>2 – Abgeschlossen</br> Der Status „Abgeschlossen“ weist auf eine Bestätigung aus dem Ledger hin, dass dies erfolgreich hinzugefügt wurde.                                               |
-|                          |                                                                                                                                                                               |
+| ContractActionId         | Eindeutiger Bezeichner für diese Vertragsaktion |
+| ChainIdentifier          | Eindeutiger Bezeichner für die Kette |
+| ConnectionId             | Eindeutiger Bezeichner für die Verbindung |
+| UserChainIdentifier      | Adresse des Benutzers, der im Blockchainnetzwerk erstellt wurde. In Ethereum ist diese Adresse die **on chain**-Adresse des Benutzers. |
+| ContractLedgerIdentifier | Adresse des Vertrags im Ledger |
+| WorkflowFunctionName     | Name der Workflowfunktion |
+| WorkflowName             | Name des Workflows |
+| WorkflowBlobStorageURL   | Die URL des Vertrags in Blob Storage |
+| ContractActionParameters | Parameter für die Vertragsaktion |
+| TransactionHash          | Der Hash der Transaktion im Ledger |
+| Bereitstellungsstatus      | Der aktuelle Bereitstellungsstatus der Aktion</br>0 – Erstellt</br>1 – In Bearbeitung</br>2 – Abgeschlossen</br> Der Status „Abgeschlossen“ weist auf eine Bestätigung aus dem Ledger hin, dass dies erfolgreich hinzugefügt wurde. |
 
 ```csharp
 public class ContractActionRequest : MessageModelBase
@@ -167,7 +470,7 @@ Gibt an, dass eine Anforderung zum Aktualisieren des Benutzerguthabens in einem 
 |---------|------------------------------------------|
 | Adresse | Die Adresse des finanzierten Benutzers |
 | Balance | Das Guthaben des Benutzers         |
-| ChainID | Der eindeutige Bezeichner für die Kette     |
+| ChainID | Eindeutiger Bezeichner für die Kette     |
 
 
 ``` csharp
@@ -185,8 +488,8 @@ Die Nachricht, die angibt, dass eine Anforderung zum Hinzufügen eines Blocks in
 
 | NAME           | BESCHREIBUNG                                                            |
 |----------------|------------------------------------------------------------------------|
-| ChainId        | Der eindeutige Bezeichner der Kette, zu der der Block hinzugefügt wurde.             |
-| BlockId        | Der eindeutige Bezeichner für den Block innerhalb von Azure Blockchain Workbench |
+| ChainId        | Eindeutiger Bezeichner der Kette, zu der der Block hinzugefügt wurde             |
+| BlockId        | Eindeutiger Bezeichner für den Block innerhalb von Azure Blockchain Workbench |
 | BlockHash      | Der Hash des Blocks                                                 |
 | BlockTimeStamp | Der Zeitstempel des Blocks                                            |
 
@@ -206,13 +509,13 @@ Die Nachricht, die Details über eine Anforderung zum Hinzufügen eines Überga
 
 | NAME            | BESCHREIBUNG                                                            |
 |-----------------|------------------------------------------------------------------------|
-| ChainId         | Der eindeutige Bezeichner der Kette, zu der der Block hinzugefügt wurde.             |
-| BlockId         | Der eindeutige Bezeichner für den Block innerhalb von Azure Blockchain Workbench |
+| ChainId         | Eindeutiger Bezeichner der Kette, zu der der Block hinzugefügt wurde             |
+| BlockId         | Eindeutiger Bezeichner für den Block innerhalb von Azure Blockchain Workbench |
 | TransactionHash | Der Hash der Transaktion                                           |
-| From            | Die Adresse des Erstellers des Übergangs                      |
+| From            | Die Adresse des Erstellers der Transaktion                      |
 | To              | Die Adresse des beabsichtigten Empfängers der Transaktion              |
 | Wert           | Der in der Transaktion enthaltene Wert                                 |
-| IsAppBuilderTx  | Identifiziert, ob dies eine Blockchain Workbench-Transkation ist.                         |
+| IsAppBuilderTx  | Identifiziert, ob dies eine Blockchain Workbench-Transkation ist                         |
 
 ``` csharp
 public class InsertTransactionRequest : MessageModelBase
@@ -233,8 +536,8 @@ Enthält Details über die Zuordnung eines Kettenbezeichners für einen Vertrag.
 
 | NAME            | BESCHREIBUNG                                                                       |
 |-----------------|-----------------------------------------------------------------------------------|
-| ContractId      | Dies ist der eindeutige Bezeichner für den Vertrag innerhalb von Azure Blockchain Workbench. |
-| ChainIdentifier | Dies ist der Bezeichner für den Vertrag in der Kette.                             |
+| ContractId      | Eindeutiger Bezeichner für den Vertrag innerhalb von Azure Blockchain Workbench. |
+| ChainIdentifier | Bezeichner für den Vertrag in der Kette                             |
 
 ``` csharp
 public class AssignContractChainIdentifierRequest : MessageModelBase
@@ -252,8 +555,8 @@ Das Basismodell für alle Nachrichten.
 
 | NAME          | BESCHREIBUNG                          |
 |---------------|--------------------------------------|
-| NameVorgang | Der Name des Vorgangs.           |
-| RequestId     | Ein eindeutiger Bezeichner für die Anforderung. |
+| NameVorgang | Name des Vorgangs           |
+| RequestId     | Eindeutiger Bezeichner für die Anforderung |
 
 ``` csharp
 public class MessageModelBase
@@ -269,9 +572,9 @@ Enthält Name, Wert und Typ eines Parameters.
 
 | NAME  | BESCHREIBUNG                 |
 |-------|-----------------------------|
-| NAME  | Der Name des Parameters.  |
-| Wert | Der Wert des Parameters. |
-| Typ  | Der Typ des Parameters.  |
+| NAME  | Der Name des Parameters  |
+| Wert | Der Wert des Parameters |
+| Typ  | Der Typ des Parameters  |
 
 ``` csharp
 public class ContractInputParameter
@@ -288,10 +591,10 @@ Enthält ID, Name, Wert und Typ einer Eigenschaft.
 
 | NAME  | BESCHREIBUNG                |
 |-------|----------------------------|
-| id    | Die ID der Eigenschaft.    |
+| id    | Die ID der Eigenschaft    |
 | NAME  | Der Name der Eigenschaft.  |
 | Wert | Der Wert der Eigenschaft. |
-| Typ  | Der Typ der Eigenschaft.  |
+| Typ  | Der Typ der Eigenschaft  |
 
 ``` csharp
 public class ContractProperty

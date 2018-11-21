@@ -1,6 +1,6 @@
 ---
-title: Verwenden von Hadoop Pig mit dem Remotedesktop in HDInsight – Azure
-description: Erfahren Sie, wie Sie den Pig-Befehl verwenden, um Pig Latin-Anweisungen über eine Remotedesktopverbindung mit einem Windows-basierten Hadoop-Cluster in HDInsight ausführen.
+title: Verwenden von Apache Pig per Remotedesktop in HDInsight – Azure
+description: Hier erfahren Sie, wie Sie den Pig-Befehl verwenden, um Apache Pig Latin-Anweisungen über eine Remotedesktopverbindung mit einem Windows-basierten Apache Hadoop-Cluster in HDInsight auszuführen.
 services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -9,17 +9,17 @@ ms.topic: conceptual
 ms.date: 01/17/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 3a7dff2c44b7cc8ccd921d2371666cb19acffbb8
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 9ab3c5399263e301760b7822488fe00145149d2a
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51007228"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51633341"
 ---
-# <a name="run-pig-jobs-from-a-remote-desktop-connection"></a>Ausführen von Pig-Aufträgen über eine Remotedesktopverbindung
+# <a name="run-apache-pig-jobs-from-a-remote-desktop-connection"></a>Ausführen von Apache Pig-Aufträgen über eine Remotedesktopverbindung
 [!INCLUDE [pig-selector](../../../includes/hdinsight-selector-use-pig.md)]
 
-Dieses Dokument enthält eine exemplarische Vorgehensweise für die Verwendung des Pig-Befehls zur Ausführung von Pig Latin-Anweisungen über eine Remotedesktopverbindung mit einem Windows-basierten HDInsight-Cluster. Mithilfe von Pig Latin können Sie MapReduce-Anwendungen erstellen, indem Sie Datentransformationen beschreiben, anstatt Map- und Reduce-Funktionen zu verwenden.
+Dieses Dokument enthält eine exemplarische Vorgehensweise für die Verwendung des Apache Pig-Befehls zur Ausführung von Pig Latin-Anweisungen über eine Remotedesktopverbindung mit einem Windows-basierten HDInsight-Cluster. Mithilfe von Pig Latin können Sie MapReduce-Anwendungen erstellen, indem Sie Datentransformationen beschreiben, anstatt Map- und Reduce-Funktionen zu verwenden.
 
 > [!IMPORTANT]
 > Remotedesktop ist nur in HDInsight-Clustern verfügbar, die als Betriebssystem Windows verwenden. Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Welche Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?](../hdinsight-component-versioning.md#hdinsight-windows-retirement).

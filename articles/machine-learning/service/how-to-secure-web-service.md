@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 ms.author: aashishb
 author: aashishb
 ms.date: 10/02/2018
-ms.openlocfilehash: 885d867d0733ef923d327d8d6a36fc1588fd4961
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: ec7b956f080837b297bac56e6237ac0672601ce7
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48801011"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51344483"
 ---
 # <a name="secure-azure-machine-learning-web-services-with-ssl"></a>Sichere Azure Machine Learning-Webdienste mit SSL
 
@@ -53,9 +53,8 @@ Wenn Sie ein Zertifikat anfordern, müssen Sie den vollqualifizierten Domänenna
 > [!TIP]
 > Wenn die Zertifizierungsstelle das Zertifikat und den Schlüssel nicht als PEM-codierte Dateien bereitstellen kann, können Sie ein Hilfsprogramm wie [OpenSSL](https://www.openssl.org/) zum Ändern des Formats verwenden.
 
-> [!IMPORTANT]
-> Selbstsignierte Zertifikate sollten nur für die Entwicklung verwendet werden. Sie sollten nicht in der Produktion eingesetzt werden. Wenn Sie ein selbstsigniertes Zertifikat verwenden, finden Sie spezifische Anweisungen im Abschnitt [Nutzen von Webdiensten mit selbstsignierten Zertifikaten](#self-signed).
-
+> [!WARNING]
+> Selbstsignierte Zertifikate sollten nur für die Entwicklung verwendet werden. Sie sollten nicht in der Produktion eingesetzt werden. Selbstsignierte Zertifikate können Probleme in Ihren Clientanwendungen verursachen. Weitere Informationen finden Sie in der Dokumentation für die in der Clientanwendung verwendeten Netzwerkbibliotheken.
 
 ## <a name="enable-ssl-and-deploy"></a>Aktivieren von SSL und Bereitstellen
 
@@ -119,91 +118,8 @@ Als Nächstes müssen Sie Ihren DNS aktualisieren, so dass er auf den Dienst ver
 
   Aktualisieren Sie den DNS auf der Registerkarte „Konfiguration“ unter „öffentliche IP-Adresse“ des AKS-Clusters, wie in der Abbildung dargestellt. Sie finden die öffentliche IP-Adresse als einen der Ressourcentypen, die unter der Ressourcengruppe erstellt wurden, die die AKS-Agent-Knoten und weitere Netzwerkressourcen enthält.
 
-  ![Azure Machine Learning-Dienst: Schützen von Webdiensten mit SSL](./media/how-to-secure-web-service/aks-public-ip-address.png)
+  ![Azure Machine Learning-Dienst: Schützen von Webdiensten mit SSL](./media/how-to-secure-web-service/aks-public-ip-address.png)Selbst
 
-## <a name="consume-authenticated-services"></a>Nutzen authentifizierter Dienste
+## <a name="next-steps"></a>Nächste Schritte
 
-### <a name="how-to-consume"></a>Nutzen 
-+ **Für ACI und AKS**: 
-
-  Informationen zum Nutzen von Webdiensten für ACI- und AKS-Webdienste finden Sie in diesen Artikeln:
-  + [Bereitstellen für ACI](how-to-deploy-to-aci.md)
-
-  + [Bereitstellen für AKS](how-to-deploy-to-aks.md)
-
-+ **Für FPGA**:  
-
-  In den folgenden Beispielen wird gezeigt, wie ein authentifizierter FPGA-Dienst in Python und C# genutzt wird.
-  Ersetzen Sie `authkey` durch den Primär- oder Sekundärschlüssel, der beim Bereitstellen des Diensts zurückgegeben wurde.
-
-  Beispiel für Python:
-    ```python
-    from amlrealtimeai import PredictionClient
-    client = PredictionClient(service.ipAddress, service.port, use_ssl=True, access_token="authKey")
-    image_file = R'C:\path_to_file\image.jpg'
-    results = client.score_image(image_file)
-    ```
-
-  C#-Beispiel:
-    ```csharp
-    var client = new ScoringClient(host, 50051, useSSL, "authKey");
-    float[,] result;
-    using (var content = File.OpenRead(image))
-        {
-            IScoringRequest request = new ImageRequest(content);
-            result = client.Score<float[,]>(request);
-        }
-    ```
-
-### <a name="set-the-authorization-header"></a>Festlegen des Autorisierungsheaders
-Andere gRPC-Clients können Anforderungen durch Festlegen eines Autorisierungsheaders authentifizieren. Die allgemeine Vorgehensweise besteht im Erstellen eines `ChannelCredentials`-Objekts, das `SslCredentials` mit `CallCredentials` kombiniert. Dieses wird dem Autorisierungsheader der Anforderung hinzugefügt. Weitere Informationen zum Implementieren von Unterstützung für Ihre jeweiligen Header finden Sie unter [https://grpc.io/docs/guides/auth.html](https://grpc.io/docs/guides/auth.html).
-
-Die folgenden Beispiele veranschaulichen, wie die Header in C# und Go festgelegt werden:
-
-+ Verwenden Sie C#, um den Header festzulegen:
-    ```csharp
-    creds = ChannelCredentials.Create(baseCreds, CallCredentials.FromInterceptor(
-                          async (context, metadata) =>
-                          {
-                              metadata.Add(new Metadata.Entry("authorization", "authKey"));
-                              await Task.CompletedTask;
-                          }));
-    
-    ```
-
-+ Verwenden Sie Go, um den Header festzulegen:
-    ```go
-    conn, err := grpc.Dial(serverAddr, 
-        grpc.WithTransportCredentials(credentials.NewClientTLSFromCert(nil, "")),
-        grpc.WithPerRPCCredentials(&authCreds{
-        Key: "authKey"}))
-    
-    type authCreds struct {
-        Key string
-    }
-    
-    func (c *authCreds) GetRequestMetadata(context.Context, uri ...string) (map[string]string, error) {
-        return map[string]string{
-            "authorization": c.Key,
-        }, nil
-    }
-    
-    func (c *authCreds) RequireTransportSecurity() bool {
-        return true
-    }
-    ```
-
-<a id="self-signed"></a>
-
-## <a name="consume-services-with-self-signed-certificates"></a>Nutzen von Diensten mit selbstsignierten Zertifikaten
-
-Es gibt zwei Möglichkeiten, um den Client für die Authentifizierung mit einem Server zu aktivieren, der mit einem selbstsignierten Zertifikat gesichert ist:
-
-* Legen Sie auf dem Clientsystem die `GRPC_DEFAULT_SSL_ROOTS_FILE_PATH`-Umgebungsvariable für das Clientsystem so fest, dass sie auf die Zertifikatdatei verweist.
-
-* Übergeben Sie beim Generieren eines `SslCredentials`-Objekts den Inhalt der Zertifikatdatei an den Konstruktor.
-
-Beide Methoden bewirken, dass gRPC das Zertifikat als Stammzertifikat verwendet.
-
-> [!IMPORTANT]
-> gRPC akzeptiert keine nicht vertrauenswürdigen Zertifikate. Das Verwenden eines nicht vertrauenswürdigen Zertifikats führt zu einem Fehler mit dem Statuscode `Unavailable`. Die Details des Fehlers enthalten die Angabe `Connection Failed`.
+Informieren Sie sich über die [Nutzung eines als Webdienst bereitgestellten Azure Machine Learning-Modells](how-to-consume-web-service.md).

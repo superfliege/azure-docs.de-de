@@ -1,6 +1,6 @@
 ---
 title: Lokales Bereitstellen der Lösung für die Remoteüberwachung – Docker – Azure | Microsoft-Dokumentation
-description: In dieser Schrittanleitung wird gezeigt, wie der Solution Accelerator für die Remoteüberwachung zu Test- und Entwicklungszwecken auf Ihrem lokalen Computer bereitgestellt wird.
+description: In dieser Schrittanleitung wird gezeigt, wie der Solution Accelerator für die Remoteüberwachung zu Test- und Entwicklungszwecken mithilfe von Docker auf Ihrem lokalen Computer bereitgestellt wird.
 author: avneet723
 manager: hegate
 ms.author: avneet723
@@ -8,18 +8,18 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 10/25/2018
 ms.topic: conceptual
-ms.openlocfilehash: 91f43473a5648be5264038993f43b61887e0c363
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 46cd16c1667d3b33501c1b5680baabf243509f67
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 11/08/2018
-ms.locfileid: "51285412"
+ms.locfileid: "51288543"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---docker"></a>Lokales Bereitstellen des Solution Accelerators für die Remoteüberwachung – Docker
 
 [!INCLUDE [iot-accelerators-selector-local](../../includes/iot-accelerators-selector-local.md)]
 
-In diesem Artikel wird gezeigt, wie der Solution Accelerator für die Remoteüberwachung zu Test- und Entwicklungszwecken auf Ihrem lokalen Computer bereitgestellt wird. In diesem Artikel wird erläutert, wie Sie die Microservices in lokalen Docker-Containern bereitstellen. Bei einer lokalen Bereitstellung von Microservices werden die folgenden Clouddienste verwendet: IoT Hub, Cosmos DB, Azure Stream Analytics und Azure Time Series Insights-Dienste in der Cloud.
+In diesem Artikel wird gezeigt, wie der Solution Accelerator für die Remoteüberwachung zu Test- und Entwicklungszwecken auf Ihrem lokalen Computer bereitgestellt wird. Sie erfahren, wie Sie die Microservices in lokalen Docker-Containern bereitstellen. Bei einer lokalen Bereitstellung von Microservices werden die folgenden Clouddienste verwendet: IoT Hub, Cosmos DB, Azure Stream Analytics und Azure Time Series Insights-Dienste in der Cloud.
 
 Wenn Sie den Solution Accelerator für die Remoteüberwachung in einer IDE auf Ihrem lokalen Computer ausführen möchten, finden Sie entsprechende Informationen unter [Lokales Bereitstellen des Solution Accelerators für die Remoteüberwachung – Visual Studio](iot-accelerators-remote-monitoring-deploy-local.md).
 
@@ -70,13 +70,13 @@ docker-compose up
 Wenn Sie diesen Befehl zum ersten Mal ausführen, lädt Docker die Microservice-Images vom Docker-Hub herunter, um die Container lokal zu erstellen. Bei nachfolgenden Ausführungen führt Docker die Container sofort aus.
 
 > [!TIP]
-> Wir veröffentlichen regelmäßig neue Docker-Images mit neuen Funktionen. Mit den folgenden Befehlen können Sie die lokalen Docker-Container und die entsprechenden Images bereinigen, bevor Sie die neuesten Container und Images abrufen. 
+> Microsoft veröffentlicht regelmäßig neue Docker-Images mit neuen Funktionen. Mit den folgenden Befehlen können Sie die lokalen Docker-Container und die entsprechenden Images bereinigen, bevor Sie die neuesten Container und Images abrufen:
 
-```cmd/sh
-docker list
-docker rm <list_of_containers>
-docker rmi <list_of_images>
-```
+    ```cmd/sh
+    docker list
+    docker rm <list_of_containers>
+    docker rmi <list_of_images>
+    ```
 
 Sie können zum Anzeigen der Protokolle aus dem Container eine separate Shell verwenden. Suchen Sie zuerst die Container-ID mithilfe des `docker ps`-Befehls. Verwenden Sie dann `docker logs {container-id} --tail 1000` zum Anzeigen der letzten 1000 Einträge für den angegebenen Container.
 
@@ -101,14 +101,4 @@ Entfernen Sie mit dem `docker-compose down --rmi all`-Befehl die Docker-Images, 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie Folgendes gelernt:
-
-> [!div class="checklist"]
-> * Einrichten einer lokalen Entwicklungsumgebung
-> * Konfigurieren des Solution Accelerators
-> * Bereitstellen des Solution Accelerators
-> * Anmelden beim Solution Accelerator
-
 Nach Bereitstellung der Lösung für die Remoteüberwachung können Sie sich als Nächstes [mit den Funktionen des Lösungsdashboards vertraut machen](quickstart-remote-monitoring-deploy.md).
-
-<!-- Next tutorials in the sequence -->

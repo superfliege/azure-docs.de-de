@@ -1,6 +1,6 @@
 ---
-title: 'Interoperabilität von ExpressRoute, Site-to-Site-VPN und VNET-Peering – Analyse der Datenebene: Interoperabilität der Azure-Back-End-Konnektivitätsfeatures | Microsoft-Dokumentation'
-description: Auf dieser Seite wird die Datenebenenanalyse der Testeinrichtung beschrieben, die erstellt wird, um die Interoperabilität der Features ExpressRoute, Site-to-Site-VPN und VNET-Peering zu analysieren.
+title: 'Interoperabilität in Azure-Back-End-Konnektivitätsfeatures: Datenebenenanalyse | Microsoft-Dokumentation'
+description: Dieser Artikel bietet eine Datenebenenanalyse der Testeinrichtung, mit der Sie die Interoperabilität zwischen ExpressRoute, einem Site-to-Site-VPN und Peering zwischen virtuellen Netzwerken in Azure analysieren können.
 documentationcenter: na
 services: networking
 author: rambk
@@ -10,24 +10,24 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 10/18/2018
 ms.author: rambala
-ms.openlocfilehash: c9f3824b1e0f44338696ba3c2e434d60eee3af8b
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 8b9e5b2b073309f177fa0ce4bb2a2d08009a06ff
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49947000"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51614412"
 ---
-# <a name="interoperability-of-expressroute-site-to-site-vpn-and-vnet-peering---data-plane-analysis"></a>Interoperabilität von ExpressRoute, Site-to-Site-VPN und VNET-Peering – Analyse der Datenebene
+# <a name="interoperability-in-azure-back-end-connectivity-features-data-plane-analysis"></a>Interoperabilität in Azure-Back-End-Konnektivitätsfeatures: Datenebenenanalyse
 
-In diesem Artikel wird die Datenebenenanalyse der Testeinrichtung beschrieben. Informationen zur Testeinrichtung finden Sie unter [Testeinrichtung][Setup]. Die Details zur Testeinrichtungskonfiguration finden Sie unter [Testeinrichtungskonfiguration][Configuration]. Informationen zur Analyse der Steuerungsebene für die Testeinrichtung finden Sie unter [Analyse der Steuerungsebene][Control-Analysis].
+In diesem Artikel wird die Datenebenenanalyse der [Testeinrichtung][Setup] beschrieben. Sie können auch die [Testeinrichtungskonfiguration][Configuration] und die [Steuerebenenanalyse][Control-Analysis] der Testeinrichtung überprüfen.
 
-Bei der Analyse der Datenebene wird der Pfad untersucht, den Pakete in einer Topologie von einem lokalen Netzwerk (LAN/VNET) zu einem anderen durchlaufen. Der Datenpfad zwischen zwei lokalen Netzwerken muss nicht unbedingt symmetrisch sein. Aus diesem Grund analysieren wir in diesem Artikel den Weiterleitungspfad von einem lokalen Netzwerk zum anderen separat vom Pfad in umgekehrter Richtung.
+Bei der Datenebenenanalyse wird der Pfad untersucht, den Pakete in einer Topologie von einem lokalen Netzwerk (LAN oder virtuelles Netzwerk) zu einem anderen durchlaufen. Der Datenpfad zwischen zwei lokalen Netzwerken ist nicht unbedingt symmetrisch. Aus diesem Grund analysieren wir in diesem Artikel den Weiterleitungspfad von einem lokalen Netzwerk zu einem anderen separat vom Pfad in umgekehrter Richtung.
 
-##<a name="data-path-from-hub-vnet"></a>Datenpfad vom Hub-VNET
+## <a name="data-path-from-the-hub-vnet"></a>Datenpfad vom Hub-VNET
 
-###<a name="path-to-spoke-vnet"></a>Pfad zum Spoke-VNET
+### <a name="path-to-the-spoke-vnet"></a>Pfad zum Spoke-VNET
 
-Beim VNET-Peering wird die Funktionalität der Netzwerkbrücke zwischen den beiden VNETs emuliert, die per Peering verbunden sind. Hier ist die Traceroute-Ausgabe eines Hub-VNET für eine VM im Spoke-VNET angegeben:
+Beim VNET-Peering (virtuelles Netzwerk) wird die Funktionalität der Netzwerkbrücke zwischen den beiden VNETs emuliert, die per Peering verbunden sind. Die Traceroute-Ausgabe von einem Hub-VNET zu einer VM im Spoke-VNET:
 
     C:\Users\rb>tracert 10.11.30.4
 
@@ -37,12 +37,14 @@ Beim VNET-Peering wird die Funktionalität der Netzwerkbrücke zwischen den beid
 
     Trace complete.
 
-Der folgende Bildschirmclip zeigt die grafische Verbindung des Hub VNET und des Spoke-VNET in Azure Network Watcher:
+Die folgende Abbildung zeigt die grafische Verbindung des Hub-VNET und des Spoke-VNET aus der Perspektive von Azure Network Watcher:
 
 
 [![1]][1]
 
-###<a name="path-to-branch-vnet"></a>Pfad zum Branch-VNET
+### <a name="path-to-the-branch-vnet"></a>Pfad zum Branch-VNET
+
+Die Traceroute-Ausgabe von einem Hub-VNET zu einer VM im Branch-VNET:
 
     C:\Users\rb>tracert 10.11.30.68
 
@@ -54,17 +56,19 @@ Der folgende Bildschirmclip zeigt die grafische Verbindung des Hub VNET und des 
 
     Trace complete.
 
-Im obigen Traceroute-Fall ist der erste Hop das VPN-Gateway des Hub-VNET. Der zweite Hop ist das VPN-Gateway des Branch-VNET, dessen IP-Adresse nicht im Hub-VNET angekündigt wird. Der dritte Hop ist die VM im Branch-VNET.
+In dieser Traceroute-Ausgabe ist der erste Hop das VPN-Gateway in Azure zum VPN-Gateway des Hub-VNET. Der zweite Hop ist das VPN-Gateway des Branch-VNET. Die IP-Adresse des VPN-Gateways des Branch-VNET ist im Hub-VNET nicht angekündigt. Der dritte Hop ist die VM im Branch-VNET.
 
-Der folgende Bildschirmclip zeigt die grafische Verbindung des Hub VNET und des Branch-VNET in Azure Network Watcher:
+Die folgende Abbildung zeigt die grafische Verbindung des Hub-VNET und des Branch-VNET von Network Watcher aus betrachtet:
 
 [![2]][2]
 
-Für dieselbe Verbindung zeigt der folgende Bildschirmclip die Rasteransicht in Azure Network Watcher:
+Die folgende Abbildung zeigt die Rasteransicht in Network Watcher für dieselbe Verbindung:
 
 [![3]][3]
 
-###<a name="path-to-on-premises-location-1"></a>Pfad zum lokalen Standort 1
+### <a name="path-to-on-premises-location-1"></a>Pfad zum lokalen Standort 1
+
+Die Traceroute-Ausgabe von einem Hub-VNET zu einer VM am lokalen Standort 1:
 
     C:\Users\rb>tracert 10.2.30.10
 
@@ -77,10 +81,12 @@ Für dieselbe Verbindung zeigt der folgende Bildschirmclip die Rasteransicht in 
 
     Trace complete.
 
-Im obigen Traceroute-Fall ist der erste Hop der ExpressRoute-Gatewaytunnel-Endpunkt für die MSEE-Instanz. Der zweite und dritte Hop sind LAN-IP-Adressen für einen CE-Router bzw. den lokalen Standort 1. Diese IP-Adressen werden im Hub-VNET nicht angekündigt. Der vierte Hop ist die VM am lokalen Standort 1.
+In dieser Traceroute-Ausgabe ist der erste Hop der Azure ExpressRoute-Gateway-Tunnelendpunkt zu einem Microsoft Enterprise Edge-Router (MSEE). Die zweite und der dritte Hop sind der CE-Router (kundenseitiger Edge) und die LAN-IP-Adressen des lokalen Standorts 1. Diese IP-Adressen sind im Hub-VNET nicht angekündigt. Der vierte Hop ist die VM am lokalen Standort 1.
 
 
-###<a name="path-to-on-premises-location-2"></a>Pfad zum lokalen Standort 2
+### <a name="path-to-on-premises-location-2"></a>Pfad zum lokalen Standort 2
+
+Die Traceroute-Ausgabe von einem Hub-VNET zu einer VM am lokalen Standort 2:
 
     C:\Users\rb>tracert 10.1.31.10
 
@@ -93,9 +99,11 @@ Im obigen Traceroute-Fall ist der erste Hop der ExpressRoute-Gatewaytunnel-Endpu
 
     Trace complete.
 
-Im obigen Traceroute-Fall ist der erste Hop der ExpressRoute-Gatewaytunnel-Endpunkt für die MSEE-Instanz. Der zweite und dritte Hop sind LAN-IP-Adressen für einen CE-Router bzw. den lokalen Standort 2. Diese IP-Adressen werden im Hub-VNET nicht angekündigt. Der vierte Hop ist die VM am lokalen Standort 2.
+In dieser Traceroute-Ausgabe ist der erste Hop der ExpressRoute-Gatewaytunnel-Endpunkt zu einem MSEE. Der zweite und dritte Hop sind der CE-Router und die LAN-IP-Adressen des lokalen Standorts 2. Diese IP-Adressen sind im Hub-VNET nicht angekündigt. Der vierte Hop ist die VM am lokalen Standort 2.
 
-###<a name="path-to-remote-vnet"></a>Pfad zum Remote-VNET
+### <a name="path-to-the-remote-vnet"></a>Pfad zum Remote-VNET
+
+Die Traceroute-Ausgabe von einem Hub-VNET zu einer VM im Remote-VNET:
 
     C:\Users\rb>tracert 10.17.30.4
 
@@ -107,13 +115,15 @@ Im obigen Traceroute-Fall ist der erste Hop der ExpressRoute-Gatewaytunnel-Endpu
 
     Trace complete.
 
-Im obigen Traceroute-Fall ist der erste Hop der ExpressRoute-Gatewaytunnel-Endpunkt für die MSEE-Instanz. Der zweite Hop ist die Gateway-IP-Adresse des Remote-VNET. Der IP-Adressbereich des zweiten Hops wird im Hub-VNET nicht angekündigt. Der dritte Hop ist die VM im Remote-VNET.
+In dieser Traceroute-Ausgabe ist der erste Hop der ExpressRoute-Gatewaytunnel-Endpunkt zu einem MSEE. Der zweite Hop ist die Gateway-IP-Adresse des Remote-VNET. Der IP-Adressbereich des zweiten Hops wird im Hub-VNET nicht angekündigt. Der dritte Hop ist die VM im Remote-VNET.
 
-##<a name="data-path-from-spoke-vnet"></a>Datenpfad aus dem Spoke-VNET
+## <a name="data-path-from-the-spoke-vnet"></a>Datenpfad aus dem Spoke-VNET
 
-Noch einmal zur Erinnerung: Für das Spoke-VNET wird die Netzwerkansicht des Hub-VNET genutzt. Per VNET-Peering nutzt das Spoke-VNET die Remotegatewayverbindung des Hub-VNET so, als ob eine direkte Verbindung mit dem Spoke-VNET vorhanden wäre.
+Für das Spoke-VNET wird dieselbe Netzwerkansicht wie im Hub-VNET genutzt. Über das VNET-Peering nutzt das Spoke-VNET die Remotegatewayverbindung des Hub-VNET so, als ob eine direkte Verbindung mit dem Spoke-VNET vorhanden wäre.
 
-###<a name="path-to-hub-vnet"></a>Pfad zum Hub-VNET
+### <a name="path-to-the-hub-vnet"></a>Pfad zum Hub-VNET
+
+Die Traceroute-Ausgabe vom Spoke-VNET zu einer VM im Hub-VNET:
 
     C:\Users\rb>tracert 10.10.30.4
 
@@ -123,7 +133,9 @@ Noch einmal zur Erinnerung: Für das Spoke-VNET wird die Netzwerkansicht des Hub
 
     Trace complete.
 
-###<a name="path-to-branch-vnet"></a>Pfad zum Branch-VNET
+### <a name="path-to-the-branch-vnet"></a>Pfad zum Branch-VNET
+
+Die Traceroute-Ausgabe vom Spoke-VNET zu einer VM im Branch-VNET:
 
     C:\Users\rb>tracert 10.11.30.68
 
@@ -135,24 +147,11 @@ Noch einmal zur Erinnerung: Für das Spoke-VNET wird die Netzwerkansicht des Hub
 
     Trace complete.
 
-Im obigen Traceroute-Fall ist der erste Hop das VPN-Gateway des Hub-VNET. Der zweite Hop ist das VPN-Gateway des Branch-VNET, dessen IP-Adresse nicht im Hub-/Spoke-VNET angekündigt wird. Der dritte Hop ist die VM im Branch-VNET.
+In dieser Traceroute-Ausgabe ist der erste Hop das VPN-Gateway des Hub-VNET. Der zweite Hop ist das VPN-Gateway des Branch-VNET. Die IP-Adresse des VPN-Gateways des Branch-VNET ist im Hub-/Spoke-VNET nicht angekündigt. Der dritte Hop ist die VM im Branch-VNET.
 
-###<a name="path-to-on-premises-location-1"></a>Pfad zum lokalen Standort 1
+### <a name="path-to-on-premises-location-1"></a>Pfad zum lokalen Standort 1
 
-    C:\Users\rb>tracert 10.2.30.10
-
-    Tracing route to 10.2.30.10 over a maximum of 30 hops
-
-      1    24 ms     2 ms     3 ms  10.10.30.132
-      2     *        *        *     Request timed out.
-      3     *        *        *     Request timed out.
-      4     3 ms     2 ms     2 ms  10.2.30.10
-
-    Trace complete.
-
-Im obigen Traceroute-Fall ist der erste Hop der ExpressRoute-Gatewaytunnel-Endpunkt des Hub-VNET für die MSEE-Instanz. Der zweite und dritte Hop sind LAN-IP-Adressen für einen CE-Router bzw. den lokalen Standort 1. Diese IP-Adressen werden im Hub-/Spoke-VNET nicht angekündigt. Der vierte Hop ist die VM am lokalen Standort 1.
-
-###<a name="path-to-on-premises-location-2"></a>Pfad zum lokalen Standort 2
+Die Traceroute-Ausgabe vom Spoke-VNET zu einer VM am lokalen Standort 1:
 
     C:\Users\rb>tracert 10.2.30.10
 
@@ -165,9 +164,29 @@ Im obigen Traceroute-Fall ist der erste Hop der ExpressRoute-Gatewaytunnel-Endpu
 
     Trace complete.
 
-Im obigen Traceroute-Fall ist der erste Hop der ExpressRoute-Gatewaytunnel-Endpunkt des Hub-VNET für die MSEE-Instanz. Der zweite und dritte Hop sind LAN-IP-Adressen für einen CE-Router bzw. den lokalen Standort 2. Diese IP-Adressen werden im Hub-/Spoke-VNET nicht angekündigt. Der vierte Hop ist die VM am lokalen Standort 2.
+In dieser Traceroute-Ausgabe ist der erste Hop der ExpressRoute-Gatewaytunnel-Endpunkt des Hub-VNET zu einem MSEE. Die zweite und der dritte Hop sind der CE-Router und die LAN-IP-Adressen des lokalen Standorts 1. Diese IP-Adressen sind im Hub-/Spoke-VNET nicht angekündigt. Der vierte Hop ist die VM am lokalen Standort 1.
 
-###<a name="path-to-remote-vnet"></a>Pfad zum Remote-VNET
+### <a name="path-to-on-premises-location-2"></a>Pfad zum lokalen Standort 2
+
+Die Traceroute-Ausgabe vom Spoke-VNET zu einer VM am lokalen Standort 2:
+
+
+    C:\Users\rb>tracert 10.2.30.10
+
+    Tracing route to 10.2.30.10 over a maximum of 30 hops
+
+      1    24 ms     2 ms     3 ms  10.10.30.132
+      2     *        *        *     Request timed out.
+      3     *        *        *     Request timed out.
+      4     3 ms     2 ms     2 ms  10.2.30.10
+
+    Trace complete.
+
+In dieser Traceroute-Ausgabe ist der erste Hop der ExpressRoute-Gatewaytunnel-Endpunkt des Hub-VNET zu einem MSEE. Der zweite und dritte Hop sind der CE-Router und die LAN-IP-Adressen des lokalen Standorts 2. Diese IP-Adressen sind in den Hub-/Spoke-VNETs nicht angekündigt. Der vierte Hop ist die VM am lokalen Standort 2.
+
+### <a name="path-to-the-remote-vnet"></a>Pfad zum Remote-VNET
+
+Die Traceroute-Ausgabe vom Spoke-VNET zu einer VM im Remote-VNET:
 
     C:\Users\rb>tracert 10.17.30.4
 
@@ -179,11 +198,13 @@ Im obigen Traceroute-Fall ist der erste Hop der ExpressRoute-Gatewaytunnel-Endpu
 
     Trace complete.
 
-Im obigen Traceroute-Fall ist der erste Hop der ExpressRoute-Gatewaytunnel-Endpunkt des Hub-VNET für die MSEE-Instanz. Der zweite Hop ist die Gateway-IP-Adresse des Remote-VNET. Der IP-Adressbereich des zweiten Hops wird im Hub-/Spoke-VNET nicht angekündigt. Der dritte Hop ist die VM im Remote-VNET.
+In dieser Traceroute-Ausgabe ist der erste Hop der ExpressRoute-Gatewaytunnel-Endpunkt des Hub-VNET zu einem MSEE. Der zweite Hop ist die Gateway-IP-Adresse des Remote-VNET. Der IP-Adressbereich des zweiten Hops wird im Hub-/Spoke-VNET nicht angekündigt. Der dritte Hop ist die VM im Remote-VNET.
 
-##<a name="data-path-from-branch-vnet"></a>Datenpfad vom Branch-VNET
+## <a name="data-path-from-the-branch-vnet"></a>Datenpfad vom Branch-VNET
 
-###<a name="path-to-hub-vnet"></a>Pfad zum Hub-VNET
+### <a name="path-to-the-hub-vnet"></a>Pfad zum Hub-VNET
+
+Die Traceroute-Ausgabe vom Branch-VNET zu einer VM im Hub-VNET:
 
     C:\Windows\system32>tracert 10.10.30.4
 
@@ -195,9 +216,11 @@ Im obigen Traceroute-Fall ist der erste Hop der ExpressRoute-Gatewaytunnel-Endpu
 
     Trace complete.
 
-Im obigen Traceroute-Fall ist der erste Hop das VPN-Gateway des Branch-VNET. Der zweite Hop ist das VPN-Gateway des Hub-VNET, dessen IP-Adresse nicht im Remote-VNET angekündigt wird. Der dritte Hop ist die VM im Hub-VNET.
+In dieser Traceroute-Ausgabe ist der erste Hop das VPN-Gateway des Branch-VNET. Der zweite Hop ist das VPN-Gateway des Hub-VNET. Die IP-Adresse des VPN-Gateways des Hub-VNET ist im Remote-VNET nicht angekündigt. Der dritte Hop ist die VM im Hub-VNET.
 
-###<a name="path-to-spoke-vnet"></a>Pfad zum Spoke-VNET
+### <a name="path-to-the-spoke-vnet"></a>Pfad zum Spoke-VNET
+
+Die Traceroute-Ausgabe vom Branch-VNET zu einer VM im Spoke-VNET:
 
     C:\Users\rb>tracert 10.11.30.4
 
@@ -209,9 +232,11 @@ Im obigen Traceroute-Fall ist der erste Hop das VPN-Gateway des Branch-VNET. Der
 
     Trace complete.
 
-Im obigen Traceroute-Fall ist der erste Hop das VPN-Gateway des Branch-VNET. Der zweite Hop ist das VPN-Gateway des Hub-VNET, dessen IP-Adresse im Remote-VNET nicht angekündigt wird, und der dritte Hop ist die VM im Spoke-VNET.
+In dieser Traceroute-Ausgabe ist der erste Hop das VPN-Gateway des Branch-VNET. Der zweite Hop ist das VPN-Gateway des Hub-VNET. Die IP-Adresse des VPN-Gateways des Hub-VNET ist im Remote-VNET nicht angekündigt. Der dritte Hop ist die VM im Spoke-VNET.
 
-###<a name="path-to-on-premises-location-1"></a>Pfad zum lokalen Standort 1
+### <a name="path-to-on-premises-location-1"></a>Pfad zum lokalen Standort 1
+
+Die Traceroute-Ausgabe vom Branch-VNET zu einer VM am lokalen Standort 1:
 
     C:\Users\rb>tracert 10.2.30.10
 
@@ -225,11 +250,11 @@ Im obigen Traceroute-Fall ist der erste Hop das VPN-Gateway des Branch-VNET. Der
 
     Trace complete.
 
-Im obigen Traceroute-Fall ist der erste Hop das VPN-Gateway des Branch-VNET. Der zweite Hop ist das VPN-Gateway des Hub-VNET, dessen IP-Adresse nicht im Remote-VNET angekündigt wird. Der dritte Hop ist der Beendigungspunkt des VPN-Tunnels auf dem primären CE-Router. Der vierte Hop ist eine interne IP-Adresse des lokalen Standorts 1 im LAN, die außerhalb des CE-Routers nicht angekündigt wird. Der fünfte Hop ist die Ziel-VM am lokalen Standort 1.
+In dieser Traceroute-Ausgabe ist der erste Hop das VPN-Gateway des Branch-VNET. Der zweite Hop ist das VPN-Gateway des Hub-VNET. Die IP-Adresse des VPN-Gateways des Hub-VNET ist im Remote-VNET nicht angekündigt. Der dritte Hop ist der Beendigungspunkt des VPN-Tunnels auf dem primären CE-Router. Der vierte Hop ist eine interne IP-Adresse des lokalen Standorts 1. Diese LAN-IP-Adresse ist außerhalb des CE-Routers nicht angekündigt. Der fünfte Hop ist die Ziel-VM am lokalen Standort 1.
 
-###<a name="path-to-on-premises-location-2-and-remote-vnet"></a>Pfad zum lokalen Standort 2 und zum Remote-VNET
+### <a name="path-to-on-premises-location-2-and-the-remote-vnet"></a>Pfad zum lokalen Standort 2 und zum Remote-VNET
 
-Wie bereits für die Analyse der Steuerungsebene beschrieben, besteht gemäß Netzwerkkonfiguration für das Branch-VNET keine Sichtbarkeit in Bezug auf den lokalen Standort 2 und das Remote-VNET. Dies wird durch die folgenden Ping-Ergebnisse bestätigt. 
+Wie für die Steuerebenenanalyse beschrieben, besteht gemäß Netzwerkkonfiguration für das Branch-VNET keine Sichtbarkeit für den lokalen Standort 2 oder das Remote-VNET. Dies wird durch die folgenden Ping-Ergebnisse bestätigt: 
 
     C:\Users\rb>ping 10.1.31.10
 
@@ -253,9 +278,11 @@ Wie bereits für die Analyse der Steuerungsebene beschrieben, besteht gemäß Ne
     Ping statistics for 10.17.30.4:
         Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),
 
-##<a name="data-path-from-on-premises-location-1"></a>Datenpfad vom lokalen Standort 1
+## <a name="data-path-from-on-premises-location-1"></a>Datenpfad vom lokalen Standort 1
 
-###<a name="path-to-hub-vnet"></a>Pfad zum Hub-VNET
+### <a name="path-to-the-hub-vnet"></a>Pfad zum Hub-VNET
+
+Die Traceroute-Ausgabe vom lokalen Standort 1 zu einer VM im Hub-VNET:
 
     C:\Users\rb>tracert 10.10.30.4
 
@@ -269,15 +296,15 @@ Wie bereits für die Analyse der Steuerungsebene beschrieben, besteht gemäß Ne
 
     Trace complete.
 
-Im obigen Traceroute-Fall sind die ersten beiden Hops Teil des lokalen Netzwerks. Der dritte Hop ist die primäre MSEE-Schnittstelle für den CE-Router. Der vierte Hop ist das ExpressRoute-Gateway des Hub-VNET, dessen IP-Adressbereich im lokalen Netzwerk nicht angekündigt wird. Der fünfte Hop ist die Ziel-VM.
+In dieser Traceroute-Ausgabe sind die ersten beiden Hops Teil des lokalen Netzwerks. Der dritte Hop ist die primäre MSEE-Schnittstelle für den CE-Router. Der vierte Hop ist das ExpressRoute-Gateway des Hub-VNET. Der IP-Adressbereich des ExpressRoute-Gateways des Hub-VNET wird im lokalen Netzwerk nicht angekündigt. Der fünfte Hop ist die Ziel-VM.
 
-Azure Network Watcher stellt nur eine Azure-bezogene Ansicht bereit. Aus diesem Grund haben wir für die lokale Ansicht den Netzwerkleistungsmonitor (Network Performance Monitor, NPM) von Azure verwendet. Der Netzwerkleistungsmonitor stellt Agents bereit, die auf Servern im Netzwerk außerhalb von Azure installiert werden können und eine Analyse des Datenpfads ermöglichen.
+Network Watcher stellt nur eine Azure-bezogene Ansicht bereit. Für eine lokale Perspektive verwenden wir den Azure-Netzwerkleistungsmonitor. Der Netzwerkleistungsmonitor bietet Agents, die Sie für Pfaddatenanalysen auf Servern in Netzwerken außerhalb von Azure installieren können.
 
-Der folgende Bildschirmclip zeigt die Topologieansicht der Konnektivität für die VM am lokalen Standort 1 mit der VM im Hub-VNET per ExpressRoute.
+Die folgende Abbildung zeigt die Topologieansicht der Konnektivität zwischen der VM am lokalen Standort 1 und der VM im Hub-VNET per ExpressRoute:
 
 [![4]][4]
 
-Zur Erinnerung: Für die Testeinrichtung wird ein Site-to-Site-VPN als Ersatzverbindung für ExpressRoute zwischen dem lokalen Standort 1 und dem Hub-VNET genutzt. Zum Testen des Datenpfads in umgekehrter Richtung lösen wir einen ExpressRoute-Verbindungsfehler zwischen dem primären CE-Router am lokalen Standort 1 und der entsprechenden MSEE-Instanz aus, indem wir die für die MSEE-Instanz bestimmte CE-Schnittstelle herunterfahren.
+Wie weiter oben erläutert, wird für die Testeinrichtung ein Site-to-Site-VPN als Reserveverbindung für ExpressRoute zwischen dem lokalen Standort 1 und dem Hub-VNET genutzt. Zum Testen des Datenpfads in umgekehrter Richtung lösen wir einen ExpressRoute-Verbindungsausfall zwischen dem primären CE-Router am lokalen Standort 1 und dem zugehörigen MSEE aus. Um den ExpressRoute-Verbindungsausfall herbeizuführen, fahren Sie die für die MSEE-Instanz bestimmte CE-Schnittstelle herunter:
 
     C:\Users\rb>tracert 10.10.30.4
 
@@ -289,13 +316,15 @@ Zur Erinnerung: Für die Testeinrichtung wird ein Site-to-Site-VPN als Ersatzver
 
     Trace complete.
 
-Der folgende Bildschirmclip zeigt die Topologieansicht der Konnektivität für die VM am lokalen Standort 1 mit der VM im Hub-VNET per Site-to-Site-VPN-Verbindung, wenn die ExpressRoute-Konnektivität nicht vorhanden ist.
+Die folgende Abbildung zeigt die Topologieansicht der Konnektivität zwischen der VM am lokalen Standort 1 und der VM im Hub-VNET per Site-to-Site-VPN-Verbindung, wenn keine ExpressRoute-Konnektivität vorhanden ist:
 
 [![5]][5]
 
-###<a name="path-to-spoke-vnet"></a>Pfad zum Spoke-VNET
+### <a name="path-to-the-spoke-vnet"></a>Pfad zum Spoke-VNET
 
-Wir stellen jetzt die primäre ExpressRoute-Konnektivität wieder her, um die Datenpfadanalyse für das Spoke-VNET durchzuführen.
+Die Traceroute-Ausgabe vom lokalen Standort 1 zu einer VM im Spoke-VNET:
+
+Wir stellen jetzt die primäre ExpressRoute-Verbindung wieder her, um die Datenpfadanalyse für das Spoke-VNET durchzuführen:
 
     C:\Users\rb>tracert 10.11.30.4
 
@@ -309,9 +338,11 @@ Wir stellen jetzt die primäre ExpressRoute-Konnektivität wieder her, um die Da
 
     Trace complete.
 
-Wir stellen die primäre ExpressRoute 1-Konnektivität für den Rest der Datenpfadanalyse her.
+Stellen Sie die primäre ExpressRoute 1-Verbindung für den Rest der Datenpfadanalyse her.
 
-###<a name="path-to-branch-vnet"></a>Pfad zum Branch-VNET
+### <a name="path-to-the-branch-vnet"></a>Pfad zum Branch-VNET
+
+Die Traceroute-Ausgabe vom lokalen Standort 1 zu einer VM im Branch-VNET:
 
     C:\Users\rb>tracert 10.11.30.68
 
@@ -323,9 +354,9 @@ Wir stellen die primäre ExpressRoute 1-Konnektivität für den Rest der Datenpf
 
     Trace complete.
 
-###<a name="path-to-on-premises-location-2"></a>Pfad zum lokalen Standort 2
+### <a name="path-to-on-premises-location-2"></a>Pfad zum lokalen Standort 2
 
-Wie bereits für die Analyse der Steuerungsebene beschrieben, besteht gemäß Netzwerkkonfiguration für den lokalen Standort 1 keine Sichtbarkeit in Bezug auf den lokalen Standort 2. Dies wird durch die folgenden Ping-Ergebnisse bestätigt. 
+Wie für die [Steuerebenenanalyse][Control-Analysis] beschrieben, besteht gemäß Netzwerkkonfiguration für den lokalen Standort 1 keine Sichtbarkeit für den lokalen Standort 2. Dies wird durch die folgenden Ping-Ergebnisse bestätigt: 
 
     C:\Users\rb>ping 10.1.31.10
     
@@ -338,7 +369,9 @@ Wie bereits für die Analyse der Steuerungsebene beschrieben, besteht gemäß Ne
     Ping statistics for 10.1.31.10:
         Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),
 
-###<a name="path-to-remote-vnet"></a>Pfad zum Remote-VNET
+### <a name="path-to-the-remote-vnet"></a>Pfad zum Remote-VNET
+
+Die Traceroute-Ausgabe vom lokalen Standort 1 zu einer VM im Remote-VNET:
 
     C:\Users\rb>tracert 10.17.30.4
 
@@ -352,9 +385,11 @@ Wie bereits für die Analyse der Steuerungsebene beschrieben, besteht gemäß Ne
 
     Trace complete.
 
-##<a name="data-path-from-on-premises-location-2"></a>Datenpfad vom lokalen Standort 2
+## <a name="data-path-from-on-premises-location-2"></a>Datenpfad vom lokalen Standort 2
 
-###<a name="path-to-hub-vnet"></a>Pfad zum Hub-VNET
+### <a name="path-to-the-hub-vnet"></a>Pfad zum Hub-VNET
+
+Die Traceroute-Ausgabe vom lokalen Standort 2 zu einer VM im Hub-VNET:
 
     C:\Windows\system32>tracert 10.10.30.4
 
@@ -368,7 +403,9 @@ Wie bereits für die Analyse der Steuerungsebene beschrieben, besteht gemäß Ne
 
     Trace complete.
 
-###<a name="path-to-spoke-vnet"></a>Pfad zum Spoke-VNET
+### <a name="path-to-the-spoke-vnet"></a>Pfad zum Spoke-VNET
+
+Die Traceroute-Ausgabe vom lokalen Standort 2 zu einer VM im Spoke-VNET:
 
     C:\Windows\system32>tracert 10.11.30.4
 
@@ -381,13 +418,15 @@ Wie bereits für die Analyse der Steuerungsebene beschrieben, besteht gemäß Ne
 
     Trace complete.
 
-###<a name="path-to-branch-vnet-on-premises-location-1-and-remote-vnet"></a>Pfad zum Branch-VNET, lokalen Standort 1 und Remote-VNET
+### <a name="path-to-the-branch-vnet-on-premises-location-1-and-the-remote-vnet"></a>Pfad zum Branch-VNET, zum lokalen Standort 1 und zum Remote-VNET
 
-Wie bereits für die Analyse der Steuerungsebene beschrieben, besteht gemäß Netzwerkkonfiguration für den lokalen Standort 1 keine Sichtbarkeit in Bezug auf das Branch-VNET, den lokalen Standort 1 und das Remote-VNET. 
+Wie für die [Steuerebenenanalyse][Control-Analysis] beschrieben, besteht gemäß Netzwerkkonfiguration für den lokalen Standort 1 keine Sichtbarkeit für das Branch-VNET, den lokalen Standort 1 oder das Remote-VNET. 
 
-##<a name="data-path-from-remote-vnet"></a>Datenpfad vom Remote-VNET
+## <a name="data-path-from-the-remote-vnet"></a>Datenpfad vom Remote-VNET
 
-###<a name="path-to-hub-vnet"></a>Pfad zum Hub-VNET
+### <a name="path-to-the-hub-vnet"></a>Pfad zum Hub-VNET
+
+Die Traceroute-Ausgabe vom Remote-VNET zu einer VM im Hub-VNET:
 
     C:\Users\rb>tracert 10.10.30.4
 
@@ -399,7 +438,9 @@ Wie bereits für die Analyse der Steuerungsebene beschrieben, besteht gemäß Ne
 
     Trace complete.
 
-###<a name="path-to-spoke-vnet"></a>Pfad zum Spoke-VNET
+### <a name="path-to-the-spoke-vnet"></a>Pfad zum Spoke-VNET
+
+Die Traceroute-Ausgabe vom Remote-VNET zu einer VM im Spoke-VNET:
 
     C:\Users\rb>tracert 10.11.30.4
 
@@ -411,12 +452,13 @@ Wie bereits für die Analyse der Steuerungsebene beschrieben, besteht gemäß Ne
 
     Trace complete.
 
-### <a name="path-to-branch-vnet-and-on-premises-location-2"></a>Pfad zum Branch-VNET und lokalen Standort 2
+### <a name="path-to-the-branch-vnet-and-on-premises-location-2"></a>Pfad zum Branch-VNET und zum lokalen Standort 2
 
-Wie bereits für die Analyse der Steuerungsebene beschrieben, besteht gemäß Netzwerkkonfiguration für das Remote-VNET keine Sichtbarkeit in Bezug auf das Branch-VNET und den lokalen Standort 2. 
-
+Wie für die [Steuerebenenanalyse][Control-Analysis] beschrieben, besteht gemäß Netzwerkkonfiguration für das Remote-VNET keine Sichtbarkeit für das Branch-VNET oder den lokalen Standort 2. 
 
 ### <a name="path-to-on-premises-location-1"></a>Pfad zum lokalen Standort 1
+
+Die Traceroute-Ausgabe vom Remote-VNET zu einer VM am lokalen Standort 1:
 
     C:\Users\rb>tracert 10.2.30.10
 
@@ -430,46 +472,49 @@ Wie bereits für die Analyse der Steuerungsebene beschrieben, besteht gemäß Ne
     Trace complete.
 
 
-## <a name="further-reading"></a>Weitere nützliche Informationen
+## <a name="expressroute-and-site-to-site-vpn-connectivity-in-tandem"></a>Gemeinsame ExpressRoute- und Site-to-Site-VPN-Konnektivität
 
-### <a name="using-expressroute-and-site-to-site-vpn-connectivity-in-tandem"></a>Gemeinsames Verwenden von ExpressRoute und Site-to-Site-VPN-Konnektivität
+###  <a name="site-to-site-vpn-over-expressroute"></a>Site-to-Site-VPN über ExpressRoute
 
-####<a name="site-to-site-vpn-over-expressroute"></a>Site-to-Site-VPN über ExpressRoute
+Sie können ein Site-to-Site-VPN mithilfe von ExpressRoute-Microsoft-Peering konfigurieren, um Daten privat zwischen Ihrem lokalen Netzwerk und Ihren Azure-VNETs auszutauschen. Mit dieser Konfiguration können Sie Daten mit Vertraulichkeit, Authentizität und Integrität austauschen. Der Datenaustausch ist außerdem Anti-Replay-konform. Weitere Informationen zur Konfiguration eines Site-to-Site-IPsec-VPN im Tunnelmodus per ExpressRoute-Microsoft-Peering finden Sie unter [Site-to-Site-VPN über ExpressRoute-Microsoft-Peering][S2S-Over-ExR]. 
 
-Site-to-Site-VPN kann mithilfe von ExpressRoute-/Microsoft-Peering konfiguriert werden, um Daten auf privatem Wege zwischen Ihrem lokalen Netzwerk und Ihren Azure VNETs auszutauschen und dabei Vertraulichkeit, Anti-Replay, Authentizität und Integrität sicherzustellen. Weitere Informationen zur Konfiguration eines Site-to-Site-IPSec-VPN im Tunnelmodus per ExpressRoute-/Microsoft-Peering finden Sie unter [Konfigurieren eines Site-to-Site-VPN über ExpressRoute-/Microsoft-Peering][S2S-Over-ExR]. 
+Die wesentliche Einschränkung für die Konfiguration eines Site-to-Site-VPN mit Microsoft-Peering ist der Durchsatz. Der Durchsatz des IPsec-Tunnels wird durch die Kapazität des VPN-Gateways eingeschränkt. Der Durchsatz des VPN-Gateways ist niedriger als der ExpressRoute-Durchsatz. In diesem Szenario stellt die Verwendung des IPsec-Tunnels für hoch sicheren Datenverkehr und des privaten Peerings für sämtlichen anderen Datenverkehr einen Beitrag zur Optimierung der ExpressRoute-Bandbreitenauslastung dar.
 
-Die wichtigste Einschränkung bei der Konfiguration des S2S-VPN per Microsoft-Peering ist der Durchsatz. Der Durchsatz des IPSec-Tunnels wird durch die Kapazität des VPN-Gateways eingeschränkt. Der Durchsatz des VPN-Gateways ist im Vergleich zum ExpressRoute-Durchsatz niedriger. In Szenarien dieser Art stellt die Verwendung des IPSec-Tunnels für Datenverkehr mit hohem Schutzfaktor und des privaten Peerings für den gesamten anderen Datenverkehr einen Beitrag zur Optimierung der ExpressRoute-Bandbreitenauslastung dar.
+### <a name="site-to-site-vpn-as-a-secure-failover-path-for-expressroute"></a>Site-to-Site-VPN als sicherer Failoverpfad für ExpressRoute
 
-#### <a name="site-to-site-vpn-as-a-secure-failover-path-for-expressroute"></a>Site-to-Site-VPN als sicherer Failoverpfad für ExpressRoute
-Die ExpressRoute-Verbindung wird als redundantes Leitungspaar bereitgestellt, um die Hochverfügbarkeit sicherzustellen. Sie können die georedundante ExpressRoute-Konnektivität in unterschiedlichen Azure-Regionen konfigurieren. Wenn Sie wie in unserer Testeinrichtung in einer bestimmten Azure-Region einen Failoverpfad für Ihre ExpressRoute-Konnektivität einrichten möchten, können Sie hierfür ein Site-to-Site-VPN verwenden. Wenn über ExpressRoute und das Site-to-Site-VPN die gleichen Präfixe angekündigt werden, gibt Azure ExpressRoute den Vorzug vor dem Site-to-Site-VPN. Zur Vermeidung des asymmetrischen Routings zwischen ExpressRoute und dem Site-to-Site-VPN sollte in der lokalen Netzwerkkonfiguration ExpressRoute ebenfalls den Vorzug vor der Site-to-Site-VPN-Konnektivität erhalten.
+ExpressRoute dient als redundantes Verbindungspaar, um Hochverfügbarkeit sicherzustellen. Sie können die georedundante ExpressRoute-Konnektivität in unterschiedlichen Azure-Regionen konfigurieren. Sie können außerdem wie in unserer Testeinrichtung demonstriert in einer Azure-Region mithilfe eines Site-to-Site-VPN einen Failoverpfad für Ihre ExpressRoute-Verbindung einrichten. Wenn über ExpressRoute und das Site-to-Site-VPN die gleichen Präfixe angekündigt werden, priorisiert Azure ExpressRoute. Zur Vermeidung von asymmetrischem Routing zwischen ExpressRoute und dem Site-to-Site-VPN sollte in der lokalen Netzwerkkonfiguration die ExpressRoute-Verbindung ebenfalls den Vorzug vor Site-to-Site-VPN-Verbindungen erhalten.
 
-Weitere Informationen zur Konfiguration von parallelen ExpressRoute- und Site-to-Site-VPN-Verbindungen finden Sie unter [Konfigurieren von parallel bestehenden ExpressRoute- und Standort-zu-Standort-Verbindungen mithilfe von PowerShell][ExR-S2S-CoEx].
+Weitere Informationen zur Konfiguration von parallelen ExpressRoute- und Site-to-Site-VPN-Verbindungen finden Sie unter [Parallele ExpressRoute- und Site-to-Site-Verbindungen][ExR-S2S-CoEx].
 
-### <a name="extending-backend-connectivity-to-spoke-vnets-and-branch-locations"></a>Erweitern der Back-End-Konnektivität auf Spoke-VNETs und Branchstandorte
+## <a name="extend-back-end-connectivity-to-spoke-vnets-and-branch-locations"></a>Erweitern der Back-End-Konnektivität auf Spoke-VNETs und Branchstandorte
 
-#### <a name="spoke-vnet-connectivity-using-vnet-peering"></a>Spoke-VNET-Konnektivität per VNET-Peering
+### <a name="spoke-vnet-connectivity-by-using-vnet-peering"></a>Spoke-VNET-Konnektivität per VNET-Peering
 
-Die Hub-and-Spoke-VNET-Architektur wird häufig genutzt. Bei einem Hub handelt es sich um ein virtuelles Netzwerk (VNET) in Azure, das als zentraler Konnektivitätspunkt zwischen Ihren Spoke-VNETs und für Ihr lokales Netzwerk fungiert. Die Spokes sind VNETs, die eine Peeringverbindung mit dem Hub herstellen und zur Isolierung von Workloads verwendet werden können. Der Datenverkehr wird über eine ExpressRoute- oder VPN-Verbindung zwischen dem lokalen Rechenzentrum und dem Hub weitergeleitet. Weitere Informationen zur Architektur finden Sie unter [Implementieren einer Hub-Spoke-Netzwerktopologie in Azure][Hub-n-Spoke].
+Die Hub-and-Spoke-VNET-Architektur wird häufig genutzt. Bei einem Hub handelt es sich um ein VNET in Azure, das als zentraler Konnektivitätspunkt zwischen Ihren Spoke-VNETs und Ihrem lokalen Netzwerk fungiert. Die Spokes sind VNETs, die eine Peeringverbindung mit dem Hub herstellen und zur Isolierung von Workloads verwendet werden können. Der Datenverkehr wird über eine ExpressRoute- oder VPN-Verbindung zwischen dem lokalen Rechenzentrum und dem Hub weitergeleitet. Weitere Informationen zu dieser Architektur finden Sie unter [Implementieren einer Hub-Spoke-Netzwerktopologie in Azure][Hub-n-Spoke].
 
 Beim VNET-Peering in einer Region können Spoke-VNETs Hub-VNET-Gateways verwenden (sowohl VPN- als auch ExpressRoute-Gateways), um mit Remotenetzwerken zu kommunizieren.
 
-#### <a name="branch-vnet-connectivity-using-site-to-site-vpn"></a>Branch-VNET-Konnektivität per Site-to-Site-VPN
+### <a name="branch-vnet-connectivity-by-using-site-to-site-vpn"></a>Branch-VNET-Konnektivität über Site-to-Site-VPN
 
-Wenn Branch-VNETs (in unterschiedlichen Regionen) und lokale Netzwerke über ein Hub-VNET miteinander kommunizieren sollen, wird als native Azure-Lösung die Site-to-Site-VPN-Konnektivität per VPN verwendet. Eine andere Möglichkeit ist die Nutzung eines virtuellen Netzwerkgeräts für das Routing im Hub.
+VNETs in verschiedenen Regionen und lokale Netzwerke sollten miteinander über ein Hub-VNET kommunizieren. Die native Azure-Lösung für diese Konfiguration ist Site-to-Site-VPN-Konnektivität über ein VPN. Eine Alternative ist die Verwendung eines virtuellen Netzwerkgeräts (NVA) für das Routing im Hub.
 
-Informationen zur Konfiguration von VPN-Gateways finden Sie unter [Konfigurieren von VPN Gateway][VPN]. Informationen zur Bereitstellung von hoch verfügbaren virtuellen Netzwerkgeräten finden Sie unter [Bereitstellen hoch verfügbarer virtueller Netzwerkgeräte][Deploy-NVA].
+Weitere Informationen finden Sie unter [Was ist VPN-Gateway?][VPN] und [Bereitstellen eines hoch verfügbaren virtuellen Netzwerkgeräts][Deploy-NVA].
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informationen dazu, wie viele ExpressRoute-Leitungen Sie mit einem ExpressRoute-Gateway (oder umgekehrt) verbinden können, oder zu anderen Skalierungslimits von ExpressRoute finden Sie unter [ExpressRoute – FAQ][ExR-FAQ].
+Unter [ExpressRoute – FAQ][ExR-FAQ] finden Sie Informationen zu folgenden Themen:
+-   Erfahren Sie, wie viele ExpressRoute-Verbindungen Sie mit einem ExpressRoute-Gateway verbinden können.
+-   Erfahren Sie, wie viele ExpressRoute-Gateways Sie mit einer ExpressRoute-Leitung verbinden können.
+-   Erfahren Sie mehr über andere Skalierungslimits von ExpressRoute.
 
 
 <!--Image References-->
-[1]: ./media/backend-interoperability/HubVM-SpkVM.jpg "Network Watcher-Ansicht zur Konnektivität vom Hub-VNET zum Spoke-VNET"
-[2]: ./media/backend-interoperability/HubVM-BranchVM.jpg "Network Watcher-Ansicht zur Konnektivität vom Hub-VNET zum Branch-VNET"
-[3]: ./media/backend-interoperability/HubVM-BranchVM-Grid.jpg "Network Watcher-Rasteransicht zur Konnektivität vom Hub-VNET zum Branch-VNET"
-[4]: ./media/backend-interoperability/Loc1-HubVM.jpg "Netzwerkleistungsmonitor-Ansicht zur Konnektivität von der VM am Standort 1 zum Hub-VNET per ExpressRoute 1"
-[5]: ./media/backend-interoperability/Loc1-HubVM-S2S.jpg "Netzwerkleistungsmonitor-Ansicht zur Konnektivität von der VM am Standort 1 zum Hub-VNET per Site-to-Site-VPN"
+[1]: ./media/backend-interoperability/HubVM-SpkVM.jpg " Network Watcher-Ansicht zur Konnektivität von einem Hub-VNET zu einem Spoke-VNET"
+[2]: ./media/backend-interoperability/HubVM-BranchVM.jpg " Network Watcher-Ansicht zur Konnektivität von einem Hub-VNET zu einem Branch-VNET"
+[3]: ./media/backend-interoperability/HubVM-BranchVM-Grid.jpg " Network Watcher-Rasteransicht zur Konnektivität von einem Hub-VNET zu einem Branch-VNET"
+[4]: ./media/backend-interoperability/Loc1-HubVM.jpg " Netzwerkleistungsmonitor-Ansicht zur Konnektivität von der VM am Standort 1 zum Hub-VNET über ExpressRoute 1"
+[5]: ./media/backend-interoperability/Loc1-HubVM-S2S.jpg " Netzwerkleistungsmonitor-Ansicht zur Konnektivität von der VM am Standort 1 zum Hub-VNET ein Site-to-Site-VPN"
 
 <!--Link References-->
 [Setup]: https://docs.microsoft.com/azure/networking/connectivty-interoperability-preface
@@ -486,7 +531,5 @@ Informationen dazu, wie viele ExpressRoute-Leitungen Sie mit einem ExpressRoute-
 [Hub-n-Spoke]: https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke
 [Deploy-NVA]: https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/nva-ha
 [VNet-Config]: https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-peering
-
-
 
 

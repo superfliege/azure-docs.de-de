@@ -8,65 +8,64 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 10/08/2018
 ms.author: alinast
-ms.openlocfilehash: 9b861f0991b11637c7b27b645d4506e658ea53b3
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: a1a31ec7ee0d1daea9f178e51dc860279d3787ec
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49323899"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51615336"
 ---
 # <a name="routing-events-and-messages"></a>Weiterleiten von Ereignissen und Nachrichten
 
-IoT-Lösungen umfassen oft mehrere leistungsstarke Dienste wie Speicher, Analysen etc. Dieser Artikel erläutert, wie Sie Azure Digital Twins-Apps mit Azure-Analysen, KI und Speicherdiensten verbinden, um ihnen weitere Informationen und Funktionen bereitzustellen.
+IoT-Lösungen vereinigen oft mehrere leistungsstarke Dienste, zu denen Speicher, Analysen usw. zählen. In diesem Artikel wird erläutert, wie Sie Azure Digital Twins-Apps mit Analyse-, KI- und Speicherdiensten von Azure verbinden, um detailliertere Erkenntnisse und Funktionen für die Apps bereitzustellen.
 
-## <a name="route-types"></a>Routentypen
+## <a name="route-types"></a>Routentypen  
 
-Digital Twins bietet zwei Möglichkeiten zum Integrieren von IoT-Ereignissen in andere Azure-Dienste oder Geschäftsanwendungen:
+Azure Digital Twins bietet zwei Möglichkeiten zum Integrieren von IoT-Ereignissen in andere Azure-Dienste oder Geschäftsanwendungen:
 
-* **Weiterleiten von Digital Twins-Ereignissen**: Azure Digital Twins-Ereignisse werden bei Objektänderungen im Raumgraphen ausgelöst, wenn Telemetriedaten empfangen werden oder eine benutzerdefinierte Funktion eine Benachrichtigung basierend auf vordefinierten Bedingungen erstellt. Benutzer können diese Ereignisse zur weiteren Verarbeitung an [Event Hubs](https://azure.microsoft.com/services/event-hubs/), [Service Bus-Themen](https://azure.microsoft.com/services/service-bus/) oder [Event Grid](https://azure.microsoft.com/services/event-grid/) senden.
+* **Weiterleiten von Azure Digital Twins-Ereignissen**: Objektänderungen im Raumgraphen, der Empfang von Telemetriedaten oder eine benutzerdefinierte Funktion, die basierend auf vordefinierten Bedingungen eine Benachrichtigung erstellt, können Azure Digital Twins-Ereignisse auslösen. Benutzer können diese Ereignisse zur weiteren Verarbeitung an [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/), [Azure Service Bus-Themen](https://azure.microsoft.com/services/service-bus/) oder [Azure Event Grid](https://azure.microsoft.com/services/event-grid/) senden.
 
-* **Weiterleiten von Gerätetelemetrie**: Azure Digital Twins kann nicht nur Ereignisse, sondern auch nicht formatierte Gerätetelemetrienachrichten an Event Hubs weiterleiten, um weitere Informationen und Analysen bereitzustellen. Diese Arten von Nachrichten werden nicht von Digital Twins verarbeitet und nur an **Event Hub** weitergeleitet.
+* **Weiterleiten von Gerätetelemetrie**: Azure Digital Twins kann nicht nur Ereignisse, sondern auch nicht formatierte Gerätetelemetrienachrichten an Event Hubs weiterleiten, um weitere Informationen und Analysen bereitzustellen. Diese Nachrichtentypen werden nicht von Azure Digital Twins verarbeitet. Sie werden nur an den Event Hub weitergeleitet.
 
-Benutzer können mindestens einen ausgehenden Endpunkt angeben, um Ereignisse zu senden oder Nachrichten weiterzuleiten. Ereignisse und Nachrichten werden gemäß diesen vordefinierten Routingeinstellungen an die Endpunkte gesendet. Das heißt, Benutzer können beispielsweise einen Endpunkt zum Empfangen von Graphvorgängen und einen anderen zum Empfangen von Gerätetelemetrieereignissen angeben.
+Benutzer können mindestens einen ausgehenden Endpunkt angeben, um Ereignisse zu senden oder Nachrichten weiterzuleiten. Ereignisse und Nachrichten werden gemäß diesen vordefinierten Routingeinstellungen an die Endpunkte gesendet. Anders ausgedrückt: Benutzer können einen Endpunkt zum Empfangen von Graphvorgangsereignissen, einen weiteren zum Empfangen von Gerätetelemetrieereignissen usw. angeben.
 
-![Weiterleiten von Digital Twins-Ereignissen][1]
+![Weiterleiten von Azure Digital Twins-Ereignissen][1]
 
-Beim Weiterleiten an **Event Hubs** werden Telemetrienachrichten in der ursprünglichen Reihenfolge gesendet. Das bedeutet, sie kommen beim Endpunkt in der gleichen Reihenfolge an wie sie ursprünglich empfangen wurden. **Event Grid** und **Service Bus** garantieren nicht, dass Endpunkte die Ereignisse in der gleichen Reihenfolge empfangen, in der sie aufgetreten sind. Das Ereignisschema schließt jedoch einen Zeitstempel ein, mit dem die Reihenfolge ermittelt werden kann, nachdem die Ereignisse am Endpunkt angekommen sind.
+Bei der Weiterleitung an Event Hubs wird die Reihenfolge beibehalten, in der Telemetrienachrichten gesendet werden. Sie gehen daher in der Reihenfolge, in der sie ursprünglich empfangen wurden, auf dem Endpunkt ein. Event Grid und Service Bus garantieren nicht, dass Endpunkte die Ereignisse in der gleichen Reihenfolge empfangen, in der sie aufgetreten sind. Das Ereignisschema enthält jedoch einen Zeitstempel, mit dem die Reihenfolge ermittelt werden kann, nachdem die Ereignisse auf dem Endpunkt eingegangen sind.
 
 ## <a name="route-implementation"></a>Implementieren von Routen
 
 Der Azure Digital Twins-Dienst unterstützt derzeit die folgenden Endpunkttypen (**EndpointTypes**):
 
-* **EventHub**: der Verbindungszeichenfolge-Endpunkt von Event Hub
-* **ServiceBus**: der Verbindungszeichenfolge-Endpunkt von Service Bus
-* **EventGrid**: der Verbindungszeichenfolge-Endpunkt von Event Grid
+* **EventHub** ist der Verbindungszeichenfolgen-Endpunkt von Event Hub.
+* **ServiceBus** ist der Verbindungszeichenfolgen-Endpunkt von Service Bus.
+* **EventGrid** ist der Verbindungszeichenfolgen-Endpunkt von Event Grid.
 
 Azure Digital Twins unterstützt derzeit die folgenden Ereignistypen (**EventTypes**), die an den ausgewählten Endpunkt gesendet werden:
 
-* **DeviceMessages**: Telemetrienachrichten, die von Benutzergeräten gesendet und vom System weitergeleitet werden.
-* **TopologyOperation**: Vorgänge, die den Graph oder seine Metadaten ändern. Dazu gehört beispielsweise das Hinzufügen oder Löschen einer Entität, z.B. eines Leerzeichens.
-* **SpaceChange**: Änderungen des berechneten Werts eines Bereichs als Ergebnis einer Gerätetelemetrienachricht.
-* **SensorChange**: Änderungen des berechneten Werts eines Sensors als Ergebnis einer Gerätetelemetrienachricht.
-* **UdfCustom**: Benutzerdefinierte Benachrichtigungen von einer benutzerdefinierten Funktion.
+* **DeviceMessages** sind Telemetrienachrichten, die von Benutzergeräten gesendet und vom System weitergeleitet werden.
+* **TopologyOperation** ist ein Vorgang, durch den der Graph oder seine Metadaten geändert werden. Ein Beispiel hierfür ist das Hinzufügen oder Löschen einer Entität, z. B. eines Gebäudebereichs.
+* **SpaceChange** ist eine Änderung des berechneten Werts eines Gebäudebereichs aufgrund einer Gerätetelemetrienachricht.
+* **SensorChange** ist eine Änderung des berechneten Werts eines Sensors aufgrund einer Gerätetelemetrienachricht.
+* **UdfCustom** ist eine benutzerdefinierte Benachrichtigung von einer benutzerdefinierten Funktion.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Nicht jedes **EndpointTypes**-Element unterstützt alle **EventTypes**-Elemente.
-> In der folgenden Tabelle finden Sie die für das jeweilige **EndpointType**-Element zulässigen **EventTypes**-Elemente.
+> In der folgenden Tabelle sind die für jeden **EndpointType** zulässigen **EventTypes** aufgeführt.
 
 |             | DeviceMessages | TopologyOperation | SpaceChange | SensorChange | UdfCustom |
 | ----------- | -------------- | ----------------- | ----------- | ------------ | --------- |
-| **EventHub**|     X          |         X         |     X       |      X       |   X       |
-| **ServiceBus**|              |         X         |     X       |      X       |   X       |
-| **EventGrid**|               |         X         |     X       |      X       |   X       |
+| EventHub|     X          |         X         |     X       |      X       |   X       |
+| ServiceBus|              |         X         |     X       |      X       |   X       |
+| EventGrid|               |         X         |     X       |      X       |   X       |
 
->[!NOTE]
->Weitere Informationen zum Erstellen von Endpunkten und Beispiele für Ereignisschemata finden Sie unter [Endpunkte und ausgehende Daten](how-to-egress-endpoints.md).
+>[!NOTE]  
+>Weitere Informationen zum Erstellen von Endpunkten und Beispiele für Ereignisschemata finden Sie unter [Ausgehende Daten und Endpunkte](how-to-egress-endpoints.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu Einschränkungen der Public Preview finden Sie unter [Azure Digital Twins (Vorschau): Einschränkungen](concepts-service-limits.md).
-
-Azure Digital Twins-Beispiele zum Testen finden Sie unter [Schnellstart: Suchen nach verfügbaren Räumen](quickstart-view-occupancy-dotnet.md).
+- Informationen zu den Einschränkungen der Vorschauversion von Azure Digital Twins finden Sie unter [Diensteinschränkungen der öffentlichen Vorschauversion](concepts-service-limits.md).
+- Wenn Sie ein Azure Digital Twins-Beispiel ausprobieren möchten, fahren Sie mit [Schnellstart: Suchen nach verfügbaren Räumen mithilfe von Azure Digital Twins](quickstart-view-occupancy-dotnet.md) fort.
 
 <!-- Images -->
 [1]: media/concepts/digital-twins-events-routing.png

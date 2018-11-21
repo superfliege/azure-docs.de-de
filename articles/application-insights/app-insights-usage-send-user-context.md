@@ -14,25 +14,26 @@ ms.date: 08/02/2017
 ms.reviewer: abgreg;mbullwin
 ms.pm_owner: daviste;NumberByColors
 ms.author: daviste
-ms.openlocfilehash: bfb04f596a61ff79c75cd38473c9480a29b0e6c4
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 5a224d7a78e35776b36b162228f6ba4c72677069
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50139889"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51636202"
 ---
-#  <a name="send-user-context-ids-to-enable-usage-experiences-in-azure-application-insights"></a>Senden von Benutzerkontext-IDs zur Nutzung in Azure Application Insights
+# <a name="send-user-context-ids-to-enable-usage-experiences-in-azure-application-insights"></a>Senden von Benutzerkontext-IDs zur Nutzung in Azure Application Insights
 
 ## <a name="tracking-users"></a>Nachverfolgen von Benutzern
 
-Mithilfe von Application Insights können Sie Ihre Benutzer durch eine Reihe von Produktnutzungstools überwachen und nachverfolgen: 
-* [Benutzer, Sitzungen, Ereignisse](https://docs.microsoft.com/azure/application-insights/app-insights-usage-segmentation)
-* [Trichter](https://docs.microsoft.com/azure/application-insights/usage-funnels)
-* [Vermerkdauer](https://docs.microsoft.com/azure/application-insights/app-insights-usage-retention)
-* Kohorten
-* [Arbeitsmappen](https://docs.microsoft.com/azure/application-insights/app-insights-usage-workbooks)
+Mithilfe von Application Insights können Sie Ihre Benutzer durch eine Reihe von Produktnutzungstools überwachen und nachverfolgen:
+
+- [Benutzer, Sitzungen, Ereignisse](https://docs.microsoft.com/azure/application-insights/app-insights-usage-segmentation)
+- [Trichter](https://docs.microsoft.com/azure/application-insights/usage-funnels)
+- [Aufbewahrungskohorten](https://docs.microsoft.com/azure/application-insights/app-insights-usage-retention)
+- [Arbeitsmappen](https://docs.microsoft.com/azure/application-insights/app-insights-usage-workbooks)
 
 Um nachzuverfolgen, welche Vorgänge ein Benutzer im Laufe der Zeit durchführt, erfordert Application Insights eine ID für jeden Benutzer bzw. jede Sitzung. Schließen Sie die folgenden IDs in jedem benutzerdefinierten Ereignis bzw. in jeder Seitenansicht ein.
+
 - Benutzer, Trichter, Vermerkdauer und Kohorten: Benutzer-ID einschließen
 - Sitzungen: Sitzungs-ID einschließen
 
@@ -41,6 +42,7 @@ Wenn Ihre App in das [JavaScript-SDK](https://docs.microsoft.com/azure/applicati
 ## <a name="choosing-user-ids"></a>Auswählen von Benutzer-IDs
 
 Benutzer-IDs sollten benutzersitzungsübergreifend beibehalten werden, um das Benutzerverhalten im Laufe der Zeit nachzuverfolgen. Es gibt verschiedene Methoden zur Beibehaltung der ID.
+
 - Behalten Sie sie als Definition eines Benutzers bei, der bereits in Ihrem Dienst vorhanden ist.
 - Wenn der Dienst Zugriff auf einen Browser hat, kann ein Cookie mit einer ID an den Browser übergeben werden. Die ID wird solange beibehalten wie das Cookie im Browser des Benutzers.
 - Bei Bedarf können Sie für jede Sitzung eine neue ID verwenden, die Ergebnisse bezüglich der Benutzer sind jedoch begrenzt. Beispielsweise können Sie nicht feststellen, inwiefern sich das Verhalten eines Benutzers im Laufe der Zeit ändert.
@@ -51,50 +53,92 @@ Eine ID, die personenbezogene Informationen über den Benutzer enthält, ist kei
 
 ## <a name="aspnet-apps-setting-the-user-context-in-an-itelemetryinitializer"></a>ASP.NET-Apps: Festlegen des Benutzerkontexts in einer ITelemetryInitializer-Eigenschaft
 
-Erstellen Sie einen Telemetrieinitialisierer, wie [hier](https://docs.microsoft.com/azure/application-insights/app-insights-api-filtering-sampling#add-properties-itelemetryinitializer) detailliert beschrieben wird, und legen Sie die Eigenschaften „Context.User.Id“ und „Context.Session.Id“ fest.
+Erstellen Sie einen Telemetrieinitialisierer. Eine ausführliche Beschreibung finden Sie [hier](https://docs.microsoft.com/azure/application-insights/app-insights-api-filtering-sampling#add-properties-itelemetryinitializer). Übergeben Sie die Sitzungs-ID über die Anforderungstelemetrie, und legen Sie „Context.User.Id“ und „Context.Session.Id“ fest.
 
 In diesem Beispiel wird die Benutzer-ID auf einen Bezeichner festgelegt, der nach der Sitzung abläuft. Wenn möglich, verwenden Sie eine Benutzer-ID, die sitzungsübergreifend beibehalten wird.
 
+### <a name="telemetry-initializer"></a>Telemetrieinitialisierer
+
 ```csharp
+using System;
+using System.Web;
+using Microsoft.ApplicationInsights.Channel;
+using Microsoft.ApplicationInsights.Extensibility;
 
-    using System;
-    using System.Web;
-    using Microsoft.ApplicationInsights.Channel;
-    using Microsoft.ApplicationInsights.Extensibility;
-
-    namespace MvcWebRole.Telemetry
+namespace MvcWebRole.Telemetry
+{
+  /*
+   * Custom TelemetryInitializer that sets the user ID.
+   *
+   */
+  public class MyTelemetryInitializer : ITelemetryInitializer
+  {
+    public void Initialize(ITelemetry telemetry)
     {
-      /*
-       * Custom TelemetryInitializer that sets the user ID.
-       *
-       */
-      public class MyTelemetryInitializer : ITelemetryInitializer
-      {
-        public void Initialize(ITelemetry telemetry)
+        var ctx = HttpContext.Current;
+
+        // If telemetry initializer is called as part of request execution and not from some async thread
+        if (ctx != null)
         {
-            // For a full experience, track each user across sessions. For an incomplete view of user 
-            // behavior within a session, store user ID on the HttpContext Session.
-            // Set the user ID if we haven't done so yet.
-            if (HttpContext.Current.Session["UserId"] == null)
+            var requestTelemetry = ctx.GetRequestTelemetry();
+ 
+            // Set the user and session ids from requestTelemetry.Context.User.Id, which is populated in Application_PostAcquireRequestState in Global.asax.cs.
+            if (requestTelemetry != null && !string.IsNullOrEmpty(requestTelemetry.Context.User.Id) &&
+                (string.IsNullOrEmpty(telemetry.Context.User.Id) || string.IsNullOrEmpty(telemetry.Context.Session.Id)))
             {
-                HttpContext.Current.Session["UserId"] = Guid.NewGuid();
+                // Set the user id on the Application Insights telemetry item.
+                telemetry.Context.User.Id = requestTelemetry.Context.User.Id;
+ 
+                // Set the session id on the Application Insights telemetry item.
+                telemetry.Context.Session.Id = requestTelemetry.Context.User.Id;
             }
-
-            // Set the user id on the Application Insights telemetry item.
-            telemetry.Context.User.Id = (string)HttpContext.Current.Session["UserId"];
-
-            // Set the session id on the Application Insights telemetry item.
-            telemetry.Context.Session.Id = HttpContext.Current.Session.SessionID;
         }
-      }
     }
+  }
+}
+```
+
+### <a name="globalasaxcs"></a>Global.asax.cs
+
+```csharp
+using System.Web;
+using System.Web.Http;
+using System.Web.Mvc;
+using System.Web.Optimization;
+using System.Web.Routing;
+
+namespace MvcWebRole.Telemetry
+{
+    public class MvcApplication : HttpApplication
+    {
+        protected void Application_Start()
+        {
+            AreaRegistration.RegisterAllAreas();
+            GlobalConfiguration.Configure(WebApiConfig.Register);
+            FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
+            RouteConfig.RegisterRoutes(RouteTable.Routes);
+            BundleConfig.RegisterBundles(BundleTable.Bundles);
+        }
+ 
+        protected void Application_PostAcquireRequestState()
+        {
+            var requestTelemetry = Context.GetRequestTelemetry();
+ 
+            if (HttpContext.Current.Session != null && requestTelemetry != null && string.IsNullOrEmpty(requestTelemetry.Context.User.Id))
+            {
+                requestTelemetry.Context.User.Id = Session.SessionID;
+            }
+        }
+    }
+}
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 - Um mit der Nutzung zu beginnen, senden Sie [benutzerdefinierte Ereignisse](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackevent) oder [Seitenansichten](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#page-views).
 - Wenn Sie bereits benutzerdefinierte Ereignisse oder Seitenansichten senden, finden Sie mithilfe der Nutzungstools heraus, wie Benutzer den Dienst verwenden.
-    * [Nutzungsübersicht](app-insights-usage-overview.md)
-    * [Benutzer-, Sitzungs- und Ereignisanalyse in Azure Application Insights](app-insights-usage-segmentation.md)
-    * [Trichter](usage-funnels.md)
-    * [Vermerkdauer](app-insights-usage-retention.md)
-    * [Arbeitsmappen](app-insights-usage-workbooks.md)
+    - [Nutzungsübersicht](app-insights-usage-overview.md)
+    - [Benutzer-, Sitzungs- und Ereignisanalyse in Azure Application Insights](app-insights-usage-segmentation.md)
+    - [Trichter](usage-funnels.md)
+    - [Vermerkdauer](app-insights-usage-retention.md)
+    - [Arbeitsmappen](app-insights-usage-workbooks.md)

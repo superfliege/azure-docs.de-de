@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 08/09/2018
 ms.author: ryanwi
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 3b350deff2883761af6a3a2b3c5c9ef22235bde0
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: cb5b421c1bcfe888d65335f3ab7f67bed80eec34
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "40038097"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51614258"
 ---
 # <a name="store-state-in-an-azure-service-fabric-mesh-application-by-mounting-an-azure-files-based-volume-inside-the-container"></a>Speichern des Status in einer Azure Service Fabric Mesh-Anwendung durch Einbinden eines auf Azure Files basierenden Volumes im Container
 
@@ -62,10 +62,10 @@ Erstellen Sie die Anwendung und die zugehörigen Ressourcen mit dem folgenden Be
 
 Der `storageAccountKey`-Parameter in der Vorlage ist eine sichere Zeichenfolge. Er wird nicht im Bereitstellungsstatus und den `az mesh service show`-Befehlen angezeigt. Stellen Sie sicher, dass er im folgenden Befehl ordnungsgemäß angegeben ist.
 
-Der folgende Befehl stellt eine Linux-Anwendung mit der Vorlage [mesh_rp.linux.json](https://sfmeshsamples.blob.core.windows.net/templates/counter/mesh_rp.linux.json) bereit. Zum Bereitstellen einer Windows-Anwendung verwenden Sie die Vorlage [mesh_rp.windows.json](https://sfmeshsamples.blob.core.windows.net/templates/counter/mesh_rp.windows.json). Beachten Sie, dass die Bereitstellung größerer Containerimages länger dauern kann.
+Der folgende Befehl stellt eine Linux-Anwendung mit der Vorlage [counter.azurefilesvolume.linux.json](https://sfmeshsamples.blob.core.windows.net/templates/counter/counter.azurefilesvolume.linux.json) bereit. Zum Bereitstellen einer Windows-Anwendung verwenden Sie die Vorlage [counter.azurefilesvolume.windows.json](https://sfmeshsamples.blob.core.windows.net/templates/counter/counter.azurefilesvolume.windows.json). Beachten Sie, dass die Bereitstellung größerer Containerimages länger dauern kann.
 
 ```azurecli-interactive
-az mesh deployment create --resource-group myResourceGroup --template-uri https://sfmeshsamples.blob.core.windows.net/templates/counter/mesh_rp.linux.json  --parameters "{\"location\": {\"value\": \"eastus\"}, \"fileShareName\": {\"value\": \"<fileShareName>\"}, \"storageAccountName\": {\"value\": \"<storageAccountName>\"}, \"storageAccountKey\": {\"value\": \"<storageAccountKey>\"}}"
+az mesh deployment create --resource-group myResourceGroup --template-uri https://sfmeshsamples.blob.core.windows.net/templates/counter/counter.azurefilesvolume.linux.json  --parameters "{\"location\": {\"value\": \"eastus\"}, \"fileShareName\": {\"value\": \"<fileShareName>\"}, \"storageAccountName\": {\"value\": \"<storageAccountName>\"}, \"storageAccountKey\": {\"value\": \"<storageAccountKey>\"}}"
 ```
 
 In wenigen Minuten sollte der Befehl Folgendes zurückgeben: `counterApp has been deployed successfully on counterAppNetwork with public ip address <IP Address>`

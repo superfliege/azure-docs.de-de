@@ -2,7 +2,7 @@
 title: 'Tutorial: Konfigurieren von Workday für die automatische Benutzerbereitstellung in Azure Active Directory | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie Azure Active Directory für das automatische Bereitstellen und Aufheben der Bereitstellung von Benutzerkonten in Workday konfigurieren.
 services: active-directory
-author: asmalser-msft
+author: cmmdesai
 documentationcenter: na
 manager: mtillman
 ms.assetid: 1a2c375a-1bb1-4a61-8115-5a69972c6ad6
@@ -13,23 +13,23 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 06/18/2018
-ms.author: asmalser
-ms.openlocfilehash: 62dc796de430e7c5926f3231db29ef554f210142
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.author: chmutali
+ms.openlocfilehash: 30354ddb010c22dabe5cd69373ae59daaf4a8b46
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51016776"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51346744"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning-preview"></a>Tutorial: Konfigurieren von Workday für die automatische Benutzerbereitstellung (Vorschau)
 
-In diesem Tutorial werden die Schritte vorgestellt, die Sie zum Importieren von Personen aus Workday in sowohl Active Directory als auch Azure Active Directory ausführen müssen, wobei einige Attribute optional in Workday zurückgeschrieben werden.
+In diesem Tutorial werden die Schritte vorgestellt, die Sie zum Importieren von Mitarbeiterprofilen aus Workday in sowohl Active Directory als auch Azure Active Directory ausführen müssen, wobei einige E-Mail-Adressen optional in Workday zurückgeschrieben werden.
 
 ## <a name="overview"></a>Übersicht
 
 Der [Azure Active Directory-Benutzerbereitstellungsdienst](../manage-apps/user-provisioning.md) ist zum Bereitstellen von Benutzerkonten mit der [Workday Human Resources-API](https://community.workday.com/sites/default/files/file-hosting/productionapi/Human_Resources/v21.1/Get_Workers.html) integriert. Azure AD nutzt diese Verbindung zum Ermöglichen der folgenden Workflows für die Benutzerbereitstellung:
 
-* **Bereitstellung von Benutzern in Active Directory**: Sie können ausgewählte Gruppen von Benutzern aus Workday in eine oder mehrere Active Directory-Gesamtstrukturen synchronisieren.
+* **Bereitstellung von Benutzern in Active Directory:** Sie können ausgewählte Gruppen von Benutzern aus Workday in eine oder mehrere Active Directory-Domänen synchronisieren.
 
 * **Bereitstellung reiner Cloudbenutzer in Azure Active Directory**: In Szenarien, in denen kein lokales Active Directory verwendet wird, können Benutzer mithilfe des Azure AD-Benutzerbereitstellungsdiensts direkt aus Workday in Azure Active Directory bereitgestellt werden. 
 
@@ -63,7 +63,27 @@ Diese Workday-Benutzerbereitstellungslösung ist derzeit als öffentliche Vorsch
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-hybrid-note.md)]
 
-## <a name="planning-your-solution"></a>Planen der Lösung
+## <a name="solution-architecture"></a>Lösungsarchitektur
+
+In diesem Abschnitt wird die Lösungsarchitektur der End-to-End-Benutzerbereitstellung für häufige Hybridumgebungen beschrieben. Es gibt zwei zugehörige Flows:
+
+* **Autoritativer Personaldatenfluss – aus Workday in ein lokales Active Directory:** In diesem Flow treten mitarbeiterbezogene Ereignisse (z.B. Neueinstellungen, Wechsel, Kündigungen) zuerst im Cloudpersonalmandanten von Workday ein. Die Ereignisdaten fließen dann über Azure AD und den Bereitstellungs-Agent in ein lokales Active Directory. Abhängig vom Ereignis kann dies dann in Active Directory zu Erstellungs-, Aktualisierungs-, Aktivierungs- oder Deaktivierungsvorgängen führen.
+* **E-Mail-Rückschreibefluss – aus dem lokalen Active Directory in Workday:** Nach Abschluss der Kontoerstellung in Active Directory wird es über Azure AD Connect mit Azure AD synchronisiert. Anschließend kann das E-Mail-Attribut aus Active Directory zurück in Workday geschrieben werden.
+
+![Übersicht](./media/workday-inbound-tutorial/wd_overview.png)
+
+### <a name="end-to-end-user-data-flow"></a>End-to-End-Benutzerdatenfluss
+
+1. Das Team der Personalabteilung führt Mitarbeitertransaktionen (Einstellungen/Wechsel/Kündigungen) in Workday HCM aus.
+2. Der Azure AD-Bereitstellungsdienst führt geplante Synchronisierungen von Identitäten aus Workday HR aus und ermittelt Änderungen, die für eine Synchronisierung mit dem lokalen Active Directory verarbeitet werden müssen.
+3. Der Azure AD-Bereitstellungsdienst ruft den lokalen AAD Connect-Bereitstellungs-Agent mit einer Anforderungsnutzlast auf, die die Erstellungs-, Aktualisierungs-, Aktivierungs- oder Deaktivierungsvorgänge für das AD-Konto enthält.
+4. Der Azure AD Connect-Bereitstellungs-Agent verwendet ein Dienstkonto zum Hinzufügen/Aktualisieren von AD-Kontodaten.
+5. Die Azure AD Connect-/AAD Sync-Engine führt eine Deltasynchronisierung aus, um Updates in Active Directory zu pullen.
+6. Die Active Directory-Updates werden mit Azure Active Directory synchronisiert.
+7. Wenn der Workday Writeback-Connector konfiguriert ist, schreibt er das E-Mail-Attribut zurück in Workday, wenn das verwendete Attribut übereinstimmt.
+
+
+## <a name="planning-your-deployment"></a>Planen der Bereitstellung
 
 Überprüfen Sie vor Beginn der Workday-Integration die folgenden Voraussetzungen, und lesen Sie die folgende Anleitung zum Erfüllen Ihrer aktuellen Anforderungen an die Active Directory-Architektur und -Benutzerbereitstellung mithilfe der von Azure Active Directory gebotenen Lösungen.
 
@@ -74,10 +94,10 @@ Das in diesem Lernprogramm verwendete Szenario setzt voraus, dass Sie bereits ü
 * Gültiges Azure AD Premium P1-Abonnement mit globalem Administratorzugriff
 * Workday-Implementierungsmandant für Test- und Integrationszwecke
 * Administratorberechtigungen in Workday zum Erstellen eines Systemintegrationsbenutzers für Testzwecke und Vornehmen von Änderungen zum Testen von Mitarbeiterdaten
-* Für die Benutzerbereitstellung in Active Directory einen der Domäne beigetretenen Server mit mindestens Windows Server 2012 zum Hosten des [lokalen Synchronisierungs-Agents](https://go.microsoft.com/fwlink/?linkid=847801)
+* Für die Benutzerbereitstellung in Active Directory einen Server mit mindestens Windows Server 2012 und der .NET-Runtime 4.7 zum Hosten des [lokalen Bereitstellungs-Agents](https://go.microsoft.com/fwlink/?linkid=847801)
 * [Azure AD Connect](../hybrid/whatis-hybrid-identity.md) für die Synchronisierung zwischen Active Directory und Azure AD
 
-### <a name="solution-architecture"></a>Lösungsarchitektur
+### <a name="planning-considerations"></a>Überlegungen zur Planung
 
 Azure AD bietet einen umfangreichen Satz von Bereitstellungsconnectors, die Sie bei der Bereitstellung und der Verwaltung des Identitätslebenszyklus zwischen Workday und Active Directory, Azure AD, SaaS-Apps usw. unterstützen. Die zu verwendenden Features und die Einrichtung der Lösung variieren abhängig von der Umgebung und den Anforderungen Ihrer Organisation. Führen Sie als ersten Schritt eine Bestandsaufnahme durch, welche der folgenden Elemente in Ihrer Organisation vorhanden und bereitgestellt sind:
 
@@ -91,140 +111,46 @@ Azure AD bietet einen umfangreichen Satz von Bereitstellungsconnectors, die Sie 
 
 Sobald Sie die Antworten auf diese Fragen kennen, können Sie Ihre Workday-Bereitstellung gemäß der folgenden Anleitung planen.
 
-#### <a name="using-provisioning-connector-apps"></a>Verwenden von Bereitstellungsconnector-Apps
+#### <a name="planning-deployment-of-aad-connect-provisioning-agent"></a>Planen der Bereitstellung des AAD Connect-Bereitstellungs-Agents
 
-Azure Active Directory unterstützt vorintegrierte Bereitstellungsconnectors für Workday und eine große Anzahl von SaaS-Anwendungen.
+Die Lösung für die Benutzerbereitstellung von Workday zu AD erfordert das Bereitstellen mindestens eines Bereitstellungs-Agents auf Servern unter Windows 2012 R2 oder höher mit mindestens 4 GB RAM und der .NET-Runtime 4.7 oder höher. Die folgenden Aspekte müssen vor der Installation des Bereitstellungs-Agents berücksichtigt werden:
 
-Ein einzelner Bereitstellungsconnector kommuniziert mit der API eines einzelnen Quellsystems und hilft bei der Bereitstellung von Daten in einem einzelnen Zielsystem. Die meisten Bereitstellungsconnectors, die Azure AD unterstützt, sind für ein einzelnes Quell- und Zielsystem vorgesehen (z.B. Azure AD zu ServiceNow) und können eingerichtet werden, indem die betreffende App (etwa ServiceNow) aus dem Azure AD-App-Katalog hinzugefügt wird.
+* Stellen Sie sicher, dass der Hostserver, auf dem der Bereitstellungs-Agent ausgeführt wird, Netzwerkzugriff auf die AD-Zieldomäne hat.
+* Der Konfigurations-Assistent für den Bereitstellungs-Agent registriert den Agent bei Ihrem Azure AD-Mandanten. Für den Registrierungsprozess ist Zugriff auf *.msappproxy.net über Port 8082 notwendig. Stellen Sie sicher, dass die Firewallregeln für ausgehenden Datenverkehr diese Kommunikation erlauben.
+* Der Bereitstellungs-Agent verwendet ein Dienstkonto für die Kommunikation mit den lokalen AD-Domänen. Vor der Installation des Agents empfiehlt es sich, ein Dienstkonto mit Lese-/Schreibberechtigungen für die Benutzereigenschaften und einem Kennwort, das nicht abläuft, zu erstellen.  
+* Sie können während der Konfiguration des Bereitstellungs-Agents Domänencontroller auswählen, die Bereitstellungsanforderungen verarbeiten sollen. Wenn Sie über mehrere geografisch verteilte Domänencontroller verfügen, Installieren Sie den Bereitstellungs-Agent am selben Standort wie Ihre bevorzugten Domänencontroller. Damit steigern Sie die Zuverlässigkeit und Leistung der End-to-End-Lösung.
+* Für Hochverfügbarkeit können Sie auch mehrere Bereitstellungs-Agents bereitstellen und registrieren, die dann den gleichen Satz von lokalen AD-Domänen behandeln.
 
-Es gibt eine direkte Beziehung zwischen Bereitstellungsconnectorinstanzen und App-Instanzen in Azure AD:
+> [!IMPORTANT]
+> Für Hochverfügbarkeit in Produktionsumgebungen empfiehlt Microsoft mindestens drei Bereitstellungs-Agents, die mit Ihrem Azure AD-Mandanten konfiguriert sind.
 
-| Quellsystem | Zielsystem |
-| ---------- | ---------- |
-| Azure AD-Mandant | SaaS-Anwendung |
+#### <a name="selecting-provisioning-connector-apps-to-deploy"></a>Auswählen von Bereitstellungsconnector-Apps für die Bereitstellung
 
-Beim Arbeiten mit Workday und Active Directory müssen jedoch mehrere Quell- und Zielsysteme berücksichtigt werden:
+Beim Integrieren von Workday und Active Directory müssen mehrere Quell- und Zielsysteme berücksichtigt werden:
 
 | Quellsystem | Zielsystem | Notizen |
 | ---------- | ---------- | ---------- |
-| Workday | Active Directory-Gesamtstruktur | Jede Gesamtstruktur wird als eigenes Zielsystem behandelt. |
+| Workday | Active Directory-Domäne | Jede Domäne wird als eigenes Zielsystem behandelt. |
 | Workday | Azure AD-Mandant | Entsprechend dem Bedarf reiner Cloudbenutzer. |
 | Active Directory-Gesamtstruktur | Azure AD-Mandant | Dieser Flow erfolgt derzeit über AAD Connect. |
-| Azure AD-Mandant | Workday | Für das Zurückschreiben von E-Mail-Adressen. |
+| Azure AD-Mandant | Workday | Für das Zurückschreiben von E-Mail-Adressen |
 
-Um diese zahlreichen Workflows zu mehreren Quell- und Zielsystemen zu erleichtern, bietet Azure AD mehrere Bereitstellungsconnector-Apps, die über den Azure AD-App-Katalog hinzugefügt werden können:
+Um Bereitstellungsworkflows für Workday und Active Directory zu ermöglichen, bietet Azure AD mehrere Bereitstellungsconnector-Apps, die über den Azure AD-App-Katalog hinzugefügt werden können:
 
-![AAD-App-Katalog](./media/workday-inbound-tutorial/WD_Gallery.PNG)
+![AAD-App-Katalog](./media/workday-inbound-tutorial/wd_gallery.png)
 
-* **Workday to Active Directory Provisioning**: Diese App vereinfacht die Bereitstellung von Benutzerkonten aus Workday in eine einzelne Active Directory-Gesamtstruktur. Wenn Sie über mehrere Gesamtstrukturen verfügen, können Sie eine Instanz dieser App aus dem Azure AD-App-Katalog für jede Active Directory-Gesamtstruktur hinzufügen, in der die Bereitstellung erfolgen soll.
+* **Workday to Active Directory Provisioning:** Diese App vereinfacht die Bereitstellung von Benutzerkonten aus Workday in eine einzelne Active Directory-Domäne. Wenn Sie über mehrere Domänen verfügen, können Sie eine Instanz dieser App aus dem Azure AD-App-Katalog für jede Active Directory-Domäne hinzufügen, in der die Bereitstellung erfolgen soll.
 
 * **Workday to Azure AD Provisioning**: Wenngleich AAD Connect das Tool ist, das Sie zum Synchronisieren von Active Directory-Benutzern mit Azure Active Directory verwenden sollten, können Sie auch diese App nutzen, um die Bereitstellung reiner Cloudbenutzer aus Workday in einem einzelnen Azure Active Directory-Mandanten zu erleichtern.
 
-* **Workday Writeback**: Diese App vereinfacht das Zurückschreiben von E-Mail-Adressen von Benutzern aus Azure Active Directory in Workday.
+* **Workday Writeback:** Diese App vereinfacht das Zurückschreiben von E-Mail-Adressen von Benutzern aus Azure Active Directory in Workday.
 
 > [!TIP]
 > Die reguläre „Workday“-App dient zum Einrichten des einmaligen Anmeldens zwischen Workday und Azure Active Directory. 
 
-Das Einrichten und Konfigurieren dieser spezielle Bereitstellungsconnector-Apps ist das Thema in den verbleibenden Abschnitten dieses Tutorials. Welche Apps Sie konfigurieren, hängt davon ab, in welchen Systemen die Bereitstellung erfolgen soll und wie viele Active Directory-Gesamtstrukturen und Azure AD-Mandanten in Ihrer Umgebung vorhanden sind.
+#### <a name="determine-workday-to-ad-user-attribute-mapping-and-transformations"></a>Bestimmen der Benutzerattributzuordnung und Transformationen zwischen Workday und AD
 
-![Übersicht](./media/workday-inbound-tutorial/WD_Overview.PNG)
-
-## <a name="configure-a-system-integration-user-in-workday"></a>Konfigurieren eines Systemintegrationsbenutzers in Workday
-Eine gängige Anforderung an alle Workday-Bereitstellungsconnectors sind Anmeldeinformationen für ein Workday-Systemintegrationskonto, mit dem eine Verbindung mit der Workday Human Resources-API hergestellt wird. In diesem Abschnitt wird das Erstellen eines Systemintegrationskontos in Workday beschrieben.
-
-> [!NOTE]
-> Sie können diesen Schritt auslassen und stattdessen ein globales Workday-Administratorkonto als Systemintegrationskonto nutzen. Diese Vorgehensweise ist für Demos einwandfrei, wird jedoch für Produktionsbereitstellungen nicht empfohlen.
-
-### <a name="create-an-integration-system-user"></a>Erstellen eines Integrationssystembenutzers
-
-**So erstellen Sie einen Integrationssystembenutzer**
-
-1. Melden Sie sich mithilfe eines Administratorkontos bei Ihrem Workday-Mandanten an. Geben Sie in der **Workday-Workbench** die Suchzeichenfolge „Benutzer erstellen“ in das Suchfeld ein, und klicken Sie dann auf den Link **Integrationssystembenutzer erstellen**.
-
-    ![Benutzer erstellen](./media/workday-inbound-tutorial/IC750979.png "Benutzer erstellen")
-2. Führen Sie die Aufgabe **Integrationssystembenutzer erstellen** aus, indem Sie einen Benutzernamen und ein Kennwort für einen neuen Integrationssystembenutzer angeben.  
- * Lassen Sie das Kontrollkästchen **Bei der nächsten Anmeldung neues Kennwort anfordern** deaktiviert. Dieser Benutzer meldet sich programmgesteuert an.
- * Übernehmen Sie für **Sitzungstimeout in Minuten** den Standardwert 0. Diese Einstellung verhindert, dass Sitzungen des Benutzers vorzeitig beendet werden.
-
-    ![Integrationssystembenutzer erstellen](./media/workday-inbound-tutorial/IC750980.png "Integrationssystembenutzer erstellen")
-
-### <a name="create-a-security-group"></a>Erstellen einer Sicherheitsgruppe
-Sie müssen eine uneingeschränkte Integrationssystem-Sicherheitsgruppe erstellen und den Benutzer dieser Gruppe zuweisen.
-
-**So erstellen Sie eine Sicherheitsgruppe**
-
-1. Geben Sie „Sicherheitsgruppe erstellen“ in das Suchfeld ein, und klicken Sie dann auf **Sicherheitsgruppe erstellen**.
-
-    ![Sicherheitsgruppe erstellen](./media/workday-inbound-tutorial/IC750981.png "Sicherheitsgruppe erstellen")
-2. Führen Sie die Aufgabe **Sicherheitsgruppe erstellen** aus.  
-3. Wählen Sie in der Dropdownliste **Type of Tenanted Security Group** (Typ der Mandantensicherheitsgruppe) die Option **Integration System Security Group (Unconstrained)** (Integrationssystem-Sicherheitsgruppe – uneingeschränkt) aus.
-4. Erstellen Sie eine Sicherheitsgruppe, der die Mitglieder explizit hinzugefügt werden.
-
-    ![Sicherheitsgruppe erstellen](./media/workday-inbound-tutorial/IC750982.png "Sicherheitsgruppe erstellen")
-
-### <a name="assign-the-integration-system-user-to-the-security-group"></a>Zuweisen des Integrationssystembenutzers zur Sicherheitsgruppe
-
-**So weisen Sie den Integrationssystembenutzer zu**
-
-1. Geben Sie „Sicherheitsgruppe bearbeiten“ in das Suchfeld ein, und klicken Sie dann auf **Sicherheitsgruppe bearbeiten**.
-
-    ![Sicherheitsgruppe bearbeiten](./media/workday-inbound-tutorial/IC750983.png "Sicherheitsgruppe bearbeiten")
-1. Suchen Sie anhand des Namens nach der neuen Integrationssicherheitsgruppe, und wählen Sie sie aus.
-
-    ![Sicherheitsgruppe bearbeiten](./media/workday-inbound-tutorial/IC750984.png "Sicherheitsgruppe bearbeiten")
-2. Fügen Sie den neuen Integrationssystembenutzer der neuen Sicherheitsgruppe hinzu. 
-
-    ![Systemsicherheitsgruppe](./media/workday-inbound-tutorial/IC750985.png "Systemsicherheitsgruppe")  
-
-### <a name="configure-security-group-options"></a>Konfigurieren von Sicherheitsgruppenoptionen
-In diesem Schritt gewähren Sie der Sicherheitsgruppe Berechtigungen für Domänensicherheitsrichtlinien für die Mitarbeiterdaten.
-
-**So konfigurieren Sie Sicherheitsgruppenoptionen**
-
-1. Geben Sie **Domänensicherheitsrichtlinien** in das Suchfeld ein, und klicken Sie dann auf den Link **Domain Security Policies for Functional Area** (Domänensicherheitsrichtlinien für Funktionsbereich).  
-
-    ![Domänensicherheitsrichtlinien](./media/workday-inbound-tutorial/IC750986.png "Domänensicherheitsrichtlinien")  
-2. Suchen Sie nach "System", und wählen Sie den Funktionsbereich **System** aus.  Klicken Sie auf **OK**.  
-
-    ![Domänensicherheitsrichtlinien](./media/workday-inbound-tutorial/IC750987.png "Domänensicherheitsrichtlinien")  
-3. Erweitern Sie in der Liste der Sicherheitsrichtlinien für den Funktionsbereich „System“ den Eintrag **Sicherheitsverwaltung**, und wählen Sie die Domänensicherheitsrichtlinie **Externe Kontobereitstellung** aus.  
-
-    ![Domänensicherheitsrichtlinien](./media/workday-inbound-tutorial/IC750988.png "Domänensicherheitsrichtlinien")  
-1. Klicken Sie auf **Berechtigungen bearbeiten**, und fügen Sie die neue Sicherheitsgruppe auf der Dialogfeldseite **Berechtigungen bearbeiten** zur Liste der Sicherheitsgruppen mit Berechtigungen für die **Get**- und **Put**-Integration hinzu.
-
-    ![Berechtigung bearbeiten](./media/workday-inbound-tutorial/IC750989.png "Berechtigung bearbeiten")  
-
-1. Wiederholen Sie die obigen Schritte 1 bis 4 für jede der folgenden verbleibenden Sicherheitsrichtlinien:
-
-| Vorgang | Domänensicherheitsrichtlinie |
-| ---------- | ---------- | 
-| Get und Put | Mitarbeiterdaten: öffentliche Mitarbeiterberichte |
-| Get und Put | Mitarbeiterdaten: Kontaktinformationen von Mitarbeitern |
-| Get | Mitarbeiterdaten: alle Positionen |
-| Get | Mitarbeiterdaten: aktuelle Personalinformationen |
-| Get | Mitarbeiterdaten: Berufsbezeichnung in Mitarbeiterprofil |
-
-
-### <a name="activate-security-policy-changes"></a>Aktivieren von Sicherheitsrichtlinienänderungen
-
-**So aktivieren Sie Sicherheitsrichtlinienänderungen**
-
-1. Geben Sie „aktivieren“ in das Suchfeld ein, und klicken Sie dann auf den Link **Ausstehende Sicherheitsrichtlinienänderungen aktivieren**.
-
-    ![Aktivieren](./media/workday-inbound-tutorial/IC750992.png "Aktivieren") 
-2. Geben Sie zum Ausführen der Aufgabe „Ausstehende Sicherheitsrichtlinienänderungen aktivieren“ zunächst einen Kommentar für Überwachungszwecke ein, und klicken Sie dann auf die Schaltfläche **OK**. 
-
-    ![Ausstehende Sicherheitsrichtlinienänderungen aktivieren](./media/workday-inbound-tutorial/IC750993.png "Ausstehende Sicherheitsrichtlinienänderungen aktivieren")  
-1. Führen Sie die Aufgabe auf dem nächsten Bildschirm aus, indem Sie das Kontrollkästchen **Bestätigen** aktivieren und auf **OK** klicken.
-
-    ![Ausstehende Sicherheitsrichtlinienänderungen aktivieren](./media/workday-inbound-tutorial/IC750994.png "Ausstehende Sicherheitsrichtlinienänderungen aktivieren")  
-
-## <a name="configuring-user-provisioning-from-workday-to-active-directory"></a>Konfiguration der Benutzerbereitstellung aus Workday in Active Directory
-Befolgen Sie diese Anweisungen zum Konfigurieren der Bereitstellung von Benutzerkonten aus Workday in den einzelnen Active Directory-Gesamtstrukturen, in denen die Bereitstellung erfolgen soll.
-
-### <a name="planning"></a>Planung
-
-Beantworten Sie die folgenden Fragen, bevor Sie die Benutzerbereitstellung in einer Active Directory-Gesamtstruktur konfigurieren. Die Antworten auf diese Fragen bestimmen, wie Ihre Bereichsfilter und Attributzuordnungen festgelegt werden müssen. 
+Beantworten Sie die folgenden Fragen, bevor Sie die Benutzerbereitstellung in einer Active Directory-Domäne konfigurieren. Die Antworten auf diese Fragen bestimmen, wie Ihre Bereichsfilter und Attributzuordnungen festgelegt werden müssen.
 
 * **Welche Benutzer in Workday müssen in dieser Active Directory-Gesamtstruktur bereitgestellt werden?**
 
@@ -255,9 +181,189 @@ Beantworten Sie die folgenden Fragen, bevor Sie die Benutzerbereitstellung in ei
 * **Enthält die Active Directory-Gesamtstruktur bereits die Benutzer-IDs, die notwendig sind, damit die Zuordnungslogik funktioniert?**
 
   * *Beispiel: Im Fall einer neuen Workday-Bereitstellung wird dringend empfohlen, Active Directory vorab mit den korrekten „Worker_ID“-Werten aus Workday (oder einem eindeutigen ID-Wert Ihrer Wahl) aufzufüllen, um die Zuordnungslogik so einfach wie möglich zu halten.*
+
+
+
+Das Einrichten und Konfigurieren dieser spezielle Bereitstellungsconnector-Apps ist das Thema in den verbleibenden Abschnitten dieses Tutorials. Welche Apps Sie konfigurieren, hängt davon ab, in welchen Systemen die Bereitstellung erfolgen soll und wie viele Active Directory-Domänen und Azure AD-Mandanten in Ihrer Umgebung vorhanden sind.
+
+
+
+## <a name="configure-integration-system-user-in-workday"></a>Konfigurieren eines Integrationssystembenutzers in Workday
+
+Eine gängige Anforderung an alle Workday-Bereitstellungsconnectors sind Anmeldeinformationen für ein Workday-Systemintegrationskonto, mit dem eine Verbindung mit der Workday Human Resources-API hergestellt wird. In diesem Abschnitt wird das Erstellen eines Integrationssystembenutzers in Workday beschrieben.
+
+> [!NOTE]
+> Sie können diesen Schritt auslassen und stattdessen ein globales Workday-Administratorkonto als Systemintegrationskonto nutzen. Diese Vorgehensweise ist für Demos einwandfrei, wird jedoch für Produktionsbereitstellungen nicht empfohlen.
+
+### <a name="create-an-integration-system-user"></a>Erstellen eines Integrationssystembenutzers
+
+**So erstellen Sie einen Integrationssystembenutzer**
+
+1. Melden Sie sich mithilfe eines Administratorkontos bei Ihrem Workday-Mandanten an. Geben Sie in der **Workday-Anwendung** die Suchzeichenfolge „Benutzer erstellen“ in das Suchfeld ein, und klicken Sie dann auf den Link **Create Integration System User** (Integrationssystembenutzer erstellen).
+
+    ![Benutzer erstellen](./media/workday-inbound-tutorial/wd_isu_01.png "Benutzer erstellen")
+2. Führen Sie die Aufgabe **Integrationssystembenutzer erstellen** aus, indem Sie einen Benutzernamen und ein Kennwort für einen neuen Integrationssystembenutzer angeben.  
+ * Lassen Sie das Kontrollkästchen **Bei der nächsten Anmeldung neues Kennwort anfordern** deaktiviert. Dieser Benutzer meldet sich programmgesteuert an.
+ * Übernehmen Sie für **Sitzungstimeout in Minuten** den Standardwert 0. Diese Einstellung verhindert, dass Sitzungen des Benutzers vorzeitig beendet werden.
+ * Wählen Sie die Option **Do Not Allow UI Sessions** (Keine Sitzungen mit Benutzeroberfläche zulassen) aus. Sie bietet zusätzliche Sicherheit, da sie verhindert, dass sich ein Benutzer mit dem Kennwort für das Integrationssystem bei Workday anmeldet. 
+
+    ![Integrationssystembenutzer erstellen](./media/workday-inbound-tutorial/wd_isu_02.png "Integrationssystembenutzer erstellen")
+
+### <a name="create-a-security-group"></a>Erstellen einer Sicherheitsgruppe
+In diesem Schritt erstellen Sie eine uneingeschränkte Sicherheitsgruppe für das Integrationssystem in Workday und ordnen den Integrationssystembenutzer, den Sie im vorherigen Schritt erstellt haben, dieser Gruppe zu.
+
+**So erstellen Sie eine Sicherheitsgruppe**
+
+1. Geben Sie „Sicherheitsgruppe erstellen“ in das Suchfeld ein, und klicken Sie dann auf **Sicherheitsgruppe erstellen**.
+
+    ![Sicherheitsgruppe erstellen](./media/workday-inbound-tutorial/wd_isu_03.png "Sicherheitsgruppe erstellen")
+2. Führen Sie die Aufgabe **Sicherheitsgruppe erstellen** aus.  
+   * Wählen Sie in der Dropdownliste **Type of Tenanted Security Group** (Typ der Mandantensicherheitsgruppe) die Option **Integration System Security Group (Unconstrained)** (Integrationssystem-Sicherheitsgruppe – uneingeschränkt) aus.
+
+    ![Sicherheitsgruppe erstellen](./media/workday-inbound-tutorial/wd_isu_04.png "Sicherheitsgruppe erstellen")
+
+3. Nach dem Erstellen der Sicherheitsgruppe wird eine Seite angezeigt, auf der Sie der Sicherheitsgruppe Mitglieder zuweisen können. Fügen Sie den neuen Integrationssystembenutzer dieser Sicherheitsgruppe hinzu, und wählen Sie einen geeigneten Organisationsbereich aus.
+![Sicherheitsgruppe bearbeiten](./media/workday-inbound-tutorial/wd_isu_05.png "Sicherheitsgruppe bearbeiten")
+ 
+### <a name="configure-domain-security-policy-permissions"></a>Konfigurieren der Berechtigungen der Domänensicherheitsrichtlinie
+In diesem Schritt gewähren Sie der Sicherheitsgruppe die Berechtigungen der Domänensicherheitsrichtlinie für die Mitarbeiterdaten.
+
+**So konfigurieren Sie die Berechtigungen der Domänensicherheitsrichtlinie**
+
+1. Geben Sie **Domain Security Configuration** (Domänensicherheitskonfiguration) in das Suchfeld ein, und klicken Sie dann auf den Link **Domain Security Configuration Report** (Bericht zur Domänensicherheitskonfiguration).  
+
+    ![Domänensicherheitsrichtlinien](./media/workday-inbound-tutorial/wd_isu_06.png "Domänensicherheitsrichtlinien")  
+2. Suchen Sie im Textfeld **Domäne** nach den folgenden Domänen, und fügen Sie sie einzeln dem Filter hinzu.  
+   * *External Account Provisioning* (Externe Kontobereitstellung)
+   * *Worker Data: Public Worker Reports* (Mitarbeiterdaten: öffentliche Mitarbeiterberichte)
+   * *Person Data: Work Contact Information* (Personendaten: Kontaktinformationen von Mitarbeitern)
+   * *Worker Data: All Positions* (Mitarbeiterdaten: alle Positionen)
+   * *Worker Data: Current Staffing Information* (Mitarbeiterdaten: aktuelle Personalinformationen)
+   * *Worker Data: Business Title on Worker Profile* (Mitarbeiterdaten: Berufsbezeichnung in Mitarbeiterprofil)
+ 
+    ![Domänensicherheitsrichtlinien](./media/workday-inbound-tutorial/wd_isu_07.png "Domänensicherheitsrichtlinien")  
+
+    ![Domänensicherheitsrichtlinien](./media/workday-inbound-tutorial/wd_isu_08.png "Domänensicherheitsrichtlinien") 
+
+    Klicken Sie auf **OK**.
+
+3. Wählen Sie im angezeigten Bericht die Auslassungspunkte (...) neben **External Account Provisioning** (Externe Kontobereitstellung) aus, und klicken Sie auf die Menüoption **Domain -> Edit Security Policy Permissions** (Domäne > Berechtigungen für Sicherheitsrichtlinie bearbeiten).
+
+    ![Domänensicherheitsrichtlinien](./media/workday-inbound-tutorial/wd_isu_09.png "Domänensicherheitsrichtlinien")  
+
+4. Scrollen Sie auf der Seite **Edit Domain Security Policy Permissions** (Berechtigungen für Domänensicherheitsrichtlinie bearbeiten) nach unten zum Abschnitt **Integration Permissions** (Integrationsberechtigungen). Klicken Sie auf das Zeichen „+“, um die Integrationssystemgruppe der Liste der Sicherheitsgruppen mit den Integrationsberechtigungen **Get** und **Put** hinzuzufügen.
+
+    ![Berechtigung bearbeiten](./media/workday-inbound-tutorial/wd_isu_10.png "Berechtigung bearbeiten")  
+
+5. Klicken Sie auf das Zeichen „+“, um die Integrationssystemgruppe der Liste der Sicherheitsgruppen mit den Integrationsberechtigungen **Get** und **Put** hinzuzufügen.
+
+    ![Berechtigung bearbeiten](./media/workday-inbound-tutorial/wd_isu_11.png "Berechtigung bearbeiten")  
+
+6. Wiederholen Sie die obigen Schritte 3 bis 5 für jede der folgenden verbleibenden Sicherheitsrichtlinien:
+
+   | Vorgang | Domänensicherheitsrichtlinie |
+   | ---------- | ---------- | 
+   | Get und Put | Mitarbeiterdaten: öffentliche Mitarbeiterberichte |
+   | Get und Put | Person Data: Work Contact Information (Personendaten: Kontaktinformationen von Mitarbeitern) |
+   | Get | Mitarbeiterdaten: alle Positionen |
+   | Get | Mitarbeiterdaten: aktuelle Personalinformationen |
+   | Get | Mitarbeiterdaten: Berufsbezeichnung in Mitarbeiterprofil |
+
+### <a name="configure-business-process-security-policy-permissions"></a>Konfigurieren von Sicherheitsrichtlinienberechtigungen für Geschäftsprozesse
+In diesem Schritt gewähren Sie der Sicherheitsgruppe Berechtigungen der Sicherheitsrichtlinien für Geschäftsprozesse für die Mitarbeiterdaten. Diese sind für das Einrichten des Workday Writeback-App-Connectors erforderlich. 
+
+**So konfigurieren Sie Sicherheitsrichtlinienberechtigungen für Geschäftsprozesse**
+
+1. Geben Sie **Business Process Policy** (Geschäftsprozessrichtlinie) in das Suchfeld ein, und klicken Sie dann auf den Link für die Aufgabe **Edit Business Process Security Policy** (Sicherheitsrichtlinie für Geschäftsprozesse bearbeiten).  
+
+    ![Sicherheitsrichtlinien für Geschäftsprozesse](./media/workday-inbound-tutorial/wd_isu_12.png "Sicherheitsrichtlinien für Geschäftsprozesse")  
+
+2. Suchen Sie im Textfeld **Business Process Type** (Geschäftsprozesstyp) nach *Contact* (Kontakt), wählen Sie den Geschäftsprozess **Contact Change** (Kontakt ändern) aus, und klicken Sie auf **OK**.
+
+    ![Sicherheitsrichtlinien für Geschäftsprozesse](./media/workday-inbound-tutorial/wd_isu_13.png "Sicherheitsrichtlinien für Geschäftsprozesse")  
+
+3. Scrollen Sie auf der Seite **Edit Business Process Security Policy** (Sicherheitsrichtlinien für Geschäftsprozesse bearbeiten) zum Abschnitt **Maintain Contact Information (Web Service)** (Kontaktinformationen verwalten (Webdienst)).
+
+    ![Sicherheitsrichtlinien für Geschäftsprozesse](./media/workday-inbound-tutorial/wd_isu_14.png "Sicherheitsrichtlinien für Geschäftsprozesse")  
+
+4. Wählen Sie die neue Sicherheitsgruppe des Integrationssystems aus, und fügen Sie sie der Liste der Sicherheitsgruppen hinzu, die Anforderungen an Webdienste initiieren können. Klicken Sie auf **Done** (Fertig). 
+
+    ![Sicherheitsrichtlinien für Geschäftsprozesse](./media/workday-inbound-tutorial/wd_isu_15.png "Sicherheitsrichtlinien für Geschäftsprozesse")  
+
+ 
+### <a name="activate-security-policy-changes"></a>Aktivieren von Sicherheitsrichtlinienänderungen
+
+**So aktivieren Sie Sicherheitsrichtlinienänderungen**
+
+1. Geben Sie „aktivieren“ in das Suchfeld ein, und klicken Sie dann auf den Link **Ausstehende Sicherheitsrichtlinienänderungen aktivieren**.
+
+    ![Aktivieren](./media/workday-inbound-tutorial/wd_isu_16.png "Aktivieren") 
+2. Geben Sie zum Ausführen der Aufgabe „Ausstehende Sicherheitsrichtlinienänderungen aktivieren“ zunächst einen Kommentar für Überwachungszwecke ein, und klicken Sie dann auf die Schaltfläche **OK**. 
+
+    ![Ausstehende Sicherheitsrichtlinienänderungen aktivieren](./media/workday-inbound-tutorial/wd_isu_17.png "Ausstehende Sicherheitsrichtlinienänderungen aktivieren")  
+1. Führen Sie die Aufgabe auf dem nächsten Bildschirm aus, indem Sie das Kontrollkästchen **Bestätigen** aktivieren und auf **OK** klicken.
+
+    ![Ausstehende Sicherheitsrichtlinienänderungen aktivieren](./media/workday-inbound-tutorial/wd_isu_18.png "Ausstehende Sicherheitsrichtlinienänderungen aktivieren")  
+
+## <a name="configuring-user-provisioning-from-workday-to-active-directory"></a>Konfiguration der Benutzerbereitstellung aus Workday in Active Directory
+
+Befolgen Sie diese Anweisungen zum Konfigurieren der Bereitstellung von Benutzerkonten aus Workday in jeder Active Directory-Domäne im Geltungsbereich Ihrer Integration.
+
+### <a name="part-1-install-and-configure-on-premises-provisioning-agents"></a>Teil 1: Installieren und Konfigurieren der lokalen Bereitstellungs-Agents
+
+Um Active Directory lokal bereitzustellen, muss ein Agent auf einem Server installiert mit .NET Framework 4.7 oder höher und Netzwerkzugriff auf die gewünschten Active Directory-Domänen installiert werden.
+
+> [!TIP]
+> Sie können die Version von .NET Framework auf dem Server mithilfe der Anweisungen [hier](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) überprüfen.
+> Wenn auf dem Server nicht .NET 4.7 oder höher installiert ist, können Sie es [hier](https://support.microsoft.com/help/3186497/the-net-framework-4-7-offline-installer-for-windows) herunterladen.  
+
+Nachdem Sie .NET 4.7 oder höher bereitgestellt haben, können Sie den **[lokalen Bereitstellungs-Agent hier](https://go.microsoft.com/fwlink/?linkid=847801)** herunterladen. Führen Sie die folgenden Schritte aus, um die Agent-Konfiguration abzuschließen.
+
+1. Melden Sie sich auf dem Windows-Server an, auf dem Sie den neuen Agent installieren möchten.
+2. Starten Sie den Installer für den Bereitstellungs-Agent, akzeptieren Sie die Bedingungen, und klicken Sie auf die Schaltfläche **Installieren**.
+![Installationsbildschirm](./media/workday-inbound-tutorial/pa_install_screen_1.png "Installationsbildschirm")
+
+3. Nachdem die Installation abgeschlossen ist, wird der Assistent gestartet, und der Bildschirm **Azure AD verbinden** wird angezeigt. Klicken Sie auf die Schaltfläche **Authentifizieren**, um eine Verbindung mit Ihrer Azure AD-Instanz herzustellen.
+![Azure AD verbinden](./media/workday-inbound-tutorial/pa_install_screen_2.png "Azure AD verbinden")
+
+4. Authentifizieren Sie Ihre Azure AD-Instanz mit den Anmeldeinformationen eines globalen Administrators. 
+![Administratorauthentifizierung](./media/workday-inbound-tutorial/pa_install_screen_3.png "Administratorauthentifizierung")
+
+5. Nach der erfolgreichen Authentifizierung mit Azure AD wird der Bildschirm **Active Directory verbinden** angezeigt. In diesem Schritt geben Sie Ihren AD-Domänennamen an und klicken auf die Schaltfläche **Verzeichnis hinzufügen**.
+![Verzeichnis hinzufügen](./media/workday-inbound-tutorial/pa_install_screen_4.png "Verzeichnis hinzufügen")
+
+6. Sie werden daraufhin aufgefordert, die Anmeldeinformationen für die Verbindung mit der AD-Domäne einzugeben. Auf dem gleichen Bildschirm können Sie die **Domänencontrollerpriorität auswählen**, um Domänencontroller anzugeben, die der Agent zum Senden von Bereitstellungsanforderungen verwenden soll.
+![Domänenanmeldeinformationen](./media/workday-inbound-tutorial/pa_install_screen_5.png "Domänenanmeldeinformationen")
+
+7. Nach dem Konfigurieren der Domäne zeigt der Installer eine Liste der konfigurierten Domänen an. Auf diesem Bildschirm können Sie Schritt 5 und 6 wiederholen, um weitere Domänen hinzuzufügen, oder auf **Weiter** klicken, um mit der Registrierung des Agents fortzufahren. 
+![Konfigurierte Domänen](./media/workday-inbound-tutorial/pa_install_screen_6.png "Konfigurierte Domänen")
+
+   > [!NOTE]
+   > Wenn Sie über mehrere AD-Domänen verfügen (z.B. na.contoso.com, emea.contoso.com), fügen Sie jede Domäne einzeln der Liste hinzu. Das alleinige Hinzufügen der übergeordneten Domäne (z.B. contoso.com) ist nicht ausreichend, und es wird empfohlen, jede untergeordnete Domäne beim Agent zu registrieren. 
+
+8. Überprüfen Sie die Konfigurationsdetails, und klicken Sie auf **Bestätigen**, um den Agent zu registrieren. 
+![Bestätigungsbildschirm](./media/workday-inbound-tutorial/pa_install_screen_7.png "Bestätigungsbildschirm")
+
+9. Der Konfigurations-Assistent zeigt den Fortschritt der Agent-Registrierung an.
+![Agent-Registrierung](./media/workday-inbound-tutorial/pa_install_screen_8.png "Agent-Registrierung")
+
+10. Nach der erfolgreichen Agent-Registrierung können Sie auf **Beenden** klicken, um den Assistenten zu beenden. 
+![Abschlussbildschirm](./media/workday-inbound-tutorial/pa_install_screen_9.png "Abschlussbildschirm")
+
+11. Überprüfen Sie die Installation des Agents, und stellen Sie sicher, dass er ausgeführt wird, indem Sie das Snap-In „Dienste“ öffnen und nach dem Dienst mit der Bezeichnung „Microsoft Azure AD Connect Provisioning Agent“ suchen. ![Dienste](./media/workday-inbound-tutorial/services.png)  
+
+
+**Behandeln von Problemen mit dem Agent**
+
+Das [Windows-Ereignisprotokoll](https://technet.microsoft.com/library/cc722404(v=ws.11).aspx) auf dem Windows Server-Computer, der als Host für den Agent fungiert, enthält Ereignisse für alle Vorgänge, die der Agent ausgeführt hat. So zeigen Sie diese Ereignisse an:
     
+1. Öffnen Sie **Eventvwr.msc**.
+2. Klicken Sie auf **Windows-Protokolle > Anwendung**.
+3. Sehen Sie sich alle Ereignisse an, die unter der Quelle **AAD.Connect.ProvisioningAgent** protokolliert wurden. 
+4. Suchen Sie nach Fehlern und Warnungen.
+
     
-### <a name="part-1-adding-the-provisioning-connector-app-and-creating-the-connection-to-workday"></a>Teil 1: Hinzufügen der Bereitstellungsconnector-App und Herstellen der Verbindung mit Workday
+### <a name="part-2-adding-the-provisioning-connector-app-and-creating-the-connection-to-workday"></a>Teil 2: Hinzufügen der Bereitstellungsconnector-App und Herstellen der Verbindung mit Workday
 
 **So konfigurieren Sie die Bereitstellung aus Workday in Active Directory**
 
@@ -283,15 +389,19 @@ Beantworten Sie die folgenden Fragen, bevor Sie die Benutzerbereitstellung in ei
 
    * **Mandanten-URL**: Geben Sie die URL des Workday-Webdienstendpunkts für Ihren Mandanten ein. Diese sollte wie folgt lauten: https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources. Dabei wird „contoso4“ durch den Namen Ihres Mandanten und „wd3-impl“ durch die ordnungsgemäße Umgebungszeichenfolge ersetzt.
 
-   * **Active Directory-Gesamtstruktur**: Der Name der Active Directory-Gesamtstruktur entsprechend der Rückgabe des PowerShell-Cmdlets „Get-ADForest“. Dieser meist eine Zeichenfolge wie: *contoso.com*
+   * **Active Directory-Gesamtstruktur:** Der „Name“ Ihrer Active Directory-Domäne, mit dem diese beim Agent registriert wurde. Dieser meist eine Zeichenfolge wie: *contoso.com*
 
-   * **Active Directory-Container**: Geben Sie die Zeichenfolge des Containers ein, der alle Benutzer in Ihrer Active Directory-Gesamtstruktur enthält. Beispiel: *OU=Standard Users,OU=Users,DC=contoso,DC=test*
-
+   * **Active Directory-Container:** Geben Sie den DN des Containers an, in dem der Agent Benutzerkonten standardmäßig erstellen soll. 
+        Beispiel: *OU=Standard Users,OU=Users,DC=contoso,DC=test*
+> [!NOTE]
+> Diese Einstellung wird nur für die Benutzerkontoerstellung verwendet, wenn das Attribut *parentDistinguishedName* nicht in den Attributzuordnungen konfiguriert ist. Diese Einstellung wird nicht zum Suchen von Benutzern oder für Updatevorgänge verwendet. Der Suchvorgang schließt die gesamte Domänenteilstruktur ein.
    * **Benachrichtigungs-E-Mail**: Geben Sie Ihre E-Mail-Adresse ein, und aktivieren Sie das Kontrollkästchen „E-Mail senden, wenn Fehler auftritt“.
+> [!NOTE]
+> Der Azure AD-Bereitstellungsdienst sendet eine E-Mail-Benachrichtigung, wenn der Bereitstellungsauftrag in den Zustand [Quarantäne](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning#quarantine) wechselt.
 
-   * Klicken Sie auf die Schaltfläche **Verbindung testen**. Wenn der Verbindungstest erfolgreich ist, klicken Sie oben auf die Schaltfläche **Speichern**. Falls nicht, überprüfen Sie, ob die Workday-Anmeldeinformationen in Workday gültig sind. 
+   * Klicken Sie auf die Schaltfläche **Verbindung testen**. Wenn der Verbindungstest erfolgreich ist, klicken Sie oben auf die Schaltfläche **Speichern**. Überprüfen Sie bei einem Fehler, ob die Workday-Anmeldeinformationen und die AD-Anmeldeinformationen, die beim Einrichten des Agents angegeben wurden, gültig sind.
 
-![Azure-Portal](./media/workday-inbound-tutorial/WD_1.PNG)
+![Azure-Portal](./media/workday-inbound-tutorial/wd_1.png)
 
 ### <a name="part-2-configure-attribute-mappings"></a>Teil 2: Konfigurieren von Attributzuordnungen 
 
@@ -386,99 +496,6 @@ In diesem Abschnitt konfigurieren Sie den Fluss von Benutzerdaten aus Workday in
 | **LocalReference** |  preferredLanguage  |     |  Erstellen und aktualisieren |                                               
 | **Switch(\[Municipality\], "OU=Standard Users,OU=Users,OU=Default,OU=Locations,DC=contoso,DC=com", "Dallas", "OU=Standard Users,OU=Users,OU=Dallas,OU=Locations,DC=contoso,DC=com", "Austin", "OU=Standard Users,OU=Users,OU=Austin,OU=Locations,DC=contoso,DC=com", "Seattle", "OU=Standard Users,OU=Users,OU=Seattle,OU=Locations,DC=contoso,DC=com", “London", "OU=Standard Users,OU=Users,OU=London,OU=Locations,DC=contoso,DC=com")**  | parentDistinguishedName     |     |  Erstellen und aktualisieren |
   
-### <a name="part-3-configure-the-on-premises-synchronization-agent"></a>Teil 3: Konfigurieren des lokalen Synchronisierungs-Agents
-
-Um Active Directory lokal bereitzustellen, muss in der gewünschten Active Directory-Gesamtstruktur ein Agent auf einem in die Domäne eingebunden Server installiert werden. Für diesen Vorgang sind die Anmeldeinformationen eines Domänenadministrators oder (Unternehmensadministrators) erforderlich.
-
-**[Sie können den lokalen Synchronisierungs-Agent hier herunterladen.](https://go.microsoft.com/fwlink/?linkid=847801)**
-
-Führen Sie nach der Installation des Agents die folgenden PowerShell-Befehle zum Konfigurieren des Agents für Ihre Umgebung aus.
-
-**Befehl 1**
-
-> cd "C:\Programme\Microsoft Azure AD Connect Provisioning Agent\Modules\AADSyncAgent" Agent\\Modules\\AADSyncAgent
-
-> Import-Module "C:\Programme\Microsoft Azure AD Connect Provisioning Agent\Modules\AADSyncAgent\AADSyncAgent.psd1"
-
-**Befehl 2**
-
-> Add-ADSyncAgentActiveDirectoryConfiguration
-
-* Eingabe: Geben Sie für „DirectoryName“ (Verzeichnisname) den Namen der Active Directory-Gesamtstruktur entsprechend der Eingabe in Teil \#2 ein.
-* Eingabe: Administratorbenutzername und -kennwort für die Active Directory-Gesamtstruktur
-
->[!TIP]
-> Wenn die Fehlermeldung „Vertrauensstellung zwischen der primären Domäne und der vertrauenswürdigen Domäne konnte nicht hergestellt werden“ angezeigt wird, liegt das daran, dass sich der lokale Computer in einer Umgebung befindet, in der mehrere Active Directory-Gesamtstrukturen oder -Domänen konfiguriert sind und mindestens eine konfigurierte Vertrauensstellung entweder fehlerhaft oder nicht betriebsbereit ist. Um das Problem zu beheben, korrigieren oder entfernen Sie die fehlerhafte Vertrauensstellung.
-
-**Befehl 3**
-
-> Add-ADSyncAgentAzureActiveDirectoryConfiguration
-
-* Eingabe: Benutzername und Kennwort des globalen Administrators für Ihren Azure AD-Mandanten
-
->[!IMPORTANT]
->Es gibt derzeit ein bekanntes Problem, das dazu führt, dass globale Administratoranmeldeinformationen bei Verwendung einer benutzerdefinierten Domäne nicht funktionieren (Beispiel: admin@contoso.com). Erstellen und verwenden Sie zur Umgehung dieses Problems ein globales Administratorkonto mit einer onmicrosoft.com-Domäne (Beispiel: admin@contoso.onmicrosoft.com).
-
->[!IMPORTANT]
->Es gibt derzeit ein bekanntes Problem, das dazu führt, dass globale Administratoranmeldeinformationen bei aktivierter mehrstufiger Authentifizierung nicht funktionieren. Deaktivieren Sie zur Umgehung dieses Problems die mehrstufige Authentifizierung für den globalen Administrator.
-
-**Befehl 4**
-
-> Get-AdSyncAgentProvisioningTasks
-
-* Aktion: Bestätigen Sie, dass Daten zurückgegeben werden. Dieser Befehl ermittelt automatisch Workday-Bereitstellungs-Apps in Ihrem Azure AD-Mandanten. Beispielausgabe:
-
-> Name: My AD Forest
->
-> Aktiviert: TRUE
->
-> DirectoryName: mydomain.contoso.com
->
-> Credentialed: False
->
-> Bezeichner: WDAYdnAppDelta.c2ef8d247a61499ba8af0a29208fb853.4725aa7b-1103-41e6-8929-75a5471a5203
-
-**Befehl 5**
-
-> Start-AdSyncAgentSynchronization -Automatic
-
-**Befehl 6**
-
-> net stop aadsyncagent
-
-**Befehl 7**
-
-> net start aadsyncagent
-
->[!TIP]
->Neben den net-Befehlen in PowerShell kann der Synchronisierungs-Agent-Dienst auch über **Services.msc** gestartet und beendet werden. Sollte beim Ausführen der PowerShell-Befehle ein Fehler auftreten, vergewissern Sie sich unter **Services.msc**, dass **Microsoft Azure AD Connect Provisioning Agent** ausgeführt wird.
-
-![Dienste](./media/workday-inbound-tutorial/Services.png)  
-
-**Zusätzliche Konfiguration für Kunden in der Europäischen Union**
-
-Falls sich Ihr Azure Active Directory-Mandant in einem der europäischen Datencenter befindet, führen Sie die folgenden Zusatzschritte aus.
-
-1. Öffnen Sie **Services.msc**, und beenden Sie den Dienst **Microsoft Azure AD Connect-Bereitstellungs-Agent**.
-2. Wechseln Sie zum Agent-Installationsordner (Beispiel: C:\Programme\Microsoft Azure AD Connect Provisioning Agent).
-3. Öffnen Sie **SyncAgnt.exe.config** in einem Text-Editor.
-4. Ersetzen Sie https://manage.hub.syncfabric.windowsazure.com/Management durch **https://eu.manage.hub.syncfabric.windowsazure.com/Management**.
-5. Ersetzen Sie https://provision.hub.syncfabric.windowsazure.com/Provisioning durch **https://eu.provision.hub.syncfabric.windowsazure.com/Provisioning**.
-6. Speichern Sie die Datei **SyncAgnt.exe.config**.
-7. Öffnen Sie **Services.msc**, und starten Sie den Dienst **Microsoft Azure AD Connect Provisioning Agent**.
-
-**Behandeln von Problemen mit dem Agent**
-
-Das [Windows-Ereignisprotokoll](https://technet.microsoft.com/library/cc722404(v=ws.11).aspx) auf dem Windows Server-Computer, der als Host für den Agent fungiert, enthält Ereignisse für alle Vorgänge, die der Agent ausgeführt hat. So zeigen Sie diese Ereignisse an:
-    
-1. Öffnen Sie **Eventvwr.msc**.
-2. Klicken Sie auf **Windows-Protokolle > Anwendung**.
-3. Sehen Sie sich alle Ereignisse an, die unter der Quelle **AADSyncAgent** protokolliert wurden. 
-4. Suchen Sie nach Fehlern und Warnungen.
-
-Im Falle eines Berechtigungsproblems mit den Active Directory- oder Azure Active Directory-Anmeldeinformationen aus den PowerShell-Befehlen wird ein Fehler wie der folgende angezeigt: 
-    
-![Ereignisprotokolle](./media/workday-inbound-tutorial/Windows_Event_Logs.png) 
 
 
 ### <a name="part-4-start-the-service"></a>Teil 4: Starten des Diensts
@@ -620,7 +637,7 @@ Befolgen Sie diese Anweisungen zum Konfigurieren des Zurückschreibens von E-Mai
 
 ### <a name="part-1-adding-the-provisioning-connector-app-and-creating-the-connection-to-workday"></a>Teil 1: Hinzufügen der Bereitstellungsconnector-App und Herstellen der Verbindung mit Workday
 
-**So konfigurieren Sie die Bereitstellung aus Workday in Active Directory**
+**So konfigurieren Sie den Workday Writeback-Connector**
 
 1. Besuchen Sie <https://portal.azure.com>.
 
@@ -692,7 +709,7 @@ Zu diesem Zweck müssen Sie [Workday Studio](https://community.workday.com/studi
 
 5. Wählen Sie **External** und dann die WSDL-Datei „Human_Resources“ aus, die Sie in Schritt 2 heruntergeladen haben.
 
-    ![Workday Studio](./media/workday-inbound-tutorial/WDstudio1.PNG)
+    ![Workday Studio](./media/workday-inbound-tutorial/wdstudio1.png)
 
 6. Legen Sie das Feld **Location** auf `https://IMPL-CC.workday.com/ccx/service/TENANT/Human_Resources` fest, ersetzen Sie jedoch „IMPL-CC“ durch den tatsächlichen Typ Ihrer Instanz und „TENANT“ durch den echten Namen Ihres Mandanten.
 
@@ -700,7 +717,7 @@ Zu diesem Zweck müssen Sie [Workday Studio](https://community.workday.com/studi
 
 8.  Klicken Sie auf den **configure**-Link unterhalb der Bereiche „Request“ (Anforderung) und „Response“ (Antwort), um Ihre Workday-Anmeldeinformationen festzulegen. Aktivieren Sie das Kontrollkästchen **Authentifizierung**, und geben Sie den Benutzernamen und das Kennwort für Ihr Systemkonto für die Workday-Integration ein. Stellen Sie sicher, dass der Benutzername das Format name@tenant aufweist, und behalten Sie die Auswahl der Option **WS-Security UsernameToken** bei.
 
-    ![Workday Studio](./media/workday-inbound-tutorial/WDstudio2.PNG)
+    ![Workday Studio](./media/workday-inbound-tutorial/wdstudio2.png)
 
 9. Klicken Sie auf **OK**.
 
@@ -739,7 +756,7 @@ Zu diesem Zweck müssen Sie [Workday Studio](https://community.workday.com/studi
 
 13. Wählen Sie in der Befehlsleiste von Workday Studio **File > Open File...** (Datei > Datei öffnen...) aus, und öffnen Sie die gespeicherte XML-Datei. Die Datei wird im XML-Editor von Workday Studio geöffnet.
 
-    ![Workday Studio](./media/workday-inbound-tutorial/WDstudio3.PNG)
+    ![Workday Studio](./media/workday-inbound-tutorial/wdstudio3.png)
 
 14. Navigieren Sie in der Dateistruktur durch **/env: Envelope > env: Body > wd:Get_Workers_Response > wd:Response_Data > wd: Worker**, um die Daten des Benutzers zu suchen. 
 
@@ -766,7 +783,7 @@ Zu diesem Zweck müssen Sie [Workday Studio](https://community.workday.com/studi
 
 5. Wählen Sie **Attributliste für Workday bearbeiten** aus.
 
-    ![Workday Studio](./media/workday-inbound-tutorial/WDstudio_AAD1.PNG)
+    ![Workday Studio](./media/workday-inbound-tutorial/wdstudio_aad1.png)
 
 6. Scrollen Sie zu den Eingabefeldern am Ende der Attributliste.
 
@@ -778,7 +795,7 @@ Zu diesem Zweck müssen Sie [Workday Studio](https://community.workday.com/studi
 
 10. Wählen Sie **Attribut hinzufügen** aus.
 
-    ![Workday Studio](./media/workday-inbound-tutorial/WDstudio_AAD2.PNG)
+    ![Workday Studio](./media/workday-inbound-tutorial/wdstudio_aad2.png)
 
 11. Wählen Sie oben **Speichern** aus, und klicken Sie im angezeigten Dialogfeld auf **Ja**. Schließen Sie den Bildschirm „Attributzuordnung“, falls dieser noch geöffnet ist.
 
@@ -794,13 +811,9 @@ Zu diesem Zweck müssen Sie [Workday Studio](https://community.workday.com/studi
 
 ## <a name="known-issues"></a>Bekannte Probleme
 
-* Beim Ausführen des PowerShell-Befehls **Add-ADSyncAgentAzureActiveDirectoryConfiguration** gibt es derzeit ein bekanntes Problem, das dazu führt, dass globale Administratoranmeldeinformationen bei Verwendung einer benutzerdefinierten Domäne nicht funktionieren (Beispiel: admin@contoso.com). Erstellen und verwenden Sie zur Umgehung dieses Problems in Azure AD ein globales Administratorkonto mit einer onmicrosoft.com-Domäne (Beispiel: admin@contoso.onmicrosoft.com).
-
 * Das Schreiben von Daten in das Benutzerattribut „thumbnailPhoto“ im lokalen Active Directory wird derzeit nicht unterstützt.
 
 * Der Connector „Workday to Azure AD“ wird auf Azure AD-Mandanten, auf denen AAD Connect aktiviert ist, derzeit nicht unterstützt.  
-
-* Ein anderes Problem, das dazu führte, dass Überwachungsprotokolle bei Azure AD-Mandanten in der Europäischen Union nicht angezeigt wurden, ist inzwischen behoben. Für Azure AD-Mandanten in der EU müssen jedoch zusätzliche Agent-Konfigurationsschritte ausgeführt werden. Ausführlichere Informationen finden Sie in [Teil 3: Konfigurieren des lokalen Synchronisierungs-Agents](#Part 3: Configure the on-premises synchronization agent).
 
 ## <a name="managing-personal-data"></a>Verwalten von personenbezogenen Daten
 

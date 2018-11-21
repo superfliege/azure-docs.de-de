@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 08/27/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: c731d0498c026a5d0659335550f6e280a031b1e4
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 2e14112220eeea1df094ff0c5844429fa3891a9b
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51011356"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51612804"
 ---
 # <a name="oms-portal-moving-to-azure"></a>Wechsel des OMS-Portals zu Azure
 
@@ -84,7 +84,7 @@ Sie können im OMS-Portal keine neuen Arbeitsbereiche mehr erstellen. Folgen Sie
 Warnungen wurden [in das Azure-Portal erweitert](../monitoring-and-diagnostics/monitoring-alerts-extend.md). Sobald dieser Prozess abgeschlossen ist, sind Verwaltungsaktionen für Warnungen nur noch im Azure-Portal verfügbar. Vorhandene Warnungen werden weiterhin im OMS-Portal aufgeführt. Wenn Sie programmgesteuert mithilfe der Log Analytics-REST-API für Warnungen oder der Log Analytics-Warnungsressourcenvorlage auf Warnungen zugreifen, müssen Sie in Ihren API-Aufrufen, Azure Resource Manager-Vorlagen und PowerShell-Befehlen anstelle von Aktionen nun Aktionsgruppen verwenden.
 
 ### <a name="alert-management-solution"></a>Lösung „Alert Management“
-Anstelle der [Warnungsverwaltungslösung](log-analytics-solution-alert-management.md) (Alert Management) können Sie die [einheitliche Schnittstelle für Warnungen von Azure Monitor](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md) zur visuellen Darstellung und Verwaltung von Warnungen verwenden. Diese neue Oberfläche aggregiert Warnungen aus mehreren Quellen in Azure, einschließlich Protokollwarnungen aus Log Analytics. Sie können Verteilungen der Warnungen anzeigen, die automatisierte Gruppierung zusammengehöriger Warnungen mithilfe intelligenter Gruppen nutzen und Warnungen für mehrere Abonnements unter Verwendung umfangreicher Filter anzeigen. Alle diese Funktionen sind in der Vorschau ab 4. Juni 2018 verfügbar. Die Warnungsverwaltungslösung steht im Azure-Portal nicht zur Verfügung. 
+Anstelle der [Warnungsverwaltungslösung](log-analytics-solution-alert-management.md) (Alert Management) können Sie die [einheitliche Schnittstelle für Warnungen von Azure Monitor](../monitoring-and-diagnostics/monitoring-overview-alerts.md) zur visuellen Darstellung und Verwaltung von Warnungen verwenden. Diese neue Oberfläche aggregiert Warnungen aus mehreren Quellen in Azure, einschließlich Protokollwarnungen aus Log Analytics. Sie können Verteilungen der Warnungen anzeigen, die automatisierte Gruppierung zusammengehöriger Warnungen mithilfe intelligenter Gruppen nutzen und Warnungen für mehrere Abonnements unter Verwendung umfangreicher Filter anzeigen. Alle diese Funktionen sind in der Vorschau ab 4. Juni 2018 verfügbar. Die Warnungsverwaltungslösung steht im Azure-Portal nicht zur Verfügung. 
 
 Die von der Warnungsverwaltungslösung (Alert Management) gesammelten Daten (Datensätze vom Typ „Warnung“) sind weiterhin in Log Analytics enthalten, solange die Lösung für den Arbeitsbereich installiert ist. Ab August 2018 ist das Streaming von Warnungen von der einheitlichen Oberfläche für Warnungen in die Arbeitsbereiche aktiviert und ersetzt diese Funktion. Es werden einige Schemaänderungen erwartet und zu einem späteren Zeitpunkt bekannt gegeben.
 

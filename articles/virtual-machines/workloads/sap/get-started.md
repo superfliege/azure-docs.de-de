@@ -14,15 +14,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 09/13/2018
+ms.date: 11/06/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2deacb7d15f370c9182c3239493ed60f735d738c
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 6fbb09d41535bf811a42b204f4e3d38b87c2846c
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45736834"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51287947"
 ---
 # <a name="using-azure-for-hosting-and-running-sap-workload-scenarios"></a>Verwenden von Azure zum Hosten und Ausführen von SAP-Workloadszenarien
 
@@ -35,6 +35,11 @@ Die Einzigartigkeit von Azure für SAP HANA ist ein unvergleichliches Angebot, m
 Durch das Hosten von SAP-Workloadszenarien in Azure können auch Anforderungen in Bezug auf die Identitätsintegration und das einmalige Anmelden mit Azure Activity Directory für verschiedene SAP-Komponenten und SAP-SaaS- oder -PaaS-Angebote entstehen. Eine Liste mit Integrations- und SSO-Szenarien per Azure Active Directory (AAD) und SAP-Entitäten mit den entsprechenden Beschreibungen finden Sie im Abschnitt „AAD-SAP-Identitätsintegration und einmaliges Anmelden“.
 
 ## <a name="latest-changes"></a>Aktuelle Änderungen
+
+Ausführlichere Informationen zur Verwendung und Konfiguration von [virtuellen Azure-Netzwerkgeräten](https://azure.microsoft.com/solutions/network-appliances/) in latenzkritischen Kommunikationspfaden von SAP-Systemen finden Sie hier:
+
+- [Azure Virtual Machines – DBMS-Bereitstellung für SAP-Workload](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general)
+- [SAP HANA-Infrastrukturkonfigurationen und -Vorgänge in Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations)
 
 Dokumentation zu SAP HANA Dynamic Tiering für Azure-VMs
 
@@ -66,7 +71,7 @@ Nächste Schritte:
 ## <a name="sap-hana-on-azure-virtual-machines"></a>SAP HANA in Azure Virtual Machines
 In diesem Abschnitt der Dokumentation werden verschiedene Aspekte von SAP HANA behandelt. Dabei wird vorausgesetzt, dass Sie mit den wichtigsten Diensten von Azure vertraut sind, die elementare Dienste von Azure IaaS bereitstellen, also hauptsächlich über Kenntnisse über Azure Compute, Speicher und Netzwerke verfügen. Viele dieser Themen werden im SAP NetWeaver-bezogenen [Azure-Planungsleitfaden](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide) behandelt. 
 
-Die Dokumentation, die sich speziell auf HANA in Azure bezieht, setzt sich aus der folgenden Liste von Artikeln und zugehörigen Unterartikeln zusammen:
+Die Dokumentation, die sich speziell auf HANA in Azure bezieht, umfasst folgende Artikel und deren Unterartikel:
 
 - [Schnellstart: Manuelle Installation von SAP HANA (Einzelinstanz) auf Azure-VMs](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-get-started)
 - [Bereitstellen von SAP S/4HANA oder BW/4HANA in Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/cal-s4h)
@@ -103,7 +108,7 @@ In Bezug auf nicht-HANA-Datenbanken mit SAP-Workloads in Azure umfasst die Liste
 
 Sehen Sie sich in Bezug auf SAP HANA-Datenbanken in Azure den Abschnitt „SAP HANA in Azure Virtual Machines“ an.
 
-Das Einstiegsdokument für Hochverfügbarkeit von SAP-Workloads in Azure lautet wie folgt:
+Das Einstiegsdokument für Hochverfügbarkeit von SAP-Workloads in Azure finden Sie hier:
 
 - [Hochverfügbarkeit von Azure Virtual Machines für SAP NetWeaver](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-start)
 

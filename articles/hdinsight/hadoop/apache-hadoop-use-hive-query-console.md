@@ -1,6 +1,6 @@
 ---
-title: Verwenden von Hadoop Hive in der Abfrage-Konsole in HDInsight – Azure
-description: In diesem Artikel erfahren Sie, wie Sie mit der HDInsight-Abfragekonsole Hive-Abfragen auf einem Hadoop-Cluster in HDInsight in Ihrem Browser ausführen.
+title: Verwenden von Apache Hive in der Abfrage-Konsole in HDInsight – Azure
+description: In diesem Artikel erfahren Sie, wie Sie mit der HDInsight-Abfragekonsole Apache Hive-Abfragen auf einem Hadoop-Cluster in HDInsight in Ihrem Browser ausführen.
 services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -9,17 +9,17 @@ ms.topic: conceptual
 ms.date: 01/12/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 4083ceca8c9181c8acb1a90e782cb5bca981e684
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: da270792c8987ff43c422c5b03eb8b789b8bda5e
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51013963"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51634588"
 ---
-# <a name="run-hive-queries-using-the-query-console"></a>Ausführen von Hive-Abfragen mithilfe der Abfragekonsole
+# <a name="run-apache-hive-queries-using-the-query-console"></a>Ausführen von Apache Hive-Abfragen mithilfe der Abfragekonsole
 [!INCLUDE [hive-selector](../../../includes/hdinsight-selector-use-hive.md)]
 
-In diesem Artikel erfahren Sie, wie Sie mit der HDInsight-Abfragekonsole Hive-Abfragen auf einem Hadoop-Cluster in HDInsight in Ihrem Browser ausführen.
+In diesem Artikel erfahren Sie, wie Sie mit der HDInsight-Abfragekonsole Apache Hive-Abfragen auf einem Hadoop-Cluster in HDInsight in Ihrem Browser ausführen.
 
 > [!IMPORTANT]
 > Die HDInsight-Abfragekonsole ist nur auf Windows-basierten HDInsight-Clustern verfügbar. Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Welche Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?](../hdinsight-component-versioning.md#hdinsight-windows-retirement).

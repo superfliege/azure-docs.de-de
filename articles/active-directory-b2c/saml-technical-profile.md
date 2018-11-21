@@ -10,22 +10,22 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 301ae251413cc174f115479e9ebef2310aa83ba7
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 347a437a9f45f29348e97c616c985764135e5427
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47162441"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51687468"
 ---
 # <a name="define-a-saml-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definieren eines technischen SAML-Profils in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure Active Directory B2C bietet Unterstützung für Identitätsanbieter mit SAML 2.0. In diesem Artikel werden die Einzelheiten eines technischen Profils für die Interaktion mit einem Anspruchsanbieter thematisiert, der dieses standardisierte Protokoll unterstützt. Mit dem technischen SAML-Profil können Sie einen Verbund mit einem SAML-basierten Identitätsanbieter wie AD-FS oder Salesforce erstellen, damit sich Benutzer mit ihren Identitäten für soziale Netzwerke oder ihr Unternehmen anmelden können.
+Azure Active Directory B2C bietet Unterstützung für Identitätsanbieter mit SAML 2.0. In diesem Artikel werden die Einzelheiten eines technischen Profils für die Interaktion mit einem Anspruchsanbieter thematisiert, der dieses standardisierte Protokoll unterstützt. Mit dem technischen SAML-Profil können Sie einen Verbund mit einem SAML-basierten Identitätsanbieter wie [ADFS](active-directory-b2c-custom-setup-adfs2016-idp.md) oder [Salesforce](active-directory-b2c-setup-sf-app-custom.md) erstellen, damit sich Benutzer mit ihren Identitäten für soziale Netzwerke oder ihr Unternehmen anmelden können.
 
 ## <a name="metadata-exchange"></a>Metadatenaustausch
 
-Metadaten sind die Daten, die in SAML-Protokollen verwendet werden, um die Konfiguration der SAML-Partei (z.B. dem Dienst- oder dem Identitätsanbieter) zur Verfügung zu stellen. Die Metadaten definieren den Ort der Dienste, z.B. Anmelden und Abmelden, Zertifikate und die Anmeldemethode. Der Identitätsanbieter verwendet die Metadaten, um zu erfahren, wie mit Azure AD B2C kommuniziert werden soll. Die Metadaten werden im XML-Format konfiguriert und können mit einer digitalen Signatur signiert werden, damit die jeweils andere Partei die Integrität der Metadaten überprüfen kann. Wenn sich der Azure AD B2C-Dienst mit einem SAML-Identitätsanbieter verbindet, fungiert dieser als Dienstanbieter, der eine SAML-Anforderung sendet und eine SAML-Antwort erwartet. Teilweise wird eine nicht angeforderte SAML-Authentifizierung ausgeschlossen, die auch als „IDP Initiated SSO“ (vom Identitätsanbieter initiiertes SSO) bezeichnet wird. 
+Metadaten sind die Daten, die in SAML-Protokollen verwendet werden, um die Konfiguration der SAML-Partei (z.B. dem Dienst- oder dem Identitätsanbieter) zur Verfügung zu stellen. Die Metadaten definieren den Ort der Dienste, z.B. Anmelden und Abmelden, Zertifikate und die Anmeldemethode. Der Identitätsanbieter verwendet die Metadaten, um zu erfahren, wie mit Azure AD B2C kommuniziert werden soll. Die Metadaten werden im XML-Format konfiguriert und können mit einer digitalen Signatur signiert werden, damit die jeweils andere Partei die Integrität der Metadaten überprüfen kann. Wenn sich der Azure AD B2C-Dienst mit einem SAML-Identitätsanbieter verbindet, fungiert dieser als Dienstanbieter, der eine SAML-Anforderung sendet und eine SAML-Antwort erwartet. Teilweise wird eine nicht angeforderte SAML-Authentifizierung akzeptiert, die auch als „IDP Initiated SSO“ (vom Identitätsanbieter initiiertes SSO) bezeichnet wird. 
 
 Die Metadaten können in beiden Parteien als „Statische Metadaten“ oder „Dynamische Metadaten“ konfiguriert werden. Kopieren Sie im Modus „Statisch“ die gesamten Metadaten aus der einen Partei und fügen Sie sie der anderen hinzu. Legen Sie im Modus „Dynamisch“ die URL zu den Metadaten fest, während die andere Partei die Konfiguration auf dynamische Weise liest. Das Vorgehen ist das gleiche: Sie legen die Metadaten des technischen Azure AD B2C-Profils in Ihrem Dienstanbieter und die Metadaten des Dienstanbieters in Azure AD B2C fest.
 
@@ -34,14 +34,14 @@ Die Vorgehensweise zum Bereitstellen und Festlegen eines Dienstanbieters untersc
 Das folgende Beispiel zeigt eine URL der SAML-Metadaten eines technischen Azure AD B2C-Profils:
 
 ```
-https://login.microsoftonline.com/te/your-tenant/your-policy/samlp/metadata?idptp=your-technical-profile
+https://your-tenant-name.b2clogin.com/your-tenant-name/your-policy/samlp/metadata?idptp=your-technical-profile
 ```
 
 Ersetzen Sie die folgenden Werte:
 
-- **your-tenant** durch Ihren Mandantennamen, z.B. „your-tenant.onmicrosoft.com“
+- **your-tenant-name** durch den Namen Ihres Mandanten, z.B. „fabrikam.b2clogin.com“.
 - **your-policy** durch den Namen Ihrer Richtlinie. Verwenden Sie die Richtlinie, in der Sie das technische Profil des SAML-Anbieters konfigurieren, oder eine Richtlinie, die von dieser Richtlinie erbt.
-- **your-technical-profile** durch den Namen des technischen Profils des SAML-Identitätsanbieters
+- **your-technical-profile** durch den Namen des technischen Profils des SAML-Identitätsanbieters.
 
 ## <a name="digital-signing-certificates-exchange"></a>Austauschen von digitalen Signaturzertifikaten
 

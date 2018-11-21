@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/27/2018
+ms.date: 11/13/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: bc3eb2721dd9fc0c4cde407a8257f6be73201a2a
-ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
+ms.openlocfilehash: 5f1b4cf63379f0007b87c44164168b8510612f52
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47423356"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51624096"
 ---
 # <a name="add-extended-metrics-for-azure-virtual-machines"></a>Hinzufügen erweiterter Metriken für virtuelle Azure-Computer
 
@@ -67,6 +67,8 @@ Denken Sie daran, dass Überwachung auf Gastebene sowohl bei Azure als auch bei 
 Wenn Sie neue virtuelle Computer erstellen, wählen Sie auf der Registerkarte „Verwaltung“ **Ein** für **Diagnose des Gastbetriebssystems** aus.
 
 ![Aktivieren der Diagnose des Gastbetriebssystems](./media/azure-vm-extended-metrics/new-enable-diag.png)
+
+Weitere Informationen zum Aktivieren erweiterter Metriken für virtuelle Azure-Computer finden Sie unter [Grundlegendes zum Azure Linux-Agent und seiner Verwendung](../virtual-machines/extensions/agent-linux.md) und [Übersicht über den Agent für virtuelle Azure-Computer](../virtual-machines/extensions/agent-windows.md).
 
 ## <a name="resource-manager-credentials"></a>Resource Manager-Anmeldeinformationen
 

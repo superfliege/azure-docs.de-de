@@ -12,14 +12,14 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/20/2018
+ms.date: 11/13/2018
 ms.author: anwestg
-ms.openlocfilehash: 786f6ca3b3a1ad26d36c751c54d3cf69ae1d2fd4
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 4f669d44582c47cc6c7c090627f957288fee0f1a
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50240867"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51615873"
 ---
 # <a name="before-you-get-started-with-app-service-on-azure-stack"></a>Vor den ersten Schritten mit App Service in Azure Stack
 
@@ -28,7 +28,7 @@ ms.locfileid: "50240867"
 Bevor Sie Azure App Service in Azure Stack bereitstellen, müssen die erforderlichen vorbereitenden Schritte in diesem Artikel ausgeführt werden.
 
 > [!IMPORTANT]
-> Wenden Sie Update 1807 auf Ihr integriertes Azure Stack-System an, oder stellen Sie das aktuelle Azure Stack Development Kit (ASDK) vor der Bereitstellung von Azure App Service 1.3 bereit.
+> Wenden Sie Update 1809 auf Ihr integriertes Azure Stack-System an, oder stellen Sie das aktuelle Azure Stack Development Kit (ASDK) vor der Bereitstellung von Azure App Service 1.4 bereit.
 
 ## <a name="download-the-installer-and-helper-scripts"></a>Herunterladen des Installationsprogramms und der Hilfsskripts
 
@@ -44,6 +44,10 @@ Bevor Sie Azure App Service in Azure Stack bereitstellen, müssen die erforderli
    - Remove-AppService.ps1
    - Ordner „Modules“
      - GraphAPI.psm1
+
+## <a name="syndicate-the-custom-script-extension-from-the-marketplace"></a>Syndizieren der benutzerdefinierten Skripterweiterung über den Marketplace
+
+Für Azure App Service in Azure Stack ist die benutzerdefinierte Skripterweiterung v1.9.0 erforderlich.  Die Erweiterung muss [über den Marketplace syndiziert](https://docs.microsoft.com/azure/azure-stack/azure-stack-download-azure-marketplace-item) werden, bevor mit der Bereitstellung oder dem Upgrade von Azure App Service in Azure Stack begonnen wird.
 
 ## <a name="high-availability"></a>Hochverfügbarkeit
 
@@ -151,6 +155,9 @@ Das Zertifikat für die Identität muss einen Antragsteller enthalten und dem fo
 
 ## <a name="virtual-network"></a>Virtuelles Netzwerk
 
+> [!NOTE]
+> Die Voraberstellung eines benutzerdefinierten virtuellen Netzwerks ist optional. Denn Azure App Service in Azure Stack kann das erforderliche virtuelle Netzwerk erstellen, muss dann jedoch über öffentliche IP-Adressen mit SQL und dem Dateiserver kommunizieren.
+
 Mit Azure App Service in Azure Stack können Sie den Ressourcenanbieter in einem vorhandenen virtuellen Netzwerk bereitstellen oder ein virtuelles Netzwerk als Teil der Bereitstellung erstellen. Die Verwendung eines vorhandenen virtuellen Netzwerks ermöglicht die Verwendung von internen IP-Adressen zum Herstellen der Verbindung mit dem Dateiserver und dem Computer mit SQL Server, die für Azure App Service in Azure Stack erforderlich sind. Das virtuelle Netzwerk muss vor der Installation von Azure App Service in Azure Stack mit dem folgenden Adressbereich und den folgenden Subnetzen konfiguriert werden:
 
 Virtual Network - /16
@@ -167,12 +174,20 @@ Subnetze
 
 Azure App Service erfordert die Verwendung eines Dateiservers. Für Produktionsbereitstellungen muss der Dateiserver für Hochverfügbarkeit konfiguriert und in der Lage sein, Fehler zu beheben.
 
+### <a name="quickstart-template-for-file-server-for-deployments-of-azure-app-service-on-asdk"></a>Schnellstartvorlage für den Dateiserver für Bereitstellungen von Azure App Service im ASDK.
+
 Für reine Azure Stack Development Kit-Bereitstellungen können Sie die [Azure Resource Manager-Bereitstellungsbeispielvorlage](https://aka.ms/appsvconmasdkfstemplate) verwenden, um einen konfigurierten Einzelknoten-Dateiserver bereitzustellen. Der Einzelknoten-Dateiserver wird sich in einer Arbeitsgruppe befinden.
+
+### <a name="quickstart-template-for-highly-available-file-server-and-sql-server"></a>Schnellstartvorlage für hochverfügbare Dateiserver und SQL Server
+
+Ab sofort ist eine [Schnellstartvorlage für eine Referenzarchitektur](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/appservice-fileserver-sqlserver-ha) verfügbar, die einen Dateiserver bereitstellt, nämlich SQL Server. Diese Plattform unterstützt die Active Directory-Infrastruktur in einem virtuellen Netzwerk, das zur Unterstützung einer hochverfügbaren Bereitstellung von Azure App Service in Azure Stack konfiguriert ist.  
+
+### <a name="steps-to-deploy-a-custom-file-server"></a>Schritte zum Bereitstellen eines benutzerdefinierten Dateiservers
 
 >[!IMPORTANT]
 > Wenn Sie App Service in einem vorhandenen virtuellen Netzwerk bereitstellen möchten, muss der Dateiserver in einem anderen Subnetz als App Service bereitgestellt werden.
 
-### <a name="provision-groups-and-accounts-in-active-directory"></a>Bereitstellen von Gruppen und Konten in Active Directory
+#### <a name="provision-groups-and-accounts-in-active-directory"></a>Bereitstellen von Gruppen und Konten in Active Directory
 
 1. Erstellen Sie die folgenden globalen Active Directory-Sicherheitsgruppen:
 
@@ -195,7 +210,7 @@ Für reine Azure Stack Development Kit-Bereitstellungen können Sie die [Azure R
    - Fügen Sie **FileShareOwner** der Gruppe **FileShareOwners** hinzu.
    - Fügen Sie **FileShareUser** der Gruppe **FileShareUsers** hinzu.
 
-### <a name="provision-groups-and-accounts-in-a-workgroup"></a>Bereitstellen von Gruppen und Konten in einer Arbeitsgruppe
+#### <a name="provision-groups-and-accounts-in-a-workgroup"></a>Bereitstellen von Gruppen und Konten in einer Arbeitsgruppe
 
 >[!NOTE]
 > Wenn Sie einen Dateiserver konfigurieren, führen Sie die folgenden Befehle an einer **Administratoreingabeaufforderung** aus. <br>***Verwenden Sie nicht PowerShell.***
@@ -225,7 +240,7 @@ Wenn Sie die Azure Resource Manager-Vorlage verwenden, wurden die Benutzer berei
    net localgroup FileShareOwners FileShareOwner /add
    ```
 
-### <a name="provision-the-content-share"></a>Bereitstellen der Inhaltsfreigabe
+#### <a name="provision-the-content-share"></a>Bereitstellen der Inhaltsfreigabe
 
 Die Inhaltsfreigabe enthält die Websiteinhalte des Mandanten. Das Verfahren zum Bereitstellen der Inhaltsfreigabe auf einem einzelnen Dateiserver ist für Active Directory- und Arbeitsgruppenumgebungen identisch. Für einen Failovercluster in Active Directory wird jedoch ein anderes Verfahren verwendet.
 

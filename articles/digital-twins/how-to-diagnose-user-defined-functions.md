@@ -6,14 +6,14 @@ manager: deshner
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/22/2018
+ms.date: 11/13/2018
 ms.author: stefanmsft
-ms.openlocfilehash: 852b2d35ae605f5529d162d52655fd258ca07c5a
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: ac7664e94c6e02ab90dbb1b32a54c8234614afe2
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49946095"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51636270"
 ---
 # <a name="how-to-debug-issues-with-user-defined-functions-in-azure-digital-twins"></a>Gewusst wie: Debuggen von Problemen mit benutzerdefinierten Funktionen in Azure Digital Twins
 
@@ -42,12 +42,12 @@ Um eine Sensortelemetriemeldung den entsprechenden Protokollen zuzuordnen, könn
 
 ```Kusto
 AzureDiagnostics
-| where CorrelationId = 'yourCorrelationIdentifier'
+| where CorrelationId = 'YOUR_CORRELATION_IDENTIFIER'
 ```
 
-| Name des benutzerdefinierten Attributs | Ersetzen durch |
+| Abfragewert | Ersetzen durch |
 | --- | --- |
-| *yourCorrelationIdentifier* | Die Korrelations-ID, die für die Ereignisdaten angegeben wurde. |
+| YOUR_CORRELATION_IDENTIFIER | Die Korrelations-ID, die für die Ereignisdaten angegeben wurde. |
 
 Wenn Sie Ihre benutzerdefinierte Funktion, protokollieren, werden diese Protokolle in Ihrer Azure Log Analytics-Instanz mit der Kategorie `UserDefinedFunction` angezeigt. Um sie abzurufen, geben Sie die folgende Abfragebedingung in Azure Log Analytics ein:
 
@@ -62,6 +62,8 @@ Weitere Informationen zu leistungsstarken Abfragevorgängen finden Sie unter [Er
 
 Für die Problembehandlung Ihrer Lösung spielen sowohl die Diagnostizierung als auch die Ermittlung von häufig auftretenden Problemen eine wichtige Rolle. Einige häufig auftretende Probleme beim Entwickeln von benutzerdefinierten Funktionen werden im Folgenden zusammengefasst.
 
+[!INCLUDE [Digital Twins Management API](../../includes/digital-twins-management-api.md)]
+
 ### <a name="ensure-a-role-assignment-was-created"></a>Sicherstellen, dass eine Rollenzuweisung erstellt wurde
 
 Wenn keine Rollenzuweisung innerhalb der Verwaltungs-API erstellt wird, hat die benutzerdefinierte Funktion keinen Zugriff, um Aktionen wie das Senden von Benachrichtigungen, Abrufen von Metadaten und Festlegen von berechneten Werten in der Topologie auszuführen.
@@ -69,13 +71,12 @@ Wenn keine Rollenzuweisung innerhalb der Verwaltungs-API erstellt wird, hat die 
 Überprüfen Sie, ob eine Rollenzuweisung für Ihre benutzerdefinierte Funktion über die Verwaltungs-API vorhanden ist:
 
 ```plaintext
-GET https://yourManagementApiUrl/api/v1.0/roleassignments?path=/&traverse=Down&objectId=yourUserDefinedFunctionId
+GET YOUR_MANAGEMENT_API_URL/roleassignments?path=/&traverse=Down&objectId=YOUR_USER_DEFINED_FUNCTION_ID
 ```
 
-| Name des benutzerdefinierten Attributs | Ersetzen durch |
+| Parameter | Ersetzen durch |
 | --- | --- |
-| *yourManagementApiUrl* | Der vollständige URL-Pfad für Ihre Verwaltungs-API  |
-| *yourUserDefinedFunctionId* | Die ID der benutzerdefinierten Funktion, für die Rollenzuweisungen abgerufen werden sollen|
+| *YOUR_USER_DEFINED_FUNCTION_ID* | Die ID der benutzerdefinierten Funktion, für die Rollenzuweisungen abgerufen werden sollen|
 
 Wenn keine Rollenzuweisung abgerufen wird, führen Sie die Schritte in dem Artikel [Gewusst wie: Verwenden von benutzerdefinierten Funktionen in Azure Digital Twins](./how-to-user-defined-functions.md) durch.
 
@@ -84,14 +85,13 @@ Wenn keine Rollenzuweisung abgerufen wird, führen Sie die Schritte in dem Artik
 Mit dem folgenden Aufruf anhand der Verwaltungs-API Ihrer Azure Digital Twins-Instanzen können Sie feststellen, ob ein bestimmter Matcher für den angegebenen Sensor gilt.
 
 ```plaintext
-GET https://yourManagementApiUrl/api/v1.0/matchers/yourMatcherIdentifier/evaluate/yourSensorIdentifier?enableLogging=true
+GET YOUR_MANAGEMENT_API_URL/matchers/YOUR_MATCHER_IDENTIFIER/evaluate/YOUR_SENSOR_IDENTIFIER?enableLogging=true
 ```
 
-| Name des benutzerdefinierten Attributs | Ersetzen durch |
+| Parameter | Ersetzen durch |
 | --- | --- |
-| *yourManagementApiUrl* | Der vollständige URL-Pfad für Ihre Verwaltungs-API  |
-| *yourMatcherIdentifier* | Die ID des Matchers, den Sie auswerten möchten |
-| *yourSensorIdentifier* | Die ID des Sensors, den Sie auswerten möchten |
+| *YOUR_MATCHER_IDENTIFIER* | Die ID des Matchers, den Sie auswerten möchten |
+| *YOUR_SENSOR_IDENTIFIER* | Die ID des Sensors, den Sie auswerten möchten |
 
 Antwort:
 
@@ -109,13 +109,12 @@ Antwort:
 Mit dem folgenden Aufruf anhand der Verwaltungs-API Ihrer Azure Digital Twins-Instanzen ist es möglich, die Bezeichner der benutzerdefinierten Funktionen zu ermitteln, die durch die eingehenden Telemetriedaten des angegebenen Sensors ausgelöst werden:
 
 ```plaintext
-GET https://yourManagementApiUrl/api/v1.0/sensors/yourSensorIdentifier/matchers?includes=UserDefinedFunctions
+GET YOUR_MANAGEMENT_API_URL/sensors/YOUR_SENSOR_IDENTIFIER/matchers?includes=UserDefinedFunctions
 ```
 
-| Name des benutzerdefinierten Attributs | Ersetzen durch |
+| Parameter | Ersetzen durch |
 | --- | --- |
-| *yourManagementApiUrl* | Der vollständige URL-Pfad für Ihre Verwaltungs-API  |
-| *yourSensorIdentifier* | Die ID des Sensors, der Telemetriedaten sendet |
+| *YOUR_SENSOR_IDENTIFIER* | Die ID des Sensors, der Telemetriedaten sendet |
 
 Antwort:
 

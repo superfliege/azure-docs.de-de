@@ -12,14 +12,14 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/12/2018
+ms.date: 11/13/2018
 ms.author: anwestg
-ms.openlocfilehash: 08f08d926a9e27e421ff8db46051d8a1e7229041
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: aa745d827db7633dc9f8601f65fa31dfadbb4076
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49166881"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51614054"
 ---
 # <a name="add-an-app-service-resource-provider-to-azure-stack"></a>Hinzufügen eines App Service-Ressourcenanbieters zu Azure Stack
 
@@ -28,7 +28,7 @@ ms.locfileid: "49166881"
 Stellen Sie App Service anhand der Informationen in diesem Artikel in Azure Stack bereit.
 
 > [!IMPORTANT]  
-> Wenden Sie Update 1807 auf Ihr integriertes Azure Stack-System an, oder stellen Sie das aktuelle Azure Stack Development Kit (ASDK) vor der Bereitstellung von Azure App Service 1.3 bereit.
+> Wenden Sie Update 1809 auf Ihr integriertes Azure Stack-System an, oder stellen Sie das aktuelle Azure Stack Development Kit (ASDK) vor der Bereitstellung von Azure App Service 1.4 bereit.
 
 Sie können Ihren Benutzern ermöglichen, Web- und API-Anwendungen zu erstellen. Damit Benutzer diese Anwendungen erstellen können, ist Folgendes erforderlich:
 
@@ -74,8 +74,8 @@ Führen Sie zum Bereitstellen eines App Service-Ressourcenanbieters die folgende
 
    b. Wählen Sie in **Azure Stack-Abonnements** das **Standardabonnement des Anbieters** aus.
 
-     >[!NOTE]
-     >App Service kann derzeit nur im **Standardabonnement des Anbieters** bereitgestellt werden.
+     > [!IMPORTANT]  
+     > App Service **muss** im **Standardabonnement des Anbieters** bereitgestellt werden.
 
    c. Wählen Sie in **Azure Stack-Standorte** den Standort aus, der der Region entspricht, in der die Bereitstellung erfolgen soll. Wählen Sie z.B. **lokal** aus, wenn Ihre Bereitstellung im Azure Stack Development Kit erfolgt.
 

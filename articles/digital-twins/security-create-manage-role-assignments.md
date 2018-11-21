@@ -6,14 +6,14 @@ manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/10/2018
+ms.date: 11/13/2018
 ms.author: lyrana
-ms.openlocfilehash: 42c1b0fbb6d87e9ed35d4ecce3971d8512eed4d4
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: f032e3ebf6a10411057cd6d41df0cad6248f328b
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51012461"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51636236"
 ---
 # <a name="create-and-manage-role-assignments"></a>Erstellen und Verwalten von Rollenzuweisungen
 
@@ -26,6 +26,8 @@ Jede Rollenzuweisung enthält:
 * **Rollendefinitions-ID**
 * **Raumpfad**
 * **Mandanten-ID**: In den meisten Fällen eine Azure Active Directory-Mandanten-ID
+
+[!INCLUDE [Digital Twins Management API](../../includes/digital-twins-management-api.md)]
 
 ## <a name="role-definition-identifiers"></a>Rollendefinitionsbezeichner
 
@@ -57,7 +59,7 @@ Unterstützte `ObjectIdTypes`:
 ## <a name="create-a-role-assignment"></a>Erstellen einer Rollenzuweisung
 
 ```plaintext
-HTTP POST /api/v1.0/roleassignments
+HTTP POST YOUR_MANAGEMENT_API_URL/roleassignments
 ```
 
 | **Name** | **Erforderlich** | **Typ** | **Beschreibung** |
@@ -108,22 +110,22 @@ Alle Benutzer, die Teil einer Domäne sind, erhalten Lesezugriff für Räume, Se
 Verwenden Sie GET, um eine Rollenzuweisung abzurufen.
 
 ```plaintext
-HTTP GET /api/v1/roleassignments?path={path}
+HTTP GET YOUR_MANAGEMENT_API_URL/roleassignments?path=YOUR_PATH
 ```
 
 | **Name** | **In** | **Erforderlich** |    **Typ** |  **Beschreibung** |
 | --- | --- | --- | --- | --- |
-| path | path | True | Zeichenfolge | Der vollständige Pfad zum Raum |
+| YOUR_PATH | path | True | Zeichenfolge |    Der vollständige Pfad zum Raum |
 
 Verwenden Sie DELETE, um eine Rollenzuweisung zu löschen.
 
 ```plaintext
-HTTP DELETE /api/v1/roleassignments/{id}
+HTTP DELETE YOUR_MANAGEMENT_API_URL/roleassignments/YOUR_ROLE_ID
 ```
 
 | **Name** | **In** | **Erforderlich** | **Typ** | **Beschreibung** |
 | --- | --- | --- | --- | --- |
-| ID | path | True | Zeichenfolge |   Rollenzuweisungs-ID |
+| YOUR_ROLE_ID | path | True | Zeichenfolge | Rollenzuweisungs-ID |
 
 ## <a name="next-steps"></a>Nächste Schritte
 
