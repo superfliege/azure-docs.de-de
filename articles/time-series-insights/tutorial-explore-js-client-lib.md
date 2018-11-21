@@ -36,7 +36,7 @@ In diesem Tutorial lernen Sie Folgendes kennen:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-In diesem Tutorial wird das Feature „Entwicklertools“ (auch als „DevTools“ oder „F12“ bezeichnet) verwendet, das Sie in den meisten modernen Webbrowsern finden, z.B. [Edge](/microsoft-edge/devtools-guide), [Chrome](https://developers.google.com/web/tools/chrome-devtools/), [Firefox](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_are_browser_developer_tools), [Safari](https://developer.apple.com/safari/tools/) und anderen. Wenn Sie mit diesem Feature noch nicht vertraut sind, empfiehlt es sich, es zunächst in Ihrem Browser zu erkunden, bevor Sie mit dem Tutorial fortfahren.
+In diesem Tutorial wird das Feature „Entwicklertools“ (auch als „DevTools“ oder „F12“ bezeichnet) verwendet, das Sie in den meisten modernen Webbrowsern finden, z.B. [Microsoft Edge](/microsoft-edge/devtools-guide), [Chrome](https://developers.google.com/web/tools/chrome-devtools/), [Firefox](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_are_browser_developer_tools), [Safari](https://developer.apple.com/safari/tools/) und anderen. Wenn Sie mit diesem Feature noch nicht vertraut sind, empfiehlt es sich, es zunächst in Ihrem Browser zu erkunden, bevor Sie mit dem Tutorial fortfahren.
 
 ## <a name="time-series-insights-sample-application"></a>Time Series Insights-Beispielanwendung
 

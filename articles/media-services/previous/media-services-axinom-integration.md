@@ -59,7 +59,7 @@ Im Abschnitt [Generierung von JWT-Token](media-services-axinom-integration.md#jw
 
 ## <a name="azure-media-player-preparation"></a>Vorbereiten von Azure Media Player
 AMP 1.4.0 unterstützt die Wiedergabe von AMS-Inhalten, die dynamisch mit sowohl PlayReady als auch Widevine DRM gepackt sind.
-Wenn der Widevine-Lizenzserver keine Authentifizierung mittels Token verlangt, sind zum Testen von DASH-Inhalten, die mit Widevine geschützt sind, keine weiteren Schritte erforderlich. Das AMP-Team bietet ein einfaches [Beispiel](https://amp.azure.net/libs/amp/latest/samples/dynamic_multiDRM_PlayReadyWidevineFairPlay_notoken.html), mit dem die Funktionsweise in Edge und IE11 mit PlayReady und in Chrome mit Widevine erläutert wird.
+Wenn der Widevine-Lizenzserver keine Authentifizierung mittels Token verlangt, sind zum Testen von DASH-Inhalten, die mit Widevine geschützt sind, keine weiteren Schritte erforderlich. Das AMP-Team bietet ein einfaches [Beispiel](https://amp.azure.net/libs/amp/latest/samples/dynamic_multiDRM_PlayReadyWidevineFairPlay_notoken.html), mit dem die Funktionsweise in Microsoft Edge und IE11 mit PlayReady und in Chrome mit Widevine erläutert wird.
 Der von Axinom bereitgestellte Widevine-Lizenzserver verlangt die Authentifizierung mittels JWT-Token. Das JWT-Token muss mit der Lizenzanforderung über einen HTTP-Header vom Typ "X-AxDRM-Message" übermittelt werden. Zu diesem Zweck müssen Sie das folgende Javascript auf der Webseite hinzufügen, die AMP hostet, ehe Sie die Quelle festlegen:
 
     <script>AzureHtml5JS.KeySystem.WidevineCustomAuthorizationHeader = "X-AxDRM-Message"</script>

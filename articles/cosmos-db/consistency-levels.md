@@ -11,26 +11,22 @@ ms.topic: conceptual
 ms.date: 03/27/2018
 ms.author: andrl
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2611c25764503551c4da918d06bcaabe315cbf7c
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 6ace11cf3704ddbd503c0202d45874670476198e
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50963080"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51624826"
 ---
 # <a name="consistency-levels-in-azure-cosmos-db"></a>Konsistenzebenen in Azure Cosmos DB
 
 Verteilte Datenbanken, die auf Replikation angewiesen sind, um Hochverfügbarkeit, niedrige Latenzzeiten oder beides sicherzustellen, bilden den grundlegenden Kompromiss zwischen Lesekonsistenz und Verfügbarkeit, Latenz sowie Durchsatz. Die meisten kommerziell verfügbaren verteilten Datenbanken verlangen von Entwicklern, dass sie zwischen den beiden extremen Konsistenzmodellen wählen: starke Konsistenz und letztliche Konsistenz. Die  [Linearisierbarkeit](http://cs.brown.edu/~mph/HerlihyW90/p463-herlihy.pdf) bzw. die starke Konsistenz ist zwar das Nonplusultra in Sachen Datenprogrammierbarkeit, sie wird jedoch durch hohe Latenzen (im stabilen Zustand) und durch geringere Verfügbarkeit (bei Ausfällen) teuer erkauft. Auf der anderen Seite bietet die letztliche Konsistenz eine höhere Verfügbarkeit und bessere Leistung, erschwert jedoch die Programmierung von Anwendungen erheblich.
 
-Cosmos DB bietet für die Datenkonsistenz nicht nur diese beiden Extreme, sondern ein ganzes Spektrum von Auswahlmöglichkeiten. Die starke und die letztliche Konsistenz bilden die beiden Enden des Spektrums, und dazwischen gibt es eine Reihe weiterer Konsistenzoptionen. Diese Konsistenzoptionen ermöglichen es Entwicklern, präzise Entscheidungen zu treffen, und bieten differenzierte Kompromisse hinsichtlich Hochverfügbarkeit und Leistung. Mit Cosmos DB können Entwickler zwischen fünf klar definierten Konsistenzmodellen aus dem gesamten Konsistenzspektrum wählen. Diese sind (von der stärksten bis zur schwächsten Option): **starke Konsistenz**, **begrenzte Veraltung**, **Sitzungskonsistenz**, **Präfixkonsistenz** und **letztliche Konsistenz**. Jedes dieser Konsistenzmodelle ist klar definiert, intuitiv und kann für spezifische reale Szenarien verwendet werden. Jedes der fünf Konsistenzmodelle bietet [Verfügbarkeits- und Leistungskompromisse](consistency-levels-tradeoffs.md) und wird durch umfassende SLAs abgesichert.
+Cosmos DB bietet für die Datenkonsistenz nicht nur diese beiden Extreme, sondern ein ganzes Spektrum von Auswahlmöglichkeiten. Die starke und die letztliche Konsistenz bilden die beiden Enden des Spektrums, und dazwischen gibt es eine Reihe weiterer Konsistenzoptionen. Diese Konsistenzoptionen ermöglichen es Entwicklern, präzise Entscheidungen zu treffen, und bieten differenzierte Kompromisse hinsichtlich Hochverfügbarkeit und Leistung. Mit Cosmos DB können Entwickler zwischen fünf klar definierten Konsistenzmodellen aus dem gesamten Konsistenzspektrum wählen. Diese sind (von der stärksten bis zur schwächsten Option): **starke Konsistenz**, **begrenzte Veraltung**, **Sitzungskonsistenz**, **Präfixkonsistenz** und **letztliche Konsistenz**. Jedes dieser Konsistenzmodelle ist klar definiert, intuitiv und kann für spezifische reale Szenarien verwendet werden. Jedes der fünf Konsistenzmodelle bietet [Verfügbarkeits- und Leistungskompromisse](consistency-levels-tradeoffs.md) und wird durch umfassende SLAs abgesichert. Die folgende Abbildung zeigt verschiedene Konsistenzebenen als Spektrum:
 
 ![Konsistenz als Spektrum](./media/consistency-levels/five-consistency-levels.png)
 
-Die Konsistenzebenen sind regionsunabhängig. Die Konsistenzebene Ihres Cosmos DB-Kontos wird für alle Lesevorgänge unabhängig von den folgenden Eigenschaften gewährleistet:
-
-- Die Region, in der die Lesen- und Schreibvorgänge verarbeitet wird
-- Die Anzahl von Regionen, die Ihrem Cosmos-Konto zugeordnet sind
-- Konfiguration des Kontos mit einer oder mehreren Schreibregionen
+Die Konsistenzebenen sind regionsunabhängig. Die Konsistenzebene Ihres Cosmos DB-Kontos ist für alle Lesevorgänge garantiert – unabhängig von der Region, in der die Lese- und Schreibvorgänge verarbeitet werden, der Anzahl der mit Ihrem Cosmos-Konto verbundenen Regionen und davon, ob Ihr Konto mit einer oder mehreren Schreibregionen konfiguriert ist.
 
 ## <a name="scope-of-the-read-consistency"></a>Geltungsbereich der Lesekonsistenz
 

@@ -52,7 +52,7 @@ Möchten Sie mehr dazu erfahren, [was sich in dieser Version geändert hat](over
 
 Ressourcen wie Ihre Experimentierkonten, Modellverwaltungskonten und Compute-Umgebungen für maschinelles Lernen können nicht zur neuesten Version des Azure Machine Learning Services migriert werden. Informationen über die verbleibende Zeit, in der Ihre Posten noch funktionieren, finden Sie in der [Zeitachse](overview-what-happened-to-workbench.md#timeline).
 
-Ihre ersten Schritte in der neuesten Version bestehen darin, im [Azure-Portal](quickstart-get-started.md) einen Azure Machine Learning Services-Arbeitsbereich zu erstellen. Das Arbeitsbereichdashboard im Portal wird nur in den Browsern Edge, Chrome und Firefox unterstützt.
+Ihre ersten Schritte in der neuesten Version bestehen darin, im [Azure-Portal](quickstart-get-started.md) einen Azure Machine Learning Services-Arbeitsbereich zu erstellen. Das Arbeitsbereichdashboard im Portal wird nur in den Browsern Microsoft Edge, Chrome und Firefox unterstützt.
 
 Dieser neue Arbeitsbereich ist die Dienstressource der obersten Ebene und ermöglicht Ihnen, alle aktuellen Features des Azure Machine Learning Service zu nutzen. Weitere Informationen zu diesem [Arbeitsbereich und zur Architektur](concept-azure-machine-learning-architecture.md).
 

@@ -57,7 +57,7 @@ Ausführungsverläufe bleiben noch eine Zeit lang zugänglich. Wenn Sie bereit s
 
 Ausführungsverläufe heißen in der aktuellen Version jetzt _Experimente_. Sie können die Experimente Ihres Modells sammeln und sie mithilfe des SDKs, des CLIs oder des Webportals untersuchen.
 
-Das Arbeitsbereich-Dashboard im Portal wird nur in den Browsern Edge, Chrome und Firefox unterstützt.
+Das Arbeitsbereich-Dashboard im Portal wird nur in den Browsern Microsoft Edge, Chrome und Firefox unterstützt.
 
 [ ![Onlineportal](./media/overview-what-happened-to-workbench/image001.png) ] (./media/overview-what-happened-to-workbench/image001.png#lightbox)
 

@@ -70,7 +70,7 @@ Beispiel:
 
 1.  Es ist nicht möglich, ein Sprite-Bild mit einer einzelnen Zeile von Bildern zu generieren (SpriteColumn = 1 ergibt ein Bild mit einer einzelnen Spalte).
 2.  Die Blockerstellung der Sprite-Bilder zu mittelgroßen JPEG-Bildern wird noch nicht unterstützt. Daher müssen Sie darauf achten, die Anzahl der Miniaturbilder und deren Größe zu begrenzen, sodass das resultierende zusammengefügte Miniaturbild-Sprite etwa 8 M Pixel oder weniger beträgt.
-3.  Azure Media Player unterstützt Sprites für Edge-, Chrome- und Firefox-Browser. Die VTT-Analyse wird im IE11 nicht unterstützt.
+3.  Azure Media Player unterstützt Sprites für Microsoft Edge-, Chrome- und Firefox-Browser. Die VTT-Analyse wird im IE11 nicht unterstützt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

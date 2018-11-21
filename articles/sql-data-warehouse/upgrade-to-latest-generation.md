@@ -10,12 +10,12 @@ ms.component: manage
 ms.date: 08/22/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 9b2c5fa38d0ad21a374d3e5acee8534aeb9c0384
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: fe1f2e026aaa4260d34b9b1cb96064053af1c3c7
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45580547"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51568011"
 ---
 # <a name="optimize-performance-by-upgrading-sql-data-warehouse"></a>Optimieren der Leistung durch ein Upgrade von SQL Data Warehouse
 Führen Sie ein Upgrade für Azure SQL Data Warehouse auf die Azure-Hardware- und -Speicherarchitektur der neuesten Generation aus.
@@ -45,13 +45,17 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
 ## <a name="start-the-upgrade"></a>Starten des Upgrades
 
-1. Navigieren Sie im Azure-Portal zu Ihrem Data Warehouse der Stufe „Optimiert für Compute Gen 1“, und klicken Sie auf **Upgrade auf Gen2**: ![Upgrade_1](./media/sql-data-warehouse-upgrade-to-latest-generation/Upgrade_to_Gen2_1.png)
+1. Navigieren Sie im Azure-Portal zu Ihrem Data Warehouse der Stufe „Optimiert für Compute Gen 1“, und klicken Sie auf die Karte **Upgrade auf Gen2** unter der Registerkarte „Aufgaben“: ![Upgrade_1](./media/sql-data-warehouse-upgrade-to-latest-generation/Upgrade_to_Gen2_1.png)
+    
+> [!NOTE]
+> Wenn die Karte **Upgrade auf Gen2** unter der Registerkarte „Aufgaben“ nicht angezeigt wird, ist Ihr Abonnementtyp in der aktuellen Region beschränkt. [Übermitteln Sie ein Support-Ticket](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket), um Ihr Abonnement in die Whitelist aufnehmen zu lassen.
 
 2. Wählen Sie standardmäßig **die vorgeschlagene Leistungsstufe** für das Data Warehouse aus, basierend auf Ihrer aktuellen Leistungsstufe für „Optimiert für Compute Gen 1“. Verwenden Sie dafür die folgende Zuordnung:
     
    | Stufe „Optimiert für Compute Gen 1“ | Stufe „Optimiert für Compute Gen 2“ |
    | :----------------------: | :-------------------: |
-   |      DW100 – DW1000      |        DW1000c        |
+   |      DW100 – DW600       |        DW500c         |
+   |          DW1000          |        DW1000c        |
    |          DW1200          |        DW1500c        |
    |          DW1500          |        DW1500c        |
    |          DW2000          |        DW2000c        |
