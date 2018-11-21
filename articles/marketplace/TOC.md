@@ -5,7 +5,6 @@
 ### [Ihr Weg zum Herausgeber im Marketplace](./become-publisher.md)  
 #### [Erstellen eines Microsoft-Kontos](./guidelines.md)
 #### [Registrierung in Dev Center](./register-dev-center.md) 
-#### [Abrechnungsoptionen für Azure Marketplace](./billing-options-azure-marketplace.md)  
 #### [Zuordnung der Nutzung durch Kunden von Azure-Partnern](./azure-partner-customer-usage-attribution.md)
 #### [Leadverwaltung für Cloud Marketplace](./lead-management-for-cloud-marketplace.md)
 
@@ -13,7 +12,7 @@
 
 ### [Festlegen der Veröffentlichungsoption für Ihre Lösung](./determine-your-listing-type.md)  
 
-### Leitfaden zur Veröffentlichung nach Angebotstyp 
+### [Leitfaden zur Veröffentlichung nach Angebotstyp](./publisher-guide-by-offer-type.md)
 #### [Virtuelle Computer](./marketplace-virtual-machines.md)
 #### [Azure-Anwendungen: Lösungsvorlagen](./marketplace-solution-templates.md)
 #### [Azure-Anwendungen: Verwaltete Anwendungen](./marketplace-managed-apps.md)
@@ -27,6 +26,8 @@
 ### [Fördern Ihres Unternehmenswachstums mit Marketplace](./grow-your-business-with-azure-marketplace.md)  
 #### [Bevorzugte Lösungen](./preferred-solutions.md) 
 #### [Überprüfung von Marketplace-Inhalten](./marketplace-criteria-content-validation.md)
+#### [Private Angebote](./private-offers.md)
+#### [Kommerzielle Transaktionen im Marketplace: Funktionen und Überlegungen](./marketplace-commercial-transaction-capabilities-and-considerations.md)
 
 ### [Support für Azure Marketplace und AppSource](./support-azure-marketplace.md)  
 
@@ -34,6 +35,16 @@
 <!-- Following section is for Cloud Partner Portal (CPP). -->
 
 # [Cloudpartnerportal](./cloud-partner-portal-orig/cloud-partner-portal-getting-started-with-the-cloud-partner-portal.md) 
+
+## [Tour durch das Portal](./cloud-partner-portal/portal-tour/cpp-portal-tour.md)
+### [Navigation im Portal](./cloud-partner-portal/portal-tour/cpp-portal-navigation.md)
+### [Menü „Neues Angebot“](./cloud-partner-portal/portal-tour/cpp-new-offer-menu.md)
+### [Seite „Alle Angebote“](./cloud-partner-portal/portal-tour/cpp-all-offers-page.md)
+### [Seite „Genehmigungen“](./cloud-partner-portal/portal-tour/cpp-approvals-page.md)
+### [Seite „Alle Herausgeber“](./cloud-partner-portal/portal-tour/cpp-all-publishers-page.md)
+### [Seite „Benutzer“](./cloud-partner-portal/portal-tour/cpp-users-page.md)
+### [Seite „Überwachungsverlauf“](./cloud-partner-portal/portal-tour/cpp-history-page.md)
+### [Seite „Erkenntnisse“](./cloud-partner-portal/portal-tour/cpp-insights-page.md)
 
 ## Portalverwaltung
 ### [Dev Center-Kontoregistrierung](./cloud-partner-portal-orig/cloud-partner-portal-dev-center-accounts-registration.md)

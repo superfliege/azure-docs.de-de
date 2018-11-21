@@ -11,59 +11,56 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: report-monitor
-ms.date: 05/23/2018
+ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 13d81e655b98771d985277974bd3081437e2a3e8
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: c43497a69b3188b4bc38e91b6ff9b1cc8b6bd21a
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51255778"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51624147"
 ---
 # <a name="remediate-users-flagged-for-risk-in-the-azure-active-directory-portal"></a>Behandeln von „Benutzer mit Risikomarkierung“ im Azure Active Directory-Portal
 
-Mit den Sicherheitsberichten in Azure Active Directory (Azure AD) erhalten Sie Einblicke in die Wahrscheinlichkeit für kompromittierte Benutzerkonten in Ihrer Umgebung. Ein Benutzer mit Risikomarkierung ist ein Indikator für ein möglicherweise kompromittiertes Benutzerkonto.
+Mit den Sicherheitsberichten in Azure Active Directory (Azure AD) können Sie die Wahrscheinlichkeit für kompromittierte Benutzerkonten in Ihrer Umgebung einschätzen. Ein Benutzer mit Risikomarkierung ist ein Indikator für ein möglicherweise kompromittiertes Benutzerkonto.
 
 Microsoft ist bestrebt, Sie beim Schutz Ihrer Umgebungen zu unterstützen. Im Rahmen dieses Engagements sucht Microsoft kontinuierlich nach ungewöhnlichen Aktivitäten sowie nach Aktivitäten, die bekannten Angriffsmustern entsprechen. 
 
-
-Werden ungewöhnliche Aktivitäten erkannt, die auf nicht autorisierte Zugriffe auf einige Konten Ihrer Benutzer hindeuten, erhalten Sie Benachrichtigungen, um darauf reagieren zu können. Die Bereitstellung von Benachrichtigungen bedeutet nicht, dass Microsoft-eigene Systeme in irgendeiner Weise kompromittiert wurden.
- 
+Wenn ungewöhnliche Aktivitäten erkannt werden, die auf nicht autorisierte Zugriffe auf einige Konten Ihrer Benutzer hindeuten, erhalten Sie Benachrichtigungen, um darauf reagieren zu können. Dies bedeutet nicht, dass die eigenen Systeme von Microsoft kompromittiert wurden.
 
 ## <a name="access-the-users-flagged-for-risk-report"></a>Zugreifen auf den Bericht „Benutzer mit Risikomarkierung“
 
-Benutzer mit Risikomarkierung können über den zugehörigen [Bericht](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/UsersAtRisk) in Azure Active Directory (AD) überprüft werden. Sollten Sie über kein Azure AD-Abonnement verfügen, können Sie unter [https://aka.ms/AccessAAD](https://aka.ms/AccessAAD) kostenlos den einmaligen Abonnementprozess durchlaufen. Über diesen Bericht können Sie verschiedene Aktionen ausführen:
+Sie können Benutzer mit Risikomarkierung im Azure-Portal über den [Bericht „Benutzer mit Risikomarkierung“](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/UsersAtRisk) anzeigen. Wenn Sie nicht über Azure AD verfügen, können Sie sich unter [https://aka.ms/AccessAAD](https://aka.ms/AccessAAD) kostenlos anmelden. 
+
+Dem Bericht „Benutzer mit Risikomarkierung“ können Sie für jeden Benutzer die folgenden Aktionen entnehmen:
 
 - Generieren eines temporären Kennworts
 - Festlegen, dass der Benutzer bei der nächsten Anmeldung eine sichere Kennwortzurücksetzung ausführen muss
 - Verwerfen des Benutzerrisikos, ohne eine Korrekturaktion auszuführen
 
-Weitere Informationen finden Sie unter [Sicherheitsbericht „Benutzer mit Risikomarkierung“ im Azure Active Directory-Portal](concept-user-at-risk.md).
+Weitere Informationen finden Sie unter [Sicherheitsbericht „Benutzer mit Risikomarkierung“](concept-user-at-risk.md).
 
 ### <a name="azure-ad-subscription-for-office-365-customers"></a>Azure AD-Abonnement für Office 365-Kunden
 
-Anschließend können Sie unter Verwendung Ihrer Office 365-Anmeldeinformationen auf das Azure Admin Center zugreifen. Nachdem Sie Ihren Zugriff auf Azure AD aktiviert haben, werden Sie zum Azure AD-Portal umgeleitet. Auf der Abonnementebene „Basic“ stehen in den Berichten nur eingeschränkte Details zur Verfügung. Azure Premium-Abonnementen haben dagegen Zugang zu weiteren Daten und Analysen.
+Außerdem können Sie mit Ihren Office 365-Anmeldeinformationen auch auf das **Azure Admin Center** zugreifen. Nachdem Sie Ihren Zugriff auf Azure AD aktiviert haben, werden Sie zum Azure AD-Portal umgeleitet. Auf der Abonnementebene „Basic“ stehen in den Berichten nur eingeschränkte Details zur Verfügung. Azure Premium-Abonnementen haben dagegen Zugang zu weiteren Daten und Analysen.
 
+**Greifen Sie im Office 365 Admin Center wie folgt auf den Bericht „Benutzer mit Risikomarkierung“ zu:**
 
-**So greifen Sie im Office 365 Admin Center auf den Bericht „Benutzer mit Risikomarkierung“ zu:**
-
-1.  Klicken Sie im Navigationsbereich auf der linken Seite auf **Admin Center**. 
-2.  Klicken Sie auf **Azure AD**.
+1.  Wählen Sie im Navigationsbereich auf der linken Seite die Option **Admin Center**. 
+2.  Wählen Sie **Azure AD**.
 3.  Melden Sie sich beim **Azure Active Directory Admin Center** an.
-4.  Falls am oberen Seitenrand ein Banner mit dem Text **Check out the new portal** (Neues Portal ausprobieren) erscheint, klicken Sie auf den Link.
-4.  Klicken Sie im Navigationsmenü auf der linken Seite auf **Azure Active Directory**. 
-5.  Klicken Sie im Navigationsbereich unter **Sicherheit** auf **Benutzer mit Risikomarkierung**.
-
-Sehen Sie sich die angezeigten Informationen an. Es empfiehlt sich, die Kennwörter aller aufgeführten Konten zurückzusetzen. 
+4.  Wählen Sie den Link aus, falls am oberen Seitenrand ein Banner mit dem Text **Check out the new portal** (Neues Portal ausprobieren) erscheint.
+4.  Wählen Sie im Navigationsmenü auf der linken Seite die Option **Azure Active Directory**. 
+5.  Wählen Sie im Navigationsbereich im Abschnitt **Sicherheit** die Option **Benutzer mit Risikomarkierung**.
 
 ## <a name="remediation-actions"></a>Aktionen zur Problembehebung
 
 Führen Sie die folgenden Schritte aus, um die betroffenen Konten zu korrigieren und Ihre Umgebung zu schützen:
 
-1.  [Überprüfen](https://aka.ms/MFAValid) Sie die Informationen für die mehrstufige Authentifizierung und die Self-Service-Kennwortzurücksetzung. 
-2.  [Aktivieren](https://aka.ms/MFAuth) Sie die mehrstufige Authentifizierung für alle Benutzer. 
-3.  Mit [diesem Bereinigungsskript](https://aka.ms/remediate) können Sie für jedes betroffene Konto automatisch folgende Schritte ausführen: 
+1.  [Überprüfen Sie die Informationen](http://aka.ms/MFAValid) für die mehrstufige Authentifizierung und die Self-Service-Kennwortzurücksetzung. 
+2.  [Aktivieren Sie die mehrstufige Authentifizierung](http://aka.ms/MFAuth) für alle Benutzer. 
+3.  Verwenden Sie [dieses Bereinigungsskript](http://aka.ms/remediate), um für jedes betroffene Konto automatisch folgende Schritte auszuführen: 
 
     a. Zurücksetzen des Kennworts, um das Konto zu schützen und die Beendigung aktiver Sitzungen zu erzwingen
 
@@ -79,22 +76,20 @@ Führen Sie die folgenden Schritte aus, um die betroffenen Konten zu korrigieren
 
     g. Aktivieren der Postfachüberwachung
 
-    h. Erzeugen eines Überwachungsprotokolls zur Überprüfung durch den Administrator
+    h. Erstellen eines Überwachungsprotokolls zur Überprüfung durch den Administrator
 
 4. Untersuchen Sie Ihren Office 365-Mandanten sowie die restliche IT-Infrastruktur – einschließlich aller Mandanteneinstellungen, Benutzerkonten und der benutzerspezifischen Konfigurationseinstellungen – auf mögliche Änderungen. Suchen Sie nach Anzeichen für Persistenzmethoden sowie nach Anzeichen dafür, dass ein Eindringling an VPN-Anmeldeinformationen gelangt ist oder sich Zugriff auf andere Ressourcen der Organisation verschafft hat. 
 
-5.  Überlegen Sie sich im Rahmen Ihrer Untersuchung, ob Sie ggf. die Behörden einschalten sollten oder müssen.
+5.  Überlegen Sie sich im Rahmen Ihrer Untersuchung, ob Sie ggf. die Behörden (einschließlich der Strafverfolgungsbehörden) einschalten sollten.
 
 Darüber hinaus empfiehlt sich Folgendes:
 
-- Lesen und implementieren Sie diesen [Leitfaden](https://aka.ms/fixaccount) für den Umgang mit ungewöhnlichen Aktivitäten. 
-- [Aktivieren Sie die Überwachungspipeline](https://aka.ms/improvesecurity), um die Analyse der Aktivitäten Ihres Mandanten zu vereinfachen. Nach Abschluss des Vorgangs wird Ihr Überwachungsspeicher mit sämtlichen Aktivitätsprotokollen gefüllt. Nun können Sie auch die [Such- und Untersuchungsfunktionen des Security & Compliance Centers](https://aka.ms/sccsearch) nutzen. 
-- Verwenden Sie [dieses Skript](https://aka.ms/mailboxaudit1), um die Postfachüberwachung für alle Ihre Konten zu aktivieren. 
-- Überprüfen Sie die Berechtigungen der Stellvertretung und die E-Mail-Weiterleitungsregeln für alle Ihre Postfächer. Hierzu können Sie [dieses PowerShell-Skript](https://aka.ms/delegateforwardrules) verwenden. 
-
-
+- Lesen und implementieren Sie diesen [Leitfaden für den Umgang mit ungewöhnlichen Aktivitäten](http://aka.ms/fixaccount). 
+- [Aktivieren Sie die Überwachungspipeline](http://aka.ms/improvesecurity), um die Analyse der Aktivitäten Ihres Mandanten zu vereinfachen. Nach Abschluss des Vorgangs wird Ihr Überwachungsspeicher mit den Aktivitätsprotokollen gefüllt. Nun können Sie auch die [Such- und Untersuchungsressourcen des Security & Compliance Centers](http://aka.ms/sccsearch) nutzen. 
+- Verwenden Sie [dieses Skript, um die Postfachüberwachung für alle Ihre Konten zu aktivieren](http://aka.ms/mailboxaudit1). 
+- Überprüfen Sie die Berechtigungen der Stellvertretung und die E-Mail-Weiterleitungsregeln für alle Ihre Postfächer. Hierzu können Sie [dieses PowerShell-Skript](http://aka.ms/delegateforwardrules) verwenden. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Weitere Informationen zu Azure Active Directory Identity Protection finden Sie unter [Azure Active Directory Identity Protection](../active-directory-identityprotection.md).
-
+* [Azure Active Directory Identity Protection](../active-directory-identityprotection.md)
+* [Sicherheitsbericht „Benutzer mit Risikomarkierung“ im Azure Active Directory-Portal](concept-user-at-risk.md)

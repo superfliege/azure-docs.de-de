@@ -10,18 +10,18 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/09/2018
+ms.date: 11/12/2018
 ms.author: douglasl
-ms.openlocfilehash: 94633ce2f11f9efa99f1ad44820abd5aecdec923
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: 60c715e97f6b1d2046fb4050ae41b27146c0610a
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49457209"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51623773"
 ---
 # <a name="continuous-integration-and-delivery-cicd-in-azure-data-factory"></a>Continuous Integration und Continuous Delivery (CI/CD) in Azure Data Factory
 
-Bei Continuous Integration wird jede Änderung, die an Ihrer Codebasis vorgenommen wird, automatisch und so früh wie möglich getestet. Der Continuous Delivery-Prozess folgt auf das Testen während des Continuous Integration-Prozesses. Änderungen werden dabei in ein Staging- oder Produktionssystem gepusht.
+Bei Continuous Integration wird jede Änderung, die an Ihrer Codebasis vorgenommen wird, automatisch und so früh wie möglich getestet. Der Continuous Delivery-Prozess folgt auf das Testen während des Continuous Integration-Prozesses. Änderungen werden dabei in ein Staging- oder Produktionssystem gepusht.
 
 Für Azure Data Factory bedeuten Continuous Integration und Continuous Delivery das Verschieben von Data Factory-Pipelines aus einer Umgebung (Entwicklung, Test, Produktion) in eine andere. Für die Durchführung von Continuous Integration und Continuous Delivery können Sie die Data Factory-Benutzeroberflächenintegration in Azure Resource Manager-Vorlagen verwenden. Die Data Factory-Benutzeroberfläche kann eine Resource Manager-Vorlage generieren, wenn Sie die Optionen für **ARM-Vorlage** wählen. Wenn Sie **Export ARM template** (ARM-Vorlage exportieren) wählen, generiert das Portal die Resource Manager-Vorlage für die Data Factory und eine Konfigurationsdatei mit Ihren gesamten Verbindungszeichenfolgen und anderen Parametern. Anschließend müssen Sie eine Konfigurationsdatei für jede Umgebung erstellen (Entwicklung, Test, Produktion). Die Hauptdatei mit der Resource Manager-Vorlage bleibt für alle Umgebungen gleich.
 
@@ -73,13 +73,13 @@ Hier sind die Schritte zum Einrichten eines Azure Pipelines-Release angegeben, m
 
 ![Diagramm von Continuous Integration mit Azure Pipelines](media/continuous-integration-deployment/continuous-integration-image12.png)
 
-### <a name="requirements"></a>Requirements (Anforderungen)
+### <a name="requirements"></a>Anforderungen
 
--   Ein Azure-Abonnement, das mit Team Foundation Server oder Azure Repos verknüpft ist und für das der [*Azure Resource Manager-Dienstendpunkt*](https://docs.microsoft.com/azure/devops/pipelines/library/service-endpoints#sep-azure-rm) verwendet wird.
+-   Ein Azure-Abonnement, das mit Team Foundation Server oder Azure Repos verknüpft ist und für das der [*Azure Resource Manager-Dienstendpunkt*](https://docs.microsoft.com/azure/devops/pipelines/library/service-endpoints#sep-azure-rm) verwendet wird.
 
 -   Eine Data Factory-Instanz mit konfigurierter Azure Repos-Git-Integration.
 
--   Eine [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)-Instanz mit den Geheimnissen.
+-   Eine [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) -Instanz mit den Geheimnissen.
 
 ### <a name="set-up-an-azure-pipelines-release"></a>Einrichten eines Azure-Pipelines-Release
 
@@ -832,6 +832,48 @@ else {
 ## <a name="use-custom-parameters-with-the-resource-manager-template"></a>Verwenden benutzerdefinierter Parameter mit der Resource Manager-Vorlage
 
 Sie können für die Resource Manager-Vorlage benutzerdefinierte Parameter definieren. Im Stammordner des Repositorys muss lediglich eine Datei mit dem Namen `arm-template-parameters-definition.json` vorhanden sein. (Der Dateiname muss genau mit dem hier gezeigten Namen übereinstimmen.) Data Factory versucht, die Datei aus dem Branch zu lesen, in dem Sie gerade arbeiten, nicht bloß aus dem Kollaborationsbranch. Wenn keine Datei gefunden wird, verwendet Data Factory die Standardparameter und -werte.
+
+### <a name="syntax-of-a-custom-parameters-file"></a>Syntax einer benutzerdefinierten Parameterdatei
+
+Hier sind einige Richtlinien angegeben, die Sie beim Erstellen der benutzerdefinierten Parameterdatei verwenden können. Beispiele für diese Syntax finden Sie im Abschnitt [Beispiel für eine benutzerdefinierte Parameterdatei](#sample).
+
+1. Beim Festlegen eines Arrays in der Definitionsdatei geben Sie an, dass die übereinstimmende Eigenschaft in der Vorlage ein Array ist. Data Factory durchläuft alle Objekte im Array anhand der Definition, die im ersten Objekt des Arrays angegeben ist. Das zweite Objekt (eine Zeichenfolge) wird zum Namen der Eigenschaft, der bei jeder Iteration als Name für den Parameter verwendet wird.
+
+    ```json
+    ...
+    "Microsoft.DataFactory/factories/triggers": {
+        "properties": {
+            "pipelines": [{
+                    "parameters": {
+                        "*": "="
+                    }
+                },
+                "pipelineReference.referenceName"
+            ],
+            "pipeline": {
+                "parameters": {
+                    "*": "="
+                }
+            }
+        }
+    },
+    ...
+    ```
+
+2. Wenn Sie einen Eigenschaftennamen auf `*` festlegen, geben Sie damit an, dass für die Vorlage alle Eigenschaften auf dieser Ebene verwendet werden sollen (mit Ausnahme der Eigenschaften, die explizit definiert sind).
+
+3. Wenn Sie den Wert einer Eigenschaft als Zeichenfolge festlegen, geben Sie an, dass Sie die Eigenschaft parametrisieren möchten. Verwenden Sie das Format `<action>:<name>:<stype>`.
+    1.  `<action>` kann eines der folgenden Zeichen sein: 
+        1.  `=` bedeutet, dass der aktuelle Wert als Standardwert für den Parameter beibehalten werden soll.
+        2.  `-` bedeutet, dass der Standardwert für den Parameter nicht beibehalten werden soll.
+        3.  `|` ist ein Spezialfall für Geheimnisse aus Azure Key Vault für eine Verbindungszeichenfolge.
+    2.  `<name>` ist der Name des Parameters. Wenn `<name`> leer ist, wird der Name des Parameters verwendet. 
+    3.  `<stype>` ist der Typ des Parameters. Wenn `<stype>` leer ist, ist der Standardtyp eine Zeichenfolge.
+4.  Wenn Sie am Anfang eines Parameternamens das Zeichen `-` eingeben, wird der vollständige Resource Manager-Parametername auf `<objectName>_<propertyName>` gekürzt.
+`AzureStorage1_properties_typeProperties_connectionString` wird beispielsweise zu `AzureStorage1_connectionString`.
+
+
+### <a name="sample"></a> Beispiel für eine benutzerdefinierte Parameterdatei
 
 Das folgende Beispiel zeigt eine Datei mit Beispielparametern. Verwenden Sie dieses Beispiel als Referenz, um Ihre eigene benutzerdefinierte Parameterdatei zu erstellen. Wenn die bereitgestellte Datei nicht im richtigen JSON-Format vorliegt, gibt Data Factory eine Fehlermeldung in der Browserkonsole aus und stellt die auf der Data Factory-Benutzeroberfläche angezeigten Standardparametern und -werten wieder her.
 

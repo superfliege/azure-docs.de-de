@@ -52,7 +52,7 @@ Die folgenden Einstellungsgruppen sind für Endbenutzer verfügbar, um die Einst
 
 ![](./media/enterprise-state-roaming-windows-settings-reference/active-directory-enterprise-state-roaming-syncyoursettings.png)
 
-Die Synchronisierung der Einstellungsgruppe des Edge-Browsers (Favoriten, Leseliste) kann von Endbenutzern über das Einstellungsmenü des Edge-Browsers aktiviert oder deaktiviert werden.
+Die Synchronisierung der Einstellungsgruppe des Microsoft Edge-Browser (Favoriten, Leseliste) kann von Endbenutzern über das Einstellungsmenü des Microsoft Edge-Browser aktiviert oder deaktiviert werden.
 
 ![](./media/enterprise-state-roaming-windows-settings-reference/active-directory-enterprise-state-roaming-edge.png)
 
@@ -93,21 +93,21 @@ Einstellungen, für die kein Roaming oder keine Synchronisierung durchgeführt w
 | **Desktoppersonalisierung**: Einstellungen der Taskleiste (Position, automatisches Ausblenden usw.) |sync |X |Design |
 | **Desktoppersonalisierung**: Layout des Startbildschirms |X |Sicherung | |
 | **Geräte**: verbundene freigegebene Drucker |X |X |Sonstige |
-| **Edge-Browser**: Leseliste |sync |sync |Intern |
-| **Edge-Browser**: Favoriten |sync |sync |Intern |
-| **Edge-Browser:** beste Websites <sup>[[1]](#footnote-1)</sup> |sync |sync |Intern |
-| **Edge-Browser:** eingegebene URLs <sup>[[1]](#footnote-1)</sup> |sync |sync |Intern |
-| **Edge-Browser:** Einstellungen der Favoritenleiste <sup>[[1]](#footnote-1)</sup> |sync |sync |Intern |
-| **Edge-Browser:** Schaltfläche „Startseite“ anzeigen <sup>[[1]](#footnote-1)</sup> |sync |sync |Intern |
-| **Edge-Browser**: Popups blockieren <sup>[[1]](#footnote-1)</sup> |sync |sync |Intern |
-| **Edge-Browser:** fragen, wie mit jedem Download verfahren werden soll <sup>[[1]](#footnote-1)</sup> |sync |sync |Intern |
-| **Edge-Browser:**: Speichern von Kennwörtern anbieten <sup>[[1]](#footnote-1)</sup> |sync |sync |Intern |
-| **Edge-Browser:** „Do Not Track“-Anforderungen (nicht nachverfolgen) senden <sup>[[1]](#footnote-1)</sup> |sync |sync |Intern |
-| **Edge-Browser:** Formulareinträge speichern <sup>[[1]](#footnote-1)</sup> |sync |sync |Intern |
-| **Edge-Browser:** Such- und Websitevorschläge während der Eingabe anzeigen <sup>[[1]](#footnote-1)</sup> |sync |sync |Intern |
-| **Edge-Browser:** Cookies-Voreinstellung <sup>[[1]](#footnote-1)</sup> |sync |sync |Intern |
-| **Edge-Browser:** Websites das Speichern geschützter Medienlizenzen auf meinem Gerät erlauben <sup>[[1]](#footnote-1)</sup> |sync |sync |Intern |
-| **Edge-Browser:** Einstellung für die Sprachausgabe <sup>[[1]](#footnote-1)</sup> |sync |sync |Intern |
+| **Microsoft Edge-Browser**: Leseliste |sync |sync |Intern |
+| **Microsoft Edge-Browser**: Favoriten |sync |sync |Intern |
+| **Microsoft Edge-Browser:** beste Websites <sup>[[1]](#footnote-1)</sup> |sync |sync |Intern |
+| **Microsoft Edge-Browser:** eingegebene URLs <sup>[[1]](#footnote-1)</sup> |sync |sync |Intern |
+| **Microsoft Edge-Browser:** Einstellungen der Favoritenleiste <sup>[[1]](#footnote-1)</sup> |sync |sync |Intern |
+| **Microsoft Edge-Browser:** Schaltfläche „Startseite“ anzeigen <sup>[[1]](#footnote-1)</sup> |sync |sync |Intern |
+| **Microsoft Edge-Browser**: Popups blockieren <sup>[[1]](#footnote-1)</sup> |sync |sync |Intern |
+| **Microsoft Edge-Browser:** fragen, wie mit jedem Download verfahren werden soll <sup>[[1]](#footnote-1)</sup> |sync |sync |Intern |
+| **Microsoft Edge-Browser:**: Speichern von Kennwörtern anbieten <sup>[[1]](#footnote-1)</sup> |sync |sync |Intern |
+| **Microsoft Edge-Browser:** „Do Not Track“-Anforderungen (nicht nachverfolgen) senden <sup>[[1]](#footnote-1)</sup> |sync |sync |Intern |
+| **Microsoft Edge-Browser:** Formulareinträge speichern <sup>[[1]](#footnote-1)</sup> |sync |sync |Intern |
+| **Microsoft Edge-Browser:** Such- und Websitevorschläge während der Eingabe anzeigen <sup>[[1]](#footnote-1)</sup> |sync |sync |Intern |
+| **Microsoft Edge-Browser:** Cookies-Voreinstellung <sup>[[1]](#footnote-1)</sup> |sync |sync |Intern |
+| **Microsoft Edge-Browser:** Websites das Speichern geschützter Medienlizenzen auf meinem Gerät erlauben <sup>[[1]](#footnote-1)</sup> |sync |sync |Intern |
+| **Microsoft Edge-Browser:** Einstellung für die Sprachausgabe <sup>[[1]](#footnote-1)</sup> |sync |sync |Intern |
 | **Hoher Kontrast**: Ein/Aus |sync |X |Erleichterte Bedienung |
 | **Hoher Kontrast**: Designeinstellungen |sync |X |Erleichterte Bedienung |
 | **Internet Explorer**: geöffnete Registerkarten (URL und Titel) |sync |sync |Internet Explorer |

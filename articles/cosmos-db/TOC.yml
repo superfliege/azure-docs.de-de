@@ -154,12 +154,12 @@ items:
       href: access-secrets-from-keyvault.md
   - name: Unternehmensfähigkeit
     items:
+    - name: Onlinesicherung und -wiederherstellung
+      href: online-backup-and-restore.md
     - name: Compliance
       href: compliance.md
   - name: Vorauszahlen für eine reservierte Kapazität
     href: cosmos-db-reserved-capacity.md
-  - name: Sichern und Wiederherstellen
-    href: online-backup-and-restore.md
 - name: APIs mit mehreren Modellen
   items:
   - name: SQL-API-Dokumentation
@@ -453,6 +453,10 @@ items:
       href: how-to-configure-firewall.md
     - name: Konfigurieren des Zugriffs über virtuelle Netzwerke
       href: how-to-configure-vnet-service-endpoint.md
+  - name: Unternehmensfähigkeit
+    items:
+    - name: Wiederherstellen von Daten aus einer Sicherung
+      href: how-to-backup-and-restore.md
   - name: Verwalten
     items:
     - name: Verwalten mit PowerShell
@@ -573,9 +577,9 @@ items:
       href: use-cases.md
     - name: Apps für soziale Medien
       href: social-media-apps.md
-ms.openlocfilehash: 39b551b12f80a54a8c374e0ac0980c8c746ef3b3
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: be2c50fb19746f15d879ada3ccbdc4366a4c4763
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 11/20/2018
-ms.locfileid: "52162506"
+ms.locfileid: "52262532"

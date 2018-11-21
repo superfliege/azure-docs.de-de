@@ -5,37 +5,58 @@ items:
   items:
   - name: Worum handelt es sich bei Identitätsgovernance?
     href: identity-governance-overview.md
-  expanded: true
+  - name: Worum handelt es sich bei Zugriffsüberprüfungen?
+    href: access-reviews-overview.md
+  expanded: false
+- name: Konzepte
+  items:
+  - name: Verwalten des Gastzugriffs mit Überprüfungen
+    href: manage-guest-access-with-access-reviews.md
+  - name: Verwaltung des Benutzerzugriffs mit Überprüfungen
+    href: manage-user-access-with-access-reviews.md
+  - name: Verwalten von Programmen und ihren Steuerelementen
+    href: manage-programs-controls.md
+  - name: Verwalten von Benutzern, die vom bedingten Zugriff ausgeschlossen wurden
+    href: conditional-access-exclusion.md
+  expanded: false
 - name: Anleitungen
   items:
   - name: Zugriffsüberprüfungen
     items:
-    - name: Was ist eine Zugriffsüberprüfung?
-      href: access-reviews-overview.md
-    - name: Erstellen einer Zugriffsüberprüfung
-      href: create-access-review.md
-    - name: Abschließen einer Zugriffsüberprüfung
-      href: complete-access-review.md
-    - name: Durchführen einer Zugriffsüberprüfung
-      href: perform-access-review.md
-    - name: Überprüfen des Zugriffs
-      href: review-your-access.md
-    - name: Gastzugriff mit Zugriffsüberprüfungen
-      href: manage-guest-access-with-access-reviews.md
-    - name: Verwaltung des Benutzerzugriffs mit Überprüfungen
-      href: manage-user-access-with-access-reviews.md
-    - name: Verwalten von Programmen und ihren Steuerelementen
-      href: manage-programs-controls.md
-    - name: Abrufen der Ergebnisse der Zugriffsüberprüfung
-      href: retrieve-access-review.md
-    - name: Verwalten ausgeschlossener Benutzer
-      href: conditional-access-exclusion.md
+    - name: Gruppen und Apps
+      items:
+      - name: Erstellen einer Zugriffsüberprüfung
+        href: create-access-review.md
+      - name: Starten einer Zugriffsüberprüfung
+        href: perform-access-review.md
+      - name: Überprüfen des eigenen Zugriffs
+        href: review-your-access.md
+      - name: Abschließen einer Zugriffsüberprüfung
+        href: complete-access-review.md
+      - name: Abrufen der Ergebnisse der Zugriffsüberprüfung
+        href: retrieve-access-review.md
+    - name: Verzeichnisrollen
+      items:
+      - name: Überprüfen meiner Verzeichnisrollen
+        href: ../privileged-identity-management/pim-how-to-perform-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json
+      - name: Starten einer Zugriffsüberprüfung
+        href: ../privileged-identity-management/pim-how-to-start-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json
+      - name: Abschließen einer Zugriffsüberprüfung
+        href: ../privileged-identity-management/pim-how-to-complete-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json
+    - name: Ressourcenrollen
+      items:
+      - name: Überprüfen meiner Ressourcenrollen
+        href: ../privileged-identity-management/pim-resource-roles-perform-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json
+      - name: Starten einer Zugriffsüberprüfung
+        href: ../privileged-identity-management/pim-resource-roles-start-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json
+      - name: Abschließen einer Zugriffsüberprüfung
+        href: ../privileged-identity-management/pim-resource-roles-complete-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json
   - name: Nutzungsbedingungen
     href: active-directory-tou.md
   expanded: true
-ms.openlocfilehash: b6280e42839344169ab651cd5d882bb6abfbf388
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: b1c70e219aab05e8f8bd905cdc341ccd0d7b563a
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47163136"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52261145"
