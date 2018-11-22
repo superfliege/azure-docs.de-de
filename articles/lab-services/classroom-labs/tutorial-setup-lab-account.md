@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 07/17/2018
+ms.date: 11/15/2018
 ms.author: spelluru
-ms.openlocfilehash: b60c1e84eb5b62bfce0eb2ba96129deeee2fc3c3
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 72acc4fe0febaa09d6deb82043795b6003af683f
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39345307"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51706773"
 ---
 # <a name="tutorial-set-up-a-lab-account-with-azure-lab-services"></a>Tutorial: Einrichten eines Lab-Kontos mit Azure Lab Services
 In Azure Lab Services fungiert ein Lab-Konto als zentrales Konto, unter dem die Labs Ihrer Organisation verwaltet werden. In Ihrem Lab-Konto können Sie anderen Benutzern die Berechtigung zum Erstellen von Labs erteilen und Richtlinien festlegen, die für alle Labs unter dem Lab-Konto gelten. In diesem Tutorial erfahren Sie, wie Sie als Lab-Administrator ein Lab-Konto erstellen. 
@@ -68,28 +68,28 @@ Um Lehrkräften die Berechtigung zum Erstellen von Labs für ihre Klassen zu ert
 
     ![Hinzufügen eines Benutzers zur Rolle „Lab-Ersteller“](../media/tutorial-setup-lab-account/add-user-to-lab-creator-role.png)
 
-## <a name="specify-marketplace-images-available-to-lab-owners"></a>Angeben eines für Lab-Besitzer verfügbaren Marketplace-Images
+## <a name="specify-marketplace-images-available-to-lab-owners"></a>Festlegen von Marketplace-Images für Lab-Besitzer
 Als Lab-Kontobesitzer können Sie die Marketplace-Images festlegen, die Lab-Ersteller zum Erstellen von Labs im Lab-Konto verwenden können. 
 
-1. Klicken Sie im Menü auf der linken Seite auf **Marketplace-Images**. Standardmäßig wird die vollständige Liste der Images (aktiviert und deaktiviert) angezeigt. Sie können die Liste filtern, um nur aktivierte bzw. deaktivierte Images anzuzeigen. Wählen Sie dazu in der Dropdownliste oben die Option **Enabled only**/**Disabled only** (Nur aktivierte/Nur deaktivierte). 
+1. Wählen Sie links im Menü die Option **Marketplace-Images** aus. Standardmäßig wird die vollständige Liste der Images (sowohl aktivierte als auch deaktivierte) angezeigt. Sie können die Liste filtern, um nur aktivierte bzw. deaktivierte Images anzuzeigen. Wählen Sie dazu in der Dropdownliste oben die Option **Enabled only**/**Disabled only** (Nur aktivierte/Nur deaktivierte). 
     
-    ![Seite „Marketplace-Images“](../media/tutorial-setup-lab-account/marketplace-images-page.png)
+    ![Seite mit Marketplace-Images](../media/tutorial-setup-lab-account/marketplace-images-page.png)
 
     Die Marketplace-Images, die in der Liste angezeigt werden, sind die einzigen, die die folgenden Bedingungen erfüllen:
         
     - Erstellt einen einzelnen virtuellen Computer
     - Verwendet den Azure Resource Manager zum Bereitstellen von virtuellen Computern
     - Erfordert nicht den Erwerb eines zusätzlichen Lizenzplans
-2. Führen Sie eine der folgenden Aktionen aus, um ein aktiviertes Marketplace-Image zu **deaktivieren**: 
+2. Um ein aktiviertes Marketplace-Image zu **deaktivieren**, führen Sie eine der folgenden Aktionen aus: 
     1. Klicken Sie in der letzten Spalte auf die Ellipse (**...**) und dann auf **Disable image** (Image deaktivieren). 
 
-        ![Deaktivieren eines einzelnen Images](../media/tutorial-setup-lab-account/disable-one-image.png) 
-    2. Wählen Sie mehrere Images in der Liste aus, indem Sie die Kontrollkästchen vor den Imagenamen in der Liste aktivieren, und klicken Sie auf **Disable selected images** (Ausgewählte Images deaktivieren). 
+        ![Deaktivieren eines Images](../media/tutorial-setup-lab-account/disable-one-image.png) 
+    2. Wählen Sie mindestens ein Image in der Liste aus, indem Sie die Kontrollkästchen vor den Imagenamen in der Liste aktivieren, und wählen Sie **Ausgewählte Images deaktivieren** aus. 
 
-        ![Deaktivieren von mehreren Images](../media/tutorial-setup-lab-account/disable-multiple-images.png) 
-1. Führen Sie eine der folgenden Aktionen aus, um ein Marketplace-Image zu **aktivieren**: 
+        ![Deaktivieren mehrerer Images](../media/tutorial-setup-lab-account/disable-multiple-images.png) 
+1. Ebenso führen Sie zum **Aktivieren** eines Marketplace-Images eine der folgenden Aktionen aus: 
     1. Klicken Sie in der letzten Spalte auf die Ellipse (**...**) und dann auf **Enable image** (Image aktivieren). 
-    2. Wählen Sie mehrere Images in der Liste aus, indem Sie die Kontrollkästchen vor den Imagenamen in der Liste aktivieren, und klicken Sie auf **Enable selected images** (Ausgewählte Images aktivieren). 
+    2. Wählen Sie mindestens ein Image in der Liste aus, indem Sie die Kontrollkästchen vor den Imagenamen in der Liste aktivieren, und wählen Sie **Ausgewählte Images aktivieren** aus. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Tutorial haben Sie ein Lab-Konto erstellt. Um zu erfahren, wie Sie als beruflicher Benutzer ein Classroom-Lab erstellen, fahren Sie mit dem nächsten Tutorial fort:

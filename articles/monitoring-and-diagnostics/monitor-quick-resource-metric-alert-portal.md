@@ -9,18 +9,18 @@ ms.date: 02/08/2018
 ms.author: ancav
 ms.custom: mvc
 ms.component: alerts
-ms.openlocfilehash: 965a35eb4cf33abe78ca802e8d59f13a649dec0a
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: e0d25fc2ac84e9c9d71a9fd5971d4e57134e43a7
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51279227"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51819371"
 ---
 # <a name="receive-a-notification-when-a-metric-value-meets-a-condition"></a>Erhalten einer Benachrichtigung, wenn ein Metrikwert eine Bedingung erfüllt
 
 Azure Monitor stellt Metriken für viele Azure-Ressourcen zur Verfügung. Diese Metriken liefern Informationen zur Leistung und Integrität von Ressourcen. In vielen Fällen können Metrikwerte einen Hinweis liefern, wenn Probleme für eine Ressource auftreten. Sie können Metrikwarnungen erstellen, um anormales Verhalten zu überwachen und eine Benachrichtigung zu erhalten, wenn dieses auftritt. In diesem Schnellstart werden die einzelnen Schritte beim Erstellen einer Logik-App und eines Auftrags sowie das Visualisieren der Metriken für die Logik-App beschrieben. Danach wird das Erstellen einer Warnung und das Empfangen einer Benachrichtigung für eine Metrik für die Logik-App-Ressource vorgestellt.
 
-Weitere Informationen zu Metriken und Metrikwarnungen finden Sie unter [Azure Monitor-Metriken (Übersicht)](../monitoring/monitoring-data-collection.md) und [Azure Monitor-Warnungen (Übersicht)](./monitoring-overview-alerts.md). 
+Weitere Informationen zu Metriken und Metrikwarnungen finden Sie unter [Azure Monitor-Metriken (Übersicht)](../azure-monitor/platform/data-collection.md) und [Azure Monitor-Warnungen (Übersicht)](./monitoring-overview-alerts.md). 
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 

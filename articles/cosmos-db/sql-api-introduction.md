@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 05/22/2017
 ms.author: rafats
-ms.openlocfilehash: f71a7ad538e22359a2a0dd9c2e3f6c4448ee5a2d
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 5d1e86630ff9143a75e5b0502a64c7661cc2822c
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51232392"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52161078"
 ---
 # <a name="introduction-to-azure-cosmos-db-sql-api"></a>Einführung in Azure Cosmos DB: SQL-API
 
@@ -24,7 +24,7 @@ ms.locfileid: "51232392"
 
 ![Azure SQL-API](./media/sql-api-introduction/cosmosdb-sql-api.png) 
 
-Mit der SQL-API stellt Azure Cosmos DB umfassende und vertraute [SQL-Abfragefunktionen](sql-api-sql-query.md) mit einheitlich geringen Wartezeiten für schemalose JSON-Daten bereit. Dieser Artikel enthält eine Übersicht über die SQL-API von Azure Cosmos DB. Außerdem wird beschrieben, wie Sie sie zum Speichern von sehr großen Mengen von JSON-Daten und Abfragen mit einer Wartezeit im Millisekundenbereich verwenden und das Schema leicht weiterentwickeln können. 
+Mit der SQL-API stellt Azure Cosmos DB umfassende und vertraute [SQL-Abfragefunktionen](how-to-sql-query.md) mit einheitlich geringen Wartezeiten für schemalose JSON-Daten bereit. Dieser Artikel enthält eine Übersicht über die SQL-API von Azure Cosmos DB. Außerdem wird beschrieben, wie Sie sie zum Speichern von sehr großen Mengen von JSON-Daten und Abfragen mit einer Wartezeit im Millisekundenbereich verwenden und das Schema leicht weiterentwickeln können. 
 
 ## <a name="what-capabilities-and-key-features-does-azure-cosmos-db-offer"></a>Welche Funktionen und wichtigen Features sind in Azure Cosmos DB enthalten?
 Azure Cosmos DB verfügt über die SQL-API über die folgenden wichtigen Funktionen und Vorteile:
@@ -34,7 +34,7 @@ Azure Cosmos DB verfügt über die SQL-API über die folgenden wichtigen Funktio
 
 * **Replikation in mehreren Regionen:** Azure Cosmos DB repliziert Ihre Daten auf transparente Weise in allen Regionen, die Sie Ihrem Azure Cosmos DB-Konto zugeordnet haben. Sie können Anwendungen entwickeln, die globalen Zugriff auf Daten benötigen, und dabei für ein ausgewogenes Maß an Konsistenz, Verfügbarkeit und Leistung sorgen – jeweils mit den entsprechenden Garantien. Azure Cosmos DB bietet transparentes regionales Failover mit Multihosting-APIs sowie die Möglichkeit, Durchsatz und Speicher für alle Konten weltweit flexibel zu skalieren. Weitere Informationen finden Sie unter [Globale Verteilung von Daten mit Azure Cosmos DB](distribute-data-globally.md).
 
-* **Ad-hoc-Abfragen mit vertrauter SQL-Syntax**: Heterogene JSON-Dokumente können gespeichert und mithilfe einer vertrauten SQL-Syntax abgefragt werden. Azure Cosmos DB nutzt eine sperrfreie, protokollstrukturierte Indizierungstechnologie für die gleichzeitige Ausführung zahlreicher Vorgänge, um sämtliche Dokumentinhalte automatisch zu indizieren. Dies ermöglicht umfassende Echtzeitabfragen, ohne Schemahinweise, Sekundärindizes oder Sichten angeben zu müssen. Weitere Informationen finden Sie unter [Abfragen von Azure Cosmos DB](sql-api-sql-query.md). 
+* **Ad-hoc-Abfragen mit vertrauter SQL-Syntax**: Heterogene JSON-Dokumente können gespeichert und mithilfe einer vertrauten SQL-Syntax abgefragt werden. Azure Cosmos DB nutzt eine sperrfreie, protokollstrukturierte Indizierungstechnologie für die gleichzeitige Ausführung zahlreicher Vorgänge, um sämtliche Dokumentinhalte automatisch zu indizieren. Dies ermöglicht umfassende Echtzeitabfragen, ohne Schemahinweise, Sekundärindizes oder Sichten angeben zu müssen. Weitere Informationen finden Sie unter [Abfragen von Azure Cosmos DB](how-to-sql-query.md). 
 * **JavaScript-Ausführung innerhalb der Datenbank:** Anwendungslogik kann mithilfe von Standard-JavaScript als gespeicherte Prozeduren, Trigger und benutzerdefinierte Funktionen ausgedrückt werden. Auf diese Weise kann die Anwendungslogik auf Daten angewendet werden, ohne dass Sie sich Gedanken über den Konflikt zwischen Anwendung und Datenbankschema machen müssen. Die SQL-API bietet eine umfassende transaktionale Ausführung von JavaScript-Anwendungslogik direkt in der Datenbank-Engine. Die enge Integration von JavaScript ermöglicht es, Einfüge-, Ersetzungs-, Lösch- und Auswahlvorgänge über ein JavaScript-Programm als isolierte Transaktion auszuführen. Weitere Einzelheiten finden Sie unter [Serverseitige SQL-Programmierung](programming.md).
 
 * **Einstellbare Konsistenzebenen:** Die Konsistenz kann über fünf wohl definierte Ebenen abgestimmt werden, um für ein ausgewogenes Verhältnis zwischen Konsistenz und Leistung zu sorgen. Für Abfragen und Lesevorgänge bietet Azure Cosmos DB fünf verschiedene Konsistenzebenen – „stark“, „begrenzte Veraltung“, „Sitzung“, „Präfixkonsistenz“ und „letztlich“. Mit diesen granularen, gut abgegrenzten Konsistenzebenen können fundierte Kompromisse zwischen Konsistenz, Verfügbarkeit und Latenz geschlossen werden. Weitere Informationen finden Sie unter [Verwenden von Konsistenzebenen zum Maximieren der Verfügbarkeit und Leistung](consistency-levels.md).

@@ -3,19 +3,19 @@ title: 'Tutorial: Erstellen einer einseitigen Web-App – Bing-Websuche-API'
 titleSuffix: Azure Cognitive Services
 description: Dieses Tutorial zum Erstellen einer einseitigen App zeigt, wie Sie mit der Bing-Websuche-API relevante Suchergebnisse in einer einseitigen App abrufen, analysieren und anzeigen können.
 services: cognitive-services
-author: erhopf
+author: aahill
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-web-search
 ms.topic: tutorial
 ms.date: 09/12/2018
-ms.author: erhopf
-ms.openlocfilehash: 670f02cbd8e994664e7c4edd75940ff43f9616b6
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.author: aahi
+ms.openlocfilehash: b94e6f70d4a28dc59ddaa62cfad55c6c8383b761
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46126478"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52161921"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-web-search-api"></a>Tutorial: Erstellen einer einseitigen Web-App mit der Bing-Websuche-API
 
@@ -28,7 +28,7 @@ Diese Beispiel-App kann:
 > * Ergebnisse aus Web, Bildern, Nachrichten und Videos anzeigen
 > * Ergebnisse paginieren
 > * Abonnementschlüssel verwalten
-> * Fehler beheben
+> * Fehlerbehandlung
 
 Zum Verwenden dieser App wird ein [Azure Cognitive Services-Konto](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) mit Bing-Suche-APIs benötigt. Wenn Sie über kein Konto verfügen, können Sie über die [kostenlose Testversion](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) einen Abonnementschlüssel abrufen.
 

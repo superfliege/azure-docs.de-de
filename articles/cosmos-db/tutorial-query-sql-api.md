@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/10/2017
 ms.author: rafats
-ms.openlocfilehash: 5f5a98f0f28eba499b7ea3fa76944c21cf8bf8db
-ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
+ms.openlocfilehash: a56147432d4ef1cc9ac2568259cc2bbf2c7da7ab
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/26/2018
-ms.locfileid: "36958867"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52162669"
 ---
 # <a name="tutorial-query-azure-cosmos-db-by-using-the-sql-api"></a>Tutorial: Abfragen von Azure Cosmos BD mithilfe der SQL-API
 
@@ -65,7 +65,7 @@ Die SQL-Abfragen in diesem Artikel verwenden das folgende Beispieldokument.
 Sie können Abfragen mit dem Daten-Explorer im Azure-Portal, über die [REST-API und SDKs](sql-api-sdk-dotnet.md) und auch auf dem [Query Playground](https://www.documentdb.com/sql/demo) durchführen, der Abfragen an einem vorhandenen Satz von Beispieldaten durchführt.
 
 Weitere Informationen zu SQL-Abfragen finden Sie hier:
-* [SQL-Abfrage und SQL-Syntax](sql-api-sql-query.md)
+* [SQL-Abfrage und SQL-Syntax](how-to-sql-query.md)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: f0e5b9d6e873cad1a997bda2ee286c92ad3818d3
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 3ffc361421f57b405c284742b662a833b178f9da
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50959459"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52260322"
 ---
 # <a name="create-an-azure-iot-central-application"></a>Erstellen einer Azure IoT Central-Anwendung
 
@@ -37,7 +37,7 @@ So erstellen Sie eine neue Azure IoT Central-Anwendung:
 1. Wählen Sie einen Anzeigenamen für die Anwendung (beispielsweise **Contoso IoT**). Azure IoT Central generiert automatisch ein eindeutiges URL-Präfix. Dieses URL-Präfix kann in einen einprägsameren Wert geändert werden.
 
 1. Wählen Sie eine Anwendungsvorlage aus. Eine Anwendungsvorlage kann vordefinierte Elemente wie Gerätevorlagen und Dashboards enthalten, die Ihnen den Einstieg erleichtern.
-    | Anwendungsvorlage | Beschreibung |
+    | Anwendungsvorlage | BESCHREIBUNG |
     | -------------------- | ----------- |
     | Beispiel „Contoso“       | Erstellt eine Anwendung mit einer Gerätevorlage, die bereits für einen gekühlten Verkaufsautomaten erstellt wurde. Verwenden Sie diese Vorlage, um mit der Erkundung von Azure IoT Central zu beginnen. |
     | Beispiel-Entwickler-Kits       | Erstellt eine Anwendung mit Gerätevorlagen, an die Sie ein MXChip- oder Raspberry Pi-Gerät anschließen können. Verwenden Sie diese Vorlage, wenn Sie als Geräteentwickler mit einem dieser Geräte experimentieren. |
@@ -60,4 +60,4 @@ So erstellen Sie eine neue Azure IoT Central-Anwendung:
 In dieser Schnellstartanleitung haben Sie eine IoT Central-Anwendung erstellt. Wir empfehlen, mit dem folgenden Schritt fortzufahren:
 
 > [!div class="nextstepaction"]
-> [Take a tour of IoT Central](#overview-iot-central-tour) (Kennenlernen von IoT Central)
+> [Take a tour of IoT Central](https://docs.microsoft.com/azure/iot-central/overview-iot-central-tour) (Kennenlernen von IoT Central)

@@ -9,12 +9,12 @@ manager: jeconnoc
 ms.author: v-mavick
 ms.topic: tutorial
 ms.date: 11/08/2018
-ms.openlocfilehash: 9ef27166e84192dec81fd8f8da508785342ffefc
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: 15ef4795544044427805e21f7a8e98646c9cf9bd
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51288015"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52284334"
 ---
 # <a name="create-a-terraform-base-template-in-azure-using-yeoman"></a>Erstellen einer Terraform-Basisvorlage in Azure mithilfe von Yeoman
 
@@ -227,7 +227,7 @@ Alle diese Elemente sind in Cloud Shell vorinstalliert.
 
 ### <a name="start-a-cloud-shell-session"></a>Starten einer Cloud Shell-Sitzung.
 
-1. Starten Sie eine Azure Cloud Shell-Sitzung entweder über das [Azure-Portal](https:/portal.azure.com/), über [shell.azure.com](https://shell.azure.com) oder über die [mobile Azure-App](https://azure.microsoft.com/features/azure-portal/mobile-app/).
+1. Starten Sie eine Azure Cloud Shell-Sitzung entweder über das [Azure-Portal](https://portal.azure.com/), über [shell.azure.com](https://shell.azure.com) oder über die [mobile Azure-App](https://azure.microsoft.com/features/azure-portal/mobile-app/).
 
 1. Die Seite **Willkommen bei Azure Cloud Shell** wird geöffnet. Wählen Sie **Bash (Linux)** aus. (PowerShell wird nicht unterstützt.)
 
