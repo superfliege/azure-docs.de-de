@@ -3,7 +3,7 @@ items:
   href: index.yml
 - name: Übersicht
   items:
-  - name: Was ist Azure DevOps-Projekt?
+  - name: Was ist Azure DevOps Projects?
     href: overview.md
 - name: Schnellstarts
   items:
@@ -29,9 +29,9 @@ items:
     href: /azure/devops-project/azure-devops-project-go
     maintainContext: true
   expanded: true
-- name: Tutorials
+- name: Lernprogramme
   items:
-  - name: '1: GitHub und DevOps-Projekt'
+  - name: '1: GitHub und DevOps Projects'
     href: azure-devops-project-github.md
     maintainContext: true
   - name: '2: Bereitstellen auf VMs'
@@ -46,9 +46,9 @@ items:
   - name: '5: Bereitstellen in Azure Service Fabric'
     href: azure-devops-project-service-fabric.md
     maintainContext: true
-ms.openlocfilehash: ef50f014401d5137e787e79b8114a32499925482
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 110ed59f1232336fc250b9ef8a66e36b20fe025f
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37951943"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52282616"
