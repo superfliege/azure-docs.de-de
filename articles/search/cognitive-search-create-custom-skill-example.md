@@ -3,18 +3,17 @@ title: 'Beispiel: Erstellen eines benutzerdefinierten Skills in einer Pipeline d
 description: Zeigt die Verwendung der Textübersetzungs-API in benutzerdefinierten Skills, die einer Indizierungspipeline der kognitiven Suche in Azure Search zugeordnet sind.
 manager: pablocas
 author: luiscabrer
-services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
-ms.date: 06/29/2018
+ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: d78959ba415c837e931edcc0278de84daa879bc1
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: a295bf741862bb58a86234b5c85f48d7a1b52be7
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49393949"
+ms.lasthandoff: 05/07/2018
+ms.locfileid: "33786859"
 ---
 # <a name="example-create-a-custom-skill-using-the-text-translate-api"></a>Beispiel: Erstellen eines benutzerdefinierten Skills mithilfe der Textübersetzungs-API
 
@@ -38,8 +37,6 @@ Obwohl in diesem Beispiel eine Azure-Funktion zum Hosten einer Web-API verwendet
 
 1. Wählen Sie im Dialogfeld „Neues Projekt“ die Option **Installiert**, erweitern Sie **Visual C#** > **Cloud**, und wählen Sie **Azure Functions** aus. Geben Sie unter „Name“ einen Namen für Ihr Projekt ein, und wählen Sie **OK**. Der Name der Funktions-App muss als C#-Namespace gültig sein, verwenden Sie daher keine Unterstriche, Bindestriche oder andere nicht alphanumerische Zeichen.
 
-1. Wählen Sie **Azure Functions v2 (.NET Core)** aus. Sie können dies auch mit Version 1 erreichen, aber der nachfolgende Code basiert auf der Vorlage der Version 2.
-
 1. Wählen Sie für den Typ **HTTP-Trigger** aus.
 
 1. Für das Speicherkonto können Sie **Kein** auswählen, da Sie für diese Funktion keinen Speicher benötigen.
@@ -53,29 +50,23 @@ Visual Studio erstellt ein Projekt, das eine Klasse mit den Codebausteinen für 
 Ersetzen Sie alle Inhalte der Datei *Function1.cs* nun durch den folgenden Code:
 
 ```csharp
-using System;
-using System.Net.Http;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using System.IO;
-using System.Text;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Azure.WebJobs.Host;
 using Newtonsoft.Json;
+using System.Net.Http;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using System.Text;
 
 namespace TranslateFunction
 {
     // This function will simply translate messages sent to it.
     public static class Function1
     {
-        static string path = "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0";
-
-        // NOTE: Replace this example key with a valid subscription key.
-        static string key = "<enter your api key here>";
-
         #region classes used to serialize the response
         private class WebApiResponseError
         {
@@ -101,16 +92,21 @@ namespace TranslateFunction
         }
         #endregion
 
+
+        /// <summary>
+        /// Note that this function can translate up to 1000 characters. If you expect to need to translate more characters, use 
+        /// the paginator skill before calling this custom enricher
+        /// </summary>
         [FunctionName("Translate")]
         public static IActionResult Run(
-            [HttpTrigger(AuthorizationLevel.Function, "post", Route = null)]HttpRequest req,
+            [HttpTrigger(AuthorizationLevel.Function, "post", Route = null)]HttpRequest req, 
             TraceWriter log)
         {
             log.Info("C# HTTP trigger function processed a request.");
 
             string recordId = null;
             string originalText = null;
-            string toLanguage = null;
+            string originalLanguage = null;
             string translatedText = null;
 
             string requestBody = new StreamReader(req.Body).ReadToEnd();
@@ -129,15 +125,24 @@ namespace TranslateFunction
 
             recordId = data?.values?.First?.recordId?.Value as string;
             originalText = data?.values?.First?.data?.text?.Value as string;
-            toLanguage = data?.values?.First?.data?.language?.Value as string;
+            originalLanguage = data?.values?.First?.data?.language?.Value as string;
 
             if (recordId == null)
             {
                 return new BadRequestObjectResult("recordId cannot be null");
             }
 
-            translatedText = TranslateText(originalText, toLanguage).Result;
-        
+            // Only translate records that actually need to be translated. 
+            if (!originalLanguage.Contains("en"))
+            {
+                translatedText = TranslateText(originalText, "en-us").Result;
+            }
+            else
+            {
+                // text is already in English.
+                translatedText = originalText;
+            }
+
             // Put together response.
             WebApiResponseRecord responseRecord = new WebApiResponseRecord();
             responseRecord.data = new Dictionary<string, object>();
@@ -148,41 +153,47 @@ namespace TranslateFunction
             response.values = new List<WebApiResponseRecord>();
             response.values.Add(responseRecord);
 
-            return (ActionResult)new OkObjectResult(response);
+            return (ActionResult)new OkObjectResult(response); 
         }
-
 
         /// <summary>
         /// Use Cognitive Service to translate text from one language to antoher.
         /// </summary>
-        /// <param name="originalText">The text to translate.</param>
-        /// <param name="toLanguage">The language you want to translate to.</param>
+        /// <param name="myText">The text to translate</param>
+        /// <param name="destinationLanguage">The language you want to translate to.</param>
         /// <returns>Asynchronous task that returns the translated text. </returns>
-        async static Task<string> TranslateText(string originalText, string toLanguage)
+        async static Task<string> TranslateText(string myText, string destinationLanguage)
         {
-            System.Object[] body = new System.Object[] { new { Text = originalText } };
-            var requestBody = JsonConvert.SerializeObject(body);
+            string host = "https://api.microsofttranslator.com";
+            string path = "/V2/Http.svc/Translate";
 
-            var uri = $"{path}&to={toLanguage}";
+            // NOTE: Replace this example key with a valid subscription key.
+            string key = "064d8095730d4a99b49f4bcf16ac67f8";
 
-            string result = "";
+            HttpClient client = new HttpClient();
+            client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", key);
 
-            using (var client = new HttpClient())
-            using (var request = new HttpRequestMessage())
+            List<KeyValuePair<string, string>> list = new List<KeyValuePair<string, string>>() {
+                new KeyValuePair<string, string>(myText, "en-us")
+            };
+
+            StringBuilder totalResult = new StringBuilder();
+
+            foreach (KeyValuePair<string, string> i in list)
             {
-                request.Method = HttpMethod.Post;
-                request.RequestUri = new Uri(uri);
-                request.Content = new StringContent(requestBody, Encoding.UTF8, "application/json");
-                request.Headers.Add("Ocp-Apim-Subscription-Key", key);
+                string uri = host + path + "?to=" + i.Value + "&text=" + System.Net.WebUtility.UrlEncode(i.Key);
 
-                var response = await client.SendAsync(request);
-                var responseBody = await response.Content.ReadAsStringAsync();
+                HttpResponseMessage response = await client.GetAsync(uri);
 
-                dynamic data = JsonConvert.DeserializeObject(responseBody);
-                result = data?.First?.translations?.First?.text?.Value as string;
+                string result = await response.Content.ReadAsStringAsync();
 
+                // Parse the response XML
+                System.Xml.XmlDocument xmlResponse = new System.Xml.XmlDocument();
+                xmlResponse.LoadXml(result);
+                totalResult.Append(xmlResponse.InnerText); 
             }
-            return result;
+
+            return totalResult.ToString();
         }
     }
 }
@@ -194,7 +205,7 @@ Dieses Beispiel ist eine einfache Anreicherungsfunktion, die immer nur an einem 
 
 ## <a name="test-the-function-from-visual-studio"></a>Testen der Funktion aus Visual Studio
 
-Drücken Sie **F5**, um das Programm- und Testfunktionsverhalten auszuführen. In diesem Fall wird die Funktion unten verwendet, um einen spanischen Text in Englisch zu übersetzen. Verwenden Sie Postman oder Fiddler, um einen Aufruf wie den unten gezeigten auszugeben:
+Drücken Sie **F5**, um das Programm- und Testfunktionsverhalten auszuführen. Verwenden Sie Postman oder Fiddler, um einen Aufruf wie den unten gezeigten auszugeben:
 
 ```http
 POST https://localhost:7071/api/Translate
@@ -208,7 +219,7 @@ POST https://localhost:7071/api/Translate
             "data":
             {
                "text":  "Este es un contrato en Inglés",
-               "language": "en"
+               "language": "es"
             }
         }
    ]
@@ -246,6 +257,7 @@ Wenn Sie mit dem Funktionsverhalten zufrieden sind, können Sie sie veröffentli
 
 1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zur Ressourcengruppe, und suchen Sie nach der von Ihnen veröffentlichten Übersetzungsfunktion. Im Abschnitt **Verwalten** sollten Sie Hostschlüssel angezeigt werden. Wählen Sie das Symbol **Kopieren** für den Hostschlüssel *Standard* aus.  
 
+
 ## <a name="test-the-function-in-azure"></a>Testen der Funktion in Azure
 
 Nachdem Sie nun den Standardhostschlüssel haben, testen Sie Ihre Funktion wie folgt:
@@ -262,7 +274,7 @@ POST https://translatecogsrch.azurewebsites.net/api/Translate?code=[enter defaul
             "data":
             {
                "text":  "Este es un contrato en Inglés",
-               "language": "en"
+               "language": "es"
             }
         }
    ]
@@ -291,7 +303,7 @@ Nun, da Sie über einen neuen benutzerdefinierten Skill verfügen, können Sie d
           },
           {
             "name": "language",
-            "source": "/document/destinationLanguage"
+            "source": "/document/languageCode"
           }
         ],
         "outputs": [
@@ -310,5 +322,5 @@ Glückwunsch! Sie haben Ihre erste benutzerdefinierte Anreicherungsfunktion erst
 
 + [Hinzufügen eines benutzerdefinierten Skills zu einer Pipeline der kognitiven Suche](cognitive-search-custom-skill-interface.md)
 + [Definieren eines Skillsets](cognitive-search-defining-skillset.md)
-+ [Erstellen eines Skillsets (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
++ [Erstellen eines Skillsets (REST)](ref-create-skillset.md)
 + [Zuordnen angereicherter Felder](cognitive-search-output-field-mapping.md)
