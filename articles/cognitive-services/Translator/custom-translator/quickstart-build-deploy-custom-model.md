@@ -9,12 +9,12 @@ ms.component: custom-translator
 ms.date: 11/13/2018
 ms.author: v-rada
 ms.topic: quickstart
-ms.openlocfilehash: 949fb2487c3ca519c1d7022c1434d0a029ed20bb
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: cb713ac53b399d8ba79d003ee6d948bb5af5220b
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51626548"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51975771"
 ---
 # <a name="quickstart-build-deploy-and-use-a-custom-model-for-translation"></a>Schnellstart: Erstellen, Bereitstellen und Verwenden eines benutzerdefinierten Modells für die Übersetzung
 
@@ -26,7 +26,7 @@ Dieser Artikel enthält ausführliche Anweisungen zum Erstellen eines Übersetzu
 
 2. Abonnement für die Textübersetzungs-API über das Azure-Portal. Sie benötigen den Abonnementschlüssel der Textübersetzungs-API für die Zuordnung zu Ihrem Arbeitsbereich in Custom Translator. [Hier](https://docs.microsoft.com/azure/cognitive-services/translator/translator-text-how-to-signup) erfahren Sie, wie Sie sich für die Textübersetzungs-API registrieren.
 
-3. Sind die beiden Komponenten oben vorhanden, melden Sie sich beim [Custom Translator](https://portal.customtranslator.azure.ai)-Portal an. Navigieren Sie im Custom Translator-Portal zur Seite „Einstellungen“. Dort können Sie den Abonnementschlüssel Ihrer Microsoft-Textübersetzungs-API Ihrem Arbeitsbereich zuordnen. 
+3. Sind die beiden Komponenten oben vorhanden, melden Sie sich beim [Custom Translator](https://portal.customtranslator.azure.ai)-Portal an. Navigieren Sie im Custom Translator-Portal zur Seite „Einstellungen“. Dort können Sie den Abonnementschlüssel Ihrer Microsoft-Textübersetzungs-API Ihrem Arbeitsbereich zuordnen.
 
 ## <a name="create-a-project"></a>Erstellen eines Projekts
 
@@ -49,7 +49,7 @@ Wählen Sie beim Hochladen von Dokumenten den Dokumenttyp (Training, Optimierung
 
 Wurden alle erforderlichen Dokumente hochgeladen, erstellen Sie als Nächstes Ihr Modell.
 
-Wählen Sie das von Ihnen erstellte Projekt aus. Sie sehen alle hochgeladenen Dokumente, die das gleiche Sprachpaar wie dieses Projekt aufweisen. Wählen Sie die Dokumente aus, die im Modell enthalten sein sollen. Sie können [Trainings-](training-and-model.md#training-dataset-for-custom-translator), [Optimierungs-](training-and-model.md#tuning-dataset-for-custom-translator) und [Testdaten](training-and-model.md#testing-dataset-for-custom-translator) oder nur Trainingsdaten auswählen und von Custom Translator automatisch Optimierungs- und Testsätze für Ihr Modell erstellen lassen.
+Wählen Sie das von Ihnen erstellte Projekt aus. Sie sehen alle hochgeladenen Dokumente, die das gleiche Sprachpaar wie dieses Projekt aufweisen. Wählen Sie die Dokumente aus, die im Modell enthalten sein sollen. Sie können [Trainingsdaten](training-and-model.md#training-dataset-for-custom-translator), [Optimierungsdaten](training-and-model.md#tuning-dataset-for-custom-translator) und [Testdaten](training-and-model.md#testing-dataset-for-custom-translator) oder nur Trainingsdaten auswählen und von Custom Translator automatisch Optimierungs- und Testsätze für Ihr Modell erstellen lassen.
 
 ![Modellerstellung](media/quickstart/ct-how-to-train.png)
 

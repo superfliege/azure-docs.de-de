@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 05/07/2018
 ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: d3a7ddcd4a95660264bdf9609f54af39a05c97b3
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: 13422434e6392ec7681ec4478533c45a84f40c9a
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50741027"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51706975"
 ---
 # <a name="tutorial-migrate-your-data-to-azure-cosmos-db-mongodb-api-account"></a>Tutorial: Migrieren Ihrer Daten zum Azure Cosmos DB-Konto für die MongoDB-API
 
@@ -36,13 +36,13 @@ Vergewissern Sie sich vor dem Migrieren von Daten zum MongoDB-API-Konto, dass Mo
 
 1. Erstellen und skalieren Sie Ihre Sammlungen im Voraus:
         
-    * Standardmäßig stellt Azure Cosmos DB eine neue MongoDB-Sammlung mit 1.000 Anforderungseinheiten pro Sekunde (RU/s) bereit. Erstellen Sie vorab alle Ihre Sammlungen über das [Azure-Portal](https://portal.azure.com) oder über MongoDB-Treiber und -Tools, bevor Sie mit der Migration mithilfe von „mongoimport“ oder „mongorestore“ beginnen. Wenn die Größe Ihrer Daten 10 GB übersteigt, müssen Sie eine [partitionierte Sammlung](partition-data.md) mit einem entsprechenden Shard-Schlüssel erstellen.
+   * Standardmäßig stellt Azure Cosmos DB eine neue MongoDB-Sammlung mit 1.000 Anforderungseinheiten pro Sekunde (RU/s) bereit. Erstellen Sie vorab alle Ihre Sammlungen über das [Azure-Portal](https://portal.azure.com) oder über MongoDB-Treiber und -Tools, bevor Sie mit der Migration mithilfe von „mongoimport“ oder „mongorestore“ beginnen. Wenn die Größe Ihrer Daten 10 GB übersteigt, müssen Sie eine [partitionierte Sammlung](partition-data.md) mit einem entsprechenden Shard-Schlüssel erstellen. MongoDB empfiehlt, Entitätsdaten in Sammlungen zu speichern. Sie können für Entitäten vergleichbarer Größe die gleiche Sammlung verwenden und Durchsatz auf der Azure Cosmos-Datenbankebene bereitstellen.
 
-    * Über das [Azure-Portal](https://portal.azure.com) können Sie den Durchsatz Ihrer Sammlungen von 1.000 RUs pro Sekunde für eine einzelne partitionierte Sammlung und 2.500 RUs pro Sekunde für eine Shard-Sammlung speziell für die Migration erhöhen. Mit dem höheren Durchsatz können Sie eine Ratenbegrenzung vermeiden und Migrationen in kürzerer Zeit durchführen. Sie können den Durchsatz sofort nach der Migration verringern, um Kosten zu sparen.
+   * Erhöhen Sie für die Dauer der Migration den Durchsatz Ihrer Sammlungen über das [Azure-Portal](https://portal.azure.com) von 1.000 RUs/s für eine Sammlung mit einer einzelnen Partition und von 2.500 RUs/s für eine Sammlung mit Shards. Mit dem höheren Durchsatz können Sie eine Ratenbegrenzung vermeiden und Migrationen in kürzerer Zeit durchführen. Sie können den Durchsatz sofort nach der Migration verringern, um Kosten zu sparen.
 
-    * Zusätzlich zur Bereitstellung von RU/s auf Ebene der Sammlungen können Sie zudem RU/s für eine Gruppe von Sammlungen auf der übergeordneten Datenbankebene bereitstellen. Dazu müssen vorab die Datenbank und die Sammlungen erstellt sowie jeweils ein Shardschlüssel für die einzelnen Sammlungen definiert werden.
+   * Zusätzlich zur Bereitstellung von RU/s auf Ebene der Sammlungen können Sie zudem RU/s für eine Gruppe von Sammlungen auf der übergeordneten Datenbankebene bereitstellen. Dazu müssen vorab die Datenbank und die Sammlungen erstellt sowie jeweils ein Shardschlüssel für die einzelnen Sammlungen definiert werden.
 
-    * Sie können Sammlungen mit Shards mithilfe Ihrer bevorzugten Tools, Treiber oder SDKs erstellen. In diesem Beispiel verwenden wir die Mongo Shell zum Erstellen einer Sammlung mit Shards:
+   * Sie können Sammlungen mit Shards mithilfe Ihrer bevorzugten Tools, Treiber oder SDKs erstellen. In diesem Beispiel verwenden wir die Mongo Shell zum Erstellen einer Sammlung mit Shards:
 
         ```bash
         db.runCommand( { shardCollection: "admin.people", key: { region: "hashed" } } )

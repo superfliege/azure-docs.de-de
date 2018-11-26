@@ -5,15 +5,15 @@ author: aditidugar
 ms.author: adugar
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.date: 09/11/2018
+ms.date: 11/20/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 8258c8f34b4b9a1b216d9d497dcdf7d3b8db1373
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 70d29359d4a4bcf9f5badbbf0c553d7bed88a02b
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46369400"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52284561"
 ---
 # <a name="tutorial-conduct-a-root-cause-analysis-on-an-alert"></a>Tutorial: Durchführen einer Ursachenanalyse für eine Warnung
 
@@ -40,7 +40,7 @@ Verwenden Sie Filter, um festzulegen, welche verbundenen Geräte auf der Seite *
 
 [![Filtern nach LKW im Dashboard](./media/iot-accelerators-remote-monitoring-root-cause-analysis/filter-trucks-inline.png)](./media/iot-accelerators-remote-monitoring-root-cause-analysis/filter-trucks-expanded.png#lightbox)
 
-Wenn Sie einen Filter anwenden, werden auf der Karte und im Telemetriebereich auf der Seite **Dashboard** nur die Geräte angezeigt, die die Filterbedingungen erfüllen. Sie sehen, dass zwei LKW mit dem Solution Accelerator verbunden sind, darunter auch **truck-02**.
+Wenn Sie einen Filter anwenden, werden auf der Karte und im Telemetriebereich im **Dashboard** nur die Geräte angezeigt, die die Filterbedingungen erfüllen. Sie sehen, dass zwei LKW mit dem Solution Accelerator verbunden sind, darunter auch **truck-02**.
 
 ## <a name="view-real-time-telemetry"></a>Anzeigen von Echtzeit-Telemetriedaten
 
@@ -62,11 +62,11 @@ Wenn der Explorer gestartet wird, sehen Sie, dass all Ihre Geräte aufgeführt s
 
 [![Anfängliche Ansicht des Time Series Insights-Explorers](./media/iot-accelerators-remote-monitoring-root-cause-analysis/initial-tsi-view-inline.png)](./media/iot-accelerators-remote-monitoring-root-cause-analysis/initial-tsi-view-expanded.png#lightbox)
 
-Filtern Sie die Geräte, indem Sie **delivery-truck** im Feld „Filter“ eingeben, und wählen Sie im linken Bereich **temperature** als **Measure** aus:
+Filtern Sie die Geräte, indem Sie **delivery-truck** in das Feld „Filter“ eingeben, und wählen Sie im linken Bereich **temperature** als **Measure** aus:
 
 [![Time Series Insights-Explorer – LKW-Temperatur](./media/iot-accelerators-remote-monitoring-root-cause-analysis/filter-tsi-temp-inline.png)](./media/iot-accelerators-remote-monitoring-root-cause-analysis/filter-tsi-temp-expanded.png#lightbox)
 
-Es wird die gleiche Ansicht wie im Dashboard der Remoteüberwachung angezeigt, und Sie können jetzt auf den Zeitraum zoomen, in dem die Warnung ausgelöst wurde:
+Es wird die gleiche Ansicht wie im Dashboard für die Remoteüberwachung angezeigt. Zudem können Sie jetzt auf den Zeitrahmen zoomen, in dem die Warnung ausgelöst wurde:
 
 [![Time Series Insights-Explorer – Zoom](./media/iot-accelerators-remote-monitoring-root-cause-analysis/tsi-zoom-inline.png)](./media/iot-accelerators-remote-monitoring-root-cause-analysis/tsi-zoom-expanded.png#lightbox)
 
@@ -80,7 +80,7 @@ Sie können auch weitere Telemetriedatenströme aus den LKW hinzufügen. Klicken
 
 ## <a name="diagnose-the-alert"></a>Diagnostizieren der Warnung
 
-Wenn Sie sich die Datenströme in der aktuellen Ansicht ansehen, stellen Sie fest, dass die Profile der beiden LKW für die Höhe über NN sehr unterschiedlich sind. Der Temperatursturz in **delivery-truck-02** trat auf, als der LKW eine große Höhe über NN erreichte. Dieses Ergebnis überrascht Sie, da beide LKW die gleiche Route fahren sollten.
+Wenn Sie sich die Datenströme in der aktuellen Ansicht ansehen, werden Sie feststellen, dass sich die Profile für die Höhe über NN der beiden Lkw unterscheiden. Der Temperatursturz in **delivery-truck-02** trat auf, als der LKW eine große Höhe über NN erreichte. Dieses Ergebnis überrascht Sie, da beide LKW die gleiche Route fahren sollten.
 
 Um Ihren Verdacht zu bestätigen, dass die beiden LKW unterschiedliche Fahrtrouten genommen haben, fügen Sie mithilfe der Schaltfläche **Hinzufügen** einen neuen Bereich zum seitlichen Bereich hinzu. Ändern Sie im neuen Bereich den Namen der neuen Bezeichnung zu **Geräte**, sodass sie der vorherigen entspricht. Wählen Sie **longitude** als **Measure** und **iothub-connection-device-id** als Wert für **Teilen nach** aus, um die Telemetriedaten für den Längengrad zu Ihrer Ansicht hinzuzufügen. Indem Sie sich den Unterschied zwischen den Datenströmen für den **Längengrad** ansehen, können Sie sich davon überzeugen, dass die LKW tatsächlich unterschiedliche Strecken gefahren sind:
 
@@ -88,7 +88,7 @@ Um Ihren Verdacht zu bestätigen, dass die beiden LKW unterschiedliche Fahrtrout
 
 ## <a name="create-a-new-rule"></a>Neue Regel erstellen
 
-Fahrtrouten für LKW werden zwar in der Regel im Voraus optimiert, Sie stellen aber fest, dass die Verkehrslage, das Wetter und unvorhersehbare Ereignisse Verzögerungen verursachen können. Daher überlassen Sie den Fahrern kurzfristige Entscheidungen zur Strecke. Da die Temperatur der Waren im Fahrzeug aber von entscheidender Bedeutung ist, sollten Sie eine zusätzliche Regel in Ihrer Remoteüberwachungslösung erstellen, damit Sie eine Warnung erhalten, wenn die durchschnittliche Höhe über NN über einen Zeitraum von 1 Minute 350 Fuß überschreitet:
+Fahrtrouten für Lkw werden zwar in der Regel im Voraus optimiert, Sie stellen aber fest, dass die Verkehrslage, das Wetter und unvorhersehbare Ereignisse Verzögerungen verursachen können. Daher überlassen Sie den Fahrern kurzfristige Entscheidungen bezüglich der Fahrtroute. Da die Temperatur der Waren im Fahrzeug aber von entscheidender Bedeutung ist, sollten Sie eine zusätzliche Regel in Ihrer Remoteüberwachungslösung erstellen. Mit dieser Regel wird sichergestellt, dass Sie eine Warnung erhalten, wenn die durchschnittliche Höhe über NN über einen Zeitraum von 1 Minute 350 Fuß überschreitet:
 
 [![Registerkarte „Regeln“ der Remoteüberwachung mit Regel zur Höhe über NN](./media/iot-accelerators-remote-monitoring-root-cause-analysis/new-rule-altitude-inline.png)](./media/iot-accelerators-remote-monitoring-root-cause-analysis/new-rule-altitude-expanded.png#lightbox)
 

@@ -4,17 +4,17 @@ description: In diesem Tutorial stellen Sie eine Azure-Funktion als Modul auf ei
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 09/21/2018
+ms.date: 10/19/2018
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 27aac9431c3f4cd801d090ddf11114c98edab405
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: d0ae009db0d9470942a4ff5d7c09e2cdd7bcdd53
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567314"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52165616"
 ---
 # <a name="tutorial-deploy-azure-functions-as-iot-edge-modules"></a>Tutorial: Bereitstellen von Azure-Funktionen als IoT Edge-Module
 
@@ -41,7 +41,7 @@ Die Azure-Funktion, die Sie in diesem Tutorial erstellen, filtert die von Ihrem 
 
 Ein Azure IoT Edge-Gerät:
 
-* Sie können Ihren Entwicklungscomputer oder einen virtuellen Computer als Edge-Gerät verwenden, indem Sie die Schritte ausführen, die in der Schnellstartanleitung für [Linux](quickstart-linux.md)- oder [Windows](quickstart.md)-Geräte beschrieben sind.
+* Sie können Ihren Entwicklungscomputer oder eine VM als IoT Edge-Gerät einrichten, indem Sie die Schritte im Schnellstart für [Linux](quickstart-linux.md)- oder [Windows](quickstart.md)-Geräte ausführen.
 
 Cloudressourcen:
 
@@ -51,15 +51,15 @@ Entwicklungsressourcen:
 
 * [Visual Studio Code](https://code.visualstudio.com/). 
 * [Erweiterung C# for Visual Studio Code mit Unterstützung von OmniSharp](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)
-* [Azure IoT Edge-Erweiterung](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge) für Visual Studio Code 
+* [Azure IoT Edge-Erweiterung für Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge) 
 * [.NET Core 2.1 SDK](https://www.microsoft.com/net/download)
 * [Docker CE](https://docs.docker.com/install/). 
 
 ## <a name="create-a-container-registry"></a>Erstellen einer Containerregistrierung
 
-In diesem Tutorial verwenden Sie die Azure IoT Edge-Erweiterung für VSCode zum Entwickeln eines Moduls und zum Erstellen eines **Containerimages** aus den Dateien. Danach pushen Sie dieses Image in ein **Repository**, in dem Ihre Images gespeichert und verwaltet werden. Abschließend stellen Sie Ihr Image aus der Registrierung zur Ausführung auf dem IoT Edge-Gerät bereit.  
+In diesem Tutorial verwenden Sie die Azure IoT Edge-Erweiterung für Visual Studio Code zum Entwickeln eines Moduls und Erstellen eines **Containerimages** aus den Dateien. Danach pushen Sie dieses Image in ein **Repository**, in dem Ihre Images gespeichert und verwaltet werden. Abschließend stellen Sie Ihr Image aus der Registrierung zur Ausführung auf dem IoT Edge-Gerät bereit.  
 
-Sie können für dieses Tutorial jede beliebige Docker-kompatible Registrierung verwenden. Zwei beliebte, in der Cloud verfügbare Docker-Registrierungsdienste sind [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) und [Docker Hub](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags). In diesem Tutorial wird Azure Container Registry verwendet. 
+Sie können eine beliebige Docker-kompatible Registrierung zum Speichern Ihrer Containerimages verwenden. Zwei beliebte Docker-Registrierungsdienste sind [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) und [Docker Hub](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags). In diesem Tutorial wird Azure Container Registry verwendet. 
 
 1. Wählen Sie im [Azure-Portal](https://portal.azure.com) die Optionen **Ressource erstellen** > **Container** > **Container Registry** aus.
 
@@ -80,7 +80,7 @@ Sie können für dieses Tutorial jede beliebige Docker-kompatible Registrierung 
 
 6. Navigieren Sie nach der Erstellung der Containerregistrierung zu dieser Registrierung, und klicken Sie anschließend auf **Zugriffsschlüssel**. 
 
-7. Kopieren Sie die Werte für **Anmeldeserver**, **Benutzername** und **Kennwort**. Diese Werte werden im weiteren Verlauf des Tutorials benötigt. 
+7. Kopieren Sie die Werte für **Anmeldeserver**, **Benutzername** und **Kennwort**. Sie verwenden diese Werte an späterer Stelle des Tutorials, um Zugriff auf die Containerregistrierung zu gewähren. 
 
 ## <a name="create-a-function-project"></a>Erstellen eines Funktionsprojekts
 
@@ -90,90 +90,89 @@ Die Azure IoT Edge-Erweiterung für Visual Studio Code, die Sie in den Vorausset
 
 2. Öffnen Sie die VS Code-Befehlspalette, indem Sie auf **Ansicht** > **Befehlspalette** klicken.
 
-3. Geben Sie in der Befehlspalette den Befehl **Azure: Sign in** ein, und führen Sie ihn aus. Befolgen Sie die Anweisungen zum Anmelden bei Ihrem Azure-Konto.
+3. Geben Sie in der Befehlspalette den Befehl **Azure IoT Edge: New IoT Edge solution** ein, und führen Sie ihn aus. Folgen Sie den Anweisungen in der Befehlspalette, um Ihre Projektmappe zu erstellen.
 
-4. Geben Sie in der Befehlspalette den Befehl **Azure IoT Edge: New IoT Edge solution** ein, und führen Sie ihn aus. Folgen Sie den Anweisungen in der Befehlspalette, um Ihre Projektmappe zu erstellen.
-
-   1. Wählen Sie den Ordner aus, in dem die Projektmappe erstellt werden soll. 
-   2. Geben Sie einen Namen für Ihre Projektmappe ein, oder übernehmen Sie den Standardnamen **EdgeSolution**.
-   3. Wählen Sie als Modulvorlage die Option **Azure Functions - C#** aus. 
-   4. Nennen Sie das Modul **CSharpFunction**. 
-   5. Geben Sie die Azure-Containerregistrierung an, die Sie im vorherigen Abschnitt als Imagerepository für das erste Modul erstellt haben. Ersetzen Sie **localhost:5000** durch den kopierten Wert für den Anmeldeserver. Stellen Sie sicher, dass der Modulname (beispielsweise „/csharpfunction“) als Teil der Zeichenfolge erhalten bleibt. Die endgültige Zeichenfolge sieht wie folgt aus: \<Registrierungsname\>.azurecr.io/csharpfunction.
+   | Feld | Wert |
+   | ----- | ----- |
+   | Ordner auswählen | Wählen Sie den Speicherort auf Ihrem Entwicklungscomputer aus, an dem Visual Studio Code die Projektmappendateien erstellen soll. |
+   | Provide a solution name (Projektmappennamen angeben) | Geben Sie für Ihre Projektmappe einen aussagekräftigen Namen ein (beispielsweise **FunctionSolution**), oder übernehmen Sie den Standardnamen. |
+   | Select module template (Modulvorlage auswählen) | Wählen Sie **Azure Functions – C#** aus. |
+   | Provide a module name (Modulname angeben) | Nennen Sie das Modul **CSharpFunction**. |
+   | Provide Docker image repository for the module (Docker-Imagerepository für das Modul angeben) | Ein Imagerepository enthält den Namen Ihrer Containerregistrierung und den Namen Ihres Containerimages. Ihr Containerimage wird aus dem vorherigen Schritt übernommen. Ersetzen Sie **localhost:5000** durch den Anmeldeserverwert aus Ihrer Azure-Containerregistrierung. Den Anmeldeserver können Sie im Azure-Portal auf der Übersichtsseite Ihrer Containerregistrierung ermitteln. Die endgültige Zeichenfolge sieht wie folgt aus: „\<Registrierungsname\>.azurecr.io/CSharpFunction“. |
 
    ![Bereitstellen eines Docker-Imagerepositorys](./media/tutorial-deploy-function/repository.png)
 
 4. Im VS Code-Fenster wird der Arbeitsbereich Ihrer IoT Edge-Projektmappe geladen: ein Ordner vom Typ „\.vscode“, ein Modulordner und eine Vorlagendatei für das Bereitstellungsmanifest und eine Datei vom Typ „\.env“. Öffnen Sie im VS Code-Explorer **Module** > **CSharpFunction** > **CSharpFunction.cs**.
 
-5. Ersetzen Sie den Inhalt der Datei **CSharpFunction.cs** durch den folgenden Code:
+5. Ersetzen Sie den Inhalt der Datei **CSharpFunction.cs** durch den folgenden Code. Dieser Code empfängt Telemetriedaten zur Umgebungs- und Gerätetemperatur und leitet die Nachricht nur dann an IoT Hub weiter, wenn die Gerätetemperatur über einem festgelegten Schwellenwert liegt.
 
    ```csharp
-    using System;
-    using System.Collections.Generic;
-    using System.IO;
-    using System.Text;
-    using System.Threading.Tasks;
-    using Microsoft.Azure.Devices.Client;
-    using Microsoft.Azure.WebJobs;
-    using Microsoft.Azure.WebJobs.Extensions.EdgeHub;
-    using Microsoft.Azure.WebJobs.Host;
-    using Microsoft.Extensions.Logging;
-    using Newtonsoft.Json;
+   using System;
+   using System.Collections.Generic;
+   using System.IO;
+   using System.Text;
+   using System.Threading.Tasks;
+   using Microsoft.Azure.Devices.Client;
+   using Microsoft.Azure.WebJobs;
+   using Microsoft.Azure.WebJobs.Extensions.EdgeHub;
+   using Microsoft.Azure.WebJobs.Host;
+   using Microsoft.Extensions.Logging;
+   using Newtonsoft.Json;
 
-    namespace Functions.Samples
-    {
-        public static class CSharpFunction
-        {
-            [FunctionName("CSharpFunction")]
-            public static async Task FilterMessageAndSendMessage(
-                        [EdgeHubTrigger("input1")] Message messageReceived,
-                        [EdgeHub(OutputName = "output1")] IAsyncCollector<Message> output,
-                        ILogger logger)
-            {
-                const int temperatureThreshold = 20;
-                byte[] messageBytes = messageReceived.GetBytes();
-                var messageString = System.Text.Encoding.UTF8.GetString(messageBytes);
+   namespace Functions.Samples
+   {
+       public static class CSharpFunction
+       {
+           [FunctionName("CSharpFunction")]
+           public static async Task FilterMessageAndSendMessage(
+               [EdgeHubTrigger("input1")] Message messageReceived,
+               [EdgeHub(OutputName = "output1")] IAsyncCollector<Message> output,
+               ILogger logger)
+           {
+               const int temperatureThreshold = 20;
+               byte[] messageBytes = messageReceived.GetBytes();
+               var messageString = System.Text.Encoding.UTF8.GetString(messageBytes);
 
-                if (!string.IsNullOrEmpty(messageString))
-                {
-                    logger.LogInformation("Info: Received one non-empty message");
-                    // Get the body of the message and deserialize it.
-                    var messageBody = JsonConvert.DeserializeObject<MessageBody>(messageString);
+               if (!string.IsNullOrEmpty(messageString))
+               {
+                   logger.LogInformation("Info: Received one non-empty message");
+                   // Get the body of the message and deserialize it.
+                   var messageBody = JsonConvert.DeserializeObject<MessageBody>(messageString);
 
-                    if (messageBody != null && messageBody.machine.temperature > temperatureThreshold)
-                    {
-                        // Send the message to the output as the temperature value is greater than the threashold.
-                        var filteredMessage = new Message(messageBytes);
-                        // Copy the properties of the original message into the new Message object.
-                        foreach (KeyValuePair<string, string> prop in messageReceived.Properties)
-                        {
-                            filteredMessage.Properties.Add(prop.Key, prop.Value);                }
-                        // Add a new property to the message to indicate it is an alert.
-                        filteredMessage.Properties.Add("MessageType", "Alert");
-                        // Send the message.       
-                        await output.AddAsync(filteredMessage);
-                        logger.LogInformation("Info: Received and transferred a message with temperature above the threshold");
-                    }
-                }
-            }
-        }
-        //Define the expected schema for the body of incoming messages.
-        class MessageBody
-        {
-            public Machine machine {get; set;}
-            public Ambient ambient {get; set;}
-            public string timeCreated {get; set;}
-        }
-        class Machine
-        {
-            public double temperature {get; set;}
-            public double pressure {get; set;}         
-        }
-        class Ambient
-        {
-            public double temperature {get; set;}
-            public int humidity {get; set;}         
-        }
-    }
+                   if (messageBody != null && messageBody.machine.temperature > temperatureThreshold)
+                   {
+                       // Send the message to the output as the temperature value is greater than the threashold.
+                       var filteredMessage = new Message(messageBytes);
+                       // Copy the properties of the original message into the new Message object.
+                       foreach (KeyValuePair<string, string> prop in messageReceived.Properties)
+                       {filteredMessage.Properties.Add(prop.Key, prop.Value);}
+                       // Add a new property to the message to indicate it is an alert.
+                       filteredMessage.Properties.Add("MessageType", "Alert");
+                       // Send the message.       
+                       await output.AddAsync(filteredMessage);
+                       logger.LogInformation("Info: Received and transferred a message with temperature above the threshold");
+                   }
+               }
+           }
+       }
+       //Define the expected schema for the body of incoming messages.
+       class MessageBody
+       {
+           public Machine machine {get; set;}
+           public Ambient ambient {get; set;}
+           public string timeCreated {get; set;}
+       }
+       class Machine
+       {
+           public double temperature {get; set;}
+           public double pressure {get; set;}         
+       }
+       class Ambient
+       {
+           public double temperature {get; set;}
+           public int humidity {get; set;}         
+       }
+   }
    ```
 
 6. Speichern Sie die Datei .
@@ -186,12 +185,13 @@ In diesem Abschnitt geben Sie die Anmeldeinformationen für Ihre Containerregist
 
 1. Öffnen Sie das in VS Code integrierte Terminal über **Ansicht** > **Terminal**. 
 
-1. Melden Sie sich bei Ihrer Containerregistrierung an, indem Sie den folgenden Code im integrierten Terminal eingeben. Anschließend können Sie Ihr Modulimage an Ihre Azure-Containerregistrierung pushen: 
+2. Melden Sie sich bei Ihrer Containerregistrierung an, indem Sie den folgenden Code im integrierten Terminal eingeben. Verwenden Sie den Benutzernamen und den Anmeldeserver, die Sie zuvor aus Ihrer Azure-Containerregistrierung kopiert haben.
      
     ```csh/sh
     docker login -u <ACR username> <ACR login server>
     ```
-    Verwenden Sie den Benutzernamen und den Anmeldeserver, die Sie zuvor aus Ihrer Azure-Containerregistrierung kopiert haben. Wenn Sie zur Eingabe des Kennworts aufgefordert werden, fügen Sie das Kennwort für Ihre Containerregistrierung ein, und drücken Sie die **EINGABETASTE**.
+
+    Wenn Sie zur Eingabe des Kennworts aufgefordert werden, fügen Sie das Kennwort für Ihre Containerregistrierung ein, und drücken Sie die **EINGABETASTE**.
 
     ```csh/sh
     Password: <paste in the ACR password and press enter>
@@ -235,9 +235,9 @@ Sie können das Azure-Portal verwenden, um Ihr Funktionsmodul wie in den Schnell
 
 6. Klicken Sie mit der rechten Maustaste auf den Namen Ihres IoT Edge-Geräts, und klicken Sie dann auf **Create Deployment for Single Device** (Bereitstellung für einzelnes Gerät erstellen). 
 
-7. Navigieren Sie zum Projektmappenordner mit **CSharpFunction**. Öffnen Sie den Konfigurationsordner, wählen Sie die Datei „deployment.json“ aus, und klicken Sie anschließend auf **Select Edge Deployment Manifest** (Edge-Bereitstellungsmanifest auswählen).
+7. Navigieren Sie zum Projektmappenordner mit **CSharpFunction**. Öffnen Sie den Konfigurationsordner, wählen Sie die Datei **deployment.json** aus, und klicken Sie anschließend auf **Select Edge Deployment Manifest** (Edge-Bereitstellungsmanifest auswählen).
 
-8. Aktualisieren Sie den Abschnitt **Azure IoT Hub-Geräte**. Nun sollte das neue **CSharpFunction**-Modul zusammen mit dem **TempSensor**-Modul sowie **$edgeAgent** und **$edgeHub** ausgeführt werden. 
+8. Aktualisieren Sie den Abschnitt **Azure IoT Hub-Geräte**. Nun sollte das neue **CSharpFunction**-Modul zusammen mit dem **TempSensor**-Modul sowie **$edgeAgent** und **$edgeHub** ausgeführt werden. Es kann etwas dauern, bis die neuen Module angezeigt werden. Ihr IoT Edge-Gerät muss die neuen Bereitstellungsinformationen von IoT Hub abrufen, die neuen Container starten und dann den Status an IoT Hub zurückmelden. 
 
    ![Anzeigen der bereitgestellten Module in VS Code](./media/tutorial-deploy-function/view-modules.png)
 

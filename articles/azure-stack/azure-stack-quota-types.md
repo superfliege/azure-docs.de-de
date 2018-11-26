@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 11/08/2018
+ms.date: 11/15/2018
 ms.author: sethm
 ms.reviewer: xiaofmao
-ms.openlocfilehash: ec84c87e047d6426d24ef339d1247c6cb53954dd
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: 17326fa60160e084d4c30347b1a765d1f80d01f5
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51299418"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51711530"
 ---
 # <a name="quota-types-in-azure-stack"></a>Kontingenttypen in Azure Stack
 
@@ -31,10 +31,12 @@ ms.locfileid: "51299418"
 ## <a name="compute-quota-types"></a>Computekontingenttypen 
 | **Typ** | **Standardwert** | **Beschreibung** |
 | --- | --- | --- |
-| Maximale Anzahl von virtuellen Computern | 50 | Die maximale Anzahl von virtuellen Computern, die ein Abonnement an diesem Speicherort erstellen kann |
-| Maximale Anzahl von Kernen virtueller Computer | 100 | Die maximale Anzahl von Kernen, die ein Abonnement an diesem Speicherort erstellen kann (ein virtueller A3-Computer hat beispielsweise vier Kerne) |
+| Maximale Anzahl von VMs | 50 | Die maximale Anzahl von virtuellen Computern, die ein Abonnement an diesem Speicherort erstellen kann |
+| Maximale Anzahl von VM-Kernen | 100 | Die maximale Anzahl von Kernen, die ein Abonnement an diesem Speicherort erstellen kann (ein virtueller A3-Computer hat beispielsweise vier Kerne) |
 | Maximale Anzahl von Verfügbarkeitsgruppen | 10 | Die maximale Anzahl von Verfügbarkeitsgruppen, die an diesem Speicherort erstellt werden können |
-| Maximale Anzahl von Skalierungsgruppen für virtuelle Computer | 100 | Die maximale Anzahl von Skalierungsgruppen für virtuelle Computer, die an diesem Speicherort erstellt werden können |
+| Maximale Anzahl von VM-Skalierungsgruppen | 100 | Die maximale Anzahl von Skalierungsgruppen für virtuelle Computer, die an diesem Speicherort erstellt werden können |
+| Maximale Kapazität (in GB) eines verwalteten Datenträgers Standard | 2048 | Die maximale Kapazität von verwalteten Datenträgern Standard, die an diesem Speicherort erstellt werden können. |
+| Maximale Kapazität (in GB) eines verwalteten Datenträgers Premium | 2048 | Die maximale Kapazität von verwalteten Datenträgern Premium, die an diesem Speicherort erstellt werden können. |
 
 ## <a name="storage-quota-types"></a>Speicherkontingenttypen 
 | **Element** | **Standardwert** | **Beschreibung** |
@@ -54,7 +56,7 @@ ms.locfileid: "51299418"
 | Maximale Anzahl von Gateways für virtuelle Netzwerke |1 |Die maximale Anzahl von Gateways für virtuelle Netzwerke (VPN Gateways), die ein Abonnement an diesem Speicherort erstellen kann |
 | Maximale Anzahl von Netzwerkverbindungen |2 |Die maximale Anzahl von Netzwerkverbindungen (Point-to-Point oder Site-to-Site), die ein Abonnement für alle Gateways für virtuelle Netzwerke an diesem Speicherort erstellen kann. |
 | Maximale Anzahl von Lastenausgleichsmodulen |50 |Die maximale Anzahl von Lastenausgleichsmodulen, die ein Abonnement an diesem Speicherort erstellen kann |
-| Maximale Anzahl NICs |100 |Die maximale Anzahl von Netzwerkschnittstellen, die ein Abonnement an diesem Speicherort erstellen kann |
+| Maximale Anzahl von Netzwerkschnittstellenkarten (NICs) |100 |Die maximale Anzahl von Netzwerkschnittstellen, die ein Abonnement an diesem Speicherort erstellen kann |
 | Maximale Anzahl von Netzwerksicherheitsgruppen |50 |Die maximale Anzahl von Netzwerksicherheitsgruppen, die ein Abonnement an diesem Speicherort erstellen kann |
 
 ## <a name="view-an-existing-quota"></a>Anzeigen eines vorhandenen Kontingents

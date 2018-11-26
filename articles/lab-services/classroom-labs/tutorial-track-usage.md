@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 07/23/2018
+ms.date: 11/14/2018
 ms.author: spelluru
-ms.openlocfilehash: 710d157dcf4c6d060e59bcfbb69455e2ddc91bdd
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 49d5761e3e37e1265938d1f1b27324de667a13ca
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39450129"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51707094"
 ---
 # <a name="tutorial-track-usage-of-a-lab-in-azure-lab-service"></a>Tutorial: Nachverfolgen der Nutzung eines Labs in Azure Lab Services
 In diesem Tutorial wird gezeigt, wie ein Lab-Ersteller/-Besitzer die Nutzung eines Labs nachverfolgen kann.
@@ -44,23 +44,19 @@ In diesem Tutorial führen Sie die folgenden Aktionen aus:
 ## <a name="view-the-usage-of-vms-in-the-lab"></a>Anzeigen der Nutzung der virtuellen Computer im Lab 
 
 1. Wählen Sie im Menü auf der linken Seite die Option **Virtuelle Computer** aus. 
-2. Überprüfen Sie, ob Sie den Status der virtuellen Computer und die Ausführungszeit der virtuellen Computer anzeigen können. Die für den virtuellen Computer eines Studenten aufgewendete Zeit zählt nicht zur Nutzungszeit in der letzten Spalte. 
+2. Überprüfen Sie, ob Sie den Status der virtuellen Computer und die Ausführungszeit der virtuellen Computer anzeigen können. Die für die VM eines Teilnehmers aufgewendete Zeit zählt nicht zur Nutzungszeit in der letzten Spalte. 
 
     ![VM-Nutzung](../media/tutorial-track-usage/vm-usage.png)
 
 ## <a name="manage-student-vms"></a>Verwalten von Studenten-VMs 
-Wenn Sie mit der Maus auf eine Zeile in der Liste der virtuellen Computer zeigen, werden Steuerelemente zum Ausführen der folgenden Aufgaben angezeigt: 
+Wenn Sie mit der Maus auf eine Zeile in der Liste der VMs zeigen, werden Steuerelemente zum Ausführen der folgenden Aufgaben angezeigt (siehe hierzu die Abbildung im vorherigen Abschnitt): 
 
 - Herstellen einer Verbindung mit einem virtuellen Computer
 - Starten eines virtuellen Computers
 - Anhalten eines virtuellen Computers
 - Löschen eines virtuellen Computers
 
-![Steuerelemente für virtuelle Computer](../media/tutorial-track-usage/vm-controls.png) 
-
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-In diesem Tutorial haben Sie gelernt, wie Sie Benutzer ermitteln, die sich beim Lab registriert haben, wie Sie die Nutzung virtueller Computer im Lab nachverfolgen und wie Sie virtuelle Computer im Lab verwalten.
-
-Weitere Informationen zu Classroom-Labs finden Sie in den Themen unter [Anleitungen](how-to-manage-lab-accounts.md).
+Weitere Informationen zu Classroom-Labs finden Sie in den Artikeln unter [Anleitungen](how-to-manage-lab-accounts.md).

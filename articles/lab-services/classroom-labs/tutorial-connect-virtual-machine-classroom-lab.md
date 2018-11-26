@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 07/30/2018
+ms.date: 11/14/2018
 ms.author: spelluru
-ms.openlocfilehash: dadc90e6a39b9e9689bab0249e6496fdea6f6205
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: b9d140eedf69ed730985412ba1dcdca2d626b191
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39450214"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51706703"
 ---
 # <a name="tutorial-access-a-classroom-lab-in-azure-lab-services"></a>Tutorial: Zugreifen auf ein Classroom-Lab in Azure Lab Services
 In diesem Tutorial stellen Sie als Kursteilnehmer eine Verbindung mit einem virtuellen Computer in einem Classroom-Lab her. 
@@ -35,22 +35,22 @@ In diesem Tutorial führen Sie die folgenden Aktionen aus:
 1. Navigieren Sie zur **Registrierungs-URL**, die Sie von der Lehrkraft erhalten haben. 
 2. Melden Sie sich mit Ihrem Geschäfts-, Schul- oder Unikonto beim Dienst an, um die Registrierung abzuschließen. 
 3. Vergewissern Sie sich nach der Registrierung, dass Sie den virtuellen Computer für das Lab sehen, auf das Sie Zugriff haben. 
-2. Warten Sie, bis der virtuelle Computer bereit ist, und **starten** Sie dann den virtuellen Computer.
+2. Warten Sie, bis der virtuelle Computer bereit ist, und **starten** Sie dann den virtuellen Computer. Dieser Prozess nimmt einige Zeit in Anspruch.  
 
     ![Starten der VM](../media/tutorial-connect-vm-in-classroom-lab/start-vm.png)
 
 ## <a name="connect-to-the-virtual-machine"></a>Herstellen einer Verbindung mit dem virtuellen Computer
 
-1. Klicken Sie auf der Kachel des virtuellen Computers des Labs, auf den Sie zugreifen möchten, auf **Verbinden**. 
+1. Klicken Sie auf der Kachel für die VM des Labs, auf das Sie zugreifen möchten, auf **Verbinden**. 
 
     ![Herstellen einer Verbindung mit dem virtuellen Computer](../media/tutorial-connect-vm-in-classroom-lab/connect-vm.png)
-2. Speichern Sie die RDP-Datei auf der Festplatte, und öffnen Sie sie. 
+2. Speichern Sie die RDP-Datei auf der Festplatte, und öffnen Sie sie (vorausgesetzt, dass es sich um eine Windows-VM handelt).
 3. Verwenden Sie den **Benutzernamen** und das **Kennwort**, den bzw. das Sie von Ihrer Lehrkraft erhalten haben, um sich beim Computer anzumelden. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Tutorial haben Sie über einen Registrierungslink, den Sie von Ihrem Lehrer bzw. Dozenten erhalten haben, auf ein Classroom-Lab zugegriffen.
 
-Als Besitzer des Labs möchten Sie die beim Lab registrierten Personen anzeigen und die Nutzung der virtuellen Computern nachverfolgen. Im nächsten Tutorial erfahren Sie, wie Sie dazu vorgehen:
+Als Besitzer des Labs möchten Sie die beim Lab registrierten Personen anzeigen und die Nutzung der VMs nachverfolgen. Im nächsten Tutorial erfahren Sie, wie Sie die Nutzung des Labs nachverfolgen:
 
 > [!div class="nextstepaction"]
 > [Tutorial: Nachverfolgen der Nutzung eines Labs in Azure Lab Services](tutorial-track-usage.md) 

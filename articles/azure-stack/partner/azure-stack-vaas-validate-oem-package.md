@@ -10,15 +10,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/19/2018
+ms.date: 11/19/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.openlocfilehash: bcfc4cb65c94e34e9f6056ada53726f88489fefb
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 8268a6b04d7ddbb35821999142d3a33bdd2bedcc
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49646650"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52261801"
 ---
 # <a name="validate-oem-packages"></a>Überprüfen von OEM-Paketen
 
@@ -58,22 +58,17 @@ Wenn Sie im VaaS-Portal einen Workflow vom Typ **Paketvalidierung** erstellen, m
 
 #### <a name="option-1-generating-an-account-sas-url"></a>Option 1: Generieren einer Konto-SAS-URL
 
-1. [!INCLUDE [azure-stack-vaas-sas-step_navigate](includes/azure-stack-vaas-sas-step_navigate.md)]
+1. Wechseln Sie im [Azure-Portal](https://portal.azure.com/) zu Ihrem Speicherkonto, und navigieren Sie zu der ZIP-Datei, die das Paket enthält.
 
-1. Aktivieren Sie die Option **Blob** unter **Zulässige Dienste**. Deaktivieren Sie alle anderen Optionen.
+2. Wählen Sie im Kontextmenü **SAS generieren** aus.
 
-1. Aktivieren Sie unter **Zugelassene Ressourcentypen** die Optionen **Container** und **Objekt**. Deaktivieren Sie alle anderen Optionen.
+3. Wählen Sie unter **Berechtigungen** die Option **Lesen** aus.
 
-1. Aktivieren Sie unter **Zugelassene Berechtigungen** die Optionen **Lesen** und **Auflisten**. Deaktivieren Sie alle anderen Optionen.
+4. Legen Sie die **Startzeit** auf die aktuelle Zeit und die **Endzeit** auf mindestens 48 Stunden nach der **Startzeit** fest. Falls Sie andere Tests mit dem gleichen Paket ausführen, können Sie die **Endzeit** ggf. für die Dauer des Tests erhöhen. Bei allen Tests, die über VaaS nach der **Endzeit** geplant werden, tritt ein Fehler auf, und es muss eine neue SAS generiert werden.
 
-1. Legen Sie die **Startzeit** auf die aktuelle Zeit und die **Endzeit** auf eine Stunde nach der aktuellen Zeit fest.
+5. Wählen Sie **Blob-SAS-Token und URL generieren** aus.
 
-1. [!INCLUDE [azure-stack-vaas-sas-step_generate](includes/azure-stack-vaas-sas-step_generate.md)]
-    Das Format sollte wie folgt aussehen: `https://storageaccountname.blob.core.windows.net/?sv=2016-05-31&ss=b&srt=co&sp=rl&se=2017-05-11T21:41:05Z&st=2017-05-11T13:41:05Z&spr=https`
-
-1. Ändern Sie die generierte SAS-URL, um den Paketcontainer (`{containername}`) und den Namen Ihres Paketblobs (`{mypackage.zip}`) einzuschließen: `https://storageaccountname.blob.core.windows.net/{containername}/{mypackage.zip}?sv=2016-05-31&ss=b&srt=co&sp=rl&se=2017-05-11T21:41:05Z&st=2017-05-11T13:41:05Z&spr=https`
-
-    Verwenden Sie diesen Wert, wenn Sie im VaaS-Portal einen neuen Workflow vom Typ **Paketvalidierung** starten.
+Verwenden Sie die **Blob-SAS-URL**, wenn Sie im VaaS-Portal einen neuen Workflow zur **Paketvalidierung** starten.
 
 #### <a name="option-2-using-public-read-container"></a>Option 2: Verwenden eines Containers mit öffentlichem Lesezugriff
 

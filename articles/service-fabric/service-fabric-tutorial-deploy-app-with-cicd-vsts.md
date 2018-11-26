@@ -12,15 +12,15 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 12/13/2017
+ms.date: 11/15/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 7f14151224a9e2baa74183696c92bca06695bf4f
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 5d53250ebdc14b7b6631e2f419b5b24ac98f3038
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44380147"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51853729"
 ---
 # <a name="tutorial-deploy-an-application-with-cicd-to-a-service-fabric-cluster"></a>Tutorial: Bereitstellen einer Anwendung mit CI/CD in einem Service Fabric-Cluster
 
@@ -94,23 +94,23 @@ Eine Azure DevOps-Releasepipeline beschreibt einen Workflow, der ein Anwendungsp
 
 Navigieren Sie in einem Webbrowser zu Ihrem neuen Projekt: [https://&lt;IhrKonto&gt;.visualstudio.com/Voting/Voting%20Team/_git/Voting](https://myaccount.visualstudio.com/Voting/Voting%20Team/_git/Voting).
 
-Wählen Sie die Registerkarte **Build und Release** und die Option **Builds** aus, und klicken Sie dann auf **Neue Pipeline**.
+Wählen Sie die Registerkarte **Pipelines** und dann **Builds** aus, und klicken Sie auf **Neue Pipeline**.
 
 ![Neue Pipeline][new-pipeline]
 
-Wählen Sie **Azure DevOps-Git** als Quelle, das Projekt **Voting**, das Repository **Voting** und den Standardbranch **master** oder manuelle und geplante Builds aus.  Klicken Sie anschließend auf **Weiter**.
+Wählen Sie **Azure Repos Git** als Quelle, das Teamprojekt **Voting**, das Repository **Voting** und den Standardbranch **master** für manuelle und geplante Builds aus.  Klicken Sie anschließend auf **Weiter**.
+
+![Auswählen des Repositorys][select-repo]
 
 Wählen Sie unter **Vorlage auswählen** die Vorlage **Azure Service Fabric-Anwendung** aus, und klicken Sie anschließend auf **Anwenden**.
 
 ![Auswählen der Buildvorlage][select-build-template]
 
-Geben Sie unter **Aufgaben** für **Agent-Warteschlange** die Zeichenfolge „Hosted VS2017“ ein.
+Geben Sie unter **Aufgaben** für **Agentpool** die Zeichenfolge „Hosted VS2017“ ein.
 
 ![Auswählen von Aufgaben][save-and-queue]
 
-Aktivieren Sie unter **Trigger** Continuous Integration, indem Sie die Option **Continuous Integration aktivieren** auswählen. Klicken Sie in **Branchfilter** auf **+ Hinzufügen**, und die **Branchspezifikation** wird standardmäßig auf **master** festgelegt. Klicken Sie auf **Speichern und in Warteschlange einreihen**, um manuell einen Buildvorgang zu starten.
-
-Klicken Sie im Dialogfeld **Save build pipeline and queue** (Buildpipeline speichern und in Warteschlange einreihen) auf **Save & queue** (Speichern und in Warteschlange einreihen).
+Aktivieren Sie unter **Trigger** Continuous Integration, indem Sie die Option **Continuous Integration aktivieren** auswählen. Unter **Branchfilter** ist **Branchspezifikation** standardmäßig auf **master** festgelegt. Klicken Sie auf **Speichern und in Warteschlange einreihen**, um manuell einen Buildvorgang zu starten.
 
 ![Auswählen von Triggern][save-and-queue2]
 
@@ -118,7 +118,7 @@ Buildvorgänge werden auch bei Push- oder Eincheckvorgängen ausgelöst. Wechsel
 
 ### <a name="create-a-release-pipeline"></a>Erstellen einer Releasepipeline
 
-Wählen Sie auf der Registerkarte **Build und Release** die Option **Releases** und anschließend **+ Neue Pipeline** aus.  Wählen Sie in der Liste unter **Vorlage auswählen** die Vorlage **Azure Service Fabric-Bereitstellung** aus, und klicken Sie auf **Anwenden**.
+Wählen Sie die Registerkarte **Pipelines** und dann **Releases** aus, und klicken Sie auf **+ Neue Pipeline**.  Wählen Sie in der Liste unter **Vorlage auswählen** die Vorlage **Azure Service Fabric-Bereitstellung** aus, und klicken Sie auf **Anwenden**.
 
 ![Auswählen der Releasevorlage][select-release-template]
 
@@ -198,6 +198,7 @@ Fahren Sie mit dem nächsten Tutorial fort:
 [push-git-repo]: ./media/service-fabric-tutorial-deploy-app-with-cicd-vsts/PublishGitRepo.png
 [publish-code]: ./media/service-fabric-tutorial-deploy-app-with-cicd-vsts/PublishCode.png
 [new-pipeline]: ./media/service-fabric-tutorial-deploy-app-with-cicd-vsts/NewPipeline.png
+[select-repo]: ./media/service-fabric-tutorial-deploy-app-with-cicd-vsts/SelectRepo.png
 [select-build-template]: ./media/service-fabric-tutorial-deploy-app-with-cicd-vsts/SelectBuildTemplate.png
 [save-and-queue]: ./media/service-fabric-tutorial-deploy-app-with-cicd-vsts/SaveAndQueue.png
 [save-and-queue2]: ./media/service-fabric-tutorial-deploy-app-with-cicd-vsts/SaveAndQueue2.png

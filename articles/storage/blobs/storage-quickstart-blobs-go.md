@@ -6,14 +6,14 @@ author: seguler
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
-ms.date: 10/23/2018
+ms.date: 11/14/2018
 ms.author: seguler
-ms.openlocfilehash: d3f6f2c9a1ca5016eb9a6597ba32dc1471f77cb4
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 2939bd5c7b32cc9fe05326ee72dbb7367a72ef7f
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51038323"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51711156"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-go"></a>Schnellstart: Hochladen, Herunterladen und Auflisten von Blobs mit Go
 
@@ -21,17 +21,20 @@ In diesem Schnellstart erfahren Sie, wie Sie mit der Programmiersprache „Go“
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-So führen Sie diesen Schnellstart durch: 
-* Installieren von [Go 1.8 oder höher](https://golang.org/dl/)
-* Laden Sie mithilfe von `go get -u github.com/Azure/azure-storage-blob-go/azblob` das [Azure Storage Blob-SDK für Go](https://github.com/azure/azure-storage-blob-go/) herunter, und installieren Sie es. 
+[!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
 
-> [!NOTE]
-> Schreiben Sie Azure in der URL unbedingt groß. Andernfalls können bei der Verwendung des SDK Importprobleme aufgrund der Groß-/Kleinschreibung auftreten. Azure muss außerdem in den Importanweisungen großgeschrieben werden.
+Stellen Sie sicher, dass die folgenden zusätzlichen Komponenten installiert sind:
+ 
+* [Go 1.8 oder höher](https://golang.org/dl/).
+* [Azure Storage Blob SDK für Go](https://github.com/azure/azure-storage-blob-go/). Laden Sie das SDK mit dem folgenden Befehl herunter:
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+    ```
+    go get -u github.com/Azure/azure-storage-blob-go/azblob
+    ``` 
 
-[!INCLUDE [storage-create-account-portal-include](../../../includes/storage-create-account-portal-include.md)]
-
+    > [!NOTE]
+    > Achten Sie darauf, dass Sie `Azure` in der URL großschreiben, um Probleme mit der Groß-/Kleinschreibung bei der Verwendung des SDK zu vermeiden. `Azure` muss in den Importanweisungen ebenfalls großgeschrieben werden.
+    
 ## <a name="download-the-sample-application"></a>Herunterladen der Beispielanwendung
 Die in diesem Schnellstart verwendete [Beispielanwendung](https://github.com/Azure-Samples/storage-blobs-go-quickstart.git) ist eine einfache Go-Anwendung.  
 
