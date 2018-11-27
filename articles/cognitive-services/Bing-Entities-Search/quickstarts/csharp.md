@@ -3,23 +3,23 @@ title: 'Schnellstart: Bing-Entitätssuche-API, C#'
 titlesuffix: Azure Cognitive Services
 description: Informationen und Codebeispiele für den schnellen Einstieg in die Verwendung der Bing-Entitätssuche-API.
 services: cognitive-services
-author: v-jaswel
+author: aahill
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-entity-search
 ms.topic: quickstart
 ms.date: 11/28/2017
-ms.author: v-jaswel
-ms.openlocfilehash: 8d9ee2944b00b8a877b166c23979ed5f6a9b7951
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.author: aahi
+ms.openlocfilehash: 0735f8d7a7953e05415f468253d17a8d10ca1b9f
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48814802"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52161345"
 ---
 # <a name="quickstart-for-bing-entity-search-api-with-c"></a>Schnellstart für die Bing-Entitätssuche-API mit C# 
 
-In diesem Artikel erfahren Sie, wie Sie die [Bing-Entitätssuche-API](https://docs.microsoft.com/azure/cognitive-services/bing-entities-search/search-the-web) mit C# verwenden.
+In diesem Artikel erfahren Sie, wie Sie die [Bing-Entitätssuche-API](https://docs.microsoft.com/azure/cognitive-services/bing-entities-search/search-the-web) mit C# verwenden.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

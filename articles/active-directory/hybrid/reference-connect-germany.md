@@ -16,17 +16,18 @@ ms.topic: get-started-article
 ms.date: 07/12/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: e5377078010e899c41b27ef0ea5248ff4a09df8e
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 545ec1d4f5cd817b1fa02a135d305b997c9945bc
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46301784"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51705394"
 ---
 # <a name="azure-ad-connect-in-microsoft-cloud-germany---public-preview"></a>Azure AD Connect in Microsoft Cloud Deutschland – Öffentliche Vorschau
 ## <a name="introduction"></a>Einführung
 Azure AD Connect ermöglicht die Synchronisierung zwischen Ihrer lokalen Active Directory-Instanz und Azure Active Directory.
-Derzeit müssen viele Szenarien in [Microsoft Cloud Deutschland](https://www.microsoft.com/de-de/cloud/deutschland/default.aspx) vom Bediener durchgeführt werden. Beachten Sie bei der Nutzung von Microsoft Cloud Deutschland Folgendes:
+Derzeit müssen viele Szenarien in [Microsoft Cloud Deutschland](https://azure.microsoft.com/global-infrastructure/germany/
+) vom Bediener durchgeführt werden. Beachten Sie bei der Nutzung von Microsoft Cloud Deutschland folgende Informationen:
 
 * Die folgenden URLs müssen auf einem Proxyserver geöffnet werden, damit die Synchronisierung erfolgreich durchgeführt werden kann:
   
@@ -40,13 +41,13 @@ Derzeit müssen viele Szenarien in [Microsoft Cloud Deutschland](https://www.mic
 Sie können Azure AD Connect über das Blatt „Azure AD Connect“ im Portal herunterladen.  In der Anleitung unten ist angegeben, wie Sie das Blatt „Azure AD Connect“ finden.
 
 ### <a name="the-azure-ad-connect-blade"></a>Blatt „Azure AD Connect“
-Führen Sie die folgenden Schritte aus, nachdem Sie sich am Azure-Portal angemeldet haben:
+Nach Ihrer Anmeldung beim Azure-Portal:
 
 1. Wählen Sie „Durchsuchen“.
 2. Wählen Sie „Azure Active Directory“.
 3. Wählen Sie „Azure AD Connect“.
 
-Daraufhin sollte Folgendes angezeigt werden:
+Die folgenden Details werden angezeigt:
 
 ![Blatt „Azure AD Connect“](./media/reference-connect-germany/germany1.png)
 
@@ -62,5 +63,5 @@ In der folgenden Tabelle sind die Funktionen des Blatts beschrieben.
 Die Dokumentation zur Installation von Azure AD Connect finden Sie [hier](how-to-connect-install-roadmap.md).
 
 ## <a name="advanced-features-and-additional-information"></a>Erweiterte Funktionen und zusätzliche Informationen
-Falls Sie weitere Informationen und eine Anleitung zu benutzerdefinierten Einstellungen oder erweiterten Konfigurationseinstellungen benötigen, sollten Sie mit [Integrieren Ihrer lokalen Identitäten in Azure Active Directory](whatis-hybrid-identity.md)beginnen.  Diese Seite enthält Informationen und Links zu weiteren Anleitungen.
+Falls Sie weitere Informationen zu benutzerdefinierten Einstellungen oder erweiterten Konfigurationseinstellungen benötigen, sollten Sie sich den Artikel [Hybrididentität und Identitätslösungen von Microsoft](whatis-hybrid-identity.md) ansehen. Diese Seite enthält Informationen und Links zu weiteren Anleitungen.
 

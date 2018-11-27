@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 04/30/2018
 ms.author: jdial
 ms.custom: mvc
-ms.openlocfilehash: f010bebcf1130b3061c60987ffbd4e706a030773
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 2ec2ac6508dfbf0c1a42f72dc393fa8b841ab877
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "41918478"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51822465"
 ---
 # <a name="tutorial-log-network-traffic-to-and-from-a-virtual-machine-using-the-azure-portal"></a>Tutorial: Protokollieren des Netzwerkdatenverkehrs zu und von einem virtuellen Computer über das Azure-Portal
 
@@ -37,6 +37,9 @@ Mithilfe einer Netzwerksicherheitsgruppe (NSG) können Sie eingehenden Datenverk
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
+> [!NOTE] 
+> Flowprotokolle (Version 2) sind nur in der Region „USA, Westen-Mitte“ verfügbar. Die Konfiguration ist über das Azure-Portal und die REST-API verfügbar. Die Aktivierung von Protokollen der Version 2 in einer nicht unterstützten Region führt dazu, dass Protokolle der Version 1 in Ihrem Speicherkonto gespeichert werden.
+
 ## <a name="create-a-vm"></a>Erstellen einer VM
 
 1. Klicken Sie im Azure-Portal links oben auf **+ Ressource erstellen**.
@@ -47,7 +50,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
     |---|---|
     |NAME|myVm|
     |Benutzername| Geben Sie den gewünschten Benutzernamen ein.|
-    |Password| Geben Sie das gewünschte Kennwort ein. Das Kennwort muss mindestens zwölf Zeichen lang sein und die [definierten Anforderungen an die Komplexität](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm) erfüllen.|
+    |Kennwort| Geben Sie das gewünschte Kennwort ein. Das Kennwort muss mindestens zwölf Zeichen lang sein und die [definierten Anforderungen an die Komplexität](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm) erfüllen.|
     |Abonnement| Wählen Sie Ihr Abonnement aus.|
     |Ressourcengruppe| Klicken Sie auf **Neu erstellen**, und geben Sie **myResourceGroup** ein.|
     |Standort| Wählen Sie **USA, Osten** aus.|
@@ -100,8 +103,9 @@ Für die NSG-Datenflussprotokollierung ist der **Microsoft.Insights**-Anbieter e
 
 6. Wählen Sie in der Liste der Netzwerksicherheitsgruppen die Gruppe mit dem Namen **myVm-nsg** aus.
 7. Wählen Sie unter **Flowprotokolleinstellungen** die Option **Ein** aus.
-8. Wählen Sie das in Schritt 3 erstellte Speicherkonto aus.
-9. Setzen Sie **Aufbewahrung (Tage)** auf 5, und klicken Sie dann auf **Speichern**.
+8. Wählen Sie die Flowprotokollierungsversion aus. Version 2 enthält Statistiken zur Flowsitzung (Bytes und Pakete). ![Auswählen der Flowprotokollversion](./media/network-watcher-nsg-flow-logging-portal/select-flow-log-version.png)
+9. Wählen Sie das in Schritt 3 erstellte Speicherkonto aus.
+10. Setzen Sie **Aufbewahrung (Tage)** auf 5, und klicken Sie dann auf **Speichern**.
 
 ## <a name="download-flow-log"></a>Herunterladen des Flussprotokolls
 
@@ -126,6 +130,7 @@ Für die NSG-Datenflussprotokollierung ist der **Microsoft.Insights**-Anbieter e
 
 Der folgende JSON-Code ist ein Beispiel für den Inhalt der Datei „PT1H.json“ für jeden Datenfluss, für den Daten protokolliert werden:
 
+### <a name="version-1-flow-log-event"></a>Ereignis des Flowprotokolls (Version 1)
 ```json
 {
     "time": "2018-05-01T15:00:02.1713710Z",
@@ -135,29 +140,83 @@ Der folgende JSON-Code ist ein Beispiel für den Inhalt der Datei „PT1H.json�
     "operationName": "NetworkSecurityGroupFlowEvents",
     "properties": {
         "Version": 1,
-        "flows": [{
-            "rule": "UserRule_default-allow-rdp",
-            "flows": [{
-                "mac": "000D3A170C69",
-                "flowTuples": ["1525186745,192.168.1.4,10.0.0.4,55960,3389,T,I,A"]
-            }]
-        }]
+        "flows": [
+            {
+                "rule": "UserRule_default-allow-rdp",
+                "flows": [
+                    {
+                        "mac": "000D3A170C69",
+                        "flowTuples": [
+                            "1525186745,192.168.1.4,10.0.0.4,55960,3389,T,I,A"
+                        ]
+                    }
+                ]
+            }
+        ]
     }
 }
 ```
+### <a name="version-2-flow-log-event"></a>Ereignis des Flowprotokolls (Version 2)
+```json
+{
+    "time": "2018-11-13T12:00:35.3899262Z",
+    "systemId": "a0fca5ce-022c-47b1-9735-89943b42f2fa",
+    "category": "NetworkSecurityGroupFlowEvent",
+    "resourceId": "/SUBSCRIPTIONS/00000000-0000-0000-0000-000000000000/RESOURCEGROUPS/FABRIKAMRG/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/FABRIAKMVM1-NSG",
+    "operationName": "NetworkSecurityGroupFlowEvents",
+    "properties": {
+        "Version": 2,
+        "flows": [
+            {
+                "rule": "DefaultRule_DenyAllInBound",
+                "flows": [
+                    {
+                        "mac": "000D3AF87856",
+                        "flowTuples": [
+                            "1542110402,94.102.49.190,10.5.16.4,28746,443,U,I,D,B,,,,",
+                            "1542110424,176.119.4.10,10.5.16.4,56509,59336,T,I,D,B,,,,",
+                            "1542110432,167.99.86.8,10.5.16.4,48495,8088,T,I,D,B,,,,"
+                        ]
+                    }
+                ]
+            },
+            {
+                "rule": "DefaultRule_AllowInternetOutBound",
+                "flows": [
+                    {
+                        "mac": "000D3AF87856",
+                        "flowTuples": [
+                            "1542110377,10.5.16.4,13.67.143.118,59831,443,T,O,A,B,,,,",
+                            "1542110379,10.5.16.4,13.67.143.117,59932,443,T,O,A,E,1,66,1,66",
+                            "1542110379,10.5.16.4,13.67.143.115,44931,443,T,O,A,C,30,16978,24,14008",
+                            "1542110406,10.5.16.4,40.71.12.225,59929,443,T,O,A,E,15,8489,12,7054"
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}
+```
+
 
 Bei dem Wert für **mac** in der vorherigen Ausgabe handelt es sich um die MAC-Adresse der Netzwerkschnittstelle, die beim Erstellen des virtuellen Computers erstellt wurde. Die durch Kommas getrennten Informationen für **flowTuples** sind wie folgt:
 
 | Beispieldaten | Angabe   | Erklärung                                                                              |
 | ---          | ---                    | ---                                                                                      |
-| 1525186745   | Zeitstempel             | Der Zeitstempel für den Zeitpunkt, zu dem der Datenfluss auftrat, im UNIX EPOCHE-Format. Im vorherigen Beispiel wird das Datum in den 1. Mai 2018 um 14:59:05 Uhr GMT konvertiert.                                                                                    |
-| 192.168.1.4  | Quell-IP-Adresse      | Die Quell-IP-Adresse, von der der Datenfluss stammte.
-| 10.0.0.4     | IP-Zieladresse | Die Ziel-IP-Adresse, für die der Datenfluss bestimmt war. 10.0.0.4 ist die private IP-Adresse des virtuellen Computers, den Sie unter [Erstellen eines virtuellen Computers](#create-a-vm) erstellt haben.                                                                                 |
-| 55960        | Quellport            | Der Quellport, von dem der Datenfluss stammte.                                           |
-| 3389         | Zielport       | Der Zielport, für den der Datenfluss bestimmt war. Da der Datenverkehr für Port 3389 bestimmt war, wurde der Datenfluss anhand der Regel namens **UserRule_default-allow-rdp** in der Protokolldatei verarbeitet.                                                |
+| 1542110377   | Zeitstempel             | Der Zeitstempel für den Zeitpunkt, zu dem der Datenfluss auftrat, im UNIX EPOCHE-Format. Im vorherigen Beispiel wird das Datum in den 1. Mai 2018 um 14:59:05 Uhr GMT konvertiert.                                                                                    |
+| 10.0.0.4  | Quell-IP-Adresse      | Die Quell-IP-Adresse, von der der Datenfluss stammte. 10.0.0.4 ist die private IP-Adresse des virtuellen Computers, den Sie unter [Erstellen eines virtuellen Computers](#create-a-vm) erstellt haben.
+| 13.67.143.118     | IP-Zieladresse | Die Ziel-IP-Adresse, für die der Datenfluss bestimmt war.                                                                                  |
+| 44931        | Quellport            | Der Quellport, von dem der Datenfluss stammte.                                           |
+| 443         | Zielport       | Der Zielport, für den der Datenfluss bestimmt war. Da der Datenverkehr für Port 443 bestimmt war, wurde der Flow anhand der Regel namens **UserRule_default-allow-rdp** in der Protokolldatei verarbeitet.                                                |
 | T            | Protokoll               | Gibt an, ob das Protokoll des Datenflusses TCP (T) oder UDP (U) war.                                  |
-| I            | Richtung              | Gibt an, ob es sich um eingehenden (I) oder ausgehenden (O) Datenverkehr handelte.                                     |
-| Eine Datei            | Aktion                 | Gibt an, ob es sich um zulässigen (A) oder verweigerten (D) Datenverkehr handelte.                                           |
+| O            | Richtung              | Gibt an, ob es sich um eingehenden (I) oder ausgehenden (O) Datenverkehr handelte.                                     |
+| Eine Datei            | Aktion                 | Gibt an, ob es sich um zulässigen (A) oder verweigerten (D) Datenverkehr handelte.  
+| C            | Flowstatus (**nur Version 2**) | Erfasst den Flowstatus. Mögliche Statusangaben: **B** (Beginn/Anfang): Erstellung eines Flows. Statistiken werden nicht bereitgestellt. **C** (Continue/Fortsetzung): Ein laufender Flow wird weiter fortgesetzt. Statistiken werden in Intervallen von 5 Minuten bereitgestellt. **E** (End/Beendung): Beendung eines Flows, Statistiken werden bereitgestellt. |
+| 30 | Gesendete Pakete – Quelle zu Ziel (**nur Version 2**) | Die Gesamtanzahl von TCP- oder UDP-Paketen, die seit dem letzten Update von der Quelle zum Ziel gesendet wurden. |
+| 16978 | Gesendete Bytes – Quelle zu Ziel (**nur Version 2**) | Die Gesamtanzahl von TCP- oder UDP-Paketbytes, die seit dem letzten Update von der Quelle zum Ziel gesendet wurden. Paketbytes enthalten den Paketheader und die Nutzlast. | 
+| 24 | Gesendete Pakete – Ziel zu Quelle (**nur Version 2**) | Die Gesamtanzahl von TCP- oder UDP-Paketen, die seit dem letzten Update vom Ziel zur Quelle gesendet wurden. |
+| 14008| Gesendete Bytes – Ziel zu Quelle (**nur Version 2**) | Die Gesamtanzahl von TCP- und UDP-Paketbytes, die seit dem letzten Update vom Ziel zur Quelle gesendet wurden. Paketbytes enthalten den Paketheader und die Nutzlast.| |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -3,18 +3,18 @@ title: Mehrere Routen mit Azure Maps | Microsoft-Dokumentation
 description: Ermitteln von Routen für verschiedene Fortbewegungsarten per Azure Maps
 author: walsehgal
 ms.author: v-musehg
-ms.date: 10/29/2018
+ms.date: 11/14/2018
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 67b68489f2e06b9149f842f293a769fa7f688be0
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 0a278eb1612ec9573c4d12611ccce2d1b5b971bc
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50412702"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51705277"
 ---
 # <a name="find-routes-for-different-modes-of-travel-using-azure-maps"></a>Ermitteln von Routen für verschiedene Fortbewegungsarten per Azure Maps
 
@@ -203,7 +203,7 @@ In diesem Tutorial werden zwei Routen berechnet und auf der Karte dargestellt: e
 
 In diesem Abschnitt wird veranschaulicht, wie Sie die Maps-Routendienst-API verwenden, um basierend auf der Fortbewegungsart mehrere Routen von einem bestimmten Startpunkt zu einem Ziel zu ermitteln. Der Routendienst stellt APIs zum Planen der *schnellsten*, *kürzesten*, *umweltfreundlichsten* oder *schönsten* Route zwischen zwei Orten in Abhängigkeit der aktuellen Verkehrslage bereit. Benutzer können zukünftige Routen planen, indem sie die umfassende Azure-Datenbank zum Verkehrsverlauf nutzen und die Routendauern für beliebige Tage und Uhrzeiten vorhersagen. Weitere Informationen finden Sie unter [Route - Get Route Directions](https://docs.microsoft.com/rest/api/maps/route/getroutedirections) (Route: Abrufen von Wegbeschreibungen). Alle folgenden Codeblöcke sollten **innerhalb des eventListener-Elements für das Laden der Karte** hinzugefügt werden, um sicherzustellen, dass sie erst nach dem vollständigen Laden der Karte geladen werden.
 
-1. Instanziieren Sie den Dienstclient, indem Sie dem Ereignishandler für das Laden der Karte den folgenden JavaScript-Code hinzufügen.
+1. Instanziieren Sie den Dienstclient, indem Sie dem Ereignishandler für das Laden der Karte den folgenden JavaScript-Code hinzufügen:
 
     ```JavaScript
     //If the service client hasn't been created, create an instance of it.
@@ -291,12 +291,7 @@ Das Codebeispiel für dieses Tutorial finden Sie hier:
 
 [Hier](https://azuremapscodesamples.azurewebsites.net/?sample=Multiple%20routes%20by%20mode%20of%20travel) können Sie sich das Beispiel live ansehen.
 
-Weitere Informationen zur Abdeckung und zu den Funktionen von Azure Maps finden Sie unter:
+Im nächsten Tutorial wird der Prozess für die Erstellung einer einfachen Shopsuche mit Azure Maps erläutert.
 
 > [!div class="nextstepaction"]
-> [Zoomfaktoren und Linienraster](zoom-levels-and-tile-grid.md)
-
-Weitere Codebeispiele und eine Benutzeroberfläche für das interaktive Codieren:
-
-> [!div class="nextstepaction"]
-> [Verwenden des Kartensteuerelements](how-to-use-map-control.md)
+> [Erstellen einer Shopsuche mit Azure Maps](./tutorial-create-store-locator.md)

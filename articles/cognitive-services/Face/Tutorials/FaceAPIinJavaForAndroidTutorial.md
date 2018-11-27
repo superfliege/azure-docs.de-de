@@ -10,12 +10,12 @@ ms.component: face-api
 ms.topic: tutorial
 ms.date: 11/12/2018
 ms.author: pafarley
-ms.openlocfilehash: 4378d04d8909ecb0cd77c3196b74ecd51eb19638
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 92344943d2ec19f6730387221974a001e6a2045a
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51686227"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51852893"
 ---
 # <a name="tutorial-create-an-android-app-to-detect-and-frame-faces-in-an-image"></a>Tutorial: Erstellen einer Android-App zum Erkennen und Umranden von Gesichtern in einem Bild
 
@@ -37,7 +37,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Ein Abonnementschlüssel für die Gesichtserkennungs-API Über die Seite [Cognitive Services ausprobieren](https://azure.microsoft.com/try/cognitive-services/?api=face-api) können Sie einen Abonnementschlüssel für eine kostenlose Testversion abrufen. Gehen Sie andernfalls wie unter [Schnellstart: Erstellen eines Cognitive Services-Kontos im Azure-Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) beschrieben vor, um den Gesichtserkennungs-API-Dienst zu abonnieren und Ihren Schlüssel zu erhalten.
+- Ein Abonnementschlüssel für die Gesichtserkennungs-API. Über die Seite [Cognitive Services ausprobieren](https://azure.microsoft.com/try/cognitive-services/?api=face-api) können Sie einen Abonnementschlüssel für eine kostenlose Testversion abrufen. Gehen Sie andernfalls wie unter [Schnellstart: Erstellen eines Cognitive Services-Kontos im Azure-Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) beschrieben vor, um den Gesichtserkennungs-API-Dienst zu abonnieren und Ihren Schlüssel zu erhalten.
 - [Android Studio](https://developer.android.com/studio/) mit API-Ebene 22 oder höher (für die Clientbibliothek zur Gesichtserkennung erforderlich)
 
 ## <a name="create-the-android-studio-project"></a>Erstellen des Android Studio-Projekts
@@ -92,11 +92,7 @@ Fügen Sie dann oberhalb der **onCreate**-Methode in der **MainActivity**-Klasse
 
 [!code-java[](~/cognitive-services-face-android-detect/FaceTutorial/app/src/main/java/com/contoso/facetutorial/MainActivity.java?range=17-27)]
 
-Sie müssen `<Subscription Key>` durch Ihren Abonnementschlüssel ersetzen. Ersetzen Sie außerdem `<API endpoint>` durch Ihren Gesichtserkennungs-API-Endpunkt. Verwenden Sie dabei die entsprechende Regions-ID für Ihren Schlüssel. Abonnementschlüssel für kostenlose Testversionen werden in der Region **westus** generiert. Hier sehen Sie einen Beispielwert für einen API-Endpunkt:
-
-```java
-apiEndpoint = "https://westus.api.cognitive.microsoft.com/face/v1.0";
-```
+Sie müssen `<Subscription Key>` durch Ihren Abonnementschlüssel ersetzen. Ersetzen Sie außerdem `<API endpoint>` durch Ihren Gesichtserkennungs-API-Endpunkt. Verwenden Sie dabei die entsprechende Regions-ID für Ihren Schlüssel. (Eine Liste aller Regionsendpunkte finden Sie in den [Dokumenten zur Gesichtserkennungs-API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236).) Abonnementschlüssel für kostenlose Testversionen werden in der Region **westus** generiert.
 
 Erweitern Sie im Bereich **Project** (Projekt) die Option **app** (App) und dann **manifests** (Manifeste), und öffnen Sie *AndroidManifest.xml*. Fügen Sie das folgende Element als direkt untergeordnetes Element von `manifest` ein:
 

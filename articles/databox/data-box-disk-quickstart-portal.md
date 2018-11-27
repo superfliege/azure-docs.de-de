@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 09/07/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to quickly deploy Data Box Disk so as to import data into Azure.
-ms.openlocfilehash: f84eda2269df0bbe7186a2f1a9abb9c594b75455
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: fbe286313bce9b735665b134a5ea18ba4995548b
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51245068"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51712261"
 ---
 # <a name="quickstart-deploy-azure-data-box-disk-using-the-azure-portal-preview"></a>Schnellstart: Bereitstellen des Azure Data Box-Datenträgers über das Azure-Portal (Vorschauversion)
 
@@ -67,7 +67,7 @@ Dieser Schritt dauert ungefähr fünf Minuten.
 
     1. Wechseln Sie im Azure-Portal zu **Allgemein > Gerätedetails**, und rufen Sie den Hauptschlüssel ab.
     2. Laden Sie das Tool zum Entsperren von betriebssystemspezifischen Data Box-Datenträgern herunter, und extrahieren Sie es auf dem Computer, den Sie zum Kopieren der Daten auf die Datenträger verwenden möchten. 
-    3. Führen Sie das Tool zum Entsperren von Data Box-Datenträgern aus, und geben Sie den Hauptschlüssel an. Führen Sie für alle neu eingelegten Datenträger erneut das Entsperrungstool aus, und geben Sie den Hauptschlüssel an. **Verwenden Sie zum Entsperren des Datenträgers nicht das BitLocker-Dialogfeld oder den BitLocker-Schlüssel.** Weitere Informationen zum Entsperren von Datenträgern finden Sie unter [Entsperren von Datenträgern auf einem Windows-Client]() bzw. [Entsperren von Datenträgern auf einem Linux-Client]().
+    3. Führen Sie das Tool zum Entsperren von Data Box-Datenträgern aus, und geben Sie den Hauptschlüssel an. Führen Sie für alle neu eingelegten Datenträger erneut das Entsperrungstool aus, und geben Sie den Hauptschlüssel an. **Verwenden Sie zum Entsperren des Datenträgers nicht das BitLocker-Dialogfeld oder den BitLocker-Schlüssel.** Weitere Informationen zum Entsperren von Datenträgern finden Sie unter [Entsperren von Datenträgern auf einem Windows-Client](data-box-disk-deploy-set-up.md#unlock-disks-on-windows-client) bzw. [Entsperren von Datenträgern auf einem Linux-Client](data-box-disk-deploy-set-up.md#unlock-disks-on-linux-client).
     4. Der Laufwerkbuchstabe, der dem Datenträger zugewiesen ist, wird vom Tool angezeigt. Notieren Sie sich den Laufwerkbuchstaben des Datenträgers. Er wird in den nachfolgenden Schritten verwendet.
 
 ## <a name="copy-data-and-validate"></a>Kopieren von Daten und Durchführen der Validierung
@@ -85,7 +85,6 @@ Der Zeitraum, der für die Durchführung dieses Vorgangs erforderlich ist, häng
 2. (Optional) Nach Abschluss des Kopiervorgangs ist es ratsam, die im Ordner *DataBoxDiskImport* enthaltene Datei `DataBoxDiskValidation.cmd` auszuführen, um Prüfsummen für die Validierung zu generieren. Je nach Datengröße kann dieser Schritt relativ lange dauern. 
 3. Trennen Sie die Kabelverbindung des Laufwerks mit dem Computer. 
 
-
 ## <a name="ship-to-azure"></a>Senden an Azure
 
 Dieser Schritt dauert ungefähr 5 bis 7 Minuten.
@@ -94,7 +93,6 @@ Dieser Schritt dauert ungefähr 5 bis 7 Minuten.
 2. Geben Sie das sicher verschlossene Paket beim Paketdienst ab.  
 
 Der Data Box-Dienst sendet eine E-Mail-Benachrichtigung und aktualisiert den Auftragsstatus im Azure-Portal.
-
 
 ## <a name="verify-your-data"></a>Überprüfen Ihrer Daten
 
@@ -126,5 +124,3 @@ In dieser Schnellstartanleitung haben Sie einen Azure Data Box-Datenträger bere
 
 > [!div class="nextstepaction"]
 > [Use the Azure portal to administer Data Box Disk](data-box-portal-ui-admin.md) (Verwenden des Azure-Portals zum Verwalten des Data Box-Datenträgers)
-
-

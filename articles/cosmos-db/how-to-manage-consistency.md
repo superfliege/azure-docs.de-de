@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 10/17/2018
 ms.author: chrande
-ms.openlocfilehash: be2c68922221af848c9e484d03527d02808c071a
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 68c8c3767ff3a3d2873c1ff50928ab8d2cada4b1
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51283817"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52263743"
 ---
 # <a name="manage-consistency-levels-in-azure-cosmos-db"></a>Verwalten von Konsistenzebenen in Azure Cosmos DB
 
@@ -34,7 +34,7 @@ az cosmosdb update --name <name of Cosmos DB Account> --resource-group <resource
 
 ### <a name="powershell"></a>PowerShell
 
-Im folgenden Beispiel wird ein neues Cosmos DB-Konto mit Multimasterunterstützung in den Regionen „USA, Osten“ und „USA, Westen“ erstellt. Die Standardkonsistenzrichtlinie wird dabei als „Begrenzte Veraltung“ mit einem maximalen Veraltungsintervall von zehn Sekunden und einer maximalen Anzahl von 200 tolerierten veralteten Anforderungen festgelegt.
+Mit dem folgenden Beispiel wird ein neues Cosmos DB-Konto mit Multimaster-Aktivierung in den Regionen „USA, Osten“ und „USA, Westen“ erstellt und für die Standardkonsistenzrichtlinie die Option „Sitzung“ festgelegt.
 
 ```azurepowershell-interactive
 $locations = @(@{"locationName"="East US"; "failoverPriority"=0},
@@ -42,9 +42,7 @@ $locations = @(@{"locationName"="East US"; "failoverPriority"=0},
 
 $iprangefilter = ""
 
-$consistencyPolicy = @{"defaultConsistencyLevel"="BoundedStaleness";
-                       "maxIntervalInSeconds"= "10";
-                       "maxStalenessPrefix"="200"}
+$consistencyPolicy = @{"defaultConsistencyLevel"="Session"}
 
 $CosmosDBProperties = @{"databaseAccountOfferType"="Standard";
                         "locations"=$locations;

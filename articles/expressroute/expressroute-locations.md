@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/23/2018
 ms.author: pareshmu
-ms.openlocfilehash: 14529ede47d69e30102a74a0f5ed84573ea108f9
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 817dd1ec5cd047035099fb88d998f79cd8c39078
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50025207"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52276056"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute-Partner und Peeringstandorte
 
@@ -40,18 +40,19 @@ Wenn Sie mit mindestens einem ExpressRoute-Standort innerhalb der geopolitischen
 ### <a name="azure-regions-to-expressroute-locations-within-a-geopolitical-region"></a>Azure-Regionen mit ExpressRoute-Standorten in einer geopolitischen Region
 Die folgende Tabelle bietet eine Übersicht über die Azure-Regionen mit ExpressRoute-Standorten in einer geopolitischen Region.
 
-| **Geopolitische Region** | **Azure-Regionen** | **ExpressRoute-Standorte** |
-| --- | --- | --- |
-| **Nordamerika** |USA, Osten; USA, Westen; USA, Osten 2; USA, Westen 2; USA, Mitte; USA, Süden-Mitte; USA, Norden-Mitte; USA, Westen-Mitte; Kanada, Mitte; Kanada, Osten |Atlanta, Chicago, Dallas, Denver, Las Vegas, Los Angeles, Miami, New York, San Antonio, Seattle, Silicon Valley, Washington DC, Montreal, Quebec City, Toronto |
-| **Südamerika** |Brasilien Süd |Sao Paulo |
-| **Europa** |„Frankreich, Mitte“, „Frankreich, Süden“, „Europa, Norden“, „Europa, Westen“, „Vereinigtes Königreich, Westen“, „Vereinigtes Königreich, Süden“ |Amsterdam, Amsterdam2, Dublin, London, Marseille, Newport(Wales), Paris |
-| **Asien** |Ostasien, Südostasien |Hongkong, Kuala Lumpur, Singapur, Singapur2 |
-| **Japan** |Japan West, Japan Ost |Osaka, Tokio |
-| **Australien** |Südostaustralien, Ostaustralien |Melbourne, Sydney |
-| **Australische Behörden** | Australien, Mitte; Australien, Mitte 2 |Canberra, Canberra2 | 
-| **Indien** |Indien, Westen, Indien, Mitte, Indien, Süden |Chennai, Chennai2, Mumbai, Mumbai2 |
-| **Südkorea** |Korea, Mitte, Korea, Süden |Busan, Seoul |
-| **Südafrika** |[Südafrika, Westen+, Südafrika, Norden+](https://blogs.microsoft.com/blog/2017/05/18/microsoft-deliver-microsoft-cloud-datacenters-africa/) |Kapstadt, Johannesburg |
+| **Geopolitische Region** | **Zone** | **Azure-Regionen** | **ExpressRoute-Standorte** |
+| --- | --- | --- | --- |
+| **Australische Behörden** |Zone 1 | Australien, Mitte; Australien, Mitte 2 |Canberra, Canberra2 |
+| **Europa** |Zone 1 |„Frankreich, Mitte“, „Frankreich, Süden“, „Europa, Norden“, „Europa, Westen“, „Vereinigtes Königreich, Westen“, „Vereinigtes Königreich, Süden“ |Amsterdam, Amsterdam2, Dublin, London, Marseille, Newport(Wales), Paris |
+| **Nordamerika** |Zone 1 |USA, Osten; USA, Westen; USA, Osten 2; USA, Westen 2; USA, Mitte; USA, Süden-Mitte; USA, Norden-Mitte; USA, Westen-Mitte; Kanada, Mitte; Kanada, Osten |Atlanta, Chicago, Dallas, Denver, Las Vegas, Los Angeles, Miami, New York, San Antonio, Seattle, Silicon Valley, Washington DC, Montreal, Quebec City, Toronto |
+| **Asien** |Zone 2 |Ostasien, Südostasien |Hongkong, Kuala Lumpur, Singapur, Singapur2 |
+| **Australien** |Zone 2 |Südostaustralien, Ostaustralien |Melbourne, Sydney | 
+| **Indien** |Zone 2 |Indien, Westen, Indien, Mitte, Indien, Süden |Chennai, Chennai2, Mumbai, Mumbai2 |
+| **Japan** |Zone 2 |Japan West, Japan Ost |Osaka, Tokio |
+| **Südkorea** |Zone 2 |Korea, Mitte, Korea, Süden |Busan, Seoul|
+| **Südafrika** |Zone 3 |[Südafrika, Westen+, Südafrika, Norden+](https://blogs.microsoft.com/blog/2017/05/18/microsoft-deliver-microsoft-cloud-datacenters-africa/) |Kapstadt, Johannesburg |
+| **Südamerika** |Zone 3 |Brasilien Süd |Sao Paulo |
+
 
  **+** steht für "In Kürze"
 
@@ -158,7 +159,7 @@ Die folgende Tabelle enthält die Standorte nach Service Provider. [Hier](expres
 ### <a name="china"></a>China
 | **Service Provider** | **Microsoft Azure** | **Office 365** | **Standorte** |
 | --- | --- | --- | --- |
-| **China Telecom** |Unterstützt |Nicht unterstützt |Peking (Beijing), Shanghai |
+| **China Telecom** |Unterstützt |Nicht unterstützt |Peking, Shanghai |
 
 Weitere Informationen finden Sie unter [ExpressRoute in China](http://www.windowsazure.cn/home/features/expressroute/).
 

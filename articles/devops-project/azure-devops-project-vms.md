@@ -1,6 +1,6 @@
 ---
-title: Bereitstellen einer ASP.NET-App in Azure Virtual Machines mithilfe des Azure DevOps-Projekts | Azure DevOps Services-Tutorial
-description: Das DevOps-Projekt erleichtert die ersten Schritte mit Azure. Mit dem Azure DevOps-Projekt können Sie Ihre ASP.NET-App in Azure Virtual Machines in wenigen Schritten bereitstellen.
+title: 'Tutorial: Bereitstellen einer ASP.NET-App auf virtuellen Azure-Computern mithilfe von Azure DevOps Projects'
+description: DevOps Projects erleichtert die ersten Schritte mit Azure sowie die Bereitstellung Ihrer ASP.NET-App auf virtuellen Azure-Computern.
 ms.author: mlearned
 ms.manager: douge
 ms.prod: devops
@@ -9,25 +9,31 @@ ms.topic: tutorial
 ms.date: 07/09/2018
 author: mlearned
 monikerRange: vsts
-ms.openlocfilehash: b05e2c2c46aa9bfa8c92d3d3c5c83d018c547b9f
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 05643f342d51d99645d3c9204d6e63adcf2a0a73
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44299133"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52165695"
 ---
-# <a name="tutorial--deploy-your-aspnet-app-to-azure-virtual-machines-with-the-azure-devops-project"></a>Tutorial: Bereitstellen einer ASP.NET-App in Azure Virtual Machines mithilfe des Azure DevOps-Projekts
+# <a name="tutorial-deploy-your-aspnet-app-to-azure-virtual-machines-by-using-azure-devops-projects"></a>Tutorial: Bereitstellen einer ASP.NET-App auf virtuellen Azure-Computern mithilfe von Azure DevOps Projects
 
-Das Azure DevOps-Projekt stellt eine vereinfachte Umgebung dar, in der Sie Ihren vorhandenen Code und Ihr Git-Repository verwenden oder eine der Beispielanwendungen wählen können, um eine Continuous Integration- und Continuous Delivery-Pipeline (CI/CD) zu Azure zu erstellen.  Mit dem DevOps-Projekt werden Azure-Ressourcen wie ein neuer virtueller Azure-Computer automatisch erstellt, eine Releasepipeline in Azure DevOps mit einer Buildpipeline für CI erstellt und konfiguriert, eine Releasepipeline für CD eingerichtet und anschließend eine Azure Application Insights-Ressource für die Überwachung erstellt.
+Azure DevOps Projects bietet eine vereinfachte Umgebung, in der Sie Ihren vorhandenen Code und Ihr Git-Repository verwenden oder eine Beispielanwendung auswählen können, um eine Continuous Integration- und Continuous Delivery-Pipeline (CI/CD) für Azure zu erstellen. 
 
-In diesem Tutorial führen Sie folgende Schritte aus:
+Von DevOps Projects werden darüber hinaus die folgenden Aktionen ausgeführt:
+* Automatisches Erstellen von Azure-Ressourcen, etwa eines neuen virtuellen Computers
+* Erstellen und Konfigurieren einer Releasepipeline in Azure DevOps, die eine Buildpipeline für CI enthält
+* Einrichten einer Releasepipeline für CD 
+* Erstellen einer Azure Application Insights-Ressource für die Überwachung
+
+In diesem Lernprogramm lernen Sie Folgendes:
 
 > [!div class="checklist"]
-> * Erstellen eines Azure DevOps-Projekts für eine ASP.NET-App
-> * Konfigurieren von Azure DevOps Services und eines Azure-Abonnements 
-> * Überprüfen der Azure DevOps Services-CI-Pipeline
-> * Überprüfen der Azure DevOps Services-CD-Pipeline
-> * Committen von Änderungen zu Azure DevOps Services und automatisches Bereitstellen in Azure
+> * Bereitstellen Ihrer ASP.NET-App mit DevOps Projects
+> * Konfigurieren von Azure DevOps und eines Azure-Abonnements 
+> * Überprüfen der CI-Pipeline
+> * Überprüfen der CD-Pipeline
+> * Committen von Änderungen in Azure Repos und automatisches Bereitstellen dieser Änderungen in Azure
 > * Konfigurieren der Azure Application Insights-Überwachung
 > * Bereinigen von Ressourcen
 
@@ -35,152 +41,185 @@ In diesem Tutorial führen Sie folgende Schritte aus:
 
 * Ein Azure-Abonnement. Über [Visual Studio Dev Essentials](https://visualstudio.microsoft.com/dev-essentials/) erhalten Sie ein kostenloses Abonnement.
 
-## <a name="create-an-azure-devops-project-for-an-aspnet-app"></a>Erstellen eines Azure DevOps-Projekts für eine ASP.NET-App
+## <a name="use-devops-projects-to-deploy-your-aspnet-app"></a>Bereitstellen Ihrer ASP.NET-App mit DevOps Projects
 
-Mit dem Azure DevOps-Projekt wird in Azure eine CI/CD-Pipeline erstellt.  Sie können eine **neue Azure DevOps Services**-Organisation erstellen oder eine **bestehende Organisation** verwenden.  Ferner werden mit dem Azure DevOps-Projekt **Azure-Ressourcen** wie etwa virtuelle Computer im **Azure-Abonnement** Ihrer Wahl erstellt.
+Mit DevOps Projects wird eine CI/CD-Pipeline in Azure Pipelines erstellt. Sie können eine neue Azure DevOps-Organisation erstellen oder eine bestehende Organisation verwenden. Ferner werden mit DevOps Projects Azure-Ressourcen wie etwa virtuelle Computer im Azure-Abonnement Ihrer Wahl erstellt.
 
-1. Melden Sie sich beim [Microsoft Azure-Portal](https://portal.azure.com) an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
-1. Wählen Sie in der linken Navigationsleiste das Symbol **+ Neu** aus, und suchen Sie anschließend nach **DevOps-Projekt**.  Wählen Sie **Erstellen**.
+1. Wählen Sie im linken Bereich **Neu** aus.
 
-    ![Starten von Continuous Delivery](_img/azure-devops-project-github/fullbrowser.png)
+1. Geben Sie in das Suchfeld **DevOps Projects** ein, und wählen sie dann **Erstellen** aus.
 
-1. Wählen Sie **.NET** und dann **Weiter** aus.
+    ![DevOps Projects-Dashboard](_img/azure-devops-project-github/fullbrowser.png)
 
-1. Wählen Sie für **Anwendungsframework auswählen** die Option **ASP.NET** und anschließend **Weiter** aus. 
+1. Wählen Sie **.NET** und anschließend **Weiter** aus.
 
-1. Das Anwendungsframework, das Sie im vorherigen Schritt ausgewählt haben, bestimmt den Typ des hier verfügbaren Bereitstellungsziels für den Azure-Dienst.  Wählen Sie den **virtuellen Computer** und anschließend **Weiter** aus.
+1. Wählen Sie für **Anwendungsframework auswählen** die Option **ASP.NET** und anschließend **Weiter** aus.  
+    Das Anwendungsframework, das Sie in einem vorherigen Schritt ausgewählt haben, bestimmt den Typ des hier verfügbaren Bereitstellungsziels für den Azure-Dienst. 
 
-## <a name="configure-azure-devops-services-and-an-azure-subscription"></a>Konfigurieren von Azure DevOps Services und eines Azure-Abonnements
+1. Wählen Sie den virtuellen Computer und anschließend **Weiter** aus.
 
-1. Erstellen Sie eine **neue Azure DevOps Services**-Organisation, oder verwenden Sie eine **bestehende Organisation**.  Wählen Sie einen **Namen** für das Azure DevOps-Projekt.  
+## <a name="configure-azure-devops-and-an-azure-subscription"></a>Konfigurieren von Azure DevOps und eines Azure-Abonnements
 
-1. Wählen Sie Ihren **Azure-Abonnementsdienst** aus.  Optional können Sie den Link **Ändern** auswählen und anschließend weitere Konfigurationsdetails wie etwa einen anderen Speicherort für die Azure-Ressourcen eingeben.
+1. Sie können eine neue Azure DevOps-Organisation erstellen oder eine bestehende Organisation auswählen. 
+
+1. Geben Sie einen Namen für Ihr Azure DevOps-Projekt ein. 
+
+1. Wählen Sie Ihre Azure-Abonnementsdienste aus.  
+    Optional können Sie **Ändern** auswählen und anschließend weitere Konfigurationsdetails wie etwa den Speicherort der Azure-Ressourcen eingeben.
  
-1. Geben Sie den **Namen des virtuellen Computers**, den **Benutzernamen** und das **Kennwort** für Ihre neue Azure Virtual Machine-Ressource ein, und wählen Sie anschließend **Fertig** aus.
+1. Geben Sie den Namen des virtuellen Computers, den Benutzernamen und das Kennwort für Ihre neue Azure-VM-Ressource ein, und wählen Sie anschließend **Fertig** aus.  
+    Der virtuelle Azure-Computer ist nach wenigen Minuten bereit. Eine ASP.NET-Beispielanwendung wird in einem Repository in Ihrer Azure DevOps-Organisation eingerichtet, ein Build und ein Release werden ausgeführt, und Ihre Anwendung wird auf dem neu erstellten virtuellen Azure-Computer bereitgestellt. 
 
-1. Es dauert einige Minuten, bis der virtuelle Azure-Computer bereit ist.  In Ihrer Azure DevOps Services-Organisation wird eine ASP.NET-Beispielanwendung in einem Repository eingerichtet. Ein Build und ein Release werden ausgeführt, und Ihre Anwendung wird im neu erstellten virtuellen Azure-Computer bereitgestellt.  
+    Anschließend wird das DevOps Projects-Dashboard im Azure-Portal angezeigt. Sie können auch direkt über **Alle Ressourcen** im Azure-Portal zum Dashboard navigieren. 
 
-    Sobald der Prozess abgeschlossen ist, wird das **Azure DevOps-Projektdashboard** im Azure-Portal geladen.  Über **Alle Ressourcen** können Sie das **Azure DevOps-Projektdashboard** auch direkt im **Azure-Portal** laden.  
-
-    Dieses Dashboard bietet Einblick in Ihr Azure DevOps Services-**Coderepository**, in Ihre **Azure-CI/CD-Pipeline** und in Ihre aktive **Anwendung in Azure**.    
+    Das Dashboard bietet Einblick in Ihr Azure DevOps-Coderepository, in Ihre CI/CD-Pipeline und in Ihre aktive Anwendung in Azure.   
 
     ![Dashboardansicht](_img/azure-devops-project-vms/dashboardnopreview.png)
 
-1. Mit dem Azure DevOps-Projekt wird automatisch ein CI-Build- und -Releasetrigger konfiguriert, durch den Codeänderungen automatisch im Repository bereitgestellt werden.  Sie können zusätzliche Optionen in Azure DevOps konfigurieren.  Wählen Sie auf der rechten Seite des Dashboards **Durchsuchen**, um Ihre aktive Anwendung anzuzeigen.
+Mit DevOps Projects wird automatisch ein CI-Trigger für Build und Release konfiguriert, durch den Codeänderungen im Repository bereitgestellt werden. Sie können zusätzliche Optionen in Azure DevOps konfigurieren. Wählen Sie **Durchsuchen** aus, um Ihre ausgeführte Anwendung anzuzeigen.
     
-## <a name="examine-the-azure-devops-services-ci-pipeline"></a>Überprüfen der Azure DevOps Services-CI-Pipeline
+## <a name="examine-the-ci-pipeline"></a>Überprüfen der CI-Pipeline
  
-Mit dem Azure DevOps-Projekt wird in Ihrer Azure DevOps Services-Organisation automatisch eine vollständige Azure-CI/CD-Pipeline erstellt.  Sie können die Pipeline untersuchen und anpassen.  Gehen Sie wie folgt vor, um sich mit der Azure DevOps Services-Buildpipeline vertraut zu machen.
+Mit DevOps Projects wird automatisch eine CI/CD-Pipeline in Azure Pipelines konfiguriert. Sie können die Pipeline untersuchen und anpassen. Gehen Sie wie folgt vor, um sich mit der Buildpipeline vertraut zu machen:
 
-1. Wählen Sie **oben** im **Azure DevOps-Projektdashboard** **Pipelines erstellen** aus.  Dieser Link öffnet eine Browserregisterkarte und die Azure DevOps Services-Buildpipeline für Ihr neues Projekt.
+1. Wählen Sie oben auf dem DevOps Projects-Dashboard die Option **Buildpipelines** aus.  
+    Auf einer Browserregisterkarte wird die Buildpipeline für Ihr neues Projekt angezeigt.
 
-1. Verschieben Sie den Cursor rechts neben die Buildpipeline neben das Feld **Status**. Wählen Sie die **Auslassungspunkte** aus, die angezeigt werden.  Mit dieser Aktion wird ein Menü geöffnet, über das Sie verschiedene Aktivitäten durchführen können. So können Sie beispielsweise **einen neuen Build zur Warteschlange hinzufügen**, **einen Build anhalten** und **die Buildpipeline bearbeiten**.
+1. Zeigen Sie auf das Feld **Status**, und wählen Sie dann die Auslassungspunkte (...) aus.  
+    In einem Menü werden verschiedene Optionen angezeigt, etwa zum Einreihen eines neuen Builds in die Warteschlange, zum Anhalten eines Builds und zum Bearbeiten der Buildpipeline.
 
 1. Wählen Sie **Bearbeiten** aus.
 
-1. In dieser Ansicht können Sie sich **die verschiedenen Aufgaben ansehen**, die Sie für Ihre Buildpipeline durchführen können.  Vom Build werden verschiedene Aufgaben durchgeführt. So werden beispielsweise Quellen aus dem Azure DevOps Services-Git-Repository abgerufen, Abhängigkeiten wiederhergestellt und für Bereitstellungen verwendete Ausgaben veröffentlicht.
+1. In diesem Bereich können Sie sich die verschiedenen Aufgaben ansehen, die Sie für Ihre Buildpipeline ausführen können.  
+    Vom Build werden verschiedene Aufgaben durchgeführt. Beispielsweise werden Quellen aus dem Git-Repository abgerufen, Abhängigkeiten wiederhergestellt und für Bereitstellungen verwendete Ausgaben veröffentlicht.
 
-1. Wählen Sie oben in der Buildpipeline den **Buildpipelinenamen**.
+1. Wählen Sie oben in der Buildpipeline den Buildpipelinenamen aus.
 
-1. Ersetzen Sie den **Namen** Ihrer Buildpipeline durch einen aussagekräftigeren Namen.  Wählen Sie **Speichern und in Warteschlange einreihen** und dann **Speichern** aus.
+1. Ersetzen Sie den Namen Ihrer Buildpipeline durch einen aussagekräftigeren Namen, und wählen Sie **Speichern und in Warteschlange einreihen** und dann **Speichern** aus.
 
-1. Wählen Sie unter dem Buildpipelinenamen **Verlauf** aus.  Es wird ein Überwachungspfad mit den letzten Änderungen für den Build angezeigt.  An der Buildpipeline vorgenommene Änderungen werden von Azure DevOps Services überwacht, sodass Sie verschiedene Versionen vergleichen können.
+1. Wählen Sie unter dem Buildpipelinenamen **Verlauf** aus.  
+    In diesem Bereich wird ein Überwachungsprotokoll mit den letzten Änderungen für den Build angezeigt. An der Buildpipeline vorgenommene Änderungen werden von Azure DevOps nachverfolgt, sodass Sie verschiedene Versionen vergleichen können.
 
-1. Wählen Sie **Trigger** aus.  Mit dem Azure DevOps-Projekt wurde automatisch ein CI-Trigger erstellt, und mit jedem Commit, der für das Repository ausgeführt wird, wird ein neuer Build gestartet.  Optional können Sie Branches aus dem CI-Prozess einbeziehen oder ausschließen.
+1. Wählen Sie **Trigger** aus.  
+    Mit DevOps Projects wird automatisch ein CI-Trigger erstellt, und mit jedem für das Repository ausgeführten Commit wird ein neuer Build gestartet. Optional können Sie Branches in den CI-Prozess einbeziehen oder davon ausschließen.
 
-1. Wählen Sie **Aufbewahrung** aus.  Je nach Szenario können Sie Richtlinien zum Aufbewahren oder Entfernen einer bestimmten Anzahl von Builds festlegen.
+1. Wählen Sie **Aufbewahrung** aus.  
+    Abhängig vom Szenario können Sie Richtlinien zum Aufbewahren oder Entfernen einer bestimmten Anzahl von Builds festlegen.
 
-## <a name="examine-the-azure-devops-services-cd-pipeline"></a>Überprüfen der Azure DevOps Services-CD-Pipeline
+## <a name="examine-the-cd-pipeline"></a>Überprüfen der CD-Pipeline
 
-Mit dem Azure DevOps-Projekt werden die erforderlichen Schritte zum Bereitstellen über Ihre Azure DevOps Services-Organisation in Ihrem Azure-Abonnement automatisch erstellt und konfiguriert.  Diese Schritte umfassen die Konfiguration einer Azure-Dienstverbindung zur Authentifizierung von Azure DevOps Services für Ihr Azure-Abonnement.  Die Automatisierung erstellt auch eine Azure DevOps Services-CI-Pipeline, die wiederum die CD-Bereitstellung an den virtuellen Azure-Computer ausführt.  Gehen Sie wie folgt vor, um mehr über die Azure DevOps Services-CD-Pipeline zu erfahren.
+Mit DevOps Projects werden die erforderlichen Schritte zum Bereitstellen über Ihre Azure DevOps-Organisation in Ihrem Azure-Abonnement automatisch erstellt und konfiguriert. Diese Schritte umfassen die Konfiguration einer Azure-Dienstverbindung zur Authentifizierung von Azure DevOps für Ihr Azure-Abonnement. Bei der Automatisierung wird außerdem eine CD-Pipeline erstellt, über die CD für den virtuellen Azure-Computer bereitgestellt wird. Gehen Sie wie folgt vor, um weitere Informationen zur Azure DevOps-CD-Pipeline zu erhalten:
 
-1. Wählen Sie **Build und Release** und anschließend **Releases** aus.  Mit dem Azure DevOps-Projekt wurde eine Azure DevOps Services-Releasepipeline zum Verwalten von Bereitstellungen für Azure erstellt.
+1. Wählen Sie **Build und Release** und anschließend **Releases** aus.  
+    DevOps Projects erstellt eine Releasepipeline zum Verwalten von Bereitstellungen in Azure.
 
-1. Wählen Sie links im Browser die **Auslassungspunkte** neben Ihrer Releasepipeline und anschließend **Bearbeiten** aus.
+1. Wählen Sie neben Ihrer Releasepipeline die Auslassungspunkte (...) und anschließend **Bearbeiten** aus.  
+    Die Releasepipeline enthält eine *Pipeline*, die den Releaseprozess definiert.
 
-1. Die Releasepipeline enthält eine **Pipeline**, die den Releaseprozess definiert.  Wählen Sie unter **Artefakte** die Option **Ablegen** aus.  Die in den vorherigen Schritten untersuchte Buildpipeline erzeugt die für das Artefakt verwendete Ausgabe. 
+1. Wählen Sie unter **Artefakte** die Option **Ablegen** aus.  
+    Die in den vorherigen Schritten untersuchte Buildpipeline erzeugt die für das Artefakt verwendete Ausgabe. 
 
-1. Wählen Sie die Option **Continuous Deployment-Trigger** rechts neben dem **Symbol** **Ablegen** (das als Gewitterblitz dargestellt wird) aus.  Diese Releasepipeline verfügt über einen aktivierten CD-Trigger.  Der Trigger wird jedes Mal ausgelöst, wenn ein neues Buildartefakt verfügbar ist.  Optional können Sie den Trigger deaktivieren, sodass Ihre Bereitstellungen manuell ausgeführt werden müssen. 
+1. Wählen Sie neben dem Symbol **Ablegen** die Option **Continuous Deployment-Trigger** aus.  
+    Diese Releasepipeline enthält einen aktivierten CD-Trigger. Jedes Mal, wenn ein neues Buildartefakt verfügbar ist, wird von diesem CD-Trigger eine Bereitstellung ausgeführt. Optional können Sie den Trigger deaktivieren, sodass Ihre Bereitstellungen manuell ausgeführt werden müssen. 
 
-1. Wählen Sie links im Browser **Aufgaben** und anschließend Ihre **Umgebung** aus.  
+1. Wählen Sie auf der linken Seite **Aufgaben** und dann Ihre Umgebung aus.  
+    Bei Aufgaben handelt es sich um die Aktivitäten, die beim Bereitstellungsprozess ausgeführt werden. Sie sind in Phasen gruppiert. Dieses Releasepipeline besteht aus zwei Phasen:
+    * Die erste Phase enthält die Aufgabe „Bereitstellung einer Azure-Ressourcengruppe“, die zwei Aktionen ausführt:
+      * Konfigurieren des virtuellen Computers für die Bereitstellung
+      * Hinzufügen des neuen virtuellen Computers zu einer Azure DevOps-Bereitstellungsgruppe Mit der VM-Bereitstellungsgruppe in Azure DevOps werden logische Gruppen von Bereitstellungszielcomputern verwaltet.
+    * In der zweiten Phase erstellt die Aufgabe „IIS-Web-App verwalten“ eine IIS-Website auf dem virtuellen Computer. Zum Bereitstellen der Website wird eine zweite Aufgabe vom Typ „IIS-Web-App-Bereitstellung“ erstellt.
 
-1. Bei den Aufgaben handelt es sich um die Aktivitäten, die beim Bereitstellungsprozess durchgeführt werden. Sie sind in **Phasen** gruppiert.  Für diese Releasepipeline gibt es zwei **Phasen**.  Die erste Phase enthält die Aufgabe **Bereitstellung einer Azure-Ressourcengruppe**. Mit dieser Aufgabe wird der virtuelle Computer für die Bereitstellung konfiguriert und der neue virtuelle Computer einer **Azure DevOps-Bereitstellungsgruppe** hinzugefügt.  Mit der VM-Bereitstellungsgruppe in Azure DevOps werden logische Gruppen von **Bereitstellungszielcomputern** verwaltet.
+1. Wählen Sie auf der rechten Seite **Releases anzeigen** aus, um einen Releaseverlauf anzuzeigen.
 
-1. In dieser zweiten Phase wurde die Aufgabe **IIS-Web-App verwalten** zum Erstellen einer IIS-Website auf dem virtuellen Computer erstellt.  Die zweite **IIS-Web-App-Bereitstellung**-Aufgabe wurde zur Bereitstellung der Website erstellt.
+1. Wählen Sie neben einem Release die Auslassungspunkte (...) und anschließend **Öffnen** aus.  
+    Sie können sich verschiedene Menüs ansehen, etwa eine Releasezusammenfassung, zugeordnete Arbeitsaufgaben und Tests.
 
-1. Wählen Sie rechts im Browser **Releases anzeigen** aus.  In dieser Ansicht wird der Verlauf von Releases angezeigt.
+1. Wählen Sie **Commits** aus.  
+    In dieser Ansicht werden die dieser Bereitstellung zugeordneten Codecommits angezeigt. Vergleichen Sie Releases, um die Commitunterschiede zwischen den einzelnen Bereitstellungen anzuzeigen.
 
-1. Wählen Sie die **Auslassungsp** neben einem Ihrer Releases und dann die Option **Öffnen** aus.  In dieser Ansicht finden Sie verschiedene Menüs, wie etwa eine **Releasezusammenfassung**, **zugeordnete Arbeitsaufgaben** und **Tests**.
+1. Wählen Sie **Protokolle** aus.  
+    Die Protokolle enthalten nützliche Informationen zum Bereitstellungsprozess. Sie können während und nach Bereitstellungen angezeigt werden.
 
-1. Wählen Sie **Commits** aus.  In dieser Ansicht werden die der jeweiligen Bereitstellung zugeordneten Codecommits angezeigt. Vergleichen Sie Releases, um die Commitunterschiede zwischen den einzelnen Bereitstellungen anzuzeigen.
+## <a name="commit-changes-to-azure-repos-and-automatically-deploy-them-to-azure"></a>Committen von Änderungen in Azure Repos und automatisches Bereitstellen dieser Änderungen in Azure 
 
-1. Wählen Sie **Protokolle** aus.  Die Protokolle enthalten nützliche Informationen zum Bereitstellungsprozess.  Sie können während und nach Bereitstellungen angezeigt werden.
+Nun können Sie mithilfe eines CI/CD-Prozesses, mit dem Ihre aktuelle Arbeit auf Ihrer Website automatisch bereitgestellt wird, mit einem Team an Ihrer App zusammenarbeiten. Mit jeder Änderung am GitHub-Repository wird in Azure DevOps ein Build gestartet, und durch eine CD-Pipeline wird eine Bereitstellung in Azure ausgeführt. Führen Sie die Schritte in diesem Abschnitt aus, oder nutzen Sie eine andere Methode zum Committen Ihrer Änderungen in Ihrem Repository. Mit den Codeänderungen wird der CI/CD-Prozess initiiert. Außerdem werden Ihre Änderungen an der IIS-Website automatisch auf dem virtuellen Azure-Computer bereitgestellt.
 
-## <a name="commit-changes-to-azure-devops-services-and-automatically-deploy-to-azure"></a>Committen von Änderungen zu Azure DevOps Services und automatisches Bereitstellen in Azure 
+1. Wählen Sie im linken Bereich **Code** aus, und navigieren Sie anschließend zu Ihrem Repository.
 
-Nun können Sie mithilfe eines CI/CD-Prozesses, mit dem Ihre aktuelle Arbeit auf Ihrer Website automatisch bereitgestellt wird, mit einem Team an Ihrer App zusammenarbeiten.  Jede Änderung am Azure DevOps-Services-Git-Repository startet einen Build in Azure DevOps Services, und eine Azure DevOps Services-CD-Pipeline übernimmt die Bereitstellung für Ihre Azure-VM.  Gehen Sie wie folgt vor, um einen Commit für Änderungen an Ihrem Repository auszuführen, oder verwenden Sie hierfür andere Verfahren.  Mit den Codeänderungen wird der CI/CD-Prozess initiiert. Ferner werden die neuen Änderungen an der IIS-Website automatisch auf dem virtuellen Azure-Computer bereitgestellt.
+1. Navigieren Sie zum Verzeichnis *Views\Home*. Wählen Sie anschließend die Auslassungspunkte neben der Datei *Index.cshtml* und dann **Bearbeiten** aus.
 
-1. Wählen Sie im Azure DevOps Services-Menü den Eintrag **Code** aus, und navigieren Sie zu Ihrem Repository.
+1. Nehmen Sie eine Änderung an der Datei vor. Fügen Sie beispielsweise in einem der div-Tags Text hinzu. 
 
-1. Navigieren Sie zum Verzeichnis **Views\Home**. Wählen Sie anschließend die **Auslassungspunkte** neben der Datei **Index.cshtml** und dann **Bearbeiten** aus.
+1. Wählen Sie oben rechts **Committen** und dann erneut **Committen** aus, um Ihre Änderung per Push zu übertragen.  
+    Kurz danach wird in Azure DevOps ein Build gestartet und zur Bereitstellung der Änderungen ein Release ausgeführt. Überwachen Sie den Buildstatus auf dem DevOps Projects-Dashboard oder im Browser mit Ihrer Azure DevOps-Organisation.
 
-1. Nehmen Sie eine Änderung an der Datei vor. Ändern Sie beispielsweise den Text in einem der **div-Tags**.  Wählen Sie oben rechts **Commit** aus.  Wählen Sie erneut **Commit** aus, um die Änderung mittels Push zu übertragen. 
+1. Aktualisieren Sie nach Abschluss des Release Ihre Anwendung, um Ihre Änderungen zu überprüfen.
 
-1. Kurz danach wird **in Azure DevOps Services ein Build gestartet**. Anschließend wird zur Bereitstellung der Änderungen ein Release ausgeführt.  Überwachen Sie den **Buildstatus** mit dem DevOps-Projektdashboard oder im Browser mit Ihrer Azure DevOps Services-Organisation.
+## <a name="configure-azure-application-insights-monitoring"></a>Konfigurieren der Azure Application Insights-Überwachung
 
-1. Nachdem das Release ausgeführt wurde, **aktualisieren Sie Ihre Anwendung** im Browser, um sicherzustellen, dass Ihre Änderungen angezeigt werden.
+Mithilfe von Azure Application Insights können Sie die Leistung und Nutzung Ihrer Anwendung ganz einfach überwachen. Mit DevOps Projects wird für Ihre Anwendung automatisch eine Application Insights-Ressource konfiguriert. Sie können Warnungen und Überwachungsfunktionen je nach Bedarf weiter konfigurieren.
 
-## <a name="configure-azure-application-insights-monitoring"></a>Konfigurieren der Application Insights-Überwachung
+1. Navigieren Sie im Azure-Portal zum DevOps Projects-Dashboard. 
 
-Mithilfe von Azure Application Insights können Sie die Leistung und Nutzung Ihrer Anwendung ganz einfach überwachen.  Mit dem Azure DevOps-Projekt wird für Ihre Anwendung automatisch eine Application Insights-Ressource konfiguriert.  Sie können Warnungen und Überwachungsfunktionen je nach Bedarf weiter konfigurieren.
+1. Wählen Sie unten rechts den Link **Application Insights** für Ihre App aus.  
+    Der Bereich **Application Insights** wird geöffnet. Diese Ansicht enthält Informationen zur Nutzungs-, Leistungs- und Verfügbarkeitsüberwachung für Ihre App.
 
-1. Navigieren Sie im **Azure-Portal** zum **Azure DevOps-Projekt**.  Wählen Sie am unteren rechten Rand des Dashboards den Link zu **Application Insights** für Ihre App aus.
+    ![Der Bereich „Application Insights“](_img/azure-devops-project-github/appinsights.png) 
 
-1. Das Blatt **Application Insights** wird im Azure-Portal geöffnet.  Diese Ansicht enthält Informationen zur Nutzungs-, Leistungs- und Verfügbarkeitsüberwachung für Ihre App.
+1. Wählen Sie **Zeitbereich** und dann **Letzte Stunde** aus. Wählen Sie zum Filtern der Ergebnisse **Aktualisieren** aus.  
+    Sie können nun alle Aktivitäten der letzten 60 Minuten anzeigen. 
+    
+1. Wählen Sie zum Schließen des Zeitbereichs **x** aus.
 
-    ![Application Insights](_img/azure-devops-project-github/appinsights.png) 
+1. Wählen Sie **Warnungen** und anschließend **Metrikwarnung hinzufügen** aus. 
 
-1. Wählen Sie **Zeitbereich** und dann **Letzte Stunde** aus.  Wählen Sie **Aktualisieren** aus, um die Ergebnisse zu filtern.  Jetzt werden alle Aktivitäten der letzten 60 Minuten angezeigt.  Wählen Sie das **x** aus, um den Zeitbereich zu verlassen.
+1. Geben Sie einen Namen für die Warnung ein.
 
-1. Am oberen Rand des Dashboards finden Sie **Warnungen** und verschiedene andere nützliche Links.  Wählen Sie **Warnungen** und anschließend **+ Metrikwarnung hinzufügen** aus.
+1. Sehen Sie sich in der Dropdownliste **Metrik** die verschiedenen Warnungsmetriken an.  
+    Für die Standardwarnung gilt eine **Serverantwortzeit, die größer als 1 Sekunde** ist. Sie können problemlos eine Vielzahl von Warnungen konfigurieren und dadurch die Überwachungsfunktionen Ihrer App verbessern.
 
-1. Geben Sie einen **Namen** für die Warnung ein.
+1. Aktivieren Sie das Kontrollkästchen für **Notify via Email owners, contributors, and readers** (Besitzer, Mitwirkende und Leser über E-Mail informieren).  
+    Optional können Sie durch die Ausführung einer Logik-App zusätzliche Aktionen ausführen, wenn eine Warnung angezeigt wird.
 
-1. Für die Standardwarnung gilt eine **Serverantwortzeit, die größer als 1 Sekunde** ist.  Wählen Sie die Dropdownliste **Metrik** aus, um die verschiedenen Warnungsmetriken anzuzeigen.  Sie können beispielsweise **Ausführungszeit für ASP.NET-Anforderung** für eine ASP.NET-App konfigurieren.  Sie können problemlos eine Vielzahl von Warnungen konfigurieren und dadurch die Überwachungsfunktionen Ihrer App verbessern.
+1. Wählen Sie **OK** , um die Warnung zu erstellen.  
+    Nach wenigen Augenblicken wird die Warnung auf dem Dashboard als aktiv angezeigt. 
 
-1. Aktivieren Sie das Kontrollkästchen für **Notify via Email owners, contributors, and readers** (Besitzer, Mitwirkende und Leser über E-Mail informieren).  Optional können Sie zusätzliche Aktionen ausführen, wenn eine Warnung beim Ausführen einer Azure-Logik-App ausgelöst wird.
+1. Verlassen Sie den Bereich **Warnung**, und navigieren Sie zurück zum Blatt **Application Insights**.
 
-1. Wählen Sie **OK** aus, um die Warnung zu erstellen.  In wenigen Augenblicken wird die Warnung als aktiv auf dem Dashboard angezeigt.  **Verlassen** Sie den Warnungsbereich, und navigieren Sie zurück zum Blatt **Application Insights**.
+1. Wählen Sie **Verfügbarkeit** und anschließend **Test hinzufügen** aus. 
 
-1. Wählen Sie **Verfügbarkeit** und anschließend **+ Test hinzufügen** aus. 
-
-1. Geben Sie einen **Testnamen** ein, und wählen Sie dann **Erstellen** aus.  Damit wird ein einfacher Ping-Test zur Überprüfung der Verfügbarkeit Ihrer Anwendung erstellt.  Nach wenigen Minuten sind die Testergebnisse verfügbar, und das Application Insights-Dashboard zeigt einen Verfügbarkeitsstatus an.
+1. Geben Sie einen Testnamen ein, und wählen Sie dann **Erstellen** aus.  
+    Ein einfacher Ping-Test wird erstellt, um die Verfügbarkeit Ihrer Anwendung zu überprüfen. Nach wenigen Minuten sind die Testergebnisse verfügbar, und das Application Insights-Dashboard zeigt einen Verfügbarkeitsstatus an.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
- > [!NOTE]
- > Mit den nachfolgenden Schritten werden Ressourcen dauerhaft gelöscht.  Verwenden Sie diese Funktion erst, nachdem Sie die Eingabeaufforderungen aufmerksam durchgelesen haben.
+Beim Durchführen von Tests können Sie Gebühren vermeiden, indem Sie die Ressourcen bereinigen. Sie können den in diesem Tutorial erstellten virtuellen Computer und zugehörige Ressourcen löschen, wenn Sie sie nicht mehr benötigen. Verwenden Sie dazu die Funktion **Löschen** auf dem DevOps Projects-Dashboard. 
 
-Beim Durchführen von Tests können Sie Ressourcen bereinigen, um zu verhindern, dass Gebühren entstehen.  Sie können den mit diesem Tutorial erstellten virtuellen Azure-Computer und die zugehörigen Ressourcen mithilfe der Funktion **Löschen** im Azure DevOps-Projektdashboard löschen, wenn Sie die Bereitstellung nicht mehr benötigen.  **Seien Sie vorsichtig**, denn mit der Löschfunktion werden die im Rahmen des Azure DevOps-Projekts erstellten Daten in Azure und Azure DevOps gelöscht. Diese Daten können anschließend nicht wiederhergestellt werden.
+> [!IMPORTANT]
+> Mit dem folgenden Verfahren werden Ressourcen endgültig gelöscht. Mit der Funktion *Löschen* werden die Daten, die vom Projekt in DevOps Projects erstellt wurden, in Azure und Azure DevOps gelöscht. Diese Daten können anschließend nicht wiederhergestellt werden. Verwenden Sie dieses Verfahren nur, nachdem Sie die Anweisungen sorgfältig gelesen haben.
 
-1. Navigieren Sie im **Azure-Portal** zum **Azure DevOps-Projekt**.
-2. Wählen Sie **oben rechts** im Dashboard die Option **Löschen** aus.  Nachdem Sie die Eingabeaufforderung gelesen haben, wählen Sie **Ja** aus, um die Ressourcen **dauerhaft zu löschen**.
+1. Navigieren Sie im Azure-Portal zum DevOps Projects-Dashboard.
+1. Wählen Sie oben rechts **Löschen** aus. 
+1. Wählen Sie an der Eingabeaufforderung **Ja** aus, um die Ressourcen *endgültig zu löschen*.
+
+Diese Build- und Releasepipelines können Sie optional an die Anforderungen Ihres Teams anpassen. Sie können dieses CI/CD-Muster auch als Vorlage für Ihre anderen Pipelines verwenden. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Diese Build- und Releasepipelines können Sie optional an die Anforderungen Ihres Teams anpassen. Sie können dieses CI/CD-Muster auch als Vorlage für Ihre anderen Projekte verwenden.  Es wurde Folgendes vermittelt:
+In diesem Tutorial haben Sie Folgendes gelernt:
 
 > [!div class="checklist"]
-> * Erstellen eines Azure DevOps-Projekts für eine ASP.NET-App
-> * Konfigurieren von Azure DevOps Services und eines Azure-Abonnements 
-> * Überprüfen der Azure DevOps Services-CI-Pipeline
-> * Überprüfen der Azure DevOps Services-CD-Pipeline
-> * Committen von Änderungen zu Azure DevOps Services und automatisches Bereitstellen in Azure
+> * Bereitstellen Ihrer ASP.NET-App mit DevOps Projects
+> * Konfigurieren von Azure DevOps und eines Azure-Abonnements 
+> * Überprüfen der CI-Pipeline
+> * Überprüfen der CD-Pipeline
+> * Committen von Änderungen in Azure Repos und automatisches Bereitstellen dieser Änderungen in Azure
 > * Konfigurieren der Azure Application Insights-Überwachung
 > * Bereinigen von Ressourcen
 
-Weitere Informationen zur CI/CD-Pipeline finden Sie im folgenden Tutorial:
+Weitere Informationen zur CI/CD-Pipeline finden Sie in folgendem Artikel:
 
 > [!div class="nextstepaction"]
-> [Anpassen von CD-Prozessen](https://docs.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)
+> [Define your multi-stage continuous deployment (CD) pipeline](https://docs.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process?view=vsts) (Festlegen Ihrer mehrstufigen CD-Pipeline (Continuous Deployment))

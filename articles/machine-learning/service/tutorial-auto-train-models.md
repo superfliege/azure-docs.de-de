@@ -8,13 +8,13 @@ ms.topic: tutorial
 author: nacharya1
 ms.author: nilesha
 ms.reviewer: sgilley
-ms.date: 09/24/2018
-ms.openlocfilehash: 29d673f48671ec917e45b7ff76feeebf0b868c4b
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.date: 11/21/2018
+ms.openlocfilehash: 76436da1013c6747e9167c006e0d7c5e89ec8d9c
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49426888"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52284743"
 ---
 # <a name="tutorial-train-a-classification-model-with-automated-machine-learning-in-azure-machine-learning-service"></a>Tutorial: Trainieren eines Klassifizierungsmodells mit automatisiertem maschinellem Lernen im Azure Machine Learning-Dienst
 
@@ -34,7 +34,10 @@ Sie lernen Folgendes:
 > * Überprüfen der Trainingsergebnisse
 > * Registrieren des besten Modells
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://aka.ms/AMLfree) erstellen, bevor Sie beginnen.
+
+>[!NOTE]
+> Der Code in diesem Artikel wurde mit Version 0.1.79 des Azure Machine Learning SDK getestet.
 
 ## <a name="get-the-notebook"></a>Abrufen des Notebooks
 
@@ -214,7 +217,7 @@ Untersuchen Sie die Ergebnisse des Experiments mit einem Jupyter-Widget oder anh
 Verwenden Sie das Jupyter Notebookwidget, um ein Diagramm und eine Tabelle mit allen Ergebnissen anzuzeigen.
 
 ```python
-from azureml.train.widgets import RunDetails
+from azureml.widgets import RunDetails
 RunDetails(local_run).show()
 ```
 

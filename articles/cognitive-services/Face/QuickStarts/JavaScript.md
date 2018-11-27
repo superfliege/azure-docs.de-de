@@ -10,12 +10,12 @@ ms.component: face-api
 ms.topic: quickstart
 ms.date: 05/10/2018
 ms.author: pafarley
-ms.openlocfilehash: 355d3258392fa722fbdc3762a9125a22e8a69b67
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 0d0ff627ad2549ff9b6f09b6c934c5a17a102962
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49954297"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51852366"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-javascript"></a>Schnellstart: Erkennen von Gesichtern in einem Bild mit der REST-API und JavaScript
 
@@ -37,10 +37,10 @@ Verwenden Sie die [Face – Detect](https://westcentralus.dev.cognitive.microsof
 Führen Sie zum Ausführen des Beispiels die folgenden Schritte aus:
 
 1. Kopieren Sie das folgende Skript, und speichern Sie es in einer Datei wie `detectFaces.html`.
-2. Ersetzen Sie `<Subscription Key>` durch Ihren gültigen Abonnementschlüssel.
-3. Ändern Sie den Wert von `uriBase`, um ggf. die Region zu verwenden, in der Sie Ihre Abonnementschlüssel erhalten haben.
-4. Ziehen Sie die Datei per Drag & Drop in Ihren Browser.
-5. Klicken Sie auf die Schaltfläche `Analyze faces`.
+1. Ersetzen Sie `<Subscription Key>` durch Ihren gültigen Abonnementschlüssel.
+1. Ändern Sie bei Bedarf den Wert `uriBase`, um den Standort zu verwenden, an dem Sie Ihre Abonnementschlüssel erhalten haben. (Eine Liste aller Regionsendpunkte finden Sie in den [Dokumenten zur Gesichtserkennungs-API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236).)
+1. Ziehen Sie die Datei per Drag & Drop in Ihren Browser.
+1. Klicken Sie auf die Schaltfläche `Analyze faces`.
 
 ### <a name="face---detect-request"></a>„Face – Detect“-Anforderung
 
@@ -63,7 +63,7 @@ Führen Sie zum Ausführen des Beispiels die folgenden Schritte aus:
         // subscription keys from westus, replace "westcentralus" in the URL
         // below with "westus".
         //
-        // Free trial subscription keys are generated in the westcentralus region.
+        // Free trial subscription keys are generated in the "westus" region.
         // If you use a free trial subscription key, you shouldn't need to change 
         // this region.
         var uriBase =

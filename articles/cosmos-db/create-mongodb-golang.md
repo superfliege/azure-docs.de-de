@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 07/21/2017
 ms.author: sclyon
 ms.custom: mvc
-ms.openlocfilehash: 7bfcbf2c72dbe33727097841f34f3f6869e9d2d8
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 79196e2e89ec28236b7256571ccaa087866c2e76
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44053130"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51706465"
 ---
 # <a name="azure-cosmos-db-build-a-mongodb-api-console-app-with-golang-and-the-azure-portal"></a>Azure Cosmos DB: Erstellen einer Konsolen-App mit einer MongoDB-API mit Golang und dem Azure-Portal
 
@@ -42,7 +42,7 @@ Anders ausgedrückt: Die Golang-Anwendung verfügt nur über Informationen darü
   [!INCLUDE [cosmos-db-emulator-mongodb](../../includes/cosmos-db-emulator-mongodb.md)]
 
 - [Go](https://golang.org/dl/) und Grundkenntnisse der Sprache [Go](https://golang.org/).
-- Eine integrierte Entwicklungsumgebung (IDE): [Gogland](https://www.jetbrains.com/go/) von Jetbrains, [Visual Studio Code](https://code.visualstudio.com/) von Microsoft oder [Atom](https://atom.io/). In diesem Lernprogramm verwende ich Goglang.
+- Eine integrierte Entwicklungsumgebung (IDE): [GoLand](https://www.jetbrains.com/go/) von Jetbrains, [Visual Studio Code](https://code.visualstudio.com/) von Microsoft oder [Atom](https://atom.io/). In diesem Lernprogramm verwende ich Goglang.
 
 <a id="create-account"></a>
 ## <a name="create-a-database-account"></a>Erstellen eines Datenbankkontos
@@ -65,7 +65,7 @@ Klonen Sie die Beispielanwendung, und installieren Sie die erforderlichen Pakete
     go get gopkg.in/mgo.v2
     ```
 
-Der [mgo](http://labix.org/mgo)-Treiber (Aussprache: *mango*) ist ein [MongoDB](http://www.mongodb.org/)-Treiber für die [Sprache Go](http://golang.org/), mit dem eine umfassende und gründlich getestete Auswahl von Funktionen unter einer sehr einfachen API auf Grundlage von Go-Standardbegriffen implementiert wird.
+Der [mgo](http://labix.org/mgo)-Treiber ist ein [MongoDB](http://www.mongodb.org/)-Treiber für die [Sprache Go](http://golang.org/), mit dem eine umfassende und gründlich getestete Auswahl von Funktionen unter einer sehr einfachen API auf Grundlage von Go-Standardbegriffen implementiert wird.
 
 <a id="connection-string"></a>
 

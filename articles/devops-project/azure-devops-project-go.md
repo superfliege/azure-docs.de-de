@@ -1,6 +1,6 @@
 ---
-title: Erstellen einer CI/CD-Pipeline für die „Go“-Programmiersprache (Golang) mit dem Azure DevOps-Projekt | Schnellstart
-description: Das DevOps-Projekt erleichtert die ersten Schritte mit Azure. Damit können Sie eine Golang-App in einem Azure-Dienst in einigen wenigen Schritten starten.
+title: 'Schnellstart: Erstellen einer CI/CD-Pipeline für die Programmiersprache Go mithilfe von Azure DevOps Projects'
+description: DevOps Projects erleichtert die ersten Schritte mit Azure. Mit diesem Feature können Sie mit wenigen Schritten eine in der Programmiersprache Go geschriebene Web-App in einem Azure-Dienst starten.
 ms.prod: devops
 ms.technology: devops-cicd
 services: vsts
@@ -17,108 +17,135 @@ ms.date: 07/09/2018
 ms.author: mlearned
 ms.custom: mvc
 monikerRange: vsts
-ms.openlocfilehash: 48eb91242e24d29dd8335c9565dfcaca4d920bd4
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: ca068b39c222a210e261234a132a0506f6b023bb
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47408962"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52263750"
 ---
-# <a name="create-a-cicd-pipeline-for-go-with-the-azure-devops-project"></a>Erstellen einer CI/CD-Pipeline für Go mit dem Azure DevOps-Projekt
+# <a name="create-a-cicd-pipeline-for-go-by-using-azure-devops-projects"></a>Erstellen einer CI/CD-Pipeline für Go mit Azure DevOps Projects
 
-Konfigurieren Sie mit dem **Azure DevOps-Projekt** für Ihre **Go**-Anwendung Continuous Integration (CI) und Continuous Delivery (CD).  Das Azure DevOps-Projekt erleichtert die Erstkonfiguration einer Azure DevOps Services-Build- und -Releasepipeline.
+Konfigurieren Sie mit Azure DevOps Projects Continuous Integration (CI) und Continuous Delivery (CD) für Ihre Go-App. DevOps Projects erleichtert die Erstkonfiguration einer Build- und Releasepipeline für Azure DevOps.
 
 Wenn Sie kein Azure-Abonnement haben, erhalten Sie über [Visual Studio Dev Essentials](https://visualstudio.microsoft.com/dev-essentials/) ein kostenloses Abonnement.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Melden Sie sich auf dem Azure-Portal an.
 
-Mit dem Azure DevOps-Projekt wird in Azure eine CI/CD-Pipeline erstellt.  Sie können eine **neue Azure DevOps Services**-Organisation erstellen oder eine **bestehende Organisation** verwenden.  Außerdem werden mit dem Azure DevOps-Projekt **Azure-Ressourcen** im **Azure-Abonnement** Ihrer Wahl erstellt.
+Mit DevOps Projects wird eine CI/CD-Pipeline in Azure Pipelines erstellt. Sie können eine neue Azure DevOps-Organisation erstellen oder eine bestehende Organisation verwenden. Ferner werden mit DevOps Projects Azure-Ressourcen im Azure-Abonnement Ihrer Wahl erstellt.
 
-1. Melden Sie sich beim [Microsoft Azure-Portal](https://portal.azure.com) an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
-1. Wählen Sie in der linken Navigationsleiste das Symbol **+ Ressource erstellen** aus, und suchen Sie anschließend nach **DevOps-Projekt**.  Wählen Sie **Erstellen**.
+1. Wählen Sie im linken Bereich **Ressource erstellen**.
 
-    ![Starten von Continuous Delivery](_img/azure-devops-project-go/fullbrowser.png)
+1. Geben Sie in das Suchfeld **DevOps Projects** ein, und wählen sie dann **Erstellen** aus.
 
-## <a name="select-a-sample-application-and-azure-service"></a>Auswählen einer Beispielanwendung und eines Azure-Diensts
+    ![DevOps Projects-Dashboard](_img/azure-devops-project-github/fullbrowser.png)
 
-1. Wählen Sie die **Go**-Beispielanwendung aus, und klicken Sie dann auf **Weiter**.
+## <a name="select-a-sample-app-and-azure-service"></a>Auswählen einer Beispiel-App und eines Azure-Diensts
 
-1. **Einfache Go-App** ist das Standard-Framework.  Klicken Sie auf **Weiter**. 
+1. Wählen Sie die **Go**-Beispiel-App und dann **Weiter** aus.  
+    
+1. **Einfache Go-App** ist das Standard-Framework. Klicken Sie auf **Weiter**.  
+    Das App-Framework, das Sie zuvor ausgewählt haben, bestimmt den Typ des für die Bereitstellung verfügbaren Bereitstellungsziels für den Azure-Dienst. 
+    
+1. Übernehmen Sie den Azure-Standarddienst, und wählen Sie **Weiter** aus.
 
-1. Das Anwendungsframework, das Sie im vorherigen Schritt ausgewählt haben, bestimmt den Typ des für die Bereitstellung verfügbaren Bereitstellungsziels für den Azure-Dienst.  Übernehmen Sie den Azure-Standarddienst, und wählen Sie **Weiter** aus.
+## <a name="configure-azure-devops-and-an-azure-subscription"></a>Konfigurieren von Azure DevOps und eines Azure-Abonnements 
 
-## <a name="configure-azure-devops-services-and-an-azure-subscription"></a>Konfigurieren von Azure DevOps Services und eines Azure-Abonnements 
+1. Sie können eine neue kostenlose Azure DevOps-Organisation erstellen oder eine bestehende Organisation auswählen. 
 
-1. Erstellen Sie eine kostenlose **neue** Azure DevOps Services-Organisation, oder verwenden Sie eine **bestehende** Organisation.  Wählen Sie einen **Namen** für das Azure DevOps-Projekt.  Wählen Sie Ihr **Azure-Abonnement**, den **Speicherort** und einen **Namen** für Ihre Anwendung aus.  Klicken Sie auf **Fertig**, wenn Sie fertig sind.
+1. Geben Sie einen Namen für Ihr Azure DevOps-Projekt ein. 
 
-1. In wenigen Minuten wird das **DevOps-Projektdashboard** im Azure-Portal geladen.  Eine Beispielanwendung wird in einem Repository in Ihrer Azure DevOps Services-Organisation eingerichtet. Ein Build wird ausgeführt, und Ihre Anwendung wird in Azure bereitgestellt.  Dieses Dashboard bietet Einblick in Ihr **Coderepository**, in Ihre **Azure-CI/CD-Pipeline** und in Ihre **Anwendung in Azure**.  Wählen Sie auf der rechten Seite des Dashboards **Durchsuchen**, um Ihre aktive Anwendung anzuzeigen.
+1. Wählen Sie Ihr Azure-Abonnement und den Standort aus, geben Sie einen Namen für Ihre App ein, und wählen Sie dann **Fertig** aus.  
+    Nach wenigen Minuten wird das DevOps Projects-Dashboard im Azure-Portal angezeigt. Eine Beispiel-App wird in einem Repository in Ihrer Azure DevOps-Organisation eingerichtet, ein Build wird ausgeführt, und Ihre App wird in Azure bereitgestellt. 
+    
+    Dieses Dashboard bietet Einblick in Ihr Coderepository, in Ihre CI/CD-Pipeline und in Ihre App in Azure. Wählen Sie auf der rechten Seite **Durchsuchen** aus, um Ihre ausgeführte App anzuzeigen.
 
     ![Dashboardansicht](_img/azure-devops-project-go/dashboardnopreview.png) 
 
-## <a name="commit-code-changes-and-execute-cicd"></a>Ausführen eines Commits für Codeänderungen und Ausführen von CI/CD
+## <a name="commit-your-code-changes-and-execute-the-cicd"></a>Committen Ihrer Codeänderungen und Ausführen von CI/CD
 
-Mit dem Azure DevOps-Projekt wurde in Ihrer Azure DevOps Services-Organisation oder Ihrem GitHub-Konto ein Git-Repository erstellt.  Gehen Sie wie folgt vor, um das Repository anzuzeigen und Codeänderungen an Ihrer Anwendung vorzunehmen.
+DevOps Projects erstellt ein Git-Repository in Azure Repos oder GitHub. Gehen Sie wie folgt vor, um das Repository anzuzeigen und Codeänderungen an der App vorzunehmen:
 
-1. Wählen Sie auf der linken Seite des DevOps-Projektdashboards den Link für Ihren **Masterbranch** aus.  Über diesen Link wird die Ansicht des neu erstellten Git-Repositorys geöffnet.
+1. Wählen Sie auf der linken Seite in DevOps Projects den Link für Ihren Masterbranch aus.  
+    Über den Link wird eine Ansicht des neu erstellten Git-Repositorys geöffnet.
 
-1. Wählen Sie oben rechts im Browser die Option **Klonen** aus, um die Repository-Klon-URL anzuzeigen. Sie können Ihr Git-Repository in Ihrer bevorzugten IDE klonen.  Bei den nächsten Schritten können Sie den Webbrowser verwenden, um Codeänderungen direkt am Masterbranch vorzunehmen und für Codeänderungen einen Commit auszuführen.
+1. Wählen Sie zum Anzeigen der Repository-Klon-URL oben rechts **Klonen** aus.  
+    Sie können Ihr Git-Repository in Ihrer bevorzugten IDE klonen. Bei den nächsten Schritten können Sie den Webbrowser verwenden, um Codeänderungen direkt am Masterbranch vorzunehmen und für Codeänderungen einen Commit auszuführen.
 
-1. Navigieren Sie auf der linken Seite des Browsers zur Datei **views/index.html**.
+1. Gehen Sie auf der linken Seite zur Datei *views/index.html*, und wählen Sie dann **Bearbeiten** aus.
 
-1. Wählen Sie **Bearbeiten** aus, und ändern Sie den Text an einigen Stellen.  Ändern Sie beispielsweise Text in einem div-Tag.
+1. Nehmen Sie eine Änderung an der Datei vor. Ändern Sie beispielsweise Text in einem der div-Tags.
 
-1. Wählen Sie **Commit** aus. Speichern Sie anschließend die Änderungen.
+1. Wählen Sie **Commit** aus, und speichern Sie anschließend die Änderungen.
 
-1. Navigieren Sie in Ihrem Browser zum **Azure DevOps-Projektdashboard**.  Nun wird angezeigt, dass ein Build erstellt wird.  Die Änderungen, die Sie vorgenommen haben, werden automatisch erstellt und über eine Azure-CI/CD-Pipeline bereitgestellt.
+1. Navigieren Sie in Ihrem Browser zum DevOps Projects-Dashboard.  
+    Ein Build sollte gerade in Bearbeitung sein. Die von Ihnen vorgenommenen Änderungen werden automatisch erstellt und über eine CI/CD-Pipeline bereitgestellt.
 
-## <a name="examine-the-azure-cicd-pipeline"></a>Überprüfen der Azure-CI/CD-Pipeline
+## <a name="examine-the-cicd-pipeline"></a>Überprüfen der CI/CD-Pipeline
 
-Mit dem Azure DevOps-Projekt wird in Ihrer Azure DevOps Services-Organisation automatisch eine vollständige Azure-CI/CD-Pipeline konfiguriert.  Untersuchen Sie die Pipeline, und passen Sie sie bei Bedarf an.  Gehen Sie folgendermaßen vor, um sich mit den Build- und Releasepipelines von Azure DevOps Services vertraut zu machen.
+Mit DevOps Projects wird automatisch eine vollständige CI/CD-Pipeline in Azure Repos konfiguriert. Untersuchen Sie die Pipeline, und passen Sie sie bei Bedarf an. Gehen Sie wie folgt vor, um sich mit den Build- und Releasepipelines von Azure DevOps vertraut zu machen:
 
-1. Wählen Sie **oben** im Azure DevOps-Projektdashboard **Pipelines erstellen** aus.  Dieser Link öffnet eine Browserregisterkarte und die Azure DevOps Services-Buildpipeline für Ihr neues Projekt.
+1. Navigieren Sie zum DevOps Projects-Dashboard.
 
-1. Wählen Sie die **Auslassungspunkte** aus.  Mit dieser Aktion wird ein Menü geöffnet, über das Sie verschiedene Aktivitäten starten können. So können Sie beispielsweise einen neuen Build zur Warteschlange hinzufügen, einen Build anhalten und die Buildpipeline bearbeiten.
+1. Wählen Sie im oberen Bereich **Buildpipelines** aus.  
+    Auf einer Browserregisterkarte wird die Buildpipeline für Ihr neues Projekt angezeigt.
+
+1. Zeigen Sie auf das Feld **Status**, und wählen Sie dann die Auslassungspunkte (...) aus.  
+    In einem Menü werden verschiedene Optionen angezeigt, etwa zum Einreihen eines neuen Builds in die Warteschlange, zum Anhalten eines Builds und zum Bearbeiten der Buildpipeline.
 
 1. Wählen Sie **Bearbeiten** aus.
 
-1. In dieser Ansicht können Sie sich **die verschiedenen Aufgaben ansehen**, die Sie für Ihre Buildpipeline durchführen können.  Vom Build werden verschiedene Aufgaben durchgeführt. So werden beispielsweise Quellen aus dem Git-Repository abgerufen, Abhängigkeiten wiederhergestellt und für Bereitstellungen verwendete Ausgaben veröffentlicht.
+1. In diesem Bereich können Sie sich die verschiedenen Aufgaben ansehen, die Sie für Ihre Buildpipeline ausführen können.  
+    Vom Build werden verschiedene Aufgaben durchgeführt. Beispielsweise werden Quellen aus dem Git-Repository abgerufen, Abhängigkeiten wiederhergestellt und für Bereitstellungen verwendete Ausgaben veröffentlicht.
 
-1. Wählen Sie oben in der Buildpipeline den **Buildpipelinenamen**.
+1. Wählen Sie oben in der Buildpipeline den Buildpipelinenamen aus.
 
-1. Ersetzen Sie den **Namen** Ihrer Buildpipeline durch einen aussagekräftigeren Namen.  Wählen Sie **Speichern und in Warteschlange einreihen** und dann **Speichern** aus.
+1. Ersetzen Sie den Namen Ihrer Buildpipeline durch einen aussagekräftigeren Namen, und wählen Sie **Speichern und in Warteschlange einreihen** und dann **Speichern** aus.
 
-1. Wählen Sie unter dem Buildpipelinenamen **Verlauf** aus.  Es wird ein Überwachungspfad mit den letzten Änderungen für den Build angezeigt.  An der Buildpipeline vorgenommene Änderungen werden von Azure DevOps Services überwacht, sodass Sie verschiedene Versionen vergleichen können.
+1. Wählen Sie unter dem Buildpipelinenamen **Verlauf** aus.  
+    In diesem Bereich wird ein Überwachungsprotokoll mit den letzten Änderungen für den Build angezeigt. An der Buildpipeline vorgenommene Änderungen werden von Azure DevOps nachverfolgt, sodass Sie verschiedene Versionen vergleichen können.
 
-1. Wählen Sie **Trigger** aus.  Mit dem Azure DevOps-Projekt wurde automatisch ein CI-Trigger erstellt, und mit jedem Commit, der für das Repository ausgeführt wird, wird ein neuer Build gestartet.  Optional können Sie Branches aus dem CI-Prozess einbeziehen oder ausschließen.
+1. Wählen Sie **Trigger** aus.  
+    Mit DevOps Projects wird automatisch ein CI-Trigger erstellt, und mit jedem für das Repository ausgeführten Commit wird ein neuer Build gestartet. Optional können Sie Branches in den CI-Prozess einbeziehen oder davon ausschließen.
 
-1. Wählen Sie **Aufbewahrung** aus.  Je nach Szenario können Sie Richtlinien zum Aufbewahren oder Entfernen einer bestimmten Anzahl von Builds festlegen.
+1. Wählen Sie **Aufbewahrung** aus.  
+    Abhängig vom Szenario können Sie Richtlinien zum Aufbewahren oder Entfernen einer bestimmten Anzahl von Builds festlegen.
 
-1. Wählen Sie **Build und Release** und anschließend **Releases** aus.  Mit dem Azure DevOps-Projekt wurde eine Azure DevOps Services-Releasepipeline zum Verwalten von Bereitstellungen für Azure erstellt.
+1. Wählen Sie **Build und Release** und anschließend **Releases** aus.  
+    DevOps Projects erstellt eine Releasepipeline zum Verwalten von Bereitstellungen in Azure.
 
-1. Wählen Sie links im Browser die **Auslassungspunkte** neben Ihrer Releasepipeline und anschließend **Bearbeiten** aus.
+1. Wählen Sie neben Ihrer Releasepipeline die Auslassungspunkte (...) und anschließend **Bearbeiten** aus.  
+    Die Releasepipeline enthält eine *Pipeline*, die den Releaseprozess definiert.
 
-1. Die Releasepipeline enthält eine **Pipeline**, die den Releaseprozess definiert.  Wählen Sie unter **Artefakte** die Option **Ablegen** aus.  Die in den vorherigen Schritten untersuchte Buildpipeline erzeugt die für das Artefakt verwendete Ausgabe. 
+1. Wählen Sie unter **Artefakte** die Option **Ablegen** aus.  
+    Die zuvor untersuchte Buildpipeline erzeugt die für das Artefakt verwendete Ausgabe. 
 
-1. Wählen Sie die Option **Continuous Deployment-Trigger** rechts neben dem Symbol **Ablegen** aus.  Diese Releasepipeline enthält einen aktivierten CD-Trigger. Jedes Mal, wenn ein neues Buildartefakt verfügbar ist, wird von diesem CD-Trigger eine Bereitstellung ausgeführt.  Optional können Sie den Trigger deaktivieren, sodass Ihre Bereitstellungen manuell ausgeführt werden müssen. 
+1. Wählen Sie rechts neben dem Symbol **Ablegen** die Option **Continuous Deployment-Trigger** aus.  
+    Diese Releasepipeline enthält einen aktivierten CD-Trigger. Jedes Mal, wenn ein neues Buildartefakt verfügbar ist, wird von diesem CD-Trigger eine Bereitstellung ausgeführt. Optional können Sie den Trigger deaktivieren, sodass Ihre Bereitstellungen manuell ausgeführt werden müssen. 
 
-1. Wählen Sie links im Browser die Option **Aufgaben** aus.  Bei den Aufgaben handelt es sich um die Aktivitäten, die beim Bereitstellungsprozess durchgeführt werden.  In diesem Beispiel wurde für die Bereitstellung für **Azure App Service** eine Aufgabe erstellt.
+1. Wählen Sie auf der linken Seite **Aufgaben** aus.  
+    Bei den Aufgaben handelt es sich um die Aktivitäten, die beim Bereitstellungsprozess ausgeführt werden. In diesem Beispiel wurde für die Bereitstellung in Azure App Service eine Aufgabe erstellt.
 
-1. Wählen Sie rechts im Browser **Releases anzeigen** aus.  In dieser Ansicht wird der Verlauf von Releases angezeigt.
+1. Wählen Sie auf der rechten Seite **Releases anzeigen** aus, um einen Releaseverlauf anzuzeigen.
 
-1. Wählen Sie die **Auslassungsp** neben einem Ihrer Releases und dann die Option **Öffnen** aus.  In dieser Ansicht finden Sie verschiedene Menüs, wie etwa eine Releasezusammenfassung, zugeordnete Arbeitsaufgaben und Tests.
+1. Wählen Sie neben einem Release die Auslassungspunkte (...) und anschließend **Öffnen** aus.  
+    Sie können sich verschiedene Menüs ansehen, etwa eine Releasezusammenfassung, zugeordnete Arbeitsaufgaben und Tests.
 
-1. Wählen Sie **Commits** aus.  In dieser Ansicht werden die der jeweiligen Bereitstellung zugeordneten Codecommits angezeigt. 
+1. Wählen Sie **Commits** aus.  
+    In dieser Ansicht werden die dieser Bereitstellung zugeordneten Codecommits angezeigt. 
 
-1. Wählen Sie **Protokolle** aus.  Die Protokolle enthalten nützliche Informationen zum Bereitstellungsprozess.  Sie können während und nach Bereitstellungen angezeigt werden.
+1. Wählen Sie **Protokolle** aus.  
+    Die Protokolle enthalten nützliche Informationen zum Bereitstellungsprozess. Sie können während und nach Bereitstellungen angezeigt werden.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Sie können die mit dieser Schnellstartanleitung erstellte Azure App Service-Bereitstellung und die zugehörigen Ressourcen mithilfe der Funktion **Löschen** im Azure DevOps-Projektdashboard löschen, wenn Sie die Bereitstellung nicht mehr benötigen.
+Sie können die in dieser Schnellstartanleitung erstellte Azure App Service-Instanz und zugehörige Ressourcen löschen, wenn Sie sie nicht mehr benötigen. Verwenden Sie dazu die Funktion **Löschen** auf dem DevOps Projects-Dashboard.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zum Ändern der Build- und Releasepipelines zur Erfüllung der Anforderungen Ihres Teams finden Sie in folgendem Tutorial:
+Weitere Informationen zum Anpassen der Build- und Releasepipelines an die Anforderungen Ihres Teams finden Sie in folgendem Tutorial:
 
 > [!div class="nextstepaction"]
-> [Anpassen von CD-Prozessen](https://docs.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)
+> [Define your multi-stage continuous deployment (CD) pipeline](https://docs.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process?view=vsts) (Festlegen Ihrer mehrstufigen CD-Pipeline (Continuous Deployment))

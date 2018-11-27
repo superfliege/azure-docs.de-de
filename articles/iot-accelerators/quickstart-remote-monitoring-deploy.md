@@ -7,14 +7,14 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 10/26/2018
+ms.date: 11/08/2018
 ms.author: dobett
-ms.openlocfilehash: 365c6e41db865edf8384ca1f82210d9471808f94
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 4071770a74d205570cee082d9af0c0fb7c77e203
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50140856"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51824777"
 ---
 # <a name="quickstart-try-a-cloud-based-remote-monitoring-solution"></a>Schnellstart: Ausprobieren einer cloudbasierten Lösung für die Remoteüberwachung
 
@@ -32,7 +32,7 @@ Beim Bereitstellen des Solution Accelerators in Ihrem Azure-Abonnement müssen S
 
 Melden Sie sich mit Ihren Azure-Kontoanmeldeinformationen an [azureiotsolutions.com](https://www.azureiotsolutions.com/Accelerators) an.
 
-Klicken Sie auf der Kachel **Remoteüberwachung** auf **Jetzt testen**.
+Klicken Sie auf die Kachel **Remoteüberwachung**. Klicken Sie auf der Seite **Remoteüberwachung** auf **Jetzt testen**:
 
 ![Klicken auf „Remoteüberwachung“](./media/quickstart-remote-monitoring-deploy/remotemonitoring.png)
 
@@ -40,9 +40,10 @@ Wählen Sie auf der Seite **Create Remote Monitoring solution** (Remoteüberwach
 
 Wählen Sie als Sprache die Option **.NET**. Die Java- und .NET-Implementierungen verfügen über die gleichen Features.
 
-Geben Sie einen eindeutigen **Lösungsnamen** für den Solution Accelerator für die Remoteüberwachung ein. In dieser Schnellstartanleitung wird der Name **contoso-rm2** verwendet.
+Geben Sie einen eindeutigen **Lösungsnamen** für den Solution Accelerator für die Remoteüberwachung ein. In dieser Schnellstartanleitung wird der Name **contoso-rm** verwendet.
 
-Wählen Sie die gewünschten Angaben für **Abonnement** und **Region**, um den Solution Accelerator bereitzustellen. Normalerweise wählen Sie die Region, die Ihnen am nächsten liegt. In dieser Schnellstartanleitung haben wir **Visual Studio Enterprise** und **Europa, Westen** gewählt. Sie müssen ein [globaler Administrator oder Benutzer](iot-accelerators-permissions.md) des Abonnements sein.
+Wählen Sie die gewünschten Angaben für **Abonnement** und **Region**, um den Solution Accelerator bereitzustellen. Normalerweise wählen Sie die Region, die Ihnen am nächsten liegt. In dieser Schnellstartanleitung wird die Region **USA, Osten** verwendet.
+Sie können **Visual Studio Enterprise** auswählen, müssen dazu aber [globaler Administrator oder Benutzer](iot-accelerators-permissions.md) sein.
 
 Klicken Sie auf **Lösung erstellen**, um mit der Bereitstellung zu beginnen. Dieser Prozess dauert mindestens fünf Minuten:
 

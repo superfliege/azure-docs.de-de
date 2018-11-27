@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: jdial
-ms.openlocfilehash: 65dc420b6832b7b0a4cf14d63203d4c66e2a4254
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 6b8bf4a0bc6b5e5e9b9ad7f91ba409aaf922e8e9
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46993594"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51822230"
 ---
 # <a name="ip-address-types-and-allocation-methods-in-azure"></a>IP-Adresstypen und Zuordnungsmethoden in Azure
 
@@ -75,7 +75,7 @@ Für öffentliche IP-Adressen vom Typ „Standard-SKU“ gilt Folgendes:
 
 - Sie werden nur mit der statischen Zuordnungsmethode zugewiesen.
 - Sind standardmäßig sicher und für eingehenden Datenverkehr geschlossen. Sie müssen zulässigen eingehenden Datenverkehr mithilfe einer [Netzwerksicherheitsgruppe](security-overview.md#network-security-groups) explizit in einer Whitelist angeben.
-- Werden Netzwerkschnittstellen oder öffentlichen Standard-Lastenausgleichsmodulen zugewiesen. Weitere Informationen zum Azure Load Balancer des Typs „Standard“ finden Sie unter [Azure Load Balancer Standard](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+- Sie werden Netzwerkschnittstellen, öffentlichen Standard-Lastenausgleichsmodulen, Anwendungsgateways oder VPN-Gateways zugewiesen. Weitere Informationen zum Azure Load Balancer des Typs „Standard“ finden Sie unter [Azure Load Balancer Standard](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 - Sie sind standardmäßig zonenredundant. Können in Zonen erstellt und in einer bestimmten Verfügbarkeitszone garantiert werden. Weitere Informationen zu Verfügbarkeitszonen finden Sie unter [Übersicht über Verfügbarkeitszonen in Azure](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) und [Azure Load Balancer Standard und Verfügbarkeitszonen](../load-balancer/load-balancer-standard-availability-zones.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
  
 > [!NOTE]
@@ -132,8 +132,8 @@ In der Tabelle unten sind die spezifischen Eigenschaften, über die eine öffent
 | --- | --- | --- | --- |
 | Virtueller Computer |Netzwerkschnittstelle |JA |JA |
 | Lastenausgleich mit Internetzugriff |Front-End-Konfiguration |JA |JA |
-| VPN-Gateway |Gateway-IP-Konfiguration |JA |Nein  |
-| Anwendungsgateway |Front-End-Konfiguration |JA |Nein  |
+| VPN-Gateway |Gateway-IP-Konfiguration |JA |JA |
+| Anwendungsgateway |Front-End-Konfiguration |JA |JA |
 
 ## <a name="private-ip-addresses"></a>Private IP-Adressen
 Private IP-Adressen ermöglichen Azure-Ressourcen die Kommunikation mit anderen Ressourcen in einem [virtuellen Netzwerk](virtual-networks-overview.md) oder in einem lokalen Netzwerk über ein VPN-Gateway oder eine ExpressRoute-Verbindung, ohne dass dabei eine über das Internet erreichbare IP-Adresse verwendet wird.

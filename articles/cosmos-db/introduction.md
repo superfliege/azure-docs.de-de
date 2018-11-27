@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 04/08/2018
 ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: 12e3cf028b4812abd43dd2b6f23190fa6b75157a
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 717a0234f0155229597c6fc4fe70a7868a536975
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50242289"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52160732"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>Willkommen bei Azure Cosmos DB
 
@@ -50,7 +50,7 @@ Als global verteilter Datenbankdienst mit mehreren Modellen erleichtert Azure Co
 
 * **Erstellen extrem reaktionsschneller unternehmenskritischer Anwendungen**
     * Azure Cosmos DB garantiert seinen Kunden eine kurze End-to-End-Wartezeit im 99. Perzentil. 
-    * Für ein typisches 1-KB-Element garantiert Cosmos DB eine End-to-End-Wartezeit bei Lesevorgängen von weniger als 10 ms und bei indizierten Schreibvorgängen von weniger als 15 ms im 99. Perzentil (innerhalb derselben Azure-Region). Die mittlere Wartezeit liegt deutlich niedriger (unter 5 ms).
+    * Für ein typisches 1-KB-Element garantiert Cosmos DB eine End-to-End-Wartezeit bei Lesevorgängen von weniger als 10 ms und bei indizierten Schreibvorgängen von weniger als 10 ms im 99. Perzentil (innerhalb derselben Azure-Region). Die mittlere Wartezeit liegt deutlich niedriger (unter 5 ms).
 
 * **Sicherstellen der AlwaysOn-Verfügbarkeit**
     * SLA mit einer Verfügbarkeit von 99,99 Prozent für alle Datenbankkonten mit einer einzelnen Region und eine Leseverfügbarkeit von 99,999 Prozent für alle Datenbankkonten mit mehreren Regionen
@@ -79,9 +79,9 @@ Azure Cosmos DB kombiniert die besten Funktionen herkömmlicher relationaler und
 | --- | --- | --- | --- |
 | Globale Verteilung | Nein  | Nein  | Ja. Sofort einsatzbereite Verteilung in über 30 Regionen mit Multihosting-APIs|
 | Horizontale Skalierung | Nein  | JA | Ja. Speicher und Durchsatz können unabhängig voneinander skaliert werden. | 
-| Wartezeitgarantien | Nein  | JA | Ja. 99 Prozent der Lesevorgänge in unter 10 ms und Schreibvorgänge in unter 15 ms | 
+| Wartezeitgarantien | Nein  | JA | Ja. 99 Prozent der Lesevorgänge in unter 10 ms und Schreibvorgänge in unter 10 ms | 
 | Hochverfügbarkeit | Nein  | JA | Ja. Azure Cosmos DB ist immer aktiv (Always On), verfügt über klar definierte PACELC-Kompromisse und bietet Optionen für automatisches und manuelles Failover.|
-| Datenmodell + API | Relational + SQL | API mit mehreren Modellen + OSS-API | API mit mehreren Modellen + SQL-API + OSS-API (weitere demnächst verfügbar) |
+| Datenmodell + API | Relational + SQL | API mit mehreren Modellen + OSS-API | API mit mehreren Modellen + SQL-API + OSS-API |
 | SLAs | JA | Nein  | Ja. Umfassende SLAs für Wartezeit, Durchsatz, Konsistenz, Verfügbarkeit |
 
 ## <a name="solutions-that-benefit-from-azure-cosmos-db"></a>Lösungen, die von Azure-Cosmos-DB profitieren

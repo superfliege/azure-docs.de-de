@@ -6,15 +6,15 @@ manager: timlt
 ms.author: dobett
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.date: 07/19/2018
+ms.date: 11/08/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 6e92ef276d270fcc4c351fb89c699c8addd74632
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: b54f7601f66bd115b7ceb937e2c0ebf8ca8eb01e
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47222148"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51821053"
 ---
 # <a name="tutorial-configure-and-manage-devices-connected-to-your-monitoring-solution"></a>Tutorial: Konfigurieren und Verwalten von Geräten, die mit der Überwachungslösung verbunden sind
 
@@ -63,7 +63,7 @@ Scrollen Sie zum Anzeigen von detaillierten Diagnosedaten im Panel **Device Deta
 
 ## <a name="act-on-a-device"></a>Aktionen für ein Gerät
 
-Führen Sie die **FirmwareUpdate**-Methode aus, um zu testen, ob das simulierte Engine-Gerät richtig auf die über das Dashboard initiierten Aktionen reagiert. Um für ein Gerät per Ausführung einer Methode tätig zu werden, wählen Sie das Gerät in der Liste mit den Geräten aus und klicken dann auf **Jobs** (Aufträge). Sie können auch mehr als ein Gerät auswählen, falls Sie für mehrere Geräte tätig werden möchten. Wählen Sie im Panel **Jobs** (Aufträge) die Option **Run method** (Methode ausführen). Für das Gerätemodell **Engine** werden drei Methoden angegeben: **FirmwareUpdate**, **FillTank** und **EmptyTank**:
+Führen Sie die **FirmwareUpdate**-Methode aus, um zu testen, ob das simulierte Engine-Gerät richtig auf die über das Dashboard initiierten Aktionen reagiert. Um für ein Gerät per Ausführung einer Methode tätig zu werden, wählen Sie das Gerät in der Liste mit den Geräten aus und klicken dann auf **Jobs** (Aufträge). Sie können auch mehr als ein Gerät auswählen, falls Sie für mehrere Geräte tätig werden möchten. Wählen Sie im Panel **Aufträge** die Option **Methoden** aus. Für das Gerätemodell **Engine** werden drei Methoden angegeben: **FirmwareUpdate**, **FillTank** und **EmptyTank**:
 
 [![Engine-Methoden](./media/iot-accelerators-remote-monitoring-manage/devicesmethods-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesmethods-expanded.png#lightbox)
 
@@ -81,7 +81,7 @@ Wenn Sie auf der Seite **Devices** (Geräte) mehrere Geräte unterschiedlichen T
 
 ## <a name="reconfigure-a-device"></a>Neukonfigurieren eines Geräts
 
-Um zu testen, ob Sie die Konfigurationseigenschaften der Engine aktualisieren können, wählen Sie sie auf der Seite **Devices** (Geräte) in der Liste mit den Geräten aus. Klicken Sie anschließend auf **Jobs** (Aufträge), und wählen Sie **Reconfigure** (Neu konfigurieren). Im Panel „Jobs“ (Aufträge) werden die aktualisierbaren Eigenschaftswerte für das ausgewählte Gerät angezeigt:
+Um zu testen, ob Sie die Konfigurationseigenschaften der Engine aktualisieren können, wählen Sie sie auf der Seite **Devices** (Geräte) in der Liste mit den Geräten aus. Klicken Sie anschließend auf **Aufträge**, und wählen Sie **Eigenschaften** aus. Im Panel „Jobs“ (Aufträge) werden die aktualisierbaren Eigenschaftswerte für das ausgewählte Gerät angezeigt:
 
 [![Neukonfigurieren eines Geräts](./media/iot-accelerators-remote-monitoring-manage/devicesreconfigure-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesreconfigure-expanded.png#lightbox)
 

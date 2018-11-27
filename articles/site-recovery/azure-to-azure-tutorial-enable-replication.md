@@ -6,19 +6,19 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 10/28/2018
+ms.date: 11/18/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 8dc6b7da77988a789de04578d6653b192f58afa8
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: cff6d38867ef8ecaf1435fd4c4cc22fe63d70575
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51261722"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52283245"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms-to-a-secondary-azure-region"></a>Einrichten einer Notfallwiederherstellung für virtuelle Azure-Computer in einer sekundären Azure-Region
 
-Der Dienst [Azure Site Recovery](site-recovery-overview.md) unterstützt Ihre Strategie zur Notfallwiederherstellung, indem Replikation, Failover und Failback von lokalen Computern und virtuellen Azure-Computern (Virtual Machines, VMs) verwaltet und orchestriert werden.
+Der Dienst [Azure Site Recovery](site-recovery-overview.md) verwaltet und orchestriert die Replikation, das Failover und das Failback von lokalen Computern sowie Azure-VMs und unterstützt dadurch Ihre Strategie zur Notfallwiederherstellung.
 
 In diesem Tutorial wird erläutert, wie Sie die Notfallwiederherstellung in eine sekundäre Azure-Region für Azure-VMs einrichten. In diesem Tutorial lernen Sie Folgendes:
 
@@ -29,8 +29,7 @@ In diesem Tutorial wird erläutert, wie Sie die Notfallwiederherstellung in eine
 > * Aktivieren der Replikation für eine VM
 
 > [!NOTE]
-> In diesem Tutorial werden für Benutzer die Schritte beschrieben, mit denen mit möglichst geringem Anpassungsaufwand die Replikation aktiviert wird. Falls Sie mehr zu den verschiedenen Aspekten der Notfallwiederherstellung erfahren möchten, z.B. Netzwerküberlegungen, Automatisierung oder Problembehandlung, helfen Ihnen die Gewusst wie-Dokumente für Azure-VMs weiter.
-
+> Dieser Artikel enthält Anweisungen für die Bereitstellung der Notfallwiederherstellung mit den einfachsten Einstellungen. Wenn Sie sich über benutzerdefinierte Einstellungen informieren möchten, lesen Sie die Artikel im Abschnitt mit den [Anleitungen](azure-to-azure-how-to-enable-replication.md). o
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -55,20 +54,21 @@ Erstellen Sie den Tresor in einer beliebigen Region außer der Quellregion.
 
 ## <a name="verify-target-resources"></a>Überprüfen der Zielressourcen
 
-1. Vergewissern Sie sich, dass Ihr Azure-Abonnement das Erstellen von VMs in der für die Notfallwiederherstellung verwendeten Zielregion zulässt. Wenden Sie sich an den Support, um das erforderliche Kontingent zu aktivieren.
-
-2. Stellen Sie sicher, dass Ihr Abonnement über ausreichend Ressourcen verfügt, um VMs zu unterstützen, die so groß wie die Quell-VMs sind. Site Recovery wählt dieselbe oder eine möglichst ähnliche Größe für die Ziel-VM aus.
+1. Vergewissern Sie sich, dass Ihr Azure-Abonnement das Erstellen von VMs in der Zielregion zulässt. Wenden Sie sich an den Support, um das erforderliche Kontingent zu aktivieren.
+2. Stellen Sie sicher, dass Ihr Abonnement über ausreichend Ressourcen verfügt, um die entsprechenden VM-Größen für Ihre Quell-VMs zu unterstützen. Site Recovery wählt dieselbe oder eine möglichst ähnliche Größe für die Ziel-VM aus.
 
 ## <a name="configure-outbound-network-connectivity"></a>Konfigurieren der ausgehenden Netzwerkkonnektivität
 
-Damit Site Recovery erwartungsgemäß funktioniert, müssen Sie für die VMs, die Sie replizieren möchten, einige Änderungen an der ausgehenden Netzwerkkonnektivität vornehmen.
+Damit Site Recovery erwartungsgemäß funktioniert, müssen Sie die ausgehende Netzwerkkonnektivität der VMs ändern, die Sie replizieren möchten.
 
-- Site Recovery unterstützt die Verwendung eines Authentifizierungsproxys zur Steuerung der Netzwerkkonnektivität nicht.
-- Wenn Sie einen Authentifizierungsproxy verwenden, kann die Replikation nicht aktiviert werden.
+> [!NOTE]
+> Site Recovery unterstützt die Verwendung eines Authentifizierungsproxys zur Steuerung der Netzwerkkonnektivität nicht.
+
+
 
 ### <a name="outbound-connectivity-for-urls"></a>Ausgehende Konnektivität für URLs
 
-Wenn Sie einen URL-basierten Firewallproxy zum Steuern der ausgehenden Konnektivität verwenden, sollten Sie den Zugriff auf die folgenden URLs zulassen, die von Site Recovery verwendet werden.
+Lassen Sie den Zugriff auf die folgenden URLs zu, wenn Sie einen URL-basierten Firewallproxy zum Steuern der ausgehenden Konnektivität verwenden.
 
 | **URL** | **Details** |
 | ------- | ----------- |
@@ -79,7 +79,7 @@ Wenn Sie einen URL-basierten Firewallproxy zum Steuern der ausgehenden Konnektiv
 
 ### <a name="outbound-connectivity-for-ip-address-ranges"></a>Ausgehende Konnektivität für IP-Adressbereiche
 
-Wenn Sie die Konnektivität in ausgehender Richtung mithilfe von IP-Adressen anstelle von URLs steuern möchten, setzen Sie die entsprechenden Datencenterbereiche, Office 365-Adressen und Dienstendpunkt-Adressen für IP-basierte Firewalls, Proxys oder NSG-Regeln auf die Whitelist.
+Wenn Sie die ausgehende Konnektivität nicht mit URLs, sondern mithilfe von IP-Adressen steuern möchten, lassen Sie diese Adressen für IP-basierte Firewalls, Proxys oder NSG-Regeln zu.
 
   - [IP-Bereiche für Microsoft Azure-Rechenzentren](https://www.microsoft.com/en-us/download/details.aspx?id=41653)
   - [IP-Bereiche für Azure-Rechenzentren in Deutschland](https://www.microsoft.com/en-us/download/details.aspx?id=54770)
@@ -91,10 +91,9 @@ Sie können die erforderlichen NSG-Regeln mit diesem [Skript](https://gallery.te
 
 ## <a name="verify-azure-vm-certificates"></a>Überprüfen der Azure-VM-Zertifikate
 
-Stellen Sie sicher, dass alle neuesten Stammzertifikate auf den Windows- oder Linux-VMs vorhanden sind, die Sie replizieren wollen. Wenn die neuesten Stammzertifikate nicht vorhanden sind, kann die VM aufgrund von Sicherheitseinschränkungen nicht bei Site Recovery registriert werden.
+Überprüfen Sie, ob die VMs, die Sie replizieren möchten, über die aktuellen Stammzertifikate verfügen. Andernfalls kann die VM aufgrund von Sicherheitseinschränkungen nicht bei Site Recovery registriert werden.
 
 - Installieren Sie alle aktuellen Windows-Updates auf Windows-VMs, damit alle vertrauenswürdigen Stammzertifikate auf den Computern vorhanden sind. Führen Sie in einer nicht verbundenen Umgebung den Standardprozess für Windows Update und Zertifikatupdates in Ihrer Organisation durch.
-
 - Befolgen Sie bei Linux-VMs die Anleitung Ihres Linux-Händlers, um die aktuellen vertrauenswürdigen Stammzertifikate und die Zertifikatssperrliste auf der VM abzurufen.
 
 ## <a name="set-permissions-on-the-account"></a>Festlegen von Berechtigungen für das Konto
@@ -107,7 +106,7 @@ Azure Site Recovery bietet drei integrierte Rollen zum Steuern von Site Recovery
 
 - **Site Recovery-Leser**: Diese Rolle verfügt über Berechtigungen zum Anzeigen aller Site Recovery-Verwaltungsvorgänge. Diese Rolle eignet sich optimal für eine IT-Überwachungsführungskraft, die den aktuellen Schutzstatus überwachen und Supporttickets ausstellen kann.
 
-Erfahren Sie mehr über [integrierte Rollen von Azure RBAC](../role-based-access-control/built-in-roles.md).
+Erfahren Sie mehr über [integrierte Rollen für die rollenbasierte Zugriffssteuerung in Azure](../role-based-access-control/built-in-roles.md).
 
 ## <a name="enable-replication"></a>Aktivieren der Replikation
 
@@ -116,10 +115,9 @@ Erfahren Sie mehr über [integrierte Rollen von Azure RBAC](../role-based-access
 1. Klicken Sie unter „Recovery Services-Tresore“ auf den Tresornamen > **+Replizieren**.
 2. Wählen Sie unter **Quelle** die Option **Azure**.
 3. Wählen Sie unter **Quellstandort** die Azure-Quellregion aus, in der Ihre VMs derzeit ausgeführt werden.
-4. Wählen Sie das **Azure-VM-Bereitstellungsmodell** für Ihre VMs: **Resource Manager** oder **Klassisch**.
-5. Wählen Sie das **Quellabonnement** aus, in dem die virtuellen Computer ausgeführt werden. Dies kann ein beliebiges Abonnement im gleichen Azure Active Directory-Mandanten sein, in dem sich auch Ihr Recovery Services-Tresor befindet.
-6. Wählen Sie für Resource Manager-VMs die **Quellressourcengruppe** bzw. für klassische VMs den **Clouddienst**.
-7. Klicken Sie auf **OK** , um die Einstellungen zu speichern.
+4. Wählen Sie das **Quellabonnement** aus, in dem die virtuellen Computer ausgeführt werden. Dies kann ein beliebiges Abonnement im gleichen Azure Active Directory-Mandanten sein, in dem sich auch Ihr Recovery Services-Tresor befindet.
+5. Wählen Sie für Resource Manager-VMs die **Quellressourcengruppe** bzw. für klassische VMs den **Clouddienst**.
+6. Klicken Sie auf **OK** , um die Einstellungen zu speichern.
 
 ### <a name="select-the-vms"></a>Auswählen der virtuellen Computer
 
@@ -130,7 +128,7 @@ Site Recovery ruft eine Liste der virtuellen Computer ab, die dem Abonnement und
 
 ### <a name="configure-replication-settings"></a>Konfigurieren der Replikationseinstellungen
 
-Site Recovery erstellt Standardeinstellungen und Replikationsrichtlinien für die Zielregion. Sie können die Einstellungen abhängig von Ihren Anforderungen ändern.
+Site Recovery erstellt Standardeinstellungen und Replikationsrichtlinien für die Zielregion. Sie können die Einstellungen wie gewünscht ändern.
 
 1. Klicken Sie auf **Einstellungen**, um die Ziel- und Replikationseinstellungen anzuzeigen.
 2. Um die Standardzieleinstellungen zu überschreiben, klicken Sie neben **Ressourcengruppe, Netzwerk, Speicher und Verfügbarkeitsgruppen** auf **Anpassen**.
@@ -138,65 +136,62 @@ Site Recovery erstellt Standardeinstellungen und Replikationsrichtlinien für di
   ![Konfigurieren von Einstellungen](./media/azure-to-azure-tutorial-enable-replication/settings.png)
 
 
-- **Zielabonnement**: Das Zielabonnement für die Notfallwiederherstellung. Zielabonnement und Quellabonnement sind standardmäßig identisch. Klicken Sie auf „Anpassen“, um ein anderes Zielabonnement im gleichen Azure Active Directory-Mandanten auszuwählen.
+3. Passen Sie die Zieleinstellungen wie folgt an:
 
-- **Zielspeicherort**: Die Zielregion, die zur Notfallwiederherstellung verwendet wird. Der Zielspeicherort sollte mit dem Speicherort des Site Recovery-Tresors übereinstimmen.
+    - **Zielabonnement**: Das Zielabonnement für die Notfallwiederherstellung. Zielabonnement und Quellabonnement sind standardmäßig identisch. Klicken Sie auf „Anpassen“, um ein anderes Zielabonnement im gleichen Azure Active Directory-Mandanten auszuwählen.
+    - **Zielspeicherort**: Die Zielregion, die zur Notfallwiederherstellung verwendet wird. Der Zielspeicherort sollte mit dem Speicherort des Site Recovery-Tresors übereinstimmen.
+    - **Zielressourcengruppe**: Die Ressourcengruppe in der Zielregion, zu der Azure-VMs nach einem Failover gehören. Site Recovery erstellt standardmäßig in der Zielregion eine neue Ressourcengruppe mit dem Suffix „asr“. Als Ressourcengruppenstandort der Zielressourcengruppe kann eine beliebige Region ausgewählt werden, mit Ausnahme der Region, in der die virtuellen Quellcomputer gehostet werden.
+    - **Virtuelles Zielnetzwerk**: Das Netzwerk in der Zielregion, in dem sich Azure-VMs nach einem Failover befinden.
+      Site Recovery erstellt standardmäßig in der Zielregion ein neues virtuelles Netzwerk (und Subnetze) mit dem Suffix „asr“.
+    - **Cachespeicherkonten**: Site Recovery verwendet ein Speicherkonto in der Quellregion. Änderungen an Quell-VMs werden vor der Replikation am Zielspeicherort an dieses Konto gesendet.
+      >[!NOTE]
+      >Wenn Sie ein Cachespeicherkonto mit aktivierter Firewall verwenden, müssen Sie vertrauenswürdigen Microsoft-Diensten den Zugriff erlauben, indem Sie die entsprechende Option auswählen. [Weitere Informationen.](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)
+      >
 
-- **Zielressourcengruppe**: Die Ressourcengruppe in der Zielregion, zu der Azure-VMs nach einem Failover gehören. Site Recovery erstellt standardmäßig in der Zielregion eine neue Ressourcengruppe mit dem Suffix „asr“. Als Ressourcengruppenstandort der Zielressourcengruppe kann eine beliebige Region ausgewählt werden, mit Ausnahme der Region, in der die virtuellen Quellcomputer gehostet werden.
+    - **Zielspeicherkonten (wenn die Quell-VM keine verwalteten Datenträger verwendet)**: Standardmäßig erstellt Site Recovery ein neues Speicherkonto in der Zielregion, um das Quell-VM-Speicherkonto zu spiegeln.
+      >[!NOTE]
+      >Wenn Sie ein Quell- oder Zielspeicherkonto mit aktivierter Firewall verwenden, müssen Sie vertrauenswürdigen Microsoft-Diensten den Zugriff erlauben, indem Sie die entsprechende Option auswählen. [Weitere Informationen.](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)
+      >
 
-- **Virtuelles Zielnetzwerk**: Das Netzwerk in der Zielregion, in dem sich Azure-VMs nach einem Failover befinden.
-  Site Recovery erstellt standardmäßig in der Zielregion ein neues virtuelles Netzwerk (und Subnetze) mit dem Suffix „asr“.
+    - **Verwaltete Replikatdatenträger (wenn die Quell-VM verwaltete Datenträger verwendet)**: Site Recovery erstellt verwaltete Replikatdatenträger in der Zielregion, um die verwalteten Datenträger der Quell-VM zu spiegeln. Dabei wird der gleiche Speichertyp (Standard oder Premium) verwendet wie für die verwalteten Datenträger der Quell-VM.
+    - **Zielverfügbarkeitsgruppen**: Standardmäßig erstellt Site Recovery in der Zielregion eine neue Verfügbarkeitsgruppe mit dem Suffix „asr“. Sie können Verfügbarkeitsgruppen nur dann hinzufügen, wenn virtuelle Computer zu einer Gruppe in der Quellregion gehören.
 
-- **Cachespeicherkonten**: Site Recovery verwendet ein Speicherkonto in der Quellregion. Änderungen an Quell-VMs werden vor der Replikation am Zielspeicherort an dieses Konto gesendet.
+4. Um die Einstellungen für die Replikationsrichtlinie anzupassen, klicken Sie neben **Replikationsrichtlinie** auf **Anpassen**, und ändern Sie die folgenden Einstellungen wie erforderlich:
 
-- **Zielspeicherkonten (wenn die Quell-VM keine verwalteten Datenträger verwendet)**: Standardmäßig erstellt Site Recovery ein neues Speicherkonto in der Zielregion, um das Quell-VM-Speicherkonto zu spiegeln.
+    - **Replikationsrichtlinienname**: Name der Richtlinie.
+    - **Aufbewahrungszeitraum des Wiederherstellungspunkts**: Standardmäßig behält Site Recovery Wiederherstellungspunkte 24 Stunden lang bei. Sie können einen Wert zwischen 1 und 72 Stunden konfigurieren.
+    - **App-konsistente Momentaufnahmenhäufigkeit**: Standardmäßig erstellt Site Recovery alle vier Stunden eine App-konsistente Momentaufnahme. Sie können einen Wert zwischen 1 und 12 Stunden konfigurieren. Eine App-konsistente Momentaufnahme ist eine Zeitpunkt-Momentaufnahme der Anwendungsdaten innerhalb der VM. VSS (Volume Shadow Copy Service, Volumeschattenkopie-Dienst) stellt sicher, dass Apps zum Zeitpunkt der Momentaufnahme konsistent sind.
+    - **Replikationsgruppe**: Wenn für Ihre Anwendung VM-übergreifende Konsistenz mehrerer virtueller Computer erforderlich ist, können Sie eine Replikationsgruppe für diese VMs erstellen. Standardmäßig sind die ausgewählten VMs nicht Teil einer Replikationsgruppe.
 
-- **Verwaltete Replikatdatenträger (wenn die Quell-VM verwaltete Datenträger verwendet)**: Site Recovery erstellt verwaltete Replikatdatenträger in der Zielregion, um die verwalteten Datenträger der Quell-VM zu spiegeln. Dabei wird der gleiche Speichertyp (Standard oder Premium) verwendet wie für die verwalteten Datenträger der Quell-VM.
+5. Wenn Sie VMs einer neuen oder vorhandenen Replikationsgruppe hinzufügen möchten, wählen Sie unter **Anpassen** die Option **Ja** für Multi-VM-Konsistenz aus, um die VMs einer Replikationsgruppe hinzuzufügen. Klicken Sie dann auf **OK**.
 
-- **Zielverfügbarkeitsgruppen**: Standardmäßig erstellt Site Recovery in der Zielregion eine neue Verfügbarkeitsgruppe mit dem Suffix „asr“. Sie können Verfügbarkeitsgruppen nur dann hinzufügen, wenn virtuelle Computer zu einer Gruppe in der Quellregion gehören.
-
-Um die Einstellungen für die Standardreplikationsrichtlinie zu überschreiben, klicken Sie neben **Replikationsrichtlinie** auf **Anpassen**.  
-
-- **Replikationsrichtlinienname**: Name der Richtlinie.
-
-- **Aufbewahrungszeitraum des Wiederherstellungspunkts**: Standardmäßig behält Site Recovery Wiederherstellungspunkte 24 Stunden lang bei. Sie können einen Wert zwischen 1 und 72 Stunden konfigurieren.
-
-- **App-konsistente Momentaufnahmenhäufigkeit**: Standardmäßig erstellt Site Recovery alle vier Stunden eine App-konsistente Momentaufnahme. Sie können einen Wert zwischen 1 und 12 Stunden konfigurieren. Eine App-konsistente Momentaufnahme ist eine Zeitpunkt-Momentaufnahme der Anwendungsdaten innerhalb der VM. VSS (Volume Shadow Copy Service, Volumeschattenkopie-Dienst) stellt sicher, dass Apps zum Zeitpunkt der Momentaufnahme konsistent sind.
-
-- **Replikationsgruppe**: Wenn für Ihre Anwendung VM-übergreifende Konsistenz mehrerer virtueller Computer erforderlich ist, können Sie eine Replikationsgruppe für diese VMs erstellen. Standardmäßig sind die ausgewählten VMs nicht Teil einer Replikationsgruppe.
-
-  Klicken Sie neben **Replikationsrichtlinie** auf **Anpassen**, und wählen Sie **Ja** zum Aktivieren der Konsistenz mehrerer virtueller Computer, um die VMs einer Replikationsgruppe hinzuzufügen. Sie können eine neue Replikationsgruppe erstellen oder eine vorhandene Replikationsgruppe verwenden. Wählen Sie die VMs aus, die der Replikationsgruppe angehören sollen, und klicken Sie auf **OK**.
-
-> [!IMPORTANT]
-  Alle Computer in einer Replikationsgruppe verfügen beim Failover über absturz- und anwendungskonsistente Wiederherstellungspunkte. Das Aktivieren der Konsistenz mehrerer virtueller Computer kann sich auf die Leistung der Workload auswirken und sollte nur verwendet werden, wenn Computer dieselbe Workload ausführen und eine Konsistenz erforderlich ist.
-
-> [!IMPORTANT]
-  Wenn Sie die Multi-VM-Konsistenz aktivieren, kommunizieren Computer in der Replikationsgruppe über den Port 20004 miteinander. Stellen Sie sicher, dass die interne Kommunikation zwischen den VMs über Port 20004 nicht durch eine Firewallappliance blockiert wird. Wenn Sie Linux-VMs in eine Replikationsgruppe einschließen möchten, stellen Sie sicher, dass der ausgehende Datenverkehr auf Port 20004 gemäß den Anweisungen für die jeweilige Linux-Version manuell geöffnet wird.
+    - Alle Computer in einer Replikationsgruppe verfügen beim Failover über absturz- und anwendungskonsistente Wiederherstellungspunkte. Das Aktivieren der Konsistenz mehrerer virtueller Computer kann sich auf die Leistung der Workload auswirken und sollte nur verwendet werden, wenn Computer dieselbe Workload ausführen und eine Konsistenz erforderlich ist.
+    - Wenn Sie die Multi-VM-Konsistenz aktivieren, kommunizieren Computer in der Replikationsgruppe über den Port 20004 miteinander. Stellen Sie sicher, dass die interne Kommunikation zwischen den VMs über Port 20004 nicht durch eine Firewallappliance blockiert wird. Wenn Sie Linux-VMs in eine Replikationsgruppe einschließen möchten, stellen Sie sicher, dass der ausgehende Datenverkehr auf Port 20004 gemäß den Anweisungen für die jeweilige Linux-Version manuell geöffnet wird.
 
 ### <a name="configure-encryption-settings"></a>Konfigurieren der Verschlüsselungseinstellungen
 
-Wenn für den virtuellen Quellcomputer Azure Disk Encryption (ADE) aktiviert ist, wird der unten angegebene Abschnitt mit den Verschlüsselungseinstellungen angezeigt.
+Wenn für die Quell-VM Azure Disk Encryption (ADE) aktiviert ist, werden Verschlüsselungseinstellungen angezeigt:
 
-- **Schlüsseltresore für Datenträgerverschlüsselung**: Standardmäßig erstellt Azure Site Recovery einen neuen Schlüsseltresor in der Zielregion mit dem Namenssuffix „asr“, der auf den Verschlüsselungsschlüsseln für die Datenträger des virtuellen Quellcomputers basiert. Falls bereits ein von Azure Site Recovery erstellter Schlüsseltresor vorhanden ist, wird er wiederverwendet.
-- **Schlüsseltresore für Schlüsselverschlüsselung**: Standardmäßig erstellt Azure Site Recovery einen neuen Schlüsseltresor in der Zielregion mit dem Namenssuffix „asr“, der auf den Schlüsseln für die Schlüsselverschlüsselung des virtuellen Quellcomputers basiert. Falls bereits ein von Azure Site Recovery erstellter Schlüsseltresor vorhanden ist, wird er wiederverwendet.
+1. Überprüfen Sie die Verschlüsselungseinstellungen.
+    - **Schlüsseltresore für Datenträgerverschlüsselung**: Standardmäßig erstellt Azure Site Recovery einen neuen Schlüsseltresor in der Zielregion mit dem Namenssuffix „asr“, der auf den Verschlüsselungsschlüsseln für die Datenträger des virtuellen Quellcomputers basiert. Falls bereits ein von Azure Site Recovery erstellter Schlüsseltresor vorhanden ist, wird er wiederverwendet.
+    - **Schlüsseltresore für Schlüsselverschlüsselung**: Standardmäßig erstellt Azure Site Recovery einen neuen Schlüsseltresor in der Zielregion mit dem Namenssuffix „asr“, der auf den Schlüsseln für die Schlüsselverschlüsselung des virtuellen Quellcomputers basiert. Falls bereits ein von Azure Site Recovery erstellter Schlüsseltresor vorhanden ist, wird er wiederverwendet.
 
-Klicken Sie neben den Verschlüsselungseinstellungen auf „Anpassen“, um die Standardwerte zu überschreiben und benutzerdefinierte Schlüsseltresore auszuwählen.
+2. Klicken Sie auf **Anpassen**, um benutzerdefinierte Schlüsseltresore auszuwählen.
 
 >[!NOTE]
->Von Azure Site Recovery werden derzeit nur Azure-VMs unterstützt, auf denen das Windows-Betriebssystem ausgeführt wird und die [für die Verschlüsselung mit der Azure AD-App aktiviert sind](https://aka.ms/ade-aad-app).
+>Azure Site Recovery unterstützt derzeit nur Azure-VMs, auf denen Windows-Betriebssysteme ausgeführt werden und die [für die Verschlüsselung mit der Azure AD-App aktiviert sind](https://aka.ms/ade-aad-app).
 >
 
 ### <a name="track-replication-status"></a>Nachverfolgen des Replikationsstatus
 
 1. Klicken Sie unter **Einstellungen**  auf **Aktualisieren**, um den aktuellen Status abzurufen.
-
-2. Sie können den Fortschritt des Auftrags **Schutz aktivieren** unter **Einstellungen** > **Aufträge** > **Site Recovery-Aufträge** verfolgen.
-
-3. Unter **Einstellungen** > **Replizierte Elemente** können Sie den Status der VMs und den der ersten Replikation einsehen. Klicken Sie auf die VM, um ein Drilldown auf die zugehörigen Einstellungen auszuführen.
+2. Verfolgen Sie den Fortschritt und Status wie folgt nach:
+    - Verfolgen Sie den Fortschritt des Auftrags **Schutz aktivieren** unter **Einstellungen** > **Aufträge** > **Site Recovery-Aufträge**.
+    - Unter **Einstellungen** > **Replizierte Elemente** können Sie den Status der VMs und den der ersten Replikation einsehen. Klicken Sie auf die VM, um ein Drilldown auf die zugehörigen Einstellungen auszuführen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie die Notfallwiederherstellung für eine Azure-VM konfiguriert. Der nächste Schritt ist das Testen Ihrer Konfiguration, indem Sie einen DR-Drill initiieren.
+In diesem Tutorial haben Sie die Notfallwiederherstellung für eine Azure-VM konfiguriert. Jetzt können Sie ein Notfallwiederherstellungsverfahren initiieren, um zu überprüfen, ob das Failover wie erwartet funktioniert.
 
 > [!div class="nextstepaction"]
 > [Durchführen eines Notfallwiederherstellungsverfahrens](azure-to-azure-tutorial-dr-drill.md)

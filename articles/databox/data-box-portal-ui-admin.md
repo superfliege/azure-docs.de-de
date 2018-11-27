@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: overview
 ms.date: 08/28/2018
 ms.author: alkohli
-ms.openlocfilehash: b98653ea0896e617a666147d243f24cb55483a28
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: f4ea5e282e9b915cffeac7daff07f5934be1a424
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49091687"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51974988"
 ---
 # <a name="use-azure-portal-to-administer-your-data-box-disk-preview"></a>Verwalten von Data Box Disk (Vorschauversion) über das Azure-Portal
 
@@ -109,7 +109,7 @@ Führen Sie die folgenden Schritte aus, um den Auftrag zu bearbeiten.
 
 ## <a name="edit-notification-details"></a>Bearbeiten der Benachrichtigungsdetails
 
-Unter Umständen müssen Sie die Benutzer ändern, die die Bestellstatus-E-Mails erhalten sollen. So kann es beispielsweise erforderlich sein, dass ein Benutzer informiert wird, wann der Datenträger geliefert oder abgeholt wird. Ein anderer Benutzer muss ggf. informiert werden, wenn der Datenkopiervorgang abgeschlossen ist, damit er sich vor dem Löschen aus der Quelle vergewissern kann, dass sich die Daten im Azure-Speicherkonto befinden. In diesen Fällen können Sie die Benachrichtigungsdetails bearbeiten.
+Unter Umständen müssen Sie die Benutzer ändern, die die E-Mails zum Auftragsstatus erhalten sollen. So kann es beispielsweise erforderlich sein, dass ein Benutzer informiert wird, wann der Datenträger geliefert oder abgeholt wird. Ein anderer Benutzer muss ggf. informiert werden, wenn der Datenkopiervorgang abgeschlossen ist, damit er sich vor dem Löschen aus der Quelle vergewissern kann, dass sich die Daten im Azure-Speicherkonto befinden. In diesen Fällen können Sie die Benachrichtigungsdetails bearbeiten.
 
 Führen Sie die folgenden Schritte aus, um die Benachrichtigungsdetails zu bearbeiten.
 

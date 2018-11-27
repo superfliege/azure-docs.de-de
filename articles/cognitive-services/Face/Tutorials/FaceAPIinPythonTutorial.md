@@ -10,12 +10,12 @@ ms.component: face-api
 ms.topic: quickstart
 ms.date: 11/13/2018
 ms.author: sbowles
-ms.openlocfilehash: e8b16f7ebe918e5b8d59c6b57794c4f35a89b5f3
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: dc84014f3dce027c830f3f46b4aba16b775251d8
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51684000"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51853148"
 ---
 # <a name="quickstart-create-a-python-script-to-detect-and-frame-faces-in-an-image"></a>Schnellstart: Erstellen eines Python-Skripts zum Erkennen und Umranden von Gesichtern in einem Bild
 
@@ -25,7 +25,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Ein Abonnementschlüssel für die Gesichtserkennungs-API Über die Seite [Cognitive Services ausprobieren](https://azure.microsoft.com/try/cognitive-services/?api=face-api) können Sie einen Abonnementschlüssel für eine kostenlose Testversion abrufen. Gehen Sie andernfalls wie unter [Schnellstart: Erstellen eines Cognitive Services-Kontos im Azure-Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) beschrieben vor, um den Gesichtserkennungs-API-Dienst zu abonnieren und Ihren Schlüssel zu erhalten.
+- Ein Abonnementschlüssel für die Gesichtserkennungs-API. Über die Seite [Cognitive Services ausprobieren](https://azure.microsoft.com/try/cognitive-services/?api=face-api) können Sie einen Abonnementschlüssel für eine kostenlose Testversion abrufen. Gehen Sie andernfalls wie unter [Schnellstart: Erstellen eines Cognitive Services-Kontos im Azure-Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) beschrieben vor, um den Gesichtserkennungs-API-Dienst zu abonnieren und Ihren Schlüssel zu erhalten.
 - [Python 2.7+ oder 3.5+](https://www.python.org/downloads/)
 - [Pip](https://pip.pypa.io/en/stable/installing/)-Tool
 - Das Python SDK der Gesichtserkennungs-API. Sie können das SDK mithilfe des folgenden Befehls installieren:
@@ -35,7 +35,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="detect-faces-in-an-image"></a>Gesichtserkennung in einem Bild
 
-Erstellen Sie ein neues Python-Skript: _FaceQuickstart.py_. Fügen Sie den folgenden Code hinzu: Dies ist die Kernfunktionen der Gesichtserkennung. Sie müssen `<Subscription Key>` durch den Wert Ihres Schlüssels ersetzen. Darüber hinaus müssen Sie unter Umständen den Wert von `BASE_URL` in die korrekte Regions-ID für Ihren Schlüssel ändern. Abonnementschlüssel für kostenlose Testversionen werden in der Region **westus** generiert. Legen Sie optional `img_url` auf die URL des Bilds fest, das Sie verwenden möchten.
+Erstellen Sie ein neues Python-Skript: _FaceQuickstart.py_. Fügen Sie den folgenden Code hinzu: Dies ist die Kernfunktionen der Gesichtserkennung. Sie müssen `<Subscription Key>` durch den Wert Ihres Schlüssels ersetzen. Darüber hinaus müssen Sie unter Umständen den Wert von `BASE_URL` in die korrekte Regions-ID für Ihren Schlüssel ändern. (Eine Liste aller Regionsendpunkte finden Sie in den [Dokumenten zur Gesichtserkennungs-API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236).) Abonnementschlüssel für kostenlose Testversionen werden in der Region **westus** generiert. Legen Sie optional `img_url` auf die URL des Bilds fest, das Sie verwenden möchten.
 
 Das Skript erkennt Gesichter durch Aufrufen der **cognitive_face.face.detect**-Methode, die die [Detect](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)-REST-API umschließt und eine Liste mit Gesichtern zurückgibt.
 
