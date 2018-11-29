@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: d2400c09a7d18faccc94464158419c81962d4a86
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 8fbe856826770eb38cd4a6d921c1b0f4eacf9c2a
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51282151"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52426960"
 ---
 # <a name="tutorial-1-fix-unsure-predictions"></a>Tutorial 1: Korrigieren von unsicheren Vorhersagen
 In diesem Tutorial verbessern Sie App-Vorhersagen, indem Sie die über den LUIS-HTTPS-Endpunkt erhaltenen Äußerungen, bei denen LUIS unsicher ist, überprüfen bzw. korrigieren. Bei einigen Äußerungen kann eine Überprüfung hinsichtlich der Absicht und bei anderen eine Überprüfung hinsichtlich der Entität erforderlich sein. Sie sollten Endpunktäußerungen regelmäßig im Rahmen der geplanten LUIS-Wartung überprüfen. 
@@ -61,7 +61,7 @@ Wenn Sie nicht über die HumanResources-App aus dem vorhergehenden Tutorial verf
 
 ## <a name="review-endpoint-utterances"></a>Überprüfen von Endpunktäußerungen
 
-1. [!INCLUDE[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
+1. [!INCLUDE [Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
 2. Wählen Sie im linken Navigationsbereich die Option **Review endpoint utterances** (Endpunktäußerungen überprüfen). Die Liste wird für die Absicht **ApplyForJob** gefiltert. 
 

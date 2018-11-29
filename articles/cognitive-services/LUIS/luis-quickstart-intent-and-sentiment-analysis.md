@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 95d1c4ffe76cf4c652f347014a838f1250c0ca15
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 60c4b280033e110f6b8b2a3ce720934e118c8479
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51277476"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52424849"
 ---
 # <a name="tutorial-9--extract-sentiment-of-overall-utterance"></a>Tutorial 9: Extrahieren der Stimmung aus einer gesamten Äußerung
 In diesem Tutorial erstellen Sie eine App, die veranschaulicht, wie Sie positive, negative und neutrale Emotionen aus Äußerungen extrahieren. Die Stimmung wird anhand der gesamten Äußerung bestimmt.
@@ -60,7 +60,7 @@ Wenn Sie nicht über die HumanResources-App aus dem vorhergehenden Tutorial verf
 ## <a name="employeefeedback-intent"></a>Absicht „EmployeeFeedback“ 
 Fügen Sie eine neue Absicht für die Erfassung von internem Mitarbeiterfeedback hinzu. 
 
-1. [!INCLUDE[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
+1. [!INCLUDE [Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
 2. Wählen Sie **Create new intent** (Neue Absicht erstellen) aus.
 

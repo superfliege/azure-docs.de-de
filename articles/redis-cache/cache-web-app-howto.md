@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 03/26/2018
 ms.author: wesmc
 ms.custom: mvc
-ms.openlocfilehash: a92621d852ec60fb4773957d71dc6a55caaf991c
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: b719f45a2b76b41408593649e9e5cfe21dcf9179
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47092197"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52443789"
 ---
 # <a name="quickstart-create-an-aspnet-web-app"></a>Schnellstart: Erstellen einer ASP.NET-Web-App 
 
@@ -190,16 +190,16 @@ Die ASP.NET-Laufzeit führt die Inhalte der externen Datei mit dem Markup im `<a
 4. Erweitern Sie im **Projektmappen-Explorer** den Ordner **Ansichten** > **Freigegeben**. Öffnen Sie anschließend die Datei *_Layout.cshtml*.
 
     Ersetzen Sie:
-
-        ```csharp
-        @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-        ```
+    
+    ```csharp
+    @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+    ```
 
     durch:
 
-        ```csharp
-        @Html.ActionLink("Azure Redis Cache Test", "RedisCache", "Home", new { area = "" }, new { @class = "navbar-brand" })
-        ```
+    ```csharp
+    @Html.ActionLink("Azure Redis Cache Test", "RedisCache", "Home", new { area = "" }, new { @class = "navbar-brand" })
+    ```
 
 ### <a name="to-add-a-new-rediscache-view"></a>So fügen Sie eine neue RedisCache-Ansicht hinzu
 

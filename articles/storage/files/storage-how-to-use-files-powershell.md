@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 10/26/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: 119853df5b5234b65bdade890df1fecb72c326b7
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 48ac46a9087e8027d0282533afccc4d9b28481ba
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50157376"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52582466"
 ---
 # <a name="quickstart-create-and-manage-an-azure-file-share-with-azure-powershell"></a>Schnellstart: Erstellen und Verwalten einer Azure-Dateifreigabe mit Azure PowerShell 
 In dieser Anleitung werden Schritt für Schritt die Grundlagen der Verwendung von [Azure-Dateifreigaben](storage-files-introduction.md) mit PowerShell beschrieben. Azure-Dateifreigaben sind genau wie andere Dateifreigaben, werden jedoch in der Cloud gespeichert und von der Azure-Plattform unterstützt. Azure-Dateifreigaben unterstützen das SMB-Protokoll nach Industriestandard und ermöglichen es, Dateien für mehrere Computer, Anwendungen und Instanzen freizugeben. 
@@ -49,7 +49,7 @@ $storageAcct = New-AzureRmStorageAccount `
 ```
 
 ## <a name="create-an-azure-file-share"></a>Erstellen einer Azure-Dateifreigabe
-Jetzt können Sie Ihre erste Azure-Dateifreigabe erstellen. Für die Erstellung einer Dateifreigabe können Sie das [New-AzureStorageShare](/powershell/module/azurerm.storage/new-azurestorageshare)-Cmdlet verwenden. In diesem Beispiel wird eine Freigabe mit dem Namen `myshare` erstellt.
+Jetzt können Sie Ihre erste Azure-Dateifreigabe erstellen. Für die Erstellung einer Dateifreigabe können Sie das [New-AzureStorageShare](/powershell/module/azure.storage/new-azurestorageshare)-Cmdlet verwenden. In diesem Beispiel wird eine Freigabe mit dem Namen `myshare` erstellt.
 
 ```azurepowershell-interactive
 New-AzureStorageShare `
@@ -79,7 +79,7 @@ In den meisten Fällen werden Sie ihre Azure-Dateifreigabe über das SMB-Protoko
 Die folgenden Beispiele zeigen, wie Sie mit dem AzureRM PowerShell-Modul Ihre Azure-Dateifreigabe mit dem REST-Protokoll „File“ ändern. 
 
 #### <a name="create-directory"></a>Erstellen eines Verzeichnisses
-Verwenden Sie das [New-AzureStorageDirectory](/powershell/module/azurerm.storage/new-azurestoragedirectory)-Cmdlet, um im Stammverzeichnis Ihrer Azure-Dateifreigabe ein neues Verzeichnis mit dem Namen *myDirectory* zu erstellen.
+Verwenden Sie das [New-AzureStorageDirectory](/powershell/module/azure.storage/new-azurestoragedirectory)-Cmdlet, um im Stammverzeichnis Ihrer Azure-Dateifreigabe ein neues Verzeichnis mit dem Namen *myDirectory* zu erstellen.
 
 ```azurepowershell-interactive
 New-AzureStorageDirectory `

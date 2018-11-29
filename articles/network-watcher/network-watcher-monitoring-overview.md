@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 04/24/2018
 ms.author: jdial
 ms.custom: mvc
-ms.openlocfilehash: 983b966ad304afb467df26193dd609f6f21a1b32
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 8738ac52eeaf1f27df5f9cc21ffb0c683a912195
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51614276"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52427028"
 ---
 # <a name="what-is-azure-network-watcher"></a>Was ist Azure Network Watcher?
 
@@ -37,7 +37,7 @@ Wenn ein Endpunkt nicht mehr erreichbar ist, werden Sie von der Problembehandlun
 
 Über den Verbindungsmonitor werden auch die Werte für die minimale, durchschnittliche und maximale Latenz angegeben, die im Laufe der Zeit ermittelt wurde. Wenn Sie die Latenz für eine Verbindung kennen, stellt sich unter Umständen heraus, dass Sie sie reduzieren können, indem Sie Ihre Azure-Ressourcen in andere Azure-Regionen verschieben. Informieren Sie sich über die Ermittlung der [relativen Latenzen zwischen Azure-Regionen und Internetdienstanbietern](#determine-relative-latencies-between-azure-regions-and-internet-service-providers) und die Überwachung der Kommunikation zwischen einer VM und einem Endpunkt per [Verbindungsmonitor](connection-monitor.md). Falls Sie eine Verbindung zu einem bestimmten Zeitpunkt und nicht für einen Zeitraum testen möchten (wie mit dem Verbindungsmonitor), können Sie die Funktion [Problembehandlung für Verbindung](#connection-troubleshoot) nutzen.
 
-Der Netzwerkleistungsmonitor ist eine Cloud-basierte hybride Netzwerküberwachungslösung, mit der Sie die Netzwerkleistung zwischen verschiedenen Punkten in Ihrer Netzwerkinfrastruktur überwachen können. Er hilft Ihnen auch, die Netzwerkkonnektivität mit Dienst- und Anwendungsendpunkten zu überwachen und die Leistung von Azure ExpressRoute zu überwachen. Der Netzwerkleistungsmonitor erkennt Netzwerkprobleme wie ins Nichts führenden Datenverkehr (Blackholing), Routingfehler und Probleme, die mit herkömmlichen Netzwerküberwachungsmethoden nicht erkannt werden können. Die Lösung generiert Warnungen und benachrichtigt Sie, sobald ein Schwellenwert für eine Netzwerkverbindung überschritten wird. Sie gewährleistet außerdem das rechtzeitige Erkennen von Leistungsproblemen im Netzwerk und ordnet die Ursache des Problems einem bestimmten Netzwerksegment oder Gerät zu. Weitere Informationen über den [Netzwerkleistungsmonitor](../log-analytics/log-analytics-network-performance-monitor.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
+Der Netzwerkleistungsmonitor ist eine Cloud-basierte hybride Netzwerküberwachungslösung, mit der Sie die Netzwerkleistung zwischen verschiedenen Punkten in Ihrer Netzwerkinfrastruktur überwachen können. Er hilft Ihnen auch, die Netzwerkkonnektivität mit Dienst- und Anwendungsendpunkten zu überwachen und die Leistung von Azure ExpressRoute zu überwachen. Der Netzwerkleistungsmonitor erkennt Netzwerkprobleme wie ins Nichts führenden Datenverkehr (Blackholing), Routingfehler und Probleme, die mit herkömmlichen Netzwerküberwachungsmethoden nicht erkannt werden können. Die Lösung generiert Warnungen und benachrichtigt Sie, sobald ein Schwellenwert für eine Netzwerkverbindung überschritten wird. Sie gewährleistet außerdem das rechtzeitige Erkennen von Leistungsproblemen im Netzwerk und ordnet die Ursache des Problems einem bestimmten Netzwerksegment oder Gerät zu. Weitere Informationen über den [Netzwerkleistungsmonitor](../azure-monitor/insights/network-performance-monitor.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
 
 ### <a name="view-resources-in-a-virtual-network-and-their-relationships"></a>Anzeigen von Ressourcen in einem virtuellen Netzwerk mit den dazugehörigen Beziehungen
 
@@ -97,7 +97,7 @@ Weitere Informationen zur NSG-Flussprotokollierung erhalten Sie im Tutorial [Pro
 
 ### <a name="view-diagnostic-logs-for-network-resources"></a>Anzeigen von Diagnoseprotokollen für Netzwerkressourcen
 
-Sie können die Diagnoseprotokollierung für Azure-Netzwerkressourcen aktivieren, z.B. Netzwerksicherheitsgruppen, öffentliche IP-Adressen, Lastenausgleichsmodule, Gateways eines virtuellen Netzwerks und Anwendungsgateways. Die Funktion *Diagnoseprotokolle* verfügt über eine Benutzeroberfläche zum Aktivieren und Deaktivieren von Diagnoseprotokollen für alle vorhandenen Netzwerkressourcen, die ein Diagnoseprotokoll generieren. Sie können Diagnoseprotokolle anzeigen, indem Sie Tools wie Microsoft Power BI und Azure Log Analytics verwenden. Weitere Informationen zur Analyse von Azure-Netzwerkdiagnoseprotokollen finden Sie unter [Azure-Netzwerküberwachungslösungen in Log Analytics](../log-analytics/log-analytics-azure-networking-analytics.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
+Sie können die Diagnoseprotokollierung für Azure-Netzwerkressourcen aktivieren, z.B. Netzwerksicherheitsgruppen, öffentliche IP-Adressen, Lastenausgleichsmodule, Gateways eines virtuellen Netzwerks und Anwendungsgateways. Die Funktion *Diagnoseprotokolle* verfügt über eine Benutzeroberfläche zum Aktivieren und Deaktivieren von Diagnoseprotokollen für alle vorhandenen Netzwerkressourcen, die ein Diagnoseprotokoll generieren. Sie können Diagnoseprotokolle anzeigen, indem Sie Tools wie Microsoft Power BI und Azure Log Analytics verwenden. Weitere Informationen zur Analyse von Azure-Netzwerkdiagnoseprotokollen finden Sie unter [Azure-Netzwerküberwachungslösungen in Log Analytics](../azure-monitor/insights/azure-networking-analytics.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
 
 ## <a name="network-watcher-automatic-enablement"></a>Automatische Aktivierung von Network Watcher
 Beim Erstellen oder Aktualisieren eines virtuellen Netzwerks in Ihrem Abonnement wird Network Watcher automatisch in der Region Ihres virtuellen Netzwerks aktiviert. Die automatische Aktivierung von Network Watcher hat keine Auswirkungen auf Ihre Ressourcen oder die damit verbundene Gebühr. Weitere Informationen finden Sie unter [Erstellen einer Azure Network Watcher-Instanz](network-watcher-create.md).

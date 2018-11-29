@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/09/2017
 ms.author: cawa
-ms.openlocfilehash: 536092c1ee50045e6df4e2933c7d6eb0ee7a8b42
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: d039654fc1d652a3997515a12caa48acaac124fe
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39429786"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52425291"
 ---
 # <a name="using-storage-explorer-with-azure-file-storage"></a>Verwenden des Storage-Explorers mit Azure File Storage
 
@@ -29,7 +29,7 @@ Azure File Storage ist ein Dienst, bei dem Dateifreigaben in der Cloud unter Ver
 
 Damit Sie die in diesem Artikel aufgeführten Schritte ausführen können, benötigen Sie Folgendes:
 
-- [Herunterladen und Installieren des Storage-Explorers](http://www.storageexplorer.com/)
+- [Herunterladen und Installieren des Storage-Explorers](https://www.storageexplorer.com/)
 
 - [Herstellen der Verbindung mit einem Azure Storage-Konto oder -Dienst](https://docs.microsoft.com//azure/vs-azure-tools-storage-manage-with-storage-explorer#connect-to-a-storage-account-or-service)
 
@@ -259,6 +259,6 @@ Die folgenden Schritte veranschaulichen, wie Sie die Dateien (und Ordner) auf ei
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Sehen Sie sich die [neuesten Versionsanmerkungen und Videos zum Storage-Explorer](http://www.storageexplorer.com/) an.
+- Sehen Sie sich die [neuesten Versionsanmerkungen und Videos zum Storage-Explorer](https://www.storageexplorer.com/) an.
 
 - Informieren Sie sich, wie Sie [Anwendungen mit Azure-Blobs, -Tabellen, -Warteschlangen und -Dateien erstellen](https://azure.microsoft.com/documentation/services/storage/).

@@ -7,12 +7,12 @@ services: iot-fundamentals
 ms.topic: overview
 ms.date: 10/11/2018
 ms.author: robinsh
-ms.openlocfilehash: 2f690e6c930a1a119c9b7bf4b83ec04a564e47c9
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: ca99f9ac36281ecddf41bcc228440adcad90412b
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51288746"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52582427"
 ---
 # <a name="what-is-azure-internet-of-things-iot"></a>Was ist Azure IoT (Internet der Dinge)?
 
@@ -113,7 +113,7 @@ In Azure gibt es mehrere IoT-bezogene Dienste, und fällt es häufig nicht leich
 
 5. [**IoT Edge**](/azure/iot-edge/): Dieser Dienst basiert auf IoT Hub. Er kann zum Analysieren von Daten auf den IoT-Geräten anstatt in der Cloud verwendet werden. Durch das teilweise Verlagern Ihrer Workload in den Edge-Bereich müssen weniger Nachrichten in die Cloud gesendet werden. 
 
-6. [**Azure Digital Twins**](/azure/azure-digital-twins/): Dieser Dienst ermöglicht Ihnen das Erstellen umfassender Modelle der physischen Umgebung. Damit können Sie die Beziehungen und Interaktionen zwischen Menschen, Räumen und Geräten modellieren. Beispielsweise können Sie den Wartungsbedarf für eine Fabrik vorhersagen, den Energiebedarf für ein Stromnetz in Echtzeit analysieren oder die Verwendung der verfügbaren Fläche für ein Büro optimieren.
+6. [**Azure Digital Twins**](../digital-twins/index.yml): Dieser Dienst ermöglicht Ihnen das Erstellen umfassender Modelle der physischen Umgebung. Damit können Sie die Beziehungen und Interaktionen zwischen Menschen, Räumen und Geräten modellieren. Beispielsweise können Sie den Wartungsbedarf für eine Fabrik vorhersagen, den Energiebedarf für ein Stromnetz in Echtzeit analysieren oder die Verwendung der verfügbaren Fläche für ein Büro optimieren.
 
 7. [**Time Series Insights**](/azure/time-series-insights): Dieser Dienst ermöglicht Ihnen das Speichern, Visualisieren und Abfragen großer Mengen an Zeitreihendaten, die von IoT-Geräten generiert werden. Sie können diesen Dienst mit IoT Hub verwenden. 
 

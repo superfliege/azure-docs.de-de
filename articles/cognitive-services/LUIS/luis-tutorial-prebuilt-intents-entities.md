@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: d73284ecf40b2dfcd4954c1ddee82bf92a8931b9
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 3bad68d1a388a5bc8780df633313206afaadcef9
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51281794"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52422421"
 ---
 # <a name="tutorial-2-identify-common-intents-and-entities"></a>Tutorial 2: Identifizieren häufiger Absichten und Entitäten
 In diesem Tutorial ändern Sie die Personal-App. Fügen Sie der Personal-App aus dem Tutorial vordefinierte Absichten und Entitäten hinzu, um schnell Absichtsvorhersagen und extrahierte Daten zu erhalten. Sie müssen Äußerungen nicht mit vordefinierten Entitäten bezeichnen, da die Entität automatisch erkannt wird.
@@ -48,7 +48,7 @@ Wenn Sie nicht über die HumanResources-App aus dem vorhergehenden Tutorial verf
 ## <a name="add-prebuilt-intents"></a>Hinzufügen vordefinierter Absichten
 LUIS enthält mehrere vordefinierte Absichten für allgemeine Benutzerabsichten.  
 
-1. [!INCLUDE[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
+1. [!INCLUDE [Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
 2. Wählen Sie **Add prebuilt intent** (Vordefinierte Absicht hinzufügen) aus. 
 

@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 9038947ad20f63638af1830ca660de8cac802d9b
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: ee5ba6783a50ad50489a20aa662f17af2ca4ae6a
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51282089"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52421996"
 ---
 # <a name="tutorial-5-extract-free-form-data"></a>Tutorial 5: Extrahieren von Freiformdaten
 
@@ -59,7 +59,7 @@ Die unterschiedlichen Längen enthalten Wörter, die es LUIS erschweren, das End
 > * Trainieren
 > * Testen des neuen Musters
 
-[!INCLUDE[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
+[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="use-existing-app"></a>Verwenden der vorhandenen App
 Fahren Sie mit der im letzten Tutorial erstellten App mit dem Namen **HumanResources** fort. 

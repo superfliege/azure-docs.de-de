@@ -10,19 +10,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/19/2018
+ms.date: 11/26/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.openlocfilehash: d9406032a55c0bbd73bf16ae2f0fa272dddd7698
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 0830deaaa1161880706c39aee741af06a41b4b6f
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49650872"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52426343"
 ---
 # <a name="tutorial-set-up-resources-for-validation-as-a-service"></a>Tutorial: Einrichten von Ressourcen für Validation-as-a-Service
 
-[!INCLUDE[Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
+[!INCLUDE [Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
 
 Sie müssen eine Lösung erstellen. Eine VaaS-Lösung (Validation-as-a-Service) stellt eine Azure Stack-Lösung mit einer bestimmten Hardwareliste dar. Mithilfe der Lösung überprüfen Sie, ob Ihre Hardware die Ausführung von Azure Stack unterstützt. Führen Sie die Schritte in diesem Tutorial aus, um die Verwendung des Diensts mit Ihrer Lösung vorzubereiten.
 

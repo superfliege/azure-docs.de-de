@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: dd73ca876385cf81059228088f7b027f533315eb
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: d13d77fdb741f7f7cf16e3d25c755f4363e56f93
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51277835"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52427487"
 ---
 # <a name="tutorial-4-extract-contextually-related-patterns"></a>Tutorial 4: Extrahieren kontextbezogener Muster
 
@@ -49,7 +49,7 @@ Wenn Sie Schwierigkeiten mit der Erkennung einfacher Entitäten haben, da es um 
 > * Erstellen von Ausdruckslisten von Städten
 > * Abrufen von Absichten und Entitäten vom Endpunkt
 
-[!INCLUDE[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
+[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="use-existing-app"></a>Verwenden der vorhandenen App
 Fahren Sie mit der im letzten Tutorial erstellten App mit dem Namen **HumanResources** fort. 
@@ -64,7 +64,7 @@ Wenn Sie nicht über die HumanResources-App aus dem vorhergehenden Tutorial verf
 
 ## <a name="create-new-entities"></a>Erstellen von neuen Entitäten
 
-1. [!INCLUDE[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
+1. [!INCLUDE [Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
 2. Wählen Sie im linken Navigationsmenü die Option **Entitäten** aus. 
 
@@ -254,7 +254,7 @@ Ortsnamen sind wie Namen von Personen schwierig, da sie eine beliebige Kombinati
 
 ## <a name="get-intent-and-entities-from-endpoint"></a>Abrufen von Absicht und Entitäten von einem Endpunkt
 
-1. [!INCLUDE[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
+1. [!INCLUDE [Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
 2. Geben Sie in der Adressleiste am Ende der URL `Move wayne berry from miami to mount vernon` ein. Der letzte Parameter der Abfragezeichenfolge lautet `q` (für die Abfrage (**query**) der Äußerung). 
 

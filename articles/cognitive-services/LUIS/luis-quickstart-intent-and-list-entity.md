@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 2ce6e7c796faf0c7377a33dabe1e8c05e81fde2f
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: a4e294687b6c3ea2ba6ff8003e7a8f1ac69ea639
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51280703"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52425070"
 ---
 # <a name="tutorial-4-extract-exact-text-matches"></a>Tutorial 4: Extrahieren genauer Textübereinstimmungen
 In diesem Tutorial lernen Sie, wie Daten abgerufen werden, die mit einer vordefinierten Liste von Elementen übereinstimmen. Jedes Element auf der Liste kann eine Liste mit Synonymen enthalten. Für die Personalwesen-App kann ein Mitarbeiter anhand verschiedener Schlüsselinformationen, wie Name, E-Mail, Telefonnummer und Steuernummer identifiziert werden. 
@@ -41,7 +41,7 @@ Eine Listenentität ist eine gute Wahl für diese Art von Daten, wenn Folgendes 
 > * Veröffentlichen
 > * Abrufen von Absichten und Entitäten vom Endpunkt
 
-[!INCLUDE[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
+[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="use-existing-app"></a>Verwenden der vorhandenen App
 Fahren Sie mit der im letzten Tutorial erstellten App mit dem Namen **HumanResources** fort. 
@@ -57,7 +57,7 @@ Wenn Sie nicht über die HumanResources-App aus dem vorhergehenden Tutorial verf
 
 ## <a name="moveemployee-intent"></a>MoveEmployee-Absicht
 
-1. [!INCLUDE[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
+1. [!INCLUDE [Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
 2. Wählen Sie **Create new intent** (Neue Absicht erstellen) aus. 
 
@@ -84,7 +84,7 @@ Wenn Sie nicht über die HumanResources-App aus dem vorhergehenden Tutorial verf
 
     Beachten Sie, dass „Zahl“ und „datetimeV2“ in einem vorhergehenden Tutorial hinzugefügt wurden und automatisch bezeichnet werden, wenn sie in Beispieläußerungen gefunden werden.
 
-    [!INCLUDE[Do not use too few utterances](../../../includes/cognitive-services-luis-too-few-example-utterances.md)]  
+    [!INCLUDE [Do not use too few utterances](../../../includes/cognitive-services-luis-too-few-example-utterances.md)]  
 
 ## <a name="employee-list-entity"></a>Mitarbeiter-Listenentität
 Nachdem die Absicht **MoveEmployee** jetzt über Beispieläußerungen verfügt, muss LUIS verstehen, was ein Mitarbeiter ist. 

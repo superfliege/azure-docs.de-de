@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 02/09/2017
 ms.author: vlvinogr
-ms.openlocfilehash: 4a372b54ace87816b9e7cccbd38466331b5ebfc7
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: 91463520547ca534048bba77d3b979b462ded6b5
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37437595"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52442351"
 ---
 # <a name="modify-the-content-and-layout-of-pages-on-the-developer-portal-in-azure-api-management"></a>Ändern des Inhalts und Layouts von Seiten im Entwicklerportal in Azure API Management
 Es gibt drei grundlegende Möglichkeiten, das Entwicklerportal in Azure API Management anzupassen:
@@ -27,6 +27,8 @@ Es gibt drei grundlegende Möglichkeiten, das Entwicklerportal in Azure API Mana
 * [Bearbeiten des Inhalts von statischen Seiten und Seitenlayoutelementen][modify-content-layout] (in diesem Leitfaden beschrieben)
 * [Aktualisieren der Stile, die für Seitenelemente im gesamten Entwicklerportal verwendet werden][customize-styles]
 * [Ändern der Vorlagen, die für vom Portal generierte Seiten verwendet werden][portal-templates] (beispielsweise API-Dokumente, Produkte, Benutzerauthentifizierung usw.)
+
+[!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
 ## <a name="page-structure"></a>Struktur von Seiten im Entwicklerportal
 

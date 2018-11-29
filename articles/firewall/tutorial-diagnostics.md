@@ -7,18 +7,18 @@ ms.service: firewall
 ms.topic: tutorial
 ms.date: 10/24/2018
 ms.author: victorh
-ms.openlocfilehash: 875efddfff9b50ab05665cb8c158467dc46c8d0d
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 1354faad4abf9a8a4b56414628d39d9a6f90d721
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49987431"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52426166"
 ---
 # <a name="tutorial-monitor-azure-firewall-logs-and-metrics"></a>Tutorial: Überwachen von Azure Firewall-Protokollen und -Metriken
 
 Azure Firewall kann mithilfe von Firewallprotokollen überwacht werden. Sie können aber auch Aktivitätsprotokolle verwenden, um Vorgänge für Azure Firewall-Ressourcen zu überwachen. Mithilfe von Metriken können Sie Leistungsindikatoren im Portal anzeigen. 
 
-Sie können auf einige dieser Protokolle über das Portal zugreifen. Protokolle können an [Log Analytics](../log-analytics/log-analytics-azure-networking-analytics.md), Storage und Event Hubs gesendet und in Log Analytics oder durch andere Tools wie Excel oder Power BI analysiert werden.
+Sie können auf einige dieser Protokolle über das Portal zugreifen. Protokolle können an [Log Analytics](../azure-monitor/insights/azure-networking-analytics.md), Storage und Event Hubs gesendet und in Log Analytics oder durch andere Tools wie Excel oder Power BI analysiert werden.
 
 In diesem Tutorial lernen Sie Folgendes:
 
@@ -94,7 +94,7 @@ Mit einer der folgenden Methoden können Sie die Aktivitätsprotokolldaten anzei
 
 ## <a name="view-and-analyze-the-network-and-application-rule-logs"></a>Anzeigen und Analysieren der Netzwerk- und Anwendungsregelprotokolle
 
-Azure [Log Analytics](../log-analytics/log-analytics-azure-networking-analytics.md) erfasst die Leistungsindikator- und Ereignisprotokolldateien. Die Anwendung umfasst Visualisierungen und leistungsfähige Suchfunktionen zum Analysieren Ihrer Protokolle.
+Azure [Log Analytics](../azure-monitor/insights/azure-networking-analytics.md) erfasst die Leistungsindikator- und Ereignisprotokolldateien. Die Anwendung umfasst Visualisierungen und leistungsfähige Suchfunktionen zum Analysieren Ihrer Protokolle.
 
 Azure Firewall-Log Analytics-Beispielabfragen finden Sie unter [Azure Firewall Log Analytics samples](log-analytics-samples.md) (Azure Firewall-Log Analytics-Beispiele).
 
@@ -111,7 +111,7 @@ Navigieren Sie zu einer Azure Firewall-Instanz, und klicken Sie unter **Überwac
 Nachdem Sie Ihre Firewall für die Erfassung von Protokollen konfiguriert haben, können Sie sich als Nächstes mit dem Anzeigen der Daten in Log Analytics beschäftigen.
 
 > [!div class="nextstepaction"]
-> [Azure-Netzwerküberwachungslösungen in Log Analytics](../log-analytics/log-analytics-azure-networking-analytics.md)
+> [Azure-Netzwerküberwachungslösungen in Log Analytics](../azure-monitor/insights/azure-networking-analytics.md)
 
 [1]: ./media/tutorial-diagnostics/figure1.png
 [2]: ./media/tutorial-diagnostics/figure2.png
