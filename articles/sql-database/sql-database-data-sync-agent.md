@@ -93,7 +93,7 @@ Wenn Sie den lokalen Agent auf einem anderen Computer als dem ausführen möchte
 
 - [Die lokale Synchronisierungs-Agent-App kann keine Verbindung mit dem lokalen Synchronisierungsdienst herstellen.](#agent-connect)
 
-### <a name="agent-install">Der Client-Agent kann nicht installiert, deinstalliert oder repariert werden.</a>
+### <a name="agent-install"></a> Der Client-Agent kann nicht installiert, deinstalliert oder repariert werden.
 
 - **Ursache**. Viele Szenarien können diesen Fehler verursachen. Um die genaue Ursache für diesen Fehler zu ermitteln, sehen Sie sich die Protokolle an.
 
