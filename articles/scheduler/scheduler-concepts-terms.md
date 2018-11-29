@@ -10,12 +10,12 @@ ms.reviewer: klam
 ms.assetid: 3ef16fab-d18a-48ba-8e56-3f3e0a1bcb92
 ms.topic: get-started-article
 ms.date: 08/18/2016
-ms.openlocfilehash: 07b7cce4b026464ba34296b54c4ae90d6d2b1afa
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 5ed15a58e5b709b003e9f45d04c3654f814aefc7
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46981160"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52334226"
 ---
 # <a name="concepts-terminology-and-entities-in-azure-scheduler"></a>Konzepte, Terminologie und Entitäten in Microsoft Azure Scheduler
 
@@ -315,9 +315,9 @@ Beispiel:
 
 ## <a name="see-also"></a>Weitere Informationen
 
-* [Was ist Azure Scheduler?](scheduler-intro.md)
+* [Was ist der Azure Scheduler?](scheduler-intro.md)
 * [Konzepte, Terminologie und Entitätshierarchie](scheduler-concepts-terms.md)
 * [Erstellen komplexer Zeitpläne und erweiterter Serien](scheduler-advanced-complexity.md)
 * [Grenzwerte, Kontingente, Standardwerte und Fehlercodes](scheduler-limits-defaults-errors.md)
-* [Azure Scheduler-REST-API – Referenz](https://docs.microsoft.com/rest/api/schedule)
+* [Azure Scheduler-REST-API – Referenz](/rest/api/scheduler)
 * [Azure Scheduler – PowerShell-Cmdlets-Referenz](scheduler-powershell-reference.md)

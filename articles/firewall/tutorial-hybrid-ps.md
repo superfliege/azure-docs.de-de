@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: tutorial
 ms.date: 10/27/2018
 ms.author: victorh
-ms.openlocfilehash: 781365e32ce5602e9fb99b620e068ddf68de8c44
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: d69bd055c95592961216f5da1efaedc4a642fd63
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51854168"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52316395"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-in-a-hybrid-network-using-azure-powershell"></a>Tutorial: Bereitstellen und Konfigurieren von Azure Firewall in einem Hybridnetzwerk mit Azure PowerShell
 
@@ -309,9 +309,6 @@ Erstellen Sie als Nächstes zwei Routen:
 
 - Eine Route vom Hub-Gatewaysubnetz zum Spoke-Subnetz über die Firewall-IP-Adresse
 - Eine Standardroute vom Spoke-Subnetz über die Firewall-IP-Adresse
-
-> [!NOTE]
-> Azure Firewall erlernt Ihre lokalen Netzwerke über das Border Gateway Protocol (BGP). Dies kann auch eine Standardroute umfassen, über die Internetdatenverkehr zurück über Ihr lokales Netzwerk geleitet wird. In einer Produktionsbereitstellung soll Internetdatenverkehr möglicherweise direkt über die Firewall an das Internet gesendet werden. Dazu könnten Sie eine benutzerdefinierte Standardroute (0.0.0.0/0) für das Subnetz „AzureFirewallSubnet“ hinzufügen und **Internet** als Typ des nächsten Hops auswählen. Für den Datenverkehr, der für Ihr lokales Netzwerk bestimmt ist, wird weiterhin eine Tunnelerzwingung über das VPN-/ExpressRoute-Gateway durchgeführt, indem die per BGP erlernten, spezifischeren Routen verwendet werden.
 
 ```azurepowershell
 #Create a route table
