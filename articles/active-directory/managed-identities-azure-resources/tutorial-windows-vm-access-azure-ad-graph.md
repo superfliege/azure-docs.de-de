@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 08/20/2018
 ms.author: daveba
-ms.openlocfilehash: 18141e0f58a0b5227c3f5f5c36210017da101780
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 6e8f7f18196eb23900c815048e12d57a238d08f7
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51625333"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52423055"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-ad-graph-api"></a>Tutorial: Verwenden einer systemseitig zugewiesenen verwalteten Identität einer Windows-VM für den Zugriff auf die Azure AD Graph-API
 
-[!INCLUDE[preview-notice](~/includes/active-directory-msi-preview-notice.md)]
+[!INCLUDE [preview-notice](~/includes/active-directory-msi-preview-notice.md)]
 
 In diesem Tutorial erfahren Sie, wie Sie eine systemseitig zugewiesene verwaltete Identität für eine Windows-VM verwenden, um zum Abrufen ihrer Gruppenmitgliedschaften auf die Microsoft Graph-API zuzugreifen. Verwaltete Identitäten für Azure-Ressourcen werden von Azure automatisch verwaltet und ermöglichen Ihnen die Authentifizierung für Dienste, die die Azure AD-Authentifizierung unterstützen, ohne dass Sie Anmeldeinformationen in Ihren Code einfügen müssen.  In diesem Tutorial fragen Sie die Mitgliedschaft Ihrer VM-Identität in Azure AD-Gruppen ab. Gruppeninformationen werden beispielsweise häufig für Autorisierungsentscheidungen verwendet. Im Hintergrund wird die verwaltete Identität Ihrer VM durch einen **Dienstprinzipal** in Azure AD dargestellt. Fügen Sie den Dienstprinzipal, der die VM-Identität darstellt, vor dem Ausführen der Gruppenabfrage einer Gruppe in Azure AD hinzu. Hierzu können Sie Azure PowerShell, Azure AD PowerShell oder die Azure-Befehlszeilenschnittstelle (CLI) verwenden.
 
