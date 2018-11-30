@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 12/12/2017
 ms.author: manayar
 ms.custom: na
-ms.openlocfilehash: 7b8faca82a23875b403d0b51b2e8719549d845fb
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: 40af55e48e0097f1ad6cb52a76b78fab40c2074c
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50740686"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52447179"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Häufig gestellte Fragen zu Azure-VM-Skalierungsgruppen
 
@@ -69,7 +69,7 @@ Hier erhalten Sie Antworten auf häufig gestellte Fragen zu VM-Skalierungsgruppe
 
 **F.** Funktionieren Skalierungsgruppen mit Azure-Verfügbarkeitszonen?
 
-**A.** Ja. Weitere Informationen hierzu finden Sie in der [Dokumentation zu Skalierungsgruppen über verschiedene Verfügbarkeitszonen hinweg](./virtual-machine-scale-sets-use-availability-zones.md).
+**A.**  Ja. Weitere Informationen hierzu finden Sie in der [Dokumentation zu Skalierungsgruppen über verschiedene Verfügbarkeitszonen hinweg](./virtual-machine-scale-sets-use-availability-zones.md).
 
 
 ## <a name="autoscale"></a>Autoscale
@@ -134,7 +134,7 @@ Informationen zum Einrichten der automatischen Skalierung für eine VM-Skalierun
 
 ### <a name="if-i-have-stopped-deallocated-a-vm-is-that-vm-started-as-part-of-an-autoscale-operation"></a>Wird eine VM, wenn ich sie beendet (d.h. deren Zuordnung aufgehoben) habe, bei einer automatischen Skalierung erneut gestartet?
 
-Nein. Wenn Regeln für die automatische Skalierung zusätzliche VM-Instanzen als Teil einer Skalierungsgruppe erfordern, wird eine neue VM-Instanz erstellt. VM-Instanzen, die beendet (bzw. deren Zuordnung aufgehoben) wurden, werden nicht im Rahmen einer automatischen Skalierung gestartet. Die beendeten (freigegebenen) VMs können jedoch im Zuge einer automatischen Skalierung gelöscht werden, die die Anzahl der Instanzen skaliert, so wie jede VM-Instanz in der Reihenfolge der VM-Instanz-ID gelöscht werden kann.
+ Nein. Wenn Regeln für die automatische Skalierung zusätzliche VM-Instanzen als Teil einer Skalierungsgruppe erfordern, wird eine neue VM-Instanz erstellt. VM-Instanzen, die beendet (bzw. deren Zuordnung aufgehoben) wurden, werden nicht im Rahmen einer automatischen Skalierung gestartet. Die beendeten (freigegebenen) VMs können jedoch im Zuge einer automatischen Skalierung gelöscht werden, die die Anzahl der Instanzen skaliert, so wie jede VM-Instanz in der Reihenfolge der VM-Instanz-ID gelöscht werden kann.
 
 
 
@@ -371,7 +371,7 @@ Sie können das Übergeben eines Zertifikats als Base64-Zeichenfolge emulieren, 
 
 In VM-Skalierungsgruppen und auf virtuellen Computern müssen Zertifikate mit JSON-Objekten umschlossen werden. 
 
-Wir unterstützen auch den Inhaltstyp „application/x-pkcs12“. Eine Anleitung zur Verwendung von „application/x-pkcs12“ finden Sie unter [PFX Certificate in Azure Key Vault](http://www.rahulpnath.com/blog/pfx-certificate-in-azure-key-vault/) (PFX-Zertifikat in Azure Key Vault).
+Wir unterstützen auch den Inhaltstyp „application/x-pkcs12“. 
  
 CER-Dateien werden derzeit nicht unterstützt. Zu verwendende CER-Dateien müssen in PFX-Container exportiert werden.
 

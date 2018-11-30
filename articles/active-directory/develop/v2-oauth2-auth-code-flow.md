@@ -17,12 +17,12 @@ ms.date: 07/23/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: b5f36bcce77ad0dac3a6e2e9da39493be6751539
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 4ac036bbb94ae8b009700ff21bad1a117843584c
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49985844"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52427198"
 ---
 # <a name="v20-protocols---oauth-20-authorization-code-flow"></a>v2.0-Protokolle – OAuth 2.0-Autorisierungscodefluss
 
@@ -33,7 +33,7 @@ Der OAuth 2.0-Autorisierungcodefluss kann in Apps verwendet werden, die auf ein
 > [!NOTE]
 > Nicht alle Szenarien und Funktionen von Azure Active Directory werden vom v2.0-Endpunkt unterstützt. Lesen Sie die Informationen zu den [Einschränkungen des v2.0-Endpunkts](active-directory-v2-limitations.md), um zu bestimmen, ob Sie den v2.0-Endpunkt verwenden sollten.
 
-Der OAuth 2.0-Autorisierungscodefluss wird in [Abschnitt 4.1 der OAuth 2.0-Spezifikation](http://tools.ietf.org/html/rfc6749)beschrieben. Er wird zum Ausführen der Authentifizierung und Autorisierung in den meisten App-Typen genutzt, einschließlich [Web-Apps](v2-app-types.md#web-apps) und [nativ installierten Apps](v2-app-types.md#mobile-and-native-apps). Durch den Fluss können Apps Zugriffstoken sicher abrufen, die für den Zugriff auf Ressourcen verwendet werden können, die mithilfe des v2.0-Endpunkts geschützt werden. 
+Der OAuth 2.0-Autorisierungscodefluss wird in [Abschnitt 4.1 der OAuth 2.0-Spezifikation](https://tools.ietf.org/html/rfc6749)beschrieben. Er wird zum Ausführen der Authentifizierung und Autorisierung in den meisten App-Typen genutzt, einschließlich [Web-Apps](v2-app-types.md#web-apps) und [nativ installierten Apps](v2-app-types.md#mobile-and-native-apps). Durch den Fluss können Apps Zugriffstoken sicher abrufen, die für den Zugriff auf Ressourcen verwendet werden können, die mithilfe des v2.0-Endpunkts geschützt werden. 
 
 ## <a name="protocol-diagram"></a>Protokolldiagramm
 
@@ -69,7 +69,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | redirect_uri          | empfohlen | Der Umleitungs-URI der App, in dem Authentifizierungsantworten gesendet und von der App empfangen werden können. Er muss genau mit einer der Umleitungs-URIs übereinstimmen, die Sie im Portal registriert haben, mit dem Unterschied, dass er URL-codiert sein muss. Für native und mobile Apps sollten Sie den Standardwert `https://login.microsoftonline.com/common/oauth2/nativeclient` verwenden.   |
 | scope                 | required    | Eine durch Leerzeichen getrennte Liste mit [Bereichen](v2-permissions-and-consent.md) , denen der Benutzer zustimmen soll.           |
 | response_mode         | empfohlen | Gibt die Methode an, die zum Senden des resultierenden Tokens zurück an Ihre App verwendet werden soll. Kann `query`, `fragment` oder `form_post` sein. `query` gibt den Code als ein Abfragezeichenfolgen-Parameter in der Umleitungs-URI an. Wenn Sie ein ID-Token mit dem impliziten Flow anfordern, können Sie `query` nicht gemäß [OpenID-Spezifikation](https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html#Combinations) verwenden. Wenn Sie lediglich den Code anfordern, können Sie `query`, `fragment` oder `form_post` verwenden. `form_post` führt ein POST-Element mit dem Code zu Ihrer Umleitungs-URI aus. Weitere Informationen finden Sie unter [OpenID Connect-Protokoll](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-openid-connect-code).  |
-| state                 | empfohlen | Ein in der Anforderung enthaltener Wert, der auch in der Antwort zurückgegeben wird. Es kann sich um eine Zeichenfolge mit jedem beliebigen Inhalt handeln. Ein zufällig generierter eindeutiger Wert wird normalerweise verwendet, um [websiteübergreifende Anforderungsfälschungsangriffe zu verhindern](http://tools.ietf.org/html/rfc6749#section-10.12). Der Wert kann ebenfalls Informationen über den Status des Benutzers in der App codieren, bevor die Authentifizierungsanforderung aufgetreten ist, z.B. Informationen zu der Seite oder Ansicht, die der Benutzer besucht hat. |
+| state                 | empfohlen | Ein in der Anforderung enthaltener Wert, der auch in der Antwort zurückgegeben wird. Es kann sich um eine Zeichenfolge mit jedem beliebigen Inhalt handeln. Ein zufällig generierter eindeutiger Wert wird normalerweise verwendet, um [websiteübergreifende Anforderungsfälschungsangriffe zu verhindern](https://tools.ietf.org/html/rfc6749#section-10.12). Der Wert kann ebenfalls Informationen über den Status des Benutzers in der App codieren, bevor die Authentifizierungsanforderung aufgetreten ist, z.B. Informationen zu der Seite oder Ansicht, die der Benutzer besucht hat. |
 | prompt                | optional    | Gibt den Typ der erforderlichen Benutzerinteraktion an. Zu diesem Zeitpunkt sind die einzigen gültigen Werte „login“, „none“ und „consent“. `prompt=login` zwingt den Benutzer, die Anmeldeinformationen bei dieser Anforderung einzugeben. Einmaliges Anmelden ist dadurch nicht möglich. `prompt=none` ist genau das Gegenteil: Dieser Wert stellt sicher, dass dem Benutzer keine interaktive Eingabeaufforderung angezeigt wird. Wenn die Anforderung nicht über einmaliges Anmelden im Hintergrund abgeschlossen werden kann, gibt der v2.0-Endpunkt einen `interaction_required`-Fehler zurück. `prompt=consent` löst nach der Anmeldung des Benutzers das OAuth-Zustimmungsdialogfeld aus, in dem der Benutzer aufgefordert wird, der App Berechtigungen zu gewähren. |
 | login_hint            | optional    | Dieser Wert kann verwendet werden, um das Feld für den Benutzernamen oder die E-Mail-Adresse auf der Anmeldeseite vorab für den Benutzer auszufüllen, wenn dessen Benutzername im Vorfeld bekannt ist. Apps verwenden diesen Parameter häufig für die wiederholte Authentifizierung, nachdem sie den Benutzernamen aus einer vorherigen Anmeldung mithilfe des Anspruchs `preferred_username` extrahiert haben.                                                                                                                                                                                                                                                                                                    |
 | domain_hint           | optional    | Kann `consumers` oder `organizations` sein. Wenn dieser Parameter vorhanden ist, wird der E-Mail-basierte Ermittlungsvorgang übersprungen, den der Benutzer auf der v2.0-Anmeldeseite durchläuft, und so die Benutzerfreundlichkeit verbessert. Apps verwenden diesen Parameter häufig für die wiederholte Authentifizierung, indem sie `tid` aus einer vorherigen Anmeldung extrahieren. Verwenden Sie `domain_hint=consumers`, wenn der Anspruch `tid` den Wert `9188040d-6c67-4c5b-b112-36a304b66dad` hat. Verwenden Sie andernfalls `domain_hint=organizations`.                                                                                                              |
@@ -204,7 +204,7 @@ Fehlerantworten sehen wie folgt aus:
 | error             | Eine Fehlercodezeichenfolge, die verwendet werden kann, um unterschiedliche Arten auftretender Fehler zu klassifizieren und um auf Fehler zu reagieren. |
 | error_description | Eine spezifische Fehlermeldung, mit der Entwickler die Hauptursache eines Authentifizierungsfehlers identifizieren können.          |
 | error_codes       | Eine Liste der STS-spezifischen Fehlercodes, die bei der Diagnose helfen können.                                                |
-| timestamp         | Der Zeitpunkt, zu dem der Fehler aufgetreten ist                                                                           |
+|  timestamp         | Der Zeitpunkt, zu dem der Fehler aufgetreten ist                                                                           |
 | trace_id          | Ein eindeutiger Bezeichner für die Anforderung, die bei der Diagnose helfen kann                                               |
 | correlation_id    | Ein eindeutiger Bezeichner für die Anforderung, die bei der komponentenübergreifenden Diagnose helfen kann                             |
 
@@ -315,7 +315,7 @@ Eine erfolgreiche Tokenantwort sieht wie folgt aus:
 | error             | Eine Fehlercodezeichenfolge, die verwendet werden kann, um unterschiedliche Arten auftretender Fehler zu klassifizieren und um auf Fehler zu reagieren. |
 | error_description | Eine spezifische Fehlermeldung, mit der Entwickler die Hauptursache eines Authentifizierungsfehlers identifizieren können.           |
 | error_codes |Eine Liste der STS-spezifischen Fehlercodes, die bei der Diagnose helfen können. |
-| timestamp |Der Zeitpunkt, zu dem der Fehler aufgetreten ist |
+|  timestamp |Der Zeitpunkt, zu dem der Fehler aufgetreten ist |
 | trace_id |Ein eindeutiger Bezeichner für die Anforderung, die bei der Diagnose helfen kann |
 | correlation_id |Ein eindeutiger Bezeichner für die Anforderung, die bei der komponentenübergreifenden Diagnose helfen kann |
 

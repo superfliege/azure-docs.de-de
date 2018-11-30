@@ -2,25 +2,21 @@
 title: Ausführliche Informationen zum Vorhersagen von Fahrzeugzustand und Fahrgewohnheiten – Azure | Microsoft-Dokumentation
 description: Verwenden Sie die Funktionen von Cortana Intelligence zur Echtzeitgewinnung von prädiktiven Einblicken in Fahrzeugzustand und Fahrgewohnheiten.
 services: machine-learning
-documentationcenter: ''
-author: deguhath
+author: marktab
 manager: cgronlun
 editor: cgronlun
-ms.assetid: d8866fa6-aba6-40e5-b3b3-33057393c1a8
 ms.service: machine-learning
 ms.component: team-data-science-process
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2018
-ms.author: deguhath
-ms.openlocfilehash: 8c4946ebef8d17d2016d482010768207d5e859ff
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.author: tdsp
+ms.custom: (previous author=deguhath, ms.author=deguhath)
+ms.openlocfilehash: b1c01bcd15c5cfc63eae7c2b1983fc9075d4220c
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51300947"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52444377"
 ---
 # <a name="vehicle-telemetry-analytics-solution-playbook-deep-dive-into-the-solution"></a>Lösungs-Playbook zur Fahrzeugtelemetrieanalyse: Ausführliche Betrachtung der Lösung
 
@@ -670,7 +666,7 @@ In diesem Dokument wird die Projektmappe für die Fahrzeugtelemetrieanalyse (Veh
 ### <a name="references"></a>Referenzen
 
 * [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)
-* [Azure Data Factory](https://azure.microsoft.com/documentation/learning-paths/data-factory/)
+* [Azure Data Factory](https://docs.microsoft.com/rest/api/datafactory/)
 * [Azure Event Hub-SDK für Datenstromerfassung](../../event-hubs/event-hubs-csharp-ephcs-getstarted.md)
 * [Funktionen zum Verschieben von Azure Data Factory-Daten](../../data-factory/copy-activity-overview.md)
 * [Azure Data Factory-.NET-Aktivität](../../data-factory/transform-data-using-dotnet-custom-activity.md)

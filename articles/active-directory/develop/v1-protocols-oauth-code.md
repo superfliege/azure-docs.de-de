@@ -16,12 +16,12 @@ ms.date: 07/23/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: b7b8ccf7e84239db4eef0914346c453a2f205f91
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: c4a18fa022304e7ccfb4503cf2e02650555d6d7b
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51237892"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52425121"
 ---
 # <a name="authorize-access-to-azure-active-directory-web-applications-using-the-oauth-20-code-grant-flow"></a>Autorisieren des Zugriffs auf Azure Active Directory-Webanwendungen mit dem Flow zum Erteilen des OAuth 2.0-Codes
 
@@ -60,7 +60,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | response_type |required |Muss `code` für den Autorisierungscodefluss enthalten. |
 | redirect_uri |empfohlen |Der Umleitungs-URI der App, in dem Authentifizierungsantworten gesendet und von der App empfangen werden können. Er muss genau mit einer der Umleitungs-URIs übereinstimmen, die Sie im Portal registriert haben, mit dem Unterschied, dass er URL-codiert sein muss. Für native und mobile Apps sollten Sie den Standardwert `urn:ietf:wg:oauth:2.0:oob` verwenden. |
 | response_mode |optional |Gibt die Methode an, die zum Senden des resultierenden Tokens zurück an Ihre App verwendet werden soll. Kann `query`, `fragment` oder `form_post` sein. `query` gibt den Code als ein Abfragezeichenfolgen-Parameter in der Umleitungs-URI an. Wenn Sie ein ID-Token mit dem impliziten Flow anfordern, können Sie `query` nicht gemäß [OpenID-Spezifikation](https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html#Combinations) verwenden. Wenn Sie lediglich den Code anfordern, können Sie `query`, `fragment` oder `form_post` verwenden. `form_post` führt ein POST-Element mit dem Code zu Ihrer Umleitungs-URI aus. Der Standardwert ist `query` für einen Codefluss.  |
-| state |empfohlen |Ein in der Anforderung enthaltener Wert, der ebenfalls in der Tokenantwort zurückgegeben wird. Ein zufällig generierter eindeutiger Wert wird normalerweise verwendet, um [websiteübergreifende Anforderungsfälschungsangriffe zu verhindern](http://tools.ietf.org/html/rfc6749#section-10.12). Der Status wird auch verwendet, um Informationen über den Status des Benutzers in der App zu codieren, bevor die Authentifizierungsanforderung aufgetreten ist, z. B. Informationen zu der Seite oder Ansicht, die der Benutzer besucht hat. |
+| state |empfohlen |Ein in der Anforderung enthaltener Wert, der ebenfalls in der Tokenantwort zurückgegeben wird. Ein zufällig generierter eindeutiger Wert wird normalerweise verwendet, um [websiteübergreifende Anforderungsfälschungsangriffe zu verhindern](https://tools.ietf.org/html/rfc6749#section-10.12). Der Status wird auch verwendet, um Informationen über den Status des Benutzers in der App zu codieren, bevor die Authentifizierungsanforderung aufgetreten ist, z. B. Informationen zu der Seite oder Ansicht, die der Benutzer besucht hat. |
 | resource | empfohlen |Der App-ID-URI der Ziel-Web-API (geschützte Ressource). Klicken Sie zum Ermitteln des App-ID-URI im Azure-Portal auf **Azure Active Directory** und auf **App-Registrierungen**. Öffnen Sie anschließend die Seite **Einstellungen**, und klicken Sie auf **Eigenschaften**. Es kann sich auch um eine externe Ressource wie `https://graph.microsoft.com` handeln. Dieser Parameter muss in einer der Autorisierungs- oder Tokenanforderungen vorhanden sein, um sicherzustellen, dass weniger Authentifizierungsanforderungen diesen in die Autorisierungsanforderung platzieren und so die Zustimmung des Benutzers empfangen wird. |
 | scope | **ignoriert** | Bei Azure AD v1-Apps müssen Bereiche im Azure-Portal unter **Einstellungen** der Anwendungen sowie **Erforderliche Berechtigungen** statisch konfiguriert werden. |
 | prompt |optional |Geben Sie den Typ der erforderlichen Benutzerinteraktion an.<p> Gültige Werte sind: <p> *login*: Der Benutzer sollte zum erneuten Authentifizieren aufgefordert werden. <p> *select_account*: Der Benutzer wird aufgefordert, ein Konto auszuwählen, was zur Unterbrechung des einmaligen Anmeldens führt. Der Benutzer kann ein bereits vorhandenes und angemeldetes Konto auswählen, seine Anmeldeinformationen für ein gespeichertes Konto eingeben oder ein ganz anderes Konto verwenden. <p> *consent*: Die Benutzerzustimmung wurde erteilt, muss aber aktualisiert werden. Der Benutzer sollte zur Erteilung der Zustimmung aufgefordert werden. <p> *admin_consent*: Ein Administrator sollte aufgefordert werden, die Zustimmung im Namen aller Benutzer der Organisation zu erteilen. |
@@ -102,7 +102,7 @@ error=access_denied
 
 | Parameter | BESCHREIBUNG |
 | --- | --- |
-| error |Ein in Abschnitt 5.2 definierter Fehlercodewert des [OAuth 2.0-Autorisierungsframeworks](http://tools.ietf.org/html/rfc6749). In der folgenden Tabelle finden Sie die Fehlercodes, die von Azure AD ausgegeben werden. |
+| error |Ein in Abschnitt 5.2 definierter Fehlercodewert des [OAuth 2.0-Autorisierungsframeworks](https://tools.ietf.org/html/rfc6749). In der folgenden Tabelle finden Sie die Fehlercodes, die von Azure AD ausgegeben werden. |
 | error_description |Detailliertere Beschreibung des Fehlers. Diese Meldung ist nicht für den Endbenutzer ausgelegt. |
 | state |Der Statuswert ist ein zufällig generierter, nicht wiederverwendeter Wert, der in der Anforderung versendet und in der Antwort zurückgegeben wird, um webseitenübergreifende Anforderungsfälschungen (CSFR) zu vermeiden. |
 
@@ -175,7 +175,7 @@ Eine erfolgreiche Antwort sieht wie folgt aus:
 | Parameter | BESCHREIBUNG |
 | --- | --- |
 | access_token |Das angeforderte [Zugriffstoken](access-tokens.md) als signiertes JSON-Webtoken (JWT). Die App kann dieses Token zur Authentifizierung auf geschützten Ressourcen verwenden, wie z. B. eine Web-API. |
-| token_type |Gibt den Wert des Tokentyps an. Bearertoken ist der einzige Typ, den Azure AD unterstützt. Weitere Informationen zu Bearertoken finden Sie unter [OAuth2.0 Authorization Framework: Bearer Token Usage (RFC 6750)](http://www.rfc-editor.org/rfc/rfc6750.txt) |
+| token_type |Gibt den Wert des Tokentyps an. Bearertoken ist der einzige Typ, den Azure AD unterstützt. Weitere Informationen zu Bearertoken finden Sie unter [OAuth2.0 Authorization Framework: Bearer Token Usage (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt) |
 | expires_in |Gibt an, wie lange das Zugriffstoken (in Sekunden) gültig ist. |
 | expires_on |Die Uhrzeit, zu der das Zugriffstoken abläuft. Das Datum wird als Anzahl der Sekunden ab 1970-01-01T0:0:0Z UTC bis zur Ablaufzeit dargestellt. Dieser Wert wird verwendet, um die Lebensdauer von zwischengespeicherten Token zu bestimmen. |
 | resource |Der App-ID-URI der Web-API (geschützte Ressource). |
@@ -208,7 +208,7 @@ Eine Beispiel für eine Fehlerantwort sieht wie folgt aus:
 | error |Eine Fehlercodezeichenfolge, die verwendet werden kann, um unterschiedliche Arten auftretender Fehler zu klassifizieren und um auf Fehler zu reagieren. |
 | error_description |Eine spezifische Fehlermeldung, mit der Entwickler die Hauptursache eines Authentifizierungsfehlers identifizieren können. |
 | error_codes |Eine Liste der STS-spezifischen Fehlercodes, die bei der Diagnose helfen können. |
-| timestamp |Der Zeitpunkt, zu dem der Fehler aufgetreten ist |
+|  timestamp |Der Zeitpunkt, zu dem der Fehler aufgetreten ist |
 | trace_id |Ein eindeutiger Bezeichner für die Anforderung, die bei der Diagnose helfen kann |
 | correlation_id |Ein eindeutiger Bezeichner für die Anforderung, die bei der komponentenübergreifenden Diagnose helfen kann |
 
@@ -235,7 +235,7 @@ Die folgende Tabelle enthält die HTTP-Statuscodes, die vom Tokenausstellungs-En
 | temporarily_unavailable |Der Server ist vorübergehend überlastet und kann die Anforderung nicht verarbeiten. |Wiederholen Sie die Anforderung. Die Clientanwendung kann dem Benutzer erklären, dass ihre Antwort aufgrund einer temporären Bedingung verzögert ist. |
 
 ## <a name="use-the-access-token-to-access-the-resource"></a>Verwenden des Zugriffstokens für den Zugriff auf die Ressource
-Nachdem Sie erfolgreich ein `access_token` abgerufen haben, können Sie das Token für Anforderungen an Web-APIs verwenden, indem Sie es in den `Authorization`-Header einschließen: Die Spezifikation [RFC 6750](http://www.rfc-editor.org/rfc/rfc6750.txt) erklärt, wie Bearertoken in HTTP-Anforderungen für den Zugriff auf geschützte Ressourcen verwendet werden.
+Nachdem Sie erfolgreich ein `access_token` abgerufen haben, können Sie das Token für Anforderungen an Web-APIs verwenden, indem Sie es in den `Authorization`-Header einschließen: Die Spezifikation [RFC 6750](https://www.rfc-editor.org/rfc/rfc6750.txt) erklärt, wie Bearertoken in HTTP-Anforderungen für den Zugriff auf geschützte Ressourcen verwendet werden.
 
 ### <a name="sample-request"></a>Beispiel für eine Anforderung
 ```
@@ -257,8 +257,8 @@ WWW-Authenticate: Bearer authorization_uri="https://login.microsoftonline.com/co
 #### <a name="error-parameters"></a>Fehlerparameter
 | Parameter | BESCHREIBUNG |
 | --- | --- |
-| authorization_uri |Der URI (physische Endpunkt) des Autorisierungsservers. Dieser Wert wird auch als Suchschlüssel verwendet, um weitere Informationen über den Server aus einem Discovery-Endpunkt zu erhalten. <p><p> Der Client muss überprüfen, ob der Autorisierungsserver vertrauenswürdig ist. Wenn die Ressource von Azure AD geschützt wird, ist die Prüfung ausreichend, ob die URL mit https://login.microsoftonline.com oder einem anderen Hostnamen beginnt, den Azure AD unterstützt. Eine mandantenspezifische Ressource sollte immer einen mandantenspezifischen Autorisierungs-URI zurückgeben. |
-| error |Ein in Abschnitt 5.2 definierter Fehlercodewert des [OAuth 2.0-Autorisierungsframeworks](http://tools.ietf.org/html/rfc6749). |
+| authorization_uri |Der URI (physische Endpunkt) des Autorisierungsservers. Dieser Wert wird auch als Suchschlüssel verwendet, um weitere Informationen über den Server aus einem Discovery-Endpunkt zu erhalten. <p><p>  Der Client muss überprüfen, ob der Autorisierungsserver vertrauenswürdig ist. Wenn die Ressource von Azure AD geschützt wird, ist die Prüfung ausreichend, ob die URL mit https://login.microsoftonline.com oder einem anderen Hostnamen beginnt, den Azure AD unterstützt. Eine mandantenspezifische Ressource sollte immer einen mandantenspezifischen Autorisierungs-URI zurückgeben. |
+| error |Ein in Abschnitt 5.2 definierter Fehlercodewert des [OAuth 2.0-Autorisierungsframeworks](https://tools.ietf.org/html/rfc6749). |
 | error_description |Detailliertere Beschreibung des Fehlers. Diese Meldung ist nicht für den Endbenutzer ausgelegt. |
 | resource_id |Gibt den eindeutigen Bezeichner der Ressource zurück. Die Clientanwendung kann diesen Bezeichner als Wert für den `resource` -Parameter verwenden, wenn sie ein Token für die Ressource anfordert. <p><p> Es ist wichtig, dass die Clientanwendung diesen Wert überprüft, da andernfalls ein schädlicher Dienst möglicherweise einen Angriff mit einer **Erhöhung von Rechten** durchführt. <p><p> Die empfohlene Strategie zur Verhinderung eines Angriffs besteht darin sicherzustellen, dass die `resource_id` mit dem Basiselement der Web-API-URL übereinstimmt, auf die zugegriffen wird. Wenn beispielsweise auf https://service.contoso.com/data zugegriffen wird, kann die `resource_id` „htttps://service.contoso.com/“ lauten. Die Clientanwendung muss eine `resource_id` ablehnen, die nicht mit der Basis-URL beginnt, sofern es kein zuverlässiges alternatives Verfahren zum Überprüfen der ID gibt. |
 
@@ -340,7 +340,7 @@ Eine Beispiel für eine Fehlerantwort sieht wie folgt aus:
 | error |Eine Fehlercodezeichenfolge, die verwendet werden kann, um unterschiedliche Arten auftretender Fehler zu klassifizieren und um auf Fehler zu reagieren. |
 | error_description |Eine spezifische Fehlermeldung, mit der Entwickler die Hauptursache eines Authentifizierungsfehlers identifizieren können. |
 | error_codes |Eine Liste der STS-spezifischen Fehlercodes, die bei der Diagnose helfen können. |
-| timestamp |Der Zeitpunkt, zu dem der Fehler aufgetreten ist |
+|  timestamp |Der Zeitpunkt, zu dem der Fehler aufgetreten ist |
 | trace_id |Ein eindeutiger Bezeichner für die Anforderung, die bei der Diagnose helfen kann |
 | correlation_id |Ein eindeutiger Bezeichner für die Anforderung, die bei der komponentenübergreifenden Diagnose helfen kann |
 

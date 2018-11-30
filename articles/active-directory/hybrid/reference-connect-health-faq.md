@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 264e7f3d885535304470c833e228660ba51fefc6
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 83ff526eb0bd0c51822fc52c90b958d50022a834
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46306389"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52497732"
 ---
 # <a name="azure-ad-connect-health-frequently-asked-questions"></a>Häufig gestellte Fragen zu Azure AD Connect Health
 Dieser Artikel enthält Antworten auf häufig gestellte Fragen (FAQs) zu Azure Active Directory (Azure AD) Connect Health. Diese FAQs liefern Antworten zur Verwendung des Diensts, z.B. in Bezug auf das Abrechnungsmodell, Funktionen, Einschränkungen und den Support.
@@ -62,7 +62,7 @@ Beispiel:
 
 **F: Unterstützt Azure AD Connect Health die Azure Deutschland Cloud?**
 
-Azure AD Connect Health wird mit Ausnahme des [Features zum Melden von Synchronisierungsfehlern](how-to-connect-health-sync.md#object-level-synchronization-error-report-preview) nicht in der Microsoft Cloud Deutschland unterstützt. 
+Azure AD Connect Health wird mit Ausnahme des [Features zum Melden von Synchronisierungsfehlern](how-to-connect-health-sync.md#object-level-synchronization-error-report) nicht in der Microsoft Cloud Deutschland unterstützt. 
 
 | Rollen | Features | In der Microsoft Cloud Deutschland unterstützt |
 | ------ | --------------- | --- |
@@ -94,7 +94,7 @@ Die folgenden Zahlen stellen eine Schätzung dar:
 
 **F: Muss ich meine Server während der Installation der Azure AD Connect Health-Agents neu starten?**
 
-Nein. Die Installation der Agents erfordert keinen Serverneustart. Während der Installation einiger vorbereitender Schritte muss der Server jedoch möglicherweise neu gestartet werden.
+ Nein. Die Installation der Agents erfordert keinen Serverneustart. Während der Installation einiger vorbereitender Schritte muss der Server jedoch möglicherweise neu gestartet werden.
 
 Beispielsweise erfordert die Installation von .NET Framework 4.5 unter Windows Server 2008 R2 einen Neustart des Servers.
 
@@ -111,7 +111,7 @@ Wenn Sie während der Agent-Registrierung einen Proxy konfigurieren müssen, mü
 
 **F: Unterstützt Azure AD Connect Health die Standardauthentifizierung bei der Verbindung mit HTTP-Proxys?**
 
-Nein. Ein Mechanismus zum Angeben eines frei wählbaren Benutzernamens und Kennworts für die Standardauthentifizierung wird derzeit nicht unterstützt.
+ Nein. Ein Mechanismus zum Angeben eines frei wählbaren Benutzernamens und Kennworts für die Standardauthentifizierung wird derzeit nicht unterstützt.
 
 **F: Welche Firewallports muss ich öffnen, damit der Azure AD Connect Health-Agent funktioniert?**
 
@@ -137,7 +137,7 @@ Bei der Registrierung des Health-Agents kann aus folgenden Gründen ein Fehler a
 
 **F: Ich erhalte die Warnmeldung: „Die Daten des Integritätsdiensts sind nicht aktuell“. Wie kann ich das Problem beheben?**
 
-Diese Warnung wird von Azure AD Connect Health generiert, wenn er nicht in den letzten zwei Stunden alle Datenpunkte vom Server erhalten hat. [Weitere Informationen](how-to-connect-health-data-freshness.md)
+Diese Warnung wird von Azure AD Connect Health generiert, wenn er nicht in den letzten zwei Stunden alle Datenpunkte vom Server erhalten hat. [Weitere Informationen](how-to-connect-health-data-freshness.md).
 
 ## <a name="operations-questions"></a>Fragen zum Betrieb
 **F: Muss ich die Überwachung auf den Webanwendungs-Proxyservern aktivieren?**

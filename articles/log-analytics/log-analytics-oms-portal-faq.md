@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 442371ffc63e32906d9faafc3b803bb5e6386905
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 5f5143800c423bdbaac9994b55e500723018dce4
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51283443"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52634352"
 ---
 # <a name="common-questions-for-transition-from-oms-portal-to-azure-portal-for-log-analytics-users"></a>Häufig gestellte Fragen zum Übergang vom OMS-Portal zum Azure-Portal für Log Analytics-Benutzer
 Log Analytics verwendete zunächst ein eigenes Portal, das OMS-Portal, um die Konfiguration zu verwalten und gesammelte Daten zu analysieren.  Alle Funktionen dieses Portals wurden in das Azure-Portal übernommen, wo sie weiter entwickelt werden.
@@ -27,7 +27,7 @@ Log Analytics verwendete zunächst ein eigenes Portal, das OMS-Portal, um die Ko
 Dieser Artikel beantwortet häufig gestellte Fragen von Benutzern, die diesen Wechsel vornehmen.  Wenn Sie Log Analytics im OMS-Portal verwendet haben, finden Sie hier Antworten darauf, wie Sie die gleichen Aufgaben im Azure-Portal ausführen können.
 
 ## <a name="do-i-need-to-migrate-anything"></a>Muss ich eine Migration durchführen?
-Nein. Es werden keine Änderungen an Log Analytics selbst vorgenommen, sodass nichts migriert werden muss. Das Einzige, was sich ändert, ist die Schnittstelle, über die Sie darauf zugreifen. Tatsächlich können Sie jetzt über das Azure-Portal auf dieselben Arbeitsbereiche, Lösungen, Ansichten und Protokollsuchen zugreifen, die Sie heute im OMS-Portal verwenden.
+ Nein. Es werden keine Änderungen an Log Analytics selbst vorgenommen, sodass nichts migriert werden muss. Das Einzige, was sich ändert, ist die Schnittstelle, über die Sie darauf zugreifen. Tatsächlich können Sie jetzt über das Azure-Portal auf dieselben Arbeitsbereiche, Lösungen, Ansichten und Protokollsuchen zugreifen, die Sie heute im OMS-Portal verwenden.
 
 ## <a name="where-do-i-find-log-analytics-in-azure"></a>Wo finde ich Log Analytics in Azure?
 Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim Azure-Portal an.  Klicken Sie auf **Alle Dienste**, und geben Sie in der Liste mit den Ressourcen **Log Analytics** ein. Wählen Sie **Log Analytics**, und wählen Sie dann Ihren Arbeitsbereich aus. Die Seite mit der Zusammenfassung für den Arbeitsbereich wird angezeigt.
@@ -82,9 +82,9 @@ Verwalten Sie die meisten Einstellungen von „Verbunden Quelle“ im Menü **Er
 | Linux-Server   | Menü **Erweiterte Einstellungen** für den Arbeitsbereich |
 | Azure Storage     | Menü **Erweiterte Einstellungen** für den Arbeitsbereich |
 | System Center     | Menü **Erweiterte Einstellungen** für den Arbeitsbereich |
-| Office 365        | Einzelheiten zur Konfiguration finden Sie in der [Dokumentation für die Office 365-Verwaltungslösung](../monitoring/monitoring-solution-office-365.md). |
+| Office 365        | Einzelheiten zur Konfiguration finden Sie in der [Dokumentation für die Office 365-Verwaltungslösung](../azure-monitor/insights/solution-office-365.md). |
 | Windows-Telemetrie | Menü „Einstellungen“ für die Lösung. Die Konfigurationsdetails finden Sie unter [Windows Analytics im Azure-Portal](/windows/deployment/update/windows-analytics-azure-portal). |
-| ITSM-Connector    | Anweisungen für die Verbindung mit Ihrem ITSM-Dienst mit Log Analytics finden Sie unter [Verbinden von ITSM-Produkten/-Diensten mit dem ITSM-Connector](../log-analytics/log-analytics-itsmc-connections.md). |
+| ITSM-Connector    | Anweisungen für die Verbindung mit Ihrem ITSM-Dienst mit Log Analytics finden Sie unter [Verbinden von ITSM-Produkten/-Diensten mit dem ITSM-Connector](../log-analytics/../azure-monitor/platform/itsmc-connections.md). |
 
 ### <a name="data"></a>Daten
 Verwalten Sie die meisten Einstellungen von „Daten“ im Menü **Erweiterte Einstellungen** für den Arbeitsbereich. Die folgende Tabelle enthält Details zu jedem Abschnitt dieses Menüs.
@@ -107,13 +107,13 @@ Verwalten Sie die meisten Einstellungen von „Daten“ im Menü **Erweiterte Ei
 Verwalten Sie Lösungen über das Menü **Lösungen** für den Arbeitsbereich. 
 
 ## <a name="how-do-i-install-and-remove-management-solutions"></a>Wie installiere und entferne ich Verwaltungslösungen?
-Im OMS-Portal installierten Sie Verwaltungslösungen aus dem Lösungskatalog und entfernten sie über die **Einstellungen**. Im Azure-Portal [installieren Sie Verwaltungslösungen](../monitoring/monitoring-solutions.md#install-a-management-solution) aus dem Azure Marketplace. [Entfernen Sie Lösungen](../monitoring/monitoring-solutions.md#remove-a-management-solution) aus der Liste der installierten Lösungen.
+Im OMS-Portal installierten Sie Verwaltungslösungen aus dem Lösungskatalog und entfernten sie über die **Einstellungen**. Im Azure-Portal [installieren Sie Verwaltungslösungen](../azure-monitor/insights/solutions.md#install-a-management-solution) aus dem Azure Marketplace. [Entfernen Sie Lösungen](../azure-monitor/insights/solutions.md#remove-a-management-solution) aus der Liste der installierten Lösungen.
 
 ## <a name="how-do-i-create-and-manage-alerts"></a>Wie erstelle und verwalte ich Warnungen?
 Warnungsregeln basierend auf Log Analytics-Abfragen werden jetzt über die [vereinheitlichte Oberfläche für Warnungen](../monitoring-and-diagnostics/alert-metric.md) verwaltet. Weitere Informationen zur Konfiguration und Verwendung von Warnungen im Azure-Portal finden Sie unter [Gewusst wie: Erweitern (Kopieren) von Warnungen aus dem OMS-Portal in Azure](../monitoring-and-diagnostics/monitoring-alerts-extend-tool.md).
 
 ## <a name="how-do-i-access-my-dashboards"></a>Wie kann ich auf meine Dashboards zugreifen?
-Das Feature [Mein Dashboard](../log-analytics/log-analytics-dashboards.md) in Log Analytics ist veraltet. Mit diesem Feature konnten Sie eine private Sammlung von Ansicht-Designer-Komponenten erstellen. Es wurde durch die integrierte Azure-Dashboard-Funktion ersetzt. Sie können weiterhin Daten in Log Analytics mit dem [Ansicht-Designer](../log-analytics/log-analytics-view-designer.md) für freigegebene Ansichten visualisieren. Sie können auch Visualisierungen aus diesen Ansichten oder für [einzelne Abfragen](../log-analytics/log-analytics-tutorial-dashboards.md) an Azure-Dashboards anheften.
+Das Feature [Mein Dashboard](../log-analytics/../azure-monitor/platform/dashboards.md) in Log Analytics ist veraltet. Mit diesem Feature konnten Sie eine private Sammlung von Ansicht-Designer-Komponenten erstellen. Es wurde durch die integrierte Azure-Dashboard-Funktion ersetzt. Sie können weiterhin Daten in Log Analytics mit dem [Ansicht-Designer](../log-analytics/../azure-monitor/platform/view-designer.md) für freigegebene Ansichten visualisieren. Sie können auch Visualisierungen aus diesen Ansichten oder für [einzelne Abfragen](../log-analytics/log-analytics-tutorial-dashboards.md) an Azure-Dashboards anheften.
 
 ## <a name="how-do-i-check-my-usage"></a>Wie überprüfe ich meine Nutzung?
 Die Nutzung und Kosten von Log Analytics können Sie nun einfach einsehen und verwalten, indem Sie in Ihrem Arbeitsbereich **Nutzung und geschätzte Kosten** auswählen.
@@ -126,5 +126,5 @@ Für eine begrenzte Zeit können Sie weiterhin über diese URL mit Ihrem eigenen
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Suchen und Installieren Sie Verwaltungslösungen](../monitoring/monitoring-solutions.md) im Azure-Portal.
+- [Suchen und Installieren Sie Verwaltungslösungen](../azure-monitor/insights/solutions.md) im Azure-Portal.
 - Erfahren Sie mehr zur [Protokollsuche im Azure-Portal](log-analytics-log-search-portals.md).
