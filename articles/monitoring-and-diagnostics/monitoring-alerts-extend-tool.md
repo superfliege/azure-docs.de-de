@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/04/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 325da912c8fc4e453df895976df970f8e0f56412
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 6cbcb42ee8c77ff0c8ded966b4f04af8815ca726
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51614945"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52632992"
 ---
 # <a name="extend-alerts-from-log-analytics-into-azure-alerts"></a>Erweitern von Warnungen aus Log Analytics in Azure-Warnungen
 Die Warnfunktion in Azure Log Analytics wird durch Azure-Warnungen ersetzt. Im Rahmen dieses Übergangs werden Warnungen, die Sie ursprünglich in Log Analytics konfiguriert haben, auf Azure erweitert. Wenn Sie nicht warten möchten, bis diese automatisch in Azure verschoben werden, können Sie den Prozess auslösen:
@@ -150,7 +150,7 @@ Wenn die POST-Anforderung erfolgreich ist, werden ein HTTP 200 OK-Status sowie d
 }
 ```
 
-Diese Antwort gibt an, dass die Warnungen erfolgreich auf Azure-Warnungen erweitert wurden. Die Versionseigenschaft dient nur zur Überprüfung, ob Warnungen auf Azure erweitert wurden, und steht nicht im Zusammenhang mit der [Log Analytics-API für die Suche](../log-analytics/log-analytics-api-alerts.md). Wenn die Warnungen erfolgreich auf Azure erweitert wurden, erhalten alle E-Mail-Adressen, die mit der POST-Anforderung angegeben wurden, einen Bericht. Wenn für alle Warnungen im angegebenen Arbeitsbereich bereits eine Erweiterung geplant wurde, erhalten Sie als Antwort auf Ihre POST-Anforderung einen Statuscode 403 mit dem Hinweis, dass der Versuch unzulässig sei. Um Fehlermeldungen anzuzeigen oder zu ermitteln, ob der Prozess abgestürzt ist, können Sie eine GET-Anforderung senden. Wenn eine Fehlermeldung vorliegt, wird sie zusammen mit den Zusammenfassungsinformationen zurückgegeben.
+Diese Antwort gibt an, dass die Warnungen erfolgreich auf Azure-Warnungen erweitert wurden. Die Versionseigenschaft dient nur zur Überprüfung, ob Warnungen auf Azure erweitert wurden, und steht nicht im Zusammenhang mit der [Log Analytics-API für die Suche](../azure-monitor/platform/api-alerts.md). Wenn die Warnungen erfolgreich auf Azure erweitert wurden, erhalten alle E-Mail-Adressen, die mit der POST-Anforderung angegeben wurden, einen Bericht. Wenn für alle Warnungen im angegebenen Arbeitsbereich bereits eine Erweiterung geplant wurde, erhalten Sie als Antwort auf Ihre POST-Anforderung einen Statuscode 403 mit dem Hinweis, dass der Versuch unzulässig sei. Um Fehlermeldungen anzuzeigen oder zu ermitteln, ob der Prozess abgestürzt ist, können Sie eine GET-Anforderung senden. Wenn eine Fehlermeldung vorliegt, wird sie zusammen mit den Zusammenfassungsinformationen zurückgegeben.
 
 ```json
 {

@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: raynew
-ms.openlocfilehash: 2d2688799b1a0b4518b9c91bbc530936c834c5e3
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: d79513569b53d2b8958f44fbfac3839c91caaff8
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49407435"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52634301"
 ---
 # <a name="refine-a-group-using-group-dependency-mapping"></a>Verfeinern einer Gruppe per Mapping von Gruppenabhängigkeiten
 
@@ -39,7 +39,7 @@ Sie müssen jedem Azure Migrate-Projekt einen neuen oder vorhandenen Log Analyti
 > Den einem Migrationsprojekt zugeordneten Arbeitsbereich können Sie nicht ändern.
 
 ### <a name="download-and-install-the-vm-agents"></a>Herunterladen und Installieren der VM-Agents
-Um Abhängigkeiten einer Gruppe anzuzeigen, müssen Sie auf allen lokalen Computern, die der Gruppe angehören, Agents herunterladen und installieren. Falls Sie über Computer ohne Internetverbindung verfügen, ist es außerdem erforderlich, dafür das [Log Analytics-Gateway](../log-analytics/log-analytics-oms-gateway.md) herunterzuladen und zu installieren.
+Um Abhängigkeiten einer Gruppe anzuzeigen, müssen Sie auf allen lokalen Computern, die der Gruppe angehören, Agents herunterladen und installieren. Falls Sie über Computer ohne Internetverbindung verfügen, ist es außerdem erforderlich, dafür das [Log Analytics-Gateway](../azure-monitor/platform/gateway.md) herunterzuladen und zu installieren.
 
 1. Klicken Sie unter **Übersicht** auf **Verwalten** > **Gruppen**, und wechseln Sie zur gewünschten Gruppe.
 2. Klicken Sie in der Liste der Computer in der Spalte **Abhängigkeits-Agent** auf **Installation erforderlich**, um Anweisungen zum Herunterladen und Installieren der Agents anzuzeigen.
@@ -71,7 +71,7 @@ Gehen Sie wie folgt vor, um einen Agent auf einem Linux-Computer zu installieren
 
     ```sh InstallDependencyAgent-Linux64.bin```
 
-Erfahren Sie mehr zur Unterstützung des Dependency-Agents für die Betriebssysteme [Windows](../monitoring/monitoring-service-map-configure.md#supported-windows-operating-systems) und [Linux](../monitoring/monitoring-service-map-configure.md#supported-linux-operating-systems).
+Erfahren Sie mehr zur Unterstützung des Dependency-Agents für die Betriebssysteme [Windows](../azure-monitor/insights/service-map-configure.md#supported-windows-operating-systems) und [Linux](../azure-monitor/insights/service-map-configure.md#supported-linux-operating-systems).
 
 ## <a name="refine-the-group-based-on-dependency-visualization"></a>Verfeinern der Gruppe anhand der Visualisierung der Abhängigkeiten
 Nachdem Sie die Agents auf allen Computern der Gruppe installiert haben, können Sie die Abhängigkeiten der Gruppe visualisieren und diese anhand der unten aufgeführten Schritte verfeinern.

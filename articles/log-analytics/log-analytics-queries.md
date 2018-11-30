@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 0a8a1ab41972aa2ae184b900c2dab94ec58f3e7c
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 4aeb14bd7962205b89e1207e082f551999f54558
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51612747"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52634522"
 ---
 # <a name="analyze-log-analytics-data-in-azure-monitor"></a>Analysieren von Log Analytics-Daten in Azure Monitor
 
@@ -42,8 +42,8 @@ Dies sind einige der verschiedenen Möglichkeiten, wie Sie Abfragen in Log Analy
 
 - **Portale.** Sie können im [Azure-Portal](log-analytics-log-search-portals.md) eine interaktive Analyse von Protokolldaten durchführen.  Dadurch können Sie Ihre Abfrage bearbeiten und die Ergebnisse in einer Vielzahl von Formaten und Visualisierungen analysieren.  
 - **Warnungsregeln.** [Warnungsregeln](../monitoring-and-diagnostics/monitoring-overview-alerts.md) identifizieren proaktiv Probleme durch die Daten in Ihrem Arbeitsbereich.  Jede Warnungsregel basiert auf einer Protokollsuche, die in regelmäßigen Abständen automatisch ausgeführt wird.  Die Ergebnisse werden überprüft, um zu ermitteln, ob eine Warnung erstellt werden soll.
-- **Dashboards.** Sie können die Ergebnisse beliebiger Abfragen in einem [Azure-Dashboard]() anheften, was es Ihnen ermöglicht, Protokoll- und Metrikdaten gemeinsam zu visualisieren und optional mit anderen Azure-Benutzern zu teilen. 
-- **Ansichten.**  Sie können mit [Ansicht-Designer](log-analytics-view-designer.md) Visualisierungen von Daten erstellen, die in Benutzerdashboards einbezogen werden sollen.  Protokollabfragen stellen die von [Kacheln](log-analytics-view-designer-tiles.md) und [Visualisierungsparts](log-analytics-view-designer-parts.md) in jeder Ansicht verwendeten Daten bereit.  
+- **Dashboards.** Sie können die Ergebnisse beliebiger Abfragen in einem [Azure-Dashboard](../azure-monitor/platform/dashboards.md) anheften, was es Ihnen ermöglicht, Protokoll- und Metrikdaten gemeinsam zu visualisieren und optional mit anderen Azure-Benutzern zu teilen. 
+- **Ansichten.**  Sie können mit [Ansicht-Designer](../azure-monitor/platform/view-designer.md) Visualisierungen von Daten erstellen, die in Benutzerdashboards einbezogen werden sollen.  Protokollabfragen stellen die von [Kacheln](../azure-monitor/platform/view-designer-tiles.md) und [Visualisierungsparts](../azure-monitor/platform/view-designer-parts.md) in jeder Ansicht verwendeten Daten bereit.  
 - **Export:**  Wenn Sie Daten aus dem Log Analytics-Arbeitsbereich nach Excel oder [Power BI](log-analytics-powerbi.md) importieren, erstellen Sie eine Protokollabfrage, um die zu exportierenden Daten zu definieren.
 - **PowerShell.** Sie können ein PowerShell-Skript über eine Befehlszeile oder ein Azure Automation-Runbook ausführen, das Daten mithilfe von [Get-AzureRmOperationalInsightsSearchResults](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/get-azurermoperationalinsightssearchresults?view=azurermps-4.0.0) von Log Analytics abruft.  Dieses Cmdlet erfordert eine Abfrage, um die abzurufenden Daten festzulegen.
 - **Log Analytics-API.**  Die [Log Analytics-Protokollsuch-API](../monitoring-and-diagnostics/monitoring-overview-alerts.md) ermöglicht einem beliebigen REST-API-Client, Protokolldaten aus einem Arbeitsbereich abzurufen.  Die API-Anforderung enthält eine Abfrage, die für Log Analytics ausgeführt wird, um die abzurufenden Daten zu ermitteln.
@@ -111,4 +111,4 @@ Zwar speichert [Application Insights](../application-insights/app-insights-overv
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Erfahren Sie mehr über die [Portale, die Sie zum Erstellen und Bearbeiten von Protokollsuchen verwenden](log-analytics-log-search-portals.md).
-- Sehen Sie sich ein [Tutorial zum Schreiben von Abfragen](log-analytics-tutorial-viewdata.md) mit der neuen Abfragesprache an.
+- Sehen Sie sich ein [Tutorial zum Schreiben von Abfragen](query-language/get-started-queries.md) mit der neuen Abfragesprache an.

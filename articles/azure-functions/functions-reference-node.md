@@ -12,12 +12,12 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.date: 10/26/2018
 ms.author: glenga
-ms.openlocfilehash: 506bbcf31833b20a6ee06e85fbad166d1f0b80e2
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 44a2cb196e1a89b0abe229f478c0b76b146aa268
+ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567144"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52620624"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>JavaScript-Entwicklerhandbuch für Azure Functions
 
@@ -70,8 +70,6 @@ module.exports = function(context, myTrigger, myInput, myOtherInput) {
 ```
 
 ### <a name="exporting-an-async-function"></a>Exportieren einer Async-Funktion
-Bei der Verwendung der JavaScript-Deklaration [`async function`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/async_function) oder andernfalls bei der Rückgabe einer JavaScript-[Zusage](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise) (in Functions v1.x nicht verfügbar), müssen Sie den [`context.done`](#contextdone-method)-Rückruf nicht explizit aufrufen, um zu signalisieren, dass Ihre Funktion abgeschlossen wurde. Ihre Funktion wird abgeschlossen, wenn die exportierte asynchrone Funktion/Zusage abgeschlossen wird.
-
 Bei der Verwendung der Deklaration [`async function`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/async_function) oder einfacher JavaScript-[Zusagen](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise) in Version 2.x der Functions-Runtime müssen Sie den [`context.done`](#contextdone-method)-Rückruf nicht explizit aufrufen, um zu signalisieren, dass Ihre Funktion abgeschlossen wurde. Ihre Funktion wird abgeschlossen, wenn die exportierte asynchrone Funktion/Zusage abgeschlossen wird. Bei Funktionen für Version 1.x der Runtime müssen Sie jedoch [`context.done`](#contextdone-method) aufrufen, wenn die Ausführung des Codes abgeschlossen wurde.
 
 Beim folgenden Beispiel handelt es sich um eine einfache Funktion, die ihre Auslösung protokolliert und dann die Ausführung abschließt.

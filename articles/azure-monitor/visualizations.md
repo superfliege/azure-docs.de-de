@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2018
 ms.author: bwren
-ms.openlocfilehash: 7a3545e3fdf37f33db4c3b77be6cf6d5db0f6aef
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 4200accee94840a8a4455308f24a857fd5d7034a
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46973574"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52632975"
 ---
 # <a name="visualizing-data-from-azure-monitor"></a>Visualisieren von Daten aus Azure Monitor
-Dieser Artikel enthält eine Zusammenfassung der verfügbaren Methoden zum Visualisieren in Azure Monitor gespeicherter Daten. Dies schließt [Metriken im Azure-Metrikenspeicher](../monitoring/monitoring-data-collection.md#metrics) und [Protokolldaten in Log Analytics](../monitoring/monitoring-data-collection.md#logs) ein. 
+Dieser Artikel enthält eine Zusammenfassung der verfügbaren Methoden zum Visualisieren in Azure Monitor gespeicherter Daten. Dies schließt [Metriken im Azure-Metrikenspeicher](../azure-monitor/platform/data-collection.md#metrics) und [Protokolldaten in Log Analytics](../azure-monitor/platform/data-collection.md#logs) ein. 
 
 Visualisierungen wie Diagramme und Grafiken können Ihnen die Analyse Ihrer Überwachungsdaten zur Anzeige von Detailinformationen zu Problemen und zum Identifizieren von Mustern erleichtern. Je nach dem Tool, das Sie verwenden, haben Sie vielleicht auch die Möglichkeit, Visualisierungen für andere Benutzer innerhalb und außerhalb Ihrer Organisation freizugeben.
 
@@ -50,7 +50,7 @@ Visualisierungen wie Diagramme und Grafiken können Ihnen die Analyse Ihrer Übe
 - Eingeschränkte kontextbezogene Anzeige von Detailinformationen.
 
 ## <a name="azure-monitor-views"></a>Azure Monitor-Ansichten
-Mit [Ansichten in Azure Monitor](../log-analytics/log-analytics-view-designer.md) erstellen Sie benutzerdefinierte Visualisierungen mit Protokolldaten, die in Log Analytics gespeichert sind. Sie werden von [Überwachungslösungen](../monitoring/monitoring-solutions.md) zur Präsentation der Daten verwendet, die sie sammeln.
+Mit [Ansichten in Azure Monitor](../azure-monitor/platform/view-designer.md) erstellen Sie benutzerdefinierte Visualisierungen mit Protokolldaten, die in Log Analytics gespeichert sind. Sie werden von [Überwachungslösungen](../azure-monitor/insights/solutions.md) zur Präsentation der Daten verwendet, die sie sammeln.
 
 ![Sicht](media/visualizations/view.png)
 
@@ -58,7 +58,7 @@ Mit [Ansichten in Azure Monitor](../log-analytics/log-analytics-view-designer.md
 - Umfangreiche Visualisierungen für Log Analytics-Daten.
 - Exportieren und Importieren von Ansichten, um sie in andere Ressourcengruppen und Abonnements zu übertragen.
 - Integriert in das Log Analytics-Verwaltungsmodell mit Arbeitsbereichen und Überwachungslösungen.
-- [Filtern](../log-analytics/log-analytics-view-designer-filters.md) nach benutzerdefinierten Parametern.
+- [Filtern](../azure-monitor/platform/view-designer-filters.md) nach benutzerdefinierten Parametern.
 - Interaktiv, unterstützt Drill-In (Sicht, die Detailinformationen einer anderen Ansicht zeigt) mit mehreren Ebenen.
 
 ### <a name="limitations"></a>Einschränkungen
@@ -138,9 +138,9 @@ Sie können in Azure-Metriken und Log Analytics mit einem beliebigen REST-Client
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-- Weitere Informationen zum [Sammeln von Daten in Azure Monitor](../monitoring/monitoring-data-collection.md).
+- Weitere Informationen zum [Sammeln von Daten in Azure Monitor](../azure-monitor/platform/data-collection.md).
 - Weitere Informationen zum [Erstellen und Freigeben von Dashboards im Azure-Portal](../azure-portal/azure-portal-dashboards.md).
-- Weitere Informationen zum [Erstellen benutzerdefinierter Ansichten mithilfe des Ansicht-Designers in Log Analytics](../log-analytics/log-analytics-view-designer.md).
+- Weitere Informationen zum [Erstellen benutzerdefinierter Ansichten mithilfe des Ansicht-Designers in Log Analytics](../azure-monitor/platform/view-designer.md).
 - Weitere Informationen zum [Untersuchen und Freigeben von Nutzungsdaten mit interaktiven Arbeitsmappen in Application Insights](../application-insights/app-insights-usage-workbooks.md).
 - Weitere Informationen zum [Importieren von Log Analytics-Daten in Power BI](../log-analytics/log-analytics-powerbi.md).
 - Weitere Informationen zum [Überwachen Ihrer Azure-Dienste in Grafana](../monitoring-and-diagnostics/monitor-send-to-grafana.md).

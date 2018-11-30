@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 681f0eeff0d93e6af341d2dddaf7da4475c13d9d
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: a9635a7c9bad9079814750dc4be945701ba80451
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51007194"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52632312"
 ---
 # <a name="configure-collection-of-azure-paas-resource-metrics-with-log-analytics"></a>Konfigurieren der Sammlung von Azure PaaS-Ressourcenmetriken mit Log Analytics
 
@@ -85,4 +85,4 @@ Sie werden aufgefordert, dieselben Informationen wie beim Ausführen des Skripts
 
 * Verwenden Sie [benutzerdefinierte Felder](log-analytics-custom-fields.md), um die Ereignisdatensätze in einzelnen Feldern zu analysieren.
 
-* Lesen Sie [Erstellen eines benutzerdefinierten Dashboards für die Verwendung in Log Analytics](log-analytics-dashboards.md), um zu verstehen, wie Sie Ihre Protokollsuchen für die Organisation auf sinnvolle Weise darstellen.
+* Lesen Sie [Erstellen eines benutzerdefinierten Dashboards für die Verwendung in Log Analytics](../azure-monitor/platform/dashboards.md), um zu verstehen, wie Sie Ihre Protokollsuchen für die Organisation auf sinnvolle Weise darstellen.

@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: a5deccbe87bc8de6f6438259c2a43cc4618c24ab
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: a4c429b1c54c6bf71175abbc763a178792281a0f
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51016702"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52633145"
 ---
 # <a name="connect-configuration-manager-to-log-analytics"></a>Herstellen einer Verbindung zwischen Configuration Manager und Log Analytics
 Sie können Ihre System Center Configuration Manager-Umgebung mit Azure Log Analytics verbinden, um die Daten der Gerätesammlung zu synchronisieren und auf diese Sammlungen in Log Analytics und Azure Automation zu verweisen.  
@@ -57,7 +57,7 @@ Im Folgenden weisen Sie in Ihrem Log Analytics-Arbeitsbereich dem AD-Anwendungs-
 6. Wählen Sie unter der Dropdownliste **Zugriff zuweisen zu** die zuvor in AD erstellte Configuration Manager-Anwendung, und klicken Sie dann auf **OK**.  
 
 ## <a name="download-and-install-the-agent"></a>Herunterladen und Installieren des Agents
-Lesen Sie den Artikel [Verbinden von Windows-Computern mit dem Log Analytics-Dienst in Azure](log-analytics-agent-windows.md), um sich über die verfügbaren Methoden zur Installation des Microsoft Monitoring Agents auf dem Computer zu informieren, auf dem sich die Standortsystemrolle des Configuration Manager-Dienstverbindungspunkts befindet.  
+Lesen Sie den Artikel [Verbinden von Windows-Computern mit dem Log Analytics-Dienst in Azure](../azure-monitor/platform/agent-windows.md), um sich über die verfügbaren Methoden zur Installation des Microsoft Monitoring Agents auf dem Computer zu informieren, auf dem sich die Standortsystemrolle des Configuration Manager-Dienstverbindungspunkts befindet.  
 
 ## <a name="add-a-log-analytics-connection-to-configuration-manager"></a>Hinzufügen einer Log Analytics-Verbindung zu Configuration Manager
 Zum Hinzufügen einer Log Analytics-Verbindung muss für die Configuration Manager-Umgebung ein [Dienstverbindungspunkt](https://technet.microsoft.com/library/mt627781.aspx) für den Onlinemodus konfiguriert sein.

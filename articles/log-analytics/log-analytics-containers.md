@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 575b3ec5e729b325cad216ae463063acbb68f20b
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 81728e7963767cd90bf2486a35fbce55043a76f7
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685938"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52633468"
 ---
 # <a name="container-monitoring-solution-in-log-analytics"></a>Containerüberwachungslösung in Log Analytics
 
@@ -36,7 +36,7 @@ Die Lösung zeigt, welche Container, welches Containerimage und wo Container aus
 - Service Fabric
 - Red Hat OpenShift
 
-Wenn Sie die Leistung Ihrer Workloads überwachen möchten, die in in Azure Kubernetes Service (AKS) gehosteten Kubernetes-Umgebungen bereitgestellt werden, finden Sie die entsprechenden Informationen unter [Überwachen von Azure Kubernetes Service](../monitoring/monitoring-container-insights-overview.md). Die Containerüberwachungslösung umfasst keine Unterstützung zur Überwachung dieser Plattform.  
+Wenn Sie die Leistung Ihrer Workloads überwachen möchten, die in in Azure Kubernetes Service (AKS) gehosteten Kubernetes-Umgebungen bereitgestellt werden, finden Sie die entsprechenden Informationen unter [Überwachen von Azure Kubernetes Service](../azure-monitor/insights/container-insights-overview.md). Die Containerüberwachungslösung umfasst keine Unterstützung zur Überwachung dieser Plattform.  
 
 In der folgenden Abbildung sind die Beziehungen zwischen verschiedenen Containerhosts und Agents mit Log Analytics dargestellt.
 
@@ -49,7 +49,7 @@ Prüfen Sie zunächst anhand der folgenden Informationen, ob die Voraussetzungen
 ### <a name="container-monitoring-solution-support-for-docker-orchestrator-and-os-platform"></a>Unterstützung der Containerüberwachungslösung für Docker Orchestrator und das Betriebssystem
 In der folgenden Tabelle werden die Docker-Orchestrierung und die Unterstützung der Betriebssystemüberwachung von Containerbestand, Leistung und Protokollen mit Log Analytics aufgeführt.   
 
-| | ACS |  Linux |  Windows | Container<br>Inventory | Image<br>Inventory | Knoten<br>Inventory | Container<br>Leistung | Container<br>Ereignis | Ereignis<br>Protokoll | Container<br>Protokoll |
+| | ACS | Linux | Windows | Container<br>Inventory | Image<br>Inventory | Knoten<br>Inventory | Container<br>Leistung | Container<br>Ereignis | Ereignis<br>Protokoll | Container<br>Protokoll |
 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
 | kubernetes | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; |
 | Mesosphere<br>DC/OS | &#8226; | &#8226; | | &#8226; | &#8226; | &#8226; | &#8226;| &#8226; | &#8226; | &#8226; |
@@ -97,7 +97,7 @@ In der folgenden Tabelle werden die Docker-Orchestrierung und die Unterstützung
 ## <a name="installing-and-configuring-the-solution"></a>Installieren und Konfigurieren der Lösung
 Verwenden Sie die folgenden Informationen zum Installieren und Konfigurieren der Lösung.
 
-1. Fügen Sie mithilfe des [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ContainersOMS?tab=Overview) oder des unter [Hinzufügen von Log Analytics-Lösungen aus dem Lösungskatalog](../monitoring/monitoring-solutions.md) beschriebenen Prozesses Ihrem Log Analytics-Arbeitsbereich die Containerüberwachungslösung hinzu.
+1. Fügen Sie mithilfe des [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ContainersOMS?tab=Overview) oder des unter [Hinzufügen von Log Analytics-Lösungen aus dem Lösungskatalog](../azure-monitor/insights/solutions.md) beschriebenen Prozesses Ihrem Log Analytics-Arbeitsbereich die Containerüberwachungslösung hinzu.
 
 2. Installieren und verwenden Sie Docker mit einem Log Analytics-Agent. Basierend auf Ihrem Betriebssystem und Docker-Orchestrator können Sie die folgenden Methoden verwenden, um den Agent zu konfigurieren.
   - Für eigenständige Hosts:
@@ -126,7 +126,7 @@ Verwenden Sie nach dem Installieren von Docker die folgenden Einstellungen für 
 
 **Für alle Linux-Containerhosts mit Ausnahme von CoreOS:**
 
-- Weitere Informationen und Anweisungen zum Installieren des Log Analytics-Agents für Linux finden Sie in der [Übersicht zum Log Analytics-Agent für Linux](log-analytics-agent-overview.md).
+- Weitere Informationen und Anweisungen zum Installieren des Log Analytics-Agents für Linux finden Sie in der [Übersicht zum Log Analytics-Agent für Linux](../azure-monitor/platform/log-analytics-agent.md).
 
 **Für alle Linux-Containerhosts mit CoreOS:**
 
@@ -524,9 +524,9 @@ Weitere Informationen zur Docker-Daemon-Konfiguration mit Windows-Containern fin
 
 #### <a name="install-windows-agents"></a>Installieren des Windows-Agents
 
-Um die Überwachung von Windows- und Hyper-V-Containern zu aktivieren, installieren Sie den Microsoft Monitoring Agent (MMA) auf Windows-Computern, bei denen es sich um Containerhosts handelt. Informationen zu Windows-Computern in Ihrer lokalen Umgebung finden Sie unter [Verbinden von Windows-Computern mit Log Analytics](log-analytics-agent-windows.md). Verbinden Sie virtuelle Computer in Azure unter Verwendung der [VM-Erweiterung](log-analytics-quick-collect-azurevm.md) mit Log Analytics.
+Um die Überwachung von Windows- und Hyper-V-Containern zu aktivieren, installieren Sie den Microsoft Monitoring Agent (MMA) auf Windows-Computern, bei denen es sich um Containerhosts handelt. Informationen zu Windows-Computern in Ihrer lokalen Umgebung finden Sie unter [Verbinden von Windows-Computern mit Log Analytics](../azure-monitor/platform/agent-windows.md). Verbinden Sie virtuelle Computer in Azure unter Verwendung der [VM-Erweiterung](log-analytics-quick-collect-azurevm.md) mit Log Analytics.
 
-Sie können Windows-Container überwachen, die unter Service Fabric ausgeführt werden. Allerdings werden derzeit nur [unter Azure ausgeführte virtuelle Computer](log-analytics-quick-collect-azurevm.md) und [Windows-Computer, die in Ihrer lokalen Umgebung ausgeführt werden](log-analytics-agent-windows.md), für Service Fabric unterstützt.
+Sie können Windows-Container überwachen, die unter Service Fabric ausgeführt werden. Allerdings werden derzeit nur [unter Azure ausgeführte virtuelle Computer](log-analytics-quick-collect-azurevm.md) und [Windows-Computer, die in Ihrer lokalen Umgebung ausgeführt werden](../azure-monitor/platform/agent-windows.md), für Service Fabric unterstützt.
 
 Sie können überprüfen, ob die Containerüberwachungslösung für Windows korrekt festgelegt ist. Um zu überprüfen, ob das Management Pack ordnungsgemäß heruntergeladen wurde, suchen Sie nach *ContainerManagement.xxx*. Die Dateien sollten sich im Verzeichnis „C:\Program Files\Microsoft Monitoring Agent\Agent\Health Service State\Management Packs“ befinden.
 
@@ -543,7 +543,7 @@ Die Containerüberwachungslösung sammelt verschiedene Leistungsmetriken und Pro
 Alle drei Minuten werden von den folgenden Agent-Typen Daten gesammelt.
 
 - [Log Analytics-Agent für Linux](log-analytics-quick-collect-linux-computer.md)
-- [Windows-Agent](log-analytics-agent-windows.md)
+- [Windows-Agent](../azure-monitor/platform/agent-windows.md)
 - [Log Analytics-VM-Erweiterung](log-analytics-quick-collect-azurevm.md)
 
 

@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 10/25/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: bb7e422e0eb4a71e0f88a911083f8f5d6fb0ef2f
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: d42a9458afa6244e0b6d8e7deb420a8ac49a130f
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50092167"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52634165"
 ---
 # <a name="automate-resources-in-your-datacenter-or-cloud-by-using-hybrid-runbook-worker"></a>Automatisieren von Ressourcen im Datencenter oder in der Cloud mit Hybrid Runbook Worker
 
@@ -95,7 +95,7 @@ Um eine Gruppe zu entfernen, müssen Sie zunächst den Hybrid Runbook Worker von
 
 ### <a name="hybrid-worker-role"></a>Hybrid Worker-Rolle
 
-Damit der Hybrid Runbook Worker eine Verbindung mit Log Analytics herstellen und sich bei dem Dienst registrieren kann, benötigt er Zugriff auf die in diesem Abschnitt angegebene Portnummer und die URLs. Dieser Zugriff wird zusätzlich zu den [für Microsoft Monitoring Agent erforderlichen Ports und URLs](../log-analytics/log-analytics-agent-windows.md) für das Herstellen einer Verbindung mit Log Analytics benötigt.
+Damit der Hybrid Runbook Worker eine Verbindung mit Log Analytics herstellen und sich bei dem Dienst registrieren kann, benötigt er Zugriff auf die in diesem Abschnitt angegebene Portnummer und die URLs. Dieser Zugriff wird zusätzlich zu den [für Microsoft Monitoring Agent erforderlichen Ports und URLs](../azure-monitor/platform/agent-windows.md) für das Herstellen einer Verbindung mit Log Analytics benötigt.
 
 Wenn Sie einen Proxyserver für die Kommunikation zwischen dem Agent und dem Log Analytics-Dienst verwenden, müssen Sie sicherstellen, dass auf die entsprechenden Ressourcen zugegriffen werden kann. Wenn Sie eine Firewall verwenden, um den Zugriff auf das Internet einzuschränken, müssen Sie die Firewall so konfigurieren, dass der Zugriff möglich ist. Wenn Sie das Log Analytics-Gateway als Proxy verwenden, achten Sie darauf, dass es für Hybrid Worker konfiguriert ist. Eine entsprechende Anleitung finden Sie unter [Konfigurieren des Log Analytics-Gateways für Automation Hybrid Worker](https://docs.microsoft.com/azure/log-analytics/log-analytics-oms-gateway#configure-for-automation-hybrid-workers).
 

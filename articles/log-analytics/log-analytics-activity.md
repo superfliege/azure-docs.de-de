@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: fab4bcb62d15be11ab0a588b7a58447f05b4466a
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 6e711b99fa197a2092a673c87124e49fcf3c293e
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51014668"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52635525"
 ---
 # <a name="collect-and-analyze-azure-activity-logs-in-log-analytics"></a>Erfassen und Analysieren von Azure-Aktivitätsprotokollen in Log Analytics
 
@@ -54,7 +54,7 @@ Im Gegensatz zu den meisten anderen Log Analytics-Lösungen werden die Daten fü
 
 | Verbundene Quelle | Unterstützt | BESCHREIBUNG |
 | --- | --- | --- |
-| [Windows-Agents](log-analytics-agent-windows.md) | Nein  | Die Lösung erfasst keine Informationen von Windows-Agents. |
+| [Windows-Agents](../azure-monitor/platform/agent-windows.md) | Nein  | Die Lösung erfasst keine Informationen von Windows-Agents. |
 | [Linux-Agents](log-analytics-quick-collect-linux-computer.md) | Nein  | Die Lösung erfasst keine Informationen von Linux-Agents. |
 | [SCOM-Verwaltungsgruppe](log-analytics-om-agents.md) | Nein  | Die Lösung erfasst keine Informationen von Agents in einer verbundenen SCOM-Verwaltungsgruppe. |
 | [Azure-Speicherkonto](log-analytics-azure-storage.md) | Nein  | Die Lösung erfasst keine Informationen von Azure Storage. |
@@ -67,7 +67,7 @@ Im Gegensatz zu den meisten anderen Log Analytics-Lösungen werden die Daten fü
 
 Führen Sie die folgenden Schritte aus, um die Log Analytics-Lösung für Aktivitätsprotokolle für Ihre Arbeitsbereiche zu konfigurieren.
 
-1. Aktivieren Sie die Log Analytics-Lösung für Aktivitätsprotokolle in [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureActivityOMS?tab=Overview) oder entsprechend den unter [Hinzufügen von Log Analytics-Lösungen aus dem Lösungskatalog](../monitoring/monitoring-solutions.md) beschriebenen Schritten.
+1. Aktivieren Sie die Log Analytics-Lösung für Aktivitätsprotokolle in [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureActivityOMS?tab=Overview) oder entsprechend den unter [Hinzufügen von Log Analytics-Lösungen aus dem Lösungskatalog](../azure-monitor/insights/solutions.md) beschriebenen Schritten.
 2. Konfigurieren Sie Aktivitätsprotokolle so, dass sie in Ihrem Log Analytics-Arbeitsbereich gespeichert werden.
     1. Wählen Sie im Azure-Portal Ihren Arbeitsbereich aus, und klicken Sie dann auf **Azure-Aktivitätsprotokoll**.
     2. Klicken Sie für jedes Abonnement auf den entsprechenden Namen.  

@@ -10,12 +10,12 @@ ms.component: text-analytics
 ms.topic: article
 ms.date: 11/14/2018
 ms.author: diberry
-ms.openlocfilehash: 27a4bccfbac73c7c8c902a59fdd4cafe0c420c31
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 1d13e2ccbbc1d5c1bc80dffc260a3759fe378d7d
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634898"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52634539"
 ---
 # <a name="install-and-run-containers"></a>Installieren und Ausführen von Containern
 
@@ -58,9 +58,6 @@ Führen Sie die folgenden Schritte aus, um eine Gesichtserkennungsressource zu e
 
 1. Erstellen Sie eine Gesichtserkennungsressource im Azure-Portal.  
    Wenn Sie den Container für die Gesichtserkennung verwenden möchten, müssen Sie zuerst im Azure-Portal eine entsprechende Gesichtserkennungsressource erstellen. Weitere Informationen hierzu finden Sie unter [Schnellstart: Erstellen eines Cognitive Services-Kontos im Azure-Portal](../cognitive-services-apis-create-account.md).
-
-   > [!IMPORTANT]
-   > Die Gesichtserkennungsressource muss den F0-Tarif verwenden.
 
 1. Rufen Sie die Endpunkt-URL und den Abonnementschlüssel für die Azure-Ressource ab.  
    Nachdem die Azure-Ressource erstellt wurde, müssen Sie die Endpunkt-URL und den Abonnementschlüssel aus dieser Ressource verwenden, um den entsprechenden Container für die Gesichtserkennung zu instanziieren. Sie können die Endpunkt-URL und den Abonnementschlüssel im Azure-Portal auf den Seiten „Schnellstart“ bzw. „Schlüssel“ der Gesichtserkennungsressource kopieren.

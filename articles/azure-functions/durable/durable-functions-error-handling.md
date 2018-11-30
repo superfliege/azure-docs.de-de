@@ -1,0 +1,218 @@
+---
+title: Fehlerbehandlung in Durable Functions – Azure
+description: Erfahren Sie, wie Sie Fehler in der Durable Functions-Erweiterung für Azure Functions behandeln.
+services: functions
+author: kashimiz
+manager: jeconnoc
+keywords: ''
+ms.service: azure-functions
+ms.devlang: multiple
+ms.topic: conceptual
+ms.date: 10/23/2018
+ms.author: azfuncdf
+ms.openlocfilehash: 61496d91c9ec2cd1dcf498df04d2dab6629e009c
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52637515"
+---
+# <a name="handling-errors-in-durable-functions-azure-functions"></a>Fehlerbehandlung in Durable Functions (Azure Functions)
+
+Durable Function-Orchestrierungen sind im Code implementiert und können die Funktionen zur Fehlerbehandlung aus der Programmiersprache nutzen. Daher gibt es eigentlich keine neuen Konzepte, die Sie bei der Einbindung der Fehlerbehandlung und Kompensierung in Ihre Orchestrierungen beachten müssen. Es gibt jedoch einige wenige Verhaltensweisen, die Sie kennen sollten:
+
+## <a name="errors-in-activity-functions"></a>Fehler in Aktivitätsfunktionen
+
+Jede Ausnahme, die in einer Aktivitätsfunktion ausgelöst wird, wird zurück zur Orchestratorfunktion gemarshallt und als `FunctionFailedException` ausgelöst. Sie können Code zur Fehlerbehandlung und zur Kompensierung in der Orchestratorfunktion schreiben, der Ihren Bedürfnissen entspricht.
+
+Betrachten Sie beispielsweise die folgende Orchestratorfunktion, die Guthaben von einem Konto auf ein anderes überträgt:
+
+#### <a name="c"></a>C#
+
+```csharp
+#r "Microsoft.Azure.WebJobs.Extensions.DurableTask"
+
+public static async Task Run(DurableOrchestrationContext context)
+{
+    var transferDetails = ctx.GetInput<TransferOperation>();
+
+    await context.CallActivityAsync("DebitAccount",
+        new
+        { 
+            Account = transferDetails.SourceAccount,
+            Amount = transferDetails.Amount
+        });
+
+    try
+    {
+        await context.CallActivityAsync("CreditAccount",         
+            new
+            { 
+                Account = transferDetails.DestinationAccount,
+                Amount = transferDetails.Amount
+            });
+    }
+    catch (Exception)
+    {
+        // Refund the source account.
+        // Another try/catch could be used here based on the needs of the application.
+        await context.CallActivityAsync("CreditAccount",         
+            new
+            { 
+                Account = transferDetails.SourceAccount,
+                Amount = transferDetails.Amount
+            });
+    }
+}
+```
+
+#### <a name="javascript-functions-v2-only"></a>JavaScript (nur Functions v2)
+
+```javascript
+const df = require("durable-functions");
+
+module.exports = df.orchestrator(function*(context) {
+    const transferDetails = context.df.getInput();
+
+    yield context.df.callActivity("DebitAccount",
+        {
+            account = transferDetails.sourceAccount,
+            amount = transferDetails.amount,
+        }
+    );
+
+    try {
+        yield context.df.callActivity("CreditAccount",
+            {
+                account = transferDetails.destinationAccount,
+                amount = transferDetails.amount,
+            }
+        );
+    }
+    catch (error) {
+        // Refund the source account.
+        // Another try/catch could be used here based on the needs of the application.
+        yield context.df.callActivity("CreditAccount",
+            {
+                account = transferDetails.sourceAccount,
+                amount = transferDetails.amount,
+            }
+        );
+    }
+});
+```
+
+Wenn der Aufruf der **CreditAccount**-Funktion (Kreditkonto) für das Zielkonto fehlschlägt, wird dies durch die Orchestratorfunktion kompensiert, indem die Gelder auf das Quellkonto zurücküberwiesen werden.
+
+## <a name="automatic-retry-on-failure"></a>Automatische Wiederholung bei einem Fehler
+
+Wenn Sie Aktivitätsfunktionen oder untergeordnete Orchestrierungsfunktionen aufrufen, können Sie eine Richtlinie für automatische Wiederholungen angeben. Im folgenden Beispiel wird versucht, eine Funktion bis zu 3-mal mit je 5 Sekunden Wartezeit zwischen den einzelnen Wiederholungsversuchen aufzurufen:
+
+#### <a name="c"></a>C#
+
+```csharp
+public static async Task Run(DurableOrchestrationContext context)
+{
+    var retryOptions = new RetryOptions(
+        firstRetryInterval: TimeSpan.FromSeconds(5),
+        maxNumberOfAttempts: 3);
+
+    await ctx.CallActivityWithRetryAsync("FlakyFunction", retryOptions, null);
+    
+    // ...
+}
+```
+
+#### <a name="javascript-functions-v2-only"></a>JavaScript (nur Functions v2)
+
+```javascript
+const df = require("durable-functions");
+
+module.exports = df.orchestrator(function*(context) {
+    const retryOptions = new df.RetryOptions(5000, 3);
+    
+    yield context.df.callActivityWithRetry("FlakyFunction", retryOptions);
+
+    // ...
+});
+```
+
+Die `CallActivityWithRetryAsync`-API (C#) oder die `callActivityWithRetry`-API (JS) erstellt einen `RetryOptions`-Parameter. Untergeordnete Orchestrierungsaufrufe, die die `CallSubOrchestratorWithRetryAsync`-API (C#) oder `callSubOrchestratorWithRetry`-API (JS) verwenden, können dieselben Wiederholungsrichtlinien verwenden.
+
+Es stehen mehrere Optionen zur Verfügung, um die automatische Wiederholungsrichtlinie anzupassen. Dazu zählen:
+
+* **Max number of attempts** (Maximale Anzahl von Versuchen): Die maximale Anzahl von Wiederholungsversuchen.
+* **First retry interval** (Erstes Wiederholungsintervall): Die Zeitspanne bis zum Ablauf des ersten Wiederholungsversuchs.
+* **Backoff-Koeffizient**: Der Koeffizient, der verwendet wird, um den Anstieg der Backoff-Intervalle zu bestimmen. Der Standardwert lautet 1.
+* **Max retry interval** (Maximales Wiederholungsintervall): die maximale Zeitspanne zwischen den Wiederholungsversuchen.
+* **Retry timeout** (Timeout wiederholen): die maximale Zeitspanne für das Ausführen von Wiederholungsversuchen. Das Standardverhalten ist das Wiederholen auf unbestimmte Zeit.
+* **Handle:** Es kann ein benutzerdefinierter Rückruf angegeben werden, der bestimmt, ob ein Funktionsaufruf wiederholt werden soll.
+
+## <a name="function-timeouts"></a>Funktion-Timeouts
+
+Vielleicht möchten Sie einen Funktionsaufruf innerhalb einer Orchestratorfunktion verwerfen, wenn der Vorgang zu lange dauert. Die richtige Vorgehensweise ist das Erstellen eines [durable timer](durable-functions-timers.md) (permanenter Timer) mit `context.CreateTimer` in Verbindung mit `Task.WhenAny`, wie im folgenden Beispiel:
+
+#### <a name="c"></a>C#
+
+```csharp
+public static async Task<bool> Run(DurableOrchestrationContext context)
+{
+    TimeSpan timeout = TimeSpan.FromSeconds(30);
+    DateTime deadline = context.CurrentUtcDateTime.Add(timeout);
+
+    using (var cts = new CancellationTokenSource())
+    {
+        Task activityTask = context.CallActivityAsync("FlakyFunction");
+        Task timeoutTask = context.CreateTimer(deadline, cts.Token);
+
+        Task winner = await Task.WhenAny(activityTask, timeoutTask);
+        if (winner == activityTask)
+        {
+            // success case
+            cts.Cancel();
+            return true;
+        }
+        else
+        {
+            // timeout case
+            return false;
+        }
+    }
+}
+```
+
+#### <a name="javascript-functions-v2-only"></a>JavaScript (nur Functions v2)
+
+```javascript
+const df = require("durable-functions");
+const moment = require("moment");
+
+module.exports = df.orchestrator(function*(context) {
+    const deadline = moment.utc(context.df.currentUtcDateTime).add(30, "s");
+
+    const activityTask = context.df.callActivity("FlakyFunction");
+    const timeoutTask = context.df.createTimer(deadline.toDate());
+
+    const winner = yield context.df.Task.any([activityTask, timeoutTask]);
+    if (winner === activityTask) {
+        // success case
+        timeoutTask.cancel();
+        return true;
+    } else {
+        // timeout case
+        return false;
+    }
+});
+```
+
+> [!NOTE]
+> Dieser Mechanismus beendet laufende Aktivitätsausführungsfunktionen nicht. Stattdessen lässt er zu, dass die Orchestratorfunktion das Ergebnis ignoriert und fortfährt. Weitere Informationen finden Sie in der Dokumentation zu [Timern](durable-functions-timers.md#usage-for-timeout).
+
+## <a name="unhandled-exceptions"></a>Nicht behandelte Ausnahmen
+
+Fällt eine Orchestratorfunktion mit einer nicht behandelten Ausnahme aus, werden die Details der Ausnahme protokolliert, und die Instanz wird mit einem `Failed`-Status abgeschlossen.
+
+## <a name="next-steps"></a>Nächste Schritte
+
+> [!div class="nextstepaction"]
+> [Learn how to diagnose problems (Informationen zur Diagnose von Problemen)](durable-functions-diagnostics.md)

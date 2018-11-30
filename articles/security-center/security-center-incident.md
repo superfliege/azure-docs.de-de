@@ -3,7 +3,7 @@ title: Behandeln von Sicherheitswarnungen in Azure Security Center | Microsoft-D
 description: Dieses Dokument enthält hilfreiche Informationen zur Verwendung der Azure Security Center-Funktionen zum Behandeln von Sicherheitsvorfällen.
 services: security-center
 documentationcenter: na
-author: terrylan
+author: rkarlin
 manager: mbaldwin
 editor: ''
 ms.assetid: e8feb669-8f30-49eb-ba38-046edf3f9656
@@ -12,14 +12,14 @@ ms.topic: conceptual
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/27/2017
-ms.author: yurid
-ms.openlocfilehash: f1cda4eb48235f9b72697eee77aac6a4e576aaf2
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 11/29/2018
+ms.author: rkarlin
+ms.openlocfilehash: 40e46ed99684877e829068c209ab318913b79e2a
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51258493"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52633927"
 ---
 # <a name="handling-security-incidents-in-azure-security-center"></a>Behandeln von Sicherheitsincidents in Azure Security Center
 Das Selektieren und Untersuchen von Sicherheitswarnungen kann auch für sehr erfahrene Sicherheitsanalysten zeitaufwändig sein, und häufig ist nur schwer zu erkennen, wo überhaupt begonnen werden soll. Mithilfe von [Analysen](security-center-detection-capabilities.md) zum Verknüpfen der Informationen der einzelnen [Sicherheitswarnungen](security-center-managing-and-responding-alerts.md) kann Security Center Ihnen eine zentrale Übersicht über einen Angriffsversuch und alle zugehörigen Warnungen bieten. So können Sie schnell überblicken, welche Aktionen der Angreifer unternommen hat und welche Ressourcen betroffen sind.

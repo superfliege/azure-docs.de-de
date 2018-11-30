@@ -12,14 +12,14 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/13/2018
+ms.date: 11/29/2018
 ms.author: anwestg
-ms.openlocfilehash: aa745d827db7633dc9f8601f65fa31dfadbb4076
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: cd16bf400c5a5e5a07c7e2dc459d801e6fc810b9
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51614054"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52635372"
 ---
 # <a name="add-an-app-service-resource-provider-to-azure-stack"></a>Hinzufügen eines App Service-Ressourcenanbieters zu Azure Stack
 
@@ -202,17 +202,17 @@ Führen Sie zum Bereitstellen eines App Service-Ressourcenanbieters die folgende
 
     ![App Service-Verwaltung](media/azure-stack-app-service-deploy/image12.png)
 
-   >[!IMPORTANT]
-   >Wenn Sie die Bereitstellung in einem vorhandenen virtuellen Netzwerk durchführen und eine interne IP-Adresse für die Verbindung mit Ihrem Dateiserver verwenden, müssen Sie eine Sicherheitsregel für ausgehenden Datenverkehr hinzufügen. Diese Regel ermöglicht SMB-Datenverkehr zwischen dem Workersubnetz und dem Dateiserver.  Wechseln Sie dazu im Admin-Portal zur WorkersNsg, und fügen Sie eine Sicherheitsregel für ausgehenden Datenverkehr mit den folgenden Eigenschaften hinzu:<br>
-    >  - Quelle: Beliebig
-    >  - Quellportbereich: *
-    >  - Ziel: IP-Adressen
-    >  - Ziel-IP-Adressbereich: Bereich der IPs für Ihren Dateiserver
-    >  - Zielportbereich: 445
-    >  - Protokoll: TCP
-    >  - Aktion: Zulassen
-    >  - Priorität: 700
-    >  - Name: Outbound_Allow_SMB445
+    Wenn Sie die Bereitstellung in einem vorhandenen virtuellen Netzwerk durchführen und eine interne IP-Adresse für die Verbindung mit Ihrem Dateiserver verwenden, müssen Sie eine Sicherheitsregel für ausgehenden Datenverkehr hinzufügen. Diese Regel ermöglicht SMB-Datenverkehr zwischen dem Workersubnetz und dem Dateiserver.  Wechseln Sie dazu im Admin-Portal zur WorkersNsg, und fügen Sie eine Sicherheitsregel für ausgehenden Datenverkehr mit den folgenden Eigenschaften hinzu:
+
+    - Quelle: Beliebig
+    - Quellportbereich: *
+    - Ziel: IP-Adressen
+    - Ziel-IP-Adressbereich: Bereich der IPs für Ihren Dateiserver
+    - Zielportbereich: 445
+    - Protokoll: TCP
+    - Aktion: Zulassen
+    - Priorität: 700
+    - Name: Outbound_Allow_SMB445
 
 ## <a name="test-drive-app-service-on-azure-stack"></a>Testen von App Service in Azure Stack
 

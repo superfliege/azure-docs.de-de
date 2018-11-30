@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/16/2018
 ms.author: srrengar
-ms.openlocfilehash: 35d1fa5f8963d007b1d8b59ccf0f1dec7abafa09
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 146ea6431516f7b78d23cd4b36aff43110639e83
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49402233"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52633094"
 ---
 # <a name="diagnose-common-scenarios-with-service-fabric"></a>Diagnostizieren häufiger Szenarien mit Service Fabric
 
@@ -142,6 +142,6 @@ Nutzen Sie diese Links, um die vollständige Liste der Leistungsindikatoren für
 * [Richten Sie Warnungen in AI ein](../application-insights/app-insights-alerts.md), um Benachrichtigungen zu Änderungen der Leistung oder Nutzung zu erhalten.
 * Die [intelligente Erkennung in Application Insights](../application-insights/app-insights-proactive-diagnostics.md) führt eine proaktive Analyse der an AI gesendeten Telemetriedaten aus, um Sie vor potenziellen Leistungsproblemen zu warnen.
 * Erfahren Sie mehr über die [Warnungen](../log-analytics/log-analytics-alerts.md) von Log Analytics, die bei der Erkennung und Diagnose hilfreich sein können.
-* Für lokale Cluster bietet Log Analytics ein Gateway (HTTP-Weiterleitungsproxy), über das Daten an Log Analytics gesendet werden können. Weitere Informationen dazu finden Sie unter [Verbinden von Computern ohne Internetzugriff mit Log Analytics über das Log Analytics-Gateway](../log-analytics/log-analytics-oms-gateway.md).
+* Für lokale Cluster bietet Log Analytics ein Gateway (HTTP-Weiterleitungsproxy), über das Daten an Log Analytics gesendet werden können. Weitere Informationen dazu finden Sie unter [Verbinden von Computern ohne Internetzugriff mit Log Analytics über das Log Analytics-Gateway](../azure-monitor/platform/gateway.md).
 * Machen Sie sich mit den Features zur [Protokollsuche und -abfrage](../log-analytics/log-analytics-log-searches.md) in Log Analytics vertraut.
 * Eine ausführlichere Übersicht über Log Analytics und die zugehörigen Optionen finden Sie unter [Was ist Log Analytics?](../operations-management-suite/operations-management-suite-overview.md)

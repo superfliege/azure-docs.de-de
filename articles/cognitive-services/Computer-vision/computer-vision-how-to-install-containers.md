@@ -10,16 +10,16 @@ ms.component: text-analytics
 ms.topic: article
 ms.date: 11/14/2018
 ms.author: diberry
-ms.openlocfilehash: 2ba7039fe42e3b5638b99161e12e9888bc852f87
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 67dbf3bdf6631785fc876283847e36349e857a77
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634904"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52634641"
 ---
 # <a name="install-and-run-containers"></a>Installieren und Ausführen von Containern
 
-Die Verwendung von Containern ist ein Ansatz zur Softwareverteilung, bei dem eine Anwendung oder ein Dienst als Containerimage paketiert wird. Die Konfiguration und die Abhängigkeiten der Anwendung oder des Diensts sind im Containerimage enthalten. Das Containerimage kann anschließend mit geringer oder ganz ohne Bearbeitung auf einem Containerhost bereitgestellt werden. Container sind voneinander und vom zugrunde liegenden Betriebssystem isoliert und nehmen weniger Speicher in Anspruch als ein virtueller Computer. Container können für kurzfristige Aufgaben über Containerimages instanziiert und wieder entfernt werden, wenn Sie nicht mehr benötigt werden.
+Die Verwendung von Containern ist ein Ansatz zur Softwareverteilung, bei dem eine Anwendung oder ein Dienst als Containerimage gepackt wird. Die Konfiguration und die Abhängigkeiten der Anwendung bzw. des Diensts sind im Containerimage enthalten. Das Containerimage kann anschließend mit geringer oder ganz ohne Bearbeitung auf einem Containerhost bereitgestellt werden. Container sind voneinander und vom zugrunde liegenden Betriebssystem isoliert und nehmen weniger Speicher in Anspruch als ein virtueller Computer. Container können für kurzfristige Aufgaben über Containerimages instanziiert und wieder entfernt werden, wenn Sie nicht mehr benötigt werden.
 
 Der Texterkennungsteil des maschinelles Sehens ist auch als Docker-Container verfügbar. Damit können Sie gedruckten Text in Bildern von verschiedensten Objekten mit unterschiedlichen Oberflächen und Hintergründen erkennen und extrahieren. Hierzu zählen z.B. Belege, Poster, und Visitenkarten.  
 > [!IMPORTANT]
@@ -31,11 +31,11 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 Zur Verwendung des Texterkennungscontainers müssen Sie die folgenden Voraussetzungen erfüllen:
 
-**Docker-Engine**: Die Docker-Engine muss lokal installiert sein. Docker stellt Pakete zur Konfiguration der Docker-Umgebung unter [macOS](https://docs.docker.com/docker-for-mac/), [Linux](https://docs.docker.com/engine/installation/#supported-platforms) und [Windows](https://docs.docker.com/docker-for-windows/) zur Verfügung. Unter Windows muss Docker für die Unterstützung von Linux-Containern konfiguriert werden. Docker-Container können auch direkt für [Azure Kubernetes Service](/azure/aks/), [Azure Container Instances](/azure/container-instances/) oder für einen [Kubernetes](https://kubernetes.io/)-Cluster mit Bereitstellung in [Azure Stack](/azure/azure-stack/) bereitgestellt werden. Weitere Informationen zum Bereitstellen von Kubernetes in Azure Stack finden Sie unter [Bereitstellen von Kubernetes in Azure Stack](/azure/azure-stack/user/azure-stack-solution-template-kubernetes-deploy).
+**Docker-Engine**: Die Docker-Engine muss lokal installiert sein. Docker stellt Pakete zur Konfiguration der Docker-Umgebung unter [macOS](https://docs.docker.com/docker-for-mac/), [Linux](https://docs.docker.com/engine/installation/#supported-platforms) und [Windows](https://docs.docker.com/docker-for-windows/) zur Verfügung. Unter Windows muss Docker für die Unterstützung von Linux-Containern konfiguriert werden. Docker-Container können auch direkt für [Azure Kubernetes Service](/azure/aks/), [Azure Container Instances](/azure/container-instances/) oder einen [Kubernetes](https://kubernetes.io/)-Cluster mit Bereitstellung in [Azure Stack](/azure/azure-stack/) bereitgestellt werden. Weitere Informationen zum Bereitstellen von Kubernetes in Azure Stack finden Sie unter [Bereitstellen von Kubernetes in Azure Stack](/azure/azure-stack/user/azure-stack-solution-template-kubernetes-deploy).
 
 Docker muss so konfiguriert werden, dass die Container eine Verbindung mit Azure herstellen und Abrechnungsdaten an Azure senden können.
 
-**Kenntnisse von Microsoft Container Registry und Docker**: Sie sollten über Grundkenntnisse der Konzepte von Microsoft Container Registry und Docker verfügen, einschließlich Registrierungen, Repositorys, Container und Containerimages, und die grundlegenden `docker`-Befehle kennen.  
+**Kenntnisse von Microsoft Container Registry und Docker:** Sie sollten über Grundkenntnisse der Konzepte von Microsoft Container Registry und Docker, einschließlich Registrierungen, Repositorys, Container und Containerimages, verfügen und die grundlegenden `docker`-Befehle kennen.  
 
 Eine Einführung in Docker und Container finden Sie in der [Docker-Übersicht](https://docs.docker.com/engine/docker-overview/).
 
@@ -61,9 +61,6 @@ Führen Sie die folgenden Schritte aus, um eine Azure-Ressource zu erstellen und
 1. Erstellen Sie eine Azure-Ressource im Azure-Portal.  
    Wenn Sie den Texterkennungscontainer verwenden möchten, müssen Sie zuerst im Azure-Portal eine entsprechende Ressource für maschinelles Sehen erstellen. Weitere Informationen hierzu finden Sie unter [Schnellstart: Erstellen eines Cognitive Services-Kontos im Azure-Portal](../cognitive-services-apis-create-account.md).
 
-   > [!IMPORTANT]
-   > Die Ressource für maschinelles Sehen muss den F0-Tarif verwenden.
-
 1. Rufen Sie die Endpunkt-URL und den Abonnementschlüssel für die Azure-Ressource ab.  
    Nachdem die Azure-Ressource erstellt wurde, müssen Sie die Endpunkt-URL und den Abonnementschlüssel aus dieser Ressource verwenden, um den entsprechenden Texterkennungscontainer zu instanziieren. Sie können die Endpunkt-URL und den Abonnementschlüssel im Azure-Portal von den Seiten „Schnellstart“ bzw. „Schlüssel“ der Ressource für maschinelles Sehen kopieren.
 
@@ -77,7 +74,7 @@ Verwenden Sie den Befehl [docker login](https://docs.docker.com/engine/reference
 docker login containerpreview.azurecr.io -u <username> -p <password>
 ```
 
-Wenn Sie Ihre Anmeldeinformationen in einer Textdatei gesichert haben, können Sie den Inhalt dieser Textdatei über den Befehl `cat` zum Befehl `docker login` verketten, wie im folgenden Beispiel gezeigt. Ersetzen Sie *\<passwordFile\>* durch den Pfad und den Namen der Textdatei mit dem Kennwort und *\<username\>* durch den Benutzernamen, der in Ihren Anmeldeinformationen angegeben wurde.
+Wenn Sie Ihre Anmeldeinformationen in einer Textdatei gesichert haben, können Sie den Inhalt dieser Textdatei über den Befehl `cat` mit dem Befehl `docker login` verketten, wie im folgenden Beispiel gezeigt. Ersetzen Sie *\<passwordFile\>* durch den Pfad und den Namen der Textdatei mit dem Kennwort und *\<username\>* durch den Benutzernamen, der in Ihren Anmeldeinformationen angegeben wurde.
 
 ```docker
 cat <passwordFile> | docker login containerpreview.azurecr.io -u <username> --password-stdin
@@ -165,7 +162,7 @@ In diesem Artikel haben Sie die Konzepte und den Workflow zum Herunterladen, Ins
 * Containerimages werden in Docker ausgeführt.
 * Sie können entweder die REST-API oder das SDK verwenden, um Vorgänge in Containern für maschinelles Sehen über den Host-URI des Containers aufzurufen.
 * Bei der Instanziierung eines Containers müssen Sie Abrechnungsinformationen angeben.
-* ** Die Ausführung von Cognitive Services-Containern wird erst dann lizenziert, wenn diese zu Messzwecken mit Azure verbunden sind. Kunden müssen sicherstellen, dass Container jederzeit Abrechnungsinformationen an den Messungsdienst übermitteln können. Cognitive Services-Container senden keine Kundendaten (z.B. das analysierte Bild oder den analysierten Text) an Microsoft.  
+* ** Für die Ausführung von Cognitive Services-Containern besteht keine Lizenz, wenn sie nicht zu Messzwecken mit Azure verbunden sind. Kunden müssen sicherstellen, dass Container jederzeit Abrechnungsinformationen an den Messungsdienst übermitteln können. Cognitive Services-Container senden keine Kundendaten (z.B. das analysierte Bild oder den analysierten Text) an Microsoft.  
 
 ## <a name="next-steps"></a>Nächste Schritte
 

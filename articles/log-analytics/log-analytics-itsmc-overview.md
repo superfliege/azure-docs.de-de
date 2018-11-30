@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: v-jysur
 ms.component: ''
-ms.openlocfilehash: 526ba73858322ee41f649a338f22226da6af33e7
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: cab78d09038b8ab00c318b3ce615d99139e9b005
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50964057"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52634029"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>Verbinden von Azure mit ITSM-Tools mithilfe des ITSM-Connectors
 
@@ -84,10 +84,10 @@ Um eine Verbindung herzustellen, müssen Sie Ihr ITSM-Tool vorbereiten, damit di
 
 Abhängig von dem ITSM-Produkt mit dem die Verbindung hergestellt werden soll, führen Sie die folgenden Schritte aus:
 
-- [System Center Service Manager (SCSM)](log-analytics-itsmc-connections.md#connect-system-center-service-manager-to-it-service-management-connector-in-azure)
-- [ServiceNow](log-analytics-itsmc-connections.md#connect-servicenow-to-it-service-management-connector-in-azure)
-- [Provance](log-analytics-itsmc-connections.md#connect-provance-to-it-service-management-connector-in-azure)  
-- [Cherwell](log-analytics-itsmc-connections.md#connect-cherwell-to-it-service-management-connector-in-azure)
+- [System Center Service Manager (SCSM)](../azure-monitor/platform/itsmc-connections.md#connect-system-center-service-manager-to-it-service-management-connector-in-azure)
+- [ServiceNow](../azure-monitor/platform/itsmc-connections.md#connect-servicenow-to-it-service-management-connector-in-azure)
+- [Provance](../azure-monitor/platform/itsmc-connections.md#connect-provance-to-it-service-management-connector-in-azure)  
+- [Cherwell](../azure-monitor/platform/itsmc-connections.md#connect-cherwell-to-it-service-management-connector-in-azure)
 
 Nachdem Sie Ihre ITSM-Tools vorbereitet haben, führen Sie die folgenden Schritte zum Erstellen einer Verbindung aus:
 
@@ -100,7 +100,7 @@ Nachdem Sie Ihre ITSM-Tools vorbereitet haben, führen Sie die folgenden Schritt
 
     ![Hinzufügen einer ITSM-Verbindung](media/log-analytics-itsmc-overview/add-new-itsm-connection.png)
 
-4.  Legen Sie die Verbindungseinstellungen fest, wie in [Verbinden von ITSM-Produkten/-Diensten mit dem IT Service Management Connector (Vorschau)](log-analytics-itsmc-connections.md) beschrieben.
+4.  Legen Sie die Verbindungseinstellungen fest, wie in [Verbinden von ITSM-Produkten/-Diensten mit dem IT Service Management Connector (Vorschau)](../azure-monitor/platform/itsmc-connections.md) beschrieben.
 
     > [!NOTE]
 
@@ -157,13 +157,13 @@ Das Dashboard bietet darüber hinaus Informationen zum Connectorstatus, die als 
 
 Zudem lassen sich die mit den betroffenen Computern synchronisierten Incidents innerhalb der Dienstzuordnungslösung visuell darstellen.
 
-Service Map ermittelt automatisch die Anwendungskomponenten auf Windows- und Linux-Systemen und stellt die Kommunikation zwischen Diensten dar. In dieser Lösung können Sie die Server ihrer Funktion gemäß anzeigen – als verbundene Systeme, die wichtige Dienste bereitstellen. Service Map zeigt Verbindungen zwischen Servern, Prozessen und Ports über die gesamte TCP-Verbindungsarchitektur an. Außer der Installation eines Agents ist keine weitere Konfiguration erforderlich. [Weitere Informationen](../monitoring/monitoring-service-map.md).
+Service Map ermittelt automatisch die Anwendungskomponenten auf Windows- und Linux-Systemen und stellt die Kommunikation zwischen Diensten dar. In dieser Lösung können Sie die Server ihrer Funktion gemäß anzeigen – als verbundene Systeme, die wichtige Dienste bereitstellen. Service Map zeigt Verbindungen zwischen Servern, Prozessen und Ports über die gesamte TCP-Verbindungsarchitektur an. Außer der Installation eines Agents ist keine weitere Konfiguration erforderlich. [Weitere Informationen](../azure-monitor/insights/service-map.md).
 
 Wenn Sie die Dienstzuordnungslösung verwenden, können Sie die in den ITSM-Lösungen erstellten Service Desk-Elemente anzeigen, wie im folgenden Beispiel gezeigt:
 
 ![Log Analytics-Bildschirm](media/log-analytics-itsmc-overview/itsmc-overview-integrated-solutions.png)
 
-Weitere Informationen: [Dienstzuordnung](../monitoring/monitoring-service-map.md)
+Weitere Informationen: [Dienstzuordnung](../azure-monitor/insights/service-map.md)
 
 
 ## <a name="additional-information"></a>Zusätzliche Informationen
@@ -291,7 +291,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
     - dass Sie Benutzername, Kennwort, Client-ID  und geheimen Clientschlüssel für jede der Verbindungen richtig eingegeben haben.  
     - Überprüfen Sie, ob Sie über ausreichende Berechtigungen für das entsprechende ITSM-Produkt verfügen, um die Verbindung herzustellen.  
  - Stellen Sie für Service Manager sicher,  
-    - dass die Web-App erfolgreich bereitgestellt und die Hybridverbindung erstellt wird. Um zu überprüfen, ob die Verbindung mit dem lokalen Service Manager-Computer erfolgreich hergestellt wird, besuchen Sie die Web-App-URL, wie in der Dokumentation zum Herstellen der [Hybridverbindung](log-analytics-itsmc-connections.md#configure-the-hybrid-connection) erläutert.  
+    - dass die Web-App erfolgreich bereitgestellt und die Hybridverbindung erstellt wird. Um zu überprüfen, ob die Verbindung mit dem lokalen Service Manager-Computer erfolgreich hergestellt wird, besuchen Sie die Web-App-URL, wie in der Dokumentation zum Herstellen der [Hybridverbindung](../azure-monitor/platform/itsmc-connections.md#configure-the-hybrid-connection) erläutert.  
 
 2.  Wenn Daten von ServiceNow nicht in Log Analytics synchronisiert werden, stellen Sie sicher, dass sich die ServiceNow-Instanz nicht im Energiesparmodus befindet. ServiceNow-Entwicklungsinstanzen wechseln manchmal nach längerem Leerlauf in den Energiesparmodus. Melden Sie das Problem andernfalls.
 3.  Wenn Log Analytics-Warnungen ausgelöst werden, aber keine Arbeitselemente im ITSM-Produkt oder keine Konfigurationselemente erstellt bzw. diese nicht mit Arbeitselementen verknüpft werden, nutzen Sie folgende Quellen. Dort finden Sie darüber hinaus allgemeine Informationen:
@@ -301,7 +301,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 ## <a name="troubleshoot-service-manager-web-app-deployment"></a>Problembehandlung bei der Service Manager-Web-App-Bereitstellung
 1.  Stellen Sie bei Problemen mit der Web-App-Bereitstellung sicher, dass Sie für das angegebene Abonnement über ausreichende Berechtigungen zum Erstellen/Bereitstellen von Ressourcen verfügen.
 2.  Wenn die Fehlermeldung **Objektverweis ist nicht auf eine Instanz eines Objekts festgelegt** angezeigt wird, während Sie das [Skript](log-analytics-itsmc-service-manager-script.md) ausführen, stellen Sie sicher, dass Sie im Abschnitt **Benutzerkonfiguration** gültige Werte eingegeben haben.
-3.  Wenn Sie den Service Bus Relay-Namespace nicht erstellen, stellen Sie sicher, dass der erforderliche Ressourcenanbieter im Abonnement registriert ist. Wenn er nicht registriert ist, erstellen Sie den Service Bus Relay-Namespace manuell über das Azure-Portal. Sie können ihn auch beim [Erstellen der Hybridverbindung](log-analytics-itsmc-connections.md#configure-the-hybrid-connection) über das Azure-Portal erstellen.
+3.  Wenn Sie den Service Bus Relay-Namespace nicht erstellen, stellen Sie sicher, dass der erforderliche Ressourcenanbieter im Abonnement registriert ist. Wenn er nicht registriert ist, erstellen Sie den Service Bus Relay-Namespace manuell über das Azure-Portal. Sie können ihn auch beim [Erstellen der Hybridverbindung](../azure-monitor/platform/itsmc-connections.md#configure-the-hybrid-connection) über das Azure-Portal erstellen.
 
 
 ## <a name="contact-us"></a>Kontakt
@@ -309,4 +309,4 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 Kontaktieren Sie uns bei Fragen oder Feedback zum IT Service Management Connector über [omsitsmfeedback@microsoft.com](mailto:omsitsmfeedback@microsoft.com).
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Hinzufügen von ITSM-Produkten/-Diensten zum IT Service Management Connector](log-analytics-itsmc-connections.md).
+[Hinzufügen von ITSM-Produkten/-Diensten zum IT Service Management Connector](../azure-monitor/platform/itsmc-connections.md).

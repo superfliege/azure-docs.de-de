@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/15/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: f7122c6147af2ed1af1f3b5e08458fd73f9aef6d
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 6e6db7ef2f2de075aea41a29e69b2c674efafa17
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51279099"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52635355"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Erstellen, Anzeigen und Verwalten von Protokollwarnungen mithilfe von Azure Monitor  
 
@@ -132,7 +132,7 @@ Daher finden Sie im folgenden Abschnitt Details zur Verwendung der Ressourcenvor
 ### <a name="azure-resource-template-for-log-analytics"></a>Azure-Ressourcenvorlage für Log Analytics
 Protokollwarnungen für Log Analytics werden anhand von Warnungsregeln erstellt, die in regelmäßigen Abständen eine gespeicherte Suche ausführen. Wenn die Ergebnisse der Abfrage mit den angegebenen Kriterien übereinstimmen, wird eine Warnung erstellt und mindestens eine Aktion ausgeführt. 
 
-Die Ressourcenvorlagen für die gespeicherte Suche von Log Analytics und Log Analytics-Warnungen stehen im Log Analytics-Abschnitt der Dokumentation zur Verfügung. Erfahren Sie mehr unter [Hinzufügen gespeicherter Suchen und Warnungen von Log Analytics](../monitoring/monitoring-solutions-resources-searches-alerts.md). Hier finden Sie anschauliche Beispiele sowie die Schemadetails.
+Die Ressourcenvorlagen für die gespeicherte Suche von Log Analytics und Log Analytics-Warnungen stehen im Log Analytics-Abschnitt der Dokumentation zur Verfügung. Erfahren Sie mehr unter [Hinzufügen gespeicherter Suchen und Warnungen von Log Analytics](../azure-monitor/insights/solutions-resources-searches-alerts.md). Hier finden Sie anschauliche Beispiele sowie die Schemadetails.
 
 ### <a name="azure-resource-template-for-application-insights"></a>Azure-Ressourcenvorlage für Application Insights
 Protokollwarnungen für Application Insights-Ressourcen sind vom Typ `Microsoft.Insights/scheduledQueryRules/`. Weitere Informationen zu diesem Ressourcentyp finden Sie unter [Azure Monitor: Referenz für die Scheduled Query Rules-API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/).
@@ -223,7 +223,7 @@ Daher finden Sie im folgenden Abschnitt Details zur Verwendung der API über Pow
 ### <a name="powershell-cli-or-api-for-log-analytics"></a>PowerShell, CLI oder API für Log Analytics
 Die REST-API für Log Analytics-Warnungen ist RESTful. Der Zugriff darauf erfolgt über die Azure Resource Manager-REST-API. Auf die API kann daher über die PowerShell-Befehlszeile zugegriffen werden. Die Suchergebnisse werden Ihnen im JSON-Format ausgegeben, und Sie können die Ergebnisse programmgesteuert auf viele verschiedene Arten verwenden.
 
-Erfahren Sie mehr über das [Erstellen und Verwalten von Warnungsregeln in Log Analytics mit REST-API](../log-analytics/log-analytics-api-alerts.md). Hier finden Sie auch Beispiele für den Zugriff auf die API aus Powershell.
+Erfahren Sie mehr über das [Erstellen und Verwalten von Warnungsregeln in Log Analytics mit REST-API](../azure-monitor/platform/api-alerts.md). Hier finden Sie auch Beispiele für den Zugriff auf die API aus Powershell.
 
 ### <a name="powershell-cli-or-api-for-application-insights"></a>PowerShell, CLI oder API für Application Insights
 [Azure Monitor – API für geplante Abfrageregeln](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/) ist eine REST-API und vollständig kompatibel mit der Azure Resource Manager-REST-API. Daher kann es über Powershell mit dem Resource Manager-Cmdlet und der Azure CLI verwendet werden.

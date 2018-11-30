@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: a4d62dd0bc984ce80324b405ddd0dcb625694b21
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 8aabcf342cde6de9fd4438014c9c400b28470e9b
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51612572"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52632669"
 ---
 # <a name="extend-log-analytics-alerts-to-azure-alerts"></a>Erweitern von Log Analytics-Warnungen nach Azure Alerts
 Bis vor Kurzem enthielt Azure Log Analytics eigene Warnfunktionen, die Sie auf der Grundlage von Log Analytics-Daten proaktiv über Bedingungen benachrichtigen konnten. Sie haben im Microsoft Operations Management Suite-Portal Warnungsregeln verwaltet. Die neue Oberfläche für Warnungen bietet nun die übergreifende Warnungsanzeige für verschiedene Dienste in Microsoft Azure. Sie ist im Azure-Portal unter Azure Monitor als **Warnungen** verfügbar und unterstützt die Anzeige von Warnungen aus Aktivitätsprotokollen, Metriken und Protokollen von Log Analytics ebenso wie von Azure Application Insights. 
@@ -55,7 +55,7 @@ Wenn Sie im Operations Management Suite-Portal versuchen, eine vorhandene Warnun
 > Achten Sie darauf, dass die Berechtigungen der Personen, die Warnungen bearbeiten oder erstellen müssen, in Azure ordnungsgemäß zugewiesen sind. Informationen zum Verständnis, welche Berechtigungen Sie erteilen müssen, finden Sie unter [Berechtigungen für die Verwendung von Azure Monitor und Alerts](monitoring-roles-permissions-security.md).  
 > 
 
-Sie können Warnungen weiterhin über die [Log Analytics-API](../log-analytics/log-analytics-api-alerts.md) und die [Log Analytics-Ressourcenvorlage](../monitoring/monitoring-solutions-resources-searches-alerts.md) erstellen. Wenn Sie sich dafür entscheiden, müssen Sie Aktionsgruppen einschließen.
+Sie können Warnungen weiterhin über die [Log Analytics-API](../azure-monitor/platform/api-alerts.md) und die [Log Analytics-Ressourcenvorlage](../azure-monitor/insights/solutions-resources-searches-alerts.md) erstellen. Wenn Sie sich dafür entscheiden, müssen Sie Aktionsgruppen einschließen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

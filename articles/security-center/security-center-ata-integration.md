@@ -3,7 +3,7 @@ title: Verbinden von Microsoft Advanced Threat Analytics mit Azure Security Cent
 description: Erfahren Sie, wie Sie Azure Security Center mit Microsoft Advanced Threat Analytics integrieren.
 services: security-center
 documentationcenter: na
-author: terrylan
+author: rkarlin
 manager: MBaldwin
 editor: ''
 ms.assetid: 5d80bf91-16c3-40b3-82fc-e0805e6708db
@@ -12,20 +12,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/05/2018
-ms.author: yurid
-ms.openlocfilehash: 6129c83e33d046c2fc9ce1724a27efce5efdfa0e
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 11/29/2018
+ms.author: rkarlin
+ms.openlocfilehash: bcd9b006c5451cb2d251cd5ff9e6ae5e0bd17f3c
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51258798"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52634012"
 ---
 # <a name="connecting-microsoft-advanced-threat-analytics-to-azure-security-center"></a>Verbinden von Microsoft Advanced Threat Analytics mit Azure Security Center
 Dieses Dokument soll Sie bei der Konfiguration der Integration zwischen Microsoft Advanced Threat Analytics und dem Azure Security Center unterstützen.
 
 ## <a name="why-add-advanced-threat-analytics-data"></a>Vorteile des Hinzufügens von Daten aus Advanced Threat Analytics
-[Advanced Threat Analytics](https://docs.microsoft.com/advanced-threat-analytics/what-is-ata) ist eine lokale Plattform, die verdächtiges Benutzerverhalten erkennt. Wenn Sie verbunden sind, können Sie im Security Center verdächtige Vorgänge anschauen, die Advanced Threat Analytics erkannt hat. Durch diese Integration können Sie alle Sicherheitswarnungen, die im Zusammenhang mit Ihren hybriden Cloudworkloads im Security Center stehen, ansehen, korrelieren lassen und untersuchen. 
+[Advanced Threat Analytics](https://docs.microsoft.com/advanced-threat-analytics/what-is-ata) ist eine lokale Plattform, die verdächtiges Benutzerverhalten erkennt. Wenn Sie verbunden sind, können Sie im Security Center verdächtige Vorgänge anschauen, die Advanced Threat Analytics erkannt hat. Durch diese Integration können Sie alle Sicherheitswarnungen, die im Zusammenhang mit Ihren hybriden Cloudworkloads im Security Center stehen, ansehen, korrelieren lassen und untersuchen.
 
 ## <a name="how-do-i-configure-this-integration"></a>Vorgehensweise bei der Konfiguration der Integration
 Folgen Sie diesen Schritten zur Konfiguration dieser Integration, wenn Sie Advanced Threat Analytics bereits installiert haben und es lokal einwandfrei funktioniert:
@@ -46,7 +46,7 @@ Folgen Sie diesen Schritten zur Konfiguration dieser Integration, wenn Sie Advan
 8. Klicken Sie unter **Advanced Threat Analytics** auf **HINZUFÜGEN**.
 
     ![ATA](./media/security-center-ata-integration/security-center-ata-integration-fig3.png)
-    
+
 9. Gehen Sie zum letzten Schritt zurück, und klicken Sie auf **Agent herunterladen**.
 
     ![ATA](./media/security-center-ata-integration/security-center-ata-integration-fig4.png)
@@ -62,13 +62,13 @@ Folgen Sie diesen Schritten zur Konfiguration dieser Integration, wenn Sie Advan
 12. Installieren Sie diesen Agent im Advanced Threat Analytics-Center. Stellen Sie bei der Installation sicher, dass die Option **Connect the agent to Azure Log Analytics** (Agent mit Azure Log Analytics verbinden) ausgewählt ist, und geben Sie die *Arbeitsbereich-ID* und den *Primärschlüssel* ein, wenn Sie dazu aufgefordert werden.
 
 
-Sobald Sie die Installation beendet haben, ist die Integration abgeschlossen, und Ihnen werden neue Warnungen, die von ATA an das Security Center im **Suchergebnis** gesendet werden, angezeigt. Die Lösung erscheint auf der Seite **Sicherheitslösungen** unter **Verbundene Lösungen**. 
+Sobald Sie die Installation beendet haben, ist die Integration abgeschlossen, und Ihnen werden neue Warnungen, die von ATA an das Security Center im **Suchergebnis** gesendet werden, angezeigt. Die Lösung erscheint auf der Seite **Sicherheitslösungen** unter **Verbundene Lösungen**.
 
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Dokument wurde erläutert, wie Sie Microsoft Advanced Threat Analytics mit Security Center verbinden. Weitere Informationen zu Security Center finden Sie in den folgenden Artikeln:
 
 * [Connecting Azure Active Directory Identity Protection to Azure Security Center (Verbinden von Azure Active Directory Identity Protection mit Azure Security Center)](security-center-aadip-integration.md)
-* [Festlegen von Sicherheitsrichtlinien in Azure Security Center:](security-center-policies.md) Erfahren Sie, wie Sie Sicherheitsrichtlinien für Ihre Azure-Abonnements und -Ressourcengruppen konfigurieren.
+* [Festlegen von Sicherheitsrichtlinien in Azure Security Center:](security-center-azure-policy.md) Erfahren Sie, wie Sie Sicherheitsrichtlinien für Ihre Azure-Abonnements und -Ressourcengruppen konfigurieren.
 * [Verwalten von Sicherheitsempfehlungen in Azure Security Center:](security-center-recommendations.md) Hier erfahren Sie, wie Empfehlungen Ihnen beim Schutz der Azure-Ressourcen helfen.
 * [Überwachen der Sicherheitsintegrität in Azure Security Center](security-center-monitoring.md) : Erfahren Sie, wie Sie die Integrität Ihrer Azure-Ressourcen überwachen.
 * [Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center:](security-center-managing-and-responding-alerts.md) Erfahren Sie, wie Sie Sicherheitswarnungen verwalten und darauf reagieren.
@@ -76,5 +76,3 @@ In diesem Dokument wurde erläutert, wie Sie Microsoft Advanced Threat Analytics
 - [Azure Security Center-Datensicherheit:](security-center-data-security.md) Hier erfahren Sie, wie Daten in Security Center verwaltet und geschützt werden.
 * [Azure Security Center – Häufig gestellte Fragen:](security-center-faq.md) Hier finden Sie häufig gestellte Fragen zur Verwendung des Diensts.
 * [Azure Security Blog](https://blogs.msdn.com/b/azuresecurity/) (Blog zur Azure-Sicherheit): Hier finden Sie Neuigkeiten und Informationen zur Azure-Sicherheit.
-
-

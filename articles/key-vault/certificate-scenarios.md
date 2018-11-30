@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/09/2018
 ms.author: bryanla
-ms.openlocfilehash: 4b7192b0c406d2c5df42e3bb3e604f26c56c7bd4
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: d4d2ce4dcda9ea72d4a33ee363efd3519c2118aa
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51235189"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52635831"
 ---
 # <a name="get-started-with-key-vault-certificates"></a>Erste Schritte mit Key Vault-Zertifikaten
 Die folgenden Szenarien stellen verschiedene der primären Verwendungen des Key Vault-Zertifikatverwaltungdiensts dar. Dazu gehören auch die zusätzlichen Schritte, die zum Erstellen Ihres ersten Zertifikats in Ihrem Schlüsseltresor erforderlich sind.
@@ -51,14 +51,14 @@ Zertifikate bestehen aus drei zusammenhängenden Ressourcen, die als Key Vault-Z
 
 **Schritt 3**: Ein Contoso-Administrator und ein Contoso-Mitarbeiter (Key Vault-Benutzer), der Zertifikate besitzt, kann abhängig von der Zertifizierungsstelle ein Zertifikat vom Administrator oder direkt über das Konto bei der Zertifizierungsstelle abrufen.  
 
--   Beginnen Sie mit einem Vorgang zum Hinzufügen von Anmeldeinformationen zu einem Schlüsseltresor, indem Sie eine [Zertifikataussteller-Ressource festlegen](/rest/api/keyvault/setcertificateissuer). Ein Zertifikataussteller ist eine Entität, die in Azure Key Vault (KV) als eine CertificateIssuer-Ressource dargestellt wird. Sie dient zur Bereitstellung von Informationen zur Quelle eines KV-Zertifikats: Ausstellername, Anbieter, Anmeldeinformationen und andere administrative Details.
+-   Beginnen Sie mit einem Vorgang zum Hinzufügen von Anmeldeinformationen zu einem Schlüsseltresor, indem Sie eine [Zertifikataussteller-Ressource festlegen](/rest/api/keyvault/setcertificateissuer/setcertificateissuer). Ein Zertifikataussteller ist eine Entität, die in Azure Key Vault (KV) als eine CertificateIssuer-Ressource dargestellt wird. Sie dient zur Bereitstellung von Informationen zur Quelle eines KV-Zertifikats: Ausstellername, Anbieter, Anmeldeinformationen und andere administrative Details.
     -   Beispiel: MyDigiCertIssuer  
         -   Anbieter  
         -   Anmeldeinformationen: Kontoanmeldeinformationen für die Zertifizierungsstelle. Jede Zertifizierungsstelle verfügt über eigene spezifische Daten.  
 
      Weitere Informationen zum Erstellen von Konten bei Anbietern von Zertifizierungsstellen finden Sie im zugehörigen Beitrag im [Key Vault-Blog](https://aka.ms/kvcertsblog).  
 
-**Schritt 3.1**: Einrichten von [Zertifikatkontakten](/rest/api/keyvault/setcertificatecontacts) für Benachrichtigungen. Dies ist der Kontakt für den Key Vault-Benutzer. Key Vault erzwingt diesen Schritt nicht.  
+**Schritt 3.1**: Einrichten von [Zertifikatkontakten](/rest/api/keyvault/setcertificatecontacts/setcertificatecontacts) für Benachrichtigungen. Dies ist der Kontakt für den Key Vault-Benutzer. Key Vault erzwingt diesen Schritt nicht.  
 
 Hinweis: Dieser Prozess bis Schritt 3.1 ist ein einmaliger Vorgang.  
 
@@ -83,7 +83,7 @@ Hinweis: Dieser Prozess bis Schritt 3.1 ist ein einmaliger Vorgang.
       -   Erneuerungsinformationen - > Beispiel: 90 Tage vor Ablauf  
 
   - Ein Zertifikaterstellungsprozess ist normalerweise ein asynchroner Prozess und umfasst das Abrufen des Status der Zertifikaterstellung von Ihrem Schlüsseltresor.  
-[Zertifikatabrufvorgang](https://docs.microsoft.com/rest/api/keyvault/getcertificateoperation)  
+[Zertifikatabrufvorgang](/rest/api/keyvault/getcertificateoperation/getcertificateoperation)  
       -   Status: abgeschlossen, Fehler mit Fehlerinformationen oder abgebrochen  
       -   Aufgrund einer Verzögerung bei der Erstellung kann ein Abbruchvorgang initiiert werden. Der Abbruchvorgang ist aber möglicherweise nicht wirksam.  
 
