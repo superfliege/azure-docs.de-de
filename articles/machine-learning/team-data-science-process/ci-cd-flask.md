@@ -1,26 +1,22 @@
 ---
 title: 'DevOps für Anwendungen der Künstlichen Intelligenz (KI): Erstellen einer Continuous Integration-Pipeline in Azure mit der Docker, Kubernetes und der Python Flask-Anwendung'
 description: 'DevOps für Anwendungen der Künstlichen Intelligenz (KI): Erstellen einer Continuous Integration-Pipeline in Azure mit der Docker und Kubernetes'
-services: machine-learning, team-data-science-process
-documentationcenter: ''
-author: jainr
-manager: deguhath
+services: machine-learning
+author: marktab
+manager: cgronlun
 editor: cgronlun
-ms.assetid: b8fbef77-3e80-4911-8e84-23dbf42c9bee
 ms.service: machine-learning
 ms.component: team-data-science-process
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 05/22/2018
-ms.author: jainr
-ms.openlocfilehash: fb162c45b8bd53fd4d994e0eb83a38438873d627
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.author: tdsp
+ms.custom: (previous author=jainr, ms.author=jainr)
+ms.openlocfilehash: c232680d5d1bf0eb761ff974ebf6608b67922f33
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50094393"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52496748"
 ---
 # <a name="devops-for-artificial-intelligence-ai-applications-creating-continuous-integration-pipeline-on-azure-using-docker-and-kubernetes"></a>DevOps für Anwendungen der Künstlichen Intelligenz (KI): Erstellen einer Continuous Integration-Pipeline in Azure mit der Docker und Kubernetes
 Für eine KI-Anwendung gibt es häufig zwei Arbeitsbereiche: Data Scientists, die Modelle für maschinelles Lernen erstellen, und App-Entwickler, die die Anwendung programmieren und den Endbenutzern zur Verfügung stellen. In diesem Artikel wird veranschaulicht, wie Sie eine Pipeline für Continuous Integration (CI) bzw. Continuous Delivery (CD) für eine KI-Anwendung implementieren. Eine KI-Anwendung ist eine Kombination aus Anwendungscode, der mit einem vortrainierten Modell für maschinelles Lernen (MK) eingebettet ist. In diesem Artikel wird ein vortrainiertes Modell aus einem privaten Azure Blob Storage-Konto genutzt, wobei auch ein AWS S3-Konto verwendet werden könnte. Zudem wird eine einfache Python Flask-Webanwendung in diesem Artikel verwendet.
@@ -55,7 +51,7 @@ Unten sehen Sie die Pipelinearchitektur.
 1. Entwickler arbeiten an der IDE ihrer Wahl am Anwendungscode.
 2. Sie committen den Code bei der Quellcodeverwaltung ihrer Wahl (Azure DevOps bietet gute Unterstützung für verschiedene Quellcodeverwaltungen).
 3. Die Data Scientists arbeiten separat an der Entwicklung ihres Modells.
-4. Sobald sie mit dem Ergebnis zufrieden sind, veröffentlichen sie das Modell in einem Modellrepository. In diesem Fall wird ein Blob Storage-Konto verwendet. Dies könnte problemlos durch den Modellverwaltungsdienst von Azure ML Workbench über die REST-APIs ersetzt werden.
+4. Sobald sie mit dem Ergebnis zufrieden sind, veröffentlichen sie das Modell in einem Modellrepository. In diesem Fall wird ein Blob Storage-Konto verwendet. 
 5. Ein Build wird in Azure DevOps basierend auf dem Commit in GitHub gestartet.
 6. Die Azure DevOps-Buildpipeline pullt das neueste Modell aus dem Blobcontainer und erstellt einen Container.
 7. Azure DevOps pusht das Image in ein privates Imagerepository in Azure Container Registry.
