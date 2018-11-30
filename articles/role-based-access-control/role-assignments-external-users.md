@@ -16,12 +16,12 @@ ms.date: 03/20/2018
 ms.author: rolyon
 ms.reviewer: skwan
 ms.custom: it-pro
-ms.openlocfilehash: bd75ecde75d0f22dc66f047cd063dd85807f6f33
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: aec12e6dc7d331b2610546d0b0c92fa6ce0789ee
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44304440"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52284522"
 ---
 # <a name="manage-access-for-external-users-using-rbac"></a>Verwalten des Zugriffs für externe Benutzer mithilfe der rollenbasierten Zugriffssteuerung
 
@@ -45,7 +45,7 @@ Nachdem Sie sich als Administrator beim Azure-Portal angemeldet haben, wählen S
 ![Blatt „Abonnement“ im Azure-Portal](./media/role-assignments-external-users/0.png) Wenn der Administratorbenutzer das Azure-Abonnement erworben hat, wird der Benutzer standardmäßig als **Kontoadministrator** angezeigt. Dies ist die Abonnementrolle. Weitere Informationen zu den Azure-Abonnementrollen finden Sie unter [Hinzufügen oder Ändern von Azure-Abonnementadministratoren](../billing/billing-add-change-azure-subscription-administrator.md).
 
 In diesem Beispiel ist der Benutzer „alflanigan@outlook.com“ der **Besitzer** des Abonnements „Free Trial“ im AAD-Mandanten „Default tenant Azure“. Da dieser Benutzer das Azure-Abonnement mit dem ursprünglichen Microsoft-Konto „Outlook“ (Microsoft-Konto = Outlook, Live usw.) erstellt hat, lautet der Standarddomänenname für alle weiteren Benutzer, die diesem Mandanten hinzugefügt werden, **\@alflaniganuoutlook.onmicrosoft.com**. Die Syntax der neuen Domäne wird gebildet, indem der Benutzername und der Domänenname des Benutzers, der den Mandanten erstellt hat, zusammengesetzt werden und die Erweiterung **„.onmicrosoft.com“** angefügt wird.
-Darüber hinaus können Benutzer sich mit einem benutzerdefinierten Domänennamen beim Mandanten anmelden, nachdem dieser Name dem neuen Mandanten hinzugefügt und in diesem überprüft wurde. Weitere Informationen zum Überprüfen eines benutzerdefinierten Domänennamens in einem Azure Active Directory-Mandanten finden Sie unter [Hinzufügen eines benutzerdefinierten Domänennamens zu Ihrem Verzeichnis](/active-directory/active-directory-add-domain).
+Darüber hinaus können Benutzer sich mit einem benutzerdefinierten Domänennamen beim Mandanten anmelden, nachdem dieser Name dem neuen Mandanten hinzugefügt und in diesem überprüft wurde. Weitere Informationen zum Überprüfen eines benutzerdefinierten Domänennamens in einem Azure Active Directory-Mandanten finden Sie unter [Hinzufügen eines benutzerdefinierten Domänennamens zu Ihrem Verzeichnis](../active-directory/fundamentals/add-custom-domain.md).
 
 In diesem Beispiel enthält das Verzeichnis „Default tenant Azure“ nur Benutzer mit dem Domänennamen „\@alflanigan.onmicrosoft.com“.
 
@@ -85,7 +85,7 @@ Als Gast in einem Verzeichnis kann ein externer Benutzer alle Ressourcen für da
 
 ![Zugriffsbeschränkung auf Azure Active Directory im Azure-Portal](./media/role-assignments-external-users/9.png)
 
-Azure Active Directory und Azure-Abonnements weisen keine Überordnungs-/Unterordnungsbeziehungen auf, wie sie für andere Azure-Ressourcen (z.B. virtuelle Computer, virtuelle Netzwerke, Web-Apps, Speicher usw.) mit einem Azure-Abonnement gelten. Alle letztgenannten Ressourcen werden in einem Azure-Abonnement erstellt, verwaltet und abgerechnet. Ein Azure-Abonnement wird zum Verwalten des Zugriffs auf ein Azure-Verzeichnis verwendet. Weitere Informationen finden Sie unter [Beziehung zwischen einem Azure-Abonnement und Azure AD](/active-directory/active-directory-how-subscriptions-associated-directory).
+Azure Active Directory und Azure-Abonnements weisen keine Überordnungs-/Unterordnungsbeziehungen auf, wie sie für andere Azure-Ressourcen (z.B. virtuelle Computer, virtuelle Netzwerke, Web-Apps, Speicher usw.) mit einem Azure-Abonnement gelten. Alle letztgenannten Ressourcen werden in einem Azure-Abonnement erstellt, verwaltet und abgerechnet. Ein Azure-Abonnement wird zum Verwalten des Zugriffs auf ein Azure-Verzeichnis verwendet. Weitere Informationen finden Sie unter [Beziehung zwischen einem Azure-Abonnement und Azure AD](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
 
 Von allen integrierten RBAC-Rollen bieten **Besitzer** und **Mitwirkender** vollständigen Verwaltungszugriff auf alle Ressourcen in der Umgebung. Der Unterschied besteht darin, dass ein Mitwirkender keine RBAC-Rollen erstellen und löschen kann. Die anderen integrierten Rollen, wie z.B. **Mitwirkender für virtuelle Computer** bieten vollständigen Verwaltungszugriff nur auf die mit Namen angegebenen Ressourcen, unabhängig von der **Ressourcengruppe**, in der sie erstellt werden.
 

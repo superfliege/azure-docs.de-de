@@ -1,26 +1,22 @@
 ---
 title: Rollen und Aufgaben im Team Data Science-Prozess – Azure | Microsoft-Dokumentation
 description: Überblick über die Hauptkomponenten, Mitarbeiterrollen und zugeordneten Aufgaben in einem Data Science-Teamprojekt
-documentationcenter: ''
-author: deguhath
+author: marktab
 manager: cgronlun
 editor: cgronlun
 services: machine-learning
-ms.assetid: ''
 ms.service: machine-learning
 ms.component: team-data-science-process
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
-ms.author: deguhath
-ms.openlocfilehash: c245a844ae594f5d78b47a168ad5870f8aea10e9
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.author: tdsp
+ms.custom: (previous author=deguhath, ms.author=deguhath)
+ms.openlocfilehash: 3529160ccfd0a11d3d2077245c1160941027ff88
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51227772"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52442096"
 ---
 # <a name="team-data-science-process-roles-and-tasks"></a>Rollen und Aufgaben im Team Data Science-Prozess
 

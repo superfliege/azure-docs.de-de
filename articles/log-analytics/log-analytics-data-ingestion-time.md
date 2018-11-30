@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/14/2018
 ms.author: bwren
-ms.openlocfilehash: f40c8ed7eb6bfae958b3b57c4b7d525963ab9741
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 4f7b0f7c1cd08168db3f0f0ffd6cf6c4fa2c604e
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46955250"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52334549"
 ---
 # <a name="data-ingestion-time-in-log-analytics"></a>Datenerfassungszeit in Log Analytics
 Azure Log Analytics ist ein Hochleistungs-Datendienst in Azure Monitor, der Tausende Kunden bedient, die mit zunehmender Tendenz jeden Monat Terabytes von Daten senden. Häufig werden Fragen nach dem Zeitbedarf gestellt, der nach dem Sammeln der Daten bis zu ihrer Verfügbarkeit in Log Analytics zu veranschlagen ist. Dieser Artikel erläutert die verschiedenen Faktoren, die sich auf diese Wartezeit auswirken.
@@ -40,7 +40,7 @@ Detailinformationen zu den verschiedenen Wartezeiten in diesem Prozess werden na
 Agents und Managementlösungen verwenden verschiedene Strategien, um Daten eines virtuellen Computers zu erfassen, was sich auf die Wartezeit auswirken kann. Dies sind einige spezifische Beispiele:
 
 - Windows-Ereignisse, Syslog-Ereignisse und Leistungsmetriken werden sofort erfasst. Linux-Leistungsindikatoren werden in 30-Sekunden-Intervallen abgerufen.
-- IIS-Protokolle und benutzerdefinierte Protokolle werden bei jeder Änderung ihres Zeitstempels erfasst. Bei IIS-Protokollen wird dies durch den [in IIS konfigurierten Rolloverzeitplan](log-analytics-data-sources-iis-logs.md) beeinflusst. 
+- IIS-Protokolle und benutzerdefinierte Protokolle werden bei jeder Änderung ihres Zeitstempels erfasst. Bei IIS-Protokollen wird dies durch den [in IIS konfigurierten Rolloverzeitplan](../azure-monitor/platform/data-sources-iis-logs.md) beeinflusst. 
 - Die Active Directory-Replikationslösung führt ihre Bewertung alle fünf Tage aus, während die Active Directory-Bewertungslösung eine wöchentliche Bewertung Ihrer Active Directory-Infrastruktur ausführt. Der Agent erfasst diese Protokolle nur, wenn die Bewertung abgeschlossen ist.
 
 ### <a name="agent-upload-frequency"></a>Uploadhäufigkeit des Agents
@@ -61,7 +61,7 @@ Informationen zur Erfassungshäufigkeit der einzelnen Lösungen finden Sie in de
 Sobald Protokolldatensätze in der Log Analytics-Pipeline erfasst werden, werden sie in einen temporären Speicher geschrieben, um Mandantenisolation und Schutz vor Datenverlust sicherzustellen. Dieser Vorgang wirkt sich normalerweise mit zusätzlichen 5–15 Sekunden aus. Einige Verwaltungslösungen implementieren aufwändigere Algorithmen zum Aggregieren von Daten und Ableiten von Erkenntnissen aus im Datenstrom eingehenden Daten. Beispielsweise aggregiert die Netzwerkleistungsüberwachung Daten über 3-Minuten-Intervalle, wodurch sich die Wartezeit um 3 Minuten verlängert. Ein anderer Prozess, durch den die Latenz erhöht wird, ist der Prozess, der benutzerdefinierte Protokolle verarbeitet. In manchen Fällen kann dieser Prozess eine Latenz von einigen Minuten zu Protokollen hinzufügen, die vom Agent aus Dateien gesammelt werden.
 
 ### <a name="new-custom-data-types-provisioning"></a>Bereitstellung von neuen, benutzerdefinierten Datentypen
-Wenn aus einem [benutzerdefinierten Protokoll](../log-analytics/log-analytics-data-sources-custom-logs.md) oder der [Datensammler-API](../log-analytics/log-analytics-data-collector-api.md) ein neuer benutzerdefinierter Datentyp erstellt wird, erstellt das System einen dedizierten Speichercontainer. Dies bedingt einen einmaligen Mehraufwand, der nur beim ersten Auftreten dieses Datentyps eintritt.
+Wenn aus einem [benutzerdefinierten Protokoll](../log-analytics/../azure-monitor/platform/data-sources-custom-logs.md) oder der [Datensammler-API](../log-analytics/log-analytics-data-collector-api.md) ein neuer benutzerdefinierter Datentyp erstellt wird, erstellt das System einen dedizierten Speichercontainer. Dies bedingt einen einmaligen Mehraufwand, der nur beim ersten Auftreten dieses Datentyps eintritt.
 
 ### <a name="surge-protection"></a>Schutz vor Überflutung
 Die oberste Priorität für Log Analytics besteht darin, sicherzustellen, dass keine Kundendaten verloren gehen, daher weist das System einen integrierten Schutz vor Datenüberflutung auf. Dieser schließt Puffer ein, um sicherzustellen, dass das System selbst unter extremer Last noch funktioniert. Unter normalen Lastverhältnissen wird durch diese Steuerungsmechanismen weniger als eine Minute hinzugefügt, jedoch können sie unter extremen Bedingungen und bei Ausfällen zu erheblicher Verlängerung der Wartezeit führen, während sie die Sicherheit der Daten gewährleisten.

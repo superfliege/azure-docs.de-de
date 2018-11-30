@@ -8,20 +8,20 @@ ms.author: banders
 ms.date: 09/18/2018
 ms.topic: conceptual
 ms.service: cost-management
-manager: dougeby
+manager: benshy
 ms.custom: ''
-ms.openlocfilehash: 8267401a0dade0ca7cfb1dbf69d2fdfd6786f1df
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: efb199a9e97a6e80cc24dfe32f6477b4c7abf89a
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46976785"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52276022"
 ---
 # <a name="use-cloudyn-reports"></a>Verwenden der Cloudyn-Berichte
 
 Dieser Artikel beschreibt den Zweck der Cloudyn-Berichte, die im Cloudyn-Portal enthalten sind. Es wird außerdem beschrieben, wie Sie die Berichte effektiv nutzen können. Die meisten Berichte sind intuitiv und weisen ein einheitliches Erscheinungsbild auf. Die meisten der Aktionen, die Sie in einem Bericht ausführen können, sind auch in anderen Berichten verfügbar. Eine Übersicht über das Verwenden von Cloudyn-Berichten, einschließlich des Anpassens und Speicherns oder des Planens von Berichten, finden Sie unter [Grundlagen zu Kostenberichten](understanding-cost-reports.md).
 
-Azure Cost Management bietet ähnliche Funktionen wie Cloudyn. Azure Cost Management ist eine native Azure-Kostenverwaltungslösung. Die Lösung unterstützt Sie beim Analysieren von Kosten, Erstellen und Verwalten von Budgets, Exportieren von Daten sowie beim Prüfen von und Reagieren auf Optimierungsempfehlungen zur Kosteneinsparung. Weitere Informationen finden Sie unter [Was ist Azure-Kostenverwaltung?](overview-cost-mgt.md).
+Azure Cost Management bietet ähnliche Funktionen wie Cloudyn. Azure Cost Management ist eine native Azure-Kostenverwaltungslösung. Die Lösung unterstützt Sie beim Analysieren von Kosten, beim Erstellen und Verwalten von Budgets, beim Exportieren von Daten sowie beim Prüfen von Optimierungsempfehlungen und beim Reagieren auf diese – und damit beim Sparen von Geld. Weitere Informationen finden Sie unter [Azure Cost Management](overview-cost-mgt.md).
 
 ## <a name="report-types"></a>Berichtstypen
 

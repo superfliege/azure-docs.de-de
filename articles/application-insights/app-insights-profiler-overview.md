@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.reviewer: cawa
 ms.date: 08/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: bba15ee901e7ccecc513f526339bde2fcc6277fa
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 7e0734790a0b33a52ace01ad961b1bc3127fa3d4
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50142859"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51976518"
 ---
 # <a name="profile-production-applications-in-azure-with-application-insights"></a>Profilerstellung für Produktionsanwendungen in Azure mit Application Insights Profiler
 ## <a name="enable-profiler-for-your-application"></a>Aktivieren von Profiler für Ihre Anwendung
@@ -38,7 +38,7 @@ Die lokale Ausführung von Profiler wird offiziell nicht unterstützt. Allerding
 
 ## <a name="view-profiler-data"></a>Anzeigen von Profiler-Daten
 
-Damit Profiler Ablaufverfolgungen hochladen kann, muss Ihre Anwendung aktiv Anforderungen verarbeiten. Beim Ausführen eines Experiments können Sie mithilfe der [Application Insights-Leistungstests](https://docs.microsoft.com/vsts/load-test/app-service-web-app-performance-test) Anforderungen an die Web-App generieren. Wenn Sie Profiler gerade erst aktiviert haben, können Sie einen kurzen Auslastungstest ausführen. Während der Auslastungstest ausgeführt wird, klicken Sie auf der Seite mit den [**Profiler-Einstellungen**]() auf die Schaltfläche **Jetzt Profil erstellen**. Wenn Profiler ausgeführt wird, erfolgt die Profilerstellung nach dem Zufallsprinzip etwa einmal pro Stunde für eine Dauer von zwei Minuten. Wenn Ihre Anwendung einen stetigen Strom an Anforderungen verarbeitet, lädt Profiler jede Stunde Ablaufverfolgungen hoch.
+Damit Profiler Ablaufverfolgungen hochladen kann, muss Ihre Anwendung aktiv Anforderungen verarbeiten. Beim Ausführen eines Experiments können Sie mithilfe der [Application Insights-Leistungstests](https://docs.microsoft.com/vsts/load-test/app-service-web-app-performance-test) Anforderungen an die Web-App generieren. Wenn Sie Profiler gerade erst aktiviert haben, können Sie einen kurzen Auslastungstest ausführen. Während der Auslastungstest ausgeführt wird, klicken Sie auf der Seite mit den [**Profiler-Einstellungen**](app-insights-profiler-settings.md#profiler-settings-page) auf die Schaltfläche **Jetzt Profil erstellen**. Wenn Profiler ausgeführt wird, erfolgt die Profilerstellung nach dem Zufallsprinzip etwa einmal pro Stunde für eine Dauer von zwei Minuten. Wenn Ihre Anwendung einen stetigen Strom an Anforderungen verarbeitet, lädt Profiler jede Stunde Ablaufverfolgungen hoch.
 
 Sobald die Anwendung Datenverkehr empfangen hat und Profiler Zeit hatte, die Ablaufverfolgungen hochzuladen, sollten Ihnen Ablaufverfolgungen angezeigt werden. Dieser Vorgang kann 5 bis 10 Minuten dauern. Zum Anzeigen von Ablaufverfolgungen wechseln Sie zum Bereich **Leistung**, wählen **Aktion ausführen** aus, um Profiler-Ablaufverfolgungen anzuzeigen, und wählen dann die Schaltfläche **Profiler-Ablaufverfolgungen** aus.
 

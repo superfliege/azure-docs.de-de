@@ -17,12 +17,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: dadobali
 ms.custom: aaddev
-ms.openlocfilehash: c7d1665eece966053f52e118bb0d6f7f5ec4cba6
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 2c7ccd8d2022631e32c240007a782d2382aac518
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46957862"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52422846"
 ---
 # <a name="how-to-enable-cross-app-sso-on-android-using-adal"></a>Aktivieren von App-übergreifendem SSO auf Android mit ADAL
 
@@ -45,9 +45,9 @@ In dieser Anleitung wird davon ausgegangen, dass Sie mit folgenden Schritten ver
 
 ### <a name="identity-brokers"></a>Identitätsbroker
 
-Microsoft stellt Anwendungen für jede mobile Plattform bereit, die als Brücke für Anmeldeinformationen von Anwendungen verschiedener Anbieter sowie für erweiterte Features fungieren, bei denen die Überprüfung der Anmeldeinformationen über eine einzige sichere Stelle erfolgt. Diese heißen **Broker**.
+Microsoft stellt Anwendungen für jede mobile Plattform bereit, die als Brücke für Anmeldeinformationen von Anwendungen verschiedener Anbieter sowie für erweiterte Features fungieren, bei denen die Überprüfung der Anmeldeinformationen über eine einzige sichere Stelle erfolgt. Diese werden als **Broker** bezeichnet.
 
-Unter iOS und Android werden Broker über herunterladbare Anwendungen bereitgestellt. Diese Anwendungen können Kunden entweder unabhängig installieren, oder sie werden von Unternehmen, die einige oder alle Geräte für ihre Mitarbeiter verwalten, per Push auf das Gerät übertragen. Broker unterstützen die Sicherheitsverwaltung basierend auf der Konfiguration des IT-Administrators entweder nur für einige Anwendungen oder für das gesamte Gerät. Unter Windows wird diese Funktionalität durch eine Kontoauswahl bereitgestellt, die in das Betriebssystem integriert ist. Die technische Bezeichnung hierfür lautet Webauthentifizierungsbroker.
+Unter iOS und Android werden Broker über herunterladbare Anwendungen bereitgestellt. Diese Anwendungen können Kunden entweder unabhängig installieren, oder sie werden von Unternehmen, die einige oder alle Geräte für ihre Mitarbeiter verwalten, auf das Gerät gepusht. Broker unterstützen die Sicherheitsverwaltung basierend auf der Konfiguration des IT-Administrators entweder nur für einige Anwendungen oder für das gesamte Gerät. Unter Windows wird diese Funktionalität durch eine Kontoauswahl bereitgestellt, die in das Betriebssystem integriert ist. Die technische Bezeichnung hierfür lautet Webauthentifizierungsbroker.
 
 #### <a name="broker-assisted-login"></a>Brokergestützte Anmeldung
 
@@ -130,7 +130,7 @@ Sie können diesen Umleitungs-URI in Ihrer App-Registrierung über das [Azure-Po
 
 #### <a name="step-3-set-up-the-correct-permissions-in-your-application"></a>Schritt 3: Einrichten der korrekten Berechtigungen in Ihrer Anwendung
 
-Die Brokeranwendung in Android verwendet das Feature zur Kontoverwaltung des Android-Betriebssystems, um Anmeldeinformationen anwendungsübergreifend zu verwalten. Damit der Broker in Android verwendet werden kann, muss Ihr App-Manifest über Berechtigungen zum Verwenden von AccountManager-Konten verfügen. Diese Berechtigungen werden in der [Google-Dokumentation zu Account Manager](http://developer.android.com/reference/android/accounts/AccountManager.html) ausführlich beschrieben.
+Die Brokeranwendung in Android verwendet das Feature zur Kontoverwaltung des Android-Betriebssystems, um Anmeldeinformationen anwendungsübergreifend zu verwalten. Damit der Broker in Android verwendet werden kann, muss Ihr App-Manifest über Berechtigungen zum Verwenden von AccountManager-Konten verfügen. Diese Berechtigungen werden in der [Google-Dokumentation zu Account Manager](https://developer.android.com/reference/android/accounts/AccountManager.html) ausführlich beschrieben.
 
 Insbesondere sind dies folgende Berechtigungen:
 

@@ -10,17 +10,19 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 09/06/2018
 ms.author: diberry
-ms.openlocfilehash: b4c58a13c8b66add8ebd7e535ecac9d7b0f1075b
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 1560b8e574b0932e258353648c73f030ef19d314
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47032120"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52333495"
 ---
 # <a name="batch-testing-with-a-set-of-example-utterances"></a>Batchtests mit einem Satz von Beispieläußerungen
+
  Batchtests sind umfassende Tests Ihres aktuellen trainierten Modells zum Messen seiner Leistung in LUIS. 
 
 <a name="batch-testing"></a>
+
 ## <a name="import-a-dataset-file-for-batch-testing"></a>Importieren einer Datasetdatei für Batchtests
 
 1. Wählen Sie in der oberen Leiste **Test** und dann **Batch testing panel** (Batchtestbereich) aus.
@@ -36,6 +38,7 @@ ms.locfileid: "47032120"
 4. Wählen Sie **Fertig**aus. Die Datasetdatei wird hinzugefügt.
 
 ## <a name="run-rename-export-or-delete-dataset"></a>Ausführen, Umbenennen, Exportieren oder Löschen eines Datasets
+
 Verwenden Sie zum Ausführen, Umbenennen, Exportieren oder Löschen des Datasets die Auslassungspunkte (***...*** ) am Ende der Datasetzeile.
 
 ![Datasetaktionen](./media/luis-how-to-batch-test/batch-testing-options.png)
@@ -55,7 +58,9 @@ Das herunterladbare Dataset ist dieselbe Datei, die für die Batchtests hochgela
 |![Symbol für Testbereitschaft](./media/luis-how-to-batch-test/batch-test-result-blue.png)|Der Test ist für die Ausführung bereit.|
 
 <a name="access-batch-test-result-details-in-a-visualized-view"></a>
+
 ## <a name="view-batch-test-results"></a>Anzeigen von Batchtestergebnissen 
+
 Wählen Sie zum Überprüfen der Batchtestergebnisse **See results** (Ergebnisse anzeigen) aus.
 
 ![Batchtestergebnisse](./media/luis-how-to-batch-test/run-test-results.png)
@@ -64,6 +69,7 @@ Wählen Sie zum Überprüfen der Batchtestergebnisse **See results** (Ergebnisse
 
 
 <a name="filter-chart-results-by-intent-or-entity"></a>  
+
 ## <a name="filter-chart-results"></a>Filtern von Diagrammergebnissen
 
 Um das Diagramm nach einer bestimmten Absicht oder Entität zu filtern, wählen Sie die Absicht bzw. die Entität im Filterbereich rechts aus. Die Datenpunkte und ihre Verteilung im Diagramm werden entsprechend Ihrer Auswahl aktualisiert. 
@@ -71,6 +77,7 @@ Um das Diagramm nach einer bestimmten Absicht oder Entität zu filtern, wählen 
 ![Visualisierte Batchtestergebnisse](./media/luis-how-to-batch-test/filter-by-entity.png) 
 
 ## <a name="view-single-point-utterance-data"></a>Anzeigen von Einzelpunkt-Äußerungsdaten
+
 Zeigen Sie im Diagramm auf einen Datenpunkt, um die Bewertung seiner Vorhersage anzuzeigen. Wählen Sie einen Datenpunkt aus, um die zugehörige Äußerung in der Liste der Äußerungen am unteren Rand der Seite abzurufen. 
 
 ![Ausgewählte Äußerung](./media/luis-how-to-batch-test/selected-utterance.png)
@@ -78,7 +85,9 @@ Zeigen Sie im Diagramm auf einen Datenpunkt, um die Bewertung seiner Vorhersage 
 
 <a name="relabel-utterances-and-retrain"></a>
 <a name="false-test-results"></a>
+
 ## <a name="view-section-data"></a>Anzeigen von Abschnittsdaten
+
 Wählen Sie im Diagramm mit vier Abschnitten den Namen des Abschnitts aus, z.B. **Falsch positive Ergebnisse** rechts oben im Diagramm. Unter dem Diagramm werden alle Äußerungen in diesem Abschnitt in einer Liste angezeigt. 
 
 ![Ausgewählte Äußerungen nach Abschnitt](./media/luis-how-to-batch-test/selected-utterances-by-section.png)

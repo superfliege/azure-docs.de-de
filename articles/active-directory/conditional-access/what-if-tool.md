@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/17/2018
+ms.date: 11/20/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: d9bdc35e732a84920800424a260610fd6f068c94
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 3bc7dd8103bed9a5a04566d08a1daec0708a59c4
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39626089"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52285032"
 ---
 # <a name="what-is-the-what-if-tool-in-azure-active-directory-conditional-access"></a>Was ist das Was-wäre-wenn-Tool für den bedingten Azure Active Directory-Zugriff?
 
@@ -51,9 +51,6 @@ Im nächsten Schritt können Sie eine Simulation initiieren, die Ihre Einstellun
 
 Wenn die Auswertung abgeschlossen ist, generiert das Tool einen Bericht über die betroffenen Richtlinien.
 
-
-> [!NOTE]
-> Derzeit unterstützt What If keine geschachtelten Gruppen. Wenn ein Benutzer Mitglied einer Gruppe ist und diese Gruppe zu einer anderen Gruppe gehört, die in einer Richtlinie für bedingten Zugriff verwendet wird, zeigt What If dem Benutzer die Auswirkungen dieser Richtlinie nicht ordnungsgemäß an. 
 
 
 ## <a name="running-the-tool"></a>Ausführen des Tools

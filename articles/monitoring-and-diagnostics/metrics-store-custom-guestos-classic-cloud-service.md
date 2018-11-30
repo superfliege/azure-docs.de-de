@@ -8,14 +8,15 @@ ms.topic: howto
 ms.date: 09/24/2018
 ms.author: ancav
 ms.component: metrics
-ms.openlocfilehash: 30b08062aa360c4a43dc1bfe9f574447b58521f5
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 7f10495e22cf6750fdc5891d760885a238175da8
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50095210"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51711775"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-classic-cloud-services"></a>Senden von Metriken des Gastbetriebssystems an den Azure Monitor-Metrikspeicher – Cloud Services (klassisch) 
+
 Die [Diagnoseerweiterung](azure-diagnostics.md) von Azure Monitor ermöglicht es Ihnen, Metriken und Protokolle von einem Gastbetriebssystem zu erfassen, das als Teil eines virtuellen Computers, eines Clouddiensts oder eines Service Fabric-Clusters ausgeführt wird. Die Erweiterung kann Telemetriedaten an [viele verschiedene Orte](https://docs.microsoft.com/azure/monitoring/monitoring-data-collection?toc=/azure/azure-monitor/toc.json) senden.
 
 In diesem Artikel erfahren Sie, wie Sie Leistungsmetriken des Gastbetriebssystems für klassische Azure-Clouddienste an den Azure Monitor-Metrikspeicher senden. Ab Version 1.11 der Diagnoseerweiterung können Sie Metriken direkt in den Azure Monitor-Metrikspeicher schreiben, in dem bereits Metriken der Standardplattformen gesammelt werden. 
@@ -23,16 +24,14 @@ In diesem Artikel erfahren Sie, wie Sie Leistungsmetriken des Gastbetriebssystem
 Durch die Speicherung an diesem Ort stehen Ihnen die gleichen Aktionen zur Verfügung, die auch für Plattformmetriken verfügbar sind. Dazu zählen unter anderem zeitnahe Benachrichtigungen, Diagrammerstellung, Routing und Zugriff über eine REST-API.  In der Vergangenheit hat die Diagnoseerweiterung zwar in Azure Storage geschrieben, aber nicht in den Azure Monitor-Datenspeicher.  
 
 Der in diesem Artikel beschriebene Prozess funktioniert nur mit Leistungsindikatoren in Azure Cloud Services. Er kann nicht für andere benutzerdefinierte Metriken verwendet werden. 
-   
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Sie müssen [Dienstadministrator oder Co-Administrator](https://docs.microsoft.com/azure/billing/billing-add-change-azure-subscription-administrator.md) für Ihr Azure-Abonnement sein. 
+- Sie müssen [Dienstadministrator oder Co-Administrator](~/articles/billing/billing-add-change-azure-subscription-administrator.md) für Ihr Azure-Abonnement sein. 
 
 - Ihr Abonnement muss bei [Microsoft.Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services#portal) registriert sein. 
 
 - Bei Ihnen muss entweder [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-6.8.1) oder [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) installiert sein.
-
 
 ## <a name="provision-a-cloud-service-and-storage-account"></a>Bereitstellen eines Clouddiensts und eines Speicherkontos 
 
@@ -42,15 +41,13 @@ Der in diesem Artikel beschriebene Prozess funktioniert nur mit Leistungsindikat
 
    ![Speicherkontoschlüssel](./media/metrics-store-custom-guestos-classic-cloud-service/storage-keys.png)
 
-
-
 ## <a name="create-a-service-principal"></a>Erstellen eines Dienstprinzipals 
 
 Erstellen Sie anhand der Anleitung unter [Erstellen einer Azure Active Directory-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff mithilfe des Portals](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal) einen Dienstprinzipal in Ihrem Azure Active Directory-Mandanten. Beachten Sie dabei Folgendes: 
 
-  - Sie können für die Anmelde-URL eine beliebige URL eingeben.  
-  - Erstellen Sie einen neuen geheimen Clientschlüssel für diese App.  
-  - Speichern Sie den Schlüssel und die Client-ID für die Verwendung in späteren Schritten.  
+- Sie können für die Anmelde-URL eine beliebige URL eingeben.  
+- Erstellen Sie einen neuen geheimen Clientschlüssel für diese App.  
+- Speichern Sie den Schlüssel und die Client-ID für die Verwendung in späteren Schritten.  
 
 Erteilen Sie der im vorherigen Schritt erstellten App Berechtigungen vom Typ *Überwachungsmetriken veröffentlichen* für die Ressource, für die Sie Metriken ausgeben möchten. Wenn Sie planen, die App zu verwenden, um benutzerdefinierte Metriken für viele Ressourcen auszugeben, können Sie diese Berechtigungen auf der Ebene der Ressourcengruppe oder des Abonnements vergeben.  
 
@@ -136,7 +133,7 @@ Fügen Sie schließlich in der privaten Konfiguration den Abschnitt *Azure Monit
     </AzureMonitorAccount> 
 </PrivateConfig> 
 ```
- 
+
 Speichern Sie diese Diagnosedatei lokal.  
 
 ## <a name="deploy-the-diagnostics-extension-to-your-cloud-service"></a>Bereitstellen der Diagnoseerweiterung für Ihren Clouddienst 
@@ -153,19 +150,19 @@ Verwenden Sie die folgenden Befehle, um die Details des zuvor erstellten Speiche
 $storage_account = <name of your storage account from step 3> 
 $storage_keys = <storage account key from step 3> 
 ```
- 
+
 Legen Sie mit dem folgenden Befehl den Diagnosedateipfad auf eine Variable fest:
 
 ```PowerShell
 $diagconfig = “<path of the Diagnostics configuration file with the Azure Monitor sink configured>” 
 ```
- 
+
 Stellen Sie die Diagnoseerweiterung mithilfe des folgenden Befehls unter Verwendung der Diagnosedatei mit der konfigurierten Azure Monitor-Senke für Ihren Clouddienst bereit:  
 
 ```PowerShell
 Set-AzureServiceDiagnosticsExtension -ServiceName <classicCloudServiceName> -StorageAccountName $storage_account -StorageAccountKey $storage_keys -DiagnosticsConfigurationPath $diagconfig 
 ```
- 
+
 > [!NOTE] 
 > Im Rahmen der Installation der Diagnoseerweiterung muss weiterhin ein Speicherkonto angegeben werden. Alle Protokolle und/oder Leistungsindikatoren, die in der Diagnosekonfigurationsdatei angegeben sind, werden in das angegebene Speicherkonto geschrieben.  
 
@@ -190,7 +187,5 @@ Mithilfe der Funktionen zum Filtern und Aufteilen von Dimensionen können Sie de
  ![Metriken – Azure-Portal](./media/metrics-store-custom-guestos-classic-cloud-service/metrics-graph.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 - Erfahren Sie mehr über [benutzerdefinierte Metriken](metrics-custom-overview.md).
-
-
-

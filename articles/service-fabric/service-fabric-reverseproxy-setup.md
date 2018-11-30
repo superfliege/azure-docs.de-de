@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 07/27/201
 ms.author: v-jamebr
-ms.openlocfilehash: c590c9d1ccbbb84a76ba09021a97464ec85c5784
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: 2f84550c83c646b44f4a59c3ae506df7c18d1555
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39507211"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51852978"
 ---
 # <a name="set-up-and-configure-reverse-proxy-in-azure-service-fabric"></a>Einrichten und Konfigurieren des Reverseproxys in Service Fabric
 Der Reverseproxy ist ein optionaler Azure Service Fabric-Dienst, mit dessen Hilfe in einem Service Fabric-Cluster ausgeführte Microservices andere Dienste mit HTTP-Endpunkten ermitteln und mit ihnen kommunizieren können. Weitere Informationen finden Sie unter [Reverseproxy in Azure Service Fabric](service-fabric-reverseproxy.md). In diesem Artikel wird das Einrichten und Konfigurieren eines Reverseproxys in Ihrem Cluster veranschaulicht. 
@@ -231,7 +231,7 @@ Die folgenden Schritte zeigen Ihnen die Einstellungen zum Aktivieren des Reverse
 
    Weitere Informationen zum Konfigurieren und Verwalten von Zertifikaten für einen eigenständigen Cluster sowie weitere Details zum Konfigurieren von Zertifikaten zum Schützen des Reverseproxys finden Sie unter [Schützen eines eigenständigen Windows-Clusters mithilfe von X.509-Zertifikaten](./service-fabric-windows-cluster-x509-security.md).
 
-Nachdem Sie die Datei „ClusterConfig.json“ so geändert haben, dass der Reverseproxy aktiviert wird, befolgen Sie die Anweisungen unter [Aktualisieren der Clusterkonfiguration](./service-fabric-cluster-upgrade-windows-server.md#upgrade-the-cluster-configuration), um die Änderungen auf Ihren Cluster anzuwenden.
+Nachdem Sie die Datei „ClusterConfig.json“ so geändert haben, dass der Reverseproxy aktiviert wird, befolgen Sie die Anweisungen unter [Aktualisieren der Clusterkonfiguration](service-fabric-cluster-config-upgrade-windows-server.md), um die Änderungen auf Ihren Cluster anzuwenden.
 
 
 ## <a name="expose-reverse-proxy-on-a-public-port-through-azure-load-balancer"></a>Bereitstellen des Reverseproxys auf einem öffentlichen Port über Azure Load Balancer
@@ -332,7 +332,7 @@ Sie können beispielsweise den Wert von **DefaultHttpRequestTimeout** festlegen,
    }
    ``` 
 
-Weitere Informationen zum Aktualisieren von Fabric-Einstellungen für Azure-Cluster finden Sie unter [Anpassen von Clustereinstellungen mithilfe von Resource Manager-Vorlagen](./service-fabric-cluster-fabric-settings.md#customize-cluster-settings-using-resource-manager-templates). Informationen für eigenständige Cluster finden Sie unter [Anpassen von Clustereinstellungen für eigenständige Cluster](./service-fabric-cluster-fabric-settings.md#customize-cluster-settings-for-standalone-clusters). 
+Weitere Informationen zum Aktualisieren von Fabric-Einstellungen für Azure-Cluster finden Sie unter [Anpassen von Clustereinstellungen mithilfe von Resource Manager-Vorlagen](service-fabric-cluster-config-upgrade-azure.md). Informationen für eigenständige Cluster finden Sie unter [Anpassen von Clustereinstellungen für eigenständige Cluster](service-fabric-cluster-config-upgrade-windows-server.md). 
 
 Verschiedene Fabric-Einstellungen werden verwendet, um sichere Kommunikation zwischen dem Reverseproxy und Diensten einzurichten. Ausführliche Informationen zu diesen Einstellungen finden Sie unter [Herstellen einer Verbindung mit einem sicheren Dienst mit dem Reverseproxy](service-fabric-reverseproxy-configure-secure-communication.md).
 

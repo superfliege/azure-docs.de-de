@@ -14,12 +14,12 @@ ms.tgt_pltfrm: cache-redis
 ms.workload: tbd
 ms.date: 08/22/2017
 ms.author: wesmc
-ms.openlocfilehash: 58e913aa2b4a89a573f6d901803979e662c27af2
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 39c72dde6bcfec2879efd05a1769ad443c9ffd2f
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46954040"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51823961"
 ---
 # <a name="how-to-configure-azure-redis-cache"></a>Gewusst wie: Konfigurieren von Azure Redis Cache
 In diesem Thema sind die für Ihre Azure Redis Cache-Instanzen verfügbaren Konfigurationen beschrieben. Darüber hinaus wird in diesem Thema die standardmäßige Redis-Serverkonfiguration für Azure Redis Cache-Instanzen behandelt.
@@ -54,7 +54,7 @@ Sie können die folgenden Einstellungen über das **Ressourcenmenü** anzeigen u
     * [Georeplikation](#geo-replication)
     * [Virtual Network](#virtual-network)
     * [Firewall](#firewall)
-    * [Eigenschaften](#properties)
+    * [Properties](#properties)
     * [Sperren](#locks)
     * [Automatisierungsskript](#automation-script)
 * [Verwaltung](#administration)
@@ -106,7 +106,7 @@ Der Abschnitt **Einstellungen** ermöglicht den Zugriff auf die folgenden Cachee
 * [Georeplikation](#geo-replication)
 * [Virtual Network](#virtual-network)
 * [Firewall](#firewall)
-* [Eigenschaften](#properties)
+* [Properties](#properties)
 * [Sperren](#locks)
 * [Automatisierungsskript](#automation-script)
 
@@ -353,7 +353,7 @@ Klicken Sie auf **Warnregeln**, um Warnungen basierend auf Redis Cache-Metriken 
 
 ### <a name="diagnostics"></a>Diagnose
 
-Cachemetriken werden in Azure Monitor standardmäßig [30 Tage lang gespeichert](../monitoring/monitoring-data-collection.md#metrics) und anschließend gelöscht. Um Cachemetriken länger als 30 Tage beizubehalten, klicken Sie zum **Konfigurieren des Speicherkontos** für Cachediagnosedaten auf [Diagnose](cache-how-to-monitor.md#export-cache-metrics).
+Cachemetriken werden in Azure Monitor standardmäßig [30 Tage lang gespeichert](../azure-monitor/platform/data-collection.md#metrics) und anschließend gelöscht. Um Cachemetriken länger als 30 Tage beizubehalten, klicken Sie zum **Konfigurieren des Speicherkontos** für Cachediagnosedaten auf [Diagnose](cache-how-to-monitor.md#export-cache-metrics).
 
 >[!NOTE]
 >Neben dem Archivieren der Cachemetriken im Speicher können Sie sie auch [an einen Event Hub streamen oder an Log Analytics senden](../monitoring-and-diagnostics/monitor-stream-monitoring-data-event-hubs.md).

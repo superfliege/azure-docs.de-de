@@ -1,17 +1,18 @@
 ---
 title: Ausschließen von Datenträgern bei der Replikation für die VMware-Notfallwiederherstellung zu Azure mithilfe von Azure Site Recovery | Microsoft-Dokumentation
 description: Beschreibt, warum und wie Sie VM-Datenträger bei der Replikation für die VMWare-Notfallwiederherstellung zu Azure ausschließen.
-author: nsoneji
+author: Rajeswari-Mamilla
+manager: rochakm
 ms.service: site-recovery
 ms.workload: storage-backup-recovery
 ms.date: 10/11/2018
-ms.author: nisoneji
-ms.openlocfilehash: f8e5fd094e453088dab83c1967bc0733f91a2b98
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.author: ramamill
+ms.openlocfilehash: 667cbbbcc0a74550b389d7a75e17cecd00b88d06
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50210584"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51976612"
 ---
 # <a name="exclude-disks-from-replication-of-vmware-vms-to-azure"></a>Ausschließen von Datenträgern bei der Replikation von VMware-VMs zu Azure
 
