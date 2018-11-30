@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/02/2018
 ms.author: wesmc
-ms.openlocfilehash: c37492a42322ffc386751c4c63b981c9d93a72f6
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 8ff99b8c5cf839afb8c8e73c18c2c413998ba64a
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51633375"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52261717"
 ---
 # <a name="choose-the-right-iot-hub-tier-for-your-solution"></a>Wählen des richtigen IoT Hub-Tarifs für Ihre Lösung
 
@@ -83,7 +83,7 @@ Der Unterschied zwischen den unterstützten Funktionen zwischen dem Basic- und d
 | [Geräteereignis senden](https://docs.microsoft.com/rest/api/iothub/device/senddeviceevent) | JA | JA |
 | Modulereignis senden | JA | JA |
 | [Dateiuploadstatus aktualisieren](https://docs.microsoft.com/rest/api/iothub/device/updatefileuploadstatus) | JA | JA |
-| [Massenvorgang für Geräte](https://docs.microsoft.com/rest/api/iot-dps/deviceenrollment/bulkoperation) | Ja, mit Ausnahme von IoT Edge-Funktionen | JA | 
+| [Massenvorgang für Geräte](/rest/api/iot-dps/runbulkenrollmentoperation/runbulkenrollmentoperation) | Ja, mit Ausnahme von IoT Edge-Funktionen | JA | 
 | [Befehlswarteschlange bereinigen](https://docs.microsoft.com/rest/api/iothub/service/purgecommandqueue) |   | JA |
 | [Gerätezwilling abrufen](https://docs.microsoft.com/rest/api/iothub/service/gettwin) |   | JA |
 | Modulzwilling abrufen |   | JA |

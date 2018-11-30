@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: 0c85b65e9b6eabcb5c74e1d178c0f26235cdf624
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 4c6765e54dc881c35e344f111e82721be0852052
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50961822"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51823757"
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub-for-consumption-by-an-external-tool"></a>Streamen von Azure-Überwachungsdaten an einen Event Hub für die Verwendung durch ein externes Tool
 
@@ -71,7 +71,7 @@ Um Daten aus dem Azure-Aktivitätsprotokoll an Event Hubs-Namespaces zu senden, 
 
 Azure-Ressourcen geben zwei Arten von Überwachungsdaten aus:
 1. [Ressourcendiagnoseprotokolle](./monitoring-overview-of-diagnostic-logs.md)
-2. [Metriken](../monitoring/monitoring-data-collection.md)
+2. [Metriken](../azure-monitor/platform/data-collection.md)
 
 Beide Arten von Daten werden mithilfe einer Ressourcendiagnoseeinstellung an einen Event Hub gesendet. [Befolgen Sie die Schritte in diesem Handbuch](./monitoring-stream-diagnostic-logs-to-event-hubs.md) zum Einrichten einer Ressourcendiagnoseeinstellung für eine bestimmte Ressource. Legen Sie für jede Ressource, für die Protokolle gesammelt werden sollen, eine Ressourcendiagnoseeinstellung fest.
 

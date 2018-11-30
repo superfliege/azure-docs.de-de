@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/01/2017
 ms.author: sngun
-ms.openlocfilehash: 6ad59f14a0ade305bc9b1f9f125c21e9bdc39c0d
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 1de97ef34ab2db79ef7eaeca66cb8d0598ae9262
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50961907"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52284488"
 ---
 # <a name="use-geospatial-and-geojson-location-data-with-azure-cosmos-db-sql-api-account"></a>Verwenden von Geodaten und Standortdaten im GeoJSON-Format im Azure Cosmos DB-SQL-API-Konto
 
@@ -151,7 +151,7 @@ Wenn Sie die Informationen zu Breiten- und Längengrad nicht haben, aber über d
 Nachdem wir einen Blick auf das Einfügen von Geodaten geworfen haben, wollen wir uns nun das Abfragen dieser Daten mithilfe von Azure Cosmos DB sowie SQL und LINQ ansehen.
 
 ### <a name="spatial-sql-built-in-functions"></a>Integrierte räumliche SQL-Funktionen
-Azure Cosmos DB unterstützt die folgenden integrierten OGC-Funktionen (Open Geospatial Consortium ) für das Abfragen von Geodaten. Weitere Informationen zu sämtlichen integrierten Funktionen in der SQL-Sprache finden Sie unter [Abfragen von Azure Cosmos DB-Daten](sql-api-sql-query.md).
+Azure Cosmos DB unterstützt die folgenden integrierten OGC-Funktionen (Open Geospatial Consortium ) für das Abfragen von Geodaten. Weitere Informationen zu sämtlichen integrierten Funktionen in der SQL-Sprache finden Sie unter [Abfragen von Azure Cosmos DB-Daten](how-to-sql-query.md).
 
 <table>
 <tr>
@@ -392,6 +392,6 @@ Nachdem Sie die ersten Schritte mit räumlichen Daten in Azure Cosmos DB erlernt
 
 * Beginnen Sie die Codierung mit den [.NET-Codebeispielen auf GitHub für räumliche Daten](https://github.com/Azure/azure-documentdb-dotnet/blob/fcf23d134fc5019397dcf7ab97d8d6456cd94820/samples/code-samples/Geospatial/Program.cs).
 * Praktisches Arbeiten mit Abfragen von Geodaten im [Azure Cosmos DB Query Playground](http://www.documentdb.com/sql/demo#geospatial)
-* Weitere Informationen zur [Azure Cosmos DB-Abfrage](sql-api-sql-query.md)
-* Weitere Informationen zu den [Indizierungsrichtlinien von Azure Cosmos DB](indexing-policies.md)
+* Weitere Informationen zur [Azure Cosmos DB-Abfrage](how-to-sql-query.md)
+* Weitere Informationen zu den [Indizierungsrichtlinien von Azure Cosmos DB](index-policy.md)
 

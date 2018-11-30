@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 4f49adf006e8d55337220fad9ee84de65209880b
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 8a5b34cd92f3afd166d5d67ca445c99a52c684e2
+ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34193480"
+ms.lasthandoff: 11/22/2018
+ms.locfileid: "52290891"
 ---
 # <a name="azure-automation-scenario---provision-an-aws-virtual-machine"></a>Azure Automation-Szenario – Bereitstellen eines virtuellen AWS-Computers
 In diesem Artikel erfahren Sie, wie Sie Azure Automation zur Bereitstellung eines virtuellen Computers in Ihrem AWS-Abonnement (Amazon Web Services) nutzen und für diesen virtuellen Computer einen bestimmten Namen festlegen können – ein Vorgang, der in AWS als „Tagging“ des virtuellen Computers bezeichnet wird.
@@ -25,7 +25,7 @@ Um die in diesem Artikel beschriebenen Aufgaben ausführen zu können, benötige
 ## <a name="deploy-amazon-web-services-powershell-module"></a>Bereitstellen des Amazon Web Services-PowerShell-Moduls
 Ihr Runbook für die VM-Bereitstellung nutzt das AWS-PowerShell-Modul zur Durchführung seiner Aufgaben. Führen Sie die folgenden Schritte aus, um das Modul zu Ihrem Automation-Konto hinzuzufügen, das mit den Anmeldeinformationen Ihres AWS-Abonnements konfiguriert ist.  
 
-1. Öffnen Sie Ihren Webbrowser, navigieren Sie zum [PowerShell-Katalog](http://www.powershellgallery.com/packages/AWSPowerShell/), und klicken Sie auf **In Azure Automation bereitstellen**.<br><br> ![Importieren des AWS-PS-Moduls](./media/automation-scenario-aws-deployment/powershell-gallery-download-awsmodule.png)
+1. Öffnen Sie Ihren Webbrowser, navigieren Sie zum [PowerShell-Katalog](https://www.powershellgallery.com/packages/AWSPowerShell/), und klicken Sie auf **In Azure Automation bereitstellen**.<br><br> ![Importieren des AWS-PS-Moduls](./media/automation-scenario-aws-deployment/powershell-gallery-download-awsmodule.png)
 2. Sie werden auf die Azure-Anmeldeseite geleitet und nach der Authentifizierung zum Azure-Portal weitergeleitet, in dem die folgende Seite angezeigt wird:<br><br> ![Seite zum Importieren des Moduls](./media/automation-scenario-aws-deployment/deploy-aws-powershell-module-parameters.png)
 3. Wählen Sie das zu verwendende Automation-Konto aus, und klicken Sie auf **OK**, um die Bereitstellung zu starten.
 
@@ -41,11 +41,11 @@ Ihr Runbook für die VM-Bereitstellung nutzt das AWS-PowerShell-Modul zur Durchf
 Nach der Bereitstellung des AWS-PowerShell-Moduls können Sie nun ein Runbook erstellen, mit dem sich die Bereitstellung eines virtuellen Computers in AWS unter Verwendung eines PowerShell-Skripts automatisieren lässt. Die Schritte unten zeigen, wie Sie ein natives PowerShell-Skript in Azure Automation nutzen.  
 
 > [!NOTE]
-> Weitere Optionen und Informationen zu diesem Skript finden Sie im [PowerShell-Katalog](https://www.powershellgallery.com/packages/New-AwsVM/DisplayScript).
+> Weitere Optionen und Informationen zu diesem Skript finden Sie im [PowerShell-Katalog](https://www.powershellgallery.com/packages/New-AwsVM/).
 > 
 
 1. Laden Sie das PowerShell-Skript „New-AwsVM“ aus dem PowerShell-Katalog herunter. Öffnen Sie dazu eine PowerShell-Sitzung, und geben Sie Folgendes ein:<br>
-   ```
+   ```powershell
    Save-Script -Name New-AwsVM -Path <path>
    ```
    <br>
@@ -60,11 +60,12 @@ Nach der Bereitstellung des AWS-PowerShell-Moduls können Sie nun ein Runbook er
     > 
     > * Das Runbook enthält eine Reihe von Standardparameterwerten. Evaluieren Sie alle Standardwerte, und aktualisieren Sie diese bei Bedarf.
     > * Wenn Sie Ihre AWS-Anmeldeinformationen als Anmeldeinformationsasset gespeichert haben, dessen Name nicht **AWScred** lautet, müssen Sie das Skript in Zeile 57 entsprechend aktualisieren.  
-    > * Bei der Arbeit mit den AWS-CLI-Befehlen in PowerShell müssen Sie – insbesondere bei diesem Beispielrunbook – die AWS-Region angeben. Andernfalls tritt bei den Cmdlets ein Fehler auf. Weitere Einzelheiten finden Sie im Dokument zu den AWS-Tools für PowerShell im AWS-Thema [Specify AWS Region (Angeben der AWS-Region)](http://docs.aws.amazon.com/powershell/latest/userguide/pstools-installing-specifying-region.html) .  
+    > * Bei der Arbeit mit den AWS-CLI-Befehlen in PowerShell müssen Sie – insbesondere bei diesem Beispielrunbook – die AWS-Region angeben. Andernfalls tritt bei den Cmdlets ein Fehler auf. Weitere Einzelheiten finden Sie im Dokument zu den AWS-Tools für PowerShell im AWS-Thema [Specify AWS Region (Angeben der AWS-Region)](https://docs.aws.amazon.com/powershell/latest/userguide/pstools-installing-specifying-region.html) .  
     >
 
 7. Um eine Liste mit Imagenamen aus Ihrem AWS-Abonnement abzurufen, starten Sie PowerShell ISE, und importieren Sie das AWS-PowerShell-Modul. Führen Sie die Authentifizierung gegenüber AWS durch, indem Sie **Get-AutomationPSCredential** in Ihrer ISE-Umgebung durch **AWScred = Get-Credential** ersetzen. Sie werden zur Eingabe Ihrer Anmeldeinformationen aufgefordert und können Ihre **Zugriffsschlüssel-ID** als Benutzername und Ihren **geheimen Zugriffsschlüssel** als Kennwort eingeben. Betrachten Sie das folgende Beispiel:  
 
+        ```powershell
         #Sample to get the AWS VM available images
         #Please provide the path where you have downloaded the AWS PowerShell module
         Import-Module AWSPowerShell
@@ -78,7 +79,8 @@ Nach der Bereitstellung des AWS-PowerShell-Moduls können Sie nun ein Runbook er
         Set-DefaultAWSRegion -Region $AwsRegion
    
         Get-EC2ImageByName -ProfileName AWSProfile
-
+        ```
+        
     Die folgende Ausgabe wird zurückgegeben:<br><br>
    ![AWS-Images abrufen](./media/automation-scenario-aws-deployment/powershell-ise-output.png)<br>  
 8. Kopieren Sie einen der Imagenamen, und fügen Sie ihn in eine Automation-Variable ein, auf die im Runbook per **$InstanceType**verwiesen wird. Da in diesem Beispiel das kostenlose mehrstufige AWS-Abonnement verwendet wird, verwenden Sie für Ihr Beispielrunbook **t2.micro**.  

@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 08/08/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: f685b584b701d2772ec5b3915facb97f0d15658a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: d3957038410e7a7d80e1ac710f0c227047b636a7
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51259172"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52284794"
 ---
 # <a name="usage-example-continuous-deployment-to-virtual-machines-using-automation-state-configuration-and-chocolatey"></a>Anwendungsbeispiel: Continuous Deployment auf virtuellen Computern mit Azure Automation State Configuration und Chocolatey
 
@@ -34,14 +34,14 @@ Nachdem diese beiden Kernprozesse eingerichtet wurden, ist es nur noch ein klein
 ## <a name="component-overview"></a>Übersicht über die Komponenten
 
 Paket-Manager, z. B. [apt-get](https://en.wikipedia.org/wiki/Advanced_Packaging_Tool), sind in der Linux-Welt recht bekannt, aber dies gilt nicht so sehr für die Windows-Welt.
-[Chocolatey](https://chocolatey.org/) ist ein Beispiel hierfür, und der Blog von [Scott Hanselman](http://www.hanselman.com/blog/IsTheWindowsUserReadyForAptget.aspx) zu diesem Thema stellt eine gute Einführung dar. Zusammenfassend lässt sich sagen, dass Sie mit Chocolatey Pakete über die Befehlszeile aus einem zentralen Paketrepository auf einem Windows-System installieren können. Sie können ein eigenes Repository erstellen und verwalten, und Chocolatey kann Pakete aus allen Repositorys installieren, die Sie angeben.
+[Chocolatey](https://chocolatey.org/) ist ein Beispiel hierfür, und der Blog von [Scott Hanselman](https://www.hanselman.com/blog/IsTheWindowsUserReadyForAptget.aspx) zu diesem Thema stellt eine gute Einführung dar. Zusammenfassend lässt sich sagen, dass Sie mit Chocolatey Pakete über die Befehlszeile aus einem zentralen Paketrepository auf einem Windows-System installieren können. Sie können ein eigenes Repository erstellen und verwalten, und Chocolatey kann Pakete aus allen Repositorys installieren, die Sie angeben.
 
 Desired State Configuration (DSC) ([Übersicht](/powershell/dsc/overview)) ist ein PowerShell-Tool, mit dem Sie die gewünschte Konfiguration für einen Computer deklarieren können. Beispielsweise können Sie angeben, dass Sie Chocolatey installieren, IIS installieren, Port 80 öffnen und Version 1.0.0 Ihrer Website installieren möchten. Diese Konfiguration wird dann mit dem lokalen Konfigurations-Manager (LCM) für DSC implementiert. Ein DSC-Pullserver enthält ein Repository mit Konfigurationen für Ihre Computer. Der LCM jedes Computers checkt sich regelmäßig ein, um zu überprüfen, ob die Konfiguration mit der gespeicherten Konfiguration übereinstimmt. Es kann entweder der Status gemeldet werden, oder es kann versucht werden, den Computer wieder auf den Stand der gespeicherten Konfiguration zu bringen. Sie können die gespeicherte Konfiguration auf dem Pullserver bearbeiten, um einen Computer oder eine Gruppe von Computern auf den Stand der geänderten Konfiguration zu bringen.
 
 Azure Automation ist ein verwalteter Dienst in Microsoft Azure, der Ihnen die Automatisierung verschiedener Aufgaben ermöglicht, indem Sie Runbooks, Knoten, Anmeldeinformationen und Assets verwenden, z. B. Zeitpläne und globale Variablen.
 Azure Automation State Configuration erweitert diese Automatisierungsfunktion auf PowerShell DSC-Tools. Hier ist eine gute [Übersicht](automation-dsc-overview.md).
 
-Eine DSC-Ressource ist ein Codemodul mit speziellen Funktionen, z. B. zur Verwaltung von Netzwerken, Active Directory oder SQL Server. Die Chocolatey DSC-Ressource kann zum Zugreifen auf einen NuGet-Server (unter anderem), Herunterladen von Paketen, Installieren von Paketen usw. verwendet werden. Der [PowerShell-Katalog](http://www.powershellgallery.com/packages?q=dsc+resources&prerelease=&sortOrder=package-title) enthält noch viele weitere DSC-Ressourcen.
+Eine DSC-Ressource ist ein Codemodul mit speziellen Funktionen, z. B. zur Verwaltung von Netzwerken, Active Directory oder SQL Server. Die Chocolatey DSC-Ressource kann zum Zugreifen auf einen NuGet-Server (unter anderem), Herunterladen von Paketen, Installieren von Paketen usw. verwendet werden. Der [PowerShell-Katalog](https://www.powershellgallery.com/packages?q=dsc+resources&prerelease=&sortOrder=package-title) enthält noch viele weitere DSC-Ressourcen.
 Diese Module wurden (von Ihnen) auf Ihrem Pullserver für Azure Automation State Configuration installiert, damit sie für die Konfigurationen verwendet werden können.
 
 Resource Manager-Vorlagen stellen einen deklarativen Weg zum Generieren Ihrer Infrastruktur dar: Netzwerke, Subnetze, Netzwerksicherheit und -routing, Load Balancer, Netzwerkschnittstellenkarten, virtuelle Computer usw. In diesem [Artikel](../azure-resource-manager/resource-manager-deployment-model.md) wird das (deklarative) Resource Manager-Bereitstellungsmodell mit dem (obligatorischen) Azure Service Management-Bereitstellungsmodell (ASM bzw. klassisch) verglichen. Außerdem werden die Hauptressourcenanbieter sowie Compute-, Speicher- und Netzwerkkomponenten erläutert.
@@ -64,8 +64,10 @@ Falls Sie nicht mit einer Resource Manager-Vorlage beginnen, ist dies auch in Or
 
 An einer authentifizierten (`Connect-AzureRmAccount`) PowerShell-Befehlszeile. (Die Einrichtung des Pullservers kann einige Minuten dauern.)
 
-    New-AzureRmResourceGroup –Name MY-AUTOMATION-RG –Location MY-RG-LOCATION-IN-QUOTES
-    New-AzureRmAutomationAccount –ResourceGroupName MY-AUTOMATION-RG –Location MY-RG-LOCATION-IN-QUOTES –Name MY-AUTOMATION-ACCOUNT
+```azurepowershell-interactive
+New-AzureRmResourceGroup –Name MY-AUTOMATION-RG –Location MY-RG-LOCATION-IN-QUOTES
+New-AzureRmAutomationAccount –ResourceGroupName MY-AUTOMATION-RG –Location MY-RG-LOCATION-IN-QUOTES –Name MY-AUTOMATION-ACCOUNT
+```
 
 Sie können Ihr Automatisierungskonto in einer der folgenden Regionen einrichten: USA, Osten 2; USA, Süden-Mitte; US Gov Virginia; Europa, Westen; Asien, Südosten; Japan, Osten; Indien, Mitte; Australien, Südosten; Kanada, Mitte und Europa, Norden.
 
@@ -177,7 +179,7 @@ Diese Schritte führen zu einer neuen Knotenkonfiguration mit dem Namen „ISVBo
 ## <a name="step-5-creating-and-maintaining-package-metadata"></a>Schritt 5: Erstellen und Verwalten von Paketmetadaten
 
 Für jedes Paket, das Sie im Paketrepository ablegen, benötigen Sie ein Nuspec-Element, mit dem das Paket beschrieben wird.
-Dieses Nuspec-Element muss auf Ihrem NuGet-Server kompiliert und gespeichert werden. Dieser Prozess ist [hier](http://docs.nuget.org/create/creating-and-publishing-a-package)beschrieben. Sie können „MyGet.org“ als NuGet-Server verwenden. Dieser Dienst wird von dem Unternehmen zum Kauf angeboten, aber es ist auch eine kostenlose Start-SKU vorhanden. Unter „NuGet.org“ finden Sie eine Anleitung zum Installieren Ihres eigenen NuGet-Servers für Ihre privaten Pakete.
+Dieses Nuspec-Element muss auf Ihrem NuGet-Server kompiliert und gespeichert werden. Dieser Prozess ist [hier](https://docs.nuget.org/create/creating-and-publishing-a-package)beschrieben. Sie können „MyGet.org“ als NuGet-Server verwenden. Dieser Dienst wird von dem Unternehmen zum Kauf angeboten, aber es ist auch eine kostenlose Start-SKU vorhanden. Unter „NuGet.org“ finden Sie eine Anleitung zum Installieren Ihres eigenen NuGet-Servers für Ihre privaten Pakete.
 
 ## <a name="step-6-tying-it-all-together"></a>Schritt 6: Zusammenfügen des Gesamtbilds
 

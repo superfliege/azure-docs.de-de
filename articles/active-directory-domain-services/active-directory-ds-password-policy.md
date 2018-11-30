@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/17/2018
 ms.author: ergreenl
-ms.openlocfilehash: b5574b529dc3d4646375638d6759d85a41c66946
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: dcc1de5fa0ac1f394d0fe12fd24a1d6e745df83e
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50155604"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52284607"
 ---
 # <a name="password-and-account-lockout-policies-on-managed-domains"></a>Kennwort- und Kontosperrungsrichtlinien in verwalteten Domänen
 Dieser Artikel beschreibt die Standardkennwortrichtlinien in einer verwalteten Domäne. Sie erfahren auch, wie Sie diese Richtlinien konfigurieren können.
@@ -118,5 +118,5 @@ So erstellen Sie eine benutzerdefinierte FGPP in Ihrer verwalteten Domäne
 >
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Erfahren Sie mehr über differenzierte Active Directory-Kennwortrichtlinien](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc770394).
+* [Erfahren Sie mehr über differenzierte Active Directory-Kennwortrichtlinien](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc770394(v=ws.10)).
 * [Konfigurieren Sie differenzierte Kennwortrichtlinien mit dem Active Directory-Verwaltungscenter](https://docs.microsoft.com/windows-server/identity/ad-ds/get-started/adac/introduction-to-active-directory-administrative-center-enhancements--level-100-#fine_grained_pswd_policy_mgmt).

@@ -9,12 +9,12 @@ ms.service: germany
 ms.date: 8/15/2018
 ms.topic: article
 ms.custom: bfmigrate
-ms.openlocfilehash: da5a5c0d17539122a1092f2ecf07c6e1942d46f9
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 5c978cd36fe619e329df370a4b3ed818ac38353f
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46297461"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52335360"
 ---
 # <a name="migration-of-identity-resources-from-azure-germany-to-global-azure"></a>Migration von Identity-Ressourcen von Azure Deutschland zu Azure weltweit
 
@@ -77,7 +77,7 @@ Get-AzureADUser -All $true | Where-Object {$_.AccountEnabled -eq $true} | select
 > [!NOTE]
 > Abhängig von Ihrer Umgebung gibt es möglicherweise weitere Informationen, die sie erfassen möchten, z.B. Erweiterungen, DirectReport, LicenceDetail usw.
 
-Formatieren Sie Ihre CSV-Datei nach Bedarf, und führen Sie die unter [Importieren von Daten aus einer CSV-Datei](/powershell/azure/active-directory/importing-data.md?view=azureadps-2.0) beschriebenen Schritte aus, um die Benutzer in der neuen Umgebung erneut zu erstellen.
+Formatieren Sie Ihre CSV-Datei nach Bedarf, und führen Sie die unter [Importieren von Daten aus einer CSV-Datei](/powershell/azure/active-directory/importing-data) beschriebenen Schritte aus, um die Benutzer in der neuen Umgebung erneut zu erstellen.
 
 ### <a name="inventory-of-groups"></a>Bestandsaufnahme der Gruppen
 
@@ -133,7 +133,7 @@ $_.ObjectId | Format-Table}
 
 - [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/)
 - [Benutzerdefinierte Domänennamen](../active-directory/fundamentals/add-custom-domain.md)
-- [Importieren von Daten aus einer CSV-Datei in Azure AD](/powershell/azure/active-directory/importing-data.md?view=azureadps-2.0)
+- [Importieren von Daten aus einer CSV-Datei in Azure AD](/powershell/azure/active-directory/importing-data)
 
 ## <a name="adconnect"></a>ADConnect
 

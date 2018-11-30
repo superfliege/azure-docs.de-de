@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: 0754b13704810816b1650010a00185031ca41f5d
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: f08bf6a65a93c31d76c5b336cc6ef433153d71c4
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46297570"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52423116"
 ---
 # <a name="integrate-your-vpn-infrastructure-with-azure-mfa-by-using-the-network-policy-server-extension-for-azure"></a>Integration Ihrer VPN-Infrastruktur in Azure MFA mit der Netzwerkrichtlinienserver-Erweiterung für Azure
 
@@ -438,7 +438,7 @@ Ein zugehöriges Ereignis aus dem Azure Multi-Factor Authentication-Protokoll:
 
 Zur erweiterten Problembehandlung nutzen Sie die NPS-Datenbankformat-Protokolldateien dort, wo der NPS-Dienst installiert ist. Die Protokolldateien werden im Ordner _%SystemRoot%\System32\Logs_ als durch Trennzeichen getrennte Textdateien erstellt. Eine Beschreibung der Protokolldateien finden Sie unter [Interpret NPS Database Format Log Files](https://technet.microsoft.com/library/cc771748.aspx) (Interpretieren von NPS-Datenbankformat-Protokolldateien). 
 
-Die Einträge in diesen Protokolldateien sind schwierig zu interpretieren, es sei denn, Sie importieren sie in eine Tabelle oder Datenbank. Sie finden online viele IAS-Analysetools (Internet Authentication Service), die Sie zur Interpretation der Protokolldateien verwenden können. Hier ist die Ausgabe einer solchen herunterladbaren [Sharewareanwendung](http://www.deepsoftware.com/iasviewer) abgebildet: 
+Die Einträge in diesen Protokolldateien sind schwierig zu interpretieren, es sei denn, Sie importieren sie in eine Tabelle oder Datenbank. Sie finden online viele IAS-Analysetools (Internet Authentication Service), die Sie zur Interpretation der Protokolldateien verwenden können. Hier ist die Ausgabe einer solchen herunterladbaren [Sharewareanwendung](https://www.deepsoftware.com/iasviewer) abgebildet: 
 
 ![Sharewareanwendung](./media/howto-mfa-nps-extension-vpn/image49.png)
 

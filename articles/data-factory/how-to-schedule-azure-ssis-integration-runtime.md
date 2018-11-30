@@ -13,12 +13,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: f83715d2a382db271686210d9df285c255c09216
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 7e93e83f7594d30d223d37454e09943beba6d3ce
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39113993"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51976728"
 ---
 # <a name="how-to-start-and-stop-the-azure-ssis-integration-runtime-on-a-schedule"></a>Starten und Beenden der Azure SSIS Integration Runtime nach einem Zeitplan
 Dieser Artikel beschreibt die Planung des Startens und Beendens einer Azure-SSIS-Integration Runtime (IR) mithilfe von Azure Automation und Azure Data Factory. Das Ausführen einer Azure SSIS (SQL Server Integration Services) Integration Runtime (IR) ist mit einer Gebühr verbunden. Sie sollten die IR daher in der Regel nur ausführen, wenn Sie SSIS-Pakete in Azure ausführen müssen, und die IR andernfalls beenden. Sie können die Data Factory-Benutzeroberfläche oder Azure PowerShell zum [manuellen Starten oder Beenden einer Azure SSIS-IR](manage-azure-ssis-integration-runtime.md) verwenden.
@@ -347,7 +347,7 @@ Nachdem Sie die Pipeline erstellt und getestet haben, erstellen Sie einen Zeitpl
     6. Klicken Sie mit der rechten Maustaste auf das SSIS-Paket, und wählen Sie **Berichte** -> **Standardberichte** -> **Alle Ausführungen** aus. 
     7. Vergewissern Sie sich, dass das SSIS-Paket ausgeführt wurde. 
 
-        ![Überprüfen der Ausführung des SSIS-Pakets](./media/how-to-schedule-azure-ssis-integration-runtime/verfiy-ssis-package-run.png)
+        ![Überprüfen der Ausführung des SSIS-Pakets](./media/how-to-schedule-azure-ssis-integration-runtime/verify-ssis-package-run.png)
 
 ### <a name="schedule-the-pipeline"></a>Planen der Pipeline 
 Nun, da die Pipeline wie erwartet funktioniert, können Sie einen Trigger zum Ausführen dieser Pipeline in einem festgelegten Rhythmus erstellen. Informationen zum Zuordnen eines Zeitplantriggers zu einer Pipeline finden Sie unter [Auslösen der Pipeline nach einem Zeitplan](quickstart-create-data-factory-portal.md#trigger-the-pipeline-on-a-schedule).

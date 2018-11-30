@@ -6,14 +6,14 @@ author: trinadhk
 manager: shreeshd
 ms.service: backup
 ms.topic: conceptual
-ms.date: 11/1/2018
+ms.date: 11/14/2018
 ms.author: trinadhk
-ms.openlocfilehash: cf06fc9c12493e208832596a27b479dc9dfea942
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: de7c00717349a1c814c5a13508adb11879aa10a5
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51011322"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51704646"
 ---
 # <a name="use-role-based-access-control-to-manage-azure-backup-recovery-points"></a>Verwenden der rollenbasierten Zugriffssteuerung zum Verwalten von Azure Backup-Wiederherstellungspunkten
 Die rollenbasierte Access Control in Azure (RBAC) ermöglicht eine präzise Zugriffsverwaltung für Azure. Mithilfe von RBAC können Sie Aufgaben in Ihrem Team verteilen und Benutzern nur den Zugriff gewähren, den sie zur Ausführung ihrer Aufgaben benötigen.
@@ -41,7 +41,7 @@ In der folgenden Tabelle sind die Aktionen der Sicherungsverwaltung und die ents
 | | Mitwirkender von virtuellen Computern | VM-Ressource |
 | Bedarfsgesteuerte Sicherung eines virtuellen Computers | Sicherungsoperator | Wiederherstellungstresorressource |
 | Wiederherstellen eines virtuellen Computers | Sicherungsoperator | Recovery Services-Tresor |
-| | Mitwirkender von virtuellen Computern | Ressourcengruppe, in der der virtuelle Computer bereitgestellt wird. |
+| | Mitwirkender | Ressourcengruppe, in der der virtuelle Computer bereitgestellt wird. |
 | | Mitwirkender von virtuellen Computern | Gesicherte Quell-VM |
 | Wiederherstellen von VM-Sicherung nicht verwalteter Datenträger | Sicherungsoperator | Wiederherstellungstresorressource |
 | | Mitwirkender von virtuellen Computern | Gesicherte Quell-VM |
