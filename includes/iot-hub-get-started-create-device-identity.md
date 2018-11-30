@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 09/07/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: e80033d696de1b83da43fc27e5be9eca3b3f8757
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 40a5416f15b0e2d66d6ce4b4787573560ee4af00
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44169191"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "52156771"
 ---
 ## <a name="create-a-device-identity"></a>Erstellen einer Geräteidentität
 
-In diesem Abschnitt verwenden Sie die Azure-Befehlszeilenschnittstelle zum Erstellen einer Geräteidentität für dieses Tutorial. Die Azure-Befehlszeilenschnittstelle ist in der [Azure Cloud Shell](https://docs.microsoft.com/zure/cloud-shell/overview) vorinstalliert, Sie können sie aber auch [lokal installieren](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). Bei Geräte-IDs wird die Groß-/Kleinschreibung beachtet.
+In diesem Abschnitt verwenden Sie die Azure-Befehlszeilenschnittstelle zum Erstellen einer Geräteidentität für dieses Tutorial. Die Azure-Befehlszeilenschnittstelle ist in der [Azure Cloud Shell](~/articles/cloud-shell/overview.md) vorinstalliert, Sie können sie aber auch [lokal installieren](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). Bei Geräte-IDs wird die Groß-/Kleinschreibung beachtet.
 
 1. Führen Sie den folgenden Befehl in der Befehlszeilenumgebung aus, in der Sie die IoT-Erweiterung mit der Azure-Befehlszeilenschnittstelle installieren:
 

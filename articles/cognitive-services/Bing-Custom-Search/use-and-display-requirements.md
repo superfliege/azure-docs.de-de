@@ -3,19 +3,19 @@ title: Anforderungen für die Verwendung und Anzeige – API für die benutzerde
 titlesuffix: Azure Cognitive Services
 description: Verbessern Sie die Ergebnisse von Suchen im Internet mit Daten der APIs für die benutzerdefinierte Bing-Suche.
 services: cognitive-services
-author: brapel
+author: aahill
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-custom-search
 ms.topic: conceptual
 ms.date: 05/15/2018
 ms.author: maheshb
-ms.openlocfilehash: b53ced4d09bb5cf2c1c4b2ef0f1ccb3875101f63
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: abb44b321a04c0cffd206c1ebc819bb33d3bc7f0
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51286519"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52161139"
 ---
 # <a name="bing-search-api-use-and-display-requirements"></a>Anforderungen für die Verwendung und Anzeige der Bing-Suche-API
 [!INCLUDE [cognitive-services-bing-use-and-display-requirements](../../../includes/cognitive-services-bing-use-and-display-requirements.md)]

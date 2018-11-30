@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: conceptual
 ms.date: 09/08/2018
 ms.author: erhopf
-ms.openlocfilehash: 162b690d4b371cfe76738cd83ce484a3062d139f
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 16b7de909ce57a7f8d3cea54a59996dc6f0a6ba0
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49469915"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51712006"
 ---
 # <a name="use-text-to-speech-in-speech-service"></a>Verwenden von Text-to-Speech im Speech-Dienst
 
@@ -92,7 +92,7 @@ Bei Fehlern werden die unten aufgeführten Statuscodes verwendet. Der Antworttex
 429|Zu viele Anforderungen|Sie haben das Kontingent oder die Rate der Anforderungen überschritten, das bzw. die für Ihr Abonnement zulässig ist.
 |502|Ungültiges Gateway    | Netzwerk- oder serverseitiges Problem. Kann auch auf ungültige Header hinweisen.
 
-Weitere Informationen zur REST-API für die Sprachsynthese finden Sie unter [REST-APIs](rest-apis.md#text-to-speech).
+Weitere Informationen zur REST-API für die Sprachsynthese finden Sie unter [REST-APIs](rest-apis.md#text-to-speech-api).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/20/2018
 ms.author: juliako;anilmur
-ms.openlocfilehash: ada5f55cf356ca79efb7cb45c76a4812804400c5
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 13edef4c02aff167316ccae2755a6ec1b58e2e89
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47222062"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52262617"
 ---
 # <a name="live-streaming-using-azure-media-services-to-create-multi-bitrate-streams"></a>Livestreaming mit Azure Media Services zum Erstellen von Multi-Bitrate-Datenströmen
 
@@ -268,8 +268,8 @@ Wenn für diese Einstellung der Wert „true“ festgelegt ist, wird der Liveenc
 Optional. Hier wird die ID des Media Services-Medienobjekts angegeben, welches das Slatebild enthält. Der Standardwert lautet null. 
 
 
->[!NOTE] 
->Vor dem Erstellen des Kanals muss das Slate-Bild mit den folgenden Einschränkungen als dediziertes Medienobjekt hochgeladen werden (in diesem Medienobjekt dürfen sich keine anderen Dateien befinden). Dieses Bild wird nur verwendet, wenn der Liveencoder aufgrund einer Werbepause ein Slate einfügt oder das Einfügen eines Slates explizit veranlasst wurde. Der Slate-Modus des Liveencoders kann auch bei bestimmten Fehlerzuständen aktiviert werden (beispielsweise bei Verlust des Eingangssignals). Es ist derzeit nicht möglich, ein benutzerdefiniertes Bild zu verwenden, wenn das Eingangssignal des Liveencoders verloren geht. Für dieses Feature können Sie [hier](https://feedback.azure.com/forums/169396-azure-media-services/suggestions/10190457-define-custom-slate-image-on-a-live-encoder-channel) abstimmen.
+> [!NOTE] 
+> Vor dem Erstellen des Kanals muss das Slate-Bild mit den folgenden Einschränkungen als dediziertes Medienobjekt hochgeladen werden (in diesem Medienobjekt dürfen sich keine anderen Dateien befinden). Dieses Bild wird nur verwendet, wenn der Liveencoder aufgrund einer Werbepause ein Slate einfügt oder das Einfügen eines Slates explizit veranlasst wurde. Es ist derzeit nicht möglich, ein benutzerdefiniertes Bild zu verwenden, wenn das Eingangssignal des Liveencoders verloren geht. Für dieses Feature können Sie [hier](https://feedback.azure.com/forums/169396-azure-media-services/suggestions/10190457-define-custom-slate-image-on-a-live-encoder-channel) abstimmen.
 
 
 * Auflösung von höchstens 1920 x 1080

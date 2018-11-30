@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/14/2018
 ms.author: spelluru
-ms.openlocfilehash: ef1b8b2dd96a89a553239168d412d84e63a29f2a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: daefb07761217ff4bb0800dfd9f1f05b6e22c1e1
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51254586"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52284913"
 ---
 # <a name="service-bus-access-control-with-shared-access-signatures"></a>Service Bus-Zugriffssteuerung mit Shared Access Signatures
 
@@ -31,7 +31,7 @@ SAS schützt den Zugriff auf Service Bus basierend auf Autorisierungsregeln. Die
 
 Shared Access Signatures sind ein anspruchsbasierter Autorisierungsmechanismus mit einfachen Token. Mit SAS werden Schlüssel nie über das Netzwerk übergeben. Schlüssel werden verwendet, um Informationen kryptografisch zu signieren, die später vom Dienst überprüft werden können. SAS kann wie ein Schema aus Benutzername und Kennwort verwendet werden, bei dem der Client unmittelbar den Namen einer Autorisierungsregel und einen passenden Schlüssel besitzt. SAS kann auch ähnlich wie ein Verbundsicherheitsmodell verwendet werden, bei dem der Client ein zeitlich begrenztes und signierte Zugriffstoken von einem Sicherheitstokendienst erhält, ohne den Signaturschlüssel überhaupt zu besitzen.
 
-SAS-Authentifizierung in Service Bus wird mit benannten [SAS-Autorisierungsregeln](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule), denen Zugriffsrechte zugeordnet sind, und einem Paar aus primären und sekundären kryptografischen Schlüsseln konfiguriert. Die Schlüssel sind 256-Bit-Werte in Base64-Darstellung. Sie können Regeln auf Namespaceebene für Service Bus-[Relays](../service-bus-relay/relay-what-is-it.md), -[Warteschlangen](/service-bus-messaging/service-bus-messaging-overview.md#queues) und -[Themen](/service-bus-messaging/service-bus-messaging-overview.md#topics) konfigurieren.
+SAS-Authentifizierung in Service Bus wird mit benannten [SAS-Autorisierungsregeln](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule), denen Zugriffsrechte zugeordnet sind, und einem Paar aus primären und sekundären kryptografischen Schlüsseln konfiguriert. Die Schlüssel sind 256-Bit-Werte in Base64-Darstellung. Sie können Regeln auf Namespaceebene für Service Bus-[Relays](../service-bus-relay/relay-what-is-it.md), -[Warteschlangen](service-bus-messaging-overview.md#queues) und -[Themen](service-bus-messaging-overview.md#topics) konfigurieren.
 
 Das [Shared Access Signature](/dotnet/api/microsoft.servicebus.sharedaccesssignaturetokenprovider)-Token enthält den Namen der ausgewählten Autorisierungsregel, den URI der Ressource, auf die zugegriffen werden muss, einen Ablaufwert und eine kryptografische HMAC-SHA256-Signatur, die mithilfe des primären oder sekundären Kryptografieschlüssels für die ausgewählte Autorisierungsregel über diese Felder berechnet wird.
 

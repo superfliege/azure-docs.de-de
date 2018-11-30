@@ -9,12 +9,12 @@ ms.service: germany
 ms.date: 8/15/2018
 ms.topic: article
 ms.custom: bfmigrate
-ms.openlocfilehash: c3ba77675876387c037c3068d713a4be6f33162b
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: c6842bcad076fa106886198b56a01c9e6cc8a182
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43346255"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51975610"
 ---
 # <a name="migration-of-network-resources-from-azure-germany-to-global-azure"></a>Migration von Netzwerkressourcen von Azure Deutschland zu Azure weltweit
 
@@ -74,7 +74,7 @@ Get-AzureRmNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg
 
 ### <a name="next-steps"></a>Nächste Schritte
 
-- Frischen Sie Ihre [Kenntnisse zu Netzwerksicherheitsgruppen](/virtual-network/security-overview.md#network-security-groups) auf.
+- Frischen Sie Ihre [Kenntnisse zu Netzwerksicherheitsgruppen](../virtual-network/security-overview.md#network-security-groups) auf.
 
 ### <a name="references"></a>Referenzen
 

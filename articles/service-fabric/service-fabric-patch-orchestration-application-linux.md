@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 5/22/2018
 ms.author: nachandr
-ms.openlocfilehash: 0aadb5964b5fe08b02397588dd9b2695fb4db4ce
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: 27650605601a24e11d63e56343535c35c8b72f5d
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42746716"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52285151"
 ---
 # <a name="patch-the-linux-operating-system-in-your-service-fabric-cluster"></a>Patchen des Linux-Betriebssystems in Ihrem Service Fabric-Cluster
 
@@ -147,7 +147,7 @@ Das Verhalten der App für die Patchorchestrierung kann Ihren Anforderungen ents
 
 1. Führen Sie alle erforderlichen Schritte zur Vorbereitung des Clusters aus.
 2. Stellen Sie die App für die Patchorchestrierung wie jede andere Service Fabric-App bereit. Sie können die App mit PowerShell oder der Azure Service Fabric-Befehlszeilenschnittstelle bereitstellen. Führen Sie die Schritte unter [Bereitstellen und Entfernen von Anwendungen mit PowerShell](https://docs.microsoft.com/azure/service-fabric/service-fabric-deploy-remove-applications) oder [Bereitstellen einer Anwendung mit Azure Service Fabric CLI](https://docs.microsoft.com/azure/service-fabric/scripts/cli-deploy-application) aus.
-3. Übergeben Sie zum Konfigurieren der Anwendung zum Zeitpunkt der Bereitstellung `ApplicationParamater` an das Cmdlet `New-ServiceFabricApplication` oder die bereitgestellten Skripts. Zur Vereinfachung werden ein PowerShell-Skript („Deploy.ps1“) und ein Bash-Skript („Deploy.sh“) zusammen mit der Anwendung bereitgestellt. So verwenden Sie das Skript
+3. Übergeben Sie zum Konfigurieren der Anwendung zum Zeitpunkt der Bereitstellung `ApplicationParameter` an das Cmdlet `New-ServiceFabricApplication` oder die bereitgestellten Skripts. Zur Vereinfachung werden ein PowerShell-Skript („Deploy.ps1“) und ein Bash-Skript („Deploy.sh“) zusammen mit der Anwendung bereitgestellt. So verwenden Sie das Skript
 
     - Stellen Sie eine Verbindung mit einem Service Fabric-Cluster her.
     - Führen Sie das Deploy-Skript aus. Optional können Sie den Anwendungsparameter an das Skript übergeben. Beispiel: .\Deploy.ps1 -ApplicationParameter @{ UpdateFrequency = "Daily, 11:00:00"} ODER ./Deploy.sh "{\"UpdateFrequency\":\"Daily, 11:00:00\"}" 

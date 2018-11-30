@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 10/08/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: dab6b87c2785d3331817d6c191be64d406683a51
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: dccb597cda1f5aba30d18b0f71371caa6ceee9b4
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49312013"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51852382"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>Informationen zu Anspruchskonfliktlösern in benutzerdefinierten Azure Active Directory B2C-Richtlinien
 
@@ -33,10 +33,10 @@ Im folgenden Beispiel, wird ein Anspruchstyp namens `correlationId` definiert mi
 </ClaimType>
 ```
 
-Ordnen Sie im technischen Profil den Anspruchskonfliktlöser dem Anspruchstyp zu. Azure AD B2C füllt den Wert des Anspruchskonfliktlösers `{context:corelationId}` in den Anspruch `correlationId` auf, und sende den Anspruch an den technische Profil.
+Ordnen Sie im technischen Profil den Anspruchskonfliktlöser dem Anspruchstyp zu. Azure AD B2C füllt den Wert des Anspruchskonfliktlösers `{Context:CorrelationId}` in den Anspruch `correlationId` auf, und sende den Anspruch an den technische Profil.
 
 ```XML
-<InputClaim ClaimTypeReferenceId="correlationId" DefaultValue="{context:corelationId}" />
+<InputClaim ClaimTypeReferenceId="correlationId" DefaultValue="{Context:CorrelationId}" />
 ```
 
 ## <a name="claim-resolver-types"></a>Typen von Anspruchskonfliktlösern
