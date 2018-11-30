@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/23/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: fdac7d1fd7fbcea28d6ce8e614e4968f168566ba
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 3e1acb714cfc1c059f8d02240c2a6d49be9f4971
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51010586"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52335281"
 ---
 # <a name="custom-fields-in-log-analytics"></a>Benutzerdefinierte Felder in Log Analytics
 Mit dem Feature **Benutzerdefinierte Felder** von Log Analytics können Sie vorhandene Datensätze in Log Analytics durch eigene durchsuchbare Felder erweitern.  Benutzerdefinierte Felder werden automatisch auf der Grundlage von Daten aufgefüllt, die aus anderen Eigenschaften im gleichen Datensatz extrahiert wurden.
@@ -81,7 +81,7 @@ Sie können im Azure-Portal über das Menü **Erweiterte Einstellungen** des Log
 Benutzerdefinierte Felder können auf zwei Arten entfernt werden:  Sie können in der weiter oben beschriebenen Liste für jedes Feld die Option **Entfernen** verwenden.  Alternativ können Sie einen Datensatz abrufen und auf die Schaltfläche links neben dem Feld klicken.  Das Menü enthält eine Option zum Entfernen des benutzerdefinierten Felds.
 
 ## <a name="sample-walkthrough"></a>Exemplarische Vorgehensweise
-Der folgende Abschnitt enthält ein vollständiges Beispiel für die Erstellung eines benutzerdefinierten Felds.  In diesem Beispiel wird in Windows-Ereignissen, die auf eine Zustandsänderung bei einem Dienst hindeuten, der Dienstname extrahiert.  Als Grundlage dienen Ereignisse, die auf Windows-Computern vom Dienststeuerungs-Manager im Systemprotokoll erstellt werden.  Wenn Sie dieses Beispiel nachvollziehen möchten, müssen Sie [Informationsereignisse für das Systemprotokoll sammeln](log-analytics-data-sources-windows-events.md).
+Der folgende Abschnitt enthält ein vollständiges Beispiel für die Erstellung eines benutzerdefinierten Felds.  In diesem Beispiel wird in Windows-Ereignissen, die auf eine Zustandsänderung bei einem Dienst hindeuten, der Dienstname extrahiert.  Als Grundlage dienen Ereignisse, die auf Windows-Computern vom Dienststeuerungs-Manager im Systemprotokoll erstellt werden.  Wenn Sie dieses Beispiel nachvollziehen möchten, müssen Sie [Informationsereignisse für das Systemprotokoll sammeln](../azure-monitor/platform/data-sources-windows-events.md).
 
 Wir geben die folgende Abfrage ein, die alle Ereignisse des Dienststeuerungs-Managers mit der Ereignis-ID 7036 zurückgibt. (Dieses Ereignis gibt an, dass ein Dienst gestartet oder beendet wird.)
 
@@ -141,5 +141,5 @@ Nun können wir das benutzerdefinierte Feld wie jede andere Datensatzeigenschaft
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Erfahren Sie mehr über [Protokollsuchvorgänge](log-analytics-queries.md) , um Abfragen mithilfe von benutzerdefinierten Feldern für die Kriterien zu erstellen.
-* Überwachen Sie [benutzerdefinierte Protokolldateien](log-analytics-data-sources-custom-logs.md), die Sie mithilfe von benutzerdefinierten Feldern analysieren.
+* Überwachen Sie [benutzerdefinierte Protokolldateien](../azure-monitor/platform/data-sources-custom-logs.md), die Sie mithilfe von benutzerdefinierten Feldern analysieren.
 

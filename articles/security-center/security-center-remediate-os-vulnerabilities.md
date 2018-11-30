@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: d4523a9e2d5a5466c1617930d14a8a2d25a0e16f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: d77e5265349db2fc433d2bb9a42140a6a4209ba1
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238776"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52317494"
 ---
 # <a name="remediate-security-configurations-in-azure-security-center"></a>Korrigieren von Sicherheitskonfigurationen in Azure Security Center
 Azure Security Center analysiert täglich das Betriebssystem Ihrer virtuellen Computer (VMs) und physischen Computer auf Konfigurationen, die sie möglicherweise anfälliger für Angriffe machen. Security Center empfiehlt die Behandlung von Sicherheitsrisiken, wenn die Betriebssystemkonfiguration nicht den empfohlenen Sicherheitskonfigurationsregeln entspricht, und empfiehlt Konfigurationsänderungen, um diese Sicherheitsrisiken zu beseitigen.
@@ -101,7 +101,7 @@ Weitere Informationen zu den spezifischen Konfigurationen, die überwacht werden
 Weitere Informationen zu Security Center finden Sie in den folgenden Ressourcen:
 
 * Eine Liste mit unterstützten Windows- und Linux-VMs finden Sie unter [Unterstützte Plattformen in Azure Security Center](security-center-os-coverage.md).
-* Anweisungen zum Konfigurieren von Sicherheitsrichtlinien für Ihre Azure-Abonnements und -Ressourcengruppen finden Sie unter [Festlegen von Sicherheitsrichtlinien in Azure Security Center](security-center-policies.md).
+* Anweisungen zum Konfigurieren von Sicherheitsrichtlinien für Ihre Azure-Abonnements und -Ressourcengruppen finden Sie unter [Festlegen von Sicherheitsrichtlinien in Azure Security Center](security-center-azure-policy.md).
 * Hier erfahren Sie, wie Empfehlungen Ihnen beim Schutz der Azure-Ressourcen helfen: [Verwalten von Sicherheitsempfehlungen in Azure Security Center](security-center-recommendations.md).
 * Anweisungen zum Überwachen der Integrität Ihrer Azure-Ressourcen finden Sie unter [Überwachen der Sicherheitsintegrität in Azure Security Center](security-center-monitoring.md).
 * Erfahren Sie im Artikel [Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center](security-center-managing-and-responding-alerts.md), wie Sie Sicherheitswarnungen verwalten und darauf reagieren.

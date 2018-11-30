@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/27/2018
 ms.author: glenga
-ms.openlocfilehash: 3e06dc82baed4043ce490769aa0ec84ab3de8c24
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 2266f63f9689ec4d22659eb4a7c4876e25fa08b1
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39577010"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52335213"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Verwenden des WebJobs SDK für die ereignisgesteuerte Hintergrundverarbeitung
 
@@ -462,7 +462,7 @@ Wir empfehlen das für ASP.NET entwickelte Protokollierungsframework, und im Art
 
 ### <a name="log-filtering"></a>Protokollfilterung
 
-Jedem von einer `ILogger`-Instanz erstellten Protokoll ist eine `Category` und eine `Level` zugeordnet. [LogLevel](https://docs.microsoft.com/aspnet/core/api/microsoft.extensions.logging.loglevel#Microsoft_Extensions_Logging_LogLevel) ist eine Enumeration, und der Code (eine Zahl) weist auf die relative Bedeutung hin:
+Jedem von einer `ILogger`-Instanz erstellten Protokoll ist eine `Category` und eine `Level` zugeordnet. [LogLevel](/dotnet/api/microsoft.extensions.logging.loglevel) ist eine Enumeration, und der Code (eine Zahl) weist auf die relative Bedeutung hin:
 
 |LogLevel    |Code|
 |------------|---|
@@ -474,7 +474,7 @@ Jedem von einer `ILogger`-Instanz erstellten Protokoll ist eine `Category` und e
 |Kritisch    | 5 |
 |Keine        | 6 |
 
-Alle Kategorien können unabhängig voneinander nach einer bestimmten Protokollebene ([LogLevel](https://docs.microsoft.com/aspnet/core/api/microsoft.extensions.logging.loglevel)) gefiltert werden. So könnten Sie beispielsweise alle Protokolle für die Verarbeitung des Blob-Triggers, aber nur `Error` und höhere Ebenen für alles andere anzeigen.
+Alle Kategorien können unabhängig voneinander nach einer bestimmten Protokollebene ([LogLevel](/dotnet/api/microsoft.extensions.logging.loglevel)) gefiltert werden. So könnten Sie beispielsweise alle Protokolle für die Verarbeitung des Blob-Triggers, aber nur `Error` und höhere Ebenen für alles andere anzeigen.
 
 Um das Angeben von Filterregeln zu vereinfachen, bietet das WebJobs SDK den `LogCategoryFilter`, der an viele vorhandene Protokollierungsanbieter einschließlich Application Insights und Konsolenanwendungen übergeben werden kann.
 

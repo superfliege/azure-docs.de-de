@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 11/09/2018
 ms.author: sethm
 ms.reviewer: misainat
-ms.openlocfilehash: 27dbd4215deef6574622ffcd2c62a64503459258
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: f853bb32f7c452f1b09ca337db2a866bd0890b82
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51515759"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52427249"
 ---
 # <a name="asdk-release-notes"></a>Versionshinweise zum ASDK  
 Dieser Artikel bietet Informationen zu Verbesserungen, Fehlerbehebungen und bekannten Problemen in Azure Stack Development Kit (ASDK). Wenn Sie nicht sicher sind, welche Version ausgeführt wird, können Sie diese im [Portal überprüfen](.\.\azure-stack-updates.md#determine-the-current-version).
@@ -233,7 +233,7 @@ Dieser Build enthält die folgenden Verbesserungen und Fehlerbehebungen für Azu
 
 - <!-- ASDK --> **Katalogelemente für Virtual Machine Scale Sets sind jetzt integriert**.  Katalogelemente für VM-Skalierungsgruppen stehen jetzt in den Benutzer- und Administratorportalen zur Verfügung, ohne dass sie heruntergeladen werden müssen. 
 
-- <!-- IS, ASDK --> **Virtual Machine Scale Set-Skalierung**.  Sie können das Portal verwenden, um eine [VMSS](/azure/azure-stack/azure-stack-compute-add-scalesets.md#scale-a-virtual-machine-scale-set) (Virtual Machine Scale Set) zu skalieren.   
+- <!-- IS, ASDK --> **Virtual Machine Scale Set-Skalierung**.  Sie können das Portal verwenden, um eine [VMSS](../azure-stack-compute-add-scalesets.md#scale-a-virtual-machine-scale-set) (Virtual Machine Scale Set) zu skalieren.   
 
 - <!-- 2489570 | IS ASDK--> **Unterstützung für benutzerdefinierte IPSec-/IKE-Richtlinienkonfigurationen** für [VPN-Gateways in Azure Stack](/azure/azure-stack/azure-stack-vpn-gateway-about-vpn-gateways).
 

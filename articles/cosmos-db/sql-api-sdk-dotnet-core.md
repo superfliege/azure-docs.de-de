@@ -12,12 +12,12 @@ ms.topic: reference
 ms.date: 03/22/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8243d1e297fa778d4fa27f8365d9bb0a935d21e5
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: d5216a4a21fbbded4a10429c658f4842db225657
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49387995"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52161717"
 ---
 # <a name="azure-cosmos-db-net-core-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB .NET Core SDK für SQL-API: Versionshinweise und Ressourcen
 > [!div class="op_single_selector"]
@@ -189,12 +189,12 @@ Die Features des Azure Cosmos DB .NET Core SDKs sind mit den Features der neuest
 
 ### <a name="a-name110110"></a><a name="1.1.0"/>1.1.0
 
-* Unterstützung für Aggregationsabfragen (COUNT, MIN, MAX, SUM und AVG) wurde hinzugefügt. Siehe [Aggregationsunterstützung](sql-api-sql-query.md#Aggregates).
+* Unterstützung für Aggregationsabfragen (COUNT, MIN, MAX, SUM und AVG) wurde hinzugefügt. Siehe [Aggregationsunterstützung](how-to-sql-query.md#Aggregates).
 * Minimaler Durchsatz für partitionierte Sammlungen wurde von 10.100 RU/s auf 2.500 RU/s gesenkt.
 
 ### <a name="a-name100100"></a><a name="1.0.0"/>1.0.0
 
-Mit dem .NET Core SDK für Azure Cosmos DB können Sie schnelle, plattformübergreifende [ASP.NET Core](https://www.asp.net/core)- und [.NET Core](https://www.microsoft.com/net/core#windows)-Apps für Windows, Mac und Linux erstellen. Die neueste Version des .NET Core SDKs für Azure Cosmos DB ist vollständig mit [Xamarin](https://www.xamarin.com) kompatibel und kann zum Erstellen von Anwendungen für iOS, Android und Mono (Linux) verwendet werden.  
+Mit dem .NET Core SDK für Azure Cosmos DB können Sie schnelle, plattformübergreifende [ASP.NET Core](https://www.asp.net/core)- und [.NET Core](https://www.microsoft.com/net/core#windows)-Apps für Windows, Mac und Linux erstellen. Die neueste Version des .NET Core SDKs für Azure Cosmos DB ist vollständig mit [Xamarin](https://www.xamarin.com) kompatibel und kann zum Erstellen von Anwendungen für iOS, Android und Mono (Linux) verwendet werden.  
 
 ### <a name="a-name010-preview010-preview"></a><a name="0.1.0-preview"/>0.1.0-preview
 

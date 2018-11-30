@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2018
 ms.author: spelluru
-ms.openlocfilehash: efe04b19188d7324c3f86565610040b8eaa97c43
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 18e668249c50ffbc1020aa12455fdfb87dcb8a24
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48855390"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52282548"
 ---
 # <a name="message-deferral"></a>Nachrichtenverzögerung
 
@@ -40,7 +40,6 @@ Zum Abrufen einer verzögerten Nachricht muss sich deren Besitzer die [SequenceN
 
 Wenn eine Nachricht nicht verarbeitet werden kann, weil eine bestimmte Ressource für die Verarbeitung dieser Nachricht vorübergehend nicht verfügbar ist, aber die Verarbeitung der Nachricht nicht sofort angehalten werden soll, stellt das Merken der **SequenceNumber** in einer [geplanten Nachricht](message-sequencing.md), die in ein paar Minuten gesendet werden soll und das erneute Abrufen der verzögerten Nachricht, wenn die geplante Nachricht eingeht, eine Methode dar, um diese Nachricht für ein paar Minuten zurückzustellen. Wenn alle Vorgänge eines Nachrichtenhandlers von einer Datenbank abhängen und diese Datenbank vorübergehend nicht verfügbar ist, sollten Sie nicht die Verzögerung nutzen, sondern das Empfangen von Nachrichten vollständig anhalten, bis die Datenbank wieder verfügbar ist.
 
-Das Verzögern von Nachrichten wirkt sich nicht auf den Nachrichtenablauf aus. Das bedeutet, dass verzögerte Nachrichten weiterhin zur ursprünglich geplanten Zeit ablaufen und in eine Warteschlange für unzustellbare Nachrichten verschoben werden, falls dies konfiguriert ist.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

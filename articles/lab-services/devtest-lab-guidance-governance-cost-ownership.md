@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2018
 ms.author: spelluru
-ms.openlocfilehash: 623e4392ff8ff75d09da92c54b9e4dc620146432
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: 9b83d6ac908be1e62e3c6c2025ae31aa374bdeea
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48250768"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51975072"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---manage-cost-and-ownership"></a>Governance der Azure DevTest Labs-Infrastruktur – Verwalten der Kosten und des Besitzes
 Kosten und Besitz sind zentrale Überlegungen beim Aufbau Ihrer Entwicklungs- und Testumgebungen. In diesem Abschnitt finden Sie Informationen, die Ihnen beim Optimieren der Kosten und beim Festlegen des Besitzes in Ihrer gesamten Umgebung helfen.
@@ -57,7 +57,7 @@ Die DevTest Labs-Ressource sollte im Besitz von Personen aus dem Umfeld des Proj
 
 Die Projekt-/Anwendungsteammitglieder sollten der Rolle „DevTest Lab-Benutzer“ hinzugefügt werden. Diese Benutzer können virtuelle Computer erstellen (entsprechend den Richtlinien auf Lab- und Abonnementebene). Sie können auch ihre eigenen virtuellen Computer verwalten. Sie können keine virtuellen Computer verwalten, die anderen Benutzern gehören.
 
-Weitere Informationen finden Sie in der Dokumentation [Azure-Unternehmensgerüst – präskriptive Abonnementgovernance](/architecture/cloud-adoption/appendix/azure-scaffold).
+Weitere Informationen finden Sie in der Dokumentation [Azure-Unternehmensgerüst – präskriptive Abonnementgovernance](/azure/architecture/cloud-adoption/appendix/azure-scaffold).
 
 
 ## <a name="next-steps"></a>Nächste Schritte

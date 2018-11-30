@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2018
 ms.author: rkarlin
-ms.openlocfilehash: d1a89e5732145ca6d03f266741239c7469dfff16
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 1bb28f3ae972e4227265231080b8f37abaf8e130
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46130940"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52317544"
 ---
 # <a name="understand-azure-security-center-container-recommendations"></a>Grundlegendes zu Azure Security Center-Containerempfehlungen
 
@@ -27,7 +27,7 @@ ms.locfileid: "46130940"
 ## <a name="recommendations"></a>Empfehlungen
 Verwenden Sie die folgenden Tabellen als Referenz, um die verfügbaren Container, die auf IaaS-Linux-Computern gehostet sind, und die Sicherheitsbewertung ihrer Docker-Konfigurationen zu verstehen.
 
-| Empfehlung | BESCHREIBUNG | Behebung |
+| Empfehlung | BESCHREIBUNG | Wiederherstellung |
 | --- | --- | --- |
 |Sicherheitsrisiken in Containersicherheitskonfigurationen beseitigen |Beseitigen Sie Sicherheitsrisiken in Containersicherheitskonfigurationen auf Grundlage bewährter Methoden für die Konfiguration.| So beseitigen Sie Sicherheitsrisiken in Containersicherheitskonfigurationen:<br>1. Überprüfen Sie die Liste der fehlerhaften Regeln.<br>2. Korrigieren Sie die einzelnen Regeln gemäß den angegebenen Anweisungen.|
 
@@ -42,7 +42,7 @@ Weitere Informationen zu Empfehlungen für andere Arten von Azure-Ressourcen fin
 Weitere Informationen zu Security Center finden Sie in den folgenden Quellen:
 
 * [Schützen von Computern und Anwendungen im Azure Security Center](security-center-virtual-machine-protection.md)
-* [Festlegen von Sicherheitsrichtlinien in Azure Security Center:](security-center-policies.md) Erfahren Sie, wie Sie Sicherheitsrichtlinien für Ihre Azure-Abonnements und -Ressourcengruppen konfigurieren.
+* [Festlegen von Sicherheitsrichtlinien in Azure Security Center:](security-center-azure-policy.md) Erfahren Sie, wie Sie Sicherheitsrichtlinien für Ihre Azure-Abonnements und -Ressourcengruppen konfigurieren.
 * [Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center:](security-center-managing-and-responding-alerts.md) Erfahren Sie, wie Sie Sicherheitswarnungen verwalten und darauf reagieren.
 * [Azure Security Center – Häufig gestellte Fragen](security-center-faq.md) : Hier finden Sie häufig gestellte Fragen zur Verwendung des Diensts.
 

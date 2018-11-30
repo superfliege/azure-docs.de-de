@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/18/2018
+ms.date: 11/20/2018
 ms.author: ergreenl
-ms.openlocfilehash: 6448e592db8024d911831b0b3634dabb4ed3b101
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 31e7307e427b175eb7424ecaee380bd90ce8150e
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47063114"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52443405"
 ---
 # <a name="suspended-domains"></a>Angehaltene Domänen
 Wenn Azure Active Directory Domain Services (Azure AD DS) Anforderungen für eine verwaltete Domäne für einen längeren Zeitraum-nicht verarbeiten kann, wird die verwaltete Domäne in den Zustand „Angehalten“ versetzt. In diesem Artikel wird erläutert, weshalb verwaltete Domänen angehalten werden und wie Sie eine angehaltene Domäne bereinigen.
@@ -43,7 +43,7 @@ Eine verwaltete Domäne, die ordnungsgemäß konfiguriert ist und regulär arbei
 
 
 ### <a name="needs-attention-state"></a>Zustand „Eingreifen erforderlich“
-Eine verwaltete Domäne befindet sich im Zustand **Eingreifen erforderlich**, wenn mindestens ein Problem erfordert, dass ein Administrator Maßnahmen ergreift. Auf der Integritätsseite Ihrer verwalteten Domäne wird mindestens Warnung zu diesem Zustand aufgelistet. 
+Eine verwaltete Domäne befindet sich im Zustand **Eingreifen erforderlich**, wenn mindestens ein Problem erfordert, dass ein Administrator Maßnahmen ergreift. Auf der Integritätsseite Ihrer verwalteten Domäne wird mindestens Warnung zu diesem Zustand aufgelistet.
 
 Wenn Sie beispielsweise eine restriktive Netzwerksicherheitsgruppe für Ihr virtuelles Netzwerk konfiguriert haben, ist Microsoft möglicherweise nicht in der Lage, Ihre verwaltete Domäne zu aktualisieren und zu überwachen. Diese ungültige Konfiguration löst eine Warnung aus, die Ihre verwaltete Domäne in den Zustand „Eingreifen erforderlich“ versetzt.
 

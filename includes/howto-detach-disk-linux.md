@@ -1,3 +1,16 @@
+---
+author: cynthn
+ms.service: virtual-machines-linux
+ms.topic: include
+ms.date: 11/25/2018
+ms.author: cynthn
+ms.openlocfilehash: 7c9c52c5cda258908ac8463dd06044e244c75ee2
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52331033"
+---
 Wenn Sie einen Datenträger, der einem virtuellen Computer (VM) angefügt ist, nicht mehr benötigen, können Sie ihn leicht trennen. Wenn Sie die Verbindung zwischen einem Datenträger und dem virtuellen Computer trennen, wird der Datenträger nicht aus dem Speicher entfernt. Wenn Sie die vorhandenen Daten erneut auf dem Datenträger verwenden möchten, können Sie ihn erneut an dieselbe VM oder eine andere anfügen.  
 
 > [!NOTE]

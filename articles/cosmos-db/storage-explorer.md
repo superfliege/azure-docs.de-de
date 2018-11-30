@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/20/2018
 ms.author: jejiang
-ms.openlocfilehash: 1e18db960b9e07ae412d0c41c4544ef6bb35977c
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 4a50809c48ba03b7a12689d905e704d3f820ca8a
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51261159"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52162397"
 ---
 # <a name="manage-azure-cosmos-db-in-azure-storage-explorer"></a>Verwalten von Azure Cosmos DB in Azure Storage-Explorer
 
@@ -152,7 +152,7 @@ Indem Sie mit der rechten Maustaste auf ein Abonnement im Explorer-Bereich klick
 - Klicken Sie auf die Schaltfläche **Löschen**, um das ausgewählte Dokument zu löschen.
 
 #### <a name="query-for-documents"></a>Abfragen von Dokumenten
-- Bearbeiten Sie den Dokumentfilter durch Eingeben einer [SQL-Abfrage](sql-api-sql-query.md), und klicken Sie dann auf **Anwenden**.
+- Bearbeiten Sie den Dokumentfilter durch Eingeben einer [SQL-Abfrage](how-to-sql-query.md), und klicken Sie dann auf **Anwenden**.
 
     ![Dokumentfilter](./media/storage-explorer/document-filter.png)
 

@@ -11,12 +11,12 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 03/01/2018
 ms.author: orkostak
-ms.openlocfilehash: a3dadfc4257d43f9df1b93f5d486e5577b7889d6
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: ad04976136fc8db04dbe52bf78bea49a9149e5db
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44055310"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52312696"
 ---
 # <a name="indexing-in-the-azure-cosmos-db-mongodb-api"></a>Durchführen der Indizierung in der Azure Cosmos DB-MongoDB-API
 
@@ -99,5 +99,5 @@ Der obige Befehl bewirkt das Löschen beliebiger Dokumente in der Sammlung ```db
 Derzeit ist die Erstellung von eindeutigen Indizes nur möglich, wenn die Sammlung keine Dokumente enthält. Bei gängigen MongoDB-Migrationstools wird versucht, die eindeutigen Indizes nach dem Importieren der Daten zu erstellen. Zur Problemumgehung wird empfohlen, dass Benutzer die entsprechenden Sammlungen und eindeutigen Indizes manuell erstellen, anstatt das Migrationstool zuzulassen (für ```mongorestore``` wird dieses Verhalten erreicht, indem in der Befehlszeile das Flag „--noIndexRestore“ verwendet wird).
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Unterstützen von Indexdaten durch Azure Cosmos DB](../cosmos-db/indexing-policies.md)
+* [Unterstützen von Indexdaten durch Azure Cosmos DB](../cosmos-db/index-policy.md)
 * [Festlegen einer Gültigkeitsdauer für den automatischen Ablauf von Daten in Azure Cosmos DB-Sammlungen](../cosmos-db/time-to-live.md)

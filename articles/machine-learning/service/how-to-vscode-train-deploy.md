@@ -5,16 +5,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.component: core
 ms.topic: conceptual
-ms.author: jmartens
-author: j-martens
+ms.author: shwinne
+author: swinner95
 ms.reviewer: jmartens
 ms.date: 10/1/2018
-ms.openlocfilehash: 6372aada8c3d380f8d3cefb0479e45bbd7c63898
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 377a4bbf359b2c65136625fcef8a1093e49da728
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945245"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51854304"
 ---
 # <a name="vs-code-tools-for-ai-train-and-deploy-ml-models-from-vs-code"></a>Visual Studio Code Tools for AI: Trainieren und Bereitstellen von ML-Modellen aus VS Code
 In diesem Artikel erfahren Sie etwas über die Verwendung der **VS Code Tools for AI**-Erweiterung zum Trainieren und Bereitstellen von Modellen für maschinelles Lernen und Deep Learning mit dem Azure Machine Learning-Dienst in VS Code.
@@ -29,7 +29,7 @@ Und Sie können diese Modelle für Ihre Test- und Produktionsanforderungen berei
 
 + [Azure Machine Learning SDK für Python, installiert](how-to-vscode-tools.md) mit VS Code.
 
-+ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
++ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://aka.ms/AMLfree) erstellen, bevor Sie beginnen.
 
 ## <a name="create-and-manage-compute-targets"></a>Erstellen und Verwalten von Computezielen
 

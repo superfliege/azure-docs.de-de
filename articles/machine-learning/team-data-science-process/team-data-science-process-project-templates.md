@@ -1,26 +1,22 @@
 ---
 title: Projektplanung für einen Team Data Science-Prozess – Azure | Microsoft-Dokumentation
 description: Microsoft Project- und Excel-Vorlagen, die Sie beim Planen und Verwalten von Data Science-Projekten unterstützen.
-documentationcenter: ''
-author: deguhath
+author: marktab
 manager: cgronlun
 editor: cgronlun
 services: machine-learning
-ms.assetid: ''
 ms.service: machine-learning
 ms.component: team-data-science-process
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/27/2017
-ms.author: deguhath
-ms.openlocfilehash: 1ebd640191ffbb1b3ea70ca07081522b370e4e2d
-ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
+ms.author: tdsp
+ms.custom: (previous author=deguhath, ms.author=deguhath)
+ms.openlocfilehash: 702ea6152ce5bf90d1d1f61b566e91d1859e672b
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39308186"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52443099"
 ---
 # <a name="team-data-science-process-project-planning"></a>Projektplanung für einen Team Data Science-Prozess
 

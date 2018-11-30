@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: celested
-ms.openlocfilehash: c5a947301b0861ffa09a24da79e04b5e92b2c29e
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: aaed6a6282da61a49698fdcdfefffe949630930a
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44723746"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52421826"
 ---
 # <a name="how-to-recognize-differences-between-delegated-and-application-permissions"></a>Erkennen der Unterschiede zwischen delegierten Berechtigungen und Anwendungsberechtigungen
 
@@ -30,4 +30,4 @@ ms.locfileid: "44723746"
 - Weiterführend können Sie sich damit vertraut machen, wie Ressourcenanwendungen [Bereiche](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#scopes) und [Anwendungsrollen](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#roles) für Clientanwendungen verfügbar machen, die im Azure-Portal als delegierte Berechtigungen bzw. als Anwendungsberechtigungen ausgewiesen werden. 
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Azure AD bei Stack Overflow](http://stackoverflow.com/questions/tagged/azure-active-directory)
+[Azure AD bei Stack Overflow](https://stackoverflow.com/questions/tagged/azure-active-directory)

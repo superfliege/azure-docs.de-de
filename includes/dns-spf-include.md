@@ -1,3 +1,16 @@
+---
+author: vhorne
+ms.service: dns
+ms.topic: include
+ms.date: 11/25/2018
+ms.author: victorh
+ms.openlocfilehash: 9cc650cea17acb8d89933c819c4ca60e2c459d1c
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52331015"
+---
 SPF-Einträge (Sender Policy Framework) werden verwendet, um anzugeben, welche E-Mail-Server E-Mails im Namen eines Domänennamens senden können. Es ist wichtig, SPF-Einträge korrekt zu konfigurieren, um zu verhindern, dass Empfänger Ihre E-Mail als „Junk“ markieren.
 
 Mit den DNS RFCs wurde ursprünglich der neue Eintragstyp SPF eingeführt, um dieses Szenario zu unterstützen. Außerdem wurde die Verwendung des Eintragstyps TXT zum Angeben von SPF-Einträgen zugelassen, um ältere Namenserver zu unterstützen. Diese Mehrdeutigkeit verursachte Verwirrung, die durch [RFC 7208](http://tools.ietf.org/html/rfc7208#section-3.1) behoben wurde. Darin ist angegeben, dass SPF-Datensätze mit dem Eintragstyp TXT erstellt werden müssen. Außerdem ist der Eintragstyp SPF als veraltet angegeben.

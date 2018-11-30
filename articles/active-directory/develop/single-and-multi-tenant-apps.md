@@ -16,12 +16,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: justhu
 ms.custom: aaddev
-ms.openlocfilehash: 8986f18b9f1f2953ad0612679d31996628870cb1
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: a965cd70e3eba04f278cf432196b9386b537462d
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46988222"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52424339"
 ---
 # <a name="tenancy-in-azure-active-directory"></a>Mandanten in Azure Active Directory
 
@@ -29,7 +29,7 @@ Azure Active Directory (Azure AD) organisiert Objekten wie Benutzer und Apps in 
 
 ## <a name="who-can-sign-in-to-your-app"></a>Wer kann sich bei Ihrer App anmelden?
 
-Wenn es um die Entwicklung von Apps geht, können Entwickler bei der App-Registrierung im [Azure-Portal](http://portal.azure.com) auswählen, ob ihre App als einzel- oder mehrinstanzenfähige App konfiguriert werden soll.
+Wenn es um die Entwicklung von Apps geht, können Entwickler bei der App-Registrierung im [Azure-Portal](https://portal.azure.com) auswählen, ob ihre App als einzel- oder mehrinstanzenfähige App konfiguriert werden soll.
 * Einzelinstanzenfähige Apps sind nur in dem Mandanten verfügbar, in dem sie registriert wurden. Dieser wird auch als Basismandant bezeichnet.
 * Mehrinstanzenfähige Apps sind für Benutzer in ihrem Basismandanten und in anderen Mandanten verfügbar.
 

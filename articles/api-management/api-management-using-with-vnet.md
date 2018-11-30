@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/05/2017
 ms.author: apimpm
-ms.openlocfilehash: 843b03ce33d1897e2e985ac832f883e1fae12960
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: dd876462559ac10fc0463c64413bf11eabbc88a1
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49959042"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52443524"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Verwenden von Azure API Management mit virtuellen Netzwerken
 Mit Azure Virtual Networks (VNets) können Sie alle Ihre Azure-Ressourcen in einem Netzwerk platzieren, das nicht über das Internet geroutet werden kann, und zu dem Sie den Zugang kontrollieren. Diese Netzwerke können dann durch verschiedene VPN-Technologien mit Ihren lokalen Netzwerken verbunden werden. Beginnen Sie mit dem folgenden Thema, um weitere Informationen zu Azure Virtual Networks zu erhalten: [Virtuelle Netzwerke](../virtual-network/virtual-networks-overview.md).
@@ -27,7 +27,8 @@ Azure API Management kann im virtuellen Netzwerk (VNET) bereitgestellt werden, d
 
 > [!NOTE]
 > Azure API Management unterstützt sowohl klassische als auch Azure Resource Manager-VNets.
->
+
+[!INCLUDE [premium-dev.md](../../includes/api-management-availability-premium-dev.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -38,7 +39,6 @@ Zum Ausführen der in diesem Artikel beschriebenen Schritte benötigen Sie Folge
     [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 + Eine APIM-Instanz. Weitere Informationen finden Sie unter [Erstellen einer neuen Azure API Management-Dienstinstanz](get-started-create-service-instance.md).
-+ VNet-Verbindungen stehen nur in den Tarifen Premium und Developer zur Verfügung. Um zu einem dieser Tarife zu wechseln, befolgen Sie die Anweisungen im Thema [Aktualisieren und Skalieren](upgrade-and-scale.md#upgrade-and-scale) .
 
 ## <a name="enable-vpn"></a>VNet-Verbindung Aktivieren
 

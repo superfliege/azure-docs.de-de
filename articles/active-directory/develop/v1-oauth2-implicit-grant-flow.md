@@ -17,12 +17,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: ccc5aa116d2f01b601e6b6b9aad456110b764856
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 90c636d57189518cb95291510f3e83ef8e7a8a75
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49985725"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52422030"
 ---
 # <a name="understanding-the-oauth2-implicit-grant-flow-in-azure-active-directory-ad"></a>Grundlegendes zum Ablauf der impliziten OAuth2-Gewährung in Azure Active Directory (AD)
 
@@ -34,7 +34,7 @@ Die implizite OAuth2-Gewährung ist dafür bekannt, dass sie über die längste 
 
 Die [OAuth2-Autorisierungscodegenehmigung](https://tools.ietf.org/html/rfc6749#section-1.3.1) ist die Autorisierungsgenehmigung, die zwei separate Endpunkte nutzt. Der Autorisierungsendpunkt wird für die Benutzerinteraktionsphase verwendet, was zu einem Autorisierungscode führt. Der Tokenendpunkt wird anschließend vom Client verwendet, um den Code gegen ein Zugriffstoken (und häufig auch gegen ein Aktualisierungstoken) einzutauschen. Webanwendungen sind erforderlich, um dem Tokenendpunkt ihre eigenen Anwendungsanmeldeinformationen anzuzeigen, damit der Autorisierungsserver den Client authentifizieren kann.
 
-Die [Implizite OAuth2-Gewährung](https://tools.ietf.org/html/rfc6749#section-1.3.2) ist eine Variante anderer Autorisierungsgewährungen. So wird ermöglicht, dass ein Client einen Zugriffstoken (und einen ID-Token, wenn [OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html) genutzt wird) direkt vom Autorisierungsendpunkt abrufen kann, ohne den Tokenendpunkt zu kontaktieren oder den Client zu authentifizieren. Diese Variante wurde für JavaScript-basierte Anwendungen entwickelt, die in einem Webbrowser ausgeführt werden: In der ursprünglichen OAuth2-Spezifikation werden Token in einem URI-Fragment zurückgegeben. Dadurch sind die Token-Bits für den JavaScript-Code im Client verfügbar, werden jedoch nicht in Umleitungen an den Server einbezogen. Beim Zurückgeben von Token über den Browser erfolgt eine direkte Umleitung vom Autorisierungsendpunkt. Dies hat auch den Vorteil, dass keine ursprungsübergreifenden Aufrufe mehr benötigt werden. Diese sind erforderlich, wenn die JavaScript-Anwendung zum Kontaktieren des Tokenendpunkts benötigt wird.
+Die [Implizite OAuth2-Gewährung](https://tools.ietf.org/html/rfc6749#section-1.3.2) ist eine Variante anderer Autorisierungsgewährungen. So wird ermöglicht, dass ein Client einen Zugriffstoken (und einen ID-Token, wenn [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) genutzt wird) direkt vom Autorisierungsendpunkt abrufen kann, ohne den Tokenendpunkt zu kontaktieren oder den Client zu authentifizieren. Diese Variante wurde für JavaScript-basierte Anwendungen entwickelt, die in einem Webbrowser ausgeführt werden: In der ursprünglichen OAuth2-Spezifikation werden Token in einem URI-Fragment zurückgegeben. Dadurch sind die Token-Bits für den JavaScript-Code im Client verfügbar, werden jedoch nicht in Umleitungen an den Server einbezogen. Beim Zurückgeben von Token über den Browser erfolgt eine direkte Umleitung vom Autorisierungsendpunkt. Dies hat auch den Vorteil, dass keine ursprungsübergreifenden Aufrufe mehr benötigt werden. Diese sind erforderlich, wenn die JavaScript-Anwendung zum Kontaktieren des Tokenendpunkts benötigt wird.
 
 Ein wichtiges Merkmal der impliziten OAuth2-Gewährung besteht darin, dass solche Abläufe keine Aktualisierungstoken an den Client zurückgeben. Im nächsten Abschnitt wird erläutert, warum dies nicht erforderlich ist und zudem ein Sicherheitsrisiko darstellen würde.
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2018
 ms.author: apimpm
-ms.openlocfilehash: 2ec8d53b0d8da3a7d643362abf58d3a5d4b42e74
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 27bfd3176ecad847f9bba2a62abd66b55484443b
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42146258"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52443014"
 ---
 # <a name="how-to-deploy-an-azure-api-management-service-instance-to-multiple-azure-regions"></a>Bereitstellen einer Azure API Management-Dienstinstanz für mehrere Azure-Regionen
 
@@ -26,11 +26,10 @@ Azure API Management unterstützt eine Bereitstellung für mehrere Regionen, wod
 
 Ein neuer Azure API Management-Dienst enthält zunächst nur eine [Einheit][unit] in einer Azure-Region (der primären Region). Mit dem Azure-Portal können auf einfache Weise weitere Regionen hinzugefügt werden. Ein API Management-Gatewayserver wird in jeder Region bereitgestellt und Datenverkehr durch Aufrufe wird an das nächstgelegene Gateway geroutet. Wenn eine Region offline geht, wird der Datenverkehr automatisch an das nächstgelegene Gateway umgeleitet.
 
-> [!IMPORTANT]
-> Die Bereitstellung in mehreren Regionen steht nur im Tarif **[Premium][Premium]** zur Verfügung.
-
 > [!NOTE]
 > Azure API Management repliziert nur die API-Gatewaykomponente regionsübergreifend. Die Dienstverwaltungskomponente wird nur in der primären Region gehostet. Im Falle eines Ausfalls in der primären Region ist es nicht möglich, Konfigurationsänderungen auf eine Azure API Management-Dienstinstanz anzuwenden (einschließlich Einstellungen oder Richtlinienupdates).
+
+[!INCLUDE [premium.md](../../includes/api-management-availability-premium.md)]
 
 ## <a name="add-region"></a>Bereitstellen einer API Management-Dienstinstanz für eine neue Region
 

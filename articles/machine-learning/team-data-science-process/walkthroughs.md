@@ -2,25 +2,21 @@
 title: Exemplarische Vorgehensweisen zum Ausführen des Team Data Science-Prozesses in Azure | Microsoft-Dokumentation
 description: Kombinieren von Cloud- und lokalen Tools und Diensten in einem Workflow oder einer Pipeline zum Erstellen einer intelligenten Anwendung.
 services: machine-learning
-documentationcenter: ''
-author: deguhath
+author: marktab
 manager: cgronlun
 editor: cgronlun
-ms.assetid: aa63d5a5-25ee-4c4b-9a4c-7553b98d7f6e
 ms.service: machine-learning
 ms.component: team-data-science-process
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
-ms.author: deguhath
-ms.openlocfilehash: 86024316344ccbce87f48adbc0598c94e61c5e6d
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.author: tdsp
+ms.custom: (previous author=deguhath, ms.author=deguhath)
+ms.openlocfilehash: 28586d960bab75704a0aae6e39517ae83a74d60e
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51253566"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52495905"
 ---
 # <a name="walkthroughs-executing-the-team-data-science-process"></a>Exemplarische Vorgehensweisen zum Ausführen des Team Data Science-Prozesses
 
@@ -32,7 +28,6 @@ Diese umfassenden **exemplarischen Vorgehensweisen** veranschaulichen jeweils di
 Es folgen kurze Beschreibungen der exemplarischen Vorgehensweisen auf der jeweiligen Plattform:
 
 
-- [Azure Machine Learning Workbench](walkthroughs-aml-with-tdsp.md) Diese Tutorials mit exemplarischen Vorgehensweisen und Beispielen zeigen, wie Sie strukturierte Team Data Science-Projekte mit Azure Machine Learning Workbench erstellen, um natürliche Sprache maschinell zu verarbeiten und zu klassifizieren.
 - [Exemplarische Vorgehensweisen zu HDInsight Spark unter Verwendung von PySpark und Scala:](walkthroughs-spark.md) In diesen exemplarischen Vorgehensweisen werden PySpark und Scala in einem Azure Spark-Cluster für Predictive Analytics verwendet.
 - [Exemplarische Vorgehensweisen zu HDInsight Hadoop unter Verwendung von Hive:](walkthroughs-hdinsight-hadoop.md) In diesen exemplarischen Vorgehensweisen wird Hive mit einem HDInsight Hadoop-Cluster für Predictive Analytics verwendet.
 - [Exemplarische Vorgehensweisen zu Azure Data Lake unter Verwendung von U-SQL:](walkthroughs-azure-data-lake.md) In diesen exemplarischen Vorgehensweisen wird U-SQL mit Azure Data Lake für Predictive Analytics verwendet.

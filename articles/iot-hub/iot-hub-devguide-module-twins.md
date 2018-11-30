@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: menchi
-ms.openlocfilehash: 1b76bfded6562f61a0a9f4a870a18a1fff71bc6a
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: 9c82ad04b22a29f4a548b79b9b46a08d46de24ca
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49309735"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52284312"
 ---
 # <a name="understand-and-use-module-twins-in-iot-hub"></a>Verstehen und Verwenden von Modulzwillingen in IoT Hub
 
@@ -327,7 +327,7 @@ Diese Informationen werden auf jeder Ebene (nicht nur die Zweige der JSON-Strukt
 ## <a name="optimistic-concurrency"></a>Optimistische Parallelität
 
 Tags sowie gewünschte und gemeldete Eigenschaften unterstützen optimistische Parallelität.
-Tags verfügen über ein ETag (gemäß [RFC7232]()https://tools.ietf.org/html/rfc7232), das der JSON-Darstellung des Tags entspricht. ETags können bei bedingten Aktualisierungsvorgängen über das Lösungs-Back-End verwendet werden, um die Konsistenz zu gewährleisten.
+Tags verfügen über ein ETag (gemäß [RFC7232](https://tools.ietf.org/html/rfc7232)), das der JSON-Darstellung des Tags entspricht. ETags können bei bedingten Aktualisierungsvorgängen über das Lösungs-Back-End verwendet werden, um die Konsistenz zu gewährleisten.
 
 Gewünschte und gemeldete Eigenschaften des Modulzwillings verfügen zwar über keine ETags, aber über einen garantiert inkrementellen `$version`-Wert. Zur Gewährleistung der Konsistenz von Updates kann von der aktualisierenden Partei die Version genutzt werden (ähnlich wie ein ETag). Beispiele wären etwa eine Modul-App für eine gemeldete Eigenschaft oder das Lösungs-Back-End für eine gewünschte Eigenschaft.
 

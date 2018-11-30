@@ -8,12 +8,12 @@ ms.date: 09/12/2018
 ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.openlocfilehash: ba6d79661a2c07ba3eef1f16a117992a858830b5
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: 3ae41ff4cf501a58668d25b16027029f6bae4749
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45605928"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52317486"
 ---
 # <a name="integrate-azure-time-series-insights-with-remote-monitoring"></a>Integrieren von Azure Time Series Insights mit Remoteüberwachung
 
@@ -92,7 +92,7 @@ Erstellen Sie eine neue Ereignisquelle für die Verbindung mit Ihrem IoT Hub. St
     | Quelle | **IoT Hub** |
     | Importoption | **Verwenden eines IoT Hub aus verfügbaren Abonnements** |
     | Abonnement-ID | Wählen Sie Ihr Azure-Abonnement in der Dropdownliste aus. |
-    | IoT Hub-Name | **contosorma57a6**. Verwenden Sie den Namen Ihres IoT Hub aus Ihrer Lösung für die Remoteüberwachung. |
+    | IoT Hub-Name | **contosorma57a6**. Verwenden Sie den Namen Ihres IoT Hub aus Ihrer Remoteüberwachungslösung. |
     | IoT Hub-Richtlinienname | **iothubowner** Stellen Sie sicher, dass die verwendete Richtlinie eine Besitzerrichtlinie ist. |
     | IoT Hub-Richtlinienschlüssel | Dieses Feld wird automatisch ausgefüllt. |
     | IoT Hub-Consumergruppe | **timeseriesinsights** |
@@ -292,6 +292,6 @@ Konfigurieren Sie die Umgebung für die Bereitstellung vom Typ `standard` für d
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Verwenden Sie das Tutorial zum [Durchführen einer Analyse der Grundursache](/tutorials), um zu erfahren, wie Sie im Time Series Insights-Explorer Ihre Daten durchsuchen und eine Warnung diagnostizieren können.
+* Verwenden Sie das Tutorial zum [Durchführen einer Analyse der Grundursache](iot-accelerators-remote-monitoring-root-cause-analysis.md), um zu erfahren, wie Sie im Time Series Insights-Explorer Ihre Daten durchsuchen und eine Warnung diagnostizieren können.
 
 * Informationen zum Durchsuchen und Abfragen von Daten im Time Series Insights-Explorer finden Sie in der Dokumentation zum [Azure Time Series Insights-Explorer](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-explorer).

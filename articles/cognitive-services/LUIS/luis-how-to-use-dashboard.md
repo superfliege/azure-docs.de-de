@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 03/01/2018
+ms.date: 11/26/2018
 ms.author: diberry
-ms.openlocfilehash: 6a4e8dbee34402f57d3e697e93d10573aaf10998
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 0daf25b3c7edc69ada57fb3ce2b8dbb7e50e5aed
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50212811"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52335009"
 ---
 # <a name="application-dashboard"></a>Anwendungsdashboard
 Das App-Dashboard ermöglicht Ihnen, Ihre App auf einen Blick zu überwachen. Das **Dashboard** wird angezeigt, wenn Sie eine App öffnen, indem Sie auf der Seite **Meine Apps** auf den Namen der Anwendung klicken, und dann im oberen Bereich **Dashboard** auswählen. 
@@ -26,15 +26,7 @@ Das App-Dashboard ermöglicht Ihnen, Ihre App auf einen Blick zu überwachen. Da
 > * Einen LUIS-Endpunktschlüssel für alle Endpunktanforderungen, einschließlich LUIS-[API](https://aka.ms/luis-endpoint-apis) und -Bot
 > * Einen separaten Endpunktschlüssel für jede LUIS-App. Verwenden Sie nicht denselben Endpunktschlüssel für alle Apps. Der Endpunktschlüssel wird auf Schlüsselebene nachverfolgt, nicht auf App-Ebene.  
 
-Auf der Seite **Dashboard** erhalten Sie eine Übersicht über die LUIS-App, einschließlich des aktuellen Modellzustands sowie der [Endpunktnutzung](luis-glossary.md#endpoint) über die Zeit. <!--The following image shows the **Dashboard** page.-->
-
-<!-- TBD: Get a working screen shot
-![The Dashboard](./media/luis-how-to-use-dashboard/dashboard.png)
--->
-
-<!-- TBD: IS THIS STILL TRUE?
-At the top of the **Dashboard** page, a contextual notification bar constantly displays notifications to update you on the required or recommended actions appropriate for the current state of your app. It also provides useful tips and alerts as needed. A detailed description of the data reported on the **Dashboard** page follows.
--->
+Auf der Seite **Dashboard** erhalten Sie eine Übersicht über die LUIS-App, einschließlich des aktuellen Modellzustands sowie der [Endpunktnutzung](luis-glossary.md#endpoint) über die Zeit. 
   
 ## <a name="app-status"></a>App-Status
 Das Dashboard zeigt den Trainings- und Veröffentlichungsstatus der Anwendung an, einschließlich Datum und Uhrzeit des letzten Trainings und der letzten Veröffentlichung der Anwendung.  
@@ -49,7 +41,6 @@ Das Dashboard zeigt die Gesamtanzahl der Absichten, Entitäten und bezeichneten 
 ## <a name="endpoint-hits"></a>Endpunkttreffer
 Das Dashboard zeigt die gesamten Endpunkttreffer, die die LUIS-App empfängt, an, und ermöglicht Ihnen, die Treffer innerhalb eines angegebenen Zeitraums anzuzeigen. Die angezeigte Gesamtanzahl der Treffer ist die Summe der Endpunkttreffer, bei denen ein [Endpunktschlüssel](./luis-concept-keys.md#endpoint-key) verwendet wird, und der Endpunkttreffer, bei denen ein [Erstellungsschlüssel](./luis-concept-keys.md#authoring-key) verwendet wird.
 
-<!-- TBD: this image is old but I don't have a new one based on usage -->
 ![Endpunkttreffer](./media/luis-how-to-use-dashboard/dashboard-endpointhits.png)
 
 > [!NOTE] 

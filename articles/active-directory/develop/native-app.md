@@ -16,16 +16,16 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
-ms.openlocfilehash: 8879cc331c5d0e8c6aab24e8c6178d96ab23bf9d
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 8738205aec8e0b00115a185886ca293b2f96033c
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46955400"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52422370"
 ---
 # <a name="native-apps"></a>Native Apps
 
-Native Apps sind Anwendungen, die eine Web-API im Namen eines Benutzers aufrufen. Dieses Szenario basiert auf dem OAuth 2.0-Autorisierungscode-Gewährungstyp mit einem öffentlichen Client (siehe Abschnitt 4.1 der [OAuth 2.0-Spezifikation](http://tools.ietf.org/html/rfc6749)). Die systemeigene Anwendung ruft unter Verwendung des OAuth 2.0-Protokolls ein Zugriffstoken für den Benutzer ab. Dieses Zugriffstoken wird dann in der Anforderung an die Web-API gesendet, die den Benutzer autorisiert und die gewünschte Ressource zurückgibt.
+Native Apps sind Anwendungen, die eine Web-API im Namen eines Benutzers aufrufen. Dieses Szenario basiert auf dem OAuth 2.0-Autorisierungscode-Gewährungstyp mit einem öffentlichen Client (siehe Abschnitt 4.1 der [OAuth 2.0-Spezifikation](https://tools.ietf.org/html/rfc6749)). Die systemeigene Anwendung ruft unter Verwendung des OAuth 2.0-Protokolls ein Zugriffstoken für den Benutzer ab. Dieses Zugriffstoken wird dann in der Anforderung an die Web-API gesendet, die den Benutzer autorisiert und die gewünschte Ressource zurückgibt.
 
 ## <a name="diagram"></a>Diagramm
 

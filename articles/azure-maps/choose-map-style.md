@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 32571d88ffc08c19f819335254b4f5dda521bdb0
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: c77467efbbc1c33be5bc2aaf3251a5803beee864
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48885920"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52317108"
 ---
 # <a name="choose-a-map-style-in-azure-maps"></a>Auswählen eines Kartenstils in Azure Maps
 
@@ -42,7 +42,7 @@ Im zweiten Codeblock wird die [setStyle](https://docs.microsoft.com/javascript/a
 
 Mit dem ersten Codeblock im Code oben wird der Abonnementschlüssel festgelegt und ein Kartenobjekt erstellt. Als Stil wird vorab „grayscale_dark“ festgelegt. Anweisungen zum Erstellen einer Karte finden Sie unter [Erstellen einer Karte](./map-create.md).
 
-Im zweiten Codeblock wird mithilfe des Atlas-[StyleControl](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.control.stylecontrol?view=azure-iot-typescript-latest#stylecontrol)-Konstruktors eine Stilauswahl erstellt.
+Im zweiten Codeblock wird mithilfe des Atlas-[StyleControl](/javascript/api/azure-maps-control/atlas.controls.stylecontrol)-Konstruktors eine Stilauswahl erstellt.
 
 Mit einer Stilauswahl können Sie den Stil für die Karte auswählen. Im dritten Codeblock wird der Karte mithilfe der [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addcontrol)-Methode der Karte die Stilauswahl hinzugefügt. Die Stilauswahl befindet sich im **Ereignislistener** der Karte, um sicherzustellen, dass sie nach dem vollständigen Laden der Karte geladen wird.
 

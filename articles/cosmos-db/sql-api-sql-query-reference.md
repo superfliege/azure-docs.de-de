@@ -10,21 +10,21 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 08/19/2018
 ms.author: laviswa
-ms.openlocfilehash: 4492324b174c97325f40110b7500d5b0e99a926b
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: dbd3d4e34df3bf918c831a3d9c74de8a9015b50e
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51623943"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52163604"
 ---
 # <a name="azure-cosmos-db-sql-syntax-reference"></a>Azure Cosmos DB-SQL-Syntaxreferenz
 
-Azure Cosmos DB unterstützt Abfragen von Dokumenten mithilfe einer vertrauten, SQL-ähnlichen (Structured Query Language, strukturierte Abfragesprache) Grammatik für hierarchische JSON-Dokumente, ohne dass ein explizites Schema oder die Erstellung sekundärer Indizes erforderlich ist. Dieser Artikel enthält die Syntaxdokumentation für die SQL-Abfragesprache, die mit SQL-API-Konten kompatibel ist. Eine exemplarische Vorgehensweise mit SQL-Beispielabfragen finden Sie unter [SQL-Abfragen in Cosmos DB](sql-api-sql-query.md).  
+Azure Cosmos DB unterstützt Abfragen von Dokumenten mithilfe einer vertrauten, SQL-ähnlichen (Structured Query Language, strukturierte Abfragesprache) Grammatik für hierarchische JSON-Dokumente, ohne dass ein explizites Schema oder die Erstellung sekundärer Indizes erforderlich ist. Dieser Artikel enthält die Syntaxdokumentation für die SQL-Abfragesprache, die mit SQL-API-Konten kompatibel ist. Eine exemplarische Vorgehensweise mit SQL-Beispielabfragen finden Sie unter [SQL-Abfragen in Cosmos DB](how-to-sql-query.md).  
   
 Besuchen Sie auch den [Abfrageplayground](http://www.documentdb.com/sql/demo). Dort können Sie Cosmos DB testen und SQL-Abfragen mit unserem Dataset ausführen.  
   
 ## <a name="select-query"></a>SELECT-Abfrage  
-Jede Abfrage besteht aus einer SELECT-Klausel und optionalen FROM- und WHERE-Klauseln nach ANSI-SQL-Standards. Normalerweise wird in jeder Abfrage die jeweilige Quelle in der From-Klausel aufgelistet. Anschließend wird in der WHERE-Klausel ein Filter auf die Quelle angewendet, um eine Teilmenge der JSON-Dokumente zurückzugeben. Zuletzt wird die SELECT-Klausel verwendet, um die abgefragten JSON-Werte in die ausgewählte Liste zu projizieren. Die Konventionen zum Beschreiben von SELECT-Anweisungen sind im Abschnitt zu Syntaxkonventionen tabellarisch dargestellt. Beispiele finden Sie unter [Beispiele für die SELECT-Abfrage](sql-api-sql-query.md#SelectClause).
+Jede Abfrage besteht aus einer SELECT-Klausel und optionalen FROM- und WHERE-Klauseln nach ANSI-SQL-Standards. Normalerweise wird in jeder Abfrage die jeweilige Quelle in der From-Klausel aufgelistet. Anschließend wird in der WHERE-Klausel ein Filter auf die Quelle angewendet, um eine Teilmenge der JSON-Dokumente zurückzugeben. Zuletzt wird die SELECT-Klausel verwendet, um die abgefragten JSON-Werte in die ausgewählte Liste zu projizieren. Die Konventionen zum Beschreiben von SELECT-Anweisungen sind im Abschnitt zu Syntaxkonventionen tabellarisch dargestellt. Beispiele finden Sie unter [Beispiele für die SELECT-Abfrage](how-to-sql-query.md#SelectClause).
   
 **Syntax**  
   
@@ -69,7 +69,7 @@ Die Abfragesprache unterstützt Kommentare im T-SQL-Stil wie
 Obwohl Leerzeichen und Kommentare in der Grammatik keine Bedeutung haben, müssen sie zum Trennen von Tokens verwendet werden. Beispiel: `-1e5` ist ein einzelnes Zahlentoken, während `: – 1 e5` aus dem Minuszeichentoken gefolgt von der Zahl 1 und dem Bezeichner „e5“ zusammengesetzt ist.  
 
 ##  <a name="bk_select_query"></a> SELECT-Klausel  
-Die Klauseln in der SELECT-Anweisung müssen wie oben gezeigt sortiert werden. Jede der optionalen Klauseln kann ausgelassen werden. Aber wenn optionale Klauseln verwendet werden, müssen sie in der richtigen Reihenfolge stehen. Beispiele finden Sie unter [Beispiele für die SELECT-Abfrage](sql-api-sql-query.md#SelectClause).
+Die Klauseln in der SELECT-Anweisung müssen wie oben gezeigt sortiert werden. Jede der optionalen Klauseln kann ausgelassen werden. Aber wenn optionale Klauseln verwendet werden, müssen sie in der richtigen Reihenfolge stehen. Beispiele finden Sie unter [Beispiele für die SELECT-Abfrage](how-to-sql-query.md#SelectClause).
 
 **Syntax**  
 
@@ -132,7 +132,7 @@ Sowohl `SELECT <select_list>` als auch `SELECT *` sind sogenannter „syntaktisc
 [SELECT-Klausel](#bk_select_query)  
   
 ##  <a name="bk_from_clause"></a> FROM-Klausel  
-Gibt die Quelle oder verknüpfte Quellen an. Die FROM-Klausel ist optional, es sei denn, die Quelle wird später in der Abfrage gefiltert oder projiziert. Mit dieser Klausel wird die Datenquelle angegeben, auf der die Abfrage operiert. Normalerweise dient der gesamte Container als Quelle, doch Sie können stattdessen auch nur eine Teilmenge des Containers angeben. Wird diese Klausel nicht angegeben, werden andere Klauseln weiterhin so ausgeführt, als würde die FROM-Klausel ein einzelnes Dokument bereitstellen. Beispiele finden Sie unter [Beispiele für die FROM-Klausel](sql-api-sql-query.md#FromClause).
+Gibt die Quelle oder verknüpfte Quellen an. Die FROM-Klausel ist optional, es sei denn, die Quelle wird später in der Abfrage gefiltert oder projiziert. Mit dieser Klausel wird die Datenquelle angegeben, auf der die Abfrage operiert. Normalerweise dient der gesamte Container als Quelle, doch Sie können stattdessen auch nur eine Teilmenge des Containers angeben. Wird diese Klausel nicht angegeben, werden andere Klauseln weiterhin so ausgeführt, als würde die FROM-Klausel ein einzelnes Dokument bereitstellen. Beispiele finden Sie unter [Beispiele für die FROM-Klausel](how-to-sql-query.md#FromClause).
   
 **Syntax**  
   
@@ -216,7 +216,7 @@ Ein Containerausdruck kann container- oder dokumentbezogen sein:
   
 Im aktuellen Release unterstützt Cosmos DB innere Joins. Weitere Verknüpfungsfunktionen sind in Planung. 
 
-Aus inneren Verknüpfungen resultiert ein komplettes Kreuzungsprodukt der an der Verknüpfung beteiligten Sätze. Das Ergebnis einer N-Way-Verknüpfung ist ein Satz von N-Element-Tupeln, wo jeder Wert im Tupel dem an der Verknüpfung beteiligten Aliassatz zugeordnet ist, und der Zugriff auf den Wert durch Verweis auf diesen Alias in anderen Klauseln erfolgen kann. Beispiele finden Sie unter [Beispiele für das JOIN-Schlüsselwort](sql-api-sql-query.md#Joins).
+Aus inneren Verknüpfungen resultiert ein komplettes Kreuzungsprodukt der an der Verknüpfung beteiligten Sätze. Das Ergebnis einer N-Way-Verknüpfung ist ein Satz von N-Element-Tupeln, wo jeder Wert im Tupel dem an der Verknüpfung beteiligten Aliassatz zugeordnet ist, und der Zugriff auf den Wert durch Verweis auf diesen Alias in anderen Klauseln erfolgen kann. Beispiele finden Sie unter [Beispiele für das JOIN-Schlüsselwort](how-to-sql-query.md#Joins).
   
 Die Auswertung der Verknüpfung hängt vom Kontextbereich der beteiligten Sätze ab:  
   
@@ -311,7 +311,7 @@ Betrachten Sie die folgende FROM-Klausel: `<from_source1> JOIN <from_source2> JO
  [SELECT-Klausel](#bk_select_query)  
   
 ##  <a name="bk_where_clause"></a> WHERE-Klausel  
- Gibt die Suchbedingung für die Dokumente an, die von der Abfrage zurückgegeben werden. Beispiele finden Sie unter [Beispiele für die WHERE-Klausel](sql-api-sql-query.md#WhereClause).
+ Gibt die Suchbedingung für die Dokumente an, die von der Abfrage zurückgegeben werden. Beispiele finden Sie unter [Beispiele für die WHERE-Klausel](how-to-sql-query.md#WhereClause).
   
  **Syntax**  
   
@@ -336,7 +336,7 @@ WHERE <filter_condition>
  Damit das Dokument zurückgegeben wird, muss ein als Filterbedingung angegebener Ausdruck mit „true“ ausgewertet werden. Nur der boolesche Wert TRUE erfüllt die Bedingung, jeder andere Wert – „undefined“, „NULL“, „FALSE“, „Number“, „Array“ oder „Object“ – erfüllt die Bedingung nicht.  
   
 ##  <a name="bk_orderby_clause"></a> ORDER BY-Klausel  
- Gibt die Sortierreihenfolge für die von der Abfrage zurückgegebenen Ergebnisse an. Beispiele finden Sie unter [Beispiele für die ORDER BY-Klausel](sql-api-sql-query.md#OrderByClause).
+ Gibt die Sortierreihenfolge für die von der Abfrage zurückgegebenen Ergebnisse an. Beispiele finden Sie unter [Beispiele für die ORDER BY-Klausel](how-to-sql-query.md#OrderByClause).
   
  **Syntax**  
   
@@ -374,7 +374,7 @@ ORDER BY <sort_specification>
  Die Abfragegrammatik unterstützt mehrere „ORDER BY“-Eigenschaften, die Cosmos DB-Abfragelaufzeit hingegen nur die Sortierung für eine einzelne Eigenschaft und für Eigenschaftennamen, d.h. nicht für berechnete Eigenschaften. Das Sortieren erfordert auch, dass die Indizierungsrichtlinie einen Bereichsindex für die Eigenschaft und den angegebenen Typ mit der maximalen Genauigkeit enthält. Weitere Informationen finden Sie in der Dokumentation zur Indizierungsrichtlinie.  
   
 ##  <a name="bk_scalar_expressions"></a> Skalarausdrücke  
- Ein skalarer Ausdruck ist eine Kombination aus Symbolen und Operatoren, die ausgewertet werden können, um einen einzelnen Wert zu erhalten. Einfache Ausdrücke können Konstanten, Eigenschaftenverweise, Arrayelementverweise, Aliasverweise oder Funktionsaufrufe sein. Einfache Ausdrücke können mit Operatoren in komplexen Ausdrücken kombiniert werden. Beispiele finden Sie unter [Beispiele für skalare Ausdrücke](sql-api-sql-query.md#scalar-expressions).
+ Ein skalarer Ausdruck ist eine Kombination aus Symbolen und Operatoren, die ausgewertet werden können, um einen einzelnen Wert zu erhalten. Einfache Ausdrücke können Konstanten, Eigenschaftenverweise, Arrayelementverweise, Aliasverweise oder Funktionsaufrufe sein. Einfache Ausdrücke können mit Operatoren in komplexen Ausdrücken kombiniert werden. Beispiele finden Sie unter [Beispiele für skalare Ausdrücke](how-to-sql-query.md#scalar-expressions).
   
  Weitere Informationen zu Werten, die Skalarausdrücke aufweisen können, finden Sie im Abschnitt [Konstanten](#bk_constants).  
   
@@ -2905,6 +2905,6 @@ SELECT ST_ISVALIDDETAILED({
   
 ## <a name="next-steps"></a>Nächste Schritte  
 
-- [SQL-Syntax und SQL-Abfrage für Cosmos DB](sql-api-sql-query.md)
+- [SQL-Syntax und SQL-Abfrage für Cosmos DB](how-to-sql-query.md)
 
 - [Dokumentation für Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/)  
