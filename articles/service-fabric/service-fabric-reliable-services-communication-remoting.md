@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 09/20/2017
 ms.author: vturecek
-ms.openlocfilehash: ddd78e2fad401add35bc246a64236e2679c33cbc
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: b8abf7a0dc85d20e9075b51b8d42a068cf56846f
+ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44023544"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52620522"
 ---
 # <a name="service-remoting-in-c-with-reliable-services"></a>Dienstremoting in C# mit Reliable Services
 
@@ -98,7 +98,7 @@ Die Erstellung von Dienstproxys ist ein einfacher Vorgang, der sehr wenige Resso
 
 ### <a name="service-proxy-factory-lifetime"></a>Lebensdauer von Dienstproxyfactorys
 
-[ServiceProxyFactory](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.client.serviceproxyfactory) ist eine Factory, die Proxyinstanzen für verschiedene Remotingschnittstellen erstellt. Wenn Sie die `ServiceProxy.Create`-API zum Erstellen eines Proxys verwenden, erstellt das Framework einen Singletondienstproxy.
+[ServiceProxyFactory](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.client.serviceproxyfactory) ist eine Factory, die Proxyinstanzen für verschiedene Remotingschnittstellen erstellt. Wenn Sie die `ServiceProxyFactory.CreateServiceProxy`-API zum Erstellen eines Proxys verwenden, erstellt das Framework einen Singletondienstproxy.
 Es ist sinnvoll, eine manuell zu erstellen, wenn Sie [IServiceRemotingClientFactory](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.v1.client.iserviceremotingclientfactory)-Eigenschaften überschreiben müssen.
 Die Factoryerstellung ist ein kostenintensiver Vorgang. Dienstproxyfactorys verwalten einen internen Cache des Kommunikationsclients.
 Es empfiehlt sich, die Dienstproxyfactory möglichst lange zwischenzuspeichern.

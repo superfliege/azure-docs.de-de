@@ -3,7 +3,7 @@ title: Sicherheitsplaybook in Azure Security Center | Microsoft-Dokumentation
 description: Dieses Dokument enthält hilfreiche Informationen zur Automatisierung von Reaktionen auf Sicherheitsvorfälle mithilfe von Sicherheitsplaybooks in Azure Security Center.
 services: security-center
 documentationcenter: na
-author: terrylan
+author: rkarlin
 manager: mbaldwin
 editor: ''
 ms.assetid: a8c45ddf-5c4c-4393-b6e9-46ed1f91bf5f
@@ -12,23 +12,23 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/09/2018
-ms.author: yurid
-ms.openlocfilehash: 05245b2a7a4f7bf61052b13da5ee2a98be721f7c
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 11/28/2018
+ms.author: rkarlin
+ms.openlocfilehash: c0001f12dd71436bacb1735828ad56b628e02360
+ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51259954"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52619910"
 ---
 # <a name="security-playbook-in-azure-security-center-preview"></a>Sicherheitsplaybook in Azure Security Center (Vorschauversion)
 In diesem Dokument erfahren Sie, wie Sie mithilfe von Sicherheitsplaybooks in Azure Security Center auf sicherheitsbezogene Probleme reagieren können.
 
 ## <a name="what-is-security-playbook-in-security-center"></a>Was ist das Sicherheitsplaybook in Security Center?
-Das Sicherheitsplaybook ist eine Sammlung von Prozeduren, die über Security Center ausgeführt werden können, wenn ein bestimmtes Playbook durch eine ausgewählte Warnung ausgelöst wird. Mithilfe von Sicherheitsplaybooks können Sie die Reaktion auf eine bestimmte, von Security Center erkannte Sicherheitswarnung automatisieren und orchestrieren. Da Sicherheitsplaybooks in Security Center auf [Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-what-are-logic-apps) basieren, können Sie die Vorlagen verwenden, die in Logic Apps-Vorlagen unter der Kategorie „Sicherheit“ zur Verfügung stehen, und sie bei Bedarf an Ihre individuellen Anforderungen anpassen. Sie können aber auch neue Playbooks mithilfe des [Azure Logic Apps-Workflows](https://docs.microsoft.com/azure/logic-apps/logic-apps-create-a-logic-app) erstellen und dabei Security Center als Trigger verwenden. 
+Das Sicherheitsplaybook ist eine Sammlung von Prozeduren, die über Security Center ausgeführt werden können, wenn ein bestimmtes Playbook durch eine ausgewählte Warnung ausgelöst wird. Mithilfe von Sicherheitsplaybooks können Sie die Reaktion auf eine bestimmte, von Security Center erkannte Sicherheitswarnung automatisieren und orchestrieren. Da Sicherheitsplaybooks in Security Center auf [Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-what-are-logic-apps) basieren, können Sie die Vorlagen verwenden, die in Logic Apps-Vorlagen unter der Kategorie „Sicherheit“ zur Verfügung stehen, und sie bei Bedarf an Ihre individuellen Anforderungen anpassen. Sie können aber auch neue Playbooks mithilfe des [Azure Logic Apps-Workflows](https://docs.microsoft.com/azure/logic-apps/logic-apps-create-a-logic-app) erstellen und dabei Security Center als Trigger verwenden.
 
 > [!NOTE]
-> Aufgrund der Nutzung von Azure Logic Apps fallen bei der Verwendung von Playbooks Gebühren an. Ausführlichere Informationen finden Sie auf der Preisseite von [Azure Logic Apps](https://azure.microsoft.com/pricing/details/logic-apps/). 
+> Aufgrund der Nutzung von Azure Logic Apps fallen bei der Verwendung von Playbooks Gebühren an. Ausführlichere Informationen finden Sie auf der Preisseite von [Azure Logic Apps](https://azure.microsoft.com/pricing/details/logic-apps/).
 
 ## <a name="how-to-create-a-security-playbook-from-security-center"></a>Erstellen eines Sicherheitsplaybooks in Security Center
 Gehen Sie wie folgt vor, um in Security Center ein neues Sicherheitsplaybook zu erstellen:
@@ -37,7 +37,7 @@ Gehen Sie wie folgt vor, um in Security Center ein neues Sicherheitsplaybook zu 
 2.  Klicken Sie im linken Bereich im Abschnitt **Automation & Orchestration** (Automatisierung und Orchestrierung) auf **Playbooks** (Vorschauversion).
 
     ![Logik-App](./media/security-center-playbooks/security-center-playbooks-fig17.png)
- 
+
 3. Klicken Sie auf der Seite **Security Center - Playbooks** (Vorschauversion) auf die Schaltfläche **Hinzufügen**.
 
     ![Erstellen einer Logik-App](./media/security-center-playbooks/security-center-playbooks-fig2.png)
@@ -47,7 +47,7 @@ Gehen Sie wie folgt vor, um in Security Center ein neues Sicherheitsplaybook zu 
     ![Erstellen einer Logik-App](./media/security-center-playbooks/security-center-playbooks-fig3.png)
 
 5. Der **Logik-App-Designer** wird angezeigt. Klicken Sie auf **Leere Logik-App**, um ein neues Playbook zu erstellen. Sie können auch eine der Vorlagen aus der Kategorie **Sicherheit** verwenden.
-    
+
     ![Logik-App-Designer](./media/security-center-playbooks/security-center-playbooks-fig4.png)
 
 6. Geben Sie im Feld **Alle Connectors und Trigger durchsuchen** die Zeichenfolge *Azure Security Center* ein, und wählen Sie **Beim Auslösen einer Antwort auf eine Azure Security Center-Warnung** aus.
@@ -57,7 +57,7 @@ Gehen Sie wie folgt vor, um in Security Center ein neues Sicherheitsplaybook zu 
 7. Nun können Sie definieren, was passieren soll, wenn das Playbook ausgelöst wird. Sie können eine Aktion, eine logische Bedingung, Parameterbedingungen oder Schleifen hinzufügen.
 
     ![Logik-App-Designer](./media/security-center-playbooks/security-center-playbooks-fig5.png)
-     
+
 ## <a name="how-to-run-a-security-playbook-in-security-center"></a>Ausführen eines Sicherheitsplaybooks in Security Center
 
 Ein Sicherheitsplaybook kann in Security Center zur Orchestrierung, zur Erlangung weiterer Informationen von anderen Diensten oder zur Wartung ausgeführt werden. Gehen Sie wie folgt vor, um auf die Playbooks zuzugreifen:
@@ -78,7 +78,7 @@ Ein Sicherheitsplaybook kann in Security Center zur Orchestrierung, zur Erlangun
 
 ### <a name="history"></a>Verlauf
 
-Nach dem Ausführen des Playbooks können Sie auch auf vorherige Ausführungen sowie auf Schritte mit weiteren Informationen zum Status zuvor ausgeführter Playbooks zugreifen. Der Verlauf ist nach Warnung kontextualisiert. Der auf der Seite angezeigte Playbookverlauf hängt also mit der Warnung zusammen, die dieses Playbook ausgelöst hat. 
+Nach dem Ausführen des Playbooks können Sie auch auf vorherige Ausführungen sowie auf Schritte mit weiteren Informationen zum Status zuvor ausgeführter Playbooks zugreifen. Der Verlauf ist nach Warnung kontextualisiert. Der auf der Seite angezeigte Playbookverlauf hängt also mit der Warnung zusammen, die dieses Playbook ausgelöst hat.
 
 ![Verlauf](./media/security-center-playbooks/security-center-playbooks-fig16.png)
 
@@ -86,7 +86,7 @@ Wenn Sie weitere Details zur Ausführung eines bestimmten Playbooks anzeigen mö
 
 ![Details](./media/security-center-playbooks/security-center-playbooks-fig14.png)
 
-In diesem Workflow wird die Ausführungsdauer der einzelnen Aufgaben angezeigt. Außerdem können Sie die einzelnen Aufgaben erweitert, um das jeweilige Ergebnis anzuzeigen. 
+In diesem Workflow wird die Ausführungsdauer der einzelnen Aufgaben angezeigt. Außerdem können Sie die einzelnen Aufgaben erweitert, um das jeweilige Ergebnis anzuzeigen.
 
 ### <a name="changing-an-existing-playbook"></a>Ändern eines vorhandenen Playbooks
 
@@ -102,7 +102,6 @@ In diesem Dokument wurde die Verwendung von Playbooks in Azure Security Center e
 * [Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts). Hier erfahren Sie, wie Sie Warnungen verwalten und auf Sicherheitsvorfälle in Security Center reagieren.
 * [Überwachen der Sicherheitsintegrität in Azure Security Center](security-center-monitoring.md). Hier erfahren Sie, wie Sie die Integrität Ihrer Azure-Ressourcen überwachen.
 * [Verstehen der Sicherheitswarnungen in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-alerts-type). Hier finden Sie Informationen zu den unterschiedlichen Arten von Sicherheitswarnungen.
-* [Azure Security Center – Handbuch zur Problembehandlung](https://docs.microsoft.com/azure/security-center/security-center-troubleshooting-guide). Hier erfahren Sie, wie Sie allgemeine Probleme in Security Center behandeln. 
+* [Azure Security Center – Handbuch zur Problembehandlung](https://docs.microsoft.com/azure/security-center/security-center-troubleshooting-guide). Hier erfahren Sie, wie Sie allgemeine Probleme in Security Center behandeln.
 * [Azure Security Center – häufig gestellte Fragen](security-center-faq.md)festgelegt ist. Enthält häufig gestellte Fragen zur Verwendung des Diensts.
 * [Azure Security-Blog](https://blogs.msdn.com/b/azuresecurity/). Hier finden Sie Blogbeiträge zur Sicherheit und Compliance von Azure.
-

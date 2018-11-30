@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/17/2018
 ms.author: alkohli
 ms.component: common
-ms.openlocfilehash: 49a2c03664ba39a624871b24c0b86a968a67eddb
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 4a0fcb95ed34ed3d98c6b25b475c0866135897f3
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39521522"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52584671"
 ---
 # <a name="view-the-status-of-azure-importexport-jobs"></a>Anzeigen des Status von Azure Import/Export-Aufträgen
 
@@ -23,7 +23,6 @@ Dieser Artikel enthält Informationen zum Anzeigen des Laufwerks-und Auftragssta
 Sie können den Status Ihrer Import- oder Exportaufträge im Azure-Portal nachverfolgen. Klicken Sie auf die Registerkarte **Import/Export**. Eine Liste Ihrer Aufträge wird auf der Seite angezeigt.
 
 ![Anzeigen des Auftragsstatus](./media/storage-import-export-service/jobstate.png)
-
 
 ## <a name="view-job-status"></a>Anzeigen des Auftragsstatus
 
@@ -74,7 +73,7 @@ Der Zeitaufwand zum Verarbeiten eines Import/Export-Auftrags variiert basierend 
 -  Auftragstyp und Volumen der zu kopierenden Daten
 -  Anzahl der Datenträger in einem Auftrag. 
 
-Der Import/Export-Dienst verfügt nicht über eine SLA. Nach Erhalt der Datenträger versucht der Dienst aber, die Kopie in sieben bis zehn Tagen fertigzustellen. Zusätzlich zum Status, der im Azure-Portal angegeben wird, können REST-APIs zum Nachverfolgen des Auftragsstatus verwendet werden. Der API-Aufruf des Vorgangs zum [Auflisten von Aufträgen]() enthält einen Parameter für die prozentuale Fertigstellung, mit dem Sie den Status des Kopiervorgangs verfolgen können.
+Der Import/Export-Dienst verfügt nicht über eine SLA. Nach Erhalt der Datenträger versucht der Dienst aber, die Kopie in sieben bis zehn Tagen fertigzustellen. Zusätzlich zum Status, der im Azure-Portal angegeben wird, können REST-APIs zum Nachverfolgen des Auftragsstatus verwendet werden. Der API-Aufruf des Vorgangs zum [Auflisten von Aufträgen](/previous-versions/azure/dn529083(v=azure.100)) enthält einen Parameter für die prozentuale Fertigstellung, mit dem Sie den Status des Kopiervorgangs verfolgen können.
 
 
 ## <a name="next-steps"></a>Nächste Schritte
@@ -82,4 +81,3 @@ Der Import/Export-Dienst verfügt nicht über eine SLA. Nach Erhalt der Datentr�
 * [Einrichten des WAImportExport-Tools](storage-import-export-tool-how-to.md)
 * [Übertragen von Daten mit dem Befehlszeilenprogramm AzCopy](storage-use-azcopy.md)
 * [Azure Import/Export-REST-API-Beispiel](https://azure.microsoft.com/documentation/samples/storage-dotnet-import-export-job-management/)
-

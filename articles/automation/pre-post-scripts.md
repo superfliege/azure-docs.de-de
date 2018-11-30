@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 09/18/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 245cbd86ae43560e4e41f4b97350f9a5857e1b25
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: d84596b586ea54dd4a64faf46b32226862d83198
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49956620"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52584620"
 ---
 # <a name="manage-pre-and-post-scripts-preview"></a>Verwalten von Pre- und Post-Skripts (Vorschauversion)
 
@@ -220,8 +220,6 @@ if ($summary.Type -eq "Error")
 ## <a name="known-issues"></a>Bekannte Probleme
 
 * Sie können keine Objekte oder Arrays an Parameter übergeben, wenn Sie Pre- und Post-Skripts verwenden. Andernfalls tritt bei der Ausführung des Runbooks ein Fehler auf.
-* Nicht veröffentlichte Runbooks werden bei der Auswahl eines Pre- oder Post-Skripts als auswählbar angezeigt. Es sollten nur veröffentlichte Runbooks ausgewählt werden, da nicht veröffentlichte Runbooks nicht aufgerufen werden können und fehlschlagen.
-* Computer, die einer Bereitstellung mithilfe von [dynamischen Gruppen (Vorschauversion)](automation-update-management.md#using-dynamic-groups) hinzugefügt werden, sind gegenwärtig nicht im **SoftwareUpdateConfigurationRunContext**-Parameter enthalten, der an Pre- und Post-Skripts übergeben wird.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -7,12 +7,12 @@ ms.date: 05/16/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: d6355926c8fac62b01c36d28265842b1233ce213
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 5dd027c886e8102e77ddefe93817daee0e1ec29b
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38666940"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52584150"
 ---
 # <a name="summary-of-customer-data-request-features"></a>Zusammenfassung der Features für Kundendatenanforderungen
 
@@ -39,9 +39,9 @@ Weitere Informationen finden Sie unter [Verwalten von Geräteregistrierungen](ho
 
 Löschvorgänge für Registrierungen und Registrierungsdatensätze können auch mithilfe von REST-APIs ausgeführt werden:
 
-* Um Registrierungsinformationen für ein einzelnes Gerät zu löschen, können Sie [Geräteregistrierung > Löschen](https://docs.microsoft.com/rest/api/iot-dps/deviceenrollment/delete) verwenden.
-* Um Registrierungsinformationen für eine Gruppe von Geräten zu löschen, können Sie [Geräteregistrierungsgruppe > Löschen](https://docs.microsoft.com/rest/api/iot-dps/deviceenrollmentgroup/delete) verwenden.
-* Um Informationen zu bereitgestellten Geräten zu löschen, können Sie [Registrierungsstatus > Registrierungsstatus löschen](https://docs.microsoft.com/rest/api/iot-dps/registrationstate/deleteregistrationstate) verwenden.
+* Um Registrierungsinformationen für ein einzelnes Gerät zu löschen, können Sie [Geräteregistrierung > Löschen](/rest/api/iot-dps/deleteindividualenrollment/deleteindividualenrollment) verwenden.
+* Um Registrierungsinformationen für eine Gruppe von Geräten zu löschen, können Sie [Geräteregistrierungsgruppe > Löschen](/rest/api/iot-dps/deleteenrollmentgroup/deleteenrollmentgroup) verwenden.
+* Um Informationen zu bereitgestellten Geräten zu löschen, können Sie [Registrierungsstatus > Registrierungsstatus löschen](/rest/api/iot-dps/deletedeviceregistrationstate/deletedeviceregistrationstate) verwenden.
 
 ## <a name="exporting-customer-data"></a>Exportieren von Kundendaten
 
@@ -53,9 +53,9 @@ Weitere Informationen zur Verwaltung von Registrierungen finden Sie unter [Verwa
 
 Exportvorgänge für Registrierungen und Registrierungsdatensätze können auch mithilfe von REST-APIs ausgeführt werden:
 
-* Um Registrierungsinformationen für ein einzelnes Gerät zu exportieren, können Sie [Geräteregistrierung > Abrufen](https://docs.microsoft.com/rest/api/iot-dps/deviceenrollment/get) verwenden.
-* Um Registrierungsinformationen für eine Gruppe von Geräten zu exportieren, können Sie [Geräteregistrierungsgruppe > Abrufen](https://docs.microsoft.com/rest/api/iot-dps/deviceenrollmentgroup/get) verwenden.
-* Um Informationen zu bereits bereitgestellten Geräten zu exportieren, können Sie [Registrierungsstatus > Registrierungsstatus abrufen](https://docs.microsoft.com/rest/api/iot-dps/registrationstate/getregistrationstate) verwenden.
+* Um Registrierungsinformationen für ein einzelnes Gerät zu exportieren, können Sie [Geräteregistrierung > Abrufen](/rest/api/iot-dps/getindividualenrollment/getindividualenrollment) verwenden.
+* Um Registrierungsinformationen für eine Gruppe von Geräten zu exportieren, können Sie [Geräteregistrierungsgruppe > Abrufen](/rest/api/iot-dps/getenrollmentgroup/getenrollmentgroup) verwenden.
+* Um Informationen zu bereits bereitgestellten Geräten zu exportieren, können Sie [Registrierungsstatus > Registrierungsstatus abrufen](/rest/api/iot-dps/getdeviceregistrationstate/getdeviceregistrationstate) verwenden.
 
 > [!NOTE]
 > Wenn Sie Microsoft Enterprise Services verwenden, generiert Microsoft einige Informationen, die als vom System generierte Protokolle bezeichnet werden. Auf einige vom System generierte Device Provisioning Service-Protokolle können Mandantenadministratoren nicht zugreifen bzw. können einige dieser Protokolle nicht von Mandantenadministratoren exportiert werden. Diese Protokolle stellen faktische Aktionen dar, die innerhalb der Dienst- und Diagnosedaten einzelner Geräte ausgeführt werden.
