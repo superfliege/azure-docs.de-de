@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/24/2016
 ms.author: garye
-ms.openlocfilehash: 3f45f062cabaf31a10f24b01583575f5066bdaaf
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 195776cda0005b3a79aa82220660fcc328f6ee98
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51231531"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52426253"
 ---
 # <a name="cortana-intelligence-solution-template-playbook-for-demand-forecasting-of-energy"></a>Cortana Intelligence-Lösungsvorlage – Playbook für die Vorhersage des Energiebedarfs
 ## <a name="executive-summary"></a>Kurzfassung
@@ -122,7 +122,7 @@ Diese Tabelle verdeutlicht die Wichtigkeit der Unterscheidung zwischen kurzfrist
 ### <a name="example-use-case-1-esmart-systems--overload-optimization"></a>Anwendungsfallbeispiel 1: eSmart Systems – Überlastungsoptimierung
 Eine wichtige Aufgabe für ein [Smart Grid](https://en.wikipedia.org/wiki/Smart_grid) ist die dynamische und fortlaufende Optimierung und Anpassung für die sich ändernden Verbrauchsmuster. Der Stromverbrauch kann durch kurzfristige Veränderungen beeinflusst werden, die hauptsächlich aufgrund von Temperaturschwankungen auftreten (*z.B.* ein höherer Stromverbrauch für Klimaanlagen oder Heizung). Gleichzeitig wirken sich auch langfristige Trends auf den Stromverbrauch aus. Dies können beispielsweise saisonale Effekte, Feiertage, ein langfristiger Anstieg des Verbrauchs und sogar ökonomische Faktoren sein, z. B. Verbraucherpreisindex, Ölpreis und BIP.
 
-Bei diesem Anwendungsfall wollte [eSmart](http://www.esmartsystems.com/) eine cloudbasierte Lösung bereitstellen, die eine Vorhersage der Wahrscheinlichkeit einer Überlastungssituation in einer bestimmten Unterstation des Netzes ermöglicht. Es sollten vor allem Unterstationen identifiziert werden, für die innerhalb der nächsten Stunde eine Überlastung auftritt, damit diese Situation per Sofortmaßnahme verhindert oder gelöst werden kann.
+Bei diesem Anwendungsfall wollte [eSmart](https://www.esmartsystems.com/) eine cloudbasierte Lösung bereitstellen, die eine Vorhersage der Wahrscheinlichkeit einer Überlastungssituation in einer bestimmten Unterstation des Netzes ermöglicht. Es sollten vor allem Unterstationen identifiziert werden, für die innerhalb der nächsten Stunde eine Überlastung auftritt, damit diese Situation per Sofortmaßnahme verhindert oder gelöst werden kann.
 
 Für eine präzise und schnelle Vorhersage ist die Implementierung von drei Modellen erforderlich:
 
@@ -365,7 +365,7 @@ Nachdem wir die Modellierungsphase abgeschlossen und die Modellleistung überpr�
 Im Zusammenhang mit der Vorhersage des Energiebedarfs besteht das Ziel darin, ständige und regelmäßige Vorhersagen auszulösen und gleichzeitig sicherzustellen, dass für das Modell neue Daten verfügbar sind und dass die vorhergesagten Daten zurück an den Verbraucher gesendet werden.
 
 ### <a name="web-services-deployment"></a>Bereitstellung von Webdiensten
-Der wichtigste Baustein in Azure ML für die Bereitstellung ist der Webdienst. Dies ist die effektivste Möglichkeit, die Nutzung eines Vorhersagemodells in der Cloud zu realisieren. Der Webdienst kapselt das Modell und umschließt es mit einer [RESTful](http://www.restapitutorial.com/)-API (Application Programming Interface). Die API kann als Teil von beliebigem Clientcode verwendet werden. Dies ist im Diagramm unten dargestellt.
+Der wichtigste Baustein in Azure ML für die Bereitstellung ist der Webdienst. Dies ist die effektivste Möglichkeit, die Nutzung eines Vorhersagemodells in der Cloud zu realisieren. Der Webdienst kapselt das Modell und umschließt es mit einer [RESTful](https://www.restapitutorial.com/)-API (Application Programming Interface). Die API kann als Teil von beliebigem Clientcode verwendet werden. Dies ist im Diagramm unten dargestellt.
 
 ![Webdienstbereitstellung und Verbrauch](media/cortana-analytics-playbook-demand-forecasting-energy/web-service-deployment-and-consumption.png)
 

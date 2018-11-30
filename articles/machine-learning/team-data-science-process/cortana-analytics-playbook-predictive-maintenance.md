@@ -2,24 +2,21 @@
 title: Azure AI-Leitfaden für Predictive Maintenance-Lösungen | Microsoft-Dokumentation
 description: Umfassende Beschreibung der Data Science, auf der Predictive Maintenance-Lösungen in verschiedenen vertikalen Branchen basieren.
 services: machine-learning
-author: fboylu
+author: marktab
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 2e8b66db-91eb-432b-b305-6abccca25620
 ms.service: machine-learning
 ms.component: team-data-science-process
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 05/11/2018
-ms.author: fboylu
-ms.openlocfilehash: 611896dc9428092a76a891168b48f6962d760e60
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.author: tdsp
+ms.custom: (previous author=fboylu, ms.author=fboylu)
+ms.openlocfilehash: 1538357a744e4a2c885b6552ca94efc6642d2880
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51254569"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52444918"
 ---
 # <a name="azure-ai-guide-for-predictive-maintenance-solutions"></a>Azure AI-Leitfaden für Predictive Maintenance-Lösungen
 

@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: sngun
-ms.openlocfilehash: 4ed0008f4b574691387d6e0ee0300b5f05f1ec1b
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: c330171f0c85bce6451b8f342203e2eeeccb3c5a
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34798694"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52425138"
 ---
 # <a name="tuning-query-performance-with-azure-cosmos-db"></a>Optimieren der Abfrageleistung mit Azure Cosmos DB
 
-Azure Cosmos DB bietet eine [SQL-API zum Abfragen von Daten](sql-api-sql-query.md), ohne dass Schemas oder sekundäre Indizes erforderlich sind. Dieser Artikel enthält folgende Informationen für Entwickler:
+Azure Cosmos DB bietet eine [SQL-API zum Abfragen von Daten](how-to-sql-query.md), ohne dass Schemas oder sekundäre Indizes erforderlich sind. Dieser Artikel enthält folgende Informationen für Entwickler:
 
 * Allgemeine Informationen zur Funktionsweise der SQL-Abfrageausführung in Azure Cosmos DB
 * Informationen zu Abfrageanforderungen, Antwortheadern und Client-SDK-Optionen
@@ -218,7 +218,7 @@ Informationen zum Einrichten der globalen Verteilung und Herstellen einer Verbin
 Im Abschnitt zu Abfrageausführungsmetriken wird erläutert, wie die Serverausführungszeit für Abfragen (`totalExecutionTimeInMs`) abgerufen wird, sodass Sie zwischen der für die Abfrageausführung aufgewendeten Zeit und der für die Netzwerkübertragung aufgewendeten Zeit unterscheiden können.
 
 ### <a name="indexing-policy"></a>Indizierungsrichtlinie
-Informationen zu Indizierungspfade, -arten und -modi sowie ihren Auswirkungen auf die Abfrageausführung finden Sie unter [Konfigurieren der Indizierungsrichtlinie](indexing-policies.md). Standardmäßig verwendet die Indizierungsrichtlinie Hashindizierung für Zeichenfolgen, was für Gleichheitsabfragen, jedoch nicht für Bereichsabfragen/Order by-Abfragen effizient ist. Wenn Sie Bereichsabfragen für Zeichenfolgen benötigen, wird empfohlen, den Bereichsindextyp für alle Zeichenfolgen anzugeben. 
+Informationen zu Indizierungspfade, -arten und -modi sowie ihren Auswirkungen auf die Abfrageausführung finden Sie unter [Konfigurieren der Indizierungsrichtlinie](index-policy.md). Standardmäßig verwendet die Indizierungsrichtlinie Hashindizierung für Zeichenfolgen, was für Gleichheitsabfragen, jedoch nicht für Bereichsabfragen/Order by-Abfragen effizient ist. Wenn Sie Bereichsabfragen für Zeichenfolgen benötigen, wird empfohlen, den Bereichsindextyp für alle Zeichenfolgen anzugeben. 
 
 ## <a name="query-execution-metrics"></a>Abfrageausführungsmetriken
 Sie können ausführliche Metriken zur Abfrageausführung erhalten, indem Sie den optionalen `x-ms-documentdb-populatequerymetrics`-Header (`FeedOptions.PopulateQueryMetrics` im .NET SDK) übergeben. Der zurückgegebene Wert in `x-ms-documentdb-query-metrics` hat folgende Schlüssel/Wert-Paare, die für die erweiterte Problembehandlung bei der Ausführung einer Abfrage vorgesehen sind. 
@@ -274,8 +274,8 @@ Im Folgenden werden einige Beispielabfragen vorgestellt und erläutert, wie eini
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Weitere Informationen zu den unterstützten SQL-Abfrageoperatoren und Schlüsselwörtern finden Sie unter [SQL-Abfrage](sql-api-sql-query.md). 
+* Weitere Informationen zu den unterstützten SQL-Abfrageoperatoren und Schlüsselwörtern finden Sie unter [SQL-Abfrage](how-to-sql-query.md). 
 * Weitere Informationen zu Anforderungseinheiten finden Sie unter [Anforderungseinheiten](request-units.md).
-* Weitere Informationen zur Indizierungsrichtlinie finden Sie unter [Indizierungsrichtlinie](indexing-policies.md). 
+* Weitere Informationen zur Indizierungsrichtlinie finden Sie unter [Indizierungsrichtlinie](index-policy.md). 
 
 

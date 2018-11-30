@@ -15,12 +15,12 @@ ms.date: 10/19/2018
 ms.author: barbkess
 ms.reviewer: japere
 ms.custom: it-pro
-ms.openlocfilehash: ad0ab8790c9d66dbba87d466e9661ef8cf33eef3
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: 89852e90daa548dc82455cb6317d367b7423ba65
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49456897"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52425206"
 ---
 # <a name="enable-remote-access-to-sharepoint-with-azure-ad-application-proxy"></a>Aktivieren des Remotezugriffs auf SharePoint per Azure AD-Anwendungsproxy
 
@@ -119,7 +119,7 @@ Dazu halten Sie sich am besten an die SPN-Formate, die für Ihre Website ggf. be
 1. Greifen Sie von einem anderen Computer aus mit dem SPN auf die Website zu.
  Hierbei werden die relevanten Kerberos-Tickets auf dem Computer zwischengespeichert. Diese Tickets enthalten den SPN der Zielwebsite, auf die Sie zugegriffen haben.
 
-2. Sie können den SPN für diese Website mit dem Tool [Klist](http://web.mit.edu/kerberos/krb5-devel/doc/user/user_commands/klist.html) abrufen. Führen Sie in einem Befehlsfenster, das in demselben Kontext wie der Benutzer ausgeführt wird, der im Browser auf die Website zugegriffen hat, den folgenden Befehl aus:
+2. Sie können den SPN für diese Website mit dem Tool [Klist](https://web.mit.edu/kerberos/krb5-devel/doc/user/user_commands/klist.html) abrufen. Führen Sie in einem Befehlsfenster, das in demselben Kontext wie der Benutzer ausgeführt wird, der im Browser auf die Website zugegriffen hat, den folgenden Befehl aus:
 ```
 Klist
 ```

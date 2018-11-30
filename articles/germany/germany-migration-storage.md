@@ -9,12 +9,12 @@ ms.service: germany
 ms.date: 8/15/2018
 ms.topic: article
 ms.custom: bfmigrate
-ms.openlocfilehash: 7a856290962d0c699a34e020852462604fe253d7
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 43d5429134b834483e549b71162f63e110f4436e
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43346265"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51974366"
 ---
 # <a name="migration-from-azure-germany-storage-resources-to-global-azure"></a>Migration von Azure Deutschland Storage-Ressourcen zu Azure weltweit
 
@@ -144,5 +144,5 @@ Für PowerShell folgen Sie den Anweisungen [in diesem Artikel](../backup/backup-
 
 ### <a name="links"></a>Links
 
-- Exportieren auf den Datenträger [über die API](/rest/api/compute/disks/grantaccess.md) durch Abrufen eines SAS-URI 
-- Erstellen eines verwalteten Datenträgers [über die API](/rest/api/compute/disks/createorupdate.md#create_a_managed_disk_by_importing_an_unmanaged_blob_from_a_different_subscription) aus einem nicht verwalteten Blob
+- Exportieren auf den Datenträger [über die API](/rest/api/compute/disks/grantaccess) durch Abrufen eines SAS-URI 
+- Erstellen eines verwalteten Datenträgers [über die API](/rest/api/compute/disks/createorupdate#create_a_managed_disk_by_importing_an_unmanaged_blob_from_a_different_subscription.) aus einem nicht verwalteten Blob

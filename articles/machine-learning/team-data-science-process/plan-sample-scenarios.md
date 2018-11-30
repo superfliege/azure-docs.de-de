@@ -2,25 +2,21 @@
 title: Identifizieren erweiterter Analyseszenarien für Azure Machine Learning | Microsoft-Dokumentation
 description: Wählen Sie die geeigneten Szenarien für den erweiterten Predictive Analytics-Prozess im Team Data Science-Prozess.
 services: machine-learning
-documentationcenter: ''
-author: deguhath
+author: marktab
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 53aecc1e-5089-42cf-8d44-77678653f92d
 ms.service: machine-learning
 ms.component: team-data-science-process
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
-ms.author: deguhath
-ms.openlocfilehash: bf5ee52c98c173dbdde0a00c5657b8694b363279
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.author: tdsp
+ms.custom: (previous author=deguhath, ms.author=deguhath)
+ms.openlocfilehash: 16d8457e5605ce0e3c10ed95296b5a883a4c602c
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42144970"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52444833"
 ---
 # <a name="scenarios-for-advanced-analytics-in-azure-machine-learning"></a>Szenarien für die erweiterte Analyse in Azure Machine Learning
 Dieser Artikel beschreibt die verschiedenen Beispieldatenquellen und Zielszenarien, die mit dem [Team Data Science-Prozess (TDSP)](overview.md)verarbeitet werden können. Der TDSP bietet einen systematischen Ansatz für Teams zur Zusammenarbeit bei der Entwicklung intelligenter Anwendungen. Die hier gezeigten Szenarien veranschaulichen einige der Optionen im Datenverarbeitungs-Workflow, die von den Datenmerkmalen, Quellspeicherorten und Zielrepositorys in Azure abhängen.
@@ -37,7 +33,7 @@ In jedem der folgenden Abschnitte wird ein Beispielszenario vorgestellt. Für je
 > **Für alle folgenden Szenarien müssen Sie diese Schritte ausführen:**
 > <br/>
 > 
-> * [Erstellen Sie ein Speicherkonto](../../storage/common/storage-quickstart-create-account.md)
+> * [Erstellen eines Speicherkontos](../../storage/common/storage-quickstart-create-account.md)
 >   <br/>
 > * [Erstellen eines Azure Machine Learning-Arbeitsbereichs](../studio/create-workspace.md)
 > 

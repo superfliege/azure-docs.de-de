@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/26/2018
 ms.author: billmath
-ms.openlocfilehash: d76905df230fe9d1a61186cc22d14bb44028e00b
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: ca200c76596dc1a4f31bf36f00bb1661d12d19f7
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50252092"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52426355"
 ---
 # <a name="change-signature-hash-algorithm-for-office-365-relying-party-trust"></a>Ändern des Signaturhashalgorithmus für die Vertrauensstellung der vertrauenden Seite für Office 365
 ## <a name="overview"></a>Übersicht
@@ -45,7 +45,7 @@ Nachdem Sie den Signaturalgorithmus mit einer der beiden unten aufgeführten Vor
 1. Öffnen Sie PowerShell mit Administratorrechten auf einem beliebigen AD FS-Server.
 2. Legen Sie den sicheren Hashalgorithmus mithilfe des Cmdlets **Set-AdfsRelyingPartyTrust** fest.
    
-   <code>Set-AdfsRelyingPartyTrust -TargetName 'Microsoft Office 365 Identity Platform' -SignatureAlgorithm 'http://www.w3.org/2001/04/xmldsig-more#rsa-sha256'</code>
+   <code>Set-AdfsRelyingPartyTrust -TargetName 'Microsoft Office 365 Identity Platform' -SignatureAlgorithm 'https://www.w3.org/2001/04/xmldsig-more#rsa-sha256'</code>
 
 ## <a name="also-read"></a>Weitere Informationen
 * [Verwaltung der Active Directory-Verbunddienste und Anpassung mit Azure AD Connect](how-to-connect-fed-management.md#repairthetrust)

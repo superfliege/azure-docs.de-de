@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: celested
-ms.openlocfilehash: 2aa3efcdec57a3e236d2b9739636656b35d16cd6
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: cbd0849399b2f1b1bb4df240b6d696266bbd84cc
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44723769"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52423397"
 ---
 # <a name="how-to-configure-a-new-multi-tenant-application"></a>Konfigurieren einer neuen mehrinstanzenfähigen Anwendung
 
@@ -45,4 +45,4 @@ Informationen für iOS-Geräte finden Sie unter [Aktivieren von App-übergreifen
 
 [Genehmigen und Zuweisen von Berechtigungen für konvergierte Azure AD V2.0-Apps](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes)<br>
 
-[Azure AD bei Stack Overflow](http://stackoverflow.com/questions/tagged/azure-active-directory)
+[Azure AD bei Stack Overflow](https://stackoverflow.com/questions/tagged/azure-active-directory)

@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 04/12/2017
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: f9cc3033c476afe389cb52d3468facb9168fb920
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 6303fe4313f68d4f38151ce9ba85eae2d6de96ca
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51006531"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52426994"
 ---
 # <a name="collect-azure-service-logs-and-metrics-for-use-in-log-analytics"></a>Sammeln von Azure-Dienstprotokollen und Metriken zur Verwendung in Log Analytics
 
@@ -34,7 +34,7 @@ Protokolle und Metriken für Azure-Dienste können auf vier Arten erfasst werden
 
 | Dienst                 | Ressourcentyp                           | Protokolle        | Metriken     | Lösung |
 | --- | --- | --- | --- | --- |
-| Anwendungsgateways    | Microsoft.Network/applicationGateways   | Diagnose | Diagnose | [Azure Application Gateway-Analyse](log-analytics-azure-networking-analytics.md#azure-application-gateway-analytics-solution-in-log-analytics) |
+| Anwendungsgateways    | Microsoft.Network/applicationGateways   | Diagnose | Diagnose | [Azure Application Gateway-Analyse](../azure-monitor/insights/azure-networking-analytics.md#azure-application-gateway-analytics-solution-in-log-analytics) |
 | Application Insights    |                                         | Connector   | Connector   | [Application Insights-Connector](https://blogs.technet.microsoft.com/msoms/2016/09/26/application-insights-connector-in-oms/) (Vorschau) |
 | Automation-Konten     | Microsoft.Automation/AutomationAccounts | Diagnose |             | [Weitere Informationen](../automation/automation-manage-send-joblogs-log-analytics.md)|
 | Batch-Konten          | Microsoft.Batch/batchAccounts           | Diagnose | Diagnose | |
@@ -44,10 +44,10 @@ Protokolle und Metriken für Azure-Dienste können auf vier Arten erfasst werden
 | Data Lake Store         | Microsoft.DataLakeStore/accounts        | Diagnose |             | |
 | Event Hub-Namespace     | Microsoft.EventHub/namespaces           | Diagnose | Diagnose | |
 | IoT Hubs                | Microsoft.Devices/IotHubs               |             | Diagnose | |
-| Key Vault               | Microsoft.KeyVault/vaults               | Diagnose |             | [KeyVault-Analyse](log-analytics-azure-key-vault.md) |
+| Key Vault               | Microsoft.KeyVault/vaults               | Diagnose |             | [KeyVault-Analyse](../azure-monitor/insights/azure-key-vault.md) |
 | Load Balancer          | Microsoft.Network/loadBalancers         | Diagnose |             |  |
 | Logic Apps              | Microsoft.Logic/workflows <br> Microsoft.Logic/integrationAccounts | Diagnose | Diagnose | |
-| Netzwerksicherheitsgruppen | Microsoft.Network/networksecuritygroups | Diagnose |             | [Azure-Netzwerksicherheitsgruppen-Analyse](log-analytics-azure-networking-analytics.md#azure-network-security-group-analytics-solution-in-log-analytics) |
+| Netzwerksicherheitsgruppen | Microsoft.Network/networksecuritygroups | Diagnose |             | [Azure-Netzwerksicherheitsgruppen-Analyse](../azure-monitor/insights/azure-networking-analytics.md#azure-network-security-group-analytics-solution-in-log-analytics) |
 | Recovery-Tresore         | Microsoft.RecoveryServices/vaults       |             |             | [Azure Recovery Services Analytics (Vorschau)](https://github.com/krnese/AzureDeploy/blob/master/OMS/MSOMS/Solutions/recoveryservices/)|
 | Suchdienste         | Microsoft.Search/searchServices         | Diagnose | Diagnose | |
 | Service Bus-Namespace   | Microsoft.ServiceBus/namespaces         | Diagnose | Diagnose | [Service Bus Analytics (Vorschau)](https://github.com/Azure/azure-quickstart-templates/tree/master/oms-servicebus-solution)|
@@ -158,5 +158,5 @@ Der Azure-Vorlagenkatalog enthält [Beispiele für die Verwendung von Azure Auto
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Verwenden von Blob Storage für IIS und Table Storage für Ereignisse](log-analytics-azure-storage-iis-table.md) enthält Informationen zum Lesen der Protokolle für Azure-Dienste, die Diagnosedaten in Table Storage schreiben, oder der IIS-Protokolle, die in Blob Storage geschrieben werden.
-* [Aktivieren Sie Lösungen](../monitoring/monitoring-solutions.md) , um Einblick in die Daten bereitzustellen.
+* [Aktivieren Sie Lösungen](../azure-monitor/insights/solutions.md) , um Einblick in die Daten bereitzustellen.
 * [Erstellen Sie Suchabfragen](log-analytics-queries.md) , um die Daten zu analysieren.

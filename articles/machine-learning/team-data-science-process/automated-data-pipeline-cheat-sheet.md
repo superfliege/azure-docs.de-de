@@ -2,25 +2,21 @@
 title: Cheat Sheet für automatisierte Datenpipeline in Azure Machine Learning | Microsoft-Dokumentation
 description: Ein druckbares Cheat Sheet, das zeigt, wie Sie eine automatisierte Datenpipeline zu Ihrem Azure Machine Learning-Webdienst einrichten, je nachdem, ob Ihre Daten lokal, in Azure oder im Clouddienst eines Drittanbieters gespeichert sind oder per Streaming übertragen werden.
 services: machine-learning
-documentationcenter: ''
-author: garyericson
+author: marktab
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 22674d6b-4491-4805-a3ac-d423611177bb
 ms.service: machine-learning
 ms.component: team-data-science-process
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
-ms.author: garye
-ms.openlocfilehash: 32c7fca1b56e5426bc422b816279dd0919599f0f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.author: tdsp
+ms.custom: (previous author=garyericson, ms.author=garye)
+ms.openlocfilehash: 07f7334a98c1220d051ed1be9d04e4e4e86d4dcc
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51243998"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52444428"
 ---
 # <a name="cheat-sheet-for-an-automated-data-pipeline-for-azure-machine-learning-predictions"></a>Cheat Sheet für eine automatisierte Datenpipeline für Azure Machine Learning-Vorhersagen
 Das **Cheat Sheet für eine automatisierte Datenpipeline für Microsoft Azure Machine Learning** hilft Ihnen bei der Navigation durch die Technologie, mit deren Hilfe Sie Ihre Daten an Ihren Machine Learning-Webdienst senden können, in dem sie von Ihrem Predictive Analytics-Modell bewertet werden.

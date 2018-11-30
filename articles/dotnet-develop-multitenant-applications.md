@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/05/2015
 ms.author: wpickett
-ms.openlocfilehash: 57ba0e46139bda2d74c9f7db0ffab2f2122b0df2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 342c7903e58a5c3bc41278152630187fa0c63b7b
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23013025"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52425039"
 ---
 # <a name="multitenant-applications-in-azure"></a>Mehrinstanzenfähige Anwendungen in Azure
 Eine mehrinstanzenfähige Anwendung ist eine gemeinsame Ressource, mit der unterschiedliche Benutzer, oder "Mandanten", die Anwendung so anzeigen können, als handele es sich um ihre eigene. Ein typisches Szenario für eine mehrinstanzenfähige Anwendung ist, wenn alle Benutzer das Benutzererlebnis individualisieren möchten, aber ansonsten die gleichen grundlegenden Geschäftsanforderungen haben. Beispiele für große mehrinstanzenfähige Anwendungen sind Office 365, Outlook.com und visualstudio.com.
@@ -91,5 +91,5 @@ Azure bietet viele verschiedene Möglichkeiten zur Bereitstellung neuer Mandante
 
 <!--links-->
 
-[Hosting a Multi-Tenant Application on Azure]: http://msdn.microsoft.com/library/hh534480.aspx
-[Designing Multitenant Applications on Azure]: http://msdn.microsoft.com/library/windowsazure/hh689716
+[Hosting a Multi-Tenant Application on Azure]: https://msdn.microsoft.com/library/hh534480.aspx
+[Designing Multitenant Applications on Azure]: https://msdn.microsoft.com/library/windowsazure/hh689716

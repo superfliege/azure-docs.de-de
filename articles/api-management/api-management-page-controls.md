@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/20/2017
 ms.author: apimpm
-ms.openlocfilehash: da68c9b7ebbb1880e35bd60b12db9f920f51e13c
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: d87293d89e4009512494bf47f9742ea5901f909a
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33936144"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52445361"
 ---
 # <a name="azure-api-management-page-controls"></a>Seitensteuerelemente in Azure API Management
 Azure API Management enthält die folgenden Seitensteuerelemente zur Verwendung in Entwicklerportalvorlagen.  
@@ -32,6 +32,8 @@ Um ein Steuerelement zu verwenden, platzieren Sie es an der gewünschten Stelle 
  Die Werte für die Parameter werden als Teil des Datenmodells für die Vorlage übergeben. In den meisten Fällen können Sie einfach das bereitgestellte Beispiel für jedes Steuerelement einfügen, damit es ordnungsgemäß funktioniert. Weitere Informationen zu den Parameterwerten finden Sie im Datenmodellabschnitt für jede Vorlage, in der ein Steuerelement verwendet werden kann.  
   
  Weitere Informationen zum Arbeiten mit Vorlagen finden Sie unter [So passen Sie das Azure API Management-Entwicklerportal mithilfe von Vorlagen an](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).  
+
+[!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
   
 ## <a name="developer-portal-template-page-controls"></a>Seitensteuerelemente in Entwicklerportalvorlagen  
   
