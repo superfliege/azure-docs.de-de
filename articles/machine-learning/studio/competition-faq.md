@@ -3,8 +3,9 @@ title: Cortana Intelligence-Wettbewerbe – Häufig gestellte Fragen | Microsoft
 description: Häufig gestellte Fragen zu Microsoft Cortana Intelligence-Wettbewerben.
 services: machine-learning
 documentationcenter: ''
-author: hning86
-ms.author: haining
+author: ericlicoding
+ms.custom: (previous ms.author=haining, author=hning86)
+ms.author: amlstudiodocs
 manager: mwinkle
 editor: cgronlun
 ms.assetid: 9bac5154-a56c-4e78-9d67-34368b9d1624
@@ -15,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/18/2017
-ms.openlocfilehash: 28be219c35d382cbd141bb050b35893da02ab775
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 8782af26056f8341ee68ed87f003bc585e0c4e69
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51256447"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52265102"
 ---
 # <a name="microsoft-cortana-intelligence-competitions-faq"></a>Microsoft Cortana Intelligence-Wettbewerbe – Häufig gestellte Fragen
 **Was sind Cortana Intelligence-Wettbewerbe?**
@@ -55,7 +56,7 @@ Die Wettbewerbsteilnehmer verwenden Azure Machine Learning Studio, ein cloudbasi
 
 **Muss ich ein Datenexperte sein, um teilnehmen zu dürfen?**
 
-Nein. Wir ermutigen Datenbegeisterte, jeden Data Science-Interessierten und andere angehende Datenexperten sogar, an unserem Wettbewerb teilzunehmen. Wir haben Hilfedokumente entworfen, um jedem die Teilnahme zu ermöglichen. Zur Zielgruppe gehören:
+ Nein. Wir ermutigen Datenbegeisterte, jeden Data Science-Interessierten und andere angehende Datenexperten sogar, an unserem Wettbewerb teilzunehmen. Wir haben Hilfedokumente entworfen, um jedem die Teilnahme zu ermöglichen. Zur Zielgruppe gehören:
 
 * **Datenentwickler**, **Datenexperten**, **BI**- und **Analyseexperten**: Personen, die für die Produktion von Daten- und Analyseinhalten zur Verwendung durch andere Benutzer verantwortlich sind
 * **Data Stewards**: Personen, die sich mit den Daten auskennen und wissen, was sie bedeuten und welchem Zweck sie dienen
@@ -106,7 +107,7 @@ In einem solchen Fall wird nach dem Zeitpunkt der Einreichung entschieden. Der f
 
 **Kann ich für die Teilnahme einen Gast-Arbeitsbereich verwenden?**
 
-Nein. Sie müssen für die Teilnahme einen kostenlosen oder einen Standardarbeitsbereich verwenden. Sie können das Starterexperiment des Wettbewerbs in einem Gast-Arbeitsbereich öffnen, aber es ist nicht möglich, über diesen Arbeitsbereich einen gültigen Beitrag für die Einreichung zu erstellen. 
+ Nein. Sie müssen für die Teilnahme einen kostenlosen oder einen Standardarbeitsbereich verwenden. Sie können das Starterexperiment des Wettbewerbs in einem Gast-Arbeitsbereich öffnen, aber es ist nicht möglich, über diesen Arbeitsbereich einen gültigen Beitrag für die Einreichung zu erstellen. 
 
 **Kann ich für die Teilnahme einen Arbeitsbereich in jeder beliebigen Azure-Region verwenden?**
 

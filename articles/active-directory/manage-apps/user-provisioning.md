@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 07/30/2018
 ms.author: barbkess
 ms.reviewer: asmalser
-ms.openlocfilehash: 935fef5ea988908787ae04688985606acec41bfd
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: ac58c6b951a03b403375fdc17dcd45f8e624deac
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49387276"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52311452"
 ---
 # <a name="automate-user-provisioning-and-deprovisioning-to-saas-applications-with-azure-active-directory"></a>Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory
 
@@ -134,7 +134,7 @@ Nachdem der Bereitstellungsdienst gestartet wurde, umfasst die erste jemals durc
 1. Abfragen aller Benutzer und Gruppen aus dem Quellsystem und Abrufen aller Attribute, die in den [Attributzuordnungen](customize-application-attributes.md) definiert sind.
 2. Filtern der zurückgegebenen Benutzer und Gruppen, indem alle konfigurierten [Zuweisungen](assign-user-or-group-access-portal.md) oder [attributbasierten Bereichsfilter](define-conditional-rules-for-provisioning-user-accounts.md) verwendet werden.
 3. Wenn für einen Benutzer ermittelt wird, dass er zugewiesen ist oder in den Bereich für die Bereitstellung fällt, sendet der Dienst eine Anfrage zu einem übereinstimmenden Benutzer an das Zielsystem, indem die angegebenen [Abgleichattribute](customize-application-attributes.md#understanding-attribute-mapping-properties) verwendet werden. Beispiel: Wenn der userPrincipal-Name auf dem Quellsystem das übereinstimmende Attribut ist und dem userName auf dem Zielsystem zugeordnet ist, fragt der Bereitstellungsdienst beim Zielsystem userNames ab, die mit den Werten von userPrincipal-Namen auf dem Quellsystem übereinstimmen.
-4. Wenn auf dem Zielsystem kein übereinstimmender Benutzer gefunden wird, wird er erstellt, indem die vom Quellsystem zurückgegebenen Attribute verwendet werden. Nachdem das Benutzerkonto erstellt wurde, erkennt der Bereitstellungsdienst die ID des Zielsystems für den neuen Benutzer und speichert diese zwischen, die verwendet wird, um alle zukünftigen Vorgänge für diesen Benutzer auszuführen.
+4. Wenn auf dem Zielsystem kein übereinstimmender Benutzer gefunden wird, wird er erstellt, indem die vom Quellsystem zurückgegebenen Attribute verwendet werden. Nachdem das Benutzerkonto erstellt wurde, erkennt der Bereitstellungsdienst die ID des Zielsystems für den neuen Benutzer, die verwendet wird, um alle zukünftigen Vorgänge für diesen Benutzer auszuführen, und speichert diese zwischen.
 5. Falls ein übereinstimmender Benutzer gefunden wird, wird er aktualisiert, indem die vom Quellsystem bereitgestellten Attribute verwendet werden. Nachdem das Benutzerkonto zugeordnet wurde, erkennt der Bereitstellungsdienst die ID des Zielsystems für den neuen Benutzer und speichert diese zwischen, die verwendet wird, um alle zukünftigen Vorgänge für diesen Benutzer auszuführen.
 6. Wenn die Attributzuordnungen „Referenzattribute“ enthalten, führt der Dienst auf dem Zielsystem zusätzliche Updates durch, um die referenzierten Objekte zu erstellen und zu verknüpfen. Ein Benutzer kann auf dem Zielsystem beispielsweise über das Attribut „Manager“ verfügen, das mit einem anderen Benutzer verknüpft ist, der im Zielsystem erstellt wurde.
 7. Legen Sie am Ende der ersten Synchronisierung einen Grenzwert fest, der als Startpunkt für die nachfolgenden inkrementellen Synchronisierungen dient.
@@ -255,7 +255,7 @@ Damit B2B-Benutzer sich bei der SaaS-Anwendung mithilfe von Azure AD anmelden k�
 
 ### <a name="does-automatic-user-provisioning-to-saas-apps-work-with-dynamic-groups-in-azure-ad"></a>Funktioniert automatische Benutzerbereitstellung für SaaS-Apps mit dynamischen Gruppen in Azure AD?
 
-Ja. Wenn der Azure AD-Benutzerbereitstellungsdienst so konfiguriert ist, dass er „nur zugewiesene Benutzer und Gruppen synchronisiert“, kann er Benutzer in einer SaaS-Anwendung bereitstellen oder ihre Bereitstellung aufheben, basierend darauf, ob sie Mitglieder einer [dynamischen Gruppe](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-create-rule]) sind oder nicht. Dynamische Gruppen funktionieren auch mit der Option „Alle Benutzer und Gruppen synchronisieren“.
+Ja. Wenn der Azure AD-Benutzerbereitstellungsdienst so konfiguriert ist, dass er „nur zugewiesene Benutzer und Gruppen synchronisiert“, kann er Benutzer in einer SaaS-Anwendung bereitstellen oder ihre Bereitstellung aufheben, basierend darauf, ob sie Mitglieder einer [dynamischen Gruppe](../users-groups-roles/groups-create-rule.md) sind oder nicht. Dynamische Gruppen funktionieren auch mit der Option „Alle Benutzer und Gruppen synchronisieren“.
 
 Die Verwendung dynamischer Gruppen kann jedoch die Gesamtleistung der End-to-End-Benutzerbereitstellung aus dem Azure AD in SaaS-Anwendungen beeinträchtigen. Wenn Sie dynamische Gruppen verwenden, berücksichtigen Sie diese Einschränkungen und Empfehlungen:
 
@@ -265,7 +265,7 @@ Die Verwendung dynamischer Gruppen kann jedoch die Gesamtleistung der End-to-End
 
 ### <a name="does-automatic-user-provisioning-to-saas-apps-work-with-nested-groups-in-azure-ad"></a>Funktioniert automatische Benutzerbereitstellung für SaaS-Apps mit geschachtelten Gruppen in Azure AD?
 
-Nein. Wenn der Azure AD-Benutzerbereitstellungsdienst auf „Nur zugewiesene Benutzer und Gruppen synchronisieren“ konfiguriert ist, kann er Benutzer, die sich in geschachtelten Gruppen befinden, weder lesen noch bereitstellen. Er kann nur Benutzer lesen und bereitstellen, die direkte Mitglieder der explizit zugewiesenen Gruppe sind.
+ Nein. Wenn der Azure AD-Benutzerbereitstellungsdienst auf „Nur zugewiesene Benutzer und Gruppen synchronisieren“ konfiguriert ist, kann er Benutzer, die sich in geschachtelten Gruppen befinden, weder lesen noch bereitstellen. Er kann nur Benutzer lesen und bereitstellen, die direkte Mitglieder der explizit zugewiesenen Gruppe sind.
 
 Dies ist eine Einschränkung „gruppenbasierter Zuweisungen zu Anwendungen“, die sich auch auf das einmalige Anmelden auswirkt und unter [Verwenden einer Gruppe zum Verwalten des Zugriffs auf SaaS-Anwendungen](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-saasapps ) beschrieben ist.
 
