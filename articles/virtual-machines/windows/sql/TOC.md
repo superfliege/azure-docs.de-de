@@ -1,6 +1,7 @@
 # Übersicht
 ## [Informationen zu virtuellen SQL Server-Computern unter Windows](virtual-machines-windows-sql-server-iaas-overview.md) 
- 
+## [Versionshinweise](virtual-machines-windows-sql-server-iaas-release-notes.md) 
+
 # Schnellstarts
 ## [Erstellen eines virtuellen SQL-Computers – Portal](quickstart-sql-vm-create-portal.md)
 ## [Erstellen eines virtuellen SQL-Computers – PowerShell](quickstart-sql-vm-create-powershell.md)
@@ -40,6 +41,7 @@
 #### [Mehrere Regionen](virtual-machines-windows-portal-sql-availability-group-dr.md)
 ### Failoverclusterinstanz
 #### [Konfigurieren](virtual-machines-windows-portal-sql-create-failover-cluster.md)
+## [Ändern des Lizenzierungsmodells für virtuelle SQL-Computer](virtual-machines-windows-sql-ahb.md)
 
 # Verweis
 ## [Azure PowerShell](/powershell/azure/overview)

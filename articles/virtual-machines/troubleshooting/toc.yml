@@ -41,6 +41,14 @@ items:
     href: troubleshoot-rdp-nic-disabled.md
   - name: Behandeln eines RDP-Fehlers, der auf den abgesicherten Modus zurückzuführen ist
     href: troubleshoot-rdp-safe-mode.md
+  - name: Deaktivieren der Firewall des Gastbetriebssystems eines virtuellen Azure-Computers
+    href: disable-guest-os-firewall-windows.md
+  - name: Aktivieren oder Deaktivieren einer Firewallregel unter einem Gastbetriebssystem
+    href: enable-disable-firewall-rule-guest-os.md
+  - name: Blockierung von eingehendem Datenverkehr durch die Firewall des Gastbetriebssystems
+    href: guest-os-firewall-blocking-inbound-traffic.md
+  - name: Falsch konfigurierte Firewall des Gastbetriebssystems
+    href: guest-os-firewall-misconfigured.md
   - name: Behandeln eines RDP-Fehlers, der auf „netvsc.sys“ zurückzuführen ist
     href: troubleshoot-rdp-driver-netvsc.md
 - name: SSH
@@ -62,15 +70,15 @@ items:
   href: install-vm-agent-offline.md
 - name: Erneutes Bereitstellen eines virtuellen Computers
   items:
-  - name: " Linux"
+  - name: Linux
     href: redeploy-to-new-node-linux.md
-  - name: " Windows"
+  - name: Windows
     href: redeploy-to-new-node-windows.md
 - name: Zurücksetzen des Kennworts des virtuellen Computers
   items:
-  - name: " Windows"
+  - name: Windows
     href: reset-local-password-without-agent.md
-  - name: " Linux"
+  - name: Linux
     href: reset-password.md
 - name: Zurücksetzen der NIC
   href: reset-network-interface.md
@@ -100,27 +108,27 @@ items:
   href: troubleshoot-app-connection.md
 - name: Neue VM-Bereitstellungen
   items:
-  - name: " Linux"
+  - name: Linux
     href: troubleshoot-deployment-new-vm-linux.md
-  - name: " Windows"
+  - name: Windows
     href: troubleshoot-deployment-new-vm-windows.md
 - name: Behandeln von Bereitstellungsproblemen
   items:
-  - name: " Linux"
+  - name: Linux
     href: troubleshoot-deploy-vm-linux.md
-  - name: " Windows"
+  - name: Windows
     href: troubleshoot-deploy-vm-windows.md
 - name: Änderung von Gerätenamen
   href: troubleshoot-device-names-problems.md
 - name: Zugriff auf die VM-Wiederherstellung
   items:
-  - name: " Windows"
+  - name: Windows
     items:
     - name: PowerShell
       href: troubleshoot-recovery-disks-windows.md
     - name: Azure-Portal
       href: troubleshoot-recovery-disks-portal-windows.md
-  - name: " Linux"
+  - name: Linux
     items:
     - name: Befehlszeilenschnittstelle (CLI)
       href: troubleshoot-recovery-disks-linux.md
@@ -153,9 +161,9 @@ items:
   href: understand-vm-reboot.md
 - name: Tools für die Remoteproblembehandlung
   href: remote-tools-troubleshoot-azure-vm-issues.md
-ms.openlocfilehash: 5b5da17002955e7a5c24e1b528ebf3076f2de24a
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: 933976034950fbd454789dc620aa34ec9b1598c1
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52283816"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52306470"
