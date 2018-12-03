@@ -10,12 +10,12 @@ ms.component: bing-visual-search
 ms.topic: tutorial
 ms.date: 06/21/2018
 ms.author: rosh
-ms.openlocfilehash: 06d6bc8e53276b5542210c2843d7221d6fd79c09
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 62780500d29c891182d3869bf0ba3ccdc5e2f715
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49386433"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52441060"
 ---
 # <a name="tutorial-bing-visual-search-sdk-imageinsightstoken-and-results"></a>Tutorial: SDK für die visuelle Bing-Suche: ImageInsightsToken und Ergebnisse
 Das SDK für die visuelle Suche enthält eine Option, Bilder aus einer vorherigen Suche online zu finden, die ein `ImageInsightsToken` zurückgibt.  In diesem Beispiel wird ein `ImageInsightsToken` abgerufen und das Token in einer nachfolgenden Suche verwendet.  Der Code sendet das `ImageInsightsToken` an Bing und gibt Ergebnisse zurück, die URLs der Bing-Suche und URLs von ähnlichen online ermittelten Bildern enthalten.
@@ -24,6 +24,16 @@ Das SDK für die visuelle Suche enthält eine Option, Bilder aus einer vorherige
 Visual Studio 2017. Laden Sie bei Bedarf die kostenlose Communityversion herunter: https://www.visualstudio.com/vs/community/.
 Für die Authentifizierung von SDK-Aufrufen ist ein Cognitive Services-API-Schlüssel erforderlich. Registrieren Sie sich für einen kostenlosen Testschlüssel. Der Testschlüssel ist sieben Tage lang gültig und auf einen Aufruf pro Sekunde beschränkt. Für Produktionsszenarien erwerben Sie einen Zugriffsschlüssel. Weitere Details finden Sie in den Preisinformationen.
 Möglichkeit zum Ausführen des .NET Core SDK sowie von .NET Core 1.1-Apps. CORE, Framework und Runtime finden Sie hier: https://www.microsoft.com/net/download/.
+
+Für dieses Tutorial benötigen Sie ein Abonnement im Tarif „S9“ wie unter [Cognitive Services-Preise – Bing-Suche-API](https://azure.microsoft.com/en-us/pricing/details/cognitive-services/search-api/) gezeigt. 
+
+So erstellen Sie ein Abonnement im Azure-Portal:
+1. Geben Sie oben im Azure-Portal im Suchfeld `Search resources, services, and docs` den Suchbegriff „BingSearchV7“ ein.  
+2. Wählen Sie unter „Marketplace“ in der Dropdownliste `Bing Search v7` aus.
+3. Geben Sie `Name` für die neue Ressource ein.
+4. Wählen Sie das Abonnement `Pay-As-You-Go` aus.
+5. Wählen Sie den Tarif `S9` aus.
+6. Klicken Sie auf `Enable`, um das Abonnement zu erstellen.
 
 ## <a name="application-dependencies"></a>Anwendungsabhängigkeiten
 Navigieren Sie in Visual Studio über den Projektmappen-Explorer zur Option „NuGet-Pakete verwalten“, um mit dem SDK für die Bing-Websuche eine Konsolenanwendung einzurichten. Hinzufügen:
