@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 11/02/2018
+ms.date: 11/26/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 2aca42c23cc213d5d7e451105052d5d5d697b77d
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: c8ab6b6e6bab7451de7d975dde644386fd4cb84e
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50979470"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52311533"
 ---
 # <a name="hybrid-identity-and-microsoft-identity-solutions"></a>Hybrididentität und Identitätslösungen von Microsoft
 Hybrid-Identitätslösungen mit [Microsoft Azure Active Directory (Azure AD)](../../active-directory/fundamentals/active-directory-whatis.md) ermöglichen es Ihnen, lokale Verzeichnisobjekte mit Azure AD zu synchronisieren, während Sie Ihre Benutzer weiterhin lokal verwalten. Die erste Entscheidung bei der Planung der Synchronisierung Ihres lokalen Windows Server Active Directory mit Azure AD ist, ob Sie verwaltete Identitäten oder einen Identitätsverbund verwenden möchten. 
@@ -42,7 +42,7 @@ Eine verwaltete Identität ist zwar die schnellste und einfachste Methode, Ihre 
 Für die meisten Organisationen, die lediglich die Benutzeranmeldung für Office 365, SaaS-Anwendungen und andere Azure AD-basierte Ressourcen aktivieren müssen, empfiehlt sich die Standardoption für die Kennworthashsynchronisierung. Wenn dies für Sie nicht funktioniert, müssen Sie sich zwischen Pass-Through-Authentifizierung und AD FS entscheiden.
 
 > [!TIP]
-> Benutzerkennwörter werden in einer lokalen Instanz von Windows Server Active Directory in Form eines Hashwerts gespeichert, der das eigentliche Benutzerkennwort darstellt. Ein Hashwert ist das Ergebnis einer unidirektionalen mathematischen Funktion (des Hashalgorithmus). Es ist nicht möglich, das Ergebnis einer unidirektionalen Funktion in die Nur-Text-Version eines Kennworts umzukehren. Sie können einen Kennworthash nicht zur Anmeldung in Ihrem lokalen Netzwerk verwenden. Wenn Sie sich dafür entscheiden, Kennwörter zu synchronisieren, extrahiert Azure AD Connect Kennworthashes aus der lokalen Active Directory-Instanz und führt eine zusätzliche Sicherheitsverarbeitung für den Kennworthash durch, bevor er mit Azure AD synchronisiert wird. Die Kennworthashsynchronisierung kann auch mit dem Kennwortrückschreiben kombiniert werden, um es Benutzern zu ermöglichen, ihre Kennwörter in Azure AD selbst zurückzusetzen. Darüber hinaus können Sie einmaliges Anmelden (SSO) für Benutzer auf in die Domäne eingebundenen Computern aktivieren, die mit dem Unternehmensnetzwerk verbunden sind. Beim einmaligen Anmelden müssen aktivierte Benutzer nur einen Benutzernamen eingeben, um sicher auf Cloudressourcen zuzugreifen. 
+> Benutzerkennwörter werden in einer lokalen Instanz von Windows Server Active Directory in Form eines Hashwerts gespeichert, der das eigentliche Benutzerkennwort darstellt. Ein Hashwert ist das Ergebnis einer unidirektionalen mathematischen Funktion (des Hashalgorithmus). Es ist nicht möglich, das Ergebnis einer unidirektionalen Funktion in die Nur-Text-Version eines Kennworts umzukehren. Sie können einen Kennworthash nicht zur Anmeldung in Ihrem lokalen Netzwerk verwenden. Wenn Sie sich dafür entscheiden, Kennworthashes zu synchronisieren, extrahiert Azure AD Connect Kennworthashes aus der lokalen Active Directory-Instanz und führt eine zusätzliche Sicherheitsverarbeitung für den Kennworthash durch, bevor er mit Azure AD synchronisiert wird. Die Kennworthashsynchronisierung kann auch mit dem Kennwortrückschreiben kombiniert werden, um es Benutzern zu ermöglichen, ihre Kennwörter in Azure AD selbst zurückzusetzen. Darüber hinaus können Sie einmaliges Anmelden (SSO) für Benutzer auf in die Domäne eingebundenen Computern aktivieren, die mit dem Unternehmensnetzwerk verbunden sind. Beim einmaligen Anmelden müssen aktivierte Benutzer nur einen Benutzernamen eingeben, um sicher auf Cloudressourcen zuzugreifen. 
 >
 
 ## <a name="pass-through-authentication"></a>Passthrough-Authentifizierung

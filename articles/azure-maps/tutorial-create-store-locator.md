@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 9f77beb8c51fb3a06045183433907e1c634fb45d
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 7c7891d8a73142c78b1ca80027d685b93a062d06
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51820271"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52317907"
 ---
 # <a name="create-a-store-locator-by-using-azure-maps"></a>Erstellen einer Shopsuche mit Azure Maps
 
@@ -81,7 +81,7 @@ Wenn Sie sich den Screenshot mit den Daten ansehen, fällt Ihnen Folgendes auf:
 * Einige zusätzliche Spalten enthalten Metadaten zu den Coffee-Shops: eine Telefonnummer, boolesche Spalten für WLAN-Hotspots und Barrierefreiheit für Rollstühle sowie die Geschäftszeiten im 24-Stunden-Format. Sie können auch eigene Spalten mit Metadaten erstellen, die für Ihre Standortdaten eine höhere Relevanz haben.
 
 > [!Note]
-> Für Karten in Azure wird eine Mercato-Kugelprojektion (EPSG:3857) verwendet.
+> Azure Maps rendert Daten in der sphärischen Mercator-Projektion „EPSG:3857“, liest Daten jedoch in „EPSG:4325“ mit WGS84-Bezug. 
 
 Es gibt viele Möglichkeiten, um das Dataset für die Anwendung verfügbar zu machen. Ein Ansatz besteht darin, die Daten in eine Datenbank zu laden und einen Webdienst verfügbar zu machen, mit dem die Daten abgefragt und die Ergebnisse an den Browser des Benutzers gesendet werden. Diese Option ist ideal für große oder häufig aktualisierte Datasets geeignet. Für diese Option fallen aber deutlich mehr Entwicklungsaufwand und höhere Kosten an. 
 

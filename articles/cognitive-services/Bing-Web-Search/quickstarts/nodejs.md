@@ -10,12 +10,12 @@ ms.component: bing-web-search
 ms.topic: quickstart
 ms.date: 9/26/2018
 ms.author: aahi
-ms.openlocfilehash: 80d527baa5d919290bc80c65745bcaaf6ef5639d
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 4c6e74d4ce9e3c1f9d81e640f7fa8071f73ec776
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52164353"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52309296"
 ---
 # <a name="quickstart-use-nodejs-to-call-the-bing-web-search-api"></a>Schnellstart: Verwenden von Node.js zum Aufrufen der Bing-Websuche-API  
 
@@ -23,8 +23,9 @@ Verwenden Sie diese Schnellstartanleitung, um die Bing-Websuche-API zum ersten M
 
 [!INCLUDE [bing-web-search-quickstart-signup](../../../../includes/bing-web-search-quickstart-signup.md)]
 
-## <a name="prerequisites"></a>Voraussetzungen
+Siehe auch [Cognitive Services-Preise – Bing-Suche-API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)
 
+## <a name="prerequisites"></a>Voraussetzungen
 Im Folgenden sind die Tools aufgeführt, die Sie zum Ausführen dieser Schnellstartanleitung benötigen:
 
 * [Node.js 6](https://nodejs.org/en/download/) oder höher

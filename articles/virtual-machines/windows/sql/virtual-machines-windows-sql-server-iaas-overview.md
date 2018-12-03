@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 04/12/2018
 ms.author: jroth
-ms.openlocfilehash: 905caa7d0de514ae9fd13cb058b2b7826b8b6abf
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 141a65032d3d97a7977bb3e725edb47b6f25d55c
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40003670"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52496667"
 ---
 # <a name="what-is-sql-server-on-azure-virtual-machines-windows"></a>Was ist SQL Server auf virtuellen Azure-Computern? (Windows)
 
@@ -67,8 +67,13 @@ Die folgende Tabelle enthält eine Matrix für SQL Server-Images mit nutzungsbas
 
 Informationen zu den verfügbaren Images für virtuelle Linux-Computer mit SQL Server finden Sie unter [Overview of SQL Server on Azure Virtual Machines (Linux)](../../linux/sql/sql-server-linux-virtual-machines-overview.md) (Übersicht über SQL Server auf virtuellen Azure-Computern (Linux)).
 
+> [!NOTE]
+> Es ist nun möglich, das Lizenzierungsmodell eines virtuellen SQL Server-Computers mit nutzungsbasierter Bezahlung zu ändern und eine eigene Lizenz zu verwenden. Weitere Informationen finden Sie unter [How to change the licensing model for a SQL virtual machine in Azure](virtual-machines-windows-sql-ahb.md) (Ändern des Lizenzierungsmodells für einen virtuellen SQL-Computer in Azure). 
+
 ### <a id="BYOL"></a> BYOL (Bring Your Own License)
 Sie können auch Ihre eigene Lizenz nutzen (BYOL). In diesem Fall zahlen Sie nur für die VM, ohne dass zusätzliche Gebühren für die SQL Server-Lizenzierung anfallen.  Durch die Nutzung einer eigenen Lizenz können Sie im Laufe der Zeit Geld für kontinuierliche Produktionsworkloads sparen. Weitere Anforderungen für diese Option finden Sie unter [Preisinformationen für virtuelle Azure-Computer mit SQL Server](virtual-machines-windows-sql-server-pricing-guidance.md#byol).
+
+Um Ihre eigene Lizenz zu verwenden, können Sie entweder einen vorhandenen virtuellen SQL-Computer mit nutzungsbasierter Bezahlung ändern oder ein Image mit dem Präfix **{BYOL}** bereitstellen. Weitere Informationen zum Umstellen Ihres Lizenzierungsmodells zwischen nutzungsbasierter Bezahlung und BYOL finden Sie unter [How to change the licensing model for a SQL virtual machine in Azure](virtual-machines-windows-sql-ahb.md) (Ändern des Lizenzierungsmodells für einen virtuellen SQL-Computer in Azure). 
 
 | Version | Betriebssystem | Edition |
 | --- | --- | --- |
@@ -77,7 +82,6 @@ Sie können auch Ihre eigene Lizenz nutzen (BYOL). In diesem Fall zahlen Sie nur
 | **SQL Server 2014 SP2** |Windows Server 2012 R2 |[Enterprise BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2014SP2EnterpriseWindowsServer2012R2), [Standard BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2014SP2StandardWindowsServer2012R2) |
 | **SQL Server 2012 SP4** |Windows Server 2012 R2 |[Enterprise BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2012SP4EnterpriseWindowsServer2012R2), [Standard BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2012SP4StandardWindowsServer2012R2) |
 
-Im Portal haben diese Imagenamen das Präfix **{BYOL}**.
 
 ### <a name="connect-to-the-vm"></a>Herstellen der Verbindung zur VM
 Stellen Sie nach dem Erstellen des virtuellen SQL Server-Computers über Anwendungen oder Tools wie etwa SQL Server Management Studio (SSMS) eine Verbindung damit her. Eine entsprechende Anleitung finden Sie unter [Verbinden mit SQL Server-Instanzen auf virtuellen Azure-Maschinen (Ressourcen-Manager)](virtual-machines-windows-sql-connect.md).

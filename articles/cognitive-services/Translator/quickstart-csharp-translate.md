@@ -8,94 +8,152 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
-ms.date: 06/15/2018
+ms.date: 11/20/2018
 ms.author: erhopf
-ms.openlocfilehash: ffd46969bd7333d2422654c8683f66ff313706c2
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 06e294187247636c552dfd4a7d02167eb55be19a
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49648461"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52334702"
 ---
 # <a name="quickstart-translate-text-with-the-translator-text-rest-api-c"></a>Schnellstart: Übersetzen von Text mit der Textübersetzungs-REST-API (C#)
 
-In dieser Schnellstartanleitung übersetzen Sie mithilfe der Textübersetzungs-API Text von einer Sprache in eine andere.
+In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe von .NET Core und der Textübersetzungs-REST-API eine Textzeichenfolge vom Englischen ins Italienische und Deutsche übersetzen.
+
+Für diese Schnellstartanleitung wird ein [Azure Cognitive Services-Konto](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) mit einer Textübersetzungsressource benötigt. Wenn Sie über kein Konto verfügen, können Sie über die [kostenlose Testversion](https://azure.microsoft.com/try/cognitive-services/) einen Abonnementschlüssel abrufen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Sie benötigen [Visual Studio 2017](https://www.visualstudio.com/downloads/), um diesen Code unter Windows ausführen zu können. (Die kostenlose Community Edition ist hierfür geeignet.)
+* [.NET SDK](https://www.microsoft.com/net/learn/dotnet/hello-world-tutorial)
+* [Json.NET-NuGet-Paket](https://www.nuget.org/packages/Newtonsoft.Json/)
+* [Visual Studio](https://visualstudio.microsoft.com/downloads/), [Visual Studio Code](https://code.visualstudio.com/download) oder ein anderer Editor
+* Ein Azure-Abonnementschlüssel für den Speech-Dienst
 
-Damit Sie die Textübersetzungs-API verwenden können, benötigen Sie darüber hinaus einen Abonnementschlüssel. Informationen hierzu finden Sie unter [Registrieren für die Textübersetzungs-API](translator-text-how-to-signup.md).
+## <a name="create-a-net-core-project"></a>Erstellen eines .NET Core-Projekts
 
-## <a name="translate-request"></a>Übersetzungsanforderung (Translate)
+Öffnen Sie eine neue Eingabeaufforderung (oder Terminalsitzung), und führen Sie die folgenden Befehle aus:
 
-> [!TIP]
-> Rufen Sie den aktuellen Code von [GitHub](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-C-Sharp) ab.
+```console
+dotnet new console -o translate-sample
+cd translate-sample
+```
 
-Mit dem folgenden Code wird mithilfe der Methode zum [Übersetzen](./reference/v3-0-translate.md) (Translate) Quelltext von einer Sprache in die andere übersetzt.
+Mit dem ersten Befehl werden zwei Aufgaben ausgeführt. Er erstellt eine neue .NET-Konsolenanwendung und ein Verzeichnis mit dem Namen `translate-sample`. Mit dem zweiten Befehl wird in das Verzeichnis für Ihr Projekt gewechselt.
 
-1. Erstellen Sie in Ihrer bevorzugten IDE ein neues C#-Projekt.
-2. Fügen Sie den unten stehenden Code hinzu.
-3. Ersetzen Sie den `key`-Wert durch einen für Ihr Abonnement gültigen Zugriffsschlüssel.
-4. Führen Sie das Programm aus.
+Als Nächstes müssen Sie Json.Net installieren. Führen Sie im Verzeichnis Ihres Projekts den folgenden Befehl aus:
+
+```console
+dotnet add package Newtonsoft.Json --version 11.0.2
+```
+
+## <a name="add-required-namespaces-to-your-project"></a>Hinzufügen von erforderlichen Namespaces zu Ihrem Projekt
+
+Mit dem zuvor ausgeführten Befehl `dotnet new console` wurde ein Projekt (einschließlich `Program.cs`) erstellt. In diese Datei fügen Sie Ihren Anwendungscode ein. Öffnen Sie `Program.cs`, und ersetzen Sie die vorhandenen using-Anweisungen. Mit diesen Anweisungen wird sichergestellt, dass Sie Zugriff auf alle Typen haben, die zum Erstellen und Ausführen der Beispiel-App erforderlich sind.
 
 ```csharp
 using System;
 using System.Net.Http;
 using System.Text;
-// NOTE: Install the Newtonsoft.Json NuGet package.
 using Newtonsoft.Json;
+```
 
-namespace TranslatorTextQuickStart
+## <a name="create-a-function-to-translate-text"></a>Erstellen einer Funktion für die Übersetzung von Text
+
+Erstellen Sie in der `Program`-Klasse eine Funktion mit dem Namen `TranslateText`. Diese Klasse kapselt den zum Aufrufen der Übersetzungsressource verwendeten Code und gibt das Ergebnis in der Konsole aus.
+
+```csharp
+static void TranslateText()
 {
-    class Program
-    {
-        static string host = "https://api.cognitive.microsofttranslator.com";
-        static string path = "/translate?api-version=3.0";
-        // Translate to German and Italian.
-        static string params_ = "&to=de&to=it";
-
-        static string uri = host + path + params_;
-
-        // NOTE: Replace this example key with a valid subscription key.
-        static string key = "ENTER KEY HERE";
-
-        static string text = "Hello world!";
-
-        async static void Translate()
-        {
-            System.Object[] body = new System.Object[] { new { Text = text } };
-            var requestBody = JsonConvert.SerializeObject(body);
-
-            using (var client = new HttpClient())
-            using (var request = new HttpRequestMessage())
-            {
-                request.Method = HttpMethod.Post;
-                request.RequestUri = new Uri(uri);
-                request.Content = new StringContent(requestBody, Encoding.UTF8, "application/json");
-                request.Headers.Add("Ocp-Apim-Subscription-Key", key);
-
-                var response = await client.SendAsync(request);
-                var responseBody = await response.Content.ReadAsStringAsync();
-                var result = JsonConvert.SerializeObject(JsonConvert.DeserializeObject(responseBody), Formatting.Indented);
-
-                Console.OutputEncoding = UnicodeEncoding.UTF8;
-                Console.WriteLine(result);
-            }
-        }
-
-        static void Main(string[] args)
-        {
-            Translate();
-            Console.ReadLine();
-        }
-    }
+  /*
+   * The code for your call to the translation service will be added to this
+   * function in the next few sections.
+   */
 }
 ```
 
-## <a name="translate-response"></a>Übersetzungsantwort (Translate)
+## <a name="set-the-subscription-key-host-name-and-path"></a>Festlegen des Abonnementschlüssels, des Hostnamens und des Pfads
 
-Es wird eine erfolgreiche Antwort im JSON-Format zurückgegeben, wie im folgenden Beispiel gezeigt:
+Fügen Sie der Funktion `TranslateText` die folgenden Zeilen hinzu: Sie sehen, dass neben `api-version` zwei weitere Parameter an `route` angefügt wurden. Diese Parameter werden zum Festlegen der Übersetzungsausgaben verwendet. In diesem Beispiel sind sie auf Deutsch (`de`) und Italienisch (`it`) festgelegt. Aktualisieren Sie unbedingt den Wert des Abonnementschlüssels.
+
+```csharp
+string host = "https://api.cognitive.microsofttranslator.com";
+string route = "/translate?api-version=3.0&to=de&to=it";
+string subscriptionKey = "YOUR_SUBSCRIPTION_KEY";
+```
+
+Als Nächstes müssen Sie das JSON-Objekt erstellen und serialisieren, das den zu übersetzenden Text enthält. Beachten Sie, dass Sie mehrere Objekte im Array `body` übergeben können.
+
+```csharp
+System.Object[] body = new System.Object[] { new { Text = @"Hello world!" } };
+var requestBody = JsonConvert.SerializeObject(body);
+```
+
+## <a name="instantiate-the-client-and-make-a-request"></a>Instanziieren des Clients und Senden einer Anforderung
+
+Diese Zeilen instanziieren `HttpClient` und `HttpRequestMessage`:
+
+```csharp
+using (var client = new HttpClient())
+using (var request = new HttpRequestMessage())
+{
+  // In the next few sections you'll add code to construct the request.
+}
+```
+
+## <a name="construct-the-request-and-print-the-response"></a>Erstellen der Anforderung und Ausgeben der Antwort
+
+In `HttpRequestMessage` führen Sie die folgenden Aufgaben aus:
+
+* Deklarieren der HTTP-Methode
+* Erstellen des Anforderungs-URIs
+* Einfügen des Anforderungstexts (serialisiertes JSON-Objekt)
+* Hinzufügen der erforderlichen Header
+* Senden einer asynchronen Anforderung
+* Ausgeben der Antwort
+
+Fügen Sie `HttpRequestMessage` den folgenden Code hinzu:
+
+```csharp
+// Set the method to POST
+request.Method = HttpMethod.Post;
+
+// Construct the full URI
+request.RequestUri = new Uri(host + route);
+
+// Add the serialized JSON object to your request
+request.Content = new StringContent(requestBody, Encoding.UTF8, "application/json");
+
+// Add the authorization header
+request.Headers.Add("Ocp-Apim-Subscription-Key", subscriptionKey);
+
+// Send request, get response
+var response = client.SendAsync(request).Result;
+var jsonResponse = response.Content.ReadAsStringAsync().Result;
+
+// Print the response
+Console.WriteLine(jsonResponse);
+Console.WriteLine("Press any key to continue.");
+```
+
+## <a name="put-it-all-together"></a>Korrektes Zusammenfügen
+
+Im letzten Schritt rufen Sie `TranslateText()` in der `Main`-Funktion auf. Suchen Sie `static void Main(string[] args)`, und fügen Sie die folgenden Zeilen hinzu:
+
+```csharp
+TranslateText();
+Console.ReadLine();
+```
+
+## <a name="run-the-sample-app"></a>Ausführen der Beispiel-App
+
+Sie können Ihre Beispiel-App jetzt ausführen. Navigieren Sie über die Befehlszeile (oder Terminalsitzung) zu Ihrem Projektverzeichnis, und führen Sie Folgendes aus:
+
+```console
+dotnet run
+```
+
+## <a name="sample-response"></a>Beispiel für eine Antwort
 
 ```json
 [
@@ -118,9 +176,21 @@ Es wird eine erfolgreiche Antwort im JSON-Format zurückgegeben, wie im folgende
 ]
 ```
 
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
+Entfernen Sie unbedingt alle vertraulichen Informationen wie etwa Abonnementschlüssel aus dem Quellcode Ihrer Beispiel-App.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 Sehen Sie sich den Beispielcode für diese und andere Schnellstartanleitungen (einschließlich Transliteration und Sprachermittlung) sowie weitere Beispielprojekte für die Textübersetzung auf GitHub an.
 
 > [!div class="nextstepaction"]
 > [C#-Beispiele auf GitHub](https://aka.ms/TranslatorGitHub?type=&language=c%23)
+
+## <a name="see-also"></a>Weitere Informationen
+
+* [Transliteration von Text](quickstart-csharp-transliterate.md)
+* [Identifizieren der Sprache anhand der Eingabe](quickstart-csharp-detect.md)
+* [Ermitteln alternativer Übersetzungen](quickstart-csharp-dictionary.md)
+* [Abrufen einer Liste der unterstützten Sprachen](quickstart-csharp-languages.md)
+* [Bestimmen der Satzlänge aus einer Eingabe](quickstart-csharp-sentences.md)

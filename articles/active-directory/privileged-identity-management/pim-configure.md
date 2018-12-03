@@ -13,12 +13,12 @@ ms.topic: overview
 ms.date: 03/07/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: af93ade2a7031aeda5b4108649c59a8d6c1393ce
-ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
+ms.openlocfilehash: 6720294fe9a3e166d0d6ef8f141e53212ef4b194
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46465859"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52496797"
 ---
 # <a name="what-is-azure-ad-privileged-identity-management"></a>Was ist Azure AD Privileged Identity Management?
 
@@ -73,7 +73,7 @@ Privileged Identity Management unterstützt folgende Szenarien:
 
 - Anzeigen ausstehender Genehmigungen (Anforderungen)
 - Genehmigen oder Ablehnen von Anforderungen von Rechteerweiterungen für Rollen (einzeln und/oder mehrere)
-- Abgeben einer Begründung für die Genehmigung/Ablehnung 
+- Abgeben einer Begründung für die Genehmigung/Ablehnung 
 
 **Als Benutzer mit berechtigter Rolle haben Sie folgende Möglichkeiten:**
 
@@ -81,22 +81,13 @@ Privileged Identity Management unterstützt folgende Szenarien:
 - Anzeigen des Status Ihrer Aktivierungsanforderung
 - Fertigstellen Ihrer Aufgabe in Azure AD, wenn die Aktivierung genehmigt wurde
 
-## <a name="enable-privileged-identity-management-for-your-directory"></a>Aktivieren von Privileged Identity Management für Ihr Verzeichnis
+## <a name="who-can-do-what-in-pim"></a>Berechtigungen und Rollen
 
-Im [Azure-Portal](https://portal.azure.com/)können Sie mit der Nutzung von Azure AD Privileged Identity Management beginnen.
+Wenn Sie die erste Person sind, die PIM verwendet, werden Ihnen automatisch die Rollen [Sicherheitsadministrator](../users-groups-roles/directory-assign-admin-roles.md#security-administrator) und [Administrator für privilegierte Rollen](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) im Verzeichnis zugewiesen.
 
-> [!NOTE]
-> Sie müssen ein globaler Administrator mit einem Geschäftskonto (wie @yourdomain.com) und keinem Microsoft-Konto (wie @outlook.com) sein, um Azure AD Privileged Identity Management für ein Verzeichnis zu aktivieren.
+Für Azure AD-Rollen gilt: Nur ein Benutzer mit der Rolle eines Administrators für privilegierte Rollen kann Zuweisungen für andere Administratoren in PIM verwalten. Sie können [Zugriff für andere Administratoren zum Verwalten von PIM gewähren](pim-how-to-give-access-to-pim.md). Globale Administratoren, Sicherheitsadministratoren und Benutzer mit Leseberechtigung für Sicherheitsfunktionen können Zuweisungen zu Azure AD-Rollen in PIM anzeigen.
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) als globaler Administrator Ihres Verzeichnisses an.
-2. Wenn Ihre Organisation über mehr als ein Verzeichnis verfügt, klicken Sie in der oberen rechten Ecke des Azure-Portals auf Ihren Benutzernamen. Wählen Sie das Verzeichnis aus, in dem Sie Azure AD Privileged Identity Management verwenden möchten.
-3. Wählen Sie **Alle Dienste** aus, und verwenden Sie das Textfeld „Filter“, um nach **Azure AD Privileged Identity Management** zu suchen.
-4. Aktivieren Sie das Kontrollkästchen **An Dashboard anheften**, und klicken Sie dann auf **Erstellen**. Die Anwendung Privileged Identity Management wird geöffnet.
-
-Wenn Sie die erste Person sind, die Azure AD Privileged Identity Management in Ihrem Verzeichnis verwendet, und Sie zu Azure AD-Verzeichnisrollen navigieren, führt Sie der [Sicherheits-Assistent](pim-security-wizard.md) durch die erste Zuweisung. Danach sind Sie automatisch der erste **Sicherheitsadministrator** und der **Administrator für privilegierte Rollen** des Verzeichnisses.
-
-Für Azure AD-Rollen gilt: Nur ein Benutzer mit der Rolle eines Administrators für privilegierte Rollen kann Zuweisungen für andere Administratoren in Azure AD PIM verwalten. Sie können [anderen Benutzern die Verwaltung von Verzeichnisrollen in PIM ermöglichen](pim-how-to-give-access-to-pim.md). Globale Administratoren, Sicherheitsadministratoren und Benutzer mit Leseberechtigung für Sicherheitsfunktionen können Zuweisungen zu Azure AD-Rollen in Azure AD PIM anzeigen.
-Bei Azure RBAC-Rollen können nur Abonnementadministratoren, Ressourcenbesitzer und Ressourcen-Benutzerzugriffsadministratoren Zuweisungen für andere Administratoren in Azure AD PIM verwalten.  Administratoren für privilegierte Rollen, Sicherheitsadministratoren oder Benutzer mit Leseberechtigung für Sicherheitsfunktionen haben nicht standardmäßig Zugriff auf Zuweisungen zu Azure RBAC-Rollen in Azure AD PIM.
+Bei Azure-Ressourcenrollen können nur Abonnementadministratoren, Ressourcenbesitzer und Ressourcen-Benutzerzugriffsadministratoren Zuweisungen für andere Administratoren in PIM verwalten. Administratoren für privilegierte Rollen, Sicherheitsadministratoren oder Benutzer mit Leseberechtigung für Sicherheitsfunktionen haben nicht standardmäßig Zugriff auf Zuweisungen zu Azure-Ressourcenrollen in PIM.
 
 ## <a name="privileged-identity-management-overview-entry-point"></a>Übersicht über Privileged Identity Management (Einstiegspunkt)
 
@@ -186,6 +177,6 @@ Wenn Ihre Organisation Azure AD Premium P2 nicht verlängert oder der Testzeitra
 
 ## <a name="next-steps"></a>Nächste Schritte
 
+- [Einstieg in die Verwendung von PIM](pim-getting-started.md)
 - [Abonnementanforderungen für die Verwendung von PIM](subscription-requirements.md)
-- [Azure AD-Verzeichnisrollen, die Sie in PIM verwalten können](pim-roles.md)
 - [Schützen des privilegierten Zugriffs für hybride und Cloudbereitstellungen in Azure AD](../users-groups-roles/directory-admin-roles-secure.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)

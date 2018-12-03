@@ -10,12 +10,12 @@ ms.component: bing-entity-search
 ms.topic: quickstart
 ms.date: 02/19/2018
 ms.author: v-gedod
-ms.openlocfilehash: eeb8e6e0ac132ef2d927aa2de03817389230191e
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 291a307d4fd7c0fa723b8b17c13b3ef13cdeb8de
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48814490"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52316819"
 ---
 # <a name="quickstart-bing-entity-search-sdk-with-java"></a>Schnellstart: Bing-Entitätssuche-SDK mit Java
 
@@ -24,7 +24,9 @@ Das Bing-Entitätssuche-SDK enthält die Funktionalität der REST-API für Entit
 Der [Java-Beispielquellcode für das Bing-Entitätssuche-SDK](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingEntitySearch) ist auf GitHub verfügbar. 
 
 ## <a name="application-dependencies"></a>Anwendungsabhängigkeiten
-Rufen Sie unter **Suchen** einen [Cognitive Services-Zugriffsschlüssel](https://azure.microsoft.com/try/cognitive-services/) ab. Installieren Sie die Abhängigkeit für das Bing-Entitätssuche-SDK mithilfe von Maven, Gradle oder anderen Systemen zum Verwalten von Abhängigkeiten. Die POM-Datei für Maven erfordert die folgende Deklaration:
+Rufen Sie unter **Suchen** einen [Cognitive Services-Zugriffsschlüssel](https://azure.microsoft.com/try/cognitive-services/) ab.  Siehe auch [Cognitive Services-Preise – Bing-Suche-API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)
+
+Installieren Sie die Abhängigkeit für das Bing-Entitätssuche-SDK mithilfe von Maven, Gradle oder anderen Systemen zum Verwalten von Abhängigkeiten. Die POM-Datei für Maven erfordert die folgende Deklaration:
 ```
   <dependencies>
     <dependency>

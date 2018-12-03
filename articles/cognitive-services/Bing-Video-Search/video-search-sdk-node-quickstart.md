@@ -10,12 +10,12 @@ ms.component: bing-video-search
 ms.topic: quickstart
 ms.date: 02/12/2018
 ms.author: rosh
-ms.openlocfilehash: 9a2544fe5a3c0bac763b9aee79c36893ec56f351
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 985ddcff35a16c747fff34ed487c72744e1ee466
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51686686"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52313446"
 ---
 # <a name="quickstart-bing-video-search-sdk-with-node"></a>Schnellstart: Bing-Videosuche-SDK mit Node
 
@@ -24,6 +24,7 @@ Das Bing-Videosuche-SDK enthält die Funktionalität der REST-API für Videoabfr
 [Beispielquellcode mit dem Bing-Videosuche-SDK für Node](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/videoSearch.js) ist bei GitHub verfügbar.
 
 ## <a name="application-dependencies"></a>Anwendungsabhängigkeiten
+Rufen Sie unter **Suchen** einen [Cognitive Services-Zugriffsschlüssel](https://azure.microsoft.com/try/cognitive-services/) ab.  Siehe auch [Cognitive Services-Preise – Bing-Suche-API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)
 
 So richten Sie eine Konsolenanwendung mit dem SDK für die Bing-Videosuche ein:
 * Führen Sie `npm install ms-rest-azure` in Ihrer Entwicklungsumgebung aus.

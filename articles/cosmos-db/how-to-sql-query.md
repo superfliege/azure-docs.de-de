@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 11/15/2018
 ms.author: mjbrown
-ms.openlocfilehash: f9ec8ff1fbd5f6341d2d949d15d963f8abe15200
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 9496f88a24c92387418d5d9ae23bb7f2eaff2088
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52166604"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52444434"
 ---
 # <a name="query-azure-cosmos-db-data-with-sql-queries"></a>Abfragen von Azure Cosmos DB-Daten mit SQL-Abfragen
 
@@ -400,9 +400,18 @@ Die unären Operatoren +, -, ~ und NOT werden ebenfalls unterstützt und können
 Neben binären und unären Operatoren sind auch Eigenschaftsverweise zulässig. So gibt beispielsweise `SELECT * FROM Families f WHERE f.isRegistered` das JSON-Element zurück, das die Eigenschaft `isRegistered` enthält und dessen Eigenschaftswert dem JSON-Wert `true` entspricht. Alle anderen Werte („false“, „null“, „Undefined“, `<number>`, `<string>`, `<object>`, `<array>` usw.) führen dazu, dass das Quellelement aus dem Ergebnis ausgeschlossen wird. 
 
 ### <a name="equality-and-comparison-operators"></a>Gleichheits- und Vergleichsoperatoren
+
 Die folgende Tabelle zeigt die Ergebnisse für Gleichheitsvergleiche in der SQL-API zwischen den einzelnen JSON-Typen.
 
-| **Op** | **Undefined** | **Null** | **Boolescher Wert** | **Zahl** | **Zeichenfolge** | **Objekt** | **Array** | | **Undefined** | Undefined | Undefined | Undefined | Undefined | Undefined | Undefined | Undefined | | **Null** | Undefined | **OK** | Undefined | Undefined | Undefined | Undefined | Undefined | | **Boolescher Wert** | Undefined | Undefined | **OK** | Undefined | Undefined | Undefined | Undefined | | **Zahl** | Undefined | Undefined | Undefined | **OK** | Undefined | Undefined | Undefined | | **Zeichenfolge** | Undefined | Undefined | Undefined | Undefined | **OK** | Undefined | Undefined | | **Objekt** | Undefined | Undefined | Undefined | Undefined | Undefined | **OK** | Undefined | | **Array** | Undefined | Undefined | Undefined | Undefined | Undefined | Undefined | **OK** |
+| **Op** | **Undefiniert** | **NULL** | **Boolescher Wert** | **Number** | **String** | **Object** | **Array** |
+|---|---|---|---|---|---|---|---|
+| **Undefiniert** | Undefined | Undefined | Undefined | Undefined | Undefined | Undefined | Undefined |
+| **NULL** | Undefined | **OK** | Undefined | Undefined | Undefined | Undefined | Undefined |
+| **Boolescher Wert** | Undefined | Undefined | **OK** | Undefined | Undefined | Undefined | Undefined |
+| **Number** | Undefined | Undefined | Undefined | **OK** | Undefined | Undefined | Undefined |
+| **String** | Undefined | Undefined | Undefined | Undefined | **OK** | Undefined | Undefined |
+| **Object** | Undefined | Undefined | Undefined | Undefined | Undefined | **OK** | Undefined |
+| **Array** | Undefined | Undefined | Undefined | Undefined | Undefined | Undefined | **OK** |
 
 Für andere Vergleichsoperatoren wie >, >=, !=, < und <= gelten die folgenden Regeln:
 
@@ -497,7 +506,7 @@ Sie können auch die Aufrufe vom Operator wie in der folgenden Abfrage verschach
 
 Wie bei anderen Abfrageoperatoren werden Elemente mit fehlenden referenzierten Eigenschaften im bedingten Ausdruck oder Elemente mit unterschiedlichen verglichenen Typen in den Abfrageergebnissen ausgeschlossen.
 
-Der koaleszierte (??) Operator kann zur effizienten Prüfung des Vorkommens einer Eigenschaft in einem Element verwendet werden. Damit wird also überprüft, ob die Eigenschaft definiert ist. Dieser Operator ist bei Abfragen für teilweise strukturiert oder gemischte Datentypen nützlich. Diese Abfrage gibt z. B. "LastName", falls vorhanden, oder "Surname", falls nicht vorhanden zurück.
+Der koaleszierte (??) Operator kann zur effizienten Prüfung des Vorkommens einer Eigenschaft in einem Dokument verwendet werden. Damit wird also überprüft, ob die Eigenschaft definiert ist. Dieser Operator ist bei Abfragen für teilweise strukturiert oder gemischte Datentypen nützlich. Diese Abfrage gibt z. B. "LastName", falls vorhanden, oder "Surname", falls nicht vorhanden zurück.
 
 ```sql
     SELECT f.lastName ?? f.surname AS familyName
@@ -811,7 +820,7 @@ Sie können auch Aggregate in Kombination mit Filtern ausführen. Bei dieser Abf
 
 Die folgende Tabelle zeigt die Liste der unterstützten Aggregatfunktionen in der SQL-API. `SUM`und `AVG` werden über numerische Werte ausgeführt, wohingegen `COUNT`, `MIN` und `MAX` über Zahlen, Zeichenfolgen, boolesche Werte und NULL-Werte ausgeführt werden können.
 
-| Verwendung | Beschreibung |
+| Verwendung | BESCHREIBUNG |
 |-------|-------------|
 | COUNT | Gibt die Anzahl der Elemente im Ausdruck zurück. |
 | SUM   | Gibt die Summe aller Werte im Ausdruck zurück. |
@@ -1164,7 +1173,7 @@ Das nächste Beispiel enthält einen zusätzlichen Filter für `pet`, durch den 
 Azure Cosmos DB bietet ein Programmiermodell, das es ermöglicht, JavaScript-basierte Anwendungslogik mithilfe gespeicherter Prozeduren und Trigger direkt für die Container auszuführen. Diese Methode erlaubt/unterstützt Folgendes:
 
 * Leistungsfähige transaktionale CRUD-Vorgänge und Abfragen für Elemente in einem Container dank umfassender Integration der JavaScript-Runtime direkt in die Datenbank-Engine
-* Eine natürliche Modellierung von Kontrollfluss, Variablen-Bereichssteuerung, Zuweisung und Integration der Ausnahmebehandlung für Datenbanktransaktionen Weitere Informationen zur Azure Cosmos DB-Unterstützung der JavaScript-Integration finden Sie in der Dokumentation für die serverseitige JavaScript-Programmierung.
+* Eine natürliche Modellierung von Kontrollfluss, Variablen-Bereichssteuerung, Zuweisung und Integration der Ausnahmebehandlung für Datenbanktransaktionen. Weitere Informationen zur Azure Cosmos DB-Unterstützung der JavaScript-Integration finden Sie in der Dokumentation für die serverseitige JavaScript-Programmierung.
 
 ### <a id="UserDefinedFunctions"></a>Benutzerdefinierte Funktionen (User Defined Functions, UDFs)
 
@@ -1354,7 +1363,7 @@ Wenn Sie derzeit eine benutzerdefinierte Funktion (UDF) verwenden, für die jetz
 
 Jede mathematische Funktion führt eine Berechnung durch, basierend auf Eingabewerten, die als Argument bereitgestellt werden, und gibt einen numerischen Wert zurück. Im Folgenden finden Sie eine Tabelle der unterstützten integrierten mathematischen Funktionen.
 
-| Verwendung | Beschreibung |
+| Verwendung | BESCHREIBUNG |
 |----------|--------|
 | [[ABS (num_expr)](#bk_abs) | Gibt den absoluten (positiven) Wert des angegebenen numerischen Ausdrucks zurück. |
 | [CEILING (num_expr)](#bk_ceiling) | Gibt den kleinsten ganzzahligen Wert zurück, der größer oder gleich dem angegebenen numerischen Ausdruck ist. |
@@ -1429,7 +1438,7 @@ Mithilfe dieser Funktionen können Sie nun beispielsweise Abfragen wie die folge
 
 Die folgenden Skalarfunktionen führen einen Vorgang für einen Zeichenfolgen-Eingabewert durch und geben eine Zeichenfolge, einen numerischen Wert oder einen booleschen Wert zurück. Diese Tabelle enthält integrierte Zeichenfolgenfunktionen:
 
-| Verwendung | Beschreibung |
+| Verwendung | BESCHREIBUNG |
 | --- | --- |
 | [LENGTH (str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_length) | Gibt die Anzahl der Zeichen im angegebenen Zeichenfolgenausdruck zurück. |
 | [CONCAT (str_expr, str_expr [, str_expr])](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_concat) | Gibt eine Zeichenfolge zurück, die das Ergebnis der Verkettung von zwei oder mehr Zeichenfolgenwerten darstellt. |
@@ -1511,7 +1520,7 @@ Zeichenfolgenfunktionen können auch in der WHERE-Klausel zum Filtern von Ergebn
 
 Die folgenden Skalarfunktionen führen einen Vorgang für einen Arrayeingabewert durch und geben einen numerischen Wert, booleschen Wert oder Arraywert zurück. Diese Tabelle enthält integrierte Arrayfunktionen:
 
-| Verwendung | Beschreibung |
+| Verwendung | BESCHREIBUNG |
 | --- | --- |
 | [ARRAY_LENGTH (arr_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_array_length) |Gibt die Anzahl der Elemente des angegebenen Arrayausdrucks zurück. |
 | [ARRAY_CONCAT (arr_expr, arr_expr [, arr_expr])](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_array_concat) |Gibt ein Array zurück, das das Ergebnis der Verkettung von zwei oder mehr Arraywerten darstellt. |
@@ -1580,7 +1589,7 @@ Dies ist ein weiteres Beispiel für die Verwendung von ARRAY_LENGTH. Hierbei wir
 
 Cosmos DB unterstützt die folgenden integrierten OGC-Funktionen (Open Geospatial Consortium ) für das Abfragen von Geodaten. 
 
-| Verwendung | Beschreibung |
+| Verwendung | BESCHREIBUNG |
 | --- | --- |
 | ST_DISTANCE (point_expr, point_expr) | Gibt den Abstand zwischen den beiden GeoJSON-Punkt-, Polygon- oder LineString-Ausdrücken zurück. |
 | ST_WITHIN (point_expr, polygon_expr) | Gibt einen booleschen Ausdruck zurück, der angibt, ob das erste GeoJSON-Objekt (Punkt, Polygon oder LineString) innerhalb des zweiten GeoJSON-Objekts (Punkt, Polygon oder LineString) enthalten ist. |

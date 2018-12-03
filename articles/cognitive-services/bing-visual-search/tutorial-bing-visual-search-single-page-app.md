@@ -10,16 +10,26 @@ ms.component: bing-visual-search
 ms.topic: tutorial
 ms.date: 10/04/2017
 ms.author: aahi
-ms.openlocfilehash: b493f65e47f5e4c932ed1229e4c00ee1af3cd5ab
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: fe7159e88bd70ba8af23909559264fa5f210ef10
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52161853"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52443890"
 ---
 # <a name="tutorial-visual-search-single-page-web-app"></a>Tutorial: Single-Page-Web-App für die visuelle Suche
 
 Die API für die visuelle Bing-Suche umfasst ähnliche Möglichkeiten wie die Bilddetails auf „bing.com/images“. Bei der visuellen Suche können Sie ein Bild angeben und erhalten weitere Informationen zu dem Bild, wie z.B. visuell ähnliche Bilder, Einkaufsquellen, Webseiten mit diesem Bild und vieles mehr. 
+
+Für dieses Tutorial benötigen Sie ein Abonnement im Tarif „S9“ wie unter [Cognitive Services-Preise – Bing-Suche-API](https://azure.microsoft.com/en-us/pricing/details/cognitive-services/search-api/) gezeigt. 
+
+So erstellen Sie ein Abonnement im Azure-Portal:
+1. Geben Sie oben im Azure-Portal im Suchfeld `Search resources, services, and docs` den Suchbegriff „BingSearchV7“ ein.  
+2. Wählen Sie unter „Marketplace“ in der Dropdownliste `Bing Search v7` aus.
+3. Geben Sie `Name` für die neue Ressource ein.
+4. Wählen Sie das Abonnement `Pay-As-You-Go` aus.
+5. Wählen Sie den Tarif `S9` aus.
+6. Klicken Sie auf `Enable`, um das Abonnement zu erstellen.
 
 In diesem Tutorial wird die Single-Page-Web-App aus dem Tutorial für die Bing-Bildersuche erweitert (siehe [Single-Page-Web-App](../Bing-Image-Search/tutorial-bing-image-search-single-page-app.md)). Den vollständigen Quellcode zum Starten mit diesem Tutorial finden Sie unter [Single-Page-Web-App (Quellcode)](../Bing-Image-Search/tutorial-bing-image-search-single-page-app-source.md). Den abschließenden Quellcode dieses Tutorials finden Sie unter [Single-Page-Web-App für die visuelle Suche](tutorial-bing-visual-search-single-page-app-source.md).
 

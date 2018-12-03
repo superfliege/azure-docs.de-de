@@ -10,15 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 11/08/2018
+ms.date: 11/27/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 70a7829c14997287ed130b0b4300c7f5aa0f3a30
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: e4489fd9119bce0e38e14f536f41940b74205e95
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51345571"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52425002"
 ---
 # <a name="tutorial-use-azure-deployment-manager-with-resource-manager-templates-private-preview"></a>Tutorial: Verwenden des Azure-Bereitstellungs-Managers mit Resource Manager-Vorlagen (private Vorschau)
 
@@ -41,6 +41,8 @@ Dieses Tutorial enthält die folgenden Aufgaben:
 > * Bereitstellen der neueren Version
 > * Bereinigen von Ressourcen
 
+Die REST-API-Referenz für den Azure-Bereitstellungs-Manager finden Sie [hier](https://docs.microsoft.com/rest/api/deploymentmanager/).
+
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -50,12 +52,12 @@ Damit Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie F
 * Etwas Erfahrung mit der Entwicklung von [Azure Resource Manager-Vorlagen](./resource-group-overview.md).
 * Der Azure-Bereitstellungs-Manager befindet sich in der privaten Vorschau. Füllen Sie das [Registrierungsblatt](https://aka.ms/admsignup) aus, um sich für die Verwendung des Azure-Bereitstellungs-Managers zu registrieren. 
 * Azure PowerShell. Weitere Informationen finden Sie unter [Erste Schritte mit Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps).
-* Bereitstellungs-Manager-Cmdlets. Um diese vorab veröffentlichten Cmdlets installieren zu können, benötigen Sie die neueste Version von PowerShellGet. Informationen zum Beziehen der neuesten Version finden Sie unter [Installieren von PowerShellGet](/powershell/gallery/installing-psget). Schließen Sie nach dem Installieren von PowerShellGet das PowerShell-Fenster. Öffnen Sie ein neues PowerShell-Fenster, und führen Sie den folgenden Befehl aus:
+* Bereitstellungs-Manager-Cmdlets. Um diese vorab veröffentlichten Cmdlets installieren zu können, benötigen Sie die neueste Version von PowerShellGet. Informationen zum Beziehen der neuesten Version finden Sie unter [Installieren von PowerShellGet](/powershell/gallery/installing-psget). Schließen Sie nach dem Installieren von PowerShellGet das PowerShell-Fenster. Öffnen Sie ein neues PowerShell-Fenster mit erhöhten Rechten, und führen Sie den folgenden Befehl aus:
 
     ```powershell
     Install-Module -Name AzureRM.DeploymentManager -AllowPrerelease
     ```
-* [Microsoft Azure Storage-Explorer.](https://go.microsoft.com/fwlink/?LinkId=708343&clcid=0x409) Azure Storage-Explorer ist zwar nicht zwingend erforderlich, macht aber vieles einfacher.
+* [Microsoft Azure Storage-Explorer.](https://azure.microsoft.com/features/storage-explorer/) Azure Storage-Explorer ist zwar nicht zwingend erforderlich, macht aber vieles einfacher.
 
 ## <a name="understand-the-scenario"></a>Das Szenario
 
@@ -145,10 +147,10 @@ Im weiteren Verlauf des Tutorials wird ein Rollout bereitgestellt. Eine benutzer
 Sie müssen eine benutzerseitig zugewiesene verwaltete Identität erstellen und die Zugriffssteuerung für Ihr Abonnement konfigurieren.
 
 > [!IMPORTANT]
-> Die benutzerseitig zugewiesene verwaltete Identität muss sich am gleichen Standort befinden wie das [Rollout](#create-the-rollout-template). Aktuell können die Bereitstellungs-Manager-Ressourcen ausschließlich in „USA, Mitte“ oder „USA, Osten 2“ erstellt werden. Das gilt auch für das Rollout.
+> Die benutzerseitig zugewiesene verwaltete Identität muss sich am gleichen Standort befinden wie das [Rollout](#create-the-rollout-template). Aktuell können die Bereitstellungs-Manager-Ressourcen ausschließlich in „USA, Mitte“ oder „USA, Osten 2“ erstellt werden. Das gilt auch für das Rollout. Dies gilt jedoch nur für Bereitstellungs-Manager-Ressourcen (etwa Diensttopologie, Dienste, Diensteinheiten, Rollout und Schritte). Ihre Zielressourcen können in jeder unterstützten Azure-Region bereitgestellt werden. In diesem Tutorial werden die Bereitstellungs-Manager-Ressourcen beispielsweise in der Region „USA, Mitte“, die Dienste jedoch in den Regionen „USA, Osten“ und „USA, Westen“ bereitgestellt. Diese Einschränkung wird in der Zukunft aufgehoben.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-2. Erstellen Sie eine [benutzerseitig zugewiesene verwaltete Identität](../active-directory/managed-identities-azure-resources/overview.md).
+2. Erstellen Sie eine [benutzerseitig zugewiesene verwaltete Identität](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md).
 3. Klicken Sie im linken Menü des Portals auf **Abonnements**, und wählen Sie anschließend Ihr Abonnement aus.
 4. Klicken Sie auf **Zugriffssteuerung (IAM)** und anschließend auf **Hinzufügen**.
 5. Geben Sie folgende Werte ein bzw. wählen diese aus:
@@ -200,6 +202,9 @@ Der folgende Screenshot zeigt Teile der Diensttopologie, Dienste und Diensteinhe
 - **dependsOn**: Alle Diensttopologieressourcen hängen von der Artefaktquellressource ab.
 - **artifacts** verweist auf die Vorlagenartefakte.  Hier werden relative Pfade verwendet. Der vollständige Pfad ist eine Verkettung aus „artifactSourceSASLocation“ (in der Artefaktquelle definiert), „artifactRoot“ (in der Artefaktquelle definiert) und „templateArtifactSourceRelativePath“ (oder „parametersArtifactSourceRelativePath“).
 
+> [!NOTE]
+> Die Diensteinheitennamen dürfen maximal 31 Zeichen lang sein. 
+
 ### <a name="topology-parameters-file"></a>Topologieparameterdatei
 
 Sie erstellen eine Parameterdatei, die mit der Topologievorlage verwendet wird.
@@ -242,7 +247,7 @@ Der Variablenabschnitt definiert die Namen der Ressourcen. Vergewissern Sie sich
 
 Auf der Stammebene sind drei Ressourcen definiert: eine Artefaktquelle, ein Schritt und ein Rollout.
 
-Die Artefaktquellendefinition ist mit der Definition in der Topologievorlage identisch.  Weitere Informationen finden Sie unter [Erstellen der Diensttopologievorlage](#create-the-service-topology-tempate).
+Die Artefaktquellendefinition ist mit der Definition in der Topologievorlage identisch.  Weitere Informationen finden Sie unter [Erstellen der Diensttopologievorlage](#create-the-service-topology-template).
 
 Der folgende Screenshot zeigt die Definition des Warteschritts:
 
@@ -310,7 +315,7 @@ Die Vorlagen können mithilfe von Azure PowerShell bereitgestellt werden.
 
     **Ausgeblendete Typen anzeigen** muss aktiviert sein, damit die Ressourcen angezeigt werden.
 
-3. Bereitstellen der Rolloutvorlage:
+3. <a id="deploy-the-rollout-template"></a>Bereitstellen der Rolloutvorlage:
 
     ```azurepowershell-interactive
     # Create the rollout
@@ -325,7 +330,7 @@ Die Vorlagen können mithilfe von Azure PowerShell bereitgestellt werden.
 
     ```azurepowershell-interactive
     # Get the rollout status
-    $rolloutname = "<Enter the Rollout Name>"
+    $rolloutname = "<Enter the Rollout Name>" # "adm0925Rollout" is the rollout name used in this tutorial
     Get-AzureRmDeploymentManagerRollout `
         -ResourceGroupName $resourceGroupName `
         -Name $rolloutName
@@ -365,7 +370,7 @@ Wenn Sie über eine neue Version (1.0.0.1) für die Webanwendung verfügen, kön
 
 1. Öffnen Sie „CreateADMRollout.Parameters.json“.
 2. Aktualisieren Sie **binaryArtifactRoot** auf **binaries/1.0.0.1**.
-3. Stellen Sie das Rollout gemäß der Anleitung unter [Bereitstellen der Vorlagen](#deploy-the-templates) erneut bereit.
+3. Stellen Sie das Rollout gemäß der Anleitung unter [Bereitstellen der Vorlagen](#deploy-the-rollout-template) erneut bereit.
 4. Überprüfen Sie die Bereitstellung gemäß der Anleitung unter [Überprüfen der Bereitstellung](#verify-the-deployment). Auf der Webseite sollte nun die Version 1.0.0.1 angezeigt werden.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen

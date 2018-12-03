@@ -9,16 +9,16 @@ ms.topic: tutorial
 ms.date: 05/07/2018
 ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive,mvc
-ms.openlocfilehash: ac56475f39f820c2d2af961a1813859ec42b0a46
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: fa84d5a09eab56dc01a6e841323ca11d12886582
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51038450"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52495509"
 ---
 # <a name="tutorial-extract-transform-and-load-data-using-apache-hive-on-azure-hdinsight"></a>Tutorial: Extrahieren, Transformieren und Laden von Daten mithilfe von Apache Hive in Azure HDInsight
 
-In diesem Tutorial importieren Sie eine unformatierte CSV-Datendatei in einen HDInsight-Clusterspeicher und transformieren die Daten anschließend mithilfe von Apache Hive in Azure HDInsight. Danach laden Sie die transformierten Daten mithilfe von Apache Sqoop in eine Azure SQL-Datenbank. In diesem Artikel werden öffentlich verfügbare Flugdaten verwendet.
+In diesem Tutorial importieren Sie eine unformatierte CSV-Datendatei in einen HDInsight-Clusterspeicher und transformieren die Daten anschließend mithilfe von [Apache Hive](https://hive.apache.org/) in Azure HDInsight. Danach laden Sie die transformierten Daten mithilfe von [Apache Sqoop](http://sqoop.apache.org/) in eine Azure SQL-Datenbank. In diesem Artikel werden öffentlich verfügbare Flugdaten verwendet.
 
 > [!IMPORTANT]
 > Die Schritte in diesem Dokument erfordern einen HDInsight-Cluster mit Linux. Linux ist das einzige Betriebssystem, das unter Azure HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Welche Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?](hdinsight-component-versioning.md#hdinsight-windows-retirement).
@@ -41,7 +41,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* **Linux-basierter Hadoop-Cluster in HDInsight**. Schritte zum Erstellen eines neuen Linux-basierten HDInsight-Clusters finden Sie unter [Hadoop-Tutorial: Erste Schritte bei der Verwendung von Hadoop in HDInsight](hadoop/apache-hadoop-linux-tutorial-get-started.md).
+* **Linux-basierter Hadoop-Cluster in HDInsight**. Schritte zum Erstellen eines neuen Linux-basierten HDInsight-Clusters finden Sie unter [Schnellstart: Erste Schritte mit Apache Hadoop und Apache Hive in Azure HDInsight mit der Resource Manager-Vorlage](hadoop/apache-hadoop-linux-tutorial-get-started.md).
 
 * **Azure SQL-Datenbank**. Sie verwenden eine Azure SQL-Datenbank als Zieldatenspeicher. Wenn Sie keine SQL-Datenbank besitzen, finden Sie Informationen unter [Erstellen einer Azure SQL-Datenbank im Azure-Portal](../sql-database/sql-database-get-started.md).
 
@@ -102,7 +102,7 @@ Daten können auf unterschiedliche Weise in den zugeordneten Speicher eines HDIn
 
 ## <a name="transform-data-using-a-hive-query"></a>Transformieren von Daten mithilfe einer Hive-Abfrage
 
-Ein Hive-Auftrag kann auf verschiedenste Arten in einem HDInsight-Cluster ausgeführt werden. In diesem Abschnitt verwenden Sie Beeline, um einen Hive-Auftrag auszuführen. Informationen zu anderen Ausführungsmethoden für Hive-Aufträge finden Sie unter [Was sind Apache Hive und HiveQL in Azure HDInsight?](./hadoop/hdinsight-use-hive.md).
+Ein Hive-Auftrag kann auf verschiedenste Arten in einem HDInsight-Cluster ausgeführt werden. In diesem Abschnitt verwenden Sie [Beeline](https://cwiki.apache.org/confluence/display/Hive/HiveServer2+Clients#HiveServer2Clients-Beeline%E2%80%93CommandLineShell), um einen Hive-Auftrag auszuführen. Informationen zu anderen Ausführungsmethoden für Hive-Aufträge finden Sie unter [Was sind Apache Hive und HiveQL in Azure HDInsight?](./hadoop/hdinsight-use-hive.md).
 
 Im Rahmen des Hive-Auftrags importieren Sie die Daten aus der CSV-Datei in eine Hive-Tabelle namens **Delays**.
 
@@ -269,7 +269,7 @@ Wenn Sie bereits über eine SQL-Datenbank verfügen, müssen Sie den Namen des S
 
 5. EINGABE `exit` at the `1>` ein.
 
-## <a name="export-data-to-sql-database-using-sqoop"></a>Exportieren von Daten in SQL-Datenbank mithilfe von Sqoop
+## <a name="export-data-to-sql-database-using-apache-sqoop"></a>Exportieren von Daten in SQL-Datenbank mithilfe von Apache Sqoop
 
 In den vorherigen Abschnitten haben Sie die transformierten Daten unter `/tutorials/flightdelays/output` kopiert. In diesem Abschnitt verwenden Sie Sqoop, um die Daten aus „/tutorials/flightdelays/output“ in die Tabelle zu exportieren, die Sie in Azure SQL-Datenbank erstellt haben. 
 
@@ -311,17 +311,17 @@ In den vorherigen Abschnitten haben Sie die transformierten Daten unter `/tutori
 In diesem Lernprogramm haben Sie gelernt, wie Sie ETL-Datenvorgänge (Extrahieren, Transformieren, Laden) unter Verwendung eines Apache Hadoop-Clusters in HDInsight ausführen. Im nächsten Tutorial erfahren Sie, wie Sie bedarfsgesteuerte HDInsight Hadoop-Cluster unter Verwendung von Azure Data Factory erstellen.
 
 > [!div class="nextstepaction"]
->[Tutorial: Create on-demand Hadoop clusters in HDInsight using Azure Data Factory](hdinsight-hadoop-create-linux-clusters-adf.md) (Tutorial: Erstellen bedarfsgesteuerter Hadoop-Cluster in HDInsight mit Azure Data Factory)
+>[Erstellen bedarfsgesteuerter Apache Hadoop-Cluster in HDInsight mit Azure Data Factory](hdinsight-hadoop-create-linux-clusters-adf.md)
 
 Weitere Informationen zum Arbeiten mit Daten in HDInsight finden Sie in den folgenden Artikeln:
 
 * [Tutorial: Extrahieren, Transformieren und Laden von Daten mithilfe von Apache Hive in Azure HDInsight](../storage/data-lake-storage/tutorial-extract-transform-load-hive.md)
-* [Verwenden von Hive mit HDInsight][hdinsight-use-hive]
-* [Verwenden von Pig mit HDInsight][hdinsight-use-pig]
-* [Entwickeln von Java MapReduce-Programmen für Hadoop in HDInsight][hdinsight-develop-mapreduce]
+* [Verwenden von Apache Hive mit HDInsight][hdinsight-use-hive]
+* [Verwenden von Apache Pig mit HDInsight][hdinsight-use-pig]
+* [Entwickeln von Java MapReduce-Programmen für Apache Hadoop in HDInsight][hdinsight-develop-mapreduce]
 * [Entwickeln von Streaming-MapReduce-Programmen für HDInsight mit Python][hdinsight-develop-streaming]
-* [Verwenden von Oozie mit HDInsight][hdinsight-use-oozie]
-* [Verwenden von Sqoop mit HDInsight][hdinsight-use-sqoop]
+* [Verwenden von Oozie mit Hadoop zum Definieren und Ausführen eines Workflows in Linux-basiertem Azure HDInsight][hdinsight-use-oozie]
+* [Importieren und Exportieren von Daten zwischen Apache Hadoop unter HDInsight und einer SQL-Datenbank mithilfe von Apache Sqoop][hdinsight-use-sqoop]
 
 
 

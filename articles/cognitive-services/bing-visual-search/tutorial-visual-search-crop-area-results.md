@@ -9,12 +9,12 @@ ms.component: bing-visual-search
 ms.topic: tutorial
 ms.date: 06/20/2018
 ms.author: rosh
-ms.openlocfilehash: 66e17c00da898e575bb858dbe16a35d1c44a2780
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 27141c014c9ccdf9d62c9bde5c96bd31abfc025e
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47226909"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52447094"
 ---
 # <a name="tutorial-bing-visual-search-sdk-image-crop-area-and-results"></a>Tutorial: SDK für die visuelle Bing-Suche – Bildzuschneidebereich und Ergebnisse
 Das SDK für die visuelle Suche enthält eine Option zum Auswählen eines Bildbereichs und für die Onlinesuche von Bildern, die Ähnlichkeit mit dem Zuschneidebereich des größeren Bilds aufweisen.  In diesem Beispiel ist der Zuschneidebereich mit einer Person aus einem Bild angegeben, auf dem mehrere Personen zu sehen sind.  Der Code sendet den Zuschneidebereich und die URL des größeren Bilds und gibt Ergebnisse zurück, die URLs der Bing-Suche und URLs von ähnlichen online ermittelten Bildern enthalten.
@@ -23,7 +23,15 @@ Das SDK für die visuelle Suche enthält eine Option zum Auswählen eines Bildbe
 
 Sie benötigen [Visual Studio 2017](https://www.visualstudio.com/downloads/), um diesen Code unter Windows ausführen zu können. (Die kostenlose Community Edition ist hierfür geeignet.)
 
-Sie müssen über ein [Cognitive Services-API-Konto](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) mit Bing-Suche-APIs verfügen. Die [kostenlose Testversion](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) ist für diesen Schnellstart ausreichend. Sie benötigen den Zugriffsschlüssel, den Sie beim Aktivieren Ihrer kostenlosen Testversion erhalten, oder Sie können den Schlüssel eines kostenpflichtigen Abonnements von Ihrem Azure-Dashboard verwenden.
+Für dieses Tutorial benötigen Sie ein Abonnement im Tarif „S9“ wie unter [Cognitive Services-Preise – Bing-Suche-API](https://azure.microsoft.com/en-us/pricing/details/cognitive-services/search-api/) gezeigt. 
+
+So erstellen Sie ein Abonnement im Azure-Portal:
+1. Geben Sie oben im Azure-Portal im Suchfeld `Search resources, services, and docs` den Suchbegriff „BingSearchV7“ ein.  
+2. Wählen Sie unter „Marketplace“ in der Dropdownliste `Bing Search v7` aus.
+3. Geben Sie `Name` für die neue Ressource ein.
+4. Wählen Sie das Abonnement `Pay-As-You-Go` aus.
+5. Wählen Sie den Tarif `S9` aus.
+6. Klicken Sie auf `Enable`, um das Abonnement zu erstellen.
 
 ## <a name="application-dependencies"></a>Anwendungsabhängigkeiten
 Navigieren Sie in Visual Studio über den Projektmappen-Explorer zur Option „NuGet-Pakete verwalten“, um mit dem SDK für die Bing-Websuche eine Konsolenanwendung einzurichten. Fügen Sie das Paket „Microsoft.Azure.CognitiveServices.Search.VisualSearch“ hinzu.

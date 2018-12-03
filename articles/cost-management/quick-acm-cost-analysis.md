@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 40f3f56c15956a93176a753f7c66f66df1b8f5f4
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: f8f7d43d4b42f5236c6c8d25c88314043053b0cc
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51515725"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52445708"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>Schnellstart: Ermitteln und Analysieren von Kosten mit der Kostenanalyse
 
@@ -84,17 +84,17 @@ Es gibt auch die **Tagesansicht**, die die Kosten für jeden Tag anzeigt. Die Ta
 
 ![Tagesansicht](./media/quick-acm-cost-analysis/daily-view.png)
 
-Durch die Auswahl der Option **Gruppieren nach** können Sie eine Gruppenkategorie auswählen. Dadurch werden für das Gesamtkostendiagramm im oberen Bereich die Daten angepasst. Mithilfe einer Gruppierung können Sie Ihre Ausgaben leicht nach Ressourcentyp kategorisieren. Auf der folgenden Abbildung werden Azure-Kosten visualisiert, die im letzten Monat angefallen sind.
+Durch die Auswahl der Option **Gruppieren nach** können Sie eine Gruppenkategorie auswählen. Dadurch werden für das Gesamtkostendiagramm im oberen Bereich die Daten angepasst. Mit Gruppierungen können Sie auf einen Blick erkennen, wie Ihre Ausgaben anhand allgemeiner Ressourcen- und Nutzungseigenschaften wie Ressourcengruppe oder Ressourcentags kategorisiert wurden. Wählen Sie zum Gruppieren nach Tags den Tagschlüssel aus, nach dem Sie gruppieren möchten. Die Kosten werden daraufhin nach den einzelnen Werten für dieses Tag aufgeschlüsselt. Für Ressourcen, auf die das Tag nicht angewendet wurde, wird ein zusätzliches Segment angezeigt. Beachten Sie, dass Cost Management nur Ressourcentags ab dem Datum unterstützt, an dem die Tags direkt auf die Ressource angewendet werden. Ressourcengruppentags werden derzeit nicht unterstützt. Auf der folgenden Abbildung werden Azure-Kosten visualisiert, die im letzten Monat angefallen sind.
 
 ![Tagesansicht für akkumulierte Kosten mit Gruppierungen](./media/quick-acm-cost-analysis/grouped-daily-accum-view.png)
 
-Pivotdiagramme unter der Ansicht „Gesamt“ im oberen Bereich zeigen Ansichten für verschiedene Gruppierungs- und Filterkategorien. Wenn Sie eine Gruppenkategorie auswählen, werden alle Daten für die Ansicht „Gesamt“ im unteren Bereich angezeigt. Auf der folgenden Abbildung ist ein Beispiel für Ressourcengruppen zu sehen.
+Pivotdiagramme unterhalb des Hauptdiagramms enthalten verschiedene Gruppierungen und bieten damit einen allgemeinen Überblick über die Gesamtkosten für den ausgewählten Zeitraum und die ausgewählten Filter. Wählen Sie eine Eigenschaft oder ein Tag aus, um aggregierte Kosten anhand beliebiger Dimensionen anzuzeigen. Alle Daten für die Ansicht „Gesamt“ werden im unteren Bildschirmbereich angezeigt. Erweitern Sie dazu den Bereich **Daten**, oder wählen Sie oben auf dem Bildschirm **Exportieren > CSV herunterladen** aus. Hier sehen Sie ein Beispiel des Datenbereichs für Ressourcengruppen.
 
 ![Alle Daten für aktuelle Ansicht](./media/quick-acm-cost-analysis/full-data-set.png)
 
-Das vorhergehende Bild zeigt die Namen der Ressourcengruppen. Anzeigetags für Ressourcen sind in keiner der Kostenanalysesichten, Filter oder Gruppierungen verfügbar.
+Das vorhergehende Bild zeigt die Namen der Ressourcengruppen. Sie können zum Anzeigen der Gesamtkosten pro Tag nach Tag gruppieren. Es gibt jedoch in keiner der Kostenanalyseansichten ein Option zum Anzeigen aller Tags pro Ressource oder Ressourcengruppe.
 
-Beim Gruppieren von Kosten nach einem bestimmten Attribut wird die Top-Ten-Liste der Kostenverursacher angezeigt (von den höchsten zu den niedrigsten Kosten). Falls mehr als zehn Gruppen vorhanden sind, werden die obersten neun Kostenverursacher und zusätzlich die Gruppe **Others** (Andere) angezeigt, um alle verbleibenden Gruppen abzudecken.
+Beim Gruppieren von Kosten nach einem bestimmten Attribut wird die Top-Ten-Liste der Kostenverursacher angezeigt (von den höchsten zu den niedrigsten Kosten). Falls mehr als zehn Gruppen vorhanden sind, werden die obersten neun Kostenverursacher und zusätzlich die Gruppe **Others** (Andere) angezeigt, um alle verbleibenden Gruppen abzudecken. Beim Gruppieren nach Tags wird unter Umständen eine Gruppe vom Typ **Ohne Markierungen** für Kosten angezeigt, auf die der Tagschlüssel nicht angewendet wurde. **Keine Markierungen** wird immer zuletzt angezeigt, selbst wenn mehr Kosten ohne Markierungen als Kosten mit Markierungen vorhanden sind. Sind mindestens zehn Tagwerte vorhanden, werden Kosten ohne Markierungen unter **Andere** angezeigt.
 
 Für *klassische* virtuelle Computer (Azure Service Management, ASM), Netzwerke und Speicherressourcen werden keine ausführlichen Abrechnungsdaten bereitgestellt. Sie werden beim Gruppieren der Kosten als **Classic services** (Klassische Dienste) gruppiert.
 

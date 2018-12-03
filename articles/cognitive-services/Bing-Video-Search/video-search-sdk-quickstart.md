@@ -10,12 +10,12 @@ ms.component: bing-video-search
 ms.topic: quickstart
 ms.date: 01/29/2018
 ms.author: rosh
-ms.openlocfilehash: 6cf7a16fa28602e5e3733741db8bfb7296882487
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: bf8eece4b5afe34635d80a57cc12c26a8ed157d6
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47219939"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52314131"
 ---
 # <a name="quickstart-bing-video-search-sdk-with-c"></a>Schnellstart: Bing-Videosuche-SDK mit C# 
 
@@ -24,6 +24,7 @@ Das Bing-Videosuche-SDK enthält die Funktionalität der REST-API für Webanford
 Der [C#-Beispielquellcode für das Bing-Videosuche-SDK](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingVideoSearch) ist auf GitHub verfügbar.
 
 ## <a name="application-dependencies"></a>Anwendungsabhängigkeiten
+Rufen Sie unter **Suchen** einen [Cognitive Services-Zugriffsschlüssel](https://azure.microsoft.com/try/cognitive-services/) ab.  Siehe auch [Cognitive Services-Preise – Bing-Suche-API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)
 
 Navigieren Sie in Visual Studio über den Projektmappen-Explorer zur Option `Manage NuGet Packages`, um mit dem SDK für die Bing-Videosuche eine Konsolenanwendung einzurichten.  Fügen Sie das Paket `Microsoft.Azure.CognitiveServices.Search.VideoSearch` hinzu.
 

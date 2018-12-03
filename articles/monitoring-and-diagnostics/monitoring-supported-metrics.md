@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 09/14/2018
 ms.author: ancav
 ms.component: metrics
-ms.openlocfilehash: 5f6140b582b2412a164593bd2aa99bfbde5fb688
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 0bb79c9d85e56308d9872baeb10868be8eaf7a5a
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50964185"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51824913"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Unterstützte Metriken von Azure Monitor
 Azure Monitor bietet verschiedene Methoden für die Interaktion mit Metriken, z.B. die Diagrammdarstellung im Portal, den Zugriff über die REST-API oder die Abfrage über PowerShell oder CLI. Unten ist eine vollständige Liste aller Metriken aufgeführt, die derzeit mit der Metrikpipeline von Azure Monitor verfügbar sind. Weitere Metriken stehen möglicherweise im Portal oder über Legacy-APIs zur Verfügung. Die unten angegebene Liste enthält nur Metriken, die über die konsolidierte Azure Monitor-Metrikpipeline verfügbar sind. Verwenden Sie die [API-Version 2018-01-01](https://docs.microsoft.com/rest/api/monitor/metricdefinitions), um diese Metriken abzufragen und darauf zuzugreifen.
@@ -692,23 +692,23 @@ Azure Monitor bietet verschiedene Methoden für die Interaktion mit Metriken, z.
 
 |Metrik|Metrikanzeigename|Unit|Aggregationstyp|BESCHREIBUNG|Dimensionen|
 |---|---|---|---|---|---|
-|SuccessfulRequests|Erfolgreiche Anforderungen (Vorschau)|Count|Gesamt|Erfolgreiche Anforderungen für Microsoft.EventHub. (Vorschau)|EntityName|
-|ServerErrors|Serverfehler. (Vorschau)|Count|Gesamt|Serverfehler für Microsoft.EventHub. (Vorschau)|EntityName|
-|UserErrors|Benutzerfehler. (Vorschau)|Count|Gesamt|Benutzerfehler für Microsoft.EventHub. (Vorschau)|EntityName|
-|QuotaExceededErrors|Fehler aufgrund von Kontingentüberschreitung. (Vorschau)|Count|Gesamt|Fehler aufgrund von Kontingentüberschreitung für Microsoft.EventHub. (Vorschau)|EntityName|
-|ThrottledRequests|Gedrosselte Anforderungen. (Vorschau)|Count|Gesamt|Gedrosselte Anforderungen für Microsoft.EventHub. (Vorschau)|EntityName|
-|IncomingRequests|Eingehende Anforderungen (Vorschau)|Count|Gesamt|Eingehende Anforderungen für Microsoft.EventHub. (Vorschau)|EntityName|
-|IncomingMessages|Eingehende Nachrichten (Vorschau)|Count|Gesamt|Eingehende Nachrichten für Microsoft.EventHub. (Vorschau)|EntityName|
-|OutgoingMessages|Ausgehende Nachrichten (Vorschau)|Count|Gesamt|Ausgehende Nachrichten für Microsoft.EventHub. (Vorschau)|EntityName|
-|IncomingBytes|Eingehende Bytes. (Vorschau)|Byte|Gesamt|Eingehende Bytes für Microsoft.EventHub. (Vorschau)|EntityName|
-|OutgoingBytes|Ausgehende Bytes. (Vorschau)|Byte|Gesamt|Ausgehende Bytes für Microsoft.EventHub. (Vorschau)|EntityName|
-|ActiveConnections|Aktive Verbindungen (Vorschau)|Count|Durchschnitt|Aktive Verbindungen gesamt für Microsoft.EventHub. (Vorschau)|Keine Dimensionen|
-|ConnectionsOpened|Geöffnete Verbindungen. (Vorschau)|Count|Durchschnitt|Geöffnete Verbindungen für Microsoft.EventHub. (Vorschau)|EntityName|
-|ConnectionsClosed|Geschlossene Verbindungen. (Vorschau)|Count|Durchschnitt|Geschlossene Verbindungen für Microsoft.EventHub. (Vorschau)|EntityName|
-|CaptureBacklog|Backlog erfassen. (Vorschau)|Count|Gesamt|Erfassen des Backlogs für Microsoft.EventHub. (Vorschau)|EntityName|
-|CapturedMessages|Erfasste Nachrichten. (Vorschau)|Count|Gesamt|Erfasste Nachrichten für Microsoft.EventHub. (Vorschau)|EntityName|
-|CapturedBytes|Erfasste Bytes. (Vorschau)|Byte|Gesamt|Erfasste Bytes für Microsoft.EventHub. (Vorschau)|EntityName|
-|Größe|Größe (Vorschau)|Byte|Durchschnitt|Größe eines EventHub in Bytes. (Vorschau)|EntityName|
+|SuccessfulRequests|Erfolgreiche Anforderungen (Vorschau)|Count|Gesamt|Erfolgreiche Anforderungen für Microsoft.EventHub.  (Vorschau)|EntityName|
+|ServerErrors|Serverfehler.  (Vorschau)|Count|Gesamt|Serverfehler für Microsoft.EventHub.  (Vorschau)|EntityName|
+|UserErrors|Benutzerfehler.  (Vorschau)|Count|Gesamt|Benutzerfehler für Microsoft.EventHub.  (Vorschau)|EntityName|
+|QuotaExceededErrors|Fehler aufgrund von Kontingentüberschreitung.  (Vorschau)|Count|Gesamt|Fehler aufgrund von Kontingentüberschreitung für Microsoft.EventHub.  (Vorschau)|EntityName|
+|ThrottledRequests|Gedrosselte Anforderungen.  (Vorschau)|Count|Gesamt|Gedrosselte Anforderungen für Microsoft.EventHub.  (Vorschau)|EntityName|
+|IncomingRequests|Eingehende Anforderungen (Vorschau)|Count|Gesamt|Eingehende Anforderungen für Microsoft.EventHub.  (Vorschau)|EntityName|
+|IncomingMessages|Eingehende Nachrichten (Vorschau)|Count|Gesamt|Eingehende Nachrichten für Microsoft.EventHub.  (Vorschau)|EntityName|
+|OutgoingMessages|Ausgehende Nachrichten (Vorschau)|Count|Gesamt|Ausgehende Nachrichten für Microsoft.EventHub.  (Vorschau)|EntityName|
+|IncomingBytes|Eingehende Bytes.  (Vorschau)|Byte|Gesamt|Eingehende Bytes für Microsoft.EventHub.  (Vorschau)|EntityName|
+|OutgoingBytes|Ausgehende Bytes.  (Vorschau)|Byte|Gesamt|Ausgehende Bytes für Microsoft.EventHub.  (Vorschau)|EntityName|
+|ActiveConnections|Aktive Verbindungen (Vorschau)|Count|Durchschnitt|Aktive Verbindungen gesamt für Microsoft.EventHub.  (Vorschau)|Keine Dimensionen|
+|ConnectionsOpened|Geöffnete Verbindungen.  (Vorschau)|Count|Durchschnitt|Geöffnete Verbindungen für Microsoft.EventHub.  (Vorschau)|EntityName|
+|ConnectionsClosed|Geschlossene Verbindungen.  (Vorschau)|Count|Durchschnitt|Geschlossene Verbindungen für Microsoft.EventHub.  (Vorschau)|EntityName|
+|CaptureBacklog|Backlog erfassen.  (Vorschau)|Count|Gesamt|Erfassen des Backlogs für Microsoft.EventHub.  (Vorschau)|EntityName|
+|CapturedMessages|Erfasste Nachrichten.  (Vorschau)|Count|Gesamt|Erfasste Nachrichten für Microsoft.EventHub.  (Vorschau)|EntityName|
+|CapturedBytes|Erfasste Bytes.  (Vorschau)|Byte|Gesamt|Erfasste Bytes für Microsoft.EventHub.  (Vorschau)|EntityName|
+|Größe|Größe (Vorschau)|Byte|Durchschnitt|Größe eines EventHub in Bytes.  (Vorschau)|EntityName|
 |INREQS|Eingehende Anforderungen|Count|Gesamt|Gesamtanzahl von eingehenden Sendeanforderungen für einen Namespace|Keine Dimensionen|
 |SUCCREQ|Erfolgreiche Anforderungen|Count|Gesamt|Gesamtzahl der erfolgreichen Anforderungen für einen Namespace|Keine Dimensionen|
 |FAILREQ|Anforderungsfehler|Count|Gesamt|Gesamtzahl der fehlgeschlagenen Anforderungen für einen Namespace|Keine Dimensionen|
@@ -731,22 +731,22 @@ Azure Monitor bietet verschiedene Methoden für die Interaktion mit Metriken, z.
 
 |Metrik|Metrikanzeigename|Unit|Aggregationstyp|BESCHREIBUNG|Dimensionen|
 |---|---|---|---|---|---|
-|SuccessfulRequests|Erfolgreiche Anforderungen (Vorschau)|Count|Gesamt|Erfolgreiche Anforderungen für Microsoft.EventHub. (Vorschau)|Keine Dimensionen|
-|ServerErrors|Serverfehler. (Vorschau)|Count|Gesamt|Serverfehler für Microsoft.EventHub. (Vorschau)|Keine Dimensionen|
-|UserErrors|Benutzerfehler. (Vorschau)|Count|Gesamt|Benutzerfehler für Microsoft.EventHub. (Vorschau)|Keine Dimensionen|
-|QuotaExceededErrors|Fehler aufgrund von Kontingentüberschreitung. (Vorschau)|Count|Gesamt|Fehler aufgrund von Kontingentüberschreitung für Microsoft.EventHub. (Vorschau)|Keine Dimensionen|
-|ThrottledRequests|Gedrosselte Anforderungen. (Vorschau)|Count|Gesamt|Gedrosselte Anforderungen für Microsoft.EventHub. (Vorschau)|Keine Dimensionen|
-|IncomingRequests|Eingehende Anforderungen (Vorschau)|Count|Gesamt|Eingehende Anforderungen für Microsoft.EventHub. (Vorschau)|Keine Dimensionen|
-|IncomingMessages|Eingehende Nachrichten (Vorschau)|Count|Gesamt|Eingehende Nachrichten für Microsoft.EventHub. (Vorschau)|Keine Dimensionen|
-|OutgoingMessages|Ausgehende Nachrichten (Vorschau)|Count|Gesamt|Ausgehende Nachrichten für Microsoft.EventHub. (Vorschau)|Keine Dimensionen|
-|IncomingBytes|Eingehende Bytes. (Vorschau)|Byte|Gesamt|Eingehende Bytes für Microsoft.EventHub. (Vorschau)|Keine Dimensionen|
-|OutgoingBytes|Ausgehende Bytes. (Vorschau)|Byte|Gesamt|Ausgehende Bytes für Microsoft.EventHub. (Vorschau)|Keine Dimensionen|
-|ActiveConnections|Aktive Verbindungen (Vorschau)|Count|Durchschnitt|Aktive Verbindungen gesamt für Microsoft.EventHub. (Vorschau)|Keine Dimensionen|
-|ConnectionsOpened|Geöffnete Verbindungen. (Vorschau)|Count|Durchschnitt|Geöffnete Verbindungen für Microsoft.EventHub. (Vorschau)|Keine Dimensionen|
-|ConnectionsClosed|Geschlossene Verbindungen. (Vorschau)|Count|Durchschnitt|Geschlossene Verbindungen für Microsoft.EventHub. (Vorschau)|Keine Dimensionen|
-|CaptureBacklog|Backlog erfassen. (Vorschau)|Count|Gesamt|Erfassen des Backlogs für Microsoft.EventHub. (Vorschau)|Keine Dimensionen|
-|CapturedMessages|Erfasste Nachrichten. (Vorschau)|Count|Gesamt|Erfasste Nachrichten für Microsoft.EventHub. (Vorschau)|Keine Dimensionen|
-|CapturedBytes|Erfasste Bytes. (Vorschau)|Byte|Gesamt|Erfasste Bytes für Microsoft.EventHub. (Vorschau)|Keine Dimensionen|
+|SuccessfulRequests|Erfolgreiche Anforderungen (Vorschau)|Count|Gesamt|Erfolgreiche Anforderungen für Microsoft.EventHub.  (Vorschau)|Keine Dimensionen|
+|ServerErrors|Serverfehler.  (Vorschau)|Count|Gesamt|Serverfehler für Microsoft.EventHub.  (Vorschau)|Keine Dimensionen|
+|UserErrors|Benutzerfehler.  (Vorschau)|Count|Gesamt|Benutzerfehler für Microsoft.EventHub.  (Vorschau)|Keine Dimensionen|
+|QuotaExceededErrors|Fehler aufgrund von Kontingentüberschreitung.  (Vorschau)|Count|Gesamt|Fehler aufgrund von Kontingentüberschreitung für Microsoft.EventHub.  (Vorschau)|Keine Dimensionen|
+|ThrottledRequests|Gedrosselte Anforderungen.  (Vorschau)|Count|Gesamt|Gedrosselte Anforderungen für Microsoft.EventHub.  (Vorschau)|Keine Dimensionen|
+|IncomingRequests|Eingehende Anforderungen (Vorschau)|Count|Gesamt|Eingehende Anforderungen für Microsoft.EventHub.  (Vorschau)|Keine Dimensionen|
+|IncomingMessages|Eingehende Nachrichten (Vorschau)|Count|Gesamt|Eingehende Nachrichten für Microsoft.EventHub.  (Vorschau)|Keine Dimensionen|
+|OutgoingMessages|Ausgehende Nachrichten (Vorschau)|Count|Gesamt|Ausgehende Nachrichten für Microsoft.EventHub.  (Vorschau)|Keine Dimensionen|
+|IncomingBytes|Eingehende Bytes.  (Vorschau)|Byte|Gesamt|Eingehende Bytes für Microsoft.EventHub.  (Vorschau)|Keine Dimensionen|
+|OutgoingBytes|Ausgehende Bytes.  (Vorschau)|Byte|Gesamt|Ausgehende Bytes für Microsoft.EventHub.  (Vorschau)|Keine Dimensionen|
+|ActiveConnections|Aktive Verbindungen (Vorschau)|Count|Durchschnitt|Aktive Verbindungen gesamt für Microsoft.EventHub.  (Vorschau)|Keine Dimensionen|
+|ConnectionsOpened|Geöffnete Verbindungen.  (Vorschau)|Count|Durchschnitt|Geöffnete Verbindungen für Microsoft.EventHub.  (Vorschau)|Keine Dimensionen|
+|ConnectionsClosed|Geschlossene Verbindungen.  (Vorschau)|Count|Durchschnitt|Geschlossene Verbindungen für Microsoft.EventHub.  (Vorschau)|Keine Dimensionen|
+|CaptureBacklog|Backlog erfassen.  (Vorschau)|Count|Gesamt|Erfassen des Backlogs für Microsoft.EventHub.  (Vorschau)|Keine Dimensionen|
+|CapturedMessages|Erfasste Nachrichten.  (Vorschau)|Count|Gesamt|Erfasste Nachrichten für Microsoft.EventHub.  (Vorschau)|Keine Dimensionen|
+|CapturedBytes|Erfasste Bytes.  (Vorschau)|Byte|Gesamt|Erfasste Bytes für Microsoft.EventHub.  (Vorschau)|Keine Dimensionen|
 |CPU|CPU (Vorschau)|Prozent|Maximum|CPU-Auslastung für den Event Hub-Cluster in Prozent|Rolle|
 |AvailableMemory|Verfügbarer Arbeitsspeicher (Vorschau)|Count|Maximum|Verfügbarer Arbeitsspeicher für den Event Hub-Cluster in Byte|Rolle|
 
@@ -819,7 +819,7 @@ Azure Monitor bietet verschiedene Methoden für die Interaktion mit Metriken, z.
 |IsEngineAnsweringQuery|Keep-Alive|Count|Durchschnitt|Die Integritätsprüfung zeigt an, dass der Cluster auf Abfragen reagiert|Keine Dimensionen|
 |IngestCommandOriginalSizeInMb|Datenerfassungsvolumen (in MB)|Count|Gesamt|Gesamtvolumen der im Cluster erfassten Daten (in MB)|Keine Dimensionen|
 |EventAgeSeconds|Erfassungswartezeit (in Sekunden)|Sekunden|Durchschnitt|Erfassungszeit von der Quelle (z. B. Nachricht in EventHub) zum Cluster in Sekunden|Keine Dimensionen|
-|EventRecievedFromEventHub|Verarbeitete Ereignisse (für Event Hubs)|Count|Gesamt|Anzahl der vom Cluster verarbeiteten Ereignisse beim Erfassen aus Event Hub|Keine Dimensionen|
+|EventReceivedFromEventHub|Verarbeitete Ereignisse (für Event Hubs)|Count|Gesamt|Anzahl der vom Cluster verarbeiteten Ereignisse beim Erfassen aus Event Hub|Keine Dimensionen|
 |IngestionResult|Ergebnis der Datenerfassung|Count|Count|Anzahl der Erfassungsvorgänge|IngestionResultDetails|
 |EngineCPU|CPU|Prozent|Durchschnitt|CPU-Auslastungsgrad|Keine Dimensionen|
 
@@ -1121,8 +1121,8 @@ Azure Monitor bietet verschiedene Methoden für die Interaktion mit Metriken, z.
 |Average_Disk Read Bytes/sec|Byte gelesen/s |Count|Durchschnitt|Average_Disk Read Bytes/sec|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
 |Average_Disk Reads/sec|Lesevorgänge/s |Count|Durchschnitt|Average_Disk Reads/sec|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
 |Average_Disk Transfers/sec|Übertragungen/s|Count|Durchschnitt|Average_Disk Transfers/sec|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_Disk Write Bytes/sec|Byte geschrieben/s|Count|Durchschnitt|Average_Disk Write Bytes/sec|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_Disk Writes/sec|Schreibvorgänge/s|Count|Durchschnitt|Average_Disk Writes/sec|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+|Average_Disk Write Bytes/sec| Byte geschrieben/s|Count|Durchschnitt|Average_Disk Write Bytes/sec|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+|Average_Disk Writes/sec| Schreibvorgänge/s|Count|Durchschnitt|Average_Disk Writes/sec|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
 |Average_Free Megabytes|Freie Megabytes|Count|Durchschnitt|Average_Free Megabytes|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
 |Average_Logical Disk Bytes/sec|Logischer Datenträger Bytes/s|Count|Durchschnitt|Average_Logical Disk Bytes/sec|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
 |Average_% Available Memory|% verfügbarer Speicher|Count|Durchschnitt|Average_% Available Memory|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
@@ -1172,7 +1172,7 @@ Azure Monitor bietet verschiedene Methoden für die Interaktion mit Metriken, z.
 |Average_Current Disk Queue Length|Aktuelle Warteschlangenlänge|Count|Durchschnitt|Average_Current Disk Queue Length|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
 |Average_Disk Reads/sec|Lesevorgänge/s |Count|Durchschnitt|Average_Disk Reads/sec|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
 |Average_Disk Transfers/sec|Übertragungen/s|Count|Durchschnitt|Average_Disk Transfers/sec|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_Disk Writes/sec|Schreibvorgänge/s|Count|Durchschnitt|Average_Disk Writes/sec|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+|Average_Disk Writes/sec| Schreibvorgänge/s|Count|Durchschnitt|Average_Disk Writes/sec|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
 |Average_Free Megabytes|Freie Megabytes|Count|Durchschnitt|Average_Free Megabytes|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
 |Average_% Free Space|% freier Speicher|Count|Durchschnitt|Average_% Free Space|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
 |Average_Available MBytes|Verfügbare MB|Count|Durchschnitt|Average_Available MBytes|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
@@ -1228,16 +1228,16 @@ Azure Monitor bietet verschiedene Methoden für die Interaktion mit Metriken, z.
 |Metrik|Metrikanzeigename|Unit|Aggregationstyp|BESCHREIBUNG|Dimensionen|
 |---|---|---|---|---|---|
 |SuccessfulRequests|Erfolgreiche Anforderungen (Vorschau)|Count|Gesamt|Gesamtzahl der erfolgreichen Anforderungen für einen Namespace (Vorschau)|EntityName|
-|ServerErrors|Serverfehler. (Vorschau)|Count|Gesamt|Serverfehler für Microsoft.ServiceBus. (Vorschau)|EntityName|
-|UserErrors|Benutzerfehler. (Vorschau)|Count|Gesamt|Benutzerfehler für Microsoft.ServiceBus. (Vorschau)|EntityName|
-|ThrottledRequests|Gedrosselte Anforderungen. (Vorschau)|Count|Gesamt|Gedrosselte Anforderungen für Microsoft.ServiceBus. (Vorschau)|EntityName|
-|IncomingRequests|Eingehende Anforderungen (Vorschau)|Count|Gesamt|Eingehende Anforderungen für Microsoft.ServiceBus. (Vorschau)|EntityName|
-|IncomingMessages|Eingehende Nachrichten (Vorschau)|Count|Gesamt|Eingehende Nachrichten für Microsoft.ServiceBus. (Vorschau)|EntityName|
-|OutgoingMessages|Ausgehende Nachrichten (Vorschau)|Count|Gesamt|Ausgehende Nachrichten für Microsoft.ServiceBus. (Vorschau)|EntityName|
-|ActiveConnections|Aktive Verbindungen (Vorschau)|Count|Gesamt|Aktive Verbindungen gesamt für Microsoft.ServiceBus. (Vorschau)|Keine Dimensionen|
-|Größe|Größe (Vorschau)|Byte|Durchschnitt|Größe einer Warteschlange/eines Themas in Bytes (Vorschau)|EntityName|
-|Meldungen|Anzahl von Nachrichten in einer Warteschlange/einem Thema (Vorschau)|Count|Durchschnitt|Anzahl von Nachrichten in einer Warteschlange/einem Thema (Vorschau)|EntityName|
-|ActiveMessages|Anzahl von aktiven Nachrichten in einer Warteschlange/einem Thema (Vorschau)|Count|Durchschnitt|Anzahl von aktiven Nachrichten in einer Warteschlange/einem Thema (Vorschau)|EntityName|
+|ServerErrors|Serverfehler.  (Vorschau)|Count|Gesamt|Serverfehler für Microsoft.ServiceBus.  (Vorschau)|EntityName|
+|UserErrors|Benutzerfehler.  (Vorschau)|Count|Gesamt|Benutzerfehler für Microsoft.ServiceBus.  (Vorschau)|EntityName|
+|ThrottledRequests|Gedrosselte Anforderungen.  (Vorschau)|Count|Gesamt|Gedrosselte Anforderungen für Microsoft.ServiceBus.  (Vorschau)|EntityName|
+|IncomingRequests|Eingehende Anforderungen (Vorschau)|Count|Gesamt|Eingehende Anforderungen für Microsoft.ServiceBus.  (Vorschau)|EntityName|
+|IncomingMessages|Eingehende Nachrichten (Vorschau)|Count|Gesamt|Eingehende Nachrichten für Microsoft.ServiceBus.  (Vorschau)|EntityName|
+|OutgoingMessages|Ausgehende Nachrichten (Vorschau)|Count|Gesamt|Ausgehende Nachrichten für Microsoft.ServiceBus.  (Vorschau)|EntityName|
+|ActiveConnections|Aktive Verbindungen (Vorschau)|Count|Gesamt|Aktive Verbindungen gesamt für Microsoft.ServiceBus.  (Vorschau)|Keine Dimensionen|
+|Größe|Größe (Vorschau)|Byte|Durchschnitt|Größe einer Warteschlange/eines Themas in Bytes  (Vorschau)|EntityName|
+|Meldungen|Anzahl von Nachrichten in einer Warteschlange/einem Thema  (Vorschau)|Count|Durchschnitt|Anzahl von Nachrichten in einer Warteschlange/einem Thema  (Vorschau)|EntityName|
+|ActiveMessages|Anzahl von aktiven Nachrichten in einer Warteschlange/einem Thema  (Vorschau)|Count|Durchschnitt|Anzahl von aktiven Nachrichten in einer Warteschlange/einem Thema  (Vorschau)|EntityName|
 |CPUXNS|CPU-Auslastung pro Namespace|Prozent|Maximum|CPU-Auslastungsmetrik für Service Bus-Premium-Namespace|Keine Dimensionen|
 |WSXNS|Auslastung der Arbeitsspeichergröße pro Namespace|Prozent|Maximum|Speicherauslastungsmetrik für Service Bus-Premium-Namespace|Keine Dimensionen|
 
@@ -1570,6 +1570,6 @@ Azure Monitor bietet verschiedene Methoden für die Interaktion mit Metriken, z.
 |MemoryPercentage|Arbeitsspeicherprozentsatz|Prozent|Durchschnitt|Arbeitsspeicherprozentsatz|Instanz|
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Informationen zu Metriken in Azure Monitor](../monitoring/monitoring-data-collection.md)
+* [Informationen zu Metriken in Azure Monitor](../azure-monitor/platform/data-collection.md)
 * [Erstellen von Warnungen zu Metriken](monitoring-overview-alerts.md)
 * [Exportieren von Metriken in Storage, Event Hub oder Log Analytics](monitoring-overview-of-diagnostic-logs.md)

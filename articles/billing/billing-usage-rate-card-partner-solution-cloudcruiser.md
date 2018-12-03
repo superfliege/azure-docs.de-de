@@ -4,7 +4,7 @@ description: Enthält eine einzigartige Sicht auf den Microsoft Azure-Abrechnung
 services: ''
 documentationcenter: ''
 author: tonguyen
-manager: tonguyen
+manager: mumami
 editor: ''
 tags: billing
 ms.assetid: b65128cf-5d4d-4cbd-b81e-d3dceab44271
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 10/09/2017
 ms.author: erikre
-ms.openlocfilehash: 95d90e898ddc8766cf96a5a72c315407cd596393
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 79582e59d9ad9396acf29d6e35d640edcb20dca3
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47393858"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52275954"
 ---
 # <a name="cloud-cruiser-and-microsoft-azure-billing-api-integration"></a>Integration von Cloud Cruiser und Microsoft Azure-Abrechnungs-API
 In diesem Artikel wird beschrieben, wie die mit den neuen Microsoft Azure-Abrechnungs-APIs gesammelten Informationen in Cloud Cruiser für die Simulation und Analyse von Workflowkosten verwendet werden können.
@@ -50,7 +50,7 @@ Cloud Cruiser kann die Informationen der RateCard-API auf unterschiedliche Weise
 
 Um diesen Anwendungsfall zu demonstrieren, stellen wir uns eine Workload vor, bei der mehrere Instanzen unter Microsoft Azure Pack (WAP) ausgeführt werden. Das Ziel besteht darin, diese Workload unter Azure zu simulieren und die Kosten für eine Migration dieser Art zu schätzen. Zum Erstellen dieser Simulation müssen zwei Hauptaufgaben durchgeführt werden:
 
-1. **Importieren und Verarbeiten der von der RateCard-API erfassten Dienstinformationen.** Diese Aufgabe wird auch in den Arbeitsmappen durchgeführt, in denen die per RateCard-API extrahierten Daten transformiert und in einer neuen Gebührenübersicht veröffentlicht werden. Diese neue Gebührenübersicht wird in den Simulationen zum Schätzen der Azure-Preise verwendet.
+1. **Importieren und Verarbeiten der von der RateCard-API erfassten Dienstinformationen.**  Diese Aufgabe wird auch in den Arbeitsmappen durchgeführt, in denen die per RateCard-API extrahierten Daten transformiert und in einer neuen Gebührenübersicht veröffentlicht werden. Diese neue Gebührenübersicht wird in den Simulationen zum Schätzen der Azure-Preise verwendet.
 2. **Normalisieren der WAP-Dienste und Azure-Dienste für IaaS.** Standardmäßig basieren WAP-Dienste auf einzelnen Ressourcen (CPU, Arbeitsspeichergröße, Datenträgergröße usw.), während Azure-Dienste auf der Instanzgröße basieren (A0, A1, A2 usw.). Diese erste Aufgabe kann von der ETL-Engine (als Arbeitsmappen bezeichnet) von Cloud Cruiser durchgeführt werden, wobei diese Ressourcen analog zu Azure-Instanzdiensten für Instanzgrößen gebündelt werden können.
 
 ### <a name="import-data-from-the-ratecard-api"></a>Importieren von Daten aus der RateCard-API

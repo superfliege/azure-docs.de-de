@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 11/7/2018
 ms.author: alinast
-ms.openlocfilehash: 590a7aa875f5f8c40576d69d7e73bdfc31fffbf8
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.openlocfilehash: e11ae90655e1d4ce7a2475f0eacefb25491416da
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51636253"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52582393"
 ---
 # <a name="quickstart-find-available-rooms-by-using-azure-digital-twins"></a>Schnellstart: Suchen nach verfügbaren Räumen mithilfe von Azure Digital Twins
 
@@ -134,7 +134,7 @@ https://YOUR_INSTANCE_NAME.YOUR_LOCATION.azuresmartspaces.net/management/swagger
 
 | NAME | Ersetzen durch |
 | --- | --- |
-| YOUR_INSTANCE_NAME | Den Namen Ihrer Azure Digital Twins-Instanz |
+| YOUR_INSTANCE_NAME | Den Namen Ihrer Digital Twins-Instanz |
 | YOUR_LOCATION | Die Serverregion, in der Ihre Instanz gehostet wird |
 
 Oder navigieren Sie der Einfachheit halber zu [Digital Twins Swagger](https://docs.westcentralus.azuresmartspaces.net/management/swagger).
@@ -150,6 +150,10 @@ Wenn Sie mit den Tutorials fortfahren möchten, bereinigen Sie die in diesem Sch
 
 1. Löschen Sie den Ordner, der beim Herunterladen des Beispielrepositorys erstellt wurde.
 1. Wählen Sie im [Azure-Portal](http://portal.azure.com) im Menü auf der linken Seite die Option **Alle Ressourcen** aus. Wählen Sie dann Ihre Digital Twins-Ressource aus. Wählen Sie oben im Bereich **Alle Ressourcen** die Option **Löschen** aus.
+   
+    > [!TIP]
+    > Für den Fall, dass bei Ihnen Probleme beim Löschen der Digital Twins-Instanz aufgetreten sind, wurde ein Dienstupdate mit einer entsprechenden Korrektur bereitgestellt. Versuchen Sie erneut, die Instanz zu löschen.
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

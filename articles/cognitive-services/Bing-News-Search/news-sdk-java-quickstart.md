@@ -10,16 +10,16 @@ ms.component: bing-news-search
 ms.topic: quickstart
 ms.date: 02/16/2018
 ms.author: v-gedod
-ms.openlocfilehash: 7919f13e8c5aaa592a416190d3cd11edbf31af2c
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: f01f31c5cfc30ac31ea41db2a8504454e1f05799
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48802476"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52316870"
 ---
 # <a name="quickstart-bing-news-search-sdk-with-java"></a>Schnellstart: Bing-News-Suche-SDK mit Java
 
-Das Bing-News-Suche-SDK enthält die Funktionalität der REST-API für Neuigkeitenabfragen und das Analysieren von Ergebnissen. 
+Das Bing-News-Suche-SDK enthält die Funktionalität der REST-API für Neuigkeitenabfragen und das Analysieren von Ergebnissen.  Rufen Sie unter **Suchen** einen [Cognitive Services-Zugriffsschlüssel](https://azure.microsoft.com/try/cognitive-services/) ab.  Siehe auch [Cognitive Services-Preise – Bing-Suche-API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/) 
 
 Der [Java-Beispielquellcode für das Bing-News-Suche-SDK](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingNewsSearch) ist auf GitHub verfügbar.
 

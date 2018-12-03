@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 8/16/2018
 ms.author: aahi
 ms.reviewer: nhoyadx@gmail.com, v-gedod, erhopf
-ms.openlocfilehash: 9ba0501f9d4b408e4972f36806ab21cba6519b59
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 4191232e45d012d3aec5d056c28e765332073ede
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52163774"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52310428"
 ---
 # <a name="quickstart-use-go-to-call-the-bing-web-search-api"></a>Schnellstart: Verwenden von Go zum Aufrufen der Bing-Websuche-API  
 
@@ -24,8 +24,9 @@ Verwenden Sie diese Schnellstartanleitung, um die Bing-Websuche-API zum ersten M
 
 [!INCLUDE [bing-web-search-quickstart-signup](../../../../includes/bing-web-search-quickstart-signup.md)]  
 
-## <a name="prerequisites"></a>Voraussetzungen
+Siehe auch [Cognitive Services-Preise – Bing-Suche-API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)
 
+## <a name="prerequisites"></a>Voraussetzungen
 Im Folgenden sind die Tools aufgeführt, die Sie zum Ausführen dieser Schnellstartanleitung benötigen:
 
 * [Go-Binärdateien](https://golang.org/dl/)

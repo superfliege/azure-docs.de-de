@@ -14,12 +14,12 @@ ms.topic: get-started-article
 ms.date: 07/18/2017
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: eebeb8d1f27631e7ecb40072f78d6a04b5152a8f
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 9811c51485ec30e7fe692c52f4e65cefd93e5cb0
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51277136"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52499084"
 ---
 # <a name="monitor-azure-ad-connect-sync-with-azure-ad-connect-health"></a>Überwachen der Azure AD Connect-Synchronisierung mit Azure AD Connect Health
 Die folgende Dokumentation bezieht sich auf die Überwachung von Azure AD Connect (Sync) mithilfe von Azure AD Connect Health.  Informationen zum Überwachen von AD FS mit Azure AD Connect Health finden Sie unter [Verwenden von Azure AD Connect Health mit AD FS](how-to-connect-health-adfs.md). Informationen zur Überwachung der Active Directory-Domänendienste mit Azure AD Connect Health finden Sie unter [Verwenden von Azure AD Connect Health mit AD DS](how-to-connect-health-adds.md).
@@ -62,7 +62,7 @@ Dieses Feature bietet eine grafische Darstellung des Trends bei der Anzahl von a
 
 ![Synchronisierungslatenz](./media/how-to-connect-health-sync/syncobjectchanges02.png)
 
-## <a name="object-level-synchronization-error-report-preview"></a>Fehlerbericht zur Synchronisierung auf Objektebene (Vorschau)
+## <a name="object-level-synchronization-error-report"></a>Fehlerbericht zur Synchronisierung auf Objektebene
 Mit diesem Feature kann ein Bericht zu Synchronisierungsfehlern erstellt werden, die auftreten können, wenn Identitätsdaten zwischen Windows Server AD und Azure AD mit Azure AD Connect synchronisiert werden.
 
 * Der Bericht deckt Fehler ab, die mit dem Synchronisierungsclient aufgezeichnet werden (Azure AD Connect-Version 1.1.281.0 oder höher).
@@ -74,7 +74,7 @@ Mit diesem Feature kann ein Bericht zu Synchronisierungsfehlern erstellt werden,
   * Liste der Objekte mit Fehler nach Kategorie
   * Alle Daten zu den Fehlern an einem Ort
   * Direkter Vergleich von Objekten mit Fehlern aufgrund eines Konflikts
-  * Fehlerbericht-Download als CSV (in Kürze verfügbar)
+  * Herunterladen des Fehlerberichts als CSV
 
 ### <a name="categorization-of-errors"></a>Kategorisierung von Fehlern
 Im Bericht werden die vorhandenen Synchronisierungsfehler nach den folgenden Kategorien unterteilt:

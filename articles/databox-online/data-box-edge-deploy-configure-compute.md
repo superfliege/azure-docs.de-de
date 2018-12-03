@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 10/19/2018
+ms.date: 11/27/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Data Box Edge so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: e970f7cc0d4c4620f2da69286be36d0c22e0d747
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 77a2b8d2b5d3ac42dcbbe2db2b05d38657290073
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51260362"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52443781"
 ---
 # <a name="tutorial-transform-data-with-azure-data-box-edge-preview"></a>Tutorial: Transformieren von Daten mit Azure Data Box Edge (Vorschauversion)
 
@@ -163,7 +163,7 @@ In diesem Verfahren wird ein Beispiel verwendet, in dem für das verwendete benu
  
 6.  Legen Sie unter **Routen angeben** die Routen zwischen den Modulen fest. Geben Sie in diesem Fall den Namen der lokalen Freigabe an, über die Daten per Pushvorgang an die Cloudfreigabe übertragen werden. Klicken Sie auf **Weiter**.
 
-    Die Route kann durch folgende Routenzeichenfolge ersetzt werden:       "route": "FROM /* WHERE topic = 'mysmblocalshare' INTO BrokeredEndpoint(\"/modules/filemovemodule/inputs/input1\")"
+    Sie können die Route durch die folgende Routenzeichenfolge ersetzen:       `"route": "FROM /* WHERE topic = 'mysmblocalshare' INTO BrokeredEndpoint(\"/modules/filemovemodule/inputs/input1\")"`
 
     ![Hinzufügen eines benutzerdefinierten Moduls](./media/data-box-edge-deploy-configure-compute/add-a-custom-module-10.png) 
  

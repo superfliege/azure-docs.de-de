@@ -8,12 +8,12 @@ ms.topic: get-started-article
 ms.date: 06/07/2018
 ms.author: renash
 ms.component: files
-ms.openlocfilehash: f1dd07756ca484171a3d662df35493efbe5a5ee7
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: ee6b93c26918b4f70eb23e7055db813f35d3787d
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50415612"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52445734"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>Verwenden einer Azure-Dateifreigabe mit Windows
 [Azure Files](storage-files-introduction.md) ist das benutzerfreundliche Clouddateisystem von Microsoft. Azure-Dateifreigaben können in Windows und Windows Server nahtlos verwendet werden. In diesem Artikel werden die Überlegungen zur Verwendung einer Azure-Dateifreigabe mit Windows und Windows Server behandelt.
@@ -24,9 +24,9 @@ Sie können Azure-Dateifreigaben in einer Windows-Installation verwenden, die en
 
 | Windows-Version        | SMB-Version | Einbindung in Azure-VM möglich | Lokale Einbindung möglich |
 |------------------------|-------------|-----------------------|----------------------|
-| Windows Server 2019 (Vorschauversion)<sup>1</sup> | SMB 3.0 | JA | JA |
-| Windows 10<sup>2</sup> | SMB 3.0 | JA | JA |
-| Halbjährlicher Windows Server-Kanal<sup>3</sup> | SMB 3.0 | JA | JA |
+| Windows Server 2019    | SMB 3.0 | JA | JA |
+| Windows 10<sup>1</sup> | SMB 3.0 | JA | JA |
+| Halbjährlicher Windows Server-Kanal<sup>2</sup> | SMB 3.0 | JA | JA |
 | Windows Server 2016    | SMB 3.0     | JA                   | JA                  |
 | Windows 8.1            | SMB 3.0     | JA                   | JA                  |
 | Windows Server 2012 R2 | SMB 3.0     | JA                   | JA                  |
@@ -34,9 +34,8 @@ Sie können Azure-Dateifreigaben in einer Windows-Installation verwenden, die en
 | Windows 7              | SMB 2.1     | JA                   | Nein                    |
 | Windows Server 2008 R2 | SMB 2.1     | JA                   | Nein                    |
 
-<sup>1</sup>Windows Server 2019 ist als Vorschauversion über das [Windows Server-Insider-Programm](https://insider.windows.com/for-business-getting-started-server/) verfügbar. Windows Server 2019 wird zwar noch nicht für die Nutzung in der Produktion unterstützt, informieren Sie uns jedoch bitte, wenn beim Herstellen einer Verbindung mit Azure-Dateifreigaben Probleme auftreten, die nicht im [Handbuch zur Problembehandlung für Windows](storage-troubleshoot-windows-file-connection-problems.md) behandelt werden.  
-<sup>2</sup>Windows 10, Versionen 1507, 1607, 1703, 1709 und 1803.  
-<sup>3</sup>Windows Server, Version 1709 und 1803.
+<sup>1</sup>Windows 10, Versionen 1507, 1607, 1703, 1709, 1803 und 1809  
+<sup>2</sup>Windows Server, Versionen 1709 und 1803
 
 > [!Note]  
 > Es empfiehlt sich, immer die neueste KB für Ihre Windows-Version zu verwenden.

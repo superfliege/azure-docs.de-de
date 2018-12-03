@@ -10,12 +10,12 @@ ms.component: bing-video-search
 ms.topic: quickstart
 ms.date: 02/18/2018
 ms.author: rosh
-ms.openlocfilehash: b0e083a7397378956d9fe0d0ae2257aaf0bbdf1e
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: a50771fddc15ab0ec284fa7f42539f1f8dcce40d
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47223420"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52308646"
 ---
 # <a name="quickstart-bing-video-search-sdk-java"></a>Schnellstart: Bing-Videosuche-SDK, Java
 
@@ -24,7 +24,9 @@ Das Bing-Videosuche-SDK enthält die Funktionalität der REST-API für Videoabfr
 Der [Java-Beispielquellcode für das Bing-Videosuche-SDK](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingVideoSearch) ist auf GitHub verfügbar.
 
 ## <a name="application-dependencies"></a>Anwendungsabhängigkeiten
-Rufen Sie unter **Suchen** einen [Cognitive Services-Zugriffsschlüssel](https://azure.microsoft.com/try/cognitive-services/) ab. Installieren Sie die Abhängigkeit für das Bing-Videosuche-SDK mithilfe von Maven, Gradle oder anderen Systemen zum Verwalten von Abhängigkeiten. Die POM-Datei für Maven erfordert die folgende Deklaration:
+Rufen Sie unter **Suchen** einen [Cognitive Services-Zugriffsschlüssel](https://azure.microsoft.com/try/cognitive-services/) ab.  Siehe auch [Cognitive Services-Preise – Bing-Suche-API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)
+
+Installieren Sie die Abhängigkeit für das Bing-Videosuche-SDK mithilfe von Maven, Gradle oder anderen Systemen zum Verwalten von Abhängigkeiten. Die POM-Datei für Maven erfordert die folgende Deklaration:
 ```
   <dependencies>
     <dependency>

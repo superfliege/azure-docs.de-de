@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 93c61f0b9b923f84b2c84d2db4456442e2f9fb27
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: e4bd6a3e39fbb5d1eea4d7770d8940f801aecd43
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39444503"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52276485"
 ---
 # <a name="azure-automation-integration-modules"></a>Azure Automation-Integrationsmodule
 PowerShell ist die grundlegende Technologie hinter Azure Automation. Da Azure Automation auf PowerShell basiert, sind PowerShell-Module für die Erweiterbarkeit von Azure Automation von zentraler Bedeutung. In diesem Artikel beschreiben wir die Verwendung der PowerShell-Module („Integrationsmodule“) durch Azure Automation und erläutern, welche Methoden sich bewährt haben, um eigene PowerShell-Module zu erstellen und sicherzustellen, dass diese als Integrationsmodule in Azure Automation verwendet werden können. 
@@ -34,7 +34,7 @@ Das Format, in dem Sie ein Integrationsmodulpaket importieren, ist eine komprimi
 
 Wenn das Modul einen Azure Automation-Verbindungstyp enthalten soll, muss auch eine Datei mit dem Namen „`<ModuleName>-Automation.json`“ enthalten sein, mit der die Eigenschaften des Verbindungstyps angegeben werden. Diese Datei ist eine JSON-Datei innerhalb des Modulordners Ihrer komprimierten ZIP-Datei und enthält die Felder einer Verbindung, die zum Verbinden mit dem System oder Dienst, dem das Modul entspricht, erforderlich ist. Dadurch wird ein Verbindungstyp in Azure Automation erstellt. Mithilfe dieser Datei können Sie für den Verbindungstyp des Moduls die Feldnamen und -typen festlegen und angeben, ob die Felder verschlüsselt und/oder optional sein sollen. Im Folgenden finden eine Vorlage im JSON-Dateiformat:
 
-```
+```json
 { 
    "ConnectionFields": [
    {
@@ -67,7 +67,7 @@ Bei Integrationsmodulen handelt es sich zwar im Wesentlichen um PowerShell-Modul
 
 1. Fügen Sie eine Zusammenfassung, eine Beschreibung und einen Hilfe-URI für jedes Cmdlet im Modul ein. In PowerShell können Sie mit dem Cmdlet **Get-Help** bestimmte Hilfeinformationen für Cmdlets definieren, um den Benutzern bei der Verwendung der Cmdlets zu helfen. So können Sie z.B. eine Zusammenfassung und einen Hilfe-URI für ein in einer PSM1-Datei erstelltes PowerShell-Modul definieren.<br>  
    
-    ```
+    ```powershell
     <#
         .SYNOPSIS
          Gets all outgoing phone numbers for this Twilio account 
@@ -109,7 +109,7 @@ Bei Integrationsmodulen handelt es sich zwar im Wesentlichen um PowerShell-Modul
 
     Cmdlets im Modul können in Azure Automation einfacher verwendet werden, wenn das Übergeben eines Objekts mit den Feldern des Verbindungstyps als Parameter an das Cmdlet zugelassen ist. Im o.g. Runbook-Beispiel wird ein Twilio-Verbindungsobjekt namens „CorpTwilio“ für den Zugriff auf Twilio verwendet, und alle Telefonnummern im Konto werden zurückgegeben.  Sehen Sie, wie es die Felder der Verbindung den Parametern des Cmdlets zuordnet?<br>
    
-    ```
+    ```powershell
     workflow Get-CorpTwilioPhones
     {
       $CorpTwilio = Get-AutomationConnection -Name 'CorpTwilio'
@@ -120,9 +120,9 @@ Bei Integrationsmodulen handelt es sich zwar im Wesentlichen um PowerShell-Modul
     }
     ```
   
-    Eine einfachere und bessere Möglichkeit hierfür besteht jedoch darin, das Verbindungsobjekt direkt an das Cmdlet zu übergeben:
+     Eine einfachere und bessere Möglichkeit hierfür besteht jedoch darin, das Verbindungsobjekt direkt an das Cmdlet zu übergeben:
    
-    ```
+    ```powershell
     workflow Get-CorpTwilioPhones
     {
       $CorpTwilio = Get-AutomationConnection -Name 'CorpTwilio'
@@ -131,9 +131,9 @@ Bei Integrationsmodulen handelt es sich zwar im Wesentlichen um PowerShell-Modul
     }
     ```
    
-    Sie können dieses Verhalten für Ihre Cmdlets aktivieren, indem Sie zulassen, dass ein Verbindungsobjekt direkt als Parameter akzeptiert wird, und nicht nur Verbindungsfelder für Parameter. In der Regel empfiehlt sich jeweils ein Parametersatz, damit ein Benutzer, der Azure Automation nicht benutzt, Ihre Cmdlets aufrufen kann, ohne eine Hashtabelle erstellen zu müssen, die als Verbindungsobjekt dient. Der unten angegebene Parametersatz **SpecifyConnectionFields** wird verwendet, um die Verbindungsfeldeigenschaften einzeln zu übergeben. **UseConnectionObject** können Sie die Verbindung direkt übergeben. Wie Sie sehen, ermöglicht das Cmdlet „Send-TwilioSMS“ im [Twilio-PowerShell-Modul](https://gallery.technet.microsoft.com/scriptcenter/Twilio-PowerShell-Module-8a8bfef8) beides: 
+     Sie können dieses Verhalten für Ihre Cmdlets aktivieren, indem Sie zulassen, dass ein Verbindungsobjekt direkt als Parameter akzeptiert wird, und nicht nur Verbindungsfelder für Parameter. In der Regel empfiehlt sich jeweils ein Parametersatz, damit ein Benutzer, der Azure Automation nicht benutzt, Ihre Cmdlets aufrufen kann, ohne eine Hashtabelle erstellen zu müssen, die als Verbindungsobjekt dient. Der unten angegebene Parametersatz **SpecifyConnectionFields** wird verwendet, um die Verbindungsfeldeigenschaften einzeln zu übergeben. **UseConnectionObject** können Sie die Verbindung direkt übergeben. Wie Sie sehen, ermöglicht das Cmdlet „Send-TwilioSMS“ im [Twilio-PowerShell-Modul](https://gallery.technet.microsoft.com/scriptcenter/Twilio-PowerShell-Module-8a8bfef8) beides: 
    
-    ```
+    ```powershell
     function Send-TwilioSMS {
       [CmdletBinding(DefaultParameterSetName='SpecifyConnectionFields', `
       HelpUri='http://www.twilio.com/docs/api/rest/sending-sms')]
@@ -160,7 +160,7 @@ Bei Integrationsmodulen handelt es sich zwar im Wesentlichen um PowerShell-Modul
 1. Definieren Sie einen Ausgabetyp für alle Cmdlets im Modul. Wenn Sie einen Ausgabetyp für ein Cmdlet definieren, können Sie bei der Erstellung mithilfe von IntelliSense die Ausgabeeigenschaften des Cmdlets festlegen, die während der Erstellung verwendet werden sollen. Dies ist bei der grafischen Erstellung von Automation-Runbooks hilfreich, da Kenntnisse zum Zeitpunkt des Entwurfs für die Benutzerfreundlichkeit Ihres Moduls von zentraler Bedeutung sind.<br><br> ![Ausgabetyp für grafische Runbooks](media/automation-integration-modules/runbook-graphical-module-output-type.png)<br> Dies ähnelt der Textvervollständigung der Ausgabe eines Cmdlets in der PowerShell ISE, allerdings ohne dass diese ausgeführt werden muss.<br><br> ![POSH IntelliSense](media/automation-integration-modules/automation-posh-ise-intellisense.png)<br>
 1. Cmdlets im Modul sollten keine komplexen Objekttypen für Parameter verwenden. Der PowerShell-Workflow unterscheidet sich von PowerShell darin, dass er komplexe Typen in deserialisierter Form speichert. Primitive Typen bleiben primitiv, komplexe Typen werden jedoch in die deserialisierten Versionen konvertiert, die im Wesentlichen Eigenschaftenbehälter sind. Wenn Sie z.B. das Cmdlet **Get-Process** in einem Runbook (oder auch einem PowerShell-Workflow) verwenden, wird ein Objekt des Typs [Deserialized.System.Diagnostic.Process] zurückgegeben, nicht der erwartete Typ [System.Diagnostic.Process]. Dieser Typ verfügt über die gleichen Eigenschaften wie der nicht deserialisierte Typ, aber keine der Methoden. Wenn Sie versuchen, diesen Wert als Parameter an ein Cmdlet zu übergeben, und das Cmdlet einen [System.Diagnostic.Process]-Wert für diesen Parameter erwartet, erhalten Sie den folgenden Fehler: *Cannot process argument transformation on parameter 'process'. Error: "Cannot convert the "System.Diagnostics.Process (CcmExec)" value of type "Deserialized.System.Diagnostics.Process" to type "System.Diagnostics.Process". (Die Argumenttransformation für den Parameter „Prozess“ kann nicht verarbeitet werden. Fehler: Der Wert "System.Diagnostics.Process (CcmExec)" kann nicht von Typ "Deserialized.System.Diagnostics.Process" in Typ "System.Diagnostics.Process" konvertiert werden).*   Dies liegt daran, dass ein Typenkonflikt zwischen dem erwarteten Typ [System.Diagnostic.Process] und dem angegebenen Typ [Deserialized.System.Diagnostic.Process] vorliegt. Dieses Problem kann vermieden werden, wenn Sie sicherstellen, dass die Cmdlets Ihres Moduls für Parameter keine komplexen Typen akzeptieren. Die im Folgenden dargestellte Methode ist falsch:
    
-    ```
+    ```powershell
     function Get-ProcessDescription {
       param (
             [System.Diagnostic.Process] $process
@@ -169,9 +169,9 @@ Bei Integrationsmodulen handelt es sich zwar im Wesentlichen um PowerShell-Modul
     }
     ``` 
     <br>
-    Als Nächstes zeigen wir Ihnen die korrekte Methode, bei der ein primitiver Typ geladen wird, der vom Cmdlet intern verwendet werden kann, um das komplexe Objekt abzurufen und zu verwenden. Da Cmdlets im Kontext von PowerShell und nicht des PowerShell-Workflows ausgeführt werden, wird „$process“ im Cmdlet zum korrekten [System.Diagnostic.Process]-Typ.  
+     Als Nächstes zeigen wir Ihnen die korrekte Methode, bei der ein primitiver Typ geladen wird, der vom Cmdlet intern verwendet werden kann, um das komplexe Objekt abzurufen und zu verwenden. Da Cmdlets im Kontext von PowerShell und nicht des PowerShell-Workflows ausgeführt werden, wird „$process“ im Cmdlet zum korrekten [System.Diagnostic.Process]-Typ.  
    
-    ```
+    ```powershell
     function Get-ProcessDescription {
       param (
             [String] $processName
@@ -185,7 +185,7 @@ Bei Integrationsmodulen handelt es sich zwar im Wesentlichen um PowerShell-Modul
    Verbindungsobjekte in Runbooks sind Hashtabellen, die ein komplexer Typ sind. Dennoch können diese Hashtabellen problemlos und ohne Umwandlungsausnahme für den Parameter „–Connection“ übergeben werden. Technisch gesehen können einige PowerShell-Typen von der serialisierten Form in die deserialisierte Form umgewandelt und somit in Cmdlets für Parameter, die den nicht deserialisierten Typ akzeptieren, übergeben werden. Dazu zählen auch Hashtabellen. Es ist möglich, dass die vom Autor des Moduls definierten Typen ebenfalls so implementiert werden, dass eine korrekte Deserialisierung möglich ist. Allerdings müssen dabei einige Nachteile berücksichtigt werden. Der Typ benötigt einen Standardkonstruktor, all seine Eigenschaften müssen öffentlich sein, und er muss über einen PSTypeConverter verfügen. Bei bereits definierten Typen, die nicht im Besitz des Modulautors sind, besteht keine Möglichkeit, diese entsprechend anzupassen. Aus diesem Grund wird empfohlen, komplexe Typen für Parameter komplett zu vermeiden. Tipp für die Runbook-Erstellung: Wenn Ihre Cmdlets aus irgendeinem Grund Parameter des komplexen Typs benötigen oder wenn Sie ein Modul von jemand anderem verwenden, das Parameter des komplexen Typs erfordert, kann dies in PowerShell-Workflow-Runbooks und PowerShell-Workflows in der lokalen PowerShell umgangen werden, indem das Cmdlet, das den komplexen Typ erzeugt, sowie das Cmdlet, das den komplexen Typ nutzt, in der gleichen InlineScript-Aktivität eingebettet wird. Da der Inhalt von InlineScript als PowerShell und nicht als PowerShell-Workflow ausgeführt wird, erzeugt das Cmdlet, das den komplexen Typ erstellt, den korrekten Typ und nicht den deserialisierten komplexen Typ.
 1. Legen Sie alle Cmdlets im Modul als statusfrei fest. Der PowerShell-Workflow führt jedes im Workflow aufgerufene Cmdlet in einer anderen Sitzung auf. Das heißt, dass Cmdlets in PowerShell-Workflow-Runbooks nicht funktionieren, wenn sie von einem Sitzungsstatus abhängen, der von anderen Cmdlets im gleichen Modul erstellt/geändert wurde.  Hier sehen Sie ein Beispiel für eine falsche Vorgehensweise:
    
-    ```
+    ```powershell
     $globalNum = 0
     function Set-GlobalNum {
        param(

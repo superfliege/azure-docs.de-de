@@ -2,21 +2,21 @@
 title: Ausführen einer parallelen Workload – Azure Batch .NET
 description: 'Tutorial: Paralleles Transcodieren von Mediendateien mit ffmpeg in Azure Batch per .NET-Clientbibliothek in Batch'
 services: batch
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 ms.assetid: ''
 ms.service: batch
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 09/07/2018
-ms.author: danlep
+ms.date: 11/20/2018
+ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: 02b715ade9a9a537f6bd0e476ada299140bff4bb
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 7e654e070ce64b0f5e7f9fb5734bf0ec1584dbf6
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48815510"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52423608"
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-net-api"></a>Tutorial: Ausführen einer parallelen Workload mit Azure Batch über die .NET-API
 
@@ -41,7 +41,7 @@ In diesem Tutorial konvertieren Sie MP4-Mediendateien parallel in das MP3-Format
 
 * Ein Batch-Konto und ein verknüpftes Azure Storage-Konto. Informationen zur Erstellung dieser Konten finden Sie in den Batch-Schnellstartanleitungen zum [Azure-Portal](quick-create-portal.md) und zur [Azure CLI](quick-create-cli.md).
 
-* [Windows-Version (64 Bit) von ffmpeg 3.4](https://ffmpeg.zeranoe.com/builds/win64/static/ffmpeg-3.4-win64-static.zip) (.zip). Laden Sie die ZIP-Datei auf Ihren lokalen Computer herunter. Für dieses Tutorial benötigen Sie nur die ZIP-Datei. Es ist nicht erforderlich, die Datei zu entzippen oder sie lokal zu installieren. 
+* [Windows-Version (64 Bit) von ffmpeg 3.4](https://ffmpeg.zeranoe.com/builds/win64/static/ffmpeg-3.4-win64-static.zip) (.zip). Laden Sie die ZIP-Datei auf Ihren lokalen Computer herunter. Für dieses Tutorial benötigen Sie nur die ZIP-Datei. Es ist nicht erforderlich, die Datei zu entzippen oder sie lokal zu installieren.
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
@@ -71,7 +71,7 @@ git clone https://github.com/Azure-Samples/batch-dotnet-ffmpeg-tutorial.git
 
 Navigieren Sie zu dem Verzeichnis, in dem die Visual Studio-Projektmappendatei `BatchDotNetFfmpegTutorial.sln` enthalten ist.
 
-Öffnen Sie die Projektmappendatei in Visual Studio, und aktualisieren Sie die Zeichenfolgen mit den Anmeldeinformationen in `program.cs` mit den Werten für Ihre Konten. Beispiel: 
+Öffnen Sie die Projektmappendatei in Visual Studio, und aktualisieren Sie die Zeichenfolgen mit den Anmeldeinformationen in `Program.cs` mit den Werten für Ihre Konten. Beispiel: 
 
 ```csharp
 // Batch account credentials
@@ -104,7 +104,7 @@ Verwenden Sie für das Erstellen und Ausführen der Anwendung Visual Studio oder
 Führen Sie ihn anschließend aus. Beim Ausführen der Beispielanwendung sieht die Konsolenausgabe in etwa wie folgt aus: Bei der Ausführung kommt es bei `Monitoring all tasks for 'Completed' state, timeout in 00:30:00...` zu einer Pause, während die Computeknoten des Pools gestartet werden. 
 
 ```
-Sample start: 12/12/2017 3:20:21 PM
+Sample start: 11/19/2018 3:20:21 PM
 
 Container [input] created.
 Container [output] created.
@@ -120,17 +120,15 @@ Monitoring all tasks for 'Completed' state, timeout in 00:30:00...
 Success! All tasks completed successfully within the specified timeout period.
 Deleting container [input]...
 
-Sample end: 12/12/2017 3:29:36 PM
+Sample end: 11/19/2018 3:29:36 PM
 Elapsed time: 00:09:14.3418742
 ```
-
 
 Navigieren Sie im Azure-Portal zu Ihrem Batch-Konto, um den Pool, die Computeknoten, den Auftrag und die Aufgaben zu überwachen. Klicken Sie beispielsweise auf **Pools** > *WinFFmpegPool*, um ein Wärmebild mit den Computeknoten Ihres Pools anzuzeigen.
 
 Bei der Ausführung von Aufgaben sieht das Wärmebild in etwa wie folgt aus:
 
 ![Wärmebild für Pool](./media/tutorial-parallel-dotnet/pool.png)
-
 
 Die normale Ausführungsdauer beträgt ca. **zehn Minuten**, wenn die Anwendung in der Standardkonfiguration ausgeführt wird. Die meiste Zeit wird für die Poolerstellung benötigt.
 
@@ -178,7 +176,7 @@ Anschließend werden Dateien aus dem lokalen Ordner `InputFiles` in den Eingabec
 Am Upload der Dateien sind in `Program.cs` zwei Methoden beteiligt:
 
 * `UploadResourceFilesToContainerAsync`: Gibt eine Sammlung mit ResourceFile-Objekten zurück und ruft intern `UploadResourceFileToContainerAsync` auf, um die einzelnen Dateien hochzuladen, die im Parameter `inputFilePaths` übergeben werden.
-* `UploadResourceFileToContainerAsync`: Lädt jede Datei als Blob in den Eingabecontainer hoch. Nach dem Hochladen der Datei wird eine Shared Access Signature (SAS) für das Blob abgerufen, und es wird ein ResourceFile-Objekt zurückgegeben, um das Blob darzustellen. 
+* `UploadResourceFileToContainerAsync`: Lädt jede Datei als Blob in den Eingabecontainer hoch. Nach dem Hochladen der Datei wird eine Shared Access Signature (SAS) für das Blob abgerufen, und es wird ein ResourceFile-Objekt zurückgegeben, um das Blob darzustellen.
 
 ```csharp
 string inputPath = Path.Combine(Environment.CurrentDirectory, "InputFiles");
@@ -198,9 +196,9 @@ Weitere Informationen zum Hochladen von Dateien als Blobs in ein Speicherkonto m
 
 Als Nächstes erstellt das Beispiel im Batch-Konto durch Aufrufen von `CreatePoolIfNotExistAsync` einen Pool mit Computeknoten. In dieser definierten Methode wird die [BatchClient.PoolOperations.CreatePool](/dotnet/api/microsoft.azure.batch.pooloperations.createpool)-Methode verwendet, um die Anzahl von Knoten, die VM-Größe und eine Poolkonfiguration festzulegen. Hier gibt ein [VirtualMachineConfiguration](/dotnet/api/microsoft.azure.batch.virtualmachineconfiguration)-Objekt einen [ImageReference](/dotnet/api/microsoft.azure.batch.imagereference)-Verweis auf ein Windows Server-Image an, das im Azure Marketplace veröffentlicht wurde. Batch unterstützt viele verschiedene VM-Images im Azure Marketplace und auch benutzerdefinierte VM-Images.
 
-Die Anzahl von Knoten und die VM-Größe werden mit definierten Konstanten festgelegt. Batch unterstützt dedizierte Knoten und [Knoten mit niedriger Priorität](batch-low-pri-vms.md), und Sie können eine oder beide Arten von Knoten in Ihren Pools verwenden. Dedizierte Knoten sind für Ihren Pool reserviert. Knoten mit niedriger Priorität werden zu einem reduzierten Preis basierend auf überschüssiger VM-Kapazität in Azure angeboten. Knoten mit niedriger Priorität sind nicht mehr verfügbar, wenn in Azure nicht genügend Kapazität vorhanden ist. Im Beispiel wird standardmäßig ein Pool mit nur fünf Knoten mit niedriger Priorität und der Größe *Standard_A1_v2* erstellt. 
+Die Anzahl von Knoten und die VM-Größe werden mit definierten Konstanten festgelegt. Batch unterstützt dedizierte Knoten und [Knoten mit niedriger Priorität](batch-low-pri-vms.md), und Sie können eine oder beide Arten von Knoten in Ihren Pools verwenden. Dedizierte Knoten sind für Ihren Pool reserviert. Knoten mit niedriger Priorität werden zu einem reduzierten Preis basierend auf überschüssiger VM-Kapazität in Azure angeboten. Knoten mit niedriger Priorität sind nicht mehr verfügbar, wenn in Azure nicht genügend Kapazität vorhanden ist. Im Beispiel wird standardmäßig ein Pool mit nur fünf Knoten mit niedriger Priorität und der Größe *Standard_A1_v2* erstellt.
 
-Die Anwendung ffmpeg wird auf den Computeknoten bereitgestellt, indem der Poolkonfiguration ein [ApplicationPackageReference](/dotnet/api/microsoft.azure.batch.applicationpackagereference)-Element hinzugefügt wird. 
+Die Anwendung ffmpeg wird auf den Computeknoten bereitgestellt, indem der Poolkonfiguration ein [ApplicationPackageReference](/dotnet/api/microsoft.azure.batch.applicationpackagereference)-Element hinzugefügt wird.
 
 Mit der [CommitAsync](/dotnet/api/microsoft.azure.batch.cloudpool.commitasync)-Methode wird der Pool an den Batch-Dienst übermittelt.
 
@@ -208,7 +206,7 @@ Mit der [CommitAsync](/dotnet/api/microsoft.azure.batch.cloudpool.commitasync)-M
 ImageReference imageReference = new ImageReference(
     publisher: "MicrosoftWindowsServer",
     offer: "WindowsServer",
-    sku: "2012-R2-Datacenter-smalldisk",
+    sku: "2016-Datacenter-smalldisk",
     version: "latest");
 
 VirtualMachineConfiguration virtualMachineConfiguration =
@@ -220,7 +218,7 @@ pool = batchClient.PoolOperations.CreatePool(
     poolId: poolId,
     targetDedicatedComputeNodes: DedicatedNodeCount,
     targetLowPriorityComputeNodes: LowPriorityNodeCount,
-    virtualMachineSize: PoolVMSize,                                                
+    virtualMachineSize: PoolVMSize,
     virtualMachineConfiguration: virtualMachineConfiguration);
 
 pool.ApplicationPackageReferences = new List<ApplicationPackageReference>
@@ -234,7 +232,7 @@ await pool.CommitAsync();
 
 ### <a name="create-a-job"></a>Erstellen eines Auftrags
 
-Für einen Batch-Auftrag werden ein Pool zum Ausführen von Aufgaben und optionale Einstellungen wie eine Priorität und ein Zeitplan für die Arbeitsschritte angegeben. Im Beispiel wird ein Auftrag mit einem Aufruf von `CreateJobAsync` erstellt. In dieser definierten Methode wird die [BatchClient.JobOperations.CreateJob](/dotnet/api/microsoft.azure.batch.joboperations.createjob)-Methode zum Erstellen eines Auftrags in Ihrem Pool verwendet. 
+Für einen Batch-Auftrag werden ein Pool zum Ausführen von Aufgaben und optionale Einstellungen wie eine Priorität und ein Zeitplan für die Arbeitsschritte angegeben. Im Beispiel wird ein Auftrag mit einem Aufruf von `CreateJobAsync` erstellt. In dieser definierten Methode wird die [BatchClient.JobOperations.CreateJob](/dotnet/api/microsoft.azure.batch.joboperations.createjob)-Methode zum Erstellen eines Auftrags in Ihrem Pool verwendet.
 
 Mit der [CommitAsync](/dotnet/api/microsoft.azure.batch.cloudjob.commitasync)-Methode wird der Auftrag an den Batch-Dienst übermittelt. Der Auftrag enthält ursprünglich keine Aufgaben.
 
@@ -252,7 +250,7 @@ Im Beispiel werden Aufgaben im Auftrag durch einen Aufruf der `AddTasksAsync`-Me
 
 Im Beispiel wird nach der Ausführung über die Befehlszeile ein [OutputFile](/dotnet/api/microsoft.azure.batch.outputfile)-Objekt für die MP3-Datei erstellt. Die Ausgabedateien (in diesem Fall eine Datei) jeder Aufgabe werden in einen Container im verknüpften Speicherkonto hochgeladen, indem die [OutputFiles](/dotnet/api/microsoft.azure.batch.cloudtask.outputfiles)-Eigenschaft der Aufgabe verwendet wird.
 
-Anschließend werden dem Auftrag im Beispiel mit der [AddTaskAsync](/dotnet/api/microsoft.azure.batch.joboperations.addtaskasync)-Methode Aufgaben hinzugefügt und für die Ausführung auf den Computeknoten in die Warteschlange eingereiht. 
+Anschließend werden dem Auftrag im Beispiel mit der [AddTaskAsync](/dotnet/api/microsoft.azure.batch.joboperations.addtaskasync)-Methode Aufgaben hinzugefügt und für die Ausführung auf den Computeknoten in die Warteschlange eingereiht.
 
 ```csharp
 for (int i = 0; i < inputFiles.Count; i++)
@@ -289,7 +287,7 @@ return tasks
 
 ### <a name="monitor-tasks"></a>Überwachen von Aufgaben
 
-Wenn Batch einem Auftrag Aufgaben hinzufügt, werden sie vom Dienst automatisch in die Warteschlange eingereiht und für die Ausführung auf Computeknoten im zugeordneten Pool eingeplant. Basierend auf den Einstellungen, die Sie angeben, führt Batch das Einreihen, Planen und erneute Ausführen sowie andere Schritte der Aufgabenverwaltung aus. 
+Wenn Batch einem Auftrag Aufgaben hinzufügt, werden sie vom Dienst automatisch in die Warteschlange eingereiht und für die Ausführung auf Computeknoten im zugeordneten Pool eingeplant. Basierend auf den Einstellungen, die Sie angeben, führt Batch das Einreihen, Planen und erneute Ausführen sowie andere Schritte der Aufgabenverwaltung aus.
 
 Es gibt viele Ansätze für die Überwachung der Aufgabenausführung. In diesem Beispiel wird eine `MonitorTasks`-Methode definiert, mit der für Aufgaben nur der Abschluss und die fehlerhafte bzw. erfolgreiche Durchführung gemeldet wird. Im `MonitorTasks`-Code ist ein [ODATADetailLevel](/dotnet/api/microsoft.azure.batch.odatadetaillevel)-Element angegeben, um eine effiziente Auswahl von minimal erforderlichen Informationen zu den Aufgaben zu ermöglichen. Anschließend wird ein [TaskStateMonitor](/dotnet/api/microsoft.azure.batch.taskstatemonitor)-Element erstellt, mit dem Hilfsprogramme zum Überwachen von Aufgabenstatus bereitgestellt werden. Bei `MonitorTasks` wird im Beispiel gewartet, bis alle Aufgaben innerhalb eines bestimmten Zeitlimits den Status `TaskState.Completed` erreichen. Anschließend wird der Auftrag beendet, und es werden alle Aufgaben gemeldet, die zwar abgeschlossen wurden, aber für die ggf. ein Fehler wie „Exitcode ungleich null“ aufgetreten ist.
 
