@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 9402147e2dab7fbf52fc893f339f6f3b8e112377
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: 3fd0dfb327e925ecb28a7ca12e03b79c873118dc
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51515640"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52309343"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory: Häufig gestellte Fragen zur Geräteverwaltung
 
@@ -93,6 +93,7 @@ Für früherer Windows-Versionen, die in die lokale AD-Domäne eingebunden sind:
 
 >[!Note] 
 >Für ein registriertes Gerät wird empfohlen, das Gerät zu löschen, um sicherzustellen, dass Benutzer nicht auf die Ressourcen zugreifen können. Weitere Informationen finden Sie unter [Registrieren von Geräten für die Verwaltung in Intune](https://docs.microsoft.com/intune/deploy-use/enroll-devices-in-microsoft-intune). 
+
 ---
 
 # <a name="azure-ad-join-faq"></a>Häufig gestellte Fragen zu Azure AD Join
@@ -103,6 +104,20 @@ Für früherer Windows-Versionen, die in die lokale AD-Domäne eingebunden sind:
 - Stellen Sie bei in Hybrid-Azure AD eingebundenen Geräten sicher, dass die automatische Registrierung deaktiviert ist, damit das Gerät im Zuge des geplanten Task nicht erneut registriert wird. Öffnen Sie als Nächstes eine Eingabeaufforderung als Administrator, und geben Sie `dsregcmd.exe /debug /leave` ein. Dieser Befehl kann alternativ auf mehreren Geräten als Skript ausgeführt werden, um eine Verknüpfung als Massenoperation aufzuheben.
 
 - Stellen Sie bei ausschließlich in Azure AD eingebundenen Geräten sicher, dass Sie über ein lokales Offlineadministratorkonto verfügen, oder erstellen Sie eines, da Sie sich nicht mit Azure AD-Benutzeranmeldeinformationen anmelden werden können. Navigieren Sie als Nächstes zu **Einstellungen** > **Konten** > **Auf Geschäfts-, Schul- oder Unikonto zugreifen**. Markieren Sie Ihr Konto, und klicken Sie auf **Trennen**. Befolgen Sie die Anweisungen, und geben Sie die Anmeldeinformationen für den lokalen Administrator an, wenn Sie aufgefordert werden. Starten Sie das Gerät neu, um den Vorgang zur Aufhebung einer Verknüpfung abzuschließen.
+
+---
+
+**F: Können sich meine Benutzer bei in Azure AD eingebundenen Geräten anmelden, die in Azure AD gelöscht oder deaktiviert wurden?**
+**A:** Ja. Windows bietet die Möglichkeit der zwischengespeicherten Anmeldung, um zuvor angemeldeten Benutzern auch ohne Netzwerkverbindung das schnelle Zugreifen auf den Desktop zu ermöglichen. Ein in Azure AD gelöschtes oder deaktiviertes Gerät wird vom Windows-Gerät nicht erkannt. Zuvor angemeldete Benutzer können daher über die zwischengespeicherte Anmeldung weiterhin auf den Desktop zugreifen. Wenn das Gerät gelöscht oder deaktiviert wird, können die Benutzer jedoch nicht auf durch den gerätebasierten bedingten Zugriff geschützte Ressourcen zugreifen. 
+
+Benutzer, die noch nicht angemeldet waren, können nicht auf das Gerät zugreifen, weil für sie keine zwischengespeicherte Anmeldung aktiviert ist. 
+
+---
+
+**F: Können sich deaktivierte oder gelöschte Benutzer bei in Azure AD eingebundenen Geräten anmelden?**
+**A:** Ja, aber nur für einen begrenzten Zeitraum. Ein in Azure AD gelöschter oder deaktivierter Benutzer wird vom Windows-Gerät nicht sofort erkannt. Zuvor angemeldete Benutzer können daher über die zwischengespeicherte Anmeldung auf den Desktop zugreifen. Sobald das Gerät den Benutzerstatus erkannt hat (in der Regel in weniger als 4 Stunden), hindert Windows diese Benutzer am Zugriff auf den Desktop. Wenn Benutzer in Azure AD gelöscht oder deaktiviert werden, erfolgt ein Widerruf aller zugehörigen Token, damit sie auf keine Ressourcen zugreifen können. 
+
+Gelöschte oder deaktivierte Benutzer, die zuvor noch nicht angemeldet waren, können nicht auf ein Gerät zugreifen, weil für sie keine zwischengespeicherte Anmeldung aktiviert ist. 
 
 ---
 

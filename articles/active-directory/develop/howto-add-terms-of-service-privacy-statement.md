@@ -16,12 +16,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviwer: lenalepa, sureshja
 ms.custom: aaddev
-ms.openlocfilehash: 2195a43665f99e8388b13fc6dc3e528496bd3901
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: b1276ab227f4bf65483fb2cdec57c759573bc7c5
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50242686"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51853590"
 ---
 # <a name="terms-of-service-and-privacy-statement-for-registered-azure-active-directory-apps"></a>Nutzungsbedingungen und Datenschutzerklärung für registrierte Azure Active Directory-Apps
 
@@ -64,10 +64,10 @@ Nachdem die Nutzungsbedingungen und Datenschutzbestimmungen fertig konfiguriert 
 
 Führen Sie folgende Schritte aus, wenn Sie Ihre App im Azure-Portal registriert haben.
 
-1. Melden Sie sich beim  [Azure-Portal](https://portal.azure.com/) an.
-2. Navigieren Sie zum Abschnitt  **App-Registrierungen** , und wählen Sie Ihre App aus.
-3. Öffnen Sie den Abschnitt  **Eigenschaften**  der App.
-4. Füllen Sie die Felder  **Terms of Service URL**  (URL zu den Nutzungsbedingungen) und  **URL zur Datenschutzerklärung**  aus.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
+2. Navigieren Sie zum Abschnitt **App-Registrierungen**, und wählen Sie Ihre App aus.
+3. Öffnen Sie den Abschnitt **Eigenschaften** der App.
+4. Füllen Sie die Felder **URL zu den Vertragsbedingungen** und **URL zur Datenschutzerklärung** aus.
 5. Speichern Sie die Änderungen.
 
     ![Abschnitt „Eigenschaften“ der App mit URLs zu den Nutzungsbedingungen und zur Datenschutzerklärung](./media/howto-add-terms-of-service-privacy-statement/azure-portal-terms-service-privacy-statement-urls.png)
@@ -76,9 +76,9 @@ Führen Sie folgende Schritte aus, wenn Sie Ihre App im Azure-Portal registriert
 
 Gehen Sie folgendermaßen vor, wenn Sie Ihre App im App-Registrierungsportal oder Dev Center registriert haben.
 
-1. Melden Sie sich beim  [App-Registrierungsportal](https://apps.dev.microsoft.com/) an.
-2. Wählen Sie Ihre App aus, und scrollen Sie zum Abschnitt  **Profil** .
-3. Füllen Sie die Felder  **Terms of Service URL**  (URL zu den Nutzungsbedingungen) und  **URL zur Datenschutzerklärung**  aus.
+1. Melden Sie sich beim [App-Registrierungsportal](https://apps.dev.microsoft.com/) an.
+2. Wählen Sie Ihre App aus, und scrollen Sie zum Abschnitt **Profil**.
+3. Füllen Sie die Felder **URL zu den Vertragsbedingungen** und **URL zur Datenschutzerklärung** aus.
 4. Speichern Sie die Änderungen.
 
     ![Abschnitt „Profil“ der App mit URLs zu den Nutzungsbedingungen und zur Datenschutzerklärung](./media/howto-add-terms-of-service-privacy-statement/app-registration-portal-profile-terms-service-privacy-statement-urls.png)

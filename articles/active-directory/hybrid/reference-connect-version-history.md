@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 09/06/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 1f74538deab38db536bfcdc6d0f703d455039d51
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: b42dc0f86a70feb06b32a20c7cbdd513920f65d6
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51235903"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52263520"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Versionsveröffentlichungsverlauf
 Das Azure Active Directory-Team (Azure AD) aktualisiert Azure AD Connect regelmäßig mit neuen Features und Funktionen. Nicht alle Erweiterungen gelten für alle Benutzergruppen.
@@ -36,6 +36,17 @@ Schritte zum Upgrade von Azure AD Connect | Verschiedene Methoden zum [Aktualisi
 Erforderliche Berechtigungen | Informationen zu den zum Anwenden eines Updates erforderlichen Berechtigungen finden Sie unter [Konten und Berechtigungen](reference-connect-accounts-permissions.md#upgrade).
 
 Download | [Azure AD Connect herunterladen](https://go.microsoft.com/fwlink/?LinkId=615771).
+
+
+## <a name="12670"></a>1.2.67.0
+
+### <a name="release-status"></a>Releasestatus 
+
+19.11.2018: Für den Download veröffentlicht
+
+### <a name="fixed-issues"></a>Behobene Probleme
+
+Dieser Hotfixbuild behebt eine Regression im vorherigen Build, bei der das Kennwortrückschreiben fehlschlägt, wenn ein ADDS-Domänencontroller unter Windows Server 2008/R2 verwendet wird.
 
 ## <a name="12650"></a>1.2.65.0 
 

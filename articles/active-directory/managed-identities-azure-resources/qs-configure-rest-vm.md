@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 06/25/2018
 ms.author: daveba
-ms.openlocfilehash: 58643593970fa00822e79ed54f91d56c45ebba65
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.openlocfilehash: 6f147aa7066db19c1be451b0a5ac49bfce9f571b
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51578568"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52422932"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-rest-api-calls"></a>Konfigurieren von verwalteten Identitäten für Azure-Ressourcen auf einem virtuellen Azure-Computer mithilfe von REST-API-Aufrufen
 
@@ -69,10 +69,80 @@ Zum Erstellen eines virtuellen Azure-Computers, auf dem die systemseitig zugewie
    ``` 
 
 4. Erstellen Sie einen virtuellen Computer mithilfe von CURL zum Aufrufen des Azure Resource Manager-REST-Endpunkts. Im folgenden Beispiel wird ein virtueller Computer namens *myVM* mit einer systemzugewiesenen verwalteten Identität erstellt, wie es im Anforderungstext durch den Wert `"identity":{"type":"SystemAssigned"}` angegeben ist. Ersetzen Sie `<ACCESS TOKEN>` durch den Wert, den Sie im vorherigen Schritt zum Anfordern eines Bearer-Zugriffstokens erhalten haben, und ersetzen Sie den Wert `<SUBSCRIPTION ID>` entsprechend Ihrer Umgebung.
- 
-    ```bash
-    curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01' -X PUT -d '{"location":"westus","name":"myVM","identity":{"type":"SystemAssigned"},"properties":{"hardwareProfile":{"vmSize":"Standard_D2_v2"},"storageProfile":{"imageReference":{"sku":"2016-Datacenter","publisher":"MicrosoftWindowsServer","version":"latest","offer":"WindowsServer"},"osDisk":{"caching":"ReadWrite","managedDisk":{"storageAccountType":"Standard_LRS"},"name":"myVM3osdisk","createOption":"FromImage"},"dataDisks":[{"diskSizeGB":1023,"createOption":"Empty","lun":0},{"diskSizeGB":1023,"createOption":"Empty","lun":1}]},"osProfile":{"adminUsername":"azureuser","computerName":"myVM","adminPassword":"myPassword12"},"networkProfile":{"networkInterfaces":[{"id":"/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/myNic","properties":{"primary":true}}]}}}' -H "Content-Type: application/json" -H "Authorization: Bearer <ACCESS TOKEN>"
-    ```
+
+   ```bash
+   curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01' -X PUT -d '{"location":"westus","name":"myVM","identity":{"type":"SystemAssigned"},"properties":{"hardwareProfile":{"vmSize":"Standard_D2_v2"},"storageProfile":{"imageReference":{"sku":"2016-Datacenter","publisher":"MicrosoftWindowsServer","version":"latest","offer":"WindowsServer"},"osDisk":{"caching":"ReadWrite","managedDisk":{"storageAccountType":"Standard_LRS"},"name":"myVM3osdisk","createOption":"FromImage"},"dataDisks":[{"diskSizeGB":1023,"createOption":"Empty","lun":0},{"diskSizeGB":1023,"createOption":"Empty","lun":1}]},"osProfile":{"adminUsername":"azureuser","computerName":"myVM","adminPassword":"<SECURE PASSWORD STRING>"},"networkProfile":{"networkInterfaces":[{"id":"/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/myNic","properties":{"primary":true}}]}}}' -H "Content-Type: application/json" -H "Authorization: Bearer <ACCESS TOKEN>"
+   ```
+
+   ```HTTP
+   PUT https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01 HTTP/1.1
+   ```
+   
+   **Anforderungsheader**
+   |Anforderungsheader  |BESCHREIBUNG  |
+   |---------|---------|
+   |*Content-Type*     | Erforderlich. Legen Sie diese Option auf `application/json` fest.        |
+   |*Autorisierung*     | Erforderlich. Legen Sie diese Option auf ein gültiges `Bearer`-Zugriffstoken fest.        | 
+   
+   **Anforderungstext**
+
+   ```JSON
+     {
+       "location":"westus",
+       "name":"myVM",
+       "identity":{
+          "type":"SystemAssigned"
+       },
+       "properties":{
+          "hardwareProfile":{
+             "vmSize":"Standard_D2_v2"
+          },
+          "storageProfile":{
+             "imageReference":{
+                "sku":"2016-Datacenter",
+                "publisher":"MicrosoftWindowsServer",
+                "version":"latest",
+                "offer":"WindowsServer"
+             },
+             "osDisk":{
+                "caching":"ReadWrite",
+                "managedDisk":{
+                   "storageAccountType":"Standard_LRS"
+                },
+                "name":"myVM3osdisk",
+                "createOption":"FromImage"
+             },
+             "dataDisks":[
+                {
+                   "diskSizeGB":1023,
+                   "createOption":"Empty",
+                   "lun":0
+                },
+                {
+                   "diskSizeGB":1023,
+                   "createOption":"Empty",
+                   "lun":1
+                }
+             ]
+          },
+          "osProfile":{
+             "adminUsername":"azureuser",
+             "computerName":"myVM",
+             "adminPassword":"myPassword12"
+          },
+          "networkProfile":{
+             "networkInterfaces":[
+                {
+                   "id":"/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/myNic",
+                   "properties":{
+                      "primary":true
+                   }
+                }
+             ]
+          }
+       }
+    }  
+   ```
 
 ### <a name="enable-system-assigned-identity-on-an-existing-azure-vm"></a>Aktivieren einer vom System zugewiesenen Identität auf einem vorhandenen virtuellen Azure-Computer
 
@@ -90,7 +160,26 @@ Zum Aktivieren der systemseitig zugewiesenen verwalteten Identität auf einem vi
    > Um sicherzustellen, dass Sie keine vorhandenen benutzerzugewiesenen verwalteten Identitäten löschen, die dem virtuellen Computer zugewiesen sind, müssen Sie die benutzerzugewiesenen verwalteten Identitäten mit dem folgenden CURL-Befehl auflisten: `curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachines/<VM NAME>?api-version=2018-06-01' -H "Authorization: Bearer <ACCESS TOKEN>"` Wenn dem virtuellen Computer benutzerzugewiesene verwaltete Identitäten zugewiesen sind, wie es im `identity`-Wert in der Antwort angegeben ist, fahren Sie mit Schritt 3 fort. Dort wird gezeigt, wie Sie benutzerzugewiesene verwaltete Identitäten beibehalten und gleichzeitig die systemzugewiesene verwaltete Identität auf dem virtuellen Computer aktivieren.
 
    ```bash
-    curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01' -X PATCH -d '{"identity":{"type":"SystemAssigned"}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
+   curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01' -X PATCH -d '{"identity":{"type":"SystemAssigned"}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
+   ```
+
+   ```HTTP
+   PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01 HTTP/1.1
+   ```
+   **Anforderungsheader**
+   |Anforderungsheader  |BESCHREIBUNG  |
+   |---------|---------|
+   |*Content-Type*     | Erforderlich. Legen Sie diese Option auf `application/json` fest.        |
+   |*Autorisierung*     | Erforderlich. Legen Sie diese Option auf ein gültiges `Bearer`-Zugriffstoken fest.        | 
+   
+   **Anforderungstext**
+    
+   ```JSON
+    {  
+       "identity":{  
+          "type":"SystemAssigned"
+       }
+    }
    ```
 
 3. Zum Aktivieren der systemzugewiesenen verwalteten Identität auf einem virtuellen Computer mit vorhandenen benutzerzugewiesenen verwalteten Identitäten müssen Sie `SystemAssigned` zum `type`-Wert hinzufügen.  
@@ -105,11 +194,63 @@ Zum Aktivieren der systemseitig zugewiesenen verwalteten Identität auf einem vi
    curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01' -X PATCH -d '{"identity":{"type":"SystemAssigned, UserAssigned", "userAssignedIdentities":{"/subscriptions/<<SUBSCRIPTION ID>>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1":{},"/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID2":{}}}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
    ```
 
+   ```HTTP
+   PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01 HTTP/1.1
+   ```
+   **Anforderungsheader**
+
+   |Anforderungsheader  |BESCHREIBUNG  |
+   |---------|---------|
+   |*Content-Type*     | Erforderlich. Legen Sie diese Option auf `application/json` fest.        |
+   |*Autorisierung*     | Erforderlich. Legen Sie diese Option auf ein gültiges `Bearer`-Zugriffstoken fest.        | 
+
+   **Anforderungstext**
+
+   ```JSON
+    {  
+       "identity":{  
+          "type":"SystemAssigned, UserAssigned",
+          "userAssignedIdentities":{  
+             "/subscriptions/<<SUBSCRIPTION ID>>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1":{  
+    
+             },
+             "/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID2":{  
+    
+             }
+          }
+       }
+    }
+   ```
+
    **API-VERSION 2017-12-01**
 
    ```bash
    curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2017-12-01' -X PATCH -d '{"identity":{"type":"SystemAssigned, UserAssigned", "identityIds":["/subscriptions/<<SUBSCRIPTION ID>>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1","/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID2"]}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
    ```
+
+   ```HTTP
+   PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2017-12-01 HTTP/1.1
+   ```
+    
+   **Anforderungsheader**
+
+   |Anforderungsheader  |BESCHREIBUNG  |
+   |---------|---------|
+   |*Content-Type*     | Erforderlich. Legen Sie diese Option auf `application/json` fest.        |
+   |*Autorisierung*     | Erforderlich. Legen Sie diese Option auf ein gültiges `Bearer`-Zugriffstoken fest.        | 
+   **Anforderungstext**
+
+   ```JSON
+    {  
+       "identity":{  
+          "type":"SystemAssigned, UserAssigned",
+          "identityIds":[  
+             "/subscriptions/<<SUBSCRIPTION ID>>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1",
+             "/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID2"
+          ]
+       }
+    }
+   ```   
 
 ### <a name="disable-system-assigned-managed-identity-from-an-azure-vm"></a>Deaktivieren einer vom System zugewiesenen verwalteten Identität auf einem virtuellen Azure-Computer
 
@@ -130,7 +271,27 @@ Zum Deaktivieren der systemseitig zugewiesenen verwalteten Identität auf einem 
    curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01' -X PATCH -d '{"identity":{"type":"None"}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
    ```
 
-3. Zum Entfernen der systemzugewiesenen verwalteten Identität von einem virtuellen Computer mit benutzerzugewiesenen verwalteten Identitäten entfernen Sie `SystemAssigned` aus dem Wert `{"identity":{"type:" "}}`, während Sie den Wert `UserAssigned` und die `userAssignedIdentities`-Wörterbuchwerte beibehalten, wenn Sie **API-Version 2018-06-01** verwenden. Bei Verwendung der **API-Version 2017-12-01** (oder einer älteren Version) behalten Sie das `identityIds`-Array bei.
+   ```HTTP
+   PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01 HTTP/1.1
+   ```
+   **Anforderungsheader**
+
+   |Anforderungsheader  |BESCHREIBUNG  |
+   |---------|---------|
+   |*Content-Type*     | Erforderlich. Legen Sie diese Option auf `application/json` fest.        |
+   |*Autorisierung*     | Erforderlich. Legen Sie diese Option auf ein gültiges `Bearer`-Zugriffstoken fest.        | 
+
+   **Anforderungstext**
+
+   ```JSON
+    {  
+       "identity":{  
+          "type":"None"
+       }
+    }
+   ```
+
+   Zum Entfernen der systemzugewiesenen verwalteten Identität von einem virtuellen Computer mit benutzerzugewiesenen verwalteten Identitäten entfernen Sie `SystemAssigned` aus dem Wert `{"identity":{"type:" "}}`, während Sie den Wert `UserAssigned` und die `userAssignedIdentities`-Wörterbuchwerte beibehalten, wenn Sie **API-Version 2018-06-01** verwenden. Bei Verwendung der **API-Version 2017-12-01** (oder einer älteren Version) behalten Sie das `identityIds`-Array bei.
 
 ## <a name="user-assigned-managed-identity"></a>Benutzerseitig zugewiesene verwaltete Identität
 
@@ -138,7 +299,7 @@ In diesem Abschnitt erfahren Sie, wie Sie unter Verwendung von CURL für Aufrufe
 
 ### <a name="assign-a-user-assigned-managed-identity-during-the-creation-of-an-azure-vm"></a>Zuweisen einer vom Benutzer zugewiesenen verwalteten Identität beim Erstellen eines virtuellen Azure-Computers
 
-Für die Zuweisung einer benutzerseitig zugewiesenen Identität an einen virtuellen Computer benötigt Ihr Konto die Rollenzuweisungen [Mitwirkender für virtuelle Computer](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) und [Operator für verwaltete Identität](/azure/role-based-access-control/built-in-roles#managed-identity-operator). Es sind keine weiteren Azure AD-Verzeichnisrollenzuweisungen erforderlich.
+Für die Zuweisung einer benutzerseitig zugewiesenen Identität zu einem virtuellen Computer benötigt Ihr Konto die Rollenzuweisungen [Mitwirkender für virtuelle Computer](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) und [Operator für verwaltete Identität](/azure/role-based-access-control/built-in-roles#managed-identity-operator). Es sind keine weiteren Azure AD-Verzeichnisrollenzuweisungen erforderlich.
 
 1. Rufen Sie ein Bearer-Zugriffstoken ab, das Sie dann im nächsten Schritt im Autorisierungsheader verwenden, um den virtuellen Computer mit einer systemzugewiesenen verwalteten Identität zu erstellen.
 
@@ -162,22 +323,170 @@ Für die Zuweisung einer benutzerseitig zugewiesenen Identität an einen virtuel
 
 5. Erstellen Sie einen virtuellen Computer mithilfe von CURL zum Aufrufen des Azure Resource Manager-REST-Endpunkts. Im folgenden Beispiel wird ein virtueller Computer namens *myVM* in der Ressourcengruppe *myResourceGroup* mit einer benutzerzugewiesenen verwalteten Identität `ID1` erstellt, wie es im Anforderungstext durch den Wert `"identity":{"type":"UserAssigned"}` angegeben ist. Ersetzen Sie `<ACCESS TOKEN>` durch den Wert, den Sie im vorherigen Schritt zum Anfordern eines Bearer-Zugriffstokens erhalten haben, und ersetzen Sie den Wert `<SUBSCRIPTION ID>` entsprechend Ihrer Umgebung.
  
-   
    **API-VERSION 2018-06-01**
-    
-   ```bash   
-   curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01' -X PUT -d '{"location":"westus","name":"myVM",{"identity":{"type":"UserAssigned", "identityIds":["/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1"]}},"properties":{"hardwareProfile":{"vmSize":"Standard_D2_v2"},"storageProfile":{"imageReference":{"sku":"2016-Datacenter","publisher":"MicrosoftWindowsServer","version":"latest","offer":"WindowsServer"},"osDisk":{"caching":"ReadWrite","managedDisk":{"storageAccountType":"Standard_LRS"},"name":"myVM3osdisk","createOption":"FromImage"},"dataDisks":[{"diskSizeGB":1023,"createOption":"Empty","lun":0},{"diskSizeGB":1023,"createOption":"Empty","lun":1}]},"osProfile":{"adminUsername":"azureuser","computerName":"myVM","adminPassword":"myPassword12"},"networkProfile":{"networkInterfaces":[{"id":"/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/myNic","properties":{"primary":true}}]}}}' -H "Content-Type: application/json" -H "Authorization: Bearer <ACCESS TOKEN>"
-   ``` 
 
+   ```bash   
+   curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01' -X PUT -d '{"location":"westus","name":"myVM","identity":{"type":"UserAssigned","identityIds":["/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1"]},"properties":{"hardwareProfile":{"vmSize":"Standard_D2_v2"},"storageProfile":{"imageReference":{"sku":"2016-Datacenter","publisher":"MicrosoftWindowsServer","version":"latest","offer":"WindowsServer"},"osDisk":{"caching":"ReadWrite","managedDisk":{"storageAccountType":"Standard_LRS"},"name":"myVM3osdisk","createOption":"FromImage"},"dataDisks":[{"diskSizeGB":1023,"createOption":"Empty","lun":0},{"diskSizeGB":1023,"createOption":"Empty","lun":1}]},"osProfile":{"adminUsername":"azureuser","computerName":"myVM","adminPassword":"myPassword12"},"networkProfile":{"networkInterfaces":[{"id":"/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/myNic","properties":{"primary":true}}]}}}' -H "Content-Type: application/json" -H "Authorization: Bearer <ACCESS TOKEN>"
+   ```
+    
+   ```HTTP
+   PUT https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01 HTTP/1.1
+   ```
+
+   **Anforderungsheader**
+
+   |Anforderungsheader  |BESCHREIBUNG  |
+   |---------|---------|
+   |*Content-Type*     | Erforderlich. Legen Sie diese Option auf `application/json` fest.        |
+   |*Autorisierung*     | Erforderlich. Legen Sie diese Option auf ein gültiges `Bearer`-Zugriffstoken fest.        | 
+
+   **Anforderungstext**
+
+   ```JSON
+    {  
+       "location":"westus",
+       "name":"myVM",
+       "identity":{  
+          "type":"UserAssigned",
+          "identityIds":[  
+             "/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1"
+          ]
+       },
+       "properties":{  
+          "hardwareProfile":{  
+             "vmSize":"Standard_D2_v2"
+          },
+          "storageProfile":{  
+             "imageReference":{  
+                "sku":"2016-Datacenter",
+                "publisher":"MicrosoftWindowsServer",
+                "version":"latest",
+                "offer":"WindowsServer"
+             },
+             "osDisk":{  
+                "caching":"ReadWrite",
+                "managedDisk":{  
+                   "storageAccountType":"Standard_LRS"
+                },
+                "name":"myVM3osdisk",
+                "createOption":"FromImage"
+             },
+             "dataDisks":[  
+                {  
+                   "diskSizeGB":1023,
+                   "createOption":"Empty",
+                   "lun":0
+                },
+                {  
+                   "diskSizeGB":1023,
+                   "createOption":"Empty",
+                   "lun":1
+                }
+             ]
+          },
+          "osProfile":{  
+             "adminUsername":"azureuser",
+             "computerName":"myVM",
+             "adminPassword":"myPassword12"
+          },
+          "networkProfile":{  
+             "networkInterfaces":[  
+                {  
+                   "id":"/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/myNic",
+                   "properties":{  
+                      "primary":true
+                   }
+                }
+             ]
+          }
+       }
+    }
+
+   ```
+  
    **API-VERSION 2017-12-01**
 
    ```bash   
-   curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2017-12-01' -X PUT -d '{"location":"westus","name":"myVM",{"identity":{"type":"UserAssigned", "identityIds":["/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1"]}},"properties":{"hardwareProfile":{"vmSize":"Standard_D2_v2"},"storageProfile":{"imageReference":{"sku":"2016-Datacenter","publisher":"MicrosoftWindowsServer","version":"latest","offer":"WindowsServer"},"osDisk":{"caching":"ReadWrite","managedDisk":{"storageAccountType":"Standard_LRS"},"name":"myVM3osdisk","createOption":"FromImage"},"dataDisks":[{"diskSizeGB":1023,"createOption":"Empty","lun":0},{"diskSizeGB":1023,"createOption":"Empty","lun":1}]},"osProfile":{"adminUsername":"azureuser","computerName":"myVM","adminPassword":"myPassword12"},"networkProfile":{"networkInterfaces":[{"id":"/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/myNic","properties":{"primary":true}}]}}}' -H "Content-Type: application/json" -H "Authorization: Bearer <ACCESS TOKEN>"
+   curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2017-12-01' -X PUT -d '{"location":"westus","name":"myVM","identity":{"type":"UserAssigned","identityIds":["/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1"]},"properties":{"hardwareProfile":{"vmSize":"Standard_D2_v2"},"storageProfile":{"imageReference":{"sku":"2016-Datacenter","publisher":"MicrosoftWindowsServer","version":"latest","offer":"WindowsServer"},"osDisk":{"caching":"ReadWrite","managedDisk":{"storageAccountType":"Standard_LRS"},"name":"myVM3osdisk","createOption":"FromImage"},"dataDisks":[{"diskSizeGB":1023,"createOption":"Empty","lun":0},{"diskSizeGB":1023,"createOption":"Empty","lun":1}]},"osProfile":{"adminUsername":"azureuser","computerName":"myVM","adminPassword":"myPassword12"},"networkProfile":{"networkInterfaces":[{"id":"/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/myNic","properties":{"primary":true}}]}}}' -H "Content-Type: application/json" -H "Authorization: Bearer <ACCESS TOKEN>"
+   ```
+
+   ```HTTP
+   PUT https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2017-12-01 HTTP/1.1
+   ```
+
+   **Anforderungsheader**
+
+   |Anforderungsheader  |BESCHREIBUNG  |
+   |---------|---------|
+   |*Content-Type*     | Erforderlich. Legen Sie diese Option auf `application/json` fest.        |
+   |*Autorisierung*     | Erforderlich. Legen Sie diese Option auf ein gültiges `Bearer`-Zugriffstoken fest.        | 
+
+   **Anforderungstext**
+
+   ```JSON
+    {
+       "location":"westus",
+       "name":"myVM",
+       "identity":{
+          "type":"UserAssigned",
+          "identityIds":[
+             "/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1"
+          ]
+       },
+       "properties":{
+          "hardwareProfile":{
+             "vmSize":"Standard_D2_v2"
+          },
+          "storageProfile":{
+             "imageReference":{
+                "sku":"2016-Datacenter",
+                "publisher":"MicrosoftWindowsServer",
+                "version":"latest",
+                "offer":"WindowsServer"
+             },
+             "osDisk":{
+                "caching":"ReadWrite",
+                "managedDisk":{
+                   "storageAccountType":"Standard_LRS"
+                },
+                "name":"myVM3osdisk",
+                "createOption":"FromImage"
+             },
+             "dataDisks":[
+                {
+                   "diskSizeGB":1023,
+                   "createOption":"Empty",
+                   "lun":0
+                },
+                {
+                   "diskSizeGB":1023,
+                   "createOption":"Empty",
+                   "lun":1
+                }
+             ]
+          },
+          "osProfile":{
+             "adminUsername":"azureuser",
+             "computerName":"myVM",
+             "adminPassword":"myPassword12"
+          },
+          "networkProfile":{
+             "networkInterfaces":[
+                {
+                   "id":"/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/myNic",
+                   "properties":{
+                      "primary":true
+                   }
+                }
+             ]
+          }
+       }
+    }
    ```
 
 ### <a name="assign-a-user-assigned-managed-identity-to-an-existing-azure-vm"></a>Zuweisen einer vom Benutzer zugewiesenen verwalteten Identität zu einem vorhandenen virtuellen Azure-Computer
 
-Für die Zuweisung einer benutzerseitig zugewiesenen Identität an einen virtuellen Computer benötigt Ihr Konto die Rollenzuweisungen [Mitwirkender für virtuelle Computer](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) und [Operator für verwaltete Identität](/azure/role-based-access-control/built-in-roles#managed-identity-operator). Es sind keine weiteren Azure AD-Verzeichnisrollenzuweisungen erforderlich.
+Für die Zuweisung einer benutzerseitig zugewiesenen Identität zu einem virtuellen Computer benötigt Ihr Konto die Rollenzuweisungen [Mitwirkender für virtuelle Computer](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) und [Operator für verwaltete Identität](/azure/role-based-access-control/built-in-roles#managed-identity-operator). Es sind keine weiteren Azure AD-Verzeichnisrollenzuweisungen erforderlich.
 
 1. Rufen Sie ein Bearer-Zugriffstoken ab, das Sie dann im nächsten Schritt im Autorisierungsheader verwenden, um den virtuellen Computer mit einer systemzugewiesenen verwalteten Identität zu erstellen.
 
@@ -187,11 +496,19 @@ Für die Zuweisung einer benutzerseitig zugewiesenen Identität an einen virtuel
 
 2.  Erstellen Sie eine benutzerzugewiesene verwaltete Identität anhand der Anweisungen unter [Erstellen einer vom Benutzer zugewiesenen verwalteten Identität](how-to-manage-ua-identity-rest.md#create-a-user-assigned-managed-identity).
 
-3.  Um sicherzustellen, dass Sie keine vorhandenen benutzer- oder systemzugewiesenen verwalteten Identitäten löschen, die dem virtuellen Computer zugewiesen sind, müssen Sie die Identitätstypen, die dem virtuellen Computer zugewiesen sind, mit dem folgenden CURL-Befehl auflisten. Sollten der VM-Skalierungsgruppe verwaltete Identitäten zugewiesen sein, sind diese unter dem `identity`-Wert aufgelistet.
+3. Um sicherzustellen, dass Sie keine vorhandenen benutzer- oder systemzugewiesenen verwalteten Identitäten löschen, die dem virtuellen Computer zugewiesen sind, müssen Sie die Identitätstypen, die dem virtuellen Computer zugewiesen sind, mit dem folgenden CURL-Befehl auflisten. Sollten der VM-Skalierungsgruppe verwaltete Identitäten zugewiesen sein, sind diese unter dem `identity`-Wert aufgelistet.
 
-    ```bash
-    curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachines/<VM NAME>?api-version=2018-06-01' -H "Authorization: Bearer <ACCESS TOKEN>" 
-    ```
+   ```bash
+   curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachines/<VM NAME>?api-version=2018-06-01' -H "Authorization: Bearer <ACCESS TOKEN>" 
+   ```
+
+   ```HTTP
+   GET https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachines/<VM NAME>?api-version=2018-06-01 HTTP/1.1
+   ```
+   **Anforderungsheader**
+   |Anforderungsheader  |BESCHREIBUNG  |
+   |---------|---------|
+   |*Autorisierung*     | Erforderlich. Legen Sie diese Option auf ein gültiges `Bearer`-Zugriffstoken fest.
 
     Wenn dem virtuellen Computer benutzer- oder systemzugewiesene verwaltete Identitäten zugewiesen sind, wie es im `identity`-Wert in der Antwort angegeben ist, fahren Sie mit Schritt 5 fort. Dort wird gezeigt, wie Sie die vom System zugewiesene verwaltete Identität beibehalten und gleichzeitig eine vom Benutzer zugewiesene verwaltete Identität zum virtuellen Computer hinzufügen.
 
@@ -205,10 +522,59 @@ Für die Zuweisung einer benutzerseitig zugewiesenen Identität an einen virtuel
    curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01' -X PATCH -d '{"identity":{"type":"UserAssigned", "userAssignedIdentities":{"/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1":{}}}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
    ```
 
+   ```HTTP
+   PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01 HTTP/1.1
+   ```
+   **Anforderungsheader**
+
+   |Anforderungsheader  |BESCHREIBUNG  |
+   |---------|---------|
+   |*Content-Type*     | Erforderlich. Legen Sie diese Option auf `application/json` fest.        |
+   |*Autorisierung*     | Erforderlich. Legen Sie diese Option auf ein gültiges `Bearer`-Zugriffstoken fest.        |
+ 
+   **Anforderungstext**
+
+   ```JSON
+    {
+       "identity":{
+          "type":"UserAssigned",
+          "userAssignedIdentities":{
+             "/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1":{
+    
+             }
+          }
+       }
+    }
+   ```
+
    **API-VERSION 2017-12-01**
 
    ```bash
    curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2017-12-01' -X PATCH -d '{"identity":{"type":"userAssigned", "identityIds":["/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1"]}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
+   ```
+
+   ```HTTP
+   PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2017-12-01 HTTP/1.1
+   ```
+   
+   **Anforderungsheader**
+
+   |Anforderungsheader  |BESCHREIBUNG  |
+   |---------|---------|
+   |*Content-Type*     | Erforderlich. Legen Sie diese Option auf `application/json` fest.        |
+   |*Autorisierung*     | Erforderlich. Legen Sie diese Option auf ein gültiges `Bearer`-Zugriffstoken fest.        | 
+
+   **Anforderungstext**
+
+   ```JSON
+    {
+       "identity":{
+          "type":"userAssigned",
+          "identityIds":[
+             "/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1"
+          ]
+       }
+    }
    ```
 
 5. Gehen Sie wie folgt vor, wenn Ihrem virtuellen Computer eine benutzer- oder systemzugewiesene verwaltete Identität zugewiesen ist:
@@ -223,6 +589,35 @@ Für die Zuweisung einer benutzerseitig zugewiesenen Identität an einen virtuel
    curl  'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01' -X PATCH -d '{"identity":{"type":"SystemAssigned, UserAssigned", "userAssignedIdentities":{"/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1":{},"/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID2":{}}}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
    ```
 
+   ```HTTP
+   PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01 HTTP/1.1
+   ```
+   
+   **Anforderungsheader**
+
+   |Anforderungsheader  |BESCHREIBUNG  |
+   |---------|---------|
+   |*Content-Type*     | Erforderlich. Legen Sie diese Option auf `application/json` fest.        |
+   |*Autorisierung*     | Erforderlich. Legen Sie diese Option auf ein gültiges `Bearer`-Zugriffstoken fest.        | 
+
+   **Anforderungstext**
+
+   ```JSON
+    {
+       "identity":{
+          "type":"SystemAssigned, UserAssigned",
+          "userAssignedIdentities":{
+             "/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1":{
+    
+             },
+             "/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID2":{
+    
+             }
+          }
+       }
+    }
+   ```
+
    **API-VERSION 2017-12-01**
 
    Behalten Sie beim Hinzufügen der neuen benutzerzugewiesenen verwalteten Identität die benutzerzugewiesenen verwalteten Identitäten bei, die im `identityIds`-Arraywert erhalten bleiben sollen.
@@ -230,8 +625,33 @@ Für die Zuweisung einer benutzerseitig zugewiesenen Identität an einen virtuel
    Wenn Ihrem virtuellen Computer derzeit beispielweise die systemzugewiesene verwaltete Identität und die benutzerzugewiesene verwaltete Identität `ID1` zugewiesen sind und Sie die benutzerzugewiesene verwaltete Identität `ID2` hinzufügen möchten, verwenden Sie folgenden Befehl: 
 
    ```bash
-   curl  'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2017-12-01' -X PATCH -d '{"identity":{"type":"SystemAssigned","UserAssigned", "identityIds":["/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1","/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID2"]}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
+   curl  'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2017-12-01' -X PATCH -d '{"identity":{"type":"SystemAssigned,UserAssigned", "identityIds":["/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1","/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID2"]}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
    ```
+
+   ```HTTP
+   PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2017-12-01 HTTP/1.1
+   ```
+
+   **Anforderungsheader**
+
+   |Anforderungsheader  |BESCHREIBUNG  |
+   |---------|---------|
+   |*Content-Type*     | Erforderlich. Legen Sie diese Option auf `application/json` fest.        |
+   |*Autorisierung*     | Erforderlich. Legen Sie diese Option auf ein gültiges `Bearer`-Zugriffstoken fest.        | 
+
+   **Anforderungstext**
+
+   ```JSON
+    {
+       "identity":{
+          "type":"SystemAssigned,UserAssigned",
+          "identityIds":[
+             "/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1",
+             "/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID2"
+          ]
+       }
+    }
+   ```   
 
 ### <a name="remove-a-user-assigned-managed-identity-from-an-azure-vm"></a>Entfernen einer vom Benutzer zugewiesenen verwalteten Identität von einer Azure-VM
 
@@ -244,10 +664,20 @@ Für das Entfernen einer benutzerseitig zugewiesenen Identität von einem virtue
    ```
 
 2. Um sicherzustellen, dass Sie keine vorhandenen benutzerzugewiesenen verwalteten Identitäten löschen, die dem virtuellen Computer weiterhin zugewiesen sein sollen, und auch nicht die systemzugewiesene verwaltete Identität entfernen, müssen Sie die verwalteten Identitäten mit dem folgenden CURL-Befehl auflisten: 
- 
+
    ```bash
    curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachines/<VM NAME>?api-version=2018-06-01' -H "Authorization: Bearer <ACCESS TOKEN>"
    ```
+ 
+   ```HTTP
+   GET https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachines/<VM NAME>?api-version=2018-06-01 HTTP/1.1
+   ```
+
+   **Anforderungsheader**
+   |Anforderungsheader  |BESCHREIBUNG  |
+   |---------|---------|
+   |*Content-Type*     | Erforderlich. Legen Sie diese Option auf `application/json` fest.        |
+   |*Autorisierung*     | Erforderlich. Legen Sie diese Option auf ein gültiges `Bearer`-Zugriffstoken fest.
  
    Sollten dem virtuellen Computer verwaltete Identitäten zugewiesen sein, sind diese in der Antwort im `identity`-Wert aufgelistet.
 
@@ -261,6 +691,30 @@ Für das Entfernen einer benutzerseitig zugewiesenen Identität von einem virtue
    curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01' -X PATCH -d '{"identity":{"type":"SystemAssigned, UserAssigned", "userAssignedIdentities":{"/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID2":null}}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
    ```
 
+   ```HTTP
+   PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01 HTTP/1.1
+   ```
+
+   **Anforderungsheader**
+
+   |Anforderungsheader  |BESCHREIBUNG  |
+   |---------|---------|
+   |*Content-Type*     | Erforderlich. Legen Sie diese Option auf `application/json` fest.        |
+   |*Autorisierung*     | Erforderlich. Legen Sie diese Option auf ein gültiges `Bearer`-Zugriffstoken fest.        | 
+
+   **Anforderungstext**
+
+   ```JSON
+    {
+       "identity":{
+          "type":"SystemAssigned, UserAssigned",
+          "userAssignedIdentities":{
+             "/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID2":null
+          }
+       }
+    }
+   ```
+
    **API-VERSION 2017-12-01**
 
    Behalten Sie nur die vom Benutzer zugewiesenen verwalteten Identitäten bei, die im `identityIds`-Array erhalten bleiben sollen:
@@ -269,10 +723,55 @@ Für das Entfernen einer benutzerseitig zugewiesenen Identität von einem virtue
    curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2017-12-01' -X PATCH -d '{"identity":{"type":"SystemAssigned, UserAssigned", "identityIds":["/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1"]}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
    ```
 
+   ```HTTP
+   PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2017-12-01 HTTP/1.1
+   ```
+
+   **Anforderungsheader**
+
+   |Anforderungsheader  |BESCHREIBUNG  |
+   |---------|---------|
+   |*Content-Type*     | Erforderlich. Legen Sie diese Option auf `application/json` fest.        |
+   |*Autorisierung*     | Erforderlich. Legen Sie diese Option auf ein gültiges `Bearer`-Zugriffstoken fest.        | 
+
+   **Anforderungstext**
+
+   ```JSON
+    {
+       "identity":{
+          "type":"SystemAssigned, UserAssigned",
+          "identityIds":[
+             "/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1"
+          ]
+       }
+    }
+   ```
+
 Wenn der virtuelle Azure-Computer sowohl system- als auch benutzerzugewiesene verwaltete Identitäten aufweist, können Sie alle benutzerzugewiesenen verwalteten Identitäten entfernen, indem Sie mit dem folgenden Befehl in den Modus wechseln, in dem nur die systemzugewiesene verwaltete Identität verwendet wird:
 
 ```bash
 curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01' -X PATCH -d '{"identity":{"type":"SystemAssigned"}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
+```
+
+```HTTP
+PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01 HTTP/1.1
+```
+
+**Anforderungsheader**
+
+|Anforderungsheader  |BESCHREIBUNG  |
+|---------|---------|
+|*Content-Type*     | Erforderlich. Legen Sie diese Option auf `application/json` fest.        |
+|*Autorisierung*     | Erforderlich. Legen Sie diese Option auf ein gültiges `Bearer`-Zugriffstoken fest. | 
+
+**Anforderungstext**
+
+```JSON
+{
+   "identity":{
+      "type":"SystemAssigned"
+   }
+}
 ```
     
 Wenn der virtuelle Computer nur benutzerzugewiesene verwaltete Identitäten enthält und sie alle entfernen möchten, verwenden Sie den folgenden Befehl:
@@ -280,6 +779,28 @@ Wenn der virtuelle Computer nur benutzerzugewiesene verwaltete Identitäten enth
 ```bash
 curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01' -X PATCH -d '{"identity":{"type":"None"}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
 ```
+
+```HTTP
+PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01 HTTP/1.1
+```
+
+**Anforderungsheader**
+
+|Anforderungsheader  |BESCHREIBUNG  |
+|---------|---------|
+|*Content-Type*     | Erforderlich. Legen Sie diese Option auf `application/json` fest.        |
+|*Autorisierung*     | Erforderlich. Legen Sie diese Option auf ein gültiges `Bearer`-Zugriffstoken fest.| 
+
+**Anforderungstext**
+
+```JSON
+{
+   "identity":{
+      "type":"None"
+   }
+}
+```
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 Informationen zum Erstellen, Auflisten oder Löschen von benutzerzugewiesenen verwalteten Identitäten mithilfe von REST finden Sie unter:

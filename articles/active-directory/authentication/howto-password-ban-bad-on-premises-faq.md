@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: jsimmons
-ms.openlocfilehash: 59c89c81f618876de48de66a38e1063eb658fba4
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: d3d42a3c81153d54690f0825368eaa950dbac18e
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50742955"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52314778"
 ---
 # <a name="preview-azure-ad-password-protection-on-premises---frequently-asked-questions"></a>Vorschau: Lokaler Azure Active Directory-Kennwortschutz – Häufig gestellte Fragen
 
@@ -50,7 +50,7 @@ Weitere Informationen finden Sie in den folgenden Artikeln:
 
 [Was für die Migration der sysvol-Replikation zu DFSR spricht](https://blogs.technet.microsoft.com/askds/2010/04/22/the-case-for-migrating-sysvol-to-dfsr)
 
-[Das Ende ist nahe für DRS](https://blogs.technet.microsoft.com/filecab/2014/06/25/the-end-is-nigh-for-frs)
+[Das Ende ist nahe für FRS](https://blogs.technet.microsoft.com/filecab/2014/06/25/the-end-is-nigh-for-frs)
 
 **F: Warum ist ein Neustart erforderlich, um die DC-Agent-Software zu installieren oder zu aktualisieren?**
 
@@ -58,7 +58,7 @@ Diese Anforderung wird durch das Kernverhalten von Windows verursacht.
 
 **F: Gibt es eine Möglichkeit, einen DC-Agent so zu konfigurieren, dass er einen bestimmten Proxyserver verwendet?**
 
-Nein.
+ Nein.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

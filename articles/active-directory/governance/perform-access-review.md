@@ -1,6 +1,6 @@
 ---
-title: Überprüfen des Zugriffs mithilfe der Azure AD-Zugriffsüberprüfung | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie den Zugriff mit der Azure Active Directory-Zugriffsüberprüfung überprüfen können.
+title: Starten einer Zugriffsüberprüfung mit Azure AD-Zugriffsüberprüfungen | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie eine Zugriffsüberprüfung mithilfe von Azure AD-Zugriffsüberprüfungen starten.
 services: active-directory
 author: rolyon
 manager: mtillman
@@ -14,14 +14,14 @@ ms.component: compliance
 ms.date: 07/16/2018
 ms.author: rolyon
 ms.reviewer: mwahl
-ms.openlocfilehash: 09247a430d2ece44c307297838b7f4dc2819d56d
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: 455a4922dfd0832c49729bed007dd696562be07a
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45607030"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52263419"
 ---
-# <a name="review-access-with-azure-ad-access-reviews"></a>Überprüfen des Zugriffs mit Azure AD-Zugriffsüberprüfungen
+# <a name="start-an-access-review-with-azure-ad-access-reviews"></a>Starten einer Zugriffsüberprüfung mit Azure AD-Zugriffsüberprüfungen
 
 Azure Active Directory (Azure AD) erleichtert Unternehmen das Verwalten des Zugriffs auf Anwendungen und Mitglieder von Gruppen in Azure AD und anderen Microsoft Online Services durch eine Funktion namens „Zugriffsüberprüfungen“. Sie haben möglicherweise eine E-Mail von Microsoft erhalten, in der Sie aufgefordert werden, den Zugriff von Mitgliedern einer Gruppe oder Benutzern mit Zugriff auf eine Anwendung zu überprüfen. 
 
