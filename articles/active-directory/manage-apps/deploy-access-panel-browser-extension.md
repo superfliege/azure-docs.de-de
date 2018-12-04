@@ -40,7 +40,7 @@ Zunächst müssen Sie das Installationspaket an einem Speicherort im Netzwerk ab
 2. Wechseln Sie im Fenster **Server-Manager** zu **Dateien und Speicherdienste**.
    
     ![Dateien und Speicherdienste öffnen](./media/deploy-access-panel-browser-extension/files-services.png)
-3. Klicken Sie auf die Registerkarte **Freigaben** . Klicken Sie dann auf Aufgaben****Neue Freigabe**.
+3. Klicken Sie auf die Registerkarte **Freigaben** . Klicken Sie dann auf **Aufgaben** > **Neue Freigabe**.
    
     ![Dateien und Speicherdienste öffnen](./media/deploy-access-panel-browser-extension/shares.png)
 4. Schließen Sie den **Assistenten für neue Freigaben** , und legen Sie Berechtigungen fest, um sicherzustellen, dass von den Computern Ihrer Benutzer aus darauf zugegriffen werden kann. [Weitere Informationen zu Freigaben](https://technet.microsoft.com/library/cc753175.aspx)
