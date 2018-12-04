@@ -156,7 +156,7 @@ Sie müssen mit der Indizierung von Solr mit einigen Datendateien beginnen. Sie 
           </response>
       ```
       
-   2. Navigieren Sie in der Remotesitzung zu „{SOLR_HOME}\{{Collection}\data“. Für den mit dem Beispielskript erstellten Cluster sollte dieser Pfad `C:\apps\dist\solr-4.7.2\example\solr\collection1\data` lauten. An diesem Speicherort sollte ein Momentaufnahmenordner mit einem Namen wie **snapshot.* timestamp*** erstellt werden.
+   2. Navigieren Sie in der Remotesitzung zu „{SOLR_HOME}\{{Collection}\data“. Für den mit dem Beispielskript erstellten Cluster sollte dieser Pfad `C:\apps\dist\solr-4.7.2\example\solr\collection1\data` lauten. An diesem Speicherort sollte ein Momentaufnahmenordner mit einem Namen wie **snapshot.\*timestamp**\* erstellt werden.
    
    3. Komprimieren Sie den Ordner für Momentaufnahmen im ZIP.-Format, und laden Sie ihn in Azure Blob Storage hoch. Navigieren Sie über die Hadoop-Befehlszeile zum Verzeichnis des Momentaufnahmenordners mithilfe des folgenden Befehls:
 

@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 9eaed5c8d30d902700af25319d91b77aab645dbc
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 9fac565922a6dd36608455456c66ff2fe940557a
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52318009"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52680411"
 documentType: LandingData
 title: Dokumentation für dediziertes HSM von Azure
 metadata:
@@ -33,13 +33,13 @@ sections:
     - href: /azure/dedicated-hsm/overview
       html: <p>Erfahren Sie, worum es sich beim Azure-Dienst für dediziertes HSM handelt.</p>
       image:
-        src: media/index/i_article.svg
-      title: Übersicht über dediziertes HSM
+        src: media/index/hsm.svg
+      title: Übersicht über dediziertes HSM von Azure
     - href: /azure/dedicated-hsm/faq
-      html: <p>Häufig gestellte Fragen.</p>
+      html: <p>Überlegungen zum Entwurf bei der Verwendung von dediziertem HSM</p>
       image:
         src: media/index/guide.svg
-      title: Häufig gestellte Fragen
+      title: Wählen der Bereitstellungsarchitektur
 - title: Schritt-für-Schritt-Tutorials
   items:
   - type: paragraph
@@ -62,4 +62,4 @@ sections:
     className: cardsD
     items:
     - title: Häufig gestellte Fragen
-      html: <p><a href="/dedicated-hsm/faq/">Häufig gestellte Fragen</a></p>
+      html: <p><a href="/azure/dedicated-hsm/faq/">Häufig gestellte Fragen</a></p>
