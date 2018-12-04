@@ -5,32 +5,58 @@ items:
   href: index.yml
 - name: Übersicht
   items:
-  - name: Informationen zu Time Series Insights
-    href: time-series-insights-overview.md
+  - name: Informationen zu Time Series Insights (Vorschauversion)
+    href: time-series-insights-update-overview.md
 - name: Schnellstarts
   items:
-  - name: Erkunden von Time Series Insights
-    href: time-series-quickstart.md
-- name: Tutorials
+  - name: Azure Time Series Insights (allgemein verfügbar)
+    items:
+    - name: Erkunden von Time Series Insights
+      href: time-series-quickstart.md
+  - name: Azure Time Series Insights (Vorschauversion)
+    items:
+    - name: Erkunden von Time Series Insights (Vorschauversion)
+      href: time-series-insights-update-quickstart.md
+- name: Lernprogramme
   items:
   - name: Erkunden der TSI-JavaScript-Clientbibliothek
     href: tutorial-explore-js-client-lib.md
-  - name: Erstellen einer TSI-Umgebung
-    href: tutorial-create-populate-tsi-environment.md
   - name: Erstellen einer einseitigen TSI-Web-App
     href: tutorial-create-tsi-sample-spa.md
+  - name: Azure Time Series Insights (allgemein verfügbar)
+    items:
+    - name: Erstellen einer TSI-Umgebung
+      href: tutorial-create-populate-tsi-environment.md
+  - name: Azure Time Series Insights (Vorschauversion)
+    items:
+    - name: Erstellen einer TSI-Umgebung
+      href: time-series-insights-update-create-environment.md
 - name: Konzepte
   items:
-  - name: Planen der Umgebung
-    href: time-series-insights-environment-planning.md
-  - name: Visualisieren von Daten im Explorer
-    href: time-series-insights-explorer.md
-  - name: Beschränken der Drosselung
-    href: time-series-insights-environment-mitigate-latency.md
-  - name: Grundlegendes zur Datenaufbewahrung
-    href: time-series-insights-concepts-retention.md
-  - name: Diagnostizieren und Behandeln von Problemen
-    href: time-series-insights-diagnose-and-solve-problems.md
+  - name: Azure Time Series Insights (allgemein verfügbar)
+    items:
+    - name: Informationen zu Time Series Insights
+      href: time-series-insights-overview.md
+    - name: Planen der Umgebung
+      href: time-series-insights-environment-planning.md
+    - name: Visualisieren von Daten im Explorer
+      href: time-series-insights-explorer.md
+    - name: Grundlegendes zur Datenaufbewahrung
+      href: time-series-insights-concepts-retention.md
+  - name: Azure Time Series Insights (Vorschauversion)
+    items:
+    - name: Planen der Umgebung
+      href: time-series-insights-update-plan.md
+    - name: Datenspeicher und -eingang
+      href: time-series-insights-update-storage-ingress.md
+    - name: Anwendungsfälle
+      href: time-series-insights-update-use-cases.md
+    - name: Time Series-Modell
+      href: time-series-insights-update-tsm.md
+    - name: Time Series-Abfrage
+      href: time-series-insights-update-tsq.md
+    - name: Visualisieren von Daten im Explorer-Update
+      href: time-series-insights-update-explorer.md
   - name: Entwickeln
     items:
     - name: Authentifizieren und Autorisieren
@@ -43,32 +69,65 @@ items:
       href: time-series-insights-parameterized-urls.md
 - name: Anleitungen
   items:
-  - name: Erstellen einer Umgebung
-    href: time-series-insights-get-started.md
   - name: Gewähren des Datenzugriffs
     href: time-series-insights-data-access.md
   - name: Herstellen einer Event Hub-Verbindung
     href: time-series-insights-how-to-add-an-event-source-eventhub.md
   - name: Herstellen einer Verbindung mit IoT Hub
     href: time-series-insights-how-to-add-an-event-source-iothub.md
-  - name: Konfigurieren der Datenaufbewahrung
-    href: time-series-insights-how-to-configure-retention.md
-  - name: Erstellen eines Verweisdatasets
-    href: time-series-insights-add-reference-data-set.md
-  - name: Senden von Ereignisse
-    href: time-series-insights-send-events.md
-  - name: Skalieren Ihrer Umgebung
-    href: time-series-insights-how-to-scale-your-environment.md
   - name: Verwalten von Ressourcen mithilfe von Vorlagen
     href: time-series-insights-manage-resources-using-azure-resource-manager-template.md
-  - name: Gestalten von JSON für Abfragen
-    href: how-to-shape-query-json.md
+  - name: Azure Time Series Insights (allgemein verfügbar)
+    items:
+    - name: Erstellen einer Umgebung
+      href: time-series-insights-get-started.md
+    - name: Konfigurieren der Datenaufbewahrung
+      href: time-series-insights-how-to-configure-retention.md
+    - name: Erstellen eines Verweisdatasets
+      href: time-series-insights-add-reference-data-set.md
+    - name: Senden von Ereignisse
+      href: time-series-insights-send-events.md
+    - name: Skalieren Ihrer Umgebung
+      href: time-series-insights-how-to-scale-your-environment.md
+    - name: Gestalten von JSON für Abfragen
+      href: how-to-shape-query-json.md
+    - name: Beschränken der Drosselung
+      href: time-series-insights-environment-mitigate-latency.md
+    - name: Diagnostizieren und Behandeln von Problemen
+      href: time-series-insights-diagnose-and-solve-problems.md
+  - name: Azure Time Series Insights (Vorschauversion)
+    items:
+    - name: Auswählen einer Time Series-ID
+      href: time-series-insights-update-how-to-id.md
+    - name: Diagnostizieren und Behandeln von Problemen
+      href: time-series-insights-update-how-to-troubleshoot.md
+    - name: Datenmodellierung
+      href: time-series-insights-update-how-to-tsm.md
+    - name: Gestalten von JSON für Abfragen
+      href: time-series-insights-update-how-to-shape-events.md
 - name: Verweis
   items:
-  - name: Abfrage-API
-    href: /rest/api/time-series-insights/time-series-insights-reference-queryapi
-  - name: Abfragesyntax
-    href: /rest/api/time-series-insights/time-series-insights-reference-query-syntax
+  - name: Time Series Insights
+    items:
+    - name: Time Series Insights (allgemein verfügbar)
+      items:
+      - name: Abfragen
+        items:
+        - name: API
+          href: /rest/api/time-series-insights/time-series-insights-reference-queryapi
+        - name: Syntax
+          href: /rest/api/time-series-insights/time-series-insights-reference-query-syntax
+      - name: Verweisdaten-API
+    - name: Azure Time Series Insights (Vorschauversion)
+      items:
+      - name: Time Series-Abfrage
+        href: /rest/api/time-series-insights/time-series-insights-reference-update-tsq
+      - name: Time Series-Modell
+        href: /rest/api/time-series-insights/time-series-insights-reference-update-tsm
+      - name: API für die Time Series-Umgebung
+        href: /rest/api/time-series-insights/time-series-insights-reference-update-env
+      - name: Time Series-Ausdruck und -Syntax
+        href: /rest/api/time-series-insights/time-series-insights-reference-update-tsx
 - name: Verwandte Themen
   items:
   - name: Lösungen
@@ -117,9 +176,9 @@ items:
     href: https://azure.microsoft.com/support/options/
   - name: Videos
     href: https://azure.microsoft.com/resources/videos/index/?services=time-series-insights
-ms.openlocfilehash: 42d68a315933661b9fbf245d451179714312ec36
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: d30b4b2b19a4f055647b4723c91a15a1a977de6d
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39112296"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52849512"
