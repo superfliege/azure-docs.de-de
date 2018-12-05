@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: v-erkell
-ms.openlocfilehash: c48f0d8f7ad34db585f4deae566641b6453357e8
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 72d1676613de699abda2136a7743a974b2b17c01
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50670057"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52162859"
 ---
 # <a name="access-the-vfxt-cluster"></a>Zugreifen auf den vFXT-Cluster
 
@@ -20,18 +20,18 @@ Verwenden Sie die Avere-Systemsteuerung, um Einstellungen zu ändern und den Ave
 Da sich der vFXT-Cluster in einem privaten virtuellen Netzwerk befindet, müssen Sie einen SSH-Tunnel erstellen oder eine andere Methode verwenden, um die IP-Adresse für die Clusterverwaltung zu erreichen. Es gibt zwei grundlegende Schritte: 
 
 1. Erstellen einer Verbindung zwischen Ihrem Arbeitsplatz und dem privaten VNet 
-1. Verwenden der IP-Adresse zur Clusterverwaltung, um die Systemsteuerung in einem Webbrowser zu laden 
+1. Laden der Systemsteuerung des Clusters in einem Webbrowser 
 
 > [!NOTE] 
-> In diesem Artikel wird davon ausgegangen, dass Sie eine öffentliche IP-Adresse auf dem Clustercontroller oder auf einem anderen virtuellen Computer innerhalb des virtuellen Netzwerks Ihres Clusters festgelegt haben. Wenn Sie ein VPN oder ExpressRoute für den VNet-Zugriff verwenden, wechseln Sie zu [Herstellen einer Verbindung mit der Avere-Systemsteuerung](#connect-to-the-avere-control-panel-in-a-browser).
+> In diesem Artikel wird davon ausgegangen, dass Sie eine öffentliche IP-Adresse auf dem Clustercontroller oder auf einem anderen virtuellen Computer innerhalb des virtuellen Netzwerks Ihres Clusters festgelegt haben. Dieser Artikel beschreibt, wie Sie diesen virtuellen Computer als Host für den Zugriff auf den Cluster verwenden. Wenn Sie ein VPN oder ExpressRoute für den VNet-Zugriff verwenden, wechseln Sie zu [Herstellen einer Verbindung mit der Avere-Systemsteuerung](#connect-to-the-avere-control-panel-in-a-browser).
 
-Stellen Sie vor dem Herstellen der Verbindung sicher, dass das SSH-Schlüsselpaar „public/private“, das Sie beim Erstellen des Clustercontrollers verwendet haben, auf Ihrem lokalen Computer installiert ist. Lesen Sie die Dokumentation zu SSH-Schlüsseln für [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys) oder für [Windows](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows), wenn Sie Hilfe benötigen.  
+Stellen Sie vor dem Herstellen der Verbindung sicher, dass das SSH-Schlüsselpaar „public/private“, das Sie beim Erstellen des Clustercontrollers verwendet haben, auf Ihrem lokalen Computer installiert ist. Lesen Sie die Dokumentation zu SSH-Schlüsseln für [Windows](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows) oder für [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys), wenn Sie Hilfe benötigen.  
 
-## <a name="access-with-a-linux-host"></a>Zugreifen mit einem Linux-Host
+## <a name="ssh-tunnel-with-a-linux-host"></a>SSH-Tunnel mit einem Linux-Host
 
-über dieses Formular: 
+Wenn Sie einen Linux-basierten Client verwenden, verwenden Sie einen SSH-Tunnelbefehl in diesem Format: 
 
-ssh -L *local_port*:*cluster_mgmt_ip*:443 *controller_username*@*controller_public_IP* 
+ssh -L *local_port*:*cluster_mgmt_ip*:443 *controller_username*@*controller_public_IP*
 
 Dieser Befehl stellt über die IP-Adresse des Clustercontrollers eine Verbindung mit der IP-Adresse für die Clusterverwaltung her.
 
@@ -43,10 +43,11 @@ ssh -L 8443:10.0.0.5:443 azureuser@203.0.113.51
 
 Die Authentifizierung erfolgt automatisch, wenn Sie Ihren öffentlichen SSH-Schlüssel zur Erstellung des Clusters verwendet haben und der passende Schlüssel auf dem Clientsystem installiert ist.
 
+## <a name="ssh-tunnel-with-a-windows-host"></a>SSH-Tunnel mit einem Windows-Host
 
-## <a name="access-with-a-windows-host"></a>Zugreifen mit einem Windows-Host
+Dieses Beispiel verwendet das allgemeine Windows-basierte Terminalhilfsprogramm PuTTY.
 
-Wenn Sie PuTTY verwenden, füllen Sie das Feld **Hostname** mit dem Benutzernamen des Clustercontrollers und seiner IP-Adresse aus: *Ihr_Benutzername*@*Öffentliche_IP_Controller*.
+Geben Sie in das PuTTY-Feld **Hostname** den Benutzernamen des Clustercontrollers und seine IP-Adresse ein: *Ihr_Benutzername*@*Öffentliche_IP_Controller*.
 
 Beispiel: ``azureuser@203.0.113.51``
 
@@ -68,7 +69,11 @@ Die Authentifizierung erfolgt automatisch, wenn Sie Ihren öffentlichen SSH-Schl
 
 Dieser Schritt verwendet einen Webbrowser, um eine Verbindung mit dem Konfigurationsprogramm herzustellen, das auf dem vFXT-Cluster ausgeführt wird.
 
-Öffnen Sie Ihren Webbrowser, und navigieren Sie zu https://127.0.0.1:8443. 
+* Für eine SSH-Tunnelverbindung öffnen Sie Ihren Webbrowser, und navigieren Sie zu https://127.0.0.1:8443. 
+
+  Sie haben bei der Erstellung des Tunnels eine Verbindung mit der IP-Adresse des Clusters hergestellt, daher müssen Sie nur die localhost-IP-Adresse im Browser verwenden. Wenn Sie einen anderen lokalen Port als 8443 verwendet haben, verwenden Sie stattdessen Ihre Portnummer.
+
+* Wenn Sie ein VPN oder ExpressRoute verwenden, um den Cluster zu erreichen, navigieren Sie in Ihrem Browser zur IP-Adresse der Clusterverwaltung. Beispiel: ``https://203.0.113.51``
 
 Je nach Browser müssen Sie möglicherweise auf **Erweitert** klicken und überprüfen, ob die Weiterleitung zur Seite sicher ist.
 

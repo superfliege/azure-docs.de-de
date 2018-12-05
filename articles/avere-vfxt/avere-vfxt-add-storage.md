@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: procedural
 ms.date: 10/31/2018
 ms.author: v-erkell
-ms.openlocfilehash: aba023667094fb00647861fb2dd300eda64e4897
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: cd868996066110c8d0457b177e60523886912dd8
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50669957"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52163170"
 ---
 # <a name="configure-storage"></a>Konfigurieren des Speichers
 
@@ -48,15 +48,20 @@ In den folgenden Schritten wird eine NAS-Kernspeichereinheit hinzugefügt:
 
 1. Klicken Sie oben in der Avere Systemsteuerung auf die Registerkarte **Einstellungen**.
 
-2. Klicken Sie links auf **Kernspeichereinheit** > **Kernspeichereinheit verwalten**.
+1. Klicken Sie links auf **Kernspeichereinheit** > **Kernspeichereinheit verwalten**.
 
-3. Klicken Sie auf **Create**.
+1. Klicken Sie auf **Create**.
 
-   ![Screenshot der Seite „Neue Kernspeichereinheit hinzufügen“ mit dem Namen der Kernspeichereinheit und ihrem vollqualifizierten Domänennamen.](media/avere-vfxt-add-core-filer.png)
+   ![Screenshot der Seite „Neuen Kern hinzufügen“ mit einem Cursor über der Schaltfläche „Erstellen“](media/avere-vfxt-add-core-filer-start.png)
+
+1. Geben Sie die erforderlichen Informationen im Assistenten ein: 
 
    * Benennen Sie Ihre Kernspeichereinheit.
    * Geben Sie einen vollqualifizierten Domänennamen (FQDN) an, falls verfügbar. Andernfalls geben Sie eine IP-Adresse oder einen Hostnamen an, die bzw. der in Ihre Kernspeichereinheit aufgelöst wird.
    * Wählen Sie Ihre Speichereinheitenklasse aus der Liste aus. Wenn Sie sich nicht sicher sind, wählen Sie **Andere** aus.
+
+     ![Screenshot der Seite „Neue Kernspeichereinheit hinzufügen“ mit dem Namen der Kernspeichereinheit und ihrem vollqualifizierten Domänennamen.](media/avere-vfxt-add-core-filer.png)
+  
    * Klicken Sie auf **Weiter**, und wählen Sie eine Cacherrichtlinie aus. 
    * Klicken Sie auf **Speichereinheit hinzufügen**.
    * Detaillierte Informationen finden Sie unter [Hinzufügen einer neuen NAS-Kernspeichereinheit](http://library.averesystems.com/ops_guide/4_7/new_core_filer_nas.html) in der Anleitung zu den Clustereinstellungen von Avere.
@@ -110,7 +115,7 @@ Führen Sie die folgenden Schritte aus, um nach der Erstellung des Clusters Blob
 
 1. Öffnen Sie die Avere-Systemsteuerung für Ihren Cluster. Klicken Sie auf **Einstellungen**, und öffnen Sie dann **Cluster** > **Cloudanmeldeinformationen** im linken Navigationsbereich. Klicken Sie auf der Seite mit den Anmeldeinformationen für die Cloud auf **Anmeldeinformationen hinzufügen**.
 
-   ![Klicken auf die Schaltfläche „Anmeldeinformationen hinzufügen“ auf der Konfigurationsseite für die Cloudanmeldeinformationen.](media/avere-vfxt-new-credential-button.png)
+   ![Klicken Sie auf die Schaltfläche „Anmeldeinformationen hinzufügen“ auf der Konfigurationsseite für die Cloudanmeldeinformationen.](media/avere-vfxt-new-credential-button.png)
 
 1. Geben Sie die folgenden Informationen ein, um Anmeldeinformationen für die Cloudkernspeichereinheit zu erstellen: 
 

@@ -1,5 +1,5 @@
 ---
-title: Schnellstart für Fivetran mit Azure SQL Data Warehouse | Microsoft-Dokumentation
+title: Schnellstartanleitung für Fivetran für Azure SQL Data Warehouse | Microsoft-Dokumentation
 description: Schneller Einstieg in Fivetran und Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: hirokib
@@ -10,69 +10,75 @@ ms.component: manage
 ms.date: 10/12/2018
 ms.author: elbutter
 ms.reviewer: craigg
-ms.openlocfilehash: 8e738becfe356908af5baffc0ebf225916b2616e
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 50f5f813444ddf38d15863d028b1f61bb9b0d55c
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49355207"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52580530"
 ---
 # <a name="get-started-quickly-with-fivetran-and-sql-data-warehouse"></a>Schneller Einstieg in Fivetran und SQL Data Warehouse
 
-Bei diesem Schnellstart wird vorausgesetzt, dass Sie bereits über eine vorhandene Instanz von SQL Data Warehouse verfügen.
+Diese Schnellstartanleitung beschreibt, wie Sie einen neuen Fivetran-Benutzer für das Arbeiten mit Azure SQL Data Warehouse einrichten. Der Artikel geht davon aus, dass Sie über eine vorhandene Instanz von SQL Data Warehouse verfügen.
 
-## <a name="setup-connection"></a>Einrichten der Verbindung
+## <a name="set-up-a-connection"></a>Herstellen einer Verbindung
 
-1. Suchen Sie den vollqualifizierten Servernamen und Datenbanknamen für die Verbindung mit Azure SQL Data Warehouse.
+1. Ermitteln Sie den vollqualifizierten Servernamen und Datenbanknamen, den Sie zum Herstellen einer Verbindung mit SQL Data Warehouse verwenden.
+    
+    Wenn Sie Hilfe beim Suchen nach diesen Informationen benötigen, finden Sie weitere Informationen unter [Verbinden mit Azure SQL Data Warehouse](sql-data-warehouse-connect-overview.md).
 
-   [Wie kann ich den Servernamen und Datenbanknamen im Portal suchen?](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-connect-overview)
+2. Wählen Sie im Setup-Assistenten aus, ob Sie Ihre Datenbank direkt oder über einen SSH-Tunnel verbinden möchten.
 
-2. Legen Sie im Setup-Assistenten fest, ob Sie eine direkte Verbindung mit der Datenbank oder eine Verbindung über einen SSH-Tunnel herstellen möchten.
+   Wenn Sie sich für eine direkte Verbindung mit Ihrer Datenbank entscheiden, müssen Sie eine Firewallregel erstellen, um den Zugriff zu ermöglichen. Dies ist die einfachste und sicherste Methode.
 
-   Wenn Sie sich für eine direkte Verbindung mit der Datenbank entscheiden, müssen Sie eine Firewallregel für den Zugriff erstellen. Dies ist die einfachste und sicherste Methode.
+   Wenn Sie sich für eine Verbindung über einen SSH-Tunnel entscheiden, stellt Fivetran eine Verbindung mit einem separaten Server in Ihrem Netzwerk her. Der Server stellt einen SSH-Tunnel für Ihre Datenbank bereit. Sie müssen diese Methode verwenden, wenn sich Ihre Datenbank in einem nicht zugänglichen Subnetz in einem virtuellen Netzwerk befindet.
 
-   Wenn Sie sich für eine Verbindung über einen SSH-Tunnel entscheiden, stellt Fivetran eine Verbindung mit einem separaten Server in Ihrem Netzwerk her, der einen SSH-Tunnel zu Ihrer Datenbank bereitstellt. Diese Methode ist erforderlich, wenn sich Ihre Datenbank in einem nicht zugänglichen Subnetz in einem virtuellen Netzwerk befindet.
+3. Fügen Sie der Firewall auf Serverebene die IP-Adresse **52.0.2.4** hinzu, um eingehende Verbindungen mit Azure SQL Data Warehouse von Fivetran zuzulassen.
 
-3. Fügen Sie der Firewall auf Serverebene die IP-Adresse „52.0.2.4“ hinzu, um eingehende Verbindungen mit Azure SQL Data Warehouse von Fivetran zuzulassen.
+   Weitere Informationen finden Sie unter [Erstellen einer Firewallregel auf Serverebene](create-data-warehouse-portal.md#create-a-server-level-firewall-rule).
 
-   [Wie wird eine Firewall auf Serverebene hinzugefügt?](https://docs.microsoft.com/azure/sql-data-warehouse/create-data-warehouse-portal#create-a-server-level-firewall-rule)
+## <a name="set-up-user-credentials"></a>Einrichten der Anmeldeinformationen des Benutzers
 
-## <a name="setup-user-credentials"></a>Einrichten von Benutzeranmeldeinformationen
+1. Stellen Sie eine Verbindung mit Ihrem Azure SQL Data Warehouse her, indem Sie SQL Server Management Studio oder das von Ihnen bevorzugte Tool verwenden. Melden Sie sich als Serveradministrator an. Führen Sie dann die folgenden SQL-Befehle zum Erstellen eines Benutzers für Fivetran aus:
+    - In der Masterdatenbank: 
+    
+      ```
+      CREATE LOGIN fivetran WITH PASSWORD = '<password>'; 
+      ```
 
-Stellen Sie mit SQL Server Management Studio oder einem Tool Ihrer Wahl eine Verbindung mit Azure SQL Data Warehouse als Serveradministrator her, und führen Sie die folgenden SQL-Befehle aus, um einen Benutzer für Fivetran zu erstellen:
+    - In der SQL Data Warehouse-Datenbank:
 
-In der Masterdatenbank: ` CREATE LOGIN fivetran WITH PASSWORD = '<password>'; `
+      ```
+      CREATE USER fivetran_user_without_login without login;
+      CREATE USER fivetran FOR LOGIN fivetran;
+      GRANT IMPERSONATE on USER::fivetran_user_without_login to fivetran;
+      ```
 
-In der SQL Data Warehouse-Datenbank:
+2. Erteilen Sie dem Fivetran-Benutzer die folgenden Berechtigungen für Ihr Warehouse:
 
-```
-CREATE USER fivetran_user_without_login without login;
-CREATE USER fivetran FOR LOGIN fivetran;
-GRANT IMPERSONATE on USER::fivetran_user_without_login to fivetran;
-```
+    ```
+    GRANT CONTROL to fivetran;
+    ```
 
-Nachdem der Benutzer „fivetran“ erstellt wurde, gewähren sie ihm die folgenden Berechtigungen für das Warehouse:
+    Die Berechtigung CONTROL ist erforderlich, um datenbankweite Anmeldeinformationen zu erstellen, die verwendet werden, wenn ein Benutzer Dateien aus dem Azure Blob-Speicher mithilfe von PolyBase lädt.
 
-```
-GRANT CONTROL to fivetran;
-```
+3. Fügen Sie dem Fivetran-Benutzer eine geeignete Ressourcenklasse hinzu. Welche Ressourcenklasse Sie verwenden, hängt vom Speicher ab, der für die Erstellung eines Columnstore-Index benötigt wird. Beispielsweise erfordern Integrationen mit Produkten wie Marketo und Salesforce aufgrund der großen Anzahl von Spalten und des größeren Datenvolumens, das die Produkte verwenden, eine höhere Ressourcenklasse. Eine höhere Ressourcenklasse erfordert mehr Arbeitsspeicher zum Erstellen von Columnstore-Indizes.
 
-Fügen Sie dem erstellten Benutzer eine geeignete Ressourcenklasse hinzu, und zwar je nach Arbeitsspeicherbedarf für das Erstellen eines Columnstore-Index. Beispielsweise benötigen Integrationen wie Marketo und Salesforce aufgrund der hohen Anzahl von Spalten/größeren Datenmenge, die mehr Arbeitsspeicher zum Erstellen von Columnstore-Indizes erfordern, eine höhere Ressourcenklasse.
+    Es wird empfohlen, statische Ressourcenklassen zu verwenden. Sie können mit der `staticrc20`-Ressourcenklasse beginnen. Die `staticrc20`-Ressourcenklasse ordnet 200 MB für jeden Benutzer zu, und zwar unabhängig von der Leistungsstufe, die Sie verwenden. Wenn die Columnstore-Indizierung auf der Ebene der anfänglichen Ressourcenklasse fehlschlägt, erhöhen Sie die Ressourcenklasse.
 
-Es wird empfohlen, statische Ressourcenklassen zu verwenden. Sie können mit der Ressourcenklasse `staticrc20` beginnen, mit der 200 MB für den Benutzer unabhängig von der verwendeten Leistungsstufe zugeordnet werden. Wenn die Columnstore-Indizierung mit der aktuellen Ressourcenklasse fehlschlägt, muss die Ressourcenklasse erhöht werden.
+    ```
+    EXEC sp_addrolemember '<resource_class_name>', 'fivetran';
+    ```
 
-```
-EXEC sp_addrolemember '<resource_class_name>', 'fivetran';
-```
+    Weitere Informationen finden Sie in den Dokumenten zu [Speicher- und Parallelitätsgrenzwerten](memory-and-concurrency-limits.md) und [Ressourcenklassen](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md#ways-to-allocate-more-memory).
 
-Weitere Informationen finden Sie in den Dokumenten zu [Speicher- und Parallelitätsgrenzwerten](https://docs.microsoft.com/azure/sql-data-warehouse/memory-and-concurrency-limits#data-warehouse-limits) und [Ressourcenklassen](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-memory-optimizations-for-columnstore-compression#ways-to-allocate-more-memory).
 
-Die Berechtigung CONTROL ist erforderlich, um datenbankweit gültige Anmeldeinformationen zu erstellen, die beim Laden von Dateien aus Blob Storage mit PolyBase verwendet werden.
+## <a name="sign-in-to-fivetran"></a>Anmelden bei Fivetran
 
-Geben Sie die Anmeldeinformationen für den Zugriff auf Azure SQL Data Warehouse ein:
+Um sich bei Fivetran anzumelden, geben Sie die Anmeldeinformationen ein, die Sie für den Zugriff auf SQL Data Warehouse verwenden: 
 
-1. Host (Ihr Servername)
-2. Port
-3. Datenbank
-4. Benutzer (Benutzername muss `fivetran@<server_name>` sein, wobei `<server_name>` Teil Ihrer Azure-Host-URI ist: `<server_name>.database.windows.net`)
-5. Kennwort
+* Host (Ihr Servername).
+* Port.
+* Datenbank.
+* Benutzer (der Benutzername sollte **fivetran@_server_name_** sein, wobei *server_name* Teil Ihres Azure-Host-URIs ist: ***server_name*.database.windows.net**).
+* Password:

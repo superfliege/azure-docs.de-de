@@ -5,15 +5,15 @@ services: azure-resource-manager
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: include
-ms.date: 03/13/2018
+ms.date: 11/20/2018
 ms.author: tomfitz
 ms.custom: include file
-ms.openlocfilehash: 2be7e4d2f3697649df669a4f20ba4db62c1fc486
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: f411504b0f4b7872e92a64c57fecbde863f532c6
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47401609"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52270320"
 ---
 Durch Anwenden von Tags auf Ihre Azure-Ressourcen erzeugen Sie Metadaten, um sie logisch in einer Taxonomie zu organisieren. Jedes Tag besteht aus einem Paar mit einem Namen und einem Wert. So können Sie beispielsweise den Namen „Umgebung“ und den Wert „Produktion“ auf alle Ressourcen in der Produktion anwenden.
 
@@ -23,6 +23,7 @@ Ihre Taxonomie sollte zusätzlich zu einer automatischen Kennzeichhnungsstrategi
 
 Für Tags gelten folgende Einschränkungen:
 
+* Nicht alle Ressourcentypen unterstützen Tags. Um festzustellen, ob Sie ein Tag auf einen Ressourcentyp anwenden können, lesen Sie [Tagunterstützung für Azure-Ressourcen](../articles/azure-resource-manager/tag-support.md).
 * Jede Ressource oder Ressourcengruppe kann maximal 15 Tagname-Wert-Paare besitzen. Diese Einschränkung gilt nur für Tags, die direkt auf die Ressourcengruppe oder die Ressource angewendet werden. Eine Ressourcengruppe kann zahlreiche Ressourcen mit jeweils 15 Tagname-Wert-Paaren enthalten. Wenn Sie einer Ressource mehr als 15 Werte zuordnen müssen, verwenden Sie eine JSON-Zeichenfolge für den Tagwert. Die JSON-Zeichenfolge kann zahlreiche Werte enthalten, die auf einen einzelnen Tagnamen angewendet werden. Dieser Artikel enthält ein Beispiel für die Zuweisung einer JSON-Zeichenfolge zum Tag.
 * Der Tagname ist auf 512 Zeichen beschränkt und der Tagwert auf 256 Zeichen. Bei Speicherkonten ist der Tagname auf 128 Zeichen beschränkt und der Tagwert auf 256 Zeichen.
 * Auf virtuellen Computern gilt für alle Tagnamen und -werte ein Gesamtgrenzwert von maximal 2048 Zeichen.

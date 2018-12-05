@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2018
 ms.author: tomfitz
-ms.openlocfilehash: a5a2300bd0b768b4a29b01e75f9558c4923ac11c
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: eea981800147f24025e01826f7550a95041c107f
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49395125"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52427300"
 ---
 # <a name="enable-safe-deployment-practices-with-azure-deployment-manager-private-preview"></a>Aktivieren von sicheren Bereitstellungsmethoden mit dem Azure-Bereitstellungs-Manager (private Vorschau)
 
@@ -34,6 +34,8 @@ Um den Bereitstellungs-Manager zu verwenden, müssen Sie vier Dateien erstellen:
 * Parameterdatei für den Rollout
 
 Die Topologievorlage wird vor der Rolloutvorlage bereitgestellt.
+
+Die REST-API-Referenz für den Azure-Bereitstellungs-Manager finden Sie [hier](https://docs.microsoft.com/rest/api/deploymentmanager/).
 
 ## <a name="supported-locations"></a>Unterstützte Standorte
 
