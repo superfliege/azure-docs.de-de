@@ -1,5 +1,5 @@
 ---
-title: TITLE | Microsoft-Dokumentation
+title: Live-Schaltung Ihres Angebots zu Azure-Anwendungen im Azure Marketplace | Microsoft-Dokumentation
 description: .
 services: Azure, Marketplace, Cloud Partner Portal,
 documentationcenter: ''
@@ -12,14 +12,14 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 09/13/2018
+ms.date: 11/15/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 643b7d674de3d51f98b69d6f0659478c9893e3b1
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 18a8e6ae8ab3bd4299c6a014f938e73a2a021492
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48806275"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52263587"
 ---
 <a name="make-your-azure-application-offer-live-on-azure-marketplace"></a>Live-Schaltung Ihres Angebots zu Azure-Anwendungen im Azure Marketplace 
 ===========================================================
@@ -33,19 +33,22 @@ Gehen wir nun einmal näher auf diesen Vorgang ein, um zu verstehen, was währen
 <a name="publishing-process"></a>Veröffentlichungsvorgang 
 ------------------
 
-Um den Veröffentlichungsvorgang zu starten, klicken Sie auf der Registerkarte „Editor“ auf \"Veröffentlichen\".
+Um den Veröffentlichungsvorgang zu starten, klicken Sie auf der Registerkarte **Editor** auf \"Veröffentlichen\".
 
 ![Angebotsaktivierungssequenz 1 – Veröffentlichen](./media/cloud-partner-portal-publish-managed-app/newOffer_managedApp_publish.png)
 
-Auf der Registerkarte „Status“ sehen Sie die Veröffentlichungsschritte und in welchem Schritt sich das Angebot befindet.
+Auf der Registerkarte **Status** sehen Sie die Veröffentlichungsschritte und in welchem Schritt sich das Angebot befindet.
 
 ![Angebotsaktivierungssequenz 2 – Workflow](./media/cloud-partner-portal-publish-managed-app/newOffer_managedApp_workflow.png)
 
-Während des Veröffentlichungsprozesses können Sie sich auch jederzeit anmelden und auf die Registerkarte „Alle Angebote“ klicken, um den neuesten Status für Ihre Angebote einzusehen. Sie können direkt auf den Status Ihres Angebots klicken, um ausführliche Informationen darüber zu erhalten, wo sich Ihr Angebot im Veröffentlichungsvorgang befindet.
+Während des Veröffentlichungsprozesses können Sie sich auch jederzeit anmelden und auf die Registerkarte **Alle Angebote** klicken, um den neuesten Status für Ihre Angebote einzusehen. Sie können direkt auf den Status Ihres Angebots klicken, um ausführliche Informationen darüber zu erhalten, wo sich Ihr Angebot im Veröffentlichungsvorgang befindet.
+
+> [!WARNING]
+> Wenn die Zuordnung der Nutzung durch Kunden nicht aktiviert ist, erhalten Sie während der Veröffentlichung eine Fehlermeldung, die in etwa wie folgt lautet: „Die Zuordnung der Nutzung durch Kunden von Azure-Partnern fehlt in mindestens einer Azure Resource Manager-Vorlage. Fügen Sie zur Problembehebung der Azure Resource Manager-Vorlage in den „maintemplate.JSON“-Paketen eine Nachverfolgungs-GUID für den folgenden Plan hinzu: Servicenow. Weitere Informationen finden Sie unter http://aka.ms/customerusageattribution.” 
 
 Gehen wir nun die einzelnen Veröffentlichungsschritte durch, um zu besprechen, was während der einzelnen Schritte passiert und wie viel Zeit Sie für jeden Schritt einplanen sollten.
 
-### <a name="validate-pre-requisites-1-day"></a>Überprüfen der Voraussetzungen (\<1 Tag) 
+### <a name="validate-prerequisites-1-day"></a>Überprüfen der Voraussetzungen (\<1 Tag) 
 
 Wenn Sie auf \"Veröffentlichen\" klicken, wird eine automatisierte Prüfung durchgeführt, um sicherzustellen, dass Sie alle erforderlichen Felder in Ihrem Angebot ausgefüllt haben. Wenn eines der Felder nicht ausgefüllt sein sollte, wird neben dem jeweiligen Feld eine Warnung angezeigt. Sie müssen es dann korrekt ausfüllen und erneut auf \'Veröffentlichen\' klicken.
 

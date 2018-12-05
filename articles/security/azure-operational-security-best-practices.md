@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2018
 ms.author: terrylan
-ms.openlocfilehash: d005dd01de0dff0136c0a4e9775001dbe018228f
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: ae6eeb2506eb82160c68e15e17eeb95c1e2ec046
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47035282"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51853609"
 ---
 # <a name="azure-operational-security-best-practices"></a>Bewährte Methoden für Azure Operational Security
 Azure Operational Security bezieht sich auf die Dienste, Steuerelemente und Features, die Benutzern zum Schützen ihrer Daten, Anwendungen und anderen Ressourcen in Azure zur Verfügung stehen. Azure Operational Security basiert auf einem Framework, das Erkenntnisse verwendet, die aus einzigartigen Microsoft-Funktionen stammen, u.a. aus dem [Microsoft Security Development Lifecycle](https://www.microsoft.com/sdl), dem [Microsoft Security Response Center-Programm](https://www.microsoft.com/msrc?rtc=1) und den umfassenden Informationen zur Bedrohungslage hinsichtlich der Sicherheit im Internet.
@@ -55,38 +55,38 @@ Kunden erstellen ein End-to-End-Netzwerk in Azure, indem sie verschiedene Netzwe
 
 Im Folgenden sind bewährte Methoden für die Netzwerküberwachung und verfügbare Tools aufgelistet.
 
-**Bewährte Methode:** Automatisieren der Remotenetzwerküberwachung per Paketerfassung.   
+**Bewährte Methode:** Automatisieren der Remotenetzwerküberwachung per Paketerfassung.  
 **Beschreibung:** Überwachen und diagnostizieren Sie mithilfe von Network Watcher Netzwerkprobleme, ohne sich bei Ihren VMs anmelden zu müssen. Lösen Sie mithilfe von Warnungen die [Paketerfassung](../network-watcher/network-watcher-alert-triggered-packet-capture.md) aus, und erhalten Sie Zugriff auf Leistungsinformationen in Echtzeit auf Paketebene. Wenn Sie ein Problem feststellen, können Sie dieses detailliert untersuchen, um es besser diagnostizieren zu können.
 
-**Bewährte Methode:** Gewinnen von Einblicken in den Netzwerkdatenverkehr mithilfe von Datenflussprotokollen.   
+**Bewährte Methode:** Gewinnen von Einblicken in den Netzwerkdatenverkehr mithilfe von Datenflussprotokollen.  
 **Beschreibung:** Lernen Sie mithilfe von Datenflussprotokollen von [Netzwerksicherheitsgruppen](../network-watcher/network-watcher-nsg-flow-logging-overview.md) die Datenverkehrsmuster in Ihrem Netzwerk kennen. Mit den Daten aus den Datenflussprotokollen können Sie Erkenntnisse gewinnen, die Sie zum Erfüllen von Konformitätsanforderungen und zum Überwachen Ihres Netzwerksicherheitsprofils benötigen.
 
-**Bewährte Methode:** Diagnostizieren von VPN-Konnektivitätsproblemen.   
+**Bewährte Methode:** Diagnostizieren von VPN-Konnektivitätsproblemen.  
 [Beschreibung:](../network-watcher/network-watcher-diagnose-on-premises-connectivity.md) Verwenden Sie Network Watcher, um die **am häufigsten auftretenden VPN-Gateway- und Verbindungsprobleme zu diagnostizieren**. Sie können nicht nur das Problem identifizieren, sondern auch umfangreiche Protokolle verwenden, um das Problem ausführlich zu untersuchen.
 
 ## <a name="secure-deployment-by-using-proven-devops-tools"></a>Sichern der Bereitstellung mithilfe von bewährten DevOps-Tools
 Mit den folgenden bewährten DevOps-Methoden können Sie sicherstellen, dass Ihr Unternehmen und Team produktiv und effizient arbeiten.
 
-**Bewährte Methode:** Automatisieren der Erstellung und Bereitstellung eines Diensts.   
-**Beschreibung:** [Infrastruktur als Code](https://en.wikipedia.org/wiki/Infrastructure_as_Code) sind Techniken und Methoden, die für IT-Experten die tägliche Erstellung und Verwaltung einer modularen Infrastruktur vereinfachen. IT-Experten können damit ihre moderne Serverumgebung so erstellen und verwalten, wie Softwareentwickler Anwendungscode erstellen und verwalten.
+**Bewährte Methode:** Automatisieren der Erstellung und Bereitstellung eines Diensts.  
+**Beschreibung:** [Infrastruktur als Code](https://docs.microsoft.com/azure/devops/learn/what-is-infrastructure-as-code) sind Techniken und Methoden, die für IT-Experten die tägliche Erstellung und Verwaltung einer modularen Infrastruktur vereinfachen. IT-Experten können damit ihre moderne Serverumgebung so erstellen und verwalten, wie Softwareentwickler Anwendungscode erstellen und verwalten.
 
 Mit dem [Azure Resource Manager](https://azure.microsoft.com/documentation/articles/resource-group-authoring-templates/) können Sie Ihre Anwendungen mit einer deklarativen Vorlage bereitstellen. In einer Vorlage können Sie mehrere Dienste zusammen mit ihren Abhängigkeiten bereitstellen. Sie verwenden die gleiche Vorlage, um Ihre Anwendung in jeder Phase des Anwendungslebenszyklus wiederholt bereitzustellen.
 
-**Bewährte Methode:** Automatisches Erstellen und Bereitstellen von Azure-Web-Apps oder -Clouddiensten.   
-**Beschreibung:** Sie können Ihre Teamprojekte in Visual Studio Team Services so konfigurieren, dass sie [automatisch erstellt und in Azure-Web-Apps oder -Clouddiensten bereitgestellt](https://www.visualstudio.com/docs/build/overview) werden. VSTS stellt die Binärdateien nach der Durchführung eines Builds in Azure nach jedem Einchecken von Code automatisch bereit. Der Prozess der Paketerstellung entspricht dem Befehl „Packen“ in Visual Studio, und die Veröffentlichungsschritte entsprechen dem Befehl „Veröffentlichen“ in Visual Studio.
+**Bewährte Methode:** Automatisches Erstellen und Bereitstellen von Azure-Web-Apps oder -Clouddiensten.  
+**Detail:** Für das [automatische Erstellen und Bereitstellen](https://docs.microsoft.com/azure/devops/pipelines/index?view=vsts) für Azure-Web-Apps oder Clouddienste können Sie Azure Pipelines verwenden. Azure Pipelines stellt die Binärdateien nach der Durchführung eines Builds in Azure nach jedem Einchecken von Code automatisch bereit. Der Prozess der Paketerstellung entspricht dem Befehl „Packen“ in Visual Studio, und die Veröffentlichungsschritte entsprechen dem Befehl „Veröffentlichen“ in Visual Studio.
 
-**Bewährte Methode:** Automatisieren der Releaseverwaltung.   
-**Beschreibung:** [Release Management für Visual Studio](https://msdn.microsoft.com/library/vs/alm/release/overview) ist eine Lösung für die Automatisierung einer mehrstufigen Bereitstellung und die Verwaltung des Releaseprozesses. Erstellen Sie verwaltete Continuous Deployment-Pipelines für schnelle, einfache und häufige Releases. Mit Release Management können Sie den Releaseprozess automatisieren und vordefinierte Genehmigungsworkflows einrichten. Stellen Sie lokal und in der Cloud bereit, und führen Sie nach Bedarf Erweiterungen und Anpassungen durch.
+**Bewährte Methode:** Verwenden der kontinuierlichen Bereitstellung.  
+**Detail:** [Azure Pipelines](https://docs.microsoft.com/azure/devops/pipelines/index?view=vsts) ist eine Lösung für die Automatisierung einer mehrstufigen Bereitstellung und die Verwaltung des Releaseprozesses. Erstellen Sie verwaltete Continuous Deployment-Pipelines für schnelle, einfache und häufige Releases. Mit Azure Pipelines können Sie den Releaseprozess automatisieren und vordefinierte Genehmigungsworkflows einrichten. Stellen Sie lokal und in der Cloud bereit, und führen Sie nach Bedarf Erweiterungen und Anpassungen durch.
 
-**Bewährte Methode:** Testen der Leistung Ihrer Web-App vor dem Start oder Bereitstellen von Updates für die Produktion.   
-**Beschreibung:** Führen Sie cloudbasierte [Auslastungstest](https://www.visualstudio.com/docs/test/performance-testing/getting-started/getting-started-with-performance-testing) durch, und verwenden Sie VSTS für Folgendes:
+**Bewährte Methode:** Testen der Leistung Ihrer Web-App vor dem Start oder Bereitstellen von Updates für die Produktion.  
+**Detail:** Führen Sie cloudbasierte [Auslastungstest](https://docs.microsoft.com/azure/devops/test/load-test/app-service-web-app-performance-test?view=vsts) durch, und verwenden Sie Azure Test Plans für Folgendes:
 
 - Leistungsprobleme in Ihrer Web-App finden.
 - Qualität der Bereitstellung verbessern.
 - Verfügbarkeit Ihrer App sicherstellen.
 - Stellen Sie sicher, dass Ihre App den Datenverkehr für die nächste Produkteinführung oder Marketingkampagne bewältigen kann.
 
-**Bewährte Methode:** Überwachen der Anwendungsleistung.   
+**Bewährte Methode:** Überwachen der Anwendungsleistung.  
 **Beschreibung:** [Azure Application Insights](../application-insights/app-insights-overview.md) ist ein erweiterbarer, für Webentwickler konzipierter Dienst zur Verwaltung der Anwendungsleistung (Application Performance Management, APM) auf mehreren Plattformen. Sie können mit Application Insights Ihre Live-Web-App überwachen. Der Dienst erkennt automatisch Leistungsanomalien. Er verfügt über Analysetools, mit denen Sie Probleme diagnostizieren und nachvollziehen können, wie Ihre App von Benutzern verwendet wird. Der Dienst unterstützt Sie bei der kontinuierlichen Verbesserung der Leistung und Benutzerfreundlichkeit Ihrer App.
 
 ## <a name="mitigate-and-protect-against-ddos"></a>Abwenden von und Schützen vor DDoS
@@ -96,19 +96,19 @@ Konzeptionen für Resilienz gegenüber DDoS-Angriffen setzen Planung und Entwür
 
 Im Folgenden sind bewährte Methoden zum Erstellen von Anwendungen in Azure aufgelistet, die DDoS-Angriffen standhalten können.
 
-**Bewährte Methode:** Stellen Sie sicher, dass die Sicherheit im gesamten Lebenszyklus einer Anwendung Priorität hat – von Entwurf und Implementierung bis hin zu Bereitstellung und Betrieb. Anwendungen können Fehler enthalten, die einer relativ geringen Anzahl von Anforderungen die Verwendung von vielen Ressourcen erlauben. Dies führt zu einem Dienstausfall.    
+**Bewährte Methode:** Stellen Sie sicher, dass die Sicherheit im gesamten Lebenszyklus einer Anwendung Priorität hat – von Entwurf und Implementierung bis hin zu Bereitstellung und Betrieb. Anwendungen können Fehler enthalten, die einer relativ geringen Anzahl von Anforderungen die Verwendung von vielen Ressourcen erlauben. Dies führt zu einem Dienstausfall.  
 **Beschreibung:** Um einen in Microsoft Azure ausgeführten Dienst zu schützen, sollten Sie Ihre Anwendungsarchitektur verstehen und sich auf die [Fünf Säulen der Softwarequalität](https://docs.microsoft.com/azure/architecture/guide/pillars) konzentrieren. Sie sollten Folgendes kennen: das typische Datenverkehrsvolumen, das Modell der Konnektivität zwischen der Anwendung und anderen Anwendungen, sowie die Dienstendpunkte, die dem öffentlichen Internet verfügbar gemacht werden.
 
 Es ist von größter Wichtigkeit sicherzustellen, dass eine Anwendung stabil genug ist, um mit einem Denial-of-Service-Angriff fertig zu werden. Sicherheit und Datenschutz sind direkt in der Azure-Plattform integriert, beginnend mit [Security Development Lifecycle (SDL)](https://www.microsoft.com/en-us/sdl). Die SDL spricht Sicherheit in jeder Entwicklungsphase an und sorgt dafür, dass Azure kontinuierlich aktualisiert wird, um noch sicherer zu sein.
 
-**Bewährte Methode:** Sie sollten Ihre Anwendungen so entwerfen, dass sie [horizontal skaliert](https://docs.microsoft.com/azure/architecture/guide/design-principles/scale-out) werden können, um die Anforderungen einer verstärkten Auslastung zu erfüllen – insbesondere im Falle eines DDoS-Angriffs. Wenn Ihre Anwendung von einer einzelnen Instanz eines Diensts abhängig ist, entsteht dadurch ein Single Point of Failure. Durch Bereitstellen mehrerer Instanzen wird Ihr System stabiler und besser skalierbar.   
+**Bewährte Methode:** Sie sollten Ihre Anwendungen so entwerfen, dass sie [horizontal skaliert](https://docs.microsoft.com/azure/architecture/guide/design-principles/scale-out) werden können, um die Anforderungen einer verstärkten Auslastung zu erfüllen – insbesondere im Falle eines DDoS-Angriffs. Wenn Ihre Anwendung von einer einzelnen Instanz eines Diensts abhängig ist, entsteht dadurch ein Single Point of Failure. Durch Bereitstellen mehrerer Instanzen wird Ihr System stabiler und besser skalierbar.  
 **Beschreibung:** Wählen Sie für [Azure App Service](../app-service/app-service-value-prop-what-is.md) einen [App Service-Plan](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md) aus, der mehrere Instanzen bietet.
 
 Konfigurieren Sie für Azure Cloud Services alle Rollen so, dass sie [mehrere Instanzen](../cloud-services/cloud-services-choose-me.md) verwenden.
 
 Stellen Sie für [Azure-VMS](../virtual-machines/windows/overview.md) sicher, dass die VM-Architektur mehr als eine VM enthält und dass jede VM zu einer [Verfügbarkeitsgruppe](../virtual-machines/virtual-machines-windows-manage-availability.md) gehört. Sie sollten VM-Skalierungsgruppen für Funktionen zur automatischen Skalierung verwenden.
 
-**Bewährte Methode:** Implementieren Sie Abwehrmaßnahmen schichtweise in eine Anwendung, um die Wahrscheinlichkeit eines erfolgreichen Angriffs zu reduzieren. Implementieren Sie sichere Entwürfe für Ihre Anwendungen mithilfe der integrierten Funktionen der Azure-Plattform.   
+**Bewährte Methode:** Implementieren Sie Abwehrmaßnahmen schichtweise in eine Anwendung, um die Wahrscheinlichkeit eines erfolgreichen Angriffs zu reduzieren. Implementieren Sie sichere Entwürfe für Ihre Anwendungen mithilfe der integrierten Funktionen der Azure-Plattform.  
 **Beschreibung:** Das Angriffsrisiko steigt mit der Größe (Oberfläche) der Anwendung. Sie können den Oberflächenbereich durch Verwendung von Whitelists verringern, um den verfügbar gemachten IP-Adressraum und die Überwachungsports zu schließen, die im Lastenausgleichsmodul ([Azure Load Balancer](../load-balancer/load-balancer-get-started-internet-portal.md) und [Azure Application Gateway](../application-gateway/application-gateway-create-probe-portal.md)) nicht mehr benötigt werden.
 
 Durch [Netzwerksicherheitsgruppen](../virtual-network/security-overview.md) kann die angreifbare Oberfläche ebenfalls reduziert werden. Sie können mit [Diensttags](../virtual-network/security-overview.md#service-tags) und [Anwendungssicherheitsgruppen](../virtual-network/security-overview.md#application-security-groups) das Erstellen von Sicherheitsregeln weniger komplex machen und Netzwerksicherheit als natürliche Erweiterung der Struktur einer Anwendung konfigurieren.
@@ -129,4 +129,4 @@ Weitere bewährte Methoden für die Sicherheit, die Sie beim Entwerfen, Bereitst
 
 Die folgenden Ressourcen enthalten allgemeinere Informationen zur Sicherheit in Azure und verwandten Microsoft-Diensten:
 * [Blog des Azure-Sicherheitsteams](https://blogs.msdn.microsoft.com/azuresecurity/): Hier finden Sie Informationen über den aktuellen Stand der Azure-Sicherheit.
-* [Microsoft Security Response Center](https://technet.microsoft.com/library/dn440717.aspx): Hier können Sie Microsoft-Sicherheitsrisiken (z.B. Probleme mit Azure) melden oder eine E-Mail an secure@microsoft.com schreiben.
+* [Microsoft Security Response Center](https://technet.microsoft.com/library/dn440717.aspx): Hier können Sie Microsoft-Sicherheitsrisiken, z.B. Probleme mit Azure, melden oder eine E-Mail an secure@microsoft.com schreiben.

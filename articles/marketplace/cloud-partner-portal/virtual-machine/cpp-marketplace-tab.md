@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/19/2018
 ms.author: pbutlerm
-ms.openlocfilehash: aa43a6f1f7c757366e321e7da0fb1e47d4928cee
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: b68f7004366dcb502ffc8332cf8266a434c7ecfb
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49639103"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51977147"
 ---
 # <a name="virtual-machine-marketplace-tab"></a>Registerkarte „Marketplace“ für VMs
 
@@ -30,7 +30,7 @@ In diesem Abschnitt geben Sie allgemeine Informationen zu Ihrem Azure Marketplac
 
 ![Abschnitt „Übersicht“ der Registerkarte „Marketplace“ im Formular „Neues Angebot“ für virtuelle Computer](./media/publishvm_008.png)
 
-In der folgenden Tabelle sind Zweck und Inhalt dieser Felder beschrieben.
+In der folgenden Tabelle werden Zweck und Inhalt dieser Felder beschrieben.
 
 |  **Feld**                |     **Beschreibung**                                                          |
 |  ---------                |     ---------------                                                          |
@@ -40,7 +40,8 @@ In der folgenden Tabelle sind Zweck und Inhalt dieser Felder beschrieben.
 | **Beschreibung**           | Eine Beschreibung der Lösung.  Die maximale Länge beträgt 3.000 Zeichen, und die einfache HTML-Formatierung wird unterstützt. |
 | **Marketing Identifier** (Marketingbezeichner)  | Eine eindeutige URL, die diesem Angebot zugeordnet wird und normalerweise den Namen Ihrer Organisation und der Lösung enthält. Die maximale Länge beträgt 50 Zeichen.  Beispiel:  <br/> `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleApp`  |
 | **Preview Subscription IDs** (Abonnement-IDs für die Vorschauversion) | Sie können zwischen 1 und 100 Abonnement-IDs für Benutzer hinzufügen, die die Vorschauversion testen. Diese auf der Whitelist befindlichen Abonnements haben Zugriff auf das Angebot, nachdem es veröffentlicht wurde und bevor es live geschaltet wird. |
-| **Nützliche Links**          | Mehrfachauswahl von geschäftlichen und technischen Kategorien, denen das Angebot am ehesten zugeordnet werden kann.  Maximal fünf Kategorien können ausgewählt werden.  |
+| **Nützliche Links**          | Hinzufügen von URLs zu Dokumenten, Versionshinweisen, häufig gestellten Fragen usw. |
+| **Vorgeschlagene Kategorien (max. 5)** | Mehrfachauswahl von geschäftlichen und technischen Kategorien, denen das Angebot am ehesten zugeordnet werden kann.  Maximal fünf Kategorien können ausgewählt werden.  |
 |  |  |
 
 
@@ -57,7 +58,7 @@ Dieser zweite Abschnitt ist in drei Unterabschnitte unterteilt: **Logos**, **Scr
 | **Mittel**                | ICO-Bitmap, 90x90 Pixel                                                      |
 | **Groß**                 | ICO-Bitmap, 115x115 Pixel                                                   |
 | **Breit**                  | ICO-Bitmap, 255x115 Pixel                                                    |
-| **Hero**                  | Bitmap 815x290.  Optional, aber nachdem das Herologo einmal hochgeladen wurde, kann es nicht mehr gelöscht werden. |
+| **Hero**                  | Bitmap 815x290.  Optional, aber nachdem das Herologo hochgeladen wurde, kann es nicht mehr gelöscht werden. |
 | *Screenshots*  | Optional, aber maximal fünf Screenshots pro SKU. |
 | **Name**                  | Name oder Titel <!-- TODO - max char length? none specified in UI -->                               |
 | **Image**                 | Bildschirmaufnahme, 533x324 Pixel                                         |
@@ -108,10 +109,10 @@ In der folgenden Abbildung ist dargestellt, wie auf der Hauptproduktseite von Mi
 Im dritten Abschnitt können Sie Kundenleads sammeln, die über Ihre Azure Marketplace-Angebote generiert werden. Für diese Leadinformationen werden die folgenden Speicheroptionen (in einer Dropdownliste) bereitgestellt.
 
 * **Keine**: Dies ist die Standardeinstellung, und es werden keine Leadinformationen gesammelt.
-* Azure-Tabelle: Die Informationen werden in die Azure-Tabelle geschrieben, die mit einer Verbindungszeichenfolge angegeben werden.
+* Azure-Tabelle: Die Informationen werden in die Azure-Tabelle geschrieben, die mit einer Verbindungszeichenfolge angegeben wird.
 * Dynamics CRM Online: Die Informationen werden in die [Microsoft Dynamics 365 Online](https://dynamics.microsoft.com/)-Instanz geschrieben, die mit einer URL und Anmeldeinformationen für die Authentifizierung angegeben wird.
 * HTTPS-Endpunkt: Die Informationen werden als JSON-Nutzlast auf den angegebenen HTTPS-Endpunkt geschrieben.
-* Marketo: Die Informationen werden auf die angegebene [Marketo](https://www.marketo.com/)-Instanz geschrieben, die mit einer Server-ID, Munchkin-ID und Formular-ID angegeben wird.
+* Marketo: Die Informationen werden in die angegebene [Marketo](https://www.marketo.com/)-Instanz geschrieben, die mit einer Server-ID, Munchkin-ID und Formular-ID angegeben wird.
 * Salesforce: Die Informationen werden in eine [Salesforce](https://www.salesforce.com/)-Datenbank geschrieben, die mit einem Objektbezeichner angegeben wird.
 
 Nachdem Sie Ihr Angebot erfolgreich veröffentlicht haben, wird die Leadverbindung überprüft und ein Testlead automatisch an das konfigurierte Ziel gesendet. Die Leadinformationen sollten fortlaufend verwaltet werden. Es ist daher ratsam, diese Einstellungen sofort zu aktualisieren, wenn Änderungen an Ihrer Architektur für die Kundenverwaltung vorgenommen werden.

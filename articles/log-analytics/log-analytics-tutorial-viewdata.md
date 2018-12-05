@@ -9,18 +9,17 @@ editor: ''
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 07/31/2018
 ms.author: magoedte
 ms.custom: mvc
 ms.component: ''
-ms.openlocfilehash: 46bc932011a3699dbaced8316bc0e1b514c9a385
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: f953d13de78702328aef2b75d121e775c5f58f44
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48043055"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52876786"
 ---
 # <a name="view-or-analyze-data-collected-with-log-analytics-log-search"></a>Anzeigen oder Analysieren der mit der Log Analytics-Protokollsuche gesammelten Daten
 
@@ -32,7 +31,7 @@ In Log Analytics können Sie Protokollsuchen nutzen, indem Sie Abfragen zum Anal
 
 Für das Beispiel in diesem Tutorial muss ein virtueller Computer vorhanden sein, der [mit dem Log Analytics-Arbeitsbereich verbunden](log-analytics-quick-collect-azurevm.md) ist.  
 
-Für die Erstellung und Bearbeitung von Abfragen sowie die interaktive Verwendung zurückgegebener Daten stehen zwei Methoden zur Verfügung.  Verwenden Sie für einfache Abfragen die Seite „Protokollsuche“ im Azure-Portal. Für erweiterte Abfragen können Sie das Advanced Analytics-Portal nutzen. Weitere Informationen zu den Unterschieden zwischen den beiden Portalen in Bezug auf die Funktionalität finden Sie unter [Portale zum Erstellen und Bearbeiten von Protokollabfragen in Azure Log Analytics](log-analytics-log-search-portals.md).
+Für die Erstellung und Bearbeitung von Abfragen sowie die interaktive Verwendung zurückgegebener Daten stehen zwei Methoden zur Verfügung.  Verwenden Sie für einfache Abfragen die Seite „Protokollsuche“ im Azure-Portal. Für erweiterte Abfragen können Sie das Advanced Analytics-Portal nutzen. Weitere Informationen zu den Unterschieden zwischen den beiden Portalen in Bezug auf die Funktionalität finden Sie unter [Portale zum Erstellen und Bearbeiten von Protokollabfragen in Azure Log Analytics](../azure-monitor/log-query/portals.md).
 
 In diesem Tutorial arbeiten wir mit der Protokollsuche im Azure-Portal. 
 

@@ -8,12 +8,12 @@ ms.date: 06/26/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 343264f90ecf067786db9c0096625b87b2dbd319
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 40b8dfef3100ff8440165de74fb41f6b36afe37a
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51004407"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52315102"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-azure-functions-for-azure-iot-edge"></a>Verwenden von Visual Studio Code zum Entwickeln und Debuggen von Azure-Funktionen für Azure IoT Edge
 
@@ -71,6 +71,7 @@ Es gibt vier Elemente in der Projektmappe:
    >Die Umgebungsdatei wird nur erstellt, wenn Sie ein Imagerepository für das Modul angeben. Wenn Sie die „localhost“-Standardeinstellungen zum lokalen Testen und Debuggen akzeptiert haben, müssen Sie keine Umgebungsvariablen deklarieren. 
 
 * Eine Datei **deployment.template.json**, in der Ihr neues Modul zusammen mit dem Beispielmodul **tempSensor**, mit dem Daten zum Testen simuliert werden, aufgeführt ist. Weitere Informationen zur Funktionsweise von Bereitstellungsmanifesten finden Sie unter [Bereitstellen von Modulen und Einrichten von Routen mithilfe von Bereitstellungsmanifesten](module-composition.md).
+* Eine **deployment.debug.template.json**-Datei enthält die Debugversion Ihrer Modulimages mit den entsprechenden Containeroptionen.
 
 ## <a name="develop-your-module"></a>Entwickeln Ihres Moduls
 
@@ -79,12 +80,10 @@ Der im Lieferumfang der Projektmappe enthaltene standardmäßige Azure-Funktions
 Wenn Sie bereit sind, die Azure Function-Vorlage mit Ihrem eigenen Code anzupassen, erstellen Sie mit den [Azure IoT Hub SDKs](../iot-hub/iot-hub-devguide-sdks.md) Module, die die wesentlichen Anforderungen für IoT-Lösungen wie Sicherheit, Geräteverwaltung und Zuverlässigkeit berücksichtigen. 
 
 ## <a name="build-your-module-for-debugging"></a>Erstellen Ihres Moduls zum Debuggen
-1. Um mit dem Debuggen zu beginnen, müssen Sie mithilfe von **Dockerfile.amd64.debug** Ihr Docker-Image neu erstellen und Ihre Edge-Lösung erneut bereitstellen. Navigieren Sie im VS Code-Explorer zur Datei `deployment.template.json`. Aktualisieren Sie Ihre Funktionsimage-URL, indem Sie am Ende `.debug` hinzufügen.
-
-    ![Erstellen eines Debugimages](./media/how-to-debug-csharp-function/build-debug-image.png)
-
+1. Um mit dem Debuggen zu beginnen, müssen Sie mithilfe von **Dockerfile.amd64.debug** Ihr Docker-Image neu erstellen und Ihre Edge-Lösung erneut bereitstellen. Navigieren Sie im VS Code-Explorer zur Datei `deployment.debug.template.json`.
 2. Erstellen Sie Ihre Lösung neu. Geben Sie in der Befehlspalette von Visual Studio Code den Befehl **Azure IoT Edge: Build IoT Edge solution** ein, und führen Sie ihn aus.
-3. Klicken Sie im Azure IoT Hub-Geräte-Explorer mit der rechten Maustaste auf eine IoT Edge-Geräte-ID, und wählen Sie dann **Bereitstellung für Edge-Gerät erstellen** aus. Wählen Sie die Datei `deployment.json` im Ordner `config` aus. Sie sehen nun, dass die Bereitstellung erfolgreich mit einer Bereitstellungs-ID im integrierten Terminal von VS Code erstellt wurde.
+3. Wählen Sie in der Befehlspalette die Datei `deployment.debug.template.json` für die Projektmappe aus. 
+4. Klicken Sie im Azure IoT Hub-Geräte-Explorer mit der rechten Maustaste auf eine IoT Edge-Geräte-ID, und wählen Sie dann **Bereitstellung für Edge-Gerät erstellen** aus. Wählen Sie die Datei `deployment.debug.amd64.json` im Ordner `config` aus. Sie sehen nun, dass die Bereitstellung erfolgreich mit einer Bereitstellungs-ID im integrierten Terminal von VS Code erstellt wurde.
 
 Überprüfen Sie Ihren Containerstatus im VS Code-Docker-Explorer oder durch Ausführen des Befehls `docker ps` im Terminal.
 

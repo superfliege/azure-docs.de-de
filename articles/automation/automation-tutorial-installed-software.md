@@ -11,12 +11,12 @@ ms.service: automation
 ms.component: change-inventory-management
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: ad9fc7deb73cdcbcf83cc10b9b28f7d7e4ac7661
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: 6ff8bccc7037782b2709340312f0602b4cd7ab1f
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52283790"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52834331"
 ---
 # <a name="discover-what-software-is-installed-on-your-azure-and-non-azure-machines"></a>Ermitteln der Software, die auf Ihren Azure-Computern und anderen Computern installiert ist
 
@@ -70,7 +70,7 @@ Klicken Sie auf **+ Azure-VM hinzufügen**. Daraufhin wird die Seite **Virtuelle
 
 ## <a name="onboard-a-non-azure-machine"></a>Integrieren eines Nicht-Azure-Computers
 
-Wenn Sie einen Azure-fremden Computer hinzufügen möchten, installieren den passenden Agent für das Betriebssystem ([Windows](../log-analytics/log-analytics-agent-windows.md) oder [Linux](automation-linux-hrw-install.md)). Navigieren Sie nach der Installation des Agents zu Ihrem Automation-Konto und dort unter **KONFIGURATIONSVERWALTUNG** zu **Bestand**. Wenn Sie auf **Computer verwalten** klicken, wird eine Liste mit den Computern angezeigt, die mit Ihrem Log Analytics-Arbeitsbereich verknüpft sind und für die die Lösung nicht aktiviert ist. Wählen Sie die passende Option für Ihre Umgebung aus:
+Wenn Sie einen Azure-fremden Computer hinzufügen möchten, installieren den passenden Agent für das Betriebssystem ([Windows](../azure-monitor/platform/agent-windows.md) oder [Linux](automation-linux-hrw-install.md)). Navigieren Sie nach der Installation des Agents zu Ihrem Automation-Konto und dort unter **KONFIGURATIONSVERWALTUNG** zu **Bestand**. Wenn Sie auf **Computer verwalten** klicken, wird eine Liste mit den Computern angezeigt, die mit Ihrem Log Analytics-Arbeitsbereich verknüpft sind und für die die Lösung nicht aktiviert ist. Wählen Sie die passende Option für Ihre Umgebung aus:
 
 * **Enable on all available machines** (Auf allen verfügbaren Computern aktivieren): Diese Option aktiviert die Lösung auf allen Computern, die derzeit mit Ihrem Log Analytics-Arbeitsbereich verknüpft sind.
 * **Enable on all available machines and future machines** (Auf allen verfügbaren und zukünftigen Computern aktivieren): Diese Option aktiviert die Lösung auf allen Computern, die derzeit mit Ihrem Log Analytics-Arbeitsbereich verknüpft sind, sowie auf allen Computern, die dem Arbeitsbereich noch hinzugefügt werden.
@@ -113,7 +113,7 @@ ConfigurationData
 | summarize arg_max(TimeGenerated, *) by SoftwareName, Computer
 ```
 
-Weitere Informationen zur Ausführung von Abfragen und zum Durchsuchen von Protokolldateien in Log Analytics finden Sie unter [Azure Log Analytics](../log-analytics/log-analytics-queries.md).
+Weitere Informationen zur Ausführung von Abfragen und zum Durchsuchen von Protokolldateien in Log Analytics finden Sie unter [Azure Log Analytics](../azure-monitor/log-query/log-query-overview.md).
 
 ### <a name="single-machine-inventory"></a>Bestandsermittlung für einen einzelnen Computer
 

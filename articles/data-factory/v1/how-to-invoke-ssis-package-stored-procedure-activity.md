@@ -13,12 +13,12 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: jingwang
-ms.openlocfilehash: fe2b509b62884c1cea554bc8dc5df25489205264
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: eb9d35b132a0aa3f0702604444f8a760bf66cf9a
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46966954"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52275580"
 ---
 # <a name="invoke-an-ssis-package-using-stored-procedure-activity-in-azure-data-factory"></a>Aufrufen eines SSIS-Pakets mithilfe einer Aktivität einer gespeicherten Prozedur in Azure Data Factory
 In diesem Artikel wird das Aufrufen eines SSIS-Pakets aus einer Azure Data Factory-Pipeline mithilfe einer Aktivität einer gespeicherten Prozedur beschrieben. 
@@ -236,7 +236,7 @@ In diesem Schritt erstellen Sie einen verknüpften Dienst, um Ihre Azure SQL-Dat
 ### <a name="create-an-output-dataset"></a>Erstellen eines Ausgabedatasets
 Dieses Ausgabedataset ist ein Dummy-Dataset, das die Grundlage für den Zeitplan der Pipeline bildet. Beachten Sie, dass „Frequency“ auf „Hour“ und „interval“ auf „1“ festgelegt ist. Daher wird die Pipeline einmal pro Stunde innerhalb der Anfangs- und Endzeiten der Pipeline ausgeführt. 
 
-1. Erstellen Sie eine OuputDataset.json-Datei mit dem folgenden Inhalt: 
+1. Erstellen Sie eine OutputDataset.json-Datei mit dem folgenden Inhalt: 
     
     ```json
     {

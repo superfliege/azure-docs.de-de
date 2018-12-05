@@ -10,12 +10,12 @@ ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.workload: big-data
 ms.topic: overview
 ms.date: 01/26/2018
-ms.openlocfilehash: f865086a7e57898adb7d43ec0c02c7d38ef0da9c
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 85436fedacc765dcdf6a8005cf96f3d63312504c
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46365571"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52868802"
 ---
 # <a name="what-is-azure-time-series-insights"></a>Was ist Azure Time Series Insights?
 
@@ -34,7 +34,7 @@ Wenn Sie eine Anwendung zur internen Verwendung oder zur Verwendung durch extern
 
 Wenn Sie nicht sicher sind, ob es sich bei Ihren Daten um Zeitreihendaten handelt, erhalten Sie hier alle wichtigen Informationen.  Zeitreihendaten stellen dar, wie eine Ressource oder ein Prozess sich im Zeitablauf ändert.  Sie sind insofern eindeutig, als sie über einen Zeitstempel verfügen und Zeit als Achse am aussagekräftigsten ist.  Zeitreihendaten gehen normalerweise in zeitlicher Reihenfolge ein und werden in der Regel als Einfügung und nicht als Aktualisierung in der Datenbank behandelt.  Da in Time Series Insights jedes neue Ereignis als Zeile erfasst und gespeichert wird, werden Änderungen im Lauf der Zeit gemessen, sodass Sie zurückblicken und zukünftige Änderungen vorhersagen können.  Die Speicherung, Indizierung, Abfrage, Analyse und Visualisierung großer Mengen an Zeitreihendaten können eine Herausforderung darstellen.  
 
-## <a name="video"></a>Video: 
+## <a name="video"></a>Video
 
 ### <a name="in-this-video-we-provide-an-overview-of-time-series-insights-a-cloud-based-iot-analytics-platformbr"></a>In diesem Video zeigen wir eine Übersicht über Time Series Insights, eine cloudbasierte IoT-Analyseplattform.</br>
 

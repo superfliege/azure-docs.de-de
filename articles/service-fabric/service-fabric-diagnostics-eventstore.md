@@ -3,7 +3,7 @@ title: Azure Service Fabric EventStore | Microsoft-Dokumentation
 description: Informationen zu EventStore von Azure Service Fabric
 services: service-fabric
 documentationcenter: .net
-author: dkkapur
+author: srrengar
 manager: timlt
 editor: ''
 ms.assetid: ''
@@ -12,27 +12,28 @@ ms.devlang: dotNet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 04/25/2018
-ms.author: dekapur
-ms.openlocfilehash: 1d235d5a75975c8d58cad1bbde0f16df2b1b3e7a
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.date: 11/21/2018
+ms.author: srrengar
+ms.openlocfilehash: cd58e24a51b153d6bf217f7d32a82e882183ed73
+ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34206515"
+ms.lasthandoff: 11/22/2018
+ms.locfileid: "52290670"
 ---
 # <a name="eventstore-service-overview"></a>Übersicht über den EventStore-Dienst
 
->[!NOTE]
->Ab Service Fabric-Version 6.2 sind die EventStore-APIs derzeit nur für unter Azure ausgeführte Windows-Cluster als Vorschauversion verfügbar. Wir arbeiten daran, diese Funktionalität sowohl für Linux als auch für unseren eigenständigen Cluster zu portieren.
-
 ## <a name="overview"></a>Übersicht
 
-Der EventStore-Dienst, eingeführt in Version 6.2, ist eine Überwachungsoption in Service Fabric und bietet eine Möglichkeit, den Zustand des Clusters oder der Workloads zu einem bestimmten Zeitpunkt zu verstehen. Der EventStore-Dienst macht Service Fabric-Ereignisse über APIs verfügbar, sodass Aufrufe erfolgen können. Diese EventStore-APIs ermöglichen es Ihnen, den Cluster direkt abzufragen, um Diagnosedaten zu einer Entität im Cluster abzurufen, Sie können bei folgenden Fragestellungen hilfreich sein:
+Der EventStore-Dienst, eingeführt in Version 6.2, ist eine Überwachungsoption in Service Fabric und bietet eine Möglichkeit, den Zustand des Clusters oder der Workloads zu einem bestimmten Zeitpunkt zu verstehen. Der EventStore-Dienst macht Service Fabric-Ereignisse über einen Satz von APIs (Zugriff über REST-Endpunkte oder über die Clientbibliothek) verfügbar. Diese EventStore-APIs ermöglichen es Ihnen, den Cluster direkt abzufragen, um Diagnosedaten zu einer Entität im Cluster abzurufen, Sie können bei folgenden Fragestellungen hilfreich sein:
+
 * Diagnostizieren von Problemen bei der Entwicklung oder bei Tests oder an den Punkten, an denen Sie möglicherweise eine Überwachungspipeline verwenden.
 * Sicherstellen, dass am Cluster vorgenommene Verwaltungsaktionen ordnungsgemäß vom Cluster ausgeführt werden.
 
 Unter [Service Fabric-Ereignisse](service-fabric-diagnostics-event-generation-operational.md) finden Sie eine vollständige Auflistung der in EventStore verfügbaren Ereignisse.
+
+>[!NOTE]
+>Ab Service Fabric-Version 6.2 sind die EventStore-APIs derzeit nur für unter Azure ausgeführte Windows-Cluster als Vorschauversion verfügbar. Wir arbeiten daran, diese Funktionalität sowohl für Linux als auch für unseren eigenständigen Cluster zu portieren.
 
 Der EventStore-Dienst kann nach Ereignissen abgefragt werden, die in Ihrem Cluster für jede Entität und jeden Entitätstyp verfügbar sind. Dies bedeutet, dass Sie Ereignisse auf den folgenden Ebenen abfragen können:
 * Cluster: Clusterereignisse auf allen Ebenen
@@ -49,6 +50,8 @@ Der EventStore-Dienst kann nach Ereignissen abgefragt werden, die in Ihrem Clust
 
 
 Der EventStore-Dienst hat auch die Möglichkeit, Ereignisse in Ihrem Cluster zu korrelieren. Durch den Blick auf Ereignisse, die gleichzeitig von unterschiedlichen Entitäten geschrieben wurden und sich möglicherweise gegenseitig beeinträchtigt haben, kann der EventStore-Dienst diese Ereignisse verknüpfen und beim Identifizieren von Ursachen für Aktivitäten in Ihrem Cluster helfen. Wenn beispielsweise eine Anwendung ohne veranlasste Änderung fehlerhaft wird, sucht EventStore auch nach anderen Ereignissen, die von der Plattform verfügbar gemacht werden, und kann diese mit einem `NodeDown`-Ereignis korrelieren. Das beschleunigt die Fehlererkennung und Analyse der Hauptursachen.
+
+Wir empfehlen die Verwendung von EventStore für eine schnelle Analyse und eine Momentaufnahme der Arbeitsweise des Clusters. Anhand dieser Einblicke können Sie feststellen, ob alles erwartungsgemäß funktioniert.
 
 Informationen zu ersten Schritten mit dem EventStore-Dienst finden Sie unter [Abfragen von EventStore-APIs nach Clusterereignissen](service-fabric-diagnostics-eventstore-query.md).
 

@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 09/04/2017
 ms.author: geg
-ms.openlocfilehash: 7de9d1674860a6369c1dc09462a06def672fbdf2
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 0d78ae294cea383fbe59a1f7968d8bf18b1942d1
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50420522"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52422955"
 ---
 # <a name="use-the-azure-portal-to-restore-virtual-machines"></a>Wiederherstellen virtueller Computer über das Azure-Portal
 Schützen Sie Ihre Daten, indem Sie in festgelegten Abständen Momentaufnahmen Ihrer Daten erstellen. Diese Momentaufnahmen werden als Wiederherstellungspunkte bezeichnet. Sie werden in Recovery Services-Tresoren gespeichert. Wenn es erforderlich ist, einen virtuellen Computer zu reparieren oder wiederherzustellen, können Sie den virtuellen Computer auf der Grundlage eines gespeicherten Wiederherstellungspunkts wiederherstellen. Beim Herstellen eines Wiederherstellungspunkts haben Sie folgende Möglichkeiten:
@@ -151,7 +151,7 @@ Klicken Sie auf dem Blatt **Wiederherstellungskonfiguration** auf **OK**, um die
 Die **direkte Wiederherstellung** erfolgt über die Registerkarte **Vorhandene ersetzen**.
 
 ## <a name="replace-existing-disks-from-a-restore-point"></a>Ersetzen vorhandener Datenträger über einen Wiederherstellungspunkt
-Die Option **Vorhandene ersetzen** hilft dabei, vorhandene Datenträger im aktuellen virtuellen Computer durch den ausgewählten Wiederherstellungspunkt zu ersetzen. Dieser Vorgang kann nur ausgeführt werden, wenn der aktuelle virtuelle Computer vorhanden ist. Wenn er aus irgendeinem Grund gelöscht wurde, kann dieser Vorgang nicht durchgeführt werden. Alternativ wird empfohlen, **Neu erstellen** für den virtuellen Computer oder die Datenträger durchzuführen, um mit den Wiederherstellungsvorgängen fortzufahren. Bei den Vorgängen zum Ersetzen vorhandener Datenträger werden als Vorsichtsmaßnahme die Daten vor dem Initiieren der Ersetzungsvorgänge gesichert. Wenn der Wiederherstellungspunkt mehr/weniger Datenträger als der aktuelle virtuelle Computer aufweist, dann wird die Anzahl der Datenträger im Wiederherstellungspunkt nur auf dem virtuellen Computer angezeigt. Die Option **Vorhandene ersetzen** wird derzeit nur für verwaltete Datenträger und unverschlüsselte virtuelle Computer unterstützt. Für [generalisierte VMs](https://docs.microsoft.com/azure/virtual-machines/windows/capture-image-resource) und für virtuelle Computer, die mit [benutzerdefinierte Images](https://azure.microsoft.com/resources/videos/create-a-custom-virtual-machine-image-in-azure-resource-manager-with-powershell/) erstellt wurden, wird sie nicht unterstützt.  
+Die Option **Vorhandene ersetzen** hilft dabei, vorhandene Datenträger im aktuellen virtuellen Computer durch den ausgewählten Wiederherstellungspunkt zu ersetzen. Dieser Vorgang kann nur ausgeführt werden, wenn der aktuelle virtuelle Computer vorhanden ist. Wenn er aus irgendeinem Grund gelöscht wurde, kann dieser Vorgang nicht durchgeführt werden. Alternativ wird empfohlen, **Neu erstellen** für den virtuellen Computer oder die Datenträger durchzuführen, um mit den Wiederherstellungsvorgängen fortzufahren. Bei diesem Vorgang werden die Daten als Vorsichtsmaßnahme vor dem Initiieren der Datenträgerersetzungsvorgänge gesichert. Dadurch werden im Tresor eine Momentaufnahme und ein Wiederherstellungspunkt erstellt und mit der Beibehaltungsdauer versehen, die in der konfigurierten Sicherungsrichtlinie geplant wurde. Wenn der Wiederherstellungspunkt mehr/weniger Datenträger als der aktuelle virtuelle Computer aufweist, dann wird die Anzahl der Datenträger im Wiederherstellungspunkt nur auf dem virtuellen Computer angezeigt. Die Option **Vorhandene ersetzen** wird derzeit nur für verwaltete Datenträger und unverschlüsselte virtuelle Computer unterstützt. Für [generalisierte VMs](https://docs.microsoft.com/azure/virtual-machines/windows/capture-image-resource) und für virtuelle Computer, die mit [benutzerdefinierte Images](https://azure.microsoft.com/resources/videos/create-a-custom-virtual-machine-image-in-azure-resource-manager-with-powershell/) erstellt wurden, wird sie nicht unterstützt.  
 
  Auf dem Blatt **Konfiguration wiederherstellen** muss als einzige Eingabe **Stagingort** ausgewählt werden.
 

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/28/2018
+ms.date: 11/26/2018
 ms.author: rkarlin
-ms.openlocfilehash: 925f45f8d251882cfc8acf4b04902cea45451dd4
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 91ee57ccd676d1d5e806e3f22eed3389d0fe5e73
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51007254"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52334192"
 ---
 # <a name="customize-os-security-configurations-in-azure-security-center-preview"></a>Anpassen der Sicherheitskonfigurationen von Betriebssystemen in Azure Security Center (Vorschau)
 
@@ -32,7 +32,7 @@ Azure Security Center überwacht Sicherheitskonfigurationen durch Anwenden von [
 Durch Anpassen der Regeln können Organisationen steuern, welche Konfigurationsoptionen sich für ihre Umgebung besser eignen. Sie können eine benutzerdefinierte Bewertungsrichtlinie einrichten und diese auf alle passenden Computer im Abonnement anwenden.
 
 > [!NOTE]
-> - Derzeit steht die Anpassung der Sicherheitskonfiguration von Betriebssystemen nur für die Windows Server-Versionen 2008, 2008 R2, 2012 und 2012 R2 zur Verfügung.
+> - Derzeit steht die Anpassung der Sicherheitskonfiguration von Betriebssystemen nur für die Windows Server-Versionen 2008, 2008 R2, 2012, 2012 R2 und 2016 zur Verfügung.
 > - Die Konfiguration gilt für alle VMs und Computer, die mit allen Arbeitsbereichen im ausgewählten Abonnement verbunden sind.
 > - Die Anpassung der Sicherheitskonfiguration von Betriebssystemen ist nur im Security Center-Tarif „Standard“ verfügbar.
 >
@@ -60,7 +60,7 @@ Um die standardmäßige Sicherheitskonfiguration von Betriebssystemen in Securit
 3.  Klicken Sie in der Zeile des Abonnements, das Sie anpassen möchten, auf **Einstellungen bearbeiten**.
 
 4. Wählen Sie **Sicherheitskonfigurationen bearbeiten** aus.  
-    
+
     ![Das Fenster „Sicherheitskonfigurationen bearbeiten“](media/security-center-customize-os-security-config/blade.png)
 
 5. Befolgen Sie die Schritte zum Herunterladen, Bearbeiten und Hochladen der geänderten Datei.

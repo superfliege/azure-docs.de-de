@@ -10,18 +10,17 @@ ms.assetid: abb07f6c-b356-4f15-85f5-60e4415d0ba2
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/14/2017
 ms.author: magoedte
 ms.custom: mvc
 ms.component: ''
-ms.openlocfilehash: 8ab6107279fe546205605b24da53073f49c7a204
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: f4d46b7b8ba245c4a7e3eddbe0615c47a1e99096
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51014447"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52870435"
 ---
 # <a name="create-and-share-dashboards-of-log-analytics-data"></a>Erstellen und Freigeben von Dashboards von Log Analytics-Daten
 
@@ -56,7 +55,7 @@ Sie werden aufgefordert, für die Veröffentlichung des Dashboards ein Abonnemen
 
 Sie können im Azure-Portal im Portal für die Protokollsuche einfache Abfragen in einer einzelnen Zeile erstellen. Das Portal für die Protokollsuche kann verwendet werden, ohne ein externes Portal starten zu müssen. Zudem können Sie damit eine Vielzahl von Funktionen mit Protokollsuchen durchführen, einschließlich der Erstellung von Warnungsregeln, der Erstellung von Computergruppen und des Exports der Abfrageergebnisse. 
 
-Das [Log Analytics-Portal](../log-analytics/query-language/get-started-analytics-portal.md) ist ein dediziertes Portal mit erweiterten Funktionen, die nicht im Portal für die Protokollsuche verfügbar sind. Zu den Funktionen zählen die Möglichkeiten, eine Abfrage in mehreren Zeilen zu bearbeiten, Codes selektiv auszuführen, kontextabhängige IntelliSense-Funktionen auszuführen und intelligente Analysen durchzuführen. Im Advanced Analytics-Portal erstellen Sie eine Leistungsansicht in grafischer Form, speichern sie für eine zukünftige Suche und heften sie an das zuvor erstellte freigegebene Dashboard.   
+Das [Log Analytics-Portal](../azure-monitor/log-query/get-started-portal.md) ist ein dediziertes Portal mit erweiterten Funktionen, die nicht im Portal für die Protokollsuche verfügbar sind. Zu den Funktionen zählen die Möglichkeiten, eine Abfrage in mehreren Zeilen zu bearbeiten, Codes selektiv auszuführen, kontextabhängige IntelliSense-Funktionen auszuführen und intelligente Analysen durchzuführen. Im Advanced Analytics-Portal erstellen Sie eine Leistungsansicht in grafischer Form, speichern sie für eine zukünftige Suche und heften sie an das zuvor erstellte freigegebene Dashboard.   
 
 Das Advanced Analytics-Portal wird über einen Link im Portal für die Protokollsuche gestartet.<br> ![Starten des Advanced Analytics-Portals](media/log-analytics-tutorial-dashboards/log-analytics-advancedportal-01.png)
 

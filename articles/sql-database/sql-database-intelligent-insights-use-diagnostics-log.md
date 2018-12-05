@@ -12,12 +12,12 @@ ms.author: v-daljep
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 04/04/2018
-ms.openlocfilehash: 70096c8f3a5c07fa757b68494c04519b63435dcd
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: fb18507cc9b7aef92a07e6c34c99403e47be1c88
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47166893"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51977096"
 ---
 # <a name="use-the-intelligent-insights-azure-sql-database-performance-diagnostics-log"></a>Verwenden des Intelligent Insights-Diagnoseprotokolls für die Leistung von Azure SQL-Datenbank
 
@@ -39,9 +39,7 @@ Die Kopfzeile des Protokolls ist allgemein gehalten und besteht aus dem Zeitstem
 
 ## <a name="issue-id-and-database-affected"></a>Problem-ID und betroffene Datenbank
 
-Die ID zur Bestimmung des Problems (issueId_d) bietet eine Möglichkeit zum eindeutigen Nachverfolgen von Leistungsproblemen, bis sie gelöst werden können. Intelligent Insights versieht jeden Lebenszyklus eines Problems mit den Angaben „Active“ (Aktiv), „Verifying“ (Wird überprüft) oder „Complete“ (Abgeschlossen). In jeder dieser Statusphasen kann Intelligent Insights mehrere Ereignisdatensätze im Protokoll aufzeichnen. Für jeden dieser Einträge bleibt die ID-Nummer des Problems eindeutig. Intelligent Insights verfolgt das Problem in seinem gesamten Lebenszyklus und generiert alle 15 Minuten einen Einblick in das Diagnoseprotokoll.
-
-Nachdem ein Leistungsproblem erkannt wurde und solange es vorliegt, wird das Problem in der Eigenschaft „Status“ (status_s) als „Active“ (Aktiv) gemeldet. Sobald ein erkanntes Problem behandelt wird, wird es überprüft und in der Eigenschaft „Status“ (status_s) als „Verifying“ (Wird überprüft) gemeldet. Wenn das Problem nicht mehr vorhanden ist, wird es in der Eigenschaft „Status“ (status_s) als „Complete“ (Abgeschlossen) gemeldet.
+Die ID zur Bestimmung des Problems (IssueId_d) bietet eine Möglichkeit zum besonderen Nachverfolgen von Leistungsproblemen bis zu ihrer Lösung. Mehrere Ereignisdatensätze in dem Protokoll, das den Status dieses Problems angibt, weisen dieselbe Problem-ID auf.
 
 Neben der „Issue ID“ (Problem-ID) meldet das Diagnoseprotokoll den Zeitstempel des Starts (intervalStartTime_t) und Endes (intervalEndTime_t) des jeweiligen Ereignisses, das in Zusammenhang mit einem im Diagnoseprotokoll gemeldeten Problem steht.
 

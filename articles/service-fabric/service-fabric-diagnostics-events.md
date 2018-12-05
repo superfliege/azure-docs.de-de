@@ -3,7 +3,7 @@ title: Azure Service Fabric-Ereignisse | Microsoft-Dokumentation
 description: Erfahren Sie, wie Service Fabric-Ereignisse vorkonfiguriert bereitgestellt werden, um Sie bei der Überwachung Ihres Azure Service Fabric-Clusters zu unterstützen.
 services: service-fabric
 documentationcenter: .net
-author: dkkapur
+author: srrengar
 manager: timlt
 editor: ''
 ms.assetid: ''
@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 04/25/2018
-ms.author: dekapur
-ms.openlocfilehash: ca63d67f6d7c19b4ca6928c4cc0f9ccb06eace2b
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.date: 11/21/2018
+ms.author: srrengar
+ms.openlocfilehash: 936a47593b9db6e4989c30b2df37dfd82c286c59
+ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49402980"
+ms.lasthandoff: 11/22/2018
+ms.locfileid: "52290517"
 ---
 # <a name="service-fabric-events"></a>Service Fabric-Ereignisse 
 
@@ -33,20 +33,20 @@ Die Service Fabric-Plattform schreibt mehrere strukturierte Ereignisse für die 
 
 Eine vollständige Liste der von der Plattform verfügbar gemachten Ereignisse finden Sie unter [Auflistung der Service Fabric-Ereignisse](service-fabric-diagnostics-event-generation-operational.md).
 
-Nachfolgend sind Sie einige Beispiele für wichtige Szenarien aufgeführt, für die Sie Ereignisse in Ihrem Cluster anzeigen sollten. 
-1. Lebenszyklusereignisse von Knoten: Ereignisse wie das Erstellen, Entfernen, Aktivieren, Deaktivieren oder Neustarten von Knoten werden verfügbar gemacht und geben Ihnen einen Überblick über das, was passiert ist. Mit ihrer Hilfe können Sie feststellen, ob es ein Problem mit dem Computer gibt, oder ob eine über Service Fabric aufgerufene API den Status eines Knotens geändert hat.
-1. Clusterupgrade: Bei einem Clusterupgrade (SF-Version oder Konfigurationsänderung) sehen Sie, wie das Upgrade initiiert, in den einzelnen Upgradedomänen (UDs) angewendet und abgeschlossen wird (oder ein Rollback erfolgt). 
-1. Anwendungsupgrades: Ähnlich wie bei Clusterupgrades gibt es eine komplexe Reihe von Ereignissen während der Anwendung des Upgrades. Es kann hilfreich sein, diese Ereignisse zu verstehen: wann ein Upgrade geplant wurde, den aktuellen Stand des Upgrades und die allgemeine Abfolge der Ereignisse. Damit können Sie auf praktische Weise zurückverfolgen, welche Upgrades erfolgreich angewandt wurden.
-1. Bereitstellen/Löschen von Anwendungen/Diensten: Es gibt Ereignisse für jede Anwendung, jeden Dienst und jeden Container, die bzw. der erstellt oder gelöscht wird.
-1. Partitionsverschiebungen (Neukonfiguration): Jedes Mal, wenn eine statusbehaftete Partition neu konfiguriert wird (Änderung in der Replikatgruppe), wird ein Ereignis protokolliert. Dies ist hilfreich, wenn Sie verstehen möchten, wie oft die Replikatgruppe der Partition geändert wird, bzw. um nachzuverfolgen, in welchem Knoten das primäre Replikat zu einem beliebigen Zeitpunkt ausgeführt wurde.
-1. Chaos-Ereignisse: Wenn Sie den [Chaos](service-fabric-controlled-chaos.md)-Dienst von Service Fabric nutzen, werden bei jedem Start oder Anhalten des Diensts oder beim Einfügen eines Fehlers in das System Ereignisse protokolliert.
-1. Integritätsereignisse: Service Fabric macht jedes Mal Integritätsereignisse verfügbar, wenn ein Integritätsbericht mit dem Ergebnis „Warning“ oder „Error“ erstellt wird, eine Entität wieder in den Integritätsstatus „OK“ wechselt oder ein Integritätsbericht abläuft. Diese Ereignisse sind zum Nachverfolgen von Integritätsverlaufsstatistiken für eine Entität sehr hilfreich. 
+Nachfolgend sind Sie einige Beispiele für Szenarien aufgeführt, für die Sie Ereignisse in Ihrem Cluster anzeigen sollten. 
+* Lebenszyklusereignisse von Knoten: Ereignisse wie das Erstellen, Entfernen, Herunter-/Hochskalieren, Aktivieren, Deaktivieren oder Neustarten von Knoten werden verfügbar gemacht und geben Ihnen einen Überblick über das, was passiert ist. Mit ihrer Hilfe können Sie feststellen, ob es ein Problem mit dem Computer gibt, oder ob eine über Service Fabric aufgerufene API den Status eines Knotens geändert hat.
+* Clusterupgrade: Bei einem Clusterupgrade (SF-Version oder Konfigurationsänderung) sehen Sie, wie das Upgrade initiiert, in den einzelnen Upgradedomänen angewendet und abgeschlossen wird (oder ein Rollback erfolgt). 
+* Anwendungsupgrades: Wie bei Clusterupgrades gibt es eine komplexe Reihe von Ereignissen während der Anwendung des Upgrades. Es kann hilfreich sein, diese Ereignisse zu verstehen: wann ein Upgrade geplant wurde, den aktuellen Stand des Upgrades und die allgemeine Abfolge der Ereignisse. Damit können Sie auf praktische Weise zurückverfolgen, welche Upgrades erfolgreich angewandt wurden oder ob ein Rollback ausgelöst wurde.
+* Bereitstellen/Löschen von Anwendungen/Diensten: Es gibt Ereignisse für jede Anwendung, jeden Dienst und jeden Container, die bzw. der erstellt oder gelöscht wird. Dies ist hilfreich beim horizontalen Herunter- oder Hochskalieren, d. h. beim Erhöhen der Anzahl der Replikate.
+* Partitionsverschiebungen (Neukonfiguration): Jedes Mal, wenn eine statusbehaftete Partition neu konfiguriert wird (Änderung in der Replikatgruppe), wird ein Ereignis protokolliert. Dies ist hilfreich, wenn Sie verstehen möchten, wie oft die Replikatgruppe der Partition geändert wird oder wie oft ein Failover erfolgt, bzw. um nachzuverfolgen, in welchem Knoten das primäre Replikat zu einem beliebigen Zeitpunkt ausgeführt wurde.
+* Chaos-Ereignisse: Wenn Sie den [Chaos](service-fabric-controlled-chaos.md)-Dienst von Service Fabric nutzen, werden bei jedem Start oder Anhalten des Diensts oder beim Einfügen eines Fehlers in das System Ereignisse protokolliert.
+* Integritätsereignisse: Service Fabric macht jedes Mal Integritätsereignisse verfügbar, wenn ein Integritätsbericht mit dem Ergebnis „Warning“ oder „Error“ erstellt wird, eine Entität wieder in den Integritätsstatus „OK“ wechselt oder ein Integritätsbericht abläuft. Diese Ereignisse sind zum Nachverfolgen von Integritätsverlaufsstatistiken für eine Entität sehr hilfreich. 
 
 ## <a name="how-to-access-events"></a>Zugriff auf Ereignisse
 
 Für den Zugriff auf Service Fabric-Ereignisse gibt es einige unterschiedliche Möglichkeiten:
-* Über den Betriebskanal Diese Ereignisse können über die Azure-Diagnoseerweiterung erfasst und zur Nutzung oder Einspeisung in ein Tool wie Azure Log Analytics an eine Speichertabelle gesendet werden. Wenn für einen Cluster „Diagnose“ aktiviert ist, wird der Azure-Diagnose-Agent in Ihrem Cluster bereitgestellt und standardmäßig so konfiguriert, dass er Protokolle aus dem Betriebskanal einliest. Erfahren Sie mehr dazu, wie Sie den [Azure-Diagnose-Agent](service-fabric-diagnostics-event-aggregation-wad.md) so konfigurieren, dass er die Diagnosekonfiguration des Clusters ändert, um mehr Protokolle oder Leistungsindikatoren aufzunehmen. 
-* Über die REST-API des EventStore-Diensts, über die Sie den Cluster direkt abfragen können, oder über die Service Fabric-Clientbibliothek Lesen Sie hierzu [Abfragen von EventStore-APIs nach Clusterereignissen](service-fabric-diagnostics-eventstore-query.md).
+* Die Ereignisse werden über Standardkanäle wie ETW-Protokolle/Windows-Ereignisprotokolle protokolliert und können von jedem Überwachungstool, das diese unterstützt (z. B. Log Analytics), visualisiert werden. Standardmäßig ist bei im Portal erstellten Clustern die Diagnose aktiviert, und der Windows Azure-Diagnose-Agent sendet die Ereignisse an Azure Table Storage. Dennoch müssen Sie dies in Ihre Log Analytics-Ressource integrieren. Erfahren Sie mehr dazu, wie Sie den [Azure-Diagnose-Agent](service-fabric-diagnostics-event-aggregation-wad.md) so konfigurieren, dass er die Diagnosekonfiguration des Clusters ändert, um mehr Protokolle oder Leistungsindikatoren aufzunehmen und [Log Analytics zu integrieren](service-fabric-diagnostics-event-analysis-oms.md).
+* Über die REST-API des EventStore-Diensts, über die Sie den Cluster direkt abfragen können, oder über die Service Fabric-Clientbibliothek. Lesen Sie hierzu [Abfragen von EventStore-APIs nach Clusterereignissen](service-fabric-diagnostics-eventstore-query.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Weitere Informationen zum Überwachen Ihres Clusters finden Sie unter [Überwachen des Clusters und der Plattform](service-fabric-diagnostics-event-generation-infra.md).

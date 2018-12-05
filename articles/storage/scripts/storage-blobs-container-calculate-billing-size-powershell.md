@@ -15,12 +15,12 @@ ms.devlang: powershell
 ms.topic: sample
 ms.date: 11/07/2017
 ms.author: fryu
-ms.openlocfilehash: c37b416578a76e9b12e29d68e413d851796ccc6f
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 7e28b8938c8c0eb258fbb599dd5765258a4d52e4
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2017
-ms.locfileid: "26368543"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52867374"
 ---
 # <a name="calculate-the-total-billing-size-of-a-blob-container"></a>Berechnen der Gesamtabrechnungsgröße eines Blobcontainers
 
@@ -37,7 +37,7 @@ Mit diesem Skript berechnen Sie die Größe eines Containers in Azure Blob Stora
 
 Die Gesamtgröße des Blobcontainers beinhaltet die Größe des eigentlichen Containers sowie die Größe aller Blobs unter dem Container.
 
-In den folgenden Abschnitten erfahren Sie, wie die Speicherkapazität für Blobcontainer und Blobs berechnet wird. Im folgenden Abschnitt steht Len(X) für die Anzahl von Zeichen in der Zeichenfolge.
+In den folgenden Abschnitten erfahren Sie, wie die Speicherkapazität für Blobcontainer und Blobs berechnet wird. Im folgenden Abschnitt steht Len(X) für die Anzahl von Zeichen in der Zeichenfolge.
 
 ### <a name="blob-containers"></a>Blobcontainer
 
@@ -103,16 +103,16 @@ Aufschlüsselung:
 * Für die Blockblobs:
     * 8 Bytes für die Blockliste.
     * Anzahl von Blöcken mal Größe der Block-ID in Bytes.
-    * Die Größe der Daten in allen Blöcken (mit und ohne Commit). 
-    
+    * Die Größe der Daten in allen Blöcken (mit und ohne Commit).
+
     >[!NOTE]
     >Bei Verwendung von Momentaufnahmen beinhaltet diese Größe nur die eindeutigen Daten für dieses Basis- oder Momentaufnahmeblob. Wenn die Blöcke ohne Commit nicht innerhalb einer Woche verwendet werden, werden sie der Garbage Collection zugeführt. Danach sind sie für die Abrechnung nicht mehr relevant.
 
 * Für Seitenblobs:
     * Die Anzahl nicht aufeinanderfolgender Seitenbereiche mit Daten mal 12 Bytes. Dies ist die Anzahl eindeutiger Seitenbereiche, die beim Aufrufen der API **GetPageRanges** angezeigt wird.
 
-    * Die Größe der Daten aller gespeicherten Seiten (in Bytes). 
-    
+    * Die Größe der Daten aller gespeicherten Seiten (in Bytes).
+
     >[!NOTE]
     >Bei Verwendung von Momentaufnahmen beinhaltet diese Größe nur die eindeutigen Seiten für das Basis- oder Momentaufnahmeblob, für das die Zählung durchgeführt wird.
 

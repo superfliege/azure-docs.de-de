@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: service-fabric
-ms.date: 04/09/2018
+ms.date: 11/29/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 65f6252ecfa4e5850824fc7aa2e6eca2bdb88692
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 5d8137b2ca6c47713b7a681090963dd2749dd1f2
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34205755"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52634046"
 ---
 # <a name="azure-powershell-samples"></a>Azure PowerShell-Beispiele
 
@@ -33,7 +33,6 @@ Die folgende Tabelle enthält Links zu Beispielen von PowerShell-Skripts, die Se
 |-|-|
 | **Cluster erstellen** ||
 | [Erstellen eines Clusters (Azure)](./scripts/service-fabric-powershell-create-secure-cluster-cert.md)| Erstellt einen Azure Service Fabric-Cluster. |
-|[Erstellen eines Testclusters (Azure)](./scripts/service-fabric-powershell-create-test-cluster.md)| Erstellt einen Service Fabric-Testcluster mit drei Knoten in Azure.|
 | **Verwalten des Clusters, der Knoten und der Infrastruktur** ||
 | [Hinzufügen eines Anwendungszertifikats](./scripts/service-fabric-powershell-add-application-certificate.md)| Fügt allen Knoten in einem Cluster ein X.509-Anwendungszertifikat hinzu. |
 | [Aktualisieren des RDP-Portbereichs auf Cluster-VMs](./scripts/service-fabric-powershell-change-rdp-port-range.md)|Ändert den RDP-Portbereich auf Clusterknoten-VMs in einem bereitgestellten Cluster|

@@ -8,12 +8,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 10/16/2018
-ms.openlocfilehash: 38a7a4fa3ac0b9bfb554deeb8086dca398e5cdc1
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 14049df1116205ec5e95b052049f53738dcf50b4
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49956169"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52863413"
 ---
 # <a name="quickstart-query-data-using-the-azure-data-explorer-python-library"></a>Schnellstart: Abfragen von Daten mit der Azure-Daten-Explorer-Bibliothek für Python
 
@@ -32,7 +32,7 @@ Dieser Schnellstart ist auch als [Azure-Notebook](https://notebooks.azure.com/Ma
 Installieren Sie *azure-kusto-data*.
 
 ```
-pip install azure-kusto-data==0.0.13
+pip install azure-kusto-data
 ```
 
 ## <a name="add-import-statements-and-constants"></a>Hinzufügen von Importanweisungen und Konstanten

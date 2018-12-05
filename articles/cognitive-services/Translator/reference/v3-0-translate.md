@@ -10,12 +10,12 @@ ms.component: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: bebe9b6565d618cb773de0379122a17bf7f70403
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: 847794d46addc7f3cba09437c2d2c6e8a3a04e89
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50914293"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52165423"
 ---
 # <a name="translator-text-api-30-translate"></a>Textübersetzungs-API 3.0: Translate
 
@@ -83,6 +83,11 @@ Die folgenden Anforderungsparameter werden in der Abfragezeichenfolge übergeben
   <tr>
     <td>toScript</td>
     <td>*Optionaler Parameter*.<br/>Gibt das Skript des Eingabetexts an.</td>
+  </tr>
+  <tr>
+    <td>allowFallback</td>
+    <td>*Optionaler Parameter*.<br/>Gibt an, dass für den Dienst ein Fallback zu einem allgemeinen System zulässig ist, wenn kein benutzerdefiniertes System vorhanden ist. Mögliche Werte sind: `true` (Standard) oder `false`.<br/><br/>`allowFallback=false` gibt an, dass für die Übersetzung nur Systeme verwendet werden sollen, die für die angegebene `category` in der Anforderung trainiert sind. Wenn eine Übersetzung von der Sprache X in die Sprache Y die Verkettung über eine Pivot- bzw. Zwischensprache E erfordert, müssen alle Systeme in der Kette (X->E und E->Y) benutzerdefiniert sein und die gleiche Kategorie aufweisen. Wird kein System mit der jeweiligen Kategorie gefunden, gibt die Anforderung den Statuscode 400 zurück. `allowFallback=true` gibt an, dass für den Dienst ein Fallback zu einem allgemeinen System zulässig ist, wenn kein benutzerdefiniertes System vorhanden ist.
+</td>
   </tr>
 </table> 
 
@@ -164,6 +169,21 @@ Eine erfolgreiche Antwort ist ein JSON-Array mit einem Ergebnis für jede Zeiche
 
 Beispiele für JSON-Antworten finden Sie im Abschnitt [Beispiele](#examples).
 
+## <a name="response-headers"></a>Antwortheader
+
+<table width="100%">
+  <th width="20%">Header</th>
+  <th>BESCHREIBUNG</th>
+    <tr>
+    <td>X-RequestId</td>
+    <td>Der Wert, der vom Dienst für die Identifizierung der Anforderung generiert wird. Er wird zu Problembehandlungszwecken verwendet.</td>
+  </tr>
+  <tr>
+    <td>X-MT-System</td>
+    <td>Gibt den Systemtyp an, der für jede zur Übersetzung angeforderte Zielsprache für die Übersetzung verwendet wurde. Bei dem Wert handelt es sich um eine durch Trennzeichen getrennte Liste von Zeichenfolgen. Jede Zeichenfolge gibt einen Typ an:<br/><ul><li>Custom: Die Anforderung enthält ein benutzerdefiniertes System, und mindestens ein benutzerdefiniertes System wurde während der Übersetzung verwendet.</li><li>Team: Alle anderen Anforderungen.</li></td>
+  </tr>
+</table> 
+
 ## <a name="response-status-codes"></a>Antwortstatuscodes
 
 Im Folgenden finden Sie die möglichen HTTP-Statuscodes, die eine Anforderung zurückgeben kann. 
@@ -186,6 +206,10 @@ Im Folgenden finden Sie die möglichen HTTP-Statuscodes, die eine Anforderung zu
   <tr>
     <td>403</td>
     <td>Die Anforderung ist nicht autorisiert. Weitere Informationen finden Sie in der Fehlermeldung. Diese weist oft darauf hin, dass alle kostenlosen Übersetzungen, die mit einer Testversion bereitgestellt wurden, aufgebraucht sind.</td>
+  </tr>
+  <tr>
+    <td>408</td>
+    <td>Die Anforderung konnte nicht ausgeführt werden, weil eine Ressource nicht vorhanden ist. Weitere Informationen finden Sie in der Fehlermeldung. Bei der Verwendung einer benutzerdefinierten `category` weist dies häufig darauf hin, dass das benutzerdefinierte Übersetzungssystem noch nicht zum Verarbeiten von Anforderungen verfügbar ist. Die Anforderung sollte nach einer Wartezeit (z. B. eine Minute) wiederholt werden.</td>
   </tr>
   <tr>
     <td>429</td>

@@ -11,15 +11,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/04/2018
+ms.date: 11/20/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6d8197e3695da8869806e44775f601d95b17fcb2
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 902c4c94cc7366af342816e9b4776af603711c8b
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44030529"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52275438"
 ---
 # <a name="know-the-terms"></a>Informationen zu Begriffen
 
@@ -39,7 +39,7 @@ Im Handbuch zur Architektur und technischen Bereitstellung werden mehrere allgem
    Domänenbenutzer der lokalen Domäne können auf die Server zugreifen und Dienste auf den VMs ausführen (beispielsweise DBMS-Dienste). Die Kommunikation und Namensauflösung zwischen lokal bereitgestellten VMs und in Azure bereitgestellten VMs ist möglich. Dieses typische Szenario wird für die Bereitstellung der meisten SAP-Ressourcen genutzt. Weitere Informationen finden Sie unter [Planung und Entwurf für VPN Gateway](../../../vpn-gateway/vpn-gateway-plan-design.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) und [Erstellen eines virtuellen Netzwerks mit einer Site-to-Site-Verbindung im Azure-Portal](../../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 - **Mandant**: Ein im Umfeld von HANA (große Instanz) bereitgestellter Kunde wird in einem *Mandanten* isoliert. Ein Mandant wird in der Schicht der Netzwerke, Speicher und von Compute von anderen Mandanten isoliert. Speicher- und Compute-Einheiten, die unterschiedlichen Mandanten zugewiesen sind, können einander auf der Ebene des Umfelds von HANA (große Instanz) nicht sehen und nicht miteinander kommunizieren. Ein Kunde kann Bereitstellungen in unterschiedlichen Mandanten durchführen. Auch dann ist die Kommunikation auf Ebene der großen HANA-Instanz nicht möglich.
 - **SKU-Kategorie:** Für HANA (große Instanz) werden die folgenden beiden SKU-Kategorien angeboten:
-    - **Typ I-Klasse**: S72, S72m, S144, S144m, S192, S192m und S192xm
+    - **Typ I-Klasse**: S72, S72m, S96, S144, S144m, S192, S192m und S192xm
     - **Typ II-Klasse**: S384, S384m, S384xm, S384xxm, S576m, S576xm, S768m, S768xm und S960m
 
 

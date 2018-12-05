@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 04/05/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 249e286b16b78643c33b567f705a4c92991f5553
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: b2243851d62cc17dc52407dce051cc2e0f4bcb12
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49404867"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52889192"
 ---
 # <a name="monitor-a-kubernetes-cluster-with-log-analytics"></a>Überwachen eines Kubernetes-Clusters mit Log Analytics
 
@@ -143,7 +143,7 @@ Wenn die Agents ausgeführt werden, dauert es einige Minuten, bis die Daten von 
 
 ## <a name="access-monitoring-data"></a>Zugreifen auf Überwachungsdaten
 
-Sie können die Containerüberwachungsdaten mit der [Containerlösung](../../log-analytics/log-analytics-containers.md) im Log Analytics-Portal oder im Azure-Portal anzeigen und analysieren.
+Sie können die Containerüberwachungsdaten mit der [Containerlösung](../../azure-monitor/insights/containers.md) im Log Analytics-Portal oder im Azure-Portal anzeigen und analysieren.
 
 Um die Containerlösung über das [Log Analytics-Portal](https://mms.microsoft.com) zu installieren, wechseln Sie zu **Lösungskatalog**. Fügen Sie dann **Containerlösung** hinzu. Alternativ können Sie die Containerlösung über den [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft.containersoms?tab=Overview) hinzufügen.
 
@@ -153,7 +153,7 @@ Suchen Sie im Log Analytics-Portal die Zusammenfassungskachel **Container** auf 
 
 Im Azure-Portal navigieren Sie zu **Log Analytics** und wählen den Namen Ihres Arbeitsbereichs aus. Klicken Sie zum Anzeigen der Zusammenfassungskachel **Container** auf **Lösungen** > **Container**. Klicken Sie auf die Kachel, um Details anzuzeigen.
 
-Ausführliche Anweisungen zum Abfragen und Analysieren von Überwachungsdaten finden Sie in der [Dokumentation zu Azure Log Analytics](../../log-analytics/log-analytics-queries.md).
+Ausführliche Anweisungen zum Abfragen und Analysieren von Überwachungsdaten finden Sie in der [Dokumentation zu Azure Log Analytics](../../azure-monitor/log-query/log-query-overview.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

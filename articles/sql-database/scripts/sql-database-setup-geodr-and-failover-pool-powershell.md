@@ -3,7 +3,7 @@ title: 'PowerShell-Beispiel: Aktive Georeplikation für in Pool zusammengefasste
 description: Azure PowerShell-Beispielskript zum Einrichten der aktiven Georeplikation für eine zu einem Pool gehörende Azure SQL-Datenbank und zum Ausführen eines Failovers
 services: sql-database
 ms.service: sql-database
-ms.subservice: operations
+ms.subservice: high-availability
 ms.custom: ''
 ms.devlang: PowerShell
 ms.topic: sample
@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 09/07/2018
-ms.openlocfilehash: 727333f07d5ab09714b866851b21909e03f9ebfc
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: cb1460b6d0858a5d7fce795e845095b2bb8943f0
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47056052"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52879858"
 ---
 # <a name="use-powershell-to-configure-active-geo-replication-for-a-pooled-azure-sql-database"></a>Verwenden von PowerShell zum Konfigurieren der aktiven Georeplikation für eine in einem Pool enthaltene Azure SQL-Datenbank
 

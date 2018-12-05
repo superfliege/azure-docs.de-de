@@ -10,15 +10,15 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.component: pim
-ms.date: 11/01/2018
+ms.date: 11/21/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: e7204c223681b9a33c439b0d9fc653167422384a
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 4a715020e37d5885dac26ac0573efe985c3f2cfb
+ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51011696"
+ms.lasthandoff: 11/22/2018
+ms.locfileid: "52291214"
 ---
 # <a name="configure-security-alerts-for-azure-ad-directory-roles-in-pim"></a>Konfigurieren von Sicherheitswarnungen für Azure AD-Verzeichnisrollen in PIM
 
@@ -34,6 +34,47 @@ Dieser Abschnitt enthält alle Sicherheitswarnungen für Verzeichnisrollen, sowi
 * **Mittel**: Es ist keine sofortige Aktion erforderlich, aber es wird eine potenzielle Richtlinienverletzung angezeigt.
 * **Niedrig**: Es ist keine sofortige Aktion erforderlich, aber es wird eine Richtlinienänderung vorgeschlagen.
 
+### <a name="administrators-arent-using-their-privileged-roles"></a>Administratoren verwenden ihre privilegierten Rollen nicht.
+
+| | |
+| --- | --- |
+| **Severity** | Niedrig |
+| **Warum erhalte ich diese Warnung?** | Benutzer, denen nicht benötigte privilegierte Rollen zugewiesen wurden, erhöhen die Möglichkeit eines Angriffs. Es ist auch einfacher für Angreifer, auf Konten, die nicht aktiv genutzt werden, unbemerkt zu bleiben. |
+| **Wie behebe ich das Problem?** | Überprüfen Sie die Benutzer in der Liste, und entfernen Sie die Zuweisung zu privilegierten Rollen, die sie nicht benötigen. |
+| **Prävention** | Weisen Sie privilegierte Rollen Benutzern zu, die eine geschäftliche Rechtfertigung haben. </br>Planen Sie regelmäßige [Zugriffsüberprüfungen](pim-how-to-start-security-review.md), um sicherzustellen, dass die Benutzer ihren Zugriff weiterhin benötigen. |
+| **Aktionen zur Risikominderung im Portal** | Entfernt das Konto aus der privilegierte Rolle. |
+| **Trigger** | Wird auslöst, wenn ein Benutzer für eine bestimmte Zeit eine Rolle nicht aktiviert hat. |
+| **Anzahl von Tagen** | Diese Einstellung gibt die Anzahl von Tagen zwischen 0 und 100 an, die ein Benutzer eine Rolle nicht aktivieren muss.|
+
+### <a name="roles-dont-require-multi-factor-authentication-for-activation"></a>Rollen erfordern für die Aktivierung keine Multi-Factor Authentication.
+
+| | |
+| --- | --- |
+| **Severity** | Niedrig |
+| **Warum erhalte ich diese Warnung?** | Ohne MFA können kompromittierte Benutzer privilegierte Rollen aktivieren. |
+| **Wie behebe ich das Problem?** | Überprüfen Sie die Liste der Rollen, und [fordern Sie MFA für jede Rolle an](pim-how-to-change-default-settings.md). |
+| **Prävention** | [Fordern Sie MFA](pim-how-to-change-default-settings.md) für jede Rolle an.  |
+| **Aktionen zur Risikominderung im Portal** | Damit ist MFA für die Aktivierung der privilegierten Rolle erforderlich. |
+
+### <a name="the-tenant-doesnt-have-azure-ad-premium-p2"></a>Der Mandant verfügt nicht über Microsoft Azure AD Premium P2.
+
+| | |
+| --- | --- |
+| **Severity** | Niedrig |
+| **Warum erhalte ich diese Warnung?** | Der aktuelle Mandant verfügt nicht über Microsoft Azure AD Premium P2. |
+| **Wie behebe ich das Problem?** | Lesen Sie die Informationen zu [Azure AD-Editionen](../fundamentals/active-directory-whatis.md). Führen Sie ein Upgrade auf Azure AD Premium P2 durch. |
+
+### <a name="potential-stale-accounts-in-a-privileged-role"></a>Potenzielle veraltete Konten in einer privilegierten Rolle
+
+| | |
+| --- | --- |
+| **Severity** | Mittel |
+| **Warum erhalte ich diese Warnung?** | Konten, die ihr Kennwort in letzter Zeit nicht geändert haben, können Dienst- oder freigegebene Konten sein, die nicht gepflegt werden. Diese Konten in privilegierten Rollen sind anfällig für Angriffe. |
+| **Wie behebe ich das Problem?** | Überprüfen Sie die Konten in der Liste. Wenn kein Zugriff darauf mehr erforderlich ist, entfernen sie aus ihren privilegierten Rollen. |
+| **Prävention** | Stellen Sie sicher, dass die starken Kennwörter für freigegebenen Konten rotiert werden, wenn sich die Benutzer ändern, die das Kennwort kennen. </br>Überprüfen Sie Konten mit privilegierten Rollen regelmäßig mithilfe von [Zugriffsüberprüfungen](pim-how-to-start-security-review.md), und entfernen Sie nicht mehr benötigte Rollenzuweisungen. |
+| **Aktionen zur Risikominderung im Portal** | Entfernt das Konto aus der privilegierte Rolle. |
+| **bewährten Methoden** | Für freigegebene Konten sowie Dienst- und Notfallzugriffskonten, die ein Kennwort zur Authentifizierung verwenden und administrativen Rollen mit erhöhten Berechtigungen zugewiesen sind (z. B. globaler Administrator oder Sicherheitsadministrator), ist für die folgenden Fälle eine Kennwortrotation erforderlich:<ul><li>Nach einem Sicherheitsvorfall, bei dem administrative Zugriffsrechte missbraucht oder kompromittiert wurden</li><li>Nachdem die Berechtigungen eines Benutzers geändert wurden, sodass er kein Administrator mehr ist (beispielsweise nachdem ein Mitarbeiter, der ein Administrator war, die IT-Abteilung oder Organisation verlassen hat)</li><li>In regelmäßigen Abständen (z. B. vierteljährlich oder jährlich), auch wenn keine Sicherheitsverletzung bekannt ist oder kein Wechsel im IT-Personal stattgefunden hat</li></ul>Da mehrere Personen Zugriff auf die Anmeldeinformationen dieser Konten haben, sollte durch eine Rotation der Anmeldeinformationen sichergestellt werden, dass Personen, die ihre Rollen nicht mehr innehaben, keinen Zugriff auf die Konten mehr haben. [Weitere Informationen](https://aka.ms/breakglass) |
+
 ### <a name="roles-are-being-assigned-outside-of-pim"></a>Rollen werden außerhalb von PIM zugewiesen
 
 | | |
@@ -43,28 +84,6 @@ Dieser Abschnitt enthält alle Sicherheitswarnungen für Verzeichnisrollen, sowi
 | **Wie behebe ich das Problem?** | Überprüfen Sie die Benutzer in der Liste, und entfernen Sie die Zuweisung zu privilegierten Rollen, die außerhalb von PIM zugewiesen wurden. |
 | **Prävention** | Untersuchen Sie, wo Benutzern außerhalb des PIM privilegierte Rollen zugewiesen werden, und verbieten Sie zukünftige Zuweisungen, die von dort stammen. |
 | **Aktionen zur Risikominderung im Portal** | Entfernt das Konto aus der privilegierte Rolle. |
-
-### <a name="potential-stale-accounts-in-a-privileged-role"></a>Potenzielle veraltete Konten in einer privilegierten Rolle
-
-| | |
-| --- | --- |
-| **Severity** | Mittel |
-| **Warum erhalte ich diese Warnung?** | Konten, die ihr Kennwort in letzter Zeit nicht geändert haben, können Dienst- oder freigegebene Konten sein, die nicht gepflegt werden. Diese Konten in privilegierten Rollen sind anfällig für Angriffe. |
-| **Wie behebe ich das Problem?** | Überprüfen Sie die Konten in der Liste. Wenn kein Zugriff darauf mehr erforderlich ist, entfernen sie aus ihren privilegierten Rollen. |
-| **Prävention** | Stellen Sie sicher, dass die starken Kennwörter für freigegebenen Konten rotiert werden, wenn sich die Benutzer ändern, die das Kennwort kennen. </br>Überprüfen Sie regelmäßig Konten mit privilegierten Rollen mithilfe von Zugriffsprüfungen und entfernen Sie nicht mehr benötigte Rollenzuweisungen. |
-| **Aktionen zur Risikominderung im Portal** | Entfernt das Konto aus der privilegierte Rolle. |
-
-### <a name="users-arent-using-their-privileged-roles"></a>Benutzer nutzen ihre privilegierten Rollen nicht
-
-| | |
-| --- | --- |
-| **Severity** | Niedrig |
-| **Warum erhalte ich diese Warnung?** | Benutzer, denen nicht benötigte privilegierte Rollen zugewiesen wurden, erhöhen die Möglichkeit eines Angriffs. Es ist auch einfacher für Angreifer, auf Konten, die nicht aktiv genutzt werden, unbemerkt zu bleiben. |
-| **Wie behebe ich das Problem?** | Überprüfen Sie die Benutzer in der Liste, und entfernen Sie die Zuweisung zu privilegierten Rollen, die sie nicht benötigen. |
-| **Prävention** | Weisen Sie privilegierte Rollen Benutzern zu, die eine geschäftliche Rechtfertigung haben. </br>Planen Sie regelmäßige Zugriffsüberprüfungen, um sicherzustellen, dass die Benutzer ihren Zugriff weiterhin benötigen. |
-| **Aktionen zur Risikominderung im Portal** | Entfernt das Konto aus der privilegierte Rolle. |
-| **Trigger** | Wird auslöst, wenn ein Benutzer für eine bestimmte Zeit eine Rolle nicht aktiviert hat. |
-| **Anzahl von Tagen** | Diese Einstellung gibt die Anzahl von Tagen zwischen 0 und 100 an, die ein Benutzer eine Rolle nicht aktivieren muss.|
 
 ### <a name="there-are-too-many-global-administrators"></a>Es gibt zu viele globale Administratoren
 
@@ -91,16 +110,6 @@ Dieser Abschnitt enthält alle Sicherheitswarnungen für Verzeichnisrollen, sowi
 | **Trigger** | Wird ausgelöst, wenn ein Benutzer mehrmals innerhalb eines bestimmten Zeitraums dieselbe privilegierte Rolle aktiviert. Sie können den Zeitraum und die Anzahl der Aktivierungen konfigurieren. |
 | **Zeitrahmen für Aktivierungsverlängerung** | Diese Einstellung gibt den Zeitraum in Tagen, Stunden, Minuten und Sekunden an, den Sie verwenden möchten, um verdächtige Verlängerungen nachzuverfolgen. |
 | **Anzahl von Aktivierungsverlängerungen** | Diese Einstellung gibt im gewählten Zeitraum die Anzahl von Aktivierungen zwischen 2 und 100 an, für die Sie eine Warnung ausgeben möchten. Sie können diese Einstellung mithilfe des Schiebereglers oder durch Eingabe einer Zahl in das Textfeld ändern. |
-
-### <a name="roles-dont-require-mfa-for-activation"></a>Für Rollen ist zur Aktivierung keine MFA erforderlich
-
-| | |
-| --- | --- |
-| **Severity** | Niedrig |
-| **Warum erhalte ich diese Warnung?** | Ohne MFA können kompromittierte Benutzer privilegierte Rollen aktivieren. |
-| **Wie behebe ich das Problem?** | Überprüfen Sie die Liste der Rollen, und [fordern Sie MFA für jede Rolle an](pim-how-to-change-default-settings.md). |
-| **Prävention** | [Fordern Sie MFA](pim-how-to-change-default-settings.md) für jede Rolle an.  |
-| **Aktionen zur Risikominderung im Portal** | Damit ist MFA für die Aktivierung der privilegierten Rolle erforderlich. |
 
 ## <a name="configure-security-alert-settings"></a>Konfigurieren der Einstellungen für Sicherheitswarnungen
 

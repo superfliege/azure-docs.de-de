@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: lmolkova
-ms.openlocfilehash: 770d8950e25431e1edc496e0710cf199b45e5847
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 4584104e9c9833b5f3f586581dd5a58f420fe0bd
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51283834"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52165338"
 ---
 # <a name="distributed-tracing-and-correlation-through-service-bus-messaging"></a>Verteilte Ablaufverfolgung und Korrelation über Service Bus-Messaging
 
@@ -155,27 +155,27 @@ Im Folgenden finden Sie eine vollständige Liste der instrumentierten Vorgänge:
 
 | Vorgangsname | Nachverfolgte API | Bestimmte Nutzlasteigenschaften|
 |----------------|-------------|---------|
-| Microsoft.Azure.ServiceBus.Send | [MessageSender.SendAsync](/dotnet/api/microsoft.azure.servicebus.core.messagesender.sendasync) | IList<Message> Messages – eine Liste der gesendeten Nachrichten |
-| Microsoft.Azure.ServiceBus.ScheduleMessage | [MessageSender.ScheduleMessageAsync](/dotnet/api/microsoft.azure.servicebus.core.messagesender.schedulemessageasync) | Message Message – die aktuell verarbeitete Nachricht<br/>DateTimeOffset ScheduleEnqueueTimeUtc – der Offset der geplanten Nachricht<br/>long SequenceNumber – die Sequenznummer der geplanten Nachricht (Stop-Ereignisnutzlast) |
-| Microsoft.Azure.ServiceBus.Cancel | [MessageSender.CancelScheduledMessageAsync](/dotnet/api/microsoft.azure.servicebus.core.messagesender.cancelscheduledmessageasync) | long SequenceNumber – die Sequenznummer der abzubrechenden Nachricht | 
-| Microsoft.Azure.ServiceBus.Receive | [MessageReceiver.ReceiveAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.receiveasync) |int RequestedMessageCount – die maximale Anzahl von Nachrichten, die empfangen werden können<br/>IList<Message> Messages – die Liste der empfangenen Nachrichten (Stop-Ereignisnutzlast) |
-| Microsoft.Azure.ServiceBus.Peek | [MessageReceiver.PeekAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.peekasync) | int FromSequenceNumber – der Startpunkt für das Durchsuchen eines Nachrichtenbatches<br/>int RequestedMessageCount – die Anzahl der abzurufenden Nachrichten<br/>IList<Message> Messages – die Liste der empfangenen Nachrichten (Stop-Ereignisnutzlast) |
-| Microsoft.Azure.ServiceBus.ReceiveDeferred | [MessageReceiver.ReceiveDeferredMessageAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.receivedeferredmessageasync) | IEnumerable<long> SequenceNumbers – eine Liste, die die zu empfangenden Sequenznummern enthält<br/>IList<Message> Messages – die Liste der empfangenen Nachrichten (Stop-Ereignisnutzlast) |
-| Microsoft.Azure.ServiceBus.Complete | [MessageReceiver.CompleteAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.completeasync) | IList<string> LockTokens – die Liste, die die Sperrtokens der Nachrichten enthält, die abgeschlossen werden sollen|
-| Microsoft.Azure.ServiceBus.Abandon | [MessageReceiver.AbandonAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.abandonasync) | string LockToken – das Sperrtoken der Nachricht, die vorzeitig beendet werden soll |
-| Microsoft.Azure.ServiceBus.Defer | [MessageReceiver.DeferAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.deferasync) | string LockToken – das Sperrtoken der Nachricht, die verzögert werden soll | 
-| Microsoft.Azure.ServiceBus.DeadLetter | [MessageReceiver.DeadLetterAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.deadletterasync) | string LockToken – das Sperrtoken der Nachricht, die in die Warteschlange für unzustellbare Nachrichten verschoben werden soll | 
-| Microsoft.Azure.ServiceBus.RenewLock | [MessageReceiver.RenewLockAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.renewlockasync) | string LockToken – das Sperrtoken der Nachricht, deren Sperre erneuert werden soll<br/>DateTime LockedUntilUtc – das neue Ablaufdatum des Sperrtokens und die Uhrzeit im UTC-Format (Stop-Ereignisnutzlast)|
-| Microsoft.Azure.ServiceBus.Process | Die in [IReceiverClient.RegisterMessageHandler](/dotnet/api/microsoft.azure.servicebus.core.ireceiverclient.registermessagehandler) bereitgestellte Lambda-Funktion des Meldungshandlers | Message Message – die aktuell verarbeitete Nachricht |
-| Microsoft.Azure.ServiceBus.ProcessSession | Die in [IQueueClient.RegisterSessionHandler](/dotnet/api/microsoft.azure.servicebus.iqueueclient.registersessionhandler) bereitgestellte Lambda-Funktion des Handlers der Nachrichtensitzung | Message Message – die aktuell verarbeitete Nachricht<br/>IMessageSession Session – die verarbeitete Sitzung |
-| Microsoft.Azure.ServiceBus.AddRule | [SubscriptionClient.AddRuleAsync](/dotnet/api/microsoft.azure.servicebus.subscriptionclient.addruleasync) | RuleDescription Rule – die Regelbeschreibung, in der die hinzuzufügende Regel angegeben wird |
-| Microsoft.Azure.ServiceBus.RemoveRule | [SubscriptionClient.RemoveRuleAsync](/dotnet/api/microsoft.azure.servicebus.subscriptionclient.removeruleasync) | string RuleName – der Name der Regel, die entfernt werden soll |
-| Microsoft.Azure.ServiceBus.GetRules | [SubscriptionClient.GetRulesAsync](/dotnet/api/microsoft.azure.servicebus.subscriptionclient.getrulesasync) | IEnumerable<RuleDescription> Rules – alle Regeln, die dem Abonnement zugeordnet sind (nur Stop-Nutzlast) |
-| Microsoft.Azure.ServiceBus.AcceptMessageSession | [ISessionClient.AcceptMessageSessionAsync](/dotnet/api/microsoft.azure.servicebus.isessionclient.acceptmessagesessionasync) | string SessionId – die in den Nachrichten enthaltene sessionId |
-| Microsoft.Azure.ServiceBus.GetSessionState | [IMessageSession.GetStateAsync](/dotnet/api/microsoft.azure.servicebus.imessagesession.getstateasync) | string SessionId – die in den Nachrichten enthaltene sessionId<br/>byte [] State – der Sitzungszustand (Stop-Ereignisnutzlast) |
-| Microsoft.Azure.ServiceBus.SetSessionState | [IMessageSession.SetStateAsync](/dotnet/api/microsoft.azure.servicebus.imessagesession.setstateasync) | string SessionId – die in den Nachrichten enthaltene sessionId<br/>byte [] State – der Sitzungszustand |
-| Microsoft.Azure.ServiceBus.RenewSessionLock | [IMessageSession.RenewSessionLockAsync](/dotnet/api/microsoft.azure.servicebus.imessagesession.renewsessionlockasync) | string SessionId – die in den Nachrichten enthaltene sessionId |
-| Microsoft.Azure.ServiceBus.Exception | eine beliebige instrumentierte API| Exception Exception – die Exception-Instanz |
+| Microsoft.Azure.ServiceBus.Send | [MessageSender.SendAsync](/dotnet/api/microsoft.azure.servicebus.core.messagesender.sendasync) | `IList<Message> Messages`: Liste der gesendeten Nachrichten |
+| Microsoft.Azure.ServiceBus.ScheduleMessage | [MessageSender.ScheduleMessageAsync](/dotnet/api/microsoft.azure.servicebus.core.messagesender.schedulemessageasync) | `Message Message`: die gerade verarbeitete Nachricht<br/>`DateTimeOffset ScheduleEnqueueTimeUtc`: Offset der geplanten Nachricht<br/>`long SequenceNumber`: Sequenznummer der geplanten Nachricht (Stop-Ereignisnutzlast) |
+| Microsoft.Azure.ServiceBus.Cancel | [MessageSender.CancelScheduledMessageAsync](/dotnet/api/microsoft.azure.servicebus.core.messagesender.cancelscheduledmessageasync) | `long SequenceNumber`: Sequenznummer der abzubrechenden Nachricht | 
+| Microsoft.Azure.ServiceBus.Receive | [MessageReceiver.ReceiveAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.receiveasync) | `int RequestedMessageCount`: maximale Anzahl von Nachrichten, die empfangen werden können<br/>`IList<Message> Messages`: Liste der empfangenen Nachrichten (Stop-Ereignisnutzlast) |
+| Microsoft.Azure.ServiceBus.Peek | [MessageReceiver.PeekAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.peekasync) | `int FromSequenceNumber`: Startpunkt für das Durchsuchen eines Nachrichtenbatches<br/>`int RequestedMessageCount`: Anzahl von Nachrichten, die abgerufen werden sollen<br/>`IList<Message> Messages`: Liste der empfangenen Nachrichten (Stop-Ereignisnutzlast) |
+| Microsoft.Azure.ServiceBus.ReceiveDeferred | [MessageReceiver.ReceiveDeferredMessageAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.receivedeferredmessageasync) | `IEnumerable<long> SequenceNumbers`: Liste mit den zu empfangenden Sequenznummern<br/>`IList<Message> Messages`: Liste der empfangenen Nachrichten (Stop-Ereignisnutzlast) |
+| Microsoft.Azure.ServiceBus.Complete | [MessageReceiver.CompleteAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.completeasync) | `IList<string> LockTokens`: Liste mit den Sperrtoken der entsprechenden Nachrichten, die abgeschlossen werden sollen|
+| Microsoft.Azure.ServiceBus.Abandon | [MessageReceiver.AbandonAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.abandonasync) | `string LockToken`: Sperrtoken der Nachricht, die abgebrochen werden soll |
+| Microsoft.Azure.ServiceBus.Defer | [MessageReceiver.DeferAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.deferasync) | `string LockToken`: Sperrtoken der Nachricht, die zurückgestellt werden soll | 
+| Microsoft.Azure.ServiceBus.DeadLetter | [MessageReceiver.DeadLetterAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.deadletterasync) | `string LockToken`: Sperrtoken der Nachricht, die als unzustellbar markiert werden soll | 
+| Microsoft.Azure.ServiceBus.RenewLock | [MessageReceiver.RenewLockAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.renewlockasync) | `string LockToken`: Sperrtoken der Nachricht, für die die Sperre verlängert werden soll<br/>`DateTime LockedUntilUtc`: Neue Datums-/Uhrzeitangabe für den Ablauf des Sperrtokens im UTC-Format (Stop-Ereignisnutzlast)|
+| Microsoft.Azure.ServiceBus.Process | Die in [IReceiverClient.RegisterMessageHandler](/dotnet/api/microsoft.azure.servicebus.core.ireceiverclient.registermessagehandler) bereitgestellte Lambda-Funktion des Meldungshandlers | `Message Message`: die gerade verarbeitete Nachricht |
+| Microsoft.Azure.ServiceBus.ProcessSession | Die in [IQueueClient.RegisterSessionHandler](/dotnet/api/microsoft.azure.servicebus.iqueueclient.registersessionhandler) bereitgestellte Lambda-Funktion des Handlers der Nachrichtensitzung | `Message Message`: die gerade verarbeitete Nachricht<br/>`IMessageSession Session`: die gerade verarbeitete Sitzung |
+| Microsoft.Azure.ServiceBus.AddRule | [SubscriptionClient.AddRuleAsync](/dotnet/api/microsoft.azure.servicebus.subscriptionclient.addruleasync) | `RuleDescription Rule`: Regelbeschreibung mit der hinzuzufügenden Regel |
+| Microsoft.Azure.ServiceBus.RemoveRule | [SubscriptionClient.RemoveRuleAsync](/dotnet/api/microsoft.azure.servicebus.subscriptionclient.removeruleasync) | `string RuleName`: Name der Regel, die entfernt werden soll |
+| Microsoft.Azure.ServiceBus.GetRules | [SubscriptionClient.GetRulesAsync](/dotnet/api/microsoft.azure.servicebus.subscriptionclient.getrulesasync) | `IEnumerable<RuleDescription> Rules`: alle Regeln, die dem Abonnement zugeordnet sind (nur Stop-Nutzlast) |
+| Microsoft.Azure.ServiceBus.AcceptMessageSession | [ISessionClient.AcceptMessageSessionAsync](/dotnet/api/microsoft.azure.servicebus.isessionclient.acceptmessagesessionasync) | `string SessionId`: in den Nachrichten enthaltene sessionId |
+| Microsoft.Azure.ServiceBus.GetSessionState | [IMessageSession.GetStateAsync](/dotnet/api/microsoft.azure.servicebus.imessagesession.getstateasync) | `string SessionId`: in den Nachrichten enthaltene sessionId<br/>`byte [] State`: Sitzungszustand (Stop-Ereignisnutzlast) |
+| Microsoft.Azure.ServiceBus.SetSessionState | [IMessageSession.SetStateAsync](/dotnet/api/microsoft.azure.servicebus.imessagesession.setstateasync) | `string SessionId`: in den Nachrichten enthaltene sessionId<br/>`byte [] State`: Sitzungszustand |
+| Microsoft.Azure.ServiceBus.RenewSessionLock | [IMessageSession.RenewSessionLockAsync](/dotnet/api/microsoft.azure.servicebus.imessagesession.renewsessionlockasync) | `string SessionId`: in den Nachrichten enthaltene sessionId |
+| Microsoft.Azure.ServiceBus.Exception | eine beliebige instrumentierte API| `Exception Exception`: Ausnahmeinstanz |
 
 In jedem Ereignis haben Sie Zugriff auf das `Activity.Current`-Element, das den aktuellen Vorgangskontext enthält.
 

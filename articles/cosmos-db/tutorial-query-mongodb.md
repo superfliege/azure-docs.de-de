@@ -1,22 +1,20 @@
 ---
-title: 'Azure Cosmos DB: Wie werden Abfragen mit der MongoDB-API durchgeführt? | Microsoft-Dokumentation'
+title: 'Azure Cosmos DB: Wie werden Abfragen mit der MongoDB-API durchgeführt?'
 description: Erfahren Sie, wie Sie mit der MongoDB-API für Azure Cosmos DB Abfragen durchführen.
 services: cosmos-db
 author: SnehaGunda
-manager: kfile
+ms.author: sngun
 ms.service: cosmos-db
 ms.component: cosmosdb-mongo
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 03/29/2018
-ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: efb59a73b3c9b0ab06fae2e7b4fe5b97d85249eb
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.date: 03/29/2018
+ms.openlocfilehash: 8c865ab7fa997b169e481612ce791d960688da56
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44052807"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52841505"
 ---
 # <a name="tutorial-query-azure-cosmos-db-by-using-the-mongodb-api"></a>Tutorial: Abfragen von Azure Cosmos BD mithilfe der MongoDB-API
 

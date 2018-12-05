@@ -10,12 +10,12 @@ ms.component: content-moderator
 ms.topic: conceptual
 ms.date: 10/10/2018
 ms.author: sajagtap
-ms.openlocfilehash: 79fe761bc6d8bb9561701fd11b06b010bf3454f6
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 259919f3b7cb0b614450c94f876cff933a5e01e8
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51260005"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51852689"
 ---
 # <a name="quickstart-get-familiar-with-content-moderator"></a>Schnellstart: Erste Schritte mit Content Moderator
 
@@ -58,7 +58,7 @@ An diesem Punkt haben Sie das Content Moderator-Prüfungstool verwendet, um Beis
 
 ## <a name="learn-more-about-the-review-tool"></a>Weitere Informationen zum Prüfungstool
 
-Weitere Informationen zum Verwenden des Content Moderator-Prüfungstools finden Sie in der Anleitung [Human-in-the-Loop](Review-Tool-User-Guide/human-in-the-loop.md). In den APIs zum Prüfungstool erfahren Sie mehr über die Optimierung der Überprüfung durch Personen:
+Weitere Informationen zum Verwenden des Content Moderator-Prüfungstools finden Sie in der Anleitung zum [Prüfungstool](Review-Tool-User-Guide/human-in-the-loop.md). In den APIs zum Prüfungstool erfahren Sie mehr über die Optimierung der Überprüfung durch Personen:
 - Die [Auftrags-API](try-review-api-job.md) überprüft Ihre Inhalte mithilfe der Moderations-APIs und generiert im Prüfungstool Überprüfungen. 
 - Die [Überprüfungs-API](try-review-api-review.md) erstellt direkt Bild-, Text- oder Videoüberprüfungen für Moderatoren, ohne die Inhalte zuerst zu scannen. 
 - Die [Workflow-API](try-review-api-workflow.md) erstellt und aktualisiert Informationen zu benutzerdefinierten Workflows Ihres Teams und ruft diese ab.

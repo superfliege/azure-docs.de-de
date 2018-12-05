@@ -11,14 +11,14 @@ ms.topic: overview
 ms.date: 08/12/2016
 ms.author: pibehre
 ROBOTS: NOINDEX
-ms.openlocfilehash: 39995ca44573fe50bf0c2a2510c2c19fb227ff1d
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 99d48e2abdc166fe6472195c86d890c3c1060cfa
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51241122"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52863787"
 ---
-# <a name="what-is-the-web-language-model-api-preview"></a>Worum handelt es sich bei der Websprachmodell-API? (Vorschau)
+# <a name="what-is-the-web-language-model-api-preview"></a>Worum handelt es sich bei der Websprachmodell-API?  (Vorschau)
 
 > [!IMPORTANT]
 > Die Vorschauversion von Web Language Model wurde am 9. August 2018 außer Betrieb gesetzt. Es wird empfohlen, [Azure Machine Learning-Textanalysemodule](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/text-analytics) für die Textverarbeitung und -analyse zu verwenden.
@@ -44,7 +44,7 @@ Die Web Language Model API unterstützt vier Suchvorgänge:
 1. Abonnieren Sie den Dienst.
 2. Laden Sie das [SDK](https://www.github.com/microsoft/cognitive-weblm-windows) herunter.
 3. Führen Sie den SDK-Beispielcode aus.
-4. Vollständige Details zu den Endpunkten (einschließlich der Codeausschnitte in einer Vielzahl von Sprachen) finden Sie in der [API-Referenz](https://westus.dev.cognitive.microsoft.com/docs/services/55de9ca4e597ed1fd4e2f104).
+4. Vollständige Details zu den Endpunkten (einschließlich der Codeausschnitte in einer Vielzahl von Sprachen) finden Sie in der [API-Referenz](http://web.archive.org/web/20170503191852/ https://westus.dev.cognitive.microsoft.com/docs/services/55de9ca4e597ed1fd4e2f104/operations/55de9ca4e597ed19b0de8a51).
 
 ## <a name="underlying-technology"></a>Zugrunde liegende Technologie
 

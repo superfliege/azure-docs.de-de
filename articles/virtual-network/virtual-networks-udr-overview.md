@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 10/26/2017
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: 9efb08922f3e6f78266baaf8ae623dd241c09522
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 867c52d87562c11eff8dfe2abd443a2c068eb9ae
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51037616"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52871879"
 ---
 # <a name="virtual-network-traffic-routing"></a>Routing von Datenverkehr für virtuelle Netzwerke
 
@@ -165,7 +165,7 @@ Wenn Sie das Adresspräfix 0.0.0.0/0 außer Kraft setzen, werden zusätzlich daz
         - Keine Zuordnung einer Netzwerksicherheitsgruppen-Regel, die die Kommunikation mit dem Gerät verhindert
         - Keine Verweigerung der Kommunikation
         - Möglichkeit zur Übersetzung der Netzwerkadresse und zur Weiterleitung oder Übergabe des Datenverkehrs an die Zielressource im Subnetz per Proxy und Rückgabe des Datenverkehrs ins Internet 
-    - **Gateway für virtuelle Netzwerke**: Wenn es sich beim Gateway um ein ExpressRoute-Gateway für virtuelle Netzwerke handelt, kann ein lokal angeordnetes Gerät mit Internetverbindung die Übersetzung der Netzwerkadresse und die Weiterleitung durchführen oder den Datenverkehr per Proxy an die Zielressource im Subnetz übergeben (per [privatem Peering](../expressroute/expressroute-circuit-peerings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-private-peering) von ExpressRoute). 
+    - **Gateway für virtuelle Netzwerke**: Wenn es sich beim Gateway um ein ExpressRoute-Gateway für virtuelle Netzwerke handelt, kann ein lokal angeordnetes Gerät mit Internetverbindung die Übersetzung der Netzwerkadresse und die Weiterleitung durchführen oder den Datenverkehr per Proxy an die Zielressource im Subnetz übergeben (per [privatem Peering](../expressroute/expressroute-circuit-peerings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#privatepeering) von ExpressRoute). 
 
 Wenn Ihr virtuelles Netzwerk mit einem Azure-VPN-Gateway verbunden ist, ordnen Sie dem [Gatewaysubnetz](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gwsub) keine Routingtabelle zu, die eine Route mit dem Ziel 0.0.0.0/0 enthält. Andernfalls ist die ordnungsgemäße Funktion des Gateways gefährdet. Ausführliche Informationen finden Sie unter [Häufig gestellte Fragen zum VPN-Gateway](../vpn-gateway/vpn-gateway-vpn-faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gatewayports) in der Frage *Warum werden auf meinem VPN-Gateway bestimmte Ports geöffnet?*.
 

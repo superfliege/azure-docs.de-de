@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: raynew
-ms.openlocfilehash: 2ba6fefb9c1d952fbfdb6942694d69565a299c2e
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 61e8a7732b7e6dc7fd521819a135fb1a7a6a13b3
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51241258"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52261665"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup – häufig gestellte Fragen
 In diesem Artikel werden allgemeine Fragen um Azure Backup-Dienst beantwortet.
@@ -33,15 +33,15 @@ Serverdaten, die Sie zusammen wiederherstellen möchten, sollten beim Einrichten
 
 ### <a name="can-i-move-my-vault-between-subscriptions"></a>Kann ich meinen Tresor zwischen Abonnements verschieben?
 
-Nein. Der Tresor wird auf Abonnementebene erstellt und kann nach der Erstellung keinem anderen Abonnement zugewiesen werden.
+ Nein. Der Tresor wird auf Abonnementebene erstellt und kann nach der Erstellung keinem anderen Abonnement zugewiesen werden.
 
 ### <a name="can-i-move-backup-data-to-another-vault"></a>Kann ich Sicherungsdaten zu einem anderen Tresor verschieben?
 
-Nein. In einem Tresor gespeicherte Sicherungsdaten können nicht in einen anderen Tresor verschoben werden.
+ Nein. In einem Tresor gespeicherte Sicherungsdaten können nicht in einen anderen Tresor verschoben werden.
 
 ### <a name="can-i-change-from-grs-to-lrs-after-a-backup"></a>Kann ich nach einer Sicherung von GRS zu LRS wechseln?
 
-Nein. Die Speicheroptionen eines Recovery Services-Tresors können nur geändert werden, bevor Sicherungen gespeichert wurden.
+ Nein. Die Speicheroptionen eines Recovery Services-Tresors können nur geändert werden, bevor Sicherungen gespeichert wurden.
 
 ### <a name="can-i-do-an-item-level-restore-ilr-for-vms-backed-up-to-a-recovery-services-vault"></a>Kann ich für virtuelle Computer, die in einem Recovery Services-Tresor gesichert wurden, eine Wiederherstellung auf Elementebene durchführen?
 Nein, die Wiederherstellung auf Elementebene wird nicht unterstützt.
@@ -79,7 +79,7 @@ Die unterstützten DPM-Versionen sind in der [Unterstützungsmatrix](backup-azur
 
 ### <a name="can-i-register-the-server-to-multiple-vaults"></a>Kann ich den Server für mehrere Tresore registrieren?
 
-Nein. Ein DPM- oder Azure Backup-Server kann nur für einen Tresor registriert werden.
+ Nein. Ein DPM- oder Azure Backup-Server kann nur für einen Tresor registriert werden.
 
 
 
@@ -88,7 +88,7 @@ Ja.
 
 
 ### <a name="can-i-use-dpm-to-back-up-apps-in-azure-stack"></a>Kann ich mit DPM Apps in Azure Stack sichern?
-Nein. Sie können Azure Stack mit Azure Backup schützen, das Sichern von Apps in Azure Stack mit DPM wird von Azure Backup jedoch nicht unterstützt.
+ Nein. Sie können Azure Stack mit Azure Backup schützen, das Sichern von Apps in Azure Stack mit DPM wird von Azure Backup jedoch nicht unterstützt.
 
 
 ### <a name="if-ive-installed-azure-backup-agent-to-protect-my-files-and-folders-can-i-install-system-center-dpm-to-back-up-on-premises-workloads-to-azure"></a>Kann ich System Center DPM zum Sichern von lokalen Workloads in Azure installieren, wenn ich den Azure Backup-Agent zum Schutz meiner Dateien und Ordner installiert habe?
@@ -125,7 +125,7 @@ Windows Storage Server 2012, 64 Bit | Standard, Workgroup | Mit den neuesten Ser
 Windows Server 2008 R2 SP1, 64 Bit | Standard, Enterprise, Datacenter, Foundation | Mit den neuesten Updates.
 Windows Server 2008, 64 Bit | Standard, Enterprise, Datacenter | Mit den neuesten Updates.
 
-Für Sicherungen von virtuellen Azure-Computern mit Linux unterstützt Azure Backup [die Liste der von Azure geförderten Distributionen](../virtual-machines/linux/endorsed-distros.md), mit Ausnahme von CoreOS Linux.  Andere Bring-Your-Own-Linux-Distributionen sollten funktionieren, sofern der VM-Agent auf dem virtuellen Computer verfügbar ist und Python unterstützt wird.
+Für Sicherungen von virtuellen Azure-Computern mit Linux unterstützt Azure Backup [die Liste der von Azure unterstützten Distributionen](../virtual-machines/linux/endorsed-distros.md), mit Ausnahme von CoreOS Linux und 32-Bit-Betriebssystem. Andere Bring-Your-Own-Linux-Distributionen sollten funktionieren, sofern der VM-Agent auf dem virtuellen Computer verfügbar ist und Python unterstützt wird.
 
 
 ## <a name="are-there-size-limits-for-data-backup"></a>Gibt es Größenbeschränkungen für die Datensicherung?
@@ -159,7 +159,7 @@ BMR/Systemstatus |Jede einzelne Kopie der BMR oder des Systemstatus des zu siche
 Es gibt keine Beschränkung für die Menge der Daten, die in einem Recovery Services-Tresor gesichert werden können.
 
 ### <a name="if-i-cancel-a-backup-job-once-it-has-started-is-the-transferred-backup-data-deleted"></a>Werden die übertragenen Sicherungsdaten gelöscht, wenn ich einen Sicherungsauftrag nach dem Starten abbreche?
-Nein. Alle Daten, die vor dem Abbrechen des Sicherungsauftrags in den Tresor übertragen wurden, bleiben im Tresor erhalten. Azure Backup nutzt einen Prüfpunktmechanismus, um den Sicherungsdaten während des Sicherungsvorgangs von Zeit zu Zeit Prüfpunkte hinzuzufügen. Da in den Sicherungsdaten Prüfpunkte vorhanden sind, kann der nächste Sicherungsprozess die Integrität der Dateien überprüfen. Der nächste Sicherungsauftrag erfolgt inkrementell bezogen auf die zuvor gesicherten Daten. Inkrementelle Sicherungen übertragen nur neue oder geänderte Daten, wodurch eine bessere Nutzung der Bandbreite zustande kommt.
+ Nein. Alle Daten, die vor dem Abbrechen des Sicherungsauftrags in den Tresor übertragen wurden, bleiben im Tresor erhalten. Azure Backup nutzt einen Prüfpunktmechanismus, um den Sicherungsdaten während des Sicherungsvorgangs von Zeit zu Zeit Prüfpunkte hinzuzufügen. Da in den Sicherungsdaten Prüfpunkte vorhanden sind, kann der nächste Sicherungsprozess die Integrität der Dateien überprüfen. Der nächste Sicherungsauftrag erfolgt inkrementell bezogen auf die zuvor gesicherten Daten. Inkrementelle Sicherungen übertragen nur neue oder geänderte Daten, wodurch eine bessere Nutzung der Bandbreite zustande kommt.
 
 Wenn Sie einen Sicherungsauftrag für eine Azure-VM abbrechen, werden die übertragenen Daten ignoriert. Beim nächsten Sicherungsauftrag werden die Daten inkrementell bezogen auf den letzten erfolgreichen Sicherungsauftrag übertragen.
 
@@ -173,7 +173,7 @@ Nein. Für Azure Backup wird das Löschen oder Bereinigen von einzelnen Dateien 
 
 ### <a name="if-i-cancel-a-backup-job-after-it-starts-is-the-transferred-backup-data-deleted"></a>Werden die übertragenen Sicherungsdaten gelöscht, wenn ich einen Sicherungsauftrag nach dem Starten abbreche?
 
-Nein. Alle Daten, die vor dem Abbrechen des Sicherungsauftrags in den Tresor übertragen wurden, bleiben im Tresor erhalten.
+ Nein. Alle Daten, die vor dem Abbrechen des Sicherungsauftrags in den Tresor übertragen wurden, bleiben im Tresor erhalten.
 - Azure Backup nutzt einen Prüfpunktmechanismus, um den Sicherungsdaten während des Sicherungsvorgangs von Zeit zu Zeit Prüfpunkte hinzuzufügen.
 - Da in den Sicherungsdaten Prüfpunkte vorhanden sind, kann der nächste Sicherungsprozess die Integrität der Dateien überprüfen.
 - Der nächste Sicherungsauftrag erfolgt inkrementell bezogen auf die zuvor gesicherten Daten. Inkrementelle Sicherungen übertragen nur neue oder geänderte Daten, wodurch eine bessere Nutzung der Bandbreite zustande kommt.
@@ -190,7 +190,7 @@ Ja, für beide gelten tägliche, wöchentliche, monatliche und jährliche Aufbew
 Ja, es gibt Anpassungsrichtlinien. Beispielsweise können Sie Anforderungen für wöchentliche und tägliche Aufbewahrung, jedoch nicht jährliche und monatliche, konfigurieren.
 
 ### <a name="can-i-use-different-times-for-backup-scheduling-and-retention-policies"></a>Kann ich unterschiedliche Zeiten für den Sicherungszeitplan und für Aufbewahrungsrichtlinien verwenden?
-Nein. Aufbewahrungsrichtlinien können nur bei den Sicherungspunkten angewendet werden. Die Abbildung zeigt beispielsweise eine Aufbewahrungsrichtlinie für Sicherungen um 12:00 Uhr und 18:00 Uhr.
+ Nein. Aufbewahrungsrichtlinien können nur bei den Sicherungspunkten angewendet werden. Die Abbildung zeigt beispielsweise eine Aufbewahrungsrichtlinie für Sicherungen um 12:00 Uhr und 18:00 Uhr.
 
 ![Planen von Sicherung und Aufbewahrung](./media/backup-azure-backup-faq/Schedule.png)
 
@@ -217,7 +217,7 @@ Pro geschützter Instanz können bis zu 9.999 Wiederherstellungspunkte erstellt 
 Es gibt keine Beschränkung für die Anzahl der Wiederherstellungen aus Azure Backup.
 
 ### <a name="when-restoring-data-do-i-pay-for-the-egress-traffic-from-azure"></a>Fallen für mich beim Wiederherstellen von Daten für den ausgehenden Datenverkehr von Azure Kosten an?
-Nein. Die Wiederherstellung ist kostenlos, und der ausgehende Datenverkehr wird nicht in Rechnung gestellt.
+ Nein. Die Wiederherstellung ist kostenlos, und der ausgehende Datenverkehr wird nicht in Rechnung gestellt.
 
 ### <a name="what-happens-when-i-change-my-backup-policy"></a>Was passiert, wenn ich meine Sicherungsrichtlinie ändere?
 

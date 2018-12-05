@@ -3,7 +3,7 @@ title: Übersicht über Azure Resource Health | Microsoft-Dokumentation
 description: Übersicht über Azure Resource Health
 services: Resource health
 documentationcenter: ''
-author: shawntabrizi
+author: stephbaron
 manager: ''
 editor: ''
 ms.assetid: 85cc88a4-80fd-4b9b-a30a-34ff3782855f
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: Supportability
-ms.date: 03/27/2018
-ms.author: shawn.tabrizi
-ms.openlocfilehash: 99e996f182aac774f2e2565d87fd0debaba1b2d1
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.date: 11/16/2018
+ms.author: stbaron
+ms.openlocfilehash: f5e059c4ce375edb50321afb772cce400cb19b92
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2018
-ms.locfileid: "30263121"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52309428"
 ---
 # <a name="azure-resource-health-overview"></a>Übersicht über Azure Resource Health
  
@@ -28,7 +28,7 @@ Azure Resource Health unterstützt Sie bei der Diagnose und bei Supportanfragen,
 Während [Azure-Status](https://status.azure.com) Sie über Dienstprobleme informiert, die einen großen Azure-Kundenkreis betreffen, bietet Ihnen Resource Health ein personalisiertes Dashboard der Integrität Ihrer Ressourcen. Resource Health teilt Ihnen mit, wie oft Ihre Ressourcen in der Vergangenheit aufgrund von Azure-Dienstproblemen nicht verfügbar waren. So können Sie leicht erkennen, ob eine SLA verletzt wurde. 
 
 ## <a name="resource-definition-and-health-assessment"></a>Ressourcendefinition und Integritätsbewertung
-Eine Ressource ist eine bestimmte Instanz eines Azure-Diensts, z.B. ein virtueller Computer, eine Web-App oder eine SQL-Datenbank.
+Eine Ressource ist eine bestimmte Instanz eines Azure-Diensts, z. B. ein virtueller Computer, eine Web-App oder eine SQL-Datenbank.
 
 Resource Health ermittelt anhand von Signalen, die von den verschiedenen Azure-Diensten ausgegeben werden, ob eine Ressource fehlerfrei ist. Wenn eine Ressource fehlerhaft ist, analysiert Resource Health zusätzliche Informationen, um die Quelle des Problems zu bestimmen. Resource Health identifiziert auch Aktionen, die Microsoft zum Beheben des Problems durchführt, oder welche Aktionen Sie durchführen können, um die Ursache des Problems zu beseitigen. 
 

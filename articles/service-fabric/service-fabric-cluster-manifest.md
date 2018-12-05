@@ -12,20 +12,19 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/06/2017
+ms.date: 11/12/2018
 ms.author: dekapur
-ms.openlocfilehash: 37859a117c88238089a681e3814c2a52f62bfce4
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: c71473e975333d33406d78130ad28f417b9b967e
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39412582"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51853335"
 ---
 # <a name="configuration-settings-for-a-standalone-windows-cluster"></a>Konfigurationseinstellungen für einen eigenständigen Windows-Cluster
-In diesem Artikel wird beschrieben, wie Sie einen eigenständigen Azure Service Fabric-Cluster mithilfe der Datei „ClusterConfig.json“ konfigurieren. Sie verwenden diese Datei, um Informationen zu den Knoten des Clusters, den Sicherheitskonfigurationen sowie zur Netzwerktopologie in Bezug auf Fehler- und Upgradedomänen anzugeben.
+In diesem Artikel werden die Konfigurationseinstellungen für einen eigenständigen Azure Service Fabric-Cluster beschrieben, die in der *ClusterConfig.json*-Datei festgelegt werden können. Sie verwenden diese Datei, um Informationen zu den Knoten des Clusters, den Sicherheitskonfigurationen sowie zur Netzwerktopologie in Bezug auf Fehler- und Upgradedomänen anzugeben.  Nach dem Ändern oder Hinzufügen von Konfigurationseinstellungen können Sie entweder [einen eigenständigen Cluster erstellen](service-fabric-cluster-creation-for-windows-server.md) oder [die Konfiguration eines eigenständigen Clusters aktualisieren](service-fabric-cluster-config-upgrade-windows-server.md).
 
 Wenn Sie [das eigenständige Service Fabric-Paket](service-fabric-cluster-creation-for-windows-server.md#downloadpackage) herunterladen, sind auch ClusterConfig.json-Beispiele enthalten. Die Beispiele mit „DevCluster“ im Namen erstellen mithilfe logischer Knoten einen Cluster mit allen drei Knoten auf demselben Computer. Davon muss mindestens ein Knoten als primärer Knoten gekennzeichnet sein. Dieser Clustertyp eignet sich für Entwicklungs- oder Testumgebungen. Er wird nicht als Produktionscluster unterstützt. Die Beispiele mit „MultiMachine“ im Namen dienen Ihnen als Hilfe beim Erstellen von Clustern in Produktionsqualität, bei dem sich jeder Knoten auf einem anderen Computer befindet. Die Anzahl von primären Knoten für diese Cluster basiert jeweils auf der [Zuverlässigkeitsstufe](#reliability) des Clusters. Im Release 5.7, API-Version 05-2017 wurde die Eigenschaft für die Zuverlässigkeitsstufe entfernt. Stattdessen wird mit dem Code die optimale Zuverlässigkeitsstufe für Ihren Cluster berechnet. Versuchen Sie nicht, einen Wert für diese Eigenschaft in den Versionen ab 5.7 festzulegen.
-
 
 * Mit „ClusterConfig.Unsecure.DevCluster.json“ und „ClusterConfig.Unsecure.MultiMachine.json“ wird veranschaulicht, wie Sie einen ungeschützten Test- bzw. Produktionscluster erstellen.
 
@@ -48,26 +47,27 @@ Sie können für Ihren Service Fabric-Cluster einen beliebigen Anzeigenamen fest
 
 ## <a name="nodes-on-the-cluster"></a>Knoten im Cluster
 Sie können die Knoten in Ihrem Service Fabric-Cluster, wie im folgenden Codeausschnitt gezeigt, mithilfe des „nodes“-Abschnitts konfigurieren:
-
-    "nodes": [{
-        "nodeName": "vm0",
-        "iPAddress": "localhost",
-        "nodeTypeRef": "NodeType0",
-        "faultDomain": "fd:/dc1/r0",
-        "upgradeDomain": "UD0"
-    }, {
-        "nodeName": "vm1",
-        "iPAddress": "localhost",
-        "nodeTypeRef": "NodeType1",
-        "faultDomain": "fd:/dc1/r1",
-        "upgradeDomain": "UD1"
-    }, {
-        "nodeName": "vm2",
-        "iPAddress": "localhost",
-        "nodeTypeRef": "NodeType2",
-        "faultDomain": "fd:/dc1/r2",
-        "upgradeDomain": "UD2"
-    }],
+```json
+"nodes": [{
+    "nodeName": "vm0",
+    "iPAddress": "localhost",
+    "nodeTypeRef": "NodeType0",
+    "faultDomain": "fd:/dc1/r0",
+    "upgradeDomain": "UD0"
+}, {
+    "nodeName": "vm1",
+    "iPAddress": "localhost",
+    "nodeTypeRef": "NodeType1",
+    "faultDomain": "fd:/dc1/r1",
+    "upgradeDomain": "UD1"
+}, {
+    "nodeName": "vm2",
+    "iPAddress": "localhost",
+    "nodeTypeRef": "NodeType2",
+    "faultDomain": "fd:/dc1/r2",
+    "upgradeDomain": "UD2"
+}],
+```
 
 Ein Service Fabric-Cluster muss mindestens drei Knoten enthalten. Wenn es für Ihr Setup erforderlich ist, können Sie diesem Abschnitt weitere Knoten hinzufügen. In der folgenden Tabelle werden Konfigurationseinstellungen für die einzelnen Knoten erläutert:
 
@@ -88,57 +88,65 @@ Das Konzept „reliabilityLevel“ definiert die Anzahl von Replikaten oder Inst
 ### <a name="diagnostics"></a>Diagnose
 Im Abschnitt „diagnosticsStore“ können Sie Parameter konfigurieren, um bei Knoten- und Clusterausfällen die Diagnose und Fehlerbehandlung zu ermöglichen. Dies wird im folgenden Codeausschnitt veranschaulicht: 
 
-    "diagnosticsStore": {
-        "metadata":  "Please replace the diagnostics store with an actual file share accessible from all cluster machines.",
-        "dataDeletionAgeInDays": "7",
-        "storeType": "FileShare",
-        "IsEncrypted": "false",
-        "connectionstring": "c:\\ProgramData\\SF\\DiagnosticsStore"
-    }
+```json
+"diagnosticsStore": {
+    "metadata":  "Please replace the diagnostics store with an actual file share accessible from all cluster machines.",
+    "dataDeletionAgeInDays": "7",
+    "storeType": "FileShare",
+    "IsEncrypted": "false",
+    "connectionstring": "c:\\ProgramData\\SF\\DiagnosticsStore"
+}
+```
 
 „Metadata“ ist eine Beschreibung Ihres Clusters und kann gemäß Ihrem Setup festgelegt werden. Diese Variablen helfen Ihnen beim Sammeln von ETW-Ablaufprotokollen, Absturzabbildern und Leistungsindikatoren. Weitere Informationen über ETW-Ablaufprotokolle finden Sie unter [Tracelog](https://msdn.microsoft.com/library/windows/hardware/ff552994.aspx) und [ETW-Ablaufverfolgung](https://msdn.microsoft.com/library/ms751538.aspx). Alle Protokolle einschließlich [Absturzabbildern](https://blogs.technet.microsoft.com/askperf/2008/01/08/understanding-crash-dump-files/) und [Leistungsindikatoren](https://msdn.microsoft.com/library/windows/desktop/aa373083.aspx) können zum Ordner „connectionString“ auf Ihrem Computer geleitet werden. Sie können AzureStorage auch zum Speichern von Diagnosen verwenden. Informationen hierzu finden Sie auch im folgenden Beispielcodeausschnitt:
 
-    "diagnosticsStore": {
-        "metadata":  "Please replace the diagnostics store with an actual file share accessible from all cluster machines.",
-        "dataDeletionAgeInDays": "7",
-        "storeType": "AzureStorage",
-        "IsEncrypted": "false",
-        "connectionstring": "xstore:DefaultEndpointsProtocol=https;AccountName=[AzureAccountName];AccountKey=[AzureAccountKey]"
-    }
+```json
+"diagnosticsStore": {
+    "metadata":  "Please replace the diagnostics store with an actual file share accessible from all cluster machines.",
+    "dataDeletionAgeInDays": "7",
+    "storeType": "AzureStorage",
+    "IsEncrypted": "false",
+    "connectionstring": "xstore:DefaultEndpointsProtocol=https;AccountName=[AzureAccountName];AccountKey=[AzureAccountKey]"
+}
+```
 
 ### <a name="security"></a>Sicherheit
 Der Abschnitt „security“ wird für einen sicheren eigenständigen Service Fabric-Cluster benötigt. Der folgende Codeausschnitt zeigt einen Teil dieses Abschnitts:
 
-    "security": {
-        "metadata": "This cluster is secured using X509 certificates.",
-        "ClusterCredentialType": "X509",
-        "ServerCredentialType": "X509",
-        . . .
-    }
+```json
+"security": {
+    "metadata": "This cluster is secured using X509 certificates.",
+    "ClusterCredentialType": "X509",
+    "ServerCredentialType": "X509",
+    . . .
+}
+```
 
 „Metadata“ ist eine Beschreibung Ihres sicheren Clusters und kann gemäß Ihrem Setup festgelegt werden. „ClusterCredentialType“ und „ServerCredentialType“ bestimmen den Typ der Sicherheit, der im Cluster und in den Knoten implementiert wird. Sie können *X509* für eine auf Zertifikaten basierende Sicherheit oder *Windows* für eine auf Azure Active Directory basierende Sicherheit festlegen. Die übrigen Festlegungen im Abschnitt „security“ hängen vom Typ der Sicherheit ab. Informationen darüber, wie Sie die restlichen Teile des Abschnitts „security“ ausfüllen, erhalten Sie in den Artikeln [Zertifikatbasierte Sicherheit in eigenständigen Windows-Clustern](service-fabric-windows-cluster-x509-security.md) und [Windows-Sicherheit in eigenständigen Windows-Clustern](service-fabric-windows-cluster-windows-security.md).
 
 ### <a name="node-types"></a>Knotentypen
 Im Abschnitt „nodeTypes“ werden die Typen der Knoten beschrieben, die in Ihrem Cluster vorhanden sind. Es muss wie im folgenden Codeausschnitt gezeigt mindestens ein Knotentyp für einen Cluster angegeben sein: 
 
-    "nodeTypes": [{
-        "name": "NodeType0",
-        "clientConnectionEndpointPort": "19000",
-        "clusterConnectionEndpointPort": "19001",
-        "leaseDriverEndpointPort": "19002"
-        "serviceConnectionEndpointPort": "19003",
-        "httpGatewayEndpointPort": "19080",
-        "reverseProxyEndpointPort": "19081",
-        "applicationPorts": {
-            "startPort": "20575",
-            "endPort": "20605"
-        },
-        "ephemeralPorts": {
-            "startPort": "20606",
-            "endPort": "20861"
-        },
-        "isPrimary": true
-    }]
+```json
+"nodeTypes": [{
+    "name": "NodeType0",
+    "clientConnectionEndpointPort": "19000",
+    "clusterConnectionEndpointPort": "19001",
+    "leaseDriverEndpointPort": "19002"
+    "serviceConnectionEndpointPort": "19003",
+    "httpGatewayEndpointPort": "19080",
+    "reverseProxyEndpointPort": "19081",
+    "applicationPorts": {
+        "startPort": "20575",
+        "endPort": "20605"
+    },
+    "ephemeralPorts": {
+        "startPort": "20606",
+        "endPort": "20861"
+    },
+    "isPrimary": true
+}]
+```
 
 Der Name ist der Anzeigename für diesen bestimmten Knotentyp. Weisen Sie zum Erstellen eines Knotens dieses Typs seinen Anzeigenamen der Variablen „nodeTypeRef“ für den Knoten zu, wie [zuvor beschrieben](#nodes-on-the-cluster). Definieren Sie für jeden Knotentyp die zu verwendenden Verbindungsendpunkte. Für diese Verbindungsendpunkte können Sie jede beliebige Portnummer auswählen, sofern dadurch keine Konflikte mit anderen Endpunkten in diesem Cluster entstehen. In einem Cluster mit mehreren Knoten gibt es mindestens einen primären Knoten („isPrimary“ ist *TRUE*). Dies richtet sich nach der Zuverlässigkeitsstufe ([reliabilityLevel](#reliability)). Informationen zu den primären Knoten und anderen Knotentypen sowie zu „nodeTypes“ und „reliabilityLevel“ erhalten Sie unter [Überlegungen zur Kapazitätsplanung für Service Fabric-Cluster](service-fabric-cluster-capacity.md). 
 
@@ -155,44 +163,53 @@ Der Name ist der Anzeigename für diesen bestimmten Knotentyp. Weisen Sie zum Er
 ### <a name="log-settings"></a>Protokolleinstellungen
 Im Abschnitt „fabricSettings“ können Sie die Stammverzeichnisse für die Service Fabric-Daten und -Protokolle festlegen. Sie können diese Verzeichnisse nur während der erstmaligen Clustererstellung anpassen. Informationen hierzu finden Sie auch im Codeausschnitt dieses Abschnitts, der als Beispiel dient:
 
-    "fabricSettings": [{
-        "name": "Setup",
-        "parameters": [{
-            "name": "FabricDataRoot",
-            "value": "C:\\ProgramData\\SF"
-        }, {
-            "name": "FabricLogRoot",
-            "value": "C:\\ProgramData\\SF\\Log"
-    }]
+```json
+"fabricSettings": [{
+    "name": "Setup",
+    "parameters": [{
+        "name": "FabricDataRoot",
+        "value": "C:\\ProgramData\\SF"
+    }, {
+        "name": "FabricLogRoot",
+        "value": "C:\\ProgramData\\SF\\Log"
+}]
+```
 
 Es wird empfohlen, dass Sie ein Nicht-Betriebssystem-Laufwerk als FabricDataRoot und FabricLogRoot verwenden. Er bietet höhere Zuverlässigkeit, wenn es darum geht, Situationen zu vermeiden, in denen das Betriebssystem nicht mehr reagiert. Wenn Sie nur das Stammverzeichnis für die Daten anpassen, wird das Stammverzeichnis für die Protokolle genau eine Ebene unterhalb des Stammverzeichnisses für die Daten angesiedelt.
 
 ### <a name="stateful-reliable-services-settings"></a>Einstellungen für zustandsbehaftete Reliable Services
 Im Abschnitt „KtlLogger“ können Sie die globalen Konfigurationseinstellungen für Reliable Services festlegen. Weitere Informationen zu diesen Einstellungen finden Sie unter [Konfigurieren zustandsbehafteter Reliable Services](service-fabric-reliable-services-configuration.md). Im folgenden Beispiel wird gezeigt, wie Sie das freigegebene Transaktionsprotokoll ändern, das als Unterstützung für zuverlässige Sammlungen für zustandsbehaftete Dienste erstellt wird:
 
-    "fabricSettings": [{
-        "name": "KtlLogger",
-        "parameters": [{
-            "name": "SharedLogSizeInMB",
-            "value": "4096"
-        }]
+```json
+"fabricSettings": [{
+    "name": "KtlLogger",
+    "parameters": [{
+        "name": "SharedLogSizeInMB",
+        "value": "4096"
     }]
+}]
+```
 
 ### <a name="add-on-features"></a>Add-On-Funktionen
 Um Add-on-Funktionen zu konfigurieren, konfigurieren Sie die API-Version als „04-2017“ oder höher, und konfigurieren Sie „addonFeatures“, so wie hier gezeigt:
 
-    "apiVersion": "04-2017",
-    "properties": {
-      "addOnFeatures": [
-          "DnsService",
-          "RepairManager"
-      ]
-    }
+```json
+"apiVersion": "04-2017",
+"properties": {
+    "addOnFeatures": [
+        "DnsService",
+        "RepairManager"
+    ]
+}
+```
 
 ### <a name="container-support"></a>Containerunterstützung
 Um bei eigenständigen Clustern die Containerunterstützung sowohl für Windows Server-Container als auch für Hyper-V-Container zu aktivieren, muss das Add-on-Feature von „DnsService“ aktiviert sein.
 
-
 ## <a name="next-steps"></a>Nächste Schritte
-Nachdem Sie eine vollständige „ClusterConfig.json“-Datei gemäß des Setups Ihres eigenständigen Clusters konfiguriert haben, können Sie Ihren Cluster bereitstellen. Befolgen Sie die Schritte unter [Erstellen eines eigenständigen Azure Service Fabric-Clusters](service-fabric-cluster-creation-for-windows-server.md). Fahren Sie dann mit [Visualisieren Ihres Clusters mit Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) fort, und befolgen Sie die Schritte.
+Nachdem Sie die *ClusterConfig.json*-Datei gemäß dem Setup Ihres eigenständigen Clusters vollständig konfiguriert haben, können Sie den Cluster bereitstellen. Befolgen Sie die Schritte unter [Erstellen eines eigenständigen Azure Service Fabric-Clusters](service-fabric-cluster-creation-for-windows-server.md). 
+
+Wenn Sie einen eigenständigen Cluster bereitgestellt haben, können Sie auch [die Konfiguration eines eigenständigen Clusters aktualisieren](service-fabric-cluster-config-upgrade-windows-server.md). 
+
+Unter [Visualisieren Ihres Clusters mit Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) ist die entsprechende Vorgehensweise beschrieben.
 

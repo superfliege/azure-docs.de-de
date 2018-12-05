@@ -1,46 +1,51 @@
 ---
-title: Continuous Deployment mit Jenkins unter Azure Kubernetes Service (AKS)
-description: Erfahren Sie, wie Sie einen Continuous Deployment-Prozess mit Jenkins zum Bereitstellen und Durchführen eines Upgrades für eine Container-App über Kubernetes in Azure Kubernetes Service (AKS) automatisieren.
+title: 'Tutorial: Bereitstellen über GitHub in Azure Kubernetes Service (AKS) mit Jenkins'
+description: Einrichten von Jenkins für Continuous Integration (CI) über GitHub und Continuous Deployment (CD) in Azure Kubernetes Service (AKS)
 services: container-service
-author: iainfoulds
 ms.service: container-service
+author: iainfoulds
+ms.author: iainfou
 ms.topic: article
 ms.date: 09/27/2018
-ms.author: iainfou
-ms.openlocfilehash: 5417e59f15ffcf48cc2af27044355d2bb5c9edaf
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: d252e275280ed2a5c2129f6b228e9989a33b37fd
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50087694"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51853614"
 ---
-# <a name="create-a-continuous-deployment-pipeline-with-jenkins-and-azure-kubernetes-service-aks"></a>Erstellen einer Continuous Deployment-Pipeline mit Jenkins und Azure Kubernetes Service (AKS)
+# <a name="tutorial-deploy-from-github-to-azure-kubernetes-service-aks-with-jenkins-continuous-integration-and-deployment"></a>Tutorial: Bereitstellen über GitHub in Azure Kubernetes Service (AKS) mit Continuous Integration und Continuous Deployment von Jenkins
 
-Zum schnellen Bereitstellen von Updates für Anwendungen in Azure Kubernetes Service (AKS) verwenden Sie häufig eine CI/CD-Plattform (Continuous Integration/Continuous Delivery). Bei einer CI/CD-Plattform kann ein Codecommit einen neuen Containerbuild auslösen, mit dem dann eine Instanz der aktualisierten Anwendung bereitgestellt wird. In diesem Artikel verwenden Sie Jenkins als CI/CD-Plattform zum Erstellen und Pushen von Containerimages in Azure Container Registry (ACR) und führen dann die Anwendungen in AKS aus. Folgendes wird vermittelt:
+In diesem Tutorial werden Continuous Integration (CI) und Continuous Deployment (CD) in Jenkins eingerichtet, um eine Beispiel-App aus GitHub in einem [Azure Kubernetes Service (AKS)](/azure/aks/intro-kubernetes)-Cluster bereitzustellen. Auf diese Weise führt Jenkins, wenn Sie Ihre App durch Pushen von Commits an GitHub aktualisieren, automatisch einen neuen Containerbuild aus, überträgt Container-Images an Azure Container Registry (ACR), und führt dann Ihre App in AKS aus. 
+
+Dieses Tutorial umfasst folgende Aufgaben:
 
 > [!div class="checklist"]
-> * Bereitstellen einer Azure-Beispielabstimmungsanwendung in einem AKS-Cluster
-> * Erstellen einer einfachen Jenkins-Instanz
-> * Konfigurieren von Jenkins-Anmeldeinformationen für die Interaktion mit ACR
-> * Erstellen eines Jenkins-Buildauftrags und eines GitHub-Webhooks für automatisierte Builds
-> * Testen der CI/CD-Pipeline zum Aktualisieren einer Anwendung in AKS basierend auf GitHub-Codecommits
+> * Bereitstellen einer Azure-Beispielabstimmungs-App in einem AKS-Cluster.
+> * Erstellen eines einfachen Jenkins-Projekts.
+> * Einrichten von Jenkins-Anmeldeinformationen für die Interaktion mit ACR.
+> * Erstellen eines Jenkins-Buildauftrags und GitHub-Webhooks für automatisierte Builds.
+> * Testen der CI/CD-Pipeline zum Aktualisieren einer Anwendung in AKS basierend auf GitHub-Codecommits.
 
-## <a name="before-you-begin"></a>Voraussetzungen
+## <a name="prerequisites"></a>Voraussetzungen
 
-Sie benötigen Folgendes, um die Schritte in diesem Artikel ausführen zu können:
+Für dieses Tutorial benötigen Sie Folgendes:
 
 - Grundkenntnisse zu Kubernetes, Git, CI/CD und Containerimages.
 
-- Einen [AKS-Cluster][aks-quickstart] und `kubectl` konfiguriert mit den [AKS-Clusteranmeldeinformationen][aks-credentials].
-- Eine [Azure Container Registry-Registrierung (ACR)][acr-quickstart], den ACR-Anmeldeservernamen und den AKS-Cluster konfiguriert für die [Authentifizierung mit der ACR][acr-authentication].
+- Einen [AKS-Cluster][aks-quickstart] und `kubectl`, konfiguriert mit den [AKS-Clusteranmeldeinformationen][aks-credentials]
 
-- Version 2.0.46 oder höher der Azure-Befehlszeilenschnittstelle installiert und konfiguriert. Führen Sie  `az --version` aus, um die Version zu ermitteln. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie weitere Informationen unter  [Installieren der Azure CLI][install-azure-cli].
-- Eine [Installation von Docker][docker-install] auf Ihrem Entwicklungssystem.
-- Ein GitHub-Konto, ein [persönliches Zugriffstoken für GitHub][git-access-token] und eine Installation des Git-Clients auf Ihrem Entwicklungssystem.
+- Eine [Azure Container Registry-Registrierung (ACR)][acr-quickstart], den Namen des ACR-Anmeldeservers und den für die [Authentifizierung mit der ACR-Registrierung][acr-authentication] konfigurierten AKS-Cluster
+
+- Version 2.0.46 oder höher der Azure-Befehlszeilenschnittstelle installiert und konfiguriert. Führen Sie  `az --version` aus, um die Version zu ermitteln. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie weitere Informationen unter [Installieren der Azure CLI][install-azure-cli].
+
+- Eine [Installation von Docker][docker-install] auf Ihrem Entwicklungssystem
+
+- Ein GitHub-Konto, ein [persönliches Zugriffstoken für GitHub][git-access-token] und eine Installation des Git-Clients auf Ihrem Entwicklungssystem
 
 - Wenn Sie selbst eine Jenkins-Instanz bereitstellen möchten, anstatt dieses Beispielskript zu verwenden, müssen für diese Instanz [Docker][docker-install] und [kubectl][kubectl-install] installiert und konfiguriert sein.
 
-## <a name="prepare-the-application"></a>Vorbereiten der Anwendung
+## <a name="prepare-your-app"></a>Vorbereiten Ihrer App
 
 In diesem Artikel verwenden Sie eine Azure-Abstimmungsanwendung, die eine in einem oder mehreren Pods gehostete Webschnittstelle und einen zusätzlichen Pod für die temporäre Datenspeicherung enthält. Bevor Sie Jenkins und AKS für automatisierte Bereitstellungen integrieren, müssen Sie zuerst manuell die Azure-Abstimmungsanwendung in Ihrem AKS-Cluster vorbereiten und bereitstellen. Diese manuelle Bereitstellung ist die erste Version der Anwendung und ermöglicht Ihnen, die Anwendung in Aktion zu sehen.
 

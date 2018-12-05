@@ -12,20 +12,21 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 9/10/2018
+ms.date: 11/15/2018
 ms.author: tomsh
-ms.openlocfilehash: 9ecdc0b7d2d21962dbfc7c14e9fff3fd969dd018
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 5feedcd750841be159a7cf4a31f408aec2fffd38
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44721091"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51712975"
 ---
 # <a name="azure-security-white-papers"></a>Azure Security-Whitepaper
 | | |
 |-|-|
 |[Einführung&nbsp;in&nbsp;die&nbsp;Azure-Sicherheit](azure-security.md)|Erklärt die Sammlung der in Azure implementierten Sicherheitskontrollen sowohl aus der Sicht des Kunden als auch aus der Sicht von Microsoft. Bietet einen umfassenden Überblick über die kundenseitigen Sicherheitskontrollen, die mit Azure erhältlich sind.|
 |[Bewährte Methoden für die Sicherheit von Azure-Lösungen](https://azure.microsoft.com/resources/security-best-practices-for-azure-solutions)|Eine Sammlung bewährter Methoden für die Sicherheit, die Sie beim Entwerfen, Bereitstellen und Verwalten Ihrer Cloudlösungen mithilfe von Azure verwenden können.|
+|[Entwickeln sicherer Anwendungen in Azure](abstract-develop-secure-apps.md)|Eine allgemeine Anleitung für die Sicherheitsfragen und Steuerelemente, die Sie beim Entwickeln von Anwendungen für die Cloud in den einzelnen Phasen des Softwareentwicklungszyklus berücksichtigen sollten.|
 |[Erweiterte Bedrohungserkennung](azure-threat-detection.md)|Führt Sie durch die Azure-Ansätze zur Bewertung, Diagnose und Analyse von Bedrohungen und Sicherheitsrisiken. Erklärt, wie Microsoft erweiterte Mechanismen zur Erkennung von Bedrohungen verwendet, um die Plattform zu sichern. Erklärt auch, wie Microsoft diese Mechanismen in öffentlich zugängliche Funktionen und Dienste einbindet.|
 |[Azure-Datenverschlüsselung ruhender Daten](azure-security-encryption-atrest.md)|Legt den Schwerpunkt darauf, wie ruhende Daten in Azure und den verschiedenen Komponenten geschützt werden, die an der Implementierung des Datenschutzes beteiligt sind. Stellt Vor- und Nachteile der verschiedenen Ansätze für den Schutz der Schlüsselverwaltung heraus.|
 |[Azure-Protokollierung und -Überwachung](azure-log-audit.md)|Bietet eine Einführung in das Generieren, Sammeln und Analysieren von Sicherheitsprotokollen aus Diensten, die in Azure gehostet werden. Mithilfe dieser Protokolle erhalten Sie sicherheitsbezogene Einblicke in Ihre Azure-Bereitstellungen. |

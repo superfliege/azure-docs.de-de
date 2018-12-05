@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/14/2018
+ms.date: 11/21/2018
 ms.author: jingwang
-ms.openlocfilehash: ec0fc11ac2caf421f331a8fe72f1dacdf6b8a702
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: 1e561a59ebe503e0088362087dbda4d7d89fee4c
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42312162"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52275685"
 ---
 # <a name="copy-data-from-and-to-oracle-by-using-azure-data-factory"></a>Kopieren von Daten aus und nach Oracle mit Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -56,7 +56,7 @@ Die folgenden Abschnitte enthalten Details zu Eigenschaften, die zum Definieren 
 
 Die folgenden Eigenschaften werden für den mit Oracle verknüpften Dienst unterstützt.
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft muss auf **Oracle** festgelegt werden. | JA |
 | connectionString | Gibt die Informationen an, die zum Herstellen einer Verbindung mit der Oracle-Datenbankinstanz erforderlich sind. Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md).<br><br>**Unterstützter Verbindungstyp**: Sie können **Oracle SID** oder **Oracle-Dienstname** zur Identifizierung Ihrer Datenbank verwenden:<br>– Wenn Sie die SID verwenden: `Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;Password=<password>;`<br>– Wenn Sie den Dienstnamen verwenden: `Host=<host>;Port=<port>;ServiceName=<servicename>;User Id=<username>;Password=<password>;` | JA |
@@ -65,11 +65,46 @@ Die folgenden Eigenschaften werden für den mit Oracle verknüpften Dienst unter
 >[!TIP]
 >Wenn der Fehler „ORA-01025: UPI parameter out of range“ angezeigt wird und Sie die Oracle-Version 8i nutzen, können Sie Ihrer Verbindungszeichenfolge den Zusatz `WireProtocolMode=1` hinzufügen und den Vorgang wiederholen.
 
-Zum Aktivieren der Verschlüsselung bei einer Oracle-Verbindung haben Sie zwei Möglichkeiten:
+**Zum Aktivieren der Verschlüsselung bei einer Oracle-Verbindung** haben Sie zwei Möglichkeiten:
 
-1.  Auf Oracle-Serverseite wechseln Sie zu Oracle Advanced Security (OAS) und konfigurieren die Verschlüsselungseinstellungen, die Triple-DES-Verschlüsselung (3DES) and Advanced Encryption Standard (AES) unterstützen. Ausführliche Informationen dazu finden Sie [hier](https://docs.oracle.com/cd/E11882_01/network.112/e40393/asointro.htm#i1008759). Der ADF-Oracle-Connector handelt automatisch die zu verwendende Verschlüsselungsmethode als diejenige aus, die Sie in OAS beim Herstellen der Verbindung mit Oracle konfigurieren.
+1.  Um die **Triple-DES-Verschlüsselung (3DES) und Advanced Encryption Standard (AES)** zu verwenden, wechseln Sie auf Oracle-Serverseite zu Oracle Advanced Security (OAS), und konfigurieren Sie die Verschlüsselungseinstellungen. Ausführliche Informationen dazu finden Sie [hier](https://docs.oracle.com/cd/E11882_01/network.112/e40393/asointro.htm#i1008759). Der ADF-Oracle-Connector handelt automatisch die zu verwendende Verschlüsselungsmethode als diejenige aus, die Sie in OAS beim Herstellen der Verbindung mit Oracle konfigurieren.
 
-2.  Auf Clientseite können Sie `EncryptionMethod=1` in der Verbindungszeichenfolge hinzufügen. Dadurch wird SSL/TLS als Verschlüsselungsmethode verwendet. Zu diesem Zweck müssen Sie Verschlüsselungseinstellungen ohne SSL in OAS auf Oracle-Serverseite deaktivieren, um Verschlüsselungskonflikte zu vermeiden.
+2.  Zur Verwendung von **SSL** führen Sie die folgenden Schritte aus:
+
+    1.  Rufen Sie die SSL-Zertifikatsinformationen ab. Rufen Sie die DER-codierten Zertifikatsinformationen von Ihrem SSL-Zertifikat ab, und speichern Sie die Ausgabe (----- Begin Certificate ... End Certificate -----) als Textdatei.
+
+        ```
+        openssl x509 -inform DER -in [Full Path to the DER Certificate including the name of the DER Certificate] -text
+        ```
+
+        **Beispiel:** Extrahieren Sie die Zertifikatsinformationen aus DERcert.cer; speichern Sie anschließend die Ausgabe in cert.txt
+
+        ```
+        openssl x509 -inform DER -in DERcert.cer -text
+        Output:
+        -----BEGIN CERTIFICATE-----
+        XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+        XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+        XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+        XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+        XXXXXXXXX
+        -----END CERTIFICATE-----
+        ```
+    
+    2.  Erstellen Sie den KeyStore oder TrustStore. Mit dem folgenden Befehl wird die TrustStore-Datei mit oder ohne Kennwort im PKCS-12-Format erstellt.
+
+        ```
+        openssl pkcs12 -in [Path to the file created in the previous step] -out [Path and name of TrustStore] -passout pass:[Keystore PWD] -nokeys -export
+        ```
+
+        **Beispiel:** erstellt eine PKCS12-TrustStore-Datei namens „MyTrustStoreFile“ mit einem Kennwort
+
+        ```
+        openssl pkcs12 -in cert.txt -out MyTrustStoreFile -passout pass:ThePWD -nokeys -export  
+        ```
+
+    3.  Speichern Sie die TrustStore-Datei auf dem Computer mit der selbstgehosteten IR, z. B. auf C:\MyTrustStoreFile.
+    4.  Konfigurieren Sie in ADF die Oracle-Verbindungszeichenfolge mit `EncryptionMethod=1` und entsprechendem `TrustStore`/`TrustStorePassword`-Wert, z. B. `Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;Password=<password>;EncryptionMethod=1;TrustStore=C:\\MyTrustStoreFile;TrustStorePassword=<trust_store_password>`.
 
 **Beispiel:**
 
