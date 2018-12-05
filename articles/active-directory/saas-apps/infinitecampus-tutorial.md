@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: jeedes
-ms.openlocfilehash: 7ce577901530856690754f3db18ba9f40bfb8a51
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 837d18a04a0cd22f29a5cbcb8b06b7e3f5fae255
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51019914"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52632805"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-infinite-campus"></a>Tutorial: Integration von Infinite Campus in Azure Active Directory
 
@@ -48,6 +48,7 @@ Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen 
 
 - Verwenden Sie die Produktionsumgebung nur, wenn dies unbedingt erforderlich ist.
 - Wenn Sie keine Azure AD-Testumgebung haben, können Sie eine [einmonatige Testversion anfordern](https://azure.microsoft.com/pricing/free-trial/).
+- Sie müssen mindestens ein Azure Active Directory-Administrator sein, um die Konfiguration durchzuführen.
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 
@@ -110,7 +111,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     ![Configure single sign-on](common/editconfigure.png)
 
-5. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus, wenn Sie über eine **Dienstanbieter-Metadatendatei** verfügen:
+5. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus, wenn Sie über eine **Dienstanbieter-Metadatendatei** (Schritt **11.b**) verfügen:
 
     a. Klicken Sie auf **Metadatendatei hochladen**.
 
@@ -124,7 +125,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     ![image](./media/infinitecampus-tutorial/tutorial_infinitecampus_url.png)
 
-    d. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<DOMAIN>.infinitecampus.com/campus/SSO/<DISTRICTNAME>/SIS`.
+    d. Geben Sie im Textfeld **Anmelde-URL** eine URL nach folgendem Muster ein (die Domäne variiert je nach Hostingmodell): `https://<DOMAIN>.infinitecampus.com/campus/SSO/<DISTRICTNAME>/SIS`
 
     > [!NOTE]
     > Sie können die **Dienstanbieter-Metadatendatei** auf der Infinite Campus-Konfigurationsseite für den SSO-Dienstanbieter abrufen, die im weiteren Verlauf des Tutorials erläutert wird.
@@ -143,7 +144,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     ![Downloadlink für das Zertifikat](./media/infinitecampus-tutorial/tutorial_infinitecampus_certificate.png) 
 
-7. Kopieren Sie im Abschnitt **Infinite Campus einrichten** die entsprechende URL gemäß Ihren Anforderungen.
+7. Verwenden Sie im Abschnitt **Infinite Campus einrichten** die folgenden Werte zur Validierung, wenn Sie die Azure-Metadatendatei/-URL hochladen oder verwenden.
 
     a. Anmelde-URL
 
@@ -169,7 +170,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     a. Wählen Sie **Enable SAML Single Sign On** (Einmaliges Anmelden per SAML aktivieren) aus.
 
-    b. Klicken Sie auf den Link **Service Provider Metadata** (Metadaten des Dienstanbieters), um die Datei unter **Service Provider Metadata** auf Ihrem Computer zu speichern. Laden Sie die Datei im Azure-Portal im Abschnitt **Grundlegende SAML-Konfiguration** hoch, damit die Werte **Bezeichner** und **Antwort-URL** automatisch ausgefüllt werden.
+    b. Klicken Sie auf den Link **Service Provider Metadata** (Metadaten des Dienstanbieters), um die Datei mit den **Metadaten des Dienstanbieters** auf Ihrem Computer zu speichern. Laden Sie die Datei im Azure-Portal im Abschnitt **Grundlegende SAML-Konfiguration** hoch, damit die Werte **Bezeichner** und **Antwort-URL** automatisch aufgefüllt werden (siehe Schritt 5).
 
     c. Wählen Sie im Bereich **Select an option to retrieve Identity Provider (IDP) server data** (Option zum Abrufen von IDP-Dienstanbieterdaten auswählen) die Option **Metadata URL** (Metadaten-URL) aus, fügen Sie die **Verbundmetadaten-URL der App** in das Textfeld ein, und klicken Sie auf **Sync** (Synchronisieren).
 
@@ -179,7 +180,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 ### <a name="creating-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
-Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta Simon im Azure-Portal.
+Das Ziel dieses Abschnitts ist das Erstellen eines _einzelnen_ Testbenutzers namens Britta Simon im Azure-Portal.
 
 1. Wählen Sie im Azure-Portal im linken Bereich die Option **Azure Active Directory**, **Benutzer** und dann **Alle Benutzer** aus.
 
@@ -195,7 +196,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     a. Geben Sie im Feld **Name** den Namen **BrittaSimon** ein.
   
-    b. Geben Sie im Feld **Benutzername** **brittasimon@yourcompanydomain.extension** ein.  
+    b. Geben Sie im Feld **Benutzername** den Namen **brittasimon@yourcompanydomain.extension** ein.  
     Zum Beispiel, BrittaSimon@contoso.com
 
     c. Wählen Sie **Eigenschaften** aus, aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich dann den Wert, der im Feld „Kennwort“ angezeigt wird.
@@ -234,8 +235,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „Infinite Campus“ klicken, sollten Sie automatisch bei Ihrer Infinite Campus-Anwendung angemeldet werden.
-Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md).
+Wenn Sie im Zugriffsbereich auf die Kachel „Infinite Campus“ klicken, sollten Sie automatisch bei Ihrer Infinite Campus-Anwendung angemeldet werden. Wenn Sie sich bei der Infinite Campus-Anwendung im selben Browser anmelden, in dem Sie auch Azure AD verwalten, stellen Sie sicher, dass Sie in Azure AD als der Testbenutzer angemeldet sind. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

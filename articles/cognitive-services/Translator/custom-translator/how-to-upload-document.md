@@ -1,7 +1,7 @@
 ---
 title: 'Hochladen eines Dokuments: Custom Translator'
 titleSuffix: Azure Cognitive Services
-description: Mithilfe des Dokumentuploadfeatures können Sie parallele Dokumente zu Trainingszwecken hochladen. Parallele Dokumente sind Dokumentpaare, bei denen ein Dokument die Übersetzung des anderen enthält. Das eine Dokument des Paars enthält also die Sätze in der Ausgangssprache, das andere die entsprechenden Sätze in der Zielsprache.
+description: Mithilfe des Dokumentuploadfeatures können Sie parallele Dokumente zu Trainingszwecken hochladen. Parallele Dokumente sind Dokumentpaare, bei denen ein Dokument die Übersetzung des anderen enthält. Das eine Dokument des Paars enthält also die Sätze in der Ausgangssprache und das andere die entsprechenden Sätze in der Zielsprache.
 author: rajdeep-in
 manager: christw
 ms.service: cognitive-services
@@ -9,16 +9,18 @@ ms.component: custom-translator
 ms.date: 11/13/2018
 ms.author: v-rada
 ms.topic: article
-ms.openlocfilehash: bb84a3ddfba54c47cdf91aa72889a960722cdbd3
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 3a0adb4b761121334e93f2b8d2d764ff3ab495e2
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51626776"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52633247"
 ---
 # <a name="upload-a-document"></a>Hochladen eines Dokuments
 
-In [Custom Translator](https://portal.customtranslator.azure.ai) können Sie parallele Dokumente hochladen, um Ihre Übersetzungsmodelle zu trainieren. [Parallele Dokumente](what-are-parallel-documents.md) sind Dokumentpaare, bei denen ein Dokument die Übersetzung des anderen enthält. Das eine Dokument des Paars enthält also die Sätze in der Ausgangssprache, das andere die entsprechenden Sätze in der Zielsprache.
+In [Custom Translator](https://portal.customtranslator.azure.ai) können Sie parallele Dokumente hochladen, um Ihre Übersetzungsmodelle zu trainieren. [Parallele Dokumente](what-are-parallel-documents.md) sind Dokumentpaare, bei denen ein Dokument die Übersetzung des anderen enthält. Das eine Dokument des Paars enthält also die Sätze in der Ausgangssprache und das andere die entsprechenden Sätze in der Zielsprache.
+
+Bevor Sie Ihre Dokumente hochladen, lesen Sie den [Leitfaden für Dokumentformate und Namenskonventionen](document-formats-naming-convention.md), um sicherzustellen, dass Ihr Dateiformat in Custom Translator unterstützt wird.
 
 ## <a name="how-to-upload-document"></a>Hochladen eines Dokuments
 

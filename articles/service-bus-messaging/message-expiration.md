@@ -11,22 +11,22 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2018
+ms.date: 11/29/2018
 ms.author: spelluru
-ms.openlocfilehash: e2efe2bfb26fa7a14a9e80c26fba1322f82cb0eb
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: c5df5f43c4f01013cc44a2497203947f303f3e81
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48856920"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52634828"
 ---
 # <a name="message-expiration-time-to-live"></a>Nachrichtenablauf (Gültigkeitsdauer)
 
-Die Nutzlast innerhalb einer Nachricht, oder ein Befehl oder eine Abfrage, den/die eine Nachricht an einen Empfänger übermittelt, unterliegt fast immer einer Form von Ablauffrist auf Anwendungsebene. Nach Ablauf einer solchen Frist wird der Inhalt nicht mehr zugestellt oder der gewünschte Vorgang nicht mehr ausgeführt.
+Die Nutzlast in einer Nachricht oder die in einer Nachricht an einen Empfänger übermittelten Befehle/Anforderungen unterliegen fast immer einer Form von Ablauffrist auf Anwendungsebene. Nach Ablauf einer solchen Frist wird der Inhalt nicht mehr zugestellt oder der gewünschte Vorgang nicht mehr ausgeführt.
 
 Für Entwicklungs- und Testumgebungen, in denen Warteschlangen und Themen häufig im Rahmen von Teilläufen von Anwendungen oder Anwendungsteilen verwendet werden, ist es auch wünschenswert, dass nicht zugestellte Testnachrichten automatisch gesammelt werden, damit der nächste Testlauf davon unbeeinflusst starten kann.
 
-Der Ablauf jeder einzelnen Nachricht kann durch das Festlegen der Systemeigenschaft [TimeToLive](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive) gesteuert werden, die eine relative Dauer angibt. Der Ablauf wird zu einem absoluten Zeitpunkt, an dem die Nachricht in die Warteschlange der Entität gestellt wird. Derzeit akzeptiert die [ExpiresAtUtc](/dotnet/api/microsoft.azure.servicebus.message.expiresatutc)-Eigenschaft nur den Wert [(**EnqueuedTimeUtc**](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedtimeutc#Microsoft_ServiceBus_Messaging_BrokeredMessage_EnqueuedTimeUtc) + [**TimeToLive**)](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive).
+Der Ablauf jeder einzelnen Nachricht kann durch das Festlegen der Systemeigenschaft [TimeToLive](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive) gesteuert werden, die eine relative Dauer angibt. Der Ablauf wird zu einem absoluten Zeitpunkt, an dem die Nachricht in die Warteschlange der Entität gestellt wird. Derzeit akzeptiert die [ExpiresAtUtc](/dotnet/api/microsoft.azure.servicebus.message.expiresatutc)-Eigenschaft nur den Wert [(**EnqueuedTimeUtc**](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedtimeutc#Microsoft_ServiceBus_Messaging_BrokeredMessage_EnqueuedTimeUtc) + [**TimeToLive**)](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive). Die Einstellung für die Gültigkeitsdauer (Time-to-Live, TTL) einer im Broker gespeicherten Nachricht wird nicht erzwungen, wenn kein Client aktiv lauscht.
 
 Nach Ablauf des **ExpiresAtUtc**-Zeitpunkts können Nachrichten nicht mehr abgerufen werden. Die Ablaufzeit wirkt sich nicht auf Nachrichten aus, die momentan für die Zustellung gesperrt sind. Diese Nachrichten werden weiterhin normal behandelt. Wenn die Sperre abläuft oder die Nachricht abgebrochen wird, tritt der Ablauf sofort in Kraft.
 
@@ -44,15 +44,37 @@ Die Kombination aus [TimeToLive](/dotnet/api/microsoft.azure.servicebus.message.
 
 Stellen Sie sich beispielsweise eine Website vor, die Aufträge zuverlässig in einem Back-End mit eingeschränkter Skalierung ausführen muss, und bei der es gelegentlich zu Datenverkehrsspitzen kommt oder die von Verfügbarkeitszeiträumen dieses Back-Ends isoliert werden soll. Im Regelfall verschiebt der serverseitige Handler für die übermittelten Benutzerdaten die Informationen in eine Warteschlange und erhält anschließend eine Antwort, die die erfolgreiche Verarbeitung der Transaktion in einer Antwortwarteschlange bestätigt. Wenn es eine Datenverkehrsspitze gibt und der Back-End-Handler seine Backlog Items nicht rechtzeitig verarbeiten kann, werden die abgelaufenen Aufträge an die Warteschlange für unzustellbare Nachrichten zurückgegeben. Der interaktive Benutzer kann benachrichtigt werden, dass der angeforderte Vorgang etwas länger als gewöhnlich dauert. Die Anforderung kann dann in eine andere Warteschlange für einen Verarbeitungspfad gestellt werden, woraufhin das endgültige Verarbeitungsergebnis per E-Mail an den Benutzer gesendet wird. 
 
+
 ## <a name="temporary-entities"></a>Temporäre Entitäten
 
 Service Bus-Warteschlangen, -Themen und -Abonnements können als temporäre Entitäten erstellt werden, die automatisch entfernt werden, sobald sie für einen angegebenen Zeitraum nicht verwendet wurden.
  
 Die automatische Bereinigung ist in Entwicklungs- und Testszenarien sinnvoll, in denen Entitäten dynamisch erstellt und nach der Nutzung nicht bereinigt werden, da der Test- oder Debuglauf unterbrochen wurde. Sie ist auch nützlich, wenn eine Anwendung dynamische Entitäten erstellt, wie z.B. eine Antwortwarteschlange, um Antworten wieder in einen Webserverprozess oder in einem anderen relativ kurzlebigen Objekt zu empfangen. In diesem Fall ist es schwierig, diese Entitäten zuverlässig zu bereinigen, wenn die Objektinstanz nicht mehr vorhanden ist.
 
-Das Feature wird mit der [AutoDeleteOnIdle](/azure/templates/microsoft.servicebus/namespaces/queues)-Eigenschaft aktiviert, die auf die Dauer festgelegt ist, die eine Entität inaktiv (nicht verwendet) sein muss, bevor sie automatisch gelöscht wird. Die Mindestdauer ist fünf Minuten.
+Das Feature wird mithilfe der Eigenschaft [autoDeleteOnIdle](/azure/templates/microsoft.servicebus/namespaces/queues) aktiviert. Diese Eigenschaft wird auf die Dauer festgelegt, die eine Entität inaktiv (im Leerlauf) sein muss, bevor sie automatisch gelöscht wird. Der Mindestwert für diese Eigenschaft lautet 5.
  
-Die Eigenschaft **autoDeleteOnIdle** muss über einen Azure Resource Manager-Vorgang oder über die [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager)-APIs des .NET Framework-Clients festgelegt werden. Sie kann nicht im Portal festgelegt werden.
+Die Eigenschaft **autoDeleteOnIdle** muss über einen Azure Resource Manager-Vorgang oder über die [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager)-APIs des .NET Framework-Clients festgelegt werden. Eine Festlegung im Portal ist nicht möglich.
+
+## <a name="idleness"></a>Leerlauf
+
+In den folgenden Situationen werden Entitäten als inaktiv (im Leerlauf befindlich) betrachtet:
+
+- Warteschlangen
+    - Keine Sendevorgänge  
+    - Keine Empfangsvorgänge  
+    - Keine Aktualisierungen der Warteschlange  
+    - Keine geplanten Nachrichten  
+    - Keine Suchvorgänge/Vorschau 
+- Themen  
+    - Keine Sendevorgänge  
+    - Keine Aktualisierungen des Themas  
+    - Keine geplanten Nachrichten 
+- Abonnements
+    - Keine Empfangsvorgänge  
+    - Keine Aktualisierungen des Abonnements  
+    - Keine Hinzufügung neuer Regeln zum Abonnement  
+    - Keine Suchvorgänge/Vorschau  
+ 
 
 
 ## <a name="next-steps"></a>Nächste Schritte

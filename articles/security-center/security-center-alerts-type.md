@@ -3,7 +3,7 @@ title: Sicherheitswarnungen nach Typ in Azure Security Center | Microsoft-Dokume
 description: In diesem Artikel werden die verschiedenen Arten von Sicherheitswarnungen beschrieben, die in Azure Security Center verfügbar sind.
 services: security-center
 documentationcenter: na
-author: terrylan
+author: rkarlin
 manager: mbaldwin
 editor: ''
 ms.assetid: b3e7b4bc-5ee0-4280-ad78-f49998675af1
@@ -12,19 +12,19 @@ ms.topic: conceptual
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/21/2018
-ms.author: yurid
-ms.openlocfilehash: 0573442568115fc872cc4cf4cf8c369cd635028e
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 11/29/2018
+ms.author: rkarlin
+ms.openlocfilehash: 24c6487ee7ec7d8398f933e29ca51cc9e390f47f
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51262113"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52633264"
 ---
 # <a name="understanding-security-alerts-in-azure-security-center"></a>Verstehen der Sicherheitswarnungen in Azure Security Center
 In diesem Artikel werden die verschiedenen Arten von Sicherheitswarnungen und verwandte Informationen beschrieben, die in Azure Security Center verfügbar sind. Weitere Informationen zur Verwaltung von Warnungen und Vorfällen finden Sie unter [Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center](security-center-managing-and-responding-alerts.md).
 
-Führen Sie ein Upgrade auf Azure Security Center Standard durch, um erweiterte Erkennungsfunktionen einzurichten. Sie können auch eine kostenlose 60-Tage-Testversion nutzen. Wählen Sie in der [Sicherheitsrichtlinie](security-center-policies.md) den **Tarif** aus, wenn Sie ein Upgrade durchführen möchten. Weitere Informationen finden Sie auf der [Preisseite](https://azure.microsoft.com/pricing/details/security-center/).
+Führen Sie ein Upgrade auf Azure Security Center Standard durch, um erweiterte Erkennungsfunktionen einzurichten. Sie können auch eine kostenlose 60-Tage-Testversion nutzen. Wählen Sie in der [Sicherheitsrichtlinie](security-center-azure-policy.md) den **Tarif** aus, wenn Sie ein Upgrade durchführen möchten. Weitere Informationen finden Sie auf der [Preisseite](https://azure.microsoft.com/pricing/details/security-center/).
 
 > [!NOTE]
 > Für Security Center wurde als eingeschränkte Vorschauversion ein neuer Satz von Erkennungen veröffentlicht, die anhand von AuditD-Datensätzen (einem allgemeinen Überwachungsframework) schädliches Verhalten auf Linux-Computern erkennen. Wenn Sie die Vorschauversion ausprobieren möchten, senden Sie uns eine [E-Mail](mailto:ASC_linuxdetections@microsoft.com) mit Ihren Abonnement-IDs.
@@ -48,7 +48,7 @@ In Azure Security Center kann die Verhaltensanalyse verwendet werden, um komprom
 Security Center nutzt erweiterte Analysen, um auf der Grundlage der Analyse von VM-Ereignisprotokollen kompromittierte Ressourcen zu ermitteln. Beispiele hierfür sind Prozesserstellungsereignisse und Anmeldeereignisse. Außerdem ist eine Korrelation mit anderen Signalen vorhanden, damit weitere Beweise für eine größere Aktion ermittelt werden können.
 
 * **Verdächtige Prozessausführung erkannt:** Angreifer versuchen häufig, schädlichen Code als ungefährliche Prozesse zu tarnen, damit sie nicht entdeckt werden. Warnungen dieser Art geben an, dass eine Prozessausführung einem der folgenden Muster entsprach:
-    * Es wurde ein Prozess ausgeführt, von dem bekannt ist, dass er für schädliche Zwecke verwendet wird. Einzelne Befehle machen zwar möglicherweise einen ungefährlichen Eindruck, die Warnung basiert jedoch auf einer Aggregation dieser Befehle.
+    * Es wurde ein Prozess ausgeführt, von dem bekannt ist, dass er für schädliche Zwecke verwendet wird. Die einzelnen Befehle erscheinen möglicherweise ungefährlich, die Warnung basiert jedoch auf einer Aggregation dieser Befehle.
     * Ein Prozess wurde von einem ungewöhnlichen Ort aus ausgeführt.
     * Ein Prozess wurde von einem Ort aus ausgeführt, an dem sich auch bekannte verdächtige Dateien befinden.
     * Ein Prozess wurde von einem verdächtigen Pfad aus ausgeführt.
@@ -57,7 +57,7 @@ Security Center nutzt erweiterte Analysen, um auf der Grundlage der Analyse von 
     * Ein Prozess mit verdächtiger Erweiterung wurde ausgeführt.
     * Ein Prozess mit verdächtiger doppelter Erweiterung wurde ausgeführt.
     * Ein Prozess, dessen Dateiname ein verdächtiges RLO-Zeichen (Zeichen mit Rechts-nach-links-Schreibrichtung) enthält, wurde ausgeführt.
-    * Ein Prozess, dessen Name große Ähnlichkeit mit dem Namen eines sehr häufig ausgeführten Prozesses hat, diesem aber nicht exakt entspricht, wurde ausgeführt.
+    * Es wurde ein Prozess ausgeführt, dessen Name Ähnlichkeit mit dem Namen eines häufig ausgeführten Prozesses aufweist, diesem aber nicht exakt entspricht.
     * Ein Prozess, dessen Name einem bekannten Angriffstool entspricht, wurde ausgeführt.
     * Ein Prozess mit einem Zufallsnamen wurde ausgeführt.
     * Ein Prozess mit verdächtiger Erweiterung wurde ausgeführt.
@@ -96,7 +96,7 @@ Security Center nutzt erweiterte Analysen, um auf der Grundlage der Analyse von 
 * **Alle Schattenkopien von Dateien wurden gelöscht:** Diese Warnung weist auf die Löschung von Schattenkopien hin.
 * **Verdächtige Dateibereinigungsbefehle:** Diese Warnung weist auf eine Kombination aus systeminfo-Befehlen hin, die zum Ausführen einer selbstständigen Bereinigungsaktivität nach einer Kompromittierung dienen.  *systeminfo.exe* ist ein legitimes Windows-Tool, es wird jedoch selten wie hier zweimal hintereinander und gefolgt von einem Löschbefehl ausgeführt.
 * **Verdächtige Kontoerstellung:** Diese Warnung weist darauf hin, dass ein Konto erstellt wurde, das große Ähnlichkeit mit einem vorhandenen integrierten Konto mit Administratorrechten hat. Dieses Verfahren kann von Angreifern verwendet werden, um unentdeckt ein nicht autorisiertes Konto zu erstellen.
-* **Verdächtige Volumeschattenkopie-Aktivität:** Diese Warnung weist auf eine Schattenkopie-Löschaktivität für die Ressource hin. Volumeschattenkopie (Volume Shadow Copy, VSC) ist ein wichtiges Artefakt, das Datenmomentaufnahmen speichert. Diese Aktivität ist in der Regel auf Ransomware zurückzuführen, kann aber auch legitim sein.
+* **Verdächtige Volumeschattenkopie-Aktivität:** Diese Warnung weist auf eine Schattenkopie-Löschaktivität für die Ressource hin. Volumeschattenkopie (Volume Shadow Copy, VSC) ist ein wichtiges Artefakt, das Datenmomentaufnahmen speichert. Diese Aktivität wird mit Ransomware in Verbindung gebracht, kann aber auch legitim sein.
 * **Persistenzmodus der Windows-Registrierung:** Diese Warnung weist darauf hin, dass versucht wurde, eine ausführbare Datei in der Windows-Registrierung zu verankern. Malware verwendet dieses Verfahren häufig, um einen Systemstart zu überstehen.
 * **Verdächtige neue Firewallregel:** Diese Warnung weist darauf hin, dass über *netsh.exe* eine neue Firewallregel hinzugefügt wurde, die Datenverkehr einer ausführbaren Datei an einem verdächtigen Ort zulässt.
 * **Verdächtige XCOPY-Ausführungen:** Diese Warnung weist auf eine Reihe von XCOPY-Ausführungen hin, was ein Indiz dafür sein kann, dass einer Ihrer Computer kompromittiert und zur Verteilung von Schadsoftware verwendet wurde.
@@ -146,7 +146,7 @@ Die Absturzabbild-Speicheranalyse ist ein Verfahren zum Erkennen von anspruchsvo
 
 Beim Absturz von Software wird in einem Absturzabbild ein Teil des Arbeitsspeichers zum Zeitpunkt des Absturzes erfasst. Der Absturz kann auf Schadsoftware, allgemeine Anwendungsprobleme oder Systemfehler zurückzuführen sein. Indem die Arbeitsspeicherdaten im Absturzabbild analysiert werden, kann Security Center Verfahren erkennen, die für folgende Zwecke verwendet werden: Ausnutzen von Schwachstellen in Software, Zugreifen auf vertrauliche Daten und Bewegen auf einem kompromittierten Computer. Dies wird mit einer minimalen Auswirkung auf die Leistung von Hosts erreicht, da die Analyse vom Security Center-Back-End durchgeführt wird.
 
-* **Code Injection erkannt:** Code Injection ist das Einfügen von ausführbaren Modulen in aktive Prozesse oder Threads. Diese Technik wird von Schadsoftware genutzt, um auf Daten zuzugreifen, Daten auszublenden oder ihre Entfernung zu verhindern (z. B. Persistenz). Die Warnung weist darauf hin, dass ein injiziertes Modul im Absturzabbild vorhanden ist. Seriöse Softwareentwickler führen gelegentlich eine Codeinjektion aus nicht böswilligen Gründen durch, beispielsweise zum Ändern oder Erweitern einer vorhandenen Anwendung oder Betriebssystemkomponente. Zur Unterscheidung zwischen schädlichen und nicht schädlichen injizierten Modulen überprüft Azure Security Center, ob das injizierte Modul einem verdächtigen Verhaltensprofil entspricht. Das Ergebnis dieser Überprüfung wird im Feld „SIGNATURE“ der Warnung angegeben und im Schweregrad der Warnung, der Warnungsbeschreibung und der Schritte zur Behebung der Warnung widergespiegelt.
+* **Code Injection erkannt:** Code Injection ist das Einfügen von ausführbaren Modulen in aktive Prozesse oder Threads. Diese Technik wird von Schadsoftware genutzt, um auf Daten zuzugreifen, Daten auszublenden oder ihre Entfernung zu verhindern (z.B. Persistenz). Die Warnung weist darauf hin, dass ein injiziertes Modul im Absturzabbild vorhanden ist. Seriöse Softwareentwickler führen gelegentlich eine Codeinjektion aus nicht böswilligen Gründen durch, beispielsweise zum Ändern oder Erweitern einer vorhandenen Anwendung oder Betriebssystemkomponente. Zur Unterscheidung zwischen schädlichen und nicht schädlichen injizierten Modulen überprüft Azure Security Center, ob das injizierte Modul einem verdächtigen Verhaltensprofil entspricht. Das Ergebnis dieser Überprüfung wird im Feld „SIGNATURE“ der Warnung angegeben und im Schweregrad der Warnung, der Warnungsbeschreibung und der Schritte zur Behebung der Warnung widergespiegelt.
 * **Verdächtiges Codesegment:** Die Warnung zu einem verdächtigen Codesegment weist darauf hin, dass ein Codesegment mit nicht standardmäßigen Methoden zugeordnet wurde – beispielsweise durch reflektierende Injektion und Prozessaushöhlung. Weitere Merkmale des Codesegments werden verarbeitet, um Kontext im Hinblick auf die Funktionen und das Verhalten des gemeldeten Codesegments bereitzustellen.
 * **Erkennung von Shellcode:** Shellcode ist die Nutzlast, die ausgeführt wird, nachdem eine Schadsoftware ein Sicherheitsrisiko einer Software ausgenutzt hat. Diese Warnung gibt an, dass bei einer Absturzabbild-Analyse ausführbarer Code mit einem Verhalten erkannt wurde, das üblicherweise von schädlichen Nutzlasten gezeigt wird. Zwar kann auch nicht schädliche Software dieses Verhalten aufweisen, aber es ist nicht typisch für normale Vorgehensweisen bei der Softwareentwicklung.
 * **Erkennung von Modul-Hijacking:** In Windows werden DLLs (Dynamic Link Libraries) verwendet, um Software die Nutzung allgemeiner Windows-Systemfunktionen zu ermöglichen. „DLL-Hijacking“ tritt auf, wenn von Schadsoftware die DLL-Ladereihenfolge geändert wird, um schädliche Nutzlasten in den Arbeitsspeicher zu laden und darin beliebigen Code auszuführen. Mit dieser Warnung wird darauf hingewiesen, dass bei der Absturzabbild-Analyse ein Modul mit ähnlichem Namen erkannt wurde, das über zwei unterschiedliche Pfade geladen wird. Einer der geladenen Pfade stammt von einem gemeinsamen binären Speicherort des Windows-Systems. Seriöse Softwareentwickler ändern gelegentlich die DLL-Ladereihenfolge zu nicht schädlichen Zwecken, z.B. zum Instrumentieren, zum Erweitern des Windows-Betriebssystem oder zum Erweitern von Windows-Anwendungen. Zur besseren Unterscheidung zwischen schädlichen und potenziell unschädlichen Änderungen an der DLL-Ladereihenfolge überprüft Security Center, ob ein geladenes Modul einem verdächtigen Profil entspricht.
@@ -190,9 +190,9 @@ Sollten weitere Informationen verfügbar sein, wird dies im Sicherheitsincident 
 
 - Protokolllöschereignisse
 - Von unbekannten Geräten angeschlossene Plug & Play-Geräte
-- Warnungen, die nicht handlungsrelevant sind
+- Warnungen, die kein Eingreifen erfordern
 - Erstellung eines neuen Kontos
-- Die Datei wurde mit dem CertUtil-Tool entschlüsselt. 
+- Die Datei wurde mit dem CertUtil-Tool entschlüsselt.
 
 ![Warnung vor ungewöhnlichem Zugriff](./media/security-center-alerts-type/security-center-alerts-type-fig20.png)
 

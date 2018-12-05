@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/28/2018
 ms.author: v-wingf-msft
-ms.openlocfilehash: e5a69fa2ee9a8c4baaeb6586627c7a9a3c9ba4a8
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 53b78231dba4f525410f53dc1ae60901c67f043d
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44347952"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52634505"
 ---
 # <a name="tutorial-configure-samanage-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Samanage für die automatische Benutzerbereitstellung
 
@@ -141,7 +141,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
     ![Samanage-Bereitstellung](./media/samanage-provisioning-tutorial/ProvisioningStatus.png)
 
-15. Legen Sie die Benutzer bzw. Gruppen fest, die in Samanage bereitgestellt werden sollen. Wählen Sie dazu im Abschnitt **Einstellungen** unter **Bereich** die gewünschten Werte aus.
+15. Legen Sie die Benutzer bzw. Gruppen fest, die in Samanage bereitgestellt werden sollen. Wählen Sie dazu im Abschnitt **Einstellungen** unter **Bereich** die gewünschten Werte aus. Berücksichtigen Sie bei Auswahl der Option **Alle Benutzer und Gruppen synchronisieren** die im nachstehenden Abschnitt **Connectoreinschränkungen** beschriebenen Beschränkungen.
 
     ![Samanage-Bereitstellung](./media/samanage-provisioning-tutorial/ScopeSync.png)
 
@@ -153,6 +153,10 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 Dadurch wird die Erstsynchronisierung aller Benutzer und/oder Gruppen gestartet, die im Abschnitt **Einstellungen** unter **Bereich** definiert sind. Die Erstsynchronisierung dauert länger als nachfolgende Synchronisierungen, die ungefähr alle 40 Minuten erfolgen, solange der Azure AD-Bereitstellungsdienst ausgeführt wird. Im Abschnitt **Synchronisierungsdetails** können Sie den Fortschritt überwachen und Links zu Berichten zur Bereitstellungsaktivität aufrufen. Darin sind alle Aktionen aufgeführt, die vom Azure AD-Bereitstellungsdienst in Samanage ausgeführt werden.
 
 Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden Sie unter [Tutorial: Meldung zur automatischen Benutzerkontobereitstellung](../manage-apps/check-status-user-account-provisioning.md).
+
+## <a name="connector-limitations"></a>Connectoreinschränkungen
+
+* Wenn die Option **Alle Benutzer und Gruppen synchronisieren** ausgewählt und ein Standardwert für das Attribut Samanage-Attribut **roles** konfiguriert wird, stellen Sie sicher, dass der gewünschte Wert unter dem Feld **Standardwert bei NULL (optional)** im folgenden Format angegeben wird: **{"displayName": "role"}**. Hierbei steht „role“ für den gewünschten Standardwert.
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

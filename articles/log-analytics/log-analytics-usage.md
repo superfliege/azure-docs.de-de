@@ -1,5 +1,5 @@
 ---
-title: Analysieren der Datennutzung in Log Analytics | Microsoft Docs
+title: Analysieren der Datennutzung in Log Analytics | Microsoft-Dokumentation
 description: Beurteilen Sie anhand des Log Analytics-Dashboards für Nutzung und geschätzte Kosten, wie viele Daten an Log Analytics gesendet werden, und ermitteln Sie mögliche Ursachen für unvorhergesehene Zunahmen.
 services: log-analytics
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 08/11/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: ad3deaad8c069cfb11bb0eb997d886807ecdb0f8
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: e702e1f5eb1816b007317765e4c9a9f88bb99bfd
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51006497"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52635423"
 ---
 # <a name="analyze-data-usage-in-log-analytics"></a>Analysieren der Datennutzung in Log Analytics
 
@@ -29,37 +29,136 @@ ms.locfileid: "51006497"
 > - In [Verwalten der Kosten durch die Steuerung der Datenmenge und -aufbewahrung in Log Analytics](log-analytics-manage-cost-storage.md) beschreibt, wie Sie Ihre Kosten durch Ändern der Datenaufbewahrungsdauer steuern.
 > - [Überwachen der Nutzung und der geschätzten Kosten](../monitoring-and-diagnostics/monitoring-usage-and-estimated-costs.md) beschreibt, wie die Nutzung und geschätzten Kosten über mehrere Azure-Überwachungsfeatures hinweg für unterschiedliche Preismodelle angezeigt werden. Außerdem wird beschrieben, wie Sie Ihr Preismodell ändern können.
 
-Log Analytics enthält Informationen zur Menge der gesammelten Daten, zu den Quellen, die die Daten gesendet haben, und zu den unterschiedlichen Arten gesendeter Daten.  Die Datennutzung können Sie mithilfe des Dashboards **Protokollanalysenutzung** überprüfen und analysieren. Im Dashboard ist angegeben, wie viele Daten von jeder Lösung gesammelt werden und wie viele Daten von den Computern gesendet werden.
+## <a name="understand-usage"></a>Grundlegendes zur Nutzung
 
-## <a name="understand-the-usage-dashboard"></a>Grundlagen des Dashboards „Nutzung“
-Im Log Analytics-Dashboard zur **Nutzung** werden die folgenden Informationen angezeigt:
+Verwenden Sie die Log Analytics-Ansicht **Nutzung und geschätzte Kosten**, um die Datennutzung zu überprüfen und zu analysieren. Hier wird angezeigt, wie viele Daten von jeder Lösung gesammelt werden, wie viele Daten aufbewahrt werden, und es wird eine Kostenschätzung angezeigt. Diese basiert auf der Menge an erfassten Daten und berücksichtigt eine eventuelle zusätzliche Aufbewahrung über die enthaltenen Menge hinaus.
 
-- Datenvolume
-    - Datenvolume im Zeitverlauf (basierend auf dem aktuellen Zeitbereich)
-    - Datenvolumen nach Lösung
-    - Daten, die keinem Computer zugeordnet sind
-- Computer
-    - Computer, die Daten senden
-    - Computer ohne Daten in den letzten 24 Stunden
-- Angebote
-    - Knoten vom Typ „Insight & Analytics“
-    - Knoten vom Typ „Automation & Control“
-    - Knoten vom Typ „Security“  
-- Leistung
-    - Zeit zum Erfassen und Indizieren von Daten  
-- Liste der Abfragen
+![Nutzung und geschätzte Kosten](media/log-analytics-usage/usage-estimated-cost-dashboard-01.png)<br>
 
-![Dashboard für Nutzung und geschätzte Kosten](media/log-analytics-usage/usage-estimated-cost-dashboard-01.png)<br>
+Um Ihre Dateien ausführlicher zu untersuchen, klicken Sie auf der Seite **Nutzung und geschätzte Kosten** auf das Symbol oben rechts neben den Diagrammen. Sie können mit dieser Abfrage weitere Details zu Ihrer Nutzung abrufen.  
+
+![Ansicht „Protokolle“](media/log-analytics-usage/logs.png)<br>
+
+## <a name="troubleshooting-why-usage-is-higher-than-expected"></a>Problembehandlung, wenn die Nutzung höher ist als erwartet
+Eine höhere Nutzung wird durch eine bzw. beide der folgenden Bedingungen verursacht:
+- Es werden mehr Daten als erwartet an Log Analytics gesendet
+- Mehr Knoten als erwartet senden Daten an Log Analytics, oder einige Knoten senden mehr Daten als üblich
+
+Schauen wir uns an, wie wir mehr über diese beiden Ursachen erfahren können. 
+
+> [!NOTE]
+> Einige der Felder vom Typ „Nutzungsdaten“ sind zwar weiterhin im Schema enthalten, sind jedoch veraltet, und ihre Werte werden nicht mehr aufgefüllt. Dies sind neben **Computer** Felder in Bezug auf die Erfassung: **TotalBatches**, **BatchesWithinSla**, **BatchesOutsideSla**, **BatchesCapped** und **AverageProcessingTimeMs**.
+
+### <a name="data-volume"></a>Datenmenge 
+Auf der Seite **Nutzung und geschätzte Kosten** zeigt das Diagramm *Datenerfassung pro Lösung* die Gesamtmenge an gesendeten Daten sowie die von jeder Lösung gesendete Datenmenge an. Auf diese Weise können Sie Trends ermitteln, z.B. ob die Gesamtdatennutzung (oder die Nutzung durch eine bestimmte Lösung) ansteigt, konstant bleibt oder abnimmt. Um diese Daten zu generieren, wird die folgende Abfrage verwendet:
+
+`Usage| where TimeGenerated > startofday(ago(31d))| where IsBillable == true
+| summarize TotalVolumeGB = sum(Quantity) / 1024 by bin(TimeGenerated, 1d), Solution| render barchart`
+
+Beachten Sie, dass durch die Klausel „where IsBillable = true“ Datentypen bestimmter Lösungen herausgefiltert werden, für die keine Erfassungsgebühren anfallen. 
+
+Sie können einen Drilldown durchführen, um Datentrends für spezifische Datentypen anzuzeigen. So können Sie beispielsweise die Daten aufgrund von IIS-Protokollen untersuchen:
+
+`Usage| where TimeGenerated > startofday(ago(31d))| where IsBillable == true
+| where DataType == "W3CIISLog"
+| summarize TotalVolumeGB = sum(Quantity) / 1024 by bin(TimeGenerated, 1d), Solution| render barchart`
+
+### <a name="nodes-sending-data"></a>Knoten, die Daten senden
+
+Um die Anzahl von Knoten zu ermitteln, die im letzten Monat Daten gemeldet haben, verwenden Sie die folgende Abfrage:
+
+`Heartbeat | where TimeGenerated > startofday(ago(31d))
+| summarize dcount(ComputerIP) by bin(TimeGenerated, 1d)    
+| render timechart`
+
+Um die Anzahl von erfassten Ereignissen pro Computer anzuzeigen, führen Sie diese Abfrage aus:
+
+`union withsource = tt *
+| summarize count() by Computer | sort by count_ nulls last`
+
+Nutzen Sie diese Abfrage nicht zu häufig, da sie mit hohen Ausführungskosten verbunden ist. Um die Anzahl von Ereignissen pro Computer anzuzeigen, für die Gebühren anfallen, verwenden Sie diese Abfrage: 
+
+`union withsource = tt * 
+| where _IsBillable == true 
+| summarize count() by Computer  | sort by count_ nulls last`
+
+Wenn Sie anzeigen möchten, welche gebührenpflichtigen Datentypen Daten an einen bestimmten Computer senden, führen Sie diese Abfrage aus:
+
+`union withsource = tt *
+| where Computer == "*computer name*"
+| where _IsBillable == true 
+| summarize count() by tt | sort by count_ nulls last `
+
+Wenn Sie die Datenquelle für einen bestimmten Datentyp näher untersuchen möchten, finden Sie hier einige nützliche Beispielabfragen:
+
++ **Sicherheitslösung**
+  - `SecurityEvent | summarize AggregatedValue = count() by EventID`
++ **Protokollverwaltungslösung**
+  - `Usage | where Solution == "LogManagement" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | summarize AggregatedValue = count() by DataType`
++ Datentyp **Perf**
+  - `Perf | summarize AggregatedValue = count() by CounterPath`
+  - `Perf | summarize AggregatedValue = count() by CounterName`
++ Datentyp **Event**
+  - `Event | summarize AggregatedValue = count() by EventID`
+  - `Event | summarize AggregatedValue = count() by EventLog, EventLevelName`
++ Datentyp **Syslog**
+  - `Syslog | summarize AggregatedValue = count() by Facility, SeverityLevel`
+  - `Syslog | summarize AggregatedValue = count() by ProcessName`
++ Datentyp **AzureDiagnostics**
+  - `AzureDiagnostics | summarize AggregatedValue = count() by ResourceProvider, ResourceId`
+
+### <a name="tips-for-reducing-data-volume"></a>Tipps zum Reduzieren der Datenmenge
+
+Hier finden Sie einige Vorschläge zum Verringern der erfassten Protokolle:
+
+| Quelle mit hohem Datenvolumen | Verringern der Datenmenge |
+| -------------------------- | ------------------------- |
+| Sicherheitsereignisse            | Wählen Sie [Sicherheitsereignisse vom Typ „Allgemein“ oder „Minimal“](https://blogs.technet.microsoft.com/msoms/2016/11/08/filter-the-security-events-the-oms-security-collects/) aus. <br> Ändern der Sicherheitsüberwachungsrichtlinie, sodass nur benötigte Ereignisse erfasst werden. Überprüfen Sie insbesondere die Notwendigkeit zum Erfassen von Ereignissen für die <br> - [Überwachung der Filterplattform](https://technet.microsoft.com/library/dd772749(WS.10).aspx) <br> - [Überwachung der Registrierung](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd941614(v%3dws.10))<br> - [Überwachung des Dateisystems](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772661(v%3dws.10))<br> - [Überwachung des Kernelobjekts](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd941615(v%3dws.10))<br> - [Überwachung der Handleänderung](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772626(v%3dws.10))<br> - Überwachung von Wechselmedien |
+| Leistungsindikatoren       | Ändern Sie [Leistungsindikatoren-Konfiguration](log-analytics-data-sources-performance-counters.md) in: <br> - Reduzieren der Sammlungshäufigkeit <br> - Reduzieren der Anzahl von Leistungsindikatoren |
+| Ereignisprotokolle                 | Ändern Sie die [Ereignisprotokollkonfiguration](log-analytics-data-sources-windows-events.md) in: <br> - Reduzieren der Anzahl von erfassten Ereignisprotokollen <br> - Ausschließliches Erfassen von erforderlichen Ereignisebenen. Erfassen Sie beispielsweise keine Ereignisse der Ebene *Informationen*. |
+| syslog                     | Ändern Sie die [syslog-Konfiguration](log-analytics-data-sources-syslog.md) in: <br> - Reduzieren der Anzahl von erfassten Einrichtungen <br> - Ausschließliches Erfassen von erforderlichen Ereignisebenen. Erfassen Sie beispielsweise keine Ereignisse der Ebenen *Informationen* und *Debuggen*. |
+| AzureDiagnostics           | Ändern Sie die Ressourcenprotokollsammlung, um Folgendes zu erreichen: <br> - Verringern der Anzahl von Ressourcen, die Protokolle an Log Analytics senden <br> - Ausschließliches Erfassen von erforderlichen Protokollen |
+| Lösungsdaten von Computern, für die die Lösung nicht erforderlich ist | Verwenden Sie die [Zielgruppenadressierung für Lösungen](../azure-monitor/insights/solution-targeting.md), um Daten nur für erforderliche Gruppen mit Computern zu erfassen. |
+
+### <a name="getting-node-counts"></a>Abrufen der Knotenanzahl 
+
+Wenn Sie den Tarif „Pro Knoten (OMS)“ nutzen, erfolgt die Abrechnung basierend auf der Anzahl von verwendeten Knoten und Lösungen. Die Anzahl von Insights- und Analytics-Knoten, für die Sie Gebühren entrichten, wird in der Tabelle auf der Seite **Nutzung und geschätzte Kosten** angezeigt.  
+
+Um die Anzahl der verschiedenen Sicherheitsknoten anzuzeigen, können Sie diese Abfrage verwenden:
+
+`union
+(
+    Heartbeat
+    | where (Solutions has 'security' or Solutions has 'antimalware' or Solutions has 'securitycenter')
+    | project Computer
+),
+(
+    ProtectionStatus
+    | where Computer !in~
+    (
+        (
+            Heartbeat
+            | project Computer
+        )
+    )
+    | project Computer
 )
+| distinct Computer
+| project lowComputer = tolower(Computer)
+| distinct lowComputer
+| count`
 
-### <a name="to-work-with-usage-data"></a>So arbeiten Sie mit Nutzungsdaten
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-2. Klicken Sie im Azure-Portal auf **Alle Dienste**. Geben Sie in der Liste mit den Ressourcen **Log Analytics** ein. Sobald Sie mit der Eingabe beginnen, wird die Liste auf der Grundlage Ihrer Eingabe gefiltert. Wählen Sie **Log Analytics**.<br><br> ![Azure-Portal](media/log-analytics-usage/azure-portal-01.png)<br><br>  
-3. Wählen Sie in der Liste der Log Analytics-Arbeitsbereiche einen Arbeitsbereich aus.
-4. Wählen Sie in der Liste im linken Bereich die Option **Nutzung und geschätzte Kosten** aus.
-5. Auf dem Dashboard für **Nutzung und geschätzte Kosten** können Sie den Zeitraum anpassen. Klicken Sie dazu auf **Zeit: Letzte 24 Stunden**, und ändern Sie das Zeitintervall.<br><br> ![Zeitintervall](./media/log-analytics-usage/usage-time-filter-01.png)<br><br>
-6. Zeigen Sie die Blätter mit der Nutzungskategorie an, auf denen die für Sie interessanten Bereiche enthalten sind. Wählen Sie ein Blatt aus, und klicken Sie darin dann auf ein Element, um für die [Protokollsuche](log-analytics-queries.md) mehr Details anzuzeigen.<br><br> ![Beispiel-KPI für die Datennutzung](media/log-analytics-usage/data-volume-kpi-01.png)<br><br>
-7. Überprüfen Sie im Dashboard „Protokollsuche“ die Ergebnisse, die für die Suche ausgegeben werden.<br><br> ![Beispiel zur Nutzung für die Protokollsuche](./media/log-analytics-usage/usage-log-search-01.png)
+Die Anzahl der verschiedenen Automation-Knoten können Sie mit dieser Abfrage anzeigen:
+
+` ConfigurationData 
+ | where (ConfigDataType == "WindowsServices" or ConfigDataType == "Software" or ConfigDataType =="Daemons") 
+ | extend lowComputer = tolower(Computer) | summarize by lowComputer 
+ | join (
+     Heartbeat 
+       | where SCAgentChannel == "Direct"
+       | extend lowComputer = tolower(Computer) | summarize by lowComputer, ComputerEnvironment
+ ) on lowComputer
+ | summarize count() by ComputerEnvironment | sort by ComputerEnvironment asc`
 
 ## <a name="create-an-alert-when-data-collection-is-higher-than-expected"></a>Erstellen einer Warnung für den Fall, dass die Datensammlung höher als erwartet ist
 In diesem Abschnitt wird beschrieben, wie Sie eine Warnung erstellen, wenn Folgendes gilt:
@@ -110,72 +209,10 @@ Geben Sie eine vorhandene [Aktionsgruppe](../monitoring-and-diagnostics/monitori
 
 Wenn Sie eine Warnung erhalten, können Sie die Schritte im folgenden Abschnitt verwenden, um per Problembehandlung zu ermitteln, warum die Nutzung höher als erwartet ist.
 
-## <a name="troubleshooting-why-usage-is-higher-than-expected"></a>Ermittlung per Problembehandlung, warum die Nutzung höher als erwartet ist
-Mit dem Dashboard „Nutzung“ können Sie ermitteln, warum die Nutzung (und somit die Kosten) höher als erwartet ist.
-
-Eine höhere Nutzung wird durch eine bzw. beide der folgenden Bedingungen verursacht:
-- Mehr Daten als erwartet werden an Log Analytics gesendet
-- Mehr Knoten als erwartet senden Daten an Log Analytics
-
-### <a name="check-if-there-is-more-data-than-expected"></a>Überprüfen, ob mehr Daten als erwartet vorhanden sind 
-Die Seite „Nutzung“ enthält zwei wichtige Abschnitte, in denen Sie identifizieren können, welche Gründe die vermehrte Sammlung von Daten hat.
-
-Das Diagramm *Datenmenge im Zeitverlauf* enthält die Informationen zum Gesamtvolumen der gesendeten Daten und zu den Computern, die die meisten Daten senden. Im Diagramm im oberen Bereich können Sie ablesen, ob die Gesamtdatennutzung zunimmt, stabil ist oder abnimmt. In der Liste mit den Computern sind die zehn Computer angegeben, die die meisten Daten senden.
-
-Im Diagramm *Datenmenge nach Lösung* werden das Volumen der Daten, die von den einzelnen Lösungen gesendet werden, und die Lösungen angezeigt, von denen die meisten Daten gesendet werden. Im Diagramm im oberen Bereich ist das Gesamtvolumen der Daten angegeben, die von den einzelnen Lösungen im Zeitverlauf gesendet werden. Mit diesen Informationen können Sie ermitteln, ob von einer Lösung in Abhängigkeit der Zeit eine größere Datenmenge, ungefähr die gleiche Menge an Daten oder eine kleinere Datenmenge gesendet wird. In der Liste mit den Lösungen sind die zehn Lösungen aufgeführt, die die meisten Daten senden. 
-
-Diese beiden Diagramme zeigen alle Daten an. Einige Daten sind gebührenpflichtig, andere sind kostenlos. Um nur gebührenpflichtige Daten zu berücksichtigen, ändern Sie die Abfrage auf der Suchseite, um `IsBillable=true` einzuschließen.  
-
-![Diagramme zum Datenvolumen](./media/log-analytics-usage/log-analytics-usage-data-volume.png)
-
-Sehen Sie sich das Diagramm *Datenmenge im Zeitverlauf* an. Klicken Sie jeweils auf den Namen eines Computers, um die Lösungen und Datentypen anzuzeigen, die für einen Computer die meisten Daten senden. Klicken Sie auf den Namen des ersten Computers in der Liste.
-
-Im folgenden Screenshot werden für den Computer vom Datentyp *LogManagement/Perf* (Protokollverwaltung/Leistung) die meisten Daten gesendet.<br><br> ![Datenvolumen für einen Computer](./media/log-analytics-usage/log-analytics-usage-data-volume-computer.png)<br><br>
-
-Wechseln Sie als Nächstes zurück zum Dashboard *Nutzung*, und sehen Sie sich das Diagramm *Datenmenge nach Lösung* an. Klicken Sie in der Liste auf den Namen einer Lösung, um die Computer anzuzeigen, die die meisten Daten für die Lösung senden. Klicken Sie auf den Namen der ersten Lösung in der Liste. 
-
-Im folgenden Screenshot ist zu erkennen, dass der Computer *mycon* die meisten Daten für die Protokollverwaltungslösung sendet.<br><br> ![Datenvolumen für eine Lösung](./media/log-analytics-usage/log-analytics-usage-data-volume-solution.png)<br><br>
-
-Führen Sie bei Bedarf zusätzliche Analysen aus, um große Mengen innerhalb einer Lösung oder eines Datentyps zu identifizieren. Beispiele für Abfragen:
-
-+ **Sicherheitslösung**
-  - `SecurityEvent | summarize AggregatedValue = count() by EventID`
-+ **Protokollverwaltungslösung**
-  - `Usage | where Solution == "LogManagement" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | summarize AggregatedValue = count() by DataType`
-+ Datentyp **Perf**
-  - `Perf | summarize AggregatedValue = count() by CounterPath`
-  - `Perf | summarize AggregatedValue = count() by CounterName`
-+ Datentyp **Event**
-  - `Event | summarize AggregatedValue = count() by EventID`
-  - `Event | summarize AggregatedValue = count() by EventLog, EventLevelName`
-+ Datentyp **Syslog**
-  - `Syslog | summarize AggregatedValue = count() by Facility, SeverityLevel`
-  - `Syslog | summarize AggregatedValue = count() by ProcessName`
-+ Datentyp **AzureDiagnostics**
-  - `AzureDiagnostics | summarize AggregatedValue = count() by ResourceProvider, ResourceId`
-
-Führen Sie die folgenden Schritte aus, um das Volumen der erfassten Protokolle zu reduzieren:
-
-| Quelle mit hohem Datenvolumen | Reduzieren des Datenvolumens |
-| -------------------------- | ------------------------- |
-| Sicherheitsereignisse            | Wählen Sie [Sicherheitsereignisse vom Typ „Allgemein“ oder „Minimal“](https://blogs.technet.microsoft.com/msoms/2016/11/08/filter-the-security-events-the-oms-security-collects/) aus. <br> Ändern der Sicherheitsüberwachungsrichtlinie, sodass nur benötigte Ereignisse erfasst werden. Überprüfen Sie insbesondere die Notwendigkeit zum Erfassen von Ereignissen für die <br> - [Überwachung der Filterplattform](https://technet.microsoft.com/library/dd772749(WS.10).aspx) <br> - [Überwachung der Registrierung](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd941614(v%3dws.10))<br> - [Überwachung des Dateisystems](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772661(v%3dws.10))<br> - [Überwachung des Kernelobjekts](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd941615(v%3dws.10))<br> - [Überwachung der Handleänderung](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772626(v%3dws.10))<br> - Überwachung von Wechselmedien |
-| Leistungsindikatoren       | Ändern Sie [Leistungsindikatoren-Konfiguration](log-analytics-data-sources-performance-counters.md) in: <br> - Reduzieren der Sammlungshäufigkeit <br> - Reduzieren der Anzahl von Leistungsindikatoren |
-| Ereignisprotokolle                 | Ändern Sie die [Ereignisprotokollkonfiguration](log-analytics-data-sources-windows-events.md) in: <br> - Reduzieren der Anzahl von erfassten Ereignisprotokollen <br> - Ausschließliches Erfassen von erforderlichen Ereignisebenen. Erfassen Sie beispielsweise keine Ereignisse der Ebene *Informationen*. |
-| syslog                     | Ändern Sie die [syslog-Konfiguration](log-analytics-data-sources-syslog.md) in: <br> - Reduzieren der Anzahl von erfassten Einrichtungen <br> - Ausschließliches Erfassen von erforderlichen Ereignisebenen. Erfassen Sie beispielsweise keine Ereignisse der Ebenen *Informationen* und *Debuggen*. |
-| AzureDiagnostics           | Ändern Sie die Ressourcenprotokollsammlung, um Folgendes zu erreichen: <br> - Verringern der Anzahl von Ressourcen, die Protokolle an Log Analytics senden <br> - Ausschließliches Erfassen von erforderlichen Protokollen |
-| Lösungsdaten von Computern, für die die Lösung nicht erforderlich ist | Verwenden Sie die [Zielgruppenadressierung für Lösungen](../monitoring/monitoring-solution-targeting.md), um Daten nur für erforderliche Gruppen mit Computern zu erfassen. |
-
-### <a name="check-if-there-are-more-nodes-than-expected"></a>Überprüfen, ob mehr Knoten als erwartet vorhanden sind
-Wenn Sie den Tarif *Pro Knoten (Log Analytics)* nutzen, werden Ihre Gebühren basierend auf der Anzahl von genutzten Knoten und Lösungen berechnet. Sie können im Dashboard „Nutzung“ im Abschnitt mit den *Angeboten* anzeigen, wie viele Knoten eines Angebots jeweils verwendet werden.<br><br> ![Dashboard „Nutzung“](./media/log-analytics-usage/log-analytics-usage-offerings.png)<br><br>
-
-Klicken Sie auf **Alle anzeigen...**, um die vollständige Liste mit Computern anzuzeigen, von denen für das ausgewählte Angebot Daten gesendet werden.
-
-Verwenden Sie die [Zielgruppenadressierung für Lösungen](../monitoring/monitoring-solution-targeting.md), um Daten nur für erforderliche Gruppen mit Computern zu erfassen.
-
 ## <a name="next-steps"></a>Nächste Schritte
 * Informationen dazu, wie Sie die Suchsprache verwenden, finden Sie unter [Protokollsuchen in Log Analytics](log-analytics-queries.md). Sie können Suchabfragen verwenden, um für die Nutzungsdaten eine zusätzliche Analyse durchzuführen.
 * Führen Sie die unter [Erstellen, Anzeigen und Verwalten von Warnungen mithilfe von Azure Monitor](../monitoring-and-diagnostics/alert-metric.md) beschriebenen Schritte aus, um benachrichtigt zu werden, wenn ein Suchkriterium erfüllt ist.
-* Verwenden Sie die [Zielgruppenadressierung für Lösungen](../monitoring/monitoring-solution-targeting.md), um Daten nur für erforderliche Gruppen mit Computern zu erfassen.
+* Verwenden Sie die [Zielgruppenadressierung für Lösungen](../azure-monitor/insights/solution-targeting.md), um Daten nur für erforderliche Gruppen mit Computern zu erfassen.
 * Lesen Sie zum Konfigurieren einer effektiven Richtlinie zur Erfassung von Sicherheitsereignissen die Informationen unter [Datensammlung in Azure Security Center](../security-center/security-center-enable-data-collection.md).
 * Ändern Sie die [Leistungsindikatorenkonfiguration](log-analytics-data-sources-performance-counters.md).
 * Informationen zum Ändern der Einstellungen für die Ereigniserfassung finden Sie unter [Datenquellen für Windows-Ereignisprotokolle in Log Analytics](log-analytics-data-sources-windows-events.md).

@@ -9,12 +9,12 @@ ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.topic: article
 ms.date: 08/23/2018
-ms.openlocfilehash: 3230692208d27ebac073e257266c885b5e03095c
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: b320696a56855baaa4af10177d25dfe9973ee73a
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50233632"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52635440"
 ---
 # <a name="connectors-for-azure-logic-apps"></a>Connectors für Azure Logic Apps
 
@@ -74,7 +74,7 @@ Im Folgenden sind integrierte Aktionen zur Verwendung von Datenausgaben mit den 
 
 |   |   | 
 |---|---| 
-| ![Symbol für integrierte Aktion][data-operations-icon]<br/>**Datenvorgänge** | Ausführen von Vorgängen mit Daten: <p>- **Erstellen:** Erstellen einer einzelnen Ausgabe aus mehreren Eingaben mit verschiedenen Typen. <br>- **CSV-Tabelle erstellen:** Erstellen einer durch Trennzeichen getrennten Tabelle (CSV-Tabelle) aus einem Array mit JSON-Objekten. <br>- **HTML-Tabelle erstellen:** Erstellen einer HTML-Tabelle aus einem Array mit JSON-Objekten. <br>- **Array filtern:** Erstellen eines Arrays aus Elementen in einem anderen Array, die Ihren Kriterien entsprechen. <br>- **Verknüpfen:** Erstellen einer Zeichenfolge aus allen Elementen in einem Array und Trennen dieser Elemente mit dem angegebenen Trennzeichen. <br>- **JSON analysieren:** Erstellen von benutzerfreundlichen Token aus Eigenschaften und den zugehörigen Werten in JSON-Inhalten, sodass Sie diese Eigenschaften in Ihrem Workflow verwenden können. <br>- **Auswählen:** Erstellen eines Arrays mit JSON-Objekten durch Transformieren von Elementen oder Werten in einem anderen Array und Zuordnen dieser Elemente zu angegebenen Eigenschaften. | 
+| [![Symbol für integrierte Aktion][data-operations-icon]<br/>**Datenvorgänge**][data-operations-doc] | Ausführen von Vorgängen mit Daten: <p>- **Erstellen:** Erstellen einer einzelnen Ausgabe aus mehreren Eingaben mit verschiedenen Typen. <br>- **CSV-Tabelle erstellen:** Erstellen einer durch Trennzeichen getrennten Tabelle (CSV-Tabelle) aus einem Array mit JSON-Objekten. <br>- **HTML-Tabelle erstellen:** Erstellen einer HTML-Tabelle aus einem Array mit JSON-Objekten. <br>- **Array filtern:** Erstellen eines Arrays aus Elementen in einem anderen Array, die Ihren Kriterien entsprechen. <br>- **Verknüpfen:** Erstellen einer Zeichenfolge aus allen Elementen in einem Array und Trennen dieser Elemente mit dem angegebenen Trennzeichen. <br>- **JSON analysieren:** Erstellen von benutzerfreundlichen Token aus Eigenschaften und den zugehörigen Werten in JSON-Inhalten, sodass Sie diese Eigenschaften in Ihrem Workflow verwenden können. <br>- **Auswählen:** Erstellen eines Arrays mit JSON-Objekten durch Transformieren von Elementen oder Werten in einem anderen Array und Zuordnen dieser Elemente zu angegebenen Eigenschaften. | 
 | ![Symbol für integrierte Aktion][date-time-icon]<br/>**Datum und Uhrzeit** | Ausführen von Vorgängen mit Zeitstempeln: <p>- **Zu Zeit hinzufügen:** Hinzufügen der angegebenen Anzahl von Einheiten zu einem Zeitstempel. <br>- **Zeitzone konvertieren:** Konvertieren eines Zeitstempels von der Quellzeitzone in die Zielzeitzone. <br>- **Aktuelle Uhrzeit:** Zurückgeben des aktuellen Zeitstempels als Zeichenfolge. <br>- **Zukünftige Zeit abrufen:** Zurückgeben des aktuellen Zeitstempels plus der angegebenen Zeiteinheiten. <br>- **Vergangene Zeit abrufen:** Zurückgeben des aktuellen Zeitstempels abzüglich der angegebenen Zeiteinheiten. <br>- **Von Uhrzeit abziehen:** Subtrahieren einer Anzahl von Zeiteinheiten von einem Zeitstempel. |
 | [![Symbol für integrierte Aktion][variables-icon]<br/>**Variablen**][variables-doc] | Ausführen von Vorgängen mit Variablen: <p>- **An Arrayvariable anfügen:** Einfügen eines Werts als letztes Element in einem Array, das in einer Variable gespeichert ist. <br>- **An Zeichenfolgenvariable anfügen:** Einfügen eines Werts als letztes Zeichen in einer Zeichenfolge, die in einer Variable gespeichert ist. <br>- **Variablenwert verringern:** Verringern einer Variable um einen konstanten Wert. <br>- **Variable schrittweise erhöhen:** Erhöhen einer Variable um einen konstanten Wert. <br>- **Variable initialisieren:** Erstellen einer Variable und Deklarieren ihres Datentyps und Anfangswert. <br>- **Variable festlegen:** Zuweisen eines anderen Werts zu einer vorhandenen Variable. |
 |  |  | 
@@ -193,6 +193,7 @@ Um benutzerdefinierte API-Apps oder Connectors für alle Benutzer in Azure öffe
 [switch-doc]: ../logic-apps/logic-apps-control-flow-switch-statement.md "Organisieren von Aktionen in Fälle, denen eindeutige Werte zugewiesen werden. Es wird nur der Fall ausgeführt, dessen Wert mit dem Ergebnis eines Ausdrucks, Objekts oder Token übereinstimmt. Wenn keine Übereinstimmungen vorhanden sind, wird der Standardfall ausgeführt."
 [terminate-doc]: ../logic-apps/logic-apps-workflow-actions-triggers.md#terminate-action "Beenden oder Abbrechen eines aktiv ausgeführten Workflows für Ihre Logik-App"
 [until-doc]: ../logic-apps/logic-apps-control-flow-loops.md#until-loop "Wiederholen von Aktionen, bis die angegebene Bedingung TRUE ist oder sich ein Status geändert hat"
+[data-operations-doc]: ../logic-apps/logic-apps-perform-data-operations.md "Ausführen von Datenvorgängen, z.B. das Filtern von Arrays oder das Erstellen von CSV- und HTML-Tabellen"
 [variables-doc]: ../logic-apps/logic-apps-create-variables-store-values.md "Ausführen von Vorgängen mit Variablen, z.B. Initialisieren, Festlegen, Erhöhen oder Verringern in einzelnen Schritten sowie Anfügen an Arrayvariable oder Zeichenfolgenvariable"
 
 <!--Managed API doc links-->

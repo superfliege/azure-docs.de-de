@@ -1,5 +1,5 @@
 ---
-title: Erstellen eines Service Fabric-Clusters im Azure-Portal | Microsoft Docs
+title: Erstellen eines Service Fabric-Clusters im Azure-Portal | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie über das Azure-Portal und mithilfe von Azure Key Vault einen sicheren Service Fabric-Cluster in Azure erstellen.
 services: service-fabric
 documentationcenter: .net
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/06/2018
 ms.author: aljo
-ms.openlocfilehash: fbca9c746863b852a9ddd46d00a65d4133961718
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: f0c2108ee75f843e8285c5e2c5c55834643dc7da
+ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45984372"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52620539"
 ---
 # <a name="create-a-service-fabric-cluster-in-azure-using-the-azure-portal"></a>Erstellen eines Service Fabric-Clusters in Azure über das Azure-Portal
 > [!div class="op_single_selector"]
@@ -28,7 +28,7 @@ ms.locfileid: "45984372"
 > 
 > 
 
-Diese schrittweise Anleitung führt Sie durch die Einrichtung eines Service Fabric-Clusters (Linux oder Windows) in Azure über das Azure-Portal. In diesem Leitfaden werden die folgenden Schritte behandelt:
+Diese Schrittanleitung führt Sie durch die Einrichtung eines Service Fabric-Clusters (Linux oder Windows) in Azure über das Azure-Portal. In diesem Leitfaden werden die folgenden Schritte behandelt:
 
 * Erstellen eines Clusters in Azure über das Azure-Portal.
 * Authentifizieren von Administratoren mithilfe von Zertifikaten.
@@ -75,7 +75,7 @@ Anwendungszertifikate können nicht konfiguriert werden, wenn Sie [einen Cluster
 
 ## <a name="create-cluster-in-the-azure-portal"></a>Erstellen eines Clusters im Azure-Portal
 
-Das Erstellen eines Produktionsclusters für Ihre Anwendungsanforderungen erfordert eine gewisse Planung. Um Sie dabei zu unterstützen, wird dringend empfohlen, das Dokument [Planungserwägungen für Service Fabric-Cluster][service-fabric-cluster-capacity] zu lesen und zu verstehen. 
+Das Erstellen eines Produktionsclusters für Ihre Anwendungsanforderungen erfordert eine gewisse Planung. Um Sie dabei zu unterstützen, wird dringend empfohlen, das Sie das Dokument [Planungserwägungen für Service Fabric-Cluster][service-fabric-cluster-capacity] lesen und verstehen. 
 
 ### <a name="search-for-the-service-fabric-cluster-resource"></a>Suchen nach der Service Fabric-Clusterressource
 
@@ -117,13 +117,13 @@ Konfigurieren Sie die Clusterknoten. Knotentypen definieren die Größe, die Anz
 1. Wählen Sie einen Namen für Ihren Knotentyp aus (ein bis zwölf Zeichen, nur Buchstaben und Zahlen).
 2. Die **Mindestgröße** von virtuellen Computern für den primären Knotentyp hängt von der **Dauerhaftigkeitsstufe** ab, die Sie für den Cluster auswählen. Der Standardwert für die Dauerhaftigkeitsstufe ist „Bronze“. Weitere Informationen zur Dauerhaftigkeit finden Sie unter [Auswählen der Dauerhaftigkeitsmerkmale für Service Fabric-Cluster][service-fabric-cluster-durability].
 3. Wählen Sie die **Größe des virtuellen Computers** aus. VMs der D-Serie verfügen über SSDs (Solid-State Drives) und werden für zustandsbehaftete Anwendungen sehr empfohlen. Verwenden Sie keine SKU für virtuelle Computer, die über Teilkerne oder über weniger als 10 GB verfügbaren Speicherplatz auf dem Datenträger verfügt. Lesen Sie das [Dokument zu Planungserwägungen für Service Fabric-Cluster][service-fabric-cluster-capacity], um Hilfe bei der Auswahl der Größe des virtuellen Computers zu erhalten.
-4. Wählen Sie die **Anfängliche Kapazität der VM-Skalierungsgruppe** für den Knotentyp aus. Sie können die Anzahl von VMs in einem Knotentyp später zentral hoch- oder herunterskalieren, für den primären Knotentyp beträgt die Mindestanzahl jedoch fünf für Produktionsworkloads. Andere Knotentypen können über mindestens einen virtuellen Computer verfügen. Die **Mindestanzahl** von virtuellen Computern für den primären Knotentyp steuert die **Zuverlässigkeit** des Clusters.  
-5. **Cluster mit einem Knoten und Cluster mit drei Knoten** sind nur für Testzwecke vorgesehen. Sie werden für ausgeführte Produktionsworkloads nicht unterstützt.
+4.  **Cluster mit einem Knoten und Cluster mit drei Knoten** sind nur für Testzwecke vorgesehen. Sie werden für ausgeführte Produktionsworkloads nicht unterstützt.
+5. Wählen Sie die **Anfängliche Kapazität der VM-Skalierungsgruppe** für den Knotentyp aus. Sie können die Anzahl von VMs in einem Knotentyp später zentral hoch- oder herunterskalieren, für den primären Knotentyp beträgt die Mindestanzahl jedoch fünf für Produktionsworkloads. Andere Knotentypen können über mindestens einen virtuellen Computer verfügen. Die **Mindestanzahl** von virtuellen Computern für den primären Knotentyp steuert die **Zuverlässigkeit** des Clusters.  
 6. Konfigurieren Sie **benutzerdefinierte Endpunkte**. In diesem Feld können Sie eine durch Trennzeichen getrennte Liste der Ports eingeben, die Sie über den Azure Load Balancer verfügbar machen möchten, damit Ihre Anwendungen auf das öffentliche Internet zugreifen können. Wenn Sie z.B. die Bereitstellung einer Webanwendung in Ihrem Cluster planen, geben Sie hier „80“ ein, um Datenverkehr in Ihren Cluster über Port 80 zuzulassen. Weitere Informationen zu Endpunkten finden Sie unter [Kommunikation mit Anwendungen][service-fabric-connect-and-communicate-with-services].
 7. **Aktivieren Sie den Reverseproxy**.  Der [Service Fabric-Reverseproxy](service-fabric-reverseproxy.md) unterstützt die in einem Service Fabric-Cluster ausgeführten Microservices beim Ermitteln von und Kommunizieren mit anderen Diensten mit HTTP-Endpunkten.
-8. Konfigurieren Sie unter **+Optionale Einstellungen anzeigen** die **Diagnose** für den Cluster. Die Diagnose ist standardmäßig in Ihrem Cluster aktiviert, um die Behebung von Problemen in Ihrem Cluster zu vereinfachen. Zum Deaktivieren der Diagnose ändern Sie den **Status** in **Aus**. Das Ausschalten der Diagnose wird **nicht** empfohlen. Wenn Sie bereits ein Application Insights-Projekt erstellt haben, geben Sie seinen Schlüssel an, damit die Anwendungsablaufverfolgungen an dieses Projekt weitergeleitet werden.
+8. Konfigurieren Sie zurück auf dem Blatt **Clusterkonfiguration** unter **+ Optionale Einstellungen anzeigen** die **Diagnose** für den Cluster. Die Diagnose ist standardmäßig in Ihrem Cluster aktiviert, um die Behebung von Problemen in Ihrem Cluster zu vereinfachen. Zum Deaktivieren der Diagnose ändern Sie den **Status** in **Aus**. Das Ausschalten der Diagnose wird **nicht** empfohlen. Wenn Sie bereits ein Application Insights-Projekt erstellt haben, geben Sie seinen Schlüssel an, damit die Anwendungsablaufverfolgungen an dieses Projekt weitergeleitet werden.
 9. **Schließen Sie den DNS-Dienst ein**.  Der [DNS-Dienst](service-fabric-dnsservice.md) ist ein optionaler Dienst, der es Ihnen ermöglicht, andere Dienste zu finden, die das DNS-Protokoll verwenden.
-10. Wählen Sie den gewünschten **Fabric-Upgrademodus** für Ihren Cluster aus. Wählen Sie **Automatisch**aus, wenn für Ihren Cluster automatisch ein Upgrade auf die neueste verfügbare Version durchgeführt werden soll. Legen Sie den Modus auf **Manuell**fest, wenn Sie selbst eine unterstützte Version auswählen möchten. Weitere Informationen zum Fabric-Upgrademodus finden Sie unter [Upgraden von Service Fabric-Clustern][service-fabric-cluster-upgrade].
+10. Wählen Sie den gewünschten **Fabric-Upgrademodus** für Ihren Cluster aus. Wählen Sie **Automatisch**aus, wenn für Ihren Cluster automatisch ein Upgrade auf die neueste verfügbare Version durchgeführt werden soll. Legen Sie den Modus auf **Manuell**fest, wenn Sie selbst eine unterstützte Version auswählen möchten. Weitere Informationen zum Fabric-Upgrademodus finden Sie unter [Upgrade von Service Fabric-Clustern][service-fabric-cluster-upgrade].
 
 > [!NOTE]
 > Wir unterstützen nur Cluster, die unterstützte Versionen von Service Fabric ausführen. Bei Verwendung des **manuellen** Modus müssen Sie Ihren Cluster eigenverantwortlich auf eine unterstützte Version upgraden.
@@ -158,9 +158,9 @@ Geben Sie den Namen des Zertifikats ein, und klicken Sie auf dann auf **OK**.
 
 ![SecurityCustomOption]
 
-Sie benötigen die CertificateThumbprint-, SourceVault- und CertificateURL-Informationen, um die Sicherheitsseite zu vervollständigen. Wenn Sie diese nicht zur Hand haben, öffnen Sie einen anderes Browserfenster, und gehen Sie dann folgendermaßen vor:
+Sie benötigen den Quellschlüsseltresor, die Zertifikat-URL und Informationen zum Zertifikatfingerabdruck, um die Sicherheitsseite zu vervollständigen. Wenn Sie diese Daten nicht zur Hand haben, öffnen Sie ein weiteres Browserfenster, und gehen Sie dann im Azure-Portal folgendermaßen vor:
 
-1. Navigieren Sie zu Ihrem Schlüsseltresor, und wählen und Sie das Zertifikat aus. 
+1. Navigieren Sie zu Ihrem Schlüsseltresordienst.
 2. Wählen Sie die Registerkarte „Eigenschaften“ aus, und kopieren Sie „RESSOURCEN-ID“ in „Quellschlüsseltresor“ im anderen Browserfenster. 
 
     ![CertInfo0]
@@ -171,8 +171,8 @@ Sie benötigen die CertificateThumbprint-, SourceVault- und CertificateURL-Infor
 
     ![CertInfo1]
 
-6. Nun sollte ein Bildschirm wie der unten abgebildete angezeigt werden. Kopieren Sie den „Fingerabdruck“ in „Zertifikatfingerabdruck“ im anderen Browserfenster.
-7. Kopieren Sie die Informationen der „Geheimnis-ID“ in „Zertifikat-URL“ im anderen Browserfenster.
+6. Nun sollte ein Bildschirm wie der unten abgebildete angezeigt werden. Kopieren Sie den SHA-1-Fingerabdruck im Hexadezimalformat in „Zertifikatfingerabdruck“ im anderen Browserfenster.
+7. Kopieren Sie die „Geheimnis-ID“ in „Zertifikat-URL“ im anderen Browserfenster.
 
     ![CertInfo2]
 
@@ -186,7 +186,7 @@ Um die Clustererstellung abzuschließen, klicken Sie auf **Erstellen**. Sie kön
 
 ![Zusammenfassung]
 
-Sie können den Verlauf der Erstellung in den Benachrichtigungen finden. (Klicken Sie auf das Glockensymbol in der Nähe der Statusleiste am oberen rechten Bildschirmrand.) Wenn Sie beim Erstellen des Clusters auf **An Startmenü anheften** geklickt haben, wird im Menü **Start** der Hinweis **Deploying Service Fabric Cluster** (Service Fabric-Cluster wird bereitgestellt) angezeigt.
+Sie können den Verlauf der Erstellung in den Benachrichtigungen finden. (Klicken Sie auf das Glockensymbol in der Nähe der Statusleiste am oberen rechten Bildschirmrand.) Wenn Sie beim Erstellen des Clusters auf **An Startmenü anheften** geklickt haben, wird im Menü **Start** der Hinweis **Deploying Service Fabric Cluster** (Service Fabric-Cluster wird bereitgestellt) angezeigt. Dieser Vorgang nimmt einige Zeit in Anspruch. 
 
 Um Verwaltungsvorgänge auf Ihrem Cluster mit PowerShell oder der CLI auszuführen, müssen Sie eine Verbindung mit Ihrem Cluster herstellen. Lesen Sie mehr dazu unter [Herstellen einer Verbindung mit Ihrem Cluster](service-fabric-connect-to-secure-cluster.md).
 

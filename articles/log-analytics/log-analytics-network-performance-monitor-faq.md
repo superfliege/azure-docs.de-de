@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/12/2018
 ms.author: vinynigam
-ms.openlocfilehash: 91cfa35cd10772da0042566bdd9030f780329f93
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 31070d03711891353823a72ed9c805995d36024b
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50415184"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52633162"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Netzwerkleistungsmonitor-Lösung: häufig gestellte Fragen
 
@@ -26,7 +26,7 @@ ms.locfileid: "50415184"
 
 Dieser Artikel umfasst die häufig gestellten Fragen (FAQs) zum Netzwerkleistungsmonitor (NPM) in Azure.
 
-Der [Netzwerkleistungsmonitor](/azure/networking/network-monitoring-overview) ist eine cloudbasierte [hybride Netzwerküberwachungslösung](log-analytics-network-performance-monitor-performance-monitor.md), mit der Sie die Netzwerkleistung zwischen verschiedenen Punkten in Ihrer Netzwerkinfrastruktur überwachen können. Zudem können Sie die Netzwerkkonnektivität mit [Dienst- und Anwendungsendpunkten](log-analytics-network-performance-monitor-service-endpoint.md) und [die Leistung von Azure ExpressRoute](log-analytics-network-performance-monitor-expressroute.md) überwachen. 
+Der [Netzwerkleistungsmonitor](/azure/networking/network-monitoring-overview) ist eine cloudbasierte [hybride Netzwerküberwachungslösung](../azure-monitor/insights/network-performance-monitor-performance-monitor.md), mit der Sie die Netzwerkleistung zwischen verschiedenen Punkten in Ihrer Netzwerkinfrastruktur überwachen können. Zudem können Sie die Netzwerkkonnektivität mit [Dienst- und Anwendungsendpunkten](../azure-monitor/insights/network-performance-monitor-service-endpoint.md) und [die Leistung von Azure ExpressRoute](../azure-monitor/insights/network-performance-monitor-expressroute.md) überwachen. 
 
 Der Netzwerkleistungsmonitor erkennt Netzwerkprobleme wie ins Nichts führenden Datenverkehr (Blackholing), Routingfehler und Probleme, die mit herkömmlichen Netzwerküberwachungsmethoden nicht erkannt werden können. Die Lösung generiert Warnungen und benachrichtigt Sie, sobald ein Schwellenwert für eine Netzwerkverbindung überschritten wird. Sie gewährleistet außerdem das rechtzeitige Erkennen von Leistungsproblemen im Netzwerk und ordnet die Ursache des Problems einem bestimmten Netzwerksegment oder Gerät zu. 
 
@@ -47,21 +47,21 @@ Die Funktion zum Überwachen von Netzwerken mithilfe von Linux-basierten Knoten 
 Zur Ausführung der Netzwerkleistungsmonitor-Lösung auf virtuellen Knotencomputern zum Überwachen von Netzwerken müssen die Knoten mindestens einen Speicher von 500 MB und einen Kern aufweisen. Zum Ausführen des Netzwerkleistungsmonitors müssen Sie keine separaten Knoten verwenden. Die Lösung kann auf Knoten ausgeführt werden, auf denen andere Workloads ausgeführt werden. Die Lösung bietet die Möglichkeit, den Überwachungsprozess zu beenden, falls mehr als 5 % der CPU-Ressourcen genutzt werden.
 
 ### <a name="to-use-npm-should-i-connect-my-nodes-as-direct-agent-or-through-system-center-operations-manager"></a>Soll ich zur Verwendung des Netzwerkleistungsmonitors die Knoten als Direkt-Agent oder über System Center Operations Manager verbinden?
-Die beiden Funktionen „Systemmonitor“ und „Dienstkonnektivitätsmonitor“ unterstützen Knoten, die [als Direkt-Agent](log-analytics-agent-windows.md) sowie [über Operations Manager](log-analytics-om-agents.md) verbunden werden.
+Die beiden Funktionen „Systemmonitor“ und „Dienstkonnektivitätsmonitor“ unterstützen Knoten, die [als Direkt-Agent](../azure-monitor/platform/agent-windows.md) sowie [über Operations Manager](log-analytics-om-agents.md) verbunden werden.
 
 Für die Funktion „ExpressRoute-Monitor“ sollten die Azure-Knoten nur als Direkt-Agents verbunden werden. Azure-Knoten, die über Operations Manager verbunden werden, werden nicht unterstützt. Lokale Knoten werden zur Überwachung einer ExpressRoute-Leitung unterstützt, wenn sie als Direkt-Agents und über Operations Manager verbunden sind.
 
 ### <a name="which-protocol-among-tcp-and-icmp-should-be-chosen-for-monitoring"></a>Welches Protokoll, TCP oder ICMP, sollte für die Überwachung ausgewählt werden?
 Wenn Sie Ihr Netzwerk mithilfe Windows Server-basierter Knoten überwachen, wird empfohlen, TCP als Überwachungsprotokoll zu verwenden, da es eine höhere Genauigkeit bietet. 
 
-ICMP wird für Windows-Knoten mit Desktop-/Clientbetriebssystemen empfohlen. Auf dieser Plattform können keine TCP-Daten über RAW-Sockets mit npm gesendet werden, um die Netzwerktopologie zu ermitteln.
+ICMP wird für Windows-Knoten mit Desktop-/Clientbetriebssystemen empfohlen. Auf dieser Plattform können keine TCP-Daten über RAW-Sockets gesendet werden, die NPM zum Ermitteln der Netzwerktopologie verwendet.
 
-Weitere Informationen zu den jeweiligen Vorteilen der einzelnen Protokolle finden Sie [hier](log-analytics-network-performance-monitor-performance-monitor.md#choose-the-protocol).
+Weitere Informationen zu den jeweiligen Vorteilen der einzelnen Protokolle finden Sie [hier](../azure-monitor/insights/network-performance-monitor-performance-monitor.md#choose-the-protocol).
 
 ### <a name="how-can-i-configure-a-node-to-support-monitoring-using-tcp-protocol"></a>Wie kann ich einen Knoten zur Unterstützung der Überwachung mithilfe des TCP-Protokolls konfigurieren?
 Damit der Knoten die Überwachung mithilfe des TCP-Protokolls unterstützt, ist Folgendes zu beachten: 
 * Stellen Sie sicher, dass als Plattform für den Knoten Windows Server (2008 SP1 oder höher) verwendet wird.
-* Führen Sie das PowerShell-Skript [EnableRules.ps1](https://aka.ms/npmpowershellscript) auf dem Knoten aus. Weitere Informationen finden Sie in diesen [Anweisungen](log-analytics-network-performance-monitor.md#configure-log-analytics-agents-for-monitoring).
+* Führen Sie das PowerShell-Skript [EnableRules.ps1](https://aka.ms/npmpowershellscript) auf dem Knoten aus. Weitere Informationen finden Sie in diesen [Anweisungen](../azure-monitor/insights/network-performance-monitor.md#configure-log-analytics-agents-for-monitoring).
 
 
 ### <a name="how-can-i-change-the-tcp-port-being-used-by-npm-for-monitoring"></a>Wie kann ich den vom Netzwerkleistungsmonitor zur Überwachung verwendeten TCP-Port ändern?
@@ -126,10 +126,10 @@ Verwenden Sie die folgende Abfrage, um Informationen auf Verbindungsebene abzuru
     | project CircuitName,PrimaryBytesInPerSecond, PrimaryBytesOutPerSecond,SecondaryBytesInPerSecond,SecondaryBytesOutPerSecond
 
 ### <a name="which-regions-are-supported-for-npms-performance-monitor"></a>Welche Regionen werden für den Systemmonitor des Netzwerkleistungsmonitors unterstützt?
-Der Netzwerkleistungsmonitor kann die Konnektivität zwischen Netzwerken in jedem Teil der Welt von einem Arbeitsbereich aus überwachen, der in einer der [unterstützten Regionen](log-analytics-network-performance-monitor.md#supported-regions) gehostet wird.
+Der Netzwerkleistungsmonitor kann die Konnektivität zwischen Netzwerken in jedem Teil der Welt von einem Arbeitsbereich aus überwachen, der in einer der [unterstützten Regionen](../azure-monitor/insights/network-performance-monitor.md#supported-regions) gehostet wird.
 
 ### <a name="which-regions-are-supported-for-npms-service-connectivity-monitor"></a>Welche Regionen werden für den Dienstkonnektivitätsmonitor des Netzwerkleistungsmonitors unterstützt?
-Der Netzwerkleistungsmonitor kann die Konnektivität mit Diensten in jedem Teil der Welt von einem Arbeitsbereich aus überwachen, der in einer der [unterstützten Regionen](log-analytics-network-performance-monitor.md#supported-regions) gehostet wird.
+Der Netzwerkleistungsmonitor kann die Konnektivität mit Diensten in jedem Teil der Welt von einem Arbeitsbereich aus überwachen, der in einer der [unterstützten Regionen](../azure-monitor/insights/network-performance-monitor.md#supported-regions) gehostet wird.
 
 ### <a name="which-regions-are-supported-for-npms-expressroute-monitor"></a>Welche Regionen werden für den ExpressRoute-Monitor des Netzwerkleistungsmonitors unterstützt?
 Der Netzwerkleistungsmonitor kann die ExpressRoute-Leitungen in jeder Azure-Region überwachen. Zur Integration in den Netzwerkleistungsmonitor benötigen Sie einen Log Analytics-Arbeitsbereich, der in einer der [unterstützten Regionen](/azure/expressroute/how-to-npm#regions) gehostet werden muss.
@@ -222,4 +222,4 @@ Der Netzwerkleistungsmonitor rundet die Latenzzeiten in der Benutzeroberfläche 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Weitere Informationen zum Netzwerkleistungsmonitor finden Sie unter [Netzwerkleistungsmonitor-Lösung in Azure](log-analytics-network-performance-monitor.md).
+- Weitere Informationen zum Netzwerkleistungsmonitor finden Sie unter [Netzwerkleistungsmonitor-Lösung in Azure](../azure-monitor/insights/network-performance-monitor.md).
