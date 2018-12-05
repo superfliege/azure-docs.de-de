@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 6/13/2018
 ms.author: erikre
-ms.openlocfilehash: 97f6339e5c9532250245a97a81dade12db139e98
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 09ecd46837a12f5f1a8278b1644dc099701bcd00
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47227366"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52584722"
 ---
 # <a name="billing-and-cost-management-automation-scenarios"></a>Automatisierungsszenarien zur Abrechnungs- und Kostenverwaltung
 
@@ -122,4 +122,4 @@ Diese APIs stellen ähnliche Datasets bereit, sind jedoch auf unterschiedliche Z
 
 - Weitere Informationen zur Verwendung der Azure-APIs, um programmgesteuert Einblick in Ihre Azure-Nutzung zu erhalten, finden Sie unter [Azure-Nutzungs-API: Übersicht](billing-consumption-api-overview.md) und [Programmgesteuertes Abrufen von Informationen zu Ihrer Azure-Nutzung mit Azure-Abrechnungs-APIs](billing-usage-rate-card-overview.md).
 - Um Ihre Rechnung mit der Datei mit den ausführlichen Daten zur täglichen Nutzung und den Kostenverwaltungsberichten im Azure-Portal zu vergleichen, lesen Sie [Grundlegendes zu Ihrer Rechnung für Microsoft Azure](billing-understand-your-bill.md).
-- Bei weiteren Fragen [wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), um das Problem schnell zu lösen.
+- Wenn Sie weitere Fragen haben oder Hilfe benötigen, [erstellen Sie eine Supportanfrage](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).

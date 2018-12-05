@@ -5,17 +5,17 @@ author: rthorn17
 manager: rithorn
 ms.service: azure-resource-manager
 ms.devlang: na
-ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/18/2018
+ms.date: 11/20/2018
 ms.author: rithorn
-ms.openlocfilehash: a3de0df8fde3b271b7ba9bb9aab01dbcd5c3bf08
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.topic: conceptual
+ms.openlocfilehash: 10dfa9812a0546f3a8c57e28227851b6f72657fc
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46991220"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52582414"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>Verwalten von Ressourcen mit Verwaltungsgruppen
 
@@ -207,7 +207,7 @@ Wählen Sie zum Anzeigen der Ihnen zugewiesenen Berechtigungen die Verwaltungsgr
 
 ### <a name="move-subscriptions-in-powershell"></a>Verschieben von Abonnements in PowerShell
 
-Wenn Sie zum Verschieben eines Abonnements in PowerShell den Befehl „Add-AzureRmManagementGroupSubscription“.  
+Verschieben Sie Abonnements in PowerShell mit dem Befehl „New-AzureRmManagementGroupSubscription“.  
 
 ```azurepowershell-interactive
 New-AzureRmManagementGroupSubscription -GroupName 'Contoso' -SubscriptionId '12345678-1234-1234-1234-123456789012'
@@ -272,12 +272,26 @@ Verwenden Sie den Befehl „update“, um eine Verwaltungsgruppe mit der Azure C
 az account management-group update --name 'Contoso' --parent 'Contoso Tenant'
 ```
 
+## <a name="audit-management-groups-using-activity-logs"></a>Überwachen von Verwaltungsgruppen mithilfe von Aktivitätsprotokollen
+
+Verwenden Sie zum Nachverfolgen von Verwaltungsgruppen über diese API die [Mandantenaktivitätsprotokoll-API](/rest/api/monitor/tenantactivitylogs). Zurzeit ist es nicht möglich, PowerShell, die CLI oder das Azure-Portal zum Nachverfolgen der Verwaltungsgruppenaktivität zu verwenden.
+
+1. Als Mandantenadministrator des Azure AD-Mandanten [erhöhen Sie die Zugriffsrechte](../../role-based-access-control/elevate-access-global-admin.md), und weisen Sie dann dem überwachenden Benutzer eine Leserrolle über den Bereich `/providers/microsoft.insights/eventtypes/management` zu.
+1. Rufen Sie als überwachender Benutzer die [Mandantenaktivitätsprotokoll-API](/rest/api/monitor/tenantactivitylogs) auf, um Verwaltungsgruppenaktivitäten anzuzeigen. Es wird empfohlen, für alle Verwaltungsgruppenaktivitäten nach dem Ressourcenanbieter **Microsoft.Management** zu filtern.  Beispiel:
+
+```xml
+GET "/providers/Microsoft.Insights/eventtypes/management/values?api-version=2015-04-01&$filter=eventTimestamp ge '{greaterThanTimeStamp}' and eventTimestamp le '{lessThanTimestamp}' and eventChannels eq 'Operation' and resourceProvider eq 'Microsoft.Management'"
+```
+
+> [!NOTE]
+> Um diese API bequem über die Befehlszeile aufzurufen, verwenden Sie [ARMClient](https://github.com/projectkudu/ARMClient).
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen zu Verwaltungsgruppen finden Sie unter folgenden Links:
 
-- [Organisieren Ihrer Ressourcen mit Azure-Verwaltungsgruppen](overview.md)
 - [Erstellen von Verwaltungsgruppen zum Organisieren von Azure-Ressourcen](create.md)
-- [Installieren des Azure Powershell-Moduls](https://www.powershellgallery.com/packages/AzureRM.ManagementGroups)
-- [Spezifikationen zur REST-API](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/managementgroups/resource-manager/Microsoft.Management/preview)
-- [Installieren der Erweiterung für die Azure-Befehlszeilenschnittstelle](/cli/azure/extension?view=azure-cli-latest#az-extension-list-available)
+- [Ändern, Löschen oder Verwalten Ihrer Verwaltungsgruppen](manage.md)
+- [Überprüfen von Verwaltungsgruppen im Azure PowerShell-Ressourcenmodul](https://aka.ms/mgPSdocs)
+- [Überprüfen von Verwaltungsgruppen in der REST-API](https://aka.ms/mgAPIdocs)
+- [Überprüfen von Verwaltungsgruppen in der Azure CLI](https://aka.ms/mgclidoc)

@@ -12,77 +12,23 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/08/2018
+ms.date: 11/13/2018
 ms.author: aljo
-ms.openlocfilehash: 7a80693090b92db55ad2feed52fdbb2a455e3c39
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 9da213525a5921295d6271adfd473b7a05a049a4
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48884492"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52497920"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Anpassen von Service Fabric-Clustereinstellungen
-In diesem Artikel wird beschrieben, wie Sie die verschiedenen Fabric-Einstellungen für Ihren Service Fabric-Cluster anpassen. Für in Azure gehostete Cluster können Sie Einstellungen über das [Azure-Portal](https://portal.azure.com) oder mithilfe einer Azure Resource Manager-Vorlage anpassen. Für eigenständige Cluster passen Sie die Einstellungen durch Aktualisieren der Datei „ClusterConfig.json“ und ein Konfigurationsupgrade in Ihrem Cluster an. 
+Dieser Artikel beschreibt die verschiedenen Fabric-Einstellungen, die Sie für Ihren Service Fabric-Cluster anpassen können. Für in Azure gehostete Cluster können Sie Einstellungen über das [Azure-Portal](https://portal.azure.com) oder mithilfe einer Azure Resource Manager-Vorlage anpassen. Weitere Informationen finden Sie unter [Aktualisieren der Konfiguration eines Azure-Clusters](service-fabric-cluster-config-upgrade-azure.md). Für eigenständige Cluster passen Sie die Einstellungen durch Aktualisieren der Datei *ClusterConfig.json* und ein Konfigurationsupgrade in Ihrem Cluster an. Weitere Informationen finden Sie unter [Aktualisieren der Konfiguration eines eigenständigen Clusters](service-fabric-cluster-config-upgrade-windows-server.md).
 
-> [!NOTE]
-> Im Portal sind nicht alle Einstellungen verfügbar. Falls eine der unten aufgeführten Einstellungen nicht über das Portal verfügbar sein sollte, passen Sie dies mithilfe einer Azure Resource Manager-Vorlage an.
-> 
-
-## <a name="description-of-the-different-upgrade-policies"></a>Beschreibung der verschiedenen Upgraderichtlinien
+Es gibt drei verschiedene Upgraderichtlinien:
 
 - **Dynamisch**: Änderungen an einer dynamischen Konfiguration führen weder zu einem Neustart von Service Fabric-Prozessen noch von Diensthostprozessen. 
 - **Statisch**: Änderungen an einer statischen Konfiguration führen zum Neustart des Service Fabric-Knotens, um die Änderung zu übernehmen. Dienste auf den Knoten werden neu gestartet.
 - **Unzulässig**. Diese Einstellungen können nicht geändert werden. Um diese Einstellungen zu ändern, muss der Cluster gelöscht und ein neuer Cluster angelegt werden. 
-
-## <a name="customize-cluster-settings-using-resource-manager-templates"></a>Anpassen von Clustereinstellungen mithilfe von Resource Manager-Vorlagen
-In den folgenden Schritten wird gezeigt, wie die neue Einstellung *MaxDiskQuotaInMB* mit dem Azure-Ressourcen-Explorer zum Abschnitt *Diagnose* hinzugefügt wird.
-
-1. Besuchen Sie https://resources.azure.com.
-2. Navigieren Sie zu Ihrem Abonnement. Erweitern Sie dazu **Abonnements** -> **\<Ihr Abonnement>** -> **Ressourcengruppen** -> **\<Ihre Ressourcengruppe>** -> **Anbieter** -> **Microsoft.ServiceFabric** -> **Cluster** -> **\<Name Ihres Clusters>**.
-3. Wählen Sie in der oberen rechten Ecke **Lesen/Schreiben** aus.
-4. Wählen Sie **Bearbeiten** aus, aktualisieren Sie das JSON-Element `fabricSettings`, und fügen Sie ein neues Element hinzu:
-
-```json
-      {
-        "name": "Diagnostics",
-        "parameters": [
-          {
-            "name": "MaxDiskQuotaInMB",
-            "value": "65536"
-          }
-        ]
-      }
-```
-
-Sie können auch auf eine der folgenden Arten mit Azure Resource Manager Clustereinstellungen anpassen:
-
-- Verwenden Sie das [Azure-Portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template), um die Resource Manager-Vorlage zu exportieren und zu aktualisieren.
-- Verwenden Sie [PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template-powershell), um die Resource Manager-Vorlage zu exportieren und zu aktualisieren.
-- Verwenden Sie die [Azure CLI](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template-cli), um die Resource Manager-Vorlage zu exportieren und zu aktualisieren.
-- Verwenden Sie die Azure RM-PowerShell-Befehle [Set-AzureRmServiceFabricSetting](https://docs.microsoft.com/powershell/module/azurerm.servicefabric/Set-AzureRmServiceFabricSetting) und [Remove-AzureRmServiceFabricSetting](https://docs.microsoft.com/powershell/module/azurerm.servicefabric/Remove-AzureRmServiceFabricSetting), um die Einstellung direkt zu ändern.
-- Verwenden Sie die [az sf cluster setting](https://docs.microsoft.com/cli/azure/sf/cluster/setting)-Befehle der Azure CLI, um die Einstellung direkt zu ändern.
-
-## <a name="customize-cluster-settings-for-standalone-clusters"></a>Anpassen von Clustereinstellungen für eigenständige Cluster
-Eigenständige Cluster werden über die Datei „ClusterConfig.json“ konfiguriert. Weitere Informationen finden Sie unter [Konfigurationseinstellungen für einen eigenständigen Windows-Cluster](./service-fabric-cluster-manifest.md).
-
-Sie können Einstellungen im Abschnitt `fabricSettings` unter dem Abschnitt mit den [Clustereigenschaften](./service-fabric-cluster-manifest.md#cluster-properties) in „ClusterConfig.json“ hinzufügen, aktualisieren oder daraus entfernen. 
-
-Beispiel: Mit dem folgende JSON-Code wird die neue Einstellung *MaxDiskQuotaInMB* zum Abschnitt *Diagnostics* unter `fabricSettings` hinzugefügt:
-
-```json
-      {
-        "name": "Diagnostics",
-        "parameters": [
-          {
-            "name": "MaxDiskQuotaInMB",
-            "value": "65536"
-          }
-        ]
-      }
-```
-
-Nachdem Sie die Einstellungen in der Datei „ClusterConfig.json“ geändert haben, befolgen Sie die Anweisungen unter [Aktualisieren der Clusterkonfiguration](./service-fabric-cluster-upgrade-windows-server.md#upgrade-the-cluster-configuration), um die Einstellungen auf Ihren Cluster anzuwenden. 
-
 
 In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstellungen aufgeführt, die Sie anpassen können.
 
@@ -867,7 +813,4 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 |X509StoreName | string, Standardwert „My“|Dynamisch|X509StoreName für UpgradeService. |
 
 ## <a name="next-steps"></a>Nächste Schritte
-Lesen Sie die folgenden Artikel, um weitere Informationen zur Clusterverwaltung zu enthalten:
-
-[Hinzufügen, Rollover und Entfernen von Zertifikaten in einem Azure-Cluster ](service-fabric-cluster-security-update-certs-azure.md) 
-
+Weitere Informationen finden Sie unter [Aktualisieren der Konfiguration eines Azure-Clusters](service-fabric-cluster-config-upgrade-azure.md) und [Aktualisieren der Konfiguration eines eigenständigen Clusters](service-fabric-cluster-config-upgrade-windows-server.md).

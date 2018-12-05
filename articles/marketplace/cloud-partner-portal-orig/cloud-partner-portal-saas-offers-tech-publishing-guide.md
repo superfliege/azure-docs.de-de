@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 7430e57ceaec8a280c17f1276d503919a9703182
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 7e648d6d3bd8d8ac14fb3f9723f4667c1cc33ac6
+ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51228894"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52620182"
 ---
 <a name="saas-application-technical-publishing-guide"></a>Technischer Leitfaden für die Veröffentlichung von SaaS-Anwendungen
 ===========================================
@@ -32,7 +32,7 @@ Eine Übersicht über alle Marketplace-Angebote finden Sie im [Veröffentlichung
 <a name="what-are-pre-requisites-for-publishing-a-saas-app"></a>Was sind die Voraussetzungen für die Veröffentlichung einer SaaS-Anwendung?
 -------------------------------------------------
 
-Das Veröffentlichungsportal bietet rollenbasierten Zugriff auf das Portal, sodass mehrere Personen hinsichtlich der Veröffentlichung eines Angebots zusammenarbeiten können. Weitere Informationen finden Sie unter [Verwalten von Benutzern](./cloud-partner-portal-manage-users.md). 
+Das [Cloud-Partnerportal](https://cloudpartner.azure.com) bietet rollenbasierten Zugriff, sodass mehrere Personen bei der Veröffentlichung eines Angebots zusammenarbeiten können. Weitere Informationen finden Sie unter [Verwalten von Benutzern](./cloud-partner-portal-manage-users.md). 
 
 Bevor ein Angebot im Auftrag eines Herausgeberkontos veröffentlicht werden kann, muss eine der Personen mit *Besitzer*-Rolle bestätigen, dass die [Nutzungsbedingungen](https://azure.microsoft.com/support/legal/website-terms-of-use/), die [Datenschutzerklärung von Microsoft](https://www.microsoft.com/privacystatement/default.aspx) und die [Microsoft Azure Certified-Programmvereinbarung](https://azure.microsoft.com/support/legal/marketplace/certified-program-agreement/) eingehalten werden.
 
@@ -58,7 +58,7 @@ Ein SaaS-Anwendungsangebot besteht aus fünf Abschnitten, die in der folgenden T
 
 ### <a name="creating-a-new-offer"></a>Erstellen eines neuen Angebots
 
-Nachdem Sie sich beim Cloud-Partnerportal angemeldet haben, wählen Sie den Eintrag **Neues Angebot** in der linken Menüleiste aus, in der ein Menü der verfügbaren Angebote angezeigt wird. Die folgende Abbildung zeigt ein Beispiel dieser Angebote:
+Nachdem Sie sich beim [Cloud-Partnerportal](https://cloudpartner.azure.com) angemeldet haben, wählen Sie in der linken Menüleiste den Eintrag **Neues Angebot** aus, wodurch ein Menü der verfügbaren Angebote angezeigt wird. Die folgende Abbildung zeigt ein Beispiel dieser Angebote:
 
 ![Neues SaaS-Angebot](media/cpp-creating-saas-offers/saas-new-offer.png)
 
@@ -154,7 +154,7 @@ In der folgenden Tabelle sind die Marketingfelder beschrieben:
 
 | **Angebotsfelder** | **Beschreibung**                                                                                                          |
 |------------------| ------------------------------------------------------------------------------------------------------------------------ |
-| Logos            | Wenn Sie eine **Verkauf über Azure**-SaaS-Anwendung anbieten, sollten Sie alle Logobilder bereitstellen. Wenn Sie lediglich eine Auflistung bereitstellen, sind nur zwei Logos erforderlich. Alle Logos, die in das Cloud-Partnerportal hochgeladen werden, sollten den folgenden Richtlinien entsprechen:     <br/> – Verwenden Sie auf Ihrem Logo möglichst wenige Primär- und Sekundärfarben. Die Farbpalette des Azure-Designs ist einfach und geradlinig.     <br/> – Vermeiden Sie Schwarz oder Weiß als Hintergrundfarbe Ihres Logos. Die Designfarben des Azure-Portals sind Schwarz und Weiß. Verwenden Sie stattdessen Farben, die Ihr Logo im Azure-Portal markant hervorstechen lassen. Sie sollten einfache Primärfarben verwenden. Wenn Sie einen transparenten Hintergrund verwenden, achten Sie darauf, dass das Logo und Text weder weiß, noch schwarz noch blau sind.     <br/> – Verwenden Sie im Logo keinen Hintergrund mit Farbverlauf.     <br/> – Platzieren Sie nach Möglichkeit keinen Text auf dem Logo, auch nicht Ihren Firmen- oder Markennamen. Das Erscheinungsbild Ihres Logos sollte klar und direkt und frei von Farbverläufen sein.    <br/> – Das Logobild sollte nicht gestreckt sein.                   |
+| Logos            | Wenn Sie eine **Verkauf über Azure**-SaaS-Anwendung anbieten, sollten Sie alle Logobilder bereitstellen. Wenn Sie lediglich eine Auflistung bereitstellen, sind nur zwei Logos erforderlich. Alle Logos, die in das [Cloud-Partnerportal](https://cloudpartner.azure.com) hochgeladen werden, müssen den folgenden Richtlinien entsprechen:     <br/> – Verwenden Sie auf Ihrem Logo möglichst wenige Primär- und Sekundärfarben. Die Farbpalette des Azure-Designs ist einfach und geradlinig.     <br/> – Vermeiden Sie Schwarz oder Weiß als Hintergrundfarbe Ihres Logos. Die Designfarben des Azure-Portals sind Schwarz und Weiß. Verwenden Sie stattdessen Farben, die Ihr Logo im Azure-Portal markant hervorstechen lassen. Sie sollten einfache Primärfarben verwenden. Wenn Sie einen transparenten Hintergrund verwenden, achten Sie darauf, dass das Logo und Text weder weiß, noch schwarz noch blau sind.     <br/> – Verwenden Sie im Logo keinen Hintergrund mit Farbverlauf.     <br/> – Platzieren Sie nach Möglichkeit keinen Text auf dem Logo, auch nicht Ihren Firmen- oder Markennamen. Das Erscheinungsbild Ihres Logos sollte klar und direkt und frei von Farbverläufen sein.    <br/> – Das Logobild sollte nicht gestreckt sein.                   |
 | Videos           | Ermöglicht es Ihnen, Links zu Videos Ihres Angebots hinzuzufügen. Sie können Links zu YouTube und/oder Vimeo-Videos angeben, die zusammen mit Ihrem Angebot bei Kunden angezeigt werden. Sie müssen auch ein Miniaturbild des Videos mit einem PNG-Bild von 1280 x 720 Pixel eingeben. Sie können pro Angebot bis zu vier Videos verwenden. |
 | Dokumente        | Ermöglicht es Ihnen, Ihrem Angebot Marketingdokumente hinzuzufügen. Alle Dokumente müssen im PDF-Format vorliegen, und pro Angebot können maximal drei Dokumente verwendet werden.                                                                                                                                                      |
 | Screenshots      | Ermöglicht es Ihnen, Screenshots von Ihrem Angebot hinzuzufügen. Pro Angebot können bis zu fünf Screenshots hinzugefügt werden. Die maximale Bildgröße ist 1280 x 720 Pixel.                                                                                                                                             |

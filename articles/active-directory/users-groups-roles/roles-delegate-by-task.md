@@ -14,12 +14,12 @@ ms.date: 11/08/2018
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: b4704e9f078b248ef1835babb3b63c378b011c4e
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: bd63e8379051864a19c473779625a925446185f2
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51516586"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52445020"
 ---
 # <a name="administrator-roles-by-identity-task-in-azure-active-directory"></a>Administratorrollen nach Identitätsaufgabe in Azure Active Directory
 
@@ -107,7 +107,7 @@ Lesen aller Konfigurationen | Rolle „Verzeichnis lesen“ | Standardbenutzerro
 Aufgabe | Am wenigsten privilegierte Rolle | Zusätzliche Rollen
 ---- | --------------------- | ----------------
 Erstellen einer Azure AD Domain Services-Instanz | Globaler Administrator | 
-Ausführen aller Azure AD Domain Services-Tasks | Administratorengruppe für Azure AD-Domänencontroller (siehe [Dokumentation](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-admin-guide-administer-domain#administrative-tasks-you-can-perform-on-a-managed-domain)) | 
+Ausführen aller Azure AD Domain Services-Aufgaben | Administratorengruppe für Azure AD-Domänencontroller (siehe [Dokumentation](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-admin-guide-administer-domain#administrative-tasks-you-can-perform-on-a-managed-domain)) | 
 Lesen aller Konfigurationen | Leser für Azure-Abonnements, die den AD DS-Dienst umfassen | 
 
 ## <a name="devices"></a>Geräte
@@ -147,7 +147,7 @@ Lizenz zuweisen | Benutzerkontoadministrator |
 Erstellen einer Gruppe | Benutzerkontoadministrator | 
 Erstellen, Aktualisieren oder Löschen der Zugriffsüberprüfung einer Gruppe oder einer App | Benutzerkontoadministrator | 
 Verwalten des Gruppenablaufs | Benutzerkontoadministrator | 
-Verwalten von Gruppeneinstellungen | Benutzerkontoadministrator | 
+Verwalten von Gruppeneinstellungen | Globaler Administrator | 
 Lesen der gesamten Konfiguration (mit Ausnahme der ausgeblendeten Mitgliedschaft) | Rolle „Verzeichnis lesen“ | Standardbenutzerrolle (siehe [Dokumentation](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions))
 Lesen der ausgeblendeten Mitgliedschaft | Gruppenmitglied | Gruppenbesitzer, Kennwortadministrator, Exchange-Administrator, SharePoint-Administrator, Teams-Administrator, Benutzerkontoadministrator
 Lesen der Mitgliedschaft von Gruppen mit ausgeblendeter Mitgliedschaft | Helpdeskadministrator | Benutzerkonto-, Teams-Administrator

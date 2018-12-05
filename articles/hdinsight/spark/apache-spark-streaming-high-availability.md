@@ -9,16 +9,16 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/26/2018
-ms.openlocfilehash: 8f680b60a8f457e1a8619ac044798ff02df15694
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 9898a56991a44f3ac87fde4c34676943b1ab8341
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51013648"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52581900"
 ---
-# <a name="create-high-availability-spark-streaming-jobs-with-yarn"></a>Erstellen von Spark Streaming-Aufträgen mit Hochverfügbarkeit mit YARN
+# <a name="create-high-availability-apache-spark-streaming-jobs-with-yarn"></a>Erstellen von hoch verfügbaren Apache Spark-Streamingaufträgen mit YARN
 
-Mit Spark Streaming können Sie skalierbare und fehlertolerante Anwendungen mit hohem Durchsatz zur Verarbeitung von Datenströmen implementieren. Sie können Spark Streaming-Anwendungen in einem HDInsight Spark-Cluster mit einer Vielzahl von Datenquellen verbinden, z.B. mit Azure Event Hubs, Azure IoT Hub, Kafka, Flume, Twitter, ZeroMQ, RAW-TCP-Sockets, oder das HDFS-Dateisystem auf Änderungen überwachen. Spark Streaming unterstützt die Fehlertoleranz mit der Garantie, dass alle angegebenen Ereignisse jeweils genau einmal verarbeitet werden – selbst bei einem Ausfall eines Knotens.
+Mit [Apache Spark-Streamings](https://spark.apache.org/) können Sie skalierbare und fehlertolerante Anwendungen mit hohem Durchsatz zur Verarbeitung von Datenströmen implementieren. Sie können Spark-Anwendungen für Streamings in einem HDInsight Spark-Cluster mit mehreren Datenquellen verbinden, z.B. mit Azure Event Hubs, Azure IoT Hub, [Apache Kafka](https://kafka.apache.org/), [Apache Flume](https://flume.apache.org/), Twitter, [ZeroMQ](http://zeromq.org/), RAW-TCP-Sockets, oder indem Sie das [Apache Hadoop HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html)-Dateisystem auf Änderungen überwachen. Spark Streaming unterstützt die Fehlertoleranz mit der Garantie, dass alle angegebenen Ereignisse jeweils genau einmal verarbeitet werden – selbst bei einem Ausfall eines Knotens.
 
 Spark Streaming erstellt Aufträge mit langer Ausführungszeit, bei denen Transformationen auf die Daten angewendet und die Ergebnisse dann auf Dateisysteme, Datenbanken, Dashboards und die Konsole übertragen werden können. Spark Streaming verarbeitet Mikrobatches von Daten. Dabei wird zunächst ein Batch von Ereignissen in einem definierten Zeitintervall gesammelt. Dann wird dieser Batch zur Verarbeitung und Ausgabe gesendet. Batchzeitintervalle werden normalerweise in Sekundenbruchteilen definiert.
 
@@ -54,7 +54,7 @@ RDDs umfassen mehrere Eigenschaften, die hochverfügbare und fehlertolerante Spa
 
 Zum Erstellen einer Anwendung, die jedes Ereignis einmal (und nur einmal) verarbeitet, muss berücksichtigt werden, wie alle Komponenten im System nach Ausfällen neu gestartet werden und wie Datenverlust vermieden werden kann. Die „Exactly-Once“-Semantik erfordert, dass keine Daten an irgendeiner Stelle verloren gehen und dass die Nachrichtenverarbeitung neu gestartet werden kann, unabhängig davon, wo der Fehler auftritt. Siehe dazu [Erstellen von Spark-Streamingaufträgen mit Ereignisverarbeitung vom Typ „Exactly-Once“](apache-spark-streaming-exactly-once.md).
 
-## <a name="spark-streaming-and-yarn"></a>Spark Streaming und YARN
+## <a name="spark-streaming-and-apache-hadoop-yarn"></a>Spark-Streaming und Apache Hadoop YARN
 
 In HDInsight wird die Verwendung von Clustern über *Yet Another Resource Negotiator* (YARN) koordiniert. Das Entwerfen einer Architektur für Hochverfügbarkeit für Spark Streaming umfasst Techniken für Spark Streaming sowie für YARN-Komponenten.  Eine Beispielkonfiguration unter Verwendung von YARN ist nachfolgend dargestellt. 
 
@@ -120,8 +120,8 @@ Zusammenfassend gilt: Durch Verwendung von Prüfpunktausführung, WAL und zuverl
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Übersicht über Spark Streaming](apache-spark-streaming-overview.md)
-* [Erstellen von Spark-Streamingaufträgen mit Ereignisverarbeitung vom Typ „Exactly-Once“](apache-spark-streaming-exactly-once.md)
-* [Long-running Spark Streaming Jobs on YARN](http://mkuthan.github.io/blog/2016/09/30/spark-streaming-on-yarn/) (Spark Streaming-Aufträge mit langer Ausführungszeit in YARN) 
+* [Übersicht über Apache Spark-Streaming](apache-spark-streaming-overview.md)
+* [Erstellen von Apache Spark-Streamingaufträgen mit Ereignisverarbeitung vom Typ „Exactly-Once“](apache-spark-streaming-exactly-once.md)
+* [Spark-Streamingaufträge mit langer Ausführungszeit in YARN](http://mkuthan.github.io/blog/2016/09/30/spark-streaming-on-yarn/) (in englischer Sprache) 
 * [Structured Streaming: Fault Tolerant Semantics](http://spark.apache.org/docs/2.1.0/structured-streaming-programming-guide.html#fault-tolerance-semantics) (Structured Streaming: fehlertolerante Semantik)
 * [Discretized Streams: A Fault-Tolerant Model for Scalable Stream Processing](https://www2.eecs.berkeley.edu/Pubs/TechRpts/2012/EECS-2012-259.pdf) (Diskretisierte Datenströme: fehlertolerantes Modell für skalierbare Datenstromverarbeitung)

@@ -9,12 +9,12 @@ ms.author: xshi
 ms.date: 09/21/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 92746b37d6c7577691b46bf34a00f607ad707ff9
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 51c2154f4132340e00b8fddcfaeb6e999519c48f
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51569038"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52446703"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-nodejs-modules-for-azure-iot-edge"></a>Verwenden von Visual Studio Code zum Entwickeln und Debuggen von Node.js-Modulen für Azure IoT Edge
 
@@ -65,7 +65,7 @@ Die folgenden Schritte zeigen, wie Sie mithilfe von Visual Studio Code und der A
 6. Geben Sie einen Namen für die Projektmappe an. 
 7. Wählen Sie **Node.js Module** (Node.js-Modul) als Vorlage für das erste Modul in der Projektmappe aus.
 8. Geben Sie einen Namen für das Modul an. Wählen Sie einen Namen, der in der Containerregistrierung eindeutig ist. 
-9. Geben Sie das Imagerepository für das Modul an. Visual Studio Code trägt den Modulnamen automatisch ein, sodass Sie nur **localhost:5000** durch Ihre eigenen Registrierungsinformationen ersetzen müssen. Wenn Sie eine lokale Docker-Registrierung zum Testen verwenden, können Sie „localhost“ nutzen. Nutzen Sie den Anmeldeserver aus Ihren Registrierungseinstellungen, wenn Sie Azure Container Registry verwenden. Der Anmeldeserver hat die Form **\<Registrierungsname\>.azurecr.io**. Ersetzen Sie nur den localhost-Teil der Zeichenfolge, löschen Sie nicht Ihren Modulnamen.
+9. Geben Sie das Imagerepository für das Modul an. Visual Studio Code trägt den Modulnamen automatisch ein, sodass Sie nur **localhost:5000** durch Ihre eigenen Registrierungsinformationen ersetzen müssen. Wenn Sie eine lokale Docker-Registrierung zum Testen verwenden, können Sie „localhost“ nutzen. Nutzen Sie den Anmeldeserver aus Ihren Registrierungseinstellungen, wenn Sie Azure Container Registry verwenden. Der Anmeldeserver hat die Form **\<Registrierungsname\>.azurecr.io**. Ersetzen Sie nur den localhost-Teil der Zeichenfolge, löschen Sie nicht Ihren Modulnamen. Die endgültige Zeichenfolge sieht wie folgt aus: \<registrierungsname\>.azurecr.io/\<modulname\>.
 
    ![Bereitstellen eines Docker-Imagerepositorys](./media/how-to-develop-node-module/repository.png)
 
@@ -80,6 +80,7 @@ In der Projektmappe sind drei Elemente enthalten:
    >Die Umgebungsdatei wird nur erstellt, wenn Sie ein Imagerepository für das Modul angeben. Wenn Sie die „localhost“-Standardeinstellungen zum lokalen Testen und Debuggen akzeptiert haben, müssen Sie keine Umgebungsvariablen deklarieren. 
 
 * Eine Datei **deployment.template.json**, in der Ihr neues Modul zusammen mit dem Beispielmodul **tempSensor**, mit dem Daten zum Testen simuliert werden, aufgeführt ist. Weitere Informationen zur Funktionsweise von Bereitstellungsmanifesten finden Sie unter [Verstehen, wie IoT Edge-Module verwendet, konfiguriert und wiederverwendet werden können](module-composition.md).
+* Eine **deployment.debug.template.json**-Datei enthält die Debugversion Ihrer Modulimages mit den entsprechenden Containeroptionen.
 
 ## <a name="develop-your-module"></a>Entwickeln Ihres Moduls
 
@@ -92,6 +93,14 @@ Visual Studio Code verfügt über Unterstützung für Node.js. Unter [Gewusst wi
 ## <a name="launch-and-debug-module-code-without-container"></a>Starten und Debuggen von Modulcode ohne Container
 
 Das IoT Edge-Node.js-Modul hängt vom Geräte-SDK für Azure IoT-Node.js ab. Initialisieren Sie im Standardmodulcode ein **ModuleClient**-Objekt mit Umgebungseinstellungen und Eingabename. Das IoT Edge-Node.js-Modul benötigt nämlich die Umgebungseinstellungen zum Starten und Ausführen, und Sie müssen außerdem Nachrichten an die Eingabekanäle senden oder weiterleiten können. Ihr Node.js-Standardmodul enthält nur einen Eingabekanal, dessen Name **input1** lautet.
+
+### <a name="setup-iot-edge-simulator-for-iot-edge-solution"></a>Einrichten des IoT Edge-Simulators für IoT Edge-Projektmappe
+
+Auf dem Entwicklungscomputer brauchen Sie zum Ausführen der IoT Edge-Projektmappe nicht den IoT Edge-Sicherheits-Daemon zu installieren, sondern können den IoT Edge-Simulator starten. 
+
+1. Klicken Sie im Geräte-Explorer auf der linken Seite mit der rechten Maustaste auf die IoT Edge-Geräte-ID, und wählen Sie **IoT Edge-Simulator einrichten** aus, um den Simulator mit der Verbindungszeichenfolge des Geräts zu starten.
+
+2. Im integrierten Terminal können Sie sehen, dass der IoT Edge-Simulator erfolgreich eingerichtet wurde.
 
 ### <a name="setup-iot-edge-simulator-for-single-module-app"></a>Einrichten des IoT Edge-Simulators für eine Einzelmodul-App
 
@@ -152,12 +161,7 @@ Auf dem Entwicklungscomputer brauchen Sie zum Ausführen der IoT Edge-Projektmap
 
 ### <a name="build-and-run-container-for-debugging-and-debug-in-attach-mode"></a>Erstellen und Ausführen eines Containers zum Debuggen und Debuggen im Modus „Anfügen“
 
-1. Wechseln Sie in Visual Studio Code zu der Datei `deployment.template.json`. Aktualisieren Sie Ihre Modulimage-URL, indem Sie am Ende **.debug** hinzufügen.
-
-2. Ersetzen Sie „createOptions“ für das Node.js-Modul in **deployment.template.json** durch den unten angegebenen Code, und speichern Sie die Datei: 
-    ```json
-    "createOptions": "{\"ExposedPorts\":{\"9229/tcp\":{}},\"HostConfig\":{\"PortBindings\":{\"9229/tcp\":[{\"HostPort\":\"9229\"}]}}}"
-    ```
+1. Wechseln Sie in Visual Studio Code zu der Datei `deployment.debug.template.json`. Klicken Sie im Kontextmenü auf **IoT Edge-Lösung im Simulator erstellen und ausführen**. Im gleichen Fenster werden die Protokolle aller Modulcontainer angezeigt. Sie können auch zu Docker-Explorer navigieren, um den Containerstatus zu beobachten.
 
 3. Navigieren Sie zur VS Code-Debugansicht. Wählen Sie die Debugkonfigurationsdatei für Ihr Modul aus. Der Name der Debugoption sollte ähnlich wie **ModuleName Remote Debug (Node.js)** oder **ModuleName Remote Debug (Node.js in Windows Container)** lauten. Dies ist abhängig von Ihrem Containertyp auf dem Entwicklungscomputer.
 

@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/22/2017
 ms.author: maxluk
-ms.openlocfilehash: c3bdad6f1c199dda867370126eb7dcf5c296a12d
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 853bf9cfce458e6f112101b1382dd5bfd5df202d
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51230426"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52499109"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>Kapazitätsplanung für HDInsight-Cluster
 
@@ -61,7 +61,7 @@ Für einen Cluster mit 48 Knoten sollten Sie 4 bis 8 Speicherkonten verwenden. E
 
 ## <a name="choose-a-cluster-type"></a>Auswahl eines Clustertyps
 
-Der Clustertyp, z.B. Hadoop, Storm, Kafka oder Spark, bestimmt die Workload, zu deren Ausführung Ihr HDInsight-Cluster konfiguriert ist. Eine detaillierte Beschreibung der verfügbaren Clustertypen finden Sie unter [Einführung in Azure HDInsight](hadoop/apache-hadoop-introduction.md#cluster-types-in-hdinsight). Jeder Clustertyp verfügt über eine bestimmte Bereitstellungstopologie, die Anforderungen an die Größe und Anzahl der Knoten enthält.
+Der Clustertyp bestimmt die Workload, für die Ihr HDInsight-Cluster konfiguriert ist, z.B. [Apache Hadoop](https://hadoop.apache.org/), [Apache Storm](https://storm.apache.org/), [Apache Kafka](https://kafka.apache.org/) oder [Apache Spark](https://spark.apache.org/). Eine detaillierte Beschreibung der verfügbaren Clustertypen finden Sie unter [Einführung in Azure HDInsight](hadoop/apache-hadoop-introduction.md#cluster-types-in-hdinsight). Jeder Clustertyp verfügt über eine bestimmte Bereitstellungstopologie, die Anforderungen an die Größe und Anzahl der Knoten enthält.
 
 ## <a name="choose-the-vm-size-and-type"></a>Auswahl von Größe und Typ des virtuellen Computers
 
@@ -79,7 +79,7 @@ Größe und Typ des virtuellen Computers richten sich nach CPU-Verarbeitungsleis
 
 ## <a name="choose-the-cluster-scale"></a>Auswahl der Clusterskalierung
 
-Die Skalierung eines Clusters wird durch die Menge seiner VM-Knoten bestimmt. Für alle Clustertypen gibt es Knotentypen mit bestimmter Skalierung, und Knotentypen, die horizontales Hochskalieren unterstützen. Beispielsweise könnte ein Cluster genau drei ZooKeeper-Knoten oder zwei Hauptknoten erfordern. Workerknoten, die eine verteilte Datenverarbeitung praktizieren, können vom horizontalen Hochskalieren durch das Hinzufügen zusätzlicher Workerknoten profitieren.
+Die Skalierung eines Clusters wird durch die Menge seiner VM-Knoten bestimmt. Für alle Clustertypen gibt es Knotentypen mit bestimmter Skalierung, und Knotentypen, die horizontales Hochskalieren unterstützen. Beispielsweise könnte ein Cluster genau drei [Apache ZooKeeper](https://zookeeper.apache.org/)-Knoten oder zwei Hauptknoten erfordern. Workerknoten, die eine verteilte Datenverarbeitung praktizieren, können vom horizontalen Hochskalieren durch das Hinzufügen zusätzlicher Workerknoten profitieren.
 
 Je nach Clustertyp kann durch zusätzliche Workerknoten die Rechenkapazität (z.B. durch weitere Kerne) heraufgesetzt werden, damit jedoch auch der Gesamtbedarf an Arbeitsspeicher zur Unterstützung der In-Memory-Speicherung verarbeiteter Daten für den gesamten Cluster steigen. Wie bei der Wahl von VM-Größe und -Typ gilt für die richtige Clusterskalierung, dass sie in der Regel mit simulierten Workloads oder Testabfragen empirisch ermittelt wird.
 
@@ -90,7 +90,7 @@ Sie können Ihren Cluster für Spitzenlastanforderungen horizontal hochskalieren
 Die Lebensdauer des Clusters wird Ihnen in Rechnung gestellt. Wenn Sie Ihren Cluster nur zu bestimmten Zeiten betreiben müssen, können Sie [mithilfe von Azure Data Factory bedarfsgesteuerte Cluster erstellen](hdinsight-hadoop-create-linux-clusters-adf.md). Sie können auch PowerShell-Skripts erstellen, die Ihren Cluster bereitstellen und löschen, und diese Skripts mit [Azure Automation](https://azure.microsoft.com/services/automation/) planen.
 
 > [!NOTE]
-> Wenn ein Cluster gelöscht wird, wird sein standardmäßiger Hive-Metastore ebenfalls gelöscht. Um den Metastore für die nächste Clusterneuerstellung beizubehalten, verwenden Sie einen externen Metadatenspeicher wie Azure Database oder Oozie.
+> Wenn ein Cluster gelöscht wird, wird sein standardmäßiger Hive-Metastore ebenfalls gelöscht. Um den Metastore für die nächste Clusterneuerstellung beizubehalten, verwenden Sie einen externen Metadatenspeicher, z.B. Azure Database oder [Apache Oozie](https://oozie.apache.org/).
 <!-- see [Using external metadata stores](hdinsight-using-external-metadata-stores.md). -->
 
 ### <a name="isolate-cluster-job-errors"></a>Isolieren von Clusterauftragsfehlern
@@ -109,5 +109,5 @@ Es gibt jedoch einige feste Kontingentbeschränkungen, z.B. kann ein einzelnes A
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Einrichten von Clustern in HDInsight mit Hadoop, Spark, Kafka usw.:](hdinsight-hadoop-provision-linux-clusters.md) Erfahren Sie, wie Sie Cluster in HDInsight mit Hadoop, Spark, Kafka, Interactive Hive, HBase, ML Services oder Storm einrichten und konfigurieren.
+* [Einrichten von Clustern in HDInsight mit Apache Hadoop, Spark, Kafka usw.](hdinsight-hadoop-provision-linux-clusters.md): Erfahren Sie, wie Sie Cluster in HDInsight mit Apache Hadoop, Spark, Kafka, Interactive Hive, HBase, ML Services oder Storm einrichten und konfigurieren.
 * [Monitor cluster performance](hdinsight-key-scenarios-to-monitor.md) (Überwachen der Leistung des Clusters): Lernen Sie wichtige Szenarien zur Überwachung des HDInsight-Clusters kennen, die sich auf die Kapazität des Clusters auswirken können.

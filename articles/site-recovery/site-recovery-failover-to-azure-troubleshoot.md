@@ -1,18 +1,25 @@
 ---
-title: Beheben von Problemen bei einem Failover auf Azure | Microsoft-Dokumentation
-description: In diesem Artikel wird beschrieben, wie Sie allgemeine Probleme beim Failover auf Azure mit Azure Site Recovery behandeln.
+title: Beheben von Problemen bei einem Failover nach Azure | Microsoft-Dokumentation
+description: Dieser Artikel beschreibt Möglichkeiten zum Beheben allgemeiner Probleme beim Failover nach Azure.
+services: site-recovery
+documentationcenter: ''
 author: ponatara
 manager: abhemraj
+editor: ''
+ms.assetid: ''
 ms.service: site-recovery
+ms.devlang: na
 ms.topic: article
-ms.date: 09/11/2018
-ms.author: ponatara
-ms.openlocfilehash: 420d061b34734c7b5997f5cdd58fe7faaee9cb82
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.tgt_pltfrm: na
+ms.workload: storage-backup-recovery
+ms.date: 11/27/2018
+ms.author: mayg
+ms.openlocfilehash: 1e7486dc646843c473cfb355445e194893934a1a
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51236755"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52447145"
 ---
 # <a name="troubleshoot-errors-when-failing-over-a-virtual-machine-to-azure"></a>Beheben von Problemen beim Ausführen eines Failovers eines virtuellen Computers nach Azure
 
@@ -22,7 +29,7 @@ Bei einem Failover eines virtuellen Computers nach Azure tritt eventuell einer d
 
 Site Recovery konnte einen virtuellen Computer, für den ein Failover ausgeführt wurde, nicht in Azure erstellen. Dies kann aus einem der folgenden Gründe auftreten:
 
-* Das verfügbare Kontingent reicht nicht zum Erstellen des virtuellen Computers: Sie können das verfügbare Kontingent unter „Abonnement“ > „Nutzung + Kontingente“ prüfen. Sie können eine [neue Supportanfrage](https://aka.ms/getazuresupport) eröffnen, um das Kontingent zu erhöhen.
+* Das verfügbare Kontingent reicht nicht zum Erstellen des virtuellen Computers: Sie können das verfügbare Kontingent unter „Abonnement“ > „Nutzung + Kontingente“ prüfen. Sie können eine [neue Supportanfrage](http://aka.ms/getazuresupport) eröffnen, um das Kontingent zu erhöhen.
 
 * Sie versuchen, ein Failover für virtuelle Computer unterschiedlicher Größensätze in derselben Verfügbarkeitsgruppe durchzuführen. Verwenden Sie unbedingt dieselben Größen Familien für alle virtuellen Computer in derselben Verfügbarkeitsgruppe. Sie können die Größe ändern, indem Sie zu den Einstellungen für Compute und Netzwerk des virtuellen Computers navigieren. Wiederholen Sie das Failover anschließend.
 
@@ -30,7 +37,7 @@ Site Recovery konnte einen virtuellen Computer, für den ein Failover ausgeführ
 
 ## <a name="failover-failed-with-error-id-28092"></a>Fehler beim Failover mit der Fehler-ID 28092
 
-Site Recovery konnte für den virtuellen Computer, für den ein Failover ausgeführt wurde, keine Netzwerkschnittstelle erstellen. Stellen Sie sicher, dass Sie in Ihrem Abonnement über ein ausreichendes Kontingent zum Erstellen von Netzwerkschnittstellen verfügen. Sie können das verfügbare Kontingent unter „Abonnement“ > „Nutzung + Kontingente“ prüfen. Sie können eine [neue Supportanfrage](https://aka.ms/getazuresupport) eröffnen, um das Kontingent zu erhöhen. Wenn Sie über ein ausreichendes Kontingent verfügen, ist dies möglicherweise nur ein vorübergehendes Problem. Wiederholen Sie den Vorgang. Wenn das Problem auch nach Wiederholungen weiter besteht, hinterlassen Sie am Ende dieses Dokuments einen Kommentar.  
+Site Recovery konnte für den virtuellen Computer, für den ein Failover ausgeführt wurde, keine Netzwerkschnittstelle erstellen. Stellen Sie sicher, dass Sie in Ihrem Abonnement über ein ausreichendes Kontingent zum Erstellen von Netzwerkschnittstellen verfügen. Sie können das verfügbare Kontingent unter „Abonnement“ > „Nutzung + Kontingente“ prüfen. Sie können eine [neue Supportanfrage](http://aka.ms/getazuresupport) eröffnen, um das Kontingent zu erhöhen. Wenn Sie über ein ausreichendes Kontingent verfügen, ist dies möglicherweise nur ein vorübergehendes Problem. Wiederholen Sie den Vorgang. Wenn das Problem auch nach Wiederholungen weiter besteht, hinterlassen Sie am Ende dieses Dokuments einen Kommentar.  
 
 ## <a name="failover-failed-with-error-id-70038"></a>Fehler beim Failover mit der Fehler-ID 70038
 
@@ -38,7 +45,37 @@ Site Recovery konnte einen klassischen virtuellen Computer, für den ein Failove
 
 * Eine der Ressourcen – z.B. ein virtuelles Netzwerk, das für die Erstellung des virtuellen Computers erforderlich ist – ist nicht vorhanden. Erstellen Sie das virtuelle Netzwerk wie in den Einstellungen für Compute und Netzwerk des virtuellen Computers angegeben, oder ändern Sie die Einstellung in ein virtuelles Netzwerk, das bereits vorhanden ist. Wiederholen Sie dann das Failover.
 
-## <a name="unable-to-connectrdpssh---vm-connect-button-grayed-out"></a>Verbindung nicht möglich/RDP/SSH – Schaltfläche zum Verbinden des virtuellen Computers abgeblendet
+## <a name="failover-failed-with-error-id-170010"></a>Fehler beim Failover mit der Fehler-ID 170010
+
+Site Recovery konnte einen virtuellen Computer, für den ein Failover ausgeführt wurde, nicht in Azure erstellen. Dies kann passieren, wenn bei einer internen Hydration für den lokalen virtuellen Computer ein Fehler auftritt.
+
+Um einen Computer in Azure aufzurufen, erfordert die Azure-Umgebung, dass sich einige der Treiber im Boot-Startzustand befinden und Dienste wie DHCP im Autostartzustand sind. Durch die Hydration zum Zeitpunkt des Failover wird der Startuptyp von **atapi-, intelide-, storflt-, vmbus- und storvsc-Treibern** in Bootstart umgewandelt. Außerdem wird der Starttyp einiger Dienste wie DHCP in Autostart konvertiert. Aufgrund umgebungsspezifischer Probleme können bei dieser Aktivität Fehler auftreten. Um den Starttyp der Treiber manuell zu ändern, führen Sie die folgenden Schritte aus:
+
+1. Laden Sie das „no-hydration“- Skript [herunter](http://download.microsoft.com/download/5/D/6/5D60E67C-2B4F-4C51-B291-A97732F92369/Script-no-hydration.ps1), und führen Sie es folgendermaßen aus: Dieses Skript überprüft, ob für die VM eine Hydration erforderlich ist.
+
+    `.\Script-no-hydration.ps1`
+
+    Es wird folgendes Ergebnis ausgegeben, wenn eine Hydration erforderlich ist:
+
+        REGISTRY::HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\services\storvsc           start =  3 expected value =  0
+
+        This system doesn't meet no-hydration requirement.
+
+    Wenn für die VM keine Hydration erforderlich ist, gibt das Skript folgendes Ergebnis aus: „Für dieses System ist keine Hydration erforderlich“. In diesem Fall befinden sich alle Treiber und Dienste im von Azure geforderten Zustand und eine Hydration auf der VM ist nicht erforderlich.
+
+2. Führen Sie das „no-hydration-set“-Skript wie folgt aus, wenn die VM die Anforderung nicht erfüllt und eine Hydration erforderlich ist.
+
+    `.\Script-no-hydration.ps1 -set`
+    
+    Damit wird der Startuptyp der Treiber und konvertiert und das folgende Ergebnis ausgegeben:
+    
+        REGISTRY::HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\services\storvsc           start =  3 expected value =  0 
+
+        Updating registry:  REGISTRY::HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\services\storvsc   start =  0 
+
+        This system is now no-hydration compatible. 
+
+## <a name="unable-to-connectrdpssh-to-the-failed-over-virtual-machine-due-to-grayed-out-connect-button-on-the-virtual-machine"></a>Fehler beim Verbindungsaufbau über RDP/SSH mit dem virtuellen Computer (VM), für den ein Failover ausgeführt wurde, aufgrund ausgegrauter Schaltfläche „Verbinden“ auf der VM
 
 Wenn die Schaltfläche **Verbinden** auf dem fehlerhaften virtuellen Computer abgeblendet ist und Sie nicht über ExpressRoute oder Site-to-Site-VPN mit Azure verbunden sind, gehen Sie wie folgt vor:
 

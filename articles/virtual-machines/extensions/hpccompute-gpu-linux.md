@@ -12,36 +12,34 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 08/20/2018
+ms.date: 11/15/2018
 ms.author: roiyz
-ms.openlocfilehash: 307bdb5fa7a5d14a77c71d0ea40634a55d8507b6
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: e36390bbdc243237c97d605d4721fc1ad2cbe0ea
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42144366"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52498888"
 ---
 # <a name="nvidia-gpu-driver-extension-for-linux"></a>NVIDIA-GPU-Treibererweiterung für Linux
 
 ## <a name="overview"></a>Übersicht
 
-Diese Erweiterung installiert NVIDIA-GPU-Treiber auf Linux-VMs der N-Serie. Je nach VM-Familie installiert die Erweiterung CUDA- oder GRID-Treiber. Bei der Installation von NVIDIA Treibern mit dieser Erweiterung akzeptieren Sie die Bedingungen des NVIDIA-Endbenutzer-Lizenzvertrags und stimmen diesen zu. Während der Installation wird Ihr virtueller Computer möglicherweise neu gestartet, um die Treibereinrichtung abzuschließen.
+Diese Erweiterung installiert NVIDIA-GPU-Treiber auf Linux-VMs der N-Serie. Je nach VM-Familie installiert die Erweiterung CUDA- oder GRID-Treiber. Bei der Installation von NVIDIA Treibern mit dieser Erweiterung akzeptieren Sie die Bedingungen des [NVIDIA-Endbenutzer-Lizenzvertrags](https://go.microsoft.com/fwlink/?linkid=874330) und stimmen diesen zu. Während der Installation wird der virtuelle Computer möglicherweise neu gestartet, um die Treibereinrichtung abzuschließen.
 
 Es ist auch eine Erweiterung zum Installieren von NVIDIA-GPU-Treibern auf [Windows-VMs der N-Serie](hpccompute-gpu-windows.md) verfügbar.
-
-Die Bestimmungen des NVIDIA-Endbenutzer-Lizenzvertrags befinden sich hier: https://go.microsoft.com/fwlink/?linkid=874330
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 ### <a name="operating-system"></a>Betriebssystem
 
-Diese Erweiterung unterstützt die folgenden Betriebssysteme:
+Diese Erweiterung unterstützt die folgenden Betriebssystem-Distributionen, abhängig von der Treiberunterstützung für bestimmte BS-Versionen.
 
 | Distribution | Version |
 |---|---|
-| Linux: Ubuntu | 16.04 LTS |
-| Linux: Red Hat Enterprise Linux | 7.3, 7.4 |
-| Linux: CentOS | 7.3, 7.4 |
+| Linux: Ubuntu | 16.04 LTS, 18.04 LTS |
+| Linux: Red Hat Enterprise Linux | 7.3, 7.4, 7.5 |
+| Linux: CentOS | 7.3, 7.4, 7.5 |
 
 ### <a name="internet-connectivity"></a>Internetkonnektivität
 
@@ -63,7 +61,7 @@ Der folgende JSON-Code zeigt das Schema für die Erweiterung.
   "properties": {
     "publisher": "Microsoft.HpcCompute",
     "type": "NvidiaGpuDriverLinux",
-    "typeHandlerVersion": "1.1",
+    "typeHandlerVersion": "1.2",
     "autoUpgradeMinorVersion": true,
     "settings": {
     }
@@ -71,14 +69,24 @@ Der folgende JSON-Code zeigt das Schema für die Erweiterung.
 }
 ```
 
-### <a name="property-values"></a>Eigenschaftswerte
+### <a name="properties"></a>Eigenschaften
 
 | NAME | Wert/Beispiel | Datentyp |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
 | Herausgeber | Microsoft.HpcCompute | Zeichenfolge |
 | type | NvidiaGpuDriverLinux | Zeichenfolge |
-| typeHandlerVersion | 1.1 | int |
+| typeHandlerVersion | 1.2 | int |
+
+### <a name="settings"></a>Einstellungen
+
+Alle Einstellungen sind optional. Das Standardverhalten ist, den Kernel nicht zu aktualisieren, wenn dies für die Treiberinstallation nicht erforderlich ist, den neuesten unterstützten Treiber und das CUDA-Toolkit (falls zutreffend) zu installieren.
+
+| NAME | BESCHREIBUNG | Standardwert | Gültige Werte | Datentyp |
+| ---- | ---- | ---- | ---- | ---- |
+| updateOS | Aktualisieren des Kernel, auch wenn nicht für die Treiberinstallation erforderlich ist | false | true, false | boolean |
+| driverVersion | NV: GRID-Treiberversion<br> NC/ND: CUDA-Toolkitversion. Die neuesten Treiber für den ausgewählten CUDA werden automatisch installiert. | neueste | GRID: „410.71“, „390.75“, „390.57“, „390.42“<br> CUDA: „10.0.130“, „9.2.88“, „9.1.85“ | Zeichenfolge |
+| installCUDA | UDA-Toolkit installieren. Nur relevant für virtuelle Computer der NC-/ND-Serie. | true | true, false | boolean |
 
 
 ## <a name="deployment"></a>Bereitstellung
@@ -104,7 +112,7 @@ Im folgenden Beispiel wird davon ausgegangen, dass die Erweiterung in der VM-Res
   "properties": {
     "publisher": "Microsoft.HpcCompute",
     "type": "NvidiaGpuDriverLinux",
-    "typeHandlerVersion": "1.1",
+    "typeHandlerVersion": "1.2",
     "autoUpgradeMinorVersion": true,
     "settings": {
     }
@@ -122,12 +130,14 @@ Set-AzureRmVMExtension
     -Publisher "Microsoft.HpcCompute" `
     -ExtensionName "NvidiaGpuDriverLinux" `
     -ExtensionType "NvidiaGpuDriverLinux" `
-    -TypeHandlerVersion 1.1 `
+    -TypeHandlerVersion 1.2 `
     -SettingString '{ `
     }'
 ```
 
 ### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
+
+Im folgenden Beispiel wird das obige Beispiel für Azure Resource Manager und PowerShell gespiegelt, und außerdem werden benutzerdefinierte Einstellungen als Beispiel für die Installation von Nicht-Standard-Treibern hinzugefügt. Insbesondere aktualisiert es den BS-Kernel und installiert einen bestimmten CUDA-Toolkit-Versionstreiber.
 
 ```azurecli
 az vm extension set `
@@ -135,8 +145,10 @@ az vm extension set `
   --vm-name myVM `
   --name NvidiaGpuDriverLinux `
   --publisher Microsoft.HpcCompute `
-  --version 1.1 `
+  --version 1.2 `
   --settings '{ `
+    "updateOS": true, `
+    "driverVersion": "9.1.85", `
   }'
 ```
 
@@ -165,13 +177,12 @@ Die Ausgabe der Erweiterungsausführung wird in der folgenden Datei protokollier
 | Exitcode | Bedeutung | Mögliche Aktion |
 | :---: | --- | --- |
 | 0 | Vorgang erfolgreich |
-| 1 | Falsche Verwendung der Erweiterung. | Wenden Sie sich mit dem Ausgabeprotokoll zur Ausführung an den Support. |
-| 10 | Linux Integration Services für Hyper-V und Azure ist nicht verfügbar oder nicht installiert. | Überprüfen Sie die Ispci-Ausgabe. |
+| 1 | Falsche Verwendung der Erweiterung | Protokoll zur Ausführungsausgabe überprüfen |
+| 10 | Linux Integration Services für Hyper-V und Azure nicht verfügbar oder nicht installiert | Ispci-Ausgabe überprüfen |
 | 11 | NVIDIA-GPU kann bei dieser VM-Größe nicht gefunden werden. | Verwenden Sie eine [VM-Größe und ein Betriebssystem](../linux/n-series-driver-setup.md), die unterstützt werden. |
 | 12 | Imageangebot nicht unterstützt |
 | 13 | VM-Größe nicht unterstützt | Verwenden eines virtuellen Computers der N-Serie für die Bereitstellung |
-| 14 | Vorgang nicht erfolgreich | |
-| 21 | Fehler beim Update unter Ubuntu | Überprüfen Sie die Ausgabe von „sudo apt-get update“ |
+| 14 | Vorgang nicht erfolgreich | Protokoll zur Ausführungsausgabe überprüfen |
 
 
 ### <a name="support"></a>Support

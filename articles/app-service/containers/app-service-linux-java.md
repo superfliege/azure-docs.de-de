@@ -12,12 +12,12 @@ ms.devlang: java
 ms.topic: article
 ms.date: 08/29/2018
 ms.author: routlaw
-ms.openlocfilehash: a6752f9127a176eef9fd03e7ffddfa7450772def
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 8d15aeb92911a26a9a42a0449a24e8c0fee4467b
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51037660"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52497350"
 ---
 # <a name="java-developers-guide-for-app-service-on-linux"></a>Java-Entwicklerleitfaden für App Service unter Linux
 
@@ -28,6 +28,10 @@ Dieser Leitfaden enthält die wichtigsten Konzepte und Anweisungen für Java-Ent
 ## <a name="logging-and-debugging-apps"></a>Protokollieren und Debuggen von Apps
 
 Leistungsberichte, Datenverkehrsvisualisierungen und Integritätsprüfungen für die einzelnen Apps stehen über das Azure-Portal zur Verfügung. Weitere Informationen zum Zugriff auf diese Diagnosetools und zu deren Verwendung finden Sie unter [Übersicht über die Azure App Service-Diagnose](/azure/app-service/app-service-diagnostics).
+
+## <a name="application-performance-monitoring"></a>Überwachung der Anwendungsleistung
+
+Anleitungen zur Konfiguration von New Relic und AppDynamics mit Java-Anwendungen auf App Service unter Linux finden Sie unter [Tools zur Überwachung der Anwendungsleistung mit Java-Anwendungen auf Azure App Service unter Linux](how-to-java-apm-monitoring.md).
 
 ### <a name="ssh-console-access"></a>SSH-Konsolenzugriff 
 
@@ -124,7 +128,7 @@ Alternativ können Sie die App-Einstellung mit dem App Service-Maven-Plug-In kon
 </appSettings> 
 ```
 
-## <a name="secure-application"></a>Sichere Anwendung
+## <a name="secure-applications"></a>Sichere Anwendungen
 
 Für App Service für Linux ausgeführte Java-Anwendungen gelten dieselben [bewährten Sicherheitsmethoden](/azure/security/security-paas-applications-using-app-services) wie für andere Anwendungen. 
 
@@ -168,7 +172,7 @@ Für Datenquellen auf Anwendungsebene:
 
 1. Fügen Sie eine Datei `context.xml` hinzu, wenn diese in Ihrer Web-Anwendung nicht vorhanden ist, und fügen Sie ihr bei Projekterstellung das Verzeichnis `META-INF` Ihrer WAR-Datei hinzu.
 
-2. Fügen Sie in dieser Datei einen Pfadeintrag `Context` hinzu, um die Datenquelle mit einer JNDI-Adresse zu verknüpfen. Das 
+2. Fügen Sie in dieser Datei einen Pfadeintrag `Context` hinzu, um die Datenquelle mit einer JNDI-Adresse zu verknüpfen.
 
     ```xml
     <Context>
@@ -192,7 +196,7 @@ Für Datenquellen auf Anwendungsebene:
 
 Für gemeinsam verwendete Ressourcen auf Serverebene:
 
-1. Kopieren Sie den Inhalt von `/usr/local/tomcat/conf` über SSH in `/home/tomcat` in Ihrer Linux-Instanz von App Service, wenn dort noch keine Konfiguration vorliegt.
+1. Kopieren Sie den Inhalt von `/usr/local/tomcat/conf` über SSH in `/home/tomcat/conf` in Ihrer Linux-Instanz von App Service, wenn dort noch keine Konfiguration vorliegt.
 
 2. Fügen Sie den Kontext Ihrer Datei `server.xml` hinzu.
 
@@ -231,7 +235,7 @@ Für gemeinsam verwendete Ressourcen auf Serverebene:
 
     3. Stellen Sie mit Ihrem SFTP-Client eine Verbindung mit dem lokalen Tunnelport her, und laden Sie die Dateien in den Ordner `/home/tomcat/lib` hoch.
 
-5. Starten Sie die App Service-Linux-Anwendung neu. Tomcat setzt `CATALINA_HOME` auf `/home/tomcat` zurück und verwendet die aktualisierte Konfiguration und die entsprechenden Klassen.
+5. Starten Sie die App Service-Linux-Anwendung neu. Tomcat setzt `CATALINA_HOME` auf `/home/tomcat/conf` zurück und verwendet die aktualisierte Konfiguration und die entsprechenden Klassen.
 
 ## <a name="docker-containers"></a>Docker-Container
 

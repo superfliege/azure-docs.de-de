@@ -10,14 +10,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/17/2018
+ms.date: 11/28/2018
 ms.author: jingwang
-ms.openlocfilehash: db0bc0cb64c0b6d7df9319c8d2c5850a27e767a1
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: 892fa32f73cec86e5d10a0d67da3d80bedd539aa
+ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48249212"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52619860"
 ---
 # <a name="azure-data-factory-service-identity"></a>Azure Data Factory-Dienstidentität
 
@@ -30,7 +30,8 @@ Wenn Sie eine Data Factory erstellen, kann beim Erstellen der Factory auch eine 
 Die Data Factory-Dienstidentität profitiert von den folgenden Features:
 
 - [Speichern von Anmeldeinformationen in Azure Key Vault](store-credentials-in-key-vault.md): In diesem Fall wird die Data Factory-Dienstidentität für die Azure Key Vault-Authentifizierung verwendet.
-- Connectors, wie z.B. [Azure Blob Storage](connector-azure-blob-storage.md), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md), [Azure SQL-Datenbank](connector-azure-sql-database.md) und [Azure SQL Data Warehouse](connector-azure-sql-data-warehouse.md).
+- Connectors, wie z.B. [Azure Blob Storage](connector-azure-blob-storage.md), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md), [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md), [Azure SQL-Datenbank](connector-azure-sql-database.md) und [Azure SQL Data Warehouse](connector-azure-sql-data-warehouse.md).
+- [Webaktivität](control-flow-web-activity.md).
 
 ## <a name="generate-service-identity"></a>Erstellen der Dienstidentität
 
@@ -44,6 +45,7 @@ Sollte Ihrer Data Factory nach dem Schritt [Abrufen einer Dienstidentität](#ret
 
 - [Erstellen der Dienstidentität mit PowerShell](#generate-service-identity-using-powershell)
 - [Erstellen der Dienstidentität mit REST-API](#generate-service-identity-using-rest-api)
+- [Erstellen der Dienstidentität mithilfe einer Azure Resource Manager-Vorlage](#generate-service-identity-using-resource-management-template)
 - [Erstellen der Dienstidentität mit SDK](#generate-service-identity-using-sdk)
 
 >[!NOTE]
@@ -92,7 +94,7 @@ PATCH https://management.azure.com/subscriptions/<subsID>/resourceGroups/<resour
 
 ```json
 {
-    "name": "ADFV2DemoFactory",
+    "name": "<dataFactoryName>",
     "tags": {},
     "properties": {
         "provisioningState": "Succeeded",
@@ -107,7 +109,27 @@ PATCH https://management.azure.com/subscriptions/<subsID>/resourceGroups/<resour
     },
     "id": "/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.DataFactory/factories/ADFV2DemoFactory",
     "type": "Microsoft.DataFactory/factories",
-    "location": "EastUS"
+    "location": "<region>"
+}
+```
+
+### <a name="generate-service-identity-using-an-azure-resource-manager-template"></a>Erstellen der Dienstidentität mithilfe einer Azure Resource Manager-Vorlage
+
+**Vorlage**: Fügen Sie Folgendes hinzu: "identity": { "type": "SystemAssigned" }.
+
+```json
+{
+    "contentVersion": "1.0.0.0",
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "resources": [{
+        "name": "<dataFactoryName>",
+        "apiVersion": "2018-06-01",
+        "type": "Microsoft.DataFactory/factories",
+        "location": "<region>",
+        "identity": {
+            "type": "SystemAssigned"
+        }
+    }]
 }
 ```
 

@@ -9,16 +9,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: ashishth
-ms.openlocfilehash: ff194ef7f5ae609eba5334eb5c66db02d660ab08
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 8a67327497c96cba570d2ddb8c525bf5a60be790
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43049630"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52308216"
 ---
-# <a name="phoenix-performance-best-practices"></a>Bewährte Methoden für Leistung – Phoenix
+# <a name="apache-phoenix-performance-best-practices"></a>Bewährte Methoden für Leistung – Apache Phoenix
 
-Der wichtigste Leistungsaspekt von Phoenix ist die Optimierung der zugrunde liegenden HBase-Lösung. Phoenix erstellt auf der Grundlage von HBase ein relationales Datenmodell, das SQL-Abfragen in HBase-Vorgänge (beispielsweise Scans) konvertiert. Die Leistung von Phoenix wird durch das Design Ihres Tabellenschemas, die gewählten Felder in Ihrem Primärschlüssel und deren Reihenfolge sowie durch den Einsatz von Indizes beeinflusst.
+Der wichtigste Leistungsaspekt von [Apache Phoenix](https://phoenix.apache.org/) ist die Optimierung der zugrunde liegenden [Apache HBase](http://hbase.apache.org/)-Lösung. Phoenix erstellt auf der Grundlage von HBase ein relationales Datenmodell, das SQL-Abfragen in HBase-Vorgänge (beispielsweise Scans) konvertiert. Die Leistung von Phoenix wird durch das Design Ihres Tabellenschemas, die gewählten Felder in Ihrem Primärschlüssel und deren Reihenfolge sowie durch den Einsatz von Indizes beeinflusst.
 
 ## <a name="table-schema-design"></a>Design des Tabellenschemas
 
@@ -229,5 +229,5 @@ Ausführliche Informationen hierzu und zu anderen Optionen finden Sie unter [Pho
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Optimierungsleitfaden für Phoenix](https://phoenix.apache.org/tuning_guide.html)
+* [Optimierungsleitfaden für Apache Phoenix](https://phoenix.apache.org/tuning_guide.html)
 * [Secondary Indexing](http://phoenix.apache.org/secondary_indexing.html) (Sekundäre Indizes)

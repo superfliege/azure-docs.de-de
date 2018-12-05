@@ -12,12 +12,12 @@ ms.author: v-daljep
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 09/20/2018
-ms.openlocfilehash: 8f66c95202e0ccdef86f9630f7a98c20023a8955
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: b903d0ddbccac8fe4fa8b251d409bd8addebb435
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50087745"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52425998"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Protokollierung von Metriken und Diagnosen für Azure SQL-Datenbank 
 
@@ -101,7 +101,7 @@ Um das Streaming von Diagnosetelemetriedaten für **Azure SQL-Datenbank** zu akt
    ![Konfigurieren der Diagnose für SQL-Datenbank](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-sql-selection.png)
 
 > [!NOTE]
-> Das Überwachungsprotokoll kann nicht über die Einstellungen für die Datenbankdiagnose aktiviert werden. Informationen zum Aktivieren des Streamings von Überwachungsprotokollen finden Sie unter [Einrichten der Überwachung für Ihre Datenbank](sql-database-auditing.md#subheading-2) sowie unter [SQL-Überwachungsprotokolle in Azure Log Analytics und Azure Event Hubs](https://blogs.msdn.microsoft.com/sqlsecurity/2018/09/13/sql-audit-logs-in-azure-log-analytics-and-azure-event-hubs/).
+> Sicherheitsüberwachungsprotokolle können nicht über die Einstellungen für die Datenbankdiagnose aktiviert werden. Informationen zum Aktivieren des Streamings von Überwachungsprotokollen finden Sie unter [Einrichten der Überwachung für Ihre Datenbank](sql-database-auditing.md#subheading-2) sowie unter [SQL-Überwachungsprotokolle in Azure Log Analytics und Azure Event Hubs](https://blogs.msdn.microsoft.com/sqlsecurity/2018/09/13/sql-audit-logs-in-azure-log-analytics-and-azure-event-hubs/).
 >
 
 > [!TIP]
@@ -182,7 +182,7 @@ Um das Streaming von Diagnosetelemetriedaten für **Ressourcen von verwalteten I
 2. Klicken Sie auf **Diagnoseeinstellungen**.
 3. Klicken Sie auf **Diagnose aktivieren**, wenn noch keine Einstellungen vorgenommen wurden, oder auf **Einstellung bearbeiten**, um eine vorhandene Einstellung zu bearbeiten.
 
-   ![Aktivieren der Diagnose für verwaltete Instanzen](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-mi-enable.png)
+   ![Aktivieren der Diagnose für verwaltete Instanzen](./media/sql-database-metrics-diag-logging/diagnostics-settings-container-mi-enable.png)
 
 4. Geben Sie den Namen für die Einstellung für die eigene Verwendung ein.
 5. Wählen Sie aus, von welcher Ressource Diagnosedaten aus dem Pool für elastische Datenbanken gestreamt werden sollen: **In Speicherkonto archivieren**, **An einen Event Hub streamen** oder **An Log Analytics senden**.
@@ -190,7 +190,7 @@ Um das Streaming von Diagnosetelemetriedaten für **Ressourcen von verwalteten I
 7. Aktivieren Sie das Kontrollkästchen für Instanzdiagnosetelemetriedaten. **ResourceUsageStats**
 8. Klicken Sie unten auf der Seite auf **Speichern**.
 
-   ![Konfigurieren der Diagnose für verwaltete Instanzen](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-mi-selection.png)
+   ![Konfigurieren der Diagnose für verwaltete Instanzen](./media/sql-database-metrics-diag-logging/diagnostics-settings-container-mi-selection.png)
 
 > [!TIP]
 > Wiederholen Sie die oben genannten Schritte für jede verwaltete Instanz, die überwacht werden soll.
@@ -383,7 +383,7 @@ Weitere Informationen zum [Herunterladen von Metrik- und Diagnoseprotokollen aus
 
 ## <a name="data-retention-policy-and-pricing"></a>Datenaufbewahrungsrichtlinie und Preisübersicht
 
-Wenn Sie Event Hubs oder ein Speicherkonto auswählen, können Sie eine Aufbewahrungsrichtlinie angeben. Diese Richtlinie löscht Daten, die älter als ein ausgewählter Zeitraums sind. Wenn Sie Log Analytics angeben, hängt die Aufbewahrungsrichtlinie vom ausgewählten Tarif ab. Für die Nutzung von Diagnosetelemetriedaten über die kostenlosen Einheiten hinaus, die für die Datenerfassung jeden Monat zugeteilt werden, fallen Gebühren an. Die kostenlosen Einheiten der bereitgestellten Datenerfassung ermöglicht die kostenlose Überwachung von mehreren Datenbanken pro Monat. Beachten Sie, dass eine größere Anzahl aktiver Datenbanken mit umfangreicheren Workloads mehr Daten im Vergleich zu Datenbanken im Leerlauf erfasst. Weitere Informationen finden Sie unter [Log Analytics-Preise](https://azure.microsoft.com/pricing/details/monitor/). 
+Wenn Sie Event Hubs oder ein Speicherkonto auswählen, können Sie eine Aufbewahrungsrichtlinie angeben. Diese Richtlinie löscht Daten, die älter als ein ausgewählter Zeitraums sind. Wenn Sie Log Analytics angeben, hängt die Aufbewahrungsrichtlinie vom ausgewählten Tarif ab. Für die Nutzung von Diagnosetelemetriedaten über die kostenlosen Einheiten hinaus, die für die Datenerfassung jeden Monat zugeteilt werden, fallen Gebühren an. Die kostenlosen Einheiten der bereitgestellten Datenerfassung ermöglicht die kostenlose Überwachung von mehreren Datenbanken pro Monat. Beachten Sie, dass bei einer größeren Anzahl aktiver Datenbanken mit umfangreicheren Workloads mehr Daten als bei Datenbanken im Leerlauf erfasst werden. Weitere Informationen finden Sie unter [Log Analytics-Preise](https://azure.microsoft.com/pricing/details/monitor/). 
 
 Wenn Sie die Azure SQL-Analyse verwenden, können Sie problemlos Ihre Datenerfassungsnutzung in der Lösung überwachen, indem Sie den OMS-Arbeitsbereich im Navigationsmenü der Azure SQL-Analyse auswählen und dann „Nutzungs- und geschätzte Kosten“ auswählen.
 

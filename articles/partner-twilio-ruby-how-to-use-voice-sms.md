@@ -14,12 +14,12 @@ ms.devlang: ruby
 ms.topic: article
 ms.date: 11/25/2014
 ms.author: MicrosoftHelp@twilio.com
-ms.openlocfilehash: 41b5383dd319f2cb6fad4316e963f86dd7a4bc61
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: 40b633c4e51a34e6640a9557be49bbe30543daf5
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39036607"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52426434"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-ruby"></a>Verwenden von Twilio für Telefonie- und SMS-Funktionen in Ruby
 Dieser Leitfaden veranschaulicht die Ausführung allgemeiner Programmierungsaufgaben mit dem Twilio-API-Dienst in Azure. Die Szenarien behandeln das Tätigen eines Telefonanrufs und das Senden einer Kurznachricht (SMS). Weitere Informationen zu Twilio und zur Verwendung von Telefonie und SMS in Ihren Anwendungen finden Sie im Abschnitt [Nächste Schritte](#NextSteps) .
@@ -30,7 +30,7 @@ Twilio ist eine Webservice-API für Telefonie, mit deren Hilfe Sie Ihre existier
 **Twilio Voice** ermöglicht Anwendungen das Tätigen und Entgegennehmen von Telefonanrufen. **Twilio SMS** ermöglicht Ihren Anwendungen das Senden und Empfangen von SMS-Nachrichten. **Twilio Client** ermöglicht Sprachkommunikation in Ihren Anwendungen über existierende Internetverbindungen, inklusive mobiler Verbindungen.
 
 ## <a id="Pricing"></a>Twilio-Preise und -Sonderangebote
-Informationen über die Twilio-Preise finden Sie unter [Twilio-Preise][twilio_pricing]. Azure-Kunden erhalten ein [Sonderangebot][special_offer]: ein Gratis-Guthaben von 1000 SMS oder 1000 eingehenden Sprachminuten. Besuchen Sie [http://ahoy.twilio.com/azure][special_offer], um sich für dieses Angebot zu registrieren und weitere Informationen zu erhalten.  
+Informationen über die Twilio-Preise finden Sie unter [Twilio-Preise][twilio_pricing]. Azure-Kunden erhalten ein [Sonderangebot][special_offer]: ein Gratis-Guthaben von 1000 SMS oder 1000 eingehenden Sprachminuten. Besuchen Sie [https://ahoy.twilio.com/azure][special_offer], um sich für dieses Angebot zu registrieren und weitere Informationen zu erhalten.  
 
 ## <a id="Concepts"></a>Konzepte
 Die Twilio-API ist eine RESTful-API, die Telefonie- und SMS-Funktionen für Anwendungen bereitstellt. Clientbibliotheken stehen in mehreren Sprachen zur Verfügung – eine Liste finden Sie unter [Twilio-API-Bibliotheken][twilio_libraries].
@@ -146,7 +146,7 @@ Wenn Sie `http://yourdomain.cloudapp.net/make_call` in einem Browser öffnen, wi
 
 Der dritte Parameter (`url`) ist die URL, die Twilio anfordert, um Anweisungen darüber zu erhalten, was nach Herstellung der Rufverbindung zu tun ist. In diesem Fall wird eine URL (`http://yourdomain.cloudapp.net`) eingerichtet, die ein einfaches TwiML-Dokument zurückgibt und das Verb `<Say>` verwendet, um Text in Sprache umzuwandeln und zur angerufenen Person „Hello Monkey“ zu sagen.
 
-## <a id="howto_recieve_sms"></a>Empfangen einer SMS-Nachricht
+## <a id="howto_receive_sms"></a>Empfangen einer SMS-Nachricht
 Im vorhergehenden Beispiel haben wir einen **ausgehenden** Telefonanruf initiiert. Lassen Sie uns nun die Telefonnummer verwenden, die wir bei der Anmeldung von Twilio erhalten haben, um eine **eingehende** SMS-Nachricht zu verarbeiten.
 
 Melden Sie sich zuerst bei Ihrem [Twilio-Dashboard][twilio_account] an. Klicken Sie auf der oberen Navigationsleiste auf "Nummern" und anschließend auf die Twilio-Nummer, die Sie erhalten haben. Sie sehen zwei URLs, die Sie konfigurieren können: eine Sprachanfragen-URL und eine SMS-Anfragen-URL. Dies sind die URLs, die Twilio anruft, wenn ein Telefonanruf an Ihre Nummer erfolgt oder eine SMS-Nachricht an Ihre Nummer gesendet wird. Die URLs sind auch als "Webhooks" bekannt.
@@ -179,19 +179,19 @@ Nachdem Sie nun mit den Grundlagen des Twilio-Dienstes vertraut sind, finden Sie
 
 
 
-[twilio_pricing]: http://www.twilio.com/pricing
-[special_offer]: http://ahoy.twilio.com/azure
+[twilio_pricing]: https://www.twilio.com/pricing
+[special_offer]: https://ahoy.twilio.com/azure
 [twilio_libraries]: https://www.twilio.com/docs/libraries
-[twiml]: http://www.twilio.com/docs/api/twiml
-[twilio_api]: http://www.twilio.com/api
+[twiml]: https://www.twilio.com/docs/api/twiml
+[twilio_api]: https://www.twilio.com/api
 [try_twilio]: https://www.twilio.com/try-twilio
 [twilio_account]:  https://www.twilio.com/user/account
 [verify_phone]: https://www.twilio.com/user/account/phone-numbers/verified#
-[twilio_api_documentation]: http://www.twilio.com/api
-[twilio_security_guidelines]: http://www.twilio.com/docs/security
-[twilio_howtos]: http://www.twilio.com/docs/howto
+[twilio_api_documentation]: https://www.twilio.com/api
+[twilio_security_guidelines]: https://www.twilio.com/docs/security
+[twilio_howtos]: https://www.twilio.com/docs/howto
 [twilio_on_github]: https://github.com/twilio
-[twilio_support]: http://www.twilio.com/help/contact
-[twilio_quickstarts]: http://www.twilio.com/docs/quickstart
+[twilio_support]: https://www.twilio.com/help/contact
+[twilio_quickstarts]: https://www.twilio.com/docs/quickstart
 [sinatra]: http://www.sinatrarb.com/
 [azure_vm_setup]: https://docs.microsoft.com/azure/virtual-machines/linux/classic/ruby-rails-web-app

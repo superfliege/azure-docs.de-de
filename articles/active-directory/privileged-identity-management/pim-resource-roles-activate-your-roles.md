@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: pim
-ms.date: 08/31/2018
+ms.date: 11/21/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 59bce2c61db5838bb21a29757d4e354311ecffd5
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 249680f60b3c2ee10ff3f3f1eb39d4bf74e57cd9
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43666246"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52497324"
 ---
 # <a name="activate-my-azure-resource-roles-in-pim"></a>Aktivieren von Azure-Ressourcenrollen in PIM
 
@@ -67,9 +67,25 @@ Wenn Sie eine Azure-Ressourcenrolle übernehmen müssen, können Sie in PIM übe
 
 1. Klicken Sie auf **Aktivieren**.
 
-    Wenn für die Rolle keine Genehmigung erforderlich ist, wird sie jetzt aktiviert und in der Liste der aktiven Rollen angezeigt. Wenn für die Aktivierung der [Rolle eine Genehmigung erforderlich ist](pim-resource-roles-approval-workflow.md), werden Sie über eine Benachrichtigung in der oberen rechten Ecke des Browsers darüber informiert, dass die Genehmigung der Anforderung aussteht.
+    Wenn für die Rolle keine Genehmigung erforderlich ist, wird sie aktiviert und der Liste der aktiven Rollen hinzugefügt. Wenn Sie die Rolle sofort verwenden möchten, führen Sie die Schritte im nächsten Abschnitt aus.
+
+    Wenn für die Aktivierung der [Rolle eine Genehmigung erforderlich ist](pim-resource-roles-approval-workflow.md), werden Sie über eine Benachrichtigung in der oberen rechten Ecke des Browsers darüber informiert, dass die Genehmigung der Anforderung aussteht.
 
     ![Benachrichtigung über ausstehende Anforderung](./media/pim-resource-roles-activate-your-roles/resources-my-roles-activate-notification.png)
+
+## <a name="use-a-role-immediately-after-activation"></a>Verwenden einer Rolle sofort nach der Aktivierung
+
+Nach der Aktivierung einer Rolle in PIM dauert es mindestens zehn Minuten, bevor Sie auf das gewünschte Verwaltungsportal zugreifen oder Funktionen für eine spezifische Verwaltungsworkload ausführen können. Um ein Update Ihrer Berechtigungen zu erzwingen, verwenden Sie die Seite **Anwendungszugriff** wie in den folgenden Schritten beschrieben.
+
+1. Öffnen Sie Azure AD Privileged Identity Management.
+
+1. Klicken Sie auf die Seite **Anwendungszugriff**.
+
+    ![PIM-Anwendungszugriff – Screenshot](./media/pim-resource-roles-activate-your-roles/pim-application-access.png)
+
+1. Klicken Sie auf den Link **Azure-Ressourcen**, um das Portal erneut auf der Seite **Alle Ressourcen** zu öffnen.
+
+    Wenn Sie auf diesen Link klicken, wird Ihr aktuelles Token ungültig. Gleichzeitig wird erzwungen, dass das Azure-Portal ein neues Token abruft, das Ihre aktualisierten Berechtigungen enthält.
 
 ## <a name="view-the-status-of-your-requests"></a>Anzeigen des Status Ihrer Anforderungen
 
@@ -82,20 +98,6 @@ Sie können den Status Ihrer ausstehenden Aktivierungsanforderungen anzeigen.
     ![Azure AD-Verzeichnisrollen und Azure-Ressourcenrollen: Liste „Meine Anforderungen“](./media/pim-resource-roles-activate-your-roles/resources-my-requests.png)
 
 1. Scrollen Sie nach rechts, um die Spalte **Anforderungsstatus** anzuzeigen.
-
-## <a name="use-a-role-immediately-after-activation"></a>Verwenden einer Rolle sofort nach der Aktivierung
-
-Aufgrund der Zwischenspeicherung werden Aktivierungen im Azure-Portal ohne Aktualisierung nicht sofort wirksam. Wenn Sie mögliche Verzögerungen nach dem Aktivieren einer Rolle vermeiden möchten, können Sie die Seite **Anwendungszugriff** im Portal verwenden. Anwendungen, auf die über diese Seite zugegriffen wird, überprüfen sofort auf neue Rollenzuweisungen.
-
-1. Öffnen Sie Azure AD Privileged Identity Management.
-
-1. Klicken Sie auf die Seite **Anwendungszugriff**.
-
-    ![PIM-Anwendungszugriff – Screenshot](./media/pim-resource-roles-activate-your-roles/pim-application-access.png)
-
-1. Klicken Sie auf **Azure-Ressourcen**, um das Portal erneut auf der Seite **Alle Ressourcen** zu öffnen.
-
-    Wenn Sie auf diesen Link klicken, erzwingen Sie eine Aktualisierung, und es wird eine Überprüfung auf neue Rollenzuweisungen für Azure-Ressourcen durchgeführt.
 
 ## <a name="cancel-a-pending-request"></a>Abbrechen einer ausstehenden Anforderung
 
@@ -110,6 +112,21 @@ Sollten Sie die Aktivierung einer Rolle, für die eine Genehmigung erforderlich 
     Durch das Klicken auf „Abbrechen“ wird die Anforderung abgebrochen. Um die Rolle erneut zu aktivieren, müssen Sie eine neue Anforderung zur Aktivierung übermitteln.
 
    ![Abbrechen einer ausstehenden Anforderung](./media/pim-resource-roles-activate-your-roles/resources-my-requests-cancel.png)
+
+## <a name="troubleshoot"></a>Problembehandlung
+
+### <a name="permissions-not-granted-after-activating-a-role"></a>Keine Gewährung von Berechtigungen nach der Aktivierung einer Rolle
+
+Nach der Aktivierung einer Rolle in PIM dauert es mindestens zehn Minuten, bevor Sie auf das gewünschte Verwaltungsportal zugreifen oder Funktionen für eine spezifische Verwaltungsworkload ausführen können. Um ein Update Ihrer Berechtigungen zu erzwingen, verwenden Sie die Seite **Anwendungszugriff** wie weiter oben unter [Verwenden einer Rolle sofort nach der Aktivierung](#use-a-role-immediately-after-activation) beschrieben.
+
+Weitere Schritte zur Problembehandlung finden Sie unter [Behandeln von Problemen mit erhöhten Berechtigungen](https://social.technet.microsoft.com/wiki/contents/articles/37568.troubleshooting-elevated-permissions-with-azure-ad-privileged-identity-management.aspx).
+
+### <a name="cannot-activate-a-role-due-to-a-resource-lock"></a>Aktivieren einer Rolle aufgrund gesperrter Ressource nicht möglich
+
+Wenn Sie eine Meldung erhalten, dass eine Azure-Ressource gesperrt ist, wenn Sie versuchen, eine Rolle zu aktivieren, kann dies daran liegen, dass eine Ressource im Rahmen einer Rollenzuordnung gesperrt wurde. Sperren schützen Ressourcen vor versehentlichem Löschen oder unerwarteten Änderungen. Eine Sperre verhindert auch, dass PIM am Ende des Aktivierungszeitraums eine Rollenzuordnung für die Ressource aufhebt. Da PIM nicht richtig funktionieren kann, wenn eine Sperre angewendet wird, verhindert PIM für Benutzer das Aktivieren von Rollen in der Ressource. Es gibt zwei Möglichkeiten, dieses Problem zu beheben:
+
+- Löschen Sie die Sperre, wie in [Sperren von Ressourcen, um unerwartete Änderungen zu verhindern](../../azure-resource-manager/resource-group-lock-resources.md) beschrieben.
+- Wenn Sie die Sperre beibehalten möchten, richten Sie eine dauerhafte Rollenzuweisung ein, oder verwenden Sie ein Break-Glass-Konto.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

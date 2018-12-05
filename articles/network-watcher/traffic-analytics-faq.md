@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: jdial
-ms.openlocfilehash: 69d2d80e40400cc7fa40aeb5a163dce5036905ab
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 451480f5046d5ed8a1bd7262fd8f6a800e66dfc7
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49402759"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52582495"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>Häufig gestellte Fragen zu Datenverkehrsanalysen
 
@@ -63,7 +63,38 @@ Falls keine Ausgabe erfolgt, wenden Sie sich an den zuständigen Abonnementadmin
 
 ## <a name="in-which-azure-regions-are-traffic-analytics-available"></a>In welchen Azure-Regionen ist Traffic Analytics verfügbar?
 
-Sie können Traffic Analytics für Netzwerksicherheitsgruppen in einer der folgenden Regionen verwenden: „USA, Westen-Mitte“, „USA, Osten“, „USA, Osten 2“, „USA, Norden-Mitte“, „USA, Süden-Mitte“, „USA, Mitte“, „USA, Westen“, „USA, Westen 2“, „Europa, Westen“, „Europa, Norden“, „Vereinigtes Königreich, Westen“, „Vereinigtes Königreich, Süden“, „Australien, Osten“, „Australien, Südosten“ und „Asien, Südosten“. Der Log Analytics-Arbeitsbereich muss sich in einer der folgenden Regionen befinden: „USA, Westen-Mitte“; „USA, Osten“; „Europa, Westen“; „Vereinigtes Königreich, Süden“; „Australien, Südosten“ oder „Asien, Südosten“.
+Datenverkehranalysen für Netzwerksicherheitsgruppen werden in den folgenden Regionen unterstützt:
+- Kanada, Mitte
+- USA, Westen-Mitte
+- USA (Ost)
+- USA (Ost) 2
+- USA Nord Mitte
+- USA Süd Mitte
+- USA (Mitte)
+- USA (Westen)
+- USA, Westen 2
+- Europa, Westen
+- Nordeuropa
+- Brasilien Süd
+- UK, Westen
+- UK, Süden
+- Australien (Osten)
+- Australien, Südosten 
+- Asien, Südosten
+- Indien, Mitte
+- Indien (Süden)
+- Japan, Osten
+
+Der Log Analytics-Arbeitsbereich muss in den folgenden Regionen vorhanden sein:
+- Kanada, Mitte
+- USA, Westen-Mitte
+- USA (Ost)
+- Europa, Westen
+- UK, Süden
+- Australien, Südosten
+- Asien, Südosten 
+- Indien, Mitte
+- Japan, Osten
 
 ## <a name="can-the-nsgs-i-enable-flow-logs-for-be-in-different-regions-than-my-workspace"></a>Können sich die Netzwerksicherheitsgruppen, für die ich Datenflussprotokolle aktiviere, in anderen Regionen befinden als mein Arbeitsbereich?
 
@@ -83,7 +114,7 @@ Ja, Ihr Azure Storage-Konto kann zu einem Abonnement und Ihr Log Analytics-Arbei
 
 ## <a name="can-i-store-raw-logs-in-a-different-subscription"></a>Kann ich unformatierte Protokolle in einem anderen Abonnement speichern?
 
-Nein. Sie können unformatierte Protokolle in jedem Speicherkonto speichern, in dem eine NSG für Datenflussprotokolle aktiviert ist. Allerdings müssen sich sowohl das Speicherkonto als auch die unformatierten Protokolle im selben Abonnement und in derselben Region befinden.
+ Nein. Sie können unformatierte Protokolle in jedem Speicherkonto speichern, in dem eine NSG für Datenflussprotokolle aktiviert ist. Allerdings müssen sich sowohl das Speicherkonto als auch die unformatierten Protokolle im selben Abonnement und in derselben Region befinden.
 
 ## <a name="what-if-i-cant-configure-an-nsg-for-traffic-analytics-due-to-a-not-found-error"></a>Was ist, wenn ich eine NSG aufgrund der Fehlermeldung „Nicht gefunden“ nicht für Traffic Analytics konfigurieren kann?
 
@@ -91,11 +122,11 @@ Wählen Sie eine unterstützte Region aus. Wenn Sie eine nicht unterstützte Reg
 
 ## <a name="what-if-i-am-getting-the-status-failed-to-load-under-the-nsg-flow-logs-page"></a>Was ist, wenn ich den Status „Fehler beim Laden“ unter der Seite mit den NSG-Datenflussprotokollen erhalte?
 
-Der Microsoft.Insights-Anbieter muss registriert sein, damit die Datenflussprotokollierung ordnungsgemäß funktioniert. Wenn Sie sich nicht sicher sind, ob der Anbieter „Microsoft.Insights“ für Ihr Abonnement registriert ist, ersetzen Sie *xxxxx-xxxxx-xxxxxx-xxxx* im folgenden Befehl und führen dann die folgenden Befehle über PowerShell aus:
+Der Anbieter „Microsoft.Insights“ muss registriert sein, damit die Datenflussprotokollierung ordnungsgemäß funktioniert. Wenn Sie sich nicht sicher sind, ob der Anbieter „Microsoft.Insights“ für Ihr Abonnement registriert ist, ersetzen Sie *xxxxx-xxxxx-xxxxxx-xxxx* im folgenden Befehl, und führen Sie dann die folgenden Befehle über PowerShell aus:
 
 ```powershell-interactive
-**Select-AzureRmSubscription** -SubscriptionId xxxxx-xxxxx-xxxxxx-xxxx
-**Register-AzureRmResourceProvider** -ProviderNamespace Microsoft.Insights
+**Select-AzureRmSubscription** -SubscriptionId xxxxx-xxxxx-xxxxxx-xxxx
+**Register-AzureRmResourceProvider** -ProviderNamespace Microsoft.Insights
 ```
 
 ## <a name="i-have-configured-the-solution-why-am-i-not-seeing-anything-on-the-dashboard"></a>Ich habe die Lösung konfiguriert. Warum sehe ich davon nichts im Dashboard?

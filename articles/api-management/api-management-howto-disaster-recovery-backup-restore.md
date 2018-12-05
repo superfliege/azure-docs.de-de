@@ -11,29 +11,29 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/15/2018
+ms.date: 11/14/2018
 ms.author: apimpm
-ms.openlocfilehash: 0dc7e8836f1e6a11c44f5e0f337015cac53a92d4
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 1653cfe0f75914fa321771a70284602cab75330d
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51252801"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52444867"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>So implementieren Sie die Notfallwiederherstellung mit Sichern und Wiederherstellen von Diensten in Azure API Management
 
-Indem Sie Ihre APIs über Azure API Management veröffentlichen und verwalten, profitieren Sie von vielen Fehlertoleranz- und Infrastrukturfunktionen, die Sie sonst erst entwickeln, implementieren und verwalten müssten. Die Azure-Plattform minimiert einen Großteil der potenziellen Ausfälle zu einem Bruchteil der Kosten.
+Indem Sie Ihre APIs über Azure API Management veröffentlichen und verwalten, profitieren Sie von Fehlertoleranz- und Infrastrukturfunktionen, die Sie sonst erst manuell entwickeln, implementieren und verwalten müssten. Die Azure-Plattform minimiert einen Großteil der potenziellen Ausfälle zu einem Bruchteil der Kosten.
 
-Bei Verfügbarkeitsproblemen in der Region, in der Ihr API Management-Dienst gehostet wird, sollten Sie jederzeit dazu in der Lage sein, Ihren Dienst in einer anderen Region wiederherzustellen. Je nach Verfügbarkeitsziel und Wiederherstellungszeitfenster möchten Sie möglicherweise einen Sicherungsdienst in einer oder mehreren Regionen reservieren, dessen Konfiguration und Inhalt möglichst mit dem aktiven Dienst synchron sind. Das Feature zum Sichern und Wiederherstellen von Diensten ist grundlegend für die Implementierung Ihrer Strategie zur Notfallwiederherstellung.
+Bei Verfügbarkeitsproblemen in der Region, in der Ihr API Management-Dienst gehostet wird, sollten Sie jederzeit dazu in der Lage sein, Ihren Dienst in einer anderen Region wiederherzustellen. Abhängig von Ihren Verfügbarkeits- und Wiederherstellungszeitzielen empfiehlt es sich, einen Sicherungsdienst in einer oder mehreren Regionen zu reservieren. Sie können auch versuchen, deren Konfiguration und Inhalt synchron mit dem aktiven Dienst zu pflegen. Das Feature zum Sichern und Wiederherstellen von Diensten ist grundlegend für die Implementierung Ihrer Strategie zur Notfallwiederherstellung.
 
-In dieser Anleitung wird erläutert, wie Anforderungen von Azure Resource Manager authentifiziert und API Management-Dienstinstanzen gesichert und wiederhergestellt werden.
+Diese Anleitung zeigt die Authentifizierung von Anforderungen von Azure Resource Manager. Es wird außerdem erläutert, wie Sie Ihre API Management-Dienstinstanzen sichern und wiederherstellen können.
 
 > [!NOTE]
 > Der Vorgang zum Sichern und Wiederherstellen einer API Management-Dienstinstanz für die Notfallwiederherstellung kann auch zum Replizieren von API Management-Dienstinstanzen für Szenarios wie z. B. das Staging verwendet werden.
 >
 > Jede Sicherung läuft nach 30 Tagen ab. Wenn Sie versuchen, eine Sicherung nach dem Ablaufzeitraum von 30 Tagen wiederherzustellen, erhalten Sie die Fehlermeldung `Cannot restore: backup expired`.
->
->
+
+[!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
 ## <a name="authenticating-azure-resource-manager-requests"></a>Authentifizieren von Anforderungen des Azure-Ressourcen-Managers
 
@@ -48,7 +48,7 @@ Alle Aufgaben, die Sie mithilfe von Azure Resource Manager für Ressourcen ausf�
 
 ### <a name="create-an-azure-active-directory-application"></a>Erstellen einer Azure Active Directory-Anwendung
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. 
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Verwenden Sie das Abonnement, das Ihre API Management-Dienstinstanz enthält, und navigieren Sie zur Registerkarte **App-Registrierungen** in **Azure Active Directory** (Azure Active Directory > Verwalten > App-Registrierungen).
 
     > [!NOTE]
@@ -68,7 +68,7 @@ Alle Aufgaben, die Sie mithilfe von Azure Resource Manager für Ressourcen ausf�
 3. Klicken Sie auf **+Hinzufügen**.
 4. Drücken Sie **API auswählen**.
 5. Wählen Sie **Windows** **Azure-Dienstverwaltungs-API** aus.
-6. Drücken Sie **Auswählen**. 
+6. Drücken Sie **Auswählen**.
 
     ![Hinzufügen von Berechtigungen](./media/api-management-howto-disaster-recovery-backup-restore/add-app.png)
 
@@ -105,7 +105,7 @@ namespace GetTokenResourceManagerRequests
 }
 ```
 
-Ersetzen Sie `{tentand id}`, `{application id}` und `{redirect uri}` entsprechend den folgenden Anweisungen:
+Ersetzen Sie `{tenant id}`, `{application id}` und `{redirect uri}` entsprechend den folgenden Anweisungen:
 
 1. Ersetzen Sie `{tenant id}` durch die Mandanten-ID der Azure Active Directory-Anwendung, die Sie erstellt haben. Auf die ID können Sie durch Klicken auf **App-Registrierungen** -> **Endpunkte** zugreifen.
 
@@ -122,7 +122,7 @@ Ersetzen Sie `{tentand id}`, `{application id}` und `{redirect uri}` entsprechen
 
 ## <a name="calling-the-backup-and-restore-operations"></a>Aufrufen der Sicherungs- und Wiederherstellungsvorgänge
 
-Die REST-APIs sind [API Management-Dienst – Backup](https://docs.microsoft.com/rest/api/apimanagement/apimanagementservice/apimanagementservice_backup) und [API Management-Dienst – Restore](https://docs.microsoft.com/rest/api/apimanagement/apimanagementservice/apimanagementservice_restore).
+Die REST-APIs sind [API Management-Dienst – Backup](/rest/api/apimanagement/apimanagementservice/backup) und [API Management-Dienst – Restore](/rest/api/apimanagement/apimanagementservice/restore).
 
 Legen Sie vor dem Aufrufen der in den folgenden Abschnitten beschriebenen Vorgänge zur Sicherung und Wiederherstellung den Autorisierungsanforderungsheader für den REST-Aufruf fest.
 
@@ -131,21 +131,21 @@ request.Headers.Add(HttpRequestHeader.Authorization, "Bearer " + token);
 ```
 
 ### <a name="step1"></a>Sichern eines API Management-Diensts
+
 Zum Sichern eines API Management-Diensts führen Sie die folgende HTTP-Anforderung aus:
 
-```
+```http
 POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/backup?api-version={api-version}
 ```
 
 Hierbei gilt:
 
-* `subscriptionId` – Abonnement-ID des API Management-Diensts, den Sie sichern möchten
+* `subscriptionId` – ID des Abonnements, das den API Management-Dienst enthält, den Sie sichern möchten
 * `resourceGroupName` – der Name der Ressourcengruppe Ihres Azure API Management-Diensts
-* `serviceName` – Der Name des zu sichernden API Management-Diensts zum Zeitpunkt seiner Erstellung
+* `serviceName` – der Name des zu sichernden API Management-Diensts zum Zeitpunkt seiner Erstellung
 * `api-version` – ersetzen durch `2018-06-01-preview`
 
 Geben Sie im Hauptteil der Anforderung das Azure-Zielspeicherkonto, den Zugriffsschlüssel, den Blobcontainernamen und den Sicherungsnamen an:
-
 
 ```json
 {
@@ -158,32 +158,33 @@ Geben Sie im Hauptteil der Anforderung das Azure-Zielspeicherkonto, den Zugriffs
 
 Legen Sie für den `Content-Type`-Anforderungsheader den Wert `application/json` fest.
 
-Die Sicherung ist ein länger anhaltender Vorgang, der bis zum Abschluss mehrere Minuten dauern kann.  Falls die Anforderung erfolgreich war und der Sicherungsvorgang eingeleitet wurde, erhalten Sie den Antwortstatuscode `202 Accepted`, zusammen mit einem `Location`-Header.  Senden Sie GET-Anforderungen der URL im `Location` -Header, um den Status des Vorgangs zu ermitteln. Während der Sicherung erhalten Sie weiterhin den Statuscode „202 Accepted“. Mit dem Antwortcode `200 OK` wird der erfolgreiche Abschluss des Sicherungsvorgangs angezeigt.
+Die Sicherung ist ein länger anhaltender Vorgang, der bis zum Abschluss mehrere Minuten dauern kann.  Falls die Anforderung erfolgreich war und der Sicherungsvorgang eingeleitet wurde, erhalten Sie den `202 Accepted` Antwortstatuscode mit einem `Location`-Header.  Senden Sie GET-Anforderungen der URL im `Location` -Header, um den Status des Vorgangs zu ermitteln. Während der Sicherung erhalten Sie weiterhin den Statuscode „202 Accepted“. Mit dem Antwortcode `200 OK` wird der erfolgreiche Abschluss des Sicherungsvorgangs angezeigt.
 
-Beachten Sie die folgenden Einschränkungen für Sicherungsanforderungen.
+Beachten Sie die folgenden Einschränkungen für Sicherungsanforderungen:
 
 * Der im Hauptteil der Anforderung angegebene **Container** **muss vorhanden sein**.
-* **Versuchen Sie nicht, bei laufender Sicherung Dienstverwaltungsvorgänge durchzuführen**, z.B. SKU-Upgrade oder -Downgrade, Wechseln des Domänennamens usw.
+* Vermeiden Sie während der Sicherung **Änderungen in der Dienstverwaltung**, wie z.B. SKU-Upgrades oder Herabstufungen, Änderungen im Domänennamen usw.
 * Die Wiederherstellung einer Sicherung nach ihrer Erstellung **wird nur 30 Tage lange garantiert**.
 * **Nutzungsdaten** zum Erstellen von Analyseberichten sind in der Sicherung **nicht enthalten**. Verwenden Sie die [Azure API Management-REST-API][Azure API Management REST API], um regelmäßig Analyseberichte zur Aufbewahrung abzurufen.
-* Die Häufigkeit, mit der Sie Dienstsicherungen durchführen, wirkt sich auf das Ziel Ihres Wiederherstellungspunkts aus. Um die Auswirkungen zu minimieren, wird empfohlen, regelmäßige Sicherungen zu implementieren und bei Bedarf Sicherungen durchzuführen, wenn Sie bedeutende Änderungen an Ihrem API Management-Dienst vorgenommen haben.
-* **Änderungen** an der Dienstkonfiguration (z.B. APIs, Richtlinien, Erscheinungsbild des Entwicklerportals), die während des Sicherungsvorgangs vorgenommen werden, sind ggf. **nicht in der Sicherung enthalten und gehen somit verloren**.
+* Die Häufigkeit, mit der Sie Dienstsicherungen durchführen, wirkt sich auf das Ziel Ihres Wiederherstellungspunkts aus. Um die Auswirkungen zu minimieren, empfehlen wir, regelmäßige Sicherungen zu implementieren und bei Bedarf Sicherungen durchzuführen, wenn Sie Änderungen an Ihrem API Management-Dienst vorgenommen haben.
+* **Änderungen** an der Dienstkonfiguration (z.B. APIs, Richtlinien, Erscheinungsbild des Entwicklerportals), die während des Sicherungsvorgangs vorgenommen werden, sind ggf. **nicht in der Sicherung enthalten und gehen verloren**.
 
 ### <a name="step2"></a>Wiederherstellen eines API Management-Diensts
+
 Zum Wiederherstellen eines API Management-Diensts aus einer zuvor erstellten Sicherung führen Sie die folgende HTTP-Anforderung aus:
 
-```
+```http
 POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/restore?api-version={api-version}
 ```
 
 Hierbei gilt:
 
-* `subscriptionId`– Abonnement-ID des API Management-Diensts, den Sie sichern möchten
-* `resourceGroupName`– Name der Ressourcengruppe mit dem Azure-API Management-Dienst, in dem Sie eine Sicherung wiederherstellen
-* `serviceName` – Der Name des wiederherzustellenden API Management-Diensts zum Zeitpunkt seiner Erstellung
+* `subscriptionId` – ID des Abonnements, das den API Management-Dienst enthält, in den Sie eine Sicherung erstellen
+* `resourceGroupName` – Name der Ressourcengruppe mit dem Azure-API Management-Dienst, in dem Sie eine Sicherung wiederherstellen
+* `serviceName` – der Name des wiederherzustellenden API Management-Diensts zum Zeitpunkt seiner Erstellung
 * `api-version` – ersetzen durch `2018-06-01-preview`
 
-Geben Sie im Hauptteil der Anforderung den Speicherort der Sicherungsdatei an, d.h. das Azure Storage-Konto, den Zugriffsschlüssel, den Blobcontainernamen und den Sicherungsnamen:
+Geben Sie im Anforderungstext den Speicherort der Sicherungsdatei an. Fügen Sie das Azure-Zielspeicherkonto, den Zugriffsschlüssel, den Blobcontainernamen und den Sicherungsnamen an:
 
 ```json
 {
@@ -196,12 +197,14 @@ Geben Sie im Hauptteil der Anforderung den Speicherort der Sicherungsdatei an, d
 
 Legen Sie für den `Content-Type`-Anforderungsheader den Wert `application/json` fest.
 
-Die Wiederherstellung ist ein länger anhaltender Vorgang, der bis zum Abschluss bis zu 30 Minuten dauern kann. Falls die Anforderung erfolgreich war und der Wiederherstellungsvorgang eingeleitet wurde, erhalten Sie den Antwortstatuscode `202 Accepted`, zusammen mit einem `Location`-Header. Senden Sie GET-Anforderungen der URL im `Location` -Header, um den Status des Vorgangs zu ermitteln. Während der Wiederherstellung erhalten Sie weiterhin den Statuscode „202 Accepted“. Mit dem Antwortcode `200 OK` wird der erfolgreiche Abschluss des Wiederherstellungsvorgangs angezeigt.
+Die Wiederherstellung ist ein länger anhaltender Vorgang, der bis zum Abschluss bis zu 30 Minuten dauern kann. Falls die Anforderung erfolgreich war und der Wiederherstellungsvorgang eingeleitet wurde, erhalten Sie den `202 Accepted` Antwortstatuscode mit einem `Location`-Header. Senden Sie GET-Anforderungen der URL im `Location` -Header, um den Status des Vorgangs zu ermitteln. Während der Wiederherstellung erhalten Sie weiterhin den Statuscode „202 Accepted“. Mit dem Antwortcode `200 OK` wird der erfolgreiche Abschluss des Wiederherstellungsvorgangs angezeigt.
 
 > [!IMPORTANT]
 > **Die SKU** des wiederherzustellenden Diensts **muss** mit der SKU des gesicherten Diensts übereinstimmen.
 >
 > **Änderungen** an der Dienstkonfiguration (z.B. APIs, Richtlinien, Erscheinungsbild des Entwicklerportals), die während des Wiederherstellungsvorgangs vorgenommen werden, **könnten überschrieben werden**.
+
+<!-- Dummy comment added to suppress markdown lint warning -->
 
 > [!NOTE]
 > Sicherungs- und Wiederherstellungsvorgänge können außerdem mithilfe der PowerShell-Befehle *Backup-AzureRmApiManagement* bzw. *Restore-AzureRmApiManagement* ausgeführt werden.

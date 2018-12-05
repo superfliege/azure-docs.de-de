@@ -4,26 +4,30 @@ description: Dieser Artikel enthält eine Übersicht über die Web Application F
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.date: 11/7/2018
+ms.date: 11/16/2018
 ms.author: amsriva
-ms.openlocfilehash: 4b03065c59eed8f0d72e2724e60b6d8908518727
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.openlocfilehash: 71990244db859a61885968a502d9849a36d81dce
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51219527"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52425161"
 ---
 # <a name="web-application-firewall-waf"></a>Web Application Firewall (WAF)
 
-Web Application Firewall (WAF) ist ein Feature von Application Gateway, das zentralisierten Schutz Ihrer Webanwendungen vor allgemeinen Exploits und Sicherheitsrisiken bietet. 
+Web Application Firewall (WAF) ist ein Feature von Application Gateway, das zentralisierten Schutz Ihrer Webanwendungen vor allgemeinen Exploits und Sicherheitsrisiken bietet.
 
-Webanwendungen sind zunehmend Ziele böswilliger Angriffe, die allgemein bekannte Sicherheitslücken ausnutzen. Zu diesen Sicherheitslücken (Exploits) gehören üblicherweise Angriffe durch Einschleusung von SQL-Befehlen oder Angriffe durch websiteübergreifende Skripts, um nur einige zu nennen. Das Verhindern solcher Angriffe im Anwendungscode ist oft schwierig und erfordert strenge Wartung, Patching und Überwachung auf verschiedenen Ebenen der Anwendungstopologie. Eine zentrale Web Application Firewall vereinfacht die Sicherheitsverwaltung erheblich und bietet Anwendungsadministratoren einen besseren Schutz vor Bedrohungen und Angriffen. Mit einer WAF-Lösung können Sie ebenfalls schneller auf ein Sicherheitsrisiko reagieren, da eine bekannte Schwachstelle an einem zentralen Ort gepatcht wird, statt jede einzelne Webanwendung separat zu sichern. Vorhandene Anwendungsgateways lassen sich problemlos in ein Anwendungsgateway mit Web Application Firewall konvertieren.
+Webanwendungen sind zunehmend Ziele böswilliger Angriffe, die allgemein bekannte Sicherheitslücken ausnutzen. Zu diesen Sicherheitslücken (Exploits) gehören üblicherweise Angriffe durch Einschleusung von SQL-Befehlen und Angriffe durch websiteübergreifende Skripts, um nur einige zu nennen. 
+
+Das Verhindern solcher Angriffe im Anwendungscode ist oft schwierig und erfordert strenge Wartung, Patching und Überwachung auf verschiedenen Ebenen der Anwendungstopologie. Eine zentrale Web Application Firewall vereinfacht die Sicherheitsverwaltung erheblich und bietet Anwendungsadministratoren einen besseren Schutz vor Bedrohungen und Angriffen. Mit einer WAF-Lösung können Sie ebenfalls schneller auf ein Sicherheitsrisiko reagieren, da eine bekannte Schwachstelle an einem zentralen Ort gepatcht wird, statt jede einzelne Webanwendung separat zu sichern. Vorhandene Anwendungsgateways lassen sich problemlos in ein Anwendungsgateway mit Web Application Firewall konvertieren.
 
 Der WAF liegen Regeln aus den [OWASP-Kernregelsätzen](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) (3.0 oder 2.2.9) zugrunde. Sie wird automatisch aktualisiert und bietet Schutz vor neuen Sicherheitsrisiken, ohne dass zusätzliche Konfiguration erforderlich ist.
 
 ![imageURLroute](./media/waf-overview/WAF1.png)
 
-Application Gateway fungiert als Controller für die Anwendungsbereitstellung (Application Delivery Controller, ADC) und bietet SSL-Beendigung, cookiebasierte Sitzungsaffinität, Lastverteilung per Roundrobin, inhaltsbasiertes Routing, die Möglichkeit zum Hosten mehrerer Websites sowie Sicherheitsverbesserungen. Zu den von Application Gateway bereitgestellten Sicherheitsverbesserungen gehören die SSL-Gruppenrichtlinienverwaltung sowie umfassende SSL-Unterstützung. Die Anwendungssicherheit wird nun durch die direkt in das ADC-Angebot integrierte WAF (Web Application-Firewall) gestärkt. So erhalten Sie einen einfach konfigurierbaren zentralen Ort zum Verwalten und Schützen Ihrer Webanwendungen vor gängigen Sicherheitsrisiken im Web.
+Application Gateway fungiert als Controller für die Anwendungsbereitstellung (Application Delivery Controller, ADC) und bietet SSL-Beendigung, cookiebasierte Sitzungsaffinität, Lastverteilung per Roundrobin, inhaltsbasiertes Routing, die Möglichkeit zum Hosten mehrerer Websites sowie Sicherheitsverbesserungen.
+
+Zu den von Application Gateway bereitgestellten Sicherheitsverbesserungen gehören die SSL-Gruppenrichtlinienverwaltung sowie umfassende SSL-Unterstützung. Die Anwendungssicherheit wird nun durch die direkt in das ADC-Angebot integrierte WAF (Web Application-Firewall) gestärkt. So erhalten Sie einen einfach konfigurierbaren zentralen Ort zum Verwalten und Schützen Ihrer Webanwendungen vor gängigen Sicherheitsrisiken im Web.
 
 ## <a name="benefits"></a>Vorteile
 
@@ -53,7 +57,7 @@ Application Gateway und Web Application Firewall bieten folgende zentrale Vortei
 - Schutz vor Verletzungen des HTTP-Protokolls
 - Schutz vor HTTP-Protokollanomalien, z.B. fehlende user-agent- und accept-Header des Hosts
 - Verhinderung des Einsatzes von Bots, Crawlern und Scannern
-- Erkennung häufiger Fehler bei der Anwendungskonfiguration (Apache, IIS usw.)
+- Erkennung häufiger Fehler bei der Anwendungskonfiguration (z.B. Apache, IIS usw.)
 
 ### <a name="public-preview-features"></a>Features der öffentlichen Vorschau
 
@@ -80,7 +84,7 @@ Die Web Application Firewall ist standardmäßig mit CRS 3.0 vorkonfiguriert, Si
 - Schutz vor Verletzungen des HTTP-Protokolls
 - Schutz vor HTTP-Protokollanomalien, z.B. fehlende user-agent- und accept-Header des Hosts
 - Verhinderung des Einsatzes von Bots, Crawlern und Scannern
-- Erkennung häufiger Fehler bei der Anwendungskonfiguration (Apache, IIS usw.)
+- Erkennung häufiger Fehler bei der Anwendungskonfiguration (z.B. Apache, IIS usw.)
 
 Eine ausführlichere Liste mit Regeln und Informationen zum entsprechenden Schutz finden Sie in den [Kernregelsätzen](#core-rule-sets).
 
@@ -91,7 +95,7 @@ Version 3.0 des Kernregelsatzes umfasst 13 Regelgruppen, wie in der folgenden Ta
 
 |Regelgruppe|BESCHREIBUNG|
 |---|---|
-|**[REQUEST-911-METHOD-ENFORCEMENT](application-gateway-crs-rulegroups-rules.md#crs911)**|Enthält Regeln zum Sperren von Methoden (PUT, PATCH< ..).|
+|**[REQUEST-911-METHOD-ENFORCEMENT](application-gateway-crs-rulegroups-rules.md#crs911)**|Enthält Regeln zum Sperren von Methoden (PUT, PATCH).|
 |**[REQUEST-913-SCANNER-DETECTION](application-gateway-crs-rulegroups-rules.md#crs913)**| Enthält Regeln zum Schutz vor Port- und Umgebungsscannern.|
 |**[REQUEST-920-PROTOCOL-ENFORCEMENT](application-gateway-crs-rulegroups-rules.md#crs920)**|Enthält Regeln zum Schutz vor Protokoll- und Codierungsproblemen.|
 |**[REQUEST-921-PROTOCOL-ATTACK](application-gateway-crs-rulegroups-rules.md#crs921)**|Enthält Regeln zum Schutz vor Header Injection, Request Smuggling und Response Splitting.|
@@ -129,7 +133,7 @@ Die Application Gateway-WAF kann für die Ausführung in den folgenden beiden Mo
 
 ### <a name="application-gateway-waf-reports"></a>WAF-Überwachung
 
-Die Integrität Ihres Anwendungsgateways sollte unbedingt überwacht werden. Die Überwachung der Integrität Ihrer Web Application Firewall und der durch sie geschützten Anwendungen wird mittels Protokollierung und Integration in Azure Monitor, Azure Security Center (demnächst verfügbar) und Log Analytics erreicht.
+Die Integrität Ihres Anwendungsgateways sollte unbedingt überwacht werden. Die Überwachung der Integrität Ihrer Web Application Firewall und der durch sie geschützten Anwendungen wird mittels Protokollierung und Integration in Azure Monitor, Azure Security Center und Log Analytics erreicht.
 
 ![Diagnose](./media/waf-overview/diagnostics.png)
 
@@ -145,7 +149,7 @@ Jedes Anwendungsgatewayprotokoll ist in [Azure Monitor](../monitoring-and-diagno
 
 #### <a name="logging"></a>Protokollierung
 
-Die Application Gateway-WAF bietet detaillierte Berichte zu jeder erkannten Bedrohung. Die Protokollierung ist in Azure Diagnostics-Protokolle integriert, und Warnungen werden in einem JSON-Format erfasst. Diese Protokolle können in [Log Analytics](../log-analytics/log-analytics-azure-networking-analytics.md) integriert werden.
+Die Application Gateway-WAF bietet detaillierte Berichte zu jeder erkannten Bedrohung. Die Protokollierung ist in Azure Diagnostics-Protokolle integriert, und Warnungen werden in einem JSON-Format erfasst. Diese Protokolle können in [Log Analytics](../azure-monitor/insights/azure-networking-analytics.md) integriert werden.
 
 ![imageURLroute](./media/waf-overview/waf2.png)
 
@@ -179,7 +183,9 @@ Die Application Gateway-WAF bietet detaillierte Berichte zu jeder erkannten Bedr
 
 ## <a name="application-gateway-waf-sku-pricing"></a>SKU-Preise für die Application Gateway-WAF
 
-Die Web Application Firewall ist unter einer neuen WAF-SKU erhältlich. Diese SKU steht nur im Rahmen des Azure Resource Manager-Bereitstellungsmodells zur Verfügung. Für das klassische Bereitstellungsmodell ist sie nicht verfügbar. Darüber hinaus ist die WAF-SKU nur in den Anwendungsgateway-Instanzgrößen „Medium“ und „Large“ erhältlich. Alle Grenzwerte für das Anwendungsgateway gelten auch für die WAF-SKU. Der Preis basiert auf einer Gatewayinstanzgebühr pro Stunde sowie auf einer Datenverarbeitungsgebühr. Der stundenbasierte Gatewaypreis für die WAF-SKU entspricht nicht den Gebühren für die Standard-SKU und ist unter [Application Gateway – Preise](https://azure.microsoft.com/pricing/details/application-gateway/) zu finden. Die Datenverarbeitungsgebühren bleiben unverändert. Es fallen keine regel- oder regelgruppenbasierten Kosten an. Sie können mehrere Webanwendungen hinter der gleichen Web Application Firewall schützen, und die Unterstützung mehrerer Anwendungen ist mit keinerlei Zusatzgebühren verbunden. 
+Die Web Application Firewall ist unter einer neuen WAF-SKU erhältlich. Diese SKU steht nur im Rahmen des Azure Resource Manager-Bereitstellungsmodells zur Verfügung. Für das klassische Bereitstellungsmodell ist sie nicht verfügbar. Darüber hinaus ist die WAF-SKU nur in den Anwendungsgateway-Instanzgrößen „Medium“ und „Large“ erhältlich. Alle Grenzwerte für das Anwendungsgateway gelten auch für die WAF-SKU.
+
+Der Preis basiert auf einer Gatewayinstanzgebühr pro Stunde sowie auf einer Datenverarbeitungsgebühr. Der stundenbasierte Gatewaypreis für die WAF-SKU entspricht nicht den Gebühren für die Standard-SKU und ist unter [Application Gateway – Preise](https://azure.microsoft.com/pricing/details/application-gateway/) zu finden. Die Datenverarbeitungsgebühren bleiben unverändert. Es fallen keine regel- oder regelgruppenbasierten Kosten an. Sie können mehrere Webanwendungen hinter der gleichen Web Application Firewall schützen, und die Unterstützung mehrerer Anwendungen ist mit keinerlei Zusatzgebühren verbunden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

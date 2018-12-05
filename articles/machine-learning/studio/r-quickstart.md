@@ -1,11 +1,12 @@
 ---
-title: Schnellstart-Tutorial für die Sprache R für Machine Learning | Microsoft-Dokumentation
+title: Schnellstarttutorial für die Sprache R für Machine Learning Studio – Azure | Microsoft-Dokumentation
 description: Verwenden Sie dieses Lernprogramm für die Programmierung in R, um einen schnellen Einstieg in die Verwendung der Sprache R mit Azure Machine Learning Studio zum Erstellen von Vorhersagelösungen zu erhalten.
 keywords: Schnellstart,Sprache R,Programmiersprache R,R-Programmierungs-Lernprogramm
 services: machine-learning
 documentationcenter: ''
-author: heatherbshapiro
-ms.author: hshapiro
+author: ericlicoding
+ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
+ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
 ms.assetid: 99a3a0fd-b359-481a-b236-66868deccd96
@@ -16,14 +17,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/06/2017
-ms.openlocfilehash: 97107bb5ca1a598906cac9adbf508b2d15668e7d
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: eea61419e76f4363a286f796e6df28a4e90a9ed7
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36227239"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52317669"
 ---
-# <a name="quickstart-tutorial-for-the-r-programming-language-for-azure-machine-learning"></a>Schnellstart-Lernprogramm für die Programmiersprache R für Azure Machine Learning
+# <a name="quickstart-tutorial-for-the-r-programming-language-for-azure-machine-learning-studio"></a>Schnellstarttutorial für die Programmiersprache R für Azure Machine Learning Studio
 
 <!-- Stephen F Elston, Ph.D. -->
 

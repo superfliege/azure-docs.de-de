@@ -7,18 +7,18 @@ ms.service: firewall
 ms.topic: article
 ms.date: 9/24/2018
 ms.author: victorh
-ms.openlocfilehash: 6d8d0b2dc0f6baf48d2aacb9c7203937aef08d15
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 0698f1dbc491781089ef94eec32f2a427fd3cca4
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46957796"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52422387"
 ---
 # <a name="azure-firewall-logs"></a>Azure Firewall-Protokolle
 
 Azure Firewall kann mithilfe von Firewallprotokollen überwacht werden. Sie können aber auch Aktivitätsprotokolle verwenden, um Vorgänge für Azure Firewall-Ressourcen zu überwachen.
 
-Sie können auf einige dieser Protokolle über das Portal zugreifen. Protokolle können an [Log Analytics](../log-analytics/log-analytics-azure-networking-analytics.md), Storage und Event Hubs gesendet und in Log Analytics oder durch andere Tools wie Excel oder Power BI analysiert werden.
+Sie können auf einige dieser Protokolle über das Portal zugreifen. Protokolle können an [Log Analytics](../azure-monitor/insights/azure-networking-analytics.md), Storage und Event Hubs gesendet und in Log Analytics oder durch andere Tools wie Excel oder Power BI analysiert werden.
 
 ## <a name="diagnostic-logs"></a>Diagnoseprotokolle
 

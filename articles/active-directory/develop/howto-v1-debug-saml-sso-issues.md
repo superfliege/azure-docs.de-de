@@ -15,12 +15,12 @@ ms.date: 06/15/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: hirsin, dastrock, smalser
-ms.openlocfilehash: 388337fa80d174cb17dae12fa9d5f2fbdfe7e737
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 7f653eca0c768cc35df039cbd51153484710d80a
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44347782"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52422252"
 ---
 # <a name="debug-saml-based-single-sign-on-to-applications-in-azure-active-directory"></a>Debuggen des SAML-basierten einmaligen Anmeldens bei Anwendungen in Azure Active Directory.
 
@@ -32,7 +32,7 @@ Sie sollten die [Erweiterung zur sicheren Anmeldung bei „Meine Apps“](../use
 Verwenden Sie zum Herunterladen und Installieren der Erweiterung zur sicheren Anmeldung bei „Meine Apps“ einen der folgenden Links.
 
 - [Chrome](https://go.microsoft.com/fwlink/?linkid=866367)
-- [Edge](https://go.microsoft.com/fwlink/?linkid=845176)
+- [Microsoft Edge](https://go.microsoft.com/fwlink/?linkid=845176)
 - [Firefox](https://go.microsoft.com/fwlink/?linkid=866366)
 
 
@@ -75,7 +75,7 @@ So lösen Sie den Fehler auf, wenn die Erweiterung zur sicheren Anmeldung bei �
     - Eine Anweisung, die die Ursache des Problems identifiziert.
 2.  Wechseln Sie zurück zu Azure AD, und suchen Sie das Blatt **Einmaliges Anmelden testen**.
 3.  Fügen Sie die Fehlermeldung oben in das Textfeld **Leitfaden zur Problemlösung abrufen** ein.
-3.  Klicken Sie auf **Leitfaden zur Problemlösung abrufen**, um Schritte zur Lösung des Problems anzuzeigen. Der Leitfaden könnte Informationen aus der SAML-Anforderung bzw. -Antwort benötigen. Wenn Sie die Erweiterung zur sicheren Anmeldung bei „Meine Apps“ nicht verwenden, könnten Sie mit einem Tool wie [Fiddler](http://www.telerik.com/fiddler) die SAML-Anforderung und -Antwort abrufen.
+3.  Klicken Sie auf **Leitfaden zur Problemlösung abrufen**, um Schritte zur Lösung des Problems anzuzeigen. Der Leitfaden könnte Informationen aus der SAML-Anforderung bzw. -Antwort benötigen. Wenn Sie die Erweiterung zur sicheren Anmeldung bei „Meine Apps“ nicht verwenden, könnten Sie mit einem Tool wie [Fiddler](https://www.telerik.com/fiddler) die SAML-Anforderung und -Antwort abrufen.
 4.  Vergewissern Sie sich, dass das Ziel in der SAML-Anforderung der URL des SAML-Diensts für einmaliges Anmelden aus Azure Active Directory entspricht.
 5.  Vergewissern Sie sich, dass der Aussteller in der SAML-Anforderung dem Bezeichner entspricht, den Sie in Azure Active Directory für die Anwendung konfiguriert haben. Azure AD sucht anhand des Ausstellers in Ihrem Verzeichnis nach einer Anwendung.
 6.  Vergewissern Sie sich, dass AssertionConsumerServiceURL dort ist, wo die Anwendung das SAML-Token aus Azure Active Directory erwartet. Sie können diesen Wert in Azure Active Directory konfigurieren, er ist jedoch nicht zwingend erforderlich, wenn er Teil der SAML-Anforderung ist.
@@ -90,7 +90,7 @@ So beheben Sie den Fehler
 1. Wenn sich die Anwendung im Azure AD-Katalog befindet, vergewissern Sie sich, dass Sie alle Schritte zur Integration der Anwendung in Azure AD ausgeführt haben. Die Integrationsanweisungen für Ihre Anwendung finden Sie in der [Liste der Tutorials zur Integration von SaaS-Anwendungen](../saas-apps/tutorial-list.md).
 2. Rufen Sie die SAML-Antwort ab.
     - Wenn die Erweiterung zur sicheren Anmeldung bei „Meine Apps“ installiert ist, klicken Sie im Blatt **Einmaliges Anmelden testen** auf **SAML-Antwort herunterladen**.
-    - Wenn die Erweiterung nicht installiert ist, verwenden Sie ein Tool wie [Fiddler](http://www.telerik.com/fiddler) zum Abrufen der SAML-Antwort. 
+    - Wenn die Erweiterung nicht installiert ist, verwenden Sie ein Tool wie [Fiddler](https://www.telerik.com/fiddler) zum Abrufen der SAML-Antwort. 
 3. Beachten Sie diese Elemente im SAML-Antworttoken:
     - Für den Benutzer eindeutiger Bezeichner von Wert und Format der NameID
     - Im Token ausgestellte Ansprüche

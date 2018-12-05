@@ -1,10 +1,10 @@
 ---
-title: Verwalten des Zugriffs auf die Azure-Abrechnung mithilfe von Rollen | Microsoft-Dokumentation
+title: Verwalten des Zugriffs auf Azure-Abrechnungen | Microsoft-Dokumentation
 description: ''
 services: ''
 documentationcenter: ''
 author: vikramdesai01
-manager: vikdesai
+manager: amberb
 editor: ''
 tags: billing
 ms.assetid: e4c4d136-2826-4938-868f-a7e67ff6b025
@@ -13,70 +13,95 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/22/2017
+ms.date: 11/02/2018
 ms.author: cwatson
-ms.openlocfilehash: 38cfd354f11ef3d888ad70e71549868d398495f5
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 7a4e19ae5bf770949623f4cee7fa0d3033ccfa29
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49429642"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52582614"
 ---
-# <a name="manage-access-to-billing-information-for-azure-using-role-based-access-control"></a>Verwalten des Zugriffs auf Abrechnungsinformationen für Azure mithilfe der rollenbasierten Zugriffssteuerung
+# <a name="manage-access-to-billing-information-for-azure"></a>Verwalten des Zugriffs auf Abrechnungsinformationen für Azure
 
-Sie können Mitgliedern Ihres Teams den Zugriff auf Azure-Abrechnungsinformationen gewähren, indem Sie Ihrem Abonnement eine der folgenden Benutzerrollen zuweisen: Kontoadministrator, Dienstadministrator, Co-Administrator, Besitzer, Mitwirkender, Leser und Abrechnungsleser. Diese haben dann Zugriff auf die Abrechnungsinformationen im [Azure-Portal](https://portal.azure.com/) und können die [Abrechnungs-APIs](billing-usage-rate-card-overview.md) verwenden, um Rechnungen (nach erfolgter Anmeldung) und Nutzungsdetails programmgesteuert abzurufen. Weitere Informationen dazu, wer Rollen zuweisen kann und welche Vorgänge mit welchen Rollen durchgeführt werden können, finden Sie unter [Rollen in Azure RBAC](../role-based-access-control/built-in-roles.md).
+Für die meisten Abonnements können Sie den Mitgliedern Ihres Teams im Azure-Portal unter **Abonnements** Abrechnungsinformationen zur Verfügung stellen. Wenn Sie Azure-Kunde mit einem Enterprise Agreement (EA-Kunde) und Unternehmensadministrator sind, können Sie Abteilungsadministratoren und Kontobesitzern im Enterprise Portal Berechtigungen erteilen.
 
-## <a name="opt-in"></a>Festlegen weiterer Benutzer für den Zugriff auf Rechnungen
+## <a name="give-access-to-billing"></a>Gewähren des Zugriffs auf Abrechnungen
 
-Der Kontoadministrator muss sich über das [Azure-Portal](https://portal.azure.com/) anmelden, um den Zugriff auf Rechnungen für andere Benutzer und über die API zu gewähren.
+Alle Benutzer – mit Ausnahme von EA-Kunden – können den Zugriff auf die Abrechnungsinformationen von Azure gewähren, indem sie Teammitgliedern eine der folgenden Benutzerrollen zuweisen:
 
+- Kontoadministrator
+- Dienstadministrator
+- Co-Admin
+- Owner (Besitzer)
+- Mitwirkender
+- Leser
+- Abrechnungsleser
+
+Wie Sie Rollen zuweisen, erfahren Sie unter [Verwalten des Zugriffs mithilfe der RBAC und des Azure-Portals](../role-based-access-control/role-assignments-portal.md).
+
+Diese Rollen haben Zugriff auf Abrechnungsinformationen im [Azure-Portal](https://portal.azure.com/). Benutzer, denen diese Rollen zugewiesen sind, können auch die [Abrechnungs-APIs](billing-usage-rate-card-overview.md) verwenden, um Rechnungen und Nutzungsdetails programmgesteuert abzurufen. Weitere Informationen finden Sie unter [Rollen für die rollenbasierte Zugriffssteuerung in Azure](../role-based-access-control/built-in-roles.md).
+
+### <a name="opt-in"></a> Berechtigen von Benutzern zum Herunterladen von Rechnungen
+
+Nachdem Sie den Mitgliedern Ihres Teams die entsprechenden Rollen zugewiesen haben, muss der Kontoadministrator den Zugriff zum Herunterladen von Rechnungen im Azure-Portal aktivieren. Rechnungen vor Dezember 2016 stehen nur dem Kontoadministrator zur Verfügung.
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 1. Wählen Sie als Kontoadministrator auf dem Blatt [Abonnements](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) im Azure-Portal Ihr Abonnement aus.
 
 1. Wählen Sie **Rechnungen** und dann **Access to invoices** (Zugriff auf Rechnungen) aus.
 
     ![Der Screenshot zeigt das Delegieren des Zugriffs auf Rechnungen](./media/billing-manage-access/AA-optin.png)
 
-1. Schalten Sie den Zugriff **Ein**, gefolgt vom Speichern der Änderungen, damit Benutzer mit Abonnementbereichsrollen die Rechnung herunterladen können.
+1. Wählen Sie **An** und „Speichern“ aus.
 
     ![Der Screenshot zeigt das Ein/Aus-Schalten zum Delegieren des Zugriffs auf Rechnungen](./media/billing-manage-access/AA-optinAllow.png)
 
-Durch Anmeldung können Benutzer mit den Rollen „Dienstadministrator“, „Co-Administrator“, „Besitzer“, „Mitwirkender“, „Leser“ und „Abrechnungsleser“ im Abonnement PDF-Rechnungen im Azure-Portal herunterladen. Allerdings stehen Rechnungen vor Dezember 2016 vorerst nur für den Kontoadministrator zur Verfügung.
-
 Der Kontoadministrator kann auch konfigurieren, dass ihm Rechnungen per E-Mail gesendet werden. Weitere Informationen finden Sie unter [Empfangen Ihrer Rechnung per E-Mail](billing-download-azure-invoice-daily-usage-date.md).
 
-## <a name="adding-users-to-the-billing-reader-role"></a>Hinzufügen von Benutzern zur Rolle „Abrechnungsleser“
+## <a name="give-read-only-access-to-billing"></a>Gewähren des Lesezugriffs auf Abrechnungen
 
-Die Rolle „Abrechnungsleser“ hat schreibgeschützten Zugriff auf Abrechnungsinformationen des Abonnements im Azure-Portal, jedoch keinen Zugriff auf Dienste wie virtuelle Computer und Speicherkonten. Weisen Sie die Rolle „Abrechnungsleser“ einem Benutzer zu, der Zugriff auf die Abrechnungsinformationen des Abonnements benötigt, jedoch nicht auf die Funktion zum Verwalten von Azure-Diensten. Diese Rolle eignet sich für Benutzer in einer Organisation, die ausschließlich die Finanz- und Kostenverwaltung für Azure-Abonnements durchführen.
+Weisen Sie die Rolle „Abrechnungsleser“ einem Benutzer zu, der Lesezugriff auf die Abrechnungsinformationen des Abonnements erhalten soll, Azure-Dienste jedoch nicht verwalten oder erstellen darf. Diese Rolle eignet sich für die Benutzer in einer Organisation, die für die Finanz- und Kostenverwaltung für Azure-Abonnements zuständig sind.
 
+Wenn Sie EA-Kunde sind, kann ein Kontobesitzer oder Abteilungsadministrator Teammitgliedern die Rolle „Abrechnungsleser“ zuweisen. Damit Abrechnungsleser jedoch auf Abrechnungsinformationen für die Abteilung oder das Konto zugreifen können, muss der Unternehmensadministrator im Enterprise Portal die Richtlinie **Kontobesitzer können Gebühren anzeigen** bzw. **Abteilungsadministratoren können Gebühren anzeigen** aktivieren.
+
+Das Feature Abrechnungsleser befindet sich in der Vorschauversion und unterstützt noch keine nicht globalen Clouds.
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 1. Wählen Sie auf dem Blatt [Abonnements](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) im Azure-Portal Ihr Abonnement aus.
 
-1. Wählen Sie **Zugriffssteuerung (IAM)** aus, und klicken Sie dann auf **Hinzufügen**.
-
-    ![Screenshot: IAM auf dem Blatt „Abonnement“](./media/billing-manage-access/select-iam.PNG)
-
-1. Wählen Sie auf der Seite **Rolle auswählen** die Rolle **Abrechnungsleser** aus.
-
-    ![Screenshot: Abrechnungsleser in der Popupansicht](./media/billing-manage-access/select-roles.PNG)
-
-1. Geben Sie die E-Mail-Adresse des Benutzers ein, den Sie einladen möchten, und klicken Sie dann auf **OK**, um die Einladung zu senden.
-
-    ![Screenshot: Eingeben der E-Mail-Adresse des Benutzers für die Einladung](./media/billing-manage-access/add-user.PNG)
-
-1. Befolgen Sie die Anweisungen in der Einladungs-E-Mail zum Anmelden als Abrechnungsleser.
+1. Wählen Sie die Option **Zugriffssteuerung (IAM)**.
+1. Wählen Sie **Rollenzuweisungen** aus, um alle Rollenzuweisungen für dieses Abonnement anzuzeigen.
+1. Wählen Sie **Hinzufügen** > **Rollenzuweisung hinzufügen**.
+1. Wählen Sie in der Dropdownliste **Rolle** **Abrechnungsleser** aus.
+1. Geben Sie im Textfeld **Auswählen** den Namen oder die E-Mail-Adresse des Benutzers ein, den Sie hinzufügen möchten.
+1. Wählen Sie **Speichern**aus.
+1. Nach einigen Augenblicken wird dem Benutzer im Abonnementbereich die Rolle „Abrechnungsleser“ zugewiesen.
+1. Der Abrechnungsleser erhält eine E-Mail mit einem Link zum Anmelden.
 
     ![Screenshot: Inhalte, die der Abrechnungsleser im Azure-Portal sehen kann](./media/billing-manage-access/billing-reader-view.png)
 
-> [!NOTE]
-> Das Feature Abrechnungsleser befindet sich in der Vorschauversion und unterstützt noch keine nicht globalen Clouds. Enterprise-Abonnements können Kosten anzeigen, wenn der Unternehmensadministrator das Anzeigen von Gebühren aktiviert hat.
+## <a name="allow-department-administrator-or-account-owner-billing-access"></a>Gewähren des Zugriffs auf Abrechnungen für Abteilungsadministratoren oder Kontobesitzer
 
-## <a name="adding-users-to-other-roles"></a>Hinzufügen von Benutzern zu anderen Rollen
+Der Unternehmensadministrator kann Abteilungsadministratoren und Kontobesitzern erlauben, Nutzungsdetails und die Kosten für die von ihnen verwalteten Abteilungen und Konten anzusehen.
 
-Benutzer in anderen Rollen, z.B. „Besitzer“ oder „Mitwirkender“, können nicht nur auf Abrechnungsinformationen, sondern auch auf Azure-Dienste zugreifen. Informationen zum Verwalten dieser Rollen finden Sie unter [Verwalten des Zugriffs mithilfe der RBAC und des Azure-Portals](../role-based-access-control/role-assignments-portal.md).
+1. Melden Sie sich als Unternehmensadministrator beim [Enterprise Agreement-Portal](https://ea.azure.com/) an.
+1. Wählen Sie **Verwalten** aus.
+1. Ändern Sie unter **Registrierung** **Abteilungsadministratoren können Gebühren anzeigen** zu **Aktiviert**, damit der Abteilungsadministrator die Nutzung und die Kosten anzeigen kann.
+1. Ändern Sie **Kontobesitzer können Gebühren anzeigen** zu **Aktiviert**, damit der Kontobesitzer die Nutzung und die Kosten anzeigen kann.
 
-## <a name="who-can-access-the-account-centerhttpsaccountwindowsazurecom"></a>Wer kann auf das [Kontocenter](https://account.windowsazure.com) zugreifen?
 
-Lediglich der Kontoadministrator kann sich beim Kontocenter anmelden. Der Kontoadministrator ist der rechtmäßige Besitzer des Abonnements. Standardmäßig ist die Person, die sich für das Azure-Abonnement registriert oder dieses erworben hat, als Kontoadministrator festgelegt, es sei denn, der [Besitz des Abonnements wurde auf einen anderen Benutzer übertragen](billing-subscription-transfer.md). Der Kontoadministrator kann Abonnements erstellen und kündigen, die Rechnungsadresse für ein Abonnement ändern und Zugriffsrichtlinien für das Abonnement verwalten.
+Weitere Informationen finden Sie unter [Informationen zu Azure Enterprise Agreement-Administratorrollen in Azure](billing-understand-ea-roles.md).
 
-## <a name="need-help-contact-support"></a>Sie brauchen Hilfe? Wenden Sie sich an den Support.
+## <a name="only-account-admins-can-access-account-center"></a>Gewähren des Zugriffs auf das Kontocenter nur für Kontoadministratoren
 
-Bei weiteren Fragen [wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), um das Problem schnell zu lösen.
+Der Kontoadministrator ist der rechtmäßige Besitzer des Abonnements. Standardmäßig ist die Person, die sich für das Azure-Abonnement registriert oder dieses erworben hat, als Kontoadministrator festgelegt, es sei denn, der [Besitz des Abonnements wurde auf einen anderen Benutzer übertragen](billing-subscription-transfer.md). Der Kontoadministrator kann im [Kontocenter](https://account.azure.com/Subscriptions) Abonnements erstellen und kündigen, die Rechnungsadresse für ein Abonnement ändern und Zugriffsrichtlinien für das Abonnement verwalten.
+
+## <a name="next-steps"></a>Nächste Schritte
+
+- Benutzer in anderen Rollen, z.B. „Besitzer“ oder „Mitwirkender“, können nicht nur auf Abrechnungsinformationen, sondern auch auf Azure-Dienste zugreifen. Informationen zum Verwalten dieser Rollen finden Sie unter [Verwalten des Zugriffs mithilfe der RBAC und des Azure-Portals](../role-based-access-control/role-assignments-portal.md).
+- Weitere Informationen zu Rollen finden Sie unter [Integrierte Rollen für Azure-Ressourcen](../role-based-access-control/built-in-roles.md).
+
+## <a name="need-help-contact-us"></a>Sie brauchen Hilfe? Wenden Sie sich an uns.
+
+Wenn Sie weitere Fragen haben oder Hilfe benötigen, [erstellen Sie eine Supportanfrage](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).

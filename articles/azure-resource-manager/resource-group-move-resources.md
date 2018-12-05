@@ -10,14 +10,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/08/2018
+ms.date: 11/23/2018
 ms.author: tomfitz
-ms.openlocfilehash: c65f5364ccd4943d1d3e703ed27099408d3a2a27
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: 15ec028046b7c2b21f1892c460d53c73499680fe
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51346591"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52312536"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement
 
@@ -186,7 +186,7 @@ Die folgende Liste enthält eine allgemeine Zusammenfassung von Azure-Diensten, 
 * CDN
 * Cloud Services – siehe [Einschränkungen bei der klassischen Bereitstellung](#classic-deployment-limitations)
 * Cognitive Services
-* Containerregistrierung
+* Container Registry – eine Container Registry-Instanz kann nicht verschoben werden, wenn die geografische Replikation aktiviert ist.
 * Content Moderator
 * Cost Management
 * Customer Insights

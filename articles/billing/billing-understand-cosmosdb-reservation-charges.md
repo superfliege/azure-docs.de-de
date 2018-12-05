@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: cwatson
 ms.reviewer: sngun
-ms.openlocfilehash: 5b15b5f8188f2077b3e9cb17ab3794e881a4deb3
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: de7b0a2746c79242cb6538595ca3205455a2cc5c
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353430"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52582740"
 ---
 # <a name="understand-how-the-reservation-discount-is-applied-to-azure-cosmos-db"></a>Grundlegendes zur Anwendung des Rabatts für Reservierungen auf Azure Cosmos DB
 
@@ -88,7 +88,7 @@ Der durch eine Reservierung abgedeckte Rabatt wird wie folgt berechnet: verbrauc
 
 **Szenario 2**
 
-Beispiel: Sie benötigen Azure Cosmos DB-Bereitstellungen in den Regionen „Australien, Mitte 2“ und „Frankreich, Süden“. Jede Region verbraucht einen Durchsatz von 50.000 RU/s. Hier würde der Reservierungserwerb von 100.000 RU/s wie folgt gelten (vorausgesetzt, der Verbrauch für „Australien, Mitte 2“ wird zuerst rabattiert):
+Beispiel: Sie benötigen Azure Cosmos DB-Bereitstellungen in den Regionen „Australien, Mitte 2“ und „Frankreich, Süden“. Jede Region verbraucht einen Durchsatz von 50.000 RU/s. Hier würde der folgende Reservierungserwerb von 100.000 RU/s wie folgt gelten (vorausgesetzt, der Verbrauch für „Australien, Mitte 2“ wird zuerst rabattiert):
 
 |Beschreibung der Verbrauchseinheit | Region |Verbrauchter Durchsatz (RU/s) |Anwendung des Reservierungsrabatts auf Anforderungseinheiten pro Sekunde |
 |---------|---------|---------|---------|
@@ -115,7 +115,7 @@ Weitere Informationen zu Azure-Reservierungen finden Sie in den folgenden Artike
 * [Grundlegendes zur Nutzung von Azure-Reservierungen für den Konzernbeitritt](../billing/billing-understand-reserved-instance-usage-ea.md)  
 * [Grundlegendes zur Verwendung von Azure-Reservierungen für CSP-Abonnements](https://docs.microsoft.com/partner-center/azure-reservations)
 
-## <a name="need-help-contact-support"></a>Sie brauchen Hilfe? Support kontaktieren
+## <a name="need-help-contact-us"></a>Sie brauchen Hilfe? Wenden Sie sich an uns.
 
-Bei weiteren Fragen [wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), um das Problem schnell zu lösen.
+Wenn Sie weitere Fragen haben oder Hilfe benötigen, [erstellen Sie eine Supportanfrage](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 

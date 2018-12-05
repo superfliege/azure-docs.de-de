@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/01/2018
+ms.date: 11/22/2018
 ms.author: jeedes
-ms.openlocfilehash: f3f7fc3b837dd4eef9bab8ff34a36329436bad9a
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 608269a05ae1ed699954cd301aa03056e089fa8a
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51010727"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52426100"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jira-saml-sso-by-microsoft"></a>Tutorial: Azure Active Directory-Integration mit JIRA SAML SSO by Microsoft
 
@@ -154,11 +154,26 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     ![Configure single sign-on](./media/jiramicrosoft-tutorial/addon12.png)
 
-9. Sobald das Plug-In installiert ist, wird es im Abschnitt **Add-Ons verwalten** unter **User Installed** (Vom Benutzer installiert) angezeigt. Klicken Sie auf **Konfigurieren**, um das neue Plug-In zu konfigurieren.
+9. Führen Sie die folgenden Schritte aus, um das JIRA-Reverseproxy- oder Lastenausgleichsszenario auszuführen:
+
+    > [!NOTE]
+    > Sie sollten den Server zunächst mit den folgenden Anweisungen konfigurieren und dann das Plug-In installieren.
+
+    a. Fügen Sie das folgende Attribut in **connector**-Port in der **server.xml**-Datei der JIRA-Serveranwendung ein.
+
+    `scheme="https" proxyName="<subdomain.domain.com>" proxyPort="<proxy_port>" secure="true"`
+
+    ![Configure single sign-on](./media/jiramicrosoft-tutorial/reverseproxy1.png)
+
+    b. Ändern Sie **Basis-URL** in **Systemeinstellungen** gemäß Proxy/Lastenausgleich.
+
+    ![Configure single sign-on](./media/jiramicrosoft-tutorial/reverseproxy2.png)
+
+10. Sobald das Plug-In installiert ist, wird es im Abschnitt **Add-Ons verwalten** unter **User Installed** (Vom Benutzer installiert) angezeigt. Klicken Sie auf **Konfigurieren**, um das neue Plug-In zu konfigurieren.
 
     ![Configure single sign-on](./media/jiramicrosoft-tutorial/addon13.png)
 
-10. Führen Sie auf der Konfigurationsseite die folgenden Schritte aus:
+11. Führen Sie auf der Konfigurationsseite die folgenden Schritte aus:
 
     ![Configure single sign-on](./media/jiramicrosoft-tutorial/addon52.png)
 
@@ -207,7 +222,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     a. Geben Sie im Feld **Name** den Namen **BrittaSimon** ein.
   
-    b. Geben Sie im Feld **Benutzername** **brittasimon@yourcompanydomain.extension** ein.  
+    b. Geben Sie im Feld **Benutzername** den Namen **brittasimon@yourcompanydomain.extension** ein.  
     Zum Beispiel, BrittaSimon@contoso.com
 
     c. Wählen Sie **Eigenschaften** aus, aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich dann den Wert, der im Feld „Kennwort“ angezeigt wird.

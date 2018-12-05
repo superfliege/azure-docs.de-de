@@ -10,12 +10,12 @@ author: raymondlaghaeian
 manager: cgronlun
 ms.reviewer: larryfr
 ms.date: 09/24/2018
-ms.openlocfilehash: efaaa196220213877283040120d6c2eeed86dbf3
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: d9328b293d38114d319d79e38b91b1b67e410d94
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51346319"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52581826"
 ---
 # <a name="how-to-deploy-models-from-azure-machine-learning-service-to-azure-kubernetes-service"></a>Bereitstellen von Modellen des Azure Machine Learning-Diensts in Azure Kubernetes Service
 
@@ -25,7 +25,7 @@ Die Bereitstellung in AKS bietet automatische Skalierung, Protokollierung, Model
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Ein Azure-Abonnement. Wenn Sie keins besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+- Ein Azure-Abonnement. Wenn Sie keins besitzen, können Sie ein [kostenloses Konto](https://aka.ms/AMLfree) erstellen, bevor Sie beginnen.
 
 - Ein Arbeitsbereich des Azure Machine Learning Service, ein lokales Verzeichnis mit Ihren Skripts und das Azure Machine Learning SDK für Python müssen installiert sein. Informationen zum Erhalten dieser Voraussetzungen finden Sie im Dokument [Konfigurieren einer Entwicklungsumgebung](how-to-configure-environment.md).
 
@@ -127,7 +127,7 @@ print(aks_target.provisioning_errors)
 Wenn Sie in Ihrem Azure-Abonnement über einen AKS-Cluster verfügen, können Sie diesen für die Bereitstellung Ihres Images verwenden. Der folgende Codeausschnitt veranschaulicht das Anfügen eines Clusters an Ihren Arbeitsbereich. 
 
 > [!IMPORTANT]
-> Es wird nur Version 1.11.2 von AKS unterstützt.
+> Es wird nur die AKS-Version 1.11.3 unterstützt.
 
 ```python
 # Get the resource id from https://porta..azure.com -> Find your resource group -> click on the Kubernetes service -> Properties

@@ -12,15 +12,15 @@ ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.topic: article
-ms.date: 10/09/2018
+ms.date: 11/27/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 4362a6b936c52319f6f6fc625370733f3c84e361
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 74b2cea8e3adfb6689d4ac7049e7892f8f0ecf4a
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50158855"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52582631"
 ---
 # <a name="topologies-for-azure-ad-connect"></a>Topologien für Azure AD Connect
 In diesem Artikel werden verschiedene lokale und Azure Active Directory (Azure AD)-Topologien beschrieben, die Azure AD Connect-Synchronisierung als Schlüsselintegrationslösung verwenden. In diesem Artikel werden sowohl unterstützte als auch nicht unterstützte Konfigurationen beschrieben.
@@ -84,7 +84,9 @@ Ausführlichere Informationen finden Sie unter [Grundlegendes zur Standardkonfig
 
 Das Verbinden mehrerer Azure AD Connect-Synchronisierungsserver mit einem einzelnen Azure AD-Mandanten wird nicht unterstützt. Von dieser Regel sind lediglich [Stagingserver](#staging-server)ausgenommen.
 
-### <a name="multiple-forests-separate-topologies"></a>Mehrere Gesamtstrukturen, separate Topologien
+Diese Topologie unterscheidet sich von der folgenden dadurch, dass nicht **mehrere Synchronisierungsserver** unterstützt werden, die mit einem einzigen Azure AD-Mandanten verbunden sind.
+
+### <a name="multiple-forests-single-sync-server-users-are-represented-in-only-one-directory"></a>Mehrere Gesamtstrukturen, ein einziger Synchronisierungsserver, Darstellung von Benutzern in einem einzigen Verzeichnis
 ![Option: Benutzer werden nur einmal für alle Verzeichnisse dargestellt](./media/plan-connect-topologies/MultiForestUsersOnce.png)
 
 ![Abbildung mehrerer Gesamtstrukturen und separater Topologien](./media/plan-connect-topologies/MultiForestSeparateTopologies.png)

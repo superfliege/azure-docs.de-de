@@ -9,12 +9,12 @@ ms.author: xshi
 ms.date: 09/13/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: d40b82b5beac2da78038e303cb50402d6fa0be7a
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: b8d8223647d42213eff53c2ff8310bed0cfe6cdb
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51566023"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52446737"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-c-modules-for-azure-iot-edge"></a>Verwenden von Visual Studio Code zum Entwickeln und Debuggen von C-Modulen für Azure IoT Edge
 
@@ -59,7 +59,7 @@ Erstellen Sie in diesen Schritten mithilfe von Visual Studio Code und der Azure 
 
 7. Geben Sie einen Namen für Ihr Modul ein. Wählen Sie einen Namen, der in der Containerregistrierung eindeutig ist. 
 
-8. Geben Sie den Namen des Imagerepositorys des Moduls an. VS Code trägt als Modulnamen automatisch **localhost:5000** ein. Ersetzen Sie ihn durch Ihre eigenen Registrierungsinformationen. Wenn Sie eine lokale Docker-Registrierung zum Testen verwenden, können Sie **localhost** nutzen. Nutzen Sie den Anmeldeserver aus Ihren Registrierungseinstellungen, wenn Sie Azure Container Registry verwenden. Der Anmeldeserver hat die Form **\<Registrierungsname\>.azurecr.io**. Ersetzen Sie nur den localhost-Teil der Zeichenfolge, löschen Sie nicht Ihren Modulnamen. 
+8. Geben Sie den Namen des Imagerepositorys des Moduls an. VS Code trägt als Modulnamen automatisch **localhost:5000** ein. Ersetzen Sie ihn durch Ihre eigenen Registrierungsinformationen. Wenn Sie eine lokale Docker-Registrierung zum Testen verwenden, können Sie **localhost** nutzen. Nutzen Sie den Anmeldeserver aus Ihren Registrierungseinstellungen, wenn Sie Azure Container Registry verwenden. Der Anmeldeserver hat die Form **\<Registrierungsname\>.azurecr.io**. Ersetzen Sie nur den localhost-Teil der Zeichenfolge, löschen Sie nicht Ihren Modulnamen. Die endgültige Zeichenfolge sieht wie folgt aus: \<registrierungsname\>.azurecr.io/\<modulname\>.
 
    ![Bereitstellen eines Docker-Imagerepositorys](./media/how-to-develop-c-module/repository.png)
 
@@ -87,20 +87,11 @@ Wenn Sie bereit sind, die C-Vorlage mit Ihrem eigenen Code anzupassen, erstellen
 
 In jedem Modulordner gibt es mehrere Docker-Dateien für unterschiedliche Containertypen. Verwenden Sie jede Datei mit der Erweiterung **.debug**, um Ihr Modul zum Testen zu erstellen. C-Module unterstützen derzeit nur das Debuggen in Containern vom Typ „Linux-amd64“.
 
-1. Wechseln Sie in Visual Studio Code zu der Datei `deployment.template.json`. Aktualisieren Sie Ihre Modulimage-URL, indem Sie am Ende **.debug** hinzufügen.
-
-    ![Hinzufügen von **.debug** zum Imagenamen](./media/how-to-develop-c-module/image-debug.png)
-
-2. Ersetzen Sie „createOptions“ für das C-Modul in **deployment.template.json** durch den unten angegebenen Code, und speichern Sie die Datei: 
-    
-    ```json
-    "createOptions": "{\"HostConfig\": {\"Privileged\": true}}"
-    ```
-
+1. Wechseln Sie in Visual Studio Code zu der Datei `deployment.debug.template.json`. Diese Datei enthält die Debugversion Ihres Modulimages mit den richtigen Erstellungsoptionen. 
 2. Geben Sie in der Befehlspalette von Visual Studio Code den Befehl **Azure IoT Edge: Build and Push IoT Edge solution** ein, und führen Sie ihn aus.
-3. Wählen Sie in der Befehlspalette die Datei `deployment.template.json` für die Projektmappe aus. 
+3. Wählen Sie in der Befehlspalette die Datei `deployment.debug.template.json` für die Projektmappe aus. 
 4. Klicken Sie im Azure IoT Hub Device Explorer mit der rechten Maustaste auf eine IoT Edge-Geräte-ID. Klicken Sie dann auf **Create Deployment for Single Device** (Bereitstellung für einzelnes Gerät erstellen). 
-5. Öffnen Sie den **config**-Ordner Ihrer Projektmappe. Wählen Sie dann die `deployment.json`-Datei aus. Wählen Sie **Edge-Bereitstellungsmanifest auswählen** aus. 
+5. Öffnen Sie den **config**-Ordner Ihrer Projektmappe. Wählen Sie dann die `deployment.debug.amd64.json`-Datei aus. Wählen Sie **Edge-Bereitstellungsmanifest auswählen** aus. 
 
 Sie sehen nun, dass die Bereitstellung erfolgreich mit einer Bereitstellungs-ID im integrierten Terminal von VS Code erstellt wurde.
 

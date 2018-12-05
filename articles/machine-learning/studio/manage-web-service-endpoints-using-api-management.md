@@ -1,11 +1,12 @@
 ---
-title: Erfahren Sie, wie Sie Azure ML-Webdienste mithilfe von API Management verwalten | Microsoft Docs
+title: Verwalten von Machine Learning Studio-Webdiensten mit API Management – Azure | Microsoft-Dokumentation
 description: Diese Leitfaden zeigt, wie Sie Azure ML-Webdienste mithilfe von API Management verwalten.
 keywords: Maschinelles Lernen,API Management
 services: machine-learning
 documentationcenter: ''
-author: YasinMSFT
-ms.author: yahajiza
+author: ericlicoding
+ms.custom: (previous ms.author=yahajiza, author=YasinMSFT)
+ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
 ms.assetid: 05150ae1-5b6a-4d25-ac67-fb2f24a68e8d
@@ -16,16 +17,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/03/2017
-ms.openlocfilehash: 9543b1f3b10c246dadaf21b6960c7b6785fb66f4
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 0a262b2f8716c6d950dc84793a88277f62c3e6a9
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51566379"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52308238"
 ---
-# <a name="learn-how-to-manage-azureml-web-services-using-api-management"></a>Erfahren Sie, wie Sie Azure ML-Webdienste mithilfe von API Management verwalten
+# <a name="manage-azure-machine-learning-studio-web-services-using-api-management"></a>Verwalten von Azure Machine Learning Studio-Webdiensten mit API Management
 ## <a name="overview"></a>Übersicht
-Dieser Leitfaden beschreibt die ersten Schritte mit API Management zur Verwaltung Ihrer Azure ML-Webdienste.
+Dieser Leitfaden beschreibt die ersten Schritte zur Verwaltung Ihrer Azure Machine Learning Studio-Webdienste mit API Management.
 
 ## <a name="what-is-azure-api-management"></a>Was ist Azure API Management?
 Azure API Management ist ein Azure-Dienst, mit dem Sie Ihre REST-API-Endpunkte verwalten können, indem Sie Benutzerzugriff, Nutzungseinschränkungen und Dashboardüberwachung definieren. Klicken Sie [hier](https://azure.microsoft.com/services/api-management/), um Informationen zu Azure API Management zu erhalten. Klicken Sie [hier](../../api-management/api-management-get-started.md), um eine Anleitung zum Einstieg in Azure API Management zu erhalten. In diesem Leitfaden (auf dem der vorliegende Leitfaden basiert) werden weitere Themen behandelt, z.B. Benachrichtigungskonfiguration, Tarife, Antwortverarbeitung, Benutzerauthentifizierung, Produkterstellung, Entwicklerabonnements und Nutzungsdashboards.

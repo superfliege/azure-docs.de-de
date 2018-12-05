@@ -9,22 +9,22 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.openlocfilehash: 4627593e4ab96c63423a7afd6152f3a004bc6c3f
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 349298ba30de5540d5c86c81f483a1bd344dba9c
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47042362"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52497267"
 ---
-# <a name="use-extended-spark-history-server-to-debug-and-diagnose-spark-applications"></a>Verwenden des erweiterten Spark-Verlaufsservers zum Debuggen und Diagnostizieren von Spark-Anwendungen
+# <a name="use-extended-apache-spark-history-server-to-debug-and-diagnose-apache-spark-applications"></a>Verwenden des erweiterten Apache Spark-Verlaufsservers zum Debuggen und Diagnostizieren von Apache Spark-Anwendungen
 
-Dieser Artikel enthält Anleitungen zur Verwendung des erweiterten Spark-Verlaufsservers zum Debuggen und Diagnostizieren abgeschlossener und aktiver Spark-Anwendungen. Die Erweiterung enthält die Registerkarten „Daten“, „Diagramm“ und „Diagnose“. Auf der Registerkarte **Daten** können Benutzer die Eingabe- und Ausgabedaten des Spark-Auftrags überprüfen. Auf der Registerkarte **Diagramm** können Benutzer den Datenfluss überprüfen und das Auftragsdiagramm wiedergeben. Auf der Registerkarte **Diagnose** finden Benutzer die Registerkarten **Datenschiefe**, **Zeitabweichung** und **Executor-Nutzungsanalyse**.
+Dieser Artikel enthält Anleitungen zur Verwendung des erweiterten Apache Spark-Verlaufsservers zum Debuggen und Diagnostizieren abgeschlossener und aktiver Spark-Anwendungen. Die Erweiterung enthält die Registerkarten „Daten“, „Diagramm“ und „Diagnose“. Auf der Registerkarte **Daten** können Benutzer die Eingabe- und Ausgabedaten des Spark-Auftrags überprüfen. Auf der Registerkarte **Diagramm** können Benutzer den Datenfluss überprüfen und das Auftragsdiagramm wiedergeben. Auf der Registerkarte **Diagnose** finden Benutzer die Registerkarten **Datenschiefe**, **Zeitabweichung** und **Executor-Nutzungsanalyse**.
 
-## <a name="get-access-to-spark-history-server"></a>Zugreifen auf den Spark-Verlaufsserver
+## <a name="get-access-to-apache-spark-history-server"></a>Zugreifen auf den Apache Spark-Verlaufsserver
 
-Der Spark-Verlaufsserver ist die Webbenutzeroberfläche für abgeschlossene und ausgeführte Spark-Anwendungen. 
+Der Apache Spark-Verlaufsserver ist die Webbenutzeroberfläche für abgeschlossene und ausgeführte Spark-Anwendungen. 
 
-### <a name="open-the-spark-history-server-web-ui-from-azure-portal"></a>Öffnen der Webbenutzeroberfläche des Spark-Verlaufsservers über das Azure-Portal
+### <a name="open-the-apache-spark-history-server-web-ui-from-azure-portal"></a>Öffnen der Webbenutzeroberfläche des Apache Spark-Verlaufsservers über das Azure-Portal
 
 1. Öffnen Sie im [Azure-Portal](https://portal.azure.com/) den Spark-Cluster. Weitere Informationen finden Sie unter [Auflisten und Anzeigen von Clustern](../hdinsight-administer-use-portal-linux.md#list-and-show-clusters).
 2. Klicken Sie unter **Quicklinks** auf **Clusterdashboard** und dann auf **Spark-Verlaufsserver**. Geben Sie bei Aufforderung die Anmeldeinformationen für den Spark-Cluster ein. 
@@ -87,7 +87,7 @@ Wählen Sie die Auftrags-ID aus, und klicken Sie im Toolmenü auf **Daten**, um 
     ![Feedback zum Diagramm](./media/apache-azure-spark-history-server/sparkui-graph-feedback.png)
 
 
-## <a name="graph-tab-in-spark-history-server"></a>Registerkarte „Diagramm“ im Spark-Verlaufsserver
+## <a name="graph-tab-in-apache-spark-history-server"></a>Registerkarte „Graph“ im Apache Spark-Verlaufsserver
 Wählen Sie die Auftrags-ID aus, und klicken Sie im Toolmenü auf **Diagramm**, um die Ansicht mit dem Auftragsdiagramm aufzurufen.
 
 + Überprüfen Sie die Übersicht über den Auftrag anhand des generierten Auftragsdiagramms. 
@@ -158,7 +158,7 @@ Wählen Sie die Auftrags-ID aus, und klicken Sie im Toolmenü auf **Diagramm**, 
     ![Feedback zum Diagramm](./media/apache-azure-spark-history-server/sparkui-graph-feedback.png)
 
 
-## <a name="diagnosis-tab-in-spark-history-server"></a>Registerkarte „Diagnose“ im Spark-Verlaufsserver
+## <a name="diagnosis-tab-in-apache-spark-history-server"></a>Registerkarte „Diagnose“ im Apache Spark-Verlaufsserver
 Wählen Sie die Auftrags-ID aus, und klicken Sie im Toolmenü auf **Diagnose**, um die Ansicht mit dem Auftragsdiagnose aufzurufen. Die Registerkarte „Diagnose“ enthält die Registerkarten **Datenschiefe**, **Zeitabweichung** und **Executor-Nutzungsanalyse**.
     
 + Überprüfen Sie die **Datenschiefe**, **Zeitabweichung**, und **Executor-Nutzungsanalyse**, indem Sie die entsprechenden Registerkarten auswählen.
@@ -326,8 +326,8 @@ Wenn Sie mit einem Hotfix eine Aktualisierung durchführen möchten, verwenden S
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Verwalten von Ressourcen für einen Spark-Cluster unter HDInsight](apache-spark-resource-manager.md)
-* [Konfigurieren von Spark-Einstellungen](apache-spark-settings.md)
+* [Verwalten von Ressourcen für den Apache Spark-Cluster unter HDInsight](apache-spark-resource-manager.md)
+* [Konfigurieren von Apache Spark-Einstellungen](apache-spark-settings.md)
 
 
 ## <a name="contact-us"></a>Kontakt

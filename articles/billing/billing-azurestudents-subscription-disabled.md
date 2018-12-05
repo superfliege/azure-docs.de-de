@@ -15,12 +15,12 @@ ms.workload: na
 ms.date: 03/01/2018
 ms.author: cwatson
 ROBOTS: NOINDEX
-ms.openlocfilehash: d7bf1d06c598dd7e548c109f68d0996c0be2b6b8
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: c8d78d51425ea5a5fc2f3b326710b3c2ad5a6a06
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47391367"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52581849"
 ---
 # <a name="why-is-my-azure-for-students-subscription-disabled-and-how-do-i-reactivate-it"></a>Warum ist mein Azure für Bildungseinrichtungen-Abonnement deaktiviert, und wie reaktiviere ich es?
 
@@ -57,6 +57,6 @@ Ihr Azure für Bildungseinrichtungen-Guthaben läuft am Ende der 12 Monate ab. N
 
 Wenn Sie versehentlich Ihr Azure für Bildungseinrichtungen-Abonnement gekündigt haben, können Sie es reaktivieren, indem Sie sich an den [Azure-Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) wenden. Sobald Sie es reaktivieren, haben Sie weiterhin ab Ihrem Registrierungsdatum gerechnet 12 Monate lang Zugriff auf das verbliebene Guthaben und kostenlose Dienste.
 
-## <a name="need-help-contact-support"></a>Sie brauchen Hilfe? Support kontaktieren
+## <a name="need-help-contact-us"></a>Sie brauchen Hilfe? Wenden Sie sich an uns.
 
-[Wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), falls Sie weitere Hilfe benötigen, um das Problem schnell beheben zu lassen.
+Wenn Sie weitere Fragen haben oder Hilfe benötigen, [erstellen Sie eine Supportanfrage](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).

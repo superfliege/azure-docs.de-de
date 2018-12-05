@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 08/27/2018
 ms.author: rangv
-ms.openlocfilehash: 55901d6f3bcbf5511b6921939fdcba03972efed3
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: 2ece10c43f25ac637a29324f46a88e50d9655431
+ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47182840"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52620437"
 ---
 # <a name="connect-iot-devkit-az3166-to-azure-iot-hub"></a>Verbinden von IoT DevKit AZ3166 mit Azure IoT Hub
 
@@ -119,12 +119,12 @@ Drücken Sie Taste B, um die Sensoren zu testen. Drücken Sie Taste B wiederholt
 
 Wir empfehlen die Erweiterung [Azure IoT-Workbench](https://aka.ms/iot-workbench) für Visual Studio Code zum Entwickeln im DevKit.
 
-Azure IoT Workbench bietet eine integrierte Umgebung zum Entwickeln von IoT-Lösungen. Sie bietet Unterstützung für die Entwicklung auf Geräten sowie in der Cloud mithilfe von Azure IoT und anderen Diensten. In diesem Channel9-Video erhalten Sie einen Überblick über die Funktionen der Erweiterung.
+Azure IoT Workbench bietet eine integrierte Umgebung zum Entwickeln von IoT-Lösungen. Sie bietet Unterstützung für die Entwicklung auf Geräten sowie in der Cloud mithilfe von Azure IoT und anderen Diensten. In diesem [Channel 9-Video](https://channel9.msdn.com/Shows/Internet-of-Things-Show/IoT-Workbench-extension-for-VS-Code) erhalten Sie einen Überblick über die bereitgestellten Funktionen.
 
 Führen Sie die folgenden Schritte durch, um die Entwicklungsumgebung für DevKit vorzubereiten:
 
 1. Laden Sie die [Arduino-IDE](https://www.arduino.cc/en/Main/Software) herunter, und installieren Sie sie. Sie stellt die erforderliche Toolkette für das Kompilieren und Hochladen von Arduino-Code bereit.
-    * **Windows**: Verwenden Sie die Windows Installer-Version.
+    * **Windows**: Verwenden Sie die Windows Installer-Version. Führen Sie die Installation nicht aus dem App Store durch.
     * **macOS**: Ziehen Sie die extrahierte Datei **Arduino.app** in den Ordner `/Applications`.
     * **Ubuntu**: Entpacken Sie die Datei in einem Ordner wie `$HOME/Downloads/arduino-1.8.5`.
 
@@ -133,15 +133,15 @@ Führen Sie die folgenden Schritte durch, um die Entwicklungsumgebung für DevKi
 3. Suchen Sie im Marketplace für Erweiterungen nach **Azure IoT Workbench**, und installieren Sie die Erweiterung.
     ![Installieren von Azure IoT Workbench](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/install-workbench.png): Zusammen mit IoT Workbench werden weitere abhängige Erweiterungen installiert.
 
-4. Öffnen Sie **Datei > Einstellung > Einstellungen**, und fügen Sie die folgenden Zeilen hinzu, um Arduino zu konfigurieren.
-    * **Windows:**
-
+4. Konfigurieren von Arduino
+    * **Windows**: Klicken Sie unter **Windows** auf **Datei > Voreinstellungen > Einstellungen**, klicken Sie auf **...**, und öffnen Sie die Datei „settings.json“. Fügen Sie dann die folgenden Zeilen zum Konfigurieren von Arduino ein. 
+      
     ```json
     "arduino.path": "C:\\Program Files (x86)\\Arduino",
     "arduino.additionalUrls": "https://raw.githubusercontent.com/VSChina/azureiotdevkit_tools/master/package_azureboard_index.json"
     ```
 
-    * **macOS**:
+    * **macOS**: Klicken Sie unter **macOS** auf **Code > Voreinstellungen > Einstellungen**, klicken Sie auf **...**, und öffnen Sie die Datei „settings.json“. Fügen Sie dann die folgenden Zeilen zum Konfigurieren von Arduino ein.
 
     ```json
     "arduino.path": "/Applications",
@@ -195,7 +195,7 @@ Jetzt sind Sie mit der Vorbereitung und Konfiguration Ihrer Entwicklungsumgebung
 1. Klicken Sie im neu geöffneten Projektfenster auf `F1`, um die Befehlspalette zu öffnen, geben Sie **IoT Workbench: Cloud** ein, wählen Sie es aus, und wählen Sie dann **Azure-Bereitstellung** aus. Folgen Sie der Schritt-für-Schritt-Anleitung, um die Bereitstellung Ihrer Azure IoT Hub-Instanz und das Erstellen des Geräts fertigzustellen.
     ![Cloudbereitstellung](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/cloud-provision.png)
 
-1. Klicken Sie auf `F1`, um die Befehlspalette zu öffnen, geben Sie **IoT Workbench: Gerät** ein, wählen Sie es aus, und wählen Sie dann **Geräteeinstellungen konfigurieren > Verbindungszeichenfolge für das IoT Hub-Gerät auswählen** aus.
+1. Klicken Sie auf `F1`, um die Befehlspalette zu öffnen, geben Sie **IoT Workbench: Gerät** ein, wählen Sie es aus, und wählen Sie dann **Geräteeinstellungen konfigurieren > Verbindungszeichenfolge für das Gerät konfigurieren > Verbindungszeichenfolge für das IoT Hub-Gerät auswählen** aus.
 
 1. Halten Sie im DevKit die **Taste A** gedrückt, und lassen Sie **Rücksetztaste**  los. Lassen Sie dann die **Taste A** los. Ihr DevKit wechselt in den Konfigurationsmodus und speichert die Verbindungszeichenfolge.
     ![Verbindungszeichenfolge](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/connection-string.png)

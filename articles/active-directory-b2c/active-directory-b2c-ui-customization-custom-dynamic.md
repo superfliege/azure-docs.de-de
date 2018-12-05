@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/20/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 4e7cc47bddf3663cbc1c8bb5c4470020a84073e4
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 11a14bc8b593e5e7d81e9bdbd4ac4ee3b2bbecaa
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37441650"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52582886"
 ---
 # <a name="azure-active-directory-b2c-configure-the-ui-with-dynamic-content-by-using-custom-policies"></a>Azure Active Directory B2C: Konfigurieren der Benutzeroberfläche mit dynamischen Inhalten mithilfe von benutzerdefinierten Richtlinien
 
@@ -178,7 +178,7 @@ Suchen Sie das `<img>`-Element, das den `ID`-Wert *background_background_image* 
 
 3. Nehmen Sie im Fenster **CORS** im Feld **Zulässige Ursprünge** eine der folgenden Eingaben vor:
 
-    * Geben Sie die URLs ein, von denen JavaScript-Aufrufe ausgehen können sollen.
+    * Geben Sie die URLs ein, von denen JavaScript-Aufrufe ausgehen können sollen. Sie dürfen bei der Eingabe Ihrer URLs ausschließlich Kleinbuchstaben verwenden.
     * Geben Sie ein Sternchen (*) ein, um anzugeben, dass alle Ursprungsdomänen akzeptiert werden.
 
 4. Wählen Sie **Speichern**aus.

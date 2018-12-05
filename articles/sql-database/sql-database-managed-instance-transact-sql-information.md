@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: carlrab, bonova
 manager: craigg
 ms.date: 10/24/2018
-ms.openlocfilehash: c51df7aeef136fee42b061cd422cc62d67f33e96
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 31b09818f901ecf957364ae77fd8c6e636b04342
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51258917"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51712142"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>T-SQL-Unterschiede zwischen einer verwalteten Azure SQL-Datenbank-Instanz und SQL Server
 
@@ -75,7 +75,7 @@ In einer verwalteten Instanz werden automatische Sicherungen durchgeführt, soda
   - Bandoptionen: `REWIND`, `NOREWIND`, `UNLOAD` und `NOUNLOAD` werden nicht unterstützt.
   - Protokollspezifische Optionen: `NORECOVERY`, `STANDBY` und `NO_TRUNCATE` werden nicht unterstützt.
 
-Einschränkungen:  
+ Einschränkungen:  
 
 - Eine verwaltete Instanz kann eine Datenbank in einer Sicherung mit bis zu 32 Stripes sichern. Dies ist ausreichend für Datenbanken mit bis zu 4 TB, wenn die Sicherungskomprimierung verwendet wird.
 - Die maximale Stripegröße für Sicherungen ist 195 GB (maximale Blobgröße). Erhöhen Sie die Anzahl der Stripes im Sicherungsbefehl, um die einzelne Stripegröße zu verringern und diese Einschränkung einzuhalten.
@@ -317,7 +317,7 @@ Die folgenden Datenbankoptionen werden festgelegt oder überschrieben und könne
 - Alle vorhandenen arbeitsspeicheroptimierten Dateigruppen werden in XTP umbenannt.  
 - Die Optionen `SINGLE_USER` und `RESTRICTED_USER` werden in `MULTI_USER` konvertiert.
 
-Einschränkungen:  
+ Einschränkungen:  
 
 - `.BAK`-Dateien mit mehreren Sicherungssätzen können nicht wiederhergestellt werden.
 - `.BAK`-Dateien mit mehreren Protokolldateien können nicht wiederhergestellt werden.

@@ -1,11 +1,12 @@
 ---
-title: Die fünf Data Science-Fragen – Data Science für Einsteiger – Azure Machine Learning | Microsoft-Dokumentation
+title: Die fünf Data Science-Fragen – Data Science für Einsteiger – Azure Machine Learning Studio | Microsoft-Dokumentation
 description: Data Science für Anfänger erläutert die grundlegenden Konzepte in fünf kurzen Videos, beginnend mit den fünf Fragen, die Data Science beantwortet. Aus Azure Machine Learning.
 keywords: Ausführen von Data Science,Data Science-Einsteiger,Data Science für Einsteiger,Data Science-Grundlagen,Data Science-Fragen,Data Science-Video,Data Science-Einführung
 services: machine-learning
 documentationcenter: na
-author: heatherbshapiro
-ms.author: hshapiro
+author: ericlicoding
+ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
+ms.author: amlstudiodocs
 manager: hjerez
 editor: cjgronlund
 ms.assetid: a01f93ee-01eb-4afe-abbd-cfa035c119b0
@@ -16,12 +17,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/03/2018
-ms.openlocfilehash: 1d004eb16fcac13d6ba7592cbe432cbeac0401e8
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: c59b4783c59c44604738a3056b3484e11ff90363
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34834150"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52314165"
 ---
 # <a name="data-science-for-beginners-video-1-the-5-questions-data-science-answers"></a>Data Science für Einsteiger, 1. Video: Die 5 Fragen, die Data Science beantwortet
 In den fünf kurzen Videos der Reihe *Data Science für Einsteiger* von einem Data Science-Experten erhalten Sie eine kurze Einführung in Data Science. In diesen Videos werden zwar nur die Grundlagen behandelt, sie sind aber hilfreich, wenn Sie sich selbst mit Data Science beschäftigen möchten oder mit Data Scientists arbeiten.

@@ -14,18 +14,24 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/05/2017
 ms.author: apimpm
-ms.openlocfilehash: 0f27b6b529c2591e37d48e3386190077fc8efc32
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 8c21ed737cab98c9136e1c1991997ff3931a4c9d
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2018
-ms.locfileid: "29378155"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52447196"
 ---
 # <a name="azure-api-management-template-data-model-reference"></a>Datenmodellreferenz zu Azure API Management-Vorlagen
 In diesem Thema werden die Entitäts- und Typendarstellungen für gängige Elemente beschrieben, die in den Datenmodellen für die Entwicklerportalvorlagen in Azure API Management verwendet werden.  
   
  Weitere Informationen zum Arbeiten mit Vorlagen finden Sie unter [So passen Sie das Azure API Management-Entwicklerportal mithilfe von Vorlagen an](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).  
-  
+
+[!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
+
+Das Entwicklerportal ist nicht im Tarif „Verbrauch“ verfügbar.
+
+## <a name="reference"></a>Verweis
+
 -   [API](#API)  
 -   [API-Zusammenfassung](#APISummary)  
 -   [Anwendung](#Application)  
@@ -85,7 +91,7 @@ In diesem Thema werden die Entitäts- und Typendarstellungen für gängige Eleme
 |Url|URI|Der URI für die Anwendung.|  
 |Version|Zeichenfolge|Versionsinformationen für die Anwendung.|  
 |Requirements (Anforderungen)|Zeichenfolge|Eine Beschreibung der Anforderungen für die Anwendung.|  
-|State (Zustand)|number|Der aktuelle Status der Anwendung.<br /><br /> – 0 – registriert<br /><br /> – 1 – übermittelt<br /><br /> – 2 – veröffentlicht<br /><br /> – 3 – abgelehnt<br /><br /> – 4 – unveröffentlicht|  
+|Zustand|number|Der aktuelle Status der Anwendung.<br /><br /> – 0 – registriert<br /><br /> – 1 – übermittelt<br /><br /> – 2 – veröffentlicht<br /><br /> – 3 – abgelehnt<br /><br /> – 4 – unveröffentlicht|  
 |RegistrationDate|Datetime|Das Datum und die Uhrzeit der Anwendungsregistrierung.|  
 |CategoryId|number|Die Kategorie der Anwendung (Finanzen, Unterhaltung usw.).|  
 |DeveloperId|Zeichenfolge|Der eindeutige Bezeichner des Entwicklers, der die Anwendung übermittelt hat.|  
@@ -207,7 +213,7 @@ In diesem Thema werden die Entitäts- und Typendarstellungen für gängige Eleme
 |--------------|----------|-----------------|  
 |ApiId|Zeichenfolge|Die ID der aktuellen API.|  
 |CurrentOperationId|Zeichenfolge|Die ID des aktuellen Vorgangs.|  
-|anzuzeigen.|Zeichenfolge|Der Menütyp.|  
+|Aktion|Zeichenfolge|Der Menütyp.|  
 |MenuItems|Sammlung von [Operation menu item](#MenuItem)-Entitäten.|Die Vorgänge für die aktuelle API.|  
   
 ##  <a name="MenuItem"></a> Vorgangsmenüelement  
@@ -315,7 +321,7 @@ In diesem Thema werden die Entitäts- und Typendarstellungen für gängige Eleme
 |Vorname|Zeichenfolge|Vorname. Darf nicht leer sein. Die maximale Länge beträgt 100 Zeichen.|  
 |LastName|Zeichenfolge|Nachname. Darf nicht leer sein. Die maximale Länge beträgt 100 Zeichen.|  
 |E-Mail|Zeichenfolge|E-Mail-Adresse. Darf nicht leer sein und muss innerhalb der Dienstinstanz eindeutig sein. Die maximale Länge beträgt 254 Zeichen.|  
-|Password|Zeichenfolge|Kennwort des Benutzerkontos.|  
+|Kennwort|Zeichenfolge|Kennwort des Benutzerkontos.|  
 |NameIdentifier|Zeichenfolge|Kontobezeichner, identisch mit der E-Mail-Adresse des Benutzers.|  
 |ProviderName|Zeichenfolge|Name des Authentifizierungsanbieters.|  
 |IsBasicAccount|boolean|TRUE, wenn dieses Konto mithilfe von E-Mail-Adresse und Kennwort registriert wurde. FALSE, wenn das Konto mithilfe eines Anbieters registriert wurde.|  
@@ -326,7 +332,7 @@ In diesem Thema werden die Entitäts- und Typendarstellungen für gängige Eleme
 |Eigenschaft|Typ|BESCHREIBUNG|  
 |--------------|----------|-----------------|  
 |E-Mail|Zeichenfolge|E-Mail-Adresse. Darf nicht leer sein und muss innerhalb der Dienstinstanz eindeutig sein. Die maximale Länge beträgt 254 Zeichen.|  
-|Password|Zeichenfolge|Kennwort des Benutzerkontos.|  
+|Kennwort|Zeichenfolge|Kennwort des Benutzerkontos.|  
 |ReturnUrl|Zeichenfolge|Die URL der Seite, auf der der Benutzer auf „Anmelden“ geklickt hat.|  
 |RememberMe|boolean|Gibt an, ob die Informationen des aktuellen Benutzers gespeichert werden sollen.|  
 |RegistrationEnabled|boolean|Gibt an, ob die Registrierung aktiviert ist.|  
@@ -344,7 +350,7 @@ In diesem Thema werden die Entitäts- und Typendarstellungen für gängige Eleme
 |Eigenschaft|Typ|BESCHREIBUNG|  
 |--------------|----------|-----------------|  
 |PasswordConfirm|boolean|Der vom [Anmeldesteuerelement](api-management-page-controls.md#sign-up) verwendete Wert.|  
-|Password|Zeichenfolge|Kennwort des Benutzerkontos.|  
+|Kennwort|Zeichenfolge|Kennwort des Benutzerkontos.|  
 |PasswordVerdictLevel|number|Der vom [Anmeldesteuerelement](api-management-page-controls.md#sign-up) verwendete Wert.|  
 |UserRegistrationTerms|Zeichenfolge|Bedingungen, denen ein Benutzer zustimmen muss, bevor er sich anmeldet.|  
 |UserRegistrationTermsOptions|number|Der vom [Anmeldesteuerelement](api-management-page-controls.md#sign-up) verwendete Wert.|  

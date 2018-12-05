@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/10/2018
 ms.author: dharmas
 ms.reviewer: sngun
-ms.openlocfilehash: 463c74638b0e50348b8c9454334b7457e7b570e6
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 5db43c6488a4592eb46d9a0fe9a044dde36fc494
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51283885"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52423346"
 ---
 # <a name="azure-cosmos-db-global-distribution---under-the-hood"></a>Globale Verteilung von Azure Cosmos DB: Hintergrundinformationen
 
@@ -72,7 +72,7 @@ Für Cosmos-Datenbanken, die mit mehreren Schreibregionen konfiguriert wurden, s
 
 Unabhängig davon, ob Sie Ihre Cosmos-Datenbank mit einem Schreibbereich oder mehreren Schreibbereichen konfigurieren, können Sie unter fünf genau definierten Konsistenzmodellen wählen. Aufgrund der neu eingeführten Unterstützung für die Aktivierung mehrerer Schreibregionen sollten die folgenden Aspekte von Konsistenzstufen berücksichtigt werden:  
 
-Wie bisher garantiert die Konsistenz mit begrenzter Veraltung, dass alle Lesevorgänge innerhalb von k Präfixen oder t Sekunden nach dem letzten Schreibvorgang in einer der Regionen liegen. Darüber hinaus werden für Lesevorgänge mit Konsistenz mit begrenzter Veraltung Monotonie und konsistente Präfixe garantiert. Das Anti-Entropie-Protokoll wird mit Ratenlimit ausgeführt. Es stellt sicher, dass die Präfixe sich nicht anhäufen und dass der Rückstau bei den Schreibanforderungen nicht angewandt werden muss. Wie bisher garantiert Sitzungskonsistenz monotone Lesevorgänge, monotone Schreibvorgänge, Lesen eigener Schreibvorgänge (RYOW), Write-Follows-Read und konsistente Präfixe weltweit. Bei Datenbanken, die mit strikter Konsistenz konfiguriert wurden, wechselt das System zurück zu nur einer Schreibregion, indem in jeder Partitionsgruppe ein Leader festgelegt wird. 
+Wie bisher garantiert die Konsistenz mit begrenzter Veraltung, dass alle Lesevorgänge innerhalb von k Präfixen oder t Sekunden nach dem letzten Schreibvorgang in einer der Regionen liegen. Darüber hinaus werden für Lesevorgänge mit Konsistenz mit begrenzter Veraltung Monotonie und konsistente Präfixe garantiert. Das Anti-Entropie-Protokoll wird mit Ratenlimit ausgeführt. Es stellt sicher, dass die Präfixe sich nicht anhäufen und dass der Rückstau bei den Schreibanforderungen nicht angewandt werden muss. Wie bisher garantiert Sitzungskonsistenz monotone Lesevorgänge, monotone Schreibvorgänge, Lesen eigener Schreibvorgänge (RYOW), Write-Follows-Read und konsistente Präfixe weltweit. Für die mit starker Konsistenz konfigurierten Datenbanken gelten die Vorteile des Multimastering (geringe Schreiblatenz, hohe Schreibverfügbarkeit) aufgrund der Regionen übergreifenden synchronen Replikation nicht.
 
 Die Semantik der fünf Konsistenzmodelle in Cosmos DB wird [hier](consistency-levels.md) beschrieben und [hier](https://github.com/Azure/azure-cosmos-tla) mathematisch anhand einer TLA+-Spezifikation auf hoher Ebenen veranschaulicht.
 
@@ -81,5 +81,5 @@ Die Semantik der fünf Konsistenzmodelle in Cosmos DB wird [hier](consistency-le
 Als nächstes erfahren Sie, wie Sie die globale Verteilung konfigurieren, indem Sie die folgenden Artikel verwenden:
 
 * [Konfigurieren von Clients für Multihoming](how-to-manage-database-account.md#configure-clients-for-multi-homing)
-* [Hinzufügen von Regionen zu Ihrer Datenbank bzw. Entfernen von Regionen aus ihr](how-to-manage-database-account.md#addremove-regions-from-your-database-account)
+* [Hinzufügen/Entfernen von Regionen für Ihr Datenbankkonto](how-to-manage-database-account.md#addremove-regions-from-your-database-account)
 * [Erstellen einer benutzerdefinierten Konfliktlösungsrichtlinie für SQL-API-Konten](how-to-manage-conflicts.md#create-a-custom-conflict-resolution-policy)

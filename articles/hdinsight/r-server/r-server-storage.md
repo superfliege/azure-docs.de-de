@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 466cb9ea116030d3f6ee6b41809011dae9acc00b
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 578479d43279dc1edb9edd24fd57d6841784166a
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51011203"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52498138"
 ---
 # <a name="azure-storage-solutions-for-ml-services-on-azure-hdinsight"></a>Azure Storage-Lösungen für ML Services in Azure HDInsight
 
@@ -26,7 +26,7 @@ ML Services in HDInsight kann mit einer Vielzahl an Speicherlösungen zum dauerh
 
 Sie haben auch die Möglichkeit, mit Ihrem HDInsight-Cluster auf mehrere Azure-Speicherkonten oder -Container zuzugreifen. Azure File Storage ist eine komfortable Datenspeicheroption zur Verwendung auf dem Edgeknoten, mit der Sie eine Azure Storage-Dateifreigabe z.B. auf einem Linux-Dateisystem bereitstellen können. Die Dateifreigaben können mit Azure File jedoch von allen Systemen mit einem unterstützten Betriebssystem, z.B. Windows oder Linux, bereitgestellt und verwendet werden. 
 
-Bei der Erstellung eines Hadoop-Clusters in HDInsight geben Sie ein **Azure Storage**-Konto oder einen **Data Lake Store** an. Ein spezieller Speichercontainer dieses Kontos enthält das Dateisystem für den von Ihnen erstellten Cluster (z.B. das Hadoop Distributed File System). Weitere Informationen und Anleitungen finden Sie unter:
+Bei der Erstellung eines Apache Hadoop-Clusters in HDInsight geben Sie entweder ein **Azure Storage**-Konto oder einen **Data Lake-Speicher** an. Ein spezieller Speichercontainer dieses Kontos enthält das Dateisystem für den von Ihnen erstellten Cluster (z.B. das Hadoop Distributed File System). Weitere Informationen und Anleitungen finden Sie unter:
 
 - [Verwenden von Azure Storage mit HDInsight](../hdinsight-hadoop-use-blob-storage.md)
 - [Verwenden von Data Lake Store mit Azure HDInsight-Clustern](../hdinsight-hadoop-use-data-lake-store.md)
@@ -170,6 +170,6 @@ Ein großer Vorteil von Azure Files besteht darin, dass die Dateifreigaben von a
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Übersicht über ML Services-Cluster in HDInsight](r-server-overview.md)
-* [Erste Schritte mit ML Services-Clustern in Hadoop](r-server-get-started.md)
+* [Erste Schritte mit ML Services-Clustern in Apache Hadoop](r-server-get-started.md)
 * [Compute context options for ML Services on HDInsight](r-server-compute-contexts.md) (Computekontextoptionen für ML Services in HDInsight)
 

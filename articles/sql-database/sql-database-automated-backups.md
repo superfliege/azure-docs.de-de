@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 09/25/2018
-ms.openlocfilehash: 36099a49cc9e6c810727606bb73d2669f1e0df79
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 9c5cdf6c2baf4197b693b522848fc1fd04db7abf
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49985691"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52422509"
 ---
 # <a name="learn-about-automatic-sql-database-backups"></a>Informationen zu automatischen Sicherungen von SQL-Datenbank
 
@@ -42,7 +42,7 @@ Sie können diese Sicherungen für Folgendes verwenden:
 
 ## <a name="how-long-are-backups-kept"></a>Wie lange werden Sicherungen aufbewahrt?
 
-Für jede SQL-Datenbank-Sicherung gilt eine Standardaufbewahrungsdauer, die auf dem Diensttarif der Datenbank basiert. Hierbei wird zwischen dem [DTU-basierten Kaufmodell](sql-database-service-tiers-dtu.md) und dem [V-Kern-basierten Kaufmodell](sql-database-service-tiers-vcore.md) unterschieden. Sie können die Aufbewahrungsdauer von Sicherungen für eine Datenbank aktualisieren. Ausführlichere Informationen finden Sie unter [Ändern des Zeitraums für die Aufbewahrung von Sicherungen](#how-to-change-backup-retention-period).
+Der Zeitraum zur Beibehaltung der Sicherung beträgt standardmäßig für jede SQL-Datenbank-Instanz zwischen 7 und 35 Tagen, was von [Kaufmodell und Dienstebene](#pitr-retention-period) abhängt. Sie können den Zeitraum zur Beibehaltung der Sicherung für eine Datenbank auf Azure Logical Server aktualisieren (dieses Feature wird bald in einer verwalteten Instanz aktiviert sein). Ausführlichere Informationen finden Sie unter [Ändern des Zeitraums für die Aufbewahrung von Sicherungen](#how-to-change-backup-retention-period).
 
 Wenn Sie eine Datenbank löschen, bewahrt SQL-Datenbank die Sicherungen auf die gleiche Weise wie für eine Onlinedatenbank auf. Beim Löschen einer Datenbank vom Typ „Basic“, für die eine Aufbewahrungsdauer von sieben Tagen gilt, wird eine vier Tage alte Sicherung weitere drei Tage lang aufbewahrt.
 

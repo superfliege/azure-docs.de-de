@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
-ms.openlocfilehash: 966f05fba96cc829c3a11331e2a66609705f6f4f
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 58f4827910d863aef14171574d40e4b3acfc04d9
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51037684"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52498681"
 ---
 # <a name="enable-heap-dumps-for-apache-hadoop-services-on-linux-based-hdinsight"></a>Aktivieren von Heapdumps für Apache Hadoop-Dienste in Linux-basiertem HDInsight
 
@@ -31,7 +31,7 @@ Sie können Heapdumps für die folgenden Dienste aktivieren:
 
 * **Apache hcatalog**: tempelton
 * **Apache hive**: hiveserver2, metastore, derbyserver
-* **mapreduce**: jobhistoryserver
+* **mapreduce** : jobhistoryserver
 * **Apache yarn**: resourcemanager, nodemanager, timelineserver
 * **Apache hdfs**: datanode, secondarynamenode, namenode
 
@@ -39,7 +39,7 @@ Sie können Heapdumps auch für die Mapper- und Reducer-Prozesse aktivieren, die
 
 ## <a name="configuration"></a>Grundlegendes zur Konfiguration von Heapdumps
 
-Heapdumps werden aktiviert, indem Optionen (oder Parameter) an die JVM übergeben werden, wenn ein Dienst gestartet wird. Für die meisten Hadoop-Dienste können Sie das zum Starten des Diensts verwendete Shellskript ändern, um diese Optionen zu übergeben.
+Heapdumps werden aktiviert, indem Optionen (oder Parameter) an die JVM übergeben werden, wenn ein Dienst gestartet wird. Für die meisten [Apache Hadoop](https://hadoop.apache.org/)-Dienste können Sie das zum Starten des Diensts verwendete Shellskript ändern, um diese Optionen zu übergeben.
 
 In jedem Skript ist ein Export für **\*\_OPTS** vorhanden, der die an die JVM übergebenen Optionen enthält. Beispiel: Im Skript **hadoop-env.sh** enthält die Zeile, die mit `export HADOOP_NAMENODE_OPTS=` beginnt, die Optionen für den NameNode-Dienst.
 
@@ -49,7 +49,7 @@ Mapper- und Reducer-Prozesse unterscheiden sich geringfügig, da diese untergeor
 * **mapreduce.admin.reduce.child.java.opts**
 
 > [!NOTE]
-> Wir empfehlen die Verwendung von Apache Ambari zum Ändern der Skripts und der Einstellungen in „mapred-site.xml“, da Ambari das Replizieren von Änderungen auf Knoten im Cluster verarbeitet. Unter [Verwenden von Ambari](#using-ambari) finden Sie die detaillierten Schritte.
+> Wir empfehlen die Verwendung von [Apache Ambari](https://ambari.apache.org/) zum Ändern der Skripts und der Einstellungen in „mapred-site.xml“, da Ambari das Replizieren von Änderungen auf Knoten im Cluster verarbeitet. Unter [Verwenden von Apache Ambari](#using-apache-ambari) finden Sie die detaillierten Schritte.
 
 ### <a name="enable-heap-dumps"></a>Aktivieren von Heapdumps
 
@@ -77,11 +77,11 @@ Sie können auch ein Skript auslösen, wenn ein **OutOfMemoryError** auftritt. S
     -XX:OnOutOfMemoryError=/path/to/script
 
 > [!NOTE]
-> Da Hadoop ein verteiltes System ist, muss jedes verwendete Skript auf allen Knoten im Cluster vorhanden sein, auf denen der Dienst ausgeführt wird.
+> Da Apache Hadoop ein verteiltes System ist, muss jedes verwendete Skript auf allen Knoten im Cluster vorhanden sein, auf denen der Dienst ausgeführt wird.
 > 
 > Das Skript muss sich zudem an einem Speicherort befinden, auf den das Konto zugreifen kann, mit dem der Dienst ausgeführt wird, und Ausführungsberechtigungen müssen gewährt werden. Sie könnten z. B. Skripts in `/usr/local/bin` speichern und `chmod go+rx /usr/local/bin/filename.sh` zum Gewähren von Lese- und Ausführungsberechtigungen verwenden.
 
-## <a name="using-ambari"></a>Verwenden von Ambari
+## <a name="using-apache-ambari"></a>Verwenden von Apache Ambari
 
 Gehen Sie folgendermaßen vor, um die Konfiguration für einen Dienst zu ändern:
 

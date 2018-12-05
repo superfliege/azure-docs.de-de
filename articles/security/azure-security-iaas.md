@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/18/2018
 ms.author: barclayn
-ms.openlocfilehash: 057c98d4bac87b4e43e5beb8268d3d3bdbe3ec85
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 6033a61351423e65490edfe0b0607f2395c80f86
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46364260"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52498344"
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Bewährte Sicherheitsmethoden für IaaS-Workloads in Azure
 
@@ -51,7 +51,7 @@ Wenn Ihre Organisation über viele Abonnements verfügt, benötigen Sie möglich
 
 - [Mitwirkender für virtuelle Computer:](../role-based-access-control/built-in-roles.md#virtual-machine-contributor) Kann virtuelle Computer verwalten, aber nicht das virtuelle Netzwerk oder Speicherkonto, mit dem sie verbunden sind.
 - [Mitwirkender für klassische virtuelle Computer:](../role-based-access-control/built-in-roles.md#classic-virtual-machine-contributor) Kann virtuelle Computer verwalten, die mit dem klassischen Bereitstellungsmodell erstellt wurden, aber nicht das virtuelle Netzwerk oder Speicherkonto, mit dem sie verbunden sind.
-- [Sicherheits-Manager:](../role-based-access-control/built-in-roles.md#security-manager) Kann Sicherheitskomponenten, Sicherheitsrichtlinien und virtuelle Computer verwalten.
+- [Sicherheitsadministrator](../role-based-access-control/built-in-roles.md#security-admin): Nur in Security Center: Kann Sicherheitsrichtlinien und -zustände anzeigen, Sicherheitsrichtlinien bearbeiten sowie Warnungen und Empfehlungen anzeigen und verwerfen.
 - [DevTest Labs-Benutzer:](../role-based-access-control/built-in-roles.md#devtest-labs-user) Kann alles anzeigen sowie virtuelle Computer verbinden, starten, neu starten und herunterfahren.
 
 Ihre Abonnementadministratoren und Coadministratoren können diese Einstellung ändern und so zu Administratoren aller virtuellen Computer in einem Abonnement werden. Achten Sie darauf, dass alle Ihre Abonnementadministratoren und -coadministratoren für die Anmeldung bei Ihren Computern vertrauenswürdig sind.

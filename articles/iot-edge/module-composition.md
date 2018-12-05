@@ -4,26 +4,26 @@ description: Hier erfahren Sie, wie ein Bereitstellungsmanifest deklariert, welc
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 06/06/2018
+ms.date: 11/28/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 3201e8509e7c63bb0d9b607d26292bd85e2b605d
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 106ad5d4649b2845327eadd99972d56f1503b3e4
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51569232"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52584807"
 ---
 # <a name="learn-how-to-deploy-modules-and-establish-routes-in-iot-edge"></a>Bereitstellen von Modulen und Einrichten von Routen in IoT Edge
 
-Jedes IoT Edge-Gerät führt mindestens zwei Module aus, die die IoT Edge-Runtime bilden: „$edgeAgent“ und „$edgeHub“. Darüber hinaus kann jedes IoT Edge-Gerät mehrere Module ausführen, um eine beliebige Anzahl von Prozessen auszuführen. Wenn Sie all diese Module gleichzeitig auf einem Gerät bereitstellen, müssen Sie deklarieren, welche Module enthalten sind und wie sie miteinander interagieren. 
+Jedes IoT Edge-Gerät führt mindestens zwei Module aus, die die IoT Edge-Runtime ausmachen: „$edgeAgent“ und „$edgeHub“. Darüber hinaus kann jedes IoT Edge-Gerät mehrere Module ausführen, um eine beliebige Anzahl von Prozessen auszuführen. Alle diese Module werden gleichzeitig auf einem Gerät bereitgestellt. IoT Edge bietet eine Möglichkeit, zu deklarieren, welche Module installiert und wie sie für die gemeinsame Funktionsweise konfiguriert werden. 
 
 Das *Bereitstellungsmanifest* ist ein JSON-Dokument, das Folgendes beschreibt:
 
-* Die Konfiguration des Edge-Agents mit dem Containerimage für das jeweilige Modul, den Anmeldeinformationen für den Zugriff auf private Containerregistrierungen und Anweisungen zur Erstellung und Verwaltung des jeweiligen Moduls
-* Die Konfiguration des Edge-Hubs, die u. a. definiert, wie Nachrichten zwischen Modulen und schließlich an IoT Hub gesendet werden
-* Die gewünschten Eigenschaften der Modulzwillinge (optional)
+* Den Modulzwilling des **IoT Edge-Agents** mit dem Containerimage für das jeweilige Modul, den Anmeldeinformationen für den Zugriff auf private Containerregistrierungen und Anweisungen zur Erstellung und Verwaltung des jeweiligen Moduls
+* Den Modulzwilling des **IoT Edge-Hubs**, der u.a. festlegt, wie Nachrichten zwischen Modulen und schließlich an IoT Hub gesendet werden
+* Ggf. die gewünschten Eigenschaften zusätzlicher Modulzwillinge
 
 Alle IoT Edge-Geräte müssen mit einem Bereitstellungsmanifest konfiguriert werden. Eine neu installierte IoT Edge-Runtime meldet einen Fehlercode, solange kein gültiges Manifest konfiguriert ist. 
 
@@ -31,23 +31,27 @@ In den Azure IoT Edge-Tutorials erstellen Sie ein Bereitstellungsmanifest mithil
 
 ## <a name="create-a-deployment-manifest"></a>Erstellen eines Bereitstellungsmanifests
 
-Allgemein beschrieben konfiguriert das Bereitstellungsmanifest die gewünschten Eigenschaften eines Modulzwillings für IoT Edge-Module, die auf einem IoT Edge-Gerät bereitgestellt werden. Zwei dieser Module sind immer vorhanden: `$edgeAgent` und `$edgeHub`.
+Im Grunde ist ein Bereitstellungsmanifest eine Liste von Modulzwillingen, die mit den gewünschten Eigenschaften konfiguriert sind. Ein Bereitstellungsmanifest teilt einem IoT Edge-Gerät (oder einer Gruppe von Geräten) mit, welche Module installiert und wie sie konfiguriert werden müssen. Bereitstellungsmanifeste enthalten die *gewünschten Eigenschaften* für jeden Modulzwilling. IoT Edge-Geräte geben die *gemeldeten Eigenschaften* für jedes Modul zurück. 
 
-Ein Bereitstellungsmanifest, das nur die IoT Edge-Runtime (Agent und Hub) enthält, ist gültig.
+Jedes Bereitstellungsmanifest erfordert zwei Module: `$edgeAgent` und `$edgeHub`. Diese Module gehören zur IoT Edge-Runtime, die das IoT Edge-Gerät und die darauf ausgeführten Module verwaltet. Weitere Informationen zu diesen Modulen finden Sie unter [Grundlegendes zur IoT Edge-Runtime und ihrer Architektur](iot-edge-runtime.md).
 
-Das Manifest folgt dieser Struktur:
+Zusätzlich zu den beiden Runtimemodulen können Sie bis zu 20 eigene Module hinzufügen, die auf einem IoT Edge-Gerät ausgeführt werden. 
+
+Ein Bereitstellungsmanifest, das nur die IoT Edge-Runtime („edgeAgent“ und „edgeHub“) enthält, ist gültig.
+
+Bereitstellungsmanifeste haben die folgende Struktur:
 
 ```json
 {
     "modulesContent": {
-        "$edgeAgent": {
+        "$edgeAgent": { // required
             "properties.desired": {
                 // desired properties of the Edge agent
                 // includes the image URIs of all modules
                 // includes container registry credentials
             }
         },
-        "$edgeHub": {
+        "$edgeHub": { //required
             "properties.desired": {
                 // desired properties of the Edge hub
                 // includes the routing information between modules, and to IoT Hub
@@ -55,11 +59,13 @@ Das Manifest folgt dieser Struktur:
         },
         "{module1}": {  // optional
             "properties.desired": {
-                // desired properties of module with id {module1}
+                // desired properties of {module1}
             }
         },
         "{module2}": {  // optional
-            ...
+            "properties.desired": {
+                // desired properties of {module2}
+            }
         },
         ...
     }
@@ -68,7 +74,7 @@ Das Manifest folgt dieser Struktur:
 
 ## <a name="configure-modules"></a>Konfigurieren von Modulen
 
-Sie müssen der IoT Edge-Runtime mitteilen, wie die Module in Ihrer Bereitstellung installiert werden sollen. Die Konfigurations- und Verwaltungsinformationen für alle Module werden in den gewünschten **$edgeAgent**-Eigenschaften festgelegt. Zu diesen Informationen zählen die Konfigurationsparameter für den Edge-Agent selbst. 
+Definieren Sie, wie die IoT Edge-Runtime die Module in Ihrer Bereitstellung installiert. Der IoT Edge-Agent ist die Runtimekomponente, die Installation, Updates und Statusberichte für ein IoT Edge-Gerät verwaltet. Deswegen benötigt der „$edgeAgent“-Modulzwilling die Konfigurations- und Verwaltungsinformationen für alle Module. Zu diesen Informationen zählen die Konfigurationsparameter für den Edge-Agent selbst. 
 
 Eine vollständige Liste der Eigenschaften, die hinzugefügt werden können oder müssen, finden Sie unter [Properties of the Edge agent and Edge hub](module-edgeagent-edgehub.md) (Eigenschaften des Edge-Agents und Edge-Hubs).
 
@@ -107,7 +113,7 @@ Die $edgeAgent-Eigenschaften weisen die folgende Struktur auf:
 
 ## <a name="declare-routes"></a>Deklarieren von Routen
 
-Der Edge-Hub bietet eine Möglichkeit, Nachrichten deklarativ zwischen mehreren Modulen sowie zwischen Modulen und IoT Hub zu übertragen. Der Edge-Hub verwaltet die gesamte Kommunikation. Die Routeninformationen werden daher in den gewünschten **$edgeHub**-Eigenschaften festgelegt. Sie können innerhalb einer Bereitstellung mehrere Routen verwenden.
+Der IoT Edge-Hub verwaltet die Kommunikation zwischen Modulen, IoT Hub und beliebigen Blattgeräten. Deshalb enthält der „$edgeHub“-Modulzwilling die gewünschte Eigenschaft *Routen*. Diese deklariert, wie Nachrichten in einer Bereitstellung übermittelt werden. Sie können innerhalb einer Bereitstellung mehrere Routen verwenden.
 
 Routen werden in den gewünschten **$edgeHub**-Eigenschaften mit der folgenden Syntax deklariert:
 
@@ -126,19 +132,23 @@ Für jede Route sind eine Quelle und eine Senke erforderlich, die Bedingung ist 
 
 
 ### <a name="source"></a>Quelle
-Die Quelle gibt an, woher die Nachrichten stammen. Dabei kann es sich um einen der folgenden Werte handeln:
+
+Die Quelle gibt an, woher die Nachrichten stammen. IoT Edge kann Nachrichten von Blattgeräten oder Modulen weiterleiten.
+
+Die Quelleigenschaft kann die folgenden Werte haben:
 
 | Quelle | BESCHREIBUNG |
 | ------ | ----------- |
-| `/*` | Alle Gerät-zu-Cloud-Nachrichten von beliebigen Geräten oder Modulen |
-| `/messages/*` | Alle Gerät-zu-Cloud-Nachrichten, die von einem Gerät oder einem Modul über eine beliebige oder keine Ausgabe versendet wurden |
+| `/*` | Alle Gerät-zu-Cloud-Nachrichten oder Benachrichtigungen über Änderungen am Zwilling, die von Modulen oder Blattgeräten gesendet wurden |
+| `/twinChangeNotifications` | Alle Änderungen am Zwilling (gemeldete Eigenschaften), die von Modulen oder Blattgeräten gesendet wurden |
+| `/messages/*` | Alle Gerät-zu-Cloud-Nachrichten, die von einem Modul oder einem Blattgerät über eine beliebige oder keine Ausgabe gesendet wurden |
 | `/messages/modules/*` | Alle Gerät-zu-Cloud-Nachrichten, die von einem Modul über eine beliebige oder keine Ausgabe versendet wurden |
-| `/messages/modules/{moduleId}/*` | Alle Gerät-zu-Cloud-Nachrichten, die von {moduleId} über keine Ausgabe versendet wurden |
-| `/messages/modules/{moduleId}/outputs/*` | Alle Gerät-zu-Cloud-Nachrichten, die von {moduleId} über eine beliebige Ausgabe versendet wurden |
-| `/messages/modules/{moduleId}/outputs/{output}` | Alle Gerät-zu-Cloud-Nachrichten, die von {moduleId} über {output} versendet wurden |
+| `/messages/modules/{moduleId}/*` | Alle Gerät-zu-Cloud-Nachrichten, die von einem bestimmten Modul über eine beliebige oder keine Ausgabe gesendet wurden |
+| `/messages/modules/{moduleId}/outputs/*` | Alle Gerät-zu-Cloud-Nachrichten, die von einem bestimmten Modul über eine beliebige Ausgabe gesendet wurden |
+| `/messages/modules/{moduleId}/outputs/{output}` | Alle Gerät-zu-Cloud-Nachrichten, die von einem bestimmten Modul über eine bestimmte Ausgabe gesendet wurden |
 
 ### <a name="condition"></a>Bedingung
-Die Bedingung ist in einer Routendeklaration optional. Wenn Sie alle Nachrichten von der Senke an die Quelle übergeben möchten, lassen Sie die **WHERE**-Klausel ganz weg. Alternativ können Sie die [IoT Hub-Abfragesprache](../iot-hub/iot-hub-devguide-routing-query-syntax.md) verwenden, um nach bestimmten Nachrichten oder Nachrichtentypen zu filtern, die die Bedingung erfüllen.
+Die Bedingung ist in einer Routendeklaration optional. Wenn Sie alle Nachrichten von der Senke an die Quelle übergeben möchten, lassen Sie die **WHERE**-Klausel ganz weg. Alternativ können Sie die [IoT Hub-Abfragesprache](../iot-hub/iot-hub-devguide-routing-query-syntax.md) verwenden, um nach bestimmten Nachrichten oder Nachrichtentypen zu filtern, die die Bedingung erfüllen. IoT Edge-Routen unterstützen keine Nachrichtenfilterung, die auf Zwillingstags oder -eigenschaften basiert. 
 
 Das Format der Nachrichten, die zwischen Modulen in IoT Edge übermittelt werden, entspricht dem Format der Nachrichten, die zwischen Ihren Geräten und Azure IoT Hub übermittelt werden. Alle Nachrichten liegen im JSON-Format vor und verfügen über die Parameter **systemProperties**, **appProperties** und **body**. 
 
@@ -150,35 +160,37 @@ Sie können Abfragen für alle drei Parameter erstellen. Verwenden Sie dazu die 
 
 Beispiele zum Erstellen von Abfragen für Nachrichteneigenschaften finden Sie unter [D2C-Nachrichtenrouten-Abfrageausdrücke](../iot-hub/iot-hub-devguide-routing-query-syntax.md).
 
-Ein spezifisches Beispiel für IoT Edge ist das Filtern nach Nachrichten, die von einem Blattgerät gesendet wurden und bei einem Gatewaygerät eingegangen sind. Nachrichten von Modulen enthalten eine spezifische Systemeigenschaft namens **connectionModuleId**. Wenn Sie Nachrichten von Blattgeräten direkt an IoT Hub weiterleiten möchten, verwenden Sie die folgende Route, um Modulnachrichten auszuschließen:
+Ein spezifisches Beispiel für IoT Edge ist das Filtern nach Nachrichten, die von einem Blattgerät gesendet wurden und bei einem Gatewaygerät eingegangen sind. Nachrichten von Modulen enthalten eine die Systemeigenschaft **connectionModuleId**. Wenn Sie Nachrichten von Blattgeräten direkt an IoT Hub weiterleiten möchten, verwenden Sie die folgende Route, um Modulnachrichten auszuschließen:
 
-```sql
-FROM /messages/\* WHERE NOT IS_DEFINED($connectionModuleId) INTO $upstream
+```query
+FROM /messages/* WHERE NOT IS_DEFINED($connectionModuleId) INTO $upstream
 ```
 
 ### <a name="sink"></a>Senke
-Die Senke definiert, wohin die Nachrichten gesendet werden. Dabei kann es sich um einen der folgenden Werte handeln:
+Die Senke definiert, wohin die Nachrichten gesendet werden. Nur Module und IoT Hub können Nachrichten empfangen. Nachrichten können nicht an andere Geräte weitergeleitet werden. Es gibt keine Platzhalteroptionen in der Senkeneigenschaft. 
+
+Die Senkeneigenschaft kann die folgenden Werte haben:
 
 | Senke | BESCHREIBUNG |
 | ---- | ----------- |
 | `$upstream` | Sendet die Nachricht an IoT Hub |
-| `BrokeredEndpoint("/modules/{moduleId}/inputs/{input}")` | Sendet die Nachricht an Eingang `{input}` von Modul `{moduleId}` |
+| `BrokeredEndpoint("/modules/{moduleId}/inputs/{input}")` | Sendet die Nachricht an eine bestimmte Eingabe eines bestimmten Moduls |
 
-IoT Edge bietet At-Least-Once-Garantien. Der Edge-Hub speichert Nachrichten lokal, falls eine Route die Nachricht nicht an die entsprechende Senke übermitteln kann. Dieser Fall kann beispielsweise eintreten, wenn der Edge-Hub keine Verbindung mit der IoT Hub-Instanz herstellen kann oder das Zielmodul nicht verbunden ist.
+IoT Edge bietet At-Least-Once-Garantien. Der Edge-Hub speichert Nachrichten lokal, falls eine Route die Nachricht nicht an die entsprechende Senke übermitteln kann. Dieser Fall kann beispielsweise eintreten, wenn der Edge-Hub keine Verbindung mit IoT Hub herstellen kann oder das Zielmodul nicht verbunden ist.
 
 Der Edge-Hub speichert die Nachrichten bis zu dem Zeitpunkt, der in der `storeAndForwardConfiguration.timeToLiveSecs`-Eigenschaft in den gewünschten [Edge-Hubeigenschaften](module-edgeagent-edgehub.md) angegeben ist.
 
 ## <a name="define-or-update-desired-properties"></a>Definieren oder Aktualisieren der gewünschten Eigenschaften 
 
-Im Bereitstellungsmanifest können gewünschte Eigenschaften für den Modulzwilling oder für einzelne auf dem IoT Edge-Gerät bereitgestellte Module festgelegt werden. Wenn die gewünschten Eigenschaften im Bereitstellungsmanifest angegeben sind, überschreiben sie alle gewünschten Eigenschaften, die gegenwärtig im Modulzwilling vorhanden sind.
+Das Bereitstellungsmanifest gibt gewünschte Eigenschaften für Module an, die auf dem IoT Edge-Gerät bereitgestellt wurden. Die im Bereitstellungsmanifest angegebenen gewünschten Eigenschaften überschreiben alle gewünschten Eigenschaften, die aktuell im Modulzwilling vorhanden sind.
 
-Wenn Sie die gewünschten Eigenschaften eines Modulzwillings nicht im Bereitstellungsmanifest angeben, ändert IoT Hub den Modulzwilling nicht ab, und Sie können die gewünschten Eigenschaften programmgesteuert festlegen.
+Wenn Sie die gewünschten Eigenschaften eines Modulzwillings nicht im Bereitstellungsmanifest angeben, nimmt IoT Hub keine Änderungen am Modulzwilling vor. Stattdessen können Sie die gewünschten Eigenschaften programmgesteuert festlegen.
 
 Die gleichen Verfahren, mit denen Sie Gerätezwillinge ändern, werden auch zum Ändern von Modulzwillingen verwendet. Weitere Informationen finden Sie unter [Verstehen und Verwenden von Gerätezwillingen in IoT Hub](../iot-hub/iot-hub-devguide-module-twins.md).   
 
 ## <a name="deployment-manifest-example"></a>Beispiel für ein Bereitstellungsmanifest
 
-Dies ist ein Beispiel für das JSON-Dokument eines Bereitstellungsmanifests.
+Hier sehen Sie ein Beispiel für ein gültiges Bereitstellungsmanifestdokument:
 
 ```json
 {

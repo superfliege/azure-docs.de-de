@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 3f93f96c6c9fc551b8b66167eab58861b0ac0b52
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: ce701c029c63256714452aa13f646af77991cb67
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51005953"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52496924"
 ---
 # <a name="operationalize-ml-services-cluster-on-azure-hdinsight"></a>Operationalisieren eines ML Services-Clusters in Azure HDInsight
 
@@ -79,9 +79,9 @@ Nachdem Sie mit dem ML Services-Cluster Ihre Datenmodellierung in HDInsight vorg
 
     d. Geben Sie von den angebotenen Menüoptionen **E** ein, um zum Hauptmenü zurückzukehren, und geben Sie dann **8** ein, um das Verwaltungshilfsprogramm zu beenden.
 
-### <a name="long-delays-when-consuming-web-service-on-spark"></a>Lange Verzögerungen bei der Nutzung des Webdiensts in Spark
+### <a name="long-delays-when-consuming-web-service-on-apache-spark"></a>Lange Verzögerungen bei der Nutzung des Webdiensts in Apache Spark
 
-Wenn bei der Nutzung eines Webdiensts, der mit mrsdeploy-Funktionen in einem Spark-Computekontext erstellt wurde, lange Verzögerungen auftreten, müssen Sie unter Umständen einige fehlende Ordner hinzufügen. Wenn die Spark-Anwendung von einem Webdienst mit mrsdeploy-Funktionen aufgerufen wird, gehört sie zu einem Benutzer namens *rserve2*. So können Sie dieses Problem umgehen:
+Wenn bei der Nutzung eines Webdiensts, der mit mrsdeploy-Funktionen in einem Apache Spark-Computekontext erstellt wurde, lange Verzögerungen auftreten, müssen Sie unter Umständen einige fehlende Ordner hinzufügen. Wenn die Spark-Anwendung von einem Webdienst mit mrsdeploy-Funktionen aufgerufen wird, gehört sie zu einem Benutzer namens *rserve2*. So können Sie dieses Problem umgehen:
 
     # Create these required folders for user 'rserve2' in local and hdfs:
 
@@ -139,7 +139,7 @@ Um die Serverknoten zu skalieren, nehmen Sie die Workerknoten zuerst außer Betr
 
 ### <a name="step-1-decommission-the-worker-nodes"></a>Schritt 1: Außerbetriebsetzen der Workerknoten
 
-Der ML Services-Cluster wird nicht über YARN verwaltet. Wenn die Workerknoten nicht außer Betrieb gesetzt werden, funktioniert der YARN-Ressourcen-Manager nicht wie erwartet, da er die vom Server belegten Ressourcen nicht ermitteln kann. Um diese Situation zu vermeiden, empfehlen wir die Außerbetriebnahme der Workerknoten, bevor Sie die Serverknoten horizontal hochskalieren.
+Der ML Services-Cluster wird nicht über [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) verwaltet. Wenn die Workerknoten nicht außer Betrieb gesetzt werden, funktioniert der YARN-Ressourcen-Manager nicht wie erwartet, da er die vom Server belegten Ressourcen nicht ermitteln kann. Um diese Situation zu vermeiden, empfehlen wir die Außerbetriebnahme der Workerknoten, bevor Sie die Serverknoten horizontal hochskalieren.
 
 Führen Sie folgende Schritte zur Außerbetriebnahme der Workerknoten aus:
 

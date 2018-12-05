@@ -4,7 +4,8 @@ description: Hier erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Ac
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: femila
+ms.reviewer: joflore
 ms.assetid: 58d7cd22-98c0-4606-9ce5-8bdb22ee8b3e
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -12,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/16/2017
+ms.date: 11/29/2018
 ms.author: jeedes
-ms.openlocfilehash: 283379131b02f4ea115052f051ef0114efab1997
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 75bd4325063ff90e4a065c0cf854fa375e58fa95
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39423190"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52584790"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-everbridge"></a>Tutorial: Azure Active Directory-Integration mit Everbridge
 
@@ -27,9 +28,9 @@ In diesem Tutorial erfahren Sie, wie Sie EverBridge in Azure Active Directory (A
 
 Die Integration von EverBridge in Azure AD bietet die folgenden Vorteile:
 
-- Sie können in Azure AD steuern, wer Zugriff auf EverBridge haben soll.
-- Sie können Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei EverBridge anzumelden (Single Sign-On, SSO; einmaliges Anmelden).
-- Sie können Ihre Konten an einem zentralen Ort verwalten – im Azure-Portal.
+- Sie können in Azure AD steuern, wer Zugriff auf EverBridge hat.
+- Sie können Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei EverBridge anzumelden (SSO, einmaliges Anmelden).
+- Sie können Ihre Konten über das Azure-Portal an einem zentralen Ort verwalten.
 
 Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
 
@@ -46,53 +47,50 @@ Um die Azure AD-Integration mit EverBridge konfigurieren zu können, benötigen 
 Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen beachten:
 
 - Verwenden Sie die Produktionsumgebung nur, wenn dies unbedingt erforderlich ist.
-- Wenn Sie keine Azure AD-Testumgebung haben, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/)eine einmonatige Testversion anfordern.
+- Wenn Sie keine Azure AD-Testumgebung haben, können Sie eine [einmonatige Testversion anfordern](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
+
 In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptbestandteilen:
 
 1. Hinzufügen von EverBridge über den Katalog
-1. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
 
 ## <a name="adding-everbridge-from-the-gallery"></a>Hinzufügen von EverBridge über den Katalog
+
 Zum Konfigurieren der Integration von EverBridge in Azure AD müssen Sie EverBridge über den Katalog zur Liste mit den verwalteten SaaS-Apps hinzufügen.
 
 **Führen Sie die folgenden Schritte aus, um EverBridge über den Katalog hinzuzufügen:**
 
 1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**. 
 
-    ![Active Directory][1]
+    ![Schaltfläche „Azure Active Directory“][1]
 
-1. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
+2. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
 
-    ![ANWENDUNGEN][2]
+    ![Blatt „Unternehmensanwendungen“][2]
     
-1. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
+3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
 
-    ![ANWENDUNGEN][3]
+    ![Schaltfläche „Neue Anwendung“][3]
 
-1. Geben Sie im Suchfeld die Zeichenfolge **EverBridge** ein.
+4. Geben Sie im Suchfeld **EverBridge** ein, wählen Sie im Ergebnisbereich **EverBridge** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
-    ![Erstellen eines Azure AD-Testbenutzers](./media/everbridge-tutorial/tutorial_everbridge_search.png)
+    ![EverBridge in der Ergebnisliste](./media/everbridge-tutorial/tutorial_everbridge_addfromgallery.png)
 
-1. Wählen Sie im Ergebnisbereich die Option **EverBridge** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
 
-    ![Erstellen eines Azure AD-Testbenutzers](./media/everbridge-tutorial/tutorial_everbridge_addfromgallery.png)
-
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
 In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden mit Azure AD bei EverBridge mithilfe einer Testbenutzerin namens Britta Simon.
 
 Damit einmaliges Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in EverBridge als Pendant für einen Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in EverBridge muss eine Linkbeziehung eingerichtet werden.
 
-Weisen Sie in EverBridge den Wert für **Benutzername** in Azure AD als Wert für **Benutzername** zu, um eine Linkbeziehung herzustellen.
-
 Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD bei EverBridge müssen die folgenden Schritte ausgeführt werden:
 
 1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
-1. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit der Testbenutzerin Britta Simon zu testen.
-1. **[Erstellen eines EverBridge-Testbenutzers](#creating-an-everbridge-test-user)**, um ein Pendant von Britta Simon in EverBridge zu erhalten, das mit ihrer Darstellung in Azure AD verknüpft ist.
-1. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-1. **[Testing Single Sign-On](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
+2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit der Testbenutzerin Britta Simon zu testen.
+3. **[Erstellen eines EverBridge-Testbenutzers](#creating-an-everbridge-test-user)**, um ein Pendant von Britta Simon in EverBridge zu erhalten, das mit ihrer Darstellung in Azure AD verknüpft ist.
+4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+5. **[Testen der einmaligen Anmeldung](#testing-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens von Azure AD
 
@@ -102,38 +100,68 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **EverBridge** auf **Einmaliges Anmelden**.
 
-    ![Configure single sign-on][4]
+    ![Konfigurieren des Links für einmaliges Anmelden][4]
 
-1. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
- 
-    ![Configure single sign-on](./media/everbridge-tutorial/tutorial_everbridge_samlbase.png)
+2. Klicken Sie im Dialogfeld **SSO-Methode auswählen** für den Modus **SAML** auf **Auswählen**, um einmaliges Anmelden zu aktivieren.
 
-1. Führen Sie im Abschnitt **Domäne und URLs für EverBridge** die folgenden Schritte aus:
+    ![Configure single sign-on](common/tutorial_general_301.png)
 
-    ![Configure single sign-on](./media/everbridge-tutorial/tutorial_everbridge_url.png)
+3. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Symbol **Bearbeiten**, um das Dialogfeld **Grundlegende SAML-Konfiguration** zu öffnen.
 
-    a. Geben Sie im Textfeld **Bezeichner** eine URL nach folgendem Muster ein: `https://sso.everbridge.net/<companyname>`
+    ![Configure single sign-on](common/editconfigure.png)
 
-    b. Geben Sie im Textfeld **Antwort-URL** eine URL nach folgendem Muster ein: `https://manager.everbridge.net/saml/SSO/<companyname>/alias/defaultAlias`
+    >[!NOTE]
+    >Sie müssen die Anwendung ENTWEDER als Manager- ODER als Mitgliederportal auf beiden Seiten konfigurieren, d.h. im Azure-Portal und im EverBridge-Portal.
 
-    > [!NOTE] 
+4. Um die Anwendung **EverBridge** als **EverBridge-Manager-Portal** zu konfigurieren, führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus:
+
+    ![SSO-Informationen zur Domäne und zu den URLs für EverBridge](./media/everbridge-tutorial/tutorial_everbridge_url.png)
+
+    a. Geben Sie im Textfeld **Bezeichner** eine URL nach folgendem Muster ein: `https://sso.everbridge.net/<API_Name>`
+
+    b. Geben Sie im Textfeld **Antwort-URL** eine URL nach folgendem Muster ein: `https://manager.everbridge.net/saml/SSO/<API_Name>/alias/defaultAlias`
+
+    > [!NOTE]
     > Hierbei handelt es sich um Beispielwerte. Aktualisieren Sie diese Werte mit dem eigentlichen Bezeichner und der Antwort-URL. Wenden Sie sich an das [Supportteam von EverBridge](mailto:support@everbridge.com), um diese Werte zu erhalten.
+
+5. Um die Anwendung **EverBridge** als **EverBridge-Mitgliederportal** zu konfigurieren, führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus:
+
+    * So konfigurieren Sie die Anwendung im **IDP-initiierten Modus**:
+
+        ![SSO-Informationen zur Domäne und zu den URLs für EverBridge](./media/everbridge-tutorial/tutorial_everbridge_url1.png)
+
+        * Geben Sie im Textfeld **Bezeichner** eine URL nach folgendem Muster ein: `https://sso.everbridge.net/<API_Name>/<Organization_ID>`
+
+        * Geben Sie im Textfeld **Antwort-URL** eine URL nach folgendem Muster ein: `https://member.everbridge.net/saml/SSO/<API_Name>/<Organization_ID>/alias/defaultAlias`
+
+    * Klicken Sie auf **Zusätzliche URLs festlegen**, und führen Sie den folgenden Schritt aus, wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten:
+
+        ![SSO-Informationen zur Domäne und zu den URLs für EverBridge](./media/everbridge-tutorial/tutorial_everbridge_url2.png)
+
+        * Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://member.everbridge.net/saml/login/<API_Name>/<Organization_ID>/alias/defaultAlias?disco=true`.
+
+    > [!NOTE]
+    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächlichen Werte für Bezeichner, Antwort-URL und Anmelde-URL. Wenden Sie sich an das [Supportteam von EverBridge](mailto:support@everbridge.com), um diese Werte zu erhalten.
+
+6. Klicken Sie auf der Seite **SAML-Signaturzertifikat** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen**, um die **Verbundmetadaten-XML-Datei** herunterzuladen. Speichern Sie die Metadatendatei anschließend auf Ihrem Computer.
+
+    ![Downloadlink für das Zertifikat](./media/everbridge-tutorial/tutorial_everbridge_certificate.png) 
+
+7. Kopieren Sie im Abschnitt **EverBridge einrichten** die entsprechende URL gemäß Ihren Anforderungen.
+
+    a. Anmelde-URL
+
+    b. Azure AD-Bezeichner
+
+    c. Abmelde-URL
+
+    ![EverBridge-Konfiguration](common/configuresection.png)
+
+8. Um das einmalige Anmelden für die Anwendung **EverBridge** als **EverBridge-Manager-Portal** zu konfigurieren, führen Sie die folgenden Schritte aus: 
  
-1. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Metadaten-XML**, und speichern Sie die Metadatendatei dann auf Ihrem Computer.
+9. Melden Sie sich in einem anderen Webbrowserfenster als Administrator von EverBridge an.
 
-    ![Configure single sign-on](./media/everbridge-tutorial/tutorial_everbridge_certificate.png) 
-
-1. Klicken Sie auf die Schaltfläche **Save** .
-
-    ![Configure single sign-on](./media/everbridge-tutorial/tutorial_general_400.png)
-
-1. Klicken Sie im Abschnitt **EverBridge-Konfiguration** auf **EverBridge konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **URL für den SAML-SSO-Dienst** aus dem Abschnitt **Kurzübersicht**.
-
-    ![Configure single sign-on](./media/everbridge-tutorial/tutorial_everbridge_configure.png) 
-
-1. Zum Konfigurieren des einmaligen Anmeldens für Ihre Anwendung müssen Sie sich als Administrator bei Ihrem Everbridge-Mandanten anmelden.
-
-1. Klicken Sie im Menü am oberen Rand auf die Registerkarte **Einstellungen**, und wählen Sie unter **Sicherheit** die Option **Einmaliges Anmelden** aus.
+9. Klicken Sie im Menü am oberen Rand auf die Registerkarte **Einstellungen**, und wählen Sie unter **Sicherheit** die Option **Einmaliges Anmelden** aus.
    
     ![Configure single sign-on](./media/everbridge-tutorial/tutorial_everbridge_002.png)
    
@@ -145,49 +173,39 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
    
     d. Wählen Sie für „Speicherort der SAML-Identität“ die Option **Identität ist im NameIdentifier-Element der Subject-Anweisung enthalten** aus.
    
-    e. Fügen Sie in das Textfeld **Anmelde-URL des Identitätsanbieters** den Wert der SAML-SSO-URL von Azure AD ein.
-   
-    ![Configure single sign-on](./media/everbridge-tutorial/tutorial_everbridge_003.png)
+    e. Fügen Sie in das Textfeld **Identity Provider Login URL** (Anmelde-URL des Identitätsanbieters) den Wert der **Anmelde-URL** ein, den Sie aus dem Azure-Portal kopiert haben.
    
     f. Wählen Sie für „Vom Dienstanbieter initiierte Anforderungsbindung“ die Option **HTTP-Umleitung** aus.
 
     g. Klicken Sie unten auf der Seite auf **Speichern**.
 
-> [!TIP]
-> Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Eingebettete Azure AD-Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985).
-> 
+10. Um das einmalige Anmelden für die Anwendung **EverBridge** als **EverBridge-Mitgliederportal** zu konfigurieren, senden Sie das heruntergeladene **Verbundmetadaten-XML-Datei** an das [EverBridge-Supportteam](mailto:support@everbridge.com). Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
 
 ### <a name="creating-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
+
 Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta Simon im Azure-Portal.
 
-![Azure AD-Benutzer erstellen][100]
+1. Wählen Sie im Azure-Portal im linken Bereich die Option **Azure Active Directory**, **Benutzer** und dann **Alle Benutzer** aus.
 
-**Um einen Testbenutzer in Azure AD zu erstellen, führen Sie die folgenden Schritte aus:**
+    ![Azure AD-Benutzer erstellen][100]
 
-1. Klicken Sie im linken Navigationsbereich des **Azure-Portals** auf das Symbol für **Azure Active Directory**.
+2. Wählen Sie oben im Bildschirm die Option **Neuer Benutzer** aus.
 
-    ![Erstellen eines Azure AD-Testbenutzers](./media/everbridge-tutorial/create_aaduser_01.png) 
+    ![Erstellen eines Azure AD-Testbenutzers](common/create_aaduser_01.png) 
 
-1. Wechseln Sie zu **Benutzer und Gruppen**, und klicken Sie auf **Alle Benutzer**, um die Liste der Benutzer anzuzeigen.
-    
-    ![Erstellen eines Azure AD-Testbenutzers](./media/everbridge-tutorial/create_aaduser_02.png) 
+3. Führen Sie in den Benutzereigenschaften die folgenden Schritte aus.
 
-1. Klicken Sie oben im Dialogfeld auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
- 
-    ![Erstellen eines Azure AD-Testbenutzers](./media/everbridge-tutorial/create_aaduser_03.png) 
+    ![Erstellen eines Azure AD-Testbenutzers](common/create_aaduser_02.png)
 
-1. Führen Sie auf der Dialogfeldseite **Benutzer** die folgenden Schritte aus:
- 
-    ![Erstellen eines Azure AD-Testbenutzers](./media/everbridge-tutorial/create_aaduser_04.png) 
+    a. Geben Sie im Feld **Name** den Namen **BrittaSimon** ein.
+  
+    b. Geben Sie im Feld **Benutzername** den Namen **brittasimon@yourcompanydomain.extension** ein.  
+    Zum Beispiel, BrittaSimon@contoso.com
 
-    a. Geben Sie in das Textfeld **Name** den Namen **BrittaSimon** ein.
+    c. Wählen Sie **Eigenschaften** aus, aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich dann den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    b. Geben Sie in das Textfeld **Benutzername** die **E-Mail-Adresse** von Britta Simon ein.
-
-    c. Wählen Sie **Kennwort anzeigen** aus, und notieren Sie sich den Wert des **Kennworts**.
-
-    d. Klicken Sie auf **Create**.
- 
+    d. Klicken Sie auf **Erstellen**.
+  
 ### <a name="creating-an-everbridge-test-user"></a>Erstellen eines EverBridge-Testbenutzers
 
 In diesem Abschnitt erstellen Sie in Everbridge einen Benutzer namens Britta Simon. Arbeiten Sie mit dem [Supportteam von EverBridge](mailto:support@everbridge.com) zusammen, um Benutzer der EverBridge-Plattform hinzuzufügen.
@@ -196,56 +214,47 @@ In diesem Abschnitt erstellen Sie in Everbridge einen Benutzer namens Britta Sim
 
 In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf EverBridge gewähren.
 
-![Benutzer zuweisen][200] 
+1. Wählen Sie im Azure-Portal die Option **Unternehmensanwendungen** und dann **Alle Anwendungen** aus.
 
-**Führen Sie die folgenden Schritte aus, um die Zuweisung von Britta Simon zu EverBridge durchzuführen:**
+    ![Benutzer zuweisen][201]
 
-1. Öffnen Sie im Azure-Portal die Anwendungsansicht, navigieren Sie zur Verzeichnisansicht, wechseln Sie dann zu **Unternehmensanwendungen**, und klicken Sie auf **Alle Anwendungen**.
-
-    ![Benutzer zuweisen][201] 
-
-1. Wählen Sie in der Anwendungsliste den Eintrag **EverBridge**aus.
+2. Wählen Sie in der Anwendungsliste den Eintrag **EverBridge**aus.
 
     ![Configure single sign-on](./media/everbridge-tutorial/tutorial_everbridge_app.png) 
 
-1. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
+3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
-    ![Benutzer zuweisen][202] 
+    ![Benutzer zuweisen][202]
 
-1. Klicken Sie auf die Schaltfläche **Hinzufügen**. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
+4. Klicken Sie auf die Schaltfläche **Hinzufügen**. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
 
     ![Benutzer zuweisen][203]
 
-1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus.
+5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **Britta Simon** aus, und klicken Sie dann unten im Bildschirm auf die Schaltfläche **Auswählen**.
 
-1. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
+6. Wählen Sie im Dialogfeld **Zuweisung hinzufügen** die Schaltfläche **Zuweisen** aus.
 
-1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf **Zuweisen**.
-    
 ### <a name="testing-single-sign-on"></a>Testen der einmaligen Anmeldung
 
-In diesem Abschnitt soll Ihre Azure AD-Konfiguration für das einmalige Anmelden mithilfe des Zugriffsbereichs getestet werden.
+In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „Everbridge“ klicken, sollten Sie automatisch bei Ihrer Everbridge-Anwendung angemeldet werden.
+Wenn Sie im Zugriffsbereich auf die Kachel „EverBridge“ klicken, sollten Sie automatisch bei Ihrer EverBridge-Anwendung angemeldet werden.
+Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
 * [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](tutorial-list.md)
 * [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
-
-
 <!--Image references-->
 
-[1]: ./media/everbridge-tutorial/tutorial_general_01.png
-[2]: ./media/everbridge-tutorial/tutorial_general_02.png
-[3]: ./media/everbridge-tutorial/tutorial_general_03.png
-[4]: ./media/everbridge-tutorial/tutorial_general_04.png
+[1]: common/tutorial_general_01.png
+[2]: common/tutorial_general_02.png
+[3]: common/tutorial_general_03.png
+[4]: common/tutorial_general_04.png
 
-[100]: ./media/everbridge-tutorial/tutorial_general_100.png
+[100]: common/tutorial_general_100.png
 
-[200]: ./media/everbridge-tutorial/tutorial_general_200.png
-[201]: ./media/everbridge-tutorial/tutorial_general_201.png
-[202]: ./media/everbridge-tutorial/tutorial_general_202.png
-[203]: ./media/everbridge-tutorial/tutorial_general_203.png
-
+[201]: common/tutorial_general_201.png
+[202]: common/tutorial_general_202.png
+[203]: common/tutorial_general_203.png

@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 03/28/2018
+ms.date: 11/28/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: bc6d615409f3c2d0f46286d2ad2ba20c32574afd
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: c7e9c841e7a1d73fcdedd99e210eefb1e52bbf3e
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49091713"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52498759"
 ---
 # <a name="deciding-when-to-use-azure-blobs-azure-files-or-azure-disks"></a>Entscheidung zwischen Azure-Blobs, Azure Files und Azure-Datenträger
 
@@ -42,7 +42,7 @@ In der folgenden Tabelle wird Azure Files mit Azure-Blobs verglichen.
 |Endpunkte|`http://myaccount.blob.core.windows.net/mycontainer/myblob`|`\\myaccount.file.core.windows.net\myshare\myfile.txt`<br /><br /> `http://myaccount.file.core.windows.net/myshare/myfile.txt`|  
 |Verzeichnisse|Flacher Namespace|Echte Verzeichnisobjekte|  
 |Beachtung von Groß-/Kleinschreibung bei Namen|Groß-/Kleinschreibung beachten|Keine Beachtung von Groß-/Kleinschreibung, aber die Schreibweise wird beibehalten|  
-|Capacity|Container mit bis zu 500 TiB|5 TiB Dateifreigaben|  
+|Capacity|Bis zu 2 PiB-Kontobegrenzung |5 TiB Dateifreigaben|  
 |Throughput|Bis zu 60 MiB/s pro Blockblob|Bis zu 60 MiB/s pro Freigabe|  
 |Objektgröße|Bis zu ungefähr 4,75 TiB pro Blockblob|Bis zu 1 TiB pro Datei|  
 |Berechnete Kapazität|Basierend auf geschriebenen Bytes|Basierend auf der Dateigröße|  

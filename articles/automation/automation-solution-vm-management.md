@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 10/04/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 642fc66bff763105e9d5463886474703a9a50781
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: a664ec3643100f4bf477fbc58070ae966088d3af
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49376702"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52426049"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Lösung zum Starten/Beenden von VMs außerhalb der Geschäftszeiten in Azure Automation
 
@@ -32,7 +32,7 @@ Die aktuelle Lösung hat die folgenden Einschränkungen:
 - Diese Lösung ist in Azure und Azure Government für jede Region verfügbar, die einen Log Analytics-Arbeitsbereich, ein Azure Automation-Konto und Warnungen unterstützt. Azure Government-Regionen unterstützen derzeit keine E-Mail-Funktionalität.
 
 > [!NOTE]
-> Wenn Sie die Lösung für klassische virtuelle Computer verwenden, werden alle Ihre VMs nacheinander nach Clouddienst verarbeitet. Die parallele Auftragsverarbeitung wird für verschiedene Clouddienste weiterhin unterstützt.
+> Wenn Sie die Lösung für klassische virtuelle Computer verwenden, werden alle Ihre VMs nacheinander nach Clouddienst verarbeitet. Virtuelle Computer werden weiterhin parallel in verschiedenen Clouddiensten verarbeitet.
 >
 > Azure Cloud Solution Provider-Abonnements (Azure CSP) unterstützen nur das Azure Resource Manager-Modell. Dienste, die nicht auf Azure Resource Manager basieren, sind in diesem Programm nicht verfügbar. Wenn die Lösung zum Starten/Beenden ausgeführt wird, erhalten Sie möglicherweise Fehler, da sie Cmdlets zur Verwaltung klassischer Ressourcen enthält. Weitere Informationen zu CSP finden Sie unter [Verfügbare Dienste in CSP-Abonnements](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-available-services#comments).
 
@@ -78,7 +78,7 @@ Führen Sie die folgenden Schritte aus, um die Lösung zum Starten/Beenden von V
    Hier erhalten Sie folgende Aufforderung:
    - Geben Sie einen Wert für die Zielressourcengruppennamen(**Target ResourceGroup Names**) ein. Dies sind Werte von Ressourcengruppen mit virtuellen Computern, die mit dieser Lösung verwaltet werden. Sie können mehrere Namen eingeben und die Namen jeweils durch ein Komma trennen (Groß-/Kleinschreibung wird nicht berücksichtigt). Die Verwendung eines Platzhalterzeichens wird unterstützt, wenn Sie einen Vorgang für VMs in allen Ressourcengruppen des Abonnements durchführen möchten. Dieser Wert wird in den Variablen **External_Start_ResourceGroupNames** und **External_Stop_ResourceGroupNames** gespeichert.
    - Geben Sie die **VM Exclude List (string)** (VM-Ausschlussliste (Zeichenfolge)) an. Dies ist der Wert von einem oder mehreren virtuellen Computern der Zielressourcengruppe. Sie können mehrere Namen eingeben und die Namen jeweils durch ein Komma trennen (Groß-/Kleinschreibung wird nicht berücksichtigt). Platzhalter können verwendet werden. Dieser Wert wird in der Variablen **External_ExcludeVMNames** gespeichert.
-   - Wählen Sie einen **Zeitplan** aus. Dieser Wert ist ein wiederkehrendes Datum und eine Uhrzeit zum Starten und Beenden der virtuellen Computer in den Zielressourcengruppen. Der Zeitplan ist standardmäßig für den Zeitpunkt 30 Minuten nach der aktuellen Uhrzeit konfiguriert. Es kann keine andere Region ausgewählt werden. Falls Sie den Zeitplan nach dem Konfigurieren der Lösung für Ihre Zeitzone konfigurieren möchten, helfen Ihnen die Informationen unter [Ändern des Zeitplans für das Starten und Herunterfahren](#modify-the-startup-and-shutdown-schedule) weiter.
+   - Wählen Sie einen **Zeitplan** aus. Dieser Wert ist ein wiederkehrendes Datum und eine Uhrzeit zum Starten und Beenden der virtuellen Computer in den Zielressourcengruppen. Der Zeitplan ist standardmäßig für den Zeitpunkt 30 Minuten nach der aktuellen Uhrzeit konfiguriert. Es kann keine andere Region ausgewählt werden. Falls Sie den Zeitplan nach dem Konfigurieren der Lösung für Ihre Zeitzone konfigurieren möchten, helfen Ihnen die Informationen unter [Ändern des Zeitplans für das Starten und Herunterfahren](#modify-the-startup-and-shutdown-schedules) weiter.
    - Um **E-Mail-Benachrichtigungen** von einer Aktionsgruppe zu empfangen, übernehmen Sie den Standardwert **Ja**, und geben Sie eine gültige E-Mail-Adresse an. Wenn Sie **Nein** auswählen, sich aber zu einem späteren Zeitpunkt entscheiden, dass Sie E-Mail-Benachrichtigungen erhalten möchten, können Sie die erstellte [Aktionsgruppe](../monitoring-and-diagnostics/monitoring-action-groups.md) mit gültigen E-Mail-Adressen, die durch Komma getrennt sind, aktualisieren. Außerdem müssen Sie die folgenden Warnungsregeln aktivieren:
 
      - AutoStop_VM_Child
@@ -217,16 +217,16 @@ In allen Szenarien müssen die Variablen **External_Start_ResourceGroupNames**, 
 
 ### <a name="schedules"></a>Zeitpläne
 
-In der folgenden Tabelle sind die einzelnen in Ihrem Automation-Konto erstellten Standardzeitpläne aufgeführt. Sie können sie ändern oder Ihre eigenen benutzerdefinierten Zeitpläne erstellen. Standardmäßig sind alle Zeitpläne deaktiviert, mit Ausnahme von **Scheduled_StartVM** und **Scheduled_StopVM**.
+In der folgenden Tabelle sind die einzelnen in Ihrem Automation-Konto erstellten Standardzeitpläne aufgeführt. Sie können sie ändern oder Ihre eigenen benutzerdefinierten Zeitpläne erstellen. Standardmäßig sind alle Zeitpläne deaktiviert, mit Ausnahme von **Scheduled_StartVM** und **Scheduled_StopVM**.
 
 Es ist nicht ratsam, alle Zeitpläne zu aktivieren, da dies zu sich überlappenden Zeitplanaktionen führen kann. Am besten ermitteln Sie, welche Optimierungen Sie ausführen möchten, und nehmen dann die entsprechenden Änderungen vor. Weitere Erläuterungen finden Sie in den Beispielszenerien im Übersichtsabschnitt.
 
 |Zeitplanname | Frequency | BESCHREIBUNG|
 |--- | --- | ---|
 |Schedule_AutoStop_CreateAlert_Parent | Alle 8 Stunden | Führt das Runbook „AutoStop_CreateAlert_Parent“ alle acht Stunden aus. Hiermit werden dann die VM-basierten Werte unter „External_Start_ResourceGroupNames“, „External_Stop_ResourceGroupNames“ und „External_ExcludeVMNames“ in Azure Automation-Variablen beendet. Alternativ hierzu können Sie mithilfe des Parameters „VMList“ eine durch Kommas getrennte Liste mit VMs angeben.|
-|Scheduled_StopVM | Benutzerdefiniert, täglich | Führt das Runbook „Scheduled_Parent“ mit dem Parameter _Stop_ jeden Tag zum angegebenen Zeitpunkt aus. Beendet automatisch alle VMs, für die die Regeln der Ressourcenvariablen erfüllt werden. Aktivieren Sie den dazugehörigen Zeitplan (**Scheduled-StartVM**).|
-|Scheduled_StartVM | Benutzerdefiniert, täglich | Führt das Runbook „Scheduled_Parent“ mit dem Parameter _Start_ jeden Tag zum angegebenen Zeitpunkt aus. Startet automatisch alle VMs, die die Regeln der entsprechenden Variablen erfüllen. Aktivieren Sie den dazugehörigen Zeitplan (**Scheduled-StopVM**).|
-|Sequenced-StopVM | 01:00 Uhr (UTC), jeden Freitag | Führt das Runbook „Sequenced_Parent“ mit dem Parameter _Stop_ jeden Freitag zum angegebenen Zeitpunkt aus. Beendet der Reihe nach (in aufsteigender Reihenfolge) alle VMs mit dem in den jeweiligen Variablen definierten Tag **SequenceStop**. Weitere Informationen zu Tagwerten und Ressourcenvariablen finden Sie im Abschnitt „Runbooks“. Aktivieren Sie den dazugehörigen Zeitplan (**Sequenced-StartVM**).|
+|Scheduled_StopVM | Benutzerdefiniert, täglich | Führt das Runbook „Scheduled_Parent“ mit dem Parameter _Stop_ jeden Tag zum angegebenen Zeitpunkt aus. Beendet automatisch alle VMs, für die die Regeln der Ressourcenvariablen erfüllt werden. Aktivieren Sie den dazugehörigen Zeitplan (**Scheduled-StartVM**).|
+|Scheduled_StartVM | Benutzerdefiniert, täglich | Führt das Runbook „Scheduled_Parent“ mit dem Parameter _Start_ jeden Tag zum angegebenen Zeitpunkt aus. Startet automatisch alle VMs, die die Regeln der entsprechenden Variablen erfüllen. Aktivieren Sie den dazugehörigen Zeitplan (**Scheduled-StopVM**).|
+|Sequenced-StopVM | 01:00 Uhr (UTC), jeden Freitag | Führt das Runbook „Sequenced_Parent“ mit dem Parameter _Stop_ jeden Freitag zum angegebenen Zeitpunkt aus. Beendet der Reihe nach (in aufsteigender Reihenfolge) alle VMs mit dem in den jeweiligen Variablen definierten Tag **SequenceStop**. Weitere Informationen zu Tagwerten und Ressourcenvariablen finden Sie im Abschnitt „Runbooks“. Aktivieren Sie den dazugehörigen Zeitplan (**Sequenced-StartVM**).|
 |Sequenced-StartVM | 13:00 Uhr (UTC), jeden Montag | Führt das Runbook „Sequenced_Parent“ mit dem Parameter _Start_ jeden Montag zum angegebenen Zeitpunkt aus. Startet der Reihe nach (in absteigender Reihenfolge) alle VMs mit dem in den jeweiligen Variablen definierten Tag **SequenceStart**. Weitere Informationen zu Tagwerten und Ressourcenvariablen finden Sie im Abschnitt „Runbooks“. Aktivieren Sie den dazugehörigen Zeitplan (**Sequenced-StopVM**).|
 
 ## <a name="log-analytics-records"></a>Log Analytics-Datensätze

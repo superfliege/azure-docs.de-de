@@ -7,12 +7,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 9/21/2018
 ms.author: tyfox
-ms.openlocfilehash: 8beb75748c2e9fe3f71ad321c4cd523e344fb90c
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: f018130ca94c7efb7a9c6c873c150dcc382dbc4c
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48901905"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52498292"
 ---
 # <a name="hdinsight-go-management-sdk-preview"></a>HDInsight Go Management SDK – Vorschau
 
@@ -141,7 +141,7 @@ Sie können einen neuen Cluster erstellen, indem Sie `client.Create()` aufrufen.
 
 #### <a name="example"></a>Beispiel
 
-In diesem Beispiel wird gezeigt, wie Sie einen Spark-Cluster mit zwei Hauptknoten und einem Workerknoten erstellen.
+In diesem Beispiel wird gezeigt, wie Sie einen [Apache Spark](https://spark.apache.org/)-Cluster mit zwei Hauptknoten und einem Workerknoten erstellen.
 
 > [!NOTE]
 > Sie müssen zuerst wie unten beschrieben eine Ressourcengruppe und ein Speicherkonto erstellen. Wenn Sie diese Komponenten bereits erstellt haben, können Sie diese Schritte überspringen.

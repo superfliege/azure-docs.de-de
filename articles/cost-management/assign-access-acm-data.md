@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 11/09/2018
+ms.date: 11/28/2018
 ms.topic: conceptual
 ms.service: cost-management
-manager: dougeby
+manager: vitavor
 ms.custom: ''
-ms.openlocfilehash: e32e281509da32d4816c9e137a462553891c82f1
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 3096a79737c816747f36956958f9a16f86b9715d
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51686142"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52582597"
 ---
 # <a name="assign-access-to-cost-management-data"></a>Zuweisen des Zugriffs auf Daten in Cost Management
 
@@ -42,7 +42,7 @@ Zum Anzeigen von Kostendaten benötigen Sie für einen oder mehrere der folgende
 
 ## <a name="enable-access-to-costs-in-the-ea-portal"></a>Aktivieren des Zugriffs auf Kosten im EA-Portal
 
-Für den Abrechnungskontobereich muss die Option **DA view charges** (Gebühren anzeigen für Abteilungsadministrator) im EA-Portal **aktiviert** sein. Für alle anderen Bereiche muss die Option **AO view charges** (Gebühren anzeigen für Kontobesitzer) im EA-Portal **aktiviert** sein.
+Für den Abteilungsbereich muss die Option **Abteilungsadministratoren können Gebühren anzeigen** im EA-Portal **Aktiviert** sein. Für alle anderen Bereiche muss die Option **AO view charges** (Gebühren anzeigen für Kontobesitzer) im EA-Portal **aktiviert** sein.
 
 So aktivieren Sie eine Option
 
@@ -51,7 +51,7 @@ So aktivieren Sie eine Option
 3. Aktivieren Sie für die Kostenverwaltungsbereiche, auf die Sie Zugriff gewähren möchten, nach Bedarf die Optionen **DA view charges** (Gebühren anzeigen für Abteilungsadministrator) oder **AO view charges** (Gebühren anzeigen für Kontobesitzer).  
     ![Registerkarte „Registrierung“ mit Optionen zum Anzeigen der Gebühren für Abteilungsadministratoren und Kontobesitzer](./media/assign-access-acm-data/ea-portal-enrollment-tab.png)
 
-Nachdem die Optionen zur Gebührenanzeige aktiviert sind, müssen für die meisten Bereiche auch Berechtigungen für die rollenbasierte Zugriffssteuerung (RBAC) im Azure-Portal konfiguriert werden.
+Nachdem die Optionen zum Anzeigen von Gebühren aktiviert wurden, müssen für die meisten Bereiche auch Berechtigungen für die rollenbasierte Zugriffssteuerung (RBAC) im Azure-Portal konfiguriert werden.
 
 ## <a name="enterprise-administrator-role"></a>Unternehmensadministratorrolle
 
@@ -75,7 +75,7 @@ Es kann bis zu 30 Minuten dauern, bevor der neue Benutzer in Cost Management auf
 
 ### <a name="assign-department-scope-access"></a>Zuweisen des Zugriffs auf den Abteilungsbereich
 
-Für den Zugriff auf den Abteilungsbereich muss im EA-Portal der Zugriff eines Abteilungsadministrators („DA view charges“) gewährt werden. Der Abteilungsadministrator hat Zugriff auf die Anzeige der Kosten- und Nutzungsdaten für eine oder mehrere Abteilungen.  Die Daten für die Abteilung schließen alle Abonnements ein, die zu einem Registrierungskonto gehören und mit der Abteilung verknüpft sind. Im Azure-Portal ist keine Aktion erforderlich.
+Für den Zugriff auf den Abteilungsbereich muss im EA-Portal der Zugriff eines Abteilungsadministrators („DA view charges“) gewährt werden. Der Abteilungsadministrator hat Zugriff auf die Anzeige der Kosten- und Nutzungsdaten für eine oder mehrere Abteilungen. Die Daten für die Abteilung schließen alle Abonnements ein, die zu einem Registrierungskonto gehören und mit der Abteilung verknüpft sind. Im Azure-Portal ist keine Aktion erforderlich.
 
 1. Melden Sie sich beim EA-Portal unter [https://ea.azure.com](https://ea.azure.com) mit einem Enterprise-Administratorkonto an.
 2. Wählen Sie im linken Bereich **Verwalten** aus.
@@ -89,7 +89,7 @@ Für den Zugriff auf den Abteilungsbereich muss im EA-Portal der Zugriff eines A
 
 ## <a name="assign-enrollment-account-scope-access"></a>Zuweisen des Zugriffs auf den Registrierungskontobereich
 
-Für den Zugriff auf den Registrierungskontobereich muss im EA-Portal der Zugriff eines Kontobesitzers („AO view charges“) bestehen. Der Kontobesitzer kann Kosten- und Nutzungsdaten anzeigen, die mit einem Registrierungskonto verknüpft sind. Die Daten im Registrierungskonto schließen alle Azure-Abonnements ein, die der Registrierung zugeordnet ist. Im Azure-Portal ist keine Aktion erforderlich.
+Für den Zugriff auf den Registrierungskontobereich muss im EA-Portal der Zugriff eines Kontobesitzers („AO view charges“) bestehen. Der Kontobesitzer kann Kosten- und Nutzungsdaten anzeigen, die mit den Abonnements verknüpft sind, die von einem Registrierungskonto erstellt wurden. Im Azure-Portal ist keine Aktion erforderlich.
 
 1. Melden Sie sich beim EA-Portal unter [https://ea.azure.com](https://ea.azure.com) mit einem Enterprise-Administratorkonto an.
 2. Wählen Sie im linken Bereich **Verwalten** aus.
@@ -101,9 +101,11 @@ Für den Zugriff auf den Registrierungskontobereich muss im EA-Portal der Zugrif
 8. Klicken Sie auf **Hinzufügen**, um das Konto zu erstellen.  
     ![Feld „Konto hinzufügen“](./media/assign-access-acm-data/add-account.png)
 
+Nachdem die obigen Schritte ausgeführt wurden, wird das Benutzerkonto zu einem Registrierungskonto im Enterprise Portal. Fortan können damit Abonnements erstellt werden. Der Benutzer kann auf Kosten- und Nutzungsdaten für von ihm erstellte Abonnements zugreifen.
+
 ## <a name="assign-management-group-scope-access"></a>Zuweisen des Zugriffs auf den Verwaltungsgruppenbereich
 
-Für den Zugriff auf den Verwaltungsgruppenbereich ist mindestens die Berechtigung „Cost Management-Leser (oder Leser)“ erforderlich. Sie konfigurieren die Berechtigungen für die Verwaltungsgruppe im Azure-Portal. Sie benötigen mindestens die Berechtigung „Mitwirkender“ für die Verwaltungsgruppe, um den Zugriff für andere Benutzer zu aktivieren. Außerdem muss die Einstellung **AO view charges** (Gebühren anzeigen für Kontobesitzer) im EA-Portal aktiviert sein.
+Für den Zugriff auf den Verwaltungsgruppenbereich ist mindestens die Berechtigung „Kostenverwaltung: Leser“ (oder „Leser“) erforderlich. Sie können die Berechtigungen für eine Verwaltungsgruppe im Azure-Portal konfigurieren. Sie benötigen mindestens die Berechtigung „Benutzerzugriffsadministrator“ (oder „Besitzer“) für die Verwaltungsgruppe, um anderen Benutzern Zugriff zu gewähren. Außerdem muss die Einstellung **AO view charges** (Gebühren anzeigen für Kontobesitzer) im EA-Portal aktiviert sein.
 
 1. Melden Sie sich unter [http://portal.azure.com](http://portal.azure.com) beim Azure-Portal an.
 2. Wählen Sie auf der Seitenleiste **Alle Dienste** aus, suchen Sie _Verwaltungsgruppen_, und wählen Sie dann **Verwaltungsgruppen** aus.
@@ -119,7 +121,7 @@ Für den Zugriff auf den Verwaltungsgruppenbereich ist mindestens die Berechtigu
 
 ## <a name="assign-subscription-scope-access"></a>Zuweisen des Zugriffs auf den Abonnementbereich
 
-Für den Zugriff auf den Abonnementbereich ist mindestens die Berechtigung „Cost Management-Leser (oder Leser)“ erforderlich. Sie konfigurieren Berechtigungen für ein Abonnement im Azure-Portal. Sie benötigen mindestens die Berechtigung „Mitwirkender“ für das Abonnement, um den Zugriff für andere Benutzer zu aktivieren. Außerdem muss die Einstellung **AO view charges** (Gebühren anzeigen für Kontobesitzer) im EA-Portal aktiviert sein.
+Der Zugriff auf ein Abonnement erfordert mindestens die Berechtigung „Kostenverwaltung: Leser“ (oder „Leser“). Sie können die Berechtigungen für ein Abonnement im Azure-Portal konfigurieren. Sie benötigen mindestens die Berechtigung „Benutzerzugriffsadministrator“ (oder „Besitzer“) für das Abonnement, um anderen Benutzern Zugriff zu gewähren. Außerdem muss die Einstellung **AO view charges** (Gebühren anzeigen für Kontobesitzer) im EA-Portal aktiviert sein.
 
 1. Melden Sie sich unter [http://portal.azure.com](http://portal.azure.com) beim Azure-Portal an.
 2. Wählen Sie auf der Seitenleiste **Alle Dienste** aus, suchen Sie _Abonnements_, und wählen Sie dann **Abonnements** aus.
@@ -133,7 +135,7 @@ Für den Zugriff auf den Abonnementbereich ist mindestens die Berechtigung „Co
 
 ## <a name="assign-resource-group-scope-access"></a>Zuweisen des Zugriffs auf den Ressourcengruppenbereich
 
-Für den Zugriff auf den Ressourcengruppenbereich ist mindestens die Berechtigung „Cost Management-Leser (oder Leser)“ erforderlich. Sie konfigurieren die Berechtigungen für eine Ressourcengruppe im Azure-Portal. Sie benötigen mindestens die Berechtigung „Mitwirkender“ für die Ressourcengruppe, um den Zugriff für andere Benutzer zu aktivieren. Außerdem muss die Einstellung **AO view charges** (Gebühren anzeigen für Kontobesitzer) im EA-Portal aktiviert sein.
+Für den Zugriff auf den Ressourcengruppenbereich ist mindestens die Berechtigung „Kostenverwaltung: Leser“ (oder „Leser“) erforderlich. Sie können die Berechtigungen für eine Ressourcengruppe im Azure-Portal konfigurieren. Sie benötigen mindestens die Berechtigung „Benutzerzugriffsadministrator“ (oder „Besitzer“) für die Ressourcengruppe, um anderen Benutzern Zugriff zu gewähren. Außerdem muss die Einstellung **AO view charges** (Gebühren anzeigen für Kontobesitzer) im EA-Portal aktiviert sein.
 
 1. Melden Sie sich unter [http://portal.azure.com](http://portal.azure.com) beim Azure-Portal an.
 2. Wählen Sie auf der Seitenleiste **Alle Dienste** aus, suchen Sie _Ressourcengruppen_, und wählen Sie dann **Ressourcengruppen** aus.

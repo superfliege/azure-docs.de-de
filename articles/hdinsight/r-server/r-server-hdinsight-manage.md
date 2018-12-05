@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 35b80223552181e44beac011f5fb541158466acc
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: bdb2e355b29306c8a78a3a773269baeee13fc9d1
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51255403"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52497539"
 ---
 # <a name="manage-ml-services-cluster-on-azure-hdinsight"></a>Verwalten eines ML Services-Clusters in Azure HDInsight
 
@@ -33,7 +33,7 @@ Sie können mehrere gleichzeitige Benutzer für ML Services-Cluster in HDInsight
 
 ![Gleichzeitiger Benutzer 1](./media/r-server-hdinsight-manage/concurrent-users-1.png)
 
-- **Benutzername für Clusteranmeldung**: ein HTTP-Benutzer für die Authentifizierung über das HDInsight-Gateway, das zum Schutz der von Ihnen erstellten HDInsight-Cluster verwendet wird. Mit diesem HTTP-Benutzer wird auf die Ambari- und die YARN-Benutzeroberfläche sowie auf andere UI-Komponenten zugegriffen.
+- **Benutzername für Clusteranmeldung**: ein HTTP-Benutzer für die Authentifizierung über das HDInsight-Gateway, das zum Schutz der von Ihnen erstellten HDInsight-Cluster verwendet wird. Mit diesem HTTP-Benutzer wird auf die Apache Ambari- und die Apache Hadoop YARN-Benutzeroberfläche sowie auf andere UI-Komponenten zugegriffen.
 - **SSH-Benutzername (Secure Shell)**: ein SSH-Benutzer für den Zugriff auf den Cluster über Secure Shell. Dieser Benutzer ist ein Benutzer im Linux-System für alle Hauptknoten, Workerknoten und Edgeknoten. Somit können Sie Secure Shell zum Zugreifen auf einen beliebigen Knoten in einem Remotecluster verwenden.
 
 Die RStudio Server Community-Version, die im ML Services-Cluster in HDInsight verwendet wird, akzeptiert für die Anmeldung nur Linux-Benutzernamen und -Kennwörter. Die Übergabe von Token wird nicht unterstützt. Wenn Sie zum ersten Mal versuchen, auf einem ML Services-Cluster auf RStudio zuzugreifen, müssen Sie sich zweimal anmelden.
@@ -52,7 +52,7 @@ Da RStudio auf dem Edgeknoten des Clusters ausgeführt wird, müssen mehrere Sch
 
 ### <a name="step-1-use-the-created-ssh-user-to-sign-in-to-the-edge-node"></a>Schritt 1: Anmelden beim Edgeknoten mit dem erstellten SSH-Benutzer
 
-Befolgen Sie die Anweisungen unter [Herstellen einer Verbindung mit HDInsight (Hadoop) per SSH](../hdinsight-hadoop-linux-use-ssh-unix.md), um auf den Edgeknoten zuzugreifen. Die Edgeknotenadresse für ML Services-Cluster in HDInsight lautet `CLUSTERNAME-ed-ssh.azurehdinsight.net`.
+Befolgen Sie die Anweisungen unter [Herstellen einer Verbindung mit HDInsight (Apache Hadoop) per SSH](../hdinsight-hadoop-linux-use-ssh-unix.md), um auf den Edgeknoten zuzugreifen. Die Edgeknotenadresse für ML Services-Cluster in HDInsight lautet `CLUSTERNAME-ed-ssh.azurehdinsight.net`.
 
 ### <a name="step-2-add-more-linux-users-in-edge-node"></a>Schritt 2: Hinzufügen weiterer Linux-Benutzer im Edgeknoten
 
@@ -104,7 +104,7 @@ Sie können den Zugriff auf den HDInsight Spark-Computekontext über eine auf Ih
       consoleOutput= TRUE
     )
 
-Weitere Informationen finden Sie im Abschnitt „Verwenden von Microsoft Machine Learning Server als Hadoop-Client“ unter [Verwenden von RevoScaleR in einem Spark-Computekontext](https://docs.microsoft.com/machine-learning-server/r/how-to-revoscaler-spark#more-spark-scenarios).
+Weitere Informationen finden Sie im Abschnitt „Verwenden von Microsoft Machine Learning Server als Apache Hadoop-Client“ unter [Verwenden von RevoScaleR in einem Apache Spark-Computekontext](https://docs.microsoft.com/machine-learning-server/r/how-to-revoscaler-spark#more-spark-scenarios).
 
 ## <a name="use-a-compute-context"></a>Verwenden eines Rechenkontexts
 
@@ -250,7 +250,7 @@ Wenn Sie noch den Spark-Kontext verwenden, gibt dieser Befehl den nodename-Wert 
         nodename
     "wn3-mymlser"
 
-## <a name="access-data-in-hive-and-parquet"></a>Zugreifen auf Daten in Hive und Parquet
+## <a name="access-data-in-apache-hive-and-parquet"></a>Zugreifen auf Daten in Apache Hive und Parquet
 
 HDInsight ML Services bietet direkten Zugriff auf Daten in Hive und Parquet, um diese für ScaleR-Funktionen im Spark-Computekontext zu verwenden. Diese Funktionalität steht über die neuen ScaleR-Datenquellenfunktionen namens „RxHiveData“ und „RxParquetData“ zur Verfügung, die Daten unter Verwendung von Spark SQL direkt in einen Spark-Dataframe laden, um sie mit ScaleR zu analysieren.
 

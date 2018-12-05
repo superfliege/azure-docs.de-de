@@ -1,5 +1,5 @@
 ---
-title: Azure-Verwaltung
+title: Übersicht über die Verwaltung in Azure
 description: Dieser Artikel enthält eine Übersicht über die Verwaltungsbereiche für Azure-Anwendungen und -Ressourcen sowie Links zu Inhalten zu Azure-Verwaltungstools.
 author: DCtheGeek
 manager: carmonm
@@ -7,12 +7,12 @@ ms.service: governance
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: dacoulte
-ms.openlocfilehash: 268526277dc935ccffc30120f2bb170ad3ff3ef1
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 180b0cb9f52858d9b0f079ea711fd5ccab738ecf
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46978221"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52582301"
 ---
 # <a name="management-in-azure"></a>Verwaltung in Azure
 
@@ -43,7 +43,7 @@ Governance in Azure wird in erster Linie mit zwei Diensten implementiert. [Azure
 
 ## <a name="secure"></a>Schützen
 
-Das Verwalten der Sicherheit Ihrer Anwendungen, Ressourcen und Daten umfasst eine Kombination aus der Bewertung von Bedrohungen, dem Sammeln und Analysieren von Sicherheitsdaten und dem Sicherstellen, dass Ihre Anwendungen und Ressourcen auf sichere Weise entworfen und konfiguriert werden. Sicherheitsüberwachung und Bedrohungsanalyse werden vom [Azure Security Center](../security-center/security-center-intro.md) bereitgestellt. Dieses umfasst einheitliche Funktionen für die Sicherheitsverwaltung und den erweiterten Schutz vor Bedrohungen für Hybrid Cloud-Workloads. Lesen Sie auch die [Einführung in Azure Security](../security/azure-security.md), um umfassende Informationen zu Sicherheit in Azure und eine Anleitung zum sicheren Konfigurieren von Azure-Ressourcen zu erhalten.
+Das Verwalten der Sicherheit Ihrer Anwendungen, Ressourcen und Daten umfasst eine Kombination aus der Bewertung von Bedrohungen, dem Sammeln und Analysieren von Sicherheitsdaten und dem Sicherstellen, dass Ihre Anwendungen und Ressourcen auf sichere Weise entworfen und konfiguriert werden. Sicherheitsüberwachung und Bedrohungsanalysen werden vom Azure Security Center bereitgestellt. Dieses umfasst einheitliche Funktionen für die Sicherheitsverwaltung und den erweiterten Schutz vor Bedrohungen für Hybrid Cloud-Workloads. Lesen Sie auch die [Einführung in Azure Security](../security/azure-security.md), um umfassende Informationen zu Sicherheit in Azure und eine Anleitung zum sicheren Konfigurieren von Azure-Ressourcen zu erhalten.
 
 ## <a name="protect"></a>Schützen
 

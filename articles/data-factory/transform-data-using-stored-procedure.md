@@ -10,14 +10,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/16/2018
+ms.date: 11/27/2018
 ms.author: douglasl
-ms.openlocfilehash: e8e0f8352404892ea8af6a0fa176c336dd2c1659
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 54d0ce39ea511958824acb753bcf7102d33a6c90
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37054023"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52444027"
 ---
 # <a name="transform-data-by-using-the-sql-server-stored-procedure-activity-in-azure-data-factory"></a>Transformieren von Daten mit der SQL Server-Aktivität „Gespeicherte Prozedur“ in Azure Data Factory | Microsoft-Dokumentation
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -69,12 +69,16 @@ In der folgenden Tabelle werden diese JSON-Eigenschaften beschrieben:
 
 | Eigenschaft                  | BESCHREIBUNG                              | Erforderlich |
 | ------------------------- | ---------------------------------------- | -------- |
-| name                      | Der Name der Aktivität                     | Ja      |
+| name                      | Der Name der Aktivität                     | JA      |
 | Beschreibung               | Ein Text, der beschreibt, wofür die Aktivität verwendet wird. | Nein        |
-| type                      | Für die Aktivität „Gespeicherte Prozedur“ lautet der Aktivitätstyp **SqlServerStoredProcedure**. | Ja      |
-| linkedServiceName         | Verweis auf die **Azure SQL-Datenbank**-, **Azure SQL Data Warehouse**- oder **SQL Server**-Instanz, die in Data Factory als ein verknüpfter Dienst registriert ist. Weitere Informationen zu diesem verknüpften Dienst finden Sie im Artikel [Von Azure Data Factory unterstützten Compute-Umgebungen](compute-linked-services.md). | Ja      |
-| storedProcedureName       | Geben Sie den Namen der gespeicherten Prozedur an, die aufgerufen werden soll. | Ja      |
+| type                      | Für die Aktivität „Gespeicherte Prozedur“ lautet der Aktivitätstyp **SqlServerStoredProcedure**. | JA      |
+| linkedServiceName         | Verweis auf die **Azure SQL-Datenbank**-, **Azure SQL Data Warehouse**- oder **SQL Server**-Instanz, die in Data Factory als ein verknüpfter Dienst registriert ist. Weitere Informationen zu diesem verknüpften Dienst finden Sie im Artikel [Von Azure Data Factory unterstützten Compute-Umgebungen](compute-linked-services.md). | JA      |
+| storedProcedureName       | Geben Sie den Namen der gespeicherten Prozedur an, die aufgerufen werden soll. | JA      |
 | storedProcedureParameters | Geben Sie die Werte für Parameter der gespeicherten Prozedur an. Verwenden Sie `"param1": { "value": "param1Value","type":"param1Type" }` zum Übergeben von Parameterwerten und deren Typ, der von der Datenquelle unterstützt wird. Wenn Sie für einen Parameter „null“ übergeben müssen, verwenden Sie die folgende Syntax: `"param1": { "value": null }` (nur Kleinbuchstaben). | Nein        |
+
+## <a name="error-info"></a>Fehlerinformationen
+
+Wenn bei einer gespeicherten Prozedur ein Fehler auftritt und Fehlerdetails zurückgegeben werden, können Sie die Fehlerinformationen nicht direkt in der Aktivitätsausgabe erfassen. Data Factory überträgt jedoch alle Ereignisse zur Aktivitätsausführung zu Azure Monitor. Außerdem gibt Data Factory Fehlerdetails in Azure Monitor aus. Sie können beispielsweise E-Mail-Benachrichtigungen zu diesen Ereignissen einrichten. Weitere Informationen finden Sie unter [Benachrichtigen und Überwachen von Data Factorys mithilfe von Azure Monitor](monitor-using-azure-monitor.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 In den folgenden Artikeln erfahren Sie, wie Daten auf andere Weisen transformiert werden: 

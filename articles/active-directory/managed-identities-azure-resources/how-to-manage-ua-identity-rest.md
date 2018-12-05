@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 06/26/2018
 ms.author: daveba
-ms.openlocfilehash: 4bf77cd34ba985dfcfa568db0543150c0510c406
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: 86d2f013567d768437e589df366c5c131e1bcf50
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51300097"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52421910"
 ---
 # <a name="create-list-or-delete-a-user-assigned-managed-identity-using-rest-api-calls"></a>Erstellen, Auflisten oder Löschen einer vom Benutzer zugewiesenen verwalteten Identität mithilfe von REST-API-Aufrufen
 
@@ -44,8 +44,6 @@ In diesem Artikel erfahren Sie, wie Sie mithilfe von cURL zum Durchführen von R
 
 Ihrem Konto muss die Rolle [Mitwirkender für verwaltete Identität](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) zugewiesen sein, damit eine benutzerseitig zugewiesene verwaltete Identität erstellt werden kann.
 
-Zum Erstellen einer vom Benutzer zugewiesenen verwalteten Identität verwenden Sie die folgende cURL-Anforderung für die Azure Resource Manager-API. Ersetzen Sie die Werte `<SUBSCRIPTION ID>`, `<RESOURCE GROUP>`, `<USER ASSIGNED IDENTITY NAME>`,`<LOCATION>` und `<ACCESS TOKEN>` durch Ihre eigenen Werte:
-
 [!INCLUDE [ua-character-limit](~/includes/managed-identity-ua-character-limits.md)]
 
 ```bash
@@ -54,20 +52,44 @@ s/<RESOURCE GROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<U
 ation": "<LOCATION>"}' -H "Content-Type: application/json" -H "Authorization: Bearer <ACCESS TOKEN>"
 ```
 
+```HTTP
+PUT https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroup
+s/<RESOURCE GROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<USER ASSIGNED IDENTITY NAME>?api-version=2015-08-31-preview HTTP/1.1
+```
+
+**Anforderungsheader**
+
+|Anforderungsheader  |BESCHREIBUNG  |
+|---------|---------|
+|*Content-Type*     | Erforderlich. Legen Sie diese Option auf `application/json` fest.        |
+|*Autorisierung*     | Erforderlich. Legen Sie diese Option auf ein gültiges `Bearer`-Zugriffstoken fest.        |
+
+**Anforderungstext**
+
+|NAME  |BESCHREIBUNG  |
+|---------|---------|
+|location     | Erforderlich. Ressourcenspeicherort        |
+
 ## <a name="list-user-assigned-managed-identities"></a>Auflisten der vom Benutzer zugewiesenen verwalteten Identitäten
 
 Ihrem Konto muss die Rolle [Operator für verwaltete Identität](/azure/role-based-access-control/built-in-roles#managed-identity-operator) oder [Mitwirkender für verwaltete Identität](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) zugewiesen sein, damit eine benutzerseitig zugewiesene verwaltete Identität aufgelistet/gelesen werden kann.
 
-Zum Auflisten von vom Benutzer zugewiesene verwaltete Identitäten verwenden Sie die folgende cURL-Anforderung für die Azure Resource Manager-API. Ersetzen Sie die Werte `<SUBSCRIPTION ID>`, `<RESOURCE GROUP>` und `<ACCESS TOKEN>` durch Ihre eigenen Werte:
-
 ```bash
 curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities?api-version=2015-08-31-preview' -H "Authorization: Bearer <ACCESS TOKEN>"
 ```
+
+```HTTP
+GET https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities?api-version=2015-08-31-preview HTTP/1.1
+```
+
+|Anforderungsheader  |BESCHREIBUNG  |
+|---------|---------|
+|*Content-Type*     | Erforderlich. Legen Sie diese Option auf `application/json` fest.        |
+|*Autorisierung*     | Erforderlich. Legen Sie diese Option auf ein gültiges `Bearer`-Zugriffstoken fest.        |
+
 ## <a name="delete-a-user-assigned-managed-identity"></a>Löschen einer vom Benutzer zugewiesenen verwalteten Identität
 
 Ihrem Konto muss die Rolle [Mitwirkender für verwaltete Identität](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) zugewiesen sein, damit eine benutzerseitig zugewiesene verwaltete Identität gelöscht werden kann.
-
-Zum Löschen einer vom Benutzer zugewiesenen verwalteten Identität verwenden Sie die folgende cURL-Anforderung für die Azure Resource Manager-API. Ersetzen Sie die Parameterwerte `<SUBSCRIPTION ID>`, `<RESOURCE GROUP>` und `<ACCESS TOKEN>` durch Ihre eigenen Werte:
 
 > [!NOTE]
 > Durch das Löschen einer vom Benutzer zugewiesenen verwalteten Identität wird der Verweis nicht für andere Ressourcen entfernt, denen sie zugewiesen wurde. Informationen zum Entfernen einer vom Benutzer zugewiesenen verwalteten Identität von einem virtuellen Computer mithilfe von cURL finden Sie unter [Entfernen einer vom Benutzer zugewiesenen Identität von einem virtuellen Azure-Computer](qs-configure-rest-vm.md#remove-a-user-assigned identity-from-an-azure-vm).
@@ -77,8 +99,14 @@ curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroup
 s/<RESOURCE GROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<USER ASSIGNED IDENTITY NAME>?api-version=2015-08-31-preview' -X DELETE -H "Authorization: Bearer <ACCESS TOKEN>"
 ```
 
+```HTTP
+DELETE https://management.azure.com/subscriptions/80c696ff-5efa-4909-a64d-f1b616f423ca/resourceGroups/TestRG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<USER ASSIGNED IDENTITY NAME>?api-version=2015-08-31-preview HTTP/1.1
+```
+|Anforderungsheader  |BESCHREIBUNG  |
+|---------|---------|
+|*Content-Type*     | Erforderlich. Legen Sie diese Option auf `application/json` fest.        |
+|*Autorisierung*     | Erforderlich. Legen Sie diese Option auf ein gültiges `Bearer`-Zugriffstoken fest.        |
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 Informationen zum Zuweisen einer vom Benutzer zugewiesenen verwalteten Identität zu einer Azure-VM/-VMSS mithilfe von cURL finden Sie unter [Konfigurieren von verwalteten Identitäten für Azure-Ressourcen auf einem virtuellen Azure-Computer mithilfe von REST-API-Aufrufen](qs-configure-rest-vm.md#user-assigned-managed-identity) und [Konfigurieren von verwalteten Identitäten für Azure-Ressourcen in einer VM-Skalierungsgruppe mithilfe von REST-API-Aufrufen](qs-configure-rest-vmss.md#user-assigned-managed-identity).
-
-

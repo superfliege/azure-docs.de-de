@@ -1,6 +1,6 @@
 ---
 ms.assetid: ''
-title: Azure Key Vault-Speicherkontoschlüssel
+title: Per Azure Key Vault verwaltetes Speicherkonto – CLI
 description: Speicherkontoschlüssel bieten eine nahtlose Integration zwischen Azure Key Vault und dem schlüsselbasierten Zugriff auf das Azure Storage-Konto.
 ms.topic: conceptual
 services: key-vault
@@ -9,14 +9,14 @@ author: bryanla
 ms.author: bryanla
 manager: mbaldwin
 ms.date: 10/03/2018
-ms.openlocfilehash: e62c599d82f488bf1fc30ce503c271084c5ae59d
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: e110a24af6a0d49ea949db6bc30ab344c81d0f48
+ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51300221"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52619281"
 ---
-# <a name="azure-key-vault-storage-account-keys"></a>Azure Key Vault-Speicherkontoschlüssel
+# <a name="azure-key-vault-managed-storage-account---cli"></a>Per Azure Key Vault verwaltetes Speicherkonto – CLI
 
 > [!NOTE]
 > [Azure Storage unterstützt jetzt die AAD-Autorisierung](https://docs.microsoft.com/azure/storage/common/storage-auth-aad). Wir empfehlen die Verwendung von Azure Active Directory für die Authentifizierung und Autorisierung für Azure Storage, da sich die Benutzer keine Gedanken um die Rotation ihrer Speicherkontenschlüssel machen müssen.

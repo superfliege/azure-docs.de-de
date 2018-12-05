@@ -4,7 +4,7 @@ description: Erfahren Sie, wie Sie die Nutzung und Abrechnung Ihres Azure-Abonne
 services: ''
 documentationcenter: ''
 author: tonguyen10
-manager: tonguyen
+manager: jureid
 editor: ''
 tags: billing
 ms.service: billing
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/31/2017
 ms.author: cwatson
-ms.openlocfilehash: 4bfaaa51e39a7db297626a8009306eef9e3efa80
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 50909a51786bf6118c4fb867f2482c93bf59c28e
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47393780"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52581552"
 ---
 # <a name="understand-terms-on-your-microsoft-azure-invoice"></a>Grundlegendes über Benennungen in Ihrer Microsoft Azure-Rechnung
 
@@ -114,5 +114,6 @@ In der folgenden Tabelle werden die Spaltenüberschriften des Abschnitts „Nutz
 ## <a name="how-do-i-make-sure-that-the-charges-in-my-invoice-are-correct"></a>Wie stelle ich sicher, dass die in meiner Rechnung aufgeführten Gebühren richtig sind?
 Wenn Sie mehr über eine Gebühr in Ihrer Rechnung erfahren möchten, lesen Sie den Abschnitt [Grundlegendes über Ihre Rechnung für Microsoft Azure](billing-understand-your-bill.md).
 
-## <a name="need-help-contact-support"></a>Sie brauchen Hilfe? Wenden Sie sich an den Support.
-[Wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), falls Sie weitere Hilfe benötigen, um das Problem schnell beheben zu lassen.
+## <a name="need-help-contact-us"></a>Sie brauchen Hilfe? Wenden Sie sich an uns.
+
+Wenn Sie weitere Fragen haben oder Hilfe benötigen, [erstellen Sie eine Supportanfrage](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).

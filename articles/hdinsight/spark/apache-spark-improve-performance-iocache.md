@@ -7,16 +7,16 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.topic: conceptual
 ms.date: 10/15/2018
-ms.openlocfilehash: 3616183b5ea34b8a14712d2c449de87950443111
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 724e6c57f10fb85b4b91c2236d17a64899953d67
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49954503"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52581934"
 ---
 # <a name="improve-performance-of-apache-spark-workloads-using-azure-hdinsight-io-cache-preview"></a>Verbessern der Leistung von Apache Spark-Workloads per Azure HDInsight IO Cache (Vorschauversion)
 
-IO Cache ist ein Dienst zum Zwischenspeichern von Daten für Azure HDInsight, mit dem die Leistung von Apache Spark-Aufträgen verbessert wird. IO Cache funktioniert auch mit Tez- und Hive-Workloads, die auf Spark-Clustern ausgeführt werden können. Für IO Cache wird eine Open-Source-Komponente für die Zwischenspeicherung mit dem Namen RubiX verwendet. RubiX ist ein lokaler Datenträgercache zur Verwendung mit Big Data-Analysemodulen, bei denen über Cloudspeichersysteme auf Daten zugegriffen wird. RubiX ist unter Zwischenspeicherungssystemen einzigartig, da SSDs (Solid-State Drives) genutzt werden, anstatt regulären Arbeitsspeicher für die Zwischenspeicherung zu reservieren. Der Dienst IO Cache startet und verwaltet RubiX-Metadatenserver auf jedem Workerknoten des Clusters. Außerdem werden alle Dienste des Clusters für die transparente Nutzung des RubiX-Caches konfiguriert.
+IO Cache ist ein Dienst zum Zwischenspeichern von Daten für Azure HDInsight, mit dem die Leistung von Apache Spark-Aufträgen verbessert wird. IO Cache funktioniert auch mit [Apache TEZ](https://tez.apache.org/)- und [Apache Hive](https://hive.apache.org/)-Workloads, die auf [Apache Spark](https://spark.apache.org/)-Clustern ausgeführt werden können. Für IO Cache wird eine Open-Source-Komponente für die Zwischenspeicherung mit dem Namen RubiX verwendet. RubiX ist ein lokaler Datenträgercache zur Verwendung mit Big Data-Analysemodulen, bei denen über Cloudspeichersysteme auf Daten zugegriffen wird. RubiX ist unter Zwischenspeicherungssystemen einzigartig, da SSDs (Solid-State Drives) genutzt werden, anstatt regulären Arbeitsspeicher für die Zwischenspeicherung zu reservieren. Der Dienst IO Cache startet und verwaltet RubiX-Metadatenserver auf jedem Workerknoten des Clusters. Außerdem werden alle Dienste des Clusters für die transparente Nutzung des RubiX-Caches konfiguriert.
 
 Die meisten SSDs ermöglichen eine Bandbreite von mehr als 1 GB pro Sekunde. Diese Bandbreite wird durch den In-Memory-Dateicache des Betriebssystems ergänzt und reicht aus, um Module für Big Data-Computeaufgaben, z.B. Apache Spark, zu laden. Das Betriebssystem bleibt für Apache Spark verfügbar, damit Aufgaben mit starker Abhängigkeit vom Arbeitsspeicher, z.B. Shufflevorgänge, verarbeitet werden können. Indem die exklusive Nutzung des regulären Arbeitsspeichers möglich ist, kann für Apache Spark eine optimale Ressourcennutzung erzielt werden.  
 
@@ -52,7 +52,7 @@ Azure HDInsight IO Cache ist in der Vorschauversion standardmäßig deaktiviert.
   
 Unter Umständen erhalten Sie Datenträgerspeicher-Fehler, wenn Sie nach dem Aktivieren von IO Cache Spark-Aufträge ausführen. Diese Fehler treten auf, da für Spark zum Speichern von Daten bei Shufflevorgängen auch lokaler Datenträgerspeicher verwendet wird. Es kann sein, dass für Spark kein SSD-Speicherplatz mehr vorhanden ist, nachdem IO Cache aktiviert und der Speicherplatz für den Spark-Speicher reduziert wurde. Standardmäßig beträgt die von IO Cache genutzte Speichermenge die Hälfte des gesamten SSD-Speicherplatzes. Die Nutzung des Datenträgerspeichers für IO Cache kann in Ambari konfiguriert werden. Wenn Sie Datenträgerspeicher-Fehler erhalten, sollten Sie die SSD-Speichermenge reduzieren, die für IO Cache genutzt wird, und den Dienst neu starten. Führen Sie die folgenden Schritte aus, um den festgelegten Speicherplatz für IO Cache zu ändern:
 
-1. Wählen Sie in Ambari auf der linken Seite den Dienst **HDFS** aus.
+1. Wählen Sie in Apache Ambari auf der linken Seite den Dienst **HDFS** aus.
 
 1. Wählen Sie die Registerkarten **Configs** und **Advanced**.
 

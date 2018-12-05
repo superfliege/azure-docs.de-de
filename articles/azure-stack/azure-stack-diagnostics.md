@@ -7,15 +7,15 @@ manager: femila
 cloud: azure-stack
 ms.service: azure-stack
 ms.topic: article
-ms.date: 11/13/2018
+ms.date: 11/20/2018
 ms.author: jeffgilb
 ms.reviewer: adshar
-ms.openlocfilehash: f9a7ae76f2d52b3439bfb33f306e164bb81549eb
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: ef8a01228ff31afa78f469b2ad80b864fc9d3497
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51623977"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52283451"
 ---
 # <a name="azure-stack-diagnostics-tools"></a>Azure Stack-Diagnosetools
 
@@ -70,13 +70,14 @@ if($s)
     Remove-PSSession $s
 }
 ```
-- Die Parameter **OutputSharePath** und **OutputShareCredential** werden verwendet, um Protokolle an einem benutzerdefinierten Speicherort zu speichern.
-- Die Parameter **FromDate** und **ToDate** können zum Sammeln von Protokollen für einen bestimmten Zeitraum verwendet werden. Ohne Angabe dieser Parameter werden standardmäßig Protokolle für die letzten vier Stunden gesammelt.
+
 
 
 ### <a name="to-run-get-azurestacklog-on-an-azure-stack-development-kit-asdk-system"></a>So führen Sie Get-AzureStackLog in einem System mit dem Azure Stack Development Kit (ASDK) aus
-1. Melden Sie sich auf dem Host als **AzureStack\CloudAdmin** an.
-2. Öffnen Sie ein PowerShell-Fenster als Administrator.
+Verwenden Sie diese Schritte zum Ausführen von Get-AzureStackLog auf einem ASDK-Hostcomputer.
+
+1. Melden Sie sich auf dem ASDK-Hostcomputer als **AzureStack\CloudAdmin** an.
+2. Öffnen Sie als Administrator ein neues PowerShell-Fenster.
 3. Führen Sie PowerShell-Cmdlet **Get-AzureStackLog**.
 
 **Beispiele:**
@@ -107,7 +108,10 @@ if($s)
 
 ### <a name="parameter-considerations-for-both-asdk-and-integrated-systems"></a>Überlegungen zu den Parametern für das ASDK und integrierte Systeme
 
-- Wenn die Parameter **FromDate** und **ToDate** nicht angegeben sind, werden standardmäßig Protokolle für die letzten vier Stunden gesammelt.
+- Die Parameter **OutputSharePath** und **OutputShareCredential** werden verwendet, um Protokolle an einem benutzerdefinierten Speicherort zu speichern.
+
+- Die Parameter **FromDate** und **ToDate** können zum Sammeln von Protokollen für einen bestimmten Zeitraum verwendet werden. Ohne Angabe dieser Parameter werden standardmäßig Protokolle für die letzten vier Stunden gesammelt.
+
 - Verwenden Sie den Parameter **FilterByNode**, um Protokolle nach Computername zu filtern. Beispiel: 
 
     ```powershell

@@ -8,14 +8,14 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 10/19/2018
+ms.date: 11/19/2018
 ms.author: diberry
-ms.openlocfilehash: db8fc0b6926930521f11285dc56c886c10c42fc2
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: d371ead3280bca5239a9ee6bf2c4275414141fb4
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49649311"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52284369"
 ---
 # <a name="language-understanding-faq"></a>Häufig gestellte Fragen zu Language Understanding
 
@@ -60,6 +60,16 @@ Vorgefertigte Cortana-Apps wurden 2017 eingestellt. Sie werden nicht mehr unters
 
 ## <a name="luis-endpoint"></a>LUIS-Endpunkt
 
+### <a name="my-endpoint-query-returned-unexpected-results-what-should-i-do"></a>Meine Endpunktabfrage hat unerwartete Ergebnisse zurückgegeben. Wie sollte ich vorgehen?
+
+Unerwartete Abfragevorhersageergebnisse basieren auf dem Zustand des veröffentlichten Modells. Um das Modell zu korrigieren, müssen Sie vielleicht das Modell ändern, es trainieren und erneut veröffentlichen. 
+
+Korrigieren des Modells beginnt mit [aktivem Lernen](luis-how-to-review-endoint-utt.md).
+
+Um das nicht deterministische Training zu entfernen, können Sie die [Anwendungsversionseinstellungen-API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings) aktualisieren, um alle Trainingsdaten zu verwenden. 
+
+Weitere Tipps finden Sie in den [Best Practices](luis-concept-best-practices.md). 
+
 ### <a name="why-does-luis-add-spaces-to-the-query-around-or-in-the-middle-of-words"></a>Warum fügt LUIS vor und nach Wörtern oder in der Mitte von Wörtern Leerzeichen in die Abfrage ein?
 LUIS nutzt für die [Tokenisierung](luis-language-support.md#tokenization) der Äußerung deren [Kultur](luis-glossary.md#token). Sowohl der ursprüngliche Wert als auch der nach der Tokenisierung vorhandene Wert können [extrahiert](luis-concept-data-extraction.md#tokenized-entity-returned) werden.
 
@@ -67,7 +77,7 @@ LUIS nutzt für die [Tokenisierung](luis-language-support.md#tokenization) der �
 Erstellen Sie zunächst für Ihren [Servicelevel](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/) den [Endpunktschlüssel](luis-how-to-azure-subscription.md#create-luis-endpoint-key) in Azure. [Weisen Sie den Schlüssel](luis-how-to-manage-keys.md#assign-endpoint-key) auf der Seite **[Schlüssel und Endpunkte](luis-how-to-manage-keys.md)** zu. Für diese Aktion steht keine API zur Verfügung. Danach müssen Sie die HTTP-Anforderung an den Endpunkt so ändern, dass der [neue Endpunktschlüssel](luis-concept-keys.md#use-endpoint-key-in-query) verwendet wird.
 
 ### <a name="how-do-i-interpret-luis-scores"></a>Wie lassen sich LUIS-Bewertungen interpretieren?
-Ihr System sollte die am höchsten bewertete Absicht unabhängig vom Wert verwenden. Ein Wert unter 0,5 (weniger als 50 %) ist nicht zwangsläufig mit einer geringen Zuverlässigkeit von LUIS gleichzusetzen. Durch das Bereitstellen weiterer Trainingsdaten kann die Bewertung für die wahrscheinlichste Absicht verbessert werden.
+Ihr System sollte die am höchsten bewertete Absicht unabhängig vom Wert verwenden. Ein Wert unter 0,5 (weniger als 50 %) ist nicht zwangsläufig mit einer geringen Zuverlässigkeit von LUIS gleichzusetzen. Durch das Bereitstellen weiterer Trainingsdaten kann die [Bewertung](luis-concept-prediction-score.md) für die wahrscheinlichste Absicht verbessert werden.
 
 ### <a name="why-dont-i-see-my-endpoint-hits-in-my-apps-dashboard"></a>Warum werden Endpunktabrufe nicht im App-Dashboard angezeigt?
 Die Gesamtzahl der Endpunktabrufe in Ihrem App-Dashboard wird regelmäßig aktualisiert. Die Metriken, die dem LUIS-Endpunktschlüssel im Azure-Portal zugeordnet sind, werden jedoch häufiger aktualisiert.
@@ -187,7 +197,7 @@ Die [Sprachoptimierung ](https://docs.microsoft.com/bot-framework/bot-service-ma
 ## <a name="luis-service"></a>LUIS-Dienst
 
 ### <a name="is-luis-available-on-premises-or-in-private-cloud"></a>Kann LUIS lokal oder in einer privaten Cloud genutzt werden?
-Nein.
+ Nein.
 
 
 ### <a name="at-the-build-2018-conference-i-heard-about-a-language-understanding-feature-or-demo-but-i-dont-remember-what-it-was-called"></a>Bei der Build 2018-Konferenz wurde ein Language Understanding-Feature oder eine Language Understanding-Demo erwähnt, aber ich erinnere mich nicht mehr an den Namen. Um welche Features oder Demos handelte es sich?
