@@ -11,14 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/28/2018
+ms.date: 11/19/2018
 ms.author: jeedes
-ms.openlocfilehash: 49516523abdd927c3ae60235fcd74473689c6856
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: 65649c3fdc11d74b5888b26b81ae85e10f2788bd
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48020613"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52426875"
 ---
 # <a name="atlassian-jira-and-confluence-admin-guide-for-azure-active-directory"></a>Atlassian Jira und Confluence – Administratorhandbuch für Azure Active Directory
 
@@ -67,9 +67,23 @@ Bevor Sie das Plug-In installieren, beachten Sie Folgendes:
 
 Das Plug-In unterstützt die folgenden Versionen von JIRA und Confluence:
 
-* Jira Core und Software: 6.0 bis 7.8
-* JIRA Service Desk: 3.0 bis 3.2
+* JIRA Core und Software: 6.0 bis 7.12
+* JIRA Service Desk: 3.0.0 bis 3.5.0
+* JIRA unterstützt auch 5.2. Klicken Sie zum Anzeigen weiterer Einzelheiten auf [Microsoft Azure Active Directory single sign-on for JIRA 5.2](https://docs.microsoft.com/azure/active-directory/saas-apps/jira52microsoft-tutorial) (Microsoft Azure Active Directory-SSO für JIRA 5.2).
 * Confluence: 5.0 bis 5.10
+* Confluence: 6.0.1
+* Confluence: 6.1.1
+* Confluence: 6.2.1
+* Confluence: 6.3.4
+* Confluence: 6.4.0
+* Confluence: 6.5.0
+* Confluence: 6.6.2
+* Confluence: 6.7.0
+* Confluence: 6.8.1
+* Confluence: 6.9.0
+* Confluence: 6.10.0
+* Confluence: 6.11.0
+* Confluence: 6.12.0
 
 ## <a name="installation"></a>Installation
 
@@ -79,7 +93,7 @@ Führen Sie diese Schritte aus, um das Plug-In zu installieren:
 
 2. Wechseln Sie zur JIRA-/Confluence-Verwaltungskonsole, und wählen Sie **Add-Ons** aus.
 
-3. Suchen Sie vom Atlassian Marketplace aus nach **Microsoft SAML-SSO-Plug-In**.
+3. Laden Sie im Microsoft Download Center das [Microsoft SAML-SSO-Plug-In für Jira](https://www.microsoft.com/download/details.aspx?id=56506)/ [Microsoft SAML-SSO-Plug-In für Confluence](https://www.microsoft.com/download/details.aspx?id=56503) herunter.
 
    Die entsprechende Version des Plug-Ins wird in den Suchergebnissen angezeigt.
 
@@ -165,15 +179,29 @@ Das Plug-In funktioniert mit lokalen Versionen von JIRA und Confluence.
 
 ### <a name="does-the-plug-in-work-on-cloud-versions"></a>Funktioniert dieses Plug-In mit Cloudversionen?
 
-Nein. Das Plug-In unterstützt lokale Versionen von JIRA und Confluence.
+ Nein. Das Plug-In unterstützt lokale Versionen von JIRA und Confluence.
 
 ### <a name="which-versions-of-jira-and-confluence-does-the-plug-in-support"></a>Welche Versionen von JIRA und Confluence unterstützt das Plug-In?
 
 Das Plug-In unterstützt diese Versionen:
 
-* Jira Core und Software: 6.0 bis 7.8
-* JIRA Service Desk: 3.0 bis 3.2
+* JIRA Core und Software: 6.0 bis 7.12
+* JIRA Service Desk: 3.0.0 bis 3.5.0
+* JIRA unterstützt auch 5.2. Klicken Sie zum Anzeigen weiterer Einzelheiten auf [Microsoft Azure Active Directory single sign-on for JIRA 5.2](https://docs.microsoft.com/azure/active-directory/saas-apps/jira52microsoft-tutorial) (Microsoft Azure Active Directory-SSO für JIRA 5.2).
 * Confluence: 5.0 bis 5.10
+* Confluence: 6.0.1
+* Confluence: 6.1.1
+* Confluence: 6.2.1
+* Confluence: 6.3.4
+* Confluence: 6.4.0
+* Confluence: 6.5.0
+* Confluence: 6.6.2
+* Confluence: 6.7.0
+* Confluence: 6.8.1
+* Confluence: 6.9.0
+* Confluence: 6.10.0
+* Confluence: 6.11.0
+* Confluence: 6.12.0
 
 ### <a name="is-the-plug-in-free-or-paid"></a>Ist das Plug-In kostenlos oder kostenpflichtig?
 
@@ -195,7 +223,7 @@ Wir haben dieses Plug-In nur mit 64-Bit-Windows-Serverinstallationen von JIRA un
 
 ### <a name="does-the-plug-in-work-with-idps-other-than-azure-ad"></a>Funktioniert das Plug-In mit anderen IdPs als Azure AD?
 
-Nein. Es funktioniert nur mit Azure AD.
+ Nein. Es funktioniert nur mit Azure AD.
 
 ### <a name="what-version-of-saml-does-the-plug-in-work-with"></a>Mit welcher SAML-Version funktioniert das Plug-In?
 
@@ -203,12 +231,12 @@ Es funktioniert mit SAML 2.0.
 
 ### <a name="does-the-plug-in-do-user-provisioning"></a>Führt das Plug-In eine Benutzerbereitstellung durch?
 
-Nein. Das Plug-In stellt nur SSO auf Basis von SAML 2.0 bereit. Der Benutzer muss vor der SSO-Anmeldung in der Anwendung bereitgestellt werden.
+ Nein. Das Plug-In stellt nur SSO auf Basis von SAML 2.0 bereit. Der Benutzer muss vor der SSO-Anmeldung in der Anwendung bereitgestellt werden.
 
 ### <a name="does-the-plug-in-support-cluster-versions-of-jira-and-confluence"></a>Unterstützt das Plug-In Clusterversionen von JIRA und Confluence?
 
-Nein. Das Plug-In funktioniert mit lokalen Versionen von JIRA und Confluence.
+ Nein. Das Plug-In funktioniert mit lokalen Versionen von JIRA und Confluence.
 
 ### <a name="does-the-plug-in-work-with-http-versions-of-jira-and-confluence"></a>Funktioniert das Plug-In mit HTTP-Versionen von JIRA und Confluence?
 
-Nein. Das Plug-In funktioniert nur mit HTTPS-fähigen Installationen.
+ Nein. Das Plug-In funktioniert nur mit HTTPS-fähigen Installationen.

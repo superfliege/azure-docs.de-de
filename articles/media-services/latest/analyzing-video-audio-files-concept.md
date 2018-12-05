@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 10/23/2018
+ms.date: 11/17/2018
 ms.author: juliako
-ms.openlocfilehash: a087c1a069e340c01f2eda657a3d0ecce768168c
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 3af8aec6bb2fe08c4bd1ef65e4f272a6f85af50b
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51228129"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52427420"
 ---
 # <a name="analyzing-video-and-audio-files"></a>Analysieren von Video- und Audiodateien
 
@@ -33,7 +33,7 @@ Media Services unterstützt derzeit die folgenden integrierten Analysevoreinstel
 
 |**Name der Voreinstellung**|**Szenario**|**Details**|
 |---|---|---|
-|**AudioAnalyzerPreset**|Analysieren von Audioinhalten|Die Voreinstellung wendet einen vordefinierten Satz von AI-basierten Analysevorgängen, einschließlich Sprachtranskription, an. Die Voreinstellung unterstützt derzeit die Verarbeitung von Inhalten mit einer einzelnen Audiospur.<br/>Sie können die Sprache für die Audio-Nutzlast in der Eingabe angeben. Dazu verwenden Sie das BCP-47-Format des Tags zur Identifizierung von Sprache und Region (z. B. „en-US“). Folgende Sprachen werden unterstützt: „en-US“, „en-GB“, „es-ES“, „es-MX“, „fr-FR“, „It-IT“, „ja-JP“, „pt-BR“, „zh-CN“.|
+|**AudioAnalyzerPreset**|Analysieren von Audioinhalten|Die Voreinstellung wendet einen vordefinierten Satz von AI-basierten Analysevorgängen, einschließlich Sprachtranskription, an. Die Voreinstellung unterstützt derzeit die Verarbeitung von Inhalten mit einer einzelnen Audiospur.<br/>Sie können die Sprache für die Audio-Nutzlast in der Eingabe angeben. Dazu verwenden Sie das BCP-47-Format des Tags zur Identifizierung von Sprache und Region (z. B. „en-US“). Folgende Sprachen werden unterstützt: „en-US“, „en-GB“, „es-ES“, „es-MX“, „fr-FR“, „It-IT“, „ja-JP“, „pt-BR“, „zh-CN“. Wenn die Sprache nicht angegeben oder auf Null festgelegt ist, wird die automatische Spracherkennung eingesetzt. Die automatische Spracherkennung unterstützt derzeit Englisch, Chinesisch, Französisch, Deutsch, Italienisch, Japanisch, Spanisch, Russisch und Portugiesisch.|
 |**VideoAnalyzerPreset**|Analysieren von Audio und Video|Extrahiert Erkenntnisse (umfangreiche Metadaten) von Audio- und Videoinhalten und gibt eine Datei im JSON-Format aus. Beim Verarbeiten einer Videodatei können Sie angeben, ob Sie nur Audioerkenntnisse erhalten möchten. Weitere Informationen finden Sie unter [Analysieren von Videos](analyze-videos-tutorial-with-api.md).|
 
 ### <a name="audioanalyzerpreset"></a>AudioAnalyzerPreset

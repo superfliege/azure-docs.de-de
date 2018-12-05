@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: shlo
-ms.openlocfilehash: e437e7b7d5298af325ae2a5e2ba689b417bad022
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: e682b3780c26da9cf2398e93adc32cb107127d9c
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39002919"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52426790"
 ---
 # <a name="lookup-activity-in-azure-data-factory"></a>Lookup-Aktivität in Azure Data Factory
 
@@ -58,7 +58,7 @@ NAME | BESCHREIBUNG | Typ | Erforderlich?
 ---- | ----------- | ---- | --------
 dataset | Enthält die Datasetreferenz für die Lookupaktivität. Details finden Sie in den entsprechenden Connectorartikeln im Abschnitt **Dataset-Eigenschaften**. | Schlüssel-Wert-Paar | JA
 Quelle | Enthält spezifische Quelleneigenschaften für das Dataset, identisch mit der Quelle der Kopieraktivität. Details finden Sie in jedem entsprechenden Connectorartikel im Abschnitt **Eigenschaften der Kopieraktivität**. | Schlüssel-Wert-Paar | JA
-firstRowOnly | Gibt an, ob nur die erste Zeile oder alle Zeilen zurückgegeben werden sollen. | Boolescher Wert | Nein. Der Standardwert lautet `true`.
+firstRowOnly | Gibt an, ob nur die erste Zeile oder alle Zeilen zurückgegeben werden sollen. | Boolescher Wert |  Nein. Der Standardwert lautet `true`.
 
 > [!NOTE]
 
@@ -297,6 +297,15 @@ Diese Azure SQL-Datenbankinstanz enthält die Daten, die in Blob Storage kopiert
     }
 ]
 ```
+
+## <a name="limitations-and-workarounds"></a>Einschränkungen und Problemumgehungen
+
+Hier werden einige Einschränkungen der Lookup-Aktivität und empfohlene Problemumgehungen aufgeführt.
+
+| Einschränkung | Problemumgehung |
+|---|---|
+| Die Grenze einer Lookup-Aktivität liegt bei maximal 5.000 Zeilen und einer maximalen Größe von 2MB. | Entwerfen Sie eine Pipeline mit zwei Ebenen, wobei die äußere Pipeline eine innere Pipeline durchläuft, die Daten abruft, die die maximale Zeilenanzahl oder Größe nicht überschreiten. |
+| | |
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen finden Sie unter anderen Ablaufsteuerungsaktivitäten, die von Data Factory unterstützt werden: 
