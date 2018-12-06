@@ -9,23 +9,23 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: hrasheed
-ms.openlocfilehash: 302f2f96a7f17699411ab9fdbdb6ab1f9de149c8
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: e1512d63e83ee213513a3dcd4b858331684dc8a8
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51277597"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52497560"
 ---
-# <a name="access-apache-yarn-application-logs-on-linux-based-hdinsight"></a>Zugreifen auf Apache YARN-Anwendungsprotokolle unter Linux-basiertem HDInsight
+# <a name="access-apache-hadoop-yarn-application-logs-on-linux-based-hdinsight"></a>Zugreifen auf Apache Hadoop YARN-Anwendungsprotokolle unter Linux-basiertem HDInsight
 
-Erfahren Sie, wie Sie auf Protokolle für Apache YARN-Anwendungen (Yet Another Resource Negotiator) in einem Apache Hadoop-Cluster in Azure HDInsight zugreifen.
+Erfahren Sie, wie Sie auf Protokolle für [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html)-Anwendungen (Yet Another Resource Negotiator) in einem Apache Hadoop-Cluster in Azure HDInsight zugreifen.
 
 > [!IMPORTANT]
 > Die Schritte in diesem Dokument erfordern einen HDInsight-Cluster mit Linux. Linux ist das einzige unter HDInsight Version 3.6 oder höher verwendete Betriebssystem. Weitere Informationen finden Sie unter [HDInsight-Komponentenversionen](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 ## <a name="YARNTimelineServer"></a>YARN Timeline Server
 
-Der [Apache YARN Timeline Server](http://hadoop.apache.org/docs/r2.7.3/hadoop-yarn/hadoop-yarn-site/TimelineServer.html) bietet allgemeine Informationen zu abgeschlossenen Anwendungen.
+Der [Apache Hadoop YARN Timeline Server](http://hadoop.apache.org/docs/r2.7.3/hadoop-yarn/hadoop-yarn-site/TimelineServer.html) bietet allgemeine Informationen zu abgeschlossenen Anwendungen.
 
 YARN Timeline Server umfasst die folgenden Arten von Daten:
 
@@ -36,9 +36,9 @@ YARN Timeline Server umfasst die folgenden Arten von Daten:
 
 ## <a name="YARNAppsAndLogs"></a>YARN-Anwendungen und -Protokolle
 
-YARN unterstützt mehrere Programmierungsmodelle (u. a. MapReduce), indem die Ressourcenverwaltung von der Zeitplanung/Überwachung von Anwendungen getrennt wird. YARN verwendet einen globalen *ResourceManager* (RM), workerknotenbezogene *NodeManager* (NMs) und anwendungsbezogene *ApplicationMaster* (AMs). Der anwendungsbezogene AM handelt Ressourcen (CPU, Arbeitsspeicher, Datenträger, Netzwerk) für die Ausführung Ihrer Anwendung mit dem RM aus. Der RM arbeitet mit NMs zusammen, um diese Ressourcen zu gewähren, die als *Container* zugewiesen werden. Der AM ist zuständig für die Nachverfolgung des Status der Container, die ihm vom RM zugewiesen wurden. Je nach Art der Anwendung kann diese viele Container benötigen.
+YARN unterstützt mehrere Programmierungsmodelle (u. a.[Apache Hadoop MapReduce](https://hadoop.apache.org/docs/r1.2.1/mapred_tutorial.html)), indem die Ressourcenverwaltung von der Zeitplanung/Überwachung von Anwendungen getrennt wird. YARN verwendet einen globalen *ResourceManager* (RM), workerknotenbezogene *NodeManager* (NMs) und anwendungsbezogene *ApplicationMaster* (AMs). Der anwendungsbezogene AM handelt Ressourcen (CPU, Arbeitsspeicher, Datenträger, Netzwerk) für die Ausführung Ihrer Anwendung mit dem RM aus. Der RM arbeitet mit NMs zusammen, um diese Ressourcen zu gewähren, die als *Container* zugewiesen werden. Der AM ist zuständig für die Nachverfolgung des Status der Container, die ihm vom RM zugewiesen wurden. Je nach Art der Anwendung kann diese viele Container benötigen.
 
-Jede Anwendung kann aus mehreren *Anwendungsversuchen* bestehen. Tritt bei einer Anwendung ein Fehler auf, kann ein neuer Versuch unternommen werden. Jeder Versuch wird in einem Container ausgeführt. In gewisser Weise stellt ein Container den Kontext für die Standardeinheit für Aufgaben, die von einer YARN-Anwendung ausgeführt werden. Alle Aufgaben, die im Kontext eines Containers erledigt werden, erfolgen auf dem einzelnen Workerknoten, auf dem der Container zugeordnet wurde. Weitere Informationen finden Sie unter [YARN-Konzepte][YARN-concepts].
+Jede Anwendung kann aus mehreren *Anwendungsversuchen* bestehen. Tritt bei einer Anwendung ein Fehler auf, kann ein neuer Versuch unternommen werden. Jeder Versuch wird in einem Container ausgeführt. In gewisser Weise stellt ein Container den Kontext für die Standardeinheit für Aufgaben, die von einer YARN-Anwendung ausgeführt werden. Alle Aufgaben, die im Kontext eines Containers erledigt werden, erfolgen auf dem einzelnen Workerknoten, auf dem der Container zugeordnet wurde. Weitere Informationen finden Sie unter [Apache Hadoop YARN-Konzepte][YARN-concepts].
 
 Anwendungsprotokolle (und dazugehörige Containerprotokolle) sind für das Beheben von Problemen bei Hadoop-Anwendungen besonders wichtig. YARN bietet mit seinem Feature [Log Aggregation][log-aggregation] ein nützliches Gerüst für das Sammeln, Zusammenführen und Speichern von Anwendungsprotokollen. Durch die Protokollaggregationsfunktion wird der Zugriff auf Anwendungsprotokolle deterministischer. Sie aggregiert Protokolle in allen Containern auf einem Workerknoten und speichert sie als eine aggregierte Protokolldatei pro Workerknoten. Das Protokoll wird, nachdem eine Anwendung beendet wurde, im Standarddateisystem gespeichert. Ihre Anwendung mag Hunderte oder Tausende von Containern verwenden, doch Protokolle für alle auf einem einzelnen Workerknoten vorhandenen Container werden immer zu einer zentralen Datei zusammengeführt. Daher wird nur ein Protokoll pro Workerknoten von Ihrer Anwendung genutzt. Die Protokollaggregation ist für HDInsight-Cluster ab Version 3.0 standardmäßig aktiviert. Aggregierte Protokolle befinden sich im Standardspeicher für den Cluster. Der folgende Pfad ist der HDFS-Pfad für die Protokolle:
 

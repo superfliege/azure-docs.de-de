@@ -4,12 +4,12 @@ ms.service: virtual-machines-linux
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 46fd31b54b7692700cce0bebe484c4f5de591942
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 87dd3680aae3e87f78ab2dbe70c44b2008706747
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50226577"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52279638"
 ---
 Beim Hinzufügen von Datenträgern zu einer Linux-VM können Fehler auftreten, wenn kein Datenträger in LUN 0 vorhanden ist. Wenn Sie einen Datenträger manuell mit dem Befehl `azure vm disk attach-new` hinzufügen und eine LUN (`--lun`) angeben, statt die entsprechende LUN von Azure Platform bestimmen zu lassen, müssen Sie sicherstellen, dass in LUN 0 bereits ein Datenträger vorhanden ist/vorhanden sein wird. 
 

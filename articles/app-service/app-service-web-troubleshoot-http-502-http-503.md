@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2016
 ms.author: cephalin
-ms.openlocfilehash: 1a64e40b13b05fc7f9fdb6f5aa99c8d8cc47c471
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: d0d1efcdaab07e77d835319544fc70eb8687702f
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51251609"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52316343"
 ---
 # <a name="troubleshoot-http-errors-of-502-bad-gateway-and-503-service-unavailable-in-your-azure-web-apps"></a>Problembehandlung bei HTTP-Fehler „502 Ungültiges Gateway“ und „503 Dienst nicht verfügbar“ in Ihren Azure-Web-Apps
 „502 Ungültiges Gateway“ und „503 Dienst nicht verfügbar“ sind häufige Fehler in Ihrer Web-App, die im [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714)gehostet wird. Dieser Artikel hilft Ihnen, diese Fehler zu beheben.
@@ -74,22 +74,10 @@ Weitere Informationen finden Sie unter
 <a name="collect" />
 
 ### <a name="2-collect-data"></a>2. Sammeln von Daten
-#### <a name="use-the-azure-app-service-support-portal"></a>Verwenden des Azure App Service-Support-Portals
-Web-Apps bietet Ihnen die Möglichkeit, Probleme im Zusammenhang mit Ihrer Web-App anhand von HTTP-Protokollen, Ereignisprotokollen, Prozesssicherungen usw. zu behandeln. Auf diese Informationen können Sie in unserem Supportportal unter „**http://&lt;Name_Ihrer_App>.scm.azurewebsites.net/Support**“ zugreifen.
+#### <a name="use-the-diagnostics-tool"></a>Verwenden des Diagnosetools
+App Service stellt eine intelligente und interaktive Komponente bereit, mit der Sie Probleme bei Ihrer Web-App untersuchen können, ohne dass eine Konfiguration erforderlich ist. Wenn bei Ihrer Web-App Probleme auftreten, zeigt das Diagnosetool den Fehler auf, damit Sie die richtigen Informationen finden, um das Problem einfacher und schneller behandeln und lösen zu können.
 
-Im Azure App Service-Support-Portal stehen Ihnen drei separate Registerkarten für die drei Schritte eines typischen Problembehandlungsszenarios zur Verfügung:
-
-1. Aktuelles Verhalten beobachten
-2. Diagnoseinformationen sammeln und integrierte Analysen ausführen, um das Problem zu analysieren
-3. Auswirkungen des Problems minimieren
-
-Wenn das Problem gerade auftritt, klicken Sie auf **Analysieren** > **Diagnose** > **Jetzt diagnostizieren**, um eine Diagnosesitzung zu erstellen, die HTTP-Protokolle, Protokolle der Ereignisanzeige, Speicherabbilddateien, PHP-Fehlerprotokolle und einen PHP-Prozessbericht sammelt.
-
-Nachdem die Daten gesammelt wurden, wird auch eine Analyse der Daten ausgeführt, und es wird ein HTML-Bericht angezeigt.
-
-Falls Sie die Daten herunterladen, werden diese standardmäßig im Ordner „D:\home\data\DaaS“ gespeichert.
-
-Weitere Informationen zum Azure App Service-Support-Portal finden Sie unter [Neue Updates zur Unterstützung von Websiteerweiterungen für Azure-Websites](https://azure.microsoft.com/blog/new-updates-to-support-site-extension-for-azure-websites).
+Navigieren Sie für den Zugriff auf die App Service-Diagnose zu Ihrer App Service-App oder App Service-Umgebung im [Azure-Portal](https://portal.azure.com). Klicken Sie im linken Navigationsbereich auf **Diagnose und Problembehandlung**.
 
 #### <a name="use-the-kudu-debug-console"></a>Verwenden der Kudu-Debugkonsole
 Web-Apps enthält eine Debugkonsole, die Sie zum Debuggen, Untersuchen und Hochladen von Dateien verwenden können, sowie JSON-Endpunkte zum Abrufen von Informationen über Ihre Umgebung. Dieses Feature wird als *Kudu-Konsole* oder *SCM-Dashboard* für Ihre Web-App bezeichnet.

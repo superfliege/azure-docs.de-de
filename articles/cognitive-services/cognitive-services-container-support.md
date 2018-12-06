@@ -9,16 +9,16 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 11/14/2018
 ms.author: diberry
-ms.openlocfilehash: b66d6bc93f9d2df3eccabf0f0f9edb0384bab70f
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 05a364cc66d18909c7833138d351dc02bace32c2
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634910"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51822108"
 ---
 # <a name="container-support-in-azure-cognitive-services"></a>Containerunterstützung in Azure Cognitive Services
 
-Mithilfe der Containerunterstützung in Azure Cognitive Services können Entwickler dieselben umfassenden APIs wie in Azure verwenden, haben dabei aber die Flexibilität von [Docker-Containern](https://www.docker.com/what-container). Die Containerunterstützung ist derzeit als Vorschauversion für einige Azure Cognitive Services verfügbar, einschließlich [Maschinelles Sehen](Computer-vision/Home.md), [Gesichtserkennung](Face/Overview.md) und [Textanalyse](text-analytics/overview.md).
+Dank der Containerunterstützung in Azure Cognitive Services können Entwickler die gleichen umfangreichen APIs verwenden wie in Azure und dabei flexibel entscheiden, wo die mit [Docker-Containern](https://www.docker.com/what-container) verbundenen Dienste bereitgestellt und gehostet werden. Die Containerunterstützung ist derzeit als Vorschauversion für einige Azure Cognitive Services verfügbar, einschließlich [Maschinelles Sehen](Computer-vision/Home.md), [Gesichtserkennung](Face/Overview.md) und [Textanalyse](text-analytics/overview.md).
 
 Die Verwendung von Containern ist ein Ansatz zur Softwareverteilung, bei dem eine Anwendung oder ein Dienst, einschließlich der Abhängigkeiten und der Konfiguration, als Containerimage zusammengepackt wird. Das Containerimage kann mit geringer oder ganz ohne Bearbeitung auf einem Containerhost bereitgestellt werden. Container sind voneinander und vom zugrunde liegenden Betriebssystem isoliert und nehmen weniger Speicher in Anspruch als ein virtueller Computer. Container können für kurzfristige Aufgaben über Containerimages instanziiert und wieder entfernt werden, wenn sie nicht mehr benötigt werden.
 

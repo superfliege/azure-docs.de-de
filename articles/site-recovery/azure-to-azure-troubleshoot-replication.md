@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 10/30/2018
 ms.author: asgang
-ms.openlocfilehash: 0ac90d8ef29d4293a5eeb5f932687788320c218e
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 22ea3d955fe2910dc99ab4015165008da899d48e
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51615795"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52312849"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-ongoing-replication-issues"></a>Behandlung von Problemen mit laufenden VM-Replikationen mit Azure als Quelle und Ziel
 
@@ -29,7 +29,7 @@ FEHLER-ID: 153007 </br>
 Azure Site Recovery repliziert Daten konsistent von der Quellregion zur Notfallwiederherstellungsregion und erstellt alle 5 Minuten einen absturzkonsistenten Wiederherstellungspunkt. Wenn Site Recovery 60 Minuten lang keine Wiederherstellungspunkte erstellen kann, wird der Benutzer benachrichtigt. Im Folgenden finden Sie die Ursachen, die zu diesem Fehler führen können:
 
 **Ursache 1: [Hohe Datenänderungsrate auf dem virtuellen Quellcomputer](#high-data-change-rate-on-the-source-virtal-machine)**    
-**Ursache 2: [Netzwerkkonnektivitätsproblem](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**
+**Ursache 2: [Netzwerkkonnektivitätsproblem](#Network-connectivity-issue)**
 
 ## <a name="causes-and-solutions"></a>Ursachen und Lösungen
 
@@ -77,5 +77,10 @@ Diese Option ist nur möglich, wenn die Datenänderungsrate weniger als 10 MB/s 
 
 ### <a name="Network-connectivity-issue"></a>Netzwerkkonnektivitätsproblem
 
+#### <a name="network-latency-to-cache-storage-account-"></a>Netzwerklatenz im Cachespeicherkonto:
+ Site Recovery sendet replizierte Daten an das Cachespeicherkonto. Das Problem kann auftreten, wenn die Daten vom virtuellen Computer langsamer als 4 MB/3 s in das Cachespeicherkonto hochgeladen werden. Verwenden Sie den Befehl [azcopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy) zum Hochladen von Daten vom virtuellen Computer in das Cachespeicherkonto, um zu überprüfen, ob ein Latenzproblem vorliegt.<br>
+Wenn die Latenz hoch ist, überprüfen Sie, ob Sie ein virtuelles Netzwerkgerät zum Steuern des ausgehenden Netzwerkdatenverkehrs von virtuellen Computern verwenden. Das virtuelle Netzwerkgerät wird möglicherweise gedrosselt, wenn der gesamte Replikationsdatenverkehr durch das virtuelle Netzwerkgerät läuft. Es wird empfohlen, einen Netzwerk-Dienstendpunkt in Ihrem virtuellen Netzwerk für „Storage“ zu erstellen, damit der Replikationsdatenverkehr nicht an die virtuelle Netzwerkappliance geleitet wird. Informationen dazu finden Sie unter [Konfiguration der virtuellen Netzwerkappliance](https://docs.microsoft.com/en-us/azure/site-recovery/azure-to-azure-about-networking#network-virtual-appliance-configuration).
+
+#### <a name="network-connectivity"></a>Netzwerkverbindung
 Damit die Site Recovery-Replikation funktioniert, ist für die VM die ausgehende Konnektivität zu bestimmten URLs oder IP-Bereichen erforderlich. Wenn sich Ihr virtueller Computer hinter einer Firewall befindet oder Netzwerksicherheitsgruppen-Regeln (NSG-Regeln) zum Steuern der ausgehenden Konnektivität verwendet werden, wird ggf. eine dieser Fehlermeldungen angezeigt.</br>
-Weitere Informationen finden Sie unter [Ausgehende Konnektivität für Site Recovery-URLs oder IP-Bereiche (Fehlercode 151037 oder 151072)](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-troubleshoot-errors?#outbound-connectivity-for-site-recovery-urls-or-ip-ranges-error-code-151037-or-151072).
+Informationen zum Sicherstellen, dass alle URLs verbunden sind, finden Sie unter [Ausgehende Konnektivität für Site Recovery-URLs](https://docs.microsoft.com/en-us/azure/site-recovery/azure-to-azure-about-networking#outbound-connectivity-for-ip-address-ranges). 

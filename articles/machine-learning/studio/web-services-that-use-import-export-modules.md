@@ -1,10 +1,11 @@
 ---
-title: Verwenden des Imports/Exports von Daten in Azure Machine Learning-Webdiensten | Microsoft-Dokumentation
+title: Verwenden des Imports/Exports von Daten in Azure Machine Learning Studio-Webdiensten | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie die Module „Import Data“ und „Export Data“ verwenden, um Daten von einem Webdienst zu senden und zu empfangen.
 services: machine-learning
 documentationcenter: ''
-author: YasinMSFT
-ms.author: yahajiza
+author: ericlicoding
+ms.custom: (previous ms.author=yahajiza, author=YasinMSFT)
+ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
 ms.assetid: 3a7ac351-ebd3-43a1-8c5d-18223903d08e
@@ -15,14 +16,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/28/2017
-ms.openlocfilehash: 27873930ebef75923088f8bf2170c8e6a383cfa8
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: ee7d0fb4792983099dc6192de8f85338daee357f
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34837411"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52306946"
 ---
-# <a name="deploying-azure-ml-web-services-that-use-data-import-and-data-export-modules"></a>Bereitstellen von Azure ML-Webdiensten, die Module zum Importieren und Exportieren von Daten verwenden
+# <a name="deploy-azure-machine-learning-studio-web-services-that-use-data-import-and-data-export-modules"></a>Bereitstellen von Azure Machine Learning Studio-Webdiensten, die Module zum Importieren und Exportieren von Daten verwenden
 
 Bei der Erstellung eines Vorhersageexperiments fügen Sie in der Regel eine Webdiensteingabe und -ausgabe hinzu. Wenn Sie das Experiment bereitstellen, können Nutzer Daten über die Webdiensteingabe bzw. -ausgabe senden und empfangen. Für einige Anwendungen sind die Daten eines Nutzers möglicherweise über einen Datenfeed verfügbar oder befinden sich bereits in einer externen Datenquelle, z.B. Azure Blob Storage. In diesen Fällen müssen sie nicht mithilfe von Webdiensteingabe und -ausgabe gelesen und geschrieben werden. Sie können stattdessen mit dem Stapelausführungsdienst (Batch Execution Service, BES) mit einem Import Data-Modul aus der Datenquelle gelesen werden, und die Bewertungsergebnisse können mit einem Export Data-Modul an einen anderen Datenspeicherort geschrieben werden.
 

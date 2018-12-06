@@ -8,20 +8,20 @@ ms.date: 09/27/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: b97a88a36631af1de3c95f0730a9a951b9a3a907
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: cd077c1a552a14582fce48bbe60f56ef08e5a4d7
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51569062"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52584841"
 ---
-# <a name="understand-iot-edge-deployments-for-single-devices-or-at-scale"></a>Grundlegendes zu IoT Edge-Bereitstellungen für einzelne Geräte oder nach Bedarf
+# <a name="understand-iot-edge-automatic-deployments-for-single-devices-or-at-scale"></a>Grundlegendes zu automatischen IoT Edge-Bereitstellungen für einzelne Geräte oder nach Bedarf
 
 Für Azure IoT Edge-Geräte gilt ein [Gerätelebenszyklus](../iot-hub/iot-hub-device-management-overview.md), der weitgehend dem von anderen Typen von IoT-Geräten entspricht:
 
-1. IoT Edge-Geräte werden bereitgestellt. Dies umfasst die Imageerstellung eines Geräts mit einem Betriebssystem und das Installieren der [IoT Edge-Runtime](iot-edge-runtime.md).
-2. Die Geräte werden für die Ausführung von [IoT Edge-Modulen](iot-edge-modules.md) konfiguriert, und ihre Integrität wird überwacht. 
-3. Schließlich können Geräte außer Kraft gesetzt werden, wenn sie ersetzt werden oder veraltet sind.  
+1. Sie stellen neue IoT Edge-Geräte bereit. Dies umfasst die Imageerstellung eines Geräts mit einem Betriebssystem und die Installation der [IoT Edge-Runtime](iot-edge-runtime.md).
+2. Sie konfigurieren die Geräte für die Ausführung von [IoT Edge-Modulen](iot-edge-modules.md) und überwachen dann ihre Integrität. 
+3. Schließlich können Sie Geräte außer Kraft setzen, wenn sie ersetzt werden oder veraltet sind.  
 
 Azure IoT Edge bietet zwei Möglichkeiten zum Konfigurieren der Module, die auf IoT Edge-Geräten ausgeführt werden: eine für Entwicklungsarbeiten und schnelle Iterationen auf einem einzelnen Gerät (diese Methode wurde in den Azure IoT Edge-[Tutorials](tutorial-deploy-function.md) verwendet) und eine für die Verwaltung umfangreicher IoT Edge-Gerätebestände. Beide Ansätze sind im Azure-Portal und programmgesteuert verfügbar. Wenn Sie Gruppen oder eine große Anzahl von Geräten verwalten, können Sie mithilfe von [Tags](../iot-edge/how-to-deploy-monitor.md#identify-devices-using-tags) im Gerätezwilling angeben, auf welchen Geräten Sie Ihre Module bereitstellen möchten. In den folgenden Schritten wird eine Bereitstellung in einer Gerätegruppe im US-Bundesstaat Washington beschrieben, die anhand der tags-Eigenschaft identifiziert werden kann. 
 
@@ -29,16 +29,16 @@ Der Schwerpunkt dieses Artikels liegt auf der Konfigurations- und Überwachungsp
 
 1. Ein Operator definiert eine Bereitstellung, in der ein Satz von Modulen sowie die Zielgeräte beschrieben werden. Jede Bereitstellung verfügt über ein Bereitstellungsmanifest, das diese Informationen enthält. 
 2. Der IoT Hub-Dienst kommuniziert mit allen Zielgeräten, um sie mit den gewünschten Modulen zu konfigurieren. 
-3. Der IoT Hub-Dienst ruft den Status von den IoT Edge-Geräten ab und gibt diese für den Operator zur Überwachung aus.  Beispielsweise kann ein Operator sehen, wenn ein Edge-Gerät nicht erfolgreich konfiguriert wurde oder wenn bei einem Modul während der Laufzeit ein Fehler auftritt. 
+3. Der IoT Hub-Dienst ruft den Status von den IoT Edge-Geräten ab und macht diese für den Operator verfügbar.  Beispielsweise kann ein Operator sehen, wenn ein Edge-Gerät nicht erfolgreich konfiguriert wurde oder wenn bei einem Modul während der Laufzeit ein Fehler auftritt. 
 4. Zu jedem Zeitpunkt werden neue IoT Edge-Geräte, die die Zielbedingungen erfüllen, für die Bereitstellung konfiguriert. Beispielsweise konfiguriert eine Bereitstellung, die auf alle IoT Edge-Geräte in Washington State ausgerichtet ist, automatisch ein neues IoT Edge-Gerät, sobald es bereitgestellt und der Gerätegruppe für Washington State hinzugefügt wurde. 
  
 In diesem Artikel werden die einzelnen Komponenten beschrieben, die beim Konfigurieren und Überwachen einer Bereitstellung verwendet werden. Eine exemplarische Vorgehensweise zum Erstellen und Aktualisieren einer Bereitstellung finden Sie unter [Bedarfsabhängiges Bereitstellen und Überwachen von IoT Edge-Modulen](how-to-deploy-monitor.md).
 
 ## <a name="deployment"></a>Bereitstellung
 
-Bei einer automatischen IoT Edge-Bereitstellung werden IoT Edge-Modulimages zugewiesen, die als Instanzen auf einem bestimmten Satz von IoT Edge-Geräten ausgeführt werden. Hierfür wird ein IoT Edge-Bereitstellungsmanifest konfiguriert, das eine Liste von Modulen mit den entsprechenden Initialisierungsparametern enthält. Eine Bereitstellung kann einem einzelnen Gerät (basierend auf der Geräte-ID) oder einer Gruppe von Geräten (basierend auf Tags) zugewiesen werden. Nachdem ein IoT Edge-Gerät ein Bereitstellungsmanifest erhalten hat, lädt es die Modul-Containerimages aus den entsprechenden Containerrepositorys herunter, installiert und konfiguriert sie. Sobald eine Bereitstellung erstellt wurde, kann der Operator den Bereitstellungsstatus überwachen und so erkennen, ob die Zielgeräte ordnungsgemäß konfiguriert wurden.
+Bei einer automatischen IoT Edge-Bereitstellung werden IoT Edge-Modulimages zugewiesen, die als Instanzen auf einem bestimmten Satz von IoT Edge-Geräten ausgeführt werden. Hierfür wird ein IoT Edge-Bereitstellungsmanifest konfiguriert, das eine Liste von Modulen mit den entsprechenden Initialisierungsparametern enthält. Eine Bereitstellung kann einem einzelnen Gerät (basierend auf der Geräte-ID) oder einer Gruppe von Geräten (basierend auf Tags) zugewiesen werden. Nachdem ein IoT Edge-Gerät ein Bereitstellungsmanifest erhalten hat, lädt es die Containerimages aus den entsprechenden Containerrepositorys herunter, installiert und konfiguriert sie. Sobald eine Bereitstellung erstellt wurde, kann der Operator den Bereitstellungsstatus überwachen und so erkennen, ob die Zielgeräte ordnungsgemäß konfiguriert wurden.
 
-Geräte müssen als IoT Edge-Geräte bereitgestellt werden, um mit einer Bereitstellung konfiguriert werden zu können. Auf dem Gerät muss Folgendes vorhanden sein, um die Bereitstellung zu ermöglichen:
+Nur IoT Edge-Geräte können mit einer Bereitstellung konfiguriert werden. Auf dem Gerät muss Folgendes vorhanden sein, um die Bereitstellung zu ermöglichen:
 
 * Das Basisbetriebssystem
 * Ein Containerverwaltungssystem (beispielsweise Moby oder Docker)
@@ -52,8 +52,8 @@ Die Konfigurationsmetadaten für jedes Modul enthalten Folgendes: 
 
 * Version 
 * Typ 
-* Status (z.B. „wird ausgeführt“ oder „beendet“) 
-* Richtlinien für den Neustart 
+* Status (z.B. „Wird ausgeführt“ oder „Beendet“) 
+* Neustartrichtlinie 
 * Image- und Containerregistrierung
 * Routen für Dateneingabe und -ausgabe 
 
@@ -61,9 +61,9 @@ Wenn das Modulimage in einer privaten Containerregistrierung gespeichert ist, be
 
 ### <a name="target-condition"></a>Zielbedingung
 
-Die Zielbedingung wird während der Lebensdauer der Bereitstellung kontinuierlich ausgewertet, um jedes neue Gerät einzubeziehen, das die Anforderungen erfüllt, bzw. Geräte zu entfernen, die die Bedingung nicht mehr erfüllen. Die Bereitstellung wird reaktiviert, wenn der Dienst Änderungen an der Zielbedingung feststellt. 
+Die Zielbedingung wird während der Lebensdauer der Bereitstellung kontinuierlich ausgewertet. Es sind alle neuen Geräte enthalten, die die Anforderungen erfüllen. Alle vorhandenen Geräte, die die Anforderungen nicht mehr erfüllen, werden entfernt. Die Bereitstellung wird reaktiviert, wenn der Dienst Änderungen an der Zielbedingung feststellt. 
 
-Angenommen, Sie verfügen über eine Bereitstellung A mit der Zielbedingung „tags.environment = 'prod'“. Wenn Sie die Bereitstellung starten, sind zehn Produktionsgeräte vorhanden. Die Module werden erfolgreich auf diesen zehn Geräten installiert. Der Status des IoT Edge-Agents wird mit insgesamt zehn Geräten, zehn erfolgreichen Antworten, null Fehlerantworten und null ausstehenden Antworten angezeigt. Nun fügen Sie fünf weitere Geräte mit „tags.environment = 'prod'“ hinzu. Der Dienst erkennt die Änderung, und der Status des IoT Edge-Agents wird mit insgesamt 15 Geräten, zehn erfolgreichen Antworten, null Fehlerantworten und fünf ausstehenden Antworten angezeigt, wenn der Agent versucht, die fünf neuen Geräte bereitzustellen.
+Angenommen, Sie verfügen über eine Bereitstellung A mit der Zielbedingung „tags.environment = 'prod'“. Wenn Sie die Bereitstellung starten, sind 10 Produktionsgeräte vorhanden. Die Module werden erfolgreich auf diesen 10 Geräten installiert. Der Status des IoT Edge-Agents wird mit insgesamt zehn Geräten, zehn erfolgreichen Antworten, null Fehlerantworten und null ausstehenden Antworten angezeigt. Nun fügen Sie fünf weitere Geräte mit „tags.environment = 'prod'“ hinzu. Der Dienst erkennt die Änderung, und der Status des IoT Edge-Agents wird mit insgesamt 15 Geräten, zehn erfolgreichen Antworten, null Fehlerantworten und fünf ausstehenden Antworten angezeigt, wenn der Agent versucht, die fünf neuen Geräte bereitzustellen.
 
 Verwenden Sie eine beliebige boolesche Bedingung auf Tags von Gerätezwillingen oder die Geräte-ID, um die Zielgeräte auszuwählen. Wenn Sie eine Bedingung mit Tags verwenden möchten, müssen Sie auf dem Gerätezwilling einen Abschnitt „"tags":{}“ auf der gleichen Ebene wie die Eigenschaften hinzufügen. [Weitere Informationen über Tags in Gerätezwillingen](../iot-hub/iot-hub-devguide-device-twins.md)
 
@@ -79,7 +79,7 @@ Beim Erstellen einer Zielbedingung gelten die folgenden Einschränkungen:
 
 * Sie können auf einem Gerätezwilling nur eine Zielbedingung mithilfe von Tags oder der Geräte-ID erstellen.
 * Doppelte Anführungszeichen sind in keinem Teil der Zielbedingung zulässig. Verwenden Sie einfache Anführungszeichen.
-* Einfache Anführungszeichen werden für die Werte der Zielbedingung verwendet. Daher müssen Sie für ein einfaches Anführungszeichen ein weiteres einfaches Anführungszeichen als Escapezeichen verwenden, wenn es Teil des Gerätenamens ist. Beispielsweise müsste die Zielbedingung für „operator'sDevice“ in der Form „deviceId='operator''sDevice'“ geschrieben werden.
+* Einfache Anführungszeichen werden für die Werte der Zielbedingung verwendet. Daher müssen Sie für ein einfaches Anführungszeichen ein weiteres einfaches Anführungszeichen als Escapezeichen verwenden, wenn es Teil des Gerätenamens ist. Geben Sie für die Zielbedingung des Geräts mit dem Namen `operator'sDevice` beispielsweise `deviceId='operator''sDevice'` an.
 * In Werten für Zielbedingungen sind Zahlen, Buchstaben und folgende Zeichen zulässig: `-:.+%_#*?!(),=@;$`.
 
 ### <a name="priority"></a>Priorität
@@ -97,7 +97,7 @@ Eine Bereitstellung kann überwacht werden, um zu bestimmen, ob sie erfolgreich 
 * **Ziel** enthält die IoT Edge-Geräte, die den Zielbedingungen für die Bereitstellung entsprechen.
 * **Tatsächlich** gibt die IoT Edge-Zielgeräte an, für die keine andere Bereitstellung mit höherer Priorität vorhanden ist.
 * **Fehlerfrei** zeigt die IoT Edge-Geräte, die an den Dienst gemeldet haben, dass die Module erfolgreich bereitgestellt wurden. 
-* **Fehlerhaft** zeigt die IoT Edge-Geräte, die an den Dienst gemeldet haben, dass eines oder mehrere Module nicht erfolgreich bereitgestellt wurden. Stellen Sie zum weiteren Untersuchen des Fehlers eine Remoteverbindung mit den Geräten her, und zeigen Sie die Protokolldateien an.
+* **Fehlerhaft** zeigt die IoT Edge-Geräte, die an den Dienst gemeldet haben, dass eines oder mehrere Module nicht erfolgreich bereitgestellt wurden. Stellen Sie zum weiteren Untersuchen des Fehlers eine Remoteverbindung mit diesen Geräten her, und zeigen Sie die Protokolldateien an.
 * **Unbekannt** enthält die IoT Edge-Geräte, die keinen Status für diese Bereitstellung gemeldet haben. Zeigen Sie zur weiteren Untersuchung Dienstinformationen und Protokolldateien an.
 
 ## <a name="phased-rollout"></a>Schrittweises Rollout 
@@ -115,7 +115,7 @@ Ein schrittweises Rollout wird in den folgenden Phasen und Schritten ausgeführt
 
 ## <a name="rollback"></a>Rollback
 
-Für Bereitstellungen kann im Fall von Fehlern oder Fehlkonfigurationen ein Rollback ausgeführt werden.  Da bei einer Bereitstellung die absolute Modulkonfiguration für ein IoT Edge-Gerät definiert wird, muss eine zusätzliche Bereitstellung auch auf das gleiche Gerät mit niedrigerer Priorität abzielen, auch wenn alle Module entfernt werden sollen.  
+Für Bereitstellungen kann bei Fehlern oder Fehlkonfigurationen ein Rollback ausgeführt werden.  Da bei einer Bereitstellung die absolute Modulkonfiguration für ein IoT Edge-Gerät definiert wird, muss eine zusätzliche Bereitstellung auch auf das gleiche Gerät mit niedrigerer Priorität abzielen, auch wenn alle Module entfernt werden sollen.  
 
 Führen Sie die Schritte für Rollbacks in der folgenden Reihenfolge aus: 
 

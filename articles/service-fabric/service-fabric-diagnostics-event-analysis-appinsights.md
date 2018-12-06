@@ -12,18 +12,20 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 04/04/2018
+ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: aedbc5925a6e101299170843abef79ef6125eafe
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: f9c7a70eae4c49173b3e11b7fbfa901f7e5b89d6
+ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230419"
+ms.lasthandoff: 11/22/2018
+ms.locfileid: "52291044"
 ---
 # <a name="event-analysis-and-visualization-with-application-insights"></a>Ereignisanalyse und Visualisierung mit Application Insights
 
-Microsoft Azure Application Insights ist eine erweiterbare Plattform für die Überwachung und Diagnose von Anwendungen. Sie enthält ein leistungsfähiges Analyse- und Abfragetool, ein anpassbares Dashboard und Visualisierungen sowie weitere Optionen, z.B. automatisierte Warnungen. Sie ist die empfohlene Plattform für die Überwachung und Diagnose für Service Fabric-Anwendungen und -Dienste. Dieser Artikel geht auf folgende allgemeine Fragen ein:
+Application Insights gehört zu Azure Monitor und ist eine erweiterbare Plattform für die Überwachung und Diagnose von Anwendungen. Sie enthält ein leistungsfähiges Analyse- und Abfragetool, ein anpassbares Dashboard und Visualisierungen sowie weitere Optionen, z.B. automatisierte Warnungen. Die Integration von Application Insights in Service Fabric umfasst Toolumgebungen für Visual Studio und das Azure-Portal sowie spezifische Service Fabric-Metriken, sodass Sie eine umfassende, sofort einsatzbereite Protokollierung erhalten. Mit Application Insights werden zwar viele Protokolle automatisch für Sie erstellt und erfasst, es empfiehlt sich jedoch, Ihren Anwendungen eine weitergehende benutzerdefinierte Protokollierung hinzuzufügen, um eine umfassendere Diagnoseumgebung zu erstellen.
+
+Dieser Artikel geht auf folgende allgemeine Fragen ein:
 
 * Wie kann ich mich über die Vorgänge in meiner Anwendung und in meinen Diensten informieren und Telemetriedaten sammeln?
 * Wie behebe ich Probleme mit meiner Anwendung (insbesondere Probleme bei der Kommunikation zwischen Diensten)?
@@ -110,7 +112,7 @@ Stellen Sie sicher, dass Sie die erforderlichen Änderungen in Ihren Filtern vor
 
 Es empfiehlt sich, EventFlow und WAD als Aggregationslösungen zu verwenden, da diese einen modularen Ansatz für die Diagnose und Überwachung bieten. Das heißt, wenn Sie die Ausgaben von EventFlow ändern möchten, ist keine Änderung der eigentlichen Instrumentierung, sondern lediglich eine einfache Änderung der Konfigurationsdatei erforderlich. Wenn Sie sich jedoch für die Verwendung von Application Insights entscheiden und nicht planen, auf eine andere Plattform umzusteigen, empfiehlt es sich ggf., das neue SDK von Application Insights zu verwenden, um Ereignisse zu aggregieren und an Application Insights zu senden. Das bedeutet, dass Sie EventFlow nicht mehr zum Senden der Daten an Application Insights konfigurieren müssen, sondern stattdessen das Service Fabric-NuGet-Paket von Application Insights installieren. Details zu diesem Paket finden Sie [hier](https://github.com/Microsoft/ApplicationInsights-ServiceFabric).
 
-Unter [Application Insights-Unterstützung für Microservices und Container](https://azure.microsoft.com/blog/app-insights-microservices/) werden einige der neuen Features beschrieben, an denen gearbeitet wird (derzeit noch in der Betaversion) und mit denen Sie über umfangreichere vordefinierte Überwachungsoptionen mit Application Insights verfügen. Dazu gehören die Abhängigkeitsnachverfolgung (wird beim Erstellen einer AppMap aller Ihrer Dienste und Anwendungen in einem Cluster und der zugehörigen Kommunikation verwendet) und eine bessere Korrelation der Ablaufverfolgungen, die von Ihren Diensten stammen (trägt zur besseren genauen Erkennung eines Problems im Workflow einer App oder eines Diensts bei).
+Unter [Application Insights-Unterstützung für Microservices und Container](https://azure.microsoft.com/blog/app-insights-microservices/) werden einige der neuen Features beschrieben, an denen gearbeitet wird (derzeit noch in der Betaversion) und mit denen Sie über umfangreichere vordefinierte Überwachungsoptionen mit Application Insights verfügen. Dazu gehören die Abhängigkeitsnachverfolgung (wird beim Erstellen einer AppMap aller Ihrer Dienste und Anwendungen in einem Cluster und der zugehörigen Kommunikation verwendet) und eine bessere Korrelation der Ablaufverfolgungen, die von Ihren Diensten stammen (trägt zur besseren Lokalisierung eines Problems im Workflow einer Anwendung oder eines Diensts bei).
 
 Wenn Sie beim Entwickeln in .NET voraussichtlich einige der Service Fabric-Programmiermodelle verwenden und Application Insights als Plattform zum Visualisieren und Analysieren von Ereignis- und Protokolldaten verwenden möchten, empfiehlt es sich, das Application Insights SDK für den Workflow der Überwachung und Diagnose zu verwenden. Informationen zu den ersten Schritten mit Application Insights zum Sammeln und Anzeigen Ihrer Protokolle finden Sie [hier](../application-insights/app-insights-asp-net-more.md) und [hier](../application-insights/app-insights-asp-net-trace-logs.md).
 

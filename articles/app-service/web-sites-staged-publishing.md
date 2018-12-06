@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/16/2016
 ms.author: cephalin
-ms.openlocfilehash: b5a06cff653007568b4ab2b44624b6314413f8a6
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.openlocfilehash: cb7b114836c83338f71c85f59299ecf1dc4613a9
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51636066"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52317618"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Einrichten von Stagingumgebungen in Azure App Service
 <a name="Overview"></a>
@@ -75,6 +75,7 @@ Wenn Sie die Konfiguration von einem anderen Bereitstellungsslot klonen, kann di
 * Handlerzuordnungen
 * Überwachungs- und Diagnoseeinstellungen
 * WebJobs-Inhalte
+* Hybridverbindungen
 
 **Einstellungen, die nicht ausgetauscht werden**:
 
@@ -168,7 +169,7 @@ Wenn nach dieser Aktion Fehler in der Produktionswebsite feststellen, führen Si
 <a name="Warm-up"></a>
 
 ## <a name="custom-warm-up-before-swap"></a>Benutzerdefiniertes Aufwärmen vor dem Austausch
-Einige Apps erfordern benutzerdefinierte Aufwärmaktionen. Über das Konfigurationselement `applicationInitialization` in der Datei „web.config“ können Sie benutzerdefinierte Initialisierungsaktionen angeben, die vor dem Empfang einer Anforderung ausgeführt werden. Der Austauschvorgang wartet, bis diese benutzerdefinierte Aufwärmphase abgeschlossen ist. Im Folgenden finden Sie ein Beispielfragment aus der Datei „Web.config“.
+Bei Verwendung von [Auto-Swap](#Auto-Swap) erfordern einige Apps benutzerdefinierte Aufwärmaktionen. Über das Konfigurationselement `applicationInitialization` in der Datei „web.config“ können Sie benutzerdefinierte Initialisierungsaktionen angeben, die vor dem Empfang einer Anforderung ausgeführt werden. Der Austauschvorgang wartet, bis diese benutzerdefinierte Aufwärmphase abgeschlossen ist. Im Folgenden finden Sie ein Beispielfragment aus der Datei „Web.config“.
 
     <system.webServer>
         <applicationInitialization>

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/15/2018
 ms.author: dharmas
 ms.reviewer: sngun
-ms.openlocfilehash: d29f01c7f953ed211b429e41b844a01c67e41054
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 7e3f6d053e9466f07e15b0c2c1092fece76c98a4
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51282373"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52160663"
 ---
 # <a name="scaling-throughput-in-azure-cosmos-db"></a>Skalieren des Durchsatzes in Azure Cosmos DB
 
@@ -23,9 +23,9 @@ In Azure Cosmos DB wird der bereitgestellte Durchsatz als Anforderungseinheit/Se
 
 Sie können Anforderungseinheiten für einen Cosmos-Container oder eine Cosmos-Datenbanken bereitstellen. In einem Container bereitgestellte Anforderungseinheiten stehen ausschließlich für Vorgänge zur Verfügung, die in diesem Container ausgeführt werden. In einer Datenbank bereitgestellte Anforderungseinheiten werden für alle Container in dieser Datenbank (ausgenommen Container mit exklusiv zugewiesenen RUs) freigegeben.
 
-Sie können jederzeit die bereitgestellte RU/s erhöhen oder verringern, um den Durchsatz elastisch zu skalieren. Weitere Informationen finden Sie im Artikel zum [Bereitstellen von Durchsatz](set-throughput.md) und zur elastischen Skalierung von Cosmos-Containern und -Datenbanken. Um den Durchsatz global zu skalieren, können Sie Ihrem Cosmos-Konto jederzeit Regionen hinzufügen oder diese daraus entfernen. Weitere Informationen finden Sie im Artikel [Hinzufügen und Entfernen von Regionen im Cosmos-Konto](how-to-manage-database-account.md#addremove-regions-from-your-database-account). Die Zuordnung mehrerer Regionen zu einem Cosmos-Konto ist in vielen Szenarien wichtig, um eine geringe Latenz und [Hochverfügbarkeit](high-availability.md) auf der ganzen Welt zu erreichen.
+Sie können jederzeit die bereitgestellte RU/s erhöhen oder verringern, um den Durchsatz elastisch zu skalieren. Weitere Informationen finden Sie im Artikel zum [Bereitstellen von Durchsatz](set-throughput.md) und zur elastischen Skalierung von Cosmos-Containern und -Datenbanken. Um den Durchsatz global zu skalieren, können Sie Ihrem Cosmos-Konto jederzeit Regionen hinzufügen oder diese daraus entfernen. Weitere Informationen finden Sie unter [Verwalten von Datenbankkonten in Azure Cosmos DB](how-to-manage-database-account.md#addremove-regions-from-your-database-account). Die Zuordnung mehrerer Regionen zu einem Cosmos-Konto ist in vielen Szenarien wichtig, um eine geringe Latenz und [Hochverfügbarkeit](high-availability.md) auf der ganzen Welt zu erreichen.
 
-## <a name="how-provisioned-throughput-is-distributed-across-regions"></a>Verteilung des bereitgestellten Durchsatzes über mehrere Regionen
+## <a name="how-provisioned-throughput-is-distributed-across-regions"></a>Verteilen des bereitgestellten Durchsatzes über mehrere Regionen
 
 Wenn Sie „R“ RUs in einem Cosmos-Container (oder einer Datenbank) bereitstellen, stellt Cosmos DB sicher, dass sie in *jeder* Region verfügbar sind, die mit Ihrem Cosmos-Konto verknüpft ist. Jedes Mal, wenn Sie Ihrem Konto eine neue Region hinzufügen, stellt Cosmos DB automatisch „R“ RUs in der neu hinzugefügten Region bereit. Die Vorgänge, die für Ihren Cosmos-Container ausgeführt werden, erhalten garantiert „R“ RUs in jeder Region. Sie können RUs nicht selektiv einer bestimmten Region zuweisen. Die für einen Cosmos-Container (oder eine Datenbank) bereitgestellten RUs werden für alle mit Ihrem Cosmos-Konto verbundenen Regionen bereitgestellt.
 

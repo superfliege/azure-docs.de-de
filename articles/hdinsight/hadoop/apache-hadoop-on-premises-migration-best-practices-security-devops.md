@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: 9489d6e8780a30c5c54ee307d6c45c4bc2eb0e5d
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: fa72765e02592b72efb09320958a0aa244ae8b08
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50419281"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52265286"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---security-and-devops-best-practices"></a>Migrieren lokaler Apache Hadoop-Cluster zu Azure HDInsight – bewährte Methoden für Sicherheit und DevOps
 
@@ -24,7 +24,7 @@ Dieser Artikel enthält Empfehlungen für Sicherheit und DevOps in Azure HDInsig
 
 Das Enterprise-Sicherheitspaket (ESP) unterstützt die Active Directory-basierte Authentifizierung, Unterstützung mehrerer Benutzer und rollenbasierte Zugriffssteuerung. Bei ausgewählter ESP-Option wird der HDInsight-Cluster mit der Active Directory-Domäne verknüpft, und der Unternehmensadministrator kann mithilfe von Apache Ranger die rollenbasierte Zugriffskontrolle (Role-Based Access Control, RBAC) für Hive-Sicherheit konfigurieren. Der Administrator kann auch den Datenzugriff von Mitarbeitern und jegliche Änderungen der Zugriffssteuerungsrichtlinien überwachen.
 
-ESP-Funktionen befinden sich derzeit in der Vorschauphase und stehen nur auf folgenden Clustertypen zur Verfügung: Apache Hadoop, Apache Spark, Apache HBase, Apache Kafka und Apache Interactive Query.
+ESP-Funktionen stehen auf den folgenden Clustertypen zur Verfügung: Apache Hadoop, Apache Spark, Apache HBase, Apache Kafka und Interactive Query (Hive LLAP). 
 
 Verwenden Sie die folgenden Schritte, um den in die Domäne eingebundenen HDInsight-Cluster bereitzustellen:
 
@@ -44,7 +44,7 @@ Verwenden Sie die folgenden Schritte, um den in die Domäne eingebundenen HDInsi
 - Stellen Sie den HDInsight ESP-Cluster bereit, indem Sie die folgenden Parameter festlegen:
     - **Domänenname**: Der Domänenname, der Azure AD DS zugeordnet ist.
     - **Domänenbenutzername**: Das Dienstkonto in der vom Azure AD DS-Domänencontroller verwalteten Domäne, die im vorherigen Abschnitt erstellt wurde, z.B. `hdiadmin@contoso.onmicrosoft.com`. Dieser Domänenbenutzer wird der Administrator dieses HDInsight-Clusters.
-    - **Domänenkennwort**: Das Kennwort des Dienstkontos.
+    - **Domain password** (Domänenkennwort): das Kennwort des Dienstkontos.
     - **Organisationseinheit**: Der Distinguished Name der Organisationseinheit, die Sie mit dem HDInsight-Cluster verwenden möchten, z.B. `OU=HDInsightOU,DC=contoso,DC=onmicrosoft,DC=com`. Wenn diese Organisationseinheit nicht vorhanden ist, versucht der HDInsight-Cluster, sie mithilfe der Berechtigungen des Dienstkontos zu erstellen.
     - **LDAPS-URL**: Beispielsweise `ldaps://contoso.onmicrosoft.com:636`.
     - **Zugriff auf Benutzergruppe**: Die Sicherheitsgruppe, deren Benutzer Sie mit dem Cluster synchronisieren möchten, z.B. `HiveUsers`. Wenn Sie mehrere Benutzergruppen angeben möchten, trennen Sie diese durch Semikolons (;). Die Gruppen müssen vor dem Erstellen des ESP-Clusters im Verzeichnis vorhanden sein.

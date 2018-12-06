@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/17/2018
+ms.date: 11/15/2018
 ms.author: spelluru
-ms.openlocfilehash: 6f9b85ec4821ff2454970136b3c8af2cb0f92154
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: c672634e79cbc0850edfe7f7fbdb0a880d5cf0d8
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50140822"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51707128"
 ---
 # <a name="manage-lab-accounts-in-azure-lab-services"></a>Verwalten von Lab-Konten in Azure Lab Services 
 In Azure Lab Services ist ein Lab-Konto ein Container für verwaltete Labs (beispielsweise Classroom-Labs). Ein Administrator richtet ein Lab-Konto mit Azure Lab Services ein und gewährt Lab-Besitzern Zugriff, sodass sie Labs unter dem Konto erstellen können. In diesem Artikel erfahren Sie, wie Sie ein Lab-Konto erstellen, alle Lab-Konten anzeigen oder ein Lab-Konto löschen.
@@ -114,7 +114,9 @@ Befolgen Sie die Anleitung im vorherigen Abschnitt, um im Labkonto eine Liste mi
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-Machen Sie sich mit der Einrichtung eines Labs mit Azure Lab Services vertraut:
+Entsprechende Informationen finden Sie in den folgenden Artikeln:
 
-- [Einrichten eines Classroom-Labs](tutorial-setup-classroom-lab.md)
-- [Einrichten eines Labs](../tutorial-create-custom-lab.md)
+- [Erstellen und Verwalten von Labs als Labbesitzer](how-to-manage-classroom-labs.md)
+- [Einrichten und Veröffentlichen von Vorlagen als Labbesitzer](how-to-create-manage-template.md)
+- [Konfigurieren und Steuern der Nutzung eines Labs als Labbesitzer](how-to-configure-student-usage.md)
+- [Zugreifen auf ein Classroom-Lab in Azure Lab Services](how-to-use-classroom-lab.md) (als Labbenutzer)

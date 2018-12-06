@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/22/2017
 ms.author: vturecek
-ms.openlocfilehash: 6bf7ea90bb5351411984110fd8fb05c2f8cb0650
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 01b67cc0c20710fcf7c9a072e0ba3baaf286852a
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34205160"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52423642"
 ---
 # <a name="service-fabric-with-azure-api-management-overview"></a>Service Fabric mit Azure API Management-Übersicht
 
@@ -27,7 +27,13 @@ Cloudanwendungen benötigen normalerweise ein Front-End-Gateway, um für Benutze
 
 Dieser Artikel enthält eine Einführung in die Verwendung von Azure API Management als Gateway für Ihre Service Fabric-Anwendungen. API Management ist direkt in Service Fabric integriert, sodass Sie APIs mit einem umfassenden Satz von Routingregeln für Ihre Service Fabric-Back-End-Dienste veröffentlichen können. 
 
+## <a name="availability"></a>Verfügbarkeit
+
+> [!IMPORTANT]
+> Dieses Feature ist auf den Ebenen **Premium** und **Entwickler** von API Management aufgrund der erforderlichen Unterstützung virtueller Netzwerke verfügbar.
+
 ## <a name="architecture"></a>Architecture
+
 Für eine allgemeine Service Fabric-Architektur wird eine einseitige Webanwendung verwendet, die HTTP-Aufrufe für Back-End-Dienste durchführt, von denen HTTP-APIs verfügbar gemacht werden. Unter [Service Fabric Getting Started Sample](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started) (Service Fabric-Beispiel für die ersten Schritte) finden Sie ein Beispiel für diese Architektur.
 
 In diesem Szenario dient ein zustandsloser Webdienst als Gateway für die Service Fabric-Anwendung. Bei diesem Ansatz ist es erforderlich, einen Webdienst zu schreiben, mit dem HTTP-Anforderungen über einen Proxy an Back-End-Dienste gesendet werden können. Dies ist im folgenden Diagramm dargestellt:

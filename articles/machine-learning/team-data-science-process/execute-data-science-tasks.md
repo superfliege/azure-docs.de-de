@@ -1,25 +1,21 @@
 ---
 title: Ausführen von Data Science-Aufgaben – Azure Machine Learning | Microsoft-Dokumentation
 description: Erfahren Sie, wie ein Datenanalyst ein Data Science-Projekt auf nachverfolgbare Weise mit Versionskontrolle und Zusammenarbeit ausführen kann.
-documentationcenter: ''
-author: deguhath
+author: marktab
 manager: cgronlun
 editor: cgronlun
-ms.assetid: ''
 ms.service: machine-learning
 ms.component: team-data-science-process
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
-ms.author: deguhath
-ms.openlocfilehash: 19267429510207129b0229dc55fbd46f12977d5d
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.author: tdsp
+ms.custom: (previous author=deguhath, ms.author=deguhath)
+ms.openlocfilehash: 7e25e2c95f377b1ad40cba24b29ababd0561e32a
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39112643"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52495687"
 ---
 # <a name="execute-data-science-tasks-exploration-modeling-and-deployment"></a>Ausführen von Data Science-Aufgaben: Durchsuchen, Modellieren und Bereitstellen
 
@@ -34,7 +30,7 @@ Zu den typischen Data Science-Aufgaben gehören das Durchsuchen, Modellieren und
 
 Datenanalysten haben verschiedene Möglichkeiten für das Durchsuchen und die Berichterstellung: mit verfügbaren Bibliotheken und Paketen für Python (z.B. matplotlib) oder mit R (z.B. ggplot oder lattice). Solchen Code können Datenanalysten entsprechend den Anforderungen an Datendurchsuchung für spezifische Szenarien anpassen. Die Anforderungen für den Umgang mit strukturierten Daten unterscheiden sich von denen für unstrukturierte Daten wie Texte oder Bilder. 
 
-Produkte wie Azure Machine Learning Workbench bieten auch eine [erweiterte Datenvorbereitung](../desktop-workbench/tutorial-bikeshare-dataprep.md) für den Umgang mit Daten und das Durchsuchen dieser, einschließlich der Erstellung von Features. Der Benutzer sollte entscheiden, welche Tools, Bibliotheken und Pakete seinen Anforderungen am besten entsprechen. 
+Produkte wie der Azure Machine Learning-Dienst bieten auch eine [erweiterte Datenvorbereitung](../service/how-to-transform-data.md) für den Umgang mit Daten und das Durchsuchen von diesen, einschließlich der Erstellung von Features. Der Benutzer sollte entscheiden, welche Tools, Bibliotheken und Pakete seinen Anforderungen am besten entsprechen. 
 
 Das Ergebnis dieser Phase ist ein Bericht zur Datendurchsuchung. Der Bericht sollte eine umfassende Ansicht der Daten für die Modellierung und eine Bewertung, ob die Daten für den Modellierungsschritt geeignet sind, enthalten. Die TDSP-Hilfsprogramme (Team Data Science-Prozess), die in den folgenden Abschnitten für die teilautomatisierte Durchsuchung, Modellierung und Berichterstellung erläutert werden, bieten auch standardisierte Datendurchsuchungs- und Modellierungsberichte. 
 
@@ -90,7 +86,7 @@ Bei einer Produktionsbereitstellung kann ein Modell eine aktive Rolle in einem U
 Es gibt verschiedene Ansätze und Plattformen für das Einführen von Modellen in die Produktion. Hier sind einige Optionen angegeben:
 
 
-- [Modellentwicklung in Azure Machine Learning](../desktop-workbench/model-management-overview.md)
+- [Modellimplementierung in Azure Machine Learning Service](../service/how-to-deploy-and-where.md)
 - [Bereitstellung eines Modells in SQL Server](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-py6-operationalize-the-model)
 - [Microsoft Machine Learning Server](https://docs.microsoft.com/sql/advanced-analytics/r/r-server-standalone)
 

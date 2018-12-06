@@ -14,22 +14,25 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 003335aad0452e7a2dbfff49ed29a6b99b5d54d2
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: 30f20e2671b4428f08c38eeb93ec90f0b745eea6
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39089628"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51819116"
 ---
 # <a name="configuring-network-security-group-flow-logs-using-rest-api"></a>Konfigurieren von Flowprotokollen für Netzwerksicherheitsgruppen mit der REST-API
 
 > [!div class="op_single_selector"]
 > - [Azure-Portal](network-watcher-nsg-flow-logging-portal.md)
 > - [PowerShell](network-watcher-nsg-flow-logging-powershell.md)
-> - [Azure-CLI](network-watcher-nsg-flow-logging-cli.md)
+> - [Azure-Befehlszeilenschnittstelle](network-watcher-nsg-flow-logging-cli.md)
 > - [REST-API](network-watcher-nsg-flow-logging-rest.md)
 
 Flowprotokolle für Netzwerksicherheitsgruppen sind ein Network Watcher-Feature, mit dem Sie Informationen zu ein- und ausgehendem IP-Datenverkehr über eine Netzwerksicherheitsgruppe anzeigen können. Diese Flowprotokolle sind im JSON-Format geschrieben und zeigen ausgehende und eingehende Datenflüsse pro Regel, die NIC, auf die sich der Datenfluss bezieht, 5-Tupel-Informationen über den Datenfluss (Quell-/Ziel-IP, Quell-/Zielport, Protokoll) und Informationen zu zugelassenem oder verweigertem Datenverkehr.
+
+> [!NOTE] 
+> Flowprotokolle (Version 2) sind nur in der Region „USA, Westen-Mitte“ verfügbar. Die Konfiguration ist über das Azure-Portal und die REST-API verfügbar. Die Aktivierung von Protokollen der Version 2 in einer nicht unterstützten Region führt dazu, dass Protokolle der Version 1 in Ihr Speicherkonto ausgegeben werden.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
@@ -46,7 +49,7 @@ Das in diesem Artikel beschriebene Szenario zeigt Ihnen, wie Sie Flowprotokolle 
 
 In diesem Szenario führen Sie Folgendes durch:
 
-* Aktivieren von Flowprotokollen
+* Aktivieren von Flowprotokollen (Version 2)
 * Deaktivieren von Flowprotokollen
 * Abfragen des Flowprotokollstatus
 
@@ -69,7 +72,7 @@ armclient post "https://management.azure.com//subscriptions/${subscriptionId}/pr
 
 ## <a name="enable-network-security-group-flow-logs"></a>Aktivieren von Flowprotokollen für Netzwerksicherheitsgruppen
 
-Der Befehl zum Aktivieren von Flowprotokollen wird im folgenden Beispiel gezeigt:
+Der Befehl zum Aktivieren von Flowprotokollen der Version 2 wird im folgenden Beispiel gezeigt. Ersetzen Sie für Version 1 den Wert des Felds „version“ durch „1“:
 
 ```powershell
 $subscriptionId = "00000000-0000-0000-0000-000000000000"
@@ -86,7 +89,11 @@ $requestBody = @"
     'retentionPolicy' : {
             days: 5,
             enabled: true
-        }
+        },
+    'format': {
+        'type': 'JSON',
+        'version': 2
+    }
     }
 }
 "@
@@ -105,6 +112,10 @@ Das vorherige Beispiel gibt folgende Antwort zurück:
     "retentionPolicy": {
       "days": 5,
       "enabled": true
+    },
+    "format": {
+    "type": "JSON",
+    "version": 2
     }
   }
 }
@@ -129,7 +140,11 @@ $requestBody = @"
     'retentionPolicy' : {
             days: 5,
             enabled: true
-        }
+        },
+    'format': {
+        'type': 'JSON',
+        'version': 2
+    }
     }
 }
 "@
@@ -148,6 +163,10 @@ Das vorherige Beispiel gibt folgende Antwort zurück:
     "retentionPolicy": {
       "days": 5,
       "enabled": true
+    },
+    "format": {
+    "type": "JSON",
+    "version": 2
     }
   }
 }
@@ -182,6 +201,10 @@ Die zurückgegebene Antwort könnte z.B. wie folgt lauten:
    "retentionPolicy": {
       "days": 5,
       "enabled": true
+    },
+    "format": {
+    "type": "JSON",
+    "version": 2
     }
   }
 }

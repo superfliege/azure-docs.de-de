@@ -1,10 +1,11 @@
 ---
-title: Erstellen mehrerer Modelle mit einem Experiment | Microsoft Docs
+title: Erstellen mehrerer Modelle mit einem Experiment – Azure Machine Learning Studio | Microsoft-Dokumentation
 description: Verwenden Sie PowerShell, um mehrere Machine Learning-Modelle und Webdienst-Endpunkte mit demselben Algorithmus, aber verschiedenen Trainingsdatasets, zu erstellen.
 services: machine-learning
 documentationcenter: ''
-author: hning86
-ms.author: haining
+author: ericlicoding
+ms.custom: (previous ms.author=haining, author=hning86)
+ms.author: amlstudiodocs
 manager: mwinkle
 editor: cgronlun
 ms.assetid: 1076b8eb-5a0d-4ac5-8601-8654d9be229f
@@ -15,14 +16,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/04/2017
-ms.openlocfilehash: dcf4e9fa9435d8f20784b20f3873d408adb78c20
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: e1a6eb4f61869c3c6299011c46a5953f93cc7305
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49469825"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52316564"
 ---
-# <a name="create-many-machine-learning-models-and-web-service-endpoints-from-one-experiment-using-powershell"></a>Erstellen vieler Machine Learning-Modelle und Webdienst-Endpunkte in nur einem Experiment mit PowerShell
+# <a name="azure-machine-learning-studio-use-powershell-to-create-many-models-and-web-service-endpoints-from-one-experiment"></a>Azure Machine Learning Studio: Erstellen vieler Modelle und Webdienst-Endpunkte in einem Experiment mit PowerShell
+
 Dies ist ein Beispiel für ein häufiges Machine Learning-Problem: Sie möchten viele Modelle erstellen, die denselben Trainingsworkflow haben und für die derselbe Algorithmus verwendet wird. Aber Sie möchten, dass die Modelle unterschiedliche Trainingsdatasets als Eingabe haben. In diesem Artikel erfahren Sie, wie Sie dies in größerem Umfang in Azure Machine Learning Studio mit nur einem Experiment durchführen.
 
 Angenommen, Sie besitzen eine Fahrradvermietung als globales Franchise-Unternehmen. Sie möchten ein Regressionsmodell erstellen, um die Mietnachfrage anhand von bisherigen Daten vorherzusagen. Sie betreiben weltweit 1.000 Mietstandorte und haben für jeden Standort ein Dataset erfasst. Die Datasets enthalten wichtigen Eigenschaften, etwa Datum, Uhrzeit, Wetter und Verkehrssituation, die für jeden Standort individuell sind.

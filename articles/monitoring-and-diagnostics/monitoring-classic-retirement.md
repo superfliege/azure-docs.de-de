@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 10/04/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 589aae8321d2c081f09ed46d9def2229d3973ffd
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 35869e0a345299f2b0724f01201154fc8d090e4f
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51613195"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51975378"
 ---
 # <a name="unified-alerting--monitoring-in-azure-monitor-replaces-classic-alerting--monitoring"></a>Einheitliche Benachrichtigung und Überwachung in Azure Monitor tritt an die Stelle von klassischer Benachrichtigung und Überwachung
 
-Azure Monitor hat sich nun zu einem vereinheitlichen, voll ausgestatteten Überwachungsdienst entwickelt, der jetzt ressourcenübergreifend ‚Eine Metrik‘ und ‚Eine Benachrichtigung‘ unterstützt; weitere Informationen finden Sie in unserem [Blogbeitrag zum neuen Azure Monitor](https://azure.microsoft.com/blog/new-full-stack-monitoring-capabilities-in-azure-monitor/). Die neuen Azure-Überwachungs- und Benachrichtigungsplattformen wurden im Hinblick auf größere Schnelligkeit, intelligenteres Verhalten und Erweiterbarkeit entwickelt – sie halten mit der zunehmenden Verbreitung von Cloud Computing schritt und sind in die Philosophie der Microsoft Intelligent Cloud integriert. 
+Azure Monitor hat sich zu einem vereinheitlichen, voll ausgestatteten Überwachungsdienst entwickelt, der nun ressourcenübergreifend einzelne Metriken und Benachrichtigungen unterstützt. Weitere Informationen finden Sie in unserem [Blogbeitrag zum neuen Azure Monitor](https://azure.microsoft.com/blog/new-full-stack-monitoring-capabilities-in-azure-monitor/). Die neuen Überwachungs- und Benachrichtigungsplattformen von Azure sind schneller, intelligenter und erweiterbar. Dabei halten sie mit der zunehmenden Verbreitung von Cloud Computing Schritt und folgen der Philosophie der Microsoft Intelligent Cloud. 
 
 Da die neue Azure-Plattform zur Überwachung und Benachrichtigung nun verfügbar ist, stellen wir die „klassische“ Überwachungs- und Benachrichtigungsplattform – die im Abschnitt *Klassische Warnungen anzeigen* der Azure-Benachrichtigungen gehostet ist – zum Juni 2019 ein.
 
@@ -53,7 +53,7 @@ Die ältere klassische Überwachung und Benachrichtigung wird am 30. Juni 2019 e
 - Ältere (klassische) Plattform- und benutzerdefinierte Metriken für Application Insights sowie Benachrichtigungen für sie, die aktuell im Bereich [Warnungen (klassisch)](monitoring-overview-alerts-classic.md) im Azure-Portal verfügbar sind, auf die als Ressource unter [microsoft.insights/alertrules](https://docs.microsoft.com/rest/api/monitor/alertrules) zugegriffen wird
 - Ältere (klassische) Fehleranomaliebenachrichtigungen, die im Azure-Portal als [Intelligente Erkennung in Application Insights](../application-insights/app-insights-proactive-diagnostics.md) verfügbar sind; die dafür konfigurierten Warnungen werden im Bereich [Warnungen (klassisch)](monitoring-overview-alerts-classic.md) im Azure-Portal angezeigt
 
-Alle klassischen Überwachungs- und Benachrichtigungssysteme, einschließlich der entsprechenden [API](https://msdn.microsoft.com/library/azure/dn931945.aspx), [PowerShell](insights-alerts-powershell.md), [CLI](insights-alerts-command-line-interface.md), Azure-Portalseite und der [Ressourcenvorlage](monitoring-enable-alerts-using-template.md) bleiben bis Juni 2019 verwendbar. Nach diesem Datum wird der klassische Überwachungs- und Benachrichtigungsdienst außer Betrieb gestellt und steht nicht mehr zur Verfügung. Die über Juni 2019 hinaus bestehenden Warnungsregeln in Warnungen (klassisch) werden weiterhin ausgeführt, können aber nicht mehr geändert werden.
+Alle klassischen Überwachungs- und Benachrichtigungssysteme, einschließlich der entsprechenden [API](https://msdn.microsoft.com/library/azure/dn931945.aspx), [PowerShell](insights-alerts-powershell.md), [CLI](insights-alerts-command-line-interface.md), [Azure-Portalseite](alert-metric-classic.md) und der [Ressourcenvorlage](monitoring-enable-alerts-using-template.md) bleiben bis Juni 2019 verwendbar. Nach diesem Datum wird der klassische Überwachungs- und Benachrichtigungsdienst außer Betrieb gestellt und steht nicht mehr zur Verfügung. Die über Juni 2019 hinaus bestehenden Warnungsregeln in Warnungen (klassisch) werden weiterhin ausgeführt, können aber nicht mehr geändert werden.
 
 Alle über Juni 2019 hinaus auf der klassischen Überwachungs- und Benachrichtigungsplattform verbleibenden Benachrichtigungen werden im Juli 2019 von Microsoft automatisch auf ihr Äquivalent auf der neuen Azure Monitor-Plattform umgestellt. Dabei handelt es sich um einen nahtlosen Prozess ohne Ausfallzeiten, der sicherstellt, dass bei Kunden keine Überwachungslücken auftreten.
 

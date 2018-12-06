@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.component: core
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 5a539aebc9b1ccb5f52f89d511fc992ee6a24c81
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 5c75b462c3b1201eb70c1028c748def5da114b92
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51008945"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51823298"
 ---
 # <a name="configure-your-automated-machine-learning-experiment"></a>Konfigurieren von Experimenten mit automatisiertem maschinellem Lernen
 
@@ -192,7 +192,7 @@ Eigenschaft |  BESCHREIBUNG | Standardwert
 `max_time_sec` |    Begrenzt die Zeit (in Sekunden), die eine bestimmte Iteration benötigt. Wenn eine Iteration den angegebenen Wert überschreitet, wird sie abgebrochen. Wenn dieser Wert nicht festgelegt wird, wird die Iteration weiter ausgeführt, bis sie beendet ist. |   Keine
 `n_cross_validations`   |Anzahl von Kreuzvalidierungen| Keine
 `validation_size`   |Größe des Validierungssets als Prozentsatz aller Trainingsstichproben.|  Keine
-`preprocess` | True/False <br/>TRUE ermöglicht dem Experiment, eine Vorverarbeitung der Eingabe auszuführen. Es folgt eine Teilmenge der Vorverarbeitung.<li>Fehlende Daten: Impliziert die fehlenden Daten – numerisch mit Durchschnitt, Text mit häufigstem Vorkommen </li><li>Kategoriewerte: Wenn der Datentyp numerisch und die Anzahl von eindeutigen Werten niedriger als 5 Prozent ist, erfolgt eine Konvertierung in den 1-aus-n-Code. </li><li>Weitere Informationen finden Sie im [GitHub-Repository](https://aka.ms/aml-notebooks).</li><br/>Hinweis: Bei einer geringen Datendichte ist eine Vorverarbeitung nicht möglich = TRUE. | False | 
+`preprocess` | True/False <br/>TRUE ermöglicht dem Experiment, eine Vorverarbeitung der Eingabe auszuführen. Es folgt eine Teilmenge der Vorverarbeitung.<li>Fehlende Daten: Impliziert die fehlenden Daten – numerisch mit Durchschnitt, Text mit häufigstem Vorkommen </li><li>Kategoriewerte: Wenn der Datentyp numerisch und die Anzahl von eindeutigen Werten niedriger als 5 Prozent ist, erfolgt eine Konvertierung in den 1-aus-n-Code. </li><li>Weitere Informationen finden Sie im [GitHub-Repository](https://aka.ms/aml-notebooks).</li><br/>Hinweis: Bei einer geringen Datendichte ist eine Vorverarbeitung nicht möglich = TRUE. |  False | 
 `blacklist_algos`   | Das Experiment mit automatisiertem maschinellem Lernen verfügt über viele verschiedene Algorithmen, die es ausprobiert. Konfigurieren Sie das Experiment, um bestimmte Algorithmen vom Experiment auszuschließen. Dies ist nützlich, wenn Sie wissen, dass bestimmte Algorithmen für Ihr Dataset nicht geeignet sind. Mit dem Ausschließen von Algorithmen können Sie Computeressourcen und Trainingszeit sparen.<br/>Zulässige Werte für die Klassifizierung sind:<br/><li>logistic regression</li><li>SGD classifier</li><li>MultinomialNB</li><li>BernoulliNB</li><li>SVM</li><li>LinearSVM</li><li>kNN</li><li>DT</li><li>RF</li><li>extra trees</li><li>gradient boosting</li><li>lgbm_classifier</li><br/>Zulässige Werte für die Regression sind:<br/><li>Elastic net</li><li>Gradient boosting regressor</li><li>DT regressor</li><li>kNN regressor</li><li>Lasso lars</li><li>SGD regressor</li><li>RF regressor</li><li>extra trees regressor</li>|   Keine
 `verbosity` |Steuert den Protokolliergrad, wobei „INFO“ am ausführlichsten und „CRITICAL“ am wenigsten ausführlich ist.<br/>Zulässige Werte sind:<br/><li>logging.INFO</li><li>logging.WARNING</li><li>logging.ERROR</li><li>logging.CRITICAL</li>  | logging.INFO</li> 
 `X` | Alle Funktionen zum Trainieren. |  Keine

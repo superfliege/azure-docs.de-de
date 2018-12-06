@@ -4,7 +4,7 @@ description: Informationen zur Zahlung, wenn das Azure-Abonnement einen überfä
 services: ''
 documentationcenter: ''
 author: genlin
-manager: jlian
+manager: jureid
 editor: ''
 tags: billing
 ms.assetid: d0b88c92-fb9d-4d12-931b-c26104ad63e9
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/11/2018
 ms.author: cwatson
-ms.openlocfilehash: fbc1f906812c0fb40a173fd90eac315753c893ef
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 19fd83f19a8eb8c24beeade650544fbe03ca5b6a
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47393230"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52580949"
 ---
 # <a name="resolve-past-due-balance-for-your-azure-subscription-after-getting-an-email-from-azure"></a>Begleichen überfälliger Zahlungen für Ihr Azure-Abonnement nach Erhalt einer E-Mail von Azure
 
@@ -48,6 +48,6 @@ Wenn Sie Kontoadministrator sind, [überprüfen Sie, welche E-Mail-Adresse für 
 
 Der Dienst wird gekündigt, und Ihre Ressourcen sind nicht mehr verfügbar. Alle Ihre Azure-Daten werden 90 Tage nach dem Kündigen des Diensts gelöscht. Weitere Informationen finden Sie in [Microsoft Trust Center – Wie wir Ihre Daten verwalten](https://go.microsoft.com/fwLink/p/?LinkID=822930&clcid=0x409).
 
-## <a name="need-help-contact-support"></a>Sie brauchen Hilfe? Wenden Sie sich an den Support.
+## <a name="need-help-contact-us"></a>Sie brauchen Hilfe? Wenden Sie sich an uns.
 
-[Wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), falls Sie weitere Hilfe benötigen, um das Problem schnell beheben zu lassen.
+Wenn Sie weitere Fragen haben oder Hilfe benötigen, [erstellen Sie eine Supportanfrage](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).

@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/02/2018
+ms.date: 11/19/2018
 ms.author: jeffgilb
 ms.reviewer: brbartle
-ms.openlocfilehash: be88e84c48ba31ce564c31eca1f54f164aeb9f93
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: 8d737c9fbf149051a8142f5ff546ea88e648541b
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51288236"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51976365"
 ---
 # <a name="register-azure-stack-with-azure"></a>Registrieren von Azure Stack in Azure
 
@@ -431,7 +431,7 @@ Voraussetzungen für die Ausführung des Cmdlets:
 | ResourceGroupName | Zeichenfolge |  |
 | ResourceGroupLocation | Zeichenfolge |  |
 | BillingModel | Zeichenfolge | Das Abrechnungsmodell, das von Ihrem Abonnement verwendet wird. Zulässige Werte für diesen Parameter sind „Capacity“, „PayAsYouUse“ und „Development“. |
-| MarketplaceSyndicationEnabled |  |  |
+| MarketplaceSyndicationEnabled | True/False | Bestimmt, ob das Marketplace-Verwaltungsfeature im Portal verfügbar ist. Legen Sie den Wert auf „true“ fest, wenn bei der Registrierung eine Internetverbindung verfügbar ist. Legen Sie den Wert auf „false“ fest, wenn die Registrierung in einer Umgebung ohne Verbindung erfolgt. In Umgebungen ohne Verbindung können Marketplace-Elemente mithilfe des [Offlinesyndikationstools](azure-stack-download-azure-marketplace-item.md#disconnected-or-a-partially-connected-scenario) heruntergeladen werden. |
 | UsageReportingEnabled | True/False | Azure Stack erstellt standardmäßig Berichte zu Nutzungsmetriken. Operatoren, die ein kapazitätsbasiertes Modell verwenden oder eine nicht verbundene Umgebung unterstützen, müssen Nutzungsberichte deaktivieren. Zulässige Werte für diesen Parameter: True, False. |
 | AgreementNumber | Zeichenfolge |  |
 | RegistrationName | Zeichenfolge | Legen Sie einen eindeutigen Namen für die Registrierung fest, wenn Sie das Registrierungsskript auf mehreren Instanzen von Azure Stack mit der gleichen Azure-Abonnement-ID ausführen. Der Parameter hat den Standardwert **AzureStackRegistration**. Wenn Sie den gleichen Namen jedoch in mehreren Instanzen von Azure Stack verwenden, tritt beim Ausführen des Skripts ein Fehler auf. |

@@ -2,26 +2,25 @@
 title: Grundlegendes zu den Ausgaben von Azure Stream Analytics
 description: In diesem Artikel werden die Datenausgabeoptionen beschrieben, die in Azure Stream Analytics verfügbar sind, z.B. Power BI für Analyseergebnisse.
 services: stream-analytics
-author: jasonwhowell
+author: mamccrea
 ms.author: mamccrea
-manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 10/22/2018
-ms.openlocfilehash: 2ef599fe704b184e82de2d704753e3fb4a274a2a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 11/21/2018
+ms.openlocfilehash: 869941781643d3486506b5a3caed4006019fb3b7
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51257798"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52310039"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Grundlegendes zu den Ausgaben von Azure Stream Analytics
 In diesem Artikel werden die unterschiedlichen Arten von Ausgaben beschrieben, die für einen Azure Stream Analytics-Auftrag verfügbar sind. Mit Ausgaben können Sie die Ergebnisse des Stream Analytics-Auftrags aufbewahren und speichern. Indem Sie die Ausgabedaten verwenden, können Sie weitere Geschäftsanalysen und Data Warehousing-Vorgänge für Ihre Daten durchführen. 
 
 Verweisen Sie beim Entwerfen Ihrer Stream Analytics-Abfrage auf den Namen der Ausgabe, indem Sie die [INTO-Klausel](https://msdn.microsoft.com/azure/stream-analytics/reference/into-azure-stream-analytics) verwenden. Sie können eine einzelne Ausgabe pro Auftrag oder bei Bedarf auch mehrere Ausgaben pro Streamingauftrag verwenden, indem Sie in der Abfrage mehrere INTO-Klauseln angeben.
 
-Zum Erstellen, Bearbeiten und Testen von Stream Analytics-Auftragsausgaben können Sie das [Azure-Portal](stream-analytics-quick-create-portal.md#configure-output-to-the-job), [Azure PowerShell](stream-analytics-quick-create-powershell.md#configure-output-to-the-job), die [.NET-API](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.streamanalytics.ioutputsoperations?view=azure-dotnet), die [REST-API](https://docs.microsoft.com/rest/api/streamanalytics/stream-analytics-output) und [Visual Studio](stream-analytics-quick-create-vs.md) verwenden.
+Zum Erstellen, Bearbeiten und Testen von Stream Analytics-Auftragsausgaben können Sie das [Azure-Portal](stream-analytics-quick-create-portal.md#configure-job-output), [Azure PowerShell](stream-analytics-quick-create-powershell.md#configure-output-to-the-job), die [.NET-API](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.streamanalytics.ioutputsoperations?view=azure-dotnet), die [REST-API](https://docs.microsoft.com/rest/api/streamanalytics/stream-analytics-output) und [Visual Studio](stream-analytics-quick-create-vs.md) verwenden.
 
 Für einige Ausgabetypen wird die [Partitionierung](#partitioning) unterstützt, und die [Ausgabebatchgrößen](#output-batch-size) variieren, um den Durchsatz zu optimieren.
 
@@ -70,8 +69,8 @@ Um die Autorisierung zu erneuern, klicken Sie in Ihrem Auftrag auf **Beenden**, 
 | Ausgabealias |Ein Anzeigename, der in Abfragen verwendet wird, um die Abfrageausgabe an diese Datenbank weiterzuleiten. |
 | Datenbank | Der Name der Datenbank, an die Sie die Ausgabe senden. |
 | Servername | Der Servername der SQL-Datenbank. |
-| Username | Der Benutzername, der Schreibzugriff auf die Datenbank besitzt. |
-| Kennwort | Das Kennwort, um eine Verbindung zur Datenbank herzustellen. |
+| Username | Der Benutzername, der Schreibzugriff auf die Datenbank besitzt. Stream Analytics unterstützt nur die SQL-Authentifizierung. |
+| Kennwort | Das Kennwort zum Herstellen einer Verbindung mit der Datenbank |
 | Table | Der Name der Tabelle, in die die Ausgabe geschrieben wird. Für den Tabellennamen muss zwischen Groß-/Kleinschreibung unterschieden werden. Das Schema dieser Tabelle sollte genau mit der Anzahl Felder und ihrer Typen übereinstimmen, die von der Auftragsausgabe generiert werden. |
 
 > [!NOTE]

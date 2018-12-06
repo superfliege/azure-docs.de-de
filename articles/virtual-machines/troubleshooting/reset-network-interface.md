@@ -10,14 +10,14 @@ tags: top-support-issue, azure-resource-manager
 ms.service: virtual-machines-windows
 ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
-ms.date: 10/31/2018
+ms.date: 11/16/2018
 ms.author: genli
-ms.openlocfilehash: 23cf02e8cc33b3a66a04ae0472b1e5a6baa59cc2
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 61001d4926dcce68872a368afb5b28f2d3a8e2c0
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50418992"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51818999"
 ---
 # <a name="how-to-reset-network-interface-for-azure-windows-vm"></a>Die Netzwerkschnittstelle für den virtuellen Windows-Computer in Azure zurücksetzen 
 
@@ -32,6 +32,8 @@ Sie können nach dem Deaktivieren der Netzwerkschnittstelle (NIC) keine Verbindu
 
 Um die Netzwerkschnittstelle zurückzusetzen, gehen Sie folgendermaßen vor:
 
+#### <a name="use-azure-portal"></a>Verwenden des Azure-Portals
+
 1.  Öffnen Sie das [Azure-Portal]( https://ms.portal.azure.com).
 2.  Wählen Sie **Virtuelle Computer (klassisch)** aus.
 3.  Wählen Sie den betroffenen virtuellen Computer aus.
@@ -41,6 +43,31 @@ Um die Netzwerkschnittstelle zurückzusetzen, gehen Sie folgendermaßen vor:
 7.  Wählen Sie Speichern aus.
 8.  Der virtuelle Computer wird neu gestartet, um die neue Netzwerkkarte mit dem System zu initialisieren.
 9.  Versuchen Sie RDP auf Ihrem Computer auszuführen. Wenn Sie möchten, können Sie bei erfolgreicher Ausführung die private IP-Adresse zurück zur ursprünglichen ändern. Andernfalls können Sie sie speichern. 
+
+#### <a name="use-azure-powershell"></a>Mithilfe von Azure PowerShell
+
+1. Stellen Sie sicher, dass Sie die [neueste Azure PowerShell-Version](https://docs.microsoft.com/powershell/azure/overview) installiert haben.
+2. Öffnen Sie eine Azure PowerShell Sitzung mit erhöhten Rechten („Als Administrator ausführen“). Führen Sie die folgenden Befehle aus:
+
+    ```powershell
+    #Set the variables 
+    $SubscriptionID = "<Suscription ID>"
+    $VM = "<VM Name>"
+    $CloudService = "<Cloud Service>"
+    $VNET = "<Virtual Network>"
+    $IP = "NEWIP"
+
+    #Log in to the subscription 
+    Add-AzureAccount
+    Select-AzureSubscription -SubscriptionId $SubscriptionId 
+
+    #Check whether the new IP address is available in the virtual network.
+    Test-AzureStaticVNetIP –VNetName $VNET –IPAddress  $IP
+    
+    #Add/Change static IP. This process will not change MAC address
+    Get-AzureVM -ServiceName $CloudService -Name $VM | Set-AzureStaticVNetIP -IPAddress $IP |Update-AzureVM
+    ```
+3. Versuchen Sie RDP auf Ihrem Computer auszuführen. Wenn Sie möchten, können Sie bei erfolgreicher Ausführung die private IP-Adresse zurück zur ursprünglichen ändern. Andernfalls können Sie sie speichern. 
 
 ### <a name="for-vms-deployed-in-resource-group-model"></a>Für im Ressourcengruppenmodell bereitgestellte virtuelle Computer
 
@@ -54,6 +81,31 @@ Um die Netzwerkschnittstelle zurückzusetzen, gehen Sie folgendermaßen vor:
 8.  Ändern Sie die **IP-Adresse** zu einer anderen IP-Adresse, die im Subnetz verfügbar ist.
 9. Der virtuelle Computer wird neu gestartet, um die neue Netzwerkkarte mit dem System zu initialisieren.
 10. Versuchen Sie RDP auf Ihrem Computer auszuführen. Wenn Sie möchten, können Sie bei erfolgreicher Ausführung die private IP-Adresse zurück zur ursprünglichen ändern. Andernfalls können Sie sie speichern. 
+
+#### <a name="use-azure-powershell"></a>Mithilfe von Azure PowerShell
+
+1. Sicherstellen, dass die [neueste Azure PowerShell-Version](https://docs.microsoft.com/powershell/azure/overview) installiert ist
+2. Öffnen Sie eine Azure PowerShell Sitzung mit erhöhten Rechten („Als Administrator ausführen“). Führen Sie die folgenden Befehle aus:
+
+    ```powershell
+    #Set the variables 
+    $SubscriptionID = "<Suscription ID>"
+    $VM = "<VM Name>"
+    $ResourceGroup = "<Resource Group>"
+    $VNET = "<Virtual Network>"
+    $IP = "NEWIP"
+
+    #Log in to the subscription 
+    Add-AzureRMAccount
+    Select-AzureRMSubscription -SubscriptionId $SubscriptionId 
+    
+    #Check whether the new IP address is available in the virtual network.
+    Test-AzureStaticVNetIP –VNetName $VNET –IPAddress  $IP
+
+    #Add/Change static IP. This process will not change MAC address
+    Get-AzureRMVM -ServiceName $ResourceGroup -Name $VM | Set-AzureStaticVNetIP -IPAddress $IP | Update-AzureRMVM
+    ```
+3. Versuchen Sie RDP auf Ihrem Computer auszuführen.  Wenn Sie möchten, können Sie bei erfolgreicher Ausführung die private IP-Adresse zurück zur ursprünglichen ändern. Andernfalls können Sie sie speichern. 
 
 ## <a name="delete-the-unavailable-nics"></a>Löschen Sie die nicht verfügbaren NICs
 Nachdem Sie eine Remotedesktopverbindung mit dem Computer ausführen können, müssen Sie die alten NICs löschen, um potenzielle Probleme zu vermeiden:

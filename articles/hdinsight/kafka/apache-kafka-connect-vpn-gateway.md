@@ -9,16 +9,16 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: da98873b133d69d78271494b991b67caea1d5a11
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 7fd201dd7c766880b1ed892abe3900b523d75145
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51283069"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52307473"
 ---
-# <a name="connect-to-kafka-on-hdinsight-through-an-azure-virtual-network"></a>Herstellen einer Verbindung mit Kafka in HDInsight über ein virtuelles Azure-Netzwerk
+# <a name="connect-to-apache-kafka-on-hdinsight-through-an-azure-virtual-network"></a>Herstellen einer Verbindung mit Apache Kafka in HDInsight über ein virtuelles Azure-Netzwerk
 
-Erfahren Sie, wie Sie eine direkte Verbindung mit Kafka in HDInsight über ein virtuelles Azure-Netzwerk herstellen. Dieses Dokument enthält Informationen zum Verbinden mit Kafka mithilfe der folgenden Konfigurationen:
+Erfahren Sie, wie Sie eine direkte Verbindung mit Apache Kafka in HDInsight über ein virtuelles Azure-Netzwerk herstellen. Dieses Dokument enthält Informationen zum Verbinden mit Kafka mithilfe der folgenden Konfigurationen:
 
 * Aus Ressourcen in einem lokalen Netzwerk. Diese Verbindung wird mithilfe eines VPN-Geräts (Software oder Hardware) in Ihrem lokalen Netzwerk hergestellt.
 * Aus einer Entwicklungsumgebung mit einem VPN-Softwareclient.
@@ -37,7 +37,7 @@ HDInsight erlaubt keine direkten Verbindungen zu Kafka über das öffentliche In
     4. Konfigurieren Sie die Weiterleitung zwischen den DNS-Servern in jedem Netzwerk.
     5. Erstellen Sie einen Kafka-Cluster in HDInsight-Cluster im virtuellen Netzwerk.
 
-    Weitere Informationen finden Sie im Abschnitt [Herstellen einer Verbindung mit Kafka aus einem lokalen Netzwerk](#on-premises). 
+    Weitere Informationen finden Sie im Abschnitt [Herstellen einer Verbindung mit Apache Kafka aus einem lokalen Netzwerk](#on-premises). 
 
 * Verbinden Sie die einzelnen Computer mithilfe des VPN-Gateways und dem VPN-Client mit dem Netzwerk. Um diese Konfiguration zu aktivieren, führen Sie die folgenden Aufgaben aus:
 
@@ -47,7 +47,7 @@ HDInsight erlaubt keine direkten Verbindungen zu Kafka über das öffentliche In
     4. Konfigurieren Sie Kafka zum Ankündigen der IP-Adresse. Diese Konfiguration ermöglicht dem Client das Herstellen einer Verbindung mithilfe von Broker-IP-Adressen anstelle von Domänennamen.
     5. Laden Sie den VPN-Client auf dem Entwicklungssystem herunter, und verwenden Sie ihn.
 
-    Weitere Informationen finden Sie im Abschnitt [Herstellen einer Verbindung mit Kafka über einen VPN-Client](#vpnclient).
+    Weitere Informationen finden Sie im Abschnitt [Herstellen einer Verbindung mit Apache Kafka über einen VPN-Client](#vpnclient).
 
     > [!WARNING]
     > Diese Konfiguration wird aufgrund der folgenden Einschränkungen nur für Entwicklungszwecke empfohlen:
@@ -57,7 +57,7 @@ HDInsight erlaubt keine direkten Verbindungen zu Kafka über das öffentliche In
 
 Weitere Informationen zur Verwendung von HDInsight in einem virtuellen Netzwerk finden Sie unter [Erweitern der HDInsight-Funktionen mit Azure Virtual Network](../hdinsight-extend-hadoop-virtual-network.md).
 
-## <a id="on-premises"></a> Herstellen einer Verbindung mit Kafka aus einem lokalen Netzwerk
+## <a id="on-premises"></a> Herstellen einer Verbindung mit Apache Kafka aus einem lokalen Netzwerk
 
 Um ein Kafka-Cluster zu erstellen, das mit Ihrem lokalen Netzwerk kommuniziert, führen Sie die Schritte im Dokument [Connect HDInsight to your on-premises network (Verbinden von HDInsight mit Ihrem lokalen Netzwerk)](./../connect-on-premises-network.md).
 
@@ -73,7 +73,7 @@ Mit diesen Schritten erstellen Sie die folgende Konfiguration:
 
 Um sicherzustellen, dass ein Kafka-Client eine Verbindung von einem lokalen Standort zu einem Cluster herstellen kann, verwenden Sie die Schritte im Abschnitt [Beispiel: Python-Client](#python-client).
 
-## <a id="vpnclient"></a> Herstellen einer Verbindung mit Kafka über einen VPN-Client
+## <a id="vpnclient"></a> Herstellen einer Verbindung mit Apache Kafka über einen VPN-Client
 
 Führen Sie die Schritte in diesem Abschnitt aus, um die folgende Konfiguration zu erstellen:
 
@@ -237,7 +237,7 @@ Führen Sie die Schritte in diesem Abschnitt aus, um die folgende Konfiguration 
 
 ### <a name="configure-kafka-for-ip-advertising"></a>Konfigurieren von Kafka zum Ankündigen der IP-Adresse
 
-Standardmäßig gibt Zookeeper den Domänennamen der Kafka-Broker an Clients zurück. Diese Konfiguration funktioniert für den VPN-Client nicht, da er die Namensauflösung nicht für Entitäten im virtuellen Netzwerk verwenden kann. Verwenden Sie für diese Konfiguration die folgenden Schritte, um Kafka zum Ankündigen von IP-Adressen anstelle von Domänennamen zu konfigurieren:
+Standardmäßig gibt Apache ZooKeeper den Domänennamen der Kafka-Broker an Clients zurück. Diese Konfiguration funktioniert für den VPN-Client nicht, da er die Namensauflösung nicht für Entitäten im virtuellen Netzwerk verwenden kann. Verwenden Sie für diese Konfiguration die folgenden Schritte, um Kafka zum Ankündigen von IP-Adressen anstelle von Domänennamen zu konfigurieren:
 
 1. Wechseln Sie in Ihrem Webbrowsers zu https://CLUSTERNAME.azurehdinsight.net. Ersetzen Sie __CLUSTERNAME__ durch den Namen von Kafka im HDInsight-Cluster.
 
@@ -371,7 +371,7 @@ Weitere Informationen zum Erstellen eines virtuellen Azure-Netzwerks mit Point-t
 
 * [Konfigurieren einer Point-to-Site-VPN-Verbindung (P2S) mit einem VNET mithilfe von PowerShell](../../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md)
 
-Weitere Informationen zur Verwendung von Kafka in HDInsight finden Sie in den folgenden Dokumenten:
+Weitere Informationen zur Verwendung von Apache Kafka in HDInsight finden Sie in den folgenden Dokumenten:
 
-* [Erste Schritte mit Apache Kafka (Vorschau) in HDInsight](apache-kafka-get-started.md)
-* [Verwenden von MirrorMaker zum Erstellen eines Replikats von Kafka in einem HDInsight-Cluster (Vorschau)](apache-kafka-mirroring.md)
+* [Erste Schritte mit Apache Kafka in HDInsight](apache-kafka-get-started.md)
+* [Verwenden von Spiegelung mit Apache Kafka in HDInsight](apache-kafka-mirroring.md)

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: mbullwin
-ms.openlocfilehash: e88d38e6d95459cc1c41adecee6b7ece659eac99
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 17a0b36fffb14f423aba3dd02b5b42d44933309c
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50957241"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52165389"
 ---
 # <a name="monitor-azure-web-app-performance"></a>Überwachen der Leistung der Azure-Web-App
 Im [Azure-Portal](https://portal.azure.com) können Sie eine Anwendungsleistungsüberwachung für Ihre [Azure-Web-Apps](../app-service/app-service-web-overview.md) einrichten. [Azure Application Insights](app-insights-overview.md) instrumentiert Ihre App, um Telemetriedaten über ihre Aktivitäten an den Application Insights-Dienst zu senden, wo sie gespeichert und analysiert werden. Hier können Sie dann mithilfe von Metrikdiagrammen und Suchtools Probleme diagnostizieren, die Leistung verbessern und die Nutzung untersuchen.
@@ -43,9 +43,9 @@ Wenn Sie bereits eine Web-App in Azure ausführen, verfügen Sie schon über ein
 
     ![Instrumentieren Ihrer Web-App](./media/app-insights-azure-web-apps/create-resource.png)
 
-2. Nachdem Ihre Ressource erstellt wurde, können Sie **Application Insights-Erweiterung für die Web-App überprüfen und aktualisieren** wählen, um sich zu vergewissern, dass die Erweiterung aktuell ist.
+2. Nach Angabe der zu verwendenden Ressource können Sie plattformspezifisch auswählen, wie Application Insights Daten für Ihre Anwendung erfassen soll.
 
-     ![Überprüfen und Aktualisieren der Websiteerweiterung](./media/app-insights-azure-web-apps/check-and-update.png)
+    ![Auswählen plattformspezifischer Optionen](./media/app-insights-azure-web-apps/choose-options.png)
 
 3. **Instrumentieren Sie Ihre Web-App**, nachdem Application Insights installiert wurde.
 
@@ -64,7 +64,7 @@ Später können Sie die App bei Bedarf mit Application Insights erstellen.
 
 *Wie entferne ich Application Insights oder stelle auf das Senden an eine andere Ressource um?*
 
-* Öffnen Sie in Azure das Steuerungsblatt der Web-App und unter „Entwicklungstools“ dann **Erweiterungen**. Löschen Sie die Application Insights-Erweiterung. Wählen Sie anschließend unter „Überwachung“ die Option „Application Insights“, und erstellen Sie die gewünschte Ressource bzw. wählen Sie sie aus.
+* Öffnen Sie in Azure das Steuerungsblatt der Web-App und anschließend **Application Insights** (unter „Einstellungen“). Sie können Application Insights deaktivieren, indem Sie im oberen Bereich auf **Deaktivieren** klicken. Alternativ können Sie im Abschnitt **Change your resource** (Ressource ändern) eine neue Ressource auswählen.
 
 ## <a name="build-the-app-with-application-insights"></a>Erstellen der App mit Application Insights
 Application Insights kann durch Installieren eines SDK in Ihrer App eine detailliertere Telemetrie bereitstellen. Beispielsweise können Sie Ablaufverfolgungsprotokolle erfassen, [benutzerdefinierte Telemetriedaten schreiben](app-insights-api-custom-events-metrics.md) und ausführlichere Berichte zu Ausnahmen erhalten.
@@ -101,7 +101,7 @@ Application Insights kann durch Installieren eines SDK in Ihrer App eine detaill
 * [Ausführen des Profilers in Ihrer Live-App](app-insights-profiler.md)
 * [Azure Functions](https://github.com/christopheranderson/azure-functions-app-insights-sample): Überwachen Sie Azure Functions mit Application Insights
 * [Ermöglichen des Sendens von Azure-Diagnosedaten an Application Insights](../monitoring-and-diagnostics/azure-diagnostics-configure-application-insights.md)
-* [Überwachen von Dienstintegritätsmetriken](../monitoring/monitoring-data-collection.md), um sicherzustellen, dass Ihr Dienst verfügbar und reaktionsfähig ist.
+* [Überwachen von Dienstintegritätsmetriken](../azure-monitor/platform/data-collection.md), um sicherzustellen, dass Ihr Dienst verfügbar und reaktionsfähig ist.
 * [Empfangen von Warnbenachrichtigungen](../monitoring-and-diagnostics/monitoring-overview-alerts.md) , wenn ein Vorgangsereignis auftritt oder Metriken einen Schwellenwert überschreiten.
 * Verwenden von [Application Insights für JavaScript-Apps und Webseiten](app-insights-javascript.md), um Clienttelemetriedaten von den Browsern zu erhalten, mit denen auf eine Webseite zugegriffen wird
 * [Einrichten von Verfügbarkeitswebtests](app-insights-monitor-web-app-availability.md), um benachrichtigt zu werden, wenn Ihre Website nicht verfügbar ist

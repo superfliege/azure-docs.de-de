@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: f9788c82e74b47d4550640a1069f6d97487eecc6
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 79ee129390c6b364ec65e8ae1e893e98f358751e
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51035304"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52497108"
 ---
 # <a name="add-custom-apache-hive-libraries-when-creating-your-hdinsight-cluster"></a>Hinzufügen benutzerdefinierter Apache Hive-Bibliotheken beim Erstellen des HDInsight-Clusters
 
-Erfahren Sie, wie Sie Apache Hive-Bibliotheken in HDInsight vorab laden. In diesem Dokument erfahren Sie, wie Sie eine Skriptaktion zum Vorabladen von Bibliotheken während der Clustererstellung verwenden. Bibliotheken, die anhand der Schritte in diesem Dokument hinzugefügt werden, stehen global in Hive zur Verfügung. Sie müssen zum Laden nicht [ADD JAR](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+Cli) verwenden.
+Erfahren Sie, wie Sie [Apache Hive](https://hive.apache.org/)-Bibliotheken in HDInsight vorab laden. In diesem Dokument erfahren Sie, wie Sie eine Skriptaktion zum Vorabladen von Bibliotheken während der Clustererstellung verwenden. Bibliotheken, die anhand der Schritte in diesem Dokument hinzugefügt werden, stehen global in Hive zur Verfügung. Sie müssen zum Laden nicht [ADD JAR](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+Cli) verwenden.
 
 ## <a name="how-it-works"></a>So funktioniert's
 
@@ -93,4 +93,4 @@ Nach der Erstellung des Clusters können Sie die durch dieses Skript hinzugefüg
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zum Arbeiten mit Hive finden Sie unter [Verwenden von Hive mit HDInsight](hadoop/hdinsight-use-hive.md)
+Weitere Informationen zum Arbeiten mit Hive finden Sie unter [Verwenden von Apache Hive mit HDInsight](hadoop/hdinsight-use-hive.md)

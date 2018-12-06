@@ -9,12 +9,12 @@ ms.date: 07/12/2018
 ms.topic: conceptual
 ms.service: service-fabric-mesh
 manager: timlt
-ms.openlocfilehash: 925d97658a299bea983b16ae6b507159ef0e9e62
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: f72490169149d247a43e2760815d757c3606f1b3
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50979130"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52163723"
 ---
 # <a name="service-fabric-mesh-terminology"></a>Service Fabric Mesh-Terminologie
 
@@ -32,7 +32,7 @@ Azure Service Fabric Mesh ist ein vollständig verwalteter Dienst, der es Entwic
 
 **Anwendung**: Eine Service Fabric-Meshanwendung ist die Einheit von Bereitstellung, Versionsverwaltung und Lebensdauer einer Meshanwendung. Der Lebenszyklus jeder Anwendungsinstanz kann unabhängig voneinander verwaltet werden.  Anwendungen bestehen aus mindestens einem Dienstcodepaket und Einstellungen. Eine Anwendung wird mit dem Azure-Ressourcenmodellschema (RM-Schema) definiert.  Dienste werden in einer RM-Vorlage als Eigenschaften der Anwendungsressource beschrieben.  Auf die von der Anwendung verwendeten Netzwerke und Volumes wird von der Anwendung verwiesen.  Beim Erstellen einer Anwendung werden die Anwendung, die Dienste, das Netzwerk und die Volumes mithilfe des Service Fabric-Ressourcenmodells modelliert.
 
-**Dienst**: Ein Dienst stellt in einer Anwendung einen Microservice dar und führt eine vollständige und eigenständige Funktion aus. Jeder Dienst besteht aus mindestens einem Codepaket, das alles beschreibt, was zum Ausführen des dem Codepaket zugeordneten Containerimages erforderlich ist.  Die Anzahl von Diensten in einer Anwendung kann zentral hoch- oder herunterskaliert werden.
+**Dienst**: Ein Dienst stellt in einer Anwendung einen Microservice dar und führt eine vollständige und eigenständige Funktion aus. Jeder Dienst besteht aus mindestens einem Codepaket, das alles beschreibt, was zum Ausführen des dem Codepaket zugeordneten Containerimages erforderlich ist.  Die Anzahl von Dienstreplikaten in einer Anwendung kann zentral hoch- oder herunterskaliert werden.
 
 **Codepaket**: Codepakete beschreiben alles, was benötigt wird, um das mit dem Codepaket verbundene Containerimage auszuführen, beispielsweise:
 

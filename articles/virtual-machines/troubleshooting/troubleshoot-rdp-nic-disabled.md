@@ -1,5 +1,5 @@
 ---
-title: Remotedesktopverbindung mit Azure Virtual Machines nicht möglich, weil die Netzwerkschnittstelle deaktiviert ist | Microsoft-Dokumentation
+title: Remoteverbindung mit Azure Virtual Machines ist nicht möglich, da die NIC deaktiviert ist | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie ein Problem behandeln, bei dem für RDP ein Fehler auftritt, weil die Netzwerkschnittstelle auf der Azure-VM deaktiviert ist | Microsoft-Dokumentation
 services: virtual-machines-windows
 documentationCenter: ''
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/12/2018
 ms.author: genli
-ms.openlocfilehash: 6b14530bd6b4c1b6617cb1d5c88d710a32e5372c
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: f9e4731146409f51d16a8c92c01d07a8ff11a7ea
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634820"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52314523"
 ---
 #  <a name="cannot-remote-desktop-to-a-vm-because-the-network-interface-is-disabled"></a>Remotedesktopverbindung mit einer VM nicht möglich, weil die Netzwerkschnittstelle deaktiviert ist
 
-In diesem Artikel wird veranschaulicht, wie Sie ein Problem lösen, bei dem Sie keine Remotedesktopverbindung mit Azure Windows Virtual Machines (VMs) herstellen können, weil die Netzwerkschnittstelle deaktiviert ist.
+In diesem Artikel erfahren Sie, wie Sie ein Problem beim Herstellen einer Remotedesktopverbindung mit Azure Virtual Machines (VMs) unter Windows beheben, wenn die Netzwerkschnittstelle deaktiviert ist.
 
 > [!NOTE] 
 > Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Ressourcen-Manager und klassische Bereitstellungen](../../azure-resource-manager/resource-manager-deployment-model.md). Dieser Artikel behandelt die Verwendung des Resource Manager-Bereitstellungsmodells, das anstelle des klassischen Bereitstellungsmodells für neue Bereitstellungen empfohlen wird. 
@@ -62,8 +62,8 @@ Verwenden Sie zum Aktivieren der Schnittstelle für die VM die serielle Konsole,
 
     Sie müssen die VM an diesem Punkt nicht neu starten. Die VM ist jetzt wieder erreichbar.
         
-5.  Stellen Sie eine Verbindung mit der VM her, und prüfen Sie, ob das Problem behoben wurde.
+5.  Stellen Sie eine Verbindung mit dem virtuellen Computer her, und prüfen Sie, ob das Problem behoben wurde.
 
 ## <a name="reset-network-interface"></a>Zurücksetzen der Netzwerkschnittstelle
 
-Ändern Sie zum Zurücksetzen der Netzwerkschnittstelle die IP-Adresse in eine andere IP-Adresse, die im Subnetz verfügbar ist, indem Sie das Azure-Portal oder Azure PowerShell verwenden. Weitere Informationen finden Sie unter [Zurücksetzen der Netzwerkschnittstelle](reset-network-interface.md). 
+Ändern Sie zum Zurücksetzen der Netzwerkschnittstelle die IP-Adresse in eine andere, im Subnetz verfügbare IP-Adresse. Verwenden Sie hierzu das Azure-Portal oder Azure PowerShell. Weitere Informationen finden Sie unter [Zurücksetzen der Netzwerkschnittstelle](reset-network-interface.md). 

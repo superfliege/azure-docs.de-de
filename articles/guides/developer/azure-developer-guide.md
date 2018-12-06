@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: glenga
-ms.openlocfilehash: 4c56a1164a589af5d325d1378f331a7d0ee138b7
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 55d4f53a23c92bb96934e84c0400bc182bc3d87e
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49956439"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51976807"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Anleitung mit den ersten Schritten für Azure-Entwickler
 
@@ -92,7 +92,7 @@ Sie müssen sich keine Sorgen über das Erstellen und Verwalten einer Anwendung 
 
 Azure Service Fabric ist eine Plattform für verteilte Systeme, die das Erstellen, Packen, Bereitstellen und Verwalten skalierbarer und zuverlässiger Microservices vereinfacht. Die Plattform bietet eine ausgereifte Laufzeit für das Erstellen verteilter, skalierbarer zustandsloser und zustandsbehafteter Microservices sowie umfassende Anwendungsverwaltungsfunktionen zum Organisieren, Bereitstellen, Überwachen, Upgraden/Patchen und Löschen bereitgestellter Anwendungen. Apps, die in einem gemeinsam genutzten Pool von Computern ausgeführt werden, können klein anfangen und bei Bedarf auf Hunderte oder Tausende VMs skaliert werden.
 
-Service Fabric unterstützt WebAPI mit Open Web Interface für .NET (OWIN) und ASP.NET Core. Es bietet SDKs, mit denen sich Dienste unter Linux sowohl in .NET Core als auch in Java erstellen lassen. Weitere Informationen zu Service Fabric finden Sie unter dem [Service Fabric-Lernpfad](https://azure.microsoft.com/documentation/learning-paths/service-fabric/).
+Service Fabric unterstützt WebAPI mit Open Web Interface für .NET (OWIN) und ASP.NET Core. Es bietet SDKs, mit denen sich Dienste unter Linux sowohl in .NET Core als auch in Java erstellen lassen. Weitere Informationen zu Service Fabric finden Sie in der [Service Fabric-Dokumentation](https://docs.microsoft.com/en-us/azure/service-fabric/).
 
 >**Einsatzgebiete:** Service Fabric ist eine gute Wahl, wenn Sie eine Anwendung erstellen oder eine vorhandenen Anwendung neu erstellen, um eine Microservice-Architektur zu verwenden. Verwenden Sie Service Fabric, wenn Sie mehr Kontrolle über oder direkten Zugriff auf die zugrunde liegende Infrastruktur benötigen.
 

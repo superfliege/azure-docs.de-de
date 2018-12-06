@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: d8ab61d99b617f21557b6f1ef476418e25bcee55
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 1d5a6dc6db3eaa46f6f2bd9944af7aefe759fbc7
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51016929"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52496120"
 ---
 # <a name="connect-hdinsight-to-your-on-premises-network"></a>Verbinden von HDInsight mit Ihrem lokalen Netzwerk
 
@@ -321,12 +321,12 @@ Zur direkten Verbindung mit HDInsight über das virtuelle Netzwerk führen Sie d
     az network nic list --resource-group <resourcegroupname> --output table --query "[?contains(name,'node')].{NICname:name,InternalIP:ipConfigurations[0].privateIpAddress,InternalFQDN:dnsSettings.internalFqdn}"
     ```
 
-2. Informationen dazu, wie Sie den Port ermitteln, auf dem ein Dienst verfügbar ist, finden Sie im Dokument [Von HDInsight verwendete Ports und URIs](./hdinsight-hadoop-port-settings-for-services.md).
+2. Informationen dazu, wie Sie den Port ermitteln, an dem ein Dienst verfügbar ist, finden Sie unter [Ports für Apache Hadoop-Dienste in HDInsight](./hdinsight-hadoop-port-settings-for-services.md).
 
     > [!IMPORTANT]
-    > Einige der auf den Hauptknoten gehosteten Dienste sind zu jedem Zeitpunkt nur auf einem Knoten aktiv. Wenn Sie versuchen, auf einen Dienst auf einem der Hauptknoten zuzugreifen und ein Fehler auftritt, wechseln Sie zum anderen Hauptknoten.
+    > Einige der auf den Hauptknoten gehosteten Dienste sind jeweils nur auf einem Knoten aktiv. Wenn Sie versuchen, auf einen Dienst auf einem der Hauptknoten zuzugreifen und ein Fehler auftritt, wechseln Sie zum anderen Hauptknoten.
     >
-    > Beispielsweise ist Ambari immer nur auf einem Hauptknoten aktiv. Wenn Sie versuchen, auf dem Hauptknoten auf Ambari zuzugreifen und ein 404-Fehler zurückgegeben wird, wird Ambari auf dem anderen Hauptknoten ausgeführt.
+    > Beispielsweise ist Apache Ambari immer nur auf einem einzelnen Hauptknoten aktiv. Wenn Sie versuchen, auf dem Hauptknoten auf Ambari zuzugreifen und ein 404-Fehler zurückgegeben wird, wird Ambari auf dem anderen Hauptknoten ausgeführt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

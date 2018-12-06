@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: b8a9973738ac28a686488a816da0f7da5fe2ac3e
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 0865c8b88788387eff173443d190658cc6488946
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238521"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51976858"
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>Verarbeiten umfangreicher Datasets mit Azure Data Factory und Azure Batch
 > [!NOTE]
@@ -41,7 +41,7 @@ Mit dem Batch-Dienst definieren Sie Azure-Computeressourcen, um Ihre Anwendungen
 * [Grundlegendes zu Azure Batch](../../batch/batch-technical-overview.md)
 * [Übersicht über Azure Batch-Features](../../batch/batch-api-basics.md)
 
-(optional) Weitere Informationen zu Azure Batch finden Sie unter [Lernpfad für Azure Batch](https://azure.microsoft.com/documentation/learning-paths/batch/).
+Weitere Informationen zu Batch finden Sie auch in der [Batch-Dokumentation](https://docs.microsoft.com/en-us/azure/batch/).
 
 ## <a name="why-azure-data-factory"></a>Gründe für die Verwendung von Azure Data Factory
 Data Factory ist ein cloudbasierter Daten-Integrationsdienst, der das Verschieben und Transformieren von Daten organisiert und automatisiert. Mit Data Factory können Sie verwaltete Datenpipelines erstellen, die Daten aus lokalen und Clouddatenspeichern in einen zentralen Datenspeicher verschieben. Ein Beispiel ist Azure Blob Storage. Mit Data Factory können Sie Daten verarbeiten bzw. transformieren, indem Sie Dienste wie Azure HDInsight und Azure Machine Learning nutzen. Sie können Datenpipelines auch so planen, dass sie gemäß einem Zeitplan ausgeführt werden (z.B. stündlich, täglich und wöchentlich). Sie können die Pipelines auf einen Blick überwachen und verwalten, um Probleme zu erkennen und Maßnahmen zu ergreifen.
@@ -51,7 +51,7 @@ Data Factory ist ein cloudbasierter Daten-Integrationsdienst, der das Verschiebe
 * [Einführung in Data Factory](data-factory-introduction.md)
 * [Erstellen der ersten Datenpipeline](data-factory-build-your-first-pipeline.md)   
 
-(optional) Weitere Informationen zu Data Factory finden Sie im [Lernpfad für Data Factory](https://azure.microsoft.com/documentation/learning-paths/data-factory/).
+Weitere Informationen zu Data Factory finden Sie auch in der [Data Factory-Dokumentation](https://docs.microsoft.com/en-us/rest/api/datafactory/v1/data-factory-data-factory).
 
 ## <a name="data-factory-and-batch-together"></a>Gemeinsame Verwendung von Data Factory und Batch
 Data Factory umfasst integrierte Aktivitäten. Beispiel: Die Kopieraktivität dient beispielsweise zum Kopieren bzw. Verschieben von Daten aus einem Quell- in einen Zieldatenspeicher. Die Hive-Aktivität wird zum Verarbeiten von Daten mithilfe von Hadoop-Clustern (HDInsight) in Azure verwendet. Eine Liste mit unterstützten Transformationsaktivitäten finden Sie unter [Transformieren von Data in Azure Data Factory](data-factory-data-transformation-activities.md).

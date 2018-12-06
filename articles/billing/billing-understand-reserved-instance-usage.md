@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/28/2018
 ms.author: cwatson
-ms.openlocfilehash: 1edf87d9ec334845f82c3c0c20c958e27f01e87a
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: 81ee681fac4496ad2d5360f01926634373c23075
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47585219"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52584484"
 ---
 # <a name="understand-azure-reservation-usage-for-your-pay-as-you-go-subscription"></a>Grundlegendes zur Nutzung von Azure-Reservierungen für das Abonnement mit nutzungsbasierter Bezahlung
 
@@ -105,8 +105,8 @@ Weitere Informationen zu Azure-Reservierungen finden Sie in den folgenden Artike
 - [Grundlegendes zur Nutzung von Azure-Reservierungen für den Konzernbeitritt](billing-understand-reserved-instance-usage-ea.md)
 - [Nicht in Azure-Reservierungen enthaltene Windows-Softwarekosten](billing-reserved-instance-windows-software-costs.md)
 
-## <a name="need-help-contact-support"></a>Sie brauchen Hilfe? Support kontaktieren
+## <a name="need-help-contact-us"></a>Sie brauchen Hilfe? Wenden Sie sich an uns.
 
-Bei weiteren Fragen [wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), um das Problem schnell zu lösen.
+Wenn Sie weitere Fragen haben oder Hilfe benötigen, [erstellen Sie eine Supportanfrage](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 
 

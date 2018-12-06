@@ -13,18 +13,18 @@ ms.topic: conceptual
 ms.date: 10/10/2018
 ms.reviewer: pharring
 ms.author: mbullwin
-ms.openlocfilehash: 6dd39fddd99f5f8ea9329f21c271ed4c1063362d
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 9d0cb566ffb8fbec4b99b0f0eeca79b21d1b0dde
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49078969"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52335128"
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>Debugmomentaufnahmen von Ausnahmen in .NET-Apps
 
 Wenn eine Ausnahme auftritt, können Sie automatisch eine Debugmomentaufnahme von Ihrer aktiven Webanwendung erfassen. Die Momentaufnahme zeigt den Status des Quellcodes und der Variablen in dem Moment, in dem die Ausnahme ausgelöst wurde. Der Momentaufnahmedebugger (Vorschau) in [Azure Application Insights](app-insights-overview.md) überwacht die Ausnahmetelemetrie aus Ihrer Web-App. Er erfasst Momentaufnahmen Ihrer am häufigsten ausgelösten Ausnahmen, damit Sie die erforderlichen Informationen zur Diagnose von Problemen in der Produktion erhalten. Binden Sie das [NuGet-Paket des Momentaufnahmesammlers](http://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) in Ihre Anwendung ein, und konfigurieren Sie optional Parameter für die Datensammlung in [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md). Momentaufnahmen finden Sie im Application Insights-Portal unter [Ausnahmen](app-insights-asp-net-exceptions.md).
 
-Sie können Debugmomentaufnahmen im Portal anzeigen, um die Aufrufliste anzuzeigen und die Variablen in jedem Aufruflistenrahmen zu überprüfen. Öffnen Sie zum Verbessern Ihrer Debugleistung mit Quellcode die Momentaufnahmen mit Visual Studio 2017 Enterprise, indem Sie [die Momentaufnahmedebugger-Erweiterung für Visual Studio herunterladen](https://aka.ms/snapshotdebugger). In Visual Studio können Sie auch [Andockpunkte festlegen, um interaktiv Momentaufnahmen zu erstellen](https://aka.ms/snappoint), ohne auf eine Ausnahme zu warten.
+Sie können Debugmomentaufnahmen im Portal anzeigen, um die Aufrufliste anzuzeigen und die Variablen in jedem Aufruflistenrahmen zu überprüfen. Öffnen Sie zum Verbessern Ihrer Debugleistung mit Quellcode die Momentaufnahmen mit Visual Studio 2017 Enterprise. In Visual Studio können Sie auch [Andockpunkte festlegen, um interaktiv Momentaufnahmen zu erstellen](https://aka.ms/snappoint), ohne auf eine Ausnahme zu warten.
 
 Debugmomentaufnahmen werden sieben Tage lang gespeichert. Diese Aufbewahrungsrichtlinie wird für jede Anwendung separat festgelegt. Wenn Sie diesen Wert erhöhen möchten, können Sie eine Erhöhung anfordern, indem Sie einen Supportfall im Azure-Portal eröffnen.
 
@@ -226,7 +226,7 @@ Momentaufnahmen enthalten möglicherweise vertrauliche Informationen und können
 ## <a name="debug-snapshots-with-visual-studio-2017-enterprise"></a>Debuggen von Momentaufnahmen mit Visual Studio 2017 Enterprise
 1. Klicken Sie auf die Schaltfläche **Momentaufnahme herunterladen**, um eine Datei vom Typ `.diagsession` herunterzuladen, die von Visual Studio 2017 Enterprise geöffnet werden kann.
 
-2. Zum Öffnen der Datei vom Typ `.diagsession` müssen Sie zuerst [die Momentaufnahmedebugger-Erweiterung für Visual Studio herunterladen und installieren](https://aka.ms/snapshotdebugger).
+2. Um die Datei `.diagsession` öffnen zu können, muss der Visual Studio-Momentaufnahmedebugger installiert sein. Der Momentaufnahmedebugger ist eine erforderliche Komponente der ASP.net-Workload in VS und kann im VS-Installationsprogramm in der Liste mit den Einzelkomponenten ausgewählt werden. Bei Visual Studio-Versionen vor 15.5 muss die Erweiterung über den [VS Marketplace](http://aka.ms/snapshotdebugger) installiert werden.
 
 3. Nach dem Öffnen der Momentaufnahmedatei erscheint in Visual Studio die Minidump-Debugging-Seite. Klicken Sie auf **Debug Managed Code** (Verwalteten Code debuggen), um mit dem Debuggen der Momentaufnahme zu beginnen. Die Momentaufnahme wird bei der Codezeile geöffnet, in der die Ausnahme ausgelöst wurde, damit Sie den aktuellen Zustand des Prozesses debuggen können.
 

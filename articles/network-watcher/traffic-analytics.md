@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: yagup;jdial
-ms.openlocfilehash: 2b057a94022077aa210b1e4ebb6122eaf350a40b
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: dd07ed66b630f541ed3e2001dffdebed150bb71a
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49457407"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52443031"
 ---
 # <a name="traffic-analytics"></a>Datenverkehrsanalyse
 
@@ -53,9 +53,39 @@ Bei der Datenverkehrsanalyse werden die unformatierten NSG-Flussprotokolle unter
 
 ## <a name="supported-regions"></a>Unterstützte Regionen
 
-Sie können Traffic Analytics für Netzwerksicherheitsgruppen in einer der folgenden Regionen verwenden: „USA, Westen-Mitte“, „USA, Osten“, „USA, Osten 2“, „USA, Norden-Mitte“, „USA, Süden-Mitte“, „USA, Mitte“, „USA, Westen“, „USA, Westen 2“, „Kanada, Mitte“, „Europa, Westen“, „Europa, Norden“, „Vereinigtes Königreich, Westen“, „Vereinigtes Königreich, Süden“, „Japan, Osten“, „Indien, Mitte“, „Australien, Osten“, „Australien, Südosten“ und „Asien, Südosten“. 
+Datenverkehranalysen für Netzwerksicherheitsgruppen werden in den folgenden Regionen unterstützt:
 
-Der Log Analytics-Arbeitsbereich muss in einer der folgenden Regionen vorhanden sein: „USA, Westen-Mitte“, „USA, Osten“, „Europa, Westen“, „Vereinigtes Königreich, Süden“, „Kanada, Mitte“, „Japan, Osten“, „Indien, Mitte“, „Australien, Südosten“ oder „Asien, Südosten“.
+* Kanada, Mitte
+* USA, Westen-Mitte
+* USA (Ost)
+* USA (Ost) 2
+* USA Nord Mitte
+* USA Süd Mitte
+* USA (Mitte)
+* USA (Westen)
+* USA, Westen 2
+* Europa, Westen
+* Nordeuropa
+* Brasilien Süd
+* UK, Westen
+* UK, Süden
+* Australien (Osten)
+* Australien, Südosten
+* Asien, Südosten
+* Indien, Mitte
+* Indien (Süden)
+* Japan, Osten 
+
+Der Log Analytics-Arbeitsbereich muss in den folgenden Regionen vorhanden sein:
+* Kanada, Mitte
+* USA, Westen-Mitte
+* USA (Ost)
+* Europa, Westen
+* UK, Süden
+* Australien, Südosten
+* Asien, Südosten
+* Indien, Mitte
+* Japan, Osten
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

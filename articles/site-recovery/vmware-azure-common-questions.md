@@ -4,15 +4,15 @@ description: In diesem Artikel werden häufig gestellte Fragen zum Einrichten de
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.date: 10/29/2018
+ms.date: 11/19/2018
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: c261dd083fed8b9c4a0f3846157c666cbb52083c
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.openlocfilehash: 248b2a748088330f91b3cc76564d5d8743f04411
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51636814"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52162482"
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>Allgemeine Fragen – VMware-zu-Azure-Replikation
 
@@ -47,14 +47,20 @@ Wenn Sie ein Abonnementadminstrator sind, besitzen Sie die erforderlichen Replik
 ## <a name="on-premises"></a>Lokal
 
 ### <a name="what-do-i-need-on-premises"></a>Was benötige ich lokal?
-Lokal benötigen Sie Site Recovery-Komponenten, die auf einer einzelnen VMware-VM installiert sind. Sie benötigen auch eine VMware-Infrastruktur mit mindestens einem ESXi-Host, und wir empfehlen einen vCenter-Server. Darüber hinaus benötigen Sie mindestens eine zu replizierende VMware-VM. [Erfahren Sie mehr](vmware-azure-architecture.md) über die VMware-zu-Azure-Architektur.
 
-Der lokale Konfigurationsserver kann mit einer der beiden folgenden Methoden bereitgestellt werden.
+Lokal benötigen Sie Folgendes:
+- Site Recovery-Komponenten, die auf einem einzelnen virtuellen VMware-Computer installiert sind
+- Eine VMware-Infrastruktur mit mindestens einem ESXi-Host. Zudem wird ein vCenter-Server empfohlen.
+- Einen oder mehrere zu replizierende virtuelle VMware-Computer
 
-1. Stellen Sie ihn mithilfe einer VM-Vorlage bereit, in der der Konfigurationsserver vorinstalliert ist. Weitere Informationen finden Sie [hier](vmware-azure-tutorial.md#download-the-vm-template).
-2. Stellen Sie ihn über das Setup auf einem Windows Server 2016-Computer Ihrer Wahl bereit. Weitere Informationen finden Sie [hier](physical-azure-disaster-recovery.md#set-up-the-source-environment).
+[Erfahren Sie mehr](vmware-azure-architecture.md) über die VMware-zu-Azure-Architektur.
 
-Wählen Sie zum Ermitteln der ersten Schritte zum Bereitstellen des Konfigurationsservers auf Ihren eigenen Windows Server-Computern im Schutzziel der Schutzaktivierung **In Azure > Nicht virtualisiert/Andere** aus.
+Der lokale Konfigurationsserver kann wie folgt bereitgestellt werden:
+
+- Es empfiehlt sich, den Konfigurationsserver mithilfe einer OVA-Vorlage, in der der Konfigurationsserver vorinstalliert ist, als virtuellen VMware-Computer bereitzustellen.
+- Wenn Sie aus einem bestimmten Grund keine Vorlage verwenden können, können Sie den Konfigurationsserver manuell einrichten. [Weitere Informationen](physical-azure-disaster-recovery.md#set-up-the-source-environment).
+
+
 
 ### <a name="where-do-on-premises-vms-replicate-to"></a>Zu welchem Speicher werden lokale virtuelle Computer repliziert?
 Daten werden zu Azure-Speicher repliziert. Wenn Sie ein Failover zu Azure ausführen, erstellt Site Recovery automatisch Azure-VMs aus dem Speicherkonto.
@@ -144,7 +150,7 @@ Ja. Laden Sie das MySQL-Installationsprogramm herunter, und speichern Sie es im 
 Nein. Sie sollten die VM nur für den Konfigurationsserver verwenden. 
 
 ### <a name="can-i-change-the-vault-registered-in-the-configuration-server"></a>Kann ich den Tresor ändern, der auf dem Konfigurationsserver registriert ist?
-Nein. Nachdem ein Tresor für den Konfigurationsserver registriert wurde, sind daran keine Änderungen mehr möglich.
+ Nein. Nachdem ein Tresor für den Konfigurationsserver registriert wurde, sind daran keine Änderungen mehr möglich.
 
 ### <a name="can-i-use-the-same-configuration-server-for-disaster-recovery-of-both-vmware-vms-and-physical-servers"></a>Kann ich denselben Konfigurationsserver für die Notfallwiederherstellung von VMware-VMs und von physischen Servern nutzen?
 Ja. Beachten Sie aber, dass für den physischen Computer nur ein Failback auf eine VMware-VM durchgeführt werden kann.

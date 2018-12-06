@@ -8,34 +8,52 @@ manager: mtillman
 ms.service: active-directory
 ms.component: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/26/2018
+ms.date: 11/14/2018
 ms.author: barbkess
 ms.reviewer: japere
 ms.custom: it-pro
-ms.openlocfilehash: 59ca9ca7711904fe7882aac4878bd62c597645d8
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 683b5b24fe8e7da086e000ff38411d3eb1c2f781
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51034965"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52495747"
 ---
 # <a name="get-started-with-application-proxy-and-install-the-connector"></a>Erste Schritte mit dem Anwendungsproxy und Installieren des Connectors
-In diesem Artikel wird anhand der erforderlichen Schritte beschrieben, wie Sie den Microsoft Azure AD-Anwendungsproxy für Ihr Cloudverzeichnis in Azure AD aktivieren.
+In diesem Artikel werden die Schritte zum Aktivieren des Anwendungsproxys in Azure Active Directory (Azure AD) beschrieben.
 
 Wenn Sie die Vorteile hinsichtlich Sicherheit und Produktivität noch nicht kennen, die ein Anwendungsproxy Ihrer Organisation bieten kann, erfahren Sie mehr dazu unter [Bereitstellen von sicherem Remotezugriff auf lokale Anwendungen](application-proxy.md).
 
-## <a name="application-proxy-prerequisites"></a>Voraussetzungen für den Anwendungsproxy
-Bevor Sie die Anwendungsproxydienste aktivieren und verwenden können, benötigen Sie Folgendes:
+## <a name="prerequisites"></a>Voraussetzungen
+Sie benötigen zum Aktivieren des Anwendungsproxys Folgendes:
 
-* Ein [Basic- oder Premium-Abonnement](../fundamentals/active-directory-whatis.md) für Microsoft Azure AD und ein Azure AD-Verzeichnis, für das Sie als globaler Administrator fungieren.
-* Ein Server, auf dem Windows Server 2012 R2 bzw. Windows Server 2016 oder höher installiert ist und auf dem Sie den Anwendungsproxy-Connector installieren können. Der Server muss eine Verbindung mit den Anwendungsproxydiensten in der Cloud sowie mit den lokalen Anwendungen herstellen können, die Sie veröffentlichen.
-  * Für das einmalige Anmelden bei Ihren veröffentlichten Anwendungen mithilfe der eingeschränkten Kerberos-Delegierung muss dieser Computer in dieselbe AD-Domäne wie die veröffentlichten Anwendungen eingebunden sein. Weitere Informationen finden Sie unter [Eingeschränkte Kerberos-Delegierung für das einmalige Anmelden mit Anwendungsproxy](application-proxy-configure-single-sign-on-with-kcd.md).
-* TLS 1.2 wird auf dem zugrunde liegenden Betriebssystem ausgeführt. Um zu TLS 1.2 zu wechseln, führen Sie die Schritte unter [Aktivieren von TLS 1.2](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-prerequisites#enable-tls-12-for-azure-ad-connect) aus. Die Inhalte beziehen sich zwar auf Azure AD Connect, aber dieses Verfahren ist für alle .NET-Clients identisch.
+* Ein [Microsoft Azure AD Basic- oder Premium-Abonnement](https://azure.microsoft.com/pricing/details/active-directory) 
+* Ein Konto als Anwendungsadministrator
 
-Wenn Ihre Organisation Proxyserver zum Herstellen einer Verbindung mit dem Internet verwendet, finden Sie unter [Verwenden von vorhandenen lokalen Proxyservern](application-proxy-configure-connectors-with-proxy-servers.md) Informationen dazu, wie Sie diese konfigurieren, bevor Sie mit dem Anwendungsproxy beginnen.
+### <a name="windows-server"></a>Windows-Server
+Sie benötigen einen Server, auf dem Windows Server 2012 R2 oder höher ausgeführt wird und auf dem Sie den Anwendungsproxy-Connector installieren können. Der Server muss eine Verbindung mit den Anwendungsproxydiensten in Azure sowie mit den lokalen Anwendungen herstellen können, die Sie veröffentlichen.
+
+Auf dem Windows-Server muss TLS 1.2 aktiviert werden, bevor Sie den Anwendungsproxy-Connector installieren. Vorhandene Connectors mit Versionen vor 1.5.612.0 nutzen bis auf Weiteres die früheren Versionen von TLS weiter. So aktivieren Sie TLS 1.2
+
+1. Legen Sie die folgenden Registrierungsschlüssel fest:
+    
+    ```
+    [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2]
+    [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client] "DisabledByDefault"=dword:00000000 "Enabled"=dword:00000001
+    [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Server] "DisabledByDefault"=dword:00000000 "Enabled"=dword:00000001
+    [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v4.0.30319] "SchUseStrongCrypto"=dword:00000001
+    ```
+
+2. Neustarten des Servers
+
+Für Anwendungen mit einmaligem Anmelden, die die eingeschränkte Kerberos-Delegierung (Kerberos Contrained Delegation, KCD) verwenden, müssen sich der Windows-Server und die Anwendungen, die Sie veröffentlichen, in derselben Active Directory-Domäne befinden. Weitere Informationen finden Sie unter [Eingeschränkte Kerberos-Delegierung für das einmalige Anmelden mit Anwendungsproxy](application-proxy-configure-single-sign-on-with-kcd.md).
+  
+### <a name="proxy-servers"></a>Proxyserver
+
+Wenn Ihre Organisation für Verbindungen mit dem Internet Proxyserver verwendet, müssen Sie diese für den Anwendungsproxy konfigurieren.  Weitere Informationen finden Sie unter [Verwenden von vorhandenen lokalen Proxyservern](application-proxy-configure-connectors-with-proxy-servers.md). 
+
+
 
 ## <a name="open-your-ports"></a>Öffnen der Ports
 

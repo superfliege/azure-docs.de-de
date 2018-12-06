@@ -10,16 +10,19 @@ ms.component: translator-text
 ms.topic: conceptual
 ms.date: 03/27/2018
 ms.author: v-jansko
-ms.openlocfilehash: e0654d6a4696e6f02939cad51a715412fdcfb61a
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 2f0b2984bf2390a9af0b824495b84c71d04aeac2
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49645233"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51852842"
 ---
 # <a name="translator-text-api-v2-to-v3-migration"></a>Migration der Textübersetzungs-API von Version 2 zu Version 3
 
-Das Microsoft Translator-Team hat Version 3 (V3) der Textübersetzungs-API veröffentlicht. Dieses Release enthält neue Features, veraltete Methoden und ein neues Format für das Senden und Empfangen von Daten an bzw. vom Microsoft Translator-Dienst. Dieses Dokument stellt Informationen für das Ändern von Anwendungen für die Verwendung von V3 bereit. V2 gilt ab dem 30. April 2018 als veraltet und wird ab dem 30. April 2019 nicht mehr unterstützt.
+> [!NOTE]
+> V2 gilt ab dem 30. April 2018 als veraltet und wird ab dem 30. April 2019 nicht mehr unterstützt.
+
+Das Microsoft Translator-Team hat Version 3 (V3) der Textübersetzungs-API veröffentlicht. Dieses Release enthält neue Features, veraltete Methoden und ein neues Format für das Senden und Empfangen von Daten an bzw. vom Microsoft Translator-Dienst. Dieses Dokument stellt Informationen für das Ändern von Anwendungen für die Verwendung von V3 bereit. 
 
 Am Ende dieses Dokuments finden Sie nützliche Links, unter denen Sie weitere Informationen finden.
 

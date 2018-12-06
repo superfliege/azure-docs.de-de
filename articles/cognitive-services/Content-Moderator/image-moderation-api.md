@@ -10,16 +10,16 @@ ms.component: content-moderator
 ms.topic: conceptual
 ms.date: 01/20/2018
 ms.author: sajagtap
-ms.openlocfilehash: 6c5fed78c67f974a2af11efd133e9a79ec52124b
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 044aa9a127aa8130340719147314961ddb38167a
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47219650"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51852706"
 ---
 # <a name="image-moderation"></a>Bildmoderation
 
-Verwenden Sie die computergestützte Bildmoderation und das [Tool für die manuelle Überprüfung](Review-Tool-User-Guide/human-in-the-loop.md) des Content Moderator, um Bilder mit nicht jugendfreien und freizügigen Inhalten zu mäßigen. Scannen Sie Bilder auf Textinhalte, extrahieren Sie diesen Text, und nutzen Sie die Gesichtserkennung. Sie können Bilder mit benutzerdefinierten Listen vergleichen und weitere Maßnahmen ergreifen.
+Verwenden Sie die computergestützte Bildmoderation und das [Tool für die Überprüfung mit menschlicher Beteiligung](Review-Tool-User-Guide/human-in-the-loop.md) von Content Moderator, um Bilder mit nicht jugendfreien und freizügigen Inhalten zu moderieren. Scannen Sie Bilder auf Textinhalte, extrahieren Sie diesen Text, und nutzen Sie die Gesichtserkennung. Sie können Bilder mit benutzerdefinierten Listen vergleichen und weitere Maßnahmen ergreifen.
 
 ## <a name="evaluating-for-adult-and-racy-content"></a>Auswerten von nicht jugendfreien und freizügigen Inhalten
 

@@ -6,18 +6,18 @@ author: bryanla
 manager: mbaldwin
 services: key-vault
 ms.author: bryanla
-ms.date: 09/05/2018
+ms.date: 11/27/2018
 ms.topic: conceptual
 ms.prod: ''
 ms.service: key-vault
 ms.technology: ''
 ms.assetid: 4be434c4-0c99-4800-b775-c9713c973ee9
-ms.openlocfilehash: d9fc845316d6e785d8215ac738b893ebc080d911
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 1eadea53dda60ef5ac8bbbc3d9e9cfe4b5b373dc
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44300969"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52423591"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>Dienst-zu-Dienst-Authentifizierung in Azure Key Vault mithilfe von .NET
 
@@ -183,18 +183,16 @@ So verwenden Sie ein Zertifikat für die Anmeldung bei Azure AD:
 
 1. Erstellen Sie ein [Dienstprinzipalzertifikat](/azure/azure-resource-manager/resource-group-authenticate-service-principal). 
 
-2. Stellen Sie das Zertifikat entweder dem _LocalMachine_- oder _CurrentUser_-Store bereit. 
+2. Stellen Sie das Zertifikat entweder dem *LocalMachine*- oder *CurrentUser*-Store bereit. 
 
 3. Legen Sie eine Umgebungsvariable namens **AzureServicesAuthConnectionString** folgendermaßen fest:
 
     ```
     RunAs=App;AppId={AppId};TenantId={TenantId};CertificateThumbprint={Thumbprint};
-          CertificateStoreLocation={LocalMachine or CurrentUser}
+          CertificateStoreLocation={CertificateStore}
     ```
  
-    Ersetzen Sie _{AppId}_, _{TenantId}_ und _{Thumbprint}_ durch die in Schritt 1 generierten Werte.
-
-    **CertificateStoreLocation** muss, je nach Ihrem Bereitstellungsplan, entweder _CurrentUser_ oder _LocalMachine_ sein.
+    Ersetzen Sie *{AppId}*, *{TenantId}* und *{Thumbprint}* durch die in Schritt 1 generierten Werte. Ersetzen Sie *{CertificateStore}* basierend auf Ihrem Bereitstellungsplan entweder durch `LocalMachine` oder `CurrentUser`.
 
 4. Führen Sie die Anwendung aus. 
 

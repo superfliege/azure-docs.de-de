@@ -4,7 +4,7 @@ description: Beschreibt, wie Sie Ihr Azure-Abonnement, etwa das Abonnement für 
 services: ''
 documentationcenter: ''
 author: genlin
-manager: jlian
+manager: adpick
 editor: ''
 tags: billing
 ms.assetid: 3051d6b0-179f-4e3a-bda4-3fee7135eac5
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: cwatson
-ms.openlocfilehash: c39dcdc0c4a89aa01c31dde1c5354ef1d4afe91d
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: de5fd6e52ab93132920b1c98188cbea92b9900b5
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47395565"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52584348"
 ---
 # <a name="cancel-your-subscription-for-azure"></a>Kündigen Ihres Abonnements für Azure
 
@@ -44,7 +44,7 @@ Wenn Sie einen kostenpflichtigen Azure-Supportplan kündigen, werden Ihnen die G
 
 ## <a name="what-happens-after-i-cancel-my-subscription"></a>Was geschieht, nachdem ich mein Abonnement gekündigt habe?
 
-Nach Ihrer Kündigung wird die Berechnung sofort beendet. Bis die Kündigung im Portal angezeigt wird, kann es allerdings bis zu 10 Minuten dauern.
+Nach Ihrer Kündigung wird die Berechnung sofort beendet. Bis die Kündigung im Portal angezeigt wird, kann es allerdings bis zu zehn Minuten dauern.
 
 Danach werden Ihre Dienste deaktiviert. Dies bedeutet, dass die Zuordnung Ihrer virtuellen Computer aufgehoben wird, die vorübergehenden IP-Adressen freigegeben werden und der Speicher nur noch im Lesezugriff verfügbar ist.
 
@@ -58,6 +58,6 @@ Wenn Sie Ihr Abonnement mit nutzungsbasierter Bezahlung versehentlich gekündigt
 
 Wenn es sich bei Ihrem Abonnement nicht um ein Abonnement mit nutzungsbasierter Bezahlung handelt, nehmen Sie bitte innerhalb von 90 Tagen nach der Kündigung Kontakt zum Support auf, um Ihr Abonnement erneut zu aktivieren.
 
-## <a name="need-help-contact-support"></a>Sie brauchen Hilfe? Wenden Sie sich an den Support.
+## <a name="need-help-contact-us"></a>Sie brauchen Hilfe? Wenden Sie sich an uns.
 
-Wenn Sie weitere Fragen haben, [wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), um das Problem schnell zu lösen.
+Wenn Sie weitere Fragen haben oder Hilfe benötigen, [erstellen Sie eine Supportanfrage](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).

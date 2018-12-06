@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 10/31/2018
+ms.date: 11/15/2018
 ms.author: genli
-ms.openlocfilehash: 80799eb716e77a4dec02a2daf028c35589c75da0
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: b14a98ce22979182ec27ba5dc849f9535fa2b387
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51235274"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51824301"
 ---
 # <a name="troubleshoot-azure-windows-virtual-machine-activation-problems"></a>Behandlung von Problemen bei der Aktivierung virtueller Windows-Computer
 
@@ -29,7 +29,7 @@ Wenn Sie Probleme beim Aktivieren eines virtuellen Azure Windows-Computers haben
 Abhängig von der Cloudregion, in der sich der virtuelle Computer befindet, verwendet Azure verschiedene Endpunkte für die KMS-Aktivierung. Verwenden Sie für dieses Handbuchs zur Problembehandlung den für Ihre Region vorgesehenen KMS-Endpunkt.
 
 * Azure Public Cloud-Regionen: kms.core.windows.net:1688
-* Nationale Cloudregionen für Azure China: kms.core.chinacloudapi.cn:1688
+* Nationale Cloudregionen für Azure China 21Vianet: kms.core.chinacloudapi.cn:1688
 * Nationale Cloudregionen für Azure Deutschland: kms.core.cloudapi.de:1688
 * Nationale Cloudregionen für Azure US Gov: kms.core.usgovcloudapi.net:1688
 
@@ -84,8 +84,7 @@ Dieser Schritt gilt nicht für Windows 2012 oder Windows 2008 R2. Es wird die Au
 3. Stellen Sie sicher, dass der virtuelle Computer richtig konfiguriert ist, damit er den richtigen Azure KMS-Server verwendet. Führen Sie zu diesem Zweck den folgenden Befehl aus:
   
     ```
-    iex “$env:windir\system32\cscript.exe $env:windir\system32\slmgr.vbs /skms
-    kms.core.windows.net:1688
+    iex "$env:windir\system32\cscript.exe $env:windir\system32\slmgr.vbs /skms kms.core.windows.net:1688"
     ```
     Der Befehl sollte Folgendes zurückgeben: Der Schlüsselverwaltungsdienst-Computername wurde erfolgreich auf kms.core.windows.net:1688 festgelegt.
 
@@ -117,7 +116,7 @@ Eine erfolgreiche Aktivierung gibt Informationen zurück, die der folgenden ähn
 
 ### <a name="i-created-the-windows-server-2016-from-azure-marketplace-do-i-need-to-configure-kms-key-for-activating-the-windows-server-2016"></a>Ich habe Windows Server 2016 aus dem Azure Marketplace erstellt. Muss ich einen KMS-Schlüssel zum Aktivieren von Windows Server 2016 konfigurieren? 
  
-Nein. Im Image des Azure Marketplace wurde der passende KMS-Clientsetupschlüssel schon konfiguriert. 
+ Nein. Im Image des Azure Marketplace wurde der passende KMS-Clientsetupschlüssel schon konfiguriert. 
 
 ### <a name="does-windows-activation-work-the-same-way-regardless-if-the-vm-is-using-azure-hybrid-use-benefit-hub-or-not"></a>Funktioniert die Windows-Aktivierung auf die gleiche Weise, unabhängig davon, ob der virtuelle Computer den Azure-Vorteil bei Hybridnutzung verwendet oder nicht? 
  

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 06/18/2018
 ms.author: martincoetzer
-ms.openlocfilehash: 8ce75efae2d735c5653f9dae72c670b0714351ac
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 3e2fa822698f3888e1168ab7773d87e41db9eb5c
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567949"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52165644"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>Fünf Schritte zum Sichern Ihrer Identitätsinfrastruktur
 
@@ -77,6 +77,9 @@ Wenn Ihre Organisation eine Hybrididentitätslösung mit Pass-Through-Authentifi
 * Sollte ein lokales System ausfallen (beispielsweise aufgrund eines Ransomware-Angriffs), können Sie zur [Cloudauthentifizierung mit Kennworthashsynchronisierung](https://docs.microsoft.com/azure/security/azure-ad-choose-authn) wechseln. Diese Backupmethode für die Authentifizierung ermöglicht es, weiterhin auf Apps zuzugreifen, die für die Authentifizierung mit Azure Active Directory konfiguriert sind, beispielsweise Office 365. In diesem Fall müssen IT-Mitarbeiter nicht auf persönliche E-Mail-Konten zurückgreifen, um bis zur Behebung des lokalen Ausfalls Daten freizugeben.
 
 Informieren Sie sich, wie die [Kennworthashsynchronisierung](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-implement-password-hash-synchronization) funktioniert.
+
+> [!NOTE]
+> Wenn Sie die Kennworthashsynchronisierung aktivieren und Azure AD Domain Services verwenden, werden Kerberos-Hashes (AES-256) und optional NTLM-Hashes (RC4, kein Salt) ebenfalls verschlüsselt und mit Azure AD synchronisiert. 
 
 ### <a name="implement-ad-fs-extranet-smart-lockout"></a>Implementieren der intelligenten AD FS-Extranetsperre
 

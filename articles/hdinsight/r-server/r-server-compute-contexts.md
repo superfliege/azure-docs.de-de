@@ -9,21 +9,21 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: e132ceb857b05f24664c93729dd43d75b5a19ac2
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 1e01a3db2c0ca1f9024afb3faecf677ac4e3131b
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51015059"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52494466"
 ---
 # <a name="compute-context-options-for-ml-services-on-hdinsight"></a>Computekontextoptionen für ML Services in HDInsight
 
 ML Services für Azure HDInsight bestimmt durch Festlegen des Computekontexts, wie Aufrufe ausgeführt werden. In diesem Artikel werden die Optionen beschrieben, mit denen festgelegt werden kann, ob und wie die Ausführung in allen Kernen des Edgeknotens oder im HDInsight-Cluster parallelisiert werden.
 
-Der Edgeknoten eines Clusters ist ein praktischer Ort für die Verbindungsherstellung mit dem Cluster und die Ausführung Ihrer R-Skripts. Mit einem Edgeknoten haben Sie die Möglichkeit, die parallelisierten verteilten Funktionen von RevoScaleR in allen Kernen der Edgeknotenserver auszuführen. Außerdem können Sie sie auf allen Knoten des Clusters ausführen, indem Sie Hadoop MapReduce von RevoScaleR oder Spark-Computekontexte verwenden.
+Der Edgeknoten eines Clusters ist ein praktischer Ort für die Verbindungsherstellung mit dem Cluster und die Ausführung Ihrer R-Skripts. Mit einem Edgeknoten haben Sie die Möglichkeit, die parallelisierten verteilten Funktionen von RevoScaleR in allen Kernen der Edgeknotenserver auszuführen. Außerdem können Sie sie auf allen Knoten des Clusters ausführen, indem Sie Hadoop MapReduce von RevoScaleR oder Apache Spark-Computekontexte verwenden.
 
 ## <a name="ml-services-on-azure-hdinsight"></a>ML Services in Azure HDInsight
-[ML Services in Azure HDInsight](r-server-overview.md) bietet die neuesten Funktionen für R-basierte Analysen. Die verwendeten Daten sind in einem HDFS-Container in Ihrem [Azure Blob Storage-Konto](../../storage/common/storage-introduction.md "Azure Blob Storage"), einem Data Lake Store oder im lokalen Dateisystem von Linux gespeichert. Da ML Services auf Open-Source-R basiert, stehen Ihnen bei der Erstellung R-basierter Anwendungen alle über 8.000 Open-Source-R-Pakete zur Verfügung. Auch die Routinen in [RevoScaleR](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/revoscaler) – dem in ML Services enthaltenen Big Data-Analysepaket von Microsoft – können genutzt werden.  
+[ML Services in Azure HDInsight](r-server-overview.md) bietet die neuesten Funktionen für R-basierte Analysen. Die verwendeten Daten sind in einem Apache Hadoop HDFS-Container in Ihrem [Azure Blob Storage-Konto](../../storage/common/storage-introduction.md "Azure Blob Storage"), einem Data Lake Store oder im lokalen Dateisystem von Linux gespeichert. Da ML Services auf Open-Source-R basiert, stehen Ihnen bei der Erstellung R-basierter Anwendungen alle über 8.000 Open-Source-R-Pakete zur Verfügung. Auch die Routinen in [RevoScaleR](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/revoscaler) – dem in ML Services enthaltenen Big Data-Analysepaket von Microsoft – können genutzt werden.  
 
 ## <a name="compute-contexts-for-an-edge-node"></a>Computekontexte für einen Edgeknoten
 Im Allgemeinen wird ein R-Skript, das in einem ML Services-Cluster auf dem Edgeknoten ausgeführt wird, im R-Interpreter auf diesem Knoten ausgeführt. Bei Schritten, in denen eine RevoScaleR-Funktion aufgerufen wird, ist dies nicht der Fall. Die RevoScaleR-Aufrufe werden in einer Compute-Umgebung ausgeführt, die dadurch bestimmt wird, wie Sie den RevoScaleR-Computekontext festlegen.  Wenn Sie Ihr R-Skript auf einem Edgeknoten ausführen, sind für den Computekontext folgende Werte möglich:
@@ -52,7 +52,7 @@ Welche der drei Optionen für die parallelisierte Ausführung ausgewählt werden
 - Wiederholte Analysen können schneller ausgeführt werden, wenn die Daten lokal und in XDF vorliegen.
 - Kleine Datenmengen sollten aus einer Textdatenquelle gestreamt werden. Bei größeren Datenmengen empfiehlt es sich, die Daten vor der Analyse in XDF zu konvertieren.
 - Bei sehr großen Datenmengen ist der Mehraufwand durch das Kopieren oder Streamen der zu analysierenden Daten an den Edgeknoten zu groß.
-- Für Analysen in Hadoop ist Spark schneller als MapReduce.
+- Bei Analysen in Hadoop ist Apache Spark schneller als MapReduce.
 
 Neben diesen Richtlinien sollten bei der Auswahl des Rechenkontexts die allgemeinen Regeln in den folgenden Abschnitten berücksichtigt werden.
 
@@ -60,10 +60,10 @@ Neben diesen Richtlinien sollten bei der Auswahl des Rechenkontexts die allgemei
 * Wenn die zu analysierende Datenmenge klein und keine wiederholte Analyse erforderlich ist, sollten Sie die Daten mit *local* oder *localpar* direkt in die Analyseroutine streamen.
 * Wenn die zu analysierende Datenmenge klein oder mittelgroß und eine wiederholte Analyse erforderlich ist, kopieren Sie die Daten in das lokale Dateisystem, importieren Sie sie in XDF, und führen Sie die Analyse mit *local* oder *localpar* durch.
 
-### <a name="hadoop-spark"></a>Hadoop Spark
+### <a name="apache-spark"></a>Apache Spark
 * Wenn eine große Datenmenge analysiert werden muss, importieren Sie die Daten mit **RxHiveData** oder **RxParquetData** in einen Spark DataFrame, oder in XDF in HDFS (sofern der Speicherplatz kein Problem darstellt), und führen Sie die Analyse mit dem Spark-Computekontext durch.
 
-### <a name="hadoop-map-reduce"></a>Hadoop Map Reduce
+### <a name="apache-hadoop-map-reduce"></a>Apache Hadoop MapReduce
 * Verwenden Sie den MapReduce-Computekontext nur, wenn bei einem Spark-Computekontext ein unüberwindliches Problem auftritt, da MapReduce meist langsamer ist.  
 
 ## <a name="inline-help-on-rxsetcomputecontext"></a>Integrierte Hilfe zu rxSetComputeContext
@@ -76,7 +76,7 @@ Sie können sich auch die [Übersicht über verteiltes Computing](https://docs.m
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Artikel haben Sie die Optionen kennengelernt, mit denen festgelegt werden kann, ob und wie die Ausführung in allen Kernen des Edgeknotens oder im HDInsight-Cluster parallelisiert werden. Weitere Informationen zur Verwendung von ML Services mit HDInsight-Clustern finden Sie unter den folgenden Themen:
 
-* [Übersicht über ML Services für Hadoop](r-server-overview.md)
-* [Erste Schritte mit ML Services für Hadoop](r-server-get-started.md)
+* [Übersicht über ML Services für Apache Hadoop](r-server-overview.md)
+* [Erste Schritte mit ML Services für Apache Hadoop](r-server-get-started.md)
 * [Azure Storage-Lösungen für ML Services in HDInsight](r-server-storage.md)
 

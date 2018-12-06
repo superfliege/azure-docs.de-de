@@ -9,12 +9,12 @@ ms.author: robreed
 ms.topic: conceptual
 ms.date: 08/08/2018
 manager: carmonm
-ms.openlocfilehash: fea0a0dfd2e138fa4f33f4f489be74f5038b4ca6
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 50f8fea04da3b1e414917a6404cb3f6e838bf716
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51244524"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52284811"
 ---
 # <a name="onboarding-machines-for-management-by-azure-automation-state-configuration"></a>Onboarding von Computern zur Verwaltung durch Azure Automation DSC
 
@@ -42,7 +42,7 @@ Mit Azure Automation DSC können Sie problemlos Azure-VMs (klassisch) für die K
 
 ### <a name="azure-portal"></a>Azure-Portal
 
-Klicken Sie im [Azure-Portal](http://portal.azure.com/) auf **Durchsuchen** -> **Virtuelle Computer (klassisch)**. Wählen Sie die Windows-VM aus, die Sie integrieren möchten. Klicken Sie auf dem Dashboardblatt des virtuellen Computers auf **Alle Einstellungen** -> **Erweiterungen** -> **Hinzufügen** -> **Azure Automation DSC** -> **Erstellen**.
+Klicken Sie im [Azure-Portal](https://portal.azure.com/) auf **Durchsuchen** -> **Virtuelle Computer (klassisch)**. Wählen Sie die Windows-VM aus, die Sie integrieren möchten. Klicken Sie auf dem Dashboardblatt des virtuellen Computers auf **Alle Einstellungen** -> **Erweiterungen** -> **Hinzufügen** -> **Azure Automation DSC** -> **Erstellen**.
 Geben Sie die [Werte des lokalen Konfigurations-Managers von PowerShell DSC](/powershell/dsc/metaconfig4), die für Ihren Anwendungsfall erforderlich sind, den Registrierungsschlüssel und die Registrierungs-URL Ihres Automation-Kontos und optional eine Knotenkonfiguration, die dem virtuellen Computer zugewiesen werden soll, ein.
 
 ![Azure-VM-Erweiterungen für DSC](./media/automation-dsc-onboarding/DSC_Onboarding_1.png)
@@ -132,7 +132,7 @@ Wenn auf dem Computer nicht die PowerShell-Erweiterung für Konfiguration des ge
 
 Geben Sie unter **Registrierung**die Werte des [lokalen Konfigurations-Managers von PowerShell DSC](/powershell/dsc/metaconfig4) ein, die für Ihren Anwendungsfall erforderlich sind, und geben Sie optional eine Knotenkonfiguration an, die dem virtuellen Computer zugewiesen werden soll.
 
-![](./media/automation-dsc-onboarding/DSC_Onboarding_6.png)
+![Onboarding](./media/automation-dsc-onboarding/DSC_Onboarding_6.png)
 
 ### <a name="azure-resource-manager-templates"></a>Azure-Ressourcen-Manager-Vorlagen
 

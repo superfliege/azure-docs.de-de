@@ -10,12 +10,12 @@ ms.component: bing-local-business
 ms.topic: article
 ms.date: 11/01/2018
 ms.author: rosh, v-gedod
-ms.openlocfilehash: e55c06c7e8a2d0952cac809b622fa9a63ccee399
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 533e8b30bf59010f71df477b96b5441c83c34be7
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50959799"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52307107"
 ---
 # <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-using-java"></a>Schnellstart: Senden einer Abfrage an die API für die Bing-Suche nach ortsansässigen Unternehmen mit Java
 
@@ -27,7 +27,7 @@ Diese Beispielanwendung ruft lokale Antwortdaten aus der API für die Suchabfrag
 
 * Das [Java Development Kit (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
 
-Sie müssen über ein [Cognitive Services-API-Konto](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) mit Bing-Suche-APIs verfügen. Die [kostenlose Testversion](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) ist für diesen Schnellstart ausreichend. Sie benötigen den Zugriffsschlüssel, den Sie bei der Aktivierung Ihrer kostenlosen Testversion erhalten.
+Sie müssen über ein [Cognitive Services-API-Konto](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) mit Bing-Suche-APIs verfügen. Die [kostenlose Testversion](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) ist für diesen Schnellstart ausreichend. Sie benötigen den Zugriffsschlüssel, den Sie bei der Aktivierung Ihrer kostenlosen Testversion erhalten.  Siehe auch [Cognitive Services-Preise – Bing-Suche-API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)
 
 Diese Beispielanwendung ruft lokale Antwortdaten aus der Abfrage für ein *Hotel in Bellevue* ab.
 
@@ -37,9 +37,9 @@ Der folgende Code erstellt eine `WebRequest`, legt den Zugriffsschlüsselheader 
 
 ````
     // construct URL of search request (endpoint + query string)
-     URL url = new URL(host + path + "?q=" +  URLEncoder.encode(searchQuery, "UTF-8") + "appid=AEA845921DC03F506DC317A90EDDBF33074523F7&traffictype=Internal_monitor&market=en-us");
+     URL url = new URL(host + path + "?q=" +  URLEncoder.encode(searchQuery, "UTF-8") + &mkt=en-us");
     HttpsURLConnection connection = (HttpsURLConnection)url.openConnection();
-    //connection.setRequestProperty("Ocp-Apim-Subscription-Key", subscriptionKey);
+    connection.setRequestProperty("Ocp-Apim-Subscription-Key", subscriptionKey);
 
     // receive JSON body
     InputStream stream = connection.getInputStream();
@@ -100,10 +100,9 @@ public class LocalSearchCls {
 
         public static SearchResults SearchLocal (String searchQuery) throws Exception {
             // construct URL of search request (endpoint + query string)
-            URL url = new URL(host + path + "?q=" +  URLEncoder.encode(searchQuery, "UTF-8") + 
-                         "&appid=" + subscriptionKey + "&traffictype=Internal_monitor&market=en-us");
+            URL url = new URL(host + path + "?q=" +  URLEncoder.encode(searchQuery, "UTF-8") + "&mkt=en-us");
             HttpsURLConnection connection = (HttpsURLConnection)url.openConnection();
-            //connection.setRequestProperty("Ocp-Apim-Subscription-Key", subscriptionKey);
+            connection.setRequestProperty("Ocp-Apim-Subscription-Key", subscriptionKey);
 
             // receive JSON body
             InputStream stream = connection.getInputStream();

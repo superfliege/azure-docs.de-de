@@ -9,12 +9,12 @@ ms.component: content-moderator
 ms.topic: article
 ms.date: 02/03/2017
 ms.author: sajagtap
-ms.openlocfilehash: cb8774395b7374677e8de3b80630a2d4abf490f9
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 60a8d03a6562c9a66c2f6781ebbc330c989b343e
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35372915"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51852094"
 ---
 # <a name="review-text"></a>Überprüfen von Text
 
@@ -32,4 +32,4 @@ Das Prüfungstool ruft zunächst die Textmoderations-API auf. Anschließend werd
 
 Die ausführlichen Ergebnisse werden in den Fenstern angezeigt. Die Ergebnisse enthalten erkannten Tags und Ausdrücke, die von der Textmoderations-API zurückgegeben wurden. Um den Auswahlstatus eines Tags zu wechseln, wählen Sie den Tag aus. Sie können auch mit beliebigen benutzerdefinierten Tags arbeiten, die Sie möglicherweise erstellt haben.
 
-![Überprüfen der Textergebnisse](images/3-review-text-2.png)
+![Screenshot des Überprüfungstools mit markiertem Text in einem Chrome-Browserfenster](../images/reviewresults_text.png)

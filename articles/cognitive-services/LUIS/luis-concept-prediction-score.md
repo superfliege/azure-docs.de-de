@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: conceptual
 ms.date: 10/15/2018
 ms.author: diberry
-ms.openlocfilehash: 7cc3b6fd5865689df57258dcb2088bbef47b9a90
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: e1582da9a8fea4137d40b3a3855ead467dbbb548
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49637959"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52264385"
 ---
 # <a name="prediction-score"></a>Vorhersageergebnis
 Ein Vorhersageergebnis gibt den Grad der Zuverlässigkeit an, den LUIS in die Ergebnisse von Vorhersagen hat. 
@@ -62,7 +62,7 @@ Wenn Sie dasselbe Modell in einer anderen App trainieren und die Ergebnisse abwe
 Wenn Ihr Chatbot eine bestimmte LUIS-Bewertung erfordert, um die Zuverlässigkeit einer Absicht anzuzeigen, sollten Sie stattdessen den Unterschied zwischen den Ergebnissen der beiden am höchsten bewerteten Absichten verwenden. Dies bietet Flexibilität für Varianten im Training. 
 
 ## <a name="punctuation"></a>Interpunktion
-Interpunktion ist ein separates Token in LUIS. Eine Äußerung mit einem Punkt am Ende und eine Äußerung, wo dies nicht der Fall ist, sind zwei separate Äußerungen und erhalten möglicherweise zwei unterschiedliche Vorhersagen. Stellen Sie sicher, dass das Modell Interpunktion entweder in den [Beispieläußerungen](luis-concept-utterance.md) (mit und ohne Interpunktion) oder in den [Mustern](luis-concept-patterns.md) behandelt, wo es mit der speziellen Syntax einfacher ist, Interpunktion zu ignorieren: `I am applying for the {Job} position[.]`
+Interpunktion ist ein separates Token in LUIS. Eine Äußerung mit einem Punkt am Ende und eine Äußerung, wo dies nicht der Fall ist, sind zwei separate Äußerungen und erhalten möglicherweise zwei unterschiedliche Vorhersagen. Stellen Sie sicher, dass das Modell die Interpunktion entweder in den [Beispieläußerungen](luis-concept-utterance.md) (mit und ohne Interpunktion) oder in den [Mustern](luis-concept-patterns.md) behandelt, wo es mit der speziellen Syntax einfacher ist, die Interpunktion zu ignorieren: `I am applying for the {Job} position[.]`
 
 ## <a name="next-steps"></a>Nächste Schritte
 

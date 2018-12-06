@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/2/2018
 ms.author: rkarlin
-ms.openlocfilehash: d88a59d3b9a39a42120b302fd8e7989c968db952
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: f6a818e0f628924342ddd50322bb54bf1d1d6079
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51624776"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51976657"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Datensammlung in Azure Security Center
 Security Center sammelt Daten von Ihren virtuellen Azure-Computern (VMs) und Azure-fremden Computern, um sie hinsichtlich Sicherheitslücken und Bedrohungen zu überwachen. Die Daten werden mithilfe von Microsoft Monitoring Agent gesammelt. Der Agent liest verschiedene sicherheitsrelevante Konfigurationen und Ereignisprotokolle auf dem Computer und kopiert die Daten zur Analyse in Ihren Arbeitsbereich. Beispiele für Daten dieser Art: Betriebssystemtyp und -version, Betriebssystemprotokolle (Windows-Ereignisprotokolle), ausgeführte Prozesse, Computername, IP-Adressen und angemeldeter Benutzer. Darüber hinaus kopiert der Microsoft Monitoring Agent Absturzabbilddateien in Ihren Arbeitsbereich.
@@ -48,7 +48,7 @@ Bei aktivierter automatischer Bereitstellung wird Microsoft Monitoring Agent von
 
 So aktivieren Sie die automatische Bereitstellung von Microsoft Monitoring Agent:
 1. Klicken Sie im Hauptmenü von Security Center auf **Sicherheitsrichtlinie**.
-2. Wählen Sie das Abonnement aus.
+2. Klicken Sie in der Spalte „Einstellungen“ für das gewünschte Abonnement in der Liste auf **Einstellungen bearbeiten**.
 
   ![Wählen Sie das Abonnement aus.][7]
 
@@ -135,7 +135,7 @@ So wählen Sie einen vorhandenen Log Analytics-Arbeitsbereich aus:
 
     a.  Wählen Sie im Hauptmenü von Security Center die Option **Sicherheitsrichtlinie** aus.
      
-    b.  Wählen Sie den gewünschten Arbeitsbereich aus, in dem Sie den Agent verbinden möchten.
+    b.  Wählen Sie den Arbeitsbereich aus, in dem Sie die Agent-Verbindung herstellen möchten. Klicken Sie hierzu in der Spalte „Einstellungen“ für das gewünschte Abonnement in der Liste auf **Einstellungen bearbeiten**.
         ![Arbeitsbereich auswählen][8] c. Legen Sie den Tarif fest.
         ![Tarif auswählen][9] 
    

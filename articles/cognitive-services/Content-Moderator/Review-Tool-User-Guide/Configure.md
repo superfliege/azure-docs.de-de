@@ -1,5 +1,5 @@
 ---
-title: Konfigurieren der Einstellungen des Prüfungstools in Content Moderator | Microsoft Docs
+title: Konfigurieren der Einstellungen des Prüfungstools in Content Moderator | Microsoft-Dokumentation
 description: Sie können Ihr Team, Ihre Tags, Konnektoren, Workflows und Anmeldeinformationen konfigurieren oder abrufen.
 services: cognitive-services
 author: sanjeev3
@@ -9,16 +9,16 @@ ms.component: content-moderator
 ms.topic: article
 ms.date: 06/25/2017
 ms.author: sajagtap
-ms.openlocfilehash: a3432a1d8f424fbe78570f47b774c6e7942e16b1
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 2ffed5e561cf9988ec10ecb7e10318d148281057
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35372906"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51851536"
 ---
-# <a name="about-review-tool-settings"></a>Infos zu den Einstellungen des Prüfungstools #
+# <a name="review-tool-settings"></a>Einstellungen des Prüfungstools #
 
-Über die Registerkarte „Einstellungen“ auf dem Dashboard des Prüfungstools können Sie zahlreiche Komponenten einfach definieren und ändern.
+Über die Registerkarte „Einstellungen“ auf dem Dashboard des Prüfungstools können Sie problemlos zahlreiche Komponenten definieren und ändern.
 
 ![Prüfungseinstellungen in Content Moderator](images/settings-1.png)
 
@@ -34,9 +34,9 @@ Hier können Sie [benutzerdefinierte Tags](tags.md) definieren, indem Sie den Ku
 
 ![Tag-Einstellungen in Content Moderator](images/settings-3-tags.png)
 
-## <a name="connectors"></a>Konnektoren ##
+## <a name="connectors"></a>Connectors ##
 
-Workflows fügen Funktionalität hinzu, indem sie Konnektoren zur Kommunikation mit dem Prüfungstool verwenden. Das Prüfungstool ruft die Content Moderator-APIs mit dem Standardworkflow zum Moderieren von Inhalt auf. Wenn Sie sich für das Prüfungstool registrieren, werden die Anmeldeinformationen für die Moderator-API automatisch für Sie bereitgestellt. Darüber hinaus wird die Integration anderer Konnektor-APIs unterstützt, sofern ein Konnektor verfügbar ist. Einige Konnektor sind sofort verfügbar.
+Workflows erweitern den Funktionsumfang, indem sie über Connectors mit dem Prüfungstool kommunizieren. Das Prüfungstool ruft die Content Moderator-APIs mit dem Standardworkflow für die Inhaltsmoderation auf. Wenn Sie sich für das Prüfungstool registrieren, werden die Anmeldeinformationen für die Moderator-API automatisch für Sie bereitgestellt. Darüber hinaus wird die Integration anderer Konnektor-APIs unterstützt, sofern ein Konnektor verfügbar ist. Einige Konnektor sind sofort verfügbar.
 
 Auf der [Registerkarte „Verbindungen“](connectors.md) können Sie Konnektoren verwalten. Sie können Konnektoren hinzufügen oder löschen und Ihren Abonnementschlüssel für einen bestimmten Konnektor finden. Klicken Sie auf „Verbinden“, um diese zu Ihren benutzerdefinierten Workflows hinzufügen. 
 

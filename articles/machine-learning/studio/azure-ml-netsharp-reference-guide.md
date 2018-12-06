@@ -1,10 +1,11 @@
 ---
-title: Leitfaden zur Net#-Spezifikationssprache für neuronale Netzwerke – Azure Machine Learning | Microsoft-Dokumentation
-description: Enthält die Syntax für die Net#-Spezifikationssprache für neuronale Netzwerke und Beispiele zum Erstellen eines benutzerdefinierten neuronalen Netzwerkmodells mithilfe von Net#.
+title: 'Neuronale Netzwerke mit Net#: Azure Machine Learning Studio | Microsoft-Dokumentation'
+description: Enthält die Syntax für die Net#-Spezifikationssprache für neuronale Netzwerke und Beispiele zum Erstellen eines benutzerdefinierten neuronalen Netzwerkmodells unter Verwendung von Net# mit Azure Machine Learning Studio.
 services: machine-learning
 documentationcenter: ''
-author: heatherbshapiro
-ms.author: hshapiro
+author: ericlicoding
+ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
+ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
 ms.assetid: cfd1454b-47df-4745-b064-ce5f9b3be303
@@ -15,14 +16,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
 ms.date: 03/01/2018
-ms.openlocfilehash: 8a96cfdedcde9b4037627f3e61af862c0600ca20
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 3aa364e92dd7ce3742d28ac2b36d9a7f16cbebbf
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51258476"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52315306"
 ---
-# <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning"></a>Erläuterungen zur Spezifikationssprache Net# für neuronale Netzwerke für Azure Machine Learning
+# <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning-studio"></a>Erläuterungen zur Net#-Spezifikationssprache für neuronale Netzwerke für Azure Machine Learning Studio
 
 Net# ist eine Programmiersprache, die von Microsoft zur Definition von Architekturen mit neuronalen Netzwerken entwickelt wurde. Die Verwendung von Net# zum Definieren der Struktur eines neuronalen Netzwerks macht es möglich, komplexe Strukturen wie Deep Neural Networks oder Konvolutionen beliebiger Dimensionen zu definieren, die bekanntermaßen das Lernen aus Daten wie Bildern, Audio und Video verbessern.
 

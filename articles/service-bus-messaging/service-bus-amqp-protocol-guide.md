@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/26/2018
 ms.author: clemensv
-ms.openlocfilehash: b3c652baa515035fc91d2a5f7f962685b673a25e
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 0801e3a0e9217ab0855d09df8a054926b488d759
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51013325"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51821547"
 ---
 # <a name="amqp-10-in-azure-service-bus-and-event-hubs-protocol-guide"></a>AMQP 1.0 in Azure Service Bus und Event Hubs – Protokollleitfaden
 
@@ -364,7 +364,7 @@ Die Anforderungsnachricht weist die folgenden Anwendungseigenschaften auf:
 | operation |Nein  |Zeichenfolge |**put-token** |
 | type |Nein  |Zeichenfolge |Der Typ des abgelegten Tokens. |
 | name |Nein  |Zeichenfolge |Die Zielgruppe, für die das Token gilt. |
-| expiration |JA |timestamp |Der Ablaufzeitpunkt des Tokens. |
+| expiration |JA | timestamp |Der Ablaufzeitpunkt des Tokens. |
 
 Die *name*-Eigenschaft identifiziert die Entität, der das Token zugeordnet werden soll. In Service Bus ist dies der Pfad zur Warteschlange oder zum Thema/Abonnement. Die *type*-Eigenschaft dient zum Identifizieren des Tokentyps:
 

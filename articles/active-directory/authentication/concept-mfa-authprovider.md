@@ -5,17 +5,17 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.component: authentication
 ms.topic: conceptual
-ms.date: 09/06/2018
+ms.date: 11/27/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: 8e77a33667bd6794f667348958e0edb9c6a8fb0d
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 41edbc621baede92c548f43ad2730b73f59756c0
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44094976"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52496105"
 ---
 # <a name="when-to-use-an-azure-multi-factor-authentication-provider"></a>Erste Schritte mit einem Azure Multi-Factor Authentication-Anbieter
 
@@ -26,13 +26,11 @@ Ein Azure Multi-Factor Authentication-Anbieter wird verwendet, um Features zu nu
 Wenn Sie über Lizenzen verfügen, die alle Benutzer in Ihrem Unternehmen abdecken, benötigen Sie keinen Azure Multi-Factor Authentication-Anbieter. Erstellen Sie einen Azure Multi-Factor Authentication-Anbieter nur, wenn Sie für einige Benutzer, die über keine Lizenzen verfügen, die zweistufige Überprüfung bereitstellen müssen.
 
 > [!NOTE]
-> Ab dem 1. September 2018 können keine neuen Authentifizierungsanbieter mehr erstellt werden. Vorhandene Authentifizierungsanbieter können ggf. weiterhin verwendet und aktualisiert werden. Multi-Factor Authentication ist in Azure AD Premium-Lizenzen weiterhin ein verfügbares Feature.
+> Ab dem 1. September 2018 können keine neuen Authentifizierungsanbieter mehr erstellt werden. Vorhandene Authentifizierungsanbieter können ggf. weiterhin verwendet und aktualisiert werden. Die mehrstufige Authentifizierung ist in Azure AD Premium-Lizenzen weiterhin als Feature verfügbar.
 
 ## <a name="caveats-related-to-the-azure-mfa-sdk"></a>Einschränkungen im Zusammenhang mit dem Azure MFA SDK
 
-Ein Azure Multi-Factor Authentication-Anbieter ist erforderlich, um das SDK herunterzuladen. Beachten Sie, dass das SDK veraltet ist und für Neukunden nicht mehr unterstützt wird und nur noch bis zum 14. November 2018 funktioniert. Nach diesem Zeitpunkt führen Aufrufe an das SDK zu Fehlern.
-
-Erstellen Sie zum Herunterladen des SDK einen Azure Multi-Factor Auth-Anbieter, wenn Sie über Azure MFA-, AAD Premium- oder andere gebündelte Lizenzen verfügen. Wenn Sie zu diesem Zweck einen Azure Multi-Factor Authentication-Anbieter erstellen und bereits über Lizenzen verfügen, sollten Sie den Anbieter mit dem Modell **Pro aktiviertem Benutzer** erstellen. Verknüpfen Sie den Anbieter anschließend mit dem Verzeichnis, in dem die Lizenzen für Azure MFA, Azure AD Premium oder andere gebündelt Lizenzen enthalten sind. Diese Konfiguration stellt sicher, dass nur Kosten berechnet werden, wenn die Anzahl eindeutiger Benutzer, die die zweistufige Überprüfung verwenden, die Anzahl Ihrer Lizenzen übersteigt.
+Beachten Sie, dass das SDK veraltet ist und nur noch bis zum 14. November 2018 funktioniert. Nach diesem Zeitpunkt führen Aufrufe an das SDK zu Fehlern.
 
 ## <a name="what-is-an-mfa-provider"></a>Was ist ein MFA-Anbieter?
 

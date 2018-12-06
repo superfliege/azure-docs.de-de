@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: cwatson
-ms.openlocfilehash: f46d975c33d10688b04fca40b55c249b913fe5a1
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: f34bed915350b43f7964b4341d1375fb67a6f134
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47394674"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52584433"
 ---
 # <a name="sign-up-for-an-azure-subscription-with-your-office-365-account"></a>Registrieren für ein Azure-Abonnement mit Ihrem Office 365-Konto
 Wenn Sie über ein Office 365-Abonnement verfügen, können Sie mit Ihrem Office 365-Konto ein Azure-Abonnement erstellen. Melden Sie sich mit Ihrem Office 365-Benutzernamen und -Kennwort beim [Azure-Portal](https://portal.azure.com/) an. Wenn Sie virtuelle Computer einrichten oder andere Azure-Dienste verwenden möchten, müssen Sie sich für ein Azure-Abonnement registrieren. Sie können Ihr Azure-Abonnement gemeinsam mit anderen nutzen und [rollenbasierte Zugriffssteuerung verwenden, um den Zugriff auf Ihr Azure-Abonnement und Ressourcen zu verwalten](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal).
@@ -55,5 +55,6 @@ Office 365 und Azure verwenden den Azure AD-Dienst zum Verwalten von Benutzern u
 
 Weitere Informationen finden Sie unter [Beziehung zwischen Azure-Abonnements und Azure Active Directory](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
 
-## <a name="need-help-contact-support"></a>Sie brauchen Hilfe? Wenden Sie sich an den Support.
-[Wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), falls Sie weitere Hilfe benötigen, um das Problem schnell beheben zu lassen. 
+## <a name="need-help-contact-us"></a>Sie brauchen Hilfe? Wenden Sie sich an uns.
+
+Wenn Sie weitere Fragen haben oder Hilfe benötigen, [erstellen Sie eine Supportanfrage](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).

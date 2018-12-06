@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/12/2018
+ms.date: 11/26/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: ee6d7735a2983f642eff82a7dabe036af100e60e
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 588ce454248f0577a52515a4327d1e43013d34a5
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51622668"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52581798"
 ---
 # <a name="tutorial-customize-the-user-interface-of-your-applications-in-azure-active-directory-b2c"></a>Tutorial: Anpassen der Benutzeroberfläche Ihrer Anwendungen in Azure Active Directory B2C
 
@@ -64,7 +64,7 @@ Zwar können Sie Ihre Dateien auf viele Arten speichern, doch für dieses Tutori
  Azure AD B2C-Code in einem Browser verwendet einen modernen Standardansatz zum Laden benutzerdefinierter Inhalte über eine URL, die Sie in einer Richtlinie angeben. Ressourcenfreigabe zwischen verschiedenen Ursprüngen (Cross-Origin Resource Sharing, CORS) ermöglicht, dass eingeschränkte Ressourcen auf einer Webseite aus anderen Domänen angefordert werden können.
 
 1. Wählen Sie im Menü **CORS** aus.
-2. Geben Sie für **Zulässige Ursprünge** den Wert `your-tenant-name.b2clogin.com` ein. Ersetzen Sie `your-tenant-name` durch den Namen des Azure AD B2C-Mandanten. Beispiel: `fabrikam.b2clogin.com`.
+2. Geben Sie für **Zulässige Ursprünge** den Wert `https://your-tenant-name.b2clogin.com` ein. Ersetzen Sie `your-tenant-name` durch den Namen des Azure AD B2C-Mandanten. Beispiel: `https://fabrikam.b2clogin.com`. Sie dürfen bei der Eingabe Ihres Mandantennamens ausschließlich Kleinbuchstaben verwenden.
 3. Wählen Sie für **Zulässige Methoden** sowohl `GET` als auch `OPTIONS` aus.
 4. Geben Sie für **Zulässige Header** ein Sternchen (*) ein.
 5. Geben Sie für **Verfügbar gemachte Header** ein Sternchen (*) ein.

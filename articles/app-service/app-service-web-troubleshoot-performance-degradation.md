@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/03/2016
 ms.author: cephalin
-ms.openlocfilehash: b1ae61b5372fa1061448c02e7b5c589a167888c9
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 6ea0037611c1712e341bab601bdf14c2d742d1f8
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51237212"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52311584"
 ---
 # <a name="troubleshoot-slow-web-app-performance-issues-in-azure-app-service"></a>Problembehandlung bei niedriger Web-App-Leistung in Azure App Service
 In diesem Artikel erfahren Sie, wie Sie Web-App-Leistungsprobleme in [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714)beheben.
@@ -127,22 +127,10 @@ Wenn Sie Zugriff auf den Quellcode der Webanwendung haben, können Sie mit der O
 
 Ausführlichen Anweisungen zum Konfigurieren der Anwendung für die Protokollierung finden Sie unter [Aktivieren der Diagnoseprotokollierung für Web-Apps in Azure App Service](web-sites-enable-diagnostic-log.md).
 
-#### <a name="use-the-azure-app-service-support-portal"></a>Verwenden des Azure App Service-Supportportals
-Web-Apps bietet Ihnen die Möglichkeit, Probleme im Zusammenhang mit Ihrer Web-App anhand von HTTP-Protokollen, Ereignisprotokollen, Prozesssicherungen usw. zu behandeln. Auf diese Informationen können Sie in unserem Supportportal unter „**http://&lt;Name_Ihrer_App>.scm.azurewebsites.net/Support**“ zugreifen.
+#### <a name="use-the-diagnostics-tool"></a>Verwenden des Diagnosetools
+App Service stellt eine intelligente und interaktive Komponente bereit, mit der Sie Probleme bei Ihrer Web-App untersuchen können, ohne dass eine Konfiguration erforderlich ist. Wenn bei Ihrer Web-App Probleme auftreten, zeigt das Diagnosetool den Fehler auf, damit Sie die richtigen Informationen finden, um das Problem einfacher und schneller behandeln und lösen zu können.
 
-Im Azure App Service-Supportportal stehen Ihnen drei separate Registerkarten für die drei Schritte eines typischen Problembehandlungsszenarios zur Verfügung:
-
-1. Aktuelles Verhalten beobachten
-2. Diagnoseinformationen sammeln und integrierte Analysen ausführen, um das Problem zu analysieren
-3. Auswirkungen des Problems minimieren
-
-Wenn das Problem gerade auftritt, klicken Sie auf **Analysieren** > **Diagnose** > **Jetzt diagnostizieren**, um eine Diagnosesitzung zu erstellen, die HTTP-Protokolle, Ereignisanzeigenprotokolle, Speicherabbilder, PHP-Fehlerprotokolle und einen PHP-Prozessbericht sammelt.
-
-Nachdem die Daten gesammelt wurden, wird im Supportportal eine Analyse der Daten ausgeführt, und es wird ein HTML-Bericht angezeigt.
-
-Falls Sie die Daten herunterladen, werden diese standardmäßig im Ordner „D:\home\data\DaaS“ gespeichert.
-
-Weitere Informationen zum Azure App Service-Supportportal finden Sie unter [Neue Updates zur Unterstützung von Websiteerweiterungen für Azure-Websites](https://azure.microsoft.com/blog/new-updates-to-support-site-extension-for-azure-websites).
+Navigieren Sie für den Zugriff auf die App Service-Diagnose zu Ihrer App Service-App oder App Service-Umgebung im [Azure-Portal](https://portal.azure.com). Klicken Sie im linken Navigationsbereich auf **Diagnose und Problembehandlung**.
 
 #### <a name="use-the-kudu-debug-console"></a>Verwenden der Kudu-Debugkonsole
 Web-Apps enthält eine Debugkonsole, die Sie zum Debuggen, Untersuchen und Hochladen von Dateien verwenden können, sowie JSON-Endpunkte zum Abrufen von Informationen über Ihre Umgebung. Diese Konsole wird als *Kudu-Konsole* oder *SCM-Dashboard* für Ihre Web-App bezeichnet.

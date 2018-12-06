@@ -5,14 +5,14 @@ author: kgremban
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 10/10/2017
+ms.date: 11/19/2018
 ms.author: kgremban
-ms.openlocfilehash: 3cb0f91f3143e6a4828548f3a15678b3814cba17
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 236adb45ec6663ad361df1afbf6389a449f2a529
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50154860"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52159898"
 ---
 # <a name="migrate-your-iot-hub-from-operations-monitoring-to-diagnostics-settings"></a>Migrieren Ihres IoT Hub von der Vorgangsüberwachung zu Diagnoseeinstellungen
 
@@ -49,6 +49,10 @@ Darüber hinaus bieten die Diagnoseeinstellungen die Nachverfolgung für fünf n
 * Direkte Methoden
 
 Die spezifischen Schemastrukturen finden Sie unter [Grundlegendes zu den Protokollen](iot-hub-monitor-resource-health.md#understand-the-logs).
+
+## <a name="monitoring-device-connect-and-disconnect-events-with-low-latency"></a>Überwachen von Verbindungsherstellungs- und Verbindungstrennungsereignissen für Geräte mit geringer Wartezeit
+
+Zur Überwachung von Verbindungsherstellungs- und Verbindungstrennungsereignissen für Geräte empfiehlt es sich, das [Ereignis **Gerät getrennt**](iot-hub-event-grid.md#event-types) in Event Grid zu abonnieren, um Warnungen zu erhalten und den Verbindungsstatus des Geräts zu überwachen. In diesem [Tutorial](iot-hub-how-to-order-connection-state-events.md) erfahren Sie, wie Sie die Ereignisse „Gerät verbunden“ und „Gerät getrennt“ aus IoT Hub in Ihre IoT-Lösung integrieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

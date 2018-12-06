@@ -14,24 +14,27 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: e603ef749dbe66eda1c235b62c5155c4af6dc9db
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 3540d68491d6f2c8282aa1ef0b385300aaa190cf
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46955145"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51822482"
 ---
 # <a name="configuring-network-security-group-flow-logs-with-azure-cli"></a>Konfigurieren von Datenflussprotokollen für Netzwerksicherheitsgruppen mit der Azure CLI
 
 > [!div class="op_single_selector"]
 > - [Azure-Portal](network-watcher-nsg-flow-logging-portal.md)
 > - [PowerShell](network-watcher-nsg-flow-logging-powershell.md)
-> - [Azure-CLI](network-watcher-nsg-flow-logging-cli.md)
+> - [Azure-Befehlszeilenschnittstelle](network-watcher-nsg-flow-logging-cli.md)
 > - [REST-API](network-watcher-nsg-flow-logging-rest.md)
 
 Flowprotokolle für Netzwerksicherheitsgruppen sind ein Network Watcher-Feature, mit dem Sie Informationen zu ein- und ausgehendem IP-Datenverkehr über eine Netzwerksicherheitsgruppe anzeigen können. Diese Flowprotokolle sind im JSON-Format geschrieben und zeigen ausgehende und eingehende Datenflüsse pro Regel, die NIC, auf die sich der Datenfluss bezieht, 5-Tupel-Informationen über den Datenfluss (Quell-/Ziel-IP, Quell-/Zielport, Protokoll) und Informationen zu zugelassenem oder verweigertem Datenverkehr.
 
 Um die Schritte in diesem Artikel ausführen zu können, müssen Sie [die Azure-Befehlszeilenschnittstelle für Mac, Linux und Windows (CLI) installieren](/cli/azure/install-azure-cli).
+
+> [!NOTE] 
+> Flowprotokolle (Version 2) sind nur in der Region „USA, Westen-Mitte“ verfügbar. Die Konfiguration ist über das Azure-Portal und die REST-API verfügbar. Die Aktivierung von Protokollen der Version 2 in einer nicht unterstützten Region führt dazu, dass Protokolle der Version 1 in Ihr Speicherkonto ausgegeben werden.
 
 ## <a name="register-insights-provider"></a>Registrieren von Insights-Anbietern
 

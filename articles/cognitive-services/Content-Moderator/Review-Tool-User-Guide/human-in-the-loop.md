@@ -9,20 +9,20 @@ ms.service: cognitive-services
 ms.component: content-moderator
 ms.topic: article
 ms.author: sajagtap
-ms.openlocfilehash: 2e1a912f2d2aa8a6f9b165524351f2a16232537c
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: f1a3a401363866bdd803093e894615d90536f408
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50212198"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51854219"
 ---
-# <a name="human-in-the-loop"></a>Human-in-the-Loop
+# <a name="review-tool-overview"></a>Übersicht über das Prüfungstool
 
 Die besten Ergebnisse werden erzielt, wenn Mensch und Computer bei der Inhaltsmoderation zusammenarbeiten. Computer ergänzen effektiv Überprüfungen durch Personen, bei denen die Vorhersagegenauigkeit in einem realen Kontext unterstützt oder verringert werden muss. Das Ergebnis ist ein hybrider Inhaltsmoderationsprozess, der besser funktioniert, als wenn Mensch oder Computer allein arbeiten würden.
 
-## <a name="how-the-review-tool-helps"></a>Unterstützung durch Überprüfungstools ##
+## <a name="what-it-does"></a>Funktionsbeschreibung
 
-Das Tool für die Überprüfung durch Personen in Verbindung mit den computergestützten Moderations-APIs ermöglicht es Ihnen, diese wichtigen Aufgaben in Bezug auf den Lebenszyklus der Inhaltsmoderation zu erfüllen.
+In Kombination mit den computergestützten Moderations-APIs ermöglicht es das Tool für die Überprüfung durch Personen, diese wichtigen Aufgaben in Bezug auf den Lebenszyklus der Inhaltsmoderation zu erfüllen.
 
 1. Automatisieren der Erstellung von Überprüfungen durch Personen aus den Ergebnissen der zugrundeliegenden Moderations-API
 2. Verwenden eines Tools (Prüfungstool und Überprüfungs-API) zum Moderieren mehrerer Formate (Text, Bild und Video)

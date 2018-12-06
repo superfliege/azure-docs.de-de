@@ -3,6 +3,7 @@ title: Verknüpfen eines Azure-Kontos mit der Partner-ID | Microsoft-Dokumentati
 description: Verfolgen Sie Bindungen mit Azure-Kunden nach, indem Sie die Partner-ID mit dem Benutzerkonto verknüpfen, mit dem Sie die Ressourcen des Kunden verwalten.
 services: billing
 author: dhirajgandhi
+manager: dhgandhi
 ms.author: cwatson
 ms.date: 03/12/2018
 ms.service: billing
@@ -10,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 57ffb30296e5dbede11e23c40041c42e00444c4c
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 1e2492d978073f63c1c9494d652ec35a7d6565b7
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51686993"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52274178"
 ---
 # <a name="link-partner-id-to-your-azure-accounts"></a>Verknüpfen einer Partner-ID mit Ihren Azure-Konten
 
@@ -43,7 +44,7 @@ Wenn Sie Zugriff auf die Ressourcen des Kunden haben, verknüpfen Sie Ihre Micro
 
 2. Melden Sie sich beim Azure-Portal an.
 
-3. Geben Sie die Microsoft-Partner-ID ein. Die Partner-ID ist die [MPN-ID (Microsoft Partner Network)](https://partner.microsoft.com/) Ihrer Organisation.
+3. Geben Sie die Microsoft-Partner-ID ein. Die Partner-ID ist die MPN-ID ([Microsoft Partner Network](https://partner.microsoft.com/)) Ihrer Organisation.
 
   ![Screenshot, der Verknüpfen einer Partner-ID zeigt](./media/billing-link-partner-id/link-partner-ID.PNG)
 
@@ -124,7 +125,7 @@ Schließen Sie sich der Diskussion in der [Microsoft-Partner-Community](https://
 
 **Wer kann die Partner-ID verknüpfen?**
 
-Jeder Benutzer der Partnerorganisation, der eine Ressource des Kunden verwaltet, kann die Partner-ID mit dem Konto verknüpfen.
+Jeder Benutzer der Partnerorganisation, der Azure-Ressourcen des Kunden verwaltet, kann die Partner-ID mit dem Konto verknüpfen.
 
 **Kann eine Partner-ID geändert werden, nachdem diese verknüpft wurde?**
 

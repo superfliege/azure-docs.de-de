@@ -1,6 +1,6 @@
 ---
 title: Remoteüberwachung-Zugriffssteuerung – Azure | Microsoft-Dokumentation
-description: In diesem Artikel erfahren Sie, wie Sie die rollenbasierte Zugriffssteuerung im Solution Accelerator der Remoteüberwachung konfigurieren.
+description: In diesem Artikel erfahren Sie, wie Sie die rollenbasierte Zugriffssteuerung im Solution Accelerators der Remoteüberwachung konfigurieren.
 author: dominicbetts
 manager: timlt
 ms.author: dobett
@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 08/06/2018
 ms.topic: conceptual
-ms.openlocfilehash: a56cb92dc8870bf3fff6de0b1d5d907a0898c216
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 56fbb5d45e55e63ae887d915367cfc649e531095
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46364294"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51820221"
 ---
 # <a name="configure-role-based-access-controls-in-the-remote-monitoring-solution-accelerator"></a>Konfigurieren der rollenbasierten Zugriffssteuerung im Solution Accelerator der Remoteüberwachung
 
@@ -23,29 +23,33 @@ In diesem Artikel erfahren Sie, wie Sie die rollenbasierte Zugriffssteuerung im 
 
 Wenn Sie die Remoteüberwachungslösung zum ersten Mal bereitstellen, stehen zwei Rollen zur Verfügung: **Administrator** und **Lesezugriff**.
 
-Benutzer mit der Rolle **Administrator** verfügen über Vollzugriff auf die Lösung. Benutzer mit der Rolle **Lesezugriff** können die folgenden Aufgaben nicht ausführen:
+Benutzer mit der Rolle **Administrator** verfügen über Vollzugriff auf die Lösung, einschließlich der nachfolgend aufgeführten Berechtigungen. Benutzer mit der Rolle **Lesezugriff** verfügen lediglich über den Zugriff zum Anzeigen der Lösung.
 
-- Aktualisieren von Alarmen
-- Löschen von Alarmen
-- Erstellen von Geräten
-- Aktualisieren von Geräten
-- Löschen von Geräten
-- Erstellen von Gerätegruppen
-- Aktualisieren von Gerätegruppen
-- Löschen von Gerätegruppen
-- Erstellen von Regeln
-- Aktualisieren von Regeln
-- Löschen von Regeln
-- Erstellen von Aufträgen
-- Aktualisieren der SIM-Verwaltung
+| Berechtigung            | Administrator | Nur Leseberechtigung |
+|----------------       |-------|-----------|
+| Anzeigen der Lösung         | JA   | JA       |
+| Aktualisieren von Alarmen         | JA   | Nein         |
+| Löschen von Alarmen         | JA   | Nein         |
+| Erstellen von Geräten        | JA   | Nein         |
+| Aktualisieren von Geräten        | JA   | Nein         |
+| Löschen von Geräten        | JA   | Nein         |
+| Erstellen von Gerätegruppen  | JA   | Nein         |
+| Aktualisieren von Gerätegruppen  | JA   | Nein         |
+| Löschen von Gerätegruppen  | JA   | Nein         |
+| Erstellen von Regeln          | JA   | Nein         |
+| Aktualisieren von Regeln          | JA   | Nein         |
+| Löschen von Regeln          | JA   | Nein         |
+| Erstellen von Aufträgen           | JA   | Nein         |
+| Aktualisieren der SIM-Verwaltung | JA   | Nein         |
 
-Die Person, die die Remoteüberwachungslösung bereitstellt, erhält automatisch die Rolle **Administrator** und ist automatisch ein Azure Active Directory-Anwendungsbesitzer. Als Anwendungsbesitzer können Sie anderen Benutzern im Azure-Portal Rollen zuweisen.
+Standardmäßig erhält der Benutzer, der die Lösung bereitgestellt hat, automatisch die Rolle **Administrator** und ist ein Azure Active Directory-Anwendungsbesitzer. Als Anwendungsbesitzer können Sie anderen Benutzern im Azure-Portal Rollen zuweisen. Wenn Sie möchten, dass ein anderer Benutzer Rollen in der Lösung zuweist, müssen Sie diesen im Azure-Portal als Anwendungsbesitzer bestimmen.
 
-Wenn Sie möchten, dass ein anderer Benutzer Rollen in der Lösung zuweist, müssen Sie diesen im Azure-Portal als Anwendungsbesitzer bestimmen.
+> [!NOTE]
+> Der Benutzer, der die Lösung bereitgestellt hat, kann als **einzige Person** die Lösung unmittelbar nach der Bereitstellung anzeigen. Informationen dazu, wie anderen Benutzern der Zugriff zum Anzeigen der Anwendung mit der Rolle „Lesezugriff“, „Administrator“ oder „Benutzerdefiniert“ gewährt wird, finden Sie in den folgenden Anweisungen zum Hinzufügen oder Entfernen von Benutzern.
 
 ## <a name="add-or-remove-users"></a>Hinzufügen oder Entfernen von Benutzern
 
-Im Azure-Portal können Sie Benutzer der Remoteüberwachungslösung hinzufügen oder daraus entfernen. In den folgenden Schritten wird die [Azure Active Directory-Unternehmensanwendung](../active-directory/manage-apps/add-application-portal.md#find-your-azure-ad-tenant-application) verwendet, die für Sie beim Bereitstellen der Remoteüberwachungslösung erstellt wurde.
+Als Azure Active Directory-Anwendungsbesitzer können Sie über das Azure-Portal einer Rolle in der Lösung für die Remoteüberwachung einen Benutzer hinzufügen oder aus ihr entfernen. In den folgenden Schritten wird die [Azure Active Directory-Unternehmensanwendung](../active-directory/manage-apps/add-application-portal.md#find-your-azure-ad-tenant-application) verwendet, die beim Bereitstellen der Lösung für die Remoteüberwachung erstellt wurde.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 

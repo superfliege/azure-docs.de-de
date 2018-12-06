@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: sujayt
-ms.openlocfilehash: 77c445920041653ffb72d31e1dcfe4c368fb6642
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 37db2dd5908b231b9f04a5c009052d91724f6333
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37915924"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51976247"
 ---
 # <a name="about-networking-in-azure-to-azure-replication"></a>Netzwerkkonzepte für die Replikation zwischen Azure-Standorten
 
@@ -60,10 +60,9 @@ Wenn Sie einen IP-basierten Firewallproxy oder NSG-Regeln zum Steuern der ausgeh
 - Alle IP-Adressbereiche, die den Speicherkonten am Quellstandort entsprechen.
     - Erstellen Sie ein [Speicherdiensttag](../virtual-network/security-overview.md#service-tags) basierend auf der NSG-Regel für die Quellregion.
     - Lassen Sie diese Adressen zu, damit Daten von der VM in das Cachespeicherkonto geschrieben werden können.
-- Alle IP-Adressbereiche, die den [IPv4-Endpunkten zur Authentifizierung und Identifizierung](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2#bkmk_identity) bei Office 365 entsprechen.
-    - Wenn den Office 365-Bereichen später neue Adressen hinzugefügt werden, müssen Sie neue NSG-Regeln erstellen.
+- Erstellen Sie basierend auf der NSG-Regel ein [AAD-Diensttag (Azure Active Directory)](../virtual-network/security-overview.md#service-tags) für den Zugriff auf alle IP-Adressen für AAD.
+    - Wenn in Azure Active Directory (AAD) später neue Adressen hinzugefügt werden, müssen Sie neue NSG-Regeln erstellen.
 - IP-Adressen von Site Recovery-Dienstendpunkten – in einer [XML-Datei ](https://aka.ms/site-recovery-public-ips) verfügbar und von Ihrem Zielstandort abhängig.
--  Sie können [dieses Skript herunterladen und verwenden](https://aka.ms/nsg-rule-script), um die erforderlichen Regeln in der Netzwerksicherheitsgruppe automatisch zu erstellen.
 - Wir empfehlen, die erforderlichen NSG-Regeln in einer Test-Netzwerksicherheitsgruppe zu erstellen und sicherzustellen, dass keine Probleme vorliegen, bevor Sie die Regeln in einer Netzwerksicherheitsgruppe in der Produktionsumgebung erstellen.
 
 

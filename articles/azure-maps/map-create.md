@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 659f6def7e6bb045606b7214a4b8b4cab693117b
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 97b94cf54454a83510c5be2cf0d71281dbf5b004
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50248166"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52424238"
 ---
 # <a name="create-a-map"></a>Erstellen einer Karte
 
@@ -31,7 +31,7 @@ Es gibt zwei Wege, um eine Karte zu erstellen. Sie können die Kamera der Karte 
 <iframe height='500' scrolling='no' title='Erstellen einer Karte über „CameraOptions“' src='//codepen.io/azuremaps/embed/qxKBMN/?height=543&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Weitere Informationen finden Sie unter dem Pen zum <a href='https://codepen.io/azuremaps/pen/qxKBMN/'>Erstellen einer Karte über `CameraOptions` </a>von Azure Location Based Services (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-Im obigen Code wird mit `new atlas.Map()` ein [Map](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)-Objekt erstellt, und der Mittelpunkt und Zoomfaktor werden festgelegt. Karteneigenschaften wie Mittelpunkt und Zoomfaktor sind Teil der [CameraOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/models.cameraoptions?view=azure-iot-typescript-latest).
+Im obigen Code wird mit `new atlas.Map()` ein [Map](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)-Objekt erstellt, und der Mittelpunkt und Zoomfaktor werden festgelegt. Karteneigenschaften wie Mittelpunkt und Zoomfaktor sind Teil der [CameraOptions](/javascript/api/azure-maps-control/atlas.cameraoptions).
 
 <a id="setCameraBoundsOptions"></a>
 
@@ -47,9 +47,9 @@ Im oben gezeigten Code wird über `new atlas.Map()` ein [Map-Objekt](https://doc
 <iframe height='500' scrolling='no' title='Animieren der Kartenansicht' src='//codepen.io/azuremaps/embed/WayvbO/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Weitere Informationen finden Sie unter <a href='https://codepen.io/azuremaps/pen/WayvbO/'>Animieren der Kartenansicht</a> in Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-Der erste Block im obigen Code erstellt ein [Map](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)-Objekt mit `new atlas.Map()`. Karteneigenschaften wie Mittelpunkt und Zoomfaktor sind Teil der [CameraOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/models.cameraoptions?view=azure-iot-typescript-latest). `CameraOptions` können Sie im Map-Konstruktor oder über die Funktion [setCamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#setcamera) der Map-Klasse definieren. Der [Kartenstil](https://review.docs.microsoft.com/azure/azure-maps/supported-map-styles?branch=pr-en-us-54960) entspricht `road`.
+Der erste Block im obigen Code erstellt ein [Map](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)-Objekt mit `new atlas.Map()`. Karteneigenschaften wie Mittelpunkt und Zoomfaktor sind Teil der [CameraOptions](/javascript/api/azure-maps-control/atlas.cameraoptions). `CameraOptions` können Sie im Map-Konstruktor oder über die Funktion [setCamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#setcamera) der Map-Klasse definieren. Der [Kartenstil](https://docs.microsoft.com/azure/azure-maps/supported-map-styles) entspricht `road`.
 
-Der zweite Codeblock erstellt eine animierte Kartenfunktion, die Änderungen in der Kartenansicht animiert, indem sie [AnimateOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/models.animationoptions?view=azure-iot-typescript-latest) mit der Funktion [setCamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#setcamera) definiert. Die Funktion wird durch die Schaltfläche „Karte animieren“ ausgelöst, um bei jedem Klick einen zufälligen Zoomfaktor zu erzeugen.
+Der zweite Codeblock erstellt eine animierte Kartenfunktion, die Änderungen in der Kartenansicht animiert, indem sie [AnimationOptions](/javascript/api/azure-maps-control/atlas.animationoptions) mit der Funktion [setCamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#setcamera) definiert. Die Funktion wird durch die Schaltfläche „Karte animieren“ ausgelöst, um bei jedem Klick einen zufälligen Zoomfaktor zu erzeugen.
 
 ## <a name="try-out-the-code"></a>Testen Sie den Code
 

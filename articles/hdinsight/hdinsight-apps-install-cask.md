@@ -9,16 +9,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: ashish
-ms.openlocfilehash: 377dbadd7b696e62d8464258d22d0dd5ed926208
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: ef61ee9f15253c6a270cd4089625776a458df2ee
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43106102"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52499335"
 ---
 # <a name="install-published-application---cask-data-application-platform-cdap"></a>Installieren einer veröffentlichten Anwendung – Cask Data Application Platform (CDAP)
 
-In diesem Artikel erfahren Sie, wie Sie die veröffentlichte Hadoop-Anwendung [CDAP](http://cask.co/products/cdap/) in Azure HDInsight installieren und ausführen. Eine Übersicht der HDInsight-Anwendungsplattform und eine Liste mit den verfügbaren veröffentlichten Anwendungen unabhängiger Softwarehersteller (Independent Software Vendors, ISVs) finden Sie unter [Installieren von Hadoop-Anwendungen von Drittanbietern](hdinsight-apps-install-applications.md). Eine Anleitung zur Installation Ihrer eigenen Anwendung finden Sie unter [Installieren benutzerdefinierter HDInsight-Anwendungen](hdinsight-apps-install-custom-applications.md).
+In diesem Artikel erfahren Sie, wie Sie die veröffentlichte [Apache Hadoop](https://hadoop.apache.org/)-Anwendung [CDAP](http://cask.co/products/cdap/) in Azure HDInsight installieren und ausführen. Eine Übersicht über die HDInsight-Anwendungsplattform und eine Liste mit den verfügbaren veröffentlichten Anwendungen unabhängiger Softwarehersteller (Independent Software Vendors, ISVs) finden Sie unter [Installieren von Apache Hadoop-Anwendungen von Drittanbietern](hdinsight-apps-install-applications.md). Eine Anleitung zur Installation Ihrer eigenen Anwendung finden Sie unter [Installieren benutzerdefinierter HDInsight-Anwendungen](hdinsight-apps-install-custom-applications.md).
 
 ## <a name="about-cdap"></a>Informationen zu CDAP
 

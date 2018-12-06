@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 09/24/2018
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 69c77896f894201d1419aaef33470a02ac45ff91
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: d044b1ad18df6eee1235e881038bbb9734a999ff
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49986287"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52317346"
 ---
 # <a name="quickstart-sign-in-users-and-acquire-an-access-token-from-a-javascript-application"></a>Schnellstart: Anmelden von Benutzern und Beschaffen eines Zugriffstokens von einer JavaScript-Anwendung
 
@@ -42,7 +42,7 @@ In dieser Schnellstartanleitung wird ein Codebeispiel beschrieben. Darin wird ve
 > 1. Wählen Sie unter **Unterstützte Kontotypen** **Konten in allen Organisationsverzeichnissen und persönliche Microsoft-Konten** aus.
 > 1. Wählen Sie die **Web**-Plattform unter dem Abschnitt **Umleitungs-URI** aus, und legen Sie den Wert auf `http://localhost:30662/` fest.
 > 1. Wenn Sie so weit sind, klicken Sie auf **Registrieren**.  Notieren Sie sich auf der Seite **Übersicht** den Wert von **Anwendungsclient-ID**.
-> 1. Für diese Schnellstartanleitung muss der [Fluss zur impliziten Gewährung](v2-oauth2-implicit-grant-flow.md) aktiviert werden. Klicken Sie im linken Navigationsbereich der registrierten Anwendung auf **Authentifizierung**.
+> 1. Für diesen Schnellstart muss der [Flow zur impliziten Genehmigung](v2-oauth2-implicit-grant-flow.md) aktiviert werden. Wählen Sie im linken Navigationsbereich der registrierten Anwendung **Authentifizierung** aus.
 > 1. Aktivieren Sie unter **Erweiterte Einstellungen** und **Implizite Gewährung** die Kontrollkästchen **ID-Token** und **Zugriffstoken**. ID-Token und Zugriffstoken sind erforderlich, da diese App Benutzer anmelden und eine API aufrufen muss.
 > 1. Wählen Sie **Speichern**aus.
 
@@ -66,7 +66,7 @@ Extrahieren Sie die ZIP-Datei in einen lokalen Ordner (z.B. **C:\Azure-Samples**
 #### <a name="step-3-configure-your-javascript-app"></a>Schritt 3: Konfigurieren Ihrer JavaScript-App
 
 > [!div renderon="docs"]
-> Bearbeiten Sie `index.html`, und ersetzen Sie `Enter_the_Application_Id_here` unter `applicationConfig` durch die Anwendungs-ID der App, die Sie gerade registriert haben.
+> Bearbeiten Sie `index.html`, und legen Sie unter `applicationConfig` die Werte `clientID` und `authority` fest.
 
 > [!div class="sxs-lookup" renderon="portal"]
 > Bearbeiten Sie `index.html`, und ersetzen Sie `applicationConfig` durch Folgendes:
@@ -74,13 +74,25 @@ Extrahieren Sie die ZIP-Datei in einen lokalen Ordner (z.B. **C:\Azure-Samples**
 ```javascript
 var applicationConfig = {
     clientID: "Enter_the_Application_Id_here",
+    authority: "https://login.microsoftonline.com/Enter_the_Tenant_Info_Here",
     graphScopes: ["user.read"],
     graphEndpoint: "https://graph.microsoft.com/v1.0/me"
 };
 ```
+> [!div renderon="docs"]
+>
+> Hinweis:
+> - `Enter_the_Application_Id_here` ist die **Anwendungs-ID (Client)** für die von Ihnen registrierte Anwendung.
+> - `Enter_the_Tenant_Info_Here` wird auf eine der folgenden Optionen festgelegt:
+>   - Unterstützt Ihre Anwendung **Nur Konten in diesem Organisationsverzeichnis**, ersetzen Sie diesen Wert durch die **Mandanten-ID** oder den **Mandantennamen** (etwa „contoso.microsoft.com“).
+>   - Unterstützt Ihre Anwendung **Konten in einem beliebigen Organisationsverzeichnis**, ersetzen Sie diesen Wert durch `organizations`.
+>   - Unterstützt Ihre Anwendung **Konten in allen Organisationsverzeichnissen und persönliche Microsoft-Konten**, ersetzen Sie diesen Wert durch `common`.
+>
+> > [!TIP]
+> > Die Werte für **Anwendungs-ID (Client)**, **Verzeichnis-ID (Mandant)** und **Unterstützte Kontotypen** finden Sie im Azure-Portal auf der Seite **Übersicht** der App.
+
 > [!NOTE]
->Bei Verwendung von [Node.js](https://nodejs.org/en/download/) wird die Datei *server.js* für den Server konfiguriert, um mit dem Lauschen über Port 30662 zu beginnen.
-> Bei Verwendung von [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/) wird die *CSPROJ*-Datei des Codebeispiels für den Server konfiguriert, um mit dem Lauschen über Port 30662 zu beginnen.
+> Der Server ist so konfiguriert, dass er am Port 30662 lauscht (in der Datei *server.js* im Projekt [Node.js](https://nodejs.org/en/download/) und in der Datei mit der Erweiterung *.csproj* im Projekt [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)).
 >
 
 #### <a name="step-4-run-the-project"></a>Schritt 4: Ausführen des Projekts
@@ -121,7 +133,7 @@ npm install msal
 Im Code der Schnellstartanleitung wird auch veranschaulicht, wie Sie die Bibliothek initialisieren:
 
 ```javascript
-var myMSALObj = new Msal.UserAgentApplication(applicationConfig.clientID, null, acquireTokenRedirectCallBack, {storeAuthStateInCookie: true, cacheLocation: "localStorage"});
+var myMSALObj = new Msal.UserAgentApplication(applicationConfig.clientID, applicationConfig.authority, acquireTokenRedirectCallBack, {storeAuthStateInCookie: true, cacheLocation: "localStorage"});
 ```
 
 > |Hierbei gilt:  |  |

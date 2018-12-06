@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 11/02/2018
+ms.date: 11/28/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 49341b320df98bb08ee4f5c4ee061a51bec29ff2
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: bb8eb4eae192cf0dd3a3555a3b1209705dd83aaf
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51686159"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52583690"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>Tutorial: Erstellen und Verwalten von Azure-Budgets
 
@@ -33,13 +33,15 @@ In diesem Tutorial lernen Sie Folgendes:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Budgets stehen allen Azure EA-Kunden zur Verfügung. Zum Erstellen und Verwalten von Budgets benötigen Sie Lesezugriff auf ein Azure EA-Abonnement. Sie können individuelle Budgets für EA-Abonnements und Ressourcengruppen erstellen. Sie können jedoch keine Budgets für EA-Abrechnungskonten erstellen.
+Budgets stehen allen Azure EA-Kunden zur Verfügung. Zum Anzeigen von Budgets benötigen Sie Lesezugriff auf ein Azure EA-Abonnement. Zum Erstellen und Verwalten von Budgets müssen Sie über die Berechtigung „Mitwirkender“ verfügen. Sie können individuelle Budgets für EA-Abonnements und Ressourcengruppen erstellen. Sie können jedoch keine Budgets für EA-Abrechnungskonten erstellen.
 
 Die folgenden Azure-Berechtigungen werden pro Abonnement für Budgets nach Benutzer und Gruppe unterstützt:
 
 - Besitzer – kann Budgets für ein Abonnement erstellen, ändern oder löschen.
-- Mitwirkende – kann eigene Budgets erstellen, ändern oder löschen. Kann den Betrag für von anderen Personen erstellten Budgets ändern.
-- Leser – kann Budgets planen, für die er die Berechtigung hat.
+- Mitwirkender und Mitwirkender für Cost Management – kann eigene Budgets erstellen, ändern oder löschen. Kann den Betrag für von anderen Personen erstellten Budgets ändern.
+- Leser und Leser für Cost Management – kann Budgets anzeigen, für die er die Berechtigung hat.
+
+Weitere Informationen zum Zuweisen der Berechtigung für Cost Management-Daten finden Sie unter [Zuweisen des Zugriffs auf Daten in Cost Management](assign-access-acm-data.md).
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 

@@ -4,7 +4,7 @@ description: Beschreibt, wie Sie das Profil für Ihr Azure-Konto ändern, und be
 services: ''
 documentationcenter: ''
 author: genlin
-manager: jlian
+manager: alherz
 editor: ''
 tags: billing
 ms.assetid: 9d4ef5d9-11fc-4684-ace6-467f4ce26ba8
@@ -16,12 +16,12 @@ ms.topic: conceptual
 ms.date: 05/11/2018
 ms.author: cwatson
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 622a8777f5ed329636c7023bb52790756f8d7206
-ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
+ms.openlocfilehash: 09ac7659487a81d68089a060bf038213722d4dbb
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47422625"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52580426"
 ---
 # <a name="change-your-azure-account-profile-information-such-as-contact-email-address-and-phone-number"></a>Ändern Ihrer Profilinformationen für Ihr Azure-Konto, beispielsweise Kontakt-E-Mail-Adresse, Adresse und Telefonnummer
 
@@ -46,7 +46,7 @@ Ja. Der Kontoadministrator ist die Person, die das Azure-Konto einrichtet und wi
 
 ### <a name="does-updating-my-profile-email-also-update-my-login-email-address"></a>Wird beim Aktualisieren meiner Profil-E-Mail-Adresse auch meine E-Mail-Adresse für die Anmeldung aktualisiert?
 
-Nein. Das Aktualisieren der Profil-E-Mail-Adresse führt nicht zum Aktualisieren der E-Mail-Adresse für die Anmeldung. Um Ihre E-Mail-Adresse für die Anmeldung zu ändern, müssen Sie den Besitz für das Konto übertragen.
+ Nein. Das Aktualisieren der Profil-E-Mail-Adresse führt nicht zum Aktualisieren der E-Mail-Adresse für die Anmeldung. Um Ihre E-Mail-Adresse für die Anmeldung zu ändern, müssen Sie den Besitz für das Konto übertragen.
 
 ### <a name="does-updating-my-profile-address-also-update-my-credit-card-billing-address"></a>Wird durch das Aktualisieren meiner Profil-E-Mail-Adresse auch meine Adresse für die Kreditkartenabrechnung aktualisiert?
 
@@ -56,7 +56,7 @@ Informationen zum Aktualisieren der Abrechnungsinformationen finden Sie unter [�
 
 Aufgrund technischer Einschränkungen kann das Land für ein vorhandenes Konto nicht geändert werden. Sie können jedoch ein Konto im gewünschten Land erstellen und dann den Azure-Support kontaktieren, um Ihre Dienste zu diesem Konto zu migrieren.
 
-## <a name="need-help-contact-support"></a>Sie brauchen Hilfe? Wenden Sie sich an den Support.
+## <a name="need-help-contact-us"></a>Sie brauchen Hilfe? Wenden Sie sich an uns.
 
-[Wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), falls Sie weitere Hilfe benötigen, um das Problem schnell beheben zu lassen. 
+Wenn Sie weitere Fragen haben oder Hilfe benötigen, [erstellen Sie eine Supportanfrage](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 

@@ -8,16 +8,22 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: d7c1eaa26edef830ca156eef943fcb256d737d77
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: 664d52a96f1e724502f82f5f72567f87c74e716b
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38989876"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52444255"
 ---
 # <a name="azure-maps-geocoding-coverage"></a>Geocodierungsabdeckung in Azure Maps
 
 Bei der Suche nach einem Ort mit Azure Maps nimmt der Suchdienst Ihre Suchbegriffe entgegen und gibt die Koordinaten (Breiten- und Längengrad) zurück – dieser Prozess wird als „Geocodierung“ bezeichnet. Maps bietet allerdings nicht für alle Regionen und Länder das gleiche Maß an Informationen und Genauigkeit. Bestimmen Sie anhand dieses Artikels, nach welcher Art von Orten Sie zuverlässig in den einzelnen Regionen suchen können. 
+
+Die Möglichkeit der Geocodierung in einem Land hängt von der Abdeckung der Straßendaten und der Geocodierungsgenauigkeit des Geocodierungsdiensts ab. Die jeweilige Unterstützung der Geocodierung in den einzelnen Ländern wird mit den folgenden Kategorisierungen angegeben.
+* **Adresspunkte:** Adressendaten können innerhalb des Adresspakets (Eigenschaftsgrenze) in eine Längen- und Breitenkoordinate aufgelöst werden. Dies wird manchmal als „hausgenau“ bezeichnet. Dies ist die höchste verfügbare Genauigkeit für Adressen. 
+* **Hausnummern:** Adressen werden in eine Längen- und Breitenkoordinate in der Straße interpoliert.
+* **Straße:** Adressen werden in die Längen- und Breitenkoordinate der Straße mit der Adresse aufgelöst. Die Hausnummer wird möglicherweise nicht verarbeitet.
+* **Ort:** Ortsnamen werden nicht unterstützt.
 
 ## <a name="americas"></a>Amerika
 
@@ -52,6 +58,7 @@ Bei der Suche nach einem Ort mit Azure Maps nimmt der Suchdienst Ihre Suchbegrif
 | Guadeloupe|                 |        ✓       |       ✓      |      ✓     |          ✓         |
 | Guam                                                |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Guatemala                                           |                 |                |       ✓      |      ✓     |          ✓         |
+| Guayana        |                |             |           |      ✓     |                 |
 | Haiti                                               |                 |                |       ✓      |      ✓     |          ✓         |
 | Honduras                                            |                 |                |       ✓      |      ✓     |          ✓         |
 | Jamaika                                             |                 |                |       ✓      |      ✓     |          ✓         |
@@ -101,6 +108,7 @@ Bei der Suche nach einem Ort mit Azure Maps nimmt der Suchdienst Ihre Suchbegrif
 | Heard und McDonaldinseln                   |                 |                |              |      ✓     |          ✓         |
 | Hongkong                                           |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Indonesien                                           |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
+| Indien       |        ✓        |        ✓       |       ✓      |      ✓     |                   |
 | Japan                                               |                 |                |              |      ✓     |          ✓         |
 | Kiribati                                            |                 |                |              |      ✓     |          ✓         |
 | Laos                                                |                 |                |              |      ✓     |          ✓         |

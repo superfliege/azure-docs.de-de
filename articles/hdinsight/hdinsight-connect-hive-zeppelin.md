@@ -10,23 +10,23 @@ ms.custom: hdinsightactive,
 ms.topic: conceptual
 ms.date: 11/05/2018
 ms.author: hrasheed
-ms.openlocfilehash: 75ec0e17e9866d2cd3420ff6ecf648bf22a8ae8e
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 035e70eef88d5d5dae08c329017430db25c20464
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51277952"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52494826"
 ---
 # <a name="use-apache-zeppelin-to-run-apache-hive-queries-in-azure-hdinsight"></a>Verwenden von Apache Zeppelin zum Ausführen von Apache Hive-Abfragen in Azure HDInsight 
 
-Interactive Query-Cluster von HDInsight umfassen Apache Zeppelin-Notebooks, mit denen Sie interaktive Hive-Abfragen ausführen können. In diesem Artikel erfahren Sie, wie Sie Apache Zeppelin zum Ausführen von Apache Hive-Abfragen in Azure HDInsight verwenden. 
+Interactive Query-Cluster von HDInsight umfassen [Apache Zeppelin](https://zeppelin.apache.org/)-Notebooks, mit denen Sie interaktive Hive-Abfragen ausführen können. In diesem Artikel erfahren Sie, wie Sie Apache Zeppelin zum Ausführen von [Apache Hive](https://hive.apache.org/)-Abfragen in Azure HDInsight verwenden. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Bevor Sie diesen Artikel durchgehen können, benötigen Sie Folgendes:
 
 * **Interactive Query-Cluster von HDInsight**. Informationen zum Erstellen eines HDInsight-Clusters finden Sie unter [Cluster erstellen](hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster).  Wählen Sie den Typ „Interactive Query“ aus. 
 
-## <a name="create-a-apache-zeppelin-note"></a>Erstellen einer Apache Zeppelin-Notiz
+## <a name="create-an-apache-zeppelin-note"></a>Erstellen einer Apache Zeppelin-Notiz
 
 1. Navigieren Sie zu folgender URL:
 
@@ -69,12 +69,12 @@ Bevor Sie diesen Artikel durchgehen können, benötigen Sie Folgendes:
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-In diesem Artikel haben Sie gelernt, wie Sie Daten aus HDInsight mithilfe von Power BI visualisieren.  Weitere Informationen finden Sie in den folgenden Artikeln:
+In diesem Artikel haben Sie gelernt, wie Sie Daten aus HDInsight mithilfe von [Microsoft Power BI](https://powerbi.microsoft.com/) visualisieren.  Weitere Informationen finden Sie in den folgenden Artikeln:
 
-* [Visualize Hive data with Microsoft Power BI in Azure HDInsight (Visualisieren von Hive-Daten mit Microsoft Power BI in Azure HDInsight)](hadoop/apache-hadoop-connect-hive-power-bi.md).
-* [Visualisieren von Interactive Query-Hive-Daten mit Power BI in Azure HDInsight](./interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md)
+* [Visualisieren von Apache Hive-Daten mit Microsoft Power BI in Azure HDInsight](hadoop/apache-hadoop-connect-hive-power-bi.md)
+* [Visualisieren von Interactive Query-Apache Hive-Daten mit Power BI in Azure HDInsight](./interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md)
 * [Verbinden von Excel mit Hadoop in Azure HDInsight mithilfe des Microsoft Hive ODBC-Treibers](hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md).
-* [Verbinden von Excel mit Hadoop mithilfe von Power Query](hadoop/apache-hadoop-connect-excel-power-query.md).
-* [Connect to Azure HDInsight and run Hive queries using Data Lake Tools for Visual Studio (Verbinden mit Azure HDInsight und Ausführen von Hive-Abfragen mithilfe von Data Lake-Tools für Visual Studio)](hadoop/apache-hadoop-visual-studio-tools-get-started.md).
+* [Verbinden von Excel mit Apache Hadoop mithilfe von Power Query](hadoop/apache-hadoop-connect-excel-power-query.md)
+* [Verbinden mit Azure HDInsight und Ausführen von Apache Hive-Abfragen mithilfe von Data Lake-Tools für Visual Studio](hadoop/apache-hadoop-visual-studio-tools-get-started.md)
 * [Verwenden von Azure HDInsight-Tools für Visual Studio Code](hdinsight-for-vscode.md)
 * [Upload data to HDInsight (Hochladen von Daten in HDInsight)](./hdinsight-upload-data.md).

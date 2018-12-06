@@ -1,359 +1,433 @@
 ---
-title: Konfigurieren von Firewalls und virtuellen Netzwerken in Azure Storage | Microsoft-Dokumentation
+title: Konfigurieren von Azure Storage-Firewalls und virtuellen Netzwerken | Microsoft-Dokumentation
 description: Konfigurieren Sie mehrstufige Netzwerksicherheit für Ihr Speicherkonto.
 services: storage
 author: cbrooksmsft
 ms.service: storage
 ms.topic: article
-ms.date: 10/25/2017
+ms.date: 10/30/2018
 ms.author: cbrooks
 ms.component: common
-ms.openlocfilehash: 51404c35b42d1c98116e74b5b7a47afe05b7d2a9
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: cfa0a91e74dba7a17b03a76dd70fc09a264decf8
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51300556"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52284590"
 ---
-# <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Konfigurieren von Firewalls und virtuellen Netzwerken in Azure Storage
-Azure Storage bietet ein mehrstufiges Sicherheitsmodell, mit dem Sie Ihre Speicherkonten für eine bestimmte Gruppe zulässiger Netzwerke sichern können.  Wenn Netzwerkregeln konfiguriert sind, können nur Anwendungen aus zulässigen Netzwerken auf ein Speicherkonto zugreifen.  Anwendungen, die aus einem zulässigen Netzwerk aufgerufen werden, erfordern für den Zugriff auf das Speicherkonto weiterhin eine ordnungsgemäße Autorisierung (einen gültigen Zugriffsschlüssel oder ein gültiges SAS-Token).
+# <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Konfigurieren von Azure Storage-Firewalls und virtuellen Netzwerken
+
+Azure Storage bietet ein mehrschichtiges Sicherheitsmodell. Dank dieses Modells können Sie Ihre Speicherkonten für eine bestimmte Gruppe unterstützter Netzwerke schützen. Wenn Netzwerkregeln konfiguriert wurden, können nur Anwendungen, die Daten aus der angegebenen Gruppe von Netzwerken anfordern, auf ein Speicherkonto zugreifen.
+
+Eine Anwendung, die bei aktivierten Netzwerkregeln auf ein Speicherkonto zugreift, benötigt eine ordnungsgemäße Autorisierung für die Anforderung. Für die Autorisierung können Azure Active Directory-Anmeldeinformationen (für Blobs und Warteschlangen) (Vorschauversion), ein gültiger Kontozugriffsschlüssel oder ein SAS-Token verwendet werden.
 
 > [!IMPORTANT]
-> Durch das Aktivieren von Firewallregeln für Ihr Storage-Konto wird der Zugriff auf eingehende Datenanforderungen, auch von anderen Azure-Diensten, blockiert.  Dies schließt das Portal, das Schreiben von Protokollen usw. mit ein.  Azure-Dienste, die in einem VNET ausgeführt werden, können Zugriff erhalten, indem Sie das Subnetz der Dienstinstanz zulassen.  Azure-Dienste, die nicht in einem VNET ausgeführt werden, werden durch die Firewall blockiert.  Eine begrenzte Anzahl von Szenarien kann über den weiter unten beschriebenen [Ausnahmen](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)-Mechanismus aktiviert werden.  Um auf das Portal zuzugreifen, müssen Sie dies von einem Computer innerhalb der von Ihnen eingerichteten vertrauenswürdigen Grenze (entweder IP oder VNET) aus tun.
+> Wenn Sie Firewallregeln für Ihr Speicherkonto aktivieren, werden eingehende Datenanforderungen standardmäßig blockiert – es sei denn, die Anforderungen stammen von einem Dienst, der innerhalb eines virtuellen Azure-Netzwerks (VNET) agiert. Unter anderem werden Anforderungen von anderen Azure-Diensten, aus dem Azure-Portal und von Protokollierungs-/Metrikdiensten blockiert.
 >
+> Sie können Azure-Diensten, die innerhalb eines VNETs agieren, Zugriff gewähren, indem Sie das Subnetz der Dienstinstanz zulassen. Der im nächsten Abschnitt beschriebene [Ausnahmenmechanismus](#exceptions) ermöglicht eine begrenzte Anzahl von Szenarien. Der Zugriff auf das Azure-Portal muss über einen Computer erfolgen, der sich innerhalb der von Ihnen eingerichteten vertrauenswürdigen Grenze (IP-Adresse oder VNET) befindet.
 
 ## <a name="scenarios"></a>Szenarien
-Speicherkonten können konfiguriert werden, um standardmäßig den Zugriff auf Datenverkehr aus allen Netzwerken (einschließlich Internetdatenverkehr) zu verweigern.  Es kann Zugriff auf Datenverkehr aus bestimmten Azure Virtual Networks gewährt werden, sodass Sie eine sichere Netzwerkgrenze für Ihre Anwendungen erstellen können.  Es kann auch Zugriff auf öffentliche Internet-IP-Adressbereiche gewährt werden, um Verbindungen von bestimmten Internetclients oder lokalen Clients zu ermöglichen.
 
-Netzwerkregeln werden für alle Netzwerkprotokolle in Azure Storage, einschließlich REST und SMB, erzwungen.  Für den Zugriff auf Ihre Daten über Tools, z.B. Azure-Portal, Storage-Explorer und AZCopy, müssen explizite Netzwerkregeln Zugriff gewähren, wenn Netzwerkregeln in Kraft sind.
+Konfigurieren Sie Speicherkonten, um standardmäßig den Zugriff auf Datenverkehr aus allen Netzwerken (einschließlich Internetdatenverkehr) zu verweigern. Gewähren Sie anschließend Zugriff auf Datenverkehr aus bestimmten VNETs. Mit dieser Konfiguration können Sie eine sichere Netzwerkgrenze für Ihre Anwendungen erstellen. Darüber hinaus können Sie Zugriff auf öffentliche Internet-IP-Adressbereiche gewähren, um Verbindungen von bestimmten Internetclients oder lokalen Clients zu ermöglichen.
 
-Netzwerkregeln können auf vorhandene Speicherkonten oder während der Erstellung neuer Speicherkonten angewendet werden.
+Netzwerkregeln werden für alle Netzwerkprotokolle in Azure Storage, einschließlich REST und SMB, erzwungen. Für den Datenzugriff über Tools wie Azure-Portal, Storage-Explorer und AZCopy sind explizite Netzwerkregeln erforderlich.
 
-Sobald Netzwerkregeln angewendet werden, werden sie für alle Anforderungen erzwungen.  SAS-Token, die Zugriff auf einen Dienst unter einer bestimmten IP-Adresse gewähren, **beschränken** den Zugriff des Tokeninhabers, gewähren jedoch keinen neuen Zugriff außerhalb der konfigurierten Netzwerkregeln. 
+Netzwerkregeln können auf bereits vorhandene Speicherkonten oder beim Erstellen neuer Speicherkonten angewendet werden.
 
-Datenverkehr virtueller Computer (einschließlich Bereitstellungsvorgängen, des Aufhebens von Bereitstellungen und Datenträger-E/A) ist von Netzwerkregeln **nicht** betroffen.  Der REST-Zugriff auf Seitenblobs wird durch Netzwerkregeln geschützt.
+Angewendete Netzwerkregeln werden für alle Anforderungen erzwungen. SAS-Token, die Zugriff auf eine bestimmte IP-Adresse gewähren, beschränken den Zugriff des Tokeninhabers, gewähren jedoch keinen neuen Zugriff außerhalb der konfigurierten Netzwerkregeln.
 
-Die Funktion „Firewalls und virtuelle Netzwerke“ wird von klassischen Speicherkonten **nicht** unterstützt.
+Datenverkehr für VM-Datenträger (einschließlich Vorgängen zur Einbindung/Aufhebung der Einbindung sowie E/A-Vorgänge des Datenträgers) ist von Netzwerkregeln nicht betroffen. Der REST-Zugriff auf Seitenblobs wird durch Netzwerkregeln geschützt.
 
-Sicherung und Wiederherstellung von virtuellen Computern mit nicht verwalteten Datenträgern in Speicherkonten mit Anwendung von Netzwerkregeln wird über das Erstellen einer Ausnahme gemäß Beschreibung im Abschnitt [Ausnahmen](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions) dieses Artikels unterstützt.  Firewallausnahmen sind nicht mit verwalteten Datenträgern anwendbar, da sie bereits von Azure verwaltet werden.
+Firewalls und virtuelle Netzwerke werden von klassischen Speicherkonten nicht unterstützt.
+
+Sie können nicht verwaltete Datenträger in Speicherkonten mit angewendeten Netzwerkregeln verwenden, um virtuelle Computer durch Erstellung einer Ausnahme zu sichern und wiederherzustellen. Dieser Prozess ist in diesem Artikel im Abschnitt [Ausnahmen](#exceptions) dokumentiert. Firewallausnahmen gelten nicht für verwaltete Datenträger, da sie bereits von Azure verwaltet werden.
 
 ## <a name="change-the-default-network-access-rule"></a>Ändern der Standard-Netzwerkzugriffsregel
-Standardmäßig akzeptieren Speicherkonten Verbindungen von Clients in jedem Netzwerk.  Um den Zugriff auf ausgewählte Netzwerke zu beschränken, müssen Sie zunächst die Standardaktion ändern.
+
+Standardmäßig akzeptieren Speicherkonten Verbindungen von Clients in jedem Netzwerk. Um den Zugriff auf ausgewählte Netzwerke zu beschränken, müssen Sie zunächst die Standardaktion ändern.
 
 > [!WARNING]
-> Änderungen an Netzwerkregeln können die Fähigkeit von Anwendungen, eine Verbindung mit Azure Storage herzustellen, beeinträchtigen.  Durch das Festlegen der Standardnetzwerkregel auf das **Verweigern** des Zugriffs wird sämtlicher Zugriff auf die Daten blockiert, es sei denn, es werden auch bestimmte Netzwerkregeln angewendet, die Zugriff *gewähren*.  Gewähren Sie mithilfe von Netzwerkregeln Zugriff auf alle zulässigen Netzwerke, bevor Sie die Standardregel ändern, um Zugriff zu verweigern.
->
+> Änderungen an Netzwerkregeln können die Fähigkeit von Anwendungen, eine Verbindung mit Azure Storage herzustellen, beeinträchtigen. Durch Festlegen der Standardnetzwerkregel auf **Verweigern** wird sämtlicher Zugriff auf die Daten blockiert – es sei denn, es werden auch bestimmte Netzwerkregeln angewendet, zum Zugriff zu **gewähren**. Gewähren Sie mithilfe von Netzwerkregeln Zugriff auf alle zulässigen Netzwerke, bevor Sie die Standardregel ändern, um Zugriff zu verweigern.
+
+### <a name="managing-default-network-access-rules"></a>Verwalten standardmäßiger Netzwerkzugriffsregeln
+
+Standardmäßige Netzwerkzugriffsregeln für Speicherkonten können über das Azure-Portal, über PowerShell oder per CLI v2 verwaltet werden.
 
 #### <a name="azure-portal"></a>Azure-Portal
-1. Navigieren Sie zu dem Speicherkonto, das Sie sichern möchten.  
 
-2. Klicken Sie auf das Einstellungsmenü mit dem Namen **Firewalls und virtuelle Netzwerke**.
-3. Um den Zugriff standardmäßig zu verweigern, wählen Sie das Zulassen des Zugriffs aus „Ausgewählte Netzwerke“ aus.  Um Datenverkehr aus allen Netzwerken zuzulassen, lassen Sie den Zugriff aus „Alle Netzwerke“ zu.
-4. Klicken Sie zum Übernehmen der Änderungen auf *Speichern*.
+1. Navigieren Sie zu dem Speicherkonto, das Sie schützen möchten.
+
+1. Klicken Sie auf das Einstellungsmenü mit dem Namen **Firewalls und virtuelle Netzwerke**.
+
+1. Wenn der Zugriff standardmäßig verweigert werden soll, wählen Sie aus, dass Zugriff über **Ausgewählte Netzwerke** gewährt werden soll. Wenn Sie Datenverkehr aus allen Netzwerken zulassen möchten, wählen Sie aus, dass der Zugriff über **Alle Netzwerke** gewährt werden soll.
+
+1. Klicken Sie zum Übernehmen der Änderungen auf **Speichern**.
 
 #### <a name="powershell"></a>PowerShell
-1. Installieren Sie die neueste Version von [Azure PowerShell](/powershell/azure/install-azurerm-ps), und [melden Sie sich an](/powershell/azure/authenticate-azureps).
 
-2. Zeigen Sie den Status der Standardregel für das Speicherkonto an.
-```PowerShell
-(Get-AzureRmStorageAccountNetworkRuleSet  -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount").DefaultAction
-``` 
+1. Installieren Sie [Azure PowerShell](/powershell/azure/install-azurerm-ps), und [melden Sie sich an](/powershell/azure/authenticate-azureps).
 
-3. Legen Sie die Standardregel auf das standardmäßige Verweigern jeglichen Netzwerkzugriffs fest.  
-```PowerShell
-Update-AzureRmStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" -Name "mystorageaccount" -DefaultAction Deny
-```    
+1. Zeigen Sie den Status der Standardregel für das Speicherkonto an.
 
-4. Legen Sie die Standardregel auf das standardmäßige Zulassen von Netzwerkzugriff fest.
-```PowerShell
-Update-AzureRmStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" -Name "mystorageaccount" -DefaultAction Allow
-```    
+    ```PowerShell
+    (Get-AzureRmStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount").DefaultAction
+    ```
+
+1. Legen Sie die Standardregel auf das standardmäßige Verweigern jeglichen Netzwerkzugriffs fest.
+
+    ```PowerShell
+    Update-AzureRmStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" -Name "mystorageaccount" -DefaultAction Deny
+    ```
+
+1. Legen Sie die Standardregel auf das standardmäßige Zulassen von Netzwerkzugriff fest.
+
+    ```PowerShell
+    Update-AzureRmStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" -Name "mystorageaccount" -DefaultAction Allow
+    ```
 
 #### <a name="cliv2"></a>CLI v2
-1. [Installieren Sie die Azure CLI](/cli/azure/install-azure-cli), und [melden Sie sich an](/cli/azure/authenticate-azure-cli).
-2. Zeigen Sie den Status der Standardregel für das Speicherkonto an.
-```azurecli
-az storage account show --resource-group "myresourcegroup" --name "mystorageaccount" --query networkRuleSet.defaultAction
-```
 
-3. Legen Sie die Standardregel auf das standardmäßige Verweigern jeglichen Netzwerkzugriffs fest.  
-```azurecli
-az storage account update --name "mystorageaccount" --resource-group "myresourcegroup" --default-action Deny
-```
+1. Installieren Sie die [Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli), und [melden Sie sich an](/cli/azure/authenticate-azure-cli).
 
-4. Legen Sie die Standardregel auf das standardmäßige Zulassen von Netzwerkzugriff fest.
-```azurecli
-az storage account update --name "mystorageaccount" --resource-group "myresourcegroup" --default-action Allow
-```
+1. Zeigen Sie den Status der Standardregel für das Speicherkonto an.
+
+    ```azurecli
+    az storage account show --resource-group "myresourcegroup" --name "mystorageaccount" --query networkRuleSet.defaultAction
+    ```
+
+1. Legen Sie die Standardregel auf das standardmäßige Verweigern jeglichen Netzwerkzugriffs fest.
+
+    ```azurecli
+    az storage account update --resource-group "myresourcegroup" --name "mystorageaccount" --default-action Deny
+    ```
+
+1. Legen Sie die Standardregel auf das standardmäßige Zulassen von Netzwerkzugriff fest.
+
+    ```azurecli
+    az storage account update --resource-group "myresourcegroup" --name "mystorageaccount" --default-action Allow
+    ```
 
 ## <a name="grant-access-from-a-virtual-network"></a>Gewähren des Zugriffs aus einem virtuellen Netzwerk
-Speicherkonten können so konfiguriert werden, dass nur der Zugriff aus bestimmten Azure Virtual Networks zugelassen wird. 
 
-Durch Aktivieren eines [Dienstendpunkts](/azure/virtual-network/virtual-network-service-endpoints-overview) für Azure Storage im virtuellen Netzwerk wird eine optimale Route für den Datenverkehr zum Azure Storage-Dienst sichergestellt. Mit jeder Anforderung wird zudem die Identität des virtuellen Netzwerks und des Subnetzes übertragen.  Administratoren können anschließend Netzwerkregeln für das Speicherkonto konfigurieren, die den Empfang von Anforderungen aus bestimmten Subnetzen im virtuellen Netzwerk zulassen.  Clients, denen über diese Netzwerkregeln Zugriff gewährt wird, müssen weiterhin die Autorisierungsanforderungen des Speicherkontos erfüllen, um auf die Daten zugreifen zu können.
+Sie können Speicherkonten so konfigurieren, dass nur über bestimmte VNETs zugegriffen werden kann.
+
+Aktivieren Sie einen [Dienstendpunkt](/azure/virtual-network/virtual-network-service-endpoints-overview) für Azure Storage innerhalb des VNETs. Dieser Endpunkt sorgt für eine optimale Datenverkehrsroute zum Azure Storage-Dienst. Mit jeder Anforderung wird zudem die Identität des virtuellen Netzwerks und des Subnetzes übertragen. Administratoren können anschließend Netzwerkregeln für das Speicherkonto konfigurieren, die den Empfang von Anforderungen aus bestimmten Subnetzen im VNET zulassen. Clients, denen über diese Netzwerkregeln Zugriff gewährt wird, müssen weiterhin die Autorisierungsanforderungen des Speicherkontos erfüllen, um auf die Daten zugreifen zu können.
 
 Jedes Speicherkonto unterstützt bis zu 100 Regeln für virtuelle Netzwerke, die mit [IP-Netzwerkregeln](#grant-access-from-an-internet-ip-range) kombiniert werden können.
 
-### <a name="available-virtual-network-regions"></a>Verfügbare Regionen virtueller Netzwerke
-Dienstendpunkte können in der Regel zwischen virtuellen Netzwerken und Dienstinstanzen in derselben Azure-Region verwendet werden.  Wenn Dienstendpunkte mit Azure Storage verwendet werden, umfasst dieser Bereich auch [Regionspaare](/azure/best-practices-availability-paired-regions).  Dies ermöglicht Kontinuität während eines regionalen Failovers sowie den unterbrechungsfreien Zugriff auf Instanzen von georedundantem Speicher mit Lesezugriff (Read-Access Geo-Redundant Storage, RA-GRS).  Netzwerkregeln, die Zugriff aus einem virtuellen Netzwerk auf ein Speicherkonto gewähren, gewähren auch Zugriff auf jede RA-GRS-Instanz.
+### <a name="available-virtual-network-regions"></a>Verfügbare Regionen für virtuelle Netzwerke
 
-Wenn Sie die Notfallwiederherstellung für einen regionalen Ausfall planen, sollten Sie die virtuellen Netzwerke im Voraus im Regionspaar bereitstellen. Es sollten Dienstendpunkte für Azure Storage aktiviert werden, und auf Ihre GRS-Konten (georedundanter Speicher) sollten Netzwerkregeln angewendet werden, die Zugriff aus den alternativen virtuellen Netzwerken gewähren.
+Dienstendpunkte können in der Regel zwischen virtuellen Netzwerken und Dienstinstanzen in der gleichen Azure-Region verwendet werden. Wenn Dienstendpunkte mit Azure Storage verwendet werden, schließt dieser Bereich auch [Regionspaare](/azure/best-practices-availability-paired-regions) mit ein. Dienstendpunkte ermöglichen Kontinuität während eines regionalen Failovers sowie unterbrechungsfreien Zugriff auf Instanzen von georedundantem Speicher mit Lesezugriff (Read-Access Geo-Redundant Storage, RA-GRS). Netzwerkregeln, die Zugriff aus einem virtuellen Netzwerk auf ein Speicherkonto gewähren, gewähren auch Zugriff auf jede RA-GRS-Instanz.
+
+Wenn Sie die Notfallwiederherstellung für einen regionalen Ausfall planen, sollten Sie die VNETs im Voraus im Regionspaar bereitstellen. Aktivieren Sie Dienstendpunkte für Azure Storage mit Netzwerkregeln, die den Zugriff über diese alternativen virtuellen Netzwerke gewähren. Wenden Sie diese Regeln dann auf Ihre georedundanten Speicherkonten an.
 
 > [!NOTE]
-> Dienstendpunkte gelten nicht für Datenverkehr außerhalb der Region des virtuellen Netzwerks und des angegebenen Regionspaars.  Netzwerkregeln, die Zugriff aus virtuellen Netzwerken auf Speicherkonten gewähren, können nur auf virtuelle Netzwerke in der primären Region eines Speicherkontos oder im angegebenen Regionspaar angewendet werden.
->
+> Dienstendpunkte gelten nicht für Datenverkehr außerhalb der Region des virtuellen Netzwerks und des angegebenen Regionspaars. Netzwerkregeln, die Zugriff aus virtuellen Netzwerken auf Speicherkonten gewähren, können nur in der primären Region eines Speicherkontos oder im angegebenen Regionspaar angewendet werden.
 
 ### <a name="required-permissions"></a>Erforderliche Berechtigungen
-Um eine Regel für virtuelle Netzwerke auf ein Speicherkonto anzuwenden, muss der Benutzer über die Berechtigung zum *Hinzufügen eines Diensts zu einem Subnetz* für die hinzuzufügenden Subnetze verfügen.  Diese Berechtigung ist in der integrierten Rolle *Speicherkontomitwirkender* enthalten und kann benutzerdefinierten Rollendefinitionen hinzugefügt werden.
 
-Der für das Speicherkonto und die virtuellen Netzwerke gewährte Zugriff ist **möglicherweise** in unterschiedlichen Abonnements enthalten, diese müssen jedoch zu demselben Azure Active Directory-Mandanten gehören.
+Wenn Sie eine Regel für virtuelle Netzwerke auf ein Speicherkonto anwenden möchten, muss der Benutzer über geeignete Berechtigungen für die hinzuzufügenden Subnetze verfügen. Die dazu erforderliche Berechtigung *Dienst mit einem Subnetz verknüpfen* ist Teil der integrierten Rolle *Speicherkontomitwirkender*. Sie kann aber auch benutzerdefinierten Rollendefinitionen hinzugefügt werden.
+
+Das Speicherkonto und die virtuellen Netzwerke, denen Zugriff gewährt wurde, können sich in unterschiedlichen Abonnements befinden, diese müssen jedoch zum gleichen Azure AD-Mandanten gehören.
 
 ### <a name="managing-virtual-network-rules"></a>Verwalten von Regeln für virtuelle Netzwerke
-Regeln für virtuelle Netzwerke für Speicherkonten können über das Azure-Portal, über PowerShell oder CLI v2 verwaltet werden.
+
+Regeln für virtuelle Netzwerke für Speicherkonten können über das Azure-Portal, über PowerShell oder per CLI v2 verwaltet werden.
 
 #### <a name="azure-portal"></a>Azure-Portal
-1. Navigieren Sie zu dem Speicherkonto, das Sie sichern möchten.  
-2. Klicken Sie auf das Einstellungsmenü mit dem Namen **Firewalls und virtuelle Netzwerke**.
-3. Stellen Sie sicher, dass Sie das Zulassen des Zugriffs aus „Ausgewählte Netzwerke“ ausgewählt haben.
-4. Wenn Sie mit einer neuen Netzwerkregel den Zugriff auf ein virtuelles Netzwerk zulassen möchten, klicken Sie unter „Virtuelle Netzwerke“ auf „Vorhandene hinzufügen“ um ein vorhandenes virtuelles Netzwerk und vorhandene Subnetze auszuwählen, und klicken Sie auf *Hinzufügen*.  Um ein neues virtuelles Netzwerk zu erstellen und ihm Zugriff zu gewähren, klicken Sie auf *Neues hinzufügen*, geben Sie die erforderlichen Informationen zum Erstellen des neuen virtuellen Netzwerks an, und klicken Sie dann auf *Erstellen*.
 
-> [!NOTE]
-> Wenn für das ausgewählte virtuelle Netzwerk und die Subnetze bisher noch kein Dienstendpunkt für Azure Storage konfiguriert wurde, kann dies im Rahmen dieses Vorgangs erfolgen.
->
+1. Navigieren Sie zu dem Speicherkonto, das Sie schützen möchten.
 
-5. Klicken Sie zum Entfernen einer Regel für virtuelle Netzwerke oder Subnetze auf „...“, um das Kontextmenü für das virtuelle Netzwerk oder Subnetz zu öffnen, und klicken Sie auf „Entfernen“.
-6. Klicken Sie zum Übernehmen der Änderungen auf *Speichern*.
+1. Klicken Sie auf das Einstellungsmenü mit dem Namen **Firewalls und virtuelle Netzwerke**.
+
+1. Vergewissern Sie sich, dass Sie den Zugriff über **Ausgewählte Netzwerke** ausgewählt haben.
+
+1. Wenn Sie mit einer neuen Netzwerkregel den Zugriff auf ein virtuelles Netzwerk zulassen möchten, klicken Sie unter **Virtuelle Netzwerke** auf **Vorhandenes virtuelles Netzwerk hinzufügen**, wählen Sie die Optionen **Virtuelle Netzwerke** und **Subnetze** aus, und klicken Sie anschließend auf **Hinzufügen**. Wenn Sie ein neues virtuelles Netzwerk erstellen und ihm Zugriff gewähren möchten, klicken Sie auf **Neues virtuelles Netzwerk hinzufügen**. Geben Sie die erforderlichen Informationen zum Erstellen des neuen virtuellen Netzwerks an, und klicken Sie anschließend auf **Erstellen**.
+
+    > [!NOTE]
+    > Wenn für das ausgewählte virtuelle Netzwerk und die Subnetze noch kein Dienstendpunkt für Azure Storage konfiguriert wurde, können Sie dies im Rahmen dieses Vorgangs nachholen.
+
+1. Wenn Sie eine Regel für virtuelle Netzwerke oder Subnetze entfernen möchten, klicken Sie auf **...**, um das Kontextmenü für das virtuelle Netzwerk oder Subnetz zu öffnen, und klicken Sie anschließend auf **Entfernen**.
+
+1. Klicken Sie zum Übernehmen der Änderungen auf **Speichern**.
 
 #### <a name="powershell"></a>PowerShell
-1. Installieren Sie die neueste Version von [Azure PowerShell](/powershell/azure/install-azurerm-ps), und [melden Sie sich an](/powershell/azure/authenticate-azureps).
-2. Listen Sie Regeln für virtuelle Netzwerke auf.
-```PowerShell
-(Get-AzureRmStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount").VirtualNetworkRules
-```
 
-3. Aktivieren Sie den Dienstendpunkt für Azure Storage in einem vorhandenen virtuellen Netzwerk und Subnetz.
-```PowerShell
-Get-AzureRmVirtualNetwork -ResourceGroupName "myresourcegroup" -Name "myvnet" | Set-AzureRmVirtualNetworkSubnetConfig -Name "mysubnet"  -AddressPrefix "10.1.1.0/24" -ServiceEndpoint "Microsoft.Storage" | Set-AzureRmVirtualNetwork
-```
+1. Installieren Sie [Azure PowerShell](/powershell/azure/install-azurerm-ps), und [melden Sie sich an](/powershell/azure/authenticate-azureps).
 
-4. Fügen Sie eine Netzwerkregel für ein virtuelles Netzwerk und Subnetz hinzu.  
-```PowerShell
-$subnet = Get-AzureRmVirtualNetwork -ResourceGroupName "myresourcegroup" -Name "myvnet" | Get-AzureRmVirtualNetworkSubnetConfig -Name "mysubnet"
-Add-AzureRmStorageAccountNetworkRule -ResourceGroupName "myresourcegroup" -Name "mystorageaccount" -VirtualNetworkResourceId $subnet.Id   
-```    
+1. Listen Sie die Regeln für virtuelle Netzwerke auf.
 
-5. Entfernen Sie eine Netzwerkregel für ein virtuelles Netzwerk und Subnetz.  
-```PowerShell
-$subnet = Get-AzureRmVirtualNetwork -ResourceGroupName "myresourcegroup" -Name "myvnet" | Get-AzureRmVirtualNetworkSubnetConfig -Name "mysubnet"
-Remove-AzureRmStorageAccountNetworkRule -ResourceGroupName "myresourcegroup" -Name "mystorageaccount" -VirtualNetworkResourceId $subnet.Id   
-```    
+    ```PowerShell
+    (Get-AzureRmStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount").VirtualNetworkRules
+    ```
+
+1. Aktivieren Sie den Dienstendpunkt für Azure Storage in einem vorhandenen virtuellen Netzwerk und Subnetz.
+
+    ```PowerShell
+    Get-AzureRmVirtualNetwork -ResourceGroupName "myresourcegroup" -Name "myvnet" | Set-AzureRmVirtualNetworkSubnetConfig -Name "mysubnet" -AddressPrefix "10.0.0.0/24" -ServiceEndpoint "Microsoft.Storage" | Set-AzureRmVirtualNetwork
+    ```
+
+1. Fügen Sie eine Netzwerkregel für ein virtuelles Netzwerk und Subnetz hinzu.
+
+    ```PowerShell
+    $subnet = Get-AzureRmVirtualNetwork -ResourceGroupName "myresourcegroup" -Name "myvnet" | Get-AzureRmVirtualNetworkSubnetConfig -Name "mysubnet"
+    Add-AzureRmStorageAccountNetworkRule -ResourceGroupName "myresourcegroup" -Name "mystorageaccount" -VirtualNetworkResourceId $subnet.Id
+    ```
+
+1. Entfernen Sie eine Netzwerkregel für ein virtuelles Netzwerk und Subnetz.
+
+    ```PowerShell
+    $subnet = Get-AzureRmVirtualNetwork -ResourceGroupName "myresourcegroup" -Name "myvnet" | Get-AzureRmVirtualNetworkSubnetConfig -Name "mysubnet"
+    Remove-AzureRmStorageAccountNetworkRule -ResourceGroupName "myresourcegroup" -Name "mystorageaccount" -VirtualNetworkResourceId $subnet.Id
+    ```
 
 > [!IMPORTANT]
-> Sie müssen [die Standardregel auf „Verweigern“](#change-the-default-network-access-rule) festlegen. Andernfalls haben die Netzwerkregeln keine Auswirkung.
->
+> Die Standardregel muss auf **Verweigern** festgelegt sein (siehe [Festlegen der Standardregel](#change-the-default-network-access-rule)). Andernfalls haben die Netzwerkregeln keine Wirkung.
 
 #### <a name="cliv2"></a>CLI v2
-1. [Installieren Sie die Azure CLI](/cli/azure/install-azure-cli), und [melden Sie sich an](/cli/azure/authenticate-azure-cli).
-2. Listen Sie Regeln für virtuelle Netzwerke auf.
-```azurecli
-az storage account network-rule list --resource-group "myresourcegroup" --account-name "mystorageaccount" --query virtualNetworkRules
-```
 
-2. Aktivieren Sie den Dienstendpunkt für Azure Storage in einem vorhandenen virtuellen Netzwerk und Subnetz.
-```azurecli
-az network vnet subnet update --resource-group "myresourcegroup" --vnet-name "myvnet" --name "mysubnet" --service-endpoints "Microsoft.Storage"
-```
+1. Installieren Sie die [Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli), und [melden Sie sich an](/cli/azure/authenticate-azure-cli).
 
-3. Fügen Sie eine Netzwerkregel für ein virtuelles Netzwerk und Subnetz hinzu.  
-```azurecli
-subnetid=$(az network vnet subnet show --resource-group "myresourcegroup" --vnet-name "myvnet" --name "mysubnet" --query id --output tsv)
-az storage account network-rule add --resource-group "myresourcegroup" --account-name "mystorageaccount" --subnet $subnetid
-```
+1. Listen Sie die Regeln für virtuelle Netzwerke auf.
 
-4. Entfernen Sie eine Netzwerkregel für ein virtuelles Netzwerk und Subnetz. 
-```azurecli
-subnetid=$(az network vnet subnet show --resource-group "myresourcegroup" --vnet-name "myvnet" --name "mysubnet" --query id --output tsv)
-az storage account network-rule remove --resource-group "myresourcegroup" --account-name "mystorageaccount" --subnet $subnetid
-```
+    ```azurecli
+    az storage account network-rule list --resource-group "myresourcegroup" --account-name "mystorageaccount" --query virtualNetworkRules
+    ```
+
+1. Aktivieren Sie den Dienstendpunkt für Azure Storage in einem vorhandenen virtuellen Netzwerk und Subnetz.
+
+    ```azurecli
+    az network vnet subnet update --resource-group "myresourcegroup" --vnet-name "myvnet" --name "mysubnet" --service-endpoints "Microsoft.Storage"
+    ```
+
+1. Fügen Sie eine Netzwerkregel für ein virtuelles Netzwerk und Subnetz hinzu.
+
+    ```azurecli
+    $subnetid=(az network vnet subnet show --resource-group "myresourcegroup" --vnet-name "myvnet" --name "mysubnet" --query id --output tsv)
+    az storage account network-rule add --resource-group "myresourcegroup" --account-name "mystorageaccount" --subnet $subnetid
+    ```
+
+1. Entfernen Sie eine Netzwerkregel für ein virtuelles Netzwerk und Subnetz.
+
+    ```azurecli
+    $subnetid=(az network vnet subnet show --resource-group "myresourcegroup" --vnet-name "myvnet" --name "mysubnet" --query id --output tsv)
+    az storage account network-rule remove --resource-group "myresourcegroup" --account-name "mystorageaccount" --subnet $subnetid
+    ```
 
 > [!IMPORTANT]
-> Sie müssen [die Standardregel auf „Verweigern“](#change-the-default-network-access-rule) festlegen. Andernfalls haben die Netzwerkregeln keine Auswirkung.
->
+> Die Standardregel muss auf **Verweigern** festgelegt sein (siehe [Festlegen der Standardregel](#change-the-default-network-access-rule)). Andernfalls haben die Netzwerkregeln keine Wirkung.
 
 ## <a name="grant-access-from-an-internet-ip-range"></a>Gewähren von Zugriff aus einem Internet-IP-Adressbereich
-Speicherkonten können konfiguriert werden, um den Zugriff von bestimmten öffentlichen Internet-IP-Adressbereichen zuzulassen.  Diese Konfiguration ermöglicht es, bestimmten internetbasierten Diensten und lokalen Netzwerken Zugriff zu gewähren, während der allgemeine Internetdatenverkehr blockiert wird.
 
-Zulässige Internetadressbereiche können in [CIDR-Notation](https://tools.ietf.org/html/rfc4632) im Format *16.17.18.0/24* oder als einzelne IP-Adressen, z.B. *16.17.18.19*, angegeben werden.
+Sie können Speicherkonten so konfigurieren, dass der Zugriff über bestimmte öffentliche Internet-IP-Adressbereichen zugelassen wird. Diese Konfiguration gewährt bestimmten internetbasierten Diensten und lokalen Netzwerken Zugriff und blockiert gleichzeitig den allgemeinen Internetdatenverkehr.
 
-> [!NOTE]
-> Kleine Adressbereiche mit der Präfixgröße „/ 31“ oder „/ 32“ werden nicht unterstützt.  Diese Bereiche müssen mit einzelnen IP-Adressregeln konfiguriert werden.
->
+Geben Sie zulässige Internetadressbereiche in [CIDR-Notation](https://tools.ietf.org/html/rfc4632) im Format *16.17.18.0/24* oder als einzelne IP-Adressen (beispielsweise *16.17.18.19*) an.
 
-IP-Netzwerkregeln sind nur für **öffentliche Internet**-IP-Adressen zulässig.  Für private Netzwerke reservierte IP-Adressbereiche (wie in [RFC 1918](https://tools.ietf.org/html/rfc1918#section-3) definiert) sind in IP-Adressregeln nicht zulässig.  Private Netzwerke enthalten Adressen, die mit *10.\**, *172.16.\** - *172.31.\** und *192.168.\** beginnen.
+   > [!NOTE]
+   > Kleine Adressbereiche mit der Präfixgröße „/ 31“ oder „/ 32“ werden nicht unterstützt. Diese Bereiche müssen mit einzelnen IP-Adressregeln konfiguriert werden.
 
-> [!NOTE]
-> IP-Netzwerkregeln wirken sich nicht aus Anforderungen aus, die aus der gleichen Region stammen wie das Speicherkonto.  Verwenden Sie [Regeln für virtuelle Netzwerke](#grant-access-from-a-virtual-network), um Anforderungen aus der gleichen Region zuzulassen.
->
+IP-Netzwerkregeln sind nur für **öffentliche Internet**-IP-Adressen zulässig. Für private Netzwerke reservierte IP-Adressbereiche (wie in [RFC 1918](https://tools.ietf.org/html/rfc1918#section-3) definiert) sind in IP-Adressregeln nicht zulässig. Private Netzwerke enthalten Adressen, die mit _10.*_, _172.16.*_ - _172.31.*_ und _192.168.*_ beginnen.
+
+   > [!NOTE]
+   > IP-Netzwerkregeln haben keine Auswirkungen auf Anforderungen, die aus der Azure-Region stammen, in der sich auch das Speicherkonto befindet. Verwenden Sie [Regeln für virtuelle Netzwerke](#grant-access-from-a-virtual-network), um Anforderungen aus der gleichen Region zuzulassen.
 
 Derzeit werden nur IPv4-Adressen unterstützt.
 
 Jedes Speicherkonto unterstützt bis zu 100 IP-Netzwerkregeln, die mit [Regeln für virtuelle Netzwerke](#grant-access-from-a-virtual-network) kombiniert werden können.
 
 ### <a name="configuring-access-from-on-premises-networks"></a>Konfigurieren des Zugriffs aus lokalen Netzwerken
-Um mit einer IP-Netzwerkregel den Zugriff aus den lokalen Netzwerken auf das Speicherkonto zu gewähren, müssen Sie die von Ihrem Netzwerk verwendeten Internet-IP-Adressen ermitteln.  Hilfe erhalten Sie von Ihrem Netzwerkadministrator.
 
-Wenn Ihr Netzwerk mithilfe von [ExpressRoute](/azure/expressroute/expressroute-introduction) mit dem Azure-Netzwerk verbunden ist, ist jede Verbindung mit zwei öffentlichen IP-Adressen bei Microsoft konfiguriert. Diese werden zum Herstellen der Verbindung mit Microsoft-Diensten, z.B. Azure Storage, mithilfe von [öffentlichem Azure-Peering](/azure/expressroute/expressroute-circuit-peerings#expressroute-routing-domains) verwendet.  Um die Kommunikation von Ihrer Verbindung mit Azure Storage zu ermöglichen, müssen Sie IP-Adressregeln für die öffentlichen IP-Adressen Ihrer Verbindungen erstellen.  [Öffnen Sie über das Azure-Portal ein Supportticket für ExpressRoute](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview), um die öffentlichen IP-Adressen Ihrer ExpressRoute-Verbindung zu ermitteln.
+Wenn Sie mit einer IP-Netzwerkregel den Zugriff über Ihre lokalen Netzwerke auf das Speicherkonto gewähren möchten, müssen Sie die von Ihrem Netzwerk verwendeten Internet-IP-Adressen ermitteln. Hilfe erhalten Sie von Ihrem Netzwerkadministrator.
 
+Sie können Ihr Netzwerk über [ExpressRoute](/azure/expressroute/expressroute-introduction) mit dem Azure-Netzwerk verbinden. Hier wird jede Verbindung mit zwei öffentlichen IP-Adressen konfiguriert. Sie befinden sich im Edgebereich von Microsoft und nutzen [öffentliches Azure-Peering](/azure/expressroute/expressroute-circuit-peerings#expressroute-routing-domains), um eine Verbindung mit Microsoft-Diensten wie Azure Storage herzustellen. Erstellen Sie IP-Netzwerkregeln für die öffentlichen IP-Adressen Ihrer Verbindungen, um die Kommunikation mit Azure Storage zu ermöglichen. [Erstellen Sie ein Supportticket für ExpressRoute](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) über das Azure-Portal, um die öffentlichen IP-Adressen Ihrer ExpressRoute-Verbindung zu ermitteln.
 
 ### <a name="managing-ip-network-rules"></a>Verwalten von IP-Netzwerkregeln
-IP-Netzwerkregeln für Speicherkonten können über das Azure-Portal, über PowerShell oder CLI v2 verwaltet werden.
+
+IP-Netzwerkregeln für Speicherkonten können über das Azure-Portal, über PowerShell oder per CLI v2 verwaltet werden.
 
 #### <a name="azure-portal"></a>Azure-Portal
-1. Navigieren Sie zu dem Speicherkonto, das Sie sichern möchten.  
-2. Klicken Sie auf das Einstellungsmenü mit dem Namen **Firewalls und virtuelle Netzwerke**.
-3. Stellen Sie sicher, dass Sie das Zulassen des Zugriffs aus „Ausgewählte Netzwerke“ ausgewählt haben.
-4. Geben Sie unter „Firewall“, „Adressbereiche“ die IP-Adresse oder den IP-Adressbereich (im CIDR-Format) ein, um Zugriff auf einen Internet-IP-Adressbereich zu gewähren.
-5. Klicken Sie zum Entfernen einer IP-Netzwerkregel auf das Papierkorbsymbol neben der Netzwerkregel.
-6. Klicken Sie zum Übernehmen der Änderungen auf *Speichern*.
+
+1. Navigieren Sie zu dem Speicherkonto, das Sie schützen möchten.
+
+1. Klicken Sie auf das Einstellungsmenü mit dem Namen **Firewalls und virtuelle Netzwerke**.
+
+1. Vergewissern Sie sich, dass Sie den Zugriff über **Ausgewählte Netzwerke** ausgewählt haben.
+
+1. Geben Sie unter **Firewall** > **Adressbereich** die IP-Adresse oder den IP-Adressbereich (im CIDR-Format) ein, um Zugriff auf einen Internet-IP-Adressbereich zu gewähren.
+
+1. Wenn Sie eine IP-Netzwerkregel entfernen möchten, klicken Sie auf das Papierkorbsymbol neben dem Adressbereich.
+
+1. Klicken Sie zum Übernehmen der Änderungen auf **Speichern**.
 
 #### <a name="powershell"></a>PowerShell
-1. Installieren Sie die neueste Version von [Azure PowerShell](/powershell/azure/install-azurerm-ps), und [melden Sie sich an](/powershell/azure/authenticate-azureps).
-2. Listen Sie IP-Netzwerkregeln auf.
-```PowerShell
-(Get-AzureRmStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount").IPRules
-```
 
-3. Fügen Sie eine Netzwerkregel für eine einzelne IP-Adresse hinzu.  
-```PowerShell
-Add-AzureRMStorageAccountNetworkRule -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -IPAddressOrRange "16.17.18.19" 
-``` 
+1. Installieren Sie [Azure PowerShell](/powershell/azure/install-azurerm-ps), und [melden Sie sich an](/powershell/azure/authenticate-azureps).
 
-4. Fügen Sie eine Netzwerkregel für einen IP-Adressbereich hinzu.  
-```PowerShell
-Add-AzureRMStorageAccountNetworkRule -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -IPAddressOrRange "16.17.18.0/24" 
-```    
+1. Listen Sie IP-Netzwerkregeln auf.
 
-5. Entfernen Sie eine Netzwerkregel für eine einzelne IP-Adresse. 
-```PowerShell
-Remove-AzureRMStorageAccountNetworkRule -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -IPAddressOrRange "16.17.18.19"  
-```
+    ```PowerShell
+    (Get-AzureRmStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount").IPRules
+    ```
 
-6. Entfernen Sie eine Netzwerkregel für einen IP-Adressbereich.  
-```PowerShell
-Remove-AzureRMStorageAccountNetworkRule -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -IPAddressOrRange "16.17.18.0/24"  
-```    
+1. Fügen Sie eine Netzwerkregel für eine einzelne IP-Adresse hinzu.
+
+    ```PowerShell
+    Add-AzureRMStorageAccountNetworkRule -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -IPAddressOrRange "16.17.18.19"
+    ```
+
+1. Fügen Sie eine Netzwerkregel für einen IP-Adressbereich hinzu.
+
+    ```PowerShell
+    Add-AzureRMStorageAccountNetworkRule -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -IPAddressOrRange "16.17.18.0/24"
+    ```
+
+1. Entfernen Sie eine Netzwerkregel für eine einzelne IP-Adresse.
+
+    ```PowerShell
+    Remove-AzureRMStorageAccountNetworkRule -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -IPAddressOrRange "16.17.18.19"
+    ```
+
+1. Entfernen Sie eine Netzwerkregel für einen IP-Adressbereich.
+
+    ```PowerShell
+    Remove-AzureRMStorageAccountNetworkRule -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -IPAddressOrRange "16.17.18.0/24"
+    ```
 
 > [!IMPORTANT]
-> Sie müssen [die Standardregel auf „Verweigern“](#change-the-default-network-access-rule) festlegen. Andernfalls haben die Netzwerkregeln keine Auswirkung.
->
+> Die Standardregel muss auf **Verweigern** festgelegt sein (siehe [Festlegen der Standardregel](#change-the-default-network-access-rule)). Andernfalls haben die Netzwerkregeln keine Wirkung.
 
 #### <a name="cliv2"></a>CLI v2
-1. [Installieren Sie die Azure CLI](/cli/azure/install-azure-cli), und [melden Sie sich an](/cli/azure/authenticate-azure-cli).
-2. Listen Sie IP-Netzwerkregeln auf.
-```azurecli
-az storage account network-rule list --resource-group "myresourcegroup" --account-name "mystorageaccount" --query ipRules
-```
 
-3. Fügen Sie eine Netzwerkregel für eine einzelne IP-Adresse hinzu.
-```azurecli
-az storage account network-rule add --resource-group "myresourcegroup" --account-name "mystorageaccount" --ip-address "16.17.18.19"
-```
+1. Installieren Sie die [Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli), und [melden Sie sich an](/cli/azure/authenticate-azure-cli).
 
-4. Fügen Sie eine Netzwerkregel für einen IP-Adressbereich hinzu.  
-```azurecli
-az storage account network-rule add --resource-group "myresourcegroup" --account-name "mystorageaccount" --ip-address "16.17.18.0/24"
-```
+1. Listen Sie IP-Netzwerkregeln auf.
 
-5. Entfernen Sie eine Netzwerkregel für eine einzelne IP-Adresse.  
-```azurecli
-az storage account network-rule remove --resource-group "myresourcegroup" --account-name "mystorageaccount" --ip-address "16.17.18.19"
-```
+    ```azurecli
+    az storage account network-rule list --resource-group "myresourcegroup" --account-name "mystorageaccount" --query ipRules
+    ```
 
-6. Entfernen Sie eine Netzwerkregel für einen IP-Adressbereich.  
-```azurecli
-az storage account network-rule remove --resource-group "myresourcegroup" --account-name "mystorageaccount" --ip-address "16.17.18.0/24"
-```
+1. Fügen Sie eine Netzwerkregel für eine einzelne IP-Adresse hinzu.
+
+    ```azurecli
+    az storage account network-rule add --resource-group "myresourcegroup" --account-name "mystorageaccount" --ip-address "16.17.18.19"
+    ```
+
+1. Fügen Sie eine Netzwerkregel für einen IP-Adressbereich hinzu.
+
+    ```azurecli
+    az storage account network-rule add --resource-group "myresourcegroup" --account-name "mystorageaccount" --ip-address "16.17.18.0/24"
+    ```
+
+1. Entfernen Sie eine Netzwerkregel für eine einzelne IP-Adresse.
+
+    ```azurecli
+    az storage account network-rule remove --resource-group "myresourcegroup" --account-name "mystorageaccount" --ip-address "16.17.18.19"
+    ```
+
+1. Entfernen Sie eine Netzwerkregel für einen IP-Adressbereich.
+
+    ```azurecli
+    az storage account network-rule remove --resource-group "myresourcegroup" --account-name "mystorageaccount" --ip-address "16.17.18.0/24"
+    ```
 
 > [!IMPORTANT]
-> Sie müssen [die Standardregel auf „Verweigern“](#change-the-default-network-access-rule) festlegen. Andernfalls haben die Netzwerkregeln keine Auswirkung.
->
+> Die Standardregel muss auf **Verweigern** festgelegt sein (siehe [Festlegen der Standardregel](#change-the-default-network-access-rule)). Andernfalls haben die Netzwerkregeln keine Wirkung.
 
 ## <a name="exceptions"></a>Ausnahmen
-In den meisten Szenarien ermöglichen Netzwerkregeln eine sichere Netzwerkkonfiguration. In einigen Fällen müssen jedoch Ausnahmen gewährt werden, um vollständige Funktionalität zu erzielen.  Speicherkonten können mit Ausnahmen für vertrauenswürdige Microsoft-Dienste und für den Zugriff auf Storage Analytics-Daten konfiguriert werden.
+
+Netzwerkregeln ermöglichen in den meisten Szenarien eine sichere Netzwerkkonfiguration. Manchmal sind jedoch Ausnahmen erforderlich, damit sämtliche Funktionen genutzt werden können. Speicherkonten können mit Ausnahmen für vertrauenswürdige Microsoft-Dienste und für den Zugriff auf Speicheranalysedaten konfiguriert werden.
 
 ### <a name="trusted-microsoft-services"></a>Vertrauenswürdige Microsoft-Dienste
-Einige Microsoft-Dienste, die mit Speicherkonten interagieren, werden über Netzwerke ausgeführt, denen nicht mit Netzwerkregeln Zugriff gewährt werden kann. 
 
-Damit Dienste dieses Typs wie vorgesehen ausgeführt werden, können Sie den vertrauenswürdigen Microsoft-Diensten das Umgehen der Netzwerkregeln gestatten. Diese Dienste verwenden dann für den Zugriff auf das Speicherkonto strenge Authentifizierung.
+Einige Microsoft-Dienste, die mit Speicherkonten interagieren, agieren von Netzwerken aus, denen nicht mithilfe von Netzwerkregeln Zugriff gewährt werden kann.
 
-Wenn die Ausnahme „Vertrauenswürdige Microsoft-Dienste“ aktiviert ist, wird den folgenden Diensten (sofern sie in Ihrem Abonnement registriert sind) Zugriff auf das Speicherkonto gewährt:
+Lassen Sie für vertrauenswürdige Microsoft-Dienste die Umgehung der Netzwerkregeln zu, damit solche Dienste ordnungsgemäß funktionieren. Diese Dienste verwenden dann eine strenge Authentifizierung, um auf das Speicherkonto zuzugreifen.
+
+Wenn Sie die Ausnahme **Vertrauenswürdigen Microsoft-Diensten die Umgehung dieser Firewall erlauben?** aktivieren, wird den folgenden Diensten Zugriff auf das Speicherkonto gewährt (sofern sie in Ihrem Abonnement registriert sind):
 
 |Dienst|Name des Ressourcenanbieters|Zweck|
 |:------|:---------------------|:------|
-|Azure Backup|Microsoft.Backup|Ausführen von Sicherungen und Wiederherstellungen von nicht verwalteten Datenträgern in IAAS-VMs. (nicht für verwaltete Datenträger erforderlich). [Weitere Informationen](https://docs.microsoft.com/azure/backup/backup-introduction-to-azure-backup).|
-|Azure DevTest Labs|Microsoft.DevTestLab|Erstellung benutzerdefinierter Images und Installation von Artefakten.  [Weitere Informationen](https://docs.microsoft.com/azure/devtest-lab/devtest-lab-overview).|
-|Azure Event Grid|Microsoft.EventGrid|Aktivieren der Veröffentlichung von Blob Storage-Ereignissen.  [Weitere Informationen](https://docs.microsoft.com/azure/event-grid/overview).|
-|Azure Event Hubs|Microsoft.EventHub|Archivieren von Daten mit Event Hubs Capture.  [Weitere Informationen](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview).|
-|Azure-Netzwerke|Microsoft.Networking|Speichern und Analysieren von Protokollen des Netzwerkdatenverkehrs.  [Weitere Informationen](https://docs.microsoft.com/azure/network-watcher/network-watcher-packet-capture-overview).|
-|Azure Monitor|Microsoft.Insights| Ermöglicht das Schreiben von Überwachungsdaten in ein gesichertes Speicherkonto. [Weitere Informationen](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-roles-permissions-security#monitoring-and-secured-Azure-storage-and-networks)|
+|Azure Backup|Microsoft.Backup|Ausführen von Sicherungen und Wiederherstellungen von nicht verwalteten Datenträgern in virtuellen IAAS-Computern (nicht für verwaltete Datenträger erforderlich). [Weitere Informationen](/azure/backup/backup-introduction-to-azure-backup).|
+|Azure Site Recovery|Microsoft.SiteRecovery |Konfigurieren der Notfallwiederherstellung durch Aktivieren der Replikation für virtuelle Azure IaaS-Computer. Erforderlich, wenn Sie ein Cachespeicherkonto oder ein Quell- oder Zielspeicherkonto mit aktivierter Firewall verwenden.  [Weitere Informationen](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication).|
+|Azure DevTest Labs|Microsoft.DevTestLab|Erstellung benutzerdefinierter Images und Installation von Artefakten. [Weitere Informationen](/azure/devtest-lab/devtest-lab-overview).|
+|Azure Event Grid|Microsoft.EventGrid|Aktivieren der Veröffentlichung von Blob Storage-Ereignissen. [Weitere Informationen](/azure/event-grid/overview).|
+|Azure Event Hubs|Microsoft.EventHub|Archivieren von Daten mit Event Hubs Capture. [Weitere Informationen](/azure/event-hubs/event-hubs-capture-overview).|
+|Azure-Netzwerke|Microsoft.Networking|Speichern und Analysieren von Protokollen des Netzwerkdatenverkehrs. [Weitere Informationen](/azure/network-watcher/network-watcher-packet-capture-overview).|
+|Azure Monitor|Microsoft.Insights|Ermöglicht das Schreiben von Überwachungsdaten in ein gesichertes Speicherkonto. [Weitere Informationen](/azure/monitoring-and-diagnostics/monitoring-roles-permissions-security#monitoring-and-secured-Azure-storage-and-networks)|
 |
 
-
 ### <a name="storage-analytics-data-access"></a>Zugriff auf Storage Analytics-Daten
-In manchen Fällen ist der Lesezugriff auf Diagnoseprotokolle und -metriken von außerhalb des Netzwerks erforderlich.  Es können Ausnahmen von den Netzwerkregeln gewährt werden, um den Lesezugriff auf Protokolldateien und/oder Metriktabellen des Speicherkontos zuzulassen. [Weitere Informationen zum Arbeiten mit Storage Analytics](/azure/storage/storage-analytics)
+
+In manchen Fällen ist der Lesezugriff auf Diagnoseprotokolle und -metriken von außerhalb des Netzwerks erforderlich. Sie können Netzwerkregelausnahmen gewähren, um den Lesezugriff auf Protokolldateien und/oder Metriktabellen des Speicherkontos zuzulassen. [Weitere Informationen zum Arbeiten mit Storage Analytics](/azure/storage/storage-analytics)
 
 ### <a name="managing-exceptions"></a>Verwalten von Ausnahmen
-Ausnahmen von Netzwerkregeln können über das Azure-Portal, über PowerShell oder Azure CLI v2 verwaltet werden.
+
+Netzwerkregelausnahmen können über das Azure-Portal, über PowerShell oder per Azure CLI v2 verwaltet werden.
 
 #### <a name="azure-portal"></a>Azure-Portal
-1. Navigieren Sie zu dem Speicherkonto, das Sie sichern möchten.  
-2. Klicken Sie auf das Einstellungsmenü mit dem Namen **Firewalls und virtuelle Netzwerke**.
-3. Stellen Sie sicher, dass Sie das Zulassen des Zugriffs aus „Ausgewählte Netzwerke“ ausgewählt haben.
-4. Wählen Sie unter „Ausnahmen“ die Ausnahmen aus, die Sie gewähren möchten.
-5. Klicken Sie zum Übernehmen der Änderungen auf *Speichern*.
+
+1. Navigieren Sie zu dem Speicherkonto, das Sie schützen möchten.
+
+1. Klicken Sie auf das Einstellungsmenü mit dem Namen **Firewalls und virtuelle Netzwerke**.
+
+1. Vergewissern Sie sich, dass Sie den Zugriff über **Ausgewählte Netzwerke** ausgewählt haben.
+
+1. Wählen Sie unter **Ausnahmen** die Ausnahmen aus, die Sie gewähren möchten.
+
+1. Klicken Sie zum Übernehmen der Änderungen auf **Speichern**.
 
 #### <a name="powershell"></a>PowerShell
-1. Installieren Sie die neueste Version von [Azure PowerShell](/powershell/azure/install-azurerm-ps), und [melden Sie sich an](/powershell/azure/authenticate-azureps).
-2. Zeigen Sie die Ausnahmen für die Speicherkonto-Netzwerkregeln an.
-```PowerShell
-(Get-AzureRmStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" -Name "mystorageaccount").Bypass
-```
 
-3. Konfigurieren Sie die Ausnahmen von den Speicherkonto-Netzwerkregeln.
-```PowerShell
-Update-AzureRmStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" -Name "mystorageaccount"  -Bypass AzureServices,Metrics,Logging
-```
+1. Installieren Sie [Azure PowerShell](/powershell/azure/install-azurerm-ps), und [melden Sie sich an](/powershell/azure/authenticate-azureps).
 
-4. Entfernen Sie die Ausnahmen von den Speicherkonto-Netzwerkregeln.
-```PowerShell
-Update-AzureRmStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" -Name "mystorageaccount"  -Bypass None
-```
+1. Zeigen Sie die Ausnahmen für die Speicherkonto-Netzwerkregeln an.
+
+    ```PowerShell
+    (Get-AzureRmStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" -Name "mystorageaccount").Bypass
+    ```
+
+1. Konfigurieren Sie die Ausnahmen von den Speicherkonto-Netzwerkregeln.
+
+    ```PowerShell
+    Update-AzureRmStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" -Name "mystorageaccount" -Bypass AzureServices,Metrics,Logging
+    ```
+
+1. Entfernen Sie die Ausnahmen von den Speicherkonto-Netzwerkregeln.
+
+    ```PowerShell
+    Update-AzureRmStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" -Name "mystorageaccount" -Bypass None
+    ```
 
 > [!IMPORTANT]
-> Sie müssen [die Standardregel auf „Verweigern“ festlegen](#change-the-default-network-access-rule). Andernfalls bleibt das Entfernen von Ausnahmen ohne Auswirkung.
->
+> Die Standardregel muss auf **Verweigern** festgelegt sein (siehe [Festlegen der Standardregel](#change-the-default-network-access-rule)). Andernfalls hat das Entfernen von Ausnahmen keine Wirkung.
 
 #### <a name="cliv2"></a>CLI v2
-1. [Installieren Sie die Azure CLI](/cli/azure/install-azure-cli), und [melden Sie sich an](/cli/azure/authenticate-azure-cli).
-2. Zeigen Sie die Ausnahmen für die Speicherkonto-Netzwerkregeln an.
-```azurecli
-az storage account show --resource-group "myresourcegroup" --name "mystorageaccount" --query networkRuleSet.bypass
-```
 
-3. Konfigurieren Sie die Ausnahmen von den Speicherkonto-Netzwerkregeln.
-```azurecli
-az storage account update --resource-group "myresourcegroup" --name "mystorageaccount" --bypass Logging Metrics AzureServices
-```
+1. Installieren Sie die [Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli), und [melden Sie sich an](/cli/azure/authenticate-azure-cli).
 
-4. Entfernen Sie die Ausnahmen von den Speicherkonto-Netzwerkregeln.
-```azurecli
-az storage account update --resource-group "myresourcegroup" --name "mystorageaccount" --bypass None
-```
+1. Zeigen Sie die Ausnahmen für die Speicherkonto-Netzwerkregeln an.
+
+    ```azurecli
+    az storage account show --resource-group "myresourcegroup" --name "mystorageaccount" --query networkRuleSet.bypass
+    ```
+
+1. Konfigurieren Sie die Ausnahmen von den Speicherkonto-Netzwerkregeln.
+
+    ```azurecli
+    az storage account update --resource-group "myresourcegroup" --name "mystorageaccount" --bypass Logging Metrics AzureServices
+    ```
+
+1. Entfernen Sie die Ausnahmen von den Speicherkonto-Netzwerkregeln.
+
+    ```azurecli
+    az storage account update --resource-group "myresourcegroup" --name "mystorageaccount" --bypass None
+    ```
 
 > [!IMPORTANT]
-> Sie müssen [die Standardregel auf „Verweigern“ festlegen](#change-the-default-network-access-rule). Andernfalls bleibt das Entfernen von Ausnahmen ohne Auswirkung.
->
+> Die Standardregel muss auf **Verweigern** festgelegt sein (siehe [Festlegen der Standardregel](#change-the-default-network-access-rule)). Andernfalls hat das Entfernen von Ausnahmen keine Wirkung.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Unter [Dienstendpunkte](/azure/virtual-network/virtual-network-service-endpoints-overview) erhalten Sie weitere Informationen über Dienstendpunkte in Azure-Netzwerken.
+
+Unter [Dienstendpunkte](/azure/virtual-network/virtual-network-service-endpoints-overview) erhalten Sie weitere Informationen zu Dienstendpunkten in Azure-Netzwerken.
 
 Im [Azure Storage-Sicherheitsleitfaden](storage-security-guide.md) erhalten Sie weitere Informationen zur Sicherheit von Azure Storage.

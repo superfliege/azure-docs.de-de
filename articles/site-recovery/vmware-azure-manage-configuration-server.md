@@ -1,18 +1,18 @@
 ---
 title: Verwalten des Konfigurationsservers für die Notfallwiederherstellung von VMware und physischen Servern mit Azure Site Recovery | Microsoft-Dokumentation
 description: In diesem Artikel wird beschrieben, wie Sie einen vorhandenen Konfigurationsserver für die Notfallwiederherstellung von VMware-VMs und physischen Servern in Azure mit Azure Site Recovery verwalten.
-author: rayne-wiselman
-manager: carmonm
+author: Rajeswari-Mamilla
+manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/11/2018
-ms.author: raynew
-ms.openlocfilehash: e8f41ef44adbd72e8ab16329d5fec94c08df2fe7
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.author: ramamill
+ms.openlocfilehash: a58de808816bf80cf950d7b032ca042c7913a2e5
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51568453"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51976382"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vm-disaster-recovery"></a>Verwalten des Konfigurationsservers für die Notfallwiederherstellung von virtuellen VMware-Computern
 
@@ -222,9 +222,16 @@ Für Bereitstellungen von Konfigurationsservern vor dem Mai 2016 wurde die Zerti
 2. Das Ablaufdatum wird unter **Integrität des Konfigurationsservers** angezeigt.
 3. Klicken Sie auf **Zertifikate erneuern**.
 
-## <a name="update-windows-licence"></a>Aktualisieren der Windows-Lizenz
+## <a name="refresh-configuration-server"></a>Aktualisieren des Konfigurationsservers
 
-Bei der mit der OVF-Vorlage bereitgestellten Lizenz handelt es sich um eine Evaluierungslizenz mit einer Gültigkeit von 180 Tagen. Zur ununterbrochenen Nutzung müssen Sie Windows mit einer käuflich erworbenen Lizenz aktivieren.
+1. Navigieren Sie im Azure-Portal zu **Recovery Services-Tresor** > **Verwalten** > **Site Recovery-Infrastruktur** > **Für VMware und physische Computer** > **Konfigurationsserver**.
+2. Klicken Sie auf den Konfigurationsserver, den Sie aktualisieren möchten.
+3. Klicken Sie auf dem Blatt mit den Details des ausgewählten Konfigurationsservers auf **Mehr** > **Server aktualisieren**.
+4. Den Fortschritt des Auftrags können Sie unter **Recovery Services-Tresor** > **Überwachung** > **Site Recovery-Aufträge** überwachen.
+
+## <a name="update-windows-license"></a>Aktualisieren der Windows-Lizenz
+
+Bei der mit der OVF-Vorlage bereitgestellten Lizenz handelt es sich um eine Evaluierungslizenz mit einer Gültigkeit von 180 Tagen. Zur unterbrechungsfreien Nutzung müssen Sie Windows mit einer käuflich erworbenen Lizenz aktivieren.
 
 ## <a name="failback-requirements"></a>Failbackanforderungen
 

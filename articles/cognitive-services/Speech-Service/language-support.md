@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: conceptual
 ms.date: 09/25/2018
 ms.author: erhopf
-ms.openlocfilehash: c1eeee35869f29170a7f15b1d9e2c1ee69a6314d
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: fa4563b84eb0882832a89ccc98396ff487f51b48
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51622515"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52284760"
 ---
 # <a name="language-and-region-support-for-speech-service-api"></a>Sprach- und Regionsunterstützung für die API für den Spracherkennungsdienst
 
@@ -70,7 +70,6 @@ ar-SA | Arabisch (Saudi-Arabien) | Male | Microsoft Server Speech Text to Speech
 bg-BG | Bulgarisch | Male | Microsoft Server Speech Text to Speech Voice (bg-BG, Ivan)
 ca-ES | Katalanisch (Spanien) | Female | Microsoft Server Speech Text to Speech Voice (ca-ES, HerenaRUS)
 cs-CZ | Tschechisch | Male | Microsoft Server Speech Text to Speech Voice (cs-CZ, Jakub)
-cs-CZ | Tschechisch | Male | Microsoft Server Speech Text to Speech Voice (cs-CZ, Vit)
 da-DK | Dänisch | Female | Microsoft Server Speech Text to Speech Voice (da-DK, HelleRUS)
 de-AT | Deutsch (Österreich) | Male | Microsoft Server Speech Text to Speech Voice (de-AT, Michael)
 de-CH | Deutsch (Schweiz) | Male | Microsoft Server Speech Text to Speech Voice (de-CH, Karsten)
@@ -86,7 +85,6 @@ en-GB | English (UK) | Female | Microsoft Server Speech Text to Speech Voice (en
 | | |Female | Microsoft Server Speech Text to Speech Voice (en-GB, HazelRUS)
 | | |Male | Microsoft Server Speech Text to Speech Voice (en-GB, George, Apollo)
 en-IE | Englisch (Irland) |Male | Microsoft Server Speech Text to Speech Voice (en-IE, Sean)
-en-IE | Englisch (Irland) |Male | Microsoft Server Speech Text to Speech Voice (en-IE, Shaun)
 en-IN | Englisch (Indien) | Female | Microsoft Server Speech Text to Speech Voice (en-IN, Heera, Apollo)
 | | |Female | Microsoft Server Speech Text to Speech Voice (en-IN, PriyaRUS)
 | | |Male | Microsoft Server Speech Text to Speech Voice (en-IN, Ravi, Apollo)
@@ -153,10 +151,10 @@ zh-TW | Chinesisch (Taiwan)|Female | Microsoft Server Speech Text to Speech Voic
 
 ### <a name="customization"></a>Anpassung
 
-Die Stimmanpassung ist für US-amerikanisches Englisch (en-US), vereinfachtes Chinesisch (zh-CN) und Italienisch (it-IT) verfügbar.
+Die Stimmanpassung ist für US-amerikanisches Englisch (en-US), vereinfachtes Chinesisch (zh-CN), Französisch (fr-FR), Deutsch (de-DE) und Italienisch (it-IT) verfügbar.
 
 > [!NOTE]
-> Für das italienische Stimmtraining steht zunächst ein Dataset von über 2.000 Äußerungen zur Verfügung. Außerdem werden zweisprachige Chinesisch-Englisch-Modelle mit einem Anfangsdataset von über 2.000 Äußerungen unterstützt.
+> Für das französische, deutsche und italienische Stimmtraining steht ein Dataset mit über 2.000 Äußerungen zur Verfügung. Außerdem werden zweisprachige Chinesisch-Englisch-Modelle mit einem Anfangsdataset von über 2.000 Äußerungen unterstützt.
 
 ## <a name="speech-translation"></a>Sprachübersetzung
 

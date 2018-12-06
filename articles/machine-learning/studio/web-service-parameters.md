@@ -1,10 +1,11 @@
 ---
-title: Verwenden von Azure Machine Learning-Webdienstparametern | Microsoft Docs
+title: Verwenden von Azure Machine Learning Studio-Webdienstparametern | Microsoft-Dokumentation
 description: 'Anleitung: Verwenden von Azure Machine Learning Webdienstparametern, um das Verhalten des Modells beim Zugriff auf den Webdienst zu ändern.'
 services: machine-learning
 documentationcenter: ''
-author: YasinMSFT
-ms.author: yahajiza
+author: ericlicoding
+ms.custom: (previous ms.author=yahajiza, author=YasinMSFT)
+ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
 ms.assetid: c49187db-b976-4731-89d6-11a0bf653db1
@@ -15,14 +16,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/12/2017
-ms.openlocfilehash: 91b3c9df8a7fd0e1abb79c21b1e1d833e57c24d5
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 0e8a1a4bb90f935bf3890bd803b9375d10261aa7
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34835925"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52312009"
 ---
-# <a name="use-azure-machine-learning-web-service-parameters"></a>Verwenden von Azure Machine Learning-Webdienstparametern
+# <a name="use-azure-machine-learning-studio-web-service-parameters"></a>Verwenden von Azure Machine Learning Studio-Webdienstparametern
 Ein Azure Machine Learning-Webdienst wird erstellt, indem ein Experiment veröffentlicht wird, das Module mit konfigurierbaren Parametern enthält. In einigen Fällen kann es vielleicht erforderlich sein, das Verhalten des Moduls zu ändern, während der Webdienst ausgeführt wird. *Webdienstparameter* erlauben Ihnen, diese Aufgabe auszuführen. 
 
 Ein typisches Beispiel ist das Einrichten des Moduls [Import Data][reader], damit die Benutzer des veröffentlichten Webdiensts beim Zugreifen auf den Webdienst eine andere Datenquelle angeben können. Ein weiteres Beispiel ist die Konfiguration des Moduls [Export Data][writer], damit ein anderes Ziel angegeben werden kann. Zu weiteren Beispielen zählen die Änderung der Anzahl von Bits für das Modul [Feature Hashing][feature-hashing] oder der Anzahl der gewünschten Funktionen für das Modul [Filter-Based Feature Selection][filter-based-feature-selection]. 

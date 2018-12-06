@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/12/2018
+ms.date: 11/26/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: a3bce69236586bcd0a250c47f1129ac0d94e8b26
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: ef8b621b41bb43c46ef728e28d3b312ac49f1da3
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51231481"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52308782"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect: Konten und Berechtigungen
 
@@ -39,7 +39,10 @@ Azure AD Connect nutzt 3 Konten, um Informationen aus lokalen Verzeichnissen ode
 
 Zusätzlich zu diesen drei Konten, die zum Ausführen von Azure AD Connect ausgeführt werden, benötigen Sie außerdem die folgenden zusätzlichen Konten, um Azure AD Connect zu installieren.  Dies sind:
 
-- **AD DS-Enterprise-Administratorkonto**: Wird zum Installieren von Azure AD Connect verwendet
+- **Lokales Administratorkonto**: Der Administrator, der Azure AD Connect installiert und über lokale Administratorberechtigungen für den Computer verfügt.
+
+- **AD DS-Unternehmensadministratorkonto**: Wird optional verwendet, um das obige AD DS-Connector-Konto zu erstellen.
+
 - **Azure AD Global Administrator-Konto**: Wird zum Erstellen des Azure AD-Connector-Kontos und zum Konfigurieren von Azure AD verwendet.
 
 - **SQL SA-Konto (optional)**: Wird zum Erstellen der ADSync-Datenbank verwendet, wenn die Vollversion von SQL Server installiert ist.  Dieser SQL Server kann lokal oder remote zur Azure AD Connect-Installation vorliegen.  Dabei kann es sich um das gleiche Konto handeln wie bei Enterprise Administrator.  Der SQL-Administrator kann nun eine Out-of-Band-Datenbankbereitstellung ausführen, sodass die Datenbank anschließend vom Azure AD Connect-Administrator mit Datenbankbesitzerrechten installiert werden kann.  Weitere Informationen finden Sie unter [Installieren von Azure AD Connect mit Berechtigungen eines delegierten SQL-Administrators](how-to-connect-install-sql-delegation.md).
@@ -71,7 +74,7 @@ Das [AD DS Connector-Konto](#active-directory-account) wird zum Erstellen von Le
 
 | Berechtigung | Verwendung |
 | --- | --- |
-| <li>Verzeichnisänderungen replizieren</li><li>Verzeichnisänderungen replizieren: Alle |Kennworthashsynchronisierung |
+| <li>Verzeichnisänderungen replizieren</li><li> Verzeichnisänderungen replizieren: Alle |Kennworthashsynchronisierung |
 | Alle Eigenschaften lesen/schreiben: Benutzer |Importieren und Exchange-Hybridbereitstellung |
 | Alle Eigenschaften lesen/schreiben: iNetOrgPerson |Importieren und Exchange-Hybridbereitstellung |
 | Alle Eigenschaften lesen/schreiben: Gruppe |Importieren und Exchange-Hybridbereitstellung |
@@ -128,7 +131,7 @@ Welche Berechtigungen Sie benötigen, hängt von den aktivierten optionalen Funk
 | Feature | Berechtigungen |
 | --- | --- |
 | ms-DS-ConsistencyGuid |Schreibberechtigungen für das Attribut „ms-DS-ConsistencyGuid“, das unter [Entwurfskonzepte – Verwendung von „ms-DS-ConsistencyGuid“ als „sourceAnchor“](plan-connect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor) dokumentiert ist. | 
-| Kennworthashsynchronisierung |<li>Verzeichnisänderungen replizieren</li>  <li>Verzeichnisänderungen replizieren: Alle |
+| Kennworthashsynchronisierung |<li>Verzeichnisänderungen replizieren</li>  <li> Verzeichnisänderungen replizieren: Alle |
 | Exchange-Hybridbereitstellung |Schreibberechtigungen für die Attribute, die in [Exchange-Hybridrückschreiben](reference-connect-sync-attributes-synchronized.md#exchange-hybrid-writeback) für Benutzer, Gruppen und Kontakte dokumentiert sind |
 | Öffentlicher Exchange-E-Mail-Ordner |Leseberechtigungen für die Attribute, die im [öffentlichen Exchange-E-Mail-Ordner](reference-connect-sync-attributes-synchronized.md#exchange-mail-public-folder) für öffentliche Ordner dokumentiert sind. | 
 | Kennwortrückschreiben |Schreibberechtigungen für die Attribute, die in [Erste Schritte mit der Kennwortverwaltung](../authentication/howto-sspr-writeback.md) für Benutzer dokumentiert sind |

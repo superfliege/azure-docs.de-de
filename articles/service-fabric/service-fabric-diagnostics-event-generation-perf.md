@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 04/16/2018
+ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: 1e6ea5d6ae321a0443631ec928912611a68346c6
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 843feb83b8202d3ef8e2c6c8c60cb9b509048530
+ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49408012"
+ms.lasthandoff: 11/22/2018
+ms.locfileid: "52290772"
 ---
 # <a name="performance-metrics"></a>Leistungsmetriken
 
@@ -31,14 +31,15 @@ Für die Computer in Ihrem Cluster sollten Sie das Erfassen der folgenden Leistu
 
 | Indikatorkategorie | Name des Leistungsindikators |
 | --- | --- |
+| Logischer Datenträger | Logischer Datenträger – verfügbarer Speicherplatz |
 | PhysicalDisk (pro Datenträger) | Durchschn. Warteschlangenlänge der Datenträger-Lesevorgänge |
 | PhysicalDisk (pro Datenträger) | Durchschn. Warteschlangenlänge der Datenträger-Schreibvorgänge |
 | PhysicalDisk (pro Datenträger) | Durchschn. Datenträger s/gelesen |
 | PhysicalDisk (pro Datenträger) | Durchschn. Datenträger s/geschrieben |
 | PhysicalDisk (pro Datenträger) | Lesevorgänge/s  |
 | PhysicalDisk (pro Datenträger) | Byte gelesen/s  |
-| PhysicalDisk (pro Datenträger) | Schreibvorgänge/s |
-| PhysicalDisk (pro Datenträger) | Byte geschrieben/s |
+| PhysicalDisk (pro Datenträger) |  Schreibvorgänge/s |
+| PhysicalDisk (pro Datenträger) |  Byte geschrieben/s |
 | Arbeitsspeicher | Verfügbare MB |
 | PagingFile | Prozent genutzt |
 | Prozessor (gesamt) | % Prozessorzeit |
@@ -49,6 +50,9 @@ Für die Computer in Ihrem Cluster sollten Sie das Erfassen der folgenden Leistu
 | Prozess (pro Dienst) | Virtuelle Bytes |
 | Prozess (pro Dienst) | Arbeitssatz |
 | Prozess (pro Dienst) | Arbeitsseiten (privat) |
+| Netzwerkschnittstelle (alle Instanzen) | Erfasste Bytes |
+| Netzwerkschnittstelle (alle Instanzen) | Gesendete Bytes |
+| Netzwerkschnittstelle (alle Instanzen) | Bytes gesamt |
 | Netzwerkschnittstelle (alle Instanzen) | Länge der Ausgabewarteschlange |
 | Netzwerkschnittstelle (alle Instanzen) | Verworfene ausgehende Pakete |
 | Netzwerkschnittstelle (alle Instanzen) | Verworfene empfangene Pakete |
@@ -65,6 +69,8 @@ Erfassen Sie die folgenden Leistungsindikatoren, wenn Sie .NET-Dienste an Ihren 
 | .NET CLR Memory (pro Dienst) | Anzahl von zugesicherten Bytes |
 | .NET CLR Memory (pro Dienst) | Anzahl von reservierten Bytes |
 | .NET CLR Memory (pro Dienst) | Anzahl von Bytes in allen Heaps |
+| .NET CLR Memory (pro Dienst) | Objektheapgröße |
+| .NET CLR Memory (pro Dienst) | Anzahl der GC-Handle |
 | .NET CLR Memory (pro Dienst) | Anzahl von Gen 0-Sammlungen |
 | .NET CLR Memory (pro Dienst) | Anzahl von Gen 1-Sammlungen |
 | .NET CLR Memory (pro Dienst) | Anzahl von Gen 2-Sammlungen |
@@ -76,7 +82,7 @@ Service Fabric generiert eine beträchtliche Menge an benutzerdefinierten Leistu
 
 In der von Ihnen an Ihren Cluster bereitgestellten Anwendung können Sie Indikatoren über die Kategorien `Service Fabric Actor` und `Service Fabric Actor Method` hinzufügen, wenn Sie Reliable Actors verwenden (weitere Informationen finden Sie unter [Diagnose und Leistungsüberwachung für Reliable Actors](service-fabric-reliable-actors-diagnostics.md)).
 
-Wenn Sie Reliable Services verwenden, gibt es dem entsprechend die Indikatorkategorien `Service Fabric Service` und `Service Fabric Service Method`, aus denen Sie Indikatoren erfassen können. 
+Bei Verwendung von Reliable Services oder Dienstremoting stehen analog dazu die Indikatorkategorien `Service Fabric Service` und `Service Fabric Service Method` zur Verfügung, aus denen Sie Leistungsindikatoren erfassen sollten (siehe [Diagnose und Leistungsüberwachung für Reliable ServiceRemoting](service-fabric-reliable-serviceremoting-diagnostics.md) bzw. [Leistungsindikatoren](service-fabric-reliable-services-diagnostics.md#performance-counters)). 
 
 Wenn Sie Reliable Collections verwenden, wird empfohlen, den `Avg. Transaction ms/Commit` aus dem `Service Fabric Transactional Replicator` hinzuzufügen, um die durchschnittliche Wartezeit pro Transaktion zu erfassen.
 

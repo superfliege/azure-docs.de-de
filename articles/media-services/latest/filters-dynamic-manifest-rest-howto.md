@@ -1,0 +1,117 @@
+---
+title: Erstellen von Filtern mit der Azure Media Services-REST-API | Microsoft Docs
+description: In diesem Thema wird erläutert, wie Sie Filter erstellen, mit denen Ihre Kunden bestimmte Abschnitte eines Streams streamen können. Media Services erstellt dynamische Manifeste, um dieses selektive Streaming zu erreichen.
+services: media-services
+documentationcenter: ''
+author: Juliako
+manager: femila
+editor: ''
+ms.service: media-services
+ms.workload: media
+ms.tgt_pltfrm: na
+ms.devlang: ne
+ms.topic: article
+ms.date: 11/28/2018
+ms.author: juliako
+ms.openlocfilehash: 6b0ef646ba9ea535038f181ebfff5bf7639afdf8
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52633621"
+---
+# <a name="creating-filters-with-media-services-rest-api"></a>Erstellen von Filtern mit der Media Services-REST-API
+
+Bei der Inhaltsbereitstellung für Ihre Kunden (Streaming von Liveereignissen oder Video on Demand) benötigen Ihre Kunden möglicherweise mehr Flexibilität als in der Manifestdatei für das Standardmedienobjekt beschrieben. Azure Media Services ermöglicht es Ihnen, Kontofilter und Medienobjektfilter für Ihre Inhalte zu definieren. Weitere Informationen finden Sie unter [Filter und dynamische Manifeste](filters-dynamic-manifest-overview.md).
+
+In diesem Thema wird beschrieben, wie Sie einen Filter für ein Video on Demand-Medienobjekt definieren und mithilfe von REST-APIs [Kontofilter](https://docs.microsoft.com/rest/api/media/accountfilters) und [Medienobjektfilter](https://docs.microsoft.com/rest/api/media/assetfilters) erstellen. 
+
+## <a name="prerequisites"></a>Voraussetzungen 
+
+Für die in diesem Thema beschriebenen Schritte ist Folgendes erforderlich:
+
+- Lesen Sie [Filter und dynamische Manifeste](filters-dynamic-manifest-overview.md).
+- [Erstellen Sie ein Media Services-Konto.](create-account-cli-how-to.md) Merken Sie sich den Namen der Ressourcengruppe und den Namen des Media Services-Kontos. 
+- [Konfigurieren von Postman für Azure Media Services-REST-API-Aufrufe](media-rest-apis-with-postman.md)/
+
+## <a name="define-a-filter"></a>Definieren eines Filters  
+
+Das folgende Beispiel für einen **Anforderungstext** definiert die Titelauswahlbedingungen, die dem Manifest hinzugefügt werden. Dieser Filter bezieht alle englischen EC-3-Audiotitel und alle Videotitel mit Bitraten im Bereich von 0-1.000.000 ein.
+
+```json
+{
+    "properties": {
+        "tracks": [
+          {
+                "trackSelections": [
+                    {
+                        "property": "Type",
+                        "value": "Audio",
+                        "operation": "Equal"
+                    },
+                    {
+                        "property": "Language",
+                        "value": "en",
+                        "operation": "Equal"
+                    },
+                    {
+                        "property": "FourCC",
+                        "value": "EC-3",
+                        "operation": "NotEqual"
+                    }
+                ]
+            },
+            {
+                "trackSelections": [
+                    {
+                        "property": "Type",
+                        "value": "Video",
+                        "operation": "Equal"
+                    },
+                    {
+                        "property": "Bitrate",
+                        "value": "0-1000000",
+                        "operation": "Equal"
+                    }
+                ]
+            }
+        ]
+     }
+}
+```
+
+## <a name="create-account-filters"></a>Erstellen von Kontofiltern
+
+Wählen Sie in der heruntergeladenen Sammlung von Postman **Account Filters (Kontofilter)**->**Create or update an Account Filter (Kontofilter erstellen oder aktualisieren** aus.
+
+Die **PUT**-HTTP-Anforderungsmethode ähnelt der folgenden:
+
+PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Media/mediaServices/{accountName}/accountFilters/{filterName}?api-version=2018-07-01
+
+Wählen Sie die Registerkarte **Text** aus, und fügen Sie den JSON-Code ein, den Sie [zuvor definiert haben](#define-a-filter).
+
+Wählen Sie **Senden** aus. 
+
+Der Filter wurde erstellt.
+
+Weitere Informationen finden Sie unter [Account Filters – Create Or Update](https://docs.microsoft.com/rest/api/media/accountfilters/createorupdate) (Erstellen oder Aktualisieren von Kontofiltern). Siehe auch [JSON-Beispiele für Filter](https://docs.microsoft.com/rest/api/media/accountfilters/createorupdate#create_an_account_filter).
+
+## <a name="create-asset-filters"></a>Erstellen von Medienobjektfiltern  
+
+Wählen Sie in der heruntergeladenen Postman-Sammlung „Media Services v3“ **Assets** (Medienobjekte) -> **Create or update Asset Filter** (Medienobjektfilter erstellen oder aktualisieren) aus.
+
+Die **PUT**-HTTP-Anforderungsmethode ähnelt der folgenden:
+
+PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Media/mediaServices/{accountName}/assets/{assetName}/assetFilters/{filterName}?api-version=2018-07-01
+
+Wählen Sie die Registerkarte **Text** aus, und fügen Sie den JSON-Code ein, den Sie [zuvor definiert haben](#define-a-filter).
+
+Wählen Sie **Senden** aus. 
+
+Der Medienobjektfilter wurde erstellt.
+
+Ausführliche Informationen zum Erstellen oder Aktualisieren von Medienobjektfiltern finden Sie unter [Erstellen und Aktualisieren](https://docs.microsoft.com/rest/api/media/assetfilters/createorupdate). Siehe auch [JSON-Beispiele für Filter](https://docs.microsoft.com/rest/api/media/assetfilters/createorupdate#create_an_asset_filter). 
+
+## <a name="next-steps"></a>Nächste Schritte
+
+[Streamen von Videos](stream-files-tutorial-with-rest.md) 

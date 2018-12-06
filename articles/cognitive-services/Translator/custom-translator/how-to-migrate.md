@@ -9,12 +9,12 @@ ms.component: custom-translator
 ms.date: 11/13/2018
 ms.author: v-rada
 ms.topic: article
-ms.openlocfilehash: 378baad0735238dc0921e5e78e2a27b3ae907e19
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 611cd0878e88d2e1c0a988f73b57e391c5a8551d
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51627142"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51975906"
 ---
 # <a name="migrate-hub-workspace-and-projects-to-custom-translator"></a>Migrieren des Hub-Arbeitsbereichs und der Projekte zu Custom Translator
 
@@ -134,6 +134,19 @@ Wenn Sie einen detaillierteren Migrationsbericht über Ihre Projekte, Trainings 
 
 >[!Note]
 >Die Migration wird nur für die Sprachpaaren unterstützt, in denen es NMT-Sprachen gibt. Überprüfen Sie die Liste der derzeit [unterstützten NMT-Sprachen](https://www.microsoft.com/translator/business/languages/). Für die Sprachpaare, in denen es keine NMT-Sprachen gibt, werden die Daten vom Hub zum Custom Translator verschoben, aber es können keine Trainings für diese Sprachpaare durchgeführt werden.
+
+## <a name="custom-translator-versus-hub"></a>Benutzerdefinierter Translator im Vergleich zum Hub
+
+In der folgenden Tabelle werden die Features von Microsoft Translator Hub und Custom Translator gegenübergestellt:
+
+|   | Hub | Custom Translator |
+|:-----|:----:|:----:|
+|Status des Anpassungsfeatures   | Allgemeine Verfügbarkeit  | Vorschau |
+| Version der Text-API  | V2    | V3  |
+| SMT-Anpassung | JA   | Nein  |
+| NMT-Anpassung | Nein     | JA |
+| Neue einheitliche Anpassung der Sprachdienste | Nein     | JA |
+| Keine Ablaufverfolgung | JA | JA |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

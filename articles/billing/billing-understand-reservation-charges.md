@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2018
 ms.author: cwatson
-ms.openlocfilehash: ee73cb3164ce59136dd268853b8caa967a6f42e9
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 176e282a53c19e303fd06629a0045a79fd200dea
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47393383"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52580370"
 ---
 # <a name="understand-how-an-azure-reservation-discount-is-applied-to-sql-databases"></a>Grundlegendes zur Anwendung eines Rabatts für Azure-Reservierungen auf SQL-Datenbank-Instanzen
 
@@ -54,7 +54,6 @@ Weitere Informationen zu Azure-Reservierungen finden Sie in den folgenden Artike
 - [Grundlegendes zur Nutzung von Azure-Reservierungen für den Konzernbeitritt](billing-understand-reserved-instance-usage-ea.md)
 - [Grundlegendes zur Verwendung von Azure-Reservierungen für CSP-Abonnements](https://docs.microsoft.com/partner-center/azure-reservations)
 
+## <a name="need-help-contact-us"></a>Sie brauchen Hilfe? Wenden Sie sich an uns.
 
-## <a name="need-help-contact-support"></a>Sie brauchen Hilfe? Support kontaktieren
-
-Bei weiteren Fragen [wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), um das Problem schnell zu lösen.
+Wenn Sie weitere Fragen haben oder Hilfe benötigen, [erstellen Sie eine Supportanfrage](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).

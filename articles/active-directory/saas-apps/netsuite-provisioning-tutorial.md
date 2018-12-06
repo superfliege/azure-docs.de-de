@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Konfigurieren von Netsuite für die automatische Benutzerbereitstellung in Azure Active Directory | Microsoft-Dokumentation'
-description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Netsuite konfigurieren.
+title: 'Tutorial: Konfigurieren von NetSuite OneWorld für die automatische Benutzerbereitstellung in Azure Active Directory | Microsoft-Dokumentation'
+description: Hier erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und NetSuite OneWorld konfigurieren.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,26 +14,26 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: e14f74f3dd6d49b882dedcb2ae01029a50a459a3
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 81e590297283a8fe88d9257e201259056a3e3744
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44346745"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51823849"
 ---
 # <a name="tutorial-configuring-netsuite-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Netsuite für die automatische Benutzerbereitstellung
 
-In diesem Tutorial werden die Schritte beschrieben, die Sie in Netsuite und Azure AD ausführen müssen, um Benutzerkonten von Azure AD in Netsuite automatisch bereitzustellen bzw. deren Bereitstellung automatisch aufzuheben.
+In diesem Tutorial werden die Schritte beschrieben, die Sie in NetSuite OneWorld und Azure AD ausführen müssen, um Benutzerkonten von Azure AD automatisch in NetSuite bereitzustellen bzw. deren Bereitstellung automatisch aufzuheben.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Das in diesem Lernprogramm verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
 
 *   Einen Azure Active Directory-Mandanten
-*   Ein Netsuite-Abonnement, für das einmaliges Anmelden aktiviert ist
-*   Ein Benutzerkonto in Netsuite mit Teamadministratorberechtigungen
+*   Ein NetSuite OneWorld-Abonnement. Beachten Sie, dass die automatische Benutzerbereitstellung derzeit nur mit NetSuite OneWorld unterstützt wird.
+*   Ein Benutzerkonto in NetSuite mit Administratorberechtigungen
 
-## <a name="assigning-users-to-netsuite"></a>Zuweisen von Benutzern zu Netsuite
+## <a name="assigning-users-to-netsuite-oneworld"></a>Zuweisen von Benutzern zu NetSuite OneWorld
 
 Azure Active Directory ermittelt anhand von Zuweisungen, welche Benutzer Zugriff auf bestimmte Apps erhalten sollen. Im Kontext der automatischen Bereitstellung von Benutzerkonten werden nur die Benutzer und Gruppen synchronisiert, die einer Anwendung in Azure AD zugewiesen wurden.
 
@@ -41,7 +41,7 @@ Vor dem Konfigurieren und Aktivieren des Bereitstellungsdiensts müssen Sie ents
 
 [Zuweisen eines Benutzers oder einer Gruppe zu einer Unternehmens-App](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
 
-### <a name="important-tips-for-assigning-users-to-netsuite"></a>Wichtige Tipps zum Zuweisen von Benutzern zu Netsuite
+### <a name="important-tips-for-assigning-users-to-netsuite-oneworld"></a>Wichtige Tipps für das Zuweisen von Benutzern zu NetSuite OneWorld
 
 *   Es wird empfohlen, Netsuite einen einzelnen Azure AD-Benutzer zuzuweisen, um die Konfiguration der Bereitstellung zu testen. Später können weitere Benutzer und/oder Gruppen zugewiesen werden.
 

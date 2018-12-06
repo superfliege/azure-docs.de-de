@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/03/2018
 ms.author: cwatson
-ms.openlocfilehash: 2ae30ca55f3ca03a64438025960ddd807e288216
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: 4506d65d173ea483558a772d89fe7cbc8cd84944
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48272601"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52584586"
 ---
 # <a name="view-azure-reservations-in-the-azure-portal"></a>Anzeigen von Azure-Reservierungen im Azure-Portal
 
@@ -30,7 +30,7 @@ Standardmäßig können Sie und der Kontoadministrator die Reservierung anzeigen
  
 Gehen Sie folgendermaßen vor, um eine Reservierung als Besitzer oder Leser anzuzeigen:
 
-1. Melden Sie sich am [Azure-Portal]( http://portal.azure.com) an.
+1. Melden Sie sich beim [Azure-Portal]( http://portal.azure.com) an.
 1. Suchen Sie nach **Reservierungen**.
 
     ![Screenshot, der die Suche im Azure-Portal zeigt](./media/billing-view-reservation/portal-reservation-search.png)
@@ -45,7 +45,7 @@ Wenn Sie den Bereich einer Reservierung ändern, eine Reservierung aufteilen ode
 
 Gehen Sie folgendermaßen vor, um Reservierungstransaktionen im Azure-Portal anzuzeigen:
 
-1. Melden Sie sich aim [Azure-Portal]( http://portal.azure.com) an.
+1. Melden Sie sich beim [Azure-Portal]( http://portal.azure.com) an.
 1. Suchen Sie nach **Kostenverwaltung + Abrechnung**.
 
     ![Screenshot, der die Suche im Azure-Portal zeigt](./media/billing-view-reservation/portal-cm-billing-search.png)
@@ -71,6 +71,6 @@ Weitere Informationen zu Azure-Reservierungen finden Sie in den folgenden Artike
 - [Grundlegendes zur Nutzung von Azure-Reservierungen für den Konzernbeitritt](billing-understand-reserved-instance-usage-ea.md)
 - [Grundlegendes zur Verwendung von Azure-Reservierungen für CSP-Abonnements](https://docs.microsoft.com/partner-center/azure-reservations)
 
-## <a name="need-help-contact-support"></a>Sie brauchen Hilfe? Support kontaktieren
+## <a name="need-help-contact-us"></a>Sie brauchen Hilfe? Wenden Sie sich an uns.
 
-Bei weiteren Fragen [wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), um das Problem schnell zu lösen.
+Wenn Sie weitere Fragen haben oder Hilfe benötigen, [erstellen Sie eine Supportanfrage](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).

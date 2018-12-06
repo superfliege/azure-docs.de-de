@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: 4e5561c4846889f53723ed8df82d7c6268aee180
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 1a053f92433b6091f0d77439399e8419a58df185
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51241615"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52495155"
 ---
 # <a name="create-apache-hadoop-clusters-in-hdinsight-by-using-resource-manager-templates"></a>Erstellen von Apache Hadoop-Clustern in HDInsight mit Resource Manager-Vorlagen
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
@@ -32,7 +32,7 @@ Um die Anweisungen in diesem Artikel befolgen zu können, benötigen Sie:
 ### <a name="resource-manager-templates"></a>Resource Manager-Vorlagen
 Eine Resource Manager-Vorlage vereinfacht das Erstellen der folgenden Ressourcen für Ihre Anwendung in einem einzelnen koordinierten Vorgang:
 * HDInsight-Cluster und ihre abhängigen Ressourcen (z.B. das Standardspeicherkonto)
-* Andere Ressourcen (z.B. Azure SQL-Datenbank zur Verwendung von Apache Sqoop)
+* Andere Ressourcen (z.B. Azure SQL-Datenbank zur Verwendung von [Apache Sqoop](http://sqoop.apache.org/))
 
 In der Vorlage definieren Sie die Ressourcen, die für die Anwendung erforderlich sind. Sie geben außerdem die Bereitstellungsparameter zur Eingabe von Werten für unterschiedliche Umgebungen an. Die Vorlage besteht aus JSON-Code und Ausdrücken, mit denen Sie Werte für Ihre Bereitstellung erstellen.
 

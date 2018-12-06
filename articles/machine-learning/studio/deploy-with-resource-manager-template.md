@@ -1,10 +1,11 @@
 ---
-title: Bereitstellen eines Machine Learning-Arbeitsbereichs mit Azure Resource Manager | Microsoft-Dokumentation
+title: Bereitstellen eines Machine Learning-Arbeitsbereichs mit Azure Resource Manager – Azure Machine Learning Studio | Microsoft-Dokumentation
 description: 'Gewusst wie: Bereitstellen ein Arbeitsbereichs für Azure Machine Learning mit Azure Resource Manager-Vorlagen'
 services: machine-learning
 documentationcenter: ''
-author: heatherbshapiro
-ms.author: hshapiro
+author: ericlicoding
+ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
+ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
 ms.assetid: 4955ac4d-ff99-4908-aa27-69b6bfcc8e85
@@ -15,15 +16,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 2/05/2018
-ms.openlocfilehash: fc19c77e90ffd2d300497fc496da02b2d2234d3a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 82a9cfec0efe60e3a0cdf16efa373e68efebee59
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51244388"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52307979"
 ---
 # <a name="deploy-machine-learning-workspace-using-azure-resource-manager"></a>Bereitstellen des Machine Learning-Arbeitsbereichs mithilfe von Azure Resource Manager
-## <a name="introduction"></a>Einführung
+
 Mithilfe einer Azure Resource Manager-Bereitstellungsvorlage verfügen Sie über eine zeitsparende, skalierbare Möglichkeit, um miteinander verbundene Komponente mit einem Mechanismus zum Überprüfen und Wiederholen bereitzustellen. Zum Einrichten eines Azure Machine Learning-Arbeitsbereichs müssen Sie beispielsweise zuerst ein Azure Storage-Konto konfigurieren und anschließend Ihren Arbeitsbereich bereitstellen. Stellen Sie sich vor, Sie müssen diese Schritte manuell für Hunderte von Arbeitsbereichen ausführen. Eine einfachere Alternative besteht in der Verwendung einer Azure Resource Manager-Vorlage, um einen Azure Machine Learning-Arbeitsbereich mit all seinen Abhängigkeiten bereitzustellen. In diesem Artikel finden Sie eine schrittweise Anleitung für diesen Prozess. Einen allgemeinen Überblick über Azure Resource Manager erhalten Sie unter [Übersicht über Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md).
 
 ## <a name="step-by-step-create-a-machine-learning-workspace"></a>Schritt für Schritt: Erstellen eines Machine Learning-Arbeitsbereichs

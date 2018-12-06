@@ -5,7 +5,7 @@ keywords: Deaktiviertes Azure-Abonnement
 services: ''
 documentationcenter: ''
 author: genlin
-manager: jlian
+manager: adpick
 editor: ''
 tags: billing
 ms.assetid: 4529d685-3a87-49d9-8d7a-49baad552d76
@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/11/2018
 ms.author: cwatson
-ms.openlocfilehash: 3fc7e316289201f5a800b56a7dc63f559c1f90a2
-ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
+ms.openlocfilehash: 14e372ef8de0a3ec82d9a14d026487d72bfa80bd
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47422659"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52583719"
 ---
 # <a name="why-is-my-azure-subscription-disabled-and-how-do-i-reactivate-it"></a>Warum ist mein Azure-Abonnement deaktiviert, und wie reaktiviere ich es?
 
@@ -61,6 +61,6 @@ Wenn Sie der Kontoadministrator sind und versehentlich ein Abonnement mit nutzun
 
 [Wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), falls Sie andere Abonnementtypen verwenden, um Ihr Abonnement reaktivieren zu lassen.
 
-## <a name="need-help-contact-support"></a>Sie brauchen Hilfe? Support kontaktieren
+## <a name="need-help-contact-us"></a>Sie brauchen Hilfe? Wenden Sie sich an uns.
 
-[Wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), falls Sie weitere Hilfe benötigen, um das Problem schnell beheben zu lassen.
+Wenn Sie weitere Fragen haben oder Hilfe benötigen, [erstellen Sie eine Supportanfrage](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).

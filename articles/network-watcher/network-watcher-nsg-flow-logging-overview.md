@@ -14,16 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: ae4edb82fa5e192a30d297dae82199bb7efca0c2
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: addd901e1b3a9bb537278082763081a7e39b21da
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42142898"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51824284"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>Einführung in die Datenflussprotokollierung für Netzwerksicherheitsgruppen
 
-Datenflussprotokolle für Netzwerksicherheitsgruppen (NSG) sind ein Network Watcher-Feature, mit dem Sie Informationen zu ein- und ausgehendem IP-Datenverkehr über eine NSG anzeigen können. Die Flussprotokolle sind im JSON-Format geschrieben und zeigen aus- und eingehende Datenflüsse pro Regel, die Netzwerkschnittstelle, auf die sich der Datenfluss bezieht, 5-Tupel-Informationen über den Datenfluss (Quell-/Ziel-IP-Adresse, Quell-/Zielport, Protokoll) und Informationen zu zugelassenem oder verweigertem Datenverkehr an.
+Datenflussprotokolle für Netzwerksicherheitsgruppen (NSG) sind ein Network Watcher-Feature, mit dem Sie Informationen zu ein- und ausgehendem IP-Datenverkehr über eine NSG anzeigen können. Die Flowprotokolle sind im JSON-Format geschrieben und zeigen aus- und eingehende Datenflows pro Regel, die Netzwerkschnittstelle, auf die sich der Datenflow bezieht, 5-Tupel-Informationen über den Datenflow (Quell-/Ziel-IP-Adresse, Quell-/Zielport, Protokoll) und Informationen zu zugelassenem oder verweigertem Datenverkehr an. In Version 2 sind darüber hinaus Durchsatzinformationen (Bytes und Pakete) angegeben.
+
 
 ![Übersicht zu Flowprotokollen](./media/network-watcher-nsg-flow-logging-overview/figure1.png)
 
@@ -32,8 +33,11 @@ Da sich Datenflussprotokolle auf NSGs beziehen, werden sie nicht wie andere Prot
 ```
 https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecuritygroupflowevent/resourceId=/SUBSCRIPTIONS/{subscriptionID}/RESOURCEGROUPS/{resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/{nsgName}/y={year}/m={month}/d={day}/h={hour}/m=00/macAddress={macAddress}/PT1H.json
 ```
-
+ 
 Für Datenflussprotokolle gelten die gleichen Aufbewahrungsrichtlinien wie für andere Protokolle. Sie können Protokollaufbewahrungs-Richtlinien von einem Tag bis zu 2.147.483.647 Tagen festlegen. Wenn keine Aufbewahrungsrichtlinie festgelegt wurde, werden die Protokolle unbegrenzt aufbewahrt.
+
+Sie können Flowprotokolle auch mithilfe der [Datenverkehrsanalyse](traffic-analytics.md) analysieren.
+
 
 ## <a name="log-file"></a>Protokolldatei
 
@@ -58,15 +62,116 @@ Datenflussprotokolle enthalten die folgenden Eigenschaften:
                     * **Zielport:** Zielport
                     * **Protokoll:** Protokoll des Datenflusses. Gültige Werte sind **T** für TCP und **U** für UDP.
                     * **Datenfluss:** Richtung des Datenflusses. Gültige Werte sind **I** für eingehende (inbound) und **O** für ausgehende (outbound) Nachrichten.
-                    * **Datenverkehr:** gibt an, ob Datenverkehr zugelassen oder verweigert wurde. Gültige Werte sind **A** für zugelassen (allowed) und **D** für verweigert (denied).
+                    * **Entscheidung zum Datenverkehr:** Gibt an, ob Datenverkehr zugelassen oder verweigert wurde. Gültige Werte sind **A** für zugelassen (allowed) und **D** für verweigert (denied).
+                    * **Flowstatus (nur Version 2):** Erfasst den Flowstatus. Mögliche Statusangaben: **B** (Beginn/Anfang): Erstellung eines Flows. Statistiken werden nicht bereitgestellt. **C** (Continue/Fortsetzung): Ein laufender Flow wird weiter fortgesetzt. Statistiken werden in Intervallen von 5 Minuten bereitgestellt. **E** (End/Beendung): Beendung eines Flows, Statistiken werden bereitgestellt.
+                    * **Pakete – Quelle zu Ziel – nur Version 2:** Die Gesamtanzahl von TCP- oder UDP-Paketen, die seit dem letzten Update von der Quelle zum Ziel gesendet wurden
+                    * **Gesendete Bytes – Quelle zu Ziel – nur Version 2:** Die Gesamtanzahl von TCP- oder UDP-Paketbytes, die seit dem letzten Update von der Quelle zum Ziel gesendet wurden Paketbytes enthalten den Paketheader und die Nutzlast.
+                    * **Pakete – Ziel zu Quelle – nur Version 2:** Die Gesamtanzahl von TCP- oder UDP-Paketen, die seit dem letzten Update vom Ziel zur Quelle gesendet wurden
+                    * **Gesendete Bytes – Ziel zu Quelle – nur Version 2:** Die Gesamtanzahl von TCP- oder UDP-Paketbytes, die seit dem letzten Update vom Ziel zur Quelle gesendet wurden Paketbytes enthalten den Paketheader und die Nutzlast.
+
+## <a name="nsg-flow-logs-version-2"></a>Version 2 der NSG-Flowprotokolle
+> [!NOTE] 
+> Flowprotokolle (Version 2) sind nur in der Region „USA, Westen-Mitte“ verfügbar. Die Konfiguration ist über das Azure-Portal und die REST-API verfügbar. Die Aktivierung von Protokollen der Version 2 in einer nicht unterstützten Region führt dazu, dass Protokolle der Version 1 in Ihr Speicherkonto ausgegeben werden.
+
+In Version 2 der Protokollierung wird der Flowzustand eingeführt. Sie können konfigurieren, welche Version von Flowprotokollen Sie erhalten. Wie Sie Datenflussprotokolle aktivieren, erfahren Sie unter [Tutorial: Verwalten von Datenflussprotokollen für Netzwerksicherheitsgruppen über das Azure-Portal](network-watcher-nsg-flow-logging-portal.md).
+
+Der Flowzustand *B* wird aufgezeichnet, wenn ein Flow initiiert wird. Die Flowzustände *C* und *E* markieren die Fortsetzung bzw. die Beendung eines Flows. Die Zustände *C* und *E* enthalten Informationen zur Bandbreite des Datenverkehrs.
+
+Für die Flowzustände *C* (Fortsetzung) und *E* (Beendung) wird die Anzahl von Bytes und Paketen vom Zeitpunkt des vorherigen Flowtupeldatensatzes an aggregiert. Entsprechend der vorherigen Beispielkonversation ist die Gesamtanzahl der übertragenen Pakete 1021+52+8005+47 = 9125. Die Gesamtanzahl der übertragenen Bytes ist 588096+29952+4610880+27072 = 5256000.
+
+**Beispiel:** Flowtupel von einer TCP-Konversation zwischen 185.170.185.105:35370 und 10.2.0.4:23:
+
+"1493763938,185.170.185.105,10.2.0.4,35370,23,T,I,A,B,,,," "1493695838,185.170.185.105,10.2.0.4,35370,23,T,I,A,C,1021,588096,8005,4610880" "1493696138,185.170.185.105,10.2.0.4,35370,23,T,I,A,E,52,29952,47,27072"
+
+Für die Flowzustände *C* (Fortsetzung) und *E* (Beendung) wird die Anzahl von Bytes und Paketen vom Zeitpunkt des vorherigen Flowtupeldatensatzes an aggregiert. Entsprechend der vorherigen Beispielkonversation ist die Gesamtanzahl der übertragenen Pakete 1021+52+8005+47 = 9125. Die Gesamtanzahl der übertragenen Bytes ist 588096+29952+4610880+27072 = 5256000.
 
 Der folgende Text ist ein Beispiel für ein Datenflussprotokoll. Wie Sie sehen können, sind mehrere Datensätze vorhanden, die der im vorherigen Abschnitt beschriebenen Eigenschaftenliste entsprechen.
+
+## <a name="sample-log-records"></a>Beispielprotokolleinträge
+
+Der folgende Text ist ein Beispiel für ein Datenflussprotokoll. Wie Sie sehen können, sind mehrere Datensätze vorhanden, die der im vorherigen Abschnitt beschriebenen Eigenschaftenliste entsprechen.
+
 
 > [!NOTE]
 > Die Werte in der **flowTuples*-Eigenschaft sind eine durch Trennzeichen getrennte Liste.
  
+### <a name="version-1-nsg-flow-log-format-sample"></a>Beispiel für das Format eines NSG-Flowprotokolls der Version 1
 ```json
 {
+    "records": [
+        {
+            "time": "2017-02-16T22:00:32.8950000Z",
+            "systemId": "2c002c16-72f3-4dc5-b391-3444c3527434",
+            "category": "NetworkSecurityGroupFlowEvent",
+            "resourceId": "/SUBSCRIPTIONS/00000000-0000-0000-0000-000000000000/RESOURCEGROUPS/FABRIKAMRG/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/FABRIAKMVM1-NSG",
+            "operationName": "NetworkSecurityGroupFlowEvents",
+            "properties": {
+                "Version": 1,
+                "flows": [
+                    {
+                        "rule": "DefaultRule_DenyAllInBound",
+                        "flows": [
+                            {
+                                "mac": "000D3AF8801A",
+                                "flowTuples": [
+                                    "1487282421,42.119.146.95,10.1.0.4,51529,5358,T,I,D"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "rule": "UserRule_default-allow-rdp",
+                        "flows": [
+                            {
+                                "mac": "000D3AF8801A",
+                                "flowTuples": [
+                                    "1487282370,163.28.66.17,10.1.0.4,61771,3389,T,I,A",
+                                    "1487282393,5.39.218.34,10.1.0.4,58596,3389,T,I,A",
+                                    "1487282393,91.224.160.154,10.1.0.4,61540,3389,T,I,A",
+                                    "1487282423,13.76.89.229,10.1.0.4,53163,3389,T,I,A"
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "time": "2017-02-16T22:01:32.8960000Z",
+            "systemId": "2c002c16-72f3-4dc5-b391-3444c3527434",
+            "category": "NetworkSecurityGroupFlowEvent",
+            "resourceId": "/SUBSCRIPTIONS/00000000-0000-0000-0000-000000000000/RESOURCEGROUPS/FABRIKAMRG/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/FABRIAKMVM1-NSG",
+            "operationName": "NetworkSecurityGroupFlowEvents",
+            "properties": {
+                "Version": 1,
+                "flows": [
+                    {
+                        "rule": "DefaultRule_DenyAllInBound",
+                        "flows": [
+                            {
+                                "mac": "000D3AF8801A",
+                                "flowTuples": [
+                                    "1487282481,195.78.210.194,10.1.0.4,53,1732,U,I,D"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "rule": "UserRule_default-allow-rdp",
+                        "flows": [
+                            {
+                                "mac": "000D3AF8801A",
+                                "flowTuples": [
+                                    "1487282435,61.129.251.68,10.1.0.4,57776,3389,T,I,A",
+                                    "1487282454,84.25.174.170,10.1.0.4,59085,3389,T,I,A",
+                                    "1487282477,77.68.9.50,10.1.0.4,65078,3389,T,I,A"
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
     "records":
     [
         
@@ -97,6 +202,77 @@ Der folgende Text ist ein Beispiel für ein Datenflussprotokoll. Wie Sie sehen k
              "properties": {"Version":1,"flows":[{"rule":"DefaultRule_DenyAllInBound","flows":[{"mac":"000D3AF8801A","flowTuples":["1487282492,175.182.69.29,10.1.0.4,28918,5358,T,I,D","1487282505,71.6.216.55,10.1.0.4,8080,8080,T,I,D"]}]},{"rule":"UserRule_default-allow-rdp","flows":[{"mac":"000D3AF8801A","flowTuples":["1487282512,91.224.160.154,10.1.0.4,59046,3389,T,I,A"]}]}]}
         }
         ,
+        ...
+```
+### <a name="version-2-nsg-flow-log-format-sample"></a>Beispiel für das Format eines NSG-Flowprotokolls der Version 2
+```json
+ {
+    "records": [
+        {
+            "time": "2018-11-13T12:00:35.3899262Z",
+            "systemId": "a0fca5ce-022c-47b1-9735-89943b42f2fa",
+            "category": "NetworkSecurityGroupFlowEvent",
+            "resourceId": "/SUBSCRIPTIONS/00000000-0000-0000-0000-000000000000/RESOURCEGROUPS/FABRIKAMRG/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/FABRIAKMVM1-NSG",
+            "operationName": "NetworkSecurityGroupFlowEvents",
+            "properties": {
+                "Version": 2,
+                "flows": [
+                    {
+                        "rule": "DefaultRule_DenyAllInBound",
+                        "flows": [
+                            {
+                                "mac": "000D3AF87856",
+                                "flowTuples": [
+                                    "1542110402,94.102.49.190,10.5.16.4,28746,443,U,I,D,B,,,,",
+                                    "1542110424,176.119.4.10,10.5.16.4,56509,59336,T,I,D,B,,,,",
+                                    "1542110432,167.99.86.8,10.5.16.4,48495,8088,T,I,D,B,,,,"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "rule": "DefaultRule_AllowInternetOutBound",
+                        "flows": [
+                            {
+                                "mac": "000D3AF87856",
+                                "flowTuples": [
+                                    "1542110377,10.5.16.4,13.67.143.118,59831,443,T,O,A,B,,,,",
+                                    "1542110379,10.5.16.4,13.67.143.117,59932,443,T,O,A,E,1,66,1,66",
+                                    "1542110379,10.5.16.4,13.67.143.115,44931,443,T,O,A,C,30,16978,24,14008",
+                                    "1542110406,10.5.16.4,40.71.12.225,59929,443,T,O,A,E,15,8489,12,7054"
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "time": "2018-11-13T12:01:35.3918317Z",
+            "systemId": "a0fca5ce-022c-47b1-9735-89943b42f2fa",
+            "category": "NetworkSecurityGroupFlowEvent",
+            "resourceId": "/SUBSCRIPTIONS/00000000-0000-0000-0000-000000000000/RESOURCEGROUPS/FABRIKAMRG/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/FABRIAKMVM1-NSG",
+            "operationName": "NetworkSecurityGroupFlowEvents",
+            "properties": {
+                "Version": 2,
+                "flows": [
+                    {
+                        "rule": "DefaultRule_DenyAllInBound",
+                        "flows": [
+                            {
+                                "mac": "000D3AF87856",
+                                "flowTuples": [
+                                    "1542110437,125.64.94.197,10.5.16.4,59752,18264,T,I,D,B,,,,",
+                                    "1542110475,80.211.72.221,10.5.16.4,37433,8088,T,I,D,B,,,,",
+                                    "1542110487,46.101.199.124,10.5.16.4,60577,8088,T,I,D,B,,,,",
+                                    "1542110490,176.119.4.30,10.5.16.4,57067,52801,T,I,D,B,,,,"
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
         ...
 ```
 

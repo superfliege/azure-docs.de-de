@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
 ms.date: 11/12/2018
-ms.openlocfilehash: 43db0e66c05b6b5c3331d3fba3e4db363d61c9f8
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 195a54ab65573a24911169b7dc42de7637ad60f9
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51624351"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51823808"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql"></a>PostgreSQL-Erweiterungen in Azure Database for PostgreSQL
 PostgreSQL bietet die Möglichkeit, die Funktionalität Ihrer Datenbank mithilfe von Erweiterungen zu erweitern. Durch Erweiterungen können mehrere SQL-bezogene Objekte zu einem einzigen Paket gebündelt und über einen einzigen Befehl in die Datenbank geladen oder aus dieser entfernt werden. Nach dem Laden in die Datenbank können Erweiterungen ebenso wie integrierte Features funktionieren. Weitere Informationen zu PostgreSQL-Erweiterungen finden Sie unter  [Packen von zugehörigen Objekten in einer Erweiterung](https://www.postgresql.org/docs/9.6/static/extend-extensions.html).
@@ -89,6 +89,7 @@ In den folgenden Tabellen werden die standardmäßigen PostgreSQL-Erweiterungen 
 | [pgstattuple](https://www.postgresql.org/docs/9.6/static/pgstattuple.html) | Bietet eine Möglichkeit zum Anzeigen von Statistiken auf Tupelebene. |
 | [postgres\_fdw](https://www.postgresql.org/docs/9.6/static/postgres-fdw.html) | Wrapper für programmfremde Daten, um auf in externen PostgreSQL-Servern gespeicherten Daten zuzugreifen |
 | [hypopg](https://hypopg.readthedocs.io/en/latest/) | Stellt eine Möglichkeit zum Erstellen hypothetischer Indizes bereit, die weder CPU noch Speicherplatz benötigen. |
+| [dblink](https://www.postgresql.org/docs/current/dblink.html) | Ein Modul, das Verbindungen mit anderen PostgreSQL-Datenbanken innerhalb einer Datenbanksitzung unterstützt |
 
 
 ### <a name="postgis-extensions"></a>PostGIS-Erweiterungen

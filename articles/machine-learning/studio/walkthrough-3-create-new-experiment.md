@@ -1,10 +1,11 @@
 ---
-title: 'Schritt 3: Erstellen eines neuen Machine Learning-Experiments | Microsoft Docs'
+title: 'Schritt 3: Erstellen eines neuen Machine Learning Studio-Experiments – Azure | Microsoft-Dokumentation'
 description: 'Exemplarische Vorgehensweise zum Entwickeln einer Vorhersagelösung – Schritt 3: Erstellen eines neuen Trainingsexperiments in Azure Machine Learning Studio.'
 services: machine-learning
 documentationcenter: ''
-author: heatherbshapiro
-ms.author: hshapiro
+author: ericlicoding
+ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
+ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
 ms.assetid: 660e3c27-55ef-4c33-a4e9-dff4d1224630
@@ -15,14 +16,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/23/2017
-ms.openlocfilehash: 95000f9fb57b95bf1edcda9abfba3668b5f5b523
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: a6f12c536cfc18ed0be55ec1755c7fe5179006ba
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34835738"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52317527"
 ---
-# <a name="walkthrough-step-3-create-a-new-azure-machine-learning-experiment"></a>Exemplarische Vorgehensweise, Schritt 3: Erstellen eines neuen Azure Machine Learning-Experiments
+# <a name="walkthrough-step-3-create-a-new-azure-machine-learning-studio-experiment"></a>Exemplarische Vorgehensweise, Schritt 3: Erstellen eines neuen Azure Machine Learning Studio-Experiments
 Dies ist der dritte Schritt der exemplarischen Vorgehensweise zum [Entwickeln einer Predictive Analytics-Lösung in Azure Machine Learning](walkthrough-develop-predictive-solution.md)
 
 1. [Erstellen eines Machine Learning-Arbeitsbereichs](walkthrough-1-create-ml-workspace.md)

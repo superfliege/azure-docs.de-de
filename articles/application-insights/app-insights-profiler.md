@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.reviewer: cawa
 ms.date: 08/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: 9aae08aa5906f341a890ac15e30d2863109d83a2
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: b0fc10099f1388169146d90efcd7c20dcbe8df27
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50140007"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52164947"
 ---
 # <a name="profile-live-azure-web-apps-with-application-insights"></a>Profilerstellung für Live-Azure-Web-Apps mit Application Insights
 
@@ -31,18 +31,18 @@ Befolgen Sie die unten angegebene Anleitung, um Profiler für eine Web-App zu ak
 * [Virtuelle Computer](app-insights-profiler-vm.md?toc=/azure/azure-monitor/toc.json)
 
 
-Application Insights Profiler wird zusammen mit der Application Insights-Websiteerweiterung installiert. Sie müssen die Websiteerweiterung installieren und konfigurieren, um Profile für Ihre Azure-Web-Apps zu erhalten. Führen Sie die unten angegebenen Schritte zum Aktivieren von Profiler aus, nachdem Sie eine Web-App bereitgestellt haben (auch wenn Sie das Application Insights SDK in den Quellcode eingefügt haben).
+Application Insights Profiler ist als Teil der App Services-Runtime zwar bereits vorinstalliert, muss aber noch aktiviert werden, um Profile für Ihre Azure-Web-Apps zu erhalten. Führen Sie die unten angegebenen Schritte zum Aktivieren von Profiler aus, nachdem Sie eine Web-App bereitgestellt haben (auch wenn Sie das Application Insights SDK in den Quellcode eingefügt haben).
 
 1. Wechseln Sie zum Bereich **App Services** im Azure-Portal.
 1. Navigieren Sie zum Bereich **Einstellungen > Überwachung**.
 
    ![Aktivieren von App Insights im App Services-Portal](./media/app-insights-profiler/AppInsights-AppServices.png)
 
-1. Befolgen Sie entweder die Anweisungen im Bereich zum Erstellen einer neuen Ressource, oder wählen Sie eine vorhandene App Insights-Ressource zum Überwachen Ihrer Webs-App aus. Übernehmen Sie alle Standardoptionen. **Diagnose auf Codeebene** ist standardmäßig eingeschaltet und aktiviert Profiler.
+1. Befolgen Sie entweder die Anweisungen im Bereich zum Erstellen einer neuen Ressource, oder wählen Sie eine vorhandene App Insights-Ressource zum Überwachen Ihrer Webs-App aus. Vergewissern Sie sich außerdem, dass der Profiler auf **Ein** festgelegt ist.
 
    ![Hinzufügen der App Insights-Websiteerweiterung][Enablement UI]
 
-1. Profiler ist jetzt mit der App Insights-Websiteerweiterung installiert und wurde mit einer App Services-App-Einstellung aktiviert.
+1. Der Profiler wurde mithilfe einer App Services-App-Einstellung aktiviert.
 
     ![App-Einstellung für Profiler][profiler-app-setting]
 

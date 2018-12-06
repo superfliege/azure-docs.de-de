@@ -11,17 +11,52 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 11/12/2018
+ms.date: 11/15/2018
 ms.author: raiye
-ms.openlocfilehash: 19f9584c86993942e949716e14d2190fc5b31ce0
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.openlocfilehash: c2ff5d79c59a08c6ed808312027dc69aee910224
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51578772"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51854270"
 ---
 # <a name="azure-guest-os"></a>Azure-Gastbetriebssystem
 Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MSRC), die auf das Azure-Gastbetriebssystem angewendet wurden. Durchsuchen Sie diesen Artikel, um zu ermitteln, ob ein bestimmtes Update für das Gastbetriebssystem gilt, das Sie verwenden. Updates werden für die [Familie][family-explain], in der sie eingeführt wurden, immer in die jeweils neueste Version übertragen.
+
+## <a name="november-2018-guest-os"></a>Gastbetriebssystem für November 2018
+
+>[!NOTE]
+>Das Gastbetriebssystem für November wird derzeit auf Clouddienst-VMs eingeführt, die für automatische Updates konfiguriert sind. Wenn die Bereitstellung abgeschlossen ist, wird diese Version für manuelle Updates über das Azure-Portal und Konfigurationsdateien verfügbar gemacht. Die folgenden Patches sind im Gastbetriebssystem für November enthalten. Änderungen der Liste vorbehalten.
+
+| Produktkategorie | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
+| --- | --- | --- | --- | --- |
+| Rel 18-11 | [4466536] | Internet Explorer | 2.80, 3.67, 4.60 | 13. November 2018 |
+| Rel 18-11 | [4467694] | Blinken | 3.67, 4.60, 5.25 | 13. November 2018 |
+| Rel 18-11 | [4467106] | Windows-Sicherheit | 2.80 | 13. November 2018 |
+| Rel 18-11 | [4467678] | Windows-Sicherheit | 3.67 | 13. November 2018 |
+| Rel 18-11 | [4467703] | Windows-Sicherheit | 4.60 | 13. November 2018 |
+| Rel 18-11 | [4467691] | Sicherheitsupdates für Windows 10 | 5.25 | 13. November 2018 |
+| N/V | [3173426] | Wartungsstapelaktualisierung | 3.67 | 12. Juli 2016 |
+| N/V | [4465659] | Wartungsstapelaktualisierung | 5.25 | 13. November 2018 |
+| N/V | [4462923] | Nicht sicherheitsrelevanter Rollup für Oktober | 2.80 | 9. Oktober 2018 |
+| N/V | [4462929] | Nicht sicherheitsrelevanter Rollup für Oktober | 3.67 | 9. Oktober 2018 |
+| N/V | [4462926] | Nicht sicherheitsrelevanter Rollup für Oktober | 4.60 | 9. Oktober 2018 |
+| N/V | [3109976] | Anwendungskompatibilitätsshims | 4.60 | 12. April 2016 |
+| N/V | [4457037] | Anwendungskompatibilitätsshims | 4.60| 12. Juni 2018 |
+
+[4466536]: http://support.microsoft.com/kb/4466536
+[4467694]: http://support.microsoft.com/kb/4467694
+[4467106]: http://support.microsoft.com/kb/4467106
+[4467678]: http://support.microsoft.com/kb/4467678
+[4467703]: http://support.microsoft.com/kb/4467703
+[4467691]: http://support.microsoft.com/kb/4467691
+[3173426]: http://support.microsoft.com/kb/3173426
+[4465659]: http://support.microsoft.com/kb/4465659
+[4462923]: http://support.microsoft.com/kb/4462923
+[4462929]: http://support.microsoft.com/kb/4462929
+[4462926]: http://support.microsoft.com/kb/4462926
+[3109976]: http://support.microsoft.com/kb/3109976
+[4457037]: http://support.microsoft.com/kb/4457037
 
 ## <a name="october-2018-guest-os"></a>Gastbetriebssystem für Oktober 2018
 

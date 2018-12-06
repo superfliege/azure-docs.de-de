@@ -9,14 +9,14 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.openlocfilehash: 3cd27438247b801e384b80d96ba288896b4c5aae
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: d422b56acd56f87cb855c5e045e3a91666eee571
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51234221"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52499397"
 ---
-# <a name="create-a-spark-machine-learning-pipeline"></a>Erstellen einer Spark Machine Learning-Pipeline
+# <a name="create-an-apache-spark-machine-learning-pipeline"></a>Erstellen einer Apache Spark-Machine Learning-Pipeline
 
 Die skalierbare Machine Learning-Bibliothek von Apache Spark (MLlib) bringt Modellierungsfunktionen in eine verteilte Umgebung ein. Das Spark-Paket [`spark.ml`](http://spark.apache.org/docs/latest/ml-pipeline.html) umfasst eine Gruppe von auf Dataframes aufbauenden APIs auf höherer Ebene. Mit diesen APIs können Sie praktische Machine Learning-Pipelines erstellen und optimieren.  *Spark-Machine Learning* bezieht sich auf diese Dataframe-basierte MLlib-API und nicht auf die ältere RDD-basierte Pipeline-API.
 
@@ -131,4 +131,4 @@ Das `model`-Objekt kann nun für Vorhersagen verwendet werden. Das vollständige
 
 ## <a name="see-also"></a>Weitere Informationen
 
-* [Data Science unter Verwendung von Scala und Spark in Azure](../../machine-learning/team-data-science-process/scala-walkthrough.md)
+* [Data Science unter Verwendung von Scala und Apache Spark in Azure](../../machine-learning/team-data-science-process/scala-walkthrough.md)

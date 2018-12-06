@@ -1,10 +1,11 @@
 ---
-title: Problembehandlung für das erneute Trainieren eines klassischen Azure Machine Learning-Webdiensts | Microsoft-Dokumentation
-description: Es wird beschrieben, wie Sie häufige Probleme erkennen und beheben, die beim erneuten Trainieren des Modells für einen Azure Machine Learning-Webdienst auftreten können.
+title: Problembehandlung für das erneute Trainieren eines klassischen Machine Learning Studio-Webdiensts – Azure | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie häufige Probleme erkennen und beheben, die beim erneuten Trainieren des Modells für einen Azure Machine Learning Studio-Webdienst auftreten können.
 services: machine-learning
 documentationcenter: ''
-author: YasinMSFT
-ms.author: yahajiza
+author: ericlicoding
+ms.custom: (previous ms.author=yahajiza, author=YasinMSFT)
+ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
 ms.assetid: 75cac53c-185c-437d-863a-5d66d871921e
@@ -15,14 +16,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/01/2017
-ms.openlocfilehash: 989bf010320501050a37fbf2f0799f50a5a3e2ba
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 1105b81d0f8ba80bd76bcdf140fe79b9e8a7102d
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34835772"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52307201"
 ---
-# <a name="troubleshooting-the-retraining-of-an-azure-machine-learning-classic-web-service"></a>Problembehandlung für das erneute Trainieren eines klassischen Azure Machine Learning-Webdiensts
+# <a name="troubleshooting-the-retraining-of-an-azure-machine-learning-studio-classic-web-service"></a>Problembehandlung für das erneute Trainieren eines klassischen Azure Machine Learning Studio-Webdiensts
 ## <a name="retraining-overview"></a>Erneutes Trainieren – Übersicht
 Wenn Sie ein Vorhersageexperiment als Bewertungswebdienst bereitstellen, handelt es sich um ein statisches Modell. Wenn neue Daten verfügbar sind oder der Endkunde der API über eigene Daten verfügt, muss für das Modell das erneute Trainieren durchgeführt werden. 
 

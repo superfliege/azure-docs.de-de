@@ -1,10 +1,11 @@
 ---
-title: 'Schritt 2: Hochladen von Daten in ein Machine Learning-Experiment | Microsoft Docs'
+title: 'Schritt 2: Hochladen von Daten in ein Machine Learning Studio-Experiment – Azure | Microsoft-Dokumentation'
 description: 'Exemplarische Vorgehensweise zur Entwicklung einer Vorhersagelösung – Schritt 2: Hochladen gespeicherter öffentlicher Daten in Azure Machine Learning Studio.'
 services: machine-learning
 documentationcenter: ''
-author: heatherbshapiro
-ms.author: hshapiro
+author: ericlicoding
+ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
+ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
 ms.assetid: 9f4bc52e-9919-4dea-90ea-5cf7cc506d85
@@ -15,14 +16,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/23/2017
-ms.openlocfilehash: dfa6ae8011da0299c270035b8b781d70a8e80119
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 0dc39d42e1ad7cc955b0bdc91d9a4c5cb49a2f2e
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34835789"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52311975"
 ---
-# <a name="walkthrough-step-2-upload-existing-data-into-an-azure-machine-learning-experiment"></a>Anleitung Schritt 2: Hochladen vorhandener Daten in ein Azure Machine Learning-Experiment
+# <a name="walkthrough-step-2-upload-existing-data-into-an-azure-machine-learning-studio-experiment"></a>Exemplarische Vorgehensweise, Schritt 2: Hochladen vorhandener Daten in ein Azure Machine Learning Studio-Experiment
 Dies ist der zweite Schritt der exemplarischen Vorgehensweise zum [Entwickeln einer Predictive Analytics-Lösung mit Azure Machine Learning](walkthrough-develop-predictive-solution.md)
 
 1. [Erstellen eines Machine Learning-Arbeitsbereichs](walkthrough-1-create-ml-workspace.md)

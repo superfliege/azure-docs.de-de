@@ -1,10 +1,11 @@
 ---
-title: Auswerten der Modellleistung in Azure Machine Learning | Microsoft Docs
-description: Erläutert, wie die Modellleistung in Azure Machine Learning ausgewertet wird.
+title: Auswerten der Modellleistung – Azure Machine Learning Studio | Microsoft-Dokumentation
+description: Dieser Artikel veranschaulicht, wie die Leistung eines Modells in Azure Machine Learning Studio ausgewertet wird, und erläutert die für diese Aufgabe verfügbaren Metriken.
 services: machine-learning
 documentationcenter: ''
-author: heatherbshapiro
-ms.author: hshapiro
+author: ericlicoding
+ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
+ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
 ms.assetid: 5dc5348a-4488-4536-99eb-ff105be9b160
@@ -15,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
-ms.openlocfilehash: bb49fd2fe7f72e211fbbda7cffdd2308c2c36fba
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: de013f8deb5e64077aad96bd34d64135f981166d
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34834232"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52311493"
 ---
 # <a name="how-to-evaluate-model-performance-in-azure-machine-learning"></a>Auswerten der Modellleistung in Azure Machine Learning
 Dieser Artikel veranschaulicht, wie die Leistung eines Modells in Azure Machine Learning Studio ausgewertet wird, und erläutert die für diese Aufgabe verfügbaren Metriken. Es werden drei häufig eingesetzte Szenarios des beaufsichtigten Lernens vorgestellt: 
@@ -38,7 +39,7 @@ In Azure Machine Learning wird die Auswertung von Modellen durch zwei der wichti
 ## <a name="evaluation-vs-cross-validation"></a>Auswertung und Kreuzvalidierung im Vergleich
 Die Auswertung und die Kreuzvalidierung sind Standardmethoden zum Messen der Leistung von Modellen. Bei beiden Methoden werden Auswertungskennzahlen generiert, die mit denen anderer Modelle geprüft oder verglichen werden können.
 
-Beim [Evaluate Model][evaluate-model] wird ein bewertetes Dataset als Eingabe erwartet (oder zwei Datasets, wenn Sie die Leistung zweier verschiedener Modelle vergleichen möchten). Das bedeutet, dass Sie Ihr Modell mit dem Modul [Train Model][train-model] trainieren und mit dem Modul [Score Model][score-model] Vorhersagen für ein Dataset treffen müssen, bevor Sie die Ergebnisse auswerten können. Die Auswertung basiert auf den bewerteten Bezeichnern/Wahrscheinlichkeiten sowie auf den tatsächlichen Bezeichnern, die alle vom Modul [Score Model][score-model] ausgegeben werden.
+Bei [Evaluate Model][evaluate-model] wird ein bewertetes Dataset als Eingabe erwartet (oder zwei Datasets, wenn Sie die Leistung zweier verschiedener Modelle vergleichen möchten). Das bedeutet, dass Sie Ihr Modell mit dem Modul [Train Model][train-model] trainieren und mit dem Modul [Score Model][score-model] Vorhersagen für ein Dataset treffen müssen, bevor Sie die Ergebnisse auswerten können. Die Auswertung basiert auf den bewerteten Bezeichnern/Wahrscheinlichkeiten sowie auf den tatsächlichen Bezeichnern, die alle vom Modul [Score Model][score-model] ausgegeben werden.
 
 Alternativ können Sie mithilfe der Kreuzvalidierung automatisch mehrere Trainings-/Bewertungs-/Auswertungsvorgänge (Aufteilung in 10 Teildatensätze) für verschiedene Teilmengen der Eingabedaten durchführen. Die Eingabedaten werden in 10 Teilmengen aufgeteilt, wobei eine Teilmenge zum Testen und die anderen 9 zum Trainieren vorgesehen sind. Dieser Vorgang wird 10-mal wiederholt, und die Auswertungskennzahlen werden gemittelt. Damit lässt sich feststellen, wie gut ein Modell neue Datasets verallgemeinert. Das Modul [Cross Validate Model][cross-validate-model] akzeptiert ein untrainiertes Modell und ein Dataset mit Bezeichnern und gibt die Auswertungsergebnisse aller zehn Aufteilungen sowie die gemittelten Ergebnisse aus.
 
@@ -65,7 +66,7 @@ Abbildung 1. Auswerten eines Regressionsmodells.
 ### <a name="inspecting-the-evaluation-results"></a>Überprüfen der Auswertungsergebnisse
 Nach dem Ausführen des Experiments können Sie auf den Ausgabeport des Moduls [Evaluate Model][evaluate-model] klicken und *Visualize* auswählen, um die Auswertungsergebnisse anzuzeigen. Für Regressionsmodelle stehen folgende Auswertungskennzahlen zur Verfügung: *Mean Absolute Error*, *Root Mean Absolute Error*, *Relative Absolute Error*, *Relative Squared Error* und *Coefficient of Determination*.
 
-Der Begriff "Fehler" gibt hier die Differenz zwischen dem vorhergesagten und dem tatsächlichen Wert an. Normalerweise wird der absolute Wert oder das Quadrat dieser Differenz berechnet, um die gesamte Fehlerabweichung in allen Fällen zu erfassen, da die Differenz zwischen dem vorhergesagten und dem tatsächlichen Wert in einigen Fällen auch negativ sein kann. Die Fehlerkennzahlen messen die Vorhersageleistung eines Regressionsmodells im Hinblick auf die mittlere Abweichung seiner Vorhersagen von den tatsächlichen Werten. Kleinere Fehlerwerte bedeuten, dass das Modell bei Vorhersagen genauer ist. Die Fehlerkennzahl "0" bedeutet, dass das Modell perfekt mit den Daten übereinstimmt.
+Der Begriff "Fehler" gibt hier die Differenz zwischen dem vorhergesagten und dem tatsächlichen Wert an. Normalerweise wird der absolute Wert oder das Quadrat dieser Differenz berechnet, um die gesamte Fehlerabweichung in allen Fällen zu erfassen, da die Differenz zwischen dem vorhergesagten und dem tatsächlichen Wert in einigen Fällen auch negativ sein kann. Die Fehlerkennzahlen messen die Vorhersageleistung eines Regressionsmodells im Hinblick auf die mittlere Abweichung seiner Vorhersagen von den tatsächlichen Werten. Kleinere Fehlerwerte bedeuten, dass das Modell bei Vorhersagen genauer ist. Die Fehlerkennzahl null bedeutet, dass das Modell perfekt mit den Daten übereinstimmt.
 
 Das Bestimmtheitsmaß, das auch als "R-Quadrat" notiert wird, ist ebenfalls eine Standardmethode für die Berechnung, wie gut das Vorhersagemodell mit den Daten übereinstimmt. Es kann als der Anteil der Abweichung interpretiert werden, der durch das Modell beschrieben wird. In diesem Fall ist ein höherer Anteil besser, wobei "1" eine perfekte Übereinstimmung angibt.
 
@@ -74,7 +75,7 @@ Das Bestimmtheitsmaß, das auch als "R-Quadrat" notiert wird, ist ebenfalls eine
 Abbildung 2. Auswertungskennzahlen bei der linearen Regression.
 
 ### <a name="using-cross-validation"></a>Verwenden der Kreuzvalidierung
-Wie bereits erwähnt, können Sie mit dem Modul [Cross-Validate Model][cross-validate-model] automatisch wiederholte Trainings-, Bewertungs- und Auswertungsvorgänge durchführen. In diesem Fall benötigen Sie lediglich ein Dataset, ein untrainiertes Modell und das Modul [Cross-Validate Model][cross-validate-model] (siehe Abbildung unten). Beachten Sie, dass Sie in den Eigenschaften des Moduls [Cross-Validate Model][cross-validate-model] für die Spalte „Label“ den Wert *price* festlegen müssen.
+Wie bereits erwähnt, können Sie mit dem Modul [Cross-Validate Model][cross-validate-model] automatisch wiederholte Trainings-, Bewertungs- und Auswertungsvorgänge durchführen. In diesem Fall benötigen Sie lediglich ein Dataset, ein untrainiertes Modell und das Modul [Cross-Validate Model][cross-validate-model] (siehe Abbildung unten). Sie müssen in den Eigenschaften des Moduls [Cross-Validate Model][cross-validate-model] für die Spalte „label“ den Wert *price* festlegen.
 
 ![Kreuzvalidierung eines Regressionsmodells.](./media/evaluate-model-performance/3.png)
 
@@ -87,7 +88,7 @@ Nach dem Ausführen des Experiments können Sie die Auswertungsergebnisse prüfe
 Abbildung 4. Ergebnisse der Kreuzvalidierung eines Regressionsmodells.
 
 ## <a name="evaluating-a-binary-classification-model"></a>Auswerten eines binären Klassifizierungsmodells
-Bei der binären Klassifizierung hat die Zielvariable nur zwei mögliche Ergebnisse, z. B.: {0, 1} oder {falsch, wahrt}, {negativ, positiv}. Angenommen, Sie erhalten ein Dataset mit Mitarbeiterdaten, das verschiedene Variablen zu Demografie und Beschäftigung enthält, und Sie werden gebeten, das Einkommensniveau vorherzusagen, eine binäre Variable mit den Werten {"<=50K", ">50K"}. Mit anderen Worten: Die negative Klasse gibt die Mitarbeiter an, deren Einkommen pro Jahr kleiner oder gleich 50K ist, und die positive Klasse alle anderen Mitarbeiter. Wie beim Regressionsszenario werden ein Modell trainiert, einige Daten bewertet und die Ergebnisse ausgewertet. Der hauptsächliche Unterschied besteht hier in der Auswahl der Kennzahlen, die in Azure Machine Learning berechnet und ausgegeben werden. Zur Veranschaulichung des Vorhersageszenarios für das Einkommensniveau wird mit dem Dataset [Adult](http://archive.ics.uci.edu/ml/datasets/Adult) ein Azure Machine Learning-Experiment erstellt und anschließend die Leistung eines logistischen Zwei-Klassen-Regressionsmodells ausgewertet, einem häufig eingesetzten binärer Klassifikator.
+Bei der binären Klassifizierung hat die Zielvariable nur zwei mögliche Ergebnisse, z. B.: {0, 1} oder {falsch, wahrt}, {negativ, positiv}. Angenommen, Sie erhalten ein Dataset mit Mitarbeiterdaten, das verschiedene Variablen zu Demografie und Beschäftigung enthält, und Sie werden gebeten, das Einkommensniveau vorherzusagen, eine binäre Variable mit den Werten {„<=50 K“, „>50 K“}. Anders gesagt: Die negative Klasse gibt die Mitarbeiter an, deren Einkommen pro Jahr kleiner oder gleich 50 K (50.000) ist, und die positive Klasse alle anderen Mitarbeiter. Wie beim Regressionsszenario werden ein Modell trainiert, einige Daten bewertet und die Ergebnisse ausgewertet. Der hauptsächliche Unterschied besteht hier in der Auswahl der Kennzahlen, die in Azure Machine Learning berechnet und ausgegeben werden. Zur Veranschaulichung des Vorhersageszenarios für das Einkommensniveau wird mit dem Dataset [Adult](http://archive.ics.uci.edu/ml/datasets/Adult) ein Azure Machine Learning-Experiment erstellt und anschließend die Leistung eines logistischen Zwei-Klassen-Regressionsmodells ausgewertet, einem häufig eingesetzten binärer Klassifikator.
 
 ### <a name="creating-the-experiment"></a>Erstellen des Experiments
 Fügen Sie Ihrem Arbeitsbereich in Azure Machine Learning Studio die folgenden Module hinzu:
@@ -115,11 +116,11 @@ Aus diesem Grund ist es nützlich, weitere Kennzahlen zu berechnen, die die spez
 
 Abbildung 6. Wahrheitsmatrix der binären Klassifizierung.
 
-Im Hinblick auf die Klassifizierung des Einkommens in unserem Beispiel sollen mehrere Auswertungsfragen gestellt werden, mit denen die Leistung des verwendeten Klassifikators bewertet werden kann. Eine sehr nahe liegende Frage ist: "Wie viele der Personen, für die im Modell vorhergesagt wurde, dass ihr Einkommen >50K beträgt (RP+FP), wurden richtig klassifiziert (RP)?" Diese Frage kann durch Prüfen der Genauigkeit (**Precision**) des Modells beantwortet werden, die den Anteil der positiven Fälle angibt, die richtig klassifiziert wurden: RP/(RP+FP). Eine weitere Frage lautet: "Wie viele aller besserverdienenden Mitarbeiter mit einem Einkommen von >50K (RP+FN) wurden mit dem Klassifikator richtig klassifiziert (RP)?" Dies ist die Sensitivität (**Recall**) oder die Richtig-Positiv-Rate: RP/(RP+FN) des Klassifikators. Sie können feststellen, dass ein offensichtlicher Zusammenhang zwischen Präzision und Sensitivität besteht. Ein relativ ausgeglichenes Dataset vorausgesetzt, weist ein Klassifikator, der überwiegend positive Fälle vorhersagt, eine hohe Sensitivität, jedoch eine eher geringe Präzision auf, da viele der negativen Fälle falsch klassifiziert werden, was zu einer hohen Anzahl falsch-negativer Fälle führt. Um grafisch darzustellen, wie diese beiden Kennzahlen variieren, können Sie in der Ausgabeseite der Auswertungsergebnisse auf die Kurve für Präzision/Sensitivität ("PRECISION/RECALL") klicken (links oben in Abbildung 7).
+Im Hinblick auf die Klassifizierung des Einkommens in unserem Beispiel sollen mehrere Auswertungsfragen gestellt werden, mit denen die Leistung des verwendeten Klassifikators bewertet werden kann. Eine sehr nahe liegende Frage ist: "Wie viele der Personen, für die im Modell vorhergesagt wurde, dass ihr Einkommen >50K beträgt (RP+FP), wurden richtig klassifiziert (RP)?" Diese Frage kann durch Prüfen der Genauigkeit (**Precision**) des Modells beantwortet werden, die den Anteil der positiven Fälle angibt, die richtig klassifiziert wurden: RP/(RP+FP). Eine weitere Frage lautet: "Wie viele aller besserverdienenden Mitarbeiter mit einem Einkommen von >50K (RP+FN) wurden mit dem Klassifikator richtig klassifiziert (RP)?" Dies ist die Sensitivität (**Recall**) oder die Richtig-Positiv-Rate: RP/(RP+FN) des Klassifikators. Sie können feststellen, dass ein offensichtlicher Zusammenhang zwischen Präzision und Sensitivität besteht. Ein relativ ausgeglichenes Dataset vorausgesetzt, weist ein Klassifikator, der überwiegend positive Fälle vorhersagt, eine hohe Sensitivität, jedoch eine eher geringe Präzision auf, da viele der negativen Fälle falsch klassifiziert werden, was zu einer hohen Anzahl falsch-negativer Fälle führt. Um grafisch darzustellen, wie diese beiden Metriken variieren, können Sie in der Ausgabeseite der Auswertungsergebnisse auf die Kurve **PRECISION/RECALL** klicken (links oben in Abbildung 7).
 
 ![Auswertungsergebnisse der binären Klassifizierung.](./media/evaluate-model-performance/7.png)
 
-Abbildung 7. Auswertungsergebnisse der binären Klassifizierung.
+ Abbildung 7. Auswertungsergebnisse der binären Klassifizierung.
 
 Eine weitere zugehörige, häufig verwendete Kennzahl ist das sogenannte F-Maß (**F1 Score**), das sowohl Genauigkeit als auch Sensitivität berücksichtigt. Es handelt sich um das harmonische Mittel dieser 2 Kennzahlen, das wie folgt berechnet wird: F1 = 2 (Genauigkeit x Sensitivität) / (Genauigkeit + Sensitivität). Das F-Maß ist eine gute Möglichkeit, die Auswertung in einer Zahl zusammenzufassen. Es empfiehlt sich jedoch auch immer, die Präzision und Sensitivität zusammen zu betrachten, um besser einschätzen zu können, wie sich ein Klassifikator verhält.
 

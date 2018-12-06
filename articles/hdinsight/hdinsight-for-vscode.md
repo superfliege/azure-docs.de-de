@@ -10,16 +10,16 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/27/2017
-ms.openlocfilehash: f8bd1f1181cbd592782ce1126d5d61b5f257ca08
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 9603751db01eaffdf9fbe26164aed53017c5e23c
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51234747"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52499540"
 ---
 # <a name="use-azure-hdinsight-tools-for-visual-studio-code"></a>Verwenden von Azure HDInsight Tools for Visual Studio Code
 
-Erfahren Sie, wie Sie Azure HDInsight Tools for Visual Studio Code (VS Code) verwenden, um Apache Hive-Batchaufträge, interaktive Apache Hive-Abfragen und PySpark-Skripts zu erstellen und zu übermitteln. Azure HDInsight Tools können auf den von VS Code unterstützten Plattformen installiert werden. Hierzu zählen Windows, Linux und macOS. Im Folgenden finden Sie die Voraussetzungen für die unterschiedlichen Plattformen.
+Erfahren Sie, wie Sie [Azure HDInsight Tools for Visual Studio Code](https://docs.microsoft.com/azure/hdinsight/hdinsight-for-vscode) (VS Code) verwenden, um [Apache Hive](https://hive.apache.org/)-Batchaufträge, interaktive Apache Hive-Abfragen und PySpark-Skripts zu erstellen und zu übermitteln. Azure HDInsight Tools können auf den von VS Code unterstützten Plattformen installiert werden. Hierzu zählen Windows, Linux und macOS. Im Folgenden finden Sie die Voraussetzungen für die unterschiedlichen Plattformen.
 
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -102,7 +102,7 @@ Bevor Sie Skripts aus VS Code an HDInsight-Cluster übermitteln können, müssen
 
 <h3 id="linkcluster">So verknüpfen Sie einen Cluster</h3>
 
-Sie können einen normalen Cluster verknüpfen, indem Sie einen per Apache Ambari verwalteten Benutzernamen verwenden, oder einen per Enterprise Security Pack geschützten Hadoop-Cluster, indem Sie einen Domänenbenutzernamen (z.B. user1@contoso.com) verwenden.
+Sie können einen normalen Cluster verknüpfen, indem Sie einen per [Apache Ambari](https://ambari.apache.org/) verwalteten Benutzernamen verwenden, oder einen per Enterprise Security Pack geschützten Hadoop-Cluster, indem Sie einen Domänenbenutzernamen (z.B. user1@contoso.com) verwenden.
 1. Öffnen Sie die Befehlspalette, indem Sie **STRG+UMSCHALT+P** auswählen, und geben Sie dann **HDInsight: Link a Cluster** (HDInsight: Cluster verknüpfen) ein.
 
    ![Befehl „Cluster verknüpfen“](./media/hdinsight-for-vscode/link-cluster-command.png)
@@ -294,9 +294,9 @@ Führen Sie folgende Schritte aus, um Python2.x zu verwenden:
 
 Nach dem Übermitteln eines Python-Auftrags werden die Übermittlungsprotokolle in Visual Studio Code im Fenster **AUSGABE** angezeigt. Die **URL der Spark-Benutzeroberfläche** und die **URL der Yarn-Benutzeroberfläche** werden ebenfalls angezeigt. Sie können die URL in einem Webbrowser öffnen, um den Auftragsstatus nachzuverfolgen.
 
-## <a name="livy-configuration"></a>Livy-Konfiguration
+## <a name="apache-livy-configuration"></a>Apache Livy-Konfiguration
 
-Die Livy-Konfiguration wird unterstützt. Entsprechende Einstellungen können Sie unter **.VSCode\settings.json** im Arbeitsbereichsordner vornehmen. Derzeit wird in der Livy-Konfiguration nur das Python-Skript unterstützt. Weitere Details finden Sie in der [Livy-INFODATEI](https://github.com/cloudera/livy/blob/master/README.rst ).
+Die **Apache Livy**-Konfiguration wird unterstützt. Entsprechende Einstellungen können Sie unter [.VSCode\settings.json](https://livy.incubator.apache.org/) im Arbeitsbereichsordner vornehmen. Derzeit wird in der Livy-Konfiguration nur das Python-Skript unterstützt. Weitere Details finden Sie in der [Livy-INFODATEI](https://github.com/cloudera/livy/blob/master/README.rst ).
 
 <a id="triggerlivyconf"></a>**Auslösen der Livy-Konfiguration**
    
@@ -390,28 +390,28 @@ HDInsight Tools for Visual Studio Code unterstützen folgende Features:
 
 ### <a name="tools-and-extensions"></a>Tools und Erweiterungen
 
-* [Verwenden des Azure-Toolkits für IntelliJ zum Remotedebuggen von Spark-Anwendungen über VPN](spark/apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
-* [Verwenden des Azure-Toolkits für IntelliJ zum Remotedebuggen von Spark-Anwendungen per SSH](spark/apache-spark-intellij-tool-debug-remotely-through-ssh.md)
+* [Verwenden des Azure-Toolkits für IntelliJ zum Remotedebuggen von Apache Spark-Anwendungen über VPN](spark/apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
+* [Verwenden des Azure-Toolkits für IntelliJ zum Remotedebuggen von Apache Spark-Anwendungen über SSH](spark/apache-spark-intellij-tool-debug-remotely-through-ssh.md)
 * [Verwenden der HDInsight-Tools für IntelliJ mit Hortonworks Sandbox](hadoop/hdinsight-tools-for-intellij-with-hortonworks-sandbox.md)
-* [Verwenden der HDInsight-Tools im Azure-Toolkit für Eclipse zum Erstellen von Spark-Anwendungen](spark/apache-spark-eclipse-tool-plugin.md)
-* [Verwenden von Zeppelin-Notebooks mit einem Spark-Cluster in HDInsight](spark/apache-spark-zeppelin-notebook.md)
-* [Verfügbare Kernels für Jupyter-Notebook im Spark-Cluster für HDInsight](spark/apache-spark-jupyter-notebook-kernels.md)
+* [Verwenden der HDInsight-Tools im Azure-Toolkit für Eclipse zum Erstellen von Apache Spark-Anwendungen](spark/apache-spark-eclipse-tool-plugin.md)
+* [Verwenden von Apache Zeppelin Notebooks mit einem Apache Spark-Cluster unter HDInsight](spark/apache-spark-zeppelin-notebook.md)
+* [Kernel für Jupyter Notebook in Apache Spark-Clustern für HDInsight](spark/apache-spark-jupyter-notebook-kernels.md)
 * [Verwenden von externen Paketen mit Jupyter Notebooks](spark/apache-spark-jupyter-notebook-use-external-packages.md)
 * [Installieren von Jupyter Notebook auf Ihrem Computer und Herstellen einer Verbindung zum Apache Spark-Cluster in Azure HDInsight (Vorschau)](spark/apache-spark-jupyter-notebook-install-locally.md)
-* [Visualisieren von Hive-Daten mit Microsoft Power BI in Azure HDInsight](hadoop/apache-hadoop-connect-hive-power-bi.md)
+* [Visualisieren von Apache Hive-Daten mit Microsoft Power BI in Azure HDInsight](hadoop/apache-hadoop-connect-hive-power-bi.md)
 * [Visualisieren von Interactive Query-Hive-Daten mit Power BI in Azure HDInsight](./interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md)
 * [Einrichten der PySpark Interactive-Umgebung für Visual Studio Code](set-up-pyspark-interactive-environment.md)
-* [Verwenden von Zeppelin zum Ausführen von Hive-Abfragen in Azure HDInsight](./hdinsight-connect-hive-zeppelin.md).
+* [Verwenden von Apache Zeppelin zum Ausführen von Apache Hive-Abfragen in Azure HDInsight](./hdinsight-connect-hive-zeppelin.md)
 
 ### <a name="scenarios"></a>Szenarien
-* [Spark mit BI: Durchführen interaktiver Datenanalysen mithilfe von Spark in HDInsight mit BI-Tools](spark/apache-spark-use-bi-tools.md)
-* [Spark mit Machine Learning: Analysieren von Gebäudetemperaturen mithilfe von Spark in HDInsight und HVAC-Daten](spark/apache-spark-ipython-notebook-machine-learning.md)
-* [Spark mit Machine Learning: Vorhersage von Lebensmittelkontrollergebnissen mithilfe von Spark in HDInsight](spark/apache-spark-machine-learning-mllib-ipython.md)
-* [Websiteprotokollanalyse mithilfe von Spark in HDInsight](spark/apache-spark-custom-library-website-log-analysis.md)
+* [Apache Spark mit BI: Durchführen interaktiver Datenanalysen mithilfe von Spark in HDInsight mit BI-Tools](spark/apache-spark-use-bi-tools.md)
+* [Apache Spark mit Machine Learning: Analysieren von Gebäudetemperaturen mithilfe von Spark in HDInsight und HVAC-Daten](spark/apache-spark-ipython-notebook-machine-learning.md)
+* [Apache Spark mit Machine Learning: Vorhersage von Lebensmittelkontrollergebnissen mithilfe von Spark in HDInsight](spark/apache-spark-machine-learning-mllib-ipython.md)
+* [Websiteprotokollanalyse mithilfe von Apache Spark in HDInsight](spark/apache-spark-custom-library-website-log-analysis.md)
 
 ### <a name="create-and-running-applications"></a>Erstellen und Ausführen von Anwendungen
 * [Erstellen einer eigenständigen Anwendung mit Scala](spark/apache-spark-create-standalone-application.md)
-* [Remoteausführung von Aufträgen in einem Spark-Cluster mithilfe von Livy](spark/apache-spark-livy-rest-interface.md)
+* [Ausführen von Remoteaufträgen in einem Apache Spark-Cluster mithilfe von Apache Livy](spark/apache-spark-livy-rest-interface.md)
 
 ### <a name="manage-resources"></a>Verwalten von Ressourcen
 * [Verwalten von Ressourcen für den Apache Spark-Cluster in Azure HDInsight](spark/apache-spark-resource-manager.md)

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/07/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: d94542e0c6c19fd3a79f465b69fadb6f3f28330e
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 7f74da682c72f9effb4dbac49b316ff17f03b534
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685768"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52275886"
 ---
 # <a name="add-adfs-as-a-saml-identity-provider-using-custom-policies-in-azure-active-directory-b2c"></a>Hinzufügen von AD FS als SAML-Identitätsanbieter mithilfe benutzerdefinierter Richtlinien in Azure Active Directory B2C
 
@@ -175,7 +175,7 @@ Ersetzen Sie die folgenden Werte:
     | E-Mail-Adresse | E-Mail |
     | Anzeigename | name |
     
-12.  Basierend auf Ihrem Zertifikattyp müssen Sie möglicherweise den Hashalgorithmus festlegen. Wählen Sie im Eigenschaftenfenster der Vertrauensstellung der vertrauenden Seite (B2C-Demo) die Registerkarte **Erweitert** aus, und ändern Sie **Sicherer Hashalgorithmus** in `SHA-1` oder `SHA-256`. Klicken Sie auf **OK**.  
+12.  Basierend auf Ihrem Zertifikattyp müssen Sie möglicherweise den Hashalgorithmus festlegen. Wählen Sie im Eigenschaftenfenster der Vertrauensstellung der vertrauenden Seite (B2C-Demo) die Registerkarte **Erweitert** aus, und ändern Sie **Sicherer Hashalgorithmus** in `SHA-256`. Klicken Sie anschließend auf **OK**.  
 13. Wählen Sie im Server-Manager **Tools** und dann **AD FS-Verwaltung** aus.
 14. Wählen Sie die Vertrauensstellung der vertrauenden Seite, die Sie erstellt haben, und **Update from Federation Metadata** (Von Verbundmetadaten aktualisieren) aus, und klicken Sie dann auf **Aktualisieren**. 
 

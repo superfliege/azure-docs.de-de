@@ -1,6 +1,6 @@
 ---
 title: Verwenden von AMQP 1.0 mit der Java Service Bus-API | Microsoft Docs
-description: Erfahren Sie, wie Sie den Java Message Service (JMS) mit Azure Service Bus und Advanced Message Queuing Protocol (AMQP) 1.0 verwenden.
+description: Erfahren Sie, wie Sie den Java Message Service (JMS) mit Azure Service Bus und Advanced Message Queuing Protocol (AMQP) 1.0 verwenden.
 services: service-bus-messaging
 documentationcenter: java
 author: spelluru
@@ -14,12 +14,12 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 08/10/2018
 ms.author: spelluru
-ms.openlocfilehash: 9a223c67e0c1f2e71d2953be63924a114e7420af
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: fbd74b227afd2191616100d74c7864eacf015add
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48018229"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52308069"
 ---
 # <a name="how-to-use-the-java-message-service-jms-api-with-service-bus-and-amqp-10"></a>Verwenden der JMS (Java Message Service)-API mit Service Bus und AMQP 1.0
 AMQP (Advanced Message Queuing Protocol) 1.0 ist ein effizientes, zuverlässiges Messagingprotokoll auf Wire-Ebene, mit dem Sie robuste und plattformübergreifende Messaginganwendungen erstellen können.
@@ -66,7 +66,7 @@ queue.QUEUE = queue1
 #### <a name="setup-jndi-context-and-configure-the-connectionfactory"></a>Einrichten des JNDI-Kontexts und Konfigurieren der ConnectionFactory
 
 Die Verbindungszeichenfolge (**ConnectionString**), auf die verwiesen wird, ist in den freigegebenen Zugriffsrichtlinien im [Azure-Portal](https://portal.azure.com) unter **Primäre Verbindungszeichenfolge** angegeben.
-```
+```java
 // The connection string builder is the only part of the azure-servicebus SDK library
 // we use in this JMS sample and for the purpose of robustly parsing the Service Bus 
 // connection string. 
@@ -89,7 +89,7 @@ Destination queue = (Destination) context.lookup("QUEUE");
 Der Eintrag zum Definieren eines Ziels in der Qpid Properties-Datei für den JNDI-Anbieter hat das folgende Format:
 
 So erstellen Sie die Zielwarteschlange für den Producer: 
-```
+```java
 String queueName = "queueName";
 Destination queue = (Destination) queueName;
 
@@ -103,7 +103,7 @@ MessageProducer producer = session.createProducer(queue);
 ```
 
 So erstellen Sie eine Zielwarteschlange für den Consumer: 
-```
+```java
 String queueName = "queueName";
 Destination queue = (Destination) queueName;
 

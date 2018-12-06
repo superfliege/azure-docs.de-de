@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/12/2018
+ms.date: 11/23/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: 8d13d6df1b168183e3794bf357ad86bfcfd77057
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 9afce9c6d4ed4d6dc6fbe5bcfcfedc33bdd7cfdf
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567909"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52314671"
 ---
 # <a name="azure-stack-1809-update"></a>Azure Stack-Update 1809
 
@@ -84,7 +84,11 @@ Dieses Update enthält die folgenden Verbesserungen für Azure Stack:
 
 ### <a name="changes"></a>Änderungen
 
-None (Keine):
+<!-- 2635202 - IS, ASDK -->
+- Der Infrastruktursicherungsdienst wird aus dem [öffentlichen Infrastrukturnetzwerk](https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-network#public-infrastructure-network) in das [öffentliche VIP-Netzwerk](https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-network#public-vip-network) verschoben. Kunden müssen sicherstellen, dass der Dienst aus dem öffentlichen VIP-Netzwerk auf den Sicherungsspeicherort zugreifen kann.  
+
+> [!IMPORTANT]  
+> Sollten Sie über eine Firewall verfügen, die aus dem öffentlichen VIP-Netzwerk keine Verbindungen mit dem Dateiserver zulässt, führt diese Änderung dazu, dass bei Infrastruktursicherungen der Fehler 53 („Der Netzwerkpfad wurde nicht gefunden.“) auftritt. Hierbei handelt es sich um einen Breaking Change ohne sinnvolle Problemumgehung. Aufgrund von Kundenfeedback wird die Änderung von Microsoft per Hotfix zurückgesetzt. Weitere Informationen zu verfügbaren Hotfixes für 1809 finden Sie im [Abschnitt mit den Schritten nach dem Updatevorgang](#post-update-steps). Wenden Sie den bereitgestellten Hotfix nach dem Update auf 1809 nur an, wenn das öffentliche VIP-Netzwerk aufgrund Ihrer Netzwerkrichtlinien nicht auf Infrastrukturressourcen zugreifen kann. In 1811 wird diese Änderung auf alle Systeme angewendet. Wenn Sie den Hotfix in 1809 angewendet haben, ist keine weitere Aktion erforderlich.  
 
 ### <a name="common-vulnerabilities-and-exposures"></a>Common Vulnerabilities and Exposures (CVE, allgemeine Sicherheitslücken und Schwachstellen)
 
@@ -169,7 +173,7 @@ Weitere Informationen zu diesen Sicherheitslücken erhalten Sie durch Klicken au
 > Bereiten Sie Ihre Azure Stack-Bereitstellung für den Erweiterungshost vor, der mit dem nächsten Updatepaket aktiviert wird. Bereiten Sie Ihr System mithilfe der folgenden Anleitung vor: [Vorbereiten auf den Erweiterungshost für Azure Stack](azure-stack-extension-host-prepare.md).
 
 Installieren Sie nach der Installation dieses Updates alle entsprechenden Hotfixes. Weitere Informationen finden Sie in den folgenden Knowledge Base-Artikeln sowie in unserer [Wartungsrichtlinie](azure-stack-servicing-policy.md).  
-- [KB 4471993 – Azure Stack Hotfix Azure Stack Hotfix 1.1809.3.96](https://support.microsoft.com/help/4471993/)  
+- [KB 4477849 – Azure Stack Hotfix Azure Stack Hotfix 1.1809.6.102](https://support.microsoft.com/help/4477849/)  
 
 ## <a name="known-issues-post-installation"></a>Bekannte Probleme (nach der Installation)
 
@@ -222,7 +226,7 @@ Im Folgenden werden bekannte Probleme nach der Installation zu dieser Buildversi
    
   Führen Sie das Cmdlet [Test-AzureStack](azure-stack-diagnostic-test.md) aus, um die Integrität der Infrastrukturrolleninstanzen und Skalierungseinheitenknoten zu überprüfen. Wenn von [Test-AzureStack](azure-stack-diagnostic-test.md) keine Probleme gefunden werden, können Sie diese Warnungen ignorieren. Wenn ein Problem erkannt wird, können Sie versuchen, die Infrastrukturrolleninstanz oder den Knoten über das Verwaltungsportal oder PowerShell zu starten.
 
-  Dieses Problem wurde im aktuellen [Hotfixrelease 1809](https://support.microsoft.com/help/4471993/) behoben. Sie sollten diesen Hotfix daher unbedingt installieren, falls das Problem auftritt. 
+  Dieses Problem wurde im aktuellen [Hotfixrelease 1809](https://support.microsoft.com/help/4477849/) behoben. Sie sollten diesen Hotfix daher unbedingt installieren, falls das Problem auftritt. 
 
 <!-- 1264761 - IS ASDK -->  
 - Möglicherweise werden Warnungen für die **Health Controller**-Komponente mit folgenden Details angezeigt:  

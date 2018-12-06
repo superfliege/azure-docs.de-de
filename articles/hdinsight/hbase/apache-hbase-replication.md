@@ -9,16 +9,16 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/15/2018
-ms.openlocfilehash: b978adcdcc025c24746167ef5ab92aebe94aca8b
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 44ed4075af290e3253b3d8f090c289ceba9750a6
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51016232"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52584178"
 ---
-# <a name="set-up-hbase-cluster-replication-in-azure-virtual-networks"></a>Einrichten der HBase-Clusterreplikation in virtuellen Azure-Netzwerken
+# <a name="set-up-apache-hbase-cluster-replication-in-azure-virtual-networks"></a>Einrichten der Apache HBase-Clusterreplikation in virtuellen Azure-Netzwerken
 
-Erfahren Sie, wie Sie die HBase-Replikation innerhalb eines virtuellen Netzwerks oder zwischen zwei virtuellen Netzwerken in Azure einrichten.
+Hier erfahren Sie, wie Sie die [Apache HBase](http://hbase.apache.org/)-Replikation innerhalb eines virtuellen Netzwerks oder zwischen zwei virtuellen Netzwerken in Azure einrichten.
 
 Clusterreplikation verwendet eine Source-Push-Methodologie. Ein HBase-Cluster kann Quelle oder Ziel sein oder beide Rollen gleichzeitig erfüllen. Die Replikation ist asynchron. Das Ziel der Replikation ist die endgültige Konsistenz. Die Bearbeitung einer Spaltenfamilie in der Quelle bei aktivierter Replikation wird an alle Zielcluster weitergegeben. Wenn Daten von einem Cluster auf einen anderen repliziert werden, werden der Quellcluster und alle Cluster, die bereits Daten genutzt haben, nachverfolgt, um Replikationsschleifen zu verhindern.
 
@@ -46,16 +46,16 @@ Für dieses Tutorial wird ein Azure-Abonnement benötigt. Siehe [How to get Azur
 
 Es gibt drei Konfigurationsoptionen:
 
-- Zwei HBase-Cluster in einem virtuellen Azure-Netzwerk.
-- Zwei HBase-Cluster in zwei verschiedenen virtuellen Netzwerken in der gleichen Region.
-- Zwei HBase-Cluster in zwei verschiedenen virtuellen Netzwerken in zwei verschiedenen Regionen (Georeplikation).
+- Zwei Apache HBase-Cluster in einem virtuellen Azure-Netzwerk.
+- Zwei Apache HBase-Cluster in zwei verschiedenen virtuellen Netzwerken in der gleichen Region.
+- Zwei Apache HBase-Cluster in zwei verschiedenen virtuellen Netzwerken in zwei verschiedenen Regionen (Georeplikation).
 
 In diesem Artikel wir das Szenario der Georeplikation behandelt.
 
 Um Ihnen die Einrichtung der Umgebungen zu erleichtern, haben wir einige [Azure Resource Manager-Vorlagen](../../azure-resource-manager/resource-group-overview.md) erstellt. Wenn Sie die Umgebungen mit anderen Methoden einrichten möchten, finden Sie hier weitere Informationen:
 
-- [Erstellen von Hadoop-Clustern in HDInsight](../hdinsight-hadoop-provision-linux-clusters.md)
-- [Erstellen von HBase-Clustern in Azure Virtual Network](apache-hbase-provision-vnet.md)
+- [Erstellen von Apache Hadoop-Clustern in HDInsight](../hdinsight-hadoop-provision-linux-clusters.md)
+- [Erstellen von Apache HBase-Clustern in Azure Virtual Network](apache-hbase-provision-vnet.md)
 
 ### <a name="set-up-two-virtual-networks-in-two-different-regions"></a>Einrichten von zwei virtuellen Netzwerken in zwei verschiedenen Regionen
 
@@ -256,9 +256,9 @@ Um die DNS-Konfiguration zu testen, können Sie eine Verbindung zu den beiden vi
 sudo service bind9 status
 ```
 
-## <a name="create-hbase-clusters"></a>Erstellen von HBase-Clustern
+## <a name="create-apache-hbase-clusters"></a>Erstellen von Apache HBase-Clustern
 
-Erstellen Sie einen HBase-Cluster in jeder der beiden virtuellen Netzwerke mit der folgenden Konfiguration:
+Erstellen Sie in jedem der beiden virtuellen Netzwerke einen [Apache HBase](http://hbase.apache.org/)-Cluster mit folgender Konfiguration:
 
 - **Name der Ressourcengruppe**: Verwenden Sie den gleichen Ressourcengruppennamen, wie beim Erstellen der virtuellen Netzwerke.
 - **Clustertyp**: HBase
@@ -274,7 +274,7 @@ Um sicherzustellen, dass die Umgebung korrekt konfiguriert ist, müssen Sie den 
 
 Wenn Sie einen Cluster replizieren, müssen Sie die Tabellen angeben, die Sie replizieren möchten. In diesem Abschnitt laden Sie einige Daten in den Quellcluster. Im nächsten Abschnitt aktivieren Sie die Replikation zwischen den beiden Clustern.
 
-Wenn Sie eine Tabelle namens [Kontakte](apache-hbase-tutorial-get-started-linux.md) erstellen und einige Daten in die Tabelle einfügen möchten, befolgen Sie die Anweisungen unter **HBase-Tutorial: Erste Schritte mit Apache HBase in HDInsight**.
+Wenn Sie eine Tabelle namens [Kontakte](apache-hbase-tutorial-get-started-linux.md) erstellen und einige Daten in die Tabelle einfügen möchten, befolgen Sie die Anweisungen unter **Apache HBase-Tutorial: Erste Schritte mit Apache HBase in HDInsight**.
 
 ## <a name="enable-replication"></a>Aktivieren der Replikation
 
@@ -293,7 +293,7 @@ Die folgenden Schritte zeigen, wie Sie das Skript mit Skriptaktionen aus dem Azu
   3.  **Hauptknoten**: Stellen Sie sicher, dass diese Option aktiviert ist. Deaktivieren Sie die anderen Knotentypen.
   4. **Parameter**: Die folgenden Beispielparameter aktivieren die Replikation für alle vorhandenen Tabellen und kopieren dann alle Daten aus dem Quellcluster in den Zielcluster:
 
-          -m hn1 -s <source cluster DNS name> -d <destination cluster DNS name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -copydata
+          -m hn1 -s <source hbase cluster name> -d <destination hbase cluster name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -copydata
     
     >[!note]
     >
@@ -317,7 +317,7 @@ Optionale Argumente:
 |-su, --src-ambari-user | Gibt den Administratorbenutzernamen für Ambari im HBase-Quellcluster an. Der Standardwert lautet **admin**. |
 |-du, --dst-ambari-user | Gibt den Administratorbenutzernamen für Ambari im HBase-Zielcluster an. Der Standardwert lautet **admin**. |
 |-t, --table-list | Gibt die zu replizierenden Tabellen an. Beispiel: --table-list="table1;table2;table3". Wenn Sie keine Tabellen angeben, werden alle vorhandenen HBase-Tabellen repliziert.|
-|-m, --machine | Gibt den Hauptknoten an, auf dem die Skriptaktion ausgeführt werden soll. Der Wert lautet entweder **hn1** oder **hn0**. Da der **hn0**-Hauptknoten in der Regel höher ausgelastet ist, sollten Sie **hn1** verwenden. Verwenden Sie diese Option, wenn Sie das $0-Skript als Skriptaktion im HDInsight-Portal oder in Azure PowerShell ausführen.|
+|-m, --machine | Gibt den Hauptknoten an, auf dem die Skriptaktion ausgeführt werden soll. Der Wert lautet entweder **hn0** oder **hn1** und ist abhängig davon, welcher Knoten der aktive Hauptknoten ist. Verwenden Sie diese Option, wenn Sie das $0-Skript als Skriptaktion im HDInsight-Portal oder in Azure PowerShell ausführen.|
 |-cp, -copydata | Aktiviert die Migration vorhandener Daten in den Tabellen, in denen die Replikation aktiviert ist. |
 |-rpm, -replicate-phoenix-meta | Aktiviert die Replikation in Phoenix-Systemtabellen. <br><br>*Verwenden Sie diese Option mit Vorsicht.* Es wird empfohlen, die Phoenix-Tabellen in Replikatclustern neu zu erstellen, bevor Sie dieses Skript verwenden. |
 |-h, --help | Zeigt Informationen zur Nutzung an. |
@@ -332,19 +332,19 @@ Die folgende Liste zeigt einige allgemeine Anwendungsfälle und die zugehörigen
 
 - **Aktivieren der Replikation in allen Tabellen zwischen den beiden Clustern**. Dieses Szenario erfordert kein Kopieren oder Migrieren der in den Tabellen vorhandenen Daten und verwendet keine Phoenix-Tabellen. Verwenden Sie die folgenden Parameter:
 
-        -m hn1 -s <source cluster DNS name> -d <destination cluster DNS name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password>  
+        -m hn1 -s <source hbase cluster name> -d <destination hbase cluster name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password>  
 
 - **Aktivieren der Replikation in bestimmten Tabellen**. Verwenden Sie die folgenden Parameter, um die Replikation in „table1“, „table2“ und „table3“ zu aktivieren:
 
-        -m hn1 -s <source cluster DNS name> -d <destination cluster DNS name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -t "table1;table2;table3"
+        -m hn1 -s <source hbase cluster name> -d <destination hbase cluster name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -t "table1;table2;table3"
 
 - **Aktivieren der Replikation in bestimmten Tabellen und Kopieren der vorhandenen Daten**. Verwenden Sie die folgenden Parameter, um die Replikation in „table1“, „table2“ und „table3“ zu aktivieren:
 
-        -m hn1 -s <source cluster DNS name> -d <destination cluster DNS name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -t "table1;table2;table3" -copydata
+        -m hn1 -s <source hbase cluster name> -d <destination hbase cluster name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -t "table1;table2;table3" -copydata
 
 - **Aktivieren der Replikation in allen Tabellen und Replikation der Phoenix-Metadaten von der Quelle zum Ziel**. Die Replikation der Phoenix-Metadaten ist nicht perfekt. Verwenden Sie sie mit Vorsicht. Verwenden Sie die folgenden Parameter:
 
-        -m hn1 -s <source cluster DNS name> -d <destination cluster DNS name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -t "table1;table2;table3" -replicate-phoenix-meta
+        -m hn1 -s <source hbase cluster name> -d <destination hbase cluster name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -t "table1;table2;table3" -replicate-phoenix-meta
 
 ## <a name="copy-and-migrate-data"></a>Kopieren und Migrieren von Daten
 
@@ -379,7 +379,7 @@ Der Abschnitt `print_usage()` des [Skripts](https://github.com/Azure/hbase-utils
 
 Um die Replikation zu deaktivieren, verwenden Sie ein weiteres Skript mit einer Skriptaction, das Sie auf [GitHub](https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_disable_replication.sh) finden. Sie können das gleiche Verfahren wie unter [Aktivieren der Replikation](#enable-replication) befolgen, um die Skriptaktion aufzurufen. Verwenden Sie die folgenden Parameter:
 
-    -m hn1 -s <source cluster DNS name> -sp <source cluster Ambari password> <-all|-t "table1;table2;...">  
+    -m hn1 -s <source hbase cluster name> -sp <source cluster Ambari password> <-all|-t "table1;table2;...">  
 
 Der Abschnitt `print_usage()` des [Skripts](https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_disable_replication.sh) bietet eine detaillierte Erläuterung der Parameter.
 
@@ -387,20 +387,20 @@ Der Abschnitt `print_usage()` des [Skripts](https://raw.githubusercontent.com/Az
 
 - **Deaktivieren der Replikation in allen Tabellen**:
 
-        -m hn1 -s <source cluster DNS name> -sp Mypassword\!789 -all
+        -m hn1 -s <source hbase cluster name> -sp Mypassword\!789 -all
   oder
 
-        --src-cluster=<source cluster DNS name> --dst-cluster=<destination cluster DNS name> --src-ambari-user=<source cluster Ambari user name> --src-ambari-password=<source cluster Ambari password>
+        --src-cluster=<source hbase cluster name> --dst-cluster=<destination hbase cluster name> --src-ambari-user=<source cluster Ambari user name> --src-ambari-password=<source cluster Ambari password>
 
 - **Deaktivieren der Replikation in angegebenen Tabellen („table1“, „table2“ und „table3“)**:
 
-        -m hn1 -s <source cluster DNS name> -sp <source cluster Ambari password> -t "table1;table2;table3"
+        -m hn1 -s <source hbase cluster name> -sp <source cluster Ambari password> -t "table1;table2;table3"
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie erfahren, wie Sie die HBase-Replikation innerhalb eines virtuellen Netzwerks oder zwischen zwei virtuellen Netzwerken einrichten. Weitere Informationen zu HDInsight und HBase finden Sie in diesen Artikeln:
+In diesem Tutorial haben Sie erfahren, wie Sie die Apache HBase-Replikation innerhalb eines virtuellen Netzwerks oder zwischen zwei virtuellen Netzwerken einrichten. Weitere Informationen zu HDInsight und Apache HBase finden Sie in den folgenden Artikeln:
 
 * [Get started with Apache HBase in HDInsight (Erste Schritte mit Apache HBase in HDInsight)](./apache-hbase-tutorial-get-started-linux.md)
-* [HDInsight HBase overview (Übersicht über HDInsight HBase)](./apache-hbase-overview.md)
-* [Erstellen von HBase-Clustern in Azure Virtual Network](./apache-hbase-provision-vnet.md)
+* [Überblick über Apache HBase in HDInsight: Eine NoSQL-Datenbank, die BigTable-ähnliche Funktionen für Hadoop bereitstellt](./apache-hbase-overview.md)
+* [Erstellen von Apache HBase-Clustern in Azure Virtual Network](./apache-hbase-provision-vnet.md)
 

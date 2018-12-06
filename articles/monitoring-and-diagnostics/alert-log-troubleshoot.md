@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 68488788f73c9662b5d1eaa3b670f2120941defc
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: e2326f56ad367f744bc7895bc8c4bfd6f32d0310
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51616485"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52264878"
 ---
 # <a name="troubleshooting-log-alerts-in-azure-monitor"></a>Behandeln von Aktivitätsprotokollwarnungen in Azure Monitor  
 ## <a name="overview"></a>Übersicht
@@ -61,7 +61,7 @@ Da der Befehl *summarize … by* umfasst und zwei Variablen (timestamp und $tabl
 
 ![Abfrageausführung für „Metrische Maßeinheit“ mit mehreren Werten](./media/monitor-alerts-unified/LogMMQuery.png)
 
-Da „Aggregate Upon“ den Wert „$table“ hat, werden die Daten nach der Spalte „$table“ sortiert (in Rot dargestellt), dann werden sie gruppiert und auf Typen des Felds „Aggregate Upon“ untersucht, die „$table“ entsprechen. Beispiel: Werte für availabilityResults werden als ein Plot/eine Einheit betrachtet (in Orange dargestellt). In diesem Plot bzw. dieser Entität des Werts sucht der Warnungsdienst nach drei aufeinanderfolgenden Sicherheitsverletzungen (in Grün dargestellt), bei denen eine Warnung für den Tabellenwert „availabilityResults“ ausgelöst wird. Wenn bei einem anderen Wert von „$table“ drei aufeinanderfolgende Sicherheitsverletzungen erkannt werden, wird ebenso eine andere Warnungsbenachrichtigungen ausgelöst, wobei der Warnungsdienst automatisch die Werte in einem Plot bzw. einer Entität nach Zeit sortiert (in Orange dargestellt).
+Da „Aggregate Upon“ den Wert „$table“ hat, werden die Daten nach der Spalte „$table“ sortiert (in Rot dargestellt), dann werden sie gruppiert und auf Typen des Felds „Aggregate Upon“ untersucht, die „$table“ entsprechen. Beispiel: Werte für availabilityResults werden als ein Plot/eine Einheit betrachtet (in Orange dargestellt). In diesem Plot bzw. dieser Entität des Werts sucht der Warnungsdienst nach drei aufeinanderfolgenden Sicherheitsverletzungen (in Grün dargestellt), bei denen eine Warnung für den Tabellenwert „availabilityResults“ ausgelöst wird. Wenn bei einem anderen Wert von „$table“ drei aufeinanderfolgende Sicherheitsverletzungen erkannt werden, wird analog dazu eine weitere Warnungsbenachrichtigungen ausgelöst, wobei der Warnungsdienst automatisch die Werte in einem Plot bzw. einer Entität nach Zeit sortiert (in Orange dargestellt).
 
 Angenommen, eine Protokollwarnungsregel vom Typ „Metrische Maßeinheit“ wurde geändert, und die Abfrage lautete `search *| summarize AggregatedValue = count() by bin(timestamp, 1h)`, wobei die restliche Konfiguration unverändert bliebt, einschließlich der Warnungslogik für drei aufeinanderfolgende Sicherheitsverletzungen. Die Option „Aggregate Upon“ weist in diesem Fall den Standardwert „timestamp“ auf. Da in der Abfrage nur ein Wert für „summarize … by“ mit dem Wert „timestamp“ vorhanden ist, entspricht die Ausgabe am Ende der Ausführung ähnlich wie im Beispiel zuvor der nachstehenden Darstellung. 
 

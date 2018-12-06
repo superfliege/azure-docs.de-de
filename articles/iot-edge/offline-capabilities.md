@@ -8,12 +8,12 @@ ms.date: 09/20/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: eb44d6b0a4ea69d92f91af7ce1d6b19deff4e753
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 3ab775d57ba188930cc66b0fa1655307e9a78179
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567025"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52284641"
 ---
 # <a name="understand-extended-offline-capabilities-for-iot-edge-devices-modules-and-child-devices-preview"></a>Grundlegendes zu erweiterten Offlinefunktionen für IoT Edge-Geräte und -Module sowie untergeordnete Geräte (Vorschau)
 
@@ -48,7 +48,7 @@ Das folgende Beispiel veranschaulicht ein IoT Edge-Szenario im Offlinemodus:
 
 Die in diesem Artikel beschriebenen erweiterten Offlinefunktionen sind unter [IoT Edge-Version 1.0.4 oder höher](https://github.com/Azure/azure-iotedge/releases) verfügbar. Frühere Versionen verfügen nur über einen Teil dieser Offlinefunktionen. Für vorhandene IoT Edge-Geräte, die über keine erweiterten Offlinefunktionen verfügen, kann kein Upgrade durch Ändern der Runtime-Version ausgeführt werden. Stattdessen sind sie mit einer neuen IoT Edge-Geräteidentität zu konfigurieren, damit diese Funktionen verfügbar werden. 
 
-Erweiterte Offlinefunktionen werden in allen Regionen unterstützt, in denen IoT Hub verfügbar ist, mit Ausnahme von USA (Osten) und Europa, Westen. 
+Erweiterte Offlinefunktionen werden in allen Regionen unterstützt, in denen IoT Hub verfügbar ist (**Ausnahme:** USA, Osten).
 
 Lediglich Nicht-Edge IoT-Geräte können als untergeordnete Geräte hinzugefügt werden. 
 
@@ -65,6 +65,19 @@ Untergeordnete Geräte können beliebige Nicht-Edge-Geräte sein, die beim selbe
    ![Verwalten untergeordneter Geräte auf der Detailseite des IoT Edge-Geräts](./media/offline-capabilities/manage-child-devices.png)
 
 Übergeordnete Geräte können über mehrere untergeordnete Geräte verfügen, ein untergeordnetes Gerät hingegen kann nur ein übergeordnetes Gerät besitzen.
+
+### <a name="specifying-dns-servers"></a>Angeben von DNS-Servern 
+
+Zur Verbesserung der Stabilität empfiehlt es sich, die in Ihrer Umgebung verwendeten DNS-Serveradressen anzugeben. Aktualisieren Sie beispielsweise unter Linux die Datei **/etc/docker/daemon.json** (muss möglicherweise erst erstellt werden) mit Folgendem:
+
+```
+{
+    "dns": [“1.1.1.1”]
+}
+```
+
+Ersetzen Sie bei Verwendung eines lokalen DNS-Servers die Adresse 1.1.1.1 durch die IP-Adresse des lokalen DNS-Servers. Starten Sie den Docker-Dienst neu, damit die Änderungen wirksam werden.
+
 
 ## <a name="optional-offline-settings"></a>Optionale Offlineeinstellungen
 

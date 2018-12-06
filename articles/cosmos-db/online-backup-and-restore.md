@@ -1,92 +1,89 @@
 ---
-title: Onlinesicherung und -wiederherstellung mit Azure Cosmos DB | Microsoft-Dokumentation
-description: Erfahren Sie mehr über das automatische Sichern und Wiederherstellen einer Azure Cosmos DB-Datenbank.
-keywords: Sicherung und Wiederherstellung, Onlinesicherung
-services: cosmos-db
+title: Automatische Onlinesicherung und bedarfsgesteuerte Wiederherstellung in Azure Cosmos DB
+description: In diesem Artikel wird beschrieben, wie die automatische Onlinesicherung und die bedarfsgesteuerte Wiederherstellung in Azure Cosmos DB funktionieren.
 author: kanshiG
-manager: kfile
 ms.service: cosmos-db
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/15/2017
+ms.date: 11/15/2018
 ms.author: govindk
-ms.openlocfilehash: 657b75e5e3bb5c35bb23221235e62298fc797046
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.reviewer: sngun
+ms.openlocfilehash: 39c4a6108f4a5133e2c77904dcd67bf235801956
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48902670"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52265133"
 ---
-# <a name="automatic-online-backup-and-restore-with-azure-cosmos-db"></a>Automatische Onlinesicherung und -wiederherstellung mit Azure Cosmos DB
-Azure Cosmos DB erstellt in regelmäßigen Abständen automatisch Sicherungen aller Daten. Die automatischen Sicherungen erfolgen ohne Beeinträchtigung der Leistung oder Verfügbarkeit des Betriebs Ihrer Datenbanken. Alle Sicherungskopien werden in einem anderen Speicherdienst getrennt gespeichert, und diese Sicherungen werden zum besseren Schutz vor regionalen Ausfällen global repliziert. Die automatischen Sicherungen sind für den Fall vorgesehen, dass Sie Ihren Cosmos DB-Container versehentlich löschen und später eine Datenwiederherstellungslösung benötigt wird.  
+# <a name="online-backup-and-on-demand-data-restore-in-azure-cosmos-db"></a>Onlinesicherung und bedarfsgesteuerte Wiederherstellung in Azure Cosmos DB
 
-Dieser Artikel beginnt mit einer Kurzübersicht über die Redundanz und Verfügbarkeit von Daten in Cosmos DB, an die sich eine Erörterung von Sicherungen anschließt. 
+Azure Cosmos DB erstellt in regelmäßigen Abständen automatisch Sicherungen Ihrer Daten. Die automatischen Sicherungen erfolgen ohne Beeinträchtigung der Leistung oder Verfügbarkeit des Datenbankbetriebs. Alle Sicherungskopien werden in einem Speicherdienst getrennt gespeichert, und diese Sicherungen werden zum besseren Schutz vor regionalen Ausfällen global repliziert. Automatische Sicherungen sind in Situationen hilfreich, in denen Sie versehentlich Ihr Azure Cosmos-Konto, die Datenbank oder einen Container löschen oder aktualisieren und später eine Datenwiederherstellung durchführen möchten.
 
-## <a name="high-availability-with-cosmos-db---a-recap"></a>Hochverfügbarkeit mit Cosmos DB: Kurzübersicht
-Cosmos DB ist auf eine [globale Verteilung](distribute-data-globally.md) ausgelegt und ermöglicht eine Skalierung des Durchsatzes in mehreren Azure-Regionen sowie ein durch Richtlinien gesteuertes Failover und transparente Multihosting-APIs. Azure Cosmos DB bietet [SLAs für eine Verfügbarkeit von 99,99 Prozent](https://azure.microsoft.com/support/legal/sla/cosmos-db) für alle Konten mit einer einzelnen Region und alle Konten mit mehreren Regionen mit gelockerter Konsistenz sowie eine Leseverfügbarkeit von 99,999 Prozent für alle Datenbankkonten mit mehreren Regionen. Alle Schreibvorgänge in Azure Cosmos DB werden mithilfe eines Quorums von Replikaten in einem lokalen Rechenzentrum beständig auf lokalen Datenträgern gespeichert, bevor der Client eine Bestätigung erhält. Die Hochverfügbarkeit von Cosmos DB ist von lokalem Speicher und nicht von externen Speichertechnologien abhängig. Wenn Ihr Konto darüber hinaus mehreren Azure-Regionen zugeordnet ist, werden Ihre Schreibvorgänge auch in andere Regionen repliziert. Um Ihren Durchsatz zu skalieren und mit kurzer Latenz auf Daten zuzugreifen, können Sie in Ihrem Datenbankkonto über so viele Leseregionen wie gewünscht verfügen. In jeder Leseregion werden die (replizierten) Daten dauerhaft in einer Replikatgruppe gespeichert.  
+## <a name="automatic-and-online-backups"></a>Automatische Onlinesicherungen
 
-Wie im folgenden Diagramm dargestellt, wird ein einzelner Cosmos DB-Container [horizontal partitioniert](partition-data.md). Eine „Partition“ ist im folgenden Diagramm durch einen Kreis dargestellt, und jede Partition bietet mithilfe einer Replikatgruppe hohe Verfügbarkeit. Dies ist die lokale Verteilung innerhalb einer einzelnen Azure-Region (siehe die x-Achse). Zusätzlich wird jede Partition (samt zugehöriger Replikatgruppe) anschließend auf mehrere Regionen verteilt, die Ihrem Datenbankkonto zugeordnet sind (in dieser Abbildung z.B. auf die drei Regionen USA, Osten, USA, Westen und Indien, Mitte). Die „Partitionsgruppe“ ist eine global verteilte Entität, die aus mehreren Kopien Ihrer Daten in jeder Region besteht (siehe die Y-Achse). Sie können den Ihrem Datenbankkonto zugeordneten Regionen eine Priorität zuweisen. Bei einem Notfall führt Cosmos DB ein transparentes Failover in die nächste Region durch. Sie können ein Failover auch manuell simulieren, um zu testen, ob Ihre Anwendung lückenlos verfügbar ist.  
+Azure Cosmos DB sorgt nicht nur dafür, dass Ihre Daten, sondern auch die Sicherungen Ihrer Daten überaus redundant und gegen regionale Katastrophen geschützt sind. Die automatisierten Sicherungen werden derzeit alle vier Stunden ausgeführt, und es werden zu jeder Zeit immer die beiden neuesten Sicherungen gespeichert. Wenn Sie Ihre Daten versehentlich gelöscht oder beschädigt haben, sollten Sie sich innerhalb von acht Stunden an den [Azure-Support](https://azure.microsoft.com/support/options/) wenden, damit das Azure Cosmos DB-Team Sie beim Wiederherstellen der Daten aus den Sicherungen unterstützen kann.
 
-Die folgende Abbildung veranschaulicht das hohe Maß an Redundanz dank Cosmos DB.
+Die Sicherungen erfolgen ohne Beeinträchtigung der Leistung oder Verfügbarkeit Ihrer Anwendungen. Azure Cosmos DB erstellt die Datensicherung im Hintergrund, ohne Ihren bereitgestellten Durchsatz (Anforderungseinheiten, RUs) zu beanspruchen bzw. die Leistung oder Verfügbarkeit Ihrer Datenbank zu beeinträchtigen.
 
-![Hohes Maß an Redundanz mit Cosmos DB](./media/online-backup-and-restore/redundancy.png)
-
-![Hohes Maß an Redundanz mit Cosmos DB](./media/online-backup-and-restore/global-distribution.png)
-
-## <a name="full-automatic-online-backups"></a>Vollständige, automatische Onlinesicherungen
-Huch, ich habe leider meinen Container bzw. meine Datenbank gelöscht! Cosmos DB sorgt nicht nur dafür, dass Ihre Daten, sondern auch die Sicherungen Ihrer Daten überaus redundant und gegen regionale Katastrophen geschützt sind. Diese automatisierten Sicherungen werden derzeit ungefähr alle vier Stunden ausgeführt, und es werden immer die beiden neuesten Sicherungen gespeichert. Wenn die Daten aus Versehen gelöscht oder beschädigt werden, wenden Sie sich innerhalb von acht Stunden an den [Azure-Support](https://azure.microsoft.com/support/options/). 
-
-Die Sicherungen erfolgen ohne Beeinträchtigung der Leistung oder Verfügbarkeit Ihrer Datenbanken. Cosmos DB erstellt die Sicherung im Hintergrund, ohne Ihre bereitgestellten Anforderungseinheiten zu beanspruchen bzw. die Leistung oder die Verfügbarkeit Ihrer Datenbank zu beeinträchtigen. 
-
-Im Gegensatz zu Ihren Daten, die in Cosmos DB gespeichert sind, werden automatische Sicherungen im Azure Blob Storage-Dienst gespeichert. Um niedrige Latenz und ein effizientes Hochladen zu gewährleisten, wird die Momentaufnahme Ihrer Sicherung in eine Instanz von Azure Blob Storage in der Region hochgeladen, in der sich auch die aktuelle Schreibregion Ihres Cosmos DB-Datenbankkontos befindet. Zum besseren Schutz vor regionalen Katastrophen wird jede Momentaufnahme Ihrer Sicherungsdaten in Azure Blob Storage nochmals mithilfe von georedundantem Speicher (GRS) in eine andere Region repliziert. Das folgende Diagramm zeigt, dass der gesamte Cosmos DB-Container (mit allen drei primären Partitionen in USA, Westen in diesem Beispiel) in einem von Azure Blob Storage-Remotekonto in USA, Westen gesichert wird und anschließend mithilfe von GRS nach USA, Osten repliziert wird. 
-
-Das folgende Bild veranschaulicht regelmäßige vollständige Sicherungen aller Cosmos DB-Entitäten in georedundantem Azure Storage.
+Azure Cosmos DB speichert automatische Sicherungen in Azure Blob Storage, während sich die eigentlichen Daten lokal in Azure Cosmos DB befinden. Um niedrige Latenz zu gewährleisten, wird die Momentaufnahme Ihrer Sicherung in Azure Blob Storage in der Region gespeichert, in der sich auch die aktuelle Schreibregion Ihres Cosmos DB-Datenbankkontos befindet (bzw. bei einer Multimaster-Konfiguration in einer der Schreibregionen). Zum besseren Schutz vor regionalen Katastrophen wird jede Momentaufnahme der Sicherungsdaten in Azure Blob Storage nochmals mithilfe von georedundantem Speicher (GRS) in eine andere Region repliziert. Die Region, in die die Sicherung repliziert wird, richtet sich nach Ihrer Quellregion und dem Regionspaar, das der Quellregion zugeordnet ist. Weitere Informationen finden Sie im Artikel mit der [Liste der georedundanten Azure-Regionspaare](../best-practices-availability-paired-regions.md). Sie können auf diese Sicherung nicht direkt zugreifen. Azure Cosmos DB verwendet diese Sicherung nur, wenn die Wiederherstellung einer Sicherung initiiert wird.
+Die folgende Abbildung zeigt, wie ein Azure Cosmos DB-Container (mit allen drei primären Ressourcenpartitionen in „USA, Westen“) in einem Azure Blob Storage-Remotekonto in „USA, Westen“ gesichert und anschließend nach „USA, Osten“ repliziert wird:
 
 ![Regelmäßige vollständige Sicherungen aller Cosmos DB-Entitäten in georedundantem Azure Storage](./media/online-backup-and-restore/automatic-backup.png)
 
+## <a name="options-to-manage-your-own-backups"></a>Optionen für das Verwalten Ihrer eigenen Sicherungen
+
+Mithilfe von Azure Cosmos DB-SQL-API-Konten können Sie auch Ihre eigenen Sicherungen verwalten. Nutzen Sie dazu eine der folgenden Vorgehensweisen:
+
+* Verwenden Sie [Azure Data Factory](../data-factory/connector-azure-cosmos-db.md) zum Verschieben von Daten in einen Speicher Ihrer Wahl in regelmäßigen Abständen.
+
+* Verwenden Sie den [Änderungsfeed](change-feed.md) von Azure Cosmos DB, um Daten regelmäßig für eine vollständige Sicherung sowie für inkrementelle Änderungen zu lesen und in Ihrem eigenen Speicher zu speichern.
+
 ## <a name="backup-retention-period"></a>Aufbewahrungszeitraum der Sicherung
-Wie oben beschrieben, erstellt Azure Cosmos DB alle vier Stunden Momentaufnahmen auf Partitionsebene. Es werden jeweils nur die letzten zwei Momentaufnahmen aufbewahrt. Aber wenn der Container bzw. die Datenbank gelöscht wird, bewahrt Azure Cosmos DB die vorhandenen Momentaufnahmen für alle gelöschten Partitionen innerhalb des angegebenen Containers bzw. der Datenbank 30 Tage lang auf.
 
-Wenn Sie für die SQL-API eigene Momentaufnahmen verwalten möchten, können Sie dazu die folgenden Optionen verwenden:
+Azure Cosmos DB erstellt alle vier Stunden Momentaufnahmen Ihrer Daten. Es werden jeweils nur die letzten zwei Momentaufnahmen aufbewahrt. Aber wenn der Container bzw. die Datenbank gelöscht wird, bewahrt Azure Cosmos DB die vorhandenen Momentaufnahmen des angegebenen Containers bzw. der Datenbank 30 Tage lang auf.
 
-* Verwenden Sie die Option für den Export in eine JSON-Datei im [Datenmigrationstool](import-data.md#export-to-json-file) von Azure Cosmos DB, um zusätzliche Sicherungen zu planen.
+## <a name="restoring-data-from-online-backups"></a>Wiederherstellen von Daten aus Onlinesicherungen
 
-* Verwenden Sie [Azure Data Factory](../data-factory/connector-azure-cosmos-db.md) zum Verschieben von Daten in regelmäßigen Abständen.
+Das versehentliche Löschen oder Ändern von Daten kann in einem der folgenden Szenarien auftreten:  
 
-* Verwenden Sie den [Änderungsfeed](change-feed.md) von Azure Cosmos DB, um Daten periodisch für eine vollständige Sicherung und separat für inkrementelle Änderungen zu lesen und in Ihr Blobziel zu verschieben. 
+* Das gesamte Azure Cosmos-Konto wird gelöscht.
 
-* Für die Verwaltung von dynamischen Sicherungen ist es möglich, Daten in regelmäßigen Abständen aus dem Änderungsfeed zu lesen und das Schreiben dieser Daten in eine andere Sammlung zu verzögern. So wird sichergestellt, dass Sie die Daten nicht wiederherstellen müssen, und Sie können sich die Daten sofort ansehen. 
+* Eine oder mehrere Azure Cosmos-Datenbanken werden gelöscht.
 
-> [!NOTE]
-> Beachten Sie bei der „Bereitstellung des Durchsatzes für mehrere Container auf Datenbankebene“, dass die Wiederherstellung für das gesamte Datenbankkonto erfolgt. Darüber hinaus müssen Sie sich unbedingt innerhalb von acht Stunden an das Supportteam wenden, wenn Sie Ihren Container versehentlich löschen. Daten können nicht wiederhergestellt werden, wenn Sie sich nicht innerhalb von acht Stunden an das Supportteam wenden.
+* Ein oder mehrere Azure Cosmos-Container werden gelöscht.
 
-## <a name="restoring-a-database-from-an-online-backup"></a>Wiederherstellen einer Datenbank von einer Onlinesicherung
+* Azure Cosmos-Elemente (z.B. Dokumente) in einem Container werden gelöscht oder geändert. Dieser spezifische Fall wird in der Regel als „Datenbeschädigung“ bezeichnet.
 
-Falls Sie Ihre Datenbank oder Ihren Container versehentlich löschen, können Sie ein [Supportticket erstellen](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) oder sich [an den Azure Support wenden](https://azure.microsoft.com/support/options/), um die Daten aus der letzten automatischen Sicherung wiederherstellen zu lassen. Der Azure-Support steht nur für ausgewählte Tarife wie Standard und Developer zur Verfügung. Für den Basic-Tarif ist kein Support verfügbar. Weitere Informationen zu anderen Supportplänen finden Sie auf der Seite [Azure-Supportpläne](https://azure.microsoft.com/support/plans/). 
+* Eine freigegebene Datenbank oder Container in einer freigegebenen Datenbank werden gelöscht oder beschädigt.
 
-Wenn Sie die Datenbank aufgrund einer Datenbeschädigung wiederherstellen müssen (einschließlich Fälle, bei denen Dokumente innerhalb eines Containers gelöscht werden), helfen Ihnen die Informationen unter [Umgang mit Datenbeschädigung](#handling-data-corruption) weiter. Sie müssen zusätzliche Schritte ausführen, um zu verhindern, dass die vorhandenen Sicherungen durch die beschädigten Daten überschrieben werden. Für die Wiederherstellung einer bestimmten Momentaufnahme Ihrer Sicherung setzt Cosmos DB voraus, dass die Daten für die Dauer des Sicherungszyklus dieser Momentaufnahme verfügbar waren.
+Azure Cosmos DB können die Daten in allen oben genannten Szenarien wiederherstellen. Beim Wiederherstellungsprozess wird immer ein neues Azure Cosmos-Konto zum Speichern der wiederhergestellten Daten erstellt. Wenn kein Name für das neue Konto angegeben wird, hat dieser das Format `<Azure_Cosmos_account_original_name>-restored1`. Die letzte Ziffer wird erhöht, wenn mehrere Wiederherstellungen durchgeführt werden. Sie können keine Daten in einem vorab erstellten Azure Cosmos-Konto wiederherstellen.
 
-> [!NOTE]
-> Sammlungen oder Datenbanken können nur bei expliziten Kundenanfragen wiederhergestellt werden. Es liegt in der Verantwortung des Kunden, den Container oder die Datenbank unmittelbar nach dem Abgleich der Daten zu löschen. Wenn Sie die wiederhergestellten Datenbanken oder Sammlungen nicht löschen, entstehen Kosten für Anforderungseinheiten, Speicherung und Erfassung.
+Wenn ein Azure Cosmos-Konto gelöscht wird, können wir die Daten in einem Konto mit dem gleichen Namen wiederherstellen, vorausgesetzt, der Kontoname wird zurzeit nicht verwendet. In solchen Fällen wird empfohlen, das Konto nach dem Löschen nicht neu zu erstellen, da damit nicht nur verhindert wird, dass die wiederhergestellten Daten denselben Namen verwenden, sondern dies macht es auch schwieriger, das richtige Konto zum Wiederherstellen zu erkennen. 
 
-## <a name="handling-data-corruption"></a>Umgang mit Datenbeschädigung
+Wenn eine Azure Cosmos-Datenbank gelöscht wird, ist es möglich, die gesamte Datenbank oder eine Teilmenge der Container innerhalb der Datenbank wiederherzustellen. Es ist auch möglich, Container aus mehreren Datenbanken auszuwählen und wiederherzustellen. Alle wiederhergestellten Daten werden dann in einem neuen Azure Cosmos-Konto gespeichert.
 
-Azure Cosmos DB bewahrt die letzten beiden Sicherungen jeder Partition im Datenbankkonto auf. Dieses Modell funktioniert gut, wenn Sie einen Container (Sammlung von Dokumenten, Diagramm, Tabelle) oder eine Datenbank versehentlich gelöscht haben, da eine der letzten Versionen wiederhergestellt werden kann. Wenn jedoch eine Datenbeschädigung auftritt, ist Azure Cosmos DB möglicherweise nicht über die Datenbeschädigung informiert, und diese könnte in die vorhandenen Sicherungen überschrieben worden sein. 
+Wenn ein oder mehrere Elemente in einem Container versehentlich gelöscht oder geändert werden (der Fall der Datenbeschädigung), müssen Sie den Zeitpunkt angeben, der wiederhergestellt werden soll. Bei diesem Szenario ist Zeit der entscheidende Faktor. Da der Container aktiv ist, wird die Sicherung weiterhin ausgeführt. Wenn Sie also länger als für den Aufbewahrungszeitraum warten (der Standardwert ist acht Stunden), werden die Sicherungen überschrieben. Im Fall von Löschungen werden Ihre Daten nicht mehr gespeichert, da sie vom Sicherungszyklus nicht überschrieben werden. Sicherungen von gelöschten Datenbanken oder Containern werden 30 Tage lang gespeichert.
 
-Sobald Sie eine Beschädigung feststellen, sollten Benutzer den beschädigten Container (Sammlung/Diagramm/Tabelle) löschen, sodass Sicherungen vor dem Überschreiben mit beschädigten Daten geschützt sind. Und am wichtigsten ist, sich an den Microsoft-Support zu wenden und ein Ticket mit einer spezifischen Anfrage mit dem Schweregrad 2 zu erstellen. 
+Wenn Sie den Durchsatz auf Datenbankebene bereitstellen (d.h., eine Gruppe von Containern teilt sich den bereitgestellten Durchsatz), erfolgen die Sicherungs- und Wiederherstellungsprozesse auf Ebene der gesamten Datenbank und nicht auf Ebene der einzelnen Container. In solchen Fällen ist das Auswählen einer Teilmenge der Containern für die Wiederherstellung nicht möglich.
 
-In der folgenden Abbildung ist die Erstellung der Supportanfrage für die Containerwiederherstellung (Sammlung/Graph/Tabelle) über das Azure-Portal dargestellt, falls Daten in einem Container versehentlich gelöscht oder aktualisiert wurden.
+## <a name="migrating-data-to-the-original-account"></a>Migrieren von Daten zum ursprünglichen Konto
 
-![Wiederherstellen eines Containers nach dem fehlerhaften Aktualisieren oder Löschen von Daten in Cosmos DB](./media/online-backup-and-restore/backup-restore-support.png)
+Das Hauptziel der Datenwiederherstellung ist die Möglichkeit zum Wiederherstellen aller Daten, die Sie versehentlich löschen oder ändern. Es wird daher empfohlen, dass Sie zunächst den Inhalt der wiederhergestellten Daten untersuchen, um sicherzustellen, dass die gewünschten Daten enthalten sind. Führen Sie dann die Migration der Daten zum primären Konto durch. Es ist zwar möglich, das wiederhergestellte Konto als aktives Konto zu verwenden, dies wird für Produktionsworkloads jedoch nicht empfohlen.  
 
-Wenn die Wiederherstellung für diese Art von Szenarien durchgeführt wird, werden Daten in einem anderen Konto (mit dem Suffix „-restored“) und einem anderen Container wiederhergestellt. Dies ist keine direkte Wiederherstellung, damit Kunden die Möglichkeit haben, die Daten zu überprüfen und wie gewünscht zu verschieben. Der wiederhergestellte Container befindet sich in derselben Region und verfügt über dieselben RUs und Indizierungsrichtlinien. Ein Benutzer, der Abonnementadministrator oder Co-Administrator ist, kann das wiederhergestellte Konto anzeigen.
+Im Folgenden werden verschiedene Möglichkeiten zum Migrieren von Daten zurück zum ursprünglichen Azure Cosmos-Konto beschrieben:
 
+* Verwenden des [Datenmigrationstools von Cosmos DB](import-data.md)
+* Verwenden von [Azure Data Factory]( ../data-factory/connector-azure-cosmos-db.md)
+* Verwenden des [Änderungsfeeds](change-feed.md) in Azure Cosmos DB 
+* Schreiben von benutzerdefiniertem Code
 
-> [!NOTE]
-> Wenn Sie die Daten zur Behebung von Beschädigungsproblemen oder nur zum Testen wiederherstellen, planen Sie unbedingt, sie zu entfernen, sobald Ihre Aufgabe erledigt ist, da wiederhergestellte Container oder eine Datenbank zusätzliche Kosten basierend auf dem bereitgestellten Durchsatz verursachen. 
+Löschen Sie die wiederhergestellten Konten, sobald Sie mit der Migration fertig sind, da für diese laufende Gebühren anfallen.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wie Sie die Datenbank in mehrere Rechenzentren replizieren, erfahren Sie unter [Globale Verteilung von Daten mit Cosmos DB](distribute-data-globally.md). 
+Informieren Sie sich als Nächstes darüber, wie Sie Daten aus einem Azure Cosmos-Konto wiederherstellen oder Daten zu einem Azure Cosmos-Konto migrieren.
 
-Zum Kontaktieren des Azure-Supports [fordern Sie im Azure-Portal ein Ticket an](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+* Wenn Sie eine Wiederherstellungsanforderung übermitteln möchten, kontaktieren Sie den Azure-Support, und [erstellen Sie im Azure-Portal ein Ticket](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+* [Wiederherstellung von Daten aus einem Azure Cosmos-Konto](how-to-backup-and-restore.md)
+* [Verwenden des Änderungsfeeds von Cosmos DB](change-feed.md) zum Verschieben von Daten in Azure Cosmos DB
+* [Verwenden von Azure Data Factory](../data-factory/connector-azure-cosmos-db.md) zum Verschieben von Daten in Azure Cosmos DB
 

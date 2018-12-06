@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: 803fa89145d3a38b2df34666754fe8949a74eb53
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: a36ad31531e41782f5be457450737a74f476c543
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51262334"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52584875"
 ---
 # <a name="api-management-advanced-policies"></a>API Management – Erweiterte Richtlinien
 Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinien. Weitere Informationen zum Hinzufügen und Konfigurieren von Richtlinien finden Sie unter [Richtlinien in API Management](https://go.microsoft.com/fwlink/?LinkID=398186).
@@ -649,7 +649,7 @@ status code and media type. If no example or schema found, the content is empty.
 |Attribut|BESCHREIBUNG|Erforderlich|Standard|
 |---------------|-----------------|--------------|-------------|
 |mode="string"|Bestimmt, ob dies eine neue Anforderung oder eine Kopie der aktuellen Anforderung ist. Im Ausgangsmodus wird der Anforderungstext durch „mode=copy“ nicht initialisiert.|Nein |Neu|
-|response-variable-name="string"|Der Name der Kontextvariable, die ein Antwortobjekt empfängt. Wenn die Variable nicht vorhanden ist, wird sie bei erfolgreicher Ausführung der Richtlinie erstellt und ist über die Sammlung [`context.Variable`](api-management-policy-expressions.md#ContextVariables) zugänglich.|JA|N/V|
+|response-variable-name="string"|Der Name der Kontextvariable, die ein Antwortobjekt empfängt. Wenn die Variable nicht vorhanden ist, wird sie bei erfolgreicher Ausführung der Richtlinie erstellt und ist dann über die Sammlung [`context.Variable`](api-management-policy-expressions.md#ContextVariables) zugänglich.|JA|N/V|
 |timeout="integer"|Das Zeitüberschreitungsintervall in Sekunden, bis für den Aufruf der URL ein Fehler auftritt.|Nein |60|
 |ignore-error|Bei „true“ und einem Fehler für die Anforderung:<br /><br /> -   Wenn „response-variable-name“ angegeben wurde, ist dies ein Nullwert.<br />-   Wenn „response-variable-name“ nicht angegeben wurde, wird „context.Request“ nicht aktualisiert.|Nein |false|
 |name|Gibt den Namen des festzulegenden Headers an.|JA|N/V|
@@ -876,7 +876,7 @@ Beachten Sie die Verwendung von [Eigenschaften](api-management-howto-properties.
 
 ```xml
 
-<trace source="arbitrary string literal"/>
+<trace source="arbitrary string literal">
     <!-- string expression or literal -->
 </trace>
 

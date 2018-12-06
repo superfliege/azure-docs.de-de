@@ -12,19 +12,24 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 11/06/2018
+ms.date: 11/25/2018
 ms.author: cenkd;juliako
-ms.openlocfilehash: 6060f294820281df3124fb2fc702ece59a006af1
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: e0eaf88117aa3c67f7ffecad2e3811a22449a5f8
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51282406"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52312968"
 ---
 # <a name="filters-and-dynamic-manifests"></a>Filter und dynamische Manifeste
+
+> [!div class="op_single_selector" title1="Select the version of Media Services that you are using:"]
+> * [Version 2](media-services-dynamic-manifest-overview.md)
+> * [Version 3](../latest/filters-dynamic-manifest-overview.md)
+
 Ab Version 2.17 können Sie mit Media Services Filter für Ihre Medienobjekte definieren. Diese Filter sind serverseitige Regeln, mit denen Ihre Kunden verschiedene Aktionen ausführen können, z.B. Wiedergabe bestimmter Videoabschnitte (anstelle des gesamten Videos). Sie können zudem nur eine Teilmenge von Audio- und Videowiedergaben (anstelle von allen mit dem Medienobjekt verknüpften Wiedergaben) angeben, die für das Gerät eines Kunden geeignet sind. Diese Filterung der Medienobjekte erfolgt über **dynamische Manifeste**, die auf Anfrage des Kunden zum Streamen von Videos basierend auf bestimmten Filtern erstellt werden.
 
-In diesem Thema werden allgemeine Szenarien behandelt, bei denen die Verwendung von Filtern für Ihre Kunden von großem Nutzen sein kann. Außerdem werden Links zu Themen vorgestellt, in denen die programmgesteuerte Erstellung von Filtern erläutert wird.
+In diesem Thema werden allgemeine Szenarien behandelt, bei denen die Verwendung von Filtern für Ihre Kunden von Nutzen sein kann. Außerdem werden Links zu Themen vorgestellt, in denen die programmgesteuerte Erstellung von Filtern erläutert wird.
 
 ## <a name="overview"></a>Übersicht
 Bei der Übermittlung Ihrer Inhalte an Kunden (Streaming von Liveveranstaltungen oder Video-on-Demand) besteht Ihr Ziel darin, qualitativ hochwertige Videos für unterschiedliche Geräte unter verschiedenen Netzwerkbedingungen zu übermitteln. Gehen Sie wie folgt vor, um dieses Ziel zu erreichen:
@@ -73,7 +78,7 @@ Es gibt bestimmte [Szenarios](media-services-dynamic-manifest-overview.md#scenar
 * Gerätespezifisch: Übermitteln nur der angegebenen Wiedergaben und/oder Sprachen, die von dem Gerät unterstützt werden, das für die Wiedergabe der Inhalte verwendet wird („Filtern der Wiedergabe“). 
 * Reduzieren des Manifests, um einen Subclip eines Liveereignisses anzuzeigen ("Filtern von Subclips").
 * Kürzen des Starts eines Videos ("Kürzen eines Videos").
-* Anpassen des Präsentationsfensters (DVR), um eine begrenzte Größe des DVR-Fensters im Player anzugeben ("Anpassen des Präsentationsfensters").
+* Anpassen des Präsentationsfensters (DVR), um eine begrenzte Größe des DVR-Fensters im Player anzugeben („Anpassen des Präsentationsfensters“).
 
 Um diese Flexibilität zu erreichen, umfasst Media Services **dynamische Manifeste** , die auf vordefinierten [Filtern](media-services-dynamic-manifest-overview.md#filters)basieren.  Nachdem Sie die Filter definiert haben, können Ihre Kunden sie zum Streamen einer spezifischen Wiedergabe oder bestimmter Subclips Ihres Videos verwenden. Dazu geben sie die Filter in der Streaming-URL an. Die Filter können auf die mit der [dynamischen Paketerstellung](media-services-dynamic-packaging-overview.md) unterstützten Streaminprotokolle mit adaptiver Bitrate angewendet werden: HLS, MPEG-DASH und Smooth Streaming. Beispiel: 
 

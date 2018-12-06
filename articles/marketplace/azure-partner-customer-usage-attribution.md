@@ -12,26 +12,27 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 11/17/2018
 ms.author: yijenj
-ms.openlocfilehash: 3a1c5341e391c8be1af42eea940fbf147b88e7c8
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 1ae10fb749e671f7a8b5ca48e652711d7dcf98c8
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685700"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52262600"
 ---
 # <a name="azure-partner-customer-usage-attribution"></a>Zuordnen der Nutzung durch Kunden von Azure-Partnern
 
-Als Softwarepartner für Azure erfordern Ihre Lösungen entweder Azure-Komponenten oder müssen direkt in der Azure-Infrastruktur bereitgestellt werden. Für Kunden, die eine Partnerlösung und eigene Azure-Ressourcen bereitstellen, kann es möglicherweise schwierig sein, einen Einblick in den Status der Bereitstellung und den Einfluss auf das Azure-Wachstum zu erhalten. Ein höherer Sichtbarkeitsgrad hilft bei der Abstimmung mit den Microsoft-Vertriebsteams und dem Erhalt von Gutschriften für Microsoft-Partnerprogramme.   
+Als Softwarepartner für Azure erfordern Ihre Lösungen entweder Azure-Komponenten oder müssen direkt in der Azure-Infrastruktur bereitgestellt werden. Für Kunden, die eine Partnerlösung und eigene Azure-Ressourcen bereitstellen, kann es möglicherweise schwierig sein, einen Einblick in den Status der Bereitstellung und den Einfluss auf das Azure-Wachstum zu erhalten. Ein höherer Sichtbarkeitsgrad hilft bei der Abstimmung mit den Microsoft-Vertriebsteams und dem Erhalt von Gutschriften für Microsoft-Partnerprogramme. 
 
 Microsoft bietet jetzt eine Methode an, um Partner bei der besseren Verfolgung der Azure-Nutzung durch Kundenbereitstellungen ihrer Software unter Azure zu unterstützen. Diese neue Methode verwendet Azure Resource Manager, um die Bereitstellung von Azure-Diensten zu orchestrieren.
 
 Als Microsoft-Partner können Sie die Azure-Nutzung allen Azure-Ressourcen zuordnen, die Sie für einen Kunden bereitstellen. Sie können die Zuordnung über den Azure Marketplace, das Schnellstartrepository, private GitHub-Repositorys und direkte Kundeninteraktion herstellen. Für die Nachverfolgung stehen zwei Ansätze zur Verfügung:
 
 - Azure Resource Manager-Vorlagen: Resource Manager-Vorlagen oder Lösungsvorlagen zum Bereitstellen der Azure-Dienste zum Ausführen der Software des Partners. Partner können Resource Manager-Vorlagen erstellen, um die Infrastruktur und Konfiguration ihrer Azure-Lösung zu definieren. Mit einer Resource Manager-Vorlage können Sie und Ihre Kunden die Lösung während des gesamten Lebenszyklus bereitstellen. Sie können sicher sein, dass Ihre Ressourcen in einem konsistenten Zustand bereitgestellt werden. 
-
 - Azure Resource Manager-APIs: Partner können die Azure Resource Manager-APIs direkt aufrufen, um eine Resource Manager-Vorlage bereitzustellen, oder um API-Aufrufe für die direkte Bereitstellung von Azure-Diensten zu generieren. 
+
+Die Zuordnung der Nutzung durch Kunden ist für alle [Lösungsvorlagen](./cloud-partner-portal-orig/cloud-partner-portal-solution-template-offer-publish.md) erforderlich, die über den Azure Marketplace veröffentlicht werden. 
 
 ## <a name="use-resource-manager-templates"></a>Verwenden von Resource Manager-Vorlagen
 

@@ -8,13 +8,13 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
-ms.date: 10/11/2018
-ms.openlocfilehash: f4d8030918804dc30437aae34de87615ce7e82b5
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.date: 11/16/2018
+ms.openlocfilehash: 62235c0c06621169997cc4ad16816c0a4d638e78
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51346699"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51853828"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Grenzwert- und Konfigurationsinformationen für Azure Logic Apps
 
@@ -323,9 +323,10 @@ Für alle Logik-Apps in einer Region werden dieselben Bereiche von IP-Adressen v
 
 ### <a name="managed-connectors"></a>Verwaltete Connectors
 
-Um die Aufrufe zu unterstützen, die [von Microsoft verwaltete Connectors](../connectors/apis-list.md) durchführen, richten Sie Ihre Firewallkonfigurationen so ein, dass sie basierend auf den Regionen Ihrer Logik-Apps diese ausgehenden IP-Adressen enthalten.
+Um die Aufrufe der [von Microsoft verwalteten Connectors](../connectors/apis-list.md) zu unterstützen, müssen Sie Ihre Firewallkonfigurationen so einrichten, dass sie alle ausgehenden IP-Adressen enthalten, die für die Regionen angegeben wurden, in denen sich Ihre Logik-Apps befinden. Für [Azure Government](/azure-government/documentation-government-welcome) und [Azure China 21Vianet](/azure/china/china-welcome) stehen derzeit keine reservierten IP-Adressen für Connectors zur Verfügung.
 
 > [!IMPORTANT]
+> 
 > Aktualisieren Sie ggf. vorhandene Konfigurationen **so bald wie möglich vor dem 1. September 2018**, damit sie die IP-Adressen in dieser Liste für die Regionen, in denen sich Ihre Logik-Apps befinden, enthalten und mit ihnen übereinstimmen. 
 > 
 > Logic Apps unterstützt keine direkte Verbindung mit Azure-Speicherkonten über Firewalls. Um auf diese Speicherkonten zuzugreifen, nutzen Sie eine der folgenden Optionen: 

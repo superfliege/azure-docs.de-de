@@ -12,24 +12,22 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 08/20/2018
+ms.date: 11/15/2018
 ms.author: roiyz
-ms.openlocfilehash: f7c7877768e2dc06e73f8c91016edd521151a11c
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: ee74d4520e867604f50c70f2b6449f12ff3bd8b9
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42143480"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52495963"
 ---
 # <a name="nvidia-gpu-driver-extension-for-windows"></a>NVIDIA-GPU-Treibererweiterung für Windows
 
 ## <a name="overview"></a>Übersicht
 
-Diese Erweiterung installiert NVIDIA-GPU-Treiber auf Windows-VMs der N-Serie. Je nach VM-Familie installiert die Erweiterung CUDA- oder GRID-Treiber. Bei der Installation von NVIDIA Treibern mit dieser Erweiterung akzeptieren Sie die Bedingungen des NVIDIA-Endbenutzer-Lizenzvertrags und stimmen diesen zu. Während der Installation wird der virtuelle Computer möglicherweise neu gestartet, um die Treibereinrichtung abzuschließen.
+Diese Erweiterung installiert NVIDIA-GPU-Treiber auf Windows-VMs der N-Serie. Je nach VM-Familie installiert die Erweiterung CUDA- oder GRID-Treiber. Bei der Installation von NVIDIA Treibern mit dieser Erweiterung akzeptieren Sie die Bedingungen des [NVIDIA-Endbenutzer-Lizenzvertrags](https://go.microsoft.com/fwlink/?linkid=874330) und stimmen diesen zu. Während der Installation wird der virtuelle Computer möglicherweise neu gestartet, um die Treibereinrichtung abzuschließen.
 
 Es ist auch eine Erweiterung zum Installieren von NVIDIA-GPU-Treibern auf [Linux-VMs der N-Serie](hpccompute-gpu-linux.md) verfügbar.
-
-Die Bestimmungen des NVIDIA-Endbenutzer-Lizenzvertrags befinden sich hier: https://go.microsoft.com/fwlink/?linkid=874330
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -71,7 +69,7 @@ Der folgende JSON-Code zeigt das Schema für die Erweiterung.
 }
 ```
 
-### <a name="property-values"></a>Eigenschaftswerte
+### <a name="properties"></a>Eigenschaften
 
 | NAME | Wert/Beispiel | Datentyp |
 | ---- | ---- | ---- |
@@ -80,6 +78,14 @@ Der folgende JSON-Code zeigt das Schema für die Erweiterung.
 | type | NvidiaGpuDriverWindows | Zeichenfolge |
 | typeHandlerVersion | 1.2 | int |
 
+### <a name="settings"></a>Einstellungen
+
+Alle Einstellungen sind optional. Das Standardverhalten besteht darin, den entsprechenden neuesten unterstützten Treiber zu installieren.
+
+| NAME | BESCHREIBUNG | Standardwert | Gültige Werte | Datentyp |
+| ---- | ---- | ---- | ---- | ---- |
+| driverVersion | NV: GRID-Treiberversion<br> NC/ND: CUDA-Treiberversion | neueste | GRID: „411.81“, „391.81“, „391.58“, „391.03“<br> CUDA: „398.75“, „397.44“, „390.85“ | Zeichenfolge |
+| installGridND | Installieren von GRID-Treibern für virtuelle Computer der ND-Serie | false | true, false | boolean |
 
 ## <a name="deployment"></a>Bereitstellung
 
@@ -129,6 +135,8 @@ Set-AzureRmVMExtension
 
 ### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
 
+Im folgenden Beispiel wird das obige Beispiel für ARM und PowerShell gespiegelt, und außerdem werden benutzerdefinierte Einstellungen als Beispiel für die Installation von Nicht-Standard-Treibern hinzugefügt. Insbesondere wird ein bestimmter GRID-Treiber installiert, selbst wenn eine VM der ND-Serie bereitgestellt wird.
+
 ```azurecli
 az vm extension set `
   --resource-group myResourceGroup `
@@ -137,6 +145,8 @@ az vm extension set `
   --publisher Microsoft.HpcCompute `
   --version 1.2 `
   --settings '{ `
+    "driverVersion": "391.03",
+    "installGridND": true
   }'
 ```
 

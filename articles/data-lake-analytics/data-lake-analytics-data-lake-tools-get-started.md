@@ -9,17 +9,19 @@ ms.reviewer: jasonwhowell
 ms.assetid: ad8a6992-02c7-47d4-a108-62fc5a0777a3
 ms.topic: conceptual
 ms.date: 08/13/2018
-ms.openlocfilehash: c41ac2246386b8838d1310a9cd5c03dd0cf5d8e4
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 1c6a83626f86724bcaa61de03a49b5327af19d88
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51244507"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51706533"
 ---
 # <a name="develop-u-sql-scripts-by-using-data-lake-tools-for-visual-studio"></a>Entwickeln von U-SQL-Skripts mit Data Lake-Tools für Visual Studio
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
 
-Erfahren Sie, wie Sie mit Visual Studio Azure Data Lake Analytics-Konten erstellen, Aufträge in [U-SQL](data-lake-analytics-u-sql-get-started.md) definieren und Aufträge an den Data Lake Analytics-Dienst übermitteln. Weitere Informationen zu Data Lake Analytics finden Sie unter [Übersicht über Azure Data Lake Analytics](data-lake-analytics-overview.md).
+Azure Data Lake- und Stream Analytics-Tools enthalten Funktionen für zwei Azure-Dienste: Azure Data Lake Analytics und Azure Stream Analytics. Weitere Informationen zu den Azure Stream Analytics-Szenarien finden Sie unter [Installieren der Azure Stream Analytics-Tools für Visual Studio](../stream-analytics/stream-analytics-tools-for-visual-studio-install.md).
+
+In diesem Artikel erfahren Sie, wie Sie Visual Studio verwenden, um Azure Data Lake Analytics-Konten zu erstellen, Aufträge in [U-SQL](data-lake-analytics-u-sql-get-started.md) zu definieren und Aufträge an den Data Lake Analytics-Dienst zu übermitteln. Weitere Informationen zu Data Lake Analytics finden Sie unter [Übersicht über Azure Data Lake Analytics](data-lake-analytics-overview.md).
 
 >[!IMPORTANT]
 > Microsoft empfiehlt Ihnen das Upgrade auf Version 2.3.3000.4 (oder höher) der Azure Data Lake Tools für Visual Studio. Ältere Versionen stehen nicht mehr als Download zur Verfügung und sind veraltet. 

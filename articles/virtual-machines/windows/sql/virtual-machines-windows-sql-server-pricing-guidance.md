@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/09/2018
 ms.author: jroth
-ms.openlocfilehash: a748532de7e8b8e910e335b67a693c4470861bf1
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: b19cf9cd4b67479d811a590cb80a618680f3b3d5
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40003558"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52496477"
 ---
 # <a name="pricing-guidance-for-sql-server-azure-vms"></a>Preisinformationen für virtuelle Azure-Computer mit SQL Server
 
@@ -37,7 +37,7 @@ Dieser Artikel enthält Preisinformationen zu [virtuellen SQL Server-Computern](
 
 Wenn Sie Funktionen entwickeln bzw. testen oder eine Machbarkeitsstudie erstellen möchten, verwenden Sie die **SQL Server Developer Edition** mit kostenloser Lizenz. Diese Edition verfügt über alle Funktionen der SQL Server Enterprise-Edition, sodass Sie jede Art von Anwendung erstellen und testen können. Die Developer-Edition kann jedoch nicht in der Produktion ausgeführt werden. Für eine VM der SQL Server Developer-Edition fallen nur die VM-Kosten an, da keine SQL Server-Lizenzierungskosten zugeordnet sind.
 
-Wenn Sie eine kleine Arbeitsauslastung in der Produktion ausführen möchten (<4 Kerne, <1 GB Arbeitsspeicher, <10 GB/Datenbank), verwenden Sie die **SQL Server Express Edition** mit kostenloser Lizenz. Für eine VM der SQL Server Express-Edition fallen ebenfalls nur die VM-Kosten an.
+Wenn Sie eine kleine Workload in der Produktion ausführen möchten (< 4 Kerne, < 1 GB Arbeitsspeicher, < 10 GB/Datenbank), verwenden Sie die **SQL Server Express Edition** mit kostenloser Lizenz. Für eine VM der SQL Server Express-Edition fallen ebenfalls nur die VM-Kosten an.
 
 Für solche Entwicklungs- oder Testarbeitsauslastungen und Arbeitsauslastungen mit geringem Umfang können Sie auch Geld sparen, indem Sie eine kleinere VM-Größe auswählen, die für diese Arbeitsauslastungen ausreichend ist. Die Größe DS1v2 beispielsweise eignet sich für manche Szenarios.
 
@@ -90,6 +90,9 @@ Informationen zum Erstellen eines virtuellen Azure-Computers mit SQL Server 2017
 >
 >Sie umfasst nicht die zusätzlichen SQL Server-Lizenzierungskosten für eine Web, Standard oder Enterprise Edition. Um die genaueste Preisschätzung zu erhalten, wählen Sie Ihr Betriebssystem und die SQL Server-Edition auf der Seite zur Preisfindung für [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) oder [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) aus.
 
+> [!NOTE]
+> Es ist jetzt möglich, das Lizenzierungsmodell von nutzungsbasierter Bezahlung zum Verwenden einer eigenen Lizenz (Bring Your Own License, BYOL) zu wechseln und umgekehrt. Weitere Informationen finden Sie unter [Ändern des Lizenzierungsmodells für einen virtuellen SQL-Computer](virtual-machines-windows-sql-ahb.md). 
+
 ## <a id="byol"></a> BYOL (Bring Your Own License)
 
 Das Konzept der **Verwendung eigener SQL-Lizenzen über die „Lizenzmobilität“**, auch als **BYOL** bezeichnet, bedeutet, dass Sie eine vorhandene SQL Server-Volumenlizenz mit Software Assurance auf einem virtuellen Azure-Computer nutzen. Bei einem virtuellen SQL Server-Computer mit BYOL-Modell werden nur die Kosten für die Ausführung des Computers berechnet, nicht für die SQL Server-Lizenzierung. Dies setzt voraus, dass Sie bereits über ein Volumenlizenzprogramm Lizenzen und Software Assurance erworben haben.
@@ -123,7 +126,9 @@ Um einen virtuellen Azure-Computer mit SQL Server 2017 mit einem dieser BYOL-Ima
 > Informieren Sie uns innerhalb von 10 Tagen, wie viele SQL Server-Lizenzen Sie in Azure verwenden werden. Unter den Links zu den oben genannten Images finden Sie Anweisungen dazu.
 
 > [!NOTE]
-> Es ist nicht möglich, das Lizenzierungsmodell einer SQL Server-VM mit sekundenbasierter Bezahlung zu ändern und eine eigene Lizenz zu verwenden. In diesem Fall müssen Sie einen neuen virtuellen BYOL-Computer erstellen und die Datenbanken zu diesem neuen virtuellen Computer migrieren.
+> Es ist jetzt möglich, das Lizenzierungsmodell von nutzungsbasierter Bezahlung zum Verwenden einer eigenen Lizenz (Bring Your Own License, BYOL) zu wechseln und umgekehrt. Weitere Informationen finden Sie unter [Ändern des Lizenzierungsmodells für einen virtuellen SQL-Computer](virtual-machines-windows-sql-ahb.md). 
+
+
 
 ## <a name="reduce-costs"></a>Senken Sie Kosten
 

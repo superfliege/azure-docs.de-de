@@ -9,26 +9,26 @@ ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: b7b93ca9c8638451d23a27edeed823e593a95b23
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 62499c35fd71d83f80a60e0511e6a27ce0109275
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51035644"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52495864"
 ---
-# <a name="access-apache-yarn-application-logs-on-windows-based-hdinsight"></a>Zugriff auf Apache YARN-Anwendungsprotokolle in Windows-basiertem HDInsight
-Dieses Dokument erläutert den Zugriff auf Protokolle für Apache YARN-Anwendungen, die in einem Windows-basierten Hadoop-Cluster in Azure HDInsight abgeschlossen wurden.
+# <a name="access-apache-hadoop-yarn-application-logs-on-windows-based-hdinsight"></a>Zugreifen auf Apache Hadoop YARN-Anwendungsprotokolle in Windows-basiertem HDInsight
+Dieses Dokument erläutert den Zugriff auf Protokolle für [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html)-Anwendungen, die in einem Windows-basierten Apache Hadoop-Cluster in Azure HDInsight abgeschlossen wurden.
 
 > [!IMPORTANT]
-> Die Informationen in diesem Dokument gelten nur für Windows-basierte HDInsight-Cluster. Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Welche Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?](hdinsight-component-versioning.md#hdinsight-windows-retirement). Weitere Informationen zum Zugriff auf YARN-Protokolle in Linux-basierten HDInsight-Clustern finden Sie unter [Zugriff auf Apache YARN-Anwendungsprotokolle in Linux-basierten Hadoop-Clustern in HDInsight](hdinsight-hadoop-access-yarn-app-logs-linux.md)
+> Die Informationen in diesem Dokument gelten nur für Windows-basierte HDInsight-Cluster. Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Welche Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?](hdinsight-component-versioning.md#hdinsight-windows-retirement). Weitere Informationen zum Zugriff auf YARN-Protokolle in Linux-basierten HDInsight-Clustern finden Sie unter [Zugreifen auf Apache Hadoop YARN-Anwendungsprotokolle in Linux-basierten Apache Hadoop-Clustern in HDInsight](hdinsight-hadoop-access-yarn-app-logs-linux.md)
 >
 
 
 ### <a name="prerequisites"></a>Voraussetzungen
-* Ein Windows-basierter HDInsight-Cluster  Siehe [Erstellen Windows-basierter Hadoop-Cluster in HDInsight](hdinsight-hadoop-provision-linux-clusters.md).
+* Ein Windows-basierter HDInsight-Cluster  Weitere Informationen finden Sie unter [Erstellen Windows-basierter Apache Hadoop-Cluster in HDInsight](hdinsight-hadoop-provision-linux-clusters.md).
 
 ## <a name="yarn-timeline-server"></a>YARN Timeline Server
-Der <a href="http://hadoop.apache.org/docs/r2.4.0/hadoop-yarn/hadoop-yarn-site/TimelineServer.html" target="_blank">YARN Timeline Server</a> bietet mittels zweier Schnittstellen allgemeine Informationen zu abgeschlossenen Anwendungen sowie frameworkspezifische Anwendungsinformationen. Dies gilt insbesondere in folgenden Fällen:
+Der <a href="http://hadoop.apache.org/docs/r2.4.1/hadoop-yarn/hadoop-yarn-site/TimelineServer.html" target="_blank">Apache Hadoop YARN Timeline Server</a> bietet mittels zweier Schnittstellen allgemeine Informationen zu abgeschlossenen Anwendungen sowie frameworkspezifische Anwendungsinformationen. Dies gilt insbesondere in folgenden Fällen:
 
 * Speicherung und Abruf allgemeiner Anwendungsinformationen zu HDInsight-Clustern sind für Versionen ab 3.1.1.374 aktiviert.
 * Die frameworkspezifische Anwendungsinformationskomponente des Timeline Servers steht für HDInsight-Cluster derzeit nicht zur Verfügung.
@@ -53,7 +53,7 @@ YARN unterstützt mehrere Programmierungsmodelle, indem die Ressourcenverwaltung
 * Ein Container stellt den Kontext für eine grundlegende Aufgabeneinheit bereit. 
 * Aufgaben, die im Kontext eines Containers erledigt werden, erfolgen auf dem einzelnen Workerknoten, dem der Container zugeordnet wurde. 
 
-Weitere Informationen finden Sie unter [YARN-Konzepte][YARN-concepts].
+Weitere Informationen finden Sie unter [Apache Hadoop YARN – Konzepte][YARN-concepts].
 
 Anwendungsprotokolle (und dazugehörige Containerprotokolle) sind für das Beheben von Problemen bei Hadoop-Anwendungen besonders wichtig. YARN bietet mit seinem Feature [Log Aggregation][log-aggregation] ein nützliches Gerüst für das Sammeln, Zusammenführen und Speichern von Anwendungsprotokollen. Durch "Log Aggregation" lässt sich der Zugriff auf Anwendungsprotokolle besser steuern, denn Protokolle für alle Container auf einem Arbeitsknoten werden zusammengeführt und als zentrale Protokolldatei pro Workerknoten im Standarddateisystem gespeichert, nachdem eine Anwendung abgeschlossen wurde. Ihre Anwendung mag Hunderte oder Tausende von Containern verwenden, doch Protokolle für alle auf einem einzelnen Workerknoten vorhandenen Container werden zu einer zentralen Datei zusammengeführt, was in einer Datei pro Workerknoten mündet, die von Ihrer Anwendung genutzt werden. Log Aggregation ist für HDInsight-Cluster (ab Version 3.0) standardmäßig aktiviert. Zusammengeführte Protokolle befinden sich im Standardcontainer Ihres Clusters am folgenden Speicherort:
 

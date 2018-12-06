@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2018
 ms.author: barclayn
-ms.openlocfilehash: e7bb7f0c4cb63390b91012e071589611991a2866
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 4bd2b72596912d968ad6fc323ce32e620336d932
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49068331"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52316989"
 ---
 # <a name="windows-defender-advanced-threat-protection-with-azure-security-center"></a>Windows Defender Advanced Threat Protection mit Azure Security Center
 
@@ -99,12 +99,12 @@ So generieren Sie eine unbedenkliche Windows Defender ATP-Testwarnung:
 
 3. Wenn der Befehl erfolgreich ist, sehen Sie eine neue Warnung im Azure Security Center-Dashboard und im Windows Defender ATP-Portal. Die Anzeige dieser Warnung kann einige Minuten dauern.
 
-4. Um die Warnung in Security Center zu überprüfen, navigieren Sie zu **Sicherheitswarnungen** >  **Verdächtige PowerShell-Befehlszeile**.
+4. Um die Warnung in Security Center zu überprüfen, navigieren Sie zu **Sicherheitswarnungen** >  **Verdächtige PowerShell-Befehlszeile**.
 
 5. Wählen Sie im Untersuchungsfenster den Link aus, um zum Windows Defender ATP-Portal zu navigieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Festlegen von Sicherheitsrichtlinien in Azure Security Center:](security-center-policies.md) Hier erfahren Sie, wie Sie Sicherheitsrichtlinien für Ihre Azure-Abonnements und -Ressourcengruppen konfigurieren.
+- [Festlegen von Sicherheitsrichtlinien in Azure Security Center:](security-center-azure-policy.md) Hier erfahren Sie, wie Sie Sicherheitsrichtlinien für Ihre Azure-Abonnements und -Ressourcengruppen konfigurieren.
 - [Verwalten von Sicherheitsempfehlungen in Azure Security Center](security-center-recommendations.md): Hier erfahren Sie, wie Empfehlungen Ihnen beim Schutz der Azure-Ressourcen helfen.
 - [Überwachen der Sicherheitsintegrität in Azure Security Center](security-center-monitoring.md): Erfahren Sie, wie Sie die Integrität Ihrer Azure-Ressourcen überwachen.

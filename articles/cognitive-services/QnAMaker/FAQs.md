@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: article
-ms.date: 11/08/2018
+ms.date: 11/27/2018
 ms.author: tulasim
-ms.openlocfilehash: 2e4a5d9b7ee2a1a88bcfe819be6540385458108f
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 28153e71ba6f2336398517454a81cfce39b93956
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51622362"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52496336"
 ---
 # <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 
@@ -25,7 +25,7 @@ ms.locfileid: "51622362"
 
 Alle Löschvorgänge sind endgültig, dazu gehört auch das Löschen von Frage/Antwort-Paaren, Dateien, URLs, benutzerdefinierten Fragen und Antworten, Wissensdatenbanken oder Azure-Ressourcen. Stellen Sie sicher, dass Sie Ihre Wissensdatenbank von der Seite **Einstellungen** exportieren, bevor Sie Teile der Wissensdatenbank löschen. 
 
-### <a name="why-is-my-urlsfiles-is-not-extracting-question-answer-pairs"></a>Warum extrahieren meine URLs/Dateien keine Frage-Antwort-Paare?
+### <a name="why-is-my-urlsfiles-not-extracting-question-answer-pairs"></a>Warum extrahieren meine URLs/Dateien keine Frage-Antwort-Paare?
 
 Es ist möglich, dass QnA Maker einige Frage-und-Antwort-Inhalte (Question and Answer, QnA) aus gültigen FAQ-URLs nicht automatisch extrahieren kann. In solchen Fällen können Sie den QnA-Inhalt in eine TXT-Datei einfügen und prüfen, ob das Tool diesen Inhalt erfassen kann. Alternativ dazu können Sie Ihrer Wissensdatenbank über das [QnA Maker-Portal](https://qnamaker.ai) redaktionell Inhalte hinzufügen.
 
@@ -41,11 +41,11 @@ Sie haben noch keine QnA Maker-Dienste in Azure erstellt. Klicken Sie [hier](./H
 
 Die Freigabe erfolgt auf der Ebene eines QnA Maker-Diensts, was bedeutet, dass alle Wissensdatenbanken in diesem Dienst freigegeben werden. [Hier](./How-To/collaborate-knowledge-base.md) finden Sie Informationen zum Zusammenarbeiten an einer Wissensdatenbank.
 
-### <a name="can-you-share-a-kb-with-a-contributor-that-is-not-in-the-same-aad-tenant-to-modify-a-kb"></a>Kann ich eine Wissensdatenbank zur Bearbeitung für einen Mitwirkenden freigeben, der sich nicht im gleichen AAD-Mandanten befindet? 
+### <a name="can-you-share-a-knowledge-base-with-a-contributor-that-is-not-in-the-same-aad-tenant-to-modify-a-knowledge-base"></a>Kann ich eine Wissensdatenbank zur Bearbeitung für einen Mitwirkenden freigeben, der sich nicht im selben AAD-Mandanten befindet? 
 
 Die Freigabe basiert auf der rollenbasierten Zugriffssteuerung in Azure. Wenn Sie _jede_ Ressource in Azure für einen anderen Benutzer freigeben können, können Sie auch QnA Maker freigeben.
 
-### <a name="if-you-have-an-app-service-plan-with-5-qnamaker-kbs-can-you-assign-readwrite-rights-to-5-different-users-so-each-of-them-can-access-only-1-qnamaker-kb"></a>Angenommen, ich verfüge über einen App Service-Plan mit fünf QnA Maker-Wissensdatenbanken. Kann ich die Lese-/Schreibberechtigungen fünf verschiedenen Benutzern zuweisen, sodass jeder dieser Benutzer nur auf eine QnA Maker-Wissensdatenbank zugreifen kann?
+### <a name="if-you-have-an-app-service-plan-with-5-qnamaker-knowledge-bases-can-you-assign-readwrite-rights-to-5-different-users-so-each-of-them-can-access-only-1-qnamaker-knowledge-base"></a>Angenommen, ich verfüge über einen App Service-Plan mit fünf QnA Maker-Wissensdatenbanken. Kann ich die Lese-/Schreibberechtigungen fünf verschiedenen Benutzern zuweisen, sodass jeder dieser Benutzer nur auf eine QnA Maker-Wissensdatenbank zugreifen kann?
 
 Sie können den gesamten QnA Maker-Dienst freigeben, nicht aber einzelne Wissensdatenbanken.
 
@@ -65,8 +65,7 @@ Die Standardmeldung ist Teil der Einstellungen in Ihrem App-Dienst.
 
 ### <a name="why-is-my-sharepoint-link-not-getting-extracted"></a>Warum wird mein SharePoint-Link nicht extrahiert?
 
-Das Tool analysiert nur öffentliche URLs und unterstützt zu diesem Zeitpunkt keine authentifizierten Datenquellen. Alternativ können Sie die Datei herunterladen und die Dateiuploadoption verwenden, um Fragen und Antworten zu extrahieren.
-
+Weitere Informationen finden Sie unter [Speicherorte von Datenquellen](./Concepts/data-sources-supported.md#data-source-locations).
 
 ### <a name="the-updates-that-i-made-to-my-knowledge-base-are-not-reflected-on-publish-why-not"></a>Die Aktualisierungen, die ich an meiner Wissensdatenbank vorgenommen habe, sind beim Veröffentlichen nicht mehr vorhanden. Warum nicht?
 
@@ -94,9 +93,13 @@ Aktualisieren Sie Ihren App-Dienst, wenn sich das Symbol „Vorsicht“ neben de
 
 Aktualisieren Sie Ihre Endpunktschlüssel, wenn Sie den Verdacht hegen, dass sie gestohlen oder ausgespäht wurden.
 
-### <a name="can-i-use-the-same-azure-search-resource-for-kbs-using-multiple-languages"></a>Kann ich die gleiche Azure Search-Ressource für Wissensdatenbanken in mehreren Sprachen verwenden?
+### <a name="can-i-use-the-same-azure-search-resource-for-knowledge-bases-using-multiple-languages"></a>Kann ich die gleiche Azure Search-Ressource für Wissensdatenbanken in mehreren Sprachen verwenden?
 
 Um mehrere Wissensdatenbanken und mehrere Sprachen zu nutzen, müssen Benutzer eine QnA Maker-Ressource für jede Sprache erstellen. Dadurch wird ein separater Azure Search-Dienst pro Sprache erstellt. Das Kombinieren von Wissensdatenbanken verschiedener Sprachen in einem einzelnen Azure Search-Dienst führt zur einer niedrigeren Relevanz der Ergebnisse.
+
+### <a name="how-can-i-change-the-name-of-the-azure-search-resource-used-by-qna-maker"></a>Wie kann ich den Namen der Azure Search-Ressource, die von QnA Maker verwendet wird, ändern?
+
+Der Name der Azure Search-Ressource ist der Name der QnA Maker-Ressource, an den einige zufällige Buchstaben angefügt sind. Dadurch wird es schwierig, mehrere Search-Ressourcen für QnA Maker zu unterscheiden. Erstellen Sie einen separaten Azure Search-Dienst (benennen Sie ihn nach Belieben), und verbinden Sie ihn mit Ihrem QnA-Dienst. Die Schritte sind ähnlich denen für ein [Upgrade von Azure Search](How-To/upgrade-qnamaker-service.md#upgrade-azure-search-service).
 
 ## <a name="integrate-with-other-services-including-bots"></a>Integration in andere Dienste, einschließlich Bots
 

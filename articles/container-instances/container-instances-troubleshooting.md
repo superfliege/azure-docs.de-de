@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: 41e3f38817abbdd0cab9ab2c72d39cb6f3f69531
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: 062308622e3170a4eb8f75a96300f04f683a90e7
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50978177"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51820357"
 ---
 # <a name="troubleshoot-common-issues-in-azure-container-instances"></a>Beheben von häufigen Problemen in Azure Container Instances
 
@@ -205,6 +205,9 @@ Dieser Fehler gibt an, dass aufgrund starker Auslastung in der Region, in der di
 ## <a name="cannot-connect-to-underlying-docker-api-or-run-privileged-containers"></a>Verbinden mit zugrundeliegender Docker-API zum Ausführen privilegierte Container nicht möglich
 
 Azure Container Instances bietet keinen direkten Zugriff auf die zugrundeliegende Infrastruktur, die Containergruppen hostet. Dazu gehört der Zugriff auf die Docker-API, die auf dem Containerhost läuft, und die Ausführung von privilegierten Containern. Wenn Sie Docker-Interaktion benötigen, lesen Sie die [REST-Referenzdokumentation](https://aka.ms/aci/rest), um zu sehen, was die ACI-API unterstützt. Wenn Sie etwas nicht finden, senden Sie eine Anforderung an die [ACI-Feedbackforen](https://aka.ms/aci/feedback).
+
+## <a name="ips-may-not-be-accessible-due-to-mismatched-ports"></a>Auf IP-Adressen kann aufgrund von Portkonflikten nicht zugegriffen werden
+Azure Container Instances unterstützt derzeit keine Portzuordnung wie bei der regulären Docker-Konfiguration. Eine entsprechende Korrektur ist jedoch bereits geplant. Sollten IP-Adressen unerwartet nicht erreichbar sein, vergewissern Sie sich, dass Sie Ihr Containerimage so konfiguriert haben, dass es an den Ports lauscht, die Sie in Ihrer Containergruppe mithilfe der Eigenschaft `ports` verfügbar gemacht haben.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Erfahren Sie, wie Sie [Containerprotokolle und -ereignisse abrufen](container-instances-get-logs.md), um Ihre Container zu debuggen.

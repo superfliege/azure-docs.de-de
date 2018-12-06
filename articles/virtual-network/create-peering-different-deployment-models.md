@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/25/2017
+ms.date: 11/15/2018
 ms.author: jdial;anavin
-ms.openlocfilehash: 44cc582bfa0a6940de7eeea9b54e3979735c07e2
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: bd2efce831fa98b3a4543d67d247d04dc8fc9d04
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46998232"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51853182"
 ---
 # <a name="create-a-virtual-network-peering---different-deployment-models-same-subscription"></a>Erstellen eines Peerings virtueller Netzwerke mithilfe verschiedener Bereitstellungsmodelle im selben Abonnement
 
@@ -34,7 +34,7 @@ Die Schritte zum Erstellen eines Peerings virtueller Netzwerke sind je nachdem u
 |[Beide mit Resource Manager](create-peering-different-subscriptions.md) |Unterschiedlich|
 |[Eines mit Resource Manager, das andere klassisch](create-peering-different-deployment-models-subscriptions.md) |Unterschiedlich|
 
-Ein Peering zweier virtueller Netzwerke, die über das klassische Bereitstellungsmodell bereitgestellt wurden, ist nicht möglich. Wenn Sie eine Verbindung zwischen virtuellen Netzwerken herstellen möchten, die beide über das klassische Bereitstellungsmodell erstellt wurden, können Sie dazu eine Azure [VPN Gateway](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)-Instanz verwenden.
+Zwischen zwei virtuellen Netzwerken, die über das klassische Bereitstellungsmodell bereitgestellt wurden, kann kein Peering eingerichtet werden. Wenn Sie eine Verbindung zwischen virtuellen Netzwerken herstellen möchten, die beide über das klassische Bereitstellungsmodell erstellt wurden, können Sie dazu eine Azure [VPN Gateway](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)-Instanz verwenden.
 
 In diesem Tutorial wird ein Peering für virtuelle Netzwerke in der gleichen Region durchgeführt. Sie können virtuelle Netzwerke auch in verschiedenen [unterstützten Regionen](virtual-network-manage-peering.md#cross-region) per Peering verknüpfen. Es wird empfohlen, sich mit den [Peeringanforderungen und -einschränkungen](virtual-network-manage-peering.md#requirements-and-constraints) vertraut zu machen, bevor Sie das Peering von virtuellen Netzwerken nutzen.
 
@@ -42,7 +42,7 @@ Ein Peering in Netzwerken lässt sich mithilfe des [Azure-Portals](#portal), mit
 
 ## <a name="create-peering---azure-portal"></a>Erstellen eines Peerings: Azure-Portal
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an. Das Konto, mit dem Sie sich anmelden, muss über die Berechtigungen verfügen, die zum Erstellen eines Peerings virtueller Netzwerke erforderlich sind. Eine Liste der Berechtigungen finden Sie im Abschnitt „Berechtigungen“ unter [Erstellen, Ändern oder Löschen eines Peerings virtueller Netzwerke](virtual-network-manage-peering.md#requirements-and-constraints).
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Das Konto, mit dem Sie sich anmelden, braucht die erforderlichen Berechtigungen, um ein Peering in virtuellen Netzwerken zu erstellen. Eine Liste der Berechtigungen finden Sie im Abschnitt „Berechtigungen“ unter [Erstellen, Ändern oder Löschen eines Peerings virtueller Netzwerke](virtual-network-manage-peering.md#requirements-and-constraints).
 2. Klicken Sie auf **+ Neu**, dann auf **Network**, und klicken Sie zuletzt auf **Virtuelles Netzwerk**.
 3. Geben Sie auf dem Blatt **Virtuelles Netzwerk erstellen** die Werte für die folgenden Einstellungen an, oder wählen Sie sie aus, und klicken Sie anschließend auf **Erstellen**:
     - **Name**: *myVNet1*
@@ -52,7 +52,7 @@ Ein Peering in Netzwerken lässt sich mithilfe des [Azure-Portals](#portal), mit
     - **Abonnement**: Wählen Sie Ihr Abonnement aus.
     - *Ressourcengruppe*: Wählen Sie **Neu erstellen** aus, und geben Sie **myResourceGroup** ein.
     - **Standort**: *USA, Osten*
-4. Klicken Sie auf **+ NEU**. Geben Sie im Feld **Marketplace durchsuchen** *Virtuelles Netzwerk* ein. Wenn **Virtuelle Netzwerke** in den Suchergebnissen angezeigt wird, klicken Sie darauf. 
+4. Klicken Sie auf **+ NEU**. Geben Sie im Feld **Marketplace durchsuchen** *Virtuelles Netzwerk* ein. Wenn **Virtuelle Netzwerke** in den Suchergebnissen angezeigt wird, klicken Sie darauf.
 5. Wählen Sie auf dem Blatt **Virtuelles Netzwerk** im Feld **Bereitstellungsmodell auswählen** die Option **Klassisch** aus, und klicken Sie dann auf **Erstellen**.
 6. Geben Sie auf dem Blatt **Virtuelles Netzwerk erstellen** die Werte für die folgenden Einstellungen an, oder wählen Sie sie aus, und klicken Sie anschließend auf **Erstellen**:
     - **Name**: *myVnet2*
@@ -68,7 +68,7 @@ Ein Peering in Netzwerken lässt sich mithilfe des [Azure-Portals](#portal), mit
 10. Klicken Sie auf dem sich öffnenden Blatt **myVnet1 – Peerings** auf **+ Hinzufügen**
 11. Geben Sie auf dem sich öffnenden Blatt **Peering hinzufügen** die folgenden Optionen ein, oder wählen Sie sie aus, und klicken Sie auf **OK**:
      - **Name**: *myVNet1ToMyVnet2*
-     - **Bereitstellungsmodell für das virtuelle Netzwerk**: Wählen Sie **Klassisch** aus. 
+     - **Bereitstellungsmodell für das virtuelle Netzwerk**: Wählen Sie **Klassisch** aus.
      - **Abonnement**: Wählen Sie Ihr Abonnement aus.
      - **Virtuelles Netzwerk**: Klicken Sie auf **Virtuelles Netzwerk auswählen**, und klicken Sie dann auf **myVnet2**.
      - **Zugriff auf virtuelles Netzwerk zulassen**: Vergewissern Sie sich, dass **Aktiviert** ausgewählt ist.
@@ -76,12 +76,12 @@ Ein Peering in Netzwerken lässt sich mithilfe des [Azure-Portals](#portal), mit
 12. Nachdem Sie zuvor auf **OK** geklickt haben, wird das Blatt **Peering hinzufügen** geschlossen, und Sie gelangen wieder zum Blatt **myVnet1 – Peerings**. Nach wenigen Sekunden wird das von Ihnen erstellte Peering auf dem Blatt angezeigt. In der Spalte **Peeringstatus** wird für das Peering **myVnet1ToMyVnet2** der Status **Verbunden** angezeigt.
 
     Das Peering ist nun hergestellt. Alle Azure-Ressourcen, die Sie in einem der virtuellen Netzwerke erstellen, sind in der Lage, miteinander über ihre IP-Adressen zu kommunizieren. Wenn Sie die standardmäßige Azure-Namensauflösung für virtuelle Netzwerke verwenden, können die Ressourcen in den virtuellen Netzwerken Namen nicht netzwerkübergreifend auflösen. Wenn Sie Namen netzwerkübergreifend in einem Peering auflösen möchten, müssen Sie einen eigenen DNS-Server erstellen. Weitere Informationen finden Sie im Artikel [Namensauflösung mithilfe eines eigenen DNS-Servers](virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server).
-13. **Optional**: Obwohl das Erstellen virtueller Computer in diesem Tutorial nicht behandelt wird, können Sie in jedem virtuellen Netzwerk virtuelle Computer erstellen und sie miteinander verbinden, um die Verbindung zu überprüfen.
+13. **Optional**: Die Erstellung virtueller Computer wird in diesem Tutorial zwar nicht behandelt, Sie können jedoch in jedem virtuellen Netzwerk einen virtuellen Computer erstellen und Verbindungen zwischen ihnen herstellen, um die Konnektivität zu überprüfen.
 14. **Optional:** Zum Löschen der Ressourcen, die Sie in diesem Tutorial erstellt haben, führen Sie die Schritte im Abschnitt [Löschen von Ressourcen](#delete-portal) dieses Artikels aus.
 
 ## <a name="cli"></a>Erstellen eines Peerings: Azure CLI
 
-Führen Sie die folgenden Schritte mithilfe der klassischen Azure CLI und der Azure CLI aus. Sie können die Schritte von Azure Cloud Shell aus ausführen, indem Sie einfach die Schaltfläche **Ausprobieren** in einem der folgenden Schritte auswählen oder indem Sie die [klassischen CLI](/cli/azure/install-cli-version-1.0.md?toc=%2fazure%2fvirtual-network%2ftoc.json) und [CLI](/cli/azure/install-azure-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json) installieren und die Befehle auf Ihrem lokalen Computer ausführen.
+Führen Sie die folgenden Schritte mithilfe der klassischen Azure CLI und der Azure CLI aus. Sie können die Schritte von Azure Cloud Shell aus ausführen, indem Sie einfach die Schaltfläche **Ausprobieren** in einem der folgenden Schritte auswählen oder indem Sie die [klassischen CLI](/cli/azure/install-cli-version-1.0?toc=%2fazure%2fvirtual-network%2ftoc.json) und [CLI](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json) installieren und die Befehle auf Ihrem lokalen Computer ausführen.
 
 1. Wenn Sie Cloud Shell verwenden, fahren Sie mit Schritt 2 fort, da Cloud Shell Sie automatisch bei Azure anmeldet. Starten Sie eine Befehlssitzung, und melden Sie sich mit dem Befehl `azure login` bei Azure an.
 2. Führen Sie die CLI in Dienstverwaltungsmodus aus, indem Sie den Befehl `azure config mode asm` eingeben.
@@ -109,10 +109,10 @@ Führen Sie die folgenden Schritte mithilfe der klassischen Azure CLI und der Az
      --address-prefix 10.0.0.0/16
    ```
 
-5. Erstellen Sie über die CLI ein Peering zwischen zwei virtuellen Netzwerken, die mit verschiedenen Bereitstellungsmodellen erstellt wurden. Kopieren Sie das folgende Skript in einen Texteditor auf Ihrem PC. Ersetzen Sie `<subscription id>` durch Ihre Abonnement-ID. Wenn Sie Ihre Abonnement-ID nicht kennen, geben Sie den Befehl `az account show` ein. Der Wert für **id** in der Ausgabe ist Ihre Abonnement-ID. Fügen Sie das geänderte Skript in Ihre CLI-Sitzung ein, und drücken Sie dann `Enter`.
+5. Erstellen Sie über die CLI ein Peering zwischen zwei virtuellen Netzwerken, die mit verschiedenen Bereitstellungsmodellen erstellt wurden. Kopieren Sie das folgende Skript in einen Texteditor auf Ihrem PC. Ersetzen Sie `<subscription id>` durch Ihre Abonnement-ID. Sollten Sie Ihre Abonnement-ID nicht kennen, geben Sie den Befehl `az account show` ein. Der Wert für **id** in der Ausgabe ist Ihre Abonnement-ID. Fügen Sie das geänderte Skript in Ihre CLI-Sitzung ein, und drücken Sie dann `Enter`.
 
    ```azurecli-interactive
-   # Get the id for VNet1.
+   # Get the ID for VNet1.
    vnet1Id=$(az network vnet show \
      --resource-group myResourceGroup \
      --name myVnet1 \
@@ -139,14 +139,14 @@ Führen Sie die folgenden Schritte mithilfe der klassischen Azure CLI und der Az
    Die Ausgabe zeigt in der Spalte **PeeringState** den Status **Connected**.
 
    Alle Azure-Ressourcen, die Sie in einem der virtuellen Netzwerke erstellen, sind in der Lage, miteinander über ihre IP-Adressen zu kommunizieren. Wenn Sie die standardmäßige Azure-Namensauflösung für virtuelle Netzwerke verwenden, können die Ressourcen in den virtuellen Netzwerken Namen nicht netzwerkübergreifend auflösen. Wenn Sie Namen netzwerkübergreifend in einem Peering auflösen möchten, müssen Sie einen eigenen DNS-Server erstellen. Weitere Informationen finden Sie im Artikel [Namensauflösung mithilfe eines eigenen DNS-Servers](virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server).
-7. **Optional**: Obwohl das Erstellen virtueller Computer in diesem Tutorial nicht behandelt wird, können Sie in jedem virtuellen Netzwerk virtuelle Computer erstellen und sie miteinander verbinden, um die Verbindung zu überprüfen.
+7. **Optional**: Die Erstellung virtueller Computer wird in diesem Tutorial zwar nicht behandelt, Sie können jedoch in jedem virtuellen Netzwerk einen virtuellen Computer erstellen und Verbindungen zwischen ihnen herstellen, um die Konnektivität zu überprüfen.
 8. **Optional:** Zum Löschen der Ressourcen, die Sie in diesem Tutorial erstellt haben, führen Sie die Schritte im Abschnitt [Löschen von Ressourcen](#delete-cli) dieses Artikels aus.
 
 ## <a name="powershell"></a>Erstellen eines Peerings: PowerShell
 
 1. Installieren Sie die neueste Version der PowerShell-Module [Azure](https://www.powershellgallery.com/packages/Azure) und [AzureRm](https://www.powershellgallery.com/packages/AzureRM/). Wenn Sie noch nicht mit Azure PowerShell vertraut sind, lesen Sie die [Übersicht über Azure PowerShell](/powershell/azure/overview?toc=%2fazure%2fvirtual-network%2ftoc.json).
 2. Starten Sie eine PowerShell-Sitzung.
-3. Melden Sie sich in PowerShell bei Azure an, indem Sie den Befehl `Add-AzureAccount` eingeben. Das Konto, mit dem Sie sich anmelden, muss über die Berechtigungen verfügen, die zum Erstellen eines Peerings virtueller Netzwerke erforderlich sind. Eine Liste der Berechtigungen finden Sie im Abschnitt „Berechtigungen“ unter [Erstellen, Ändern oder Löschen eines Peerings virtueller Netzwerke](virtual-network-manage-peering.md#requirements-and-constraints).
+3. Melden Sie sich in PowerShell bei Azure an, indem Sie den Befehl `Add-AzureAccount` eingeben. Das Konto, mit dem Sie sich anmelden, braucht die erforderlichen Berechtigungen, um ein Peering in virtuellen Netzwerken zu erstellen. Eine Liste der Berechtigungen finden Sie im Abschnitt „Berechtigungen“ unter [Erstellen, Ändern oder Löschen eines Peerings virtueller Netzwerke](virtual-network-manage-peering.md#requirements-and-constraints).
 4. Um ein virtuelles Netzwerk (klassisch) mit PowerShell zu erstellen, müssen Sie eine neue Netzwerkkonfigurationsdatei erstellen oder eine vorhandene ändern. Erfahren Sie, wie Sie [Netzwerkkonfigurationsdateien exportieren, aktualisieren und importieren](virtual-networks-using-network-configuration-file.md). Die Datei muss das folgende **VirtualNetworkSite**-Element für das in diesem Tutorial verwendete virtuelle Netzwerk enthalten:
 
     ```xml
@@ -163,8 +163,8 @@ Führen Sie die folgenden Schritte mithilfe der klassischen Azure CLI und der Az
     ```
 
     > [!WARNING]
-    > Das Importieren einer geänderten Netzwerkkonfigurationsdatei kann zu Änderungen an vorhandenen virtuellen Netzwerken (klassisch) in Ihrem Abonnement führen. Vergewissern Sie sich, dass Sie nur das vorherige virtuelle Netzwerk hinzufügen und keine in Ihrem Abonnement vorhandenen virtuellen Netzwerke ändern oder entfernen. 
-5. Melden Sie sich bei Azure an, um durch Eingeben des Befehls `Connect-AzureRmAccount` das virtuelle Netzwerk (Ressourcen-Manager) zu erstellen. Das Konto, mit dem Sie sich anmelden, muss über die Berechtigungen verfügen, die zum Erstellen eines Peerings virtueller Netzwerke erforderlich sind. Eine Liste der Berechtigungen finden Sie im Abschnitt „Berechtigungen“ unter [Erstellen, Ändern oder Löschen eines Peerings virtueller Netzwerke](virtual-network-manage-peering.md#requirements-and-constraints).
+    > Das Importieren einer geänderten Netzwerkkonfigurationsdatei kann zu Änderungen an vorhandenen virtuellen Netzwerken (klassisch) in Ihrem Abonnement führen. Vergewissern Sie sich, dass Sie nur das vorherige virtuelle Netzwerk hinzufügen und keine in Ihrem Abonnement vorhandenen virtuellen Netzwerke ändern oder entfernen.
+5. Melden Sie sich bei Azure an, um mithilfe des Befehls `Connect-AzureRmAccount` das virtuelle Netzwerk (Resource Manager) zu erstellen. Das Konto, mit dem Sie sich anmelden, braucht die erforderlichen Berechtigungen, um ein Peering in virtuellen Netzwerken zu erstellen. Eine Liste der Berechtigungen finden Sie im Abschnitt „Berechtigungen“ unter [Erstellen, Ändern oder Löschen eines Peerings virtueller Netzwerke](virtual-network-manage-peering.md#requirements-and-constraints).
 6. Erstellen Sie eine Ressourcengruppe und ein virtuelles Netzwerk (Ressourcen-Manager). Kopieren Sie das Skript, fügen Sie es in PowerShell ein, und drücken Sie dann `Enter`.
 
     ```powershell
@@ -179,7 +179,7 @@ Führen Sie die folgenden Schritte mithilfe der klassischen Azure CLI und der Az
       -Location eastus
     ```
 
-7. Erstellen Sie ein Peering zwischen zwei virtuellen Netzwerken, die mit verschiedenen Bereitstellungsmodellen erstellt wurden. Kopieren Sie das folgende Skript in einen Texteditor auf Ihrem PC. Ersetzen Sie `<subscription id>` durch Ihre Abonnement-ID. Wenn Sie Ihre Abonnement-ID nicht kennen, geben Sie den Befehl `Get-AzureRmSubscription` ein. Der Wert für **Id** in der Ausgabe ist Ihre Abonnement-ID. Um das Skript auszuführen, kopieren Sie das geänderte Skript aus Ihrem Texteditor. Klicken Sie dann in der PowerShell-Sitzung mit der rechten Maustaste, und drücken Sie anschließend `Enter`.
+7. Erstellen Sie ein Peering zwischen zwei virtuellen Netzwerken, die mit verschiedenen Bereitstellungsmodellen erstellt wurden. Kopieren Sie das folgende Skript in einen Texteditor auf Ihrem PC. Ersetzen Sie `<subscription id>` durch Ihre Abonnement-ID. Sollten Sie Ihre Abonnement-ID nicht kennen, geben Sie den Befehl `Get-AzureRmSubscription` ein, um sie anzuzeigen. Der Wert für **Id** in der Ausgabe ist Ihre Abonnement-ID. Um das Skript auszuführen, kopieren Sie das geänderte Skript aus Ihrem Texteditor. Klicken Sie dann in der PowerShell-Sitzung mit der rechten Maustaste, und drücken Sie anschließend `Enter`.
 
     ```powershell
     # Peer VNet1 to VNet2.
@@ -202,10 +202,11 @@ Führen Sie die folgenden Schritte mithilfe der klassischen Azure CLI und der Az
 
     Alle Azure-Ressourcen, die Sie in einem der virtuellen Netzwerke erstellen, sind in der Lage, miteinander über ihre IP-Adressen zu kommunizieren. Wenn Sie die standardmäßige Azure-Namensauflösung für virtuelle Netzwerke verwenden, können die Ressourcen in den virtuellen Netzwerken Namen nicht netzwerkübergreifend auflösen. Wenn Sie Namen netzwerkübergreifend in einem Peering auflösen möchten, müssen Sie einen eigenen DNS-Server erstellen. Weitere Informationen finden Sie im Artikel [Namensauflösung mithilfe eines eigenen DNS-Servers](virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server).
 
-9. **Optional**: Obwohl das Erstellen virtueller Computer in diesem Tutorial nicht behandelt wird, können Sie in jedem virtuellen Netzwerk virtuelle Computer erstellen und sie miteinander verbinden, um die Verbindung zu überprüfen.
+9. **Optional**: Die Erstellung virtueller Computer wird in diesem Tutorial zwar nicht behandelt, Sie können jedoch in jedem virtuellen Netzwerk einen virtuellen Computer erstellen und Verbindungen zwischen ihnen herstellen, um die Konnektivität zu überprüfen.
 10. **Optional:** Zum Löschen der Ressourcen, die Sie in diesem Tutorial erstellt haben, führen Sie die Schritte im Abschnitt [Löschen von Ressourcen](#delete-powershell) dieses Artikels aus.
- 
+
 ## <a name="delete"></a>Löschen von Ressourcen
+
 Wenn Sie dieses Tutorial abgeschlossen haben, möchten Sie die Ressourcen, die Sie in diesem Tutorial erstellt haben, möglicherweise wieder löschen, damit keine Nutzungsgebühren anfallen. Durch das Löschen einer Ressourcengruppe werden auch alle Ressourcen in dieser Ressourcengruppe gelöscht.
 
 ### <a name="delete-portal"></a>Azure-Portal
@@ -222,7 +223,7 @@ Wenn Sie dieses Tutorial abgeschlossen haben, möchten Sie die Ressourcen, die S
     az group delete --name myResourceGroup --yes
     ```
 
-2. Löschen Sie das virtuelle Netzwerk (klassisch) mit der klassischen CLI und den folgenden Befehlen:
+2. Löschen Sie das virtuelle Netzwerk (klassisch) mit der klassischen Befehlszeilenschnittstelle und den folgenden Befehlen:
 
     ```azurecli-interactive
     azure config mode asm
@@ -254,7 +255,7 @@ Wenn Sie dieses Tutorial abgeschlossen haben, möchten Sie die Ressourcen, die S
     ```
 
     > [!WARNING]
-    > Das Importieren einer geänderten Netzwerkkonfigurationsdatei kann zu Änderungen an vorhandenen virtuellen Netzwerken (klassisch) in Ihrem Abonnement führen. Vergewissern Sie sich, dass Sie nur das vorherige virtuelle Netzwerk entfernen und keine anderen in Ihrem Abonnement vorhandenen virtuellen Netzwerke ändern oder entfernen. 
+    > Das Importieren einer geänderten Netzwerkkonfigurationsdatei kann zu Änderungen an vorhandenen virtuellen Netzwerken (klassisch) in Ihrem Abonnement führen. Vergewissern Sie sich, dass Sie nur das vorherige virtuelle Netzwerk entfernen und keine anderen in Ihrem Abonnement vorhandenen virtuellen Netzwerke ändern oder entfernen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

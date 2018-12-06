@@ -2,16 +2,17 @@
 title: Verwalten eines Prozessservers für die Notfallwiederherstellung von VMware-VMs und physischen Servern in Azure mit Azure Site Recovery | Microsoft-Dokumentation
 description: In diesem Artikel wird beschrieben, wie Sie einen Prozessserver für die Notfallwiederherstellung von VMware-VMs und physischen Servern in Azure mithilfe von Azure Site Recovery verwalten.
 author: Rajeswari-Mamilla
+manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: ramamill
-ms.openlocfilehash: d99b5d1fdca39466d5e09ca077329b7ffa8622bc
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 180d84f40f3d439419f9667b246b8c4b5c69814a
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51568851"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51974187"
 ---
 # <a name="manage-process-servers"></a>Verwalten von Prozessservern
 
@@ -31,7 +32,41 @@ Führen Sie für Failbackzwecke ein Upgrade für einen lokal oder in Azure ausge
 > [!NOTE]
   Wenn Sie mithilfe des Azure-Katalogimage einen Prozessserver in Azure für Failbackzwecke erstellen, wird in der Regel die neueste verfügbare Version ausgeführt. Die Site Recovery-Teams veröffentlichen in regelmäßigen Abständen Fehlerbehebungen und Verbesserungen, und es wird empfohlen, Prozessserver aktuell zu halten.
 
+## <a name="balance-the-load-on-process-server"></a>Lastenausgleich auf Prozessservern
 
+Gehen Sie wie folgt vor, um einen Lastenausgleich zwischen zwei Prozessservern vorzunehmen:
+
+1. Navigieren Sie zu **Recovery Services-Tresor** > **Verwalten** > **Site Recovery-Infrastruktur** > **Für VMware und physische Computer** > **Konfigurationsserver**.
+2. Klicken Sie auf den Konfigurationsserver, bei dem die Prozessserver registriert sind.
+3. Eine Liste der bei den Konfigurationsservern registrierten Prozessserver steht auf der Seite zur Verfügung.
+4. Klicken Sie auf den Prozessserver, auf dem Sie die Workload ändern möchten.
+
+    ![Lastausgleich](media/vmware-azure-manage-process-server/LoadBalance.png)
+
+5. Sie können je nach Bedarf wie unten beschrieben eine der Optionen **Lastenausgleich** oder **Wechseln** verwenden.
+
+### <a name="load-balance"></a>Lastenausgleich
+
+Über diese Option können Sie virtuelle Computer auswählen und auf einen anderen Prozessserver übertragen.
+
+1. Klicken Sie auf **Lastenausgleich**, und wählen Sie in der Dropdownliste den Zielprozessserver aus. Klicken Sie auf **OK**
+
+    ![Laden des Prozessservers](media/vmware-azure-manage-process-server/LoadPS.PNG)
+
+2. Klicken Sie auf **Computer auswählen**, und wählen Sie die virtuellen Computer aus, die vom aktuellen Prozessserver auf den Zielprozessserver verschoben werden sollen. Für jeden virtuellen Computer werden Details zur durchschnittlichen Datenänderung angezeigt.
+3. Klicken Sie auf **OK**. Den Fortschritt des Auftrags können Sie unter **Recovery Services-Tresor** > **Überwachung** > **Site Recovery-Aufträge** überwachen.
+4. Es dauert 15 Minuten, bis die Änderungen nach erfolgreichem Abschluss dieses Vorgangs angezeigt werden. Um sie unmittelbar anzuzeigen, können Sie [den Konfigurationsserver aktualisieren](vmware-azure-manage-configuration-server.md#refresh-configuration-server).
+
+### <a name="switch"></a>Switch
+
+Über diese Option wird die gesamte für einen Prozessserver geschützte Workload auf einen anderen Prozessserver verschoben.
+
+1. Klicken Sie auf **Wechseln**, wählen Sie den Zielprozessserver aus, und klicken Sie auf **OK**.
+
+    ![Switch](media/vmware-azure-manage-process-server/Switch.PNG)
+
+2. Den Fortschritt des Auftrags können Sie unter **Recovery Services-Tresor** > **Überwachung** > **Site Recovery-Aufträge** überwachen.
+3. Es dauert 15 Minuten, bis die Änderungen nach erfolgreichem Abschluss dieses Vorgangs angezeigt werden. Um sie unmittelbar anzuzeigen, können Sie [den Konfigurationsserver aktualisieren](vmware-azure-manage-configuration-server.md#refresh-configuration-server).
 
 ## <a name="reregister-a-process-server"></a>Erneutes Registrieren eines Prozessservers
 

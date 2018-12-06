@@ -11,19 +11,19 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/04/2018
+ms.date: 11/20/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 614d6aef4a2b7be551574fd3c8e25e2a3e3c1c07
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: e692cc1fd8670cc14b42e4714d84356d4d4c53a2
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44030511"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52275990"
 ---
 # <a name="sap-hana-large-instances-storage-architecture"></a>SAP HANA-Speicherarchitektur (große Instanzen)
 
-Das Speicherlayout für SAP HANA in Azure (große Instanzen) wird von SAP HANA nach dem klassischen Bereitstellungsmodell anhand von Richtlinien konfiguriert, die von SAP empfiehlt. Die Richtlinien sind im Whitepaper [SAP HANA storage requirements](http://go.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html) (SAP HANA-Speicheranforderungen) dokumentiert.
+Das Speicherlayout für SAP HANA in Azure (große Instanzen) wird von SAP HANA nach dem klassischen Bereitstellungsmodell anhand der von SAP empfohlenen Richtlinien konfiguriert. Die Richtlinien sind im Whitepaper [SAP HANA storage requirements](http://go.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html) (SAP HANA-Speicheranforderungen) dokumentiert.
 
 Bei HANA (große Instanz) der Typ-I-Klasse ist das Arbeitsspeichervolume viermal so groß wie das Speichervolume. Bei Einheiten von HANA (große Instanz) der Typ-II-Klasse ist dies nicht der Fall. Die Einheiten verfügen über ein Volume zum Speichern von HANA-Transaktionsprotokollsicherungen. Weitere Informationen finden Sie unter [Installieren und Konfigurieren von SAP HANA in Azure (große Instanzen)](hana-installation.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
@@ -33,6 +33,7 @@ Informationen zur Speicherzuordnung finden Sie in der folgenden Tabelle. Die Tab
 | --- | --- | --- | --- | --- |
 | S72 | 1.280 GB | 512 GB | 768 GB | 512 GB |
 | S72m | 3.328 GB | 768 GB |1.280 GB | 768 GB |
+| S96 | 1.280 GB | 512 GB | 768 GB | 512 GB |
 | S192 | 4.608 GB | 1.024 GB | 1.536 GB | 1.024 GB |
 | S192m | 11.520 GB | 1.536 GB | 1.792 GB | 1.536 GB |
 | S192xm |  11.520 GB |  1.536 GB |  1.792 GB |  1.536 GB |
@@ -72,18 +73,18 @@ Speicherlayoutdetails für Ihr Szenario finden Sie unter [Unterstützte HLI-Szen
 
 Es ist möglich, mehrere aktive SAP HANA-Instanzen auf Einheiten von HANA (große Instanz) zu hosten. Um Funktionen für Speichermomentaufnahmen und die Notfallwiederherstellung bereitzustellen, erfordert eine solche Konfiguration ein pro Instanz festgelegtes Volume. Zurzeit können Einheiten von HANA (große Instanz) wie folgt unterteilt werden:
 
-- **S72, S72m, S144, S192**: In Inkrementen von 256 GB, wobei 256 GB die kleinste Einheit ist. Andere Inkremente wie 256 GB und 512 GB können bis zum Maximum des Arbeitsspeichers der Einheit kombiniert werden.
+- **S72, S72m, S96, S144, S192**: In Inkrementen von 256 GB, wobei 256 GB die kleinste Starteinheit ist. Andere Inkremente wie 256 GB und 512 GB können bis zum Maximum des Arbeitsspeichers der Einheit kombiniert werden.
 - **S144m und S192m**: In Inkrementen von 256 GB, wobei 512 GB die kleinste Einheit ist. Andere Inkremente wie 512 GB und 768 GB können bis zum Maximum des Arbeitsspeichers der Einheit kombiniert werden.
 - **Typ-II-Klasse**: In Inkrementen von 512 GB, wobei 2 TB die kleinste Einheit ist. Andere Inkremente wie 512 GB, 1 TB und 1,5 TB können bis zum Maximum des Arbeitsspeichers der Einheit kombiniert werden.
 
-Beispiele für die Ausführung mehrerer SAP HANA-Instanzen könnten wie folgt aussehen.
+Einige Beispiele für die Ausführung mehrerer SAP HANA-Instanzen können etwa wie folgt aussehen:
 
 | SKU | Arbeitsspeichergröße | Speichergröße | Größen mit mehreren Datenbanken |
 | --- | --- | --- | --- |
 | S72 | 768 GB | 3 TB | 1 x 768 GB HANA-Instanz<br /> oder 1 x 512 GB-Instanz + 1 x 256 GB-Instanz<br /> oder 3 x 256 GB-Instanzen | 
-| S72m | 1,5 TB | 6 TB | 3 x 512 GB HANA-Instanzen<br />oder 1 x 512 GB-Instanz + 1 x 1 TB-Instanz<br />oder 6 x 256 GB-Instanzen<br />oder 1x1,5 TB-Instanzen | 
+| S72m | 1,5 TB | 6 TB | 3 x 512 GB HANA-Instanzen<br />oder 1 x 512 GB-Instanz + 1 x 1 TB-Instanz<br />oder 6 x 256 GB-Instanzen<br />oder 1 x 1,5 TB-Instanzen | 
 | S192m | 4 TB | 16 TB | 8 x 512 GB-Instanzen<br />oder 4 x 1 TB-Instanzen<br />oder 4 x 512 GB-Instanzen + 2 x 1 TB-Instanzen<br />oder 4 x 768 GB-Instanzen + 2 x 512 TB-Instanzen<br />oder 1 x 4 TB-Instanz |
-| S384xm | 8 TB | 22 TB | 4 x 2 TB-Instanzen<br />oder 2 x 4 TB-Instanzen<br />oder 2 x 3 TB-Instanzen + 1 x 2 TB-Instanzen<br />oder 2 x 2,5 TB-Instanzen + 1 x 3 TB-Instanzen<br />oder 1 x 8 TB-Instanz |
+| S384xm | 8 TB | 22 TB | 4 x 2 TB-Instanzen<br />oder 2 x 4 TB-Instanzen<br />oder 2 x 3 TB-Instanzen + 1 x 2 TB-Instanz<br />oder 2 x 2,5 TB-Instanzen + 1 x 3 TB-Instanz<br />oder 1 x 8 TB-Instanz |
 
 
 Andere Variationen sind ebenfalls möglich. 
@@ -91,7 +92,7 @@ Andere Variationen sind ebenfalls möglich.
 ## <a name="encryption-of-data-at-rest"></a>Verschlüsselung für ruhende Daten
 Der für HANA (große Instanz) genutzte Speicher ermöglicht eine transparente Verschlüsselung der Daten, die auf den Datenträgern gespeichert werden. Sie können diese Verschlüsselung beim Bereitstellen einer Einheit von HANA (große Instanz) aktivieren. Die Verschlüsselung von Volumes kann auch nach der Bereitstellung aktiviert werden. Der Wechsel von unverschlüsselten zu verschlüsselten Volumes erfolgt transparent und erfordert keine Downtime. 
 
-Bei SKUs der Typ-I-Klasse wird das Volume verschlüsselt, auf dem die Start-LUN gespeichert ist. Bei der Typ-II-Klasse der SKUs von HANA (große Instanz) müssen Sie die Start-LUN mit Methoden des Betriebssystems verschlüsseln. Für weitere Informationen wenden Sie sich an das Microsoft Service Management-Team.
+Bei SKUs der Typ-I-Klasse wird das Volume, auf dem die Start-LUN gespeichert ist, verschlüsselt. Bei der Typ-II-Klasse der SKUs von HANA (große Instanz) müssen Sie die Start-LUN mit Methoden des Betriebssystems verschlüsseln. Für weitere Informationen wenden Sie sich an das Microsoft Service Management-Team.
 
 **Nächste Schritte**
 - Lesen Sie [Unterstützte Szenarien für HANA (große Instanzen)](hana-supported-scenario.md).

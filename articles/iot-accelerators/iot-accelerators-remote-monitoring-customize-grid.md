@@ -1,5 +1,5 @@
 ---
-title: Hinzufügen eines Rasters zur Benutzeroberfläche der Remoteüberwachungslösung – Azure | Microsoft-Dokumentation
+title: Hinzufügen eines Rasters zur Benutzeroberfläche der Lösung für die Remoteüberwachung – Azure | Microsoft-Dokumentation
 description: Dieser Artikel zeigt Ihnen, wie Sie ein Raster auf einer Seite in die Webbenutzeroberfläche des Accelerators für Remoteüberwachungslösung hinzufügen können.
 author: dominicbetts
 manager: timlt
@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 10/04/2018
 ms.topic: conceptual
-ms.openlocfilehash: e1c694847a1ec16d4d7a7b1118df71cb06396186
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: a24cb7f39ccb8ea07d4dde2869dc7c924b91983a
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49165929"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52496442"
 ---
 # <a name="add-a-custom-grid-to-the-remote-monitoring-solution-accelerator-web-ui"></a>Hinzufügen eines benutzerdefinierten Rasters zur Webbenutzeroberfläche des Accelerators für Remoteüberwachung
 
@@ -239,7 +239,7 @@ Wenn ein Benutzer gleichzeitig auf mehrere Zeilen reagieren muss, verwenden Sie 
     ```js
     doSomething = () => {
       //Just for demo purposes. Don't console log in a real grid.
-      console.log('hard selected rows', this.gridApi.getSelectedRows());
+      console.log('Hard selected rows', this.gridApi.getSelectedRows());
     };
     ```
 
@@ -263,16 +263,16 @@ Wenn der Benutzer nur auf eine einzelne Zeile reagieren muss, konfigurieren Sie 
 1. Wenn ein Link für die nicht feste Auswahl angeklickt wird, wird das Ereignis **OnSoftSelectChange** ausgelöst. Führen Sie die gewünschte Aktion für diese Zeile aus, z.B. das Öffnen eines Detail-Flyouts. Dieses Beispiel schreibt einfach in die Konsole:
 
     ```js
-    onSoftSelectChange = (rowId, rowEvent) => {
+    onSoftSelectChange = (rowId, rowData) => {
+      //Note: only the Id is reliable, rowData may be out of date
       const { onSoftSelectChange } = this.props;
-      const obj = (this.gridApi.getDisplayedRowAtIndex(rowId) || {}).data;
-      if (obj) {
+      if (rowId) {
         //Just for demo purposes. Don't console log a real grid.
-        console.log('Soft selected', obj);
-        this.setState({ softSelectedObj: obj });
+        console.log('Soft selected', rowId);
+        this.setState({ softSelectedId: rowId });
       }
       if (isFunc(onSoftSelectChange)) {
-        onSoftSelectChange(obj, rowEvent);
+        onSoftSelectChange(rowId, rowData);
       }
     }
     ```

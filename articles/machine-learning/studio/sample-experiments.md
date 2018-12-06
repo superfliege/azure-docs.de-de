@@ -1,11 +1,12 @@
 ---
-title: Erstellen von Experimenten aus Machine Learning-Beispielen – Azure | Microsoft-Dokumentation
-description: Hier erfahren Sie, wie Sie Machine Learning-Beispielexperimente verwenden, um mit dem Azure AI-Katalog und Azure Machine Learning neue Experimente zu erstellen.
+title: Erstellen von Machine Learning Studio-Experimenten aus Beispielen – Azure | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie Machine Learning-Beispielexperimente verwenden, um mit der Azure AI Gallery und Azure Machine Learning Studio neue Experimente zu erstellen.
 keywords: Machine Learning-Beispiele, Beispielexperiment, Machine Learning-Beispiel, AI-Beispiele
 services: machine-learning
 documentationcenter: ''
-author: heatherbshapiro
-ms.author: hshapiro
+author: ericlicoding
+ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
+ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
 ms.assetid: 81e6c1d8-682c-4db3-bfd5-d7bfb1150ff3
@@ -16,12 +17,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/05/2018
-ms.openlocfilehash: f93d0d4e12d97fadb23476afc3199599b3268580
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 568732c5a1d2abbb9f304b624d885b2a3c692706
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46998048"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52306679"
 ---
 # <a name="create-machine-learning-experiments-from-working-examples-in-azure-ai-gallery"></a>Erstellen von Machine Learning-Experimenten aus funktionierenden Beispielen im Azure AI-Katalog
 
@@ -47,7 +48,7 @@ So durchsuchen Sie alle Experimente:
 3. Es gibt verschiedene Möglichkeiten zur Ermittlung von Experimenten, die Ihre Anforderungen erfüllen:
    * **Wählen Sie auf der linken Seite Filter aus.** Gehen Sie beispielsweise wie folgt vor, wenn Sie Experimente durchsuchen möchten, für die ein Algorithmus zur PCA-basierten Erkennung von Anomalien verwendet wird: Klicken Sie unter **Categories** (Kategorien) auf **Experiment**. Klicken Sie anschließend unter **Algorithms Used** (Verwendete Algorithmen) auf **Show all** (Alle anzeigen), und wählen Sie im Dialogfeld die Option **PCA-based Anomaly Detection** (PCA-basierte Erkennung von Anomalien). Unter Umständen müssen Sie scrollen, um die Option anzuzeigen.<br></br>
      ![Filter auswählen](./media/sample-experiments/choose-an-algorithm.png)
-   * **Verwenden Sie das Suchfeld.** Wenn Sie etwa nach Experimenten von Microsoft zur Ziffernerkennung suchen möchten, bei denen ein 2-Klassen-Support Vector Machine-Algorithmus verwendet wird, geben Sie im Suchfeld „digit recognition“ (Ziffernerkennung) ein. Wählen Sie anschließend die Filter **Experiment**, **Microsoft content only** und **Two-Class Support Vector Machine** aus:<br></br>
+   * **Verwenden Sie das Suchfeld.**  Wenn Sie etwa nach Experimenten von Microsoft zur Ziffernerkennung suchen möchten, bei denen ein 2-Klassen-Support Vector Machine-Algorithmus verwendet wird, geben Sie im Suchfeld „digit recognition“ (Ziffernerkennung) ein. Wählen Sie anschließend die Filter **Experiment**, **Microsoft content only** und **Two-Class Support Vector Machine** aus:<br></br>
      ![Suchfeld verwenden](./media/sample-experiments/search-for-experiments.png)
 4. Klicken Sie auf ein Experiment, um mehr darüber zu erfahren.
 5. Zum Ausführen und/oder Ändern des Experiments klicken Sie auf der Seite des Experiments auf **Open in Studio** (In Studio öffnen). <br></br>

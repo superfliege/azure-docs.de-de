@@ -10,12 +10,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 03/27/2018
 ms.author: sngun
-ms.openlocfilehash: 233296a825653938da158fc70952c7fe7931498c
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: a2c66894270a537239c5328eff0acdc4b8339994
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51261824"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52443541"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-async-java"></a>Leistungstipps für Azure Cosmos DB und Async Java
 
@@ -53,7 +53,7 @@ Im Anschluss finden Sie einige Optionen zur Optimierung der Datenbankleistung:
 
 4. **Optimieren von parallelen Abfragen für partitionierte Sammlungen**
 
-    Das Azure Cosmos DB-SQL-Async Java-SDK unterstützt parallele Abfragen, mit denen Sie eine partitionierte Sammlung parallel abfragen können. (Weitere Informationen finden Sie unter [Arbeiten mit den SDKs](sql-api-partition-data.md#working-with-the-azure-cosmos-db-sdks) und in den dazugehörigen [Codebeispielen](https://github.com/Azure/azure-cosmosdb-java/tree/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples).) Parallele Abfragen sind darauf ausgelegt, Latenz und Durchsatz im Vergleich mit seriellen Abfragen zu verbessern.
+    Das Azure Cosmos DB-SQL-Async Java-SDK unterstützt parallele Abfragen unterstützt, mit denen Sie eine partitionierte Sammlung parallel abfragen können. Weitere Informationen finden Sie in den [Codebeispielen](https://github.com/Azure/azure-cosmosdb-java/tree/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples) für die Arbeit mit den SDKs. Parallele Abfragen sind darauf ausgelegt, Latenz und Durchsatz im Vergleich mit seriellen Abfragen zu verbessern.
 
     (a) ***Optimieren von setMaxDegreeOfParallelism\:*** Bei parallelen Abfragen werden mehrere Partitionen parallel abgefragt. Die Daten einer individuell partitionierten Sammlung werden in Bezug auf die Abfrage aber seriell abgerufen. Legen Sie also „setMaxDegreeOfParallelism“ auf die Anzahl von Partitionen fest, bei der die Wahrscheinlichkeit, dass die bestmögliche Leistung für die Abfrage erzielt wird, am höchsten ist (vorausgesetzt, alle anderen Systembedingungen bleiben unverändert). Falls Ihnen die Anzahl von Partitionen nicht bekannt ist, können Sie setMaxDegreeOfParallelism auf einen hohen Wert festlegen. Das System wählt für den maximalen Grad an Parallelität dann den minimalen Wert aus (Anzahl von Partitionen, Benutzereingabe). 
 

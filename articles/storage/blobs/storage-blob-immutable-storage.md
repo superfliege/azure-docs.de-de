@@ -1,6 +1,6 @@
 ---
 title: Unveränderlicher Speicher für Azure Storage-Blobs | Microsoft-Dokumentation
-description: Azure Storage bietet WORM-Unterstützung (Write Once, Read Many – Einmal schreiben, oft lesen) für Blob(objekt)speicher, der Benutzern das Speichern in einem nicht löschbaren und nicht änderbaren Zustand für einen angegebenen Zeitraum ermöglicht.
+description: Azure Storage bietet WORM-Unterstützung (Write Once, Read Many – Einmal schreiben, oft lesen) für Blobspeicher (Objektspeicher), der Benutzern das Speichern in einem nicht löschbaren und nicht änderbaren Zustand für einen angegebenen Zeitraum ermöglicht.
 services: storage
 author: xyh1
 ms.service: storage
@@ -8,16 +8,16 @@ ms.topic: article
 ms.date: 11/05/2018
 ms.author: hux
 ms.component: blobs
-ms.openlocfilehash: 261f66013ab9c0ba493d18b84856d17db953402e
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: d3d83e240fec692d5aa655923637910006c7a62f
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51036996"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52261469"
 ---
 # <a name="store-business-critical-data-in-azure-blob-storage"></a>Speichern unternehmenskritischer Daten in Azure-Blobspeicher
 
-Unveränderlicher Speicher für Azure-Blob(objekt)speicher ermöglicht Benutzern, unternehmenskritische Daten in einem WORM-Zustand zu speichern. In diesem Zustand sind die Daten für einen vom Benutzer angegebenen Zeitraum nicht löschbar und nicht änderbar. Blobs können erstellt und gelesen werden, aber das Ändern oder Löschen ist für den Aufbewahrungszeitraum nicht möglich.
+Unveränderlicher Speicher für Azure-Blobspeicher (Objektspeicher) ermöglicht es Benutzern, unternehmenskritische Daten in einem WORM-Zustand (Write Once, Read Many – Einmal schreiben, oft lesen) zu speichern. In diesem Zustand sind die Daten für einen vom Benutzer angegebenen Zeitraum nicht löschbar und nicht änderbar. Blobs können erstellt und gelesen werden, aber das Ändern oder Löschen ist für den Aufbewahrungszeitraum nicht möglich.
 
 ## <a name="overview"></a>Übersicht
 
@@ -47,7 +47,7 @@ Unveränderlicher Speicher ist in allen öffentlichen Azure-Regionen aktiviert.
 
 ## <a name="how-it-works"></a>So funktioniert's
 
-Unveränderlicher Speicher für Azure-Blobspeicher unterstützt zwei Arten von WORM-Richtlinien bzw. Richtlinien für die unveränderliche Speicherung: zeitbasierte Aufbewahrung und gesetzliche Aufbewahrungspflicht. Ausführliche Informationen zum Erstellen dieser Richtlinien für die unveränderliche Speicherung finden Sie im Abschnitt [Erste Schritte](#Getting-started).
+Unveränderlicher Speicher für Azure-Blobspeicher unterstützt zwei Arten von WORM-Richtlinien bzw. Richtlinien für die unveränderliche Speicherung: zeitbasierte Aufbewahrung und gesetzliche Aufbewahrungspflicht. Ausführliche Informationen zum Erstellen dieser Richtlinien für die unveränderliche Speicherung finden Sie im Abschnitt [Erste Schritte](#getting-started).
 
 Wenn eine zeitbasierte Aufbewahrungsrichtlinie oder ein Zeitraum für die gesetzliche Aufbewahrungspflicht auf einen Container angewendet wird, werden alle vorhandenen Blobs in den unveränderlichen Zustand versetzt (Schreib- und Löschschutz). Alle neuen Blobs, die in den Container hochgeladen werden, werden auch in den unveränderlichen Zustand versetzt.
 
@@ -69,7 +69,7 @@ Für neue Blobs entspricht die Gültigkeit des Aufbewahrungszeitraums dem vom Be
 
 ### <a name="legal-holds"></a>Gesetzliche Aufbewahrungspflichten
 
-Wenn Sie einen Zeitraum für die gesetzliche Aufbewahrungspflicht festlegen, verbleiben alle vorhandenen und neuen Blobs im unveränderlichen Zustand, bis die gesetzliche Aufbewahrungspflicht aufgehoben wird. Ausführliche Informationen zum Festlegen und Aufheben von Zeiträumen für die gesetzliche Aufbewahrungspflicht finden Sie im Abschnitt [Erste Schritte](#Getting-started).
+Wenn Sie einen Zeitraum für die gesetzliche Aufbewahrungspflicht festlegen, verbleiben alle vorhandenen und neuen Blobs im unveränderlichen Zustand, bis die gesetzliche Aufbewahrungspflicht aufgehoben wird. Ausführliche Informationen zum Festlegen und Aufheben von Zeiträumen für die gesetzliche Aufbewahrungspflicht finden Sie im Abschnitt [Erste Schritte](#getting-started).
 
 Für einen Container können gleichzeitig eine gesetzliche Aufbewahrungspflicht und eine zeitbasierte Aufbewahrungsrichtlinie gelten. Alle Blobs in diesem Container verbleiben so lange im unveränderlichen Zustand, bis alle gesetzlichen Aufbewahrungspflichten aufgehoben wurden. Dies gilt auch, wenn die effektive Aufbewahrungsdauer bereits abgelaufen ist. Dagegen verbleibt ein Blob auch dann so lange im unveränderlichen Zustand, bis der effektive Aufbewahrungszeitraum abgelaufen ist, wenn alle Zeiträume für die gesetzliche Aufbewahrungspflicht aufgehoben wurden.
 

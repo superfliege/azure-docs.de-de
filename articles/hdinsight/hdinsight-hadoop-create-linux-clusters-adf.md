@@ -9,17 +9,17 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: hrasheed
-ms.openlocfilehash: 76651874951255d9b01efdc6e91892f6852d948d
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 1e55da981daf29aca491c480d58f399bc681fd27
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51036375"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52499548"
 ---
 # <a name="tutorial-create-on-demand-apache-hadoop-clusters-in-hdinsight-using-azure-data-factory"></a>Tutorial: Erstellen bedarfsgesteuerter Apache Hadoop-Cluster in HDInsight mit Azure Data Factory
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
 
-In diesem Artikel erfahren Sie, wie Sie bei Bedarf mit Azure Data Factory einen Apache Hadoop-Cluster in Azure HDInsight erstellen. Sie können dann Datenpipelines in Azure Data Factory verwenden, um Hive-Aufträge ausführen und den Cluster zu löschen. Am Ende dieses Tutorials erfahren Sie, wie Sie die Ausführung eines Big Data-Auftrags operationalisieren, bei dem die Clustererstellung, Auftragsausführung und Clusterlöschung nach einem Zeitplan ausgeführt werden.
+In diesem Artikel erfahren Sie, wie Sie mit Azure Data Factory einen [Apache Hadoop](https://hadoop.apache.org/)-Cluster bei Bedarf in Azure HDInsight erstellen. Sie können dann Datenpipelines in Azure Data Factory verwenden, um Hive-Aufträge ausführen und den Cluster zu löschen. Am Ende dieses Tutorials erfahren Sie, wie Sie die Ausführung eines Big Data-Auftrags operationalisieren, bei dem die Clustererstellung, Auftragsausführung und Clusterlöschung nach einem Zeitplan ausgeführt werden.
 
 Dieses Tutorial enthält die folgenden Aufgaben: 
 
@@ -43,7 +43,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="create-an-azure-storage-account"></a>Erstellen eines Azure-Speicherkontos
 
-In diesem Abschnitt erstellen Sie ein Speicherkonto, das als Standardspeicher für den bei Bedarf erstellten HDInsight-Cluster verwendet wird. Dieses Speicherkonto enthält auch das HiveQL-Beispielskript (**hivescript.hql**), mit dem Sie einen Hive-Beispielauftrag simulieren, der im Cluster ausgeführt wird.
+In diesem Abschnitt erstellen Sie ein Speicherkonto, das als Standardspeicher für den bei Bedarf erstellten HDInsight-Cluster verwendet wird. Dieses Speicherkonto enthält auch das [HiveQL](https://cwiki.apache.org/confluence/display/Hive/LanguageManual)-Beispielskript (**hivescript.hql**), mit dem Sie einen [Apache Hive](https://hive.apache.org/)-Beispielauftrag simulieren, der im Cluster ausgeführt wird.
 
 In diesem Abschnitt wird ein Azure PowerShell-Skript verwendet, um das Speicherkonto zu erstellen und die erforderlichen Dateien im Speicherkonto zu kopieren. Das Azure PowerShell-Beispielskript in diesem Abschnitt führt die folgenden Aufgaben aus:
 
@@ -338,7 +338,7 @@ Alternativ können Sie die gesamte Ressourcengruppe löschen, die Sie für diese
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-In diesem Artikel haben Sie gelernt, wie Sie mit Azure Data Factory einen bedarfsgesteuerten HDInsight-Cluster erstellen und Hive-Aufträge ausführen. Fahren Sie mit dem nächsten Artikel fort, um zu erfahren, wie Sie HDInsight-Cluster mit einer benutzerdefinierten Konfiguration erstellen.
+In diesem Artikel haben Sie gelernt, wie Sie bedarfsgesteuert mit Azure Data Factory einen HDInsight-Cluster erstellen und [Apache Hive](https://hive.apache.org/)-Aufträge ausführen. Fahren Sie mit dem nächsten Artikel fort, um zu erfahren, wie Sie HDInsight-Cluster mit einer benutzerdefinierten Konfiguration erstellen.
 
 > [!div class="nextstepaction"]
 >[Erstellen von Azure HDInsight-Clustern mit einer benutzerdefinierten Konfiguration](hdinsight-hadoop-provision-linux-clusters.md)

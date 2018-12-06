@@ -1,5 +1,5 @@
 ---
-title: Interner Fehler beim Herstellen einer Remotedesktopverbindung mit Azure Virtual Machines | Microsoft-Dokumentation
+title: Interner Fehler beim Herstellen einer RDP-Verbindung mit Azure Virtual Machines | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie interne RDP-Fehler in Microsoft Azure beheben.| Microsoft-Dokumentation
 services: virtual-machines-windows
 documentationCenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/22/2018
 ms.author: genli
-ms.openlocfilehash: 0576d241b3412697ac0d46e77cdfb416921781cb
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 7d0d4a34a31f15c23638eba1f14794838780f2b0
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50215889"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52307159"
 ---
 #  <a name="an-internal-error-occurs-when-you-try-to-connect-to-an-azure-vm-through-remote-desktop"></a>Interner Fehler beim Herstellen einer Verbindung mit einem virtuellen Azure-Computer über Remotedesktop 
 
@@ -47,7 +47,7 @@ Dieses Problem kann folgende Ursachen haben:
 
 Erstellen Sie eine Momentaufnahme des Betriebssystemdatenträgers des betroffenen virtuellen Computers als Sicherung, bevor Sie die unten angegebenen Schritte ausführen. Weitere Informationen finden Sie unter [Erstellen einer Momentaufnahme eines Datenträgers](../windows/snapshot-copy-managed-disk.md).
 
-Verwenden Sie zum Beheben des Problems die serielle Konsole, oder [reparieren Sie den virtuellen Computer offline](#repair-the-vm-offline), indem Sie den Betriebssystemdatenträger des virtuellen Computers an einen virtuellen Wiederherstellungscomputer anfügen.
+Verwenden Sie zum Beheben dieses Problems die serielle Konsole, oder [reparieren Sie den virtuellen Computer offline](#repair-the-vm-offline), indem Sie den Betriebssystemdatenträger des virtuellen Computers an eine Wiederherstellungs-VM anfügen.
 
 
 ### <a name="use-serial-control"></a>Verwenden der seriellen Konsole
@@ -159,7 +159,7 @@ Um das Sicherungsprotokoll und die serielle Konsole zu aktivieren, führen Sie d
 1. Öffnen Sie eine Eingabeaufforderungssitzung mit erhöhten Rechten (**Als Administrator ausführen**).
 2. Führen Sie das folgende Skript aus:
 
-    In diesem Skript wird davon ausgegangen, dass der dem angefügten Betriebssystemdatenträger zugewiesene Laufwerkbuchstabe „F“ ist. Ersetzen Sie diesen durch den entsprechenden Wert Ihres virtuellen Computers.
+    In diesem Skript wird davon ausgegangen, dass der dem angefügten Betriebssystemdatenträger zugewiesene Laufwerkbuchstabe „F“ ist. Ersetzen Sie diesen durch den entsprechenden Wert für Ihren virtuellen Computer.
 
     ```powershell
     reg load HKLM\BROKENSYSTEM F:\windows\system32\config\SYSTEM.hiv
@@ -186,7 +186,7 @@ Um das Sicherungsprotokoll und die serielle Konsole zu aktivieren, führen Sie d
 #### <a name="reset-the-permission-for-machinekeys-folder"></a>Zurücksetzen der Berechtigungen für den Ordner „MachineKeys“
 
 1. Öffnen Sie eine Eingabeaufforderungssitzung mit erhöhten Rechten (**Als Administrator ausführen**).
-2. Führen Sie das folgende Skript aus. In diesem Skript wird davon ausgegangen, dass der dem angefügten Betriebssystemdatenträger zugewiesene Laufwerkbuchstabe „F“ ist. Ersetzen Sie diesen durch den entsprechenden Wert Ihres virtuellen Computers.
+2. Führen Sie das folgende Skript aus. In diesem Skript wird davon ausgegangen, dass der dem angefügten Betriebssystemdatenträger zugewiesene Laufwerkbuchstabe „F“ ist. Ersetzen Sie diesen durch den entsprechenden Wert für Ihren virtuellen Computer.
 
         Md F:\temp
 

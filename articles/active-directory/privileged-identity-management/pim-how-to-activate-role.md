@@ -10,15 +10,15 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.component: pim
-ms.date: 08/27/2018
+ms.date: 11/21/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 59dab4651366c3ad6579e0da660baee0c653d1a3
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 534714accb504e4ce487950fef028ab675c46a87
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43666001"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52496406"
 ---
 # <a name="activate-my-azure-ad-directory-roles-in-pim"></a>Aktivieren von Azure AD-Verzeichnisrollen in PIM
 
@@ -70,9 +70,25 @@ Wenn Sie eine Azure AD-Verzeichnisrolle übernehmen müssen, können Sie in PIM 
 
 1. Klicken Sie auf **Aktivieren**.
 
-    Wenn für die Rolle keine Genehmigung erforderlich ist, wird sie jetzt aktiviert und in der Liste der aktiven Rollen angezeigt. Wenn für die Aktivierung der [Rolle eine Genehmigung erforderlich ist](./azure-ad-pim-approval-workflow.md), werden Sie über eine Benachrichtigung in der oberen rechten Ecke des Browsers darüber informiert, dass die Genehmigung der Anforderung aussteht.
+    Wenn für die Rolle keine Genehmigung erforderlich ist, wird sie aktiviert und der Liste der aktiven Rollen hinzugefügt. Wenn Sie die Rolle sofort verwenden möchten, führen Sie die Schritte im nächsten Abschnitt aus.
+
+    Wenn für die Aktivierung der [Rolle eine Genehmigung erforderlich ist](./azure-ad-pim-approval-workflow.md), werden Sie über eine Benachrichtigung in der oberen rechten Ecke des Browsers darüber informiert, dass die Genehmigung der Anforderung aussteht.
 
     ![Benachrichtigung über ausstehende Anforderung](./media/pim-how-to-activate-role/directory-roles-activate-notification.png)
+
+## <a name="use-a-role-immediately-after-activation"></a>Verwenden einer Rolle sofort nach der Aktivierung
+
+Nach der Aktivierung einer Rolle in PIM dauert es mindestens zehn Minuten, bevor Sie auf das gewünschte Verwaltungsportal zugreifen oder Funktionen für eine spezifische Verwaltungsworkload ausführen können. Um ein Update Ihrer Berechtigungen zu erzwingen, verwenden Sie die Seite **Anwendungszugriff** wie in den folgenden Schritten beschrieben.
+
+1. Öffnen Sie Azure AD Privileged Identity Management.
+
+1. Klicken Sie auf die Seite **Anwendungszugriff**.
+
+    ![PIM-Anwendungszugriff](./media/pim-how-to-activate-role/pim-application-access.png)
+
+1. Klicken Sie auf den Link **Azure Active Directory**, um das Portal auf der Seite **Alle Benutzer** erneut zu öffnen.
+
+    Wenn Sie auf diesen Link klicken, wird Ihr aktuelles Token ungültig. Gleichzeitig wird erzwungen, dass das Azure-Portal ein neues Token abruft, das Ihre aktualisierten Berechtigungen enthält.
 
 ## <a name="view-the-status-of-your-requests"></a>Anzeigen des Status Ihrer Anforderungen
 
@@ -85,20 +101,6 @@ Sie können den Status Ihrer ausstehenden Aktivierungsanforderungen anzeigen.
 1. Klicken Sie auf **Meine Anforderungen**, um eine Liste Ihrer Anforderungen anzuzeigen.
 
     ![Azure AD-Verzeichnisrollen – „Meine Anforderungen“](./media/pim-how-to-activate-role/directory-roles-my-requests.png)
-
-## <a name="use-a-role-immediately-after-activation"></a>Verwenden einer Rolle sofort nach der Aktivierung
-
-Aufgrund der Zwischenspeicherung werden Aktivierungen im Azure-Portal ohne Aktualisierung nicht sofort wirksam. Wenn Sie mögliche Verzögerungen nach dem Aktivieren einer Rolle vermeiden möchten, können Sie die Seite **Anwendungszugriff** im Portal verwenden. Anwendungen, auf die über diese Seite zugegriffen wird, überprüfen sofort auf neue Rollenzuweisungen.
-
-1. Öffnen Sie Azure AD Privileged Identity Management.
-
-1. Klicken Sie auf die Seite **Anwendungszugriff**.
-
-    ![PIM-Anwendungszugriff](./media/pim-how-to-activate-role/pim-application-access.png)
-
-1. Klicken Sie auf **Azure Active Directory**, um das Portal auf der Seite **Alle Benutzer** erneut zu öffnen.
-
-    Wenn Sie auf diesen Link klicken, erzwingen Sie eine Aktualisierung, und es wird eine Überprüfung auf neue Azure AD-Rollenzuweisungen durchgeführt.
 
 ## <a name="deactivate-a-role"></a>Deaktivieren einer Rolle
 
@@ -131,6 +133,14 @@ Sollten Sie die Aktivierung einer Rolle, für die eine Genehmigung erforderlich 
     Durch das Klicken auf „Abbrechen“ wird die Anforderung abgebrochen. Um die Rolle erneut zu aktivieren, müssen Sie eine neue Anforderung zur Aktivierung übermitteln.
 
    ![Abbrechen einer ausstehenden Anforderung](./media/pim-how-to-activate-role/directory-role-cancel.png)
+
+## <a name="troubleshoot"></a>Problembehandlung
+
+### <a name="permissions-not-granted-after-activating-a-role"></a>Keine Gewährung von Berechtigungen nach der Aktivierung einer Rolle
+
+Nach der Aktivierung einer Rolle in PIM dauert es mindestens zehn Minuten, bevor Sie auf das gewünschte Verwaltungsportal zugreifen oder Funktionen für eine spezifische Verwaltungsworkload ausführen können. Um ein Update Ihrer Berechtigungen zu erzwingen, verwenden Sie die Seite **Anwendungszugriff** wie weiter oben unter [Verwenden einer Rolle sofort nach der Aktivierung](#use-a-role-immediately-after-activation) beschrieben.
+
+Weitere Schritte zur Problembehandlung finden Sie unter [Behandeln von Problemen mit erhöhten Berechtigungen](https://social.technet.microsoft.com/wiki/contents/articles/37568.troubleshooting-elevated-permissions-with-azure-ad-privileged-identity-management.aspx).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

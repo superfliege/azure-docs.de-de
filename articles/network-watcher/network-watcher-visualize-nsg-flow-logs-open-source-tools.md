@@ -14,18 +14,21 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: mareat
-ms.openlocfilehash: 6debfaed28be2b5dee5e24a443b791f75f7bea8f
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 10f76ea58b859611483c99c2f4accec607bc2939
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634191"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51822907"
 ---
 # <a name="visualize-azure-network-watcher-nsg-flow-logs-using-open-source-tools"></a>Visualisieren von Azure Network Watcher-NSG-Datenflussprotokollen mit Open-Source-Tools
 
 NSG-Datenflussprotokolle (Netzwerksicherheitsgruppen) enthalten Informationen für ein besseres Verständnis von ein- und ausgehendem IP-Datenverkehr in Netzwerksicherheitsgruppen. Diese Datenflussprotokolle zeigen ausgehende und eingehende Datenflüsse pro Regel, die NIC, auf die sich der Datenfluss bezieht, 5-Tupel-Informationen über den Datenfluss (Quell-/Ziel-IP, Quell-/Zielport, Protokoll) und Informationen zu zugelassenem oder verweigertem Datenverkehr.
 
 Die manuelle Analyse und Auswertung dieser Datenflussprotokolle kann schwierig sein. Es gibt jedoch mehrere Open-Source-Tools, die zur Visualisierung dieser Daten beitragen können. In diesem Artikel wird eine Lösung für Visualisierung dieser Protokolle mit dem Elastic Stack bereitgestellt, mit der Sie Ihre Datenflussprotokolle schnell in einem Kibana-Dashboard indizieren und visualisieren können.
+
+> [!Warning]  
+> In den folgenden Schritten wird Version 1 der Flowprotokolle verwendet. Ausführliche Informationen finden Sie unter [Einführung in die Datenflussprotokollierung für Netzwerksicherheitsgruppen](network-watcher-nsg-flow-logging-overview.md). Die folgenden Anweisungen funktionieren ohne Änderungen nicht mit Version 2 der Protokolldateien.
 
 ## <a name="scenario"></a>Szenario
 

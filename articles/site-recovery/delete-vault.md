@@ -8,14 +8,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: rajani-janaki-ram
-ms.openlocfilehash: f351bd715baf86407c249e13aa02cf3c37e374c4
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 6827bcc561ced0d346d79e60b3f2b2fde83bc2d8
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50212419"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51977046"
 ---
-# <a name="delete-a-site-recovery-recovery-services-vault"></a>Löschen eines Recovery Services-Tresors in Site Recovery
+# <a name="delete-a-site-recovery-services-vault"></a>Löschen eines Site Recovery Services-Tresors
 
 Abhängigkeiten können das Löschen eines Azure Site Recovery-Tresors verhindern. Die von Ihnen auszuführenden Aktionen hängen vom jeweiligen Site Recovery-Szenario ab. Informationen zum Löschen eines in Azure Backup verwendeten Tresors finden Sie unter [Löschen eines Azure Backup-Tresors](../backup/backup-azure-delete-vault.md).
 

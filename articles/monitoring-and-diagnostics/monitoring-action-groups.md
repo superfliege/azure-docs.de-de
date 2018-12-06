@@ -5,15 +5,15 @@ author: dkamstra
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 09/12/2018
+ms.date: 11/26/2018
 ms.author: dukek
 ms.component: alerts
-ms.openlocfilehash: 3ce7c5111fa176bb7fa734f54084b9e14e7afbef
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 1b66f40594d0dd578e2e5680fb0d5bb0f82f1241
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51016045"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52311805"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Erstellen und Verwalten von Aktionsgruppen im Azure-Portal
 ## <a name="overview"></a>Übersicht ##
@@ -76,6 +76,8 @@ Eine Aktionsgruppe kann bis zu 1.000 E-Mail-Aktionen enthalten. Weitere Informat
 **ITSM**: Eine Aktionsgruppe kann bis zu zehn ITSM-Aktionen enthalten. Für eine ITSM-Aktion ist eine ITSM-Verbindung erforderlich. Informieren Sie sich, wie Sie [eine ITSM-Verbindung erstellen](../log-analytics/log-analytics-itsmc-overview.md).
 
 **Logik-App**: Eine Aktionsgruppe kann bis zu zehn Logik-App-Aktionen enthalten.
+
+**Funktions-App:** Die für Funktions-Apps als Aktionen konfigurierten Funktionsschlüssel werden über die Functions-API gelesen, für die derzeit Funktions-Apps der Version 2 erforderlich sind, um „files“ für die App-Einstellung „AzureWebJobsSecretStorageType“ zu konfigurieren. Weitere Informationen finden Sie unter [Changes to Key Management in Functions V2]( https://aka.ms/funcsecrets) (Änderungen der Schlüsselverwaltung in Functions V2).
 
 **Runbook**: Eine Aktionsgruppe kann bis zu zehn Runbookaktionen enthalten. Informationen zu den Einschränkungen für Runbook-Nutzlasten, die für Protokollwarnungen über Azure-Aktionsgruppen ausgelöst werden, finden Sie unter [Azure-Abonnementdienstgrenzen](../azure-subscription-service-limits.md).
 

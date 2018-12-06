@@ -11,40 +11,33 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/14/2018
+ms.date: 11/20/2018
 ms.author: jeffgilb
 ms.reviewer: quying
-ms.openlocfilehash: b7af23ccdd379aac9959bb9993fc1781a44e705e
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: b79d64cc063105cb8ecce537a09a7f39a78eef4c
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51684025"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52275026"
 ---
 # <a name="remove-the-sql-resource-provider"></a>Entfernen des SQL-Ressourcenanbieters
 
 Bevor Sie den SQL-Ressourcenanbieter entfernen, müssen Sie alle Anbieterabhängigkeiten entfernen. Außerdem benötigen Sie eine Kopie des Bereitstellungspakets, mit dem der Ressourcenanbieter installiert wurde.
 
-  |Azure Stack-Mindestversion|SQL RP Version|
-  |-----|-----|
-  |Version 1808 (1.1808.0.97)|[SQL RP Version 1.1.30.0](https://aka.ms/azurestacksqlrp11300)|
-  |Version 1804 (1.0.180513.1)|[SQL RP Version 1.1.24.0](https://aka.ms/azurestacksqlrp11240)
-  |     |     |
+> [!NOTE]
+> Die Downloadlinks für die Ressourcenanbieter-Installationsprogramme finden Sie in den [Voraussetzungen für die Bereitstellung des Ressourcenanbieters](.\azure-stack-sql-resource-provider-deploy.md#prerequisites).
+
+Wenn Sie den SQL-Ressourcenanbieter löschen, werden die Mandantendatenbanken dadurch nicht von den Hostingservern gelöscht.
 
 ## <a name="dependency-cleanup"></a>Bereinigung von Abhängigkeiten
 
 Es müssen verschiedene Bereinigungsaufgaben durchgeführt werden, bevor Sie das Skript „DeploySqlProvider.ps1“ zum Entfernen des Ressourcenanbieters ausführen können.
 
-Azure Stack-Mandantenbenutzer sind für die folgenden Bereinigungsaufgaben verantwortlich:
+Der Azure Stack-Bediener ist für die folgenden Bereinigungsaufgaben verantwortlich:
 
-* Löschen aller ihrer Datenbanken aus dem Ressourcenanbieter (Die Daten werden dabei nicht gelöscht.)
-* Aufheben der Registrierung des Anbieternamespace
-
-Der Azure Stack-Operator ist für die folgenden Bereinigungsaufgaben verantwortlich:
-
-* Löschen der Hostserver aus dem MySQL-Adapter
-* Löschen aller Pläne, die auf den MySQL-Adapter verweisen
-* Löschen aller Kontingente, die dem MySQL-Adapter zugeordnet sind
+* Löschen aller Pläne, die auf den SQL-Adapter verweisen
+* Löschen aller Kontingente, die dem SQL-Adapter zugeordnet sind
 
 ## <a name="to-remove-the-sql-resource-provider"></a>So entfernen Sie den SQL-Ressourcenanbieter
 
@@ -53,9 +46,9 @@ Der Azure Stack-Operator ist für die folgenden Bereinigungsaufgaben verantwortl
    > [!NOTE]
    > Die Deinstallation des SQL-Ressourcenanbieters wird fortgesetzt, auch wenn abhängige Ressourcen den Ressourcenanbieter derzeit verwenden.
   
-2. Rufen Sie eine Kopie der Binärdatei des SQL-Ressourcenanbieters ab, und führen Sie dann den Self-Extractor aus, um den Inhalt in ein temporäres Verzeichnis zu extrahieren.
+2. Rufen Sie eine Kopie des Installationspakets für den SQL-Ressourcenanbieter ab, und führen Sie dann den Self-Extractor aus, um den Inhalt in ein temporäres Verzeichnis zu extrahieren.
 
-3. Öffnen Sie ein neues PowerShell-Konsolenfenster mit erhöhten Rechten, und wechseln Sie zu dem Verzeichnis, in dem Sie die Binärdateien des SQL-Ressourcenanbieters extrahiert haben.
+3. Öffnen Sie ein neues PowerShell-Konsolenfenster mit erhöhten Rechten, und wechseln Sie zu dem Verzeichnis, in dem Sie die Installationsdateien des SQL-Ressourcenanbieters extrahiert haben.
 
 4. Führen Sie das „DeploySqlProvider.ps1“-Skript mit den folgenden Parametern aus:
 

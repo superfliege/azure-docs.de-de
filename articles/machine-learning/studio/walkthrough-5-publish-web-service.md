@@ -1,10 +1,11 @@
 ---
-title: 'Schritt 5: Bereitstellen des Machine Learning-Webdiensts | Microsoft-Dokumentation'
+title: 'Schritt 5: Bereitstellen des Machine Learning Studio-Webdiensts | Microsoft-Dokumentation'
 description: 'Exemplarische Vorgehensweise zum Entwickeln einer Vorhersagelösung – Schritt 5: Bereitstellen eines Vorhersageexperiments als Webdienst in Machine Learning Studio.'
 services: machine-learning
 documentationcenter: ''
-author: YasinMSFT
-ms.author: yahajiza
+author: ericlicoding
+ms.custom: (previous ms.author=yahajiza, author=YasinMSFT)
+ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
 ms.assetid: 3fca74a3-c44b-4583-a218-c14c46ee5338
@@ -15,14 +16,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/23/2017
-ms.openlocfilehash: 436656195e00311dd350a5526b01fffa56ac02ca
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 33965270c2be6f70614def79a49f1c4aa1a8fbbc
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "40246532"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52309928"
 ---
-# <a name="walkthrough-step-5-deploy-the-azure-machine-learning-web-service"></a>Anleitung Schritt 5: Bereitstellen des Azure Machine Learning-Webdiensts
+# <a name="walkthrough-step-5-deploy-the-azure-machine-learning-studio-web-service"></a>Schritt 5 der exemplarischen Vorgehensweise: Bereitstellen des Azure Machine Learning Studio-Webdiensts
 Dies ist der fünfte Schritt der exemplarischen Vorgehensweise zum [Predictive Analytics-Lösung in Azure Machine Learning](walkthrough-develop-predictive-solution.md)
 
 1. [Erstellen eines Machine Learning-Arbeitsbereichs](walkthrough-1-create-ml-workspace.md)

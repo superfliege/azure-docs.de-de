@@ -9,16 +9,16 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/01/2018
-ms.openlocfilehash: b8494150a060e02145eab3674bdd2dd62cdda225
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 603aa8d85d42167accd2a5e71c4ab3e5245f5d07
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51277289"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52499255"
 ---
 # <a name="use-hdinsight-spark-cluster-to-read-and-write-data-to-azure-sql-database"></a>Verwenden eines HDInsight Spark-Clusters zum Lesen und Schreiben von Daten in einer Azure SQL-Datenbank
 
-In diesem Artikel wird erläutert, wie Sie eine Verbindung zwischen einem Apache Spark-Cluster in Azure HDInsight und einer Azure SQL-Datenbank herstellen und dann Daten in der SQL-Datenbank lesen, schreiben und streamen. In diesem Artikel wird ein Jupyter Notebook zum Ausführen der Scala-Codeausschnitte verwendet. Sie können jedoch auch eine eigenständige Anwendung in Scala oder Python erstellen und die gleichen Aufgaben ausführen. 
+In diesem Artikel wird erläutert, wie Sie eine Verbindung zwischen einem Apache Spark-Cluster in Azure HDInsight und einer Azure SQL-Datenbank herstellen und dann Daten in der SQL-Datenbank lesen, schreiben und streamen. In diesem Artikel wird ein [Jupyter Notebook](https://jupyter.org/) zum Ausführen der Scala-Codeausschnitte verwendet. Sie können jedoch auch eine eigenständige Anwendung in Scala oder Python erstellen und die gleichen Aufgaben ausführen. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -32,19 +32,14 @@ In diesem Artikel wird erläutert, wie Sie eine Verbindung zwischen einem Apache
 
 * **SQL Server Management Studio**: Befolgen Sie dazu die Anweisungen unter [Verwenden von SQL Server Management Studio zum Herstellen der Verbindung und Abfragen von Daten](../../sql-database/sql-database-connect-query-ssms.md).
 
-## <a name="create-a-jupyter-notebook"></a>Erstellen eines Jupyter Notebooks
+## <a name="create-a-jupyter-notebook"></a>Erstellen eines Jupyter Notebooks 
 
-Erstellen Sie zunächst ein dem Spark-Cluster zugeordnetes Jupyter Notebook. Sie verwenden dieses Notebook, um die in diesem Artikel verwendeten Codeausschnitte auszuführen. 
+Erstellen Sie zunächst ein dem Spark-Cluster zugeordnetes [Jupyter Notebook](https://jupyter.org/). Sie verwenden dieses Notebook, um die in diesem Artikel verwendeten Codeausschnitte auszuführen. 
 
-1. Öffnen Sie Ihren Cluster im [Azure-Portal](https://portal.azure.com/). 
+1. Öffnen Sie Ihren Cluster im [Azure-Portal](https://portal.azure.com/).
+1. Wählen Sie auf der rechten Seite unterhalb von **Clusterdashboards** die Option **Jupyter Notebook** aus.  Sollte **Clusterdashboards** nicht angezeigt werden, klicken Sie im linken Menü des Blatts auf **Übersicht**. Geben Sie die Administratoranmeldeinformationen für den Cluster ein, wenn Sie dazu aufgefordert werden.
 
-1. Klicken Sie im Abschnitt **Quicklinks** auf **Clusterdashboards**, um die Ansicht **Clusterdashboards** zu öffnen.  Wenn Ihnen **Quick Links** (Direktlinks) nicht angezeigt wird, klicken Sie im linken Menü des Blatts auf **Übersicht**.
-
-    ![Cluster-Dashboard in Spark](./media/apache-spark-connect-to-sql-database/hdinsight-cluster-dashboard-on-spark.png "Cluster-Dashboard in Spark") 
-
-1. Klicken Sie auf **Jupyter Notebook**. Geben Sie die Administratoranmeldeinformationen für den Cluster ein, wenn Sie dazu aufgefordert werden.
-
-    ![Jupyter-Notebook unter Spark](./media/apache-spark-connect-to-sql-database/hdinsight-jupyter-notebook-on-spark.png "Jupyter-Notebook unter Spark")
+    ![Jupyter-Notebook unter Spark](./media/apache-spark-connect-to-sql-database/hdinsight-spark-cluster-dashboard-jupyter-notebook.png "Jupyter-Notebook unter Spark")
    
    > [!NOTE]
    > Sie können das Jupyter Notebook im Spark-Cluster auch aufrufen, indem Sie im Browser die folgende URL öffnen. Ersetzen Sie **CLUSTERNAME** durch den Namen Ihres Clusters:
@@ -242,4 +237,4 @@ In diesem Abschnitt werden Daten in die Tabelle **hvactable** gestreamt, die Sie
 
 * [Verwenden des HDInsight Spark-Clusters, um Daten in Data Lake Store zu analysieren](apache-spark-use-with-data-lake-store.md)
 * [Apache Spark Structured Streaming unter HDInsight zum Verarbeiten von Ereignissen von Event Hubs](apache-spark-eventhub-structured-streaming.md)
-* [Verwenden von strukturiertem Spark-Streaming mit Kafka in HDInsight](../hdinsight-apache-kafka-spark-structured-streaming.md)
+* [Tutorial: Verwenden von strukturiertem Apache Spark-Streaming mit Apache Kafka in HDInsight](../hdinsight-apache-kafka-spark-structured-streaming.md)

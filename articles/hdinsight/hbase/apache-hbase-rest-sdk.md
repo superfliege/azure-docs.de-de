@@ -9,16 +9,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/13/2017
 ms.author: ashishth
-ms.openlocfilehash: af3b87fbe79624143b6c2b7e0a3c50852e532524
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 89c74b0c2144776d3bbc8a87f660b546ad40987f
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43042120"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52495411"
 ---
-# <a name="use-the-hbase-net-sdk"></a>Verwenden des HBase .NET SDK
+# <a name="use-the-net-sdk-for-apache-hbase"></a>Verwenden des .NET SDK für Apache HBase
 
-[HBase](apache-hbase-overview.md) bietet zwei primäre Optionen, um mit Ihren Daten zu arbeiten: [Hive-Abfragen und Aufrufe der RESTful-API von HBase](apache-hbase-tutorial-get-started-linux.md). Sie können direkt mit der REST-API arbeiten, indem Sie den Befehl `curl` oder ein ähnliches Hilfsprogramm verwenden.
+[Apache HBase](apache-hbase-overview.md) bietet zwei primäre Optionen für die Arbeit mit Ihren Daten: [Apache Hive-Abfragen und Aufrufe der RESTful-API von HBase](apache-hbase-tutorial-get-started-linux.md). Sie können direkt mit der REST-API arbeiten, indem Sie den Befehl `curl` oder ein ähnliches Hilfsprogramm verwenden.
 
 Für C#- und .NET-Anwendungen bietet die [Microsoft HBase REST-Clientbibliothek für .NET](https://www.nuget.org/packages/Microsoft.HBase.Client/) eine Clientbibliothek zusätzlich zu der HBase REST-API.
 
@@ -37,7 +37,7 @@ var credentials = new ClusterCredentials(new Uri("https://CLUSTERNAME.azurehdins
 client = new HBaseClient(credentials);
 ```
 
-Ersetzen Sie CLUSTERNAME durch Ihren HDInsight HBase-Clusternamen, und USERNAME und PASSWORD durch die bei der Erstellung des Clusters angegebenen Hadoop-Anmeldeinformationen. Der Standardbenutzername für Hadoop ist **admin**.
+Ersetzen Sie CLUSTERNAME durch Ihren HDInsight HBase-Clusternamen, und USERNAME und PASSWORD durch die bei der Erstellung des Clusters angegebenen Apache Hadoop-Anmeldeinformationen. Der Standardbenutzername für Hadoop ist **admin**.
 
 ## <a name="create-a-new-table"></a>Erstellen einer neuen Tabelle
 
@@ -113,7 +113,7 @@ set.rows.Add(row);
 await client.StoreCellsAsync("RestSDKTable", set);
 ```
 
-HBase implementiert BigTable, sodass das Datenformat wie folgt aussieht:
+HBase implementiert [Cloud BigTable](https://cloud.google.com/bigtable/), daher hat das Datenformat folgendes Format:
 
 ![Benutzer mit Rolle „Clusterbenutzer“](./media/apache-hbase-rest-sdk/table.png)
 
@@ -189,4 +189,4 @@ finally
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Erste Schritte mit einem Apache HBase-Beispiel in HDInsight](apache-hbase-tutorial-get-started-linux.md)
-* Erstellen einer End-to-End-Anwendung mit [Analysieren der Twitter-Stimmung in Echtzeit mit HBase](../hdinsight-hbase-analyze-twitter-sentiment.md)
+* Erstellen einer End-to-End-Anwendung mit [Analyse der Twitter-Stimmung in Echtzeit mit Apache HBase](../hdinsight-hbase-analyze-twitter-sentiment.md)

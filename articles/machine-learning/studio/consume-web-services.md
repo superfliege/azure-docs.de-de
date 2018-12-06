@@ -1,10 +1,11 @@
 ---
-title: Nutzen eines Azure Machine Learning-Webdiensts | Microsoft-Dokumentation
-description: Sobald ein Machine Learning-Dienst bereitgestellt wurde, kann der zur Verfügung gestellte RESTFul-Webdienst als Anforderung-/Antwort-Dienst in Echtzeit oder als Stapelausführungsdienst genutzt werden.
+title: Nutzen eines Azure Machine Learning Studio-Webdiensts | Microsoft-Dokumentation
+description: Nachdem ein Machine Learning-Dienst über Azure Machine Learning Studio bereitgestellt wurde, kann der RESTFul-Webdienst als Anforderung/Antwort-Dienst in Echtzeit oder als Stapelausführungsdienst genutzt werden.
 services: machine-learning
 documentationcenter: ''
-author: YasinMSFT
-ms.author: yahajiza
+author: ericlicoding
+ms.custom: (previous ms.author=yahajiza, author=YasinMSFT)
+ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
 ms.assetid: 804f8211-9437-4982-98e9-ca841b7edf56
@@ -15,14 +16,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 06/02/2017
-ms.openlocfilehash: b89fb0fbb499fa06c9e56f02937b1c586efde9b6
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: df837c64cf0e40f3bfc1c596b2950a9d23c74a90
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34833368"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52309105"
 ---
-# <a name="how-to-consume-an-azure-machine-learning-web-service"></a>Nutzen eines Azure Machine Learning-Webdiensts
+# <a name="how-to-consume-an-azure-machine-learning-studio-web-service"></a>Nutzen eines Azure Machine Learning Studio-Webdiensts
 
 Sobald Sie ein Azure Machine Learning-Vorhersagemodell als Webdienst bereitstellen, können Sie eine REST-API verwenden, um Daten dorthin zu senden und Vorhersagen abzurufen. Sie können die Daten in Echtzeit oder im Batchmodus senden.
 

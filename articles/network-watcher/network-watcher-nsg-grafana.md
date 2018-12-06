@@ -15,16 +15,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/15/2017
 ms.author: mareat
-ms.openlocfilehash: e375476536e7fe150e3aabcae7cee942deac02d5
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 9e408b45f47cb86191628916124611735f374d9e
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42142556"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51819033"
 ---
 # <a name="manage-and-analyze-network-security-group-flow-logs-using-network-watcher-and-grafana"></a>Verwalten von Datenflussprotokollen für Netzwerksicherheitsgruppen mit Network Watcher und Grafana
 
 [Datenflussprotokolle von Netzwerksicherheitsgruppen (NSG)](network-watcher-nsg-flow-logging-overview.md) enthalten Informationen zum besseren Verstehen von ein- und ausgehendem IP-Datenverkehr an Netzwerkschnittstellen. Diese Datenflussprotokolle zeigen aus- und eingehende Datenflüsse pro NSG-Regel, die NIC, auf die sich der Datenfluss bezieht, fünf Informationen zum Datenfluss (Quell-/Ziel-IP-Adresse, Quell-/Zielport, Protokoll) und Informationen dazu, ob der Datenverkehr zugelassen oder verweigert wurde.
+
+> [!Warning]  
+> In den folgenden Schritten werden Flowprotokolle der Version 1 verwendet. Ausführliche Informationen finden Sie unter [Einführung in die Datenflussprotokollierung für Netzwerksicherheitsgruppen](network-watcher-nsg-flow-logging-overview.md). Die folgenden Anweisungen funktionieren ohne Änderungen nicht mit Version 2 der Protokolldateien.
 
 Für viele NSGs in Ihrem Netzwerk kann die Datenflussprotokollierung aktiviert sein. Diese Menge an Protokolldaten macht es allerdings umständlich, Ihre Protokolle zu analysieren, um Einblicke zu gewinnen. Dieser Artikel bietet eine Lösung zur zentralen Verwaltung dieser NSG-Datenflussprotokolle mit Grafana, einem Open-Source-Visualisierungstool, Elasticsearch, einer verteilten Engine für Suche und Analyse, und Logstash, einer serverseitigen Open-Source-Datenverarbeitungspipeline.  
 

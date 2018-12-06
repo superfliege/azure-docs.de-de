@@ -4,7 +4,7 @@ description: Beschreibt, wie Azure-Abonnements auf Rechnung bezahlt werden
 services: ''
 documentationcenter: ''
 author: genlin
-manager: jlian
+manager: jureid
 editor: ''
 tags: billing
 ms.service: billing
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/11/2018
 ms.author: cwatson
-ms.openlocfilehash: 27d84748e932ae438f68ca7b84004c98c26e42d7
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: bea7f0e88a371474db907dd74f08bd74c0e7c9e1
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47393892"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52584365"
 ---
 # <a name="submit-a-request-to-pay-azure-subscription-by-invoice"></a>Stellen eines Antrags zum Zahlen eines Azure-Abonnements auf Rechnung
 
@@ -50,6 +50,6 @@ Sie können die Zahlungsmethode für Ihr Azure-Abonnement in „Auf Rechnung“ 
 
 Wenn Sie aufgrund der Höhe des Guthabens, das Sie benötigen, eine Guthabenprüfung durchführen müssen, können wir Ihnen einen entsprechenden Antrag senden. Nachdem Sie den Antrag eingereicht haben, kann dessen Bearbeitung 5-7 Tage dauern.
 
-## <a name="need-help-contact-support"></a>Sie brauchen Hilfe? Wenden Sie sich an den Support.
+## <a name="need-help-contact-us"></a>Sie brauchen Hilfe? Wenden Sie sich an uns.
 
-[Wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), falls Sie weitere Hilfe benötigen, um das Problem schnell beheben zu lassen.
+Wenn Sie weitere Fragen haben oder Hilfe benötigen, [erstellen Sie eine Supportanfrage](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).

@@ -1,11 +1,12 @@
 ---
-title: Ausführen von Python-Machine Learning-Skripts | Microsoft Docs
-description: Beschreibt die Entwurfsprinzipien, die der Unterstützung für Python-Skripts in Azure Machine Learning zugrunde liegen, sowie die grundlegenden Verwendungsszenarien, Funktionen und Einschränkungen.
+title: Ausführen von Python-Machine Learning-Skripts – Azure Machine Learning Studio | Microsoft-Dokumentation
+description: Beschreibt die Entwurfsprinzipien, die der Unterstützung für Python-Skripts in Azure Machine Learning Studio zugrunde liegen, sowie die grundlegenden Verwendungsszenarien, Funktionen und Einschränkungen.
 keywords: maschinelles Lernen in Python,Pandas,Python Pandas,Python-Skripts,Ausführen von Python-Skripts
 services: machine-learning
 documentationcenter: ''
-author: heatherbshapiro
-ms.author: hshapiro
+author: ericlicoding
+ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
+ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
 ms.assetid: ee9eb764-0d3e-4104-a797-19fc29345d39
@@ -16,12 +17,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2017
-ms.openlocfilehash: 7520780060f603a7e394b100549529a2c1b6fe4b
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 958dd91277a81a9082a4149d2b0026fc11bf882a
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51228163"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52317584"
 ---
 # <a name="execute-python-machine-learning-scripts-in-azure-machine-learning-studio"></a>Ausführen von Python-Machine Learning-Skripts in Azure Machine Learning Studio
 
@@ -150,7 +151,7 @@ Die Modulausgabe zeigt, dass die ZIP-Datei entpackt und die Funktion `print_hell
  
 ![image10](./media/execute-python-scripts/figure7.png)
 
-Abbildung 7. Eine benutzerdefinierte Funktion, die innerhalb des [Execute Python Script][execute-python-script]-Moduls verwendet wird.
+ Abbildung 7. Eine benutzerdefinierte Funktion, die innerhalb des [Execute Python Script][execute-python-script]-Moduls verwendet wird.
 
 
 ## <a name="working-with-visualizations"></a>Arbeiten mit Visualisierungen
@@ -201,8 +202,8 @@ Abbildung 11. Versuch zum Klassifizieren von Features im Dataset "Pima Indian D
 ## <a name="limitations"></a>Einschränkungen
 Für das [Execute Python Script][execute-python-script]-Modul gelten derzeit folgende Einschränkungen:
 
-1. *Sandbox-Ausführung.* Die Python-Laufzeit befindet sich derzeit im Sandbox-Modus und ermöglicht daher keinen dauerhaften Zugriff auf das Netzwerk oder auf das lokale Dateisystem. Alle lokal gespeicherten Dateien sind isoliert und werden nach Abschluss des Moduls gelöscht. Auf dem Computer, auf dem er ausgeführt wird, kann der Python-Code nur auf das aktuelle Verzeichnis und die zugehörigen Unterverzeichnisse zugreifen.
-2. *Keine differenzierte Unterstützung für Entwicklung und Debuggen.* IDE-Features wie Intellisense und Debuggen werden vom Python-Modul derzeit nicht unterstützt. Sollte zur Laufzeit ein Fehler des Moduls auftreten, ist die komplette Python-Stapelüberwachung verfügbar. Diese muss jedoch im Ausgabeprotokoll für das Modul angezeigt werden. Derzeit wird empfohlen, dass Sie Python-Skripts in einer Umgebung wie IPython entwickeln und debuggen und den Code anschließend in das Modul importieren.
+1. *Sandbox-Ausführung.*  Die Python-Laufzeit befindet sich derzeit im Sandbox-Modus und ermöglicht daher keinen dauerhaften Zugriff auf das Netzwerk oder auf das lokale Dateisystem. Alle lokal gespeicherten Dateien sind isoliert und werden nach Abschluss des Moduls gelöscht. Auf dem Computer, auf dem er ausgeführt wird, kann der Python-Code nur auf das aktuelle Verzeichnis und die zugehörigen Unterverzeichnisse zugreifen.
+2. *Keine differenzierte Unterstützung für Entwicklung und Debuggen.*  IDE-Features wie Intellisense und Debuggen werden vom Python-Modul derzeit nicht unterstützt. Sollte zur Laufzeit ein Fehler des Moduls auftreten, ist die komplette Python-Stapelüberwachung verfügbar. Diese muss jedoch im Ausgabeprotokoll für das Modul angezeigt werden. Derzeit wird empfohlen, dass Sie Python-Skripts in einer Umgebung wie IPython entwickeln und debuggen und den Code anschließend in das Modul importieren.
 3. *Ausgabe in einem einzelnen Datenrahmen.* Der Python-Einstiegspunkt kann nur einen einzelnen Datenrahmen als Ausgabe zurückgeben. Derzeit ist es nicht möglich, beliebige Python-Objekte wie z. B. trainierte Modelle direkt an die Azure Machine Learning-Laufzeit zurückzugeben. Es gilt zwar die gleiche Einschränkung wie beim [Execute R Script][execute-r-script]-Modul; es ist jedoch in vielen Fällen möglich, Objekte in ein Bytearray einzubetten und dieses innerhalb eines Datenrahmens zurückzugeben.
 4. *Keine Möglichkeit zum Anpassen der Python-Installation*. Derzeit besteht die einzige Möglichkeit zum Hinzufügen benutzerdefinierter Python-Module über den weiter oben beschriebenen ZIP-Dateimechanismus. Während dies bei kleinen Modulen machbar ist, ist dieser Ansatz für große Module (vor allem solche mit systemeigenen DLLs) oder eine große Anzahl von Modulen umständlich. 
 

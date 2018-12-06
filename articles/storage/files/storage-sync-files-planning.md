@@ -5,15 +5,15 @@ services: storage
 author: wmgries
 ms.service: storage
 ms.topic: article
-ms.date: 07/19/2018
+ms.date: 11/26/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: a2864ca743adf4ced1418630940146fed21b7fd5
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 89ab5ecb4e1a6a39e785a51c61e1344631b1f394
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51625299"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52335179"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Planung für die Bereitstellung einer Azure-Dateisynchronisierung
 Mit der Azure-Dateisynchronisierung können Sie die Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Mit der Azure-Dateisynchronisierung werden Ihre Windows Server-Computer zu einem schnellen Cache für Ihre Azure-Dateifreigabe. Sie können ein beliebiges Protokoll verwenden, das unter Windows Server verfügbar ist, um lokal auf Ihre Daten zuzugreifen, z.B. SMB, NFS und FTPS. Sie können weltweit so viele Caches wie nötig nutzen.
@@ -109,10 +109,11 @@ So zeigen Sie die Ergebnisse in einer CSV-Datei an:
 ```
 
 ### <a name="system-requirements"></a>Systemanforderungen
-- Ein Server mit Windows Server 2012 R2 oder Windows Server 2016:
+- Ein Server mit Windows Server 2012 R2, Windows Server 2016 oder Windows Server 2019:
 
     | Version | Unterstützte SKUs | Unterstützte Bereitstellungsoptionen |
     |---------|----------------|------------------------------|
+    | Windows Server 2019 | Datacenter und Standard | Vollständig (Server mit einer Benutzeroberfläche) |
     | Windows Server 2016 | Datacenter und Standard | Vollständig (Server mit einer Benutzeroberfläche) |
     | Windows Server 2012 R2 | Datacenter und Standard | Vollständig (Server mit einer Benutzeroberfläche) |
 
@@ -198,10 +199,10 @@ Die internen Virenschutzlösungen von Microsoft – Windows Defender und System 
 ### <a name="backup-solutions"></a>Sicherungslösungen
 Wie Virenschutzlösungen können auch Sicherungslösungen den Rückruf von Tieringdateien verursachen. Es wird empfohlen, die Azure-Dateifreigabe mithilfe einer Cloudsicherungslösung anstelle eines lokalen Sicherungsprodukts zu sichern.
 
-Wenn Sie eine lokale Sicherungslösung verwenden, sollten die Sicherungen auf einem Server in der Synchronisierungsgruppe ausgeführt werden, auf dem das Cloudtiering deaktiviert ist. Wenn Sie die Dateien im Speicherort des Serverendpunkts wiederherstellen, verwenden Sie die Option zum Wiederherstellen auf Dateiebene. Wiederhergestellte Dateien werden auf allen Endpunkten in der Synchronisierungsgruppe synchronisiert. Dabei werden vorhandene Dateien durch die aus der Sicherung wiederhergestellte Version ersetzt.
+Wenn Sie eine lokale Sicherungslösung verwenden, sollten die Sicherungen auf einem Server in der Synchronisierungsgruppe ausgeführt werden, auf dem das Cloudtiering deaktiviert ist. Wenn Sie eine Wiederherstellung durchführen, verwenden Sie die Wiederherstellungsoptionen auf Volume- oder Dateiebene. Mithilfe der Wiederherstellungsoption auf Dateiebene wiederhergestellte Dateien werden auf allen Endpunkten in der Synchronisierungsgruppe synchronisiert. Dabei werden vorhandene Dateien durch die aus der Sicherung wiederhergestellte Version ersetzt.  Bei der Wiederherstellung auf Volumeebene werden die neueren Dateiversionen in der Azure-Dateifreigabe oder auf anderen Serverendpunkten nicht ersetzt.
 
 > [!Note]  
-> Anwendungsorientierte Wiederherstellungen, Wiederherstellungen auf Volumeebene und BMR-Wiederherstellungen (Bare-Metal-Recovery) können zu unerwarteten Ergebnissen führen und werden derzeit nicht unterstützt. Diese Wiederherstellungsoptionen werden in einer zukünftigen Version unterstützt.
+> Bare-Metal-Recovery (BMR) kann zu unerwarteten Ergebnissen führen und wird derzeit nicht unterstützt.
 
 ### <a name="encryption-solutions"></a>Verschlüsselungslösungen
 Die Unterstützung von Verschlüsselungslösungen hängt davon ab, wie sie implementiert werden. Die Azure-Dateisynchronisierung funktioniert mit:

@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: hrasheed
-ms.openlocfilehash: 4206301296c94bd0d24743854756ac6dd1d712dd
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: c8b54631f0d37e0e90135dd9e23ff85591cead1b
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51014328"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52495367"
 ---
 # <a name="publish-an-hdinsight-application-in-the-azure-marketplace"></a>Veröffentlichen von HDInsight-Anwendungen im Azure Marketplace
 Sie können eine Azure HDInsight-Anwendung auf einem Linux-basierten HDInsight-Cluster installieren. In diesem Artikel erfahren Sie, wie Sie eine HDInsight-Anwendung im Azure Marketplace veröffentlichen. Allgemeine Informationen zum Veröffentlichen im Azure Marketplace finden Sie unter [Veröffentlichen eines Angebots im Azure Marketplace](../marketplace/marketplace-publishers-guide.md).
@@ -102,6 +102,6 @@ So veröffentlichen Sie eine HDInsight-Anwendung:
 * Erfahren Sie, wie Sie auf Ihren Clustern eine [HDInsight-Anwendung installieren](hdinsight-apps-install-applications.md).
 * Lernen Sie das [Installieren von benutzerdefinierten Hadoop-Anwendungen in Azure HDInsight](hdinsight-apps-install-custom-applications.md), und wie Sie eine nicht veröffentlichte HDInsight-Anwendung in HDInsight bereitstellen.
 * Lernen Sie das [Anpassen Linux-basierter HDInsight-Cluster mithilfe von Skriptaktionen](hdinsight-hadoop-customize-cluster-linux.md) und das Hinzufügen weiterer Anwendungen. 
-* Weitere Informationen finden Sie unter [Erstellen Linux-basierter Hadoop-Cluster in HDInsight mithilfe von Azure Resource Manager-Vorlagen](hdinsight-hadoop-create-linux-clusters-arm-templates.md).
+* Erfahren Sie etwas über das [Erstellen Linux-basierter Apache Hadoop-Cluster in HDInsight mithilfe von Azure Resource Manager-Vorlagen](hdinsight-hadoop-create-linux-clusters-arm-templates.md).
 * Lernen Sie das [Verwenden leerer Edgeknoten in HDInsight](hdinsight-apps-use-edge-node.md) zum Zugreifen auf HDInsight-Cluster, Testen von HDInsight-Anwendungen und Hosten von HDInsight-Anwendungen.
 

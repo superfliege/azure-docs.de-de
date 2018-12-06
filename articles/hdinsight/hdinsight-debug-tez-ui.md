@@ -9,15 +9,15 @@ ms.topic: conceptual
 ms.date: 01/17/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: ecb613dd2f624b9e0910a0ddcdf931f4b266aa96
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: c96e195d425cff640a4961e34305c1af447f6f28
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51036579"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52499439"
 ---
 # <a name="use-the-apache-tez-ui-to-debug-tez-jobs-on-windows-based-hdinsight"></a>Verwenden der Apache Tez-Benutzeroberfläche zum Debuggen von Tez-Aufträgen in Windows-basiertem HDInsight
-Auf der Tez-Benutzeroberfläche können Sie Hive-Aufträge debuggen, die Tez als Ausführungsengine verwenden. Die Tez-Benutzeroberfläche ermöglicht das Visualisieren des Auftrags als Graphen verbundener Elemente, eine Detailsuche in den einzelnen Elementen und das Abrufen von Statistiken und Protokollinformationen.
+Auf der [Apache Tez](https://tez.apache.org/)-Benutzeroberfläche können Sie [Apache Hive](https://hive.apache.org/)-Aufträge debuggen, die Tez als Ausführungsengine verwenden. Die Tez-Benutzeroberfläche ermöglicht das Visualisieren des Auftrags als Graphen verbundener Elemente, eine Detailsuche in den einzelnen Elementen und das Abrufen von Statistiken und Protokollinformationen.
 
 > [!IMPORTANT]
 > Die Schritte in diesem Dokument erfordern einen HDInsight-Cluster mit Windows. Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Welche Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?](hdinsight-component-versioning.md#hdinsight-windows-retirement).
@@ -32,7 +32,7 @@ Auf der Tez-Benutzeroberfläche können Sie Hive-Aufträge debuggen, die Tez als
 * Ein Windows-basierter Remotedesktopclient.
 
 ## <a name="understanding-apache-tez"></a>Grundlegendes zu Apache Tez
-Tez ist ein erweiterbares Framework für die Datenverarbeitung in Apache Hadoop, das eine schnellere Verarbeitung als übliche MapReduce-Verfahren bietet. Sie können Tez aktivieren, indem Sie den folgenden Text als Teil einer Hive-Abfrage einfügen:
+Tez ist ein erweiterbares Framework für die Datenverarbeitung in Apache Hadoop, das eine schnellere Verarbeitung als übliche [Apache Hadoop MapReduce](https://hadoop.apache.org/docs/r1.2.1/mapred_tutorial.html)-Verfahren bietet. Sie können Tez aktivieren, indem Sie den folgenden Text als Teil einer Hive-Abfrage einfügen:
 
     set hive.execution.engine=tez;
 
@@ -134,6 +134,6 @@ Gehen Sie folgendermaßen vor, um eine Hive-Abfrage mit Tez auszuführen.
     ![Taskdetails](./media/hdinsight-debug-tez-ui/taskdetails.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
-Nachdem Sie sich mit der Verwendung der Tez-Ansicht vertraut gemacht haben, erfahren Sie mehr zum [Verwenden von Hive in HDInsight](hadoop/hdinsight-use-hive.md).
+Nachdem Sie sich mit der Verwendung der [Apache Tez](https://tez.apache.org/)-Ansicht vertraut gemacht haben, informieren Sie sich über das [Verwenden von Apache Hive in HDInsight](hadoop/hdinsight-use-hive.md).
 
-Ausführliche technische Informationen zu Tez finden Sie auf der [Seite zu Tez bei Hortonworks](http://hortonworks.com/hadoop/tez/).
+Ausführliche technische Informationen zu Tez finden Sie auf der [Seite zu Apache Tez bei Hortonworks](http://hortonworks.com/hadoop/tez/).

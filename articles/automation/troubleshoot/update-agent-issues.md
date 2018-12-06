@@ -1,5 +1,5 @@
 ---
-title: Grundlegende Informationen zu den Agent-Überprüfungsergebnissen in der Azure-Updateverwaltung
+title: Grundlegende Informationen zu den Windows-Agent-Überprüfungsergebnissen in der Azure-Updateverwaltung
 description: Erfahren Sie, wie Sie Fehler mit dem Updateverwaltungs-Agent beheben können.
 services: automation
 author: georgewallace
@@ -9,33 +9,33 @@ ms.topic: conceptual
 ms.service: automation
 ms.component: update-management
 manager: carmonm
-ms.openlocfilehash: 20323afe79ad3de1e3dfccd4752c4f7e28d22266
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 61ff50cda6ec523964ccf8f885f07c39020fbc88
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50095370"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52335145"
 ---
-# <a name="understand-the-agent-check-results-in-update-management"></a>Grundlegende Informationen zu den Agent-Überprüfungsergebnissen in der Updateverwaltung
+# <a name="understand-the-windows-agent-check-results-in-update-management"></a>Grundlegende Informationen zu den Windows-Agent-Überprüfungsergebnissen in der Updateverwaltung
 
-Es kann zahlreiche Gründe dafür geben, dass Ihr Nicht-Azure-Computer in der Updateverwaltung nicht als **Bereit** angezeigt wird. In der Updateverwaltung können Sie die Integrität eines Hybrid Worker-Agents überprüfen, um das zugrunde liegende Problem zu ermitteln. Dieser Artikel erläutert, wie Sie die Problembehandlung im Azure-Portal und in Offlineszenarien ausführen.
+Es gibt viele Gründe, warum ein Azure-Computer möglicherweise in der Azure-Updateverwaltung nicht den Status **Bereit** aufweist. In der Updateverwaltung können Sie die Integrität eines Hybrid Worker-Agents überprüfen, um das zugrunde liegende Problem zu ermitteln. Dieser Artikel erläutert, wie Sie die Problembehandlung für die Updateverwaltung im Azure-Portal und in Offlineszenarien ausführen.
 
 ## <a name="start-the-troubleshooter"></a>Starten der Problembehandlung
 
-Indem Sie im Portal unter der Spalte **Update-Agent-Bereitschaft** auf den Link **Problembehandlung** klicken, starten Sie die Seite **Problembehandlung von Update-Agent**. Diese Seite zeigt Probleme mit dem Agent und einen Link zu einem Artikel, der Sie bei der Behandlung dieser Probleme unterstützt.
+Im Azure-Portal werden auf der Seite **Problembehandlung von Update-Agent** Probleme mit dem Agent angezeigt. Auf der Seite befindet sich ein Link zu diesem Artikel, der Ihnen bei der Behandlung von Problemen hilft. Um die Seite **Problembehandlung von Update-Agent** zu erreichen, wählen Sie den Link **Problembehandlung** in der Spalte **Update-Agent-Bereitschaft** aus.
 
-![Seite „VM-Liste“](../media/update-agent-issues/vm-list.png)
+![Updateverwaltung: Liste von virtuellen Computern](../media/update-agent-issues/vm-list.png)
 
 > [!NOTE]
-> Für die Überprüfungen muss die VM ausgeführt werden. Wenn die VM nicht ausgeführt wird, wird eine Schaltfläche angezeigt, mit der Sie die **VM starten** können.
+> Um die Integrität eines Agents zu überprüfen, muss der virtuelle Computer ausgeführt werden. Wenn der virtuelle Computer nicht ausgeführt wird, wird die Schaltfläche **Start the VM** (Virtuellen Computer starten) angezeigt.
 
-Klicken Sie auf der Seite **Problembehandlung von Update-Agent** auf **Überprüfungen ausführen**. Die Problembehandlung verwendet [Befehl ausführen](../../virtual-machines/windows/run-command.md), um ein Skript auf einem Computer auszuführen, mit dem die Abhängigkeiten überprüft werden, die der Agent aufweist. Wenn die Problembehandlung abgeschlossen ist, werden die Ergebnisse der Überprüfungen zurückgegeben.
+Wählen Sie auf der Seite **Problembehandlung von Update-Agent** die Option **Überprüfungen ausführen**, um mit der Problembehandlung zu beginnen. Die Problembehandlung verwendet [Befehl ausführen](../../virtual-machines/windows/run-command.md), um ein Skript auf dem Computer auszuführen, mit dem Agent-Abhängigkeiten überprüft werden. Wenn die Problembehandlung abgeschlossen ist, werden die Ergebnisse der Überprüfungen zurückgegeben.
 
-![Seite „Problembehandlung“](../media/update-agent-issues/troubleshoot-page.png)
+![Seite „Problembehandlung von Update-Agent“](../media/update-agent-issues/troubleshoot-page.png)
 
-Nach Abschluss werden die Ergebnisse im Fenster zurückgegeben. Die verschiedenen [Überprüfungsabschnitte](#pre-requisistes-checks) liefern Informationen zu den Aspekten, die jede Überprüfung untersucht.
+Ergebnisse werden bei Verfügbarkeit auf der Seite angezeigt. In den [Überprüfungsabschnitten](#prerequisiste-checks) wird aufgeführt, was in den einzelnen Überprüfungen enthalten ist.
 
-![Seite mit Überprüfungen des Update-Agents](../media/update-agent-issues/update-agent-checks.png)
+![Überprüfungen bei „Problembehandlung von Update-Agent“](../media/update-agent-issues/update-agent-checks.png)
 
 ## <a name="prerequisite-checks"></a>Voraussetzungsprüfungen
 
@@ -45,24 +45,20 @@ Die Betriebssystemprüfung untersucht, ob der Hybrid Runbook Worker unter einem 
 
 |Betriebssystem  |Notizen  |
 |---------|---------|
-|Windows Server 2008, Windows Server 2008 R2 RTM    | Unterstützt nur Updatebewertungen.         |
-|Windows Server 2008 R2 SP1 und höher     |.NET Framework 4.5.1 oder höher ist erforderlich. ([.NET Framework herunterladen](/dotnet/framework/install/guide-for-developers))<br/> WindowsPowerShell 4.0 oder höher ist erforderlich. ([WMF 4.0 herunterladen](https://www.microsoft.com/download/details.aspx?id=40855))<br/> Für eine höhere Zuverlässigkeit wird Windows PowerShell 5.1 empfohlen.  ([WMF 5.1 herunterladen](https://www.microsoft.com/download/details.aspx?id=54616))        |
-|CentOS 6 (x86/x64) und 7 (x64)      | Für Linux-Agents muss Zugriff auf ein Updaterepository bestehen. Für klassifizierungsbasiertes Patchen muss „yum“ Sicherheitsdaten zurückgeben, über die CentOS nicht standardmäßig verfügt.         |
-|Red Hat Enterprise 6 (x86/x64) und 7 (x64)     | Für Linux-Agents muss Zugriff auf ein Updaterepository bestehen.        |
-|SUSE Linux Enterprise Server 11 (x86/x64) und 12 (x64)     | Für Linux-Agents muss Zugriff auf ein Updaterepository bestehen.        |
-|Ubuntu 14.04 LTS, 16.04 LTS und 18.04 LTS (x86/x64)      |Für Linux-Agents muss Zugriff auf ein Updaterepository bestehen.         |
+|Windows Server 2008 R2 RTM, Windows Server 2008 | Unterstützt nur Updatebewertungen.         |
+|Windows Server 2008 R2 SP1 und höher |.NET Framework 4.5.1 oder höher ist erforderlich. ([.NET Framework herunterladen](/dotnet/framework/install/guide-for-developers))<br/> Windows PowerShell 4.0 oder höher ist erforderlich. ([Windows Management Framework 4.0 herunterladen](https://www.microsoft.com/download/details.aspx?id=40855))<br/> Für eine höhere Zuverlässigkeit wird Windows PowerShell 5.1 empfohlen.  ([Windows Management Framework 5.1 herunterladen](https://www.microsoft.com/download/details.aspx?id=54616))        |
 
 ### <a name="net-451"></a>.NET 4.5.1
 
-Bei der .NET Framework-Überprüfung wird untersucht, ob auf dem System mindestens [.NET Framework 4.5.1](https://www.microsoft.com/download/details.aspx?id=30653) vorhanden ist.
+Bei der .NET Framework-Überprüfung wird untersucht, ob auf dem System mindestens [.NET Framework 4.5.1](https://www.microsoft.com/download/details.aspx?id=30653) installiert ist.
 
 ### <a name="wmf-51"></a>WMF 5.1
 
-Bei der WMF-Überprüfung wird untersucht, ob auf dem System die erforderliche Version des Windows Management Framework installiert ist. [Windows Management Framework 4.0](https://www.microsoft.com/download/details.aspx?id=40855) ist die niedrigste unterstützte Version. Es wird empfohlen, [Windows Management Framework 5.1](https://www.microsoft.com/download/details.aspx?id=54616) zu installieren, um die Zuverlässigkeit des Hybrid Runbook Workers zu erhöhen.
+Bei der WMF-Überprüfung wird untersucht, ob auf dem System die erforderliche Version des Windows Management Framework (WMF) installiert ist. [Windows Management Framework 4.0](https://www.microsoft.com/download/details.aspx?id=40855) ist die niedrigste unterstützte Version. Es wird empfohlen, [Windows Management Framework 5.1](https://www.microsoft.com/download/details.aspx?id=54616) zu installieren, um die Zuverlässigkeit des Hybrid Runbook Workers zu erhöhen.
 
 ### <a name="tls-12"></a>TLS 1.2
 
-Bei dieser Überprüfung wird untersucht, ob Sie zum Verschlüsseln der Kommunikation TLS 1.2 verwenden. TLS 1.0 wird von der Plattform nicht mehr unterstützt, und es wird empfohlen, dass Clients TLS 1.2 für die Kommunikation mit der Updateverwaltung verwenden.
+Bei dieser Überprüfung wird untersucht, ob Sie zum Verschlüsseln der Kommunikation TLS 1.2 verwenden. TLS 1.0 wird von der Plattform nicht mehr unterstützt. Es wird empfohlen, dass Clients für die Kommunikation mit der Updateverwaltung TLS 1.2 verwenden.
 
 ## <a name="connectivity-checks"></a>Konnektivitätsprüfungen
 
@@ -86,11 +82,11 @@ Bei dieser Überprüfung wird untersucht, ob Microsoft Monitoring Agent, `Health
 
 Weitere Informationen zur Behandlung von Problemen mit dem Dienst finden Sie unter [Der Microsoft Monitoring Agent wird nicht ausgeführt](hybrid-runbook-worker.md#mma-not-running).
 
-Informationen zum erneuten Installieren von Microsoft Monitoring Agent finden Sie unter [Installieren und Konfigurieren von Microsoft Monitoring Agent](/log-analytics/log-analytics-concept-hybrid.md#install-and-configure-agent).
+Informationen zum erneuten Installieren von Microsoft Monitoring Agent finden Sie unter [Installieren und Konfigurieren von Microsoft Monitoring Agent](../../log-analytics/log-analytics-quick-collect-windows-computer.md#install-the-agent-for-windows).
 
 ### <a name="monitoring-agent-service-events"></a>Ereignisse des Monitoring Agent-Diensts
 
-Bei dieser Überprüfung wird untersucht, ob in den letzten 24 Stunden `4502`-Ereignisse im Operations Manager-Protokoll auf dem Computer aufgetreten sind.
+Bei dieser Überprüfung wird untersucht, ob für die letzten 24 Stunden `4502`-Ereignisse im Azure Operations Manager-Protokoll auf dem Computer zu finden sind.
 
 Weitere Informationen zu diesem Ereignis finden Sie im [Leitfaden zur Problembehandlung](hybrid-runbook-worker.md#event-4502) für dieses Ereignis.
 
@@ -98,11 +94,11 @@ Weitere Informationen zu diesem Ereignis finden Sie im [Leitfaden zur Problembeh
 
 ### <a name="machinekeys-folder-access"></a>Zugriff auf MachineKeys-Ordner
 
-Bei der Überprüfung des Zugriffs auf den Ordner „Crypto“ wird untersucht, ob das lokale Dateisystem auf `C:\ProgramData\Microsoft\Crypto\RSA` zugreifen kann.
+Bei der Überprüfung des Zugriffs auf den Crypto-Ordner wird untersucht, ob das lokale Systemkonto auf „C:\ProgramData\Microsoft\Crypto\RSA“ zugreifen kann.
 
 ## <a name="troubleshoot-offline"></a>Offlineproblembehandlung
 
-Sie können die Problembehandlung offline auf einem Hybrid Runbook Worker ausführen, indem Sie das Skript lokal ausführen. Sie finden das Skript  [Troubleshoot-WindowsUpdateAgentRegistration](https://www.powershellgallery.com/packages/Troubleshoot-WindowsUpdateAgentRegistration) im PowerShell-Katalog. Hier sehen Sie eine Beispielausgabe dieses Skripts:
+Sie können die Problembehandlung offline auf einem Hybrid Runbook Worker ausführen, indem Sie das Skript lokal ausführen. Sie finden das Skript [Troubleshoot-WindowsUpdateAgentRegistration](https://www.powershellgallery.com/packages/Troubleshoot-WindowsUpdateAgentRegistration) im PowerShell-Katalog. Die Ausgabe dieses Skripts ähnelt dem folgenden Beispiel:
 
 ```output
 RuleId                      : OperatingSystemCheck

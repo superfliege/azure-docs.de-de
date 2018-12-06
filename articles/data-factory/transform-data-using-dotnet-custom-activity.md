@@ -10,14 +10,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 11/26/2018
 ms.author: douglasl
-ms.openlocfilehash: 77e5d6c278436a1fc192421c9867106409389a66
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 424de36dbbd3b09e635679900110148b9edd0242
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48888220"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52422881"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Verwenden von benutzerdefinierten Aktivitäten in einer Azure Data Factory-Pipeline
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -278,8 +278,8 @@ namespace SampleApp
   Activity Output section:
   "exitcode": 0
   "outputs": [
-    "https://shengcstorbatch.blob.core.windows.net/adfjobs/<GUID>/output/stdout.txt",
-    "https://shengcstorbatch.blob.core.windows.net/adfjobs/<GUID>/output/stderr.txt"
+    "https://<container>.blob.core.windows.net/adfjobs/<GUID>/output/stdout.txt",
+    "https://<container>.blob.core.windows.net/adfjobs/<GUID>/output/stderr.txt"
   ]
   "effectiveIntegrationRuntime": "DefaultIntegrationRuntime (East US)"
   Activity Error section:
@@ -292,7 +292,11 @@ Wenn Sie den Inhalt von „stdout.txt“ in nachgelagerten Aktivitäten nutzen m
 
   > [!IMPORTANT]
   > - Die Dateien „activity.json“, „linkedServices.json“ und „datasets.json“ werden im Ordner „runtime“ der Batch-Aufgabe gespeichert. In diesem Beispiel werden die Dateien „activity.json“, „linkedServices.json“ und „datasets.json“ unter „https://adfv2storage.blob.core.windows.net/adfjobs/<GUID>/runtime/“ gespeichert. Bei Bedarf müssen diese separat bereinigt werden. 
-  > - Da verknüpfte Dienste die selbstgehostete Integration Runtime verwenden, werden die sensiblen Informationen wie Schlüssel oder Kennwörter von der selbstgehosteten Integration Runtime verschlüsselt. Dies soll gewährleisten, dass die Anmeldeinformationen in der vom Kunden definierten privaten Netzwerkumgebung verbleiben. Einige sensible Felder können fehlen, wenn auf sie von Ihrem eigenen Anwendungscode auf diese Weise verwiesen wird. Verwenden Sie bei Bedarf „SecureString“ in „extendedProperties“ anstelle des Verweises auf den verknüpften Dienst. 
+  > - Für verknüpfte Dienste, die die selbstgehostete Integration Runtime verwenden, werden vertrauliche Informationen wie Schlüssel oder Kennwörter von der selbstgehosteten Integration Runtime verschlüsselt, um sicherzustellen, dass die Anmeldeinformationen in der vom Kunden definierten privaten Netzwerkumgebung verbleiben. Einige sensible Felder können fehlen, wenn auf sie von Ihrem eigenen Anwendungscode auf diese Weise verwiesen wird. Verwenden Sie bei Bedarf „SecureString“ in „extendedProperties“ anstelle des Verweises auf den verknüpften Dienst. 
+
+## <a name="pass-outputs-to-another-activity"></a>Übergeben von Ausgaben an eine andere Aktivität
+
+Sie können benutzerdefinierte Werte aus Ihrem Code in einer benutzerdefinierten Aktivität an Azure Data Factory zurückgeben. Schreiben Sie sie hierzu von Ihrer Anwendung aus in `outputs.json`. Data Factory kopiert den Inhalt von `outputs.json` und fügt ihn als Wert der Eigenschaft `customOutput` an die Aktivitätsausgabe an. (Die maximale Größe beträgt 2 MB.) Wenn Sie den Inhalt von `outputs.json` in Downstreamaktivitäten nutzen möchten, können Sie den Wert unter Verwendung des Ausdrucks `@activity('<MyCustomActivity>').output.customOutput` abrufen.
 
 ## <a name="retrieve-securestring-outputs"></a>Abrufen von SecureString-Ausgaben
 

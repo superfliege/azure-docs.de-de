@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/22/2017
+ms.date: 11/20/2018
 ms.author: rolyon
 ms.reviewer: skwan
-ms.openlocfilehash: 083cb4eb84746f4a61b51f3573a0bf66110fe1ee
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: 4cfd3c38631778373e99872fd305d8316cdadb75
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37435047"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52274737"
 ---
 # <a name="manage-access-to-azure-management-with-conditional-access"></a>Verwalten des Zugriffs auf die Azure-Verwaltung mit bedingtem Zugriff
 
@@ -32,7 +32,7 @@ Klicken Sie für die Erstellung einer Richtlinie für die Azure-Verwaltung unter
 
 ![Bedingter Zugriff für die Azure-Verwaltung](./media/conditional-access-azure-management/conditional-access-azure-mgmt.png)
 
-Die von Ihnen erstellte Richtlinie gilt für alle Azure-Verwaltungsendpunkte, einschließlich des klassischen Azure-Portals, des Azure-Portals, des Azure Resource Manager-Anbieters, der klassischen Dienstverwaltungs-APIs und von Azure PowerShell.
+Die von Ihnen erstellte Richtlinie gilt für alle Azure-Verwaltungsendpunkte, einschließlich des klassischen Azure-Portals, des Azure-Portals, des Azure Resource Manager-Anbieters, der klassischen Dienstverwaltungs-APIs und von Azure PowerShell. Hinweis: Die Richtlinie gilt für Azure PowerShell, von dem die Azure Resource Manager-API aufgerufen wird. Sie gilt nicht für [Azure AD PowerShell](/powershell/azure/active-directory/install-adv2), von dem Microsoft Graph aufgerufen wird.
 
 > [!CAUTION]
 > Stellen Sie sicher, dass Sie die Funktionsweise des bedingten Zugriffs verstehen, bevor Sie eine Richtlinie einrichten, um den Zugriff auf die Azure-Verwaltung zu steuern. Versichern Sie sich, dass Sie keine Bedingungen erstellen, die Ihren eigenen Zugriff auf das Portal blockieren könnten.

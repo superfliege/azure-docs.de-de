@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 01/26/2018
 ms.author: asmalser-msft
 ms.reviewer: asmalser
-ms.openlocfilehash: 83155e448f350618446fb22bf52e831b1cc8d499
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.openlocfilehash: 74bfd49fd69353e95a275f31fa0bba9e9b558227
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51636542"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52632924"
 ---
 # <a name="tutorial-configure-slack-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Slack für die automatische Benutzerbereitstellung
 
@@ -113,6 +113,14 @@ So werden alle Gruppenobjekte, die Slack im Abschnitt **Benutzer und Gruppen** z
 
 Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden Sie unter [Tutorial: Meldung zur automatischen Benutzerkontobereitstellung](../manage-apps/check-status-user-account-provisioning.md).
 
+## <a name="connector-limitations"></a>Connector-Einschränkungen
+
+  * Beachten Sie beim Konfigurieren des **displayName**-Attributs in Slack das folgende Verhalten: 
+  * Werte sind nicht ganz eindeutig (z.B. können 2 Benutzer denselben Anzeigenamen haben).
+  * Es werden auch nicht englische Zeichen, Leerzeichen, Groß-/Kleinschreibung unterstützt. 
+  * Zulässige Interpunktion sind Punkte, Unterstriche, Bindestriche, Apostrophe, Klammern (z.B. **( [ { } ] )**) und Trennzeichen (z.B. **, / ;**).
+  * Nehmen Sie nur Änderungen vor, wenn diese beiden Einstellungen im Arbeitsbereich bzw. der Organisation von Slack konfiguriert sind: **Profile syncing is enabled** (Profil Synchronisierung ist aktiviert) und **Users cannot change their display name** (Benutzer können den Anzeigenamen nicht ändern).
+  * Das **userName**-Attribut von Slack muss weniger als 21 Zeichen lang und eindeutig sein. 
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 

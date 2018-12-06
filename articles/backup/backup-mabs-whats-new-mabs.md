@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: adigan; kasinh
-ms.openlocfilehash: 8e80d935bac94f3d4b2380799a1aed256828af75
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: e963f675dfe2a57fc19f3169beeb1d7d4066af93
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51625877"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52315595"
 ---
 # <a name="whats-new-in-microsoft-azure-backup-server"></a>Neuerungen in Microsoft Azure Backup Server
 
@@ -60,6 +60,7 @@ MABS V3 ist eine Vollversion und kann direkt auf Windows Server 2016, Windows Se
 ## <a name="next-steps"></a>Nächste Schritte
 
 Erfahren Sie, wie Sie Ihren Server vorbereiten oder mit dem Schutz einer Workload beginnen:
+- [Bekannte Probleme in MABS V3](backup-mabs-release-notes-v3.md)
 - [Vorbereiten von Backup Server-Workloads](backup-azure-microsoft-azure-backup.md)
 - [Sichern eines VMware-Servers mit Backup Server](backup-azure-backup-server-vmware.md)
 - [Sichern von SQL Server mit Backup Server](backup-azure-sql-mabs.md)

@@ -5,23 +5,23 @@ services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: article
-ms.date: 10/29/2018
+ms.date: 11/15/2018
 ms.author: danlep
-ms.openlocfilehash: 4492e05339c72c371eb2c935d0397b469440c4f6
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: b2b6da1739aa97f69f5744905564f638309a587f
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51632691"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51854321"
 ---
 # <a name="run-multi-step-build-test-and-patch-tasks-in-acr-tasks"></a>Ausführen von Erstellungs-, Test- und Patchtasks mit mehreren Schritten in ACR Tasks
 
-Tasks mit mehreren Schritten erweitern die ACR Tasks-Funktion zum Erstellen und Pushen einzelner Images um auf mehreren Containern basierende Workflows mit mehreren Schritten. Verwenden Sie Tasks mit mehreren Schritten, um mehrere Images zu erstellen und seriell oder parallel per Push bereitzustellen, und führen Sie diese Image als Befehle innerhalb einer einzigen Taskausführung aus. Jeder Schritt definiert einen Build- oder Pushvorgang für ein Containerimage und kann auch die Ausführung eines Containers definieren. Jeder Schritt in einem Task mit mehreren Schritten verwendet einen Container als Ausführungsumgebung.
+Tasks mit mehreren Schritten erweitern die ACR Tasks-Funktion zum Erstellen und Pushen einzelner Images um auf mehreren Containern basierende Workflows mit mehreren Schritten. Verwenden Sie mehrstufige Aufgaben zum Erstellen und Pushen mehrerer Images nacheinander oder parallel. Führen Sie diese Images dann als Befehle in einer einzelnen Aufgabenausführung aus. Jeder Schritt definiert einen Build- oder Pushvorgang für ein Containerimage und kann auch die Ausführung eines Containers definieren. Jeder Schritt in einem Task mit mehreren Schritten verwendet einen Container als Ausführungsumgebung.
 
 > [!IMPORTANT]
 > Wenn Sie in der Vorschauversion bereits Aufgaben mit dem `az acr build-task`-Befehl erstellt haben, müssen diese Aufgaben mit dem Befehl [az acr task][az-acr-task] neu erstellt werden.
 
-Sie können z.B. einen Task mit Schritten ausführen, die Folgendes automatisieren:
+Sie können z.B. eine Aufgabe mit Schritten ausführen, die die folgende Logik automatisieren:
 
 1. Erstellen eines Webanwendungsimages
 1. Ausführen des Webanwendungscontainers
@@ -37,11 +37,11 @@ Alle Schritte werden in Azure ausgeführt – damit wird die Arbeit auf die Azur
 
 ## <a name="common-task-scenarios"></a>Gängige Tasks
 
-Tasks mit mehreren Schritten ermöglichen Szenarien wie die folgenden:
+Aufgaben mit mehreren Schritten ermöglichen Szenarien wie die folgende Logik:
 
 * Erstellen, Taggen und Pushen von einem oder mehreren Containerimages, seriell oder parallel
 * Ausführen von Komponententests und Code Coverage und Erfassen der Ergebnisse
-* Ausführen und Erfassen von Funktionstests ACR Tasks unterstützen die Ausführung von mehreren Containern, die eine Reihe von Anforderungen ausführen
+* Ausführen und Erfassen von Funktionstests ACR-Aufgaben unterstützen die Ausführung mehrerer Container, die eine Reihe von Anforderungen ausführen.
 * Taskbasierte Ausführung, einschließlich vor- und nachbereitenden Schritten eines Containerimage-Buildvorgangs
 * Bereitstellen von einem oder mehreren Containern mit Ihrer bevorzugten Bereitstellungs-Engine in Ihrer Zielumgebung
 
@@ -176,5 +176,5 @@ Hier finden Sie Referenzen und Beispiele für Tasks mit mehreren Schritten:
 
 <!-- LINKS - Internal -->
 [az-acr-task-create]: /cli/azure/acr/task#az-acr-task-create
-[az-acr-run]: /cli/azure/acr/run#az-acr-run
-[az-acr-task]: /cli/azure/acr#az-acr-task
+[az-acr-run]: /cli/azure/acr#az-acr-run
+[az-acr-task]: /cli/azure/acr/task

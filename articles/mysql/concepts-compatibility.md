@@ -8,13 +8,13 @@ editor: jasonwhowell
 manager: kfile
 ms.service: mysql
 ms.topic: article
-ms.date: 02/28/2018
-ms.openlocfilehash: 9e56c2bd65f8a9a517a7cdebe02a1d051c689df6
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.date: 11/21/2018
+ms.openlocfilehash: 4232e1850a1354fe247258d46b280e1bfa653972
+ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49985886"
+ms.lasthandoff: 11/22/2018
+ms.locfileid: "52290823"
 ---
 # <a name="mysql-drivers-and-management-tools-compatible-with-azure-database-for-mysql"></a>MySQL-Treiber und -Verwaltungstools, die mit Azure Database for MySQL kompatibel sind
 In diesem Artikel werden die Treiber und Verwaltungstools beschrieben, die mit Azure Database for MySQL kompatibel sind.
@@ -26,10 +26,11 @@ Azure Database for MySQL verwendet die weltweit am häufigsten verwendete Commun
 | :-------- | :------------------------ | :----------- | :---------------------- | :--------------------------------------- |
 | PHP | https://secure.php.net/downloads.php | 5.5, 5.6, 7.x | 5.3 | Fügen Sie für PHP-7.0-Verbindungen mit SSL MySQLi das MYSQLI_CLIENT_SSL_DONT_VERIFY_SERVER_CERT in die Verbindungszeichenfolge ein. <br> ```mysqli_real_connect($conn, $host, $username, $password, $db_name, 3306, NULL, MYSQLI_CLIENT_SSL_DONT_VERIFY_SERVER_CERT);```<br> Für PDO legen Sie die Option ```PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT```auf FALSE fest.|
 | .Net | [MySqlConnector auf GitHub](https://github.com/mysql-net/MySqlConnector) <br> [Installationspaket von Nuget](https://www.nuget.org/packages/MySqlConnector/) | 0.27 und höher | 0.26.5 und früher | |
-| Nodejs |  [MySQLjs auf GitHub](https://github.com/mysqljs/mysql/releases) <br> Installationspaket von NPM:<br> Führen Sie `npm install mysql` von NPM aus. | 2.15 | 2.14.1 und früher | |
+| MySQL-Connector/NET | [MySQL-Connector/NET](https://github.com/mysql/mysql-connector-net) | 8.0, 7.0, 6.10 |  | Bei einigen UTF8-fremden Windows-Systemen tritt unter Umständen ein Verbindungsfehler aufgrund eines Codierungsfehlers auf. |
+| Nodejs |  [MySQLjs auf GitHub](https://github.com/mysqljs/mysql/) <br> Installationspaket von NPM:<br> Führen Sie `npm install mysql` von NPM aus. | 2.15 | 2.14.1 und früher | |
 | GO | https://github.com/go-sql-driver/mysql/releases | 1.3 | 1.2 und früher | Verwenden Sie „allowNativePasswords=true“ in der Verbindungszeichenfolge. |
 | Python | https://pypi.python.org/pypi/mysql-connector-python | 1.2.3, 2.0, 2.1, 2.2 | 1.2.2 und früher | |
-| Java | https://downloads.mariadb.org/connector-java/ | 2.1 2.0 1.6 | 1.5.5 und früher | |
+| Java | https://downloads.mariadb.org/connector-java/ | 2.1, 2.0, 1.6 | 1.5.5 und früher | |
 
 ## <a name="management-tools"></a>Verwaltungstools
 Der Kompatibilitätsvorteil erstreckt sich bis in die Datenbank-Verwaltungstools. Ihre vorhandenen Tools sollten auch mit Azure Database for MySQL funktionieren, solange Änderungen an der Datenbank innerhalb der Grenzen der Benutzerberechtigungen ausgeführt werden. Drei häufig verwendete Datenbank-Verwaltungstools, die getestet und als mit Azure Database for MySQL 5.6 und 5.7 kompatibel eingestuft wurden, finden Sie in der folgenden Tabelle:

@@ -2,8 +2,7 @@
 title: Einrichtung von GPU-Treibern für die Azure N-Serie unter Windows | Microsoft-Dokumentation
 description: Einrichten von NVIDIA-GPU-Treibern für virtuelle Computer der N-Serie unter Windows Server oder Windows in Azure
 services: virtual-machines-windows
-documentationcenter: ''
-author: dlepow
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,14 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
-ms.author: danlep
+ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a4d259c7f9a139b3c31d96e75d588c7be162189c
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 551d9da51abaeddfd22c72748a552ba0ae155de6
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47033256"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51707009"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-windows"></a>Installieren von NVIDIA GPU-Treibern für virtuelle Computer der Serie N mit Windows 
 
@@ -51,13 +50,13 @@ Führen Sie zum Abfragen des GPU-Gerätestatus das mit dem Treiber installierte 
 
 1. Öffnen Sie eine Eingabeaufforderung, und wechseln Sie in das Verzeichnis **C:\Programme\NVIDIA Corporation\NVSMI**.
 
-2. Führen Sie `nvidia-smi`aus. Wenn der Treiber installiert wurde, wird eine Ausgabe ähnlich wie die folgende angezeigt. Beachten Sie, dass eine **GPU-Auslastung** von **0 %** angezeigt wird, sofern gerade keine GPU-Auslastung auf dem virtuellen Computer ausgeführt wird. Die Treiberversion und die GPU-Informationen weichen möglicherweise von den angezeigten Informationen ab.
+2. Führen Sie `nvidia-smi`aus. Wenn der Treiber installiert wurde, wird eine Ausgabe ähnlich der folgenden angezeigt. Für **GPU-Auslastung** wird **0 %** angezeigt, sofern gerade keine GPU-Workload auf dem virtuellen Computer ausgeführt wird. Die Treiberversion und die GPU-Informationen weichen möglicherweise von den angezeigten Informationen ab.
 
 ![NVIDIA-Gerätestatus](./media/n-series-driver-setup/smi.png)  
 
 ## <a name="rdma-network-connectivity"></a>RDMA-Netzwerkkonnektivität
 
-RDMA-Netzwerkkonnektivität kann auf virtuellen Computern der N-Serie (z. B. NC24r) aktiviert werden, die RDMA-fähig sind und in derselben Verfügbarkeitsgruppe bzw. in einer einzelnen Platzierungsgruppe in einer VM-Skalierungsgruppe bereitgestellt werden. Die HpcVmDrivers-Erweiterung muss hinzugefügt werden, um Windows-Netzwerkgerätetreiber zu installieren, die für RDMA-Konnektivität benötigt werden. Verwenden Sie [Azure PowerShell](/powershell/azure/overview)-Cmdlets für Azure Resource Manager, um einem virtuellen RDMA-fähigen Computer der N-Serie die VM-Erweiterung hinzuzufügen.
+RDMA-Netzwerkkonnektivität kann auf virtuellen Computern der N-Serie (etwa NC24r) aktiviert werden, die RDMA-fähig sind und in der gleichen Verfügbarkeitsgruppe bzw. in einer einzelnen Platzierungsgruppe in einer VM-Skalierungsgruppe bereitgestellt werden. Die HpcVmDrivers-Erweiterung muss hinzugefügt werden, um Windows-Netzwerkgerätetreiber zu installieren, die für RDMA-Konnektivität benötigt werden. Verwenden Sie [Azure PowerShell](/powershell/azure/overview)-Cmdlets für Azure Resource Manager, um einem virtuellen RDMA-fähigen Computer der N-Serie die VM-Erweiterung hinzuzufügen.
 
 So installieren Sie die neueste Version (1.1) der HpcVMDrivers-Erweiterung auf einem vorhandenen, RDMA-fähigen virtuellen Computer namens myVM in der Region USA, Westen:
   ```PowerShell

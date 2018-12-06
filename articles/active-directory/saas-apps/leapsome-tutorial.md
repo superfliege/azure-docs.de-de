@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2018
 ms.author: jeedes
-ms.openlocfilehash: e55d161b7c95118736f4443c3fed0312418feee7
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 898d7cf6cdded08cd09c4b1f1f845473af1650a3
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39441934"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51824002"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-leapsome"></a>Tutorial: Azure Active Directory-Integration mit Leapsome
 
@@ -134,7 +134,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     | picture | URL zum Bild des Mitarbeiters | http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
 
     > [!Note]
-    > Bei dem Wert des Bildattributs handelt es sich nicht um den tatsächlichen Wert. Aktualisieren Sie diesen Wert mit der tatsächlichen Bild-URL. Um diesen Wert zu erhalten, wenden Sie sich an das [Supportteam für den Leapsome-Client](mailto:support@leapsome.com).
+    > Bei dem Wert des Bildattributs handelt es sich nicht um einen echten Wert. Aktualisieren Sie diesen Wert mit der tatsächlichen Bild-URL. Wenden Sie sich an das  [Supportteam für den Leapsome-Client](mailto:support@leapsome.com), um diesen Wert zu erhalten.
     
     a. Klicken Sie auf **Attribut hinzufügen**, um das Dialogfeld **Benutzerattribut hinzufügen** zu öffnen.
 
@@ -218,7 +218,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
  
 ### <a name="create-a-leapsome-test-user"></a>Erstellen eines Leapsome-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in Leapsome einen Benutzer namens Britta Simon. Lassen Sie sich beim Hinzufügen der Benutzer oder der Domäne, die auf der Leapsome-Plattform auf der Whitelist stehen soll, vom [Leapsome Client-Supportteam](mailto:support@leapsome.com) unterstützen. Wird die Domäne vom Team hinzugefügt, werden Benutzer automatisch auf der Leapsome-Plattform bereitgestellt. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können. 
+In diesem Abschnitt erstellen Sie in Leapsome einen Benutzer namens Britta Simon. Lassen Sie sich beim Hinzufügen der Benutzer oder der Domäne, die auf der Leapsome-Plattform in die Whitelist aufgenommen werden soll, vom  [Leapsome Client-Supportteam](mailto:support@leapsome.com)  unterstützen. Wird die Domäne vom Team hinzugefügt, werden Benutzer automatisch auf der Leapsome-Plattform bereitgestellt. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können. 
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 

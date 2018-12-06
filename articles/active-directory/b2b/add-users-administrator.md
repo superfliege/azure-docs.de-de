@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.component: B2B
 ms.topic: conceptual
-ms.date: 07/10/2018
+ms.date: 11/26/2018
 ms.author: mimart
 author: msmimart
 manager: mtillman
-ms.reviewer: sasubram
-ms.openlocfilehash: fef4615517da08262cc5845aaa076472c3874b34
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.reviewer: mal
+ms.openlocfilehash: bda01b5c9fbd43feed8c407e85b90b31bef0ffa1
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45984287"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52335060"
 ---
 # <a name="add-azure-active-directory-b2b-collaboration-users-in-the-azure-portal"></a>Hinzufügen von Azure Active Directory B2B-Zusammenarbeitsbenutzern über das Azure-Portal
 
@@ -83,11 +83,11 @@ Gehen Sie als Azure AD-Administrator wie folgt vor, um B2B-Zusammenarbeitsbenutz
 7. Klicken Sie unter **Zuweisung hinzufügen** auf **Benutzer und Gruppen**.
 8. Führen Sie einen der folgenden Schritte aus:
    - Falls der Gastbenutzer bereits im Verzeichnis vorhanden ist, suchen Sie nach dem B2B-Benutzer. Wählen Sie den Benutzer aus, und klicken Sie dann auf **Auswählen** > **Zuweisen**, um ihn der App hinzuzufügen.
-   - Falls der Gastbenutzer noch nicht im Verzeichnis vorhanden ist, klicken Sie auf **Einladen**.
+   - Falls der Gastbenutzer noch nicht im Verzeichnis vorhanden ist, geben Sie unter **Mitglied auswählen oder externen Benutzer einladen** die E-Mail-Adresse des Benutzers ein. Geben Sie im Nachrichtenfeld optional eine persönliche Nachricht ein. Klicken Sie unter dem Nachrichtenfeld auf **Einladen**.
            
        ![Schaltfläche „Einladen“ zum Hinzufügen von Gastmitgliedern hinzufügen](./media/add-users-administrator/AppInviteUsers.png)
    
-      Geben Sie unter **Gast einladen** die E-Mail-Adresse und optional eine persönliche Nachricht ein, und klicken Sie anschließend auf **Einladen**. Klicken Sie auf **Auswählen** > **Zuweisen**, um den Benutzer der App hinzuzufügen. Der eingeladenen Benutzer erhält die Einladung automatisch.
+      Klicken Sie auf **Auswählen** > **Zuweisen**, um den Benutzer der App hinzuzufügen. Der eingeladenen Benutzer erhält die Einladung automatisch.
 
 9. Der Gastbenutzer wird in der Anwendungsliste **Benutzer und Gruppen** mit der zugewiesenen Rolle **Standardzugriff** angezeigt. Wenn Sie die Rolle ändern möchten, führen Sie folgende Schritte aus:
    - Wählen Sie den Gastbenutzer aus, und klicken Sie dann auf **Bearbeiten**. 

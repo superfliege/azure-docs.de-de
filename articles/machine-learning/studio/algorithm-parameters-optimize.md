@@ -1,10 +1,11 @@
 ---
-title: Optimierung Ihrer Algorithmen in Azure Machine Learning | Microsoft-Dokumentation
-description: Erläutert das Auswählen der optimalen Parametersätze für einen Algorithmus in Azure Machine Learning.
+title: Optimieren von Algorithmen für Azure Machine Learning Studio| Microsoft-Dokumentation
+description: Hier erfahren Sie, wie Sie die optimalen Parameter für einen Algorithmus in Azure Machine Learning Studio auswählen.
 services: machine-learning
 documentationcenter: ''
-author: heatherbshapiro
-ms.author: hshapiro
+author: ericlicoding
+ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
+ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
 ms.assetid: 6717e30e-b8d8-4cc1-ad0b-1d4727928d32
@@ -15,14 +16,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2017
-ms.openlocfilehash: 64d725712dc8cf87deb150944a390c9cef87b56f
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: f4b7ba04f643fc823ca627e279faea31dee9d2a4
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34833895"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52314711"
 ---
-# <a name="choose-parameters-to-optimize-your-algorithms-in-azure-machine-learning"></a>Auswählen von Parametern zur Optimierung von Algorithmen in Azure Machine Learning
+# <a name="choose-parameters-to-optimize-your-algorithms-in-azure-machine-learning-studio"></a>Auswählen von Parametern zur Optimierung von Algorithmen in Azure Machine Learning Studio
+
 In diesem Thema wird das Auswählen des richtigen Hyperparametersatzes für einen Algorithmus in Azure Machine Learning beschrieben. Für die meisten Machine Learning-Algorithmen müssen Parameter festgelegt werden. Wenn Sie ein Modell trainieren, müssen Sie Werte für diese Parameter bereitstellen. Die Wirksamkeit des trainierten Modells ist abhängig von den gewählten Parametern. Das Ermitteln des optimalen Parametersatzes wird als *Modellauswahl* bezeichnet.
 
 [!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]

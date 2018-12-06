@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/09/2017
 ms.author: jeedes
-ms.openlocfilehash: ff9f3186602b9047e53fb78edbf52c2c0d9ee574
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 796ed1cb0fde6b29a931099336fd91e2e931fc29
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39423588"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51820493"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sedgwick-cms"></a>Tutorial: Azure Active Directory-Integration mit Sedgwick CMS
 
@@ -134,7 +134,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     ![Schaltfläche „Speichern“ beim Konfigurieren des einmaligen Anmeldens](./media/sedgwickcms-tutorial/tutorial_general_400.png)
 
-1. Zum Konfigurieren des einmaligen Anmeldens bei **Sedgwick CMS** müssen Sie die heruntergeladene **Metadaten-XML**-Datei an das [Sedgwick CMS-Supportteam](https://www.sedgwick.com/contact/Pages/contactform.aspx) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
+1. Zum Konfigurieren des einmaligen Anmeldens bei **Sedgwick CMS** müssen Sie die heruntergeladene **Metadaten-XML**-Datei an das [Sedgwick CMS-Supportteam](https://www.sedgwick.com/help) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
 
 > [!TIP]
 > Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Eingebettete Azure AD-Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985).
@@ -173,7 +173,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
   
 ### <a name="create-a-sedgwick-cms-test-user"></a>Erstellen eines Sedgwick CMS-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in Sedgwick CMS einen Benutzer mit dem Namen Britta Simon. Lassen Sie sich beim Hinzufügen der Benutzer auf der Sedgwick CMS-Plattform ggf. vom [Sedgwick CMS-Supportteam](https://www.sedgwick.com/contact/Pages/contactform.aspx) unterstützen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.  
+In diesem Abschnitt erstellen Sie in Sedgwick CMS einen Benutzer mit dem Namen Britta Simon. Lassen Sie sich beim Hinzufügen der Benutzer auf der Sedgwick CMS-Plattform ggf. vom  [Sedgwick CMS-Supportteam](https://www.sedgwick.com/help) unterstützen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.  
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 

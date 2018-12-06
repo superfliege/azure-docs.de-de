@@ -1,11 +1,12 @@
 ---
-title: Vorhersagen einer Antwort mit einem einfachen Regressionsmodell – Azure Machine Learning | Microsoft-Dokumentation
+title: 'Vorhersagen einer Antwort mit einem einfachen Regressionsmodell: Azure Machine Learning Studio | Microsoft-Dokumentation'
 description: Erfahren Sie im 4. Video von „Data Science für Einsteiger“ mehr über das Erstellen eines Regressionsmodells zum Vorhersagen eines Preises. Enthält eine lineare Regression mit Zieldaten.
 keywords: Erstellen eines Modells,einfaches Modell,Preisvorhersage,einfaches Regressionsmodell
 services: machine-learning
 documentationcenter: na
-author: heatherbshapiro
-ms.author: hshapiro
+author: ericlicoding
+ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
+ms.author: amlstudiodocs
 manager: hjerez
 editor: cjgronlund
 ms.assetid: a28f1fab-e2d8-4663-aa7d-ca3530c8b525
@@ -16,12 +17,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/03/2018
-ms.openlocfilehash: ad1b8369358f7811a02d344fdc0306662413a404
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 2862310623b2725cbeeaa4f5972a89ffcef44ff6
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34833824"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52309775"
 ---
 # <a name="predict-an-answer-with-a-simple-model"></a>Vorhersagen einer Antwort mit einem einfachen Modell
 ## <a name="video-4-data-science-for-beginners-series"></a>4. Video der Reihe „Data Science für Einsteiger“
@@ -37,7 +38,7 @@ Die Reihe bietet den größten Nutzen, wenn Sie sich alle Videos ansehen. [Zur L
 ## <a name="other-videos-in-this-series"></a>Andere Videos in dieser Reihe
 *Data Science für Einsteiger* erhalten Sie eine Schnelleinführung in Data Science.
 
-* Video 1: [Die 5 Fragen, die Data Science beantwortet](data-science-for-beginners-the-5-questions-data-science-answers.md) *(5:14 Min.)*
+* 1. Video: [Die 5 Fragen, die Data Science beantwortet](data-science-for-beginners-the-5-questions-data-science-answers.md) *(5:14 Min.)*
 * Video 2: [Sind Ihre Daten für Data Science bereit?](data-science-for-beginners-is-your-data-ready-for-data-science.md) *(4:56 Min.)*
 * Video 3: [Stellen einer Frage, die Sie mit Daten beantworten können](data-science-for-beginners-ask-a-question-you-can-answer-with-data.md) *(4:17 Min.)*
 * Video 4: Vorhersagen einer Antwort mit einem einfachen Modell

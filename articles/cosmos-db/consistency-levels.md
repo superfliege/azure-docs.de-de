@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/27/2018
 ms.author: andrl
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6ace11cf3704ddbd503c0202d45874670476198e
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 01a52941a452ae7e4fa283959b071d31d3ad80c7
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51624826"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52162326"
 ---
 # <a name="consistency-levels-in-azure-cosmos-db"></a>Konsistenzebenen in Azure Cosmos DB
 
@@ -49,7 +49,7 @@ Die von Azure Cosmos DB bereitgestellten umfassenden SLAs garantieren, dass 100 
 
   Begrenzte Veraltung bietet eine vollständige globale Reihenfolge außer innerhalb des „Veraltungsfensters“. Die monotonen Lesegarantien bestehen innerhalb einer Region sowohl innerhalb als auch außerhalb des Veraltungszeitfensters. Die starke Konsistenz weist die gleiche Semantik auf wie die begrenzte Veraltung, und das „Zeitfenster der Veraltung“ ist gleich Null (0). Die begrenzte Veraltung wird auch als **Linearisierbarkeit mit Zeitverzögerung** bezeichnet. Wenn ein Client Lesevorgänge in einer Region ausführt, die Schreibvorgänge akzeptiert, bietet die begrenzte Veraltung die gleichen Garantien wie die starke Konsistenz.
 
-- **Konsistenzebene „Sitzungskonsistenz“**: Die Lesevorgänge berücksichtigen immer folgende Garantien: Präfixkonsistenz, monotone Lesevorgänge, monotone Schreibvorgänge, Lesen der eigenen Schreibvorgänge, Schreibvorgänge folgen Lesevorgängen. Die Sitzungskonsistenz gilt immer für eine Clientsitzung.
+- **Konsistenzebene „Sitzungskonsistenz“:** Die Lesevorgänge berücksichtigen Immer folgende Garantien: Konsistenzpräfix (sofern es sich um eine einzelne Schreibsitzung handelt), monotone Lesevorgänge, monotone Schreibvorgänge, Lesen der eigenen Schreibvorgänge, Schreibvorgänge folgen Lesevorgängen. Die Sitzungskonsistenz gilt immer für eine Clientsitzung.
 
 - **Konsistenzebene „Präfixkonsistenz“**: Zurückgegebene Updates enthalten ein bestimmtes Präfix aller Updates ohne Lücken. Die Präfixkonsistenz stellt sicher, dass Lesevorgängen keine Schreibvorgänge außerhalb der Reihenfolge angezeigt werden.
 

@@ -8,14 +8,14 @@ ms.author: banders
 ms.date: 01/09/2018
 ms.topic: conceptual
 ms.service: cost-management
-manager: dougeby
+manager: vitavor
 ms.custom: ''
-ms.openlocfilehash: 43a682568708ab0286328cf3e483ddc3d5cf9dd8
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: 0adc821f7a3d5b059d549509b7ed18cda95b86bc
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51515351"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52273798"
 ---
 # <a name="how-to-optimize-your-cloud-investment-with-azure-cost-management"></a>Optimieren der Cloudinvestitionen mit Azure Cost Management
 
@@ -46,7 +46,7 @@ Eine umfassende Vorausplanung ermöglicht es Ihnen, die Cloudnutzung exakt an Ih
 - Welches Geschäftsproblem muss ich lösen?
 - Welche Nutzungsmuster erwarte ich von meinen Ressourcen?
 
-Ihre Antworten werden Ihnen dabei helfen, das geeignete Angebot auszuwählen. Sie umreißen die zu nutzende Infrastruktur und bestimmen, wie diese genutzt werden soll, um die Effizienz Ihrer Azure-Lösung zu maximieren.
+Ihre Antworten helfen Ihnen bei der Wahl der geeigneten Angebote. Sie umreißen die zu nutzende Infrastruktur und bestimmen, wie diese genutzt werden soll, um die Effizienz Ihrer Azure-Lösung zu maximieren.
 
 #### <a name="visibility"></a>Sichtbarkeit
 
@@ -105,7 +105,7 @@ Weitere Informationen zu den verschiedenen Optionen finden Sie unter [Azure erwe
 
 ## <a name="estimate-the-cost-of-your-solution"></a>Schätzen der Kosten Ihrer Lösung
 
-Bevor Sie eine Infrastruktur bereitstellen, schätzen und prognostizieren Sie die Kosten Ihrer Lösung. Diese Prognose hilft Ihnen dabei, Ihrer Organisation vorab ein Budget für die Workload vorzustellen. Im Lauf der Zeit können Sie dieses Budget nutzen, um die Gültigkeit Ihrer anfänglichen Schätzung zu bewerten. Und Sie können das Budget mit den tatsächlichen Kosten Ihrer bereitgestellten Lösung vergleichen.
+Bevor Sie eine Infrastruktur bereitstellen, schätzen und prognostizieren Sie die Kosten Ihrer Lösung. Diese Prognose hilft Ihnen dabei, Ihrer Organisation vorab ein Budget für die Workload vorzustellen. Im Lauf der Zeit können Sie ein Budget nutzen, um die Gültigkeit Ihrer anfänglichen Schätzung zu bewerten. Und Sie können das Budget mit den tatsächlichen Kosten Ihrer bereitgestellten Lösung vergleichen.
 
 ### <a name="azure-pricing-calculator"></a>Azure-Preisrechner
 
@@ -177,7 +177,7 @@ Azure bietet viele verschiedene Rabatte, mit denen Ihre Organisation Geld sparen
 
 #### <a name="azure-reservations"></a>Azure-Reservierungen
 
-Mit Azure-Reservierungen können Sie Computekapazitäten für Ihre virtuellen Computer oder SQL-Datenbank-Instanzen für ein Jahr oder drei Jahre im Voraus erwerben. Bei der Vorauszahlung können Sie einen Rabatt für die Ressourcen in Anspruch nehmen, die Sie nutzen. Azure-Reservierungen können die Computekosten für Ihre virtuellen Computer oder SQL-Datenbank-Instanzen mit einer Vorauszahlung für ein oder drei Jahre erheblich reduzieren – um bis zu 72 Prozent im Vergleich zu den Preisen bei nutzungsbasierter Bezahlung. Reservierungen bieten einen Abrechnungsrabatt und wirken sich nicht auf den Laufzeitstatus Ihrer virtuellen Computer oder SQL-Datenbank-Instanzen aus.
+Mit Azure-Reservierungen können Sie Computekapazitäten für Ihre virtuellen Computer oder SQL-Datenbank-Instanzen für ein Jahr oder drei Jahre im Voraus erwerben. Bei der Vorauszahlung können Sie einen Rabatt für die Ressourcen in Anspruch nehmen, die Sie nutzen. Azure-Reservierungen können die Computekosten für Ihre virtuellen Computer oder SQL-Datenbank-Instanzen mit einer Vorauszahlung für ein Jahr oder drei Jahre erheblich reduzieren (um bis zu 72 Prozent im Vergleich zu den Preisen bei nutzungsbasierter Bezahlung). Reservierungen bieten einen Abrechnungsrabatt und wirken sich nicht auf den Laufzeitstatus Ihrer virtuellen Computer oder SQL-Datenbank-Instanzen aus.
 
 Weitere Informationen finden Sie unter [Was sind Azure-Reservierungen?](../billing/billing-save-compute-costs-reservations.md).
 

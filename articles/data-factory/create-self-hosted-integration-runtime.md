@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: abnarain
-ms.openlocfilehash: cae81bd2b856ae0fb4a648c03cbec1f87f222902
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 0f48d65d1b3e6d1f608d85cff3a24ef379caa9cf
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51038467"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52284828"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Erstellen und Konfigurieren einer selbstgehosteten Integration Runtime
 Bei der Integration Runtime (IR) handelt es sich um die Computeinfrastruktur, mit der Azure Data Factory Datenintegrationsfunktionen übergreifend für verschiedene Netzwerkumgebungen bereitstellt. Weitere Informationen zur Integration Runtime finden Sie unter [Integrationslaufzeit in Azure Data Factory](concepts-integration-runtime.md).
@@ -198,7 +198,9 @@ Das folgende Video enthält eine zwölfminütige Einführung und Demonstration d
 
 * Version 6.6.0 oder höher von Azure PowerShell unterstützt dieses Feature (AzureRM.DataFactoryV2, 0.5.7 oder höher).
 
-* Zum Gewähren von Berechtigungen muss der Benutzer über die Rolle „Besitzer“ oder die geerbte Rolle „Besitzer“ in der Data Factory verfügen, in der die freigegebene IR vorhanden ist. 
+* Zum Gewähren von Berechtigungen muss der Benutzer über die Rolle „Besitzer“ oder die geerbte Rolle „Besitzer“ in der Data Factory verfügen, in der die freigegebene IR vorhanden ist.
+
+* Die Freigabefunktion kann nur für Data Factorys im gleichen Azure Active Directory-Mandanten verwendet werden.
 
 * Für [Gastbenutzer](https://docs.microsoft.com/azure/active-directory/governance/manage-guest-access-with-access-reviews) von Active Directory funktioniert die Suchfunktionalität (Auflisten aller Data Factorys mithilfe eines Suchschlüsselworts) in der Benutzeroberfläche [nicht](https://msdn.microsoft.com/library/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#SearchLimits). Aber so lange der Gastbenutzer der Besitzer der Data Factory ist, kann er die IR ohne Suchfunktion freigeben, indem er die MSI-Datei der Data Factory, mit der die IR freigegeben werden muss, direkt im Textfeld **Berechtigung zuweisen** eingibt und **Hinzufügen** in der Azure Data Factory-Benutzeroberfläche auswählt. 
 

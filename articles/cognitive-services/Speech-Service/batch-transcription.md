@@ -10,16 +10,16 @@ ms.component: speech-service
 ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: panosper
-ms.openlocfilehash: cd57e9a90b07447392fbff48017bb29f002ad29e
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 8a180dfada9da92e0b8ed69373a20602b3b0a177
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51035950"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52495592"
 ---
-# <a name="use-batch-transcription"></a>Verwenden der Batch-Transkription
+# <a name="why-use-batch-transcription"></a>Gründe für die Verwendung von Batch-Transkriptionen
 
-Die Batch-Transkription ist optimal geeignet, wenn Sie in Storage über große Audiodatenmengen verfügen. Mithilfe der Rest-API können Sie per SAS-URI (Shared Access Signature) auf Audiodateien verweisen und Transkriptionen asynchron empfangen.
+Die Batch-Transkription ist optimal geeignet, wenn Sie in Storage über große Audiodatenmengen verfügen. Mithilfe der spezifischen Rest-API können Sie per SAS-URI (Shared Access Signature) auf Audiodateien verweisen und Transkriptionen asynchron empfangen.
 
 ## <a name="the-batch-transcription-api"></a>Die Batch-Transkriptions-API
 
@@ -36,16 +36,16 @@ Die Batch-Transkriptions-API bietet asynchrone Transkription von Sprache in Text
 
 Die Batch-Transkriptions-API unterstützt die folgenden Formate:
 
-NAME| Kanal  |
-----|----------|
-MP3 |   Mono   |   
-MP3 |  Stereo  | 
-WAV |   Mono   |
-WAV |  Stereo  |
-Opus|   Mono   |
-Opus|  Stereo  |
+| Format | Codec | Bitrate | Samplingrate |
+|--------|-------|---------|-------------|
+| WAV | PCM | 16 Bit | 8 oder 16 kHz, Mono, Stereo |
+| MP3 | PCM | 16 Bit | 8 oder 16 kHz, Mono, Stereo |
+| OGG | OPUS | 16 Bit | 8 oder 16 kHz, Mono, Stereo |
 
-Bei Audiostreams in Stereo teilt die Batch-Transkription den linken und rechten Kanal während des Transkriptionsvorgangs. Die beiden JSON-Dateien mit dem Ergebnis werden jeweils von einem einzigen Kanal erstellt. Die Zeitstempel pro Äußerung ermöglicht es dem Entwickler, eine geordnete endgültige Transkription zu erstellen. Die Ausgabe eines Kanals, einschließlich der Eigenschaften für die Einrichtung eines Filters für anstößige Ausdrücke und des Modells für die Zeichensetzung, wird in folgendem JSON-Beispiel gezeigt:
+> [!NOTE]
+> Die Batch-Transkriptions-API erfordert einen S0-Schlüssel (Bezahltarif). Sie funktioniert nicht mit einem kostenlosen Schlüssel (f0).
+
+Bei Audiostreams in Stereo teilt die Batch-Transkriptions-API den linken und rechten Kanal während des Transkriptionsvorgangs. Die beiden JSON-Dateien mit dem Ergebnis werden jeweils von einem einzigen Kanal erstellt. Die Zeitstempel pro Äußerung ermöglicht es dem Entwickler, eine geordnete endgültige Transkription zu erstellen. Das folgende JSON-Beispiel zeigt die Ausgabe eines Kanals, einschließlich der Eigenschaften für die Einrichtung eines Filters für anstößige Ausdrücke und des Modells für die Zeichensetzung.
 
 ```json
 {
@@ -62,6 +62,16 @@ Bei Audiostreams in Stereo teilt die Batch-Transkription den linken und rechten 
 
 > [!NOTE]
 > Die Batch-Transkriptions-API verwendet einen REST-Dienst zum Anfordern von Transkriptionen, deren Status und zugehörigen Ergebnissen. Sie können die API in jeder Sprache verwenden. Im nächsten Abschnitt wird die Verwendung der API beschrieben.
+
+### <a name="query-parameters"></a>Abfrageparameter
+
+Diese Parameter können in der Abfragezeichenfolge der REST-Anforderung enthalten sein.
+
+| Parameter | BESCHREIBUNG | Erforderlich/optional |
+|-----------|-------------|---------------------|
+| `ProfanityFilterMode` | Gibt den Umgang mit Obszönitäten in Erkennungsergebnissen an. Zulässige Werte sind `none` (deaktiviert den Obszönitätenfilter), `masked` (Obszönitäten werden durch Sternchen ersetzt), `removed` (Obszönitäten werden aus dem Ergebnis entfernt) und `tags` (fügt „Obszönität“-Tags ein). Die Standardeinstellung ist `masked`. | Optional |
+| `PunctuationMode` | Gibt den Umgang mit Satzzeichen in Erkennungsergebnissen an. Gültige Werte sind `none` (deaktiviert Satzzeichen), `dictated` (explizite Satzzeichen), `automatic` (der Decoder verwaltet die Satzzeichen), `dictatedandautomatic` (vorgeschriebene Satzzeichen) oder „automatic“. | Optional |
+
 
 ## <a name="authorization-token"></a>Autorisierungstoken
 

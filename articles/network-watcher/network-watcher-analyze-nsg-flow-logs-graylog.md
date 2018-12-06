@@ -15,18 +15,21 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2017
 ms.author: mareat
-ms.openlocfilehash: 3030fdcec95d91b75974465ad30f707837263367
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 08d3d59d20ea80065e8f0238f90579bb268c3723
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50414776"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51823043"
 ---
 # <a name="manage-and-analyze-network-security-group-flow-logs-in-azure-using-network-watcher-and-graylog"></a>Verwalten und Analysieren von Datenflussprotokollen für Netzwerksicherheitsgruppen in Azure mithilfe von Network Watcher und Graylog
 
 [Datenflussprotokolle von Netzwerksicherheitsgruppen](network-watcher-nsg-flow-logging-overview.md) enthalten Informationen für ein besseres Verständnis von ein- und ausgehendem IP-Datenverkehr in Azure-Netzwerkschnittstellen. Datenflussprotokolle zeigen ausgehende und eingehende Datenflüsse pro Netzwerksicherheitsgruppe, die Netzwerkschnittstelle, auf die sich der Datenfluss bezieht, 5-Tupel-Informationen über den Datenfluss (Quell-/Ziel-IP, Quell-/Zielport, Protokoll) und Informationen zu zugelassenem oder verweigertem Datenverkehr.
 
 Sie können für die NSGs in Ihrem Netzwerk die Datenflussprotokollierung aktivieren. Mehrere Netzwerksicherheitsgruppen mit aktivierter Datenflussprotokollierung machen es aufwendig, Ihre Protokolle zu analysieren und einen Einblick in sie zu erhalten. Dieser Artikel bietet eine Projektmappe, um diese Datenflussprotokolle von Netzwerksicherheitsgruppen mit Graylog und Logstash zu verwalten. Hierbei handelt es sich um ein Open Source-Tool zur Protokollverwaltung und -analyse und eine serverseitige Open Source-Datenverarbeitungspipeline.
+
+> [!Warning]
+> In den folgenden Schritten wird Version 1 der Flowprotokolle verwendet. Ausführliche Informationen finden Sie unter [Einführung in die Datenflussprotokollierung für Netzwerksicherheitsgruppen](network-watcher-nsg-flow-logging-overview.md). Die folgenden Anweisungen funktionieren ohne Änderungen nicht mit Version 2 der Protokolldateien.
 
 ## <a name="scenario"></a>Szenario
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/23/2018
 ms.author: mbullwin
-ms.openlocfilehash: 47cf32a57fc4a2d0e20a9f2c242db1f3dec96fe5
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 8bc4c0617ebf9b400260a217462abbcc439ae440
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51228537"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52284675"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-net"></a>Problembehandlung ohne Daten – Application Insights für .NET
 ## <a name="some-of-my-telemetry-is-missing"></a>Einige meiner Telemetriedaten fehlen
@@ -175,8 +175,14 @@ Wenn Ihre Anwendung eine große Menge von Daten sendet und Sie das Application I
 
 Sie können diese Funktion deaktivieren, aber dies ist nicht zu empfehlen. Die Stichprobenerstellung ist so konzipiert, dass die zugehörigen Telemetriedaten zu Diagnosezwecken richtig übertragen werden. 
 
-## <a name="client-ip-address-is-0000"></a>Die Client-IP-Adresse lautet 0.0.0.0. 
-Im Februar 2018 haben wir [angekündigt](https://blogs.msdn.microsoft.com/applicationinsights-status/2018/02/01/all-octets-of-ip-address-will-be-set-to-zero/), dass wir die Protokollierung der Client-IP-Adresse entfernt haben. Dies wirkt sich nicht auf geografische Standorte aus.
+## <a name="client-ip-address-is-0000"></a>Die Client-IP-Adresse lautet 0.0.0.0.
+
+Am 5. Februar 2018 wurde angekündigt, dass die Protokollierung der Client-IP-Adresse entfernt wurde. Dies wirkt sich nicht auf geografische Standorte aus.
+
+> [!NOTE]
+> Wenn Sie die ersten drei Oktette der IP-Adresse erfassen möchten, können Sie einen [Telemetrieinitialisierer](https://docs.microsoft.com/azure/application-insights/app-insights-api-filtering-sampling#add-properties-itelemetryinitializer) verwenden, um ein benutzerdefiniertes Attribut hinzuzufügen.
+> Dies wirkt sich nicht auf Daten aus, die vor dem 5. Februar 2018 erfasst wurden.
+
 
 ## <a name="wrong-geographical-data-in-user-telemetry"></a>Falsche geografische Daten in Benutzertelemetriedaten
 Die Dimensionen für Ort, Region und Land werden von IP-Adressen abgeleitet und sind nicht immer exakt. Diese IP-Adressen werden zuerst im Hinblick auf den Standort verarbeitet und dann für die Speicherung in „0.0.0.0“ geändert.

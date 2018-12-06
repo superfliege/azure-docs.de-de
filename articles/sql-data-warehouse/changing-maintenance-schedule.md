@@ -7,22 +7,22 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: design
-ms.date: 10/07/2018
+ms.date: 10/15018
 ms.author: anvang
 ms.reviewer: igorstan
-ms.openlocfilehash: 428b9970471c9365812639e251810c571698a574
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 75384aed8c354cf2d549d92cdb75f87038f33ab8
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49425955"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51713264"
 ---
 # <a name="change-a-maintenance-schedule"></a>Ändern des Wartungszeitplans 
 
 ## <a name="portal"></a>Portal
 Ein Wartungszeitplan kann jederzeit aktualisiert oder geändert werden. Falls die ausgewählte Instanz gerade einen aktiven Wartungszyklus durchläuft, werden die Einstellungen gespeichert. Sie werden dann im nächsten identifizierten Wartungszeitraum angewendet. Weitere Informationen zum Überwachen Ihrer Data Warehouse-Daten während eines aktiven Verwaltungsereignisses finden Sie [hier](https://docs.microsoft.com/azure/service-health/resource-health-overview). 
 
-Während der Vorschauphase von Azure-Wartungszeitplänen wählen Sie zwei Wartungsfenster innerhalb eines Zeitraums von sieben Tagen aus. Jedes Wartungsfenster kann zwischen drei und acht Stunden umfassen. Innerhalb eines Wartungsfensters kann die Wartung zu einem beliebigen Zeitpunkt erfolgen. Außerhalb eines Zeitfensters ist dagegen eine vorherige Benachrichtigung erforderlich. Darüber hinaus geht kurzzeitig die Konnektivität verloren, während der Dienst neuen Code in Ihrem Datawarehouse bereitstellt. 
+Zur Verwendung von Wartungszeitplänen müssen Sie zwei Wartungsfenster innerhalb eines Zeitraums von sieben Tagen auswählen. Jedes Wartungsfenster kann zwischen drei und acht Stunden lang sein. Innerhalb eines Wartungsfensters kann die Wartung zu einem beliebigen Zeitpunkt erfolgen. Außerhalb eines Zeitfensters ist dagegen eine vorherige Benachrichtigung erforderlich. Darüber hinaus geht kurzzeitig die Konnektivität verloren, während der Dienst neuen Code in Ihrem Datawarehouse bereitstellt. 
 
 ## <a name="identifying-the-primary-and-secondary-windows"></a>Angeben des primären und sekundären Fensters
 
@@ -53,7 +53,7 @@ Führen Sie die folgenden Schritte aus, um den Wartungszeitplan für Ihr Data Wa
    ![Meldung zur regionalen Verfügbarkeit](media/sql-data-warehouse-maintenance-scheduling/maintenance-notactive-toast.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
-- [Informieren Sie sich ausführlicher](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitor-alerts-unified-log-webhook) über Webhookaktionen für Protokollwarnungsregeln.
-- [Informieren Sie sich ausführlicher](https://docs.microsoft.com/azure/service-health/service-health-overview) über Azure Service Health.
+- [Weitere Informationen](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitor-alerts-unified-log-webhook) zu Webhookaktionen für Protokollwarnungsregeln
+- [Weitere Informationen](https://docs.microsoft.com/azure/service-health/service-health-overview) zu Azure Service Health
 
 

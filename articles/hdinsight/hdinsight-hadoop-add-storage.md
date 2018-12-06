@@ -9,19 +9,19 @@ ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 31461e1d316953c2e69d252f1313180c57562dfd
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 194f84d2ce5360aa9ad9f3d771bf24f153ac6f5c
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51009190"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52496308"
 ---
 # <a name="add-additional-storage-accounts-to-hdinsight"></a>Hinzufügen zusätzlicher Speicherkonten zu HDInsight
 
 Erfahren Sie, wie Sie Skriptaktionen verwenden, um HDInsight zusätzliche Azure-Speicherkonten hinzuzufügen. Mit den Schritten in diesem Dokument fügen Sie einem vorhandenen Linux-basierten HDInsight-Cluster ein Speicherkonto hinzu.
 
 > [!IMPORTANT]
-> Die Informationen in diesem Dokument beziehen sich auf das Hinzufügen zusätzlichen Speichers zu einem Cluster, nachdem es erstellt wurde. Informationen zum Hinzufügen von Speicherkonten während der Clustererstellung finden Sie unter [Einrichten von Clustern in HDInsight mit Hadoop, Spark, Kafka usw](hdinsight-hadoop-provision-linux-clusters.md).
+> Die Informationen in diesem Dokument beziehen sich auf das Hinzufügen zusätzlichen Speichers zu einem Cluster, nachdem es erstellt wurde. Informationen zum Hinzufügen von Speicherkonten während der Clustererstellung finden Sie unter [Einrichten von Clustern in HDInsight mit Apache Hadoop, Apache Spark, Apache Kafka und anderen](hdinsight-hadoop-provision-linux-clusters.md).
 
 ## <a name="how-it-works"></a>So funktioniert's
 
@@ -43,7 +43,7 @@ Während der Verarbeitung führt dieses Skript folgende Aktionen aus:
 
 * Das Speicherkonto wird der core-site.xml-Datei hinzugefügt.
 
-* Beendet die Dienste Oozie, YARN, MapReduce2 und HDFS und startet sie neu. Durch das Beenden und Starten dieser Dienste wird ihnen die Verwendung des neuen Speicherkontos ermöglicht.
+* Beendet die Dienste [Apache Oozie](https://oozie.apache.org/), [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html), [Apache Hadoop MapReduce2](https://hadoop.apache.org/docs/current/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html) und [Apache Hadoop HDFS](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsUserGuide.html) und startet sie neu. Durch das Beenden und Starten dieser Dienste wird ihnen die Verwendung des neuen Speicherkontos ermöglicht.
 
 > [!WARNING]
 > Die Verwendung eines Speicherkontos an einem anderen Ort als dem HDInsight-Cluster wird nicht unterstützt.

@@ -7,14 +7,14 @@ author: markjbrown
 ms.service: cosmos-db
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/23/2018
+ms.date: 10/24/2018
 ms.author: mjbrown
-ms.openlocfilehash: 9234a57bdec3dfd7a1ccdba00b90a5c853dc1c5a
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 42128a05ad9f82ff6b202eb6566c1fea60caa760
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50960958"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52162421"
 ---
 # <a name="choose-the-right-consistency-level-for-your-application"></a>Auswählen der richtigen Konsistenzebene für Ihre Anwendung
 
@@ -52,7 +52,7 @@ In der Praxis erhalten Sie möglicherweise stärkere Konsistenzgarantien. Die Ko
 
 * Für die verbleibenden drei Konsistenzebenen ist das Veraltungsfenster weitgehend von Ihrer Workload abhängig. Wenn beispielsweise keine Schreibvorgänge für die Datenbank ausgeführt werden, liefert ein Lesevorgang mit der Konsistenzebene **letztliche Konsistenz**, **Sitzungskonsistenz** oder **Präfixkonsistenz** wahrscheinlich die gleichen Ergebnisse wie ein Lesevorgang mit starker Konsistenzebene.
 
-Wenn Ihr Cosmos DB-Konto mit einer anderen Konsistenzebene als der starken Konsistenz konfiguriert ist, können Sie anhand der PBS-Metrik (Probabilistic Bounded Staleness) die Wahrscheinlichkeit ermitteln, dass Ihre Clients starke und konsistente Lesevorgänge für Ihre Workloads erzielen. Die Metrik steht im Azure-Portal zur Verfügung. Weitere Informationen finden Sie im Artikel zum [Verwenden der PBS-Metrik](how-to-manage-consistency.md#monitor-probabilistically-bounded-staleness-pbs-metric).
+Wenn Ihr Cosmos DB-Konto mit einer anderen Konsistenzebene als der starken Konsistenz konfiguriert ist, können Sie anhand der PBS-Metrik (Probabilistic Bounded Staleness) die Wahrscheinlichkeit ermitteln, dass Ihre Clients starke und konsistente Lesevorgänge für Ihre Workloads erzielen. Diese Metrik wird im Azure-Portal verfügbar gemacht. Weitere Informationen finden Sie unter [Überwachen der PBS-Metrik (Probabilistically Bounded Staleness)](how-to-manage-consistency.md#monitor-probabilistically-bounded-staleness-pbs-metric).
 
 PBS (Probabilistic Bounded Staleness) zeigt, wie letztendlich Ihre letztendliche Konsistenz ist. Diese Metrik gibt Aufschluss darüber, wie oft Sie eine stärkere Konsistenz erreichen können als die Konsistenzebene, die Sie aktuell in Ihrem Cosmos DB-Konto konfiguriert haben. Das heißt, Sie sehen die Wahrscheinlichkeit (gemessen in Millisekunden), dass stark konsistente Lesevorgänge in Regionen mit Schreib- und Lesevorgängen auftreten.
 

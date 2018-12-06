@@ -8,18 +8,22 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 09/06/2018
+ms.date: 11/27/2018
 ms.author: diberry
-ms.openlocfilehash: 32ef8ba2f6416e1b59fc98595f1b204e94bd2ead
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.openlocfilehash: feb51cd55801addaf5ce2486e5527542f794bbc5
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48830989"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52580955"
 ---
 # <a name="use-phrase-lists-to-boost-signal-of-word-list"></a>Verwenden von Begriffslisten, um das Signal von Wortlisten zu verstärken
 
 Sie können Ihrer LUIS-App Features hinzufügen, um ihre Genauigkeit zu verbessern. Features unterstützen LUIS mit Hinweisen, dass bestimmte Wörter und Ausdrücke Teil eines App-Domänenvokabulars sind. 
+
+Eine [Ausdrucksliste](luis-concept-feature.md) enthält eine Gruppe von Werten (Wörter oder Ausdrücke), die derselben Klasse angehören und auf ähnliche Weise behandelt werden sollen (z.B. Städte- oder Produktnamen). Erkenntnisse, die LUIS zu einem davon sammelt, werden automatisch auch auf die anderen angewandt. Diese Liste ist keine geschlossene Listenentität (genaue Textübereinstimmungen) der übereinstimmenden Wörter.
+
+Eine Ausdrucksliste ist Teil des Vokabulars der App-Domäne als zweiter Hinweis zu diesen Wörtern für LUIS.
 
 ## <a name="add-phrase-list"></a>Hinzufügen einer Begriffsliste
 
@@ -47,9 +51,6 @@ Sie können Ihrer LUIS-App Features hinzufügen, um ihre Genauigkeit zu verbesse
 
 > [!Note]
 > Sie können eine Begriffsliste aus der kontextbezogenen Symbolleiste auf der Seite **Begriffslisten** löschen oder deaktivieren.
-
-## <a name="pattern-regular-expression-feature"></a>Musterfeature (regulärer Ausdruck) 
-**Dieses Feature ist veraltet**. Neue Musterfeature können LUIS nicht hinzugefügt werden. Vorhandene Musterfeatures werden bis Mai 2018 unterstützt. Leisten Sie im [Recognizers-Text-Github-Repository](https://github.com/Microsoft/Recognizers-Text) Ihren Beitrag zu standardmäßigen regulären Ausdrücken von LUIS in PR-Übereinstimmung. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

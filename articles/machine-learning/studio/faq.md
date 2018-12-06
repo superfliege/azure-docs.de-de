@@ -1,11 +1,12 @@
 ---
-title: Häufig gestellte Fragen zu Azure Machine Learning (FAQs) | Microsoft-Dokumentation
-description: 'Einführung in Azure Machine Learning: häufig gestellte Fragen (FAQ) zu Abrechnung, Funktionen und Einschränkungen von Clouddiensten für die optimierte Vorhersagemodellierung.'
+title: Häufig gestellte Fragen (FAQs) zu Machine Learning Studio – Azure | Microsoft-Dokumentation
+description: 'Azure Machine Learning Studio: häufig gestellte Fragen (FAQs) zu Abrechnung, Funktionen und Einschränkungen von Clouddiensten für die optimierte Vorhersagemodellierung.'
 keywords: Einführung in maschinelles Lernen,Vorhersagemodellierung,was ist maschinelles Lernen
 services: machine-learning
 documentationcenter: ''
-author: heatherbshapiro
-ms.author: hshapiro
+author: ericlicoding
+ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
+ms.author: amlstudiodocs
 ms.assetid: a4a32a06-dbed-4727-a857-c10da774ce66
 ms.service: machine-learning
 ms.component: studio
@@ -14,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/02/2017
-ms.openlocfilehash: 77ae05c240dbb099528d7224a936d90416366816
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: c9c80da55737d0093813b84e33d3d90c5d7d4603
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51247771"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52309139"
 ---
-# <a name="azure-machine-learning-frequently-asked-questions-billing-capabilities-limitations-and-support"></a>Häufig gestellte Fragen zu Azure Machine Learning: Abrechnung, Funktionen, Einschränkungen und Support
+# <a name="azure-machine-learning-studio-frequently-asked-questions-billing-capabilities-limitations-and-support"></a>Häufig gestellte Fragen zu Azure Machine Learning Studio: Abrechnung, Funktionen, Einschränkungen und Support
 Hier sind einige häufig gestellte Fragen (FAQs) und die entsprechenden Antworten zu Azure Machine Learning aufgeführt. Bei Azure Machine Learning handelt es sich um einen Clouddienst zum Entwickeln von Vorhersagemodellen und Operationalisieren von Lösungen mithilfe von Webdiensten. Diese FAQs liefern Antworten zur Verwendung des Diensts, z.B. in Bezug auf das Abrechnungsmodell, Funktionen, Einschränkungen und den Support.
 
 **Haben Sie eine Frage, die hier nicht aufgeführt ist?**
@@ -29,12 +30,6 @@ Hier sind einige häufig gestellte Fragen (FAQs) und die entsprechenden Antworte
 Für Azure Machine Learning gibt es ein Forum auf MSDN, in dem Mitglieder der Data Science-Community Fragen zu Azure Machine Learning stellen können. Das Forum wird vom Azure Machine Learning-Team überwacht. Suchen Sie im [Azure Machine Learning-Forum](https://social.msdn.microsoft.com/Forums/windowsazure/home?forum=MachineLearning) nach Antworten, oder stellen Sie eine neue Frage.
 
 ## <a name="general-questions"></a>Allgemeine Fragen
-**Was ist Azure Machine Learning?**
-
-Azure Machine Learning ist ein vollständig verwalteter Dienst, mit dem Sie Lösungen zu Vorhersageanalyse in der Cloud erstellen, testen, betreiben und verwalten können. Mit einem Browser können Sie sich anmelden, Daten hochladen und sofort mit Experimenten im Bereich Machine Learning beginnen. Dank der Vorhersagemodellierung per Drag & Drop, einer umfangreichen Modulpalette und einer Bibliothek mit Ausgangsvorlagen können Sie gängige Aufgaben im Bereich Machine Learning schnell und einfach ausführen. Weitere Informationen finden Sie auf der Übersichtsseite zu [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/). Eine Einführung in Machine Learning mit wichtigen Begriffen und Konzepten finden Sie unter [Einführung in Azure Machine Learning](what-is-machine-learning.md).
-
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
-
 **Was ist Machine Learning Studio?**
 
 Machine Learning Studio ist eine Workbench-Umgebung, auf die Sie über einen Webbrowser zugreifen. Machine Learning Studio enthält eine Palette von Modulen in einer visuellen Kompositionsoberfläche, in der Sie durchgängige Datenworkflows in Form von Experimenten erstellen können.
@@ -173,7 +168,7 @@ Nein, derzeit wird nur programmgesteuertes erneutes Trainieren unterstützt.
 
 **Können die Ebenen eines Modells für ein neuronales Netz mit dem integrierten Modul visualisiert werden?**
 
-Nein.
+ Nein.
 
 **Kann ich eigene Module in C# oder einer anderen Sprache erstellen?**
 
@@ -210,7 +205,7 @@ Verwenden Sie die APIs für das erneute Trainieren. Weitere Informationen finden
 ### <a name="create"></a>Erstellen
 **Kann ich das Modell lokal oder in einer Anwendung ohne Internetverbindung bereitstellen?**
 
-Nein.
+ Nein.
 
 **Gibt es eine Grundlatenz, die für alle Webdienste erwartet wird?**
 
@@ -251,7 +246,7 @@ Derzeit wird der Standardendpunkt mit 20 gleichzeitigen RRS-Anforderungen pro En
 
 **Werden R-Aufträge auf die Knoten verteilt?**
 
-Nein.  
+ Nein.  
 
 **Wie viele Daten kann ich für das Training verwenden?**
 
@@ -280,7 +275,7 @@ Zeilen und Spalten sind jeweils auf die .NET-Einschränkung für Ganzzahlen besc
 
 **Kann ich die Größe des virtuellen Computers anpassen, auf dem der Webdienst ausgeführt wird?**
 
-Nein.  
+ Nein.  
 
 ## <a name="security-and-availability"></a>Sicherheit und Verfügbarkeit
 **Wer hat standardmäßig Zugriff auf den HTTP-Endpunkt für den Webdienst? Wie kann ich den Zugriff auf den Endpunkt einschränken?**

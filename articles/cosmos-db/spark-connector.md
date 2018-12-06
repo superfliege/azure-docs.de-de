@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: ramkris
-ms.openlocfilehash: 26479ade27b18e817d7ad03d70d27b0cef687e8d
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: 62395ff5370a057ca1888dd135b83be9d6f34f8d
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48269410"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51707179"
 ---
 # <a name="accelerate-big-data-analytics-by-using-the-apache-spark-to-azure-cosmos-db-connector"></a>Beschleunigen von Big Data-Analysen mit dem Apache Spark-Connector für Azure Cosmos DB
  
@@ -83,7 +83,7 @@ Führen Sie die folgenden Schritte aus, um mit dem pyDocumentDB SDK eine Verbind
 
 6. Geben Sie im Dialogfeld **Notizbuch erstellen**  einen benutzerfreundlichen Namen ein, und wählen Sie **Python** als Sprache aus. Wählen Sie aus der Dropdownliste den Cluster aus, den Sie zuvor erstellt haben, und klicken Sie auf **Erstellen**.  
 
-7. Führen Sie einige Spark-Abfragen aus. Verwenden Sie dafür die Flugbeispieldaten, die im Azure Cosmos DB-Konto „doctorwho“ gehostet werden. Dieses Konto ist öffentlich zugänglich. Die HTML-Version des Notizbuchs wird im GitHub-Repository [azure-cosmosdb-spark](https://github.com/Azure/azure-cosmosdb-spark/tree/master) gehostet. Laden Sie die Repositorydateien herunter, und navigieren Sie zu `\samples\Documentation_Samples\Read_Batch_PyDocumentDB.html`. Sie können das Notizbuch in Ihr Azure Databricks-Konto importieren und ausführen. Im folgenden Abschnitt wird die Funktionalität der Codeblöcke genau beschrieben.
+7. Führen Sie einige Spark-Abfragen aus. Verwenden Sie dafür die Flugbeispieldaten, die im Azure Cosmos DB-Konto „doctorwho“ gehostet werden. Dieses Konto ist öffentlich zugänglich. Das Notizbuch [Read_Batch_PyDocumentDB](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/Documentation_Samples/Read_Batch_PyDocumentDB.ipynb) wird im GitHub-Repository [azure-cosmosdb-spark](https://github.com/Azure/azure-cosmosdb-spark/tree/master) gehostet. Sie können das Notizbuch in Ihr Azure Databricks-Konto importieren und ausführen. Im folgenden Abschnitt wird die Funktionalität der Codeblöcke genau beschrieben.
 
 Die folgenden Codeausschnitte veranschaulichen, wie Sie das pyDocumentDB SDK importieren und eine Abfrage im Spark-Kontext ausführen. Wie im Codeausschnitt deutlich wird, enthält das pyDocumentDB SDK die Verbindungsparameter, die zum Herstellen einer Verbindung mit dem Azure Cosmos DB-Konto erforderlich sind. Es importiert die erforderlichen Bibliotheken und konfiguriert den Hauptschlüssel sowie den Host, um den Azure Cosmos DB-Client (pydocumentdb.document_client) zu erstellen.
 
@@ -209,7 +209,7 @@ Dieser Artikel veranschaulicht die Verwendung des Java SDK für Spark-Connectors
 
 ### <a name="read-twitter-data-from-azure-cosmos-db"></a>Lesen von Twitter-Daten aus Azure Cosmos DB
  
-In diesem Abschnitt führen Sie Spark-Abfragen aus, um einen Batch von Twitter-Daten aus Azure Cosmos DB zu lesen. Die HTML-Version des Notizbuchs wird im GitHub-Repository [azure-cosmosdb-spark](https://github.com/Azure/azure-cosmosdb-spark/tree/master) gehostet. Laden Sie die Repositorydateien herunter, und navigieren Sie zu `\samples\Documentation_Samples\Read_Batch_Twitter_Data.html`. Sie können das Notizbuch in Ihr Azure Databricks-Konto importieren und Konto-URI, Hauptschlüssel, Datenbank und Sammlungsnamen aktualisieren. Sie können das Notizbuch ausführen oder folgendermaßen erstellen:
+In diesem Abschnitt führen Sie Spark-Abfragen aus, um einen Batch von Twitter-Daten aus Azure Cosmos DB zu lesen. Das Notizbuch [Read_Batch_Twitter_Data](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/Documentation_Samples/Read_Batch_Twitter_Data.ipynb) wird im GitHub-Repository [azure-cosmosdb-spark](https://github.com/Azure/azure-cosmosdb-spark/tree/master) gehostet. Sie können das Notizbuch in Ihr Azure Databricks-Konto importieren und Konto-URI, Hauptschlüssel, Datenbank und Sammlungsnamen aktualisieren. Sie können das Notizbuch ausführen oder folgendermaßen erstellen:
 
 1. Navigieren Sie zu Ihrem Azure Databricks-Konto, und wählen Sie **Arbeitsbereich** > **Erstellen** > **Notizbuch** aus. 
 
@@ -268,7 +268,7 @@ Je nach Szenario sollten Sie unterschiedliche Konfigurationswerte verwenden, um 
 
 ### <a name="read-twitter-data-that-is-streaming-to-azure-cosmos-db"></a>Lesen von Twitter-Daten, die an Azure Cosmos DB gestreamt werden
 
-In diesem Abschnitt führen Sie Spark-Abfragen aus, um einen Änderungsfeed der gestreamten Twitter-Daten zu lesen. Während Sie die Abfragen in diesem Abschnitt ausführen, sollten Sie sicherstellen, dass Ihre App für Twitter-Feeds ausgeführt ist und Daten an Azure Cosmos DB überträgt. Die HTML-Version des Notizbuchs wird im GitHub-Repository [azure-cosmosdb-spark](https://github.com/Azure/azure-cosmosdb-spark/tree/master) gehostet. Laden Sie die Repositorydateien herunter, und navigieren Sie zu `\samples\Documentation_Samples\Read_Stream_Twitter_Data.html`. Sie können das Notizbuch in Ihr Azure Databricks-Konto importieren und Konto-URI, Hauptschlüssel, Datenbank und Sammlungsnamen aktualisieren. Sie können das Notizbuch ausführen oder folgendermaßen erstellen:
+In diesem Abschnitt führen Sie Spark-Abfragen aus, um einen Änderungsfeed der gestreamten Twitter-Daten zu lesen. Während Sie die Abfragen in diesem Abschnitt ausführen, sollten Sie sicherstellen, dass Ihre App für Twitter-Feeds ausgeführt ist und Daten an Azure Cosmos DB überträgt. Das Notizbuch [Read_Stream_Twitter_Data](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/Documentation_Samples/Read_Stream_Twitter_Data.scala) wird im GitHub-Repository [azure-cosmosdb-spark](https://github.com/Azure/azure-cosmosdb-spark/tree/master) gehostet. Sie können das Notizbuch in Ihr Azure Databricks-Konto importieren und Konto-URI, Hauptschlüssel, Datenbank und Sammlungsnamen aktualisieren. Sie können das Notizbuch ausführen oder folgendermaßen erstellen:
 
 1. Navigieren Sie zu Ihrem Azure Databricks-Konto, und wählen Sie **Arbeitsbereich** > **Erstellen** > **Notizbuch** aus.  
 
@@ -335,7 +335,7 @@ Das Java SDK unterstützt folgende Verbindungseinstellungen:
 
 ### <a name="write-twitter-data-to-azure-cosmos-db"></a>Schreiben von Twitter-Daten in Azure Cosmos DB 
 
-In diesem Abschnitt führen Sie Spark-Abfragen durch, um einen Batch von Twitter-Daten in eine neue Sammlung in derselben Datenbank zu schreiben. Die HTML-Version des Notizbuchs wird im GitHub-Repository [azure-cosmosdb-spark](https://github.com/Azure/azure-cosmosdb-spark/tree/master) gehostet. Laden Sie die Repositorydateien herunter, und navigieren Sie zu `\samples\Documentation_Samples\Write_Batch_Twitter_Data.html`. Sie können das Notizbuch in Ihr Azure Databricks-Konto importieren und Konto-URI, Hauptschlüssel, Datenbank und Sammlungsnamen aktualisieren. Sie können das Notizbuch ausführen oder folgendermaßen erstellen:
+In diesem Abschnitt führen Sie Spark-Abfragen durch, um einen Batch von Twitter-Daten in eine neue Sammlung in derselben Datenbank zu schreiben. Das Notizbuch [Write_Batch_Twitter_Data](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/Documentation_Samples/Write_Batch_Twitter_Data.ipynb) wird im GitHub-Repository [azure-cosmosdb-spark](https://github.com/Azure/azure-cosmosdb-spark/tree/master) gehostet. Sie können das Notizbuch in Ihr Azure Databricks-Konto importieren und Konto-URI, Hauptschlüssel, Datenbank und Sammlungsnamen aktualisieren. Sie können das Notizbuch ausführen oder folgendermaßen erstellen:
 
 1. Navigieren Sie zu Ihrem Azure Databricks-Konto, und wählen Sie **Arbeitsbereich** > **Erstellen** > **Notizbuch** aus.  
 
@@ -428,7 +428,7 @@ Das Java SDK unterstützt folgende Werte für die Konfigurationszuordnung:
 
 ### <a name="write-twitter-data-that-is-streaming-to-azure-cosmos-db"></a>Schreiben von Twitter-Daten, die an Azure Cosmos DB gestreamt werden 
 
-In diesem Abschnitt führen Sie Spark-Abfragen aus, um einen Änderungsfeed von gestreamten Twitter-Daten in eine neue Sammlung in derselben Datenbank zu schreiben. Die HTML-Version des Notizbuchs wird im GitHub-Repository [azure-cosmosdb-spark](https://github.com/Azure/azure-cosmosdb-spark/tree/master) gehostet. Laden Sie die Repositorydateien herunter, und navigieren Sie zu `\samples\Documentation_Samples\Write_Stream_Twitter_Data.html`. Sie können das Notizbuch in Ihr Azure Databricks-Konto importieren und Konto-URI, Hauptschlüssel, Datenbank und Sammlungsnamen aktualisieren. Sie können das Notizbuch ausführen oder folgendermaßen erstellen:
+In diesem Abschnitt führen Sie Spark-Abfragen aus, um einen Änderungsfeed von gestreamten Twitter-Daten in eine neue Sammlung in derselben Datenbank zu schreiben. Das Notizbuch [Write_Stream_Twitter_Data](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/Documentation_Samples/Write_Stream_Data.scala) wird im GitHub-Repository [azure-cosmosdb-spark](https://github.com/Azure/azure-cosmosdb-spark/tree/master) gehostet. Sie können das Notizbuch in Ihr Azure Databricks-Konto importieren und Konto-URI, Hauptschlüssel, Datenbank und Sammlungsnamen aktualisieren. Sie können das Notizbuch ausführen oder folgendermaßen erstellen:
 
 1. Navigieren Sie zu Ihrem Azure Databricks-Konto, und wählen Sie **Arbeitsbereich** > **Erstellen** > **Notizbuch** aus.  
 

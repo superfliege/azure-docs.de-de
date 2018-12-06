@@ -1,10 +1,11 @@
 ---
-title: Einen vorhandenen prädiktiven Webdienst erneut trainieren | Microsoft Docs
-description: Erfahren Sie, wie Sie ein Modell erneut trainieren und den Webdienst aktualisieren, sodass er das neu trainierte Modell in Azure Machine Learning verwendet.
+title: Erneutes Trainieren eines vorhandenen prädiktiven Webdiensts – Azure Machine Learning Studio | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie ein Modell in Azure Machine Learning Studio erneut trainieren und den Webdienst aktualisieren, sodass er das neu trainierte Modell verwendet.
 services: machine-learning
 documentationcenter: ''
-author: YasinMSFT
-ms.author: yahajiza
+author: ericlicoding
+ms.custom: (previous ms.author=yahajiza, author=YasinMSFT)
+ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
 ms.assetid: cc4c26a2-5672-4255-a767-cfd971e46775
@@ -15,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/07/2017
-ms.openlocfilehash: 1a30f9166c81c4757267c95b13b08f3202748467
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 8da3c5d5c79ce52f1f5176a8b3317ce2a0e0bc5f
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51684636"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52311295"
 ---
 # <a name="retrain-an-existing-predictive-web-service"></a>Einen vorhandenen prädiktiven Webdienst erneut trainieren
 Dieses Dokument beschreibt das erneute Trainieren für das folgende Szenario:
@@ -29,7 +30,7 @@ Dieses Dokument beschreibt das erneute Trainieren für das folgende Szenario:
 * Sie haben neue Daten, die Ihr prädiktiver Webdienst zum Ausführen der Bewertung verwenden soll.
 
 > [!NOTE]
-> Zum Bereitstellen eines neuen Webdiensts müssen Sie über ausreichende Berechtigungen in dem Abonnement verfügen, an das Sie den Webdienst bereitstellen. Weitere Informationen finden Sie unter [Verwalten eines Webdiensts im Azure Machine Learning Web Services-Portal](manage-new-webservice.md).
+> Zum Bereitstellen eines neuen Webdiensts müssen Sie über ausreichende Berechtigungen in dem Abonnement verfügen, in dem Sie den Webdienst bereitstellen. Weitere Informationen finden Sie unter [Verwalten eines Webdiensts im Azure Machine Learning Web Services-Portal](manage-new-webservice.md).
 
 Beginnen Sie mit dem vorhandenen Webdienst und Experimenten, und führen Sie die folgenden Schritte aus:
 

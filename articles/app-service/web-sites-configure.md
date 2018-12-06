@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: cephalin
-ms.openlocfilehash: cf3a6fe24082a10db6a5b1267b70435d9e36b720
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: 73d2da542c4f7da0933187d800f562de76bfb3e6
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49115521"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52443507"
 ---
 # <a name="configure-web-apps-in-azure-app-service"></a>Konfigurieren von Web-Apps in Azure App Service
 
@@ -78,6 +78,8 @@ Dieser Abschnitt enthält Name-Wert-Paare, die Ihre Web-App beim Start lädt.
 
 App-Einstellungen werden bei der Speicherung stets verschlüsselt (encrypted-at-rest).
 
+App-Einstellungen können über Key Vault mithilfe von [Key Vault-Referenzen](app-service-key-vault-references.md) aufgelöst werden.
+
 ### <a name="connection-strings"></a>Verbindungszeichenfolgen
 Verbindungszeichenfolgen für verknüpfte Ressourcen. 
 
@@ -93,6 +95,8 @@ Bei PHP-, Python-, Java- und Node-Anwendungen sind diese Einstellungen als Umgeb
 Wenn beispielsweise eine MySQL-Verbindungszeichenfolge "`connectionstring1`" heißt, wird sie über die Umgebungsvariable `MYSQLCONNSTR_connectionString1` aufgerufen.
 
 Verbindungszeichenfolgen werden bei der Speicherung stets verschlüsselt (encrypted-at-rest).
+
+Verbindungszeichenfolgen können über Key Vault mithilfe von [Key Vault-Referenzen](app-service-key-vault-references.md) aufgelöst werden.
 
 ### <a name="default-documents"></a>Standarddokumente
 Das Standarddokument ist die Webseite, die an der Stamm-URL für eine Website angezeigt wird.  Die erste übereinstimmende Datei in der Liste wird verwendet. 

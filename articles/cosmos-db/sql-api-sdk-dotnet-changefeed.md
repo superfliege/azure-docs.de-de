@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 10/24/2018
 ms.author: maquaran
-ms.openlocfilehash: a57e7ccedd0c3b776a39c6750a3d5b4b5cc41d88
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 327873d228fe92a9da495f802c97eb73612caef9
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685445"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52632482"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET Change Feed Processor-SDK: Download und Anmerkungen zur Version
 > [!div class="op_single_selector"]
@@ -43,8 +43,18 @@ ms.locfileid: "51685445"
 
 ### <a name="v2-builds"></a>V2-Builds
 
+### <a name="a-name224224"></a><a name="2.2.4"/>2.2.4
+* Die Eigenschaft ChangeFeedProcessorOptions.StartContinuation wurde hinzugefügt, um das Starten des Änderungsfeeds über das Fortsetzungstoken für die Anforderung zu unterstützen. Dies wird nur verwendet, wenn die Leasesammlung leer ist oder für eine Lease kein ContinuationToken festgelegt wurde. Bei Leases in einer Leasesammlung, für die ein ContinuationToken festgelegt wurde, wird dieses verwendet und ChangeFeedProcessorOptions.StartContinuation ignoriert.
+
+### <a name="a-name223223"></a><a name="2.2.3"/>2.2.3
+* Unterstützung für die Verwendung von benutzerdefinierten Speichern für das Beibehalten von Fortsetzungstoken pro Partition wurde hinzugefügt.
+  * Ein benutzerdefinierter Leasespeicher kann z.B. eine Azure Cosmos DB-Leasesammlung sein, die auf eine beliebige benutzerdefinierte Weise partitioniert wurde.
+  * Benutzerdefinierte Leasespeicher können den neuen Erweiterbarkeitspunkt ChangeFeedProcessorBuilder.WithLeaseStoreManager(ILeaseStoreManager) und die öffentliche ILeaseStoreManager-Schnittstelle verwenden.
+  * Die ILeaseManager-Schnittstelle wurde in mehrere Rollenschnittstellen umgestaltet.
+* Kleiner Breaking Change: Der Erweiterbarkeitspunkt ChangeFeedProcessorBuilder.WithLeaseManager(ILeaseManager) wurde entfernt. Verwenden Sie stattdessen ChangeFeedProcessorBuilder.WithLeaseStoreManager(ILeaseStoreManager).
+
 ### <a name="a-name222222"></a><a name="2.2.2"/>2.2.2
-* Ein Problem wurde behoben, das während der Verarbeitung von Aufteilungen auftreten konnte, wenn die Leasesammlung partitioniert ist. Das Problem kann dazu führen, dass Leases für nicht mehr vorhandene Partitionen nicht aus der Leasesammlung gelöscht werden. Dieses Problem wurde in diesem Release behoben.
+* Dieses Release behebt ein Problem, das während der Verarbeitung einer Teilung in einer überwachten Sammlung und bei Verwendung einer partitionierten Leasesammlung auftritt. Wenn Sie eine Lease für eine Teilungspartition verarbeiten, wird die Lease für diese Partition möglicherweise nicht gelöscht. Dieses Problem wurde in diesem Release behoben.
 
 ### <a name="a-name221221"></a><a name="2.2.1"/>2.2.1
 * Die Berechnung der Schätzung für Multimasterkonten wurde korrigiert und ein neues Sitzungstokenformat eingeführt.

@@ -14,12 +14,12 @@ ms.date: 10/26/2018
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: 8c5da669d490bf295c4066854ac1173bcc79ad5e
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 5c880ca15eea6ccf77f93f74c9e1ca41f7fc01ee
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51686125"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52276719"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Berechtigungen der Administratorrolle in Azure Active Directory
 
@@ -174,15 +174,11 @@ Die folgenden Administratorrollen sind verfügbar:
   * Administratoren in anderen Diensten außerhalb von Azure AD wie Exchange Online, Office Security and Compliance Center und Personalwesen.
   * Nichtadministratoren wie Führungskräfte, Rechtsberater und Mitarbeiter der Personalabteilung mit Zugriff auf vertrauliche oder private Informationen.
 
+## <a name="role-permissions"></a>Rollenberechtigungen
 In den folgenden Tabellen werden die spezifischen Berechtigungen der einzelnen Rollen in Azure Active Directory beschrieben. Einige Rollen können zusätzliche Berechtigungen in Microsoft-Diensten außerhalb von Azure Active Directory aufweisen.
 
 ### <a name="application-administrator"></a>Anwendungsadministrator
 Kann alle Aspekte von App-Registrierungen und Enterprise-Apps erstellen und verwalten.
-
-  > [!NOTE]
-  > Diese Rolle erbt zusätzliche Berechtigungen von der Rolle „Verzeichnis lesen“.
-  >
-  >
 
 | **Aktionen** | **Beschreibung** |
 | --- | --- |
@@ -223,11 +219,6 @@ Kann alle Aspekte von App-Registrierungen und Enterprise-Apps erstellen und verw
 ### <a name="application-developer"></a>Anwendungsentwickler
 Erstellen von Anwendungsregistrierungen unabhängig von der Einstellung „Benutzer können Anwendungen registrieren“.
 
-  > [!NOTE]
-  > Diese Rolle erbt zusätzliche Berechtigungen von der Rolle „Verzeichnis lesen“.
-  >
-  >
-
 | **Aktionen** | **Beschreibung** |
 | --- | --- |
 | microsoft.aad.directory/applications/createAsOwner | Erstellen von Anwendungen in Azure Active Directory Der Ersteller wird als erster Besitzer hinzugefügt, und das erstellte Objekt wird auf das Kontingent von 250 erstellten Objekten angerechnet, das für den Ersteller gilt. |
@@ -237,11 +228,6 @@ Erstellen von Anwendungsregistrierungen unabhängig von der Einstellung „Benut
 
 ### <a name="billing-administrator"></a>Abrechnungsadministrator
 Ausführen von allgemeinen Abrechnungsaufgaben wie der Aktualisierung der Zahlungsinformationen.
-
-  > [!NOTE]
-  > Diese Rolle erbt zusätzliche Berechtigungen von der Rolle „Verzeichnis lesen“.
-  >
-  >
 
   > [!NOTE]
   > Diese Rolle verfügt über zusätzliche Berechtigungen außerhalb von Azure Active Directory. Weitere Informationen finden Sie in der Rollenbeschreibung oben.
@@ -263,11 +249,6 @@ Ausführen von allgemeinen Abrechnungsaufgaben wie der Aktualisierung der Zahlun
 Dieser Administrator kann auf Desktop Analytics-Verwaltungstools und -Dienste einschließlich Intune zugreifen und diese verwalten.
 
   > [!NOTE]
-  > Diese Rolle erbt zusätzliche Berechtigungen von der Rolle „Verzeichnis lesen“.
-  >
-  >
-
-  > [!NOTE]
   > Diese Rolle verfügt über zusätzliche Berechtigungen außerhalb von Azure Active Directory. Weitere Informationen finden Sie in der Rollenbeschreibung oben.
   >
   >
@@ -283,11 +264,6 @@ Dieser Administrator kann auf Desktop Analytics-Verwaltungstools und -Dienste ei
 
 ### <a name="cloud-application-administrator"></a>Cloudanwendungsadministrator
 Erstellen und Verwalten sämtlicher Aspekte von App-Registrierungen und Enterprise-Apps außer App-Proxy.
-
-  > [!NOTE]
-  > Diese Rolle erbt zusätzliche Berechtigungen von der Rolle „Verzeichnis lesen“.
-  >
-  >
 
 | **Aktionen** | **Beschreibung** |
 | --- | --- |
@@ -327,11 +303,6 @@ Erstellen und Verwalten sämtlicher Aspekte von App-Registrierungen und Enterpri
 ### <a name="cloud-device-administrator"></a>Cloudgeräteadministrator
 Vollzugriff zum Verwalten von Geräten in Azure AD.
 
-  > [!NOTE]
-  > Diese Rolle erbt zusätzliche Berechtigungen von der Rolle „Verzeichnis lesen“.
-  >
-  >
-
 | **Aktionen** | **Beschreibung** |
 | --- | --- |
 | microsoft.aad.directory/devices/delete | Löschen von Geräten in Azure Active Directory |
@@ -344,11 +315,6 @@ Vollzugriff zum Verwalten von Geräten in Azure AD.
 
 ### <a name="company-administrator"></a>Unternehmensadministrator
 Verwalten sämtlicher Aspekte von Azure AD und Microsoft-Diensten, die Azure AD-Identitäten verwenden.
-
-  > [!NOTE]
-  > Diese Rolle erbt zusätzliche Berechtigungen von der Rolle.
-  >
-  >
 
   > [!NOTE]
   > Diese Rolle verfügt über zusätzliche Berechtigungen außerhalb von Azure Active Directory. Weitere Informationen finden Sie in der Rollenbeschreibung oben.
@@ -411,11 +377,6 @@ Verwalten sämtlicher Aspekte von Azure AD und Microsoft-Diensten, die Azure AD-
 Lesen und Verwalten der Konformitätskonfiguration und der zugehörigen Berichte in Azure AD und Office 365.
 
   > [!NOTE]
-  > Diese Rolle erbt zusätzliche Berechtigungen von der Rolle „Verzeichnis lesen“.
-  >
-  >
-
-  > [!NOTE]
   > Diese Rolle verfügt über zusätzliche Berechtigungen außerhalb von Azure Active Directory. Weitere Informationen finden Sie in der Rollenbeschreibung oben.
   >
   >
@@ -435,11 +396,6 @@ Lesen und Verwalten der Konformitätskonfiguration und der zugehörigen Berichte
 ### <a name="conditional-access-administrator"></a>Administrator für den bedingten Zugriff
 Verwalten von Funktionen zum bedingten Zugriff.
 
-  > [!NOTE]
-  > Diese Rolle erbt zusätzliche Berechtigungen von der Rolle „Verzeichnis lesen“.
-  >
-  >
-
 | **Aktionen** | **Beschreibung** |
 | --- | --- |
 | microsoft.aad.directory/policies/conditionalAccess/basic/read | Lesen der policies.conditionalAccess-Eigenschaft in Azure Active Directory |
@@ -452,11 +408,6 @@ Verwalten von Funktionen zum bedingten Zugriff.
 
 ### <a name="crm-service-administrator"></a>CRM-Dienstadministrator
 Verwalten sämtlicher Aspekte des Produkts Dynamics 365.
-
-  > [!NOTE]
-  > Diese Rolle erbt zusätzliche Berechtigungen von der Rolle „Verzeichnis lesen“.
-  >
-  >
 
   > [!NOTE]
   > Diese Rolle verfügt über zusätzliche Berechtigungen außerhalb von Azure Active Directory. Weitere Informationen finden Sie in der Rollenbeschreibung oben.
@@ -476,11 +427,6 @@ Verwalten sämtlicher Aspekte des Produkts Dynamics 365.
 Kann Microsoft-Supportanfragen zum Zugriff auf Benutzerorganisationsdaten genehmigen.
 
   > [!NOTE]
-  > Diese Rolle erbt zusätzliche Berechtigungen von der Rolle „Verzeichnis lesen“.
-  >
-  >
-
-  > [!NOTE]
   > Diese Rolle verfügt über zusätzliche Berechtigungen außerhalb von Azure Active Directory. Weitere Informationen finden Sie in der Rollenbeschreibung oben.
   >
   >
@@ -493,11 +439,6 @@ Kann Microsoft-Supportanfragen zum Zugriff auf Benutzerorganisationsdaten genehm
 ### <a name="device-administrators"></a>Geräteadministratoren
 Mitglieder dieser Rolle werden der lokalen Administratorgruppe auf in Azure AD eingebundenen Geräten hinzugefügt.
 
-  > [!NOTE]
-  > Diese Rolle erbt zusätzliche Berechtigungen von der Rolle „Verzeichnis lesen“.
-  >
-  >
-
 | **Aktionen** | **Beschreibung** |
 | --- | --- |
 | microsoft.aad.directory/groupSettings/basic/read | Lesen der Basiseigenschaften für groupSettings in Azure Active Directory |
@@ -505,11 +446,6 @@ Mitglieder dieser Rolle werden der lokalen Administratorgruppe auf in Azure AD e
 
 ### <a name="directory-readers"></a>Rolle „Verzeichnis lesen“
 Lesen von grundlegenden Verzeichnisinformationen. Die Rolle gewährt Zugriff auf Anwendungen und ist nicht für Benutzer vorgesehen.
-
-  > [!NOTE]
-  > Diese Rolle erbt zusätzliche Berechtigungen von der Rolle.
-  >
-  >
 
 | **Aktionen** | **Beschreibung** |
 | --- | --- |
@@ -570,11 +506,6 @@ Lesen von grundlegenden Verzeichnisinformationen. Die Rolle gewährt Zugriff auf
 ### <a name="directory-synchronization-accounts"></a>Konten zur Verzeichnissynchronisierung
 Nur vom Azure AD Connect-Dienst verwendet.
 
-  > [!NOTE]
-  > Diese Rolle erbt zusätzliche Berechtigungen von der Rolle.
-  >
-  >
-
 | **Aktionen** | **Beschreibung** |
 | --- | --- |
 | microsoft.aad.directory/organization/dirSync/update | Aktualisieren der organization.dirSync-Eigenschaft in Azure Active Directory |
@@ -604,11 +535,6 @@ Nur vom Azure AD Connect-Dienst verwendet.
 ### <a name="directory-writers"></a>Verzeichnis schreiben
 Lesen und Schreiben von grundlegenden Verzeichnisinformationen. Die Rolle gewährt Zugriff auf Anwendungen und ist nicht für Benutzer vorgesehen.
 
-  > [!NOTE]
-  > Diese Rolle erbt zusätzliche Berechtigungen von der Rolle „Verzeichnis lesen“.
-  >
-  >
-
 | **Aktionen** | **Beschreibung** |
 | --- | --- |
 | microsoft.aad.directory/groups/create | Erstellen von Gruppen in Azure Active Directory |
@@ -630,11 +556,6 @@ Lesen und Schreiben von grundlegenden Verzeichnisinformationen. Die Rolle gewäh
 
 ### <a name="exchange-service-administrator"></a>Exchange-Dienstadministrator
 Verwalten sämtlicher Aspekte des Produkts Exchange.
-
-  > [!NOTE]
-  > Diese Rolle erbt zusätzliche Berechtigungen von der Rolle „Verzeichnis lesen“.
-  >
-  >
 
   > [!NOTE]
   > Diese Rolle verfügt über zusätzliche Berechtigungen außerhalb von Azure Active Directory. Weitere Informationen finden Sie in der Rollenbeschreibung oben.
@@ -659,11 +580,6 @@ Verwalten sämtlicher Aspekte des Produkts Exchange.
 ### <a name="guest-inviter"></a>Gasteinladender
 Diese Rolle kann Gastbenutzer einladen, unabhängig von der Einstellung „Mitglieder können Gäste einladen“.
 
-  > [!NOTE]
-  > Diese Rolle erbt zusätzliche Berechtigungen von der Rolle.
-  >
-  >
-
 | **Aktionen** | **Beschreibung** |
 | --- | --- |
 | microsoft.aad.directory/users/appRoleAssignments/read | Lesen der users.appRoleAssignments-Eigenschaft in Azure Active Directory |
@@ -682,11 +598,6 @@ Diese Rolle kann Gastbenutzer einladen, unabhängig von der Einstellung „Mitgl
 ### <a name="helpdesk-administrator"></a>Helpdeskadministrator
 Zurücksetzen von Kennwörtern für Nicht-Administratoren und Helpdeskadministratoren.
 
-  > [!NOTE]
-  > Diese Rolle erbt zusätzliche Berechtigungen von der Rolle „Verzeichnis lesen“.
-  >
-  >
-
 | **Aktionen** | **Beschreibung** |
 | --- | --- |
 | microsoft.aad.directory/users/invalidateAllRefreshTokens | Kennzeichnen sämtlicher Aktualisierungstoken für Benutzer in Azure Active Directory als ungültig. |
@@ -699,11 +610,6 @@ Zurücksetzen von Kennwörtern für Nicht-Administratoren und Helpdeskadministra
 
 ### <a name="information-protection-administrator"></a>Information Protection-Administrator
 Verwalten sämtlicher Aspekte des Produkts Azure Information Protection.
-
-  > [!NOTE]
-  > Diese Rolle erbt zusätzliche Berechtigungen von der Rolle „Verzeichnis lesen“.
-  >
-  >
 
   > [!NOTE]
   > Diese Rolle verfügt über zusätzliche Berechtigungen außerhalb von Azure Active Directory. Weitere Informationen finden Sie in der Rollenbeschreibung oben.
@@ -720,11 +626,6 @@ Verwalten sämtlicher Aspekte des Produkts Azure Information Protection.
 
 ### <a name="intune-service-administrator"></a>Intune-Dienstadministrator
 Verwalten sämtlicher Aspekte des Produkts Intune.
-
-  > [!NOTE]
-  > Diese Rolle erbt zusätzliche Berechtigungen von der Rolle „Verzeichnis lesen“.
-  >
-  >
 
   > [!NOTE]
   > Diese Rolle verfügt über zusätzliche Berechtigungen außerhalb von Azure Active Directory. Weitere Informationen finden Sie in der Rollenbeschreibung oben.
@@ -761,11 +662,6 @@ Verwalten sämtlicher Aspekte des Produkts Intune.
 ### <a name="license-administrator"></a>Lizenzadministrator
 Kann Produktlizenzen für Benutzer und Gruppen verwalten.
 
-  > [!NOTE]
-  > Diese Rolle erbt zusätzliche Berechtigungen von der Rolle „Verzeichnis lesen“.
-  >
-  >
-
 | **Aktionen** | **Beschreibung** |
 | --- | --- |
 | microsoft.aad.directory/users/assignLicense | Verwalten der Lizenzen für Benutzer in Azure Active Directory |
@@ -776,11 +672,6 @@ Kann Produktlizenzen für Benutzer und Gruppen verwalten.
 
 ### <a name="lync-service-administrator"></a>Lync-Dienstadministrator
 Verwalten sämtlicher Aspekte des Produkts Skype for Business.
-
-  > [!NOTE]
-  > Diese Rolle erbt zusätzliche Berechtigungen von der Rolle „Verzeichnis lesen“.
-  >
-  >
 
   > [!NOTE]
   > Diese Rolle verfügt über zusätzliche Berechtigungen außerhalb von Azure Active Directory. Weitere Informationen finden Sie in der Rollenbeschreibung oben.
@@ -800,11 +691,6 @@ Verwalten sämtlicher Aspekte des Produkts Skype for Business.
 Lesen von Nachrichten und Updates für die Organisation ausschließlich im Office 365-Nachrichtencenter. 
 
   > [!NOTE]
-  > Diese Rolle erbt zusätzliche Berechtigungen von der Rolle „Verzeichnis lesen“.
-  >
-  >
-
-  > [!NOTE]
   > Diese Rolle verfügt über zusätzliche Berechtigungen außerhalb von Azure Active Directory. Weitere Informationen finden Sie in der Rollenbeschreibung oben.
   >
   >
@@ -816,11 +702,6 @@ Lesen von Nachrichten und Updates für die Organisation ausschließlich im Offic
 
 ### <a name="partner-tier1-support"></a>Partnersupport der Ebene 1
 Verwenden Sie diese Rolle nicht – sie ist nicht zur allgemeinen Verwendung vorgesehen.
-
-  > [!NOTE]
-  > Diese Rolle erbt zusätzliche Berechtigungen von der Rolle „Verzeichnis lesen“.
-  >
-  >
 
   > [!NOTE]
   > Diese Rolle verfügt über zusätzliche Berechtigungen außerhalb von Azure Active Directory. Weitere Informationen finden Sie in der Rollenbeschreibung oben.
@@ -853,11 +734,6 @@ Verwenden Sie diese Rolle nicht – sie ist nicht zur allgemeinen Verwendung vor
 
 ### <a name="partner-tier2-support"></a>Partnersupport der Ebene 2
 Verwenden Sie diese Rolle nicht – sie ist nicht zur allgemeinen Verwendung vorgesehen.
-
-  > [!NOTE]
-  > Diese Rolle erbt zusätzliche Berechtigungen von der Rolle „Verzeichnis lesen“.
-  >
-  >
 
   > [!NOTE]
   > Diese Rolle verfügt über zusätzliche Berechtigungen außerhalb von Azure Active Directory. Weitere Informationen finden Sie in der Rollenbeschreibung oben.
@@ -895,11 +771,6 @@ Verwenden Sie diese Rolle nicht – sie ist nicht zur allgemeinen Verwendung vor
 Verwalten sämtlicher Aspekte des Produkts Power BI.
 
   > [!NOTE]
-  > Diese Rolle erbt zusätzliche Berechtigungen von der Rolle „Verzeichnis lesen“.
-  >
-  >
-
-  > [!NOTE]
   > Diese Rolle verfügt über zusätzliche Berechtigungen außerhalb von Azure Active Directory. Weitere Informationen finden Sie in der Rollenbeschreibung oben.
   >
   >
@@ -917,11 +788,6 @@ Verwalten sämtlicher Aspekte des Produkts Power BI.
 Dieser Administrator kann Rollenzuweisungen in Azure AD und alle Aspekte von Privileged Identity Management verwalten.
 
   > [!NOTE]
-  > Diese Rolle erbt zusätzliche Berechtigungen von der Rolle „Verzeichnis lesen“.
-  >
-  >
-
-  > [!NOTE]
   > Diese Rolle verfügt über zusätzliche Berechtigungen außerhalb von Azure Active Directory. Weitere Informationen finden Sie in der Rollenbeschreibung oben.
   >
   >
@@ -933,11 +799,6 @@ Dieser Administrator kann Rollenzuweisungen in Azure AD und alle Aspekte von Pri
 
 ### <a name="reports-reader"></a>Meldet Reader
 Lesen von Anmeldungs- und Überwachungsberichten.
-
-  > [!NOTE]
-  > Diese Rolle erbt zusätzliche Berechtigungen von der Rolle „Verzeichnis lesen“.
-  >
-  >
 
   > [!NOTE]
   > Diese Rolle verfügt über zusätzliche Berechtigungen außerhalb von Azure Active Directory. Weitere Informationen finden Sie in der Rollenbeschreibung oben.
@@ -954,11 +815,6 @@ Lesen von Anmeldungs- und Überwachungsberichten.
 
 ### <a name="security-administrator"></a>Sicherheitsadministrator
 Dieser Administrator kann Sicherheitsinformationen und -berichte lesen und die Konfiguration in Azure AD und Office 365 verwalten.
-
-  > [!NOTE]
-  > Diese Rolle erbt zusätzliche Berechtigungen von der Rolle „Verzeichnis lesen“.
-  >
-  >
 
   > [!NOTE]
   > Diese Rolle verfügt über zusätzliche Berechtigungen außerhalb von Azure Active Directory. Weitere Informationen finden Sie in der Rollenbeschreibung oben.
@@ -988,11 +844,6 @@ Dieser Administrator kann Sicherheitsinformationen und -berichte lesen und die K
 Lesen von Sicherheitsinformationen und Berichten in Azure AD und Office 365.
 
   > [!NOTE]
-  > Diese Rolle erbt zusätzliche Berechtigungen von der Rolle „Verzeichnis lesen“.
-  >
-  >
-
-  > [!NOTE]
   > Diese Rolle verfügt über zusätzliche Berechtigungen außerhalb von Azure Active Directory. Weitere Informationen finden Sie in der Rollenbeschreibung oben.
   >
   >
@@ -1012,11 +863,6 @@ Lesen von Sicherheitsinformationen und Berichten in Azure AD und Office 365.
 Lesen von Service Health-Informationen und Verwalten von Supporttickets.
 
   > [!NOTE]
-  > Diese Rolle erbt zusätzliche Berechtigungen von der Rolle „Verzeichnis lesen“.
-  >
-  >
-
-  > [!NOTE]
   > Diese Rolle verfügt über zusätzliche Berechtigungen außerhalb von Azure Active Directory. Weitere Informationen finden Sie in der Rollenbeschreibung oben.
   >
   >
@@ -1031,11 +877,6 @@ Lesen von Service Health-Informationen und Verwalten von Supporttickets.
 
 ### <a name="sharepoint-service-administrator"></a>SharePoint-Dienstadministrator
 Verwalten sämtlicher Aspekte des SharePoint-Diensts.
-
-  > [!NOTE]
-  > Diese Rolle erbt zusätzliche Berechtigungen von der Rolle „Verzeichnis lesen“.
-  >
-  >
 
   > [!NOTE]
   > Diese Rolle verfügt über zusätzliche Berechtigungen außerhalb von Azure Active Directory. Weitere Informationen finden Sie in der Rollenbeschreibung oben.
@@ -1061,11 +902,6 @@ Verwalten sämtlicher Aspekte des SharePoint-Diensts.
 Kann Anruf- und Besprechungsfunktionen im Microsoft Teams-Dienst verwalten.
 
   > [!NOTE]
-  > Diese Rolle erbt zusätzliche Berechtigungen von der Rolle „Verzeichnis lesen“.
-  >
-  >
-
-  > [!NOTE]
   > Diese Rolle verfügt über zusätzliche Berechtigungen außerhalb von Azure Active Directory. Weitere Informationen finden Sie in der Rollenbeschreibung oben.
   >
   >
@@ -1084,11 +920,6 @@ Kann Anruf- und Besprechungsfunktionen im Microsoft Teams-Dienst verwalten.
 Kann Kommunikationsprobleme in Teams mithilfe von erweiterten Tools behandeln.
 
   > [!NOTE]
-  > Diese Rolle erbt zusätzliche Berechtigungen von der Rolle „Verzeichnis lesen“.
-  >
-  >
-
-  > [!NOTE]
   > Diese Rolle verfügt über zusätzliche Berechtigungen außerhalb von Azure Active Directory. Weitere Informationen finden Sie in der Rollenbeschreibung oben.
   >
   >
@@ -1104,11 +935,6 @@ Kann Kommunikationsprobleme in Teams mithilfe von erweiterten Tools behandeln.
 Kann Kommunikationsprobleme in Teams mithilfe von allgemeinen Tools behandeln.
 
   > [!NOTE]
-  > Diese Rolle erbt zusätzliche Berechtigungen von der Rolle „Verzeichnis lesen“.
-  >
-  >
-
-  > [!NOTE]
   > Diese Rolle verfügt über zusätzliche Berechtigungen außerhalb von Azure Active Directory. Weitere Informationen finden Sie in der Rollenbeschreibung oben.
   >
   >
@@ -1122,11 +948,6 @@ Kann Kommunikationsprobleme in Teams mithilfe von allgemeinen Tools behandeln.
 
 ### <a name="teams-service-administrator"></a>Teams-Dienstadministrator
 Kann den Microsoft Teams-Dienst verwalten.
-
-  > [!NOTE]
-  > Diese Rolle erbt zusätzliche Berechtigungen von der Rolle „Verzeichnis lesen“.
-  >
-  >
 
   > [!NOTE]
   > Diese Rolle verfügt über zusätzliche Berechtigungen außerhalb von Azure Active Directory. Weitere Informationen finden Sie in der Rollenbeschreibung oben.
@@ -1152,11 +973,6 @@ Kann den Microsoft Teams-Dienst verwalten.
 
 ### <a name="user-account-administrator"></a>Benutzerkontoadministrator
 Dieser Administrator kann alle Aspekte von Benutzern und Gruppen verwalten, einschließlich der Kennwortzurücksetzung für eingeschränkte Administratoren.
-
-  > [!NOTE]
-  > Diese Rolle erbt zusätzliche Berechtigungen von der Rolle „Verzeichnis lesen“.
-  >
-  >
 
 | **Aktionen** | **Beschreibung** |
 | --- | --- |

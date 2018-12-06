@@ -9,22 +9,22 @@ ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 2a399899c93addf966d3f2ec0e36d4b1c76b686f
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 1b4ca22faf8ef01cab4b2e7231fea8ed49f0fcb3
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51038306"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52494590"
 ---
 # <a name="collect-heap-dumps-in-blob-storage-to-debug-and-analyze-apache-hadoop-services"></a>Sammeln von Heapdumps in Blob Storage zum Debuggen und Analysieren von Apache Hadoop-Diensten
 [!INCLUDE [heapdump-selector](../../includes/hdinsight-selector-heap-dump.md)]
 
-Heapdumps enthalten eine Momentaufnahme des Speichers der Anwendung, einschließlich der Werte von Variablen zum Zeitpunkt der Dumperstellung. Daher sind sie zum Diagnostizieren von Problemen nützlich, die bei der Ausführung auftreten. Heapdumps können für Apache Hadoop-Dienste automatisch gesammelt und im Azure Blob Storage-Konto eines Benutzers unter „HDInsightHeapDumps/“ abgelegt werden.
+Heapdumps enthalten eine Momentaufnahme des Speichers der Anwendung, einschließlich der Werte von Variablen zum Zeitpunkt der Dumperstellung. Daher sind sie zum Diagnostizieren von Problemen nützlich, die bei der Ausführung auftreten. Heapdumps können für [Apache Hadoop](https://hadoop.apache.org/)-Dienste automatisch erfasst und im Azure Blob Storage-Konto eines Benutzers unter „HDInsightHeapDumps/“ abgelegt werden.
 
 Die Sammlung von Heapdumps für verschiedene Dienste muss für Dienste in einzelnen Clustern aktiviert werden. Standardmäßig ist dieses Feature für einen Cluster deaktiviert. Diese Heapdumps können groß sein, sodass es ratsam ist, das Blobspeicherkonto zu überwachen, in dem sie gespeichert werden, nachdem die Sammlung aktiviert wurde.
 
 > [!IMPORTANT]
-> Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Welche Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?](hdinsight-component-versioning.md#hdinsight-windows-retirement). Die Informationen in diesem Artikel gelten nur für Windows-basierte HDInsight-Cluster. Informationen zu Linux-basierten HDInsight-Clustern finden Sie unter [Aktivieren von Heapdumps für Hadoop-Dienste auf Linux-basierten HDInsight-Clustern](hdinsight-hadoop-collect-debug-heap-dump-linux.md)
+> Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Welche Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?](hdinsight-component-versioning.md#hdinsight-windows-retirement). Die Informationen in diesem Artikel gelten nur für Windows-basierte HDInsight-Cluster. Informationen zu Linux-basierten HDInsight-Clustern finden Sie unter [Aktivieren von Heapdumps für Apache Hadoop-Dienste auf Linux-basierten HDInsight-Clustern](hdinsight-hadoop-collect-debug-heap-dump-linux.md)
 
 
 ## <a name="eligible-services-for-heap-dumps"></a>Verfügbare Dienste für Heapdumps

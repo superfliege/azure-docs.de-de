@@ -1,25 +1,18 @@
 ---
 title: Umstellen von ExpressRoute-Verbindungen vom klassischen Bereitstellungsmodell auf das Resource Manager-Bereitstellungsmodell | Microsoft Docs
 description: Diese Seite enthält Informationen zur Überbrückung des klassischen Bereitstellungsmodells und des Resource Manager-Bereitstellungsmodells.
-documentationcenter: na
 services: expressroute
 author: ganesr
-manager: carmonm
-editor: ''
-ms.assetid: bdf01217-1a98-4ec0-a08e-d84fd37f78af
 ms.service: expressroute
-ms.devlang: na
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
+ms.topic: conceptual
 ms.date: 05/02/2017
 ms.author: ganesr
-ms.openlocfilehash: 7f8386b518ada850fc03e23c5cae3b159b3b213e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6b9ac7408f83677ed9898dc37fc234b9b9a6386f
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "22710064"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51977028"
 ---
 # <a name="moving-expressroute-circuits-from-the-classic-to-the-resource-manager-deployment-model"></a>Umstellen von ExpressRoute-Verbindungen vom klassischen Bereitstellungsmodell auf das Resource Manager-Bereitstellungsmodell
 Dieser Artikel enthält eine Übersicht über die Umstellung einer Azure ExpressRoute-Verbindung vom klassischen Bereitstellungsmodell auf das Azure Resource Manager-Bereitstellungsmodell.
@@ -102,7 +95,7 @@ Folgen Sie den Anweisungen unter [Verschieben von ExpressRoute-Verbindungen vom 
 * Workflowinformationen finden Sie unter [Bereitstellungsworkflows für ExpressRoute-Verbindungen und Verbindungszustände](expressroute-workflows.md).
 * Gehen Sie zum Konfigurieren Ihrer ExpressRoute-Verbindung wie folgt vor:
   
-  * [Erstellen einer ExpressRoute-Verbindung](expressroute-howto-circuit-arm.md)
+  * [Erstellen Sie eine ExpressRoute-Verbindung.](expressroute-howto-circuit-arm.md)
   * [Konfigurieren des Routings](expressroute-howto-routing-arm.md)
   * [Verknüpfen eines virtuellen Netzwerks mit einer ExpressRoute-Verbindung](expressroute-howto-linkvnet-arm.md)
 

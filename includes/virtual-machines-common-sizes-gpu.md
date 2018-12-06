@@ -2,22 +2,22 @@
 title: Includedatei
 description: Includedatei
 services: virtual-machines-windows, virtual-machines-linux
-author: dlepow
+author: cynthn
 ms.service: multiple
 ms.topic: include
-ms.date: 10/23/2018
-ms.author: danlep;azcspmt;jonbeck
+ms.date: 11/14/2018
+ms.author: cynthn;azcspmt;jonbeck
 ms.custom: include file
-ms.openlocfilehash: 4fde34338d5606a1f431ff4b7f7074d9cd472e90
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: b6df4ada1aa13e20c7ad52d2b58cdf9c783f9e24
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "50035328"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51716188"
 ---
 GPU-optimierte VM-Größen sind für spezialisierte virtuelle Computer mit einzelnen oder mehreren NVIDIA-GPUs verfügbar. Diese Größen sind für rechenintensive, grafikintensive und visualisierungsorientierte Workloads vorgesehen. Dieser Artikel enthält Informationen über die Anzahlen und Typen von GPUs, vCPUs, Datenträgern und NICs. Der Speicherdurchsatz und die Netzwerkbandbreite sind für die jeweiligen Größen in dieser Gruppe ebenfalls enthalten. 
 
-* Die Größen **NC, NCv2, NCv3 und ND** sind für rechen- und netzwerkintensive Anwendungen und Algorithmen optimiert. Einige Beispiele sind CUDA- und OpenCL-basierte Anwendungen und Simulationen, KI und Deep Learning. Die NCv3-Serie ist für High Performance Computing-Workloads, die mit der Tesla V100-GPU von NVIDIA ausgestattet sind, konzipiert.  Die ND-Serie ist auf Trainings- und Rückschlussszenarien für Deep Learning spezialisiert. Sie wird mit der NVIDIA Tesla P40-GPU betrieben.
+* Die Größen **NC, NCv2, NCv3, ND und NDv2** sind für compute- und netzwerkintensive Anwendungen und Algorithmen optimiert. Einige Beispiele sind CUDA- und OpenCL-basierte Anwendungen und Simulationen, KI und Deep Learning. Die NCv3-Serie ist für High Performance Computing-Workloads, die mit der Tesla V100-GPU von NVIDIA ausgestattet sind, konzipiert.  Die ND-Serie ist auf Trainings- und Rückschlussszenarien für Deep Learning spezialisiert. Sie wird mit der NVIDIA Tesla P40-GPU betrieben.
 * Die Größen **NV und NVv2** sind für Remotevisualisierung, Streaming, Spiele, Codierung und VDI-Szenarien mit Frameworks wie OpenGL und DirectX optimiert und konzipiert.  Diese VMs werden von der NVIDIA Tesla M60-GPU unterstützt.
 
 
@@ -86,6 +86,26 @@ NCv3-Serien-VMs werden mit [NVIDIA Tesla V100](http://www.nvidia.com/content/PDF
 Eine GPU entspricht einer V100-Karte.
 
 *RDMA-fähig
+
+## <a name="ndv2-series-preview"></a>NDv2-Serie (Vorschau)
+
+
+Storage Premium: unterstützt
+
+Storage Premium-Zwischenspeicherung: unterstützt
+
+InfiniBand: nicht unterstützt
+
+
+Die virtuellen Computer der NDv2-Serie sind neu in der Familie von GPUs, die auf die Anforderungen von HPC-, KI- und Machine Learning-Workloads ausgelegt sind. Die Serie umfasst 8 miteinander verbundene NVIDIA Tesla V100 NVLINK-GPUs, 40 Intel Skylake-Kerne und 672 GiB Systemarbeitsspeicher. Eine NDv2-Instanz bietet herausragende FP32- und FP64-Leistung für HPC- und KI-Workloads und nutzt dabei CUDA, TensorFlow, Pytorch, Caffe und andere Frameworks.
+
+[Registrieren Sie sich, um diese virtuellen Computer in der Vorschauversion zu nutzen](https://aka.ms/ndv2signup).
+<br>
+
+
+| Größe              | vCPUs | GPU              | Arbeitsspeicher  | Netzwerkkarten (max.) | Maximal Datenträgergröße           | Maximal Datenträger (jeweils 1023 GB) | Max. Netzwerkbandbreite | 
+|-------------------|-------------|-------------------|--------|------------------|---------|------------|--------------------------|--------------------|--------------------------------|-----------------------------------------|-----------------------|------------|
+| Standard_ND40s_v2 | 40     | 8 V100 (NVlilnk) | 672 GiB | 8          | 1344/2948XIO temporär | 32    | 24.000 MBit/s             | 
 
 ## <a name="nd-series"></a>ND-Serie
 

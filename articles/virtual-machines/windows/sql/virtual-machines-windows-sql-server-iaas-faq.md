@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 07/12/2018
 ms.author: v-shysun
-ms.openlocfilehash: edddc40b17adde685f875dfaa6b20879c6e61b15
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: edfd2e9e03aefa4833c8472a43d4857f08b95780
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51259155"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52495478"
 ---
 # <a name="frequently-asked-questions-for-sql-server-running-on-windows-virtual-machines-in-azure"></a>Häufig gestellte Fragen zu SQL Server auf virtuellen Windows-Computern in Azure
 
@@ -55,7 +55,7 @@ Dieser Artikel bietet Antworten auf einige der häufigsten Fragen zur Ausführun
 
 1. **Ist es möglich, Konfigurationen einzurichten, die nicht im Katalog der virtuellen Computer gezeigt werden (z.B. Windows 2008 R2 + SQL Server 2012) ?**
 
-   Nein. Für Katalogimages von virtuellen Computern, die SQL Server enthalten, müssen Sie eines der bereitgestellten Images auswählen.
+    Nein. Für Katalogimages von virtuellen Computern, die SQL Server enthalten, müssen Sie eines der bereitgestellten Images auswählen.
 
 ## <a name="creation"></a>Erstellung
 
@@ -71,16 +71,48 @@ Dieser Artikel bietet Antworten auf einige der häufigsten Fragen zur Ausführun
 
 1. **Wie kann ich meine lizenzierte Kopie von SQL Server auf einer Azure-VM installieren?**
 
-   Es gibt hierbei zwei Möglichkeiten. Sie können eines der [VM-Images, die Lizenzen unterstützen](virtual-machines-windows-sql-server-iaas-overview.md#BYOL), bereitstellen – dies ist auch bekannt als Bring-Your-Own-License (BYOL). Eine weitere Möglichkeit ist das Kopieren der SQL Server-Installationsmedien auf einen virtuellen Windows Server-Computer und das anschließende Installieren von SQL Server auf dem virtuellen Computer. Wenn Sie SQL Server jedoch manuell installieren, gibt es keine Portalintegration, und die SQL Server-IaaS-Agent-Erweiterung wird nicht unterstützt, sodass Features wie z.B. automatisierte Sicherung und automatisiertes Patchen in diesem Szenario nicht funktionieren. Aus diesem Grund sollten Sie eines der Images aus dem BYOL-Katalog verwenden. Um BYOL oder Ihre eigenen SQL Server-Medien auf einer Azure-VM zu verwenden, benötigen Sie [License Mobility durch Software Assurance für Azure](https://azure.microsoft.com/pricing/license-mobility/). Weitere Informationen finden Sie unter [Pricing guidance for SQL Server Azure VMs](virtual-machines-windows-sql-server-pricing-guidance.md) (Preisinformationen für virtuelle Azure-Computer unter SQL Server).
+   Es gibt hierbei zwei Möglichkeiten. Sie können eines der [VM-Images, die Lizenzen unterstützen](virtual-machines-windows-sql-server-iaas-overview.md#BYOL), bereitstellen – dies ist auch bekannt als Bring-Your-Own-License (BYOL). Eine weitere Möglichkeit ist das Kopieren der SQL Server-Installationsmedien auf einen virtuellen Windows Server-Computer und das anschließende Installieren von SQL Server auf dem virtuellen Computer. Wenn Sie SQL Server jedoch manuell installieren, gibt es keine Portalintegration, und die SQL Server-IaaS-Agent-Erweiterung wird nicht unterstützt, sodass Features wie z.B. automatisierte Sicherung und automatisiertes Patchen in diesem Szenario nicht funktionieren. Aus diesem Grund wird empfohlen, eines der Images aus dem BYOL-Katalog zu verwenden. Um BYOL oder Ihre eigenen SQL Server-Medien auf einer Azure-VM zu verwenden, benötigen Sie [License Mobility durch Software Assurance für Azure](https://azure.microsoft.com/pricing/license-mobility/). Weitere Informationen finden Sie unter [Pricing guidance for SQL Server Azure VMs](virtual-machines-windows-sql-server-pricing-guidance.md) (Preisinformationen für virtuelle Azure-Computer unter SQL Server).
 
-1. **Kann ich einen virtuellen Computer so ändern, dass meine eigene SQL Server-Lizenz verwendet wird, wenn er mithilfe eines der Katalogimages mit nutzungsbasierter Bezahlung erstellt wurde?**
-
-   Nein. Von der Lizenzierung mit sekundengenauer Abrechnung kann nicht zur Verwendung einer eigenen Lizenz gewechselt werden. Erstellen Sie mithilfe eines der [BYOL-Images](virtual-machines-windows-sql-server-iaas-overview.md#BYOL) einen neuen virtuellen Azure-Computer, und migrieren Sie dann Ihre Datenbanken mit dem standardmäßigen [Datenmigrationsverfahren](virtual-machines-windows-migrate-sql.md) zum neuen Server.
 
 1. **Muss ich Lizenzgebühren für SQL Server auf einem virtuellen Azure-Computer bezahlen, wenn dieser nur für Standby/Failover verwendet wird?**
 
-   Wenn Sie über Software Assurance verfügen und Lizenzmobilität gemäß der Beschreibung in [FAQ zur Lizenzierung von virtuellen Computern](https://azure.microsoft.com/pricing/licensing-faq/) verwenden, müssen Sie keine Lizenzgebühren für einen SQL Server bezahlen, wenn dieser als passives sekundäres Replikat in einer Bereitstellung mit hoher Verfügbarkeit fungiert. Andernfalls müssen Sie für die Lizenzierung bezahlen.
+   Wenn Sie über Software Assurance verfügen und Lizenzmobilität gemäß der Beschreibung in [FAQ zur Lizenzierung von virtuellen Computern](https://azure.microsoft.com/pricing/licensing-faq/) verwenden, müssen Sie keine Lizenzgebühren für einen SQL Server bezahlen, wenn dieser als passives sekundäres Replikat in einer Bereitstellung mit Hochverfügbarkeit fungiert. Andernfalls müssen Sie für die Lizenzierung bezahlen.
 
+1. **Kann ich einen virtuellen Computer so ändern, dass meine eigene SQL Server-Lizenz verwendet wird, wenn er mithilfe eines der Katalogimages mit nutzungsbasierter Bezahlung erstellt wurde?**
+
+   Ja. Sie können problemlos und unabhängig vom ursprünglich bereitgestellten Image zwischen den beiden Lizenzierungsmodellen wechseln. Weitere Informationen finden Sie unter [Ändern des Lizenzierungsmodells für einen virtuellen SQL-Computer](virtual-machines-windows-sql-ahb.md).
+
+1. **Sollte ich zum Erstellen neuer SQL-VMs BYOL-Images oder den SQL-VM-Ressourcenanbieter verwenden?**
+
+   BYOL-Images (Bring Your Own License) sind nur für EA-Kunden verfügbar. Andere Kunden, die über Software Assurance verfügen, sollten zum Erstellen einer SQL-VM mit [Azure-Hybridvorteil](https://azure.microsoft.com/pricing/licensing-faq/) den SQL-VM-Ressourcenanbieter verwenden. 
+
+1. **Sind für den Wechsel des Lizenzierungsmodells Ausfallzeiten für SQL Server erforderlich?**
+
+    Nein. Das [Ändern das Lizenzierungsmodells](virtual-machines-windows-sql-ahb.md) erfordert keine Ausfallzeiten für SQL Server, da die Änderung sofort wirksam werden und kein Neustart des virtuellen Computers erforderlich ist. 
+
+1. **Können CSP-Abonnements den Azure-Hybridvorteil aktivieren?**
+
+   Ja. Das [Ändern das Lizenzierungsmodells](virtual-machines-windows-sql-ahb.md) ist für CSP-Abonnements verfügbar. 
+
+1. **Fallen für das Registrieren meines virtuellen Computers beim neuen SQL-VM-Ressourcenanbieter zusätzliche Kosten an?**
+
+    Nein. Der SQL-VM-Ressourcenanbieter stellt lediglich erweiterte Verwaltungsfunktionen für SQL Server auf virtuellen Azure-Computern ohne zusätzliche Gebühren bereit. 
+
+1. **Ist der SQL-VM-Ressourcenanbieter für alle Kunden verfügbar?**
+ 
+   Ja. Alle Kunden können sich für den neuen SQL-VM-Ressourcenanbieter registrieren. Jedoch können nur Kunden mit Software Assurance-Vorteil dem [Azure-Hybridvorteil](https://azure.microsoft.com/pricing/hybrid-benefit/) (oder BYOL) auf einer SQL Server-VM aktivieren. 
+
+1. **Was geschieht mit der Ressource* _Microsoft.SqlVirtualMachine_*, wenn die VM-Ressource verschoben oder gelöscht wird?** 
+
+   Wenn die Ressource Microsoft.Compute/VirtualMachine gelöscht oder verschoben wird, erhält die zugeordnete Ressource Microsoft.SqlVirtualMachine eine Benachrichtigung zum asynchronen Replizieren des Vorgangs.
+
+1. **Was geschieht mit dem virtuellen Computer, wenn die Ressource* _Microsoft.SqlVirtualMachine_* gelöscht wird?**
+
+   Die Ressource Microsoft.Compute/VirtualMachine ist nicht betroffen, wenn die Ressource Microsoft.SqlVirtualMachine gelöscht wird. Die Lizenzierungsänderungen werden jedoch wieder auf die ursprüngliche Imagequelle zurückgesetzt. 
+
+1. **Können selbst bereitgestellte SQL Server-VMs beim SQL-VM-Ressourcenanbieter registriert werden?**
+
+   Ja. Wenn Sie SQL Server über eigene Medien bereitgestellt haben, können Sie die SQL-VM beim Ressourcenanbieter registrieren, um die von der SQL-IaaS-Erweiterung bereitgestellten Verwaltbarkeitsvorteile zu erhalten. Sie können eine selbst bereitgestellte SQL-VM jedoch nicht in nutzungsbasierte Bezahlung konvertieren. 
 
 ## <a name="administration"></a>Verwaltung
 

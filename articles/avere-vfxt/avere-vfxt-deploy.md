@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: v-erkell
-ms.openlocfilehash: c8bad3642f1e98cac3857d536f539554235e1a51
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.openlocfilehash: d7c207f89b9cb50f940f071fbbf6ee81b4d44976
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51578636"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52164319"
 ---
 # <a name="deploy-the-vfxt-cluster"></a>Bereitstellen des vFXT-Clusters
 
@@ -286,7 +286,7 @@ RESOURCE_GROUP=
 * Subnetzname
 * Rollenname der Azure AD Runtime: Wenn Sie dem Beispiel in [Erstellen der Clusterknoten-Zugriffsrolle](#create-the-cluster-node-access-role) gefolgt sind, verwenden Sie ``avere-cluster``. 
 * Speicherkontoname (wenn ein neuer Blobcontainer erstellt wird)
-* Clustername: Sie können nicht zwei vFXT-Cluster mit demselben Namen in derselben Ressourcengruppe verwenden. 
+* Clustername: Sie können nicht zwei vFXT-Cluster mit demselben Namen in derselben Ressourcengruppe verwenden. Es empfiehlt sich, jedem Cluster einen eindeutigen Namen zu geben.
 * Administratorkennwort: Wählen Sie ein sicheres Kennwort für die Überwachung und Verwaltung des Clusters aus. Dieses Kennwort ist dem Benutzer ``admin`` zugeordnet. 
 * Knoteninstanztyp: Weitere Informationen finden Sie unter [vFXT-Knotengrößen](avere-vfxt-deploy-plan.md#vfxt-node-sizes).
 * Knotencachegröße: Weitere Informationen finden Sie unter [vFXT-Knotengrößen](avere-vfxt-deploy-plan.md#vfxt-node-sizes).

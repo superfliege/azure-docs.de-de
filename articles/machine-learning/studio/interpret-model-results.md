@@ -1,10 +1,11 @@
 ---
-title: Interpretieren von Modellergebnissen in Machine Learning | Microsoft Docs
+title: Interpretieren von Modellergebnissen in Machine Learning Studio – Azure | Microsoft-Dokumentation
 description: Auswahl des optimalen Parametersatzes für einen Algorithmus mit Verwendung und Visualisierung von Bewertungsmodellausgaben.
 services: machine-learning
 documentationcenter: ''
-author: heatherbshapiro
-ms.author: hshapiro
+author: ericlicoding
+ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
+ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
 ms.assetid: 6230e5ab-a5c0-4c21-a061-47675ba3342c
@@ -15,14 +16,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2017
-ms.openlocfilehash: e62f4716a95a6c1840afde27361eeb756abff335
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: c06b05989270b4199e5d97ca399a1411b73a702b
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34837003"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52310268"
 ---
-# <a name="interpret-model-results-in-azure-machine-learning"></a>Interpretieren von Modellergebnissen in Azure Machine Learning
+# <a name="interpret-model-results-in-azure-machine-learning-studio"></a>Interpretieren von Modellergebnissen in Azure Machine Learning Studio
 In diesem Thema werden die Visualisierung und das Interpretieren der Vorhersageergebnisse in Azure Machine Learning Studio erläutert. Nachdem Sie ein Modell trainiert und darauf basierend Vorhersagen erstellt (das Modell ausgewertet) haben, müssen Sie das Vorhersageergebnis verstehen und interpretieren.
 
 [!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
@@ -116,7 +117,7 @@ Visualisieren Sie die Ergebnisse aus dem Modul [Score Model][score-model], indem
 
 ![Bewertungsmodellergebnisse](./media/interpret-model-results/7.png)
 
-Abbildung 7. Visualisieren der Bewertungsmodellergebnisse bei der Klassifizierung mit mehreren Klassen
+ Abbildung 7. Visualisieren der Bewertungsmodellergebnisse bei der Klassifizierung mit mehreren Klassen
 
 **Ergebnisinterpretation**
 

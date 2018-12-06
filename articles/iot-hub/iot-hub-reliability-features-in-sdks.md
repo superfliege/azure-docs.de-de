@@ -1,5 +1,5 @@
 ---
-title: Verwalten von Konnektivität und zuverlässigem Messaging mit Azure IoT Hub-Geräte-SDKs
+title: Verwalten von Konnektivität und zuverlässigem Messaging mithilfe von Azure IoT Hub-Geräte-SDKs
 description: Erfahren Sie, wie Sie Gerätekonnektivität und Messaging mithilfe der Azure IoT Hub-Geräte-SDKs verbessern
 services: iot-hub
 keywords: ''
@@ -12,63 +12,65 @@ documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 9a07fa2010eef22c4d1477641d07dee70ab5a9cb
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 64bd250f324bed53a9f33aa72f6b1daa48e0dc86
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47227441"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52424645"
 ---
-# <a name="how-to-manage-connectivity-and-reliable-messaging-using-azure-iot-hub-device-sdks"></a>Verwalten von Konnektivität und zuverlässigem Messaging mithilfe von Azure IoT Hub-Geräte-SDKs
+# <a name="manage-connectivity-and-reliable-messaging-by-using-azure-iot-hub-device-sdks"></a>Verwalten von Konnektivität und zuverlässigem Messaging mithilfe von Azure IoT Hub-Geräte-SDKs
 
-Dieser Leitfaden bietet eine allgemeine Anleitung für die Entwicklung stabiler Geräteanwendungen, indem die Vorteile der Features für Konnektivität und des zuverlässigen Messagings in den Azure IoT-Geräte-SDKs genutzt werden. Ziel dieses Artikels ist es, Antworten auf Fragen zu liefern und Hilfe für die folgenden Szenarien bereitzustellen:
+Dieser Artikel enthält eine allgemeine Anleitung für die Entwicklung stabilerer Geräteanwendungen. Es wird erläutert, wie Sie die Features für Konnektivität und zuverlässiges Messaging in Azure IoT-Geräte-SDKs nutzen können. Ziel dieser Anleitung ist die Unterstützung bei folgenden Szenarien:
 
-- Verwalten einer getrennten Netzwerkverbindung
-- Umschalten zwischen verschiedenen Netzwerkverbindungen
+- Beheben einer getrennten Netzwerkverbindung
+- Wechseln zwischen verschiedenen Netzwerkverbindungen
 - Erneutes Verbinden aufgrund vorübergehender Verbindungsfehler im Dienst
 
-Die Implementierungsdetails können je nach Sprache variieren. Weitere Details erhalten Sie nach Klicken auf die Links zur API-Dokumentation oder zum jeweiligen SDK.
+Die Implementierungsdetails können je nach Sprache variieren. Weitere Informationen finden Sie in der API-Dokumentation sowie im jeweiligen SDK:
 
 - [C/Python/iOS SDK](https://github.com/azure/azure-iot-sdk-c)
 - [.NET SDK](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/iothub/device/devdoc/requirements/retrypolicy.md)
 - [Java SDK](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-client/devdoc/requirement_docs/com/microsoft/azure/iothub/retryPolicy.md)
 - [Node SDK](https://github.com/Azure/azure-iot-sdk-node/wiki/Connectivity-and-Retries#types-of-errors-and-how-to-detect-them)
 
-
 ## <a name="designing-for-resiliency"></a>Entwerfen mit Blick auf Resilienz
 
-IoT-Geräte nutzen häufig durch Unterbrechungen gekennzeichnete bzw. instabile Netzwerkverbindungen, z.B. über GSM oder Satellit. Darüber hinaus können bei der Interaktion mit cloudbasierten Diensten Fehler aufgrund vorübergehender Bedingungen wie unregelmäßige Dienstverfügbarkeit und Störungen auf Infrastrukturebene (allgemein als kurzzeitige Störungen bezeichnet) auftreten. Eine auf einem Gerät ausgeführte Anwendung muss die Verbindungs- und Wiederverbindungsmechanismen sowie die Wiederholungslogik für das Senden und Empfangen von Nachrichten handhaben. Darüber hinaus hängen die Anforderungen an die Wiederholungsstrategie besonders vom IoT-Szenario, an dem das Gerät beteiligt ist, sowie vom Kontext und den Fähigkeiten des Geräts ab.
+IoT-Geräte nutzen häufig durch Unterbrechungen gekennzeichnete bzw. instabile Netzwerkverbindungen (z.B. über GSM oder Satellit). Bei der Interaktion der Geräte mit cloudbasierten Diensten können aufgrund unregelmäßiger Dienstverfügbarkeit und Störungen auf Infrastrukturebene oder kurzzeitiger Störungen Fehler auftreten. Eine auf einem Gerät ausgeführte Anwendung muss die Verbindungs- und Wiederverbindungsmechanismen sowie die Wiederholungslogik für das Senden und Empfangen von Nachrichten handhaben. Darüber hinaus hängen die Anforderungen für die Wiederholungsstrategie besonders vom IoT-Szenario, dem Kontext und den Funktionen des Geräts ab.
 
-Die Azure IoT Hub-Geräte-SDKs zielen darauf ab, die Verbindung und Kommunikation von Cloud-zu-Gerät und Gerät-zu-Cloud zu vereinfachen, indem sie eine zuverlässige und umfassende Möglichkeit zum Verbinden mit und Senden bzw. Empfangen von Nachrichten an bzw. von Azure IoT Hub bieten. Entwickler können auch bestehende Implementierungen modifizieren, um die optimale Wiederholungsstrategie für ein bestimmtes Szenario zu entwickeln.
+Die Azure IoT Hub-Geräte-SDKs zielen darauf ab, die Verbindung und Kommunikation von Cloud-zu-Gerät und Gerät-zu-Cloud zu vereinfachen. Diese SDKs stellen eine zuverlässige Möglichkeit für die Verbindung mit Azure IoT Hub dar und umfassen umfangreiche Optionen zum Senden und Empfangen von Nachrichten. Entwickler können zudem vorhandene Implementierungen ändern, um die optimale Wiederholungsstrategie für ein bestimmtes Szenario anzupassen.
 
 Die relevanten SDK-Funktionen, die Konnektivität und zuverlässiges Messaging unterstützen, werden in den folgenden Abschnitten behandelt.
 
 ## <a name="connection-and-retry"></a>Verbindung und Wiederholung
 
-Dieser Abschnitt bietet einen Überblick über die verfügbaren Wiederverbindungs- und Wiederholungsmuster bei der Verwaltung von Verbindungen, Implementierungsanleitungen für unterschiedliche Wiederholungsrichtlinien in Ihrer Geräteanwendung und relevante APIs für die Geräte-SDKs.
+Dieser Abschnitt bietet eine Übersicht über die verfügbaren Wiederverbindungs- und Wiederholungsmuster bei der Verwaltung von Verbindungen. Es werden Implementierungsschritte für unterschiedliche Wiederholungsrichtlinien in Ihrer Geräteanwendung und relevante APIs der Geräte-SDKs erläutert.
 
 ### <a name="error-patterns"></a>Fehlermuster
 Verbindungsfehler können auf vielen Ebenen auftreten:
 
--  Netzwerkfehler wie getrennter Socket und Namensauflösungsfehler
-- Fehler auf Protokollebene beim HTTP-, AMQP- und MQTT-Transport, wie z.B. getrennte Verbindungen oder abgelaufene Sitzungen
-- Fehler auf Anwendungsebene, die entweder aus lokalen Fehlern wie ungültigen Anmeldeinformationen oder einem Dienstverhalten wie Kontingentüberschreitung oder Drosselung resultieren
+- Netzwerkfehler: getrennter Socket und Namensauflösungsfehler
+- Fehler auf Protokollebene beim HTTP-, AMQP- und MQTT-Datentransport: getrennte Verbindungen oder abgelaufene Sitzungen
+- Fehler auf Anwendungsebene, die auf lokale Fehler zurückzuführen sind: ungültige Anmeldeinformationen oder Dienstverhalten (z.B. Kontingentüberschreitung oder Drosselung)
 
-Die Geräte-SDKs erkennen Fehler auf allen drei Ebenen.  Fehler im Zusammenhang mit dem Betriebssystem und Hardwarefehler werden von den Geräte-SDKs weder erkannt noch behandelt.  Der Entwurf basiert auf der Anleitung [Behandeln vorübergehender Fehler](/azure/architecture/best-practices/transient-faults#general-guidelines) im Azure Architecture Center.
+Die Geräte-SDKs erkennen Fehler auf allen drei Ebenen. Fehler im Zusammenhang mit dem Betriebssystem und Hardwarefehler werden von den Geräte-SDKs weder erkannt noch behandelt. Der SDK-Entwurf basiert auf der Anleitung [Behandeln vorübergehender Fehler](/azure/architecture/best-practices/transient-faults#general-guidelines) im Azure Architecture Center.
 
 ### <a name="retry-patterns"></a>Wiederholungsmuster
 
-Der allgemeine Ablauf für eine Wiederholung bei Erkennen von Verbindungsfehlern ist wie folgt: 
-1. Das SDK erkennt den Fehler und den damit verbundenen Fehler im Netzwerk, Protokoll oder in der Anwendung.
-2. Basierend auf dem Fehlertyp nutzt das SDK den Fehlerfilter, um zu entscheiden, ob eine Wiederholung erforderlich ist.  Wenn vom SDK ein **nicht behebbarer Fehler** erkannt wird, werden Vorgänge (Verbindung und Senden/Empfangen) abgebrochen, und der Benutzer wird vom SDK benachrichtigt. Ein nicht behebbarer Fehler ist ein Fehler, den das SDK ermitteln und bei dem es feststellen kann, dass er nicht korrigiert werden kann, z.B. ein Authentifizierungsfehler oder Fehler aufgrund eines falschen Endpunkts.
-3. Wenn ein **behebbarer Fehler** erkannt wird, beginnt das SDK mit der Wiederholung gemäß der angegebenen Wiederholungsrichtlinie, bis ein definiertes Zeitlimit abläuft.
-4. Wenn das definierte Zeitlimit abläuft, versucht das SDK nicht mehr, eine Verbindung herzustellen oder eine Nachricht zu senden, und benachrichtigt den Benutzer.
-5.  Das SDK ermöglicht dem Benutzer, einen Rückruf anzufügen, um Änderungen am Verbindungsstatus zu empfangen. 
+Die folgenden Schritte beschreiben den Wiederholungsvorgang bei Erkennen von Verbindungsfehlern:
 
-Drei Wiederholungsrichtlinien stehen zur Verfügung:
-- **ExponentialBackOffWithJitter**: Dies ist die standardmäßig angewendete Wiederholungsrichtlinie.  Sie ist am Anfang eher aggressiv, verlangsamt sich und erreicht dann eine maximale Verzögerung, die nicht überschritten wird.  Der Entwurf basiert auf der [Wiederholungsanleitung](https://docs.microsoft.com/azure/architecture/best-practices/retry-service-specific) im Azure Architecture Center.
-- **Benutzerdefinierte Wiederholung**: Sie können eine benutzerdefinierte Wiederholungsrichtlinie implementieren und diese je nach gewählter Sprache in die Wiederholungsrichtlinie (RetryPolicy) einfügen. Sie können eine Wiederholungsrichtlinie entwerfen, die für Ihr Szenario geeignet ist.  Diese ist nicht für das C SDK verfügbar.
-- **Keine Wiederholung**: Es gibt die Option, die Wiederholungsrichtlinie auf „no retry“ festzulegen, wodurch die Wiederholungslogik deaktiviert wird.  Das SDK versucht, einmal eine Verbindung herzustellen und einmal eine Nachricht zu senden, vorausgesetzt, die Verbindung ist hergestellt. Diese Richtlinie wird typischerweise in Fällen verwendet, in denen Bandbreiten- oder Kostenaspekte eine Rolle spielen.   Bei Wahl dieser Option gehen Nachrichten, die nicht gesendet werden können, verloren und können nicht wiederhergestellt werden. 
+1. Das SDK erkennt den Fehler und den damit verbundenen Fehler im Netzwerk, Protokoll oder in der Anwendung.
+1. Das SDK verwendet den Fehlerfilter, um den Fehlertyp zu ermitteln und zu ermitteln, ob eine Wiederholung erforderlich ist.
+1. Wenn das SDK einen **nicht behebbaren Fehler** erkennt, werden Vorgänge wie Verbinden, Senden und Empfangen abgebrochen. Das SDK benachrichtigt den Benutzer. Beispiele für nicht behebbare Fehler sind Authentifizierungsfehler oder Fehler aufgrund eines falschen Endpunkts.
+1. Wenn das SDK einen **behebbaren Fehler** erkennt, wird die Wiederholung entsprechend der angegebenen Wiederholungsrichtlinie durchgeführt, bis das definierte Zeitlimit abläuft.
+1. Wenn das definierte Zeitlimit abläuft, versucht das SDK nicht mehr, eine Verbindung herzustellen oder eine Nachricht zu senden, und benachrichtigt den Benutzer.
+1. Das SDK ermöglicht dem Benutzer, einen Rückruf anzufügen, um Änderungen am Verbindungsstatus zu empfangen.
+
+Die SDKs umfassen drei Wiederholungsrichtlinien:
+
+- **Exponentielles Backoff mit Jitter:** Diese standardmäßige Wiederholungsrichtlinie ist am Anfang eher aggressiv, verlangsamt sich und erreicht dann eine maximale Verzögerung. Der Entwurf basiert auf der [Wiederholungsanleitung](https://docs.microsoft.com/azure/architecture/best-practices/retry-service-specific) im Azure Architecture Center.
+- **Benutzerdefinierte Wiederholung:** Für einige SDK-Sprachen können Sie eine benutzerdefinierte Wiederholungsrichtlinie entwerfen, die für Ihr Szenario besser geeignet ist, und diese dann in die Wiederholungsrichtlinie (RetryPolicy) einfügen. Für das C SDK ist die benutzerdefinierte Wiederholung nicht verfügbar.
+- **Keine Wiederholung:** Sie können die Wiederholungsrichtlinie auf „no retry“ festlegen, wodurch die Wiederholungslogik deaktiviert wird. Das SDK versucht, einmal eine Verbindung herzustellen und einmal eine Nachricht zu senden, vorausgesetzt, die Verbindung ist hergestellt. Diese Richtlinie wird typischerweise in Szenarien verwendet, in denen Bandbreiten- oder Kostenaspekte eine Rolle spielen. Bei dieser Option gehen Nachrichten, die nicht gesendet werden können, verloren und können nicht wiederhergestellt werden.
 
 ### <a name="retry-policy-apis"></a>APIs für Wiederholungsrichtlinien
 
@@ -78,9 +80,8 @@ Drei Wiederholungsrichtlinien stehen zur Verfügung:
    | Java| [SetRetryPolicy](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device._device_client_config.setretrypolicy?view=azure-java-stable)        | **Standard**: [ExponentialBackoffWithJitter-Klasse](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-client/src/main/java/com/microsoft/azure/sdk/iot/device/transport/NoRetry.java)<BR>**Benutzerdefiniert:** [RetryPolicy-Schnittstelle](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-client/src/main/java/com/microsoft/azure/sdk/iot/device/transport/RetryPolicy.java) implementieren<BR>**Keine Wiederholung:** [NoRetry-Klasse](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-client/src/main/java/com/microsoft/azure/sdk/iot/device/transport/NoRetry.java)  | [Java-Implementierung](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-client/devdoc/requirement_docs/com/microsoft/azure/iothub/retryPolicy.md) |[.NET SDK](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/iothub/device/devdoc/requirements/retrypolicy.md)
    | .NET| [DeviceClient.SetRetryPolicy](/dotnet/api/microsoft.azure.devices.client.deviceclient.setretrypolicy?view=azure-dotnet#Microsoft_Azure_Devices_Client_DeviceClient_SetRetryPolicy_Microsoft_Azure_Devices_Client_IRetryPolicy) | **Standard**: [ExponentialBackoff-Klasse](/dotnet/api/microsoft.azure.devices.client.exponentialbackoff?view=azure-dotnet)<BR>**Benutzerdefiniert:** [IRetryPolicy-Schnittstelle](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.iretrypolicy?view=azure-dotnet) implementieren<BR>**Keine Wiederholung:** [NoRetry-Klasse](/dotnet/api/microsoft.azure.devices.client.noretry?view=azure-dotnet) | [C#-Implementierung](https://github.com/Azure/azure-iot-sdk-csharp) |
    | Knoten| [setRetryPolicy](/javascript/api/azure-iot-device/client?view=azure-iot-typescript-latest#azure_iot_device_Client_setRetryPolicy) | **Standard**: [ExponentialBackoffWithJitter-Klasse](/javascript/api/azure-iot-common/exponentialbackoffwithjitter?view=azure-iot-typescript-latest)<BR>**Benutzerdefiniert:** [RetryPolicy-Schnittstelle](/javascript/api/azure-iot-common/retrypolicy?view=azure-iot-typescript-latest) implementieren<BR>**Keine Wiederholung:** [NoRetry-Klasse](/javascript/api/azure-iot-common/noretry?view=azure-iot-typescript-latest) | [Node-Implementierung](https://github.com/Azure/azure-iot-sdk-node/wiki/Connectivity-and-Retries#types-of-errors-and-how-to-detect-them) |
-   
 
-Es folgen Codebeispiele, die diesen Ablauf veranschaulichen: 
+Die folgenden Codebeispiele veranschaulichen diesen Ablauf:
 
 #### <a name="net-implementation-guidance"></a>Leitfaden zur .NET-Implementierung
 
@@ -92,7 +93,7 @@ Das folgende Codebeispiel veranschaulicht die Definition und Festlegung der Stan
    SetRetryPolicy(retryPolicy);
    ```
 
-Um eine hohe CPU-Auslastung zu vermeiden, werden die Wiederholungsversuche gedrosselt, wenn der Code sofort fehlschlägt (z.B. wenn es kein Netzwerk oder keine Route zum Ziel gibt), sodass die Mindestzeit für den nächsten Wiederholungsversuch 1 Sekunde ist. 
+Um eine hohe CPU-Auslastung zu vermeiden, werden die Wiederholungsversuche gedrosselt, wenn im Code unmittelbar Fehler auftreten, beispielsweise wenn kein Netzwerk oder keine Route zum Ziel vorhanden ist. Die Mindestzeit für den nächsten Wiederholungsversuch beträgt 1 Sekunde.
 
 Wenn der Dienst mit einem Drosselungsfehler reagiert, ist die Wiederholungsrichtlinie anders und kann nicht über die öffentliche API geändert werden:
 
@@ -105,13 +106,16 @@ Wenn der Dienst mit einem Drosselungsfehler reagiert, ist die Wiederholungsricht
 Der Wiederholungsmechanismus wird nach der Einstellung `DefaultOperationTimeoutInMilliseconds`, die derzeit auf 4 Minuten festgelegt ist, abgebrochen.
 
 #### <a name="other-languages-implementation-guidance"></a>Leitfaden zur Implementierung anderer Sprachen
-Informationen zu anderen Sprachen finden Sie in der folgenden Implementierungsdokumentation.  Beispiele, die die Verwendung von APIs für Wiederholungsrichtlinien veranschaulichen, werden im Repository bereitgestellt.
+
+Codebeispiele in anderen Sprachen finden Sie in den folgenden Dokumenten zur Implementierung. Das Repository enthält Beispiele zur Verwendung von APIs für Wiederholungsrichtlinien.
+
 - [C/Python/iOS SDK](https://github.com/azure/azure-iot-sdk-c)
 - [.NET SDK](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/iothub/device/devdoc/requirements/retrypolicy.md)
 - [Java SDK](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-client/devdoc/requirement_docs/com/microsoft/azure/iothub/retryPolicy.md)
 - [Node SDK](https://github.com/Azure/azure-iot-sdk-node/wiki/Connectivity-and-Retries#types-of-errors-and-how-to-detect-them)
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 - [Verwenden von Geräte- und Dienst-SDKs](.\iot-hub-devguide-sdks.md)
 - [Verwenden des Azure IoT-Geräte-SDKs für C](.\iot-hub-device-sdk-c-intro.md)
 - [Entwickeln für eingeschränkte Geräte](.\iot-hub-devguide-develop-for-constrained-devices.md)

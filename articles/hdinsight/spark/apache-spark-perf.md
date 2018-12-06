@@ -9,16 +9,16 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/11/2018
-ms.openlocfilehash: 4a7777be01cc15ed5cc4c9c091230afe1ddfa897
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: dc1fe8a3d9a1f0da0a190275b4fbb8bd18fff610
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43047441"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52499143"
 ---
-# <a name="optimize-spark-jobs"></a>Optimieren von Spark-Aufträgen
+# <a name="optimize-apache-spark-jobs"></a>Optimieren von Apache Spark-Aufträgen
 
-Erfahren Sie, wie Sie die Spark-Clusterkonfiguration für Ihre spezielle Workload optimieren.  Die häufigste Herausforderung ist unzureichender Arbeitsspeicher aufgrund von nicht ordnungsgemäßen Konfigurationen (insbesondere bei falsch dimensionierten Executors), Vorgängen mit langer Ausführungsdauer und Tasks, die zu kartesischen Vorgängen führen. Sie können Aufträge beschleunigen, indem Sie ausreichend Cachespeicherplatz zuweisen und [Datenschiefe](#optimize-joins-and-shuffles) zulassen. Um die beste Leistung zu erzielen, überwachen und überprüfen Sie Spark-Auftragsausführungen mit langer Ausführungsdauer und hohem Ressourcenverbrauch.
+Hier erfahren Sie, wie Sie die [Apache Spark](https://spark.apache.org/)-Clusterkonfiguration für Ihre spezielle Workload optimieren.  Die häufigste Herausforderung ist unzureichender Arbeitsspeicher aufgrund von nicht ordnungsgemäßen Konfigurationen (insbesondere bei falsch dimensionierten Executors), Vorgängen mit langer Ausführungsdauer und Tasks, die zu kartesischen Vorgängen führen. Sie können Aufträge beschleunigen, indem Sie ausreichend Cachespeicherplatz zuweisen und [Datenschiefe](#optimize-joins-and-shuffles) zulassen. Um die beste Leistung zu erzielen, überwachen und überprüfen Sie Spark-Auftragsausführungen mit langer Ausführungsdauer und hohem Ressourcenverbrauch.
 
 Die folgenden Abschnitte beschreiben allgemeine Optimierungen und Empfehlungen für Spark-Aufträge.
 
@@ -94,7 +94,7 @@ Die folgende Abbildung zeigt die Spark-Arbeitsspeicherstruktur und einige wichti
 
 ### <a name="spark-memory-considerations"></a>Überlegungen zum Spark-Arbeitsspeicher
 
-Wenn Sie YARN verwenden, steuert YARN den maximal von allen Containern auf jedem Spark-Knoten verwendeten Gesamtarbeitsspeicher.  Das folgende Diagramm zeigt die wichtigsten Objekte und ihre Beziehungen.
+Bei Verwendung von [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) steuert YARN den maximal von allen Containern auf jedem Spark-Knoten verwendeten Gesamtarbeitsspeicher.  Das folgende Diagramm zeigt die wichtigsten Objekte und ihre Beziehungen.
 
 ![Übersicht über die YARN-Spark-Arbeitsspeicherverwaltung](./media/apache-spark-perf/yarn-spark-memory.png)
 
@@ -212,9 +212,9 @@ MAX(AMOUNT) -> MAX(cast(AMOUNT as DOUBLE))
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Debuggen von Spark-Aufträgen, die in HDInsight ausgeführt werden](apache-spark-job-debugging.md)
-* [Verwalten von Ressourcen für einen Spark-Cluster unter HDInsight](apache-spark-resource-manager.md)
-* [Übermitteln von Remoteaufträgen an einen Spark-Cluster mithilfe der Spark-REST-API](apache-spark-livy-rest-interface.md)
-* [Tuning Spark](https://spark.apache.org/docs/latest/tuning.html) (Optimieren von Spark)
-* [How to Actually Tune Your Spark Jobs So They Work](https://www.slideshare.net/ilganeli/how-to-actually-tune-your-spark-jobs-so-they-work) (So optimieren Sie Ihre Spark-Aufträge, damit diese funktionieren)
+* [Debuggen von Apache Spark-Aufträgen, die in HDInsight ausgeführt werden](apache-spark-job-debugging.md)
+* [Verwalten von Ressourcen für den Apache Spark-Cluster unter HDInsight](apache-spark-resource-manager.md)
+* [Übermitteln von Remoteaufträgen an einen Apache Spark-Cluster mithilfe der Apache Spark-REST-API](apache-spark-livy-rest-interface.md)
+* [Optimieren von Apache Spark](https://spark.apache.org/docs/latest/tuning.html)
+* [How to Actually Tune Your Spark Jobs So They Work](https://www.slideshare.net/ilganeli/how-to-actually-tune-your-spark-jobs-so-they-work) (So optimieren Sie Ihre Spark-Aufträge, damit sie funktionieren)
 * [Kryo Serialization](https://github.com/EsotericSoftware/kryo) (Kryo-Serialisierung)

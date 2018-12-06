@@ -1,19 +1,21 @@
 ---
 title: Manuelles Installieren des Mobilitätsdiensts für die Notfallwiederherstellung von virtuellen VMware-Computern und physischen Servern mit Azure Site Recovery | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie den Mobilitätsdienst-Agent installieren, um mit dem Azure Site Recovery-Dienst eine Notfallwiederherstellung von virtuellen VMware-Computern und physischen Servern in Azure auszuführen.
-author: rayne-wiselman
-manager: carmonm
+author: Rajeswari-Mamilla
+manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/04/2018
-ms.author: raynew
-ms.openlocfilehash: dfed0209131379843b97ff8050c2f2ba7294537d
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.author: ramamill
+ms.openlocfilehash: b3b6d7a64873d77336b2fcf14e22f4d6ae33e3a2
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51019922"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51976790"
 ---
+ms.author: ramamill
+
 # <a name="install-the-mobility-service-manually-on-vmware-vms-and-physical-servers"></a>Manuelles Installieren des Mobilitätsdiensts auf virtuellen VMware-Computern und physischen Servern
 
 Wenn Sie die Notfallwiederherstellung für VMware-VMs und physischen Servern mithilfe von [Azure Site Recovery](site-recovery-overview.md) einrichten, installieren Sie den [Site Recovery-Mobilitätsdienst](vmware-physical-mobility-service-overview.md) auf jedem lokalen virtuellen VMware-Computer und physischen Server.  Der Mobilitätsdienst erfasst Datenschreibvorgänge auf dem Computer und leitet sie an den Site Recovery-Prozessserver weiter.

@@ -9,12 +9,12 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: kgremban
-ms.openlocfilehash: cab3e5ee64ced59e9eb861e468f7a3c1dc600e8e
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 8c8cf77107f87522f9ae121845f53d8993449651
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47220737"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51824794"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-python"></a>Senden von C2D-Nachrichten mit IoT Hub (Python)
 [!INCLUDE [iot-hub-selector-c2d](../../includes/iot-hub-selector-c2d.md)]
@@ -117,7 +117,7 @@ In diesem Abschnitt erstellen Sie eine Python-Konsolen-App zum Simulieren des Ge
                 print ( iothub_client_error )
     ```
 
-1. Fügen Sie folgenden Code hinzu, um den Client zu initialisieren und auf den Empfang der C2D-Nachricht zu warten:
+1. Fügen Sie den folgenden Code hinzu, um den Client zu initialisieren und auf den Empfang der C2D-Nachricht zu warten:
    
     ```python
     def iothub_client_init():
@@ -289,9 +289,9 @@ Sie können nun die Anwendungen ausführen.
    
     ![Ausführen der App zum Senden des C2D-Befehls][img-send-command]
    
-1. Beachten Sie vom Gerät empfangene Nachricht.
+1. Beachten Sie die vom Gerät empfangene Nachricht.
 
-    ![Empfangene Nachricht][img-message-recieved]
+    ![Empfangene Nachricht][img-message-received]
 
 
 ## <a name="next-steps"></a>Nächste Schritte
@@ -304,7 +304,7 @@ Weitere Informationen zum Entwickeln von Lösungen mit IoT Hub finden Sie im [En
 <!-- Images -->
 [img-simulated-device]: media/iot-hub-python-python-c2d/simulated-device.png
 [img-send-command]:  media/iot-hub-python-python-c2d/send-command.png
-[img-message-recieved]: media/iot-hub-python-python-c2d/message-recieved.png
+[img-message-received]: media/iot-hub-python-python-c2d/message-received.png
 
 <!-- Links -->
 [lnk-python-download]: https://www.python.org/downloads/

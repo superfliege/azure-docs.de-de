@@ -13,12 +13,12 @@ ms.workload: identity
 ms.component: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer, MarkMorow
-ms.openlocfilehash: f42e7c2e564f660df1e88c63c00a9f04db7c8116
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: d62559561bf7e8e2dc2a882543d7fa7fc45a7499
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51240102"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51821058"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Schützen des privilegierten Zugriffs für hybride und Cloudbereitstellungen in Azure AD
 
@@ -84,7 +84,7 @@ Phase 1 der Roadmap konzentriert sich auf wichtige Aufgaben, die schnell und ein
 
 Wenn Sie Azure AD Privileged Identity Management (PIM) nicht bereits aktiviert haben, holen Sie dies in Ihrem Mandanten für die Produktion nach. Nach der Aktivierung von Privileged Identity Management erhalten Sie Benachrichtigungs-E-Mails zu Rollenänderungen bei privilegiertem Zugriff. Diese Benachrichtigungen sind eine frühzeitige Warnung, wenn zusätzliche Benutzer hoch privilegierten Rollen in Ihrem Verzeichnis hinzugefügt werden.
 
-Azure AD Privileged Identity Management ist in Azure AD Premium P2 oder EMS E5 enthalten. Diese Lösungen unterstützen Sie beim Schützen des Zugriffs auf Anwendungen und Ressourcen in lokaler Umgebung und Cloud. Wenn Sie noch nicht über Azure AD Premium P2 oder EMS E5 verfügen und weitere Funktionen bewerten möchten, auf die in dieser Roadmap verwiesen wird, registrieren Sie sich für [Erste Schritte mit Enterprise Mobility + Security](https://www.microsoft.com/cloud-platform/enterprise-mobility-security-trial). Testen Sie mit diesen Testlizenzen Azure AD Privileged Identity Management und Azure AD Identity Protection, um die Aktivität mithilfe erweiterter Sicherheitsberichterstattung, Überwachung und Warnungen von Azure AD zu überwachen.
+Azure AD Privileged Identity Management ist in Azure AD Premium P2 oder EMS E5 enthalten. Diese Lösungen unterstützen Sie beim Schützen des Zugriffs auf Anwendungen und Ressourcen in lokaler Umgebung und Cloud. Wenn Sie noch nicht über Azure AD Premium P2 oder EMS E5 verfügen und weitere Features aus dieser Roadmap ausprobieren möchten, registrieren Sie sich für die [kostenlose 90-tägige Testversion von Enterprise Mobility + Security](https://www.microsoft.com/cloud-platform/enterprise-mobility-security-trial). Testen Sie mit diesen Testlizenzen Azure AD Privileged Identity Management und Azure AD Identity Protection, um die Aktivität mithilfe erweiterter Sicherheitsberichterstattung, Überwachung und Warnungen von Azure AD zu überwachen.
 
 Nach dem Aktivieren von Azure AD Privileged Identity Management:
 
@@ -102,7 +102,7 @@ Der ersten Person, die Azure AD Privileged Identity Management in Ihrem Mandante
 
 Zeigen Sie nach dem Aktivieren von Azure AD Privileged Identity Management die Benutzer in den Verzeichnisrollen globaler Administrator, privilegierter Rollenadministrator, Exchange Online-Administrator und SharePoint Online-Administrator an. Wenn Sie in Ihrem Mandanten nicht über Azure AD PIM verfügen, können Sie die [PowerShell-API](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0) verwenden. Beginnen Sie mit der Rolle des globalen Administrators, da diese Rolle generisch ist: Ein Benutzer mit dieser Administratorrolle besitzt dieselben Berechtigungen für alle Clouddienste, die Ihre Organisation abonniert hat, unabhängig davon, ob ihm die Rolle im Office 365-Portal, im Azure-Portal oder mithilfe des Azure AD-Moduls für Microsoft PowerShell zugewiesen wurde. 
 
-Entfernen Sie alle Konten, die nicht mehr in diesen Rollen benötigt werden, und kategorisieren Sie die restlichen Konten, die Administratorrollen zugewiesen sind:
+Entfernen Sie alle Konten, die in diesen Rollen nicht mehr benötigt werden. Kategorisieren Sie anschließend die restlichen Konten, die Administratorrollen zugewiesen sind:
 
 * Einzeln Benutzern mit Administratorrechten zugewiesen und kann auch zu nicht administrativen Zwecken (z.B. persönliche E-Mail) verwendet werden
 * Einzeln Benutzern mit Administratorrechten zugewiesen und nur für Verwaltungszwecke vorgesehen
@@ -113,7 +113,7 @@ Entfernen Sie alle Konten, die nicht mehr in diesen Rollen benötigt werden, und
 
 #### <a name="define-at-least-two-emergency-access-accounts"></a>Definieren Sie mindestens zwei Notfallzugriffs-Konten 
 
-Stellen Sie sicher, dass Sie nicht in eine Situation geraten, in der sie versehentlich von der Verwaltung Ihres Azure AD-Mandanten ausgesperrt werden, weil Sie sich nicht anmelden oder nicht das Konto eines vorhandenen einzelnen Benutzers als Administrator aktivieren können. Wenn die Organisation z.B. mit einem lokalen Identitätsanbieter verbunden ist, könnte dieser Identitätsanbieter möglicherweise nicht verfügbar sein, sodass Benutzer sich nicht lokal anmelden können. Sie können die Auswirkungen eines versehentlichen Verlusts des Administratorzugriffs abmildern, indem Sie mindestens zwei Konten für den Notfallzugriff in Ihrem Mandanten konfigurieren.
+Stellen Sie sicher, dass Sie nicht in eine Situation geraten, in der sie versehentlich von der Verwaltung Ihres Azure AD-Mandanten ausgesperrt werden, weil sie sich nicht anmelden oder nicht das Konto eines vorhandenen einzelnen Benutzers als Administrator aktivieren können. Wenn die Organisation z.B. mit einem lokalen Identitätsanbieter verbunden ist, könnte dieser Identitätsanbieter möglicherweise nicht verfügbar sein, sodass Benutzer sich nicht lokal anmelden können. Sie können die Auswirkungen eines versehentlichen Verlusts des Administratorzugriffs abmildern, indem Sie mindestens zwei Konten für den Notfallzugriff in Ihrem Mandanten konfigurieren.
 
 Konten für den Notfallzugriff unterstützen Organisationen dabei, den privilegierten Zugriff innerhalb einer vorhandenen Azure Active Directory-Umgebung einzuschränken. Diese Konten verfügen über weitreichende Privilegien und werden keinen Einzelpersonen zugewiesen. Konten für den Notfallzugriff sind auf Notfallsituationen oder Szenarios beschränkt, in denen normale Administratorkonten nicht verwendet werden können. Organisationen müssen das Ziel der Kontrolle sicherstellen, und dass die Verwendung der Notfallkonten ausschließlich auf Zeiten beschränkt wird, in denen dies notwendig ist. 
 
@@ -127,11 +127,11 @@ Setzen Sie die mehrstufige Azure-Authentifizierung (Multi-Factor Authentication,
 
 ![Phase 2](./media/directory-admin-roles-secure/stage-two.png)
 
-Phase 2 der Roadmap konzentriert sich auf die Abschwächung der am häufigsten verwendeten Angriffstechniken zum Diebstahl von Anmeldeinformationen und deren Missbrauch und kann in etwa 2 bis 4 Wochen implementiert werden. Diese Phase der Roadmap für geschützten privilegierten Zugriff umfasst die folgenden Aktionen.
+Phase 2 der Roadmap konzentriert sich auf die Abwehr besonders häufig verwendeter Angriffstechniken zum Diebstahl und Missbrauch von Anmeldeinformationen und kann in etwa zwei bis vier Wochen implementiert werden. Diese Phase der Roadmap für geschützten privilegierten Zugriff umfasst die folgenden Aktionen.
 
 ### <a name="general-preparation"></a>Allgemeine Vorbereitung
 
-#### <a name="conduct-a-inventory-of-services-owners-and-admins"></a>Durchführen einer Inventur der Dienste, Besitzer und Administratoren
+#### <a name="conduct-an-inventory-of-services-owners-and-admins"></a>Durchführen einer Inventur der Dienste, Besitzer und Administratoren
 
 Mit der Zunahme von Bring Your Own Device-Richtlinien (BYOD) und Work From Home-Richtlinien sowie wachsender Drahtloskonnektivität in Unternehmen ist es wichtig, dass Sie überwachen, wer eine Verbindung mit Ihrem Netzwerk herstellt. Eine effektive Sicherheitsüberwachung deckt häufig Geräte, Anwendungen und Programme in Ihrem Netzwerk auf, die nicht von der IT unterstützt werden und darum möglicherweise nicht sicher sind. Weitere Informationen finden Sie unter [Azure-Sicherheitsverwaltung und -Überwachung](../../security/security-management-and-monitoring-overview.md). Stellen Sie sicher, dass alle folgenden Aufgaben in Ihrem Inventurprozess enthalten sind. 
 
@@ -337,7 +337,7 @@ Zusätzlich zur Verwaltung Ihrer Konten für privilegierten Zugriff sollten Sie 
 * Gewähren Sie privilegierten Zugriff nur bei Bedarf, und entziehen sie ihn danach (Just-in-Time).
 * Sorgen Sie für eine kontinuierliche Überprüfungsaktivität im Zusammenhang mit privilegierten Konten.
 
-Weitere Informationen zum Erstellen einer vollständigen Sicherheitsroadmap finden Sie unter [Ressourcen zur Cloud-IT-Architektur von Microsoft](https://docs.microsoft.com/office365/enterprise/microsoft-cloud-it-architecture-resources). Um weitere Informationen zum Einsatz von Microsoft-Diensten zur Unterstützung bei einem dieser Themen zu erhalten, wenden Sie sich an Ihren Microsoft-Vertriebsbeauftragten, oder besuchen Sie unsere Seite zum [Erstellen von wichtigen Schutzmaßnahmen vor Cyberangriffen zum Schutz Ihres Unternehmens](https://www.microsoft.com/microsoftservices/campaigns/cybersecurity-protection.aspx).
+Weitere Informationen zum Erstellen einer vollständigen Sicherheitsroadmap finden Sie unter [Ressourcen zur Cloud-IT-Architektur von Microsoft](https://docs.microsoft.com/office365/enterprise/microsoft-cloud-it-architecture-resources). Um weitere Informationen zum Einsatz von Microsoft-Diensten zur Unterstützung bei einem dieser Themen zu erhalten, wenden Sie sich an Ihren Microsoft-Vertriebsbeauftragten, oder besuchen Sie unsere Seite zum [Erstellen von wichtigen Schutzmaßnahmen vor Cyberangriffen zum Schutz Ihres Unternehmens](https://www.microsoft.com/en-us/microsoftservices/campaigns/cybersecurity-protection.aspx).
 
 Diese letzte laufende Phase der Roadmap für geschützten privilegierten Zugriff umfasst die folgenden Komponenten.
 

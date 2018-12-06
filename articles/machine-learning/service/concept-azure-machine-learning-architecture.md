@@ -9,12 +9,12 @@ ms.author: haining
 author: hning86
 ms.reviewer: larryfr
 ms.date: 10/24/2018
-ms.openlocfilehash: 95f74b23b9d0c89966347f066041b23f64f3b82c
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 0acf41cc0a2673ba665d1815b493df928fa4507d
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50210685"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51706805"
 ---
 # <a name="how-the-azure-machine-learning-service-works-architecture-and-concepts"></a>Funktionsweise des Azure Machine Learning-Diensts: Architektur und Konzepte
 
@@ -156,9 +156,9 @@ Ein Experiment ist eine Gruppierung vieler Ausführungen aus einem bestimmten Sk
 
 Ein Beispiel für die Verwendung eines Experiments finden Sie im Dokument [Schnellstart: Erste Schritte mit dem Azure Machine Learning-Dienst](quickstart-get-started.md).
 
-## <a name="pipelines"></a>Pipelines
+## <a name="pipeline"></a>Pipeline
 
-Pipelines werden zum Erstellen und Verwalten von Workflows verwendet, die Machine Learning-Phasen zusammenfügen. Eine Pipeline kann beispielsweise eine Datenaufbereitungs-, eine Modelltrainings-, eine Modellimplementierungs- und eine Rückschlussphase enthalten. Jede Phase kann mehrere Schritte umfassen, von denen wiederum jeder Schritt auf verschiedenen Computezielen unbeaufsichtigt ausgeführt werden kann.
+Machine Learning-Pipelines werden zum Erstellen und Verwalten von Workflows verwendet, die Machine Learning-Phasen zusammenfügen. Eine Pipeline kann beispielsweise eine Datenaufbereitungs-, eine Modelltrainings-, eine Modellimplementierungs- und eine Rückschlussphase enthalten. Jede Phase kann mehrere Schritte umfassen, von denen wiederum jeder Schritt auf verschiedenen Computezielen unbeaufsichtigt ausgeführt werden kann.
 
 Weitere Informationen zu Machine Learning-Pipelines für diesen Dienst finden Sie im Artikel [Pipelines und Azure Machine Learning](concept-ml-pipelines.md).
 

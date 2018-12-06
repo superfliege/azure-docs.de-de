@@ -4,7 +4,7 @@ description: Verwenden von Visual Studio auf einem virtuellen Azure-Computer
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: PhilLee-MSFT
-manager: sacalla
+manager: cathys
 editor: tysonn
 tags: azure-resource-manager
 ms.service: virtual-machines-windows
@@ -17,12 +17,12 @@ ms.prod: vs-devops-alm
 ms.date: 09/12/2018
 ms.author: phillee
 keywords: visualstudio
-ms.openlocfilehash: 1922475056fa79aafbf72c75c09eff19cea2b54b
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: 6861eb54b0f9ccaa0bfaa7b514e9bb3861160fdd
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50978442"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52165617"
 ---
 # <a name="visual-studio-images-on-azure"></a>Visual Studio-Images in Azure
 Die Verwendung von Visual Studio auf einem vorkonfigurierten virtuellen Azure-Computer (VM) ist eine schnelle und einfache Methode zum Erzielen einer einsatzfähigen Entwicklungsumgebung ohne Ausgangsvoraussetzungen. Systemimages mit verschiedenen Visual Studio-Konfigurationen sind im [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps?search=%22visual%20studio%202017%22&page=1) verfügbar.
@@ -34,14 +34,13 @@ Images für die letzten Hauptversionen, Visual Studio 2017 und Visual Studio 201
 
 | Releaseversion                                              | Editionen                     |     Produktversion     |
 |:------------------------------------------------------------:|:----------------------------:|:-----------------------:|
-| Visual Studio 2017: neueste Version (15.8)                    |    Enterprise, Community     |      Version 15.8.7     |
-| Visual Studio 2017: neueste Vorschauversion (Version 15.9, Vorschauversion 5) |    Enterprise, Community     |      Version 15.9.0     |
+| Visual Studio 2017: neueste Version (15.9)                    |    Enterprise, Community     |      Version 15.9.0     |
 |         Visual Studio 2017: RTW                              |    Enterprise, Community     |      Version 15.0.18    |
 |   Visual Studio 2015: Aktuell (Update 3)                      |    Enterprise, Community     |  Version 14.0.25431.01  |
 |         Visual Studio 2015: RTW                              |             Keine             | (für Wartung abgelaufen) |
 
 > [!NOTE]
-> Im Einklang mit der Microsoft-Wartungsrichtlinie ist die ursprünglich veröffentlichte Version („RTW“) von Visual Studio 2015 für die Wartung abgelaufen. Visual Studio 2015 Update 3 ist die einzige verbleibende Version, die für die Visual Studio 2015-Produktlinie angeboten wird.
+> Im Einklang mit der Microsoft-Wartungsrichtlinie ist die ursprünglich veröffentlichte Version („RTW“) von Visual Studio 2015 für die Wartung abgelaufen. Visual Studio 2015 Update 3 ist die einzige verbleibende Version, die für die Visual Studio 2015-Produktlinie angeboten wird.  Nach der Veröffentlichung der Version 15.9 von Visual Studio 2017 wurden außerdem die Images vom Typ „neueste Vorschauversion“ ausgemustert, die Vorschauversionen der Version 15.9 enthielten.
 
 Weitere Informationen finden Sie in der [Visual Studio-Wartungsrichtlinie](https://www.visualstudio.com/productinfo/vs-servicing-vs).
 

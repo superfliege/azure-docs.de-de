@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: rajanaki
-ms.openlocfilehash: caef9a93e7d388ab55939876b7cc8344ce6370d0
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: f890fc6e854f1d56d396c56ddfd8cc5a0481282f
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51012512"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51976943"
 ---
 # <a name="reprotect-failed-over-azure-vms-to-the-primary-region"></a>Erneutes Schützen von virtuellen Azure-Computern, für die ein Failover zur primären Region durchgeführt wurde
 
@@ -83,4 +83,4 @@ Wenn Sie einen Auftrag zum erneuten Schützen auslösen und der virtuelle Zielco
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem der virtuelle Computer geschützt ist, können Sie ein Failover initiieren. Beim Failover wird der virtuelle Computer in der sekundären Region heruntergefahren, und nach einer kurzen Ausfallzeit in der primären Region erstellt und gestartet. Es wird empfohlen, einen dafür geeigneten Zeitpunkt zu wählen und ein Testfailover ausführen, aber ein vollständiges Failover zum primären Standort initiieren. [Weitere Informationen](site-recovery-failover.md) zum Failover.
+Nachdem der virtuelle Computer geschützt ist, können Sie ein Failover initiieren. Beim Failover wird der virtuelle Computer in der sekundären Region heruntergefahren, und nach einer kurzen Ausfallzeit in der primären Region erstellt und gestartet. Es empfiehlt sich daher, einen geeigneten Zeitpunkt zu wählen und ein Testfailover auszuführen, bevor Sie ein vollständiges Failover auf den primären Standort initiieren. [Weitere Informationen](site-recovery-failover.md) zum Failover.

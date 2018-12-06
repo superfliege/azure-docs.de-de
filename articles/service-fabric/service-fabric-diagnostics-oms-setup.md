@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 9/11/2018
+ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: 68374cd1675f76555ff313b42e35bdf2aed96874
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 2cdc9f780e0d9ddb6e688e53208e5597b000aa56
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49408080"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52632771"
 ---
 # <a name="set-up-log-analytics-for-a-cluster"></a>Einrichten von Log Analytics für einen Cluster
 
@@ -72,7 +72,7 @@ Das Konto wird jetzt als Teil Ihrer Speicherkontoprotokolle in den Datenquellen 
 Damit haben Sie die Service Fabric-Analyse-Lösung einem Log Analytics-Arbeitsbereich hinzugefügt, der jetzt vollständig mit der Plattform Ihres Clusters sowie der Anwendungsprotokolltabelle verbunden ist. Sie können dem Arbeitsbereich zusätzliche Quellen auf die gleiche Weise hinzufügen.
 
 
-## <a name="deploy-log-analytics-by-using-a-resource-manager-template"></a>Bereitstellen von Log Analytics mithilfe einer Resource Manager-Vorlage
+## <a name="deploy-log-analytics-with-azure-resource-manager"></a>Bereitstellen von Log Analytics mit Azure Resource Manager
 
 Beim Bereitstellen eines Clusters mithilfe einer Resource Manager-Vorlage wird mit der Vorlage ein neuer Log Analytics-Arbeitsbereich erstellt, diesem die Service Fabric-Lösung hinzugefügt und der Arbeitsbereich so konfiguriert, dass Daten aus den entsprechenden Speichertabellen gelesen werden.
 
@@ -93,7 +93,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName "<resourceGroupName>" -Tem
 
 Azure Resource Manager erkennt, dass es sich bei diesem Befehl um ein Update für eine vorhandene Ressource handelt. Daher werden nur die Änderungen zwischen der Vorlage für die vorhandene Bereitstellung und der neu bereitgestellten Vorlage verarbeitet.
 
-## <a name="deploy-log-analytics-by-using-azure-powershell"></a>Bereitstellen von Log Analytics mithilfe von Azure PowerShell
+## <a name="deploy-log-analytics-with-azure-powershell"></a>Bereitstellen von Log Analytics mit Azure PowerShell
 
 Sie können Ihre Log Analytics-Ressource mit dem Befehl `New-AzureRmOperationalInsightsWorkspace` auch über PowerShell bereitstellen. Stellen Sie hierfür sicher, dass [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-5.1.1) installiert ist. Erstellen Sie mithilfe dieses Skripts einen neuen Log Analytics-Arbeitsbereich, und fügen Sie diesem die Service Fabric-Lösung hinzu: 
 
@@ -128,4 +128,4 @@ Mithilfe von PowerShell können Sie zudem weitere Lösungen hinzufügen oder and
 ## <a name="next-steps"></a>Nächste Schritte
 * [Stellen Sie den Log Analytics-Agent auf Ihren Knoten bereit](service-fabric-diagnostics-oms-agent.md), um Leistungsindikatoren zu erfassen und Docker-Statistiken und -Protokolle für Ihre Container zu sammeln.
 * Machen Sie sich mit den Features zur [Protokollsuche und -abfrage](../log-analytics/log-analytics-log-searches.md) in Log Analytics vertraut.
-* [Erstellen benutzerdefinierter Ansichten in Log Analytics mithilfe des Ansicht-Designers](../log-analytics/log-analytics-view-designer.md)
+* [Erstellen benutzerdefinierter Ansichten in Log Analytics mithilfe des Ansicht-Designers](../azure-monitor/platform/view-designer.md)

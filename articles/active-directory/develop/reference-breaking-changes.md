@@ -17,12 +17,12 @@ ms.date: 10/02/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: da681500ccff24e6e9bfa6b7bb9e5a14a725f158
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 8e00674f331a56be9abe6f2356aa88d7dcf1d0b0
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51279632"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52282383"
 ---
 # <a name="whats-new-for-authentication"></a>Neuerungen bei der Authentifizierung 
 
@@ -56,7 +56,7 @@ Ab dem 15. November 2018 akzeptiert Azure AD bereits zuvor verwendete Authentifi
 
 Wenn Ihre App Autorisierungscodes zum Abrufen von Token für mehrere Ressourcen wiederverwendet, sollten Sie den Code für das Abrufen eines Aktualisierungstokens verwenden. Verwenden Sie dieses Aktualisierungstoken anschließend, um die zusätzlichen Token für andere Ressourcen abzurufen. Autorisierungscodes können nur einmal verwendet werden, Aktualisierungstoken hingegen können mehrere Male und für mehrere Ressourcen verwendet werden. Für jede neue App, die einen Authentifizierungscode im OAuth-Codefluss erneut verwenden möchte, wird ein Fehler vom Typ „invalid_grant“ zurückgegeben.
 
-Weitere Informationen zu Aktualisierungstoken finden Sie unter [Aktualisieren der Zugriffstoken](v1-protocols-oauth-code.md#refreshing-the-access-tokens).
+Weitere Informationen zu Aktualisierungstoken finden Sie unter [Aktualisieren der Zugriffstoken](v1-protocols-oauth-code.md#refreshing-the-access-tokens).  Wenn Sie ADAL oder MSAL verwenden, wird dies automatisch durch die Bibliothek durchgeführt – ersetzen Sie die zweite Instanz von AcquireTokenByAuthorizationCodeAsync durch AcquireTokenSilentAsync. 
 
 ## <a name="may-2018"></a>Mai 2018
 

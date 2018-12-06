@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/13/2018
 ms.author: ellacroi
-ms.openlocfilehash: b64a35f6b7422b1e24812c1041305dab2ebad6c0
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 6d05323eb08a69ef4b76dbbf35217d80b9b2dc3c
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45578496"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52261070"
 ---
 # <a name="determine-your-publishing-option"></a>Bestimmung Ihrer Veröffentlichungsoption
 Die Veröffentlichungsoption, die Sie für Ihr Angebot auswählen, bezieht sich direkt sowohl auf die erforderlichen Berechtigungen als auch die Marketplace-GTM-Vorteile. Wichtiger ist, dass die Auswahl von Veröffentlichungsoption und Angebotstyp im Cloud-Partnerportal die Interaktion von Benutzern mit Ihrem Marketplace-Angebot definiert.
@@ -64,26 +64,18 @@ Die Storefront, in der Ihr Angebot präsentiert wird – Azure Marketplace und/o
 
 Die verfügbaren Veröffentlichungsoptionen ermöglichen eine differenzierte Kundenbindung und ebnen Ihnen den Weg zu gemeinsamem Zugriff auf Leads und [Markteinführungsvorteilen](https://partner.microsoft.com/en-US/reach-customers/gtm). Treffen Sie Ihre Wahl unter drei Veröffentlichungsoptionen, bevor Sie das Cloud-Partnerportal zum Erstellen eines Marketplace-Angebots verwenden. Beachten Sie die Aktionsaufrufe, die mit den Veröffentlichungsoptionen verbunden sind:
 
-**Liste**: Einfache Auflistung Ihrer Anwendung oder Ihres Diensts, sodass Marketplace-Benutzer sie bitten können, über den Aktionsaufruf **Kontakt mit mir aufnehmen** eine Verbindung mit Ihnen herzustellen.
+| **Veröffentlichungsoption**    | **Beschreibung**  |
+| :------------------- | :-------------------|
+| **Liste** | Einfache Auflistung Ihrer Anwendung oder Ihres Diensts, sodass Marketplace-Benutzer Sie über die Handlungsaufforderung **Kontakt mit mir aufnehmen** bitten können, sich mit dem Kunden in Verbindung zu setzen. |
+| **Testversion** | Verwenden Sie Marketplace, um die Auffindbarkeit zu verbessern und die Bereitstellung einer Testversion Ihrer Anwendung zu automatisieren, sodass potenzielle Benutzer vor dem Kauf für einen begrenzten Zeitraum kostenlos einen Eindruck von Ihrer SaaS-, IaaS- oder Microsoft-In-App-Erfahrung gewinnen können. Für die Veröffentlichungsoption „Testen“ werden folgende Aktionsaufrufe verwendet: **Kostenlose Testversion** oder **Testversion**. |
+| **Transaktion** | Ihre Anwendung wird in Azure ausgeführt und kann direkt als Ressource im Azure-Abonnement des Kunden bereitgestellt werden, wenn der Kunde die Handlungsaufforderung „Jetzt anfordern“ auswählt. Optional kann eine Lizenz für Ihre Software erworben und gemäß der gewünschten Zahlungsmittel und Bedingungen des Kunden abgerechnet werden, und Sie können wahlweise auch zeitlich begrenzten Zugriff auf Ihre **kostenlose Testversion** bieten (nur verfügbar für Azure Marketplace). |
 
-**Testen**: Marketplace verwenden, um die Auffindbarkeit zu verbessern und die Bereitstellung einer Testversion Ihrer Anwendung zu automatisieren, sodass potenzielle Benutzer vor dem Kauf für einen begrenzten Zeitraum kostenlos einen Eindruck von Ihrer SaaS-, IaaS- oder Microsoft-In-App-Erfahrung gewinnen können. Für die Veröffentlichungsoption „Testen“ werden folgende Aktionsaufrufe verwendet: **Kostenlose Testversion** oder **Testversion**.
-
-**Transaktion**: Ihre Anwendung wird in Azure ausgeführt und kann direkt als Ressource im Azure-Abonnement des Kunden bereitgestellt werden, wenn der Kunde den Aktionsaufruf „Jetzt anfordern“ auswählt. Optional kann eine Lizenz für Ihre Software erworben und gemäß der gewünschten Zahlungsmittel und Bedingungen des Kunden abgerechnet werden, und Sie können wahlweise auch zeitlich begrenzten Zugriff auf Ihre **kostenlose Testversion** bieten (nur verfügbar für Azure Marketplace). 
-
-## <a name="select-an-offer-type"></a>Auswählen eines Angebotstyps
-
-Sobald Sie sich für eine Veröffentlichungsoption entschieden haben, können Sie den Angebotstyp auswählen, der verwendet wird, um Ihr Angebot zu präsentieren. 
-
-Das Angebot ist das Veröffentlichungsobjekt, das Sie im Cloud-Partnerportal erstellen, veröffentlichen und verwalten. Die Angebotsstruktur einschließlich der Metadaten, Artefakte und sonstigen Inhalte, mit denen das Angebot im Marketplace präsentiert wird, wird durch den Angebotstyp definiert.
-
-Bevor Sie ein Angebot erstellen können, müssen Sie einen Angebotstyp auswählen. Der Angebotstyp hängt davon ab, welchen Lösungstyp, welche App oder welches Dienstangebot Sie veröffentlichen möchten, sowie von der Ausrichtung des Angebots an Produkten und Diensten von Microsoft. 
-
-Ein einziger Angebotstyp kann im Cloud-Partnerportal unterschiedlich konfiguriert werden, um andere Veröffentlichungsoptionen, Aktionsaufrufe, Bereitstellungen oder Preisgestaltungen zu ermöglichen. Die Veröffentlichungsoption und Konfiguration des Angebotstyps entsprechen auch der Angebotsberechtigung und technischen Anforderungen. 
-
-Bevor Sie Ihr Angebot erstellen, informieren Sie sich in diesem [Herausgeberleitfaden](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide) über die erforderlichen Berechtigungen für Storefront und Angebotstyp und darüber hinaus über die technischen Anforderungen der Veröffentlichung.
+>[!Note]
+>Bei Verwendung der Veröffentlichungsoption „Transaktion“ sollten Sie sich zunächst mit der Preisgestaltung, Abrechnung, Rechnungsstellung und Auszahlung vertraut machen, bevor Sie einen Angebotstyp auswählen und Ihr Angebot erstellen. Lesen Sie dazu den Artikel [Azure Marketplace commercial transaction capabilities and considerations](./marketplace-commercial-transaction-capabilities-and-considerations.md) (Kommerzielle Transaktionen im Azure Marketplace: Funktionen und Überlegungen).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
+*   Sobald Sie sich für eine Veröffentlichungsoption entschieden haben, können Sie den [Angebotstyp auswählen](./publisher-guide-by-offer-type.md), der verwendet wird, um Ihr Angebot zu präsentieren.
 *   Informieren Sie sich über die erforderlichen Berechtigungen in den Veröffentlichungsoptionen des entsprechenden Angebotstypabschnitts, um Auswahl und Konfiguration Ihres Angebots abzuschließen.
 *   Entnehmen Sie den Veröffentlichungsmustern der Storefronts Beispiele für die Zuordnung ihrer Lösung zu einem Angebotstyp und einer Konfiguration.
 *   Melden Sie sich beim [Cloud-Partnerportal](https://cloudpartner.azure.com) an, um Ihr Angebot zu erstellen und zu konfigurieren.

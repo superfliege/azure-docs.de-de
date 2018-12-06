@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/10/2018
+ms.date: 11/26/2018
 ms.author: shlo
-ms.openlocfilehash: 23f00280a69212b9e623ae1da16a681ca30c9d51
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
+ms.openlocfilehash: e38a0ec39227b0064175c3c39d32bf87970ef9f5
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "42140728"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52423727"
 ---
 # <a name="foreach-activity-in-azure-data-factory"></a>ForEach-Aktivität in Azure Data Factory
 Mit der ForEach-Aktivität wird eine wiederholte Ablaufsteuerung in Ihrer Pipeline definiert. Diese Aktivität wird verwendet, um eine Sammlung zu durchlaufen. Sie führt die angegebenen Aktivitäten in einer Schleife aus. Die Schleifenimplementierung dieser Aktivität ähnelt der Foreach-Schleifenstruktur in Programmiersprachen.
@@ -74,8 +74,8 @@ Eigenschaft | BESCHREIBUNG | Zulässige Werte | Erforderlich
 -------- | ----------- | -------------- | --------
 name | Name der ForEach-Aktivität. | Zeichenfolge | JA
 type | Muss auf **ForEach** festgelegt sein. | Zeichenfolge | JA
-isSequential | Gibt an, ob die Schleife sequenziell oder parallel ausgeführt werden soll.  Maximal 20 Schleifeniterationen können gleichzeitig parallel ausgeführt werden. Beispiel: Bei einer ForEach-Aktivität, die eine Kopieraktivität mit 10 unterschiedlichen Quell- und Senkendatasets durchläuft, während **isSequential** auf „false“ festgelegt ist, werden alle Kopien gleichzeitig ausgeführt. Die Standardeinstellung ist "False". <br/><br/> Wenn „isSequential“ auf „false“ festgelegt ist, stellen Sie sicher, dass die Konfiguration die Ausführung mehrerer ausführbarer Dateien ermöglicht. Andernfalls sollte diese Eigenschaft vorsichtig verwendet werden, um Schreibkonflikte zu vermeiden. Weitere Informationen finden Sie im Abschnitt [Parallele Ausführung](#parallel-execution). | Boolescher Wert | Nein. Die Standardeinstellung ist "False".
-batchCount | Batchanzahl, die zum Steuern der Anzahl der parallelen Ausführungen verwendet werden soll (wenn „isSequential“ auf „false“ festgelegt ist). | Ganze Zahl (maximal 50) | Nein. Der Standardwert ist 20.
+isSequential | Gibt an, ob die Schleife sequenziell oder parallel ausgeführt werden soll.  Maximal 20 Schleifeniterationen können gleichzeitig parallel ausgeführt werden. Beispiel: Bei einer ForEach-Aktivität, die eine Kopieraktivität mit 10 unterschiedlichen Quell- und Senkendatasets durchläuft, während **isSequential** auf „false“ festgelegt ist, werden alle Kopien gleichzeitig ausgeführt. Die Standardeinstellung ist "False". <br/><br/> Wenn „isSequential“ auf „false“ festgelegt ist, stellen Sie sicher, dass die Konfiguration die Ausführung mehrerer ausführbarer Dateien ermöglicht. Andernfalls sollte diese Eigenschaft vorsichtig verwendet werden, um Schreibkonflikte zu vermeiden. Weitere Informationen finden Sie im Abschnitt [Parallele Ausführung](#parallel-execution). | Boolescher Wert |  Nein. Die Standardeinstellung ist "False".
+batchCount | Batchanzahl, die zum Steuern der Anzahl der parallelen Ausführungen verwendet werden soll (wenn „isSequential“ auf „false“ festgelegt ist). | Ganze Zahl (maximal 50) |  Nein. Der Standardwert ist 20.
 Items | Ein Ausdruck, der ein JSON-Array zurückgibt, das durchlaufen werden soll. | Ausdruck (der ein JSON-Array zurückgibt) | JA
 Aktivitäten | Die Aktivitäten, die ausgeführt werden sollen. | Liste der Aktivitäten | JA
 
@@ -572,6 +572,17 @@ Der Ausdruck für das Sammeln der Ausgabe aller Iterationen einer ForEach-Aktivi
 ]
 
 ```
+
+## <a name="limitations-and-workarounds"></a>Einschränkungen und Problemumgehungen
+
+Hier finden Sie einige Einschränkungen der ForEach-Aktivität sowie empfohlene Problemumgehungen.
+
+| Einschränkung | Problemumgehung |
+|---|---|
+| Eine ForEach-Schleife kann nicht in einer anderen ForEach-Schleife (oder in einer Until-Schleife) geschachtelt werden. | Entwerfen Sie eine Pipeline mit zwei Ebenen, bei der die äußere Pipeline mit der äußeren ForEach-Schleife eine innere Pipeline mit der geschachtelten Schleife durchläuft. |
+| Bei der ForEach-Aktivität gilt eine `batchCount`-Obergrenze von 50 für die parallele Verarbeitung sowie eine Obergrenze von 100.000 Elementen. | Entwerfen Sie eine Pipeline mit zwei Ebenen, bei der die äußere Pipeline mit der ForEach-Aktivität eine innere Pipeline durchläuft. |
+| | |
+
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen finden Sie unter anderen Ablaufsteuerungsaktivitäten, die von Data Factory unterstützt werden: 
 

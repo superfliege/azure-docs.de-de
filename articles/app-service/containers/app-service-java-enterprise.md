@@ -12,12 +12,12 @@ ms.devlang: java
 ms.topic: article
 ms.date: 08/29/2018
 ms.author: routlaw
-ms.openlocfilehash: 6613def8891109e3a0ddf818111898a893a8035d
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: a6d50e6f405294bf8e91018dd4d7b6008cd49ada
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51628645"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52161872"
 ---
 # <a name="java-enterprise-guide-for-app-service-on-linux"></a>Java Enterprise-Leitfaden für App Service unter Linux
 
@@ -27,17 +27,18 @@ Dieser Leitfaden enthält die wichtigsten Konzepte und Anweisungen für Java Ent
 
 ## <a name="scale-with-app-service"></a>Skalierung mit App Service 
 
-Der in App Service unter Linux ausgeführte WildFly-Anwendungsserver wird im eigenständigen Modus und nicht in einer Domänenkonfiguration ausgeführt. 
+Der in App Service unter Linux ausgeführte WildFly-Anwendungsserver wird im eigenständigen Modus und nicht in einer Domänenkonfiguration ausgeführt. Wenn Sie den App Service-Plan erweitern, wird jede WildFly-Instanz als eigenständiger Server konfiguriert.
 
- Sie können Ihre Anwendung mit [Skalierungsregeln](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-autoscale-get-started?toc=%2Fazure%2Fapp-service%2Fcontainers%2Ftoc.json) und durch [Erhöhen der Anzahl der Instanzen](https://docs.microsoft.com/azure/app-service/web-sites-scale?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json) vertikal oder horizontal skalieren.
+ Sie können Ihre Anwendung mit [Skalierungsregeln](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-autoscale-get-started?toc=%2Fazure%2Fapp-service%2Fcontainers%2Ftoc.json) und durch [Erhöhen der Anzahl der Instanzen](https://docs.microsoft.com/azure/app-service/web-sites-scale?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json) vertikal oder horizontal skalieren. 
 
 ## <a name="customize-application-server-configuration"></a>Anpassen der Anwendungsserverkonfiguration
 
-Entwickler können ein Bash-Startskript schreiben, um zusätzliche Konfigurationsschritte auszuführen, die für die Anwendung erforderlich sind, z.B.:
+Web-App-Instanzen sind zustandslos. Daher muss jede neue Instanz beim Start konfiguriert werden, um die von der Anwendung benötigte WildFly-Konfiguration zu unterstützen.
+Sie können ein Bash-Startskript schreiben, um über die WildFly-Befehlszeilenschnittstelle folgende Aktionen auszuführen:
 
 - Einrichten von Datenquellen
 - Konfigurieren von Messaginganbietern
-- Hinzufügen von anderen Modulen und Abhängigkeiten zur WildFly-Serverkonfiguration
+- Hinzufügen weiterer Module und Abhängigkeiten zur WildFly-Serverkonfiguration
 
  Das Skript wird ausgeführt, wenn WildFly betriebsbereit ist, jedoch vor dem Start der Anwendung. Im Skript sollte die von `/opt/jboss/wildfly/bin/jboss-cli.sh` aufgerufene [JBOSS CLI](https://docs.jboss.org/author/display/WFLY/Command+Line+Interface) verwendet werden, um den Anwendungsserver mit allen Konfigurationen oder Änderungen zu konfigurieren, die nach dem Start des Servers erforderlich sind. 
 
@@ -51,7 +52,7 @@ Laden Sie das Startskript in `/home/site/deployments/tools` in Ihrer App Service
 
 Legen Sie das Feld **Startskript** im Azure-Portal auf den Speicherort Ihres Startshellskripts fest, z.B. `/home/site/deployments/tools/your-startup-script.sh`.
 
-Verwenden Sie [Anwendungseinstellungen](/azure/app-service/web-sites-configure#application-settings), um Umgebungsvariablen zur Verwendung im Skript festzulegen. Diese Einstellungen werden in der Startskriptumgebung zur Verfügung gestellt und halten Verbindungszeichenfolgen und andere Geheimnisse aus der Versionskontrolle heraus.
+Geben Sie [Anwendungseinstellungen](/azure/app-service/web-sites-configure#application-settings) in der Anwendungskonfiguration an, um Umgebungsvariablen für die Verwendung im Skript zu übergeben. Anwendungseinstellungen enthalten Verbindungszeichenfolgen und andere Geheimnisse, die zum Konfigurieren Ihrer Anwendung außerhalb der Versionskontrolle erforderlich sind.
 
 ## <a name="modules-and-dependencies"></a>Module und Abhängigkeiten
 

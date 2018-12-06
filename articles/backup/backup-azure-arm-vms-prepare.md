@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: raynew
-ms.openlocfilehash: 6de0d29895a6d12d3a5aa761c0c4c5148f62dd81
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 1092f5e21eab1e037c360408f17548b544a9e922
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51256271"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52422795"
 ---
 # <a name="prepare-to-back-up-azure-vms"></a>Vorbereiten der Sicherung virtueller Azure-Computer
 
@@ -34,7 +34,7 @@ Wenn diese Bedingungen in Ihrer Umgebung bereits erfüllt sind, fahren Sie mit d
 
 ## <a name="supported-operating-systems-for-backup"></a>Unterstützte Betriebssystems für die Sicherung
 
- * **Linux**: Azure Backup unterstützt [eine Liste mit von Azure empfohlenen Verteilungen](../virtual-machines/linux/endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) mit Ausnahme von CoreOS Linux. Eine Liste mit den Linux-Betriebssystemen, die die Dateiwiederherstellung unterstützen, finden Sie unter [Wiederherstellen von Dateien aus einer Sicherung von virtuellen Azure-Computern](backup-azure-restore-files-from-vm.md#for-linux-os).
+ * **Linux**: Azure Backup unterstützt [eine Liste mit von Azure empfohlenen Distributionen](../virtual-machines/linux/endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) (mit Ausnahme von CoreOS Linux und 32-Bit-Betriebssystem). Eine Liste mit den Linux-Betriebssystemen, die die Dateiwiederherstellung unterstützen, finden Sie unter [Wiederherstellen von Dateien aus einer Sicherung von virtuellen Azure-Computern](backup-azure-restore-files-from-vm.md#for-linux-os).
 
     > [!NOTE]
     > Andere Bring-Your-Own-Linux-Distributionen sollten funktionieren, sofern der VM-Agent auf dem virtuellen Computer verfügbar ist und Python unterstützt wird. Allerdings werden diese Distributionen nicht unterstützt.
@@ -49,13 +49,14 @@ Machen Sie sich vor der Vorbereitung der Umgebung mit diesen Einschränkungen ve
 * Das Sichern von virtuellen Linux-Computern, die mit Linux Unified Key Setup (LUKS) verschlüsselt sind, wird nicht unterstützt.
 * Das Sichern von virtuellen Computern, die freigegebene Clustervolumes (Cluster Shared Volumes, CSV) oder eine Konfiguration für Dateiserver mit horizontaler Skalierung enthalten, wird nicht empfohlen. Wenn dies der Fall ist, wird ein Fehler bei CSV-Schreibern erwartet. Dafür müssen alle während einer Momentaufnahmenaufgabe in der Clusterkonfiguration enthaltenen virtuellen Computer berücksichtigt werden. Azure Backup unterstützt keine Multi-VM-Konsistenz.
 * Im Netzwerk bereitgestellte und an einen virtuellen Computer angefügte Laufwerke werden nicht in die Sicherungsdaten einbezogen.
-* Das Ersetzen eines vorhandenen virtuellen Computers während der Wiederherstellung wird nicht unterstützt. Wenn Sie versuchen, die VM wiederherzustellen, obwohl die VM vorhanden ist, wird die Wiederherstellung nicht ausgeführt.
+* Die Option **Vorhandene ersetzen** in der **Wiederherstellungskonfiguration** hilft dabei, vorhandene Datenträger des aktuellen virtuellen Computers durch den ausgewählten Wiederherstellungspunkt zu ersetzen. Dieser Vorgang kann nur ausgeführt werden, wenn der aktuelle virtuelle Computer vorhanden ist. 
 * Die regionsübergreifende Sicherung und Wiederherstellung wird nicht unterstützt.
 * Stellen Sie beim Konfigurieren der Sicherung sicher, dass die Speicherkontoeinstellungen für **Firewalls und virtuelle Netzwerke** Zugriff von allen Netzwerken zulassen.
 * Wählen Sie für ausgewählte Netzwerke nach dem Konfigurieren der Firewall- und VNet-Einstellungen für Ihr Speicherkonto die Option **Vertrauenswürdigen Microsoft-Diensten den Zugriff auf dieses Speicherkonto erlauben** als Ausnahme aus, damit der Azure Backup-Dienst auf das Speicherkonto mit Netzwerkeinschränkung zugreifen kann. Die Wiederherstellung auf Elementebene wird für Speicherkonten mit Netzwerkeinschränkung nicht unterstützt.
 * Sie können virtuelle Computer in allen öffentlichen Regionen von Azure sichern. (Siehe [Checkliste](https://azure.microsoft.com/regions/#services) der unterstützten Regionen.) Wenn die gewünschte Region derzeit nicht unterstützt wird, wird sie bei der Erstellung des Tresors in der Dropdownliste nicht angezeigt.
 * Das Wiederherstellen eines virtuellen Domänencontrollercomputers, der Teil einer Konfiguration mit mehreren Domänencontrollern ist, wird nur über PowerShell unterstützt. Weitere Informationen finden Sie unter [Wiederherstellen von Multi-DC-Domänencontrollern](backup-azure-arm-restore-vms.md#restore-domain-controller-vms).
 * Momentaufnahmen des Datenträgers, für den die Schreibbeschleunigung aktiviert ist, werden nicht unterstützt. Aufgrund dieser Einschränkung kann der Azure Backup-Dienst keine anwendungskonsistente Momentaufnahme aller Datenträger der VM erstellen.
+* Azure Backup unterstützt keine automatische Sommerzeitanpassung der Uhr für die Sicherung virtueller Azure-Computer. Ändern Sie bei Bedarf die Richtlinie, um die Sommerzeit zu berücksichtigen.
 * Das Wiederherstellen virtueller Computer mit den folgenden besonderen Netzwerkkonfigurationen wird nur über PowerShell unterstützt. Virtuelle Computer, die mit dem Wiederherstellungsworkflow der Benutzeroberfläche erstellt werden, weisen diese Netzwerkkonfigurationen nach dem Abschluss des Wiederherstellungsvorgangs nicht auf. Weitere Informationen finden Sie unter [Wiederherstellen von VMs mit speziellen Netzwerkkonfigurationen](backup-azure-arm-restore-vms.md#restore-vms-with-special-network-configurations).
   * Virtuelle Computer unter Load Balancer-Konfiguration (intern und extern)
   * Virtuelle Computer mit mehreren reservierten IP-Adressen

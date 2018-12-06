@@ -3,7 +3,7 @@ title: Verwalten von Benutzerdaten, die in einer Untersuchung des Azure Security
 description: " Informationen zum Verwalten von Benutzerdaten, die mit dem Untersuchungsfeature in Azure Security Center gefunden wurden. "
 services: operations-management-suite
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: MBaldwin
 editor: ''
 ms.assetid: 411d7bae-c9d4-4e83-be63-9f2f2312b075
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/23/2018
-ms.author: terrylan
-ms.openlocfilehash: d3b5f0ee4aa656fa66d577aa40f66fc98dff148d
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.date: 11/20/2018
+ms.author: rkarlin
+ms.openlocfilehash: d9bf3618b32ce7c5ba7a300a929428dd0614743d
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44301649"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52276243"
 ---
 # <a name="manage-user-data-found-in-an-azure-security-center-investigation"></a>Verwalten von Benutzerdaten, die in einer Untersuchung des Azure Security Center gefunden wurden
 Dieser Artikel enthält Informationen zum Verwalten von Benutzerdaten, die mit dem Untersuchungsfeature in Azure Security Center gefunden wurden. Die Untersuchungsdaten werden in [Azure Log Analytics](../log-analytics/log-analytics-overview.md) gespeichert und im Security Center verfügbar gemacht. Bei der Verwaltung der Benutzerdaten haben Sie auch die Möglichkeit, Daten zu löschen oder zu exportieren.
@@ -58,3 +58,4 @@ Ein Security Center-Benutzer, der die Rolle des Besitzers, Mitwirkenden oder Kon
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zum Verwalten von Benutzerdaten finden Sie unter [Manage user data in Azure Security Center (Verwalten von Benutzerdaten in Azure Security Center)](security-center-privacy.md).
+Weitere Informationen zum Löschen privater Daten in Log Analytics finden Sie unter [Exportieren und Löschen personenbezogener Daten](../log-analytics/log-analytics-personal-data-mgmt.md#how-to-export-and-delete-private-data).

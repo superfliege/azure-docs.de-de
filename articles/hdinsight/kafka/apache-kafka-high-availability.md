@@ -9,18 +9,18 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/01/2018
-ms.openlocfilehash: e2cd03f28e4a3cd8176f6126817c61508697af94
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: e39829d4fa08e466f98930becc831c6f4b551aed
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51007789"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52315833"
 ---
 # <a name="high-availability-of-your-data-with-apache-kafka-on-hdinsight"></a>Hochverfügbarkeit Ihrer Daten mit Apache Kafka in HDInsight
 
-Erfahren Sie, wie Partitionsreplikate für Kafka-Themen für die Nutzung der zugrunde liegenden Konfiguration des Hardwareracks konfiguriert werden. Diese Konfiguration stellt die Verfügbarkeit von Daten sicher, die in Apache Kafka in HDInsight gespeichert sind.
+Erfahren Sie, wie Partitionsreplikate für Apache Kafka-Themen für die Nutzung der zugrunde liegenden Konfiguration des Hardwareracks konfiguriert werden. Diese Konfiguration stellt die Verfügbarkeit von Daten sicher, die in Apache Kafka in HDInsight gespeichert sind.
 
-## <a name="fault-and-update-domains-with-kafka"></a>Fehler- und Updatedomänen bei Kafka
+## <a name="fault-and-update-domains-with-apache-kafka"></a>Fehler- und Updatedomänen bei Apache Kafka
 
 Eine Fehlerdomäne ist eine logische Gruppierung von zugrundeliegender Hardware in einem Azure-Rechenzentrum. Jede Fehlerdomäne verwendet eine Stromquelle und einen Netzwerkswitch gemeinsam. Die virtuellen Computer und verwalteten Datenträger, die die Knoten innerhalb eines HDInsight-Clusters implementieren, werden auf diese Fehlerdomänen verteilt. Diese Architektur schränkt die potenziellen Auswirkungen physischer Hardwarefehler ein.
 
@@ -44,15 +44,15 @@ Um die höchste Verfügbarkeit Ihrer Kafka-Daten sicherzustellen, sollten Sie di
 
 Wenn Sie eine Region verwenden müssen, die nur zwei Fehlerdomänen enthält, verwenden Sie den Replikationsfaktor 4, um die Replikate gleichmäßig auf die zwei Fehlerdomänen zu verteilen.
 
-Ein Beispiel zum Erstellen von Themen und zum Festlegen des Replikationsfaktors finden Sie im Dokument zu den [ersten Schritten mit Kafka in HDInsight](apache-kafka-get-started.md).
+Ein Beispiel zum Erstellen von Themen und zum Festlegen des Replikationsfaktors finden Sie im Dokument [Erste Schritte mit Apache Kafka in HDInsight](apache-kafka-get-started.md).
 
 ## <a name="how-to-rebalance-partition-replicas"></a>Ausgleichen von Partitionsreplikaten
 
-Verwenden Sie das [Tool zum Ausgleichen von Kafka-Partitionen](https://github.com/hdinsight/hdinsight-kafka-tools), um ausgewählte Themen auszugleichen. Dieses Tool muss über eine SSH-Sitzung für den Hauptknoten des Kafka-Clusters ausgeführt werden.
+Verwenden Sie das [Tool zum Ausgleichen von Apache Kafka-Partitionen](https://github.com/hdinsight/hdinsight-kafka-tools), um ausgewählte Themen auszugleichen. Dieses Tool muss über eine SSH-Sitzung für den Hauptknoten des Kafka-Clusters ausgeführt werden.
 
 Weitere Informationen zum Herstellen einer Verbindung mit HDInsight mithilfe von SSH finden Sie im Dokument [Verwenden von SSH mit HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Skalierbarkeit von Kafka in HDInsight](apache-kafka-scalability.md)
-* [Spiegelung mit Kafka in HDInsight](apache-kafka-mirroring.md)
+* [Skalierbarkeit von Apache Kafka in HDInsight](apache-kafka-scalability.md)
+* [Spiegelung mit Apache Kafka in HDInsight](apache-kafka-mirroring.md)

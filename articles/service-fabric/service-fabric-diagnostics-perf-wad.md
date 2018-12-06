@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 03/26/2018
+ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: bc86ef5a32e08bc00b5a2fa53dccb8d6313f167b
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 0675e06564fcacf5f7d14ef6986762f36df18b1b
+ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230984"
+ms.lasthandoff: 11/22/2018
+ms.locfileid: "52290321"
 ---
 # <a name="performance-monitoring-with-the-windows-azure-diagnostics-extension"></a>Leistungsüberwachung mit der Microsoft Azure-Diagnoseerweiterung
 
@@ -106,6 +106,89 @@ Hier ist ein Beispiel für eine Konfiguration mit dem Leistungsindikator für *T
 
  Die Samplingrate für den Leistungsindikator kann gemäß Ihren Anforderungen angepasst werden. Das Format lautet `PT<time><unit>`. Wenn der Leistungsindikator also beispielsweise sekündlich erfasst werden soll, legen Sie Folgendes fest: `"sampleRate": "PT15S"`.
 
+ Sie können in der ARM-Vorlage auch Variablen verwenden, um ein Array von-Leistungsindikatoren zu erfassen. Dies kann hilfreich sein, wenn Sie Leistungsindikatoren pro Prozess erfassen. Im folgenden Beispiel werden Prozessorzeit und Garbage Collector-Zeit pro Prozess sowie zwei Leistungsindikatoren für die eigentlichen Knoten erfasst. Dafür werden jeweils Variablen verwendet. 
+
+ ```json
+"variables": {
+  "copy": [
+      {
+        "name": "processorTimeCounters",
+        "count": "[length(parameters('monitoredProcesses'))]",
+        "input": {
+          "counterSpecifier": "\\Process([parameters('monitoredProcesses')[copyIndex('processorTimeCounters')]])\\% Processor Time",
+          "sampleRate": "PT1M",
+          "unit": "Percent",
+          "sinks": "applicationInsights",
+          "annotation": [
+            {
+              "displayName": "[concat(parameters('monitoredProcesses')[copyIndex('processorTimeCounters')],' Processor Time')]",
+              "locale": "en-us"
+            }
+          ]
+        }
+      },
+      {
+        "name": "gcTimeCounters",
+        "count": "[length(parameters('monitoredProcesses'))]",
+        "input": {
+          "counterSpecifier": "\\.NET CLR Memory([parameters('monitoredProcesses')[copyIndex('gcTimeCounters')]])\\% Time in GC",
+          "sampleRate": "PT1M",
+          "unit": "Percent",
+          "sinks": "applicationInsights",
+          "annotation": [
+            {
+              "displayName": "[concat(parameters('monitoredProcesses')[copyIndex('gcTimeCounters')],' Time in GC')]",
+              "locale": "en-us"
+            }
+          ]
+        }
+      }
+    ],
+    "machineCounters": [
+      {
+        "counterSpecifier": "\\Memory\\Available Bytes",
+        "sampleRate": "PT1M",
+        "unit": "KB",
+        "sinks": "applicationInsights",
+        "annotation": [
+          {
+            "displayName": "Memory Available Kb",
+            "locale": "en-us"
+          }
+        ]
+      },
+      {
+        "counterSpecifier": "\\Memory\\% Committed Bytes In Use",
+        "sampleRate": "PT15S",
+        "unit": "percent",
+        "annotation": [
+          {
+            "displayName": "Memory usage",
+            "locale": "en-us"
+          }
+        ]
+      }
+    ]
+  }
+....
+"WadCfg": {
+    "DiagnosticMonitorConfiguration": {
+      "overallQuotaInMB": "50000",
+      "Metrics": {
+        "metricAggregation": [
+          {
+            "scheduledTransferPeriod": "PT1M"
+          }
+        ],
+        "resourceId": "[resourceId('Microsoft.Compute/virtualMachineScaleSets', variables('vmNodeTypeApp2Name'))]"
+      },
+      "PerformanceCounters": {
+        "scheduledTransferPeriod": "PT1M",
+        "PerformanceCounterConfiguration": "[concat(variables ('processorTimeCounters'), variables('gcTimeCounters'),  variables('machineCounters'))]"
+      },
+....
+```
+
  >[!NOTE]
  >Mithilfe von `*` können Sie zwar Gruppen von Leistungsindikatoren mit ähnlichem Namen angeben, um Leistungsindikatoren jedoch über eine Senke (an Application Insights) senden zu können, müssen sie einzeln deklariert werden. 
 
@@ -115,8 +198,9 @@ Hier ist ein Beispiel für eine Konfiguration mit dem Leistungsindikator für *T
     New-AzureRmResourceGroupDeployment -ResourceGroupName <ResourceGroup> -TemplateFile <PathToTemplateFile> -TemplateParameterFile <PathToParametersFile> -Verbose
     ```
 
-5. Nachdem der Rollout des Upgrades abgeschlossen ist (Dauer: 15 bis 45 Minuten), sollten die Leistungsindikatoren per Microsoft Azure-Diagnose erfasst und an die Tabelle „WADPerformanceCountersTable“ in dem Speicherkonto gesendet werden, das dem Cluster zugeordnet ist. Sie können die Leistungsindikatoren in Application Insights anzeigen, indem Sie [die AI-Senke der Resource Manager-Vorlage hinzufügen](service-fabric-diagnostics-event-analysis-appinsights.md#add-the-application-insights-sink-to-the-resource-manager-template).
+5. Nachdem der Rollout des Upgrades abgeschlossen ist (was zwischen 15 und 45 Minuten dauert – je nachdem, ob es sich um die erste Bereitstellung handelt und wie groß Ihre Ressourcengruppe ist), sollten die Leistungsindikatoren per Microsoft Azure-Diagnose erfasst und an die Tabelle „WADPerformanceCountersTable“ in dem Speicherkonto gesendet werden, das dem Cluster zugeordnet ist. Sie können die Leistungsindikatoren in Application Insights anzeigen, indem Sie [die AI-Senke der Resource Manager-Vorlage hinzufügen](service-fabric-diagnostics-event-analysis-appinsights.md#add-the-application-insights-sink-to-the-resource-manager-template).
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Erfassen Sie weitere Leistungsindikatoren für Ihren Cluster. Eine Liste mit Leistungsindikatoren, die Sie erfassen sollten, finden Sie unter [Leistungsmetriken](service-fabric-diagnostics-event-generation-perf.md).
 * Unter [Verwenden von Überwachung und Diagnose bei einer Windows-VM und Azure Resource Manager-Vorlagen](../virtual-machines/windows/extensions-diagnostics-template.md) erfahren Sie, wie Sie `WadCfg` noch weiter anpassen können und beispielsweise zusätzliche Speicherkonten für die Übermittlung von Diagnosedaten konfigurieren.
+* Mit dem [WadCfg-Generator](http://azure.github.io/azure-diagnostics-tools/config-builder/) können Sie eine ganz neue Vorlage erstellen und sich vergewissern, dass Ihre Syntax korrekt ist.

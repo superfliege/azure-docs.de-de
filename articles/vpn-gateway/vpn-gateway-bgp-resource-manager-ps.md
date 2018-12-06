@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/12/2017
 ms.author: yushwang
-ms.openlocfilehash: 4eb62786522dd1ad7cbf1d5668a4c4493028733c
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 97b33ed76776ae00c109e891b3d91638080ed778
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51684338"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52632584"
 ---
 # <a name="how-to-configure-bgp-on-azure-vpn-gateways-using-powershell"></a>Konfigurieren von BGP für Azure VPN Gateways mithilfe von PowerShell
 Dieser Artikel beschreibt die Schritte zum Aktivieren von BGP auf einer standortübergreifenden Site-to-Site (S2)-VPN-Verbindung und einer VNet-to-VNet-Verbindung mithilfe des Resource Manager-Bereitstellungsmodells und PowerShell.
@@ -167,7 +167,7 @@ $BGPPeerIP5 = "10.52.255.254"
 In Bezug auf die lokalen Netzwerkgateway-Parameter sind ein paar Dinge zu beachten:
 
 * Der Speicherort und die Ressourcengruppe für das lokale Netzwerkgateway und für das VPN Gateway können gleich oder auch unterschiedlich sein. Dieses Beispiel zeigt sie in verschiedenen Ressourcengruppen und mit verschiedenen Speicherorten.
-* Das Mindestpräfix, das Sie für das lokale Netzwerkgateway deklarieren müssen, ist die Hostadresse Ihrer BGP-Peer-IP-Adresse auf Ihrem VPN-Gerät. In diesem Fall ist es ein /32-Präfix von „10.52.255.254/32“.
+* Das Präfix, das Sie für das lokale Netzwerkgateway deklarieren müssen, ist die Hostadresse Ihrer BGP-Peer-IP-Adresse auf Ihrem VPN-Gerät. In diesem Fall ist es ein /32-Präfix von „10.52.255.254/32“.
 * Zur Erinnerung: Sie müssen zwischen Ihren lokalen Netzwerken und Azure VNet unterschiedliche BGP-ASNs verwenden. Wenn sie gleich sind, müssen Sie Ihre VNet-ASN ändern, falls Ihr lokales VPN-Gerät bereits die ASN für eine Peerverbindung mit anderen BGP-Nachbarn verwendet.
 
 Stellen Sie sicher, dass die Verbindung mit Abonnement 1 noch besteht, bevor Sie fortfahren.

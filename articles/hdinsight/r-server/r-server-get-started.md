@@ -9,16 +9,16 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 0811f0e115545a37b6c570c436900a8548adae61
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 3a65b66619351462fcd9c77c3fb9b935cf99ebcc
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51006361"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52496456"
 ---
 # <a name="get-started-with-ml-services-on-azure-hdinsight"></a>Erste Schritte mit ML Services in Azure HDInsight
 
-Azure HDInsight ermöglicht die Erstellung eines ML Services-Clusters. Mit dieser Option können R-Skripts Spark und MapReduce verwenden, um verteilte Berechnungen auszuführen. In diesem Artikel erfahren Sie, wie Sie in HDInsight einen ML Services-Cluster erstellen und ein R-Skript ausführen, das die Verwendung von Spark für verteilte R-Berechnungen veranschaulicht.
+Azure HDInsight ermöglicht die Erstellung eines ML Services-Clusters. Mit dieser Option können R-Skripts [Apache Spark](https://spark.apache.org/) und [Apache Hadoop MapReduce](https://hadoop.apache.org/docs/r1.2.1/mapred_tutorial.html) verwenden, um verteilte Berechnungen auszuführen. In diesem Artikel erfahren Sie, wie Sie in HDInsight einen ML Services-Cluster erstellen und ein R-Skript ausführen, das die Verwendung von Spark für verteilte R-Berechnungen veranschaulicht.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -37,7 +37,7 @@ Azure HDInsight ermöglicht die Erstellung eines ML Services-Clusters. Mit diese
 
     * **Clustername**: Der Name des HDInsight-Clusters.
     * **Abonnement**: Wählen Sie das zu verwendende Abonnement aus.
-    * **Benutzername für Clusteranmeldung** und **Kennwort für Clusteranmeldung**: Die Anmeldung beim Zugriff auf den Cluster über HTTPS. Sie verwenden diese Anmeldeinformationen für den Zugriff auf Dienste wie z.B. die Ambari-Webbenutzeroberfläche oder die REST-API.
+    * **Benutzername für Clusteranmeldung** und **Kennwort für Clusteranmeldung**: Die Anmeldung beim Zugriff auf den Cluster über HTTPS. Sie verwenden diese Anmeldeinformationen für den Zugriff auf Dienste wie die Apache Ambari-Webbenutzeroberfläche oder die REST-API.
     * **Secure Shell (SSH)-Benutzername**: Die für den Clusterzugriff über SSH verwendete Anmeldung. Das Kennwort ist standardmäßig mit dem Kennwort für die Clusteranmeldung identisch.
     * **Ressourcengruppe**: Die Ressourcengruppe, in der der Cluster erstellt wird.
     * **Standort**: Die Azure-Region, in der der Cluster erstellt werden soll.

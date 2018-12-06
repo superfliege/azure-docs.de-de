@@ -9,24 +9,24 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 05/17/2018
-ms.openlocfilehash: 973913e81157d2158074e50a61be0d73e5606ec3
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 8103c06e3fec51316e367de903ed84d0023568bc
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51006140"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52308153"
 ---
 # <a name="access-grafana-in-azure-hdinsight"></a>Zugreifen auf Grafana in Azure HDInsight
 
 
-Grafana ist ein beliebter Open Source-Generator für Diagramme und Dashboards. Mit dem umfangreichen Funktionssatz von Grafana können Benutzer nicht nur anpassbare und gemeinsam nutzbare Dashboards erstellen, sondern u.a. auch von Dashboards mit Vorlagen bzw. Skripts, LDAP-Integration und verschiedenen Datenquellen profitieren.
+[Grafana](https://grafana.com/) ist ein verbreiteter Open-Source-Generator für Diagramme und Dashboards. Mit dem umfangreichen Funktionssatz von Grafana können Benutzer nicht nur anpassbare und gemeinsam nutzbare Dashboards erstellen, sondern u.a. auch von Dashboards mit Vorlagen bzw. Skripts, LDAP-Integration und verschiedenen Datenquellen profitieren.
 
 Derzeit wird Grafana nur vom Clustertyp Interactive Query in Azure HDInsight unterstützt.
 
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
-## <a name="create-a-hadoop-cluster"></a>Erstellen eines Hadoop-Clusters
+## <a name="create-an-apache-hadoop-cluster"></a>Erstellen eines Apache Hadoop-Clusters
 
 In diesem Abschnitt erstellen Sie einen Interactive Query-Cluster in HDInsight mit einer Azure Resource Manager-Vorlage. Für diesen Artikel ist keine Erfahrung mit Resource Manager-Vorlagen erforderlich. 
 
@@ -51,11 +51,11 @@ In diesem Abschnitt erstellen Sie einen Interactive Query-Cluster in HDInsight m
     |**Ressourcengruppe**     | Erstellen Sie eine Ressourcengruppe, oder wählen Sie eine vorhandene Ressourcengruppe aus.  Bei einer Ressourcengruppe handelt es sich um einen Container mit Azure-Komponenten.  In diesem Fall enthält die Ressourcengruppe den HDInsight-Cluster und das abhängige Azure Storage-Konto. |
     |**Location**     | Wählen Sie den Azure-Speicherort aus, wo Sie Ihren Cluster erstellen möchten.  Je näher der Standort, desto besser die Leistung. |
     |**Clustertyp**     | Wählen Sie **hadoop** aus. |
-    |**Clustername**     | Geben Sie einen Namen für den Hadoop-Cluster ein. Da für alle Cluster in HDInsight gemeinsam derselbe DNS-Namespace genutzt wird, muss dieser Name eindeutig sein. Der Name kann aus bis zu 59 Zeichen mit Buchstaben, Zahlen und Bindestrichen bestehen. Das erste und das letzte Zeichen des Namens dürfen keine Bindestriche sein. |
+    |**Clustername**     | Geben Sie einen Namen für den Apache Hadoop-Cluster ein. Da für alle Cluster in HDInsight gemeinsam derselbe DNS-Namespace genutzt wird, muss dieser Name eindeutig sein. Der Name kann aus bis zu 59 Zeichen mit Buchstaben, Zahlen und Bindestrichen bestehen. Das erste und das letzte Zeichen des Namens dürfen keine Bindestriche sein. |
     |**Clusteranmeldename und Kennwort**     | Der Standardanmeldename lautet **admin**. Das Kennwort muss mindestens zehn Zeichen lang sein und mindestens eine Ziffer, einen Groß- und einen Kleinbuchstaben sowie ein nicht alphanumerisches Zeichen enthalten (mit Ausnahme folgender Zeichen: ' " ` \)). Stellen Sie sicher, dass Sie **keine** häufig verwendeten Kennwörter wie „Pass@word1“ angeben.|
     |**SSH-Benutzername und Kennwort**     | Der Standardbenutzername lautet **sshuser**.  Sie können den SSH-Benutzernamen umbenennen.  Für das SSH-Benutzerkennwort gelten die gleichen Anforderungen wie für das Clusteranmeldekennwort.|
        
-    Einige Eigenschaften wurden in der Vorlage hartcodiert.  Diese Werte können über die Vorlage konfiguriert werden. Eine ausführlichere Erläuterung dieser Eigenschaften finden Sie unter [Erstellen von Linux-basierten Hadoop-Clustern in HDInsight](../hdinsight-hadoop-provision-linux-clusters.md).
+    Einige Eigenschaften wurden in der Vorlage hartcodiert.  Diese Werte können über die Vorlage konfiguriert werden. Eine ausführlichere Erläuterung dieser Eigenschaften finden Sie unter [Erstellen von Linux-basierten Apache Hadoop-Clustern in HDInsight](../hdinsight-hadoop-provision-linux-clusters.md).
 
 3. Aktivieren Sie die Optionen **Ich stimme den oben genannten Geschäftsbedingungen zu** und **An Dashboard anheften**, und wählen Sie anschließend **Kaufen** aus. Im Portal-Dashboard wird die neue Kachel **Bereitstellung wird übermittelt** angezeigt. Das Erstellen eines Clusters dauert ca. 20 Minuten.
 
@@ -106,7 +106,7 @@ Nach Abschluss des Artikels kann es ratsam sein, den Cluster zu löschen. Mit HD
 3. Klicken Sie auf **Ressourcengruppe löschen**, um die Ressourcengruppe zu löschen, die den Cluster und das Standardspeicherkonto enthält. Beachten Sie, dass das Speicherkonto beim Löschen der Ressourcengruppe ebenfalls gelöscht wird. Wenn Sie das Speicherkonto beibehalten möchten, müssen Sie auswählen, dass nur der Cluster gelöscht werden soll.
 
 ## <a name="next-steps"></a>Nächste Schritte
-In diesem Artikel haben Sie erfahren, wie Sie mithilfe einer Resource Manager-Vorlage einen Linux-basierten HDInsight-Cluster erstellen und einfache Hive-Abfragen ausführen. Im nächsten Artikel erfahren Sie, wie Sie mithilfe von Hadoop in HDInsight einen ETL-Vorgang zum Extrahieren, Transformieren und Laden von Daten ausführen.
+In diesem Artikel haben Sie erfahren, wie Sie mithilfe einer Resource Manager-Vorlage einen Linux-basierten HDInsight-Cluster erstellen und einfache Apache Hive-Abfragen ausführen. Im nächsten Artikel erfahren Sie, wie Sie mithilfe von Hadoop in HDInsight einen ETL-Vorgang zum Extrahieren, Transformieren und Laden von Daten ausführen.
 
 > [!div class="nextstepaction"]
 >[Extrahieren, Transformieren und Laden von Daten mithilfe von Apache Hive in HDInsight](../hdinsight-analyze-flight-delay-data-linux.md)
@@ -118,9 +118,9 @@ Wenn Sie mit eigenen Daten arbeiten und mehr darüber wissen möchten, wie Daten
 
 Weitere Informationen zur Datenanalyse mit HDInsight finden Sie in den folgenden Artikeln:
 
-* Weitere Informationen zum Verwenden von Hive mit HDInsight (etwa zum Ausführen von Hive-Abfragen in Visual Studio) finden Sie im Artikel zum [Verwenden von Hive mit HDInsight](../hdinsight-use-hive.md).
-* Informationen zu Pig (eine Sprache zum Transformieren von Daten) finden Sie im Artikel zum [Verwenden von Pig mit HDInsight](../hdinsight-use-pig.md).
-* Informationen zu MapReduce (einer Möglichkeit zum Schreiben von Programmen, die Daten in Hadoop verarbeiten) finden Sie im Artikel zum [Verwenden von MapReduce mit HDInsight](../hdinsight-use-mapreduce.md).
+* Weitere Informationen zum Verwenden von Hive mit HDInsight (etwa zum Ausführen von Hive-Abfragen in Visual Studio) finden Sie unter [Verwenden von Apache Hive mit HDInsight](../hdinsight-use-hive.md).
+* Informationen zu Pig (einer Sprache zum Transformieren von Daten) finden Sie unter [Verwenden von Apache Pig mit HDInsight](../hdinsight-use-pig.md).
+* Informationen zu Apache Hadoop MapReduce (einer Möglichkeit zum Schreiben von Programmen, die Daten in Hadoop verarbeiten) finden Sie unter [Verwenden von Apache Hadoop MapReduce mit HDInsight](../hdinsight-use-mapreduce.md).
 * Informationen zur Verwendung der HDInsight-Tools für Visual Studio zum Analysieren von Daten in HDInsight finden Sie unter [Erste Schritte bei der Verwendung von Hadoop-Tools für Visual Studio für HDInsight](../hadoop/apache-hadoop-visual-studio-tools-get-started.md).
 
 

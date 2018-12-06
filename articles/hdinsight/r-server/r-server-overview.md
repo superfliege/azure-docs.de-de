@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 74d8629eb8fc29f3cb572be0b1ccb8b6149ab971
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 1f53d87d6de76c0ff6954c9bd38d95e05981d822
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51016283"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52499463"
 ---
 # <a name="introduction-to-ml-services-and-open-source-r-capabilities-on-hdinsight"></a>Einführung in ML Services und Open-Source-R-Funktionen in HDInsight
 
@@ -27,7 +27,7 @@ Microsoft Machine Learning Server ist als Bereitstellungsoption bei der Erstellu
 
 ML Services in HDInsight bietet die neuesten Funktionen für die R-basierte Analyse praktisch beliebig großer Datasets, die in Azure Blob Storage oder Data Lake Store geladen wurden. Da ML Services-Cluster auf Open-Source-R basieren, stehen Ihnen bei der Erstellung R-basierter Anwendungen alle über 8.000 Open-Source-R-Pakete zur Verfügung. Die Routinen in ScaleR, dem Big Data-Analysepaket von Microsoft, stehen ebenfalls zur Verfügung.
 
-Der Edgeknoten eines Clusters ist ein praktischer Ort für die Verbindungsherstellung mit dem Cluster und die Ausführung Ihrer R-Skripts. Mit einem Edgeknoten haben Sie die Möglichkeit, die parallelisierten verteilten Funktionen von ScaleR in allen Kernen der Edgeknotenserver auszuführen. Außerdem können Sie sie in allen Knoten des Clusters ausführen, indem Sie Hadoop MapReduce von ScaleR oder Spark-Rechenkontexte verwenden.
+Der Edgeknoten eines Clusters ist ein praktischer Ort für die Verbindungsherstellung mit dem Cluster und die Ausführung Ihrer R-Skripts. Mit einem Edgeknoten haben Sie die Möglichkeit, die parallelisierten verteilten Funktionen von ScaleR in allen Kernen der Edgeknotenserver auszuführen. Außerdem können Sie sie in allen Knoten des Clusters ausführen, indem Sie Hadoop MapReduce von ScaleR oder Apache Spark-Computekontexte verwenden.
 
 Die Modelle oder Vorhersagen, die sich aus der Analyse ergeben, können für die lokale Verwendung heruntergeladen werden. Sie können auch an anderer Stelle in Azure operationalisiert werden, insbesondere über den [Azure Machine Learning Studio](http://studio.azureml.net)-[Webdienst](../../machine-learning/studio/publish-a-machine-learning-web-service.md).
 
@@ -114,7 +114,7 @@ Wenn Sie nur Routinen aus der ScaleR-Bibliothek auf den Cluster anwenden, müsse
 
 In solchen Fällen können die zusätzlichen Pakete nach dem Erstellen des Clusters mithilfe einer Skriptaktion installiert werden. Weitere Informationen finden Sie unter [Verwalten von ML Services in HDInsight-Clustern](r-server-hdinsight-manage.md).
 
-### <a name="change-hadoop-mapreduce-memory-settings"></a>Ändern der Hadoop MapReduce-Speichereinstellungen
+### <a name="change-apache-hadoop-mapreduce-memory-settings"></a>Ändern der Apache Hadoop MapReduce-Speichereinstellungen
 
 Ein Cluster kann dahin gehend geändert werden, dass er die Speichermenge, die ML Services bei der Ausführung eines MapReduce-Auftrags zur Verfügung steht, ändern kann. Verwenden Sie zum Ändern eines Clusters die Apache Ambari-Benutzeroberfläche, die über das Blatt des Clusters im Azure-Portal verfügbar ist. Informationen zum Zugriff auf die Ambari-Benutzeroberfläche für Ihren Cluster finden Sie unter [Verwalten von HDInsight-Clustern mithilfe der Ambari-Webbenutzeroberfläche](../hdinsight-hadoop-manage-ambari.md).
 

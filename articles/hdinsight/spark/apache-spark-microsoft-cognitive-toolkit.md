@@ -9,20 +9,20 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: hrasheed
-ms.openlocfilehash: 4bcf6df37e7341baf227b9c77b718a955526823d
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 4491be6df8716585e5e2095db5656e16a029bbed
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51010931"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52499275"
 ---
 # <a name="use-microsoft-cognitive-toolkit-deep-learning-model-with-azure-hdinsight-spark-cluster"></a>Verwenden des Microsoft Cognitive Toolkit-Modells für intensives Lernen mit einem Azure HDInsight Spark-Cluster
 
 In diesem Artikel führen Sie die folgenden Schritte aus.
 
-1. Führen Sie ein benutzerdefiniertes Skript zum Installieren von Microsoft Cognitive Toolkit in einem Azure HDInsight Spark-Cluster aus.
+1. Führen Sie ein benutzerdefiniertes Skript aus, um [Microsoft Cognitive Toolkit](https://www.microsoft.com/en-us/cognitive-toolkit/) in einem Azure HDInsight Spark-Cluster zu installieren.
 
-2. Laden Sie ein Jupyter Notebook in den Spark-Cluster hoch, um zu erfahren, wie ein trainiertes Microsoft Cognitive Toolkit-Modell für intensives Lernen mit der [Spark Python-API (PySpark)](https://spark.apache.org/docs/0.9.0/python-programming-guide.html) auf Dateien in einem Azure Blob Storage-Konto angewandt wird.
+2. Laden Sie ein [Jupyter Notebook](https://jupyter.org/) in den [Apache Spark](https://spark.apache.org/)-Cluster hoch, um zu erfahren, wie ein trainiertes Deep Learning-Modell von Microsoft Cognitive Toolkit mit der [Spark Python-API (PySpark)](https://spark.apache.org/docs/0.9.0/python-programming-guide.html) auf Dateien in einem Azure Blob Storage-Konto angewendet wird.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -90,21 +90,21 @@ Um das Microsoft Cognitive Toolkit mit dem Azure HDInsight Spark-Cluster zu verw
 * [Übersicht: Apache Spark in Azure HDInsight](apache-spark-overview.md)
 
 ### <a name="scenarios"></a>Szenarien
-* [Spark mit BI: Durchführen interaktiver Datenanalysen mithilfe von Spark in HDInsight mit BI-Tools](apache-spark-use-bi-tools.md)
-* [Spark mit Machine Learning: Analysieren von Gebäudetemperaturen mithilfe von Spark in HDInsight und HVAC-Daten](apache-spark-ipython-notebook-machine-learning.md)
-* [Spark mit Machine Learning: Vorhersage von Lebensmittelkontrollergebnissen mithilfe von Spark in HDInsight](apache-spark-machine-learning-mllib-ipython.md)
-* [Websiteprotokollanalyse mithilfe von Spark in HDInsight](apache-spark-custom-library-website-log-analysis.md)
-* [Application Insight telemetry data analysis using Spark in HDInsight (Application Insight-Telemetriedatenanalyse mithilfe von Spark in HDInsight)](apache-spark-analyze-application-insight-logs.md)
+* [Apache Spark mit BI: Durchführen interaktiver Datenanalysen mithilfe von Spark in HDInsight mit BI-Tools](apache-spark-use-bi-tools.md)
+* [Apache Spark mit Machine Learning: Analysieren von Gebäudetemperaturen mithilfe von Spark in HDInsight und HVAC-Daten](apache-spark-ipython-notebook-machine-learning.md)
+* [Apache Spark mit Machine Learning: Vorhersagen von Lebensmittelkontrollergebnissen mithilfe von Spark in HDInsight](apache-spark-machine-learning-mllib-ipython.md)
+* [Analysieren von Websiteprotokollen mithilfe von Apache Spark in HDInsight](apache-spark-custom-library-website-log-analysis.md)
+* [Analysieren von Application Insights-Telemetrieprotokollen mit Apache Spark in HDInsight](apache-spark-analyze-application-insight-logs.md)
 
 ### <a name="create-and-run-applications"></a>Erstellen und Ausführen von Anwendungen
 * [Erstellen einer eigenständigen Anwendung mit Scala](apache-spark-create-standalone-application.md)
-* [Remoteausführung von Aufträgen in einem Spark-Cluster mithilfe von Livy](apache-spark-livy-rest-interface.md)
+* [Ausführen von Remoteaufträgen auf einem Apache Spark-Cluster mit Livy](apache-spark-livy-rest-interface.md)
 
 ### <a name="tools-and-extensions"></a>Tools und Erweiterungen
 * [Verwenden des HDInsight-Tools-Plug-Ins für IntelliJ IDEA zum Erstellen und Übermitteln von Spark Scala-Anwendungen](apache-spark-intellij-tool-plugin.md)
-* [Use HDInsight Tools Plugin for IntelliJ IDEA to debug Spark applications remotely (Verwenden von HDInsight-Tools-Plug-Ins für IntelliJ IDEA zum Remotedebuggen von Spark-Anwendungen)](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
-* [Verwenden von Zeppelin-Notebooks mit einem Spark-Cluster in HDInsight](apache-spark-zeppelin-notebook.md)
-* [Verfügbare Kernels für Jupyter-Notebook im Spark-Cluster für HDInsight](apache-spark-jupyter-notebook-kernels.md)
+* [Verwenden von HDInsight-Tools-Plug-Ins für IntelliJ IDEA zum Remotedebuggen von Apache Spark-Anwendungen](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
+* [Verwenden von Apache Zeppelin Notebooks mit einem Apache Spark-Cluster unter HDInsight](apache-spark-zeppelin-notebook.md)
+* [Kernel für Jupyter Notebook in Apache Spark-Clustern für HDInsight](apache-spark-jupyter-notebook-kernels.md)
 * [Verwenden von externen Paketen mit Jupyter Notebooks](apache-spark-jupyter-notebook-use-external-packages.md)
 * [Installieren von Jupyter Notebook auf Ihrem Computer und Herstellen einer Verbindung zum Apache Spark-Cluster in Azure HDInsight (Vorschau)](apache-spark-jupyter-notebook-install-locally.md)
 
