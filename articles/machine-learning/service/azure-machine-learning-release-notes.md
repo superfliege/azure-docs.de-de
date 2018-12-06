@@ -9,16 +9,52 @@ author: hning86
 ms.author: haining
 ms.reviewer: j-martens
 ms.date: 10/24/2018
-ms.openlocfilehash: 5ceb47f437f736829d0be10a856fe787fab944b0
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 6007a7e32e168ada529feb6aa24b8d572671d835
+ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51261581"
+ms.lasthandoff: 11/22/2018
+ms.locfileid: "52291339"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Azure Machine Learning-Dienst – Anmerkungen zu dieser Version
 
 Erfahren Sie in diesem Artikel mehr über die Versionen des Azure Machine Learning-Diensts. 
+
+## <a name="2018-11-20"></a>2018-11-20
+
+### <a name="azure-machine-learning-sdk-for-python-v0180"></a>Azure Machine Learning SDK für Python v0.1.80
+
++ **Wichtige Änderungen** 
+  * Der Namespace *azureml.train.widgets* wurde in *azureml.widgets* verschoben.
+  * *azureml.core.compute.AmlCompute* führt zur Veraltung der folgenden Klassen: *azureml.core.compute.BatchAICompute* und *azureml.core.compute.DSVMCompute*. Die letztgenannte Klasse wird in künftigen Versionen nicht mehr enthalten sein. Die AmlCompute-Klasse verfügt jetzt über eine einfachere Definition und benötigt lediglich Angaben für „vm_size“ und „max_nodes“. Sie skaliert Ihren Cluster automatisch von 0 auf den Wert von „max_nodes“, wenn ein Auftrag übermittelt wird. Unsere [Beispielnotebooks] (https://github.com/Azure/MachineLearningNotebooks/tree/master/training) wurden mit diesen Informationen aktualisiert und enthalten Beispiele zur Verwendung. Wir hoffen, dass Ihnen diese Vereinfachung gefällt – genauso wie viele weitere interessante Features in den nachfolgenden Releases!
+
+### <a name="azure-machine-learning-data-prep-sdk-v051"></a>Azure Machine Learning Data Prep SDK v0.5.1 
+
+Erfahren Sie mehr zum Data Prep SDK, indem Sie die [Referenzdokumente](https://aka.ms/data-prep-sdk) lesen.
++ **Neue Features**
+   * Es wurde eine neue DataPrep CLI erstellt, mit der DataPrep-Pakete ausgeführt werden können und das Datenprofil für ein Dataset oder einen Dataflow angezeigt werden kann.
+   * Die SetColumnType-API wurde neu gestaltet, um die Nutzbarkeit zu verbessern.
+   * „smart_read_file“ wurde in „auto_read_file“ umbenannt.
+   * Datenschiefe und Kurtosis sind jetzt im Datenprofil enthalten.
+   * Stichprobenentnahme mit geschichteten Stichproben ist möglich.
+   * Das Lesen aus ZIP-Dateien, die CSV-Dateien enthalten, ist möglich.
+   * Datasets können zeilenweise per zufälliger Aufteilung geteilt werden (z.B. in Test/Training-Sätze).
+   * Alle Spaltendatentypen können aus einem Dataflow oder Datenprofil abgerufen werden, indem „.dtypes“ aufgerufen wird.
+   * Die Zeilenanzahl kann aus einem Dataflow oder Datenprofil abgerufen werden, indem „.row_count“ aufgerufen wird.
+
++ **Fehlerbehebungen**
+   * Fehler bei Konvertierung von „long“ in „double“ behoben 
+   * Fehler bei Assert-Vorgang nach jedem Hinzufügen einer Spalte behoben 
+   * FuzzyGrouping-Fehler behoben, bei dem in einigen Fällen Gruppen nicht erkannt wurden
+   * Fehler bei Sortierfunktion behoben, damit die Sortierreihenfolge für mehrere Spalten beibehalten wird
+   * Fehler mit Ausdrücken behoben bzw. an Verarbeitung durch Pandas angepasst
+   * Fehler beim Lesen aus dem dbfs-Pfad behoben
+   * Verständlichkeit von Fehlermeldungen verbessert 
+   * Fehler behoben, der beim Lesen auf dem Remotecomputeziel mit dem AML-Token aufgetreten ist
+   * Fehler für Linux DSVM behoben
+   * Kein Absturz mehr, wenn in Zeichenfolgenprädikaten andere Werte als Zeichenfolgen enthalten sind
+   * Assertionsfehler werden bei Dataflow-Fehler jetzt richtig behandelt
+   * Per dbutils bereitgestellte Speicherorte werden unter Azure Databricks jetzt unterstützt
 
 ## <a name="2018-11-05"></a>05.11.2018
 

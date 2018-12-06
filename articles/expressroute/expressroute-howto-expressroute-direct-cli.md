@@ -1,47 +1,49 @@
 ---
-title: Konfigurieren von Azure ExpressRoute Direct über die CLI | Microsoft-Dokumentation
-description: Diese Seite unterstützt Sie beim Konfigurieren von ExpressRoute Direct über die CLI (Vorschau).
+title: Konfigurieren von Azure ExpressRoute Direct über die Azure CLI | Microsoft-Dokumentation
+description: Dieser Artikel enthält Informationen zur Konfiguration von ExpressRoute Direct mit der Azure CLI (Vorschauversion).
 services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: cherylmc
-ms.openlocfilehash: 989e96aa00ae65d1206f961a10893e3331670553
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: dfc13d584abcd05cd15b7ce9e3034bbf246f3b8b
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50958303"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51976606"
 ---
-# <a name="how-to-configure-expressroute-direct-using-cli-preview"></a>Konfigurieren von ExpressRoute Direct über die CLI (Vorschau)
+# <a name="configure-expressroute-direct-by-using-the-azure-cli-preview"></a>Konfigurieren von ExpressRoute Direct mit der Azure CLI (Vorschauversion)
 
-ExpressRoute Direct bietet Ihnen die Möglichkeit, sich direkt mit dem globalen Netzwerk von Microsoft zu verbinden, und zwar an strategisch über die ganze Welt verteilten Peeringstandorten. Weitere Informationen über ExpressRoute finden Sie unter [Informationen zu ExpressRoute Direct](expressroute-erdirect-about.md).
+Sie können Azure ExpressRoute Direct nutzen, um sich direkt mit dem globalen Netzwerk von Microsoft zu verbinden, und zwar an strategisch über die ganze Welt verteilten Peeringstandorten. Weitere Informationen über ExpressRoute finden Sie unter [Informationen zu ExpressRoute Direct](expressroute-erdirect-about.md).
 
 > [!IMPORTANT]
-> ExpressRoute Direkt ist derzeit in der Vorschauphase.
+> ExpressRoute Direct befindet sich derzeit in der Vorschauphase.
 >
-> Diese öffentliche Vorschauversion wird ohne Servicelevelvereinbarung bereitgestellt und sollte nicht für Produktionsworkloads verwendet werden. Unter Umständen werden bestimmte Features nicht unterstützt, verfügen über eingeschränkte Funktionen und sind nicht an allen Azure-Standorten verfügbar. Weitere Informationen finden Sie unter [Ergänzende Nutzungsbedingungen für Microsoft Azure-Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Die öffentliche Vorschauversion von ExpressRoute Direct wird ohne Vereinbarung zum Servicelevel (SLA) bereitgestellt. Es ist nicht ratsam, ExpressRoute Direct (Vorschauversion) für Produktionsworkloads zu verwenden. Unter Umständen werden bestimmte Features nicht unterstützt, verfügen über eingeschränkte Funktionen oder sind nicht an allen Azure-Standorten verfügbar. Ausführlichere Informationen finden Sie unter [Ergänzende Nutzungsbedingungen für Microsoft Azure-Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="resources"></a>Erstellen der Ressource
 
-1. Melden Sie sich bei Azure an, und wählen Sie das Abonnement aus. Die ExpressRoute Direct-Ressource und ExpressRoute-Leitungen müssen sich im selben Abonnement befinden.
+1. Melden Sie sich an Azure an, und wählen Sie das Abonnement aus, in dem ExpressRoute enthalten ist. Die ExpressRoute Direct-Ressource und Ihre ExpressRoute-Leitungen müssen sich in demselben Abonnement befinden. Führen Sie in der Azure CLI die folgenden Befehle aus:
 
   ```azurecli
   az login
   ```
 
-  Überprüfen Sie die Abonnements für das Konto. 
+  Überprüfen Sie die Abonnements für das Konto: 
 
   ```azurecli
   az account list 
   ```
 
-  Wählen Sie das Abonnement aus, für das eine ExpressRoute-Verbindung erstellt werden soll.
+  Wählen Sie das Abonnement aus, für das eine ExpressRoute-Verbindung erstellt werden soll:
+
   ```azurecli
   az account set --subscription "<subscription ID>"
   ```
-2. Listen Sie alle Standorte auf, an denen ExpressRoute Direct unterstützt wird.
+
+2. Listen Sie alle Standorte auf, an denen ExpressRoute Direct unterstützt wird:
     
   ```azurecli
   az network express-route port location list
@@ -108,7 +110,7 @@ ExpressRoute Direct bietet Ihnen die Möglichkeit, sich direkt mit dem globalen 
    }
   ]
   ```
-3. Bestimmen Sie, ob ein oben aufgelisteter Standort verfügbare Bandbreite aufweist.
+3. Ermitteln Sie, ob für einen der im vorherigen Schritt aufgeführten Standorte Bandbreite verfügbar ist:
 
   ```azurecli
   az network express-route port location show -l "Equinix-Ashburn-DC2"
@@ -134,14 +136,14 @@ ExpressRoute Direct bietet Ihnen die Möglichkeit, sich direkt mit dem globalen 
   "type": "Microsoft.Network/expressRoutePortsLocations"
   }
   ```
-4. Erstellen Sie eine ExpressRoute Direct-Ressource basierend auf dem oben gewählten Standort.
+4. Erstellen Sie eine ExpressRoute Direct-Ressource, die auf dem Standort basiert, den Sie in den vorherigen Schritten ausgewählt haben.
 
-  ExpressRoute Direct unterstützt die Kapselungen QinQ und Dot1Q. Bei Wahl von QinQ wird jeder ExpressRoute-Leitung dynamisch ein S-Tag zugewiesen, das in der gesamten ExpressRoute Direct-Ressource eindeutig ist. Jedes C-Tag für die Leitung muss innerhalb der Leitung eindeutig sein, jedoch nicht innerhalb von ExpressRoute Direct.  
+  ExpressRoute Direct unterstützt die Kapselungen QinQ und Dot1Q. Bei Auswahl von QinQ wird jeder ExpressRoute-Leitung dynamisch ein S-Tag zugewiesen, damit sie in der gesamten ExpressRoute Direct-Ressource eindeutig ist. Jedes C-Tag für die Leitung muss innerhalb der Leitung eindeutig sein, aber nicht für die gesamte ExpressRoute Direct-Ressource.  
 
-  Wenn die Kapselung Dot1Q ausgewählt wird, müssen Sie die Eindeutigkeit des C-Tags (VLAN) für die gesamte ExpressRoute Direct-Ressource sicherstellen.  
+  Wenn Sie die Kapselung Dot1Q wählen, müssen Sie die Eindeutigkeit des C-Tags (VLAN) für die gesamte ExpressRoute Direct-Ressource sicherstellen.  
 
   > [!IMPORTANT]
-  > Für ExpressRoute Direct kann nur ein Kapselungstyp festgelegt werden. Nach der ExpressRoute Direct-Erstellung kann die Kapselung nicht geändert werden.
+  > Für ExpressRoute Direct kann nur ein Kapselungstyp festgelegt werden. Sie können den Kapselungstyp nicht mehr ändern, nachdem Sie die ExpressRoute Direct-Ressource erstellt haben.
   > 
  
   ```azurecli
@@ -149,10 +151,10 @@ ExpressRoute Direct bietet Ihnen die Möglichkeit, sich direkt mit dem globalen 
   ```
 
   > [!NOTE]
-  > Das Attribut „Kapselung“ kann auch auf Dot1Q festgelegt werden. 
+  > Außerdem können Sie das Attribut **Encapsulation** auf **Dot1Q** festlegen. 
   >
 
-  **Beispielausgabe:**
+  **Beispielausgabe**
 
   ```azurecli
   {
@@ -206,11 +208,11 @@ ExpressRoute Direct bietet Ihnen die Möglichkeit, sich direkt mit dem globalen 
   }  
   ```
 
-## <a name="state"></a>Ändern des Verwaltungsstatus von Verknüpfungen
+## <a name="state"></a>Ändern von AdminState für Links
 
-Dieser Prozess sollte verwendet werden, um einen Layer-1-Test durchzuführen, der sicherstellt, dass jede Kreuzverbindung ordnungsgemäß in jeden Router für primäre und sekundäre Verbindungen eingebunden ist.
+Verwenden Sie diesen Prozess, um einen Layer-1-Test durchzuführen. Stellen Sie sicher, dass jede Kreuzverbindung für die primären und sekundären Ports korrekt in jeden Router gepatcht ist.
 
-1. Legen Sie „Verknüpfung“ auf „Aktiviert“ fest. Wiederholen Sie diesen Schritt, um jede Verknüpfung auf „Aktiviert“ festzulegen.
+1. Legen Sie die Links auf **Aktiviert** fest. Wiederholen Sie diesen Schritt, um die einzelnen Links auf **Aktiviert** festzulegen.
 
   „Links[0]“ ist der primäre Port, „Links[1]“ der sekundäre Port.
 
@@ -220,7 +222,7 @@ Dieser Prozess sollte verwendet werden, um einen Layer-1-Test durchzuführen, de
   ```azurecli
   az network express-route port update -n Contoso-Direct -g Contoso-Direct-rg --set links[1].adminState="Enabled"
   ```
-  **Beispielausgabe:**
+  **Beispielausgabe**
 
   ```azurecli
   {
@@ -274,25 +276,25 @@ Dieser Prozess sollte verwendet werden, um einen Layer-1-Test durchzuführen, de
   }
   ```
 
-  Verwenden Sie die gleiche Vorgehensweise mit `AdminState = “Disabled”`, um die Ports zu deaktivieren.
+  Nutzen Sie die gleiche Vorgehensweise, um die Ports zu deaktivieren, indem Sie `AdminState = “Disabled”` verwenden.
 
 ## <a name="circuit"></a>Erstellen einer Leitung
 
-Sie können standardmäßig 10 Leitungen im Abonnement erstellen, in dem sich die ExpressRoute Direct-Ressource befindet. Dieser Wert kann vom Support erhöht werden. Sie sind für die Nachverfolgung der Werte für die bereitgestellte und belegte Bandbreite zuständig. Die bereitgestellte Bandbreite ist die Summe der Bandbreite aller Leitungen in der ExpressRoute Direct-Ressource, und die belegte Bandbreite ist die physische Nutzung der zugrunde liegenden physischen Schnittstellen.
+Sie können standardmäßig zehn Leitungen im Abonnement erstellen, in dem die ExpressRoute Direct-Ressource enthalten ist. Der Microsoft-Support kann den Standardgrenzwert heraufsetzen. Sie sind für die Nachverfolgung der Werte für die bereitgestellte und belegte Bandbreite zuständig. Die bereitgestellte Bandbreite ist die Summe der Bandbreiten aller Leitungen der ExpressRoute Direct-Ressource. Die genutzte Bandbreite steht für die physische Nutzung der zugrunde liegenden physischen Schnittstellen.
 
-Es gibt zusätzliche Leitungsbandbreiten, die für ExpressRoute Direct nur zur Unterstützung der oben beschriebenen Szenarien genutzt werden können. Hierbei handelt es sich um 40 Gbit/s und 100 Gbit/s.
+Sie können zusätzliche Leitungsbandbreiten für ExpressRoute Direct nur verwenden, um die hier beschriebenen Szenarien zu unterstützen. Die Bandbreiten sind 40 GBit/s und 100 GBit/s.
 
-Standard- oder Premium-Leitungen können erstellt werden. Standardleitungen sind in den Kosten enthalten, während Premium-Leitungen Kosten auf Basis der gewählten Bandbreite verursachen. Leitungen können nur in gemessener Form erstellt werden, da Unbegrenztheit von ExpressRoute Direct nicht unterstützt wird.
+Sie können entweder Standard- oder Premium-Verbindungen erstellen. Standardverbindungen sind in den Kosten des Diensts enthalten. Die Kosten für Premium-Leitungen basieren auf der von Ihnen gewählten Bandbreite. Sie können nur getaktete Leitungen erstellen. Unbegrenzte Leitungen werden für ExpressRoute Direct nicht unterstützt.
 
-Erstellen Sie in der ExpressRoute-Direct-Ressource eine Leitung.
+Erstellen Sie in der ExpressRoute Direct-Ressource eine Leitung:
 
   ```azurecli
   az network express-route create --express-route-port "/subscriptions/<subscriptionID>/resourceGroups/Contoso-Direct-rg/providers/Microsoft.Network/expressRoutePorts/Contoso-Direct" -n "Contoso-Direct-ckt" -g "Contoso-Direct-rg" --sku-family MeteredData --sku-tier Standard --bandwidth 100 Gbps
   ```
 
-  Andere Bandbreiten entsprechen 5 GBit/s, 10 GBit/s und 40 GBit/s.
+  Andere Bandbreiten sind beispielsweise 5 GBit/s, 10 GBit/s und 40 GBit/s.
 
-  **Beispielausgabe:**
+  **Beispielausgabe**
 
   ```azurecli
   {
