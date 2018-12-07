@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/25/2018
+ms.date: 11/15/2018
 ms.author: spelluru
-ms.openlocfilehash: 3ecbef3b3063ceb413b852f8000b44a85d28d08e
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 8bd64aaa51faf968c0c7ae374daad3de4ca3a343
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50142799"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51706856"
 ---
 # <a name="create-and-manage-a-classroom-template-in-azure-lab-services"></a>Erstellen und Verwalten einer Classroom-Vorlage in Azure Lab Services
 Eine Vorlage in einem Lab ist ein VM-Basisimage und dient zur Erstellung der virtuellen Computer aller Benutzer. Richten Sie den virtuellen Computer der Vorlage so ein, dass er genau das enthält, was Sie den Lab-Benutzern zur Verfügung stellen möchten. Sie können einen Namen und eine Beschreibung der Vorlage angeben, die den Lab-Benutzern angezeigt werden. Anschließend veröffentlichen Sie die Vorlage, um Instanzen der Vorlagen-VM für Ihre Lab-Benutzer zur Verfügung zu stellen. Wenn Sie eine Vorlage veröffentlichen, werden von Azure Lab Services im Lab mithilfe der Vorlage virtuelle Computer erstellt. Die Anzahl der in diesem Vorgang erstellten virtuellen Computer entspricht der maximalen Anzahl von Benutzern im Lab, die Sie in der Nutzungsrichtlinie des Labs festlegen können. Alle virtuellen Computer haben die gleiche Konfiguration wie die Vorlage.
@@ -88,16 +88,14 @@ Als Erstes können Sie beim Erstellen eines Classroom-Labs eine Vorlage einricht
 ## <a name="set-up-a-template-after-creating-a-lab"></a>Einrichten einer Vorlage nach dem Erstellen eines Labs 
 Sie können auch nach dem Erstellen des Labs eine Vorlage einrichten.   
 
-### <a name="set-template-title-and-description"></a>Festlegen von Vorlagentitel und -beschreibung
-1. Wählen Sie im Abschnitt **Vorlage** den Befehl **Bearbeiten** (Stiftsymbol) für die Vorlage aus. 
-2. Geben Sie im Fenster **Benutzeransicht** einen **Titel** für die Vorlage ein.
-3. Geben Sie eine **Beschreibung** für die Vorlage ein.
-4. Wählen Sie **Speichern**aus.
+## <a name="set-or-update-template-title-and-description"></a>Festlegen oder Aktualisieren von Vorlagentitel und -beschreibung
+Gehen Sie wie folgt vor, um Titel und Beschreibung erstmals festzulegen und später zu aktualisieren. 
 
-    ![Beschreibung des Classroom-Labs](../media/how-to-manage-classroom-labs/lab-description.png)
+1. Wählen Sie im Abschnitt **Vorlage** die Option **Name** oder **Beschreibung** der Vorlage aus. 
+2. Geben Sie den **neuen Namen** bzw. die **neue Beschreibung** für die Vorlage ein, und drücken Sie die**EINGABETASTE**.
 
-### <a name="set-up-the-template-vm"></a>Einrichten der Vorlage für virtuelle Computer
- Sie können eine Verbindung mit der Vorlage für virtuelle Computer herstellen und darauf die erforderliche Software installieren, bevor Sie ihn für Ihre Teilnehmer bereitstellen. 
+## <a name="set-up-or-update-a-template-vm"></a>Einrichten oder Aktualisieren einer Vorlage für virtuelle Computer
+ Sie können eine Verbindung mit der Vorlage für virtuelle Computer herstellen und darauf die erforderliche Software installieren, bevor Sie ihn für Ihre Teilnehmer bereitstellen. Gehen Sie wie folgt vor, um erstmals eine Vorlage für virtuelle Computer einzurichten oder den virtuellen Computer zu aktualisieren. 
 
 1. Warten Sie, bis die Vorlage für virtuelle Computer bereit ist. Wenn dies der Fall ist, wird die Schaltfläche **Starten** aktiviert. Wählen Sie die Option **Starten**, um den virtuellen Computer zu starten.
 
@@ -112,7 +110,7 @@ Sie können auch nach dem Erstellen des Labs eine Vorlage einrichten.
     ![Beenden der Vorlage für virtuelle Computer](../media/tutorial-setup-classroom-lab/stop-template-vm.png)
 
 
-## <a name="publish-the-template"></a>Veröffentlichen der Vorlage 
+## <a name="publish-the-template-vm"></a>Veröffentlichen der Vorlage für virtuelle Computer
 Wenn Sie die Vorlage nicht beim Erstellen des Labs veröffentlichen, können Sie dies später nachholen. Vor der Veröffentlichung empfiehlt es sich, eine Verbindung mit der Vorlagen-VM herzustellen und sie ggf. mit Software zu aktualisieren. Wenn Sie eine Vorlage veröffentlichen, werden von Azure Lab Services im Lab mithilfe der Vorlage virtuelle Computer erstellt. Die Anzahl der in diesem Vorgang erstellten virtuellen Computer entspricht der maximalen Anzahl von Benutzern im Lab, die Sie in der Nutzungsrichtlinie des Labs festlegen können. Alle virtuellen Computer haben die gleiche Konfiguration wie die Vorlage. 
 
 1. Wählen Sie im Abschnitt **Vorlage** die Option **Veröffentlichen**. 
@@ -125,7 +123,7 @@ Wenn Sie die Vorlage nicht beim Erstellen des Labs veröffentlichen, können Sie
 4. Wechseln Sie zur Seite **Virtuelle Computer**, und vergewissern Sie sich, dass virtuelle Computer mit dem Status **Nicht zugewiesen** angezeigt werden. Diese virtuellen Computer sind noch keinen Teilnehmern zugewiesen. 
 
     ![Virtuelle Computer](../media/tutorial-setup-classroom-lab/virtual-machines.png)
-5. Warten Sie, bis die virtuellen Computer erstellt wurden. Sie sollten den Status **Beendet** aufweisen. Auf dieser Seite können Sie einen virtuellen Computer für einen Teilnehmer starten, eine Verbindung damit herstellen und ihn beenden und löschen. Sie können virtuelle Computer auf dieser Seite starten oder sie von Ihren Teilnehmern starten lassen. 
+5. Warten Sie, bis die virtuellen Computer erstellt wurden. Sie sollten den Status **Beendet** aufweisen. Auf dieser Seite können Sie einen virtuellen Computer für einen Teilnehmer starten, eine Verbindung damit herstellen und ihn beenden und löschen. Sie können virtuelle Computer auf dieser Seite starten oder sie von Ihren Kursteilnehmern starten lassen. 
 
     ![Virtuelle Computer im Status „Beendet“](../media/tutorial-setup-classroom-lab/virtual-machines-stopped.png)
 
@@ -147,7 +145,9 @@ Nachdem Sie eine Vorlage veröffentlicht haben, können Sie weiterhin eine Verbi
     ![Neuveröffentlichung erfolgreich](../media/how-to-create-manage-template/republish-success.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
-Machen Sie sich mit der Einrichtung eines Labs mit Azure Lab Services vertraut:
+Entsprechende Informationen finden Sie in den folgenden Artikeln:
 
-- [Einrichten eines Classroom-Labs](how-to-manage-classroom-labs.md)
-- [Einrichten eines Labs](../tutorial-create-custom-lab.md)
+- [Erstellen und Verwalten von Labkonten als Administrator](how-to-manage-lab-accounts.md)
+- [Erstellen und Verwalten von Labs als Labbesitzer](how-to-manage-classroom-labs.md)
+- [Konfigurieren und Steuern der Nutzung eines Labs als Labbesitzer](how-to-configure-student-usage.md)
+- [Zugreifen auf ein Classroom-Lab in Azure Lab Services](how-to-use-classroom-lab.md) (als Labbenutzer)
