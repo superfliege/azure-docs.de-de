@@ -1,7 +1,7 @@
 # [Mobile Apps-Dokumentation](index.md)
 
 # Übersicht
-## [Was sind Mobile Apps?](app-service-mobile-value-prop.md)
+## [Was sind mobile Apps?](app-service-mobile-value-prop.md)
 ## [App Service-Pläne](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 
 # Schnellstarts
@@ -173,7 +173,7 @@
 ## [Preise](https://azure.microsoft.com/pricing/details/app-service/)
 ## [Preisrechner](https://azure.microsoft.com/pricing/calculator/)
 ## [Dienstupdates](https://azure.microsoft.com/updates/?product=mobile-services)
-## [Stapelüberlauf](http://stackoverflow.com/questions/tagged/azure-mobile-services)
+## [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-mobile-services)
 ## [Videos](https://azure.microsoft.com/documentation/videos/index/?services=mobile-services)
 ## Beispiele
 ### [Außendiensttechniker](https://azure.microsoft.com/resources/samples/app-service-mobile-dotnet-fieldengineer/)

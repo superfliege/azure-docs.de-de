@@ -85,7 +85,7 @@ items:
       - name: Protokolldaten
         href: platform/data-security.md
       - name: Behandlung von personenbezogenen Protokolldaten
-        href: ../log-analytics/log-analytics-personal-data-mgmt.md?toc=/azure/azure-monitor/toc.json
+        href: platform/personal-data-mgmt.md
       - name: Anwendungsdatensammlung, -vermerkdauer und -speicherung
         href: ../application-insights/app-insights-data-retention-privacy.md?toc=/azure/azure-monitor/toc.json
   - name: Einblicke
@@ -115,9 +115,9 @@ items:
     - name: Übergang zum OMS-Portal
       items:
       - name: Übersicht
-        href: ../log-analytics/log-analytics-oms-portal-transition.md?toc=/azure/azure-monitor/toc.json
+        href: platform/oms-portal-transition.md
       - name: Häufig gestellte Fragen
-        href: ../log-analytics/log-analytics-oms-portal-faq.md?toc=/azure/azure-monitor/toc.json
+        href: platform/oms-portal-faq.md
   - name: Reagieren auf Incidents
     items:
     - name: Alerts
@@ -153,7 +153,7 @@ items:
       - name: Berechtigungen und Sicherheit für Rollen
         href: ../monitoring-and-diagnostics/monitoring-roles-permissions-security.md?toc=/azure/azure-monitor/toc.json
       - name: Arbeitsbereiche
-        href: ../log-analytics/log-analytics-manage-access.md?toc=/azure/azure-monitor/toc.json
+        href: platform/manage-access.md
       - name: ANWENDUNGEN
         href: ../application-insights/app-insights-resources-roles-access-control.md?toc=/azure/azure-monitor/toc.json
       - name: IP-Adressen
@@ -166,8 +166,6 @@ items:
         href: ../application-insights/app-insights-web-monitor-performance.md?toc=/azure/azure-monitor/toc.json
       - name: Trennen von Entwicklung, Test und Produktion
         href: ../application-insights/app-insights-separate-resources.md?toc=/azure/azure-monitor/toc.json
-      - name: Überwachen von Apps mit mehreren Komponenten
-        href: ../application-insights/app-insights-monitor-multi-role-apps.md?toc=/azure/azure-monitor/toc.json
       - name: Gewusst wie – in Application Insights
         href: ../application-insights/app-insights-how-do-i.md?toc=/azure/azure-monitor/toc.json
     - name: Verwalten von Arbeitsbereichen
@@ -181,7 +179,7 @@ items:
         - name: Mithilfe von Azure PowerShell
           href: learn/quick-create-workspace-posh.md
       - name: Löschen eines Arbeitsbereichs
-        href: ../log-analytics/log-analytics-manage-del-workspace.md?toc=/azure/azure-monitor/toc.json
+        href: platform/delete-workspace.md
       - name: Design für Dienstanbieter
         href: platform/service-providers.md
   - name: Sammeln von Daten
@@ -562,7 +560,7 @@ items:
         - name: Preise
           href: insights/network-performance-monitor-pricing-faq.md
         - name: Häufig gestellte Fragen
-          href: ../log-analytics/log-analytics-network-performance-monitor-faq.md?toc=/azure/azure-monitor/toc.json
+          href: insights/network-performance-monitor-faq.md
     - name: Überwachen virtueller Maschinen
       items:
       - name: Azure Monitor für VMs
@@ -647,7 +645,7 @@ items:
     - name: Power BI
       items:
       - name: Exportieren von Protokolldateien
-        href: ../log-analytics/log-analytics-powerbi.md?toc=/azure/azure-monitor/toc.json
+        href: platform/powerbi.md
       - name: Exportieren von Anwendungsdaten
         href: ../application-insights/app-insights-export-power-bi.md?toc=/azure/azure-monitor/toc.json
     - name: Senden von Daten an Grafana
@@ -838,7 +836,7 @@ items:
     - name: Details des Anwendungsenterprise-Tarifs
       href: ../application-insights/app-insights-pricing-enterprise-details.md?toc=/azure/azure-monitor/toc.json
     - name: Protokolldatenvolume und -vermerkdauer
-      href: ../log-analytics/log-analytics-manage-cost-storage.md?toc=/azure/azure-monitor/toc.json
+      href: platform/manage-cost-storage.md
     - name: Nutzung der Protokolldatenüberwachung
       href: ../log-analytics/log-analytics-usage.md?toc=/azure/azure-monitor/toc.json
   - name: Automatisieren
@@ -1010,9 +1008,9 @@ items:
     href: https://stackoverflow.com/search?q=monitoring
   - name: Codebeispiele
     href: https://azure.microsoft.com/resources/samples/?service=monitor
-ms.openlocfilehash: ee2702e834ce782f5b690cbfc78d300efa1ee602
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: dc89f1634040b7002e58206aaf6d1ade6965b2a8
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52968168"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53017901"
