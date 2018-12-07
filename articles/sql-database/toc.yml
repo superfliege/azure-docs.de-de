@@ -125,8 +125,6 @@ items:
         href: sql-database-connectivity-architecture.md
       - name: T-SQL-Unterschiede
         href: sql-database-transact-sql-information.md
-      - name: 'Transaktionsreplikation: einzelne Datenbanken und Pools für elastische Datenbanken'
-        href: replication-to-sql-database.md
     - name: Pools für elastische Datenbanken
       items:
       - name: Pools für elastische Datenbanken
@@ -171,8 +169,6 @@ items:
         href: sql-database-managed-instance-connect-app.md
     - name: T-SQL-Unterschiede
       href: sql-database-managed-instance-transact-sql-information.md
-    - name: Transaktionsreplikation
-      href: replication-with-sql-database-managed-instance.md
   - name: PaaS (Platform-as-a-Service)
     items:
     - name: PaaS (Platform-as-a-Service)
@@ -231,10 +227,8 @@ items:
         href: sql-database-data-discovery-and-classification.md
       - name: Sicherheitsrisikobewertung
         href: sql-vulnerability-assessment.md
-      - name: 'Bedrohungserkennung: SQL-Datenbank'
-        href: sql-database-threat-detection.md
-      - name: 'Bedrohungserkennung: Verwaltete Instanz'
-        href: sql-database-managed-instance-threat-detection.md
+      - name: Bedrohungserkennung
+        href: sql-database-threat-detection-overview.md
     - name: Firewallregeln
       items:
       - name: Erstellen und Verwalten
@@ -473,16 +467,30 @@ items:
       href: sql-database-in-memory-oltp-migration.md
 - name: Anleitungen
   items:
-  - name: Migrieren zu SQL-Datenbank
+  - name: Einzeldatenbank
     items:
     - name: Migrieren zu SQL-Datenbank
       href: sql-database-cloud-migrate.md
+    - name: Verwalten von SQL-Datenbank nach der Migration
+      href: sql-database-manage-after-migration.md
+    - name: Konfigurieren der Transaktionsreplikation
+      href: replication-to-sql-database.md
+    - name: Konfigurieren der Bedrohungserkennung
+      href: sql-database-threat-detection.md
+    - name: Verwalten von Dateispeicherplatz
+      href: sql-database-file-space-management.md
+    - name: Verwenden von Resource Health bei Konnektivitätsproblemen
+      href: sql-database-resource-health.md
+  - name: Verwaltete Instanz
+    items:
     - name: Migrieren zur verwalteten Instanz
       href: sql-database-managed-instance-migrate.md
     - name: Migrieren von TDE zur verwalteten Instanz
       href: sql-database-managed-instance-migrate-tde-certificate.md
-    - name: Verwalten von SQL-Datenbank nach der Migration
-      href: sql-database-manage-after-migration.md
+    - name: Transaktionsreplikation
+      href: replication-with-sql-database-managed-instance.md
+    - name: Konfigurieren der Bedrohungserkennung
+      href: sql-database-managed-instance-threat-detection.md
   - name: Laden und Verschieben von Daten
     items:
     - name: Kopieren einer Datenbank in Azure
@@ -509,10 +517,6 @@ items:
       href: sql-database-load-from-csv-with-bcp.md
     - name: Laden von Daten mit ADF
       href: ../data-factory/connector-azure-sql-database.md?toc=/azure/sql-database/toc.json
-  - name: Verwalten von Dateispeicherplatz
-    href: sql-database-file-space-management.md
-  - name: Verwenden von Resource Health bei Konnektivitätsproblemen
-    href: sql-database-resource-health.md
   - name: Entwickeln von Apps
     items:
     - name: Konnektivität
@@ -662,9 +666,9 @@ items:
     href: /azure/architecture/
   - name: Kundenstimmen
     href: http://customers.microsoft.com/en-us/search?sq=%22Azure%20SQL%20Database%22&ff=&p=0&so=story_publish_date%20desc
-ms.openlocfilehash: 8c32468bf7b21cd2545f85226758879cc5b657e8
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 6ae879edcd2b835cb52e20f070d6d8c0998ba610
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 12/06/2018
-ms.locfileid: "52961976"
+ms.locfileid: "52994568"

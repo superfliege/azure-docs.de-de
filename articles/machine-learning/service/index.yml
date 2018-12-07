@@ -1,15 +1,15 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 1add464c85d30622bf0940bf20a483ae22d07ea6
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 03e626eeac70ad3b77da80b599e92949d2194b4e
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52865317"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53013849"
 documentType: LandingData
 title: Dokumentation zum Azure Machine Learning-Dienst
 metadata:
-  title: Azure Machine Learning-Dokumentation – Tutorials, API-Referenz | Microsoft-Dokumentation
-  meta.description: Learn how to build intelligent algorithms into apps and websites. Use Scikit-learn, Tensorflow, Pytorch or any other Python-based framework to build your machine learning model and train it locally or in the cloud. Tutorials, quickstarts, API references, and examples show you how.
+  title: 'Dokumentation zum Azure Machine Learning-Dienst: Tutorials, API-Referenz | Microsoft-Dokumentation'
+  description: Es wird beschrieben, wie Sie intelligente Algorithmen in Apps und Websites einbinden. Verwenden Sie Scikit-learn, Tensorflow, Pytorch oder ein beliebiges anderes Python-basiertes Framework, um Ihr Machine Learning-Modell zu erstellen und lokal oder in der Cloud zu trainieren. Tutorials, Schnellstartanleitungen, API-Referenzen und Beispiele veranschaulichen die Vorgehensweise.
   services: machine-learning
   author: j-martens
   manager: jhubbard
@@ -20,6 +20,7 @@ metadata:
   ms.topic: landing-page
   ms.date: 09/24/2018
   ms.author: jmartens
+  ms.custom: seodec18
 abstract:
   description: Es wird beschrieben, wie Sie intelligente Algorithmen in Apps und Websites einbinden. Verwenden Sie Scikit-learn, Tensorflow, Pytorch oder ein beliebiges anderes Python-basiertes Framework, um Ihr Machine Learning-Modell zu erstellen und lokal oder in der Cloud zu trainieren. Tutorials, Schnellstartanleitungen, API-Referenzen und Beispiele veranschaulichen die Vorgehensweise.
 sections:
