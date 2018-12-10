@@ -17,8 +17,56 @@ items:
   expanded: true
 - name: Konzepte
   items:
+  - name: Azure AD Connect und Connect Health
+    href: how-to-connect-syncservice-duplicate-attribute-resiliency.md
+    items:
+    - name: Worum handelt es sich bei Azure AD Connect und Connect Health?
+      href: whatis-azure-ad-connect.md
+    - name: Auswählen der richtigen Authentifizierung
+      href: https://docs.microsoft.com/azure/security/azure-ad-choose-authn
+    - name: Identitätssynchronisierung und Resilienz bei doppelten Attributen
+  - name: Kennworthashsynchronisierung
+    items:
+    - name: Was ist Kennworthashsynchronisierung?
+      href: whatis-phs.md
+    - name: So funktioniert die Kennworthashsynchronisierung
+      href: how-to-connect-password-hash-synchronization.md
+  - name: Passthrough-Authentifizierung
+    items:
+    - name: Worum handelt es sich bei der Passthrough-Authentifizierung?
+      href: how-to-connect-pta.md
+    - name: So funktioniert die Passthrough-Authentifizierung
+      href: how-to-connect-pta-how-it-works.md
+    - name: 'Passthrough-Authentifizierung: aktuelle Einschränkungen'
+      href: how-to-connect-pta-current-limitations.md
+    - name: Ausführliche Informationen zur Sicherheit bei Passthrough-Authentifizierung
+      href: how-to-connect-pta-security-deep-dive.md
+    - name: Passthrough-Authentifizierung und Datenschutz
+      href: how-to-connect-pta-user-privacy.md
+  - name: Verbund
+    items:
+    - name: Was ist ein Verbund?
+      href: whatis-fed.md
+    - name: Funktionsweise eines Verbunds
+      href: how-to-connect-fed-whatis.md
+    - name: Azure AD-Verbund – Kompatibilitätsliste
+      href: how-to-connect-fed-compatibility.md
+  - name: Einmaliges Anmelden
+    items:
+    - name: Worum handelt es sich beim einmaligen Anmelden?
+      href: how-to-connect-sso.md
+    - name: So funktioniert einmaliges Anmelden
+      href: how-to-connect-sso-how-it-works.md
+    - name: Einmaliges Anmelden und Datenschutz
+      href: how-to-connect-sso-user-privacy.md
   - name: Azure AD Connect-Synchronisierung
     items:
+    - name: Was ist Azure AD Connect-Synchronisierung?
+      href: how-to-connect-sync-whatis.md
+    - name: 'Azure AD Connect-Synchronisierung: Features'
+      href: how-to-connect-syncservice-features.md
+    - name: Worum handelt es sich beim Azure AD Connect-Synchronisierungsdienst-Manager?
+      href: how-to-connect-sync-service-manager-ui.md
     - name: 'Azure AD Connect-Synchronisierung: Technische Konzepte'
       href: how-to-connect-sync-technical-concepts.md
     - name: Grundlegendes zur Architektur der Azure AD Connect-Synchronisierung
@@ -33,8 +81,6 @@ items:
       href: concept-azure-ad-connect-sync-user-and-contacts.md
     - name: Grundlegendes zu Schattenattributen
       href: how-to-connect-syncservice-shadow-attributes.md
-  - name: Identitätssynchronisierung und Resilienz bei doppelten Attributen
-    href: how-to-connect-syncservice-duplicate-attribute-resiliency.md
 - name: Anleitungen
   items:
   - name: Installation und Upgrade
@@ -119,8 +165,6 @@ items:
         href: plan-hybrid-identity-design-considerations-tools-comparison.md
   - name: Azure AD Connect verwalten
     items:
-    - name: Was ist Kennworthashsynchronisierung?
-      href: how-to-connect-password-hash-synchronization.md
     - name: Aktivieren des Geräterückschreibens
       href: how-to-connect-device-writeback.md
     - name: Geräteoptionen
@@ -141,10 +185,14 @@ items:
       href: how-to-connect-sync-change-addsacct-pass.md
     - name: Was ist das ADConnectivityTools-PowerShell-Modul?
       href: how-to-connect-adconnectivitytools.md
+  - name: Verwalten der Passthrough-Authentifizierung
+    items:
+    - name: Erste Schritte mit der Passthrough-Authentifizierung
+      href: how-to-connect-pta-quick-start.md
+    - name: 'Passthrough-Authentifizierung: häufig gestellte Fragen'
+      href: how-to-connect-pta-faq.md
   - name: Verwalten von Verbunddiensten
     items:
-    - name: Worum handelt es sich beim Verbund mit Azure AD Connect?
-      href: how-to-connect-fed-whatis.md
     - name: Verwalten des Verbunds mit Azure AD Connect
       href: how-to-connect-fed-management.md
     - name: Unterstützung mehrerer Domänen für den Verbund
@@ -159,40 +207,14 @@ items:
       href: how-to-connect-azure-ad-trust.md
     - name: Ändern des Hashalgorithmus für O365 RP
       href: how-to-connect-fed-sha256-guidance.md
-    - name: Azure AD-Verbund – Kompatibilitätsliste
-      href: how-to-connect-fed-compatibility.md
     - name: Verwenden eines SAML 2.0-Servers als IdP
       href: how-to-connect-fed-saml-idp.md
     - name: Aufgaben nach der Konfiguration für die Hybrid-Azure AD-Einbindung
       href: how-to-connect-fed-hybrid-azure-ad-join-post-config-tasks.md
-  - name: Verwalten der Passthrough-Authentifizierung
-    items:
-    - name: Worum handelt es sich bei der Passthrough-Authentifizierung?
-      href: how-to-connect-pta.md
-    - name: Erste Schritte mit der Passthrough-Authentifizierung
-      href: how-to-connect-pta-quick-start.md
-    - name: So funktioniert die Passthrough-Authentifizierung
-      href: how-to-connect-pta-how-it-works.md
-    - name: 'Passthrough-Authentifizierung: aktuelle Einschränkungen'
-      href: how-to-connect-pta-current-limitations.md
-    - name: Ausführliche Informationen zur Sicherheit bei Passthrough-Authentifizierung
-      href: how-to-connect-pta-security-deep-dive.md
-    - name: Passthrough-Authentifizierung und Datenschutz
-      href: how-to-connect-pta-user-privacy.md
-    - name: 'Passthrough-Authentifizierung: aktuelle Einschränkungen'
-      href: how-to-connect-pta-security-deep-dive.md
-    - name: 'Passthrough-Authentifizierung: häufig gestellte Fragen'
-      href: how-to-connect-pta-faq.md
   - name: Verwalten des einmaligen Anmeldens
     items:
-    - name: Worum handelt es sich beim einmaligen Anmelden?
-      href: how-to-connect-sso.md
     - name: Erste Schritte beim einmaligen Anmelden
       href: how-to-connect-sso-quick-start.md
-    - name: So funktioniert einmaliges Anmelden
-      href: how-to-connect-sso-how-it-works.md
-    - name: Einmaliges Anmelden und Datenschutz
-      href: how-to-connect-sso-user-privacy.md
     - name: 'Einmaliges Anmelden: häufig gestellte Fragen'
       href: how-to-connect-sso-faq.md
   - name: Verwalten von Azure AD Connect Health
@@ -213,10 +235,6 @@ items:
       href: how-to-connect-health-alert-catalog.md
   - name: Verwalten der Azure AD Connect-Synchronisierung
     items:
-    - name: Was ist Azure AD Connect-Synchronisierung?
-      href: how-to-connect-sync-whatis.md
-    - name: 'Azure AD Connect-Synchronisierung: Features'
-      href: how-to-connect-syncservice-features.md
     - name: Verwalten von operativen Aufgaben
       href: how-to-connect-sync-operations.md
     - name: Bewährte Methoden zum Ändern der Standardkonfiguration
@@ -233,8 +251,6 @@ items:
       href: how-to-connect-sync-feature-scheduler.md
     - name: Azure AD Connect-Synchronisierungsdienst-Manager
       items:
-      - name: Worum handelt es sich beim Azure AD Connect-Synchronisierungsdienst-Manager?
-        href: how-to-connect-sync-service-manager-ui.md
       - name: Verwalten der Registerkarte „Vorgänge“ des Dienst-Managers
         href: how-to-connect-sync-service-manager-ui-operations.md
       - name: Verwenden von Connectors mit dem Dienst-Manager
@@ -303,9 +319,9 @@ items:
     href: reference-connect-adsynctools.md
   - name: Referenz zu ADConnectivityTools
     href: reference-connect-adconnectivitytools.md
-ms.openlocfilehash: 07a3bfd816cd57ecbe77bf7e7435be99a0321fd2
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: b3488ec5aec1c5bd1d3f38a2bf87ab1d8d3a87f1
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52335448"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53080145"

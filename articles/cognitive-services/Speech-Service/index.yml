@@ -1,18 +1,16 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 452032e21a649fe4d34616225bd168d441ac0267
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.openlocfilehash: 6fa6a0f5a46d8e9a47a0750a66e9ca007864d40a
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51218633"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53092622"
 documentType: LandingData
-title: Dokumentation zum Speech-Dienst
+title: Dokumentation zu Speech-Diensten
 metadata:
-  title: 'Dokumentation zum Speech-Dienst: Tutorials, Schnellstarts, API-Referenz – Cognitive Services | Microsoft-Dokumentation'
-  meta.description: >
-    The Speech service gives developers an easy way to add powerful speech-enabled features to their applications.
-
-    Examples include voice command control and dialogue, natural speech conversation, speech transcription and dictation, and speech translation.
+  title: 'Dokumentation zu Speech-Diensten: Tutorials, Schnellstarts, API-Referenz'
+  titleSuffix: Azure Cognitive Services
+  description: Entwickler erhalten mit Speech-Diensten die Möglichkeit, ihre Anwendungen auf einfache Weise um leistungsfähige Sprachfunktionen zu erweitern. Hierzu zählen beispielsweise Steuerung per Sprachbefehl, Dialoge, Unterhaltungen in natürlicher Sprache, Sprachtranskription und -diktat sowie Sprachübersetzung.
   services: cognitive-services
   author: nitinme
   manager: cgronlun
@@ -22,10 +20,11 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 09/24/2018
-  ms.author: nitinme
+  ms.date: 12/06/2018
+  ms.author: erhopf
+  ms.custom: seodec18
 abstract:
-  description: Erfahren Sie, wie Sie mit dem Spracherkennungsdienst und dem Sprach-SDK Ihren Apps sprachaktivierte Features hinzufügen. Sie können mit dem Sprach-SDK Ihren Apps Funktionen für <i>Sprache-zu-Text</i> (Spracherkennung (Speech Recognition, SR)), <i>Absicht</i>, <i>Übersetzung</i> und <i>Sprachsynthese</i> (Text-to-Speech, TTS) hinzufügen. Der Spracherkennungsdienst verfügt auch über eine REST-API, die mit jeder Programmiersprache kompatibel ist, die HTTP-Anforderungen beherrscht.
+  description: Erfahren Sie, wie Sie mit Speech-Diensten und dem Speech SDK Ihren Apps sprachaktivierte Features hinzufügen. Sie können mit dem Sprach-SDK Ihren Apps Funktionen für <i>Sprache-zu-Text</i> (Spracherkennung (Speech Recognition, SR)), <i>Absicht</i>, <i>Übersetzung</i> und <i>Sprachsynthese</i> (Text-to-Speech, TTS) hinzufügen. Der Spracherkennungsdienst verfügt auch über eine REST-API, die mit jeder Programmiersprache kompatibel ist, die HTTP-Anforderungen beherrscht.
 sections:
 - items:
   - type: list
@@ -34,15 +33,15 @@ sections:
     columns: 3
     items:
     - href: /azure/cognitive-services/speech-service/overview
-      html: <p>Weitere Informationen zum Azure-Spracherkennungsdienst.</p>
+      html: <p>Weitere Informationen zu den Azure Speech-Diensten</p>
       image:
         src: ../media/index/i_overview.svg
       title: Was ist der Spracherkennungsdienst?
     - href: /azure/cognitive-services/speech-service/get-started
-      html: <p>Erfahren Sie, wie Sie sich kostenlos für den Spracherkennungsdienst registrieren können.</p>
+      html: <p>Registrieren Sie sich kostenlos.</p>
       image:
         src: ../media/index/i_get-started.svg
-      title: Registrieren für den Spracherkennungsdienst
+      title: Registrieren für die Speech-Dienste
     - href: /azure/cognitive-services/speech-service/speech-devices-sdk
       html: <p>Lernen Sie die Referenz zu sprachaktivierter Hardware kennen.</p>
       image:

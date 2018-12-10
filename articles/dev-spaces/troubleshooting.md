@@ -236,7 +236,7 @@ Ein Neustart der Agent-Knoten in Ihrem Cluster behebt in der Regel dieses Proble
 ### <a name="reason"></a>Grund
 Wenn Sie Dev Spaces auf einem Namespace in Ihrem AKS-Cluster aktivieren, wird ein zusätzlicher Container namens _mindaro-proxy_ in jedem Pod installiert, der in diesem Namespace ausgeführt wird. Dieser Container fängt Aufrufe an die Dienste im Pod ab. Dies ist eine wesentliche Entwicklungsfunktion des Dev Spaces-Teams.
 
-Leider kann dieser Vorgang bestimmte Dienste beeinträchtigen, die in diesen Pods ausgeführt werden. Insbesondere betrifft dies Pods, in denen Redis Cache ausgeführt wird. Es treten Verbindungsfehler und Fehler bei der Master/Slave-Kommunikation auf.
+Leider kann dieser Vorgang bestimmte Dienste beeinträchtigen, die in diesen Pods ausgeführt werden. Insbesondere betrifft dies Pods, in denen Redis Cache ausgeführt wird. Es treten Verbindungsfehler und Fehler bei der Kommunikation zwischen Primär- und Sekundärgerät auf.
 
 ### <a name="try"></a>Versuchen Sie Folgendes:
 Sie können die betroffenen Pods in einen Namespace im Cluster verschieben, für das Dev Spaces _nicht_ aktiviert ist, während Sie den Rest Ihrer Anwendung weiterhin in einem Namespace ausführen, für das Dev Spaces aktiviert ist. Dev Spaces installiert den Container _mindaro-proxy_ nicht in Namespaces, für die Dev Spaces nicht aktiviert ist.
