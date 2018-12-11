@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 09/18/2018
 ms.author: ryanwi
 ms.custom: mvc, devcenter
-ms.openlocfilehash: cca18b2aa5cb6f27df45e4b63e55251bea058625
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 19a9ae18c7fbf3b0f663396099f065c76969206f
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46968848"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52890380"
 ---
 # <a name="tutorial-deploy-an-application-to-service-fabric-mesh-using-a-template"></a>Tutorial: Bereitstellen einer Anwendung in Service Fabric Mesh mithilfe einer Vorlage
 
@@ -51,7 +51,7 @@ Bevor Sie mit diesem Tutorial beginnen können, müssen Sie Folgendes tun:
 
 * [Installieren von Docker](service-fabric-mesh-howto-setup-developer-environment-sdk.md#install-docker)
 
-* [Installieren Sie die Azure- und die Azure Service Fabric Mesh-Befehlszeilenschnittstelle lokal.](service-fabric-mesh-howto-setup-cli.md#install-the-service-fabric-mesh-cli-locally)
+* [Installieren Sie die Azure- und die Azure Service Fabric Mesh-Befehlszeilenschnittstelle lokal.](service-fabric-mesh-howto-setup-cli.md#install-the-azure-service-fabric-mesh-cli)
 
 ## <a name="create-a-container-registry"></a>Erstellen einer Containerregistrierung
 
@@ -61,7 +61,7 @@ Führen Sie die folgenden Schritte aus, um eine ACR-Instanz zu erstellen.  Wenn 
 
 ### <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
-Melden Sie sich bei Azure an, und legen Sie das aktive Abonnement fest:
+Melden Sie sich bei Azure an, und legen Sie das aktive Abonnement fest.
 
 ```azurecli
 az login
@@ -122,7 +122,7 @@ docker pull seabreeze/azure-mesh-todo-service:1.0-nanoserver-1709
 
 Bevor Sie ein Image mithilfe von Push in Ihre Registrierung übertragen können, müssen Sie es mit dem vollqualifizierten Namen Ihres ACR-Anmeldeservers markieren.
 
-Führen Sie den folgenden Befehl aus, um den vollständigen Anmeldeservernamen Ihrer ACR-Instanz abzurufen:
+Führen Sie den folgenden Befehl aus, um den vollständigen Anmeldeservernamen Ihrer ACR-Instanz abzurufen.
 
 ```azurecli
 az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginServer}" --output table
@@ -359,9 +359,27 @@ Führen Sie zum Bereitstellen der Anwendung Folgendes aus:
 az mesh deployment create --resource-group myResourceGroup --template-file c:\temp\mesh_rp.windows.json --parameters c:\temp\mesh_rp.windows.parameters.json
 ```
 
-Nach wenigen Minuten sollte die folgende Ausgabe angezeigt werden:
+Mit diesem Befehl wird der unten gezeigte JSON-Codeausschnitt erstellt. Kopieren Sie im Abschnitt ```outputs``` der JSON-Ausgabe die Eigenschaft ```publicIPAddress```.
 
-`todolistappNetwork has been deployed successfully on todolistappNetwork with public ip address <IP Address>`
+```json
+"outputs": {
+    "publicIPAddress": {
+    "type": "String",
+    "value": "40.83.78.216"
+    }
+}
+```
+
+Diese Informationen stammen aus dem Abschnitt ```outputs``` in der ARM-Vorlage. Dieser Abschnitt verweist auf die Gatewayressource, um die öffentliche IP-Adresse abzurufen: 
+
+```json
+  "outputs": {
+    "publicIPAddress": {
+      "value": "[reference('helloWorldGateway').ipAddress]",
+      "type": "string"
+    }
+  }
+```
 
 ## <a name="open-the-application"></a>Öffnen der Anwendung
 
@@ -398,4 +416,4 @@ In diesem Teil des Tutorials haben Sie Folgendes gelernt:
 
 Fahren Sie mit dem nächsten Tutorial fort:
 > [!div class="nextstepaction"]
-> [Tutorial: Skalieren einer in Service Fabric Mesh ausgeführten Anwendung](service-fabric-mesh-tutorial-template-scale-services.md)
+> [Skalieren einer in Service Fabric Mesh ausgeführten Anwendung](service-fabric-mesh-tutorial-template-scale-services.md)

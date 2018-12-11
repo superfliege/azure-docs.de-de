@@ -10,14 +10,14 @@ ms.component: translator-text
 ms.topic: quickstart
 ms.date: 11/26/2018
 ms.author: erhopf
-ms.openlocfilehash: d0921d67867e412ed1862c597297e27c2c56ae3b
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: 034b6e102d008039ddd138798900dbee17faf51d
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52334532"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52887949"
 ---
-# <a name="quickstart-find-alternate-translations-with-the-translator-text-rest-api-c"></a>Schnellstart: Ermitteln alternativer Übersetzungen mit der Textübersetzungs-REST-API (C#)
+# <a name="quickstart-use-the-translator-text-api-to-get-alternate-translations-using-c"></a>Schnellstart: Verwenden der Textübersetzungs-API zum Abrufen von alternativen Übersetzungen mit C#
 
 In dieser Schnellstartanleitung suchen Sie mithilfe von .NET Core und der Textübersetzungs-API alternative Übersetzungen für einen Begriff sowie Verwendungsbeispiele für diese alternativen Übersetzungen.
 
@@ -28,7 +28,7 @@ Für diese Schnellstartanleitung wird ein [Azure Cognitive Services-Konto](https
 * [.NET SDK](https://www.microsoft.com/net/learn/dotnet/hello-world-tutorial)
 * [Json.NET-NuGet-Paket](https://www.nuget.org/packages/Newtonsoft.Json/)
 * [Visual Studio](https://visualstudio.microsoft.com/downloads/), [Visual Studio Code](https://code.visualstudio.com/download) oder ein anderer Editor
-* Ein Azure-Abonnementschlüssel für den Speech-Dienst
+* Ein Azure-Abonnementschlüssel für die Textübersetzung
 
 ## <a name="create-a-net-core-project"></a>Erstellen eines .NET Core-Projekts
 

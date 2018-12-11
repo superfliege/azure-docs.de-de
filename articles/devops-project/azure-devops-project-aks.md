@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Bereitstellen einer ASP.NET Core-App in Azure Kubernetes Service (AKS) mithilfe von Azure DevOps Projects'
+title: 'Tutorial: Bereitstellen einer ASP.NET Core-App in Azure Kubernetes Service mit Azure DevOps Projects'
 description: Azure DevOps Projects erleichtert die ersten Schritte mit Azure. Mit Azure DevOps Projects können Sie Ihre ASP.NET Core-App mit Azure Kubernetes Service (AKS) in wenigen Schritten bereitstellen.
 ms.author: mlearned
 ms.manager: douge
@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.date: 07/09/2018
 author: mlearned
 monikerRange: vsts
-ms.openlocfilehash: 6e2b53e51d7da117a7f690cb676d0ec096bcb1cd
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 7980ea439cfd3eaefcaa308795836a909f980043
+ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52165547"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52620641"
 ---
-# <a name="tutorial-deploy-your-aspnet-core-app-to-azure-kubernetes-service-aks-by-using-azure-devops-projects"></a>Tutorial: Bereitstellen einer ASP.NET Core-App in Azure Kubernetes Service (AKS) mithilfe von Azure DevOps Projects
+# <a name="tutorial-deploy-aspnet-core-apps-to-azure-kubernetes-service-with-azure-devops-projects"></a>Tutorial: Bereitstellen einer ASP.NET Core-App in Azure Kubernetes Service mit Azure DevOps Projects
 
 Azure DevOps Projects bietet eine vereinfachte Umgebung, in der Sie Ihren vorhandenen Code und Ihr Git-Repository verwenden oder eine Beispielanwendung auswählen können, um eine Continuous Integration- und Continuous Delivery-Pipeline (CI/CD) für Azure zu erstellen. 
 
@@ -24,6 +24,7 @@ Von DevOps Projects werden darüber hinaus die folgenden Aktionen ausgeführt:
 * Automatisches Erstellen von Azure-Ressourcen wie Azure Kubernetes Service (AKS)
 * Erstellen und Konfigurieren einer Releasepipeline in Azure DevOps, mit der eine Build- und Releasepipeline für CI/CD eingerichtet wird
 * Erstellen einer Azure Application Insights-Ressource für die Überwachung
+* Aktivieren von [Azure Monitor für Container](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-overview) zum Überwachen der Leistung für die Containerworkloads im AKS-Cluster
 
 In diesem Lernprogramm lernen Sie Folgendes:
 

@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 07/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 6ae014597a89c75e4426715227bbb19f1e98a438
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 7c6f5e199041af7d0ecd829ace2b56f5789f4955
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32189288"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52890448"
 ---
 # <a name="tutorial-back-up-and-restore-files-for-windows-virtual-machines-in-azure"></a>Tutorial: Sichern und Wiederherstellen von Dateien für virtuelle Windows-Computer in Azure
 
@@ -47,7 +47,7 @@ Erstellen Sie eine einfache geplante tägliche Sicherung in einem Recovery Servi
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 2. Wählen Sie im Menü auf der linken Seite **Virtuelle Computer** aus. 
 3. Wählen Sie in der Liste eine zu sichernde VM aus.
-4. Klicken Sie auf dem Blatt des virtuellen Computers im Abschnitt **Einstellungen** auf **Sicherung**. Das Blatt **Sicherung aktivieren** wird geöffnet.
+4. Klicken Sie auf dem Blatt des virtuellen Computers im Abschnitt **Vorgänge** auf **Sicherung**. Das Blatt **Sicherung aktivieren** wird geöffnet.
 5. Wenn kein **Recovery Services-Tresor** vorhanden ist, können Sie auf **Neu erstellen** klicken und den Namen für den neuen Tresor angeben. Ein neuer Tresor wird in derselben Ressourcengruppe und an demselben Standort wie der virtuelle Computer erstellt.
 6. Klicken Sie auf **Sicherungsrichtlinie**. In diesem Beispiel behalten Sie die Standardwerte bei. Klicken Sie auf **OK**.
 7. Klicken Sie auf dem Blatt **Sicherung aktivieren** auf **Sicherung aktivieren**. Dadurch wird eine tägliche Sicherung basierend auf dem Standardzeitplan erstellt.

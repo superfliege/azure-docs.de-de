@@ -1,7 +1,6 @@
 ---
-title: Abfragen von Daten von einem Azure Cosmos DB-Cassandra-API-Konto
-description: In diesem Artikel wird das Abfragen von Benutzerdaten von einem Cassandra-API-Konto von Azure Cosmos DB mithilfe einer Java-Anwendung gezeigt.
-services: cosmos-db
+title: 'Tutorial: Abfragen von Daten von einem Cassandra-API-Konto in Azure Cosmos DB'
+description: In diesem Tutorial wird das Abfragen von Benutzerdaten von einem Cassandra-API-Konto von Azure Cosmos DB mithilfe einer Java-Anwendung gezeigt.
 ms.service: cosmos-db
 author: kanshiG
 ms.author: govindk
@@ -9,22 +8,25 @@ ms.reviewer: sngun
 ms.component: cosmosdb-cassandra
 ms.topic: tutorial
 ms.date: 09/24/2018
-ms.openlocfilehash: a06e7e6159953bfeffa966759d29b91bbcbafd37
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+Customer intent: As a developer, I want to build a Java application to query data stored in a Cassandra API account of Azure Cosmos DB so that customers can manage the key/value data and utilize the global distribution, elastic scaling, multi-master, and other capabilities offered by Azure Cosmos DB.
+ms.openlocfilehash: 57d83516708e3105ba32f8b83420f06aadf0ace1
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50739208"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52867511"
 ---
-# <a name="tutorial-query-data-from-an-azure-cosmos-db-cassandra-api-account"></a>Tutorial: Abfragen von Daten von einem Azure Cosmos DB-Cassandra-API-Konto
+# <a name="tutorial-query-data-from-a-cassandra-api-account-in-azure-cosmos-db"></a>Tutorial: Abfragen von Daten von einem Cassandra-API-Konto in Azure Cosmos DB
 
-In diesem Tutorial wird das Abfragen von Benutzerdaten von einem Cassandra-API-Konto von Azure Cosmos DB mithilfe einer Java-Anwendung gezeigt. Die Java-Anwendung verwendet den [Java-Treiber](https://github.com/datastax/java-driver) und fragt Benutzerdaten wie z.B. Benutzer-ID, Benutzername und Stadt des Benutzers ab. 
+Als Entwickler besitzen Sie möglicherweise Anwendungen, die Schlüssel/Wert-Paare verwenden. Sie können ein Cassandra-API-Konto in Azure Cosmos DB zum Speichern und Abfragen der Schlüssel-Wert-Daten verwenden. In diesem Tutorial wird das Abfragen von Benutzerdaten von einem Cassandra-API-Konto in Azure Cosmos DB mithilfe einer Java-Anwendung gezeigt. Die Java-Anwendung verwendet den [Java-Treiber](https://github.com/datastax/java-driver) und fragt Benutzerdaten wie Benutzer-ID, Benutzername und Benutzerort ab. 
 
 Dieses Tutorial enthält die folgenden Aufgaben:
 
 > [!div class="checklist"]
 > * Abfragen von Daten aus einer Cassandra-Tabelle
 > * Ausführen der App
+
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -38,7 +40,7 @@ Führen Sie zum Abfragen von Daten aus Ihrem Cassandra-API-Konto die folgenden S
 
    * Abfragen aller Benutzer in der Datenbank
    * Abfragen eines bestimmten Benutzers, gefiltert nach Benutzer-ID
-   * Löschen einer Tabelle
+   * So löschen Sie eine Tabelle
 
    ```java
    /**
@@ -103,9 +105,13 @@ Führen Sie zum Abfragen von Daten aus Ihrem Cassandra-API-Konto die folgenden S
 
 2. Öffnen Sie nun im Azure-Portal den **Daten-Explorer**, und vergewissern Sie sich, dass die Benutzertabelle gelöscht ist.
 
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
+Wenn die Ressourcengruppe, das Azure Cosmos-Konto und die dazugehörigen Ressourcen nicht mehr benötigt werden, können Sie sie löschen. Wählen Sie dazu die Ressourcengruppe für den virtuellen Computer aus, klicken Sie auf **Löschen**, und bestätigen Sie den Namen der zu löschenden Ressourcengruppe.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-* In diesem Tutorial haben Sie gelernt, Ihre Daten aus einem Cassandra-API-Konto von Azure Cosmos DB abzufragen. Sie können jetzt mit dem nächsten Artikel fortfahren:
+In diesem Tutorial haben Sie gelernt, Ihre Daten aus einem Cassandra-API-Konto in Azure Cosmos DB abzufragen. Sie können jetzt mit dem nächsten Artikel fortfahren:
 
 > [!div class="nextstepaction"]
 > [Daten zum Cassandra-API-Konto migrieren](cassandra-import-data.md)

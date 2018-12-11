@@ -4,15 +4,15 @@ description: In diesem Artikel wird beschrieben, wie lokale virtuelle VMware-Com
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 10/23/2018
+ms.date: 11/28/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 18e1ecd4896277f0dd0dfc2ceac2185cbdd09b93
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: dddfbab1d40c03659ba346c9f0e898cfefc8d55e
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50241105"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52847982"
 ---
 # <a name="discover-and-assess-on-premises-vmware-vms-for-migration-to-azure"></a>Ermitteln und Bewerten lokaler virtueller VMware-Computer für die Migration zu Azure
 
@@ -26,16 +26,13 @@ In diesem Tutorial lernen Sie Folgendes:
 > * Einrichten eines lokalen virtuellen Collectorcomputers zum Ermitteln lokaler virtueller VMware-Computer für die Bewertung
 > * Gruppieren virtueller Computer und Erstellen einer Bewertung
 
-
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/pricing/free-trial/) erstellen, bevor Sie beginnen.
-
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - **VMware**: Die virtuellen Computer, die Sie migrieren möchten, müssen von vCenter Server mit der Version 5.5, 6.0 oder 6.5 verwaltet werden. Zusätzlich benötigen Sie einen ESXi-Host mit der Version 5.0 oder höher, um die Collector-VM bereitzustellen.
 - **vCenter Server-Konto**: Sie benötigen ein schreibgeschütztes Konto, um auf den vCenter Server zugreifen zu können. Dieses Konto wird in Azure Migrate zum Ermitteln der lokalen virtuellen Computer verwendet.
 - **Berechtigungen:** Auf dem vCenter Server benötigen Sie Berechtigungen zum Erstellen eines virtuellen Computers durch Importieren einer Datei im OVA-Format.
-- **Statistikeinstellungen**: Diese Voraussetzung gilt nur für das Modell für einmalige Ermittlung. Für die einmalige Ermittlung sollten die Statistikeinstellungen für vCenter Server vor der Bereitstellung auf Ebene 3 festgelegt werden. Bei einer niedrigeren Ebene als Ebene 3 wird die Bewertung zwar ausgeführt, die Leistungsdaten für den Speicher und das Netzwerk werden jedoch nicht erfasst. Die Größenempfehlungen in diesem Fall werden auf der Grundlage von Leistungsdaten für CPU und Arbeitsspeicher und Konfigurationsdaten für Datenträger- und Netzwerkadapter erstellt.
 
 ## <a name="create-an-account-for-vm-discovery"></a>Erstellen eines Kontos für die VM-Ermittlung
 
@@ -67,20 +64,21 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 Azure Migrate erstellt einen lokalen virtuellen Computer, der als „Collectorappliance“ bezeichnet wird. Dieser virtuelle Computer ermittelt lokale virtuelle VMware-Computer und sendet Metadaten zu diesen Computern an den Azure Migrate-Dienst. Zum Einrichten der Collectorappliance laden Sie eine OVA-Datei herunter und importieren sie auf den lokalen vCenter-Server, um den virtuellen Computer zu erstellen.
 
 1. Klicken Sie im Azure Migrate-Projekt auf **Erste Schritte** > **Ermitteln und bewerten** > **Computer ermitteln**.
-2. In **Computer ermitteln** stehen zwei Optionen für die Appliance zur Verfügung – klicken Sie zum Herunterladen der Ihren Anforderungen entsprechenden Appliance auf **Herunterladen**.
+2. Klicken Sie unter **Computer ermitteln** auf **Herunterladen**, um die Appliance herunterzuladen.
 
-    a. **Einmalige Ermittlung:** Die Appliance für dieses Modell kommuniziert mit vCenter Server, um Metadaten über die virtuellen Computer zu sammeln. Für die Sammlung von Leistungsdaten der virtuellen Computer bezieht es sich auf die in vCenter Server gespeicherten historischen Leistungsdaten und sammelt den Leistungsverlauf des letzten Monats. In diesem Modell sammelt Azure Migrate durchschnittliche Leistungsindikatoren (im Gegensatz zu Spitzenleistungsindikatoren) für jede Metrik. (Weitere Informationen finden Sie [hier](https://docs.microsoft.com/azure/migrate/concepts-collector#what-data-is-collected).) Da es nur eine einmalige Ermittlung ist, spiegeln sich Änderungen in der lokalen Umgebung nicht wider, sobald die Ermittlung abgeschlossen ist. Wenn sich die Änderungen widerspiegeln sollen, müssen Sie eine neue Ermittlung derselben Umgebung für dasselbe Projekt durchführen.
-
-    b. **Kontinuierliche Ermittlung:** Die Appliance für dieses Modell erstellt kontinuierlich Profile der lokalen Umgebung zum Sammeln von Echtzeit-Nutzungsdaten für jeden virtuellen Computer. In diesem Modell werden Spitzenleistungsindikatoren für jede Metrik (CPU-Auslastung, Arbeitsspeicherauslastung usw.) gesammelt. Dieses Modell ist nicht von den Statistikeinstellungen von vCenter Server für die Sammlung von Leistungsdaten abhängig. Sie können die kontinuierliche Profilerstellung jederzeit von der Appliance aus beenden.
-
-    Beachten Sie, dass die Appliance nur Leistungsdaten kontinuierlich erfasst. Sie erkennt keine Konfigurationsänderungen in der lokalen Umgebung (etwa das Hinzufügen eines virtuellen Computers, Löschvorgänge, hinzugefügte Datenträger und Ähnliches). Wenn sich die Konfiguration in der lokalen Umgebung ändert, können Sie wie folgt vorgehen, damit die Änderungen im Portal berücksichtigt werden:
-
-    1. Hinzugefügte Elemente (virtuelle Computer, Datenträger, Kerne und Ähnliches): Damit diese Änderungen im Azure-Portal berücksichtigt werden, können Sie die Ermittlung über die Appliance beenden und anschließend wieder starten. Dadurch wird sichergestellt, dass die Änderungen im Azure Migrate-Projekt aktualisiert werden.
-
-    2. Gelöschte virtuelle Computer: Die Löschung virtueller Computer wird aufgrund des Designs der Appliance auch dann nicht berücksichtigt, wenn Sie die Ermittlung beenden und wieder starten. Der Grund: Die Daten nachfolgender Ermittlungen werden an ältere Ermittlungen angefügt und nicht überschrieben. In diesem Fall können Sie den virtuellen Computer im Portal einfach ignorieren, indem Sie ihn aus Ihrer Gruppe entfernen und die Bewertung neu berechnen.
+    Die Azure Migrate-Appliance kommuniziert mit vCenter Server und erstellt kontinuierlich Profile der lokalen Umgebung, um in Echtzeit Nutzungsdaten für jeden virtuellen Computer zu erfassen. Sie erfasst Spitzenleistungsindikatoren für jede Metrik (CPU-Auslastung, Arbeitsspeicherauslastung usw.). Dieses Modell ist nicht von den Statistikeinstellungen von vCenter Server für die Sammlung von Leistungsdaten abhängig. Sie können die kontinuierliche Profilerstellung jederzeit von der Appliance aus beenden.
 
     > [!NOTE]
-    > Die Funktionalität der kontinuierlichen Ermittlung ist in der Vorschau. Es empfiehlt sich, diese Methode zu verwenden, da sie präzise Leistungsdaten erfasst und zu einer korrekten Größe führt.
+    > Die Appliance zur einmaligen Ermittlung ist inzwischen veraltet, da diese Methode bei der Verfügbarkeit der Leistungsdatenpunkte von den Statistikeinstellungen von vCenter Server abhängig war und durchschnittliche Leistungsindikatoren erfasst hat, was zu unterdimensionierten virtuellen Computern für die Migration zu Azure führte.
+
+    **Sofortige Ergebnisse:** Mit der Appliance für die kontinuierliche Ermittlung können Sie nach Abschluss der Ermittlung (dauert je nach Anzahl von virtuellen Computern einige Stunden) sofort Bewertungen erstellen. Da die Erfassung von Leistungsdaten bereits beim Start der Ermittlung beginnt, empfiehlt es sich, das Größenkriterium in der Bewertung auf *Wie lokal* festzulegen, um sofortige Ergebnisse zu erzielen. Bei leistungsbasierten Bewertungen empfiehlt es sich, nach dem Start der Ermittlung mindestens einen Tag zu warten, um zuverlässige Größenempfehlungen zu erhalten.
+
+    Die Appliance erfasst nur Leistungsdaten kontinuierlich. Sie erkennt keine Konfigurationsänderungen in der lokalen Umgebung (also hinzugefügte virtuelle Computer, Löschvorgänge, hinzugefügte Datenträger und Ähnliches). Wenn sich die Konfiguration in der lokalen Umgebung ändert, können Sie wie folgt vorgehen, damit die Änderungen im Portal berücksichtigt werden:
+
+    - Hinzugefügte Elemente (VMs, Datenträger, Kerne und Ähnliches): Damit diese Änderungen im Azure-Portal berücksichtigt werden, können Sie die Ermittlung über die Appliance beenden und anschließend wieder starten. Dadurch wird sichergestellt, dass die Änderungen im Azure Migrate-Projekt aktualisiert werden.
+
+    - Gelöschte VMs: Das Löschen von VMs wird aufgrund des Entwurfs der Appliance auch dann nicht berücksichtigt, wenn Sie die Ermittlung beenden und wieder starten. Das liegt daran, dass Daten nachfolgender Ermittlungen älteren Ermittlungen angefügt und nicht überschrieben werden. In diesem Fall können Sie die VM im Portal einfach ignorieren, indem Sie sie aus Ihrer Gruppe entfernen und die Bewertung neu berechnen.
+
 
 3. Kopieren Sie in **Projektanmeldeinformationen kopieren** die Projekt-ID und den Projektschlüssel. Diese benötigen Sie beim Konfigurieren des Collectors.
 
@@ -96,7 +94,20 @@ Azure Migrate erstellt einen lokalen virtuellen Computer, der als „Collectorap
     - Beispielverwendung: ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
 3. Der generierte Hash muss folgenden Einstellungen entsprechen.
 
-#### <a name="one-time-discovery"></a>Einmalige Ermittlung
+#### <a name="continuous-discovery"></a>Kontinuierliche Ermittlung
+
+  Für OVA-Version 1.0.10.4
+
+  **Algorithmus** | **Hashwert**
+  --- | ---
+  MD5 | 2ca5b1b93ee0675ca794dd3fd216e13d
+  SHA1 | 8c46a52b18d36e91daeae62f412f5cb2a8198ee5
+  SHA256 | 3b3dec0f995b3dd3c6ba218d436be003a687710abab9fcd17d4bdc90a11276be
+
+
+#### <a name="one-time-discovery-deprecated-now"></a>Einmalige Ermittlung (jetzt veraltet)
+
+Dieses Modell ist inzwischen veraltet. Für bereits vorhandene Appliances wird jedoch noch Support bereitgestellt.
 
   Für OVA-Version 1.0.9.15
 
@@ -121,33 +132,6 @@ Azure Migrate erstellt einen lokalen virtuellen Computer, der als „Collectorap
   MD5 | d0363e5d1b377a8eb08843cf034ac28a
   SHA1 | df4a0ada64bfa59c37acf521d15dcabe7f3f716b
   SHA256 | f677b6c255e3d4d529315a31b5947edfe46f45e4eb4dbc8019d68d1d1b337c2e
-
-  Für OVA-Version 1.0.9.8
-
-  **Algorithmus** | **Hashwert**
-  --- | ---
-  MD5 | b5d9f0caf15ca357ac0563468c2e6251
-  SHA1 | d6179b5bfe84e123fabd37f8a1e4930839eeb0e5
-  SHA256 | 09c68b168719cb93bd439ea6a5fe21a3b01beec0e15b84204857061ca5b116ff
-
-
-  Für OVA-Version 1.0.9.7
-
-  **Algorithmus** | **Hashwert**
-  --- | ---
-  MD5 | d5b6a03701203ff556fa78694d6d7c35
-  SHA1 | f039feaa10dccd811c3d22d9a59fb83d0b01151e
-  SHA256 | e5e997c003e29036f62bf3fdce96acd4a271799211a84b34b35dfd290e9bea9c
-
-#### <a name="continuous-discovery"></a>Kontinuierliche Ermittlung
-
-  Für OVA-Version 1.0.10.4
-
-  **Algorithmus** | **Hashwert**
-  --- | ---
-  MD5 | 2ca5b1b93ee0675ca794dd3fd216e13d
-  SHA1 | 8c46a52b18d36e91daeae62f412f5cb2a8198ee5
-  SHA256 | 3b3dec0f995b3dd3c6ba218d436be003a687710abab9fcd17d4bdc90a11276be
 
 ## <a name="create-the-collector-vm"></a>Erstellen der Collector-VM
 
@@ -195,12 +179,9 @@ Importieren Sie die heruntergeladene Datei auf den vCenter Server.
 > Wenn Sie die Einstellungen auf einem Computer ändern, auf den Sie zugreifen möchten, lösen Sie erneut die Ermittlung aus, bevor Sie die Bewertung ausführen. Verwenden Sie dazu im Collector die Option **Sammlung erneut starten**. Nachdem die Sammlung abgeschlossen ist, wählen Sie im Portal die Option **Neu berechnen** für die Bewertung aus, um die aktualisierten Bewertungsergebnisse zu erhalten.
 
 
-
 ### <a name="verify-vms-in-the-portal"></a>Überprüfen virtueller Computer im Portal
 
-Die Ermittlungszeit der einmaligen Ermittlung hängt von der Anzahl der ermittelten virtuellen Computer ab. In der Regel dauert es bei 100 virtuellen Computern nach Abschluss der Ausführung des Collectors ungefähr eine Stunde, bis die Konfiguration und Sammlung von Leistungsdaten abgeschlossen ist. Sie können sofort nach Abschluss der Ermittlung (leistungsbasierte und lokale) Bewertungen erstellen.
-
-Für die (als Vorschau verfügbare) kontinuierliche Ermittlung stellt der Collector kontinuierlich das Profil der lokalen Umgebung her und sendet Leistungsdaten in einem stündlichen Intervall. Sie können die Computer im Portal eine Stunde nach Start der Ermittlung überprüfen. Sie sollten mindestens einen Tag warten, bevor Sie leistungsbasierte Bewertungen für die virtuellen Computer erstellen.
+Die Collector-Appliance erstellt kontinuierlich Profile für die lokale Umgebung und sendet stündlich Leistungsdaten. Die Computer können eine Stunde nach Beginn der Ermittlung im Portal angezeigt werden.
 
 1. Klicken Sie im Migrationsprojekt auf **Verwalten** > **Computer**.
 2. Überprüfen Sie, ob die zu ermittelnden virtuellen Computer im Portal angezeigt werden.
@@ -208,7 +189,7 @@ Für die (als Vorschau verfügbare) kontinuierliche Ermittlung stellt der Collec
 
 ## <a name="create-and-view-an-assessment"></a>Erstellen und Anzeigen einer Bewertung
 
-Nach der Ermittlung der virtuellen Computer gruppieren Sie sie und erstellen eine Bewertung.
+Nach der Ermittlung der virtuellen Computer im Portal können Sie sie gruppieren und Bewertungen erstellen. Nachdem die virtuellen Computer im Portal ermittelt wurden, können Sie sofort Bewertungen vom Typ „Wie lokal“ erstellen. Bei leistungsbasierten Bewertungen empfiehlt es sich, mindestens einen Tag zu warten, um zuverlässige Größenempfehlungen zu erhalten.
 
 1. Klicken Sie auf der Seite **Übersicht** des Projekts auf **+ Bewertung erstellen**.
 2. Klicken Sie auf **Alle anzeigen**, um die Eigenschaften für die Bewertung zu überprüfen.
@@ -219,7 +200,7 @@ Nach der Ermittlung der virtuellen Computer gruppieren Sie sie und erstellen ein
 7. Klicken Sie auf **Bewertung exportieren**, um sie als Excel-Datei herunterzuladen.
 
 > [!NOTE]
-> Bei der kontinuierlichen Ermittlung sollten Sie unbedingt nach dem Start der Ermittlung mindestens einen Tag warten, bevor Sie eine Bewertung erstellen. Eine vorhandene Bewertung können Sie mithilfe des Befehls **Neu berechnen** für die Bewertung mit den neuesten Leistungsdaten aktualisieren.
+> Es wird dringend empfohlen, nach dem Start der Ermittlung mindestens einen Tag zu warten, bevor Sie eine Bewertung erstellen. Eine vorhandene Bewertung können Sie mithilfe des Befehls **Neu berechnen** für die Bewertung mit den neuesten Leistungsdaten aktualisieren.
 
 ### <a name="assessment-details"></a>Bewertungsdetails
 
@@ -272,22 +253,14 @@ Bei Verwendung der leistungsbasierten Größenanpassung benötigt Azure Migrate 
 
 Dass für eine Bewertung nicht alle Datenpunkte verfügbar sind, kann folgende Ursachen haben:
 
-**Einmalige Ermittlung**
-
-- Die Statistikeinstellung in vCenter Server ist nicht auf Stufe 3 festgelegt. Da das Modell für einmalige Ermittlung von den Statistikeinstellungen in vCenter Server abhängt, werden von vCenter Server keine Leistungsdaten für Datenträger und Netzwerk erfasst, wenn die Statistikeinstellung in vCenter Server auf eine niedrigere Stufe als Stufe 3 festgelegt ist. In diesem Fall ist die Datenträger- und Netzwerkempfehlung von Azure Migrate nicht nutzungsbasiert. Da ohne Berücksichtigung der IOPS/des Durchsatzes nicht ermittelt werden kann, ob der Datenträger einen Premium-Datenträger in Azure benötigt, empfiehlt Azure Migrate Standarddatenträger für alle Datenträger.
-- Die Statistikeinstellung in vCenter Server wurde vor dem Start der Ermittlung kurzzeitig auf Stufe 3 festgelegt. Ein Beispiel: Angenommen, Sie haben die Statistikeinstellung heute auf Stufe 3 festgelegt und starten die Ermittlung morgen (also 24 Stunden später) mithilfe der Collectorappliance. Wenn Sie eine Bewertung für einen einzelnen Tag erstellen, verfügen Sie über alle Datenpunkte, und die Zuverlässigkeitsstufe für die Bewertung beträgt fünf Sterne. Wenn Sie die Leistungsdauer in den Bewertungseigenschaften jedoch auf einen Monat festlegen, führt dies zu einer niedrigeren Zuverlässigkeitsstufe, da für den letzten Monat keine Datenträger- und Netzwerkleistungsdaten vorliegen. Wenn Sie die Leistungsdaten des letzten Monats berücksichtigen möchten, empfiehlt es sich, die Statistikeinstellung in vCenter Server vor Beginn der Ermittlung einen Monat lang auf Stufe 3 festzulegen.
-
-**Kontinuierliche Ermittlung**
-
 - Sie haben für den Zeitraum, für den Sie die Bewertung erstellen, kein Profil Ihrer Umgebung erstellt. Wenn Sie z.B. die Bewertung mit einer auf 1 Tag festgelegten Leistungsdauer erstellen, müssen Sie bis mindestens einen Tag nach dem Start der Ermittlung warten, bis alle Datenpunkte gesammelt sind.
 
-**Häufige Gründe**  
-
 - Einige virtuelle Computer wurden während des Zeitraums, für den die Bewertung berechnet wird, heruntergefahren. Wenn ein virtueller Computer für eine gewisse Zeit heruntergefahren wird, können für diesen Zeitraum keine Leistungsdaten gesammelt werden.
+
 - Einige virtuelle Computer wurden während des Zeitraums, für den die Bewertung berechnet wird, erstellt. Ein Beispiel: Angenommen, Sie erstellen eine Bewertung für den Leistungsverlauf des letzten Monats, und in der Umgebung wurden letzte Woche einige virtuelle Computer erstellt. In solchen Fällen liegt für die neuen virtuellen Computer kein Leistungsverlauf für den gesamten Zeitraum vor.
 
 > [!NOTE]
-> Bei einer Zuverlässigkeitsstufe von weniger als vier Sternen empfiehlt sich für das Modell für einmalige Ermittlung, die Statistikeinstellungen in vCenter Server auf Stufe 3 festzulegen und mit der Ermittlung und Bewertung so lange zu warten, bis Daten für den gewünschten Zeitraum (ein Tag/eine Woche/ein Monat) vorliegen. Warten Sie für das Modell für kontinuierliche Ermittlung mindestens einen Tag, damit die Appliance ein Profil der Umgebung erstellen und dann die Bewertung *neu berechnen* kann. Sollte das nicht möglich sein, ist die leistungsbasierte Größenanpassung möglicherweise nicht zuverlässig, und es empfiehlt sich, in den Bewertungseigenschaften stattdessen die Größenanpassung vom Typ *Wie lokal* festzulegen.
+> Beträgt die Zuverlässigkeitsstufe weniger als fünf Sterne, warten Sie mindestens einen Tag, damit die Appliance ein Profil der Umgebung erstellen kann, und führen Sie dann eine *Neuberechnung* der Bewertung durch. Sollte das nicht möglich sein, ist die leistungsbasierte Größenanpassung möglicherweise nicht zuverlässig, und es empfiehlt sich, in den Bewertungseigenschaften stattdessen die Größenanpassung vom Typ *Wie lokal* festzulegen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

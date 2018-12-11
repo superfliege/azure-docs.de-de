@@ -12,16 +12,16 @@ ms.author: jovanpop
 ms.reviewer: Carlrab
 manager: craigg
 ms.date: 11/28/2018
-ms.openlocfilehash: b7a3fc6e5dafb59d6981ff4302d4b060b0c73d6b
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: d5be25abc634200e0c0afed6946b38fd163fb78e
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52499249"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52890499"
 ---
 # <a name="quickstart-create-an-azure-sql-database-managed-instance"></a>Schnellstart: Erstellen einer verwalteten Azure SQL-Datenbank-Instanz
 
-Diese Schnellstartanleitung zeigt, wie Sie eine [verwaltete Azure SQL-Datenbank-Instanz](sql-database-managed-instance.md) im Azure-Portal erstellen. 
+Diese Schnellstartanleitung zeigt, wie Sie eine [verwaltete Azure SQL-Datenbank-Instanz](sql-database-managed-instance.md) im Azure-Portal erstellen.
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
@@ -45,7 +45,7 @@ Die folgenden Schritte zeigen, wie Sie eine verwaltete Instanz erstellen.
    | ------ | --------------- | ----------- |
    | **Abonnement** | Ihr Abonnement | Ein Abonnement mit der Berechtigung zum Erstellen neuer Ressourcen |
    |**Name der verwalteten Instanz**|Ein gültiger Name|Gültige Namen finden Sie unter [Benennungskonventionen](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions).|
-   |**Administratoranmeldung für verwaltete Instanz**|Beliebiger gültiger Benutzername|Gültige Namen finden Sie unter [Benennungskonventionen](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions). Verwenden Sie nicht „serveradmin“. Hierbei handelt es sich um eine reservierte Rolle auf Serverebene.| 
+   |**Administratoranmeldung für verwaltete Instanz**|Beliebiger gültiger Benutzername|Gültige Namen finden Sie unter [Benennungskonventionen](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions). Verwenden Sie nicht „serveradmin“. Hierbei handelt es sich um eine reservierte Rolle auf Serverebene.|
    |**Kennwort**|Ein gültiges Kennwort|Das Kennwort muss mindestens 16 Zeichen lang sein und die [definierten Anforderungen an die Komplexität](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm) erfüllen.|
    |**Location**|Der Speicherort, an dem Sie die verwaltete Instanz erstellen möchten|Informationen zu Regionen finden Sie unter [Azure-Regionen](https://azure.microsoft.com/regions/).|
    |**Virtuelles Netzwerk**|Wählen Sie entweder **Neues virtuelles Netzwerk erstellen** oder ein virtuelles Netzwerk aus, das Sie zuvor in der Ressourcengruppe erstellt haben, die bereits in diesem Formular angegeben wurde.| Eine Vorlage zum Konfigurieren eines virtuellen Netzwerks für eine verwaltete Instanz mit benutzerdefinierten Einstellungen finden Sie in Github unter [Configure SQL Managed Instance virtual network environment template](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-managed-instance-azure-environment). Informationen zu den Anforderungen für das Konfigurieren der Netzwerkumgebung für eine verwaltete Instanz finden Sie unter [Konfigurieren eines VNET für eine verwaltete Azure SQL-Datenbank-Instanz](sql-database-managed-instance-vnet-configuration.md). |
@@ -53,15 +53,16 @@ Die folgenden Schritte zeigen, wie Sie eine verwaltete Instanz erstellen.
 
    ![Formular für die verwaltete Instanz](./media/sql-database-managed-instance-get-started/managed-instance-create-form.png)
 
-5. Wählen Sie **Tarif** aus, um die Größe der Compute- und Speicherressourcen festzulegen und die Tarifoptionen zu prüfen. Der Tarif „Universell“ mit 32 GB Arbeitsspeicher und 16 V-Kernen ist der Standardwert.
-6. Verwenden Sie die Schieberegler oder Textfelder, um die Speichermenge und die Anzahl von virtuellen Kernen anzugeben. 
-7. Wählen Sie nach Abschluss des Vorgangs **Übernehmen** aus, um Ihre Auswahl zu speichern.  
-8. Wählen Sie **Erstellen** aus, um die verwaltete Instanz bereitzustellen.
-9. Wählen Sie das Symbol **Benachrichtigungen**, um den Status der Bereitstellung anzuzeigen.
+5. Wenn Sie die verwaltete Instanz als sekundäre Instanzfailovergruppe verwenden möchten, wählen Sie den Auftragsabschluss aus, und geben Sie die verwaltete Instanz „DnsAzurePartner“ an. Dieses Feature befindet sich in der Vorschauphase und ist nicht im zugehörigen Screenshot zu sehen.
+6. Wählen Sie **Tarif** aus, um die Größe der Compute- und Speicherressourcen festzulegen und die Tarifoptionen zu prüfen. Der Tarif „Universell“ mit 32 GB Arbeitsspeicher und 16 V-Kernen ist der Standardwert.
+7. Verwenden Sie die Schieberegler oder Textfelder, um die Speichermenge und die Anzahl von virtuellen Kernen anzugeben.
+8. Wählen Sie nach Abschluss des Vorgangs **Übernehmen** aus, um Ihre Auswahl zu speichern.  
+9. Wählen Sie **Erstellen** aus, um die verwaltete Instanz bereitzustellen.
+10. Wählen Sie das Symbol **Benachrichtigungen**, um den Status der Bereitstellung anzuzeigen.
 
     ![Fortschritt der Bereitstellung einer verwalteten Instanz](./media/sql-database-managed-instance-get-started/deployment-progress.png)
 
-10. Wählen Sie **Die Bereitstellung wird ausgeführt.** aus, um das Fenster für die verwaltete Instanz zu öffnen und den Bereitstellungsstatus weiter zu verfolgen. 
+11. Wählen Sie **Die Bereitstellung wird ausgeführt.** aus, um das Fenster für die verwaltete Instanz zu öffnen und den Bereitstellungsstatus weiter zu verfolgen.
 
 > [!IMPORTANT]
 > Für die erste Instanz in einem Subnetz ist die Bereitstellungsdauer normalerweise deutlich länger als bei den nachfolgenden Instanzen. Brechen Sie den Bereitstellungsvorgang nicht ab, weil er länger als erwartet dauert. Das Erstellen der zweiten verwalteten Instanz im Subnetz dauert nur einige Minuten.
@@ -78,7 +79,6 @@ Nachdem die Bereitstellung erfolgreich abgeschlossen wurde, überprüfen Sie die
 
 3. Suchen Sie auf der Registerkarte **Übersicht** nach der Eigenschaft **Host**, und kopieren Sie die vollständig qualifizierte Hostadresse für die verwaltete Instanz.
 
-
    ![Ressourcen der verwalteten Instanz](./media/sql-database-managed-instance-get-started/host-name.png)
 
    Der Name lautet etwa wie folgt: **Name_Ihres_Computers.a1b2c3d4e5f6.database.windows.net**.
@@ -90,4 +90,4 @@ Nachdem die Bereitstellung erfolgreich abgeschlossen wurde, überprüfen Sie die
   - Eine Schnellstartanleitung, die zeigt, wie Sie eine Verbindung von einem virtuellen Azure-Computer zu einer verwalteten Instanz herstellen, finden Sie unter [Konfigurieren einer Verbindung zu einem virtuellen Azure-Computer](sql-database-managed-instance-configure-vm.md).
   - Eine Schnellstartanleitung, die zeigt, wie Sie von einem lokalen Clientcomputer über eine Point-to-Site-Verbindung eine Verbindung zu einer verwalteten Instanz herstellen, finden Sie unter [Konfigurieren einer Point-to-Site-Verbindung](sql-database-managed-instance-configure-p2s.md).
 - Zur Wiederherstellung einer vorhandenen SQL Server-Datenbank von einer lokalen in eine verwaltete Instanz können Sie entweder [Azure Database Migration Service (DMS) für die Migration](../dms/tutorial-sql-server-to-managed-instance.md) oder den [T-SQL-Befehl „RESTORE“](sql-database-managed-instance-get-started-restore.md) verwenden, um die Wiederherstellung von einer Datenbanksicherungsdatei durchzuführen.
-- Informationen zur erweiterten Überwachung der Datenbankleistung verwalteter Instanzen mit integrierten Problembehandlungsfunktionen finden Sie unter [Überwachen von Azure SQL-Datenbank mithilfe von Azure SQL-Analyse (Vorschauversion)](../log-analytics/log-analytics-azure-sql.md).
+- Informationen zur erweiterten Überwachung der Datenbankleistung verwalteter Instanzen mit integrierten Problembehandlungsfunktionen finden Sie unter [Monitor Azure SQL Database using Azure SQL Analytics (Preview)](../azure-monitor/insights/azure-sql.md) (Überwachen von Azure SQL-Datenbank mithilfe von Azure SQL-Analyse (Vorschauversion)).

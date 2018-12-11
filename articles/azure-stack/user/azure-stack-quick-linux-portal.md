@@ -7,24 +7,24 @@ author: mattbriggs
 manager: femila
 ms.service: azure-stack
 ms.topic: quickstart
-ms.date: 09/05/2018
+ms.date: 12/03/2018
 ms.author: mabrigg
-ms.reviewer: ''
+ms.reviewer: kivenkat
 ms.custom: mvc
-ms.openlocfilehash: e82c3de4461e2d663496cd4ae4a98c10e7819466
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 0664316d73b1473ab52b08f8abead2ec33d121b6
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44025409"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52836745"
 ---
 # <a name="quickstart-create-a-linux-server-virtual-machine-with-the-azure-stack-portal"></a>Schnellstart: Erstellen eines virtuellen Linux-Servers mit dem Azure Stack-Portal
 
 *Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
-Sie können einen virtuellen Computer mit Ubuntu Server 16.04 LTS über das Azure Stack-Portal erstellen. Führen Sie die Schritte in diesem Artikel aus, um einen virtuellen Computer zu erstellen und zu verwenden. In diesem Artikel führen Sie auch die folgenden Schritte aus:
+Sie können einen virtuellen Computer mit Ubuntu Server 16.04 LTS über das Azure Stack-Portal erstellen. Befolgen Sie die Schritte in diesem Artikel zum Erstellen und Verwenden eines virtuellen Computers. In diesem Artikel führen Sie auch die folgenden Schritte aus:
 
-* Herstellen einer Verbindung mit dem virtuellen Computer über einen Remoteclient
+* Herstellen der Verbindung mit dem virtuellen Computer über einen Remoteclient
 * Installieren eines NGINX-Webservers
 * Bereinigen Ihrer Ressourcen
 
@@ -36,7 +36,7 @@ Sie können einen virtuellen Computer mit Ubuntu Server 16.04 LTS über das Azur
 
 * **Ein Linux-Image im Azure Stack-Marketplace**
 
-   Ein Linux-Image ist standardmäßig nicht im Azure Stack-Marketplace enthalten. Um einen virtuellen Linux-Server erstellen zu können, muss der Azure Stack-Bediener das benötigte Image für **Ubuntu Server 16.04 LTS** bereitstellen. Hierzu kann der Operator die Schritte des Artikels [Herunterladen von Marketplace-Elementen von Azure in Azure Stack](../azure-stack-download-azure-marketplace-item.md) ausführen.
+   Im Azure Stack-Marketplace ist nicht standardmäßig ein Linux-Image enthalten. Überprüfen Sie, ob der Azure Stack-Betreiber das **Ubuntu Server 16.04 LTS**-Image im Marketplace anbietet. Hierzu kann der Operator die Schritte des Artikels [Herunterladen von Marketplace-Elementen von Azure in Azure Stack](../azure-stack-download-azure-marketplace-item.md) ausführen.
 
 * **Zugriff auf einen SSH-Client**
 
@@ -90,18 +90,18 @@ Melden Sie sich beim Azure Stack-Portal an. Die Adresse des Azure Stack-Portals 
     - Ab der Azure Stack Version 1808 können Sie den **Speicher** konfigurieren. An dieser Stelle können Sie auswählen, *verwaltete Datenträger*  zu verwenden. Vor Version 1808 können nur nicht verwaltete Datenträger verwendet werden.    
       ![Konfigurieren von Speicher für nicht verwaltete Datenträger](media/azure-stack-quick-linux-portal/linux-03.PNG)
     
-    Wenn Ihre Konfigurationen abgeschlossen sind, wählen Sie **OK** um den Vorgang fortzusetzen.
+    Wenn Ihre Konfigurationen abgeschlossen sind, klicken Sie auf **OK**, um den Vorgang fortzusetzen.
 
 7. Klicken Sie auf der Seite **Zusammenfassung** auf **OK**, um die Bereitstellung des virtuellen Computers zu starten.  
    ![Bereitstellen](media/azure-stack-quick-linux-portal/deploy.png)
 
 ## <a name="connect-to-the-virtual-machine"></a>Herstellen einer Verbindung mit dem virtuellen Computer
 
-1. Klicken Sie auf der Seite des virtuellen Computers auf **Verbinden**. Die daraufhin angezeigte SSH-Verbindungszeichenfolge wird für die Verbindungsherstellung mit dem virtuellen Computer benötigt. 
+1. Klicken Sie auf der Seite des virtuellen Computers auf **Verbinden**. Sie können die SSH-Verbindungszeichenfolge ermitteln, die für die Verbindungsherstellung mit dem virtuellen Computer benötigt wird. 
 
 2. Öffnen Sie PuTTY.
 
-3. Im Bildschirm für die **PuTTY-Konfiguration**können Sie im Bereich mit den **Kategorien**nach oben oder unten scrollen. Scrollen Sie nach unten zu **SSH**, erweitern Sie **SSH**, und klicken Sie anschließend auf **Auth** (Authentifizieren). Klicken Sie auf **Browse** (Durchsuchen), und wählen Sie die Datei mit dem privaten Schlüssel aus, die Sie zuvor gespeichert haben.
+3. Auf dem Bildschirm für die PuTTY-Konfiguration können Sie im Fenster mit den **Kategorien** nach oben oder unten scrollen. Scrollen Sie nach unten zu **SSH**, erweitern Sie **SSH**, und klicken Sie anschließend auf **Auth** (Authentifizieren). Klicken Sie auf **Browse** (Durchsuchen), und wählen Sie die Datei mit dem privaten Schlüssel aus, die Sie zuvor gespeichert haben.
    ![Herstellen der Verbindung mit dem virtuellen Computer](media/azure-stack-quick-linux-portal/putty03.PNG)
 
 4. Scrollen Sie im Bereich mit den **Kategorien**nach oben, und klicken Sie auf **Session** (Sitzung).

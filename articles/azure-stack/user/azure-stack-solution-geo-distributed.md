@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: 19e7506dac82e4d12d5aecbdb5ae1c14fb944c29
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 215cc45f09e15c74a39347e3a62945b45eafa130
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46961534"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52877665"
 ---
 # <a name="tutorial-create-a-geo-distributed-app-solution-with-azure-and-azure-stack"></a>Tutorial: Erstellen einer geografisch verteilten App-Lösung mit Azure und Azure Stack
 
@@ -81,7 +81,7 @@ In diesem Teil erstellen Sie eine Web-App.
 
 > [!div class="checklist"]
 > - Erstellen von Web-Apps und Durchführen der Veröffentlichung
-> - Hinzufügen von Code zum VSTS-Projekt
+> - Hinzufügen von Code zu Azure Repos
 > - Verweisen Sie für den App-Build auf mehrere Cloudziele.
 > - Verwalten und Konfigurieren des CD-Prozesses
 
@@ -108,9 +108,9 @@ Richten Sie die hybride CI/CD-Pipeline ein, um die Web-App in Azure und Azure St
 > [!Note]  
 > Azure Stack mit den passenden syndizierten Images für die Ausführung (Windows Server und SQL) und eine App Service-Bereitstellung sind erforderlich. Lesen Sie in der App Service-Dokumentation den Abschnitt [Vor den ersten Schritten mit App Service in Azure Stack](/articles/azure-stack/azure-stack-app-service-before-you-get-started) für den Azure Stack-Bediener.
 
-#### <a name="add-code-to-vsts-project"></a>Hinzufügen von Code zum VSTS-Projekt
+#### <a name="add-code-to-azure-repos"></a>Hinzufügen von Code zu Azure Repos
 
-1. Melden Sie sich an Visual Studio mit einem **Konto an, das über Berechtigungen zum Erstellen von Projekten in VSTS verfügt**.
+1. Melden Sie sich bei Visual Studio mit einem **Konto an, das über Berechtigungen zum Erstellen von Projekten** in Azure Repos verfügt.
 
     Eine hybride Pipeline für Continuous Integration/Continuous Delivery (CI/CD) kann sowohl für Anwendungscode als auch für Infrastrukturcode gelten. Verwenden Sie [Azure Resource Manager-Vorlagen](https://azure.microsoft.com/resources/templates/) für die Entwicklung von privaten und gehosteten Clouds.
 
@@ -126,13 +126,13 @@ Richten Sie die hybride CI/CD-Pipeline ein, um die Web-App in Azure und Azure St
 
     ![Alt text](media\azure-stack-solution-geo-distributed\image3.png)
 
-1.  **Checken Sie den Code in VSTS ein**, indem Sie Team Explorer verwenden.
+1.  **Checken Sie den Code in Azure Repos ein**, indem Sie Team Explorer verwenden.
 
-2.  Vergewissern Sie sich, dass der **Anwendungscode** in Visual Studio Team Services eingecheckt wurde.
+2.  Vergewissern Sie sich, dass der **Anwendungscode** in Azure Repos eingecheckt wurde.
 
 ### <a name="create-the-build-definition"></a>Erstellen der Builddefinition
 
-1. **Melden Sie sich an VSTS an**, um sich zu vergewissern, dass Builddefinitionen erstellt werden können.
+1. **Melden Sie sich bei Azure Pipelines an**, um sich zu vergewissern, dass Builddefinitionen erstellt werden können.
 
 2. Fügen Sie den Code **-r win10-x64** hinzu. Dies ist erforderlich, um eine eigenständige Bereitstellung mit .NET Core auszulösen.
 
@@ -142,11 +142,11 @@ Richten Sie die hybride CI/CD-Pipeline ein, um die Web-App in Azure und Azure St
 
 **Verwenden eines gehosteten Azure-Agents**
 
-Mit einem gehosteten Agent lassen sich in VSTS komfortabel Web-Apps erstellen und bereitstellen. Wartungsarbeiten und Upgrades werden automatisch von Microsoft Azure durchgeführt, was kontinuierliche und ungestörte Entwicklungs-, Test- und Bereitstellungsaktivitäten ermöglicht.
+Mit einem gehosteten Agent lassen sich in Azure Pipelines komfortabel Web-Apps erstellen und bereitstellen. Wartungsarbeiten und Upgrades werden automatisch von Microsoft Azure durchgeführt, was kontinuierliche und ungestörte Entwicklungs-, Test- und Bereitstellungsaktivitäten ermöglicht.
 
 ### <a name="manage-and-configure-the-cd-process"></a>Verwalten und Konfigurieren des CD-Prozesses
 
-Visual Studio Team Services (VSTS) und Team Foundation Server (TFS) bieten eine äußerst flexibel konfigurier- und verwaltbare Pipeline für Releases in mehreren Umgebungen (etwa in Entwicklungs-, Staging-, Qualitätssicherungs- und Produktionsumgebungen) – einschließlich erforderlicher Genehmigungen in bestimmten Phasen.
+Azure DevOps und Azure DevOps Server bieten eine äußerst flexibel konfigurier- und verwaltbare Pipeline für Releases in mehreren Umgebungen (z.B. in Entwicklungs-, Staging-, Qualitätssicherungs- und Produktionsumgebungen) – einschließlich erforderlicher Genehmigungen in bestimmten Phasen.
 
 #### <a name="create-release-definition"></a>Erstellen einer Releasedefinition
 
@@ -326,7 +326,7 @@ Nach dem Hinzufügen des CNAME-Eintrags sieht die Seite mit den DNS-Einträgen w
 
 3.  Fügen Sie, falls angegeben, den DNS-Einträgen der Domänennamen-Registrierungsstelle weitere Einträge mit anderen Typen (`A` oder `TXT`) hinzu. Azure stellt die Werte und Typen dieser Einträge bereit:
 
-    a.  Einen **A**-Eintrag, der der IP-Adresse der App zugeordnet wird.
+    a.  Ein **A**-Eintrag, um die IP-Adresse der App zuzuordnen.
 
     b.  Einen **TXT**-Eintrag, der dem Standardhostnamen (<App-Name>.azurewebsites.net) der App zugeordnet wird. App Service nutzt diesen Eintrag nur während der Konfiguration, um die Eigentümerschaft der benutzerdefinierten Domäne zu überprüfen. Löschen Sie den TXT-Eintrag, nachdem die Überprüfung abgeschlossen ist.
 

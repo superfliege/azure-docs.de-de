@@ -1,23 +1,21 @@
 ---
-title: Tutorial zur globalen Verteilung von Azure Cosmos DB mit der Tabellen-API | Microsoft-Dokumentation
+title: Tutorial zur globalen Verteilung von Azure Cosmos DB mit der Tabellen-API
 description: Hier erfahren Sie, wie Sie die globale Verteilung von Azure Cosmos DB mithilfe der Tabellen-API einrichten.
 services: cosmos-db
 keywords: globale Verteilung, Tabelle
 author: SnehaGunda
-manager: kfile
+ms.author: sngun
 ms.service: cosmos-db
 ms.component: cosmosdb-table
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/13/2017
-ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: 7baa1e5b4b50d1f420b514854fa4d4c9ef786c99
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.date: 12/13/2017
+ms.openlocfilehash: 92ae0c3dc07c6dada80e081c65484e4f6bf4f947
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38582134"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52874871"
 ---
 # <a name="set-up-azure-cosmos-db-global-distribution-using-the-table-api"></a>Einrichten der globalen Verteilung von Azure Cosmos DB mithilfe der Tabellen-API
 

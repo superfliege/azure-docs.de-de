@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Identifizieren der Textsprache, C#: Textübersetzungs-API'
+title: 'Schnellstart: Ermitteln der Textsprache, C#: Textübersetzungs-API'
 titleSuffix: Azure Cognitive Services
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie die Sprache des bereitgestellten Texts mithilfe von .NET Core und der Textübersetzungs-REST-API ermitteln.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: translator-text
 ms.topic: quickstart
 ms.date: 11/26/2018
 ms.author: erhopf
-ms.openlocfilehash: 8f98c4cbca87fd77e3c09c1028bfcb3181907412
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: de5088a012a7f5fd210a5aa66805fe865cc09bbe
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52335695"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52889258"
 ---
-# <a name="quickstart-detect-text-language-with-the-translator-text-rest-api-c"></a>Schnellstart: Ermitteln der Textsprache mit der Textübersetzungs-REST-API (C#)
+# <a name="quickstart-use-the-translator-text-api-to-detect-text-language-using-c"></a>Schnellstart: Verwenden der Textübersetzungs-API zum Ermitteln der Textsprache mit C#
 
 In dieser Schnellstartanleitung erfahren Sie, wie Sie die Sprache des bereitgestellten Texts mithilfe von .NET Core und der Textübersetzungs-REST-API ermitteln.
 
@@ -28,7 +28,7 @@ Für diese Schnellstartanleitung wird ein [Azure Cognitive Services-Konto](https
 * [.NET SDK](https://www.microsoft.com/net/learn/dotnet/hello-world-tutorial)
 * [Json.NET-NuGet-Paket](https://www.nuget.org/packages/Newtonsoft.Json/)
 * [Visual Studio](https://visualstudio.microsoft.com/downloads/), [Visual Studio Code](https://code.visualstudio.com/download) oder ein anderer Editor
-* Ein Azure-Abonnementschlüssel für den Speech-Dienst
+* Ein Azure-Abonnementschlüssel für die Textübersetzung
 
 ## <a name="create-a-net-core-project"></a>Erstellen eines .NET Core-Projekts
 

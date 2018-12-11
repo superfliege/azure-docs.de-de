@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: 32fa417d5fcb5c8547dfc7c10b34b3c97ed70559
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 16bcc56dd05c86b7c2adb324de480e7482f80fef
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51626064"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52724297"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-identity-to-access-azure-storage-via-a-sas-credential"></a>Tutorial: Verwenden einer systemseitig zugewiesenen verwalteten Identität eines virtuellen Linux-Computers für den Zugriff auf Azure Storage mithilfe von SAS-Anmeldeinformationen
 
@@ -68,9 +68,9 @@ Später werden wir eine Datei in das neue Speicherkonto hoch- und daraus herunte
 
 Azure Storage unterstützt die Azure AD-Authentifizierung nicht nativ.  Sie können die systemseitig zugewiesene verwaltete Identität des virtuellen Computers jedoch zum Abrufen einer Speicher-SAS von Resource Manager verwenden und mithilfe dieser SAS auf den Speicher zugreifen.  In diesem Schritt gewähren Sie der systemseitig zugewiesenen verwalteten Identität Ihres virtuellen Computers Zugriff auf die SAS des Speicherkontos.   
 
-1. Navigieren Sie zurück zum neu erstellten Speicherkonto.   
+1. Navigieren Sie zurück zum neu erstellten Speicherkonto.
 2. Klicken Sie im linken Bereich auf den Link **Zugriffssteuerung (IAM)**.  
-3. Klicken Sie dann oben auf der Seite auf **+ Hinzufügen**, um dem virtuellen Computer eine neue Rollenzuweisung hinzuzufügen.
+3. Klicken Sie oben auf der Seite auf **+ Rollenzuweisung hinzufügen**, um dem virtuellen Computer eine neue Rollenzuweisung hinzuzufügen.
 4. Legen Sie **Rolle** rechts auf der Seite auf „Speicherkontomitwirkender“ fest. 
 5. Legen Sie in der nächsten Dropdownliste **Zugriff zuweisen zu** auf die Ressource „Virtueller Computer“ fest.  
 6. Stellen Sie im nächsten Schritt sicher, dass das richtige Abonnement in der Dropdownliste **Abonnement** aufgeführt wird, und legen Sie dann **Ressourcengruppe** auf „Alle Ressourcengruppen“ fest.  

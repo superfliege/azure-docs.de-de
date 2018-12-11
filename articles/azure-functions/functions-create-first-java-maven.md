@@ -12,18 +12,19 @@ ms.topic: quickstart
 ms.date: 08/10/2018
 ms.author: routlaw, glenga
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 7483ac4521b0b997111dcc5705ba8c28a8443299
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: fdd29bbfaf36619fd823220e5d32a48a1619679b
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49116401"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52842066"
 ---
 # <a name="create-your-first-function-with-java-and-maven-preview"></a>Erstellen der ersten Funktion mit Java und Maven (Vorschau)
 
-[!INCLUDE [functions-java-preview-note](../../includes/functions-java-preview-note.md)]
+> [!NOTE] 
+> Java für Azure Functions ist zurzeit als Preview verfügbar.
 
-In diesem Schnellstart wird erläutert, wie Sie mit Maven ein Projekt für eine [serverlose](https://azure.microsoft.com/solutions/serverless/) Funktion erstellen, diese lokal testen und in Azure Functions bereitstellen. Nach Fertigstellung haben Sie eine durch HTTP ausgelöste Funktionen-App erstellt, die in Azure ausgeführt wird.
+In diesem Schnellstart wird erläutert, wie Sie mit Maven ein Projekt für eine [serverlose](https://azure.microsoft.com/solutions/serverless/) Funktion erstellen, diese lokal testen und in Azure bereitstellen. Anschließend wird Ihr Java-Funktionscode in der Cloud ausgeführt und kann über eine HTTP-Anforderung ausgelöst werden.
 
 ![Zugreifen auf eine Hallo Welt-Funktion mit cURL über die Befehlszeile](media/functions-create-java-maven/hello-azure.png)
 
@@ -41,9 +42,23 @@ Um die Funktionen-App mit Java zu entwickeln, muss Folgendes installiert sein:
 
 ## <a name="install-the-azure-functions-core-tools"></a>Installieren von Azure Functions Core Tools
 
-Die Azure Functions Core-Tools bieten eine lokale Entwicklungsumgebung zum Schreiben, Ausführen und Debuggen von Azure Functions über das Terminal oder die Eingabeaufforderung. 
+Die [Azure Functions Core-Tools 2.0](https://www.npmjs.com/package/azure-functions-core-tools) bieten eine lokale Entwicklungsumgebung zum Schreiben, Ausführen und Debuggen von Azure Functions. 
 
-Installieren Sie [Version 2 der Core-Tools](functions-run-local.md#v2) auf Ihrem lokalen Computer, bevor Sie fortfahren.
+Spezifische Installationsanweisungen für Ihr Betriebssystem finden Sie im Abschnitt [Installieren](https://github.com/azure/azure-functions-core-tools#installing) des Azure Functions Core Tools-Projekts.
+
+Sie können die Installation auch manuell mit [npm](https://www.npmjs.com/) (in [Node.js](https://nodejs.org/) enthalten) durchführen, nachdem Sie folgende erforderliche Komponenten installiert haben:
+
+-  [.NET Core](https://www.microsoft.com/net/core), neueste Version
+-  [Node.js](https://nodejs.org/download/), Version 8.6 oder höher
+
+Führen Sie Folgendes aus, um mit einer npm-basierten Installation fortzufahren:
+
+```
+npm install -g azure-functions-core-tools@core
+```
+
+> [!NOTE]
+> Wenn Sie Probleme mit der Installation von Azure Functions Core-Tools Version 2.0 haben, lesen Sie [Laufzeit der Version 2.x](/azure/azure-functions/functions-run-local#version-2x-runtime).
 
 ## <a name="generate-a-new-functions-project"></a>Generieren eines neuen Functions-Projekts
 
@@ -66,8 +81,6 @@ mvn archetype:generate ^
 
 Maven fordert Sie zur Eingabe der erforderlichen Werte für die Projektgenerierung auf. Informationen zu den Werten _groupId_, _artifactId_ und _version_ finden Sie in der Referenz [Maven-Benennungskonventionen](https://maven.apache.org/guides/mini/guide-naming-conventions.html). Der Wert _appName_ muss in Azure eindeutig sein. Deshalb generiert Maven standardmäßig einen App-Namen basierend auf den zuvor eingegebenen Wert _artifactId_. Der Wert _packageName_ bestimmt das Java-Paket für den generierten Funktionscode.
 
-Der Wert `appRegion` gibt an, in welcher [Azure-Region](https://azure.microsoft.com/global-infrastructure/regions/) Sie die bereitgestellte Funktions-App ausführen möchten. Mit dem Befehl `az account list-locations` in der Azure-Befehlszeilenschnittstelle können Sie eine Liste mit den Werten der Regionsnamen abrufen. Der Wert `resourceGroup` gibt an, in welcher Azure-Ressourcengruppe die Funktions-App erstellt wird.
-
 Die weiter unten angegebenen Bezeichner `com.fabrikam.functions` und `fabrikam-functions` dienen als Beispiele und verbessern die Lesbarkeit der weiteren Schritte in dieser Schnellstartanleitung. Sie können in diesem Schritt aber auch gerne eigene Werte für Maven angeben.
 
 ```Output
@@ -76,18 +89,22 @@ Define value for property 'artifactId' : fabrikam-functions
 Define value for property 'version' 1.0-SNAPSHOT : 
 Define value for property 'package': com.fabrikam.functions
 Define value for property 'appName' fabrikam-functions-20170927220323382:
-Define value for property 'appRegion' westus : 
-Define value for property 'resourceGroup' java-functions-group: 
 Confirm properties configuration: Y
 ```
 
-Maven erstellt die Projektdateien in einem neuen Ordner mit dem Namen _artifactId_ (in diesem Beispiel: `fabrikam-functions`). Bei dem generierten ausführungsbereiten Code im Projekt handelt es sich um eine einfache, [durch HTTP ausgelöste](/azure/azure-functions/functions-bindings-http-webhook) Funktion, die den Text der Anforderung nach der Zeichenfolge „Hello, “ ausgibt:
+Maven erstellt die Projektdateien in einem neuen Ordner mit dem Namen _artifactId_ (in diesem Beispiel: `fabrikam-functions`). Bei dem generierten ausführungsbereiten Code im Projekt handelt es sich um eine einfache, [durch HTTP ausgelöste](/azure/azure-functions/functions-bindings-http-webhook) Funktion, die den Text der Anforderung ausgibt:
 
 ```java
 public class Function {
-    @FunctionName("HttpTrigger-Java")
-    public HttpResponseMessage HttpTriggerJava(
-    @HttpTrigger(name = "req", methods = {HttpMethod.GET, HttpMethod.POST}, authLevel = AuthorizationLevel.ANONYMOUS) HttpRequestMessage<Optional<String>> request,final ExecutionContext context) {
+    /**
+     * This function listens at endpoint "/api/hello". Two ways to invoke it using "curl" command in bash:
+     * 1. curl -d "HTTP Body" {your host}/api/hello
+     * 2. curl {your host}/api/hello?name=HTTP%20Query
+     */
+    @FunctionName("hello")
+    public HttpResponseMessage<String> hello(
+            @HttpTrigger(name = "req", methods = {"get", "post"}, authLevel = AuthorizationLevel.ANONYMOUS) HttpRequestMessage<Optional<String>> request,
+            final ExecutionContext context) {
         context.getLogger().info("Java HTTP trigger processed a request.");
 
         // Parse query parameter
@@ -95,12 +112,13 @@ public class Function {
         String name = request.getBody().orElse(query);
 
         if (name == null) {
-            return request.createResponseBuilder(HttpStatus.BAD_REQUEST).body("Please pass a name on the query string or in the request body").build();
+            return request.createResponse(400, "Please pass a name on the query string or in the request body");
         } else {
-            return request.createResponseBuilder(HttpStatus.OK).body("Hello, " + name).build();
+            return request.createResponse(200, "Hello, " + name);
         }
     }
 }
+
 ```
 
 ## <a name="run-the-function-locally"></a>Lokales Ausführen der Funktion
@@ -108,7 +126,7 @@ public class Function {
 Ändern Sie das Verzeichnis in den neu erstellten Projektordner. Erstellen Sie dann mit Maven die Funktion, und führen Sie sie aus:
 
 ```
-cd fabrikam-functions
+cd fabrikam-function
 mvn clean package 
 mvn azure-functions:run
 ```
@@ -119,22 +137,22 @@ mvn azure-functions:run
 Wenn die Funktion lokal auf Ihrem System ausgeführt wird und für HTTP-Anforderungen bereit ist, wird die folgende Ausgabe angezeigt:
 
 ```Output
-Listening on http://0.0.0.0:7071/
+Listening on http://localhost:7071
 Hit CTRL-C to exit...
 
 Http Functions:
 
-        HttpTrigger-Java: http://localhost:7071/api/HttpTrigger-Java
+   hello: http://localhost:7071/api/hello
 ```
 
 Lösen Sie die Funktion über die Befehlszeile aus. Verwenden Sie dazu cURL in einem neuen Terminalfenster:
 
 ```
-curl -w '\n' -d LocalFunctionTest http://localhost:7071/api/HttpTrigger-Java
+curl -w '\n' -d LocalFunction http://localhost:7071/api/hello
 ```
 
 ```Output
-Hello, LocalFunctionTest
+Hello LocalFunction!
 ```
 
 Verwenden Sie `Ctrl-C` im Terminal, um den Funktionscode anzuhalten.
@@ -166,11 +184,11 @@ Wenn die Bereitstellung abgeschlossen ist, wird die URL angezeigt, mit der Sie a
 Testen Sie die in Azure ausgeführte Funktionen-App mithilfe von `cURL`. Ersetzen Sie die URL im folgenden Beispiel durch die bereitgestellte URL für Ihre eigene Funktions-App aus dem vorherigen Schritt.
 
 ```
-curl -w '\n' -d AzureFunctionsTest https://fabrikam-functions-20170920120101928.azurewebsites.net/api/HttpTrigger-Java
+curl -w '\n' https://fabrikam-function-20170920120101928.azurewebsites.net/api/hello -d AzureFunctions
 ```
 
 ```Output
-Hello, AzureFunctionsTest
+Hello AzureFunctions!
 ```
 
 ## <a name="make-changes-and-redeploy"></a>Vornehmen von Änderungen und erneutes Bereitstellen
@@ -201,7 +219,7 @@ Hi, AzureFunctionsTest
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sie haben eine Java-Funktions-App mit einem einfachen HTTP-Trigger erstellt und für Azure Functions bereitgestellt.
+Sie haben eine Java-Funktionen-App mit einem einfachen HTTP-Trigger erstellt und für Azure Functions bereitgestellt.
 
 - Weitere Informationen zum Entwickeln von Java-Funktionen finden Sie im [Azure Functions-Java-Entwicklerhandbuch](functions-reference-java.md).
 - Fügen Sie mit `azure-functions:add` als Maven-Ziel zusätzliche Funktionen mit verschiedenen Triggern zu Ihrem Projekt hinzu.

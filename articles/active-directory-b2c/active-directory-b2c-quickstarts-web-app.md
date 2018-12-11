@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 10/24/2018
+ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: c4fa3f9cbba558cd743f85119dd9e91bd73ce062
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: edfd17763a7d555e773e7d271ed5cc22a0307996
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50250596"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52726592"
 ---
 # <a name="quickstart-set-up-sign-in-for-an-aspnet-application-using-azure-active-directory-b2c"></a>Schnellstart: Einrichten der Anmeldung für eine ASP.NET-Anwendung unter Verwendung von Azure Active Directory B2C
 
@@ -35,7 +35,7 @@ Azure Active Directory (Azure AD) B2C ermöglicht die Cloudidentitätsverwaltung
 
     Die Beispielprojektmappe enthält zwei Projekte:
 
-    - **TaskWebApp**: Eine Webanwendung zum Erstellen und Bearbeiten einer Aufgabenliste. Die Webanwendung verwendet die **Registrierungs- oder Anmelderichtlinie** für die Registrierung oder Anmeldung von Benutzern.
+    - **TaskWebApp**: Eine Webanwendung zum Erstellen und Bearbeiten einer Aufgabenliste. Die Webanwendung verwendet den **Registrierungs- oder Anmeldebenutzerflow** für die Registrierung oder Anmeldung von Benutzern.
     - **TaskService**: Eine Web-API, die die Funktionen zum Erstellen, Lesen, Aktualisieren und Löschen der Aufgabenliste unterstützt. Die Web-API wird durch Azure AD B2C geschützt und von der Webanwendung aufgerufen.
 
 ## <a name="run-the-application-in-visual-studio"></a>Ausführen der Anwendung in Visual Studio
@@ -67,7 +67,7 @@ Azure Active Directory (Azure AD) B2C ermöglicht die Cloudidentitätsverwaltung
 
 ## <a name="edit-your-profile"></a>Bearbeiten des Profils
 
-Azure Active Directory B2C bietet Funktionen, mit denen Benutzer ihre Profile aktualisieren können. Die Beispiel-Web-App nutzt eine Azure AD B2C-Bearbeitungsprofilrichtlinie für den Workflow. 
+Azure Active Directory B2C bietet Funktionen, mit denen Benutzer ihre Profile aktualisieren können. Die Beispiel-Web-App nutzt einen Azure AD B2C-Bearbeitungsprofil-Benutzerflow für den Workflow. 
 
 1. Klicken Sie auf der Menüleiste der Anwendung auf Ihren Profilnamen, und wählen Sie **Profil bearbeiten** aus, um das von Ihnen erstellte Profil zu bearbeiten.
 

@@ -5,16 +5,16 @@ services: service-fabric-mesh
 keywords: ''
 author: tylermsft
 ms.author: twhitney
-ms.date: 08/08/2018
+ms.date: 11/29/2018
 ms.topic: get-started-article
 ms.service: service-fabric-mesh
 manager: jeconnoc
-ms.openlocfilehash: 0531985cbab9c10b4df8ea3f27ac6c7903790da5
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: bec0b9a7e34f1577f80a99f5380795c479c04bc8
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50978229"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52890465"
 ---
 # <a name="set-up-your-windows-development-environment-to-build-service-fabric-mesh-apps"></a>Einrichten der Windows-Entwicklungsumgebung zum Erstellen von Service Fabric Mesh-Anwendungen
 
@@ -73,27 +73,31 @@ Installieren Sie die Service Fabric Mesh-Laufzeit, das SDK und die Tools in der 
 
 ## <a name="build-a-cluster"></a>Erstellen eines Clusters
 
+> [!IMPORTANT]
+> Docker **muss** ausgeführt werden, bevor Sie einen Cluster erstellen können.
+> Testen Sie, ob Docker ausgeführt wird, indem Sie ein Terminalfenster öffnen und `docker ps` ausführen, um zu sehen, ob ein Fehler auftritt. Wenn in der Antwort kein Fehler angegeben wird, wird Docker ausgeführt, und Sie sind bereit, einen Cluster zu erstellen.
+
 Bei Verwendung von Visual Studio können Sie diesen Abschnitt überspringen, da Visual Studio einen lokalen Cluster für Sie erstellt, falls dieser nicht vorhanden ist.
 
 Für eine optimale Debugleistung beim Erstellen und Ausführen von Service Fabric-Apps wird empfohlen, einen lokalen Entwicklungscluster mit einem Knoten zu erstellen. Dieser Cluster muss immer dann ausgeführt werden, wenn Sie ein Service Fabric Mesh-Projekt bereitstellen oder debuggen.
 
-Docker **muss** ausgeführt werden, bevor Sie einen Cluster erstellen können. Testen Sie, ob Docker ausgeführt wird, indem Sie ein Terminalfenster öffnen und `docker ps` ausführen, um zu sehen, ob ein Fehler auftritt. Wenn in der Antwort kein Fehler angegeben wird, wird Docker ausgeführt, und Sie sind bereit, einen Cluster zu erstellen.
-
-Nachdem Sie die Laufzeit, SDKs und Visual Studio-Tools installiert haben, erstellen Sie einen Entwicklungscluster.
+Nachdem Sie die Laufzeit, SDKs, Visual Studio-Tools und Docker installiert haben und Docker ausgeführt wird, erstellen Sie einen Entwicklungscluster.
 
 1. Schließen Sie das PowerShell-Fenster.
 2. Öffnen Sie als Administrator ein neues PowerShell-Fenster mit erhöhten Rechten. Dieser Schritt ist erforderlich, um die zuletzt installierten Service Fabric-Module zu laden.
 3. Führen Sie den folgenden PowerShell-Befehl aus, um einen Entwicklungscluster zu erstellen:
 
     ```powershell
-    . "C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup\DevClusterSetup.ps1" -CreateOneNodeCluster -UseMachineName
+    . "C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup\DevClusterSetup.ps1" -CreateMeshCluster -CreateOneNodeCluster
     ```
-
 4. Um das lokale Cluster-Manager-Tool zu starten, führen Sie den folgenden PowerShell-Befehl aus:
 
     ```powershell
     . "C:\Program Files\Microsoft SDKs\Service Fabric\Tools\ServiceFabricLocalClusterManager\ServiceFabricLocalClusterManager.exe"
     ```
+5. Sobald das Dienstcluster-Manager-Tool ausgeführt wird (es wird auf Ihrer Taskleiste angezeigt), klicken Sie mit der rechten Maustaste darauf, und klicken Sie auf **Lokalen Cluster starten**.
+
+![Abbildung 1: Starten des lokalen Clusters](./media/service-fabric-mesh-howto-setup-developer-environment-sdk/start-local-cluster.png)
 
 Jetzt können Sie Service Fabric Mesh-Anwendungen erstellen!
 
@@ -109,5 +113,5 @@ Antworten auf [häufig gestellte Fragen](service-fabric-mesh-faq.md)
 [download-runtime]: https://aka.ms/sfruntime
 [download-sdk]: https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-CoreSDK
 [download-sdkmesh]: https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-SDK-Mesh
-[download-tools]: https://marketplace.visualstudio.com/items?itemName=ms-azuretools.ServiceFabricMesh
+[download-tools]: https://aka.ms/sfmesh_vs2017tools
 [download-visual-studio]: https://www.visualstudio.com/downloads/

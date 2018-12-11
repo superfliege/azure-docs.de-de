@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 11/01/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: 48bedff0cd09c3f0dbffdabe6a94847d035a0cf9
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 7061776ba5325a333033d0f272de3b2663b44351
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50963930"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52887796"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>Tutorial: Konfigurieren der Azure Active Directory-Hybrideinbindung für verwaltete Domänen
 
@@ -140,6 +140,8 @@ Wenn es sich bei einigen Ihrer in die Domäne eingebundenen Geräte um kompatibl
  
 - Konfigurieren der lokalen Intraneteinstellungen für die Geräteregistrierung
 
+- Konfigurieren des nahtlosen einmaligen Anmeldens (Single Sign-On, SSO)
+
 - Steuern kompatibler Windows-Geräte 
 
 
@@ -166,6 +168,11 @@ Um die Einbindung in Hybrid-Azure AD für Ihre kompatiblen Windows-Geräte erfol
 - `https://autologon.microsoftazuread-sso.com`.
 
 Außerdem müssen Sie in der lokalen Intranetzone des Benutzers die Option **Aktualisierungen der Statusleiste per Skript zulassen** aktivieren.
+
+
+### <a name="configure-seamless-sso"></a>Konfigurieren des nahtlosen einmaligen Anmeldens
+
+Sie müssen außerdem [nahtloses SSO konfigurieren](https://docs.microsoft.com/en-us/azure/active-directory/hybrid/how-to-connect-sso-quick-start#step-2-enable-the-feature), um die Azure AD-Hybrideinbindung Ihrer kompatiblen Windows-Geräte in einer verwalteten Domäne erfolgreich abzuschließen, die als Authentifizierungsmethode für die Azure AD-Cloud Passthrough-Authentifizierung (PTA) oder Kennworthashsynchronisierung (Password Hash Sync, PHS) verwendet. 
 
 
 ### <a name="control-windows-down-level-devices"></a>Steuern kompatibler Windows-Geräte 

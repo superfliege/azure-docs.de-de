@@ -8,17 +8,17 @@ services: mariadb
 ms.service: mariadb
 ms.topic: overview
 ms.custom: mvc
-ms.date: 11/14/2018
-ms.openlocfilehash: ed4c05afdc5b061c7779a0b1ca34975f8b06ad7d
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.date: 12/03/2018
+ms.openlocfilehash: b1e458339c2befdb51439cd23ef5f22ba4379c78
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51686023"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52850260"
 ---
 # <a name="what-is-azure-database-for-mariadb"></a>Was ist Azure Database for MariaDB?
 
-Azure Database for MariaDB ist ein relationaler Datenbankdienst in der Microsoft-Cloud. Azure Database for MariaDB basiert auf Version 10.2 der Datenbank-Engine [MariaDB Community Edition](https://mariadb.org/download/). Dieser Dienst befindet sich in der öffentlichen Vorschau. 
+Azure Database for MariaDB ist ein relationaler Datenbankdienst in der Microsoft-Cloud. Azure Database for MariaDB basiert auf Version 10.2 der Datenbank-Engine [MariaDB Community Edition](https://mariadb.org/download/).
 
 Azure Database for MariaDB bietet Folgendes:
 
@@ -43,7 +43,7 @@ For a set of Azure CLI samples, see:
 
 ## <a name="adjust-performance-and-scale-within-seconds"></a>Anpassen von Leistung und Skalierung in nur wenigen Sekunden
 
-Für den Azure Database for MariaDB-Dienst sind in der Vorschauversion verschiedene Dienstebenen verfügbar: „Basic“, „Universell“ und „Arbeitsspeicheroptimiert“. Jeder Tarif bietet verschiedene Leistungsstufen und Funktionen zur Unterstützung geringer und hoher Datenbankworkloads. Sie können Ihre erste App mit einer kleinen Datenbank für wenige USD im Monat erstellen und die Skalierung dann so ändern, dass sie den Anforderungen Ihrer Lösung entspricht. Dank dynamischer Skalierung kann Ihre Datenbank transparent auf schnell wechselnde Ressourcenanforderungen reagieren. Sie bezahlen nur für die benötigten Ressourcen und auch nur dann, wenn Sie sie verwenden. Einzelheiten hierzu finden Sie unter  [Tarife](concepts-pricing-tiers.md).
+Für den Azure Database for MariaDB-Dienst sind verschiedene Dienstebenen verfügbar: „Basic“, „Universell“ und „Arbeitsspeicheroptimiert“. Jeder Tarif bietet verschiedene Leistungsstufen und Funktionen zur Unterstützung geringer und hoher Datenbankworkloads. Sie können Ihre erste App mit einer kleinen Datenbank für wenige USD im Monat erstellen und die Skalierung dann so ändern, dass sie den Anforderungen Ihrer Lösung entspricht. Dank dynamischer Skalierung kann Ihre Datenbank transparent auf schnell wechselnde Ressourcenanforderungen reagieren. Sie bezahlen nur für die benötigten Ressourcen und auch nur dann, wenn Sie sie verwenden. Einzelheiten hierzu finden Sie unter  [Tarife](concepts-pricing-tiers.md).
 
 ## <a name="monitoring-and-alerting"></a>Überwachung und Warnung
 
@@ -51,7 +51,7 @@ Wie entscheiden Sie, wann Sie hoch- oder herunterskalieren müssen? Sie können 
 
 ## <a name="keep-your-app-and-business-running"></a>Aufrechterhalten von App-Ausführung und Geschäftskontinuität
 
-Die branchenführende SLA von Azure mit einer Verfügbarkeit von 99,99 Prozent (nicht während der Public Preview-Phase) wird durch ein globales Netzwerk von durch Microsoft verwalteten Datencentern ermöglicht. Das Netzwerk sorgt dafür, dass Ihre App rund um die Uhr ausgeführt wird. Profitieren Sie von der integrierten Sicherheit, der Fehlertoleranz und dem Datenschutz in Azure Database for MariaDB. Mit Azure Database for MariaDB können Sie über die Point-in-Time-Wiederherstellung den früheren Status eines Servers innerhalb der letzten 35 Tage wiederherstellen.
+Die branchenführende SLA von Azure mit einer Verfügbarkeit von 99,99 Prozent wird durch ein globales Netzwerk von durch Microsoft verwalteten Datencentern ermöglicht. Das Netzwerk sorgt dafür, dass Ihre App rund um die Uhr ausgeführt wird. Profitieren Sie von der integrierten Sicherheit, der Fehlertoleranz und dem Datenschutz in Azure Database for MariaDB. Mit Azure Database for MariaDB können Sie über die Point-in-Time-Wiederherstellung den früheren Status eines Servers innerhalb der letzten 35 Tage wiederherstellen.
 
 ## <a name="secure-your-data"></a>Sichern der Daten
 

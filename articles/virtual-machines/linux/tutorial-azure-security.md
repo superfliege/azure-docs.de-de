@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 06/11/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 562fc267a056d6908af5b89fd7a93e858f1c6165
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: ba23e9b8ac79a0a2a3899332bfc373665cf561af
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47092610"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52841162"
 ---
 # <a name="tutorial-use-azure-security-center-to-monitor-linux-virtual-machines"></a>Tutorial: Verwenden von Azure Security Center zum Überwachen virtueller Linux-Computer
 
@@ -61,7 +61,7 @@ Der Datensammlungs-Agent von Security Center wird daraufhin auf allen virtuellen
 
 Sicherheitsrichtlinien werden verwendet, um die Elemente zu definieren, für die Security Center Daten sammelt und Empfehlungen gibt. Sie können unterschiedliche Sicherheitsrichtlinien auf verschiedene Gruppen von Azure-Ressourcen anwenden. Obwohl Azure-Ressourcen standardmäßig für sämtliche Richtlinienelemente ausgewertet werden, können Sie einzelne Richtlinienelemente für alle Azure-Ressourcen oder für eine Ressourcengruppe deaktivieren. Ausführliche Informationen zu Security Center-Sicherheitsrichtlinien finden Sie unter [Festlegen von Sicherheitsrichtlinien in Azure Security Center](../../security-center/security-center-policies.md). 
 
-So richten Sie eine Sicherheitsrichtlinie für ein gesamtes Abonnement ein
+So richten Sie eine Sicherheitsrichtlinie für ein gesamtes Abonnement ein:
 
 1. Wählen Sie im Security Center-Dashboard **Sicherheitsrichtlinie** und dann Ihr Abonnement aus.
 2. Wählen Sie auf dem Blatt **Sicherheitsrichtlinie** die Option **Sicherheitsrichtlinie** aus. 
@@ -106,7 +106,7 @@ Nachdem Empfehlungen umgesetzt wurden, werden sie als gelöst markiert.
 
 Neben den Empfehlungen zur Ressourcenkonfiguration bietet Security Center auch Warnungen zur Bedrohungserkennung. Das Sicherheitswarnfeature aggregiert die von den einzelnen VMs gesammelten Daten, Azure-Netzwerkprotokolle und verbundenen Partnerlösungen, um Sicherheitsrisiken für Azure-Ressourcen zu erkennen. Ausführliche Informationen zu Funktionen der Security Center-Bedrohungserkennung finden Sie unter [Azure Security Center-Erkennungsfunktionen](../../security-center/security-center-detection-capabilities.md).
 
-Für das Sicherheitswarnfeature muss der Security Center-Tarif von *Free* auf *Standard* erhöht werden. Sie können eine 60-tägige, **kostenlose Testversion** nutzen, wenn Sie auf diesen höheren Tarif wechseln. 
+Für das Sicherheitswarnfeature muss der Security Center-Tarif von *Free* auf *Standard* erhöht werden. Sie können eine **kostenlose Testversion** nutzen, wenn Sie auf diesen höheren Tarif umstellen. 
 
 So ändern Sie den Tarif  
 

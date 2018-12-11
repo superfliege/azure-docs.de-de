@@ -12,21 +12,21 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/18/2018
+ms.date: 10/31/2018
 ms.author: twhitney
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 27e4c8f6ac24d40a6afacf10175413745f5151d9
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 06a7ce6301af6e5a7c04ac5c5a0a1240c21f834e
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46997011"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52887507"
 ---
 # <a name="tutorial-debug-a-service-fabric-mesh-application-running-in-your-local-development-cluster"></a>Tutorial: Debuggen einer Service Fabric Mesh-Anwendung, die in Ihrem lokalen Entwicklungscluster ausgeführt wird
 
 Dieses Tutorial ist der zweite Teil einer Reihe und zeigt, wie Sie eine Azure Service Fabric Mesh-App in Ihrem lokalen Entwicklungscluster erstellen und debuggen.
 
-In diesem Lernprogramm lernen Sie Folgendes:
+In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
 > * Abläufe beim Erstellen einer Azure Service Fabric Mesh-Anwendung
@@ -74,7 +74,9 @@ Drücken Sie**F5**, um Ihren Dienst zu kompilieren und lokal auszuführen. Wenn 
 
 Wenn die lokale Bereitstellung fertig gestellt wurde und Ihre App von Visual Studio ausgeführt wird, öffnet sich ein Browserfenster mit einer standardmäßigen Beispielwebseite.
 
-**Tipps zum Debuggen**
+## <a name="debugging-tips"></a>Tipps zum Debuggen
+
+Befolgen Sie die Anweisungen im Artikel zum [Optimieren der Visual Studio-Leistung](service-fabric-mesh-howto-optimize-vs.md), um den ersten Debuglauf (F5) erheblich zu beschleunigen.
 
 Derzeit besteht ein Problem, das bewirkt, dass mit dem Aufruf von `using (HttpResponseMessage response = client.GetAsync("").GetAwaiter().GetResult())` keine Verbindung mit dem Dienst hergestellt werden kann. Dies kann immer passieren, wenn sich Ihre Host-IP-Adresse ändert. Problembehebung:
 
@@ -96,7 +98,7 @@ Beim Debuggen einer Service Fabric Mesh-Anwendung in Visual Studio verwenden Sie
 3. Aktualisieren Sie die Anzeige im Browser. Sie erreichen den ersten Breakpoint in der Web-Front-End-Methode `OnGet()`. Anhand der Variablen `backendUrl` sehen Sie, wie die Umgebungsvariablen, die Sie in der Datei **service.yaml** definiert haben, zu der URL kombiniert werden, die zum Herstellen der Verbindung mit dem Back-End-Dienst verwendet wird.
 4. Überspringen Sie durch Drücken von F10 den Aufruf `client.GetAsync(backendUrl).GetAwaiter().GetResult())`, um zum Controller-Breakpoint `Get()` zu gelangen. In dieser Methode sehen Sie, wie die Liste mit den Aufgaben aus der In-Memory-Liste abgerufen wird.
 5. Wenn Sie fertig sind, drücken Sie**UMSCHALT+F5**, um das Debuggen Ihres Projekts in Visual Studio zu beenden.
- 
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 In diesem Teil des Tutorials haben Sie Folgendes gelernt:

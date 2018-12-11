@@ -1,28 +1,29 @@
 ---
-title: Erstellen einer Java-App mit dem Async Java SDK zum Verwalten von Daten der Azure Cosmos DB-SQL-API | Microsoft-Dokumentation
+title: Erstellen einer Java-App mit dem Async Java SDK zum Verwalten von Daten der Azure Cosmos DB-SQL-API
 description: In diesem Tutorial wird veranschaulicht, wie Sie SQL-API-Konten für Azure Cosmos DB verwenden, um Daten zu speichern und darauf zuzugreifen, indem Sie eine Async Java-Anwendung nutzen.
 keywords: NoSQL-Tutorial, Onlinedatenbank, Java-Konsolenanwendung
 services: cosmos-db
 author: SnehaGunda
-manager: kfile
 ms.service: cosmos-db
 ms.component: cosmosdb-sql
 ms.devlang: java
 ms.topic: tutorial
 ms.date: 06/29/2018
 ms.author: sngun
-ms.openlocfilehash: 0c458892c56634c97eec92a9439059c087a32144
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: d9adaaaaf64204e27c07b0728ae4bbc473a5c70a
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52165474"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52875551"
 ---
 # <a name="tutorial-build-a-java-app-with-async-java-sdk-to-manage-azure-cosmos-db-sql-api-data"></a>Tutorial: Erstellen einer Java-App mit dem Async Java SDK zum Verwalten von Daten der Azure Cosmos DB-SQL-API
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-get-started.md)
+> * [.NET (Vorschauversion)](sql-api-dotnet-get-started-preview.md)
 > * [.NET Core](sql-api-dotnetcore-get-started.md)
+> * [.NET Core (Vorschauversion)](sql-api-dotnet-core-get-started-preview.md)
 > * [Java](sql-api-java-get-started.md)
 > * [Async Java](sql-api-async-java-get-started.md)
 > * [Node.js](sql-api-nodejs-get-started.md)

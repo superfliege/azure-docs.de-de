@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 10/17/2018
 ms.author: chrande
-ms.openlocfilehash: 6b44e08fc1dce489e703bea1cbef2a7e94ae0f2a
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 83785e532523c3e921b0772ddaa50502b2dc867d
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50961027"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52633791"
 ---
 # <a name="manage-conflicts-between-regions"></a>Behandeln von Konflikten zwischen Regionen
 
@@ -83,9 +83,9 @@ manual_collection = {
 manual_collection = client.CreateContainer(database['_self'], collection)
 ```
 
-## <a name="create-a-custom-conflict-resolution-policy-with-stored-procedure"></a>Erstellen einer benutzerdefinierten Konfliktlösungsrichtlinie mit gespeicherter Prozedur
+## <a name="create-a-custom-conflict-resolution-policy-with-a-stored-procedure"></a>Erstellen einer benutzerdefinierten Konfliktlösungsrichtlinie mit einer gespeicherten Prozedur
 
-Die folgenden Beispiele zeigen, wie Sie einen Container mit einer benutzerdefinierten Konfliktlösungsrichtlinie und einer gespeicherten Prozedur für die Konfliktlösung einrichten. Diese Konflikte werden **nicht** im Konfliktfeed angezeigt, es sei denn, die gespeicherte Prozedur enthält einen Fehler.
+Die folgenden Beispiele zeigen, wie Sie einen Container mit einer benutzerdefinierten Konfliktlösungsrichtlinie und einer gespeicherten Prozedur für die Konfliktlösung einrichten. Diese Konflikte werden nicht im Konfliktfeed angezeigt, es sei denn, die gespeicherte Prozedur enthält einen Fehler.
 
 ### <a id="create-custom-conflict-resolution-policy-stored-proc-dotnet"></a>.NET SDK
 
@@ -102,7 +102,7 @@ DocumentCollection udpCollection = await createClient.CreateDocumentCollectionIf
   });
 ```
 
-Nach der Erstellung des Containers muss die gespeicherte Prozedur `resolver` erstellt werden.
+Nach dem Erstellen des Containers müssen Sie die gespeicherte Prozedur `resolver` erstellen.
 
 ### <a id="create-custom-conflict-resolution-policy-stored-proc-java-async"></a>Java Async SDK
 
@@ -114,7 +114,7 @@ collection.setConflictResolutionPolicy(policy);
 DocumentCollection createdCollection = client.createCollection(databaseUri, collection, null).toBlocking().value();
 ```
 
-Nach der Erstellung des Containers muss die gespeicherte Prozedur `resolver` erstellt werden.
+Nach dem Erstellen des Containers müssen Sie die gespeicherte Prozedur `resolver` erstellen.
 
 ### <a id="create-custom-conflict-resolution-policy-stored-proc-java-sync"></a>Java Sync SDK
 
@@ -127,7 +127,7 @@ udpCollection.setConflictResolutionPolicy(udpPolicy);
 DocumentCollection createdCollection = this.tryCreateDocumentCollection(createClient, database, udpCollection);
 ```
 
-Nach der Erstellung des Containers muss die gespeicherte Prozedur `resolver` erstellt werden.
+Nach dem Erstellen des Containers müssen Sie die gespeicherte Prozedur `resolver` erstellen.
 
 ### <a id="create-custom-conflict-resolution-policy-stored-proc-javascript"></a>Node.js/JavaScript/TypeScript SDK
 
@@ -146,7 +146,7 @@ const { container: udpContainer } = await database.containers.createIfNotExists(
 );
 ```
 
-Nach der Erstellung des Containers muss die gespeicherte Prozedur `resolver` erstellt werden.
+Nach dem Erstellen des Containers müssen Sie die gespeicherte Prozedur `resolver` erstellen.
 
 ### <a id="create-custom-conflict-resolution-policy-stored-proc-python"></a>Python SDK
 
@@ -154,11 +154,11 @@ Nach der Erstellung des Containers muss die gespeicherte Prozedur `resolver` ers
 
 ```
 
-Nach der Erstellung des Containers muss die gespeicherte Prozedur `resolver` erstellt werden.
+Nach dem Erstellen des Containers müssen Sie die gespeicherte Prozedur `resolver` erstellen.
 
 ## <a name="create-a-last-writer-wins-conflict-resolution-policy"></a>Erstellen einer Konfliktlösungsrichtlinie vom Typ „Letzter Schreiber gewinnt“
 
-Die folgenden Beispiele zeigen, wie Sie einen Container mit einer Konfliktlösungsrichtlinie vom Typ „Letzter Schreiber gewinnt“ einrichten. Sollte der Pfad nicht festgelegt oder ungültig sein, wird standardmäßig die Eigenschaft `_ts` (Zeitstempelfeld) verwendet. Diese Konflikte werden **nicht** im Konfliktfeed angezeigt.
+Die folgenden Beispiele zeigen, wie Sie einen Container mit einer Konfliktlösungsrichtlinie vom Typ „Letzter Schreiber gewinnt“ einrichten. Sollte der Pfad nicht festgelegt oder ungültig sein, wird standardmäßig die Eigenschaft `_ts` verwendet. Bei dieser Eigenschaft handelt es sich um das Feld „Zeitstempel“. Diese Konflikte werden nicht im Konfliktfeed angezeigt.
 
 ### <a id="create-custom-conflict-resolution-policy-lww-dotnet"></a>.NET SDK
 
@@ -210,7 +210,7 @@ const { container: lwwContainer } = await database.containers.createIfNotExists(
 );
 ```
 
-Wenn Sie die Eigenschaft `conflictResolutionPath` weglassen, wird standardmäßig die Eigenschaft `_ts` verwendet.
+Wenn Sie die Eigenschaft `conflictResolutionPath` auslassen, wird standardmäßig die Eigenschaft `_ts` verwendet.
 
 ### <a id="create-custom-conflict-resolution-policy-lww-python"></a>Python SDK
 
@@ -277,8 +277,8 @@ while conflict:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Machen Sie sich als Nächstes mit den folgenden Cosmos DB-Konzepten vertraut:
+Erfahren Sie mehr über die folgenden Azure Cosmos DB-Konzepte:
 
 * [Partitionierung und Datenverteilung](partition-data.md)
-* [Indizierung in Cosmos DB](indexing-policies.md)
+* [Indizierung in Azure Cosmos DB](indexing-policies.md)
 

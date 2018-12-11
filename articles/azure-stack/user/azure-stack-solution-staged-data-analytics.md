@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/02/2018
+ms.date: 12/01/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: b4b81546a267e6fd082f83db8b23010f0742771f
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: b043c5ebe4c2a02bd4d40ca4b2bb7d5f488f5747
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48237903"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52837340"
 ---
 # <a name="tutorial-create-a-staged-data-analytics-solution-with-azure-and-azure-stack"></a>Tutorial: Erstellen einer bereitgestellten Lösung für die Datenanalyse mit Azure und Azure Stack 
 
@@ -252,7 +252,7 @@ Nutzen Sie die oben beschriebenen Schritte und Einstellungen, um ein anderes Spe
 
 ## <a name="test-the-queue-triggered-function"></a>Testen der Funktion mit Auslösung per Warteschlange
 
-1.  Navigieren Sie im Azure-Portal zur Funktion. Erweitern Sie unten auf der Seite die Option **Protokolle**, und stellen Sie sicher, dass das Protokollstreaming nicht angehalten ist.
+1.  Navigieren Sie im Azure Stack-Portal zur Funktion. Erweitern Sie unten auf der Seite die Option **Protokolle**, und stellen Sie sicher, dass das Protokollstreaming nicht angehalten ist.
 
 2.  Öffnen Sie Storage-Explorer, und stellen Sie eine Verbindung mit dem Speicherkonto her, das Sie am Anfang dieses Abschnitts erstellt haben.
 

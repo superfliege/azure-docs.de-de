@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Abrufen von unterstützten Sprachen, C#: Textübersetzungs-API'
+title: 'Schnellstart: Abrufen einer Liste mit den unterstützten Sprachen, C#: Textübersetzungs-API'
 titleSuffix: Azure Cognitive Services
 description: In dieser Schnellstartanleitung rufen Sie mit der Textübersetzungs-API eine Liste der für Übersetzung, Transliteration und Wörterbuchsuche unterstützten Sprachen ab.
 services: cognitive-services
@@ -8,16 +8,16 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
-ms.date: 06/15/2018
+ms.date: 11/26/2018
 ms.author: erhopf
-ms.openlocfilehash: cc5d9efd017ec2045cc94bbad98e26e8b95e071d
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: 54896e96658286297d90f488bd02f11da505ec50
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52334685"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52889088"
 ---
-# <a name="quickstart-get-supported-languages-with-the-translator-text-rest-api-c"></a>Schnellstart: Abrufen von unterstützten Sprachen mit der Textübersetzungs-REST-API (C#)
+# <a name="quickstart-use-the-translator-text-api-to-get-a-list-of-supported-languages-using-c"></a>Schnellstart: Verwenden der Textübersetzungs-API zum Abrufen einer Liste mit unterstützten Sprachen per C#
 
 In dieser Schnellstartanleitung rufen Sie mit der Textübersetzungs-API eine Liste der für Übersetzung, Transliteration und Wörterbuchsuche unterstützten Sprachen ab.
 
@@ -28,7 +28,7 @@ Für diese Schnellstartanleitung wird ein [Azure Cognitive Services-Konto](https
 * [.NET SDK](https://www.microsoft.com/net/learn/dotnet/hello-world-tutorial)
 * [Json.NET-NuGet-Paket](https://www.nuget.org/packages/Newtonsoft.Json/)
 * [Visual Studio](https://visualstudio.microsoft.com/downloads/), [Visual Studio Code](https://code.visualstudio.com/download) oder ein anderer Editor
-* Ein Azure-Abonnementschlüssel für den Speech-Dienst
+* Ein Azure-Abonnementschlüssel für die Textübersetzung
 
 ## <a name="create-a-net-core-project"></a>Erstellen eines .NET Core-Projekts
 

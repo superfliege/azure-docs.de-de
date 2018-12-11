@@ -10,14 +10,14 @@ ms.component: translator-text
 ms.topic: quickstart
 ms.date: 11/20/2018
 ms.author: erhopf
-ms.openlocfilehash: 06e294187247636c552dfd4a7d02167eb55be19a
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: 9d9a893a1e62ae35ed3c2f1630c92d4f23cdb2dc
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52334702"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52887677"
 ---
-# <a name="quickstart-translate-text-with-the-translator-text-rest-api-c"></a>Schnellstart: Übersetzen von Text mit der Textübersetzungs-REST-API (C#)
+# <a name="quickstart-use-the-translator-text-api-to-translate-a-string-using-c"></a>Schnellstart: Verwenden der Textübersetzungs-API zum Übersetzen einer Zeichenfolge mit C#
 
 In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe von .NET Core und der Textübersetzungs-REST-API eine Textzeichenfolge vom Englischen ins Italienische und Deutsche übersetzen.
 
@@ -28,7 +28,7 @@ Für diese Schnellstartanleitung wird ein [Azure Cognitive Services-Konto](https
 * [.NET SDK](https://www.microsoft.com/net/learn/dotnet/hello-world-tutorial)
 * [Json.NET-NuGet-Paket](https://www.nuget.org/packages/Newtonsoft.Json/)
 * [Visual Studio](https://visualstudio.microsoft.com/downloads/), [Visual Studio Code](https://code.visualstudio.com/download) oder ein anderer Editor
-* Ein Azure-Abonnementschlüssel für den Speech-Dienst
+* Ein Azure-Abonnementschlüssel für die Textübersetzung
 
 ## <a name="create-a-net-core-project"></a>Erstellen eines .NET Core-Projekts
 

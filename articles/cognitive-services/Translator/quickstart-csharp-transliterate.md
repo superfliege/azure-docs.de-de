@@ -10,14 +10,14 @@ ms.component: translator-text
 ms.topic: quickstart
 ms.date: 11/21/2018
 ms.author: erhopf
-ms.openlocfilehash: 4987a50f7a689b74062154b8427fd7bec8e2e8a6
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: d67fbdad32612f23b1de31f7d2a1d7b4dee3b68e
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52334309"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52889139"
 ---
-# <a name="quickstart-transliterate-text-with-the-translator-text-rest-api-c"></a>Schnellstart: Transliteration von Text mit der Textübersetzungs-REST-API (C#)
+# <a name="quickstart-use-the-translator-text-api-to-transliterate-text-using-c"></a>Schnellstart: Verwenden der Textübersetzungs-API für die Transliteration von Text mit C#
 
 In dieser Schnellstartanleitung erfahren Sie, wie Sie Text mithilfe von .NET Core (C#) und der Textübersetzungs-REST-API zwischen Skripts transliterieren (konvertieren). Im angegebenen Beispiel wird Japanisch in das lateinische Alphabet transliteriert.
 
@@ -28,7 +28,7 @@ Für diese Schnellstartanleitung wird ein [Azure Cognitive Services-Konto](https
 * [.NET SDK](https://www.microsoft.com/net/learn/dotnet/hello-world-tutorial)
 * [Json.NET-NuGet-Paket](https://www.nuget.org/packages/Newtonsoft.Json/)
 * [Visual Studio](https://visualstudio.microsoft.com/downloads/), [Visual Studio Code](https://code.visualstudio.com/download) oder ein anderer Editor
-* Ein Azure-Abonnementschlüssel für den Speech-Dienst
+* Ein Azure-Abonnementschlüssel für die Textübersetzung
 
 ## <a name="create-a-net-core-project"></a>Erstellen eines .NET Core-Projekts
 

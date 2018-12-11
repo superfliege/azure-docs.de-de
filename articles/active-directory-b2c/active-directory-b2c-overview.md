@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: overview
-ms.date: 10/23/2018
+ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: fdb856f92bf790df0065cfc74ce5896f1d10c47b
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 2f9c4acc1a2a98978e12aaf5356a5bc270b8d017
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49954105"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52724025"
 ---
 # <a name="what-is-azure-active-directory-b2c"></a>Was ist Azure Active Directory B2C?
 
@@ -60,9 +60,9 @@ Azure AD B2C interagiert der Reihe nach mit Identitätsanbietern, Kunden, andere
 
 Azure AD B2C schützt Ihre Anwendungen vor Denial-of-Service- und Kennwortangriffen. Azure AD B2C verwendet Erkennungs- und Abwehrmaßnahmen wie SYN-Cookies und Raten- und Verbindungsbeschränkungen, um Ressourcen vor Denial-of-Service-Angriffen zu schützen. Diese decken zudem u.a. Brute-Force-Kennwortangriffe und Wörterbuchangriffe ab.
 
-#### <a name="built-in-policies"></a>Integrierte Richtlinien
+#### <a name="user-flows"></a>Benutzerabläufe
 
-Für jede Anforderung, die an Azure AD B2C gesendet wird, wird eine Richtlinie angegeben. Eine Richtlinie steuert das Verhalten der Interaktion zwischen Ihrer Anwendung und Azure AD B2C. Für die am häufigsten verwendeten Identitätsaufgaben sind integrierte Richtlinien vordefiniert, z.B. Registrierung, Anmeldung und Profilbearbeitung.  Eine Registrierungsrichtlinie ermöglicht es z. B., das Verhalten zu steuern, indem die folgenden Einstellungen konfiguriert werden:
+Jede an Azure AD B2C gesendete Anforderung gibt einen Benutzerflow an. Dabei handelt es sich um eine Richtlinie, die das Verhalten Ihrer Anwendung bei der Interaktion mit Azure AD B2C steuert. Für die am häufigsten verwendeten Identitätsaufgaben (z.B. Registrierung, Anmeldung und Profilbearbeitung) sind vordefinierte Benutzerflows im Azure AD B2C-Portal verfügbar.  Ein Registrierungsbenutzerflow ermöglicht beispielsweise das Steuern des Verhaltens durch Konfigurieren der folgenden Einstellungen:
 
 - Konten für soziale Netzwerke, mit denen sich der Kunde bei der Anwendung registrieren kann
 - Vom Kunden erfasste Daten, z.B. Vorname oder Postleitzahl

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/22/2018
 ms.author: rkarlin
-ms.openlocfilehash: d02c71865f900c2b75da60bd2e989e04a6823d11
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 7783a10badd98a29488732d68267241ff619b645
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51005239"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52838666"
 ---
 # <a name="quickstart-connect-security-solutions-to-security-center"></a>Schnellstartanleitung: Herstellen einer Verbindung für Sicherheitslösungen mit Security Center
 
@@ -33,7 +33,7 @@ In dieser Schnellstartanleitung wird Folgendes beschrieben:
 ## <a name="prerequisites"></a>Voraussetzungen
 Für den Einstieg in Security Center benötigen Sie ein Microsoft Azure-Abonnement. Wenn Sie nicht über ein Abonnement verfügen, können Sie sich für ein [kostenloses Testkonto](https://azure.microsoft.com/free/) registrieren.
 
-Zum Durcharbeiten dieser Schnellstartanleitung müssen Sie den Tarif „Standard“ von Security Center verwenden. Sie können Security Center Standard kostenlos 60 Tage lang testen. Unter [Schnellstarthandbuch zu Azure Security Center](security-center-get-started.md) wird Schritt für Schritt beschrieben, wie Sie das Upgrade auf den Tarif „Standard“ durchführen.
+Zum Durcharbeiten dieser Schnellstartanleitung müssen Sie den Tarif „Standard“ von Security Center verwenden. Sie können Security Center Standard kostenlos testen. Unter [Schnellstarthandbuch zu Azure Security Center](security-center-get-started.md) wird Schritt für Schritt beschrieben, wie Sie das Upgrade auf den Tarif „Standard“ durchführen. Weitere Informationen finden Sie auf der [Preisseite](https://azure.microsoft.com/pricing/details/security-center/).
 
 Außerdem benötigen Sie einen [Linux-Computer](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-linux) mit Syslog-Dienst, der bereits mit Ihrer Security Center-Instanz verbunden ist.
 

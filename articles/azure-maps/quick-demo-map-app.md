@@ -3,18 +3,18 @@ title: Interaktive Kartensuchen mit Azure Maps | Microsoft-Dokumentation
 description: 'Azure-Schnellstart: Starten einer Demo für die interaktive Kartensuche mit Azure Maps'
 author: walsehgal
 ms.author: v-musehg
-ms.date: 10/26/2018
+ms.date: 12/02/2018
 ms.topic: quickstart
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: d2aa3385dd7556cfc169b42b36d94a3e1d9ee3dd
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 5f828bfd2ceee81daf86382846be0c5ee7f1fe8c
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50209971"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52836575"
 ---
 # <a name="launch-an-interactive-search-map-using-azure-maps"></a>Starten einer interaktiven Kartensuche mit Azure Maps
 
@@ -35,7 +35,7 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
     - *Name* des neuen Kontos
     - *Abonnement*, das Sie für dieses Konto verwenden möchten
     - Die *Ressourcengruppe* für dieses Konto. Sie können für die Ressourcengruppe die Option *Neu erstellen* oder die Option *Vorhandene verwenden* auswählen.
-    - Wählen Sie den *Ressourcengruppenstandort*.
+    - Wählen Sie den gewünschten *Tarif* aus.
     - Lesen Sie die *Lizenzbedingungen* und die *Datenschutzerklärung*, und aktivieren Sie zum Akzeptieren der Bestimmungen das Kontrollkästchen.
     - Klicken Sie schließlich auf die Schaltfläche **Erstellen**.
 

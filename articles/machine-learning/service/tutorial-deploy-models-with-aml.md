@@ -9,12 +9,12 @@ author: hning86
 ms.author: haining
 ms.reviewer: sgilley
 ms.date: 09/24/2018
-ms.openlocfilehash: 841448f477accb8a73d543447cd317bb9b427408
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 0fd3bebc1e2dba3ab7d1204e779a8c80b97c990b
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52497600"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52864059"
 ---
 # <a name="tutorial-2--deploy-an-image-classification-model-in-azure-container-instance-aci"></a>Tutorial 2: Bereitstellen eines Bildklassifizierungsmodells in Azure Container Instance (ACI)
 
@@ -22,7 +22,7 @@ Dieses Tutorial ist der **zweite Teil einer zweiteiligen Reihe**. Im [vorherigen
 
 Jetzt können Sie das Modell als einen Webdienst in [Azure Container Instances](https://docs.microsoft.com/azure/container-instances/) (ACI) bereitstellen. Ein Webdienst ist ein Image (in diesem Fall ein Docker-Image), das die Bewertungslogik und das Modell selbst kapselt. 
 
-In diesem Teil des Tutorials verwenden Sie Azure Machine Learning Service (Vorschauversion) für folgende Vorgänge:
+In diesem Teil des Tutorials verwenden Sie den Azure Machine Learning-Dienst für folgende Zwecke:
 
 > [!div class="checklist"]
 > * Einrichten Ihrer Testumgebung
@@ -35,10 +35,12 @@ ACI ist nicht ideal für Produktionsumgebungen, eignet sich aber optimal, um den
 
 ## <a name="get-the-notebook"></a>Abrufen des Notebooks
 
-Dieses Tutorial wird auch als [Jupyter Notebook](https://aka.ms/aml-notebook-tut-02) bereitgestellt. Führen Sie das Notebook `02.deploy-models.ipynb` in Azure Notebooks oder auf Ihrem eigenen Jupyter Notebook-Server aus.
+Dieses Tutorial wird auch als [Jupyter Notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/img-classification-part2-deploy.ipynb) bereitgestellt. Führen Sie das Notebook `tutorials/img-classification-part2-deploy.ipynb` in Azure Notebooks oder auf Ihrem eigenen Jupyter Notebook-Server aus.
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-in-azure-notebook.md)]
 
+>[!NOTE]
+> Der Code in diesem Artikel wurde mit Version 1.0.2 des Azure Machine Learning SDK getestet.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

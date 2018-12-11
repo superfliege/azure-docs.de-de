@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: 645a32f56ee2bdc4132377f2d56f61b963104e42
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: 4881f992e5362efc7e4d7ac23898684966a066e0
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52334889"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52890992"
 ---
 # <a name="tutorial-create-cross-cloud-scaling-solutions-with-azure"></a>Tutorial: Erstellen von cloudübergreifenden Skalierungslösungen mit Azure
 
@@ -60,7 +60,7 @@ In diesem Tutorial erstellen Sie eine Beispielumgebung, die Folgendes ermöglich
 
 -   Erstellen Sie eine Web-App in Ihrem Mandantenabonnement. Notieren Sie sich die URL der neuen Web-App zur späteren Verwendung.
 
--   Stellen Sie einen virtuellen VSTS-Computer in Ihrem Mandantenabonnement bereit.
+-   Stellen Sie einen virtuellen Azure Pipelines-Computer in Ihrem Mandantenabonnement bereit.
 
 -   Es wird ein virtueller Windows Server 2016-Computer mit .NET 3.5 benötigt. Diese VM wird im Mandantenabonnement unter Azure Stack als privater Build-Agent erstellt.
 
@@ -99,9 +99,11 @@ Richten Sie Hybrid-CI/CD (Continuous Integration/Continuous Deployment) ein, um 
 > [!Note]  
 > Azure Stack mit den passenden syndizierten Images für die Ausführung (Windows Server und SQL) und eine App Service-Bereitstellung sind erforderlich. Lesen Sie in der App Service-Dokumentation den Abschnitt [Vor den ersten Schritten mit App Service in Azure Stack](../azure-stack-app-service-before-you-get-started.md) für den Azure Stack-Bediener.
 
-### <a name="add-code-to-visual-studio-team-services-project"></a>Hinzufügen von Code zum Visual Studio Team Services-Projekt
+### <a name="add-code-to-azure-repos"></a>Hinzufügen von Code zu Azure Repos
 
-1. Melden Sie sich bei Visual Studio Team Services (VSTS) mit einem Konto an, das über Berechtigungen zum Erstellen von Projekten in VSTS verfügt.
+Azure Repos
+
+1. Melden Sie sich bei Azure Repos mit einem Konto an, das über Berechtigungen zum Erstellen von Projekten in Azure Repos verfügt.
 
     Der hybride CI/CD-Ansatz kann für Anwendungscode und Infrastrukturcode verwendet werden. Verwenden Sie [Azure Resource Manager-Vorlagen](https://azure.microsoft.com/resources/templates/) für die Entwicklung von privaten und gehosteten Clouds.
 
@@ -117,13 +119,13 @@ Richten Sie Hybrid-CI/CD (Continuous Integration/Continuous Deployment) ein, um 
 
     ![Alt text](media\azure-stack-solution-cloud-burst\image3.png)
 
-2.  Checken Sie den Code in VSTS ein, indem Sie Team Explorer verwenden.
+2.  Checken Sie den Code in Azure Repos ein, indem Sie Team Explorer verwenden.
 
-3.  Vergewissern Sie sich, dass der Anwendungscode in Visual Studio Team Services eingecheckt wurde.
+3.  Vergewissern Sie sich, dass der Anwendungscode in Azure Repos eingecheckt wurde.
 
 ## <a name="create-the-build-definition"></a>Erstellen der Builddefinition
 
-1. Melden Sie sich an VSTS an, um sich zu vergewissern, dass Builddefinitionen erstellt werden können.
+1. Melden Sie sich an Azure Pipelines an, um sich zu vergewissern, dass Builddefinitionen erstellt werden können.
 
 2. Fügen Sie den Code **-r win10-x64** hinzu. Dies ist erforderlich, um eine eigenständige Bereitstellung mit .NET Core auszulösen.
 
@@ -133,11 +135,11 @@ Richten Sie Hybrid-CI/CD (Continuous Integration/Continuous Deployment) ein, um 
 
 ## <a name="use-an-azure-hosted-agent"></a>Verwenden eines gehosteten Azure-Agents
 
-Mit einem gehosteten Agent lassen sich in VSTS komfortabel Web-Apps erstellen und bereitstellen. Wartungsarbeiten und Upgrades werden automatisch von Microsoft Azure durchgeführt, was kontinuierliche und ungestörte Entwicklungs-, Test- und Bereitstellungsaktivitäten ermöglicht.
+Mit einem gehosteten Agent lassen sich in Azure Pipelines komfortabel Web-Apps erstellen und bereitstellen. Wartungsarbeiten und Upgrades werden automatisch von Microsoft Azure durchgeführt, was kontinuierliche und ungestörte Entwicklungs-, Test- und Bereitstellungsaktivitäten ermöglicht.
 
 ### <a name="manage-and-configure-the-cd-process"></a>Verwalten und Konfigurieren des CD-Prozesses
 
-Visual Studio Team Services und Team Foundation Server (TFS) bieten eine äußerst flexibel konfigurier- und verwaltbare Pipeline für Releases in mehreren Umgebungen (z.B. in Entwicklungs-, Staging-, Qualitätssicherungs- und Produktionsumgebungen) – einschließlich erforderlicher Genehmigungen in bestimmten Phasen.
+Azure Pipelines und Azure DevOps Server bieten eine äußerst flexibel konfigurier- und verwaltbare Pipeline für Releases in mehreren Umgebungen (z.B. in Entwicklungs-, Staging-, Qualitätssicherungs- und Produktionsumgebungen) – einschließlich erforderlicher Genehmigungen in bestimmten Phasen.
 
 ## <a name="create-release-definition"></a>Erstellen einer Releasedefinition
 
@@ -228,11 +230,11 @@ Visual Studio Team Services und Team Foundation Server (TFS) bieten eine äußer
 21. Speichern Sie alle Änderungen.
 
 > [!Note]  
-> Bei der vorlagenbasierten Erstellung einer Releasedefinition wurden einige Einstellungen für die Aufgaben unter Umständen automatisch als [Umgebungsvariablen](https://docs.microsoft.com/vsts/build-release/concepts/definitions/release/variables?view=vsts#custom-variables) definiert. Diese Einstellungen können in den Aufgabeneinstellungen nicht geändert werden. Zum Bearbeiten dieser Einstellungen müssen Sie das übergeordnete Umgebungselement auswählen.
+> Bei der vorlagenbasierten Erstellung einer Releasedefinition wurden einige Einstellungen für die Aufgaben unter Umständen automatisch als [Umgebungsvariablen](https://docs.microsoft.com/azure/devops/pipelines/release/variables?view=vsts&tabs=batch#custom-variables) definiert. Diese Einstellungen können in den Aufgabeneinstellungen nicht geändert werden. Zum Bearbeiten dieser Einstellungen müssen Sie das übergeordnete Umgebungselement auswählen.
 
 ## <a name="publish-to-azure-stack-via-visual-studio"></a>Veröffentlichen in Azure Stack mit Visual Studio
 
-Durch die Erstellung von Endpunkten kann ein Visual Studio Online-Build Azure Service-Apps in Azure Stack bereitstellen. VSTS stellt eine Verbindung mit dem Build-Agent her, der wiederum eine Verbindung mit Azure Stack herstellt.
+Durch die Erstellung von Endpunkten kann ein Visual Studio Online-Build Azure Service-Apps in Azure Stack bereitstellen. Azure Pipelines stellt eine Verbindung mit dem Build-Agent her, der wiederum eine Verbindung mit Azure Stack herstellt.
 
 1.  Melden Sie sich bei VSTO an, und navigieren Sie zur Seite mit den App-Einstellungen.
 
@@ -254,18 +256,18 @@ Durch die Erstellung von Endpunkten kann ein Visual Studio Online-Build Azure Se
 
 10. Klicken Sie auf **Save changes** (Änderungen speichern).
 
-Die Endpunktinformationen sind vorhanden, und die Verbindung zwischen VSTS und Azure Stack kann nun verwendet werden. Der Build-Agent in Azure Stack erhält Anweisungen von VSTS. Daraufhin übermittelt der Agent Endpunktinformationen für die Kommunikation mit der Azure Stack-Instanz.
+Die Endpunktinformationen sind vorhanden, und die Verbindung zwischen Azure Pipelines und Azure Stack kann nun verwendet werden. Der Build-Agent in Azure Stack erhält Anweisungen von Azure Pipelines. Daraufhin übermittelt der Agent Endpunktinformationen für die Kommunikation mit Azure Stack.
 
 ## <a name="develop-the-application-build"></a>Entwickeln des Anwendungsbuilds
 
 > [!Note]  
 > Azure Stack mit den passenden syndizierten Images für die Ausführung (Windows Server und SQL) und eine App Service-Bereitstellung sind erforderlich. Lesen Sie in der App Service-Dokumentation den Abschnitt [Vor den ersten Schritten mit App Service in Azure Stack](../azure-stack-app-service-before-you-get-started.md) für den Azure Stack-Bediener.
 
-Verwenden Sie [Azure Resource Manager-Vorlagen](https://azure.microsoft.com/resources/templates/), z.B. Web-App-Code aus VSTS, für die Bereitstellung in beiden Clouds.
+Verwenden Sie [Azure Resource Manager-Vorlagen](https://azure.microsoft.com/resources/templates/), z.B. Web-App-Code aus Azure Repos, für die Bereitstellung in beiden Clouds.
 
-### <a name="add-code-to-a-vsts-project"></a>Hinzufügen von Code zu einem VSTS-Projekt
+### <a name="add-code-to-a-azure-repos-project"></a>Hinzufügen von Code zu einem Azure Repos-Projekt
 
-1.  Melden Sie sich bei VSTS mit einem Konto an, das über Berechtigungen zum Erstellen von Projekten in Azure Stack verfügt. Der nächste Screenshot zeigt, wie Sie eine Verbindung mit dem HybridCICD-Projekt herstellen.
+1.  Melden Sie sich bei Azure Repos mit einem Konto an, das über Berechtigungen zum Erstellen von Projekten in Azure Stack verfügt. Der nächste Screenshot zeigt, wie Sie eine Verbindung mit dem HybridCICD-Projekt herstellen.
 
 2.  **Klonen Sie das Repository**, indem Sie die Standard-Web-App erstellen und öffnen.
 
@@ -273,13 +275,13 @@ Verwenden Sie [Azure Resource Manager-Vorlagen](https://azure.microsoft.com/reso
 
 1.  Bearbeiten Sie die Datei **WebApplication.csproj**: Wählen Sie **Runtimeidentifier**, und fügen Sie „win10-x64“ hinzu. Weitere Informationen finden Sie in der Dokumentation zur [eigenständigen Bereitstellung](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd).
 
-2.  Checken Sie den Code über den Team Explorer in VSTS ein.
+2.  Checken Sie den Code über den Team Explorer in Azure Repos ein.
 
-3.  Vergewissern Sie sich, dass der Anwendungscode in Visual Studio Team Services eingecheckt wurde.
+3.  Vergewissern Sie sich, dass der Anwendungscode in Azure Repos eingecheckt wurde.
 
 ### <a name="create-the-build-definition"></a>Erstellen der Builddefinition
 
-1.  Melden Sie sich mit einem Konto bei VSTS an, mit dem eine Builddefinition erstellt werden kann.
+1.  Melden Sie sich bei Azure Pipelines mit einem Konto an, mit dem eine Builddefinition erstellt werden kann.
 
 2.  Navigieren Sie zur Seite **Build Web Application** (Webanwendung erstellen) für das Projekt.
 
@@ -289,17 +291,17 @@ Verwenden Sie [Azure Resource Manager-Vorlagen](https://azure.microsoft.com/reso
 
 #### <a name="use-an-azure-hosted-build-agent"></a>Verwenden eines in Azure gehosteten Build-Agents
 
-Mit einem gehosteten Build-Agent lassen sich in VSTS komfortabel Web-Apps erstellen und bereitstellen. Wartungsarbeiten und Upgrades für den Agent werden automatisch von Microsoft Azure durchgeführt, was einen kontinuierlichen und ungestörten Entwicklungszyklus ermöglicht.
+Mit einem gehosteten Build-Agent lassen sich in Azure Pipelines komfortabel Web-Apps erstellen und bereitstellen. Wartungsarbeiten und Upgrades für den Agent werden automatisch von Microsoft Azure durchgeführt, was einen kontinuierlichen und ungestörten Entwicklungszyklus ermöglicht.
 
 ### <a name="configure-the-continuous-deployment-cd-process"></a>Konfigurieren des CD-Prozesses (Continuous Deployment)
 
-Visual Studio Team Services (VSTS) und Team Foundation Server (TFS) bieten eine äußerst flexibel konfigurier- und verwaltbare Pipeline für Releases in mehreren Umgebungen (etwa in Entwicklungs-, Staging-, Qualitätssicherungs- und Produktionsumgebungen). Dabei sind ggf. Genehmigungen in bestimmten Phasen des Anwendungslebenszyklus erforderlich.
+Azure Pipelines und Azure DevOps Server verfügen über eine äußerst flexibel konfigurier- und verwaltbare Pipeline für Releases in mehreren Umgebungen (z.B. in Entwicklungs-, Staging-, Qualitätssicherungs- und Produktionsumgebungen). Dabei sind ggf. Genehmigungen in bestimmten Phasen des Anwendungslebenszyklus erforderlich.
 
 #### <a name="create-release-definition"></a>Erstellen einer Releasedefinition
 
 Die Erstellung einer Releasedefinition ist der letzte Schritt im Anwendungsbuildprozess. Diese Releasedefinition wird zum Erstellen eines Release und zum Bereitstellen eines Builds verwendet.
 
-1.  Melden Sie sich an VSTS an, und navigieren Sie für das Projekt zu **Build und Release**.
+1.  Melden Sie sich an Azure Pipelines an, und navigieren Sie für das Projekt zu **Build und Release**.
 
 2.  Klicken Sie auf der Registerkarte **Releases** auf **[ + ]**, und wählen Sie dann **Releasedefinition erstellen**.
 
@@ -346,7 +348,7 @@ Die Erstellung einer Releasedefinition ist der letzte Schritt im Anwendungsbuild
 23. Speichern Sie alle Änderungen.
 
 > [!Note]  
-> Bei der vorlagenbasierten Erstellung einer Releasedefinition werden einige Einstellungen für die Releaseaufgaben unter Umständen automatisch als [Umgebungsvariablen](https://docs.microsoft.com/vsts/build-release/concepts/definitions/release/variables?view=vsts#custom-variables) definiert. Diese Einstellungen können nicht in den Aufgabeneinstellungen geändert werden, sondern nur in den übergeordneten Umgebungselementen.
+> Bei der vorlagenbasierten Erstellung einer Releasedefinition werden einige Einstellungen für die Releaseaufgaben unter Umständen automatisch als [Umgebungsvariablen](https://docs.microsoft.com/azure/devops/pipelines/release/variables?view=vsts&tabs=batch#custom-variables) definiert. Diese Einstellungen können nicht in den Aufgabeneinstellungen geändert werden, sondern nur in den übergeordneten Umgebungselementen.
 
 ## <a name="create-a-release"></a>Erstellen eines Release
 

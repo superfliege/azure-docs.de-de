@@ -10,14 +10,14 @@ ms.component: translator-text
 ms.topic: quickstart
 ms.date: 11/26/2018
 ms.author: erhopf
-ms.openlocfilehash: abdd87b9a86ed2482d5b53c10260fe28821b34ce
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: 868c19f8c9e42bcd4a03aa2c766dff185f6319a7
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52333280"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52888340"
 ---
-# <a name="quickstart-get-sentence-lengths-with-the-translator-text-rest-api-c"></a>Schnellstart: Abrufen von Satzlängen mit der Textübersetzungs-REST-API (C#)
+# <a name="quickstart-use-the-translator-text-api-to-determine-sentence-length-using-c"></a>Schnellstart: Verwenden der Textübersetzungs-API zum Ermitteln der Satzlänge mit C#
 
 In dieser Schnellstartanleitung wird beschrieben, wie Sie mit .NET Core und der Textübersetzungs-API Satzlängen bestimmen.
 
@@ -28,7 +28,7 @@ Für diese Schnellstartanleitung wird ein [Azure Cognitive Services-Konto](https
 * [.NET SDK](https://www.microsoft.com/net/learn/dotnet/hello-world-tutorial)
 * [Json.NET-NuGet-Paket](https://www.nuget.org/packages/Newtonsoft.Json/)
 * [Visual Studio](https://visualstudio.microsoft.com/downloads/), [Visual Studio Code](https://code.visualstudio.com/download) oder ein anderer Editor
-* Ein Azure-Abonnementschlüssel für den Speech-Dienst
+* Ein Azure-Abonnementschlüssel für die Textübersetzung
 
 ## <a name="create-a-net-core-project"></a>Erstellen eines .NET Core-Projekts
 

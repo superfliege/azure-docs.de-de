@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 05/17/2018
 ms.author: spelluru
-ms.openlocfilehash: c3eecfdf4bc2e6bf6798a6b3845cdc2e2e243341
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: ee2def6287a845cd0fd0260254efb20f9638ab2c
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49467428"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52839040"
 ---
 # <a name="tutorial-set-up-a-lab-by-using-azure-devtest-labs"></a>Tutorial: Erstellen eines Labs mithilfe von Azure DevTest Labs
 In diesem Tutorial erstellen Sie ein Lab über das Azure-Portal. Ein Lab-Administrator richtet ein Lab in einer Organisation ein, erstellt VMs im Lab und konfiguriert Richtlinien. Lab-Benutzer (z.B. Entwickler und Tester) fordern virtuelle Computer im Lab an, stellen eine Verbindung mit ihnen her und nutzen sie. 
@@ -80,15 +80,11 @@ Die folgenden Schritte beschreiben, wie Sie mithilfe des Azure-Portals ein Lab i
 1. Wählen Sie im linken Menü die Option **Konfiguration und Richtlinien** aus. 
 
     ![Konfiguration und Richtlinien](./media/tutorial-create-custom-lab/configuration-and-policies-menu.png)
-1. Klicken Sie im Menü auf **Zugriffssteuerung (IAM)** und dann auf der Symbolleiste auf **Hinzufügen**. 
-
-    ![Zugriffssteuerung -> Schaltfläche „Benutzer hinzufügen“](./media/tutorial-create-custom-lab/access-control-add.png)
+1. Wählen Sie im Menü **Zugriffssteuerung (IAM)** und dann auf der Symbolleiste **+ Rollenzuweisung hinzufügen** aus. 
 1. Gehen Sie auf der Seite **Berechtigungen hinzufügen** folgendermaßen vor:
     1. Wählen Sie für **Rolle** die Option **DevTest Labs-Benutzer**. 
     2. Wählen Sie den **Benutzer** aus, den Sie hinzufügen möchten. 
     3. Wählen Sie **Speichern**aus.
-
-        ![Hinzufügen von Berechtigungen](./media/tutorial-create-custom-lab/add-lab-user.png)
 4. Um **Konfigurations- und Richtlinien – Zugriffssteuerung (IAM)** zu schließen, klicken Sie rechts oben auf **X**. 
 
 ## <a name="cleanup-resources"></a>Bereinigen von Ressourcen

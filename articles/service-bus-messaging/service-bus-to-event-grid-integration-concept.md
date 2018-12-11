@@ -14,12 +14,12 @@ ms.devlang: multiple
 ms.topic: get-started-article
 ms.date: 09/15/2018
 ms.author: spelluru
-ms.openlocfilehash: 2173a24eb3bbaafe9dcf25461eb5357ba3a6e7ad
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: c5dcfcb61903c3dbb92e942a5d3dca264ad454e3
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49166898"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52834382"
 ---
 # <a name="azure-service-bus-to-event-grid-integration-overview"></a>Übersicht über die Integration von Azure Service Bus in Event Grid
 
@@ -36,10 +36,7 @@ Um das Feature aktivieren zu können, benötigen Sie Folgendes:
 ![19][]
 
 ### <a name="verify-that-you-have-contributor-access"></a>Überprüfen, ob Sie über Zugriff für Mitwirkende verfügen
-
-Navigieren Sie zu Ihrem Service Bus-Namespace, und klicken Sie auf **Zugriffssteuerung (IAM)**, wie hier zu sehen:
-
-![1][]
+Navigieren Sie zu Ihrem Service Bus-Namespace, und wählen Sie **Zugriffssteuerung (IAM)** und dann die Registerkarte **Rollenzuweisungen** aus: Vergewissern Sie sich, dass Sie über Zugriff für Mitwirkende auf den Namespace verfügen. 
 
 ### <a name="events-and-event-schemas"></a>Ereignisse und Ereignisschemas
 

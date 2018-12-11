@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/24/2018
+ms.date: 11/30/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 19285bf7a1323e9698fe408566304d0596d1c983
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 9ddad471236877977fec620565d8f110e265ff72
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52311262"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52867897"
 ---
 # <a name="what-is-role-based-access-control-rbac"></a>Was ist die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC)?
 
@@ -50,13 +50,14 @@ Sie können den Zugriff auf Ressourcen mit RBAC steuern, indem Sie Rollenzuweisu
 
 ### <a name="security-principal"></a>Sicherheitsprinzipal
 
-Ein *Sicherheitsprinzipal* ist ein Objekt, das einen Benutzer, eine Gruppe oder ein Dienstprinzipal darstellt, das Zugriff auf Azure-Ressourcen anfordert.
+Ein *Sicherheitsprinzipal* ist ein Objekt, das einen Benutzer, eine Gruppe, einen Dienstprinzipal oder eine verwaltete Identität darstellt, der bzw. die Zugriff auf Azure-Ressourcen anfordert.
 
 ![Sicherheitsprinzipal für eine Rollenzuweisung](./media/overview/rbac-security-principal.png)
 
 - Benutzer: eine Person, die über ein Profil in Azure Active Directory verfügt. Sie können auch bei anderen Mandanten Rollen zu Benutzern zuweisen. Weitere Informationen zu Benutzern in anderen Organisationen finden Sie unter [Azure Active Directory B2B](../active-directory/b2b/what-is-b2b.md).
 - Gruppe: eine Reihe von Benutzern, die in Azure Active Directory erstellt wurden. Wenn Sie einer Gruppe eine Rolle zuweisen, verfügen alle Benutzer in dieser Gruppe über diese Rolle. 
 - Dienstprinzipal: eine Sicherheitsidentität, die von Anwendungen oder Diensten für den Zugriff auf bestimmte Azure-Ressourcen verwendet wird. Sie können sich diesen als *Benutzeridentität* (Benutzername und Kennwort oder Zertifikat) für eine Anwendung vorstellen.
+- Verwaltete Identität: Eine Identität in Azure Active Directory, die automatisch von Azure verwaltet wird. In der Regel verwenden Sie [verwaltete Identitäten](../active-directory/managed-identities-azure-resources/overview.md) bei der Entwicklung von Cloudanwendungen, um die Anmeldeinformationen für die Authentifizierung bei Azure-Diensten zu verwalten.
 
 ### <a name="role-definition"></a>Rollendefinition
 
@@ -91,7 +92,7 @@ Wenn Sie den Zugriff in einem übergeordneten Bereich gewähren, werden diese Be
 
 ### <a name="role-assignments"></a>Rollenzuweisungen
 
-Eine *Rollenzuweisung* ist der Prozess, in dem eine Rollenzuweisung zum Zwecke der Zugriffserteilung in einem bestimmten Bereich an einen Benutzer, eine Gruppe oder ein Dienstprinzipal gebunden wird. Der Zugriff wird durch Erstellen einer Rollenzuweisung erteilt und durch Entfernen einer Rollenzuweisung widerrufen.
+Eine *Rollenzuweisung* ist der Prozess, in dem eine Rollendefinition zum Zweck der Zugriffserteilung in einem bestimmten Bereich an einen Benutzer, eine Gruppe, einen Dienstprinzipal oder eine verwaltete Identität gebunden wird. Der Zugriff wird durch Erstellen einer Rollenzuweisung erteilt und durch Entfernen einer Rollenzuweisung widerrufen.
 
 Das folgende Diagramm zeigt ein Beispiel für eine Rollenzuweisung. In diesem Beispiel wurde der Gruppe „Marketing“ die Rolle [Mitwirkender](built-in-roles.md#contributor) für die Ressourcengruppe „Pharmavertrieb“ zugewiesen. Dies bedeutet, dass Benutzer in der Gruppe „Marketing“ in der Ressourcengruppe „Pharmavertrieb“ eine beliebige Azure-Ressource erstellen oder verwalten können. Benutzer der Gruppe „Marketing“ haben keinen Zugriff auf Ressourcen außerhalb der Ressourcengruppe „Pharmavertrieb“, sofern ihnen keine weitere Rolle zugewiesen wurde.
 
@@ -101,9 +102,7 @@ Sie können über das Azure-Portal, die Azure-Befehlszeilenschnittstelle, Azure 
 
 ## <a name="deny-assignments"></a>Ablehnungszuweisungen
 
-Früher war RBAC ein Modell, in dem es nur Zulassungen und keine Ablehnungen gab, jetzt unterstützt RBAC jedoch auch Ablehnungszuweisungen auf eingeschränkte Weise. Ähnlich wie eine Rollenzuweisung bindet eine *Ablehnungszuweisung* in einem bestimmten Bereich einen Satz von Aktionen an einen Benutzer, eine Gruppe oder einen Dienstprinzipal, um den Zugriff zu verweigern. In einer Rollenzuweisung wird einen Satz von Aktionen definiert, die *zulässig* sind, während in einer Ablehnungszuweisung eine Reihe von Aktionen definiert wird, die *nicht zulässig* sind. Das heißt, Ablehnungszuweisungen blockieren Aktionen für bestimmte Benutzer, auch wenn diese durch eine Rollenzuweisung Zugriff erhalten. Ablehnungszuweisungen haben Vorrang vor Rollenzuweisungen.
-
-Derzeit sind Ablehnungszuweisungen **schreibgeschützt** und können nur von Azure festgelegt werden. Auch wenn Sie keine eigenen Ablehnungszuweisungen erstellen können, ist es möglich, Ablehnungszuweisungen aufzulisten, da sie sich auf Ihre effektiven Berechtigungen auswirken können. Um Informationen zu einer Ablehnungszuweisung zu erhalten, benötigen Sie die Berechtigung `Microsoft.Authorization/denyAssignments/read`, die in den meisten [integrierten Rollen](built-in-roles.md#owner) enthalten ist. Weitere Informationen finden Sie unter [Grundlegendes zu Ablehnungszuweisungen](deny-assignments.md).
+Früher war RBAC ein Modell, in dem es nur Zulassungen und keine Ablehnungen gab, jetzt unterstützt RBAC jedoch auch Ablehnungszuweisungen auf eingeschränkte Weise. Ähnlich wie eine Rollenzuweisung verknüpft eine *Ablehnungszuweisung* in einem bestimmten Bereich einen Satz von Aktionen mit einem Benutzer, einer Gruppe, einem Dienstprinzipal oder einer verwalteten Identität, um den Zugriff zu verweigern. In einer Rollenzuweisung wird einen Satz von Aktionen definiert, die *zulässig* sind, während in einer Ablehnungszuweisung eine Reihe von Aktionen definiert wird, die *nicht zulässig* sind. Das heißt, Ablehnungszuweisungen blockieren Aktionen für bestimmte Benutzer, auch wenn diese durch eine Rollenzuweisung Zugriff erhalten. Ablehnungszuweisungen haben Vorrang vor Rollenzuweisungen. Derzeit sind Ablehnungszuweisungen **schreibgeschützt** und können nur von Azure festgelegt werden. Weitere Informationen finden Sie unter [Grundlegendes zu Ablehnungszuweisungen](deny-assignments.md) und [Anzeigen von Ablehnungszuweisungen mit dem Azure-Portal](deny-assignments-portal.md).
 
 ## <a name="how-rbac-determines-if-a-user-has-access-to-a-resource"></a>Ermitteln des Benutzerzugriffs auf eine Ressource durch RBAC
 

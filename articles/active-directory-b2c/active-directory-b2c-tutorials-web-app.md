@@ -5,17 +5,17 @@ services: active-directory-b2c
 author: davidmu1
 manager: mtillman
 ms.author: davidmu
-ms.date: 1/23/2018
+ms.date: 11/30/2018
 ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.component: B2C
-ms.openlocfilehash: e215577fdb39b3dc1a9c5ce641c44e3cdef8fb45
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: 8b482391dfafdda0e54b3f9e2b8a3a7de2f2d5cd
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45604092"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52834722"
 ---
 # <a name="tutorial-enable-a-web-application-to-authenticate-with-accounts-using-azure-active-directory-b2c"></a>Tutorial: Aktivieren der Authentifizierung von Web-Apps mit Konten unter Verwendung von Azure Active Directory B2C
 
@@ -25,7 +25,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
 > * Registrieren einer ASP.NET-Beispiel-Web-App bei Ihrem Azure AD B2C-Mandanten
-> * Erstellen von Richtlinien für Benutzerregistrierung, Benutzeranmeldung, Profilbearbeitung und Kennwortzurücksetzung
+> * Erstellen von Benutzerflows für Benutzerregistrierung, Benutzeranmeldung, Profilbearbeitung und Kennwortzurücksetzung
 > * Konfigurieren der Beispiel-Web-App für die Verwendung Ihres Azure AD B2C-Mandanten 
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
@@ -79,65 +79,87 @@ Azure AD B2C verwendet die OAuth2-Autorisierung für [Clientanwendungen](../acti
 
 Der Schlüssel wird einmal im Portal angezeigt. Wichtig: Kopieren und speichern Sie den Schlüsselwert. Er wird zum Konfigurieren der App benötigt. Bewahren Sie den Schlüssel an einem sicheren Ort auf. Veröffentlichen Sie den Schlüssel nicht.
 
-## <a name="create-policies"></a>Erstellen von Richtlinien
+## <a name="create-user-flows"></a>Erstellen von Benutzerflows
 
-Eine Azure AD B2C-Richtlinie dient zum Definieren von Benutzerworkflows. Gängige Workflows sind beispielsweise Anmelden, Registrieren, Ändern von Kennwörtern und Bearbeiten von Profilen.
+Ein Azure AD B2C-Benutzerflow definiert die Umgebung für eine Identitätsaufgabe. Gängige Benutzerflows sind beispielsweise Anmelden, Registrieren, Ändern von Kennwörtern und Bearbeiten von Profilen.
 
-### <a name="create-a-sign-up-or-sign-in-policy"></a>Erstellen einer Registrierungs- oder Anmelderichtlinie
+### <a name="create-a-sign-up-or-sign-in-user-flow"></a>Erstellen eines Registrierungs- oder Anmeldebenutzerflows
 
-Erstellen Sie eine **Registrierungs- oder Anmelderichtlinie**, um Benutzer für den Zugriff und die anschließende Anmeldung zu registrieren.
+Erstellen Sie einen **Registrierungs- oder Anmeldebenutzerflow**, um Benutzer für den Zugriff und die anschließende Anmeldung zu registrieren.
 
-1. Wählen Sie auf der Azure AD B2C-Portalseite die Option **Registrierungs- oder Anmelderichtlinien** aus, und klicken Sie auf **Hinzufügen**.
+1. Wählen Sie auf der Azure AD B2C-Portalseite die Option **Benutzerflows** aus, und klicken Sie auf **Neuer Benutzerflow**.
+2. Klicken Sie auf der Registerkarte **Empfohlen** auf **Registrierung und Anmeldung**.
 
-    Konfigurieren Sie Ihre Richtlinie mit den folgenden Einstellungen:
+    Konfigurieren Sie Ihren Benutzerflow mit den folgenden Einstellungen:
 
-    ![Hinzufügen einer Registrierungs- oder Anmelderichtlinie](media/active-directory-b2c-tutorials-web-app/add-susi-policy.png)
+    ![Hinzufügen eines Registrierungs- oder Anmeldebenutzerflows](media/active-directory-b2c-tutorials-web-app/add-susi-user-flow.png)
 
     | Einstellung      | Empfohlener Wert  | Beschreibung                                        |
     | ------------ | ------- | -------------------------------------------------- |
-    | **Name** | SiUpIn | Geben Sie einen **Namen**für die Richtlinie ein. Der Richtlinienname wird mit dem Präfix **b2c_1_** versehen. Im Beispielcode wird der vollständige Richtlinienname **b2c_1_SiUpIn** verwendet. | 
+    | **Name** | SiUpIn | Geben Sie unter **Name** einen Namen für den Benutzerflow ein. Der Name des Benutzerflows wird mit dem Präfix **B2C_1_** versehen. Im Beispielcode wird der vollständige Benutzerflowname **B2C_1_SiUpIn** verwendet. | 
     | **Identitätsanbieter** | E-Mail-Registrierung | Der Identitätsanbieter zur eindeutigen Identifizierung des Benutzers. |
-    | **Registrierungsattribute** | „Anzeigename“ und „Postleitzahl“ | Wählen Sie Attribute aus, die im Rahmen der Benutzerregistrierung erfasst werden sollen. |
-    | **Anwendungsansprüche** | „Anzeigename“, „Postleitzahl“, „User is new“ (Benutzer ist neu), „User's Object ID“ (Objekt-ID des Benutzers) | Wählen Sie [Ansprüche](../active-directory/develop/developer-glossary.md#claim) aus, die im [Zugriffstoken](../active-directory/develop/developer-glossary.md#access-token) enthalten sein sollen. |
 
-2. Klicken Sie auf **Erstellen**, um die Richtlinie zu erstellen. 
+3. Klicken Sie unter **Benutzerattribute und Ansprüche** auf **Mehr anzeigen**, und wählen Sie die folgenden Einstellungen aus:
 
-### <a name="create-a-profile-editing-policy"></a>Erstellen einer Richtlinie für die Profilbearbeitung
+    ![Hinzufügen eines Registrierungs- oder Anmeldebenutzerflows](media/active-directory-b2c-tutorials-web-app/add-attributes-and-claims.png)
 
-Erstellen Sie eine **Richtlinie zur Profilbearbeitung**, um Benutzern das eigenständige Zurücksetzen ihrer Benutzerprofilinformationen zu ermöglichen.
+    | Column      | Vorgeschlagene Werte  | BESCHREIBUNG                                        |
+    | ------------ | ------- | -------------------------------------------------- |
+    | **Attribut sammeln** | „Anzeigename“ und „Postleitzahl“ | Wählen Sie Attribute aus, die im Rahmen der Benutzerregistrierung erfasst werden sollen. |
+    | **Anspruch zurückgeben** | „Anzeigename“, „Postleitzahl“, „User is new“ (Benutzer ist neu), „User's Object ID“ (Objekt-ID des Benutzers) | Wählen Sie [Ansprüche](../active-directory/develop/developer-glossary.md#claim) aus, die im [Zugriffstoken](../active-directory/develop/developer-glossary.md#access-token) enthalten sein sollen. |
 
-1. Wählen Sie auf der Azure AD B2C-Portalseite die Option **Richtlinien zur Profilbearbeitung** aus, und klicken Sie auf **Hinzufügen**.
+4. Klicken Sie auf **OK**.
+5. Klicken Sie auf **Erstellen**, um den Benutzerflow zu erstellen. 
 
-    Konfigurieren Sie Ihre Richtlinie mit den folgenden Einstellungen:
+### <a name="create-a-profile-editing-user-flow"></a>Erstellen eines Benutzerflows für die Profilbearbeitung
+
+Erstellen Sie einen **Benutzerflow für die Profilbearbeitung**, um Benutzern das eigenständige Zurücksetzen ihrer Benutzerprofilinformationen zu ermöglichen.
+
+1. Wählen Sie auf der Azure AD B2C-Portalseite die Option **Benutzerflows** aus, und klicken Sie auf **Neuer Benutzerflow**.
+2. Klicken Sie auf der Registerkarte **Empfohlen** auf **Profilbearbeitung**.
+
+    Konfigurieren Sie Ihren Benutzerflow mit den folgenden Einstellungen:
 
     | Einstellung      | Empfohlener Wert  | Beschreibung                                        |
     | ------------ | ------- | -------------------------------------------------- |
-    | **Name** | SiPe | Geben Sie einen **Namen** für die Richtlinie ein. Der Richtlinienname wird mit dem Präfix **b2c_1_** versehen. Im Beispielcode wird der vollständige Richtlinienname **b2c_1_SiPe** verwendet. | 
+    | **Name** | SiPe | Geben Sie unter **Name** einen Namen für den Benutzerflow ein. Der Name des Benutzerflows wird mit dem Präfix **B2C_1_** versehen. Im Beispielcode wird der vollständige Benutzerflowname **B2C_1_SiPe** verwendet. | 
     | **Identitätsanbieter** | Anmeldung mit lokalem Konto | Der Identitätsanbieter zur eindeutigen Identifizierung des Benutzers. |
-    | **Profilattribute** | „Anzeigename“ und „Postleitzahl“ | Wählen Sie Attribute aus, die Benutzer bei der Profilbearbeitung ändern können. |
-    | **Anwendungsansprüche** | „Anzeigename“, „Postleitzahl“, „User's Object ID“ (Objekt-ID des Benutzers) | Wählen Sie [Ansprüche](../active-directory/develop/developer-glossary.md#claim) aus, die nach erfolgreicher Profilbearbeitung im [Zugriffstoken](../active-directory/develop/developer-glossary.md#access-token) enthalten sein sollen. |
 
-2. Klicken Sie auf **Erstellen**, um die Richtlinie zu erstellen. 
+3. Klicken Sie unter **Benutzerattribute** auf **Mehr anzeigen**, und wählen Sie die folgenden Einstellungen aus:
 
-### <a name="create-a-password-reset-policy"></a>Erstellen einer Richtlinie zur Kennwortrücksetzung
+    | Column      | Vorgeschlagene Werte  | BESCHREIBUNG                                        |
+    | ------------ | ------- | -------------------------------------------------- |
+    | **Attribut sammeln** | „Anzeigename“ und „Postleitzahl“ | Wählen Sie Attribute aus, die Benutzer bei der Profilbearbeitung ändern können. |
+    | **Anspruch zurückgeben** | „Anzeigename“, „Postleitzahl“, „User's Object ID“ (Objekt-ID des Benutzers) | Wählen Sie [Ansprüche](../active-directory/develop/developer-glossary.md#claim) aus, die nach erfolgreicher Profilbearbeitung im [Zugriffstoken](../active-directory/develop/developer-glossary.md#access-token) enthalten sein sollen. |
 
-Wenn Sie in Ihrer Anwendung das Zurücksetzen des Kennworts ermöglichen möchten, müssen Sie eine **Richtlinie für die Kennwortzurücksetzung** erstellen. Diese Richtlinie beschreibt die Kundenerfahrung während der Kennwortzurücksetzung und den Inhalt der Token, die die Anwendung bei erfolgreichem Abschluss erhält.
+4. Klicken Sie auf **OK**.
+5. Klicken Sie auf **Erstellen**, um den Benutzerflow zu erstellen. 
+
+### <a name="create-a-password-reset-user-flow"></a>Erstellen eines Benutzerflows zur Kennwortrücksetzung
+
+Wenn Sie in Ihrer Anwendung das Zurücksetzen des Kennworts ermöglichen möchten, müssen Sie einen **Benutzerflow für die Kennwortzurücksetzung** erstellen. Dieser Benutzerflow beschreibt die Kundenerfahrung während der Kennwortzurücksetzung und den Inhalt der Token, die die Anwendung bei erfolgreichem Abschluss erhält.
 
 1. Wählen Sie auf der Azure AD B2C-Portalseite die Option **Richtlinien für die Kennwortzurücksetzung** aus, und klicken Sie auf **Hinzufügen**.
+2. Klicken Sie auf der Registerkarte **Empfohlen** auf **Kennwortzurücksetzung**.
 
-    Konfigurieren Sie Ihre Richtlinie mit den folgenden Einstellungen:
+    Konfigurieren Sie Ihren Benutzerflow mit den folgenden Einstellungen:
 
     | Einstellung      | Empfohlener Wert  | Beschreibung                                        |
     | ------------ | ------- | -------------------------------------------------- |
-    | **Name** | SSPR | Geben Sie einen **Namen** für die Richtlinie ein. Der Richtlinienname wird mit dem Präfix **b2c_1_** versehen. Im Beispielcode wird der vollständige Richtlinienname **b2c_1_SSPR** verwendet. | 
+    | **Name** | SSPR | Geben Sie unter **Name** einen Namen für den Benutzerflow ein. Der Name des Benutzerflows wird mit dem Präfix **B2C_1_** versehen. Im Beispielcode wird der vollständige Benutzerflowname **B2C_1_SSPR** verwendet. | 
     | **Identitätsanbieter** | Kennwort mittels E-Mail-Adresse zurücksetzen | Dies ist der Identitätsanbieter zur eindeutigen Identifizierung des Benutzers. |
-    | **Anwendungsansprüche** | User's Object ID (Objekt-ID des Benutzers) | Wählen Sie [Ansprüche](../active-directory/develop/developer-glossary.md#claim) aus, die nach erfolgreicher Kennwortzurücksetzung im [Zugriffstoken](../active-directory/develop/developer-glossary.md#access-token) enthalten sein sollen. |
 
-2. Klicken Sie auf **Erstellen**, um die Richtlinie zu erstellen. 
+3. Klicken Sie unter **Anwendungsansprüche** auf **Mehr anzeigen**, und wählen Sie die folgenden Einstellungen aus:
+    | Column      | Empfohlener Wert  | BESCHREIBUNG                                        |
+    | ------------ | ------- | -------------------------------------------------- |
+    | **Anspruch zurückgeben** | User's Object ID (Objekt-ID des Benutzers) | Wählen Sie [Ansprüche](../active-directory/develop/developer-glossary.md#claim) aus, die nach erfolgreicher Kennwortzurücksetzung im [Zugriffstoken](../active-directory/develop/developer-glossary.md#access-token) enthalten sein sollen. |
+
+4. Klicken Sie auf **OK**.
+5. Klicken Sie auf **Erstellen**, um den Benutzerflow zu erstellen. 
 
 ## <a name="update-web-app-code"></a>Aktualisieren des Web-App-Codes
 
-Nachdem Sie eine Web-App registriert und Richtlinien erstellt haben, müssen Sie Ihre App für die Verwendung Ihres Azure AD B2C-Mandanten konfigurieren. In diesem Tutorial konfigurieren Sie eine Beispiel-Web-App, die Sie von GitHub herunterladen können. 
+Nachdem Sie eine Web-App registriert und Benutzerflows erstellt haben, müssen Sie Ihre App für die Verwendung Ihres Azure AD B2C-Mandanten konfigurieren. In diesem Tutorial konfigurieren Sie eine Beispiel-Web-App, die Sie von GitHub herunterladen können. 
 
 [Laden Sie eine ZIP-Datei herunter](https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi/archive/master.zip), oder klonen Sie die Beispiel-Web-App aus GitHub. Extrahieren Sie die Beispieldatei unbedingt in einem Ordner, dessen Pfad insgesamt maximal 259 Zeichen lang ist.
 
@@ -145,15 +167,15 @@ Nachdem Sie eine Web-App registriert und Richtlinien erstellt haben, müssen Sie
 git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi.git
 ```
 
-Bei der ASP.NET-Beispiel-Web-App handelt es sich um eine einfache App zum Erstellen und Aktualisieren einer Aufgabenliste. Die App verwendet [Microsoft OWIN-Middleware-Komponenten](https://docs.microsoft.com/aspnet/aspnet/overview/owin-and-katana/), um Benutzern die Registrierung für die Verwendung der App in Ihrem Azure AD B2C-Mandanten zu ermöglichen. Durch Erstellung einer Azure AD B2C-Richtlinie können Benutzer ein Konto für ein soziales Netzwerk verwenden oder ein Konto erstellen und dieses als Identität für den App-Zugriff verwenden. 
+Bei der ASP.NET-Beispiel-Web-App handelt es sich um eine einfache App zum Erstellen und Aktualisieren einer Aufgabenliste. Die App verwendet [Microsoft OWIN-Middleware-Komponenten](https://docs.microsoft.com/aspnet/aspnet/overview/owin-and-katana/), um Benutzern die Registrierung für die Verwendung der App in Ihrem Azure AD B2C-Mandanten zu ermöglichen. Durch Erstellung eines Azure AD B2C-Benutzerflows können Benutzer ein Konto für ein soziales Netzwerk verwenden oder ein Konto erstellen und dieses als Identität für den App-Zugriff verwenden. 
 
 Die Beispielprojektmappe enthält zwei Projekte:
 
-**Web-App-Beispiel-App (TaskWebApp):** Web-App zum Erstellen und Bearbeiten einer Aufgabenliste. Die Web-App verwendet die **Registrierungs- oder Anmelderichtlinie** für die Registrierung oder Anmeldung von Benutzern.
+**Web-App-Beispiel-App (TaskWebApp):** Web-App zum Erstellen und Bearbeiten einer Aufgabenliste. Die Web-App verwendet den **Registrierungs- oder Anmeldebenutzerflow** für die Registrierung oder Anmeldung von Benutzern.
 
 **Web-API-Beispiel-App (TaskService):** Web-API, die die Funktionen zum Erstellen, Lesen, Aktualisieren und Löschen der Aufgabenliste unterstützt. Die Web-API wird per Azure AD B2C geschützt und von der Web-App aufgerufen.
 
-Sie müssen die App ändern, sodass die App-Registrierung in Ihrem Mandanten verwendet wird. Sie beinhaltet die Anwendungs-ID und den Anwendungsschlüssel, die Sie zuvor notiert haben. Außerdem müssen die von Ihnen erstellten Richtlinien konfiguriert werden. Die Beispiel-Web-App definiert die Konfigurationswerte als App-Einstellungen in der Datei „Web.config“. Gehen Sie zum Ändern der App-Einstellungen wie folgt vor:
+Sie müssen die App ändern, sodass die App-Registrierung in Ihrem Mandanten verwendet wird. Sie beinhaltet die Anwendungs-ID und den Anwendungsschlüssel, die Sie zuvor notiert haben. Außerdem müssen die von Ihnen erstellten Benutzerflows konfiguriert werden. Die Beispiel-Web-App definiert die Konfigurationswerte als App-Einstellungen in der Datei „Web.config“. Gehen Sie zum Ändern der App-Einstellungen wie folgt vor:
 
 1. Öffnen Sie die Projektmappe **B2C-WebAPI-DotNet** in Visual Studio.
 
@@ -171,11 +193,11 @@ Die Beispiel-App unterstützt Registrierung, Anmeldung, Profilbearbeitung und Ke
 
 ### <a name="sign-up-using-an-email-address"></a>Registrieren mit einer E-Mail-Adresse
 
-1. Klicken Sie auf dem oberen Banner auf den Link **Registrieren/Anmelden**, um sich als Benutzer der Web-App zu registrieren. Hierbei wird die zuvor definierte Richtlinie **b2c_1_SiUpIn** verwendet.
+1. Klicken Sie auf dem oberen Banner auf den Link **Registrieren/Anmelden**, um sich als Benutzer der Web-App zu registrieren. Hierbei wird der zuvor definierte Benutzerflow **b2c_1_SiUpIn** verwendet.
 
 2. Azure AD B2C zeigt eine Anmeldeseite mit einem Registrierungslink an. Da Sie noch nicht über ein Konto verfügen, klicken Sie auf den Link **Jetzt registrieren**. 
 
-3. Der Registrierungsworkflow zeigt eine Seite an, über die die Identität des Benutzers mithilfe einer E-Mail-Adresse erfasst und überprüft wird. Darüber hinaus werden im Rahmen des Registrierungsworkflows auch das Kennwort des Benutzers sowie die angeforderten Attribute erfasst, die in der Richtlinie definiert wurden.
+3. Der Registrierungsworkflow zeigt eine Seite an, über die die Identität des Benutzers mithilfe einer E-Mail-Adresse erfasst und überprüft wird. Darüber hinaus werden im Rahmen des Registrierungsworkflows auch das Kennwort des Benutzers sowie die angeforderten Attribute erfasst, die im Benutzerflow definiert wurden.
 
     Verwenden Sie eine gültige E-Mail-Adresse, und bestätigen Sie sie mithilfe des Prüfcodes. Legen Sie ein Kennwort fest. Geben Sie Werte für die angeforderten Attribute ein. 
 
@@ -191,7 +213,7 @@ Sie können Ihren Azure AD B2C-Mandanten für weitere Azure AD B2C-Tutorials ver
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie gelernt, wie Sie einen Azure AD B2C-Mandanten und Richtlinien erstellen und wie Sie die Beispiel-Web-App für die Verwendung Ihres Azure AD B2C-Mandanten aktualisieren. Im nächsten Tutorial erfahren Sie, wie Sie eine durch Ihren Azure AD B2C-Mandanten geschützte ASP.NET-Web-API registrieren, konfigurieren und aufrufen.
+In diesem Tutorial haben Sie gelernt, wie Sie einen Azure AD B2C-Mandanten und Benutzerflows erstellen und wie Sie die Beispiel-Web-App für die Verwendung Ihres Azure AD B2C-Mandanten aktualisieren. Im nächsten Tutorial erfahren Sie, wie Sie eine durch Ihren Azure AD B2C-Mandanten geschützte ASP.NET-Web-API registrieren, konfigurieren und aufrufen.
 
 > [!div class="nextstepaction"]
 > [Tutorial: Schützen einer ASP.NET-Web-API mithilfe von Azure Active Directory B2C](active-directory-b2c-tutorials-web-api.md)

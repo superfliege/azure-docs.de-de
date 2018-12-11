@@ -12,16 +12,17 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 12/15/2016
+ms.date: 11/27/2018
 ms.author: apimpm
-ms.openlocfilehash: 7458ad6e0a864d742f74ce743ce3179594113c00
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: 2c417a0e9a3f50032aa3c97ced57d3249bc7c93a
+ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2017
-ms.locfileid: "26127776"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52620665"
 ---
 # <a name="add-caching-to-improve-performance-in-azure-api-management"></a>Hinzufügen der Zwischenspeicherung zum Verbessern der Leistung in Azure API Management
+
 Operationen in API Management können für das Zwischenspeichern von Antworten konfiguriert werden. Das Zwischenspeichern von Antworten kann API-Latenz, Bandbreitennutzung und Webdienstlast für Daten, die sich eher selten ändern, drastisch senken.
  
 Ausführlichere Informationen zum Zwischenspeichern finden Sie unter [Cacherichtlinien für API Management](api-management-caching-policies.md) sowie unter [Benutzerdefiniertes Caching in Azure API Management](api-management-sample-cache-by-key.md).
@@ -34,11 +35,16 @@ Sie lernen Folgendes:
 > * Hinzufügen des Zwischenspeicherns von Antworten für Ihre API
 > * Überprüfen des Zwischenspeicherns in Aktion
 
+## <a name="availability"></a>Verfügbarkeit
+
+> [!NOTE]
+> Im Tarif **Consumption** von Azure API Management ist kein interner Cache verfügbar. Sie können stattdessen [einen externen Redis-Cache](api-management-howto-cache-external.md) verwenden.
+
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Für dieses Tutorial benötigen Sie Folgendes:
 
-+ [Erstellen Sie eine Azure API Management-Instanz.](get-started-create-service-instance.md)
++ [Erstellen einer neuen Azure API Management-Dienstinstanz](get-started-create-service-instance.md)
 + [Importieren und Veröffentlichen Sie eine API.](import-and-publish.md)
 
 ## <a name="caching-policies"> </a>Hinzufügen der Zwischenspeicherungsrichtlinien
@@ -51,11 +57,11 @@ Mit den Zwischenspeicherungsrichtlinien in diesem Beispiel gibt die erste Anford
 4. Klicken Sie in der API-Liste auf **Demo Conference API**.
 5. Wählen Sie **GetSpeakers** aus.
 6. Klicken Sie im oberen Seitenbereich auf die Registerkarte **Entwurf**.
-7. Klicken Sie im Fenster **Eingehende Verarbeitung** auf das Dreieck (neben dem Stift).
+7. Klicken Sie im Abschnitt **Eingehende Verarbeitung** auf das Symbol **</>**.
 
-    ![Code-Editor](media/api-management-howto-cache/code-editor.png)
-8. Klicken Sie auf **Code-Editor**.
-9. Fügen Sie im Element für den **Eingang** die folgende Richtlinie hinzu:
+    ![Code-Editor](media/api-management-howto-cache/code-editor.png) 
+
+8. Fügen Sie im Element für den **Eingang** die folgende Richtlinie hinzu:
 
         <cache-lookup vary-by-developer="false" vary-by-developer-groups="false">
             <vary-by-header>Accept</vary-by-header>
@@ -63,11 +69,14 @@ Mit den Zwischenspeicherungsrichtlinien in diesem Beispiel gibt die erste Anford
             <vary-by-header>Authorization</vary-by-header>
         </cache-lookup>
 
-10. Fügen Sie im Element für den **Ausgang** die folgende Richtlinie hinzu:
+9. Fügen Sie im Element für den **Ausgang** die folgende Richtlinie hinzu:
 
         <cache-store caching-mode="cache-on" duration="20" />
 
     **Dauer** gibt das Ablaufintervall der gespeicherten Antworten an. In diesem Beispiel beträgt das Intervall **20** Sekunden.
+
+> [!TIP]
+> Wenn Sie wie unter [Use an external Azure Cache for Redis in Azure API Management](api-management-howto-cache-external.md) (Verwenden eines externen Azure-Cache für Redis in Azure API Management) beschrieben einen externen Cache verwenden, sollten Sie das Attribut `cache-preference` der Cachingrichtlinien angeben. Ausführlichere Informationen finden Sie unter [Cacherichtlinien für API Management](api-management-caching-policies.md).
 
 ## <a name="test-operation"></a>Aufrufen einer Operation und Testen der Zwischenspeicherung
 Um die Zwischenspeicherung in Aktion zu sehen, können Sie den Vorgang über das Entwicklerportal aufrufen.
@@ -79,9 +88,10 @@ Um die Zwischenspeicherung in Aktion zu sehen, können Sie den Vorgang über das
 5. Klicken Sie im Menü rechts oben auf die Registerkarte **Test**.
 6. Klicken Sie auf **Senden**.
 
-## <a name="next-steps"></a>Nächste Schritte
+## <a name="next-steps"> </a>Nächste Schritte
 * Weitere Informationen zu Richtlinien für die Zwischenspeicherung finden Sie unter [Richtlinien für die Zwischenspeicherung][Caching policies] in der [Richtlinienreferenz für API Management][API Management policy reference].
 * Informationen zum Zwischenspeichern von Elementen nach Schlüssel mithilfe von Richtlinienausdrücken finden Sie unter [Benutzerdefiniertes Zwischenspeichern in Azure API Management](api-management-sample-cache-by-key.md).
+* Weitere Informationen zur Verwendung von externem Redis Caches finden Sie unter [Use an external Azure Cache for Redis in Azure API Management](api-management-howto-cache-external.md) (Verwenden eines externen Azure-Cache für Redis in Azure API Management).
 
 [api-management-management-console]: ./media/api-management-howto-cache/api-management-management-console.png
 [api-management-echo-api]: ./media/api-management-howto-cache/api-management-echo-api.png

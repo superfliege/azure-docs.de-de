@@ -1,148 +1,179 @@
 ---
-title: 'Schnellstart: Identifizieren der Textsprache, Java: Textübersetzungs-API'
+title: 'Schnellstart: Ermitteln der Textsprache, Java: Textübersetzungs-API'
 titleSuffix: Azure Cognitive Services
-description: In diesem Schnellstart bestimmen Sie die Sprache des Quelltexts. Dazu verwenden Sie die Textübersetzungs-API mit Java.
+description: In dieser Schnellstartanleitung erfahren Sie, wie Sie die Sprache des bereitgestellten Texts mit Java und der Textübersetzungs-REST-API erkennen.
 services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
-ms.date: 06/21/2018
+ms.date: 12/03/2018
 ms.author: erhopf
-ms.openlocfilehash: dcf7529ab0b9d7eb6792e2934d59a24c7a834174
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: d810b282936db1a31cdeb0133ce3c5bf0059850b
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50415558"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52890778"
 ---
-# <a name="quickstart-identify-language-from-text-with-the-translator-text-rest-api-java"></a>Schnellstart: Identifizieren der Textsprache mit der Textübersetzungs-REST-API (Java)
+# <a name="quickstart-use-the-translator-text-api-to-detect-text-language-using-java"></a>Schnellstart: Verwenden der Textübersetzungs-API zum Ermitteln der Textsprache mit Java
 
-In dieser Schnellstartanleitung bestimmen Sie mithilfe der Textübersetzungs-API die Sprache des Quelltexts.
+In dieser Schnellstartanleitung erfahren Sie, wie Sie die Sprache des bereitgestellten Texts mit Java und der Textübersetzungs-REST-API erkennen.
+
+Für diese Schnellstartanleitung wird ein [Azure Cognitive Services-Konto](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) mit einer Textübersetzungsressource benötigt. Wenn Sie über kein Konto verfügen, können Sie über die [kostenlose Testversion](https://azure.microsoft.com/try/cognitive-services/) einen Abonnementschlüssel abrufen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Zum Kompilieren und Ausführen des Codes benötigen Sie [JDK 7 oder 8](https://aka.ms/azure-jdks). Sie können Ihre bevorzugte Java-Entwicklungsumgebung verwenden, ein Text-Editor funktioniert jedoch auch.
+* [Mindestens JDK 7](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
+* [Gradle](https://gradle.org/install/)
+* Ein Azure-Abonnementschlüssel für die Textübersetzung
 
-Damit Sie die Textübersetzungs-API verwenden können, benötigen Sie darüber hinaus einen Abonnementschlüssel. Informationen hierzu finden Sie unter [Registrieren für die Textübersetzungs-API](translator-text-how-to-signup.md).
+## <a name="initialize-a-project-with-gradle"></a>Initialisieren eines Projekts mit Gradle
 
-## <a name="detect-request"></a>Ermittlungsanforderung (Detect)
+Erstellen Sie zunächst ein Arbeitsverzeichnis für dieses Projekt. Führen Sie den folgenden Befehl über die Befehlszeile (oder das Terminal) aus:
 
-Der folgende Code identifiziert mithilfe der Methode zum [Ermitteln](./reference/v3-0-detect.md) (Detect) die Sprache des Quelltexts.
+```console
+mkdir detect-sample
+cd detect-sample
+```
 
-1. Erstellen Sie ein neues Java-Projekt in Ihrem bevorzugten Code-Editor.
-2. Fügen Sie den unten stehenden Code hinzu.
-3. Ersetzen Sie den `subscriptionKey`-Wert durch einen für Ihr Abonnement gültigen Zugriffsschlüssel.
-4. Führen Sie das Programm aus.
+Als Nächstes initialisieren Sie ein Gradle-Projekt. Mit diesem Befehl werden grundlegende Builddateien für Gradle und insbesondere die Datei `build.gradle.kts` erstellt. Diese Datei wird zur Laufzeit zum Erstellen und Konfigurieren Ihrer Anwendung verwendet. Führen Sie den folgenden Befehl in Ihrem Arbeitsverzeichnis aus:
+
+```console
+gradle init --type basic
+```
+
+Wenn Sie zur Auswahl einer **DSL** aufgefordert werden, wählen Sie **Kotlin** aus.
+
+## <a name="configure-the-build-file"></a>Konfigurieren der Builddatei
+
+Navigieren Sie zu `build.gradle.kts`, und öffnen Sie die Datei in einer IDE oder einem Text-Editor Ihrer Wahl. Kopieren Sie anschließend diese Buildkonfiguration:
+
+```
+plugins {
+    java
+    application
+}
+application {
+    mainClassName = "Detect"
+}
+repositories {
+    mavenCentral()
+}
+dependencies {
+    compile("com.squareup.okhttp:okhttp:2.5.0")
+    compile("com.google.code.gson:gson:2.8.5")
+}
+```
+
+Beachten Sie, dass dieses Beispiel Abhängigkeiten von OkHttp für HTTP-Anforderungen und von Gson für das Bearbeiten und Analysieren von JSON aufweist. Weitere Informationen zu Buildkonfigurationen finden Sie unter [Creating New Gradle Builds](https://guides.gradle.org/creating-new-gradle-builds/) (Erstellen neuer Gradle-Builds).
+
+## <a name="create-a-java-file"></a>Erstellen einer Java-Datei
+
+Erstellen Sie einen Ordner für Ihre Beispiel-App. Führen Sie in Ihrem Arbeitsverzeichnis den folgenden Befehl aus:
+
+```console
+mkdir -p src/main/java
+```
+
+Erstellen Sie als Nächstes in diesem Ordner eine Datei namens `Detect.java`.
+
+## <a name="import-required-libraries"></a>Importieren der erforderlichen Bibliotheken
+
+Öffnen Sie `Detect.java`, und fügen Sie die folgenden Importanweisungen hinzu:
 
 ```java
 import java.io.*;
 import java.net.*;
 import java.util.*;
-import javax.net.ssl.HttpsURLConnection;
+import com.google.gson.*;
+import com.squareup.okhttp.*;
+```
 
-/*
- * Gson: https://github.com/google/gson
- * Maven info:
- *     groupId: com.google.code.gson
- *     artifactId: gson
- *     version: 2.8.1
- */
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 
-/* NOTE: To compile and run this code:
-1. Save this file as Detect.java.
-2. Run:
-    javac Detect.java -cp .;gson-2.8.1.jar -encoding UTF-8
-3. Run:
-    java -cp .;gson-2.8.1.jar Detect
-*/
+## <a name="define-variables"></a>Definieren von Variablen
 
+Sie müssen zunächst eine öffentliche Klasse für Ihr Projekt erstellen:
+
+```java
 public class Detect {
+  // All project code goes here...
+}
+```
 
-// **********************************************
-// *** Update or verify the following values. ***
-// **********************************************
+Fügen Sie der Klasse `Detect` die folgenden Zeilen hinzu:
 
-// Replace the subscriptionKey string value with your valid subscription key.
-    static String subscriptionKey = "ENTER KEY HERE";
+```java
+String subscriptionKey = "YOUR_SUBSCRIPTION_KEY";
+String url = "https://api.cognitive.microsofttranslator.com/detect?api-version=3.0";
+```
 
-    static String host = "https://api.cognitive.microsofttranslator.com";
-    static String path = "/detect?api-version=3.0";
+## <a name="create-a-client-and-build-a-request"></a>Erstellen eines Clients und einer Anforderung
 
-    static String text = "Salve, mondo!";
+Fügen Sie der Klasse `Detect` die folgende Zeile hinzu, um `OkHttpClient` zu instanziieren:
 
-    public static class RequestBody {
-        String Text;
+```java
+// Instantiates the OkHttpClient.
+OkHttpClient client = new OkHttpClient();
+```
 
-        public RequestBody(String text) {
-            this.Text = text;
-        }
-    }
+Als Nächstes erstellen Sie die POST-Anforderung. Sie können den Text für die Sprachenerkennung ändern.
 
-    public static String Post (URL url, String content) throws Exception {
-        HttpsURLConnection connection = (HttpsURLConnection) url.openConnection();
-        connection.setRequestMethod("POST");
-        connection.setRequestProperty("Content-Type", "application/json");
-        connection.setRequestProperty("Content-Length", content.length() + "");
-        connection.setRequestProperty("Ocp-Apim-Subscription-Key", subscriptionKey);
-        connection.setRequestProperty("X-ClientTraceId", java.util.UUID.randomUUID().toString());
-        connection.setDoOutput(true);
+```java
+// This function performs a POST request.
+public String Post() throws IOException {
+    MediaType mediaType = MediaType.parse("application/json");
+    RequestBody body = RequestBody.create(mediaType,
+            "[{\n\t\"Text\": \"Salve mondo!\"\n}]");
+    Request request = new Request.Builder()
+            .url(url).post(body)
+            .addHeader("Ocp-Apim-Subscription-Key", subscriptionKey)
+            .addHeader("Content-type", "application/json").build();
+    Response response = client.newCall(request).execute();
+    return response.body().string();
+}
+```
 
-        DataOutputStream wr = new DataOutputStream(connection.getOutputStream());
-        byte[] encoded_content = content.getBytes("UTF-8");
-        wr.write(encoded_content, 0, encoded_content.length);
-        wr.flush();
-        wr.close();
+## <a name="create-a-function-to-parse-the-response"></a>Erstellen einer Funktion zum Analysieren der Antwort
 
-        StringBuilder response = new StringBuilder ();
-        BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream(), "UTF-8"));
-        String line;
-        while ((line = in.readLine()) != null) {
-            response.append(line);
-        }
-        in.close();
+Mit dieser einfachen Funktion wird die JSON-Antwort vom Textübersetzungsdienst analysiert und übersichtlicher gemacht.
 
-        return response.toString();
-    }
+```java
+// This function prettifies the json response.
+public static String prettify(String json_text) {
+    JsonParser parser = new JsonParser();
+    JsonElement json = parser.parse(json_text);
+    Gson gson = new GsonBuilder().setPrettyPrinting().create();
+    return gson.toJson(json);
+}
+```
 
-    public static String Detect () throws Exception {
-        URL url = new URL (host + path);
+## <a name="put-it-all-together"></a>Korrektes Zusammenfügen
 
-        List<RequestBody> objList = new ArrayList<RequestBody>();
-        objList.add(new RequestBody(text));
-        String content = new Gson().toJson(objList);
+Im letzten Schritt wird eine Anforderung gesendet und eine Antwort empfangen. Fügen Sie Ihrem Projekt die folgenden Zeilen hinzu:
 
-        return Post(url, content);
-    }
-
-    public static String prettify(String json_text) {
-        JsonParser parser = new JsonParser();
-        JsonElement json = parser.parse(json_text);
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        return gson.toJson(json);
-    }
-
-    public static void main(String[] args) {
-        try {
-            String response = Detect ();
-            System.out.println (prettify (response));
-        }
-        catch (Exception e) {
-            System.out.println (e);
-        }
+```java
+public static void main(String[] args) {
+    try {
+        Detect detectRequest = new Detect();
+        String response = detectRequest.Post();
+        System.out.println(prettify(response));
+    } catch (Exception e) {
+        System.out.println(e);
     }
 }
 ```
 
-## <a name="detect-response"></a>Ermittlungsantwort (Detect)
+## <a name="run-the-sample-app"></a>Ausführen der Beispiel-App
 
-Es wird eine erfolgreiche Antwort im JSON-Format zurückgegeben, wie im folgenden Beispiel gezeigt:
+Sie können Ihre Beispiel-App jetzt ausführen. Navigieren Sie über die Befehlszeile (oder Terminalsitzung) zum Stamm Ihres Projektverzeichnisses, und führen Sie Folgendes aus:
+
+```console
+gradle build
+```
+
+## <a name="sample-response"></a>Beispiel für eine Antwort
 
 ```json
 [
@@ -175,3 +206,12 @@ Sehen Sie sich den Beispielcode für diese und andere Schnellstartanleitungen (e
 
 > [!div class="nextstepaction"]
 > [Java-Beispiele auf GitHub](https://aka.ms/TranslatorGitHub?type=&language=java)
+
+## <a name="see-also"></a>Weitere Informationen
+
+* [Übersetzen von Text](quickstart-java-translate.md)
+* [Transliteration von Text](quickstart-java-transliterate.md)
+* [Identifizieren der Sprache anhand der Eingabe](quickstart-java-detect.md)
+* [Ermitteln alternativer Übersetzungen](quickstart-java-dictionary.md)
+* [Abrufen einer Liste der unterstützten Sprachen](quickstart-java-languages.md)
+* [Bestimmen der Satzlänge aus einer Eingabe](quickstart-java-sentences.md)

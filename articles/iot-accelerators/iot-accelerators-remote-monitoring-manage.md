@@ -1,35 +1,32 @@
 ---
-title: 'Tutorial: Verwalten von Geräten in einer Azure-basierten Lösung für die Remoteüberwachung | Microsoft-Dokumentation'
-description: In diesem Tutorial wird veranschaulicht, wie Sie die Geräte verwalten, die mit dem Solution Accelerator für die Remoteüberwachung verbunden sind.
+title: Konfigurieren von Geräten in einer Azure-basierten Lösung für die Remoteüberwachung | Microsoft-Dokumentation
+description: In diesem Tutorial wird veranschaulicht, wie Sie die Geräte konfigurieren, die mit dem Solution Accelerator für die Remoteüberwachung verbunden sind.
 author: dominicbetts
 manager: timlt
 ms.author: dobett
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.date: 11/08/2018
+ms.date: 11/15/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: b54f7601f66bd115b7ceb937e2c0ebf8ca8eb01e
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: b8352b062efdb49df01834bd3c2a5e1393e11a44
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51821053"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52679153"
 ---
-# <a name="tutorial-configure-and-manage-devices-connected-to-your-monitoring-solution"></a>Tutorial: Konfigurieren und Verwalten von Geräten, die mit der Überwachungslösung verbunden sind
+# <a name="tutorial-configure-devices-connected-to-your-monitoring-solution"></a>Tutorial: Konfigurieren von Geräten, die mit der Überwachungslösung verbunden sind
 
-In diesem Tutorial verwenden Sie den Solution Accelerator für die Remoteüberwachung zum Konfigurieren und Verwalten Ihrer verbundenen IoT-Geräte. Sie fügen dem Solution Accelerator ein neues Gerät hinzu, konfigurieren das Gerät und aktualisieren die Firmware des Geräts.
+In diesem Tutorial verwenden Sie den Solution Accelerator für die Remoteüberwachung zum Konfigurieren und Verwalten Ihrer verbundenen IoT-Geräte. Sie fügen dem Solution Accelerator ein neues Gerät hinzu und konfigurieren das Gerät.
 
-Contoso hat neue Maschinen bestellt, um eine seiner Betriebsstätten zu erweitern. Während Sie auf die Lieferung der neuen Maschinen warten, möchten Sie eine Simulation ausführen, um das Verhalten der Lösung zu testen. Zum Ausführen der Simulation fügen Sie dem Solution Accelerator für die Remoteüberwachung ein neues simuliertes Engine-Gerät hinzu und testen, ob dieses simulierte Gerät richtig auf Aktionen und Konfigurationsupdates reagiert.
-
-Um ein breites Spektrum an Möglichkeiten zum Konfigurieren und Verwalten von Geräten zu bieten, werden im Solution Accelerator für die Remoteüberwachung IoT Hub-Features wie [Aufträge](../iot-hub/iot-hub-devguide-jobs.md) und [direkte Methoden](../iot-hub/iot-hub-devguide-direct-methods.md) verwendet. In diesem Tutorial werden simulierte Geräte genutzt, aber ein Geräteentwickler kann direkte Methoden auch auf einem [physischen Gerät implementieren, das mit dem Solution Accelerator für die Remoteüberwachung verbunden ist](iot-accelerators-connecting-devices.md).
+Contoso hat neue Maschinen bestellt, um eine seiner Betriebsstätten zu erweitern. Während Sie auf die Lieferung der neuen Maschinen warten, möchten Sie eine Simulation ausführen, um das Verhalten der Lösung zu testen. Zum Ausführen der Simulation fügen Sie dem Solution Accelerator für die Remoteüberwachung ein neues simuliertes Engine-Gerät hinzu und testen, ob dieses simulierte Gerät richtig auf Konfigurationsupdates reagiert. In diesem Tutorial werden simulierte Geräte genutzt, aber ein Geräteentwickler kann direkte Methoden auch auf einem [physischen Gerät implementieren, das mit dem Solution Accelerator für die Remoteüberwachung verbunden ist](iot-accelerators-connecting-devices.md).
 
 In diesem Tutorial führen Sie Folgendes durch:
 
 >[!div class="checklist"]
 > * Bereitstellen eines simulierten Geräts
 > * Testen eines simulierten Geräts
-> * Aktualisieren der Firmware eines Geräts
 > * Neukonfigurieren eines Geräts
 > * Organisieren Ihrer Geräte
 
@@ -60,24 +57,6 @@ Um zu testen, ob das simulierte Engine-Gerät Telemetriedaten sendet und Eigensc
 Im Bereich **Device Details** (Gerätedetails) werden weitere Informationen zum Gerät angezeigt, z.B. Tagwerte, die unterstützten Methoden und die vom Gerät gemeldeten Eigenschaften.
 
 Scrollen Sie zum Anzeigen von detaillierten Diagnosedaten im Panel **Device Details** (Gerätedetails) nach unten, um den Abschnitt **Diagnose** anzuzeigen.
-
-## <a name="act-on-a-device"></a>Aktionen für ein Gerät
-
-Führen Sie die **FirmwareUpdate**-Methode aus, um zu testen, ob das simulierte Engine-Gerät richtig auf die über das Dashboard initiierten Aktionen reagiert. Um für ein Gerät per Ausführung einer Methode tätig zu werden, wählen Sie das Gerät in der Liste mit den Geräten aus und klicken dann auf **Jobs** (Aufträge). Sie können auch mehr als ein Gerät auswählen, falls Sie für mehrere Geräte tätig werden möchten. Wählen Sie im Panel **Aufträge** die Option **Methoden** aus. Für das Gerätemodell **Engine** werden drei Methoden angegeben: **FirmwareUpdate**, **FillTank** und **EmptyTank**:
-
-[![Engine-Methoden](./media/iot-accelerators-remote-monitoring-manage/devicesmethods-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesmethods-expanded.png#lightbox)
-
-Wählen Sie **FirmwareUpdate**, legen Sie den Auftragsnamen auf **UpdateEngineFirmware**, die Firmwareversion auf **2.0.0** und den Firmware-URI auf **http://contoso.com/engine.bin** fest, und klicken Sie dann auf **Apply** (Übernehmen):
-
-[![Planen der Methode für Firmwareupdates](./media/iot-accelerators-remote-monitoring-manage/firmwareupdatejob-inline.png)](./media/iot-accelerators-remote-monitoring-manage/firmwareupdatejob-expanded.png#lightbox)
-
-Klicken Sie auf **View job status** (Auftragsstatus anzeigen), um den Status des Auftrags nachzuverfolgen:
-
-[![Überwachen des geplanten Auftrags für das Firmwareupdate](./media/iot-accelerators-remote-monitoring-manage/firmwareupdatestatus-inline.png)](./media/iot-accelerators-remote-monitoring-manage/firmwareupdatestatus-expanded.png#lightbox)
-
-Navigieren Sie nach Abschluss des Auftrags zurück auf die Seite **Devices** (Geräte). Die neue Firmwareversion für das Engine-Gerät wird angezeigt.
-
-Wenn Sie auf der Seite **Devices** (Geräte) mehrere Geräte unterschiedlichen Typs auswählen, können Sie trotzdem einen Auftrag erstellen, um für diese Geräte eine Methode auszuführen. Im Panel **Jobs** (Aufträge) werden nur die Methoden angezeigt, die für alle ausgewählten Geräte gelten.
 
 ## <a name="reconfigure-a-device"></a>Neukonfigurieren eines Geräts
 

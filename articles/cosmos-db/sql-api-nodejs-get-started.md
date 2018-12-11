@@ -1,27 +1,28 @@
 ---
-title: Node.js-Tutorial für die SQL-API für Azure Cosmos DB | Microsoft-Dokumentation
+title: Node.js-Tutorial für die SQL-API für Azure Cosmos DB
 description: Ein Node.js-Tutorial, in dem veranschaulicht wird, wie Sie die SQL-API zum Herstellen einer Verbindung mit und zum Abfragen von Azure Cosmos DB verwenden
 services: cosmos-db
 author: deborahc
-editor: monicar
 ms.service: cosmos-db
 ms.component: cosmosdb-sql
 ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: dech
-ms.openlocfilehash: 08fe85ae88b1f53941d490a6c22684d223da24a8
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 8d2272ca468f7c415d9d03506ecaa3fbe667f0c0
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52160952"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52873171"
 ---
 # <a name="tutorial-build-a-nodejs-console-app-with-javascript-sdk-to-manage-azure-cosmos-db-sql-api-data"></a>Tutorial: Erstellen einer Node.js-Konsolen-App mit dem JavaScript SDK zum Verwalten von Daten der Azure Cosmos DB-SQL-API
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-get-started.md)
+> * [.NET (Vorschauversion)](sql-api-dotnet-get-started-preview.md)
 > * [.NET Core](sql-api-dotnetcore-get-started.md)
+> * [.NET Core (Vorschauversion)](sql-api-dotnet-core-get-started-preview.md)
 > * [Java](sql-api-java-get-started.md)
 > * [Async Java](sql-api-async-java-get-started.md)
 > * [Node.js](sql-api-nodejs-get-started.md)

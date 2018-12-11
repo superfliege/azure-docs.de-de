@@ -1,10 +1,8 @@
 ---
-title: MongoDB-, Angular- und Note-Tutorial für Azure – Teil 2 | Microsoft-Dokumentation
+title: 'MongoDB-, Angular- und Node-Tutorial für Azure: Teil 2'
 description: Teil 2 der Tutorialreihe zur Erstellung einer MongoDB-App mit Angular und Note in Azure Cosmos DB unter Verwendung der gleichen APIs wie für MongoDB
 services: cosmos-db
 author: johnpapa
-manager: kfile
-editor: ''
 ms.service: cosmos-db
 ms.component: cosmosdb-mongo
 ms.devlang: nodejs
@@ -12,12 +10,12 @@ ms.topic: tutorial
 ms.date: 09/05/2017
 ms.author: jopapa
 ms.custom: mvc
-ms.openlocfilehash: 99fc6c7dc43f66d92b17f25ad0fba52ce8f34413
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 8e2bce1943096613dab3975863f787fcc904f827
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "41918914"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52868122"
 ---
 # <a name="create-a-mongodb-app-with-angular-and-azure-cosmos-db---part-2-create-a-nodejs-express-app-with-the-angular-cli"></a>Erstellen einer MongoDB-App mit Angular und Azure Cosmos DB – Teil 2: Erstellen einer Node.js-Express-App mithilfe der Angular-Befehlszeilenschnittstelle 
 

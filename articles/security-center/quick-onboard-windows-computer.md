@@ -13,14 +13,14 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/2/2018
+ms.date: 12/3/2018
 ms.author: rkarlin
-ms.openlocfilehash: 55bb7242427bf85d10fac0a44e2b2eac3a5181ad
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 57560a035f4d0468625e4c8f3ad6b7a7e516590f
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44022999"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52850674"
 ---
 # <a name="quickstart-onboard-windows-computers-to-azure-security-center"></a>Schnellstart: Einbinden von Windows-Computern in Azure Security Center
 Nachdem Sie Ihre Azure-Abonnements integriert haben, können Sie Security Center für Ressourcen aktivieren, die außerhalb von Azure ausgeführt werden, z.B. lokale Ressourcen oder Ressourcen in anderen Clouds, indem Sie den Microsoft Monitoring Agent bereitstellen.
@@ -30,7 +30,7 @@ Dieser Schnellstart veranschaulicht die Microsoft Monitoring Agent-Installation 
 ## <a name="prerequisites"></a>Voraussetzungen
 Für den Einstieg in Security Center benötigen Sie ein Microsoft Azure-Abonnement. Wenn Sie nicht über ein Abonnement verfügen, können Sie sich für ein [kostenloses Testkonto](https://azure.microsoft.com/pricing/free-trial/) registrieren.
 
-Vor dem Start dieses Schnellstarts müssen Sie zum Tarif „Standard“ von Security Center wechseln. Anweisungen zum Upgrade finden Sie unter [Schnellstart: Einbinden Ihres Azure-Abonnements in Security Center Standard](security-center-get-started.md). Sie können Security Center Standard die ersten 60 Tage kostenlos testen.
+Vor dem Start dieses Schnellstarts müssen Sie zum Tarif „Standard“ von Security Center wechseln. Anweisungen zum Upgrade finden Sie unter [Schnellstart: Einbinden Ihres Azure-Abonnements in Security Center Standard](security-center-get-started.md). Sie können Security Center Standard kostenlos testen. Weitere Informationen finden Sie auf der [Preisseite](https://azure.microsoft.com/pricing/details/security-center/).
 
 ## <a name="add-new-windows-computer"></a>Hinzufügen eines neuen Windows-Computers
 
@@ -40,7 +40,7 @@ Vor dem Start dieses Schnellstarts müssen Sie zum Tarif „Standard“ von Secu
  ![Übersicht über das Security Center][2]
 
 3. Wählen Sie im Security Center im Hauptmenü die Option **Erste Schritte** aus.
-4. Wählen Sie die Registerkarte **Erste Schritte**.
+4. Wählen Sie die Registerkarte **Erste Schritte** aus.
 
    ![Erste Schritte][3]
 
@@ -75,7 +75,7 @@ Jetzt müssen Sie die heruntergeladene Datei auf dem Zielcomputer installieren.
 
 Nach Abschluss wird der **Microsoft Monitoring Agent** in der **Systemsteuerung** angezeigt. Sie können hier Ihre Konfiguration überprüfen und sicherstellen, dass der Agent verbunden ist.
 
-Weitere Informationen zur Installation und Konfiguration des Agents finden Sie unter [Verbinden von Windows-Computern](../log-analytics/log-analytics-agent-windows.md#install-the-agent-using-setup-wizard).
+Weitere Informationen zur Installation und Konfiguration des Agents finden Sie unter [Verbinden von Windows-Computern](../azure-monitor/platform/agent-windows.md#install-the-agent-using-setup-wizard).
 
 Jetzt können Sie Ihre Azure-VMs und Nicht-Azure-Computer zentral überwachen. Unter **Compute** haben Sie einen Überblick über alle VMs und Computer mit Empfehlungen. Jede Spalte steht für eine Gruppe von Empfehlungen. Die Farbe stellt den aktuellen Sicherheitsstatus der VM oder des Computers für diese Empfehlung dar. In Security Center werden in Sicherheitswarnungen außerdem alle erkannten Bedrohungen für diese Computer angezeigt.
 

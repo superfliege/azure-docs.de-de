@@ -1,30 +1,30 @@
 ---
 title: Migrieren von virtuellen Azure IaaS-Computern zu einer anderen Azure-Region mithilfe des Azure Site Recovery-Diensts | Microsoft-Dokumentation
-description: Verwenden Sie Azure Site Recovery, um Azure-IaaS-VMs aus einer Azure-Region in eine andere zu migrieren.
+description: Verwenden Sie Azure Site Recovery, um virtuelle Azure IaaS-Computer von einer Azure-Region zu einer anderen zu migrieren.
 services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 10/28/2018
+ms.date: 11/27/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 9ad994ad3dc1fc350a9a41c23574acfa2bae9629
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 656f58bb9864757635ab5752da6bf31320504415
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50212283"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52843256"
 ---
-# <a name="migrate-azure-vms-to-another-region"></a>Migrieren virtueller Azure-Computer zu einer anderen Region
+# <a name="move-azure-vms-to-another-region"></a>Verschieben virtueller Azure-Computer in eine andere Region
 
-Zusätzlich zur Verwendung des Diensts [Azure Site Recovery](site-recovery-overview.md) zur Verwaltung und Orchestrierung der Notfallwiederherstellung von lokalen Computern und Azure-VMs für die BCDR-Zwecke (Business Continuity/Disaster Recovery, Geschäftskontinuität und Notfallwiederherstellung) können Sie Site Recovery auch zur Migration von Azure-VMs in eine sekundäre Region verwenden. Um Azure-VMs zu migrieren, aktivieren Sie die Replikation für diese VMs und führen für sie ein Failover aus der primären Region in die sekundäre Region Ihrer Wahl durch.
+Zusätzlich zur Verwendung des Diensts [Azure Site Recovery](site-recovery-overview.md) zur Verwaltung und Orchestrierung der Notfallwiederherstellung von lokalen Computern und virtuellen Azure-Computern für BCDR-Zwecke (Business Continuity/Disaster Recovery, Geschäftskontinuität und Notfallwiederherstellung) können Sie mit Site Recovery auch die Migration von virtuellen Azure-Computern zu einer sekundären Region verwalten. Zum Verschieben virtueller Azure-Computer aktivieren Sie die Replikation für diese virtuellen Computer und führen für sie ein Failover aus der primären Region in der sekundären Region Ihrer Wahl durch.
 
-Dieses Tutorial zeigt Ihnen, wie Sie Azure-VMs in eine andere Region migrieren können. In diesem Tutorial lernen Sie Folgendes:
+Dieses Tutorial zeigt Ihnen, wie Sie virtuelle Azure-Computer in eine andere Region verschieben. In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
 > * Erstellen eines Recovery Services-Tresors
 > * Aktivieren der Replikation für eine VM
-> * Ausführen eines Failovers, um die VM zu migrieren
+> * Ausführen eines Failovers zum Verschieben des virtuellen Computers
 
 Dieses Tutorial setzt voraus, dass Sie bereits über ein Azure-Abonnement verfügen. Wenn Sie keines haben, können Sie ein [kostenloses Konto](https://azure.microsoft.com/pricing/free-trial/) erstellen, bevor Sie beginnen.
 
@@ -66,12 +66,12 @@ Wenn Sie gerade ein kostenloses Azure-Konto erstellt haben, sind Sie der Adminis
 
 ### <a name="verify-vm-outbound-access"></a>Überprüfen des ausgehenden Zugriffs der VM
 
-1. Stellen Sie sicher, dass Sie keinen Authentifizierungsproxy verwenden, um die Netzwerkkonnektivität für VMs zu steuern, die Sie migrieren möchten. 
+1. Stellen Sie sicher, dass Sie keinen Authentifizierungsproxy verwenden, um die Netzwerkkonnektivität für virtuelle Computer zu steuern, die Sie migrieren möchten. 
 2. Für die Zwecke dieses Tutorials gehen wir davon aus, dass die virtuellen Computer, die Sie migrieren möchten, auf das Internet zugreifen können und keinen Firewallproxy zur Steuerung des ausgehenden Zugriffs verwenden. Falls doch, überprüfen Sie die Anforderungen [hier](azure-to-azure-tutorial-enable-replication.md#configure-outbound-network-connectivity).
 
 ### <a name="verify-vm-certificates"></a>Überprüfen von VM-Zertifikaten
 
-Stellen Sie sicher, dass alle neuesten Stammzertifikate auf den Azure-VMs vorhanden sind, die Sie migrieren möchten. Wenn die neuesten Stammzertifikate nicht vorhanden sind, kann die VM aufgrund von Sicherheitseinschränkungen nicht bei Site Recovery registriert werden.
+Stellen Sie sicher, dass alle aktuellen Stammzertifikate auf den virtuellen Azure-Computern vorhanden sind, die Sie migrieren möchten. Wenn die neuesten Stammzertifikate nicht vorhanden sind, kann die VM aufgrund von Sicherheitseinschränkungen nicht bei Site Recovery registriert werden.
 
 - Installieren Sie alle aktuellen Windows-Updates auf Windows-VMs, damit alle vertrauenswürdigen Stammzertifikate auf den Computern vorhanden sind. Führen Sie in einer nicht verbundenen Umgebung den Standardprozess für Windows Update und Zertifikatupdates in Ihrer Organisation durch.
 - Befolgen Sie bei Linux-VMs die Anleitung Ihres Linux-Händlers, um die aktuellen vertrauenswürdigen Stammzertifikate und die Zertifikatssperrliste auf der VM abzurufen.
@@ -113,7 +113,7 @@ Site Recovery ruft eine Liste der VMs ab, die dem Abonnement und der Ressourceng
 
 
 1. Klicken Sie im Azure-Portal auf **Virtuelle Computer**.
-2. Wählen Sie die VM aus, die Sie migrieren möchten. Klicken Sie dann auf **OK**.
+2. Wählen Sie den virtuellen Computer aus, den Sie migrieren möchten. Klicken Sie dann auf **OK**.
 3. Klicken Sie in den **Einstellungen** auf **Notfallwiederherstellung**.
 4. Wählen Sie unter **Configure disaster recovery** (Notfallwiederherstellung konfigurieren) > **Zielregion** die Zielregion aus, in die Sie replizieren möchten.
 5. Übernehmen Sie für dieses Tutorial die anderen Standardwerte.
@@ -136,7 +136,7 @@ Site Recovery ruft eine Liste der VMs ab, die dem Abonnement und der Ressourceng
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie eine Azure-VM in eine andere Azure-Region migriert. Nun können Sie die Notfallwiederherstellung für die migrierte VM konfigurieren.
+In diesem Tutorial haben Sie einen virtuellen Azure-Computer in eine andere Azure-Region verschoben. Nun können Sie die Notfallwiederherstellung für den verschobenen virtuellen Azure-Computer konfigurieren.
 
 > [!div class="nextstepaction"]
 > [Einrichten der Notfallwiederherstellung nach der Migration](azure-to-azure-quickstart.md)

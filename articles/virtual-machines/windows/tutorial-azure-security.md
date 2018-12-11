@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 06/11/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 7cf3db5020d6a100ca6afdd5a1dccd522189720d
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: 3f7b1349788ad2bbd0ffe7b146074947364ce1e4
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50978501"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52835929"
 ---
 # <a name="tutorial-use-azure-security-center-to-monitor-windows-virtual-machines"></a>Tutorial: Verwenden von Azure Security Center zum Überwachen virtueller Windows-Computer
 
@@ -107,7 +107,7 @@ Nachdem Empfehlungen umgesetzt wurden, werden sie als gelöst markiert.
 
 Neben den Empfehlungen zur Ressourcenkonfiguration bietet Security Center auch Warnungen zur Bedrohungserkennung. Das Sicherheitswarnfeature aggregiert die von den einzelnen VMs gesammelten Daten, Azure-Netzwerkprotokolle und verbundenen Partnerlösungen, um Sicherheitsrisiken für Azure-Ressourcen zu erkennen. Ausführliche Informationen zu Funktionen der Security Center-Bedrohungserkennung finden Sie unter [Azure Security Center-Erkennungsfunktionen](../../security-center/security-center-detection-capabilities.md).
 
-Für das Sicherheitswarnfeature muss der Security Center-Tarif von *Free* auf *Standard* erhöht werden. Sie können eine 60-tägige, **kostenlose Testversion** nutzen, wenn Sie auf diesen höheren Tarif wechseln. 
+Für das Sicherheitswarnfeature muss der Security Center-Tarif von *Free* auf *Standard* erhöht werden. Sie können eine **kostenlose Testversion** nutzen, wenn Sie auf diesen höheren Tarif umstellen. 
 
 So ändern Sie den Tarif  
 

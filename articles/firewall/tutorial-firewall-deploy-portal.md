@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/15/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 179a13d6fbb162ae7727c6a176b60879901dc4d1
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: be4cbc7e955e56853809378f98e9733ffe4a20c3
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52426185"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52633723"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>Tutorial: Bereitstellen und Konfigurieren von Azure Firewall über das Azure-Portal
 
@@ -40,7 +40,7 @@ In diesem Tutorial lernen Sie Folgendes:
 > * Einrichten einer Netzwerkumgebung zu Testzwecken
 > * Bereitstellen einer Firewall
 > * Erstellen einer Standardroute
-> * Konfigurieren einer Anwendung, um den Zugriff auf „github.com“ zuzulassen
+> * Konfigurieren einer Anwendung, um den Zugriff auf „msn.com“ zuzulassen
 > * Konfigurieren einer Netzwerkregel, um den Zugriff auf externe DNS-Server zuzulassen
 > * Testen der Firewall
 
@@ -136,7 +136,7 @@ Stellen Sie die Firewall im VNET bereit.
 2. Klicken Sie auf **Netzwerk** und nach **Empfohlen** auf **Alle anzeigen**.
 3. Klicken Sie auf **Firewall** > **Erstellen**. 
 4. Konfigurieren Sie die Firewall auf der Seite **Firewall erstellen** anhand der folgenden Tabelle:
-   
+
    |Einstellung  |Wert  |
    |---------|---------|
    |NAME     |Test-FW01|
@@ -146,12 +146,12 @@ Stellen Sie die Firewall im VNET bereit.
    |Virtuelles Netzwerk auswählen     |**Vorhandenes verwenden**: Test-FW-VN|
    |Öffentliche IP-Adresse     |**Neu erstellen**. Die öffentliche IP-Adresse muss vom Standard-SKU-Typ sein.|
 
-2. Klicken Sie auf **Überprüfen + erstellen**.
-3. Überprüfen Sie die Zusammenfassung, und klicken Sie dann auf **Erstellen**, um die Firewall zu erstellen.
+5. Klicken Sie auf **Überprüfen + erstellen**.
+6. Überprüfen Sie die Zusammenfassung, und klicken Sie dann auf **Erstellen**, um die Firewall zu erstellen.
 
    Die Bereitstellung dauert einige Minuten.
-4. Navigieren Sie nach Abschluss der Bereitstellung zur Ressourcengruppe **Test-FW-RG**, und klicken Sie auf die Firewall **Test-FW01**.
-6. Notieren Sie sich die private IP-Adresse. Diese wird später für die Erstellung der Standardroute benötigt.
+7. Navigieren Sie nach Abschluss der Bereitstellung zur Ressourcengruppe **Test-FW-RG**, und klicken Sie auf die Firewall **Test-FW01**.
+8. Notieren Sie sich die private IP-Adresse. Diese wird später für die Erstellung der Standardroute benötigt.
 
 ## <a name="create-a-default-route"></a>Erstellen einer Standardroute
 
@@ -182,7 +182,7 @@ Konfigurieren Sie die ausgehende Standardroute für das Subnetz **Workload-SN** 
 
 ## <a name="configure-an-application-rule"></a>Konfigurieren einer Anwendungsregel
 
-Hierbei handelt es sich um die Anwendungsregel, die ausgehenden Zugriff auf „github.com“ ermöglicht.
+Hierbei handelt es sich um die Anwendungsregel, die ausgehenden Zugriff auf „msn.com“ ermöglicht.
 
 1. Öffnen Sie **Test-FW-RG**, und klicken Sie auf die Firewall **Test-FW01**.
 2. Klicken Sie auf der Seite **Test-FW01** unter **Einstellungen** auf **Regeln**.
@@ -194,7 +194,7 @@ Hierbei handelt es sich um die Anwendungsregel, die ausgehenden Zugriff auf „g
 8. Geben Sie unter **Regeln** > **Ziel-FQDNs** für **Name** die Zeichenfolge **AllowGH** ein.
 9. Geben Sie unter **Quelladressen** die Zeichenfolge **10.0.2.0/24** ein.
 10. Geben Sie unter **Protokoll:Port** die Zeichenfolge **http, https** ein.
-11. Geben Sie unter **Ziel-FQDNs** die Zeichenfolge **github.com** ein.
+11. Geben Sie unter **Ziel-FQDNs** die Zeichenfolge **msn.com** ein.
 12. Klicken Sie auf **Hinzufügen**.
 
 Azure Firewall enthält eine integrierte Regelsammlung für Infrastruktur-FQDNs, die standardmäßig zulässig sind. Diese FQDNs sind plattformspezifisch und können nicht für andere Zwecke verwendet werden. Weitere Informationen finden Sie unter [Infrastruktur-FQDNs](infrastructure-fqdns.md).
@@ -204,17 +204,17 @@ Azure Firewall enthält eine integrierte Regelsammlung für Infrastruktur-FQDNs,
 Hierbei handelt es sich um die Netzwerkregel, die ausgehenden Zugriff auf zwei IP-Adressen am Port 53 (DNS) zulässt.
 
 1. Klicken Sie auf die Registerkarte **Netzwerkregelsammlung**.
-1. Klicken Sie auf **Netzwerkregelsammlung hinzufügen**.
-2. Geben Sie unter **Name** die Zeichenfolge **Net-Coll01** ein.
-3. Geben Sie für **Priorität** den Wert **200** ein.
-4. Wählen Sie für **Aktion** die Option **Zulassen** aus.
+2. Klicken Sie auf **Netzwerkregelsammlung hinzufügen**.
+3. Geben Sie unter **Name** die Zeichenfolge **Net-Coll01** ein.
+4. Geben Sie für **Priorität** den Wert **200** ein.
+5. Wählen Sie für **Aktion** die Option **Zulassen** aus.
 
 6. Geben Sie unter **Regeln** für **Name** die Zeichenfolge **AllowDNS** ein.
-8. Wählen Sie für **Protokoll** die Option **UDP** aus.
-9. Geben Sie unter **Quelladressen** die Zeichenfolge **10.0.2.0/24** ein.
-10. Geben Sie für die Zieladresse die Zeichenfolge **209.244.0.3,209.244.0.4** ein.
-11. Geben Sie unter **Zielports** den Wert **53** ein.
-12. Klicken Sie auf **Hinzufügen**.
+7. Wählen Sie für **Protokoll** die Option **UDP** aus.
+8. Geben Sie unter **Quelladressen** die Zeichenfolge **10.0.2.0/24** ein.
+9. Geben Sie für die Zieladresse die Zeichenfolge **209.244.0.3,209.244.0.4** ein.
+10. Geben Sie unter **Zielports** den Wert **53** ein.
+11. Klicken Sie auf **Hinzufügen**.
 
 ### <a name="change-the-primary-and-secondary-dns-address-for-the-srv-work-network-interface"></a>Ändern der primären und sekundären DNS-Adresse für die Netzwerkschnittstelle **Srv-Work**
 
@@ -235,12 +235,12 @@ Testen Sie nun die Firewall, um sicherzustellen, dass sie wie erwartet funktioni
 1. Überprüfen Sie im Azure-Portal die Netzwerkeinstellungen für den virtuellen Computer **Srv-Work**, und notieren Sie sich die private IP-Adresse.
 2. Stellen Sie eine Remotedesktopverbindung mit dem virtuellen Computer **Srv-Jump** her, und öffnen Sie dort eine Remotedesktopverbindung mit der privaten IP-Adresse von **Srv-Work**.
 
-5. Navigieren Sie in Internet Explorer zu http://github.com.
-6. Klicken Sie in den Sicherheitswarnungen auf **OK** > **Schließen**.
+3. Navigieren Sie in Internet Explorer zu http://msn.com.
+4. Klicken Sie in den Sicherheitswarnungen auf **OK** > **Schließen**.
 
-   Daraufhin sollte die GitHub-Startseite angezeigt werden.
+   Daraufhin sollte die MSN-Startseite angezeigt werden.
 
-7. Navigieren Sie zu http://www.msn.com.
+5. Navigieren Sie zu http://www.msn.com.
 
    Sie sollten durch die Firewall blockiert werden.
 

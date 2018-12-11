@@ -11,15 +11,15 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 10/24/2018
+ms.date: 11/30/2018
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 42a25d6c13fe1052f4aa14696a66c9c7f1fb4d65
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 8c31e410713e4ba8ce6443170ba5ad5c2e740419
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685683"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52677932"
 ---
 # <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>Tutorial: Schützen der Azure SQL-Datenbankverbindung von App Service mittels einer verwalteten Identität
 
@@ -174,6 +174,10 @@ Wenn Sie die Parameter `--query objectId --output tsv` weglassen, wird die volls
 ### <a name="reconfigure-azure-ad-administrator"></a>Ändern der Konfiguration für den Azure AD-Administrator
 
 Bis jetzt haben Sie die verwaltete Identität als Azure AD-Administrator für Ihre SQL-Datenbank zugewiesen. Da diese Identität nicht für die interaktive Anmeldung (zum Hinzufügen von Datenbankbenutzern) verwendet werden kann, müssen Sie Ihren echten Azure AD-Benutzer verwenden. Gehen Sie zum Hinzufügen Ihres Azure AD-Benutzers wie unter [Bereitstellen eines Azure Active Directory-Administrators für Ihren Azure SQL-Datenbank-Server](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server) beschrieben vor. 
+
+> [!IMPORTANT]
+> Entfernen Sie diesen Azure AD-Administrator für Ihre SQL-Datenbank nach dem Hinzufügen nur, wenn Sie den Azure AD-Zugriff auf die SQL-Datenbank vollständig (von allen Azure AD-Konten) deaktivieren möchten.
+> 
 
 ### <a name="grant-permissions-to-azure-active-directory-group"></a>Gewähren von Berechtigungen für die Azure Active Directory-Gruppe
 

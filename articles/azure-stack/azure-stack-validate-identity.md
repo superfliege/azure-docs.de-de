@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/23/2018
+ms.date: 12/04/2018
 ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: 0a46344893c8ad62bd85f9abb84d434c0331d507
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 61562450d484f34385b4e6e111bf62326eaca159
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49984195"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52888374"
 ---
 # <a name="validate-azure-identity"></a>Überprüfen der Azure-Identität 
 Verwenden Sie das Tool Azure Stack Readiness Checker (AzsReadinessChecker), um zu überprüfen, ob Ihre Azure Active Directory-Instanz (Azure AD) mit Azure Stack verwendet werden kann. Überprüfen Sie Ihre Azure-Identitätslösung, bevor Sie mit einer Azure Stack-Bereitstellung beginnen.  
@@ -48,7 +48,7 @@ Die folgenden Voraussetzungen müssen erfüllt werden:
 **Azure Active Directory-Umgebung**:
  - Bestimmen Sie das Azure AD-Konto, das Sie für Azure Stack verwenden möchten, und stellen Sie sicher, dass es einem globalem Azure Active Directory-Administrator gehört.
  - Ermitteln Sie den Namen Ihres Azure AD-Mandanten. Der Mandantenname muss der *primäre* Domänenname für Ihre Azure Active Directory-Instanz sein. Beispiel: *contoso.onmicrosoft.com*. 
- - Bestimmen Sie den AzureEnvironment-Wert, den Sie verwenden: *AzureCloud*, *AzureGermanCloud* oder *AzureChinaCloud*.
+ - Legen Sie die Azure-Umgebung fest, die Sie verwenden möchten. Unterstützte Werte für den Umgebungsnamensparameter: AzureCloud, AzureChinaCloud oder AzureUSGovernment (abhängig Ihrem verwendeten Azure-Abonnement).
 
 ## <a name="validate-azure-identity"></a>Überprüfen der Azure-Identität 
 1. Öffnen Sie auf einem Computer, der die Voraussetzungen erfüllt, eine administrative PowerShell-Eingabeaufforderung, und führen Sie den folgenden Befehl zum Installieren von AzsReadinessChecker aus:  
@@ -59,10 +59,10 @@ Die folgenden Voraussetzungen müssen erfüllt werden:
    > `$serviceAdminCredential = Get-Credential serviceadmin@contoso.onmicrosoft.com -Message "Enter Credentials for Service Administrator of Azure Active Directory Tenant"` 
 
 3. Führen Sie in der PowerShell-Eingabeaufforderung Folgendes aus, um die Überprüfung Ihrer Azure AD-Instanz zu starten: 
-   - Legen Sie als Wert für AzureEnvironment *AzureCloud*, *AzureGermanCloud* oder *AzureChinaCloud* fest.  
+   - Geben Sie den Umgebungsnamenswert für „AzureEnvironment“ an. Unterstützte Werte für den Umgebungsnamensparameter: AzureCloud, AzureChinaCloud oder AzureUSGovernment (abhängig Ihrem verwendeten Azure-Abonnement).  
    - Geben Sie als Ersatz für *contoso.onmicrosoft.com* den Namen Ihres Azure Active Directory-Mandanten ein. 
 
-   > `Invoke-AzsAzureIdentityValidation -AADServiceAdministrator $serviceAdminCredential -AzureEnvironment AzureCloud -AADDirectoryTenantName contoso.onmicrosoft.com`
+   > `Invoke-AzsAzureIdentityValidation -AADServiceAdministrator $serviceAdminCredential -AzureEnvironment <environment name> -AADDirectoryTenantName contoso.onmicrosoft.com`
 4. Wenn das Tool ausgeführt wird, überprüfen Sie die Ausgabe. Vergewissern Sie sich, dass der Status für die Installationsanforderungen **OK** lautet. Eine erfolgreiche Überprüfung wie etwa in der folgenden Abbildung wird angezeigt: 
  
 ````PowerShell

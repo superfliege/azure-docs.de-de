@@ -1,21 +1,20 @@
 ---
-title: Verwenden von Azure Table Storage oder der Azure Cosmos DB-Tabellen-API über Java | Microsoft-Dokumentation
+title: Verwenden von Azure Table Storage oder der Azure Cosmos DB-Tabellen-API über Java
 description: Speichern Sie mit Azure Table Storage oder der Azure Cosmos DB-Tabellen-API strukturierte Daten in der Cloud.
 services: cosmos-db
 author: SnehaGunda
-manager: kfile
 ms.service: cosmos-db
 ms.component: cosmosdb-table
 ms.devlang: Java
 ms.topic: sample
 ms.date: 04/05/2018
 ms.author: sngun
-ms.openlocfilehash: f4ebcf51ab6682009190e467ca9dbf67caf1c182
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: d7be0ed8d59063f75b3d4fadbf69237bdb2d0d13
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34797895"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52863685"
 ---
 # <a name="how-to-use-azure-table-storage-or-azure-cosmos-db-table-api-from-java"></a>Verwenden von Azure Table Storage oder der Azure Cosmos DB-Tabellen-API aus Java
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -98,7 +97,7 @@ In den folgenden Beispielen wird davon ausgegangen, dass Sie eine dieser Methode
 Mit einem **CloudTableClient**-Objekt können Sie Referenzobjekte für Tabellen und Entitäten abrufen. Der folgende Code erstellt ein **CloudTableClient**-Objekt und verwendet es zum Erstellen eines neuen **CloudTable**-Objekts, das eine Tabelle mit der Bezeichnung „people“ darstellt. 
 
 > [!NOTE]
-> **CloudStorageAccount**-Objekte können auch auf andere Weise erstellt werden. Weitere Informationen finden Sie in der [Azure Storage Client SDK-Referenz] unter **CloudStorageAccount**.
+> **CloudStorageAccount**-Objekte können auch auf andere Weise erstellt werden. Weitere Informationen finden Sie in der [Referenz für Azure Storage-Client-SDKs] unter **CloudStorageAccount**.
 >
 
 ```java
@@ -597,7 +596,7 @@ catch (Exception e)
 * [Erste Schritte mit dem Azure-Tabellenspeicherdienst in Java](https://github.com/Azure-Samples/storage-table-java-getting-started)
 * Beim [Microsoft Azure Storage-Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) handelt es sich um eine kostenlose eigenständige App von Microsoft, über die Sie ganz einfach visuell mit Azure Storage-Daten arbeiten können – unter Windows, MacOS und Linux.
 * [Azure Storage-SDK für Java][Azure Storage SDK for Java]
-* [Azure Storage Client SDK-Referenz][Azure Storage Client SDK-Referenz]
+* [Referenz für Azure Storage-Client-SDKs][Referenz für Azure Storage-Client-SDKs]
 * [Azure Storage-REST-API][Azure Storage REST API]
 * [Azure Storage-Teamblog][Azure Storage Team Blog]
 
@@ -606,7 +605,7 @@ Weitere Informationen finden Sie im Artikel [Azure für Java-Entwickler](/java/a
 [Azure SDK for Java]: http://go.microsoft.com/fwlink/?LinkID=525671
 [Azure Storage SDK for Java]: https://github.com/azure/azure-storage-java
 [Azure Storage SDK for Android]: https://github.com/azure/azure-storage-android
-[Azure Storage Client SDK-Referenz]: http://azure.github.io/azure-storage-java/
+[Referenz für Azure Storage-Client-SDKs]: http://azure.github.io/azure-storage-java/
 [Azure Storage REST API]: https://msdn.microsoft.com/library/azure/dd179355.aspx
 [Azure Storage Team Blog]: http://blogs.msdn.com/b/windowsazurestorage/
 [Azure Tables: Introducing Upsert and Query Projection]: http://blogs.msdn.com/b/windowsazurestorage/archive/2011/09/15/windows-azure-tables-introducing-upsert-and-query-projection.aspx

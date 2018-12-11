@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 06/18/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: dfaee72be883ee8902fe4550890d757f114ff932
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: e526c5f2f446a1ae8134a3e2ca72fcc42024d904
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39426105"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52724093"
 ---
 # <a name="create-a-batch-account-with-the-azure-portal"></a>Erstellen eines Batch-Kontos mit dem Azure-Portal
 
@@ -91,11 +91,11 @@ Wenn Sie Ihr erstes Batch-Konto im Modus „Benutzerabonnement“ erstellen, mü
 
     ![Registrieren des Microsoft.Batch-Anbieters][register_provider]
 
-1. Klicken Sie auf der Seite **Abonnement** auf **Zugriffssteuerung (IAM)** > **Hinzufügen**.
+1. Wählen Sie auf der Seite **Abonnement** die Optionen **Zugriffssteuerung (IAM)** > **Rollenzuweisungen** > **Rollenzuweisung hinzufügen** aus.
 
     ![Abonnementzugriffssteuerung][subscription_access]
 
-1. Wählen Sie auf der Seite **Berechtigungen hinzufügen** die Rolle **Mitwirkender** aus, und suchen Sie die Batch-API. Suchen Sie diese Zeichenfolgen, bis Sie die API gefunden haben:
+1. Wählen Sie auf der Seite **Rollenzuweisung hinzufügen** die Rolle **Mitwirkender** aus, und suchen Sie die Batch-API. Suchen Sie diese Zeichenfolgen, bis Sie die API gefunden haben:
     1. **MicrosoftAzureBatch**.
     1. **Microsoft Azure Batch**. Neuere Azure AD-Mandanten verwenden diesen Namen unter Umständen.
     1. **ddbf3205-c6bd-46ae-8127-60eb93363864** ist die ID für die Batch-API. 

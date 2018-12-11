@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: bec94e2017660e9804bbc232e0a3163afdaafcb6
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 0c5554ca929cbd5231c99e568e987e6e0b7cf6eb
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51277765"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52844837"
 ---
 # <a name="tutorial-azure-ad-password-reset-from-the-login-screen"></a>Tutorial: Azure AD-Kennwortzurücksetzung über den Anmeldebildschirm
 
@@ -101,23 +101,29 @@ Wenn Benutzer versuchen, sich anzumelden, wird jetzt der Link „Kennwort zurüc
 
 Eine Anleitung für Benutzer zur Verwendung dieses Features befindet sich unter [Ich habe mein Azure AD-Kennwort vergessen. Was nun?](../user-help/active-directory-passwords-update-your-own-password.md#reset-password-at-sign-in).
 
-## <a name="common-issues"></a>Häufige Probleme
+Das Azure AD-Überwachungsprotokoll enthält Informationen zur IP-Adresse und zum Clienttyp, für die das Kennwort zurückgesetzt wurde.
+
+![Beispiel: Kennwortzurücksetzung auf dem Anmeldebildschirm im Azure AD-Überwachungsprotokoll](media/tutorial-sspr-windows/windows-sspr-azure-ad-audit-log.png)
+
+## <a name="limitations"></a>Einschränkungen
 
 Beim Testen dieser Funktionalität mit Hyper-V wird der Link „Kennwort zurücksetzen“ nicht angezeigt.
 
 * Navigieren Sie zu der VM, die Sie zum Testen verwenden möchten, klicken Sie auf **Ansicht**, und deaktivieren Sie **Erweiterte Sitzung**.
 
-Beim Testen dieser Funktionalität per Remotedesktop wird der Link „Kennwort zurücksetzen“ nicht angezeigt.
+Beim Testen dieser Funktionalität mit Remotedesktop oder einer erweiterten VM-Sitzung wird der Link „Kennwort zurücksetzen“ nicht angezeigt.
 
 * Die Kennwortzurücksetzung wird für Remotedesktop derzeit nicht unterstützt.
 
-Wenn der Windows-Sperrbildschirm mithilfe eines Registrierungsschlüssels oder einer Gruppenrichtlinie deaktiviert wurde, ist **Kennwort zurücksetzen** nicht verfügbar.
-
 Wenn die Richtlinie die Verwendung von STRG+ALT+ENTF vorschreibt oder Benachrichtigungen bei gesperrtem Bildschirm deaktiviert sind, funktioniert **Kennwort zurücksetzen** nicht.
 
-Das Azure AD-Überwachungsprotokoll enthält Informationen zur IP-Adresse und zum Clienttyp, für die das Kennwort zurückgesetzt wurde.
+Bei den folgenden Richtlinieneinstellungen ist bekannt, dass sie die Möglichkeit zum Zurücksetzen von Kennwörtern beeinträchtigen:
 
-![Beispiel: Kennwortzurücksetzung auf dem Anmeldebildschirm im Azure AD-Überwachungsprotokoll](media/tutorial-sspr-windows/windows-sspr-azure-ad-audit-log.png)
+   * „HideFastUserSwitching“ ist auf „Aktiviert“ oder „1“ festgelegt.
+   * „DontDisplayLastUserName“ ist auf „Aktiviert“ oder auf „1“ festgelegt.
+   * „NoLockScreen“ ist auf „Aktiviert“ oder „1“ festgelegt.
+   * „EnableLostMode“ ist auf dem Gerät festgelegt.
+   * „Explorer.exe“ wird durch eine benutzerdefinierte Shell ersetzt.
 
 Wenn sich Ihre Windows 10-Computer hinter einem Proxyserver oder einer Firewall befinden, sollte HTTPS-Datenverkehr (443) zu „passwordreset.microsoftonline.com“ und „ajax.aspnetcdn.com“ zugelassen werden.
 

@@ -1,6 +1,6 @@
 ---
-title: 'Schnellstart: Erstellen und Bereitstellen einer Web-App in Azure Service Fabric Mesh | Microsoft-Dokumentation'
-description: In dieser Schnellstartanleitung erfahren Sie, wie Sie eine ASP.NET Core-Website erstellen und in Azure Service Fabric Mesh veröffentlichen.
+title: 'Schnellstart: Bereitstellen einer Web-App in Azure Service Fabric Mesh | Microsoft-Dokumentation'
+description: In dieser Schnellstartanleitung erfahren Sie, wie Sie mit Visual Studio eine ASP.NET Core-Website erstellen und in Azure Service Fabric Mesh veröffentlichen.
 services: service-fabric-mesh
 documentationcenter: .net
 author: tylermsft
@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 07/17/2018
 ms.author: twhitney
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 7e324b80968017e0160f41b88fa1824669050ac9
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 35ce19d796a9889d734bd5dde20a7c56485656f1
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47407398"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52888538"
 ---
 # <a name="quickstart-create-and-deploy-a-web-app-to-azure-service-fabric-mesh"></a>Schnellstart: Erstellen und Bereitstellen einer Web-App in Azure Service Fabric Mesh
 
@@ -88,7 +88,7 @@ Klicken Sie im Dialogfeld „Veröffentlichen“ auf die Schaltfläche **Veröff
 
 Wenn Sie zum ersten Mal in Azure veröffentlichen, wird das Docker-Image per Push in der Azure Container Registry (ACR) bereitgestellt. Dies kann abhängig von der Größe des Images einige Zeit dauern. Nachfolgende Veröffentlichungen des gleichen Projekts erfolgen schneller. Sie können den Status der Bereitstellung überwachen, indem Sie in der Dropdownliste des Visual Studio-Fensters **Ausgabe** den Eintrag **Service Fabric-Tools** auswählen. Nach Abschluss die Bereitstellung zeigt die Ausgabe der **Service Fabric-Tools** die IP-Adresse und den Port Ihrer Anwendung in Form einer URL an.
 
-```json
+```
 Packaging Application...
 Building Images...
 Web1 -> C:\Code\ServiceFabricMesh1\Web1\bin\Any CPU\Release\netcoreapp2.0\Web1.dll
