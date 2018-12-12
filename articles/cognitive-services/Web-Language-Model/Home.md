@@ -50,6 +50,6 @@ Die Web Language Model API unterstützt vier Suchvorgänge:
 
 Das folgende Dokument enthält Einzelheiten zur Entwicklung dieser Sprachmodelle und sollte in Forschungspublikationen, die diesen Dienst nutzen, zitiert werden:
 
-- [An Overview of Microsoft Web N-gram Corpus and Applications](https://research.microsoft.com/apps/pubs/default.aspx?id=130762), NAACL-HLT 2010
+- [Eine Übersicht über N-Gramm-Korpus Microsoft Web und Anwendungen](https://research.microsoft.com/apps/pubs/default.aspx?id=130762), NAACL-HLT 2010
 
 Klicken Sie [hier](https://academic.microsoft.com/#/search?iq=And%28Ty%3D'0'%2CRId%3D2145833060%29&q=papers%20citing%20an%20overview%20of%20microsoft%20web%20n%20gram%20corpus%20and%20applications&filters=&from=0&sort=0), um eine aktuelle Liste von Dokumenten abzurufen, die dieses Dokument zitieren.
