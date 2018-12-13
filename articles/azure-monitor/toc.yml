@@ -79,7 +79,7 @@ items:
     - name: Protokolldatenerfassungszeit
       href: platform/data-ingestion-time.md
     - name: Benutzerdefinierte Metriken in Metrikspeicher
-      href: ../monitoring-and-diagnostics/metrics-custom-overview.md?toc=/azure/azure-monitor/toc.json
+      href: platform/metrics-custom-overview.md
     - name: Datensicherheit
       items:
       - name: Protokolldaten
@@ -123,17 +123,17 @@ items:
     - name: Alerts
       href: ../monitoring-and-diagnostics/monitoring-overview-alerts.md?toc=/azure/azure-monitor/toc.json
     - name: Klassische Warnungen
-      href: ../monitoring-and-diagnostics/monitoring-overview-alerts-classic.md?toc=/azure/azure-monitor/toc.json
+      href: platform/alerts-classic.overview.md
     - name: Intelligente Gruppen
       href: ../monitoring-and-diagnostics/monitoring-overview-alerts-smartgroups.md?toc=/azure/azure-monitor/toc.json
     - name: Autoscale
       href: ../monitoring-and-diagnostics/monitoring-overview-autoscale.md?toc=/azure/azure-monitor/toc.json
     - name: Metrikwarnungen
-      href: ../monitoring-and-diagnostics/alert-metric-overview.md?toc=/azure/azure-monitor/toc.json
+      href: platform/alerts-metric-overview.md
     - name: Protokollwarnungen
-      href: ../monitoring-and-diagnostics/monitor-alerts-unified-log.md?toc=/azure/azure-monitor/toc.json
+      href: platform/alerts-unified-log.md
     - name: Aktivitätsprotokollwarnungen
-      href: ../monitoring-and-diagnostics/monitoring-activity-log-alerts.md?toc=/azure/azure-monitor/toc.json
+      href: platform/activity-log-alerts.md
   - name: Visualisieren von Daten
     href: visualizations.md?toc=/azure/azure-monitor/toc.json
   - name: Partnerintegrationen
@@ -207,27 +207,27 @@ items:
       - name: Azure-Diagnoseerweiterung
         items:
         - name: Übersicht
-          href: ../monitoring-and-diagnostics/azure-diagnostics.md?toc=/azure/azure-monitor/toc.json
+          href: platform/diagnostics-extension-overview.md
         - name: Senden an Azure Storage
-          href: ../monitoring-and-diagnostics/azure-diagnostics-storage.md?toc=/azure/azure-monitor/toc.json
+          href: platform/diagnostics-extension-to-storage.md
         - name: Senden an Application Insights
-          href: ../monitoring-and-diagnostics/azure-diagnostics-configure-application-insights.md?toc=/azure/azure-monitor/toc.json
+          href: platform/diagnostics-extension-to-application-insights.md
         - name: Senden an Event Hubs
-          href: ../monitoring-and-diagnostics/azure-diagnostics-streaming-event-hubs.md?toc=/azure/azure-monitor/toc.json
+          href: platform/diagnostics-extension-stream-event-hubs.md
         - name: Problembehandlung
-          href: ../monitoring-and-diagnostics/azure-diagnostics-troubleshooting.md?toc=/azure/azure-monitor/toc.json
+          href: platform/diagnostics-extension-troubleshooting.md
         - name: Aktivieren der Diagnoseeinstellungen mithilfe von Resource Manager-Vorlagen
           href: ../monitoring-and-diagnostics/monitoring-enable-diagnostic-logs-using-template.md?toc=/azure/azure-monitor/toc.json
         - name: Vorbereiten für das Diagnoseprotokollformat JSON Lines
           href: ../monitoring-and-diagnostics/monitor-diagnostic-logs-append-blobs.md?toc=/azure/azure-monitor/toc.json
         - name: VM-Gast in Metrikspeicher
-          href: ../monitoring-and-diagnostics/metrics-store-custom-guestos-resource-manager-vm.md?toc=/azure/azure-monitor/toc.json
+          href: platform/collect-custom-metrics-guestos-resource-manager-vm.md
         - name: VM-Skalierungsgruppengast in Metrikspeicher
-          href: ../monitoring-and-diagnostics/metrics-store-custom-guestos-resource-manager-vmss.md?toc=/azure/azure-monitor/toc.json
+          href: platform/collect-custom-metrics-guestos-resource-manager-vmss.md
         - name: Klassischer VM-Gast in Metrikspeicher
-          href: ../monitoring-and-diagnostics/metrics-store-custom-guestos-classic-vm.md?toc=/azure/azure-monitor/toc.json
+          href: platform/collect-custom-metrics-guestos-vm-classic.md
         - name: Clouddienstgast in Metrikspeicher
-          href: ../monitoring-and-diagnostics/metrics-store-custom-guestos-classic-cloud-service.md?toc=/azure/azure-monitor/toc.json
+          href: platform/collect-custom-metrics-guestos-vm-cloud-service-classic.md
       - name: Problembehandlung
         items:
         - name: Log Analytics-Erweiterung für virtuelle Computer
@@ -431,7 +431,7 @@ items:
       - name: 'Metrikspeicher: REST-API'
         href: ../monitoring-and-diagnostics/metrics-store-custom-rest-api.md?toc=/azure/azure-monitor/toc.json
       - name: GuestOS in Metrikspeicher – Linux-VM (Telegraf)
-        href: ../monitoring-and-diagnostics/metrics-store-custom-linux-telegraf.md?toc=/azure/azure-monitor/toc.json
+        href: platform/collect-custom-metrics-linux-telegraf.md
     - name: System Center
       items:
       - name: Konfigurations-Manager
@@ -734,11 +734,11 @@ items:
       - name: Verwenden von Metrikwarnungen
         items:
         - name: Erstellen, Anzeigen und Verwalten von Metrikwarnungen in Azure Monitor
-          href: ../monitoring-and-diagnostics/alert-metric.md?toc=/azure/azure-monitor/toc.json
+          href: platform/alerts-metric.md
         - name: Erstellen, Anzeigen und Verwalten von klassischen Metrikwarnungen in Azure Monitor
-          href: ../monitoring-and-diagnostics/alert-metric-classic.md?toc=/azure/azure-monitor/toc.json
+          href: platform/alerts-classic-portal.md
         - name: Warnungen mit dynamischen Schwellenwerten
-          href: ../monitoring-and-diagnostics/monitoring-alerts-dynamic-thresholds.md?toc=/azure/azure-monitor/toc.json
+          href: platform/alerts-dynamic-thresholds.md
         - name: Konfigurieren von Metrikwarnungen in Protokollen
           href: ../monitoring-and-diagnostics/monitoring-metric-alerts-logs.md?toc=/azure/azure-monitor/toc.json
         - name: Erstellen einer neueren Metrikwarnung anhand einer Resource Manager-Vorlage
@@ -746,23 +746,23 @@ items:
         - name: Erstellen einer klassischen Metrikwarnung anhand einer Resource Manager-Vorlage
           href: ../monitoring-and-diagnostics/monitoring-enable-alerts-using-template.md?toc=/azure/azure-monitor/toc.json
         - name: Aufrufen eines Webhooks über eine klassische Metrikwarnung
-          href: ../monitoring-and-diagnostics/insights-webhooks-alerts.md?toc=/azure/azure-monitor/toc.json
+          href: platform/alerts-webhooks.md
       - name: Verwenden von Protokollwarnungen
         items:
         - name: Konfigurieren von Warnungen für Analyseabfragen
-          href: ../monitoring-and-diagnostics/alert-log.md?toc=/azure/azure-monitor/toc.json
+          href: platform/alerts-log.md
         - name: Webhookaktionen für Protokollwarnungen
-          href: ../monitoring-and-diagnostics/monitor-alerts-unified-log-webhook.md?toc=/azure/azure-monitor/toc.json
+          href: platform/alerts-log-webhook.md
         - name: Problembehandlung für Protokollwarnungen
           href: ../monitoring-and-diagnostics/alert-log-troubleshoot.md?toc=/azure/azure-monitor/toc.json
       - name: Verwenden von Aktivitätsprotokollwarnungen
         items:
         - name: Konfigurieren von Warnungen für ein Aktivitätsprotokollereignis
-          href: ../monitoring-and-diagnostics/alert-activity-log.md?toc=/azure/azure-monitor/toc.json
+          href: platform/alerts-activity-log.md
         - name: Migrieren zu Aktivitätsprotokollwarnungen
           href: ../monitoring-and-diagnostics/monitoring-migrate-management-alerts.md?toc=/azure/azure-monitor/toc.json
         - name: Konfigurieren von Warnungen für Dienstbenachrichtigungen
-          href: ../monitoring-and-diagnostics/monitoring-activity-log-alerts-on-service-notifications.md?toc=/azure/azure-monitor/toc.json
+          href: platform/alerts-activity-log-service-notifications.md
       - name: Verwenden von Anwendungswarnungen
         items:
         - name: Verfügbarkeit
@@ -772,9 +772,9 @@ items:
       - name: Verwenden von Aktionsgruppen mit Warnungen
         items:
         - name: Erstellen von Aktionsgruppen
-          href: ../monitoring-and-diagnostics/monitoring-action-groups.md?toc=/azure/azure-monitor/toc.json
+          href: platform/action-groups.md
         - name: Informationen zum Webhookschema
-          href: ../monitoring-and-diagnostics/monitoring-activity-log-alerts-webhook.md?toc=/azure/azure-monitor/toc.json
+          href: platform/activity-log-alerts-webhook.md
         - name: Verhalten von SMS-Benachrichtigungen
           href: ../monitoring-and-diagnostics/monitoring-sms-alert-behavior.md?toc=/azure/azure-monitor/toc.json
         - name: Begrenzung der Warnungsrate
@@ -782,13 +782,13 @@ items:
         - name: Erstellen von Aktionsgruppen mit Resource Manager
           href: ../monitoring-and-diagnostics/monitoring-create-action-group-with-resource-manager-template.md?toc=/azure/azure-monitor/toc.json
         - name: Implementieren einer Logik-App-Aktion
-          href: ../monitoring-and-diagnostics/monitoring-action-groups-logic-app.md?toc=/azure/azure-monitor/toc.json
+          href: platform/action-groups-logic-app.md
       - name: Warnungen von Operations Manager
         href: platform/alert-management-solution.md
       - name: Warnungen verwalten
         items:
         - name: Verwalten von Warnungsinstanzen
-          href: ../monitoring-and-diagnostics/monitoring-alerts-managing-alert-instances.md?toc=/azure/azure-monitor/toc.json
+          href: platform/alerts-managing-alert-instances.md
         - name: Verwalten intelligenter Gruppen
           href: ../monitoring-and-diagnostics/monitoring-alerts-managing-smart-groups.md?toc=/azure/azure-monitor/toc.json
         - name: Verwalten von Warnungen und Status intelligenter Gruppen
@@ -802,25 +802,25 @@ items:
       - name: Grundlegendes zu Einstellungen für die automatische Skalierung
         href: ../monitoring-and-diagnostics/monitoring-understanding-autoscale-settings.md?toc=/azure/azure-monitor/toc.json
       - name: Bewährte Methoden
-        href: ../monitoring-and-diagnostics/insights-autoscale-best-practices.md?toc=/azure/azure-monitor/toc.json
+        href: platform/autoscale-best-practices.md
       - name: Allgemeine Metriken
-        href: ../monitoring-and-diagnostics/insights-autoscale-common-metrics.md?toc=/azure/azure-monitor/toc.json
+        href: platform/autoscale-common-metrics.md
       - name: Allgemeine Muster
         href: ../monitoring-and-diagnostics/monitoring-autoscale-common-scale-patterns.md?toc=/azure/azure-monitor/toc.json
       - name: Automatisches Skalieren mit einer benutzerdefinierten Metrik
         href: ../monitoring-and-diagnostics/monitoring-autoscale-scale-by-custom-metric.md?toc=/azure/azure-monitor/toc.json
       - name: Automatisches Skalieren von VM-Skalierungsgruppen mithilfe von Resource Manager-Vorlagen
-        href: ../monitoring-and-diagnostics/insights-advanced-autoscale-virtual-machine-scale-sets.md?toc=/azure/azure-monitor/toc.json
+        href: platform/autoscale-virtual-machine-scale-sets.md
       - name: Automatisches Skalieren von Computern in einer VM-Skalierungsgruppe
         href: ../virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md?toc=/azure/azure-monitor/toc.json?toc=/azure/azure-monitor/toc.json
       - name: Konfigurieren von Webhooks und E-Mail-Benachrichtigungen bei automatischer Skalierung
-        href: ../monitoring-and-diagnostics/insights-autoscale-to-webhook-email.md?toc=/azure/azure-monitor/toc.json
+        href: platform/autoscale-webhook-email.md
     - name: Dienstbenachrichtigungen
       items:
       - name: Anzeigen von Dienstbenachrichtigungen
         href: ../monitoring-and-diagnostics/monitoring-service-notifications.md?toc=/azure/azure-monitor/toc.json
       - name: Konfigurieren von Warnungen für Dienstbenachrichtigungen
-        href: ../monitoring-and-diagnostics/monitoring-activity-log-alerts-on-service-notifications.md?toc=/azure/azure-monitor/toc.json
+        href: platform/alerts-activity-log-service-notifications.md
     - name: IT-Dienstverwaltung
       items:
       - name: IT Service Management Connector
@@ -860,7 +860,7 @@ items:
         - name: Holen Sie sich Azure-Diagnose
           href: ../application-insights/app-insights-powershell-azure-diagnostics.md?toc=/azure/azure-monitor/toc.json
     - name: Azure CLI-Beispiele
-      href: ../monitoring-and-diagnostics/insights-cli-samples.md?toc=/azure/azure-monitor/toc.json
+      href: platform/cli-samples.md
     - name: Resource Manager-Vorlagen
       href: platform/template-workspace-configuration.md
     - name: API
@@ -962,14 +962,14 @@ items:
     - name: Schema für Aktivitätsprotokollereignisse
       href: ../monitoring-and-diagnostics/monitoring-activity-log-schema.md?toc=/azure/azure-monitor/toc.json
     - name: Erweiterungsschema der Azure-Diagnose
-      href: ../monitoring-and-diagnostics/azure-diagnostics-schema.md?toc=/azure/azure-monitor/toc.json
+      href: platform/diagnostics-extension-schema.md
       items:
       - name: 1.3 und höher
-        href: ../monitoring-and-diagnostics/azure-diagnostics-schema-1dot3-and-later.md?toc=/azure/azure-monitor/toc.json
+        href: platform/diagnostics-extension-schema-1dot3.md
       - name: "1.2"
-        href: ../monitoring-and-diagnostics/azure-diagnostics-schema-1dot2.md?toc=/azure/azure-monitor/toc.json
+        href: platform/diagnostics-extension-schema-1dot2.md
       - name: "1"
-        href: ../monitoring-and-diagnostics/azure-diagnostics-schema-1dot0.md?toc=/azure/azure-monitor/toc.json
+        href: platform/diagnostics-extension-schema-1dot0.md
   - name: Feature- und API-Ausmusterung
     items:
     - name: Klassische Autoskalierung und Metrik-API
@@ -977,9 +977,9 @@ items:
     - name: Klassische Warnungen und Überwachung
       href: ../monitoring-and-diagnostics/monitoring-classic-retirement.md?toc=/azure/azure-monitor/toc.json
     - name: Erweitern von Warnungen von Log Analytics auf Azure
-      href: ../monitoring-and-diagnostics/monitoring-alerts-extend.md?toc=/azure/azure-monitor/toc.json
+      href: platform/alerts-extend.md
     - name: Kopieren von Warnungen aus dem OMS-Portal in das Azure-Portal
-      href: ../monitoring-and-diagnostics/monitoring-alerts-extend-tool.md?toc=/azure/azure-monitor/toc.json
+      href: platform/alerts-extend-tool.md
 - name: Ressourcen
   items:
   - name: Azure-Roadmap
@@ -1010,9 +1010,9 @@ items:
     href: https://stackoverflow.com/search?q=monitoring
   - name: Codebeispiele
     href: https://azure.microsoft.com/resources/samples/?service=monitor
-ms.openlocfilehash: 84203f76d998b197fca3834857881f0a347f2cca
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 06ea6e43343a0cf9982a6161fbd60d5bfce6b0ba
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53106735"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53322549"
