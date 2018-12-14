@@ -7,7 +7,7 @@ items:
     href: what-is-application-management.md
 - name: Schnellstarts
   items:
-  - name: 'Hinzufügen einer Anwendung: Portal'
+  - name: 'Hinzufügen einer Kataloganwendung: Portal'
     href: add-application-portal.md
   - name: 'Anzeigen von Mandanten-Apps: Portal'
     href: view-applications-portal.md
@@ -16,6 +16,8 @@ items:
   items:
   - name: 'Konfigurieren des einmaligen Anmeldens: Portal'
     href: configure-single-sign-on-portal.md
+  - name: 'Hinzufügen einer lokalen App: Portal'
+    href: application-proxy-add-on-premises-application.md
 - name: Konzepte
   items:
   - name: Planen der Integration von Cloud-Apps
@@ -86,10 +88,6 @@ items:
       href: change-name-or-logo-portal.md
   - name: Integration von lokalen Apps
     items:
-    - name: Aktivieren des Anwendungsproxys
-      href: application-proxy-enable.md
-    - name: Veröffentlichen einer App für den Remotezugriff
-      href: application-proxy-publish-azure-portal.md
     - name: Konfigurieren von Connectors
       href: application-proxy-configure-connectors-with-proxy-servers.md
     - name: Konfigurieren von Ansprüche unterstützenden Apps
@@ -284,9 +282,9 @@ items:
     href: https://stackoverflow.com/questions/tagged/azure-active-directory
   - name: Videos
     href: https://azure.microsoft.com/documentation/videos/index/?services=active-directory
-ms.openlocfilehash: ff883fd034f3ceabc556071d7a9e8f40d87fc75d
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 0d2f830cd3f5e66c69ae5f839c8f536747ce4d36
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52848152"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53141899"

@@ -13,6 +13,7 @@
 ## [Migrieren von SQL Server zu „Verwaltete Azure SQL-Datenbank-Instanz“ (online)](tutorial-sql-server-managed-instance-online.md)
 ## [Migrieren von MySQL zu Azure Database for MySQL (online)](tutorial-mysql-azure-mysql-online.md)
 ## [Migrieren von PostgreSQL zu Azure Database for PostgreSQL (online)](tutorial-postgresql-azure-postgresql-online.md)
+## [Offlinemigration von MongoDB zur Mongo-API von Azure Cosmos DB](tutorial-mongodb-cosmos-db.md)
 
 # Anleitungen
 ## [Migrieren von SQL Server zu Azure SQL DB mithilfe von PowerShell](howto-sql-server-to-azure-sql-powershell.md)
@@ -20,16 +21,17 @@
 ## [Überwachen der Migrationsaktivität](how-to-monitor-migration-activity.md)
 
 # Ressourcen
+## [Status des Datenbankmigrationsszenarios](resource-scenario-status.md)
+## [Übersicht über Voraussetzungen](pre-reqs.md)
+## [Netzwerktopologien für Migrationen vom Typ „Verwaltete Azure SQL-Datenbank-Instanz“](resource-network-topologies.md)
 ## [Bekannte Probleme: Onlinemigration zu Azure SQL-Datenbank](known-issues-azure-sql-online.md)
 ## [Bekannte Probleme: Onlinemigration zu Azure Database for MySQL](known-issues-azure-mysql-online.md)
 ## [Bekannte Probleme: Onlinemigration zu Azure Database for PostgreSQL](known-issues-azure-postgresql-online.md)
 ## [Für Datenmigrationsszenarien verfügbare Dienste und Tools](dms-tools-matrix.md)
-## [Übersicht über Voraussetzungen](pre-reqs.md)
 ## [Häufig gestellte Fragen](faq.md)
-## [Netzwerktopologien für Migrationen vom Typ „Verwaltete Azure SQL-Datenbank-Instanz“](resource-network-topologies.md)
-## [Dienstupdates](https://azure.microsoft.com/updates/?product=database-migration)
-## [Preise](https://aka.ms/dms-pricing)
 ## [User Voice-Feedback](https://feedback.azure.com/forums/906100-azure-database-migration-service)
+## [Preise](https://aka.ms/dms-pricing)
+## [Dienstupdates](https://azure.microsoft.com/updates/?product=database-migration)
 ## [Leitfaden zur Datenbankmigration](https://aka.ms/datamigration)
 ## [Data Migration Assistant](https://aka.ms/dma)
 ## [SQL Server Migration Assistant](https://aka.ms/ssma)

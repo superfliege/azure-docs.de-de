@@ -80,7 +80,7 @@ items:
       href: consistency-levels.md
     - name: Auswählen der richtigen Konsistenzebene
       href: consistency-levels-choosing.md
-    - name: Konsistenzebenen und Cosmos DB-APIs
+    - name: Konsistenzebenen und Azure Cosmos DB-APIs
       href: consistency-levels-across-apis.md
     - name: Kompromisse in Bezug auf Konsistenz, Verfügbarkeit und Leistung
       href: consistency-levels-tradeoffs.md
@@ -115,7 +115,7 @@ items:
     - name: Arbeiten mit Datenbanken, Containern und Elementen
       href: databases-containers-items.md
     - name: SQL-Referenz
-      href: sql-api-sql-query-reference.md
+      href: sql-api-query-reference.md
     - name: Beispiele für SQL-Abfragen
       href: how-to-sql-query.md
     - name: Indizierung
@@ -144,6 +144,28 @@ items:
       href: unique-keys.md
     - name: Transaktionen und optimistische Nebenläufigkeit
       href: database-transactions-optimistic-concurrency.md
+  - name: Optimieren der Kosten für Azure Cosmos DB
+    items:
+    - name: Preismodell
+      href: how-pricing-works.md
+    - name: Gesamtkosten
+      href: total-cost-ownership.md
+    - name: Erläuterungen zur Rechnung
+      href: understand-your-bill.md
+    - name: Optimieren der Kosten für den bereitgestellten Durchsatz
+      href: optimize-cost-throughput.md
+    - name: Optimieren der Abfragekosten
+      href: optimize-cost-queries.md
+    - name: Optimieren der Speicherkosten
+      href: optimize-cost-storage.md
+    - name: Optimieren der Kosten für Lese- und Schreibvorgänge
+      href: optimize-cost-reads-writes.md
+    - name: Optimieren von Kosten für mehrere Regionen
+      href: optimize-cost-regions.md
+    - name: Optimieren der Entwicklungs-/Testworkloads
+      href: optimize-dev-test.md
+    - name: Vorauszahlen für eine reservierte Kapazität
+      href: cosmos-db-reserved-capacity.md
   - name: Sicherheit
     items:
     - name: Übersicht
@@ -164,8 +186,6 @@ items:
       href: online-backup-and-restore.md
     - name: Compliance
       href: compliance.md
-  - name: Vorauszahlen für eine reservierte Kapazität
-    href: cosmos-db-reserved-capacity.md
 - name: APIs mit mehreren Modellen
   items:
   - name: SQL-API-Dokumentation
@@ -229,7 +249,7 @@ items:
     - name: Anleitungen
       items:
       - name: Optimieren der Abfrageleistung
-        href: sql-api-sql-query-metrics.md
+        href: sql-api-query-metrics.md
       - name: Gespeicherte Prozeduren, Trigger und UDFs
         href: programming.md
       - name: Datentypen
@@ -288,7 +308,7 @@ items:
             href: tutorial-develop-mongodb-nodejs-part3.md
           - name: 'Teil 4: Erstellen eines Kontos'
             href: tutorial-develop-mongodb-nodejs-part4.md
-          - name: 'Teil 5: Herstellen einer Verbindung mit Cosmos DB'
+          - name: 'Teil 5: Herstellen einer Verbindung mit Azure Cosmos DB'
             href: tutorial-develop-mongodb-nodejs-part5.md
           - name: 'Teil 6: Ausführen von CRUD-Vorgängen'
             href: tutorial-develop-mongodb-nodejs-part6.md
@@ -509,7 +529,7 @@ items:
         href: performance-testing.md
     - name: Kostengünstige Lese- und Schreibvorgänge
       href: key-value-store-cost.md
-  - name: Visualisieren von Cosmos DB-Daten
+  - name: Visualisieren von Azure Cosmos DB-Daten
     items:
     - name: Verwenden von Power BI
       href: powerbi-visualize.md
@@ -583,9 +603,9 @@ items:
       href: use-cases.md
     - name: Apps für soziale Medien
       href: social-media-apps.md
-ms.openlocfilehash: 413ec7cc09f748948cab92dd10495b667be06f40
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: b172650cc0a69169bcbebf58e0a11d0bb9cd6450
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52961228"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53254699"

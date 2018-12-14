@@ -1,14 +1,15 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: aa53bfd0028813479b99e84638eaf6f39dac5008
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: c6b8df95149824f78d9809d14b4b9ebf67728fcb
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49456285"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53255396"
 documentType: LandingData
-title: Dokumentation zur Bing-News-Suche
+title: Dokumentation zur Bing-News-Suche-API
+titleSuffix: Azure Cognitive Services
 metadata:
-  title: 'Dokumentation zur Bing-News-Suche: Tutorials, Schnellstartanleitungen, API-Referenzen | Microsoft-Dokumentation'
+  title: 'Dokumentation zur Bing-News-Suche-API: Tutorials, Schnellstarts, API-Referenzen | Microsoft-Dokumentation'
   description: Hier erfahren Sie, wie Sie mit der Bing-News-Suche-API für Benutzerabfragen relevante Nachrichten aus dem Web abrufen. In Tutorials wird gezeigt, wie Sie Apps erstellen, die den Dienst nutzen.
   services: cognitive-services
   author: mikedodaro
