@@ -121,13 +121,13 @@ items:
   - name: Reagieren auf Incidents
     items:
     - name: Alerts
-      href: ../monitoring-and-diagnostics/monitoring-overview-alerts.md?toc=/azure/azure-monitor/toc.json
+      href: platform/alerts-overview.md
     - name: Klassische Warnungen
       href: platform/alerts-classic.overview.md
     - name: Intelligente Gruppen
-      href: ../monitoring-and-diagnostics/monitoring-overview-alerts-smartgroups.md?toc=/azure/azure-monitor/toc.json
+      href: platform/alerts-smartgroups-overview.md
     - name: Autoscale
-      href: ../monitoring-and-diagnostics/monitoring-overview-autoscale.md?toc=/azure/azure-monitor/toc.json
+      href: platform/autoscale-overview.md
     - name: Metrikwarnungen
       href: platform/alerts-metric-overview.md
     - name: Protokollwarnungen
@@ -151,7 +151,7 @@ items:
     - name: Verwalten des Zugriffs
       items:
       - name: Berechtigungen und Sicherheit für Rollen
-        href: ../monitoring-and-diagnostics/monitoring-roles-permissions-security.md?toc=/azure/azure-monitor/toc.json
+        href: platform/roles-permissions-security.md
       - name: Arbeitsbereiche
         href: platform/manage-access.md
       - name: ANWENDUNGEN
@@ -217,7 +217,7 @@ items:
         - name: Problembehandlung
           href: platform/diagnostics-extension-troubleshooting.md
         - name: Aktivieren der Diagnoseeinstellungen mithilfe von Resource Manager-Vorlagen
-          href: ../monitoring-and-diagnostics/monitoring-enable-diagnostic-logs-using-template.md?toc=/azure/azure-monitor/toc.json
+          href: platform/diagnostic-logs-stream-template.md
         - name: Vorbereiten für das Diagnoseprotokollformat JSON Lines
           href: ../monitoring-and-diagnostics/monitor-diagnostic-logs-append-blobs.md?toc=/azure/azure-monitor/toc.json
         - name: VM-Gast in Metrikspeicher
@@ -441,9 +441,9 @@ items:
     - name: Weiterleiten von Daten
       items:
       - name: Archivieren des Aktivitätsprotokolls
-        href: ../monitoring-and-diagnostics/monitoring-archive-activity-log.md?toc=/azure/azure-monitor/toc.json
+        href: platform/archive-activity-log.md
       - name: Archivieren von Diagnoseprotokollen
-        href: ../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md?toc=/azure/azure-monitor/toc.json
+        href: platform/archive-diagnostic-logs.md
       - name: Speichern von Diagnoseprotokollen
         href: ../monitoring-and-diagnostics/monitor-stream-diagnostic-logs-log-analytics.md?toc=/azure/azure-monitor/toc.json
       - name: Streamen von Aktivitätsprotokollen an Event Hubs
@@ -655,7 +655,7 @@ items:
   - name: Daten analysieren
     items:
     - name: Erstellen von Metrikdiagrammen im Metrik-Explorer
-      href: ../monitoring-and-diagnostics/monitoring-metric-charts.md?toc=/azure/azure-monitor/toc.json
+      href: platform/metrics-charts.md
     - name: Anzeigen von Ereignissen im Aktivitätsprotokoll
       href: ../azure-resource-manager/resource-group-audit.md?toc=/azure/azure-monitor/toc.json
     - name: Anzeigen von Dienstbenachrichtigungen
@@ -740,11 +740,11 @@ items:
         - name: Warnungen mit dynamischen Schwellenwerten
           href: platform/alerts-dynamic-thresholds.md
         - name: Konfigurieren von Metrikwarnungen in Protokollen
-          href: ../monitoring-and-diagnostics/monitoring-metric-alerts-logs.md?toc=/azure/azure-monitor/toc.json
+          href: platform/alerts-metric-logs.md
         - name: Erstellen einer neueren Metrikwarnung anhand einer Resource Manager-Vorlage
-          href: ../monitoring-and-diagnostics/monitoring-create-metric-alerts-with-templates.md?toc=/azure/azure-monitor/toc.json
+          href: platform/alerts-metric-create-templates.md
         - name: Erstellen einer klassischen Metrikwarnung anhand einer Resource Manager-Vorlage
-          href: ../monitoring-and-diagnostics/monitoring-enable-alerts-using-template.md?toc=/azure/azure-monitor/toc.json
+          href: platform/alerts-enable-template.md
         - name: Aufrufen eines Webhooks über eine klassische Metrikwarnung
           href: platform/alerts-webhooks.md
       - name: Verwenden von Protokollwarnungen
@@ -760,7 +760,7 @@ items:
         - name: Konfigurieren von Warnungen für ein Aktivitätsprotokollereignis
           href: platform/alerts-activity-log.md
         - name: Migrieren zu Aktivitätsprotokollwarnungen
-          href: ../monitoring-and-diagnostics/monitoring-migrate-management-alerts.md?toc=/azure/azure-monitor/toc.json
+          href: platform/migrate-management-alerts.md
         - name: Konfigurieren von Warnungen für Dienstbenachrichtigungen
           href: platform/alerts-activity-log-service-notifications.md
       - name: Verwenden von Anwendungswarnungen
@@ -776,11 +776,11 @@ items:
         - name: Informationen zum Webhookschema
           href: platform/activity-log-alerts-webhook.md
         - name: Verhalten von SMS-Benachrichtigungen
-          href: ../monitoring-and-diagnostics/monitoring-sms-alert-behavior.md?toc=/azure/azure-monitor/toc.json
+          href: platform/alerts-sms-behavior.md
         - name: Begrenzung der Warnungsrate
-          href: ../monitoring-and-diagnostics/monitoring-alerts-rate-limiting.md?toc=/azure/azure-monitor/toc.json
+          href: platform/alerts-rate-limiting.md
         - name: Erstellen von Aktionsgruppen mit Resource Manager
-          href: ../monitoring-and-diagnostics/monitoring-create-action-group-with-resource-manager-template.md?toc=/azure/azure-monitor/toc.json
+          href: platform/action-groups-create-resource-manager-template.md
         - name: Implementieren einer Logik-App-Aktion
           href: platform/action-groups-logic-app.md
       - name: Warnungen von Operations Manager
@@ -790,11 +790,11 @@ items:
         - name: Verwalten von Warnungsinstanzen
           href: platform/alerts-managing-alert-instances.md
         - name: Verwalten intelligenter Gruppen
-          href: ../monitoring-and-diagnostics/monitoring-alerts-managing-smart-groups.md?toc=/azure/azure-monitor/toc.json
+          href: platform/alerts-managing-smart-groups.md
         - name: Verwalten von Warnungen und Status intelligenter Gruppen
-          href: ../monitoring-and-diagnostics/monitoring-alerts-managing-alert-states.md?toc=/azure/azure-monitor/toc.json
+          href: platform/alerts-managing-alert-states.md
         - name: Verwalten von Warnungen aus anderen Überwachungsdiensten
-          href: ../monitoring-and-diagnostics/monitoring-alerts-managing-nagios-zabbix-scom.md?toc=/azure/azure-monitor/toc.json
+          href: platform/alerts-managing-nagios-zabbix-scom.md
     - name: Autoscale
       items:
       - name: Exemplarische Vorgehensweisen zur automatischen Skalierung
@@ -808,7 +808,7 @@ items:
       - name: Allgemeine Muster
         href: ../monitoring-and-diagnostics/monitoring-autoscale-common-scale-patterns.md?toc=/azure/azure-monitor/toc.json
       - name: Automatisches Skalieren mit einer benutzerdefinierten Metrik
-        href: ../monitoring-and-diagnostics/monitoring-autoscale-scale-by-custom-metric.md?toc=/azure/azure-monitor/toc.json
+        href: platform/autoscale-custom-metric.md
       - name: Automatisches Skalieren von VM-Skalierungsgruppen mithilfe von Resource Manager-Vorlagen
         href: platform/autoscale-virtual-machine-scale-sets.md
       - name: Automatisches Skalieren von Computern in einer VM-Skalierungsgruppe
@@ -958,9 +958,9 @@ items:
   - name: Schemas
     items:
     - name: Diagnoseprotokolle – Dienste, Kategorien und Schemas
-      href: ../monitoring-and-diagnostics/monitoring-diagnostic-logs-schema.md?toc=/azure/azure-monitor/toc.json
+      href: platform/tutorial-dashboards.md
     - name: Schema für Aktivitätsprotokollereignisse
-      href: ../monitoring-and-diagnostics/monitoring-activity-log-schema.md?toc=/azure/azure-monitor/toc.json
+      href: platform/activity-log-schema.md
     - name: Erweiterungsschema der Azure-Diagnose
       href: platform/diagnostics-extension-schema.md
       items:
@@ -1010,9 +1010,9 @@ items:
     href: https://stackoverflow.com/search?q=monitoring
   - name: Codebeispiele
     href: https://azure.microsoft.com/resources/samples/?service=monitor
-ms.openlocfilehash: 06ea6e43343a0cf9982a6161fbd60d5bfce6b0ba
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 037ec2d246e30725448fb3da98263b557e11186d
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53322549"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53384428"
