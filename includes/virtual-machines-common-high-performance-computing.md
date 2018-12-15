@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/02/2018
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 8f43edfe468958bbc4a6fde14e8e03e5b4d4e0f2
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 88aeaf1246583345d1d28218e8e91b3ecbcd166b
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51263974"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53429966"
 ---
 Organisationen haben hohen Computing-Bedarf. Zu diesen Big Compute-Workloads zählen unter anderem technische Entwicklungen und Analysen, die Berechnung finanzieller Risiken, das Rendern von Bildern, komplexe Modelle sowie Monte Carlo-Simulationen. 
 
@@ -86,7 +86,6 @@ Führen Sie benutzerdefinierte oder kommerzielle HPC-Anwendungen in Azure aus. F
 
 ### <a name="ai-and-deep-learning"></a>KI und Deep Learning
 
-* [Batch AI](../articles/batch-ai/overview.md)-Training für Deep Learning-Modelle
 * [Microsoft Cognitive Toolkit](https://docs.microsoft.com/cognitive-toolkit/cntk-on-azure)
 * [Virtueller Deep Learning-Computer](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.dsvm-deep-learning)
 * [Batch Shipyard-Rezepte für Deep Learning](https://github.com/Azure/batch-shipyard/tree/master/recipes#deeplearning)
@@ -154,7 +153,7 @@ Weitere Informationen:
 
 Die meisten Azure-HPC-Lösungen basieren auf Azure Virtual Machines, VM-Skalierungsgruppen, Batch und ähnlichen Computediensten. Ihre Lösung kann jedoch von zahlreichen verwandten Azure-Diensten profitieren. Im Anschluss finden Sie eine unvollständige Liste:
 
-### <a name="storage"></a>Speicher
+### <a name="storage"></a>Storage
 
 * [Blob, Table und Queue Storage](../articles/storage/storage-introduction.md)
 * [File Storage](../articles/storage/storage-files-introduction.md)
@@ -168,7 +167,6 @@ Die meisten Azure-HPC-Lösungen basieren auf Azure Virtual Machines, VM-Skalieru
 
 ### <a name="ai-and-machine-learning"></a>KI und Machine Learning
 * [Machine Learning Services](../articles/machine-learning/service/overview-what-is-azure-ml.md)
-* [Batch AI](../articles/batch-ai/overview.md)
 * [Genomics](../articles/genomics/overview-what-is-genomics.md)
 
 ### <a name="networking"></a>Netzwerk

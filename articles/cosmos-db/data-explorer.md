@@ -1,19 +1,18 @@
 ---
-title: Verwalten von Daten mithilfe von Azure Cosmos DB Explorer | Microsoft-Dokumentation
+title: Verwalten von Daten mithilfe von Azure Cosmos DB Explorer
 description: Azure Cosmos DB Explorer ist eine eigenständige webbasierte Schnittstelle, die Ihnen ermöglicht, in Azure Cosmos DB gespeicherte Daten anzuzeigen und zu verwalten.
 services: cosmos-db
 author: deborahc
-manager: kfile
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/16/2018
 ms.author: dech
-ms.openlocfilehash: 8d1bd0d4331937e37307140e17e5aed1a6e3b0ff
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 6e1317084ce60fb8dce64ccd7d1d93fe1ae1d9e9
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42142872"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53140750"
 ---
 # <a name="use-azure-cosmos-db-explorer-to-manage-your-data"></a>Verwalten von Daten mithilfe von Azure Cosmos DB Explorer 
 
@@ -52,4 +51,4 @@ Zurzeit wird die Option **Vollbildmodus öffnen**, über die Sie den temporären
 ## <a name="next-steps"></a>Nächste Schritte
 Nachdem Sie die ersten Schritte der Datenverwaltung in Azure Cosmos DB Explorer erlernt haben, haben Sie folgende Möglichkeiten:
 
-* Definieren Sie zuerst [Abfragen](sql-api-sql-query-reference.md) mithilfe von SQL-Syntax, und führen Sie [serverseitige Programmierung](programming.md) mit gespeicherten Prozeduren, UDFs und Triggern durch. 
+* Definieren Sie zuerst [Abfragen](sql-api-query-reference.md) mithilfe von SQL-Syntax, und führen Sie [serverseitige Programmierung](programming.md) mit gespeicherten Prozeduren, UDFs und Triggern durch. 

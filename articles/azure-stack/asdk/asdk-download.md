@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/10/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: a6ccfa439b58d36ee44d5f8441c2058622965653
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: dc301f218855139cfb3a5faa30109dd5a301eb07
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "41946459"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52871199"
 ---
 # <a name="download-and-extract-the-azure-stack-development-kit-asdk"></a>Herunterladen und Extrahieren des Azure Stack Development Kits (ASDK)
 Nachdem Sie sich vergewissert haben, dass Ihr Development Kit-Hostcomputer die Mindestanforderungen für die ASDK-Installation erfüllt, besteht der nächste Schritt darin, das ASDK-Bereitstellungspaket herunterzuladen und zu extrahieren, um die Datei „CloudBuilder.vhdx“ zu erhalten.
@@ -29,7 +29,7 @@ Nachdem Sie sich vergewissert haben, dass Ihr Development Kit-Hostcomputer die M
 1. Bevor Sie den Download starten, stellen Sie sicher, dass Ihr Computer die folgenden Voraussetzungen erfüllt:
 
   - Der Computer muss zusätzlich zum Betriebssystem-Datenträger mindestens über 60 GB freien Speicherplatz auf vier separaten, identischen logischen Festplatten verfügen.
-  - [.NET Framework 4.6 (oder eine höhere Version)](https://aka.ms/r6mkiy) muss installiert sein.
+  - [.NET Framework 4.6 (oder eine höhere Version)](https://dotnet.microsoft.com/download/dotnet-framework-runtime/net46) muss installiert sein.
 
 2. [Navigieren Sie zur Seite mit den ersten Schritten](https://azure.microsoft.com/overview/azure-stack/try/?v=try), auf der Sie das Azure Stack Development Kit herunterladen und Ihre Details angeben können. Klicken Sie anschließend auf **Übermitteln**.
 3. Laden Sie den [Deployment Checker for Azure Stack Development Kit](https://go.microsoft.com/fwlink/?LinkId=828735&clcid=0x409) (Bereitstellungsprüfer für Azure Stack Development Kit) herunter, und führen Sie dieses Skript zur Überprüfung der Voraussetzungen aus. Mit diesem eigenständigen Skript werden die Voraussetzungsüberprüfungen des Setups für das Azure Stack Development Kit durchlaufen. Hiermit können Sie sicherstellen, dass die Hardware- und Softwareanforderungen erfüllt sind, bevor Sie das größere Paket für das Azure Stack Development Kit herunterladen.

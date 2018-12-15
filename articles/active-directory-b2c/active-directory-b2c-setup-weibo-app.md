@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 4600ec9d76f682f0dedf8c802d23b32fd6126481
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: b0044387698e6b7b682061d48249d6e635b32cd5
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47181497"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52842440"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-weibo-account-using-azure-active-directory-b2c"></a>Einrichten der Registrierung und Anmeldung mit einem Weibo-Konto mithilfe von Azure Active Directory B2C
 
@@ -25,19 +25,19 @@ ms.locfileid: "47181497"
 
 ## <a name="create-a-weibo-application"></a>Erstellen einer Weibo-Anwendung
 
-Um ein Weibo-Konto als Identitätsanbieter in Azure Active Directory (Azure AD) B2C verwenden zu können, müssen Sie eine Anwendung in Ihrem Mandanten erstellen, die es darstellt. Wenn Sie noch über kein Weibo-Konto verfügen, können Sie eines unter [http://weibo.com/signup/signup.php?lang=en-us](http://weibo.com/signup/signup.php?lang=en-us) erstellen.
+Um ein Weibo-Konto als Identitätsanbieter in Azure Active Directory (Azure AD) B2C verwenden zu können, müssen Sie eine Anwendung in Ihrem Mandanten erstellen, die es darstellt. Wenn Sie noch über kein Weibo-Konto verfügen, können Sie eines unter [https://weibo.com/signup/signup.php?lang=en-us](https://weibo.com/signup/signup.php?lang=en-us) erstellen.
 
-1. Melden Sie sich beim [Weibo-Entwicklerportal](http://open.weibo.com/) mit den Anmeldeinformationen für Ihr Weibo-Konto an.
+1. Melden Sie sich beim [Weibo-Entwicklerportal](https://open.weibo.com/) mit den Anmeldeinformationen für Ihr Weibo-Konto an.
 2. Wählen Sie nach der Anmeldung oben rechts Ihren Anzeigenamen aus.
 3. Wählen Sie in der Dropdownliste die Option **编辑开发者信息** (Entwicklerinformationen bearbeiten) aus.
 4. Geben Sie die erforderlichen Informationen ein, und wählen Sie **提交** (Senden) aus.
 5. Schließen Sie den E-Mail-Überprüfungsprozess ab.
-6. Rufen Sie die Seite [Identitätsüberprüfung](http://open.weibo.com/developers/identity/edit) auf.
+6. Rufen Sie die Seite [Identitätsüberprüfung](https://open.weibo.com/developers/identity/edit) auf.
 7. Geben Sie die erforderlichen Informationen ein, und wählen Sie **提交** (Senden) aus.
 
 ### <a name="register-a-weibo-application"></a>Registrieren einer Weibo-Anwendung
 
-1. Navigieren Sie zur Seite für die [Registrierung einer neuen Weibo-App](http://open.weibo.com/apps/new).
+1. Navigieren Sie zur Seite für die [Registrierung einer neuen Weibo-App](https://open.weibo.com/apps/new).
 2. Geben Sie die erforderlichen App-Informationen ein.
 3. Wählen Sie **创建** (Erstellen) aus.
 4. Kopieren Sie die Werte von **App-Schlüssel** und **App-Geheimnis**. Sie benötigen beide Angaben, um den Identitätsanbieter Ihrem Mandanten hinzuzufügen.

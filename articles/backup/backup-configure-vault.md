@@ -2,19 +2,19 @@
 title: Verwenden des Azure Backup-Agents zum Sichern von Dateien und Ordnern
 description: Verwenden Sie den Microsoft Azure Backup-Agent, um Windows-Dateien und -Ordner in Azure zu sichern. Erstellen Sie einen Recovery Services-Tresor, installieren Sie den Backup-Agent, definieren Sie die Sicherungsrichtlinie, und führen Sie die erste Sicherung der Dateien und Ordner aus.
 services: backup
-author: markgalioto
+author: rayne-wiselman
 manager: carmonm
 keywords: Sicherungstresor; Windows-Server sichern; Windows sichern;
 ms.service: backup
 ms.topic: conceptual
 ms.date: 8/5/2018
-ms.author: markgal
-ms.openlocfilehash: 8107af53a78960d29f506c77f8ba9697c7a49d1c
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.author: raynew
+ms.openlocfilehash: 4e138311b58d56f3a188347d43ed12287d43e1bd
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51252903"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52874004"
 ---
 # <a name="back-up-a-windows-server-or-client-to-azure-using-the-resource-manager-deployment-model"></a>Sichern eines Windows-Servers oder -Clients in Azure unter Verwendung des Resource Manager-Bereitstellungsmodells
 In diesem Artikel erfahren Sie, wie Sie Dateien und Ordner eines Windows-Servers (oder Windows-Clients) mithilfe von Azure Backup und des Resource Manager-Bereitstellungsmodells in Azure sichern.

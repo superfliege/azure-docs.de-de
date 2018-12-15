@@ -4,12 +4,12 @@ ms.service: app-service-web
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: cephalin
-ms.openlocfilehash: 73e95f6259c916b06fe61cb47fd36beac4c7a427
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 212e45a7b593a9607aa19a10efdf2aaf61c78d17
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51572180"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53344586"
 ---
 Das Domain Name System (DNS) erleichtert das Auffinden von Ressourcen im Internet. Wenn Sie zum Beispiel eine Adresse in Ihrem Browser eingeben, oder Sie auf einen Link innerhalb einer Website klicken, so übersetzt DNS die Domäne in eine IP-Adresse. Die IP-Adresse ist mit Straße und Hausnummer vergleichbar, aber sie ist nicht sehr einprägsam. Ein DNS-Name wie **contoso.com** lässt sich beispielsweise viel leichter merken als eine IP-Adresse wie 192.168.1.88 oder 2001:0:4137:1f67:24a2:3888:9cce:fea3.
 
@@ -32,7 +32,7 @@ Ein CNAME-Eintrag weist einen *spezifischen* DNS-Namen, z.B. **mail.contoso.com*
 Beim Traffic Manager eingehender Datenverkehr wird nach der Lastenausgleichsmethode, für die er konfiguriert ist, an Ihre Website geroutet. Für die Besucher Ihrer Website ist dieser Vorgang vollständig transparent. Sie sehen nur den benutzerdefinierten Domänennamen in ihrem Browser.
 
 > [!NOTE]
-> Bei einigen Domänenregistrierungen können Sie Unterdomänen nur mit einem CNAME-Eintrag wie **www.contoso.com** und nicht mit einem Stammnamen wie **contoso.com** zuweisen. Weitere Informationen zu CNAME-Datensätzen finden Sie in der durch Ihre Registrierung zur Verfügung gestellten Dokumentation, <a href="http://en.wikipedia.org/wiki/CNAME_record">dem Wikipedia-Eintrag "CNAME Resource Record"</a> oder dem Dokument <a href="http://tools.ietf.org/html/rfc1035">IETF Domain Names - Implementation and Specification</a> (IEFT-Domänennamen – Implementierung und Spezifizierung, in englischer Sprache).
+> Bei einigen Domänenregistrierungen können Sie Unterdomänen nur mit einem CNAME-Eintrag wie **www.contoso.com** und nicht mit einem Stammnamen wie **contoso.com** zuweisen. Weitere Informationen zu CNAME-Datensätzen finden Sie in der durch Ihre Registrierung zur Verfügung gestellten Dokumentation, <a href="https://en.wikipedia.org/wiki/CNAME_record">dem Wikipedia-Eintrag "CNAME Resource Record"</a> oder dem Dokument <a href="https://tools.ietf.org/html/rfc1035">IETF Domain Names - Implementation and Specification</a> (IEFT-Domänennamen – Implementierung und Spezifizierung, in englischer Sprache).
 > 
 > 
 

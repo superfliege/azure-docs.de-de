@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/05/2018
 ms.author: jejiang
-ms.openlocfilehash: 537c94976dbb4f7753b7fafb3b6c94e97cc2cc17
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 6cc4a5d5bfc2056f2517bcbcecb19b9f6b2f437a
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46126325"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52966261"
 ---
 # <a name="manage-azure-data-lake-storage-gen1-resources-by-using-storage-explorer"></a>Verwalten von Azure Data Lake Storage Gen1-Ressourcen mit Storage-Explorer
 
@@ -80,7 +80,7 @@ Zu den Ressourcen eines Data Lake Storage Gen1-Kontos gehören Ordner und Dateie
 
 Die folgenden Schritte veranschaulichen, wie Sie den Inhalt eines Data Lake Storage Gen1-Kontos in Storage-Explorer anzeigen:
 
-1. Öffnen Sie Storage-Explorer.
+1. Öffnen Sie den Storage-Explorer.
 2. Erweitern Sie im linken Bereich das Abonnement mit dem Data Lake Storage Gen1-Konto, das Sie anzeigen möchten.
 3. Erweitern Sie **Data Lake Store**.
 4. Klicken Sie mit der rechten Maustaste auf den Data Lake Storage Gen1-Kontoknoten, den Sie anzeigen möchten, und wählen Sie **Öffnen**. Sie können auch auf das Data Lake Storage Gen1-Konto doppelklicken, um es zu öffnen. 
@@ -136,7 +136,7 @@ Im Folgenden wird veranschaulicht, wie Sie Ressourcen in einem Data Lake Storage
 
    ![Dialogfeld mit aktivem Uploadvorgang](./media/data-lake-store-in-storage-explorer/storageexplorer-adls-upload-folder-drag.png) 
 
-> [!NOTE] 
+> [!NOTE]
 > Sie können die Ordner und Dateien direkt auf einen lokalen Computer ziehen, um den Uploadvorgang zu starten. 
        
 ### <a name="download-folders-or-files-to-your-local-computer"></a>Herunterladen von Ordnern oder Dateien auf Ihren lokalen Computer
@@ -164,7 +164,7 @@ Die Datei wird heruntergeladen und mit der Anwendung geöffnet, die dem zugrunde
 
 ![Auswahl zum Kopieren eines Ordners](./media/data-lake-store-in-storage-explorer/storageexplorer-adls-copy-paste.png)
 
-> [!NOTE] 
+> [!NOTE]
 > Kopier- bzw. Einfügevorgänge über mehrere Speichertypen hinweg werden nicht unterstützt. Sie können Data Lake Storage Gen1-Ordner oder -Dateien kopieren und in ein anderes Data Lake Storage Gen1-Konto einfügen. Es ist aber *nicht* möglich, Data Lake Storage Gen1-Ordner oder -Dateien zu kopieren und in Azure-Blobspeicher einzufügen (oder umgekehrt).
 > 
 > Der Kopier- bzw. Einfügevorgang funktioniert, indem die Ordner oder Dateien auf den lokalen Computer heruntergeladen und dann auf das Ziel hochgeladen werden. Mit dem Tool wird die Aktion *nicht* auf dem Back-End durchgeführt. Der Kopier- bzw. Einfügevorgang für große Dateien ist langsam. Das Kopieren und Verschieben von Dateien mit hoher Leistung wird derzeit optimiert.
@@ -197,6 +197,6 @@ Wenn Sie über eine URL verfügen, können Sie sie im Datei-Explorer oder Browse
 ## <a name="next-steps"></a>Nächste Schritte
 * Sehen Sie sich die [neuesten Versionsanmerkungen und Videos zum Storage-Explorer](http://www.storageexplorer.com) an.
 * Erfahren Sie, wie Sie [Azure Cosmos DB in Azure Storage-Explorer verwalten](https://docs.microsoft.com/azure/cosmos-db/storage-explorer).
-* [Erste Schritte mit dem Storage-Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)
+* [Erste Schritte mit dem Storage-Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer).
 * [Erste Schritte mit Azure Data Lake Storage Gen1](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-overview)
 * Sehen Sie sich ein [YouTube-Video zur Verwendung von Azure Cosmos DB in Azure Storage-Explorer](https://www.youtube.com/watch?v=iNIbg1DLgWo&feature=youtu.be) an.

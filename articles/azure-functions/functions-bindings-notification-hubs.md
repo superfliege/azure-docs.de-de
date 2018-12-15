@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: e51a74783f7d7f080d1caa237bb7aabab0100e72
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 72c0db44e1f56cab190f343a87c6b453625a7f70
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50248585"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52996030"
 ---
 # <a name="notification-hubs-output-binding-for-azure-functions"></a>Notification Hubs-Ausgabebindung für Azure Functions
 
@@ -28,7 +28,7 @@ Azure Notification Hubs muss für den Plattformbenachrichtigungsdienst (PNS) kon
 
 ## <a name="packages---functions-1x"></a>Pakete: Functions 1.x
 
-Die Notification Hubs-Bindungen werden im NuGet-Paket [Microsoft.Azure.WebJobs.Extensions.NotificationHubs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.NotificationHubs), Version 1.x bereitgestellt. Den Quellcode für das Paket finden Sie im GitHub-Repository [azure-webjobs-sdk-extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/tree/v2.x/src/WebJobs.Extensions.NotificationHubs).
+Die Notification Hubs-Bindungen werden im NuGet-Paket [Microsoft.Azure.WebJobs.Extensions.NotificationHubs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.NotificationHubs), Version 1.x bereitgestellt. Den Quellcode für das Paket finden Sie im GitHub-Repository [azure-webjobs-sdk-extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/tree/v2.x/src/WebJobs.Extensions.NotificationHubs).
 
 [!INCLUDE [functions-package](../../includes/functions-package.md)]
 

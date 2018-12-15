@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: reference
 ms.date: 11/20/2018
 ms.author: tomfitz
-ms.openlocfilehash: a4bb423dc5eddde0fd2d2b9b4f263ab39dbd801f
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: 580955d3c6fd7a33c152e49e601d8078eb169a22
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52284981"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53409665"
 ---
 # <a name="tag-support-for-azure-resources"></a>Tagunterstützung für Azure-Ressourcen
 In diesem Artikel erfahren Sie, ob ein Ressourcentyp [Tags](resource-group-using-tags.md) unterstützt.
@@ -68,18 +68,6 @@ In diesem Artikel erfahren Sie, ob ein Ressourcentyp [Tags](resource-group-using
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
 | batchAccounts | JA | 
-
-## <a name="batch-ai"></a>Batch AI
-| Ressourcentyp | Tagunterstützung |
-| ------------- | ----------- |
-| clusters | JA | 
-| jobs | JA | 
-| fileservers | JA | 
-| workspaces | JA | 
-| workspaces/clusters | Nein  | 
-| workspaces/fileservers | Nein  | 
-| workspaces/experiments | Nein  | 
-| workspaces/experiments/jobs | Nein  | 
 
 ## <a name="bing-maps"></a>Bing Maps
 | Ressourcentyp | Tagunterstützung |
@@ -511,7 +499,7 @@ In diesem Artikel erfahren Sie, ob ein Ressourcentyp [Tags](resource-group-using
 | ------------- | ----------- |
 | DWVM | JA | 
 
-## <a name="storage"></a>Speicher
+## <a name="storage"></a>Storage
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
 | storageAccounts | JA | 

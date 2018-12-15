@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/20/2017
-ms.openlocfilehash: 2688f148185b1c1523178d190a7a2a76e6ceabef
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: fac56117c4c70e2735580abb52d05e008d660003
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30908784"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53089412"
 ---
 # <a name="programmatically-create-a-stream-analytics-job-monitor"></a>Programmgesteuertes Überwachen von Stream Analytics-Aufträgen
 
@@ -33,14 +33,14 @@ Bevor Sie mit diesem Vorgang beginnen können, benötigen Sie Folgendes:
 1. Erstellen Sie eine Visual Studio C# .NET-Konsolenanwendung.
 2. Führen Sie in der Paket-Manager-Konsole die folgenden Befehle zum Installieren der NuGet-Pakete aus. Das erste ist das Azure Stream Analytics Management .NET SDK. Das zweite ist das Azure Monitor SDK, mit dem die Überwachung aktiviert wird. Das letzte ist der Azure Active Directory-Client, der für die Authentifizierung verwendet wird.
    
-   ```
+   ```powershell
    Install-Package Microsoft.Azure.Management.StreamAnalytics
    Install-Package Microsoft.Azure.Insights -Pre
    Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory
    ```
 3. Fügen Sie der Datei "App.config" den folgenden appSettings-Abschnitt hinzu.
    
-   ```
+   ```csharp
    <appSettings>
      <!--CSM Prod related values-->
      <add key="ResourceGroupName" value="RESOURCE GROUP NAME" />
@@ -57,12 +57,12 @@ Bevor Sie mit diesem Vorgang beginnen können, benötigen Sie Folgendes:
    ```
    Ersetzen Sie die Werte für *SubscriptionId* und *ActiveDirectoryTenantId* durch die IDs Ihres Azure-Abonnements und -Mandanten. Sie können diese Werte durch Ausführen des folgenden PowerShell-Cmdlets abrufen:
    
-   ```
+   ```powershell
    Get-AzureAccount
    ```
 4. Fügen Sie die folgenden using-Anweisungen zur Quelldatei (Program.cs) im Projekt hinzu.
    
-   ```
+   ```csharp
      using System;
      using System.Configuration;
      using System.Threading;
@@ -74,7 +74,8 @@ Bevor Sie mit diesem Vorgang beginnen können, benötigen Sie Folgendes:
      using Microsoft.IdentityModel.Clients.ActiveDirectory;
    ```
 5. Fügen Sie eine Authentifizierungshilfsmethode hinzu.
-   
+
+```csharp   
      public static string GetAuthorizationHeader()
    
          {
@@ -111,11 +112,13 @@ Bevor Sie mit diesem Vorgang beginnen können, benötigen Sie Folgendes:
    
              throw new InvalidOperationException("Failed to acquire token");
      }
+```
 
 ## <a name="create-management-clients"></a>Erstellen von Verwaltungsclients
 
 Mit dem folgenden Code werden die erforderlichen Variablen und Verwaltungsclients eingerichtet.
 
+```csharp
     string resourceGroupName = "<YOUR AZURE RESOURCE GROUP NAME>";
     string streamAnalyticsJobName = "<YOUR STREAM ANALYTICS JOB NAME>";
 
@@ -133,6 +136,7 @@ Mit dem folgenden Code werden die erforderlichen Variablen und Verwaltungsclient
     StreamAnalyticsManagementClient(aadTokenCredentials, resourceManagerUri);
     InsightsManagementClient insightsClient = new
     InsightsManagementClient(aadTokenCredentials, resourceManagerUri);
+```
 
 ## <a name="enable-monitoring-for-an-existing-stream-analytics-job"></a>Aktivieren der Überwachung für einen vorhandenen Stream Analytics-Auftrag
 
@@ -148,7 +152,7 @@ Mit dem folgenden Code wird die Überwachung für einen **vorhandenen** Stream A
 > Der Speicherkontoname, der zum Ersetzen von `<YOUR STORAGE ACCOUNT NAME>` im folgenden Code verwendet wird, muss sich auf ein Speicherkonto beziehen, das zum gleichen Abonnement gehört wie der Stream Analytics-Auftrag, für den Sie die Überwachung aktivieren.
 > 
 > 
-
+```csharp
     // Get an existing Stream Analytics job
     JobGetParameters jobGetParameters = new JobGetParameters()
     {
@@ -165,7 +169,7 @@ Mit dem folgenden Code wird die Überwachung für einen **vorhandenen** Stream A
             }
     };
     insightsClient.ServiceDiagnosticSettingsOperations.Put(jobGetResponse.Job.Id, insightPutParameters);
-
+```
 
 
 ## <a name="get-support"></a>Support

@@ -11,14 +11,17 @@ ms.topic: article
 ms.date: 08/08/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: cade124cefbd4e2e63ab4cb6fa4f22b3bd672ad0
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ROBOTS: NOINDEX
+ms.openlocfilehash: 16032ec5ba1e613462f92b86281ce93153b70923
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44391809"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53409716"
 ---
 # <a name="batch-ai-service-quotas-and-limits"></a>Batch AI-Dienst – Kontingente und Grenzwerte
+
+[!INCLUDE [batch-ai-retiring](../../includes/batch-ai-retiring.md)]
 
 Wie bei anderen Azure-Diensten gelten bei bestimmten Ressourcen für den Batch AI-Dienst Grenzwerte. In Batch AI sind diese Grenzwerte Standardkontingente, die auf Abonnementebene für alle Regionen gelten, in denen der Dienst [verfügbar](https://azure.microsoft.com/global-infrastructure/services/) ist. In diesem Artikel werden diese Standardwerte erläutert, und Sie erfahren, wie Sie Kontingenterhöhungen anfordern können.
 

@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 09/24/2018
 ms.author: crdun
-ms.openlocfilehash: ef371447e851fece207d77fe656283abe3dc4164
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 68ae5628d8b6aeeec6c1549e3d29d48bc8906a2d
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47063862"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52994195"
 ---
 # <a name="create-a-xamarinforms-app-with-azure"></a>Erstellen einer Xamarin.Forms-App mit Azure
 
@@ -183,7 +183,7 @@ Dadurch wird eine POST-Anforderung an das neue, in Azure gehostete Mobile Apps-B
 
 Sollten beim Erstellen der Lösung Probleme auftreten, führen Sie den NuGet-Paket-Manager aus, und aktualisieren Sie auf die neueste Version von `Xamarin.Forms`. Aktualisieren Sie außerdem im Android-Projekt die `Xamarin.Android`-Unterstützungspakete. Schnellstartprojekte enthalten unter Umständen nicht immer die neuesten Versionen.
 
-Beachten Sie, dass alle Unterstützungspakete, auf die in Ihrem Android-Projekt verwiesen wird, die gleiche Version aufweisen müssen. Das [Azure Mobile Apps-NuGet-Paket](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Client/) hat eine `Xamarin.Android.Support.CustomTabs`-Abhängigkeit für die Android-Plattform – wenn also das Projekt neuere Unterstützungspakete verwendet, müssen Sie dieses Paket direkt mit der erforderlichen Version installieren, um Konflikte zu vermeiden.
+Beachten Sie, dass alle Unterstützungspakete, auf die in Ihrem Android-Projekt verwiesen wird, die gleiche Version aufweisen müssen. Das [Azure Mobile Apps-NuGet-Paket](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Client/) hat eine `Xamarin.Android.Support.CustomTabs`-Abhängigkeit für die Android-Plattform. Wenn also das Projekt neuere Unterstützungspakete verwendet, müssen Sie dieses Paket direkt mit der erforderlichen Version installieren, um Konflikte zu vermeiden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -212,5 +212,5 @@ Beachten Sie, dass alle Unterstützungspakete, auf die in Ihrem Android-Projekt 
 
 <!-- URLs. -->
 [Install Xamarin]: https://docs.microsoft.com/xamarin/cross-platform/get-started/installation/
-[Mobile app SDK]: http://go.microsoft.com/fwlink/?LinkId=257545
+[Mobile app SDK]: https://go.microsoft.com/fwlink/?LinkId=257545
 [Azure-Portal]: https://portal.azure.com/

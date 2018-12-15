@@ -12,12 +12,12 @@ ms.author: srinia
 ms.reviewer: ''
 manager: craigg
 ms.date: 07/26/2018
-ms.openlocfilehash: 9df51626a1bd36b0ea171c89c67a5c1ca79d60e6
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 0d593e52c8dc3bc961df706ccef2da9da2f3f778
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52873699"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53087132"
 ---
 # <a name="manage-groups-of-databases-with-elastic-database-jobs"></a>Verwalten von Datenbankgruppen mithilfe von Aufträgen für die elastische Datenbank
 
@@ -127,7 +127,7 @@ Die folgenden Beispiele zeigen, wie verschiedene Zielgruppendefinitionen zum Zei
 
 ![Beispiele für Zielgruppen](media/elastic-jobs-overview/targetgroup-examples2.png)
 
-**Beispiel 5** und *Beispiel 6* zeigen erweiterte Szenarien, bei denen Azure SQL-Server, Datenbanken und Pools für elastische Datenbanken mithilfe von Ein- und Ausschlussregeln kombiniert werden können.<br>
+**Beispiel 5** und **Beispiel 6** zeigen erweiterte Szenarien, bei denen Azure SQL-Server, Datenbanken und Pools für elastische Datenbanken mithilfe von Ein- und Ausschlussregeln kombiniert werden können.<br>
 **Beispiel 7** zeigt, dass die Shards in einer Shard-Zuordnung zum Zeitpunkt der Auftragsausführung ebenfalls ausgewertet werden können.
 
 ### <a name="job"></a>Auftrag

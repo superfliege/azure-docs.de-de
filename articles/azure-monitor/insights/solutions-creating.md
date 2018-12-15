@@ -8,19 +8,18 @@ manager: carmonm
 editor: tysonn
 ms.assetid: 1915e204-ba7e-431b-9718-9eb6b4213ad8
 ms.service: monitoring
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/20/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4fd36d58574b60e3e6351cba03c68b9217bc703d
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 44335137eedb67d7ceca420a061880767b895cad
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52632465"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53339279"
 ---
 # <a name="design-and-build-a-management-solution-in-azure-preview"></a>Entwerfen und Erstellen einer Verwaltungslösung in Azure (Vorschau)
 > [!NOTE]
@@ -46,19 +45,19 @@ Der erste Schritt beim Entwerfen einer Lösung besteht darin, die benötigten Da
 
 Es gibt zahlreiche Möglichkeiten zum Erfassen von Datenquellen im Log Analytics-Repository, wie unter [Datenquellen in Log Analytics](../../azure-monitor/platform/agent-data-sources.md) beschrieben.  Neben Leistungsindikatoren für Windows- und Linux-Clients schließt dies im Windows-Ereignisprotokoll enthaltene oder von Syslog generierte Ereignisse ein.  Sie können auch von Azure Monitor erfasste Daten aus Azure-Ressourcen sammeln.  
 
-Können bestimmte benötigte Daten nicht über eine der verfügbaren Datenquellen abgerufen werden, können Sie die [HTTP-Datensammler-API](../../log-analytics/log-analytics-data-collector-api.md) verwenden, die Ihnen ermöglicht, von jedem beliebigen Client aus, der eine REST-API aufrufen kann, Daten in das Log Analytics-Repository zu schreiben.  Die geläufigste Methode der Sammlung benutzerdefinierter Daten in einer Verwaltungslösung besteht darin, ein [Runbook in Azure Automation](../../automation/automation-runbook-types.md) zu erstellen, mit dem die erforderlichen Daten aus Azure oder externen Ressourcen gesammelt und mithilfe der Datensammler-API in das Repository geschrieben werden.  
+Können bestimmte benötigte Daten nicht über eine der verfügbaren Datenquellen abgerufen werden, können Sie die [HTTP-Datensammler-API](../../azure-monitor/platform/data-collector-api.md) verwenden, die Ihnen ermöglicht, von jedem beliebigen Client aus, der eine REST-API aufrufen kann, Daten in das Log Analytics-Repository zu schreiben.  Die geläufigste Methode der Sammlung benutzerdefinierter Daten in einer Verwaltungslösung besteht darin, ein [Runbook in Azure Automation](../../automation/automation-runbook-types.md) zu erstellen, mit dem die erforderlichen Daten aus Azure oder externen Ressourcen gesammelt und mithilfe der Datensammler-API in das Repository geschrieben werden.  
 
 ### <a name="log-searches"></a>Protokollsuchvorgänge
-[Protokollsuchen](../../log-analytics/log-analytics-queries.md) dienen dazu, Daten aus dem Log Analytics-Repository zu extrahieren und zu analysieren.  Sie werden von Ansichten und Warnungen verwendet und ermöglichen Benutzern außerdem, Ad-hoc-Analysen von Daten im Repository auszuführen.  
+[Protokollsuchen](../../azure-monitor/log-query/log-query-overview.md) dienen dazu, Daten aus dem Log Analytics-Repository zu extrahieren und zu analysieren.  Sie werden von Ansichten und Warnungen verwendet und ermöglichen Benutzern außerdem, Ad-hoc-Analysen von Daten im Repository auszuführen.  
 
 Sie sollten alle Abfragen definieren, die Sie für den Benutzer als hilfreich erachten, auch wenn sie nicht von Ansichten oder Warnungen verwendet werden.  Sie stehen den Benutzern im Portal als gespeicherte Suchvorgänge zur Verfügung, und Sie können sie auch einer [Visualisierungskomponente „Liste der Abfragen“](../../azure-monitor/platform/view-designer-parts.md#list-of-queries-part) in Ihrer benutzerdefinierte Ansicht hinzufügen.
 
 ### <a name="alerts"></a>Alerts
-[Warnungen in Log Analytics](../../monitoring-and-diagnostics/monitoring-overview-alerts.md) identifizieren Probleme über [Protokollsuchvorgänge](#log-searches) in den Daten des Repositorys.  Entweder benachrichtigen sie den Benutzer oder führen automatisch eine Aktion als Antwort aus. Sie sollten verschiedene Warnungsbedingungen für Ihre Anwendung definieren und entsprechende Warnungsregeln zu Ihrer Lösungsdatei hinzufügen.
+[Warnungen in Log Analytics](../../azure-monitor/platform/alerts-overview.md) identifizieren Probleme über [Protokollsuchvorgänge](#log-searches) in den Daten des Repositorys.  Entweder benachrichtigen sie den Benutzer oder führen automatisch eine Aktion als Antwort aus. Sie sollten verschiedene Warnungsbedingungen für Ihre Anwendung definieren und entsprechende Warnungsregeln zu Ihrer Lösungsdatei hinzufügen.
 
 Wenn ein Problem prinzipiell mit einem automatisierten Prozess behoben werden kann, empfiehlt es sich in der Regel, ein Runbook in Azure Automation zu erstellen, mit dem die entsprechende Korrektur durchgeführt wird.  Die meisten Azure-Dienste lassen sich mit [Cmdlets](/powershell/azure/overview) verwalten, die vom Runbook zum Ausführen solcher Funktionen verwendet werden können.
 
-Wenn Ihre Lösung externe Funktionen als Antwort auf eine Warnung erfordert, können Sie eine [Webhookantwort](../../monitoring-and-diagnostics/alert-metric.md) verwenden.  Dadurch können Sie einen externen Webdienst aufrufen, der Informationen aus der Warnung sendet.
+Wenn Ihre Lösung externe Funktionen als Antwort auf eine Warnung erfordert, können Sie eine [Webhookantwort](../../azure-monitor/platform/alerts-metric.md) verwenden.  Dadurch können Sie einen externen Webdienst aufrufen, der Informationen aus der Warnung sendet.
 
 ### <a name="views"></a>Ansichten
 Ansichten in Log Analytics dienen zur Visualisierung von Daten aus dem Log Analytics-Repository.  Jede Lösung enthält in der Regel eine einzige Ansicht mit einer [Kachel](../../azure-monitor/platform/view-designer-tiles.md), die auf dem Hauptdashboard des Benutzers angezeigt wird.  Die Ansicht kann eine beliebige Anzahl von [Visualisierungskomponenten](../../azure-monitor/platform/view-designer-parts.md) enthalten, um dem Benutzer unterschiedliche Visualisierungen der gesammelten Daten bereitzustellen.

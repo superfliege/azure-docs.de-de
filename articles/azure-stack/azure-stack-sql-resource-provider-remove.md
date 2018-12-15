@@ -14,19 +14,19 @@ ms.topic: article
 ms.date: 11/20/2018
 ms.author: jeffgilb
 ms.reviewer: quying
-ms.openlocfilehash: b79d64cc063105cb8ecce537a09a7f39a78eef4c
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 8b6257519c3b1db2180335523047e8dc55558d57
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52275026"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52954576"
 ---
 # <a name="remove-the-sql-resource-provider"></a>Entfernen des SQL-Ressourcenanbieters
 
 Bevor Sie den SQL-Ressourcenanbieter entfernen, müssen Sie alle Anbieterabhängigkeiten entfernen. Außerdem benötigen Sie eine Kopie des Bereitstellungspakets, mit dem der Ressourcenanbieter installiert wurde.
 
 > [!NOTE]
-> Die Downloadlinks für die Ressourcenanbieter-Installationsprogramme finden Sie in den [Voraussetzungen für die Bereitstellung des Ressourcenanbieters](.\azure-stack-sql-resource-provider-deploy.md#prerequisites).
+> Die Downloadlinks für die Ressourcenanbieter-Installationsprogramme finden Sie in den [Voraussetzungen für die Bereitstellung des Ressourcenanbieters](./azure-stack-sql-resource-provider-deploy.md#prerequisites).
 
 Wenn Sie den SQL-Ressourcenanbieter löschen, werden die Mandantendatenbanken dadurch nicht von den Hostingservern gelöscht.
 

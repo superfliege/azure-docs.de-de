@@ -11,14 +11,17 @@ ms.topic: article
 ms.date: 08/14/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 42697f7f4bb8c6b9ef785eef0fe2f5f33b2b38a7
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ROBOTS: NOINDEX
+ms.openlocfilehash: 1e9a4c6355c60b18bb78aae362c1e2f142e2d864
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51615602"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53407999"
 ---
 # <a name="store-batch-ai-job-input-and-output-with-azure-storage"></a>Speichern von Batch AI-Auftragseingabe und -ausgabe mit Azure Storage
+
+[!INCLUDE [batch-ai-retiring](../../includes/batch-ai-retiring.md)]
 
 In diesem Leitfaden wird beschrieben, wie Sie Azure Storage zum Speichern von Ein- und Ausgabedateien beim Ausführen eines Auftrags verwenden. Azure Storage ist eine von mehreren Speicheroptionen, die von Batch AI unterstützt werden. Batch AI kann in Azure Storage integriert werden, indem Azure Storage-Systeme für ein Batch AI-Auftrags- oder -Clusterdateisystem bereitgestellt werden. Dies ermöglicht einen nahtlosen Zugriff auf in der Cloud gespeicherte Dateien. 
 

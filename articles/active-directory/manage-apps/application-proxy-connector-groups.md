@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: barbkess
 ms.reviewer: japere
-ms.openlocfilehash: aebb042c065652bef568f6bc1be2ee8bfde43988
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: e2e78eae924cf079ccc03d3f907cd64194b98921
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51622632"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53139023"
 ---
 # <a name="publish-applications-on-separate-networks-and-locations-using-connector-groups"></a>Veröffentlichen von Anwendungen in getrennten Netzwerken und an getrennten Standorten mithilfe von Connectorgruppen
 
@@ -32,7 +32,7 @@ Alle Anwendungen werden einer Connectorgruppe zugewiesen. Wenn Sie keine Gruppen
 >Wenn Sie über eine umfangreiche Anwendungsproxy-Bereitstellung verfügen, weisen Sie der Standardconnectorgruppe keine Anwendungen zu. Auf diese Weise erhalten neue Connectors keinen Livedatenverkehr, bis Sie sie einer aktiven Connectorgruppe zuordnen. Mit dieser Konfiguration können Sie Connectors auch in einen Ruhezustand versetzen, indem Sie sie wieder in die Standardgruppe verschieben, damit Sie die Wartung ohne Auswirkungen auf Ihre Benutzer ausführen können.
 
 ## <a name="prerequisites"></a>Voraussetzungen
-Um Connectors zu gruppieren, müssen Sie sicherstellen, dass [mehrere Connectors installiert sind](application-proxy-enable.md). Wenn Sie einen neuen Connector installieren, wird diese automatisch der Connectorgruppe **Standard** hinzugefügt.
+Um Connectors zu gruppieren, müssen Sie sicherstellen, dass [mehrere Connectors installiert sind](application-proxy-add-on-premises-application.md). Wenn Sie einen neuen Connector installieren, wird diese automatisch der Connectorgruppe **Standard** hinzugefügt.
 
 ## <a name="create-connector-groups"></a>Erstellen von Connectorgruppen
 Erstellen Sie mit diesen Schritten beliebig viele Connectorgruppen. 

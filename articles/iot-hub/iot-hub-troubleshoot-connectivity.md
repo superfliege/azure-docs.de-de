@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/19/2018
 ms.author: jlian
-ms.openlocfilehash: 197b15baee81c7ceff5d76dd21ceb6db1f0f5fdf
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: b05a8bfd46800c5b0b0126adcf2acb4852bb6683
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52424662"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53339755"
 ---
 # <a name="detect-and-troubleshoot-disconnects-with-azure-iot-hub"></a>Erkennen und Behandeln von Problemen bei der Trennung von Geräteverbindungen mit Azure IoT Hub
 
@@ -50,7 +50,7 @@ Um Warnungen zu erhalten, wenn die Verbindung von Geräten getrennt wird, konfig
 
    ![Empfohlene Metrikwarnung][3]
 
-Weitere Informationen finden Sie unter [Was sind klassische Warnungen in Microsoft Azure?](../monitoring-and-diagnostics/monitoring-overview-alerts.md).
+Weitere Informationen finden Sie unter [Was sind klassische Warnungen in Microsoft Azure?](../azure-monitor/platform/alerts-overview.md).
 
 ## <a name="resolve-connectivity-errors"></a>Lösen von Konnektivitätsproblemen
 

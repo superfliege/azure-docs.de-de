@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 28c943b2588270af823c0712d4e510a4f018da3e
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: efca5c4155372456100126671e7d5cd1ccf0cbbc
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50981484"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53027908"
 ---
 # <a name="use-infrastructure-automation-tools-with-virtual-machines-in-azure"></a>Verwenden von Infrastrukturautomatisierungstools mit virtuellen Computern in Azure
 Für die umfangreiche konsistente Erstellung und Verwaltung virtueller Azure-Computer (Virtual Machines, VMs) empfiehlt sich in der Regel eine Form der Automatisierung. Es gibt zahlreiche Tools und Lösungen, mit denen Sie die gesamte Azure-Infrastrukturbereitstellung und den gesamten Verwaltungslebenszyklus automatisieren können. In diesem Artikel werden einige der Infrastrukturautomatisierungstools vorgestellt, die Sie in Azure verwenden können. Diese Tools lassen sich in der Regel einem der folgenden Konzepte zuordnen:
@@ -23,7 +23,7 @@ Für die umfangreiche konsistente Erstellung und Verwaltung virtueller Azure-Com
     - [Azure Automation](#azure-automation) kann Aktionen für Ihre Azure-Infrastruktur und Ihre lokale Infrastruktur ausführen.
 
 - Automatisieren der Anwendungsbereitstellung und -übermittlung
-    - Beispiele sind [Azure DevOps Services](#visual-studio-team-services) und [Jenkins](#jenkins).
+    - Beispiele sind [Azure DevOps Services](#azure-devops-services) und [Jenkins](#jenkins).
 
 ## <a name="ansible"></a>Ansible
 [Ansible](https://www.ansible.com/) ist ein Automatisierungsmodul für die Konfigurationsverwaltung, VM-Erstellung oder Anwendungsbereitstellung. Für die Authentifizierung und Verwaltung der Zielcomputer kommt bei Ansible ein Agent-loses Modell (üblicherweise mit SSH-Schlüsseln) zum Einsatz. Konfigurationsaufgaben werden in Playbooks definiert. Dabei steht eine Reihe von Ansible-Modulen zur Ausführung bestimmter Aufgaben zur Verfügung. Weitere Informationen finden Sie unter [How Ansible works](https://www.ansible.com/how-ansible-works) (Funktionsweise von Ansible).

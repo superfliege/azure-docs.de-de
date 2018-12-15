@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: zarhoads
-ms.openlocfilehash: dc7bb0eab9004b9c818a4a7cbbf6102f01b24f45
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: e794c191737f14fb06351e345f70edb9f7cddb7c
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49465230"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53322055"
 ---
 # <a name="install-and-configure-postgresql-on-azure"></a>Installieren und Konfigurieren von PostgreSQL in Azure
 PostgreSQL ist eine erweiterte Open-Source-Datenbank, die Oracle und DB2 ähnlich ist. Sie umfasst Unternehmensfunktionen wie vollständige ACID-Kompatibilität, zuverlässige Transaktionsverarbeitung und Parallelitätssteuerung mit mehreren Versionen. Darüber hinaus unterstützt sie Standards wie ANSI SQL und SQL/MED (einschließlich Fremddatenwrappern für Oracle, MySQL, MongoDB und viele andere). Sie ist in hohem Maße erweiterbar und bietet Unterstützung für mehr als 12 prozedurale Sprachen, GIN- und GIST-Indizes, Unterstützung für räumliche Daten und mehrere NoSQL-ähnliche Funktionen für JSON-Anwendungen oder Anwendungen auf Schlüssel-Wert-Basis.
@@ -76,7 +76,7 @@ Stellen Sie über PuTTY eine Verbindung mit dem virtuellen Linux-Computer her. F
 ## <a name="configure-postgresql"></a>Konfigurieren von PostgreSQL
 1. (Optional) Erstellen Sie eine symbolische Verknüpfung zum Verkürzen der PostgreSQL-Referenz, sodass die Versionsnummer nicht enthalten ist:
    
-        # ln -s /opt/pgsql9.3.5 /opt/pgsql
+        # ln -s /opt/postgresql-9.3.5 /opt/pgsql
 2. Erstellen Sie ein Verzeichnis für die Datenbank:
    
         # mkdir -p /opt/pgsql_data
@@ -119,6 +119,7 @@ Stellen Sie über PuTTY eine Verbindung mit dem virtuellen Linux-Computer her. F
 7. Sie können auch die PostgreSQL-Version überprüfen:
    
         $ psql -V
+
 8. Initialisieren Sie die Datenbank:
    
         $ initdb -D $PGDATA -E UTF8 --locale=C -U postgres -W

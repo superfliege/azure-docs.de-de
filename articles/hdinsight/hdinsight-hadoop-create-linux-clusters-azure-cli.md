@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
-ms.openlocfilehash: 03d51cfb03de071f63578717a65eeda4b119bf0d
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: f82ac972e54dac6df5a913a8059417b701e2f7e0
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52497859"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53191579"
 ---
 # <a name="create-hdinsight-clusters-using-the-azure-classic-cli"></a>Erstellen von HDInsight-Clustern mit der klassischen Azure CLI
 
@@ -80,7 +80,7 @@ Die folgenden Schritte sollten an einer Befehlszeile (z.B. PowerShell oder Bash)
     * Ersetzen Sie `groupname` durch den Namen der Ressourcengruppe.
     * Ersetzen Sie `storagename` durch den Namen des Speicherkontos.
 
-     Speichern Sie von den zurückgegebenen Daten den `key`-Wert für `key1`.
+      Speichern Sie von den zurückgegebenen Daten den `key`-Wert für `key1`.
 
 6. Erstellen Sie ein HDInsight-Cluster.
 
@@ -90,8 +90,8 @@ Die folgenden Schritte sollten an einer Befehlszeile (z.B. PowerShell oder Bash)
 
     * Ersetzen Sie `Hadoop` durch den zu erstellenden Clustertyp. Beispiel: `Hadoop`, `HBase`, `Kafka`, `Spark` oder `Storm`.
 
-     > [!IMPORTANT]
-     > HDInsight-Cluster gibt es in verschiedenen Typen, die der Workload oder Technologie entsprechen, für die der Cluster optimiert ist. Es ist keine unterstützte Methode zum Erstellen eines Clusters vorhanden, bei der mehrere Typen kombiniert werden, z.B. Storm und HBase in einem Cluster.
+      > [!IMPORTANT]
+      > HDInsight-Cluster gibt es in verschiedenen Typen, die der Workload oder Technologie entsprechen, für die der Cluster optimiert ist. Es ist keine unterstützte Methode zum Erstellen eines Clusters vorhanden, bei der mehrere Typen kombiniert werden, z.B. Storm und HBase in einem Cluster.
 
     * Ersetzen Sie `location` durch den gleichen Ort, den Sie in den vorherigen Schritten verwendet haben.
 
@@ -105,12 +105,12 @@ Die folgenden Schritte sollten an einer Befehlszeile (z.B. PowerShell oder Bash)
 
     * Ersetzen Sie `sshuser` und `sshuserpassword` durch den Benutzernamen und das Kennwort, die Sie für den Zugriff auf den Cluster per SSH verwenden möchten.
 
-    > [!IMPORTANT]
-    > In diesem Beispiel wird ein Cluster mit zwei Workerknoten erstellt. Sie können die Anzahl der Workerknoten auch nach der Erstellung ändern, indem Sie Skalierungsvorgänge durchführen. Wenn Sie die Verwendung von mehr als 32 Workerknoten planen, müssen Sie eine Hauptknotengröße von mindestens 8 Kernen und 14 GB Arbeitsspeicher (RAM) auswählen. Sie können die Hauptknotengröße während der Clustererstellung mit dem Parameter `--headNodeSize` festlegen.
-    >
-    > Weitere Informationen zu Knotengrößen und den damit verbundenen Kosten finden Sie unter [HDInsight – Preise](https://azure.microsoft.com/pricing/details/hdinsight/).
-
-    Die Fertigstellung der Clustererstellung kann möglicherweise einige Minuten dauern. In der Regel dauert es etwa 15 Minuten.
+      > [!IMPORTANT]
+      > In diesem Beispiel wird ein Cluster mit zwei Workerknoten erstellt. Sie können die Anzahl der Workerknoten auch nach der Erstellung ändern, indem Sie Skalierungsvorgänge durchführen. Wenn Sie die Verwendung von mehr als 32 Workerknoten planen, müssen Sie eine Hauptknotengröße von mindestens 8 Kernen und 14 GB Arbeitsspeicher (RAM) auswählen. Sie können die Hauptknotengröße während der Clustererstellung mit dem Parameter `--headNodeSize` festlegen.
+      >
+      > Weitere Informationen zu Knotengrößen und den damit verbundenen Kosten finden Sie unter [HDInsight – Preise](https://azure.microsoft.com/pricing/details/hdinsight/).
+      
+      Die Fertigstellung der Clustererstellung kann möglicherweise einige Minuten dauern. In der Regel dauert es etwa 15 Minuten.
 
 ## <a name="troubleshoot"></a>Problembehandlung
 

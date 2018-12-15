@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 3b9e6a59b44db9295d86e3bc8a8dda9ec9761f38
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: e6148a35540b08916a4f0468af39e0f088453286
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51009207"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52958865"
 ---
 # <a name="create-a-new-device-template-version"></a>Erstellen einer neuen Gerätevorlagenversion
 
@@ -61,7 +61,7 @@ Es lassen sich mehrere Versionen der Gerätevorlage erstellen. Im Laufe der Zeit
 1. Wählen Sie **Gerät migrieren**.
 1. Wählen Sie die Versionsnummer aus, zu der Sie das Gerät migrieren möchten, und wählen Sie **Migrieren**.
 
-![Migrieren eines Geräts](media\howto-version-devicetemplate\pick-version.png)
+![Migrieren eines Geräts](media/howto-version-devicetemplate/pick-version.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

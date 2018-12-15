@@ -8,12 +8,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: stefanmsft
-ms.openlocfilehash: ac7664e94c6e02ab90dbb1b32a54c8234614afe2
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.openlocfilehash: 9476db888a4bfae2d43ae4eec340972d4c2eb714
+ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51636270"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53413012"
 ---
 # <a name="how-to-debug-issues-with-user-defined-functions-in-azure-digital-twins"></a>Gewusst wie: Debuggen von Problemen mit benutzerdefinierten Funktionen in Azure Digital Twins
 
@@ -25,7 +25,7 @@ Wenn Sie wissen, wie Probleme, die in Ihrer Azure Digital Twins-Instanz auftrete
 
 ### <a name="enable-log-analytics-for-your-instance"></a>Aktivieren von Log Analytics für Ihre Instanz
 
-Protokolle und Metriken für Ihre Azure Digital Twins-Instanz werden über Azure Monitor verfügbar gemacht. Bei der folgenden Dokumentation wird davon ausgegangen, dass Sie einen [Azure Log Analytics](../log-analytics/log-analytics-queries.md)-Arbeitsbereich über das [Azure-Portal](../log-analytics/log-analytics-quick-create-workspace.md), die [Azure CLI](../log-analytics/log-analytics-quick-create-workspace-cli.md) oder über [ PowerShell](../log-analytics/log-analytics-quick-create-workspace-posh.md) erstellt haben.
+Protokolle und Metriken für Ihre Azure Digital Twins-Instanz werden über Azure Monitor verfügbar gemacht. Bei der folgenden Dokumentation wird davon ausgegangen, dass Sie einen [Azure Log Analytics](../azure-monitor/log-query/log-query-overview.md)-Arbeitsbereich über das [Azure-Portal](../azure-monitor/learn/quick-create-workspace.md), die [Azure CLI](../azure-monitor/learn/quick-create-workspace-cli.md) oder über [ PowerShell](../azure-monitor/learn/quick-create-workspace-posh.md) erstellt haben.
 
 > [!NOTE]
 > Wenn Sie Ereignisse zum ersten Mal an **Log Analytics** senden, tritt unter Umständen eine Verzögerung von 5 Minuten auf.
@@ -42,7 +42,7 @@ Um eine Sensortelemetriemeldung den entsprechenden Protokollen zuzuordnen, könn
 
 ```Kusto
 AzureDiagnostics
-| where CorrelationId = 'YOUR_CORRELATION_IDENTIFIER'
+| where CorrelationId == 'YOUR_CORRELATION_IDENTIFIER'
 ```
 
 | Abfragewert | Ersetzen durch |
@@ -53,7 +53,7 @@ Wenn Sie Ihre benutzerdefinierte Funktion, protokollieren, werden diese Protokol
 
 ```Kusto
 AzureDiagnostics
-| where Category = 'UserDefinedFunction'
+| where Category == 'UserDefinedFunction'
 ```
 
 Weitere Informationen zu leistungsstarken Abfragevorgängen finden Sie unter [Erste Schritte mit Abfragen in Log Analytics](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-queries).

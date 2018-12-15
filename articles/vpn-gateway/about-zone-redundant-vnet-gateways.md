@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 09/21/2018
 ms.author: cherylmc
-ms.openlocfilehash: 27bac5265a5e884b808c4ccb58fda0b2fffeb774
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: d3dda3bb5fd39b844f50044c1262008e3610e301
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46975655"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52871403"
 ---
 # <a name="about-zone-redundant-virtual-network-gateways-in-azure-availability-zones"></a>Informationen zu zonenredundanten Gateways für das virtuelle Netzwerk in Azure-Verfügbarkeitszonen
 
@@ -86,7 +86,7 @@ Ja, Sie können die neuen SKUs über das Azure-Portal bereitstellen. Allerdings 
 
 ### <a name="what-regions-are-available-for-me-to-use-the-new-skus"></a>In welchen Regionen stehen die neuen SKUs zur Verfügung?
 
-Die neuen SKUs sind in Azure-Region mit Azure-Verfügbarkeitszonen verfügbar: USA, Mitte, Frankreich, Mitte und Europa, Westen. In Zukunft werden die zonenredundanten Gateways auch in anderen öffentlichen Azure-Regionen verfügbar sein.
+Die neuen SKUs sind in Azure-Regionen mit Azure-Verfügbarkeitszonen verfügbar. Hierzu zählen „USA, Mitte“, „Frankreich, Mitte“, „Europa, Norden“, „Europa, Westen“ und „USA, Westen 2“. In Zukunft werden zonenredundante Gateways auch in anderen öffentlichen Azure-Regionen verfügbar sein.
 
 ### <a name="can-i-changemigrateupgrade-my-existing-virtual-network-gateways-to-zone-redundant-or-zonal-gateways"></a>Kann ich meine vorhandenen Gateways für virtuelle Netzwerke in zonenredundante oder zonenbasierte Gateways ändern/migrieren/aktualisieren?
 

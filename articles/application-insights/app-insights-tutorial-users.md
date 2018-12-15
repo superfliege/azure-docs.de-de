@@ -10,12 +10,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: 6d4f96a2c1d288648543a92614cab0f8cf5ee2ea
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: d5e97d82a011bc4aba29aa597a7fc6473d17a3b2
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51255999"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52970789"
 ---
 # <a name="use-azure-application-insights-to-understand-how-customers-are-using-your-application"></a>Verwenden von Azure Application Insights zur Analyse der Kundeninteraktion mit Ihrer Anwendung
 
@@ -53,20 +53,20 @@ Im Bereich **Benutzer** können Sie wichtige Benutzerdaten auf unterschiedliche 
 2. Klicken Sie im Menü auf **Benutzer**.
 3. In der Standardansicht wird die Anzahl der individuellen Benutzer angezeigt, die sich in den letzten 24 Stunden mit Ihrer Anwendung verbunden haben.  Sie können das Zeitfenster ändern und verschiedene andere Kriterien festlegen, um diese Informationen zu filtern.
 
-    ![Abfrage-Generator](media\app-insights-tutorial-users\QueryBuilder.png)
+    ![Abfrage-Generator](media/app-insights-tutorial-users/QueryBuilder.png)
 
 6. Klicken Sie auf die Dropdownliste **Während**, und legen Sie als Zeitfenster sieben Tage fest.  Hierdurch werden in den unterschiedlichen Diagrammen im Bereich mehr Daten angezeigt.
 
-    ![Ändern des Zeitbereichs](media\app-insights-tutorial-users\TimeRange.png)
+    ![Ändern des Zeitbereichs](media/app-insights-tutorial-users/TimeRange.png)
 
 4. Klicken Sie auf die Dropdownliste **Split by** (Trennen nach), um sich im Diagramm eine Aufschlüsselung nach Benutzereigenschaft anzeigen zu lassen.  Wählen Sie aus der Dropdownliste **Land oder Region** einen entsprechenden Eintrag aus.  Im Diagramm werden nun zwar dieselben Daten angezeigt, jedoch können Sie sich eine Aufschlüsselung nach der Anzahl der Benutzer jedes Landes anzeigen lassen.
 
-    ![Diagramm „Land oder Region“](media\app-insights-tutorial-users\CountryorRegion.png)
+    ![Diagramm „Land oder Region“](media/app-insights-tutorial-users/CountryorRegion.png)
 
 5. Positionieren Sie den Cursor über verschiedenen Balken im Diagramm. Beachten Sie hierbei, dass sich die angezeigte Anzahl für jedes Land nur auf das Zeitfenster bezieht, das von diesem Balken dargestellt wird.
 6. Auf der rechten Seite befindet sich die Spalte **Insights**, in der Benutzerdaten analysiert werden.  Hier werden Informationen wie die Anzahl der individuellen Sitzungen innerhalb des festgelegten Zeitraums und Datensätze mit gemeinsamen Eigenschaften angezeigt, die einen Großteil der Benutzerdaten darstellen. 
 
-    ![Spalte „Insights“](media\app-insights-tutorial-users\insights.png)
+    ![Spalte „Insights“](media/app-insights-tutorial-users/insights.png)
 
 
 ## <a name="analyze-user-sessions"></a>Analysieren von Benutzersitzungen
@@ -75,15 +75,15 @@ Der Bereich **Sessions** (Sitzungen) ist vergleichbar mit dem Bereich **Benutzer
 1. Klicken Sie im Menü auf **Sessions** (Sitzungen).
 2. Beachten Sie, dass für das Diagramm dieselben Optionen zum Filtern und Unterteilen der Daten wie im Bereich **Benutzer** verfügbar sind.
 
-    ![Abfrage-Generator für Sitzungen](media\app-insights-tutorial-users\SessionsBuilder.png)
+    ![Abfrage-Generator für Sitzungen](media/app-insights-tutorial-users/SessionsBuilder.png)
 
 3. Auf der rechten Seite werden im Bereich **Stichprobe dieser Sitzungen** Sitzungen angezeigt, die viele Ereignisse enthalten.  Diese Sitzungen bieten sich für eine Analyse an.
 
-    ![„Stichprobe dieser Sitzungen“](media\app-insights-tutorial-users\SessionsSample.png)
+    ![„Stichprobe dieser Sitzungen“](media/app-insights-tutorial-users/SessionsSample.png)
 
 4. Klicken Sie auf eine der Sitzungen, um sich die **Sitzungszeitachse** anzeigen zu lassen,die alle Aktionen der Sitzungen auflistet.  Auf diese Weise lassen sich Informationen wie z.B. Sitzungen mit einer großen Anzahl von Ausnahmen identifizieren.
 
-    ![„Sitzungszeitachse“](media\app-insights-tutorial-users\SessionsTimeline.png)
+    ![„Sitzungszeitachse“](media/app-insights-tutorial-users/SessionsTimeline.png)
 
 ## <a name="group-together-similar-users"></a>Gruppieren von ähnlichen Benutzern
 Eine **Kohorte** umfasst Benutzer, die nach ähnlichen Eigenschaften gruppiert werden.  Sie können Kohorten zum Filtern von Daten in anderen Bereichen verwenden, um bestimmte Benutzergruppen zu analysieren.  Beispielsweise lassen sich so nur Benutzer analysieren, die einen Kaufvorgang abgeschlossen haben.
@@ -92,12 +92,12 @@ Eine **Kohorte** umfasst Benutzer, die nach ähnlichen Eigenschaften gruppiert w
 2.  Klicken Sie auf **New** (Neu), um eine neue Kohorte zu erstellen.
 3.  Wählen Sie in der Dropdownliste **Who used** (Verwendete Aktion) eine Aktion aus.  Nur Benutzer, die diese Aktion innerhalb des Zeitfensters des Berichts ausgeführt haben, werden angezeigt.
 
-    ![Kohorte, die die angegebenen Aktionen ausgeführt hat](media\app-insights-tutorial-users\CohortsDropdown.png)
+    ![Kohorte, die die angegebenen Aktionen ausgeführt hat](media/app-insights-tutorial-users/CohortsDropdown.png)
 
 4.  Klicken Sie im Menü auf **Benutzer**.
 5.  Wählen Sie in der Dropdownliste **Anzeigen** die erstellte Kohorte aus.  Die Diagrammdaten werden auf diese Benutzer beschränkt.
 
-    ![Kohorte in Benutzertool](media\app-insights-tutorial-users\UsersCohort.png)
+    ![Kohorte in Benutzertool](media/app-insights-tutorial-users/UsersCohort.png)
 
 
 ## <a name="compare-desired-activity-to-reality"></a>Vergleichen von gewünschter und tatsächlicher Aktivität
@@ -105,16 +105,16 @@ Während der Fokus in den vorherigen Bereichen auf dem tatsächlichen Benutzerve
 
 1. Klicken Sie im Menü zuerst auf **Trichter** und anschließend auf **New** (Neu). 
 
-    ![](media\app-insights-tutorial-users\funnelsnew.png)
+    ![](media/app-insights-tutorial-users/funnelsnew.png)
 
 2. Geben Sie in das Feld **Trichtername** einen Wert ein.
 3. Erstellen Sie einen Trichter mit mindestens zwei Schritten, indem Sie für jeden Schritt eine Aktion auswählen.  Die Liste der Aktionen basiert auf den von Application Insights gesammelten Nutzungsdaten.
 
-    ![](media\app-insights-tutorial-users\funnelsedit.png)
+    ![](media/app-insights-tutorial-users/funnelsedit.png)
 
 4. Klicken Sie auf **Save** (Speichern), um den Trichter zu speichern und sich die zugehörigen Ergebnisse anzeigen zu lassen.  Im Fenster rechts neben dem Trichter werden die am häufigsten aufgetretenen Ereignisse vor der ersten und nach der letzten Aktivität angezeigt. So können Sie Benutzertendenzen für eine bestimmte Aktionssequenz nachvollziehen.
 
-    ![](media\app-insights-tutorial-users\funnelsright.png)
+    ![](media/app-insights-tutorial-users/funnelsright.png)
 
 
 ## <a name="learn-which-customers-return"></a>Ermitteln von Kunden, die wiederholt auf Ihre Anwendung zugreifen
@@ -123,11 +123,11 @@ Mit der Option **Retention** (Vermerkdauer) können Sie nachvollziehen, welche B
 1. Klicken Sie im Menü auf **Retention** (Vermerkdauer).
 2. Standardmäßig umfassen die analysierten Informationen Benutzer, die eine Aktion ausgeführt, die Anwendung verlassen und anschließend die Anwendung erneut verwendet haben, um eine weitere Aktion auszuführen.  Sie können diesen Filter z.B. so konfigurieren, dass nur Benutzer erfasst werden, die nach Abschluss eines Kaufvorgangs erneut auf Ihre Anwendung zugegriffen haben.
 
-    ![](media\app-insights-tutorial-users\retentionquery.png)
+    ![](media/app-insights-tutorial-users/retentionquery.png)
 
 3. Die Anzahl der wiederkehrenden Benutzer, die den Kriterien entsprechen, wird in einem Diagramm und in einer Tabelle für verschiedene Zeiträume angezeigt.  Üblicherweise ergibt sich mit größer werdenden Zeiträumen als Muster ein sukzessiver Abfall von wiederkehrenden Benutzern.  Ein plötzlicher Abfall zwischen Zeiträumen kann unter Umständen Anlass für Bedenken sein. 
 
-    ![](media\app-insights-tutorial-users\retentiongraph.png)
+    ![](media/app-insights-tutorial-users/retentiongraph.png)
 
 ## <a name="analyze-user-navigation"></a>Analysieren der Benutzernavigation
 Mit einem **User flow** (Benutzerflow) wird die Navigation von Benutzern zwischen den Seiten und Funktionen Ihrer Anwendung visualisiert.  Dadurch können Sie ermitteln, zu welchem Ziel Benutzer in der Regel von einer bestimmten Seite aus navigieren, wie sie die Anwendung üblicherweise beenden und welche Aktionen wiederholt ausgeführt werden.
@@ -136,15 +136,15 @@ Mit einem **User flow** (Benutzerflow) wird die Navigation von Benutzern zwische
 2.  Klicken Sie zur Erstellung eines neuen Benutzerflows zuerst auf **New** (Neu) und anschließend auf **Bearbeiten**, um die zugehörigen Daten zu bearbeiten.
 3.  Erhöhen Sie den **Zeitbereich** auf sieben Tage, und wählen Sie anschließend ein Ausgangsereignis aus.  Der Flow erfasst nun Benutzersitzungen, die mit diesem Ereignis beginnen.
 
-    ![](media\app-insights-tutorial-users\flowsedit.png)
+    ![](media/app-insights-tutorial-users/flowsedit.png)
 
 4.  Der Benutzerflow wird angezeigt. In diesem sehen Sie unterschiedliche Benutzerpfade und die Anzahl der Benutzersitzungen.  Blaue Linien stehen für eine Aktion, die der Benutzer nach der aktuellen Aktion ausgeführt hat.  Rote Linien stellen das Ende der Benutzersitzung dar.
 
-    ![](media\app-insights-tutorial-users\flows.png)
+    ![](media/app-insights-tutorial-users/flows.png)
 
 5.  Klicken Sie zuerst auf das **x** in der Ecke des Aktionsfelds und anschließend auf **Diagramm erstellen**, um ein Ereignis aus dem Flow zu entfernen.  Daraufhin wird jede Instanz des Ereignisses entfernt, und das Diagramm wird neu gezeichnet.  Klicken Sie auf **Bearbeiten**, damit das Ereignis zu der Liste **Ausgeschlossene Ereignisse** hinzugefügt wird.
 
-    ![](media\app-insights-tutorial-users\flowsexclude.png)
+    ![](media/app-insights-tutorial-users/flowsexclude.png)
 
 ## <a name="consolidate-usage-data"></a>Zusammenfassung von Nutzungsdaten
 In **Workbooks** (Arbeitsmappen) werden Datenvisualisierungen, Analytics-Abfragen und Text in interaktiven Dokumenten zusammengefasst.  Sie können Arbeitsmappen verwenden, um gemeinsame Nutzungsdaten zu gruppieren, Informationen zu einem bestimmten Vorfall zusammenzutragen oder ein Team über die beobachtete Nutzung Ihrer Anwendung zu informieren.
@@ -153,12 +153,12 @@ In **Workbooks** (Arbeitsmappen) werden Datenvisualisierungen, Analytics-Abfrage
 2.  Klicken Sie auf **New** (Neu), um eine neue Arbeitsmappe zu erstellen.
 3.  Eine Abfrage wird bereitgestellt, in der alle Nutzungsdaten des letzten Tags als Balkendiagramm angezeigt werden.  Sie können diese Abfrage verwenden oder manuell bearbeiten. Alternativ können Sie auf **Beispielabfragen** klicken, um weitere relevante Abfragen auszuwählen.
 
-    ![](media\app-insights-tutorial-users\samplequeries.png)
+    ![](media/app-insights-tutorial-users/samplequeries.png)
 
 4.  Klicken Sie auf **Bearbeitung abgeschlossen**.
 5.  Klicken Sie im oberen Bereich auf **Bearbeiten**, um den Text oben in der Arbeitsmappe zu bearbeiten.  Dieser ist in Markdown formatiert.
 
-    ![](media\app-insights-tutorial-users\markdown.png)
+    ![](media/app-insights-tutorial-users/markdown.png)
 
 6.  Klicken Sie auf **Benutzer hinzufügen**, um ein Diagramm mit Benutzerinformationen hinzuzufügen.  Bearbeiten Sie ggf. die Diagrammdaten, und klicken Sie anschließend auf **Bearbeitung abgeschlossen**, um das Diagramm zu speichern.
 

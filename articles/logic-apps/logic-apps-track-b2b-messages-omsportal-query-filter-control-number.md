@@ -9,19 +9,19 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 10/19/2018
-ms.openlocfilehash: af1d00e49819f1d69e08c0fa99891690e07b489f
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 5cfab07e19e543b7a46fcce8f449a46395c144d6
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50233751"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52995317"
 ---
 # <a name="create-tracking-queries-for-b2b-messages-in-azure-log-analytics-for-azure-logic-apps"></a>Erstellen von Nachverfolgungsabfragen für B2B-Nachrichten in Azure Log Analytics für Azure Logic Apps
 
 Sie können Abfragen erstellen, die Aktionen auf der Grundlage bestimmter Kriterien filtern, um AS2-, X12- oder EDIFACT-Nachrichten zu finden, die Sie mithilfe von [Azure Log Analytics](../log-analytics/log-analytics-overview.md) nachverfolgen. So können Sie beispielsweise anhand einer bestimmten Austauschkontrollnummer nach Nachrichten suchen.
 
 > [!NOTE]
-> Auf dieser Seite wurden zuvor Schritte zum Ausführen dieser Aufgaben mit der Microsoft Operations Management Suite (OMS) beschrieben. Diese wird [im Januar 2019 außer Betrieb genommen](../log-analytics/log-analytics-oms-portal-transition.md), und stattdessen werden Schritte mit Azure Log Analytics angegeben. 
+> Auf dieser Seite wurden zuvor Schritte zum Ausführen dieser Aufgaben mit der Microsoft Operations Management Suite (OMS) beschrieben. Diese wird [im Januar 2019 eingestellt](../azure-monitor/platform/oms-portal-transition.md), und stattdessen werden Schritte mit Azure Log Analytics angegeben. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

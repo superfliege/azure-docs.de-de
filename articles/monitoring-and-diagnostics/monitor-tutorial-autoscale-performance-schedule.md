@@ -9,12 +9,12 @@ ms.date: 12/11/2017
 ms.author: ancav
 ms.custom: mvc
 ms.component: autoscale
-ms.openlocfilehash: b63e1fa316e9ebeaa564731b8bb0bc3ed5ba9036
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: adf3fdf694216353c5e6a0df8726cb5cd337ddf8
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35264060"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53385991"
 ---
 # <a name="create-an-autoscale-setting-for--azure-resources-based-on-performance-data-or-a-schedule"></a>Erstellen einer Einstellung für die automatische Skalierung von Azure-Ressourcen basierend auf Leistungsdaten oder einem Zeitplan
 
@@ -181,7 +181,7 @@ In diesem Tutorial haben Sie Folgendes durchgeführt:
 > * Bereinigen von Ressourcen
 
 
-Um mehr über die Einstellungen für die automatische Skalierung zu erfahren, fahren Sie mit der [Übersicht zur automatischen Skalierung](monitoring-overview-autoscale.md) fort.
+Um mehr über die Einstellungen für die automatische Skalierung zu erfahren, fahren Sie mit der [Übersicht zur automatischen Skalierung](../azure-monitor/platform/autoscale-overview.md) fort.
 
 > [!div class="nextstepaction"]
 > [Archivieren von Überwachungsdaten](monitor-tutorial-archive-monitoring-data.md)

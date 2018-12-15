@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/22/2017
 ms.author: aljo
-ms.openlocfilehash: 0d809f9a1b3abbb284c3f7e0c27eb9c236692a3f
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 91516e3284ebf3588c2dba31b67cc583e4d395db
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49386464"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53309415"
 ---
 # <a name="read-before-you-scale"></a>Vor der Skalierung unbedingt zu beachten
 Die Skalierung von Computeressourcen zum Ermitteln der Arbeitsauslastung Ihrer Anwendung erfordert eine absichtliche Planung, dauert fast immer länger als eine Stunde für eine Produktionsumgebung und setzt voraus, dass Sie Ihre Arbeitsauslastung und Ihren Geschäftskontext verstehen. Wenn Sie diese Aktivität noch nie zuvor ausgeführt haben, wird empfohlen, dass Sie zunächst die [Überlegungen zur Kapazitätsplanung von Service Fabric-Clustern](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity) lesen und verstehen, bevor Sie sich mit dem Rest dieses Dokuments beschäftigen. Diese Empfehlung dient dazu, unbeabsichtigte LiveSite-Probleme zu vermeiden. Es wird außerdem empfohlen, die Vorgänge, die Sie für eine Nichtproduktionsumgebung ausführen möchten, erfolgreich zu testen. Sie können jederzeit [Produktionsprobleme melden oder bezahlte Unterstützung für Azure anfordern](https://docs.microsoft.com/azure/service-fabric/service-fabric-support#report-production-issues-or-request-paid-support-for-azure). Für Engineers, die für die Ausführung dieser Vorgänge vorgesehen sind und den entsprechendem Kontext kennen, werden in diesem Artikel Skalierungsvorgänge beschrieben. Sie müssen aber entscheiden und verstehen, welche Vorgänge für Ihren Anwendungsfall geeignet sind, z.B. welche Ressourcen skaliert werden sollen (CPU, Speicher, Arbeitsspeicher), in welche Richtung skaliert werden soll (vertikal oder horizontal) und welche Vorgänge ausgeführt werden sollen (Bereitstellung von Ressourcenvorlagen, Portal, PowerShell/CLI).
 
-# <a name="scale-a-service-fabric-cluster-in-or-out-using-auto-scale-rules-or-manually"></a>Zentrales Hoch- oder Herunterskalieren eines Service Fabric-Clusters mithilfe von Regeln für die automatische Skalierung oder eines manuellen Verfahrens
+## <a name="scale-a-service-fabric-cluster-in-or-out-using-auto-scale-rules-or-manually"></a>Zentrales Hoch- oder Herunterskalieren eines Service Fabric-Clusters mithilfe von Regeln für die automatische Skalierung oder eines manuellen Verfahrens
 VM-Skalierungsgruppen sind eine Azure-Computeressource, mit der Sie eine Sammlung von virtuellen Computern bereitstellen und verwalten können. Jeder Knotentyp, der in einem Service Fabric-Cluster definiert ist, wird als separate Skalierungsgruppe eines virtuellen Computers eingerichtet. Jeden Knotentyp kann dann unabhängig zentral hoch- oder herunterskaliert werden, bei jedem Typ können unterschiedliche Portgruppen geöffnet sein, und die Typen können verschiedene Kapazitätsmetriken aufweisen. Weitere Informationen finden Sie im Dokument über die [Service Fabric-Knotentypen](service-fabric-cluster-nodetypes.md). Da die Service Fabric-Knotentypen in Ihrem Cluster am Back-End aus VM-Skalierungsgruppen bestehen, müssen Sie für jeden Knotentyp bzw. jede VM-Skalierungsgruppe Regeln für die automatische Skalierung einrichten.
 
 > [!NOTE]
@@ -103,10 +103,10 @@ Die in Service Fabric Explorer aufgeführten Knoten sind ein Abbild der Informat
 
 Sie verfügen über zwei Optionen, um sicherzustellen, dass ein Knoten beim Entfernen eines virtuellen Computers entfernt wird:
 
-1) Wählen Sie die Dauerhaftigkeitsstufe „Gold“ oder „Silber“ für die Knotentypen in Ihrem Cluster aus, die die Infrastrukturintegration für Sie bereitstellt. Wenn Sie zentral herunterskalieren, werden so automatisch die Knoten aus den Systemdiensten (FM) entfernt.
+1. Wählen Sie die Dauerhaftigkeitsstufe „Gold“ oder „Silber“ für die Knotentypen in Ihrem Cluster aus, die die Infrastrukturintegration für Sie bereitstellt. Wenn Sie zentral herunterskalieren, werden so automatisch die Knoten aus den Systemdiensten (FM) entfernt.
 [hier mit den Details der Dauerhaftigkeitsstufen](service-fabric-cluster-capacity.md)
 
-2) Sobald die VM-Instanz zentral herunterskaliert wurde, müssen Sie das Cmdlet [Remove-ServiceFabricNodeState](https://docs.microsoft.com/powershell/module/servicefabric/remove-servicefabricnodestate) aufrufen.
+2. Sobald die VM-Instanz zentral herunterskaliert wurde, müssen Sie das Cmdlet [Remove-ServiceFabricNodeState](https://docs.microsoft.com/powershell/module/servicefabric/remove-servicefabricnodestate) aufrufen.
 
 > [!NOTE]
 > Um Verfügbarkeit sicherzustellen und den Zustand beizubehalten, muss eine bestimmte Anzahl von Knoten in einem Service Fabric-Cluster stets in Betrieb sein. Dies wird auch als „Aufrechterhalten eines Quorums“ bezeichnet. Daher ist es für gewöhnlich nicht sicher, alle Computer innerhalb des Clusters herunterzufahren, sofern Sie nicht zuvor eine [vollständige Sicherung des Zustands](service-fabric-reliable-services-backup-restore.md) durchgeführt haben.

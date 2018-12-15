@@ -2,16 +2,17 @@
 title: Verwenden der Unterstützung von Änderungsfeeds in Azure Cosmos DB
 description: Verwenden Sie die Azure Cosmos DB-Unterstützung von Änderungsfeeds, um Änderungen in Dokumenten nachzuverfolgen, eine ereignisbasierte Verarbeitung (wie mit Triggern) durchzuführen und Caches und Analysesysteme auf dem neuesten Stand zu halten.
 author: rafats
+ms.author: rafats
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.author: rafats
-ms.openlocfilehash: 4edf637d97070416c0dc2970f4bed483e5f4f34d
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.custom: seodec18
+ms.openlocfilehash: 0519bb78b01cd7cab6abaf453efd7a4595101ef4
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51621308"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53133748"
 ---
 # <a name="change-feed-in-azure-cosmos-db"></a>Änderungsfeed in Azure Cosmos DB
 
@@ -82,7 +83,7 @@ Mit einem Änderungsfeed können Sie beispielsweise die folgenden Aufgaben effiz
 
 Im Folgenden sind einige Szenarien aufgeführt, die Sie mit einem Änderungsfeed ganz einfach implementieren können:
 
-* In Ihren [serverlosen](http://azure.com/serverless) Web- oder mobilen Apps können Sie Ereignisse wie z.B. alle Änderungen am Profil, an den Voreinstellungen oder am Standort des Kunden nachverfolgen, um bestimmte Aktionen auszulösen, z.B. das Senden von Pushbenachrichtigungen an die Geräte des Kunden mit [Azure Functions](#azure-functions). 
+* In Ihren [serverlosen](https://azure.microsoft.com/en-us/solutions/serverless/) Web- oder mobilen Apps können Sie Ereignisse wie z.B. alle Änderungen am Profil, an den Voreinstellungen oder am Standort des Kunden nachverfolgen, um bestimmte Aktionen auszulösen, z.B. das Senden von Pushbenachrichtigungen an die Geräte des Kunden mit [Azure Functions](change-feed-functions.md).
 
 * Wenn Sie Azure Cosmos DB zum Erstellen eines Spiels verwenden, können Sie den Änderungsfeed beispielsweise verwenden, um in Echtzeit Bestenlisten anhand der Ergebnisse von abgeschlossenen Spiele zu implementieren.
 
@@ -124,4 +125,4 @@ In den folgenden Artikeln erfahren Sie mehr über Änderungsfeeds:
 
 * [Möglichkeiten zum Lesen von Änderungsfeeds](read-change-feed.md)
 * [Verwenden des Änderungsfeeds in Azure Functions](change-feed-functions.md)
-* [Verwenden der Change Feed Processor-Bibliothek](change-feed-processor.md)
+* [Verwenden der Änderungsfeed-Verarbeitungsbibliothek](change-feed-processor.md)

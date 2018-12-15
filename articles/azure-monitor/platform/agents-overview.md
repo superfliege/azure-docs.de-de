@@ -10,16 +10,15 @@ ms.assetid: ''
 ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: magoedte
-ms.openlocfilehash: 4255b70746eb1d307617a66714301fa7f8609a77
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 5a40e215c6dd5bf4dc1178595716f95ae21adcb4
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52634267"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53438199"
 ---
 # <a name="overview-of-the-azure-monitoring-agents"></a>Übersicht über die Azure-Überwachungs-Agents 
 Microsoft Azure bietet mehrere Möglichkeiten zum Erfassen unterschiedlicher Datentypen von virtuellen Computern unter Microsoft Windows und Linux, die in Azure, in Ihrem Rechenzentrum oder von anderen Cloudanbietern gehostet werden. Folgende drei Agent-Typen stehen zum Überwachen eines virtuellen Computers zur Verfügung:
@@ -31,7 +30,7 @@ Microsoft Azure bietet mehrere Möglichkeiten zum Erfassen unterschiedlicher Dat
 In diesem Artikel werden die Unterschiede und die jeweiligen Funktionen beschrieben, damit Sie ermitteln können, welcher Agent Ihre IT-Dienstverwaltung oder Ihre allgemeinen Überwachungsanforderungen unterstützt.  
 
 ## <a name="azure-diagnostic-extension"></a>Azure-Diagnoseerweiterung
-Die [Azure-Diagnoseerweiterung](../../monitoring-and-diagnostics/azure-diagnostics.md) (allgemein als Microsoft Azure-Diagnose- bzw. Linux Azure-Diagnoseerweiterung bezeichnet) wurde seit ihrer allgemeinen Verfügbarkeit 2010 zunächst für Azure Cloud Services bereitgestellt und ist ein Agent, der die einfache Sammlung von Diagnosedaten von einer Azure-Computeressource, z.B. einem virtuellen Computer, und die Speicherung der Daten in Azure Storage ermöglicht. Die Daten im Speicher können Sie mit einem von mehreren verfügbaren Tools anzeigen, z.B. mit [Server-Explorer in Visual Studio](/visualstudio/azure/vs-azure-tools-storage-resources-server-explorer-browse-manage) oder [Azure Storage-Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md).
+Die [Azure-Diagnoseerweiterung](../../azure-monitor/platform/diagnostics-extension-overview.md) (allgemein als Microsoft Azure-Diagnose- bzw. Linux Azure-Diagnoseerweiterung bezeichnet) wurde seit ihrer allgemeinen Verfügbarkeit 2010 zunächst für Azure Cloud Services bereitgestellt und ist ein Agent, der die einfache Sammlung von Diagnosedaten von einer Azure-Computeressource, z.B. einem virtuellen Computer, und die Speicherung der Daten in Azure Storage ermöglicht. Die Daten im Speicher können Sie mit einem von mehreren verfügbaren Tools anzeigen, z.B. mit [Server-Explorer in Visual Studio](/visualstudio/azure/vs-azure-tools-storage-resources-server-explorer-browse-manage) oder [Azure Storage-Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md).
 
 Sie können auswählen, dass Folgendes gesammelt wird:
 
@@ -45,8 +44,8 @@ Sie können auswählen, dass Folgendes gesammelt wird:
 Der Azure-Diagnose-Agent sollte zu folgenden Zwecken verwendet werden:
 
 * Archivieren von Protokollen und Metriken im Azure-Speicher.
-* Integrieren von Überwachungsdaten in Drittanbietertools. Diese Tools verwenden eine Vielzahl von Methoden, darunter die Abfrage des Speicherkontos, die Weiterleitung an [Event Hubs](../../event-hubs/event-hubs-about.md) oder die Abfrage mit der [Azure-Überwachungs-REST-API](../../monitoring-and-diagnostics/monitoring-rest-api-walkthrough.md).
-* Hochladen von Daten in Azure Monitor zum Erstellen von Metrikdiagrammen im Azure-Portal oder Erstellen von [Metrikwarnungen](../../monitoring-and-diagnostics/alert-metric-overview.md) nahezu in Echtzeit. 
+* Integrieren von Überwachungsdaten in Drittanbietertools. Diese Tools verwenden eine Vielzahl von Methoden, darunter die Abfrage des Speicherkontos, die Weiterleitung an [Event Hubs](../../event-hubs/event-hubs-about.md) oder die Abfrage mit der [Azure-Überwachungs-REST-API](../../azure-monitor/platform/rest-api-walkthrough.md).
+* Hochladen von Daten in Azure Monitor zum Erstellen von Metrikdiagrammen im Azure-Portal oder Erstellen von [Metrikwarnungen](../../azure-monitor/platform/alerts-metric-overview.md) nahezu in Echtzeit. 
 * Autoskalierung von VM-Skalierungsgruppen und klassischen Cloud Services basierend auf Metriken für Gastbetriebssysteme.
 * Untersuchen von VM-Startfehlern mit der [Startdiagnose](../../virtual-machines/troubleshooting/boot-diagnostics.md).
 * Nachvollziehen der Leistung Ihrer Anwendungen und proaktives Erkennen von Problemen, die sich auf die Anwendungen auswirken, mithilfe von [Application Insights](../../azure-monitor/overview.md).

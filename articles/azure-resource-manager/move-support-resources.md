@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/28/2018
 ms.author: tomfitz
-ms.openlocfilehash: 5bb820d816115dccf470b6c32d080862495e8310
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 6f1869b83f46f97d0c54eb874a8879521a43b1e2
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47434975"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53387062"
 ---
 # <a name="move-operation-support-for-resources"></a>Unterstützung des Verschiebevorgangs für Ressourcen
 
@@ -35,7 +35,7 @@ Get-AzureRmResource -ResourceGroupName demogroup | Select Name, ResourceType | F
 Verwenden Sie für die Azure-Befehlszeilenschnittstelle den folgenden Befehl:
 
 ```azurecli-interactive
-az resource list -g demogroup --query '[].{name:name, reourcetype:type}'
+az resource list -g demogroup --query '[].{name:name, resourceType:type}' --output table
 ```
 
 Der Ressourcentyp wird im Format `<resource-provider>/<resource-type-name>` zurückgegeben. Der Wert `Microsoft.OperationalInsights/workspaces` verfügt also über den Ressourcenanbieter **Microsoft.OperationalInsights** und weist einen Ressourcentyp namens **workspaces** auf.
@@ -89,14 +89,6 @@ Wenn Sie den Ressourcenanbieter und den Ressourcentyp gefunden haben, verwenden 
 | Ressourcentyp | Ressourcengruppe | Abonnement |
 | ------------- | -------------- | ------------ |
 | batchaccounts | JA | JA |
-
-## <a name="microsoftbatchai"></a>Microsoft.BatchAI
-| Ressourcentyp | Ressourcengruppe | Abonnement |
-| ------------- | -------------- | ------------ |
-| clusters | Nein  | Nein  |
-| fileservers | Nein  | Nein  |
-| jobs | Nein  | Nein  |
-| workspaces | Nein  | Nein  |
 
 ## <a name="microsoftbingmaps"></a>Microsoft.BingMaps
 | Ressourcentyp | Ressourcengruppe | Abonnement |

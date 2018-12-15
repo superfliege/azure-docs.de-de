@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 3/27/2018
 ms.author: shtabriz
-ms.openlocfilehash: 8535caf482b10912e6f7bc6df445756094d7603f
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 5d32c3539446482f2dcdaeb954bb704dc9b78c58
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2018
-ms.locfileid: "30261411"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53274920"
 ---
 # <a name="configure-health-notifications-for-existing-problem-management-systems-using-a-webhook"></a>Konfigurieren von Integritätsbenachrichtigungen für vorhandene Problemverwaltungssysteme mit einem Webhook
 
@@ -37,7 +37,7 @@ Wenn Sie eine vorkonfigurierte Integration verwenden möchten, ziehen Sie folgen
 ## <a name="configuring-a-custom-notification-using-the-service-health-webhook-payload"></a>Konfigurieren einer benutzerdefinierten Benachrichtigung mit der Service Health-Webhooknutzlast
 Wenn Sie eine eigene benutzerdefinierte Webhookintegration einrichten möchten, müssen Sie die während der Service Health-Benachrichtigungen gesendete JSON-Nutzlast analysieren.
 
-[Hier finden Sie ein Beispiel](../monitoring-and-diagnostics/monitoring-activity-log-alerts-webhook.md), wie die `ServiceHealth`-Webhooknutzlast aussieht.
+[Hier finden Sie ein Beispiel](../azure-monitor/platform/activity-log-alerts-webhook.md), wie die `ServiceHealth`-Webhooknutzlast aussieht.
 
 Mit einem Blick auf `context.eventSource == "ServiceHealth"` können Sie erkennen, dass dies eine Service Health-Warnung ist. Die folgenden Eigenschaften sind dabei die wichtigsten:
  * `data.context.activityLog.status`
@@ -102,7 +102,7 @@ Dies zeigt, dass es Probleme mit „Warnungen & Metriken“ in Australien, Osten
 
 
 ## <a name="testing-your-webhook-integration-via-an-http-post-request"></a>Testen der Webhookintegration über eine HTTP POST-Anforderung
-1. Erstellen Sie die Service Health-Nutzlast, die Sie senden möchten. Eine Service Health-Beispielwebhook-Nutzlast finden Sie unter [Webhooks für Azure-Aktivitätsprotokollwarnungen](../monitoring-and-diagnostics/monitoring-activity-log-alerts-webhook.md).
+1. Erstellen Sie die Service Health-Nutzlast, die Sie senden möchten. Eine Service Health-Beispielwebhook-Nutzlast finden Sie unter [Webhooks für Azure-Aktivitätsprotokollwarnungen](../azure-monitor/platform/activity-log-alerts-webhook.md).
 
 2. Erstellen Sie eine HTTP POST-Anforderung, indem Sie wie folgt vorgehen:
 
@@ -118,6 +118,6 @@ Dies zeigt, dass es Probleme mit „Warnungen & Metriken“ in Australien, Osten
 4. Wechseln Sie zu [PagerDuty](https://www.pagerduty.com/), um zu überprüfen, ob Ihre Integration erfolgreich eingerichtet wurde.
 
 ## <a name="next-steps"></a>Nächste Schritte
-- Weitere Informationen zum [Webhookschema für Aktivitätsprotokollwarnungen](../monitoring-and-diagnostics/monitoring-activity-log-alerts-webhook.md). 
+- Weitere Informationen zum [Webhookschema für Aktivitätsprotokollwarnungen](../azure-monitor/platform/activity-log-alerts-webhook.md). 
 - Weitere Informationen zu [Dienstintegritätsbenachrichtigungen](../monitoring-and-diagnostics/monitoring-service-notifications.md).
-- Weitere Informationen zu [Aktionsgruppen](../monitoring-and-diagnostics/monitoring-action-groups.md).
+- Weitere Informationen zu [Aktionsgruppen](../azure-monitor/platform/action-groups.md).

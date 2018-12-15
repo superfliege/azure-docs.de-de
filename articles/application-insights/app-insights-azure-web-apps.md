@@ -9,16 +9,15 @@ ms.assetid: 0b2deb30-6ea8-4bc4-8ed0-26765b85149f
 ms.service: application-insights
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: mbullwin
-ms.openlocfilehash: 17a0b36fffb14f423aba3dd02b5b42d44933309c
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 00af4cc67dc7490727af46e12c387fb0f147371d
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52165389"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53339840"
 ---
 # <a name="monitor-azure-web-app-performance"></a>Überwachen der Leistung der Azure-Web-App
 Im [Azure-Portal](https://portal.azure.com) können Sie eine Anwendungsleistungsüberwachung für Ihre [Azure-Web-Apps](../app-service/app-service-web-overview.md) einrichten. [Azure Application Insights](app-insights-overview.md) instrumentiert Ihre App, um Telemetriedaten über ihre Aktivitäten an den Application Insights-Dienst zu senden, wo sie gespeichert und analysiert werden. Hier können Sie dann mithilfe von Metrikdiagrammen und Suchtools Probleme diagnostizieren, die Leistung verbessern und die Nutzung untersuchen.
@@ -100,9 +99,9 @@ Application Insights kann durch Installieren eines SDK in Ihrer App eine detaill
 ## <a name="next-steps"></a>Nächste Schritte
 * [Ausführen des Profilers in Ihrer Live-App](app-insights-profiler.md)
 * [Azure Functions](https://github.com/christopheranderson/azure-functions-app-insights-sample): Überwachen Sie Azure Functions mit Application Insights
-* [Ermöglichen des Sendens von Azure-Diagnosedaten an Application Insights](../monitoring-and-diagnostics/azure-diagnostics-configure-application-insights.md)
+* [Ermöglichen des Sendens von Azure-Diagnosedaten an Application Insights](../azure-monitor/platform/diagnostics-extension-to-application-insights.md)
 * [Überwachen von Dienstintegritätsmetriken](../azure-monitor/platform/data-collection.md), um sicherzustellen, dass Ihr Dienst verfügbar und reaktionsfähig ist.
-* [Empfangen von Warnbenachrichtigungen](../monitoring-and-diagnostics/monitoring-overview-alerts.md) , wenn ein Vorgangsereignis auftritt oder Metriken einen Schwellenwert überschreiten.
+* [Empfangen von Warnbenachrichtigungen](../azure-monitor/platform/alerts-overview.md) , wenn ein Vorgangsereignis auftritt oder Metriken einen Schwellenwert überschreiten.
 * Verwenden von [Application Insights für JavaScript-Apps und Webseiten](app-insights-javascript.md), um Clienttelemetriedaten von den Browsern zu erhalten, mit denen auf eine Webseite zugegriffen wird
 * [Einrichten von Verfügbarkeitswebtests](app-insights-monitor-web-app-availability.md), um benachrichtigt zu werden, wenn Ihre Website nicht verfügbar ist
 

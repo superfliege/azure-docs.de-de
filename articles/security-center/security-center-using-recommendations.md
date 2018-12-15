@@ -3,7 +3,7 @@ title: Befolgen von Azure Security Center-Empfehlungen zum Erhöhen der Sicherhe
 description: " Erfahren Sie, wie mithilfe von Sicherheitsrichtlinien und Empfehlungen in Azure Security Center Sicherheitsangriffe abgewehrt werden können. "
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: MBaldwin
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/18/2017
-ms.author: terrylan
-ms.openlocfilehash: 3640e4affe42986106791cba50f6cbfd97906806
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.author: rkarlin
+ms.openlocfilehash: d496f3f28cee711109c5c200102d48482bf6cd9c
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52308323"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53340690"
 ---
 # <a name="use-azure-security-center-recommendations-to-enhance-security"></a>Befolgen von Azure Security Center-Empfehlungen zum Erhöhen der Sicherheit
 Sie können die Wahrscheinlichkeit eines Sicherheitsvorfalls verringern, indem Sie eine Sicherheitsrichtlinie und die Azure Security Center-Empfehlungen umsetzen. In diesem Artikel wird erläutert, wie mithilfe von Sicherheitsrichtlinien und Empfehlungen in Security Center Sicherheitsangriffe abgewehrt werden können.
@@ -30,7 +30,7 @@ Sie können die Wahrscheinlichkeit eines Sicherheitsvorfalls verringern, indem S
 >
 
 ## <a name="managing-security-recommendations"></a>Umsetzen von Sicherheitsempfehlungen
-In einer Sicherheitsrichtlinie werden die Sicherheitsmechanismen definiert, die für Ressourcen im angegebenen Abonnement oder in der angegebenen Ressourcengruppe zu empfehlen sind. In Security Center definieren Sie Richtlinien auf Grundlage der Sicherheitsanforderungen Ihres Unternehmens. Weitere Informationen finden Sie unter [Festlegen von Sicherheitsrichtlinien in Security Center](security-center-azure-policy.md).
+In einer Sicherheitsrichtlinie werden die Sicherheitsmechanismen definiert, die für Ressourcen im angegebenen Abonnement oder in der angegebenen Ressourcengruppe zu empfehlen sind. In Security Center definieren Sie Richtlinien auf Grundlage der Sicherheitsanforderungen Ihres Unternehmens. Weitere Informationen finden Sie unter [Festlegen von Sicherheitsrichtlinien in Security Center](tutorial-security-policy.md).
 
 Sicherheitsrichtlinien für Ressourcengruppen werden von der Abonnementebene geerbt.
 

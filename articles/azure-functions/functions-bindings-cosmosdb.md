@@ -2,21 +2,20 @@
 title: Azure Cosmos DB-Bindungen für Functions 1.x
 description: Grundlegendes zur Verwendung von Azure Cosmos DB-Triggern und -Bindungen in Azure Functions.
 services: functions
-documentationcenter: na
 author: craigshoemaker
+ms.author: cshoe
 manager: jeconnoc
 keywords: Azure Functions, Funktionen, Ereignisverarbeitung, dynamisches Compute, serverlose Architektur
 ms.service: azure-functions; cosmos-db
-ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/21/2017
-ms.author: cshoe
-ms.openlocfilehash: 3d4c9e974f92f26b93900318c01dc8a659d8edbe
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.custom: seodec18
+ms.openlocfilehash: 2a501129720447462d1e6e961597b51fa683dc1e
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52276209"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53136204"
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions-1x"></a>Azure Cosmos DB-Bindungen für Azure Functions 1.x
 
@@ -24,7 +23,7 @@ ms.locfileid: "52276209"
 > * [Version 1](functions-bindings-cosmosdb.md)
 > * [Version 2](functions-bindings-cosmosdb-v2.md)
 
-Dieser Artikel erläutert das Arbeiten mit [Azure Cosmos DB](..\cosmos-db\serverless-computing-database.md)-Bindungen in Azure Functions. Azure Functions unterstützt Trigger sowie Ein- und Ausgabebindungen für Azure Cosmos DB.
+Dieser Artikel erläutert das Arbeiten mit [Azure Cosmos DB](../cosmos-db/serverless-computing-database.md)-Bindungen in Azure Functions. Azure Functions unterstützt Trigger sowie Ein- und Ausgabebindungen für Azure Cosmos DB.
 
 > [!NOTE]
 > Dieser Artikel gilt für Azure Functions 1.x.  Informationen zur Verwendung dieser Bindungen in Functions 2.x finden Sie unter [Azure Cosmos DB-Bindungen für Azure Functions 2.x](functions-bindings-cosmosdb-v2.md).
@@ -38,7 +37,7 @@ Dieser Artikel erläutert das Arbeiten mit [Azure Cosmos DB](..\cosmos-db\server
 
 ## <a name="packages---functions-1x"></a>Pakete: Functions 1.x
 
-Die Azure Cosmos DB-Bindungen für die Functions-Version 1.x werden im NuGet-Paket [Microsoft.Azure.WebJobs.Extensions.DocumentDB](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DocumentDB) (Version 1.x) bereitgestellt. Den Quellcode für die Bindungen finden Sie im GitHub-Repository [azure-webjobs-sdk-extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/tree/v2.x/src/WebJobs.Extensions.DocumentDB).
+Die Azure Cosmos DB-Bindungen für die Functions-Version 1.x werden im NuGet-Paket [Microsoft.Azure.WebJobs.Extensions.DocumentDB](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DocumentDB) (Version 1.x) bereitgestellt. Den Quellcode für die Bindungen finden Sie im GitHub-Repository [azure-webjobs-sdk-extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/tree/v2.x/src/WebJobs.Extensions.DocumentDB).
 
 [!INCLUDE [functions-package](../../includes/functions-package.md)]
 
@@ -895,7 +894,7 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, Docume
 
 Dieser Abschnitt enthält folgende Beispiele:
 
-* [Warteschlangentrigger: Suchen der ID in JSON-Code](#queue-trigger-look-up-id-from-string-javascript)
+* [Warteschlangentrigger: Suchen der ID in JSON-Code](#queue-trigger-look-up-id-from-json-javascript)
 * [HTTP-Trigger: Suchen der ID in einer Abfragezeichenfolge](#http-trigger-look-up-id-from-query-string-javascript)
 * [HTTP-Trigger: Suchen der ID in Routendaten](#http-trigger-look-up-id-from-route-data-javascript)
 * [Warteschlangentrigger: Abrufen mehrerer Dokumente unter Verwendung von „SqlQuery“](#queue-trigger-get-multiple-docs-using-sqlquery-javascript)
@@ -1177,7 +1176,7 @@ Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaft
 
 Wenn in C#- und F#-Funktionen die Funktion erfolgreich beendet wird, werden alle Änderungen am Eingabedokument mithilfe benannter Eingabeparameter automatisch beibehalten. 
 
-In JavaScript-Funktionen erfolgen Aktualisierungen bei Beenden der Funktion nicht automatisch. Verwenden Sie stattdessen `context.bindings.<documentName>In` und `context.bindings.<documentName>Out`, um Aktualisierungen vorzunehmen. Siehe das [JavaScript-Beispiel](#input---javascript-example).
+In JavaScript-Funktionen erfolgen Aktualisierungen bei Beenden der Funktion nicht automatisch. Verwenden Sie stattdessen `context.bindings.<documentName>In` und `context.bindings.<documentName>Out`, um Aktualisierungen vorzunehmen. Siehe das [JavaScript-Beispiel](#input---javascript-examples).
 
 ## <a name="output"></a>Output
 
@@ -1571,7 +1570,7 @@ Der Attributkonstruktor akzeptiert den Datenbanknamen und den Sammlungsnamen. We
     }
 ```
 
-Ein vollständiges Beispiel finden Sie unter [Ausgabe: C#-Beispiel](#output---c-example).
+Ein vollständiges Beispiel finden Sie unter [Ausgabe: C#-Beispiel](#output---c-examples).
 
 ## <a name="output---configuration"></a>Ausgabe: Konfiguration
 
@@ -1606,7 +1605,7 @@ Standardmäßig wird beim Schreiben in den Ausgabeparameter in Ihrer Funktion ei
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Informieren Sie sich über serverlose Datenbankberechnungen mit Cosmos DB.](..\cosmos-db\serverless-computing-database.md)
+* [Informieren Sie sich über serverlose Datenbankberechnungen mit Cosmos DB.](../cosmos-db/serverless-computing-database.md)
 * [Konzepte für Azure Functions-Trigger und -Bindungen](functions-triggers-bindings.md)
 
 <!---
