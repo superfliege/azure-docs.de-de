@@ -6,14 +6,14 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 11/13/2018
+ms.date: 12/14/2018
 ms.author: alinast
-ms.openlocfilehash: 95f01c9338afbf2ab5381001e4ab480185cedaeb
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.openlocfilehash: 912a3ed558f8fabfcad517aeb7b7e864cf8f359e
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51636882"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53436924"
 ---
 # <a name="understand-digital-twins-object-models-and-spatial-intelligence-graph"></a>Grundlegendes zu Digital Twins-Objektmodellen und zum Raumintelligenzgraphen
 
@@ -48,11 +48,11 @@ Weitere Objektkategorien sind:
 - **Rollen** sind Sätze von Berechtigungen, die Benutzern und Geräten im Raumgraphen zugeordnet sind, z. B. `Space Administrator`, `User Administrator` und `Device Administrator`.
 - **Rollenzuweisungen** sind die Zuordnung zwischen einer Rolle und ein Objekt im Raumgraphen. Beispielsweise kann einem Benutzer oder einem Dienstprinzipal die Berechtigung zum Verwalten eines Raums im Raumgraphen erteilt werden.
 - **Sicherheitsschlüsselspeicher** stellen die Sicherheitsschlüssel für alle Geräte in der Hierarchie unter einem bestimmten Raumobjekt bereit, um dem Gerät die sichere Kommunikation mit Digital Twins zu ermöglichen.
-- **Benutzerdefinierte Funktionen** (User-Defined Functions, UDFs) ermöglichen die anpassbare Verarbeitung von Sensortelemetriedaten im Raumgraphen. Eine benutzerdefinierte Funktion kann beispielsweise folgende Aktionen ausführen: 
-    - Festlegen eines Sensorwerts. 
-    - Ausführen benutzerdefinierter Logik anhand von Sensormesswerten und Festlegen der Ausgabe für einen Raum. 
-    - Anfügen von Metadaten an einen Raum. 
-    - Senden von Benachrichtigungen, wenn vordefinierte Bedingungen erfüllt sind. Derzeit können benutzerdefinierte Funktionen in JavaScript geschrieben werden.
+- **Benutzerdefinierte Funktionen** (User-Defined Functions, UDFs) ermöglichen die anpassbare Verarbeitung von Sensortelemetriedaten im Raumgraphen. Eine benutzerdefinierte Funktion kann beispielsweise folgende Aktionen ausführen:
+  - Festlegen eines Sensorwerts.
+  - Ausführen benutzerdefinierter Logik anhand von Sensormesswerten und Festlegen der Ausgabe für einen Raum.
+  - Anfügen von Metadaten an einen Raum.
+  - Senden von Benachrichtigungen, wenn vordefinierte Bedingungen erfüllt sind. Derzeit können benutzerdefinierte Funktionen in JavaScript geschrieben werden.
 - **Matcher** (Abgleicher) sind Objekte, die festlegen, welche benutzerdefinierten Funktionen für eine bestimmte Telemetrienachricht ausgeführt werden sollen.
 - **Endpunkte** sind die Orte, an denen Telemetrienachrichten und Digital Twins-Ereignisse weitergeleitet werden können, z.B. `Event Hub`, `Service Bus` und `Event Grid`.
 
@@ -103,9 +103,9 @@ Alle API-Aufrufe müssen mit [OAuth](https://docs.microsoft.com/azure/active-dir
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Informationen zur Gerätekonnektivität und zum Senden von Telemetrienachrichten an Digital Twins finden Sie unter [Gerätekonnektivität und eingehende Telemetriedaten](concepts-device-ingress.md).
+- Informationen zur Gerätekonnektivität und zum Senden von Telemetrienachrichten an Digital Twins finden Sie unter [Gerätekonnektivität und eingehende Telemetriedaten](concepts-device-ingress.md).
 
-* Informationen über Einschränkungen und Drosselungen von Verwaltungs-APIs finden Sie unter [Diensteinschränkungen der öffentlichen Vorschauversion](concepts-service-limits.md).
+- Informationen über Einschränkungen und Drosselungen von Verwaltungs-APIs finden Sie unter [Diensteinschränkungen der öffentlichen Vorschauversion](concepts-service-limits.md).
 
 <!-- Images -->
 [1]: media/concepts/digital-twins-spatial-graph-building.png

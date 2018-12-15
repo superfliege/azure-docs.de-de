@@ -9,12 +9,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 10/19/2018
-ms.openlocfilehash: 0bfb652d9e64b9dbf61ad4032f1449fd484cc80a
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: ad58257313c60b4757c83793886ce32a2997332b
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50233554"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52996540"
 ---
 # <a name="track-b2b-messages-with-azure-log-analytics"></a>Nachverfolgen von B2B-Nachrichten mit Azure Log Analytics
 
@@ -27,7 +27,7 @@ Nachdem Sie die B2B-Kommunikation zwischen Handelspartnern in Ihrem Integrations
 * Suchfunktionen
 
 > [!NOTE]
-> Auf dieser Seite wurden zuvor Schritte zum Ausführen dieser Aufgaben mit der Microsoft Operations Management Suite (OMS) beschrieben. Diese wird [im Januar 2019 eingestellt](../log-analytics/log-analytics-oms-portal-transition.md), und stattdessen werden Schritte mit Azure Log Analytics angegeben. 
+> Auf dieser Seite wurden zuvor Schritte zum Ausführen dieser Aufgaben mit der Microsoft Operations Management Suite (OMS) beschrieben. Diese wird [im Januar 2019 eingestellt](../azure-monitor/platform/oms-portal-transition.md), und stattdessen werden Schritte mit Azure Log Analytics angegeben. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -37,15 +37,15 @@ Nachdem Sie die B2B-Kommunikation zwischen Handelspartnern in Ihrem Integrations
 
 * [Veröffentlichen Sie Diagnosedaten in Log Analytics](../logic-apps/logic-apps-track-b2b-messages-omsportal.md), falls noch nicht geschehen.
 
-* Wenn Sie die obigen Anforderungen erfüllen, benötigen Sie auch einen Log Analytics-Arbeitsbereich, in dem Sie die Nachverfolgung von B2B-Kommunikation über Log Analytics nutzen. Falls Sie keinen Log Analytics-Arbeitsbereich besitzen, lesen Sie die Informationen zum [Erstellen eines Log Analytics-Arbeitsbereichs](../log-analytics/log-analytics-quick-create-workspace.md).
+* Wenn Sie die obigen Anforderungen erfüllen, benötigen Sie auch einen Log Analytics-Arbeitsbereich, in dem Sie die Nachverfolgung von B2B-Kommunikation über Log Analytics nutzen. Falls Sie keinen Log Analytics-Arbeitsbereich besitzen, lesen Sie die Informationen zum [Erstellen eines Log Analytics-Arbeitsbereichs](../azure-monitor/learn/quick-create-workspace.md).
 
 ## <a name="install-logic-apps-b2b-solution"></a>Installieren der Lösung B2B-Logik-App-Verwaltung
 
-Bevor Log Analytics B2B-Nachrichten für Ihre Logik-App nachverfolgen kann, fügen Sie Log Analytics die Lösung **B2B-Logik-App-Verwaltung** hinzu. Weitere Informationen zum Hinzufügen von Lösungen zu Log Analytics finden Sie [hier](../log-analytics/log-analytics-quick-create-workspace.md).
+Bevor Log Analytics B2B-Nachrichten für Ihre Logik-App nachverfolgen kann, fügen Sie Log Analytics die Lösung **B2B-Logik-App-Verwaltung** hinzu. Weitere Informationen zum Hinzufügen von Lösungen zu Log Analytics finden Sie [hier](../azure-monitor/learn/quick-create-workspace.md).
 
 1. Wählen Sie im [Azure-Portal](https://portal.azure.com) die Option **Alle Dienste**. Geben Sie im Suchfeld „log analytics“ ein, und wählen Sie **Log Analytics** aus.
 
-   ![Auswählen von Log Analytics](media/logic-apps-track-b2b-messages-omsportal/find-log-analytics.png)
+   ![Auswählen von „Log Analytics“](media/logic-apps-track-b2b-messages-omsportal/find-log-analytics.png)
 
 1. Wählen Sie unter **Log Analytics** Ihren Log Analytics-Arbeitsbereich aus. 
 

@@ -1,7 +1,7 @@
 ---
 title: Hinzufügen von Geplauder zu einer QnA Maker-Wissensdatenbank
 titleSuffix: Azure Cognitive Services
-description: Das Hinzufügen von persönlichem Geplauder zu Ihrem Bot macht ihn unterhaltsamer und interessanter, wenn Sie eine Wissensdatenbank erstellen. Mit QnA Maker können Sie auf einfache Weise ein vordefiniertes Dataset mit wichtigen Geplauderelementen in Ihrer Wissensdatenbank hinzufügen. Dies kann ein Ausgangspunkt für das Geplauder Ihres Bots sein und Ihnen die Zeit und die Kosten ersparen, diese Elemente von Grund auf neu zu schreiben.
+description: Das Hinzufügen von persönlichem Geplauder zu Ihrem Bot macht ihn unterhaltsamer und interessanter, wenn Sie eine Wissensdatenbank erstellen. Mit QnA Maker können Sie auf einfache Weise ein vordefiniertes Dataset mit wichtigen Geplauderelementen in Ihrer Wissensdatenbank hinzufügen.
 services: cognitive-services
 author: tulasim88
 manager: cgronlun
@@ -10,12 +10,13 @@ ms.component: qna-maker
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: tulasim
-ms.openlocfilehash: ddd78cbfff2b1ee450a26306dce528cd89fea788
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.custom: seodec18
+ms.openlocfilehash: 7c54628faba4a3d7a89c1944e2f434a83035707b
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50228923"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53081761"
 ---
 # <a name="add-chit-chat-to-a-knowledge-base"></a>Hinzufügen von Geplauder zu einer Wissensdatenbank
 

@@ -14,12 +14,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: c43497a69b3188b4bc38e91b6ff9b1cc8b6bd21a
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: e81b87a6cbaddf61492fa1fc41e66950eb7ce1d7
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51624147"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53191620"
 ---
 # <a name="remediate-users-flagged-for-risk-in-the-azure-active-directory-portal"></a>Behandeln von „Benutzer mit Risikomarkierung“ im Azure Active Directory-Portal
 
@@ -31,7 +31,7 @@ Wenn ungewöhnliche Aktivitäten erkannt werden, die auf nicht autorisierte Zugr
 
 ## <a name="access-the-users-flagged-for-risk-report"></a>Zugreifen auf den Bericht „Benutzer mit Risikomarkierung“
 
-Sie können Benutzer mit Risikomarkierung im Azure-Portal über den [Bericht „Benutzer mit Risikomarkierung“](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/UsersAtRisk) anzeigen. Wenn Sie nicht über Azure AD verfügen, können Sie sich unter [https://aka.ms/AccessAAD](https://aka.ms/AccessAAD) kostenlos anmelden. 
+Sie können Benutzer mit Risikomarkierung im Azure-Portal über den [Bericht „Benutzer mit Risikomarkierung“](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RiskyUsers) anzeigen. Wenn Sie nicht über Azure AD verfügen, können Sie sich unter [https://aka.ms/AccessAAD](https://aka.ms/AccessAAD) kostenlos anmelden. 
 
 Dem Bericht „Benutzer mit Risikomarkierung“ können Sie für jeden Benutzer die folgenden Aktionen entnehmen:
 
@@ -58,9 +58,9 @@ Außerdem können Sie mit Ihren Office 365-Anmeldeinformationen auch auf das **A
 
 Führen Sie die folgenden Schritte aus, um die betroffenen Konten zu korrigieren und Ihre Umgebung zu schützen:
 
-1.  [Überprüfen Sie die Informationen](http://aka.ms/MFAValid) für die mehrstufige Authentifizierung und die Self-Service-Kennwortzurücksetzung. 
-2.  [Aktivieren Sie die mehrstufige Authentifizierung](http://aka.ms/MFAuth) für alle Benutzer. 
-3.  Verwenden Sie [dieses Bereinigungsskript](http://aka.ms/remediate), um für jedes betroffene Konto automatisch folgende Schritte auszuführen: 
+1.  [Überprüfen Sie die Informationen](https://aka.ms/MFAValid) für die mehrstufige Authentifizierung und die Self-Service-Kennwortzurücksetzung. 
+2.  [Aktivieren Sie die mehrstufige Authentifizierung](https://aka.ms/MFAuth) für alle Benutzer. 
+3.  Verwenden Sie [dieses Bereinigungsskript](https://aka.ms/remediate), um für jedes betroffene Konto automatisch folgende Schritte auszuführen: 
 
     a. Zurücksetzen des Kennworts, um das Konto zu schützen und die Beendigung aktiver Sitzungen zu erzwingen
 
@@ -84,10 +84,10 @@ Führen Sie die folgenden Schritte aus, um die betroffenen Konten zu korrigieren
 
 Darüber hinaus empfiehlt sich Folgendes:
 
-- Lesen und implementieren Sie diesen [Leitfaden für den Umgang mit ungewöhnlichen Aktivitäten](http://aka.ms/fixaccount). 
-- [Aktivieren Sie die Überwachungspipeline](http://aka.ms/improvesecurity), um die Analyse der Aktivitäten Ihres Mandanten zu vereinfachen. Nach Abschluss des Vorgangs wird Ihr Überwachungsspeicher mit den Aktivitätsprotokollen gefüllt. Nun können Sie auch die [Such- und Untersuchungsressourcen des Security & Compliance Centers](http://aka.ms/sccsearch) nutzen. 
-- Verwenden Sie [dieses Skript, um die Postfachüberwachung für alle Ihre Konten zu aktivieren](http://aka.ms/mailboxaudit1). 
-- Überprüfen Sie die Berechtigungen der Stellvertretung und die E-Mail-Weiterleitungsregeln für alle Ihre Postfächer. Hierzu können Sie [dieses PowerShell-Skript](http://aka.ms/delegateforwardrules) verwenden. 
+- Lesen und implementieren Sie diesen [Leitfaden für den Umgang mit ungewöhnlichen Aktivitäten](https://aka.ms/fixaccount). 
+- [Aktivieren Sie die Überwachungspipeline](https://aka.ms/improvesecurity), um die Analyse der Aktivitäten Ihres Mandanten zu vereinfachen. Nach Abschluss des Vorgangs wird Ihr Überwachungsspeicher mit den Aktivitätsprotokollen gefüllt. Nun können Sie auch die [Such- und Untersuchungsressourcen des Security & Compliance Centers](https://aka.ms/sccsearch) nutzen. 
+- Verwenden Sie [dieses Skript, um die Postfachüberwachung für alle Ihre Konten zu aktivieren](https://aka.ms/mailboxaudit1). 
+- Überprüfen Sie die Berechtigungen der Stellvertretung und die E-Mail-Weiterleitungsregeln für alle Ihre Postfächer. Hierzu können Sie [dieses PowerShell-Skript](https://aka.ms/delegateforwardrules) verwenden. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

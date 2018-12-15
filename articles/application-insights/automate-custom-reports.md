@@ -8,17 +8,16 @@ manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/25/2018
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: 1f94e297e784d000c829a50c077e7fa6d303333f
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 51482aa460826d4b364ba6b034129be9b7211ff3
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50962213"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52872441"
 ---
 # <a name="automate-custom-reports-with-azure-application-insights-data"></a>Automatisieren von benutzerdefinierten Berichten mit Azure Application Insights-Daten
 
@@ -160,7 +159,7 @@ Die folgenden Schritte sind nur relevant, wenn Sie noch kein SendGrid-Konto konf
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Erfahren Sie mehr über die Erstellung von [Analytics-Abfragen](../log-analytics/query-language/get-started-queries.md).
+* Erfahren Sie mehr über die Erstellung von [Analytics-Abfragen](../azure-monitor/log-query/get-started-queries.md).
 * Erfahren Sie mehr über das [programmgesteuerte Abfragen von Application Insights-Daten](https://dev.applicationinsights.io/).
 * Informieren Sie sich ausführlicher über [Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-what-are-logic-apps).
 * Erfahren Sie mehr über [Microsoft Flow](https://ms.flow.microsoft.com).

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: d085777e347e1e892c3a49f4f37aa1d8130ef18c
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: a5475ad2f487bca90f600406ca9bb8f0925a4988
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51005732"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52964814"
 ---
 # <a name="create-a-telemetry-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>Erstellen einer Telemetrieregel und Einrichten von Benachrichtigungen in Ihrer Azure IoT Central-Anwendung
 
@@ -36,19 +36,19 @@ Um eine Telemetrieregel zu erstellen, muss für die Gerätevorlage mindestens ei
 
 1. Wenn Sie noch keine Regeln erstellt haben, gelangen Sie auf folgenden Bildschirm:
 
-    ![Noch keine Regeln](media\howto-create-telemetry-rules\Rules_Landing_Page.png)
+    ![Noch keine Regeln](media/howto-create-telemetry-rules/Rules_Landing_Page.png)
 
 1. Klicken Sie auf der Registerkarte **Regeln** auf **Vorlage bearbeiten** und dann auf **+ Neue Regel**, um die Regeltypen anzuzeigen, die Sie erstellen können.
 
 1. Klicken Sie auf **Telemetrie**, um eine Regel zum Überwachen von Gerätetelemetriedaten zu erstellen.
 
-    ![Regeltypen](media\howto-create-telemetry-rules\Rule_Types.png)
+    ![Regeltypen](media/howto-create-telemetry-rules/Rule_Types.png)
 
 1. Geben Sie einen aussagekräftigen Namen ein, damit Sie die Regel in dieser Gerätevorlage einfach identifizieren können.
 
 1. Um die Regel sofort für alle Geräte zu aktivieren, die für diese Vorlage erstellt wurden, aktivieren Sie die Option **Regel für alle Geräte für diese Vorlage aktivieren**.
 
-   ![Regeldetails](media\howto-create-telemetry-rules\Rule_Detail.png)
+   ![Regeldetails](media/howto-create-telemetry-rules/Rule_Detail.png)
     
     Die Regel gilt automatisch für alle Geräte unter der Gerätevorlage.
     
@@ -61,7 +61,7 @@ Eine Bedingung definiert die Kriterien, die von der Regel überwacht werden.
 
 1. Wählen Sie in der Dropdownliste **Messung** die Telemetriedaten aus, die Sie überwachen möchten.
 
-   ![Bedingung](media\howto-create-telemetry-rules\Aggregate_Condition_Filled_Out.png)
+   ![Bedingung](media/howto-create-telemetry-rules/Aggregate_Condition_Filled_Out.png)
 
 1. Wählen Sie anschließend die **Aggregation** und den **Operator** aus, und geben Sie einen **Schwellenwert** an.
     - Die Aggregation ist optional. Ohne Aggregation wird diese Regel für jeden Telemetriedatenpunkt ausgelöst, der die Bedingung erfüllt. Wenn beispielswiese die Regel so konfiguriert ist, dass sie beim Erreichen eines Temperaturwerts von über 80 auslöst, wird die Regel nahezu sofort ausgelöst, wenn das Gerät eine Temperatur von über 80 meldet.
@@ -78,14 +78,14 @@ In diesem Abschnitt erfahren Sie, wie Aktionen eingerichtet werden, die ausgefü
 
 1. Wählen Sie **+** neben der Option **Aktionen**. Hier sehen Sie die Liste der verfügbaren Aktionen.  
 
-    ![Hinzufügen einer Aktion](media\howto-create-telemetry-rules\Add_Action.png)
+    ![Hinzufügen einer Aktion](media/howto-create-telemetry-rules/Add_Action.png)
 
 1. Wählen Sie die Aktion **E-Mail**, geben Sie eine gültige E-Mail-Adresse in das Feld **An** ein, und geben Sie eine Notiz ein, die im Text der E-Mail erscheint, wenn die Regel ausgelöst wird.
 
     > [!NOTE]
     > E-Mails werden nur an die Benutzer gesendet, die der Anwendung hinzugefügt wurden und sich mindestens einmal angemeldet haben. Erfahren Sie mehr über die [Benutzerverwaltung](howto-administer.md) in Azure IoT Central.
 
-   ![Konfigurieren einer Aktion](media\howto-create-telemetry-rules\Configure_Action.png)
+   ![Konfigurieren einer Aktion](media/howto-create-telemetry-rules/Configure_Action.png)
 
 1. Um die neue Regel zu speichern, wählen Sie **Speichern** aus. Die Regel geht innerhalb weniger Minuten live und beginnt mit der Überwachung der Telemetriedaten, die an Ihre Anwendung gesendet werden. Wenn die in der Regel festgelegte Bedingung erfüllt ist, löst die Regel die konfigurierte E-Mail-Aktion aus.
 

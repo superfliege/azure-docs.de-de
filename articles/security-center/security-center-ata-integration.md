@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/29/2018
 ms.author: rkarlin
-ms.openlocfilehash: bcd9b006c5451cb2d251cd5ff9e6ae5e0bd17f3c
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 49d6e2ded2ad4b2e5bb0ee30c323b1f459422437
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52634012"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53338395"
 ---
 # <a name="connecting-microsoft-advanced-threat-analytics-to-azure-security-center"></a>Verbinden von Microsoft Advanced Threat Analytics mit Azure Security Center
 Dieses Dokument soll Sie bei der Konfiguration der Integration zwischen Microsoft Advanced Threat Analytics und dem Azure Security Center unterstützen.
@@ -68,7 +68,7 @@ Sobald Sie die Installation beendet haben, ist die Integration abgeschlossen, un
 In diesem Dokument wurde erläutert, wie Sie Microsoft Advanced Threat Analytics mit Security Center verbinden. Weitere Informationen zu Security Center finden Sie in den folgenden Artikeln:
 
 * [Connecting Azure Active Directory Identity Protection to Azure Security Center (Verbinden von Azure Active Directory Identity Protection mit Azure Security Center)](security-center-aadip-integration.md)
-* [Festlegen von Sicherheitsrichtlinien in Azure Security Center:](security-center-azure-policy.md) Erfahren Sie, wie Sie Sicherheitsrichtlinien für Ihre Azure-Abonnements und -Ressourcengruppen konfigurieren.
+* [Festlegen von Sicherheitsrichtlinien in Azure Security Center:](tutorial-security-policy.md) Erfahren Sie, wie Sie Sicherheitsrichtlinien für Ihre Azure-Abonnements und -Ressourcengruppen konfigurieren.
 * [Verwalten von Sicherheitsempfehlungen in Azure Security Center:](security-center-recommendations.md) Hier erfahren Sie, wie Empfehlungen Ihnen beim Schutz der Azure-Ressourcen helfen.
 * [Überwachen der Sicherheitsintegrität in Azure Security Center](security-center-monitoring.md) : Erfahren Sie, wie Sie die Integrität Ihrer Azure-Ressourcen überwachen.
 * [Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center:](security-center-managing-and-responding-alerts.md) Erfahren Sie, wie Sie Sicherheitswarnungen verwalten und darauf reagieren.

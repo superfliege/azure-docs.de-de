@@ -9,16 +9,15 @@ ms.assetid: 878b007e-161c-4e36-8ab2-3d7047d8a92d
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: mbullwin
-ms.openlocfilehash: 59bb8564613e9a0cebda00c2c847283ff218b882
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 3c3ff606958503efcf2df5fd99b6e52e4687de4a
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35294716"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52996256"
 ---
 # <a name="create-an-application-insights-resource"></a>Erstellen einer Application Insights-Ressource
 Azure Application Insights zeigt Daten über Ihre Anwendung in einer Microsoft Azure-*Ressource* an. Die Erstellung einer neuen Ressource gehört daher zur [Einrichtung von Application Insights für das Überwachen einer neuen Anwendung][start]. In vielen Fällen kann eine Ressource automatisch von der IDE erstellt werden. In einigen Fällen erstellen Sie eine Ressource jedoch manuell – z.B. um separate Ressourcen für die Entwicklungs- und Produktionsbuilds der Anwendung verwenden zu können.
@@ -26,11 +25,11 @@ Azure Application Insights zeigt Daten über Ihre Anwendung in einer Microsoft A
 Nach dem Erstellen der Ressource erhalten Sie den Instrumentationsschlüssel und verwenden ihn zum Konfigurieren des SDK in der Anwendung. Der Ressourcenschlüssel verknüpft die Telemetrie mit der Ressource.
 
 ## <a name="sign-up-to-microsoft-azure"></a>Anmelden bei Microsoft Azure
-Wenn Sie noch kein [Microsoft-Konto besitzen, erstellen Sie jetzt eins](http://live.com). (Wenn Sie Dienste wie Outlook.com, OneDrive, Windows Phone oder XBox Live verwenden, besitzen Sie bereits ein Microsoft-Konto.)
+Wenn Sie noch kein [Microsoft-Konto besitzen, erstellen Sie jetzt eins](https://live.com). (Wenn Sie Dienste wie Outlook.com, OneDrive, Windows Phone oder XBox Live verwenden, besitzen Sie bereits ein Microsoft-Konto.)
 
-Außerdem benötigen Sie ein Abonnement für [Microsoft Azure](http://azure.com). Wenn Ihr Team oder Ihre Organisation über ein Azure-Abonnement verfügt, kann der Besitzer Sie anhand Ihrer Windows Live ID hinzufügen. Ihnen wird nur die tatsächliche Verwendung in Rechnung gestellt. Darüber hinaus erlaubt der Basic-Standardplan die kostenlose Nutzung zu Testzwecken bis zu einem bestimmten Volumen.
+Außerdem benötigen Sie ein Abonnement für [Microsoft Azure](https://azure.com). Wenn Ihr Team oder Ihre Organisation über ein Azure-Abonnement verfügt, kann der Besitzer Sie anhand Ihrer Windows Live ID hinzufügen. Ihnen wird nur die tatsächliche Verwendung in Rechnung gestellt. Darüber hinaus erlaubt der Basic-Standardplan die kostenlose Nutzung zu Testzwecken bis zu einem bestimmten Volumen.
 
-Wenn Sie Zugriff auf ein Abonnement haben, melden Sie sich mit Ihrer Live ID unter [http://portal.azure.com](https://portal.azure.com) bei Application Insights an.
+Wenn Sie Zugriff auf ein Abonnement haben, melden Sie sich mit Ihrer Live ID unter [https://portal.azure.com](https://portal.azure.com) bei Application Insights an.
 
 ## <a name="create-an-application-insights-resource"></a>Erstellen einer Application Insights-Ressource
 Fügen Sie unter [portal.azure.com](https://portal.azure.com)eine neue Application Insights-Ressource hinzu:

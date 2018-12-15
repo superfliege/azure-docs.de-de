@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 09/17/2018
 ms.author: nacanuma
 ms.custom: include file
-ms.openlocfilehash: 8d0b0c99b743461da41a518feae9c781f90c8b63
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 2cb4895fc2f884d6da41b55faa91fbcb9e88f52f
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49988415"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52978808"
 ---
 # <a name="call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>Aufrufen der Microsoft Graph-API aus einer JavaScript-SPA
 
@@ -46,7 +46,7 @@ In diesem Leitfaden werden die folgenden Bibliotheken verwendet:
 |[msal.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)|Microsoft Authentication Library für JavaScript-Vorschau|
 
 > [!NOTE]
-> *msal.js* hat als Ziel den *Azure Active Directory v2.0-Endpunkt*, der privaten und Geschäfts-, Schul- oder Unikonten das Anmelden sowie das Abrufen von Token ermöglicht. Der *Azure Active Directory v2.0-Endpunkt* hat [einige Einschränkungen](..\articles\active-directory\develop\active-directory-v2-limitations.md).
+> *msal.js* hat als Ziel den *Azure Active Directory v2.0-Endpunkt*, der privaten und Geschäfts-, Schul- oder Unikonten das Anmelden sowie das Abrufen von Token ermöglicht. Der *Azure Active Directory v2.0-Endpunkt* hat [einige Einschränkungen](../articles/active-directory/develop/active-directory-v2-limitations.md).
 > Die Unterschiede zwischen v1.0- und v2.0-Endpunkten werden unter [Endpunktvergleich](../articles/active-directory/develop/azure-ad-endpoint-comparison.md) erläutert.
 
 <!--end-collapse-->

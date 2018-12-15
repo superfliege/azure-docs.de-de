@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: 7daefc1de06ac704f0449d065ed748bbe0f1ac61
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 0f1949373e99df1cccd6c49ff92c80d595519377
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52307654"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53341150"
 ---
 # <a name="add-a-next-generation-firewall-in-azure-security-center"></a>Hinzufügen einer Firewall der nächsten Generation in Azure Security Center
 In Azure Security Center wird unter Umständen empfohlen, dass Sie zum Verbessern Ihrer Sicherheitsmaßnahmen eine Firewall der nächsten Generation (Next Generation Firewall, NGFW) eines Microsoft-Partners hinzufügen. In diesem Dokument sehen wir uns ein Beispiel zu dieser Vorgehensweise an.
@@ -62,7 +62,7 @@ In diesem Dokument wurde gezeigt, wie Sie die Security Center-Empfehlung „Fire
 
 Weitere Informationen zu Security Center finden Sie in den folgenden Quellen:
 
-* [Festlegen von Sicherheitsrichtlinien in Azure Security Center:](security-center-azure-policy.md) Hier erfahren Sie, wie Sie Sicherheitsrichtlinien konfigurieren.
+* [Festlegen von Sicherheitsrichtlinien in Azure Security Center:](tutorial-security-policy.md) Hier erfahren Sie, wie Sie Sicherheitsrichtlinien konfigurieren.
 * [Verwalten von Sicherheitsempfehlungen in Azure Security Center:](security-center-recommendations.md) Hier erfahren Sie, wie Empfehlungen Ihnen beim Schutz der Azure-Ressourcen helfen.
 * [Überwachen der Sicherheitsintegrität in Azure Security Center:](security-center-monitoring.md) Erfahren Sie, wie Sie die Integrität Ihrer Azure-Ressourcen überwachen.
 * [Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center](security-center-managing-and-responding-alerts.md) : Hier erfahren Sie, wie Sie Sicherheitswarnungen verwalten und auf diese reagieren.

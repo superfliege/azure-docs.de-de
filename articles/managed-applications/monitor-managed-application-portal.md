@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.date: 10/04/2018
 ms.author: tomfitz
-ms.openlocfilehash: ea9f55d7c6002aaba2fd4fdc2a76b93f98e1d6b0
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 754d2a246a86585e9f05f8a070c51e158f73affd
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48806284"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53342594"
 ---
 # <a name="monitor-a-deployed-instance-of-a-managed-application"></a>Überwachen einer bereitgestellten Instanz einer verwalteten Anwendung
 
@@ -48,7 +48,7 @@ Nachdem Sie eine verwaltete Anwendung in Ihrem Azure-Abonnement bereitgestellt h
 
    ![Erstellen einer Warnung](./media/monitor-managed-application-portal/create-new-alert.png)
 
-Sie können Warnungen für Ihre verwaltete Anwendungsinstanz oder die Ressourcen in der verwalteten Anwendung erstellen. Weitere Informationen zum Erstellen von Warnungen finden Sie unter [Überblick über Warnungen in Microsoft Azure](../monitoring-and-diagnostics/monitoring-overview-alerts.md).
+Sie können Warnungen für Ihre verwaltete Anwendungsinstanz oder die Ressourcen in der verwalteten Anwendung erstellen. Weitere Informationen zum Erstellen von Warnungen finden Sie unter [Überblick über Warnungen in Microsoft Azure](../azure-monitor/platform/alerts-overview.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

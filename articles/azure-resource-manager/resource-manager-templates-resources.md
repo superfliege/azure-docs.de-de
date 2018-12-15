@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/22/2018
 ms.author: tomfitz
-ms.openlocfilehash: eea12a0a31d11065ebdc2cbef556b84df1ace750
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 0b42a51f255080905cb0104d06ed18f1d18f8e5d
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945194"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53015414"
 ---
 # <a name="resources-section-of-azure-resource-manager-templates"></a>Abschnitt „Resources“ von Azure Resource Manager-Vorlagen
 
@@ -141,7 +141,7 @@ Geben Sie einen eindeutigen Ressourcennamen für alle Ressourcentypen an, die ei
 * Web-Apps-Funktion von Azure App Service
 * SQL Server
 * Azure Key Vault
-* Azure Redis Cache
+* Azure Cache for Redis
 * Azure Batch
 * Azure Traffic Manager
 * Azure Search

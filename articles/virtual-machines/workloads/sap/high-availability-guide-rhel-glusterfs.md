@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: bbb0bbc6ddbbabb37932edc6946394b020631231
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: 484a0043b9b5eefa5491dee75e87244d1c001620
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45636426"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53342322"
 ---
 # <a name="glusterfs-on-azure-vms-on-red-hat-enterprise-linux-for-sap-netweaver"></a>GlusterFS auf virtuellen Azure-Computern unter Red Hat Enterprise Linux für SAP NetWeaver
 
@@ -95,11 +95,11 @@ Sie können eine der Schnellstartvorlagen auf Github verwenden, um alle erforder
       Geben Sie das Präfix ein, das verwendet werden soll. Der Wert wird als Präfix für die Ressourcen verwendet, die bereitgestellt werden.
    2. Anzahl der SAP-Systeme: Geben Sie die Anzahl der SAP-Systeme ein, die den Dateiserver verwenden. Dadurch werden die erforderliche Anzahl von Datenträgern und andere Ressourcen bereitgestellt.
    3. Betriebssystemtyp  
-      Wählen Sie eine der Linux-Distributionen aus. Wählen Sie in diesem Beispiel die Option „RHEL 7“ aus.
+      Wählen Sie eine der Linux-Distributionen aus. Wählen Sie für dieses Beispiel die Option „RHEL 7“ aus.
    4. Administratorbenutzername, Administratorkennwort oder SSH-Schlüssel  
       Es wird ein neuer Benutzer erstellt, der sich am Computer anmelden kann.
    5. Subnetz-ID  
-      Wenn Sie den virtuellen Computer in einem vorhandenen VNet bereitstellen möchten, in dem Sie ein Subnetz definiert haben, dem der virtuelle Computer zugewiesen werden soll, geben Sie die ID dieses spezifischen Subnetzes an. Die ID hat normalerweise das folgende Format: /subscriptions/**&lt;Abonnement-ID&gt;**/resourceGroups/**&lt;Name der Ressourcengruppe&gt;**/providers/Microsoft.Network/virtualNetworks/**&lt;Name des virtuellen Netzwerks&gt;**/subnets/**&lt;Name des Subnetzes&gt;**
+      Wenn Sie die VM in einem vorhandenen VNET bereitstellen möchten, in dem Sie ein Subnetz definiert haben, dem die VM zugewiesen werden soll, geben Sie die ID dieses spezifischen Subnetzes an. Die ID hat normalerweise das folgende Format: /subscriptions/**&lt;Abonnement-ID&gt;**/resourceGroups/**&lt;Name der Ressourcengruppe&gt;**/providers/Microsoft.Network/virtualNetworks/**&lt;Name des virtuellen Netzwerks&gt;**/subnets/**&lt;Name des Subnetzes&gt;**
 
 ### <a name="deploy-linux-manually-via-azure-portal"></a>Manuelles Bereitstellen von Linux über das Azure-Portal
 
@@ -110,10 +110,10 @@ Zuerst müssen Sie die virtuellen Computer für diesen Cluster erstellen. Anschl
 1. Erstellen Sie eine Verfügbarkeitsgruppe.  
    Richten Sie die maximale Updatedomäne ein.
 1. Erstellen Sie den virtuellen Computer 1.  
-   Verwenden Sie mindestens RHEL 7, in diesem Beispiel das Red Hat Enterprise Linux 7.4-Image <https://ms.portal.azure.com/#create/RedHat.RedHatEnterpriseLinux74-ARM>.  
+   Verwenden Sie RHEL 7 oder höher, in diesem Beispiel das Red Hat Enterprise Linux 7.4-Image <https://portal.azure.com/#create/RedHat.RedHatEnterpriseLinux74-ARM>.  
    Wählen Sie die Verfügbarkeitsgruppe aus, die Sie zuvor erstellt haben.  
 1. Erstellen Sie den virtuellen Computer 2.  
-   Verwenden Sie mindestens RHEL 7, in diesem Beispiel das Red Hat Enterprise Linux 7.4-Image <https://ms.portal.azure.com/#create/RedHat.RedHatEnterpriseLinux74-ARM>.  
+   Verwenden Sie RHEL 7 oder höher, in diesem Beispiel das Red Hat Enterprise Linux 7.4-Image <https://portal.azure.com/#create/RedHat.RedHatEnterpriseLinux74-ARM>.  
    Wählen Sie die Verfügbarkeitsgruppe aus, die Sie zuvor erstellt haben.  
 1. Fügen Sie einen Datenträger für jedes SAP-System auf beiden virtuellen Computern hinzu.
 

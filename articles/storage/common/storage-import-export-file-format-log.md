@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
 ms.component: common
-ms.openlocfilehash: b842a80762989c34ae278a397cc49c088ff77fb2
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 2ae44edf0d9356000f64ab72fd609f1921cf095c
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39525517"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53316579"
 ---
 # <a name="azure-importexport-service-log-file-format"></a>Format der Protokolldateien des Azure Import/Export-Diensts
 Wenn der Microsoft Azure Import/Export-Dienst als Teil eines Import- oder Exportauftrags eine Aktion auf einem Laufwerk durchführt, werden Protokolle in Blockblobs in dem Speicherkonto geschrieben, das dem Auftrag zugeordnet ist.  
@@ -74,7 +74,7 @@ page-range-list ::=
 <PageRangeList>  
       [<PageRange Offset="page-range-offset" Length="page-range-length"   
        [Hash="md5-hash"] Status="page-range-status"/>]  
-      [<PageRange Offset="page-range-offset" Length="page-range-length"   
+      [<PageRange Offset="page-range-offset" Length="page-range-length"   
        [Hash="md5-hash"] Status="page-range-status"/>]  
 </PageRangeList>  
   
@@ -82,7 +82,7 @@ block-list ::=
 <BlockList>  
       [<Block Offset="block-offset" Length="block-length" [Id="block-id"]  
        [Hash="md5-hash"] Status="block-status"/>]  
-      [<Block Offset="block-offset" Length="block-length" [Id="block-id"]   
+      [<Block Offset="block-offset" Length="block-length" [Id="block-id"]   
        [Hash="md5-hash"] Status="block-status"/>]  
 </BlockList>  
   
@@ -142,7 +142,7 @@ Die folgende Tabelle beschreibt die Elemente der Protokolldatei.
 |`Properties/Path/@Hash`|Attribut, String|Base16-codierter MD5-Hash der Eigenschaftendatei.|  
 |`Blob/Status`|Zeichenfolge|Status der Verarbeitung des Blobs.|  
   
-# <a name="drive-status-codes"></a>Statuscodes für Laufwerke  
+## <a name="drive-status-codes"></a>Statuscodes für Laufwerke  
 In der folgenden Tabelle sind die Statuscodes für die Verarbeitung eines Laufwerks aufgeführt.  
   
 |Statuscode|BESCHREIBUNG|  

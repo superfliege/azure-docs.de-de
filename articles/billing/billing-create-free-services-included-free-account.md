@@ -12,19 +12,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/25/2017
 ms.author: cwatson
-ms.openlocfilehash: 77022b442a78c8d14284e06af4f156302c1e6ffc
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 43ecc79db977624954109c4565c613e2471cea88
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52584399"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53312022"
 ---
 # <a name="create-services-included-with-azure-free-account"></a>Erstellen von Diensten, die im kostenlosen Azure-Konto enthalten sind
 
 Das kostenlose Azure-Konto umfasst eine begrenzte Menge von kostenlosen Diensten für 12 Monate. Weitere Informationen finden Sie unter [FAQ zum kostenlosen Azure-Konto](https://azure.microsoft.com/free/free-account-faq/). Azure verfolgt Ihre Nutzung der einzelnen Dienste nach und stellt Ihnen nichts in Rechnung, solange Sie nicht die Grenzwerte überschreiten. Innerhalb dieser Grenzwerte bietet das kostenlose Azure-Konto Ihnen die Flexibilität, verschiedene Dienstkonfigurationen zu verwenden, die Ihre Anforderungen erfüllen. 
 
 ## <a name="create-free-services-in-the-azure-portal"></a>Erstellen kostenloser Dienste im Azure-Portal
-Es wird empfohlen, die Seite [Kostenlose Dienste](https://go.microsoft.com/fwlink/?linkid=859151) zu verwenden, um neue Dienste zu erstellen. Alternativ können Sie sich beim [Azure-Portal](http://portal.azure.com) anmelden, links **Alle Dienste** auswählen und nach **kostenlosen Diensten** suchen. 
+Es wird empfohlen, die Seite [Kostenlose Dienste](https://go.microsoft.com/fwlink/?linkid=859151) zu verwenden, um neue Dienste zu erstellen. Alternativ können Sie sich beim [Azure-Portal](https://portal.azure.com) anmelden, links **Alle Dienste** auswählen und nach **kostenlosen Diensten** suchen. 
 
 ## <a name="services-can-be-created-in-any-region"></a>Dienste können in jeder Region erstellt werden
 Solange Sie die Grenzwerte einhalten, können Sie Dienste kostenlos in einer beliebigen Region erstellen, in der Dienste zur Verfügung stehen. Beispielsweise erhalten Sie mit dem kostenlosen Azure-Konto jeden Monat kostenlos 750 Stunden eines virtuellen B1S-Windows-Computers. Sie können den virtuellen Computer in einer beliebigen Region erstellen, in der virtuelle Computer der B-Serie verfügbar sind. Azure berechnet Ihnen nichts, es sei denn, Sie überschreiten 750 Stunden. Ein Kunde in den USA kann z.B. einen virtuellen B1S-Windows-Computer in „Europa, Westen“ bereitstellen und 750 Stunden lang kostenlos verwenden. 

@@ -10,32 +10,33 @@ ms.service: mariadb
 ms.devlang: azure-cli
 ms.topic: article
 ms.date: 11/10/2018
-ms.openlocfilehash: 9e8edb2aaeaa116ac71889f7007e435a1a869b7f
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: 1f17ab167c6487d59ce31106f1bbcffd86a29fd8
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51516556"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52955189"
 ---
 # <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-mariadb-using-the-azure-cli"></a>Sichern und Wiederherstellen eines Servers in Azure Database for MariaDB mit der Azure CLI
 
 ## <a name="backup-happens-automatically"></a>Automatische Sicherung
+
 Azure Database for MariaDB-Server werden regelmäßig gesichert, um Wiederherstellungsfeatures zu ermöglichen. Mithilfe dieses Features können Sie für den Server und alle dazugehörigen Datenbanken einen Zustand zu einem früheren Zeitpunkt auf einem neuen Server wiederherstellen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
+
 Zum Durcharbeiten dieses Leitfadens benötigen Sie Folgendes:
+
 - Einen [Azure Database for MariaDB-Server und eine Datenbank](quickstart-create-mariadb-server-database-using-azure-cli.md)
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
- 
 
 > [!IMPORTANT]
 > Diese Anleitung setzt die Verwendung von Azure CLI-Version 2.0 oder höher voraus. Geben Sie zum Bestätigen der Version an der Eingabeaufforderung von Azure CLI `az --version` ein. Informationen zum Ausführen einer Installation oder eines Upgrades finden Sie unter [Installieren der Azure CLI]( /cli/azure/install-azure-cli).
 
 ## <a name="set-backup-configuration"></a>Festlegen der Sicherungskonfiguration
 
-Beim Konfigurieren des Servers treffen Sie die Entscheidung, ob dafür lokal redundante oder georedundante Sicherungen erstellt werden sollen. 
+Beim Konfigurieren des Servers treffen Sie die Entscheidung, ob dafür lokal redundante oder georedundante Sicherungen erstellt werden sollen.
 
 > [!NOTE]
 > Nachdem ein Server erstellt wurde, kann die Redundanzart (georedundant oder lokal redundant) nicht mehr gewechselt werden.
@@ -58,7 +59,8 @@ Das obige Beispiel ändert den Aufbewahrungszeitraum für Sicherungen von „myd
 Mit „Aufbewahrungszeit für Sicherung“ wird auch gesteuert, für welchen zurückliegenden Zeitraum eine Point-in-Time-Wiederherstellung durchgeführt werden kann, da dies auf den verfügbaren Sicherungen basiert. Die Point-in-Time-Wiederherstellung wird im folgenden Abschnitt näher beschrieben.
 
 ## <a name="server-point-in-time-restore"></a>Point-in-Time-Wiederherstellung des Servers
-Sie können den Zustand des Servers zu einem früheren Zeitpunkt wiederherstellen. Die wiederhergestellten Daten werden auf einen neuen Server kopiert, und der vorhandene Server bleibt unverändert. Wenn zum Beispiel zur Mittagszeit am heutigen Tag eine Tabelle versehentlich gelöscht wird, können Sie den Zustand kurz vor Mittag wiederherstellen. Dann können Sie die fehlende Tabelle und die fehlenden Daten aus der wiederhergestellten Kopie des Servers abrufen. 
+
+Sie können den Zustand des Servers zu einem früheren Zeitpunkt wiederherstellen. Die wiederhergestellten Daten werden auf einen neuen Server kopiert, und der vorhandene Server bleibt unverändert. Wenn zum Beispiel zur Mittagszeit am heutigen Tag eine Tabelle versehentlich gelöscht wird, können Sie den Zustand kurz vor Mittag wiederherstellen. Dann können Sie die fehlende Tabelle und die fehlenden Daten aus der wiederhergestellten Kopie des Servers abrufen.
 
 Verwenden Sie zur Wiederherstellung des Servers den Azure CLI-Befehl [az mariadb server restore](/cli/azure/mariadb/server#az-mariadb-server-restore).
 
@@ -85,6 +87,7 @@ Die Werte zum Standort und Tarif des wiederhergestellten Servers bleiben mit den
 Suchen Sie nach Abschluss der Wiederherstellung den neuen Server, um zu überprüfen, ob die Daten wie erwartet wiederhergestellt wurden.
 
 ## <a name="geo-restore"></a>Geowiederherstellung
+
 Wenn Sie Ihren Server für georedundante Sicherungen konfiguriert haben, kann aus der Sicherung dieses vorhandenen Servers ein neuer Server erstellt werden. Dieser neue Server kann in allen Regionen erstellt werden, in denen Azure Database for MariaDB verfügbar ist.  
 
 Um einen Server mithilfe einer georedundanten Sicherung zu erstellen, verwenden Sie den Azure CLI-Befehl `az mariadb server georestore`.
@@ -96,8 +99,9 @@ Um einen Server mithilfe einer georedundanten Sicherung zu erstellen, verwenden 
 Geben Sie zur Geowiederherstellung des Servers an der Azure CLI-Eingabeaufforderung den folgenden Befehl ein:
 
 ```azurecli-interactive
-az mariadb server georestore --resource-group myresourcegroup --name mydemoserver-georestored --source-server mydemoserver --location eastus --sku-name GP_Gen5_8 
+az mariadb server georestore --resource-group myresourcegroup --name mydemoserver-georestored --source-server mydemoserver --location eastus --sku-name GP_Gen5_8
 ```
+
 Dieser Befehl erstellt einen neuen Server namens *mydemoserver-georestored* in „USA, Osten“, der zu *myresourcegroup* gehört. Es ist ein Gen 5-Server vom Typ „Universell“ mit acht virtuellen Kernen. Der Server wird aus der georedundanten Sicherung von *mydemoserver* erstellt, die auch in der Ressourcengruppe *myresourcegroup* vorhanden ist.
 
 Wenn Sie den neuen Server in einer anderen Ressourcengruppe als der, in der sich der vorhandene Server befindet, erstellen möchten, bestimmen Sie im `--source-server`-Parameter den Servernamen wie im folgenden Beispiel gezeigt:
@@ -116,12 +120,12 @@ Für den Befehl `az mariadb server georestore` sind folgende Parameter erforderl
 |location | eastus | Der Speicherort des neuen Servers. |
 |sku-name| GP_Gen5_8 | Dieser Parameter legt Tarif, Computegeneration und Anzahl der virtuellen Kerne des neuen Servers fest. GP_Gen5_8 wird einem Gen 5-Server vom Typ „Allgemein“ mit acht virtuellen Kernen zugeordnet.|
 
-
 >[!Important]
 >Beim Erstellen von einer Geowiederherstellung erbt ein neuer Server Speichergröße und Tarif vom Quellserver. Diese Werte können während der Erstellung nicht geändert werden. Sobald der neue Server erstellt ist, kann die Speichergröße zentral hochskaliert werden.
 
 Suchen Sie nach Abschluss der Wiederherstellung den neuen Server, um zu überprüfen, ob die Daten wie erwartet wiederhergestellt wurden.
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 - Informieren Sie sich über die [Sicherungen](concepts-backup.md) des Diensts.
 - Informieren Sie sich über die Optionen in Bezug auf die [Geschäftskontinuität](concepts-business-continuity.md).
