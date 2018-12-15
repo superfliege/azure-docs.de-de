@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: 91cbebecc227d24337b2d1b421dd1611bf0fac46
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: 357257d38c444eae8077568993d49816e3c090a3
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44390795"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52966074"
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-storage-gen1"></a>Zugreifen auf Diagnoseprotokolle für Azure Data Lake Storage Gen1
 Erfahren Sie, wie Sie die Diagnoseprotokollierung für Ihr Azure Data Lake Storage Gen1-Konto aktivieren und wie Sie die für Ihr Konto erfassten Protokolle anzeigen.
@@ -46,7 +46,7 @@ Organisationen können die Diagnoseprotokollierung für ihre Azure Data Lake Sto
         
         * Wählen Sie die Option zum **Streamen an einen Event Hub**, um die Protokolldaten an einen Azure Event Hub zu streamen. Wahrscheinlich werden Sie diese Option verwenden, wenn Sie eine Downstreamverarbeitungs-Pipeline einsetzen, um eingehende Protokolle in Echtzeit zu analysieren. Wenn Sie diese Option auswählen, müssen Sie die Details für den Azure Event Hub angeben, den Sie verwenden möchten.
 
-        * Wählen Sie die Option zum **Senden an Log Analytics**, um die generierten Protokolldaten mithilfe des Azure Log Analytics-Diensts zu analysieren. Wenn Sie diese Option auswählen, müssen Sie die Details für den Log Analytics-Arbeitsbereich angeben, den Sie zum Ausführen der Protokollanalyse verwenden. Informationen zum Verwenden von Log Analytics finden Sie unter [Anzeigen oder Analysieren der mit der Log Analytics-Protokollsuche gesammelten Daten](../log-analytics/log-analytics-tutorial-viewdata.md).
+        * Wählen Sie die Option zum **Senden an Log Analytics**, um die generierten Protokolldaten mithilfe des Azure Log Analytics-Diensts zu analysieren. Wenn Sie diese Option auswählen, müssen Sie die Details für den Log Analytics-Arbeitsbereich angeben, den Sie zum Ausführen der Protokollanalyse verwenden. Informationen zum Verwenden von Log Analytics finden Sie unter [Anzeigen oder Analysieren der mit der Log Analytics-Protokollsuche gesammelten Daten](../azure-monitor/learn/tutorial-viewdata.md).
      
    * Geben Sie an, ob Sie Überwachungsprotokolle oder Anforderungsprotokolle oder beides abrufen möchten.
    * Geben Sie die Anzahl der Tage an, für die die Daten beibehalten werden müssen. Die Aufbewahrung ist nur zutreffend, wenn Sie Azure-Speicherkonten zum Archivieren von Protokolldaten verwenden.
@@ -178,7 +178,7 @@ Hier ist ein Beispiel für einen Eintrag im JSON-formatierten Überwachungsproto
 | StreamName |Zeichenfolge |Der Pfad, in dem der Vorgang durchgeführt wurde. |
 
 ## <a name="samples-to-process-the-log-data"></a>Beispiele für die Verarbeitung der Protokolldaten
-Beim Senden von Protokollen aus Azure Data Lake Storage Gen1 an Azure Log Analytics (Informationen zum Verwenden von Log Analytics finden Sie unter [Anzeigen oder Analysieren der mit der Log Analytics-Protokollsuche gesammelten Daten](../log-analytics/log-analytics-tutorial-viewdata.md)) gibt die folgende Abfrage eine Tabelle mit einer Liste der Benutzeranzeigenamen, die Uhrzeit der Ereignisse, die Anzahl von Ereignissen zur Zeit des Ereigniseintritts sowie ein visuelles Diagramm zurück. Diese kann ganz einfach bearbeitet werden, sodass Benutzer-GUIDs oder weitere Attribute angezeigt werden:
+Beim Senden von Protokollen aus Azure Data Lake Storage Gen1 an Azure Log Analytics (Informationen zum Verwenden von Log Analytics finden Sie unter [Anzeigen oder Analysieren der mit der Log Analytics-Protokollsuche gesammelten Daten](../azure-monitor/learn/tutorial-viewdata.md)) gibt die folgende Abfrage eine Tabelle mit einer Liste der Benutzeranzeigenamen, die Uhrzeit der Ereignisse, die Anzahl von Ereignissen zur Zeit des Ereigniseintritts sowie ein visuelles Diagramm zurück. Diese kann ganz einfach bearbeitet werden, sodass Benutzer-GUIDs oder weitere Attribute angezeigt werden:
 
 ```
 search *

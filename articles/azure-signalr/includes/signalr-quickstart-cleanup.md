@@ -1,19 +1,18 @@
 ---
 title: Includedatei
 description: Includedatei
-services: signalr
 author: anthonychu
 ms.service: signalr
 ms.topic: include
 ms.date: 09/14/2018
 ms.author: antchu
 ms.custom: include file
-ms.openlocfilehash: c74a0726bbbe635793b48b6fe6ebd6f0c72f95f6
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 1e01db73f58c77ff62f7abe707884fc2649fd042
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47006200"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53262772"
 ---
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
@@ -24,4 +23,3 @@ Wenn Sie diese App nicht weiter verwenden möchten, löschen Sie alle von diesem
 1. Wählen im Fenster, das geöffnet wird, die Ressourcengruppe aus, und klicken Sie dann auf **Ressourcengruppe löschen**.
 
 1. Geben Sie in dem neuen Fenster den Namen der zu löschenden Ressourcengruppe ein, und klicken Sie dann auf **Löschen**.
-

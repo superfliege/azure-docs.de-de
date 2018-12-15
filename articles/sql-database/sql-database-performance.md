@@ -7,16 +7,16 @@ ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
 author: danimir
-ms.author: v-daljep
+ms.author: danil
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 35af3a926ab3c3a3046eab921e86b6610edc309c
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: dd3fe059bf2352fee7471fac7aeee23ad90c7cb0
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47162955"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53274937"
 ---
 # <a name="monitor-and-improve-performance"></a>Überwachen und Verbessern der Leistung
 Azure SQL-Datenbank stellt intelligente Aktionen zur Optimierung und Empfehlungen bereit, mit denen potenzielle Probleme in Ihrer Datenbank identifiziert werden und Aktionen zur Leistungsverbesserung Ihrer Workload vorgeschlagen werden.

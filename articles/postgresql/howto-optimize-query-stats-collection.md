@@ -7,12 +7,12 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/25/2018
-ms.openlocfilehash: 8b8d1a5a16a948953838f51edca091121dc14df1
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 076442d85d7f628504cca95c36f3e99f4d0c5117
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51628633"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52966686"
 ---
 # <a name="optimize-query-statistics-collection-in-azure-database-for-postgresql-server"></a>Optimieren der Sammlung mit Abfragestatistiken für Azure Database for PostgreSQL-Server 
 In diesem Artikel wird beschrieben, wie Sie die Sammlung mit Abfragestatistiken auf einem Azure Database for PostgreSQL-Server optimieren können.
@@ -28,7 +28,7 @@ Gehen Sie wie folgt vor, um `pg_stat_statements.track = NONE` festzulegen:
 
 - Navigieren Sie im Azure-Portal zur [Seite für die PostgreSQL-Ressourcenverwaltung, und wählen Sie das Blatt mit den Serverparametern aus](howto-configure-server-parameters-using-portal.md).
 
-![Blatt mit PostgreSQL-Serverparametern](.\media\howto-optimize-query-stats-collection\pg_stats_statements_portal.png)
+![Blatt mit PostgreSQL-Serverparametern](./media/howto-optimize-query-stats-collection/pg_stats_statements_portal.png)
 
 - Gehen Sie mit der [Azure CLI](howto-configure-server-parameters-using-cli.md) wie folgt vor: az postgres server configuration set `--name pg_stat_statements.track --resource-group myresourcegroup --server mydemoserver --value NONE`.
 

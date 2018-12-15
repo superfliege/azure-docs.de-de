@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/15/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 999017e24f6c4c24735b7e0cc818bf20aaabab62
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 3caa45064c41b641aa913e210aa698d818d5355e
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49338572"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52970262"
 ---
 # <a name="microsoft-azure-stack-development-kit-asdk-troubleshooting"></a>Problembehandlung für das Microsoft Azure Stack Development Kit (ASDK)
 Dieses Dokument enthält allgemeine Informationen zur Problembehandlung für das ASDK. Wenn Sie ein Problem feststellen, das nicht dokumentiert ist, suchen Sie im [MSDN-Forum für Azure Stack](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack) nach weiterer Unterstützung und Informationen.  
@@ -64,12 +64,11 @@ Ja, dieses Verhalten ist zu erwarten. Es wurde aus den folgenden Gründen so ent
 
 Wenn „verwaiste“ VHDs angezeigt werden, müssen Sie wissen, ob diese zu einem Ordner für ein gelöschtes Speicherkonto gehören. Wenn das Speicherkonto nicht gelöscht wurde, ist es normal, dass die VHDs noch angezeigt werden.
 
-Weitere Informationen zum Konfigurieren des Schwellenwerts für die Aufbewahrung und zur bedarfsgesteuerten Anforderung der Freigabe von Speicherplatz finden Sie unter [Manage Storage Accounts](.\.\azure-stack-manage-storage-accounts.md) (Verwalten von Speicherkonten).
+Weitere Informationen zum Konfigurieren des Schwellenwerts für die Aufbewahrung und zur bedarfsgesteuerten Anforderung der Freigabe von Speicherplatz finden Sie unter [Manage Storage Accounts](../azure-stack-manage-storage-accounts.md) (Verwalten von Speicherkonten).
 
-## <a name="storage"></a>Speicher
+## <a name="storage"></a>Storage
 ### <a name="storage-reclamation"></a>Freigabe von Speicherplatz
 Es kann bis zu 14 Stunden dauern, bis freigegebene Kapazität im Portal angezeigt wird. Die Freigabe von Speicherplatz hängt von verschiedenen Faktoren ab, einschließlich der prozentualen Auslastung von internen Containerdateien im Blockblobspeicher. Je nach gelöschter Datenmenge besteht daher keine Garantie für die Menge des Speicherplatzes, der freigegeben werden kann, wenn der Garbage Collector ausgeführt wird.
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Besuchen Sie das Azure Stack-Supportforum](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack).
-

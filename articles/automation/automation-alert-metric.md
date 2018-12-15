@@ -8,12 +8,12 @@ ms.author: gwallace
 ms.date: 11/01/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 65de18445f114f468dd42c5a7e7128dd2f63d44c
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: f742f6923b7d9f40a8752d77c7702e9b2ea2a4cf
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50959825"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53185857"
 ---
 # <a name="monitoring-runbooks-with-metric-alerts"></a>Überwachen von Runbooks mit Metrikwarnungen
 
@@ -51,7 +51,7 @@ Navigieren Sie im Azure-Portal zu Ihrem Automation-Konto. Wählen Sie unter **Ü
 
 ### <a name="define-the-action-to-take"></a>Definieren der auszuführenden Aktion
 
-1. Klicken Sie unter **3. Aktionsgruppe definieren** auf **+ Neue Aktionsgruppe**. Eine Aktionsgruppe ist eine Gruppe von Aktionen, die Sie für mehrere Warnungen verwenden können. Dies können beispielsweise E-Mail-Benachrichtigungen, Runbooks und Webhooks sein. Weitere Informationen zu Aktionsgruppen finden Sie unter [Erstellen und Verwalten von Aktionsgruppen im Azure-Portal](../monitoring-and-diagnostics/monitoring-action-groups.md).
+1. Klicken Sie unter **3. Aktionsgruppe definieren** auf **+ Neue Aktionsgruppe**. Eine Aktionsgruppe ist eine Gruppe von Aktionen, die Sie für mehrere Warnungen verwenden können. Dies können beispielsweise E-Mail-Benachrichtigungen, Runbooks und Webhooks sein. Weitere Informationen zu Aktionsgruppen finden Sie unter [Erstellen und Verwalten von Aktionsgruppen im Azure-Portal](../azure-monitor/platform/action-groups.md).
 
 1. Geben Sie im Feld **Name der Aktionsgruppe** einen Anzeigenamen und einen Kurznamen an. Der Kurzname wird anstelle eines vollständigen Aktionsgruppennamens verwendet, wenn Benachrichtigungen mithilfe dieser Gruppe gesendet werden.
 

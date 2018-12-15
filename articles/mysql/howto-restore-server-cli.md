@@ -10,12 +10,12 @@ ms.service: mysql
 ms.devlang: azure-cli
 ms.topic: article
 ms.date: 04/01/2018
-ms.openlocfilehash: f48bab5cec1e8c3836ab5044fbff1a843ede249b
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 3f4e7a911e98ea09376b4b6ac56e9441fe98e426
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46978375"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53135185"
 ---
 # <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-mysql-using-the-azure-cli"></a>Sichern und Wiederherstellen eines Servers in Azure Database for MySQL mit der Azure CLI
 
@@ -71,9 +71,10 @@ az mysql server restore --resource-group myresourcegroup --name mydemoserver-res
 ```
 
 Für den Befehl `az mysql server restore` sind folgende Parameter erforderlich:
-| Einstellung | Empfohlener Wert | BESCHREIBUNG  |
+
+| Einstellung | Empfohlener Wert | BESCHREIBUNG  |
 | --- | --- | --- |
-| resource-group |  myresourcegroup |  Die Ressourcengruppe, in der sich der Quellserver befindet.  |
+| resource-group |  myresourcegroup |  Die Ressourcengruppe, in der sich der Quellserver befindet.  |
 | name | mydemoserver-restored | Der Name des neuen Servers, der durch den Befehl „restore“ erstellt wird. |
 | restore-point-in-time | 2018-03-13T13:59:00Z | Wählen Sie einen Zeitpunkt aus, dessen Zustand wiederhergestellt werden soll. Datum und Zeit müssen innerhalb des Aufbewahrungszeitraums für Sicherungen des Quellservers liegen. Verwenden Sie das Datums- und Zeitformat nach ISO 8601. Beispielsweise können Sie Ihre eigene lokale Zeitzone wie `2018-03-13T05:59:00-08:00` verwenden. Sie können z.B. auch das UTC-Zulu-Format verwenden, `2018-03-13T13:59:00Z`. |
 | source-server | mydemoserver | Der Name oder die ID des Quellservers, über den die Wiederherstellung durchgeführt wird. |
@@ -108,7 +109,8 @@ az mysql server georestore --resource-group newresourcegroup --name mydemoserver
 ```
 
 Für den Befehl `az mysql server georestore` sind folgende Parameter erforderlich:
-| Einstellung | Empfohlener Wert | BESCHREIBUNG  |
+
+| Einstellung | Empfohlener Wert | BESCHREIBUNG  |
 | --- | --- | --- |
 |resource-group| myresourcegroup | Der Name der Ressourcengruppe, zu der der neue Server gehören soll.|
 |name | mydemoserver-georestored | Der Name des neuen Servers. |

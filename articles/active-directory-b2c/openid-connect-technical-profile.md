@@ -10,18 +10,18 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 40922080857563b86d538586b90513381edb5d89
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 9a20b8df1f0d9cddbde4c4886e11967bc8c04160
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44382665"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52842407"
 ---
 # <a name="define-a-openid-connect-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definieren eines technischen OpenId Connect-Profils in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure Active Directory (Azure AD) B2C bietet Unterstützung für Identitätsanbieter mit dem [OpenId Connect](http://openid.net/2015/04/17/openid-connect-certification-program/)-Protokoll. OpenId Connect 1.0 definiert eine Identitätsebene über OAuth 2.0 und stellt den Stand der Technik bei modernen Authentifizierungsprotokollen dar.  Mit dem technischen OpenId Connect-Profil können Sie einen Verbund mit einem OpenId Connect-basierten Identitätsanbieter, z.B. Azure AD, erstellen und es damit Benutzern ermöglichen, sich mit ihren vorhandenen Anmeldungen in sozialen Netzen oder mit Unternehmensidentitäten anzumelden.
+Azure Active Directory (Azure AD) B2C bietet Unterstützung für Identitätsanbieter mit dem [OpenId Connect](https://openid.net/2015/04/17/openid-connect-certification-program/)-Protokoll. OpenId Connect 1.0 definiert eine Identitätsebene über OAuth 2.0 und stellt den Stand der Technik bei modernen Authentifizierungsprotokollen dar.  Mit dem technischen OpenId Connect-Profil können Sie einen Verbund mit einem OpenId Connect-basierten Identitätsanbieter, z.B. Azure AD, erstellen und es damit Benutzern ermöglichen, sich mit ihren vorhandenen Anmeldungen in sozialen Netzen oder mit Unternehmensidentitäten anzumelden.
 
 ## <a name="protocol"></a>Protokoll
 

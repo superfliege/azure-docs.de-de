@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/31/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: bc03a5f43ef65ec8feaccb82fc3d31debbc6e7b9
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: f7b73fa4d1f596e0221c2cec3c6c7417ceb767a4
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39523375"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53275685"
 ---
 # <a name="monitor-a-storage-account-in-the-azure-portal"></a>Überwachen eines Speicherkontos im Azure-Portal
 
@@ -98,7 +98,7 @@ Sie können Warnungen erstellen, damit Sie benachrichtigt werden, wenn Speicherr
 3. Geben Sie einen **Namen** und eine **Beschreibung** für Ihre neue Warnungsregel ein.
 4. Wählen Sie die **Metrik**, für die Sie eine Warnung hinzufügen möchten, eine **Bedingung** für die Warnung und einen **Schwellenwert**. Der Schwellenwerteinheiten-Typ ändert sich je nach der Metrik, die Sie ausgewählt haben. Beispielsweise ist „count“ der Einheitentyp für *ContainerCount*, die Einheit für die Metrik *PercentNetworkError* ist dagegen ein Prozentsatz.
 5. Wählen Sie den **Zeitraum** aus. Metriken, die den Schwellenwert innerhalb des Zeitraums erreichen oder überschreiten, lösen eine Warnung aus.
-6. (Optional) Konfigurieren Sie **E-Mail**- und **Webhook**-Benachrichtigungen. Weitere Informationen über Webhooks finden Sie unter [Konfigurieren eines Webhooks für eine Azure-Metrikwarnung](../../monitoring-and-diagnostics/insights-webhooks-alerts.md). Wenn Sie keine E-Mail- oder Webhook-Benachrichtigungen konfigurieren, werden Warnungen nur im Azure-Portal angezeigt.
+6. (Optional) Konfigurieren Sie **E-Mail**- und **Webhook**-Benachrichtigungen. Weitere Informationen über Webhooks finden Sie unter [Konfigurieren eines Webhooks für eine Azure-Metrikwarnung](../../azure-monitor/platform/alerts-webhooks.md). Wenn Sie keine E-Mail- oder Webhook-Benachrichtigungen konfigurieren, werden Warnungen nur im Azure-Portal angezeigt.
 
 ![Blatt „Warnungsregel hinzufügen“ im Azure-Portal](./media/storage-monitor-storage-account/add-alert-rule.png)
 

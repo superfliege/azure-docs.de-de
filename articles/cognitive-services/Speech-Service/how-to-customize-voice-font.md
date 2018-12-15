@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: panosper
-ms.openlocfilehash: bf06042d3b820e61d1f5b316a8b7b26d1a366388
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: e2c176e35cbc75747230e429d0ddae9d420db8b5
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49467717"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52867579"
 ---
 # <a name="creating-custom-voice-fonts"></a>Erstellen benutzerdefinierter Voicefonts
 
@@ -87,7 +87,7 @@ Beispiel:
 Das Custom Voice-System normalisiert die Transkripte, indem der Text in Kleinbuchstaben umgewandelt wird und unwichtige Interpunktionszeichen entfernt werden. Entscheidend ist, dass die Transkripte zu 100 % mit den zugehörigen Audioaufnahmen übereinstimmen.
 
 > [!TIP]
-> Beim Erstellen von Stimmen mit der Text-to-Speech-API für eine Produktionsumgebung sollten Sie bei der Auswahl der Äußerungen (oder beim Schreiben der Skripte) sowohl auf eine ausreichende Anzahl phonetischer Eigenschaften als auch auf die phonetische Effizienz achten. Erzielen Sie nicht die gewünschten Ergebnisse? [Wenden Sie sich an das Custom Voice-Team](mailto:tts@microsoft.com), um mehr über die Beratung durch uns zu erfahren.
+> Beim Erstellen von Stimmen mit der Text-to-Speech-API für eine Produktionsumgebung sollten Sie bei der Auswahl der Äußerungen (oder beim Schreiben der Skripte) sowohl auf eine ausreichende Anzahl phonetischer Eigenschaften als auch auf die phonetische Effizienz achten. Erzielen Sie nicht die gewünschten Ergebnisse? [Wenden Sie sich an das Custom Voice-Team](mailto:speechsupport@microsoft.com), um mehr über die Beratung durch uns zu erfahren.
 
 ## <a name="upload-your-datasets"></a>Hochladen von Datasets
 

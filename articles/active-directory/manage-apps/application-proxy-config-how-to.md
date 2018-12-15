@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/18/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: cf3e367dad528017a98e103962c57cb758da55cb
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: a7a5c097f0400d89398cef66eeb7bd0ce8d5e97b
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44354765"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53132430"
 ---
 # <a name="how-to-configure-an-application-proxy-application"></a>Konfigurieren einer Anwendungsproxyanwendung
 
@@ -28,15 +28,15 @@ In diesem Artikel wird das Konfigurieren einer Anwendungsproxyanwendung in Azure
 
 ## <a name="recommended-documents"></a>Empfohlene Dokumente 
 
-Informationen zu den Erstkonfigurationen und zur Erstellung einer Anwendungsproxyanwendung über das Administratorportal finden Sie unter [Veröffentlichen von Anwendungen mit Azure AD-Anwendungsproxy](application-proxy-publish-azure-portal.md).
+Informationen zu den Erstkonfigurationen und zur Erstellung einer Anwendungsproxyanwendung über das Administratorportal finden Sie unter [Veröffentlichen von Anwendungen mit Azure AD-Anwendungsproxy](application-proxy-add-on-premises-application.md).
 
-Ausführliche Informationen zum Konfigurieren von Connectors finden Sie unter [Aktivieren des Anwendungsproxys über das Azure-Portal](application-proxy-enable.md).
+Ausführliche Informationen zum Konfigurieren von Connectors finden Sie unter [Aktivieren des Anwendungsproxys über das Azure-Portal](application-proxy-add-on-premises-application.md).
 
 Informationen zum Hochladen von Zertifikaten und Verwenden von benutzerdefinierten Domänen finden Sie unter [Arbeiten mit benutzerdefinierten Domänen im Azure AD-Anwendungsproxy](application-proxy-configure-custom-domain.md).
 
 ## <a name="create-the-applicationsetting-the-urls"></a>Erstellen der Anwendung/Festlegen der URLs
 
-Wenn Sie die Schritte in der Dokumentation [Veröffentlichen von Anwendungen mit Azure AD-Anwendungsproxy](application-proxy-publish-azure-portal.md) befolgen und beim Erstellen der Anwendung einen Fehler erhalten, finden Sie weitere Informationen und Vorschläge zur Behebung der Anwendung in den Fehlerdetails. Die meisten Fehlermeldungen enthalten eine empfohlene Problemlösung. Stellen Sie Folgendes sicher, um häufige Fehler zu vermeiden:
+Wenn Sie die Schritte in der Dokumentation [Veröffentlichen von Anwendungen mit Azure AD-Anwendungsproxy](application-proxy-add-on-premises-application.md) befolgen und beim Erstellen der Anwendung einen Fehler erhalten, finden Sie weitere Informationen und Vorschläge zur Behebung der Anwendung in den Fehlerdetails. Die meisten Fehlermeldungen enthalten eine empfohlene Problemlösung. Stellen Sie Folgendes sicher, um häufige Fehler zu vermeiden:
 
 -   Sie sind ein Administrator mit der Berechtigung zum Erstellen einer Anwendungsproxyanwendung.
 
@@ -75,4 +75,4 @@ Die Fehlermeldung wird in der oberen rechten Ecke angezeigt, während Sie versuc
    ![Benachrichtigungsaufforderung](./media/application-proxy-config-how-to/error-message2.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Veröffentlichen von Anwendungen mit Azure AD-Anwendungsproxy](application-proxy-publish-azure-portal.md)
+[Veröffentlichen von Anwendungen mit Azure AD-Anwendungsproxy](application-proxy-add-on-premises-application.md)

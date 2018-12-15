@@ -11,12 +11,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: b36e4598f5ff20b921c5cd150ae19be233cc2d14
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
+ms.openlocfilehash: 45d1275ac3b78836cbb77c4e1508d0689c215d69
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43246512"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52998606"
 ---
 # <a name="start-monitoring-your-java-web-application"></a>Starten der Überwachung Ihrer Java-Webanwendung
 
@@ -29,7 +29,7 @@ Diese Schnellstartanleitung führt Sie durch die notwendigen Schritte, um das Ap
 So führen Sie diesen Schnellstart durch:
 
 - Installieren Sie JRE 1.7 oder 1.8.
-- Installieren Sie die [kostenlose Eclipse-IDE für Java EE-Entwickler](http://www.eclipse.org/downloads/). In diesem Schnellstart wird Eclipse Oxygen (4.7) verwendet.
+- Installieren Sie die [kostenlose Eclipse-IDE für Java EE-Entwickler](https://www.eclipse.org/downloads/). In diesem Schnellstart wird Eclipse Oxygen (4.7) verwendet.
 - Sie benötigen ein Azure-Abonnement und ein vorhandenes Java Dynamic Web Project.
  
 Wenn Sie noch nicht über ein Java Dynamic Web Project verfügen, können Sie mithilfe der Schnellstartanleitung unter [Erstellen einer Java-Web-App](https://docs.microsoft.com/azure/app-service-web/app-service-web-get-started-java) eines erstellen.
@@ -67,7 +67,7 @@ Application Insights kann Telemetriedaten von jeder mit dem Internet verbundenen
 
    ![Formular für neue App Insights-Ressource](./media/app-insights-java-quick-start/000-j.png)
 
-2. Kopieren Sie ```http://dl.microsoft.com/eclipse``` in das Feld „Work With“ (Arbeiten mit). Aktivieren Sie das Kontrollkästchen **Azure Toolkit for Java** (Azure-Toolkit für Java). Wählen Sie **Application Insights Plugin for Java**  >  (Application Insights-Plug-In für Java), und **deaktivieren** Sie das Kontrollkästchen „Contact all update sites during install to find required software“ (Während der Installation alle Updatesites kontaktieren, um erforderliche Software zu finden).
+2. Kopieren Sie ```https://dl.microsoft.com/eclipse``` in das Feld „Work With“ (Arbeiten mit). Aktivieren Sie das Kontrollkästchen **Azure Toolkit for Java** (Azure-Toolkit für Java). Wählen Sie **Application Insights Plugin for Java**  >  (Application Insights-Plug-In für Java), und **deaktivieren** Sie das Kontrollkästchen „Contact all update sites during install to find required software“ (Während der Installation alle Updatesites kontaktieren, um erforderliche Software zu finden).
 
 3. Sobald die Installation abgeschlossen ist, wird die Aufforderung **Restart Eclipse** (Eclipse neu starten) angezeigt.
 
@@ -130,7 +130,7 @@ Application Insights kann Telemetriedaten von jeder mit dem Internet verbundenen
 
    ![Servermetriken – Diagramm](./media/app-insights-java-quick-start/livemetricsjava.png)
 
-Weitere Informationen zum Überwachen von Java finden Sie in der [weiteren Dokumentation zu Application Insights und Java](.\app-insights-java-get-started.md).
+Weitere Informationen zum Überwachen von Java finden Sie in der [weiteren Dokumentation zu Application Insights und Java](./app-insights-java-get-started.md).
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

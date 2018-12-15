@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.date: 10/01/2018
 ms.author: glenga
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: fd2d19119c5be91942d9587a073be30d59c8fd6c
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: 33f7367d9cdc510cf04f349f44b6e85215d46038
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49113766"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52995601"
 ---
 # <a name="create-a-function-triggered-by-azure-queue-storage"></a>Erstellen einer Funktion, die durch Azure Queue Storage ausgelöst wird
 
@@ -27,7 +27,7 @@ Erfahren Sie, wie Sie eine Funktion erstellen, die ausgelöst wird, wenn Meldung
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Laden Sie den [Microsoft Azure Storage-Explorer](http://storageexplorer.com/) herunter, und installieren Sie ihn.
+- Laden Sie den [Microsoft Azure Storage-Explorer](https://storageexplorer.com/) herunter, und installieren Sie ihn.
 
 - Ein Azure-Abonnement. Wenn Sie keins besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
@@ -77,7 +77,7 @@ Als Nächstes stellen Sie eine Verbindung zu Ihrem Azure Storage-Konto her und e
 
     ![Beschaffen Sie die Anmeldeinformationen für die Speicherkontenverbindung.](./media/functions-create-storage-queue-triggered-function/functions-storage-account-connection.png)
 
-1. Führen Sie das Tool [Microsoft Azure Storage-Explorer](http://storageexplorer.com/) aus, klicken Sie auf das Verbindungssymbol auf der linken Seite, wählen Sie **Use a storage account name and key** (Name und Schlüssel eines Speicherkontos verwenden) aus, und klicken Sie anschließend auf **Weiter**.
+1. Führen Sie das Tool [Microsoft Azure Storage-Explorer](https://storageexplorer.com/) aus, klicken Sie auf das Verbindungssymbol auf der linken Seite, wählen Sie **Use a storage account name and key** (Name und Schlüssel eines Speicherkontos verwenden) aus, und klicken Sie anschließend auf **Weiter**.
 
     ![Führen Sie das Tool Storage Account-Explorer aus.](./media/functions-create-storage-queue-triggered-function/functions-storage-manager-connect-1.png)
 

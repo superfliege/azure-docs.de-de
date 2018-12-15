@@ -10,17 +10,15 @@ ms.assetid: 81eb41b8-eb62-4eb2-9f7b-fde5c89c9b47
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/27/2017
 ms.author: magoedte
-ms.component: ''
-ms.openlocfilehash: 65acbfbecf8ae34ff25780bfc161c52b5adc1d65
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 063cedc679c3365e6352549e78c75ecff903cae7
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52634913"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53193007"
 ---
 # <a name="optimize-your-active-directory-environment-with-the-active-directory-health-check-solution-in-log-analytics"></a>Optimieren Ihrer Active Directory-Umgebung mit der Active Directory-Integritätsüberprüfung-Lösung in Log Analytics
 
@@ -55,7 +53,7 @@ Um die Integritätsüberprüfung für Ihre Domänencontroller auszuführen, die 
 
 1. Installieren Sie den [Microsoft Monitoring Agent (MMA)](../../azure-monitor/platform/agent-windows.md), wenn der Domänencontroller nicht bereits durch System Center 2016 – Operations Manager oder Operations Manager 2012 R2 überwacht wird.
 2. Wenn er mit System Center 2016 – Operations Manager oder Operations Manager 2012 R2 überwacht wird, und die Verwaltungsgruppe nicht in den Log Analytics-Dienst integriert ist, kann der Domänencontroller mit Log Analytics mehrfach vernetzt werden, um Daten zu sammeln und an den Dienst weiterzuleiten, wobei er weiterhin von Operations Manager überwacht wird.  
-3. Wenn Ihre Operations Manager-Verwaltungsgruppe andernfalls in den Dienst integriert ist, müssen Sie die Domänencontroller für die Datensammlung durch den Dienst hinzufügen, indem Sie die Schritte unter [Herstellen einer Verbindung zwischen Operations Manager und OMS](../../log-analytics/log-analytics-om-agents.md#connecting-operations-manager-to-log-analytics) nach der Aktivierung der Lösung in Ihrem Arbeitsbereich ausführen.  
+3. Wenn Ihre Operations Manager-Verwaltungsgruppe andernfalls in den Dienst integriert ist, müssen Sie die Domänencontroller für die Datensammlung durch den Dienst hinzufügen, indem Sie die Schritte unter [Herstellen einer Verbindung zwischen Operations Manager und OMS](../../azure-monitor/platform/om-agents.md#connecting-operations-manager-to-log-analytics) nach der Aktivierung der Lösung in Ihrem Arbeitsbereich ausführen.  
 
 Der Agent auf Ihrem Domänencontroller, der Berichte an die Operations Manager-Verwaltungsgruppe sendet, sammelt Daten, leitet sie an seinen zugewiesenen Verwaltungsserver weiter, und dann werden sie direkt von einem Verwaltungsserver an den Log Analytics-Dienst gesendet.  Die Daten werden nicht in die Operations Manager-Datenbanken geschrieben.  
 
@@ -186,4 +184,4 @@ Nach Ausführung der nächsten geplanten Integritätsüberprüfung (standardmä�
 * Ja, siehe oben stehenden Abschnitt [Ignorieren von Empfehlungen](#ignore-recommendations) .
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Verwenden Sie [Protokollsuchen in Log Analytics](../../log-analytics/log-analytics-queries.md), um zu erfahren, wie Sie detaillierte Daten und Empfehlungen der AD-Integritätsüberprüfung analysieren.
+* Verwenden Sie [Protokollsuchen in Log Analytics](../../azure-monitor/log-query/log-query-overview.md), um zu erfahren, wie Sie detaillierte Daten und Empfehlungen der AD-Integritätsüberprüfung analysieren.

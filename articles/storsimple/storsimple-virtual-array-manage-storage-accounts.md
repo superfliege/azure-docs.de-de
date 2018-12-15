@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/27/2017
 ms.author: alkohli
-ms.openlocfilehash: d2b6b7a5d2baf9e46cca18aec97f31beda1e2a38
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: a992851deda0659509c0ee4ea5de76b19734f017
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45736732"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52867604"
 ---
 # <a name="use-storsimple-device-manager-to-manage-storage-account-credentials-for-storsimple-virtual-array"></a>Verwenden des StorSimple-Geräte-Managers zum Verwalten der Anmeldeinformationen eines Speicherkontos für StorSimple Virtual Array
 
@@ -148,7 +148,7 @@ Um den StorSimple-Geräte-Manager-Dienst über die Änderung zu informieren, mü
     
 4. Sie müssen den im Microsoft Azure Storage-Dienst zuvor geänderten Schlüssel im StorSimple-Geräte-Manager-Dienst aktualisieren. Wenn auf dem Blatt **Speicherkontoschlüssel synchronisieren** der primäre Zugriffsschlüssel geändert (neu generiert) wurde, klicken Sie auf „Primär“ und anschließend auf **Schlüssel synchronisieren**. Wenn der sekundäre Schlüssel geändert wurde, klicken Sie auf **Sekundär** und anschließend auf **Schlüssel synchronisieren**.
    
-    ![Zugriffsschüssel synchronisieren](./media/storsimple-virtual-array-manage-storage-accounts/ova-sync-acess-key.png)
+    ![Zugriffsschüssel synchronisieren](./media/storsimple-virtual-array-manage-storage-accounts/ova-sync-access-key.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Erfahren Sie, wie Sie [Ihr StorSimple Virtual Array verwalten](storsimple-ova-web-ui-admin.md).

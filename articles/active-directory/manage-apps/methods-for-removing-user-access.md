@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/17/2018
 ms.author: barbkess
-ms.openlocfilehash: 6acc9a8b9cd7b6ef1218b1e8cae2e6a9af92f9d8
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 9eb8b6e6af6fb2912789b66ed622fd47d2cb8b8b
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49393693"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53311880"
 ---
 # <a name="how-to-remove-a-users-access-to-an-application"></a>Aufheben des Zugriffs eines Benutzers auf eine Anwendung
 
@@ -70,5 +70,6 @@ Befolgen Sie die nachstehenden Anweisungen, um **alle zukünftigen Vorgänge der
 6.  Legen Sie die Umschaltfläche **Benutzer können Apps Zugriff auf Unternehmensdaten in ihrem Namen gestatten** auf **Nein** fest, und klicken Sie auf die Schaltfläche „Speichern“.
 
 
-# <a name="next-steps"></a>Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
+
 [Verwalten des Zugriffs auf Apps](what-is-access-management.md)

@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 11/29/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: 06bd1216aa3f78b41526670044de0250ad0df7d7
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 96daacef134ca60cb497907a770c83a4bba24a5b
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52833260"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52956023"
 ---
 # <a name="azure-and-linux"></a>Azure und Linux
 Microsoft Azure ist eine wachsende Sammlung von integrierten Diensten der öffentlichen Cloud, z.B. für Analysen, virtuelle Computer, Datenbanken, mobile Geräte, Netzwerke, Speicher und Web. Azure eignet sich also perfekt zum Hosten Ihrer Lösungen.  Microsoft Azure stellt eine skalierbare Computingplattform bereit, bei der Sie nur für die tatsächliche gewünschte Nutzung bezahlen – ohne dass Sie in lokale Hardware investieren müssen.  Azure ist darauf ausgelegt, dass Sie Ihre Lösungen wie gewünscht vertikal und horizontal auf den Stand hochskalieren, der für die Erfüllung der Anforderungen Ihrer Kunden erforderlich ist.
@@ -82,7 +82,7 @@ Microsoft arbeitet eng mit Partnern zusammen, um sicherzustellen, dass die verf�
 * Bitnami: [Bitnami-Bibliothek für Azure](https://azure.bitnami.com/)
 * Mesosphere: [Azure Marketplace – Mesosphere DC/OS on Azure](https://azure.microsoft.com/marketplace/partners/mesosphere/dcosdcos/)
 * Docker: [Azure Marketplace – Azure Container Service mit Docker Swarm](https://azure.microsoft.com/marketplace/partners/microsoft/acsswarms/)
-* Jenkins: [Azure Marketplace – CloudBees Jenkins Platform](https://azure.microsoft.com/marketplace/partners/cloudbees/jenkins-platformjenkins-platform/)
+* Jenkins: [Azure Marketplace – CloudBees Jenkins Platform](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/cloudbees.cloudbees-core-contact)
 
 ## <a name="getting-started-with-linux-on-azure"></a>Erste Schritte mit Linux in Azure
 Um mit der Verwendung von Azure beginnen zu können, benötigen Sie ein Azure-Konto, die installierte Azure-Befehlszeilenschnittstelle und eine Kombination aus öffentlichen und privaten SSH-Schlüsseln.
@@ -110,7 +110,7 @@ Die Erstellung eines virtuellen Linux-Computers im Azure-Webportal ist eine einf
 Der virtuelle Computer wird jetzt in Azure ausgeführt, und Sie können sich anmelden.  Die Verwendung von Kennwörtern zur Anmeldung über SSH ist unsicher und zeitaufwendig.  SSH-Schlüssel sind die sicherste und gleichzeitig schnellste Möglichkeit zur Anmeldung.  Beim Erstellen eines virtuellen Linux-Computers im Portal oder über die Befehlszeilenschnittstelle stehen Ihnen zwei Authentifizierungsoptionen zur Verfügung.  Wenn Sie ein Kennwort für SSH auswählen, konfiguriert Azure den virtuellen Computer so, dass Anmeldungen mit Kennwort zulässig sind.  Wenn Sie sich für einen öffentlichen SSH-Schlüssel entschieden haben, konfiguriert Azure den virtuellen Computer so, dass Anmeldungen nur mit SSH-Schlüsseln möglich sind. Anmeldungen per Kennwort werden deaktiviert. Um Ihren virtuellen Linux-Computer zu sichern, indem Sie nur Anmeldungen per SSH-Schlüssel zulassen, verwenden Sie beim Erstellen des virtuellen Computers im Portal oder über die Befehlszeilenschnittstelle die Option für öffentliche SSH-Schlüssel.
 
 ## <a name="related-azure-components"></a>Verwandte Azure-Komponenten
-## <a name="storage"></a>Speicher
+## <a name="storage"></a>Storage
 * [Einführung in Microsoft Azure Storage](../../storage/common/storage-introduction.md)
 * [Hinzufügen eines Datenträgers zu einem virtuellen Linux-Computer über die Azure-Befehlszeilenschnittstelle](add-disk.md)
 * [Anfügen eines Datenträgers an eine Linux-VM im Azure-Portal](attach-disk-portal.md)

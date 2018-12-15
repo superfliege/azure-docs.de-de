@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 16e98811b65e215d8688e030ea8dcbb1f9446a5b
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: d54d4eccc89313a8e109d1598078cdb1cc5d7a14
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44382671"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52836728"
 ---
 # <a name="trustframeworkpolicy"></a>TrustFrameworkPolicy
 
@@ -25,8 +25,8 @@ Eine benutzerdefinierte Richtlinie wird als eine oder mehrere XML-formatierte Da
 
 ```XML
 <TrustFrameworkPolicy
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
+  xmlns:xsd="https://www.w3.org/2001/XMLSchema"
   xmlns="http://schemas.microsoft.com/online/cpim/schemas/2013/06"
   PolicySchemaVersion="0.3.0.0"
   TenantId="mytenant.onmicrosoft.com"
@@ -53,8 +53,8 @@ Das folgende Beispiel zeigt, wie das **TrustFrameworkPolicy**-Element angegeben 
 
 ``` XML
 <TrustFrameworkPolicy
-   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-   xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+   xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
+   xmlns:xsd="https://www.w3.org/2001/XMLSchema"
    xmlns="http://schemas.microsoft.com/online/cpim/schemas/2013/06"
    PolicySchemaVersion="0.3.0.0"
    TenantId="mytenant.onmicrosoft.com"
@@ -98,8 +98,8 @@ Im folgenden Beispiel wird gezeigt, wie Sie eine Basisrichtlinie angeben. Diese 
 
 ``` XML
 <TrustFrameworkPolicy
-   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-   xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+   xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
+   xmlns:xsd="https://www.w3.org/2001/XMLSchema"
    xmlns="http://schemas.microsoft.com/online/cpim/schemas/2013/06"
    PolicySchemaVersion="0.3.0.0"
    TenantId="mytenant.onmicrosoft.com"

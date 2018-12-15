@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 1bfa52d07ddc4eaf86bce17c0ad7c63493a8b5fd
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: dccbd2d87b5a5616c25caed070a337eff9fa753e
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51255726"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52956651"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>Herstellen einer Verbindung zwischen einem MXChip IoT DevKit-Gerät und Ihrer Azure IoT Central-Anwendung
 
@@ -23,7 +23,7 @@ In diesem Artikel wird beschrieben, wie Sie als Geräteentwickler eine Verbindun
 
 Damit Sie die in diesem Artikel aufgeführten Schritte ausführen können, benötigen Sie Folgendes:
 
-1. Eine Azure IoT Central-Anwendung, die mit der Anwendungsvorlage **Beispiel-Entwickler-Kits** erstellt wurde. Weitere Informationen finden Sie unter [Erstellen einer Azure IoT Central-Anwendung](quick-deploy-iot-central.md).
+1. Eine Azure IoT Central-Anwendung, die mit der Anwendungsvorlage **Beispiel-Entwickler-Kits** erstellt wurde. Weitere Informationen finden Sie unter [Schnellstart: Erstellen einer Anwendung](quick-deploy-iot-central.md).
 1. Ein DevKit-Gerät. Um ein DevKit-Gerät zu erwerben, besuchen Sie [MXChip IoT DevKit](http://mxchip.com/az3166).
 
 
@@ -49,12 +49,12 @@ Fügen Sie in Ihrer Azure IoT Central-Anwendung ein echtes Gerät aus der Gerät
     * Geben Sie die Geräte-ID **<span style="color:Red">(muss in Kleinbuchstaben angegeben werden)</span>** ein, oder verwenden Sie die vorgeschlagene Geräte-ID.
     * Geben Sie den Gerätenamen ein, oder verwenden Sie den vorgeschlagenen Namen.
     
-    ![Gerät hinzufügen](media\concepts-connectivity\add-device.png)
+    ![Gerät hinzufügen](media/concepts-connectivity/add-device.png)
 
 
 1. Rufen Sie Verbindungsdetails wie **Bereichs-ID, Geräte-ID und Primärschlüssel** für das hinzugefügte Gerät ab, indem Sie auf der Geräteseite auf **Verbinden** klicken.
  
-    ![Verbindungsdetails](media\concepts-connectivity\device-connect.PNG)
+    ![Verbindungsdetails](media/concepts-connectivity/device-connect.PNG)
 
 3. Es ist wichtig, diese Details zu speichern, da bei der Vorbereitung des DevKit-Geräts vorübergehend Ihre Internetverbindung getrennt wird. 
 

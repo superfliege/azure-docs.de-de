@@ -9,16 +9,15 @@ ms.assetid: 44d989f8-bae9-40ff-bfd5-8343d3e59358
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/23/2018
 ms.author: mbullwin
-ms.openlocfilehash: f5689b4e42c578f08063cef9c9265cd9794d1a67
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: a5c017ab8740aef26c4b1d957fa77cafd511919f
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52335349"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52728394"
 ---
 # <a name="ip-addresses-used-by-application-insights-and-log-analytics"></a>Von Application Insights und Log Analytics verwendete IP-Adressen
 Der Dienst [Azure Application Insights](app-insights-overview.md) verwendet eine Reihe von IP-Adressen. Diese müssen Ihnen gegebenenfalls bekannt sein, wenn die überwachte App hinter einer Firewall gehostet wird.
@@ -368,7 +367,7 @@ Hinweis: Die Domäne „*.loganalytics.io“ ist im Besitz des Log Analytics-Tea
 | --- | --- | --- | --- |
 | Agent | agent.azureserviceprofiler.net<br/>*.agent.azureserviceprofiler.net | 40.68.32.221<br/>40.85.246.0<br/>40.85.246.57<br/>40.117.252.0<br/>40.117.253.100<br/>51.140.140.162<br/>51.140.140.184<br/>51.143.96.206<br/>51.143.98.157<br/>52.161.8.88<br/>52.161.29.225<br/>52.178.147.66<br/>52.178.149.106<br/>52.230.122.9<br/>52.230.124.46<br/>104.40.217.71<br/>104.211.89.26<br/>104.211.90.232 | 443
 | Portal | gateway.azureserviceprofiler.net | dynamisch | 443
-| Speicher | *.core.windows.net | dynamisch | 443
+| Storage | *.core.windows.net | dynamisch | 443
 
 ## <a name="snapshot-debugger"></a>Debuggen von Momentaufnahmen
 
@@ -379,4 +378,4 @@ Hinweis: Die Domäne „*.loganalytics.io“ ist im Besitz des Log Analytics-Tea
 | --- | --- | --- | --- |
 | Agent | ppe.azureserviceprofiler.net<br/>*.ppe.azureserviceprofiler.net | 40.68.32.221<br/>40.85.246.0<br/>40.85.246.57<br/>40.117.252.0<br/>40.117.253.100<br/>51.140.140.162<br/>51.140.140.184<br/>51.143.96.206<br/>51.143.98.157<br/>52.161.8.88<br/>52.161.29.225<br/>52.178.147.66<br/>52.178.149.106<br/>52.230.122.9<br/>52.230.124.46<br/>104.40.217.71<br/>104.211.89.26<br/>104.211.90.232 | 443
 | Portal | ppe.gateway.azureserviceprofiler.net | dynamisch | 443
-| Speicher | *.core.windows.net | dynamisch | 443
+| Storage | *.core.windows.net | dynamisch | 443

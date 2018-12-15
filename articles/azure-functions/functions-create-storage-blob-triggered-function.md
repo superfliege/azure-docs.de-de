@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.date: 10/01/2018
 ms.author: glenga
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: f71db50678ad0f1b37e30a4120b90d47d9090942
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: fcc5052d73d921a8181ad068453111e5ead4361a
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49113851"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52999875"
 ---
 # <a name="create-a-function-triggered-by-azure-blob-storage"></a>Erstellen einer Funktion, die durch Azure Blob Storage ausgelöst wird
 
@@ -27,7 +27,7 @@ Erfahren Sie, wie Sie eine Funktion erstellen, die ausgelöst wird, wenn Dateien
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-+ Laden Sie den [Microsoft Azure Storage-Explorer](http://storageexplorer.com/) herunter, und installieren Sie ihn.
++ Laden Sie den [Microsoft Azure Storage-Explorer](https://storageexplorer.com/) herunter, und installieren Sie ihn.
 + Ein Azure-Abonnement. Wenn Sie keins besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
 ## <a name="create-an-azure-function-app"></a>Erstellen einer Azure Function-App
@@ -76,7 +76,7 @@ Als Nächstes stellen Sie eine Verbindung mit Ihrem Azure Storage-Konto her und 
 
     ![Beschaffen Sie die Anmeldeinformationen für die Speicherkontenverbindung.](./media/functions-create-storage-blob-triggered-function/functions-storage-account-connection.png)
 
-1. Führen Sie das Tool [Microsoft Azure Storage-Explorer](http://storageexplorer.com/) aus, klicken Sie auf das Verbindungssymbol auf der linken Seite, wählen Sie **Use a storage account name and key** (Name und Schlüssel eines Speicherkontos verwenden) aus, und klicken Sie anschließend auf **Weiter**.
+1. Führen Sie das Tool [Microsoft Azure Storage-Explorer](https://storageexplorer.com/) aus, klicken Sie auf das Verbindungssymbol auf der linken Seite, wählen Sie **Use a storage account name and key** (Name und Schlüssel eines Speicherkontos verwenden) aus, und klicken Sie anschließend auf **Weiter**.
 
     ![Führen Sie das Tool Storage Account-Explorer aus.](./media/functions-create-storage-blob-triggered-function/functions-storage-manager-connect-1.png)
 

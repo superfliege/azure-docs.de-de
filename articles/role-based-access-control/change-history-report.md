@@ -15,12 +15,12 @@ ms.date: 05/23/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d5a67cdcef7f39830b747dec5f2c980483e1ab91
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: c1ba7798fd8c1a18bc84aeb9ab8c4c2e0ff718cc
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46978334"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52967894"
 ---
 # <a name="view-activity-logs-for-rbac-changes"></a>Anzeigen von Aktivitätsprotokollen für RBAC-Änderungen
 
@@ -117,15 +117,15 @@ az monitor activity-log list --resource-provider "Microsoft.Authorization" --sta
 
 Folgende Schritte sind für den Einstieg grundlegend:
 
-1. [Erstellen eines Log Analytics-Arbeitsbereichs](../log-analytics/log-analytics-quick-create-workspace.md)
+1. [Erstellen eines Log Analytics-Arbeitsbereichs](../azure-monitor/learn/quick-create-workspace.md)
 
-1. [Konfigurieren der Lösung für die Aktivitätsprotokollanalyse](../log-analytics/log-analytics-activity.md#configuration) für Ihren Arbeitsbereich.
+1. [Konfigurieren der Lösung für die Aktivitätsprotokollanalyse](../azure-monitor/platform/collect-activity-logs.md#configuration) für Ihren Arbeitsbereich.
 
-1. [Anzeigen der Aktivitätsprotokolle](../log-analytics/log-analytics-activity.md#using-the-solution) Sie können schnell zur Übersichtsseite für die Aktivitätsprotokollanalyse navigieren, indem Sie auf die Option **Log Analytics** klicken.
+1. [Anzeigen der Aktivitätsprotokolle](../azure-monitor/platform/collect-activity-logs.md#using-the-solution) Sie können schnell zur Übersichtsseite für die Aktivitätsprotokollanalyse navigieren, indem Sie auf die Option **Log Analytics** klicken.
 
    ![Option „Log Analytics“ im Portal](./media/change-history-report/azure-log-analytics-option.png)
 
-1. Verwenden Sie optional die Seite [Protokollsuche](../log-analytics/log-analytics-log-search.md) oder das [Advanced Analytics-Portal](../log-analytics/query-language/get-started-analytics-portal.md), um die Protokolle abzufragen und anzuzeigen. Weitere Informationen zu diesen beiden Optionen finden Sie unter [Log Search page or the Advanced Analytics portal (Seite „Protokollsuche“ bzw. das Advanced Analytics-Portal)](../log-analytics/log-analytics-log-search-portals.md).
+1. Verwenden Sie optional die Seite [Protokollsuche](../log-analytics/log-analytics-log-search.md) oder das [Advanced Analytics-Portal](../azure-monitor/log-query/get-started-portal.md), um die Protokolle abzufragen und anzuzeigen. Weitere Informationen zu diesen beiden Optionen finden Sie unter [Log Search page or the Advanced Analytics portal (Seite „Protokollsuche“ bzw. das Advanced Analytics-Portal)](../azure-monitor/log-query/portals.md).
 
 Im Folgenden finden Sie eine Abfrage, die neue Rollenzuweisungen zurückgibt, die vom Anbieter der Zielressource geordnet wurden:
 

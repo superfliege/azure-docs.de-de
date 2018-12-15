@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/16/2017
 ms.author: alkohli
-ms.openlocfilehash: d47109d541a3df93d9234e27e53d1538f6bc4c6e
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: 7e35aa8120c455b8cc0d0881a9ceb5120c57deff
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2017
-ms.locfileid: "24879057"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52969667"
 ---
 # <a name="available-regions-for-your-storsimple"></a>Verfügbare Regionen für Ihr StorSimple
 
@@ -47,7 +47,7 @@ Es folgt eine Liste der Regionen, in denen der StorSimple-Geräte-Manager-Dienst
 
 ![StorSimple-Geräte-Manager-Dienst-Regionen](./media/storsimple-region/storsimple-device-manager-service-regions.png)
 
-Für Azure Government Cloud ist der StorSimple-Geräte-Manager-Dienst in den Datencentern USA Gov Iowa und USA Gov Virginia verfügbar.
+Für Azure Government Cloud ist der StorSimple-Geräte-Manager-Dienst in den Datencentern US Gov Iowa und US Gov Virginia verfügbar.
 
 ## <a name="region-availability-for-data-stored-in-storsimple"></a>Regionale Verfügbarkeit für Daten, die in StorSimple gespeichert sind
 
@@ -67,7 +67,7 @@ Je nach Modell können die StorSimple-Geräte in unterschiedlichen Regionen oder
 
 Wenn Sie ein physisches StorSimple 8100- oder 8600-Gerät verwenden, ist das Gerät in den folgenden Ländern verfügbar.
 
-| #  | Land        | #  | Land     | #  | Land      | #  | Land              |
+| #  | Country        | #  | Country     | #  | Country      | #  | Country              |
 |----|----------------|----|-------------|----|--------------|----|----------------------|
 | 1  | Australien      | 16 | Hongkong   | 31 | Neuseeland  | 46 | Südafrika         |
 | 2  | Österreich        | 17 | Ungarn     | 32 | Nigeria      | 47 | Südkorea          |
@@ -85,7 +85,7 @@ Wenn Sie ein physisches StorSimple 8100- oder 8600-Gerät verwenden, ist das Ger
 | 14 | Deutschland        | 29 | Mexiko      | 44 | Slowakei     | 59 | Vietnam              |
 | 15 | Griechenland         | 30 | Niederlande | 45 | Slowenien     | 60 | Kroatien              |
 
-Diese Liste ändert sich, wenn weitere Länder hinzugefügt werden. Die jeweils aktuellste Liste der Länder finden Sie in den [Produktbestimmungen](https://www.microsoft.com/en-us/Licensing/product-licensing) im Anhang zu den Bestimmungen für Speicherarrays.
+Diese Liste ändert sich, wenn weitere Länder hinzugefügt werden. Die jeweils aktuellste Liste der Länder finden Sie in den [Produktbestimmungen](https://www.microsoft.com/en-us/licensing/product-licensing/products) im Anhang zu den Bestimmungen für Speicherarrays.
 
 Microsoft kann physische Hardware sowie Hardware-Ersatzteile für StorSimple in die Länder liefern, die in der vorangehenden Liste aufgeführt sind.
 

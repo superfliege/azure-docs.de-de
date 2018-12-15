@@ -9,16 +9,15 @@ ms.assetid: 97783cc6-67d6-465f-9926-cb9821f4176e
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/30/2017
 ms.author: mbullwin
-ms.openlocfilehash: 1951f001de1b9d0667e5d4430454b32b5a3c890e
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 2f9b61a212251332cd94379b40f93eb52d49c729
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50957487"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52870067"
 ---
 # <a name="exploring-hockeyapp-data-in-application-insights"></a>Untersuchen von HockeyApp-Daten in Application Insights
 
@@ -61,7 +60,7 @@ Analytics ist ein leistungsstarkes Tool für die Ad-hoc-Abfrage Ihrer Daten. Es 
 
 ![Analytics](./media/app-insights-hockeyapp-bridge-app/05.png)
 
-* [Weitere Informationen zu Analytics](../log-analytics/query-language/get-started-analytics-portal.md)
+* [Weitere Informationen zu Analytics](../azure-monitor/log-query/get-started-portal.md)
 
 ## <a name="continuous-export"></a>Fortlaufendem Export
 Mit der Funktion „Fortlaufender Export“ können Sie Ihre Daten in einen Azure Blob Storage-Container exportieren. Dies ist sehr nützlich, wenn Sie Ihre Daten länger speichern müssen, als dies durch die von Application Insights angebotene Aufbewahrungsdauer vorgesehen ist. Sie können die Daten im Blobspeicher speichern oder in eine SQL-Datenbank bzw. eine andere bevorzugte Data Warehousing-Lösung konvertieren.
@@ -69,5 +68,5 @@ Mit der Funktion „Fortlaufender Export“ können Sie Ihre Daten in einen Azur
 [Weitere Informationen zum fortlaufenden Export](app-insights-export-telemetry.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Anwenden von Analytics auf Ihre Daten](../log-analytics/query-language/get-started-analytics-portal.md)
+* [Anwenden von Analytics auf Ihre Daten](../azure-monitor/log-query/get-started-portal.md)
 

@@ -10,16 +10,16 @@ ms.component: bing-visual-search
 ms.topic: conceptual
 ms.date: 5/16/2018
 ms.author: scottwhi
-ms.openlocfilehash: c7464558dd7227303fd7a3cc8be71ca5e2d2cfca
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 76fb61f0f1dd3c1f72c4c6132d1bfdc8b516477a
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50414963"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52955546"
 ---
 # <a name="using-an-insights-token-to-get-insights-about-an-image"></a>Verwenden eines Erkenntnistokens zum Gewinnen von Erkenntnissen zu einem Bild
 
-Die API für die visuelle Bing-Suche gibt Informationen zu einem von Ihnen bereitgestellten Bild zurück. Sie können ein Bild über die Bild-URL, ein Erkenntnistoken oder durch Hochladen des Bilds bereitstellen. Informationen zu diesen Optionen finden Sie unter [Was ist die API für die visuelle Bing-Suche?](overview.md). Dieser Artikel erläutert die Verwendung eines Erkenntnistokens. Beispiele für das Hochladen eines Bilds zum Gewinnen von Erkenntnissen finden Sie in den Schnellstartanleitungen ([C#](quickstarts\csharp.md) | [Java](quickstarts\java.md) | [Node.js](quickstarts\nodejs.md) | [Python](quickstarts\python.md)).
+Die API für die visuelle Bing-Suche gibt Informationen zu einem von Ihnen bereitgestellten Bild zurück. Sie können ein Bild über die Bild-URL, ein Erkenntnistoken oder durch Hochladen des Bilds bereitstellen. Informationen zu diesen Optionen finden Sie unter [Was ist die API für die visuelle Bing-Suche?](overview.md). Dieser Artikel erläutert die Verwendung eines Erkenntnistokens. Beispiele für das Hochladen eines Bilds zum Gewinnen von Erkenntnissen finden Sie in den Schnellstartanleitungen ([C#](quickstarts/csharp.md) | [Java](quickstarts/java.md) | [Node.js](quickstarts/nodejs.md) | [Python](quickstarts/python.md)).
 
 
 Wenn Sie der visuellen Suche ein Bildtoken oder eine URL senden, müssen Sie die folgenden Formulardaten in den Text der POST-Anforderung einfügen. Die Formulardaten müssen den Header „Content-Disposition“ enthalten, und der `name`-Parameter muss auf „knowledgeRequest“ festgelegt sein. Einzelheiten zum `imageInfo`-Objekt finden Sie unter [Die Anforderung](#the-request).

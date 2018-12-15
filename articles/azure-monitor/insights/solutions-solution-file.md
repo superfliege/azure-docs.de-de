@@ -8,19 +8,18 @@ manager: carmonm
 editor: tysonn
 ms.assetid: 1915e204-ba7e-431b-9718-9eb6b4213ad8
 ms.service: monitoring
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/09/2018
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 34161251ac52323bc3eff66cfe30f3de34bdf60c
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: ae310ac35afed06881eb85fabc92d68e256ca5e7
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51714306"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53189771"
 ---
 # <a name="creating-a-management-solution-file-in-azure-preview"></a>Erstellen einer Verwaltungslösungsdatei in Azure (Vorschau)
 > [!NOTE]
@@ -169,7 +168,7 @@ Sie verweisen in diesem Fall in der Lösung mit der Syntax **variables('variable
 Das **dependsOn**-Element gibt eine [Abhängigkeit](../../azure-resource-manager/resource-group-define-dependencies.md) von einer anderen Ressource an.  Wenn die Lösung installiert ist, wird keine Ressource erstellt, bis nicht alle Abhängigkeiten erstellt wurden.  Beispielsweise kann Ihre Lösung möglicherweise [ein Runbook starten](solutions-resources-automation.md#runbooks), wenn sie mithilfe einer [Auftragsressource](solutions-resources-automation.md#automation-jobs) erstellt wurde.  Die Auftragsressource würde dann von der Runbookressource abhängig sein, um sicherzustellen, dass das Runbook erstellt wird, bevor der Auftrag erstellt wird.
 
 ### <a name="log-analytics-workspace-and-automation-account"></a>Log Analytics-Arbeitsbereich und Automation-Konto
-Verwaltungslösungen erfordern einen [Log Analytics-Arbeitsbereich](../../log-analytics/log-analytics-manage-access.md) für Ansichten und ein [Automation-Konto](../../automation/automation-security-overview.md#automation-account-overview) für Runbooks und zugehörige Ressourcen.  Diese müssen verfügbar sein, bevor die Ressourcen in der Lösung erstellt werden und sie sollten nicht in der Lösung selbst definiert werden.  Der Benutzer wird [einen Arbeitsbereich und ein Konto angeben](solutions.md#log-analytics-workspace-and-automation-account), wenn dieser Ihre Lösung bereitstellt. Als Autor sollten Sie aber die nachstehenden Punkte beachten.
+Verwaltungslösungen erfordern einen [Log Analytics-Arbeitsbereich](../../azure-monitor/platform/manage-access.md) für Ansichten und ein [Automation-Konto](../../automation/automation-security-overview.md#automation-account-overview) für Runbooks und zugehörige Ressourcen.  Diese müssen verfügbar sein, bevor die Ressourcen in der Lösung erstellt werden und sie sollten nicht in der Lösung selbst definiert werden.  Der Benutzer wird [einen Arbeitsbereich und ein Konto angeben](solutions.md#log-analytics-workspace-and-automation-account), wenn dieser Ihre Lösung bereitstellt. Als Autor sollten Sie aber die nachstehenden Punkte beachten.
 
 
 ## <a name="solution-resource"></a>Lösungsressource

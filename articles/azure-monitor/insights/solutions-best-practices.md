@@ -8,18 +8,17 @@ manager: carmonm
 editor: tysonn
 ms.assetid: 1915e204-ba7e-431b-9718-9eb6b4213ad8
 ms.service: operations-management-suite
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/27/2017
 ms.author: bwren
-ms.openlocfilehash: e5011dbaad5e5935f3aa792bd3a3ed2b271f23bc
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: d6d2414935bb5d1f095ad2b200acafa97b3b9b32
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52632432"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53192691"
 ---
 # <a name="best-practices-for-creating-management-solutions-in-azure-preview"></a>Bewährte Methoden für das Erstellen von Verwaltungslösungen in Azure (Vorschau)
 > [!NOTE]
@@ -28,7 +27,7 @@ ms.locfileid: "52632432"
 Dieser Artikel enthält bewährte Methoden für das [Erstellen einer Verwaltungslösungsdatei](solutions-solution-file.md) in Azure.  Diese Informationen werden aktualisiert, sobald weitere bewährte Methoden ermittelt wurden.
 
 ## <a name="data-sources"></a>Datenquellen
-- Datenquellen können [mit einer Resource Manager-Vorlage konfiguriert](../../log-analytics/log-analytics-template-workspace-configuration.md) werden, sie sollten jedoch nicht in einer Lösungsdatei enthalten sein.  Der Grund dafür ist, dass das Konfigurieren von Datenquellen derzeit nicht idempotent ist, was bedeutet, dass die vorhandene Konfiguration im Arbeitsbereich des Benutzers von Ihrer Lösung überschrieben werden könnte.<br><br>Beispielsweise werden für Ihre Lösung Warn- und Fehlerereignisse aus dem Anwendungsereignisprotokoll benötigt.  Wenn Sie dies als Datenquelle in Ihrer Lösung angeben, besteht das Risiko, dass Informationsereignisse entfernt werden, wenn der Benutzer dies in seinem Arbeitsbereich konfiguriert hat.  Wenn Sie alle Ereignisse einschließen, werden möglicherweise übermäßig viele Informationsereignisse im Arbeitsbereich des Benutzers erfasst.
+- Datenquellen können [mit einer Resource Manager-Vorlage konfiguriert](../../azure-monitor/platform/template-workspace-configuration.md) werden, sie sollten jedoch nicht in einer Lösungsdatei enthalten sein.  Der Grund dafür ist, dass das Konfigurieren von Datenquellen derzeit nicht idempotent ist, was bedeutet, dass die vorhandene Konfiguration im Arbeitsbereich des Benutzers von Ihrer Lösung überschrieben werden könnte.<br><br>Beispielsweise werden für Ihre Lösung Warn- und Fehlerereignisse aus dem Anwendungsereignisprotokoll benötigt.  Wenn Sie dies als Datenquelle in Ihrer Lösung angeben, besteht das Risiko, dass Informationsereignisse entfernt werden, wenn der Benutzer dies in seinem Arbeitsbereich konfiguriert hat.  Wenn Sie alle Ereignisse einschließen, werden möglicherweise übermäßig viele Informationsereignisse im Arbeitsbereich des Benutzers erfasst.
 
 - Wenn Ihre Lösung Daten aus einer der Standarddatenquellen erfordert, sollten Sie dies als Voraussetzung definieren.  Geben Sie in der Dokumentation an, dass der Kunde die Datenquelle selbst konfigurieren muss.  
 - Fügen Sie allen Ansichten in Ihrer Lösung eine Meldung vom Typ [Datenflussüberprüfung](../../azure-monitor/platform/view-designer-tiles.md) hinzu, um die Benutzer auf Datenquellen hinzuweisen, die konfiguriert werden müssen, sodass die erforderlichen Daten gesammelt werden müssen.  Diese Meldung wird auf der Kachel der Ansicht angezeigt, wenn keine erforderlichen Daten gefunden wurden.

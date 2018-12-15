@@ -8,13 +8,13 @@ manager: kfile
 editor: jasonwhowell
 ms.service: mysql
 ms.topic: article
-ms.date: 07/18/2018
-ms.openlocfilehash: 686db4dc15eb42abead3eef6798ed2b83e248811
-ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
+ms.date: 12/06/2018
+ms.openlocfilehash: 451316b32bcda43d62bbabf0c4f73d239698c85b
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39136450"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53078721"
 ---
 # <a name="how-to-configure-server-parameters-in-azure-database-for-mysql-by-using-the-azure-portal"></a>Konfigurieren von Serverparametern in Azure Database for MySQL mit dem Azure-Portal
 
@@ -42,9 +42,9 @@ Die Liste der unterstützten Serverparameter wächst ständig. Verwenden Sie die
 
 |**Tarif**| **Computegeneration**|**vCore(s)**|**InnoDB-Pufferpool (MB)**| **Max. Anzahl von Verbindungen**|
 |---|---|---|---|--|
-|Basic| Gen 4| 1| 1024| 50|
+|Basic| Gen 4| 1| 960| 50|
 |Basic| Gen 4| 2| 2.560| 100|
-|Basic| Gen 5| 1| 1024| 50|
+|Basic| Gen 5| 1| 960| 50|
 |Basic| Gen 5| 2| 2.560| 100|
 |Allgemeiner Zweck| Gen 4| 2| 3.584| 300|
 |Allgemeiner Zweck| Gen 4| 4| 7.680| 625|
@@ -56,10 +56,12 @@ Die Liste der unterstützten Serverparameter wächst ständig. Verwenden Sie die
 |Allgemeiner Zweck| Gen 5| 8| 15360| 1250|
 |Allgemeiner Zweck| Gen 5| 16| 31.232| 2500|
 |Allgemeiner Zweck| Gen 5| 32| 62.976| 5.000|
+|Allgemeiner Zweck| Gen 5| 64| 125952| 10000|
 |Arbeitsspeicheroptimiert| Gen 5| 2| 7168| 600|
 |Arbeitsspeicheroptimiert| Gen 5| 4| 15360| 1250|
 |Arbeitsspeicheroptimiert| Gen 5| 8| 30720| 2500|
 |Arbeitsspeicheroptimiert| Gen 5| 16| 62464| 5.000|
+|Arbeitsspeicheroptimiert| Gen 5| 32| 125952| 10000|
 
 Diese zusätzlichen Serverparameter sind im System nicht konfigurierbar:
 

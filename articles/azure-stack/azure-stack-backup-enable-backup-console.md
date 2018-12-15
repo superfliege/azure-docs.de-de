@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 11/05/2018
 ms.author: jeffgilb
 ms.reviewer: hectorl
-ms.openlocfilehash: d7d47b61c926c6704a06dacc55f00d77a1266988
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: d8d88484181c3c38f64cf8f00f9d8feaa3b0217a
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51038364"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52962561"
 ---
 # <a name="enable-backup-for-azure-stack-from-the-administration-portal"></a>Aktivieren der Sicherung für Azure Stack über das Verwaltungsportal
-Aktivieren Sie den Dienst für die Infrastruktursicherung über das Verwaltungsportal, sodass Azure Stack Sicherungen generieren kann. Mit diesen Sicherungen können Sie bei einem [schwerwiegenden Fehler](.\azure-stack-backup-recover-data.md) Ihre Umgebung mittels einer Cloudwiederherstellung wiederherstellen. Die Cloudwiederherstellung soll sicherstellen, dass die Anbieter und Benutzer sich nach Abschluss der Wiederherstellung wieder im Portal anmelden können. Auf diese Weise können Benutzer ihre Abonnements wiederherstellen, einschließlich RBAC-Berechtigungen (Role-Based Access Control) und -Rollen, ursprünglichen Plänen, Angeboten und zuvor definierten Compute-, Speicher- und Netzwerkkontingenten.
+Aktivieren Sie den Dienst für die Infrastruktursicherung über das Verwaltungsportal, sodass Azure Stack Sicherungen generieren kann. Mit diesen Sicherungen können Sie bei einem [schwerwiegenden Fehler](./azure-stack-backup-recover-data.md) Ihre Umgebung mittels einer Cloudwiederherstellung wiederherstellen. Die Cloudwiederherstellung soll sicherstellen, dass die Anbieter und Benutzer sich nach Abschluss der Wiederherstellung wieder im Portal anmelden können. Auf diese Weise können Benutzer ihre Abonnements wiederherstellen, einschließlich RBAC-Berechtigungen (Role-Based Access Control) und -Rollen, ursprünglichen Plänen, Angeboten und zuvor definierten Compute-, Speicher- und Netzwerkkontingenten.
 
 Allerdings sichert der Infrastructure Backup-Dienst keine IaaS-VMs, Netzwerkkonfigurationen oder Speicherressourcen (z.B. Speicherkonten, Blobs, Tabellen). Daher werden Benutzern zuvor vorhandene Ressourcen nicht angezeigt, wenn sie sich nach einer Cloudwiederherstellung anmelden. PaaS-Ressourcen (Platform as a Service) und -Daten werden ebenfalls nicht vom Dienst gesichert. 
 
@@ -58,31 +58,31 @@ Administratoren und Benutzer sind für die Sicherung und Wiederherstellung von I
     ```
 10. Wählen Sie **OK** aus, um die Backup Controller-Einstellungen zu speichern.
 
-    ![Azure Stack – Backup Controller-Einstellungen](media\azure-stack-backup\backup-controller-settings.png)
+    ![Azure Stack – Backup Controller-Einstellungen](media/azure-stack-backup/backup-controller-settings.png)
 
 ## <a name="start-backup"></a>Sicherung starten
 Zum Starten einer Sicherung klicken Sie auf **Jetzt sichern**, um eine bedarfsgesteuerte Sicherung zu starten. Eine bedarfsgesteuerte Sicherung ändert die Zeit für die nächste geplante Sicherung nicht. Nachdem die Aufgabe abgeschlossen ist, können Sie die Einstellungen in der **Zusammenfassung** bestätigen:
 
-![Azure Stack: Bedarfsgesteuerte Sicherung](media\azure-stack-backup\scheduled-backup.png)
+![Azure Stack: Bedarfsgesteuerte Sicherung](media/azure-stack-backup/scheduled-backup.png)
 
 Sie können auch das PowerShell-Cmdlet **Start-AzsBackup** auf Ihrem Azure Stack-Verwaltungscomputer ausführen. Weitere Informationen finden Sie unter [Sichern von Azure Stack](azure-stack-backup-back-up-azure-stack.md).
 
 ## <a name="enable-or-disable-automatic-backups"></a>Aktivieren oder Deaktivieren von automatischen Sicherungen
 Wenn Sie die Sicherung aktivieren, werden Sicherungen automatisch geplant. Den Zeitpunkt der nächsten geplanten Sicherung finden Sie in der **Zusammenfassung**. 
 
-![Azure Stack: Bedarfsgesteuerte Sicherung](media\azure-stack-backup\on-demand-backup.png)
+![Azure Stack: Bedarfsgesteuerte Sicherung](media/azure-stack-backup/on-demand-backup.png)
 
 Wenn Sie künftige geplante Sicherungen deaktivieren möchten, klicken Sie auf **Automatische Sicherungen deaktivieren**. Beim Deaktivieren automatischer Sicherungen bleiben die Sicherungseinstellungen einschließlich des Sicherungszeitplans konfiguriert. Mit diese Aktion wird der Scheduler lediglich angewiesen, künftige Sicherungen zu überspringen. 
 
-![Azure Stack: Geplante Sicherungen deaktivieren](media\azure-stack-backup\disable-auto-backup.png)
+![Azure Stack: Geplante Sicherungen deaktivieren](media/azure-stack-backup/disable-auto-backup.png)
 
 Stellen Sie in der **Zusammenfassung** sicher, dass künftige geplante Sicherungen deaktiviert wurden:
 
-![Azure Stack: Sicherstellen, dass Sicherungen deaktiviert wurden](media\azure-stack-backup\confirm-disable.png)
+![Azure Stack: Sicherstellen, dass Sicherungen deaktiviert wurden](media/azure-stack-backup/confirm-disable.png)
 
 Klicken Sie auf **Automatische Sicherungen aktivieren**, um den Scheduler anzuweisen, zur geplanten Zeit mit künftigen Sicherungen zu beginnen. 
 
-![Azure Stack: Geplante Sicherungen aktivieren](media\azure-stack-backup\enable-auto-backup.png)
+![Azure Stack: Geplante Sicherungen aktivieren](media/azure-stack-backup/enable-auto-backup.png)
 
 
 > [!Note]  
