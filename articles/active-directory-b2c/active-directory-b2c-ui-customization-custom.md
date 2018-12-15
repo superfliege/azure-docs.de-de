@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 237d22054ecb4eea58494c1b5066eb8e00ecd2fc
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: b0e24da86d253139a85e792bf3c59d777cf5db6a
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52583448"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52833940"
 ---
 # <a name="customize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>Anpassen der Benutzeroberfläche einer Anwendung mithilfe einer benutzerdefinierten Richtlinie in Azure Active Directory B2C
 
@@ -31,7 +31,7 @@ Führen Sie die Schritte unter [Erste Schritte mit benutzerdefinierten Richtlini
 
 Mit der Funktion zum Anpassen der Benutzeroberfläche können Sie das Aussehen und Verhalten benutzerdefinierter Richtlinien anpassen. Außerdem können Sie die Konsistenz von Marken und visuellen Elementen zwischen Ihrer Anwendung und Azure AD B2C verwalten.
 
-So funktioniert es: Azure AD B2C führt den Code im Browser Ihres Kunden aus und verwendet einen modernen Ansatz namens [Cross-Origin Resource Sharing (CORS)](http://www.w3.org/TR/cors/) (Ressourcenfreigabe zwischen verschiedenen Ursprüngen). Zuerst legen Sie eine URL in der benutzerdefinierten Richtlinie mit benutzerdefiniertem HTML-Inhalt fest. Azure AD B2C führt die UI-Elemente mit dem HTML-Inhalt, der über Ihre URL geladen wird, zusammen und zeigt anschließend die Seite für den Kunden an.
+Dies funktioniert folgendermaßen: Azure AD B2C führt den Code im Browser Ihres Kunden aus und verwendet einen modernen Ansatz namens [Cross-Origin Resource Sharing](https://www.w3.org/TR/cors/) (CORS, Ressourcenfreigabe zwischen verschiedenen Ursprüngen). Zuerst legen Sie eine URL in der benutzerdefinierten Richtlinie mit benutzerdefiniertem HTML-Inhalt fest. Azure AD B2C führt die UI-Elemente mit dem HTML-Inhalt, der über Ihre URL geladen wird, zusammen und zeigt anschließend die Seite für den Kunden an.
 
 ## <a name="create-your-html5-content"></a>Erstellen des HTML5-Inhalts
 
@@ -111,7 +111,7 @@ Konfigurieren Sie den Blob-Speicher für die Ressourcenfreigabe zwischen verschi
 
 Überprüfen Sie, ob alles bereit ist, indem Sie die folgenden Schritte ausführen:
 
-1. Navigieren Sie zur Website [www.test-cors.org](http://www.test-cors.org/), und fügen Sie anschließend die URL in das Feld **Remote-URL** ein.
+1. Navigieren Sie zur Website [www.test-cors.org](https://www.test-cors.org/), und fügen Sie anschließend die URL in das Feld **Remote-URL** ein.
 2. Klicken Sie auf **Anforderung senden**.  
     Wenn ein Fehler ausgegeben wird, sollten Sie sich vergewissern, dass Ihre [CORS-Einstellungen](#configure-cors) richtig sind. Außerdem müssen Sie unter Umständen Ihren Browsercache löschen oder eine InPrivate-Browsersitzung öffnen, indem Sie STRG+UMSCHALT+P drücken.
 

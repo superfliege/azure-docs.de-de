@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: f9c7a70eae4c49173b3e11b7fbfa901f7e5b89d6
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.openlocfilehash: 815b792f8584e984ff77c32265de65f9b633adb1
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52291044"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53322788"
 ---
 # <a name="event-analysis-and-visualization-with-application-insights"></a>Ereignisanalyse und Visualisierung mit Application Insights
 
@@ -54,7 +54,7 @@ Weitere Informationen zu den Funktionen des Application Insights-Portals finden 
 >[!NOTE]
 >Dies gilt gegenwärtig nur für Windows-Cluster.
 
-Es gibt grundsätzlich zwei Möglichkeiten, um Daten von WAD an Azure Application Insights zu senden. Hierzu wird der WAD-Konfiguration eine Application Insights-Senke hinzugefügt, wie in [diesem Artikel](../monitoring-and-diagnostics/azure-diagnostics-configure-application-insights.md) beschrieben.
+Es gibt grundsätzlich zwei Möglichkeiten, um Daten von WAD an Azure Application Insights zu senden. Hierzu wird der WAD-Konfiguration eine Application Insights-Senke hinzugefügt, wie in [diesem Artikel](../azure-monitor/platform/diagnostics-extension-to-application-insights.md) beschrieben.
 
 #### <a name="add-an-application-insights-instrumentation-key-when-creating-a-cluster-in-azure-portal"></a>Hinzufügen eines Application Insights-Instrumentierungsschlüssels beim Erstellen eines Clusters im Azure-Portal
 
@@ -88,7 +88,7 @@ Fügen Sie in „WadCfg“ der Resource Manager-Vorlage durch Einfügen der folg
 
 In den beiden obigen Codeausschnitten wurde für die Senke der Name „applicationInsights“ verwendet. Dieser Name muss nicht verwendet werden. Solange der Name der Senke in „sinks“ eingefügt wird, können Sie eine beliebige Zeichenfolge als Name festlegen.
 
-Protokolle aus dem Cluster werden derzeit als **Ablaufverfolgungen** in der Application Insights-Protokollanzeige angezeigt. Da die meisten Ablaufverfolgungen der Plattform als „Information“ eingestuft werden, haben Sie auch die Möglichkeit, die Senkenkonfiguration so zu ändern, dass nur Protokolle vom Typ „Kritisch“ und „Fehler“ gesendet werden. Dies kann durch Hinzufügen von „Kanälen“ zur Senke erfolgen, wie in [diesem Artikel](../monitoring-and-diagnostics/azure-diagnostics-configure-application-insights.md) erläutert.
+Protokolle aus dem Cluster werden derzeit als **Ablaufverfolgungen** in der Application Insights-Protokollanzeige angezeigt. Da die meisten Ablaufverfolgungen der Plattform als „Information“ eingestuft werden, haben Sie auch die Möglichkeit, die Senkenkonfiguration so zu ändern, dass nur Protokolle vom Typ „Kritisch“ und „Fehler“ gesendet werden. Dies kann durch Hinzufügen von „Kanälen“ zur Senke erfolgen, wie in [diesem Artikel](../azure-monitor/platform/diagnostics-extension-to-application-insights.md) erläutert.
 
 >[!NOTE]
 >Wenn Sie im Portal oder in der Resource Manager-Vorlage einen falschen Application Insights-Schlüssel verwenden, müssen Sie ihn manuell ändern und den Cluster aktualisieren und erneut bereitstellen.

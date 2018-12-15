@@ -6,12 +6,12 @@ description: Erfahren Sie, wie Sie mit Microsoft Azure Cloud Services leistungss
 ms.topic: hub-page
 featureFlags:
 - clicktale
-ms.openlocfilehash: 78f9fa6c3d15d43c1505b5a84a2e269992290afa
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: b37a419affcaffeec6c9931f7ff4ecca49e377d5
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53082219"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53410379"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -383,12 +383,6 @@ Automatisieren von Azure-Aufgaben mithilfe von Skripts über PowerShell </a>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="/azure/batch-ai/">
-                                                <img src="media/index/Azure_batch_ai.svg" alt="" />
-                                                <p>Azure Batch AI</p>
-                                            </a>
-                                        </li>
-                                        <li>
                                             <a href="/azure/service-fabric/">
                                                 <img src="media/index/Fabric.svg" alt="" />
                                                 <p>Service Fabric</p>
@@ -753,12 +747,6 @@ Automatisieren von Azure-Aufgaben mithilfe von Skripts über PowerShell </a>
                                             <a href="/azure/azure-databricks/">
                                                 <img src="media/index/logo_databricks.svg" alt="" />
                                                 <p>Azure Databricks</p>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="/azure/batch-ai/">
-                                                <img src="media/index/Azure_batch_ai.svg" alt="" />
-                                                <p>Azure Batch AI</p>
                                             </a>
                                         </li>
                                         <li>
@@ -1893,25 +1881,6 @@ Automatisieren von Azure-Aufgaben mithilfe von Skripts über PowerShell </a>
                                                 <div class="cardText">
                                                     <h3>Container Instances</h3>
                                                     <p>Einfaches Ausführen von Containern mit einem einzigen Befehl</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/azure/batch-ai/">
-                                    <div class="cardSize">
-                                        <div class="cardPadding">
-                                            <div class="card">
-                                                <div class="cardImageOuter">
-                                                    <div class="cardImage">
-                                                        <img src="media/index/batch-ai.svg" alt="" />
-                                                    </div>
-                                                </div>
-                                                <div class="cardText">
-                                                    <h3>Azure Batch AI</h3>
-                                                    <p>Einfaches Experimentieren und Trainieren Ihrer Deep Learning- und KI-Modelle – parallel und bedarfsabhängig</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3608,25 +3577,6 @@ Automatisieren von Azure-Aufgaben mithilfe von Skripts über PowerShell </a>
                                                 <div class="cardText">
                                                     <h3>Azure Databricks</h3>
                                                     <p>Erstellen eines Azure Databricks-Arbeitsbereichs mit Spark-Clustern</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/azure/batch-ai/">
-                                    <div class="cardSize">
-                                        <div class="cardPadding">
-                                            <div class="card">
-                                                <div class="cardImageOuter">
-                                                    <div class="cardImage">
-                                                        <img src="media/index/Azure_batch_ai.svg" alt="" />
-                                                    </div>
-                                                </div>
-                                                <div class="cardText">
-                                                    <h3>Azure Batch AI</h3>
-                                                    <p>Einfaches Experimentieren und Trainieren Ihrer Deep Learning- und KI-Modelle – parallel und bedarfsabhängig</p>
                                                 </div>
                                             </div>
                                         </div>

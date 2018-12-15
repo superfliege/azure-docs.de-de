@@ -10,17 +10,15 @@ ms.assetid: 5b9c9c83-3435-488c-b4f6-7653003ae18a
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: abshamsft
-ms.component: ''
-ms.openlocfilehash: 69088f7d07312d4110eafea369ea999f0597868b
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: 50819e1378187dda126f25298d8a2ac0a1b815c5
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52441994"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53188774"
 ---
 # <a name="expressroute-monitor"></a>ExpressRoute-Monitor
 
@@ -160,4 +158,4 @@ Sie können die Benachrichtigungscodes sehen und über **LogAnalytics** Benachri
  
 
 ## <a name="next-steps"></a>Nächste Schritte
-Mit [Protokollsuchen](../../log-analytics/log-analytics-queries.md) können Sie Detaildatensätze mit Netzwerkleistungsdaten anzeigen.
+Mit [Protokollsuchen](../../azure-monitor/log-query/log-query-overview.md) können Sie Detaildatensätze mit Netzwerkleistungsdaten anzeigen.

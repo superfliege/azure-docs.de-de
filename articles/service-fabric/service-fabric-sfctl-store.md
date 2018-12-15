@@ -12,14 +12,14 @@ ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 07/31/2018
+ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: 2f2da5b38ab39e3636ff0ac09ac2c5515e02b0c1
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 034ae29b5fabae15aa2b6b96e7fefaef23c1c5a1
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39492334"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53275226"
 ---
 # <a name="sfctl-store"></a>sfctl store
 Ermöglicht es, grundlegende Vorgänge auf Dateiebene für den Clusterimagespeicher auszuführen.
@@ -35,7 +35,7 @@ Ermöglicht es, grundlegende Vorgänge auf Dateiebene für den Clusterimagespeic
 ## <a name="sfctl-store-delete"></a>sfctl store delete
 Löscht den vorhandenen Imagespeicherinhalt.
 
-Löscht den Imagespeicherinhalt, der im angegebenen relativen Pfad des Imagespeichers gefunden wird. Hiermit können hochgeladene Anwendungspakete gelöscht werden, nachdem sie bereitgestellt wurden.
+Löscht den Imagespeicherinhalt, der im angegebenen relativen Pfad des Imagespeichers gefunden wird. Mit diesem Befehl können hochgeladene Anwendungspakete gelöscht werden, nachdem sie bereitgestellt wurden.
 
 ### <a name="arguments"></a>Argumente
 

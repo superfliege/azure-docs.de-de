@@ -9,25 +9,25 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 10/23/2018
-ms.openlocfilehash: 15bfe871731f5a6a04cae623faf0bd27cdba27fc
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: d7a32abe52e6f1109becc18c84b19d0ccd69719c
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50233190"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53385464"
 ---
 # <a name="monitor-b2b-messages-with-azure-log-analytics-in-azure-logic-apps"></a>Überwachen von B2B-Nachrichten mit Azure Log Analytics in Azure Logic Apps
 
 Nachdem Sie die B2B-Kommunikation zwischen Handelspartnern in Ihrem Integrationskonto eingerichtet haben, können diese Partner untereinander Nachrichten austauschen. Um zu überprüfen, ob die Kommunikation erwartungsgemäß funktioniert, können Sie über [Azure Log Analytics](../log-analytics/log-analytics-overview.md) AS2-, X12- und EDIFACT-Nachrichten überwachen und die Diagnoseprotokollierung für Ihr Integrationskonto einrichten. Dieser Dienst überwacht Ihre Cloud- und Ihre lokale Umgebung, unterstützt Sie dabei, deren Verfügbarkeit und Leistung zu gewährleisten, und erfasst Laufzeitdetails und Ereignisse für ein ausführlicheres Debugging. Sie können [diese Daten auch mit anderen Diensten verwenden](#extend-diagnostic-data), z.B. Azure Storage und Azure Event Hubs.
 
 > [!NOTE]
-> Diese Seite enthält möglicherweise Verweise auf Microsoft Operations Management Suite (OMS), die [im Januar 2019 eingestellt wird](../log-analytics/log-analytics-oms-portal-transition.md). Soweit möglich, werden diese Schritte aber durch Azure Log Analytics ersetzt. 
+> Diese Seite enthält möglicherweise Verweise auf Microsoft Operations Management Suite (OMS), die [im Januar 2019 eingestellt wird](../azure-monitor/platform/oms-portal-transition.md). Soweit möglich, werden diese Schritte aber durch Azure Log Analytics ersetzt. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Eine Logik-App, für die die Diagnoseprotokollierung eingerichtet ist. Informieren Sie sich über das [Erstellen einer Logik-App](quickstart-create-first-logic-app-workflow.md) und das [Einrichten der Protokollierung für diese Logik-App](../logic-apps/logic-apps-monitor-your-logic-apps.md#azure-diagnostics).
 
-* Wenn Sie die obigen Anforderungen erfüllen, benötigen Sie auch einen Log Analytics-Arbeitsbereich, in dem Sie die Überwachung und Nachverfolgung von B2B-Kommunikation über Log Analytics nutzen. Falls Sie keinen Log Analytics-Arbeitsbereich besitzen, lesen Sie die Informationen zum [Erstellen eines Log Analytics-Arbeitsbereichs](../log-analytics/log-analytics-quick-create-workspace.md).
+* Wenn Sie die obigen Anforderungen erfüllen, benötigen Sie auch einen Log Analytics-Arbeitsbereich, in dem Sie die Überwachung und Nachverfolgung von B2B-Kommunikation über Log Analytics nutzen. Falls Sie keinen Log Analytics-Arbeitsbereich besitzen, lesen Sie die Informationen zum [Erstellen eines Log Analytics-Arbeitsbereichs](../azure-monitor/learn/quick-create-workspace.md).
 
 * Ein mit Ihrer Logik-App verknüpftes Integrationskonto. Informationen zum Erstellen eines Integrationskontos mit Logik-App-Verknüpfung finden Sie [hier](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md).
 
@@ -121,10 +121,10 @@ Wählen Sie nach Abschluss **Add diagnostic setting** (Diagnoseeinstellung hinzu
 
 In Verbindung mit Azure Log Analytics können Sie die Nutzung der Diagnosedaten Ihrer Logik-App um andere Azure-Dienste erweitern, z.B.: 
 
-* [Archivieren von Azure-Diagnoseprotokollen in Azure Storage](../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md)
+* [Archivieren von Azure-Diagnoseprotokollen in Azure Storage](../azure-monitor/platform/archive-diagnostic-logs.md)
 * [Streamen von Azure-Diagnoseprotokollen an Azure Event Hubs](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md) 
 
-Durch die Verwendung von Telemetriedaten und Analysen anderer Dienste (beispielsweise [Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md) und [Power BI](../log-analytics/log-analytics-powerbi.md)) können Sie dann eine Überwachung in Echtzeit implementieren. Beispiel: 
+Durch die Verwendung von Telemetriedaten und Analysen anderer Dienste (beispielsweise [Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md) und [Power BI](../azure-monitor/platform/powerbi.md)) können Sie dann eine Überwachung in Echtzeit implementieren. Beispiel: 
 
 * [Streamen von Daten von Event Hubs zu Stream Analytics](../stream-analytics/stream-analytics-define-inputs.md)
 * [Analysieren von Streamingdaten mit Stream Analytics und Erstellen eines Dashboards für die Echtzeitanalyse in Power BI](../stream-analytics/stream-analytics-power-bi-dashboard.md)

@@ -11,14 +11,17 @@ ms.topic: article
 ms.date: 08/14/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 61294d8b6b84b03b1e0c8d79b4d2855452c7f0e6
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ROBOTS: NOINDEX
+ms.openlocfilehash: 9af8ce84805e48dd3c91dd7fb4fcf0b136fbfc60
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44056822"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53410090"
 ---
 # <a name="work-with-batch-ai-clusters"></a>Arbeiten mit Batch AI-Clustern 
+
+[!INCLUDE [batch-ai-retiring](../../includes/batch-ai-retiring.md)]
 
 In diesem Artikel wird das Arbeiten mit Clustern in Azure Batch AI erläutert. Eingeführt werden das Konzept von Clustern, die möglichen Arten von Konfigurationen und Beispiele. In den meisten Beispielen zum Erstellen und Verwalten eines Clusters wird in diesem Artikel die Azure-Befehlszeilenschnittstelle verwendet. Sie können zum Arbeiten mit Clustern jedoch auch andere Tools verwenden, z. B. das Azure-Portal und die Azure Batch AI-SDKs.
 

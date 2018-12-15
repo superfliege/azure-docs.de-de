@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 09/26/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5778c38d5a0c44e42b83fd139078be1f0bb45f7f
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 95355a6d1a0aff9829d75789df86f37768d25e22
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50023746"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53342237"
 ---
 # <a name="source-control-integration-in-azure-automation"></a>Integration der Quellcodeverwaltung in Azure Automation
 
@@ -50,7 +50,7 @@ Geben Sie auf der Seite **Quellcodeverwaltung – Übersicht** die Informationen
 |Eigenschaft  |BESCHREIBUNG  |
 |---------|---------|
 |Name der Quellcodeverwaltung     | Ein Anzeigename für die Quellcodeverwaltung        |
-|Typ der Quellcodeverwaltung     | Der Typ der Quelle für die Quellcodeverwaltung. Die verfügbaren Optionen lauten wie folgt:</br> Github</br>Azure DevOps (Git)</br> Azure DevOps (TFVC)        |
+|Typ der Quellcodeverwaltung     | Der Typ der Quelle für die Quellcodeverwaltung. Die verfügbaren Optionen lauten wie folgt:</br> GitHub</br>Azure DevOps (Git)</br> Azure DevOps (TFVC)        |
 |Repository     | Der Name des Repositorys oder Projekts. Dieser Wert wird aus dem Repository der Quellcodeverwaltung abgerufen. Beispiel: $/ContosoFinanceTFVCExample         |
 |Verzweigung     | Die Verzweigung, von der die Quelldateien abgerufen werden. Die Ausrichtung auf Verzweigungen ist für den TFVC-Quellcodeverwaltungstyp nicht verfügbar.          |
 |Ordnerpfad     | Der Ordner, der die Runbooks für die Synchronisierung enthält. Beispiel: /Runbooks         |
@@ -62,7 +62,7 @@ Geben Sie auf der Seite **Quellcodeverwaltung – Übersicht** die Informationen
 
 ## <a name="syncing"></a>Synchronisierung wird durchgeführt
 
-Wenn die automatische Synchronisierung beim Konfigurieren der Integration der Quellcodeverwaltung konfiguriert wird, startet die erste Synchronisierung automatisch. Falls die automatische Synchronisierung nicht festgelegt wurde, können Sie die Quelle in der Tabelle auf der Seite **Quellcodeverwaltung (Vorschau)** auswählen. Klicken Sie auf **Synchronisierung starten**, um den Synchronisierungsprozess zu starten.  
+Wenn die automatische Synchronisierung beim Konfigurieren der Integration der Quellcodeverwaltung konfiguriert wird, startet die erste Synchronisierung automatisch. Falls die automatische Synchronisierung nicht festgelegt wurde, können Sie die Quelle in der Tabelle auf der Seite **Quellcodeverwaltung (Vorschau)** auswählen. Klicken Sie auf **Synchronisierung starten**, um den Synchronisierungsprozess zu starten.
 
 Sie können den Status des aktuellen Synchronisierungsauftrags oder von früheren Aufträgen anzeigen, indem Sie auf die Registerkarte **Synchronisierungsaufträge** klicken. Wählen Sie in der Dropdownliste **Quellcodeverwaltung** eine Quellcodeverwaltung aus.
 

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/24/2018
 ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: 4758c29d1cdb7e09c397524574ba1ab6701efeeb
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 9f1c433be7e8adc0779860c3ec3bfb5d7174fca5
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238025"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52970721"
 ---
 #  <a name="add-marketplace-items-using-publishing-tool"></a>Hinzufügen von Marketplace-Elementen mithilfe des Veröffentlichungstools
 
@@ -28,7 +28,7 @@ Durch Hinzufügen Ihrer Inhalte zum [Azure Stack-Marketplace](azure-stack-market
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
- - Das Toolkit muss auf dem Azure Stack-Host ausgeführt werden oder auf dem Computer, auf dem es ausgeführt wird, über die Möglichkeit einer [VPN](.\asdk\asdk-connect.md#connect-with-vpn)-Verbindung mit dem ASDK-Host verfügen.
+ - Das Toolkit muss auf dem Azure Stack-Host ausgeführt werden oder auf dem Computer, auf dem es ausgeführt wird, über die Möglichkeit einer [VPN](./asdk/asdk-connect.md#connect-with-vpn)-Verbindung mit dem ASDK-Host verfügen.
 
  - Laden Sie die [Azure Stack-Schnellstartvorlagen](https://github.com/Azure/AzureStack-QuickStart-Templates/archive/master.zip) herunter, und extrahieren Sie sie.
 

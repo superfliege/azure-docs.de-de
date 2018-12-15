@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 10/19/2018
 ms.author: sethm
 ms.reviewer: alfredop
-ms.openlocfilehash: a5f3b206b83beb15ee3b29d5d5b9e389e85a91fb
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 32d0e0f48a99b5c06b1efa61e6e1a53cf5b0e61b
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49466986"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52971792"
 ---
 # <a name="usage-and-billing-in-azure-stack"></a>Verbrauch und Abrechnung in Azure Stack
 
@@ -35,9 +35,9 @@ Jeder Ressourcenanbieter in Azure Stack gibt Nutzungsdaten gemäß Ressourcennut
 
 Wenn Sie [Ihre Azure Stack-Instanz bei Azure registriert haben](azure-stack-register.md), ist Azure Stack zum Senden der Nutzungsdaten an Azure Commerce konfiguriert. Nachdem die Daten in Azure hochgeladen wurden, können Sie über das Abrechnungsportal oder mithilfe der Ressourcennutzungs-APIs von Azure darauf zugreifen. Weitere Informationen dazu, welche Nutzungsdaten an Azure gemeldet werden, finden Sie unter [Nutzungsdatenberichte](azure-stack-usage-reporting.md).  
 
-Die folgende Abbildung zeigt die wichtigsten Komponenten in der Nutzungspipeline: 
+Die folgende Abbildung zeigt die wichtigsten Komponenten in der Nutzungspipeline:
 
-![Nutzungspipeline](media\azure-stack-billing-and-chargeback\usagepipeline.png)
+![Nutzungspipeline](media/azure-stack-billing-and-chargeback/usagepipeline.png)
 
 ## <a name="what-usage-information-can-i-find-and-how"></a>Welche Nutzungsinformationen kann ich suchen, und wo finde ich sie?
 

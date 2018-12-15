@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/28/2018
+ms.date: 12/13/2018
 ms.author: rkarlin
-ms.openlocfilehash: 7b633b1787fc34658a84a2810de6673f9530cbf3
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 5e6d7dffb831e4e6541b5ef91cfc4ae4bbe88167
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52310649"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53343138"
 ---
 # <a name="add-a-web-application-firewall-in-azure-security-center"></a>Hinzufügen einer Web Application Firewall in Azure Security Center
 Zum Schutz Ihrer Webanwendungen empfiehlt Azure Security Center unter Umständen das Hinzufügen einer Web Application Firewall (WAF) von einem Microsoft-Partner. Die Umsetzung dieser Empfehlung wird in diesem Dokument anhand eines Beispiels veranschaulicht.
@@ -46,7 +46,9 @@ Security Center empfiehlt die Bereitstellung einer WAF zum Schutz vor Angriffen 
 
 6. Die Seite **Neue Web Application Firewall** wird geöffnet. Hier können Sie Schritte zur **VM-Konfiguration** ausführen und **WAF-Informationen** bereitstellen. Wählen Sie **VM-Konfiguration**aus.
 7. Unter **VM-Konfiguration** geben Sie Informationen zum Einrichten des virtuellen Computers ein, auf dem die WAF ausgeführt wird.
-   ![VM configuration][4]
+
+   ![Konfiguration des virtuellen Computers][4]
+   
 8. Kehren Sie zu **Neue Web Application Firewall** zurück, und wählen Sie **WAF-Informationen** aus. Unter **WAF-Informationen** konfigurieren Sie die eigentliche WAF. In Schritt 7 können Sie den virtuellen Computer konfigurieren, auf dem die WAF ausgeführt wird, und in Schritt 8 können Sie die eigentliche WAF bereitstellen.
 
 ## <a name="finalize-application-protection"></a>Finalize application protection (Anwendungsschutz abschließen)
@@ -73,7 +75,7 @@ In diesem Dokument wurde gezeigt, wie Sie die Security Center-Empfehlung „Web 
 
 Weitere Informationen zu Security Center finden Sie in den folgenden Quellen:
 
-* [Festlegen von Sicherheitsrichtlinien in Azure Security Center:](security-center-azure-policy.md) Erfahren Sie, wie Sie Sicherheitsrichtlinien für Ihre Azure-Abonnements und -Ressourcengruppen konfigurieren.
+* [Festlegen von Sicherheitsrichtlinien in Azure Security Center:](tutorial-security-policy.md) Erfahren Sie, wie Sie Sicherheitsrichtlinien für Ihre Azure-Abonnements und -Ressourcengruppen konfigurieren.
 * [Überwachen der Sicherheitsintegrität in Azure Security Center:](security-center-monitoring.md) Erfahren Sie, wie Sie die Integrität Ihrer Azure-Ressourcen überwachen.
 * [Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center](security-center-managing-and-responding-alerts.md) : Hier erfahren Sie, wie Sie Sicherheitswarnungen verwalten und auf diese reagieren.
 * [Verwalten von Sicherheitsempfehlungen in Azure Security Center:](security-center-recommendations.md) Hier erfahren Sie, wie Empfehlungen Ihnen beim Schutz der Azure-Ressourcen helfen.

@@ -8,19 +8,18 @@ manager: carmonm
 editor: tysonn
 ms.assetid: 5281462e-f480-4e5e-9c19-022f36dce76d
 ms.service: monitoring
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/24/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 814646902a88c7170da66397709ff3a8c7b081fd
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 1d2a1be55f00b1b31609f44bd0187fd839340773
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51714378"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53185123"
 ---
 # <a name="adding-azure-automation-resources-to-a-management-solution-preview"></a>Hinzufügen von Azure Automation-Ressourcen zu einer Verwaltungslösung (Vorschau)
 > [!NOTE]
@@ -317,8 +316,8 @@ Das Runbook sollte von der Modulressourcen abhängen, um sicherzustellen, dass d
 ### <a name="updating-modules"></a>Aktualisieren von Modulen
 Wenn Sie eine Verwaltungslösung aktualisieren, die ein Runbook einschließt, das einen Zeitplan verwendet, und die neue Version Ihrer Lösung über ein neues Modul verfügt, das von diesem Runbook verwendet wird, verwendet das Runbook möglicherweise die alte Version des Moduls.  Sie sollten die folgenden Runbooks in Ihre Lösung einschließen und einen Auftrag erstellen, um sie vor anderen Runbooks auszuführen.  Dadurch wird sichergestellt, dass alle Module nach Bedarf aktualisiert werden, bevor die Runbooks geladen werden.
 
-* Mithilfe von [Update-ModulesinAutomationToLatestVersion](https://www.powershellgallery.com/packages/Update-ModulesInAutomationToLatestVersion/1.03/DisplayScript) wird sichergestellt, dass es sich bei allen von Runbooks verwendeten Modulen in Ihrer Lösung um die aktuelle Version handelt.  
-* [ReRegisterAutomationSchedule-MS-Mgmt](https://www.powershellgallery.com/packages/ReRegisterAutomationSchedule-MS-Mgmt/1.0/DisplayScript) registriert alle Zeitplanressourcen erneut, um sicherzustellen, dass die mit ihnen verknüpften Runbooks die aktuellen Module verwenden.
+* Mithilfe von [Update-ModulesinAutomationToLatestVersion](https://www.powershellgallery.com/packages/Update-ModulesInAutomationToLatestVersion/1.03/) wird sichergestellt, dass es sich bei allen von Runbooks verwendeten Modulen in Ihrer Lösung um die aktuelle Version handelt.  
+* [ReRegisterAutomationSchedule-MS-Mgmt](https://www.powershellgallery.com/packages/ReRegisterAutomationSchedule-MS-Mgmt/1.0/) registriert alle Zeitplanressourcen erneut, um sicherzustellen, dass die mit ihnen verknüpften Runbooks die aktuellen Module verwenden.
 
 
 

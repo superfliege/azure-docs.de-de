@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: cynthn
-ms.openlocfilehash: 8d83af114ebb5e5ff78372897d3e08ed592d4012
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 854f457e6731f69c64bf2036840d9e1c18a1cbf2
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49093900"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53075089"
 ---
 # <a name="attach-a-managed-data-disk-to-a-windows-vm-by-using-the-azure-portal"></a>Anfügen eines verwalteten Datenträgers an einen virtuellen Windows-Computer im Azure-Portal
 
@@ -52,30 +52,6 @@ In diesem Artikel wird beschrieben, wie Sie im Azure-Portal einen neuen verwalte
 8. Überprüfen Sie im Fenster **Neuen Datenträger formatieren** die Einstellungen, und wählen Sie dann **Starten** aus.
 9. Es wird eine Warnung angezeigt, die Sie darüber informiert, dass bei der Formatierung des Datenträgers alle Daten gelöscht werden. Klicken Sie auf **OK**.
 10. Wählen Sie nach Abschluss der Formatierung die Option **OK** aus.
-
-## <a name="use-trim-with-standard-storage"></a>Verwenden von TRIM mit dem Standardspeicher
-
-Wenn Sie Standardspeicher (HDD) verwenden, sollten Sie den Befehl **TRIM** aktivieren. Mit dem Befehl **TRIM** werden ungenutzte Blöcke auf dem Datenträger verworfen, sodass Ihnen nur der Speicher in Rechnung gestellt wird, den Sie tatsächlich verwenden. Durch die Verwendung von **TRIM** können Sie Kosten sparen, wenn Sie große Dateien erstellen und diese dann später löschen. 
-
-Um die Einstellung **TRIM** zu überprüfen, öffnen Sie auf Ihrem Windows-VM eine Eingabeaufforderung, und geben Sie den folgenden Befehl ein:
-
-```
-fsutil behavior query DisableDeleteNotify
-```
-
-Wenn der Befehl den Wert „0“ zurückgibt, ist **TRIM** ordnungsgemäß aktiviert. Wenn „1“ zurückgegeben wird, führen Sie den folgenden Befehl aus, um **TRIM** zu aktivieren:
-
-```
-fsutil behavior set DisableDeleteNotify 0
-```
-
-Nach dem Löschen von Daten vom Datenträger können Sie sicherstellen, dass die **TRIM**-Vorgänge ordnungsgemäß geleert werden, indem Sie die Defragmentierung mit **TRIM** ausführen:
-
-```
-defrag.exe <volume:> -l
-```
-
-Sie können auch das Volume formatieren, um sicherzustellen, dass das gesamte Volume gekürzt wird.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

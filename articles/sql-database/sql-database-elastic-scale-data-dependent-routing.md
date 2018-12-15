@@ -3,7 +3,7 @@ title: Datenabhängiges Routing mit Azure SQL-Datenbank | Microsoft-Dokumentatio
 description: Erfahren Sie, wie Sie die ShardMapManager-Klasse in .NET-Apps für das datenabhängige Routing, einem Feature von Sharddatenbanken in Azure SQL-Datenbank, verwenden können.
 services: sql-database
 ms.service: sql-database
-ms.subservice: elastic-scale
+ms.subservice: scale-out
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 10/05/2018
-ms.openlocfilehash: d40d0aff62492a01694eecac0a3650fcba69c448
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 60e00868805342c1399c3b44f3e944311af0f3b7
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50242924"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52870570"
 ---
 # <a name="use-data-dependent-routing-to-route-a-query-to-appropriate-database"></a>Verwenden des datenabhängigen Routings für das Weiterleiten einer Abfrage an die richtige Datenbank
 

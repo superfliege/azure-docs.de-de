@@ -15,12 +15,12 @@ ms.custom: vs-azure
 ms.workload: azure-vs
 ms.date: 09/12/2017
 ms.author: glenga;david.ebbo;suwatch;pbatum;naren.soni
-ms.openlocfilehash: 08cbff7bc58f5925dee9b77ff195d362af4379d8
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 300ccf5da3528be63ae618338b8953d05b0e799d
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51245729"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53337460"
 ---
 # <a name="develop-and-deploy-webjobs-using-visual-studio---azure-app-service"></a>Entwickeln und Bereitstellen von WebJobs mit Visual Studio – Azure App Service
 
@@ -35,7 +35,7 @@ Wenn mithilfe von Visual Studio ein webauftragsfähiges Konsolenanwendungsprojek
 
 Einem webauftragsfähigen Projekt werden die folgenden Elemente hinzugefügt:
 
-* Das NuGet-Paket [Microsoft.Web.WebJobs.Publish](http://www.nuget.org/packages/Microsoft.Web.WebJobs.Publish/)
+* Das NuGet-Paket [Microsoft.Web.WebJobs.Publish](https://www.nuget.org/packages/Microsoft.Web.WebJobs.Publish/)
 * Die Datei [webjob-publish-settings.json](#publishsettings) mit Bereitstellungs- und Zeitplanungseinstellungen 
 
 ![Abbildung, die zeigt, was einer Konsolenanwendung zum Ermöglichen der Bereitstellung als Webauftrag hinzugefügt wird](./media/websites-dotnet-deploy-webjobs/convert.png)
@@ -97,7 +97,7 @@ Zum Erstellen eines neuen webauftragsfähigen Projekts können Sie die Vorlage f
     Erstellen Sie ein Projekt, das für eine automatische Bereitstellung als Webauftrag konfiguriert ist, wenn in derselben Projektmappe ein Webprojekt bereitgestellt wird. Wählen Sie diese Option, wenn Sie Ihren Webauftrag in derselben Web-App ausführen möchten, in der die dazugehörige Webanwendung ausgeführt wird.
 
 > [!NOTE]
-> Die WebJobs-Vorlage „new-project“ installiert automatisch NuGet-Pakete und enthält in *Program.cs* Code für das [WebJobs-SDK](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/getting-started-with-windows-azure-webjobs). Wenn Sie das WebJobs-SDK nicht verwenden möchten, entfernen oder ändern Sie die `host.RunAndBlock`-Anweisung in *Program.cs*.
+> Die WebJobs-Vorlage „new-project“ installiert automatisch NuGet-Pakete und enthält in *Program.cs* Code für das [WebJobs-SDK](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/getting-started-with-windows-azure-webjobs). Wenn Sie das WebJobs-SDK nicht verwenden möchten, entfernen oder ändern Sie die `host.RunAndBlock`-Anweisung in *Program.cs*.
 > 
 > 
 
@@ -130,7 +130,7 @@ Die Felder in diesem Dialogfeld entsprechen den Feldern im Dialogfeld **WebJob h
 > 
 
 ## <a id="publishsettings"></a>webjob-publish-settings.json
-Wenn Sie eine Konsolenanwendung für die Bereitstellung von WebJobs konfigurieren, installiert Visual Studio das NuGet-Paket [Microsoft.Web.WebJobs.Publish](http://www.nuget.org/packages/Microsoft.Web.WebJobs.Publish/) und speichert Zeitplanungsinformationen in der Datei *webjob-publish-settings.json* im Ordner *Eigenschaften* des WebJob-Projekts. Hier ist ein Beispiel dieser Datei:
+Wenn Sie eine Konsolenanwendung für die Bereitstellung von WebJobs konfigurieren, installiert Visual Studio das NuGet-Paket [Microsoft.Web.WebJobs.Publish](https://www.nuget.org/packages/Microsoft.Web.WebJobs.Publish/) und speichert Zeitplanungsinformationen in der Datei *webjob-publish-settings.json* im Ordner *Eigenschaften* des WebJob-Projekts. Hier ist ein Beispiel dieser Datei:
 
         {
           "$schema": "http://schemastore.org/schemas/json/webjob-publish-settings.json",
@@ -142,7 +142,7 @@ Wenn Sie eine Konsolenanwendung für die Bereitstellung von WebJobs konfiguriere
           "runMode": "Continuous"
         }
 
-Sie können diese Datei direkt bearbeiten, und Visual Studio stellt IntelliSense zur Verfügung. Das Dateischema wird unter [http://schemastore.org](http://schemastore.org/schemas/json/webjob-publish-settings.json) gespeichert und kann dort angezeigt werden.  
+Sie können diese Datei direkt bearbeiten, und Visual Studio stellt IntelliSense zur Verfügung. Das Dateischema wird unter [https://schemastore.org](https://schemastore.org/schemas/json/webjob-publish-settings.json) gespeichert und kann dort angezeigt werden.  
 
 ## <a id="webjobslist"></a>webjobs-list.json
 Wenn Sie ein WebJob-fähiges Projekt mit einem Webprojekt verknüpfen, speichert Visual Studio den Namen des WebJob-Projekts in der Datei *webjobs-list.json* im Ordner *Eigenschaften* des Webprojekts. Die Liste kann mehrere WebJobs-Projekte umfassen, wie im folgenden Beispiel gezeigt wird:
@@ -159,7 +159,7 @@ Wenn Sie ein WebJob-fähiges Projekt mit einem Webprojekt verknüpfen, speichert
           ]
         }
 
-Sie können diese Datei direkt bearbeiten, und Visual Studio stellt IntelliSense zur Verfügung. Das Dateischema wird unter [http://schemastore.org](http://schemastore.org/schemas/json/webjobs-list.json) gespeichert und kann dort angezeigt werden.
+Sie können diese Datei direkt bearbeiten, und Visual Studio stellt IntelliSense zur Verfügung. Das Dateischema wird unter [https://schemastore.org](https://schemastore.org/schemas/json/webjobs-list.json) gespeichert und kann dort angezeigt werden.
 
 ## <a id="deploy"></a>Bereitstellen eines Webauftragsprojekts
 Ein Webauftragsprojekt, das Sie mit einem Webprojekt verknüpft haben, wird automatisch mit dem Webprojekt bereitstellt. Informationen zur Bereitstellung von Webprojekten finden Sie unter **Anleitungen** > **App bereitstellen** im linken Navigationsbereich.

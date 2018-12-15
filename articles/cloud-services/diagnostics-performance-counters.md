@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/02/18
 ms.author: jeconnoc
-ms.openlocfilehash: d3aeb930dcb325aebc8c6b0a9dfde3602312618b
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: b288c6a64572287c460e82cd8746a8504d264933
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39001462"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53322942"
 ---
 # <a name="collect-performance-counters-for-your-azure-cloud-service"></a>Erfassen von Leistungsindikatoren für Ihren Azure-Clouddienst
 
@@ -127,7 +127,7 @@ Mit der Azure-Diagnoseerweiterung für Clouddienste können Sie angeben, welche 
 
 Die zu erfassenden Leistungsindikatoren werden in der Datei **diagnostics.wadcfgx** definiert. Öffnen Sie diese Datei (sie ist basierend auf der Rolle definiert) in Visual Studio, und suchen Sie nach dem Element **DiagnosticsConfiguration** > **PublicConfig** > **WadCfg** > **DiagnosticMonitorConfiguration** > **PerformanceCounters**. Fügen Sie ein neues untergeordnetes Element **PerformanceCounterConfiguration** hinzu. Dieses Element umfasst zwei Attribute: `counterSpecifier` und `sampleRate`. Das Attribut `counterSpecifier` definiert, welcher Satz an Systemleistungsindikatoren (siehe vorheriger Abschnitt) erfasst werden soll. Der Wert `sampleRate` gibt an, wie oft dieser Wert abgerufen wird. Alle Leistungsindikatoren werden gemäß Attributwert `scheduledTransferPeriod` des übergeordneten Elements `PerformanceCounters` an Azure übertragen.
 
-Weitere Informationen zum Schemaelement `PerformanceCounters` finden Sie unter [Schema der Azure-Diagnose](../monitoring-and-diagnostics/azure-diagnostics-schema-1dot3-and-later.md#performancecounters-element).
+Weitere Informationen zum Schemaelement `PerformanceCounters` finden Sie unter [Schema der Azure-Diagnose](../azure-monitor/platform/diagnostics-extension-schema-1dot3.md#performancecounters-element).
 
 Der durch das Attribut `sampleRate` definierte Zeitraum verwendet den XML-Zeitraumdatentyp, um anzugeben, wie häufig der Leistungsindikator abgerufen wird. Im nachstehenden Beispiel ist die Rate auf `PT3M` festgelegt, dies bedeutet `[P]eriod[T]ime[3][M]inutes`: alle drei Minuten.
 
@@ -297,4 +297,4 @@ Wie zuvor erwähnt, werden die zu erfassenden Leistungsindikatoren in der Datei 
 - [Application Insights für Azure Cloud Services](../application-insights/app-insights-cloudservices.md#performance-counters)
 - [Systemleistungsindikatoren in Application Insights](../application-insights/app-insights-performance-counters.md)
 - [Angeben eines Indikatorpfads](https://msdn.microsoft.com/library/windows/desktop/aa373193(v=vs.85))
-- [Schema der Azure-Diagnose – Leistungsindikatoren](../monitoring-and-diagnostics/azure-diagnostics-schema-1dot3-and-later.md#performancecounters-element)
+- [Schema der Azure-Diagnose – Leistungsindikatoren](../azure-monitor/platform/diagnostics-extension-schema-1dot3.md#performancecounters-element)

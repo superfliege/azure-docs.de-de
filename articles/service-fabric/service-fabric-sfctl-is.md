@@ -12,14 +12,14 @@ ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 07/31/2018
+ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: 53e49099fd3486d51f021528c9354cf32f4952d2
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: abc1e835fa153fc5d061cca5a3eb009931240332
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39492788"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53276331"
 ---
 # <a name="sfctl-is"></a>sfctl is
 Ermöglicht es, Befehle an den Infrastrukturdienst abzufragen und zu senden.
@@ -41,7 +41,7 @@ Für Cluster, für die mindestens eine Instanz des Infrastrukturdiensts konfigur
 |Argument|BESCHREIBUNG|
 | --- | --- |
 | --command [erforderlich] | Der Text des Befehls, der aufgerufen werden soll. Der Inhalt des Befehls ist infrastrukturspezifisch. |
-| --service-id | Die Identität des Infrastrukturdiensts. <br><br> Dies ist der vollständige Name des Infrastrukturdiensts ohne das URI-Schema „fabric“. Dieser Parameter ist nur für den Cluster erforderlich, in dem mehrere Instanzen des Infrastrukturdiensts ausgeführt werden. |
+| --service-id | Die Identität des Infrastrukturdiensts. <br><br> Dies ist der vollständige Name des Infrastrukturdiensts ohne das URI-Schema „fabric\:“. Dieser Parameter ist nur für den Cluster erforderlich, in dem mehrere Instanzen des Infrastrukturdiensts ausgeführt werden. |
 | --timeout -t | Servertimeout in Sekunden.  Standardwert\: 60. |
 
 ### <a name="global-arguments"></a>Globale Argumente

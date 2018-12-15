@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: 7c67cac7a5579386921b2b949e9312cb4e5da172
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 2aa59bcf0d56358601b81730abe330a56ca35d02
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49984671"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52966907"
 ---
 # <a name="migrate-your-postgresql-database-using-dump-and-restore"></a>Migrieren der PostgreSQL-Datenbank durch Sichern und Wiederherstellen
 Sie können mit [pg_dump](https://www.postgresql.org/docs/9.3/static/app-pgdump.html) eine PostgreSQL-Datenbank in eine Sicherungsdatei extrahieren und mit [pg_restore](https://www.postgresql.org/docs/9.3/static/app-pgrestore.html) die PostgreSQL-Datenbank aus einer mit pg_dump erstellten Archivdatei wiederherstellen.
@@ -71,7 +71,7 @@ Eine Möglichkeit zum Migrieren Ihrer vorhandenen PostgreSQL-Datenbank zu Azure 
     ```
 
 ### <a name="for-the-restore"></a>Für die Wiederherstellung
-- Es wird empfohlen, dass Sie die Sicherungsdatei in eine Azure-VM in der gleichen Region des Azure Database for PostgreSQL-Servers verschieben, zu dem Sie migrieren, und den Befehl „pg_restore“ über diese VM ausführen, um die Netzwerklatenz zu reduzieren. Außerdem wird empfohlen, dass Sie die VM mit aktiviertem [beschleunigtem Netzwerkbetrieb](..\virtual-network\create-vm-accelerated-networking-powershell.md) erstellen.
+- Es wird empfohlen, dass Sie die Sicherungsdatei in eine Azure-VM in der gleichen Region des Azure Database for PostgreSQL-Servers verschieben, zu dem Sie migrieren, und den Befehl „pg_restore“ über diese VM ausführen, um die Netzwerklatenz zu reduzieren. Außerdem wird empfohlen, dass Sie die VM mit aktiviertem [beschleunigtem Netzwerkbetrieb](../virtual-network/create-vm-accelerated-networking-powershell.md) erstellen.
 - Dies sollte zwar der Standardeinstellung entsprechen, öffnen Sie jedoch trotzdem die Sicherungsdatei, um zu überprüfen, dass die Create Index-Anweisungen sich hinter dem Einfügen der Daten befinden. Wenn das nicht der Fall ist, verschieben Sie die Create Index-Anweisungen hinter das Einfügen der Daten.
 - Führen Sie die Wiederherstellung mit den Switches „-Fc“ und „-j“ *#* durch, um die Wiederherstellung zu parallelisieren. *#* beschreibt die Anzahl von Kernen auf dem Zielserver. Sie können auch versuchen, mit *#* die doppelte Anzahl von Kernen des Zielservers anzugeben, um die Auswirkungen zu sehen. Beispiel: 
 

@@ -13,12 +13,12 @@ ms.date: 11/12/2018
 ms.author: barbkess
 ms.reviewer: japere
 ms.custom: it-pro
-ms.openlocfilehash: 8cdb5b89bf43d3265f3f9c73d29708f11e17b21c
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 6ae7cff42a9b744409fa454199155796c8c06713
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51624028"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53138947"
 ---
 # <a name="password-vaulting-for-single-sign-on-with-application-proxy"></a>Kennworttresore (Password Vaulting) für einmaliges Anmelden mit Anwendungsproxy
 
@@ -26,7 +26,7 @@ Mit dem Azure Active Directory-Anwendungsproxy können Sie die Produktivität st
 
 Der Anwendungsproxy unterstützt mehrere [Modi für einmaliges Anmelden](what-is-single-sign-on.md#choosing-a-single-sign-on-method). Die kennwortbasierte Anmeldung ist für Anwendungen bestimmt, bei denen für die Authentifizierung eine Kombination aus Benutzername und Kennwort verwendet wird. Wenn Sie die kennwortbasierte Anmeldung für Ihre Anwendung konfigurieren, müssen sich Ihre Benutzer nur einmal an der lokalen Anwendung anmelden. Danach speichert Azure Active Directory die Anmeldeinformationen und stellt sie automatisch für die Anwendung bereit, wenn Ihre Benutzer von einem Remotestandort aus darauf zugreifen. 
 
-Sie sollten Ihre App bereits mit dem Anwendungsproxy veröffentlicht und getestet haben. Führen Sie andernfalls die Schritte unter [Veröffentlichen von Anwendungen mit dem Azure AD-Anwendungsproxy](application-proxy-publish-azure-portal.md) aus, und fahren Sie dann hier fort. 
+Sie sollten Ihre App bereits mit dem Anwendungsproxy veröffentlicht und getestet haben. Führen Sie andernfalls die Schritte unter [Veröffentlichen von Anwendungen mit dem Azure AD-Anwendungsproxy](application-proxy-add-on-premises-application.md) aus, und fahren Sie dann hier fort. 
 
 ## <a name="set-up-password-vaulting-for-your-application"></a>Einrichten von Kennworttresoren für Ihre Anwendung
 

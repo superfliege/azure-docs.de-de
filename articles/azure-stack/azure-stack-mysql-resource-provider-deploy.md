@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 11/15/2018
 ms.author: jeffgilb
 ms.reviewer: quying
-ms.openlocfilehash: 2017e08361c9ff060fde96b78549133d48372e34
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: da88be76d01b246e273739566d629348895b68b6
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51853896"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52971996"
 ---
 # <a name="deploy-the-mysql-resource-provider-on-azure-stack"></a>Bereitstellen des MySQL-Ressourcenanbieters in Azure Stack
 
@@ -32,8 +32,8 @@ Verwenden Sie den MySQL Server-Ressourcenanbieter, um MySQL-Datenbanken als Azur
 
 Es gibt mehrere Voraussetzungen, die erfüllt werden müssen, bevor Sie den Azure Stack-MySQL-Ressourcenanbieter bereitstellen können. Führen Sie zum Erfüllen dieser Anforderungen die Schritte in diesem Artikel auf einem Computer aus, der auf die privilegierte Endpunkt-VM zugreifen kann.
 
-* Falls Sie dies noch nicht getan haben, [registrieren Sie Azure Stack](.\azure-stack-registration.md) bei Azure, damit Sie Azure Marketplace-Elemente herunterladen können.
-* Sie müssen die Azure- und Azure Stack PowerShell-Module auf dem System installieren, auf dem Sie diese Installation ausführen. Das System muss ein Windows 10- oder Windows Server 2016-Image mit der neuesten Version der .NET Runtime sein. Weitere Informationen finden Sie unter [Installieren von PowerShell für Azure Stack](.\azure-stack-powershell-install.md).
+* Falls Sie dies noch nicht getan haben, [registrieren Sie Azure Stack](./azure-stack-registration.md) bei Azure, damit Sie Azure Marketplace-Elemente herunterladen können.
+* Sie müssen die Azure- und Azure Stack PowerShell-Module auf dem System installieren, auf dem Sie diese Installation ausführen. Das System muss ein Windows 10- oder Windows Server 2016-Image mit der neuesten Version der .NET Runtime sein. Weitere Informationen finden Sie unter [Installieren von PowerShell für Azure Stack](./azure-stack-powershell-install.md).
 * Fügen Sie dem Azure Stack-Marketplace die erforderliche Windows Server Core-VM hinzu, indem Sie das Image **Windows Server 2016 Datacenter – Server Core** herunterladen.
 
 * Laden Sie die Binärdatei des MySQL-Ressourcenanbieters herunter, und führen Sie dann den Self-Extractor aus, um den Inhalt in ein temporäres Verzeichnis zu extrahieren.
@@ -60,7 +60,7 @@ Es gibt mehrere Voraussetzungen, die erfüllt werden müssen, bevor Sie den Azur
 
 ### <a name="certificates"></a>Zertifikate
 
-_Nur bei Installationen in integrierten Systemen_. Sie müssen das SQL-PaaS-PKI-Zertifikat bereitstellen, das im Abschnitt „Optionale PaaS-Zertifikate“ der [PKI-Anforderungen für die Azure Stack-Bereitstellung](.\azure-stack-pki-certs.md#optional-paas-certificates) beschrieben ist. Platzieren Sie die .pfx-Datei an dem durch den **DependencyFilesLocalPath**-Parameter festgelegten Speicherort. Geben Sie für ASDK-Systeme kein Zertifikat an.
+_Nur bei Installationen in integrierten Systemen_. Sie müssen das SQL-PaaS-PKI-Zertifikat bereitstellen, das im Abschnitt „Optionale PaaS-Zertifikate“ der [PKI-Anforderungen für die Azure Stack-Bereitstellung](./azure-stack-pki-certs.md#optional-paas-certificates) beschrieben ist. Platzieren Sie die .pfx-Datei an dem durch den **DependencyFilesLocalPath**-Parameter festgelegten Speicherort. Geben Sie für ASDK-Systeme kein Zertifikat an.
 
 ## <a name="deploy-the-resource-provider"></a>Bereitstellen des Ressourcenanbieters
 

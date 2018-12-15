@@ -10,12 +10,12 @@ ms.date: 09/18/2018
 ms.service: application-insights
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 136279a94d64b846247c436eb7a5fb487e05b41a
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: d095be8c5d921001ab4a492d2385938020fa8ce0
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46946900"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52967213"
 ---
 # <a name="log-based-and-pre-aggregated-metrics-in-application-insights"></a>Protokollbasierte und vorab aggregierte Metriken in Azure Application Insights
 
@@ -55,7 +55,7 @@ Es gibt mehrere [Möglichkeiten zum Senden benutzerdefinierter Metriken aus dem 
 
 Alle Metriken, die Sie mit [trackMetric](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackmetric) oder [GetMetric- und TrackValue](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#getmetric)-API-Aufrufen senden, werden automatisch in Protokollen und Metrikspeichern gespeichert. Während die protokollbasierte Version Ihrer benutzerdefinierten Metrik jedoch immer alle Dimensionen beibehält, wird die vorab aggregierte Version der Metrik standardmäßig ohne Dimensionen gespeichert. Sie können die Sammlung von Dimensionen benutzerdefinierter Metriken auf der Registerkarte [Nutzung und geschätzte Kosten](https://docs.microsoft.com/azure/application-insights/app-insights-pricing) aktivieren, indem Sie „Warnung für benutzerdefinierte Metrikdimensionen aktivieren“ aktivieren: 
 
-![Nutzung und geschätzte Kosten](.\media\pre-aggregated-metrics-log-metrics\001-cost.png)
+![Nutzung und geschätzte Kosten](./media/pre-aggregated-metrics-log-metrics/001-cost.png)
 
 ## <a name="why-is-collection-of-custom-metrics-dimensions-turned-off-by-default"></a>Warum ist die Sammlung benutzerdefinierter Metrikdimensionen standardmäßig deaktiviert?
 
@@ -65,7 +65,7 @@ Die Sammlung von benutzerdefinierten Metrikdimensionen ist standardmäßig deakt
 
 Verwenden Sie den Metrik-Explorer von Azure Monitor, um Diagramme aus vorab aggregierten und protokollbasierten Metriken darzustellen, und um Dashboards mit Diagrammen zu erstellen. Nachdem Sie die gewünschte Application Insights-Ressource ausgewählt haben, können Sie mit der Namespaceauswahl zwischen Standard- (Vorschau) und protokollbasierten Metriken wechseln oder einen benutzerdefinierten Metriknamespace auswählen:
 
-![Metriknamespace](.\media\pre-aggregated-metrics-log-metrics\002-metric-namespace.png)
+![Metriknamespace](./media/pre-aggregated-metrics-log-metrics/002-metric-namespace.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

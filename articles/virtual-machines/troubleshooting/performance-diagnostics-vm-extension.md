@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: a76b22feee84820f3acc963af70ec24669a216d7
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 7037c0b4c1021ac7b91134fa429a774f600a774f
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51251967"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53194163"
 ---
 # <a name="azure-performance-diagnostics-vm-extension-for-windows"></a>Azure-VM-Erweiterung für die Leistungsdiagnose unter Windows
 
 Die Azure-VM-Erweiterung für die Leistungsdiagnose ermöglicht das Sammeln von Daten zur Leistungsdiagnose von Windows-VMs. Mit der Erweiterung wird eine Analyse durchgeführt und ein Bericht mit Ergebnissen und Empfehlungen bereitgestellt, um Leistungsprobleme auf dem virtuellen Computer zu identifizieren und zu beheben. Diese Erweiterung installiert ein Tool zur Problembehandlung mit dem Namen [PerfInsights](https://aka.ms/perfinsights).
 
 > [!NOTE]
-    > Wenn Sie eine Diagnose auf Ihrem virtuellen Computer aus dem Azure-Portal für nicht klassische VMs ausführen möchten, empfiehlt es sich, die neue Erfahrung zu verwenden. Weitere Informationen finden Sie unter [Leistungsdiagnose für virtuelle Azure-Computer](performance-diagnostics.md). 
+> Wenn Sie eine Diagnose auf Ihrem virtuellen Computer aus dem Azure-Portal für nicht klassische VMs ausführen möchten, empfiehlt es sich, die neue Erfahrung zu verwenden. Weitere Informationen finden Sie unter [Leistungsdiagnose für virtuelle Azure-Computer](performance-diagnostics.md). 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
