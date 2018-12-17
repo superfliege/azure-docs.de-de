@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
-ms.openlocfilehash: 56616ff01ff70230a591285014ed291a2fdc7b34
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 3fc31306af1c85a67a1afca8a34be82a711f2527
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50250987"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52999540"
 ---
 # <a name="azure-table-storage-bindings-for-azure-functions"></a>Azure Table Storage-Bindungen für Azure Functions
 
@@ -26,7 +26,7 @@ In diesem Artikel erfahren Sie, wie Sie Azure Table Storage-Bindungen in Azure F
 
 ## <a name="packages---functions-1x"></a>Pakete: Functions 1.x
 
-Die Tabellenspeicherbindungen werden im NuGet-Paket [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs), Version 2.x bereitgestellt. Den Quellcode für das Paket finden Sie im GitHub-Repository [azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/tree/v2.x/src/Microsoft.Azure.WebJobs.Storage/Table).
+Die Tabellenspeicherbindungen werden im NuGet-Paket [Microsoft.Azure.WebJobs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs), Version 2.x bereitgestellt. Den Quellcode für das Paket finden Sie im GitHub-Repository [azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/tree/v2.x/src/Microsoft.Azure.WebJobs.Storage/Table).
 
 [!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
 

@@ -7,19 +7,18 @@ author: bwren
 manager: carmonm
 editor: tysonn
 ms.service: monitoring
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/18/2018
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c496bd6f7ccec4cc08ca5eead02cb06ff3efde09
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 6f16325183f0a13382dd4533fd867a518f1750c3
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51714377"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53344294"
 ---
 # <a name="adding-log-analytics-saved-searches-and-alerts-to-management-solution-preview"></a>Hinzufügen von gespeicherten Log Analytics-Suchen und -Warnungen in der Verwaltungslösung (Vorschau)
 
@@ -27,7 +26,7 @@ ms.locfileid: "51714377"
 > Dies ist die vorläufige Dokumentation für das Erstellen von Verwaltungslösungen, die sich derzeit in der Vorschau befinden. Jedes unten beschriebene Schema kann sich ändern.   
 
 
-[Verwaltungslösungen](solutions.md) enthalten in der Regel [gespeicherte Suchen](../../log-analytics/log-analytics-queries.md) in Log Analytics zum Analysieren der von der Lösung erfassten Daten.  Sie können auch [Warnungen](../../monitoring-and-diagnostics/monitoring-overview-alerts.md) zur Benachrichtigung des Benutzers definieren oder als Reaktion auf ein schwerwiegendes Problem automatisch Maßnahmen ergreifen.  Dieser Artikel beschreibt das Definieren von in Log Analytics gespeicherten Suchen und Warnungen in einer [Ressourcenverwaltungsvorlage](../../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md), damit sie in [Verwaltungslösungen](solutions-creating.md) aufgenommen werden können.
+[Verwaltungslösungen](solutions.md) enthalten in der Regel [gespeicherte Suchen](../../azure-monitor/log-query/log-query-overview.md) in Log Analytics zum Analysieren der von der Lösung erfassten Daten.  Sie können auch [Warnungen](../../azure-monitor/platform/alerts-overview.md) zur Benachrichtigung des Benutzers definieren oder als Reaktion auf ein schwerwiegendes Problem automatisch Maßnahmen ergreifen.  Dieser Artikel beschreibt das Definieren von in Log Analytics gespeicherten Suchen und Warnungen in einer [Ressourcenverwaltungsvorlage](../../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md), damit sie in [Verwaltungslösungen](solutions-creating.md) aufgenommen werden können.
 
 > [!NOTE]
 > Die Beispiele in diesem Artikel verwenden Parameter und Variablen, die entweder erforderlich sind oder für Verwaltungslösungen gelten und unter [Entwerfen und Erstellen einer Verwaltungslösung in Azure](solutions-creating.md) beschrieben sind.  
@@ -37,7 +36,7 @@ In diesem Artikel wird davon ausgegangen, dass Sie schon mit der [Erstellung ein
 
 
 ## <a name="log-analytics-workspace"></a>Log Analytics-Arbeitsbereich
-Alle Ressourcen in Log Analytics befinden sich in einem [Arbeitsbereich](../../log-analytics/log-analytics-manage-access.md).  Wie unter [Log Analytics-Arbeitsbereich und Automation-Konto](solutions.md#log-analytics-workspace-and-automation-account) beschrieben, ist der Arbeitsbereich nicht in der Verwaltungslösung enthalten, muss aber vor der Installation der Lösung vorhanden sein.  Ist er nicht verfügbar, schlägt die Installation der Lösung fehl.
+Alle Ressourcen in Log Analytics befinden sich in einem [Arbeitsbereich](../../azure-monitor/platform/manage-access.md).  Wie unter [Log Analytics-Arbeitsbereich und Automation-Konto](solutions.md#log-analytics-workspace-and-automation-account) beschrieben, ist der Arbeitsbereich nicht in der Verwaltungslösung enthalten, muss aber vor der Installation der Lösung vorhanden sein.  Ist er nicht verfügbar, schlägt die Installation der Lösung fehl.
 
 Der Name des Arbeitsbereichs ist im Namen jeder Log Analytics-Ressource enthalten.  Dafür sorgt wie in diesem Beispiel einer SavedSearch-Ressource der Parameter **workspace** in der Lösung.
 
@@ -54,9 +53,9 @@ Die folgende Tabelle enthält die API-Versionen für die Ressource, die in diese
 
 
 ## <a name="saved-searches"></a>Gespeicherte Suchen
-Schließen Sie [gespeicherte Suchen](../../log-analytics/log-analytics-queries.md) in eine Lösung ein, um Benutzern das Abfragen der von der Lösung erfassten Daten zu ermöglichen.  Gespeicherte Suchen werden im Azure-Portal unter **Gespeicherte Suchen** angezeigt.  Eine gespeicherte Suche ist zudem für jede Warnung erforderlich.   
+Schließen Sie [gespeicherte Suchen](../../azure-monitor/log-query/log-query-overview.md) in eine Lösung ein, um Benutzern das Abfragen der von der Lösung erfassten Daten zu ermöglichen.  Gespeicherte Suchen werden im Azure-Portal unter **Gespeicherte Suchen** angezeigt.  Eine gespeicherte Suche ist zudem für jede Warnung erforderlich.   
 
-Ressourcen für [Gespeicherte Suchen in Log Analytics](../../log-analytics/log-analytics-queries.md) weisen den Typ `Microsoft.OperationalInsights/workspaces/savedSearches` und folgende Struktur auf.  Dies schließt allgemeine Variablen und Parameter ein, sodass Sie diesen Codeausschnitt kopieren, in Ihre Lösungsdatei einfügen und die Parameternamen ändern können. 
+Ressourcen für [Gespeicherte Suchen in Log Analytics](../../azure-monitor/log-query/log-query-overview.md) weisen den Typ `Microsoft.OperationalInsights/workspaces/savedSearches` und folgende Struktur auf.  Dies schließt allgemeine Variablen und Parameter ein, sodass Sie diesen Codeausschnitt kopieren, in Ihre Lösungsdatei einfügen und die Parameternamen ändern können. 
 
     {
         "name": "[concat(parameters('workspaceName'), '/', variables('SavedSearch').Name)]",
@@ -87,16 +86,16 @@ Die Eigenschaften einer gespeicherten Suche sind in der folgenden Tabelle beschr
 > Sie müssen möglicherweise Escape-Zeichen in der Abfrage verwenden, wenn diese Zeichen enthält, die als JSON interpretiert werden könnten.  Falls Ihre Abfrage **AzureActivity | OperationName:"Microsoft.Compute/virtualMachines/write"** lautete, sollte in der Lösungsdatei Folgendes stehen: **AzureActivity | OperationName:\"Microsoft.Compute/virtualMachines/write\"**.
 
 ## <a name="alerts"></a>Alerts
-[Azure-Protokollwarnungen](../../monitoring-and-diagnostics/monitor-alerts-unified-log.md) werden von Azure-Warnungregeln erstellt, die in regelmäßigen Abständen automatisch angegebene Protokollabfragen auszuführen.  Wenn die Ergebnisse der Abfrage mit den angegebenen Kriterien übereinstimmen, wird eine Warnung erstellt und mindestens eine Aktion mithilfe von [Aktionsgruppen](../../monitoring-and-diagnostics/monitoring-action-groups.md) ausgeführt.  
+[Azure-Protokollwarnungen](../../azure-monitor/platform/alerts-unified-log.md) werden von Azure-Warnungregeln erstellt, die in regelmäßigen Abständen automatisch angegebene Protokollabfragen auszuführen.  Wenn die Ergebnisse der Abfrage mit den angegebenen Kriterien übereinstimmen, wird eine Warnung erstellt und mindestens eine Aktion mithilfe von [Aktionsgruppen](../../azure-monitor/platform/action-groups.md) ausgeführt.  
 
 > [!NOTE]
-> Seit dem 14. Mai 2018 werden alle Warnungen in einem Log Analytics-Arbeitsbereich in einer öffentlichen Instanz der Azure Cloud auf Azure ausgedehnt. Weitere Informationen finden Sie unter [Erweitern von Warnungen nach Azure](../../monitoring-and-diagnostics/monitoring-alerts-extend.md). Bei Benutzern, die Warnungen auf Azure erweitern, werden Aktionen nun in Azure-Aktionsgruppen gesteuert. Wenn ein Arbeitsbereich und die zugehörigen Warnungen auf Azure ausgedehnt werden, können Sie über die [Azure Resource Manager-Vorlage für Aktionsgruppen](../../monitoring-and-diagnostics/monitoring-create-action-group-with-resource-manager-template.md) Aktionen abrufen oder hinzufügen.
+> Seit dem 14. Mai 2018 werden alle Warnungen in einem Log Analytics-Arbeitsbereich in einer öffentlichen Instanz der Azure Cloud auf Azure ausgedehnt. Weitere Informationen finden Sie unter [Erweitern von Warnungen nach Azure](../../azure-monitor/platform/alerts-extend.md). Bei Benutzern, die Warnungen auf Azure erweitern, werden Aktionen nun in Azure-Aktionsgruppen gesteuert. Wenn ein Arbeitsbereich und die zugehörigen Warnungen auf Azure ausgedehnt werden, können Sie über die [Azure Resource Manager-Vorlage für Aktionsgruppen](../../azure-monitor/platform/action-groups-create-resource-manager-template.md) Aktionen abrufen oder hinzufügen.
 
 Warnungsregeln in einer Verwaltungslösung bestehen aus den folgenden drei verschiedenen Ressourcen:
 
 - **Gespeicherte Suche.**  Definiert die Protokollsuche, die ausgeführt wird  Mehrere Warnungsregeln können gemeinsam eine einzelne gespeicherte Suche verwenden.
 - **Zeitplan.**  Definiert, wie oft die Protokollsuche ausgeführt wird  Jede Warnungsregel weist nur einen einzigen Zeitplan auf.
-- **Warnungsaktion.**  Jede Warnregel weist eine Aktionsgruppenressource oder Aktionsressource (veraltet) mit dem Typ **Warnung** auf, die die Details der Warnung, etwa die Kriterien dafür, wann ein Warnungsdatensatz erstellt wird, und den Schweregrad der Warnung definiert. Die Ressource für eine [Aktionsgruppe](../../monitoring-and-diagnostics/monitoring-action-groups.md) kann eine Liste der konfigurierten Aktionen aufweisen, die durchzuführen sind, wenn die Warnung ausgelöst wird – z.B. Anruf, SMS, E-Mail, Webhook, ITSM-Tool, Automation-Runbook, Logik-App usw.
+- **Warnungsaktion.**  Jede Warnregel weist eine Aktionsgruppenressource oder Aktionsressource (veraltet) mit dem Typ **Warnung** auf, die die Details der Warnung, etwa die Kriterien dafür, wann ein Warnungsdatensatz erstellt wird, und den Schweregrad der Warnung definiert. Die Ressource für eine [Aktionsgruppe](../../azure-monitor/platform/action-groups.md) kann eine Liste der konfigurierten Aktionen aufweisen, die durchzuführen sind, wenn die Warnung ausgelöst wird – z.B. Anruf, SMS, E-Mail, Webhook, ITSM-Tool, Automation-Runbook, Logik-App usw.
  
 Die Aktionsressource (veraltet) definiert optional eine Antwort per E-Mail und Runbook.
 - **Webhookaktion (veraltet)**  Wenn die Warnungsregel einen Webhook aufruft, ist eine zusätzliche Aktionsressource vom Typ **Webhook** erforderlich.    
@@ -146,7 +145,7 @@ Ein Zeitplan kann mehrere Aktionen umfassen. Mit einer Aktion können ein oder m
 Aktionen können mithilfe der [Aktionsgruppenressource] oder Aktionsressource definiert werden.
 
 > [!NOTE]
-> Seit dem 14. Mai 2018 werden alle Warnungen in einem Log Analytics-Arbeitsbereich in einer öffentlichen Instanz der Azure Cloud automatisch auf Azure ausgedehnt. Weitere Informationen finden Sie unter [Erweitern von Warnungen nach Azure](../../monitoring-and-diagnostics/monitoring-alerts-extend.md). Bei Benutzern, die Warnungen auf Azure erweitern, werden Aktionen nun in Azure-Aktionsgruppen gesteuert. Wenn ein Arbeitsbereich und die zugehörigen Warnungen auf Azure ausgedehnt werden, können Sie über die [Azure Resource Manager-Vorlage für Aktionsgruppen](../../monitoring-and-diagnostics/monitoring-create-action-group-with-resource-manager-template.md) Aktionen abrufen oder hinzufügen.
+> Seit dem 14. Mai 2018 werden alle Warnungen in einem Log Analytics-Arbeitsbereich in einer öffentlichen Instanz der Azure Cloud automatisch auf Azure ausgedehnt. Weitere Informationen finden Sie unter [Erweitern von Warnungen nach Azure](../../azure-monitor/platform/alerts-extend.md). Bei Benutzern, die Warnungen auf Azure erweitern, werden Aktionen nun in Azure-Aktionsgruppen gesteuert. Wenn ein Arbeitsbereich und die zugehörigen Warnungen auf Azure ausgedehnt werden, können Sie über die [Azure Resource Manager-Vorlage für Aktionsgruppen](../../azure-monitor/platform/action-groups-create-resource-manager-template.md) Aktionen abrufen oder hinzufügen.
 
 
 Es gibt zwei Arten von Aktionsressourcen, die von der **Typ**-Eigenschaft festgelegt werden.  Für einen Zeitplan ist eine Aktion vom Typ **Warnung** erforderlich, die die Details der Warnungsregel und die Aktionen definiert, die beim Erstellen einer Warnung ausgeführt werden. Aktionsressourcen weisen den Typ `Microsoft.OperationalInsights/workspaces/savedSearches/schedules/actions` auf.  
@@ -228,7 +227,7 @@ Dieser Abschnitt ist optional.  Beziehen Sie diesen Abschnitt mit ein, wenn nach
 #### <a name="azure-action-group"></a>Azure-Aktionsgruppe
 Alle Warnungen in Azure verwenden Aktionsgruppen als Standardmechanismus für die Behandlung von Aktionen. Mit Aktionsgruppen können Sie Ihre Aktionen einmal angeben und die Aktionsgruppe dann mehreren Warnungen zuordnen. Dies gilt für sämtliche Bereiche in Azure, sodass Sie dieselbe Aktion nicht mehrmals deklarieren müssen. Aktionsgruppen unterstützen mehrere Aktionen – einschließlich E-Mails, SMS, Sprachanrufen, ITSM-Verbindungen, Automation-Runbooks, Webhook-URIs und anderen. 
 
-Für Benutzer, die ihre Warnungen auf Azure erweitert haben, sollten bei Zeitplänen jetzt zusammen mit dem Schwellenwert auch Aktionsgruppendetails übergeben werden, um eine Warnung erstellen zu können. E-Mail-Details, Webhook-URLs, Details zur Runbookautomatisierung und weitere Aktionen müssen vor dem Erstellen einer Warnung in einer Aktionsgruppe definiert werden; es ist möglich, eine [Aktionsgruppe von Azure Monitor aus](../../monitoring-and-diagnostics/monitoring-action-groups.md) im Portal zu erstellen, oder die [Aktionsgruppen-Ressourcenvorlage](../../monitoring-and-diagnostics/monitoring-create-action-group-with-resource-manager-template.md) zu verwenden.
+Für Benutzer, die ihre Warnungen auf Azure erweitert haben, sollten bei Zeitplänen jetzt zusammen mit dem Schwellenwert auch Aktionsgruppendetails übergeben werden, um eine Warnung erstellen zu können. E-Mail-Details, Webhook-URLs, Details zur Runbookautomatisierung und weitere Aktionen müssen vor dem Erstellen einer Warnung in einer Aktionsgruppe definiert werden; es ist möglich, eine [Aktionsgruppe von Azure Monitor aus](../../azure-monitor/platform/action-groups.md) im Portal zu erstellen, oder die [Aktionsgruppen-Ressourcenvorlage](../../azure-monitor/platform/action-groups-create-resource-manager-template.md) zu verwenden.
 
 | Elementname | Erforderlich | BESCHREIBUNG |
 |:--|:--|:--|
@@ -242,7 +241,7 @@ Für Benutzer, die ihre Warnungen auf Azure erweitert haben, sollten bei Zeitpl�
 Jeder Zeitplan weist eine Aktion vom Typ **Warnung** auf.  Dadurch werden die Details der Warnung und optional die Aktionen zur Benachrichtigung und Wartung definiert.  Eine Benachrichtigung sendet eine E-Mail an mindestens eine Adresse.  Eine Wartung startet ein Runbook in Azure Automation und versucht, das erkannte Problem zu beheben.
 
 > [!NOTE]
-> Seit dem 14. Mai 2018 werden alle Warnungen in einem Log Analytics-Arbeitsbereich in einer öffentlichen Instanz der Azure Cloud automatisch auf Azure ausgedehnt. Weitere Informationen finden Sie unter [Erweitern von Warnungen nach Azure](../../monitoring-and-diagnostics/monitoring-alerts-extend.md). Bei Benutzern, die Warnungen auf Azure erweitern, werden Aktionen nun in Azure-Aktionsgruppen gesteuert. Wenn ein Arbeitsbereich und die zugehörigen Warnungen auf Azure ausgedehnt werden, können Sie über die [Azure Resource Manager-Vorlage für Aktionsgruppen](../../monitoring-and-diagnostics/monitoring-create-action-group-with-resource-manager-template.md) Aktionen abrufen oder hinzufügen.
+> Seit dem 14. Mai 2018 werden alle Warnungen in einem Log Analytics-Arbeitsbereich in einer öffentlichen Instanz der Azure Cloud automatisch auf Azure ausgedehnt. Weitere Informationen finden Sie unter [Erweitern von Warnungen nach Azure](../../azure-monitor/platform/alerts-extend.md). Bei Benutzern, die Warnungen auf Azure erweitern, werden Aktionen nun in Azure-Aktionsgruppen gesteuert. Wenn ein Arbeitsbereich und die zugehörigen Warnungen auf Azure ausgedehnt werden, können Sie über die [Azure Resource Manager-Vorlage für Aktionsgruppen](../../azure-monitor/platform/action-groups-create-resource-manager-template.md) Aktionen abrufen oder hinzufügen.
 
 ##### <a name="emailnotification"></a>EmailNotification
  Dieser Abschnitt ist optional. Schließen Sie ihn ein, wenn bei der Warnung eine E-Mail an mindestens einen Empfänger gesendet werden soll.

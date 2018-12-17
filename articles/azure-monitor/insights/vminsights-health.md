@@ -8,18 +8,17 @@ manager: carmonm
 editor: ''
 ms.assetid: ''
 ms.service: azure-monitor
-ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/25/2018
 ms.author: magoedte
-ms.openlocfilehash: aac6ca2db815aa3ca427b281e146874dc142107a
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: a2f654043146536ecf543ae2a0aa49537c2223e1
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51714626"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53344027"
 ---
 # <a name="understand-the-health-of-your-azure-virtual-machines-with-azure-monitor-for-vms-preview"></a>Überwachen der Integrität Ihrer virtuellen Azure-Computer mit Azure Monitor für VMs (Vorschau)
 Azure beinhaltet mehrere Dienste, die einzeln eine bestimmte Rolle oder Aufgabe im Überwachungsbereich ausführen, aber ein tiefgreifender Blick auf die Integrität des auf Azure-VMs gehosteten Betriebssystems war bisher nicht verfügbar.  Zwar konnten Sie mithilfe von Log Analytics oder Azure Monitor verschiedene Bedingungen überwachen, diese waren aber nicht dafür ausgelegt, die Integrität von Kernkomponenten oder die Gesamtintegrität der VM zu modellieren und darzustellen.  Das Integritätsfeature von Azure Monitor for VMs überwacht proaktiv die Verfügbarkeit und Leistung des Windows- oder Linux-Gastbetriebssystems mit einem Modell, das Schlüsselkomponenten und ihre Beziehungen modelliert, und mit Kriterien, die angeben, wie die Integrität dieser Komponenten gemessen wird, und eine Warnung an Sie auslösen, wenn ein Zustand eingeschränkter Integrität erkannt wird.  
@@ -119,7 +118,7 @@ Die Registerkarte **Integrität** stellt die folgenden Informationen dar:
 * Wie viele VMs aufgrund eines bei einem Prozessor, einem Datenträger, beim Arbeitsspeicher oder bei einem Netzwerkadapter erkannten Problems fehlerhaft sind, nach Integritätsstatus kategorisiert  
 * Wie viele VMs aufgrund eines bei einem Kerndienst des Betriebssystems erkannten Problems fehlerhaft sind, nach Integritätsstatus kategorisiert
 
-Hier können Sie die kritischsten der erkannten Probleme anhand der Integritätskriterien, nach denen die VMs proaktiv überwacht werden, schnell identifizieren und die Details der VM-Integritätswarnungen zusammen mit zugeordneten Wissensartikeln durcharbeiten, die Sie bei der Diagnose und Korrektur der Probleme unterstützen.  Klicken Sie auf einen der Schweregrade, um die Seite [Alle Warnungen](../../monitoring-and-diagnostics/monitoring-overview-alerts.md#all-alerts-page) gefiltert nach diesem Schweregrad zu öffnen.
+Hier können Sie die kritischsten der erkannten Probleme anhand der Integritätskriterien, nach denen die VMs proaktiv überwacht werden, schnell identifizieren und die Details der VM-Integritätswarnungen zusammen mit zugeordneten Wissensartikeln durcharbeiten, die Sie bei der Diagnose und Korrektur der Probleme unterstützen.  Klicken Sie auf einen der Schweregrade, um die Seite [Alle Warnungen](../../azure-monitor/platform/alerts-overview.md#all-alerts-page) gefiltert nach diesem Schweregrad zu öffnen.
 
 Die Liste **VM-Verteilung nach Betriebssystem** zeigt die VMs nach Windows-Edition oder Linux-Distribution zusammen mit den jeweiligen Versionen an. In jeder Betriebssystemkategorie sind die VMs basierend auf der Integrität weiter aufgeschlüsselt. 
 
@@ -247,7 +246,7 @@ Wenn im Beispiel oben jemand **/mnt (Logischer Datenträger)** auswählt, wird d
 Um den aktualisierten Integritätsstatus anzuzeigen, können sie die Seite „Integritätsdiagnose“ aktualisieren, indem Sie auf den Link **Aktualisieren** klicken.  Wenn basierend auf dem vordefinierten Abrufintervall eine Aktualisierung des Integritätsstatus des Integritätskriteriums erfolgt, können Sie mit dieser Aufgabe Wartezeiten vermeiden und den aktuellen Integritätsstatus anzeigen.  Der **Zustand der Integritätskriterien** ist ein Filter, der es Ihnen ermöglicht, den Bereich der Ergebnisse basierend auf dem ausgewählten Integritätsstatus festzulegen – Fehlerfrei, Warnung, Kritisch, Unbekannt und Alle.  Die Zeitangabe **Letzte Aktualisierung** in der oberen rechten Ecke stellt den Zeitpunkt der letzten Aktualisierung der Seite „Integritätsdiagnose“ dar.  
 
 ## <a name="alerting-and-alert-management"></a>Warnungen und Warnungsverwaltung 
-Das Integritätsfeature von Azure Monitor for VMs ist in [Azure-Warnungen](../../monitoring-and-diagnostics/monitoring-overview-alerts.md) integriert und löst eine Warnung aus, wenn die vordefinierten Integritätskriterien von „Fehlerfrei“ in einen fehlerhaften Zustand wechseln und der Umstand erkannt wird. Warnungen werden nach dem Schweregrad kategorisiert – Schweregrad 0 bis 4, wobei 0 den höchsten Schweregrad darstellt.  
+Das Integritätsfeature von Azure Monitor for VMs ist in [Azure-Warnungen](../../azure-monitor/platform/alerts-overview.md) integriert und löst eine Warnung aus, wenn die vordefinierten Integritätskriterien von „Fehlerfrei“ in einen fehlerhaften Zustand wechseln und der Umstand erkannt wird. Warnungen werden nach dem Schweregrad kategorisiert – Schweregrad 0 bis 4, wobei 0 den höchsten Schweregrad darstellt.  
 
 Die Gesamtzahl der VM-Integritätswarnungen, nach Schweregrad kategorisiert, steht auf dem Dashboard **Integrität** im Bereich **Warnungen** zur Verfügung. Wenn Sie entweder die Gesamtzahl der Warnungen oder die einem Schweregrad entsprechende Anzahl auswählen, wird die Seite **Warnungen** geöffnet und listet alle Warnungen auf, die Ihrer Auswahl entsprechen.  Wenn Sie beispielsweise die Zeile auswählen, die **Schweregrad 1** entspricht, sehen Sie eine Ansicht ähnlich der folgenden:
 
@@ -255,7 +254,7 @@ Die Gesamtzahl der VM-Integritätswarnungen, nach Schweregrad kategorisiert, ste
 
 Die Warnungen auf der Seite **Warnungen** weisen nicht nur einen auf Ihre Auswahl eingeschränkten Bereich auf, sondern sind darüber hinaus nach **Ressourcentyp** gefiltert und zeigen nur Integritätswarnungen an, die von der VM-Ressource ausgelöst wurden.  Dies spiegelt sich in der Liste der Warnungen in der Spalte **Zielressource** wider, wo die Azure-VM angezeigt wird, für die die Warnung beim Erreichen der Fehlerbedingung für das einzelne Integritätskriterium ausgegeben wurde.  
 
-Warnungen von anderen Ressourcentypen oder Diensten sollen nicht in dieser Ansicht enthalten sein, also z. B. keine Protokollwarnungen, die auf Log Analytics-Abfragen basieren, oder Metrikwarnungen, die Sie normalerweise auf der Standardseite [Alle Warnungen](../../monitoring-and-diagnostics/monitoring-overview-alerts.md#all-alerts-page) im Azure Monitor anzeigen. 
+Warnungen von anderen Ressourcentypen oder Diensten sollen nicht in dieser Ansicht enthalten sein, also z. B. keine Protokollwarnungen, die auf Log Analytics-Abfragen basieren, oder Metrikwarnungen, die Sie normalerweise auf der Standardseite [Alle Warnungen](../../azure-monitor/platform/alerts-overview.md#all-alerts-page) im Azure Monitor anzeigen. 
 
 Zum Filtern dieser Ansicht können Sie Werte in den Dropdownmenüs am oberen Rand der Seite auswählen.
 
@@ -271,7 +270,7 @@ Zum Filtern dieser Ansicht können Sie Werte in den Dropdownmenüs am oberen Ran
 |Überwachungsdienst |Wählen Sie einen Dienst oder *Alle* aus, um alle Dienste einzuschließen. Für dieses Feature werden nur Warnungen von *VM Insights* unterstützt.| 
 |Zeitbereich| Nur Warnungen, die innerhalb des ausgewählten Zeitfensters ausgelöst wurden, sind in der Ansicht enthalten. Unterstützte Werte sind die letzte Stunde, die letzten 24 Stunden, die letzten 7 Tage und die letzten 30 Tage. | 
 
-Die Seite **Warnungsdetail** wird angezeigt, wenn Sie eine Warnung auswählen, stellt Details zur Warnung zur Verfügung und erlaubt Ihnen, ihren Status zu ändern. Weitere Informationen zum Verwalten von Warnungen finden Sie unter [Erstellen, Anzeigen und Verwalten von Warnungen mithilfe von Azure Monitor](../../monitoring-and-diagnostics/alert-metric.md).  
+Die Seite **Warnungsdetail** wird angezeigt, wenn Sie eine Warnung auswählen, stellt Details zur Warnung zur Verfügung und erlaubt Ihnen, ihren Status zu ändern. Weitere Informationen zum Verwalten von Warnungen finden Sie unter [Erstellen, Anzeigen und Verwalten von Warnungen mithilfe von Azure Monitor](../../azure-monitor/platform/alerts-metric.md).  
 
 >[!NOTE]
 >Zurzeit wird das Erstellen neuer Warnungen auf der Grundlage von Integritätskriterien oder das Ändern vorhandener Integritätswarnungsregeln in Azure Monitor über das Portal nicht unterstützt.  

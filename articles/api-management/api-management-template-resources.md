@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: 36b64912eb3393ad496d04ff656bed5b0c41566c
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: 790d05201550461b095cfefd32f0330f37697e0b
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52444766"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52970330"
 ---
 # <a name="azure-api-management-template-resources"></a>Ressourcen von Azure API Management-Vorlagen
 Azure API Management enthält die folgenden Arten von Ressourcen zur Verwendung in Entwicklerportalvorlagen.  
@@ -176,7 +176,7 @@ Azure API Management enthält die folgenden Arten von Ressourcen zur Verwendung 
 |WebDocumentationTemplatesDeveloperKey|Specify your subscription key (Geben Sie Ihren Abonnementschlüssel an)|  
 |WebDocumentationTemplatesJavaApache|In diesem Beispiel wird der Apache-HTTP-Client von HTTP Components verwendet (http://hc.apache.org/httpcomponents-client-ga/)|  
 |WebDocumentationTemplatesOptionalParams|Specify values for optional parameters, as needed (Geben Sie je nach Bedarf Werte für optionale Parameter an.)|  
-|WebDocumentationTemplatesPhpPackage|This sample uses the HTTP_Request2 package. (In diesem Beispiel wird das HTTP_Request2-Paket verwendet.) (Weitere Informationen: http://pear.php.net/package/HTTP_Request2)|  
+|WebDocumentationTemplatesPhpPackage|This sample uses the HTTP_Request2 package. (In diesem Beispiel wird das HTTP_Request2-Paket verwendet.) (Weitere Informationen: https://pear.php.net/package/HTTP_Request2)|  
 |WebDocumentationTemplatesPythonValuesForPath|Specify values for path parameters (shown as {...}) and request body if needed (Geben Sie Werte für Pfadparameter (angezeigt als {...}) und den Anforderungstext an, falls erforderlich.)|  
 |WebDocumentationTemplatesRequestBody|Specify request body (Anforderungstext angeben)|  
 |WebDocumentationTemplatesRequiredParams|Specify values for the following required parameters (Geben Sie Werte für die folgenden erforderlichen Parameter an.)|  
@@ -571,13 +571,13 @@ Azure API Management enthält die folgenden Arten von Ressourcen zur Verwendung 
 |ApiManagementUserLimitReached|This service has reached the maximum number of allowed users. (Für diesen Dienst wurde die maximale Anzahl von zulässigen Benutzern erreicht.) Please upgrade to a higher pricing tier. (Führen Sie ein Upgrade auf einen höheren Tarif durch.)|  
   
 ##  <a name="glyphs"></a> Glyphenressourcen  
- Für Vorlagen des API Management-Entwicklerportals können die Glyphen unter [Glyphicons from Bootstrap](http://getbootstrap.com/components/#glyphicons) (Glyphensymbole von Bootstrap) verwendet werden. Dieser Satz mit Glyphen enthält mehr als 250 Glyphen im Schriftartformat aus dem [Glyphicon](http://glyphicons.com/)-Halflings-Satz. Verwenden Sie folgende Syntax, um einen Glyphen aus diesem Satz zu verwenden.  
+ Für Vorlagen des API Management-Entwicklerportals können die Glyphen unter [Glyphicons from Bootstrap](https://getbootstrap.com/components/#glyphicons) (Glyphensymbole von Bootstrap) verwendet werden. Dieser Satz mit Glyphen enthält mehr als 250 Glyphen im Schriftartformat aus dem [Glyphicon](https://glyphicons.com/)-Halflings-Satz. Verwenden Sie folgende Syntax, um einen Glyphen aus diesem Satz zu verwenden.  
   
 ```html  
 <span class="glyphicon glyphicon-user">  
 ```  
   
- Die vollständige Liste mit Glyphen finden Sie unter [Glyphicons from Bootstrap](http://getbootstrap.com/components/#glyphicons) (Glyphensymbole von Bootstrap).
+ Die vollständige Liste mit Glyphen finden Sie unter [Glyphicons from Bootstrap](https://getbootstrap.com/components/#glyphicons) (Glyphensymbole von Bootstrap).
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zum Arbeiten mit Vorlagen finden Sie unter [So passen Sie das Azure API Management-Entwicklerportal mithilfe von Vorlagen an](api-management-developer-portal-templates.md).

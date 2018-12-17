@@ -9,19 +9,18 @@ ms.assetid: 7f13ea66-09dc-450f-b8f9-f40fdad239f2
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/10/2018
 ms.author: mbullwin
-ms.openlocfilehash: 6e19735f604fdcd6d6642814e776fd9987d11fde
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 83dfd77c311e1b3324540d352432ec7a6b706d78
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52499501"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52993360"
 ---
 # <a name="feed-power-bi-from-application-insights"></a>Datenimport nach Power BI aus Application Insights
-[Power BI](http://www.powerbi.com/) ist eine Suite aus Unternehmenstools, mit denen Sie Daten analysieren und Informationen teilen können. Auf jedem Gerät stehen leistungsfähige Dashboards zur Verfügung. Sie können Daten aus vielen Quellen kombinieren, z.B. Analytics-Abfragen aus [Azure Application Insights](app-insights-overview.md).
+[Power BI](https://www.powerbi.com/) ist eine Suite aus Unternehmenstools, mit denen Sie Daten analysieren und Informationen teilen können. Auf jedem Gerät stehen leistungsfähige Dashboards zur Verfügung. Sie können Daten aus vielen Quellen kombinieren, z.B. Analytics-Abfragen aus [Azure Application Insights](app-insights-overview.md).
 
 Es gibt drei Methoden zum Exportieren von Application Insights-Daten nach Power BI:
 
@@ -41,7 +40,7 @@ Zum Importieren Ihrer Application Insights-Abfrage verwenden Sie die Desktopvers
 Installieren Sie [Power BI Desktop](https://powerbi.microsoft.com/en-us/desktop/).
 
 ### <a name="export-an-analytics-query"></a>Exportieren einer Analytics-Abfrage
-1. [Öffnen Sie Analytics, und schreiben Sie Ihre Abfrage](../log-analytics/query-language/get-started-analytics-portal.md).
+1. [Öffnen Sie Analytics, und schreiben Sie Ihre Abfrage](../azure-monitor/log-query/get-started-portal.md).
 2. Testen und optimieren Sie die Abfrage, bis Sie mit den Ergebnissen zufrieden sind. Stellen Sie sicher, dass die Abfrage ordnungsgemäß in Analytics ausgeführt wird, bevor Sie sie exportieren.
 3. Wählen Sie im Menü **Exportieren** die Option **Power BI (M)**. Speichern Sie die Textdatei.
    
@@ -52,18 +51,18 @@ Installieren Sie [Power BI Desktop](https://powerbi.microsoft.com/en-us/desktop/
 
     ![Screenshot von Power BI Desktop mit hervorgehobenem erweiterten Editor](./media/app-insights-export-power-bi/power-bi-import-analytics-query.png)
 
-1. Unter Umständen müssen Sie Anmeldeinformationen angeben, um für Power BI den Zugriff auf Azure zuzulassen. Verwenden Sie die Option **Organisationskonto**, um sich mit Ihrem Microsoft-Konto anzumelden.
+5. Unter Umständen müssen Sie Anmeldeinformationen angeben, um für Power BI den Zugriff auf Azure zuzulassen. Verwenden Sie die Option **Organisationskonto**, um sich mit Ihrem Microsoft-Konto anzumelden.
    
     ![Screenshot des Power BI-Dialogfelds für Abfrageeinstellungen](./media/app-insights-export-power-bi/power-bi-import-sign-in.png)
 
     Wenn Sie die Anmeldeinformationen überprüfen müssen, verwenden Sie den Menübefehl **Datenquelleneinstellungen** im Abfrage-Editor. Sie müssen unbedingt Ihre Anmeldeinformationen für Azure verwenden, die sich von denen für Power BI möglicherweise unterscheiden.
-2. Wählen Sie eine Visualisierung für Ihre Abfrage aus, und wählen Sie die Felder für X-Achse, Y-Achse und Segmentierungsdimension.
+6. Wählen Sie eine Visualisierung für Ihre Abfrage aus, und wählen Sie die Felder für X-Achse, Y-Achse und Segmentierungsdimension.
    
     ![Screenshot der Visualisierungsoptionen von Power BI Desktop](./media/app-insights-export-power-bi/power-bi-analytics-visualize.png)
-3. Veröffentlichen Sie den Bericht in Ihrem Power BI-Cloudarbeitsbereich. Von hier aus können Sie eine synchronisierte Version in andere Webseiten einbetten.
+7. Veröffentlichen Sie den Bericht in Ihrem Power BI-Cloudarbeitsbereich. Von hier aus können Sie eine synchronisierte Version in andere Webseiten einbetten.
    
     ![Screenshot von Power BI Desktop mit hervorgehobener Schaltfläche „Veröffentlichen“](./media/app-insights-export-power-bi/publish-power-bi.png)
-4. Aktualisieren Sie den Bericht in bestimmten Abständen manuell, oder richten Sie auf der Seite mit den Optionen eine geplante Aktualisierung ein.
+8. Aktualisieren Sie den Bericht in bestimmten Abständen manuell, oder richten Sie auf der Seite mit den Optionen eine geplante Aktualisierung ein.
 
 ### <a name="export-a-funnel"></a>Exportieren eines Trichters
 1. [Erstellen Sie Ihren Trichter.](usage-funnels.md)
@@ -153,6 +152,6 @@ Sie können das Dashboard bearbeiten und die Application Insights-Diagramme mit 
 Nach dem anfänglichen Import werden das Dashboard und die Berichte täglich aktualisiert. Sie können den Aktualisierungszeitplan im Dataset steuern.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Power BI – Informationen](http://www.powerbi.com/learning/)
-* [Analytics-Tutorial](../log-analytics/query-language/get-started-analytics-portal.md)
+* [Power BI – Informationen](https://www.powerbi.com/learning/)
+* [Analytics-Tutorial](../azure-monitor/log-query/get-started-portal.md)
 

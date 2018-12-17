@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: dharmas
 ms.reviewer: sngun
-ms.openlocfilehash: e73c295c214728bf07b65ae4402c3b5abe21932f
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 9f237d9eed5b8500f0f80b8b73d638f374bf5ca9
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52165287"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52999511"
 ---
 # <a name="working-with-azure-cosmos-account"></a>Arbeiten mit einem Azure Cosmos-Konto
 
@@ -38,7 +38,7 @@ Informieren Sie sich als Nächstes über die Verwaltung Ihres Azure Cosmos-Konto
 * [Globale Verteilung](distribute-data-globally.md)
 * [Konsistenzebenen](consistency-levels.md)
 * [Arbeiten mit Azure Cosmos-Datenbanken, -Containern und -Elementen](databases-containers-items.md)
-* [Sicherer Zugriff auf ein Azure Cosmos DB-Konto durch Verwenden eines Azure Virtual Network-Dienstendpunkts](firewall-support.md)
-* [Azure Cosmos DB-Firewallunterstützung](vnet-service-endpoint.md)
+* [Sicherer Zugriff auf ein Azure Cosmos DB-Konto durch Verwenden eines Azure Virtual Network-Dienstendpunkts](vnet-service-endpoint.md)
+* [Azure Cosmos DB-Firewallunterstützung](firewall-support.md)
 * [Hinzufügen/Entfernen von Regionen für Ihr Datenbankkonto](how-to-manage-database-account.md)
 * [SLA für Azure Cosmos DB](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_2/)

@@ -8,12 +8,12 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/05/2018
-ms.openlocfilehash: 8ad7369bc940f682bb7c11c3ed4e3444f1bb056a
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: b8d5526b258e70238bf8d5e4dc91ab02f403368e
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51035083"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52843681"
 ---
 # <a name="monitor-and-tune"></a>Überwachen und Optimieren
 Die Überwachung der Daten zu Ihren Servern unterstützt Sie bei der Problembehandlung und der Optimierung Ihrer Workloads. Azure Database for PostgreSQL bietet verschiedene Überwachungsoptionen, um Einblicke in das Verhalten Ihres Servers zu gewähren.
@@ -42,7 +42,7 @@ Die folgenden Metriken sind für Azure Database for PostgreSQL verfügbar:
 |backup_storage_used|Verwendeter Sicherungsspeicher|Byte|Die Menge des verwendeten Sicherungsspeichers.|
 
 ## <a name="server-logs"></a>Serverprotokolle
-Sie können die Protokollierung auf Ihrem Server aktivieren. Diese Protokolle sind ebenfalls durch Azure-Diagnoseprotokolle in [Log Analytics](../log-analytics/log-analytics-queries.md), Event Hubs und Speicherkonto verfügbar. Weitere Informationen zur Protokollierung finden Sie auf der Seite [Serverprotokolle](concepts-server-logs.md).
+Sie können die Protokollierung auf Ihrem Server aktivieren. Diese Protokolle sind ebenfalls durch Azure-Diagnoseprotokolle in [Log Analytics](../azure-monitor/log-query/log-query-overview.md), Event Hubs und Speicherkonto verfügbar. Weitere Informationen zur Protokollierung finden Sie auf der Seite [Serverprotokolle](concepts-server-logs.md).
 
 ## <a name="query-store"></a>Abfragespeicher
 [Abfragespeicher](concepts-query-store.md) ist ein Feature der öffentlichen Vorschau, das die Abfrageleistung im Zeitablauf verfolgt, einschließlich Statistiken zur Abfrageausführungszeit und Warteereignissen. Das Feature speichert Informationen zur Leistung der Abfrageausführungszeit in einer Systemdatenbank namens **azure_sys** unter dem Schema „query_store“ persistent. Sie können die Sammlung und Speicherung von Daten über verschiedene Konfigurationsoptionen steuern.

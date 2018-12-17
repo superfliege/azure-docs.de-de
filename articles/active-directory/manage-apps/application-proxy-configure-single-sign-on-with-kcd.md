@@ -15,12 +15,12 @@ ms.date: 05/24/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: H1Hack27Feb2017, it-pro
-ms.openlocfilehash: dbb7fca08e8d5c59842f7ddfb02b463a42efadb7
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 565e7379ad12222e459bd61ed50fa38f9f9b12fc
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52422282"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53136241"
 ---
 # <a name="kerberos-constrained-delegation-for-single-sign-on-to-your-apps-with-application-proxy"></a>Eingeschränkte Delegierung von Kerberos für die einmalige Anmeldung zu Ihren Apps mit dem Anwendungsproxy
 
@@ -75,7 +75,7 @@ Die Active Directory-Konfiguration variiert in Abhängigkeit davon, ob Ihr Anwen
 Sharepointserviceaccount kann das SPS-Computerkonto oder ein Dienstkonto sein, unter dem der SPS-App-Pool ausgeführt wird.
 
 ## <a name="configure-single-sign-on"></a>Einmaliges Anmelden konfigurieren 
-1. Veröffentlichen Sie Ihre Anwendung entsprechend den Anweisungen unter [Veröffentlichen von Anwendungen mit einem Anwendungsproxy](application-proxy-publish-azure-portal.md). Stellen Sie sicher, dass **Azure Active Directory** als **Präauthentifizierungsmethode** ausgewählt ist.
+1. Veröffentlichen Sie Ihre Anwendung entsprechend den Anweisungen unter [Veröffentlichen von Anwendungen mit einem Anwendungsproxy](application-proxy-add-on-premises-application.md). Stellen Sie sicher, dass **Azure Active Directory** als **Präauthentifizierungsmethode** ausgewählt ist.
 2. Wenn Ihre Anwendung in der Liste der Unternehmensanwendungen angezeigt wird, wählen Sie sie aus, und klicken auf **Einmaliges Anmelden**.
 3. Legen Sie den Modus für einmaliges Anmelden auf **Integrierte Windows-Authentifizierung** fest.  
 4. Geben Sie den Wert für **Interner Anwendungs-SPN** des Anwendungsservers ein. In diesem Beispiel ist der SPN für unsere veröffentlichte Anwendung http//www.contoso.com. Dieser SPN muss sich in der Liste mit Diensten befinden, an die der Connector delegierte Anmeldeinformationen ausgeben kann. 

@@ -9,14 +9,14 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 09/24/2018
-ms.openlocfilehash: 0b95441fd2805308c601509f1afc477f72bde321
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: edcb2ecb74255ddbb8d601cb69565fb401b756d2
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49476400"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52886213"
 ---
-Melden Sie sich mit den Anmeldeinformationen, die Sie für das Azure-Abonnement verwenden, beim [Azure-Portal](https://portal.azure.com/) an. Wenn Sie kein Azure-Abonnement besitzen, können Sie jetzt ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen.
+Melden Sie sich mit den Anmeldeinformationen, die Sie für das Azure-Abonnement verwenden, beim [Azure-Portal](https://portal.azure.com/) an. 
 
 Das Dashboard für Arbeitsbereiche im Portal wird nur in den Browsern Edge, Chrome und Firefox unterstützt.
 

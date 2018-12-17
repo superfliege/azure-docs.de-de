@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: 487b9d8d02909913f251ae7547d75669fa90f8d9
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: a1677e2c5518fec4412adb87cd058571bd435dd4
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52313299"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53338485"
 ---
 # <a name="restrict-access-through-internet-facing-endpoints-in-azure-security-center"></a>Einschränken des Zugriffs über Endpunkte mit Internetzugriff in Azure Security Center
 Azure Security Center empfiehlt, den Zugriff über Endpunkte mit Internetzugriff einzuschränken, wenn für beliebige Ihrer Netzwerksicherheitsgruppen (NSGs) mindestens eine Eingangsregel gilt, die den Zugriff über „alle“ Quell-IP-Adressen zulässt. Durch das Öffnen des Zugriffs für alle Quell-IP-Adressen können Angreifer ggf. auf Ihre Ressourcen zugreifen. Security Center empfiehlt, dass Sie diese Eingangsregeln so ändern, dass der Zugriff auf Quell-IP-Adressen eingeschränkt wird, die tatsächlich Zugriff benötigen.
@@ -60,7 +60,7 @@ In diesem Artikel wurde gezeigt, wie Sie die Security Center-Empfehlung „Zugri
 
 Weitere Informationen zu Security Center finden Sie in den folgenden Quellen:
 
-* [Festlegen von Sicherheitsrichtlinien in Azure Security Center:](security-center-azure-policy.md)Erfahren Sie, wie Sie Sicherheitsrichtlinien für Ihre Azure-Abonnements und -Ressourcengruppen konfigurieren.
+* [Festlegen von Sicherheitsrichtlinien in Azure Security Center:](tutorial-security-policy.md)Erfahren Sie, wie Sie Sicherheitsrichtlinien für Ihre Azure-Abonnements und -Ressourcengruppen konfigurieren.
 * [Verwalten von Sicherheitsempfehlungen in Azure Security Center:](security-center-recommendations.md)Hier erfahren Sie, wie Empfehlungen Ihnen beim Schutz der Azure-Ressourcen helfen.
 * [Überwachen der Sicherheitsintegrität in Azure Security Center:](security-center-monitoring.md)Erfahren Sie, wie Sie die Integrität Ihrer Azure-Ressourcen überwachen.
 * [Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center:](security-center-managing-and-responding-alerts.md)Erfahren Sie, wie Sie Sicherheitswarnungen verwalten und darauf reagieren.

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: c8a2caf2826069824a993294f4eba514ea870d9c
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: eaeb1e17cf6ddf0e0e9284360d3e4864bf50f27d
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52307374"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53338923"
 ---
 # <a name="apply-disk-encryption-in-azure-security-center"></a>Anwenden der Datenträgerverschlüsselung in Azure Security Center
 Azure Security Center empfiehlt die Anwendung der Datenträgerverschlüsselung, wenn Sie über Windows- oder Linux-VM-Datenträger verfügen, die nicht per Azure Disk Encryption verschlüsselt sind. Mit der Datenträgerverschlüsselung können Sie Ihre Windows- und Linux-IaaS-VM-Datenträger verschlüsseln.  Die Verschlüsselung wird sowohl für die Betriebssystem- als auch für die Datenvolumes auf Ihrer VM empfohlen.
@@ -56,7 +56,7 @@ In diesem Dokument wurde gezeigt, wie Sie die Security Center-Empfehlung „Date
 
 Weitere Informationen zu Security Center finden Sie in den folgenden Quellen:
 
-* [Festlegen von Sicherheitsrichtlinien in Azure Security Center](security-center-azure-policy.md) : Hier erfahren Sie, wie Sie Sicherheitsrichtlinien konfigurieren.
+* [Festlegen von Sicherheitsrichtlinien in Azure Security Center](tutorial-security-policy.md) : Hier erfahren Sie, wie Sie Sicherheitsrichtlinien konfigurieren.
 * [Überwachen der Sicherheitsintegrität in Azure Security Center](security-center-monitoring.md) : Hier erfahren Sie, wie Sie die Integrität Ihrer Azure-Ressourcen überwachen.
 * [Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center](security-center-managing-and-responding-alerts.md) : Hier erfahren Sie, wie Sie Sicherheitswarnungen verwalten und auf diese reagieren.
 * [Verwalten von Sicherheitsempfehlungen in Azure Security Center:](security-center-recommendations.md) Hier erfahren Sie, wie Empfehlungen Ihnen beim Schutz der Azure-Ressourcen helfen.

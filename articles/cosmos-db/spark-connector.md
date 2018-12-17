@@ -1,33 +1,31 @@
 ---
-title: Verbinden von Apache Spark mit Azure Cosmos DB | Microsoft-Dokumentation
+title: Verbinden von Apache Spark mit Azure Cosmos DB
 description: Hier erfahren Sie mehr über den Azure Cosmos DB Spark-Connector, mit dem Sie Apache Spark mit Azure Cosmos DB verbinden können. Sie können verteilte Aggregationen auf dem global verteilten mehrinstanzfähigen Datenbanksystem von Microsoft ausführen.
 keywords: Apache Spark
 services: cosmos-db
 author: tknandu
-manager: kfile
 ms.service: cosmos-db
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: ramkris
-ms.openlocfilehash: 62395ff5370a057ca1888dd135b83be9d6f34f8d
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: fd1fa105a880acb0d2b18a3b69ba8d475d8f82a3
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51707179"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53081590"
 ---
 # <a name="accelerate-big-data-analytics-by-using-the-apache-spark-to-azure-cosmos-db-connector"></a>Beschleunigen von Big Data-Analysen mit dem Apache Spark-Connector für Azure Cosmos DB
  
-Mit dem Apache Spark-Connector für Azure Cosmos DB kann Azure Cosmos DB als Ein- oder Ausgabe für Apache Spark-Aufträge fungieren. Durch das Verbinden von [Spark](http://spark.apache.org/) mit [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) haben Sie die Möglichkeit, plötzlich auftretende Data Science-Probleme schnell zu lösen. Mit Azure Cosmos DB können Sie Daten schnell speichern und abfragen. Der Connector nutzt effizient die nativen verwalteten Azure Cosmos DB-Indizes. Die Indizes aktivieren aktualisierbare Spalten, wenn Sie Analysen durchführen und Pushdown-Prädikatfilter für sich schnell ändernde global verteilte Daten verwenden. Die Daten können aus dem Internet der Dinge (IoT), aus Data Science und Analyseszenarien stammen.
+Mit dem Apache Spark-Connector für Azure Cosmos DB kann Azure Cosmos DB als Ein- oder Ausgabe für Apache Spark-Aufträge fungieren. Durch das Verbinden von [Spark](https://spark.apache.org//) mit [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) haben Sie die Möglichkeit, plötzlich auftretende Data Science-Probleme schnell zu lösen. Mit Azure Cosmos DB können Sie Daten schnell speichern und abfragen. Der Connector nutzt effizient die nativen verwalteten Azure Cosmos DB-Indizes. Die Indizes aktivieren aktualisierbare Spalten, wenn Sie Analysen durchführen und Pushdown-Prädikatfilter für sich schnell ändernde global verteilte Daten verwenden. Die Daten können aus dem Internet der Dinge (IoT), aus Data Science und Analyseszenarien stammen.
 
 ## <a name="connector-components"></a>Connectorkomponenten
 
 Der Spark-Connector für Azure Cosmos DB umfasst die folgenden Komponenten:
 
-* Mit [Azure Cosmos DB](http://documentdb.com) können Sie sowohl den Durchsatz als auch den Speicher in beliebig vielen geografischen Regionen bereitstellen und flexibel skalieren.  
+* Mit [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) können Sie sowohl den Durchsatz als auch den Speicher in beliebig vielen geografischen Regionen bereitstellen und flexibel skalieren.  
 
-* [Apache Spark](http://spark.apache.org/) ist eine leistungsstarke Open Source-Verarbeitungs-Engine, die für hohe Geschwindigkeit, einfache Nutzung und anspruchsvolle Analysen konzipiert wurde.  
+* [Apache Spark](https://spark.apache.org/) ist eine leistungsstarke Open Source-Verarbeitungs-Engine, die für hohe Geschwindigkeit, einfache Nutzung und anspruchsvolle Analysen konzipiert wurde.  
 
 * Mit [Apache Spark-Clustern in Azure Databricks](https://docs.azuredatabricks.net/getting-started/index.html) können Sie Spark-Aufträge im Spark-Cluster ausführen.
 
@@ -179,7 +177,7 @@ Die Kommunikation zwischen Spark und Azure Cosmos DB verläuft erheblich schnell
 
 4. Extrahieren Sie die Inhalte des Twitter-Feedbeispiels, und öffnen Sie die Datei „config.py“. Aktualisieren Sie die Werte „masterKey“, „host“, „databaseId“, „collectionId“ und „preferredlocations“.  
 
-5. Navigieren Sie zu `http://apps.twitter.com/`, und registrieren Sie die Twitter-Feedanwendung. Nachdem Sie einen Namen für Ihre Anwendung ausgewählt haben, erhalten Sie einen **Verbraucherschlüssel, ein Verbrauchergeheimnis, ein Zugriffstoken und ein Zugriffstokengeheimnis**. Kopieren Sie diese Werte, und aktualisieren Sie sie in der Datei „config.py“, um der Twitter-Feedanwendung programmgesteuerten Zugriff auf Twitter bereitzustellen.   
+5. Navigieren Sie zu `https://apps.twitter.com/`, und registrieren Sie die Twitter-Feedanwendung. Nachdem Sie einen Namen für Ihre Anwendung ausgewählt haben, erhalten Sie einen **Verbraucherschlüssel, ein Verbrauchergeheimnis, ein Zugriffstoken und ein Zugriffstokengeheimnis**. Kopieren Sie diese Werte, und aktualisieren Sie sie in der Datei „config.py“, um der Twitter-Feedanwendung programmgesteuerten Zugriff auf Twitter bereitzustellen.   
 
 6. Speichern Sie die Datei „config.py“. Öffnen Sie eine Eingabeaufforderung, und führen Sie die Python-Anwendung mit folgendem Befehl aus:
 
@@ -513,4 +511,4 @@ Laden Sie den Spark-Connector für Azure Cosmos DB aus dem GitHub-Repository [az
 * [Aggregationsbeispiele](https://github.com/Azure/azure-cosmosdb-spark/wiki/Aggregations-Examples)
 * [Sample scripts and notebooks](https://github.com/Azure/azure-cosmosdb-spark/tree/master/samples) (Beispielskripts und Notebooks)
 
-Weitere nützliche Informationen finden Sie in den Artikeln [Leitfaden für Apache Spark-SQL, Datenrahmen und Datasets](http://spark.apache.org/docs/latest/sql-programming-guide.html) (in englischer Sprache) und [Apache Spark in Azure HDInsight](../hdinsight/spark/apache-spark-jupyter-spark-sql.md).
+Weitere nützliche Informationen finden Sie in den Artikeln [Leitfaden für Apache Spark-SQL, Datenrahmen und Datasets](https://spark.apache.org/docs/latest/sql-programming-guide.html) (in englischer Sprache) und [Apache Spark in Azure HDInsight](../hdinsight/spark/apache-spark-jupyter-spark-sql.md).

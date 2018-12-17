@@ -4,14 +4,14 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 109f4621af3e3ca617dfe521575d9352f22c5917
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: a65dbbcfddf33692ee179755b4306019ffa8863e
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50227121"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53399870"
 ---
-Sie können viele Möglichkeiten zum Überwachen Ihrer VMs nutzen, indem Sie Diagnose- und Protokolldaten sammeln, anzeigen und analysieren. Zum einfachen [Überwachen](../articles/azure-monitor/overview.md) Ihrer VM können Sie im Azure-Portal die Übersichtsseite für die VM verwenden. Sie können [Erweiterungen](../articles/virtual-machines/windows/extensions-features.md) verwenden, um die Diagnose für Ihre VMs so zu konfigurieren, dass zusätzliche Metrikdaten gesammelt werden. Sie können auch anspruchsvollere Überwachungsoptionen nutzen, z.B. [Application Insights](../articles/application-insights/app-insights-overview.md) und [Log Analytics](../articles/log-analytics/log-analytics-queries.md).
+Sie können viele Möglichkeiten zum Überwachen Ihrer VMs nutzen, indem Sie Diagnose- und Protokolldaten sammeln, anzeigen und analysieren. Zum einfachen [Überwachen](../articles/azure-monitor/overview.md) Ihrer VM können Sie im Azure-Portal die Übersichtsseite für die VM verwenden. Sie können [Erweiterungen](../articles/virtual-machines/windows/extensions-features.md) verwenden, um die Diagnose für Ihre VMs so zu konfigurieren, dass zusätzliche Metrikdaten gesammelt werden. Sie können auch anspruchsvollere Überwachungsoptionen nutzen, z.B. [Application Insights](../articles/application-insights/app-insights-overview.md) und [Log Analytics](../articles/azure-monitor/log-query/log-query-overview.md).
 
 ## <a name="diagnostics-and-metrics"></a>Diagnose und Metriken 
 
@@ -31,7 +31,7 @@ Sie können die Sammlung von [Diagnosedaten](https://docs.microsoft.com/cli/azur
 
 ## <a name="alerts"></a>Alerts
 
-Sie können [Warnungen](../articles/monitoring-and-diagnostics/monitoring-overview-alerts.md) auf Grundlage von bestimmten Leistungsmetriken erstellen. Beispiele für die Probleme, über die Sie benachrichtigt werden können, sind das Überschreiten eines bestimmten Schwellenwerts für die durchschnittliche CPU-Auslastung oder das Fallen des verfügbaren freien Datenträger-Speicherplatzes unter einen bestimmten Wert. Warnungen können im [Azure-Portal](../articles/monitoring-and-diagnostics/insights-alerts-portal.md), mit [Azure PowerShell](../articles/monitoring-and-diagnostics/insights-alerts-powershell.md) oder mit der [Azure CLI](../articles/monitoring-and-diagnostics/insights-alerts-command-line-interface.md) konfiguriert werden.
+Sie können [Warnungen](../articles/azure-monitor/platform/alerts-overview.md) auf Grundlage von bestimmten Leistungsmetriken erstellen. Beispiele für die Probleme, über die Sie benachrichtigt werden können, sind das Überschreiten eines bestimmten Schwellenwerts für die durchschnittliche CPU-Auslastung oder das Fallen des verfügbaren freien Datenträger-Speicherplatzes unter einen bestimmten Wert. Warnungen können im [Azure-Portal](../articles/monitoring-and-diagnostics/insights-alerts-portal.md), mit [Azure PowerShell](../articles/monitoring-and-diagnostics/insights-alerts-powershell.md) oder mit der [Azure CLI](../articles/monitoring-and-diagnostics/insights-alerts-command-line-interface.md) konfiguriert werden.
 
 ## <a name="azure-service-health"></a>Azure Service Health
 
@@ -50,7 +50,7 @@ Hier sind einige Verwendungsmöglichkeiten für das Aktivitätsprotokoll aufgef�
 - [Erstellen einer Warnung zu einem Aktivitätsprotokollereignis](../articles/monitoring-and-diagnostics/monitoring-overview-activity-logs.md)
 - Streamen an einen [Event Hub](../articles/monitoring-and-diagnostics/monitoring-stream-activity-logs-event-hubs.md) zur Erfassung durch einen Drittanbieterdienst oder durch eine benutzerdefinierte Analyselösung wie Power BI
 - [Analysieren in Power BI mit dem Power BI-Inhaltspaket](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-audit-logs/)
-- [Speichern unter einem Speicherkonto](../articles/monitoring-and-diagnostics/monitoring-archive-activity-log.md) zur Archivierung oder manuellen Untersuchung Sie können die Aufbewahrungsdauer (in Tagen) mithilfe des Protokollprofils angeben.
+- [Speichern unter einem Speicherkonto](../articles/azure-monitor/platform/archive-activity-log.md) zur Archivierung oder manuellen Untersuchung Sie können die Aufbewahrungsdauer (in Tagen) mithilfe des Protokollprofils angeben.
 
 Außerdem können Sie auf die Daten des Aktivitätsprotokolls zugreifen, indem Sie [Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.insights/), die [Azure CLI](https://docs.microsoft.com/cli/azure/monitor) oder [Monitor-REST-APIs](https://docs.microsoft.com/rest/api/monitor/) verwenden.
 
@@ -58,7 +58,7 @@ Außerdem können Sie auf die Daten des Aktivitätsprotokolls zugreifen, indem S
 
 Hier sind einige Verwendungsmöglichkeiten für Diagnoseprotokolle aufgeführt:
 
-- Diagnoseprotokolle können zur Überwachung oder manuellen Überprüfung in einem [Speicherkonto](../articles/monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md) gespeichert werden. Mithilfe der Diagnoseeinstellungen für Ressourcen können Sie eine Aufbewahrungsdauer (in Tagen) angeben.
+- Diagnoseprotokolle können zur Überwachung oder manuellen Überprüfung in einem [Speicherkonto](../articles/azure-monitor/platform/archive-diagnostic-logs.md) gespeichert werden. Mithilfe der Diagnoseeinstellungen für Ressourcen können Sie eine Aufbewahrungsdauer (in Tagen) angeben.
 - Sie können Diagnoseprotokolle zur Erfassung durch einen Drittanbieterdienst oder durch eine benutzerdefinierte Analyselösung wie Power BI an [Event Hubs streamen](../articles/monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md).
 - Sie können Diagnoseprotokolle mit [OMS Log Analytics](../articles/log-analytics/log-analytics-azure-storage.md) analysieren.
 

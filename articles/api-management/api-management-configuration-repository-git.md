@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/02/2018
 ms.author: apimpm
-ms.openlocfilehash: e8d0522dc4cc218792569498c149b32b3de652cb
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: e2f0fb6333f3786b29c2a7516e46a4599d6e89ed
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52443575"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52961008"
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>Speichern und Konfigurieren der API Management-Dienstkonfiguration mit Git
 
@@ -81,7 +81,7 @@ Um ein Kennwort zu generieren, stellen Sie zuerst sicher, dass der **Ablauf** au
 > Notieren Sie sich dieses Kennwort. Das Kennwort wird nicht wieder angezeigt, nachdem Sie diese Seite verlassen haben.
 > 
 
-In den folgenden Beispielen wird das Tool Git Bash aus [Git für Windows](http://www.git-scm.com/downloads) verwendet, Sie können aber auch ein beliebiges Git-Tool verwenden, mit dem Sie vertraut sind.
+In den folgenden Beispielen wird das Tool Git Bash aus [Git für Windows](https://www.git-scm.com/downloads) verwendet, Sie können aber auch ein beliebiges Git-Tool verwenden, mit dem Sie vertraut sind.
 
 Öffnen Sie Ihr Git-Tool im gewünschten Ordner, und führen Sie den folgenden Befehl zum Klonen des Git-Repositorys auf Ihrem lokalen Computer aus. Verwenden Sie dazu den Befehl aus dem Azure-Portal.
 

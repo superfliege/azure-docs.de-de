@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 09/21/2018
+ms.date: 12/11/2018
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to work with routing tables for NVA.
-ms.openlocfilehash: 56321c7c2239c0f1f0e73126d90a521e3cafb853
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 821aecf5549548365d95ef83ea1fcdeb017a4a21
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46984193"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53321442"
 ---
 # <a name="create-a-virtual-hub-route-table-to-steer-traffic-to-a-network-virtual-appliance"></a>Erstellen einer Routingtabelle für einen virtuellen Hub für Virtual WAN zum Steuern des Datenverkehrs zu einem virtuellen Netzwerkgerät
 
@@ -109,12 +109,12 @@ Erstellen Sie eine Routingtabelle für den virtuellen Hub, und wenden Sie dann d
 $routeTable = New-AzureRmVirtualHubRouteTable -Route @($route1)
 ```
 
-## <a name="commit"></a>6. Ausführen eines Commits für die Änderungen
+## <a name="commit"></a>6. Übergeben der Änderungen
 
 Führen Sie für die Änderungen am virtuellen Hub einen Commit aus.
 
 ```powershell
-Set-AzureRmVirtualHub -VirtualWanId $virtualWan.Id -ResourceGroupName "testRG" -Name "westushub” -RouteTable $routeTable
+Update-AzureRmVirtualHub -VirtualWanId $virtualWan.Id -ResourceGroupName "testRG" -Name "westushub” -RouteTable $routeTable
 ```
 
 ## <a name="cleanup"></a>Bereinigen von Ressourcen

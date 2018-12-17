@@ -11,18 +11,18 @@ ms.topic: conceptual
 ms.date: 03/28/2018
 ms.author: glenga
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 5e34aae62f871cba2a27a292242cff8e90c67934
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: d9fa5d70a633f423c82457759d7ed18047167e3e
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51228979"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52999914"
 ---
 # <a name="how-to-manage-a-function-app-in-the-azure-portal"></a>Verwalten einer Funktionen-App im Azure-Portal 
 
 In Azure Functions wird mit einer Funktionen-App der Ausführungskontext für die einzelnen Funktionen angegeben. Funktionen-App-Verhalten gelten für alle von einer bestimmten Funktionen-App gehosteten Funktionen. In diesem Thema wird beschrieben, wie Sie Ihre Funktionen-Apps im Azure-Portal konfigurieren und verwalten.
 
-Wechseln Sie zunächst zum [Azure-Portal](http://portal.azure.com), und melden Sie sich bei Ihrem Azure-Konto an. Geben Sie auf der Suchleiste oben im Portal den Namen der Funktionen-App ein, und wählen Sie sie in der Liste aus. Nach dem Auswählen der Funktionen-App wird die folgende Seite angezeigt:
+Wechseln Sie zunächst zum [Azure-Portal](https://portal.azure.com), und melden Sie sich bei Ihrem Azure-Konto an. Geben Sie auf der Suchleiste oben im Portal den Namen der Funktionen-App ein, und wählen Sie sie in der Liste aus. Nach dem Auswählen der Funktionen-App wird die folgende Seite angezeigt:
 
 ![„Übersicht“ für Funktionen-Apps im Azure-Portal](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-main.png)
 

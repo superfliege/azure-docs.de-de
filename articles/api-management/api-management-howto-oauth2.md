@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/10/2018
 ms.author: apimpm
-ms.openlocfilehash: c0e502c1627ebe9d63ca43cb46b982bb0639f3d7
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: 87e5b6098ff9ee74ef8a4314362c30c436d5ad20
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52444723"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52967928"
 ---
 # <a name="how-to-authorize-developer-accounts-using-oauth-20-in-azure-api-management"></a>Autorisieren von Entwicklerkonten mithilfe von OAuth 2.0 in Azure API Management
 
-Viele APIs unterstützen [OAuth 2.0](http://oauth.net/2/) zum Schützen der API und um sicherzustellen, dass nur autorisierte Benutzer Zugriff erhalten und nur auf die Ressourcen zugreifen können, für die sie berechtigt sind. Um die interaktive Entwicklerkonsole von Azure API Management mit solchen APIs zu verwenden, ermöglicht der Dienst Ihnen das Konfigurieren Ihrer Dienstinstanz für die Zusammenarbeit mit einer OAuth 2.0-aktivierten API.
+Viele APIs unterstützen [OAuth 2.0](https://oauth.net/2/) zum Schützen der API und um sicherzustellen, dass nur autorisierte Benutzer Zugriff erhalten und nur auf die Ressourcen zugreifen können, für die sie berechtigt sind. Um die interaktive Entwicklerkonsole von Azure API Management mit solchen APIs zu verwenden, ermöglicht der Dienst Ihnen das Konfigurieren Ihrer Dienstinstanz für die Zusammenarbeit mit einer OAuth 2.0-aktivierten API.
 
 ## <a name="prerequisites"> </a>Voraussetzungen
 
@@ -143,7 +143,7 @@ Weitere Informationen zur Verwendung von OAuth 2.0 und API Management finden Si
 [Caching policies]: api-management-policy-reference.md#caching-policies
 [Create an API Management service instance]: get-started-create-service-instance.md
 
-[http://oauth.net/2/]: http://oauth.net/2/
+[https://oauth.net/2/]: https://oauth.net/2/
 [WebApp-GraphAPI-DotNet]: https://github.com/AzureADSamples/WebApp-GraphAPI-DotNet
 
 [Prerequisites]: #prerequisites

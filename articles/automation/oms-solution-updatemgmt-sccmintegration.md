@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/19/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: b42ce119db2c435f05424cceb5bb90627668bece
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: f3ab50c4fdc080b157212bcc662a2acf6629483d
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49407196"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53097963"
 ---
 # <a name="integrate-system-center-configuration-manager-with-update-management"></a>Integrieren von System Center Configuration Manager in die Updateverwaltung
 
@@ -26,7 +26,7 @@ Sie können Berichte für verwaltete Windows-Server erstellen und die Server akt
 
 * Sie müssen Ihrem Automation-Konto die [Updateverwaltungslösung](automation-update-management.md) hinzugefügt haben.
 * Windows-Server, die zurzeit von Ihrer System Center Configuration Manager-Umgebung verwaltet werden, müssen auch Berichte an den Log Analytics-Arbeitsbereich übermitteln, in dem die Updateverwaltungslösung aktiviert ist.
-* Dieses Feature ist in System Center Configuration Manager Current Branch (Version 1606 und höher) aktiviert. Informationen zum Integrieren der zentralen Configuration Manager-Verwaltungswebsite oder einer eigenständigen primären Website mit Log Analytics und zum Importieren von Sammlungen finden Sie unter [Herstellen einer Verbindung zwischen Configuration Manager und Log Analytics](../log-analytics/log-analytics-sccm.md).  
+* Dieses Feature ist in System Center Configuration Manager Current Branch (Version 1606 und höher) aktiviert. Informationen zum Integrieren der zentralen Configuration Manager-Verwaltungswebsite oder einer eigenständigen primären Website mit Log Analytics und zum Importieren von Sammlungen finden Sie unter [Herstellen einer Verbindung zwischen Configuration Manager und Log Analytics](../azure-monitor/platform/collect-sccm.md).  
 * Windows-Agents müssen entweder für die Kommunikation mit einem WSUS-Server (Windows Server Update Services) konfiguriert sein oder über Zugriff auf Microsoft-Update verfügen, wenn sie keine Sicherheitsupdates von Configuration Manager erhalten.   
 
 Wie Sie die in Azure IaaS gehosteten Clients mit Ihrer vorhandenen Configuration Manager-Umgebung verwalten, richtet sich primär nach der Verbindung zwischen Azure-Rechenzentren und Ihrer Infrastruktur. Diese Verbindung wirkt sich auf alle Designänderungen aus, die Sie an Ihrer Configuration Manager-Infrastruktur vornehmen müssen, und auf die Kosten, die anfallen, um diese Änderungen zu unterstützen. Informationen zu den Planungsüberlegungen, die Sie berücksichtigen müssen, finden Sie unter [Configuration Manager in Azure – häufig gestellte Fragen](/sccm/core/understand/configuration-manager-on-azure#networking).

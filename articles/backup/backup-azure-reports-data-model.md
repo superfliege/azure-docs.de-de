@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 06/26/2017
 ms.author: adigan
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6b1531e23d0e5fd34eff59868055ccd855b423e4
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 573b7e9c5c44c7162b4020f1ef54b8986003c0b5
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37444302"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52877132"
 ---
 # <a name="data-model-for-azure-backup-reports"></a>Datenmodell für Azure Backup-Berichte
 In diesem Artikel wird das Power BI-Datenmodell beschrieben, das zum Erstellen von Azure Backup-Berichten verwendet wird. Mit diesem Datenmodell können Sie vorhandene Berichte basierend auf entsprechenden Feldern filtern und, was noch wichtiger ist, eigene Berichte mithilfe der Tabellen und Felder im Modell erstellen. 
@@ -33,7 +33,7 @@ Diese Tabelle enthält grundlegende Felder und Aggregationen für verschiedene w
 | #AlertsCreatedInPeriod |Ganze Zahl |Anzahl der Warnungen, die im gewählten Zeitraum erstellt wurden |
 | %ActiveAlertsCreatedInPeriod |Prozentsatz |Prozentsatz aktiver Warnungen im gewählten Zeitraum |
 | %CriticalAlertsCreatedInPeriod |Prozentsatz |Prozentsatz kritischer Warnungen im gewählten Zeitraum |
-| AlertOccurenceDate |Datum |Datum der Erstellung der Warnung |
+| AlertOccurrenceDate |Datum |Datum der Erstellung der Warnung |
 | AlertSeverity |Text |Schweregrad der Warnung, z.B. Kritisch |
 | AlertStatus |Text |Status der Warnung, z.B. Aktiv |
 | AlertType |Text |Typ der generierten Warnung, z.B. Sicherung |
@@ -150,7 +150,7 @@ Diese Tabelle enthält grundlegende Felder und Aggregationen für verschiedene F
 | ProtectedServerName |Text |Name des geschützten Servers, zu dem das Sicherungselement gehört |
 | RegisteredContainerId |Text |ID des Containers, der für die Sicherung registriert ist |
 
-### <a name="storage"></a>Speicher
+### <a name="storage"></a>Storage
 Diese Tabelle enthält grundlegende Felder und Aggregationen für verschiedene speicherbezogene Felder.
 
 | Feld | Datentyp | BESCHREIBUNG |

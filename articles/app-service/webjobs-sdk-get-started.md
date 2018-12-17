@@ -1,5 +1,5 @@
 ---
-title: Erste Schritte mit dem Azure WebJobs SDK
+title: Erste Schritte mit dem WebJobs SDK – Azure
 description: Einführung in das WebJobs SDK für die ereignisgesteuerte Hintergrundverarbeitung. Erfahren Sie, wie Sie auf Daten in Azure-Diensten und Diensten von Drittanbietern zugreifen.
 services: app-service\web, storage
 documentationcenter: .net
@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/27/2018
 ms.author: glenga
-ms.openlocfilehash: b0f4ef5079ac689827cb49884fa1c6a51529ea83
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 034f182cc282f50eb3a4a1de05331f42957f49fe
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50140348"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53339806"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Erste Schnitte mit dem Azure WebJobs SDK für die ereignisgesteuerte Hintergrundverarbeitung
 
@@ -63,9 +63,9 @@ In diesem Artikel wird vorausgesetzt, dass Sie über [ein Azure-Konto](https://a
 
 1. Wählen Sie in Visual Studio die Optionen **Datei > Neues Projekt** aus.
 
-1. Wählen Sie **Klassischer Windows-Desktop > Konsolen-App (.NET Framework)** aus.
+2. Wählen Sie **Klassischer Windows-Desktop > Konsolen-App (.NET Framework)** aus.
 
-1. Weisen Sie dem Projekt den Namen *WebJobsSDKSample* zu, und wählen Sie dann **OK** aus.
+3. Weisen Sie dem Projekt den Namen *WebJobsSDKSample* zu, und wählen Sie dann **OK** aus.
 
    ![Dialogfeld "Neues Projekt"](./media/webjobs-sdk-get-started/new-project.png)
 
@@ -396,7 +396,7 @@ In diesem Abschnitt führen Sie die folgenden Aufgaben zum Einrichten der Applic
 
 In diesem Abschnitt führen Sie das Projekt erneut lokal aus, um zu überprüfen, ob die Protokollierungsdaten jetzt sowohl an Application Insights als auch an die Konsole weitergeleitet werden.
 
-1. Verwenden Sie in Visual Studio **Server-Explorer**, um eine Warteschlangennachricht auf die gleiche Weise wie [zuvor](#trigger-the-function) zu erstellen, mit der Ausnahme, dass Sie hier *Hello App Insights!* als Nachrichtentext eingeben.
+1. Verwenden Sie in Visual Studio **Server-Explorer**, um eine Warteschlangennachricht auf die gleiche Weise wie [zuvor](#trigger-the-function-in-azure) zu erstellen, mit der Ausnahme, dass Sie hier *Hello App Insights!* als Nachrichtentext eingeben.
 
 1. Führen Sie das Projekt aus.
 

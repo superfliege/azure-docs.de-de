@@ -4,14 +4,14 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 0e46caf855bca184ff8a714d2c93d573b910fea8
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 9ad161e3e19a1e546f30a17b38737fa88bc0953a
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50227422"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53399875"
 ---
-Sie können Ihre [virtuellen Computer (VMs)](../articles/virtual-machines/windows/overview.md) leicht [automatisch skalieren](../articles/monitoring-and-diagnostics/insights-autoscale-best-practices.md), indem Sie [VM-Skalierungsgruppen](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) und das [Feature für die automatische Skalierung von Azure Monitor](../articles/monitoring-and-diagnostics/monitoring-overview-autoscale.md) verwenden. Ihre VMs müssen Mitglieder einer Skalierungsgruppe sein, um automatisch skaliert werden zu können. Dieser Artikel enthält Informationen, mit denen Sie besser verstehen, wie Sie Ihre VMs mit automatischen und manuellen Methoden sowohl vertikal als auch horizontal skalieren können.
+Sie können Ihre [virtuellen Computer (VMs)](../articles/virtual-machines/windows/overview.md) leicht [automatisch skalieren](../articles/azure-monitor/platform/autoscale-best-practices.md), indem Sie [VM-Skalierungsgruppen](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) und das [Feature für die automatische Skalierung von Azure Monitor](../articles/azure-monitor/platform/autoscale-overview.md) verwenden. Ihre VMs müssen Mitglieder einer Skalierungsgruppe sein, um automatisch skaliert werden zu können. Dieser Artikel enthält Informationen, mit denen Sie besser verstehen, wie Sie Ihre VMs mit automatischen und manuellen Methoden sowohl vertikal als auch horizontal skalieren können.
 
 ## <a name="horizontal-or-vertical-scaling"></a>Horizontale oder vertikale Skalierung
 
@@ -35,7 +35,7 @@ Sie können die automatische Skalierung aktivieren, wenn Sie die Skalierungsgrup
  
 ### <a name="metrics"></a>Metriken
 
-Mit dem Azure Monitor-Feature für die automatische Skalierung können Sie die Anzahl von ausgeführten VMs basierend auf [Metriken](../articles/monitoring-and-diagnostics/insights-autoscale-common-metrics.md) zentral hoch- oder herunterskalieren. Standardmäßig werden von VMs grundlegende Hostebenenmetriken für die Datenträger-, Netzwerk- und CPU-Auslastung bereitgestellt. Wenn Sie die Sammlung von Diagnosedaten mit der Diagnoseerweiterung konfigurieren, werden für den Datenträger, die CPU und den Arbeitsspeicher zusätzliche Leistungsindikatoren für das Gastbetriebssystem bereitgestellt.
+Mit dem Azure Monitor-Feature für die automatische Skalierung können Sie die Anzahl von ausgeführten VMs basierend auf [Metriken](../articles/azure-monitor/platform/autoscale-common-metrics.md) zentral hoch- oder herunterskalieren. Standardmäßig werden von VMs grundlegende Hostebenenmetriken für die Datenträger-, Netzwerk- und CPU-Auslastung bereitgestellt. Wenn Sie die Sammlung von Diagnosedaten mit der Diagnoseerweiterung konfigurieren, werden für den Datenträger, die CPU und den Arbeitsspeicher zusätzliche Leistungsindikatoren für das Gastbetriebssystem bereitgestellt.
 
 ![Kriterien für Metriken](./media/virtual-machines-autoscale/virtual-machines-autoscale-criteria.png)
 
@@ -49,7 +49,7 @@ Bei [Regeln](../articles/monitoring-and-diagnostics/monitoring-autoscale-scale-b
  
 ### <a name="notifications"></a>Benachrichtigungen
 
-Sie können [Trigger einrichten](../articles/monitoring-and-diagnostics/insights-autoscale-to-webhook-email.md), damit basierend auf den von Ihnen erstellten Regeln für die automatische Skalierung bestimmte Web-URLs aufgerufen oder E-Mails gesendet werden. Mithilfe von Webhooks können Sie die Azure-Warnbenachrichtigungen für die Nachbearbeitung oder benutzerdefinierte Benachrichtigungen an andere Systeme weiterleiten.
+Sie können [Trigger einrichten](../articles/azure-monitor/platform/autoscale-webhook-email.md), damit basierend auf den von Ihnen erstellten Regeln für die automatische Skalierung bestimmte Web-URLs aufgerufen oder E-Mails gesendet werden. Mithilfe von Webhooks können Sie die Azure-Warnbenachrichtigungen für die Nachbearbeitung oder benutzerdefinierte Benachrichtigungen an andere Systeme weiterleiten.
 
 ## <a name="manually-scale-vms-in-a-scale-set"></a>Manuelles Skalieren von VMs in einer Skalierungsgruppe
 

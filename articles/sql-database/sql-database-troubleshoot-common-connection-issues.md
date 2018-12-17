@@ -3,7 +3,7 @@ title: Behandeln von häufigen Verbindungsproblemen mit Azure SQL-Datenbank
 description: Schritte zum Ermitteln und Behandeln von häufigen Verbindungsproblemen für Azure SQL-Datenbank.
 services: sql-database
 ms.service: sql-database
-ms.subservice: operations
+ms.subservice: monitor
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.author: daleche
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 99c7e73bb133349ef1c14295a49f278d64a15226
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 53061cde5621be06df8f992278a6510d62e51934
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51257958"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52872577"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-sql-database"></a>Beheben von Verbindungsproblemen mit der Azure SQL-Datenbank
 Wenn keine Verbindung zur Azure SQL-Datenbank hergestellt werden kann, erhalten Sie [Fehlermeldungen](sql-database-develop-error-messages.md). Bei diesem Artikel handelt es sich um eine zentrale Informationsquelle, die Sie bei der Behebung von Problemen mit der Verbindung mit Azure SQL-Datenbank unterstützt. In dem Artikel werden [die häufigsten Ursachen](#cause) von Verbindungsproblemen dargestellt, [ein Tool zur Problembehandlung](#try-the-troubleshooter-for-azure-sql-database-connectivity-issues) empfohlen, das Sie bei der Ermittlung des Problems unterstützt, sowie Problembehandlungsschritte zur Behebung von [vorübergehenden Fehlern](#troubleshoot-transient-errors) und [dauerhaften oder nicht vorübergehenden Fehlern](#troubleshoot-persistent-errors) bereitgestellt. 

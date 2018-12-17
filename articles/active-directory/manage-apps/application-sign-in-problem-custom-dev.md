@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 8ae8fa823b919ec4a67832e7c42088c994bd2d97
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 2dade35b05a07b649282ae00bb6fee354adcd195
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44354758"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52845479"
 ---
 # <a name="problems-signing-in-to-an-custom-developed-application"></a>Probleme bei der Anmeldung bei benutzerdefiniert entwickelten Anwendungen
 
@@ -32,7 +32,7 @@ Es gibt mehrere Fehler, die dazu führen können, dass Sie sich nicht einer App 
 
 * Vergleichen Sie die Ressource, auf die Sie zugreifen möchten, im Code mit den konfigurierten Berechtigungen auf der Registerkarte **Erforderliche Ressourcen**, um sicherzustellen, dass Sie nur Ressourcen anfordern, die Sie konfiguriert haben.
 
-* Weitere Informationen zu ähnlichen Fehlern oder Problemen finden Sie unter [Azure AD bei Stack Overflow](http://stackoverflow.com/questions/tagged/azure-active-directory).
+* Weitere Informationen zu ähnlichen Fehlern oder Problemen finden Sie unter [Azure AD bei Stack Overflow](https://stackoverflow.com/questions/tagged/azure-active-directory).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -42,4 +42,4 @@ Es gibt mehrere Fehler, die dazu führen können, dass Sie sich nicht einer App 
 
 [Genehmigen und Zuweisen von Berechtigungen für konvergierte Azure AD V2.0-Apps](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes)<br>
 
-[Azure AD bei Stack Overflow](http://stackoverflow.com/questions/tagged/azure-active-directory>)
+[Azure AD bei Stack Overflow](https://stackoverflow.com/questions/tagged/azure-active-directory>)

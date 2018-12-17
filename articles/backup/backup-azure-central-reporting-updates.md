@@ -10,16 +10,15 @@ ms.assetid: 59df5bec-d959-457d-8731-7b20f7f1013e
 ms.service: backup
 ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/24/2018
-ms.author: adigan;
-ms.openlocfilehash: 73a5e8126ebe6223d790a5b58db7bd5d04b5350f
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.author: adigan
+ms.openlocfilehash: 65ab497b2467846a324d10f8487ab384a01441ee
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48267298"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52968884"
 ---
 # <a name="update-the-azure-backup-central-reporting-content-pack"></a>Aktualisieren des Inhaltspakets für die zentrale Azure Backup-Berichterstellung 
 
@@ -42,30 +41,30 @@ Die vorkonfigurierten Berichte, die im Azure Backup-Inhaltspaket enthalten sind,
 
 ### <a name="summary"></a>Zusammenfassung
    
-![Zusammenfassung](.\media\backup-azure-central-reporting\AzBackup-Central-Reporting-Summary.png)
+![Zusammenfassung](./media/backup-azure-central-reporting/AzBackup-Central-Reporting-Summary.png)
 
 ### <a name="billing"></a>Abrechnung
 
-![Abrechnung](.\media\backup-azure-central-reporting\AzBackup-Central-Reporting-Billing.png)
+![Abrechnung](./media/backup-azure-central-reporting/AzBackup-Central-Reporting-Billing.png)
 
 ### <a name="compliance"></a>Compliance
 
-![Compliance](.\media\backup-azure-central-reporting\AzBackup-Central-Reporting-Compliance.png)
+![Compliance](./media/backup-azure-central-reporting/AzBackup-Central-Reporting-Compliance.png)
 
-### <a name="storage"></a>Speicher
+### <a name="storage"></a>Storage
 
-![Speicher](.\media\backup-azure-central-reporting\AzBackup-Central-Reporting-Storage.png)
+![Storage](./media/backup-azure-central-reporting/AzBackup-Central-Reporting-Storage.png)
 
 ### <a name="backup-items"></a>Sicherungselemente
-![Sicherungselemente](.\media\backup-azure-central-reporting\AzBackup-Central-Reporting-BackupItem.png)
+![Sicherungselemente](./media/backup-azure-central-reporting/AzBackup-Central-Reporting-BackupItem.png)
 
 ### <a name="alerts"></a>Alerts
 
-![Alerts](.\media\backup-azure-central-reporting\AzBackup-Central-Reporting-Alerts.png)
+![Alerts](./media/backup-azure-central-reporting/AzBackup-Central-Reporting-Alerts.png)
 
 ### <a name="jobs"></a>Aufträge
 
-![Aufträge](.\media\backup-azure-central-reporting\AzBackup-Central-Reporting-Jobs.png)
+![Aufträge](./media/backup-azure-central-reporting/AzBackup-Central-Reporting-Jobs.png)
     
 
 ## <a name="next-steps"></a>Nächste Schritte

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 07/24/2017
 ms.author: adigan
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f9cdb11bad5d4aa94fdc083a0fc7dc6a2c5787cd
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: f4ecc87a0a7a0c74b02b72164fe129daa6530ea2
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52635151"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52877580"
 ---
 # <a name="log-analytics-data-model-for-azure-backup-data"></a>Log Analytics-Datenmodell für Azure Backup-Daten
 Verwenden Sie das Log Analytics-Datenmodell zum Erstellen von Berichten. Mit dem Datenmodell können Sie nach Wunsch benutzerdefinierte Abfragen und Dashboards erstellen oder Azure Backup-Daten anpassen.
@@ -30,7 +30,7 @@ Diese Tabelle enthält Details zu warnungsbezogenen Feldern.
 | AlertUniqueId_s |Text |Eindeutiger Bezeichner der generierten Warnung |
 | AlertType_s |Text |Typ der Warnung, z.B. Sicherung |
 | AlertStatus_s |Text |Status der Warnung, z.B. „Aktiv“ |
-| AlertOccurenceDateTime_s |Datum/Uhrzeit |Datum und Uhrzeit der Warnungserstellung |
+| AlertOccurrenceDateTime_s |Datum/Uhrzeit |Datum und Uhrzeit der Warnungserstellung |
 | AlertSeverity_s |Text |Schweregrad der Warnung, z.B. „Kritisch“ |
 | EventName_s |Text |Name der Veranstaltung. Immer „AzureBackupCentralReport“ |
 | BackupItemUniqueId_s |Text |Eindeutiger Bezeichner des Sicherungselements, das der Warnung zugeordnet ist |
@@ -235,7 +235,7 @@ Diese Tabelle enthält Details zur Zuordnung von geschützten Servern zu anderen
 | ResourceProvider |Text |Ressourcenanbieter, für den Daten gesammelt werden. Beispiel: Microsoft.RecoveryServices |
 | ResourceType |Text |Ressourcentyp, für den Daten gesammelt werden. Beispiel: Tresore |
 
-### <a name="storage"></a>Speicher
+### <a name="storage"></a>Storage
 Diese Tabelle enthält Details zu speicherbezogenen Feldern.
 
 | Feld | Datentyp | BESCHREIBUNG |

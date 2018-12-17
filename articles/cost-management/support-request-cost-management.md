@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 10/24/2018
+ms.date: 12/06/2018
 ms.topic: troubleshooting
 ms.service: cost-management
 manager: benshy
 ms.custom: ''
-ms.openlocfilehash: 8add92c5a65e4ddbd83dbe0836820fae1e88f557
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 4118e0bb0e42a1eec707b2fdb6682333400e2e1a
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52274686"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53099833"
 ---
 # <a name="create-a-support-request-for-cloudyn"></a>Erstellen einer Supportanfrage für Cloudyn
 
@@ -43,7 +43,7 @@ Wenn Sie ein Supportticket zu einer Abrechnung für Cost Management erstellen m�
 
 Den Status eines von Ihnen eingereichten Vorfalls können Sie unter [Alle Supportanfragen](../azure-supportability/how-to-create-azure-support-request.md#all-support-requests) überprüfen.
 
-Wenn Sie ein Legacybenutzer von Cloudyn ohne Azure-Konto sind, können Sie unter http://support.microsoft.com/oas/default.aspx?prid=16451 eine Supportanfrage erstellen.
+Wenn Sie ein Legacybenutzer von Cloudyn ohne Azure-Konto sind, können Sie unter https://support.microsoft.com/oas/default.aspx?prid=16451 eine Supportanfrage erstellen.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

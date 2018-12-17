@@ -8,12 +8,12 @@ ms.topic: howto
 ms.date: 09/24/2018
 ms.author: ancav
 ms.component: metrics
-ms.openlocfilehash: ccfe108b895450e97df1639f6c47eb01823ce5f4
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.openlocfilehash: 8afa6a29d7d97b1d961f8a8ea44a2b62896ec4da
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51636763"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53323062"
 ---
 # <a name="send-custom-metrics-for-an-azure-resource-to-the-azure-monitor-metric-store-by-using-a-rest-api"></a>Senden benutzerdefinierter Metriken für eine Azure-Ressource an den Azure Monitor-Metrikspeicher mithilfe einer REST-API
 
@@ -94,7 +94,7 @@ Sollte im Rahmen des Prozesses eine Fehlermeldung angezeigt werden, berücksicht
 1. Sie können Metriken nicht für ein Abonnement oder eine Ressourcengruppe als Ihre Azure-Ressource ausgeben. 
 1. Dem Speicher können keine Metriken hinzugefügt werden, die älter als 20 Minuten sind. Der Metrikspeicher ist für die Benachrichtigung und Diagrammerstellung in Echtzeit optimiert. 
 2. Die Anzahl von Dimensionsnamen muss mit den Werten übereinstimmen (und umgekehrt). Überprüfen Sie die Werte. 
-2. Möglicherweise geben Sie Metriken für Regionen aus, die keine benutzerdefinierten Metriken unterstützen. Weitere Informationen finden Sie unter [Unterstützte Regionen](metrics-custom-overview.md#supported-regions). 
+2. Möglicherweise geben Sie Metriken für Regionen aus, die keine benutzerdefinierten Metriken unterstützen. Weitere Informationen finden Sie unter [Unterstützte Regionen](../azure-monitor/platform/metrics-custom-overview.md#supported-regions). 
 
 
 
@@ -118,4 +118,4 @@ Sollte im Rahmen des Prozesses eine Fehlermeldung angezeigt werden, berücksicht
 
  
 ## <a name="next-steps"></a>Nächste Schritte
-- Erfahren Sie mehr über [benutzerdefinierte Metriken](metrics-custom-overview.md).
+- Erfahren Sie mehr über [benutzerdefinierte Metriken](../azure-monitor/platform/metrics-custom-overview.md).

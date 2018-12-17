@@ -3,7 +3,7 @@ title: Azure Security Center und Azure SQL-Datenbankdienst | Microsoft Docs
 description: In diesem Artikel erfahren Sie, wie Sie mithilfe von Security Center Ihre Datenbanken in Azure SQL-Datenbank schützen können.
 services: sql-database
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: MBaldwin
 editor: ''
 ms.assetid: f109adfd-daed-4257-9692-2042a1399480
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/02/2017
-ms.author: terrylan
-ms.openlocfilehash: 2b16bc98c456c9c85d8e49e01171086933533707
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.author: rkarlin
+ms.openlocfilehash: 839c8bfe6748c1aeaf7c8804ef4388cf8a623bdb
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52312628"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53337834"
 ---
 # <a name="azure-security-center-and-azure-sql-database-service"></a>Azure Security Center und Azure SQL-Datenbankdienst
 Mit [Azure Security Center](https://azure.microsoft.com/documentation/services/security-center/) können Sie Bedrohungen verhindern, erkennen und bekämpfen. Es bietet integrierte Sicherheitsüberwachung und Richtlinienverwaltung für Ihre Azure-Abonnements, hilft bei der Erkennung von Bedrohungen, die andernfalls möglicherweise unbemerkt bleiben, und kann gemeinsam mit einem breiten Spektrum an Sicherheitslösungen verwendet werden.
@@ -60,7 +60,7 @@ Sie können eine Richtlinie zum Anzeigen von Empfehlungen für die SQL-Überwach
 Wählen Sie auf dem Blatt „Security Center“ die Kachel **Richtlinie** aus, um eine Sicherheitsrichtlinie festzulegen. Wählen Sie auf dem Blatt **Sicherheitsrichtlinie** das Abonnement aus, für das die Sicherheitsrichtlinie aktiviert werden soll. Wählen Sie **Präventionsrichtlinie** und dann **Ein** aus, um die Sicherheitsempfehlungen zu aktivieren, die Sie für dieses Abonnement verwenden möchten.
 ![Sicherheitsrichtlinie][3]
 
-Weitere Informationen finden Sie unter [Festlegen von Sicherheitsrichtlinien](security-center-azure-policy.md).
+Weitere Informationen finden Sie unter [Festlegen von Sicherheitsrichtlinien](tutorial-security-policy.md).
 
 ## <a name="manage-security-recommendation"></a>Verwalten von Sicherheitsempfehlungen
 Security Center analysiert in regelmäßigen Abständen den Sicherheitsstatus der Azure-Ressourcen. Wenn Security Center potenzielle Sicherheitsrisiken identifiziert, werden Empfehlungen erstellt. Entsprechend den Empfehlungen werden Sie durch den Prozess der Konfiguration des erforderlichen Sicherheitsmechanismus geführt.
@@ -85,7 +85,7 @@ Führen Sie die Schritte in [Bedrohungserkennung bei SQL-Datenbank im Azure-Port
 Weitere Informationen zu Empfehlungen finden Sie unter [Verwalten von Sicherheitsempfehlungen](security-center-recommendations.md).
 
 ## <a name="monitor-security-health"></a>Überwachen der Sicherheitsintegrität
-Nachdem Sie die [Sicherheitsrichtlinien](security-center-azure-policy.md) für die Ressourcen des Abonnements aktiviert haben, analysiert Security Center die Sicherheit Ihrer Ressourcen, um mögliche Sicherheitsrisiken zu erkennen.  Der Sicherheitszustand Ihrer Ressourcen wird auf der Kachel **Sicherheitsintegrität der Ressource** angezeigt. Wenn Sie auf der Kachel **Sicherheitsintegrität der Ressource** auf **Daten** klicken, wird das Blatt **Datenressourcen** geöffnet. Es enthält SQL-Empfehlungen zu Problemen, die mit der Überwachung oder der nicht aktivierten Transparent Data Encryption zusammenhängen. Außerdem werden Empfehlungen zum allgemeinen Integritätsstatus der Datenbank angegeben.
+Nachdem Sie die [Sicherheitsrichtlinien](tutorial-security-policy.md) für die Ressourcen des Abonnements aktiviert haben, analysiert Security Center die Sicherheit Ihrer Ressourcen, um mögliche Sicherheitsrisiken zu erkennen.  Der Sicherheitszustand Ihrer Ressourcen wird auf der Kachel **Sicherheitsintegrität der Ressource** angezeigt. Wenn Sie auf der Kachel **Sicherheitsintegrität der Ressource** auf **Daten** klicken, wird das Blatt **Datenressourcen** geöffnet. Es enthält SQL-Empfehlungen zu Problemen, die mit der Überwachung oder der nicht aktivierten Transparent Data Encryption zusammenhängen. Außerdem werden Empfehlungen zum allgemeinen Integritätsstatus der Datenbank angegeben.
 ![Sicherheitsintegrität von Ressourcen][6]
 
 Weitere Informationen finden Sie unter [Überwachen der Sicherheitsintegrität](security-center-monitoring.md).

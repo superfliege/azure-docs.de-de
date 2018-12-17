@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 06/08/2018
 ms.author: ryanwi
-ms.openlocfilehash: 6f538fa821e546d12c5a2bdb9585cc85871241fa
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 010fd442419f57f8b53705be8d3f49fdb84e28fd
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47094151"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53262451"
 ---
 # <a name="multi-container-application-and-service-manifest-examples"></a>Mehrere Container: Beispiele für Anwendungs- und Dienstmanifeste
 Im Folgenden finden Sie Beispiele für die Anwendungs- und Dienstmanifeste für eine Service Fabric-Anwendung mit mehreren Containern. Der Zweck dieser Beispiele besteht darin, zu zeigen, welche Einstellungen verfügbar sind und wie sie verwendet werden. Diese Anwendungs- und Dienstmanifeste basieren auf den Manifesten für das [Windows Server 2016-Containerbeispiel](https://github.com/Azure-Samples/service-fabric-containers/tree/master/Windows).
@@ -295,7 +295,7 @@ Gibt Richtlinien für die Aktivierung der Containerhosts an. Weitere Information
 Anmeldeinformationen für das Containerimagerepository, aus dem Images per Pull abgerufen werden sollen Weitere Informationen finden Sie unter [RepositoryCredentials-Element](service-fabric-service-model-schema-elements.md#RepositoryCredentialsElementRepositoryCredentialsTypeComplexTypeDefinedInContainerHostPoliciesTypecomplexType).
 
 ### <a name="portbinding-element"></a>PortBinding-Element
-Gibt an, welche Endpunktressource an den bereitgestellten Containerport gebunden werden soll. Weitere Informationen finden Sie unter [PortBinding-Element](service-fabric-service-model-schema-elements.md#PortBindingElementPortBindingTypeComplexTypeDefinedInContainerHostPoliciesTypecomplexType).
+Gibt an, welche Endpunktressource an den bereitgestellten Containerport gebunden werden soll. Weitere Informationen finden Sie unter [PortBinding-Element](service-fabric-service-model-schema-elements.md#PortBindingElementPortBindingTypeComplexTypeDefinedInServicePackageContainerPolicyTypecomplexTypeDefinedInContainerHostPoliciesTypecomplexType).
 
 ### <a name="volume-element"></a>Volume-Element
 Gibt das an den Container zu bindende Volume an. Weitere Informationen finden Sie unter [Volume-Element](service-fabric-service-model-schema-elements.md#VolumeElementContainerVolumeTypeComplexTypeDefinedInContainerHostPoliciesTypecomplexType).
@@ -313,7 +313,7 @@ Containerimage, das der Buildversionsnummer des zu startenden Betriebssystems en
  Weitere Informationen finden Sie unter [EnvironmentOverrides-Element](service-fabric-service-model-schema-elements.md#EnvironmentOverridesElementEnvironmentOverridesTypeComplexTypeDefinedInServiceManifestImportelement).
 
 ### <a name="environmentvariable-element"></a>EnvironmentVariable-Element
-Umgebungsvariable Weitere Informationen finden Sie unter [EnvironmentVariable-Element](service-fabric-service-model-schema-elements.md#EnvironmentVariableElementEnvironmentVariableTypeComplexTypeDefinedInEnvironmentOverridesTypecomplexTypeDefinedInEnvironmentVariablesTypecomplexType).
+Umgebungsvariable Weitere Informationen finden Sie unter [EnvironmentVariable-Element](service-fabric-service-model-schema-elements.md#EnvironmentVariableElementEnvironmentVariableOverrideTypeComplexTypeDefinedInEnvironmentOverridesTypecomplexType).
 
 ### <a name="certificateref-element"></a>CertificateRef-Element
 Gibt Informationen zu einem X509-Zertifikat an, das für die Containerumgebung verfügbar gemacht werden soll. Das Zertifikat muss im LocalMachine-Speicher aller Clusterknoten installiert werden.
@@ -356,7 +356,7 @@ Das Repository und Image auf https://hub.docker.com oder Azure Container Registr
 Dient zum Übergeben von Umgebungsvariablen an Ihren Container oder Ihre EXE-Datei.  Weitere Informationen finden Sie unter [EnvironmentVariables-Element](service-fabric-service-model-schema-elements.md#EnvironmentVariablesElementEnvironmentVariablesTypeComplexTypeDefinedInCodePackageTypecomplexType).
 
 ### <a name="environmentvariable-element"></a>EnvironmentVariable-Element
-Umgebungsvariable Weitere Informationen finden Sie unter [EnvironmentVariable-Element](service-fabric-service-model-schema-elements.md#EnvironmentVariableElementEnvironmentVariableTypeComplexTypeDefinedInEnvironmentOverridesTypecomplexTypeDefinedInEnvironmentVariablesTypecomplexType).
+Umgebungsvariable Weitere Informationen finden Sie unter [EnvironmentVariable-Element](service-fabric-service-model-schema-elements.md#EnvironmentVariableElementEnvironmentVariableOverrideTypeComplexTypeDefinedInEnvironmentOverridesTypecomplexType).
 
 ### <a name="configpackage-element"></a>ConfigPackage-Element
 Deklariert einen Ordner, der durch das Name-Attribut benannt wird und die Datei „Settings.xml“ enthält. Diese Datei enthält Abschnitte mit benutzerdefinierten Schlüssel-Wert-Paar-Einstellungen, die der Prozess zur Laufzeit einlesen kann. Wenn sich während eines Upgrades nur die Version von „ConfigPackage“ geändert hat, wird der ausgeführte Prozess nicht neu gestartet. Stattdessen benachrichtigt ein Rückruf den Prozess, dass sich Konfigurationseinstellungen geändert haben, sodass sie dynamisch neu geladen werden können. Weitere Informationen finden Sie unter [ConfigPackage-Element](service-fabric-service-model-schema-elements.md#ConfigPackageElementConfigPackageTypeComplexTypeDefinedInServiceManifestTypecomplexTypeDefinedInDigestedConfigPackageelement).
@@ -403,7 +403,7 @@ Dient zum Übergeben einer durch Kommas getrennten Liste mit Befehlen an den Con
 Dient zum Übergeben von Umgebungsvariablen an Ihren Container oder Ihre EXE-Datei.  Weitere Informationen finden Sie unter [EnvironmentVariables-Element](service-fabric-service-model-schema-elements.md#EnvironmentVariablesElementEnvironmentVariablesTypeComplexTypeDefinedInCodePackageTypecomplexType).
 
 ### <a name="environmentvariable-element"></a>EnvironmentVariable-Element
-Umgebungsvariable Weitere Informationen finden Sie unter [EnvironmentVariable-Element](service-fabric-service-model-schema-elements.md#EnvironmentVariableElementEnvironmentVariableTypeComplexTypeDefinedInEnvironmentOverridesTypecomplexTypeDefinedInEnvironmentVariablesTypecomplexType).
+Umgebungsvariable Weitere Informationen finden Sie unter [EnvironmentVariable-Element](service-fabric-service-model-schema-elements.md#EnvironmentVariableElementEnvironmentVariableOverrideTypeComplexTypeDefinedInEnvironmentOverridesTypecomplexType).
 
 ### <a name="configpackage-element"></a>ConfigPackage-Element
 Deklariert einen Ordner, der durch das Name-Attribut benannt wird und die Datei „Settings.xml“ enthält. Diese Datei enthält Abschnitte mit benutzerdefinierten Schlüssel-Wert-Paar-Einstellungen, die der Prozess zur Laufzeit einlesen kann. Wenn sich während eines Upgrades nur die Version von „ConfigPackage“ geändert hat, wird der ausgeführte Prozess nicht neu gestartet. Stattdessen benachrichtigt ein Rückruf den Prozess, dass sich Konfigurationseinstellungen geändert haben, sodass sie dynamisch neu geladen werden können. Weitere Informationen finden Sie unter [ConfigPackage-Element](service-fabric-service-model-schema-elements.md#ConfigPackageElementConfigPackageTypeComplexTypeDefinedInServiceManifestTypecomplexTypeDefinedInDigestedConfigPackageelement).

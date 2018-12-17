@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: eb77046c6e673012209f0db452b20bf25046cd67
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: f61a00e3ea243dfdf777af88b5f211580f35d8a0
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50250970"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53001670"
 ---
 # <a name="mobile-apps-bindings-for-azure-functions"></a>Mobile Apps-Bindungen für Azure Functions 
 
@@ -31,7 +31,7 @@ Mithilfe von Mobile Apps-Bindungen können Sie Datentabellen in mobilen Apps les
 
 ## <a name="packages---functions-1x"></a>Pakete: Functions 1.x
 
-Mobile Apps-Bindungen werden im NuGet-Paket [Microsoft.Azure.WebJobs.Extensions.MobileApps](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.MobileApps), Version 1.x bereitgestellt. Den Quellcode für das Paket finden Sie im GitHub-Repository [azure-webjobs-sdk-extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions.MobileApps/).
+Mobile Apps-Bindungen werden im NuGet-Paket [Microsoft.Azure.WebJobs.Extensions.MobileApps](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.MobileApps), Version 1.x bereitgestellt. Den Quellcode für das Paket finden Sie im GitHub-Repository [azure-webjobs-sdk-extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions.MobileApps/).
 
 [!INCLUDE [functions-package](../../includes/functions-package.md)]
 
@@ -157,7 +157,7 @@ Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaft
 
 ## <a name="input---usage"></a>Eingabe: Verwendung
 
-Wenn in C#-Funktionen der Datensatz mit der angegebenen ID gefunden wird, wird er an den benannten [JObject](http://www.newtonsoft.com/json/help/html/t_newtonsoft_json_linq_jobject.htm)-Parameter übergeben. Wenn der Datensatz nicht gefunden wird, hat der Parameter den Wert `null`. 
+Wenn in C#-Funktionen der Datensatz mit der angegebenen ID gefunden wird, wird er an den benannten [JObject](https://www.newtonsoft.com/json/help/html/t_newtonsoft_json_linq_jobject.htm)-Parameter übergeben. Wenn der Datensatz nicht gefunden wird, hat der Parameter den Wert `null`. 
 
 In JavaScript-Funktionen wird der Datensatz an das `context.bindings.<name>`-Objekt übergeben. Wenn der Datensatz nicht gefunden wird, hat der Parameter den Wert `null`. 
 

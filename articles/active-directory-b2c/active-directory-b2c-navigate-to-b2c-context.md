@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 4/13/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 9b8ff03ff90a0962a6a890cf7cc99e7134559b7f
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 8c0b6cb411618b01adfc23fa124ff624206da7b2
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37442964"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52836099"
 ---
 # <a name="switching-to-your-azure-ad-b2c-tenant"></a>Wechseln zum Azure AD B2C-Mandanten
 
@@ -25,7 +25,7 @@ Damit Sie Azure AD B2C konfigurieren können, müssen Sie sich im Kontext des Az
 
 Damit Sie zu Ihrem Azure AD B2C-Mandanten navigieren können, müssen Sie beim Azure-Portal als globaler Administrator des Azure AD B2C-Mandanten angemeldet sein.
 
-1. Melden Sie sich beim [Azure-Portal](http://portal.azure.com) an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 1. Klicken Sie auf Ihre E-Mail-Adresse oder das Bild in der oberen rechten Ecke, um Mandanten zu wechseln.
 1. Wählen Sie in der daraufhin angezeigten `Directory`-Liste den Azure AD B2C-Mandanten aus, den Sie verwalten möchten.
 

@@ -9,19 +9,19 @@ ms.topic: conceptual
 ms.date: 01/12/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: b8cd389bee98058e5362a217268fb53d6aaf3424
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: c0040958cbf748d3eafb3ee60806b064e4e0b1ba
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634480"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53435785"
 ---
 # <a name="use-mapreduce-in-apache-hadoop-on-hdinsight-with-remote-desktop"></a>Verwenden von MapReduce in Apache Hadoop in HDInsight per Remotedesktop
 [!INCLUDE [mapreduce-selector](../../../includes/hdinsight-selector-use-mapreduce.md)]
 
 In diesem Artikel erfahren Sie, wie Sie mithilfe des Remotedesktops eine Verbindung mit einem Apache Hadoop-Cluster in HDInsight herstellen und dann mithilfe des Hadoop-Befehls MapReduce-Aufträge ausführen.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Remotedesktop ist nur in Windows-basierten HDInsight-Clustern verfügbar. Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Welche Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
 >
 > Informationen zum Herstellen einer Verbindung mit dem HDInsight-Cluster und zum Ausführen von MapReduce-Aufträgen für HDInsight 3.4 oder höher finden Sie unter [Verwenden MapReduce mit SSH](apache-hadoop-use-mapreduce-ssh.md).
@@ -40,7 +40,7 @@ Wenn Sie mit dem Desktop des HDInsight-Clusters verbunden sind, gehen Sie wie fo
 
 1. Starten Sie auf dem HDInsight-Desktop die **Hadoop-Befehlszeile**. Dadurch wird eine neue Eingabeaufforderung im Verzeichnis **c:\apps\dist\hadoop-&lt;Versionsnummer>** geöffnet.
 
-   > [!NOTE]
+   > [!NOTE]  
    > Die Versionsnummer wechselt, wenn Hadoop aktualisiert wird. Die Umgebungsvariable **HADOOP_HOME** kann für die Suche nach dem Pfad verwendet werden. Mithilfe von `cd %HADOOP_HOME%` können Sie z. B. in das Hadoop-Verzeichnis wechseln, ohne die Versionsnummer von Hadoop kennen zu müssen.
    >
    >
@@ -94,5 +94,5 @@ Allgemeine Informationen zu MapReduce-Aufträgen in HDInsight:
 
 Informationen zu anderen Möglichkeiten, wie Sie mit Hadoop in HDInsight arbeiten können:
 
-* [Verwenden von Hive mit Hadoop in HDInsight](hdinsight-use-hive.md)
-* [Verwenden von Pig mit Hadoop in HDInsight](hdinsight-use-pig.md)
+* [Verwenden von Apache Hive mit Apache Hadoop in HDInsight](hdinsight-use-hive.md)
+* [Verwenden von Apache Pig mit Apache Hadoop in HDInsight](hdinsight-use-pig.md)

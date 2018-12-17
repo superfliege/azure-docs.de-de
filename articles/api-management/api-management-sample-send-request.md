@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/15/2016
 ms.author: apimpm
-ms.openlocfilehash: fdcc230171006c6388e75b947e10a73fb953001a
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: bfb08cb3bb81917414e4d34afe47964b738980e7
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46294678"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52970177"
 ---
 # <a name="using-external-services-from-the-azure-api-management-service"></a>Verwenden externer Dienste über den Azure API Management-Dienst
 Mit den im Azure API Management-Dienst verfügbaren Richtlinien können Sie zahlreiche nützliche Aufgaben durchführen, ausschließlich basierend auf der eingehenden Anforderung, der ausgehenden Antwort und den grundlegenden Konfigurationsinformationen. Die Interaktionsfähigkeit mit externen Diensten mithilfe von API Management-Richtlinien eröffnet jedoch viele weitere Möglichkeiten.
@@ -68,13 +68,13 @@ Es gibt einige Nachteile bei einer Anforderung im Fire-and-Forget-Stil. Wenn die
 Die `send-request` -Richtlinie ermöglicht die Nutzung eines externen Diensts zum Durchführen komplexer Verarbeitungsfunktionen und zum Zurückgeben von Daten an den API Management-Dienst, der für die weitere Richtlinienverarbeitung verwendet werden kann.
 
 ### <a name="authorizing-reference-tokens"></a>Autorisieren von Verweistoken
-Eine wichtige Funktion von API Management ist der Schutz der Back-End-Ressourcen. Wenn der von Ihrer API verwendete Autorisierungsserver [JWT-Token](http://jwt.io/) als Teil des OAuth2-Ablaufs erstellt, wie dies bei [Azure Active Directory](../active-directory/hybrid/whatis-hybrid-identity.md) der Fall ist, dann können Sie mithilfe der `validate-jwt`-Richtlinie die Gültigkeit des Tokens überprüfen. Einige Autorisierungsserver erstellen sogenannte [Verweistoken](http://leastprivilege.com/2015/11/25/reference-tokens-and-introspection/), die nicht ohne Rückruf des Autorisierungsservers überprüft werden können.
+Eine wichtige Funktion von API Management ist der Schutz der Back-End-Ressourcen. Wenn der von Ihrer API verwendete Autorisierungsserver [JWT-Token](https://jwt.io/) als Teil des OAuth2-Ablaufs erstellt, wie dies bei [Azure Active Directory](../active-directory/hybrid/whatis-hybrid-identity.md) der Fall ist, dann können Sie mithilfe der `validate-jwt`-Richtlinie die Gültigkeit des Tokens überprüfen. Einige Autorisierungsserver erstellen sogenannte [Verweistoken](https://leastprivilege.com/2015/11/25/reference-tokens-and-introspection/), die nicht ohne Rückruf des Autorisierungsservers überprüft werden können.
 
 ### <a name="standardized-introspection"></a>Standardisierte Introspection
 In der Vergangenheit gab es keine standardisierte Methode zur Überprüfung eines Verweistokens mit einem Autorisierungsserver. Die IETF hat jedoch den vor kurzem vorgeschlagenen Standard [RFC 7662](https://tools.ietf.org/html/rfc7662) veröffentlicht, der definiert, wie ein Ressourcenserver die Gültigkeit eines Tokens überprüfen kann.
 
 ### <a name="extracting-the-token"></a>Extrahieren des Tokens
-Der erste Schritt besteht im Extrahieren des Tokens aus dem Autorisierungsheader. Der Headerwert muss mit dem `Bearer`-Autorisierungsschema, einem einzelnen Leerzeichen, gefolgt vom Autorisierungstoken gemäß [RFC 6750](http://tools.ietf.org/html/rfc6750#section-2.1) formatiert werden. Es gibt leider Fälle, in denen das Autorisierungsschema weggelassen wird. Um diesem Umstand bei der Analyse Rechnung zu tragen, teilt API Management den Headerwert mit einem Leerzeichen und wählt die letzte Zeichenfolge aus dem zurückgegebenen Array von Zeichenfolgen aus. Dies ist eine mögliche Lösung für falsch formatierte Autorisierungsheader.
+Der erste Schritt besteht im Extrahieren des Tokens aus dem Autorisierungsheader. Der Headerwert muss mit dem `Bearer`-Autorisierungsschema, einem einzelnen Leerzeichen, gefolgt vom Autorisierungstoken gemäß [RFC 6750](https://tools.ietf.org/html/rfc6750#section-2.1) formatiert werden. Es gibt leider Fälle, in denen das Autorisierungsschema weggelassen wird. Um diesem Umstand bei der Analyse Rechnung zu tragen, teilt API Management den Headerwert mit einem Leerzeichen und wählt die letzte Zeichenfolge aus dem zurückgegebenen Array von Zeichenfolgen aus. Dies ist eine mögliche Lösung für falsch formatierte Autorisierungsheader.
 
 ```xml
 <set-variable name="token" value="@(context.Request.Headers.GetValueOrDefault("Authorization","scheme param").Split(' ').Last())" />
@@ -118,7 +118,7 @@ Sie können mithilfe einer `<choose>`-Richtlinie ermitteln, ob das Token ungült
 </choose>
 ```
 
-Gemäß [RFC 6750](https://tools.ietf.org/html/rfc6750#section-3), in der die Verwendung von `bearer`-Token beschrieben wird, gibt API Management auch einen `WWW-Authenticate`-Header mit der 401-Antwort zurück. WWW-Authenticate soll einen Client anweisen, wie eine ordnungsgemäß autorisierte Anforderung erstellt wird. Aufgrund der vielfältigen Ansätze, die beim OAuth2-Framework möglich sind, ist es schwierig, alle erforderlichen Informationen mitzuteilen. Glücklicherweise gibt es derzeit Bemühungen, die [Clients dabei helfen sollen, herauszufinden, wie Anforderungen an einen Ressourcenserver ordnungsgemäß autorisiert werden](http://tools.ietf.org/html/draft-jones-oauth-discovery-00).
+Gemäß [RFC 6750](https://tools.ietf.org/html/rfc6750#section-3), in der die Verwendung von `bearer`-Token beschrieben wird, gibt API Management auch einen `WWW-Authenticate`-Header mit der 401-Antwort zurück. WWW-Authenticate soll einen Client anweisen, wie eine ordnungsgemäß autorisierte Anforderung erstellt wird. Aufgrund der vielfältigen Ansätze, die beim OAuth2-Framework möglich sind, ist es schwierig, alle erforderlichen Informationen mitzuteilen. Glücklicherweise gibt es derzeit Bemühungen, die [Clients dabei helfen sollen, herauszufinden, wie Anforderungen an einen Ressourcenserver ordnungsgemäß autorisiert werden](https://tools.ietf.org/html/draft-jones-oauth-discovery-00).
 
 ### <a name="final-solution"></a>Endgültige Lösung
 Schließlich erhalten Sie die folgende Richtlinie:

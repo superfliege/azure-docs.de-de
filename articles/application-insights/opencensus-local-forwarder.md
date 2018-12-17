@@ -8,17 +8,16 @@ manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/18/2018
 ms.reviewer: nimolnar
 ms.author: mbullwin
-ms.openlocfilehash: ddfcb90090d82d8fe947292737163a81c715b32d
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: f5f42ae5068440c3a90bf3b374238e18781b9770
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46972826"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52970585"
 ---
 # <a name="local-forwarder"></a>Lokale Weiterleitung
 
@@ -40,7 +39,7 @@ https://www.microsoft.com/net/download/dotnet-framework-runtime/net472?utm_sourc
 
 1. Laden Sie die Datei „LF.WindowsServiceHost.zip“ von der [Seite der lokalen Weiterleitung](https://github.com/Microsoft/ApplicationInsights-LocalForwarder/releases) auf GitHub herunter.
 
-    ![Screenshot der Downloadseite der lokalen Weiterleitung](.\media\opencensus-local-forwarder\001-local-forwarder-windows-service-host-zip.png)
+    ![Screenshot der Downloadseite der lokalen Weiterleitung](./media/opencensus-local-forwarder/001-local-forwarder-windows-service-host-zip.png)
 
 2. In diesem Beispiel extrahieren wir zur Vereinfachung der Demonstration die ZIP-Datei einfach in den Pfad `C:\LF-WindowsServiceHost`.
 
@@ -56,7 +55,7 @@ https://www.microsoft.com/net/download/dotnet-framework-runtime/net472?utm_sourc
     
     Um den neuen Dienst über die Dienste-GUI zu überprüfen, geben Sie ``services.msc`` ein
         
-     ![Screenshot des lokalen Weiterleitungsdiensts](.\media\opencensus-local-forwarder\002-services.png)
+     ![Screenshot des lokalen Weiterleitungsdiensts](./media/opencensus-local-forwarder/002-services.png)
 
 3. **Klicken Sie mit der rechten Maustaste** auf die neue lokale Weiterleitung, und wählen Sie **Starten** aus. Ihr Dienst geht jetzt ist den Status „Wird ausgeführt“ über.
 
@@ -74,7 +73,7 @@ https://www.microsoft.com/net/download/dotnet-framework-runtime/net472?utm_sourc
     
 6. Um sicherzustellen, dass die gewünschten Einstellungen vorgenommen wurden und die lokale Weiterleitung wie gewünscht auf Ablaufverfolgungsdaten wartet, überprüfen Sie die Datei ``LocalForwarder.log``. Sie sollten Ergebnisse ähnlich dem Bild unten am Ende der Datei sehen:
 
-    ![Screenshot der Datei „LocalForwarder.log“](.\media\opencensus-local-forwarder\003-log-file.png)
+    ![Screenshot der Datei „LocalForwarder.log“](./media/opencensus-local-forwarder/003-log-file.png)
 
 #### <a name="console-application"></a>Konsolenanwendung
 

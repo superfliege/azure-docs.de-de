@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: 2cdc9f780e0d9ddb6e688e53208e5597b000aa56
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 00fc04afd26da2ef5741eec308835bb8c897c26b
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52632771"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53077340"
 ---
 # <a name="set-up-log-analytics-for-a-cluster"></a>Einrichten von Log Analytics für einen Cluster
 
@@ -123,7 +123,7 @@ Set-AzureRmOperationalInsightsIntelligencePack -ResourceGroupName $ResourceGroup
 
 Führen Sie anschließend die Schritte im vorherigen Abschnitt aus, um Log Analytics mit dem entsprechenden Speicherkonto zu verknüpfen.
 
-Mithilfe von PowerShell können Sie zudem weitere Lösungen hinzufügen oder andere Änderungen am Log Analytics-Arbeitsbereich vornehmen. Weitere Informationen finden Sie unter [Verwalten von Log Analytics mit PowerShell](../log-analytics/log-analytics-powershell-workspace-configuration.md).
+Mithilfe von PowerShell können Sie zudem weitere Lösungen hinzufügen oder andere Änderungen am Log Analytics-Arbeitsbereich vornehmen. Weitere Informationen finden Sie unter [Verwalten von Log Analytics mit PowerShell](../azure-monitor/platform/powershell-workspace-configuration.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Stellen Sie den Log Analytics-Agent auf Ihren Knoten bereit](service-fabric-diagnostics-oms-agent.md), um Leistungsindikatoren zu erfassen und Docker-Statistiken und -Protokolle für Ihre Container zu sammeln.

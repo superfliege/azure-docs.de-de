@@ -11,12 +11,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 10/25/2018
 ms.author: victorh
-ms.openlocfilehash: 0c59405cc6d46bcaffbab0e2a746467eec26de69
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: e106094ce94b7f232fd5687988af2bd11b971e3f
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50024119"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53001929"
 ---
 # <a name="create-an-application-gateway-with-path-based-routing-rules-using-the-azure-portal"></a>Erstellen eines Anwendungsgateways mit pfadbasierten Routingregeln mithilfe des Azure-Portals
 
@@ -39,7 +39,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="log-in-to-azure"></a>Anmelden an Azure
 
-Melden Sie sich unter [http://portal.azure.com](http://portal.azure.com) beim Azure-Portal an.
+Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim Azure-Portal an.
 
 ## <a name="create-an-application-gateway"></a>Erstellen eines Anwendungsgateways
 

@@ -14,18 +14,18 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/06/2017
 ms.author: ryanwi
-ms.openlocfilehash: e4c3bf627c4a5e01c4d9001fcbb0feed0b92209f
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: e41e5d48141b120ec1f80b0faa899bda07a2934e
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39008041"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52962062"
 ---
 # <a name="open-ports-for-a-service-fabric-cluster"></a>Öffnen von Port für einen Service Fabric-Cluster
 
 Der mit Ihren Azure Service Fabric-Cluster bereitgestellte Lastenausgleich leitet Datenverkehr an Ihre auf einem Knoten ausgeführte App weiter. Wenn Sie Ihre Anwendung für die Verwendung eines anderen Ports ändern, müssen Sie diesen Port in Azure Load Balancer verfügbar machen (oder einen anderen Port weiterleiten).
 
-Als Sie Ihren Service Fabric-Cluster in Azure bereitgestellt haben, wurde automatisch ein Lastenausgleich erstellt. Wenn Sie über keinen Lastenausgleich verfügen, finden Sie weitere Informationen unter [Konfigurieren eines internetseitigen Lastenausgleichs](..\load-balancer\load-balancer-get-started-internet-portal.md).
+Als Sie Ihren Service Fabric-Cluster in Azure bereitgestellt haben, wurde automatisch ein Lastenausgleich erstellt. Wenn Sie über keinen Lastenausgleich verfügen, finden Sie weitere Informationen unter [Konfigurieren eines internetseitigen Lastenausgleichs](../load-balancer/load-balancer-get-started-internet-portal.md).
 
 ## <a name="configure-service-fabric"></a>Konfigurieren von Service Fabric
 
@@ -33,7 +33,7 @@ Die Konfigurationsdatei für die Service Fabric-Anwendung **ServiceManifest.xml*
 
 ## <a name="create-a-load-balancer-rule"></a>Erstellen einer Load Balancer-Regel
 
-Eine Lastenausgleichsregel öffnet einen internetseitigen Port und leitet Datenverkehr an den von Ihrer Anwendung verwendeten Port des internen Knotens weiter. Wenn Sie über keinen Lastenausgleich verfügen, finden Sie weitere Informationen unter [Konfigurieren eines internetseitigen Lastenausgleichs](..\load-balancer\load-balancer-get-started-internet-portal.md).
+Eine Lastenausgleichsregel öffnet einen internetseitigen Port und leitet Datenverkehr an den von Ihrer Anwendung verwendeten Port des internen Knotens weiter. Wenn Sie über keinen Lastenausgleich verfügen, finden Sie weitere Informationen unter [Konfigurieren eines internetseitigen Lastenausgleichs](../load-balancer/load-balancer-get-started-internet-portal.md).
 
 Um eine Lastenausgleichsregel zu erstellen, müssen Sie die folgenden Informationen sammeln:
 
@@ -68,7 +68,7 @@ Der Azure CLI-Befehl verfügt über einige Parameter, die in der folgenden Tabel
 
 
 >[!NOTE]
->Weitere Informationen zum Erstellen eines Lastenausgleichs mit der Azure-Befehlszeilenschnittstelle finden Sie unter [Erstellen eines Lastenausgleichs mit der Azure-Befehlszeilenschnittstelle](..\load-balancer\load-balancer-get-started-internet-arm-cli.md).
+>Weitere Informationen zum Erstellen eines Lastenausgleichs mit der Azure-Befehlszeilenschnittstelle finden Sie unter [Erstellen eines Lastenausgleichs mit der Azure-Befehlszeilenschnittstelle](../load-balancer/load-balancer-get-started-internet-arm-cli.md).
 
 ## <a name="powershell"></a>PowerShell
 
@@ -104,7 +104,7 @@ $lb | Set-AzureRmLoadBalancer
 Im `New-AzureRmLoadBalancerRuleConfig`-Befehl gibt `-FrontendPort` den Port an, den der Lastenausgleich für externe Verbindungen verfügbar macht, und `-BackendPort` gibt den Port an, an dem die Service Fabric-App lauscht.
 
 >[!NOTE]
->Weitere Informationen zum Erstellen eines Lastenausgleichs mit PowerShell finden Sie unter [Erstellen eines Lastenausgleichs mit PowerShell](..\load-balancer\load-balancer-get-started-internet-arm-ps.md).
+>Weitere Informationen zum Erstellen eines Lastenausgleichs mit PowerShell finden Sie unter [Erstellen eines Lastenausgleichs mit PowerShell](../load-balancer/load-balancer-get-started-internet-arm-ps.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

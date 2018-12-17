@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 4cce49509a452153815c845d9ab72a1b4a8a5b7f
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 13a628d37ef67d0a1dc3ad8231229493191c4e7f
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44354789"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52849563"
 ---
 # <a name="error-on-an-applications-page-after-signing-in"></a>Fehler auf der Seite einer Anwendung nach dem Anmelden
 
@@ -30,7 +30,7 @@ Es gibt mehrere mögliche Gründe, warum die Anwendung die Antwort von Azure AD 
 
 -   Wenn sich die Anwendung im Azure AD-Katalog befindet, vergewissern Sie sich, dass Sie alle im Artikel [Debuggen des SAML-basierten einmaligen Anmeldens bei Anwendungen in Azure Active Directory](https://azure.microsoft.com/documentation/articles/active-directory-saml-debugging) beschriebenen Schritte ausgeführt haben.
 
--   Verwenden Sie ein Tool wie [Fiddler](http://www.telerik.com/fiddler), um die SAML-Anforderung, die SAML-Antwort und das SAML-Token zu erfassen.
+-   Verwenden Sie ein Tool wie [Fiddler](https://www.telerik.com/fiddler), um die SAML-Anforderung, die SAML-Antwort und das SAML-Token zu erfassen.
 
 -   Teilen Sie die SAML-Antwort dem Hersteller der Anwendung mit, um zu erfahren, welche Elemente fehlen.
 

@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: genli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f340b9843ed5763a20d2035e3add86123a1298e8
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: abc551f796cb2d8921b6b1f67fb6a6714655ffde
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46971143"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53134674"
 ---
 # <a name="configure-private-ip-addresses-for-a-virtual-machine-classic-using-the-azure-classic-cli"></a>Konfigurieren von privaten IP-Adressen für einen virtuellen Computer (klassisch) mithilfe der klassischen Azure CLI
 
@@ -75,7 +75,7 @@ Erstellen Sie basierend auf dem oben beschriebenen Szenario in einem neuen Cloud
    * **TestService**. Name des Clouddiensts, in dem der virtuelle Computer erstellt wird.
    * **bd507d3a70934695bc2128e3e5a255ba__RightImage-Windows-2012R2-x64-v14.2**. Image, das zum Erstellen des virtuellen Computers verwendet wird.
    * **adminuser**. Lokaler Administrator für den virtuellen Windows-Computer.
-   * **AdminP@ssw0rd**. Kennwort des lokalen Administrators für den virtuellen Windows-Computer.
+   * <strong>AdminP@ssw0rd</strong>. Kennwort des lokalen Administrators für den virtuellen Windows-Computer.
 
 ## <a name="how-to-retrieve-static-private-ip-address-information-for-a-vm"></a>Abrufen der Informationen zur statischen privaten IP-Adresse für einen virtuellen Computer
 Um die Angaben zur statischen privaten IP-Adresse des mit dem Skript erstellten virtuellen Computers anzuzeigen, führen Sie an der Azure-Befehlszeilenschnittstelle folgenden Befehl aus, und überprüfen Sie die Werte für *Network StaticIP*:
