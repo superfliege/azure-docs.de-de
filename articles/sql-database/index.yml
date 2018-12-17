@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 7591e1303e69df522a02b08a079ac00bdac5f6bc
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 0049468330a9fcb26f023de2a8adb5dfd1544321
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52870298"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53436805"
 documentType: LandingData
 title: Dokumentation zu Azure SQL-Datenbank
 metadata:
@@ -48,7 +48,7 @@ sections:
       image:
         src: media/index/i_perftier.svg
       title: Preise/Dienstebenen
-    - href: /azure/sql-database/sql-database-scale-resources
+    - href: /azure/sql-database/sql-database-scalability-index
       html: <p>Sie können Ihre Datenbanken problemlos je nach Bedarf zentral hochskalieren, horizontal hochskalieren oder einen Shard dafür konfigurieren, um die Leistung Ihrer Anwendung zu verbessern.</p>
       image:
         src: media/index/i_scale.svg
@@ -78,11 +78,11 @@ sections:
       image:
         src: media/index/i_security.svg
       title: Erweiterte Sicherheit
-    - href: /azure/sql-database/sql-database-technical-overview#built-in-intelligence
-      html: <p>Integrierte Intelligenz hilft Ihnen dabei, den Aufwand für die Ausführung und Verwaltung von Datenbanken erheblich zu senken und die Leistung und Sicherheit Ihrer Anwendung zu maximieren.</p>
+    - href: /azure/sql-database/sql-database-monitoring-tuning-index
+      html: <p>Integrierte Überwachung und intelligente Optimierung helfen Ihnen dabei, den Aufwand für die Ausführung und Verwaltung von Datenbanken erheblich zu senken und die Leistung Ihrer Anwendung zu maximieren.</p>
       image:
         src: media/index/i_intelligence.svg
-      title: Integrierte Logik
+      title: Überwachung und Optimierung
 - title: Fünfminütige Schnellstarts
   items:
   - type: paragraph

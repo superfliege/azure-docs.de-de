@@ -9,16 +9,16 @@ ms.service: cosmos-db
 ms.component: cosmosdb-cassandra
 ms.topic: overview
 ms.date: 09/24/2018
-ms.openlocfilehash: 5a12a65e03e7ac104eb7b09b116f7c463bbb5b98
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: f62afc91f5cb92bd6f8faa866320fdd23b2c818b
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50240714"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53089240"
 ---
 # <a name="apache-cassandra-features-supported-by-azure-cosmos-db-cassandra-api"></a>Apache Cassandra-Features, die von der Cassandra-API für Azure Cosmos DB unterstützt werden 
 
-Azure Cosmos DB ist ein global verteilter Datenbankdienst von Microsoft mit mehreren Modellen. Sie können mit der Cassandra-API für Azure Cosmos DB über Cassandra Open-Source-Client[treiber](http://cassandra.apache.org/doc/latest/getting_started/drivers.html?highlight=driver) des Typs „Cassandra-Abfragesprache v4 [Verbindungsprotokoll](https://github.com/apache/cassandra/blob/trunk/doc/native_protocol_v4.spec)-kompatibel“ kommunizieren. 
+Azure Cosmos DB ist ein global verteilter Datenbankdienst von Microsoft mit mehreren Modellen. Sie können mit der Cassandra-API für Azure Cosmos DB über Cassandra Open-Source-Client[treiber](https://cassandra.apache.org/doc/latest/getting_started/drivers.html?highlight=driver) des Typs „Cassandra-Abfragesprache v4 [Verbindungsprotokoll](https://github.com/apache/cassandra/blob/trunk/doc/native_protocol_v4.spec)-kompatibel“ kommunizieren. 
 
 Durch Verwendung der Cassandra-API für Azure Cosmos DB können Sie die Vorteile der Apache Cassandra-APIs sowie die von Azure Cosmos DB gebotenen Unternehmensfunktionen nutzen. Die Unternehmensfunktionen umfassen [globale Verteilung](distribute-data-globally.md), [automatische Partitionierung mit horizontalem Hochskalieren](partition-data.md), Gewährleistung der Verfügbarkeit und Latenz, Verschlüsselung bei REST, Sicherungen und vieles mehr.
 
@@ -59,7 +59,7 @@ Die Cassandra-API für Azure Cosmos DB unterstützt die folgenden CQL-Datentypen
 * smallint  
 * text  
 * time  
-* timestamp  
+*  timestamp  
 * timeuuid  
 * tinyint  
 * tuple  

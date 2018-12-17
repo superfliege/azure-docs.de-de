@@ -1,0 +1,39 @@
+items:
+- name: Azure NetApp Files-Dokumentation
+  href: index.md
+- name: Übersicht
+  items:
+  - name: Einführung in Azure NetApp Files
+    href: azure-netapp-files-introduction.md
+  - name: Grundlegendes zur Speicherhierarchie
+    href: azure-netapp-files-understand-storage-hierarchy.md
+- name: Schnellstarts
+  items:
+  - name: Registrieren für Azure NetApp Files
+    href: azure-netapp-files-register.md
+  - name: Erstellen eines NetApp-Kontos
+    href: azure-netapp-files-create-netapp-account.md
+  - name: Einrichten eines Kapazitätspools
+    href: azure-netapp-files-set-up-capacity-pool.md
+  - name: Delegieren eines Subnetzes für Azure NetApp Files
+    href: azure-netapp-files-delegate-subnet.md
+  - name: Erstellen eines Volumes für Azure NetApp Files
+    href: azure-netapp-files-create-volumes.md
+  - name: Konfigurieren der Exportrichtlinie für ein Volume (optional)
+    href: azure-netapp-files-configure-export-policy.md
+- name: Anleitungen
+  items:
+  - name: Verwalten von Volumes
+    href: azure-netapp-files-manage-volumes.md
+  - name: Bereitstellen oder Aufheben der Bereitstellung eines Volumes für virtuelle Computer
+    href: azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md
+  - name: Verwalten von Momentaufnahmen
+    href: azure-netapp-files-manage-snapshots.md
+  - name: Ändern der Größe eines Kapazitätspools oder Volumes
+    href: azure-netapp-files-resize-capacity-pools-or-volumes.md
+ms.openlocfilehash: 9e500904c2249fe1f419e4e8e3657bb083f0143b
+ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53414217"

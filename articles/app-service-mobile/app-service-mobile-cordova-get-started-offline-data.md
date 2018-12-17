@@ -14,21 +14,21 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/30/2016
 ms.author: crdun
-ms.openlocfilehash: c12328a441a8cc438fa3e974863cc8adf8651b50
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: 44c54b570a38eb1a3b9ca773893599d1d497dfa2
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2018
-ms.locfileid: "27593713"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52972149"
 ---
 # <a name="enable-offline-sync-for-your-cordova-mobile-app"></a>Aktivieren der Offlinesynchronisierung für Ihre mobile Cordova-App
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
 
 In diesem Tutorial wird das Offlinesynchronisierungsfeature von Azure Mobile Apps für Cordova vor vorgestellt. Die Offlinesynchronisierung ermöglicht Endbenutzern die Interaktion mit einer mobilen App (also das &mdash;Anzeigen, Hinzufügen oder Ändern von Daten&mdash;), auch wenn keine Netzwerkverbindung besteht. Änderungen werden in einer lokalen Datenbank gespeichert.  Sobald das Gerät wieder online ist, werden diese Änderungen mit dem Remotedienst synchronisiert.
 
-Dieses Tutorial basiert auf der Cordova-Schnellstart-Projektmappe für Mobile Apps, die Sie im Rahmen des Tutorials [Erstellen einer Apache Cordova-App]erstellen. In diesem Tutorial erweitern Sie die Schnellstart-Projektmappe mit Offlinefeatures von Azure Mobile Apps.  Außerdem gehen wir speziell auf den offlinespezifischen Code in der App ein.
+Dieses Tutorial basiert auf der Cordova-Schnellstart-Projektmappe für Mobile Apps, die Sie im Rahmen des Tutorials [Apache Cordova-Schnellstartprojekt]erstellen. In diesem Tutorial erweitern Sie die Schnellstart-Projektmappe mit Offlinefeatures von Azure Mobile Apps.  Außerdem gehen wir speziell auf den offlinespezifischen Code in der App ein.
 
-Weitere Informationen zur Offlinesynchronisierungsfunktion finden Sie im Thema [Inkrementelle Synchronisierung]. Details zur API-Verwendung finden Sie in der [API-Dokumentation](https://azure.github.io/azure-mobile-apps-js-client).
+Weitere Informationen zur Offlinesynchronisierungsfunktion finden Sie im Thema [Offlinedatensynchronisierung in Azure Mobile Apps]. Details zur API-Verwendung finden Sie in der [API-Dokumentation](https://azure.github.io/azure-mobile-apps-js-client).
 
 ## <a name="add-offline-sync-to-the-quickstart-solution"></a>Hinzufügen der Offlinesynchronisierung zur Schnellstart-Projektmappe
 Der Code für die Offlinesynchronisierung muss der App hinzugefügt werden. Für die Offlinesynchronisierung wird das Plug-In „cordova-sqlite-storage“ benötigt. Dieses wird Ihrer App automatisch hinzugefügt, wenn das Azure Mobile Apps-Plug-In in das Projekt eingeschlossen wird. Im Schnellstartprojekt sind beide Plug-Ins enthalten.
@@ -136,7 +136,7 @@ Im vorliegenden Beispiel wird die **push**-Methode von **syncContext** nur beim 
 
 Bei einem Pullvorgang für eine Tabelle mit ausstehenden lokalen Updates, die durch den Kontext verfolgt werden, löst dieser Pullvorgang automatisch einen Pushvorgang aus. Beim Aktualisieren, Hinzufügen und Abschließen von Elementen in diesem Beispiel können Sie den expliziten **push**-Aufruf weglassen, da er ggf. redundant ist.
 
-Im bereitgestellten Code werden alle Datensätze in der todoItem-Remotetabelle abgefragt, es ist aber auch möglich, Datensätze durch Übergeben einer Abfrage-ID und Abfrage an **push**zu filtern. Weitere Informationen finden Sie unter *Offlinedatensynchronisierung in Azure Mobile Apps* im Abschnitt [Inkrementelle Synchronisierung].
+Im bereitgestellten Code werden alle Datensätze in der todoItem-Remotetabelle abgefragt, es ist aber auch möglich, Datensätze durch Übergeben einer Abfrage-ID und Abfrage an **push**zu filtern. Weitere Informationen finden Sie unter *Offlinedatensynchronisierung in Azure Mobile Apps* im Abschnitt [Offlinedatensynchronisierung in Azure Mobile Apps].
 
 ## <a name="optional-disable-authentication"></a>(Optional) Deaktivieren der Authentifizierung
 
@@ -187,7 +187,7 @@ In diesem Abschnitt stellen Sie erneut eine Verbindung zwischen der App und dem 
     Beachten Sie, dass die Daten zwischen der Datenbank und dem lokalen Speicher synchronisiert wurden und die Elemente enthalten, die Sie hinzugefügt haben, während Ihre App von der Verbindung getrennt war.
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
-* [Inkrementelle Synchronisierung]
+* [Offlinedatensynchronisierung in Azure Mobile Apps]
 * [Visual Studio-Tools für Apache Cordova]
 
 ## <a name="next-steps"></a>Nächste Schritte
@@ -199,14 +199,14 @@ In diesem Abschnitt stellen Sie erneut eine Verbindung zwischen der App und dem 
 <!-- Images -->
 
 <!-- URLs. -->
-[Erstellen einer Apache Cordova-App]: app-service-mobile-cordova-get-started.md
+[Apache Cordova-Schnellstartprojekt]: app-service-mobile-cordova-get-started.md
 [Beispiel zur Offlinesynchronisierung]: https://github.com/Azure-Samples/app-service-mobile-cordova-client-conflict-handling
-[Inkrementelle Synchronisierung]: app-service-mobile-offline-data-sync.md
-[Cloud Cover: Offline Sync in Azure Mobile Services]: http://channel9.msdn.com/Shows/Cloud+Cover/Episode-155-Offline-Storage-with-Donna-Malayeri
+[Offlinedatensynchronisierung in Azure Mobile Apps]: app-service-mobile-offline-data-sync.md
+[Cloud Cover: Offline Sync in Azure Mobile Services]: https://channel9.msdn.com/Shows/Cloud+Cover/Episode-155-Offline-Storage-with-Donna-Malayeri
 [Adding Authentication]: app-service-mobile-cordova-get-started-users.md
 [authentication]: app-service-mobile-cordova-get-started-users.md
 [Work with the .NET backend server SDK for Azure Mobile Apps]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
-[Visual Studio Community 2015]: http://www.visualstudio.com/
+[Visual Studio Community 2015]: https://www.visualstudio.com/
 [Visual Studio-Tools für Apache Cordova]: https://www.visualstudio.com/en-us/features/cordova-vs.aspx
 [Apache Cordova SDK]: app-service-mobile-cordova-how-to-use-client-library.md
 [ASP.NET Server SDK]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md

@@ -6,18 +6,17 @@ author: bwren
 manager: carmonm
 editor: tysonn
 ms.service: monitoring
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/07/2018
 ms.author: bwren
-ms.openlocfilehash: 30898be58db228484bcd85e8896da10d0bfc29dd
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 29daa447be051af3df86ba9211bc2e4871d8c71e
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51277459"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52965104"
 ---
 # <a name="azure-management---monitoring"></a>Azure-Verwaltung – Überwachung
 
@@ -38,7 +37,7 @@ In den folgenden Abschnitten werden verschiedenen Verwaltungsbereiche kurz besch
 Überwachung ist das Erfassen und Analysieren von Daten, um die Leistung, Integrität und Verfügbarkeit Ihrer Geschäftsanwendung und der Ressourcen, von denen sie abhängt, zu bestimmen. Eine effektive Überwachungsstrategie erleichtert Ihnen, den detaillierten Einsatz der verschiedenen Komponenten Ihrer Anwendung zu verstehen und die Betriebszeit zu erhöhen, indem Sie proaktiv über kritische Punkte informiert werden, bevor Probleme auftreten. Die Überwachung erfolgt in Azure in erster Linie über [Azure Monitor](../azure-monitor/overview.md). Azure Monitor bietet normalen Speicher zum Speichern von Überwachungsdaten, mehrere Datenquellen zum Sammeln von Daten aus den verschiedenen Ebenen, die Ihre Anwendung unterstützen, und Funktionen zum Analysieren von gesammelten Daten sowie zur Reaktion darauf.
 
 ## <a name="configure"></a>Konfigurieren
-„Konfigurieren“ bezieht sich auf die ursprüngliche Bereitstellung und Konfiguration von Anwendungen und Ressourcen sowie deren laufende Wartung mit Patches und Updates.  Die Automatisierung dieser Aufgaben mithilfe von Skripts und Richtlinien ermöglicht Ihnen das Beseitigen von Redundanz, das Minimieren des (Zeit-) Aufwands und die Steigerung der Genauigkeit und Effizienz.  [Azure Automation](..\automation\automation-intro.md) stellt den Großteil der Dienste für die Automatisierung von Konfigurationsaufgaben bereit.  Neben Runbooks für das Automatisieren von Prozessen stellt der Dienst auch Konfigurations- und Updateverwaltung bereit, um Sie bei der Verwaltung der Konfiguration durch Richtlinien und das Erkennen und Bereitstellen von Updates zu unterstützen.
+„Konfigurieren“ bezieht sich auf die ursprüngliche Bereitstellung und Konfiguration von Anwendungen und Ressourcen sowie deren laufende Wartung mit Patches und Updates.  Die Automatisierung dieser Aufgaben mithilfe von Skripts und Richtlinien ermöglicht Ihnen das Beseitigen von Redundanz, das Minimieren des (Zeit-) Aufwands und die Steigerung der Genauigkeit und Effizienz.  [Azure Automation](../automation/automation-intro.md) stellt den Großteil der Dienste für die Automatisierung von Konfigurationsaufgaben bereit.  Neben Runbooks für das Automatisieren von Prozessen stellt der Dienst auch Konfigurations- und Updateverwaltung bereit, um Sie bei der Verwaltung der Konfiguration durch Richtlinien und das Erkennen und Bereitstellen von Updates zu unterstützen.
 
 ## <a name="govern"></a>Steuern
 Governance stellt Mechanismen und Prozesse zum Beibehalten der Kontrolle über Ihre Anwendungen und Ressourcen in Azure bereit.  Sie umfasst die Planung von Initiativen und das Setzen von strategischen Prioritäten.  Governance in Azure wird in erster Linie mit zwei Diensten implementiert.  [Azure Policy](../governance/policy/overview.md) ermöglicht Ihnen das Erstellen, Zuweisen und Verwalten von Richtliniendefinition, die unterschiedliche Regeln und Aktionen für Ihre Ressourcen erzwingen, damit diese Ressourcen stets konform mit Ihren Unternehmensstandards und Vereinbarungen zum Service Level bleiben. [Azure Cost Management von Cloudyn](../cost-management/overview.md) ermöglicht Ihnen das Nachverfolgen der Cloudnutzung und der Ausgaben für Ihre Azure-Ressourcen und andere Cloudanbieter, einschließlich AWS und Google.

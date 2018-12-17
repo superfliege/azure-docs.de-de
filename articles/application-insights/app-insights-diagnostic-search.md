@@ -9,21 +9,20 @@ ms.assetid: 2a437555-8043-45ec-937a-225c9bf0066b
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: mbullwin
-ms.openlocfilehash: bf722756ed04349a06cbcb7b9686e6340e8d4b6c
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: c595695f3643522d36b53091656c3655f83a9345
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50958405"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52877835"
 ---
 # <a name="using-search-in-application-insights"></a>Verwenden von Search in Application Insights
 Search ist eine Funktion in [Application Insights](app-insights-overview.md), mit der Sie einzelne Telemetrieelemente wie Seitenaufrufe, Ausnahmen und Webanforderungen suchen und untersuchen können. Außerdem können Sie Protokollablaufverfolgungen und Ereignisse anzeigen, die Sie programmiert haben.
 
-(Verwenden Sie [Analytics](../log-analytics/query-language/get-started-analytics-portal.md) zum Anwenden komplexerer Abfragen auf Ihre Daten.)
+(Verwenden Sie [Analytics](../azure-monitor/log-query/get-started-portal.md) zum Anwenden komplexerer Abfragen auf Ihre Daten.)
 
 ## <a name="where-do-you-see-search"></a>Wo steht Search zur Verfügung?
 
@@ -102,7 +101,7 @@ Suchen Sie alle Elemente mit dem gleichen Eigenschaftswert:
 ## <a name="search-the-data"></a>Durchsuchen der Daten
 
 > [!NOTE]
-> Um komplexere Abfragen zu stellen, öffnen Sie oben auf dem Blatt „Suche“ das Feld [**Analytics**](../log-analytics/query-language/get-started-analytics-portal.md).
+> Um komplexere Abfragen zu stellen, öffnen Sie oben auf dem Blatt „Suche“ das Feld [**Analytics**](../azure-monitor/log-query/get-started-portal.md).
 > 
 
 Sie können alle Eigenschaftswerte nach Ausdrücken durchsuchen. Dies ist besonders nützlich, wenn Sie [benutzerdefinierte Ereignisse](app-insights-api-custom-events-metrics.md) mit Eigenschaftswerten geschrieben haben. 
@@ -164,7 +163,7 @@ POST-Daten werden nicht automatisch protokolliert. Sie können jedoch [TrackTrac
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player]
 
 ## <a name="add"></a>Nächste Schritte
-* [Stellen von komplexeren Abfragen mit Analytics](../log-analytics/query-language/get-started-analytics-portal.md)
+* [Stellen von komplexeren Abfragen mit Analytics](../azure-monitor/log-query/get-started-portal.md)
 * [Senden von Protokollen und benutzerdefinierter Telemetrie an Application Insights](app-insights-asp-net-trace-logs.md)
 * [Einrichten von Tests der Verfügbarkeit und Reaktionsfähigkeit](app-insights-monitor-web-app-availability.md)
 * [Problembehandlung](app-insights-troubleshoot-faq.md)

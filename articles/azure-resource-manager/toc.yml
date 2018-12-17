@@ -44,6 +44,19 @@ items:
     href: https://azure.microsoft.com/resources/samples/?sort=0&service=azure-resource-manager
 - name: Konzepte
   items:
+  - name: Vorlagenstruktur
+    href: resource-group-authoring-templates.md
+    items:
+    - name: Parameter
+      href: resource-manager-templates-parameters.md
+    - name: Variables
+      href: resource-manager-templates-variables.md
+    - name: Functions
+      href: resource-group-authoring-templates.md#functions
+    - name: Ressourcen
+      href: resource-manager-templates-resources.md
+    - name: Ausgaben
+      href: resource-manager-templates-outputs.md
   - name: Ressourcenanbieter und -typen
     href: resource-manager-supported-services.md
   - name: Verwaltungsgruppen
@@ -65,65 +78,50 @@ items:
   items:
   - name: Erstellen von Vorlagen
     items:
-    - name: Vorlagenabschnitte
-      href: resource-group-authoring-templates.md
-      items:
-      - name: Parameter
-        href: resource-manager-templates-parameters.md
-      - name: Variables
-        href: resource-manager-templates-variables.md
-      - name: Functions
-        href: resource-group-authoring-templates.md#functions
-      - name: Ressourcen
-        href: resource-manager-templates-resources.md
-      - name: Ausgaben
-        href: resource-manager-templates-outputs.md
-    - name: Verknüpfte und geschachtelte Vorlagen
-      href: resource-group-linked-templates.md
-    - name: Ressourcenabhängigkeiten
+    - name: Erstellen von Ressourcengruppen und Ressourcen für ein Abonnement
+      href: deploy-to-subscription.md
+    - name: Definieren von Ressourcenabhängigkeiten
       href: resource-group-define-dependencies.md
+    - name: Modularisieren von Vorlagen
+      href: resource-group-linked-templates.md
+    - name: Verwalten von Geheimnissen
+      href: resource-manager-keyvault-parameter.md
     - name: Erstellen mehrerer Instanzen
       href: resource-group-create-multiple.md
-    - name: Erstellen einer Ressourcengruppe in einer Vorlage
-      href: create-resource-group-in-template.md
-    - name: Erstellen von Ressourcen im Abonnement
-      href: deploy-to-subscription.md
+    - name: Verwenden von Vorlagenerweiterungen
+      href: resource-manager-use-extensions.md
     - name: Aktualisieren von Ressourcen
       href: /azure/architecture/building-blocks/extending-templates/update-resource
-  - name: Bereitstellen
+  - name: Bereitstellen von Vorlagen
     items:
-    - name: Azure PowerShell
-      items:
-      - name: Bereitstellen der Vorlage
-        href: resource-group-template-deploy.md
-      - name: Bereitstellen einer privaten Vorlage mit SAS-Token
-        href: resource-manager-powershell-sas-token.md
-      - name: Exportieren der Vorlage und erneutes Bereitstellen
-        href: resource-manager-export-template-powershell.md
-    - name: Azure-Befehlszeilenschnittstelle
-      items:
-      - name: Bereitstellen der Vorlage
-        href: resource-group-template-deploy-cli.md
-      - name: Bereitstellen einer privaten Vorlage mit SAS-Token
-        href: resource-manager-cli-sas-token.md
-      - name: Exportieren der Vorlage und erneutes Bereitstellen
-        href: resource-manager-export-template-cli.md
-    - name: Azure-Portal
-      items:
-      - name: Bereitstellen von Ressourcen
-        href: resource-group-template-deploy-portal.md
-      - name: Exportieren der Vorlage
-        href: resource-manager-export-template.md
-    - name: REST-API
+    - name: Bereitstellen mit dem Portal
+      href: resource-group-template-deploy-portal.md
+    - name: Bereitstellen über die Azure-Befehlszeilenschnittstelle
+      href: resource-group-template-deploy-cli.md
+    - name: Bereitstellen mit Azure PowerShell
+      href: resource-group-template-deploy.md
+    - name: Bereitstellen mit der REST-API
       href: resource-group-template-deploy-rest.md
-    - name: Mehrere Ressourcengruppen oder Abonnements
+    - name: Exportieren von Vorlagen
+      items:
+      - name: Verwenden des Portals
+        href: resource-manager-export-template.md
+      - name: Verwenden der Azure-Befehlszeilenschnittstelle
+        href: resource-manager-export-template-cli.md
+      - name: Verwenden von Azure PowerShell
+        href: resource-manager-export-template-powershell.md
+    - name: Sichern von Vorlagen mit SAS-Token
+      items:
+      - name: Verwenden der Azure-Befehlszeilenschnittstelle
+        href: resource-manager-cli-sas-token.md
+      - name: Verwenden von PowerShell
+        href: resource-manager-powershell-sas-token.md
+    - name: Bereitstellen in mehreren Ressourcengruppen oder Abonnements
       href: resource-manager-cross-resource-group-deployment.md
     - name: Continuous Integration mit Azure DevOps Services
       href: ../vs-azure-tools-resource-groups-ci-in-vsts.md
       maintainContext: true
-    - name: Übergeben sicherer Werte während der Bereitstellung
-      href: resource-manager-keyvault-parameter.md
-  - name: Verwalten
+  - name: Verwalten von Vorlagen
     items:
     - name: Azure PowerShell
       href: powershell-azure-resource-manager.md
@@ -146,13 +144,13 @@ items:
       href: resource-manager-api-authentication.md
     - name: Sperren von Ressourcen
       href: resource-group-lock-resources.md
-  - name: Audit
+  - name: Überwachen von Bereitstellungen
     items:
     - name: Anzeigen von Aktivitätsprotokollen
       href: resource-group-audit.md
     - name: Bereitstellungsvorgänge anzeigen
       href: resource-manager-deployment-operations.md
-  - name: Problembehandlung
+  - name: Behandeln von Bereitstellungsproblemen
     items:
     - name: Behandeln von Bereitstellungsfehlern
       href: resource-manager-common-deployment-errors.md
@@ -237,9 +235,9 @@ items:
     href: resource-manager-personal-data.md
   - name: Videos
     href: https://azure.microsoft.com/documentation/videos/index/?services=azure-resource-manager
-ms.openlocfilehash: 47af6826974759a1b0dfea7949429c5acaca004d
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 166a23d480db7dfda7a78a5a63e7717b5e721bb9
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53252336"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53436788"
