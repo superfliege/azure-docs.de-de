@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 3/26/2018
 ms.author: victorh
-ms.openlocfilehash: 5bec7be5f7ad744960d2602aaf24fec51d869267
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 108045c691d711dfdd12df39fe72e536f842f68f
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39056248"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52993209"
 ---
 # <a name="create-an-application-gateway-with-path-based-routing-rules-using-the-azure-portal"></a>Erstellen eines Anwendungsgateways mit pfadbasierten Routingregeln mithilfe des Azure-Portals
 
@@ -36,7 +36,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="log-in-to-azure"></a>Anmelden an Azure
 
-Melden Sie sich unter [http://portal.azure.com](http://portal.azure.com) beim Azure-Portal an.
+Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim Azure-Portal an.
 
 ## <a name="create-an-application-gateway"></a>Erstellen eines Anwendungsgateways
 
@@ -154,7 +154,7 @@ In diesem Beispiel erstellen Sie drei virtuelle Computer, die als Back-End-Serve
 
     ![Notieren der öffentlichen IP-Adresse des Anwendungsgateways](./media/application-gateway-create-url-route-portal/application-gateway-record-ag-address.png)
 
-2. Kopieren Sie die öffentliche IP-Adresse, und fügen Sie sie in die Adressleiste des Browsers ein. Z.B. http://http://40.121.222.19.
+2. Kopieren Sie die öffentliche IP-Adresse, und fügen Sie sie in die Adressleiste des Browsers ein. Z.B. http:// http://40.121.222.19.
 
     ![Testen der Basis-URL im Anwendungsgateway](./media/application-gateway-create-url-route-portal/application-gateway-iistest.png)
 
