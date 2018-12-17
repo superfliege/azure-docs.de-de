@@ -1,6 +1,6 @@
 ---
 title: Registrieren eines TPM-Geräts für den Azure Device Provisioning-Dienst per Node.js | Microsoft-Dokumentation
-description: 'Azure-Schnellstart: Registrieren eines TPM-Geräts in Azure IoT Hub Device Provisioning Service per Node.js-Dienst-SDK In dieser Schnellstartanleitung werden einzelne Registrierungen verwendet.'
+description: 'Azure-Schnellstart: Registrieren eines TPM-Geräts in Azure IoT Hub Device Provisioning Service per Node.js-Dienst-SDK In dieser Schnellstartanleitung werden individuelle Registrierungen verwendet.'
 author: wesmc7777
 ms.author: wesmc
 ms.date: 12/21/2017
@@ -10,12 +10,12 @@ services: iot-dps
 manager: timlt
 ms.devlang: nodejs
 ms.custom: mvc
-ms.openlocfilehash: de08538750f704ddc85ba69bd64742b3e68c8a3c
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: b396c0e485d4eb6c4ee541074f86357634c264c1
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50156747"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53184439"
 ---
 # <a name="enroll-tpm-device-to-iot-hub-device-provisioning-service-using-nodejs-service-sdk"></a>Registrieren eines TPM-Geräts für den IoT Hub Device Provisioning-Dienst per Node.js-Dienst-SDK
 
@@ -74,7 +74,7 @@ Anhand dieser Schritte wird veranschaulicht, wie Sie programmgesteuert eine indi
     1. Melden Sie sich beim Azure-Portal an, klicken Sie im Menü auf der linken Seite auf die Schaltfläche **Alle Ressourcen**, und öffnen Sie Ihren Device Provisioning-Dienst. 
     2. Klicken Sie auf **Freigegebene Zugriffsrichtlinien** und dann auf die gewünschte Zugriffsrichtlinie, um die dazugehörigen Eigenschaften zu öffnen. Kopieren Sie im Fenster **Zugriffsrichtlinie** die Primärschlüssel-Verbindungszeichenfolge, und notieren Sie sie. 
 
-    ![Abrufen der Verbindungszeichenfolge für den Provisioning-Dienst aus dem Portal](./media/quick-enroll-device-tpm-node/get-service-connection-string.png) 
+       ![Abrufen der Verbindungszeichenfolge für den Provisioning-Dienst aus dem Portal](./media/quick-enroll-device-tpm-node/get-service-connection-string.png) 
 
 
 2. Außerdem benötigen Sie den Endorsement Key für Ihr Gerät. Falls Sie die Schritte der Schnellstartanleitung unter [Erstellen und Bereitstellen eines simulierten Geräts mithilfe von IoT Hub Device Provisioning-Diensten](quick-create-simulated-device.md) befolgt haben, um ein simuliertes TPM-Gerät zu erstellen, können Sie den für dieses Gerät erstellten Schlüssel verwenden. Andernfalls können Sie zum Erstellen eines Beispiels für die individuelle Registrierung den folgenden Endorsement Key nutzen, der über das SDK bereitgestellt wird:

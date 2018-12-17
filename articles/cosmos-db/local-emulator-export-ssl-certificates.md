@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.topic: tutorial
 ms.date: 06/06/2017
 ms.author: danoble
-ms.openlocfilehash: f73c6f279f4281abb3751f101255ca3707a59641
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: b7a6649fab8b0203c20b93bee9e941614828a99b
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52850379"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53091797"
 ---
 # <a name="export-the-azure-cosmos-db-emulator-certificates-for-use-with-java-python-and-nodejs"></a>Exportieren der Azure Cosmos DB-Emulatorzertifikate für die Verwendung mit Java, Python und Node.js
 
@@ -76,7 +76,7 @@ Wenn Sie Java-Anwendungen oder MongoDB-Anwendungen ausführen, die den Java-Clie
 
 Befolgen Sie die Anweisungen unter [Hinzufügen eines Zertifikats zum Java CA-Zertifikatspeicher](https://docs.microsoft.com/azure/java-add-certificate-ca-store), um das X.509-Zertifikat in den standardmäßigen Java-Zertifikatspeicher zu importieren. Denken Sie daran, dass Sie im Verzeichnis „%JAVA_HOME%“ arbeiten, wenn Sie „keytool“ ausführen.
 
-Sobald das SSL-Zertifikat „CosmosDBEmulatorCertificate“ installiert ist, sollte Ihre Anwendung eine Verbindung mit dem lokalen Azure Cosmos DB-Emulator herstellen und diesen verwenden können. Wenn Probleme auftreten, finden Sie möglicherweise eine Lösung im Dokument [Debugging SSL/TLS Connections](http://docs.oracle.com/javase/7/docs/technotes/guides/security/jsse/ReadDebug.html) (Debuggen von SSL-/TLS-Verbindungen). Es ist sehr wahrscheinlich, dass das Zertifikat nicht im Speicher „%JAVA_HOME%/jre/lib/security/cacerts“ installiert ist. Wenn Sie beispielsweise mehrere Java-Versionen installiert haben, verwendet Ihre Anwendung möglicherweise einen anderen cacerts-Speicher als den, den Sie aktualisiert haben.
+Sobald das SSL-Zertifikat „CosmosDBEmulatorCertificate“ installiert ist, sollte Ihre Anwendung eine Verbindung mit dem lokalen Azure Cosmos DB-Emulator herstellen und diesen verwenden können. Wenn Probleme auftreten, finden Sie möglicherweise eine Lösung im Dokument [Debugging SSL/TLS Connections](https://docs.oracle.com/javase/7/docs/technotes/guides/security/jsse/ReadDebug.html) (Debuggen von SSL-/TLS-Verbindungen). Es ist sehr wahrscheinlich, dass das Zertifikat nicht im Speicher „%JAVA_HOME%/jre/lib/security/cacerts“ installiert ist. Wenn Sie beispielsweise mehrere Java-Versionen installiert haben, verwendet Ihre Anwendung möglicherweise einen anderen cacerts-Speicher als den, den Sie aktualisiert haben.
 
 ## <a name="how-to-use-the-certificate-in-python"></a>Verwenden des Zertifikats in Python
 

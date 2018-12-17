@@ -12,16 +12,16 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 09/07/2018
-ms.openlocfilehash: 4264ca741c7ea42e8fe852804bfec05d33958e84
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: 6237db4361058f76f6801c7c7f98f0e9ba78dcd6
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47054658"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52964304"
 ---
 # <a name="use-powershell-to-create-a-single-azure-sql-database-and-configure-a-firewall-rule"></a>Verwenden von PowerShell zum Erstellen einer einzelnen Azure SQL-Datenbank und zum Konfigurieren einer Firewallregel
 
-Dieses PowerShell-Beispielskript erstellt eine einzelne Azure SQL-Datenbank und konfiguriert eine Firewallregel auf Serverebene. Nach erfolgreicher Ausführung des Skripts können alle Azure-Dienste und die konfigurierte IP-Adresse auf die SQL-Datenbank zugreifen. 
+Dieses PowerShell-Beispielskript erstellt eine einzelne Azure SQL-Datenbank und konfiguriert eine Firewallregel auf Serverebene. Nach erfolgreicher Ausführung des Skripts können alle Azure-Dienste und die konfigurierte IP-Adresse auf die SQL-Datenbank zugreifen.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 [!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
@@ -58,6 +58,3 @@ Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit 
 Weitere Informationen zu Azure PowerShell finden Sie in der [Azure PowerShell-Dokumentation](/powershell/azure/overview).
 
 Zusätzliche PowerShell-Skriptbeispiele für SQL-Datenbank finden Sie in den [Azure PowerShell samples for Azure SQL Database](../sql-database-powershell-samples.md) (Azure PowerShell-Beispiele für Azure SQL-Datenbank).
-
-
-

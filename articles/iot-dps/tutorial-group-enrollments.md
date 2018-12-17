@@ -10,12 +10,12 @@ services: iot-dps
 manager: timlt
 ms.devlang: java
 ms.custom: mvc
-ms.openlocfilehash: 3c7a1dd9ba688c5cc9776dbfba0841c9a06065dc
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 6447061e79946abf8070daf29eeb57bad7b6fa55
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50419689"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53184966"
 ---
 # <a name="create-and-provision-a-simulated-x509-device-using-java-device-and-service-sdk-and-group-enrollments-for-iot-hub-device-provisioning-service"></a>Erstellen und Bereitstellen eines simulierten X.509-Geräts per Java-Gerät und Dienst-SDK sowie Registrierungsgruppen für den IoT Hub Device Provisioning-Dienst
 
@@ -49,20 +49,20 @@ Führen Sie zunächst die Schritte unter [Einrichten des IoT Hub Device Provisio
             - Wählen Sie die Datei **_RootCA.pem_** aus, die Sie gerade erstellt haben.
             - Klicken Sie abschließend auf die Schaltfläche **Speichern**.
 
-        ![Hinzufügen des Zertifikats](./media/tutorial-group-enrollments/add-certificate.png)
+           ![Hinzufügen des Zertifikats](./media/tutorial-group-enrollments/add-certificate.png)
 
         1. Wählen Sie das neu erstellte Zertifikat aus:
             - Klicken Sie auf **Prüfcode generieren**. Kopieren Sie den generierten Code.
             - Führen Sie den Überprüfungsschritt aus. Geben Sie den _Prüfcode_ ein, oder klicken Sie mit der rechten Maustaste, um ihn in Ihr aktives PowerShell-Fenster einzufügen.  Drücken Sie die **EINGABETASTE**.
             - Wählen Sie im Azure-Portal die neu erstellte Datei **_verifyCert4.pem_** aus. Klicken Sie auf **Überprüfen**.
 
-            ![Überprüfen des Zertifikats](./media/tutorial-group-enrollments/validate-certificate.png)
+              ![Überprüfen des Zertifikats](./media/tutorial-group-enrollments/validate-certificate.png)
 
     1. Schließen Sie den Vorgang ab, indem Sie die Schritte zum Erstellen der Gerätezertifikate und zum Bereinigen der Ressourcen ausführen.
 
-    > [!NOTE]
-    > Stellen Sie beim Erstellen von Zertifikaten sicher, dass Sie für den Namen des Geräts nur Kleinbuchstaben und Zahlen sowie Bindestriche verwenden.
-    >
+       > [!NOTE]
+       > Stellen Sie beim Erstellen von Zertifikaten sicher, dass Sie für den Namen des Geräts nur Kleinbuchstaben und Zahlen sowie Bindestriche verwenden.
+       >
 
 
 ## <a name="create-a-device-enrollment-entry"></a>Erstellen eines Geräteregistrierungseintrags

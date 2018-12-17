@@ -4,12 +4,12 @@ ms.service: storage
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: tamram
-ms.openlocfilehash: 027b370d2497822dcbd6f3958556357957f9e8f5
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: aeefb63a283c473a98639ead1aa6640d88409125
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50964661"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53318129"
 ---
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
@@ -22,17 +22,17 @@ Connect-AzureRmAccount
 Wenn Sie sich nicht sicher sind, welche Region Sie verwenden sollen, können Sie die verfügbaren Regionen auflisten. Zeigen Sie mithilfe des folgenden Codebeispiels die Liste mit den Standorten an, und suchen Sie nach dem gewünschten Standort. In diesem Beispiel wird **eastus** verwendet. Speichern Sie den Standort in einer Variablen, und verwenden Sie die Variable, um den Standort an einem zentralen Ort ändern zu können.
 
 ```powershell
-Get-AzureRmLocation | select Location 
+Get-AzureRmLocation | select Location
 $location = "eastus"
 ```
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
-Erstellen Sie mit [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) eine Azure-Ressourcengruppe. Eine Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. 
+Erstellen Sie mit [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) eine Azure-Ressourcengruppe. Eine Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden.
 
 ```powershell
 $resourceGroup = "myResourceGroup"
-New-AzureRmResourceGroup -Name $resourceGroup -Location $location 
+New-AzureRmResourceGroup -Name $resourceGroup -Location $location
 ```
 
 ## <a name="create-a-storage-account"></a>Speicherkonto erstellen
@@ -44,7 +44,6 @@ $storageAccount = New-AzureRmStorageAccount -ResourceGroupName $resourceGroup `
   -Name "mystorageaccount" `
   -SkuName Standard_LRS `
   -Location $location `
-  -Kind Storage
 
 $ctx = $storageAccount.Context
 ```
