@@ -12,7 +12,7 @@
 ### [Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-create-your-first-application-in-visual-studio)
 ### [Container Service](https://docs.microsoft.com/azure/container-service/dcos-swarm/container-service-deployment) 
 
-# Tutorials
+# Lernprogramme
 ## Erstellen und Bereitstellen einer Web-App
 ### [.NET mit SQL-Datenbank](https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-dotnet-sqldatabase)
 ### [Node.js mit MongoDB-Datenbank](https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-nodejs-mongodb-app)
@@ -55,7 +55,7 @@
 ### [Serverlose Apps](https://docs.microsoft.com/azure/azure-functions/functions-reference)
 ### [Microservices-Cluster](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-portal)
 ## Bereitstellen
-### [Web-Apps und mobile Apps aus der Quellcodeverwaltung](https://docs.microsoft.com/azure/app-service/app-service-continuous-deployment)
+### [Web-Apps und mobile Apps aus der Quellcodeverwaltung](https://docs.microsoft.com/azure/app-service/deploy-continuous-deployment)
 ### [Lokale Microservices](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-with-a-local-cluster)
 ### [Linux-VM](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-vm)
 ### [Windows-VM](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-manage-vm)
@@ -75,7 +75,7 @@
 ## Schützen
 ### [Web-Apps und mobile Apps](https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-custom-ssl)
 
-## Sicherung
+## Backup
 ### [Web-Apps und mobile Apps](https://docs.microsoft.com/azure/app-service/web-sites-backup)
 ### [Virtuelle Computer](https://docs.microsoft.com/azure/backup/backup-azure-vms-introduction)
 
@@ -100,7 +100,7 @@
 ### [Python](http://azure-sdk-for-python.readthedocs.io/en/latest/)
 ### [Ruby](https://github.com/Azure/azure-sdk-for-ruby/blob/master/README.md)
 ## Befehlszeilenschnittstellen
-### [Azure-CLI](https://docs.microsoft.com/cli/azure/)
+### [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/)
 ### [Azure PowerShell](https://docs.microsoft.com/powershell/)
 ## [Abrechnung](https://docs.microsoft.com/azure/billing/billing-usage-rate-card-overview)
 
