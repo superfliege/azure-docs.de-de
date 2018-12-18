@@ -80,7 +80,7 @@ items:
       href: consistency-levels.md
     - name: Auswählen der richtigen Konsistenzebene
       href: consistency-levels-choosing.md
-    - name: Konsistenzebenen und Azure Cosmos DB-APIs
+    - name: Konsistenzebenen und Cosmos DB-APIs
       href: consistency-levels-across-apis.md
     - name: Kompromisse in Bezug auf Konsistenz, Verfügbarkeit und Leistung
       href: consistency-levels-tradeoffs.md
@@ -144,6 +144,12 @@ items:
       href: unique-keys.md
     - name: Transaktionen und optimistische Nebenläufigkeit
       href: database-transactions-optimistic-concurrency.md
+  - name: Serverseitige Programmierung
+    items:
+    - name: Gespeicherte Prozeduren, Trigger und UDFs
+      href: stored-procedures-triggers-udfs.md
+    - name: JavaScript-Abfrage-API
+      href: javascript-query-api.md
   - name: Optimieren der Kosten für Azure Cosmos DB
     items:
     - name: Preismodell
@@ -178,8 +184,6 @@ items:
       href: firewall-support.md
     - name: Zugriff über virtuelle Netzwerke
       href: vnet-service-endpoint.md
-    - name: Unterstützung für Schlüsseltresore
-      href: access-secrets-from-keyvault.md
   - name: Unternehmensfähigkeit
     items:
     - name: Onlinesicherung und -wiederherstellung
@@ -250,8 +254,14 @@ items:
       items:
       - name: Optimieren der Abfrageleistung
         href: sql-api-query-metrics.md
-      - name: Gespeicherte Prozeduren, Trigger und UDFs
-        href: programming.md
+      - name: Serverseitige Programmierung
+        items:
+        - name: Schreiben von gespeicherten Prozeduren, Triggern und UDFs
+          href: how-to-write-stored-procedures-triggers-udfs.md
+        - name: Schreiben von gespeicherten Prozeduren und Triggern mit der JavaScript-Abfrage-API
+          href: how-to-write-javascript-query-api.md
+        - name: Verwenden von gespeicherten Prozeduren, Triggern und UDFs
+          href: how-to-use-stored-procedures-triggers-udfs.md
       - name: Datentypen
         items:
         - name: Datetime
@@ -308,7 +318,7 @@ items:
             href: tutorial-develop-mongodb-nodejs-part3.md
           - name: 'Teil 4: Erstellen eines Kontos'
             href: tutorial-develop-mongodb-nodejs-part4.md
-          - name: 'Teil 5: Herstellen einer Verbindung mit Azure Cosmos DB'
+          - name: 'Teil 5: Herstellen einer Verbindung mit Cosmos DB'
             href: tutorial-develop-mongodb-nodejs-part5.md
           - name: 'Teil 6: Ausführen von CRUD-Vorgängen'
             href: tutorial-develop-mongodb-nodejs-part6.md
@@ -479,6 +489,8 @@ items:
       href: how-to-configure-vnet-service-endpoint.md
     - name: Konfigurieren von CORS (Cross-Origin Resource Sharing)
       href: how-to-configure-cross-origin-resource-sharing.md
+    - name: Schützen mit Key Vault
+      href: access-secrets-from-keyvault.md
   - name: Unternehmensfähigkeit
     items:
     - name: Wiederherstellen von Daten aus einer Sicherung
@@ -529,7 +541,7 @@ items:
         href: performance-testing.md
     - name: Kostengünstige Lese- und Schreibvorgänge
       href: key-value-store-cost.md
-  - name: Visualisieren von Azure Cosmos DB-Daten
+  - name: Visualisieren von Cosmos DB-Daten
     items:
     - name: Verwenden von Power BI
       href: powerbi-visualize.md
@@ -603,9 +615,9 @@ items:
       href: use-cases.md
     - name: Apps für soziale Medien
       href: social-media-apps.md
-ms.openlocfilehash: d31364cb9d458e54ae407d10fd88d8db4e9f457f
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 34fc77f13f0c0bd394d96e19b86a1632ce2846b1
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 12/14/2018
-ms.locfileid: "53384665"
+ms.locfileid: "53410107"

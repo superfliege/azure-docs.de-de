@@ -91,7 +91,7 @@
 #### [Registerkarte „Testversion“](./cloud-partner-portal/azure-applications/cpp-testdrive-tab.md)
 #### [Registerkarte „Marketplace“](./cloud-partner-portal/azure-applications/cpp-marketplace-tab.md)
 #### [Registerkarte „Support“](./cloud-partner-portal/azure-applications/cpp-support-tab.md)
-<!-- ### [Create technical assets](./cloud-partner-portal/azure-applications/cpp-create-technical-assets.md) -->
+### [Erstellen technischer Ressourcen](./cloud-partner-portal/azure-applications/cpp-create-technical-assets.md)
 ### [Veröffentlichen eines Azure-Anwendungsangebots](./cloud-partner-portal/azure-applications/cpp-publish-offer.md)
 ### [Aktualisieren eines vorhandenen Angebots](./cloud-partner-portal/azure-applications/cpp-update-existing-offer.md)
 
