@@ -94,7 +94,7 @@ items:
       href: /azure/architecture/building-blocks/extending-templates/update-resource
   - name: Bereitstellen von Vorlagen
     items:
-    - name: Bereitstellen mit dem Portal
+    - name: Bereitstellen über das Azure-Portal
       href: resource-group-template-deploy-portal.md
     - name: Bereitstellen über die Azure-Befehlszeilenschnittstelle
       href: resource-group-template-deploy-cli.md
@@ -123,27 +123,27 @@ items:
       maintainContext: true
   - name: Verwalten von Vorlagen
     items:
-    - name: Azure PowerShell
-      href: powershell-azure-resource-manager.md
-    - name: Azure-Befehlszeilenschnittstelle
-      href: cli-azure-resource-manager.md
-    - name: Azure-Portal
+    - name: Verwalten über das Azure-Portal
       href: resource-group-portal.md
-    - name: Verwenden von Tags zum Organisieren von Ressourcen
-      href: resource-group-using-tags.md
-    - name: Verschieben von Ressourcen in neue Gruppen oder Abonnements
+    - name: Verwalten mit Azure PowerShell
+      href: powershell-azure-resource-manager.md
+    - name: Verwalten mit der Azure CLI
+      href: cli-azure-resource-manager.md
+    - name: Verschieben von Ressourcen
       href: resource-group-move-resources.md
       items:
       - name: Unterstützung für das Verschieben anhand des Ressourcentyps
         href: move-support-resources.md
+    - name: Organisieren von Ressourcen mithilfe von Tags
+      href: resource-group-using-tags.md
+    - name: Sperren von Ressourcen
+      href: resource-group-lock-resources.md
+    - name: Authentifizierungs-API für den Zugriff auf Abonnements
+      href: resource-manager-api-authentication.md
     - name: Erstellen von EA-Abonnements
       href: programmatically-create-subscription.md
     - name: Gewähren des Zugriffs zur Erstellung von EA-Abonnements
       href: grant-access-to-create-subscription.md
-    - name: Authentifizierungs-API für den Zugriff auf Abonnements
-      href: resource-manager-api-authentication.md
-    - name: Sperren von Ressourcen
-      href: resource-group-lock-resources.md
   - name: Überwachen von Bereitstellungen
     items:
     - name: Anzeigen von Aktivitätsprotokollen
@@ -211,7 +211,7 @@ items:
     href: /rest/api/resources/
   - name: 'REST: Bereitstellungs-Manager'
     href: /rest/api/deploymentmanager/
-  - name: PowerShell
+  - name: Azure PowerShell
     href: /powershell/module/azurerm.resources
   - name: Azure-Befehlszeilenschnittstelle
     href: /cli/azure/resource
@@ -235,9 +235,9 @@ items:
     href: resource-manager-personal-data.md
   - name: Videos
     href: https://azure.microsoft.com/documentation/videos/index/?services=azure-resource-manager
-ms.openlocfilehash: 166a23d480db7dfda7a78a5a63e7717b5e721bb9
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 47766ce1bd0250c1eeaa269c4bc2436a2e117f02
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53436788"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53600943"

@@ -49,22 +49,29 @@ items:
   expanded: true
 - name: Anleitungen
   items:
-  - name: Herstellen einer Databricks-Verbindung unter Verwendung von Python
-    href: connect-from-databricks.md
-  - name: Schreiben von Abfragen
-    href: write-queries.md
-  - name: Erfassen von Beispieldaten
-    href: ingest-sample-data.md
-  - name: Visualisieren von Daten in Grafana
-    href: grafana.md
-  - name: Löschen von Daten
-    href: delete-data.md
-  - name: Verwalten von Datenbankberechtigungen
-    href: manage-database-permissions.md
-  - name: Überprüfen der Clusterintegrität
-    href: check-cluster-health.md
-  - name: Verwalten der Clusterskalierung
-    href: manage-cluster-scaling.md
+  - name: Erste Schritte
+    items:
+    - name: Schreiben von Abfragen
+      href: write-queries.md
+    - name: Erfassen von Beispieldaten
+      href: ingest-sample-data.md
+    expanded: true
+  - name: Verwalten
+    items:
+    - name: Verwalten von Datenbankberechtigungen
+      href: manage-database-permissions.md
+    - name: Überprüfen der Clusterintegrität
+      href: check-cluster-health.md
+    - name: Verwalten der Clusterskalierung
+      href: manage-cluster-scaling.md
+    - name: Löschen von Daten
+      href: delete-data.md
+  - name: Verwenden von anderen Tools
+    items:
+    - name: Herstellen einer Databricks-Verbindung unter Verwendung von Python
+      href: connect-from-databricks.md
+    - name: Visualisieren von Daten in Grafana
+      href: grafana.md
   - name: Problembehandlung
     items:
     - name: Erstellen eines Clusters
@@ -105,9 +112,9 @@ items:
     href: http://aka.ms/adecostestimator
   - name: Dienstupdates
     href: https://azure.microsoft.com/updates/?product=data-explorer
-ms.openlocfilehash: 31b588167d4a136f54df248225fd718128a7421c
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 5773939edb8bb846325e5709cc46273b9669117b
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52958217"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53606825"

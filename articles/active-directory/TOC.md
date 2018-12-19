@@ -275,6 +275,7 @@
 ##### [Problem beim Speichern von Administratoranmeldeinformationen während des Konfigurierens der Benutzerbereitstellung in einer Katalog-App](manage-apps/application-provisioning-config-problem-storage-limit.md)
 ##### [Benutzer werden nicht bereitgestellt: Katalog-App](manage-apps/application-provisioning-config-problem-no-users-provisioned.md)
 ##### [Falsche Benutzer bereitgestellt : Katalog-App](manage-apps/application-provisioning-config-problem-wrong-users-provisioned.md)
+##### [Probleme mit der SCIM-Kompatibilität: nicht im Katalog enthaltene App](manage-apps/application-provisioning-config-problem-scim-compatibility.md)
 
 #### Einmaliges Anmelden
 ##### [Auswählen einer Methode](manage-apps/single-sign-on-modes.md)
@@ -321,7 +322,7 @@
 ## [Problembehandlung](fundamentals/active-directory-troubleshooting-support-howto.md)
 
 ## Bereitstellen eines Proof of Concept (PoC) für Azure AD
-### [PoC-Playbook: Einführen](active-directory-playbook-intro.md)
+### [PoC-Playbook: Einführung](active-directory-playbook-intro.md)
 ### [PoC-Playbook: Bestandteile](active-directory-playbook-ingredients.md)
 ### [PoC-Playbook: Implementierung](active-directory-playbook-implementation.md)
 ### [PoC-Playbook: Bausteine](active-directory-playbook-building-blocks.md)
