@@ -1,6 +1,5 @@
 items:
 - name: Dokumentation zur Sprachübersetzungs-API
-  href: index.yml
 - name: Übersicht
   items:
   - name: Informationen zur Sprachübersetzungs-API
@@ -17,7 +16,7 @@ items:
     href: quickstarts/nodejs.md
   - name: Python
     href: quickstarts/python.md
-- name: Tutorials
+- name: Lernprogramme
   items:
   - name: Übersetzungs-App
     href: tutorial-translator-speech-csharp.md
@@ -25,10 +24,6 @@ items:
   items:
   - name: Beispiele für GitHub
     href: https://aka.ms/TranslatorGitHub
-- name: Anleitungen
-  items:
-  - name: Registrieren für die Sprachübersetzungs-API
-    href: translator-speech-how-to-signup.md
 - name: Verweis
   href: reference.md
   items:
@@ -44,9 +39,9 @@ items:
     href: https://cognitive.uservoice.com/forums/558796-translator
   - name: Stack Overflow
     href: https://stackoverflow.com/questions/tagged/microsoft-translator
-ms.openlocfilehash: 2e280a8e6f393e25cdb6c68498b1634da6fe250c
-ms.sourcegitcommit: caebf2bb2fc6574aeee1b46d694a61f8b9243198
+ms.openlocfilehash: 8519e4a514f7fa1a811966ff971c64a331378ce8
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2018
-ms.locfileid: "35416029"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53604081"
