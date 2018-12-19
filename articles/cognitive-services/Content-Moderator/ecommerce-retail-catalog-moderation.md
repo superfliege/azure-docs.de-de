@@ -66,7 +66,7 @@ In unserem Fall werden folgende benutzerdefinierte Tags (**celebrity**, **flag**
 > [!NOTE]
 > Das Tutorial ist für die Verwendung von Abonnementschlüsseln in den Regionen konzipiert, die in den folgenden Endpunkten angezeigt werden. Achten Sie darauf, dass Ihre API-Schlüssel mit den Regions-URIs übereinstimmen, da Ihre Schlüssel sonst möglicherweise nicht mit den folgenden Endpunkten funktionieren:
 
-         // Your API keys
+        // Your API keys
         public const string ContentModeratorKey = "XXXXXXXXXXXXXXXXXXXX";
         public const string ComputerVisionKey = "XXXXXXXXXXXXXXXXXXXX";
         public const string CustomVisionKey = "XXXXXXXXXXXXXXXXXXXX";
@@ -128,11 +128,11 @@ In unserem Fall werden folgende benutzerdefinierte Tags (**celebrity**, **flag**
 4. Wählen Sie zur Anmeldung eine Option aus der Liste der verfügbaren Internetkonten aus.
 5. Beachten Sie die API-Schlüssel, die auf Ihrer Dienstseite angezeigt werden.
     
-   ![Schlüssel für die Maschinelles Sehen-API](images/tutorial-computer-vision-keys.PNG)
+    ![Schlüssel für die Maschinelles Sehen-API](images/tutorial-computer-vision-keys.PNG)
     
 6. Informationen zur Funktion, um das Bild mit der Maschinelles Sehen-API zu prüfen, finden Sie im Projektquellcode.
 
-         public static bool EvaluateComputerVisionTags(string ImageUrl, string ComputerVisionUri, string ComputerVisionKey, ref KeyValuePair[] ReviewTags)
+        public static bool EvaluateComputerVisionTags(string ImageUrl, string ComputerVisionUri, string ComputerVisionKey, ref KeyValuePair[] ReviewTags)
         {
             var File = ImageUrl;
             string Body = $"{{\"URL\":\"{File}\"}}";
@@ -149,7 +149,7 @@ In unserem Fall werden folgende benutzerdefinierte Tags (**celebrity**, **flag**
                 ComputerVisionPrediction CVObject = JsonConvert.DeserializeObject<ComputerVisionPrediction>(Response.Content.ReadAsStringAsync().Result);
 
                 if ((CVObject.categories[0].detail != null) && (CVObject.categories[0].detail.celebrities.Count() > 0))
-                {                 
+                {
                     ReviewTags[2].Value = "true";
                 }
             }
@@ -161,7 +161,7 @@ In unserem Fall werden folgende benutzerdefinierte Tags (**celebrity**, **flag**
 
 1. [Melden](https://azure.microsoft.com/services/cognitive-services/custom-vision-service/) Sie sich bei der [Custom Vision-API (Vorschauversion)](https://www.customvision.ai/) an.
 2. Erstellen Sie mit dem [Schnellstart](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier) Ihre benutzerdefinierte Klassifizierung, um die Erkennung des potenziellen Vorhandenseins von Flags, Spielzeugen und Stiften zu ermöglichen.
-   ![Schulungsbilder zur Custom Vision-API](images/tutorial-ecommerce-custom-vision.PNG)
+    ![Schulungsbilder zur Custom Vision-API](images/tutorial-ecommerce-custom-vision.PNG)
 3. [Rufen Sie die Vorhersageendpunkt-URL](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/use-prediction-api) für Ihre benutzerdefinierte Klassifizierung ab.
 4. Verweisen Sie auf den Projektquellcode, um die Funktion anzuzeigen, die zur Überprüfung Ihres Bilds den benutzerdefinierten Klassifizierungsvorhersageendpunkt aufruft.
 
@@ -179,13 +179,15 @@ In unserem Fall werden folgende benutzerdefinierte Tags (**celebrity**, **flag**
                 SaveCustomVisionTags(response.Content.ReadAsStringAsync().Result, ref ReviewTags);
             }
             return response.IsSuccessStatusCode;
-        }       
+        }
  
 ## <a name="reviews-for-human-in-the-loop"></a>Überprüfung auf Human-in-the-Loop-Simulationen
 
 1. In den vorherigen Abschnitten haben Sie eingehende Bilder auf nicht jugendfreie und freizügige Inhalte (Content Moderator), Prominente (Maschinelles Sehen) und Flags (Custom Vision) überprüft.
 2. Stellen Sie basierend auf unseren Übereinstimmungsschwellenwerten für die einzelnen Überprüfungen differenzierte Fälle für die durch Menschen durchgeführte Überprüfungen im Überprüfungstool zur Verfügung.
-        public static bool CreateReview(string ImageUrl, KeyValuePair[] Metadata) {
+
+        public static bool CreateReview(string ImageUrl, KeyValuePair[] Metadata)
+        {
 
             ReviewCreationRequest Review = new ReviewCreationRequest();
             Review.Item[0] = new ReviewItem();
@@ -207,7 +209,10 @@ In unserem Fall werden folgende benutzerdefinierte Tags (**celebrity**, **flag**
 
 1. Bei diesem Tutorial wird davon ausgegangen, dass ein Verzeichnis namens „C:Test“ mit einer Textdatei bestehend aus einer Liste von Bild-URLs vorhanden ist.
 2. Der folgende Code überprüft das Vorhandensein der Datei und liest alle URLs im Arbeitsspeicher.
-            // Suchen Sie nach einem Testverzeichnis mit einer Textdatei bestehend aus der Liste der Bild-URLs, um Folgendes zu überprüfen: var topdir = @"C:\test\"; var Urlsfile = topdir +"Urls.txt";
+
+            // Suchen Sie nach einem Testverzeichnis mit einer Textdatei bestehend aus der Liste der Bild-URLs, um Folgendes zu überprüfen:
+            var topdir = @"C:\test\";
+            var Urlsfile = topdir +"Urls.txt";
 
             if (!Directory.Exists(topdir))
                 return;
@@ -224,7 +229,12 @@ In unserem Fall werden folgende benutzerdefinierte Tags (**celebrity**, **flag**
 
 1. Diese Funktion der obersten Ebene führt Schleifen durch alle Bild-URLs in der bereits erwähnten Textdatei aus.
 2. Diese werden mit den einzelnen APIs überprüft und wenn die Zuverlässigkeitsbewertung unseren Kriterien entspricht, wird eine Überprüfung durch menschliche Moderatoren durchgeführt.
-             // Für jede Bild-URL in der Datei: foreach (var Url in Urls) { // Initiieren Sie ein neues Array mit Überprüfungstags: ReviewTags = new KeyValuePair[MAXTAGSCOUNT];
+
+            // Für jede Bild-URL in der Datei:
+            foreach (var Url in Urls)
+            {
+                // Initiieren Sie ein neues Array mit Überprüfungstags:
+                ReviewTags = new KeyValuePair[MAXTAGSCOUNT];
 
                 // Evaluate for potential adult and racy content with Content Moderator API
                 EvaluateAdultRacy(Url, ref ReviewTags);
