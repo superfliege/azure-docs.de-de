@@ -9,17 +9,16 @@ ms.assetid: 46dc13b4-eb2e-4142-a21c-94a156f760ee
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/30/2018
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: e8d07922334855a8133cd6271ee98bcfac2243d5
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 11a421a30508774d976def8d5836451743ecb6ea
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51282610"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53270381"
 ---
 # <a name="monitor-availability-and-responsiveness-of-any-web-site"></a>Überwachen der Verfügbarkeit und Reaktionsfähigkeit von Websites
 Nachdem Sie die Web-App oder Website an einen beliebigen Server bereitgestellt haben, können Sie Tests einrichten, um die Verfügbarkeit und Reaktionsfähigkeit zu überwachen. [Azure Application Insights](app-insights-overview.md) sendet regelmäßig Webanforderungen von verschiedenen Punkten auf der ganzen Welt an Ihre Anwendung. Sie werden benachrichtigt, wenn Ihre Anwendung langsam oder gar nicht reagiert.
@@ -52,7 +51,7 @@ Klicken Sie auf **All resources** (Alle Ressourcen), um das Blatt „Übersicht�
 * **Die URL** kann eine beliebige Webseite sein, die Sie testen möchten, aber sie muss über das öffentliche Internet sichtbar sein. Die URL kann eine Abfragezeichenfolge enthalten. So können Sie beispielsweise Ihre Datenbank abfragen. Wenn die URL in eine Umleitung aufgelöst wird, werden bis zu 10 Umleitungen verfolgt.
 * **Abhängige Anforderungen analysieren**: Wenn diese Option aktiviert ist, werden beim Test Bilder, Skripts, Formatdateien und andere Dateien angefordert, die Teil der zu testenden Webseite sind. Die aufgezeichnete Antwortzeit enthält auch die Zeit, die zum Abrufen dieser Dateien erforderlich ist. Der Test schlägt fehl, wenn alle diese Ressourcen innerhalb des Zeitlimits für den gesamten Test nicht erfolgreich heruntergeladen werden können. Wenn die Option nicht aktiviert ist, wird beim Test nur die Datei unter der von Ihnen angegebenen URL angefordert.
 
-* **Enable retries** (Wiederholungen aktivieren): Wenn diese Option aktiviert ist, wird der Test nach kurzer Zeit wiederholt, falls er fehlschlägt. Nur wenn drei aufeinander folgende Versuche scheitern, wird ein Fehler gemeldet. Nachfolgende Tests werden dann in der üblichen Häufigkeit ausgeführt. Die Wiederholung wird bis zum nächsten Erfolg vorübergehend eingestellt. Diese Regel wird an jedem Teststandort unabhängig angewendet. Wir empfehlen Ihnen, diese Option zu verwenden. Im Durchschnitt treten ca. 80% der Fehler bei einer Wiederholung nicht mehr auf.
+* **Wiederholungen aktivieren**:  Wenn diese Option aktiviert ist, wird der Test nach kurzer Zeit wiederholt, falls er fehlschlägt. Nur wenn drei aufeinander folgende Versuche scheitern, wird ein Fehler gemeldet. Nachfolgende Tests werden dann in der üblichen Häufigkeit ausgeführt. Die Wiederholung wird bis zum nächsten Erfolg vorübergehend eingestellt. Diese Regel wird an jedem Teststandort unabhängig angewendet. Wir empfehlen Ihnen, diese Option zu verwenden. Im Durchschnitt treten ca. 80% der Fehler bei einer Wiederholung nicht mehr auf.
 
 * **Testhäufigkeit**: Legt fest, wie oft der Test von jedem Teststandort aus ausgeführt wird. Mit einer Standardfrequenz von fünf Minuten und fünf Teststandorten wird Ihre Website im Durchschnitt jede Minute getestet.
 
@@ -70,7 +69,7 @@ Klicken Sie auf **All resources** (Alle Ressourcen), um das Blatt „Übersicht�
 
     **Inhaltsübereinstimmung**: Eine Zeichenfolge, zum Beispiel „Willkommen!“ Wir vergewissern uns, dass in jeder Antwort eine exakte Übereinstimmung unter Berücksichtigung der Groß-und Kleinschreibung vorkommt. Dies muss eine Zeichenfolge in Klartext, ohne Platzhalter sein. Vergessen Sie nicht, diese zu aktualisieren, wenn sich der Seiteninhalt ändert.
 
-* **Warnungsschwellenwert für Standort**: Es wird ein Mindestwert von 3/5 Standorten empfohlen. Das optimale Verhältnis zwischen dem Warnungsschwellenwert für Standorte und der Anzahl von Teststandorten lautet **Warnungsschwellenwert für Standort** = **Anzahl von Teststandorten** – 2, bei einer Mindestanzahl von fünf Teststandorten.
+* **Schwellenwert für den Warnungsspeicherort**: Es wird ein Mindestwert von 3/5 Standorten empfohlen. Das optimale Verhältnis zwischen dem Warnungsschwellenwert für Standorte und der Anzahl von Teststandorten lautet **Warnungsschwellenwert für Standort** = **Anzahl von Teststandorten** – 2, bei einer Mindestanzahl von fünf Teststandorten.
 
 ## <a name="multi-step-web-tests"></a>Webtests mit mehreren Schritten
 Sie können ein Szenario überwachen, das eine Sequenz mit mehreren URLs umfasst. Wenn Sie zum Beispiel eine Verkaufswebsite überwachen, können Sie testen, ob das Hinzufügen von Artikeln zum Einkaufswagen ordnungsgemäß funktioniert.
@@ -161,8 +160,8 @@ Wählen Sie einen bestimmten Test oder Standort aus, oder verringern Sie den Zei
 
 Zusätzlich zu den reinen Ergebnissen gibt es im Metrik-Explorer zwei Verfügbarkeitsmetriken: 
 
-1. Verfügbarkeit: Prozentsatz der erfolgreichen Tests für alle Testausführungen 
-2. Testdauer: Durchschnittliche Testdauer für alle Ausführungen
+1. Verfügbarkeit: Prozentsatz der erfolgreichen Tests für alle Testausführungen. 
+2. Testdauer: Durchschnittliche Testdauer für alle Testausführungen.
 
 Sie können Filter auf den Testnamen oder Standort anwenden, um Trends eines bestimmten Tests und/oder Standorts zu analysieren.
 
@@ -183,7 +182,7 @@ Aus einem Verfügbarkeitstestergebnis können Sie die Transaktionsdetails für a
 
 * Untersuchen Sie die vom Server erhaltene Antwort.
 * Diagnostizieren Sie den Fehler mit korrelierten, serverseitigen Telemetriedaten, die während der Verarbeitung des fehlgeschlagenen Verfügbarkeitstests gesammelt wurden.
-* Erstellen Sie in Git oder VSTS ein Problem oder eine Arbeitsaufgabe, um das Problem nachzuverfolgen. Der Fehler enthält einen Link zu diesem Ereignis.
+* Protokollieren Sie in Git oder Azure Boards ein Problem oder eine Arbeitsaufgabe, um das Problem nachzuverfolgen. Der Fehler enthält einen Link zu diesem Ereignis.
 * Öffnen Sie das Webtestergebnis in Visual Studio.
 
 Weitere Informationen zur End-to-End-Transaktionsdiagnoseerfahrung finden Sie [hier](app-insights-transaction-diagnostics.md).
@@ -203,7 +202,7 @@ Die Warnungsregel „X von Y Standorten“ ist in der [neuen einheitlichen Warnu
 
 ![Erstellen einer Erfahrung](./media/app-insights-monitor-web-app-availability/appinsights-71webtestUpload.png)
 
-**Wichtig**: Mit den [neuen einheitlichen Warnungen](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts), **müssen** der Schweregrad der Warnungsregel sowie die Benachrichtigungseinstellungen mit [Aktionsgruppen](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups) in der Warnungserfahrung konfiguriert werden. Ohne die folgenden Schritten erhalten Sie nur portalinterne Benachrichtigungen. 
+**Wichtig!**: Mit den [neuen einheitlichen Warnungen](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts), **müssen** der Schweregrad der Warnungsregel sowie die Benachrichtigungseinstellungen mit [Aktionsgruppen](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups) in der Warnungserfahrung konfiguriert werden. Ohne die folgenden Schritten erhalten Sie nur portalinterne Benachrichtigungen. 
 
 1. Nach dem Speichern des Verfügbarkeitstests klicken Sie auf den Namen des neuen Tests, um seine Details aufzurufen. Klicken Sie auf „Warnung bearbeiten“ ![Nach dem Speichern bearbeiten](./media/app-insights-monitor-web-app-availability/editaftersave.png).
 
@@ -218,7 +217,7 @@ Die Warnungsregel „X von Y Standorten“ ist in der [neuen einheitlichen Warnu
 ### <a name="alert-on-availability-metrics"></a>Warnung bei Verfügbarkeitsmetriken
 Mithilfe der [neuen einheitlichen Warnungen](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts) können Sie sowohl bei segmentierter aggregierter Verfügbarkeit als auch bei Testdauermetriken warnen:
 
-1. Wählen Sie eine Application Insights-Ressource in der Metrikenerfahrung aus, und wählen Sie eine Verfügbarkeitsmetrik aus: ![Verfügbarkeitsmetrikenauswahl](./media/app-insights-monitor-web-app-availability/selectmetric.png).
+1. Wählen Sie eine Application Insights-Ressource in der Metrikenerfahrung aus, und wählen Sie eine Verfügbarkeitsmetrik aus:  ![Verfügbarkeitsmetrikenauswahl](./media/app-insights-monitor-web-app-availability/selectmetric.png)
 
 2. Wenn Sie die Option „Warnungen“ über das Menü konfigurieren, gelangen Sie zur neuen Erfahrung, wo Sie bestimmte Tests oder Standorte auswählen können, für die Warnungsregeln eingerichtet werden sollen. Sie können hier außerdem die Aktionsgruppen für diese Warnungsregel konfigurieren.
     ![Konfiguration von Verfügbarkeitswarnungen](./media/app-insights-monitor-web-app-availability/availabilitymetricalert.png)
@@ -282,13 +281,13 @@ Nach Abschluss des Tests werden die Antwortzeiten und Erfolgsraten angezeigt.
 
 ## <a name="automation"></a>Automation
 * [Verwenden Sie PowerShell-Skripts zum automatischen Einrichten eines Verfügbarkeitstests](app-insights-powershell.md#add-an-availability-test).
-* Richten Sie einen [Webhook](../monitoring-and-diagnostics/insights-webhooks-alerts.md) ein, der bei einer Warnung aufgerufen wird.
+* Richten Sie einen [Webhook](../azure-monitor/platform/alerts-webhooks.md) ein, der bei einer Warnung aufgerufen wird.
 
 ## <a name="qna"></a> Häufig gestellte Fragen (FAQ)
 
 * *Die Website sieht korrekt aus, aber ich sehe Testfehler. Warum warnt mich Application Insights?*
 
-    * Hat Ihr Test „Abhängige Anforderungen analysieren“ aktiviert? Dies führt zu einer strengen Überprüfung von Ressourcen wie Skripts, Bildern usw. Diese Typen von Fehlern machen sich in einem Browser möglicherweise nicht bemerkbar. Überprüfen Sie alle Bilder, Skripts, Stylesheets und anderen Dateien, die von der Seite geladen werden. Wenn eines dieser Elemente einen Fehler verursacht, wird der Test auch dann als fehlerhaft gemeldet, wenn die HTML-Hauptseite problemlos geladen wird. Deaktivieren Sie einfach in der Testkonfiguration die Option „Abhängige Anforderungen analysieren“, um solche Ressourcenfehler vom Test auszuschließen. 
+    * Hat Ihr Test „Abhängige Anforderungen analysieren“ aktiviert? Dies führt zu einer strengen Überprüfung von Ressourcen wie Skripts, Bildern usw. Diese Typen von Fehlern machen sich in einem Browser möglicherweise nicht bemerkbar.  Überprüfen Sie alle Bilder, Skripts, Stylesheets und anderen Dateien, die von der Seite geladen werden. Wenn eines dieser Elemente einen Fehler verursacht, wird der Test auch dann als fehlerhaft gemeldet, wenn die HTML-Hauptseite problemlos geladen wird. Deaktivieren Sie einfach in der Testkonfiguration die Option „Abhängige Anforderungen analysieren“, um solche Ressourcenfehler vom Test auszuschließen. 
 
     * Stellen Sie sicher, dass die Konfigurationsoption „Enable retries for test failures" (Wiederholungen bei Testfehlern zulassen) aktiviert ist, um Störungen infolge vorübergehender Netzwerkprobleme zu verringern. Sie können den Test auch an mehreren Standorten durchführen und den Schwellenwert der Warnungsregel entsprechen verwalten, um zu verhindern, dass standortspezifische Probleme übermäßige Warnungen auslösen.
 
@@ -318,7 +317,7 @@ Nach Abschluss des Tests werden die Antwortzeiten und Erfolgsraten angezeigt.
 
 * *Kann ich Code aus meinem Webtest aufrufen?*
 
-    Nein. Die Schritte des Tests müssen in der Webtest-Datei enthalten sein. Und Sie können keine anderen Webtests aufrufen oder Schleifen verwenden. Aber es gibt mehrere hilfreiche Plug-Ins.
+     Nein. Die Schritte des Tests müssen in der Webtest-Datei enthalten sein. Und Sie können keine anderen Webtests aufrufen oder Schleifen verwenden. Aber es gibt mehrere hilfreiche Plug-Ins.
 
 * *Wird HTTPS unterstützt?*
 
