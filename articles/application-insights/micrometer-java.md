@@ -9,16 +9,15 @@ ms.assetid: 051d4285-f38a-45d8-ad8a-45c3be828d91
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: lagayhar
-ms.openlocfilehash: 25ee061f489df0a666d59871661478f987b28e3f
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: 378516066e3b4a3436a2952616ea877d9a49d5d4
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51344806"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53255311"
 ---
 # <a name="how-to-use-micrometer-with-azure-application-insights-java-sdk"></a>Verwenden von Micrometer mit dem Azure Application Insights Java SDK
 Die Micrometer-Anwendungsüberwachung misst die Metriken für JVM-basierten Anwendungscode und ermöglicht den Export der Daten in Ihre bevorzugten Überwachungssysteme. In diesem Artikel erfahren Sie, wie Sie Micrometer mit Ihren Application Insights Spring Boot- und Spring Boot-fremden Anwendungen verwenden.
@@ -229,7 +228,7 @@ Schritte:
 
 Weitere Informationen zu Metriken finden Sie in der [Micrometerdokumentation](https://micrometer.io/docs/).
 
-Weitere Beispielcodes zur Erstellung verschiedener Arten von Metriken finden Sie im [offiziellen Micrometer-Github-Repository](https://github.com/micrometer-metrics/micrometer/tree/master/samples/micrometer-samples-core/src/main/java/io/micrometer/core/samples).
+Weiteren Beispielcode zum Erstellen verschiedener Arten von Metriken finden Sie im [offiziellen Micrometer-GitHub-Repository](https://github.com/micrometer-metrics/micrometer/tree/master/samples/micrometer-samples-core/src/main/java/io/micrometer/core/samples).
 
 ## <a name="how-to-bind-additional-metrics-collection"></a>Gewusst wie: Binden zusätzlicher Metrikauflistungen
 
@@ -243,7 +242,7 @@ Erstellen Sie ein Bean der jeweiligen Metrikkategorie. Wie benötigen beispielsw
         Return new GuavaCacheMetrics();
     }
 ```
-Es gibt mehrere Metriken, die standardmäßig nicht aktiviert sind, aber in der oben genannten Weise gebunden werden können. Eine vollständige Liste finden Sie im [offiziellen Micrometer-Github-Repository](https://github.com/micrometer-metrics/micrometer/tree/master/micrometer-core/src/main/java/io/micrometer/core/instrument/binder ).
+Es gibt mehrere Metriken, die standardmäßig nicht aktiviert sind, aber in der oben genannten Weise gebunden werden können. Eine vollständige Liste finden Sie im [offiziellen Micrometer-GitHub-Repository](https://github.com/micrometer-metrics/micrometer/tree/master/micrometer-core/src/main/java/io/micrometer/core/instrument/binder ).
 
 ### <a name="non-spring-apps"></a>Spring-fremde Apps
 Fügen Sie den folgenden Bindungscode zur Konfigurationsdatei hinzu:

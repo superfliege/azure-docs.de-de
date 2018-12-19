@@ -8,16 +8,15 @@ manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/25/2017
 ms.author: mbullwin
-ms.openlocfilehash: 65909e13c75ae4d2577ea29f562b841a1eb20477
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: b5d64f374152cc537825bd49210c116deec87533
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51256424"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52870587"
 ---
 # <a name="automate-azure-application-insights-processes-with-the-connector-for-microsoft-flow"></a>Automatisieren von Azure Application Insights-Prozessen mit dem Connector für Microsoft Flow
 
@@ -33,9 +32,9 @@ Sie können auch weitere Aktionen hinzufügen. Mit Microsoft Flow stehen Ihnen H
 
 In diesem Tutorial erfahren Sie, wie Sie einen Flow erstellen, der zum Gruppieren von Attributen in den Daten für eine Webanwendung den Autoclusteralgorithmus von Analytics verwendet. Die Ergebnisse werden automatisch per E-Mail gesendet. Dies ist nur eins von vielen Beispielen für die gemeinsame Verwendung von Microsoft Flow und Application Insights Analytics. 
 
-### <a name="step-1-create-a-flow"></a>Schritt 1: Erstellen eines Flow
+### <a name="step-1-create-a-flow"></a>Schritt 1: Erstellen eines Datenflusses
 1. Melden Sie sich bei [Microsoft Flow](https://flow.microsoft.com) an, und wählen Sie **Meine Flows** aus.
-1. Klicken Sie auf **Flow ohne Vorlage erstellen**.
+2. Klicken Sie auf **Flow ohne Vorlage erstellen**.
 
 ### <a name="step-2-create-a-trigger-for-your-flow"></a>Schritt 2: Erstellen eines Triggers für Ihren Flow
 1. Wählen Sie **Zeitplan** und anschließend **Zeitplan – Wiederholung** aus.
@@ -81,7 +80,7 @@ Vergewissern Sie sich beim Erstellen eigener Abfragen, dass sie ordnungsgemäß 
     
     ![Konfigurationsfenster für Analytics-Abfragen](./media/app-insights-automate-with-flow/flow4.png)
 
-### <a name="step-6-configure-the-flow-to-send-email"></a>Schritt 6: Konfigurieren des Flow zum Senden von E-Mails
+### <a name="step-6-configure-the-flow-to-send-email"></a>Schritt 6: Konfigurieren des Flows zum Senden von E-Mails
 
 1. Klicken Sie auf **Neuer Schritt** und anschließend auf **Aktion hinzufügen**.
 1. Suchen Sie nach **Office 365 Outlook**.
@@ -111,7 +110,7 @@ Vergewissern Sie sich beim Erstellen eigener Abfragen, dass sie ordnungsgemäß 
 
     ![Fenster zum Konfigurieren von Office 365-E-Mails](./media/app-insights-automate-with-flow/flow7.png)
 
-### <a name="step-7-save-and-test-your-flow"></a>Schritt 7: Speichern und Testen Ihres Flow
+### <a name="step-7-save-and-test-your-flow"></a>Schritt 7: Speichern und Testen Ihres Flows
 - Geben Sie im Feld **Flowname** einen Namen für den Flow ein, und klicken Sie anschließend auf **Flow erstellen**.
 
     ![Fenster für die Flowerstellung](./media/app-insights-automate-with-flow/flow8.png)
@@ -125,7 +124,7 @@ Wenn der Flow ausgeführt wird, erhalten die Empfänger, die Sie in der E-Mail-L
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie mehr über die Erstellung von [Analytics-Abfragen](../log-analytics/query-language/get-started-queries.md).
+- Erfahren Sie mehr über die Erstellung von [Analytics-Abfragen](../azure-monitor/log-query/get-started-queries.md).
 - Erfahren Sie mehr über [Microsoft Flow](https://ms.flow.microsoft.com).
 
 

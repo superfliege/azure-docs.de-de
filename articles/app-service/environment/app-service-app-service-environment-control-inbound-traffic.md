@@ -1,5 +1,5 @@
 ---
-title: Steuern von eingehendem Datenverkehr in eine App Service-Umgebung
+title: Steuern von eingehendem Datenverkehr in eine App Service-Umgebung – Azure
 description: Erfahren Sie, wie Netzwerksicherheitsregeln für das Steuern des in einer App Service-Umgebung eingehenden Datenverkehrs konfiguriert werden.
 services: app-service
 documentationcenter: ''
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/11/2017
 ms.author: stefsch
-ms.openlocfilehash: ed72bf3202d6cb2d2161bc0df693d3e6a1fc58ef
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.custom: seodec18
+ms.openlocfilehash: 84575dcb67845a074ce19cf9d819e1dda3f90e20
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "22987005"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53271960"
 ---
 # <a name="how-to-control-inbound-traffic-to-an-app-service-environment"></a>Steuern von eingehendem Datenverkehr in eine App Service-Umgebung
 ## <a name="overview"></a>Übersicht
@@ -38,13 +39,13 @@ Bevor Sie den eingehenden Netzwerkdatenverkehr mithilfe einer Netzwerksicherheit
 
 Im Folgenden sehen Sie eine Liste der Ports, die von einer App Service-Umgebung verwendet werden. Alle Ports haben den Typ **TCP**, sofern nichts anderes angegeben ist:
 
-* 454: **Erforderlicher Port**, der von der Azure-Infrastruktur für die Verwaltung und Wartung von App Service-Umgebungen über SSL verwendet wird.  Der Datenverkehr für diesen Port darf nicht blockiert werden.  Dieser Port ist immer an die öffentliche VIP-Adresse einer ASE gebunden.
-* 455: **Erforderlicher Port**, der von der Azure-Infrastruktur für die Verwaltung und Wartung von App Service-Umgebungen über SSL verwendet wird.  Der Datenverkehr für diesen Port darf nicht blockiert werden.  Dieser Port ist immer an die öffentliche VIP-Adresse einer ASE gebunden.
-* 80: Standardport für eingehenden HTTP-Datenverkehr in Apps, die in App Service-Plänen in einer App Service-Umgebung ausgeführt werden.  Dieser Port ist in einer für den internen Lastenausgleich geeigneten App Service-Umgebung an die Adresse der ASE für den internen Lastenausgleich gebunden.
+* 454:  **Erforderlicher Port**, der von der Azure-Infrastruktur für die Verwaltung und Wartung von App Service-Umgebungen über SSL verwendet wird.  Der Datenverkehr für diesen Port darf nicht blockiert werden.  Dieser Port ist immer an die öffentliche VIP-Adresse einer ASE gebunden.
+* 455:  **Erforderlicher Port**, der von der Azure-Infrastruktur für die Verwaltung und Wartung von App Service-Umgebungen über SSL verwendet wird.  Der Datenverkehr für diesen Port darf nicht blockiert werden.  Dieser Port ist immer an die öffentliche VIP-Adresse einer ASE gebunden.
+* 80:  Standardport für eingehenden HTTP-Datenverkehr in Apps, die in App Service-Plänen in einer App Service-Umgebung ausgeführt werden.  Dieser Port ist in einer für den internen Lastenausgleich geeigneten App Service-Umgebung an die Adresse der ASE für den internen Lastenausgleich gebunden.
 * 443: Standardport für eingehenden SSL-Datenverkehr in Apps, die in App Service-Plänen in einer App Service-Umgebung ausgeführt werden.  Dieser Port ist in einer für den internen Lastenausgleich geeigneten App Service-Umgebung an die Adresse der ASE für den internen Lastenausgleich gebunden.
-* 21: Steuerungskanal für FTP.  Dieser Port kann sicher blockiert werden, wenn FTP nicht verwendet wird.  Dieser Port kann in einer für den internen Lastenausgleich geeigneten App Service-Umgebung an die Adresse der ASE für den internen Lastenausgleich gebunden werden.
-* 990: Steuerungskanal für FTPS.  Dieser Port kann sicher blockiert werden, wenn FTPS nicht verwendet wird.  Dieser Port kann in einer für den internen Lastenausgleich geeigneten App Service-Umgebung an die Adresse der ASE für den internen Lastenausgleich gebunden werden.
-* 10001 10020: Datenkanäle für FTP.  Wie der Steuerungskanal können diese Ports sicher blockiert werden, wenn FTP nicht verwendet wird.  Dieser Port kann in einer für den internen Lastenausgleich geeigneten App Service-Umgebung an die Adresse der ASE für den internen Lastenausgleich gebunden werden.
+* 21:  Steuerungskanal für FTP.  Dieser Port kann sicher blockiert werden, wenn FTP nicht verwendet wird.  Dieser Port kann in einer für den internen Lastenausgleich geeigneten App Service-Umgebung an die Adresse der ASE für den internen Lastenausgleich gebunden werden.
+* 990:  Steuerungskanal für FTPS.  Dieser Port kann sicher blockiert werden, wenn FTPS nicht verwendet wird.  Dieser Port kann in einer für den internen Lastenausgleich geeigneten App Service-Umgebung an die Adresse der ASE für den internen Lastenausgleich gebunden werden.
+* 10001–10020: Datenkanäle für FTP.  Wie der Steuerungskanal können diese Ports sicher blockiert werden, wenn FTP nicht verwendet wird.  Dieser Port kann in einer für den internen Lastenausgleich geeigneten App Service-Umgebung an die Adresse der ASE für den internen Lastenausgleich gebunden werden.
 * 4016: Wird zum Remotedebuggen in Visual Studio 2012 verwendet.  Dieser Port kann sicher blockiert werden, wenn die Funktion nicht verwendet wird.  Dieser Port ist in einer für den internen Lastenausgleich geeigneten App Service-Umgebung an die Adresse der ASE für den internen Lastenausgleich gebunden.
 * 4018: Wird zum Remotedebuggen in Visual Studio 2013 verwendet.  Dieser Port kann sicher blockiert werden, wenn die Funktion nicht verwendet wird.  Dieser Port ist in einer für den internen Lastenausgleich geeigneten App Service-Umgebung an die Adresse der ASE für den internen Lastenausgleich gebunden.
 * 4020: Wird zum Remotedebuggen in Visual Studio 2015 verwendet.  Dieser Port kann sicher blockiert werden, wenn die Funktion nicht verwendet wird.  Dieser Port ist in einer für den internen Lastenausgleich geeigneten App Service-Umgebung an die Adresse der ASE für den internen Lastenausgleich gebunden.

@@ -1,6 +1,6 @@
 ---
 title: Azure Application Insights für ASP.NET Core | Microsoft-Dokumentation
-description: Überwachen Sie Webanwendungen auf Verfügbarkeit, Leistung und Auslastung.
+description: Überwachen Sie ASP.NET Core-Webanwendungen auf Verfügbarkeit, Leistung und Auslastung.
 services: application-insights
 documentationcenter: .net
 author: mrbullwinkle
@@ -9,16 +9,15 @@ ms.assetid: 3b722e47-38bd-4667-9ba4-65b7006c074c
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/03/2018
 ms.author: mbullwin
-ms.openlocfilehash: 3e838cd45eefa5b5b644992bb8eae36abf3ec33a
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 80f4d8544d18535b853323699a174ec5665ad5a3
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52276345"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53277028"
 ---
 # <a name="application-insights-for-aspnet-core"></a>Application Insights für ASP.NET Core
 

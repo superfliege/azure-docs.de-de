@@ -1,5 +1,5 @@
 ---
-title: Zentrales Hochskalieren einer App in Azure | Microsoft Docs
+title: Zentrales Hochskalieren von Features und Kapazitäten – Azure App Service | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie eine App in Azure App Service zentral hochskalieren, um Kapazität und Features hinzuzufügen.
 services: app-service
 documentationcenter: ''
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2016
 ms.author: cephalin
-ms.openlocfilehash: 79450cdd0928304c3b98cf13f8aaca7a1bf11d33
-ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
+ms.custom: seodec18
+ms.openlocfilehash: 2fb1f5ad0c3b46623550cbcc1204761b57f6093b
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2018
-ms.locfileid: "43381934"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53251051"
 ---
 # <a name="scale-up-an-app-in-azure"></a>Zentrales Hochskalieren einer App in Azure
 
@@ -29,8 +30,8 @@ ms.locfileid: "43381934"
 
 In diesem Artikel wird die Vorgehensweise beim Skalieren Ihrer App in Azure App Service beschrieben. Es gibt zwei Workflows für die Skalierung: zentrales Hochskalieren und horizontales Hochskalieren. Dieser Artikel befasst sich mit dem Workflow zum zentralen Hochskalieren.
 
-* [Zentrales Hochskalieren:](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling)Bei dieser Methode erhalten Sie mehr CPUs, mehr Arbeitsspeicher und mehr Speicherplatz sowie zusätzliche Features wie dedizierte virtuelle Computer, benutzerdefinierte Domänen und Zertifikate, Stagingslots, automatische Skalierung und mehr. Zum zentralen Hochskalieren muss der Tarif des App Service-Plans geändert werden, zu dem die App gehört.
-* [Horizontales Hochskalieren:](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling) Bei dieser Methode wird die Anzahl von VM-Instanzen erhöht, die Ihre App ausführen.
+* [Zentrales Hochskalieren](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling): Bei dieser Methode erhalten Sie mehr CPUs, mehr Arbeitsspeicher und mehr Speicherplatz sowie zusätzliche Features wie dedizierte virtuelle Computer, benutzerdefinierte Domänen und Zertifikate, Stagingslots, automatische Skalierung und mehr. Zum zentralen Hochskalieren muss der Tarif des App Service-Plans geändert werden, zu dem die App gehört.
+* [Horizontales Skalieren](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling): Bei dieser Methode wird die Anzahl von VM-Instanzen erhöht, die Ihre App ausführen.
   Die Instanzenanzahl kann je nach Tarif auf bis zu 20 erhöht werden. [App Service-Umgebungen](environment/intro.md) im Tarif **Isolated** erhöhen die Anzahl der Instanzen beim horizontalen Hochskalieren weiter auf 100. Weitere Informationen zum horizontalen Hochskalieren finden Sie unter [Scale instance count manually or automatically](../monitoring-and-diagnostics/insights-how-to-scale.md) (Manuelles oder automatisches Skalieren der Instanzanzahl). Dort erfahren Sie, wie Sie die automatische Skalierung verwenden, d.h. das automatische Skalieren der Instanzenzahl basierend auf vordefinierten Regeln und Zeitplänen.
 
 Diese Skalierungseinstellungen werden innerhalb von Sekunden angewendet und wirken sich auf alle Apps im [App Service-Plan](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)aus.
@@ -98,7 +99,7 @@ Eine Tabelle der Dienstbeschränkungen, Kontingente und Einschränkungen sowie u
   
     [Größen virtueller Computer und Clouddienste für Microsoft Azure][vmsizes]
   
-* Informationen zu den Best Practices für Azure App Service, einschließlich dem Aufbau einer skalierbaren, robusten Architektur, finden Sie unter [Best Practices: Azure App Service-Web-Apps](https://azure.microsoft.com/blog/best-practices-windows-azure-websites-waws/).
+* Informationen zu den bewährten Methoden für Azure App Service, einschließlich dem Aufbau einer skalierbaren, robusten Architektur, finden Sie unter [Bewährte Methoden: Azure App Service-Web-Apps](https://azure.microsoft.com/blog/best-practices-windows-azure-websites-waws/).
 * Videos zum Skalieren von App Service-Apps finden Sie in den folgenden Ressourcen:
   
   * [Wann sollte man Azure-Websites skalieren? - Mit Stefan Schackow](https://azure.microsoft.com/resources/videos/azure-web-sites-free-vs-standard-scaling/)
@@ -107,7 +108,7 @@ Eine Tabelle der Dienstbeschränkungen, Kontingente und Einschränkungen sowie u
 
 <!-- LINKS -->
 [vmsizes]:https://azure.microsoft.com/pricing/details/app-service/
-[SQLaccountsbilling]:http://go.microsoft.com/fwlink/?LinkId=234930
+[SQLaccountsbilling]:https://go.microsoft.com/fwlink/?LinkId=234930
 [azuresubscriptions]:https://account.windowsazure.com/subscriptions
 [portal]: https://portal.azure.com/
 

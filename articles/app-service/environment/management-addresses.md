@@ -1,5 +1,5 @@
 ---
-title: Azure App Service-Umgebung Management-Adressen
+title: App Service-Umgebung Management-Adressen – Azure
 description: Listet die Management-Adressen auf, die verwendet werden, um eine App Service-Umgebung zu befehligen
 services: app-service
 documentationcenter: na
@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/29/2018
 ms.author: ccompy
-ms.openlocfilehash: 590679daff20f9c469fb8fcfcc0fbbad77f91b5b
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.custom: seodec18
+ms.openlocfilehash: 7fb39886b19a2229188821eb39d4fb8a5928bb43
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47162853"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53276678"
 ---
 # <a name="app-service-environment-management-addresses"></a>App Service-Umgebung Management-Adressen
 
@@ -46,7 +47,7 @@ Sie können die Verwaltungsadressen, die zu Ihrer App Service-Umgebung passen, m
 
 Die API gibt ein JSON-Dokument zurück, das alle eingehenden IP-Adressen für Ihre App Service-Umgebung enthält. Die Adressliste enthält die Verwaltungsadressen, die die virtuelle IP Ihrer App Service-Umgebung und der Subnetz-Adressbereich der App Service-Umgebung selbst verwendet haben.  
 
-Verwenden Sie die folgenden Befehle zum Aufrufen der API mit [armclient](http://github.com/projectkudu/ARMClient), setzen Sie jedoch Ihre Abonnement-ID, Ihre Ressourcengruppe und den Namen Ihrer App Service-Umgebung ein.  
+Verwenden Sie die folgenden Befehle zum Aufrufen der API mit [armclient](https://github.com/projectkudu/ARMClient), setzen Sie jedoch Ihre Abonnement-ID, Ihre Ressourcengruppe und den Namen Ihrer App Service-Umgebung ein.  
 
     armclient login
     armclient get /subscriptions/<subscription ID>/resourceGroups/<resource group>/providers/Microsoft.Web/hostingEnvironments/<ASE Name>/inboundnetworkdependenciesendpoints?api-version=2016-09-01

@@ -1,23 +1,19 @@
 ---
 title: Konfigurieren der SSL-Richtlinie für Azure Application Gateway – PowerShell
-description: Diese Seite enthält Anweisungen zum Konfigurieren der SSL-Richtlinie für Azure Application Gateway.
-documentationcenter: na
+description: Dieser Artikel enthält Anweisungen zum Konfigurieren der SSL-Richtlinie für Azure Application Gateway.
 services: application-gateway
 author: vhorne
-manager: jpconnock
 ms.service: application-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 3/27/2018
+ms.date: 12/3/2018
 ms.author: victorh
-ms.openlocfilehash: 4c9ca5cee14603fb39115defc574aa7e956886ba
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 7afa628ea455aa28f1717de8da66b631baeee4f1
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
-ms.locfileid: "30232135"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52870452"
 ---
 # <a name="configure-ssl-policy-versions-and-cipher-suites-on-application-gateway"></a>Konfigurieren von SSL-Richtlinienversionen und Verschlüsselungssammlungen für Application Gateway
 
@@ -119,7 +115,8 @@ Im folgenden Beispiel wird eine benutzerdefinierte SSL-Richtlinie für ein Anwen
 
 > [!IMPORTANT]
 > Beim Konfigurieren einer benutzerdefinierten SSL-Richtlinie muss mindestens eine Verschlüsselungssammlung aus der folgenden Liste ausgewählt werden. Application Gateway verwendet RSA-SHA256-Verschlüsselungssammlungen für die Back-End-Verwaltung.
-> * TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 
+> * TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
+> * TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
 > * TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
 > * TLS_DHE_RSA_WITH_AES_128_GCM_SHA256
 > * TLS_RSA_WITH_AES_128_GCM_SHA256
@@ -199,7 +196,7 @@ $appgw = New-AzureRmApplicationGateway -Name appgwtest -ResourceGroupName $rg.Re
 
 ## <a name="update-an-existing-application-gateway-with-a-pre-defined-ssl-policy"></a>Aktualisieren eines vorhandenen Anwendungsgateways mit einer vordefinierten SSL-Richtlinie
 
-Übergeben Sie folgende Parameter, um eine benutzerdefinierte SSL-Richtlinie festzulegen: **PolicyType**, **MinProtocolVersion**, **CipherSuite** und **ApplicationGateway**. Übergeben Sie folgende Parameter, um eine vordefinierte SSL-Richtlinie festzulegen: **PolicyType**, **PolicyName** und **ApplicationGateway**. Wenn Sie versuchen, andere Parameter zu übergeben, tritt beim Erstellen oder Aktualisieren des Anwendungsgateways ein Fehler auf.
+Um eine benutzerdefinierte SSL-Richtlinie festzulegen, übergeben Sie folgende Parameter: **PolicyType**, **MinProtocolVersion**, **CipherSuite** und **ApplicationGateway**. Um eine vordefinierte SSL-Richtlinie festzulegen, übergeben Sie folgende Parameter: **PolicyType**, **PolicyName** und **ApplicationGateway**. Wenn Sie versuchen, andere Parameter zu übergeben, tritt beim Erstellen oder Aktualisieren des Anwendungsgateways ein Fehler auf.
 
 Das folgende Beispiel enthält Codebeispiele für die benutzerdefinierte Richtlinie und für die vordefinierte Richtlinie. Kommentieren Sie die Richtlinie aus, die Sie verwenden möchten.
 

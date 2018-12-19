@@ -1,5 +1,5 @@
 ---
-title: Zertifikate und die Azure App Service-Umgebung
+title: Zertifikate und die App Service-Umgebung – Azure
 description: Erläuterung zahlreicher Themen rund um Zertifikate in einer ASE
 services: app-service
 documentationcenter: na
@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/29/2018
 ms.author: ccompy
-ms.openlocfilehash: 3d417d560d8a88100f31def27c7db5f9b2493062
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.custom: seodec18
+ms.openlocfilehash: bcb0c806d916b9dff4461cad829a1d75e8df7cf6
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47167798"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53271894"
 ---
 # <a name="certificates-and-the-app-service-environment"></a>Zertifikate und die App Service-Umgebung 
 
@@ -32,7 +33,7 @@ Wenn Sie eine externe ASE verwenden, dann sind Ihre Apps unter [app-name].[ase-n
 
 Es gibt zwei Möglichkeiten, Zertifikate mit Ihrer ILB-ASE zu konfigurieren.  Sie können ein Platzhalterzertifikat für die ILB-ASE festlegen oder Zertifikate für die einzelnen Web-Apps in der ASE festlegen.  Unabhängig davon, welche Auswahl Sie treffen, müssen die folgenden Zertifikatsattribute ordnungsgemäß konfiguriert sein:
 
-- **Antragsteller**: Dieses Attribut muss für ein ILB-ASE-Platzhalterzertifikat auf *.[ihre-stammdomäne-hier] festgelegt werden. Wenn Sie das Zertifikat für Ihre App erstellen, dann sollte es [app-name].[ihre-stammdomäne-hier] lauten.
+- **:** Dieses Attribut muss für ein ILB-ASE-Platzhalterzertifikat auf *.[ihre-stammdomäne-hier] festgelegt werden. Wenn Sie das Zertifikat für Ihre App erstellen, dann sollte es [app-name].[ihre-stammdomäne-hier] lauten.
 - **Alternativer Antragstellername**: Dieses Attribut muss sowohl *.[ihre-stammdomäne-hier] als auch *.scm.[ihre-stammdomäne-hier] für das ILB-ASE-Platzhalterzertifikat enthalten. Wenn Sie das Zertifikat für Ihre App erstellen, dann sollte es [app-name].[ihre-stammdomäne-hier] und [app-name].scm.[ihre-stammdomäne-hier] lauten.
 
 Als dritte Variante können Sie ein ILB-ASE-Zertifikat erstellen, das alle Ihre individuellen App-Namen im SAN des Zertifikats anstelle einer Platzhalterreferenz enthält. Das Problem mit dieser Methode ist, dass Sie im Voraus die Namen der Apps wissen müssen, die Sie in die ASE einfügen, oder dass Sie das ILB-ASE-Zertifikat ständig aktualisieren müssen.

@@ -10,16 +10,15 @@ ms.assetid: f8ebde72-f819-4ba5-afa2-31dbd49509a5
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: 1061f356d75037bae440a5289413b2b5d17af1c9
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
+ms.openlocfilehash: 4400430e012dee7caceba62637db1bf626d02b61
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43246951"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53277337"
 ---
 # <a name="set-alerts-in-application-insights"></a>Einrichten von Warnungen in Application Insights
 [Azure Application Insights][start] kann Sie bei Änderungen der Leistung oder von Nutzungsmetriken in Ihrer Web-App benachrichtigen. 
@@ -44,7 +43,7 @@ In diesem Artikel werden Metrikwarnungen beschrieben.
 * Achten Sie auf die Einheiten, die beim Eingeben des Schwellenwerts gefordert sind.
 * Wenn Sie das Feld „E-Mail an Besitzer...“ aktivieren, werden Warnungen per E-Mail an alle Benutzer gesendet, die Zugriff auf diese Ressourcengruppe haben. Wenn Sie diese Personengruppe erweitern möchten, fügen Sie die entsprechenden Benutzer der [Ressourcengruppe oder dem Abonnement](app-insights-resources-roles-access-control.md) (nicht der Ressource) hinzu.
 * Wenn Sie „Weitere E-Mail-Adressen“ angeben, werden Warnungen an diese Einzelpersonen oder Gruppen gesendet (unabhängig davon, ob Sie das Kontrollkästchen „E-Mail an Besitzer...“ aktiviert haben). 
-* Legen Sie eine [Webhookadresse](../monitoring-and-diagnostics/insights-webhooks-alerts.md) fest, wenn Sie eine Web-App eingerichtet haben, die auf Warnungen reagiert. Der Aufruf erfolgt bei Aktivierung der Warnung und bei Auflösung der Warnung. (Beachten Sie aber, dass Abfrageparameter derzeit nicht als Webhook-Eigenschaften übergeben werden.)
+* Legen Sie eine [Webhookadresse](../azure-monitor/platform/alerts-webhooks.md) fest, wenn Sie eine Web-App eingerichtet haben, die auf Warnungen reagiert. Der Aufruf erfolgt bei Aktivierung der Warnung und bei Auflösung der Warnung. (Beachten Sie aber, dass Abfrageparameter derzeit nicht als Webhook-Eigenschaften übergeben werden.)
 * Sie können die Warnung deaktivieren oder aktivieren: Die zugehörigen Schaltflächen finden Sie oben auf dem Blatt.
 
 *Ich sehe keine Schaltfläche zum Hinzufügen von Benachrichtigungen.* 
@@ -70,7 +69,7 @@ Der Verlauf von Statusänderungen befindet sich im Aktivitätsprotokoll:
 ![Klicken Sie auf dem Blatt „Übersicht“ auf „Einstellungen“, „Überwachungsprotokolle“.](./media/app-insights-alerts/09-alerts.png)
 
 ## <a name="how-alerts-work"></a>Funktionsweise von Warnungen
-* Eine Warnung kann drei Zustände annehmen: „Nie aktiviert“, „Aktiviert“ und „Gelöst“. „Aktiviert“ bedeutet, dass die angegebene Bedingung bei der letzten Auswertung erfüllt wurde.
+* Eine Warnung kann drei Zustände annehmen: „Nie aktiviert“, „Aktiviert“ und „Aufgelöst“. „Aktiviert“ bedeutet, dass die angegebene Bedingung bei der letzten Auswertung erfüllt wurde.
 * Wenn sich der Status einer Warnung ändert, wird eine Benachrichtigung generiert. (Wenn die Bedingung für die Warnung bereits erfüllt war, als Sie die Warnung erstellt haben, erhalten Sie möglicherweise erst dann eine Benachrichtigung, wenn die Bedingung nicht mehr erfüllt wird.)
 * Jede Benachrichtigung generiert eine E-Mail-Nachricht, wenn Sie das E-Mail-Feld aktiviert oder E-Mail-Adressen angegeben haben. Sie können auch die Dropdownliste „Benachrichtigungen“ überprüfen.
 * Eine Warnung wird jedes Mal ausgewertet, wenn eine Metrik empfangen wird, sonst aber aus keinem anderen Grund.
@@ -94,7 +93,7 @@ Vergessen Sie nicht, dass bei der [proaktiven Fehlerquotendiagnose](app-insights
 
 ## <a name="automation"></a>Automation
 * [Verwenden von PowerShell zum Automatisieren der Einrichtung von Warnungen](app-insights-powershell-alerts.md)
-* [Verwenden von Webhooks zum Automatisieren der Reaktion auf Warnungen](../monitoring-and-diagnostics/insights-webhooks-alerts.md)
+* [Verwenden von Webhooks zum Automatisieren der Reaktion auf Warnungen](../azure-monitor/platform/alerts-webhooks.md)
 
 ## <a name="video"></a>Video
 

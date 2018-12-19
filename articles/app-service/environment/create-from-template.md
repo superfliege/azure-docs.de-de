@@ -1,5 +1,5 @@
 ---
-title: Erstellen einer Azure App Service-Umgebung mit einer Resource Manager-Vorlage
+title: Erstellen einer App Service-Umgebung mit einer Resource Manager-Vorlage – Azure
 description: Dieser Artikel beschreibt das Erstellen einer externen oder ILB-basierten Azure App Service-Umgebung mithilfe einer Resource Manager-Vorlage.
 services: app-service
 documentationcenter: na
@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
-ms.openlocfilehash: 62eecaba261ac2478ab6d1c7d47067f43a58d976
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.custom: seodec18
+ms.openlocfilehash: 9056abdd57640026d04779a3c5c3a201095ea045
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50231354"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53277470"
 ---
 # <a name="create-an-ase-by-using-an-azure-resource-manager-template"></a>Erstellen einer ASE mit einer Azure Resource Manager-Vorlage
 
@@ -49,7 +50,7 @@ Eine Resource Manager-Vorlage, die eine ASE erstellt, und die zugehörige Parame
 
 Wenn Sie eine ILB-ASE erstellen möchten, verwenden Sie diese [Beispiele][quickstartilbasecreate] für Resource Manager-Vorlagen. Diese sind für diesen Anwendungsfall bestimmt. Die meisten Parameter in der Datei *azuredeploy.parameters.json* gelten für die Erstellung sowohl einer ILB-ASE als auch einer externen ASE. In der folgenden Liste sind die Parameter aufgeführt, die für die Erstellung einer ILB-ASE eine besondere Bedeutung haben bzw. nur dafür benötigt werden:
 
-* *interalLoadBalancingMode*: Sollte in den meisten Fällen auf „3“ festgelegt werden. Dies bedeutet, dass sowohl der HTTP/HTTPS-Datenverkehr über die Ports 80/443 als auch die Steuer-/Datenkanalports, auf die der FTP-Dienst in der ASE lauscht, an eine per ILB zugeordnete Adresse des virtuellen Netzwerks gebunden sind. Wenn diese Eigenschaft auf „2“ festgelegt wird, sind nur die Ports, die sich auf den FTP-Dienst beziehen (sowohl Steuer- als auch Datenkanäle) an eine ILB-Adresse gebunden. Der HTTP-/HTTPS-Datenverkehr verbleibt an der öffentlichen VIP.
+* *internalLoadBalancingMode*: Sollte in den meisten Fällen auf „3“ festgelegt werden. Dies bedeutet, dass sowohl der HTTP/HTTPS-Datenverkehr über die Ports 80/443 als auch die Steuer-/Datenkanalports, auf die der FTP-Dienst in der ASE lauscht, an eine per ILB zugeordnete Adresse des virtuellen Netzwerks gebunden sind. Wenn diese Eigenschaft auf „2“ festgelegt wird, sind nur die Ports, die sich auf den FTP-Dienst beziehen (sowohl Steuer- als auch Datenkanäle) an eine ILB-Adresse gebunden. Der HTTP-/HTTPS-Datenverkehr verbleibt an der öffentlichen VIP.
 * *dnsSuffix*: Dieser Parameter definiert die Standardstammdomäne, die der ASE zugewiesen wird. In der öffentlichen Variante von Azure App Service lautet die Standardstammdomäne für alle Web-Apps *azurewebsites.net*. Da eine ILB-ASE sich intern im virtuellen Netzwerk eines Kunden befindet, wäre es nicht sinnvoll, die Standardstammdomäne des öffentlichen Diensts zu verwenden. Stattdessen sollte eine ILB-ASE über eine Standardstammdomäne verfügen, für die die Verwendung im internen virtuellen Netzwerk eines Unternehmens sinnvoll ist. Die Contoso Corporation könnte beispielsweise die Standardstammdomäne *internal-contoso.com* für Apps verwenden, für die beabsichtigt ist, dass sie nur im virtuellen Netzwerk von Contoso auflösbar und zugänglich sind. 
 * *ipSslAddressCount*: Für diesen Parameter wird in der Datei *azuredeploy.json* automatisch der Wert 0 verwendet, da ILB-ASEs nur über eine einzige ILB-Adresse verfügen. Es gibt keine expliziten IP-SSL-Adressen für eine ILB-ASE. Daher muss der IP-SSL-Adresspool für eine ILB-ASE auf 0 (null) festgelegt werden. Andernfalls tritt ein Bereitstellungsfehler auf. 
 
@@ -69,7 +70,7 @@ Der ASE muss ein SSL-Zertifikat als SSL-Standardzertifikat zugeordnet werden, da
 
 Ein gültiges SSL-Zertifikat können Sie erhalten, indem Sie interne Zertifizierungsstellen verwenden, ein Zertifikat von einem externen Aussteller erwerben oder ein selbstsigniertes Zertifikat verwenden. Unabhängig von der Quelle des SSL-Zertifikats müssen die folgenden Zertifikatattribute ordnungsgemäß konfiguriert werden:
 
-* **Antragsteller**: Dieses Attribut muss auf **.your-root-domain-here.com* festgelegt werden.
+* **Betreff**: Dieses Attribut muss auf **.your-root-domain-here.com* festgelegt werden.
 * **Alternativer Antragstellername**: Dieses Attribut muss sowohl **.your-root-domain-here.com* als auch **.scm.your-root-domain-here.com* enthalten. SSL-Verbindungen mit der SCM/Kudu-Website, die jeder App zugeordnet ist, verwenden eine Adresse im Format *your-app-name.scm.your-root-domain-here.com*.
 
 Wenn ein gültiges SSL-Zertifikat vorhanden ist, sind zwei weitere Vorbereitungsschritte erforderlich. Konvertieren Sie das SSL-Zertifikat in eine PFX-Datei, und speichern Sie es. Denken Sie daran, dass die PFX-Datei alle Zwischenzertifikate und Stammzertifikate enthalten muss. Sichern Sie es mit einem Kennwort.
@@ -104,7 +105,7 @@ Nachdem das SSL-Zertifikat erfolgreich generiert und in eine Base64-codierte Zei
 Die Parameter in der Datei *azuredeploy.parameters.json* sind hier aufgeführt:
 
 * *appServiceEnvironmentName*: Der Name der ILB-ASE, die konfiguriert wird.
-* *existingAseLocation*: Die Textzeichenfolge mit der Azure-Region, in der die ILB-ASE bereitgestellt wurde.  Beispiel: „USA, Süden-Mitte“.
+* *existingAseLocation*: Die Textzeichenfolge mit der Azure-Region, in der die ILB-ASE bereitgestellt wurde.  Beispiel:  „USA, Süden-Mitte“
 * *pfxBlobString*: Die Base64-codierte Zeichenfolgendarstellung der PFX-Datei. Verwenden Sie den oben gezeigten Codeausschnitt, und kopieren Sie die Zeichenfolge in „exportedcert.pfx.b64“. Fügen Sie sie als Wert des Attributs *pfxBlobString* ein.
 * *password*: Das Kennwort, das zum Schützen der PFX-Datei verwendet wird.
 * *certificateThumbprint*: Der Fingerabdruck des Zertifikats. Wenn Sie diesen Wert aus PowerShell abrufen (z.B. als *$certificate.Thumbprint* aus dem Codeausschnitt weiter oben), können Sie den Wert unverändert nutzen. Falls Sie den Wert aus dem Windows-Zertifikatdialogfeld kopieren, müssen Sie die überflüssigen Leerzeichen entfernen. *certificateThumbprint* sollte etwa wie folgt aussehen: AF3143EB61D43F6727842115BB7F17BBCECAECAE.
@@ -114,7 +115,7 @@ Ein gekürztes Beispiel für *azuredeploy.parameters.json* sehen Sie hier:
 
 ```json
 {
-  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json",
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "appServiceEnvironmentName": {
@@ -165,11 +166,11 @@ Informationen zum Erstellen einer ASEv1 mithilfe einer Resource Manager-Vorlage 
 
 
 <!--Links-->
-[quickstartilbasecreate]: http://azure.microsoft.com/documentation/templates/201-web-app-asev2-ilb-create
-[quickstartasev2create]: http://azure.microsoft.com/documentation/templates/201-web-app-asev2-create
-[quickstartconfiguressl]: http://azure.microsoft.com/documentation/templates/201-web-app-ase-ilb-configure-default-ssl
-[quickstartwebapponasev2create]: http://azure.microsoft.com/documentation/templates/201-web-app-asp-app-on-asev2-create
-[examplebase64encoding]: http://powershellscripts.blogspot.com/2007/02/base64-encode-file.html 
+[quickstartilbasecreate]: https://azure.microsoft.com/documentation/templates/201-web-app-asev2-ilb-create
+[quickstartasev2create]: https://azure.microsoft.com/documentation/templates/201-web-app-asev2-create
+[quickstartconfiguressl]: https://azure.microsoft.com/documentation/templates/201-web-app-ase-ilb-configure-default-ssl
+[quickstartwebapponasev2create]: https://azure.microsoft.com/documentation/templates/201-web-app-asp-app-on-asev2-create
+[examplebase64encoding]: https://powershellscripts.blogspot.com/2007/02/base64-encode-file.html 
 [configuringDefaultSSLCertificate]: https://azure.microsoft.com/documentation/templates/201-web-app-ase-ilb-configure-default-ssl/
 [Intro]: ./intro.md
 [MakeExternalASE]: ./create-external-ase.md
@@ -183,10 +184,10 @@ Informationen zum Erstellen einer ASEv1 mithilfe einer Resource Manager-Vorlage 
 [ASEv1Intro]: app-service-app-service-environment-intro.md
 [mobileapps]: ../../app-service-mobile/app-service-mobile-value-prop.md
 [Functions]: ../../azure-functions/index.yml
-[Pricing]: http://azure.microsoft.com/pricing/details/app-service/
+[Pricing]: https://azure.microsoft.com/pricing/details/app-service/
 [ARMOverview]: ../../azure-resource-manager/resource-group-overview.md
 [ConfigureSSL]: ../../app-service/web-sites-purchase-ssl-web-site.md
-[Kudu]: http://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/
+[Kudu]: https://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/
 [ASEWAF]: app-service-app-service-environment-web-application-firewall.md
 [AppGW]: ../../application-gateway/application-gateway-web-application-firewall-overview.md
 [ILBASEv1Template]: app-service-app-service-environment-create-ilb-ase-resourcemanager.md

@@ -1,5 +1,5 @@
 ---
-title: SSH-Unterstützung bei Azure App Service unter Linux | Microsoft-Dokumentation
+title: SSH-Unterstützung für App Service unter Linux – Azure | Microsoft-Dokumentation
 description: Erfahren Sie etwas über die Verwendung von SSH mit Azure App Service unter Linux.
 keywords: Azure App Service, Web-App, Linux, OSS
 services: app-service
@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: wesmc
-ms.openlocfilehash: 631933647e27428349fc1efeb17f62f4614f7f64
-ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
+ms.custom: seodec18
+ms.openlocfilehash: ff5c18b08a2921efe72a35b9bd982986c1867812
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47423305"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53251290"
 ---
 # <a name="ssh-support-for-azure-app-service-on-linux"></a>SSH-Unterstützung bei Azure App Service unter Linux
 
@@ -66,7 +67,7 @@ Diese Schritte werden im Azure App Service-Repository [als Beispiel](https://git
         && echo "root:Docker!" | chpasswd
     ```
 
-1. Fügen Sie der Dockerfile-Datei eine [`COPY`-Anweisung](https://docs.docker.com/engine/reference/builder/#copy) hinzu, mit der eine [sshd_config](http://man.openbsd.org/sshd_config)-Datei in das Verzeichnis */etc/ssh/* kopiert wird. Die Konfigurationsdatei sollte auf der Datei [sshd_config](https://github.com/Azure-App-Service/node/blob/master/8.2.1/sshd_config) im Azure App Service-GitHub-Repository basieren.
+2. Fügen Sie der Dockerfile-Datei eine [`COPY`-Anweisung](https://docs.docker.com/engine/reference/builder/#copy) hinzu, mit der eine [sshd_config](https://man.openbsd.org/sshd_config)-Datei in das Verzeichnis */etc/ssh/* kopiert wird. Die Konfigurationsdatei sollte auf der Datei [sshd_config](https://github.com/Azure-App-Service/node/blob/master/8.2.1/sshd_config) im Azure App Service-GitHub-Repository basieren.
 
     > [!NOTE]
     > Die Datei *sshd_config* muss Folgendes enthalten, da andernfalls ein Verbindungsfehler auftritt: 
@@ -77,13 +78,13 @@ Diese Schritte werden im Azure App Service-Repository [als Beispiel](https://git
     COPY sshd_config /etc/ssh/
     ```
 
-1. Fügen Sie Port 2222 in die [`EXPOSE`-Anweisung](https://docs.docker.com/engine/reference/builder/#expose) für die Dockerfile-Datei ein. Selbst wenn das Root-Kennwort bekannt ist, kann auf Port 2222 nicht aus dem Internet zugegriffen werden. Es handelt sich um einen internen Port, auf den nur von Containern innerhalb des Brückennetzwerks eines privaten virtuellen Netzwerks zugegriffen werden kann.
+3. Fügen Sie Port 2222 in die [`EXPOSE`-Anweisung](https://docs.docker.com/engine/reference/builder/#expose) für die Dockerfile-Datei ein. Selbst wenn das Root-Kennwort bekannt ist, kann auf Port 2222 nicht aus dem Internet zugegriffen werden. Es handelt sich um einen internen Port, auf den nur von Containern innerhalb des Brückennetzwerks eines privaten virtuellen Netzwerks zugegriffen werden kann.
 
     ```docker
     EXPOSE 2222 80
     ```
 
-1. Sie sollten zum Starten des SSH-Diensts unbedingt ein Shell-Skript verwenden (siehe Beispiel unter [init_container.sh](https://github.com/Azure-App-Service/node/blob/master/6.9.3/startup/init_container.sh)).
+4. Sie sollten zum Starten des SSH-Diensts unbedingt ein Shell-Skript verwenden (siehe Beispiel unter [init_container.sh](https://github.com/Azure-App-Service/node/blob/master/6.9.3/startup/init_container.sh)).
 
     ```bash
     #!/bin/bash

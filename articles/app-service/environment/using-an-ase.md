@@ -1,5 +1,5 @@
 ---
-title: Verwenden einer Azure App Service-Umgebung
+title: Verwenden der App Service-Umgebung – Azure
 description: Erstellen, Veröffentlichen und Skalieren in einer Azure App Service-Umgebung
 services: app-service
 documentationcenter: na
@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
-ms.openlocfilehash: 80abe29c80898b691aa6e5e47bf068a9e69e50e4
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.custom: seodec18
+ms.openlocfilehash: eca6f7996b05e58614c8f15067dacabb13730396
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44303369"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53274716"
 ---
 # <a name="use-an-app-service-environment"></a>Verwenden einer App Service-Umgebung #
 
@@ -26,10 +27,10 @@ ms.locfileid: "44303369"
 
 Die Azure App Service-Umgebung ist eine Bereitstellung des Azure App Service in einem Subnetz im virtuellen Azure-Netzwerk eines Kunden. Sie besteht aus:
 
-- **Front-Ends:** In den Front-Ends endet HTTP/HTTPS in einer App Service-Umgebung (ASE).
-- **Worker:** Bei Workern handelt es sich um die Ressourcen, die Ihre Apps hosten.
-- **Datenbank:** Die Datenbank enthält Informationen, durch die die Umgebung festgelegt ist.
-- **Speicher:** Der Speicher wird zum Hosten der vom Kunden veröffentlichten Apps verwendet.
+- **Front-Ends**: In den Front-Ends endet HTTP/HTTPS in einer App Service-Umgebung (ASE).
+- **Worker**: Bei Workern handelt es sich um die Ressourcen, die Ihre Apps hosten.
+- **Datenbank**: Die Datenbank enthält Informationen, durch die die Umgebung festgelegt ist.
+- **Speicher**: Der Speicher wird zum Hosten der vom Kunden veröffentlichten Apps verwendet.
 
 > [!NOTE]
 > Es gibt zwei Versionen der App Service-Umgebung: ASEv1 und ASEv2. In ASEv1 müssen Sie die Ressourcen verwalten, bevor Sie sie verwenden können. Informationen zum Konfigurieren und Verwalten von ASEv1 finden Sie unter [Konfigurieren einen App Service-Umgebung v1][ConfigureASEv1]. Im weiteren Verlauf dieses Artikels liegt der Schwerpunkt auf ASEv2.
@@ -51,7 +52,7 @@ So erstellen Sie eine Web-App in einer ASE:
 
 1. Wählen Sie **Ressource erstellen** > **Web + Mobil** > **Web-Apps** aus.
 
-1. Geben Sie einen Namen für die Web-App ein. Wenn Sie bereits einen App Service-Plan in einer ASE ausgewählt haben, entspricht der Domänenname der App dem Domänenname der ASE.
+2. Geben Sie einen Namen für die Web-App ein. Wenn Sie bereits einen App Service-Plan in einer ASE ausgewählt haben, entspricht der Domänenname der App dem Domänenname der ASE.
 
     ![Namensauswahl für Web-Apps][1]
 
@@ -70,7 +71,7 @@ So erstellen Sie eine Web-App in einer ASE:
 
     b. Geben Sie einen Namen für Ihren App Service-Plan ein.
 
-    c. Wählen Sie Ihre ASE in der Dropdownliste **Speicherort** aus. Das Hosten von Linux-Apps in einer ASE ist derzeit nur in 6 Regionen aktiviert: **„USA, Westen“, „USA, Osten“, „Europa, Westen“, „Europa, Norden“, „Australien, Osten“, „Asien, Südosten“**. 
+    c. Wählen Sie Ihre ASE in der Dropdownliste **Speicherort** aus. Das Hosten einer Linux-App in einer ASE ist derzeit nur in 6 Regionen aktiviert: **„USA, Westen“, „USA, Osten“, „Europa, Westen“, „Europa, Norden“, „Australien, Osten“, „Asien, Südosten“**. 
 
     d. Wählen Sie einen **Isolierten** Tarif. Wählen Sie **Auswählen**.
 
@@ -182,10 +183,10 @@ So löschen Sie eine ASE
 [ConfigureASEv1]: app-service-web-configure-an-app-service-environment.md
 [ASEv1Intro]: app-service-app-service-environment-intro.md
 [Functions]: ../../azure-functions/index.yml
-[Pricing]: http://azure.microsoft.com/pricing/details/app-service/
+[Pricing]: https://azure.microsoft.com/pricing/details/app-service/
 [ARMOverview]: ../../azure-resource-manager/resource-group-overview.md
 [ConfigureSSL]: ../web-sites-purchase-ssl-web-site.md
-[Kudu]: http://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/
+[Kudu]: https://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/
 [AppDeploy]: ../app-service-deploy-local-git.md
 [ASEWAF]: app-service-app-service-environment-web-application-firewall.md
 [AppGW]: ../../application-gateway/application-gateway-web-application-firewall-overview.md

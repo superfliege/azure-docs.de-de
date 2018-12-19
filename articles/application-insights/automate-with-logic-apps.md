@@ -8,16 +8,15 @@ manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/29/2017
 ms.author: mbullwin
-ms.openlocfilehash: 1e9170c955f2a36d68600372e3dcdac2a63056c1
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: df7d709b51c864c38b9603d2e8ed02d41217bcfc
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50957744"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52879697"
 ---
 # <a name="automate-application-insights-processes-by-using-logic-apps"></a>Automatisieren von Application Insights-Prozessen mithilfe von Logic Apps
 
@@ -132,7 +131,7 @@ Wenn Ihre Logik-App ausgeführt wird, erhalten die Empfänger, die Sie in der E-
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie mehr über die Erstellung von [Analytics-Abfragen](../log-analytics/query-language/get-started-queries.md).
+- Erfahren Sie mehr über die Erstellung von [Analytics-Abfragen](../azure-monitor/log-query/get-started-queries.md).
 - Informieren Sie sich ausführlicher über [Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-what-are-logic-apps).
 
 

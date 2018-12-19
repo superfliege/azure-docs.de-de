@@ -8,24 +8,23 @@ manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 04/10/2018
 ms.reviewer: mbullwin
 ms.pm_owner: daviste;NumberByColors
 ms.author: daviste
-ms.openlocfilehash: d8bb7a975bd5bab8698d20e5d21514b79945eac6
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 4a7b5cd925bd4b66e25754c30de5cbaf866dab0b
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51564917"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52970620"
 ---
 # <a name="application-insights-cohorts"></a>Application Insights-Kohorten
 
 Eine Kohorte ist eine Gruppe von Benutzern, Sitzungen, Ereignissen oder Vorgängen, die eine Gemeinsamkeit aufweisen. In Azure Application Insights werden Kohorten durch eine Analyseabfrage definiert. Für den Fall, dass Sie eine bestimmte Gruppe von Benutzern oder Ereignissen wiederholt analysieren müssen, bieten Ihnen Kohorten mehr Flexibilität, um genau die gewünschte Gruppe anzugeben.
 
-![Bereich „Kohorten“](.\media\app-insights-usage-cohorts\001.png)
+![Bereich „Kohorten“](./media/app-insights-usage-cohorts/001.png)
 
 ## <a name="cohorts-versus-basic-filters"></a>Kohorten im Vergleich zu einfachen Filtern
 
@@ -36,7 +35,7 @@ Sie können beispielsweise eine Kohorte aus Benutzern definieren, die alle ein n
 > [!NOTE]
 > Nach ihrer Erstellung sind Kohorten in den Tools für Benutzer, Sitzungen, Ereignisse und Benutzerabläufe verfügbar.
 
-## <a name="example-engaged-users"></a>Beispiel: aktive Benutzer
+## <a name="example-engaged-users"></a>Beispiel: Aktive Benutzer
 
 Ihr Team definiert jede Person als „aktiven Benutzer“, die Ihre App in einem bestimmten Monat mindestens fünfmal verwendet. In diesem Abschnitt definieren Sie eine Kohorte dieser aktiven Benutzer.
 
@@ -53,14 +52,14 @@ Ihr Team definiert jede Person als „aktiven Benutzer“, die Ihre App in einem
 
 4. Ändern Sie **UsedAtleastCustom** in **5+ days** (5+ Tage), und behalten Sie für **Period** (Zeitraum) den Standardwert von 28 Tagen bei.
 
-    ![Aktive Benutzer](.\media\app-insights-usage-cohorts\003.png)
+    ![Aktive Benutzer](./media/app-insights-usage-cohorts/003.png)
 
     Diese Kohorte stellt nun alle Benutzer-IDs dar, die mit einem benutzerdefinierten Ereignis oder einer benutzerdefinierten Seitenansicht an 5 verschiedenen Tagen in den letzten 28 Tagen gesendet wurden.
 
 5. Wählen Sie **Speichern**aus.
 
    > [!TIP]
-   >  Geben Sie der Kohorte einen Namen, z. B. „Engaged Users (5+ Days)“. Speichern Sie die Kohorte in „My reports“ (Meine Berichte) oder „Shared reports“ (Freigegebene Berichte), je nachdem, ob andere Personen, die Zugriff auf diese Application Insights-Ressource haben, die Möglichkeit haben sollen, diese Kohorte anzuzeigen.
+   > Geben Sie der Kohorte einen Namen, z. B. „Engaged Users (5+ Days)“. Speichern Sie die Kohorte in „My reports“ (Meine Berichte) oder „Shared reports“ (Freigegebene Berichte), je nachdem, ob andere Personen, die Zugriff auf diese Application Insights-Ressource haben, die Möglichkeit haben sollen, diese Kohorte anzuzeigen.
 
 6. Wählen Sie **Back to Gallery** (Zurück zum Katalog) aus.
 
@@ -70,15 +69,16 @@ Ihr Team definiert jede Person als „aktiven Benutzer“, die Ihre App in einem
 
 Das Tool „Benutzer“ wird nach dieser Kohorte von Benutzern gefiltert:
 
-![Bereich „Benutzer“, gefiltert nach einer bestimmten Kohorte](.\media\app-insights-usage-cohorts\004.png)
+![Bereich „Benutzer“, gefiltert nach einer bestimmten Kohorte](./media/app-insights-usage-cohorts/004.png)
 
 Folgende wichtige Punkte sind zu berücksichtigen:
+
 * Sie können diese Gruppe nicht über normale Filter erstellen. Die Datenzugriffslogik ist komplexer.
 * Sie können diese Kohorte weiter filtern, indem Sie die normalen Filtern im Tool „Benutzer“ verwenden. Obwohl die Kohorte mit Zeitfenstern von 28 Tagen definiert ist, können Sie den Zeitbereich im Tool „Benutzer“ trotzdem auf 30, 60 oder 90 Tage anpassen.
 
 Diese Filter unterstützen komplexere Fragen, die sich nicht mit dem Abfrage-Generator formulieren lassen. Ein Beispiel ist _Personen, die an der letzten 28 Tage aktiv waren. Wie haben sich dieselben Personen in den letzten 60 Tagen verhalten?_
 
-## <a name="example-events-cohort"></a>Beispiel: Ereigniskohorte
+## <a name="example-events-cohort"></a>Beispiel: Kohorte für Ereignisse
 
 Sie können auch Kohorten von Ereignissen erstellen. In diesem Abschnitt definieren Sie eine Kohorte der Ereignisse und Seitenansichten. Anschließend wird gezeigt, wie Sie die Kohorten in den anderen Tools verwenden können. In dieser Kohorte könnte eine Gruppe von Ereignissen, die Ihr Team als _aktive Verwendung_ einstuft, oder eine Gruppe definiert sein, die mit einem bestimmten neuen Feature zu tun hat.
 
@@ -88,7 +88,7 @@ Sie können auch Kohorten von Ereignissen erstellen. In diesem Abschnitt definie
 
 3. Wählen Sie **Events picker** (Ereignisauswahl) aus.
 
-    ![Screenshot von „Events picker“ (Ereignisauswahl)](.\media\app-insights-usage-cohorts\006.png)
+    ![Screenshot von „Events picker“ (Ereignisauswahl)](./media/app-insights-usage-cohorts/006.png)
 
 4. Wählen Sie in der Dropdownliste **Activities** (Aktivitäten) die Ereignisse aus, die in der Kohorte enthalten sein sollen.
 
@@ -98,11 +98,11 @@ Sie können auch Kohorten von Ereignissen erstellen. In diesem Abschnitt definie
 
 Die beiden vorherigen Kohorten wurden durch Verwenden von Dropdownlisten definiert. Sie können Kohorten aber auch definieren, indem Sie, um vollkommen flexibel zu sein, Analyseabfragen verwenden. Zur Veranschaulichung erstellen Sie eine Kohorte von Benutzern aus Großbritannien.
 
-![Animierte Grafik zur Verwendung des Tools „Kohorten“](.\media\app-insights-usage-cohorts\cohorts0001.gif)
+![Animierte Grafik zur Verwendung des Tools „Kohorten“](./media/app-insights-usage-cohorts/cohorts0001.gif)
 
 1. Öffnen Sie das Tool „Kohorten“, wählen Sie die Registerkarte **Template Gallery** (Vorlagenkatalog) aus, und wählen Sie **Blank Users cohort** (Leere Kohorte für Benutzer) aus.
 
-    ![Blank users cohort (Leere Kohorte für Benutzer)](.\media\app-insights-usage-cohorts\001.png)
+    ![Blank users cohort (Leere Kohorte für Benutzer)](./media/app-insights-usage-cohorts/001.png)
 
     Drei Abschnitte stehen zur Verfügung:
     * Ein Abschnitt für Markdown-Text, in dem Sie die Kohorte ausführlicher für andere Teammitglieder beschreiben.
@@ -137,7 +137,8 @@ Kohorten und Filter unterscheiden sich. Angenommen, Sie haben eine Kohorte von B
 * Für die Filterversion werden nur Ereignisse aus Großbritannien angezeigt. Selbst wenn Sie nach Land oder Region aufteilen, wird ausschließlich Großbritannien angezeigt.
 
 ## <a name="learn-more"></a>Weitere Informationen
-- [Analytics-Abfragesprache](https://go.microsoft.com/fwlink/?linkid=856587)
-- [Benutzer, Sitzungen, Ereignisse](app-insights-usage-segmentation.md)
-- [Benutzerabläufe](app-insights-usage-flows.md)
-- [Nutzungsübersicht](app-insights-usage-overview.md)
+
+* [Analytics-Abfragesprache](https://go.microsoft.com/fwlink/?linkid=856587)
+* [Benutzer, Sitzungen, Ereignisse](app-insights-usage-segmentation.md)
+* [Benutzerabläufe](app-insights-usage-flows.md)
+* [Nutzungsübersicht](app-insights-usage-overview.md)

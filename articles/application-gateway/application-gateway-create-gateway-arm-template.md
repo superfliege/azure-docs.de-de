@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/31/2017
 ms.author: victorh
-ms.openlocfilehash: c749cdf133caebb2d1f061d53a1db38e9ec433bd
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 6a671744944527b64aab9a7b9afe05d6a9f2f27f
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32770773"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53002093"
 ---
 # <a name="create-an-application-gateway-by-using-the-azure-resource-manager-template"></a>Erstellen eines Anwendungsgateways mit der Azure-Ressourcen-Manager-Vorlage
 
@@ -27,7 +27,7 @@ ms.locfileid: "32770773"
 > * [Azure Resource Manager PowerShell](application-gateway-create-gateway-arm.md)
 > * [Klassische Azure PowerShell](application-gateway-create-gateway.md)
 > * [Azure Resource Manager-Vorlage](application-gateway-create-gateway-arm-template.md)
-> * [Azure-CLI](application-gateway-create-gateway-cli.md)
+> * [Azure-Befehlszeilenschnittstelle](application-gateway-create-gateway-cli.md)
 
 Azure Application Gateway verwendet einen Load Balancer auf der Schicht 7 (Anwendungsschicht). Es ermöglicht Failover sowie schnelles Routing von HTTP-Anforderungen zwischen verschiedenen Servern in der Cloud und der lokalen Umgebung. Application Gateway bietet zahlreiche ADC-Features (Application Delivery Controller) wie HTTP-Lastenausgleich, cookiebasierte Sitzungsaffinität, SSL-Auslagerung (Secure Sockets Layer), benutzerdefinierte Integritätstests und Unterstützung mehrerer Standorte. Eine Liste mit allen unterstützten Features finden Sie unter [Übersicht über Application Gateway](application-gateway-introduction.md).
 
@@ -84,7 +84,7 @@ Sie können die vorhandene Azure-Ressourcen-Manager-Vorlage herunterladen, um ei
 
     ```json
     {
-        "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+        "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
         "contentVersion": "1.0.0.0",
         "parameters": {
             "addressPrefix": {
@@ -121,11 +121,11 @@ Sie können die vorhandene Azure-Ressourcen-Manager-Vorlage herunterladen, um ei
     }
     ```
 
-1. Speichern Sie die Datei . Sie können die JSON-Vorlage und die Parametervorlage mithilfe von online verfügbaren JSON-Validierungstools wie [JSlint.com](http://www.jslint.com/)testen.
+1. Speichern Sie die Datei . Sie können die JSON-Vorlage und die Parametervorlage mithilfe von online verfügbaren JSON-Validierungstools wie [JSlint.com](https://www.jslint.com/)testen.
 
 ## <a name="deploy-the-azure-resource-manager-template-by-using-powershell"></a>Bereitstellen der Azure-Ressourcen-Manager-Vorlage mit PowerShell
 
-Wenn Sie Azure PowerShell zuvor noch nicht verwendet haben, besuchen Sie [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview), und befolgen Sie die Anweisungen, um sich bei Azure anzumelden und Ihr Abonnement auszuwählen.
+Wenn Sie Azure PowerShell zuvor noch nicht verwendet haben, besuchen Sie: [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview), und befolgen Sie die Anweisungen, um sich bei Azure anzumelden und Ihr Abonnement auszuwählen.
 
 1. Anmeldung bei PowerShell
 
@@ -233,9 +233,9 @@ az group delete --name appgatewayRG
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informationen zum Konfigurieren der SSL-Auslagerung finden Sie unter [Konfigurieren eines Anwendungsgateways für SSL-Auslagerung mit klassischem Bereitstellungsmodell](application-gateway-ssl.md).
+Wenn Sie die SSL-Auslagerung konfigurieren möchten, besuchen Sie: [Konfigurieren eines Application Gateways für die SSL-Auslagerung](application-gateway-ssl.md).
 
-Informationen zum Konfigurieren eines Anwendungsgateways für die Verwendung mit einem internen Lastenausgleich finden Sie unter [Erstellen eines Anwendungsgateways mit einem internen Lastenausgleich (ILB)](application-gateway-ilb.md).
+Wenn Sie ein Application Gateway für die Verwendung mit einem internen Lastenausgleich konfigurieren möchten, besuchen Sie: [Erstellen eines Application Gateways mit einem internen Lastenausgleich (ILB)](application-gateway-ilb.md).
 
 Weitere grundsätzliche Informationen zu Lastenausgleichsoptionen finden Sie unter:
 

@@ -1,5 +1,5 @@
 ---
-title: Übersicht über die Azure App Service-Diagnose | Microsoft-Dokumentation
+title: Übersicht über die Diagnose – Azure App Service | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie mit der App Service-Diagnose Probleme bei einer Web-App beheben können.
 keywords: App Service, Azure App Service, Diagnose, Unterstützung, Web-App, Problembehandlung, Selbsthilfe
 services: app-service
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/10/2017
 ms.author: jennile
-ms.openlocfilehash: 7ad205c75a02b496abe2cb910c7eb459cdb16c97
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.custom: seodec18
+ms.openlocfilehash: a8b256f43d8e4103404ab4276431ceb06d9ed36a
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38969237"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53255141"
 ---
 # <a name="azure-app-service-diagnostics-overview"></a>Übersicht über die Azure App Service-Diagnose 
 

@@ -1,5 +1,5 @@
 ---
-title: Konfigurieren einer App Service-Umgebung v1
+title: Konfigurieren einer App Service-Umgebung v1 – Azure
 description: Konfiguration, Verwaltung und Überwachung der App Service-Umgebung v1
 services: app-service
 documentationcenter: ''
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
-ms.openlocfilehash: 34fb3f15c03a3d3ef5f0a27081539bf0a6d19c5f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.custom: seodec18
+ms.openlocfilehash: 85353b68673ea91711e0c3d93e68bec662f406df
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "22987865"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53272132"
 ---
 # <a name="configuring-an-app-service-environment-v1"></a>Konfigurieren einer App Service-Umgebung v1
 
@@ -31,7 +32,7 @@ ms.locfileid: "22987865"
 Eine Azure App Service-Umgebung (ASE) besteht aus mehreren Hauptkomponenten:
 
 * Computeressourcen, die unter dem gehosteten Dienst der App Service-Umgebung ausgeführt werden
-* Speicher
+* Storage
 * Einer Datenbank
 * Einem Azure Virtual Network (VNet) vom Typ „Klassisch“ (V1) oder „Resource Manager“ (V2) 
 * Einem Subnetz mit darin ausgeführtem gehosteten Dienst der App Service-Umgebung
@@ -51,7 +52,7 @@ Das Ändern der Menge oder Größe wird als Skalierungsvorgang bezeichnet.  Es k
 * Die Bereitstellung von Front-Ends kann bis zu einer Stunde dauern. 
 * Um eine noch genauere Skalierung zu erzielen, sollten Sie den CPU-Prozentsatz, den Arbeitsspeicher-Prozentsatz und Metriken zu aktiven Anforderungen für den Front-End-Pool überwachen. Wenn die CPU- oder Arbeitsspeicher-Prozentsätze beim Ausführen von P3-Einheiten über einem Wert von 70 liegen, sollten Sie mehr Front-Ends hinzufügen. Wenn der Wert für die aktiven Anforderungen durchschnittlich bei 15.000 bis 20.000 Anforderungen pro Front-End liegt, sollten Sie ebenfalls weitere Front-Ends hinzufügen. Bei der Ausführung von P3-Einheiten ist das Ziel also, für CPU und Arbeitsspeicher einen Prozentsatz von weniger als 70% und für aktive Anforderungen im Durchschnitt eine Anzahl von weniger als 15.000 Anforderungen pro Front-End zu erreichen.  
 
-**Worker**: In den Workern werden Ihre Apps ausgeführt. Wenn Sie Ihre App Service-Pläne zentral hochskalieren, werden für diesen Vorgang Worker im zugeordneten Workerpool genutzt.
+**Worker**: In den Workern werden Ihre Apps tatsächlich ausgeführt. Wenn Sie Ihre App Service-Pläne zentral hochskalieren, werden für diesen Vorgang Worker im zugeordneten Workerpool genutzt.
 
 * Es ist nicht möglich, umgehend Worker hinzuzufügen. Die Bereitstellung kann bis zu einer Stunde dauern.
 * Die Skalierung der Größe einer Computeressource für einen Pool dauert weniger als eine Stunde pro Updatedomäne. Eine App Service-Umgebung verfügt über 20 Updatedomänen. Wenn Sie die Computegröße eines Workerpools mit zehn Instanzen skalieren, kann der Vorgang also bis zu zehn Stunden dauern.
@@ -68,11 +69,11 @@ Wenn für Ihre Apps mehr Computeressourcen erforderlich sind, sind die vorstehen
 * Weisen Sie Ihre App Service-Pläne, über die die Apps mit den höheren Ressourcenanforderungen gehostet werden, dem neu konfigurierten Workerpool zu. Dies ist ein schneller Vorgang, der in weniger als einer Minute abgeschlossen sein sollte.  
 * Skalieren Sie den ersten Workerpool zentral herunter, wenn Sie die nicht genutzten Instanzen nicht mehr benötigen. Dieser Vorgang dauert einige Minuten.
 
-**Automatische Skalierung**: Ein Tool, das Sie beim Verwalten Ihres Computeressourcenverbrauchs unterstützen kann, ist die automatische Skalierung. Sie können die automatische Skalierung für Front-End- oder Workerpools nutzen. Es ist beispielsweise möglich, die Instanzen eines beliebigen Pooltyps am Morgen zu erhöhen und am Abend wieder zu reduzieren. Sie können auch Instanzen hinzufügen, wenn die Anzahl von Workern, die in einem Workerpool verfügbar sind, unter einen bestimmten Schwellenwert fällt.
+**Automatische Skalierung**: Ein Tool, das Sie beim Verwalten Ihres Computerressourcenverbrauchs unterstützen kann, ist die automatische Skalierung. Sie können die automatische Skalierung für Front-End- oder Workerpools nutzen. Es ist beispielsweise möglich, die Instanzen eines beliebigen Pooltyps am Morgen zu erhöhen und am Abend wieder zu reduzieren. Sie können auch Instanzen hinzufügen, wenn die Anzahl von Workern, die in einem Workerpool verfügbar sind, unter einen bestimmten Schwellenwert fällt.
 
 Wenn Sie für Metriken eines Computeressourcenpools Regeln für eine automatische Skalierung festlegen möchten, sollten Sie den erforderlichen Zeitaufwand für die Bereitstellung beachten. Weitere Einzelheiten zur automatischen Skalierung von App Service-Umgebungen finden Sie unter [Automatische Skalierung und App Service-Umgebungen][ASEAutoscale].
 
-### <a name="storage"></a>Speicher
+### <a name="storage"></a>Storage
 Jede App Service-Umgebung ist mit 500 GB Speicherplatz konfiguriert. Dieser Speicherplatz wird von allen Apps in der App Service-Umgebung verwendet. Er ist Teil der App Service-Umgebung, und derzeit ist eine Umstellung auf Ihren Speicherplatz nicht möglich. Wenn Sie Anpassungen am Routing oder an der Sicherheit Ihres virtuellen Netzwerks vornehmen, muss sichergestellt sein, dass weiterhin auf Azure Storage zugegriffen werden kann. Andernfalls ist die App Service-Umgebung nicht funktionsfähig.
 
 ### <a name="database"></a>Datenbank
@@ -136,7 +137,7 @@ Das Blatt „App Service-Umgebung“ enthält einen Abschnitt **Einstellungen** 
 
 ![Blatt „Einstellungen“ und Eigenschaften][4]
 
-**Einstellungen** > **IP-Adressen**: Wenn Sie eine IP-SSL-App (Secure Sockets Layer) in Ihrer ASE erstellen, benötigen Sie eine IP-SSL-Adresse. Um diese Adresse zu beschaffen, muss die App Service-Umgebung über eigene IP-SSL-Adressen verfügen, die zugeordnet werden können. Beim Erstellen einer App Service-Umgebung verfügt diese über eine IP-SSL-Adresse für diesen Zweck. Sie können jedoch weitere Adressen hinzufügen. Für zusätzliche IP-SSL-Adressen fallen Gebühren an. Diese sind im Abschnitt zu SSL-Verbindungen unter [App Service-Preise][AppServicePricing] aufgeführt. Der IP-SSL-Preis ist der zusätzliche Preis.
+**Einstellungen** > **IP-Addressen**: Wenn Sie eine IP-SSL-App (Secure Sockets Layer) in Ihrer ASE erstellen, benötigen Sie eine IP-SSL-Adresse. Um diese Adresse zu beschaffen, muss die App Service-Umgebung über eigene IP-SSL-Adressen verfügen, die zugeordnet werden können. Beim Erstellen einer App Service-Umgebung verfügt diese über eine IP-SSL-Adresse für diesen Zweck. Sie können jedoch weitere Adressen hinzufügen. Für zusätzliche IP-SSL-Adressen fallen Gebühren an. Diese sind im Abschnitt zu SSL-Verbindungen unter [App Service-Preise][AppServicePricing] aufgeführt. Der IP-SSL-Preis ist der zusätzliche Preis.
 
 **Einstellungen** > **Front-End-Pool** / **Workerpools**: Auf jedem dieser Ressourcenpoolblätter werden nur die Informationen für den jeweiligen Ressourcenpool angezeigt. Außerdem enthalten die Blätter Steuerelemente, mit denen der Ressourcenpool skaliert werden kann.  
 
@@ -214,7 +215,7 @@ Informationen zum Einstieg in App Service-Umgebungen finden Sie unter [Erstellen
 [HowtoScale]: app-service-web-scale-a-web-app-in-an-app-service-environment.md
 [ControlInbound]: app-service-app-service-environment-control-inbound-traffic.md
 [virtualnetwork]: https://azure.microsoft.com/documentation/articles/virtual-networks-faq/
-[AppServicePricing]: http://azure.microsoft.com/pricing/details/app-service/
+[AppServicePricing]: https://azure.microsoft.com/pricing/details/app-service/
 [ASEAutoscale]: app-service-environment-auto-scale.md
 [ExpressRoute]: app-service-app-service-environment-network-configuration-expressroute.md
 [ILBASE]: app-service-environment-with-internal-load-balancer.md

@@ -9,16 +9,15 @@ ms.assetid: d1e98390-3ce4-4d04-9351-144314a42aa2
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/19/2017
 ms.author: mbullwin
-ms.openlocfilehash: 87de134f6f0484208e8b6cec52b5eefaac4621c6
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 21c1a92a71ac52a47a8b9d73d5e715afb6dc73d0
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51251933"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53343410"
 ---
 # <a name="diagnose-exceptions-in-your-web-apps-with-application-insights"></a>Diagnostizieren von Ausnahmen in Ihren Web-Apps mit Application Insights
 Ausnahmen in Ihrer Live-Web-App werden von [Application Insights](app-insights-overview.md) gemeldet. Auf diese Weise können Sie Anforderungsfehler mit Ausnahmen und anderen Ereignissen auf dem Client und auf dem Server zueinander in Beziehung setzen und dadurch die Ursachen schnell diagnostizieren.
@@ -26,7 +25,7 @@ Ausnahmen in Ihrer Live-Web-App werden von [Application Insights](app-insights-o
 ## <a name="set-up-exception-reporting"></a>Einrichten der Ausnahmeerfassung
 * So werden Ausnahmen von Ihrer Server-App gemeldet:
   * Installieren Sie das [Application Insights SDK](app-insights-asp-net.md) in Ihrer App.
-  * IIS-Webserver: Führen Sie den [Application Insights-Agent](app-insights-monitor-performance-live-website-now.md) aus.
+  * IIS-Webserver: Führen Sie den [Application Insights-Agent](app-insights-monitor-performance-live-website-now.md) aus, oder
   * Azure-Web-Apps: Fügen Sie die [Application Insights-Erweiterung](app-insights-azure-web-apps.md) hinzu.
   * Java-Web-Apps: Installieren Sie den [Java-Agent](app-insights-java-agent.md).
 * Installieren Sie den [JavaScript-Codeausschnitt](app-insights-javascript.md) in Ihren Webseiten, um Browserausnahmen zu erfassen.
@@ -51,14 +50,15 @@ Beachten Sie, dass Sie den Bericht so filtern können, dass nur Ausnahmen angeze
 *Es werden keine Ausnahmen angezeigt? Informationen hierzu finden Sie unter [Erfassen von Ausnahmen](#exceptions).*
 
 Klicken Sie auf einen Ausnahmebericht, um dessen Stapelüberwachung anzuzeigen.
-Klicken Sie in der Stapelüberwachung auf einen Zeilenverweis, um die entsprechende Codedatei zu öffnen.  
+Klicken Sie in der Stapelüberwachung auf einen Zeilenverweis, um die entsprechende Codedatei zu öffnen.
 
 Beachten Sie, dass CodeLens im Code Daten zu den Ausnahmen anzeigt:
 
 ![CodeLens-Benachrichtigung über Ausnahmen.](./media/app-insights-asp-net-exceptions/35.png)
 
 ## <a name="diagnosing-failures-using-the-azure-portal"></a>Diagnostizieren von Fehlern im Azure-Portal
-Application Insights umfasst eine kuratierte APM-Benutzeroberfläche, die Sie beim Diagnostizieren von Fehlern in Ihren überwachten Anwendungen unterstützt. Klicken Sie zum Starten auf die Option „Fehler“ im Application Insights-Ressourcenmenü, das Sie im Abschnitt „Untersuchen“ finden. Daraufhin wird eine Vollbildansicht geöffnet, die die Fehlerratentrends für Ihre Anforderungen anzeigt und Informationen dazu bietet, bei wie vielen Anforderungen Fehler auftreten und wie viele Benutzer betroffen sind. Auf der rechten Seite sehen Sie einige der nützlichsten Verteilungen für den ausgewählten fehlerhaften Vorgang, einschließlich der Top-3-Antwortcodes, der Top-3-Ausnahmetypen und der Top-3-Abhängigkeitstypen mit Fehlern. 
+Application Insights umfasst eine kuratierte APM-Benutzeroberfläche, die Sie beim Diagnostizieren von Fehlern in Ihren überwachten Anwendungen unterstützt. Klicken Sie zum Starten auf die Option „Fehler“ im Application Insights-Ressourcenmenü, das Sie im Abschnitt „Untersuchen“ finden.
+Daraufhin wird eine Vollbildansicht geöffnet, die die Fehlerratentrends für Ihre Anforderungen anzeigt und Informationen dazu bietet, bei wie vielen Anforderungen Fehler auftreten und wie viele Benutzer betroffen sind. Auf der rechten Seite sehen Sie einige der nützlichsten Verteilungen für den ausgewählten fehlerhaften Vorgang, einschließlich der Top-3-Antwortcodes, der Top-3-Ausnahmetypen und der Top-3-Abhängigkeitstypen mit Fehlern.
 
 ![Ansicht der Fehlerselektierung (Registerkarte mit Vorgängen)](./media/app-insights-asp-net-exceptions/FailuresTriageView.png)
 
@@ -99,7 +99,7 @@ Anforderungsdetails enthalten nicht die Daten, die in einem POST-Aufruf an Ihre 
 
 * [Installieren Sie das SDK](app-insights-asp-net.md) in Ihrem Anwendungsprojekt.
 * Fügen Sie Code in die Anwendung ein, um [Microsoft.ApplicationInsights.TrackTrace()](app-insights-api-custom-events-metrics.md#tracktrace) aufzurufen. Senden Sie die POST-Daten im "message"-Parameter. Es gibt eine Größenbeschränkung, daher sollten Sie versuchen, nur die notwendigen Daten zu senden.
-* Wenn Sie eine fehlerhafte Anforderung untersuchen, suchen Sie die zugehörigen Ablaufverfolgungen.  
+* Wenn Sie eine fehlerhafte Anforderung untersuchen, suchen Sie die zugehörigen Ablaufverfolgungen.
 
 ![Drillthrough](./media/app-insights-asp-net-exceptions/060-req-related.png)
 
@@ -169,7 +169,7 @@ Die Eigenschaften und Messparameter sind optional, aber hilfreich zum [Filtern u
 ## <a name="browser-exceptions"></a>Browserausnahmen
 Die meisten Browserausnahmen werden gemeldet.
 
-Wenn Ihre Webseite Skriptdateien aus Content Delivery Networks oder anderen Domänen umfasst, stellen Sie sicher, dass Ihr Skript-Tag das Attribut ```crossorigin="anonymous"``` besitzt und dass der Server [CORS-Header](http://enable-cors.org/) sendet. Dadurch können Sie eine Stapelüberwachung und Details für nicht behandelte JavaScript-Ausnahmen von diesen Ressourcen erhalten.
+Wenn Ihre Webseite Skriptdateien aus Content Delivery Networks oder anderen Domänen umfasst, stellen Sie sicher, dass Ihr Skript-Tag das Attribut ```crossorigin="anonymous"``` besitzt und dass der Server [CORS-Header](https://enable-cors.org/) sendet. Dadurch können Sie eine Stapelüberwachung und Details für nicht behandelte JavaScript-Ausnahmen von diesen Ressourcen erhalten.
 
 ## <a name="web-forms"></a>Webformulare
 Für Webformulare kann das HTTP-Modul die Ausnahmen erfassen, wenn keine Umleitungen mit CustomErrors konfiguriert sind.
@@ -179,7 +179,7 @@ Wenn jedoch aktive Umleitungen bestehen, fügen Sie der Funktion "Application_Er
 ```csharp
     void Application_Error(object sender, EventArgs e)
     {
-      if (HttpContext.Current.IsCustomErrorEnabled && Server.GetLastError  () != null)
+      if (HttpContext.Current.IsCustomErrorEnabled && Server.GetLastError () != null)
       {
          var ai = new TelemetryClient(); // or re-use an existing instance
 
@@ -200,7 +200,8 @@ Es gibt eine Reihe von Fällen, die von den Ausnahmefiltern nicht verarbeitet we
 * Ausnahme, die während des Anwendungsstarts ausgelöst wird.
 * In Hintergrundaufgaben ausgelöste Ausnahme.
 
-Alle Ausnahmen die von der Anwendung *verarbeitet* werden, müssen weiterhin manuell nachverfolgt werden. Ausnahmefehler, die von Controllern ausgehen, führen normalerweise zu folgender Antwort: 500 „Interner Serverfehler“. Wenn eine Antwort dieser Art aufgrund einer behandelten Ausnahme (oder keiner Ausnahme) manuell erstellt wird, wird sie in der dazugehörigen Anforderungstelemetrie mit „`ResultCode` 500“ nachverfolgt. Mit dem Application Insights SDK kann die entsprechende Ausnahme aber nicht nachverfolgt werden.
+Alle Ausnahmen die von der Anwendung *verarbeitet* werden, müssen weiterhin manuell nachverfolgt werden.
+Ausnahmefehler, die von Controllern ausgehen, führen normalerweise zu folgender Antwort: 500 „Interner Serverfehler“. Wenn eine Antwort dieser Art aufgrund einer behandelten Ausnahme (oder keiner Ausnahme) manuell erstellt wird, wird sie in der dazugehörigen Anforderungstelemetrie mit „`ResultCode` 500“ nachverfolgt. Mit dem Application Insights SDK kann die entsprechende Ausnahme aber nicht nachverfolgt werden.
 
 ### <a name="prior-versions-support"></a>Unterstützung von früheren Versionen
 Wenn Sie MVC 4 (und früher) des Application Insights Web SDK 2.5 (und früher) verwenden, sind die folgenden Beispiele zum Nachverfolgen von Ausnahmen hilfreich.
@@ -223,7 +224,7 @@ Wenn die [CustomErrors](https://msdn.microsoft.com/library/h0hfz6fc.aspx)-Konfig
             {
                 //If customError is Off, then AI HTTPModule will report the exception
                 if (filterContext.HttpContext.IsCustomErrorEnabled)
-                {   //or reuse instance (recommended!). see note above  
+                {   //or reuse instance (recommended!). see note above
                     var ai = new TelemetryClient();
                     ai.TrackException(filterContext.Exception);
                 }
@@ -240,9 +241,9 @@ Ersetzen Sie das HandleError-Attribut durch das neue Attribut in Ihren Controlle
 ```csharp
     namespace MVC2App.Controllers
     {
-       [AiHandleError]
-       public class HomeController : Controller
-       {
+        [AiHandleError]
+        public class HomeController : Controller
+        {
     ...
 ```
 
@@ -291,7 +292,8 @@ Es gibt eine Reihe von Fällen, die von den Ausnahmefiltern nicht verarbeitet we
 * Ausnahme, die während des Anwendungsstarts ausgelöst wird.
 * In Hintergrundaufgaben ausgelöste Ausnahme.
 
-Alle Ausnahmen die von der Anwendung *verarbeitet* werden, müssen weiterhin manuell nachverfolgt werden. Ausnahmefehler, die von Controllern ausgehen, führen normalerweise zu folgender Antwort: 500 „Interner Serverfehler“. Wenn eine Antwort dieser Art aufgrund einer behandelten Ausnahme (oder keiner Ausnahme) manuell erstellt wird, wird sie in einer dazugehörigen Anforderungstelemetrie mit „`ResultCode` 500“ nachverfolgt. Mit dem Application Insights SDK kann die entsprechende Ausnahme aber nicht nachverfolgt werden.
+Alle Ausnahmen die von der Anwendung *verarbeitet* werden, müssen weiterhin manuell nachverfolgt werden.
+Ausnahmefehler, die von Controllern ausgehen, führen normalerweise zu folgender Antwort: 500 „Interner Serverfehler“. Wenn eine Antwort dieser Art aufgrund einer behandelten Ausnahme (oder keiner Ausnahme) manuell erstellt wird, wird sie in einer dazugehörigen Anforderungstelemetrie mit „`ResultCode` 500“ nachverfolgt. Mit dem Application Insights SDK kann die entsprechende Ausnahme aber nicht nachverfolgt werden.
 
 ### <a name="prior-versions-support"></a>Unterstützung von früheren Versionen
 Wenn Sie WebAPI 1 (und früher) des Application Insights Web SDK 2.5 (und früher) verwenden, sind die folgenden Beispiele zum Nachverfolgen von Ausnahmen hilfreich.
@@ -312,7 +314,7 @@ Setzen Sie "System.Web.Http.Filters.ExceptionFilterAttribute" außer Kraft:
             if (actionExecutedContext != null && actionExecutedContext.Exception != null)
             {  //or reuse instance (recommended!). see note above
                 var ai = new TelemetryClient();
-                ai.TrackException(actionExecutedContext.Exception);    
+                ai.TrackException(actionExecutedContext.Exception);
             }
             base.OnException(actionExecutedContext);
         }
@@ -482,7 +484,7 @@ Dieser Wert unterscheidet sich von der Anzahl der „Ausnahmen“, die vom Appli
 
 ## <a name="video"></a>Video
 
-> [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player] 
+> [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player]
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Überwachen von REST, SQL und anderen Aufrufen von Abhängigkeiten](app-insights-asp-net-dependencies.md)

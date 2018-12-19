@@ -8,17 +8,16 @@ manager: carmonm
 ms.service: application-insights
 ms.workload: TBD
 ms.tgt_pltfrm: ibiza
-ms.devlang: multiple
 ms.topic: reference
 ms.date: 08/13/2018
 ms.reviewer: mbullwin
 ms.author: nimolnar
-ms.openlocfilehash: f20963f030c9040b696f7d6a33b25bcee2dc517f
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: c6c895bda0818197e715a7d1f7aa2d96b959cb59
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "40130274"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52999257"
 ---
 # <a name="dependency-auto-collection"></a>Automatisches Sammeln von Abhängigkeiten
 
@@ -50,7 +49,7 @@ Unten ist die Liste mit den derzeit unterstützten Abhängigkeitsaufrufen angege
 |-------------|----------|
 | [Tomcat](https://tomcat.apache.org/) | 7, 8 | 
 | [JBoss EAP](https://developers.redhat.com/products/eap/download/) | 6, 7 |
-| [Jetty](http://www.eclipse.org/jetty/) | 9 |
+| [Jetty](https://www.eclipse.org/jetty/) | 9 |
 | <b>App-Frameworks</b> |  |
 | [Spring](https://spring.io/) | 3.0 |
 | [Spring Boot](https://spring.io/projects/spring-boot) | 1.5.9 und höher<sup>*</sup> |
@@ -59,7 +58,7 @@ Unten ist die Liste mit den derzeit unterstützten Abhängigkeitsaufrufen angege
 | [Apache-HTTP-Client](https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient) | 4.3 und höher<sup>†</sup> |
 | <b>Speicherclients</b> | |
 | [SQL Server]( https://mvnrepository.com/artifact/com.microsoft.sqlserver/mssql-jdbc) | 1 und höher<sup>†</sup> |
-| [Oracle]( http://www.oracle.com/technetwork/database/application-development/jdbc/downloads/index.html) | 1 und höher<sup>†</sup> |
+| [Oracle]( https://www.oracle.com/technetwork/database/application-development/jdbc/downloads/index.html) | 1 und höher<sup>†</sup> |
 | [MySql]( https://mvnrepository.com/artifact/mysql/mysql-connector-java) | 1 und höher<sup>†</sup> |
 | <b>Protokollierungsbibliotheken</b> | |
 | [Logback](https://logback.qos.ch/) | 1 und höher |

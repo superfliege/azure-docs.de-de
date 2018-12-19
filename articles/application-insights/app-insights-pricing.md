@@ -9,27 +9,26 @@ ms.assetid: ebd0d843-4780-4ff3-bc68-932aa44185f6
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.reviewer: Dale.Koetke
 ms.date: 08/11/2018
 ms.author: mbullwin
-ms.openlocfilehash: 4407322dd415a7c8b2ef8b7ff470a247b8d68f69
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 8a0acbfa18053b6b50bd872d109b02d556a6f5f3
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49319454"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53436058"
 ---
 # <a name="manage-pricing-and-data-volume-in-application-insights"></a>Verwalten von Preisen und Datenvolumen in Application Insights
 
 > [!NOTE]
 > Dieser Artikel beschreibt, wie die Datennutzung in Application Insights analysiert wird.  Entsprechende Informationen finden Sie in den folgenden Artikeln.
-> - [Überwachen der Nutzung und der geschätzten Kosten](../monitoring-and-diagnostics/monitoring-usage-and-estimated-costs.md) beschreibt, wie die Nutzung und geschätzten Kosten über mehrere Azure-Überwachungsfeatures hinweg für unterschiedliche Preismodelle angezeigt werden. Außerdem wird beschrieben, wie Sie Ihr Preismodell ändern können.
+> - [Überwachen der Nutzung und der geschätzten Kosten](../azure-monitor/platform/usage-estimated-costs.md) beschreibt, wie die Nutzung und geschätzten Kosten über mehrere Azure-Überwachungsfeatures hinweg für unterschiedliche Preismodelle angezeigt werden. Außerdem wird beschrieben, wie Sie Ihr Preismodell ändern können.
 
 Die Preise für [Azure Application Insights][start] basieren auf dem Datenvolumen pro Anwendung. Jede Application Insights-Ressource wird als separater Dienst abgerechnet und auf der Rechnung für Ihr Azure-Abonnement aufgeführt.
 
-Application Insights bietet zwei Tarife: Basic und Enterprise. Der Basic-Tarif ist der Standardtarif. Er umfasst alle Features des Enterprise-Tarifs, die ohne Aufpreis genutzt werden können. Im Basic-Tarif wird in erster Linie das Volumen der erfassten Daten abgerechnet. 
+Application Insights ist in zwei Tarifen verfügbar: Basic und Enterprise. Der Basic-Tarif ist der Standardtarif. Er umfasst alle Features des Enterprise-Tarifs, die ohne Aufpreis genutzt werden können. Im Basic-Tarif wird in erster Linie das Volumen der erfassten Daten abgerechnet. 
 
 Für den Enterprise-Tarif gilt eine knotenbasierte Gebühr, und jedem Knoten wird ein tägliches Datenkontingent zugewiesen. Im Enterprise-Tarif werden die Daten, die über das enthaltene Datenkontingent hinausgehen, berechnet. Wenn Sie die Operations Management Suite verwenden, sollten Sie den Enterprise-Tarif wählen. 
 
@@ -171,4 +170,4 @@ Um die E-Mails zum täglichen Volumenobergrenze zu ändern, klicken Sie im Absch
 [api]: app-insights-api-custom-events-metrics.md
 [apiproperties]: app-insights-api-custom-events-metrics.md#properties
 [start]: app-insights-overview.md
-[pricing]: http://azure.microsoft.com/pricing/details/application-insights/
+[pricing]: https://azure.microsoft.com/pricing/details/application-insights/

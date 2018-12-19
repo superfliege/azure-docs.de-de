@@ -8,21 +8,20 @@ manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.reviewer: cawa
 ms.date: 08/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: b0fc10099f1388169146d90efcd7c20dcbe8df27
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 4d957c26bd4e4ae278c0909c9df1476b02954b86
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52164947"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53138006"
 ---
 # <a name="profile-live-azure-web-apps-with-application-insights"></a>Profilerstellung für Live-Azure-Web-Apps mit Application Insights
 
-Profiler kann derzeit für ASP.NET- und ASP.NET Core-Web-Apps verwendet werden, die unter Web-Apps ausgeführt werden. Zur Verwendung von Profiler ist der Diensttarif „Basic“ oder höher erforderlich.
+Profiler kann derzeit für ASP.NET- und ASP.NET Core-Web-Apps verwendet werden, die unter Web-Apps ausgeführt werden. Zur Verwendung von Profiler ist der Diensttarif „Basic“ oder höher erforderlich. Profiler unter Linux lässt sich derzeit nur mit [dieser Methode](app-insights-profiler-aspnetcore-linux.md) aktivieren.
 
 ## <a id="installation"></a> Aktivieren von Profiler für Ihre Web-Apps
 Befolgen Sie die unten angegebene Anleitung, um Profiler für eine Web-App zu aktivieren. Wenn Sie eine andere Art von Azure-Dienst ausführen, helfen Ihnen diese Anleitungen zum Aktivieren von Profiler auf anderen unterstützten Plattformen weiter:
@@ -30,11 +29,10 @@ Befolgen Sie die unten angegebene Anleitung, um Profiler für eine Web-App zu ak
 * [Service Fabric-Anwendungen](app-insights-profiler-servicefabric.md?toc=/azure/azure-monitor/toc.json)
 * [Virtuelle Computer](app-insights-profiler-vm.md?toc=/azure/azure-monitor/toc.json)
 
-
 Application Insights Profiler ist als Teil der App Services-Runtime zwar bereits vorinstalliert, muss aber noch aktiviert werden, um Profile für Ihre Azure-Web-Apps zu erhalten. Führen Sie die unten angegebenen Schritte zum Aktivieren von Profiler aus, nachdem Sie eine Web-App bereitgestellt haben (auch wenn Sie das Application Insights SDK in den Quellcode eingefügt haben).
 
 1. Wechseln Sie zum Bereich **App Services** im Azure-Portal.
-1. Navigieren Sie zum Bereich **Einstellungen > Überwachung**.
+1. Navigieren Sie zum Bereich **Einstellungen > Application Insights**.
 
    ![Aktivieren von App Insights im App Services-Portal](./media/app-insights-profiler/AppInsights-AppServices.png)
 

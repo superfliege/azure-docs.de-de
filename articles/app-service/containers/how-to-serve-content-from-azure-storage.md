@@ -1,5 +1,5 @@
 ---
-title: Bereitstellen von Inhalt aus Azure Storage in App Service unter Linux
+title: Bereitstellen von Inhalt aus Azure Storage in Linux – App Service
 description: Informationen zum Konfigurieren und Bereitstellen von Inhalten aus Azure Storage in Azure App Service unter Linux.
 author: msangapu
 manager: jeconnoc
@@ -8,12 +8,13 @@ ms.workload: web
 ms.topic: article
 ms.date: 11/01/2018
 ms.author: msangapu
-ms.openlocfilehash: 8d4444aac7f84753f55c434d0a3f5ef0edcfb1c4
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.custom: seodec18
+ms.openlocfilehash: 855df2820db6bba2b47d543ab671bee2193d7d9b
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50980240"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53250915"
 ---
 # <a name="serve-content-from-azure-storage-in-app-service-on-linux"></a>Bereitstellen von Inhalt aus Azure Storage in App Service unter Linux
 
@@ -67,7 +68,7 @@ Gehen Sie genauso für alle anderen Verzeichnisse vor, die mit einem Speicherkon
 Sobald ein Speichercontainer mit einer Web-App verknüpft ist, können Sie dies durch Ausführen des folgenden Befehls überprüfen:
 
 ```azurecli
-az webapp conf storage-account list --resource-group <group_name> --name <app_name>
+az webapp config storage-account list --resource-group <group_name> --name <app_name>
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

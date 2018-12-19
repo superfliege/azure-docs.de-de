@@ -8,17 +8,16 @@ manager: carmonm
 ms.service: application-insights
 ms.workload: TBD
 ms.tgt_pltfrm: ibiza
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.reviewer: sergkanz
 ms.author: lagayhar
-ms.openlocfilehash: b61163f7e2bc4cf4e7029c9852e5baad431fa0e0
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 6da397927a99c89f4cd82adccab9d7c0defc54e4
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51615839"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53386402"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Telemetriekorrelation in Application Insights
 
@@ -32,7 +31,7 @@ Application Insights definiert ein [Datenmodell](application-insights-data-model
 
 Der verteilte logische Vorgang besteht in der Regel aus einem Satz von kleineren Vorgängen, wobei die Anforderungen von einer der Komponenten verarbeitet werden. Diese Vorgänge werden von einer [Anforderungstelemetrie](application-insights-data-model-request-telemetry.md) definiert. Jede Anforderungstelemetrie verfügt über eine eigene `id`, die diese eindeutig global identifiziert. Für sämtliche Telemetriedaten (Ablaufverfolgungen, Ausnahmen usw.), die dieser Anforderung zugeordnet sind, sollte die `operation_parentId` auf den Wert der Anforderungs-`id` festgelegt werden.
 
-Alle ausgehenden Vorgänge wie HTTP-Aufrufe an andere Komponenten werden durch eine [Abhängigkeitstelemetrie](application-insights-data-model-dependency-telemetry.md) dargestellt. Abhängigkeitstelemetrien definieren zudem ihre eigene `id`, die global eindeutig ist. Anforderungsabhängigkeiten, die durch diese Anforderungstelemetrie initiiert werden, verwenden diese als `operation_parentId`.
+Alle ausgehenden Vorgänge (wie HTTP-Aufrufe an andere Komponenten) werden durch eine [Abhängigkeitstelemetrie](application-insights-data-model-dependency-telemetry.md) dargestellt. Abhängigkeitstelemetrien definieren zudem ihre eigene `id`, die global eindeutig ist. Anforderungsabhängigkeiten, die durch diese Anforderungstelemetrie initiiert werden, verwenden diese als `operation_parentId`.
 
 Sie können die Ansicht des verteilten logischen Vorgangs mit `operation_Id`, `operation_parentId` und `request.id` mit `dependency.id` erstellen. Diese Felder definieren auch die Kausalitätsreihenfolge der Telemetrieaufrufe.
 
@@ -53,9 +52,9 @@ Sie können die daraus resultierenden Telemetriedaten durch Ausführung einer Ab
 | project timestamp, itemType, name, id, operation_ParentId, operation_Id
 ```
 
-Beachten Sie, dass in der Ergebnisansicht alle Telemetrieelemente das Stammverzeichnis `operation_Id` nutzen. Wenn ein Ajax-Aufruf über die Seite vorgenommen wird, wird die neue eindeutige ID `qJSXU` der Abhängigkeitstelemetrie zugewiesen und die Seitenansichts-ID dient als `operation_ParentId`. Die Serveranforderung verwendet im Gegenzug die Ajax-ID als `operation_ParentId` etc.
+Beachten Sie, dass in der Ergebnisansicht alle Telemetrieelemente das Stammverzeichnis `operation_Id` nutzen. Wenn ein Ajax-Aufruf über die Seite vorgenommen wird, wird die neue eindeutige ID `qJSXU` der Abhängigkeitstelemetrie zugewiesen und die Seitenansichts-ID dient als `operation_ParentId`. Die Serveranforderung verwendet im Gegenzug die Ajax-ID als `operation_ParentId` usw.
 
-| itemType   | name                      | id           | operation_ParentId | operation_Id |
+| itemType   | name                      | ID           | operation_ParentId | operation_Id |
 |------------|---------------------------|--------------|--------------------|--------------|
 | pageView   | Stock page                |              | STYz               | STYz         |
 | dependency | GET /Home/Stock           | qJSXU        | STYz               | STYz         |
@@ -66,7 +65,7 @@ Nachdem Sie den `GET /api/stock/value`-Aufruf an einen externen Dienst getätigt
 
 ## <a name="correlation-headers"></a>Korrelations-Header
 
-Wir arbeiten an RFC-Vorschlägen für das [Korrelations-HTTP-Protokoll](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md). Diese Vorschläge definieren zwei Header:
+Wir arbeiten an einem RFC-Vorschlag für das [Korrelations-HTTP-Protokoll](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md). Diese Vorschläge definieren zwei Header:
 
 - `Request-Id` enthält die global eindeutige ID des Aufrufs.
 - `Correlation-Context` enthält die Sammlung an Name/Wert-Paaren der Eigenschaften von verteilten Ablaufverfolgungen.
@@ -105,7 +104,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ## <a name="open-tracing-and-application-insights"></a>OpenTracing und Application Insights
 
-Die [OpenTracing-Datenmodellspezifikation](http://opentracing.io/) und Application Insights-Datenmodelle sind in folgender Weise zugeordnet:
+Die [OpenTracing-Datenmodellspezifikation](https://opentracing.io/) und Application Insights-Datenmodelle sind in folgender Weise zugeordnet:
 
 | Application Insights                  | OpenTracing                                      |
 |------------------------------------   |-------------------------------------------------  |
@@ -118,7 +117,6 @@ Die [OpenTracing-Datenmodellspezifikation](http://opentracing.io/) und Applicati
 Weitere Informationen zum Datenmodell von Application Insights finden Sie unter [Datenmodell](application-insights-data-model.md). 
 
 Definitionen von OpenTracing-Konzepten finden Sie in den [Spezifikationen](https://github.com/opentracing/specification/blob/master/specification.md) und [semantischen Konventionen](https://github.com/opentracing/specification/blob/master/semantic_conventions.md) für OpenTracing.
-
 
 ## <a name="telemetry-correlation-in-net"></a>Telemetriekorrelation in .NET
 
@@ -138,13 +136,20 @@ Das Application Insights SDK mit der Startversion `2.4.0-beta1` verwendet Diagno
 
 <a name="java-correlation"></a>
 ## <a name="telemetry-correlation-in-the-java-sdk"></a>Telemetriekorrelation im Java SDK
-Das [Application Insights Java SDK](app-insights-java-get-started.md) unterstützt ab Version `2.0.0` die automatische Korrelation von Telemetriedaten. Das SDK füllt `operation_id` automatisch für alle Telemetriedaten (Ablaufverfolgungen, Ausnahmen, benutzerdefinierte Ereignisse usw.) aus, die innerhalb des Bereichs einer Anforderung ausgegeben werden. Es sorgt auch dafür, dass die Korrelationsheader (weiter oben beschrieben) für Dienst-zu-Dienst-Aufrufe über HTTP weitergeben werden, wenn [Java SDK-Agent](app-insights-java-agent.md) konfiguriert ist. Hinweis: Für die Korrelationsfunktion werden nur Aufrufe unterstützt, die über Apache HTTP Client erfolgen. Wenn Sie mit Spring Rest Template oder Feign arbeiten, können beide aufgesetzt auf Apache HTTP Client verwendet werden.
+Das [Application Insights Java SDK](app-insights-java-get-started.md) unterstützt ab Version `2.0.0` die automatische Korrelation von Telemetriedaten. Das SDK füllt `operation_id` automatisch für alle Telemetriedaten (Ablaufverfolgungen, Ausnahmen, benutzerdefinierte Ereignisse usw.) auf, die innerhalb des Bereichs einer Anforderung ausgegeben werden. Es sorgt auch dafür, dass die Korrelationsheader (weiter oben beschrieben) für Dienst-zu-Dienst-Aufrufe über HTTP weitergeben werden, wenn [Java SDK-Agent](app-insights-java-agent.md) konfiguriert ist. Hinweis: Für die Korrelationsfunktion werden nur Aufrufe unterstützt, die über Apache HTTP Client erfolgen. Wenn Sie mit Spring Rest Template oder Feign arbeiten, können beide aufgesetzt auf Apache HTTP Client verwendet werden.
 
 Derzeit wird automatische Kontextweitergabe quer durch Messagingtechnologien (z. B. Kafka, RabbitMQ, Azure Service Bus) nicht unterstützt. Solche Szenarien können aber manuell codiert werden, indem die `trackDependency`- und die `trackRequest`-API verwendet werden, wobei Telemetriedaten zu Abhängigkeiten einer Nachricht entsprechen, die von einem Producer in die Warteschlange eingereiht wird, und die Anforderung einer Nachricht entspricht, die von einem Consumer verarbeitet wird. In diesem Fall müssen sowohl `operation_id` als auch `operation_parentId` in den Eigenschaften der Nachricht weitergegeben werden.
 
 <a name="java-role-name"></a>
-### <a name="role-name"></a>Rollenname
-Gelegentlich möchten Sie möglicherweise die Art und Weise anpassen, wie Komponentennamen in der [Anwendungsübersicht](app-insights-app-map.md) angezeigt werden. Dazu können Sie `cloud_roleName` manuell festlegen, indem Sie eine der folgenden Aktionen ausführen:
+## <a name="role-name"></a>Rollenname
+
+Gelegentlich möchten Sie möglicherweise die Art und Weise anpassen, wie Komponentennamen in der [Anwendungsübersicht](app-insights-app-map.md) angezeigt werden. Dazu können Sie `cloud_RoleName` manuell festlegen, indem Sie eine der folgenden Aktionen ausführen:
+
+Bei Verwendung von Spring Boot mit dem Application Insights Spring Boot-Startprogramm besteht die einzige erforderliche Änderung darin, Ihren benutzerdefinierten Namen für die Anwendung in der Datei „application.properties“ festzulegen.
+
+`spring.application.name=<name-of-app>`
+
+Das Spring Boot-Startprogramm weist dem von Ihnen für die Eigenschaft „spring.application.name“ eingegebenen Wert automatisch „CloudRoleName“ zu.
 
 Wenn Sie `WebRequestTrackingFilter` verwenden, legt der `WebAppNameContextInitializer` automatisch den Anwendungsnamen fest. Fügen Sie Folgendes zu Ihrer Konfigurationsdatei (ApplicationInsights.xml) hinzu:
 ```XML
@@ -152,7 +157,9 @@ Wenn Sie `WebRequestTrackingFilter` verwenden, legt der `WebAppNameContextInitia
   <Add type="com.microsoft.applicationinsights.web.extensibility.initializers.WebAppNameContextInitializer" />
 </ContextInitializers>
 ```
+
 Über die Cloudkontextklasse:
+
 ```Java
 telemetryClient.getContext().getCloud().setRole("My Component Name");
 ```
@@ -160,6 +167,7 @@ telemetryClient.getContext().getCloud().setRole("My Component Name");
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Schreiben benutzerdefinierter Telemetriedaten](app-insights-api-custom-events-metrics.md)
+- [Erfahren Sie mehr über](app-insights-app-map.md#set-cloudrolename) das Festlegen von „cloud_RoleName“ für die andere SDKs.
 - Integrieren Sie alle Komponenten Ihres Mikroservices in Application Insights. Überprüfen Sie die [unterstützten Plattformen](app-insights-platforms.md).
 - Lesen Sie die Informationen zu den Application Insights-Typen und zum Datenmodell unter [Datenmodell](application-insights-data-model.md).
 - Informationen zum [Erweitern und Filtern von Telemetriedaten](app-insights-api-filtering-sampling.md).

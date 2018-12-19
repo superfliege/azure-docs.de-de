@@ -9,16 +9,15 @@ ms.assetid: d0eee3c0-b328-448f-8123-f478052751db
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: mbullwin
-ms.openlocfilehash: 498633d9f73c4a9b669ddd3469b62c01d2a19397
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 4b9952cbe034df59dd1f152d5b70b50e9a4db8ab
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50958711"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52873596"
 ---
 # <a name="set-up-application-insights-for-your-aspnet-website"></a>Einrichten von Application Insights für Ihre ASP.NET-Website
 
@@ -46,7 +45,7 @@ Klicken Sie mit der rechten Maustaste im Projektmappen-Explorer auf den Namen Ih
 
 (Je nach der Version Ihres Application Insights SDK werden Sie ggf. aufgefordert, ein Upgrade auf das aktuelle SDK-Release durchzuführen. Wählen Sie **SDK aktualisieren**, falls Sie diese Aufforderung erhalten.)
 
-![Screenshot: Neue Version des Microsoft Application Insights SDK verfügbar Hervorhebung von „SDK aktualisieren“](./media/app-insights-asp-net/0002-update-sdk.png)
+![Screenshot: Neue Version des Microsoft Application Insights SDK verfügbar. Hervorhebung von „SDK aktualisieren“](./media/app-insights-asp-net/0002-update-sdk.png)
 
 Bildschirm für Application Insights-Konfiguration:
 
@@ -64,14 +63,14 @@ Wenn Sie die Ressourcengruppe oder den Speicherort Ihrer Daten festlegen möchte
 > [!NOTE]
 > Wenn beim Debuggen keine Telemetriedaten an das Verwaltungsportal gesendet werden sollen, fügen Sie Ihrer App nur das Application Insights SDK hinzu, konfigurieren Sie aber im Portal keine Ressource. Telemetriedaten werden beim Debuggen in Visual Studio angezeigt. Sie können später zu dieser Konfigurationsseite zurückkehren oder warten, bis Sie Ihre App bereitgestellt haben, und die [Telemetrie zur Laufzeit aktivieren](app-insights-monitor-performance-live-website-now.md).
 
-## <a name="run"></a> Schritt 2: Ausführen der App
+## <a name="run"></a> Schritt 2: Führen Sie Ihre App aus.
 Führen Sie Ihre App mit F5 aus. Öffnen Sie verschiedene Seiten, um Telemetriedaten zu generieren.
 
 In Visual Studio wird die Anzahl von protokollierten Ereignissen angezeigt.
 
 ![Screenshot von Visual Studio Die Schaltfläche „Application Insights“ wird während des Debuggens angezeigt.](./media/app-insights-asp-net/0006-Events.png)
 
-## <a name="step-3-see-your-telemetry"></a>Schritt 3: Anzeigen Ihrer Telemetriedaten
+## <a name="step-3-see-your-telemetry"></a>Schritt 3: Anzeigen der Telemetrie
 Sie können Ihre Telemetriedaten entweder in Visual Studio oder im Application Insights-Webportal anzeigen. Suchen Sie nach Telemetriedaten in Visual Studio, und nutzen Sie sie beim Debuggen Ihrer App. Überwachen Sie Leistung und Verwendung im Web-Portal, wenn Ihr System aktiv ist. 
 
 ### <a name="see-your-telemetry-in-visual-studio"></a>Anzeigen Ihrer Telemetriedaten in Visual Studio
@@ -150,7 +149,7 @@ Es gibt noch weitere Themen, die für Sie unter Umständen von Interesse sind:
 
 * **[Arbeiten mit Application Insights in Visual Studio](app-insights-visual-studio.md)**<br/>Enthält Informationen zum Debuggen per Telemetrie, zur Diagnosesuche und zum Drillthrough für Code.
 * **[Navigation und Dashboards im Application Insights-Portal](app-insights-dashboards.md)**<br/> Enthält Informationen zu Dashboards, leistungsstarken Diagnose- und Analysetools, Warnungen und zum Export von Telemetriedaten sowie eine Livekarte der Abhängigkeiten Ihrer Anwendung.
-* **[Analytics](../log-analytics/query-language/get-started-analytics-portal.md)**: Die leistungsfähige Abfragesprache.
+* **[Analytics](../azure-monitor/log-query/get-started-portal.md)**: Die leistungsfähige Abfragesprache.
 
 ### <a name="alerts"></a>Alerts
 

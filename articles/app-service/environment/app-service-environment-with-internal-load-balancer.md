@@ -1,5 +1,5 @@
 ---
-title: Erstellen und Verwenden eines internen Lastenausgleichs mit einer App Service-Umgebung | Microsoft-Dokumentation
+title: Erstellen und Verwenden eines internen Lastenausgleichs mit einer App Service-Umgebung – Azure | Microsoft-Dokumentation
 description: Erstellen und Verwenden einer ASE mit einem ILB
 services: app-service
 documentationcenter: ''
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
-ms.openlocfilehash: f7c94b790c6aa7c75c62fd05671f016b7185b2a2
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.custom: seodec18
+ms.openlocfilehash: 88f100bc780d8df0202cfcce9b390085a71fc905
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
-ms.locfileid: "29388814"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53310469"
 ---
 # <a name="using-an-internal-load-balancer-with-an-app-service-environment"></a>Verwenden einen internen Lastenausgleichs mit einer App Service-Umgebung
 
@@ -27,19 +28,19 @@ ms.locfileid: "29388814"
 > In diesem Artikel wird die App Service-Umgebung v1 behandelt. Für die App Service-Umgebung steht eine neuere Version zur Verfügung. Diese ist benutzerfreundlicher und basiert auf einer leistungsfähigeren Infrastruktur. Weitere Informationen zu dieser neuen Version finden Sie unter [Einführung in die App Service-Umgebung](intro.md).
 >
 
-Das Feature App Service-Umgebung (App Service Environment, ASE) ist eine Premium-Dienstoption von Azure App Service mit erweiterter Konfigurationsmöglichkeit, die in den mehrinstanzenfähigen Stamps nicht verfügbar ist. Mit dem ASE-Feature wird im Wesentlichen Azure App Service in Ihrem virtuellen Azure-Netzwerk (VNET) bereitgestellt. Um ein besseres Verständnis der Möglichkeiten von App Service-Umgebungen zu erhalten, lesen Sie die Dokumentation [Was ist eine App Service-Umgebung?][WhatisASE]. Wenn Sie die Vorteile des Betriebs in einem VNET nicht kennen, ist es ratsam, die [FAQs zu virtuellen Netzwerken][virtualnetwork] zu lesen. 
+Das Feature App Service-Umgebung (App Service Environment, ASE) ist eine Premium-Dienstoption von Azure App Service mit erweiterter Konfigurationsmöglichkeit, die in den mehrinstanzenfähigen Stamps nicht verfügbar ist. Mit dem ASE-Feature wird im Wesentlichen Azure App Service in Ihrem virtuellen Azure-Netzwerk (VNet) bereitgestellt. Um ein besseres Verständnis der Möglichkeiten von App Service-Umgebungen zu erhalten, lesen Sie die Dokumentation [Was ist eine App Service-Umgebung?][WhatisASE]. Wenn Sie die Vorteile des Betriebs in einem VNET nicht kennen, ist es ratsam, die [FAQs zu virtuellen Netzwerken][virtualnetwork] zu lesen. 
 
 ## <a name="overview"></a>Übersicht
-Eine ASE kann mit einem Endpunkt, auf den über das Internet zugegriffen werden kann, oder einer IP-Adresse in Ihrem VNET bereitgestellt werden. Um die IP-Adresse auf eine VNET-Adresse festzulegen, müssen Sie Ihre ASE mit einem internen Lastenausgleich (Internal Load Balancer, ILB) bereitstellen. Wenn Ihre ASE mit einem ILB konfiguriert ist, stellen Sie Folgendes bereit:
+Eine ASE kann mit einem Endpunkt, auf den über das Internet zugegriffen werden kann, oder einer IP-Adresse in Ihrem VNet bereitgestellt werden. Um die IP-Adresse auf eine VNet-Adresse festzulegen, müssen Sie Ihre ASE mit einem internen Lastenausgleich (Internal Load Balancer, ILB) bereitstellen. Wenn Ihre ASE mit einem ILB konfiguriert ist, stellen Sie Folgendes bereit:
 
 * Ihre eigene Domäne oder Unterdomäne. Zur Vereinfachung wird in diesem Dokument eine Unterdomäne vorausgesetzt, aber Sie können jeden Fall konfigurieren. 
-* Das für HTTPS verwendete Zertifikat
+* das für HTTPS verwendete Zertifikat
 * DNS-Verwaltung für die Unterdomäne. 
 
 Im Gegenzug können Sie z.B. Folgendes tun:
 
 * Sicheres Hosten von Intranetanwendungen, z.B. Branchenanwendungen, auf die Sie über ein Site-to-Site- oder ExpressRoute-VPN zugreifen
-* Hosten von Apps in der Cloud, die nicht im öffentlichen DNS-Server aufgeführt sind
+* Apps in der Cloud hosten, die nicht im öffentlichen DNS-Server aufgeführt sind
 * Erstellen von Back-End-Apps, die vom Internet isoliert sind, in die Ihre Front-End-Apps sicher integriert werden können
 
 #### <a name="disabled-functionality"></a>Deaktivierte Funktionen
@@ -50,7 +51,7 @@ Es gibt einige Dinge, die Sie mit einer ILB-ASE nicht machen können. Hierzu zä
 * Kaufen und Verwenden eines Zertifikats mit einer App über das Portal. Sie können natürlich weiterhin Zertifikate direkt bei einer Zertifizierungsstelle abrufen und sie mit Ihren Apps verwenden, allerdings nicht über das Azure-Portal.
 
 ## <a name="creating-an-ilb-ase"></a>Erstellen einer ILB-ASE
-Das Erstellen einer ILB-ASE unterscheidet sich nicht wesentlich vom Erstellen einer normalen ASE. Eine eingehendere Erläuterung zum Erstellen einer ASE finden Sie unter [Erstellen einer App Service-Umgebung][HowtoCreateASE]. Der Prozess zum Erstellen einer ILB-ASE ist beim Erstellen eines VNET während der ASE-Erstellung und bei der Auswahl eines vorhandenen VNET identisch. So erstellen Sie eine ILB-ASE: 
+Das Erstellen einer ILB-ASE unterscheidet sich nicht wesentlich vom Erstellen einer normalen ASE. Eine eingehendere Erläuterung zum Erstellen einer ASE finden Sie unter [Erstellen einer App Service-Umgebung][HowtoCreateASE]. Der Prozess zum Erstellen einer ILB-ASE ist beim Erstellen eines VNet während der ASE-Erstellung und bei der Auswahl eines vorhandenen VNet identisch. So erstellen Sie eine ILB-ASE: 
 
 1. Wählen Sie im Azure-Portal **Ressource erstellen > Web + Mobil > App Service-Umgebung** aus.
 2. Wählen Sie Ihr Abonnement aus.
@@ -100,8 +101,8 @@ Gehen Sie wie folgt vor, wenn Sie den Flow mit Ihren eigenen Zertifikaten auspro
 4. Erstellen Sie nach der Erstellung eine Web-App in der ASE. 
 5. Erstellen Sie einen virtuellen Computer, wenn in diesem VNET keiner vorhanden ist (nicht im gleichen Subnetz wie die ASE, da dies zum Absturz führt).
 6. Legen Sie den DNS für die Unterdomäne fest. Sie können einen Platzhalter mit Ihrer Unterdomäne in Ihrem DNS verwenden, oder wenn Sie einige einfache Tests durchführen möchten, bearbeiten Sie die Hostdatei auf Ihrem virtuellen Computer, um die VIP-Adresse für den Web-App-Namen festzulegen. Wenn Sie in einer ASE mit dem Unterdomänennamen „.ilbase.com“ die Web-App „mytestapp“ erstellen, sodass sie mit „mytestapp.ilbase.com“ adressiert wird, müssen Sie dies in der Hostdatei festlegen. (Unter Windows befindet sich die Hostdatei unter C:\Windows\System32\drivers\etc\.\)
-7. Wechseln Sie in einem Browser auf diesem virtuellen Computer zu http://mytestapp.ilbase.com (bzw. dem Namen Ihrer Web-App in Ihrer Unterdomäne).
-8. Navigieren Sie in einem Browser auf dieser VM zu https://mytestapp.ilbase.com. Bei Verwendung eines selbstsignierten Zertifikats müssen Sie eine Beeinträchtigung der Sicherheit in Kauf nehmen. 
+7. Wechseln Sie in einem Browser auf diesem virtuellen Computer zu https://mytestapp.ilbase.com (bzw. dem Namen Ihrer Web-App in Ihrer Unterdomäne).
+8. Verwenden Sie einen Browser auf diesem virtuellen Computer, und wechseln Sie zu https://mytestapp.ilbase.com. Bei Verwendung eines selbstsignierten Zertifikats müssen Sie eine Beeinträchtigung der Sicherheit in Kauf nehmen. 
 
 Die IP-Adresse der ILB wird in den Eigenschaften als virtuelle IP-Adresse aufgeführt.
 
@@ -147,8 +148,8 @@ Informationen zu den ersten Schritten mit App Service-Umgebungen finden Sie unte
 [HowtoCreateASE]: app-service-web-how-to-create-an-app-service-environment.md
 [ControlInbound]: app-service-app-service-environment-control-inbound-traffic.md
 [virtualnetwork]: https://azure.microsoft.com/documentation/articles/virtual-networks-faq/
-[AppServicePricing]: http://azure.microsoft.com/pricing/details/app-service/
+[AppServicePricing]: https://azure.microsoft.com/pricing/details/app-service/
 [ASEAutoscale]: app-service-environment-auto-scale.md
 [ExpressRoute]: app-service-app-service-environment-network-configuration-expressroute.md
-[vnetnsgs]: http://azure.microsoft.com/documentation/articles/virtual-networks-nsg/
+[vnetnsgs]: https://azure.microsoft.com/documentation/articles/virtual-networks-nsg/
 [ASEConfig]: app-service-web-configure-an-app-service-environment.md

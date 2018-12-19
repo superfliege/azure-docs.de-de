@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: apimpm
-ms.openlocfilehash: c1fd0f462a3eb960e27b002f4f7c940a6bf978c8
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.openlocfilehash: 48b0085e52c1752c0b5ecc89ce229a5a82f74345
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52620573"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53310435"
 ---
 # <a name="api-management-caching-policies"></a>Cacherichtlinien für API Management
 Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinien. Weitere Informationen zum Hinzufügen und Konfigurieren von Richtlinien finden Sie unter [Richtlinien in API Management](https://go.microsoft.com/fwlink/?LinkID=398186).  
@@ -80,7 +80,7 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
 ```  
   
 #### <a name="example-using-policy-expressions"></a>Beispiel für die Verwendung von Richtlinienausdrücken  
- Dieses Beispiel zeigt die Konfiguration der Dauer des API Management-Antwortcachings. Diese entspricht dem Zwischenspeichern von Antworten des Back-End-Diensts wie durch die `Cache-Control`-Anweisung des Back-End-Diensts angegeben. Eine Demonstration der Konfiguration und Verwendung dieser Richtlinie finden Sie unter [Cloud Cover Episode 177: More API Management Features with Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) (Cloud Cover-Folge 177 zu weiteren API Management-Funktionen mit Vlad Vinogradsky). Führen Sie einen schnellen Vorlauf bis 25:25 durch.  
+ Dieses Beispiel zeigt die Konfiguration der Dauer des API Management-Antwortcachings. Diese entspricht dem Zwischenspeichern von Antworten des Back-End-Diensts wie durch die `Cache-Control`-Anweisung des Back-End-Diensts angegeben. Eine Demonstration der Konfiguration und Verwendung dieser Richtlinie finden Sie unter [Cloud Cover-Episode 177: Weitere API Management-Funktionen](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) (führen Sie einen schnellen Vorlauf bis 25:25 durch).  
   
 ```xml  
 <!-- The following cache policy snippets demonstrate how to control API Management response cache duration with Cache-Control headers sent by the backend service. -->  
@@ -104,22 +104,22 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
   
 ### <a name="elements"></a>Elemente  
   
-|NAME|Beschreibung|Erforderlich|  
+|NAME|BESCHREIBUNG|Erforderlich|  
 |----------|-----------------|--------------|  
-|cache-lookup|Stammelement|Ja|  
+|cache-lookup|Stammelement|JA|  
 |vary-by-header|Startet das Zwischenspeichern je nach Wert des angegebenen Headers, z.B. Accept, Accept-Charset, Accept-Encoding, Accept-Language, Authorization, Expect, From, Host, If-Match.|Nein |  
 |vary-by-query-parameter|Antworten werden je nach Wert der angegebenen Abfrageparameter zwischengespeichert. Geben Sie einen oder mehrere Parameter an. Verwenden Sie Semikolons als Trennzeichen. Wenn kein Parameter angegeben ist, werden alle Abfrageparameter verwendet.|Nein |  
   
 ### <a name="attributes"></a>Attribute  
   
-| NAME                           | Beschreibung                                                                                                                                                                                                                                                                                                                                                 | Erforderlich | Standard           |
+| NAME                           | BESCHREIBUNG                                                                                                                                                                                                                                                                                                                                                 | Erforderlich | Standard           |
 |--------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|-------------------|
 | allow-private-response-caching | Bei Festlegung auf `true` wird das Zwischenspeichern von Anforderungen erlaubt, die einen Autorisierungsheader enthalten.                                                                                                                                                                                                                                                                        | Nein        | false             |
-| cache-preference               | Wählen Sie aus den folgenden Attributwerten:<br />- `internal` zur Verwendung des integrierten API Management-Caches,<br />- `external` zur Verwendung des externen Caches (siehe [Verwenden eines externen Redis-Caches in Azure API Management](api-management-howto-cache-external.md)),<br />- `prefer-external` zur Verwendung des externen Caches (sofern konfiguriert); andernfalls wird der interne Cache verwendet. | Nein        | `prefer-external` |
+| cache-preference               | Wählen Sie aus den folgenden Attributwerten:<br />- `internal` zur Verwendung des integrierten API Management-Caches,<br />- `external` zur Verwendung des externen Caches (siehe [Verwenden eines externen Azure Caches für Redis in Azure API Management](api-management-howto-cache-external.md)),<br />- `prefer-external` zur Verwendung des externen Caches (sofern konfiguriert); andernfalls wird der interne Cache verwendet. | Nein        | `prefer-external` |
 | downstream-caching-type        | Dieses Attribut muss auf einen der folgenden Werte festgelegt werden.<br /><br /> –   none: Downstreamzwischenspeicherung ist unzulässig.<br />–   private: Private Downstreamzwischenspeicherung ist zulässig.<br />–   public: Private und gemeinsam genutzte Downstreamzwischenspeicherung ist zulässig.                                                                                                          | Nein        | none              |
 | must-revalidate                | Wenn die Downstreamzwischenspeicherung aktiviert ist, aktiviert oder deaktiviert dieses Attribut die `must-revalidate`-Cachesteuerungsanweisung in Gatewayantworten.                                                                                                                                                                                                                      | Nein        | true              |
-| vary-by-developer              | Legen Sie diese Option auf `true` fest, um Antworten pro Entwicklerschlüssel zwischenzuspeichern.                                                                                                                                                                                                                                                                                                         | Ja      |                   |
-| vary-by-developer-groups       | Legen Sie diese Option auf `true` fest, um Antworten pro Benutzerrolle zwischenzuspeichern.                                                                                                                                                                                                                                                                                                             | Ja      |                   |  
+| vary-by-developer              | Legen Sie diese Option auf `true` fest, um Antworten [pro Abonnementschlüssel](https://docs.microsoft.com/azure/api-management/api-management-subscriptions#what-is-subscriptions) zwischenzuspeichern.                                                                                                                                                                                                                                                                                                         | JA      |                   |
+| vary-by-developer-groups       | Legen Sie diese Option auf `true` fest, um Antworten [pro Benutzergruppe](https://docs.microsoft.com/azure/api-management/api-management-howto-create-groups) zwischenzuspeichern.                                                                                                                                                                                                                                                                                                             | JA      |                   |  
 
 ### <a name="usage"></a>Verwendung  
  Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.  
@@ -159,7 +159,7 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
 ```  
   
 #### <a name="example-using-policy-expressions"></a>Beispiel für die Verwendung von Richtlinienausdrücken  
- Dieses Beispiel zeigt die Konfiguration der Dauer des API Management-Antwortcachings. Diese entspricht dem Zwischenspeichern von Antworten des Back-End-Diensts wie durch die `Cache-Control`-Anweisung des Back-End-Diensts angegeben. Eine Demonstration der Konfiguration und Verwendung dieser Richtlinie finden Sie unter [Cloud Cover Episode 177: More API Management Features with Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) (Cloud Cover-Folge 177 zu weiteren API Management-Funktionen mit Vlad Vinogradsky). Führen Sie einen schnellen Vorlauf bis 25:25 durch.  
+ Dieses Beispiel zeigt die Konfiguration der Dauer des API Management-Antwortcachings. Diese entspricht dem Zwischenspeichern von Antworten des Back-End-Diensts wie durch die `Cache-Control`-Anweisung des Back-End-Diensts angegeben. Eine Demonstration der Konfiguration und Verwendung dieser Richtlinie finden Sie unter [Cloud Cover-Episode 177: Weitere API Management-Funktionen](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) (führen Sie einen schnellen Vorlauf bis 25:25 durch).  
   
 ```xml  
 <!-- The following cache policy snippets demonstrate how to control API Management response cache duration with Cache-Control headers sent by the backend service. -->  
@@ -183,20 +183,20 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
   
 ### <a name="elements"></a>Elemente  
   
-|NAME|Beschreibung|Erforderlich|  
+|NAME|BESCHREIBUNG|Erforderlich|  
 |----------|-----------------|--------------|  
-|cache-store|Stammelement|Ja|  
+|cache-store|Stammelement|JA|  
   
 ### <a name="attributes"></a>Attribute  
   
-| NAME             | Beschreibung                                                                                                                                                                                                                                                                                                                                                 | Erforderlich | Standard           |
+| NAME             | BESCHREIBUNG                                                                                                                                                                                                                                                                                                                                                 | Erforderlich | Standard           |
 |------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|-------------------|
-| duration         | Lebensdauer der zwischengespeicherten Einträge, angegeben in Sekunden.                                                                                                                                                                                                                                                                                                   | Ja      | N/V               |  
+| duration         | Lebensdauer der zwischengespeicherten Einträge, angegeben in Sekunden.                                                                                                                                                                                                                                                                                                   | JA      | N/V               |  
 
 ### <a name="usage"></a>Verwendung  
  Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.  
   
--   **Richtlinienabschnitte**: outbound    
+-   **Richtlinienabschnitte:** outbound    
 -   **Richtlinienbereiche:** API, operation, product  
   
 ##  <a name="GetFromCacheByKey"></a> Wert aus Cache abrufen  
@@ -226,18 +226,18 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
   
 ### <a name="elements"></a>Elemente  
   
-|NAME|Beschreibung|Erforderlich|  
+|NAME|BESCHREIBUNG|Erforderlich|  
 |----------|-----------------|--------------|  
-|cache-lookup-value|Stammelement|Ja|  
+|cache-lookup-value|Stammelement|JA|  
   
 ### <a name="attributes"></a>Attribute  
   
-| NAME             | Beschreibung                                                                                                                                                                                                                                                                                                                                                 | Erforderlich | Standard           |
+| NAME             | BESCHREIBUNG                                                                                                                                                                                                                                                                                                                                                 | Erforderlich | Standard           |
 |------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|-------------------|
-| cache-preference | Wählen Sie aus den folgenden Attributwerten:<br />- `internal` zur Verwendung des integrierten API Management-Caches,<br />- `external` zur Verwendung des externen Caches (siehe [Verwenden eines externen Redis-Caches in Azure API Management](api-management-howto-cache-external.md)),<br />- `prefer-external` zur Verwendung des externen Caches (sofern konfiguriert); andernfalls wird der interne Cache verwendet. | Nein        | `prefer-external` |
+| cache-preference | Wählen Sie aus den folgenden Attributwerten:<br />- `internal` zur Verwendung des integrierten API Management-Caches,<br />- `external` zur Verwendung des externen Caches (siehe [Verwenden eines externen Azure Caches für Redis in Azure API Management](api-management-howto-cache-external.md)),<br />- `prefer-external` zur Verwendung des externen Caches (sofern konfiguriert); andernfalls wird der interne Cache verwendet. | Nein        | `prefer-external` |
 | default-value    | Ein Wert, der der Variablen zugewiesen wird, wenn die Cacheschlüsselsuche zu keinem Ergebnis führt. Wenn dieses Attribut nicht angegeben wird, wird `null` zugewiesen.                                                                                                                                                                                                           | Nein        | `null`            |
-| key              | In der Suche zu verwendender Cacheschlüsselwert.                                                                                                                                                                                                                                                                                                                       | Ja      | N/V               |
-| variable-name    | Der Name der [Kontextvariablen](api-management-policy-expressions.md#ContextVariables), der der gesuchte Wert zugewiesen wird, wenn die Suche erfolgreich ist. Wenn die Suche zu keinem Ergebnis führt, wird der Variablen der Wert des `default-value`-Attribut oder `null` zugewiesen, wenn das `default-value`-Attribut ausgelassen wird.                                       | Ja      | N/V               |  
+| key              | In der Suche zu verwendender Cacheschlüsselwert.                                                                                                                                                                                                                                                                                                                       | JA      | N/V               |
+| variable-name    | Der Name der [Kontextvariablen](api-management-policy-expressions.md#ContextVariables), der der gesuchte Wert zugewiesen wird, wenn die Suche erfolgreich ist. Wenn die Suche zu keinem Ergebnis führt, wird der Variablen der Wert des `default-value`-Attribut oder `null` zugewiesen, wenn das `default-value`-Attribut ausgelassen wird.                                       | JA      | N/V               |  
 
 ### <a name="usage"></a>Verwendung  
  Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.  
@@ -269,18 +269,18 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
   
 ### <a name="elements"></a>Elemente  
   
-|NAME|Beschreibung|Erforderlich|  
+|NAME|BESCHREIBUNG|Erforderlich|  
 |----------|-----------------|--------------|  
-|cache-store-value|Stammelement|Ja|  
+|cache-store-value|Stammelement|JA|  
   
 ### <a name="attributes"></a>Attribute  
   
-| NAME             | Beschreibung                                                                                                                                                                                                                                                                                                                                                 | Erforderlich | Standard           |
+| NAME             | BESCHREIBUNG                                                                                                                                                                                                                                                                                                                                                 | Erforderlich | Standard           |
 |------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|-------------------|
-| cache-preference | Wählen Sie aus den folgenden Attributwerten:<br />- `internal` zur Verwendung des integrierten API Management-Caches,<br />- `external` zur Verwendung des externen Caches (siehe [Verwenden eines externen Redis-Caches in Azure API Management](api-management-howto-cache-external.md)),<br />- `prefer-external` zur Verwendung des externen Caches (sofern konfiguriert); andernfalls wird der interne Cache verwendet. | Nein        | `prefer-external` |
-| duration         | Der Wert wird für die in Sekunden angegebene Dauer zwischengespeichert.                                                                                                                                                                                                                                                                                 | Ja      | N/V               |
-| key              | Der Cacheschlüssel, unter dem der Wert gespeichert wird.                                                                                                                                                                                                                                                                                                                   | Ja      | N/V               |
-| value            | Der Wert, der zwischengespeichert werden soll.                                                                                                                                                                                                                                                                                                                                     | Ja      | N/V               |
+| cache-preference | Wählen Sie aus den folgenden Attributwerten:<br />- `internal` zur Verwendung des integrierten API Management-Caches,<br />- `external` zur Verwendung des externen Caches (siehe [Verwenden eines externen Azure Caches für Redis in Azure API Management](api-management-howto-cache-external.md)),<br />- `prefer-external` zur Verwendung des externen Caches (sofern konfiguriert); andernfalls wird der interne Cache verwendet. | Nein        | `prefer-external` |
+| duration         | Der Wert wird für die in Sekunden angegebene Dauer zwischengespeichert.                                                                                                                                                                                                                                                                                 | JA      | N/V               |
+| key              | Der Cacheschlüssel, unter dem der Wert gespeichert wird.                                                                                                                                                                                                                                                                                                                   | JA      | N/V               |
+| value            | Der Wert, der zwischengespeichert werden soll.                                                                                                                                                                                                                                                                                                                                     | JA      | N/V               |
   
 ### <a name="usage"></a>Verwendung  
  Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.  
@@ -309,16 +309,16 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
   
 #### <a name="elements"></a>Elemente  
   
-|NAME|Beschreibung|Erforderlich|  
+|NAME|BESCHREIBUNG|Erforderlich|  
 |----------|-----------------|--------------|  
-|cache-remove-value|Stammelement.|Ja|  
+|cache-remove-value|Stammelement.|JA|  
   
 #### <a name="attributes"></a>Attribute  
   
-| NAME             | Beschreibung                                                                                                                                                                                                                                                                                                                                                 | Erforderlich | Standard           |
+| NAME             | BESCHREIBUNG                                                                                                                                                                                                                                                                                                                                                 | Erforderlich | Standard           |
 |------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|-------------------|
-| cache-preference | Wählen Sie aus den folgenden Attributwerten:<br />- `internal` zur Verwendung des integrierten API Management-Caches,<br />- `external` zur Verwendung des externen Caches (siehe [Verwenden eines externen Redis-Caches in Azure API Management](api-management-howto-cache-external.md)),<br />- `prefer-external` zur Verwendung des externen Caches (sofern konfiguriert); andernfalls wird der interne Cache verwendet. | Nein        | `prefer-external` |
-| key              | Der Schlüssel des zuvor zwischengespeicherten Werts, der aus dem Cache entfernt werden soll.                                                                                                                                                                                                                                                                                        | Ja      | N/V               |
+| cache-preference | Wählen Sie aus den folgenden Attributwerten:<br />- `internal` zur Verwendung des integrierten API Management-Caches,<br />- `external` zur Verwendung des externen Caches (siehe [Verwenden eines externen Azure Caches für Redis in Azure API Management](api-management-howto-cache-external.md)),<br />- `prefer-external` zur Verwendung des externen Caches (sofern konfiguriert); andernfalls wird der interne Cache verwendet. | Nein        | `prefer-external` |
+| key              | Der Schlüssel des zuvor zwischengespeicherten Werts, der aus dem Cache entfernt werden soll.                                                                                                                                                                                                                                                                                        | JA      | N/V               |
   
 #### <a name="usage"></a>Verwendung  
  Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.  

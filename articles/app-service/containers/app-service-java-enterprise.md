@@ -1,5 +1,5 @@
 ---
-title: Java Enterprise-Unterstützung für Azure App Service unter Linux | Microsoft-Dokumentation
+title: Java Enterprise-Unterstützung in Linux – Azure App Service | Microsoft-Dokumentation
 description: Entwicklerleitfaden für die Bereitstellung von Java Enterprise-Apps unter Verwendung von WildFly mit Azure App Service unter Linux
 keywords: Azure App Service, Web-App, Linux, OSS, Java, WildFly, Enterprise
 services: app-service
@@ -12,16 +12,17 @@ ms.devlang: java
 ms.topic: article
 ms.date: 08/29/2018
 ms.author: routlaw
-ms.openlocfilehash: a6d50e6f405294bf8e91018dd4d7b6008cd49ada
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.custom: seodec18
+ms.openlocfilehash: 34506266ed4a2103f0d3bd7a8014b9a038b25491
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52161872"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53338038"
 ---
 # <a name="java-enterprise-guide-for-app-service-on-linux"></a>Java Enterprise-Leitfaden für App Service unter Linux
 
-Mit Azure App Service unter Linux können Java-Entwickler Java Enterprise-Anwendungen (JEE) in einem vollständig verwalteten Linux-basierten Dienst erstellen, bereitstellen und skalieren.  Der Java Enterprise Runtime-Umgebung liegt der Open-Source-Anwendungsserver [WildFly](http://wildfly.org/) zugrunde.
+Mit Azure App Service unter Linux können Java-Entwickler Java Enterprise-Anwendungen (JEE) in einem vollständig verwalteten Linux-basierten Dienst erstellen, bereitstellen und skalieren.  Der Java Enterprise Runtime-Umgebung liegt der Open-Source-Anwendungsserver [WildFly](https://wildfly.org/) zugrunde.
 
 Dieser Leitfaden enthält die wichtigsten Konzepte und Anweisungen für Java Enterprise-Entwickler, die App Service für Linux verwenden. Wenn Sie noch nie Java-Anwendungen mit Azure App Service für Linux bereitgestellt haben, sollten Sie zunächst den [Java-Schnellstart](quickstart-java.md) absolvieren. Antworten auf Fragen zu App Service für Linux, die sich nicht speziell auf Java Enterprise beziehen, finden Sie unter [Java-Entwicklerleitfaden](app-service-linux-java.md) und [Häufig gestellte Fragen (FAQ) zu Azure App Service unter Linux](app-service-linux-faq.md).
 
@@ -81,7 +82,7 @@ Um WildFly für eine Datenquellenverbindung zu konfigurieren, führen Sie die gl
 2. Führen Sie die unter „Module und Abhängigkeiten“ beschriebenen Schritte aus, um den XML-Moduldeskriptor, das JBoss CLI-Skript, das Startskript und die JDBC-JAR-Abhängigkeit zu erstellen und hochzuladen.
 
 
-Weitere Informationen zum Konfigurieren von WildFly mit [PostgreSQL](https://developer.jboss.org/blogs/amartin-blog/2012/02/08/how-to-set-up-a-postgresql-jdbc-driver-on-jboss-7), [MySQL](https://dev.mysql.com/doc/connector-j/5.1/connector-j-usagenotes-jboss.html) und [SQL-Datenbank](https://docs.jboss.org/jbossas/docs/Installation_And_Getting_Started_Guide/5/html/Using_other_Databases.html#d0e3898) stehen zur Verfügung. Anhand dieser angepassten Anweisungen zusammen mit den generalisierten Anweisungen oben können Sie auf dem Server Definitionen von Datenquellen hinzufügen.
+Weitere Informationen zum Konfigurieren von WildFly mit [PostgreSQL](https://developer.jboss.org/blogs/amartin-blog/2012/02/08/how-to-set-up-a-postgresql-jdbc-driver-on-jboss-7), [MySQL](https://docs.jboss.org/jbossas/docs/Installation_And_Getting_Started_Guide/5/html/Using_other_Databases.html#Using_other_Databases-Using_MySQL_as_the_Default_DataSource) und [SQL-Datenbank](https://docs.jboss.org/jbossas/docs/Installation_And_Getting_Started_Guide/5/html/Using_other_Databases.html#d0e3898) stehen zur Verfügung. Anhand dieser angepassten Anweisungen zusammen mit den generalisierten Anweisungen oben können Sie auf dem Server Definitionen von Datenquellen hinzufügen.
 
 ## <a name="messaging-providers"></a>Messaginganbieter
 
@@ -103,7 +104,7 @@ Standardmäßig werden in App Service unter Linux Sitzungsaffinitätscookies ver
 - Wenn eine Anwendungsinstanz neu gestartet oder zentral herunterskaliert wird, geht der Zustand der Benutzersitzung im Anwendungsserver verloren.
 - Wenn für Anwendungen Einstellungen für lange Sitzungstimeouts oder eine festgelegte Anzahl von Benutzern festgelegt sind, kann es einige Zeit dauern, bis automatisch skalierte neue Instanzen Lasten empfangen, da nur neue Sitzungen an die neu gestarteten Instanzen weitergeleitet werden.
 
-Sie können WildFly zur Verwendung eines externen Sitzungsspeichers konfigurieren, z.B. [Redis Cache](/azure/redis-cache/). Sie müssen die Konfiguration [der vorhandenen ARR-Instanzaffinität deaktivieren](https://azure.microsoft.com/blog/disabling-arrs-instance-affinity-in-windows-azure-web-sites/), um die cookiebasierte Weiterleitung der Sitzung zu deaktivieren und zu ermöglichen, dass der konfigurierte WildFly-Sitzungsspeicher ohne Beeinträchtigung ausgeführt wird.
+Sie können WildFly zur Verwendung eines externen Sitzungsspeichers konfigurieren, z. B. [Aure Cache für Redis](/azure/azure-cache-for-redis/). Sie müssen die Konfiguration [der vorhandenen ARR-Instanzaffinität deaktivieren](https://azure.microsoft.com/blog/disabling-arrs-instance-affinity-in-windows-azure-web-sites/), um die cookiebasierte Weiterleitung der Sitzung zu deaktivieren und zu ermöglichen, dass der konfigurierte WildFly-Sitzungsspeicher ohne Beeinträchtigung ausgeführt wird.
 
 ## <a name="enable-web-sockets"></a>Aktivieren von WebSockets
 
@@ -114,5 +115,5 @@ WebSockets sind in App Service standardmäßig aktiviert. Informationen zu den e
 App Service umfasst Tools, mit denen Sie Probleme in Ihrer Anwendung beheben können.
 
 -   Aktivieren Sie die Protokollierung, indem Sie im linken Navigationsbereich auf **Diagnoseprotokolle** klicken. Klicken Sie auf **Dateisystem**, um das Speicherkontingent und den Aufbewahrungszeitraum festzulegen und die Änderungen zu speichern. Diese Protokolle befinden sich unter `/home/LogFiles/`.
--   [Stellen Sie über SSH eine Verbindung mit der Anwendungsinstanz her](/app-service-linux-ssh-support), um die Protokolle für ausgeführte Anwendungen anzuzeigen.
+-   [Stellen Sie über SSH eine Verbindung mit der Anwendungsinstanz her](app-service-linux-ssh-support.md), um die Protokolle für ausgeführte Anwendungen anzuzeigen.
 -   Überprüfen Sie die Diagnoseprotokolle im Bereich **Diagnoseprotokolle** des Portals oder durch Ausführen des folgenden Azure CLI-Befehls: ` az webapp log tail --name <your-app-name> --resource-group <your-apps-resource-group> `

@@ -1,5 +1,5 @@
 ---
-title: Automatische Skalierung und App Service-Umgebung v1
+title: Automatische Skalierung und App Service-Umgebung v1 – Azure
 description: Automatische Skalierung und App Service-Umgebung
 services: app-service
 documentationcenter: ''
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
-ms.openlocfilehash: 0feb6e4862f643c35a58c0321181bdda22b032e9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.custom: seodec18
+ms.openlocfilehash: 29a639142395c43fea06c1d6d18909b3c9f33b86
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "22987565"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53270024"
 ---
 # <a name="autoscaling-and-app-service-environment-v1"></a>Automatische Skalierung und App Service-Umgebung v1
 
@@ -66,7 +67,7 @@ Frank ist Systemadministrator in einem Unternehmen. Er hat einen Teil der Worklo
 
 Die App Service-Umgebung ist wie folgt für die manuelle Skalierung konfiguriert:
 
-* **Front-Ends** : 3
+* **Front-Ends**: 3
 * **Workerpool 1**: 10
 * **Workerpool 2**: 5
 * **Workerpool 3**: 5
@@ -83,29 +84,29 @@ Frank ist mit der Anwendung gut vertraut. Er weiß, dass die Spitzenzeiten mit d
 | --- | --- |
 | **Name:** Profil für Werktage |**Name:** Profil für Wochenenden |
 | **Skalieren nach:** Zeitplan und Leistungsregeln |**Skalieren nach:** Zeitplan und Leistungsregeln |
-| **Profil:** Werktage |**Profil:** Wochenende |
+| **Profil:** Wochentage |**Profil:** Wochenende |
 | **Typ:** Serie |**Typ:** Serie |
 | **Zielbereich:** 5 bis 20 Instanzen |**Zielbereich:** 3 bis 10 Instanzen |
 | **Tage:** Montag, Dienstag, Mittwoch, Donnerstag, Freitag |**Tage:** Samstag, Sonntag |
-| **Startzeit:** 9:00 Uhr |**Startzeit:** 9:00 Uhr |
+| **Startzeit**: 9:00 |**Startzeit**: 9:00 |
 | **Zeitzone:** UTC-08 |**Zeitzone:** UTC-08 |
 |  | |
 | **Regel für die automatische Skalierung (Zentral hochskalieren)** |**Regel für die automatische Skalierung (Zentral hochskalieren)** |
 | **Ressource:** Produktion (App Service-Umgebung) |**Ressource:** Produktion (App Service-Umgebung) |
-| **Metrik:** CPU in % |**Metrik:** CPU in % |
-| **Operation:** Größer als 60 % |**Operation:** Größer als 80 % |
-| **Dauer:** 5 Minuten |**Dauer:** 10 Minuten |
-| **Zeitaggregation:** Durchschnitt |**Zeitaggregation:** Durchschnitt |
-| **Aktion:** Anzahl um 2 erhöhen |**Aktion:** Anzahl um 1 erhöhen |
+| **Metrik:** CPU % |**Metrik:** CPU % |
+| **Betrieb:** Mehr als 60 % |**Betrieb:** Mehr als 80 % |
+| **Dauer:** 5 Minuten |**Dauer:** 10 Minuten |
+| **Zeitaggregation**: Durchschnitt |**Zeitaggregation**: Durchschnitt |
+| **Aktion:** Anzahl erhöhen um 2 |**Aktion:** Anzahl erhöhen um 1 |
 | **Abkühlen (Minuten):** 15 |**Abkühlen (Minuten):** 20 |
 |  | |
 | **Regel für die automatische Skalierung (Zentral herunterskalieren)** |**Regel für die automatische Skalierung (Zentral herunterskalieren)** |
 | **Ressource:** Produktion (App Service-Umgebung) |**Ressource:** Produktion (App Service-Umgebung) |
-| **Metrik:** CPU in % |**Metrik:** CPU in % |
-| **Betrieb:** Weniger als 30% |**Betrieb:** Weniger als 20% |
+| **Metrik:** CPU % |**Metrik:** CPU % |
+| **Betrieb:** Weniger als 30 % |**Betrieb:** Weniger als 20 % |
 | **Dauer:** 10 Minuten |**Dauer:** 15 Minuten |
-| **Zeitaggregation:** Durchschnitt |**Zeitaggregation:** Durchschnitt |
-| **Aktion:** Anzahl um 1 verringern |**Aktion:** Anzahl um 1 verringern |
+| **Zeitaggregation**: Durchschnitt |**Zeitaggregation**: Durchschnitt |
+| **Aktion:** Anzahl verringern um 1 |**Aktion:** Anzahl verringern um 1 |
 | **Abkühlen (Minuten):** 20 |**Abkühlen (Minuten):** 10 |
 
 ### <a name="app-service-plan-inflation-rate"></a>Inflationsrate für den App Service-Plan
@@ -154,29 +155,29 @@ Mit diesen Informationen kann Frank die folgenden Profile und Regeln für die au
 | --- | --- |
 | **Name:** Profil für Werktage |**Name:** Profil für Wochenenden |
 | **Skalieren nach:** Zeitplan und Leistungsregeln |**Skalieren nach:** Zeitplan und Leistungsregeln |
-| **Profil:** Werktage |**Profil:** Wochenende |
+| **Profil:** Wochentage |**Profil:** Wochenende |
 | **Typ:** Serie |**Typ:** Serie |
 | **Zielbereich:** 13 bis 25 Instanzen |**Zielbereich:** 6 bis 15 Instanzen |
 | **Tage:** Montag, Dienstag, Mittwoch, Donnerstag, Freitag |**Tage:** Samstag, Sonntag |
-| **Startzeit:** 7:00 Uhr |**Startzeit:** 9:00 Uhr |
+| **Startzeit**: 7:00 |**Startzeit**: 9:00 |
 | **Zeitzone:** UTC-08 |**Zeitzone:** UTC-08 |
 |  | |
 | **Regel für die automatische Skalierung (Zentral hochskalieren)** |**Regel für die automatische Skalierung (Zentral hochskalieren)** |
 | **Ressource:** Workerpool 1 |**Ressource:** Workerpool 1 |
-| **Metrik:** Verfügbare Worker |**Metrik:** Verfügbare Worker |
-| **Operation:** Weniger als 8 |**Operation:** Weniger als 3 |
+| **Metrik:** WorkersAvailable |**Metrik:** WorkersAvailable |
+| **Betrieb:** Weniger als 8 |**Betrieb:** Weniger als 3 |
 | **Dauer:** 20 Minuten |**Dauer:** 30 Minuten |
-| **Zeitaggregation:** Durchschnitt |**Zeitaggregation:** Durchschnitt |
-| **Aktion:** Anzahl um 8 erhöhen |**Aktion:** Anzahl um 3 erhöhen |
+| **Zeitaggregation**: Durchschnitt |**Zeitaggregation**: Durchschnitt |
+| **Aktion:** Anzahl erhöhen um 8 |**Aktion:** Anzahl erhöhen um 3 |
 | **Abkühlen (Minuten):** 180 |**Abkühlen (Minuten):** 180 |
 |  | |
 | **Regel für die automatische Skalierung (Zentral herunterskalieren)** |**Regel für die automatische Skalierung (Zentral herunterskalieren)** |
 | **Ressource:** Workerpool 1 |**Ressource:** Workerpool 1 |
-| **Metrik:** Verfügbare Worker |**Metrik:** Verfügbare Worker |
-| **Operation:** Größer als 8 |**Operation:** Größer als 3 |
+| **Metrik:** WorkersAvailable |**Metrik:** WorkersAvailable |
+| **Betrieb:** Mehr als 8 |**Betrieb:** Mehr als 3 |
 | **Dauer:** 20 Minuten |**Dauer:** 15 Minuten |
-| **Zeitaggregation:** Durchschnitt |**Zeitaggregation:** Durchschnitt |
-| **Aktion:** Anzahl um 2 verringern |**Aktion:** Anzahl um 3 verringern |
+| **Zeitaggregation**: Durchschnitt |**Zeitaggregation**: Durchschnitt |
+| **Aktion:** Anzahl verringern um 2 |**Aktion:** Anzahl verringern um 3 |
 | **Abkühlen (Minuten):** 120 |**Abkühlen (Minuten):** 120 |
 
 Der im Profil definierte Zielbereich wird anhand der minimalen Instanzen, die im Profil für den App Service-Plan definiert sind, plus dem Puffer berechnet.
@@ -203,25 +204,25 @@ In diesem Szenario weiß Frank, dass sich die Fehlerrate erhöht, sobald Front-E
 | **Typ:** Serie |
 | **Zielbereich:** 3 bis 10 Instanzen |
 | **Tage:** Täglich |
-| **Startzeit:** 9:00 Uhr |
+| **Startzeit**: 9:00 |
 | **Zeitzone:** UTC-08 |
 |  |
 | **Regel für die automatische Skalierung (Zentral hochskalieren)** |
 | **Ressource:** Front-End-Pool |
-| **Metrik:** CPU in % |
-| **Operation:** Größer als 60 % |
+| **Metrik:** CPU % |
+| **Betrieb:** Mehr als 60 % |
 | **Dauer:** 20 Minuten |
-| **Zeitaggregation:** Durchschnitt |
-| **Aktion:** Anzahl um 3 erhöhen |
+| **Zeitaggregation**: Durchschnitt |
+| **Aktion:** Anzahl erhöhen um 3 |
 | **Abkühlen (Minuten):** 120 |
 |  |
 | **Regel für die automatische Skalierung (Zentral herunterskalieren)** |
 | **Ressource:** Workerpool 1 |
-| **Metrik:** CPU in % |
-| **Betrieb:** Weniger als 30% |
-| **Dauer:** 20 Minuten |
-| **Zeitaggregation:** Durchschnitt |
-| **Aktion:** Anzahl um 3 verringern |
+| **Metrik:** CPU % |
+| **Betrieb:** Weniger als 30 % |
+| **Dauer:** 20 Minuten |
+| **Zeitaggregation**: Durchschnitt |
+| **Aktion:** Anzahl verringern um 3 |
 | **Abkühlen (Minuten):** 120 |
 
 <!-- IMAGES -->
