@@ -1,5 +1,5 @@
 ---
-title: Überwachen von Apps in Azure App Service | Microsoft Docs
+title: Überwachen von Apps – Azure App Service | Microsoft-Dokumentation
 description: In diesem Thema wird die Überwachung von Apps in Azure App Service mit dem Azure-Portal beschrieben.
 services: app-service
 documentationcenter: ''
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: byvinyal
-ms.openlocfilehash: 9c58e5c64ea3689634d7afb4c5fef08c9b21798c
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.custom: seodec18
+ms.openlocfilehash: 103b5c1d2bc70f187b6e65a9fa9d80a35ad8e0c1
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51244371"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53321578"
 ---
 # <a name="how-to-monitor-apps-in-azure-app-service"></a>Gewusst wie: Überwachen von Apps in Azure App Service
 [App Service](https://go.microsoft.com/fwlink/?LinkId=529714) stellt integrierte Überwachungsfunktionen im [Azure-Portal](https://portal.azure.com) bereit.
@@ -53,7 +54,7 @@ Wenn die Anwendung unter einem Plan vom Typ **Basic**, **Standard** oder **Premi
 
 Das einzige Kontingent, das für Apps gilt, die in den Plänen **Basic**, **Standard** und **Premium** gehostet werden, ist **Filesystem**.
 
-Weitere Informationen zu den spezifischen Kontingenten, Grenzwerten und Features, die für die unterschiedlichen App Service-SKUs verfügbar sind, finden Sie hier: [Diensteinschränkungen des Azure-Abonnements](../azure-subscription-service-limits.md#app-service-limits).
+Weitere Informationen zu den spezifischen Kontingenten, Grenzwerten und Features, die für die unterschiedlichen App Service-SKUs verfügbar sind, finden Sie hier: [Einschränkungen für Azure-Abonnementdienste](../azure-subscription-service-limits.md#app-service-limits)
 
 #### <a name="quota-enforcement"></a>Kontingenterzwingung
 Wenn eine Anwendung das Kontingent für **CPU(Short)**, **CPU(Day)** oder **Bandwidth** überschreitet, wird die Anwendung beendet, bis das Kontingent zurückgesetzt wird. Während dieses Zeitraums führen alle eingehenden Anforderungen zu einem **HTTP 403**-Fehler.
@@ -75,7 +76,7 @@ Für eine **Anwendung**lauten die verfügbaren Metriken:
 * **Durchschnittlicher Arbeitssatz für Arbeitsspeicher**
   * Die durchschnittliche Arbeitsspeichermenge in MiBs, die von der Anwendung verbraucht wird.
 * **CPU-Zeit**
-  * Die CPU-Menge in Sekunden, die von der App verbraucht wird. Weitere Informationen zu diesen Metriken finden Sie unter [CPU-Zeit und CPU-Prozentsatz](#cpu-time-vs-cpu-percentage).
+  * Die CPU-Menge in Sekunden, die von der App verbraucht wird. Weitere Informationen zu dieser Metrik finden Sie hier: [CPU-Zeit und CPU-Prozentsatz](#cpu-time-vs-cpu-percentage)
 * **Eingehende Daten**
   * Die Menge an eingehender Bandbreite in MiBs, die von der App verbraucht wird.
 * **Ausgehende Daten**
@@ -141,26 +142,26 @@ Metriken für eine Anwendung und einen App Service-Plan werden vom Dienst mit de
 Sie können den Status der unterschiedlichen **Kontingente** und **Metriken**, die sich auf eine Anwendung auswirken, im [Azure-Portal](https://portal.azure.com) überprüfen.
 
 ![][quotas]
-**Kontingente** befindet sich unter „Einstellungen“ &gt; **Kontingente**. Auf der Benutzeroberfläche können Sie Folgendes überprüfen: (1) den Namen der Kontingente, (2) das Zurücksetzungsintervall, (3) die aktuelle Grenze und (4) den aktuellen Wert.
+**Kontingente** befindet sich unter „Einstellungen“ &gt; **Kontingente**. In der Benutzeroberfläche können Sie Folgendes überprüfen: (1) den Namen der Kontingente, (2) das Zurücksetzungsintervall, (3) die aktuelle Grenze und (4) den aktuellen Wert.
 
 Auf ![][metrics]
-**Metriken** kann direkt über die Ressourcenseite zugegriffen werden. Sie können das Diagramm auch wie folgt anpassen: (1) **Klicken** auf das Diagramm und (2) Option **Diagramm bearbeiten** wählen.
+**Metriken** kann direkt über die Ressourcenseite zugegriffen werden. Außerdem können Sie das Diagramm wie folgt anpassen: (1) **Klicken Sie darin auf**, und wählen Sie (2) **Diagramm bearbeiten** aus.
 Hier können Sie (3) **Zeitbereich**, (4) **Diagrammtyp** und (5) **Metriken** für die Anzeige auswählen.  
 
-Weitere Informationen zu Metriken finden Sie unter [Überwachen von Dienstmetriken](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md).
+Weitere Informationen zu Metriken erhalten Sie hier: [Überwachen von Dienstmetriken](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md).
 
 ## <a name="alerts-and-autoscale"></a>Warnungen und automatische Skalierung
 Metriken für eine App oder einen App Service-Plan können mit Warnungen verknüpft werden. Weitere Informationen hierzu finden Sie unter [Erstellen von Metrikwarnungen in Azure Monitor für Azure-Dienste – Azure-Portal](../monitoring-and-diagnostics/insights-alerts-portal.md).
 
-App Service-Apps, die unter App Service-Plänen vom Typ „Basic“, „Standard“ oder „Premium“ gehostet werden, unterstützen die **automatische Skalierung**. Mithilfe der automatischen Skalierung können Sie Regeln zur Überwachung der Metriken des App Service-Plans konfigurieren. Über Regeln kann die Anzahl der Instanzen erhöht oder verringert werden, um bei Bedarf zusätzliche Ressourcen bereitzustellen. Außerdem helfen Regeln auch dabei, Geld zu sparen, wenn die Anwendung zu oft bereitgestellt wird. Weitere Informationen zur automatischen Skalierung finden Sie unter [Scale instance count manually or automatically](../monitoring-and-diagnostics/insights-how-to-scale.md) (Manuelles oder automatisches Skalieren der Instanzanzahl) und [Best practices for Azure Monitor autoscaling](../monitoring-and-diagnostics/insights-autoscale-best-practices.md) (Empfohlene Methoden für die automatische Skalierung in Azure Monitor).
+App Service-Apps, die unter App Service-Plänen vom Typ „Basic“, „Standard“ oder „Premium“ gehostet werden, unterstützen die **automatische Skalierung**. Mithilfe der automatischen Skalierung können Sie Regeln zur Überwachung der Metriken des App Service-Plans konfigurieren. Über Regeln kann die Anzahl der Instanzen erhöht oder verringert werden, um bei Bedarf zusätzliche Ressourcen bereitzustellen. Außerdem helfen Regeln auch dabei, Geld zu sparen, wenn die Anwendung zu oft bereitgestellt wird. Weitere Informationen zur automatischen Skalierung erhalten Sie hier: [Skalieren](../monitoring-and-diagnostics/insights-how-to-scale.md) und [Bewährte Methoden für die automatische Skalierung in Azure Monitor](../azure-monitor/platform/autoscale-best-practices.md)
 
 > [!NOTE]
 > Wenn Sie Azure App Service ausprobieren möchten, ehe Sie sich für ein Azure-Konto anmelden, können Sie unter [App Service testen](https://azure.microsoft.com/try/app-service/)sofort kostenlos eine kurzlebige Starter-Web-App in App Service erstellen. Keine Kreditkarte erforderlich, keine Verpflichtungen.
 > 
 > 
 
-[fzilla]:http://go.microsoft.com/fwlink/?LinkId=247914
-[vmsizes]:http://go.microsoft.com/fwlink/?LinkID=309169
+[fzilla]:https://go.microsoft.com/fwlink/?LinkId=247914
+[vmsizes]:https://go.microsoft.com/fwlink/?LinkID=309169
 
 
 

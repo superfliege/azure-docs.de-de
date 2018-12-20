@@ -13,12 +13,12 @@ ms.devlang: java
 ms.topic: article
 ms.date: 11/16/2017
 ms.author: crdun
-ms.openlocfilehash: b595e62e032743be2655406ac02c8db94cf708f9
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 5052ec73114c040a4c140d258b197fdde58f6667
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51281761"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53409325"
 ---
 # <a name="how-to-use-the-azure-mobile-apps-sdk-for-android"></a>Gewusst wie: Verwenden des Azure Mobile Apps SDK für Android
 
@@ -189,7 +189,7 @@ public final void setPriority(Integer priority) {
 }
 ```
 
-Informationen zum Erstellen zusätzlicher Tabellen in Ihrem Mobile Apps-Back-End finden Sie unter [Definieren eines Tabellencontrollers][15] (.NET-Back-End) oder [Definieren von Tabellen mit einem dynamischen Schema][16] (Node.js-Back-End).
+Informationen zum Erstellen zusätzlicher Tabellen in Ihrem Mobile Apps-Back-End, finden Sie unter [Vorgehensweise: Definieren eines Tabellencontrollers][15] (.NET-Back-End) oder [Definieren von Tabellen mit einem dynamischen Schema][16] (Node.js-Back-End).
 
 Eine Azure Mobile Apps-Back-End-Tabelle definiert fünf spezielle Felder, von denen vier für Clients verfügbar sind:
 
@@ -446,7 +446,7 @@ Bei einer Anforderung aller Datensätze mit dieser Methode werden mindestens zwe
 > [!TIP]
 > Das Auswählen der richtigen Seitengröße verlangt eine Balance zwischen der Arbeitsspeicherbelegung, während die Anforderung gestellt wird, der Bandbreitenbelegung und der Verzögerung beim vollständigen Empfang der Daten.  Die Standardeinstellung (50 Datensätze) eignet sich für alle Geräte.  Wenn Sie ausschließlich Geräte mit großem Arbeitsspeicher einsetzen, erhöhen Sie den Wert auf bis zu 500.  Wir haben herausgefunden, dass das Erhöhen der Seitengröße auf über 500 Datensätze zu nicht akzeptablen Verzögerungen und großen Arbeitsspeicherproblemen führt.
 
-### <a name="chaining"></a>Verketten von Abfragemethoden
+### <a name="chaining"></a>Gewusst wie: Verketten von Abfragemethoden
 
 Die beim Abfragen von Back-End-Tabellen verwendeten Methoden können verkettet werden. Durch die Verkettung von Abfragemethoden können Sie spezielle Spalten gefilterter Zeilen mit Sortierung und Paging abfragen. Sie können komplexe logische Filter erstellen.  Jede Abfragemethode gibt ein Query-Objekt zurück. Um die Methodenserie zu beenden und die Abfrage auszuführen, rufen Sie die **execute** -Methode auf. Beispiel: 
 
@@ -672,7 +672,7 @@ ToDoItem result = mToDoTable
     .get();
 ```
 
-## <a name="untyped"></a>Arbeiten mit nicht typisierten Daten
+## <a name="untyped"></a>Gewusst wie: Arbeiten mit nicht typisierten Daten
 
 Das Programmiermodell ohne Typisierung ermöglicht Ihnen eine genaue Steuerung der JSON-Serialisierung.  Es gibt einige häufige Szenarien, in denen der Einsatz eines nicht typisierten Programmiermodells wünschenswert ist. Beispiel: Ihre Back-End-Tabelle enthält viele Spalten, und Sie müssen nur auf eine Teilmenge der Spalten verweisen.  Im typisierten Modell müssen Sie alle Spalten definieren, die im Mobile Apps-Back-End in Ihrer Datenklasse definiert sind.  Die meisten API-Aufrufe für den Datenzugriff sind gleich wie beim typisierten Programmiermodell. Im untypisierten Modell rufen Sie Methoden des **MobileServiceJsonTable**-Objekts anstelle des **MobileServiceTable**-Objekts auf.
 
@@ -1289,31 +1289,31 @@ Dieser Code muss vor dem Erstellen eines Verweises auf den mobilen Client mithil
 
 <!-- URLs. -->
 [Get started with Azure Mobile Apps]: app-service-mobile-android-get-started.md
-[ASCII control codes C0 and C1]: http://en.wikipedia.org/wiki/Data_link_escape_character#C1_set
-[Mobile Services SDK for Android]: http://go.microsoft.com/fwlink/p/?LinkID=717033
+[ASCII control codes C0 and C1]: https://en.wikipedia.org/wiki/Data_link_escape_character#C1_set
+[Mobile Services SDK for Android]: https://go.microsoft.com/fwlink/p/?LinkID=717033
 [Azure portal]: https://portal.azure.com
 [Erste Schritte mit der Authentifizierung]: app-service-mobile-android-get-started-users.md
 [1]: https://static.javadoc.io/com.google.code.gson/gson/2.8.5/com/google/gson/JsonObject.html
-[2]: http://hashtagfail.com/post/44606137082/mobile-services-android-serialization-gson
+[2]: https://hashtagfail.com/post/44606137082/mobile-services-android-serialization-gson
 [3]: https://www.javadoc.io/doc/com.google.code.gson/gson/2.8.5
-[4]: http://go.microsoft.com/fwlink/p/?LinkId=296840
+[4]: https://go.microsoft.com/fwlink/p/?LinkId=296840
 [5]: app-service-mobile-android-get-started-push.md
 [6]: ../notification-hubs/notification-hubs-push-notification-overview.md#integration-with-app-service-mobile-apps
 [7]: app-service-mobile-android-get-started-users.md#cache-tokens
-[8]: http://azure.github.io/azure-mobile-apps-android-client/com/microsoft/windowsazure/mobileservices/table/MobileServiceTable.html
-[9]: http://azure.github.io/azure-mobile-apps-android-client/com/microsoft/windowsazure/mobileservices/MobileServiceClient.html
+[8]: https://azure.github.io/azure-mobile-apps-android-client/com/microsoft/windowsazure/mobileservices/table/MobileServiceTable.html
+[9]: https://azure.github.io/azure-mobile-apps-android-client/com/microsoft/windowsazure/mobileservices/MobileServiceClient.html
 [10]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
 [11]: app-service-mobile-node-backend-how-to-use-server-sdk.md
-[12]: http://azure.github.io/azure-mobile-apps-android-client/
+[12]: https://azure.github.io/azure-mobile-apps-android-client/
 [13]: app-service-mobile-android-get-started.md#create-a-new-azure-mobile-app-backend
-[14]: http://go.microsoft.com/fwlink/p/?LinkID=717034
+[14]: https://go.microsoft.com/fwlink/p/?LinkID=717034
 [15]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#define-table-controller
 [16]: app-service-mobile-node-backend-how-to-use-server-sdk.md#TableOperations
 [17]: https://developer.android.com/reference/java/util/UUID.html
 [18]: https://github.com/google/guava/wiki/ListenableFutureExplained
-[19]: http://www.odata.org/documentation/odata-version-3-0/
-[20]: http://hashtagfail.com/post/46493261719/mobile-services-android-querying
+[19]: https://www.odata.org/documentation/odata-version-3-0/
+[20]: https://hashtagfail.com/post/46493261719/mobile-services-android-querying
 [21]: https://github.com/Azure-Samples/azure-mobile-apps-android-quickstart
-[22]: ../app-service/app-service-mobile-how-to-configure-active-directory-authentication.md
-[Future]: http://developer.android.com/reference/java/util/concurrent/Future.html
-[AsyncTask]: http://developer.android.com/reference/android/os/AsyncTask.html
+[22]: ../app-service/configure-authentication-provider-aad.md
+[Future]: https://developer.android.com/reference/java/util/concurrent/Future.html
+[AsyncTask]: https://developer.android.com/reference/android/os/AsyncTask.html

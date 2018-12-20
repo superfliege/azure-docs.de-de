@@ -1,5 +1,5 @@
 ---
-title: High Density-Hosting in Azure App Service mit Skalierung pro App | Microsoft-Dokumentation
+title: High Density-Hosting mit Skalierung pro App – Azure App Service | Microsoft-Dokumentation
 description: High Density-Hosting in Azure App Service
 author: btardif
 manager: erikre
@@ -14,12 +14,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 01/22/2018
 ms.author: byvinyal
-ms.openlocfilehash: f2cf472ef3c2c9950dd9f9382009e21fbf62771b
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.custom: seodec18
+ms.openlocfilehash: e7ebe3ade66e62e1f42aa304b33c42d96be72c06
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48856784"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53258915"
 ---
 # <a name="high-density-hosting-on-azure-app-service-using-per-app-scaling"></a>High Density-Hosting in Azure App Service mit Skalierung pro App
 Standardmäßig skalieren Sie App Service-Apps durch Skalierung des [App Service-Plans](azure-web-sites-web-hosting-plans-in-depth-overview.md), in dem sie ausgeführt werden. Wenn sich mehrere Apps im gleichen App Service-Plan befinden, führt jede horizontal hochskalierte Instanz alle Apps im Plan aus.
@@ -78,7 +79,7 @@ Im App Service-Plan wird die **PerSiteScaling**-Eigenschaft auf TRUE festgelegt 
 
 ```json
 {
-    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters":{
         "appServicePlanName": { "type": "string" },
@@ -129,10 +130,10 @@ Bei der Skalierung pro App handelt es sich um ein Feature, das sowohl in globale
 Führen Sie zum Konfigurieren des High Density-Hosting für Ihre Apps die folgenden Schritte aus:
 
 1. Konfigurieren Sie die App Service-Umgebung, und wählen Sie einen Workerpool aus, der ausschließlich für das Szenario mit High Density-Hosting genutzt wird.
-1. Erstellen Sie einen einzelnen App Service-Plan, und skalieren Sie ihn so, dass die gesamte verfügbare Kapazität für den Workerpool verwendet wird.
-1. Legen Sie im App Service-Plan das Flag `PerSiteScaling` auf TRUE fest.
-1. Neue Apps werden erstellt und diesem App Service-Plan zugewiesen, wobei die **numberOfWorkers**-Eigenschaft auf **1** festgelegt wird. Durch die Konfiguration ergibt sich die höchstmögliche Dichte für diesen Workerpool.
-1. Die Anzahl der Worker kann pro App unabhängig konfiguriert werden, um nach Bedarf zusätzliche Ressourcen zur Verfügung zu stellen. Beispiel: 
+2. Erstellen Sie einen einzelnen App Service-Plan, und skalieren Sie ihn so, dass die gesamte verfügbare Kapazität für den Workerpool verwendet wird.
+3. Legen Sie im App Service-Plan das Flag `PerSiteScaling` auf TRUE fest.
+4. Neue Apps werden erstellt und diesem App Service-Plan zugewiesen, wobei die **numberOfWorkers**-Eigenschaft auf **1** festgelegt wird. Durch die Konfiguration ergibt sich die höchstmögliche Dichte für diesen Workerpool.
+5. Die Anzahl der Worker kann pro App unabhängig konfiguriert werden, um nach Bedarf zusätzliche Ressourcen zur Verfügung zu stellen. Beispiel: 
     - Bei einer stark ausgelasteten App kann **numberOfWorkers** auf **3** festgelegt werden, damit diese App über mehr Verarbeitungskapazität verfügt. 
     - Bei selten verwendeten Apps kann **numberOfWorkers** auf **1** festgelegt werden.
 

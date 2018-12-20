@@ -1,5 +1,5 @@
 ---
-title: Konfigurieren von PHP in Azure App Service-Web-Apps
+title: Konfigurieren der PHP-Runtime – Azure App Service
 description: Erfahren Sie mehr über das Konfigurieren der PHP-Standardinstallation oder das Hinzufügen einer benutzerdefinierten PHP-Installation für Web-Apps in Azure App Service.
 services: app-service
 documentationcenter: php
@@ -13,12 +13,13 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 04/11/2018
 ms.author: msangapu
-ms.openlocfilehash: 1e5f7ed2fb4c77e0a738cbe6ee6c84b46bc59bb8
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.custom: seodec18
+ms.openlocfilehash: d5ad7b392029ae33ee7666b80edfe5b4b7555b41
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51230834"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53273192"
 ---
 # <a name="configure-php-in-azure-app-service-web-apps"></a>Konfigurieren von PHP in Azure App Service-Web-Apps
 
@@ -28,7 +29,7 @@ In diesem Leitfaden erfahren Sie, wie Sie die integrierte PHP-Laufzeit für Web-
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
-## <a name="how-to-change-the-built-in-php-version"></a>Vorgehensweise: Ändern der integrierten PHP-Version
+## <a name="how-to-change-the-built-in-php-version"></a>Gewusst wie: Ändern der integrierten PHP-Version
 
 PHP 5.6 ist standardmäßig installiert und kann sofort verwendet werden, wenn Sie eine App Service-Web-App erstellen. Die beste Möglichkeit, um die verfügbare Versionsrevision, die Standardkonfiguration und die aktivierten Erweiterungen anzuzeigen, ist die Bereitstellung eines Skripts, das die Funktion [phpinfo()] abruft.
 
@@ -39,10 +40,10 @@ PHP 7.0 und PHP 7.2 sind ebenfalls verfügbar, aber nicht standardmäßig aktivi
 1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrer Web-App, und klicken Sie auf die Schaltfläche **Einstellungen**.
 
     ![Speichern][settings-button]
-1. Wählen Sie auf dem Blatt **Einstellungen** die Option **Anwendungseinstellungen** und dann die neue PHP-Version aus.
+2. Wählen Sie auf dem Blatt **Einstellungen** die Option **Anwendungseinstellungen** und dann die neue PHP-Version aus.
 
     ![Anwendungseinstellungen][application-settings]
-1. Klicken Sie im oberen Bereich des Blatts **Web-App-Einstellungen** auf die Schaltfläche **Speichern**.
+3. Klicken Sie im oberen Bereich des Blatts **Web-App-Einstellungen** auf die Schaltfläche **Speichern**.
 
     ![Speichern Sie die Konfigurationseinstellungen][save-button]
 
@@ -78,7 +79,7 @@ Um die Azure-Befehlszeilenschnittstelle verwenden zu können, muss die [Azure CL
 
         az webapp show --name {app-name} --resource-group {resource-group-name}
 
-## <a name="how-to-change-the-built-in-php-configurations"></a>Vorgehensweise: Ändern der integrierten PHP-Konfigurationen
+## <a name="how-to-change-the-built-in-php-configurations"></a>Gewusst wie: Ändern der integrierten PHP-Konfigurationen
 
 Für jede integrierte PHP-Laufzeit können Sie alle Konfigurationsoptionen ändern, indem Sie diese Schritte ausführen. (Informationen zu php.ini-Direktiven finden Sie unter [Liste der php.ini-Direktiven]).
 
@@ -109,7 +110,7 @@ Alternativ zur Verwendung einer`.user.ini`-Datei können Sie auch die Funktion [
         wincache.maxfilesize=512
 1. Um die Änderungen zu laden, starten Sie Ihre Web-App neu.
 
-## <a name="how-to-enable-extensions-in-the-default-php-runtime"></a>Vorgehensweise: Aktivieren von Erweiterungen in der PHP-Standardlaufzeit
+## <a name="how-to-enable-extensions-in-the-default-php-runtime"></a>Gewusst wie: Aktivieren von Erweiterungen in der PHP-Standardlaufzeit
 
 Wie im vorherigen Anschnitt angegeben ist die Standardkonfiguration die beste Möglichkeit, um die Standard-PHP-Version anzuzeigen, und die aktivierten Erweiterungen dienen zur Bereitstellung eines Skripts, das [phpinfo()]abruft. Um zusätzliche Erweiterungen zu aktivieren, führen Sie diese Schritte aus:
 
@@ -144,11 +145,11 @@ Wie im vorherigen Anschnitt angegeben ist die Standardkonfiguration die beste M�
 
 Zend-Erweiterungen werden bei Verwendung des Schlüssels **PHP_ZENDEXTENSIONS** ebenfalls unterstützt. Um mehrere Erweiterungen zu aktivieren, fügen Sie eine durch Trennzeichen getrennte Liste von `.dll` -Dateien für den Wert der App-Einstellung hinzu.
 
-## <a name="how-to-use-a-custom-php-runtime"></a>Vorgehensweise: Verwenden einer benutzerdefinierten PHP-Laufzeit
+## <a name="how-to-use-a-custom-php-runtime"></a>Gewusst wie: Verwenden einer benutzerdefinierten PHP-Laufzeit
 
 Anstelle der PHP-Standardlaufzeit können App Service-Web-Apps auch eine PHP-Laufzeit verwenden, die Sie für die Ausführung von PHP-Skripten angeben. Die Laufzeit, die Sie angeben, kann durch eine `php.ini` -Datei konfiguriert werden, die Sie ebenfalls angeben. Folgen Sie diesen Schritten, um eine benutzerdefinierte PHP-Laufzeit mit Web-Apps zu verwenden.
 
-1. Besorgen Sie sich eine nicht threadsichere, VC9- oder VC11-kompatible Version von PHP für Windows. Neuere Versionen von PHP für Windows finden Sie hier: [http://windows.php.net/download/]. Ältere Versionen finden Sie hier im Archiv: [http://windows.php.net/downloads/releases/archives/].
+1. Besorgen Sie sich eine nicht threadsichere, VC9- oder VC11-kompatible Version von PHP für Windows. Neuere Versionen von PHP für Windows finden Sie hier: [https://windows.php.net/download/]. Ältere Versionen finden Sie hier im Archiv: [https://windows.php.net/downloads/releases/archives/].
 1. Ändern Sie die Datei `php.ini` für Ihre Laufzeit. Konfigurationseinstellungen, die reine Systemebenendirektiven sind, werden von Web-Apps ignoriert. (Informationen zu Direktiven nur auf Systemebene finden Sie unter [Liste der php.ini-Direktiven]).
 1. Optional können Sie Ihrer PHP-Laufzeit auch Erweiterungen hinzufügen und in der Datei `php.ini` aktivieren.
 1. Fügen Sie dem Stammverzeichnis das Verzeichnis `bin` hinzu, und legen Sie das Verzeichnis, das die PHP-Laufzeit enthält, darin ab (zum Beispiel `bin\php`).
@@ -196,7 +197,7 @@ Weitere Informationen finden Sie im [PHP Developer Center](https://azure.microso
 >
 
 [kostenlose Testversion]: https://www.windowsazure.com/pricing/free-trial/
-[phpinfo()]: http://php.net/manual/en/function.phpinfo.php
+[phpinfo()]: https://php.net/manual/en/function.phpinfo.php
 [select-php-version]: ./media/web-sites-php-configure/select-php-version.png
 [Liste der php.ini-Direktiven]: http://www.php.net/manual/en/ini.list.php
 [.user.ini]: http://www.php.net/manual/en/configuration.file.per-user.php
@@ -206,8 +207,8 @@ Weitere Informationen finden Sie im [PHP Developer Center](https://azure.microso
 [save-button]: ./media/web-sites-php-configure/save-button.png
 [php-extensions]: ./media/web-sites-php-configure/php-extensions.png
 [handler-mappings]: ./media/web-sites-php-configure/handler-mappings.png
-[http://windows.php.net/download/]: http://windows.php.net/download/
-[http://windows.php.net/downloads/releases/archives/]: http://windows.php.net/downloads/releases/archives/
+[https://windows.php.net/download/]: https://windows.php.net/download/
+[https://windows.php.net/downloads/releases/archives/]: https://windows.php.net/downloads/releases/archives/
 [SETPHPVERCLI]: ./media/web-sites-php-configure/ChangePHPVersion-XPlatCLI.png
 [GETPHPVERCLI]: ./media/web-sites-php-configure/ShowPHPVersion-XplatCLI.png
 [SETPHPVERPS]: ./media/web-sites-php-configure/ChangePHPVersion-PS.png

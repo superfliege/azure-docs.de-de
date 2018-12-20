@@ -1,5 +1,5 @@
 ---
-title: Anleitung zur Bereitstellung von Azure-Web-Apps mit Vorlagen | Microsoft-Dokumentation
+title: Anleitung zur Bereitstellung von Apps mit Vorlagen – Azure App Service | Microsoft-Dokumentation
 description: Empfehlungen zum Erstellen von Azure Resource Manager-Vorlagen zum Bereitstellen von Web-Apps
 services: app-service
 documentationcenter: app-service
@@ -11,12 +11,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/09/2018
 ms.author: tomfitz
-ms.openlocfilehash: c2f600d86965e1115d4be1370da8f7c8e1b67f05
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.custom: seodec18
+ms.openlocfilehash: 523574f49673ee961665136d90f04183e7c1a679
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37927671"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53277759"
 ---
 # <a name="guidance-on-deploying-web-apps-by-using-azure-resource-manager-templates"></a>Anleitung zum Bereitstellen von Web-Apps mit Azure Resource Manager-Vorlagen
 
@@ -87,7 +88,7 @@ Das folgende Beispiel zeigt einen Teil einer Vorlage. Der Wert der Verbindungsze
 }
 ```
 
-Ein lauffähiges Beispiel, das den oben stehenden Code verwendet, finden Sie unter [Template: Build a simple Umbraco Web App](https://github.com/Azure/azure-quickstart-templates/tree/master/umbraco-webapp-simple) (Vorlage: Erstellen einer einfachen Umbraco-Web-App).
+Ein lauffähiges Beispiel, das den oben stehenden Code verwendet, finden Sie unter [Vorlage: Erstellen einer einfachen Umbraco-Web-App](https://github.com/Azure/azure-quickstart-templates/tree/master/umbraco-webapp-simple).
 
 ## <a name="find-information-about-msdeploy-errors"></a>Suchen von Informationen zu MS Deploy-Fehlern
 

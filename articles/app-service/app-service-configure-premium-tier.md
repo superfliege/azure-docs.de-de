@@ -1,5 +1,5 @@
 ---
-title: Konfigurieren des PremiumV2-Tarifs für Azure App Service | Microsoft-Dokumentation
+title: Konfigurieren des PremiumV2-Tarifs – Azure App Service | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie in Azure App Service durch zentrales Hochskalieren auf den neuen PremiumV2-Tarif die Leistung Ihrer mobilen App, Web-App und API-App optimieren.
 keywords: App-Dienst, Azure App Service, Skalierung, skalierbar, App Services-Plan, App Service-Kosten
 services: app-service
@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/25/2018
 ms.author: cephalin
-ms.openlocfilehash: 59e5825554843ef7265cbccdd9a63db0426891fa
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.custom: seodec18
+ms.openlocfilehash: ac0a3500956cc81e264c8743d44aa06f018b1a45
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47226308"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53258898"
 ---
 # <a name="configure-premiumv2-tier-for-azure-app-service"></a>Konfigurieren des PremiumV2-Tarifs für Azure App Service
 

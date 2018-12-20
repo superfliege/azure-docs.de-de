@@ -8,12 +8,12 @@ ms.date: 06/19/2018
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: c11013c926e77447a69ce0dfe697fdda1ecc2b8c
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: 52ff52ffb558278507bb24e1b1e2054c251b2512
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52284845"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52879637"
 ---
 # <a name="troubleshoot-errors-when-onboarding-solutions"></a>Beheben von Fehlern beim Integrieren von Lösungen
 
@@ -21,7 +21,7 @@ Beim Integrieren von Lösungen wie Updateverwaltung oder Änderungsnachverfolgun
 
 ## <a name="general-errors"></a>Allgemeine Fehler
 
-### <a name="computer-grou-query-format-error"></a>Szenario: ComputerGroupQueryFormatError
+### <a name="computer-group-query-format-error"></a>Szenario: ComputerGroupQueryFormatError
 
 #### <a name="issue"></a>Problem
 
@@ -55,7 +55,7 @@ Für eine erfolgreiche Bereitstellung der Lösung müssen Sie eine Änderung der
   * Weisen Sie die Richtlinie einer bestimmten Ressource neu zu (z.B. einem bestimmten Automation-Konto).
   * Überarbeiten Sie die Gruppe der Ressourcen, zu deren Ablehnung diese Richtlinie konfiguriert wurde.
 
-Lesen Sie die Benachrichtigungen in der oberen rechten Ecke des Azure-Portals, oder navigieren Sie zum Anzeigen der fehlerhaften Bereitstellung zu der Ressourcengruppe, die Ihr Automation-Konto enthält, und wählen Sie unter **Einstellungen** die Option **Bereitstellungen** aus. Weitere Informationen zu Azure Policy finden Sie unter [Was ist Azure Policy](../../azure-policy/azure-policy-introduction.md?toc=%2fazure%2fautomation%2ftoc.json).
+Lesen Sie die Benachrichtigungen in der oberen rechten Ecke des Azure-Portals, oder navigieren Sie zum Anzeigen der fehlerhaften Bereitstellung zu der Ressourcengruppe, die Ihr Automation-Konto enthält, und wählen Sie unter **Einstellungen** die Option **Bereitstellungen** aus. Weitere Informationen zu Azure Policy finden Sie hier: [Übersicht zu Azure Policy](../../azure-policy/azure-policy-introduction.md?toc=%2fazure%2fautomation%2ftoc.json).
 
 ## <a name="mma-extension-failures"></a>MMA-Erweiterungsfehler
 

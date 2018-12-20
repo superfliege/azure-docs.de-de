@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2016
 ms.author: crdun
-ms.openlocfilehash: 5001704f47af0c7b07744f1dceb7aa58bdb6448c
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 7fdbbee27f83a4583390158e456270324967b28a
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32158867"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52961602"
 ---
 # <a name="article-top"></a>Migrieren des vorhandenen Azure Mobile Service zu Azure App Service
-Mit der [allgemeinen Verfügbarkeit von Azure App Service]können Azure Mobile Services-Websites problemlos direkt migriert werden, um alle Features von Azure App Service zu nutzen.  Dieses Dokument erläutert, was Sie erwarten können, wenn Sie Ihre Website von Azure Mobile Services zu Azure App Service migrieren.
+Mit der [Allgemeine Verfügbarkeit von Azure App Service]können Azure Mobile Services-Websites problemlos direkt migriert werden, um alle Features von Azure App Service zu nutzen.  Dieses Dokument erläutert, was Sie erwarten können, wenn Sie Ihre Website von Azure Mobile Services zu Azure App Service migrieren.
 
 ## <a name="what-does-migration-do"></a>Auswirkungen der Migration auf Ihre Website
 Die Migration Ihres Azure Mobile Service wandelt den Mobile Service in eine [Azure App Service]-App um, ohne den Code zu beeinträchtigen.  Ihre Notification Hubs, die SQL-Datenverbindung, Authentifizierungseinstellungen, geplanten Aufträge und Domänennamen bleiben unverändert.  Mobile Clients, die Ihren Azure Mobile Service verwenden, werden weiterhin normal ausgeführt.  Die Migration startet Ihren Dienst neu, sobald er an Azure App Service übertragen wurde.
@@ -32,12 +32,12 @@ Die Migration Ihres Azure Mobile Service wandelt den Mobile Service in eine [Azu
 ## <a name="why-migrate"></a>Gründe zur Migration Ihrer Website
 Microsoft empfiehlt Ihnen, Ihren Azure Mobile Service zu migrieren, um die Features von Azure App Service zu nutzen, einschließlich:
 
-* Neue Hostfeatures, u.a. [WebJobs] und [benutzerdefinierte Domänennamen].
+* Neue Hostfeatures, u.a. [WebJobs] und [benutzerdefinierten Domänennamen].
 * Überwachung und Problembehandlung mit [Application Insights].
 * Integrierte DevOps-Tools, einschließlich [Stagingslots], Rollback und Test in der Produktion.
 * [Automatische Skalierung], Lastenausgleich und [Leistungsüberwachung].
 
-Weitere Informationen zu den Vorteilen von Azure App Service finden Sie im Thema [Mobile Services im Vergleich zu App Service].
+Weitere Informationen zu den Vorteilen von Azure App Service finden Sie im Thema [Mobile Services im Vergleich mit App Service].
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 Bevor Sie mit größeren Arbeiten an Ihrer Website beginnen, sollten Sie Ihre Mobile Service-Skripts und Ihre SQL-Datenbank sichern.
@@ -47,7 +47,7 @@ Bei der Migration werden alle Websites innerhalb einer einzelnen Azure-Region mi
 
 So migrieren Sie Ihre Website:
 
-1. Melden Sie sich beim [klassischen Azure-Portal] an.
+1. Melden Sie sich beim [Klassisches Azure-Portal] an.
 2. Wählen Sie einen Mobile Service in der Region aus, die Sie migrieren möchten.
 3. Klicken Sie auf die Schaltfläche **Zu App Service migrieren**.
 
@@ -84,7 +84,7 @@ Als Ausgangspunkt empfehlen wir folgende Tarife:
 | Basic |B1 Basic |
 | Standard |S1 Standard |
 
-Sie können bei der Auswahl des richtigen Tarifs für Ihre Anwendung sehr flexibel vorgehen.  Unter [App Service – Preise] finden Sie umfassende Informationen zu den Preisen Ihres neuen App Service.
+Sie können bei der Auswahl des richtigen Tarifs für Ihre Anwendung sehr flexibel vorgehen.  Unter [App Service pricing] finden Sie umfassende Informationen zu den Preisen Ihres neuen App Service.
 
 > [!TIP]
 > Der App Service-Tarif Standard umfasst den Zugriff auf viele Features, die unter Umständen nützlich für Sie sein können, z.B. [Stagingslots], automatische Sicherungen und automatische Skalierung.  Informieren Sie sich dort ausführlich über die neuen Funktionen!
@@ -134,7 +134,7 @@ Die PublishSettings-Datei wird auf Ihren Computer heruntergeladen.  Sie heißt n
 6. Klicken Sie auf **Veröffentlichen**, um die Website zu veröffentlichen.
 
 ## <a name="working-with-your-site"></a>Arbeiten mit Ihrer Website nach der Migration
-Nach der Migration können Sie im [Azure-Portal] mit Ihrem neuen App Service arbeiten.  Es folgen einige Hinweise zu bestimmten Vorgängen, die Sie im [klassischen Azure-Portal]ausgeführt haben, mit ihren App Service-Entsprechungen.
+Nach der Migration können Sie im [Azure-Portal] mit Ihrem neuen App Service arbeiten.  Es folgen einige Hinweise zu bestimmten Vorgängen, die Sie im [Klassisches Azure-Portal]ausgeführt haben, mit ihren App Service-Entsprechungen.
 
 ### <a name="publishing-your-site"></a>Herunterladen und Veröffentlichen Ihrer migrierten Website
 Ihre Website ist über Git oder FTP verfügbar und kann mit verschiedenen Mechanismen, einschließlich WebDeploy, TFS, Mercurial, GitHub und FTP, erneut veröffentlicht werden.  Anmeldeinformationen für die Bereitstellung werden mit dem Rest der Website migriert.  Wenn Sie keine Anmeldeinformationen für die Bereitstellung festgelegt haben, oder sich nicht mehr an sie erinnern, können Sie diese zurücksetzen:
@@ -248,14 +248,14 @@ Ihr Notification Hub wird über das [Azure-Portal] verwaltet.  Notieren Sie den 
 3. Klicken Sie auf den Namen des Notification Hubs, der dem Mobile Service zugeordnet ist.
 
 > [!NOTE]
-> Wenn der Notification Hub den Typ „Gemischt“ hat, ist er nicht sichtbar.  Notification Hubs des Typs „Gemischt“ setzen sowohl Notification Hubs- als auch ältere Service Bus-Features ein.  [Konvertieren Sie Ihre gemischten Namespaces], bevor Sie fortfahren.  Sobald die Konvertierung abgeschlossen ist, wird Ihr Notification Hub im [Azure-Portal] angezeigt.
+> Wenn der Notification Hub den Typ „Gemischt“ hat, ist er nicht sichtbar.  Notification Hubs des Typs „Gemischt“ setzen sowohl Notification Hubs- als auch ältere Service Bus-Features ein.  [Ihre gemischten Namespaces konvertieren], bevor Sie fortfahren.  Sobald die Konvertierung abgeschlossen ist, wird Ihr Notification Hub im [Azure-Portal] angezeigt.
 >
 >
 
 Weitere Informationen finden Sie in der [Notification Hubs] -Dokumentation.
 
 > [!TIP]
-> Im [Azure-Portal] befinden sich Notification Hub-Verwaltungsfeatures noch in der Vorschau.  Das [klassischen Azure-Portal] bleibt für die Verwaltung Ihrer sämtlichen Notification Hubs verfügbar.
+> Im [Azure-Portal] befinden sich Notification Hub-Verwaltungsfeatures noch in der Vorschau.  Das [Klassisches Azure-Portal] bleibt für die Verwaltung Ihrer sämtlichen Notification Hubs verfügbar.
 >
 >
 
@@ -310,7 +310,7 @@ Normalerweise ist die Diagnoseprotokollierung in einem Azure App Service deaktiv
 2. Wählen Sie **Alle Ressourcen** oder **App Services**, und klicken Sie dann auf den Namen Ihres migrierten Mobile Service.
 3. Das Blatt „Einstellungen“ wird standardmäßig geöffnet.
 4. Wählen Sie im Menü „FEATURES“ **Diagnoseprotokolle** .
-5. Klicken Sie für die folgenden Protokolle auf **EIN**: **Anwendungsprotokollierung (Dateisystem)**, **Detaillierte Fehlermeldungen** und **Ablaufverfolgung für Anforderungsfehler**.
+5. Klicken Sie für folgende Protokolle auf **EIN**: **Anwendungsprotokollierung (Dateisystem)**, **Detaillierte Fehlermeldungen** und **Ablaufverfolgung für Anforderungsfehler**.
 6. Klicken Sie für Webserverprotokollierung auf **Dateisystem** .
 7. Klicken Sie unten auf der Seite auf **Speichern**.
 
@@ -327,7 +327,7 @@ Protokolle werden im Fenster angezeigt, wenn sie generiert werden.  Sie können 
 ### <a name="deleting-a-migrated-mobile-app-clone-causes-a-site-outage"></a>Durch die Löschung des Klons einer migrierten mobilen App wird ein Websiteausfall verursacht
 Wenn Sie Ihren migrierten mobilen Dienst mithilfe von Azure PowerShell klonen und anschließend den Klon löschen, wird der DNS-Eintrag für Ihren Produktionsdienst entfernt.  Auf Ihre Website kann über das Internet nicht mehr zugegriffen werden.  
 
-Lösung: Wenn Sie Ihre Website klonen möchten, sollten Sie dafür das Portal verwenden.
+Lösung: Wenn Sie Ihre Website klonen möchten, verwenden Sie dazu das Portal.
 
 ### <a name="changing-webconfig-does-not-work"></a>Das Ändern von „Web.config“ funktioniert nicht
 Für ASP.NET-Websites werden Änderungen an der Datei `Web.config` nicht übernommen.  Azure App Service erstellt beim Start eine geeignete `Web.config`-Datei, um die Mobile Services-Runtime zu unterstützen.  Sie können bestimmte Einstellungen (z.B. benutzerdefinierte Header) mithilfe einer XML-Transformationsdatei überschreiben.  Erstellen Sie eine Datei mit dem Namen `applicationHost.xdt`. Diese Datei muss im Verzeichnis `D:\home\site` für den Azure-Dienst abgelegt werden.  Laden Sie die Datei `applicationHost.xdt` über ein benutzerdefiniertes Bereitstellungsskript oder direkt mithilfe von Kudu hoch.  Hier ist ein Beispieldokument dargestellt:
@@ -373,27 +373,27 @@ Ihre Anwendung wurde nicht nur zu App Service migriert, sondern Sie können soga
 [2]: ./media/app-service-mobile-migrating-from-mobile-services/triggering-job-with-postman.png
 
 <!-- Links -->
-[App Service – Preise]: https://azure.microsoft.com/pricing/details/app-service/
+[App Service pricing]: https://azure.microsoft.com/pricing/details/app-service/
 [Application Insights]: ../application-insights/app-insights-overview.md
 [Automatische Skalierung]: ../app-service/web-sites-scale.md
 [Azure App Service]: ../app-service/app-service-web-overview.md
-[klassischen Azure-Portal]: https://manage.windowsazure.com
+[Klassisches Azure-Portal]: https://manage.windowsazure.com
 [Azure-Portal]: https://portal.azure.com
 [Azure Region]: https://azure.microsoft.com/regions/
 [Azure Scheduler-Pläne]: ../scheduler/scheduler-plans-billing.md
 [fortlaufend bereitstellen]: ../app-service/app-service-continuous-deployment.md
-[Konvertieren Sie Ihre gemischten Namespaces]: https://azure.microsoft.com/blog/updates-from-notification-hubs-independent-nuget-installation-model-pmt-and-more/
-[curl]: http://curl.haxx.se/
-[benutzerdefinierte Domänennamen]: ../app-service/app-service-web-tutorial-custom-domain.md
-[Fiddler]: http://www.telerik.com/fiddler
-[allgemeinen Verfügbarkeit von Azure App Service]: https://azure.microsoft.com/blog/announcing-general-availability-of-app-service-mobile-apps/
+[Ihre gemischten Namespaces konvertieren]: https://azure.microsoft.com/blog/updates-from-notification-hubs-independent-nuget-installation-model-pmt-and-more/
+[curl]: https://curl.haxx.se/
+[benutzerdefinierten Domänennamen]: ../app-service/app-service-web-tutorial-custom-domain.md
+[Fiddler]: https://www.telerik.com/fiddler
+[Allgemeine Verfügbarkeit von Azure App Service]: https://azure.microsoft.com/blog/announcing-general-availability-of-app-service-mobile-apps/
 [Hybrid Connections]: ../app-service/app-service-hybrid-connections.md
 [Protokollierung]: ../app-service/web-sites-enable-diagnostic-log.md
 [Mobile Apps-Node.js-SDK]: https://github.com/azure/azure-mobile-apps-node
-[Mobile Services im Vergleich zu App Service]: app-service-mobile-value-prop-migration-from-mobile-services.md
+[Mobile Services im Vergleich mit App Service]: app-service-mobile-value-prop-migration-from-mobile-services.md
 [Notification Hubs]: ../notification-hubs/notification-hubs-push-notification-overview.md
 [Leistungsüberwachung]: ../app-service/web-sites-monitor.md
-[Postman]: http://www.getpostman.com/
+[Postman]: https://www.getpostman.com/
 [Stagingslots]: ../app-service/web-sites-staged-publishing.md
 [VNet]: ../app-service/web-sites-integrate-with-vnet.md
 [XDT-Transformationsbeispielen]: https://github.com/projectkudu/kudu/wiki/Xdt-transform-samples

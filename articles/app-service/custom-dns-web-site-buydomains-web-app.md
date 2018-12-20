@@ -1,5 +1,5 @@
 ---
-title: Kaufen eines benutzerdefinierten Domänennamens für Azure-Web-Apps
+title: Kaufen eines benutzerdefinierten Domänennamens in Azure – App Service
 description: Erfahren Sie, wie Sie einen benutzerdefinierten Domänennamen für eine Web-App in Azure App Service kaufen.
 services: app-service\web
 documentationcenter: ''
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/24/2017
 ms.author: cephalin
-ms.openlocfilehash: 48e0e68794e83739835d97aa8a2b26516c660357
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.custom: seodec18
+ms.openlocfilehash: 3f587b7e1b051b28d11ad84fcb2d02bd01315de5
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39345190"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53256433"
 ---
 # <a name="buy-a-custom-domain-name-for-azure-web-apps"></a>Kaufen eines benutzerdefinierten Domänennamens für Azure-Web-Apps
 
@@ -154,7 +155,7 @@ Wenn Sie Ihrer Web-App während des Kaufvorgangs nicht einen oder mehrere Standa
 In der App Service-Domäne können Sie auch jeder anderen Web-App einen Hostnamen zuweisen. Die Schritte hängen davon ab, ob die App Service-Domäne und die Web-App zum selben Abonnement gehören.
 
 - Anderes Abonnement: Zuordnen benutzerdefinierter DNS-Datensätze (z.B. eine extern erworbene Domäne) von der App Service-Domäne zur Web-App. Weitere Informationen zum Hinzufügen von benutzerdefinierten DNS-Namen zu einer App Service-Domäne finden Sie unter [Manage custom DNS records (Verwalten von benutzerdefinierten DNS-Datensätzen)](#custom). Weitere Informationen zum Zuordnen einer extern erworbenen Domäne zu einer Web-App finden Sie unter [Map an existing custom DNS name to Azure Web Apps (Zuweisen eines bestehenden benutzerdefinierten DNS-Namens zu Azure-Web-Apps)](app-service-web-tutorial-custom-domain.md). 
-- Gleiches Abonnement: Führen Sie folgende Schritte aus.
+- Gleiches Abonnement: Führen Sie die folgenden Schritte aus:
 
 ### <a name="launch-add-hostname"></a>Starten Sie „Hostname hinzufügen“
 Wählen Sie auf der Seite **App Services** (App-Dienste) den Namen Ihrer Web-App aus, der Sie Hostnamen zuweisen möchten, klicken Sie auf **Settings** (Einstellungen), und dann auf **Custom domains** (Benutzerdefinierte Domänen).
@@ -280,4 +281,4 @@ App Service leitet Webanforderungen standardmäßig an das Stammverzeichnis des 
 
 ## <a name="more-resources"></a>Weitere Ressourcen
 
-[FAQ : App Service Domain (preview) and Custom Domains](https://blogs.msdn.microsoft.com/appserviceteam/2017/08/08/faq-app-service-domain-preview-and-custom-domains/) (Häufig gestellte Fragen: App Service-Domäne (Vorschauversion) und benutzerdefinierte Domänen)
+[Häufig gestellte Fragen: App Service-Domäne (Vorschauversion) und benutzerdefinierte Domänen](https://blogs.msdn.microsoft.com/appserviceteam/2017/08/08/faq-app-service-domain-preview-and-custom-domains/)

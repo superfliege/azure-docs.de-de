@@ -1,5 +1,5 @@
 ---
-title: Verwalten von App Service-Plänen in Azure | Microsoft-Dokumentation
+title: Verwalten von App Service-Plänen – Azure | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie verschiedene Aufgaben zum Verwalten eines App Service-Plans ausführen.
 keywords: App Service, Azure App Service, Skalierung, App Services-Plan, ändern, verwalten, Verwaltung
 services: app-service
@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2017
 ms.author: cephalin
-ms.openlocfilehash: f426982163a5e49264bc4f222f6869d9cbb40c89
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.custom: seodec18
+ms.openlocfilehash: 8f8e5f3d184073a73ca30764542dc56e45974120
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49166065"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53262128"
 ---
 # <a name="manage-an-app-service-plan-in-azure"></a>Verwalten eines App Service-Plans in Azure
 
@@ -35,7 +36,7 @@ Sie können einen leeren App Service-Plan erstellen; Sie können einen Plan aber
 
 1. Klicken Sie im [Azure-Portal](https://portal.azure.com) auf **Neu** > **Web + Mobil**, und wählen Sie dann die Option **Web-App** oder eine andere Art von App Service-App aus.
 
-1. Wählen Sie einen vorhandenen App Service-Plan auswählen, oder erstellen Sie einen Plan für die neue App.
+2. Wählen Sie einen vorhandenen App Service-Plan auswählen, oder erstellen Sie einen Plan für die neue App.
 
    ![Erstellen Sie eine App im Azure-Portal.][createWebApp]
 

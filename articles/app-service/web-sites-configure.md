@@ -1,5 +1,5 @@
 ---
-title: Konfigurieren von Web-Apps in Azure App Service
+title: Konfigurieren von Web-Apps – Azure App Service
 description: Konfigurieren einer Web-App in Azure App Service
 services: app-service\web
 documentationcenter: ''
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: cephalin
-ms.openlocfilehash: 73d2da542c4f7da0933187d800f562de76bfb3e6
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18
+ms.openlocfilehash: 4286aa9cbaf07743c1d420fb1f5caace91bab7ee
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52443507"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53269429"
 ---
 # <a name="configure-web-apps-in-azure-app-service"></a>Konfigurieren von Web-Apps in Azure App Service
 
@@ -164,7 +165,7 @@ Klicken Sie zum Anzeigen der Bereitstellungsslots auf **Alle Einstellungen** > *
 ### <a name="monitoring"></a>Überwachung
 Im Modus „Basic“ oder „Standard“ können Sie die Verfügbarkeit von HTTP- oder HTTPS-Endpunkten von bis zu drei geografisch verteilten Standorten aus testen. Ein Überwachungstest verläuft nicht erfolgreich, wenn der HTTP-Antwortcode ein Fehler ist (4xx oder 5xx) oder die Antwort länger als 30 Sekunden benötigt. Der Endpunkt wird als verfügbar betrachtet, wenn die Überwachungstests von allen angegebenen Standorten aus erfolgreich waren. 
 
-Weitere Informationen finden Sie unter [Vorgehensweise: Überwachen des Web-Endpunktstatus].
+Weitere Informationen finden Sie unter [Gewusst wie: Überwachen des Web-Endpunktstatus].
 
 > [!NOTE]
 > Wenn Sie Azure App Service ausprobieren möchten, ehe Sie sich für ein Azure-Konto anmelden, können Sie unter [App Service testen]sofort kostenlos eine kurzlebige Starter-Web-App in App Service erstellen. Keine Kreditkarte erforderlich, keine Verpflichtungen.
@@ -179,14 +180,14 @@ Weitere Informationen finden Sie unter [Vorgehensweise: Überwachen des Web-Endp
 
 <!-- URL List -->
 
-[ASP.NET SignalR]: http://www.asp.net/signalr
+[ASP.NET SignalR]: https://www.asp.net/signalr
 [Azure-Portal]: https://portal.azure.com/
 [Konfigurieren eines benutzerdefinierten Domänennamens in Azure App Service]: ./app-service-web-tutorial-custom-domain.md
 [Bereitstellen von Web-Apps in Azure App Service in Stagingumgebungen]: ./web-sites-staged-publishing.md
 [Aktivieren von HTTPS für eine App in Azure App Service]: ./app-service-web-tutorial-custom-ssl.md
-[Vorgehensweise: Überwachen des Web-Endpunktstatus]: http://go.microsoft.com/fwLink/?LinkID=279906
+[Gewusst wie: Überwachen des Web-Endpunktstatus]: https://go.microsoft.com/fwLink/?LinkID=279906
 [Grundlagen der Überwachung von Web-Apps in Azure App Service]: ./web-sites-monitor.md
-[Pipelinemodus]: http://www.iis.net/learn/get-started/introduction-to-iis/introduction-to-iis-architecture#Application
+[Pipelinemodus]: https://www.iis.net/learn/get-started/introduction-to-iis/introduction-to-iis-architecture#Application
 [Skalieren einer Web-App in Azure App Service]: ./web-sites-scale.md
 [App Service testen]: https://azure.microsoft.com/try/app-service/
 

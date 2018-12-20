@@ -1,5 +1,5 @@
 ---
-title: Einrichten von Stagingumgebungen für Web-Apps in Azure App Service | Microsoft-Dokumentation
+title: Einrichten von Stagingumgebungen für Web-Apps – Azure App Service | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie Stagingveröffentlichungen Ihrer Web-Apps in Azure App Service verwenden.
 services: app-service
 documentationcenter: ''
@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/16/2016
 ms.author: cephalin
-ms.openlocfilehash: cb7b114836c83338f71c85f59299ecf1dc4613a9
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.custom: seodec18
+ms.openlocfilehash: 17bc8fe2e5ccd9888777e11f3ca98e6afefb56b7
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52317618"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53277385"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Einrichten von Stagingumgebungen in Azure App Service
 <a name="Overview"></a>
@@ -58,7 +59,7 @@ Die App muss im Tarif **Standard**, **Premium** oder **I** ausgeführt werden, d
 4. Klicken Sie auf dem Blatt „Ressourcen“ der App auf **Bereitstellungsslots** und dann auf einen Bereitstellungsslot, um das Blatt „Ressourcen“ dieses Slots zu öffnen. Darauf befinden sich wie bei anderen Apps verschiedene Metriken und Konfigurationsinformationen. Der Name des Slots wird oben auf dem Blatt gezeigt, um Sie daran zu erinnern, dass Sie den Bereitstellungsslot betrachten.
    
     ![Titel des Bereitstellungsslots][StagingTitle]
-5. Klicken Sie auf der Seite des Slots auf die App-URL. Beachten Sie, dass der Bereitstellungsslot über einen eigenen Hostnamen verfügt und eine Live-App ist. Weitere Informationen darüber, wie Sie den öffentlichen Zugriff auf den Bereitstellungsslot beschränken, finden Sie unter [App Service-Web-App – Blockieren des Webzugangs auf Nicht-Produktionsslots](http://ruslany.net/2014/04/azure-web-sites-block-web-access-to-non-production-deployment-slots/).
+5. Klicken Sie auf der Seite des Slots auf die App-URL. Beachten Sie, dass der Bereitstellungsslot über einen eigenen Hostnamen verfügt und eine Live-App ist. Weitere Informationen darüber, wie Sie den öffentlichen Zugriff auf den Bereitstellungsslot beschränken, finden Sie unter [App Service-Web-App – Blockieren des Webzugangs auf Nicht-Produktionsslots](https://ruslany.net/2014/04/azure-web-sites-block-web-access-to-non-production-deployment-slots/).
 
 Nach der Erstellung des Bereitstellungsslots ist kein Inhalt vorhanden. Sie können die Bereitstellung im Slot von einem anderen Repositoryzweig oder einem ganz anderen Repository vornehmen. Darüber hinaus können Sie die Konfiguration des Slots ändern. Verwenden Sie für Aktualisierungen des Inhalts das Veröffentlichungsprofil oder die Bereitstellungsanmeldeinformationen, die dem Bereitstellungsslot zugeordnet sind.  Beispiel: [Für die Veröffentlichung in diesem Slot können Sie Git verwenden](app-service-deploy-local-git.md).
 
@@ -124,8 +125,8 @@ Bei Verwendung der Option **Mit Vorschau austauschen** (siehe [Austauschen von B
 - Der Zielslot bleibt unverändert, sodass die in diesem Slot vorhandene Workload (beispielsweise Produktion) nicht beeinträchtigt wird.
 - Die Konfigurationselemente des Zielslots werden auf den Quellslot angewendet, einschließlich der slotspezifischen Verbindungszeichenfolgen und App-Einstellungen.
 - Die Workerprozesse für den Quellslot werden unter Verwendung der zuvor erwähnten Konfigurationselemente neu gestartet.
-- Nach Abschluss des Austauschs wird der vorbereitete Quellslot in den Zielslot verschoben. Der Zielslot wird wie bei einem manuellen Austausch in den Quellslot verschoben.
-- Wenn Sie den Austausch abbrechen, werden die Konfigurationselemente des Quellslots erneut auf den Quellslot angewendet.
+- Nach Abschluss des Austauschs: Der vorbereitete Quellslot wird in den Zielslot verschoben. Der Zielslot wird wie bei einem manuellen Austausch in den Quellslot verschoben.
+- Wenn Sie den Austausch abbrechen: Die Konfigurationselemente des Quellslots werden erneut auf den Quellslot angewendet.
 
 Sie können eine Vorschau anzeigen, wie genau sich die App mit der Konfiguration des Zielslot verhält. Schließen Sie den Austausch nach Abschluss der Validierung in einem gesonderten Schritt ab. Dieser Schritt hat den zusätzlichen Vorteil, dass der Quellslot bereits mit der gewünschten Konfiguration vorbereitet ist, sodass es auf den Clients zu keinen Ausfallzeiten kommt.  
 
@@ -174,7 +175,7 @@ Bei Verwendung von [Auto-Swap](#Auto-Swap) erfordern einige Apps benutzerdefinie
     <system.webServer>
         <applicationInitialization>
             <add initializationPage="/" hostName="[app hostname]" />
-            <add initializationPage="/Home/About" hostname="[app hostname]" />
+            <add initializationPage="/Home/About" hostName="[app hostname]" />
         </applicationInitialization>
     </system.webServer>
 
@@ -258,7 +259,7 @@ Remove-AzureRmResource -ResourceGroupName [resource group name] -ResourceType Mi
 Informationen zu Befehlen der [Azure CLI](https://github.com/Azure/azure-cli) für Bereitstellungsslots finden Sie unter [az webapp deployment slot](/cli/azure/webapp/deployment/slot).
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Azure App Service-Web-App – Blockieren des Webzugriffs auf Nicht-Produktionsslots](http://ruslany.net/2014/04/azure-web-sites-block-web-access-to-non-production-deployment-slots/)  
+[Azure App Service-Web-App – Blockieren des Webzugriffs auf Nicht-Produktionsslots](https://ruslany.net/2014/04/azure-web-sites-block-web-access-to-non-production-deployment-slots/)  
 [Einführung in App Service unter Linux](../app-service/containers/app-service-linux-intro.md)  
 [Kostenlose Microsoft Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/)
 

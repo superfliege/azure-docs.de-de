@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: v-erkell
-ms.openlocfilehash: d7c207f89b9cb50f940f071fbbf6ee81b4d44976
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 8e265f2bed480f7b40476e09ab8f442aedcc9dd4
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52164319"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52999452"
 ---
 # <a name="deploy-the-vfxt-cluster"></a>Bereitstellen des vFXT-Clusters
 
@@ -306,6 +306,15 @@ Wenn das Skript abgeschlossen ist, kopieren Sie die Verwaltungs-IP-Adresse, die 
 
 ![Befehlszeilenausgabe des Skripts, das die Verwaltungs-IP-Adresse am Ende anzeigt](media/avere-vfxt-mgmt-ip.png)
 
+> [!IMPORTANT] 
+> Wenn Sie einen neuen Blobcontainer erstellt haben, ist dieser möglicherweise mit einem Standardschlüssel verschlüsselt, der nicht außerhalb des Clusters gespeichert wird. Bevor Sie Daten in dem Container speichern können, müssen Sie entweder die Schlüsselwiederherstellungsdatei herunterladen oder Ihren eigenen Verschlüsselungsschlüssel erstellen und dessen Wiederherstellungsdatei an einem permanenten Speicherort speichern. 
+> 
+> Wenn Sie den Standardschlüssel verwenden, ohne die Wiederherstellungsdatei herunterzuladen, ist es möglich, den Zugriff auf die verschlüsselten Daten in der Blob-Kernspeichereinheit zu verlieren, wenn vFXT-Cluster zerstört wird oder verloren geht.
+>
+> Wenn Ihr Skript `WARNING`-Meldungen wie die unten in dem Screenshot eingekreisten anzeigt, befolgen Sie die Anweisungen in [Speicher konfigurieren](avere-vfxt-add-storage.md), um die Schlüsseldatei herunterzuladen, oder erstellen einen neuen Schlüssel für Ihren Blobcontainer. Verwenden sie das Clusterkonfigurationstool Avere-Systemsteuerung.
+
+![Befehlszeilenausgabe des Skripts, in der Warnmeldungen zum Erstellen eines neuen Verschlüsselungsschlüssels angezeigt werden.](media/avere-vfxt-key-warning.png)
+
 ## <a name="next-step"></a>Nächster Schritt
 
-Nachdem der Cluster ausgeführt wird und Sie seine Verwaltungs-IP-Adresse kennen, können Sie sich mit dem [Clusterkonfigurationstool verbinden](avere-vfxt-cluster-gui.md), um den Support zu aktivieren und bei Bedarf Speicher hinzuzufügen.
+Nachdem der Cluster ausgeführt wird und Sie seine Verwaltungs-IP-Adresse kennen, können Sie sich mit dem [Clusterkonfigurationstool verbinden](avere-vfxt-cluster-gui.md), um den Support zu aktivieren, bei Bedarf Speicher hinzuzufügen oder den Standardverschlüsselungsschlüssel in Ihrem neuen Blob-Speicher zu behandeln.

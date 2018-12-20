@@ -1,5 +1,5 @@
 ---
-title: Patchen von Betriebssystem und Runtime in Azure App Service | Microsoft-Dokumentation
+title: Kadenz für das Patchen von Betriebssystem und Runtime – Azure App Service | Microsoft-Dokumentation
 description: Beschreibt, wie Azure App Service das Betriebssystem und Runtimes aktualisiert, und wie Sie Updateankündigungen erhalten.
 services: app-service
 documentationcenter: ''
@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/02/2018
 ms.author: cephalin
-ms.openlocfilehash: 9855becd7c047788ed310dff4317a5df87cc9b61
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.custom: seodec18
+ms.openlocfilehash: 3dcaba9c0512cbe2c4cf1cd14338a88209a80e85
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43047627"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53385311"
 ---
 # <a name="os-and-runtime-patching-in-azure-app-service"></a>Patchen von Betriebssystem und Runtime in Azure App Service
 
@@ -80,7 +81,7 @@ Wenn eine ältere Version als veraltet markiert ist, wird das Entfernungsdatum a
 
 ## <a name="how-can-i-query-os-and-runtime-update-status-on-my-instances"></a>Wie kann ich den Updatestatus von Betriebssystem und Runtime auf meinen Instanzen abfragen?  
 
-Der Zugriff auf kritische Betriebssysteminformationen ist zwar gesperrt (siehe [Betriebssystemfunktionen für Azure App Service](web-sites-available-operating-system-functionality.md)), aber die [Kudu-Konsole](https://github.com/projectkudu/kudu/wiki/Kudu-console) ermöglicht Ihnen, Ihre App Service-Instanz bezüglich der Betriebssystem- und Runtimeversion abzufragen. 
+Der Zugriff auf kritische Betriebssysteminformationen ist zwar gesperrt (siehe [Betriebssystemfunktionen für Azure App Service](operating-system-functionality.md)), aber die [Kudu-Konsole](https://github.com/projectkudu/kudu/wiki/Kudu-console) ermöglicht Ihnen, Ihre App Service-Instanz bezüglich der Betriebssystem- und Runtimeversion abzufragen. 
 
 Die folgende Tabelle zeigt, wie Sie die Versionen von Windows und der Language Runtime, die Ihre Apps ausführen, abfragen:
 
@@ -100,5 +101,5 @@ Die folgende Tabelle zeigt, wie Sie die Versionen von Windows und der Language R
 
 ## <a name="more-resources"></a>Weitere Ressourcen
 
-[Trust Center – Sicherheit](https://www.microsoft.com/en-us/trustcenter/security)  
+[Trust Center: Sicherheit](https://www.microsoft.com/en-us/trustcenter/security)  
 [64 bit ASP.NET Core on Azure App Service](https://gist.github.com/glennc/e705cd85c9680d6a8f1bdb62099c7ac7) (64-Bit-ASP.NET Core in Azure App Service)

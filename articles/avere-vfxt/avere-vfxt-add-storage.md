@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: procedural
 ms.date: 10/31/2018
 ms.author: v-erkell
-ms.openlocfilehash: cd868996066110c8d0457b177e60523886912dd8
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: d38fe1cab27cfade3e6e4d2f6764f455896ac470
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52163170"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53001972"
 ---
 # <a name="configure-storage"></a>Konfigurieren des Speichers
 
@@ -19,6 +19,12 @@ In diesem Schritt wird das Back-End-Speichersystem für Ihren vFXT-Cluster einge
 
 > [!TIP]
 > Wenn Sie das Prototypskript `create-cloudbacked-cluster` verwendet haben, um einen neuen Blobcontainer zusammen mit dem Avere vFXT-Cluster zu erstellen, ist dieser Container bereits für die Verwendung eingerichtet und Sie müssen keinen Speicher hinzufügen.
+>
+> Wenn Ihr neuer Blobcontainer jedoch mit einem Standardverschlüsselungsschlüssel verschlüsselt wurde, müssen Sie entweder die Schlüsselwiederherstellungsdatei aus dem Cluster herunterladen oder den Standardschlüssel vor dem Speichern von Daten durch einen neuen Schlüssel ersetzen. Der Standardschlüssel wird nur im Cluster gespeichert und kann nicht abgerufen werden, wenn der Cluster verloren geht oder nicht mehr verfügbar ist.
+>
+> Nachdem Sie eine Verbindung mit der Avere-Systemsteuerung hergestellt haben, klicken Sie auf die Registerkarte **Einstellungen**, und wählen Sie dann **Core Filer (Kernspeichereinheit)** > **Verschlüsselungseinstellungen für die Cloud (Cloud Encryption Settings)** aus. Wählen Sie im Abschnitt **Local Key Store (Lokaler Schlüsselspeicher)** eine der folgenden Optionen aus: 
+> * Verwenden Sie die Schaltfläche **Redownload Recovery File (Wiederherstellungsdatei erneut herunterladen)**, um die Wiederherstellungsdatei für den vorhandenen Schlüssel abzurufen. Die Wiederherstellungsdatei ist mit dem Clusteradministratorkennwort verschlüsselt. Stellen Sie sicher, dass die Datei an einem zuverlässigen Ort gespeichert wird. 
+> * Befolgen Sie die Anweisungen im Abschnitt **Neuen Hauptschlüssel generieren (Generate a New Master Key)** auf der Seite, um einen neuen Verschlüsselungsschlüssel zu erstellen, den Sie kontrollieren. Mit dieser Option können Sie eine eindeutige Passphrase angeben, und Sie müssen die Wiederherstellungsdatei hochladen und erneut herunterladen, um das Paar Passphrase/Datei zu überprüfen.
 
 Befolgen Sie diese Anweisungen, wenn Sie das Prototypskript `create-minimal-cluster` für Ihren Cluster verwendet haben oder wenn Sie zusätzliche Hardware oder ein cloudbasiertes Speichersystem hinzufügen möchten.
 
