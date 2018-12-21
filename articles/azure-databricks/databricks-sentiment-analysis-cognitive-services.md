@@ -3,23 +3,22 @@ title: 'Tutorial: Standpunktanalyse für Streamingdaten mit Azure Databricks'
 description: Hier erfahren Sie, wie Sie Azure Databricks mit Event Hubs und der Cognitive Services-API verwenden, um nahezu in Echtzeit eine Standpunktanalyse für Streamingdaten durchzuführen.
 services: azure-databricks
 author: lenadroid
+ms.author: alehall
 ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
-ms.workload: Active
-ms.date: 10/23/2018
-ms.author: alehall
-ms.openlocfilehash: cf396dea6ee467267ea73379ea04026fc8cc53b2
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.date: 12/07/2018
+ms.openlocfilehash: 449d721683bd59646506db57d78b9535aa7d614d
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51636576"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53100180"
 ---
 # <a name="tutorial-sentiment-analysis-on-streaming-data-using-azure-databricks"></a>Tutorial: Standpunktanalyse für Streamingdaten mit Azure Databricks
 
-In diesem Tutorial erfahren Sie, wie Sie nahezu in Echtzeit eine Standpunktanalyse für Streamingdaten mit Azure Databricks durchführen. Sie richten ein Datenerfassungssystem mit Azure Event Hubs ein. Sie nutzen die Nachrichten von Event Hubs in Azure Databricks, indem Sie den Spark-Event Hubs-Connector verwenden. Abschließend verwenden Sie Microsoft Cognitive Services-APIs zum Durchführen der Standpunktanalyse für die gestreamten Daten.
+In diesem Tutorial erfahren Sie, wie Sie mit Azure Databricks nahezu in Echtzeit eine Standpunktanalyse für Streamingdaten durchführen. Sie richten ein Datenerfassungssystem mit Azure Event Hubs ein. Sie nutzen die Nachrichten von Event Hubs in Azure Databricks, indem Sie den Spark-Event Hubs-Connector verwenden. Abschließend verwenden Sie Microsoft Cognitive Services-APIs zum Durchführen der Standpunktanalyse für die gestreamten Daten.
 
 Am Ende dieses Tutorials verfügen Sie über gestreamte Tweets von Twitter, die den Begriff „Azure“ enthalten und für die die Standpunktanalyse durchgeführt wird.
 
@@ -100,7 +99,7 @@ In diesem Abschnitt erstellen Sie einen Azure Databricks-Arbeitsbereich über da
 
     * Geben Sie einen Namen für den Cluster ein.
     * Erstellen Sie für diesen Artikel einen Cluster mit der Laufzeit **4.0 (Beta)**.
-    * Aktivieren Sie das Kontrollkästchen **Terminate after \_\_ minutes of inactivity** (Nach \_\_ Minuten Inaktivität beenden). Geben Sie an, nach wie vielen Minuten der Cluster beendet werden soll, wenn er nicht verwendet wird.
+    * Aktivieren Sie das Kontrollkästchen **Terminate after \_\_ minutes of inactivity** (Nach _ Minuten Inaktivität beenden). Geben Sie an, nach wie vielen Minuten der Cluster beendet werden soll, wenn er nicht verwendet wird.
 
     Klicken Sie auf **Cluster erstellen**. Sobald der Cluster ausgeführt wird, können Sie Notizbücher an den Cluster anfügen und Spark-Aufträge ausführen.
 
@@ -173,7 +172,7 @@ In diesem Tutorial verwenden Sie die [Microsoft Cognitive Services-Textanalyse-A
 
     Klicken Sie auf **Erstellen**.
 
-5. Wählen Sie nach der Erstellung des Kontos auf der Registerkarte **Übersicht** die Option **Zugriffsschlüssel anzeigen**.
+5. Wählen Sie nach der Erstellung des Kontos auf der Registerkarte **Übersicht** die Option **Zugriffsschlüssel anzeigen** aus.
 
     ![Anzeigen von Zugriffsschlüsseln](./media/databricks-sentiment-analysis-cognitive-services/cognitive-services-get-access-keys.png "Anzeigen von Zugriffsschlüsseln")
 
@@ -206,7 +205,7 @@ In diesem Abschnitt erstellen Sie zwei Notebooks mit den folgenden Namen im Data
 
 ## <a name="send-tweets-to-event-hubs"></a>Senden von Tweets an Event Hubs
 
-Fügen Sie im Notebook **SendTweetsToEventHub** den folgenden Code ein, und ersetzen Sie den Platzhalter durch Werte für Ihren Event Hubs-Namespace und die zuvor erstellte Twitter-Anwendung. Mit diesem Notebook werden Tweets mit dem Schlüsselwort „Azure“ in Echtzeit in Event Hubs gestreamt.
+Fügen Sie im Notebook **SendTweetsToEventHub** den folgenden Code ein, und ersetzen Sie den Platzhalter durch Werte für Ihren Event Hubs-Namespace und die zuvor erstellte Twitter-Anwendung. Mit diesem Notebook werden Tweets mit dem Schlüsselwort „Azure“ in Echtzeit an Event Hubs gestreamt.
 
 ```scala
 import java.util._
@@ -313,7 +312,7 @@ val customEventhubParameters =
   EventHubsConf(connectionString)
   .setMaxEventsPerTrigger(5)
 
-val incomingStream = spark.readStream.format("eventhubs").option(customEventhubParameters.toMap).load()
+val incomingStream = spark.readStream.format("eventhubs").options(customEventhubParameters.toMap).load()
 
 incomingStream.printSchema
 
@@ -579,7 +578,7 @@ Nach Abschluss des Tutorials können Sie den Cluster beenden. Klicken Sie hierzu
 
 ![Beenden eines Databricks-Clusters](./media/databricks-sentiment-analysis-cognitive-services/terminate-databricks-cluster.png "Beenden eines Databricks-Clusters")
 
-Wenn Sie den Cluster nicht manuell beenden, wird er automatisch beendet, sofern Sie bei der Erstellung des Clusters das Kontrollkästchen **Terminate after \_\_ minutes of inactivity** (Nach \_\_ Minuten Inaktivität beenden) aktiviert haben. Der Cluster wird dann automatisch beendet, wenn er für den angegebenen Zeitraum inaktiv war.
+Wenn Sie den Cluster nicht manuell beenden, wird er automatisch beendet, sofern Sie bei der Erstellung des Clusters das Kontrollkästchen **Terminate after \_\_ minutes of inactivity** (Nach __ Minuten Inaktivität beenden) aktiviert haben. Der Cluster wird dann automatisch beendet, wenn er für den angegebenen Zeitraum inaktiv war.
 
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Tutorial wurde beschrieben, wie Sie Azure Databricks zum Streamen von Daten in Azure Event Hubs verwenden und die Streamingdaten dann in Echtzeit von Event Hubs lesen. Es wurde Folgendes vermittelt:

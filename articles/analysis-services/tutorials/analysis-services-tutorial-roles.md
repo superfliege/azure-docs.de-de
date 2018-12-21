@@ -1,18 +1,19 @@
 ---
-title: 'Tutorial: Konfigurieren von Serveradministrator- und Benutzerrollen in Azure Analysis Services (Tutoriallektion) | Microsoft-Dokumentation'
+title: 'Tutorial: Konfigurieren von Administrator- und Benutzerrollen in Azure Analysis Services | Microsoft-Dokumentation'
+description: Hier erfahren Sie, wie Sie Azure Analysis Services-Rollen konfigurieren.
 author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: tutorial
-ms.date: 07/09/2018
+ms.date: 12/06/2018
 ms.author: owend
 ms.reviewer: owend
-ms.openlocfilehash: 1c1dd5316eead5e91dd77d3e6b21a7a14d39afeb
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: a1e6e04c4019086d56cc0eb25176a507e514c477
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37929228"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53000648"
 ---
 # <a name="tutorial-configure-server-administrator-and-user-roles"></a>Tutorial: Konfigurieren von Serveradministrator- und Benutzerrollen
 
@@ -35,7 +36,7 @@ Informationen zur Benutzersicherheit in Azure Analysis Services finden Sie unter
 - [Hinzufügen des Beispielmodells „adventureworks“](../analysis-services-create-sample-model.md) zu Ihrem Server
 - [Installieren der aktuellen Version von SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) (SSMS)
 
-## <a name="log-in-to-the-azure-portal"></a>Anmelden beim Azure-Portal
+## <a name="sign-in-to-the-azure-portal"></a>Melden Sie sich auf dem Azure-Portal an.
 
 Melden Sie sich beim [Portal](https://portal.azure.com/) an.
 
@@ -143,5 +144,5 @@ Wenn Benutzer- oder Gruppenkonten bzw. Benutzer- oder Gruppenrollen nicht mehr b
 In diesem Tutorial haben Sie gelernt, wie Sie eine Verbindung mit Ihrem Azure AS-Server herstellen und die Datenbanken und Eigenschaften der Modelldatenbank „adventureworks“ in SSMS untersuchen. Außerdem haben Sie erfahren, wie Sie mit SSMS und TMSL-Skripts Benutzer oder Gruppen zu vorhandenen und neuen Rollen hinzufügen. Sie haben Benutzerberechtigungen für Ihren Server und die Beispielmodelldatenbank konfiguriert. Nun können Sie und andere Benutzer mithilfe von Clientanwendungen wie Power BI eine Verbindung damit herstellen. Weitere Informationen finden Sie im nächsten Tutorial. 
 
 > [!div class="nextstepaction"]
-> [Tutorial: Herstellen einer Verbindung unter Verwendung von Power BI Desktop](analysis-services-tutorial-pbid.md)
+> [Tutorial: Herstellen einer Verbindung mit Power BI Desktop](analysis-services-tutorial-pbid.md)
 

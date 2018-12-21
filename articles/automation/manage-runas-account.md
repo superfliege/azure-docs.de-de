@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 09/12/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 569efa7fbbd111937f00ba3b1e28219c163e2221
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 7bd84b42cfa61d199d70e02345f9229a45fd7704
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49958158"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52726167"
 ---
 # <a name="manage-azure-automation-run-as-accounts"></a>Verwalten von ausführenden Azure Automation-Konten
 
@@ -358,11 +358,11 @@ Führen Sie folgende Schritte aus, um das Zertifikat zu erneuern:
 
 Um die Ausrichtung der Automatisierung für Ressourcen in Azure Automation zu steuern, werden dem ausführenden Konto standardmäßig Berechtigungen als Mitwirkender im Abonnement gewährt. Wenn Sie die Möglichkeiten des ausführenden Dienstprinzipals einschränken müssen, können Sie das Konto aus der Rolle „Mitwirkender“ des Abonnements entfernen und es als „Mitwirkender“ zu den Ressourcengruppen hinzufügen, die Sie angeben möchten.
 
-Wählen Sie im Azure-Portal **Abonnements**, und wählen Sie das Abonnement Ihres Automation-Kontos. Wählen Sie **Zugriffssteuerung (IAM)**, und suchen Sie nach dem Dienstprinzipal für Ihr Automation-Konto (er sieht etwa wie folgt aus: \<AutomationKontoname\>_eindeutiger Bezeichner). Wählen Sie das Konto aus, und klicken Sie auf **Entfernen**, um es aus dem Abonnement zu entfernen.
+Wählen Sie im Azure-Portal **Abonnements**, und wählen Sie das Abonnement Ihres Automation-Kontos. Wählen Sie **Zugriffssteuerung (IAM)** und anschließend die Registerkarte **Rollenzuweisungen** aus. Suchen Sie nach dem Dienstprinzipal für Ihr Automation-Konto (der etwa wie folgt aussieht: \<AutomationKontoname_eindeutiger Bezeichner\>). Wählen Sie das Konto aus, und klicken Sie auf **Entfernen**, um es aus dem Abonnement zu entfernen.
 
 ![Abonnementmitwirkende](media/manage-runas-account/automation-account-remove-subscription.png)
 
-Um den Dienstprinzipal zu einer Ressourcengruppe hinzuzufügen, wählen Sie die Ressourcengruppe im Azure-Portal und wählen dann **Zugriffssteuerung (IAM)**. Wählen Sie **Hinzufügen**, um die Seite **Berechtigungen hinzufügen** zu öffnen. Wählen Sie als **Rolle** die Option **Mitwirkender**. Geben Sie in das Textfeld **Auswählen** den Namen des Dienstprinzipals für Ihr ausführendes Konto ein, und wählen Sie es aus der Liste aus. Klicken Sie zum Speichern der Änderungen auf **Speichern**. Wiederholen Sie diese Schritte für die Ressourcengruppen, auf die der ausführende Azure Automation-Dienstprinzipal Zugriff haben soll.
+Um den Dienstprinzipal zu einer Ressourcengruppe hinzuzufügen, wählen Sie die Ressourcengruppe im Azure-Portal und wählen dann **Zugriffssteuerung (IAM)**. Wählen Sie **Rollenzuweisung hinzufügen** aus, um die Seite **Rollenzuweisung hinzufügen** zu öffnen. Wählen Sie als **Rolle** die Option **Mitwirkender**. Geben Sie in das Textfeld **Auswählen** den Namen des Dienstprinzipals für Ihr ausführendes Konto ein, und wählen Sie es aus der Liste aus. Klicken Sie zum Speichern der Änderungen auf **Speichern**. Wiederholen Sie diese Schritte für die Ressourcengruppen, auf die der ausführende Azure Automation-Dienstprinzipal Zugriff haben soll.
 
 ## <a name="misconfiguration"></a>Fehlkonfiguration
 

@@ -1,6 +1,6 @@
 ---
-title: Bereitstellen von Custom Vision für Azure IoT Edge-Gerät | Microsoft-Dokumentation
-description: Hier erfahren Sie, wie Sie mithilfe von Custom Vision und IoT Edge ein als Container ausgeführtes Modell für maschinelles Sehen erstellen.
+title: 'Tutorial: Bereitstellen einer Custom Vision-Klassifizierung auf einem Gerät – Azure IoT Edge | Microsoft-Dokumentation'
+description: In diesem Tutorial erfahren Sie, wie Sie mithilfe von Custom Vision und IoT Edge ein als Container ausgeführtes Modell für maschinelles Sehen erstellen.
 services: iot-edge
 author: kgremban
 manager: philmea
@@ -8,13 +8,13 @@ ms.author: kgremban
 ms.date: 11/01/2018
 ms.topic: tutorial
 ms.service: iot-edge
-ms.custom: mvc
-ms.openlocfilehash: a8f72c62393f6ba470c31a55668382ae0beb290e
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 6acdbdf5ed5312dc9bc9aa5120bad6e7cf0935b7
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51566481"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53075827"
 ---
 # <a name="tutorial-perform-image-classification-at-the-edge-with-custom-vision-service"></a>Tutorial: Durchführen von Bildklassifizierungen im Edge-Bereich mit dem Custom Vision Service
 
@@ -99,7 +99,7 @@ Für die Erstellung einer Bildklassifizierung benötigen Sie eine Gruppe von Tra
 
 5. Wählen Sie **10 Dateien hochladen** aus. 
 
-   ![Hochladen von Dateien, die mit dem Tag „hemlock“ versehen wurden](./media/tutorial-deploy-custom-vision/upload-hemlock.png)
+   ![Hochladen von Dateien mit dem Tag „hemlock“ in Custom Vision](./media/tutorial-deploy-custom-vision/upload-hemlock.png)
 
 6. Klicken Sie nach dem erfolgreichen Hochladen der Bilder auf **Fertig**.
 
@@ -117,7 +117,7 @@ Für die Erstellung einer Bildklassifizierung benötigen Sie eine Gruppe von Tra
 
 1. Wählen Sie nach dem Trainieren Ihrer Klassifizierung auf der Leistungsseite der Klassifizierung die Option **Exportieren** aus. 
 
-   ![Exportieren der Bildklassifizierung](./media/tutorial-deploy-custom-vision/export.png)
+   ![Exportieren Ihrer trainierten Bildklassifizierung](./media/tutorial-deploy-custom-vision/export.png)
 
 2. Wählen Sie für die Plattform die Option **DockerFile** aus. 
 
@@ -151,7 +151,7 @@ Eine Projektmappe ist eine logische Methode, um mehrerer Module für eine einzel
 
 3. Klicken Sie auf **Ansicht** > **Befehlspalette**, um die VS Code-Befehlspalette zu öffnen. 
 
-4. Geben Sie in der Befehlspalette den Befehl **Azure IoT Edge: New IoT Edge solution** ein, und führen Sie ihn aus. Geben Sie in der Befehlspalette die folgenden Informationen an, um die Projektmappe zu erstellen: 
+4. Geben Sie in der Befehlspalette den Befehl **Azure IoT Edge: New IoT Edge Solution** (Azure IoT Edge: Neue IoT Edge-Projektmappe) ein, und führen Sie ihn aus. Geben Sie in der Befehlspalette die folgenden Informationen an, um die Projektmappe zu erstellen: 
 
    | Feld | Wert |
    | ----- | ----- |
@@ -201,7 +201,7 @@ Bei einer echten Custom Vision-Bereitstellung wäre eine Kamera vorhanden, die L
 
 In diesem Abschnitt fügen Sie der gleichen Custom Vision-Projektmappe (CustomVisionSolution) ein neues Modul hinzu und stellen Code bereit, um die simulierte Kamera zu erstellen. 
 
-1. Führen Sie im gleichen Visual Studio Code-Fenster über die Befehlspalette den Befehl **Azure IoT Edge: Add IoT Edge Module** aus. Geben Sie in der Befehlspalette die folgenden Informationen für Ihr neues Modul an: 
+1. Führen Sie im gleichen Visual Studio Code-Fenster über die Befehlspalette den Befehl **Azure IoT Edge: Add IoT Edge Module** (Azure IoT Edge: IoT Edge-Modul hinzufügen) aus. Geben Sie in der Befehlspalette die folgenden Informationen für Ihr neues Modul an: 
 
    | Prompt | Wert | 
    | ------ | ----- |
@@ -423,7 +423,7 @@ Erstellen Sie zunächst Ihre Projektmappe, und pushen Sie sie an Ihre Containerr
 
 Richten Sie als Nächstes in Visual Studio Code den Zugriff auf Ihre IoT Hub-Instanz ein. 
 
-1. Wählen Sie in der Befehlspalette von VS Code den Befehl **Azure IoT Hub: Select IoT Hub** (Azure IoT Hub: IoT Hub auswählen) aus.
+1. Wählen Sie in der Befehlspalette von VS Code den Befehl **Azure IoT Hub: IoT Hub auswählen** aus.
 2. Folgen Sie den Aufforderungen auf dem Bildschirm, um sich an Ihrem Azure-Konto anzumelden. 
 3. Wählen Sie in der Befehlspalette Ihr Azure-Abonnement und dann Ihre IoT Hub-Instanz aus. 
 

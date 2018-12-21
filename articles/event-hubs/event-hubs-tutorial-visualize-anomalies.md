@@ -1,20 +1,20 @@
 ---
-title: Visualisieren von Datenanomalien in Echtzeitereignissen, die an Azure Event Hubs gesendet werden | Microsoft-Dokumentation
+title: Visualisieren von Datenanomalien in Echtzeitereignissen – Azure Event Hubs | Microsoft-Dokumentation
 description: Tutorial – Visualisieren von Datenanomalien in Echtzeitereignissen, die an Microsoft Azure Event Hubs gesendet werden
 services: event-hubs
 author: ShubhaVijayasarathy
 manager: timlt
 ms.author: shvija
-ms.date: 08/08/2018
 ms.topic: tutorial
 ms.service: event-hubs
-ms.custom: mvc
-ms.openlocfilehash: 04a9a3b3df44814d680f01595d70ced08a946591
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.custom: seodec18
+ms.date: 12/06/2018
+ms.openlocfilehash: add88a24da2e217d705065274f26382c1ffe8e17
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40004112"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53091678"
 ---
 # <a name="tutorial-visualize-data-anomalies-in-real-time-events-sent-to-azure-event-hubs"></a>Tutorial: Visualisieren von Datenanomalien in Echtzeitereignissen, die an Azure Event Hubs gesendet werden
 
@@ -178,9 +178,9 @@ Sie können für Ihre Daten nun das Streamen in Ihren Event Hub durchführen. Um
 
    **Abonnement**: Wählen Sie Ihr Abonnement aus.
 
-   **Ressourcengruppe**: Verwenden Sie dieselbe Ressourcengruppe, die auch für Ihren Event Hub (**ContosoResourcesEH**) genutzt wird.
+   **Ressourcengruppe**: Verwenden Sie die Ressourcengruppe, die auch von Ihrem Event Hub (**ContosoResourcesEH**) verwendet wird.
 
-   **Standort**: Verwenden Sie den gleichen Standort, der im Einrichtungsskript verwendet wurde (**West US** (USA, Westen)).
+   **Standort**: Verwenden Sie den Standort, der auch im Einrichtungsskript verwendet wurde (**USA, Westen**).
 
    ![Screenshot: Erstellen eines neuen Stream Analytics-Auftrags](./media/event-hubs-tutorial-visualize-anomalies/stream-analytics-add-job.png)
 
@@ -207,7 +207,7 @@ Die Eingaben für den Stream Analytics-Auftrag sind die Kreditkartentransaktione
 
    **Event Hub-Name**: Klicken Sie auf **Vorhandene verwenden**, und wählen Sie Ihren Event Hub ($**eventHubName**) aus.
 
-   **Event Hubs-Richtlinienname**: Wählen Sie **RootManageSharedAccessKey** aus.
+   **Event Hubs-Richtlinienname**: Wählen Sie **RootManageSharedAccessKey**.
 
    **Event Hubs-Consumergruppe**: Lassen Sie dieses Feld leer, um die Standardconsumergruppe zu verwenden.
 

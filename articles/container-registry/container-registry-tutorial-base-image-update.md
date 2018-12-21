@@ -1,21 +1,21 @@
 ---
-title: 'Tutorial: Automatisieren von Buildvorgängen für Containerimages nach der Aktualisierung des Basisimages mit Azure Container Registry Tasks'
-description: In diesem Tutorial erfahren Sie, wie Sie eine Aufgabe so konfigurieren, dass automatisch Buildvorgänge für Containerimages in der Cloud ausgelöst werden, wenn ein Basisimage aktualisiert wird.
+title: 'Tutorial: Automatisieren von Buildvorgängen für Containerimages nach der Aktualisierung des Basisimages – Azure Container Registry Tasks'
+description: In diesem Tutorial erfahren Sie, wie Sie eine Azure Container Registry-Aufgabe so konfigurieren, dass automatisch Buildvorgänge für Containerimages in der Cloud ausgelöst werden, wenn ein Basisimage aktualisiert wird.
 services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: danlep
-ms.custom: mvc
-ms.openlocfilehash: 54e8892787fa2b7b093609ee5d09f3a87e103411
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.custom: seodec18, mvc
+ms.openlocfilehash: b3d8c3aea4955d6f95ead69d5bed147cc486e7c8
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48856580"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53254036"
 ---
-# <a name="tutorial-automate-image-builds-on-base-image-update-with-azure-container-registry-tasks"></a>Tutorial: Automatisieren von Buildvorgängen für Images nach der Aktualisierung des Basisimages mit Azure Container Registry Tasks
+# <a name="tutorial-automate-container-image-builds-when-a-base-image-is-updated-in-an-azure-container-registry"></a>Tutorial: Automatisieren von Buildvorgängen für Containerimages nach der Aktualisierung eines Basisimages in einer Azure-Containerregistrierung 
 
 ACR Tasks unterstützt das automatisierte Ausführen eines Buildvorgangs, wenn das Basisimage eines Containers aktualisiert wird – beispielsweise, wenn Sie das Betriebssystem oder das Anwendungsframework in einem Ihrer Basisimages patchen. In diesem Tutorial erfahren Sie, wie Sie eine Aufgabe in ACR Tasks erstellen, die einen Buildvorgang in der Cloud auslöst, wenn das Basisimage eines Containers an Ihre Registrierung gepusht wurde.
 

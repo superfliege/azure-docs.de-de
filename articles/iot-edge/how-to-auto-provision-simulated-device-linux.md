@@ -1,6 +1,6 @@
 ---
-title: Automatische Bereitstellung eines Geräts mit Azure IoT Edge unter Verwendung von DPS (Linux) | Microsoft-Dokumentation
-description: Verwenden eines simulierten TPM auf einem virtuellen Linux-Computer, um die Gerätebereitstellung für Azure IoT Edge zu testen
+title: Automatische Bereitstellung von Linux-Geräten mit DPS – Azure IoT Edge | Microsoft-Dokumentation
+description: Verwenden eines simulierten TPM auf einem virtuellen Linux-Computer, um den Azure Device Provisioning Service für Azure IoT Edge zu testen
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -8,12 +8,13 @@ ms.date: 10/31/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 61da3b8e139cf5091aec4c1ab835c23fe319ea46
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18
+ms.openlocfilehash: 0550b1765e36d591a1baf34d3c255a252ca5278b
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52446241"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53101754"
 ---
 # <a name="create-and-provision-an-edge-device-with-a-virtual-tpm-on-a-linux-virtual-machine"></a>Erstellen und Bereitstellen eines Edge-Geräts mit einem virtuellen TPM auf einem virtuellen Linux-Computer
 
@@ -61,7 +62,7 @@ Wenn beim Erstellen des neuen Switches Fehler angezeigt werden, stellen Sie sich
 
 3. Geben Sie im **Assistenten für neue virtuelle Computer** die folgenden speziellen Konfigurationen ein:
 
-   1. **Generation angeben**: Klicken Sie auf **Generation 2**.
+   1. **Generation angeben**: Wählen Sie **Generation 2** aus.
    2. **Konfigurieren der Netzwerkeinstellungen**: Legen Sie den Wert der **Verbindung** auf den virtuellen Switch fest, den Sie im vorherigen Abschnitt erstellt haben. 
    3. **Installationsoptionen**: Wählen Sie **Betriebssystem von einer startbaren Imagedatei installieren** aus, und navigieren Sie zu der Datenträger-Imagedatei, die Sie lokal gespeichert haben.
 

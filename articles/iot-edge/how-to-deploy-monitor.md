@@ -1,6 +1,6 @@
 ---
-title: Bereitstellen und Überwachen von Modulen für Azure IoT Edge | Microsoft-Dokumentation
-description: Verwalten von Modulen, die auf Edge-Geräten ausgeführt werden
+title: Erstellen automatischer Bereitstellungen im Azure-Portal – Azure IoT Edge | Microsoft-Dokumentation
+description: Verwenden des Azure-Portals zum Erstellen automatischer Bereitstellungen für Gruppen von IoT Edge-Geräten
 keywords: ''
 author: kgremban
 manager: philmea
@@ -9,12 +9,13 @@ ms.date: 07/25/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 6ebd2a4e24a5f0bd9a9adad97bf26ae61219c8e0
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.custom: seodec18
+ms.openlocfilehash: 20f50e286e30e32f066fe3d214bfc4c1a155776e
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51566243"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53083919"
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale-using-the-azure-portal"></a>Bedarfsgerechtes Bereitstellen und Überwachen von IoT Edge-Modulen mithilfe des Azure-Portals
 
@@ -99,7 +100,7 @@ Routen definieren, wie Module innerhalb einer Bereitstellung miteinander kommuni
 Fügen Sie die Routen mit Informationen aus dem Abschnitt [Deklarieren von Routen](module-composition.md#declare-routes) hinzu, oder aktualisieren Sie diese, und wählen Sie dann **Weiter** aus, um mit dem Abschnitt zur Überprüfung fortzufahren.
 
 
-### <a name="step-4-target-devices"></a>Schritt 4: Festlegen von Zielgeräten
+### <a name="step-4-target-devices"></a>Schritt 4: Zielgeräte
 
 Mit der Tageigenschaft Ihrer Geräte wählen Sie bestimmte Geräte als Ziele aus, die diese Bereitstellung erhalten sollen. 
 

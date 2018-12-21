@@ -1,5 +1,5 @@
 ---
-title: Bereitstellen von Azure IoT Edge-Modulen (Portal) | Microsoft-Dokumentation
+title: Bereitstellen von Modulen im Azure-Portal – Azure IoT Edge | Microsoft-Dokumentation
 description: Bereitstellen von Modulen auf einem IoT Edge-Gerät über das Azure-Portal
 author: kgremban
 manager: philmea
@@ -9,12 +9,13 @@ ms.topic: conceptual
 ms.reviewer: menchi
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: b135832c1f0cb8af23a513d4914d7e32b398be7e
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.custom: seodec18
+ms.openlocfilehash: fab85b74fb53bec07843abf31aac1a8495d0fcfb
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51564934"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53093980"
 ---
 # <a name="deploy-azure-iot-edge-modules-from-the-azure-portal"></a>Bereitstellen von Azure IoT Edge-Modulen über das Azure-Portal
 
@@ -38,7 +39,7 @@ In diesem Artikel wird gezeigt, wie das Azure-Portal Sie durch das Erstellen ein
 
 Ein Bereitstellungsmanifest ist ein JSON-Dokument, das beschreibt, welche Module bereitgestellt werden sollen, wie Daten zwischen den Modulen übermittelt werden und welche Eigenschaften die Modulzwillinge aufweisen sollen. Weitere Informationen zur Funktionsweise und Erstellung von Bereitstellungsmanifesten finden Sie unter [Verstehen, wie IoT Edge-Module verwendet, konfiguriert und wiederverwendet werden können](module-composition.md).
 
-Das Azure-Portal verfügt über einen Assistenten, der Sie durch das Erstellen des Bereitstellungsmanifests führt, sodass Sie das JSON-Dokument nicht manuell erstellen müssen. Es umfasst drei Schritte: **Hinzufügen von Modulen**, **Angeben von Routen** und **Überprüfen der Bereitstellung**. 
+Das Azure-Portal verfügt über einen Assistenten, der Sie durch das Erstellen des Bereitstellungsmanifests führt, sodass Sie das JSON-Dokument nicht manuell erstellen müssen. Der Assistent umfasst drei Schritte: **Hinzufügen von Modulen**, **Angeben von Routen** und **Überprüfen der Bereitstellung**. 
 
 ### <a name="add-modules"></a>Hinzufügen von Modulen
 

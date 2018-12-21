@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: 3ddd2f122de832654be295c5978a88bec702558c
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 19ba7013b461917c4aea8ae96f689d7e39859652
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52319019"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53134436"
 ---
 # <a name="azure-vm-guest-os-firewall-is-blocking-inbound-traffic"></a>Blockierung von eingehendem Datenverkehr durch die Firewall des Azure-VM-Gastbetriebssystem
 
@@ -31,17 +31,17 @@ Sie können keine RDP-Verbindung mit einem virtuellen Azure-Computer (VM) herste
 
 ## <a name="cause"></a>Ursache
 
-### <a name="cause-1"></a>Ursache 1 
+### <a name="cause-1"></a>Ursache 1
 
 Die RDP-Regel ist nicht zum Zulassen des RDP-Datenverkehrs eingerichtet.
 
-### <a name="cause-2"></a>Ursache 2 
+### <a name="cause-2"></a>Ursache 2
 
 Die Firewallprofile des Gastbetriebssystems wurden zum Blockieren aller eingehenden Verbindungen eingerichtet. Dazu zählt auch RDP-Datenverkehr.
 
 ![Firewalleinstellungen](./media/guest-os-firewall-blocking-inbound-traffic/firewall-advanced-setting.png)
 
-## <a name="solution"></a>Lösung 
+## <a name="solution"></a>Lösung
 
 Erstellen Sie eine Momentaufnahme des Betriebssystemdatenträgers des betroffenen virtuellen Computers als Sicherung, bevor Sie die unten angegebenen Schritte ausführen. Weitere Informationen finden Sie unter  [Erstellen einer Momentaufnahme eines Datenträgers](../windows/snapshot-copy-managed-disk.md).
 
@@ -49,7 +49,7 @@ Um das Problem zu beheben, verwenden Sie eine der Methoden in [Verwenden von Rem
 
 ### <a name="online-troubleshooting"></a>Onlineproblembehandlung
 
-Stellen Sie eine Verbindung mit der [seriellen Konsole her, und öffnen Sie eine PowerShell-Instanz](serial-console-windows.md#open-cmd-or-powershell-in-serial-console). Ist die serielle Konsole auf Ihrem virtuellen Computer nicht aktiviert, gehen Sie zu [Reparieren des virtuellen Computers im Offlinestatus](troubleshoot-rdp-internal-error.md#repair-the-vm-offline).
+Stellen Sie eine Verbindung mit der [seriellen Konsole her, und öffnen Sie eine PowerShell-Instanz](serial-console-windows.md#use-cmd-or-powershell-in-serial-console). Ist die serielle Konsole auf Ihrem virtuellen Computer nicht aktiviert, gehen Sie zu [Reparieren des virtuellen Computers im Offlinestatus](troubleshoot-rdp-internal-error.md#repair-the-vm-offline).
 
 #### <a name="mitigation-1"></a>Vorbeugende Maßnahme 1
 
@@ -80,7 +80,7 @@ Stellen Sie eine Verbindung mit der [seriellen Konsole her, und öffnen Sie eine
     ```cmd
     netsh advfirewall firewall set rule group="Remote Desktop" new enable=yes
     ```
-    
+
     Führen Sie andernfalls den folgenden Befehl aus, um die spezielle Remotedesktopregel (TCP eingehend) zu öffnen:
 
     ```cmd
@@ -94,7 +94,7 @@ Stellen Sie eine Verbindung mit der [seriellen Konsole her, und öffnen Sie eine
     ```
 
     Nach Abschluss der Problembehandlung und zum ordnungsgemäßen Einrichten der Firewall sollten Sie die Firewall erneut aktivieren.
-    
+
     > [!Note]
     > Sie müssen den virtuellen Computer nicht neu starten, um diese Änderungen zu übernehmen.
 
@@ -128,13 +128,13 @@ Stellen Sie eine Verbindung mit der [seriellen Konsole her, und öffnen Sie eine
     ```
 
     > [!Note]
-    > Sie müssen den virtuellen Computer nicht neu starten, um diese Änderungen zu übernehmen. 
+    > Sie müssen den virtuellen Computer nicht neu starten, um diese Änderungen zu übernehmen.
 
 4.  Versuchen Sie erneut, über RDP auf Ihren virtuellen Computer zuzugreifen.
 
-### <a name="offline-mitigations"></a>Vorbeugende Maßnahmen offline 
+### <a name="offline-mitigations"></a>Vorbeugende Maßnahmen offline
 
-1.  [Fügen Sie den Betriebssystemdatenträger einer VM für die Wiederherstellung an.](troubleshoot-recovery-disks-portal-windows.md)
+1.  [Fügen Sie den Systemdatenträger an einen virtuellen Wiederherstellungscomputer an.](troubleshoot-recovery-disks-portal-windows.md)
 
 2.  Stellen Sie eine Remotedesktopverbindung mit dem virtuellen Wiederherstellungscomputer her.
 
@@ -146,7 +146,7 @@ Siehe Dokument  [Aktivieren/Deaktivieren einer Firewallregel unter einem Gastbe
 
 #### <a name="mitigation-2"></a>Vorbeugende Maßnahme 2
 
-1.  [Fügen Sie den Betriebssystemdatenträger einer VM für die Wiederherstellung an.](troubleshoot-recovery-disks-portal-windows.md)
+1.  [Fügen Sie den Systemdatenträger an einen virtuellen Wiederherstellungscomputer an.](troubleshoot-recovery-disks-portal-windows.md)
 
 2.  Stellen Sie eine Remotedesktopverbindung mit dem virtuellen Wiederherstellungscomputer her.
 
@@ -159,7 +159,7 @@ Siehe Dokument  [Aktivieren/Deaktivieren einer Firewallregel unter einem Gastbe
     robocopy f:\windows\system32\config f:\windows\system32\config.BACK /MT
 
     REM Mount the hive
-    reg load HKLM\BROKENSYSTEM f:\windows\system32\config\SYSTEM 
+    reg load HKLM\BROKENSYSTEM f:\windows\system32\config\SYSTEM
 
     REM Delete the keys to block all inbound connection scenario
     REG DELETE "HKLM\BROKENSYSTEM\ControlSet001\services\SharedAccess\Parameters\FirewallPolicy\DomainProfile" /v DoNotAllowExceptions

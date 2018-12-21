@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 01/23/2017
 ms.author: anroth
 ROBOTS: NOINDEX
-ms.openlocfilehash: f3a84a68718fba29e2a4b2fae057e68976119c95
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: da605ec4013fb11606f99f3d9a2dcfcfcab00d3b
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48237023"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53163326"
 ---
 # <a name="tutorial-recognize-emotions-on-a-face-in-an-image"></a>Tutorial: Erkennen von Emotionen auf Gesichtern in einem Bild
 
@@ -51,7 +51,7 @@ Sie können die Emotionen-API-Clientbibliothek über [SDK](https://www.github.co
 3.  Drücken Sie STRG+UMSCHALT+B, oder klicken Sie auf dem Menüband auf **Erstellen** und anschließend auf **Projektmappe erstellen**.
 
 ## <a name="Step3">Schritt 3: Ausführen des Beispiels</a>
-1.  Drücken Sie nach Abschluss des Buildvorgangs **F5**, oder klicken Sie auf dem Menüband auf **Starten**, um das Beispiel auszuführen.
+1.  Drücken Sie nach Abschluss des Buildvorgangs**F5**, oder klicken Sie auf dem Menüband auf **Starten**, um das Beispiel auszuführen.
 2.  Navigieren Sie zum Fenster der Emotionen-API mit dem **Textfeld** **Abonnementschlüssel hier einfügen, um zu beginnen**. Fügen Sie Ihren Abonnementschlüssel in das Textfeld ein, wie im folgenden Screenshot gezeigt. Durch Klicken auf „Schlüssel speichern“ können Sie den Abonnementschlüssel auf Ihrem PC oder Laptop speichern. Wenn Sie den Abonnementschlüssel aus dem System löschen möchten, klicken Sie auf „Schlüssel löschen“, um ihn von Ihrem PC oder Laptop zu entfernen.
 
   ![Emotionen-Funktionalitätsschnittstelle](../Images/EmotionKey.png)
@@ -64,7 +64,7 @@ Nachdem Sie nun über eine aktive Anwendung verfügen, erfahren Sie als Nächste
 
 Diese Beispiel-App nutzt die Clientbibliothek der Emotionen-API. Dabei handelt es sich um einen C#-Thin Client-Wrapper für die Emotionen-API von Microsoft. Wenn Sie die Beispiel-App wie oben beschrieben erstellt haben, haben Sie die Clientbibliothek aus einem NuGet-Paket erhalten. Der Quellcode der Clientbibliothek befindet sich im Ordner „[Client Library](https://github.com/Microsoft/Cognitive-Emotion-Windows/tree/master/ClientLibrary)“ unter **Emotionen** > **Windows** > **Client Library**. Dieser Ordner ist Teil des heruntergeladenen Dateirepositorys, das unter [Voraussetzungen](#Prerequisites) erwähnt wurde.
 
-Sie können auch herausfinden, wie Sie die Clientbibliothekscodes im **Projektmappen-Explorer** verwenden: Erweitern Sie unter **EmotionAPI-WPF_Samples** **DetectEmotionUsingStreamPage.xaml**, um die Datei **DetectEmotionUsingStreamPage.xaml.cs** zu suchen, die verwendet wird, um zu einer lokal gespeicherten Datei zu navigieren, oder erweitern Sie **DetectEmotionUsingURLPage.xaml**, um die Datei  **DetectEmotionUsingURLPage.xaml.cs** zu finden, die beim Hochladen einer Bild-URL verwendet wird. Doppelklicken Sie auf die XAML.CS-Dateien, um sie in neuen Visual Studio-Fenstern zu öffnen.
+Darüber hinaus können Sie sich mit der Verwendung des Clientbibliothekcodes im **Projektmappen-Explorer** vertraut machen: Erweitern Sie unter **EmotionAPI-WPF_Samples** die Option **DetectEmotionUsingStreamPage.xaml**, und suchen Sie nach der Datei **DetectEmotionUsingStreamPage.xaml.cs** (wird verwendet, um zu einer lokal gespeicherten Datei zu navigieren), oder erweitern Sie **DetectEmotionUsingURLPage.xaml**, und suchen Sie nach der Datei  **DetectEmotionUsingURLPage.xaml.cs** (wird beim Hochladen einer Bild-URL verwendet). Doppelklicken Sie auf die XAML.CS-Dateien, um sie in neuen Visual Studio-Fenstern zu öffnen.
 
 Bei der Untersuchung, wie die Emotionen-Clientbibliothek in unserer Beispiel-App verwendet wird, betrachten wir zwei Codeausschnitte aus **DetectEmotionUsingStreamPage.xaml.cs** und **DetectEmotionUsingURLPage.xaml.cs**. Jede Datei enthält die Codekommentare „KEY SAMPLE CODE STARTS HERE“ und „KEY SAMPLE CODE ENDS HERE“, die den Beginn und das Ende des betreffenden Beispielcodes angeben, damit Sie die weiter unten reproduzierten Codeausschnitte leichter finden.
 

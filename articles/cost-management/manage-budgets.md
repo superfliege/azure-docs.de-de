@@ -1,23 +1,23 @@
 ---
 title: Verwalten von Cloudyn-Budgets in Azure | Microsoft-Dokumentation
-description: Dieser Artikel unterstützt Sie beim Erstellen und Verwalten von Budgets in Cloudyn.
+description: Anhand dieses Artikels können Sie schnell Budgets erstellen und in Cloudyn verwalten.
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 9/18/2018
+ms.date: 12/07/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: vitavor
-ms.custom: ''
-ms.openlocfilehash: 92236547e2100ab57f4ec6b4953f6c61ec87892d
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.custom: seodec18
+ms.openlocfilehash: 44062670283a15f678da45e13a831e73a7738c39
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52275503"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53075487"
 ---
-# <a name="manage-budgets"></a>Verwalten von Budgets
+# <a name="manage-azure-budgets-with-cloudyn"></a>Verwalten von Azure-Budgets mit Cloudyn
 
 Die Einrichtung von Budgets und budgetbasierten Warnmeldungen hilft Ihnen, Ihre Cloudgovernance und Verantwortlichkeit zu verbessern. Anhand dieses Artikels können Sie schnell Budgets erstellen und in Cloudyn verwalten.
 
@@ -40,7 +40,7 @@ So erstellen Sie ein Budget und weisen es einer Entität zu:
 3. Wählen Sie unter „Budgetjahr“ das Jahr, für das Sie das Budget erstellen möchten.
 4. Legen Sie für jeden Monat einen Budgetwert fest. Wenn Sie fertig sind, klicken Sie auf **Speichern**.
 In diesem Beispiel wurde das Monatsbudget für Juni 2018 auf 135.000 USD festgelegt. Das Gesamtbudget für das Jahr beläuft sich auf 1.615.000,00 USD.
-![Budget erstellen](./media/manage-budgets/set-budget.png)
+![Erstellen Sie eine Budget-Seite, auf der Sie ein Budget für jeden Monat festlegen](./media/manage-budgets/set-budget.png)
 
 
 So importieren Sie eine Datei für das Jahresbudget:
@@ -64,11 +64,11 @@ Im folgenden Beispiel wird der 22. Juni als aktuelles Datum angenommen. Die Kost
 
 Eine weitere Möglichkeit, den Bericht anzuzeigen, ist ein Vergleich der akkumulierten Kosten mit Ihrem Budget. Um die akkumulierten Kosten anzuzeigen, wählen Sie **Felder ein-/ausblenden**, anschließend **Akkumulierte Kosten** und **Gesamtbudget**. Hier ist ein Beispiel für die akkumulierten Kosten seit Anfang des Jahres.
 
-![Akkumuliertes Budget](./media/manage-budgets/accumulated-budget.png)
+![Beispiel der kumulierten Kosten und des Gesamtbudgets im Bericht mit dem Vergleich der Kosten und dem Budget im Zeitverlauf](./media/manage-budgets/accumulated-budget.png)
 
 Irgendwann in der Zukunft könnten Ihre akkumulierten Kosten Ihr Budget übersteigen. Sie können das leichter erkennen, wenn Sie die Diagrammansicht auf den Typ _Zeile_ ändern.
 
-![Darstellung des Budgets als Liniendiagramm](./media/manage-budgets/budget-line.png)
+![Budget in einem Liniendiagramm im Bericht „Kosten nach Monaten“](./media/manage-budgets/budget-line.png)
 
 ## <a name="create-budget-alerts-for-a-filter"></a>Erstellen von Budgetwarnungen für einen Filter
 
@@ -81,7 +81,7 @@ Schauen wir uns ein Beispiel an.
 
 Klicken Sie im Bericht mit dem Vergleich der Kosten und des Budgets im Laufe der Zeit auf **Aktionen** , und wählen Sie **Bericht planen** aus. Wählen Sie auf der Registerkarte „Schwellenwert“ eine Schwellenwertmetrik aus. Zum Beispiel **Kosten-Prozentanteil im Vergleich zum Budget**. Wählen Sie einen Warnungstypen, und geben Sie einen Prozentwert für das Budget ein. Wenn Sie nur einmalig benachrichtigt werden möchten, geben Sie unter **Anzahl der aufeinanderfolgenden Warnungen** _1_ ein. Klicken Sie auf **Speichern**.
 
-![Budgetwarnung](./media/manage-budgets/budget-alert.png)
+![Erstellen einer Budgetwarnung im Feld „Speichern“ oder „Diesen Bericht planen“](./media/manage-budgets/budget-alert.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

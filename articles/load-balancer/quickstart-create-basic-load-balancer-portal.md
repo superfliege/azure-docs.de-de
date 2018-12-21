@@ -1,14 +1,11 @@
 ---
-title: 'Schnellstart: Erstellen eines öffentlichen Load Balancers im Tarif „Basic“ mit dem Azure-Portal | Microsoft-Dokumentation'
+title: 'Schnellstart: Erstellen eines öffentlichen Load Balancers im Tarif „Basic“ über das Portal'
+titlesuffix: Azure Load Balancer
 description: In dieser Schnellstartanleitung wird gezeigt, wie Sie über das Azure-Portal einen öffentlichen Load Balancer erstellen.
 services: load-balancer
 documentationcenter: na
 author: KumudD
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
 Customer intent: I want to create a Basic Load balancer so that I can load balance internet traffic to VMs.
-ms.assetid: aa9d26ca-3d8a-4a99-83b7-c410dd20b9d0
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: hero-article
@@ -16,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/27/2018
 ms.author: kumud
-ms.custom: mvc
-ms.openlocfilehash: 2e4e4e7cb1ae49a856bbfed0716936b7b5b13d19
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.custom: seodec18
+ms.openlocfilehash: e7055e016abd06d20206d25cb1d7b9eac35142f0
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52635100"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53260224"
 ---
-# <a name="quickstart-create-a-public-basic-load-balancer-by-using-the-azure-portal"></a>Schnellstart: Erstellen eines öffentlichen Load Balancers im Tarif „Basic“ mit dem Azure-Portal
+# <a name="quickstart-create-a-public-basic-load-balancer-by-using-the-azure-portal"></a>Schnellstart: Erstellen eines öffentlichen Load Balancers im Tarif „Basic“ über das Portal
 
 Durch die Verteilung der eingehenden Anforderungen auf virtuelle Computer (VMs) ermöglicht ein Lastenausgleich ein höheres Maß an Verfügbarkeit und Skalierbarkeit. Sie können das Azure-Portal verwenden, um einen Load Balancer zu erstellen und den Datenverkehr auf VMs zu verteilen. In dieser Schnellstartanleitung wird veranschaulicht, wie Sie einen Load Balancer, Back-End-Server und Netzwerkressourcen im Tarif „Basic“ erstellen und konfigurieren.
 
@@ -41,12 +38,12 @@ Erstellen Sie zunächst einen öffentlichen Load Balancer im Tarif „Basic“, 
 1. Geben Sie im Bereich **Lastenausgleich erstellen** diese Werte ein (bzw. wählen Sie sie aus):
    
    - **Name**: Geben Sie *MyLoadBalancer* ein.
-   - **Typ**: Wählen Sie **Öffentlich**. 
-   - **SKU**: Wählen Sie **Basic**.
-   - **Öffentliche IP-Adresse:** Wählen Sie **Neu erstellen**. 
+   - **Typ**: Wählen Sie **Öffentlich** aus. 
+   - **SKU**: Wählen Sie **Basic** aus.
+   - **Öffentliche IP-Adresse**: Wählen Sie **Neu erstellen**. 
      - Feld **Öffentliche IP-Adresse**: Geben Sie *MyPublicIP* ein.
-     - **Öffentliche IP-Adresse konfigurieren** > **Zuweisung**: Wählen Sie **Dynamisch**.
-   - **Ressourcengruppe**: Wählen Sie **Neu erstellen**, geben Sie *MyResourceGroupLB* ein, und wählen Sie **OK**. 
+     - **Öffentliche IP-Adresse konfigurieren** > **Zuweisung**: Wählen Sie **Dynamisch** aus.
+   - **Ressourcengruppe**: Wählen Sie **Neu erstellen** aus, geben Sie *MyResourceGroupLB* ein, und wählen Sie anschließend **OK** aus. 
    
 1. Klicken Sie auf **Erstellen**.
    
@@ -63,7 +60,7 @@ Erstellen Sie als Nächstes ein virtuelles Netzwerk sowie zwei virtuelle Compute
 1. Geben Sie im Bereich **Virtuelles Netzwerk erstellen** diese Werte ein (bzw. wählen Sie sie aus):
    
    - **Name**: Geben Sie *MyVnet* ein.
-   - **Ressourcengruppe**: Öffnen Sie die Dropdownliste **Vorhandene auswählen**, und wählen Sie **MyResourceGroupLB**. 
+   - **Ressourcengruppe**: Öffnen Sie die Dropdownliste **Vorhandene auswählen**, und wählen Sie **MyResourceGroupLB** aus. 
    - **Subnetz** > **Name**: Geben Sie *MyBackendSubnet* ein.
    
 1. Klicken Sie auf **Erstellen**.
@@ -75,16 +72,13 @@ Erstellen Sie als Nächstes ein virtuelles Netzwerk sowie zwei virtuelle Compute
 1. Wählen Sie oben links im Portal die Option **Ressource erstellen** > **Compute** > **Windows Server 2016 Datacenter**. 
    
 1. Geben Sie unter **Virtuellen Computer erstellen** auf der Registerkarte **Grundlagen** die folgenden Werte ein (bzw. wählen Sie sie aus):
-   - **Abonnement** > **Ressourcengruppe**: Wählen Sie in der Dropdownliste die Option **MyResourceGroupLB**.
+   - **Abonnement** > **Ressourcengruppe**: Öffnen Sie die Dropdownliste, und wählen Sie **MyResourceGroupLB** aus.
    - **Instanzendetails** > **Name des virtuellen Computers**: Geben Sie *MyVM1* ein.
    - **Instanzendetails** > **Verfügbarkeitsoptionen**: 
      1. Öffnen Sie die Dropdownliste, und wählen Sie die Option **Verfügbarkeitsgruppe** aus. 
      2. Wählen Sie **Neu erstellen**, geben Sie *MyAvailabilitySet* ein, und wählen Sie **OK**.
-   - **Administratorkonto** > **Benutzername**: Geben Sie *azureuser* ein.
-   - **Administratorkonto** > **Kennwort**: Geben Sie *Azure1234567* ein. 
-     Geben Sie das Kennwort im Feld **Kennwort bestätigen** noch einmal ein.
-   
-1. Wählen Sie die Registerkarte **Netzwerk**, oder wählen Sie **Weiter: Datenträger** und dann **Weiter: Netzwerk**. 
+  
+1. Wählen Sie die Registerkarte **Netzwerk** aus, oder wählen Sie **Weiter: Datenträger** und anschließend **Weiter: Netzwerk** aus. 
    
    Stellen Sie sicher, dass Folgendes ausgewählt ist:
    - **Virtuelles Netzwerk**: **MyVnet**
@@ -113,14 +107,14 @@ In diesem Abschnitt erstellen Sie Netzwerksicherheitsgruppen-Regeln für die VMs
    
 1. Geben Sie im Dialogfeld **Eingangssicherheitsregel hinzufügen** für die HTTP-Regel folgende Werte ein (bzw. wählen Sie sie aus):
    
-   - **Quelle**: Wählen Sie **Diensttag**.  
-   - **Quelldiensttag**: Wählen Sie **Internet**. 
+   - **Quelle**: Wählen Sie **Diensttag** aus.  
+   - **Quelldiensttag**: Wählen Sie **Internet** aus. 
    - **Zielportbereiche**: Geben Sie *80* ein.
-   - **Protokoll**: Wählen Sie **TCP**. 
-   - **Aktion**: Wählen Sie **Zulassen**.  
+   - **Protokoll**: Wählen Sie **TCP** aus. 
+   - **Aktion**: Wählen Sie **Zulassen** aus.  
    - **Priorität**: Geben Sie *100* ein. 
    - **Name**: Geben Sie *MyHTTPRule* ein. 
-   - **Beschreibung**: Geben Sie *HTTP zulassen* ein. 
+   - **Beschreibung:** Geben Sie *Allow HTTP* ein. 
    
 1. Wählen Sie **Hinzufügen**. 
    
@@ -130,13 +124,13 @@ In diesem Abschnitt erstellen Sie Netzwerksicherheitsgruppen-Regeln für die VMs
    - **Zielportbereiche**: Geben Sie *3389* ein.
    - **Priorität**: Geben Sie *200* ein. 
    - **Name**: Geben Sie *MyRDPRule* ein. 
-   - **Beschreibung**: Geben Sie *RDP zulassen* ein. 
+   - **Beschreibung:** Geben Sie *Allow RDP* ein. 
 
 ## <a name="create-resources-for-the-load-balancer"></a>Erstellen von Ressourcen für den Load Balancer
 
 In diesem Abschnitt konfigurieren Sie Load Balancer-Einstellungen für einen Back-End-Adresspool, einen Integritätstest und eine Lastenausgleichsregel.
 
-### <a name="create-a-back-end-address-pool"></a>Erstellen eines Back-End-Adresspools
+### <a name="create-a-backend-address-pool"></a>Erstellen eines Back-End-Adresspools
 
 Zum Verteilen von Datenverkehr auf die VMs nutzt der Load Balancer einen Back-End-Adresspool. Der Back-End-Adresspool enthält die IP-Adressen der virtuellen Netzwerkschnittstellen (NICs), die mit dem Load Balancer verbunden sind. 
 
@@ -149,8 +143,8 @@ Zum Verteilen von Datenverkehr auf die VMs nutzt der Load Balancer einen Back-En
 1. Geben Sie auf der Seite **Back-End-Pool hinzufügen** die folgenden Werte ein (bzw. wählen Sie sie aus):
    
    - **Name**: Geben Sie *MyBackEndPool* ein.
-   - **Verknüpft mit**: Öffnen Sie die Dropdownliste, und wählen Sie **Verfügbarkeitsgruppe**.
-   - **Verfügbarkeitsgruppe**: Wählen Sie **MyAvailabilitySet**.
+   - **Verknüpft mit**: Öffnen Sie die Dropdownliste, und wählen Sie die Option **Verfügbarkeitsgruppe** aus.
+   - **Verfügbarkeitsgruppe**: Wählen Sie **MyAvailabilitySet** aus.
    
 1. Wählen Sie **Zielnetzwerk-IP-Konfiguration hinzufügen**. 
    1. Fügen Sie alle virtuellen Computer (**MyVM1** und **MyVM2**), die Sie erstellt haben, dem Back-End-Pool hinzu.
@@ -175,7 +169,7 @@ Damit der Load Balancer den VM-Status überwachen kann, verwenden Sie einen Inte
 1. Geben Sie auf der Seite **Integritätstest hinzufügen** die folgenden Werte ein (bzw. wählen Sie sie aus):
    
    - **Name**: Geben Sie *MyHealthProbe* ein.
-   - **Protokoll**: Öffnen Sie die Dropdownliste, und wählen Sie **HTTP**. 
+   - **Protokoll**: Öffnen Sie die Dropdownliste, und wählen Sie **HTTP** aus. 
    - **Port**: Geben Sie *80* ein. 
    - **Pfad**: Übernehmen Sie */* als Standard-URI. Sie können diesen Wert durch einen beliebigen anderen URI ersetzen. 
    - **Intervall**: Geben Sie *15* ein. Das Intervall ist die Anzahl von Sekunden zwischen Testversuchen.
@@ -202,11 +196,11 @@ Mit der Lastenausgleichsregel **MyLoadBalancerRule** wird über Port 80 des Fron
    
    - **Name**: Geben Sie *MyLoadBalancerRule* ein.
    - **Front-End-IP-Adresse**: Geben Sie *LoadBalancerFrontend* ein.
-   - **Protokoll**: Wählen Sie **TCP**.
+   - **Protokoll**: Wählen Sie **TCP** aus.
    - **Port**: Geben Sie *80* ein.
    - **Back-End-Port**: Geben Sie *80* ein.
-   - **Back-End-Pool**: Wählen Sie **MyBackendPool**.
-   - **Integritätstest**: Wählen Sie **MyHealthProbe**. 
+   - **Back-End-Pool**: Wählen Sie **MyBackendPool** aus.
+   - **Integritätstest**: Wählen Sie **MyHealthProbe** aus. 
    
 1. Klicken Sie auf **OK**.
    
@@ -232,7 +226,7 @@ Installieren Sie Internetinformationsdienste (IIS) auf den virtuellen Computern,
    
 1. Wählen Sie auf dem Bildschirm „Windows-Sicherheit“ die Option **Weitere Optionen** und dann **Anderes Konto verwenden**. 
    
-   Geben Sie den Benutzernamen *azureuser* und das Kennwort *Azure1234567* ein, und wählen Sie **OK**.
+   Geben Sie Benutzername und Kennwort ein, und wählen Sie **OK** aus.
    
 1. Wählen Sie für alle Eingabeaufforderungen zu Zertifikaten die Antwort **Ja**. 
    
@@ -258,9 +252,7 @@ Installieren Sie Internetinformationsdienste (IIS) auf den virtuellen Computern,
 
 ### <a name="test-the-load-balancer"></a>Testen des Lastenausgleichs
 
-Öffnen Sie auf jedem virtuellen Computer einen Browser, und wählen Sie für alle Eingabeaufforderungen zur Konfiguration jeweils **OK**. 
-
-Fügen Sie die öffentliche IP-Adresse Ihres Lastenausgleichs in die Adressleiste des Browsers ein. Im Browser sollte die Standardseite des IIS-Webservers angezeigt werden.
+Öffnen Sie einen Browser, und fügen Sie die öffentliche IP-Adresse Ihres Lastenausgleichs in die Adressleiste ein. Im Browser sollte die Standardseite des IIS-Webservers angezeigt werden.
 
 ![IIS-Webserver](./media/load-balancer-get-started-internet-portal/9-load-balancer-test.png)
 

@@ -8,12 +8,12 @@ ms.date: 09/12/2018
 ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.openlocfilehash: 3ae41ff4cf501a58668d25b16027029f6bae4749
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: e6dcbf9d185b45c18261e47e9d575adf40812611
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52317486"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53253815"
 ---
 # <a name="integrate-azure-time-series-insights-with-remote-monitoring"></a>Integrieren von Azure Time Series Insights mit Remoteüberwachung
 
@@ -212,7 +212,7 @@ Konfigurieren Sie die Umgebung für die Bereitstellung vom Typ `basic` für die 
 
 1. Navigieren Sie zu **Einstellungen** > **Schlüssel**, und erstellen Sie dann einen neuen Schlüssel für Ihre Anwendung. Kopieren Sie den Schlüsselwert an einen sicheren Ort.
 
-1. Rufen Sie die [aktuelle Docker Compose-YAML-Datei](https://github.com/Azure/pcs-cli/tree/5a9b4e0dbe313172eff19236e54a4d461d4f3e51/solutions/remotemonitoring/single-vm) per Pullvorgang aus dem GitHub-Repository ab, indem Sie das aktuelle Tag verwenden. 
+1. Rufen Sie die [aktuelle Datei „docker-compose.yml“](https://github.com/Azure/pcs-cli/tree/5a9b4e0dbe313172eff19236e54a4d461d4f3e51/solutions/remotemonitoring/single-vm) per Pullvorgang aus dem GitHub-Repository ab, indem Sie das aktuelle Tag verwenden. 
 
 1. Stellen Sie eine SSH-Verbindung mit der VM her, indem Sie die Schritte unter [Verwenden von SSH-Schlüsseln mit Windows in Azure](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows) ausführen.
 

@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Bereitstellen dedizierter Azure-HSMs in einem vorhandenen virtuellen Netzwerk mithilfe von PowerShell | Microsoft-Dokumentation'
-description: Bereitstellen von HSMs in einem vorhandenen virtuellen Netzwerk mithilfe von PowerShell
+title: 'Tutorial: Bereitstellen in einem vorhandenen virtuellen Netzwerk mithilfe von PowerShell – Azure Dedicated HSM | Microsoft-Dokumentation'
+description: In diesem Tutorial erfahren Sie, wie Sie ein dediziertes HSM mithilfe von PowerShell in einem vorhandenen virtuellen Netzwerk bereitstellen.
 services: dedicated-hsm
 documentationcenter: na
 author: barclayn
@@ -8,17 +8,17 @@ manager: mbaldwin
 editor: ''
 ms.service: key-vault
 ms.topic: tutorial
-ms.custom: mvc
+ms.custom: mvc, seodec18
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/21/2018
+ms.date: 12/07/2018
 ms.author: barclayn
-ms.openlocfilehash: a714a52ecd6398fde459c5814b8a6cf223655eff
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 3f165b5d372168ef3ce6fea75547513a0148ae5b
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52318755"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53086305"
 ---
 # <a name="tutorial--deploying-hsms-into-an-existing-virtual-network-using-powershell"></a>Tutorial: Bereitstellen von HSMs in einem vorhandenen virtuellen Netzwerk mithilfe von PowerShell
 
@@ -37,7 +37,7 @@ Dieses Tutorial konzentriert sich auf die Integration eines HSM-Paars und des er
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Da der Azure-Dienst für dedizierte HSMs derzeit nicht im Azure-Portal verfügbar ist, werden sämtliche Interaktionen mit dem Dienst über die Befehlszeile oder mithilfe von PowerShell abgewickelt. In diesem Tutorial wird PowerShell in Azure Cloud Shell verwendet. Sollten Sie noch nicht mit PowerShell vertraut sein, informieren Sie sich [hier](https://docs.microsoft.com/powershell/azure/get-started-azureps?view=azurermps-5.0.0) über die ersten Schritte mit Azure PowerShell.
+Da der Azure-Dienst für dedizierte HSMs derzeit nicht im Azure-Portal verfügbar ist, werden sämtliche Interaktionen mit dem Dienst über die Befehlszeile oder mithilfe von PowerShell abgewickelt. In diesem Tutorial wird PowerShell in Azure Cloud Shell verwendet. Sollten Sie noch nicht mit der PowerShell vertraut sein, informieren Sie sich hier über die ersten Schritte: [Get started with Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps?view=azurermps-5.0.0) (Erste Schritte mit Azure PowerShell)
 
 Voraussetzungen:
 
@@ -139,6 +139,14 @@ $compute = New-AzureRmVirtualNetworkSubnetConfig `
 $delegation = New-AzureRmDelegation `
   -Name "myDelegation" `
   -ServiceName "Microsoft.HardwareSecurityModules/dedicatedHSMs"
+
+```
+
+```powershell
+$hsmsubnet = New-AzureRmVirtualNetworkSubnetConfig ` 
+  -Name hsmsubnet ` 
+  -AddressPrefix 10.2.1.0/24 ` 
+  -Delegation $delegation 
 
 ```
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/03/2016
 ms.author: manayar
-ms.openlocfilehash: 8080cdf78333eed9541311ba67221c713341a21a
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: b961dadbe8743f1485ef0d13a44a1bb0f3ce32b5
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50741571"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53321374"
 ---
 # <a name="vertical-autoscale-with-virtual-machine-scale-sets"></a>Vertikale automatische Skalierung mit VM-Skalierungsgruppen
 In diesem Artikel wird beschrieben, wie Sie Azure [VM-Skalierungsgruppen](https://azure.microsoft.com/services/virtual-machine-scale-sets/) mit oder ohne erneute Bereitstellung vertikal skalieren können. Informationen zur vertikalen Skalierung von VMs, die sich nicht in Skalierungsgruppen befinden, finden Sie unter [Vertikales Skalieren von virtuellen Azure-Computern mit Azure Automation](../virtual-machines/windows/vertical-scaling-automation.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
@@ -84,7 +84,7 @@ Nachdem Sie die Runbooks importiert haben, fügen Sie einen Webhook zum Runbook 
 > 
 
 ## <a name="add-an-alert-to-your-virtual-machine-scale-set"></a>Hinzufügen einer Warnung zu Ihrer VM-Skalierungsgruppe
-Im Folgenden finden Sie ein PowerShell-Skript, das zeigt, wie Sie einer VM-Skalierungsgruppe eine Warnung hinzufügen können. Der folgende Artikel enthält Informationen zum Abrufen des Namens der Metrik, um die Warnung auszugeben: [Allgemeine Metriken für die automatische Skalierung in Azure Monitor](../monitoring-and-diagnostics/insights-autoscale-common-metrics.md).
+Im Folgenden finden Sie ein PowerShell-Skript, das zeigt, wie Sie einer VM-Skalierungsgruppe eine Warnung hinzufügen können. Der folgende Artikel enthält Informationen zum Abrufen des Namens der Metrik, um die Warnung auszugeben: [Allgemeine Metriken für die automatische Skalierung in Azure Monitor](../azure-monitor/platform/autoscale-common-metrics.md).
 
 ```
 $actionEmail = New-AzureRmAlertRuleEmail -CustomEmail user@contoso.com
@@ -120,7 +120,7 @@ Add-AzureRmMetricAlertRule  -Name  $alertName `
 Weitere Informationen zum Erstellen von Warnungen finden Sie in den folgenden Artikeln:
 
 * [Azure Monitor – PowerShell-Schnellstartbeispiele](../monitoring-and-diagnostics/insights-powershell-samples.md)
-* [Azure Monitor – Schnellstartbeispiele für die plattformübergreifende CLI](../monitoring-and-diagnostics/insights-cli-samples.md)
+* [Azure Monitor – Schnellstartbeispiele für die plattformübergreifende CLI](../azure-monitor/platform/cli-samples.md)
 
 ## <a name="summary"></a>Zusammenfassung
 In diesem Artikel wurden einige einfache Beispiele der vertikalen Skalierung gezeigt. Mit diesen Bausteinen – Automation-Konto, Runbooks, Webhooks, Warnungen – können Sie eine Vielzahl von Ereignissen mit einem benutzerdefinierten Satz von Aktionen verbinden.

@@ -1,21 +1,22 @@
 ---
-title: 'Tutorial 1: Ermitteln von Absichten in einer benutzerdefinierten LUIS-App'
+title: Vorhersagen von Absichten
 titleSuffix: Azure Cognitive Services
 description: Erstellen einer benutzerdefinierten App, die die Absicht eines Benutzers vorhersagt. Diese App stellt den einfachsten Typ von LUIS-App dar, da sie keine verschiedenen Datenelemente, wie E-Mail-Adressen oder Datumsangaben, aus dem Äußerungstext extrahiert.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 30c9f572d77caacbeecf5f15d74fd8517e9fa883
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: b1a9718fdf7222dae06f7fe9b3a0f14b50293c08
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52426858"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53097793"
 ---
 # <a name="tutorial-1-build-custom-app-to-determine-user-intentions"></a>Tutorial 1: Erstellen einer benutzerdefinierten App zum Bestimmen von Benutzerabsichten
 
@@ -43,11 +44,11 @@ Nachdem LUIS die JSON-Antwort zurückgegeben hat, hat LUIS diese Anforderung erl
 
 2. Klicken Sie auf **Create new app** (Neue App erstellen).  
 
-    [![](media/luis-quickstart-intents-only/app-list.png "Screenshot der Seite „Meine Apps“ von Language Understanding (LUIS)")](media/luis-quickstart-intents-only/app-list.png#lightbox)
+    [![Screenshot der Seite „Meine Apps“ von Language Understanding (LUIS)](media/luis-quickstart-intents-only/app-list.png "Screenshot der Seite „Meine Apps“ von Language Understanding (LUIS)")](media/luis-quickstart-intents-only/app-list.png#lightbox)
 
 3. Geben Sie im Popupdialogfeld den Namen `HumanResources` ein, und behalten Sie die Standardkultur **Englisch** bei. Lassen Sie die Beschreibung leer.
 
-    ![Neue LUIS-App](./media/luis-quickstart-intents-only/create-app.png)
+    ![Erstellen einer neuen LUIS-App namens „HumanResources“](./media/luis-quickstart-intents-only/create-app.png)
 
     Als nächstes zeigt die App die Seite **Absichten** mit der Absicht **Keine** an.
 
@@ -55,7 +56,7 @@ Nachdem LUIS die JSON-Antwort zurückgegeben hat, hat LUIS diese Anforderung erl
 
 1. Wählen Sie **Create new intent** (Neue Absicht erstellen) aus. Geben Sie den Namen für die neue Absicht ein: `GetJobInformation`. Diese Absicht wird jedes Mal vorhergesagt, wenn ein Benutzer Informationen über offene Stellen im Unternehmen möchte.
 
-    ![](media/luis-quickstart-intents-only/create-intent.png "Screenshot des Dialogfelds „Neus Absicht“ in Language Understanding (LUIS)")
+    ![Screenshot des Dialogfelds „Neus Absicht“ in Language Understanding (LUIS)](media/luis-quickstart-intents-only/create-intent.png "Screenshot des Dialogfelds „Neus Absicht“ in Language Understanding (LUIS)")
 
 2. Durch die Bereitstellung von _Beispieläußerungen_ trainieren Sie LUIS, welche Art von Äußerungen für diese Absicht vorhergesagt werden sollten. Fügen Sie dieser Absicht mehrere voraussichtliche Beispieläußerungen von Benutzern hinzu, z.B.:
 
@@ -69,7 +70,7 @@ Nachdem LUIS die JSON-Antwort zurückgegeben hat, hat LUIS diese Anforderung erl
     |Neue Stellen?|
     |Gibt es neue Stellen in Seattle?|
 
-    [![](media/luis-quickstart-intents-only/utterance-getstoreinfo.png "Screenshot der Eingabe neuer Äußerungen für die Absicht MyStore")](media/luis-quickstart-intents-only/utterance-getstoreinfo.png#lightbox)
+    [![Screenshot der Eingabe neuer Äußerungen für die Absicht „MyStore“](media/luis-quickstart-intents-only/utterance-getstoreinfo.png "Screenshot der Eingabe neuer Äußerungen für die Absicht „MyStore“")](media/luis-quickstart-intents-only/utterance-getstoreinfo.png#lightbox)
 
     [!INCLUDE [Do not use too few utterances](../../../includes/cognitive-services-luis-too-few-example-utterances.md)]    
 
@@ -150,7 +151,7 @@ Kehren Sie zur LUIS-Website zurück, und erstellen Sie eine neue Absicht, um zu 
     |Hier ist mein Lebenslauf für die Position 654234|
     |Stelle 567890 und meine Unterlagen|
 
-    [![](media/luis-quickstart-intents-only/utterance-applyforjob.png "Screenshot der Eingabe neuer Äußerungen für die Absicht ApplyForJob")](media/luis-quickstart-intents-only/utterance-applyforjob.png#lightbox)
+    [![Screenshot der Eingabe neuer Äußerungen für die Absicht „ApplyForJob“](media/luis-quickstart-intents-only/utterance-applyforjob.png "Screenshot der Eingabe neuer Äußerungen für die Absicht „ApplyForJob“")](media/luis-quickstart-intents-only/utterance-applyforjob.png#lightbox)
 
     Die bezeichnete Absicht ist rot umrandet, da LUIS nicht sicher ist, ob diese Absicht richtig ist. Durch Trainieren der App lernt LUIS, ob die Äußerungen der richtigen Absicht zugeordnet sind. 
 
@@ -168,7 +169,7 @@ Kehren Sie zur LUIS-Website zurück, und erstellen Sie eine neue Absicht, um zu 
 
 2. Geben Sie im neuen Browserfenster `Can I submit my resume for job 235986` am Ende der URL ein. 
 
-    ```JSON
+    ```json
     {
       "query": "Can I submit my resume for job 235986",
       "topScoringIntent": {

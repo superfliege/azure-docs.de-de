@@ -1,13 +1,12 @@
 ---
-title: Einfaches Experiment in Machine Learning Studio | Microsoft-Dokumentation
+title: 'Einfaches Experiment: Azure Machine Learning Studio | Microsoft-Dokumentation'
 description: In diesem Machine Learning-Tutorial werden die Schritte eines einfachen Data Science-Experiments beschrieben. Wir sagen den Preis für ein Auto vorher, indem wir einen Regressionsalgorithmus verwenden.
 keywords: Experiment,Lineare Regression,Machine Learning-Algorithmen,Machine Learning-Tutorial,Verfahren für Vorhersagemodellierung,Data Science-Experiment
 services: machine-learning
 documentationcenter: ''
-author: ericlicoding
-ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
-ms.author: amlstudiodocs
-manager: hjerez
+author: garyericson
+ms.custom: seodec18
+ms.author: garye
 editor: cgronlun
 ms.assetid: b6176bb2-3bb6-4ebf-84d1-3598ee6e01c6
 ms.service: machine-learning
@@ -17,14 +16,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/20/2017
-ms.openlocfilehash: 7ee1df8c38ac2dbfc6618febd223d5c4bbf32be6
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: b3d8aa709fefcf0eb8c16117f62cbe3bab8e319a
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52425709"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53262417"
 ---
-# <a name="machine-learning-tutorial-create-your-first-data-science-experiment-in-azure-machine-learning-studio"></a>Machine Learning-Tutorial: Erstellen Ihres ersten Data Science-Experiments in Azure Machine Learning Studio
+# <a name="tutorial-create-your-first-data-science-experiment-in-azure-machine-learning-studio"></a>Tutorial: Erstellen Ihres ersten Data Science-Experiments in Azure Machine Learning Studio
 
 Wenn Sie **Azure Machine Learning Studio** noch nie zuvor verwendet haben, hilft Ihnen dieses Tutorial.
 
@@ -41,7 +40,7 @@ In diesem Tutorial wird erläutert, wie Sie Studio zum ersten Mal zum Erstellen 
 - [Grundlagen des maschinellen Lernens mit Beispielalgorithmen](basics-infographic-with-algorithm-examples.md): Diese Infografik ist hilfreich, wenn Sie mehr über die verschiedenen Algorithmustypen für maschinelles Lernen in Machine Learning Studio erfahren möchten.
 - [Machine Learning Guide (Machine Learning-Handbuch)](https://gallery.cortanaintelligence.com/Tutorial/Machine-Learning-Guide-1): Diese Anleitung enthält ähnliche Informationen wie die oben genannte Infografik, jedoch in einem interaktiven Format.
 - [Machine Learning-Cheat Sheet für Algorithmen](algorithm-cheat-sheet.md) und [Auswählen von Algorithmen für Microsoft Azure Machine Learning](algorithm-choice.md): Dieses herunterladbare Poster und der zugehörige Artikel besprechen Studio-Algorithmen im Detail.
-- [Machine Learning Studio: Algorithm and Module Help (Machine Learning Studio: Hilfe zu Algorithmen und Modulen)](https://msdn.microsoft.com/library/azure/dn905974.aspx): Dies ist die vollständige Referenz zu allen Studio-Modulen, einschließlich der Machine Learning-Algorithmen.
+- [Machine Learning Studio: Algorithm and Module Help](https://msdn.microsoft.com/library/azure/dn905974.aspx) (Machine Learning Studio: Hilfe zu Algorithmen und Modulen): Die vollständige Referenz zu allen Studio-Modulen (einschließlich Machine Learning-Algorithmen).
 
 
 
@@ -67,25 +66,25 @@ Wechseln Sie zum Einstieg in Studio zu [https://studio.azureml.net](https://stud
 In diesem Tutorial für maschinelles Lernen wird anhand von fünf grundlegenden Schritten die Experimenterstellung in Machine Learning Studio dargelegt, um Ihr Modell zu erstellen, zu trainieren und zu bewerten:
 
 - **Erstellen des Modells**
-    - [Schritt 1: Bereitstellen von Daten]
+    - [Schritt 1: Abrufen der Daten]
     - [Schritt 2: Vorbereiten der Daten]
-    - [Schritt 3: Definieren von Funktionen]
-- **Trainieren des Modells**
-    - [Schritt 4: Auswählen und Anwenden eines Lernalgorithmus]
+    - [Schritt 3: Definieren der Funktionen]
+- **Modelltraining**
+    - [Schritt 4: Auswählen und Anwenden eines Lernalgorithmus]
 - **Bewerten und Testen des Modells**
-    - [Schritt 5: Erstellen von Preisprognosen für neue Fahrzeuge]
+    - [Schritt 5: Erstellen von Preisprognosen für neue Fahrzeuge]
 
-[Schritt 1: Bereitstellen von Daten]: #step-1-get-data
+[Schritt 1: Abrufen der Daten]: #step-1-get-data
 [Schritt 2: Vorbereiten der Daten]: #step-2-prepare-the-data
-[Schritt 3: Definieren von Funktionen]: #step-3-define-features
-[Schritt 4: Auswählen und Anwenden eines Lernalgorithmus]: #step-4-choose-and-apply-a-learning-algorithm
-[Schritt 5: Erstellen von Preisprognosen für neue Fahrzeuge]: #step-5-predict-new-automobile-prices
+[Schritt 3: Definieren der Funktionen]: #step-3-define-features
+[Schritt 4: Auswählen und Anwenden eines Lernalgorithmus]: #step-4-choose-and-apply-a-learning-algorithm
+[Schritt 5: Erstellen von Preisprognosen für neue Fahrzeuge]: #step-5-predict-new-automobile-prices
 
 > [!TIP] 
 > Eine Arbeitskopie des folgenden Experiments finden Sie im [Azure AI-Katalog](https://gallery.cortanaintelligence.com). Wechseln Sie zu **[Your first data science experiment - Automobile price prediction (Ihr erstes Data Science-Experiment – Vorhersage von Automobilpreisen)](https://gallery.cortanaintelligence.com/Experiment/Your-first-data-science-experiment-Automobile-price-prediction-1)**, und klicken Sie auf **In Studio öffnen**, um eine Kopie des Experiments in Ihren Machine Learning Studio-Arbeitsbereich herunterzuladen.
 
 
-## <a name="step-1-get-data"></a>Schritt 1: Bereitstellen von Daten
+## <a name="step-1-get-data"></a>Schritt 1: Datensammlung
 
 Die Grundvoraussetzung für maschinelles Lernen sind Daten.
 Machine Learning Studio enthält bereits einige Beispieldatasets, die Sie verwenden können. Alternativ können Sie Daten aus vielen Quellen importieren. Für dieses Beispiel verwenden wir das Beispieldataset **Automobile price data (Raw)** (Automobilpreisdaten (roh)), das in Ihrem Arbeitsbereich zu finden ist.
@@ -186,7 +185,7 @@ Bislang haben wir im Experiment nur Daten bereinigt. Wenn Sie das bereinigte Dat
 
 Nach der Bereinigung der Daten können wir nun angeben, welche Funktionen wir im Vorhersagemodell verwenden möchten.
 
-## <a name="step-3-define-features"></a>Schritt 3: Definieren von Funktionen
+## <a name="step-3-define-features"></a>Schritt 3: Definieren der Funktionen
 
 Bei Machine Learning versteht man unter *Funktionen* einzeln messbare Eigenschaften des untersuchten Gesamtobjekts. In unserem DataSet stellt jede Zeile ein Automobil dar, und jede Spalte ist eine Funktion dieses Automobils.
 
@@ -219,7 +218,7 @@ Wir werden ein Modell erstellen, das eine Teilmenge der Funktionen in unserem Da
 
 Hierdurch wird ein gefiltertes Dataset erstellt, das nur diejenigen Funktionen enthält, die wir dem im nächsten Schritt verwendeten Lernalgorithmus übergeben möchten. Sie können den Vorgang später jederzeit mit einer anderen Auswahl an Funktionen wiederholen.
 
-## <a name="step-4-choose-and-apply-a-learning-algorithm"></a>Schritt 4: Auswählen und Anwenden eines Lernalgorithmus
+## <a name="step-4-choose-and-apply-a-learning-algorithm"></a>Schritt 4: Auswählen und Anwenden eines Lernalgorithmus
 
 Nachdem die Daten vorbereitet sind, können Sie das Vorhersagemodell anhand von Training und Tests erarbeiten. Wir werden das Modell zunächst mit unseren Daten trainieren und dann testen, wie genau seine Preisvorhersagen zutreffen.
 <!-- For now, don't worry about *why* we need to train and then test a model.-->
@@ -273,7 +272,7 @@ Als Ergebnis erhalten Sie ein trainiertes Regressionsmodell, mit dem Sie neue Au
 <br/>
 ***Nach der Ausführung sollte das Experiment in etwa so aussehen.***
 
-## <a name="step-5-predict-new-automobile-prices"></a>Schritt 5: Erstellen von Preisprognosen für neue Fahrzeuge
+## <a name="step-5-predict-new-automobile-prices"></a>Schritt 5: Erstellen von Preisprognosen für neue Fahrzeuge
 
 Wir haben das Modell nun unter Verwendung von 75 Prozent unserer Daten trainiert und können die restlichen 25 Prozent der Daten dafür aufwenden, zu bewerten, wie gut unser Modell funktioniert.
 
@@ -304,11 +303,11 @@ Um die Ausgabe des Moduls [Evaluate Model][evaluate-model] anzuzeigen, klicken S
 
 Die folgenden Statistiken werden für unser Modell angezeigt:
 
-- **Mean Absolute Error** (MAE) – der Mittelwert der absoluten Fehler (ein *Fehler* ist die Differenz zwischen vorhergesagtem und tatsächlichem Wert).
-- **Root Mean Squared Error** (RMSE) – die Quadratwurzel des Durchschnitts des Quadrats der Vorhersagefehler für das Test-DataSet.
-- **Relative Absolute Error**– der Mittelwert der absoluten Fehler relativ zur absoluten Differenz zwischen tatsächlichen Werten und dem Durchschnitt aller tatsächlichen Werte.
-- **Relative Squared Error**– der Durchschnitt der quadrierten Fehler relativ zur quadrierten Differenz zwischen tatsächlichen Werten und dem Durchschnitt aller tatsächlichen Werte.
-- **Coefficient of Determination** – dieser auch als **R-Quadrat** bekannte Wert ist eine statistische Kenngröße, die angibt, wie gut ein Modell zu den Daten passt.
+- **Mean Absolute Error** (MAE): Der Mittelwert der absoluten Fehler. (Ein *Fehler* ist die Differenz zwischen dem prognostizierten und dem tatsächlichen Wert.)
+- **Root Mean Squared Error** (RMSE): Die Quadratwurzel des Durchschnitts des Quadrats der Prognosefehler für das Testdataset.
+- **Relative Absolute Error**: Der Mittelwert der absoluten Fehler relativ zur absoluten Differenz zwischen tatsächlichen Werten und dem Durchschnitt aller tatsächlichen Werte.
+- **Relative Squared Error**: Der Durchschnitt der quadrierten Fehler relativ zur quadrierten Differenz zwischen tatsächlichen Werten und dem Durchschnitt aller tatsächlichen Werte.
+- **Coefficient of Determination**: Dieser auch als **R-Quadrat** bezeichnete Wert ist eine statistische Kenngröße, die angibt, wie gut ein Modell zu den Daten passt.
 
 Für jede Fehlerstatistik sind kleinere Werte besser. Ein kleinerer Wert gibt an, dass die Vorhersagen genauer mit den tatsächlichen Werten übereinstimmen. Für den **Bestimmungskoeffizienten**gilt: Je näher der Bestimmungskoeffizient am Wert eins (1,0) liegt, desto besser die Vorhersage.
 

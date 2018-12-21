@@ -14,16 +14,16 @@ ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: 215cc45f09e15c74a39347e3a62945b45eafa130
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 632393696274eaf6f876ea717b5fccf7d4fbea3f
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52877665"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52965392"
 ---
 # <a name="tutorial-create-a-geo-distributed-app-solution-with-azure-and-azure-stack"></a>Tutorial: Erstellen einer geografisch verteilten App-Lösung mit Azure und Azure Stack
 
-*Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
+*Gilt für: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
 Es wird beschrieben, wie Sie Datenverkehr basierend auf unterschiedlichen Metriken an bestimmte Endpunkte weiterleiten, indem Sie das Muster für geografisch verteilte Apps verwenden. Durch die Erstellung eines Traffic Manager-Profils mit Weiterleitung und Endpunktkonfiguration anhand der Geografie wird sichergestellt, dass Informationen basierend auf regionalen Anforderungen, unternehmensinternen und internationalen Bestimmungen und Ihren Datenanforderungen an Endpunkte weitergeleitet werden.
 
@@ -65,7 +65,7 @@ Es ist hilfreich, wenn Sie über das folgende Wissen verfügen, bevor Sie den Sp
 
 -   **Strategie für die Skalierung der App:** Wird die Anwendung über mehrere App Service-Umgebungen in einer Region verteilt? Über mehrere Regionen? Wird eine Kombination beider Ansätze verwendet? Die Entscheidung sollte darauf basieren, woher der Kundendatenverkehr erwartet wird, aber auch darauf, wie gut der Rest der Back-End-Infrastruktur zur Unterstützung einer App skaliert werden kann. Bei einer zu 100 % statusfreien Anwendung kann eine App beispielsweise hochgradig skaliert werden, indem eine Kombination von mehreren App Service-Umgebungen pro Azure-Region verwendet und dies mit App Service-Umgebungen, die in mehreren Azure-Regionen bereitgestellt sind, multipliziert wird. Da Kunden aus mehr als 15 globalen Azure-Regionen auswählen können, ist wirklich die Erstellung einer weltweiten, hoch skalierbaren Anwendung möglich. Für die Beispiel-App in diesem Artikel wurden drei App Service-Umgebungen in einer einzelnen Azure-Region (USA (Mitte/Süden)) erstellt.
 
--   **Benennungskonvention für die App Service-Umgebungen:** Jede App Service-Umgebung erfordert einen eindeutigen Namen. Bei mehr als ein oder zwei App Service-Umgebungen ist es hilfreich, über eine Benennungskonvention zu verfügen, um die Identifizierung der einzelnen App Service-Umgebungen zu vereinfachen. Für die Beispiel-App wurde eine einfache Benennungskonvention verwendet. Die Namen der drei App Service-Umgebungen sind *fe1ase*, *fe2ase* und *fe3ase*.
+-   **Benennungskonvention für die App Service-Umgebungen:** Jede App Service-Umgebung muss über einen eindeutigen Namen verfügen. Bei mehr als ein oder zwei App Service-Umgebungen ist es hilfreich, über eine Benennungskonvention zu verfügen, um die Identifizierung der einzelnen App Service-Umgebungen zu vereinfachen. Für die Beispiel-App wurde eine einfache Benennungskonvention verwendet. Die Namen der drei App Service-Umgebungen sind *fe1ase*, *fe2ase* und *fe3ase*.
 
 -   **Benennungskonvention für die Apps:** Da mehrere Instanzen der App bereitgestellt werden, ist ein Name für jede Instanz der bereitgestellten App erforderlich. Bei App Service-Umgebungen kann der gleiche App-Name über mehrere App Service-Umgebungen hinweg genutzt werden. Da jede App Service-Umgebung ein eindeutiges Domänensuffix aufweist, können Entwickler den gleichen App-Namen in jeder Umgebung wiederverwenden. Ein Entwickler kann Apps beispielsweise wie folgt benennen: *myapp.foo1.p.azurewebsites.net*, *myapp.foo2.p.azurewebsites.net*, *myapp.foo3.p.azurewebsites.net* usw. Für die App in diesem Szenario hat jede App-Instanz einen eindeutigen Namen. Die verwendeten Namen für die App-Instanzen sind *webfrontend1*, *webfrontend2*, und *webfrontend3*.
 
@@ -114,17 +114,17 @@ Richten Sie die hybride CI/CD-Pipeline ein, um die Web-App in Azure und Azure St
 
     Eine hybride Pipeline für Continuous Integration/Continuous Delivery (CI/CD) kann sowohl für Anwendungscode als auch für Infrastrukturcode gelten. Verwenden Sie [Azure Resource Manager-Vorlagen](https://azure.microsoft.com/resources/templates/) für die Entwicklung von privaten und gehosteten Clouds.
 
-    ![Alt text](media\azure-stack-solution-geo-distributed\image1.JPG)
+    ![Alt text](media/azure-stack-solution-geo-distributed/image1.JPG)
 
 2. **Klonen Sie das Repository**, indem Sie die Standard-Web-App erstellen und öffnen.
 
-    ![Alt text](media\azure-stack-solution-geo-distributed\image2.png)
+    ![Alt text](media/azure-stack-solution-geo-distributed/image2.png)
 
 ### <a name="create-web-app-deployment-in-both-clouds"></a>Erstellen der Web-App-Bereitstellung in beiden Clouds
 
 1.  Bearbeiten Sie die Datei **WebApplication.csproj**: Wählen Sie **Runtimeidentifier**, und fügen Sie **win10-x64** hinzu. (Weitere Informationen finden Sie in der Dokumentation zur [eigenständigen Bereitstellung](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd).)
 
-    ![Alt text](media\azure-stack-solution-geo-distributed\image3.png)
+    ![Alt text](media/azure-stack-solution-geo-distributed/image3.png)
 
 1.  **Checken Sie den Code in Azure Repos ein**, indem Sie Team Explorer verwenden.
 
@@ -136,7 +136,7 @@ Richten Sie die hybride CI/CD-Pipeline ein, um die Web-App in Azure und Azure St
 
 2. Fügen Sie den Code **-r win10-x64** hinzu. Dies ist erforderlich, um eine eigenständige Bereitstellung mit .NET Core auszulösen.
 
-    ![Alt text](media\azure-stack-solution-geo-distributed\image4.png)
+    ![Alt text](media/azure-stack-solution-geo-distributed/image4.png)
 
 3. **Führen Sie den Buildvorgang durch.** Der Buildvorgang für die [eigenständige Bereitstellung](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd) veröffentlicht Artefakte, die in Azure und Azure Stack ausgeführt werden können.
 
@@ -151,87 +151,87 @@ Azure DevOps und Azure DevOps Server bieten eine äußerst flexibel konfigurier-
 #### <a name="create-release-definition"></a>Erstellen einer Releasedefinition
 
 
-![Alt text](media\azure-stack-solution-geo-distributed\image5.png)
+![Alt text](media/azure-stack-solution-geo-distributed/image5.png)
 
 1.  Wählen Sie die Schaltfläche mit dem **Pluszeichen**, um in Visual Studio Online (VSO) auf der Seite „Build und Release“ über die **Registerkarte „Releases“** ein neues Release hinzuzufügen.
 
-    ![Alt text](media\azure-stack-solution-geo-distributed\image6.png)
+    ![Alt text](media/azure-stack-solution-geo-distributed/image6.png)
 
 2. Wenden Sie die Vorlage **Azure App Service-Bereitstellung** an.
 
-    ![Alt text](media\azure-stack-solution-geo-distributed\image7.png)
+    ![Alt text](media/azure-stack-solution-geo-distributed/image7.png)
 
 3. Fügen Sie im Pulldownmenü **Artefakt hinzufügen** das Artefakt für die Azure Cloud-Build-App hinzu.
 
-    ![Alt text](media\azure-stack-solution-geo-distributed\image8.png)
+    ![Alt text](media/azure-stack-solution-geo-distributed/image8.png)
 
 4. Klicken Sie auf der Registerkarte „Pipeline“ auf den Link **Phase, Aufgabe** der Umgebung, und legen Sie die Azure Cloud-Umgebungswerte fest.
 
-    ![Alt text](media\azure-stack-solution-geo-distributed\image9.png)
+    ![Alt text](media/azure-stack-solution-geo-distributed/image9.png)
 
 5. Legen Sie unter **Umgebungsname** den Umgebungsnamen fest, und wählen Sie das **Azure-Abonnement** für den Azure Cloud-Endpunkt aus.
 
-    ![Alt text](media\azure-stack-solution-geo-distributed\image10.png)
+    ![Alt text](media/azure-stack-solution-geo-distributed/image10.png)
 
 6. Legen Sie unter **Umgebungsname** den erforderlichen Namen des Azure-App-Diensts fest.
 
-    ![Alt text](media\azure-stack-solution-geo-distributed\image11.png)
+    ![Alt text](media/azure-stack-solution-geo-distributed/image11.png)
 
 7. Geben Sie unter „Agent-Warteschlange“ für die gehostete Azure Cloud-Umgebung die Zeichenfolge **Hosted VS2017** ein.
 
-    ![Alt text](media\azure-stack-solution-geo-distributed\image12.png)
+    ![Alt text](media/azure-stack-solution-geo-distributed/image12.png)
 
 8. Wählen Sie im Menü „Deploy Azure App Service“ (Azure App Service bereitstellen) **das gültige Paket oder den gültigen Ordner** für die Umgebung aus. Klicken Sie für den **Ordnerspeicherort** auf „OK“.
 
-    ![Alt text](media\azure-stack-solution-geo-distributed\image13.png)
+    ![Alt text](media/azure-stack-solution-geo-distributed/image13.png)
 
-    ![Alt text](media\azure-stack-solution-geo-distributed\image14.png)
+    ![Alt text](media/azure-stack-solution-geo-distributed/image14.png)
 
 9. Speichern Sie alle Änderungen, und kehren Sie zur **Releasepipeline** zurück.
 
-    ![Alt text](media\azure-stack-solution-geo-distributed\image15.png)
+    ![Alt text](media/azure-stack-solution-geo-distributed/image15.png)
 
 10. Fügen Sie ein **neues Artefakt** hinzu, und wählen Sie dabei den Build für die Azure Stack-App aus.
 
-    ![Alt text](media\azure-stack-solution-geo-distributed\image16.png)
+    ![Alt text](media/azure-stack-solution-geo-distributed/image16.png)
 
 11. Fügen Sie mindestens eine Umgebung hinzu, und wenden Sie dabei die **Azure App Service-Bereitstellung** an.
 
-    ![Alt text](media\azure-stack-solution-geo-distributed\image17.png)
+    ![Alt text](media/azure-stack-solution-geo-distributed/image17.png)
 
 12. Nennen Sie die neue Umgebung **Azure Stack**.
 
-    ![Alt text](media\azure-stack-solution-geo-distributed\image18.png)
+    ![Alt text](media/azure-stack-solution-geo-distributed/image18.png)
 
 13. Suchen Sie auf der Registerkarte **Aufgabe** nach der Umgebung „Azure Stack“.
 
-    ![Alt text](media\azure-stack-solution-geo-distributed\image19.png)
+    ![Alt text](media/azure-stack-solution-geo-distributed/image19.png)
 
 14. Wählen Sie das **Abonnement** für den Azure Stack-Endpunkt aus.
 
-  ![Alt text](media\azure-stack-solution-geo-distributed\image20.png)
+  ![Alt text](media/azure-stack-solution-geo-distributed/image20.png)
 
 15. Legen Sie den Namen der Azure Stack-Web-App als **Name des App-Diensts** fest.
 
-    ![Alt text](media\azure-stack-solution-geo-distributed\image21.png)
+    ![Alt text](media/azure-stack-solution-geo-distributed/image21.png)
 
 16. Wählen Sie den **Azure Stack-Agent** aus.
 
-    ![Alt text](media\azure-stack-solution-geo-distributed\image22.png)
+    ![Alt text](media/azure-stack-solution-geo-distributed/image22.png)
 
 17. Wählen Sie im Abschnitt „Deploy Azure App Service“ (Azure App Service bereitstellen) **das gültige Paket oder den gültigen Ordner** für die Umgebung aus. Klicken Sie für den **Ordnerspeicherort** auf „OK“.
 
-    ![Alt text](media\azure-stack-solution-geo-distributed\image23.png)
+    ![Alt text](media/azure-stack-solution-geo-distributed/image23.png)
 
-    ![Alt text](media\azure-stack-solution-geo-distributed\image24.png)
+    ![Alt text](media/azure-stack-solution-geo-distributed/image24.png)
 
 18. Fügen Sie auf der Registerkarte **Variable** eine Variable mit dem Namen `VSTS\_ARM\_REST\_IGNORE\_SSL\_ERRORS` hinzu, und legen Sie ihren Wert auf `true` und den Bereich auf `Azure Stack` fest.
 
-    ![Alt text](media\azure-stack-solution-geo-distributed\image25.png)
+    ![Alt text](media/azure-stack-solution-geo-distributed/image25.png)
 
 19. Klicken Sie bei beiden Artefakten auf das Symbol **Continuous Deployment-Trigger**, und aktivieren Sie den Trigger für **Continuous Deployment**.
 
-    ![Alt text](media\azure-stack-solution-geo-distributed\image26.png)
+    ![Alt text](media/azure-stack-solution-geo-distributed/image26.png)
 
 20. Klicken Sie für die Azure Stack-Umgebung auf das Symbol **Bedingungen vor der Bereitstellung**, und legen Sie den Trigger auf **Nach einem Release** fest.
 
@@ -244,7 +244,7 @@ Azure DevOps und Azure DevOps Server bieten eine äußerst flexibel konfigurier-
 
 [Azure-Web-Apps](https://docs.microsoft.com/azure/app-service/app-service-web-overview) bietet einen hoch skalierbaren Webhostingdienst mit Self-Patching. 
 
-![Alt text](media\azure-stack-solution-geo-distributed\image27.png)
+![Alt text](media/azure-stack-solution-geo-distributed/image27.png)
 
 > [!div class="checklist"]
 > - Zuordnen eines vorhandenen benutzerdefinierten DNS-Namens zu Azure-Web-Apps
@@ -296,7 +296,7 @@ Die Seite mit den DNS-Einträgen kann unter **Eigene Domänen** angezeigt werden
 
 Der folgende Screenshot zeigt ein Beispiel für eine Seite mit DNS-Einträgen:
 
-![Beispielseite mit DNS-Einträgen](media\azure-stack-solution-geo-distributed\image28.png)
+![Beispielseite mit DNS-Einträgen](media/azure-stack-solution-geo-distributed/image28.png)
 
 1.  Wählen Sie unter der Domänennamen-Registrierungsstelle die Option **Add or Create** (Hinzufügen oder erstellen), um einen Eintrag zu erstellen. Einige Anbieter verfügen über unterschiedliche Links, um unterschiedliche Arten von Einträgen hinzuzufügen. Informationen hierzu finden Sie in der Dokumentation des Anbieters.
 
@@ -306,7 +306,7 @@ Der folgende Screenshot zeigt ein Beispiel für eine Seite mit DNS-Einträgen:
 
 Nach dem Hinzufügen des CNAME-Eintrags sieht die Seite mit den DNS-Einträgen wie im folgenden Beispiel aus:
 
-![Portalnavigation zur Azure-App](media\azure-stack-solution-geo-distributed\image29.png)
+![Portalnavigation zur Azure-App](media/azure-stack-solution-geo-distributed/image29.png)
 
 ### <a name="enable-the-cname-record-mapping-in-azure"></a>Aktivieren der Zuordnung von CNAME-Einträgen in Azure
 
@@ -348,9 +348,9 @@ Nach dem Hinzufügen des CNAME-Eintrags sieht die Seite mit den DNS-Einträgen w
 
   Unter Umständen dauert es eine Weile, bis die neuen Hostnamen auf der Seite **Benutzerdefinierte Domänen** der App angezeigt werden. Aktualisieren Sie den Browser, um die Daten zu aktualisieren.
   
-  ![Alt text](media\azure-stack-solution-geo-distributed\image31.png) 
+  ![Alt text](media/azure-stack-solution-geo-distributed/image31.png) 
   
-  Bei einem Fehler wird unten auf der Seite eine Benachrichtigung mit einem Überprüfungsfehler angezeigt. ![Überprüfungsfehler](media\azure-stack-solution-geo-distributed\image32.png)
+  Bei einem Fehler wird unten auf der Seite eine Benachrichtigung mit einem Überprüfungsfehler angezeigt. ![Überprüfungsfehler](media/azure-stack-solution-geo-distributed/image32.png)
 
 > [!Note]  
 >  Sie können die obigen Schritte wiederholen, um eine Platzhalterdomäne zuzuordnen (\*.northwindcloud.com). Dies ermöglicht das Hinzufügen von weiteren Unterdomänen zu diesem App Service, ohne dass jeweils ein separater CNAME-Eintrag erstellt werden muss. Befolgen Sie die Anleitung der Registrierungsstelle, um diese Einstellung zu konfigurieren.
@@ -404,17 +404,17 @@ Um ein benutzerdefiniertes SSL-Zertifikat an die Web-App zu binden, muss der [Ap
 
 2.  Wählen Sie im linken Menü **App Services** und anschließend den Namen der Web-App aus.
 
-![Auswählen der Web-App](media\azure-stack-solution-geo-distributed\image33.png)
+![Auswählen der Web-App](media/azure-stack-solution-geo-distributed/image33.png)
 
 #### <a name="check-the-pricing-tier"></a>Überprüfen des Tarifs
 
 1.  Scrollen Sie im linken Navigationsbereich auf der Seite mit der Web-App zum Abschnitt **Einstellungen**, und wählen Sie **Zentral hochskalieren (App Service-Plan)**.
 
-    ![Menü „Zentral hochskalieren“](media\azure-stack-solution-geo-distributed\image34.png)
+    ![Menü „Zentral hochskalieren“](media/azure-stack-solution-geo-distributed/image34.png)
 
 1.  Stellen Sie sicher, dass für die Web-App nicht der Tarif **Free** oder **Shared** festgelegt ist. Der aktuelle Tarif der Web-App ist mit einem dunkelblauen Rahmen hervorgehoben.
 
-    ![Überprüfen des Tarifs](media\azure-stack-solution-geo-distributed\image35.png)
+    ![Überprüfen des Tarifs](media/azure-stack-solution-geo-distributed/image35.png)
 
 Benutzerdefiniertes SSL wird in dem Tarif **Free** oder **Shared** nicht unterstützt. Führen Sie die Schritte im nächsten Abschnitt aus, um einen höheren Tarif auszuwählen, oder verwenden Sie die Seite **Tarif wählen**, und springen Sie zu [Tutorial: Binden eines vorhandenen benutzerdefinierten SSL-Zertifikats an Azure-Web-Apps](https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-custom-ssl).
 
@@ -424,11 +424,11 @@ Benutzerdefiniertes SSL wird in dem Tarif **Free** oder **Shared** nicht unterst
 
 2.  Wählen Sie **Auswählen**.
 
-![Auswählen eines Tarifs](media\azure-stack-solution-geo-distributed\image36.png)
+![Auswählen eines Tarifs](media/azure-stack-solution-geo-distributed/image36.png)
 
 Der Skalierungsvorgang ist abgeschlossen, wenn die Benachrichtigung angezeigt wird.
 
-![Benachrichtigung zum Hochskalieren](media\azure-stack-solution-geo-distributed\image37.png)
+![Benachrichtigung zum Hochskalieren](media/azure-stack-solution-geo-distributed/image37.png)
 
 #### <a name="bind-your-ssl-certificate-and-merge-intermediate-certificates"></a>Binden Ihres SSL-Zertifikats und Zusammenführen von Zwischenzertifikaten
 
@@ -491,11 +491,11 @@ Gehen Sie wie folgt vor, wenn IIS oder **Certreq.exe** zum Generieren der Zertif
 
 5.  Wählen Sie die Option **Hochladen**.
 
-![Hochladen des Zertifikats](media\azure-stack-solution-geo-distributed\image38.png)
+![Hochladen des Zertifikats](media/azure-stack-solution-geo-distributed/image38.png)
 
 Wenn der Upload des Zertifikats in App Service abgeschlossen ist, wird es auf der Seite **SSL-Einstellungen** angezeigt.
 
-![Alt text](media\azure-stack-solution-geo-distributed\image39.png)
+![Alt text](media/azure-stack-solution-geo-distributed/image39.png)
 
 #### <a name="bind-your-ssl-certificate"></a>Binden Ihres SSL-Zertifikats
 
@@ -514,11 +514,11 @@ Wenn der Upload des Zertifikats in App Service abgeschlossen ist, wird es auf de
 
     1.  Wählen Sie **Bindung hinzufügen**.
 
-    ![Alt text](media\azure-stack-solution-geo-distributed\image40.png)
+    ![Alt text](media/azure-stack-solution-geo-distributed/image40.png)
 
 Wenn der Upload des Zertifikats in App Service abgeschlossen ist, wird es in den Abschnitten **SSL-Bindungen** angezeigt.
 
-![Alt text](media\azure-stack-solution-geo-distributed\image41.png)
+![Alt text](media/azure-stack-solution-geo-distributed/image41.png)
 
 #### <a name="remap-the-a-record-for-ip-ssl"></a>Neuzuordnen des A-Eintrags für IP-SSL
 
@@ -534,7 +534,7 @@ Die Seite **Benutzerdefinierte Domäne** wird mit der neuen, dedizierten IP-Adre
 
 Navigieren Sie in verschiedenen Browsern zu „https://<ihre.benutzerdefinierte.domäne>“, um sicherzustellen, dass die Web-App bereitgestellt wird.
 
-![Alt text](media\azure-stack-solution-geo-distributed\image42.png)
+![Alt text](media/azure-stack-solution-geo-distributed/image42.png)
 
 > [!Note]  
 > Wenn Zertifikatüberprüfungsfehler auftreten, kann ein selbstsigniertes Zertifikat der Grund sein, oder beim Exportieren in die PFX-Datei wurden Zwischenzertifikate nicht abgeschlossen.
@@ -545,7 +545,7 @@ Standardmäßig haben alle Benutzer per HTTP Zugriff auf die Web-App. Alle HTTP-
 
 Wählen Sie auf der Web-App-Seite die Option **SSL-Einstellungen**. Wählen Sie anschließend für **Nur HTTPS** die Option **Ein**.
 
-![Erzwingen von HTTPS](media\azure-stack-solution-geo-distributed\image43.png)
+![Erzwingen von HTTPS](media/azure-stack-solution-geo-distributed/image43.png)
 
 Navigieren Sie nach Abschluss des Vorgangs zu einer beliebigen HTTP-URL, die auf die App verweist. Beispiel: 
 
@@ -561,7 +561,7 @@ Die App lässt standardmäßig [TLS](https://wikipedia.org/wiki/Transport_Layer_
 
 2.  Wählen Sie unter **TLS-Version** die TLS-Mindestversion aus.
 
-![Erzwingen von TLS 1.1 oder 1.2](media\azure-stack-solution-geo-distributed\image44.png)
+![Erzwingen von TLS 1.1 oder 1.2](media/azure-stack-solution-geo-distributed/image44.png)
 
 ### <a name="create-a-traffic-manager-profile"></a>Erstellen eines Traffic Manager-Profils
 
@@ -583,7 +583,7 @@ Die App lässt standardmäßig [TLS](https://wikipedia.org/wiki/Transport_Layer_
 
     7.  Wenn die globale Bereitstellung des Traffic Manager-Profils abgeschlossen ist, wird sie in der betreffenden Ressourcengruppe als eine der Ressourcen aufgelistet.
 
-    ![Alt text](media\azure-stack-solution-geo-distributed\image45.png)
+    ![Alt text](media/azure-stack-solution-geo-distributed/image45.png)
 
 ### <a name="add-traffic-manager-endpoints"></a>Hinzufügen von Traffic Manager-Endpunkten
 
@@ -632,7 +632,7 @@ Die App lässt standardmäßig [TLS](https://wikipedia.org/wiki/Transport_Layer_
 
 1.  Wenn Sie das Hinzufügen beider Endpunkte abgeschlossen haben, werden diese unter **Traffic Manager-Profil** zusammen mit ihrem Überwachungsstatus als **Online** angezeigt.
 
-  ![Alt text](media\azure-stack-solution-geo-distributed\image46.png)
+  ![Alt text](media/azure-stack-solution-geo-distributed/image46.png)
 
 **Globales Unternehmen nutzt Azure-Funktionen für die geografische Verteilung**
 

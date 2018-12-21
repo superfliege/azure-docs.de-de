@@ -9,14 +9,14 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: tutorial
 ms.date: 11/30/2017
-ms.openlocfilehash: a6adf97a11821ff58c01d2450f06d07e7327fdfb
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 06fa9b9191104db3b141b6268a90a7c8f206280e
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49957923"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53106072"
 ---
-# <a name="monitor-virtual-machine-changes-with-azure-event-grid-and-logic-apps"></a>Überwachen von Änderungen an einem virtuellen Computer mit Azure Event Grid und Logic Apps
+# <a name="tutorial-monitor-virtual-machine-changes-with-azure-event-grid-and-logic-apps"></a>Tutorial: Überwachen von Änderungen an einem virtuellen Computer mit Azure Event Grid und Logic Apps
 
 Wenn bestimmte Ereignisse in Azure- oder Drittanbieterressourcen auftreten, können Sie einen automatisierten [Logik-App-Workflow](../logic-apps/logic-apps-overview.md) starten. Diese Ressourcen können derartige Ereignisse in einem [Azure-Ereignisraster](../event-grid/overview.md) veröffentlichen. Das Ereignisraster überträgt diese Ereignisse wiederum mithilfe von Push an Abonnenten, die als Endpunkte Warteschlangen, Webhooks, oder [Event Hubs](../event-hubs/event-hubs-what-is-event-hubs.md) aufweisen. Als Abonnent kann Ihre Logik-App auf diese Ereignisse vom Ereignisraster warten, bevor automatisierte Workflows zur Durchführung von Aufgaben ausgeführt werden – ohne dass Sie entsprechenden Code schreiben müssen.
 
@@ -81,9 +81,9 @@ Erstellen Sie zuerst eine Logik-App, und fügen Sie einen Ereignisrastertrigger 
    Der Designer für Logik-Apps zeigt Ihnen jetzt [*Connectors*](../connectors/apis-list.md) und [*Trigger*](../logic-apps/logic-apps-overview.md#logic-app-concepts), mit denen Sie Ihre Logik-App sowie Aktionen starten können, die Sie nach einem Trigger zur Durchführung von Aufgaben hinzufügen können. Ein Trigger ist ein Ereignis, bei dem eine Logik-App-Instanz erstellt und der Logik-App-Workflow gestartet wird. 
    Für Ihre Logik-App ist ein Trigger als erstes Element erforderlich.
 
-6. Geben Sie im Suchfeld „Event Grid“ als Filter ein. Wählen Sie den folgenden Trigger aus: **Azure Event Grid – Für ein Ressourcenereignis**.
+6. Geben Sie im Suchfeld „Event Grid“ als Filter ein. Wählen Sie den folgenden Trigger aus: **Azure Event Grid – Für ein Ressourcenereignis**
 
-   ![Auswählen des Triggers „Azure Event Grid – Für ein Ressourcenereignis“](./media/monitor-virtual-machine-changes-event-grid-logic-app/logic-app-event-grid-trigger.png)
+   ![Wählen Sie den folgenden Trigger aus: „Azure Event Grid – Für ein Ressourcenereignis“](./media/monitor-virtual-machine-changes-event-grid-logic-app/logic-app-event-grid-trigger.png)
 
 7. Wenn Sie aufgefordert werden, melden Sie sich mit Ihrem Azure-Anmeldeinformationen bei Azure Event Grid an.
 
@@ -101,7 +101,7 @@ Erstellen Sie zuerst eine Logik-App, und fügen Sie einen Ereignisrastertrigger 
    | **Abonnement** | *{VM-Azure-Abonnement}* | Wählen Sie das Azure-Abonnement des Ereignisherausgebers. Wählen Sie für dieses Tutorial das Azure-Abonnement für Ihren virtuellen Computer aus. | 
    | **Ressourcentyp** | Microsoft.Resources.resourceGroups | Wählen Sie den Ressourcentyp des Ereignisherausgebers aus. Wählen Sie für dieses Tutorial den angegebenen Wert, damit Ihre Logik-App nur Ressourcengruppen überwacht. | 
    | **Ressourcenname** | *{VM-Ressourcengruppenname}* | Wählen Sie den Ressourcennamen des Herausgebers. Wählen Sie für dieses Tutorial den Namen der Ressourcengruppe für Ihren virtuellen Computer aus. | 
-   | Wählen Sie für optionale Einstellungen **Erweiterte Optionen anzeigen**. | *{siehe Beschreibungen}* | * **Präfixfilter**: Lassen Sie diese Einstellung für dieses Tutorial leer. Das Standardverhalten entspricht allen Werten. Allerdings können Sie als Filter eine Präfixzeichenfolge wie einen Pfad und einen Parameter für eine bestimmte Ressource angeben. <p>* **Suffixfilter**: Lassen Sie diese Einstellung für dieses Tutorial leer. Das Standardverhalten entspricht allen Werten. Wenn nur bestimmte Dateitypen angezeigt werden sollen, können Sie als Filter jedoch eine Suffixzeichenfolge wie eine Dateinamenerweiterung angeben.<p>* **Abonnementname**: Geben Sie einen eindeutigen Namen für Ihr Ereignisabonnement an. |
+   | Wählen Sie für optionale Einstellungen **Erweiterte Optionen anzeigen**. | *{siehe Beschreibungen}* | * **Präfixfilter:** Lassen Sie diese Einstellung für dieses Tutorial leer. Das Standardverhalten entspricht allen Werten. Allerdings können Sie als Filter eine Präfixzeichenfolge wie einen Pfad und einen Parameter für eine bestimmte Ressource angeben. <p>* **Suffixfilter:** Lassen Sie diese Einstellung für dieses Tutorial leer. Das Standardverhalten entspricht allen Werten. Wenn nur bestimmte Dateitypen angezeigt werden sollen, können Sie als Filter jedoch eine Suffixzeichenfolge wie eine Dateinamenerweiterung angeben.<p>* **Abonnementname:** Geben Sie einen eindeutigen Namen für Ihr Ereignisabonnement an. |
    | | | 
 
    Anschließend sieht Ihr Ereignisrastertrigger etwa wie im folgenden Beispiel aus:

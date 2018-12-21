@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: yexu
-ms.openlocfilehash: 246b423e69fa8fb73db45f44fa17c1bc65407681
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: be08740024e87179a48f3dfd6f8406fa6a2bbca6
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43090724"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52963520"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information"></a>Inkrementelles Laden von Daten aus Azure SQL-Datenbank in Azure Blob Storage mit Informationen der Änderungsnachverfolgung 
 In diesem Tutorial erstellen Sie eine Azure Data Factory mit einer Pipeline, die Deltadaten basierend auf Informationen der **Änderungsnachverfolgung** aus der Azure SQL-Datenbank als Quelle in Azure Blob Storage lädt.  
@@ -198,7 +198,7 @@ Um Ihre Datenspeicher und Compute Services mit der Data Factory zu verknüpfen, 
 ### <a name="create-azure-storage-linked-service"></a>Erstellen des verknüpften Azure Storage-Diensts.
 In diesem Schritt verknüpfen Sie Ihr Azure Storage-Konto mit der Data Factory.
 
-1. Erstellen Sie eine JSON-Datei mit dem Namen **AzureStorageLinkedService.json** im Ordner **C:\ADFTutorials\IncCopyChangeTrackingTutorial** und dem folgenden Inhalt (erstellen Sie den Ordner, falls er noch nicht vorhanden ist): Ersetzen Sie `<accountName>` und `<accountKey>` durch den Namen bzw. Schlüssel Ihres Azure Storage-Kontos, bevor Sie die Datei speichern.
+1. Erstellen Sie eine JSON-Datei mit dem Namen **AzureStorageLinkedService.json** im Ordner **C:\ADFTutorials\IncCopyChangeTrackingTutorial** und dem folgenden Inhalt: (Erstellen Sie den Ordner, falls er noch nicht vorhanden ist.) Ersetzen Sie `<accountName>` und `<accountKey>` durch den Namen bzw. Schlüssel Ihres Azure Storage-Kontos, bevor Sie die Datei speichern.
 
     ```json
     {
@@ -215,7 +215,7 @@ In diesem Schritt verknüpfen Sie Ihr Azure Storage-Konto mit der Data Factory.
     }
     ```
 2. Wechseln Sie in **Azure PowerShell** zum Ordner **C:\ADFTutorials\IncCopyChgTrackingTutorial**.
-3. Führen Sie das Cmdlet **Set-AzureRmDataFactoryV2LinkedService** aus, um den verknüpften Dienst **AzureStorageLinkedService** zu erstellen. Im folgenden Beispiel, übergeben Sie Werte für die **ResourceGroupName**- und **DataFactoryName**-Parameter. 
+3. Führen Sie das Cmdlet **Set-AzureRmDataFactoryV2LinkedService** aus, um den folgenden verknüpften Dienst zu erstellen: **AzureStorageLinkedService**. Im folgenden Beispiel, übergeben Sie Werte für die **ResourceGroupName**- und **DataFactoryName**-Parameter. 
 
     ```powershell
     Set-AzureRmDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureStorageLinkedService" -File ".\AzureStorageLinkedService.json"
@@ -233,7 +233,7 @@ In diesem Schritt verknüpfen Sie Ihr Azure Storage-Konto mit der Data Factory.
 ### <a name="create-azure-sql-database-linked-service"></a>Erstellen Sie einen Azure SQL-Datenbank -verknüpften Dienst.
 In diesem Schritt verknüpfen Sie die Azure SQL-Datenbank mit der Data Factory.
 
-1. Erstellen Sie eine JSON-Datei mit dem Namen **AzureSQLDatabaseLinkedService.json** im Ordner **C:\ADFTutorials\IncCopyChangeTrackingTutorial** mit folgendem Inhalt: Ersetzen Sie **&lt;server&gt; &lt;database name&gt;, &lt;user id&gt; und &lt;password&gt;** durch den Namen Ihrer Azure SQL Server-Instanz, den Namen Ihrer Datenbank, die Benutzer-ID und das Kennwort, bevor Sie die Datei speichern. 
+1. Erstellen Sie eine JSON-Datei mit dem Namen **AzureSQLDatabaseLinkedService.json** im Ordner **C:\ADFTutorials\IncCopyChangeTrackingTutorial** und dem folgenden Inhalt: Ersetzen Sie **&lt;server&gt; &lt;database name **, &lt;user id&gt; und &lt;password&gt;** durch den Namen Ihrer Azure SQL Server-Instanz, den Namen Ihrer Datenbank, die Benutzer-ID und das Kennwort, bevor Sie die Datei speichern. 
 
     ```json
     {
@@ -249,7 +249,7 @@ In diesem Schritt verknüpfen Sie die Azure SQL-Datenbank mit der Data Factory.
         }
     }
     ```
-2. Führen Sie in **Azure PowerShell** das **Set-AzureRmDataFactoryV2LinkedService**-Cmdlet zum Erstellen des verknüpften Diensts aus: **AzureSQLDatabaseLinkedService**. 
+2. Führen Sie in **Azure PowerShell** das Cmdlet **Set-AzureRmDataFactoryV2LinkedService** aus, um den folgenden verknüpften Dienst zu erstellen: **AzureSQLDatabaseLinkedService**. 
 
     ```powershell
     Set-AzureRmDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureSQLDatabaseLinkedService" -File ".\AzureSQLDatabaseLinkedService.json"
@@ -288,7 +288,7 @@ In diesem Schritt erstellen Sie ein Dataset, das für die Quelldaten steht.
     }   
     ```
 
-2.  Führen Sie nun „Set-AzureRmDataFactoryV2Dataset cmdlet“ zum Erstellen des Datasets „SourceDataset“ aus.
+2.  Führen Sie nun das Cmdlet „Set-AzureRmDataFactoryV2Dataset“ aus, um das folgende Dataset zu erstellen: SourceDataset
     
     ```powershell
     Set-AzureRmDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "SourceDataset" -File ".\SourceDataset.json"
@@ -330,7 +330,7 @@ In diesem Schritt erstellen Sie ein Dataset, das für die Daten steht, die aus d
     ```
 
     Sie erstellen den Container „adftutorial“ in Ihrer Azure Blob Storage-Instanz im Rahmen der Erfüllung der Voraussetzungen. Erstellen Sie den Container, wenn er noch nicht vorhanden ist (oder) geben Sie den Namen eines bereits vorhandenen ein. In diesem Tutorial wird der Name der Ausgabedatei dynamisch generiert, indem der folgende Ausdruck verwendet wird: @CONCAT('Incremental-', pipeline().RunId, '.txt').
-2.  Führen Sie nun „Set-AzureRmDataFactoryV2Datasetcmdlet“ zum Erstellen des Datasets „SinkDataset“ aus.
+2.  Führen Sie nun das Cmdlet „Set-AzureRmDataFactoryV2Dataset“ aus, um das folgende Dataset zu erstellen: SinkDataset
     
     ```powershell
     Set-AzureRmDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "SinkDataset" -File ".\SinkDataset.json"
@@ -368,7 +368,7 @@ In diesem Schritt erstellen Sie ein Dataset zum Speichern der Version für die �
     ```
 
     Sie erstellen die Tabelle „table_store_ChangeTracking_version“ im Rahmen der Erfüllung der Voraussetzungen.
-2.  Führen Sie nun das „Set-AzureRmDataFactoryV2Datasetcmdlet“ zum Erstellen des Datasets „WatermarkDataset“ aus.
+2.  Führen Sie nun das Cmdlet „Set-AzureRmDataFactoryV2Dataset“ aus, um das folgende Dataset zu erstellen: WatermarkDataset
     
     ```powershell
     Set-AzureRmDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "ChangeTrackingDataset" -File ".\ChangeTrackingDataset.json"
@@ -387,7 +387,7 @@ In diesem Schritt erstellen Sie ein Dataset zum Speichern der Version für die �
 ## <a name="create-a-pipeline-for-the-full-copy"></a>Erstellen einer Pipeline für den vollständigen Kopiervorgang
 In diesem Schritt erstellen Sie eine Pipeline mit einer Kopieraktivität, bei der die gesamten Daten aus dem Quelldatenspeicher (Azure SQL-Datenbank) in den Zieldatenspeicher (Azure Blob Storage) kopiert werden.
 
-1. Erstellen Sie in demselben Ordner die JSON-Datei „FullCopyPipeline.json“ mit folgendem Inhalt: 
+1. Erstellen Sie die JSON-Datei „FullCopyPipeline.json“ im gleichen Ordner, aber mit folgendem Inhalt: 
 
     ```json
     {
@@ -434,7 +434,7 @@ In diesem Schritt erstellen Sie eine Pipeline mit einer Kopieraktivität, bei de
    ```
  
 ### <a name="run-the-full-copy-pipeline"></a>Ausführen der vollständigen Kopierpipeline
-Führen Sie die Pipeline **FullCopyPipeline** mit dem **Invoke-AzureRmDataFactoryV2Pipeline**-Cmdlet aus. 
+Führen Sie die Pipeline **FullCopyPipeline** mithilfe des Cmdlets **Invoke-AzureRmDataFactoryV2Pipeline** aus. 
 
 ```powershell
 Invoke-AzureRmDataFactoryV2Pipeline -PipelineName "FullCopyPipeline" -ResourceGroup $resourceGroupName -dataFactoryName $dataFactoryName        
@@ -445,26 +445,26 @@ Invoke-AzureRmDataFactoryV2Pipeline -PipelineName "FullCopyPipeline" -ResourceGr
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Klicken Sie auf **Alle Dienste**, führen Sie eine Suche mit dem Schlüsselwort `data factories` durch, und wählen Sie **Data Factorys** aus. 
 
-    ![Menü „Data Factorys“](media\tutorial-incremental-copy-change-tracking-feature-powershell\monitor-data-factories-menu-1.png)
+    ![Menü „Data Factorys“](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-data-factories-menu-1.png)
 3. Suchen Sie in der Liste mit den Data Factorys nach **Ihrer Data Factory**, und wählen Sie sie aus, um die Seite „Data Factory“ anzuzeigen. 
 
-    ![Suchen nach Ihrer Data Factory](media\tutorial-incremental-copy-change-tracking-feature-powershell\monitor-search-data-factory-2.png)
+    ![Suchen nach Ihrer Data Factory](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-search-data-factory-2.png)
 4. Klicken Sie auf der Seite für die Data Factory auf die Kachel **Überwachung und Verwaltung**. 
 
-    ![Kachel „Überwachung und Verwaltung“](media\tutorial-incremental-copy-change-tracking-feature-powershell\monitor-monitor-manage-tile-3.png)    
+    ![Kachel „Überwachung und Verwaltung“](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-monitor-manage-tile-3.png)    
 5. Die **Anwendung für die Datenintegration** wird in einer separaten Registerkarte gestartet. Alle **Pipelineausführungen** mit dem dazugehörigen Status werden angezeigt. Beachten Sie, dass der Status der Pipelineausführung im folgenden Beispiel **Erfolgreich** lautet. Sie können die an die Pipeline übergebenen Parameter überprüfen, indem Sie in der Spalte **Parameter** auf den Link klicken. Wenn ein Fehler auftritt, wird in der Spalte **Fehler** ein Link angezeigt. Klicken Sie in der Spalte **Aktionen** auf den Link. 
 
-    ![Pipelineausführungen](media\tutorial-incremental-copy-change-tracking-feature-powershell\monitor-pipeline-runs-4.png)    
+    ![Pipelineausführungen](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-pipeline-runs-4.png)    
 6. Wenn Sie in der Spalte **Aktionen** auf den Link klicken, wird die folgende Seite mit allen **Aktivitätsausführungen** der Pipeline angezeigt. 
 
-    ![Aktivitätsausführungen](media\tutorial-incremental-copy-change-tracking-feature-powershell\monitor-activity-runs-5.png)
+    ![Aktivitätsausführungen](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-activity-runs-5.png)
 7. Klicken Sie wie in der Abbildung dargestellt auf **Pipelines**, um zurück zur Ansicht **Pipelineausführungen** zu wechseln. 
 
 
 ### <a name="review-the-results"></a>Überprüfen der Ergebnisse
 Im Ordner `incchgtracking` des Containers `adftutorial` wird eine Datei mit dem Namen `incremental-<GUID>.txt` angezeigt. 
 
-![Ausgabedatei des vollständigen Kopiervorgangs](media\tutorial-incremental-copy-change-tracking-feature-powershell\full-copy-output-file.png)
+![Ausgabedatei des vollständigen Kopiervorgangs](media/tutorial-incremental-copy-change-tracking-feature-powershell/full-copy-output-file.png)
 
 Die Datei sollte die Daten aus der Azure SQL-Datenbank enthalten:
 
@@ -495,7 +495,7 @@ SET [Age] = '10', [name]='update' where [PersonID] = 1
 ## <a name="create-a-pipeline-for-the-delta-copy"></a>Erstellen einer Pipeline für die Deltakopie
 In diesem Schritt erstellen Sie eine Pipeline mit den folgenden Aktivitäten und führen sie regelmäßig aus. Mit den **Lookup-Aktivitäten** wird die alte und neue SYS_CHANGE_VERSION aus Azure SQL-Datenbank abgerufen und an die Kopieraktivität übergeben. Die **Kopieraktivität** kopiert die eingefügten/aktualisierten/gelöschten Daten zwischen den beiden SYS_CHANGE_VERSION-Werten aus Azure SQL-Datenbank nach Azure Blob Storage. Die **Aktivität „Gespeicherte Prozedur“** aktualisiert den Wert von SYS_CHANGE_VERSION für die nächste Pipelineausführung.
 
-1. Erstellen Sie in demselben Ordner die JSON-Datei „IncrementalCopyPipeline.json“ mit folgendem Inhalt: 
+1. Erstellen Sie die JSON-Datei „IncrementalCopyPipeline.json“ im gleichen Ordner, aber mit folgendem Inhalt: 
 
     ```json
     {
@@ -623,7 +623,7 @@ In diesem Schritt erstellen Sie eine Pipeline mit den folgenden Aktivitäten und
    ```
 
 ### <a name="run-the-incremental-copy-pipeline"></a>Ausführen der inkrementellen Kopierpipeline
-Führen Sie die Pipeline: **IncrementalCopyPipeline** mit **Invoke-AzureRmDataFactoryV2Pipeline**-Cmdlet aus. 
+Führen Sie die Pipeline **IncrementalCopyPipeline** mithilfe des Cmdlets **Invoke-AzureRmDataFactoryV2Pipeline** aus. 
 
 ```powershell
 Invoke-AzureRmDataFactoryV2Pipeline -PipelineName "IncrementalCopyPipeline" -ResourceGroup $resourceGroupName -dataFactoryName $dataFactoryName     
@@ -633,16 +633,16 @@ Invoke-AzureRmDataFactoryV2Pipeline -PipelineName "IncrementalCopyPipeline" -Res
 ### <a name="monitor-the-incremental-copy-pipeline"></a>Überwachen der inkrementellen Kopierpipeline
 1. Aktualisieren Sie in der **Anwendung für die Datenintegration** die Ansicht **Pipelineausführungen**. Vergewissern Sie sich, dass „IncrementalCopyPipeline“ in der Liste enthalten ist. Klicken Sie in der Spalte **Aktionen** auf den Link.  
 
-    ![Pipelineausführungen](media\tutorial-incremental-copy-change-tracking-feature-powershell\monitor-pipeline-runs-6.png)    
+    ![Pipelineausführungen](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-pipeline-runs-6.png)    
 2. Wenn Sie in der Spalte **Aktionen** auf den Link klicken, wird die folgende Seite mit allen **Aktivitätsausführungen** der Pipeline angezeigt. 
 
-    ![Aktivitätsausführungen](media\tutorial-incremental-copy-change-tracking-feature-powershell\monitor-activity-runs-7.png)
+    ![Aktivitätsausführungen](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-activity-runs-7.png)
 3. Klicken Sie wie in der Abbildung dargestellt auf **Pipelines**, um zurück zur Ansicht **Pipelineausführungen** zu wechseln. 
 
 ### <a name="review-the-results"></a>Überprüfen der Ergebnisse
 Die zweite Datei ist im Ordner `incchgtracking` des Containers `adftutorial` enthalten. 
 
-![Ausgabedatei des inkrementellen Kopiervorgangs](media\tutorial-incremental-copy-change-tracking-feature-powershell\incremental-copy-output-file.png)
+![Ausgabedatei des inkrementellen Kopiervorgangs](media/tutorial-incremental-copy-change-tracking-feature-powershell/incremental-copy-output-file.png)
 
 Die Datei sollte nur die Deltadaten aus der Azure SQL-Datenbank enthalten. Der Datensatz mit der Kennzeichnung `U` ist die aktualisierte Zeile in der Datenbank, und mit `I` wird die hinzugefügte Zeile angegeben. 
 
@@ -650,7 +650,7 @@ Die Datei sollte nur die Deltadaten aus der Azure SQL-Datenbank enthalten. Der D
 1,update,10,2,U
 6,new,50,1,I
 ```
-Die ersten drei Spalten enthalten geänderte Daten aus „data_source_table“. Die letzten beiden Spalten enthalten die Metadaten aus der Systemtabelle für die Änderungsnachverfolgung. Die vierte Spalte enthält die SYS_CHANGE_VERSION für die einzelnen geänderten Zeilen. Die fünfte Spalte enthält den Vorgang: U = update (aktualisieren), I = insert (einfügen).  Weitere Informationen zu den Informationen zur Änderungsnachverfolgung finden Sie unter [CHANGETABLE](/sql/relational-databases/system-functions/changetable-transact-sql). 
+Die ersten drei Spalten enthalten geänderte Daten aus „data_source_table“. Die letzten beiden Spalten enthalten die Metadaten aus der Systemtabelle für die Änderungsnachverfolgung. Die vierte Spalte enthält die SYS_CHANGE_VERSION für die einzelnen geänderten Zeilen. Die fünfte Spalte enthält den Vorgang:  U = update (aktualisieren), I = insert (einfügen).  Weitere Informationen zu den Informationen zur Änderungsnachverfolgung finden Sie unter [CHANGETABLE](/sql/relational-databases/system-functions/changetable-transact-sql). 
 
 ```
 ==================================================================

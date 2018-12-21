@@ -8,25 +8,25 @@ ms.topic: quickstart
 ms.date: 10/18/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 96141ddeeb73c7483935d5da49b9341436c10c18
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 0351ab3213ac75559cc025f2ef71e2f098a7504c
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49429699"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52993197"
 ---
-# <a name="quickstart-configure-server-firewall---portal"></a>Schnellstart: Konfigurieren einer Serverfirewall – Portal
+# <a name="quickstart-configure-server-firewall---portal"></a>Schnellstart: Konfigurieren der Serverfirewall – Portal
 
 In diesem Schnellstart wird beschrieben, wie Sie eine Firewall für Ihren Azure Analysis Services-Server konfigurieren. Das Aktivieren einer Firewall und das Konfigurieren von IP-Adressbereichen nur für jene Computer, die auf Ihren Server zugreifen, sind ein wichtiger Bestandteil der Sicherung Ihres Servers und Ihrer Daten.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Ein Analysis Services-Server in Ihrem Abonnement. Weitere Informationen finden Sie unter [Erstellen eines Analysis Services-Servers im Azure-Portal](analysis-services-create-server.md) oder [Erstellen eines Azure Analysis Services-Servers mithilfe von PowerShell](analysis-services-create-powershell.md).
+- Ein Analysis Services-Server in Ihrem Abonnement. Weitere Informationen finden Sie unter [Schnellstart: Erstellen eines Analysis Services-Servers im Azure-Portal](analysis-services-create-server.md) oder unter [Schnellstart: Erstellen eines Servers mit PowerShell](analysis-services-create-powershell.md).
 - Mindestens ein IP-Adressbereich für Clientcomputer (falls erforderlich).
 
-## <a name="log-in-to-the-azure-portal"></a>Anmelden beim Azure-Portal 
+## <a name="sign-in-to-the-azure-portal"></a>Melden Sie sich auf dem Azure-Portal an. 
 
-[Melden Sie sich beim Portal an.](https://portal.azure.com)
+[Anmelden beim Portal](https://portal.azure.com)
 
 ## <a name="configure-a-firewall"></a>Konfigurieren einer Firewall
 
@@ -46,4 +46,4 @@ Löschen Sie IP-Adressbereiche, oder deaktivieren Sie die Firewall, wenn diese n
 In diesem Schnellstart haben Sie erfahren, wie eine Firewall für Ihren Server konfiguriert wird. Nachdem Sie nun über einen Server verfügen und ihn mit einer Firewall gesichert haben, können Sie ihm ein einfaches Beispieldatenmodell aus dem Portal hinzufügen. Ein Beispielmodell ist hilfreich, um sich mit dem Konfigurieren von Modelldatenbankrollen und dem Testen von Clientverbindungen vertraut zu machen. Fahren Sie mit dem Tutorial zum Hinzufügen eines Beispielmodells fort, um mehr zu erfahren.
 
 > [!div class="nextstepaction"]
-> [Tutorial: Tutorial: Hinzufügen eines Beispielmodells](analysis-services-create-sample-model.md)
+> [Tutorial: Tutorial: Hinzufügen eines Beispielmodells über das Portal](analysis-services-create-sample-model.md)

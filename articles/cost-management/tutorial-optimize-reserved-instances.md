@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 10/17/2018
+ms.date: 12/07/2018
 ms.topic: tutorial
 ms.service: cost-management
-ms.custom: ''
+ms.custom: seodec18
 manager: benshy
-ms.openlocfilehash: db4a2356d3de91e4951acd69dc858730349019d6
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: a5376aed3e9cdb12be58cb07d7eb00303a03a963
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52274551"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53074876"
 ---
 <!-- Intent: As a cloud-consuming administrator, I need to ensure that my reserved instances are optimized for cost and usage
 -->
@@ -112,7 +112,7 @@ Wenn Sie beispielsweise eine Reservierung für eine VM vom Typ „DS1\_v2“ in 
 
 Wenn die VM nur 50% der Zeit ausgeführt wird, liegt der Break-even-Point bei zehn Monaten, und Sie sparen pro Jahr nur 49,74 US-Dollar. In diesem Beispiel ergibt sich für Sie durch den Erwerb der Reservierung für diese Instanz unter Umständen kein Vorteil. Sehen Sie sich die folgende Abbildung an:
 
-![Break-even-Point in Azure](./media/tutorial-optimize-reserved-instances/azure04.png)
+![Beispiel für den Break-even-Point für virtuelle Azure-Computer](./media/tutorial-optimize-reserved-instances/azure04.png)
 
 ## <a name="view-ri-costs"></a>Anzeigen von RI-Kosten
 
@@ -127,11 +127,11 @@ In den Berichten „Actual Cost Analysis“ (Analyse der Ist-Kosten) und „Anal
 
 Navigieren Sie im Cloudyn-Portal zu **Costs** > **Cost Analysis** (Kosten > Kostenanalyse), und klicken Sie dann entweder auf **Actual Cost Analysis** (Analyse der Ist-Kosten) oder auf **Actual Cost Over Time** (Zeitbasierte Analyse). Legen Sie als Nächstes die Filter fest. Filtern Sie beispielsweise nur den Azure/VM-Dienst, und gruppieren Sie nach dem Ressourcentyp und dem Preismodell. Sehen Sie sich die folgende Abbildung an:
 
-![Ist-Kosten der reservierten Instanz](./media/tutorial-optimize-reserved-instances/azure05.png)
+![Beispiel für die Ist-Kosten reservierter Instanzen](./media/tutorial-optimize-reserved-instances/azure05.png)
 
 Sie können in diesem Beispiel nach dem Dienst **Azure/VM** filtern und nach **Price Model** (Preismodell) und **Resource Type** (Ressourcentyp) gruppieren. Dies ist in der folgenden Abbildung dargestellt:
 
-![Bericht zu Ist-Kosten – Gruppierungen und Filter](./media/tutorial-optimize-reserved-instances/azure06.png)
+![Beispiel für Berichtsgruppen und Filter für Ist-Kosten, gruppiert nach Preismodell und Ressourcentyp](./media/tutorial-optimize-reserved-instances/azure06.png)
 
 Sie können auch die Arten der geleisteten Zahlungen analysieren, z.B. einmalige Gebühren, Nutzungsgebühren und Lizenzgebühren.
 
@@ -145,7 +145,7 @@ Im Bericht zu den Ist-Kosten wurde für einen RI-Erwerb am 16. November eine Spi
 
 Navigieren Sie zum Anzeigen zu **Costs** > **Cost Analysis** (Kosten > Kostenanalyse), und klicken Sie dann auf **Amortized Cost Analysis** (Analyse der amortisierten Kosten) oder auf **Amortized Cost Over Time** (Amortisierte Kosten im Zeitverlauf).
 
-![Amortisierte Kosten der reservierten Instanz](./media/tutorial-optimize-reserved-instances/azure07.png)
+![Beispielbericht mit amortisierten Kosten der reservierten Instanz](./media/tutorial-optimize-reserved-instances/azure07.png)
 
 ## <a name="optimize-aws-ri-costs"></a>Optimieren von AWS-RI-Kosten
 
@@ -166,25 +166,25 @@ Klicken Sie im Berichtsmenü am oberen Rand des Portals auf **Optimizer** (Optim
 
 Die folgende Abbildung enthält Kaufempfehlungen aus dem Bericht.
 
-![Kaufempfehlungen](./media/tutorial-optimize-reserved-instances/aws01.png)
+![Beispiel für Kaufempfehlungen im EC2-Kaufempfehlungsbericht](./media/tutorial-optimize-reserved-instances/aws01.png)
 
 In diesem Beispiel verfügt das Cloudyn\_A-Konto über Kaufempfehlungen für 32 reservierte Instanzen. Wenn Sie allen Kaufempfehlungen nachkommen, können Sie pro Jahr bis zu 137.770 US-Dollar sparen. Beachten Sie, dass in den Kaufempfehlungen von Cloudyn vorausgesetzt wird, dass die Nutzung für ausgeführte Workloads konsistent bleibt.
 
 Klicken Sie unter **Justifications** (Begründungen) jeweils auf das Pluszeichen (**+**), um die Details zu den einzelnen Kaufempfehlungen anzuzeigen. Hier ist ein Beispiel für die erste Empfehlung in der Liste angegeben.
 
-![Begründungen für Kauf](./media/tutorial-optimize-reserved-instances/aws02.png)
+![Beispiel für Kaufbegründungsdetails](./media/tutorial-optimize-reserved-instances/aws02.png)
 
 Im vorherigen Beispiel wird angezeigt, dass die bedarfsgesteuerte Ausführung der Workload pro Jahr 90.456 US-Dollar kosten würde. Wenn Sie die Reservierung aber im Voraus erwerben, kostet dieselbe Workload 56.592 US-Dollar. Sie sparen also 33.864 US-Dollar pro Jahr.
 
 Klicken Sie auf das Pluszeichen neben **EC2 RI Purchase Impact** (Auswirkungen des EC2-RI-Erwerbs), um Ihren Break-even-Point für den Zeitraum eines Jahres anzuzeigen und zu ermitteln, wann Ihre Investition zu Kostenvorteilen führt. Im folgenden Beispiel übersteigen die kumulierten Kosten für den bedarfsgesteuerten Betrieb nach ungefähr acht Monaten nach dem Erwerb die kumulierten RI-Kosten:
 
-![Auswirkungen des Erwerbs](./media/tutorial-optimize-reserved-instances/aws03.png)
+![Beispiel für Kaufauswirkungsdetails](./media/tutorial-optimize-reserved-instances/aws03.png)
 
 Ab diesem Zeitpunkt sparen Sie Kosten.
 
 Sie können Instanzen in Abhängigkeit der Zeit (**Instances over Time**) anzeigen, um die Genauigkeit der vorgeschlagenen Kaufempfehlung zu überprüfen. In diesem Beispiel sehen Sie, dass für die Workload in den letzten 30 Tagen durchschnittlich sechs Instanzen verwendet wurden.
 
-![Instanzen in Abhängigkeit der Zeit](./media/tutorial-optimize-reserved-instances/aws04.png)
+![Beispiel für den bisherigen Nutzungsverlauf von Instanzen](./media/tutorial-optimize-reserved-instances/aws04.png)
 
 ## <a name="modify-unused-reservations"></a>Ändern von nicht genutzten Reservierungen
 
@@ -196,23 +196,23 @@ Klicken Sie oben im Portal im Berichtsmenü auf **Optimizer** > **Inefficiencies
 
 In den folgenden Abbildungen ist der Bericht mit den nicht genutzten reservierten Instanzen dargestellt.
 
-![Nicht genutzte Reservierungen](./media/tutorial-optimize-reserved-instances/unused-ri01.png)
+![Beispiel für Zusammenfassungsinformationen zu ungenutzten Reservierungen](./media/tutorial-optimize-reserved-instances/unused-ri01.png)
 
 Klicken Sie auf das Pluszeichen unter **Details**, um Reservierungsdetails für eine bestimmte Reservierung anzuzeigen.
 
-![Details zu nicht genutzten Reservierungen](./media/tutorial-optimize-reserved-instances/unused-ri02.png)
+![Bespiel für Details zu ungenutzten Reservierungen](./media/tutorial-optimize-reserved-instances/unused-ri02.png)
 
 Im vorherigen Beispiel sind in den verschiedenen Verfügbarkeitszonen insgesamt 77 nicht genutzte Reservierungen enthalten. Die erste Reservierung verfügt über 51 nicht genutzte Instanzen. Weiter unten in der Liste sind potenzielle Änderungen von Reservierungsinstanzen angegeben, die Sie vornehmen können, indem Sie den Instanztyp **m3.2xlarge** in der Verfügbarkeitszone **us-east-1c** verwenden.
 
 Klicken Sie für die erste Reservierung in der Liste auf **Modify** (Ändern), um die Seite **Modify RI** (RI ändern) zu öffnen, auf der Daten zur Reservierung angezeigt werden.
 
-![RI ändern](./media/tutorial-optimize-reserved-instances/unused-ri03.png)
+![Beispiel für änderbare Reservierungen](./media/tutorial-optimize-reserved-instances/unused-ri03.png)
 
 Reservierte Instanzen, die Sie ändern können, sind aufgeführt. In der folgenden Abbildung mit einem Beispiel sind 51 nicht genutzte Reservierungen zu sehen, die sie ändern können, aber für die beiden Reservierungen werden 54 benötigt. Wenn Sie Ihre nicht genutzten Reservierungen ändern und alle verwenden, werden vier Instanzen weiterhin bedarfsgesteuert ausgeführt. Teilen Sie Ihre nicht genutzten Reservierungen für dieses Beispiel auf, sodass für die erste Reservierung 30 und für die zweite Reservierung 21 verwendet werden.
 
 Klicken Sie auf das Pluszeichen des ersten Reservierungseintrags, und legen Sie die **Reservierungsmenge** auf **30** fest. Legen Sie die Reservierungsmenge für den zweiten Eintrag auf **21** fest, und klicken Sie anschließend auf **Übernehmen**.
 
-![Ändern der Reservierungsmenge](./media/tutorial-optimize-reserved-instances/unused-ri04.png)
+![Beispiel für Reservierungsmengenänderungen](./media/tutorial-optimize-reserved-instances/unused-ri04.png)
 
 Alle nicht genutzten Instanzen für die Reservierung werden vollständig verwendet, und 51 Instanzen werden nicht mehr bedarfsgesteuert ausgeführt. In diesem Beispiel spart Ihre Organisation Kosten, indem die bedarfsgesteuerte Nutzung erheblich reduziert wird und Reservierungen verwendet werden, die bereits bezahlt wurden.
 

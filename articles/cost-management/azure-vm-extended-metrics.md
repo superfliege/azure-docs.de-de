@@ -6,16 +6,16 @@ keywords: ''
 author: bandersmsft
 manager: vitavor
 ms.author: banders
-ms.date: 11/13/2018
+ms.date: 12/06/2018
 ms.topic: conceptual
 ms.service: cost-management
-ms.custom: ''
-ms.openlocfilehash: a41136837a56137ce92bd186cb4ee825e4f664c4
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.custom: seodec18
+ms.openlocfilehash: 9bb8d74b012b25ca959cdb87b8a3d5e4284b6497
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52274958"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53097215"
 ---
 # <a name="add-extended-metrics-for-azure-virtual-machines"></a>Hinzufügen erweiterter Metriken für virtuelle Azure-Computer
 
@@ -35,7 +35,7 @@ Angenommen, Sie möchten die CPU-Auslastung in % und die Arbeitsspeicherauslastu
 
 ## <a name="determine-whether-extended-metrics-are-enabled"></a>Bestimmen, ob erweiterte Metriken aktiviert sind
 
-1. Melden Sie sich unter http://portal.azure.com beim Azure-Portal an.
+1. Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
 2. Wählen Sie unter **Virtuelle Computer** eine VM aus, und klicken Sie unter **Überwachung** auf **Metriken**. Eine Liste der verfügbaren Metriken wird angezeigt.
 3. Wählen Sie einige Metriken aus, und die Daten für diese Metriken werden in einem Diagramm angezeigt.  
     ![Beispielmetrik: CPU-Auslastung in Prozent für den Host](./media/azure-vm-extended-metrics/metric01.png)
@@ -55,18 +55,18 @@ Denken Sie daran, dass Überwachung auf Gastebene sowohl bei Azure als auch bei 
 1. Zeigen Sie in **Virtuelle Computer** die Liste Ihrer VMs an, und wählen Sie eine VM aus.
 2. Wählen Sie unter **Überwachung** die Option **Diagnoseeinstellungen** aus.
 3. Klicken Sie auf der Seite „Diagnoseeinstellungen“ auf **Überwachung auf Gastebene aktivieren**.  
-    ![Überwachung auf Gastebene aktivieren](./media/azure-vm-extended-metrics/enable-guest-monitoring.png)
+    ![Aktivieren der Überwachung auf Gastebene auf der Seite „Übersicht“](./media/azure-vm-extended-metrics/enable-guest-monitoring.png)
 4. Nach einigen Minuten wird der Azure-Diagnose-Agent auf der VM installiert. Ein grundlegender Satz von Metriken wird hinzugefügt. Aktualisieren Sie die Seite. Die hinzugefügten Leistungsindikatoren werden auf der Registerkarte „Übersicht“ angezeigt.
 5. Wählen Sie unter „Überwachung“ **Metriken** aus.
 6. Wählen Sie im Metrikdiagramm unter **Metrik-Namespace** die Option **Gast (klassisch)** aus.
 7. In der Metrikliste können Sie alle verfügbaren Leistungsindikatoren für die Gast-VM anzeigen.  
-    ![Erweiterte Metriken](./media/azure-vm-extended-metrics/extended-metrics.png)
+    ![Liste mit Beispiel erweiterter Metriken](./media/azure-vm-extended-metrics/extended-metrics.png)
 
 ### <a name="enable-guest-level-monitoring-on-new-vms"></a>Aktivieren der Überwachung auf Gastebene für neue VMs
 
 Wenn Sie neue virtuelle Computer erstellen, wählen Sie auf der Registerkarte „Verwaltung“ **Ein** für **Diagnose des Gastbetriebssystems** aus.
 
-![Aktivieren der Diagnose des Gastbetriebssystems](./media/azure-vm-extended-metrics/new-enable-diag.png)
+![Festlegen der Diagnose des Gastbetriebssystems auf EIN](./media/azure-vm-extended-metrics/new-enable-diag.png)
 
 Weitere Informationen zum Aktivieren erweiterter Metriken für virtuelle Azure-Computer finden Sie unter [Grundlegendes zum Azure Linux-Agent und seiner Verwendung](../virtual-machines/extensions/agent-linux.md) und [Übersicht über den Agent für virtuelle Azure-Computer](../virtual-machines/extensions/agent-windows.md).
 
@@ -82,7 +82,7 @@ Sie können VM-Metriken mit Azure PowerShell-Skripts aktivieren. Wenn Sie viele 
 
 Um Leistungsmetriken für Ihre Azure-Instanzen im Cloudyn-Portal anzuzeigen, navigieren Sie zu **Assets** > **Compute** > **Instanz-Explorer**. Erweitern Sie in der Liste der VM-Instanzen eine Instanz, und erweiterten Sie dann eine Ressource, um Details anzuzeigen.
 
-![Instanz-Explorer](./media/azure-vm-extended-metrics/instance-explorer.png)
+![Im Instanz-Explorer gezeigte Beispielinformationen](./media/azure-vm-extended-metrics/instance-explorer.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

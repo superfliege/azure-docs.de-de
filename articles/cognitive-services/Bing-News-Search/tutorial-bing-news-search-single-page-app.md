@@ -1,7 +1,7 @@
 ---
-title: 'Tutorial: Einzelseiten-App für die Bing-News-Suche'
+title: 'Tutorial: Erstellen einer Single-Page-Web-App – Bing-News-Suche-API'
 titlesuffix: Azure Cognitive Services
-description: In diesem Artikel wird erläutert, wie Sie die Bing-News-Suche-API in einer Single-Page-Web-App verwenden.
+description: Erstellen Sie mithilfe dieses Tutorials eine Single-Page-Webanwendung, die Suchabfragen an die Bing-News-API senden und die Ergebnisse auf der Webseite anzeigen kann.
 services: cognitive-services
 author: mikedodaro
 manager: cgronlun
@@ -10,14 +10,16 @@ ms.component: bing-news-search
 ms.topic: tutorial
 ms.date: 10/30/2017
 ms.author: v-gedod
-ms.openlocfilehash: 1d27751d12c82736ca519bb3a0e9bcd49bef4a47
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.custom: seodec2018
+ms.openlocfilehash: 311abe4583d29098ebd26dfcf2214553aa1fe1c9
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48803646"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53262043"
 ---
-# <a name="tutorial-single-page-news-search-app"></a>Tutorial: Einzelseiten-App für die News-Suche
+# <a name="tutorial-create-a-single-page-web-app"></a>Tutorial: Erstellen einer Single-Page-Web-App
+
 Mit der Bing-News-Suche-API können Sie das Web durchsuchen und Ergebnisse für verschiedene Arten von News finden, die für eine Suchabfrage relevant sind. In diesem Tutorial wird eine Single-Page-Web-App erstellt, die unter Verwendung der Bing-News-Suche-API Suchergebnisse auf der Seite anzeigt. Die Anwendung enthält HTML-, CSS- und JavaScript-Komponenten.
 
 <!-- Remove until we can replace it with sanitized copy

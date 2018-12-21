@@ -1,5 +1,5 @@
 ---
-title: Erstellen einer einseitigen Azure Time Series Insights-Web-App
+title: Erstellen einer einseitigen Azure Time Series Insights-Web-App | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie eine einseitige Webanwendung erstellen, die Daten aus einer TSI-Umgebung abfragt und rendert.
 author: ashannon7
 ms.service: time-series-insights
@@ -7,12 +7,13 @@ ms.topic: tutorial
 ms.date: 06/14/2018
 ms.author: anshan
 manager: cshankar
-ms.openlocfilehash: 312e15f976a6782e3f39cfcc5ce0721ac6357a16
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.custom: seodec18
+ms.openlocfilehash: fccd509d4f16cee86d30feb0e838f1493cae4e0b
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39626754"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53275838"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-single-page-web-app"></a>Tutorial: Erstellen einer einseitigen Azure Time Series Insights-Web-App
 
@@ -33,8 +34,8 @@ Installieren Sie außerdem Visual Studio, sofern noch nicht geschehen. Für dies
 
 Wie bereits erwähnt bildet die TSI-Beispielanwendung die Grundlage für den in diesem Tutorial verwendeten Entwurf und Code. In dem Code wird unter anderem die TSI-JavaScript-Clientbibliothek verwendet. Die TSI-Clientbibliothek bietet eine Abstraktion für zwei API-Hauptkategorien:
 
-- **Wrappermethoden für den Aufruf der TSI-Abfrage-APIs:** REST-APIs, mit denen Sie mithilfe von JSON-basierten Ausdrücken TSI-Daten abrufen können. Die Methoden sind unter dem `TsiClient.server`-Namespace der Bibliothek organisiert.
-- **Methoden zum Erstellen und Auffüllen verschiedener Arten von Diagrammsteuerelementen:** Diese werden zum Visualisieren der TSI-Daten auf einer Webseite verwendet. Die Methoden sind unter dem `TsiClient.ux`-Namespace der Bibliothek organisiert.
+- **Wrappermethoden für den Aufruf der TSI-Abfrage-APIs:** REST-APIs, mit denen Sie TSI-Daten unter Verwendung JSON-basierter Ausdrücke abrufen können. Die Methoden sind unter dem `TsiClient.server`-Namespace der Bibliothek organisiert.
+- **Methoden zum Erstellen und Auffüllen mehrerer Typen von Diagrammsteuerelementen:** Methoden, mit denen die TSI-Daten auf einer Webseite visualisiert werden. Die Methoden sind unter dem `TsiClient.ux`-Namespace der Bibliothek organisiert.
 
 In diesem Tutorial werden darüber hinaus die Daten aus der TSI-Umgebung der Beispielanwendung verwendet. Ausführliche Informationen zur Struktur der TSI-Beispielanwendung und zu ihrer Verwendung der TSI-Clientbibliothek finden Sie im Tutorial [Erkunden der Azure Time Series Insights-JavaScript-Clientbibliothek](tutorial-explore-js-client-lib.md).
 
@@ -178,7 +179,7 @@ Vor dem Erstellen der Anwendung müssen Sie sie bei Azure AD registrieren. Durch
 Fehlercode/Bedingung | BESCHREIBUNG
 ---------------------| -----------
 *AADSTS50011: No reply address is registered for the application.* (AADSTS50011: Für die Anwendung ist keine Antwortadresse registriert.) | In der Azure AD-Registrierung fehlt die Eigenschaft für die Antwort-URL (Reply URL). Navigieren Sie für Ihre Azure AD-Anwendungsregistrierung zu **Einstellungen** / **Antwort-URLs**. Überprüfen Sie, ob die in Schritt 3 des Abschnitts [Registrieren der Anwendung bei Azure AD](#register-the-application-with-azure-ad) angegebene **Anmelde-URL** vorhanden ist. 
-*AADSTS50011: The reply url specified in the request does not match the reply urls configured for the application: '<Application ID GUID>'.* (AADSTS50011: Die in der Anforderung angegebene Antwort-URL entspricht nicht den für die Anwendung konfigurierten Anwort-URLs: <Application ID GUID>.) | Der in Schritt 4.b des Abschnitts [Erstellen und Veröffentlichen der Webanwendung](#build-and-publish-the-web-application) angegebene Wert für `postLogoutRedirectUri` muss dem Wert entsprechen, den Sie in der Azure AD-Anwendungsregistrierung unter der Eigenschaft **Einstellungen** / **Antwort-URLs** angegeben haben. Achten Sie außerdem darauf, dass Sie die **Ziel-URL** so ändern, dass sie `https` verwendet (gemäß Schritt 5.e des Abschnitts [Erstellen und Veröffentlichen der Webanwendung](#build-and-publish-the-web-application)).
+*AADSTS50011: The reply url specified in the request does not match the reply urls configured for the application: '<Application ID GUID>'.* (AADSTS50011: Die in der Anforderung angegebene Antwort-URL entspricht nicht den für die Anwendung konfigurierten Anwort-URLs: <Anwendungs-ID (GUID)>.) | Der in Schritt 4.b des Abschnitts [Erstellen und Veröffentlichen der Webanwendung](#build-and-publish-the-web-application) angegebene Wert für `postLogoutRedirectUri` muss dem Wert entsprechen, den Sie in der Azure AD-Anwendungsregistrierung unter der Eigenschaft **Einstellungen** / **Antwort-URLs** angegeben haben. Achten Sie außerdem darauf, dass Sie die **Ziel-URL** so ändern, dass sie `https` verwendet (gemäß Schritt 5.e des Abschnitts [Erstellen und Veröffentlichen der Webanwendung](#build-and-publish-the-web-application)).
 Die Webanwendung wird zwar geladen, es wird jedoch eine nicht formatierte Nur-Text-Anmeldeseite mit weißem Hintergrund angezeigt. | Vergewissern Sie sich, dass die in Schritt 4.a des Abschnitts [Erstellen und Veröffentlichen der Webanwendung](#build-and-publish-the-web-application) erläuterten Pfade korrekt sind. Kann die Webanwendung die CSS-Dateien nicht finden, ist die Seite nicht ordnungsgemäß formatiert.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen

@@ -1,21 +1,21 @@
 ---
-title: Integrieren von Apache Kafka Connect in Azure Event Hubs | Microsoft-Dokumentation
-description: Es wird beschrieben, wie Sie Apache Spark mit Azure Event Hubs für Kafka verwenden.
+title: Apache Kafka Connect-Integration – Azure Event Hubs | Microsoft-Dokumentation
+description: Dieser Artikel enthält Informationen zur Verwendung von Apache Spark mit Azure Event Hubs für Kafka.
 services: event-hubs
 documentationcenter: .net
 author: basilhariri
 manager: timlt
 ms.service: event-hubs
 ms.topic: tutorial
-ms.custom: ''
-ms.date: 11/07/2018
+ms.custom: seodec18
+ms.date: 12/06/2018
 ms.author: bahariri
-ms.openlocfilehash: 9a9972806c9691136bea380f9efd4e0d032deaf2
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: f405fe1c93ad17476ac47bc23951c65a5ea5db73
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51285083"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53091362"
 ---
 # <a name="integrate-apache-kafka-connect-support-on-azure-event-hubs-preview"></a>Integrieren der Apache Kafka Connect-Unterstützung in Azure Event Hubs (Vorschauversion)
 Wenn der Umfang der Erfassungen für geschäftliche Zwecke zunimmt, gilt dies auch für die Erfassung für verschiedene externe Quellen und Senken. [Apache Kafka Connect](https://kafka.apache.org/documentation/#connect) stellt ein Framework dieser Art über einen Kafka-Cluster bereit, um für Daten die Verbindungsherstellung und den Import bzw. Export für alle externen Systeme durchzuführen, z.B. MySQL, Hadoop Distributed File System und das Dateisystem. In diesem Tutorial wird die Nutzung eines Kafka Connect-Frameworks mit Kafka-fähigen Event Hubs Schritt für Schritt beschrieben.
@@ -152,7 +152,7 @@ In diesem Abschnitt wird die Einrichtung der Connectors FileStreamSource und Fil
     diff ~/connect-quickstart/input.txt ~/connect-quickstart/output.txt
     ```
 
-### <a name="cleanup"></a>Bereinigung
+### <a name="cleanup"></a>Cleanup
 Mit Kafka Connect werden Event Hub-Themen zum Speichern von Konfigurationen, Offsets und des Status erstellt, die auch dann beibehalten werden, nachdem der Connect-Cluster heruntergefahren wurde. Wenn diese Beibehaltung nicht erwünscht ist, ist es ratsam, diese Themen zu löschen. Sie können auch den Event Hub `connect-quickstart` löschen, der in dieser exemplarischen Vorgehensweise erstellt wurde.
 
 ## <a name="next-steps"></a>Nächste Schritte
@@ -160,7 +160,7 @@ Mit Kafka Connect werden Event Hub-Themen zum Speichern von Konfigurationen, Off
 Weitere Informationen zu Event Hubs und Event Hubs für Kafka finden Sie unter folgendem Thema:  
 
 - [Informationen zu Event Hubs](event-hubs-what-is-event-hubs.md)
-- [Azure Event Hubs für Apache Kafka (Vorschauversion)](event-hubs-for-kafka-ecosystem-overview.md)
+- [Event Hubs für Apache Kafka](event-hubs-for-kafka-ecosystem-overview.md)
 - [Erstellen von Kafka-fähigen Event Hubs](event-hubs-create-kafka-enabled.md)
 - [Streamen von Ereignissen in Event Hubs aus Kafka-Anwendungen](event-hubs-quickstart-kafka-enabled-event-hubs.md)
 - [Spiegeln eines Kafka-Brokers in einem Kafka-fähigen Event Hub](event-hubs-kafka-mirror-maker-tutorial.md)

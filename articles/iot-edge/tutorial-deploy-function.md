@@ -1,6 +1,6 @@
 ---
-title: Bereitstellen von Azure-Funktionen mit Azure IoT Edge | Microsoft-Dokumentation
-description: In diesem Tutorial stellen Sie eine Azure-Funktion als Modul auf einem Edge-Gerät bereit.
+title: 'Tutorial: Bereitstellen einer Azure-Funktion auf einem Gerät – Azure IoT Edge | Microsoft-Dokumentation'
+description: In diesem Tutorial entwickeln Sie eine Azure-Funktion als IoT Edge-Modul und stellen sie anschließend auf einem Edgegerät bereit.
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -8,13 +8,13 @@ ms.date: 10/19/2018
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.custom: mvc
-ms.openlocfilehash: d0ae009db0d9470942a4ff5d7c09e2cdd7bcdd53
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 1488f6aff202f8b307b883d8a795d7df20066661
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52165616"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53081879"
 ---
 # <a name="tutorial-deploy-azure-functions-as-iot-edge-modules"></a>Tutorial: Bereitstellen von Azure-Funktionen als IoT Edge-Module
 
@@ -27,7 +27,7 @@ Mithilfe von Azure Functions können Sie Code bereitstellen, mit dem Ihre Gesch�
 > * Anzeigen gefilterter Daten
 
 <center>
-![Tutorial: Architekturdiagramm](./media/tutorial-deploy-function/FunctionsTutDiagram.png)
+![Architekturdiagramm des Tutorials: Staging und Bereitstellung des Funktionsmoduls](./media/tutorial-deploy-function/functions-architecture.png)
 </center>
 
 >[!NOTE]
@@ -63,7 +63,7 @@ Sie können eine beliebige Docker-kompatible Registrierung zum Speichern Ihrer C
 
 1. Wählen Sie im [Azure-Portal](https://portal.azure.com) die Optionen **Ressource erstellen** > **Container** > **Container Registry** aus.
 
-    ![Erstellen einer Containerregistrierung](./media/tutorial-deploy-function/create-container-registry.png)
+    ![Erstellen einer Containerregistrierung im Azure-Portal](./media/tutorial-deploy-function/create-container-registry.png)
 
 2. Geben Sie die folgenden Werte an, um Ihre Containerregistrierung zu erstellen:
 
@@ -90,7 +90,7 @@ Die Azure IoT Edge-Erweiterung für Visual Studio Code, die Sie in den Vorausset
 
 2. Öffnen Sie die VS Code-Befehlspalette, indem Sie auf **Ansicht** > **Befehlspalette** klicken.
 
-3. Geben Sie in der Befehlspalette den Befehl **Azure IoT Edge: New IoT Edge solution** ein, und führen Sie ihn aus. Folgen Sie den Anweisungen in der Befehlspalette, um Ihre Projektmappe zu erstellen.
+3. Geben Sie in der Befehlspalette den Befehl **Azure IoT Edge: New IoT Edge Solution** (Azure IoT Edge: Neue IoT Edge-Projektmappe) ein, und führen Sie ihn aus. Folgen Sie den Anweisungen in der Befehlspalette, um Ihre Projektmappe zu erstellen.
 
    | Feld | Wert |
    | ----- | ----- |
@@ -227,7 +227,7 @@ Sie können das Azure-Portal verwenden, um Ihr Funktionsmodul wie in den Schnell
 
 2. Suchen Sie den Befehl **Azure: Sign in** (Azure: Anmelden), und führen Sie ihn aus. Befolgen Sie die Anweisungen zum Anmelden bei Ihrem Azure-Konto. 
 
-3. Suchen Sie in der Befehlspalette nach dem Befehl **Azure IoT Hub: Select IoT Hub** (Azure IoT Hub: IoT Hub auswählen), und führen Sie den Befehl aus. 
+3. Suchen Sie in der Befehlspalette nach dem Befehl **Azure IoT Hub: Select IoT Hub** (Azure IoT Hub: IoT Hub auswählen), und führen Sie ihn aus. 
 
 4. Wählen Sie das Abonnement mit Ihrer IoT Hub-Instanz und anschließend die gewünschte IoT Hub-Instanz aus.
 

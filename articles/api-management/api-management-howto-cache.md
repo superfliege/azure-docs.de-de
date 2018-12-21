@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 11/27/2018
 ms.author: apimpm
-ms.openlocfilehash: 2c417a0e9a3f50032aa3c97ced57d3249bc7c93a
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.openlocfilehash: 549194ce1dcab5cd449c60c934421b3bea154d6a
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52620665"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53015686"
 ---
 # <a name="add-caching-to-improve-performance-in-azure-api-management"></a>Hinzufügen der Zwischenspeicherung zum Verbessern der Leistung in Azure API Management
 
@@ -38,7 +38,7 @@ Sie lernen Folgendes:
 ## <a name="availability"></a>Verfügbarkeit
 
 > [!NOTE]
-> Im Tarif **Consumption** von Azure API Management ist kein interner Cache verfügbar. Sie können stattdessen [einen externen Redis-Cache](api-management-howto-cache-external.md) verwenden.
+> Im Tarif **Consumption** von Azure API Management ist kein interner Cache verfügbar. Sie können stattdessen [eine externe Azure Cache for Redis-Instanz verwenden](api-management-howto-cache-external.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -76,7 +76,7 @@ Mit den Zwischenspeicherungsrichtlinien in diesem Beispiel gibt die erste Anford
     **Dauer** gibt das Ablaufintervall der gespeicherten Antworten an. In diesem Beispiel beträgt das Intervall **20** Sekunden.
 
 > [!TIP]
-> Wenn Sie wie unter [Use an external Azure Cache for Redis in Azure API Management](api-management-howto-cache-external.md) (Verwenden eines externen Azure-Cache für Redis in Azure API Management) beschrieben einen externen Cache verwenden, sollten Sie das Attribut `cache-preference` der Cachingrichtlinien angeben. Ausführlichere Informationen finden Sie unter [Cacherichtlinien für API Management](api-management-caching-policies.md).
+> Wenn Sie wie unter [Verwenden einer externen Azure Cache for Redis-Instanz in Azure API Management](api-management-howto-cache-external.md) beschrieben einen externen Cache verwenden, empfiehlt es sich ggf., das Attribut `cache-preference` der Cachingrichtlinien anzugeben. Ausführlichere Informationen finden Sie unter [Cacherichtlinien für API Management](api-management-caching-policies.md).
 
 ## <a name="test-operation"></a>Aufrufen einer Operation und Testen der Zwischenspeicherung
 Um die Zwischenspeicherung in Aktion zu sehen, können Sie den Vorgang über das Entwicklerportal aufrufen.
@@ -91,7 +91,7 @@ Um die Zwischenspeicherung in Aktion zu sehen, können Sie den Vorgang über das
 ## <a name="next-steps"> </a>Nächste Schritte
 * Weitere Informationen zu Richtlinien für die Zwischenspeicherung finden Sie unter [Richtlinien für die Zwischenspeicherung][Caching policies] in der [Richtlinienreferenz für API Management][API Management policy reference].
 * Informationen zum Zwischenspeichern von Elementen nach Schlüssel mithilfe von Richtlinienausdrücken finden Sie unter [Benutzerdefiniertes Zwischenspeichern in Azure API Management](api-management-sample-cache-by-key.md).
-* Weitere Informationen zur Verwendung von externem Redis Caches finden Sie unter [Use an external Azure Cache for Redis in Azure API Management](api-management-howto-cache-external.md) (Verwenden eines externen Azure-Cache für Redis in Azure API Management).
+* Weitere Informationen zur Verwendung einer externen Azure Cache for Redis-Instanz finden Sie unter [Verwenden einer externen Azure Cache for Redis-Instanz in Azure API Management](api-management-howto-cache-external.md).
 
 [api-management-management-console]: ./media/api-management-howto-cache/api-management-management-console.png
 [api-management-echo-api]: ./media/api-management-howto-cache/api-management-echo-api.png

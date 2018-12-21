@@ -1,21 +1,22 @@
 ---
-title: 'Tutorial 7: Simple-Entität mit Begriffsliste in LUIS'
+title: Simple-Entität, Begriffsliste
 titleSuffix: Azure Cognitive Services
-description: Extrahieren von maschinell gelernten Daten aus einer Äußerung
+description: In diesem Tutorial werden maschinell gelernte Daten einer Stellenbezeichnung mithilfe der Simple-Entität aus einer Äußerung extrahiert. Um die Genauigkeit der Extraktion zu steigern, fügen Sie der Simple-Entität eine Begriffsliste mit spezifischen Ausdrücken hinzu.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
-ms.date: 09/09/2018
+ms.date: 12/07/2018
 ms.author: diberry
-ms.openlocfilehash: f3e931344d2d2294c03756d630c688df1e5da9a8
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: e8a1575527f906fab130e08cda715f6c8e904275
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52425244"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53166267"
 ---
 # <a name="tutorial-7-extract-names-with-simple-entity-and-phrase-list"></a>Tutorial 7: Extrahieren von Namen mit der Simple-Entität und einer Begriffsliste
 
@@ -92,7 +93,7 @@ Nachdem die Entitäten in den Beispieläußerungen markiert sind, ist es wichtig
 
 3. Wählen Sie in der Äußerung `I want to apply for the new accounting job` das Wort `accounting` aus, geben Sie `Job` in das oberste Feld des Popupmenüs ein, und klicken Sie anschließend im Popupmenü auf **Create new entity** (Neue Entität erstellen). 
 
-    [![](media/luis-quickstart-primary-and-secondary-data/hr-create-entity.png "Screenshot: LUIS mit Absicht „ApplyForJob“ und hervorgehobenen Schritten für die Entitätserstellung")](media/luis-quickstart-primary-and-secondary-data/hr-create-entity.png#lightbox)
+    [![Screenshot: LUIS mit Absicht „ApplyForJob“ und hervorgehobenen Schritten für die Entitätserstellung](media/luis-quickstart-primary-and-secondary-data/hr-create-entity.png "Screenshot: LUIS mit Absicht „ApplyForJob“ und hervorgehobenen Schritten für die Entitätserstellung")](media/luis-quickstart-primary-and-secondary-data/hr-create-entity.png#lightbox)
 
 4. Überprüfen Sie Entitätsname und -typ im Popupfenster, und klicken Sie anschließend auf **Fertig**.
 
@@ -100,7 +101,7 @@ Nachdem die Entitäten in den Beispieläußerungen markiert sind, ist es wichtig
 
 5. Kennzeichnen Sie in der Äußerung `Submit resume for engineering position` das Wort `engineering` als Entität „Job“. Wählen Sie das Wort `engineering` und anschließend im Popupmenü die Option **Job** aus. 
 
-    [![](media/luis-quickstart-primary-and-secondary-data/hr-label-simple-entity.png "Screenshot: LUIS mit hervorgehobener Entitätskennzeichnung „Job“")](media/luis-quickstart-primary-and-secondary-data/hr-label-simple-entity.png#lightbox)
+    [![Screenshot: LUIS mit hervorgehobener Entitätskennzeichnung „Job“](media/luis-quickstart-primary-and-secondary-data/hr-label-simple-entity.png "Screenshot: LUIS mit hervorgehobener Entitätskennzeichnung „Job“")](media/luis-quickstart-primary-and-secondary-data/hr-label-simple-entity.png#lightbox)
 
     Alle Äußerungen wurden gekennzeichnet, aber fünf Äußerungen sind nicht genug, um LUIS mit stellenbezogenen Wörtern und Ausdrücken vertraut zu machen. Für Stellen mit Zahlenwert sind keine weiteren Beispiele erforderlich, da hierfür eine Entität vom Typ „Regulärer Ausdruck“ verwendet wird. Für Stellen mit Wörtern oder Ausdrücken werden mindestens 15 weitere Beispiele benötigt. 
 
@@ -157,7 +158,7 @@ Das Etikettieren oder _Markieren_ der Entität zeigt LUIS, wo sich die Entität 
 
 2. Geben Sie in der Adressleiste am Ende der URL `Here is my c.v. for the programmer job` ein. Der letzte Parameter der Abfragezeichenfolge lautet `q` (die Äußerung **query** (Abfrage)). Diese Äußerung entspricht keiner der bezeichneten Äußerungen. Sie ist daher ein guter Test und sollte die Äußerungen vom Typ `ApplyForJob` zurückgeben.
 
-    ```JSON
+    ```json
     {
       "query": "Here is my c.v. for the programmer job",
       "topScoringIntent": {
@@ -226,7 +227,7 @@ Die LUIS-App hat die korrekte Absicht mit hoher Zuverlässigkeit ermittelt und d
 
 Im folgenden JSON-Code antwortet LUIS zwar mit der korrekten Absicht (`ApplyForJob`), extrahiert aber den Stellennamen `lead welder` nicht: 
 
-```JSON
+```json
 {
   "query": "This is the lead welder paperwork.",
   "topScoringIntent": {
@@ -291,13 +292,13 @@ Da ein Name eine beliebige Zeichenfolge sein kann, sagt LUIS Entitäten präzise
 
 3. Nennen Sie die Begriffsliste `Job`, und kopieren Sie die Liste aus „jobs-phrase-list.csv“ in das Textfeld **Werte**. Drücken Sie die EINGABETASTE. 
 
-    [![](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-1.png "Screenshot: Popupdialogfeld zum Erstellen einer neuen Begriffsliste")](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-1.png#lightbox)
+    [![Screenshot: Popupdialogfeld zum Erstellen einer neuen Begriffsliste](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-1.png "Screenshot: Popupdialogfeld zum Erstellen einer neuen Begriffsliste")](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-1.png#lightbox)
 
     Wenn Sie der Begriffsliste weitere Wörter hinzufügen möchten, können Sie sich die verwandten Werte (**Related Values**) ansehen und alle Wörter hinzufügen, die für Sie relevant sind. 
 
 4. Klicken Sie auf **Speichern**, um die Begriffsliste zu aktivieren.
 
-    [![](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-2.png "Screenshot des Popupdialogfelds zum Erstellen einer neuen Begriffsliste mit Wörtern im Feld für die Begriffslistenwerte")](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-2.png#lightbox)
+    [![Screenshot des Popupdialogfelds zum Erstellen einer neuen Begriffsliste mit Wörtern im Feld für die Begriffslistenwerte](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-2.png "Screenshot des Popupdialogfelds zum Erstellen einer neuen Begriffsliste mit Wörtern im Feld für die Begriffslistenwerte")](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-2.png#lightbox)
 
 5. [Trainieren](#train) und [veröffentlichen](#publish) Sie die App erneut, um die Begriffsliste zu verwenden.
 
@@ -305,7 +306,7 @@ Da ein Name eine beliebige Zeichenfolge sein kann, sagt LUIS Entitäten präzise
 
     Die JSON-Antwort enthält die extrahierte Entität:
 
-    ```JSON
+    ```json
     {
         "query": "This is the lead welder paperwork.",
         "topScoringIntent": {

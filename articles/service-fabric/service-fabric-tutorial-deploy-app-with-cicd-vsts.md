@@ -1,6 +1,6 @@
 ---
-title: Bereitstellen einer Service Fabric-App mit Continuous Integration (Azure DevOps Services) in Azure | Microsoft-Dokumentation
-description: In diesem Tutorial erfahren Sie, wie Sie Continuous Integration und Continuous Deployment mithilfe von Azure DevOps Services für eine Service Fabric-Anwendung einrichten.
+title: Bereitstellen einer Service Fabric-App mit Continuous Integration und Azure Pipelines in Azure | Microsoft-Dokumentation
+description: In diesem Tutorial erfahren Sie, wie Sie Continuous Integration und Continuous Deployment für eine Service Fabric-Anwendung mithilfe von Azure Pipelines einrichten.
 services: service-fabric
 documentationcenter: .net
 author: rwike77
@@ -12,26 +12,26 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/15/2018
+ms.date: 12/02/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 5d53250ebdc14b7b6631e2f419b5b24ac98f3038
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: 766c0c780807ff7627ae9fb96aca4a896918f9c6
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51853729"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53094950"
 ---
 # <a name="tutorial-deploy-an-application-with-cicd-to-a-service-fabric-cluster"></a>Tutorial: Bereitstellen einer Anwendung mit CI/CD in einem Service Fabric-Cluster
 
-Dieses Tutorial ist der vierte Teil einer Reihe und beschreibt die Einrichtung von Continuous Integration und Continuous Deployment für eine Azure Service Fabric-Anwendung mithilfe von Azure DevOps.  Es ist eine vorhandene Service Fabric-Anwendung erforderlich. Die im Artikel [Erstellen einer .NET-Anwendung](service-fabric-tutorial-create-dotnet-app.md) erstellte Anwendung wird als Beispiel verwendet.
+Dieses Tutorial ist der vierte Teil einer Reihe und beschreibt die Einrichtung von Continuous Integration und Continuous Deployment für eine Azure Service Fabric-Anwendung mithilfe von Azure Pipelines.  Es ist eine vorhandene Service Fabric-Anwendung erforderlich. Die im Artikel [Erstellen einer .NET-Anwendung](service-fabric-tutorial-create-dotnet-app.md) erstellte Anwendung wird als Beispiel verwendet.
 
 Im dritten Teil der Serie lernen Sie Folgendes:
 
 > [!div class="checklist"]
 > * Hinzufügen der Quellcodeverwaltung zum Projekt
-> * Erstellen einer Buildpipeline in Azure DevOps
-> * Erstellen einer Releasepipeline in Azure DevOps
+> * Erstellen einer Buildpipeline in Azure-Pipelines
+> * Erstellen einer Releasepipeline in Azure-Pipelines
 > * Automatisches Bereitstellen und Durchführen von Upgrades einer Anwendung
 
 In dieser Tutorialserie lernen Sie Folgendes:
@@ -50,7 +50,7 @@ Bevor Sie mit diesem Tutorial beginnen können, müssen Sie Folgendes tun:
 * [Installieren Sie Visual Studio 2017](https://www.visualstudio.com/) und die Workloads **Azure-Entwicklung** und **ASP.NET und Webentwicklung**.
 * [Installieren Sie das Service Fabric SDK](service-fabric-get-started.md).
 * Erstellen Sie einen Windows Service Fabric-Cluster in Azure, z.B. durch das [Ausführen der Schritte in diesem Tutorial](service-fabric-tutorial-create-vnet-and-windows-cluster.md).
-* Erstellen Sie eine [Azure DevOps-Organisation](https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization-msa-or-work-student).
+* Erstellen Sie eine [Azure DevOps-Organisation](https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization-msa-or-work-student). Dadurch können Sie ein Projekt in Azure DevOps erstellen und Azure Pipelines verwenden.
 
 ## <a name="download-the-voting-sample-application"></a>Laden Sie die Beispielanwendung „Voting“ herunter.
 
@@ -62,7 +62,7 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 
 ## <a name="prepare-a-publish-profile"></a>Erstellen eines Veröffentlichungsprofils
 
-Nachdem Sie [eine Anwendung erstellt](service-fabric-tutorial-create-dotnet-app.md) und [die Anwendung in Azure bereitgestellt](service-fabric-tutorial-deploy-app-to-party-cluster.md) haben, können Sie Continuous Integration einrichten.  Erstellen Sie zunächst in der Anwendung ein Veröffentlichungsprofil für den Bereitstellungsprozess, der in Azure DevOps ausgeführt wird.  Das Veröffentlichungsprofil muss für den Cluster konfiguriert werden, den Sie zuvor erstellt haben.  Starten Sie Visual Studio, und öffnen Sie ein vorhandenes Service Fabric-Anwendungsprojekt.  Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf die Anwendung, und wählen Sie **Veröffentlichen** aus.
+Nachdem Sie [eine Anwendung erstellt](service-fabric-tutorial-create-dotnet-app.md) und [die Anwendung in Azure bereitgestellt](service-fabric-tutorial-deploy-app-to-party-cluster.md) haben, können Sie Continuous Integration einrichten.  Erstellen Sie zunächst in der Anwendung ein Veröffentlichungsprofil für den Bereitstellungsprozess, der in Azure Pipelines ausgeführt wird.  Das Veröffentlichungsprofil muss für den Cluster konfiguriert werden, den Sie zuvor erstellt haben.  Starten Sie Visual Studio, und öffnen Sie ein vorhandenes Service Fabric-Anwendungsprojekt.  Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf die Anwendung, und wählen Sie **Veröffentlichen** aus.
 
 Wählen Sie ein Zielprofil im Anwendungsprojekt aus, das Sie für den Continuous Integration-Workflow verwenden möchten, z.B. „Cloud“.  Geben Sie den Clusterverbindungsendpunkt an.  Aktivieren Sie das Kontrollkästchen **Upgrade der Anwendung ausführen**, damit für jede Bereitstellung in Azure DevOps ein Upgrade der Anwendung erfolgt.  Klicken Sie auf den Link **Speichern**, um die Einstellungen im Veröffentlichungsprofil zu speichern, und klicken Sie dann auf **Abbrechen**, um das Dialogfeld zu schließen.
 
@@ -84,11 +84,11 @@ Klicken Sie in der Ansicht **Push** in **Team Explorer** unter **Per Push in Azu
 
 Durch das Veröffentlichen des Repositorys wird in Ihrem Konto ein neues Projekt mit dem gleichen Namen wie das lokale Repository erstellt. Um das Repository in einem vorhandenen Projekt zu erstellen, klicken Sie neben **Repositoryname** auf **Erweitert**, und wählen Sie ein Projekt aus. Sie können den Code im Web anzeigen, indem Sie **Im Web anzeigen** auswählen.
 
-## <a name="configure-continuous-delivery-with-azure-devops"></a>Konfigurieren von Continuous Delivery mit Azure DevOps
+## <a name="configure-continuous-delivery-with-azure-pipelines"></a>Konfigurieren von Continuous Delivery mit Azure Pipelines
 
-Eine Azure DevOps-Buildpipeline beschreibt einen Workflow, der aus verschiedenen Buildschritten besteht, die nacheinander ausgeführt werden. Erstellen Sie eine Buildpipeline, die ein Service Fabric-Anwendungspaket und andere Elemente erzeugt, um sie in einem Service Fabric-Cluster bereitzustellen. Erfahren Sie mehr über [Azure DevOps-Buildpipelines](https://www.visualstudio.com/docs/build/define/create). 
+Eine Azure Pipelines-Buildpipeline beschreibt einen Workflow, der aus verschiedenen Buildschritten besteht, die nacheinander ausgeführt werden. Erstellen Sie eine Buildpipeline, die ein Service Fabric-Anwendungspaket und andere Elemente erzeugt, um sie in einem Service Fabric-Cluster bereitzustellen. Erfahren Sie mehr über [Azure Pipelines-Buildpipelines](https://www.visualstudio.com/docs/build/define/create). 
 
-Eine Azure DevOps-Releasepipeline beschreibt einen Workflow, der ein Anwendungspaket in einem Cluster bereitstellt. Bei gemeinsamer Verwendung führen die Buildpipeline und Releasepipeline den gesamten Workflow aus, und zwar beginnend mit den Quelldateien und endend mit einer im Cluster ausgeführten Anwendung. Erfahren Sie mehr über Azure DevOps-[Releasepipelines](https://www.visualstudio.com/docs/release/author-release-definition/more-release-definition).
+Eine Azure Pipelines-Releasepipeline beschreibt einen Workflow, der ein Anwendungspaket in einem Cluster bereitstellt. Bei gemeinsamer Verwendung führen die Buildpipeline und Releasepipeline den gesamten Workflow aus, und zwar beginnend mit den Quelldateien und endend mit einer im Cluster ausgeführten Anwendung. Weitere Informationen zu Azure Pipelines-Releasepipelines finden Sie [hier](https://www.visualstudio.com/docs/release/author-release-definition/more-release-definition).
 
 ### <a name="create-a-build-pipeline"></a>Erstellen einer Buildpipeline
 
@@ -156,11 +156,11 @@ Fügen Sie in der Ansicht **Änderungen** in Team Explorer eine Nachricht hinzu,
 
 ![Commit für alle][changes]
 
-Wählen Sie das Statusleistensymbol für nicht veröffentlichte Änderungen (![nicht unveröffentlichte Änderungen][unpublished-changes]) oder die Synchronisierungsansicht in Team Explorer aus. Wählen Sie **Push**, um Ihren Code in Azure DevOps Services/TFS zu aktualisieren.
+Wählen Sie das Statusleistensymbol für nicht veröffentlichte Änderungen (![nicht unveröffentlichte Änderungen][unpublished-changes]) oder die Synchronisierungsansicht in Team Explorer aus. Wählen Sie **Push** aus, um den Code in Azure Pipelines zu aktualisieren.
 
 ![Änderungen pushen][push]
 
-Durch das Pushen der Änderungen zu Azure DevOps wird automatisch ein Build ausgelöst.  Wenn die Buildpipeline erfolgreich abgeschlossen ist, wird automatisch ein Release erstellt, das mit dem Upgrade der Anwendung auf dem Cluster beginnt.
+Durch das Pushen der Änderungen an Azure Pipelines wird automatisch ein Buildvorgang ausgelöst.  Wenn die Buildpipeline erfolgreich abgeschlossen ist, wird automatisch ein Release erstellt, das mit dem Upgrade der Anwendung auf dem Cluster beginnt.
 
 Um den Buildstatus zu überprüfen, wechseln Sie in Visual Studio in **Team Explorer** zur Registerkarte **Builds**.  Nachdem Sie überprüft haben, ob der Build erfolgreich ausgeführt wird, müssen Sie eine Releasepipeline festlegen, mit der die Anwendung in einem Cluster bereitgestellt wird.
 

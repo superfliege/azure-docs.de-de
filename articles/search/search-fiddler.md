@@ -1,5 +1,5 @@
 ---
-title: Untersuchen von REST-APIs in Fiddler oder Postman (Azure Search-REST) | Microsoft-Dokumentation
+title: Untersuchen von REST-APIs in Fiddler oder Postman (webbasierte HTTP-Testtools) – Azure Search
 description: Es wird beschrieben, wie Sie Fiddler oder Postman zum Senden von HTTP-Anforderungen und REST-API-Aufrufen an Azure Search verwenden.
 author: HeidiSteen
 manager: cgronlun
@@ -9,12 +9,13 @@ ms.devlang: rest-api
 ms.topic: quickstart
 ms.date: 04/20/2018
 ms.author: heidist
-ms.openlocfilehash: eba41086da645c2ff5cee65f9395267227cb1c11
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.custom: seodec2018
+ms.openlocfilehash: f73ec81686575efde70b7f90239299ec4deca00c
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32190184"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53312975"
 ---
 # <a name="explore-azure-search-rest-apis-using-fiddler-or-postman"></a>Untersuchen von Azure Search-REST-APIs mit Fiddler oder Postman
 
@@ -110,13 +111,13 @@ Falls Sie eine "HTTP 504"-Antwort erhalten, prüfen Sie, ob die URL mit HTTPS be
 
 ### <a name="fiddler"></a>Fiddler
 
-Kopieren Sie die Indexdefinition in den Anforderungstext (ähnlich wie im folgenden Screenshot), und klicken Sie anschließend oben rechts auf **Execute** (Ausführen), um die fertige Anforderung zu senden.
+Kopieren Sie die Indexdefinition in den Anforderungstext (ähnlich wie im folgenden Screenshot), und klicken Sie anschließend rechts oben auf **Execute** (Ausführen), um die fertige Anforderung zu senden.
 
 ![Fiddler-Anforderungstext][7]
 
 ### <a name="postman"></a>postman
 
-Kopieren Sie die Indexdefinition in den Anforderungstext (ähnlich wie im folgenden Screenshot), und klicken Sie anschließend oben rechts auf **Send** (Senden), um die fertige Anforderung zu senden.
+Kopieren Sie die Indexdefinition in den Anforderungstext (ähnlich wie im folgenden Screenshot), und klicken Sie anschließend rechts oben auf **Send** (Senden), um die fertige Anforderung zu senden.
 
 ![Postman-Anforderungstext][8]
 

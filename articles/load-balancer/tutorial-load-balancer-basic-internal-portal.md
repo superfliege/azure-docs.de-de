@@ -1,14 +1,11 @@
 ---
-title: 'Tutorial: Erstellen eines internen Load Balancers im Tarif „Basic“ mit dem Azure-Portal | Microsoft-Dokumentation'
+title: 'Tutorial: Erstellen eines internen Lastenausgleichs – Azure-Portal'
+titlesuffix: Azure Load Balancer
 description: In diesem Tutorial wird gezeigt, wie Sie einen internen Load Balancer im Tarif „Basic“ über das Azure-Portal erstellen.
 services: load-balancer
 documentationcenter: na
 author: KumudD
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
 Customer intent: As an IT administrator, I want to create a load balancer that load balances incoming internal traffic to virtual machines within a specific zone in a region.
-ms.assetid: aa9d26ca-3d8a-4a99-83b7-c410dd20b9d0
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: tutorial
@@ -16,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/28/2018
 ms.author: kumud
-ms.custom: mvc
-ms.openlocfilehash: 9ccbbb107dfd8fde237cdfdd4b0c3fcc080fd70e
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.custom: seodec18
+ms.openlocfilehash: 1ed77e8573479665d0caac15941d6b6c6ab790cb
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52839244"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53262349"
 ---
-# <a name="tutorial-balance-internal-traffic-load-with-a-basic-load-balancer-in-the-azure-portal"></a>Tutorial: Erstellen einer internen Datenverkehrslast mit einem Load Balancer im Tarif „Basic“ im Azure-Portal
+# <a name="tutorial-balance-internal-traffic-load-with-a-basic-load-balancer-in-the-azure-portal"></a>Tutorial: Ausgleichen der internen Datenverkehrslast mithilfe eines Lastenausgleichs im Tarif „Basic“ über das Azure-Portal
 
 Durch die Verteilung der eingehenden Anforderungen auf virtuelle Computer (VMs) ermöglicht ein Lastenausgleich ein höheres Maß an Verfügbarkeit und Skalierbarkeit. Sie können das Azure-Portal verwenden, um einen Load Balancer im Tarif „Basic“ zu erstellen und den internen Datenverkehr auf VMs zu verteilen. In diesem Tutorial wird veranschaulicht, wie Sie einen internen Load Balancer, Back-End-Server und Netzwerkressourcen im Tarif „Basic“ erstellen und konfigurieren.
 
@@ -45,7 +42,7 @@ Erstellen Sie zunächst ein virtuelles Netzwerk (VNET). Erstellen Sie im VNET zw
 1. Geben Sie im Bereich **Virtuelles Netzwerk erstellen** diese Werte ein (bzw. wählen Sie sie aus):
    
    - **Name**: Geben Sie *MyVNet* ein.
-   - **Ressourcengruppe**: Wählen Sie **Neu erstellen**, geben Sie *MyResourceGroupLB* ein, und wählen Sie **OK**. 
+   - **Ressourcengruppe**: Wählen Sie **Neu erstellen** aus, geben Sie *MyResourceGroupLB* ein, und wählen Sie anschließend **OK** aus. 
    - **Subnetz** > **Name**: Geben Sie *MyBackendSubnet* ein.
    
 1. Klicken Sie auf **Erstellen**.
@@ -57,23 +54,20 @@ Erstellen Sie zunächst ein virtuelles Netzwerk (VNET). Erstellen Sie im VNET zw
 1. Wählen Sie oben links im Portal die Option **Ressource erstellen** > **Compute** > **Windows Server 2016 Datacenter**. 
    
 1. Geben Sie unter **Virtuellen Computer erstellen** auf der Registerkarte **Grundlagen** die folgenden Werte ein (bzw. wählen Sie sie aus):
-   - **Abonnement** > **Ressourcengruppe**: Wählen Sie in der Dropdownliste die Option **MyResourceGroupLB**.
+   - **Abonnement** > **Ressourcengruppe**: Öffnen Sie die Dropdownliste, und wählen Sie **MyResourceGroupLB** aus.
    - **Instanzendetails** > **Name des virtuellen Computers**: Geben Sie *MyVM1* ein.
    - **Instanzendetails** > **Verfügbarkeitsoptionen**: 
      1. Öffnen Sie die Dropdownliste, und wählen Sie die Option **Verfügbarkeitsgruppe** aus. 
      2. Wählen Sie **Neu erstellen**, geben Sie *MyAvailabilitySet* ein, und wählen Sie **OK**.
-   - **Administratorkonto** > **Benutzername**: Geben Sie *azureuser* ein.
-   - **Administratorkonto** > **Kennwort**: Geben Sie *Azure1234567* ein. 
-     Geben Sie das Kennwort im Feld **Kennwort bestätigen** noch einmal ein.
    
-1. Wählen Sie die Registerkarte **Netzwerk**, oder wählen Sie **Weiter: Datenträger** und dann **Weiter: Netzwerk**. 
+1. Wählen Sie die Registerkarte **Netzwerk** aus, oder wählen Sie **Weiter: Datenträger** und anschließend **Weiter: Netzwerk** aus. 
    
    Stellen Sie sicher, dass Folgendes ausgewählt ist:
    - **Virtuelles Netzwerk**: **MyVNet**
    - **Subnetz**: **MyBackendSubnet**
    
    Unter **Netzwerksicherheitsgruppe**:
-   1. Wählen Sie **Erweitert**. 
+   1. Wählen Sie **Advanced** (Erweitert). 
    1. Öffnen Sie die Dropdownliste **Netzwerksicherheitsgruppe konfigurieren**, und wählen Sie **Keine**. 
    
 1. Wählen Sie die Registerkarte **Verwaltung** oder **Weiter** > **Verwaltung**. Legen Sie unter **Überwachung** die Option **Startdiagnose** auf **Aus** fest.
@@ -95,13 +89,13 @@ Erstellen Sie einen internen Load Balancer im Tarif „Basic“, indem Sie das P
 1. Geben Sie im Bereich **Lastenausgleich erstellen** diese Werte ein (bzw. wählen Sie sie aus):
    
    - **Name**: Geben Sie *MyLoadBalancer* ein.
-   - **Typ**: Wählen Sie **Intern**. 
-   - **SKU**: Wählen Sie **Basic**.
-   - **Virtuelles Netzwerk**: Wählen Sie **Virtuelles Netzwerk auswählen** und dann **MyVNet**.
-   - **Subnetz**: Wählen Sie **Subnetz auswählen** und dann **MyBackendSubnet**.
-   - **IP-Adresszuweisung**: Wählen Sie **Statisch**, falls diese Option noch nicht ausgewählt ist.
-   - **Private IP-Adresse**: Geben Sie eine Adresse ein, die im Adressraum Ihres virtuellen Netzwerks und Subnetzes enthalten ist, z.B. *10.3.0.7*.
-   - **Ressourcengruppe**: Öffnen Sie die Dropdownliste **Vorhandene auswählen**, und wählen Sie **MyResourceGroupLB**. 
+   - **Typ**: Wählen Sie **Intern** aus. 
+   - **SKU**: Wählen Sie **Basic** aus.
+   - **Virtuelles Netzwerk**: Wählen Sie **Virtuelles Netzwerk auswählen** und anschließend **MyVNet** aus.
+   - **Subnetz**: Wählen Sie **Subnetz auswählen** und anschließend **MyBackendSubnet** aus.
+   - **IP-Adresszuweisung**: Wählen Sie **Statisch** aus (sofern noch nicht ausgewählt).
+   - **Private IP-Adresse**: Geben Sie eine Adresse ein, die im Adressraum Ihres virtuellen Netzwerks und Subnetzes enthalten ist (beispielsweise *10.3.0.7*).
+   - **Ressourcengruppe**: Öffnen Sie die Dropdownliste **Vorhandene auswählen**, und wählen Sie **MyResourceGroupLB** aus. 
    
 1. Klicken Sie auf **Erstellen**.
    
@@ -124,8 +118,8 @@ Zum Verteilen von Datenverkehr auf die VMs nutzt der Load Balancer einen Back-En
 1. Geben Sie auf der Seite **Back-End-Pool hinzufügen** die folgenden Werte ein (bzw. wählen Sie sie aus):
    
    - **Name**: Geben Sie *MyBackendPool* ein.
-   - **Verknüpft mit**: Öffnen Sie die Dropdownliste, und wählen Sie **Verfügbarkeitsgruppe**.
-   - **Verfügbarkeitsgruppe**: Wählen Sie **MyAvailabilitySet**.
+   - **Verknüpft mit**: Öffnen Sie die Dropdownliste, und wählen Sie die Option **Verfügbarkeitsgruppe** aus.
+   - **Verfügbarkeitsgruppe**: Wählen Sie **MyAvailabilitySet** aus.
    
 1. Wählen Sie **Zielnetzwerk-IP-Konfiguration hinzufügen**. 
    1. Fügen Sie **MyVM1** und **MyVM2** dem Back-End-Pool hinzu.
@@ -153,7 +147,7 @@ Damit der Load Balancer den VM-Status überwachen kann, verwenden Sie einen Inte
 1. Geben Sie auf der Seite **Integritätstest hinzufügen** die folgenden Werte ein (bzw. wählen Sie sie aus):
    
    - **Name**: Geben Sie *MyHealthProbe* ein.
-   - **Protokoll**: Öffnen Sie die Dropdownliste, und wählen Sie **HTTP**. 
+   - **Protokoll**: Öffnen Sie die Dropdownliste, und wählen Sie **HTTP** aus. 
    - **Port**: Geben Sie *80* ein. 
    - **Pfad**: Übernehmen Sie */* als Standard-URI. Sie können diesen Wert durch einen beliebigen anderen URI ersetzen. 
    - **Intervall**: Geben Sie *15* ein. Das Intervall ist die Anzahl von Sekunden zwischen Testversuchen.
@@ -163,7 +157,7 @@ Damit der Load Balancer den VM-Status überwachen kann, verwenden Sie einen Inte
    
    ![Hinzufügen eines Tests](./media/tutorial-load-balancer-basic-internal-portal/4-load-balancer-probes.png)
 
-### <a name="create-a-load-balancer-rule"></a>Erstellen einer Lastenausgleichsregel
+### <a name="create-a-load-balancer-rule"></a>Erstellen einer Load Balancer-Regel
 
 Mit einer Lastenausgleichsregel wird definiert, wie Datenverkehr auf die virtuellen Computer verteilt wird. Die Regel definiert die Front-End-IP-Konfiguration für eingehenden Datenverkehr und den Back-End-IP-Pool zum Empfangen des Datenverkehrs sowie die erforderlichen Quell- und Zielports. 
 
@@ -178,12 +172,12 @@ Mit der Lastenausgleichsregel **MyLoadBalancerRule** wird über Port 80 des Fron
 1. Geben Sie auf der Seite **Lastenausgleichsregel hinzufügen** die folgenden Werte ein (bzw. wählen Sie sie aus), falls sie noch nicht vorhanden sind:
    
    - **Name**: Geben Sie *MyLoadBalancerRule* ein.
-   - **Front-End-IP-Adresse:** Geben Sie *LoadBalancerFrontEnd* ein, falls die Adresse noch nicht vorhanden ist.
-   - **Protokoll**: Wählen Sie **TCP**.
+   - **Front-End-IP-Adresse**: Geben Sie *LoadBalancerFrontEnd* ein (sofern noch nicht vorhanden).
+   - **Protokoll**: Wählen Sie **TCP** aus.
    - **Port**: Geben Sie *80* ein.
    - **Back-End-Port**: Geben Sie *80* ein.
-   - **Back-End-Pool**: Wählen Sie **MyBackendPool**.
-   - **Integritätstest**: Wählen Sie **MyHealthProbe**. 
+   - **Back-End-Pool**: Wählen Sie **MyBackendPool** aus.
+   - **Integritätstest**: Wählen Sie **MyHealthProbe** aus. 
    
 1. Klicken Sie auf **OK**.
    
@@ -212,7 +206,7 @@ Erstellen Sie zunächst per Remotedesktop (RDP) eine Verbindung mit allen drei V
    
 1. Wählen Sie auf dem Bildschirm „Windows-Sicherheit“ die Option **Weitere Optionen** und dann **Anderes Konto verwenden**. 
    
-   Geben Sie den Benutzernamen *azureuser* und das Kennwort *Azure1234567* ein, und wählen Sie **OK**.
+   Geben Sie Benutzername und Kennwort ein, und wählen Sie anschließend **OK** aus.
    
 1. Wählen Sie für alle Eingabeaufforderungen zu Zertifikaten die Antwort **Ja**. 
    
