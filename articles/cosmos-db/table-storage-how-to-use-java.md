@@ -9,12 +9,12 @@ ms.devlang: Java
 ms.topic: sample
 ms.date: 04/05/2018
 ms.author: sngun
-ms.openlocfilehash: d7be0ed8d59063f75b3d4fadbf69237bdb2d0d13
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: e6bae31f0e3558f274ee638c380e69c15b7c3889
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52863685"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53079312"
 ---
 # <a name="how-to-use-azure-table-storage-or-azure-cosmos-db-table-api-from-java"></a>Verwenden von Azure Table Storage oder der Azure Cosmos DB-Tabellen-API aus Java
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -455,7 +455,7 @@ catch (Exception e)
 ```
 
 ## <a name="query-a-subset-of-entity-properties"></a>Abfragen einer Teilmenge von Entitätseigenschaften
-Mit einer Abfrage einer Tabelle können nur einige wenige Eigenschaften einer Entität aufgerufen werden. Mit dieser Technik, der sogenannten Projektion, wird die Bandbreite reduziert und die Abfrageleistung gesteigert, vor allem bei großen Entitäten. Die Abfrage im folgenden Code übergibt mit der Methode **select** nur die E-Mail-Adressen von Entitäten in der Tabelle. Die Ergebnisse werden mit Unterstützung eines **EntityResolver**, der die Typumwandlung der vom Server übergebenen Entitäten übernimmt, in eine Sammlung von **String**-Objekten projiziert. Weitere Informationen zur Projektion finden Sie unter [Azure-Tabellen: Einführung in Upsert und Abfrageprojektion][Azure Tables: Introducing Upsert and Query Projection]. Beachten Sie, dass die Projektion nicht auf dem lokalen Speicheremulator unterstützt wird und dieser Code deshalb nur bei der Verwendung eines Kontos für den Tabellendienst ausgeführt wird.
+Mit einer Abfrage einer Tabelle können nur einige wenige Eigenschaften einer Entität aufgerufen werden. Mit dieser Technik, der sogenannten Projektion, wird die Bandbreite reduziert und die Abfrageleistung gesteigert, vor allem bei großen Entitäten. Die Abfrage im folgenden Code übergibt mit der Methode **select** nur die E-Mail-Adressen von Entitäten in der Tabelle. Die Ergebnisse werden mit Unterstützung eines **EntityResolver**, der die Typumwandlung der vom Server übergebenen Entitäten übernimmt, in eine Sammlung von **String**-Objekten projiziert. Weitere Informationen zur Projektion finden Sie in [Azure Tables: Introducing Upsert and Query Projection (Azure-Tabellen: Einführung in Upsert- und Abfrageprojektion)][Azure Tables: Introducing Upsert and Query Projection]. Beachten Sie, dass die Projektion nicht auf dem lokalen Speicheremulator unterstützt wird und dieser Code deshalb nur bei der Verwendung eines Kontos für den Tabellendienst ausgeführt wird.
 
 ```java
 try
@@ -497,7 +497,7 @@ catch (Exception e)
 ```
 
 ## <a name="insert-or-replace-an-entity"></a>Einfügen oder Ersetzen einer Entität
-Es kommt häufig vor, dass Sie eine Entität in eine Tabelle einfügen möchten, ohne zuvor prüfen zu müssen, ob diese Entität bereits in der Tabelle vorhanden ist. Mit einem Einfügen-oder-Ersetzen-Vorgang genügt eine einzelne Anforderung, um eine nicht vorhandene Entität einzufügen oder eine vorhandene zu ersetzen. Ausgehend von vorherigen Beispielen wird durch diesen Code die Entität für "Walter Harp" eingefügt oder ersetzt. Nachdem eine neue Entität erstellt worden ist, ruft dieser Code die Methode **TableOperation.insertOrReplace** auf. Anschließend ruft der Code die Methode **execute** für das **CloudTable**-Objekt auf und spezifiziert als Parameter die Tabelle und den Einfügen-oder-Ersetzen-Vorgang. Wenn nur ein Teil einer Entität aktualisiert werden sollen, kann stattdessen die Methode **TableOperation.insertOrMerge** verwendet werden. Hinweis: Einfügen-oder-Ersetzen-Vorgänge werden auf dem lokalen Speicheremulator nicht unterstützt, weshalb dieser Code nur bei Verwendung eines Kontos auf dem Tabellendienst ausgeführt wird. Weitere Informationen zu Einfügen-oder-Ersetzen- und Einfügen-oder-Zusammenfügen-Vorgängen finden Sie unter [Azure-Tabellen: Einführung in Upsert und Abfrageprojektion][Azure Tables: Introducing Upsert and Query Projection].
+Es kommt häufig vor, dass Sie eine Entität in eine Tabelle einfügen möchten, ohne zuvor prüfen zu müssen, ob diese Entität bereits in der Tabelle vorhanden ist. Mit einem Einfügen-oder-Ersetzen-Vorgang genügt eine einzelne Anforderung, um eine nicht vorhandene Entität einzufügen oder eine vorhandene zu ersetzen. Ausgehend von vorherigen Beispielen wird durch diesen Code die Entität für "Walter Harp" eingefügt oder ersetzt. Nachdem eine neue Entität erstellt worden ist, ruft dieser Code die Methode **TableOperation.insertOrReplace** auf. Anschließend ruft der Code die Methode **execute** für das **CloudTable**-Objekt auf und spezifiziert als Parameter die Tabelle und den Einfügen-oder-Ersetzen-Vorgang. Wenn nur ein Teil einer Entität aktualisiert werden sollen, kann stattdessen die Methode **TableOperation.insertOrMerge** verwendet werden. Hinweis: Einfügen-oder-Ersetzen-Vorgänge werden auf dem lokalen Speicheremulator nicht unterstützt, weshalb dieser Code nur bei Verwendung eines Kontos auf dem Tabellendienst ausgeführt wird. Weitere Informationen zu Einfügen-oder-Ersetzen- und Einfügen-oder-Zusammenfügen-Vorgängen finden Sie unter [Azure Tables: Introducing Upsert and Query Projection (Azure-Tabellen: Einführung in Upsert- und Abfrageprojektion)][Azure Tables: Introducing Upsert and Query Projection].
 
 ```java
 try
@@ -598,14 +598,12 @@ catch (Exception e)
 * [Azure Storage-SDK für Java][Azure Storage SDK for Java]
 * [Referenz für Azure Storage-Client-SDKs][Referenz für Azure Storage-Client-SDKs]
 * [Azure Storage-REST-API][Azure Storage REST API]
-* [Azure Storage-Teamblog][Azure Storage Team Blog]
+* [Azure Storage-Teamblog][Azure Storage-Teamblog]
 
 Weitere Informationen finden Sie im Artikel [Azure für Java-Entwickler](/java/azure).
 
-[Azure SDK for Java]: http://go.microsoft.com/fwlink/?LinkID=525671
+[Azure SDK for Java]: https://go.microsoft.com/fwlink/?LinkID=525671
 [Azure Storage SDK for Java]: https://github.com/azure/azure-storage-java
 [Azure Storage SDK for Android]: https://github.com/azure/azure-storage-android
-[Referenz für Azure Storage-Client-SDKs]: http://azure.github.io/azure-storage-java/
+[Referenz für Azure Storage-Client-SDKs]: https://azure.github.io/azure-storage-java/
 [Azure Storage REST API]: https://msdn.microsoft.com/library/azure/dd179355.aspx
-[Azure Storage Team Blog]: http://blogs.msdn.com/b/windowsazurestorage/
-[Azure Tables: Introducing Upsert and Query Projection]: http://blogs.msdn.com/b/windowsazurestorage/archive/2011/09/15/windows-azure-tables-introducing-upsert-and-query-projection.aspx

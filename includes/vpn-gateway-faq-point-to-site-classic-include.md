@@ -5,15 +5,15 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 03/21/2018
+ms.date: 12/06/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: b8a785293c4e555b547c4b002f5ef5906a7633c0
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 0c0ad6ea5a687d066c78533b45a7f531561661bf
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30198178"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53323743"
 ---
 Diese häufig gestellten Fragen beziehen sich auf P2S-Verbindungen, die das klassische Bereitstellungsmodell verwenden.
 
@@ -29,19 +29,19 @@ Folgende Clientbetriebssysteme werden unterstützt:
 * Windows Server 2012 R2 (nur 64 Bit)
 * Windows 10
 
-### <a name="can-i-use-any-software-vpn-client-for-point-to-site-that-supports-sstp"></a>Kann ich für Punkt-zu-Standort-Verbindungen einen beliebigen VPN-Softwareclient mit SSTP-Unterstützung verwenden?
+### <a name="can-i-use-any-software-vpn-client-that-supports-sstp-for-point-to-site"></a>Kann ich für Point-to-Site-Verbindungen einen beliebigen VPN-Softwareclient mit SSTP-Unterstützung verwenden?
 
-Nein. Nur die oben aufgeführten Windows-Betriebssystemversionen werden unterstützt.
+ Nein. Nur die aufgelisteten Windows-Betriebssystemversionen werden unterstützt.
 
-### <a name="how-many-vpn-client-endpoints-can-i-have-in-my-point-to-site-configuration"></a>Wie viele VPN-Clientendpunkte kann meine Punkt-zu-Standort-Konfiguration umfassen?
+### <a name="how-many-vpn-client-endpoints-can-exist-in-my-point-to-site-configuration"></a>Wie viele VPN-Clientendpunkte kann meine Point-to-Site-Konfiguration umfassen?
 
-Wir unterstützen bis zu 128 gleichzeitige VPN-Clientverbindungen mit einem virtuellen Netzwerk.
+Bis zu 128 VPN-Clients können gleichzeitig mit einem virtuellen Netzwerk verbunden sein.
 
 ### <a name="can-i-use-my-own-internal-pki-root-ca-for-point-to-site-connectivity"></a>Kann ich für Punkt-zu-Standort-Verbindungen meine eigene interne PKI-Stammzertifizierungsstelle verwenden?
 
-Ja. Bisher konnten nur selbstsignierte Stammzertifikate verwendet werden. Sie können weiterhin 20 Stammzertifikate hochladen.
+Ja. Bisher konnten nur selbstsignierte Stammzertifikate verwendet werden. Sie können immer noch bis zu 20 Stammzertifikate hochladen.
 
-### <a name="can-i-traverse-proxies-and-firewalls-using-point-to-site-capability"></a>Können Proxys und Firewalls mit der Punkt-zu-Standort-Funktion durchlaufen werden?
+### <a name="can-i-traverse-proxies-and-firewalls-by-using-point-to-site"></a>Können Proxys und Firewalls mit der Point-to-Site-Funktion durchlaufen werden?
 
 Ja. Wir verwenden das Secure Socket Tunneling-Protokoll (SSTP), um eine Tunnelverbindung durch Firewalls zu ermöglichen. Dieser Tunnel wird als HTTPS-Verbindung angezeigt.
 
@@ -49,17 +49,17 @@ Ja. Wir verwenden das Secure Socket Tunneling-Protokoll (SSTP), um eine Tunnelve
 
 Standardmäßig wird die VPN-Verbindung des Clientcomputers nicht automatisch wiederhergestellt.
 
-### <a name="does-point-to-site-support-auto-reconnect-and-ddns-on-the-vpn-clients"></a>Werden automatische Verbindungswiederherstellung und DDNS bei Punkt-zu-Standort-Verbindungen auf den VPN-Clients unterstützt?
+### <a name="does-point-to-site-support-auto-reconnect-and-ddns-on-the-vpn-clients"></a>Werden automatische Verbindungswiederherstellung und DDNS bei Point-to-Site-Verbindungen auf den VPN-Clients unterstützt?
 
-Automatische Verbindungswiederherstellung und DDNS werden in Punkt-zu-Standort-VPNs derzeit nicht unterstützt.
+ Nein. Automatische Verbindungswiederherstellung und DDNS werden in Point-to-Site-VPNs derzeit nicht unterstützt.
 
-### <a name="can-i-have-site-to-site-and-point-to-site-configurations-coexist-for-the-same-virtual-network"></a>Kann ich im gleichen virtuellen Netzwerk sowohl Standort-zu-Standort- als auch Punkt-zu-Standort-Konfigurationen verwenden?
+### <a name="can-i-have-site-to-site-and-point-to-site-configurations-for-the-same-virtual-network"></a>Kann ich im gleichen virtuellen Netzwerk sowohl Site-to-Site- als auch Point-to-Site-Konfigurationen verwenden?
 
-Ja. Beide Lösungen können verwendet werden, wenn Sie über einen routenbasierten VPN-Typ für Ihr Gateway verfügen. Für das klassische Bereitstellungsmodell benötigen Sie ein dynamisches Gateway. Punkt-zu-Standort-Konfigurationen werden für VPN Gateways mit statischem Routing oder Gateways mit dem `-VpnType PolicyBased`-Cmdlet nicht unterstützt.
+Ja. Beide Lösungen können verwendet werden, wenn Sie über einen routenbasierten VPN-Typ für Ihr Gateway verfügen. Für das klassische Bereitstellungsmodell benötigen Sie ein dynamisches Gateway. Point-to-Site-Konfigurationen werden für VPN-Gateways mit statischem Routing oder Gateways, die das **-VpnType PolicyBased**-Cmdlet verwenden, nicht unterstützt.
 
 ### <a name="can-i-configure-a-point-to-site-client-to-connect-to-multiple-virtual-networks-at-the-same-time"></a>Kann ich einen Punkt-zu-Standort-Client so konfigurieren, dass er gleichzeitig eine Verbindung mit mehreren virtuellen Netzwerken herstellt?
 
-Ja, das ist möglich. Allerdings dürfen sich weder die IP-Präfixe noch die Punkt-zu-Standort-Adressräume der virtuellen Netzwerke überschneiden.
+Ja. Allerdings dürfen sich weder die IP-Präfixe noch die Point-to-Site-Adressräume der virtuellen Netzwerke überschneiden.
 
 ### <a name="how-much-throughput-can-i-expect-through-site-to-site-or-point-to-site-connections"></a>Wie viel Durchsatz kann ich bei einer Standort-zu-Standort- oder bei einer Punkt-zu-Standort-Verbindung erwarten?
 

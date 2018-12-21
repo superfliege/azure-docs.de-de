@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 10/18/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 3cdc4a8a670b5af43e72b38d7a3b6d9aafdac348
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 15dbdc0bb2a3b7ee5af544adb2672a97f839f694
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49429438"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52970194"
 ---
 # <a name="what-is-azure-analysis-services"></a>Was ist Azure Analysis Services?
 
@@ -23,13 +23,13 @@ Azure Analysis Services ist eine vollständig verwaltete PaaS-Komponente (Platfo
 
 ![Datenquellen](./media/analysis-services-overview/aas-overview-overall.png)
 
-**Video:** In [Azure Analysis Services Overview](https://sec.ch9.ms/ch9/d6dd/a1cda46b-ef03-4cea-8f11-68da23c5d6dd/AzureASoverview_high.mp4) (Übersicht über Azure Analysis Services) wird beschrieben, wie Azure Analysis Services zu den allgemeinen BI-Funktionen von Microsoft passt.
+**Video**: In [Übersicht über Azure Analysis Services](https://sec.ch9.ms/ch9/d6dd/a1cda46b-ef03-4cea-8f11-68da23c5d6dd/AzureASoverview_high.mp4) wird beschrieben, wie Azure Analysis Services zu den allgemeinen BI-Funktionen von Microsoft passt.
 
 ## <a name="get-up-and-running-quickly"></a>Schnelle Betriebsbereitschaft
 
 Über das Azure-Portal können Sie innerhalb weniger Minuten [einen Server erstellen](analysis-services-create-server.md). Und mit Azure Resource Manager-[Vorlagen](../azure-resource-manager/resource-manager-create-first-template.md) und PowerShell lassen sich Server unter Verwendung einer deklarativen Vorlage erstellen. Mit einer einzelnen Vorlage können Sie Serverressourcen sowie andere Azure-Komponenten (z.B. Speicherkonten und Azure Functions) bereitstellen. 
 
-**Video:** In [Automating deployment](https://channel9.msdn.com/series/Azure-Analysis-Services/AzureAnalysisServicesAutomation) (Automatisieren der Bereitstellung) wird näher beschrieben, wie Sie Azure Automation zum Beschleunigen der Servererstellung verwenden können.
+**Video**: In [Automatisieren der Bereitstellung](https://channel9.msdn.com/series/Azure-Analysis-Services/AzureAnalysisServicesAutomation) wird näher beschrieben, wie Sie Azure Automation zum Beschleunigen der Servererstellung verwenden können.
 
 Azure Analysis Services arbeitet mit vielen Azure-Diensten zusammen und ermöglicht so die Erstellung komplexer Analyselösungen. Die Integration in [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) bietet sicheren, rollenbasierten Zugriff auf wichtige Daten. Auch eine Integration in [Azure Data Factory](../data-factory/introduction.md)-Pipelines ist möglich. Hierzu muss lediglich eine Aktivität hinzugefügt werden, die Daten in das Modell lädt. Für einfache Modellorchestrierungsaufgaben mit benutzerdefiniertem Code können [Azure Automation](../automation/automation-intro.md) und [Azure Functions](../azure-functions/functions-overview.md) verwendet werden. 
 
@@ -182,7 +182,7 @@ Dienstprinzipale sind eine Azure Active Directory-Anwendungsressource, die Sie i
 
 ### <a name="azure-governance"></a>Azure Governance
 
-Azure Analysis Services unterliegt den [Microsoft Online Services-Nutzungsbedingungen](http://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31) und der [Microsoft-Datenschutzerklärung](https://privacy.microsoft.com/privacystatement).
+Azure Analysis Services unterliegt den [Microsoft Online Services-Nutzungsbedingungen](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31) und der [Microsoft-Datenschutzerklärung](https://privacy.microsoft.com/privacystatement).
 Weitere Informationen zur Sicherheit in Azure finden Sie im [Microsoft Trust Center](https://www.microsoft.com/trustcenter).
 
 ## <a name="use-the-tools-you-already-know"></a>Verwenden Sie die Tools, die Sie bereits kennen
@@ -251,7 +251,7 @@ Analysis Services verfügt über eine dynamische Community von Benutzern. Beteil
 > [Registrieren für eine kostenlose Azure-Testversion](https://azure.microsoft.com/offers/ms-azr-0044p/)   
 
 > [!div class="nextstepaction"]
-> [Erstellen eines Analysis Services-Servers im Azure-Portal](analysis-services-create-server.md)   
+> [Schnellstart: Erstellen eines Servers – Portal](analysis-services-create-server.md)   
 
 > [!div class="nextstepaction"]
-> [Erstellen eines Azure Analysis Services-Servers mithilfe von PowerShell](analysis-services-create-powershell.md)  
+> [Schnellstart: Erstellen eines Servers – PowerShell](analysis-services-create-powershell.md)  

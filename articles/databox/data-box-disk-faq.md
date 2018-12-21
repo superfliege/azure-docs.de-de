@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: overview
-ms.date: 10/30/2018
+ms.date: 12/11/2018
 ms.author: alkohli
-ms.openlocfilehash: 5e4461a910f13c5047c4a2aadd7326c4e12c533f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: f437f1fd61cfdaa4d2ff908f6e294fa0c679b9a5
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238130"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53273053"
 ---
-# <a name="what-is-azure-data-box-disk-preview"></a>Was ist ein Azure Data Box-Datenträger? (Vorschau)
+# <a name="what-is-azure-data-box-disk-preview"></a>Was ist ein Azure Data Box-Datenträger?  (Vorschau)
 
 Mit der Cloudlösung für Microsoft Azure Data Box-Datenträger können Sie Daten im Terabyte-Bereich schnell, kostengünstig und zuverlässig an Azure senden. Diese FAQ-Seite enthält Fragen, die bei der Verwendung von Data Box-Datenträgern im Azure-Portal aufkommen können, und die dazugehörigen Antworten. 
 
@@ -59,12 +59,12 @@ A.  Data Box-Datenträger sind während der Vorschauphase in den USA, in Kanada,
 A. Die Vorschauversion von Data Box Disk wird für alle Regionen in den USA, in Kanada, Australien, Westeuropa und Nordeuropa unterstützt. Es werden nur die öffentlichen Azure-Cloudregionen unterstützt. Azure Government oder andere Sovereign Clouds werden nicht unterstützt.
 
 ### <a name="q-whom-should-i-contact-if-i-encounter-any-issues--with-data-box-disks"></a>F: An wen sollte ich mich wenden, falls Probleme mit Data Box-Datenträgern auftreten?
-A. Wenden Sie sich an den [Support für Data Box-Datenträger](mailto:expresspodsupport@microsoft.com), falls Probleme mit Data Box-Datenträgern auftreten.
+A. Falls Probleme mit Data Box-Datenträgern auftreten, wenden Sie sich an den [Microsoft-Support](https://docs.microsoft.com/azure/databox/data-box-disk-contact-microsoft-support).
 
 ## <a name="configure-and-connect"></a>Konfigurieren und Verbinden
  
 ### <a name="q-can-i-specify-the-number-of-data-box-disks-in-the-order"></a>F: Kann ich im Auftrag die Anzahl von Data Box-Datenträgern angeben?
-A.  Nein. Sie erhalten je nach Datenumfang und Verfügbarkeit einen oder mehrere Datenträger mit 8 TB Speicherplatz (maximal fünf Datenträger).  
+A.   Nein. Sie erhalten je nach Datenumfang und Verfügbarkeit einen oder mehrere Datenträger mit 8 TB Speicherplatz (maximal fünf Datenträger).  
 
 ### <a name="q-how-do-i-unlock-the-data-box-disks"></a>F: Wie entsperre ich die Data Box-Datenträger? 
 A.  Navigieren Sie im Azure-Portal zu Ihrem Auftrag für Data Box-Datenträger und dann zu **Gerätedetails**. Kopieren Sie den Hauptschlüssel. Laden Sie das Tool zum Entsperren von Data Box-Datenträgern für Ihr Betriebssystem über das Azure-Portal herunter, und extrahieren Sie es. Führen Sie das Tool auf dem Computer mit den Daten aus, die Sie auf die Datenträger kopieren möchten. Geben Sie den Hauptschlüssel an, um Ihre Datenträger zu entsperren. Alle Datenträger werden mit demselben Hauptschlüssel entsperrt. 
@@ -108,7 +108,7 @@ A.  Verwenden Sie ein SMB-Kopiertool, z.B. Robocopy, Diskboss oder auch Drag & D
 ### <a name="q-are-there-any-tips-to-speed-up-the-data-copy"></a>F: Gibt es Tipps zur Beschleunigung des Datenkopiervorgangs?
 A.  Sie können den Kopiervorgang wie folgt beschleunigen:
 
-- Nutzen Sie mehrere Datenströme zum Kopieren von Daten. Verwenden Sie bei Robocopy beispielsweise die Option für Multithreading. Weitere Informationen zu den genauen Befehlen, die jeweils verwendet werden, finden Sie unter [Tutorial: Kopieren von Daten auf den Azure Data Box-Datenträger und Durchführen der Überprüfung](data-box-disk-deploy-copy-data.md#copy-data-to-disks).
+- Nutzen Sie mehrere Datenströme zum Kopieren von Daten. Verwenden Sie bei Robocopy beispielsweise die Option für Multithreading. Weitere Informationen zu den genauen Befehlen, die jeweils verwendet werden, finden Sie unter [Tutorial: Kopieren von Daten auf die Azure Data Box Disk und Durchführen der Überprüfung](data-box-disk-deploy-copy-data.md#copy-data-to-disks).
 - Verwenden Sie mehrere Sitzungen.
 - Stellen Sie sicher, dass sich die Daten lokal auf dem Computer befinden, an den die Datenträger angeschlossen sind, anstatt den Kopiervorgang über die Netzwerkfreigabe durchzuführen (um Beeinträchtigungen aufgrund der Netzwerkgeschwindigkeit zu vermeiden).
 - Achten Sie darauf, dass Sie während des gesamten Kopiervorgangs USB 3.0 oder höher verwenden. Laden Sie das Tool [USBView](https://docs.microsoft.com/windows-hardware/drivers/debugger/usbview) herunter, und verwenden Sie es, um die USB-Controller und USB-Geräte zu identifizieren, die an den Computer angeschlossen sind.
@@ -123,7 +123,7 @@ A.  Sie können den Kopiervorgang wie folgt beschleunigen:
 
 
 ### <a name="q-can-i-use-multiple-storage-accounts-with-data-box-disks"></a>F: Kann ich mehrere Speicherkonten mit Data Box-Datenträgern verwenden?
-A.  Nein. Für Data Box-Datenträger wird derzeit nur ein Speicherkonto (allgemein oder klassisch) unterstützt. Es werden sowohl „heiße“ als auch „kalte“ Blobs unterstützt. Während der Vorschauphase werden nur die Speicherkonten in den USA, Westeuropa und Nordeuropa unterstützt, die Teil der öffentlichen Azure-Cloud sind.
+A.   Nein. Für Data Box-Datenträger wird derzeit nur ein Speicherkonto (allgemein oder klassisch) unterstützt. Es werden sowohl „heiße“ als auch „kalte“ Blobs unterstützt. Während der Vorschauphase werden nur die Speicherkonten in den USA, Westeuropa und Nordeuropa unterstützt, die Teil der öffentlichen Azure-Cloud sind.
 
 ## <a name="verify-and-upload"></a>Überprüfen und Hochladen
 
