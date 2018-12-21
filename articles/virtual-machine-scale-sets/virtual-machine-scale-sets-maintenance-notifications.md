@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/09/2018
 ms.author: shants
-ms.openlocfilehash: 82a3ce9f899e94a1cc737f2ca2dc1dc79688a224
-ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
+ms.openlocfilehash: 4e30b143a11e35fc83103abfa03e3fb7f29cf9dc
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "42145813"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53270126"
 ---
 # <a name="planned-maintenance-notifications-for-virtual-machine-scale-sets"></a>Benachrichtigungen zu geplanten Wartungen für VM-Skalierungsgruppen
 
@@ -59,7 +59,7 @@ Self-Service-Wartung wird für Bereitstellungen, die *Verfügbarkeitsgruppen* ve
 Verwenden Sie Self-Service-Wartung **nicht** in den folgenden Szenarien: 
 
 - Wenn Sie Ihre virtuellen Computer häufig entweder manuell, mithilfe von DevTest Labs, mit der Funktion zum automatischen Herunterfahren oder gemäß einem Zeitplan herunterfahren. Die Self-Service-Wartung kann in diesen Szenarien den Wartungsstatus zurücksetzen und zusätzliche Ausfallzeiten verursachen.
-- Bei virtuellen Computern mit kurzer Lebensdauer, die vor Ende der Wartungsaktion gelöscht werden. 
+- Bei virtuellen Computern mit kurzer Lebensdauer, die vor Ende der Wartungsaktion gelöscht werden 
 - Bei Workloads, für die umfangreiche Zustandsinformationen auf dem lokalen (flüchtigen) Datenträger gespeichert sind, die bei einem Update erhalten bleiben sollen. 
 - Wenn Sie die Größe Ihres virtuellen Computers häufig ändern. Dieses Szenario kann den Wartungsstatus zurücksetzen. 
 - Wenn Sie 15 Minuten vor dem Herunterfahren für die Wartung geplante Ereignisse übernommen haben, die ein proaktives Failover oder das ordnungsgemäße Herunterfahren Ihres Workloads ermöglichen.
@@ -78,10 +78,10 @@ Verwenden Sie Self-Service-Wartung am besten in den folgenden Fällen:
 
 Nachdem eine geplante Wartungsaktion geplant wurde, können Sie über das Azure-Portal die Liste mit den VM-Skalierungsgruppen anzeigen, die von der anstehenden Wartungsaktion betroffen sind. 
 
-1. Melden Sie sich am [Azure-Portal](https://portal.azure.com) an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Wählen Sie im linken Menü **Alle Dienste** aus, und wählen Sie dann **VM-Skalierungsgruppen** aus.
 3. Wählen Sie unter **VM-Skalierungsgruppen** die Option **Spalten bearbeiten** aus, um die Liste der verfügbaren Spalten zu öffnen.
-4. Wählen Sie im Abschnitt **Verfügbare Spalten** die Option **Self-Service-Wartung** aus, und verschieben Sie diese in die Liste **Ausgewählte Spalten**. Wählen Sie **Übernehmen** aus.  
+4. Wählen Sie im Abschnitt **Verfügbare Spalten** die Option **Self-Service-Wartung** aus, und verschieben Sie diese in die Liste **Ausgewählte Spalten**. Wählen Sie **Übernehmen**.  
 
     Um das Element **Self-Service-Wartung** leichter zu finden, können Sie die Dropdownoption im Abschnitt **Verfügbare Spalten** von **Alle** in **Eigenschaften** ändern.
 
@@ -97,15 +97,15 @@ Die Spalte **Self-Service-Wartung** wird nun in der Liste der VM-Skalierungsgrup
 
 Azure sendet eine E-Mail an die Gruppe der Abonnementbesitzer und -mitbesitzer, um sie über den Zeitplan für eine geplante Wartung zu informieren. Sie können Azure-Aktivitätsprotokollwarnungen erstellen, um Empfänger und Kanäle hinzuzufügen. Weitere Informationen finden Sie unter [Überwachen der Abonnementaktivität mit dem Azure-Aktivitätsprotokoll](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md).
 
-1. Melden Sie sich am [Azure-Portal](https://portal.azure.com) an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Wählen Sie die Option **Überwachen** im Menü auf der linken Seite aus. 
 3. Wählen Sie im Bereich **Überwachen – Warnungen (klassisch)** die Option **+ Aktivitätsprotokollwarnung hinzufügen** aus.
 4. Wählen Sie auf der Seite **Aktivitätsprotokollwarnung hinzufügen** die angeforderten Informationen aus, oder geben Sie sie ein. Stellen Sie unter **Kriterien** sicher, dass Sie die folgenden Werte festgelegt haben:
-   - **Ereigniskategorie**: Wählen Sie **Dienstintegrität** aus.
-   - **Dienste**: Wählen Sie **VM-Skalierungsgruppen und virtuelle Computer** aus.
+   - **Ereigniskategorie**: Wählen Sie **Service Health**.
+   - **Dienste**: Wählen Sie **Virtual Machine Scale Sets und Virtual Machines** aus.
    - **Typ**: Wählen Sie **Geplante Wartung** aus. 
     
-Weitere Informationen zum Konfigurieren von Aktivitätsprotokollwarnungen finden Sie unter [Erstellen von Aktivitätsprotokollwarnungen](../monitoring-and-diagnostics/monitoring-activity-log-alerts.md).
+Weitere Informationen zum Konfigurieren von Aktivitätsprotokollwarnungen finden Sie unter [Erstellen von Aktivitätsprotokollwarnungen](../azure-monitor/platform/activity-log-alerts.md).
     
     
 ## <a name="start-maintenance-on-your-virtual-machine-scale-set-from-the-portal"></a>Starten der Wartung für Ihre VM-Skalierungsgruppe über das Portal
@@ -201,7 +201,7 @@ Weitere Informationen zu Hochverfügbarkeit finden Sie unter [Regionen und Verf�
 
 **F: Wie lange dauert es, meinen virtuellen Computer neu zu starten?**
 
-**A:** Je nach Größe Ihres virtuellen Computers kann der Neustart während des Self-Service-Wartungsfensters mehrere Minuten dauern. Die von Azure im geplanten Wartungsfenster initiierten Neustarts dauern in der Regel etwa 25 Minuten. Wenn Sie Cloud Services (Web-/Workerrolle), VM-Skalierungsgruppen oder Verfügbarkeitsgruppen verwenden, stehen Ihnen während des geplanten Wartungsfensters zwischen den einzelnen Gruppen von virtuellen Computern 30 Minuten zur Verfügung. 
+**A:**  Je nach Größe Ihres virtuellen Computers kann der Neustart während des Self-Service-Wartungsfensters mehrere Minuten dauern. Die von Azure im geplanten Wartungsfenster initiierten Neustarts dauern in der Regel etwa 25 Minuten. Wenn Sie Cloud Services (Web-/Workerrolle), VM-Skalierungsgruppen oder Verfügbarkeitsgruppen verwenden, stehen Ihnen während des geplanten Wartungsfensters zwischen den einzelnen Gruppen von virtuellen Computern 30 Minuten zur Verfügung. 
 
 **F: Auf meinen virtuellen Computern werden keine Wartungsinformationen angezeigt. Welche Probleme sind aufgetreten?**
 

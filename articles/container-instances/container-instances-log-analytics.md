@@ -7,12 +7,12 @@ ms.service: container-instances
 ms.topic: overview
 ms.date: 07/17/2018
 ms.author: danlep
-ms.openlocfilehash: 7f4af06222141eb0e143e67ba4bfcdcb2f5f92fa
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 4dbcccc1a4b23ca37918495dc536df08a70cade7
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51614003"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53337885"
 ---
 # <a name="container-instance-logging-with-azure-log-analytics"></a>Protokollierung für Containerinstanzen mit Azure Log Analytics
 
@@ -24,7 +24,7 @@ Um Containerinstanzendaten an Log Analytics senden zu können, müssen Sie mithi
 
 Zum Aktivieren der Protokollierung in Ihren Containerinstanzen benötigen Sie Folgendes:
 
-* [Log Analytics-Arbeitsbereich](../log-analytics/log-analytics-quick-create-workspace.md)
+* [Log Analytics-Arbeitsbereich](../azure-monitor/learn/quick-create-workspace.md)
 * [Azure CLI](/cli/azure/install-azure-cli) (oder [Cloud Shell](/azure/cloud-shell/overview))
 
 ## <a name="get-log-analytics-credentials"></a>Abrufen der Log Analytics-Anmeldeinformationen
@@ -44,7 +44,7 @@ So erhalten Sie die Log Analytics-Arbeitsbereichs-ID und den Primärschlüssel:
 
 Mit der Log Analytics-Arbeitsbereichs-ID und dem Primärschlüssel können Sie nun eine Containergruppe mit aktivierter Protokollierung erstellen.
 
-In den folgenden Beispielen werden zwei Möglichkeiten zum Erstellen einer Containergruppe mit einem einzelnen [fluentd][fluentd]-Container gezeigt: Azure-Befehlszeilenschnittstelle und Azure-Befehlszeilenschnittstelle mit einer YAML-Vorlage. Der Fluentd-Container generiert mehrere Ausgabezeilen in der Standardkonfiguration. Da diese Ausgabe an Ihren Log Analytics-Arbeitsbereich gesendet wird, eignet sie sich gut zur Veranschaulichung der Anzeige und Abfrage von Protokollen.
+In den folgenden Beispielen werden zwei Möglichkeiten zum Erstellen einer Containergruppe mit einem einzelnen [fluentd][fluentd]-Container gezeigt: Azure CLI und Azure CLI mit einer YAML-Vorlage. Der Fluentd-Container generiert mehrere Ausgabezeilen in der Standardkonfiguration. Da diese Ausgabe an Ihren Log Analytics-Arbeitsbereich gesendet wird, eignet sie sich gut zur Veranschaulichung der Anzeige und Abfrage von Protokollen.
 
 ### <a name="deploy-with-azure-cli"></a>Bereitstellen über die Azure-Befehlszeilenschnittstelle
 
@@ -135,7 +135,7 @@ ContainerInstanceLog_CL
 Weitere Informationen zum Abfragen von Protokollen und Konfigurieren von Warnungen in Azure Log Analytics finden Sie in den folgenden Themen:
 
 * [Grundlegendes zu Protokollsuchvorgängen in Log Analytics](../log-analytics/log-analytics-log-search.md)
-* [Die neue Oberfläche „Warnungen“ in Azure Monitor](../monitoring-and-diagnostics/monitoring-overview-alerts.md)
+* [Die neue Oberfläche „Warnungen“ in Azure Monitor](../azure-monitor/platform/alerts-overview.md)
 
 
 ### <a name="monitor-container-cpu-and-memory"></a>Überwachen von Container-CPU und -Arbeitsspeicher

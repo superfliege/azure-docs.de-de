@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/18/2018
+ms.date: 12/07/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: benshy
-ms.custom: ''
-ms.openlocfilehash: 398472df7caf0f702f43bc9d025d1e6ad7dcdd7e
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.custom: secdec18
+ms.openlocfilehash: 25a8057a1c547e29b209d87d9124a3e019957dd8
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52275078"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53100853"
 ---
 # <a name="configure-storage-accounts-for-cloudyn"></a>Konfigurieren von Speicherkonten für Cloudyn
 
@@ -35,18 +35,18 @@ Wenn Sie keinen AWS Simple Storage Service Bucket (S3-Bucket) haben, müssen Sie
 
 Das Konfigurieren Ihres Azure-Speichers zur Verwendung durch Cloudyn ist einfach. Besorgen Sie sich die Details zu dem Speicherkonto, und kopieren Sie diese in das Cloudyn-Portal.
 
-1. Melden Sie sich unter http://portal.azure.com beim Azure-Portal an.
+1. Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
 2. Klicken Sie auf **Alle Dienste**, wählen Sie **Speicherkonten** aus, scrollen Sie zu dem Speicherkonto, das Sie verwenden möchten, und wählen Sie es aus.
 3. Klicken Sie auf Ihrer Speicherkontoseite unter **Einstellungen** auf **Zugriffsschlüssel**.
 4. Kopieren Sie Ihren **Speicherkontonamen** und Ihre **Verbindungszeichenfolge** unter „Schlüssel1“.  
-![Azure-Speicherzugriffsschlüssel](./media/storage-accounts/azure-storage-access-keys.png)  
+![Kopieren von Speicherkontoname und Verbindungszeichenfolge](./media/storage-accounts/azure-storage-access-keys.png)  
 5. Öffnen Sie im Azure-Portal das Cloudyn-Portal, oder navigieren Sie zu https://azure.cloudyn.com, und melden Sie sich an.
 6. Klicken Sie auf das Zahnrad-Symbol, und wählen Sie dann **Reports Storage Management** aus.
 7. Klicken Sie auf **Add new +**, und vergewissern Sie sich, dass Microsoft Azure ausgewählt ist. Fügen Sie den Namen Ihres Azure-Speicherkontos im Bereich **Name** ein. Fügen Sie Ihre **Verbindungszeichenfolge** im entsprechenden Bereich ein. Geben Sie einen Containernamen ein, und klicken Sie dann auf **Save**.  
-![Cloudyn-Speicher, der für Azure konfiguriert ist](./media/storage-accounts/azure-cloudyn-storage.png)
+![Einfügen des Namens eines Azure-Speicherkontos und einer Verbindungszeichenfolge in das Feld zum Hinzufügen eines neuen Berichtspeichers](./media/storage-accounts/azure-cloudyn-storage.png)
 
   Ihr neuer Eintrag für Azure-Berichtsspeicher wird in der Speicherkontoliste angezeigt.  
-    ![Neuer Azure-Berichtsspeicher in der Liste](./media/storage-accounts/azure-storage-entry.png)
+    ![Neuer Azure-Berichtsspeichereintrag in der Liste](./media/storage-accounts/azure-storage-entry.png)
 
 
 Sie können jetzt Berichte im Azure-Speicher speichern. Klicken Sie in irgendeinem Bericht auf **Actions**, und wählen Sie dann **Schedule report** aus. Geben Sie dem Bericht einen Namen, und fügen Sie dann entweder Ihre eigene URL hinzu, oder verwenden Sie die automatisch erstellte URL. Wählen Sie **Save to storage** aus, und wählen Sie dann das Speicherkonto aus. Geben Sie ein Präfix ein, das an den Namen der Berichtdatei angefügt wird. Wählen Sie entweder CSV oder JSON als Dateiformat aus, und speichern Sie dann den Bericht.
@@ -67,7 +67,7 @@ Wenn Sie eine neue Richtlinie erstellen, geben Sie die genauen Berechtigungen an
 4. Klicken Sie auf die Registerkarte **JSON**.
 5. Die folgende Richtlinien ermöglicht es Ihnen, einen Bericht in einem S3-Bucket zu speichern. Kopieren Sie das folgende Richtlinienbeispiel auf die Registerkarte **JSON**. Ersetzen Sie &lt;bucketname&gt; durch den Namen Ihres Buckets.
 
-  ```
+  ```json
 {
     "Version": "2012-10-17",
     "Statement": [
@@ -86,7 +86,7 @@ Wenn Sie eine neue Richtlinie erstellen, geben Sie die genauen Berechtigungen an
 ```
 
 6. Klicken Sie auf **Review policy**.  
-    ![Review policy](./media/storage-accounts/aws-policy.png)  
+    ![AWS-JSON-Richtlinie mit Beispielinformationen](./media/storage-accounts/aws-policy.png)  
 7. Geben Sie auf der Seite „Review policy“ einen Namen für Ihre Richtlinie ein. Zum Beispiel _CloudynSaveReport2S3_.
 8. Klicken Sie auf **Create policy**.
 
@@ -102,7 +102,7 @@ Um die neue Richtlinie anzufügen, öffnen Sie die AWS-Konsole, und bearbeiten S
   1. Klicken Sie auf Ihren Cloudyn-Rollennamen.
   2. Klicken Sie auf der Registerkarte **Permissions** auf **Attach Policy**.
   3. Suchen Sie nach der von Ihnen erstellten Richtlinie, wählen Sie diese aus, und klicken Sie auf **Attach Policy**.
-    ![AWS: Richtlinie für eine Rolle anfügen](./media/storage-accounts/aws-attach-policy-role.png)
+    ![An Ihre Cloudyn-Rolle angefügte Beispielrichtlinie](./media/storage-accounts/aws-attach-policy-role.png)
 
 **Für Benutzer:**
 
@@ -111,7 +111,7 @@ Um die neue Richtlinie anzufügen, öffnen Sie die AWS-Konsole, und bearbeiten S
 3. Wählen Sie im Abschnitt **Grant Permission** die Option **Attach existing policies directly** aus.
 4. Suchen Sie nach der von Ihnen erstellten Richtlinie, wählen Sie diese aus, und klicken Sie auf **Next: Review**.
 5. Klicken Sie auf der Seite „Add permissions to role name“ auf **Add permissions**.  
-    ![AWS: Richtlinie für einen Benutzer anfügen](./media/storage-accounts/aws-attach-policy-user.png)
+    ![An Ihren Cloudyn-Benutzer angefügte Beispielrichtlinie](./media/storage-accounts/aws-attach-policy-user.png)
 
 
 ### <a name="optional-set-permission-with-bucket-policy"></a>Optional: Festlegen der Berechtigung mit einer Bucketrichtlinie
@@ -152,11 +152,11 @@ Sie können die Berechtigung zum Erstellen von Berichten in Ihrem S3-Bucket auch
 2. Klicken Sie auf das Zahnrad-Symbol, und wählen Sie dann **Reports Storage Management** aus.
 3. Klicken Sie auf **Add new +**, und vergewissern Sie sich, dass AWS ausgewählt ist.
 4. Wählen Sie ein Konto und einen Speicherbucket aus. Der Name des AWS-Speicherbuckets wird automatisch ausgefüllt.  
-    ![Hinzufügen von Berichtsspeicher für einen AWS Bucket](./media/storage-accounts/aws-cloudyn-storage.png)  
+    ![Beispielinformationen im Feld zum Hinzufügen eines neuen Berichtspeichers](./media/storage-accounts/aws-cloudyn-storage.png)  
 5. Klicken Sie auf **Save**, und klicken Sie dann auf **Ok**.
 
     Ihr neuer Eintrag für AWS-Berichtsspeicher wird in der Speicherkontoliste angezeigt.  
-    ![Neuer AWS-Berichtsspeicher in der Liste](./media/storage-accounts/aws-storage-entry.png)
+    ![Neuer Eintrag für AWS-Berichtsspeicher in der Speicherkontenliste](./media/storage-accounts/aws-storage-entry.png)
 
 
 Sie können jetzt Berichte im Azure-Speicher speichern. Klicken Sie in irgendeinem Bericht auf **Actions**, und wählen Sie dann **Schedule report** aus. Geben Sie dem Bericht einen Namen, und fügen Sie dann entweder Ihre eigene URL hinzu, oder verwenden Sie die automatisch erstellte URL. Wählen Sie **Save to storage** aus, und wählen Sie dann das Speicherkonto aus. Geben Sie ein Präfix ein, das an den Namen der Berichtdatei angefügt wird. Wählen Sie entweder CSV oder JSON als Dateiformat aus, und speichern Sie dann den Bericht.

@@ -6,14 +6,14 @@ manager: camerons
 ms.author: timlav
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.date: 09/12/2018
+ms.date: 11/20/2018
 ms.topic: conceptual
-ms.openlocfilehash: 94641796fa77e03efc7158bc3aaf4bde9385c899
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 20af014e5a59cb526d5b96e543b10d5b2b6d6937
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51824267"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52679595"
 ---
 # <a name="remote-monitoring-architectural-choices"></a>Optionen für die Remoteüberwachungsarchitektur
 
@@ -25,7 +25,7 @@ Der Azure IoT-Solution Accelerator für Remoteüberwachung ist ein Open Source-S
 
 Die Lösung für die Remoteüberwachung folgt der empfohlenen [Azure IoT-Referenzarchitektur](https://aka.ms/iotrefarchitecture).
 
-Dieser Artikel beschreibt die architekturbezogenen und technischen Auswahlmöglichkeiten sowie mögliche Alternativen für jedes Subsystem der Remoteüberwachungslösung. Die technischen Optionen, die Microsoft für die Remoteüberwachungslösung auswählt, sind nicht die einzige Möglichkeit, eine IoT-Remoteüberwachungslösung zu implementieren. Betrachten Sie die technische Implementierung als Grundlage für die Erstellung einer erfolgreichen Anwendung, und passen Sie sie an Folgendes an:
+Dieser Artikel beschreibt die wichtigen technischen Auswahlmöglichkeiten für jedes Subsystem der Remoteüberwachungslösung. Die technischen Optionen, die Microsoft für die Remoteüberwachungslösung auswählt, sind nicht die einzige Möglichkeit, eine IoT-Remoteüberwachungslösung zu implementieren. Betrachten Sie die technische Implementierung als Grundlage für die Erstellung einer erfolgreichen Anwendung, und passen Sie sie an Folgendes an:
 
 - Vorhandene Qualifikationen und Kenntnisse in Ihrer Organisation
 - Vertikale Anwendungsanforderungen
@@ -52,17 +52,18 @@ Azure IoT Hub wird als Cloudgateway der Remoteüberwachungslösung verwendet. [I
 Für IoT-Gerätekonnektivität können Sie Folgendes verwenden:
 
 - Die [IoT Hub-Geräte-SDKs](../iot-hub/iot-hub-devguide-sdks.md#azure-iot-device-sdks) zum Implementieren einer nativen Clientanwendung für Ihr Gerät. Die SDKs bieten Wrapper für die IoT Hub-REST-API und verarbeiten Szenarios wie beispielsweise Wiederholungen.
-- Die Integration mit Azure IoT Edge im Solution Accelerator zum Bereitstellen und Verwalten von benutzerdefinierten Modulen, die in Containern auf Ihren Geräten ausgeführt werden
+- Die Integration mit Azure IoT Edge zum Bereitstellen und Verwalten von benutzerdefinierten Modulen, die in Containern auf Ihren Geräten ausgeführt werden.
+- Die Integration mit der automatischen Geräteverwaltung im IoT Hub zur Massenverwaltung verbundener Geräte.
 
 ### <a name="stream-processing"></a>Datenstromverarbeitung
 
 Für die Datenstromverarbeitung verwendet die Lösung für die Remoteüberwachung Azure Stream Analytics, um die Verarbeitung komplexer Regeln durchzuführen. Wenn Sie einfachere Regeln verwenden möchten, steht ein benutzerdefinierter Microservice mit Unterstützung für die Verarbeitung einfacherer Regeln zur Verfügung. Dieses Setup gehört allerdings nicht zur schlüsselfertigen Bereitstellung. Die Referenzarchitektur empfiehlt Azure Functions für die Verarbeitung einfacher Regeln und Azure Stream Analytics für die Verarbeitung komplexer Regeln.
 
-### <a name="storage"></a>Speicher
+### <a name="storage"></a>Storage
 
 Für die Speicherung verwendet der Solution Accelerator für die Remoteüberwachung sowohl Azure Time Series Insights als auch Azure Cosmos DB. Azure Time Series Insights speichert die Nachrichten, die über IoT Hub von Ihren verbundenen Geräten eingehen. Der Solution Accelerator verwendet Azure Cosmos DB für alle anderen Speicher wie z.B. Cold Storage, Regeldefinitionen, Alarme und Konfigurationseinstellungen.
 
-Azure Cosmos DB ist die empfohlene allgemeine warme Speicherlösung für IoT-Anwendungen. Lösungen wie Azure Time Series Insights oder Azure Data Lake sind jedoch in vielen Anwendungsfällen auch geeignet. Mit Azure Time Series Insights erhalten Sie ausführliche Einblicke in Ihre Sensordaten und erkennen Trends und Abweichungen. Mit diesem Feature können Sie Ursachenanalysen ausführen und kostenintensive Ausfallzeiten vermeiden.
+Azure Cosmos DB ist die empfohlene allgemeine Warm Storage-Lösung für IoT-Anwendungen. Lösungen wie Azure Time Series Insights oder Azure Data Lake sind jedoch in vielen Anwendungsfällen auch geeignet. Mit Azure Time Series Insights erhalten Sie ausführliche Einblicke in Ihre Sensordaten und erkennen Trends und Abweichungen. Mit diesem Feature können Sie Ursachenanalysen ausführen und kostenintensive Ausfallzeiten vermeiden.
 
 > [!NOTE]
 > Time Series Insights ist für die Azure-Cloud in China derzeit nicht verfügbar. Für neue Solution Accelerator-Bereitstellungen für die Remoteüberwachung in der Azure-Cloud in China kann Cosmos DB für alle Speicherzwecke genutzt werden.

@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.workload: Active
 ms.date: 11/19/2018
-ms.openlocfilehash: 5a6d3265fde3b7633036ddc4cae0a5ea7d246957
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 48b2cdb26994d01dfced8216bb70493802f672a7
+ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52265261"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53413675"
 ---
 # <a name="tutorial-extract-transform-and-load-data-using-azure-databricks"></a>Tutorial: Extrahieren, Transformieren und Laden von Daten mithilfe von Azure Databricks
 
@@ -44,9 +44,9 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Vergewissern Sie sich zunächst, dass die folgenden Anforderungen erfüllt sind bzw. dass Folgendes vorhanden ist:
-- Erstellen Sie eine Azure SQL Data Warehouse-Instanz, erstellen Sie eine Firewallregel auf Serverebene, und stellen Sie als Serveradministrator eine Verbindung mit dem Server her. Führen Sie dazu die unter [Schnellstart: Erstellen und Abfragen einer Azure SQL Data Warehouse-Instanz im Azure-Portal](../sql-data-warehouse/create-data-warehouse-portal.md) angegebenen Schritte aus.
+- Erstellen Sie eine Azure SQL Data Warehouse-Instanz, erstellen Sie eine Firewallregel auf Serverebene, und stellen Sie als Serveradministrator eine Verbindung mit dem Server her. Befolgen Sie die Anweisungen unter [Schnellstart: Erstellen einer Azure SQL Data Warehouse-Instanz](../sql-data-warehouse/create-data-warehouse-portal.md)
 - Erstellen Sie einen Datenbank-Hauptschlüssel für die Azure SQL Data Warehouse-Instanz. Führen Sie dazu die unter [Erstellen eines Datenbank-Hauptschlüssels](https://docs.microsoft.com/sql/relational-databases/security/encryption/create-a-database-master-key) angegebenen Schritte aus.
-- Erstellen Sie ein Azure Blob Storage-Konto und einen Container darin. Rufen Sie außerdem den Zugriffsschlüssel für das Speicherkonto ab. Führen Sie dazu die unter [Schnellstart: Hochladen, Herunterladen und Auflisten von Blobs über das Azure-Portal](../storage/blobs/storage-quickstart-blobs-portal.md) angegebenen Schritte aus.
+- Erstellen Sie ein Azure Blob Storage-Konto und einen Container darin. Rufen Sie außerdem den Zugriffsschlüssel für das Speicherkonto ab. Befolgen Sie die Anweisungen unter [Schnellstart: Erstellen eines Azure Blob Storage-Kontos](../storage/blobs/storage-quickstart-blobs-portal.md).
 
 ## <a name="log-in-to-the-azure-portal"></a>Anmelden beim Azure-Portal
 
@@ -54,7 +54,7 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
 
 ## <a name="create-an-azure-databricks-workspace"></a>Erstellen eines Azure Databricks-Arbeitsbereichs
 
-In diesem Abschnitt erstellen Sie einen Azure Databricks-Arbeitsbereich über das Azure-Portal. 
+In diesem Abschnitt erstellen Sie einen Azure Databricks-Arbeitsbereich über das Azure-Portal.
 
 1. Klicken Sie im Azure-Portal auf **Ressource erstellen** > **Daten + Analysen** > **Azure Databricks**.
 
@@ -65,7 +65,7 @@ In diesem Abschnitt erstellen Sie einen Azure Databricks-Arbeitsbereich über da
     ![Erstellen eines Azure Databricks-Arbeitsbereichs](./media/databricks-extract-load-sql-data-warehouse/create-databricks-workspace.png "Erstellen eines Azure Databricks-Arbeitsbereichs")
 
     Geben Sie außerdem die folgenden Werte an:
-     
+    
     |Eigenschaft  |BESCHREIBUNG  |
     |---------|---------|
     |**Arbeitsbereichsname**     | Geben Sie einen Namen für Ihren Databricks-Arbeitsbereich an.        |
@@ -96,7 +96,7 @@ In diesem Abschnitt erstellen Sie einen Azure Databricks-Arbeitsbereich über da
 
     * Geben Sie einen Namen für den Cluster ein.
     * Erstellen Sie im Rahmen dieses Artikels einen Cluster mit der Runtime **4.0**.
-    * Aktivieren Sie das Kontrollkästchen **Terminate after \_\_ minutes of inactivity** (Nach \_\_ Minuten Inaktivität beenden). Geben Sie an, nach wie vielen Minuten der Cluster beendet werden soll, wenn er nicht verwendet wird.
+    * Aktivieren Sie das Kontrollkästchen **Terminate after \_\_ minutes of inactivity** (Nach _ Minuten Inaktivität beenden). Geben Sie an, nach wie vielen Minuten der Cluster beendet werden soll, wenn er nicht verwendet wird.
     
     Klicken Sie auf **Cluster erstellen**. Sobald der Cluster ausgeführt wird, können Sie Notizbücher an den Cluster anfügen und Spark-Aufträge ausführen.
 
@@ -106,11 +106,11 @@ In diesem Abschnitt erstellen Sie ein Data Lake Store-Konto und ordnen ihm einen
 
 1. Klicken Sie im [Azure-Portal](https://portal.azure.com) auf **Ressource erstellen** > **Speicher** > **Data Lake Store**.
 3. Geben Sie auf dem Blatt **Neuer Data Lake Store** die Werte wie im folgenden Screenshot gezeigt an:
-   
+
     ![Erstellen eines neuen Azure Data Lake Store-Kontos](./media/databricks-extract-load-sql-data-warehouse/create-new-datalake-store.png "Erstellen eines neuen Azure Data Lake-Kontos")
 
-    Geben Sie außerdem die folgenden Werte an: 
-     
+    Geben Sie außerdem die folgenden Werte an:
+    
     |Eigenschaft  |BESCHREIBUNG  |
     |---------|---------|
     |**Name**     | Geben Sie einen eindeutigen Namen für das Data Lake Store-Konto ein.        |
@@ -125,7 +125,7 @@ In diesem Abschnitt erstellen Sie ein Data Lake Store-Konto und ordnen ihm einen
 Als Nächstes erstellen Sie einen Azure Active Directory-Dienstprinzipal und ordnen ihn dem erstellten Data Lake Store-Konto zu.
 
 ### <a name="create-an-azure-active-directory-service-principal"></a>Erstellen eines Azure Active Directory-Dienstprinzipals
-   
+
 1. Klicken Sie im [Azure-Portal](https://portal.azure.com) auf **Alle Dienste**, und suchen Sie nach **Azure Active Directory**.
 
 2. Wählen Sie **App-Registrierungen** aus.
@@ -376,9 +376,9 @@ Die unformatierten Beispieldaten aus **small_radio_json.json** dienen zur Erfass
 
 In diesem Abschnitt laden Sie die transformierten Daten in Azure SQL Data Warehouse hoch. Mithilfe des Azure SQL Data Warehouse-Connectors für Azure Databricks können Sie einen Datenrahmen direkt als Tabelle in SQL Data Warehouse hochladen.
 
-Der SQL Date Warehouse-Connector verwendet, wie bereits erwähnt, Azure Blob Storage als temporären Speicherort, um Daten zwischen Azure Databricks und Azure SQL Data Warehouse hochzuladen. Geben Sie daher zunächst die Konfiguration für die Verbindungsherstellung mit dem Speicherkonto an. Das Konto muss im Rahmen der Vorbereitung für diesen Artikel bereits erstellt worden sein.
+Der SQL Data Warehouse-Connector verwendet, wie bereits erwähnt, Azure Blob Storage als temporären Speicherort, um Daten zwischen Azure Databricks und Azure SQL Data Warehouse hochzuladen. Geben Sie daher zunächst die Konfiguration für die Verbindungsherstellung mit dem Speicherkonto an. Das Konto muss im Rahmen der Vorbereitung für diesen Artikel bereits erstellt worden sein.
 
-1. Geben Sie die Konfiguration für den Zugriff auf das Azure Storage-Konto über Azure Databricks an. Entfernen Sie beim Kopieren der URL für Ihren Blobspeicher aus dem Portal unbedingt die Zeichenfolge *https://* am Anfang. 
+1. Geben Sie die Konfiguration für den Zugriff auf das Azure Storage-Konto über Azure Databricks an. Entfernen Sie beim Kopieren der URL für Ihren Blobspeicher aus dem Portal unbedingt die Zeichenfolge *https://* am Anfang.
 
         val blobStorage = "<STORAGE ACCOUNT NAME>.blob.core.windows.net"
         val blobContainer = "<CONTAINER NAME>"
@@ -410,7 +410,7 @@ Der SQL Date Warehouse-Connector verwendet, wie bereits erwähnt, Azure Blob Sto
         spark.conf.set(
           "spark.sql.parquet.writeLegacyFormat",
           "true")
-        
+    
         renamedColumnsDf.write
             .format("com.databricks.spark.sqldw")
             .option("url", sqlDwUrlSmall)
@@ -434,7 +434,7 @@ Nach Abschluss des Tutorials können Sie den Cluster beenden. Klicken Sie hierzu
 
 ![Beenden eines Databricks-Clusters](./media/databricks-extract-load-sql-data-warehouse/terminate-databricks-cluster.png "Beenden eines Databricks-Clusters")
 
-Wenn Sie den Cluster nicht manuell beenden, wird er automatisch beendet, sofern Sie bei der Erstellung des Clusters das Kontrollkästchen **Terminate after \_\_ minutes of inactivity** (Nach \_\_ Minuten Inaktivität beenden) aktiviert haben. Der Cluster wird dann automatisch beendet, wenn er für den angegebenen Zeitraum inaktiv war.
+Wenn Sie den Cluster nicht manuell beenden, wird er automatisch beendet, sofern Sie bei der Erstellung des Clusters das Kontrollkästchen **Terminate after \_\_ minutes of inactivity** (Nach __ Minuten Inaktivität beenden) aktiviert haben. Der Cluster wird dann automatisch beendet, wenn er für den angegebenen Zeitraum inaktiv war.
 
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Tutorial haben Sie Folgendes gelernt:

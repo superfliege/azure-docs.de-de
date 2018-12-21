@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Erstellen einer Pipeline für die kognitive Suche in Azure Search mithilfe des Portals | Microsoft Docs'
+title: 'Schnellstart: Pipeline für die kognitive Suche im Azure-Portal – Azure Search'
 description: Beispiel mit Qualifikationen für die Extrahierung von Daten, natürliche Sprache und Bildverarbeitung im Azure-Portal anhand von Beispieldaten.
 manager: cgronlun
 author: HeidiSteen
@@ -8,12 +8,13 @@ ms.service: search
 ms.topic: quickstart
 ms.date: 05/01/2018
 ms.author: heidist
-ms.openlocfilehash: bc88ca63f14c5480210455abcf403771b6a4c232
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.custom: seodec2018
+ms.openlocfilehash: 7d579bfdaf38b6c06b26cfa7b36f8e4d2ac5a1f2
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52264124"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53386263"
 ---
 # <a name="quickstart-create-a-cognitive-search-pipeline-using-skills-and-sample-data"></a>Schnellstart: Erstellen einer Pipeline für die kognitive Suche mithilfe von Qualifikationen und Beispieldaten
 
@@ -47,7 +48,9 @@ Sie können die kognitive Suche in einem Azure Search-Dienst ausprobieren, der i
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
 > [!NOTE]
-> Die kognitive Suche befindet sich derzeit in der öffentlichen Vorschauphase. Die Ausführung von Qualifikationsgruppen, das Extrahieren von Bildern und die Normalisierung werden derzeit kostenlos angeboten. Die Preise für diese Funktionen werden zu einem späteren Zeitpunkt bekannt gegeben. 
+> Ab dem 21. Dezember 2018 können Sie Cognitive Services-Ressourcen einer Azure Search-Qualifikationsgruppe zuordnen. Dies ermöglicht uns, für die Ausführung von Qualifikationsgruppen mit der Gebührenberechnung zu beginnen. Außerdem beginnen wir an diesem Datum damit, die Bildextraktion als Teil der Aufschlüsselung von Dokumenten zu berechnen. Die Textextraktion aus Dokumenten wird weiterhin ohne Zusatzkosten angeboten.
+>
+> Die Ausführung interner Qualifikationen wird nach dem bestehenden [nutzungsbasierten Preis für Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/) berechnet. Die Preise für die Bildextraktion entsprechen den Vorschaupreisen. Sie werden auf der [Preisseite von Azure Search](https://go.microsoft.com/fwlink/?linkid=2042400) beschrieben. [Weitere Informationen](cognitive-search-attach-cognitive-services.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -66,7 +69,7 @@ Registrieren Sie sich zunächst beim Azure Search-Dienst.
 
 1. Klicken Sie auf **Ressource erstellen**, suchen Sie nach Azure Search, und klicken Sie auf **Erstellen**. Wenn Sie zum ersten Mal einen Suchdienst einrichten und dazu weitere Hilfe benötigen, lesen Sie [Erstellen eines Azure Search-Diensts im Portal](search-create-service-portal.md).
 
-  ![Dashboard-Portal](./media/cognitive-search-tutorial-blob/create-service-full-portal.png "Erstellen eines Azure Search-Diensts im Portal")
+  ![Dashboard-Portal](./media/cognitive-search-tutorial-blob/create-search-service-full-portal.png "Erstellen eines Azure Search-Diensts im Portal")
 
 1. Erstellen Sie unter „Ressourcengruppe“ eine Ressourcengruppe zur Aufnahme aller Ressourcen, die Sie im Rahmen dieses Schnellstarts erstellen. Das macht Ihnen das Bereinigen der Ressourcen nach dem Abschluss des Schnellstarts leichter.
 
@@ -76,16 +79,18 @@ Registrieren Sie sich zunächst beim Azure Search-Dienst.
 
   Ein kostenloser Dienst ist auf 3 Indizes, eine maximale Blobgröße von 16 MB und Indizierungsvorgänge von 2 Minuten Dauer beschränkt, was zum vollständigen Nutzen der Möglichkeiten der kognitiven Suche unzureichend ist. Informationen zum Überprüfen der Grenzwerte für verschiedene Stufen finden Sie unter [Diensteinschränkungen](search-limits-quotas-capacity.md).
 
+  ![Dienstdefinitionsseite im Portal](./media/cognitive-search-tutorial-blob/create-search-service1.png "Dienstdefinitionsseite im Portal")
+  ![Dienstdefinitionsseite im Portal](./media/cognitive-search-tutorial-blob/create-search-service2.png "Dienstdefinitionsseite im Portal")
   > [!NOTE]
-  > Die kognitive Suche befindet sich derzeit in der öffentlichen Vorschauphase. Die Ausführung von Qualifikationsgruppen ist zurzeit in allen Stufen verfügbar, einschließlich der kostenlosen. Die Preisgestaltung für diese Funktion wird zu einem späteren Zeitpunkt bekannt gegeben.
+  > Die kognitive Suche befindet sich derzeit in der öffentlichen Vorschauphase. Die Ausführung von Qualifikationsgruppen ist zurzeit in allen Stufen verfügbar, einschließlich der kostenlosen. Ohne die Zuordnung einer kostenpflichtigen Cognitive Services-Ressource, können Sie eine begrenzte Anzahl von Anreicherungen durchführen. [Weitere Informationen](cognitive-search-attach-cognitive-services.md).
 
 1. Heften Sie den Dienst zwecks schnellem Zugriff auf Dienstinformationen an das Dashboard an.
 
-  ![Dienstdefinitionsseite im Portal](./media/cognitive-search-tutorial-blob/create-search-service.png "Dienstdefinitionsseite im Portal")
+  ![Dienstdefinitionsseite im Portal](./media/cognitive-search-tutorial-blob/create-search-service3.png "Dienstdefinitionsseite im Portal")
 
 ### <a name="set-up-azure-blob-service-and-load-sample-data"></a>Einrichten des Azure Blob-Diensts und Laden von Beispieldaten
 
-Die Anreicherungspipeline ruft mit Unterstützung von [Azure Search-Indexern](search-indexer-overview.md) aus Azure-Datenquellen ab. Für diese Übung verwenden wir Blobspeicher, um verschiedene Inhaltstypen anschaulich vorzustellen.
+Die Anreicherungspipeline ruft mit Unterstützung von [Azure Search-Indexern](search-indexer-overview.md) aus Azure-Datenquellen ab. Bitte beachten Sie, dass der Azure-Tabellenspeicher für die kognitive Suche nicht unterstützt wird. Für diese Übung verwenden wir Blobspeicher, um verschiedene Inhaltstypen anschaulich vorzustellen.
 
 1. [Laden Sie die Beispieldaten herunter](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4), die aus einem kleinen Satz Dateien verschiedener Typen bestehen. 
 
@@ -103,7 +108,7 @@ Wechseln Sie zur Dashboardseite des Azure Search-Diensts zurück, und klicken Si
 
 Wählen Sie unter **Verbindung mit Ihren Daten herstellen** > **Azure-Blobspeicher** das erstellte Konto und den erstellten Container aus. Geben Sie der Datenquelle einen Namen, und verwenden Sie für alles andere die Standardwerte. 
 
-   ![Azure-Blobkonfiguration](./media/cognitive-search-quickstart-blob/blob-datasource.png)
+   ![Azure-Blobkonfiguration](./media/cognitive-search-quickstart-blob/blob-datasource2.png)
 
 
 Klicken Sie auf **OK**, um die Datenquelle zu erstellen.

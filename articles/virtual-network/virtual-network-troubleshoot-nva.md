@@ -14,18 +14,21 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/26/2018
 ms.author: genli
-ms.openlocfilehash: 2a0f6b75c540f319848805e8a9bda7b166d5d709
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 13cec39278577a818ef43f1215fd2e6653f15ed2
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50138658"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52678439"
 ---
 #  <a name="network-virtual-appliance-issues-in-azure"></a>Probleme mit virtuellen Netzwerkappliances in Azure
 
 Bei der Verwendung einer virtuellen Netzwerkappliance (Network Virtual Appliance, NVA) eines Drittanbieters in Microsoft Azure, treten unter Umständen Probleme und Fehler mit der VM- oder VPN-Konnektivität auf. Dieser Artikel enthält die wesentlichen Schritte, um grundlegende Anforderungen an die Azure-Plattform für NVA-Konfigurationen zu überprüfen.
 
-Technischer Support für NVAs von Drittanbietern und deren Integration in die Azure-Plattform wird vom NVA-Anbieter bereitgestellt. Bei einem Konnektivitäts- oder Routingproblem, das eine NVA betrifft, sollten Sie [sich direkt an den Anbieter der NVA](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines) wenden.
+Technischer Support für NVAs von Drittanbietern und deren Integration in die Azure-Plattform wird vom NVA-Anbieter bereitgestellt. 
+
+> [!NOTE]
+> Bei einem Konnektivitäts- oder Routingproblem, das eine NVA betrifft, sollten Sie [sich direkt an den Anbieter der NVA](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines) wenden.
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
@@ -37,6 +40,7 @@ Technischer Support für NVAs von Drittanbietern und deren Integration in die Az
 - UDRs in Subnetzen virtueller Netzwerke, die Datenverkehr von einer NVA weiterleiten
 - Weiterleiten von Tabellen und Regeln in der NVA (z.B. von NIC1 an NIC2)
 - Ablaufverfolgung für NVA-NICs, um das Empfangen und Senden von Netzwerkdatenverkehr zu überprüfen
+- Bei Verwendung einer Standard-SKU und öffentlicher IP-Adressen müssen eine NSG und eine explizite Regel erstellt werden, damit der Datenverkehr an die NVA weitergeleitet werden darf.
 
 ## <a name="basic-troubleshooting-steps"></a>Grundlegende Schritte zur Problembehandlung
 
@@ -73,6 +77,8 @@ Verwenden von PowerShell
           Execute: $nic2 #and check for an expected output:
           EnableIPForwarding   : True
           NetworkSecurityGroup : null
+
+**Bei Verwendung einer Standard-SKU und öffentlicher IP-Adressen muss eine NSG vorhanden sein** Bei Verwendung einer Standard-SKU und öffentlicher IP-Adressen müssen eine NSG und eine explizite Regel erstellt werden, damit der Datenverkehr an die NVA weitergeleitet werden darf.
 
 **Überprüfen, ob der Datenverkehr an die NVA weitergeleitet werden kann**
 

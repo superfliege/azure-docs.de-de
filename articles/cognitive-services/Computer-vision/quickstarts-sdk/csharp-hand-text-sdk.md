@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Extrahieren von Text – SDK, C# – Maschinelles Sehen'
+title: 'Schnellstart: Extrahieren von Text – SDK, C# – maschinelles Sehen'
 titleSuffix: Azure Cognitive Services
 description: In diesem Schnellstart extrahieren Sie Text aus einem Bild, indem Sie die Windows-Clientbibliothek der Maschinelles Sehen-API verwenden.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 09/27/2018
 ms.author: pafarley
-ms.openlocfilehash: c1b25db440023618d3d633f9a2b2ebcd5c0a6293
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: c0323c215e83850dc53acd5e350d7eeeeb9a05b1
+ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51852485"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53413216"
 ---
-# <a name="quickstart-extract-text-using-the-computer-vision-sdk-and-c"></a>Schnellstart: Extrahieren von Text mit dem Maschinelles Sehen SDK und C#
+# <a name="quickstart-extract-text-using-the-computer-vision-sdk-and-c"></a>Schnellstart: Extrahieren von Text mit dem SDK für maschinelles Sehen und C#
 
 In dieser Schnellstartanleitung extrahieren Sie handschriftlichen oder gedruckten Text aus einem Bild, indem Sie die Windows-Clientbibliothek der Maschinelles Sehen-API verwenden.
 
@@ -188,7 +188,7 @@ namespace ExtractText
 
 Bei einer erfolgreichen Antwort werden für jedes Bild die Zeilen mit dem erkannten Text angezeigt.
 
-Ein Beispiel für eine unformatierte JSON-Ausgabe finden Sie unter [Schnellstart: Extrahieren von handschriftlichem Text: REST, C#](../QuickStarts/CSharp-hand-text.md#examine-the-response).
+Unter [Schnellstart: Extrahieren von handschriftlichem Text – REST, C#](../QuickStarts/CSharp-hand-text.md#examine-the-response) finden Sie ein Beispiel für eine unformatierte JSON-Ausgabe.
 
 ```cmd
 Calling GetHandwritingRecognitionOperationResultAsync()

@@ -10,12 +10,12 @@ ms.author: gwallace
 ms.date: 05/17/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: fe35f26fe73661901fa85da65e353fe66adf5d47
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 538208c39d6436c15b95760133e00c980e2e8277
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47094216"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52727901"
 ---
 # <a name="role-based-access-control-in-azure-automation"></a>Rollenbasierte Zugriffssteuerung in Azure Automation
 
@@ -73,7 +73,7 @@ Die Rolle „Leser“ ermöglicht Ihnen, alle Ressourcen im Automation-Konto anz
 
 ### <a name="automation-operator"></a>Operator für Automation
 
-Ein Operator für Automation kann Aufträge erstellen und verwalten sowie Runbooknamen und -Eigenschaften für alle Runbooks in einem Automation-Konto lesen.  Hinweis: Legen Sie nicht diese Rolle fest, wenn Sie den Operatorzugriff auf einzelne Runbooks steuern möchten. Verwenden Sie stattdessen die Rollen „Automation-Auftragsoperator“ und „Automation-Runbookoperator“. Die folgende Tabelle zeigt die Berechtigungen für die Rolle:
+Ein Operator für Automation kann Aufträge erstellen und verwalten sowie Runbooknamen und -Eigenschaften für alle Runbooks in einem Automation-Konto lesen.  Hinweis: Legen Sie diese Rolle nicht fest, wenn Sie den Operatorzugriff auf einzelne Runbooks steuern möchten. Verwenden Sie stattdessen die Rollen „Automation-Auftragsoperator“ und „Automation-Runbookoperator“. Die folgende Tabelle zeigt die Berechtigungen für die Rolle:
 
 |**Aktionen**  |**Beschreibung**  |
 |---------|---------|
@@ -274,12 +274,13 @@ Der folgende Abschnitt veranschaulicht das Konfigurieren der rollenbasierten Zug
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an, und öffnen Sie auf der Seite „Automation-Konten“ Ihr Automation-Konto.
 2. Klicken Sie oben links auf das Steuerelement **Zugriffssteuerung (IAM)**. Dadurch wird die Seite **Zugriffssteuerung (IAM)** geöffnet. Hier können Sie neue Benutzer, Gruppen und Anwendungen zur Verwaltung Ihres Automation-Kontos hinzufügen. Des Weiteren können Sie vorhandene Rollen anzeigen, die für das Automation-Konto konfiguriert werden können.
+3. Klicken Sie auf die Registerkarte **Rollenzuweisungen**.
 
    ![Zugriffsschaltfläche](media/automation-role-based-access-control/automation-01-access-button.png)
 
 #### <a name="add-a-new-user-and-assign-a-role"></a>Einen neuen Benutzer hinzufügen und eine Rolle zuweisen
 
-1. Klicken Sie auf der Seite **Zugriffssteuerung (IAM)** auf **+Hinzufügen**, um die Seite **Berechtigungen hinzufügen** zu öffnen. Hier können Sie einen Benutzer, eine Gruppe oder eine Anwendung hinzufügen und ihm bzw. ihr Rollen zuweisen.
+1. Klicken Sie auf der Seite **Zugriffssteuerung (IAM)** auf **+ Rollenzuweisung hinzufügen**, um die Seite **Rollenzuweisung hinzufügen** zu öffnen. Hier können Sie einen Benutzer, eine Gruppe oder eine Anwendung hinzufügen und ihm bzw. ihr Rollen zuweisen.
 
 2. Wählen Sie eine Rolle aus der Liste der verfügbaren Rollen aus. Sie können aber jede der verfügbaren integrierten Rollen, die von Automation-Konten unterstützt werden, oder auch eine eigene, benutzerdefinierte Rolle auswählen.
 

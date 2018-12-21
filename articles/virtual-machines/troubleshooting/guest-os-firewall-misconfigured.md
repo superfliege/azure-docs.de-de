@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: ad659cfcf1bfdad440968da5568b993724a5f351
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: cd45220326221490b461c5706620df2aab55a5d6
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52319179"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53137836"
 ---
 # <a name="azure-vm-guest-os-firewall-is-misconfigured"></a>Falsch konfigurierte Gastbetriebssystem-Firewall der Azure-VM
 
@@ -33,7 +33,7 @@ In diesem Artikel wird beschrieben, wie eine falsch konfigurierte Gastbetriebssy
 
 ## <a name="cause"></a>Ursache
 
-Eine fehlerhafte Konfiguration der Gastbetriebssystem-Firewall kann den Netzwerkdatenverkehr mit dem virtuellen Computer teilweise oder völlig blockieren. 
+Eine fehlerhafte Konfiguration der Gastbetriebssystem-Firewall kann den Netzwerkdatenverkehr mit dem virtuellen Computer teilweise oder völlig blockieren.
 
 ## <a name="solution"></a>Lösung
 
@@ -43,19 +43,19 @@ Verwenden Sie zum Beheben dieses Problems die serielle Konsole, oder [reparieren
 
 ## <a name="online-mitigations"></a>Vorbeugende Maßnahmen online
 
-Stellen Sie eine Verbindung mit der [seriellen Konsole her, und öffnen Sie eine PowerShell-Instanz](serial-console-windows.md#open-cmd-or-powershell-in-serial-console). Ist die serielle Konsole auf Ihrem virtuellen Computer nicht aktiviert, gehen Sie zum Abschnitt „Reparieren des virtuellen Computers im Offlinestatus“ des folgenden Azure-Artikels:
+Stellen Sie eine Verbindung mit der [seriellen Konsole her, und öffnen Sie eine PowerShell-Instanz](serial-console-windows.md#use-cmd-or-powershell-in-serial-console). Ist die serielle Konsole auf Ihrem virtuellen Computer nicht aktiviert, gehen Sie zum Abschnitt „Reparieren des virtuellen Computers im Offlinestatus“ des folgenden Azure-Artikels:
 
  [Interner Fehler beim Herstellen einer Verbindung mit einem virtuellen Azure-Computer über Remotedesktop](troubleshoot-rdp-internal-error.md#repair-the-vm-offline)
 
-Die folgenden Regeln können bearbeitet werden, um entweder den Zugriff auf den virtuellen Computer (über RDP) zu aktivieren oder eine einfachere Problembehandlung zu ermöglichen: 
+Die folgenden Regeln können bearbeitet werden, um entweder den Zugriff auf den virtuellen Computer (über RDP) zu aktivieren oder eine einfachere Problembehandlung zu ermöglichen:
 
-*   Remotedesktop (TCP eingehend): Dies ist die standardmäßige Regel, die primären Zugriff auf den virtuellen Computer bietet, indem RDP in Azure zugelassen wird.
+*   Remotedesktop (TCP eingehend): Dies ist die Standardregel, die primären Zugriff auf den virtuellen Computer bietet, indem RDP in Azure zugelassen wird.
 
 *   Windows-Remoteverwaltung (HTTP eingehend): Mit dieser Regel können Sie die Verbindung mit dem virtuellen Computer mithilfe von PowerShell herstellen. In Azure können Sie mit dieser Art von Zugriff den Skripterstellungsaspekt von Remoteskripterstellung und Problembehandlung verwenden.
 
 *   Datei- und Druckerfreigabe (SMB eingehend): Diese Regel ermöglicht den Zugriff auf die Netzwerkfreigabe als eine Option zur Problembehandlung.
 
-*   Datei- und Druckerfreigabe (Echoanforderung – ICMPv4 eingehend): Mit dieser Regel können Sie den virtuellen Computer pingen. 
+*   Datei- und Druckerfreigabe (Echoanforderung – ICMPv4 eingehend): Mit dieser Regel können Sie den virtuellen Computer pingen.
 
 In der Instanz „Zugriff auf die serielle Konsole“ können Sie den aktuellen Status der Firewallregel abfragen.
 
@@ -83,7 +83,7 @@ In der Instanz „Zugriff auf die serielle Konsole“ können Sie den aktuellen 
     netsh advfirewall firewall set rule name="<RULE NAME>" new enable=yes
     ```
 
-*   Zur Problembehandlung können Sie die Firewallprofile auf OFF setzen: 
+*   Zur Problembehandlung können Sie die Firewallprofile auf OFF setzen:
 
     ```cmd
     netsh advfirewall set allprofiles state off

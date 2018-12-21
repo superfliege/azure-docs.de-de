@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 11/06/2018
 ms.author: mjbrown
-ms.openlocfilehash: 5d64aa8b50cdde23d1bb8980510cfac202204f9a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 11c68b61802f6c7b3755da71c176ea777f171e4c
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51262453"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53409835"
 ---
 # <a name="query-containers-in-azure-cosmos-db"></a>Abfragen von Containern in Azure Cosmos DB
 
@@ -20,7 +20,7 @@ In diesem Artikel erfahren Sie, wie Sie einen Container (Sammlung, Diagramm, Tab
 
 ## <a name="in-partition-query"></a>Abfrage innerhalb einer Partition
 
-Bei Abfragen von Daten in Containern leitet Cosmos DB die Abfrage automatisch an die Partitionen weiter, die den im Filter angegebenen Partitionsschlüsselwerten entsprechen (sofern vorhanden). Diese Abfrage wird z.B. nur an die Partition weitergeleitet, die den Partitionsschlüssel „XMS-0001“ enthält.
+Bei Abfragen von Daten in Containern leitet Azure Cosmos DB die Abfrage automatisch an die Partitionen weiter, die den im Filter angegebenen Partitionsschlüsselwerten entsprechen, wenn für eine Abfrage Partitionsschlüsselfilter angegeben sind. Die folgende Abfrage wird beispielsweise an die DeviceId-Partition weitergeleitet, die alle Dokumente enthält, die dem Partitionsschlüsselwert „XMS-0001“ entsprechen.
 
 ```csharp
 // Query using partition key into a class called, DeviceReading

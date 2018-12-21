@@ -1,5 +1,5 @@
 ---
-title: Bereitstellen von Azure Machine Learning mit Azure IoT Edge | Microsoft-Dokumentation
+title: 'Tutorial: Bereitstellen von Azure Machine Learning für ein Gerät – Azure IoT Edge | Microsoft-Dokumentation'
 description: In diesem Tutorial stellen Sie Azure Machine Learning als Modul auf einem Edgegerät bereit.
 author: kgremban
 manager: philmea
@@ -8,15 +8,15 @@ ms.date: 11/15/2018
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.custom: mvc
-ms.openlocfilehash: c98dc9019421133b83ab9aec29f725852315f6ba
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.custom: mvc, seodec18
+ms.openlocfilehash: db8318e94b646d57c00bc2e6958ba9e7f46ec7af
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51977205"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53344013"
 ---
-# <a name="tutorial-deploy-azure-machine-learning-as-an-iot-edge-module-preview"></a>Tutorial: Bereitstellen von Azure Machine Learning als IoT Edge-Modul – Vorschau
+# <a name="tutorial-deploy-azure-machine-learning-as-an-iot-edge-module-preview"></a>Tutorial: Bereitstellen von Azure Machine Learning als IoT Edge-Modul (Vorschauversion)
 
 Mithilfe von IoT Edge-Modulen können Sie Code bereitstellen, mit dem Ihre Geschäftslogik direkt auf Ihren IoT Edge-Geräten implementiert wird. In diesem Tutorial erfahren Sie Schritt für Schritt, wie Sie ein Azure Machine Learning-Modul bereitstellen, das anhand der Temperaturdaten eines simulierten Computers den Ausfall eines Geräts vorhersagt. Weitere Informationen zu Azure ML in IoT Edge finden Sie in der [Azure Machine Learning-Dokumentation](../machine-learning/service/how-to-deploy-to-iot.md).
 
@@ -115,7 +115,7 @@ Erstellen Sie gemäß der Anleitung unter [Vorbereiten der Bereitstellung von Mo
 
 1. Fügen Sie im Abschnitt **Registrierungseinstellungen** die Anmeldeinformationen hinzu, die Sie aus der Azure Container Registry-Instanz kopiert haben. 
 
-   ![Hinzufügen der Registrierungsanmeldeinformationen](./media/tutorial-deploy-machine-learning/registry-settings.png)
+   ![Hinzufügen von Registrierungsanmeldeinformationen zum Manifest](./media/tutorial-deploy-machine-learning/registry-settings.png)
 
 1. Wenn Sie zuvor das tempSensor-Modul auf Ihrem IoT Edge-Gerät bereitgestellt haben, wird es unter Umständen automatisch aufgefüllt. Wenn es nicht bereits in Ihrer Liste der Module enthalten ist, fügen Sie es hinzu.
 
@@ -174,7 +174,7 @@ Wenn Sie diese Befehle auf einem Linux-Gerät ausführen, müssen Sie ggf. `sudo
 
 ### <a name="view-data-arriving-at-your-iot-hub"></a>Anzeigen von Daten, die bei Ihrer IoT Hub-Instanz eingehen
 
-Sie können die Gerät-zu-Cloud-Nachrichten, die Ihre IoT Hub-Instanz empfängt, mithilfe der [Azure IoT Toolkit-Erweiterung für Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) anzeigen.
+Sie können die Gerät-zu-Cloud-Nachrichten, die Ihre IoT Hub-Instanz empfängt, mithilfe der [Azure IoT Hub-Toolkit-Erweiterung für Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) (bisher als Azure IoT-Toolkit-Erweiterung bekannt) anzeigen.
 
 Die folgenden Schritte zeigen, wie Sie Visual Studio Code einrichten, um Gerät-zu-Cloud-Nachrichten zu überwachen, die bei Ihrer IoT Hub-Instanz eingehen. 
 
@@ -182,7 +182,7 @@ Die folgenden Schritte zeigen, wie Sie Visual Studio Code einrichten, um Gerät-
 
 2. Wählen Sie **...** und dann **IoT Hub-Verbindungszeichenfolge festlegen** aus dem Menü aus.
 
-   ![Menü „...“ für IoT Hub-Geräte](./media/tutorial-deploy-machine-learning/set-connection.png)
+   ![Festlegen der IoT Hub-Verbindungszeichenfolge](./media/tutorial-deploy-machine-learning/set-connection.png)
 
 3. Geben Sie in das Textfeld, das sich oben auf der Seite öffnet, die Verbindungszeichenfolge „iothubowner“ für Ihren IoT Hub ein. Ihr IoT Edge-Gerät sollte in der Liste der IoT Hub-Geräte angezeigt werden.
 

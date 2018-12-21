@@ -16,12 +16,12 @@ ms.topic: get-started-article
 ms.date: 07/17/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: afc24d75b128c192efe14af061ac1df7521c7ef2
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 2fe5c44e834826f9dc62acd30e853c3736b432ee
+ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51621258"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53412434"
 ---
 # <a name="federate-multiple-instances-of-azure-ad-with-single-instance-of-ad-fs"></a>Erstellen eines Verbunds mit mehreren Instanzen von Azure AD und einer Einzelinstanz von AD FS
 
@@ -39,13 +39,13 @@ Mehrere Gesamtstrukturen können in einer einzelnen hochverfügbaren AD FS-Farm 
 
 Angenommen, eine Domäne namens „contoso.com“ ist in „contoso.onmicrosoft.com“ (Azure Active Directory) bereits Teil eines Verbunds mit der lokalen AD FS-Instanz, die in der lokalen Active Directory-Umgebung „contoso.com“ installiert ist. „fabrikam.com“ ist eine Domäne in „fabrikam.onmicrosoft.com“ (Azure Active Directory).
 
-## <a name="step-1-establish-a-two-way-trust"></a>Schritt 1: Einrichten einer bidirektionale Vertrauensstellung
+## <a name="step-1-establish-a-two-way-trust"></a>Schritt 1: Einrichten einer bidirektionalen Vertrauensstellung
  
 Damit AD FS in „contoso.com“ Benutzer in „fabrikam.com“ authentifizieren kann, ist zwischen „contoso.com“ und „fabrikam.com“ eine bidirektionale Vertrauensstellung erforderlich. Eine Anleitung zum Erstellen der bidirektionalen Vertrauensstellung finden Sie in [diesem Artikel](https://technet.microsoft.com/library/cc816590.aspx).
  
 ## <a name="step-2-modify-contosocom-federation-settings"></a>Schritt 2: Ändern der Verbundeinstellungen für „contoso.com“ 
  
-Für den Verbund zwischen einer einzelnen Domäne und AD FS ist der Standardaussteller http://ADFSServiceFQDN/adfs/services/trust festgelegt (Beispiel: http://fs.contoso.com/adfs/services/trust). Azure Active Directory benötigt für jede Verbunddomäne einen eindeutigen Aussteller. Da die gleiche AD FS-Instanz zwei Domänen zu einem Verbund zusammenfasst, muss der Ausstellerwert so angepasst werden, dass er für jede Domäne eindeutig ist, die AD FS mit Azure Active Directory zu einem Verbund zusammenfasst. 
+Für den Verbund zwischen einer einzelnen Domäne und AD FS ist der Standardaussteller http://ADFSServiceFQDN/adfs/services/trust festgelegt (Beispiel: `http://fs.contoso.com/adfs/services/trust`). Azure Active Directory benötigt für jede Verbunddomäne einen eindeutigen Aussteller. Da die gleiche AD FS-Instanz zwei Domänen zu einem Verbund zusammenfasst, muss der Ausstellerwert so angepasst werden, dass er für jede Domäne eindeutig ist, die AD FS mit Azure Active Directory zu einem Verbund zusammenfasst. 
  
 Öffnen Sie auf dem AD FS-Server Azure AD PowerShell. (Stellen Sie sicher, dass das MSOnline-Modul installiert ist.) Führen Sie die folgenden Schritte aus:
  
@@ -55,7 +55,7 @@ Der Aussteller in der Domänenverbundeinstellung wird in http://contoso.com/adfs
  
 ## <a name="step-3-federate-fabrikamcom-with-ad-fs"></a>Schritt 3: Erstellen eines Verbunds mit „fabrikam.com“ und AD FS
  
-Gehen Sie in der Azure AD PowerShell-Sitzung wie folgt vor: Stellen Sie eine Verbindung mit der Azure Active Directory-Instanz her, die die Domäne „fabrikam.com“ enthält.
+Führen Sie in einer PowerShell-Sitzung für Azure AD folgende Schritte aus: Stellen Sie eine Verbindung mit dem Azure Active Directory-Verzeichnis her, das die Domäne „fabrikam.com“ enthält:
 
     Connect-MsolService
 Konvertieren Sie die verwaltete Domäne „fabrikam.com“ in eine Verbunddomäne:

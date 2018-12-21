@@ -1,6 +1,6 @@
 ---
-title: Azure IoT-Geräteverwaltung mit Azure IoT-Toolkiterweiterung für Visual Studio Code | Microsoft-Dokumentation
-description: Verwenden Sie die Azure IoT-Toolkiterweiterung für Visual Studio Code für die Geräteverwaltung mit Azure IoT Hub, indem direkte Methoden und gewünschte Eigenschaften von Gerätezwillingen verwendet werden.
+title: Azure IoT-Geräteverwaltung mit der Azure IoT Hub Toolkit-Erweiterung für Visual Studio Code | Microsoft-Dokumentation
+description: Verwenden Sie die Azure IoT Hub Toolkit-Erweiterung für Visual Studio Code für die Geräteverwaltung mit Azure IoT Hub, indem direkte Methoden und gewünschte Eigenschaften von Gerätezwillingen verwendet werden.
 author: formulahendry
 ms.service: iot-hub
 services: iot-hub
@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 8/3/2018
 ms.author: junhan
-ms.openlocfilehash: d79e5b0b5281d502523cd92fbdb21106ffde0c21
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 4b7de0652172de5120e88e7c597fc31037ddbbb3
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48040132"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53339560"
 ---
-# <a name="use-azure-iot-toolkit-extension-for-visual-studio-code-for-azure-iot-hub-device-management"></a>Verwenden der Azure IoT-Toolkiterweiterung für Visual Studio Code für die Geräteverwaltung mit Azure IoT Hub
+# <a name="use-azure-iot-hub-toolkit-extension-for-visual-studio-code-for-azure-iot-hub-device-management"></a>Verwenden der Azure IoT Hub Toolkit-Erweiterung für Visual Studio Code für die Geräteverwaltung mit Azure IoT Hub
 
 ![Lückenloses Diagramm](media/iot-hub-get-started-e2e-diagram/2.png)
 
-Das [Azure IoT-Toolkit](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) ist eine nützliche Visual Studio Code-Erweiterung, die die IoT Hub-Verwaltung vereinfacht. Es bietet Verwaltungsoptionen, die Sie zum Ausführen verschiedener Aufgaben verwenden können.
+[Azure IoT Hub Toolkit](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) ist eine nützliche Visual Studio Code-Erweiterung, die die IoT Hub-Verwaltung vereinfacht. Es bietet Verwaltungsoptionen, die Sie zum Ausführen verschiedener Aufgaben verwenden können.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
@@ -36,18 +36,18 @@ Gerätezwillinge sind JSON-Dokumente, in denen Gerätestatusinformationen (Metad
 
 ## <a name="what-you-learn"></a>Lerninhalt
 
-Es wird beschrieben, wie Sie die Azure IoT-Toolkiterweiterung für Visual Studio Code mit unterschiedlichen Verwaltungsoptionen auf Ihrem Entwicklungscomputer verwenden.
+Es wird beschrieben, wie Sie die Azure IoT Hub Toolkit-Erweiterung für Visual Studio Code mit unterschiedlichen Verwaltungsoptionen auf Ihrem Entwicklungscomputer verwenden.
 
 ## <a name="what-you-do"></a>Aufgaben
 
-Führen Sie die Azure IoT-Toolkiterweiterung für Visual Studio Code mit unterschiedlichen Verwaltungsoptionen aus.
+Führen Sie die Azure IoT Hub Toolkit-Erweiterung für Visual Studio Code mit unterschiedlichen Verwaltungsoptionen aus.
 
 ## <a name="what-you-need"></a>Voraussetzungen
 
 * Ein aktives Azure-Abonnement.
 * Ein Azure IoT Hub in Ihrem Abonnement.
 * [Visual Studio Code](https://code.visualstudio.com/)
-* [Azure IoT-Toolkit](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit)
+* [Azure IoT Hub Toolkit](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit)
 
 ## <a name="sign-in-to-access-your-iot-hub"></a>Anmeldung zum Zugreifen auf Ihren IoT Hub
 
@@ -70,7 +70,7 @@ Führen Sie die Azure IoT-Toolkiterweiterung für Visual Studio Code mit untersc
 
 2. Geben Sie den Methodennamen und die Nutzlast im Eingabefeld ein.
 
-3. Die Ergebnisse werden in der Ansicht **AUSGABE** > **Azure IoT-Toolkit** angezeigt.
+3. Die Ergebnisse werden in der Ansicht **AUSGABE** > **Azure IoT Hub Toolkit** angezeigt.
 
 ## <a name="read-device-twin"></a>Lesen des Gerätezwillings
 
@@ -94,10 +94,10 @@ Um eine Nachricht von Ihrem IoT Hub zu Ihrem Gerät zu senden, gehen Sie folgend
 
 2. Geben Sie die Nachricht in das Eingabefeld ein.
 
-3. Die Ergebnisse werden in der Ansicht **AUSGABE** > **Azure IoT-Toolkit** angezeigt.
+3. Die Ergebnisse werden in der Ansicht **AUSGABE** > **Azure IoT Hub Toolkit** angezeigt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Es wurde beschrieben, wie Sie die Azure IoT-Toolkiterweiterung für Visual Studio Code mit unterschiedlichen Verwaltungsoptionen verwenden.
+Es wurde beschrieben, wie Sie die Azure IoT Hub Toolkit-Erweiterung für Visual Studio Code mit unterschiedlichen Verwaltungsoptionen verwenden.
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]

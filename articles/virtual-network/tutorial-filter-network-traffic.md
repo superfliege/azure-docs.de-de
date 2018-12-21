@@ -14,15 +14,15 @@ ms.devlang: ''
 ms.topic: tutorial
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
-ms.date: 06/20/2018
+ms.date: 12/13/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: a731c1e0617fe0ccf9d571dd2b7d0c2ad107bc9e
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 68fdb158a7d4c723bffb54f33203120afb72a8ef
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37901397"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53385396"
 ---
 # <a name="tutorial-filter-network-traffic-with-a-network-security-group-using-the-azure-portal"></a>Tutorial: Filtern von Netzwerkdatenverkehr mithilfe einer Netzwerksicherheitsgruppe über das Azure-Portal
 
@@ -38,7 +38,7 @@ Dieser Artikel kann auch mit der [Azure-Befehlszeilenschnittstelle](tutorial-fil
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
-## <a name="log-in-to-azure"></a>Anmelden bei Azure
+## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
 Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
 
@@ -54,7 +54,7 @@ Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
     | Adressraum           | 10.0.0.0/16                                        |
     | Abonnement            | Wählen Sie Ihr Abonnement aus.                          |
     | Ressourcengruppe          | Klicken Sie auf **Neu erstellen**, und geben Sie *myResourceGroup* ein. |
-    | Speicherort                | Wählen Sie **USA, Osten** aus.                                |
+    | Standort                | Wählen Sie **USA, Osten** aus.                                |
     | Subnetzname            | mySubnet                                           |
     | Subnetzadressbereich  | 10.0.0.0/24                                        |
 
@@ -63,7 +63,7 @@ Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
 Mithilfe einer Anwendungssicherheitsgruppe können Sie Server mit ähnlichen Funktionen gruppieren, wie etwa Webserver.
 
 1. Klicken Sie im Azure-Portal links oben auf **+ Ressource erstellen**.
-2. Geben Sie in das Feld **Marketplace durchsuchen** den Suchbegriff *Anwendungssicherheitsgruppe* ein. Wenn in den Suchergebnissen **Anwendungssicherheitsgruppe** angezeigt wird, wählen Sie dieses Ergebnis aus. Wählen Sie **Anwendungssicherheitsgruppe** unter **Alles** erneut aus, und klicken Sie dann auf **Erstellen**.
+2. Geben Sie in das Feld **Marketplace durchsuchen** den Suchbegriff *Anwendungssicherheitsgruppe* ein. Wenn in den Suchergebnissen **Anwendungssicherheitsgruppe** angezeigt wird, wählen Sie dieses Ergebnis aus. Wählen Sie unter **Alles** erneut **Anwendungssicherheitsgruppe** aus, und wählen Sie anschließend **Erstellen**.
 3. Geben Sie die folgenden Informationen ein, oder wählen Sie sie aus, und wählen Sie dann **Erstellen** aus:
 
     | Einstellung        | Wert                                                         |
@@ -71,7 +71,7 @@ Mithilfe einer Anwendungssicherheitsgruppe können Sie Server mit ähnlichen Fun
     | NAME           | myAsgWebServers                                               |
     | Abonnement   | Wählen Sie Ihr Abonnement aus.                                     |
     | Ressourcengruppe | Wählen Sie **Vorhandene verwenden** und dann **myResourceGroup** aus. |
-    | Speicherort       | USA (Ost)                                                       |
+    | Standort       | USA (Ost)                                                       |
 
 4. Führen Sie Schritt 3 erneut aus, und geben Sie dabei die folgenden Werte an:
 
@@ -80,7 +80,7 @@ Mithilfe einer Anwendungssicherheitsgruppe können Sie Server mit ähnlichen Fun
     | NAME           | myAsgMgmtServers                                              |
     | Abonnement   | Wählen Sie Ihr Abonnement aus.                                     |
     | Ressourcengruppe | Wählen Sie **Vorhandene verwenden** und dann **myResourceGroup** aus. |
-    | Speicherort       | USA (Ost)                                                       |
+    | Standort       | USA (Ost)                                                       |
 
 ## <a name="create-a-network-security-group"></a>Erstellen einer Netzwerksicherheitsgruppe
 
@@ -93,7 +93,7 @@ Mithilfe einer Anwendungssicherheitsgruppe können Sie Server mit ähnlichen Fun
     |NAME|myNsg|
     |Abonnement| Wählen Sie Ihr Abonnement aus.|
     |Ressourcengruppe | Wählen Sie **Vorhandene verwenden** und dann *myResourceGroup*.|
-    |Speicherort|USA (Ost)|
+    |Standort|USA (Ost)|
 
 ## <a name="associate-network-security-group-to-subnet"></a>Zuordnen einer Netzwerksicherheitsgruppe zu einem Subnetz
 
@@ -149,10 +149,10 @@ Erstellen Sie zwei virtuelle Computer im virtuellen Netzwerk.
     |---|---|
     |NAME|myVmWeb|
     |Benutzername| Geben Sie den gewünschten Benutzernamen ein.|
-    |Password| Geben Sie das gewünschte Kennwort ein. Das Kennwort muss mindestens zwölf Zeichen lang sein und die [definierten Anforderungen an die Komplexität](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm) erfüllen.|
+    |Kennwort| Geben Sie das gewünschte Kennwort ein. Das Kennwort muss mindestens zwölf Zeichen lang sein und die [definierten Anforderungen an die Komplexität](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm) erfüllen.|
     |Abonnement| Wählen Sie Ihr Abonnement aus.|
     |Ressourcengruppe| Wählen Sie **Vorhandene verwenden** und dann **myResourceGroup** aus.|
-    |Speicherort| Wählen Sie **USA, Osten** aus.|
+    |Standort| Wählen Sie **USA, Osten** aus.|
 
 4. Wählen Sie eine Größe für den virtuellen Computer aus, und klicken Sie dann auf **Auswählen**.
 5. Wählen Sie unter **Einstellungen** die folgenden Werte aus, übernehmen Sie die restlichen Standardeinstellungen, und wählen Sie dann **OK** aus:

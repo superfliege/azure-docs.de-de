@@ -1,21 +1,21 @@
 ---
 title: Anzeigen von Schlüsselmetriken mit Cloudyn-Dashboards in Azure | Microsoft Docs
-description: In diesem Artikel wird beschrieben, wie Schlüsselmetriken mit Dashboards in Cloudyn angezeigt werden.
+description: In diesem Artikel wird beschrieben, wie in Cloudyn Schlüsselmetriken mit Dashboards angezeigt werden.
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/18/2018
+ms.date: 12/07/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: vitavor
-ms.custom: ''
-ms.openlocfilehash: e053f2387df5d9a2855ce3242d4d7121452a73d8
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.custom: seodec18
+ms.openlocfilehash: f232ee89993998eb25ecce73e9c2ac8e08f3198b
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52275937"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53094105"
 ---
 # <a name="view-key-cost-metrics-with-dashboards"></a>Anzeigen der wichtigsten Kostenmetriken mit Dashboards
 
@@ -43,7 +43,7 @@ Um schnell mit einem benutzerdefinierten Dashboard zu beginnen, können Sie ein 
 So erstellen Sie ein benutzerdefiniertes Dashboard
 
 1. Klicken Sie auf der Startseite auf **Neu hinzufügen +**. Die Seite „Mein Dashboard“ wird angezeigt.  
-    ![Mein Dashboard](./media/dashboards/my-dashboard.png)
+    ![Die Seite „Mein Dashboard“, auf der Sie neue Berichte hinzufügen](./media/dashboards/my-dashboard.png)
 2. Klicken Sie auf **Neuen Bericht hinzufügen**. Das Feld „Bericht hinzufügen“ wird angezeigt.
 3. Wählen Sie den Bericht, den Sie dem Dashboardgadget hinzufügen möchten. Das Gadget wird dem Dashboard hinzugefügt.
 4. Wiederholen Sie die vorherigen Schritte, bis das Dashboard vollständig ist.
@@ -63,7 +63,7 @@ Sie können ein benutzerdefiniertes Dashboard unter _Öffentlich_ oder _Meine En
 So geben Sie ein benutzerdefiniertes Dashboard öffentlich frei
 
 1. Klicken Sie in einem Dashboard auf **Dashboardeinstellungen**. Das Feld „Dashboardeinstellungen“ wird angezeigt.  
-    ![Dashboardoptionen](./media/dashboards/dashboard-options.png)
+    ![Dashboardeinstellungen für ein benutzerdefiniertes Dashboard](./media/dashboards/dashboard-options.png)
 2. Klicken Sie im Feld „Dashboardeinstellungen“ auf das Pfeilsymbol, und klicken Sie dann auf **Öffentlich**. Das Bestätigungsdialogfeld für öffentliche Dashboards wird angezeigt.
 3. Klicken Sie auf **Ja**. Das Dashboard ist jetzt für andere Benutzer verfügbar.
 
@@ -116,13 +116,13 @@ Sie können ein beliebiges Dashboard als Standard festlegen. In diesem Fall wird
 -Oder-
 
 1. Klicken Sie auf **Dashboardeinstellungen**, um die Liste der verfügbaren Dashboards anzuzeigen, und wählen Sie das Dashboard aus, das Sie als Standard festlegen möchten.  
-    ![Dashboardoptionen](./media/dashboards/dashboard-options.png)
+    ![Dashboardeinstellungen für ein Standarddashboard](./media/dashboards/dashboard-options.png)
 2. Klicken Sie in der Zeile des Dashboards auf **Standard**. Das Bestätigungsfeld für das Standarddashboards wird angezeigt.
 3. Klicken Sie auf **Ja**. Das Dashboard wird als Standard festgelegt.
 
 ## <a name="management-dashboard"></a>Dashboard für die Verwaltung
 Das Dashboard für die Verwaltung (oder das MSP-Dashboard für MSP-Benutzer) umfasst die wichtigsten Aspekte der wesentlichen Berichtsarten.  
-![Dashboard für die Verwaltung](./media/dashboards/management-dash.png)
+![Verwaltungsdashboard mit verschiedenen Berichten](./media/dashboards/management-dash.png)
 
 ### <a name="cost-entity-summary-enterprise-only"></a>Zusammenfassung der Kostenentitäten (nur Enterprise)
 In diesem Gadget werden die verwalteten Kostenentitäten einschließlich der Anzahl von Entitäten und der Kontenanzahl zusammengefasst.
@@ -158,7 +158,7 @@ Dieses Gadget zeigt die von Abteilungen verwendeten Speicherdienste. Bewegen Sie
 
 ## <a name="cost-controller-dashboard"></a>Kostencontrollerdashboard
 Das Kostencontrollerdashboard zeigt wesentliche Aspekte der voreingestellten Kostenzuteilung.  
-![Kostencontrollerdashboard](./media/dashboards/cost-controller-dashboard.png)
+![Kostencontroller-Dashboard mit verschiedenen Berichten](./media/dashboards/cost-controller-dashboard.png)
 
 ### <a name="cost-over-time"></a>Kosten im Zeitverlauf
 Dieses Gadget hilft Ihnen beim Ermitteln der Kostenentwicklung. Es hebt die Kosten für den letzten Tag basierend auf dem Trend der letzten 30 Tage hervor.
@@ -198,7 +198,7 @@ Dieses Gadget zeigt die Ausgaben im Verlauf der letzten sechs Monate.
 ## <a name="asset-controller-dashboard"></a>Assetcontrollerdashboard
 
 Dieses Dashboard zeigt die Anzahl ausgeführter Instanzen, verfügbare und verwendete Datenträger, die Verteilung von Instanztypen sowie Speicherinformationen an.  
-![Assetcontrollerdashboard](./media/dashboards/asset-controller-dashboard.png)
+![Assetcontroller-Dashboard mit verschiedenen Berichten](./media/dashboards/asset-controller-dashboard.png)
 
 ### <a name="compute-instances"></a>Compute-Instanzen
 Dieses Gadget zeigt die Anzahl ausgeführter Instanzen basierend auf dem Nutzungstrend der letzten 30 Tage an.
@@ -227,7 +227,7 @@ Dieses Gadget zeigt die Anzahl ausgeführter Amazon-RDS-Instanzen basierend auf 
 
 ## <a name="optimizer-dashboard"></a>Optimiererdashboard
 Dieses Dashboard zeigt Empfehlungen zum Downsizing, nicht verwendete Ressourcen und potenzielle Einsparungen.  
-![Optimiererdashboard](./media/dashboards/optimizer-dashboard.png)
+![Optimiererdashboard mit verschiedenen Berichten](./media/dashboards/optimizer-dashboard.png)
 
 ### <a name="ri-calculator"></a>RI-Rechner
 Dieses Gadget zeigt die Anzahl von RI-Kaufempfehlungen an und stellt die potenziellen Einsparungen pro Jahr heraus.
@@ -257,7 +257,7 @@ Die Optimierungsempfehlungen basieren auf den Nutzungs- und Leistungsdaten, die 
 
 ## <a name="s3-tracker-dashboard"></a>S3 Tracker-Dashboard
 Mit dem S3 Tracker-Dashboard können Sie Ihre aktuelle Speichernutzung sowie Speichertrends finden, analysieren und anzeigen.  
-![S3 Tracker-Dashboard](./media/dashboards/s3-tracker-dashboard.png)
+![S3 Tracker-Dashboard mit verschiedenen Berichten](./media/dashboards/s3-tracker-dashboard.png)
 
 ### <a name="all-buckets"></a>Alle Buckets
 Dieses Gadget zeigt die Gesamtgröße aller Buckets in GB sowie die Gesamtanzahl von Objekten in Ihren Buckets.
@@ -281,7 +281,7 @@ Dieses Gadget zeigt die Anzahl von Objekten pro Bucket als Zahl und als Prozents
 
 ## <a name="cloud-comparison-dashboard"></a>Dashboard zum Cloudvergleich
 Das Dashboard zum Cloudvergleich ermöglicht Ihnen den Vergleich der Kosten unterschiedlicher Cloudanbieter auf der Grundlage von Preis, CPU-Typ und RAM-Größe.  
-![Dashboard zum Cloudvergleich](./media/dashboards/cloud-comparison-dashboard.png)
+![Dashboard zum Cloudvergleich mit verschiedenen Berichten](./media/dashboards/cloud-comparison-dashboard.png)
 
 ### <a name="ec2-cost-in-azure-by-instance-type"></a>EC2-Kosten in Azure nach Instanztyp
 Dieses Gadget zeigt die Nutzung der letzten 30 Tage im bedarfsgesteuerten Tarif. Es vergleicht die aktuellen Amazon EC2-Kosten mit den potenziellen Kosten in Azure.

@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Erfassen von Daten mit der Azure-Daten-Explorer-Bibliothek für Python'
+title: 'Schnellstart: Erfassen von Daten mit der Azure Data Explorer-Bibliothek für Python'
 description: In diesem Schnellstart erfahren Sie, wie Sie mit Python Daten im Azure-Daten-Explorer erfassen (laden).
 services: data-explorer
 author: orspod
@@ -8,14 +8,14 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 10/16/2018
-ms.openlocfilehash: fe405416e166b69ebe6b72e519ace4930c3062d8
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 390cdddf09f6880368d4d199eef41be19b54d9f0
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52871726"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53339245"
 ---
-# <a name="quickstart-ingest-data-using-the-azure-data-explorer-python-library"></a>Schnellstart: Erfassen von Daten mit der Azure-Daten-Explorer-Bibliothek für Python
+# <a name="quickstart-ingest-data-using-the-azure-data-explorer-python-library"></a>Schnellstart: Erfassen von Daten mit der Azure Data Explorer-Bibliothek für Python
 
 Azure-Daten-Explorer ist ein schneller und hochgradig skalierbarer Dienst zur Untersuchung von Daten (Protokoll- und Telemetriedaten). Der Azure-Daten-Explorer bietet zwei Clientbibliotheken für Python: eine [Erfassungsbibliothek](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-ingest) und eine [Datenbibliothek](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-data). Mit diesen Bibliotheken können Sie über Ihren Code Daten in einem Cluster erfassen (laden) und Daten abfragen. In diesem Schnellstart erstellen Sie zunächst eine Tabelle und eine Datenzuordnung in einem Testcluster. Anschließend stellen Sie die Erfassung im Cluster in eine Warteschlange und überprüfen die Ergebnisse.
 
@@ -73,7 +73,7 @@ KUSTO_INGEST_URI = "https://ingest-<ClusterName>.<Region>.kusto.windows.net:443/
 KUSTO_DATABASE  = "<DatabaseName>"
 ```
 
-Erstellen Sie nun die Verbindungszeichenfolge. In diesem Beispiel wird die Geräteauthentifizierung zum Zugreifen auf den Cluster verwendet. Sie können auch das AAD-Anwendungszertifikat, den AAD-Anwendungsschlüssel und den AAD-Benutzer mit dem zugehörigen Kennwort verwenden.
+Erstellen Sie nun die Verbindungszeichenfolge. In diesem Beispiel wird die Geräteauthentifizierung zum Zugreifen auf den Cluster verwendet. Sie können auch das [AAD-Anwendungszertifikat](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L24), den [AAD-Anwendungsschlüssel](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L20) und den [AAD-Benutzer mit dem zugehörigen Kennwort](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L34) verwenden.
 
 Sie erstellen die Zieltabelle und die Zuordnung in einem späteren Schritt.
 
@@ -105,7 +105,7 @@ BLOB_PATH = "https://" + ACCOUNT_NAME + ".blob.core.windows.net/" + CONTAINER + 
 
 ## <a name="create-a-table-on-your-test-cluster"></a>Erstellen einer Tabelle im Testcluster
 
-Erstellen Sie eine Tabelle, die dem Schema der Daten in der Datei „StormEvents.csv“ entspricht. Wenn dieser Code ausgeführt wird, gibt er eine Meldung wie die folgende zurück: *Verwenden Sie zum Anmelden einen Webbrowser, um die Seite https://microsoft.com/devicelogin zu öffnen, und geben Sie den Code F3W4VWZDM ein, um sich zu authentifizieren*. Befolgen Sie die Schritte für die Anmeldung, und kehren Sie dann zurück, um den Codeblock auszuführen. Für nachfolgende Codeblöcke, die eine Verbindung herstellen, müssen Sie sich wieder anmelden.
+Erstellen Sie eine Tabelle, die dem Schema der Daten in der Datei „StormEvents.csv“ entspricht. Wenn dieser Code ausgeführt wird, wird eine Meldung wie die folgende zurückgegeben: *Verwenden Sie zur Anmeldung einen Webbrowser, um die Seite https://microsoft.com/devicelogin zu öffnen. Geben Sie dann zur Authentifizierung den Code F3W4VWZDM ein*. Befolgen Sie die Schritte für die Anmeldung, und kehren Sie dann zurück, um den Codeblock auszuführen. Für nachfolgende Codeblöcke, die eine Verbindung herstellen, müssen Sie sich wieder anmelden.
 
 ```python
 KUSTO_CLIENT = KustoClient(KCSB_DATA)

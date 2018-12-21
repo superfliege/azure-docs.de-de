@@ -14,12 +14,13 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 08/07/2018
 ms.author: cephalin
-ms.openlocfilehash: 9b66dad87708ad127186b0bbbc39965fe90b6b75
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.custom: seodec18
+ms.openlocfilehash: 7c1e07d73d110d5ef7f681486479ec65ff436b19
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50416153"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53408847"
 ---
 # <a name="tutorial-authenticate-and-authorize-users-end-to-end-in-azure-app-service"></a>Tutorial: Umfassendes Authentifizieren und Autorisieren von Benutzern in Azure App Service
 
@@ -213,11 +214,11 @@ Navigieren Sie zu `http://<back_end_app_name>.azurewebsites.net`, um die aus der
 
 In diesem Schritt aktivieren Sie die Authentifizierung und Autorisierung für die beiden Apps. Außerdem konfigurieren Sie die Front-End-App so, dass ein Zugriffstoken generiert wird, mit dem Sie authentifizierte Aufrufe für die Back-End-App durchführen können.
 
-Sie verwenden Azure Active Directory als Identitätsanbieter. Weitere Informationen finden Sie unter [Konfigurieren der Azure Active Directory-Authentifizierung für die App Services-Anwendung](app-service-mobile-how-to-configure-active-directory-authentication.md).
+Sie verwenden Azure Active Directory als Identitätsanbieter. Weitere Informationen finden Sie unter [Konfigurieren der Azure Active Directory-Authentifizierung für die App Services-Anwendung](configure-authentication-provider-aad.md).
 
 ### <a name="enable-authentication-and-authorization-for-back-end-app"></a>Aktivieren der Authentifizierung und Autorisierung für die Back-End-App
 
-Öffnen Sie im [Azure-Portal](https://portal.azure.com) die Verwaltungsseite Ihrer Back-End-App, indem Sie im Menü auf der linken Seite auf Folgendes klicken: **Ressourcengruppen** > **myAuthResourceGroup** > _\<back\_end\_app\_name>_.
+Öffnen Sie im [Azure-Portal](https://portal.azure.com) die Verwaltungsseite Ihrer Back-End-App, indem Sie im Menü auf der linken Seite auf Folgendes klicken: **Resource groups** > **myAuthResourceGroup** > _\<back\_end\_app\_name>_.
 
 ![In Azure App Service ausgeführte ASP.NET Core-API](./media/app-service-web-tutorial-auth-aad/portal-navigate-back-end.png)
 

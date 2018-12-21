@@ -1,6 +1,6 @@
 ---
-title: Grundlegendes zu Azure IoT Edge-Modulen | Microsoft-Dokumentation
-description: Informationen zu Azure IoT Edge-Modulen und deren Konfiguration
+title: Ausführen von Logik auf Geräten mithilfe von Modulen – Azure IoT Edge | Microsoft-Dokumentation
+description: Azure IoT Edge-Module sind Containereinheiten mit Logik, die remote bereitgestellt und verwaltet werden können, sodass Sie Geschäftslogik auf IoT Edge-Geräten ausführen können.
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -8,12 +8,13 @@ ms.date: 09/21/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 3d76f5931e3636f19c2030c4090116a0791db819
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.custom: seodec18
+ms.openlocfilehash: 90fb6eadb2edb92d4516d8565d8c2c2bd5120c05
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567331"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53094184"
 ---
 # <a name="understand-azure-iot-edge-modules"></a>Grundlegendes zu Azure IoT Edge-Modulen
 
@@ -31,7 +32,7 @@ Die Images sind in der Cloud enthalten und können aktualisiert, geändert und i
 
 Jedes Mal, wenn ein Modulimage auf einem Gerät bereitgestellt und von der IoT Edge-Runtime gestartet wird, wird eine neue Instanz des jeweiligen Moduls erstellt. Zwei Geräte in unterschiedlichen Teilen der Welt könnten dasselbe Modulimage verwenden; allerdings würde jedes eine eigene Modulinstanz besitzen, wenn das Modul auf dem Gerät gestartet wird. 
 
-![Modulimages in der Cloud – Modulinstanzen auf Geräten](./media/iot-edge-modules/image_instance.png)
+![Diagramm: Modulimages in der Cloud, Modulinstanzen auf Geräten](./media/iot-edge-modules/image_instance.png)
 
 Bei der Implementierung liegen Modulimages als Containerimages in einem Repository vor, und Modulinstanzen sind Container auf Geräten. 
 
@@ -46,7 +47,7 @@ Die einer Modulinstanz zugeordnete Identität hängt von der Identität des Ger�
 
 In Szenarien, in denen Sie ein Modulimage mehrmals auf demselben Gerät bereitstellen müssen, können Sie dasselbe Image natürlich mehrmals mit verschiedenen Namen bereitstellen.
 
-![Modulidentitäten sind eindeutig](./media/iot-edge-modules/identity.png)
+![Diagramm: Modulidentitäten sind in Geräten und geräteübergreifend eindeutig](./media/iot-edge-modules/identity.png)
 
 ## <a name="module-twins"></a>Modulzwillinge
 

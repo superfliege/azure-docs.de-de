@@ -3,7 +3,7 @@ items:
   href: index.yml
 - name: Übersicht
   items:
-  - name: Informationen zu Azure Cosmos DB
+  - name: Willkommen bei Azure Cosmos DB
     href: introduction.md
 - name: Schnellstarts
   items:
@@ -192,7 +192,7 @@ items:
       href: compliance.md
 - name: APIs mit mehreren Modellen
   items:
-  - name: SQL-API-Dokumentation
+  - name: SQL-API
     items:
     - name: Modelldokumentdaten
       href: modeling-data.md
@@ -296,11 +296,11 @@ items:
         href: /rest/api/cosmos-db/
       - name: REST-Ressourcenanbieter
         href: /rest/api/cosmos-db-resource-provider/
-  - name: MongoDB-API-Dokumentation
+  - name: MongoDB-API
     items:
     - name: Einführung
       href: mongodb-introduction.md
-    - name: MongoDB-Unterstützung
+    - name: Wire Protocol-Unterstützung
       href: mongodb-feature-support.md
     - name: Lernprogramme
       items:
@@ -346,11 +346,11 @@ items:
         href: mongodb-time-to-live.md
       - name: Verwalten der Datenindizierung
         href: mongodb-indexing.md
-  - name: Dokumentation zur Gremlin-API
+  - name: Gremlin-API
     items:
     - name: Einführung
       href: graph-introduction.md
-    - name: Gremlin-Unterstützung
+    - name: Wire Protocol-Unterstützung
       href: gremlin-support.md
     - name: Lernprogramme
       items:
@@ -362,11 +362,11 @@ items:
         href: bulk-executor-graph-dotnet.md
       - name: Partitionierung von Diagrammdaten
         href: graph-partitioning.md
-  - name: Cassandra-API-Dokumentation
+  - name: Cassandra-API
     items:
     - name: Einführung
       href: cassandra-introduction.md
-    - name: Cassandra-Unterstützung
+    - name: Wire Protocol-Unterstützung
       href: cassandra-support.md
     - name: Lernprogramme
       items:
@@ -400,7 +400,7 @@ items:
         href: cassandra-spark-aggregation-ops.md
       - name: Kopieren von Tabellendaten
         href: cassandra-spark-table-copy-ops.md
-  - name: Tabellen-API-Dokumentation
+  - name: Tabelle-API
     items:
     - name: Einführung
       href: table-introduction.md
@@ -615,9 +615,9 @@ items:
       href: use-cases.md
     - name: Apps für soziale Medien
       href: social-media-apps.md
-ms.openlocfilehash: 34fc77f13f0c0bd394d96e19b86a1632ce2846b1
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 0afac84a08028219e5aa0acdc94ec9775d16c368
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53410107"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53728022"

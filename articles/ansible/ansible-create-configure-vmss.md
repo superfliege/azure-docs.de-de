@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 08/24/2018
-ms.openlocfilehash: f3b08c41d3bf083c7cca5897cee11a1a4b9c9092
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.openlocfilehash: 8dacfb054a36801c076435037a530daa87c4a89c
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42918574"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53409389"
 ---
 # <a name="create-virtual-machine-scale-sets-in-azure-using-ansible"></a>Erstellen von VM-Skalierungsgruppen mit Ansible in Azure
 Ansible ermöglicht die Automatisierung der Bereitstellung und Konfiguration von Ressourcen in Ihrer Umgebung. Sie können mit Ansible Ihre VM-Skalierungsgruppe in Azure wie jede andere Azure-Ressource verwalten. In diesem Artikel erfahren Sie, wie Sie Ansible verwenden können, um eine VM-Skalierungsgruppe zu erstellen und horizontal hochzuskalieren. 
@@ -37,7 +37,7 @@ In diesem Abschnitt finden Sie ein Beispielplaybook für Ansible, das die folgen
 
 Geben Sie Ihr Kennwort für den Wert *admin_password* ein.
 
-  ```yaml
+  ```yml
   - hosts: localhost
     vars:
       resource_group: myResourceGroup
@@ -141,7 +141,7 @@ Verwenden Sie den Befehl **ansible-playbook** wie folgt, um das Ansible-Playbook
 
 Wenn das Playbook ausgeführt wurde, zeigt eine der Beispielausgabe ähnelnde Ausgabe an, dass die VM-Skalierungsgruppe erfolgreich erstellt wurde:
 
-  ```bash
+  ```Output
   PLAY [localhost] ***********************************************************
 
   TASK [Gathering Facts] *****************************************************
@@ -190,7 +190,7 @@ Die Ergebnisse sehen in etwa wie in der folgenden Ausgabe aus:
 
 Skalieren Sie nun von zwei auf drei Instanzen. Der folgende Code für das Ansible-Playbook ruft Informationen zur VM-Skalierungsgruppe ab und skaliert deren Kapazität von zwei auf drei. 
 
-  ```yaml
+  ```yml
   - hosts: localhost
     vars:
       resource_group: myResourceGroup
@@ -225,7 +225,7 @@ Führen Sie das Playbook mit dem folgenden Befehl aus:
 
 Die Ausgabe der Ausführung des Ansible-Playbooks zeigt, dass die VM-Skalierungsgruppe erfolgreich horizontal hochskaliert wurde:
 
-  ```bash
+  ```Output
   PLAY [localhost] **********************************************************
 
   TASK [Gathering Facts] ****************************************************
@@ -275,4 +275,6 @@ Die Ergebnisse der Befehlsausführung in Cloud Shell zeigen, dass anschließend 
 
 ## <a name="next-steps"></a>Nächste Schritte
 > [!div class="nextstepaction"] 
-> [Ansible sample playbook for VMSS (Ansible-Beispielplaybook für VMSS)](https://github.com/Azure-Samples/ansible-playbooks/tree/master/vmss)
+> [Bereitstellen von Anwendungen für VM-Skalierungsgruppen mithilfe von Ansible](https://docs.microsoft.com/azure/ansible/ansible-deploy-app-vmss)
+
+> [Automatisches Skalieren einer VM-Skalierungsgruppe mit Ansible](https://docs.microsoft.com/azure/ansible/ansible-auto-scale-vmss)

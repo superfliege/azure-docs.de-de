@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 05/04/2018
+ms.date: 12/14/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 00f6f84a2065a67e999149e4b0f9e28f18e5e297
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: b60e1639a1c32763c4759720fe61b0e571fc9dd1
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51239422"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53437094"
 ---
 # <a name="learning-key-windows-powershell-workflow-concepts-for-automation-runbooks"></a>Grundlagen der wichtigsten Windows PowerShell-Workflowkonzepte für Automation-Runbooks
 
@@ -193,10 +193,10 @@ Workflow Copy-Files
 }
 ```
 
-Sie können das Konstrukt **ForEach -Parallel** verwenden, um Befehle für jedes Element in einer Auflistung gleichzeitig zu verarbeiten. Die Elemente in der Auflistung werden parallel ausgeführt, während die Befehle im Skriptblock sequenziell ausgeführt werden. Dabei wird die nachstehende Syntax verwendet. In diesem Fall wird Activity1 für alle Elemente in der Sammlung gleichzeitig gestartet. Activity2 wird für alle Elemente gestartet, nachdem Activity1 abgeschlossen wurde. Activity3 wird erst gestartet, wenn sowohl Activity1 als auch Activity2 für alle Elemente abgeschlossen wurden.
+Sie können das Konstrukt **ForEach -Parallel** verwenden, um Befehle für jedes Element in einer Auflistung gleichzeitig zu verarbeiten. Die Elemente in der Auflistung werden parallel ausgeführt, während die Befehle im Skriptblock sequenziell ausgeführt werden. Dabei wird die nachstehende Syntax verwendet. In diesem Fall wird Activity1 für alle Elemente in der Sammlung gleichzeitig gestartet. Activity2 wird für alle Elemente gestartet, nachdem Activity1 abgeschlossen wurde. Activity3 wird erst gestartet, wenn sowohl Activity1 als auch Activity2 für alle Elemente abgeschlossen wurden. Wir verwenden den Parameter `ThrottleLimit`, um die Parallelität zu beschränken. Ein zu hoher Wert für `ThrottleLimit` kann Probleme verursachen. Der ideale Wert des Parameters `ThrottleLimit` hängt von vielen Faktoren in Ihrer Umgebung ab. Sie sollten mit einem niedrigen Wert beginnen und verschiedene ansteigende Werte ausprobieren, bis Sie einen finden, der für Ihre individuellen Umstände geeignet ist.
 
 ```powershell
-ForEach -Parallel ($<item> in $<collection>)
+ForEach -Parallel -ThrottleLimit 10 ($<item> in $<collection>)
 {
     <Activity1>
     <Activity2>
@@ -211,7 +211,7 @@ Workflow Copy-Files
 {
     $files = @("C:\LocalPath\File1.txt","C:\LocalPath\File2.txt","C:\LocalPath\File3.txt")
 
-    ForEach -Parallel ($File in $Files)
+    ForEach -Parallel -ThrottleLimit 10 ($File in $Files)
     {
         Copy-Item -Path $File -Destination \\NetworkPath
         Write-Output "$File copied."
@@ -258,7 +258,7 @@ Workflow Copy-Files
 }
 ```
 
-Da Benutzernamen aus Anmeldeinformationen nicht über das Aufrufen der Aktivität [Suspend-Workflow](https://technet.microsoft.com/library/jj733586.aspx) bzw. über den letzten Prüfpunkt hinaus gespeichert werden, müssen Sie die Anmeldeinformationen auf NULL festlegen und sie nach dem Aufrufen der Aktivität **Suspend-Workflow** oder des letzten Prüfpunkts erneut aus dem Objektspeicher abrufen.  Andernfalls erscheint möglicherweise die folgende Fehlermeldung: *Der Workflowauftrag kann nicht fortgesetzt werden, weil Persistenzdaten nicht vollständig gespeichert werden konnten oder gespeicherte Persistenzdaten beschädigt wurden. Sie müssen den Workflow neu starten.*
+Da Benutzernamen aus Anmeldeinformationen nicht über das Aufrufen der Aktivität [Suspend-Workflow](https://technet.microsoft.com/library/jj733586.aspx) bzw. über den letzten Prüfpunkt hinaus gespeichert werden, müssen Sie die Anmeldeinformationen auf NULL festlegen und sie nach dem Aufrufen der Aktivität **Suspend-Workflow** oder des letzten Prüfpunkts erneut aus dem Objektspeicher abrufen.  Sie erhalten andernfalls unter Umständen die folgende Fehlermeldung: *Der Workflowauftrag kann nicht fortgesetzt werden, weil Persistenzdaten nicht vollständig gespeichert werden konnten oder gespeicherte Persistenzdaten beschädigt wurden. Sie müssen den Workflow neu starten.*
 
 Der folgende Code veranschaulicht die Behandlung dieses Aspekts in PowerShell-Workflow-Runbooks.
 

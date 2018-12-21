@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 11/06/2018
-ms.openlocfilehash: 947eb76f84f865135e87803b53fa94e20eecb78c
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: dd4c077e23170a295a29a75df08cf8f29f8ba3e4
+ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52313818"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53413352"
 ---
 # <a name="tutorial-use-the-apache-kafka-producer-and-consumer-apis"></a>Tutorial: Verwenden der Apache Kafka Producer- und Consumer-APIs
 
@@ -49,7 +49,7 @@ Bei der Installation von Java und dem JDK auf Ihrer Entwicklungsworkstation kön
 
 * `JAVA_HOME` – sollte auf das Verzeichnis verweisen, in dem das JDK installiert ist.
 * `PATH` – sollte die folgenden Pfade enthalten:
-  
+
     * `JAVA_HOME` (oder entsprechender Pfad)
     * `JAVA_HOME\bin` (oder entsprechender Pfad)
     * Das Verzeichnis, in dem Maven installiert ist
@@ -65,13 +65,13 @@ Die exemplarische Anwendung befindet sich unter [https://github.com/Azure-Sample
 * `pom.xml`: Diese Datei definiert die Projektabhängigkeiten, Java-Version und Verpackungsmethoden.
 * `Producer.java`: Diese Datei sendet mithilfe der Producer-API willkürliche Sätze an Kafka.
 * `Consumer.java`: Diese Datei verwendet die Consumer-API zum Lesen von Daten aus Kafka und Ausgeben an STDOUT.
-* `Run.java`: Über die Befehlszeilenschnittstelle werden Producer- und Consumer-Code ausgeführt.
+* `Run.java`: Die Befehlszeilenschnittstelle zum Ausführen des Producer- und Consumer-Codes.
 
 ### <a name="pomxml"></a>Pom.Xml
 
 Wichtige Informationen zur `pom.xml`-Datei:
 
-* Abhängigkeiten: Dieses Projekt hängt von den Kafka Producer- und Consumer-APIs ab, die im `kafka-clients`-Paket bereitgestellt werden. Der folgende XML-Code definiert diese Abhängigkeit:
+* Abhängigkeiten: Dieses Projekt benötigt die Kafka Producer- und Consumer-APIs, die durch das `kafka-clients`-Paket bereitgestellt werden. Der folgende XML-Code definiert diese Abhängigkeit:
 
     ```xml
     <!-- Kafka client for producer/consumer operations -->
@@ -87,12 +87,12 @@ Wichtige Informationen zur `pom.xml`-Datei:
 
 * Plug-Ins: Maven-Plug-Ins bieten verschiedene Funktionen. In diesem Projekt werden die folgenden Plug-Ins verwendet:
 
-    * `maven-compiler-plugin`: Wird verwendet, um bis 8 die vom Projekt verwendete Java-Version festzulegen. Dies ist die von HDInsight 3.6 verwendete Java-Version.
-    * `maven-shade-plugin`: Wird zum Generieren einer Uber JAR-Datei verwendet, die diese Anwendung sowie alle Abhängigkeiten enthält. Es wird auch zum Festlegen des Einstiegspunkts der Anwendung verwendet, damit Sie die JAR-Datei direkt ausführen können, ohne die Hauptklasse angeben zu müssen.
+    * `maven-compiler-plugin`: Wird verwendet, um die vom Projekt verwendete Java-Version auf 8 festzulegen. Dies ist die von HDInsight 3.6 verwendete Java-Version.
+    * `maven-shade-plugin`: Wird zum Generieren einer Uber-JAR-Datei verwendet, die diese Anwendung sowie alle Abhängigkeiten enthält. Es wird auch zum Festlegen des Einstiegspunkts der Anwendung verwendet, damit Sie die JAR-Datei direkt ausführen können, ohne die Hauptklasse angeben zu müssen.
 
 ### <a name="producerjava"></a>Producer.java
 
-Der Producer kommuniziert mit den Kafka-Brokerhosts (Workerknoten) und sendet Daten an ein Kafka-Thema. Der folgende Codeausschnitt stammt aus der Datei [Producer.java](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/blob/master/Producer-Consumer/src/main/java/com/microsoft/example/Producer.java) (aus dem [GitHub-Repository](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started)) und zeigt, wie die Producereigenschaften festgelegt werden:
+Der Producer kommuniziert mit den Kafka-Brokerhosts (Workerknoten) und sendet Daten an ein Kafka-Thema. Der folgende Codeausschnitt stammt aus der Datei [Producer.java](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/blob/master/Producer-Consumer/src/main/java/com/microsoft/example/Producer.java) aus dem [GitHub-Repository](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started) und zeigt, wie die Producereigenschaften festgelegt werden:
 
 ```java
 Properties properties = new Properties();
@@ -145,11 +145,11 @@ Die Datei [Run.java](https://github.com/Azure-Samples/hdinsight-kafka-java-get-s
     Mit diesem Befehl wird ein Verzeichnis mit dem Namen `target` erstellt, das eine Datei namens `kafka-producer-consumer-1.0-SNAPSHOT.jar` enthält.
 
 3. Verwenden Sie die folgenden Befehle, um die Datei `kafka-producer-consumer-1.0-SNAPSHOT.jar` in Ihren HDInsight-Cluster zu kopieren:
-   
+
     ```bash
     scp ./target/kafka-producer-consumer-1.0-SNAPSHOT.jar SSHUSER@CLUSTERNAME-ssh.azurehdinsight.net:kafka-producer-consumer.jar
     ```
-   
+
     Ersetzen Sie **SSHUSER** durch den SSH-Benutzer für Ihren Cluster, und ersetzen Sie **CLUSTERNAME** durch den Namen Ihres Clusters. Geben Sie nach Aufforderung das Kennwort für den SSH-Benutzer ein.
 
 ## <a id="run"></a>Ausführen des Beispiels
@@ -190,11 +190,11 @@ Die Datei [Run.java](https://github.com/Azure-Samples/hdinsight-kafka-java-get-s
     ```
 
 4. Wenn der Producer abgeschlossen ist, führen Sie folgenden Befehl aus, um Daten aus dem Thema zu lesen:
-   
+
     ```bash
     java -jar kafka-producer-consumer.jar consumer test $KAFKABROKERS
     ```
-   
+
     Die gelesenen Datensätze und die Anzahl von Datensätzen wird angezeigt.
 
 5. Drücken Sie __STRG+C__, um den Consumer zu beenden.
@@ -204,7 +204,7 @@ Die Datei [Run.java](https://github.com/Azure-Samples/hdinsight-kafka-java-get-s
 Kafka-Consumer verwenden beim Lesen von Datensätzen eine Consumergruppe. Das Verwenden derselben Gruppe mit mehreren Consumern führt zu Lesevorgängen mit Lastenausgleich aus einem Thema. Jeder Consumer in der Gruppe erhält einen Teil der Datensätze.
 
 Die Consumer-Anwendung akzeptiert einen Parameter, der als Gruppen-ID verwendet wird. Der folgende Befehl beispielsweise startet einen Consumer mit der Gruppen-ID `mygroup`:
-   
+
 ```bash
 java -jar kafka-producer-consumer.jar consumer test $KAFKABROKERS mygroup
 ```

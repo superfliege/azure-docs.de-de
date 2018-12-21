@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: quickstart
 ms.date: 11/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: a0aed1fd65444397b3ca084cc0100aa5af49c918
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: a9794c25bd5f0acd48362611d13bac17fc502450
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52839504"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53341047"
 ---
 # <a name="create-your-first-durable-function-in-c"></a>Erstellen Ihrer ersten dauerhaften Funktion in C\#
 
@@ -76,7 +76,7 @@ Visual Studio erstellt ein leeres Funktions-App-Projekt.  Es enthält die grundl
 
 Der App wird eine neue dauerhafte Funktion hinzugefügt.  Öffnen Sie die neue Datei, um den Inhalt anzuzeigen.  Diese dauerhafte Funktion ist ein einfaches Beispiel für die Verkettung von Funktionen.  
 
-* Die `RunOrchestrator`-Methode wird der Orchestratorfunktion zugeordnet.  Diese Funktion wird gestartet, erstellt eine Liste und fügt der Liste das Ergebnis von drei Funktionsaufrufen hinzu.  Nachdem die drei Funktionsaufrufe abgeschlossen wurden, wird die Liste zurückgegeben.  Die aufgerufene Funktion ist die `SayHello`-Methode (standardmäßig „<NameOfFile>_Hello“).
+* Die `RunOrchestrator`-Methode wird der Orchestratorfunktion zugeordnet.  Diese Funktion wird gestartet, erstellt eine Liste und fügt der Liste das Ergebnis von drei Funktionsaufrufen hinzu.  Nachdem die drei Funktionsaufrufe abgeschlossen wurden, wird die Liste zurückgegeben.  Die aufgerufene Funktion ist die `SayHello`-Methode (standardmäßig `<NameOfFile>_Hello`).
 * Die Funktion `SayHello` gibt ein „Hello“ zurück.
 * Mit der `HttpStart`-Methode wird die Funktion beschrieben, mit der Instanzen der Orchestrierung gestartet werden.  Sie ist einem [HTTP-Trigger](../functions-bindings-http-webhook.md) zugeordnet, mit dem eine neue Instanz des Orchestrators gestartet und eine Statusantwort zurückgegeben wird.
 
@@ -92,7 +92,7 @@ Mit Azure Functions Core-Tools können Sie ein Azure Functions-Projekt auf dem l
 
     ![Lokale Azure-Laufzeit](./media/durable-functions-create-first-csharp/functions-vs-debugging.png)
 
-3. Fügen Sie die URL der HTTP-Anforderung in die Adresszeile des Browsers ein, und führen Sie die Anforderung aus. Hier ist die Antwort des Browsers auf die von der Funktion zurückgegebene lokale GET-Anforderung abgebildet: 
+3. Fügen Sie die URL der HTTP-Anforderung in die Adresszeile des Browsers ein, und führen Sie die Anforderung aus. Hier ist die Antwort des Browsers auf die von der Funktion zurückgegebene lokale GET-Anforderung abgebildet:
 
     ![localhost-Antwort der Funktion im Browser](./media/durable-functions-create-first-csharp/functions-vs-status.png)
 

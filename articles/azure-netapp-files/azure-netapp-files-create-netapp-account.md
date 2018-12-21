@@ -14,20 +14,20 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/28/2018
 ms.author: b-juche
-ms.openlocfilehash: ad8cc550ce69e4dc4c19a569718fa873a65b3620
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: eda5f21a535c6256d534bfdaa6cf30ae710ba075
+ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39010343"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53413182"
 ---
 # <a name="create-a-netapp-account"></a>Erstellen eines NetApp-Kontos
 Nach der Erstellung eines NetApp-Kontos können Sie einen Kapazitätspool einrichten und anschließend ein Volume erstellen. Neue NetApp-Konten werden über das Blatt „Azure NetApp Files“ erstellt.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
-Sie müssen in die Whitelist für den Zugriff auf den Azure-Ressourcenanbieter „Microsoft.NetApp“ aufgenommen und für die Verwendung des Azure NetApp Files-Diensts konfiguriert worden sein.  
+Sie müssen Ihr Abonnement registriert haben, um den NetApp-Ressourcenanbieter und das Public Preview-Feature zu nutzen.
 
-[Registrierungsseite für die Public Preview von Azure NetApp Files](https://aka.ms/nfspublicpreview) 
+[Registrieren für Azure NetApp Files](azure-netapp-files-register.md)
 
 ## <a name="steps"></a>Schritte 
 
@@ -48,7 +48,7 @@ Sie müssen in die Whitelist für den Zugriff auf den Azure-Ressourcenanbieter �
     Wählen Sie eines der vorhandenen Abonnements aus.
   * **Ressourcengruppe**   
     Verwenden Sie eine vorhandene Ressourcengruppe, oder erstellen Sie eine neue.
-  * **Standort**  
+  * **Location**  
     Wählen Sie die Region aus, in der sich das Konto und dessen untergeordnete Ressourcen befinden sollen.  
     Momentan wird der Azure NetApp Files-Dienst nur in der Region „USA, Osten“ unterstützt.  
 
@@ -60,6 +60,5 @@ Sie müssen in die Whitelist für den Zugriff auf den Azure-Ressourcenanbieter �
 
 ## <a name="next-steps"></a>Nächste Schritte  
 
-1. [Einrichten eines Kapazitätspools](azure-netapp-files-set-up-capacity-pool.md)
-2. [Erstellen eines Volumes für Azure NetApp Files](azure-netapp-files-create-volumes.md)
-3. [Konfigurieren der Exportrichtlinie für ein Volume (optional)](azure-netapp-files-configure-export-policy.md)
+[Einrichten eines Kapazitätspools](azure-netapp-files-set-up-capacity-pool.md)
+

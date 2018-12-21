@@ -14,14 +14,17 @@ ms.tgt-pltfrm: multiple
 ms.workload: na
 ms.date: 07/26/2018
 ms.author: danlep
-ms.openlocfilehash: 10f3444f81dfaeac4331f0b7798ade7eefbd29fb
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ROBOTS: NOINDEX
+ms.openlocfilehash: 643d2a5a600d018912f09d01f2e018100767f147
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44058098"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53410124"
 ---
 # <a name="cli-example-create-and-manage-a-batch-ai-cluster-of-dedicated-nodes"></a>CLI-Beispiel: Erstellen und Verwalten eines Batch AI-Clusters mit dedizierte Knoten
+
+[!INCLUDE [batch-ai-retiring](../../../includes/batch-ai-retiring.md)]
 
 Dieses Skript zeigt einige der in der Azure CLI verfügbaren Befehle zum Erstellen und Verwalten eines Batch-AI-Clusters, der aus dedizierten Knoten (virtuellen Computern) besteht.
 
@@ -35,7 +38,7 @@ Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für die
 
 ## <a name="clean-up-deployment"></a>Bereinigen der Bereitstellung
 
-Führen Sie den folgenden Befehl aus, um die Ressourcengruppe und alle dazugehörigen Ressourcen zu entfernen:
+Führen Sie den folgenden Befehl aus, um die Ressourcengruppe und alle dazugehörigen Ressourcen zu entfernen.
 
 ```azurecli-interactive
 # Remove resource group for the cluster.
@@ -53,7 +56,7 @@ Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit 
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
 | [az batchai workspace create](/cli/azure/batchai/workspace#az-batchai-workspace-create) | Erstellt einen Azure Batch AI-Arbeitsbereich. |
-| [az batchai cluster create](/cli/azure/batchai/cluster#az-batchai-cluster-create) | Erstellt einen Batch AI-Cluster. |
+| [az batchai cluster create](/cli/azure/batchai/cluster#az-batchai-cluster-create) | Erstellt einen Azure Batch AI-Cluster. |
 | [az batchai cluster show](/cli/azure/batchai/cluster#az-batchai-cluster-show) | Zeigt Informationen zu einem Batch AI-Cluster an. |
 | [az batchai cluster node list](/cli/azure/batchai/cluster/node#az-batchai-cluster-show) | Zeigt eine Liste der Knoten in einem Batch AI-Cluster an. |
 | [az batchai cluster resize](/cli/azure/batchai/cluster#az-batchai-cluster-resize) | Ändert die Größe des Batch AI-Clusters.  |

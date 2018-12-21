@@ -1,5 +1,5 @@
 ---
-title: Erstellen und Verwenden eines internen Lastenausgleichs mit einer Azure App Service-Umgebung
+title: Erstellen eines internen Lastenausgleichs mit App Service-Umgebung – Azure
 description: Einzelheiten zum Erstellen und Verwenden einer vom Internet isolierten Azure App Service-Umgebung
 services: app-service
 documentationcenter: na
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 06/12/2018
 ms.author: ccompy
-ms.custom: mvc
-ms.openlocfilehash: e9d1f77a85d4b5cfb5bb7d3cb80380be3c79315d
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.custom: seodec18
+ms.openlocfilehash: b6c04c5b167eb963e9b2befa57e270ac454f5d74
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44378277"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53344277"
 ---
 # <a name="create-and-use-an-internal-load-balancer-with-an-app-service-environment"></a>Erstellen und Verwenden eines internen Lastenausgleichs mit einer App Service-Umgebung #
 
@@ -56,19 +56,19 @@ Es gibt einige Dinge, die Sie mit einer ILB-ASE nicht machen können:
 
 So erstellen Sie eine ILB-ASE:
 
-1. Klicken Sie im Azure-Portal auf **Ressource erstellen** > **Web** > **App Service-Umgebung**.
+1. Wählen Sie im Azure-Portal  **Ressource erstellen** > **Web** > **App Service-Umgebung** aus.
 
-1. Wählen Sie Ihr Abonnement aus.
+2. Wählen Sie Ihr Abonnement aus.
 
-1. Wählen Sie eine Ressourcengruppe aus, oder erstellen Sie sie.
+3. Wählen Sie eine Ressourcengruppe aus, oder erstellen Sie sie.
 
-1. Wählen Sie ein VNET aus, oder erstellen Sie eines.
+4. Wählen Sie ein VNET aus, oder erstellen Sie eines.
 
-1. Wenn Sie ein vorhandenes VNET auswählen, müssen Sie ein Subnetz erstellen, das die ASE beinhaltet. Die Größe des Subnetzes sollte auf einen ausreichend großen Wert festgelegt werden, um das zukünftige Wachstum Ihrer ASE abzudecken. Empfohlen wird eine Größe von `/24` mit 256 Adressen, die eine ASE in maximaler Größe und alle Skalierungsanforderungen verarbeiten kann. 
+5. Wenn Sie ein vorhandenes VNET auswählen, müssen Sie ein Subnetz erstellen, das die ASE beinhaltet. Die Größe des Subnetzes sollte auf einen ausreichend großen Wert festgelegt werden, um das zukünftige Wachstum Ihrer ASE abzudecken. Empfohlen wird eine Größe von `/24` mit 256 Adressen, die eine ASE in maximaler Größe und alle Skalierungsanforderungen verarbeiten kann. 
 
-1. Wählen Sie **Virtuelles Netzwerk/Speicherort** > **Konfigurationen virtueller Netzwerke**. Legen Sie den **VIP-Typ** auf **Intern** fest.
+6. Wählen Sie  **Virtuelles Netzwerk/Speicherort** > **Konfiguration des virtuellen Netzwerks** aus. Legen Sie den **VIP-Typ** auf **Intern** fest.
 
-1. Geben Sie einen Domänennamen ein. Diese Domäne wird für Apps verwendet, die in dieser ASE erstellt werden. Es gelten einige Einschränkungen. Der Domänenname darf nicht folgendermaßen lauten:
+7. Geben Sie einen Domänennamen ein. Diese Domäne wird für Apps verwendet, die in dieser ASE erstellt werden. Es gelten einige Einschränkungen. Der Domänenname darf nicht folgendermaßen lauten:
 
     * net   
 
@@ -96,14 +96,14 @@ Auf dem Blatt **Virtuelles Netzwerk** befindet sich die Option **Konfiguration v
 
 Wenn Sie **Intern** auswählen, wird die Option zum Hinzuzufügen weiterer IP-Adressen zu Ihrer ASE ausgeblendet. Stattdessen müssen Sie die Domäne der ASE angeben. In einer ASE mit einer externen VIP-Adresse wird der Name der ASE in der Domäne für Apps verwendet, die in dieser ASE erstellt werden.
 
-Wenn Sie **VIP-Typ** auf **Intern** festlegen, wird der ASE-Name nicht in der Domäne für die ASE verwendet. Sie geben die Domäne explizit an. Wenn Ihre Domäne *contoso.corp.net* heißt und Sie in dieser ASE eine App mit dem Namen *timereporting* erstellen, lautet die URL für diese App „timereporting.contoso.corp.net“.
+Wenn Sie **VIP-Typ** auf **Intern** festlegen, wird der ASE-Name nicht in der Domäne für die ASE verwendet. Sie geben die Domäne explizit an. Wenn Ihre Domäne *contoso.corp.net* heißt und Sie in dieser ASE eine App mit dem Namen  *timereporting* erstellen, lautet die URL für diese App „timereporting.contoso.corp.net“.
 
 
 ## <a name="create-an-app-in-an-ilb-ase"></a>Erstellen einer App in einer ILB-ASE ##
 
 Sie erstellen eine App in einer ILB-ASE auf dieselbe Weise, wie Sie eine App normalerweise in einer ASE erstellen würden.
 
-1. Klicken Sie im Azure-Portal auf **Ressource erstellen** > **Web + Mobil** > **Web-App**.
+1. Wählen Sie im Azure-Portal **Ressource erstellen** > **Web + Mobil** > **Web-App** aus.
 
 1. Geben Sie den Namen der App ein.
 
@@ -117,9 +117,9 @@ Sie erstellen eine App in einer ILB-ASE auf dieselbe Weise, wie Sie eine App nor
 
 1. Wählen Sie einen App Service-Plan aus, oder erstellen Sie einen. Wenn Sie einen neuen App Service-Plan erstellen möchten, wählen Sie Ihre ASE als Speicherort aus. Wählen Sie den Workerpool aus, in dem Ihr App Service-Plan erstellt werden soll. Wählen Sie beim Erstellen des App Service-Plans die ASE als Speicherort und den Workerpool aus. Wenn Sie den Namen der App angeben, wird die Domäne unter Ihrem App-Namen durch die Domäne für Ihre ASE ersetzt.
 
-1. Klicken Sie auf **Erstellen**. Wenn die App auf dem Dashboard angezeigt werden soll, aktivieren Sie das Kontrollkästchen **An Dashboard anheften**.
+1. Klicken Sie auf **Erstellen**. Wenn die App auf dem Dashboard angezeigt werden soll, aktivieren Sie das Kontrollkästchen **An Dashboard anheften** .
 
-    ![Erstellung eines App Service-Plans][2]
+    ![Erstellung des App Service-Plans][2]
 
     Unter **App-Name** wird der Domänenname entsprechend der Domäne Ihrer ASE aktualisiert.
 
@@ -127,14 +127,14 @@ Sie erstellen eine App in einer ILB-ASE auf dieselbe Weise, wie Sie eine App nor
 
 Eine ILB-ASE unterscheidet sich etwas von einer Nicht-ILB-ASE. Wie bereits erwähnt müssen Sie Ihr eigenes DNS verwalten. Zudem müssen Sie Ihr eigenes Zertifikat für HTTPS-Verbindungen angeben.
 
-Nachdem Sie Ihre ASE erstellt haben, wird der Domänenname entsprechend der von Ihnen angegebenen Domäne angezeigt. Im Menü **Einstellung** wird ein neues Element namens **ILB-Zertifikat** angezeigt. Die ASE wird mit einem Zertifikat erstellt, das nicht die ILB-ASE-Domäne angibt. Verwenden Sie die ASE mit diesem Zertifikat, teilt Ihnen Ihr Browser mit, dass das Zertifikat ungültig ist. Dieses Zertifikat ermöglicht ein einfacheres Testen von HTTPS, allerdings müssen Sie Ihr eigenes Zertifikat hochladen, das an Ihre ILB-ASE-Domäne gekoppelt ist. Dieser Schritt ist erforderlich, ganz gleich, ob das Zertifikat selbstsigniert ist oder von einer Zertifizierungsstelle bezogen wurde.
+Nachdem Sie Ihre ASE erstellt haben, wird der Domänenname entsprechend der von Ihnen angegebenen Domäne angezeigt. Im Menü **Einstellung** wird ein neues Element namens **ILB-Zertifikat** angezeigt. Die ASE wird mit einem Zertifikat erstellt, das nicht die ILB-ASE-Domäne angibt. Verwenden Sie die ASE mit diesem Zertifikat, teilt Ihnen Ihr Browser mit, dass das Zertifikat ungültig ist. Dieses Zertifikat ermöglicht ein einfacheres Testen von HTTPS, allerdings müssen Sie Ihr eigenes Zertifikat hochladen, das an Ihre ILB-ASE-Domäne gekoppelt ist. Dieser Schritt ist erforderlich, ganz gleich, ob das Zertifikat selbstsigniert ist oder von einer Zertifizierungsstelle bezogen wurde.
 
 ![ILB-ASE-Domänenname][3]
 
 Für Ihre ILB-ASE ist ein gültiges SSL-Zertifikat erforderlich. Verwenden Sie interne Zertifizierungsstellen, erwerben Sie ein Zertifikat von einem externen Aussteller, oder verwenden Sie ein selbstsigniertes Zertifikat. Unabhängig von der Quelle des SSL-Zertifikats müssen die folgenden Zertifikatattribute richtig konfiguriert werden:
 
-* **Antragsteller**: Dieses Attribut muss auf „*.ihre-stammdomäne-hier“ festgelegt werden.
-* **Alternativer Antragstellername**: Dieses Attribut muss sowohl **.ihre-stammdomäne-hier* als auch **.scm.ihre-stammdomäne-hier* enthalten. SSL-Verbindungen mit der SCM/Kudu-Website, die jeder App zugeordnet ist, verwenden eine Adresse im Format *ihr-app-name.scm.ihre-stammdomäne-hier*.
+* **Antragsteller:** Dieses Attribut muss auf „*.<Ihre Stammdomäne>“ festgelegt werden.
+* **Alternativer Antragstellername:** Dieses Attribut muss sowohl „**.<Ihre Stammdomäne>.com* als auch „**.scm.<Ihre Stammdomäne>.com* enthalten. SSL-Verbindungen mit der SCM/Kudu-Website, die jeder App zugeordnet ist, verwenden eine Adresse im Format *ihr-app-name.scm.ihre-stammdomäne-hier*.
 
 Konvertieren Sie das SSL-Zertifikat in eine PFX-Datei, und speichern Sie es. Die PFX-Datei muss alle Zwischenzertifikate und Stammzertifikate enthalten. Sichern Sie es mit einem Kennwort.
 
@@ -154,7 +154,7 @@ Das mit diesen PowerShell-Befehlen generierte Zertifikat wird durch Browser geke
 
 So laden Sie eigene Zertifikate hoch und prüfen den Zugriff:
 
-1. Wechseln Sie nach der Erstellung der ASE zur ASE-Benutzeroberfläche. Wählen Sie **ASE** > **Einstellungen** > **ILB-Zertifikat**.
+1. Wechseln Sie nach der Erstellung der ASE zur ASE-Benutzeroberfläche. Wählen Sie **ASE** > **Einstellungen** > **ILB-Zertifikat**.
 
 1. Legen Sie das ILB-Zertifikat durch Auswahl der Zertifikat-PFX-Datei und Eingabe des Kennworts fest. Dieser Schritt kann eine Weile dauern. Es wird eine Meldung angezeigt, die besagt, dass ein Uploadvorgang ausgeführt wird.
 
@@ -174,9 +174,9 @@ So laden Sie eigene Zertifikate hoch und prüfen den Zugriff:
 
     b. Um Web Deploy-Publishing oder den Zugriff auf die erweiterte Konsole zu testen, erstellen Sie einen Datensatz für _mytestapp.scm.ilbase.com_.
 
-1. Verwenden Sie einen Browser auf diesem virtuellen Computer, und wechseln Sie zu http://mytestapp.ilbase.com. (Navigieren Sie alternativ zum Namen Ihrer Web-App, der in Ihrer Domäne verwendet wird.)
+1. Verwenden Sie einen Browser auf diesem virtuellen Computer, und wechseln Sie zu https://mytestapp.ilbase.com. (Navigieren Sie alternativ zum Namen Ihrer Web-App, der in Ihrer Domäne verwendet wird.)
 
-1. Verwenden Sie einen Browser auf diesem virtuellen Computer, und wechseln Sie zu https://mytestapp.ilbase.com. Wenn Sie ein selbstsigniertes Zertifikat verwenden, müssen Sie eine Beeinträchtigung der Sicherheit in Kauf nehmen.
+1. Verwenden Sie einen Browser auf diesem virtuellen Computer, und wechseln Sie zu https://mytestapp.ilbase.com. Wenn Sie ein selbstsigniertes Zertifikat verwenden, müssen Sie eine Beeinträchtigung der Sicherheit in Kauf nehmen.
 
     Die IP-Adresse für Ihren ILB wird unter **IP-Adressen** aufgelistet. In dieser Liste sind auch die von der externen VIP und für eingehenden Datenverkehr für die Verwaltung verwendeten IP-Adressen aufgeführt.
 
@@ -222,13 +222,9 @@ Weitere Informationen zum Konfigurieren Ihrer ILB-ASE mit einem WAF-Gerät finde
 ## <a name="get-started"></a>Erste Schritte ##
 
 * Informationen zum Einstieg in ASEs finden Sie unter [Einführung in App Service-Umgebungen][Intro].
- 
+ 
 <!--Image references-->
-[1]: ./media/creating_and_using_an_internal_load_balancer_with_app_service_environment/createilbase-network.png
-[2]: ./media/creating_and_using_an_internal_load_balancer_with_app_service_environment/createilbase-webapp.png
-[3]: ./media/creating_and_using_an_internal_load_balancer_with_app_service_environment/createilbase-certificate.png
-[4]: ./media/creating_and_using_an_internal_load_balancer_with_app_service_environment/createilbase-certificate2.png
-[5]: ./media/creating_and_using_an_internal_load_balancer_with_app_service_environment/createilbase-ipaddresses.png
+[1]: ./media/creating_and_using_an_internal_load_balancer_with_app_service_environment/createilbase-network.png [2]: ./media/creating_and_using_an_internal_load_balancer_with_app_service_environment/createilbase-webapp.png [3]: ./media/creating_and_using_an_internal_load_balancer_with_app_service_environment/createilbase-certificate.png [4]: ./media/creating_and_using_an_internal_load_balancer_with_app_service_environment/createilbase-certificate2.png [5]: ./media/creating_and_using_an_internal_load_balancer_with_app_service_environment/createilbase-ipaddresses.png
 
 <!--Links-->
 [Intro]: ./intro.md
@@ -244,10 +240,10 @@ Weitere Informationen zum Konfigurieren Ihrer ILB-ASE mit einem WAF-Gerät finde
 [webapps]: ../app-service-web-overview.md
 [mobileapps]: ../../app-service-mobile/app-service-mobile-value-prop.md
 [Functions]: ../../azure-functions/index.yml
-[Pricing]: http://azure.microsoft.com/pricing/details/app-service/
+[Pricing]: https://azure.microsoft.com/pricing/details/app-service/
 [ARMOverview]: ../../azure-resource-manager/resource-group-overview.md
 [ConfigureSSL]: ../web-sites-purchase-ssl-web-site.md
-[Kudu]: http://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/
+[Kudu]: https://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/
 [ASEWAF]: app-service-app-service-environment-web-application-firewall.md
 [AppGW]: ../../application-gateway/application-gateway-web-application-firewall-overview.md
 [customdomain]: ../app-service-web-tutorial-custom-domain.md
