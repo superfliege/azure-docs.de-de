@@ -1,5 +1,5 @@
 ---
-title: Schützen der Azure SQL-Datenbankverbindung von App Service mittels einer verwalteten Identität | Microsoft-Dokumentation
+title: Schützen der SQL-Datenbankverbindung mittels einer verwalteten Identität – Azure App Service | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie die Sicherheit der Datenbankverbindung mithilfe einer verwalteten Identität erhöhen und wie Sie dieses Wissen auf andere Azure-Dienste übertragen.
 services: app-service\web
 documentationcenter: dotnet
@@ -14,16 +14,16 @@ ms.topic: tutorial
 ms.date: 11/30/2018
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 8c31e410713e4ba8ce6443170ba5ad5c2e740419
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: b7d8a9b0ef48f7daed74fb15263e516d820a6a38
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52677932"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53259068"
 ---
 # <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>Tutorial: Schützen der Azure SQL-Datenbankverbindung von App Service mittels einer verwalteten Identität
 
-[App Service](app-service-web-overview.md) bietet einen hochgradig skalierbaren Webhostingdienst mit Self-Patching in Azure. Außerdem steht eine [verwaltete Identität](app-service-managed-service-identity.md) für Ihre App zur Verfügung. Hierbei handelt es sich um eine vorgefertigte Lösung zum Schutz des Zugriffs auf [Azure SQL-Datenbank](/azure/sql-database/) und andere Azure-Dienste. Verwaltete Identitäten in App Service machen Ihre App frei von Geheimnissen (wie etwa Anmeldeinformationen in Verbindungszeichenfolgen) und verbessern so die Sicherheit Ihrer App. In diesem Tutorial fügen Sie der ASP.NET-Beispiel-Web-App, die Sie im Tutorial [Erstellen einer ASP.NET-App in Azure mit SQL-Datenbank](app-service-web-tutorial-dotnet-sqldatabase.md) erstellt haben, eine verwaltete Identität hinzu. Danach stellt Ihre Beispiel-App ganz ohne Benutzername und Kennwort eine sichere Verbindung mit SQL-Datenbank her.
+[App Service](app-service-web-overview.md) bietet einen hochgradig skalierbaren Webhostingdienst mit Self-Patching in Azure. Außerdem steht eine [verwaltete Identität](app-service-managed-service-identity.md) für Ihre App zur Verfügung. Hierbei handelt es sich um eine vorgefertigte Lösung zum Schutz des Zugriffs auf [Azure SQL-Datenbank](/azure/sql-database/) und andere Azure-Dienste. Verwaltete Identitäten in App Service machen Ihre App frei von Geheimnissen (wie etwa Anmeldeinformationen in Verbindungszeichenfolgen) und verbessern so die Sicherheit Ihrer App. In diesem Tutorial fügen Sie der ASP.NET-Beispiel-Web-App eine verwaltete Identität hinzu, die Sie hier erstellt: [Tutorial: Erstellen einer ASP.NET-App in Azure mit SQL-Datenbank](app-service-web-tutorial-dotnet-sqldatabase.md). Danach stellt Ihre Beispiel-App ganz ohne Benutzername und Kennwort eine sichere Verbindung mit SQL-Datenbank her.
 
 > [!NOTE]
 > Dieses Szenario wird derzeit von .NET Framework 4.6 und höheren Versionen unterstützt, aber nicht von [.NET Core 2.1](https://www.microsoft.com/net/learn/get-started/windows). [.NET Core 2.2](https://www.microsoft.com/net/download/dotnet-core/2.2) unterstützt das Szenario zwar, es wurde jedoch noch nicht in die Standardimages in App Service aufgenommen. 
@@ -44,7 +44,7 @@ Folgendes wird vermittelt:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Dieser Artikel ist eine direkte Fortsetzung des Tutorials [Erstellen einer ASP.NET-App in Azure mit SQL-Datenbank](app-service-web-tutorial-dotnet-sqldatabase.md). Sollten Sie das Tutorial noch nicht absolviert haben, holen Sie dies jetzt nach. Alternativ können Sie die Schritte für Ihre eigene ASP.NET-App mit SQL-Datenbank anpassen.
+Dieser Artikel fährt dort fort, wo Sie hier aufgehört haben: [Tutorial: Erstellen einer ASP.NET-App in Azure mit SQL-Datenbank](app-service-web-tutorial-dotnet-sqldatabase.md). Sollten Sie das Tutorial noch nicht absolviert haben, holen Sie dies jetzt nach. Alternativ können Sie die Schritte für Ihre eigene ASP.NET-App mit SQL-Datenbank anpassen.
 
 <!-- ![app running in App Service](./media/app-service-web-tutorial-dotnetcore-sqldb/azure-app-in-browser.png) -->
 
@@ -95,11 +95,10 @@ az webapp config connection-string set --resource-group myResourceGroup --name <
 
 ## <a name="modify-aspnet-code"></a>Ändern des ASP.NET-Codes
 
-Öffnen Sie in Visual Studio in Ihrem Projekt **DotNetAppSqlDb** die Datei _packages.config_, und fügen Sie der Liste mit den Paketen die folgende Zeile hinzu.
+Öffnen Sie in Visual Studio die Paket-Manager-Konsole, und fügen Sie das NuGet-Paket [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) hinzu:
 
-```xml
-<package id="Microsoft.Azure.Services.AppAuthentication" version="1.1.0-preview" targetFramework="net461" />
-<package id="Microsoft.IdentityModel.Clients.ActiveDirectory" version="3.14.2" targetFramework="net461" />
+```PowerShell
+Install-Package Microsoft.Azure.Services.AppAuthentication -Version 1.1.0-preview
 ```
 
 Öffnen Sie _Models\MyDatabaseContext.cs_, und fügen Sie am Anfang der Datei die folgende `using`-Anweisung ein:

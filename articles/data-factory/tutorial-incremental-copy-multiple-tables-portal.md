@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/20/2018
 ms.author: yexu
-ms.openlocfilehash: 95f2947a30499ce563d5943dfa423ee89a172f47
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: e25cdd0677efce0ea8d40ad1c8ae07a5d071a67f
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51614516"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52969787"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>Inkrementelles Laden aus mehreren SQL Server-Tabellen in eine Azure SQL-Datenbank
 In diesem Tutorial erstellen Sie eine Azure Data Factory mit einer Pipeline, bei der Deltadaten aus mehreren Tabellen einer lokalen SQL Server-Instanz in eine Azure SQL-Datenbank geladen werden.    
@@ -61,7 +61,7 @@ Hier sind die wesentlichen Schritte beim Erstellen dieser Lösung aufgeführt:
 
     Allgemeines Lösungsdiagramm: 
 
-    ![Lädt Daten inkrementell](media\tutorial-incremental-copy-multiple-tables-portal\high-level-solution-diagram.png)
+    ![Lädt Daten inkrementell](media/tutorial-incremental-copy-multiple-tables-portal/high-level-solution-diagram.png)
 
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
@@ -277,7 +277,7 @@ Wenn Sie Daten aus einem Datenspeicher in einem privaten Netzwerk (lokal) in ein
 1. Geben Sie unter **Name** die Zeichenfolge **MySelfHostedIR** ein, und klicken Sie auf **Weiter**. 
 
    ![Name für selbstgehostete Integration Runtime](./media/tutorial-incremental-copy-multiple-tables-portal/self-hosted-ir-name.png)
-1. Klicken Sie im Abschnitt **Option 1: Express setup** (Option 1: Express-Setup) auf **Click here to launch the express setup for this computer** (Klicken Sie hier, um das Express-Setup für diesen Computer zu starten). 
+1. Klicken Sie auf **Klicken Sie hier, um das Express-Setup für diesen Computer zu starten** im Abschnitt **Option 1: Express-Setup**. 
 
    ![Klicken auf den Link für das Express-Setup](./media/tutorial-incremental-copy-multiple-tables-portal/click-express-setup.png)
 1. Klicken Sie im Fenster **Express-Setup von Integration Runtime (selbstgehostet)** auf **Schließen**. 

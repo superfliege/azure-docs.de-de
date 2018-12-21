@@ -8,29 +8,29 @@ ms.component: cosmosdb-graph
 ms.topic: overview
 ms.date: 09/05/2018
 ms.author: lbosq
-ms.openlocfilehash: f2ca118e137104c6dddd2945b7b88b2f535621eb
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: e9e0d2f452a21f2da29568b953238318cb4477df
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52849227"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53077443"
 ---
-# <a name="introduction-to-azure-cosmos-db-gremlin-api"></a>Einführung in die Gremlin-API von Azure Cosmos DB
+# <a name="introduction-to-azure-cosmos-db-gremlin-api"></a>Einführung in Azure Cosmos DB: Gremlin-API
 
 [Azure Cosmos DB](introduction.md) ist der global verteilte Datenbankdienst von Microsoft mit mehreren Modellen für unternehmenskritische Anwendungen. Es handelt sich um eine Datenbank für mehrere Datenmodelle, die Dokumente, Schlüsselwerte, Diagramme und spaltenorientierte Datenmodelle unterstützt. Die Azure Cosmos DB Gremlin-API dient zum Speichern und Verarbeiten der Graphdaten. Die Gremlin-API unterstützt die Modellierung von Graphdaten und bieten APIs, um die Graphdaten zu durchlaufen.
 
-Dieser Artikel enthält eine Übersicht über die Gremlin-API von Azure Cosmos DB und erläutert, wie Sie diese zum Speichern von umfangreichen Diagrammen mit Milliarden von Scheitelpunkten und Kanten verwenden können. Sie können die Diagramme mit einer Latenz im Millisekundenbereich abfragen und die Diagrammstruktur und das Schema entwickeln. Zum Abfragen von Azure Cosmos DB können Sie die Graphdurchlauf-Sprache [Apache TinkerPop](http://tinkerpop.apache.org) oder [Gremlin](http://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps) verwenden.
+Dieser Artikel enthält eine Übersicht über die Gremlin-API von Azure Cosmos DB und erläutert, wie Sie diese zum Speichern von umfangreichen Diagrammen mit Milliarden von Scheitelpunkten und Kanten verwenden können. Sie können die Diagramme mit einer Latenz im Millisekundenbereich abfragen und die Diagrammstruktur und das Schema entwickeln. Zum Abfragen von Azure Cosmos DB können Sie die Graphdurchlauf-Sprache [Apache TinkerPop](https://tinkerpop.apache.org) oder [Gremlin](https://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps) verwenden.
 
 ## <a name="what-is-a-graph-database"></a>Was ist eine Graphdatenbank?
 Daten sind in der Praxis naturgemäß vernetzt. Bei der konventionellen Datenmodellierung liegt der Schwerpunkt auf Entitäten. Bei vielen Anwendungen besteht auch die Notwendigkeit, sowohl Entitäten als auch Beziehungen natürlich zu modellieren.
 
-Ein [Diagramm](http://mathworld.wolfram.com/Graph.html) ist eine Struktur aus [Vertices](http://mathworld.wolfram.com/GraphVertex.html) und [Edges](http://mathworld.wolfram.com/GraphEdge.html). Sowohl Vertices als auch Edges können eine beliebige Anzahl von Eigenschaften aufweisen. 
+Ein [Diagramm](https://mathworld.wolfram.com/Graph.html) ist eine Struktur aus [Vertices](http://mathworld.wolfram.com/GraphVertex.html) und [Edges](http://mathworld.wolfram.com/GraphEdge.html). Sowohl Vertices als auch Edges können eine beliebige Anzahl von Eigenschaften aufweisen. 
 
 * **Vertices** – Als Vertices werden diskrete Objekte wie etwa eine Person, ein Ort oder ein Ereignis bezeichnet. 
 
 * **Edges** – Edges bezeichnen Beziehungen zwischen Vertices. Beispielsweise könnte eine Person eine andere Person kennen, an einem Ereignis beteiligt sein und sich vor Kurzem an einem Ort befunden haben. 
 
-* **Eigenschaften** – Eigenschaften geben Informationen zu den Vertices und Edges an. Beispieleigenschaften enthalten einen Vertex mit Namen und Alter. Ein Edge weißt einen Zeitstempel und/oder eine Gewichtung auf. Dieses Modell wird offiziell als [Eigenschaftsdiagramm](http://tinkerpop.apache.org/docs/current/reference/#intro) bezeichnet. Azure Cosmos DB unterstützt das Eigenschaftsdiagrammmodell.
+* **Eigenschaften** – Eigenschaften geben Informationen zu den Vertices und Edges an. Beispieleigenschaften enthalten einen Vertex mit Namen und Alter. Ein Edge weißt einen Zeitstempel und/oder eine Gewichtung auf. Dieses Modell wird offiziell als [Eigenschaftsdiagramm](https://tinkerpop.apache.org/docs/current/reference/#intro) bezeichnet. Azure Cosmos DB unterstützt das Eigenschaftsdiagrammmodell.
 
 Das folgende Beispieldiagramm stellt beispielhaft die Beziehungen zwischen Personen, Mobilgeräten, Interessen und Betriebssystemen dar:
 
@@ -80,18 +80,18 @@ Azure Cosmos DB bietet zudem die Möglichkeit, mehrere Modelle wie Dokumente und
 
 ## <a name="get-started"></a>Erste Schritte
 
-Sie können die Azure-Befehlszeilenschnittstelle (CLI), Azure PowerShell oder das Azure-Portal verwenden, um Azure Cosmos DB-Gremlin-API-Konten zu erstellen und darauf zuzugreifen. Nach dem Erstellen eines Kontos können Sie auf die Graphdatenbanken in diesem Konto zugreifen, indem Sie einen Gremlin-API-Dienstendpunkt `https://<youraccount>.gremlin.cosmosdb.azure.com` verwenden, über den ein WebSocket-Front-End für Gremlin bereitgestellt wird. Um eine Verbindung mit diesem Endpunkt herzustellen und Anwendungen in Java, Node.js oder einem beliebigen Gremlin-Clienttreiber zu erstellen, können Sie Ihre TinkerPop-kompatiblen Tools wie die [Gremin-Konsole](http://tinkerpop.apache.org/docs/current/reference/#gremlin-console) konfigurieren.
+Sie können die Azure-Befehlszeilenschnittstelle (CLI), Azure PowerShell oder das Azure-Portal verwenden, um Azure Cosmos DB-Gremlin-API-Konten zu erstellen und darauf zuzugreifen. Nach dem Erstellen eines Kontos können Sie auf die Graphdatenbanken in diesem Konto zugreifen, indem Sie einen Gremlin-API-Dienstendpunkt `https://<youraccount>.gremlin.cosmosdb.azure.com` verwenden, über den ein WebSocket-Front-End für Gremlin bereitgestellt wird. Um eine Verbindung mit diesem Endpunkt herzustellen und Anwendungen in Java, Node.js oder einem beliebigen Gremlin-Clienttreiber zu erstellen, können Sie Ihre TinkerPop-kompatiblen Tools wie die [Gremin-Konsole](https://tinkerpop.apache.org/docs/current/reference/#gremlin-console) konfigurieren.
 
 In der folgenden Tabelle werden gängige Gremlin-Treiber aufgeführt, die Sie für Azure Cosmos DB verwenden können:
 
 | Download | Dokumentation | Erste Schritte | Unterstützte Connector-Version |
 | --- | --- | --- | --- |
-| [.NET](http://tinkerpop.apache.org/docs/3.3.1/reference/#gremlin-DotNet) | [Gremlin.NET auf GitHub](https://github.com/apache/tinkerpop/tree/master/gremlin-dotnet) | [Erstellen von Graph mithilfe von .NET](create-graph-dotnet.md) | 3.4.0-RC2 |
-| [Java](https://mvnrepository.com/artifact/com.tinkerpop.gremlin/gremlin-java) | [Gremlin JavaDoc](http://tinkerpop.apache.org/javadocs/current/full/) | [Erstellen von Graph mithilfe von Java](create-graph-java.md) | 3.2.0 und höher |
+| [.NET](https://tinkerpop.apache.org/docs/3.3.1/reference/#gremlin-DotNet) | [Gremlin.NET auf GitHub](https://github.com/apache/tinkerpop/tree/master/gremlin-dotnet) | [Erstellen von Graph mithilfe von .NET](create-graph-dotnet.md) | 3.4.0-RC2 |
+| [Java](https://mvnrepository.com/artifact/com.tinkerpop.gremlin/gremlin-java) | [Gremlin JavaDoc](https://tinkerpop.apache.org/javadocs/current/full/) | [Erstellen von Graph mithilfe von Java](create-graph-java.md) | 3.2.0 und höher |
 | [Node.js](https://www.npmjs.com/package/gremlin) | [Gremlin-JavaScript auf GitHub](https://github.com/jbmusso/gremlin-javascript) | [Erstellen von Graph mithilfe von Node.js](create-graph-nodejs.md) | 2.6.0|
-| [Python](http://tinkerpop.apache.org/docs/3.3.1/reference/#gremlin-python) | [Gremlin-Python auf GitHub](https://github.com/apache/tinkerpop/tree/master/gremlin-python) | [Erstellen von Graph mithilfe von Python](create-graph-python.md) | 3.2.7 |
+| [Python](https://tinkerpop.apache.org/docs/3.3.1/reference/#gremlin-python) | [Gremlin-Python auf GitHub](https://github.com/apache/tinkerpop/tree/master/gremlin-python) | [Erstellen von Graph mithilfe von Python](create-graph-python.md) | 3.2.7 |
 | [PHP](https://packagist.org/packages/brightzone/gremlin-php) | [Gremlin-PHP auf GitHub](https://github.com/PommeVerte/gremlin-php) | [Erstellen von Graph mithilfe von PHP](create-graph-php.md) | 3.1.0 |
-| [Gremlin-Konsole](https://tinkerpop.apache.org/downloads.html) | [TinkerPop-Dokumente](http://tinkerpop.apache.org/docs/current/reference/#gremlin-console) |  [Erstellen von Graph mithilfe der Gremlin-Konsole](create-graph-gremlin-console.md) | 3.2.0 und höher |
+| [Gremlin-Konsole](https://tinkerpop.apache.org/downloads.html) | [TinkerPop-Dokumente](https://tinkerpop.apache.org/docs/current/reference/#gremlin-console) |  [Erstellen von Graph mithilfe der Gremlin-Konsole](create-graph-gremlin-console.md) | 3.2.0 und höher |
 
 ## <a name="graph-database-design-considerations"></a>Entwurfsüberlegungen zu Graphdatenbanken
 

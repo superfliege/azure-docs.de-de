@@ -2,28 +2,28 @@
 author: MightyPen
 ms.service: sql-database
 ms.topic: include
-ms.date: 11/09/2018
+ms.date: 12/06/2018
 ms.author: genemi
-ms.openlocfilehash: b78d52f23de8d02189f10b32d26e070fb6deea68
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: b3b7027e5ae252eb899d2a44d171ea9c9795ab54
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52339643"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53286167"
 ---
 <!-- sql-database-connect-query-prerequisites-server-connection-info-includes.md 
 
-## SQL server connection information
+## Get SQL server connection information
 -->
 
-Rufen Sie die Verbindungsinformationen ab, die zum Herstellen einer Verbindung mit der Azure SQL-Datenbank erforderlich sind. In den weiteren Verfahren benötigen Sie den vollqualifizierten Servernamen, den Datenbanknamen und die Anmeldeinformationen.
+Rufen Sie die Verbindungsinformationen ab, die Sie zum Herstellen einer Verbindung mit der Azure SQL-Datenbank benötigen. In den weiteren Verfahren benötigen Sie den vollqualifizierten Servernamen, den Datenbanknamen und die Anmeldeinformationen.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
-1. Wählen Sie im Menü auf der linken Seite die Option **SQL-Datenbanken**, und klicken Sie auf der Seite **SQL-Datenbanken** auf Ihre Datenbank.
+1. Wählen Sie im Menü auf der linken Seite die Option **SQL-Datenbanken** und anschließend auf der Seite **SQL-Datenbanken** Ihre Datenbank aus.
 
-1. Überprüfen Sie auf der Seite **Übersicht** für Ihre Datenbank den vollqualifizierten Servernamen wie in der folgenden Abbildung dargestellt. Sie können auf **Servername** zeigen, um die Option **Klicken Sie zum Kopieren** anzuzeigen.  
+1. Überprüfen Sie auf der Seite **Übersicht** für Ihre Datenbank den vollqualifizierten Servernamen neben **Servername**. Um den Namen des Servers zu kopieren, zeigen Sie darauf, und wählen Sie das Symbol **Kopieren** aus.  
 
-   ![Servername](./media/sql-database-connect-query-prerequisites-server-connection-info-includes/server-name.png)
+![Servername](./media/sql-database-connect-query-prerequisites-server-connection-info-includes/server-name.png)
 
-1. Falls Sie Ihre Serveranmeldeinformationen vergessen, können Sie auf den **Servernamen** klicken, um zur Seite **SQL Server** zu navigieren und den **Serveradministratornamen** anzuzeigen. Wählen Sie ggf. **Kennwort zurücksetzen** aus.
+Wenn Sie Ihre Anmeldeinformationen vergessen haben, wählen Sie den Servernamen aus, um die Seite **SQL-Server** zu öffnen. Hier können Sie den Namen des **Serveradministrators** sehen und bei Bedarf **Kennwort zurücksetzen** auswählen.

@@ -1,19 +1,19 @@
 ---
-title: Importieren von Daten für die Verwendung mit der Table-API von Azure Cosmos DB
-description: Hier erfahren Sie, wie Sie Daten für die Verwendung mit der Table-API von Azure Cosmos DB importieren.
-services: cosmos-db
+title: Migrieren Ihrer vorhandenen Daten zu einem Tabellen-API-Konto in Azure Cosmos DB
+description: Erfahren Sie, wie Sie lokale oder Clouddaten in ein Azure-Tabellen-API-Konto in Azure Cosmos DB migrieren oder importieren.
 author: SnehaGunda
 ms.service: cosmos-db
 ms.component: cosmosdb-table
 ms.topic: tutorial
-ms.date: 11/28/2017
+ms.date: 12/07/2017
 ms.author: sngun
-ms.openlocfilehash: d277df3fa98564ebec92e548fa070e92cf76f200
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.custom: seodec18
+ms.openlocfilehash: b2256f16d284cb079231e271a7fc06c25c381c8a
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52874038"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53137683"
 ---
 # <a name="migrate-your-data-to-azure-cosmos-db-table-api-account"></a>Migrieren Ihrer Daten zum Azure Cosmos DB-Konto für die Tabellen-API
 
@@ -28,9 +28,9 @@ Dieses Tutorial enthält die folgenden Aufgaben:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* **Erhöhen des Durchsatzes:** Die Dauer der Datenmigration richtet sich nach dem Durchsatzwert, den Sie für einen einzelnen Container oder eine Gruppe von Containern einrichten. Achten Sie darauf, dass Sie den Durchsatz für größere Datenmigrationen erhöhen. Nachdem die Migration abgeschlossen ist, können Sie den Durchsatz wieder verringern, um Kosten zu sparen. Weitere Informationen zur Erhöhung des Durchsatzes im Azure-Portal finden Sie unter „Leistungsstufen und Tarife in Azure Cosmos DB“.
+* **Erhöhen des Durchsatzes**: Die Dauer der Datenmigration richtet sich nach dem Durchsatzwert, den Sie für einen einzelnen Container oder eine Gruppe von Containern einrichten. Achten Sie darauf, dass Sie den Durchsatz für größere Datenmigrationen erhöhen. Nachdem die Migration abgeschlossen ist, können Sie den Durchsatz wieder verringern, um Kosten zu sparen. Weitere Informationen zur Erhöhung des Durchsatzes im Azure-Portal finden Sie unter „Leistungsstufen und Tarife in Azure Cosmos DB“.
 
-* **Erstellen von Azure Cosmos DB-Ressourcen:** Bevor Sie mit der Migration von Daten beginnen, erstellen Sie vorab alle Ihre Tabellen im Azure-Portal. Wenn Sie als Migrationsziel ein Azure Cosmos DB-Konto mit Durchsatz auf Datenbankebene verwenden, geben Sie beim Erstellen der Azure Cosmos DB-Tabellen einen Partitionsschlüssel an.
+* **Erstellen von Azure Cosmos DB-Ressourcen**: Bevor Sie mit der Migration von Daten beginnen, erstellen Sie zunächst alle Ihre Tabellen im Azure-Portal. Wenn Sie als Migrationsziel ein Azure Cosmos DB-Konto mit Durchsatz auf Datenbankebene verwenden, geben Sie beim Erstellen der Azure Cosmos DB-Tabellen einen Partitionsschlüssel an.
 
 ## <a name="data-migration-tool"></a>Datenmigrationstool
 
@@ -89,7 +89,7 @@ Verwenden Sie die folgenden Zieloptionen, wenn Sie die Tabellen-API von Azure Co
     /t.MaxBatchSize: Optional, default is 2MB. Specify the batch size in bytes
 
 <a id="azure-table-storage"></a>
-### <a name="sample-command-source-is-azure-table-storage"></a>Beispielbefehl: Azure Table Storage als Quelle
+### <a name="sample-command-source-is-azure-table-storage"></a>Beispiel für einen Befehl: Quelle ist Azure Table Storage
 
 Hier finden Sie ein Beispiel für eine Befehlszeile zum Importieren aus Azure Table Storage in die Tabellen-API:
 
@@ -97,7 +97,7 @@ Hier finden Sie ein Beispiel für eine Befehlszeile zum Importieren aus Azure Ta
 dt /s:AzureTable /s.ConnectionString:DefaultEndpointsProtocol=https;AccountName=<Azure Table storage account name>;AccountKey=<Account Key>;EndpointSuffix=core.windows.net /s.Table:<Table name> /t:TableAPIBulk /t.ConnectionString:DefaultEndpointsProtocol=https;AccountName=<Azure Cosmos DB account name>;AccountKey=<Azure Cosmos DB account key>;TableEndpoint=https://<Account name>.table.cosmosdb.azure.com:443 /t.TableName:<Table name> /t.Overwrite
 ```
 <a id="table-api-preview"></a>
-### <a name="sample-command-source-is-azure-cosmos-db-table-api-preview"></a>Beispielbefehl: Azure Cosmos DB-Tabellen-API (Vorschauversion) als Quelle
+### <a name="sample-command-source-is-azure-cosmos-db-table-api-preview"></a>Beispiel für einen Befehl: Quelle ist Azure Cosmos DB-Tabellen-API (Vorschauversion)
 
 Hier finden Sie ein Beispiel für eine Befehlszeile zum Importieren aus der Vorschauversion der Tabellen-API in die allgemein verfügbare Version:
 

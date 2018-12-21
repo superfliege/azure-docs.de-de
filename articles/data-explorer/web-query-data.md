@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Abfragen von Daten im Azure-Daten-Explorer'
+title: 'Schnellstart: Abfragen von Daten im Azure Data Explorer'
 description: In diesem Schnellstart erfahren Sie, wie Sie Daten im Azure-Daten-Explorer abfragen und freigeben.
 services: data-explorer
 author: orspod
@@ -8,14 +8,14 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 09/24/2018
-ms.openlocfilehash: 7b9bc52e07bccf931593cd2dbddd68e973d1b26c
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 7ce66d3f6117a5e395920dc2232efb0e43f4cd18
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49394356"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53106446"
 ---
-# <a name="quickstart-query-data-in-azure-data-explorer"></a>Schnellstart: Abfragen von Daten im Azure-Daten-Explorer
+# <a name="quickstart-query-data-in-azure-data-explorer"></a>Schnellstart: Abfragen von Daten im Azure Data Explorer
 
 Azure-Daten-Explorer ist ein schneller und hochgradig skalierbarer Dienst zur Untersuchung von Daten (Protokoll- und Telemetriedaten). Der Azure-Daten-Explorer bietet eine Webanwendung, mit der Sie Abfragen ausführen und freigeben können. Die Anwendung steht im Azure-Portal sowie als eigenständige Webanwendung zur Verfügung. In diesem Artikel arbeiten Sie in der eigenständigen Version, mit der Sie Verbindungen mit mehreren Clustern herstellen und Deep-Links zu Ihren Abfragen freigeben können.
 
@@ -134,7 +134,7 @@ Nun, da Sie wissen, wie grundlegende Abfragen funktionieren, sehen wir uns an, w
 
 1. Führen Sie die folgende Abfrage aus.
 
-    ```Kutso
+    ```Kusto
     StormEvents
     | sort by StartTime desc
     | where DamageProperty > 5000
@@ -148,7 +148,7 @@ Nun, da Sie wissen, wie grundlegende Abfragen funktionieren, sehen wir uns an, w
 
     Dieser Bereich funktioniert ähnlich wie die PivotTable-Feldliste in Excel, da Sie hier weitere Analysen im Raster selbst durchführen können.
 
-1. Wählen Sie **Pivot-Modus** aus, und ziehen Sie die Spalten wie folgt: **State** (Bundesstaat) nach **Row groups** (Zeilengruppen), **DamageProperty** nach **Values** (Werte) und **EventType** nach **Column labels** (Spaltenbezeichnungen).  
+1. Wählen Sie **Pivot-Modus** aus, und ziehen Sie Spalten wie folgt: **State** nach **Row groups**, **DamageProperty** nach **Values** und **EventType** nach **Column labels**.  
 
     ![Pivot-Modus](media/web-query-data/pivot-mode.png)
 

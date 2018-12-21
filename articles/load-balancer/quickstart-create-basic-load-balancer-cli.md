@@ -1,14 +1,13 @@
 ---
-title: 'Schnellstart: Erstellen eines öffentlichen Lastenausgleichs – Azure CLI | Microsoft-Dokumentation'
+title: 'Schnellstart: Erstellen eines Lastenausgleichs im Basic-Tarif – Azure CLI'
+titlesuffix: Azure Load Balancer
 description: In dieser Schnellstartanleitung wird veranschaulicht, wie Sie über die Azure-Befehlszeilenschnittstelle einen öffentlichen Lastenausgleich erstellen.
 services: load-balancer
 documentationcenter: na
 author: KumudD
-manager: jeconnoc
-editor: ''
 tags: azure-resource-manager
 Customer intent: I want to create a Basic Load balancer so that I can load balance internet traffic to VMs.
-ms.assetid: ''
+ms.custom: mvc
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: get-started-article
@@ -16,17 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/19/2018
 ms.author: kumud
-ms.custom: mvc
-ms.openlocfilehash: 3eb7ae721b0c275ffa39e04904e19c067b949214
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 60cdf251d9a862f8bae80f4f782c6ad94c0b85ce
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46965495"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53260768"
 ---
-# <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-using-azure-cli"></a>Schnellstart: Erstellen eines öffentlichen Load Balancers für den Lastenausgleich virtueller Computer mit der Azure CLI
+# <a name="quickstart-create-a-load-balancer-to-load-balance-vms-using-azure-cli"></a>Schnellstart: Erstellen eines Load Balancers für den Lastenausgleich virtueller Computer mit der Azure CLI
 
-In dieser Schnellstartanleitung erfahren Sie, wie Sie einen Azure Load Balancer erstellen. Zum Testen des Lastenausgleichs stellen Sie zwei virtuelle Computer (Virtual Machines, VMs) mit Ubuntu-Server bereit und führen einen Lastenausgleich für eine Web-App durch.
+In dieser Schnellstartanleitung erfahren Sie, wie Sie eine Instanz von Azure Load Balancer für den Lastenausgleich im Internetdatenverkehr zwischen virtuellen Computern in Azure erstellen. Zum Testen des Lastenausgleichs stellen Sie zwei virtuelle Computer (Virtual Machines, VMs) mit Ubuntu-Server bereit und führen einen Lastenausgleich für eine Web-App durch.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)] 
 

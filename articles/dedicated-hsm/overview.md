@@ -1,6 +1,6 @@
 ---
-title: Was ist dediziertes HSM? | Microsoft-Dokumentation
-description: Der Azure-Dienst für dedizierte HSMs bietet Schlüsselspeicherfunktionen innerhalb von Azure, die die Anforderungen der Zertifizierung „FIPS 140-2 Level 3“ erfüllen.
+title: Was ist dediziertes HSM? Azure Dedicated HSM | Microsoft-Dokumentation
+description: Die Übersicht zu Azure Dedicated HSM bietet Schlüsselspeicherfunktionen innerhalb von Azure, die die Anforderungen der Zertifizierung „FIPS 140-2 Level 3“ erfüllen.
 services: dedicated-hsm
 author: barclayn
 manager: mbaldwin
@@ -10,19 +10,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.custom: mvc
-ms.date: 11/26/2018
+ms.custom: mvc, seodec18
+ms.date: 12/07/2018
 ms.author: barclayn
-ms.openlocfilehash: 92d77ec886a0f37c28f5e3031a7e14f63299c8aa
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 1eeafa33c8c1cdbcd7d0e55e3860dda1b8d451fe
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52427113"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53080077"
 ---
-# <a name="what-is-dedicated-hsm"></a>Was ist dediziertes HSM?
+# <a name="what-is-azure-dedicated-hsm"></a>Was ist Azure Dedicated HSM?
 
-Der Azure-Dienst für dedizierte HSMs bietet einen kryptografischen Schlüsselspeicher in Azure, der selbst strengste Sicherheitsanforderungen erfüllt. Dedizierte HSMs sind die optimale Lösung für Kunden, die Geräte mit der Zertifizierung „FIPS 140-2 Level 3“ sowie die vollständige und uneingeschränkte Kontrolle über die HSM-Appliance benötigen. Die HSM-Geräte werden weltweit in mehreren Azure-Regionen bereitgestellt und lassen sich problemlos als Gerätepaar bereitstellen und für hohe Verfügbarkeit konfigurieren. HSMs können zum Schutz vor regionalen Ausfällen auch regionsübergreifend bereitgestellt werden. Microsoft hat den Dienst für dedizierte HSMs mithilfe der Appliance [SafeNet Luna Network HSM 7 (Modell A790)](https://safenet.gemalto.com/data-encryption/hardware-security-modules-hsms/safenet-network-hsm/) von Gemalto implementiert. Dieses Gerät bietet ein Höchstmaß an Leistung und kryptografischen Integrationsoptionen. HSMs werden nach der Bereitstellung direkt mit dem virtuellen Netzwerk eines Kunden verbunden, und auf sie kann auch über lokale Anwendungen und Verwaltungstool zugegriffen werden. Hierzu ist eine Point-to-Site- oder eine Site-to-Site-VPN-Verbindung erforderlich. Kunden erhalten die Software und die Dokumentation für die Konfiguration und Verwaltung von HSM-Geräten über das Supportportal von Gemalto.
+Azure Dedicated HSM ist ein Azure-Dienst, der Speicherung von kryptografischen Schlüsseln in Azure bietet. Dedicated HSM erfüllt die strengsten Sicherheitsanforderungen. Es ist die optimale Lösung für Kunden, die Geräte mit der Zertifizierung „FIPS 140-2 Level 3“ sowie die vollständige und uneingeschränkte Kontrolle über die HSM-Appliance benötigen. Die HSM-Geräte werden weltweit in mehreren Azure-Regionen bereitgestellt und lassen sich problemlos als Gerätepaar bereitstellen und für hohe Verfügbarkeit konfigurieren. HSMs können zum Schutz vor regionalen Ausfällen auch regionsübergreifend bereitgestellt werden. Microsoft hat den Dienst für dedizierte HSMs mithilfe der Appliance [SafeNet Luna Network HSM 7 (Modell A790)](https://safenet.gemalto.com/data-encryption/hardware-security-modules-hsms/safenet-network-hsm/) von Gemalto implementiert. Dieses Gerät bietet ein Höchstmaß an Leistung und kryptografischen Integrationsoptionen. HSMs werden nach der Bereitstellung direkt mit dem virtuellen Netzwerk eines Kunden verbunden, und auf sie kann auch über lokale Anwendungen und Verwaltungstool zugegriffen werden. Hierzu ist eine Point-to-Site- oder eine Site-to-Site-VPN-Verbindung erforderlich. Kunden erhalten die Software und die Dokumentation für die Konfiguration und Verwaltung von HSM-Geräten über das Supportportal von Gemalto.
 
 ## <a name="why-use-azure-dedicated-hsm"></a>Argumente für die Verwendung des Azure-Diensts für dedizierte HSMs
 

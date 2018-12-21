@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/21/2018
+ms.date: 12/05/2018
 ms.topic: overview
 ms.service: cost-management
 manager: benshy
 ms.custom: ''
-ms.openlocfilehash: 16e2da864d51cbc44457715813e851fd873c8746
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: a90ef531cedb5e4c32a8f0af8b6cca86a93fb39a
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52276668"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52997119"
 ---
 # <a name="what-is-azure-cost-management"></a>Was ist Azure-Kostenverwaltung?
 
@@ -29,7 +29,7 @@ Cost Management zeigt die Kosten und Verwendungsmuster der Organisation mit erwe
 
 ## <a name="plan-and-control-expenses"></a>Ausgaben planen und steuern
 
-Cost Management unterstützt Sie wie folgt beim Planen und Steuern Ihrer Kosten: Kostenanalyse, Budgets, Empfehlungen und Exportieren von Kostenverwaltungsdaten.
+Zu den Methoden, mit denen Cost Management Ihnen beim Planen und Kontrollieren Ihrer Kosten hilft, zählen: Kostenanalyse, Budgets, Empfehlungen und Exportieren der Kostenverwaltungsdaten.
 
 Mithilfe der Kostenanalyse ermitteln Sie für Ihre Organisation anfallende Kosten und analysieren diese. Durch die Anzeige aggregierter Kosten nach Organisationen können Sie Kostenstellen und Ausgabentrends nachvollziehen. Mithilfe der akkumulierten Kosten lassen sich zudem unter Berücksichtigung von Budgets Kostenschätzungen für monatliche, vierteljährliche oder jährliche Zeiträume erstellen.
 

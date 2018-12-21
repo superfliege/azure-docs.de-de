@@ -1,6 +1,6 @@
 ---
-title: Übersicht über Azure Notebooks | Microsoft-Dokumentation
-description: Führen Sie Jupyter-Notebooks in der Cloud aus, indem Sie den kostenlosen Dienst „Azure Notebooks“ verwenden.
+title: Übersicht über Azure Notebooks
+description: Führen Sie Jupyter-Notebooks in der Cloud aus, indem Sie den kostenlosen Dienst „Azure Notebooks“ verwenden, der weder Setup noch Konfiguration erfordert.
 services: app-service
 documentationcenter: ''
 author: kraigb
@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: a84f71c2656c73867ee076d4b993026558a0a504
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 92cfdea12dc51884ea04ed894a79ded7f532d88b
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52853360"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53085398"
 ---
 # <a name="overview-of-azure-notebooks"></a>Übersicht über Azure Notebooks
 
-Azure Notebooks ist ein kostenloser gehosteter Dienst zum Entwickeln und Ausführen von Jupyter-Notebooks in der Cloud ohne Installation. [Jupyter](http://jupyter.org/) (vormals IPython) ist ein Open Source-Projekt, mit dem Sie Markdowntext, ausführbaren Code, beständige Daten, Grafiken und Visualisierungen einfach in einer einzelnen, gemeinsam nutzbaren Canvas – einem so genannten *Notebook* – zusammenführen können (Bild von „jupyter.org“):
+Azure Notebooks ist ein kostenloser gehosteter Dienst zum Entwickeln und Ausführen von Jupyter-Notebooks in der Cloud ohne Installation. [Jupyter](https://jupyter.org/) (vormals IPython) ist ein Open Source-Projekt, mit dem Sie Markdowntext, ausführbaren Code, beständige Daten, Grafiken und Visualisierungen einfach in einer einzelnen, gemeinsam nutzbaren Canvas – einem so genannten *Notebook* – zusammenführen können (Bild von „jupyter.org“):
 
-[![](http://jupyter.org/assets/jupyterpreview.png "Jupyter-Notebooks")](http://jupyter.org/assets/jupyterpreview.png#lightbox)
+[![](https://jupyter.org/assets/jupyterpreview.png "Jupyter-Notebooks")](https://jupyter.org/assets/jupyterpreview.png#lightbox)
 
 Aufgrund dieser leistungsstarken Kombination aus Code, Grafiken und beschreibendem Text ist Jupyter zu einer beliebten Lösung für viele Anwendungsfälle geworden, z.B. Data Science-Anleitung, Datenbereinigung und -transformation, numerische Simulation, statistische Modellierung und Entwicklung von Machine Learning-Modellen.
 
@@ -51,7 +51,7 @@ Da es sich bei Azure Notebooks um eine allgemeine Plattform für die Codeerstell
 Kurz zusammengefasst: Mit Azure Notebooks können Sie Ihre Arbeit effizienter erledigen und mehr schaffen.
 
 > [!Note]
-> Weitere Informationen zu Jupyter selbst finden Sie auf [jupyter.org](http://jupyter.org/) und in der [Jupyter-Dokumentation](http://jupyter-notebook.readthedocs.io/en/latest/).
+> Weitere Informationen zu Jupyter selbst finden Sie auf [jupyter.org](https://jupyter.org/) und in der [Jupyter-Dokumentation](https://jupyter-notebook.readthedocs.io/en/latest/).
 
 ## <a name="pricing-and-quotas"></a>Preise und Kontingente
 

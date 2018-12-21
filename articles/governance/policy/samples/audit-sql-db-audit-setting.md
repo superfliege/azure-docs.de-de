@@ -1,5 +1,5 @@
 ---
-title: 'Azure Policy-Beispiel: Überwachen der Überwachungseinstellung auf SQL-Datenbank-Ebene'
+title: 'Beispiel: Überwachen von Einstellungen der Überwachung auf SQL-Datenbank-Ebene'
 description: Diese Beispielrichtlinie überwacht SQL-Datenbank-Überwachungseinstellungen, wenn diese Einstellungen nicht mit einer angegebenen Einstellung übereinstimmen.
 services: azure-policy
 author: DCtheGeek
@@ -8,13 +8,12 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 09/18/2018
 ms.author: dacoulte
-ms.custom: mvc
-ms.openlocfilehash: 22755f2be4a335a8527fb4723aa329e3048b9f5c
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 24313c83809734367459937d2b02441896b6a5fb
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46970735"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53315314"
 ---
 # <a name="audit-sql-db-level-audit-setting"></a>Überwachungseinstellung zur Überwachung auf SQL-Datenbank-Ebene
 
@@ -30,7 +29,7 @@ Sie können diese Vorlage über das [Azure-Portal](#deploy-with-the-portal), mit
 
 ## <a name="deploy-with-the-portal"></a>Bereitstellen über das Portal
 
-[![Bereitstellen in Azure](http://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FSQL%2Faudit-sql-db-auditing%2Fazurepolicy.json)
+[![In Azure bereitstellen](http://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FSQL%2Faudit-sql-db-auditing%2Fazurepolicy.json)
 
 ## <a name="deploy-with-powershell"></a>Bereitstellen mit PowerShell
 

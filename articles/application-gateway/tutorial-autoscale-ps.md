@@ -1,48 +1,50 @@
 ---
-title: Erstellen einer zonenredundanten Application Gateway-Instanz mit automatischer Skalierung und reservierter IP-Adresse – Azure PowerShell
-description: Erfahren Sie, wie Sie Azure PowerShell eine zonenredundante Application Gateway-Instanz mit automatischer Skalierung und einer reservierten IP-Adresse erstellen.
+title: 'Tutorial: Erstellen einer zonenredundanten Application Gateway-Instanz mit automatischer Skalierung und reservierter IP-Adresse – Azure PowerShell'
+description: In diesem Tutorial erfahren Sie, wie Sie mit Azure PowerShell eine zonenredundante Anwendungsgatewayinstanz mit automatischer Skalierung und einer reservierten IP-Adresse erstellen.
 services: application-gateway
 author: amitsriva
 ms.service: application-gateway
 ms.topic: tutorial
-ms.date: 9/26/2018
+ms.date: 11/26/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: d86ce2e1bac2fb58df8df748381a00eac21e65cb
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: 99fa5d6f0ba74b56a53f2d1af1b99c7e5c2896a7
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48016933"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53323199"
 ---
-# <a name="tutorial-create-an-autoscaling-zone-redundant-application-gateway-with-a-reserved-virtual-ip-address-using-azure-powershell"></a>Tutorial: Erstellen einer zonenredundanten Application Gateway-Instanz mit automatischer Skalierung und reservierter virtueller IP-Adresse mit Azure PowerShell
+# <a name="tutorial-create-an-application-gateway-that-improves-web-application-access"></a>Tutorial: Erstellen eines Anwendungsgateways, das den Zugriff auf die Webanwendung verbessert
 
-Dieses Tutorial beschreibt, wie Sie eine Azure Application Gateway-Instanz mit Azure PowerShell-Cmdlets und dem Azure Resource Manager-Bereitstellungsmodell erstellen. Dieses Tutorial konzentriert sich auf die Unterschiede zwischen der neuen SKU mit automatischer Skalierung und der vorhandenen Standard-SKU. Vor allem gehen wir auf die Funktionen zur Unterstützung der automatischen Skalierung, Zonenredundanz und reservierten virtuellen IPs (statische IP) ein.
+Wenn Sie als IT-Administrator für die Verbesserung des Zugriffs auf die Webanwendung verantwortlich sind, können Sie Ihr Anwendungsgateway optimieren, sodass es der Kundennachfrage gemäß skaliert wird und mehrere Verfügbarkeitszonen abdeckt. Dieses Tutorial hilft Ihnen beim Konfigurieren der Azure Application Gateway-Features für automatische Skalierung, Zonenredundanz und reservierte virtuellen IP-Adressen (VIPs) bzw. statische IP-Adressen. Sie verwenden Azure PowerShell-Cmdlets und das Azure Resource Manager-Bereitstellungsmodell, um das Problem zu lösen.
 
-Weitere Informationen zu Anwendungsgateways mit automatischer Skalierung und Zonenredundanz finden Sie unter [Application Gateway mit automatischer Skalierung und Zonenredundanz (Public Preview)](application-gateway-autoscaling-zone-redundant.md).
-
-> [!IMPORTANT]
-> Die Application Gateway-SKU mit automatischer Skalierung und Zonenredundanz ist derzeit als öffentliche Vorschau verfügbar. Diese Vorschau wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Ergänzende Nutzungsbedingungen für Microsoft Azure-Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> [!IMPORTANT] 
+> Die Application Gateway-SKU mit automatischer Skalierung und Zonenredundanz ist derzeit als öffentliche Vorschau verfügbar. Diese Vorschau wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Ergänzende Nutzungsbedingungen für Microsoft Azure-Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
 
 In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
-> * Einrichten des Konfigurationsparameters für die automatische Skalierung
-> * Verwenden des Zeitzonenparameters
-> * Verwenden einer statischen virtuellen IP
+> * Erstellen eines virtuellen Netzwerks mit automatischer Skalierung
+> * Erstellen einer reservierten öffentlichen IP-Adresse
+> * Einrichten der Anwendungsgatewayinfrastruktur
+> * Konfigurieren der automatischen Skalierung
 > * Erstellen des Anwendungsgateways
-
+> * Testen des Anwendungsgateways
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
+## <a name="prerequisites"></a>Voraussetzungen
+
 Für dieses Tutorial müssen Sie Azure PowerShell lokal ausführen. Sie müssen das Azure PowerShell-Modul Version 6.9.0 oder höher installiert haben. Führen Sie `Get-Module -ListAvailable AzureRM` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](https://docs.microsoft.com/powershell/azure/install-azurerm-ps) Informationen dazu. Führen Sie nach dem Überprüfen der PowerShell-Version `Login-AzureRmAccount` aus, um eine Verbindung mit Azure zu erstellen.
 
-## <a name="sign-in-to-your-azure-account"></a>Anmelden bei Ihrem Azure-Konto
+## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
 ```azurepowershell
 Connect-AzureRmAccount
 Select-AzureRmSubscription -Subscription "<sub name>"
 ```
+
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 Erstellen Sie eine Ressourcengruppe in einer der verfügbaren Regionen.
 
@@ -54,8 +56,9 @@ $rg = "<rg name>"
 New-AzureRmResourceGroup -Name $rg -Location $location
 ```
 
-## <a name="create-a-vnet"></a>Erstellen eines VNET
-Erstellen Sie ein VNET mit einem dedizierten Subnetz für ein Anwendungsgateway mit automatischer Skalierung. Derzeit kann in jedem dedizierten Subnetz nur ein Anwendungsgateway mit automatischer Skalierung bereitgestellt werden.
+## <a name="create-a-virtual-network"></a>Erstellen eines virtuellen Netzwerks
+
+Erstellen Sie ein virtuelles Netzwerk mit einem dedizierten Subnetz für ein Anwendungsgateway mit automatischer Skalierung. Derzeit kann in jedem dedizierten Subnetz nur ein Anwendungsgateway mit automatischer Skalierung bereitgestellt werden.
 
 ```azurepowershell
 #Create VNet with two subnets
@@ -67,7 +70,7 @@ $vnet = New-AzureRmvirtualNetwork -Name "AutoscaleVNet" -ResourceGroupName $rg `
 
 ## <a name="create-a-reserved-public-ip"></a>Erstellen einer reservierten öffentlichen IP-Adresse
 
-Geben Sie die Zuordnungsmethode für „PublicIPAddress“ als **Statisch** an. Die virtuelle IP eines Anwendungsgateways mit automatischer Skalierung kann nur statisch sein. Dynamische IPs werden nicht unterstützt. Es wird nur die standardmäßige „PublicIpAddress“-SKU unterstützt.
+Geben Sie als Zuordnungsmethode für PublicIPAddress **Statisch** an. Die virtuelle IP eines Anwendungsgateways mit automatischer Skalierung kann nur statisch sein. Dynamische IPs werden nicht unterstützt. Es wird nur die standardmäßige „PublicIpAddress“-SKU unterstützt.
 
 ```azurepowershell
 #Create static public IP
@@ -77,7 +80,7 @@ $pip = New-AzureRmPublicIpAddress -ResourceGroupName $rg -name "AppGwVIP" `
 
 ## <a name="retrieve-details"></a>Abrufen von Details
 
-Rufen Sie Details zur Ressourcengruppe, zum Subnetz und zur IP-Adresse in einem lokalen Objekt ab, um die IP-Konfigurationsdetails des Anwendungsgateways zu erstellen.
+Rufen Sie Details zur Ressourcengruppe, zum Subnetz und zur IP-Adresse in einem lokalen Objekt ab, um die IP-Konfigurationsdetails für das Anwendungsgateway zu erstellen.
 
 ```azurepowershell
 $resourceGroup = Get-AzureRmResourceGroup -Name $rg
@@ -85,8 +88,10 @@ $publicip = Get-AzureRmPublicIpAddress -ResourceGroupName $rg -name "AppGwVIP"
 $vnet = Get-AzureRmvirtualNetwork -Name "AutoscaleVNet" -ResourceGroupName $rg
 $gwSubnet = Get-AzureRmVirtualNetworkSubnetConfig -Name "AppGwSubnet" -VirtualNetwork $vnet
 ```
-## <a name="configure-application-gateway-infrastructure"></a>Konfigurieren der Application Gateway-Infrastruktur
-Konfigurieren Sie IP, Front-End-IP, Back-End-Pool, HTTP-Einstellungen, Zertifikat, Port, Listener und Regel im gleichen Format wie die vorhandene Standard-SKU von Application Gateway. Die neue SKU folgt dem gleichen Objektmodell wie die Standard-SKU.
+
+## <a name="configure-the-infrastructure"></a>Konfigurieren der Infrastruktur
+
+Konfigurieren Sie IP, Front-End-IP, Back-End-Pool, HTTP-Einstellungen, Zertifikat, Port, Listener und Regel im gleichen Format wie das vorhandene Standardanwendungsgateway. Die neue SKU folgt dem gleichen Objektmodell wie die Standard-SKU.
 
 ```azurepowershell
 $ipconfig = New-AzureRmApplicationGatewayIPConfiguration -Name "IPConfig" -Subnet $gwSubnet
@@ -114,14 +119,15 @@ $rule02 = New-AzureRmApplicationGatewayRequestRoutingRule -Name "Rule2" -RuleTyp
 
 ## <a name="specify-autoscale"></a>Konfigurieren der automatischen Skalierung
 
-Jetzt können Sie die Konfiguration der automatischen Skalierung für die Application Gateway-Instanz angeben. Zwei Konfigurationstypen werden für die automatische Skalierung unterstützt:
+Jetzt können Sie die Konfiguration der automatischen Skalierung für das Anwendungsgateway angeben. Zwei Konfigurationstypen werden für die automatische Skalierung unterstützt:
 
-- **Modus mit fester Kapazität**: In diesem Modus kann die Application Gateway-Instanz keine automatische Skalierung vornehmen. Sie wird mit einer festen Kapazität für die Skalierungseinheit ausgeführt.
+* **Modus mit fester Kapazität**: In diesem Modus kann die Application Gateway-Instanz keine automatische Skalierung vornehmen. Sie wird mit einer festen Kapazität für die Skalierungseinheit ausgeführt.
 
    ```azurepowershell
    $sku = New-AzureRmApplicationGatewaySku -Name Standard_v2 -Tier Standard_v2 -Capacity 2
    ```
-- **Modus mit automatischer Skalierung**: In diesem Modus nimmt das Anwendungsgateway basierend auf dem Muster des Anwendungsdatenverkehrs eine automatische Skalierung vor.
+
+* **Modus mit automatischer Skalierung**: In diesem Modus nimmt das Anwendungsgateway basierend auf dem Muster des Anwendungsdatenverkehrs eine automatische Skalierung vor.
 
    ```azurepowershell
    $autoscaleConfig = New-AzureRmApplicationGatewayAutoscaleConfiguration -MinCapacity 2
@@ -130,9 +136,7 @@ Jetzt können Sie die Konfiguration der automatischen Skalierung für die Applic
 
 ## <a name="create-the-application-gateway"></a>Erstellen des Anwendungsgateways
 
-Erstellen Sie ein Anwendungsgateway und integrieren Sie redundante Zonen. 
-
-Die Zonenkonfiguration wird nur in Regionen unterstützt, in denen Azure-Zonen verfügbar sind. In Regionen, in denen Azure-Zonen nicht verfügbar sind, darf der Zonenparameter nicht verwendet werden. Ein Anwendungsgateway kann in einer einzelnen Zone, in zwei Zonen und sogar in drei Zonen bereitgestellt werden. „PublicIPAddress“ muss für ein Anwendungsgateway mit einer einzelnen Zone an die gleiche Zone gebunden sein. Für zwei oder drei zonenredundante Anwendungsgateways muss „PublicIPAddress“ ebenfalls zonenredundant sein. Das heißt, es wird keine Zone angegeben.
+Erstellen Sie das Anwendungsgateway, und beziehen Sie Redundanzzonen und die Konfiguration der automatischen Skalierung ein.
 
 ```azurepowershell
 $appgw = New-AzureRmApplicationGateway -Name "AutoscalingAppGw" -Zone 1,2,3 `
@@ -145,24 +149,17 @@ $appgw = New-AzureRmApplicationGateway -Name "AutoscalingAppGw" -Zone 1,2,3 `
 
 ## <a name="test-the-application-gateway"></a>Testen des Anwendungsgateways
 
-Verwenden Sie [Get-AzureRmPublicIPAddress](https://docs.microsoft.com/powershell/module/azurerm.network/get-azurermpublicipaddress), um die öffentliche IP-Adresse des Anwendungsgateways abzurufen. Kopieren Sie die öffentliche IP-Adresse oder den DNS-Namen, und fügen Sie den kopierten Inhalt in die Adressleiste des Browsers ein.
+Verwenden Sie Get-AzureRmPublicIPAddress, um die öffentliche IP-Adresse des Anwendungsgateways abzurufen. Kopieren Sie die öffentliche IP-Adresse oder den DNS-Namen, und fügen Sie den kopierten Inhalt in die Adressleiste des Browsers ein.
 
 `Get-AzureRmPublicIPAddress -ResourceGroupName $rg -Name AppGwVIP`
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
-Untersuchen Sie zuerst die Ressourcen, die mit dem Anwendungsgateway erstellt wurden. Sie können dann den Befehl `Remove-AzureRmResourceGroup` verwenden, um die Ressourcengruppe, das Anwendungsgateway und alle dazugehörigen Ressourcen zu entfernen, wenn diese nicht mehr benötigt werden.
+
+Untersuchen Sie zuerst die Ressourcen, die mit dem Anwendungsgateway erstellt wurden. Wenn sie nicht mehr benötigt werden, können Sie Ressourcengruppe, Anwendungsgateway und alle zugehörigen Ressourcen mit dem Befehl `Remove-AzureRmResourceGroup` entfernen.
 
 `Remove-AzureRmResourceGroup -Name $rg`
 
 ## <a name="next-steps"></a>Nächste Schritte
-
-In diesem Tutorial haben Sie Folgendes gelernt:
-
-> [!div class="checklist"]
-> * Verwenden einer statischen virtuellen IP
-> * Einrichten des Konfigurationsparameters für die automatische Skalierung
-> * Verwenden des Zeitzonenparameters
-> * Erstellen des Anwendungsgateways
 
 > [!div class="nextstepaction"]
 > [Erstellen eines Anwendungsgateways mit Routingregeln auf URL-Pfadbasis](./tutorial-url-route-powershell.md)

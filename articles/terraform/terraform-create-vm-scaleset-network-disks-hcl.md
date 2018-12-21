@@ -9,36 +9,36 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 10/26/2018
-ms.openlocfilehash: 5bf3e6d8839c3ec08bae03772d9a7ab011c67857
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 4784672364e2bdf44f0415ab4e1e386a5a80076b
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51228401"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53313053"
 ---
 # <a name="use-terraform-to-create-an-azure-virtual-machine-scale-set"></a>Erstellen einer Azure-VM-Skalierungsgruppe mithilfe von Terraform
 
-Mithilfe von [Azure-VM-Skalierungsgruppen](/azure/virtual-machine-scale-sets) können Sie eine Gruppe identischer, virtueller Computer mit Lastenausgleich erstellen und verwalten, wobei sich die Zahl der VM-Instanzen je nach Bedarf oder definiertem Zeitplan automatisch erhöhen oder verringern kann. 
+Mithilfe von [Azure-VM-Skalierungsgruppen](/azure/virtual-machine-scale-sets) können Sie eine Gruppe identischer, virtueller Computer mit Lastenausgleich erstellen und verwalten, wobei sich die Zahl der VM-Instanzen je nach Bedarf oder definiertem Zeitplan automatisch erhöhen oder verringern kann.
 
 In diesem Tutorial erfahren Sie, wie Sie [Azure Cloud Shell](/azure/cloud-shell/overview) nutzen, um folgende Aufgaben ausführen zu können:
 
 > [!div class="checklist"]
 > * Einrichten einer Terraform-Bereitstellung
-> * Verwenden von Variablen und Ausgaben für die Terraform-Bereitstellung 
+> * Verwenden von Variablen und Ausgaben für die Terraform-Bereitstellung
 > * Erstellen und Bereitstellen der Netzwerkinfrastruktur
 > * Erstellen und Bereitstellen einer VM-Skalierungsgruppe und Anfügen an das Netzwerk
 > * Erstellen und Bereitstellen einer Jumpbox zum Herstellen einer SSH-Verbindung mit den virtuellen Computern
 
 > [!NOTE]
-> Die neueste Version der in diesem Artikel verwendeten Terraform-Konfigurationsdateien befinden sich im [Repository „awesome-terraform“](https://github.com/Azure/awesome-terraform/tree/master/codelab-vmss) auf Github.
+> Die neueste Version der in diesem Artikel verwendeten Terraform-Konfigurationsdateien befinden sich im [Repository „awesome-terraform“](https://github.com/Azure/awesome-terraform/tree/master/codelab-vmss) auf GitHub.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- **Azure-Abonnement:** Wenn Sie über kein Azure-Abonnement verfügen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) erstellen, bevor Sie beginnen.
+- **Azure-Abonnement**: Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) erstellen, bevor Sie beginnen.
 
 - **Installieren von Terraform**: Befolgen Sie die Anweisungen im Artikel [Installieren und Konfigurieren von Terraform zum Bereitstellen von VMs und sonstiger Infrastruktur in Azure](/azure/virtual-machines/linux/terraform-install-configure).
 
-- **Erstellen eines SSH-Schlüsselpaars**: Erstellen Sie ein SSH-Schlüsselpaar, falls Sie noch keins besitzen. Folgen Sie den Anweisungen im Artikel [Schnelle Schritte: Erstellen und Verwenden eines SSH-Schlüsselpaars (öffentlich und privat) für virtuelle Linux-Computer in Azure](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys).
+- **Erstellen eines SSH-Schlüsselpaars**: Falls Sie noch kein SSH-Schlüsselpaar besitzen, folgen Sie den Anweisungen im Artikel [Schnelle Schritte: Erstellen und Verwenden eines SSH-Schlüsselpaars (öffentlich und privat) für virtuelle Linux-Computer in Azure](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys).
 
 ## <a name="create-the-directory-structure"></a>Erstellen der Verzeichnisstruktur
 
@@ -122,7 +122,8 @@ Führen Sie in der Azure Cloud Shell-Instanz die folgenden Schritte aus:
 
 1. Drücken Sie die I-TASTE, um den Einfügemodus zu starten.
 
-1. Fügen Sie den folgenden Code in den Editor ein, um den vollqualifizierten Domänennamen (FQDN) für die virtuellen Computer verfügbar zu machen. :
+1. Fügen Sie den folgenden Code in den Editor ein, um den vollqualifizierten Domänennamen (FQDN) für die virtuellen Computer verfügbar zu machen.
+:
 
   ```JSON
     output "vmss_public_ip" {
@@ -139,9 +140,9 @@ Führen Sie in der Azure Cloud Shell-Instanz die folgenden Schritte aus:
     ```
 
 ## <a name="define-the-network-infrastructure-in-a-template"></a>Definieren der Netzwerkinfrastruktur in einer Vorlage
-In diesem Abschnitt erstellen Sie in einer neuen Azure-Ressourcengruppe die folgende Netzwerkinfrastruktur: 
+In diesem Abschnitt erstellen Sie in einer neuen Azure-Ressourcengruppe die folgende Netzwerkinfrastruktur:
 
-  - Ein virtuelles Netzwerk (VNET) mit dem Adressraum 10.0.0.0/16 
+  - Ein virtuelles Netzwerk (VNET) mit dem Adressraum 10.0.0.0/16
   - Ein Subnetz mit dem Adressraum 10.0.2.0/24
   - Zwei öffentliche IP-Adressen: eine für den Lastenausgleich der VM-Skalierungsgruppe, eine für die Verbindungsherstellung mit der SSH-Jumpbox
 
@@ -155,7 +156,7 @@ Führen Sie in der Azure Cloud Shell-Instanz die folgenden Schritte aus:
 
 1. Drücken Sie die I-TASTE, um den Einfügemodus zu starten.
 
-1. Fügen Sie den folgenden Code am Ende der Datei ein, um den vollqualifizierten Domänennamen (FQDN) für die virtuellen Computer verfügbar zu machen. 
+1. Fügen Sie den folgenden Code am Ende der Datei ein, um den vollqualifizierten Domänennamen (FQDN) für die virtuellen Computer verfügbar zu machen.
 
   ```JSON
   resource "azurerm_resource_group" "vmss" {
@@ -210,7 +211,7 @@ Führen Sie unter Verwendung der Azure Cloud Shell-Instanz aus dem Verzeichnis, 
 1. Initialisieren Sie Terraform.
 
   ```bash
-  terraform init 
+  terraform init
   ```
 
 1. Führen Sie den folgenden Befehl aus, um die definierte Infrastruktur in Azure bereitzustellen.
@@ -235,8 +236,8 @@ Führen Sie unter Verwendung der Azure Cloud Shell-Instanz aus dem Verzeichnis, 
 In diesem Abschnitt erfahren Sie, wie sich der Vorlage die folgenden Ressourcen hinzufügen lassen:
 
 - Einen Azure-Lastenausgleich und Regeln, um die Anwendung zu versorgen und an die öffentliche IP-Adresse anzufügen, deren Konfiguration oben im Artikel beschrieben wurde
-- Einen Azure-Back-End-Adresspool, der dem Lastenausgleich zugewiesen werden muss 
-- Einen Integritätstestport, der von der Anwendung verwendet und für den Lastenausgleich konfiguriert wird 
+- Einen Azure-Back-End-Adresspool, der dem Lastenausgleich zugewiesen werden muss
+- Einen Integritätstestport, der von der Anwendung verwendet und für den Lastenausgleich konfiguriert wird
 - Eine VM-Skalierungsgruppe, die sich hinter dem Lastenausgleich befindet und in dem VNET ausgeführt wird, dessen Bereitstellung oben im Artikel beschrieben wurde
 - [Nginx](http://nginx.org/) auf den Knoten der VM-Skalierungsgruppe mit [Cloud-Init](http://cloudinit.readthedocs.io/en/latest/)
 
@@ -359,7 +360,7 @@ Führen Sie in Cloud Shell die folgenden Schritte aus:
     :wq
     ```
 
-1. Erstellen Sie eine Datei mit dem Namen `web.conf`. Sie dient als Cloud-Init-Konfiguration für die virtuellen Computer, die zur Skalierungsgruppe gehören. 
+1. Erstellen Sie eine Datei mit dem Namen `web.conf`. Sie dient als Cloud-Init-Konfiguration für die virtuellen Computer, die zur Skalierungsgruppe gehören.
 
     ```bash
     vi web.conf
@@ -407,7 +408,7 @@ Führen Sie in Cloud Shell die folgenden Schritte aus:
   variable "admin_password" {
       description = "Default password for admin account"
   }
-  ``` 
+  ```
 
 1. Drücken Sie die ESC-TASTE, um den Anfügemodus zu beenden.
 
@@ -430,14 +431,14 @@ Führen Sie in Cloud Shell die folgenden Schritte aus:
 1. Stellen Sie die neuen Ressourcen in Azure bereit.
 
   ```bash
-  terraform apply 
+  terraform apply
   ```
 
   Die Ausgabe des Befehls sollte ungefähr so wie auf dem folgenden Screenshot aussehen:
 
   ![Terraform-Ressourcengruppe für VM-Skalierungsgruppe](./media/terraform-create-vm-scaleset-network-disks-hcl/resource-group-contents.png)
 
-1. Öffnen Sie einen Browser, und stellen Sie eine Verbindung mit dem FQDN her, der durch den Befehl zurückgegeben wurde. 
+1. Öffnen Sie einen Browser, und stellen Sie eine Verbindung mit dem FQDN her, der durch den Befehl zurückgegeben wurde.
 
   ![Ergebnisse des Navigierens zum FQDN](./media/terraform-create-vm-scaleset-network-disks-hcl/browser-fqdn.png)
 
@@ -545,7 +546,7 @@ Bei einer SSH-*Jumpbox* handelt es sich um einen Einzelserver, durch den Sie soz
 1. Stellen Sie die Jumpbox bereit.
 
   ```bash
-  terraform apply 
+  terraform apply
   ```
 
 Nach Abschluss der Bereitstellung sieht der Inhalt der Ressourcengruppe wie derjenige auf dem folgenden Screenshot aus:
@@ -555,7 +556,7 @@ Nach Abschluss der Bereitstellung sieht der Inhalt der Ressourcengruppe wie derj
 > [!NOTE]
 > Die Anmeldung mit einem Kennwort ist für die bereitgestellte Jumpbox und für die bereitgestellte VM-Skalierungsgruppe deaktiviert. Melden Sie sich mit SSH an, um auf die virtuellen Computer zuzugreifen.
 
-## <a name="environment-cleanup"></a>Bereinigen der Umgebung 
+## <a name="environment-cleanup"></a>Bereinigen der Umgebung
 
 Wenn Sie die in diesem Tutorial erstellten Terraform-Ressourcen löschen möchten, geben Sie in Cloud Shell den folgenden Befehl ein:
 
@@ -566,9 +567,9 @@ terraform destroy
 Die Bereinigung kann einige Minuten dauern.
 
 ## <a name="next-steps"></a>Nächste Schritte
-In diesem Artikel haben Sie gelernt, wie sich mithilfe von Terraform eine Azure-VM-Skalierungsgruppe erstellen lässt. In folgenden zusätzlichen Ressourcen können Sie mehr über Terraform in Azure erfahren: 
+In diesem Artikel haben Sie gelernt, wie sich mithilfe von Terraform eine Azure-VM-Skalierungsgruppe erstellen lässt. In folgenden zusätzlichen Ressourcen können Sie mehr über Terraform in Azure erfahren:
 
- [Dokumentation zu Terraform in Azure](https://docs.microsoft.com/azure/terraform/)  
- [Terraform Azure Provider Documentation](https://aka.ms/terraform) (Dokumentation zum Azure-Anbieter für Terraform)  
- [Terraform Azure Provider Source](https://aka.ms/tfgit) (Referenz zum Azure-Anbieter für Terraform)  
- [Terraform Azure Modules](https://aka.ms/tfmodules) (Azure-Module für Terraform)
+[Dokumentation zu Terraform in Azure](https://docs.microsoft.com/azure/terraform/)
+[Dokumentation zum Azure Provider von Terraform](https://aka.ms/terraform)
+[Quelle zum Azure Provider von Terraform](https://aka.ms/tfgit) 
+ [Terraform Azure-Module](https://aka.ms/tfmodules)

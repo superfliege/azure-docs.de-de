@@ -1,37 +1,36 @@
 ---
 title: Worum handelt es sich beim Speech-Dienst?
 titleSuffix: Azure Cognitive Services
-description: 'Der Speech-Dienst ist Bestandteil von Azure Cognitive Services und vereint mehrere Sprachdienste, die zuvor separat verfügbar waren: Bing-Spracheingabe (bestehend aus Spracherkennung und Sprachsynthese), Custom Speech und Sprachübersetzung.'
+description: 'Der Speech-Dienst, ein Teil von Azure Cognitive Services, vereinigt in sich mehrere Sprachdienste, die zuvor separat verfügbar waren: Bing-Spracheingabe (umfasst die Spracherkennung und Sprachsynthese), Custom Speech und Sprachübersetzung.'
 services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: overview
-ms.date: 09/24/2018
+ms.date: 12/13/2018
 ms.author: erhopf
-ms.openlocfilehash: ba4204c23f3467ff07940fd6a72464e67604dde1
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: e86adfd4e832e6b9514e4813ddd4a942b07ca624
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49470445"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53336593"
 ---
-# <a name="what-is-the-speech-service"></a>Worum handelt es sich beim Speech-Dienst?
-
+# <a name="what-is-speech-services"></a>Was ist der Speech-Dienst?
 
 Der Speech-Dienst basiert genau wie die anderen Azure-Sprachdienste auf den Sprachtechnologien aus Produkten wie Cortana und Microsoft Office.
 
-Der Speech-Dienst vereint die Azure-Sprachfeatures, die zuvor über die Dienste [Bing-Spracheingabe-API](https://docs.microsoft.com/azure/cognitive-services/speech/home), [Sprachübersetzung](https://docs.microsoft.com/azure/cognitive-services/translator-speech/), [Custom Speech](https://docs.microsoft.com/azure/cognitive-services/custom-speech-service/cognitive-services-custom-speech-home) und [Custom Voice](http://customvoice.ai/) verfügbar waren. Nun kann über ein einzelnes Abonnement auf alle diese Funktionen zugegriffen werden.
+Der Speech-Dienst vereint in sich die Azure-Sprachfeatures, die zuvor über die Dienste [Bing-Spracheingabe-API](https://docs.microsoft.com/azure/cognitive-services/speech/home), [Sprachübersetzung](https://docs.microsoft.com/azure/cognitive-services/translator-speech/), [Custom Speech](https://docs.microsoft.com/azure/cognitive-services/custom-speech-service/cognitive-services-custom-speech-home) und [Custom Voice](http://customvoice.ai/) verfügbar waren. Nun kann über ein einzelnes Abonnement auf alle diese Funktionen zugegriffen werden.
 
-## <a name="main-speech-service-functions"></a>Hauptfunktionen des Speech-Diensts
+## <a name="main-speech-services-functions"></a>Hauptfunktionen des Speech-Diensts
 
 Zu den Hauptfunktionen des Speech-Diensts zählen Sprache-zu-Text (auch Spracherkennung oder Transkription genannt), Text-zu-Sprache (Sprachsynthese) und Sprachübersetzung.
 
 |Funktion|Features|
 |-|-|
 |[Spracherkennung](speech-to-text.md)| <li>Wandelt fortlaufende Sprache in Echtzeit in Text um.<li>Kann Sprache aus Audioaufnahmen als Batch transkribieren. <li>Unterstützt Zwischenergebnisse, die Erkennung des Endes der Spracheingabe, automatische Textformatierung sowie die Maskierung anstößiger Ausdrücke. <li>Kann mithilfe von [Language Understanding](https://docs.microsoft.com/azure/cognitive-services/luis/) (LUIS) die Benutzerabsicht aus der transkribierten Sprache ableiten.\*|
-|[Sprachsynthese](text-to-speech.md)| <li>Konvertiert Text in natürlich klingende Sprache. <li>Bietet mehrere Geschlechter und/oder Dialekte für viele unterstützte Sprachen. <li>Unterstützt Nur-Text-Eingabe und SSML (Speech Synthesis Markup Language, Markupsprache für Sprachsynthese). |
+|[Text-zu-Sprache](text-to-speech.md)| <li>**NEU**: Neuronale Text-zu-Sprache-Stimmen, die von menschlicher Sprache nahezu kaum zu unterscheiden sind (in Englisch). <li>Konvertiert Text in natürlich klingende Sprache. <li>Bietet mehrere Geschlechter und/oder Dialekte für viele unterstützte Sprachen. <li>Unterstützt Nur-Text-Eingabe und SSML (Speech Synthesis Markup Language, Markupsprache für Sprachsynthese). |
 |[Sprachübersetzung](speech-translation.md)| <li>Übersetzt Audiostreams nahezu in Echtzeit.<li> Kann auch aufgezeichnete Sprache verarbeiten.<li>Liefert Ergebnisse als Text oder Sprachsynthese. |
 
 
@@ -57,13 +56,13 @@ Der Speech-Dienst verfügt auch über eine [REST-API](rest-apis.md), die mit jed
 |<br>Methode|Spracheingabe<br>Spracherkennung|Sprachsynthese<br>Spracheingabe|Spracheingabe<br>Sprachübersetzung|<br>BESCHREIBUNG|
 |-|-|-|-|-|
 |[Speech SDK](speech-sdk.md)|JA|Nein|JA|Native APIs für C#, C++ und Java zur Vereinfachung der Entwicklung.|
-|[REST](rest-apis.md)|JA|JA|Nein |Eine einfache HTTP-basierte API, mit der Sie Ihren Anwendungen problemlos Sprachfunktionen hinzufügen können.|
+|[REST-APIs](rest-apis.md)|JA|JA|Nein |Eine einfache HTTP-basierte API, mit der Sie Ihren Anwendungen problemlos Sprachfunktionen hinzufügen können.|
 
 ### <a name="websockets"></a>WebSockets
 
-Der Speech-Dienst verfügt auch über WebSocket-Protokolle für eine streamingbasierte Spracherkennung und Sprachübersetzung. Die Speech SDKs verwenden diese Protokolle, um mit dem Speech-Dienst zu kommunizieren. Verwenden Sie das Speech SDK, anstatt eine eigene WebSocket-Kommunikation mit dem Speech-Dienst zu implementieren.
+Der Speech-Dienst unterstützt auch WebSocket-Protokolle für eine streamingbasierte Spracherkennung und Sprachübersetzung. Die Speech SDKs verwenden diese Protokolle, um mit dem Speech-Dienst zu kommunizieren. Verwenden Sie das Speech SDK, anstatt eine eigene WebSocket-Kommunikation mit dem Speech-Dienst zu implementieren.
 
-Falls Sie jedoch bereits über Code verfügen, der die Bing-Spracheingabe oder die Sprachübersetzung über WebSockets verwendet, können Sie ihn für die Verwendung des Speech-Diensts aktualisieren. Die WebSocket-Protokolle sind kompatibel. Nur die Endpunkte unterscheiden sich.
+Falls Sie jedoch bereits über Code verfügen, der die Bing-Spracheingabe oder die Sprachübersetzung über WebSockets verwendet, können Sie ihn für die Verwendung des Speech-Diensts aktualisieren. Die WebSocket-Protokolle sind kompatibel, aber die Endpunkte unterscheiden sich.
 
 ### <a name="speech-devices-sdk"></a>Speech-Geräte-SDK
 
@@ -85,9 +84,9 @@ Die Spracheingabe ist eine hervorragende Möglichkeit, um Ihre App flexibel, sch
 
 Wenn Ihre App für die Allgemeinheit vorgesehen ist, können Sie die standardmäßigen Spracherkennungsmodelle verwenden. Sie erkennen ein breites Spektrum an Sprechern in gängigen Umgebungen.
 
-Wenn Ihre App in einem bestimmten Bereich verwendet wird (z.B. Medizin oder IT), können Sie ein [Sprachmodell](how-to-customize-language-model.md) erstellen. Mit diesem Modell können Sie den Speech Dienst bezüglich der speziellen Terminologie Ihrer App trainieren.
+Wenn Ihre App in einem bestimmten Bereich verwendet wird (z.B. Medizin oder IT), können Sie ein [Sprachmodell](how-to-customize-language-model.md) erstellen. Mit diesem Modell können Sie den Speech-Dienst bezüglich der speziellen Terminologie Ihrer App trainieren.
 
-Wenn Ihre App in einer lauten Umgebung (beispielsweise einer Fabrik) verwendet wird, können Sie ein benutzerdefiniertes [Akustikmodell](how-to-customize-acoustic-models.md) erstellen. Dieses Modell unterstützt den Speech-Dienst bei der Unterscheidung von Sprache von Störgeräuschen.
+Wenn Ihre App in einer lauten Umgebung (beispielsweise einer Fabrik) verwendet wird, können Sie ein benutzerdefiniertes [Akustikmodell](how-to-customize-acoustic-models.md) erstellen. Dieses Modell unterstützt den Speech-Dienst bei der Unterscheidung zwischen Sprache und Störgeräuschen.
 
 ### <a name="call-center-transcription"></a>Callcentertranskription
 
@@ -105,7 +104,7 @@ Damit Ihr Sprachbot eine einzigartige Persönlichkeit erhält, können Sie eine 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Abrufen eines Abonnementschlüssels für den Speech-Dienst
+Abrufen eines Abonnementschlüssels für den Speech-Dienst.
 
 > [!div class="nextstepaction"]
 > [Kostenloses Testen des Speech-Diensts](get-started.md)

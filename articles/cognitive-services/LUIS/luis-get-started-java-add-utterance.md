@@ -1,21 +1,22 @@
 ---
-title: 'Java-Schnellstartanleitung: Ändern des Modells und Trainieren einer LUIS-App'
-titleSuffix: Azure Cognitive Services
-description: In dieser Schnellstartanleitung für Java fügen Sie einer Home Automation-App Beispieläußerungen hinzu, und Sie trainieren die App. Bei Beispieläußerungen handelt es sich um Konversationstext von Benutzern, der einer Absicht zugeordnet ist. Indem Sie Beispieläußerungen für Absichten bereitstellen, teilen Sie LUIS mit, welche Arten des vom Benutzer angegebenen Texts zu welcher Absicht gehören.
+title: Ändern, Trainieren der App, Java
+titleSuffix: Language Understanding - Azure Cognitive Services
+description: In dieser Schnellstartanleitung für Java fügen Sie einer Home Automation-App Beispieläußerungen hinzu, und Sie trainieren die App.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: quickstart
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: bfe4aae25a34799370e52c8677871a62935ab5c2
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 206b345fedb033a6b98e350fec8c66a3496f5236
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50419740"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53080825"
 ---
 # <a name="quickstart-change-model-using-java"></a>Schnellstart: Ändern des Modells mit Java 
 
@@ -71,14 +72,14 @@ ms.locfileid: "50419740"
 
 Kompilieren Sie „AddUtterance“ mit den Abhängigkeiten:
 
-```CMD
+```console
 > javac -classpath gson-2.8.2.jar AddUtterances.java
 ```
 
 ## <a name="run-code"></a>Ausführen des Codes
 Wenn Sie `AddUtterance` ohne Argumente aufrufen, werden die LUIS-Äußerungen zur App hinzugefügt, ohne die App zu trainieren.
 
-```CMD
+```console
 > java -classpath .;gson-2.8.2.jar AddUtterances
 ```
 

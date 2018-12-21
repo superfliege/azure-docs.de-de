@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Erkennen von Sprache in Java unter Android mit dem Spracherkennungsdienst-SDK'
+title: 'Schnellstart: Erkennen von Sprache, Java (Android) – Speech-Dienste'
 titleSuffix: Azure Cognitive Services
 description: Hier erfahren Sie, wie Sie mit dem Spracherkennungsdienst-SDK Sprache in Java oder Android erkennen.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: quickstart
 ms.date: 11/06/2018
 ms.author: wolfma
-ms.openlocfilehash: 0785383d8b5a8ab282d8097d5229fa5a8aade06f
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.openlocfilehash: afe0cfe61779e95fc9a65a1f4928ddae4b7af267
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51219425"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53090107"
 ---
 # <a name="quickstart-recognize-speech-in-java-on-android-by-using-the-speech-sdk"></a>Schnellstart: Erkennen von Sprache in Java unter Android mit dem Speech SDK
 
@@ -42,7 +42,7 @@ Sie benötigen einen Abonnementschlüssel für den Spracherkennungsdienst, um di
 
    ![Screenshot des Assistenten „Neues Projekt erstellen“](media/sdk/qs-java-android-02-create-android-project.png)
 
-1. Wählen Sie auf dem Bildschirm **Android-Zielgeräte** nur **Smartphone und Tablet** aus. Wählen Sie in der Dropdownliste darunter **API 23: Android 6.0 (Marshmallow)** aus, und wählen Sie dann **Weiter** aus.
+1. Wählen Sie auf dem Bildschirm **Android-Zielgeräte** nur **Smartphone und Tablet** aus. Wählen Sie in der Dropdownliste darunter **API 23: Android 6.0 (Marshmallow)** und dann **Weiter** aus.
 
    ![Screenshot des Assistenten „Neues Projekt erstellen“](media/sdk/qs-java-android-03-target-android-devices.png)
 
@@ -63,7 +63,7 @@ Die aktuelle Version des Cognitive Services Speech SDK ist `1.1.0`.
 Das Speech SDK für Android ist als [AAR (Android-Bibliothek)](https://developer.android.com/studio/projects/android-library) verpackt und enthält die erforderlichen Bibliotheken sowie die erforderlichen Android-Berechtigungen für die Verwendung.
 Es wird in einem Maven-Repository unter https://csspeechstorage.blob.core.windows.net/maven/ gehostet.
 
-Richten Sie Ihr Projekt so ein, dass es das Speech SDK verwendet. Öffnen Sie das Fenster „Projektstruktur“, indem Sie **Datei** > **Projektstruktur** in der Menüleiste von Android Studio auswählen. Nehmen Sie im Fenster „Projektstruktur“ die folgenden Änderungen vor: 
+Richten Sie Ihr Projekt so ein, dass es das Speech SDK verwendet. Öffnen Sie das Fenster „Projektstruktur“, indem Sie **Datei** > **Projektstruktur** in der Menüleiste von Android Studio auswählen. Nehmen Sie im Fenster „Projektstruktur“ die folgenden Änderungen vor:
 
 1. Wählen Sie in der Liste auf der linken Seite des Fensters **Projekt** aus. Bearbeiten Sie die Einstellungen für **Standardbibliothekrepository**, indem Sie ein Komma und die Maven-Repository-URL (in einfache Anführungszeichen eingeschlossen) anfügen. 'https://csspeechstorage.blob.core.windows.net/maven/'
 
@@ -118,7 +118,7 @@ Der Text und die grafische Darstellung Ihrer Benutzeroberfläche sollten jetzt e
    [!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java-android/app/src/main/java/com/microsoft/cognitiveservices/speech/samples/quickstart/MainActivity.java#code)]
 
    * Die `onCreate`-Methode enthält Code, der Mikrofon- und Internetberechtigungen anfordert und die native Plattformbindung initialisiert. Die Konfiguration der nativen Plattformbindungen ist nur ein Mal erforderlich. Sie sollte früh während der Anwendungsinitialisierung ausgeführt werden.
-   
+
    * Die Methode `onSpeechButtonClicked` ist (wie bereits erwähnt) der Klickhandler für die Schaltfläche. Ein Klick auf die Schaltfläche löst die Spracherkennungstranskription aus.
 
 1. Ersetzen Sie in der gleichen Datei die Zeichenfolge `YourSubscriptionKey` durch Ihren Abonnementschlüssel.

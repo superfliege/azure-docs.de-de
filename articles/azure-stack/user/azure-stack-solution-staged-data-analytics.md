@@ -14,16 +14,16 @@ ms.topic: tutorial
 ms.date: 12/01/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: b043c5ebe4c2a02bd4d40ca4b2bb7d5f488f5747
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: d63faf63012360d4448166ac5d69eba6ede9d0ed
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52837340"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52969531"
 ---
-# <a name="tutorial-create-a-staged-data-analytics-solution-with-azure-and-azure-stack"></a>Tutorial: Erstellen einer bereitgestellten Lösung für die Datenanalyse mit Azure und Azure Stack 
+# <a name="tutorial-create-a-staged-data-analytics-solution-with-azure-and-azure-stack"></a>Tutorial: Erstellen einer gestaffelten Lösung für die Datenanalyse mit Azure und Azure Stack 
 
-*Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
+*Anwendungsbereich: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
 Es wird beschrieben, wie Sie sowohl lokale als auch öffentliche Cloudumgebungen verwenden, um die Anforderungen von Unternehmen mit mehreren Einrichtungen bzw. Gebäuden zu erfüllen. Azure Stack stellt eine schnelle, sichere und flexible Lösung zum Sammeln, Verarbeiten, Speichern und Verteilen von lokalen Daten und Remotedaten dar. Dies gilt besonders, wenn sich die Anforderungen in Bezug auf Sicherheit, Vertraulichkeit, Unternehmensrichtlinien und Bestimmungen zwischen Standorten und Benutzern ggf. unterscheiden.
 
@@ -49,7 +49,7 @@ In diesem Tutorial erstellen Sie eine Beispielumgebung, die Folgendes ermöglich
 
 Es sind einige Vorbereitungsschritte erforderlich, um diese Lösung zu erstellen:
 
--   Installierte und funktionierende Azure Stack-Instanz (weitere Informationen: [Einführung zu Azure Stack-Speicher](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-storage-overview)).
+-   Installierte und funktionierende Azure Stack-Instanz (weitere Informationen finden Sie hier: [Azure Stack-Übersicht](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-storage-overview))
 
 -   Ein Azure-Abonnement. (Erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).)
 
@@ -81,11 +81,11 @@ Das Speicherkonto und der Blobcontainer enthalten alle Originaldaten, die von lo
 
 3.  Verwenden Sie die folgenden Informationen für das Konto:
 
-    a.  Name: **Name Ihrer Wahl**
+    a.  Name: **Beliebig**
 
-    b.  Bereitstellungsmodell: **Resource Manager**
+    b.  Bereitstellungsmodell: **Ressourcen-Manager**
 
-    c.  Kontoart: **Storage (Allgemein V1)**
+    c.  Kontoart: **Speicher (general-purpose V1)**
 
     d.  Standort: **USA, Westen**
 
@@ -93,17 +93,17 @@ Das Speicherkonto und der Blobcontainer enthalten alle Originaldaten, die von lo
 
     f.  Leistung: **Standard**
 
-    g.  Sichere Übertragung erforderlich: **Deaktiviert**
+    g.  Sichere Übertragung erforderlich: **Disabled**
 
-    h.  Abonnement: Wählen Sie ein Abonnement.
+    h.  Abonnement: Eines auswählen
 
     i.  Ressourcengruppe: Geben Sie eine neue Ressourcengruppe an, oder wählen Sie eine vorhandene Ressourcengruppe aus.
 
-    j.  Virtuelle Netzwerke konfigurieren: **Deaktiviert**
+    j.  Konfigurieren virtueller Netzwerke: **Disabled**
 
 4.  Wählen Sie **Erstellen**, um das Speicherkonto zu erstellen.
 
-    ![Alt text](media\azure-stack-solution-staged-data-analytics\image1.png)
+    ![Alt text](media/azure-stack-solution-staged-data-analytics/image1.png)
 
 5.  Wählen Sie nach der Erstellung den Namen des Speicherkontos aus.
 
@@ -111,11 +111,11 @@ Das Speicherkonto und der Blobcontainer enthalten alle Originaldaten, die von lo
 
 7.  Wählen Sie oben auf dem Blatt die Option **+ Container** und dann **Container**.
 
-    ![Alt text](media\azure-stack-solution-staged-data-analytics\image2.png)
+    ![Alt text](media/azure-stack-solution-staged-data-analytics/image2.png)
 
-8.  Name: **Name Ihrer Wahl**
+8.  Name: **Beliebig**
 
-9.  Öffentliche Zugriffsebene: **Container** (anonymer Lesezugriff für Container und Blobs)
+9.  Zugriffsebene „Öffentlich“: **Container** (anonymer Lesezugriff für Container und Blobs)
 
 10.  Klicken Sie auf **OK**.
 
@@ -146,31 +146,31 @@ Erstellen Sie eine neue Azure Stack-Funktion, um bereinigte Daten aus Azure Stac
 
     **Beispiel:**
 
-    ![Definieren neuer Funktions-App-Einstellungen](media\azure-stack-solution-staged-data-analytics\image6.png)
+    ![Definieren neuer Funktions-App-Einstellungen](media/azure-stack-solution-staged-data-analytics/image6.png)
 
 5.  Klicken Sie auf **Erstellen**, um die Funktionen-App bereitzustellen.
 
 6.  Wählen Sie oben rechts im Portal das Benachrichtigungssymbol aus, und achten Sie auf die Meldung **Bereitstellung erfolgreich**.
 
-    ![Definieren neuer Funktions-App-Einstellungen](media\azure-stack-solution-staged-data-analytics\image7.png)
+    ![Definieren neuer Funktions-App-Einstellungen](media/azure-stack-solution-staged-data-analytics/image7.png)
 
 7.  Wählen Sie **Zu Ressource wechseln**, um die neue Funktions-App anzuzeigen.
 
-![Die Funktionen-App wurde erfolgreich erstellt.](media\azure-stack-solution-staged-data-analytics\image8.png)
+![Die Funktionen-App wurde erfolgreich erstellt.](media/azure-stack-solution-staged-data-analytics/image8.png)
 
 ### <a name="add-a-function-to-the-azure-stack-function-app"></a>Hinzufügen einer Funktion zur Azure Stack-Funktions-App
 
 1.  Erstellen Sie eine neue Funktion, indem Sie auf **Funktionen** und dann auf die Schaltfläche **+ Neue Funktion** klicken.
 
-    ![Alt text](media\azure-stack-solution-staged-data-analytics\image3.png)
+    ![Alt text](media/azure-stack-solution-staged-data-analytics/image3.png)
 
 2.  Wählen Sie **Zeitgebertrigger**.
 
-    ![Alt text](media\azure-stack-solution-staged-data-analytics\image4.png)
+    ![Alt text](media/azure-stack-solution-staged-data-analytics/image4.png)
 
-3.  Wählen Sie **C\#** als Sprache aus, und geben Sie der Funktion den Namen `upload-to-azure`. Legen Sie den Zeitplan auf `0 0 * * * *` fest (in CRON-Notation einmal pro Stunde).
+3.  Wählen Sie **C\#** als Sprache und den Namen der Funktion aus: `upload-to-azure`  Legen Sie den Zeitplan auf `0 0 * * * *` fest, das ist in der CRON-Schreibweise einmal pro Stunde.
 
-    ![Alt text](media\azure-stack-solution-staged-data-analytics\image5.png)
+    ![Alt text](media/azure-stack-solution-staged-data-analytics/image5.png)
 
 ## <a name="create-a-blob-storage-triggered-function"></a>Erstellen einer Funktion, die durch Blob Storage ausgelöst wird
 
@@ -178,7 +178,7 @@ Erstellen Sie eine neue Azure Stack-Funktion, um bereinigte Daten aus Azure Stac
 
 2.  Geben Sie im Suchfeld `blob` ein, und wählen Sie dann die gewünschte Sprache für die Vorlage **Blobtrigger** aus.
 
-  ![Wählen Sie die Blob Storage-Triggervorlage aus.](media\azure-stack-solution-staged-data-analytics\image10.png)
+  ![Wählen Sie die Blob Storage-Triggervorlage aus.](media/azure-stack-solution-staged-data-analytics/image10.png)
 
 3.  Verwenden Sie die Einstellungen wie in der Tabelle unten angegeben:
 
@@ -190,7 +190,7 @@ Erstellen Sie eine neue Azure Stack-Funktion, um bereinigte Daten aus Azure Stac
 
     **Beispiel:**
 
-    ![Erstellen Sie die Funktion, die durch Blob Storage ausgelöst wird.](media\azure-stack-solution-staged-data-analytics\image11.png)
+    ![Erstellen Sie die Funktion, die durch Blob Storage ausgelöst wird.](media/azure-stack-solution-staged-data-analytics/image11.png)
 
 4.  Wählen Sie **Erstellen** aus, um die Funktion zu erstellen.
 
@@ -202,7 +202,7 @@ Erstellen Sie eine neue Azure Stack-Funktion, um bereinigte Daten aus Azure Stac
 
 3.  Erweitern Sie das Speicherkonto, die Option **Blobcontainer** und dann das zuvor erstellte Blob. Wählen Sie **Hochladen** und dann **Dateien hochladen**.
 
-    ![Laden Sie eine Datei in den Blob-Container hoch.](media\azure-stack-solution-staged-data-analytics\image12.png)
+    ![Laden Sie eine Datei in den Blob-Container hoch.](media/azure-stack-solution-staged-data-analytics/image12.png)
 
 4.  Wählen Sie im Dialogfeld „Dateien hochladen“ das Feld „Dateien“. Navigieren Sie zu einer Datei auf einem lokalen Computer, z.B. zu einer Bilddatei, und wählen Sie sie aus. Wählen Sie **Öffnen** und dann **Hochladen**.
 
@@ -210,7 +210,7 @@ Erstellen Sie eine neue Azure Stack-Funktion, um bereinigte Daten aus Azure Stac
 
     **Beispiel:**
 
-    ![Zeigen Sie die Meldung in den Protokollen an.](media\azure-stack-solution-staged-data-analytics\image13.png)
+    ![Zeigen Sie die Meldung in den Protokollen an.](media/azure-stack-solution-staged-data-analytics/image13.png)
 
 ## <a name="create-an-azure-stack-storage-account"></a>Erstellen eines Azure Stack-Speicherkontos
 
@@ -232,9 +232,9 @@ Nutzen Sie die oben beschriebenen Schritte und Einstellungen, um ein anderes Spe
 
 4.  Wählen Sie **OK**.
 
-    ![Alt text](media\azure-stack-solution-staged-data-analytics\image14.png)
+    ![Alt text](media/azure-stack-solution-staged-data-analytics/image14.png)
 
-    ![Alt text](media\azure-stack-solution-staged-data-analytics\image15.png)
+    ![Alt text](media/azure-stack-solution-staged-data-analytics/image15.png)
 
 ## <a name="create-a-queue-triggered-function"></a>Erstellen einer Funktion mit Auslösung per Warteschlange
 
@@ -258,7 +258,7 @@ Nutzen Sie die oben beschriebenen Schritte und Einstellungen, um ein anderes Spe
 
 3.  Erweitern Sie das Speicherkonto, die Option **Blobcontainer** und dann das zuvor erstellte Blob. Wählen Sie **Hochladen** und dann **Dateien hochladen**.
 
-    ![Laden Sie eine Datei in den Blob-Container hoch.](media\azure-stack-solution-staged-data-analytics\image12.png)
+    ![Laden Sie eine Datei in den Blob-Container hoch.](media/azure-stack-solution-staged-data-analytics/image12.png)
 
 4.  Wählen Sie im Dialogfeld „Dateien hochladen“ das Feld „Dateien“. Navigieren Sie zu einer Datei auf einem lokalen Computer, z.B. zu einer Bilddatei, und wählen Sie sie aus. Wählen Sie **Öffnen** und dann **Hochladen**.
 
@@ -266,7 +266,7 @@ Nutzen Sie die oben beschriebenen Schritte und Einstellungen, um ein anderes Spe
 
   **Beispiel:**
 
-    ![Zeigen Sie die Meldung in den Protokollen an.](media\azure-stack-solution-staged-data-analytics\image13.png)
+    ![Zeigen Sie die Meldung in den Protokollen an.](media/azure-stack-solution-staged-data-analytics/image13.png)
 
 ## <a name="securely-stored-and-accessed-compliant-data"></a>Sichere Speicherung und sicherer Zugriff auf konforme Daten
 

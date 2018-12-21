@@ -1,24 +1,26 @@
 ---
-title: 'Schnellstart: Erstellen eines Arbeitsbereichs für den Machine Learning-Dienst im Azure-Portal – Azure Machine Learning'
-description: Verwenden Sie das Azure-Portal zum Erstellen eines Azure Machine Learning-Arbeitsbereichs. Dieser Arbeitsbereich bildet die Grundlage in der Cloud zum Experimentieren, Trainieren und Bereitstellen von Machine Learning-Modellen mit Azure Machine Learning.
+title: Schnellstart über das Azure-Portal
+titleSuffix: Azure Machine Learning service
+description: Erste Schritte mit dem Azure Machine Learning Service. Verwenden Sie das Azure-Portal, um einen Arbeitsbereich zu erstellen. Dieser bildet in der Cloud die Grundlage zum Experimentieren, Trainieren und Bereitstellen von Machine Learning-Modellen.
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
 ms.topic: quickstart
 ms.reviewer: sgilley
-author: rastala
-ms.author: roastala
+author: hning86
+ms.author: haining
 ms.date: 12/04/2018
-ms.openlocfilehash: 59887c46e3ce06eae250e106a01239a1ba969e7f
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.custom: seodec18
+ms.openlocfilehash: c215a3947069e572f73692ea54010c77d78ae4fd
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52875313"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53273560"
 ---
-# <a name="quickstart-use-the-azure-portal-to-get-started-with-azure-machine-learning"></a>Schnellstart: Verwenden des Azure-Portals zum Ausführen der ersten Schritte für Azure Machine Learning
+# <a name="quickstart-use-the-azure-portal-to-get-started-with-azure-machine-learning"></a>Schnellstart: Verwenden des Azure-Portals zum Ausführen der ersten Schritte mit Azure Machine Learning
 
-In dieser Schnellstartanleitung verwenden Sie das Azure-Portal, um einen Azure Machine Learning-Arbeitsbereich zu erstellen. Dieser Arbeitsbereich bildet die Grundlage in der Cloud zum Experimentieren, Trainieren und Bereitstellen von Machine Learning-Modellen mit Machine Learning. In dieser Schnellstartanleitung werden Cloudressourcen genutzt, und es ist keine Installation erforderlich. Informationen zur Konfiguration Ihres eigenen Jupyter Notebook-Servers finden Sie unter [Schnellstart: Verwenden von Python für die ersten Schritte mit Azure Machine Learning](quickstart-create-workspace-with-python.md).
+In dieser Schnellstartanleitung verwenden Sie das Azure-Portal, um einen Azure Machine Learning-Arbeitsbereich zu erstellen. Dieser Arbeitsbereich bildet die Grundlage in der Cloud zum Experimentieren, Trainieren und Bereitstellen von Machine Learning-Modellen mit Machine Learning. In dieser Schnellstartanleitung werden Cloudressourcen genutzt, und es ist keine Installation erforderlich. Wie Sie stattdessen Ihren eigenen Jupyter-Notebook-Server konfigurieren, erfahren Sie unter [Schnellstart: Verwenden von Python für die ersten Schritte mit Azure Machine Learning](quickstart-create-workspace-with-python.md).
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2F9Ad]
 
@@ -37,7 +39,7 @@ Folgende Azure-Ressourcen werden Ihrem Arbeitsbereich automatisch hinzugefügt, 
 
 Die von Ihnen erstellten Ressourcen können auch in anderen Tutorials und Anleitungen für den Machine Learning-Dienst verwendet werden. Genau wie bei anderen Azure-Diensten gelten auch für bestimmte Machine Learning-Ressourcen gewisse Grenzwerte, etwa in Bezug auf die Größe von Computeclustern. Erfahren Sie mehr über die [Standardgrenzwerte und das Erhöhen Ihres Kontingents](how-to-manage-quotas.md).
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://aka.ms/AMLfree) erstellen, bevor Sie beginnen.
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie die [kostenlose oder kostenpflichtige Version des Azure Machine Learning Service](http://aka.ms/AMLFree) aus.
 
 
 ## <a name="create-a-workspace"></a>Erstellen eines Arbeitsbereichs 
@@ -117,4 +119,4 @@ Sie haben die Ressourcen erstellt, die zum Experimentieren und zum Bereitstellen
 Führen Sie Machine Learning-Tutorials zum Trainieren und Bereitstellen eines Modells aus, um sich ausführlicher mit dem Workflow zu beschäftigen.  
 
 > [!div class="nextstepaction"]
-> [Tutorial: Trainieren eines Imageklassifizierungsmodells](tutorial-train-models-with-aml.md)
+> [Tutorial: Trainieren eines Bildklassifizierungsmodells](tutorial-train-models-with-aml.md)

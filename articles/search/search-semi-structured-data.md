@@ -1,5 +1,5 @@
 ---
-title: Tutorial zum Durchsuchen von teilweise strukturierten Daten aus dem Azure-Cloudspeicher in Azure Search | Microsoft-Dokumentation
+title: Tutorial zum Durchsuchen von teilweise strukturierten Daten aus dem Azure-Cloudspeicher – Azure Search
 description: In diesem Tutorial erfahren Sie, wie teilweise strukturierte Azure-Blobbaten mithilfe von Azure Search durchsucht werden.
 author: HeidiSteen
 manager: cgronlun
@@ -8,12 +8,13 @@ ms.service: search
 ms.topic: tutorial
 ms.date: 07/12/2018
 ms.author: heidist
-ms.openlocfilehash: a7b006bd8469ddce1415ab6cb7c52c0171ae11cd
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.custom: seodec2018
+ms.openlocfilehash: 5608495ff2975cabefdb83e5794a7d92b318b5a5
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39005076"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53313818"
 ---
 # <a name="tutorial-search-semi-structured-data-in-azure-cloud-storage"></a>Tutorial: Durchsuchen von teilweise strukturierten Daten in Azure-Cloudspeicher
 
@@ -59,7 +60,7 @@ Im Beispiel sind JSON-Beispieldateien enthalten, bei denen es sich ursprünglich
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
-Melden Sie sich beim [Azure-Portal](http://portal.azure.com)an.
+Melden Sie sich beim [Azure-Portal](http://portal.azure.com) an.
 
 ## <a name="upload-the-sample-data"></a>Hochladen der Beispieldaten
 
@@ -281,7 +282,7 @@ Der Parameter `$filter` funktioniert nur mit Metadaten, die beim Erstellen des I
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Die schnellste Möglichkeit, das System nach einem Tutorial aufzuräumen, besteht im Löschen der Ressourcengruppe, die den Azure Search-Dienst enthält. Sie können nun die Ressourcengruppe löschen, um alle darin enthaltenen Daten endgültig zu löschen. Im Portal finden Sie den Namen der Ressourcengruppe auf der Seite „Übersicht“ des Azure Search-Diensts.
+Die schnellste Möglichkeit, das System nach einem Tutorial zu bereinigen, besteht im Löschen der Ressourcengruppe, die den Azure Search-Dienst enthält. Sie können dann die Ressourcengruppe löschen, um alle darin enthaltenen Daten endgültig zu löschen. Der Name der Ressourcengruppe befindet sich im Portal auf der Seite „Übersicht“ des Azure Search-Diensts.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

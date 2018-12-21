@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/25/2018
 ms.author: yushwang
-ms.openlocfilehash: cced9a313664eaeaed4dd1298488670960b76413
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 0d57e251b241297c461b117edec8fee6316b337b
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32195769"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53098031"
 ---
 # <a name="configure-vpn-gateway-transit-for-virtual-network-peering"></a>Konfigurieren des VPN-Gatewaytransits für ein Peering virtueller Netzwerke
 
@@ -40,7 +40,7 @@ In diesem Dokument werden zwei Szenarien beschrieben:
 > [!IMPORTANT]
 > Gatewaytransit wird derzeit beim Peering globaler virtueller Netzwerke nicht unterstützt.
 
-## <a name="requirements"></a>Anforderungen
+## <a name="requirements"></a>Requirements (Anforderungen)
 
 Das Beispiel in diesem Dokument erfordert die Erstellung der folgenden Ressourcen:
 
@@ -79,7 +79,7 @@ Befolgen Sie die Anweisungen zum Erstellen oder Aktualisieren des Peerings virtu
     - Legen Sie die Option **Remotegateways verwenden** fest.
     - Klicken Sie auf „OK“.
 
-    ![SpokeRM-zu-HubRM](./media/vpn-gateway-peering-gateway-transit/spokerm-hubrm-peering.png)
+      ![SpokeRM-zu-HubRM](./media/vpn-gateway-peering-gateway-transit/spokerm-hubrm-peering.png)
 
 2. Wenn das Peering bereits erstellt wurde, navigieren Sie zur Peeringressource, und aktivieren Sie dann die Option **Remotegateways verwenden**, wie in Schritt (1) gezeigt.
 
@@ -90,7 +90,7 @@ Befolgen Sie die Anweisungen zum Erstellen oder Aktualisieren des Peerings virtu
     - Legen Sie die Option **Gatewaytransit zulassen** fest.
     - Klicken Sie auf „OK“.
 
-    ![HubRM-zu-SpokeRM](./media/vpn-gateway-peering-gateway-transit/hubrm-spokerm-peering.png)
+      ![HubRM-zu-SpokeRM](./media/vpn-gateway-peering-gateway-transit/hubrm-spokerm-peering.png)
 
 4. Wenn das Peering bereits erstellt wurde, navigieren Sie zur Peeringressource, und aktivieren Sie dann die Option **Gatewaytransit zulassen**, wie in Schritt (3) gezeigt.
 

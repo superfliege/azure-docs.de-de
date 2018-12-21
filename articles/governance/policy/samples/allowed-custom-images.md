@@ -1,5 +1,5 @@
 ---
-title: 'Azure Policy-Beispiel: Genehmigte VM-Images'
+title: 'Beispiel: Genehmigte VM-Images'
 description: Diese Beispielrichtlinie erzwingt, dass nur genehmigte benutzerdefinierte Images in Ihrer Umgebung bereitgestellt werden.
 services: azure-policy
 author: DCtheGeek
@@ -8,13 +8,12 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 09/18/2018
 ms.author: dacoulte
-ms.custom: mvc
-ms.openlocfilehash: d4216c785155ac5462dbcb1b48bf58e7bc718601
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: efec6c4e0a677681fd9f1132f4573d99b35236d4
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46965369"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53312662"
 ---
 # <a name="approved-vm-images"></a>Genehmigte VM-Images
 
@@ -24,7 +23,7 @@ Sie können für die Bereitstellung dieser Beispielrichtlinie Folgendes verwende
 
 - Das [Azure-Portal](#azure-portal)
 - [Azure PowerShell](#azure-powershell)
-- [Azure-CLI](#azure-cli)
+- [Azure-Befehlszeilenschnittstelle](#azure-cli)
 - [REST-API](#rest-api)
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
@@ -220,10 +219,10 @@ Es gibt mehrere Tools, die für die Interaktion mit der Resource Manager-REST-AP
 
 | Dienst | Group | Vorgang | Notizen |
 |---|---|---|---|
-| Ressourcenverwaltung | Richtliniendefinitionen | [Erstellen](/rest/api/resources/policydefinitions/createorupdate) | Erstellt eine neue Azure Policy-Definition in einem Abonnement. Alternative: [Erstellen in einer Verwaltungsgruppe](/rest/api/resources/policydefinitions/createorupdateatmanagementgroup) |
+| Ressourcenverwaltung | Richtliniendefinitionen | [Erstellen](/rest/api/resources/policydefinitions/createorupdate) | Erstellt eine neue Azure Policy-Definition in einem Abonnement. Alternative: [Erstellen einer Verwaltungsgruppe](/rest/api/resources/policydefinitions/createorupdateatmanagementgroup) |
 | Ressourcenverwaltung | Richtlinienzuweisungen | [Erstellen](/rest/api/resources/policyassignments/create) | Erstellt eine neue Azure Policy-Zuweisung. In diesem Beispiel wird eine Definition bereitgestellt, eine Initiative ist aber ebenfalls zulässig. |
 | Ressourcenverwaltung | Richtlinienzuweisungen | [Löschen](/rest/api/resources/policyassignments/delete) | Entfernt eine vorhandene Azure Policy-Zuweisung. |
-| Ressourcenverwaltung | Richtliniendefinitionen | [Löschen](/rest/api/resources/policydefinitions/delete) | Entfernt eine vorhandene Azure Policy-Definition. Alternative: [Löschen in einer Verwaltungsgruppe](/rest/api/resources/policydefinitions/deleteatmanagementgroup) |
+| Ressourcenverwaltung | Richtliniendefinitionen | [Löschen](/rest/api/resources/policydefinitions/delete) | Entfernt eine vorhandene Azure Policy-Definition. Alternative: [Löschen einer Verwaltungsgruppe](/rest/api/resources/policydefinitions/deleteatmanagementgroup) |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

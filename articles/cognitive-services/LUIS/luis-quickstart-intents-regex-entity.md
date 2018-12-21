@@ -1,21 +1,22 @@
 ---
-title: 'Tutorial 3: Mit regulären Ausdrücken abgeglichene Daten – Extrahieren korrekt formatierter Daten'
+title: Entität vom Typ „Regulärer Ausdruck“
 titleSuffix: Azure Cognitive Services
 description: Extrahieren Sie mithilfe der Entität vom Typ „Regulärer Ausdruck“ einheitlich formatierte Daten aus einer Äußerung.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
-ms.date: 09/09/2018
+ms.date: 12/07/2018
 ms.author: diberry
-ms.openlocfilehash: 5e8345deb629d293d9673819893181e652d5dbb9
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: d4deeec2c5af5047fa16a2d80f0992409d517910
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52423414"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53135575"
 ---
 # <a name="tutorial-3-extract-well-formatted-data"></a>Tutorial 3: Extrahieren korrekt formatierter Daten
 In diesem Tutorial ändern Sie die Personal-App so, dass mithilfe der Entität **Regulärer Ausdruck** einheitlich formatierte Daten aus einer Äußerung extrahiert werden.
@@ -24,14 +25,13 @@ Eine Entität dient dazu, wichtige Daten aus der Äußerung zu extrahieren. In d
 
 **Hier sehen Sie einige einfache Beispieläußerungen:**
 
-```
-Where is HRF-123456?
-Who authored HRF-123234?
-HRF-456098 is published in French?
-HRF-456098
-HRF-456098 date?
-HRF-456098 title?
-```
+|Beispiele für Äußerungen|
+|--|
+|Wo ist HRF-123456?|
+|Wer hat HRF-123234 erstellt?|
+|Ist HRF-456098 in Französisch veröffentlicht?|
+|HRF-456098|
+|Welches Datum hat HRF-456098?|
  
 Ein regulärer Ausdruck ist eine gute Wahl für diese Art von Daten, wenn Folgendes gilt:
 
@@ -129,7 +129,7 @@ In den folgenden Schritten erstellen Sie eine Entität vom Typ „Regulärer Aus
 
 2. Geben Sie in der Adressleiste am Ende der URL `When were HRF-123456 and hrf-234567 published in the last year?` ein. Der letzte Parameter der Abfragezeichenfolge lautet `q` (die Äußerung **query** (Abfrage)). Diese Äußerung entspricht keiner der gekennzeichneten Äußerungen. Sie ist daher ein guter Test und sollte die Absicht `FindForm` mit den beiden Formularnummern `HRF-123456` und `hrf-234567` zurückgeben.
 
-    ```JSON
+    ```json
     {
       "query": "When were HRF-123456 and hrf-234567 published in the last year?",
       "topScoringIntent": {

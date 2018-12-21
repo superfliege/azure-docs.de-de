@@ -1,7 +1,7 @@
 ---
 title: 'Schnellstart: Ausführen einer Suche mit PHP – Bing-Websuche-API'
 titleSuffix: Azure Cognitive Services
-description: In dieser Schnellstartanleitung wird beschrieben, wie Sie die Bing-Websuche-API zum ersten Mal aufrufen, indem Sie PHP verwenden, und wie Sie eine JSON-Antwort erhalten.
+description: Verwenden Sie diese Schnellstartanleitung zum Senden von Anforderungen an die REST-API der Bing-Websuche mit PHP, und Sie erhalten eine JSON-Antwort.
 services: cognitive-services
 author: aahill
 manager: cgronlun
@@ -10,12 +10,13 @@ ms.component: bing-web-search
 ms.topic: quickstart
 ms.date: 8/16/2018
 ms.author: aahi
-ms.openlocfilehash: f4fb66997b6deb6d5e02da2e9976190f00958752
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.custom: seodec2018
+ms.openlocfilehash: 4338d0703bbe8e55d3bf7c79d9bb30a5089ba6d2
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52314591"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53261584"
 ---
 # <a name="quickstart-use-php-to-call-the-bing-web-search-api"></a>Schnellstart: Verwenden von PHP zum Aufrufen der Bing-Websuche-API  
 

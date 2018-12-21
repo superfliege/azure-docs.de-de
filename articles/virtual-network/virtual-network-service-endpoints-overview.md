@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 08/15/2018
 ms.author: sumeet.mittal
 ms.custom: ''
-ms.openlocfilehash: 0a582dc3acf17a10bd143988da7dd12627650dff
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 8150774a630e6888dcd3bb5a4d219cfbf2c2c477
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52834859"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53310163"
 ---
 # <a name="virtual-network-service-endpoints"></a>Dienstendpunkte im virtuellen Netzwerk
 
@@ -30,19 +30,20 @@ Dieses Feature ist für die folgenden Azure-Dienste und -Regionen verfügbar:
 
 **Allgemein verfügbar**
 
-- **[Azure Storage:](../storage/common/storage-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json#grant-access-from-a-virtual-network)** Allgemein verfügbar in allen Azure-Regionen.
-- **[Azure SQL-Datenbank:](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** Allgemein verfügbar in allen Azure-Regionen.
-- **[Azure Database for PostgreSQL-Server:](../postgresql/howto-manage-vnet-using-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** Allgemein verfügbar in Azure-Regionen, in denen der Datenbankdienst verfügbar ist
-- **[Azure Database for MySQL-Server:](../mysql/howto-manage-vnet-using-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** Allgemein verfügbar in Azure-Regionen, in denen der Datenbankdienst verfügbar ist
-- **[Azure Cosmos DB:](../cosmos-db/vnet-service-endpoint.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** Allgemein verfügbar in allen Azure-Regionen mit öffentlichen Clouds.
-- **[Azure Key Vault:](https://blogs.technet.microsoft.com/kv/2018/06/25/announcing-virtual-network-service-endpoints-for-key-vault-preview/)** Allgemein verfügbar in allen Azure-Regionen mit öffentlichen Clouds
+- **[Azure Storage](../storage/common/storage-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json#grant-access-from-a-virtual-network)**: Allgemein in allen Azure-Regionen verfügbar.
+- **[Azure SQL-Datenbank](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**: Allgemein in allen Azure-Regionen verfügbar.
+- **[Azure SQL Data Warehouse](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**: Allgemein in allen Azure-Regionen verfügbar.
+- **[Azure Database for PostgreSQL-Server](../postgresql/howto-manage-vnet-using-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**: Allgemein verfügbar in Azure-Regionen, in denen der Datenbankdienst verfügbar ist.
+- **[Azure Database for MySQL server](../mysql/howto-manage-vnet-using-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**: Allgemein verfügbar in Azure-Regionen, in denen der Datenbankdienst verfügbar ist.
+- **[Azure Cosmos DB](../cosmos-db/vnet-service-endpoint.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**: Allgemein verfügbar in allen Azure-Regionen mit öffentlichen Clouds.
+- **[Azure Key Vault](https://blogs.technet.microsoft.com/kv/2018/06/25/announcing-virtual-network-service-endpoints-for-key-vault-preview/)**: Allgemein verfügbar in allen Azure-Regionen mit öffentlichen Clouds.
+- **[Azure Service Bus](../service-bus-messaging/service-bus-service-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**: Allgemein verfügbar in allen Azure-Regionen mit öffentlichen Clouds.
+- **[Azure Event Hubs](../event-hubs/event-hubs-service-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**: Allgemein verfügbar in allen Azure-Regionen mit öffentlichen Clouds.
 
 **Vorschau**
 
-- **[Azure SQL Data Warehouse:](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** In der Vorschauversion in allen Azure-Regionen mit öffentlichen Clouds verfügbar
-- **[Azure Service Bus:](../service-bus-messaging/service-bus-service-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** In der Vorschauversion verfügbar.
-- **[Azure Event Hubs:](../event-hubs/event-hubs-service-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** In der Vorschauversion verfügbar.
-- **[Azure Data Lake Storage Gen1:](../data-lake-store/data-lake-store-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** In der Vorschauversion verfügbar.
+- **[Azure SQL Data Warehouse](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**: In der Vorschauversion in allen Azure-Regionen mit öffentlichen Clouds verfügbar.
+- **[Azure Data Lake Store Gen 1](../data-lake-store/data-lake-store-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**: In der Vorschau verfügbar.
 
 Aktuelle Benachrichtigungen finden Sie auf der Seite [Azure Virtual Network-Updates](https://azure.microsoft.com/updates/?product=virtual-network).
 
@@ -50,8 +51,8 @@ Aktuelle Benachrichtigungen finden Sie auf der Seite [Azure Virtual Network-Upda
 
 Dienstendpunkte bieten folgende Vorteile:
 
-- **Verbesserte Sicherheit für Ihre Azure-Dienstressourcen:** Der private VNET-Adressraum kann sich überschneiden und daher nicht zur eindeutigen Identifizierung von Datenverkehr aus Ihrem VNET verwendet werden. Dienstendpunkte ermöglichen es, Azure-Dienstressourcen für Ihr virtuelles Netzwerk zu schützen, indem die VNET-Identität auf den Dienst erweitert wird. Nachdem Dienstendpunkte in Ihrem virtuellen Netzwerk aktiviert wurden, können Sie Ressourcen von Azure-Diensten auf Ihr virtuelles Netzwerk beschränken und auf diese Weise schützen, indem Sie den Ressourcen eine Regel für das virtuelle Netzwerk hinzufügen. Auf diese Weise erhöhen Sie die Sicherheit, da der Ressourcenzugriff über das öffentliche Internet vollständig verhindert und nur Datenverkehr aus Ihrem virtuellen Netzwerk zugelassen wird.
-- **Optimale Weiterleitung des Datenverkehrs für Azure-Dienste aus Ihrem virtuellen Netzwerk**: Heutzutage wird für alle Routen in Ihrem virtuellen Netzwerk, die für Internet-Datenverkehr den Weg auf Ihre lokalen und/oder virtuellen Geräte erzwingen (als Tunnelerzwingung bezeichnet), auch für den Datenverkehr von Azure-Diensten die gleiche Route wie für den Internet-Datenverkehr erzwungen. Dienstendpunkte ermöglichen eine optimale Weiterleitung für Azure-Datenverkehr. 
+- **Verbesserte Sicherheit für Ihre Azure-Dienstressourcen**: Der private VNET-Adressraum kann sich überschneiden und daher nicht zur eindeutigen Identifizierung von Datenverkehr aus Ihrem VNET verwendet werden. Dienstendpunkte ermöglichen es, Azure-Dienstressourcen für Ihr virtuelles Netzwerk zu schützen, indem die VNET-Identität auf den Dienst erweitert wird. Nachdem Dienstendpunkte in Ihrem virtuellen Netzwerk aktiviert wurden, können Sie Ressourcen von Azure-Diensten auf Ihr virtuelles Netzwerk beschränken und auf diese Weise schützen, indem Sie den Ressourcen eine Regel für das virtuelle Netzwerk hinzufügen. Auf diese Weise erhöhen Sie die Sicherheit, da der Ressourcenzugriff über das öffentliche Internet vollständig verhindert und nur Datenverkehr aus Ihrem virtuellen Netzwerk zugelassen wird.
+- **Optimale Weiterleitung des Datenverkehrs für Azure-Dienste aus Ihrem virtuellen Netzwerk**: Heutzutage wird für alle Routen Ihres virtuellen Netzwerks, die für Internet-Datenverkehr den Weg über Ihre lokalen bzw. virtuellen Geräte erzwingen (als Tunnelerzwingung bezeichnet), auch für den Datenverkehr von Azure-Diensten die gleiche Route wie für den Internet-Datenverkehr erzwungen. Dienstendpunkte ermöglichen eine optimale Weiterleitung für Azure-Datenverkehr. 
 
   Endpunkte leiten den Datenverkehr der Dienste direkt aus Ihrem virtuellen Netzwerk an den Dienst im Microsoft Azure-Backbone-Netzwerk. Die Verwaltung von Datenverkehr im Azure-Backbonenetzwerk ermöglicht Ihnen weiterhin die Überwachung und Überprüfung von ausgehendem Internet-Datenverkehr aus Ihren virtuellen Netzwerken durch die Tunnelerzwingung, ohne dass sich dies auf den Datenverkehr der Dienste auswirkt. Informieren Sie sich über [benutzerdefinierte Routen und die Tunnelerzwingung](virtual-networks-udr-overview.md).
 - **Einfache Einrichtung mit weniger Verwaltungsaufwand**: Sie benötigen in Ihren virtuellen Netzwerken keine reservierten öffentlichen IP-Adressen mehr, um Azure-Ressourcen über die IP-Firewall zu schützen. Es sind keine NAT- oder Gatewaygeräte erforderlich, um die Dienstendpunkte einzurichten. Dienstendpunkte werden einfach per Klick in einem Subnetz konfiguriert. Es entsteht kein zusätzlicher Aufwand für die Verwaltung der Endpunkte.
@@ -74,7 +75,7 @@ Dienstendpunkte bieten folgende Vorteile:
 
   Standardmäßig sind Azure-Dienstressourcen, die auf virtuelle Netzwerke beschränkt und so geschützt sind, über lokale Netzwerke nicht erreichbar. Wenn Sie Datenverkehr aus der lokalen Umgebung zulassen möchten, müssen Sie auch öffentliche IP-Adressen (meist NAT) aus der lokalen Umgebung bzw. per ExpressRoute zulassen. Diese IP-Adressen können über die Konfiguration der IP-Firewall für Azure-Dienstressourcen hinzugefügt werden.
 
-  ExpressRoute: Wenn Sie [ExpressRoute](../expressroute/expressroute-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json) lokal, für öffentliches Peering oder Microsoft-Peering verwenden, müssen Sie die verwendeten NAT-IP-Adressen identifizieren. Beim öffentlichen Peering werden für jede ExpressRoute-Verbindung standardmäßig zwei NAT-IP-Adressen verwendet. Diese werden auf den Datenverkehr der Azure-Dienste angewendet, wenn der Datenverkehr im Microsoft Azure-Netzwerk-Backbone eintrifft. Beim Microsoft-Peering werden die verwendeten NAT-IP-Adressen entweder vom Kunden oder vom Dienstanbieter bereitgestellt. Um den Zugriff auf Ihre Dienstressourcen zuzulassen, müssen Sie diese öffentlichen IP-Adressen in der Ressourceneinstellung der IP-Firewall zulassen. [Öffnen Sie über das Azure-Portal ein Supportticket für ExpressRoute](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview), um die IP-Adressen Ihrer ExpressRoute-Verbindung für öffentliches Peering zu ermitteln. Erfahren Sie mehr über [NAT für öffentliches ExpressRoute-Peering und Microsoft-Peering](../expressroute/expressroute-nat.md?toc=%2fazure%2fvirtual-network%2ftoc.json#nat-requirements-for-azure-public-peering).
+  ExpressRoute: Wenn Sie [ExpressRoute](../expressroute/expressroute-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json) lokal für öffentliches Peering oder für Microsoft-Peering verwenden, müssen Sie die verwendeten NAT-IP-Adressen identifizieren. Beim öffentlichen Peering werden für jede ExpressRoute-Verbindung standardmäßig zwei NAT-IP-Adressen verwendet. Diese werden auf den Datenverkehr der Azure-Dienste angewendet, wenn der Datenverkehr im Microsoft Azure-Netzwerk-Backbone eintrifft. Beim Microsoft-Peering werden die verwendeten NAT-IP-Adressen entweder vom Kunden oder vom Dienstanbieter bereitgestellt. Um den Zugriff auf Ihre Dienstressourcen zuzulassen, müssen Sie diese öffentlichen IP-Adressen in der Ressourceneinstellung der IP-Firewall zulassen. [Öffnen Sie über das Azure-Portal ein Supportticket für ExpressRoute](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview), um die IP-Adressen Ihrer ExpressRoute-Verbindung für öffentliches Peering zu ermitteln. Erfahren Sie mehr über [NAT für öffentliches ExpressRoute-Peering und Microsoft-Peering](../expressroute/expressroute-nat.md?toc=%2fazure%2fvirtual-network%2ftoc.json#nat-requirements-for-azure-public-peering).
 
 ![Schützen von Azure-Diensten in virtuellen Netzwerken](./media/virtual-network-service-endpoints-overview/VNet_Service_Endpoints_Overview.png)
 
@@ -100,9 +101,9 @@ Dienstendpunkte bieten folgende Vorteile:
 ### <a name="scenarios"></a>Szenarien
 
 - **Mittels Peering verknüpfte, verbundene oder mehrere virtuelle Netzwerke**: Zum Schützen von Azure-Diensten in mehreren Subnetzen innerhalb eines virtuellen Netzwerks oder mehrerer virtueller Netzwerke können Sie Dienstendpunkte unabhängig voneinander in den einzelnen Subnetzen aktivieren und Ressourcen von Azure-Diensten in allen diesen Subnetzen schützen.
-- **Filtern von ausgehendem Datenverkehr, der aus dem virtuellen Netzwerk an Azure-Dienste fließt**: Wenn Sie den Datenverkehr, der aus einem virtuellen Netzwerk an einen Azure-Dienst fließen soll, untersuchen oder filtern möchten, können Sie in diesem virtuellen Netzwerk ein virtuelles Netzwerkgerät bereitstellen. Anschließend können Sie Dienstendpunkte auf das Subnetz anwenden, in dem das virtuelle Netzwerkgerät bereitgestellt wurde, und Ressourcen des Azure-Diensts auf dieses Subnetz beschränken und so schützen. Dieses Szenario kann hilfreich sein, wenn Sie den Zugriff auf den Azure-Dienst aus Ihrem virtuellen Netzwerk per Filterung durch ein virtuelles Netzwerkgerät nur auf bestimmte Azure-Ressourcen beschränken möchten. Weitere Informationen finden Sie unter [egress with network virtual appliances](/azure/architecture/reference-architectures/dmz/nva-ha#egress-with-layer-7-nvas.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (Ausgehender Datenverkehr mit virtuellen Netzwerkgeräten).
-- **Schützen von Azure-Ressourcen für Dienste, die direkt in virtuellen Netzwerken bereitgestellt werden**: Verschiedene Azure-Dienste können in einem virtuellen Netzwerk direkt in bestimmten Subnetzen bereitgestellt werden. Sie können Ressourcen von Azure-Diensten für Subnetze mit [verwalteten Diensten](virtual-network-for-azure-services.md) schützen, indem Sie im Subnetz des verwalteten Diensts einen Dienstendpunkt einrichten.
-- **Datenträger-Datenverkehr von einem virtuellen Azure-Computer:** Datenträger-Datenverkehr eines virtuellen Computers (einschließlich Einbindung und Aufhebung der Einbindung sowie Datenträger-E/A) für verwaltete/nicht verwaltete Datenträger wird durch Dienstendpunkte, die Änderungen für Azure Storage weiterleiten, nicht beeinflusst. Der REST-Zugriff auf Seitenblobs kann über Dienstendpunkte und [Azure Storage-Netzwerkregeln](../storage/common/storage-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json) auf bestimmte Netzwerke beschränkt werden. 
+- **Filtern von ausgehendem Datenverkehr, der aus dem virtuellen Netzwerk an Azure-Dienste fließt**: Wenn Sie den Datenverkehr, der aus dem virtuellen Netzwerk an einen Azure-Dienst fließen soll, untersuchen und filtern möchten, können Sie in diesem virtuellen Netzwerk ein virtuelles Netzwerkgerät bereitstellen. Anschließend können Sie Dienstendpunkte auf das Subnetz anwenden, in dem das virtuelle Netzwerkgerät bereitgestellt wurde, und Ressourcen des Azure-Diensts auf dieses Subnetz beschränken und so schützen. Dieses Szenario kann hilfreich sein, wenn Sie den Zugriff auf den Azure-Dienst aus Ihrem virtuellen Netzwerk per Filterung durch ein virtuelles Netzwerkgerät nur auf bestimmte Azure-Ressourcen beschränken möchten. Weitere Informationen finden Sie unter [egress with network virtual appliances](/azure/architecture/reference-architectures/dmz/nva-ha#egress-with-layer-7-nvas.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (Ausgehender Datenverkehr mit virtuellen Netzwerkgeräten).
+- **Schützen von Azure-Ressourcen für Dienste, die direkt in virtuellen Netzwerken bereitgestellt werden**: Verschiedene Azure-Dienste können in Ihren virtuellen Netzwerken direkt in bestimmten Subnetzen bereitgestellt werden. Sie können Ressourcen von Azure-Diensten für Subnetze mit [verwalteten Diensten](virtual-network-for-azure-services.md) schützen, indem Sie im Subnetz des verwalteten Diensts einen Dienstendpunkt einrichten.
+- **Datenträger-Datenverkehr von einem virtuellen Azure-Computer**: Datenträger-Datenverkehr eines virtuellen Computers (einschließlich Einbindung und Aufhebung der Einbindung sowie Datenträger-E/A) für verwaltete/nicht verwaltete Datenträger wird durch Dienstendpunkte, die Änderungen für Azure Storage weiterleiten, nicht beeinflusst. Der REST-Zugriff auf Seitenblobs kann über Dienstendpunkte und [Azure Storage-Netzwerkregeln](../storage/common/storage-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json) auf bestimmte Netzwerke beschränkt werden. 
 
 ### <a name="logging-and-troubleshooting"></a>Protokollierung und Problembehandlung
 
@@ -135,15 +136,19 @@ Für die Ressource eines Azure-Diensts (z.B. ein Azure Storage-Konto) können Di
 
 ## <a name="virtual-network-service-endpoint-policies"></a>Richtlinien für Dienstendpunkte in virtuellen Netzwerken 
 
-Richtlinien für Dienstendpunkte in virtuellen Netzwerken ermöglichen es Ihnen, virtuellen Netzwerkdatenverkehr über Dienstendpunkte zu Azure-Diensten zu filtern, sodass nur bestimmte Azure-Dienstressourcen zugelassen werden. Dienstendpunkt-Richtlinien bieten eine differenzierte Zugriffssteuerung für virtuellen Netzwerkdatenverkehr zu Azure-Diensten. Weitere Informationen finden Sie unter [Richtlinien für Dienstendpunkte in virtuellen Netzwerken (Vorschau)](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-service-endpoint-policies-overview).
+Richtlinien für Dienstendpunkte in virtuellen Netzwerken ermöglichen es Ihnen, virtuellen Netzwerkdatenverkehr über Dienstendpunkte zu Azure-Diensten zu filtern, sodass nur bestimmte Azure-Dienstressourcen zugelassen werden. Dienstendpunkt-Richtlinien bieten eine differenzierte Zugriffssteuerung für virtuellen Netzwerkdatenverkehr zu Azure-Diensten. Weitere Informationen: [Richtlinien für Dienstendpunkte in virtuellen Netzwerken](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoint-policies-overview)
 
+## <a name="faqs"></a>Häufig gestellte Fragen
+
+Häufig gestellte Fragen finden Sie unter [Azure Virtual Network – häufig gestellte Fragen](https://docs.microsoft.com/azure/virtual-network/virtual-networks-faq#virtual-network-service-endpoints).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Informieren Sie sich über das [Konfigurieren der Dienstendpunkte von virtuellen Netzwerken](tutorial-restrict-network-access-to-resources.md).
 - Informieren Sie sich über das [Sichern eines Azure Storage-Konto in einem virtuellen Netzwerk](../storage/common/storage-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 - Informieren Sie sich über das [Sichern einer Azure SQL-Datenbank in einem virtuellen Netzwerk](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+- Informieren Sie sich über das [Sichern eines Azure SQL Data Warehouse in einem virtuellen Netzwerk](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fsql-data-warehouse%2ftoc.json).
 - Informieren Sie sich über die [Azure-Dienstintegration in virtuelle Netzwerke](virtual-network-for-azure-services.md).
-- Informieren Sie sich über [Richtlinien für Dienstendpunkte in virtuellen Netzwerken (Vorschau)](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-service-endpoint-policies-overview).
+- Informieren Sie sich über [Richtlinien für Dienstendpunkte in virtuellen Netzwerken (Vorschau)](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoint-policies-overview).
 -  Schnellstart: [Azure Resource Manager-Vorlage](https://azure.microsoft.com/resources/templates/201-vnet-2subnets-service-endpoints-storage-integration) zum Einrichten eines Dienstendpunkts für das Subnetz eines VNET und zum Sichern eines Azure Storage-Kontos in diesem Subnetz.
 

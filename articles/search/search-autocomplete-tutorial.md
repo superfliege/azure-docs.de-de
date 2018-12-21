@@ -1,5 +1,5 @@
 ---
-title: Tutorial zum Hinzufügen der automatischen Vervollständigung von Azure Search zu Ihrem Suchfeld | Microsoft-Dokumentation
+title: Tutorial zum Hinzufügen der automatischen Vervollständigung zu Ihrem Suchfeld – Azure Search
 description: Beispiele zum Verbessern der Benutzeroberfläche mit Ihren datenorientierten Anwendungen mithilfe der automatischen Vervollständigung und Vorschlägen von Azure Search.
 manager: pablocas
 author: mrcarter8
@@ -9,12 +9,13 @@ ms.devlang: NA
 ms.topic: tutorial
 ms.date: 07/11/2018
 ms.author: mcarter
-ms.openlocfilehash: 63f4d9f72b9bf81ea772123d65db0659fd3ffa5c
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.custom: seodec2018
+ms.openlocfilehash: 10f86a482fbb35e7276f8f689a7eba184a7b624b
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45578173"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53316181"
 ---
 # <a name="tutorial-add-auto-complete-to-your-search-box-using-azure-search"></a>Tutorial: Hinzufügen der automatischen Vervollständigung von Azure Search zu Ihrem Suchfeld
 

@@ -1,5 +1,5 @@
 ---
-title: Vergleich der Produktoptionen für maschinelles Lernen von Microsoft – Azure | Microsoft-Dokumentation
+title: Vergleichen der Machine Learning-Produktoptionen bei Microsoft
 description: Vergleichen Sie die Auswahl der Produkte von Microsoft zum Erstellen, Bereitstellen und Verwalten Ihrer Modelle für maschinelles Lernen. Treffen Sie die Wahl unter den verschiedenen für Ihre Lösung verfügbaren Produkten.
 services: machine-learning
 ms.service: machine-learning
@@ -9,14 +9,14 @@ ms.reviewer: jmartens
 author: garyericson
 ms.author: garye
 ms.date: 12/04/2018
-ms.openlocfilehash: ad6cb53bd69218d2af801cb56f882f5ffde3026c
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: bae28fd24cfbbf9fe36a626af1f0ec9359c8cda0
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52872544"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53274112"
 ---
-# <a name="what-are-the-machine-learning-product-options-from-microsoft"></a>Welche Produktoptionen bietet Microsoft für maschinelles Lernen?
+# <a name="what-are-the-machine-learning-products-at-microsoft"></a>Welche Machine Learning-Produkte bietet Microsoft?
 
 Microsoft bietet eine Reihe von Produkten zum Erstellen, Bereitstellen und Verwalten Ihrer Modelle für maschinelles Lernen. Vergleichen Sie diese Produkte, und wählen Sie aus, was Sie benötigen, um Ihre Lösungen für maschinelles Lernen so effektiv wie möglich zu entwickeln.
 
@@ -41,8 +41,7 @@ Microsoft bietet eine Reihe von Produkten zum Erstellen, Bereitstellen und Verwa
 
 Verwenden Sie den Azure Machine Learning Service, um ML-Modelle mithilfe von Python und CLI im Cloudmaßstab zu trainieren, bereitzustellen und zu verwalten.
 
->[!Note]
-> Sie können Azure Machine Learning kostenlos ausprobieren. Sie benötigen weder eine Kreditkarte noch ein Azure-Abonnement. Steigen Sie jetzt ein. https://azure.microsoft.com/free/
+Probieren Sie die [kostenlose oder kostenpflichtige Version des Azure Machine Learning Service](http://aka.ms/AMLFree) aus.
 
 ## <a name="azure-machine-learning-studio"></a>Azure Machine Learning Studio
 

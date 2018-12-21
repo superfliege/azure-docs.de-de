@@ -1,6 +1,7 @@
 ---
-title: 'Tutorial: Bereitstellen eines Bildklassifizierungsmodells in Azure Container Instance (ACI) mit Azure Machine Learning Service'
-description: Dieses Tutorial zeigt, wie Sie mit Azure Machine Learning Service ein Bildklassifizierungsmodell mit scikit-learn in einem Python Jupyter Notebook bereitstellen.  Dieses Tutorial ist der zweite Teil einer zweiteiligen Reihe.
+title: 'Tutorial zur Bildklassifizierung: Bereitstellen von Modellen'
+titleSuffix: Azure Machine Learning service
+description: Dieses Tutorial zeigt, wie Sie mit Azure Machine Learning Service ein Bildklassifizierungsmodell mit scikit-learn in einem Python Jupyter Notebook bereitstellen. Dieses Tutorial ist der zweite Teil einer zweiteiligen Reihe.
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
@@ -9,29 +10,30 @@ author: hning86
 ms.author: haining
 ms.reviewer: sgilley
 ms.date: 09/24/2018
-ms.openlocfilehash: 0fd3bebc1e2dba3ab7d1204e779a8c80b97c990b
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.custom: seodec18
+ms.openlocfilehash: ea446c89fc74fca444793a5e0f803a54fa251ed1
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52864059"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53312169"
 ---
-# <a name="tutorial-2--deploy-an-image-classification-model-in-azure-container-instance-aci"></a>Tutorial 2: Bereitstellen eines Bildklassifizierungsmodells in Azure Container Instance (ACI)
+# <a name="tutorial--deploy-an-image-classification-model-in-azure-container-instance"></a>Tutorial:  Bereitstellen eines Bildklassifizierungsmodells in Azure Container Instances
 
 Dieses Tutorial ist der **zweite Teil einer zweiteiligen Reihe**. Im [vorherigen Tutorial](tutorial-train-models-with-aml.md) haben Sie Machine Learning-Modelle trainiert und anschließend ein Modell in Ihrem Arbeitsbereich in der Cloud registriert.  
 
-Jetzt können Sie das Modell als einen Webdienst in [Azure Container Instances](https://docs.microsoft.com/azure/container-instances/) (ACI) bereitstellen. Ein Webdienst ist ein Image (in diesem Fall ein Docker-Image), das die Bewertungslogik und das Modell selbst kapselt. 
+Jetzt können Sie das Modell als Webdienst in [Azure Container Instances](https://docs.microsoft.com/azure/container-instances/) bereitstellen. Ein Webdienst ist ein Image (in diesem Fall ein Docker-Image), das die Bewertungslogik und das Modell selbst kapselt. 
 
-In diesem Teil des Tutorials verwenden Sie den Azure Machine Learning-Dienst für folgende Zwecke:
+In diesem Teil des Tutorials verwenden Sie den Azure Machine Learning Service für folgende Zwecke:
 
 > [!div class="checklist"]
 > * Einrichten Ihrer Testumgebung
 > * Abrufen des Modells aus Ihrem Arbeitsbereich
 > * Lokales Testen des Modells
-> * Bereitstellen des Modells für ACI
+> * Bereitstellen eines Modells in Container Instances
 > * Testen des bereitgestellten Modells
 
-ACI ist nicht ideal für Produktionsumgebungen, eignet sich aber optimal, um den Workflow zu testen und zu verstehen. Für skalierbare Produktionsbereitstellungen sollten Sie [Azure Kubernetes Service](how-to-deploy-to-aks.md) verwenden.
+Container Instances ist nicht ideal für Produktionsumgebungen, eignet sich aber optimal, um den Workflow zu testen und zu verstehen. Für skalierbare Produktionsbereitstellungen sollten Sie Azure Kubernetes Service verwenden. Weitere Informationen finden Sie unter [Bereitstellen von Modellen mit dem Azure Machine Learning Service](how-to-deploy-and-where.md).
 
 ## <a name="get-the-notebook"></a>Abrufen des Notebooks
 
@@ -44,7 +46,7 @@ Dieses Tutorial wird auch als [Jupyter Notebook](https://github.com/Azure/Machin
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Schließen Sie das Trainieren des Modells im Notebook [Tutorial 1: Trainieren eines Bildklassifizierungsmodells mit Azure Machine Learning](tutorial-train-models-with-aml.md) ab.  
+Führen Sie das Modelltraining im folgenden Notebook aus: [Tutorial 1: Trainieren eines Bildklassifizierungsmodells mit dem Azure Machine Learning Service](tutorial-train-models-with-aml.md).  
 
 
 ## <a name="set-up-the-environment"></a>Einrichten der Umgebung
@@ -120,7 +122,7 @@ y_hat = clf.predict(X_test)
 
 ###  <a name="examine-the-confusion-matrix"></a>Überprüfen der Konfusionsmatrix
 
-Erzeugen Sie eine Konfusionsmatrix, um zu sehen, wie viele Stichproben aus dem Testsatz korrekt klassifiziert sind. Beachten Sie den falsch klassifizierten Wert für die falsche Vorhersage. 
+Erzeugen Sie eine Konfusionsmatrix, um zu sehen, wie viele Stichproben aus dem Testsatz korrekt klassifiziert sind. Beachten Sie den falsch klassifizierten Wert für die falschen Vorhersagen. 
 
 ```python
 from sklearn.metrics import confusion_matrix
@@ -148,7 +150,7 @@ Die Ausgabe zeigt die Konfusionsmatrix:
 Verwenden Sie `matplotlib`, um die Konfusionsmatrix als Diagramm anzuzeigen. In diesem Diagramm stellt die X-Achse die Ist-Werte und die Y-Achse die vorhergesagten Werte dar. Die Farbe in jedem Raster stellt die Fehlerrate dar. Je heller die Farbe, desto höher ist die Fehlerrate. Beispielsweise sind viele 5en falsch als 3en klassifiziert. Daher sehen Sie ein helles Raster bei (5,3).
 
 ```python
-# normalize the diagnal cells so that they don't overpower the rest of the cells when visualized
+# normalize the diagonal cells so that they don't overpower the rest of the cells when visualized
 row_sums = conf_mx.sum(axis=1, keepdims=True)
 norm_conf_mx = conf_mx / row_sums
 np.fill_diagonal(norm_conf_mx, 0)
@@ -168,23 +170,23 @@ plt.savefig('conf.png')
 plt.show()
 ```
 
-![Konfusionsmatrix](./media/tutorial-deploy-models-with-aml/confusion.png)
+![Diagramm mit Konfusionsmatrix](./media/tutorial-deploy-models-with-aml/confusion.png)
 
 ## <a name="deploy-as-web-service"></a>Bereitstellen als Webdienst
 
-Sobald Sie das Modell getestet haben und mit den Ergebnissen zufrieden sind, stellen Sie das Modell als Webdienst bereit, der in ACI gehostet wird. 
+Sobald Sie das Modell getestet haben und mit den Ergebnissen zufrieden sind, stellen Sie das Modell als Webdienst bereit, der in Container Instances gehostet wird. 
 
-Zum Erstellen der richtigen Umgebung für ACI ist folgendes erforderlich:
+Zum Erstellen der richtigen Umgebung für Container Instances ist Folgendes erforderlich:
 * Ein Bewertungsskript zur Veranschaulichung der Verwendung des Modells
 * Eine Umgebungsdatei, um anzugeben, welche Pakete installiert werden müssen
-* Eine Konfigurationsdatei zum Erstellen der ACI
+* Eine Konfigurationsdatei zum Erstellen der Containerinstanz
 * Das zuvor trainierte Modell
 
 <a name="make-script"></a>
 
 ### <a name="create-scoring-script"></a>Erstellen des Bewertungsskripts
 
-Erstellen Sie das Bewertungsskript score.py, das vom Webdienstaufruf verwendet wird, um zu zeigen, wie das Modell verwendet wird.
+Erstellen Sie das Bewertungsskript, genannt „score.py“. Der Aufruf des Webdiensts gibt hiermit an, wie das Modell verwendet wird.
 
 Sie müssen zwei erforderliche Funktionen in das Bewertungsskript einschließen:
 * Die `init()`-Funktion, die das Modell in der Regel in ein globales Objekt lädt. Diese Funktion wird nur dann ausgeführt, wenn der Docker-Container gestartet wird. 
@@ -239,7 +241,7 @@ with open("myenv.yml","r") as f:
 
 ### <a name="create-configuration-file"></a>Erstellen einer Konfigurationsdatei
 
-Erstellen Sie eine Konfigurationsdatei für die Bereitstellung und geben Sie die Anzahl der CPUs und Gigabyte-RAM an, die für Ihren ACI-Container benötigt werden. Obwohl die Anforderungen von Ihrem Modell abhängen, ist der Standard von 1 Kern und 1 Gigabyte-RAM für viele Modelle in der Regel ausreichend. Wenn Sie das Gefühl haben, dass Sie später mehr brauchen, müssen Sie das Image neu erstellen und den Dienst neu bereitstellen.
+Erstellen Sie eine Konfigurationsdatei für die Bereitstellung und geben Sie die Anzahl der CPUs und Gigabyte-RAM an, die für Ihren Container Instances-Container benötigt werden. Obwohl die Anforderungen von Ihrem Modell abhängen, ist der Standard von 1 Kern und 1 Gigabyte-RAM für viele Modelle in der Regel ausreichend. Wenn Sie das Gefühl haben, dass Sie später mehr brauchen, müssen Sie das Image neu erstellen und den Dienst neu bereitstellen.
 
 ```python
 from azureml.core.webservice import AciWebservice
@@ -250,18 +252,18 @@ aciconfig = AciWebservice.deploy_configuration(cpu_cores=1,
                                                description='Predict MNIST with sklearn')
 ```
 
-### <a name="deploy-in-aci"></a>Bereitstellen in ACI
+### <a name="deploy-in-container-instances"></a>Bereitstellen in Container Instances
 Geschätzter Zeitaufwand: **Ca. 7-8 Minuten**
 
 Konfigurieren Sie das Image und stellen Sie es bereit. Der folgende Code durchläuft diese Schritte:
 
 1. Erstellen Sie ein Image mit:
-   * Der Bewertungsdatei (`score.py`)
-   * Der Umgebungsdatei (`myenv.yml`)
-   * Der Modelldatei
+   * Der Bewertungsdatei (`score.py`).
+   * Der Umgebungsdatei (`myenv.yml`).
+   * Der Modelldatei.
 1. Registrieren Sie das Image im Arbeitsbereich. 
-1. Senden Sie das Bild an den ACI Container.
-1. Starten Sie einen Containers in ACI mithilfe des Image.
+1. Senden Sie das Bild an den Container Instances-Container.
+1. Starten Sie einen Container in Container Instances mithilfe des Bilds.
 1. Rufen Sie den Webdienst-HTTP-Endpunkt ab.
 
 
@@ -284,7 +286,7 @@ service = Webservice.deploy_from_model(workspace=ws,
 service.wait_for_deployment(show_output=True)
 ```
 
-Rufen Sie den Bewertungswebdienst des HTTP-Endpunkts ab, der REST-Clientaufrufe akzeptiert. Dieser Endpunkt kann von jedem genutzt werden, der den Webdienst testen oder in eine Anwendung integrieren möchte. 
+Rufen Sie den Bewertungswebdienst des HTTP-Endpunkts ab, der REST-Clientaufrufe akzeptiert. Sie können diesen Endpunkt für jeden freigeben, der den Webdienst testen oder in eine Anwendung integrieren möchte. 
 
 ```python
 print(service.scoring_uri)
@@ -296,7 +298,7 @@ print(service.scoring_uri)
 Zuvor haben Sie alle Testdaten mit der lokalen Version des Modells bewertet. Sie können jetzt das bereitgestellte Modell mit einer zufälligen Stichprobe von 30 Bildern aus den Testdaten testen.  
 
 Der folgende Code durchläuft diese Schritte:
-1. Senden Sie die Daten als JSON-Array an den in ACI gehosteten Webdienst. 
+1. Senden Sie die Daten als JSON-Array an den in Container Instances gehosteten Webdienst. 
 
 1. Verwenden Sie die `run`-API des SDK, um den Dienst aufzurufen. Sie können auch unformatierte Daten mit einem beliebigen HTTP-Tool, z.B. Curl, aufrufen.
 
@@ -337,7 +339,7 @@ for s in sample_indices:
 plt.show()
 ```
 
-Hier ist das Ergebnis einer zufälligen Stichprobe an Testbildern: ![Ergebnisse](./media/tutorial-deploy-models-with-aml/results.png)
+Hier ist das Ergebnis einer zufälligen Stichprobe an Testbildern: ![Grafik mit Ergebnissen](./media/tutorial-deploy-models-with-aml/results.png)
 
 Sie können auch unformatierte HTTP-Anforderung zum Testen des Webdiensts senden.
 
@@ -365,7 +367,7 @@ print("prediction:", resp.text)
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Um die Ressourcengruppe und den Arbeitsbereich für andere Tutorials und Untersuchungen zu behalten, können Sie mit diesem API-Aufruf nur die ACI-Bereitstellung löschen:
+Um die Ressourcengruppe und den Arbeitsbereich für andere Tutorials und Untersuchungen zu behalten, können Sie mit diesem API-Aufruf nur die Container Instances-Bereitstellung löschen:
 
 ```python
 service.delete()
@@ -376,13 +378,6 @@ service.delete()
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial für den Azure Machine Learning-Dienst haben Sie Python für folgende Zwecke verwendet:
++ Lernen Sie alle [Bereitstellungsoptionen für den Azure Machine Learning Service](how-to-deploy-and-where.md) einschließlich ACI, Azure Kubernetes Service, FPGAs und IoT Edge kennen.
 
-> [!div class="checklist"]
-> * Einrichten Ihrer Testumgebung
-> * Abrufen des Modells aus Ihrem Arbeitsbereich
-> * Lokales Testen des Modells
-> * Bereitstellen des Modells für ACI
-> * Testen des bereitgestellten Modells
- 
-Sie können auch das Tutorial [Automatische Algorithmusauswahl](tutorial-auto-train-models.md) ausprobieren, um zu sehen, wie der Azure Machine Learning-Dienst den besten Algorithmus für Ihr Modell automatisch auswählen und optimieren und dieses Modell für Sie erstellen kann.
++ Erfahren Sie, wie der Azure Machine Learning Service den besten Algorithmus für Ihr Modell automatisch auswählen und optimieren und dieses Modell für Sie erstellen kann. Probieren Sie das Tutorial [Trainieren eines Regressionsmodells mit automatisiertem maschinellen Lernen](tutorial-auto-train-models.md) aus. 

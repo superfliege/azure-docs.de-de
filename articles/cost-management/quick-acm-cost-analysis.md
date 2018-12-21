@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 11/09/2018
+ms.date: 12/11/2018
 ms.topic: quickstart
 ms.service: cost-management
 manager: dougeby
-ms.custom: ''
-ms.openlocfilehash: f8f7d43d4b42f5236c6c8d25c88314043053b0cc
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18
+ms.openlocfilehash: 9085bea06553bcb2b8cf871153ddd1fb767c04f4
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52445708"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53277742"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>Schnellstart: Ermitteln und Analysieren von Kosten mit der Kostenanalyse
 
@@ -43,7 +43,7 @@ Die Kostenanalyse steht allen [EA-Kunden (Enterprise Agreement)](https://azure.m
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
-- Melden Sie sich unter http://portal.azure.com beim Azure-Portal an.
+- Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
 
 ## <a name="review-costs-in-cost-analysis"></a>Überprüfen von Kosten mithilfe der Kostenanalyse
 
@@ -63,7 +63,7 @@ Die Kostenanalyseansicht umfasst anfänglich die folgenden Bereiche:
 
 **Pivot-/Ringdiagramme** – Stellen Sie dynamische Pivotdiagramme bereit, die die Gesamtkosten nach einem gemeinsamen Satz von Standardeigenschaften aufschlüsseln. Darin sind die akkumulierten Kosten für den aktuellen Monat absteigend sortiert. Sie können die Pivotdiagramme jederzeit anpassen, indem Sie einen anderen Pivotbereich auswählen. Die Kosten werden standardmäßig nach Dienst (Kategorie der Verbrauchseinheit), Standort (Region) und untergeordnetem Bereich kategorisiert. Beispielsweise Registrierungskonten unter Abrechnungskonten, Ressourcengruppen unter Abonnements und Ressourcen unter Ressourcengruppen.
 
-![Anfängliche Kostenanalyseansicht](./media/quick-acm-cost-analysis/cost-analysis-01.png)
+![Anfängliche Ansicht der Kostenanalyse im Azure-Portal](./media/quick-acm-cost-analysis/cost-analysis-01.png)
 
 ## <a name="customize-cost-views"></a>Anpassen von Kostenansichten
 
@@ -76,21 +76,23 @@ Es gibt jedoch viele Fälle, in denen eine ausführlichere Analyse erforderlich 
 
 In der Kostenanalyse werden standardmäßig die Daten für den aktuellen Monat angezeigt. Mit dem Auswahlelement können Sie zwischen dem letzten Monat, dem aktuellen Monat, dem aktuellen Kalenderquartal, dem aktuellen Kalenderjahr und dem benutzerdefinierten Datumsbereich wechseln. Am schnellsten analysieren Sie die letzten Azure-Rechnungen und stimmen Kosten ab, indem Sie den letzten Monat auswählen. Wenn Sie das aktuelle Quartal oder Jahr auswählen, können Sie Kosten im Verhältnis zu langfristigen Budgets überwachen. Sie können auch einen anderen Datumsbereich auswählen. Sie können z. B. einen einzigen Tag, sieben Tage oder sogar maximal ein Jahr vor dem aktuellen Monat auswählen.
 
-![Auswahlelement für den Datumsbereich](./media/quick-acm-cost-analysis/date-selector.png)
+![Das Auswahlelement für den Datumsbereich zeigt eine Beispielauswahl für diesen Monat](./media/quick-acm-cost-analysis/date-selector.png)
 
 Standardmäßig werden in der Kostenanalyse **akkumulierte** Kosten angezeigt. Diese umfassen die Kosten pro Tag und die summierten Kosten der Vortage. Dadurch wird der Anstieg der akkumulierten Kosten pro Tag visualisiert. In dieser Ansicht wird besonders gut dargestellt, in welchem Verhältnis Ausgabentrends und Budget innerhalb eines festgelegten Zeitbereichs stehen.
 
 Es gibt auch die **Tagesansicht**, die die Kosten für jeden Tag anzeigt. Die Tagesansicht zeigt keinen Wachstumstrend an. Die Ansicht ist so konzipiert, dass Unregelmäßigkeiten als Kostenspitzen oder -einbrüche von Tag zu Tag dargestellt werden. Wenn Sie ein Budget ausgewählt haben, wird in der Tagesansicht auch das geschätzte Tagesbudget angezeigt. Wenn die täglichen Kosten dauerhaft über dem Tagesbudget liegen, ist davon auszugehen, dass Ihr Monatsbudget überschritten wird. Das geschätzte Tagesbudget ist lediglich ein Hilfsmittel, mit dem Sie Ihr Budget auf einer granulareren Ebene visualisieren können. Wenn bei täglichen Kosten Schwankungen auftreten, ist der Vergleich von geschätztem Tagesbudget und Monatsbudget ungenauer.
 
-![Tagesansicht](./media/quick-acm-cost-analysis/daily-view.png)
+Im Allgemeinen können Sie erwarten, dass Daten oder Benachrichtigungen zu verbrauchten Ressourcen innerhalb von acht Stunden angezeigt werden.
+
+![Tägliche Anzeige mit einem Beispiel täglicher Kosten für den aktuellen Monat](./media/quick-acm-cost-analysis/daily-view.png)
 
 Durch die Auswahl der Option **Gruppieren nach** können Sie eine Gruppenkategorie auswählen. Dadurch werden für das Gesamtkostendiagramm im oberen Bereich die Daten angepasst. Mit Gruppierungen können Sie auf einen Blick erkennen, wie Ihre Ausgaben anhand allgemeiner Ressourcen- und Nutzungseigenschaften wie Ressourcengruppe oder Ressourcentags kategorisiert wurden. Wählen Sie zum Gruppieren nach Tags den Tagschlüssel aus, nach dem Sie gruppieren möchten. Die Kosten werden daraufhin nach den einzelnen Werten für dieses Tag aufgeschlüsselt. Für Ressourcen, auf die das Tag nicht angewendet wurde, wird ein zusätzliches Segment angezeigt. Beachten Sie, dass Cost Management nur Ressourcentags ab dem Datum unterstützt, an dem die Tags direkt auf die Ressource angewendet werden. Ressourcengruppentags werden derzeit nicht unterstützt. Auf der folgenden Abbildung werden Azure-Kosten visualisiert, die im letzten Monat angefallen sind.
 
-![Tagesansicht für akkumulierte Kosten mit Gruppierungen](./media/quick-acm-cost-analysis/grouped-daily-accum-view.png)
+![Gruppierte tägliche akkumulierte Ansicht mit Beispiel für Azure-Dienstkosten für den letzten Monat](./media/quick-acm-cost-analysis/grouped-daily-accum-view.png)
 
 Pivotdiagramme unterhalb des Hauptdiagramms enthalten verschiedene Gruppierungen und bieten damit einen allgemeinen Überblick über die Gesamtkosten für den ausgewählten Zeitraum und die ausgewählten Filter. Wählen Sie eine Eigenschaft oder ein Tag aus, um aggregierte Kosten anhand beliebiger Dimensionen anzuzeigen. Alle Daten für die Ansicht „Gesamt“ werden im unteren Bildschirmbereich angezeigt. Erweitern Sie dazu den Bereich **Daten**, oder wählen Sie oben auf dem Bildschirm **Exportieren > CSV herunterladen** aus. Hier sehen Sie ein Beispiel des Datenbereichs für Ressourcengruppen.
 
-![Alle Daten für aktuelle Ansicht](./media/quick-acm-cost-analysis/full-data-set.png)
+![Vollständige Daten für die aktuelle Ansicht mit Ressourcengruppennamen](./media/quick-acm-cost-analysis/full-data-set.png)
 
 Das vorhergehende Bild zeigt die Namen der Ressourcengruppen. Sie können zum Anzeigen der Gesamtkosten pro Tag nach Tag gruppieren. Es gibt jedoch in keiner der Kostenanalyseansichten ein Option zum Anzeigen aller Tags pro Ressource oder Ressourcengruppe.
 

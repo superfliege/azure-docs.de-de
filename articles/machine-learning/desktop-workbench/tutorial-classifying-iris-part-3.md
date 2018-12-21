@@ -11,16 +11,16 @@ ms.component: core
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 3/13/2018
+ms.date: 03/13/2018
 ROBOTS: NOINDEX
-ms.openlocfilehash: 2eb6eb5090b0a68a189e2d4f1148d3238bc3ee0d
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 52757098436349d38538f4c2168a70e53ad58421
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46946611"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53270160"
 ---
-# <a name="tutorial-3-classify-iris-deploy-a-model"></a>Tutorial 3: Klassifizieren von Iris: Bereitstellen eines Modells
+# <a name="tutorial-3-classify-iris-deploy-a-model"></a>Tutorial 3: Iris-Klassifizierung: Bereitstellen eines Modells
 
 [!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)]
 
@@ -168,7 +168,7 @@ Sie können _Lokaler Modus_ für Entwicklungs- und Testzwecke nutzen. Die Docker
    az provider show -n Microsoft.ContainerRegistry 
    ``` 
 
-   In der dritten Zeile der Ausgabe wird **"registrationState": "Registering"** angezeigt. Warten Sie kurz ab, und wiederholen Sie dann den Befehl **show**, bis in der Ausgabe **"registrationState": "Registered"** angezeigt wird.
+   In der dritten Zeile der Ausgabe wird **„registrationState“: „Registering“** angezeigt. Warten Sie kurz ab, und wiederholen Sie dann den Befehl **show**, bis in der Ausgabe **„registrationState“: „Registered“** angezeigt wird.
 
    >[!NOTE] 
    Beim Bereitstellen in einem ACS-Cluster folgen Sie genau demselben Ansatz, um den Ressourcenanbieter **Microsoft.ContainerService** zu registrieren.
@@ -246,7 +246,7 @@ Sie können nun den Echtzeit-Webdienst erstellen.
 
    * `--collect-model-data true`: Mit diesem Switch wird die Datensammlung aktiviert.
 
-   * `-c`: Pfad zur Datei mit den Conda-Abhängigkeiten, in der zusätzliche Pakete angegeben werden
+   * `-c`: Pfad zur Datei mit den Conda-Abhängigkeiten, in der zusätzliche Pakete angegeben werden.
 
    >[!IMPORTANT]
    >Der Dienstname, bei dem es sich auch um den neuen Docker-Imagenamen handelt, darf nur Kleinbuchstaben enthalten. Andernfalls erhalten Sie eine Fehlermeldung. 

@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/07/2018
 ms.author: daveba
-ms.openlocfilehash: 5d67d25912df5040665b3a04858be0f3807e8112
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: ee4b504cf26456baa7d10eab05305eee5e36c35a
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51623824"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53191902"
 ---
-# <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-sql"></a>Tutorial: Verwenden einer systemseitig zugewiesenen verwalteten Identität eines virtuellen Windows-Computers für den Zugriff auf Azure SQL
+# <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-sql"></a>Tutorial: Verwenden der systemseitig zugewiesenen verwalteten Identität eines virtuellen Windows-Computers für den Zugriff auf Azure SQL
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
@@ -63,6 +63,8 @@ Für den nächsten Schritt benötigen Sie [Microsoft SQL Server Management Studi
 
 - [Universelle Authentifizierung bei SQL-Datenbank und SQL Data Warehouse (SSMS-Unterstützung für MFA)](/azure/sql-database/sql-database-ssms-mfa-authentication)
 - [Konfigurieren und Verwalten der Azure Active Directory-Authentifizierung mit SQL-Datenbank oder SQL Data Warehouse](/azure/sql-database/sql-database-aad-authentication-configure)
+
+SQL-Datenbank benötigt eindeutige AAD-Anzeigenamen. Mit dieser Option müssen die für verwaltete Identität aktivierten AAD-Konten wie z.B. Benutzer, Gruppen und Dienstprinzipale (Anwendungen) sowie VM-Namen in Bezug auf den Anzeigenamen eindeutig im AAD definiert werden. SQL-Datenbank überprüft den AAD-Anzeigenamen während der T-SQL-Erstellung solcher Benutzer, und wenn er nicht eindeutig ist, kann der Befehl, der die Angabe eines AAD-Anzeigenamens für ein bestimmtes Konto anfordert, nicht ausgeführt werden.
 
 1.  Starten Sie SQL Server Management Studio.
 2.  Geben Sie im Dialogfeld **Mit Server verbinden** den Namen Ihres SQL-Servers im Feld **Servername** ein.

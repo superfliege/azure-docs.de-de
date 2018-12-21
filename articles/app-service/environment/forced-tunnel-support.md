@@ -1,5 +1,5 @@
 ---
-title: Konfigurieren Ihrer Azure App Service-Umgebung für die Tunnelerzwingung
+title: Konfigurieren Ihrer Azure App Service-Umgebung für die Tunnelerzwingung – Azure
 description: Ermöglichen der Funktion Ihrer App Service-Umgebung, wenn das Tunneling für ausgehenden Datenverkehr erzwungen wird
 services: app-service
 documentationcenter: na
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 05/29/2018
 ms.author: ccompy
-ms.custom: mvc
-ms.openlocfilehash: ba93aab14c8eaccf9e3ed9ae9db0d169f41dddea
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.custom: seodec18
+ms.openlocfilehash: 89827cdc7d29a817c83fd16ec2a4340f06c8343c
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44024044"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53272730"
 ---
 # <a name="configure-your-app-service-environment-with-forced-tunneling"></a>Konfigurieren Ihrer App Service-Umgebung mit erzwungenem Tunneling
 
@@ -105,13 +105,13 @@ Führen Sie die folgenden Schritte aus, um das Tunneling für den gesamten ausge
 
 3. Beschaffen Sie sich die Adressen, die für den gesamten ausgehenden Datenverkehr von Ihrer App Service-Umgebung ins Internet verwendet werden. Falls Sie den Datenverkehr an lokale Speicherorte weiterleiten, sind diese Adressen Ihre NATs oder Gateway-IPs. Wenn Sie den ausgehenden Datenverkehr der App Service-Umgebung über eine NVA weiterleiten möchten, ist die ausgehende Adresse die öffentliche IP-Adresse der NVA.
 
-4. _Gehen Sie wie folgt vor, um die Ausgangsadressen in einer vorhandenen App Service-Umgebung festzulegen:_ Navigieren Sie zu „resource.azure.com“ und dann zu „Subscription/\<subscription id>/resourceGroups/\<ase resource group>/providers/Microsoft.Web/hostingEnvironments/\<ase name>“. Dort sehen Sie die JSON-Datei, die Ihre App Service-Umgebung beschreibt. Vergewissern Sie sich, dass am Anfang **read/write** angezeigt wird. Wählen Sie **Bearbeiten** aus. Scrollen Sie ganz nach unten. Ändern Sie den Wert **userWhitelistedIpRanges** von **NULL** in einen Wert, der dem unten angegebenen Wert ähnelt. Verwenden Sie die Adressen, die Sie als Ausgangsadressbereich festlegen möchten. 
+4. _So legen Sie die Ausgangsadressen in einer vorhandenen App Service-Umgebung fest:_ Navigieren Sie zu „resource.azure.com“ und dann zu „Subscription/\<subscription id>/resourceGroups/\<ase resource group>/providers/Microsoft.Web/hostingEnvironments/\<ase name>“. Dort sehen Sie die JSON-Datei, die Ihre App Service-Umgebung beschreibt. Vergewissern Sie sich, dass am Anfang **read/write** angezeigt wird. Wählen Sie **Bearbeiten** aus. Scrollen Sie ganz nach unten. Ändern Sie den Wert **userWhitelistedIpRanges** von **NULL** in einen Wert, der dem unten angegebenen Wert ähnelt. Verwenden Sie die Adressen, die Sie als Ausgangsadressbereich festlegen möchten. 
 
         "userWhitelistedIpRanges": ["11.22.33.44/32", "55.66.77.0/24"] 
 
    Klicken Sie oben auf **PUT**. Diese Option löst einen Skalierungsvorgang für Ihre App Service-Umgebung aus und passt die Firewall an.
 
-_Gehen Sie wie folgt vor, um Ihre ASE mit den Ausgangsadressen zu erstellen:_ Befolgen Sie die Anleitung unter [Erstellen einer App Service-Umgebung mit einer Vorlage][template], und rufen Sie die entsprechende Vorlage ab.  Bearbeiten Sie den Abschnitt „resources“ in der Datei „azuredeploy.json“, aber nicht im Block „properties“, und fügen Sie eine Zeile für **userWhitelistedIpRanges** mit Ihren Werten ein.
+_So erstellen Sie Ihre ASE mit den Ausgangsadressen_: Befolgen Sie die Anleitung unter [Erstellen einer App Service-Umgebung mit einer Vorlage][template], und rufen Sie die entsprechende Vorlage ab.  Bearbeiten Sie den Abschnitt „resources“ in der Datei „azuredeploy.json“, aber nicht im Block „properties“, und fügen Sie eine Zeile für **userWhitelistedIpRanges** mit Ihren Werten ein.
 
     "resources": [
       {

@@ -1,21 +1,21 @@
 ---
-title: Tutorial für Azure Container Instances – Bereitstellungs-App
-description: Tutorial für Azure Container Instances (Teil 3 von 3) – Bereitstellen der Anwendung
+title: 'Tutorial: Bereitstellen einer Container-App in Azure Container Instances'
+description: Tutorial für Azure Container Instances (Teil 3 von 3) – Bereitstellen einer Containeranwendung in Azure Container Instances
 services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: tutorial
 ms.date: 03/21/2018
 ms.author: danlep
-ms.custom: mvc
-ms.openlocfilehash: 9e8a72564151bea9194ef5180589fa8eae001df5
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.custom: seodec18, mvc
+ms.openlocfilehash: 54fcbe9adc8fbf4a8fba6eabbd7c2f8802fd933a
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52863719"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53191092"
 ---
-# <a name="tutorial-deploy-a-container-to-azure-container-instances"></a>Tutorial: Bereitstellen eines Containers in Azure Container Instances
+# <a name="tutorial-deploy-a-container-application-to-azure-container-instances"></a>Tutorial: Bereitstellen einer Containeranwendung in Azure Container Instances
 
 Dies ist das letzte Tutorial einer dreiteiligen Reihe. In den vorhergehenden Teilen der Reihe wurde [ein Containerimage erstellt](container-instances-tutorial-prepare-app.md) und [mithilfe von Push an eine Azure Container Registry-Instanz übermittelt](container-instances-tutorial-prepare-acr.md). Zum Abschluss der Reihe wird der Container in diesem Tutorial für Azure Container Instances bereitgestellt.
 

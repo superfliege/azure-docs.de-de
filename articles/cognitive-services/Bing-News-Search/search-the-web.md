@@ -1,7 +1,7 @@
 ---
-title: Worum handelt es sich bei der Bing-News-Suche?
+title: Was ist die Bing-News-Suche-API?
 titlesuffix: Azure Cognitive Services
-description: Zeigt, wie Sie das Web mithilfe der Bing-News-Suche-API nach News durchsuchen.
+description: Erfahren Sie, wie Sie mit der Bing News-Suche-API im Web nach aktuellen Schlagzeilen in mehreren Kategorien suchen, einschließlich Überschriften und Trendthemen.
 services: cognitive-services
 author: swhite-msft
 manager: cgronlun
@@ -10,14 +10,15 @@ ms.component: bing-news-search
 ms.topic: overview
 ms.date: 06/21/2016
 ms.author: scottwhi
-ms.openlocfilehash: 7a5df20358198e7ccb44ccc60be3ab7716f71ba6
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.custom: seodec2018
+ms.openlocfilehash: 17383d38b1401149003ad9d1794b3e69284f9033
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51227857"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53253087"
 ---
-# <a name="what-is-bing-news-search"></a>Worum handelt es sich bei der Bing-News-Suche?
+# <a name="what-is-the-bing-news-search-api"></a>Was ist die Bing-News-Suche-API?
 
 Die Bing News-Suche-API bietet eine Umgebung ähnlich (aber nicht identisch mit) [Bing News](https://www.bing.com/news). Mit der Bing News-Suche-API können Sie eine Suchabfrage an Bing senden und eine Liste relevanter Nachrichtenartikel abrufen.
 

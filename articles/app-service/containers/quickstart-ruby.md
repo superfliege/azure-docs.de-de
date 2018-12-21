@@ -1,5 +1,5 @@
 ---
-title: Erstellen einer Ruby on Rails-App und Bereitstellen dieser in App Service unter Linux | Microsoft-Dokumentation
+title: Erstellen von Ruby-Web-Apps unter Linux – Azure App Service| Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie eine Ruby on Rails-App mit App Service unter Linux erstellen.
 keywords: Azure App Service, Linux, OSS, Ruby, Rails
 services: app-service
@@ -15,13 +15,13 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 08/24/2018
 ms.author: cfowler
-ms.custom: mvc
-ms.openlocfilehash: 04025998f78843b1cc69acd663681b9563a531bc
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.custom: seodec18
+ms.openlocfilehash: 13686951324a10c1de621f0fe507be062c9d2095
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47431225"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53252472"
 ---
 # <a name="create-a-ruby-on-rails-app-in-app-service-on-linux"></a>Erstellen einer Ruby on Rails-App in App Service unter Linux
 

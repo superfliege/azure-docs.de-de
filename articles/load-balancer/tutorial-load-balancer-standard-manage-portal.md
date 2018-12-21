@@ -1,14 +1,11 @@
 ---
-title: 'Tutorial: Vornehmen eines Lastausgleichs für den Internetdatenverkehr an virtuelle Computer: Azure-Portal | Microsoft-Dokumentation'
+title: 'Tutorial: Vornehmen eines Lastausgleichs für Internetdatenverkehr virtueller Computer – Azure-Portal'
+titlesuffix: Azure Load Balancer
 description: In diesem Tutorial wird gezeigt, wie Sie über das Azure-Portal eine Load Balancer Standard-Instanz erstellen und verwalten.
 services: load-balancer
 documentationcenter: na
 author: KumudD
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
 Customer intent: I want to create and Standard Load balancer so that I can load balance internet traffic to VMs and add and remove VMs from the load-balanced set.
-ms.assetid: ''
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: tutorial
@@ -16,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/20/18
 ms.author: kumud
-ms.custom: mvc
-ms.openlocfilehash: ef021a89cb1cba5a3240ade5ba67141940413cdc
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.custom: seodec18
+ms.openlocfilehash: 76d7f0b959037808c3358c2b78b837a783117457
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51687305"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53260003"
 ---
-# <a name="tutorial-load-balance-internet-traffic-to-vms-using-the-azure-portal"></a>Tutorial: Vornehmen eines Lastausgleichs für den Internetdatenverkehr an virtuelle Computer mit dem Azure-Portal
+# <a name="tutorial-load-balance-internet-traffic-to-vms-using-the-azure-portal"></a>Tutorial: Vornehmen eines Lastausgleichs für den Internetdatenverkehr virtueller Computer mit dem Azure-Portal
 
 Durch die Verteilung der eingehenden Anforderungen auf mehrere virtuelle Computer bietet ein Lastenausgleich ein höheres Maß an Verfügbarkeit und Skalierbarkeit. In diesem Tutorial lernen Sie die verschiedenen Komponenten von Azure Load Balancer Standard kennen, mit denen Internetdatenverkehr an virtuelle Computer verteilt und Hochverfügbarkeit bereitgestellt wird. Folgendes wird vermittelt:
 

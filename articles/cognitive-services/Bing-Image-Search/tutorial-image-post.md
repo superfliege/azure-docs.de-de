@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Extrahieren von Bilddetails mit C# – Bing-Bildersuche-API'
+title: 'Tutorial: Extrahieren von Bilddetails mit der Bing-Bildersuche-API und C#'
 titleSuffix: Azure Cognitive Services
 description: Erfahren Sie in diesem Artikel, wie Sie eine C#-Anwendung erstellen, die Bilddetails mithilfe der Bing-Bildersuche-API extrahiert.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.component: bing-image-search
 ms.topic: tutorial
 ms.date: 9/14/2018
 ms.author: aahi
-ms.openlocfilehash: 96d011a04c97d309409062a286bdd7a17db9cda5
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 36996ebed25d159cdc2a1908b5c9f1f5447c823f
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46297655"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53259765"
 ---
 # <a name="tutorial-extract-image-details-using-the-bing-image-search-api-and-c"></a>Tutorial: Extrahieren von Bilddetails mit der Bing-Bildersuche-API und C#
 
@@ -32,7 +32,7 @@ In diesem Tutorial werden folgende Punkte erläutert:
 > * Hochladen der Bilddaten und senden der `POST`-Anforderung
 > * Ausgeben von JSON-Ergebnisse an die Konsole
 
-Den Quellcode dieses Beispiels finden Sie auf [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/Tutorials/BingGetSimilarImages.cs).
+Den Quellcode des Beispiels finden Sie auf [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/Tutorials/BingGetSimilarImages.cs).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -54,7 +54,7 @@ Beim Erstellen der Suchanforderungs-URL, folgt der `modules`-Parameter dem obige
 
 Geben Sie `modules=All` in der POST-Anforderung an, um JSON-Text mit den folgenden Angaben abzurufen:
 
-* `bestRepresentativeQuery` – eine Bing-Abfrage, die ähnliche Bilder wie das hochgeladene Bild zurückgibt
+* `bestRepresentativeQuery` -eine Bing-Abfrage, die ähnliche Bilder wie das hochgeladene Bild zurückgibt
 * `detectedObjects` – ein im Bild gefundenes Objekt
 * `image` – Metadaten des Bildes
 * `imageInsightsToken` – ein Token für eine spätere GET-Anforderung, das `RecognizedEntities` (im Bild sichtbare Personen oder Orte) aus dem Bild abruft

@@ -1,246 +1,339 @@
 ---
-title: 'Tutorial: Konfigurieren der Portweiterleitung im Load Balancer – Azure-Portal | Microsoft-Dokumentation'
+title: 'Tutorial: Konfigurieren der Portweiterleitung im Azure Load Balancer mit dem Azure-Portal'
+titlesuffix: Azure Load Balancer
 description: In diesem Tutorial wird gezeigt, wie Sie die Portweiterleitung per Azure Load Balancer konfigurieren, um in einem virtuellen Azure-Netzwerk eine Verbindung mit VMs zu erstellen.
 services: load-balancer
 documentationcenter: na
 author: KumudD
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
 Customer intent: As an IT administrator, I want to configure port forwarding in Azure Load Balancer to remotely connect to VMs in an Azure virtual network.
-ms.assetid: ''
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/31/18
+ms.date: 12/11/18
 ms.author: kumud
-ms.custom: mvc
-ms.openlocfilehash: eac0636af1b46912897a4c93f86477c46299bc0f
-ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
+ms.custom: seodec18
+ms.openlocfilehash: e3431ff7ee6991e5af3ecab0e734cc587009dcde
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34757717"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53273522"
 ---
-# <a name="tutorial-configure-port-fowarding-in-load-balancer-using-the-azure-portal"></a>Tutorial: Konfigurieren der Portweiterleitung im Load Balancer mit dem Azure-Portal
+# <a name="tutorial-configure-port-forwarding-in-azure-load-balancer-using-the-portal"></a>Tutorial: Konfigurieren der Portweiterleitung im Azure Load Balancer mit dem Portal
 
-Bei der Portweiterleitung per Azure Load Balancer können Sie eine Remoteverbindung mit VMs im virtuellen Azure-Netzwerk herstellen, indem Sie die öffentliche IP-Adresse des Load Balancers über die Portnummer verwenden. In diesem Tutorial erfahren Sie, wie Sie die Portweiterleitung in Azure Load Balancer konfigurieren und Folgendes durchführen:
+Mit der Portweiterleitung können Sie die Verbindung mit virtuellen Computern (VMs) in einem virtuellen Azure-Netzwerk mithilfe einer öffentlichen IP-Adresse und Portnummer von Azure Load Balancer herstellen. 
 
+In diesem Tutorial richten Sie die Portweiterleitung auf einer Azure Load Balancer-Instanz ein. Folgendes wird vermittelt:
 
 > [!div class="checklist"]
-> * Erstellen einer Azure Load Balancer-Instanz
-> * Erstellen des Integritätstests für den Load Balancer
-> * Erstellen von Load Balancer-Regeln
-> * Erstellen von virtuellen Computern und Installieren des IIS-Servers
-> * Hinzufügen von virtuellen Computern zu einem Load Balancer
-> * Erstellen von NAT-Eingangsregeln für einen Load Balancer
-> * Verfolgen der Portweiterleitung in Aktion
-
+> * Erstellen eines öffentlichen Load Balancers im Tarif „Standard“ für den Netzwerkdatenverkehr über virtuelle Computer. 
+> * Erstellen eines virtuellen Netzwerks und virtueller Computer mit einer Netzwerksicherheitsgruppen-Regel (NSG). 
+> * Hinzufügen der VMs zum Back-End-Adresspool des Lastenausgleichs.
+> * Erstellen eines Integritätstests und von Datenverkehrsregeln für den Lastenausgleich.
+> * Erstellen von NAT-Eingangsregeln für die Portweiterleitung für den Lastenausgleich.
+> * Installieren und Konfigurieren von IIS auf den virtuellen Computern zum Anzeigen von Lastenausgleich und Portweiterleitung in Aktion.
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen. 
 
-## <a name="log-in-to-azure"></a>Anmelden an Azure
+Melden Sie sich für alle Schritte in diesem Tutorial im Azure-Portal unter [https://portal.azure.com](https://portal.azure.com) an.
 
-Melden Sie sich unter [http://portal.azure.com](http://portal.azure.com) beim Azure-Portal an.
+## <a name="create-a-standard-load-balancer"></a>Erstellen eines Load Balancers im Tarif „Standard“
 
-## <a name="create-a-standard-load-balancer"></a>Einrichten eines Load Balancers im Tarif „Standard“
+Erstellen Sie zunächst einen öffentlichen Load Balancer im Tarif „Standard“, der den Datenverkehr über virtuelle Computer ausgleichen kann. Ein Load Balancer im Tarif „Standard“ unterstützt nur eine öffentliche Standard-IP-Adresse. Wenn Sie einen Load Balancer im Tarif „Standard“ erstellen, müssen Sie dafür auch eine neue öffentliche Standard-IP-Adresse erstellen, die als Lastenausgleichs-Front-End konfiguriert und standardmäßig als **LoadBalancerFrontend** benannt ist. 
 
-In diesem Abschnitt erstellen Sie einen öffentlichen Load Balancer für den Lastenausgleich virtueller Computer. Ein Load Balancer im Standard-Tarif unterstützt nur eine öffentliche Standard-IP-Adresse. Wenn Sie einen Load Balancer im Standard-Tarif (Load Balancer Standard) erstellen, müssen Sie dafür auch eine neue öffentliche Standard-IP-Adresse erstellen, die als Front-End konfiguriert ist. Dieses hat standardmäßig den Namen *LoadBalancerFrontend*. 
-
-1. Klicken Sie links oben auf dem Bildschirm auf **Ressource erstellen** > **Netzwerk** > **Load Balancer**.
-2. Geben Sie auf der Seite **Lastenausgleich erstellen** folgende Werte für den Lastenausgleich ein:
-    - *myLoadBalancer*: Name des Lastenausgleichs
-    - **Standard**: SKU-Version des Load Balancers
-    - **Öffentlich**: Lastenausgleichstyp
-    - *myPublicIP*: **neue** öffentliche IP-Adresse, die Sie erstellen
-    - *myResourceGroupSLB*: Name der **neuen** Ressourcengruppe, die Sie erstellen
-    - **westeurope**: Standort
-3. Klicken Sie auf **Erstellen**, um den Lastenausgleich zu erstellen.
-
-![Einrichten eines Load Balancers](./media/load-balancer-standard-public-portal/1a-load-balancer.png)
+1. Wählen Sie oben links im Portal **Ressource erstellen** > **Netzwerk** > **Load Balancer**.
    
-## <a name="create-load-balancer-resources"></a>Erstellen von Lastenausgleichsressourcen
+1. Geben Sie im Bereich **Lastenausgleich erstellen** diese Werte ein (bzw. wählen Sie sie aus):
+   
+   - **Name**: Geben Sie *MyLoadBalancer* ein.
+   - **Typ**: Wählen Sie **Öffentlich** aus. 
+   - **SKU**: Wählen Sie **Standard** aus.
+   - **Öffentliche IP-Adresse**: Wählen Sie **Neu erstellen** aus, und geben Sie *MyPublicIP* in das Textfeld ein.
+   - **Konfigurieren der öffentlichen IP-Adresse** > **Verfügbarkeitszone**: Wählen Sie **Zonenredundant** aus.
+   - **Ressourcengruppe**: Wählen Sie **Neu erstellen** aus, geben Sie *MyResourceGroupLB* ein, und wählen Sie anschließend **OK** aus. 
+   - **Standort**: Wählen Sie **Europa, Westen** aus. 
+     
+     >[!NOTE]
+     >Stellen Sie sicher, dass Sie Ihren Load Balancer und alle seine Ressourcen an einem Standort erstellen, der Verfügbarkeitszonen unterstützt. Weitere Informationen siehe [Regionen, die Verfügbarkeitszonen unterstützen](../availability-zones/az-overview.md#regions-that-support-availability-zones). 
+   
+1. Klicken Sie auf **Erstellen**.
+   
+![Einrichten eines Load Balancers](./media/tutorial-load-balancer-port-forwarding-portal/1-load-balancer.png)
 
-In diesem Abschnitt konfigurieren Sie Lastenausgleichseinstellungen für einen Back-End-Adresspool und einen Integritätstest. Außerdem geben Sie Lastenausgleichsregeln an.
+## <a name="create-and-configure-back-end-servers"></a>Erstellen und Konfigurieren von Back-End-Servern
 
-### <a name="create-a-backend-address-pool"></a>Erstellen eines Back-End-Adresspools
+Erstellen Sie ein virtuelles Netzwerk mit zwei virtuellen Computern, und fügen Sie die VMs dem Back-End-Pool Ihres Load Balancers hinzu. 
 
-Zum Verteilen von Datenverkehr auf die virtuellen Computer enthält ein Back-End-Adresspool die IP-Adressen der virtuellen NICs, die mit dem Load Balancer verbunden sind. Erstellen Sie den Back-End-Adresspool *myBackendPool* mit *VM1* und *VM2*.
+### <a name="create-a-virtual-network"></a>Erstellen eines virtuellen Netzwerks
 
-1. Klicken Sie im linken Menü auf **Alle Ressourcen** und dann in der Ressourcenliste auf **myLoadBalancer**.
-2. Klicken Sie unter **Einstellungen** auf **Back-End-Pools** und anschließend auf **Hinzufügen**.
-3. Geben Sie auf der Seite **Back-End-Pool hinzufügen** die Zeichenfolge *myBackEndPool* als Namen für Ihren Back-End-Pool ein, und klicken Sie anschließend auf **OK**.
+1. Wählen Sie oben links im Portal **Ressource erstellen** > **Netzwerk** > **Virtuelles Netzwerk**.
+   
+1. Geben Sie im Bereich **Virtuelles Netzwerk erstellen** diese Werte ein (bzw. wählen Sie sie aus):
+   
+   - **Name**: Geben Sie *MyVNet* ein.
+   - **Ressourcengruppe**: Öffnen Sie die Dropdownliste **Vorhandene auswählen**, und wählen Sie **MyResourceGroupLB** aus. 
+   - **Subnetz** > **Name**: Geben Sie *MyBackendSubnet* ein.
+   
+1. Klicken Sie auf **Erstellen**.
+
+   ![Erstellen eines virtuellen Netzwerks](./media/tutorial-load-balancer-port-forwarding-portal/2-load-balancer-virtual-network.png)
+
+### <a name="create-vms-and-add-them-to-the-load-balancer-back-end-pool"></a>Erstellen von VMs und Hinzufügen zum Back-End-Pool des Lastenausgleichs
+
+1. Wählen Sie oben links im Portal die Option **Ressource erstellen** > **Compute** > **Windows Server 2016 Datacenter**. 
+   
+1. Geben Sie unter **Virtuellen Computer erstellen** auf der Registerkarte **Grundlagen** die folgenden Werte ein (bzw. wählen Sie sie aus):
+   - **Abonnement** > **Ressourcengruppe**: Öffnen Sie die Dropdownliste, und wählen Sie **MyResourceGroupLB** aus.
+   - **Name des virtuellen Computers**: Geben Sie *MyVM1* ein.
+   - **Region**: Wählen Sie **Europa, Westen** aus. 
+   - **Benutzername**: Geben Sie *azureuser* ein.
+   - **Kennwort**: Geben Sie *Azure1234567* ein. 
+     Geben Sie das Kennwort im Feld **Kennwort bestätigen** noch einmal ein.
+   
+1. Wählen Sie die Registerkarte **Netzwerk** aus, oder wählen Sie **Weiter: Datenträger** und anschließend **Weiter: Netzwerk** aus. 
+   
+   Stellen Sie sicher, dass Folgendes ausgewählt ist:
+   - **Virtuelles Netzwerk**: **MyVNet**
+   - **Subnetz**: **MyBackendSubnet**
+   
+1. Wählen Sie auf der Seite **Öffentliche IP-Adresse erstellen** unter **Öffentliche IP-Adresse** **Neue erstellen**, **Standard** aus, und wählen Sie dann **OK** aus. 
+   
+1. Wählen Sie zum Erstellen einer neuen Netzwerksicherheitsgruppe (NSG) – einer Art Firewall – unter **Netzwerksicherheitsgruppe** die Option **Erweitert** aus. 
+   1. Wählen Sie im Feld **Netzwerksicherheitsgruppe konfigurieren** die Option **Neu erstellen**. 
+   1. Geben Sie *MyNetworkSecurityGroup* ein, und wählen Sie **OK**. 
+   
+   >[!NOTE]
+   >Beachten Sie, dass die NSG bereits standardmäßig über eine Eingangsregel zum Öffnen von Port 3389 – dem Remote Desktop Port (RDP) – verfügt.
+   
+1. Fügen Sie den virtuellen Computer einem Lastenausgleichs-Back-End-Pool hinzu, den Sie erstellen:
+   
+   1. Wählen Sie unter **LASTENAUSGLEICH** > **Diese VM hinter einer vorhandenen Lastenausgleichslösung platzieren?** **Ja** aus. 
+   1. Öffnen Sie die Dropdownliste für **Optionen für den Lastenausgleich**, und wählen Sie **Azure Load Balancer** aus. 
+   1. Öffnen Sie die Dropdownliste für **Load Balancer auswählen**, und wählen Sie **MyLoadBalancer** aus. 
+   1. Wählen Sie unter **Back-End-Pool auswählen** **Neuen erstellen** aus, geben Sie dann *MyBackendPool* ein, und wählen Sie **Erstellen** aus. 
+   
+   ![Erstellen eines virtuellen Netzwerks](./media/tutorial-load-balancer-port-forwarding-portal/create-vm-networking.png)
+   
+1. Wählen Sie die Registerkarte **Verwaltung** oder **Weiter** > **Verwaltung**. Legen Sie unter **Überwachung** die Option **Startdiagnose** auf **Aus** fest.
+   
+1. Klicken Sie auf **Überprüfen + erstellen**.
+   
+1. Überprüfen Sie die Einstellungen, und wählen Sie bei erfolgreicher Überprüfung **Erstellen** aus. 
+
+1. Führen Sie die Schritte zum Erstellen einer zweiten VM mit dem Namen *MyVM2* aus, und verwenden Sie für alle anderen Einstellungen die Werte wie für MyVM1. 
+   
+   Öffnen Sie die Dropdownliste für **Netzwerksicherheitsgruppe** nach der Auswahl von **Erweitert**, und wählen Sie die **MyNetworkSecurityGroup** aus, die Sie bereits erstellt haben. 
+   
+   Stellen Sie sicher, dass unter **Back-End-Pool auswählen** **MyBackendPool** ausgewählt ist. 
+
+### <a name="create-an-nsg-rule-for-the-vms"></a>Erstellen einer NSG-Regel für die VMs
+
+Erstellen Sie eine Netzwerksicherheitsgruppen-Regel (NSGS) für die virtuellen Computer, um eingehende Internetverbindungen (HTTP) zuzulassen.
+
+>[!NOTE]
+>Standardmäßig verfügt die NSG bereits über eine Regel zum Öffnen von Port 3389 – dem Remote Desktop Port (RDP).
+
+1. Wählen Sie im linken Menü die Option **Alle Ressourcen**. Wählen Sie in der Ressourcenliste in der Ressourcengruppe **MyResourceGroupLB** die Option **MyNetworkSecurityGroup**.
+   
+1. Wählen Sie unter **Einstellungen** die Option **Eingangssicherheitsregeln** und dann **Hinzufügen**.
+   
+1. Geben Sie im Dialogfeld **Eingangssicherheitsregel hinzufügen** die folgenden Werte ein (bzw. wählen Sie sie aus):
+   
+   - **Quelle**: Wählen Sie **Diensttag** aus.  
+   - **Quelldiensttag**: Wählen Sie **Internet** aus. 
+   - **Zielportbereiche**: Geben Sie *80* ein.
+   - **Protokoll**: Wählen Sie **TCP** aus. 
+   - **Aktion**: Wählen Sie **Zulassen**.  
+   - **Priorität**: Geben Sie *100* ein. 
+   - **Name**: Geben Sie *MyHTTPRule* ein. 
+   - **Beschreibung:** Geben Sie *HTTP zulassen* ein. 
+   
+1. Wählen Sie **Hinzufügen**. 
+   
+   ![Erstellen einer NSG-Regel](./media/tutorial-load-balancer-port-forwarding-portal/8-load-balancer-nsg-rules.png)
+   
+## <a name="create-load-balancer-resources"></a>Erstellen von Load Balancer-Ressourcen
+
+In diesem Abschnitt überprüfen Sie den Load Balancer-Back-End-Pool und konfigurieren einen Integritätstest sowie Datenverkehrsregeln für den Lastenausgleich.
+
+### <a name="view-the-back-end-address-pool"></a>Anzeigen des Back-End-Adresspools
+
+Zum Verteilen von Datenverkehr auf die virtuellen Computer verwendet der Load Balancer einen Back-End-Adresspool, der die IP-Adressen der virtuellen Netzwerkschnittstellen (NICs) enthält, die mit dem Load Balancer verbunden sind. 
+
+Sie haben Ihren Load Balancer-Back-End-Pool erstellt und virtuelle Computer hinzugefügt, als Sie die virtuellen Computer erstellt haben. Sie können auch auf der Load Balancer-Seite **Back-End-Pools** Back-End-Pools erstellen und virtuelle Computer hinzufügen oder entfernen. 
+
+1. Wählen Sie im Menü auf der linken Seite die Option **Alle Ressourcen** und dann in der Ressourcenliste die Option **MyLoadBalancer**.
+   
+1. Wählen Sie unter **Einstellungen** die Option **Back-End-Pools**.
+   
+1. Erweitern Sie auf der Seite **Back-End-Pools** den Eintrag **MyBackendPool**, und stellen Sie sicher, dass sowohl **VM1** als auch **VM2** aufgeführt ist.
+
+1. Wählen Sie **MyBackendPool** aus. 
+   
+   Auf der Seite **MyBackendPool** können Sie unter **VIRTUELLER COMPUTER** und **IP-ADRESSE** dem Pool verfügbare VMs hinzufügen oder davon entfernen.
+
+Sie können neue Back-End-Pools durch Auswahl von **Hinzufügen** auf der Seite **Back-End-Pools** erstellen.
 
 ### <a name="create-a-health-probe"></a>Erstellen eines Integritätstests
 
-Damit der Load Balancer den Status Ihrer App überwachen kann, verwenden Sie einen Integritätstest. Abhängig von der Reaktion auf Integritätsüberprüfungen werden der Load Balancer-Rotation durch den Integritätstest dynamisch virtuelle Computer hinzugefügt oder daraus entfernt. Erstellen Sie zur Überwachung der Integrität der virtuellen Computer einen Integritätstest namens *myHealthProbe*.
+Damit der Load Balancer den VM-Status überwachen kann, verwenden Sie einen Integritätstest. Abhängig von der Reaktion auf Integritätsüberprüfungen werden der Load Balancer-Rotation durch den Integritätstest dynamisch virtuelle Computer hinzugefügt oder daraus entfernt. 
 
-1. Klicken Sie im linken Menü auf **Alle Ressourcen** und dann in der Ressourcenliste auf **myLoadBalancer**.
-2. Klicken Sie unter **Einstellungen** auf **Integritätstests** und anschließend auf **Hinzufügen**.
-3. Verwenden Sie folgende Werte, um den Integritätstest zu erstellen:
-    - *myHealthProbe*: Name des Integritätstests
-    - **HTTP**: Protokolltyp
-    - *80*: Portnummer
-    - *15*: Wert für **Intervall** (Sekunden zwischen Testversuchen)
-    - *2*: Wert für **Fehlerschwellenwert** oder Anzahl aufeinander folgender Testfehler, die auftreten müssen, damit ein virtueller Computer als fehlerhaft eingestuft wird
-4. Klicken Sie auf **OK**.
-
-   ![Hinzufügen eines Tests](./media/load-balancer-standard-public-portal/4-load-balancer-probes.png)
+1. Wählen Sie im Menü auf der linken Seite die Option **Alle Ressourcen** und dann in der Ressourcenliste die Option **MyLoadBalancer**.
+   
+1. Wählen Sie unter **Einstellungen** die Option **Integritätstests** und dann **Hinzufügen**.
+   
+1. Geben Sie auf der Seite **Integritätstest hinzufügen** die folgenden Werte ein (bzw. wählen Sie sie aus):
+   
+   - **Name**: Geben Sie *MyHealthProbe* ein.
+   - **Protokoll**: Öffnen Sie die Dropdownliste, und wählen Sie **HTTP** aus. 
+   - **Port**: Geben Sie *80* ein. 
+   - **Pfad**: Übernehmen Sie */* als Standard-URI. Sie können diesen Wert durch einen beliebigen anderen URI ersetzen. 
+   - **Intervall**: Geben Sie *15* ein. Das Intervall ist die Anzahl von Sekunden zwischen Testversuchen.
+   - **Fehlerschwellenwert**: Geben Sie *2* ein. Dieser Wert gibt die Anzahl aufeinander folgender Testfehler an, die auftreten müssen, damit ein virtueller Computer als fehlerhaft eingestuft wird.
+   
+1. Klicken Sie auf **OK**.
+   
+   ![Hinzufügen eines Tests](./media/tutorial-load-balancer-port-forwarding-portal/4-load-balancer-probes.png)
 
 ### <a name="create-a-load-balancer-rule"></a>Erstellen einer Load Balancer-Regel
 
-Mithilfe einer Load Balancer-Regel wird definiert, wie Datenverkehr auf die virtuellen Computer verteilt werden soll. Sie definieren die Front-End-IP-Konfiguration für den eingehenden Datenverkehr und den Back-End-IP-Pool zum Empfangen des Datenverkehrs zusammen mit dem erforderlichen Quell- und Zielport. Erstellen Sie eine Lastenausgleichsregel namens *myLoadBalancerRuleWeb*, die an Port 80 des Front-Ends *FrontendLoadBalancer* lauscht und den Netzwerkdatenverkehr nach erfolgtem Lastenausgleich an den Back-End-Adresspool *myBackEndPool* sendet, wobei ebenfalls der Port 80 verwendet wird. 
+Mit einer Lastenausgleichsregel wird definiert, wie Datenverkehr auf die virtuellen Computer verteilt wird. Die Regel definiert die Front-End-IP-Konfiguration für eingehenden Datenverkehr und den Back-End-IP-Pool zum Empfangen des Datenverkehrs sowie die erforderlichen Quell- und Zielports. 
 
-1. Klicken Sie im linken Menü auf **Alle Ressourcen** und dann in der Ressourcenliste auf **myLoadBalancer**.
-2. Klicken Sie unter **Einstellungen** auf **Lastenausgleichsregeln** und anschließend auf **Hinzufügen**.
-3. Konfigurieren Sie die Lastenausgleichsregel mit folgenden Werten:
-    - *myHTTPRule*: Name der Lastenausgleichsregel
-    - **TCP**: Protokolltyp
-    - *80*: Portnummer
-    - *80*: Back-End-Port
-    - *myBackendPool*: Name des Back-End-Pools
-    - *myHealthProbe*: Name des Integritätstests
-4. Klicken Sie auf **OK**.
-    
-## <a name="create-backend-servers"></a>Erstellen von Back-End-Servern
+Mit der Lastenausgleichsregel **MyLoadBalancerRule** wird über Port 80 des Front-Ends **LoadBalancerFrontEnd** gelauscht. Die Regel sendet Netzwerkdatenverkehr an den Back-End-Adresspool **MyBackendPool** (ebenfalls unter Port 80). 
 
-In diesem Abschnitt erstellen Sie ein virtuelles Netzwerk sowie zwei virtuelle Computer für den Back-End-Pool Ihres Lastenausgleichs und installieren anschließend IIS auf den virtuellen Computern, um die Portweiterleitung per Lastenausgleich zu testen.
+1. Wählen Sie im Menü auf der linken Seite die Option **Alle Ressourcen** und dann in der Ressourcenliste die Option **MyLoadBalancer**.
+   
+1. Wählen Sie unter **Einstellungen** die Option **Lastenausgleichsregeln** und dann **Hinzufügen**.
+   
+1. Geben Sie auf der Seite **Lastenausgleichsregel hinzufügen** die folgenden Werte ein (bzw. wählen Sie sie aus):
+   
+   - **Name**: Geben Sie *MyLoadBalancerRule* ein.
+   - **Protokoll**: Wählen Sie **TCP** aus.
+   - **Port**: Geben Sie *80* ein.
+   - **Back-End-Port**: Geben Sie *80* ein.
+   - **Back-End-Pool**: Wählen Sie **MyBackendPool** aus.
+   - **Integritätstest**: Wählen Sie **MyHealthProbe** aus. 
+   
+1. Klicken Sie auf **OK**.
+   
+  ![Hinzufügen einer Lastenausgleichsregel](./media/tutorial-load-balancer-port-forwarding-portal/5-load-balancing-rules.png)
 
-### <a name="create-a-virtual-network"></a>Erstellen eines virtuellen Netzwerks
-1. Klicken Sie links oben auf dem Bildschirm auf **Neu** > **Netzwerk** > **Virtuelles Netzwerk**, und geben Sie folgende Werte für das virtuelle Netzwerk an:
-    - *myVnet*: Name des virtuellen Netzwerks
-    - *myResourceGroupSLB*: Name der vorhandenen Ressourcengruppe
-    - *myBackendSubnet*: Subnetzname
-2. Klicken Sie auf **Erstellen**, um das virtuelle Netzwerk zu erstellen.
+## <a name="create-an-inbound-nat-port-forwarding-rule"></a>Erstellen von NAT-Eingangsregeln für die Portweiterleitung
 
-    ![Erstellen eines virtuellen Netzwerks](./media/load-balancer-standard-public-portal/2-load-balancer-virtual-network.png)
+Erstellen Sie eine Netzwerkadressübersetzung-Eingangsregel (NAT) für den Lastenausgleich zum Weiterleiten von Datenverkehr von einem bestimmten Port der Front-End-IP-Adresse zu einem bestimmten Port einer Back-End-VM.
 
-### <a name="create-virtual-machines"></a>Erstellen von virtuellen Computern
-
-1. Klicken Sie links oben auf dem Bildschirm auf **Neu** > **Compute** > **Windows Server 2016 Datacenter**, und geben Sie folgende Werte für den virtuellen Computer an:
-    - *myVM1*: Name des virtuellen Computers        
-    - *azureuser*: Name des Administratorbenutzers    
-    - *myResourceGroupSLB*: Wählen Sie für **Ressourcengruppe** die Option **Vorhandene verwenden** und anschließend *myResourceGroupSLB* aus.
-2. Klicken Sie auf **OK**.
-3. Wählen Sie als Größe des virtuellen Computers **DS1_V2** aus, und klicken Sie auf **Auswählen**.
-4. Geben Sie für die VM-Einstellungen folgende Werte ein:
-    -  *myVnet*: Vergewissern Sie sich, dass als virtuelles Netzwerk diese Option ausgewählt ist.
-    - *myBackendSubnet*: Vergewissern Sie sich, dass als Subnetz diese Option ausgewählt ist.
-    - *myNetworkSecurityGroup*: Name der neuen Netzwerksicherheitsgruppe (Firewall), die Sie erstellen müssen
-5. Klicken Sie auf **Deaktiviert**, um die Startdiagnose zu deaktivieren.
-6. Klicken Sie auf **OK**, überprüfen Sie die Einstellungen auf der Seite „Zusammenfassung“, und klicken Sie dann auf **Erstellen**.
-7. Erstellen Sie eine weitere VM namens *VM2* mit *myVnet* als virtuellem Netzwerk, *myBackendSubnet* als Subnetz und *myNetworkSecurityGroup* als Netzwerksicherheitsgruppe, indem Sie die Schritte 1 bis 6 verwenden. 
-
-### <a name="create-nsg-rules"></a>Erstellen von NSG-Regeln
-
-In diesem Abschnitt erstellen Sie NSG-Regeln, um eingehende HTTP- und RDP-Verbindungen zuzulassen.
-
-1. Klicken Sie im linken Menü auf **Alle Ressourcen** und anschließend in der Ressourcenliste auf **myNetworkSecurityGroup** (in der Ressourcengruppe **myResourceGroupSLB**).
-2. Klicken Sie unter **Einstellungen** auf **Eingangssicherheitsregeln** und anschließend auf **Hinzufügen**.
-3. Geben Sie für die Eingangssicherheitsregel *myHTTPRule* folgende Werte ein, um eine eingehende HTTP-Verbindung über den Port 80 zuzulassen:
-    - *Service Tag* für **Quelle**
-    - *Internet* für **Quelldiensttag**
-    - *80* für **Zielportbereiche**
-    - *TCP* für **Protokoll**
-    - *Zulassen* für **Aktion**
-    - *100* für **Priorität**
-    - *myHTTPRule* als Name
-    - *Allow HTTP* als Beschreibung
-4. Klicken Sie auf **OK**.
- 
- ![Erstellen eines virtuellen Netzwerks](./media/load-balancer-standard-public-portal/8-load-balancer-nsg-rules.png)
-5. Wiederholen Sie die Schritte 2 bis 4, um eine weitere Regel namens *myRDPRule* zu erstellen und eine eingehende RDP-Verbindung über den Port 3389 zu ermöglichen. Verwenden Sie dabei die folgenden Werte:
-    - *Service Tag* für **Quelle**
-    - *Internet* für **Quelldiensttag**
-    - *3389* für **Zielportbereiche**
-    - *TCP* für **Protokoll**
-    - *Zulassen* für **Aktion**
-    - *200* für **Priorität**
-    - *myRDPRule* als Name
-    - *Allow RDP* als Beschreibung
-
-### <a name="install-iis-on-vms"></a>Installieren der IIS auf VMs
-
-1. Klicken Sie im linken Menü auf **Alle Ressourcen** und anschließend in der Ressourcenliste auf **myVM1** (in der Ressourcengruppe *myResourceGroupSLB*).
-2. Klicken Sie auf der Seite **Übersicht** auf **Verbinden**, um eine RDP-Verbindung mit dem virtuellen Computer herzustellen.
-3. Melden Sie mit dem Benutzernamen *azureuser* bei dem virtuellen Computer.
-4. Navigieren Sie auf dem Serverdesktop zu **Windows-Verwaltungsprogramme**>**Windows PowerShell**.
-5. Führen Sie im PowerShell-Fenster die folgenden Befehle aus, um den IIS-Server zu installieren, die Standarddatei „iisstart.htm“ zu entfernen und dann eine neue Datei „iisstart.htm“ hinzuzufügen, die den Namen des virtuellen Computers enthält:
-
-   ```azurepowershell-interactive
-    
-    # install IIS server role
-    Install-WindowsFeature -name Web-Server -IncludeManagementTools
-    
-    # remove default htm file
-     remove-item  C:\inetpub\wwwroot\iisstart.htm
-    
-    # Add a new htm file that displays server name
-     Add-Content -Path "C:\inetpub\wwwroot\iisstart.htm" -Value $("Hello World from" + $env:computername)
-   ```
-6. Schließen Sie die RDP-Sitzung mit *myVM1*.
-7. Wiederholen Sie die Schritte 1 bis 6, um IIS und die aktualisierte Datei „iisstart.htm“ auf *myVM2* zu installieren.
-
-## <a name="add-vms-to-the-backend-address-pool"></a>Hinzufügen von VMs zum Back-End-Adresspool
-
-Fügen Sie zum Verteilen von Datenverkehr auf die VMs die virtuellen Computer *VM1* und *VM2* dem zuvor erstellten Back-End-Adresspool *myBackendPool* hinzu. Der Back-End-Pool enthält die IP-Adressen der virtuellen Netzwerkschnittstellenkarten, die mit dem Load Balancer verbunden sind.
-
-1. Klicken Sie im linken Menü auf **Alle Ressourcen** und dann in der Ressourcenliste auf **myLoadBalancer**.
-2. Klicken Sie unter **Einstellungen** auf **Back-End-Pools** und dann in der Liste des Back-End-Pools auf **myBackendPool**.
-3. Gehen Sie auf der Seite **myBackendPool** wie folgt vor:
-    - Klicken Sie auf **+ Zielnetzwerk-IP-Konfiguration hinzufügen**, um die virtuellen Computer (*myVM1* und *myVM2*), die Sie erstellt haben, dem Back-End-Pool hinzuzufügen.
-    - Klicken Sie auf **OK**.
-4. Vergewissern Sie sich, dass in der Back-End-Pool-Einstellung Ihres Load Balancers beide virtuellen Computer (**VM1** und **VM2**) angezeigt werden.
-
-## <a name="create-inbound-nat-rules"></a>Erstellen von NAT-Eingangsregeln
-Mit Load Balancer können Sie eine Regel für die Netzwerkadressenübersetzung für eingehenden Datenverkehr erstellen, um den Datenverkehr von einem bestimmten Port einer Front-End-IP-Adresse auf einen bestimmten Port einer Back-End-Instanz im virtuellen Netzwerk zu übertragen.
-
-Erstellen Sie eine NAT-Eingangsregel, um Datenverkehr per Portweiterleitung von den Front-End-Ports des Lastenausgleichs an Port 3389 für die Back-End-VMs weiterzuleiten.
-
-1. Klicken Sie im linken Menü auf **Alle Ressourcen** und dann in der Ressourcenliste auf **myLoadBalancer**.
-2. Klicken Sie unter **Einstellungen** auf **NAT-Eingangsregeln** und dann in der Liste des Back-End-Pools auf **myBackendPool**.
-3. Geben Sie auf der Seite **NAT-Regel für eingehenden Datenverkehr hinzufügen** die folgenden Werte ein:
-    - Geben Sie für die NAT-Regel den Namen *myNATRuleRDPVM1* ein.
-    - Geben Sie *4221* als Port ein.
-    - Wählen Sie für **Virtueller Zielcomputer** in der Dropdownliste die Option *myVM1*.
-    - Klicken Sie für **Portzuordnung** auf „Benutzerdefiniert“, und geben Sie dann für **Zielport** die Zahl **3389** ein.
-    - Klicken Sie auf **OK**.
-4. Wiederholen Sie die Schritte 2 und 3, um NAT-Eingangsregeln mit dem Namen *myNATRuleRDPVM2* für den virtuellen Computer *myVM2* zu erstellen, indem Sie den Front-End-Port *4222* verwenden.
+1. Wählen Sie im Menü auf der linken Seite die Option **Alle Ressourcen** und dann in der Ressourcenliste die Option **MyLoadBalancer** aus.
+   
+1. Wählen Sie unter **Einstellungen** die Option **NAT-Eingangsregeln** und dann **Hinzufügen** aus. 
+   
+1. Geben Sie auf der Seite **NAT-Regel für eingehenden Datenverkehr hinzufügen** die folgenden Werte ein (bzw. wählen Sie sie aus):
+   
+   - **Name**: Geben Sie *MyNATRuleVM1* ein.
+   - **Port**: Geben Sie *4221* ein.
+   - **Virtueller Zielcomputer**: Wählen Sie **MyVM1** aus der Dropdownliste aus.
+   - **Portzuordnung**: Wählen Sie **Benutzerdefiniert** aus.
+   - **Zielport**: Geben Sie *3389* ein.
+   
+1. Klicken Sie auf **OK**.
+   
+1. Wiederholen Sie die Schritte zum Hinzufügen einer NAT-Eingangsregel mit dem Namen *MyNATRuleVM2*mit **Port**: *4222* und **Virtueller Zielcomputer**: **MyVM2**.
 
 ## <a name="test-the-load-balancer"></a>Testen des Lastenausgleichs
-1. Ermitteln Sie auf dem Bildschirm **Übersicht** die öffentliche IP-Adresse für den Load Balancer. Klicken Sie auf **Alle Ressourcen** und anschließend auf **myPublicIP**.
 
-2. Kopieren Sie die öffentliche IP-Adresse, und fügen Sie sie in die Adressleiste des Browsers ein. Die Standardseite des IIS-Webservers wird im Browser angezeigt.
+In diesem Abschnitt installieren Sie Internetinformationsdienste (Internet Information Services, IIS) auf den Back-End-Servern und passen die Standardwebseite an, um den Computernamen anzuzeigen. Dann testen Sie mit der öffentlichen IP-Adresse den Lastenausgleich. 
 
-      ![IIS-Webserver](./media/tutorial-load-balancer-standard-zonal-portal/load-balancer-test.png)
+Jede Back-End-VM stellt eine andere Version der IIS-Standardwebseite bereit, damit Sie die Load Balancer-Verteilungsanforderungen zwischen den beiden VMs anzeigen können.
 
-Sie können eine erzwungene Aktualisierung Ihres Webbrowsers durchführen, um zu verfolgen, wie der Load Balancer den Datenverkehr auf die drei virtuellen Computer verteilt, auf denen Ihre App ausgeführt wird.
+### <a name="connect-to-the-vms-with-rdp"></a>Herstellen einer Verbindung mit den virtuellen Computern per RDP
+
+Stellen Sie über Remotedesktop (RDP) mit jedem virtuellen Computer eine Verbindung her. 
+
+1. Wählen Sie im Portal im Menü auf der linken Seite die Option **Alle Ressourcen**. Wählen Sie in der Ressourcenliste die einzelnen VMs in der Ressourcengruppe **MyResourceGroupLB** aus.
+   
+1. Wählen Sie auf der Seite **Übersicht** die Option **Verbinden** und dann **RDP-Datei herunterladen**. 
+   
+1. Öffnen Sie die heruntergeladene RDP-Datei, und wählen Sie **Verbinden**.
+   
+1. Wählen Sie auf dem Bildschirm „Windows-Sicherheit“ die Option **Weitere Optionen** und dann **Anderes Konto verwenden**. 
+   
+   Geben Sie den Benutzernamen *azureuser* und das Kennwort *Azure1234567* ein, und wählen Sie **OK**.
+   
+1. Wählen Sie für alle Eingabeaufforderungen zu Zertifikaten die Antwort **Ja**. 
+   
+   Der VM-Desktop wird in einem neuen Fenster geöffnet. 
+
+### <a name="install-iis-and-replace-the-default-iis-web-page"></a>Installieren von IIS und Ersetzen der IIS-Standardwebseite 
+
+Verwenden Sie PowerShell, um IIS zu installieren und die IIS-Standardwebseite durch eine Seite zu ersetzen, die den Namen der VM anzeigt.
+
+1. Starten Sie auf MyVM1 und MyVM2 **Windows PowerShell** über das Menü **Start**. 
+
+2. Führen Sie die folgenden Befehle aus, um IIS zu installieren und die IIS-Standardwebseite zu ersetzen:
+   
+   ```powershell-interactive
+    # Install IIS
+      Install-WindowsFeature -name Web-Server -IncludeManagementTools
+    
+    # Remove default htm file
+     remove-item  C:\inetpub\wwwroot\iisstart.htm
+    
+    #Add custom htm file that displays server name
+     Add-Content -Path "C:\inetpub\wwwroot\iisstart.htm" -Value $("Hello World from " + $env:computername)
+    
+   ```
+   
+1. Schließen Sie die RDP-Verbindungen mit MyVM1 und MyVM2, indem Sie **Trennen** wählen. Fahren Sie die VMs nicht herunter.
+
+### <a name="test-load-balancing"></a>Testen des Lastenausgleichs
+
+1. Kopieren Sie im Portal auf der Seite **Übersicht** für **MyLoadBalancer** unter **Öffentliche IP-Adresse** die öffentliche IP-Adresse. Zeigen Sie mit der Maus auf die Adresse, und wählen Sie das Symbol **Kopieren**, um sie zu kopieren. In diesem Beispiel lautet sie **40.67.218.235**. 
+   
+1. Fügen Sie die private IP-Adresse (*40.67.218.235*) des Load Balancers in die Adresszeile des Internetbrowsers ein (bzw. geben Sie sie ein). 
+   
+   Die benutzerdefinierte IIS-Webserver-Standardseite wird im Browser angezeigt. Die Nachricht lautet entweder **Hello World from MyVM1** oder **Hello World from MyVM2**.
+   
+   ![Neue IIS-Standardseite](./media/tutorial-load-balancer-port-forwarding-portal/9-load-balancer-test.png) 
+   
+1. Aktualisieren Sie den Browser, um zu verfolgen, wie der Load Balancer den Datenverkehr auf die VMs verteilt. Die Seite **MyVM1** und die Seite **MyVM2** werden im Wechsel angezeigt, während der Load Balancer die Anforderungen auf die Back-End-VMs verteilt.
+   
+   >[!NOTE]
+   >Sie müssen vielleicht zwischen Wiederholungsversuchen Ihren Browsercache leeren oder ein neues Browserfenster öffnen.
 
 ## <a name="test-port-forwarding"></a>Testen der Portweiterleitung
-Bei der Portweiterleitung können Sie eine Remotedesktopverbindung mit den VMs im Back-End-Adresspool herstellen, indem Sie die IP-Adresse des Load Balancers und den Front-End-Portwert verwenden, die im vorherigen Schritt definiert wurden.
 
-1. Ermitteln Sie auf dem Bildschirm **Übersicht** die öffentliche IP-Adresse für den Load Balancer. Klicken Sie auf **Alle Ressourcen** und anschließend auf **myPublicIP**.
-2. Erstellen Sie mit dem folgenden Befehl auf Ihrem lokalen Computer eine Remotedesktopsitzung mit dem virtuellen Computer *myVM2*. Ersetzen Sie `<publicIpAddress>` durch die im vorherigen Schritt zurückgegebene IP-Adresse.
+Mit Portweiterleitung können Sie mit der IP-Adresse des Load Balancers und dem in der NAT-Regel definierten Front-End-Portwert eine Remotedesktopverbindung mit einer Back-End-VM herstellen. 
 
-    ```
-    mstsc /v:<publicIpAddress>:4222
-    ```
+1. Kopieren Sie im Portal auf der Seite **Übersicht** für **MyLoadBalancer** die öffentliche IP-Adresse. Zeigen Sie mit der Maus auf die Adresse, und wählen Sie das Symbol **Kopieren**, um sie zu kopieren. In diesem Beispiel lautet sie **40.67.218.235**. 
+   
+1. Öffnen Sie eine Eingabeaufforderung, und erstellen Sie mit dem folgenden Befehl mithilfe der öffentlichen IP-Adresse des Lastenausgleichs und des Front-End-Ports, den Sie in der NAT-Regel der VM definiert haben, eine Remotedesktopsitzung mit MyVM2. 
+   
+   ```
+   mstsc /v:40.67.218.235:4222
+   ```
   
-3. Öffnen Sie die heruntergeladene RDP-Datei. Wenn Sie dazu aufgefordert werden, wählen Sie **Verbinden** aus.
+1. Öffnen Sie die heruntergeladene RDP-Datei, und wählen Sie **Verbinden** aus.
+   
+1. Wählen Sie auf dem Bildschirm „Windows-Sicherheit“ die Option **Weitere Optionen** und dann **Anderes Konto verwenden**. 
+   
+   Geben Sie den Benutzernamen *azureuser* und das Kennwort *Azure1234567* ein, und wählen Sie **OK**.
+   
+1. Wählen Sie für alle Eingabeaufforderungen zu Zertifikaten die Antwort **Ja**. 
+   
+   Der MyVM2-Desktop wird in einem neuen Fenster geöffnet. 
 
-4. Geben Sie den Benutzernamen und das Kennwort ein, wie beim Erstellen des virtuellen Computers angegeben. (Unter Umständen müssen Sie auf **Weitere Optionen** und dann auf **Anderes Konto verwenden** klicken, um die Anmeldeinformationen anzugeben, die Sie beim Erstellen des virtuellen Computers eingegeben haben.) Klicken Sie anschließend auf **OK**. Während des Anmeldevorgangs wird unter Umständen eine Zertifikatwarnung angezeigt. Wählen Sie **Ja** aus, um mit dem Herstellen der Verbindung fortzufahren.
- 
-   Die Herstellung der RDP-Verbindung ist erfolgreich, da der Datenverkehr laut NAT-Eingangsregel *myNATRuleRDPVM2* vom Front-End-Port **4222** des Load Balancers so konfiguriert ist, dass eine Umleitung an Port 3389 des virtuellen Computers *myVM2* erfolgt.
+Die RDP-Verbindung ist erfolgreich, weil die NAT-Eingangsregel **MyNATRuleVM2** den Datenverkehr über den Front-End-Port 4222 des Load Balancers an den MyVM2-Port 3389 (den RDP-Port) leitet.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Löschen Sie die Ressourcengruppe, den Lastenausgleich und alle dazugehörigen Ressourcen, wenn Sie sie nicht mehr benötigen. Wählen Sie hierzu die Ressourcengruppe aus, die den Lastenausgleich enthält, und klicken Sie auf **Löschen**.
+Öffnen Sie die Ressourcengruppe **MyResourceGroupLB**, und wählen Sie die Option **Ressourcengruppe löschen**, um den Load Balancer und alle zugehörigen Ressourcen zu löschen, sofern Sie sie nicht mehr benötigen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie einen Load Balancer Standard erstellt, virtuelle Computer hinzugefügt, die Datenverkehrsregel für den Lastenausgleich sowie einen Integritätstest konfiguriert und den Lastenausgleich getestet. Außerdem haben Sie eine VM aus der Gruppe mit Lastenausgleich entfernt und sie wieder dem Back-End-Adresspool hinzugefügt. Weitere Informationen zu Azure Load Balancer finden Sie in den Tutorials zu Azure Load Balancer.
+In diesem Tutorial haben Sie einen öffentlichen Load Balancer im Tarif „Standard“ erstellt. Sie haben Netzwerkressourcen, Back-End-Server, einen Integritätstest und Regeln für den Load Balancer erstellt und konfiguriert. Sie haben IIS auf den Back-End-VMs installiert und die öffentliche IP-Adresse des Load Balancers verwendet, um den Load Balancer zu testen. Sie haben die Portweiterleitung von einem festgelegten Port des Load Balancers zu einem Port auf einer Back-End-VM getestet. 
+
+Weitere Informationen zu Azure Load Balancer finden Sie in den weiteren Tutorials zum Lastenausgleich.
 
 > [!div class="nextstepaction"]
 > [Azure Load Balancer-Tutorials](tutorial-load-balancer-standard-public-zone-redundant-portal.md)

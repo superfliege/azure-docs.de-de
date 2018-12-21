@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Bereitstellen dedizierter Azure-HSMs in einem vorhandenen virtuellen Netzwerk mithilfe der Befehlszeilenschnittstelle | Microsoft-Dokumentation'
-description: In diesem Tutorial erfahren Sie, wie Sie ein dediziertes HSM mithilfe der Befehlszeilenschnittstelle bereitstellen.
+title: 'Tutorial: Bereitstellen in einem vorhandenen virtuellen Netzwerk mithilfe von Azure CLI – Azure Dedicated HSM | Microsoft-Dokumentation'
+description: In diesem Tutorial erfahren Sie, wie Sie ein dediziertes HSM mithilfe der Befehlszeilenschnittstelle in einem vorhandenen virtuellen Netzwerk bereitstellen.
 services: dedicated-hsm
 documentationcenter: na
 author: barclayn
@@ -8,19 +8,19 @@ manager: mbaldwin
 editor: ''
 ms.service: key-vault
 ms.topic: tutorial
-ms.custom: mvc
+ms.custom: mvc, seodec18
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/28/2018
+ms.date: 12/07/2018
 ms.author: barclayn
-ms.openlocfilehash: ca30dc9d86db8faabfdd3791b74b9f86c9480ea5
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: d8171a3c506ed53c986db6cddd959411f0a146aa
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52679646"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53080315"
 ---
-# <a name="tutorial--deploying-hsms-into-an-existing-virtual-network-using-cli"></a>Tutorial: Bereitstellen von HSMs in einem vorhandenen virtuellen Netzwerk mithilfe der Befehlszeilenschnittstelle
+# <a name="tutorial-deploying-hsms-into-an-existing-virtual-network-using-cli"></a>Tutorial: Bereitstellen von HSMs in einem vorhandenen virtuellen Netzwerk mithilfe der Befehlszeilenschnittstelle
 
 Der Azure-Dienst für dedizierte HSMs stellt ein physisches Gerät für die Verwendung durch einen Kunden mit umfassender administrativer Kontrolle und vollständiger Verwaltungsverantwortung bereit. Aufgrund der Bereitstellung physischer Geräte muss Microsoft die Zuordnung dieser Geräte steuern, um eine effektive Kapazitätsverwaltung zu gewährleisten. Deshalb steht der Dienst für dedizierte HSMs innerhalb eines Azure-Abonnements standardmäßig nicht für die Ressourcenbereitstellung zur Verfügung. Azure-Kunden, die Zugriff auf den Dienst für dedizierte HSMs benötigen, müssen bei ihrem Microsoft-Kundenbetreuer die Registrierung für den Dienst für dedizierte HSMs beantragen. Die Bereitstellung ist erst nach Abschluss dieses Prozesses möglich. 
 
@@ -38,7 +38,7 @@ Dieses Tutorial konzentriert sich auf die Integration eines HSM-Paars und des er
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Der Azure-Dienst für dedizierte HSMs ist derzeit nicht im Azure-Portal verfügbar. Sämtliche Interaktionen mit dem Dienst werden über die Befehlszeile oder mithilfe von PowerShell abgewickelt. In diesem Tutorial wird die Befehlszeilenschnittstelle (Command Line Interface, CLI) in Azure Cloud Shell verwendet. Sollten Sie noch nicht mit der Azure-Befehlszeilenschnittstelle vertraut sein, informieren Sie sich [hier](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest) über die ersten Schritte mit Azure CLI 2.0.
+Der Azure-Dienst für dedizierte HSMs ist derzeit nicht im Azure-Portal verfügbar. Sämtliche Interaktionen mit dem Dienst werden über die Befehlszeile oder mithilfe von PowerShell abgewickelt. In diesem Tutorial wird die Befehlszeilenschnittstelle (Command Line Interface, CLI) in Azure Cloud Shell verwendet. Sollten Sie noch nicht mit der Azure-Befehlszeilenschnittstelle vertraut sein, informieren Sie sich hier über die ersten Schritte: [Erste Schritte mit der Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest).
 
 Voraussetzungen:
 
@@ -130,7 +130,7 @@ Nach dem Festlegen der Parameterwerte müssen die Dateien in die Cloud Shell-Dat
 
 Auf der Symbolleiste der Befehlsshell steht eine Upload-/Downloadoption zur Verfügung, mit der Sie die Vorlagen- und die Parameterdatei in Ihre Dateifreigabe hochladen können:
 
-![Abonnementstatus](media/tutorial-deploy-hsm-cli/file-share.png)
+![Dateifreigabe](media/tutorial-deploy-hsm-cli/file-share.png)
 
 Nach dem Hochladen der Dateien können Sie mit der Ressourcenerstellung beginnen. Vergewissern Sie sich vor der Erstellung neuer HSM-Ressourcen, dass bestimmte erforderliche Ressourcen vorhanden sind. Sie benötigen ein virtuelles Netzwerk mit Subnetzbereichen für Compute, HSMs und Gateway. Die folgenden Beispielbefehle zeigen, wie Sie ein solches virtuelles Netzwerk erstellen:
 
@@ -177,7 +177,7 @@ Der Bereitstellungsvorgang dauert ca. 25 bis 30 Minuten, wobei die meiste Zeit f
 
 ![Bereitstellungsstatus](media/tutorial-deploy-hsm-cli/progress-status.png)
 
-Nach erfolgreichem Abschluss des Vorgangs wird Folgendes angezeigt: "provisioningState": "Succeeded". Daraufhin können Sie sich bei Ihrem vorhandenen virtuellen Computer anmelden und sich per SSH vergewissern, dass das HSM-Gerät verfügbar ist.
+Bei erfolgreichem Abschluss der Bereitstellung wird „provisioningState“: „Succeeded“ angezeigt. Daraufhin können Sie sich bei Ihrem vorhandenen virtuellen Computer anmelden und sich per SSH vergewissern, dass das HSM-Gerät verfügbar ist.
 
 ## <a name="verifying-the-deployment"></a>Überprüfen der Bereitstellung
 
@@ -191,7 +191,7 @@ az resource show \
    --ids /subscriptions/$subid/resourceGroups/myRG/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/HSM2
 ```
 
-![Bereitstellungsstatus](media/tutorial-deploy-hsm-cli/progress-status2.png)
+![Bereitstellen der Ausgabe](media/tutorial-deploy-hsm-cli/progress-status2.png)
 
 Die Ressource wird nun auch im [Azure-Ressourcen-Explorer](https://resources.azure.com/) angezeigt.   Erweitern Sie im Explorer auf der linken Seite die Option „Abonnements“, erweitern Sie das Abonnement für dedizierte HSMs, erweitern Sie „Ressourcengruppen“, erweitern Sie die verwendete Ressourcengruppe, und wählen Sie schließlich das Element „Ressourcen“ aus.
 

@@ -1,20 +1,20 @@
 ---
-title: 'Tutorial: Bereitstellen eines Azure Stream Analytics-Auftrags mit CI/CD mithilfe von Azure DevOps Services'
+title: Bereitstellen eines Azure Stream Analytics-Auftrags mit CI/CD mithilfe von Azure DevOps
 description: In diesem Artikel wird beschrieben, wie Sie einen Azure Stream Analytics-Auftrag mit CI/CD mithilfe von Azure DevOps Services bereitstellen.
 services: stream-analytics
 author: su-jie
 ms.author: sujie
-manager: kfile
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: tutorial
-ms.date: 07/10/2018
-ms.openlocfilehash: 0f729725a04b19a513ca92953e997b51e4558884
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.date: 12/07/2018
+ms.custom: seodec18
+ms.openlocfilehash: 7e9ce598dbd8987ab32747f5fa9d14646ed4ee71
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49986264"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53164074"
 ---
 # <a name="tutorial-deploy-an-azure-stream-analytics-job-with-cicd-using-azure-pipelines"></a>Tutorial: Bereitstellen eines Azure Stream Analytics-Auftrags mit CI/CD mithilfe von Azure Pipelines
 In diesem Tutorial wird beschrieben, wie Continuous Integration und Continuous Deployment für einen Azure Stream Analytics-Auftrag mithilfe von Azure-Pipelines eingerichtet werden. 
@@ -55,11 +55,11 @@ Teilen Sie Ihre Anwendungsquelldateien für ein Projekt in Azure DevOps, damit S
 
 2. Wählen Sie in der Ansicht **Synchronisation** in **Team Explorer** unter **Mithilfe von Push in Azure DevOps Services übertragen** die Schaltfläche **Git-Repository veröffentlichen**.
 
-   ![Git-Repository pushen](./media/stream-analytics-tools-visual-studio-cicd-vsts/publishgitrepo.png)
+   ![„Mithilfe von Push in Azure DevOps Services übertragen“, „Git-Repository veröffentlichen“, Schaltfläche](./media/stream-analytics-tools-visual-studio-cicd-vsts/publish-git-repo-devops.png)
 
 3. Überprüfen Sie Ihre E-Mail-Adresse, und wählen Sie in der Dropdownliste **Azure DevOps Services-Domäne** Ihr Konto aus. Geben Sie den Repositorynamen ein, und wählen Sie **Repository veröffentlichen** aus.
 
-   ![Git-Repository pushen](./media/stream-analytics-tools-visual-studio-cicd-vsts/publishcode.png)
+   ![Git-Repository mit Push übertragen, „Repository veröffentlichen“, Schaltfläche](./media/stream-analytics-tools-visual-studio-cicd-vsts/publish-repository-devops.png)
 
     Durch das Veröffentlichen des Repositorys wird in Ihrer Organisation ein neues Projekt mit dem gleichen Namen wie das lokale Repository erstellt. Um das Repository in einem vorhandenen Projekt zu erstellen, klicken Sie neben **Repositoryname** auf **Erweitert**, und wählen Sie ein Projekt aus. Sie können den Code im Browser anzeigen, indem Sie **Im Web anzeigen** auswählen.
  
@@ -73,33 +73,33 @@ Eine Azure Pipelines-Releasepipeline beschreibt einen Workflow, der ein Anwendun
 
 1. Wählen Sie auf der Registerkarte **Build und Release** die Option **Builds** und dann **+Neu** aus.  Wählen Sie **Azure DevOps Services-Git** und **Weiter**.
     
-    ![Quelle auswählen](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-select-source.png)
+    ![Auswählen der DevOps-Git-Quelle in Azure DevOps](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-select-source-devops.png)
 
 2. Klicken Sie unter **Vorlage auswählen** auf **Leerer Prozess**, um mit einer leeren Pipeline zu beginnen.
     
-    ![Auswählen der Buildvorlage](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-select-template.png)
+    ![Auswählen des leeren Prozesses aus Vorlagenoptionen in DevOps](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-select-template-empty-process.png)
 
 3. Aktivieren Sie unter **Trigger** Continuous Integration, indem Sie den Triggerstatus **Continuous Integration aktivieren** auswählen.  Klicken Sie auf **Speichern und in Warteschlange einreihen**, um manuell einen Buildvorgang zu starten. 
     
-    ![Triggerstatus](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-trigger.png)
+    ![Aktivieren des Continuous Integration-Triggerstatus für Jenkins](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-trigger-status-ci.png)
 
 4. Buildvorgänge werden auch beim Pushvorgang oder Einchecken ausgelöst. Wechseln Sie zum Überprüfen des Buildstatus zur Registerkarte **Builds**.  Nachdem Sie überprüft haben, ob der Build erfolgreich ausgeführt wird, müssen Sie eine Releasepipeline festlegen, mit der die Anwendung in einem Cluster bereitgestellt wird. Klicken Sie mit der rechten Maustaste auf die Auslassungszeichen neben der Buildpipeline, und wählen Sie **Bearbeiten** aus.
 
 5.  Geben Sie unter **Aufgaben** für **Agent-Warteschlange** die Zeichenfolge „Hosted“ ein.
     
-    ![Agent-Warteschlange auswählen](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-agent-queue.png) 
+    ![Auswählen der Agent-Warteschlange im Menü „Aufgaben“](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-agent-queue-task.png) 
 
 6. Klicken Sie im Abschnitt **Phase 1** auf **+**, und fügen Sie eine Aufgabe vom Typ **NuGet** hinzu.
     
-    ![NuGet-Aufgabe hinzufügen](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-nuget.png)
+    ![Hinzufügen einer NuGet-Aufgabe zur Agent-Warteschlange](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-add-nuget-task.png)
 
 7. Erweitern Sie den Bereich **Erweitert**, und fügen Sie `$(Build.SourcesDirectory)\packages` zu **Zielverzeichnis** hinzu. Behalten Sie die übrigen Standardwerte für die NuGet-Konfiguration bei.
 
-   ![NuGet-Aufgabe konfigurieren](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-nuget-config.png)
+   ![Konfigurieren der NuGet-Wiederherstellungsaufgabe](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-nuget-restore-config.png)
 
 8. Klicken Sie im Abschnitt **Phase 1** auf **+**, und fügen Sie eine Aufgabe vom Typ **MSBuild** hinzu.
 
-   ![MSBuild-Aufgabe hinzufügen](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-msbuild-task.png)
+   ![Hinzufügen einer MSBuild-Aufgabe zur Agent-Warteschlange](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-add-msbuild-task.png)
 
 9. Ändern Sie die **MSBuild-Argumente** wie folgt:
 
@@ -107,11 +107,11 @@ Eine Azure Pipelines-Releasepipeline beschreibt einen Workflow, der ein Anwendun
    /p:CompilerTaskAssemblyFile="Microsoft.WindowsAzure.StreamAnalytics.Common.CompileService.dll"  /p:ASATargetsFilePath="$(Build.SourcesDirectory)\packages\Microsoft.Azure.StreamAnalytics.CICD.1.0.0\build\StreamAnalytics.targets"
    ```
 
-   ![MSBuild-Aufgabe konfigurieren](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-msbuild.png)
+   ![Konfigurieren der MSBuild-Aufgabe in DevOps](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-config-msbuild-task.png)
 
 10. Klicken Sie im Abschnitt **Phase 1** auf **+**, und fügen Sie eine Aufgabe vom Typ **Bereitstellung einer Azure-Ressourcengruppe** hinzu. 
     
-    ![Aufgabe „Bereitstellung einer Azure-Ressourcengruppe“ hinzufügen](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-deploy.png)
+    ![Aufgabe „Bereitstellung einer Azure-Ressourcengruppe“ hinzufügen](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-add-resource-group-deployment.png)
 
 11. Erweitern Sie **Azure-Details**, und tragen Sie Folgendes in die Konfiguration ein:
     
@@ -124,16 +124,16 @@ Eine Azure Pipelines-Releasepipeline beschreibt einen Workflow, der ein Anwendun
     |Vorlagenparameter  | [Ihr Projektmappenpfad]\bin\Debug\Deploy\\[Ihr Projektname].JobTemplate.parameters.json   |
     |Vorlagenparameter überschreiben  | Geben Sie die zu überschreibenden Vorlagenparameter in das Textfeld ein. Beispiel: –storageName fabrikam –adminUsername $(vmusername) -adminPassword $(password) –azureKeyVaultName $(fabrikamFibre). Diese Eigenschaft ist optional, doch ergibt der Build Fehler, wenn Schlüsselparameter nicht überschrieben werden.    |
     
-    ![Eigenschaften festlegen](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-deploy-2.png)
+    ![Festlegen der Eigenschaften für die Bereitstellung einer Azure-Ressourcengruppe](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-deployment-properties.png)
 
 12. Klicken Sie auf **Speichern und in Warteschlange einreihen**, um die Buildpipeline zu testen.
     
-    ![Parameterüberschreibung festlegen](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-save-queue.png)
+    ![Speichern und Erstellen einer Warteschlange in DevOps](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-save-and-queue-build.png)
 
 ### <a name="failed-build-process"></a>Fehlerhafter Buildprozess
 Möglicherweise werden Ihnen Fehler für NULL-Bereitstellungsparameter angezeigt, wenn Sie Vorlagenparameter in der Aufgabe **Bereitstellung einer Azure-Ressourcengruppe** Ihrer Buildpipeline nicht überschrieben haben. Kehren Sie zur Buildpipeline zurück, und überschreiben Sie die NULL-Parameter, um den Fehler zu beheben.
 
-   ![Buildprozess fehlerhaft](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-process-failed.png)
+   ![Fehler bei DevOps Stream Analytics-Buildprozess](./media/stream-analytics-tools-visual-studio-cicd-vsts/devops-build-process-failed.png)
 
 ### <a name="commit-and-push-changes-to-trigger-a-release"></a>Committen und Pushen von Änderungen zum Auslösen eines Release
 Checken Sie einige Codeänderungen in Azure DevOps ein, um zu überprüfen, ob die Continuous Integration-Pipeline ordnungsgemäß ausgeführt wird.    
@@ -142,11 +142,11 @@ Während Sie den Code schreiben, werden Ihre Änderungen automatisch von Visual 
 
 1. Fügen Sie in der Ansicht **Änderungen** in Team Explorer eine Nachricht hinzu, die die Aktualisierung beschreibt, und führen Sie den Commit der Änderungen aus.
 
-    ![Änderungen committen und pushen](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-push-changes.png)
+    ![Committen von Repository-Änderungen von Visual Studio](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-commit-changes-visual-studio.png)
 
 2. Wählen Sie das Statusleistensymbol für nicht veröffentlichte Änderungen oder die Synchronisierungsansicht in Team Explorer aus. Wählen Sie **Push** aus, um den Code in Azure DevOps zu aktualisieren.
 
-    ![Änderungen committen und pushen](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-push-changes-2.png)
+    ![Pushen von Änderungen von Visual Studio](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-push-changes-visual-studio.png)
 
 Durch das Pushen der Änderungen nach Azure DevOps wird automatisch ein Build ausgelöst.  Nach erfolgreichem Abschluss der Buildpipeline wird automatisch ein Release erstellt, und es wird eine Aktualisierung des Auftrags im Cluster gestartet.
 

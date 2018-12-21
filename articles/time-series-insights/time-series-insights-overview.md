@@ -1,5 +1,5 @@
 ---
-title: Was ist Azure Time Series Insights? | Microsoft-Dokumentation
+title: 'Übersicht zu Azure Time Series Insights: Was ist Azure Time Series Insights? | Microsoft-Dokumentation'
 description: Einführung in Azure Time Series Insights, einem neuen Dienst zum Analysieren von Zeitreihendaten und für IoT-Lösungen.
 ms.service: time-series-insights
 services: time-series-insights
@@ -9,13 +9,14 @@ manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.workload: big-data
 ms.topic: overview
-ms.date: 01/26/2018
-ms.openlocfilehash: 85436fedacc765dcdf6a8005cf96f3d63312504c
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.date: 12/05/2018
+ms.custom: seodec18
+ms.openlocfilehash: d1d9fd66b60478ce1f80036167eb520b7f5aecf5
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52868802"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53275141"
 ---
 # <a name="what-is-azure-time-series-insights"></a>Was ist Azure Time Series Insights?
 
@@ -36,7 +37,7 @@ Wenn Sie nicht sicher sind, ob es sich bei Ihren Daten um Zeitreihendaten handel
 
 ## <a name="video"></a>Video
 
-### <a name="in-this-video-we-provide-an-overview-of-time-series-insights-a-cloud-based-iot-analytics-platformbr"></a>In diesem Video zeigen wir eine Übersicht über Time Series Insights, eine cloudbasierte IoT-Analyseplattform.</br>
+In diesem Video zeigen wir eine Übersicht über Time Series Insights, eine cloudbasierte IoT-Analyseplattform.
 
 > [!VIDEO https://www.youtube.com/embed/qNc9gQTLROs]
 

@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/15/2018
+ms.date: 12/10/2018
 ms.author: jeffgilb
 ms.reviewer: hector.linares
-ms.openlocfilehash: 3c27aecf18fcb5e14347d8f02d71891b351292be
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: ab55ed73c7364b48f3159672ebee5d934365c92c
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49341836"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53191528"
 ---
 # <a name="protect-virtual-machines-deployed-on-azure-stack"></a>Schutz von in Azure Stack bereitgestellten virtuellen Computern
 
@@ -55,10 +55,10 @@ Planen Sie Ihre Sicherungswiederherstellungs- und Notfallwiederherstellungsstrat
 
 |  | Globale Azure-Umgebung | Azure Stack-Bereitstellung in einem von CSP betriebenem Rechenzentrum | Azure Stack-Bereitstellung in einem vom Kunden betriebenen Rechenzentrum |
 |------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------|
-| **Azure Stack-Bereitstellung in einem von CSP betriebenen Rechenzentrum** | Es werden Benutzer-VMs für die von CSP betriebene Azure Stack-Instanz bereitgestellt. Benutzer-VMs werden über eine Sicherung oder ein Failover direkt in Azure wiederhergestellt. | CSP betreibt die primären und sekundären Instanzen von Azure Stack in seinen eigenen Rechenzentren. Benutzer-VMs werden wiederhergestellt, oder es wird ein Failover zwischen den beiden Azure Stack-Instanzen durchgeführt. | CSP betreibt Azure Stack am primären Standort. Das Rechenzentrum des Kunden ist das Wiederherstellungs- oder Failoverziel. |
-| **Azure Stack-Bereitstellung in einem vom Kunden betriebenen Rechenzentrum** | Es werden Benutzer-VMs für die vom Kunden betriebene Azure Stack-Instanz bereitgestellt. Benutzer-VMs werden über eine Sicherung oder ein Failover direkt in Azure wiederhergestellt. | Der Kunde betreibt die primären und sekundären Instanzen von Azure Stack in seinen eigenen Rechenzentren. Benutzer-VMs werden wiederhergestellt, oder es wird ein Failover zwischen den beiden Azure Stack-Instanzen durchgeführt. | Der Kunde betreibt Azure Stack am primären Standort. Das Rechenzentrum von CSP ist das Wiederherstellungs- oder Failoverziel. |
+| **Azure Stack-Bereitstellung in einem von CSP betriebenen Rechenzentrum** | Es werden Benutzer-VMs für die von CSP betriebene Azure Stack-Instanz bereitgestellt.<br><br>Benutzer-VMs werden über eine Sicherung oder ein Failover direkt in Azure wiederhergestellt. | CSP betreibt die primären und sekundären Instanzen von Azure Stack in seinen eigenen Rechenzentren.<br><br>Benutzer-VMs werden wiederhergestellt, oder es wird ein Failover zwischen den beiden Azure Stack-Instanzen durchgeführt. | CSP betreibt Azure Stack am primären Standort.<br><br>Das Rechenzentrum des Kunden ist das Wiederherstellungs- oder Failoverziel. |
+| **Azure Stack-Bereitstellung in einem vom Kunden betriebenen Rechenzentrum** | Es werden Benutzer-VMs für die vom Kunden betriebene Azure Stack-Instanz bereitgestellt.<br><br>Benutzer-VMs werden über eine Sicherung oder ein Failover direkt in Azure wiederhergestellt. | Der Kunde betreibt Azure Stack am primären Standort.<br><br>Das Rechenzentrum von CSP ist das Wiederherstellungs- oder Failoverziel. | Der Kunde betreibt die primären und sekundären Instanzen von Azure Stack in seinen eigenen Rechenzentren.<br><br>Benutzer-VMs werden wiederhergestellt, oder es wird ein Failover zwischen den beiden Azure Stack-Instanzen durchgeführt. |
 
-![Quelle/Ziel-Kombinationen](media\azure-stack-manage-vm-backup\vm_backupdataflow_01.png)
+![Quelle/Ziel-Kombinationen](media/azure-stack-manage-vm-backup/vm_backupdataflow_01.png)
 
 ## <a name="application-recovery-objectives"></a>Ziele für die Anwendungswiederherstellung
 
@@ -77,13 +77,13 @@ Eine weitere Metrik ist **Mean Time to Recover** (MTTR) – der durchschnittlich
 
 Das Schema zum Schutz der am häufigsten verwendeten VM-basierten Anwendungen ist die Verwendung von Sicherungssoftware. Die Sicherung einer VM umfasst in der Regel das Betriebssystem, die Betriebssystemkonfiguration, Anwendungsbinärdateien und Anwendungsdaten. Die Sicherungen werden durch Erstellen einer Momentaufnahme der Volumes, Datenträger oder der gesamten VM erstellt. Mit Azure Stack haben Sie die Möglichkeit, innerhalb des Kontexts des Gastbetriebssystems oder über Speicher- und Compute-APIs von Azure Stack Sicherungen durchzuführen. Azure Stack unterstützt nicht die Durchführung von Sicherungen auf Hypervisorebene.
  
-![Sicherungswiederherstellung](media\azure-stack-manage-vm-backup\vm_backupdataflow_03.png)
+![Sicherungswiederherstellung](media/azure-stack-manage-vm-backup/vm_backupdataflow_03.png)
 
 Für die Wiederherstellung der Anwendung muss mindestens eine VM in der gleichen Cloud oder in einer neuen Cloud wiederhergestellt werden. Sie können als Ziel eine Cloud in Ihrem Rechenzentrum oder in der öffentlichen Cloud festlegen. Die von Ihnen gewählte Cloud unterliegt Ihrer vollständigen Kontrolle und basiert auf Ihren Anforderungen hinsichtlich des Datenschutzes und der Datenhoheit.
  
  - RTO: In Stunden gemessene Ausfallzeit
  - RPO: Variabler Datenverlust (je nach Sicherungshäufigkeit)
- - Bereitstellungstopologie: Aktiv/Passiv
+ - Bereitstellungstopologie: Aktiv/passiv
 
 #### <a name="planning-your-backup-strategy"></a>Planen der Sicherungsstrategie
 
@@ -107,11 +107,11 @@ Ein alternativer Ansatz zur Unterstützung von Hochverfügbarkeit besteht darin,
 
 Bei diesem Ansatz wird die Anwendung in einer Cloud bereitgestellt, und die dazugehörige VM wird in der anderen Cloud repliziert. Wenn ein Failover ausgelöst wird, müssen die sekundären VMs in der zweiten Cloud eingeschaltet werden. In einigen Szenarien erstellt das Failover die VMs und fügt Datenträger daran an. Die Durchführung dieses Vorgangs kann lange dauern, insbesondere bei einer Multi-Tier-Anwendung, für die eine bestimmte Startsequenz erforderlich ist. Bevor die Anwendung mit der Anforderungsverarbeitung beginnen kann, müssen eventuell entsprechende Schritte ausgeführt werden.
 
-![Replikation und manuelles Failover](media\azure-stack-manage-vm-backup\vm_backupdataflow_02.png)
+![Replikation und manuelles Failover](media/azure-stack-manage-vm-backup/vm_backupdataflow_02.png)
 
  - RTO: In Minuten gemessene Ausfallzeit
  - RPO: Variabler Datenverlust (je nach Replikationshäufigkeit)
- - Bereitstellungstopologie: Aktiv/Passiv und Standby
+ - Bereitstellungstopologie: Aktiv/passiv und Standby
  
 ### <a name="high-availabilityautomatic-failover"></a>Hochverfügbarkeit und automatisches Failover
 
@@ -123,7 +123,7 @@ Bei dieser Vorgehensweise ist die Anwendung zwar nur in einer Cloud aktiv, doch 
 
  - RTO: In Sekunden gemessene Ausfallzeit
  - RPO: Minimaler Datenverlust
- - Bereitstellungstopologie: Aktiv/Aktiv und Standby
+ - Bereitstellungstopologie: Aktiv/aktiv und Standby
 
 ### <a name="fault-tolerance"></a>Fehlertoleranz
 
@@ -135,7 +135,7 @@ Bedenken Sie, dass Azure Stack-Clouds unabhängig voneinander sind, weshalb die 
 
  - RTO: Keine Ausfallzeit
  - RPO: Kein Datenverlust
- - Bereitstellungstopologie: Aktiv/Aktiv
+ - Bereitstellungstopologie: Aktiv/aktiv
 
 ### <a name="no-recovery"></a>Keine Wiederherstellung
 

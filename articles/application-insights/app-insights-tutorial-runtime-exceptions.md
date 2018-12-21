@@ -10,12 +10,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: 48e338a08330e0674cc4410adf135ec546a5e1c3
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 9c36920d2d1d201a874abaeeaac9eb965e0e641b
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51230596"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53084008"
 ---
 # <a name="find-and-diagnose-run-time-exceptions-with-azure-application-insights"></a>Suchen und Diagnostizieren von Laufzeitausnahmen mit Azure Application Insights
 
@@ -75,20 +75,20 @@ Application Insights erfasst alle Fehler in Ihrer Anwendung und ermöglicht Ihne
     ![Ausnahmedetails](media/app-insights-tutorial-runtime-exceptions/failed-requests-exception.png)
 
 ## <a name="identify-failing-code"></a>Fehlerhaften Code identifizieren
-Der Momentaufnahmedebugger erfasst Momentaufnahmen der häufigsten Ausnahmen in Ihrer Anwendung, um Sie beim Diagnostizieren der Ursache in der Produktion zu unterstützen.  Sie können Debugmomentaufnahmen im Portal anzeigen, um die Aufrufliste anzuzeigen und die Variablen in jedem Aufruflistenrahmen zu überprüfen. Sie können den Quellcode debuggen, indem Sie die Momentaufnahme herunterladen und in Visual Studio 2017 öffnen.
+Der Momentaufnahmedebugger erfasst Momentaufnahmen der häufigsten Ausnahmen in Ihrer Anwendung, um Sie beim Diagnostizieren der Ursache in der Produktion zu unterstützen.  Sie können Debugmomentaufnahmen im Portal anzeigen, um die Aufrufliste anzuzeigen und die Variablen in jedem Aufruflistenrahmen zu überprüfen. Danach können Sie den Quellcode debuggen, indem Sie die Momentaufnahme herunterladen und in Visual Studio 2017 Enterprise öffnen.
 
 1. Klicken Sie in den Eigenschaften der Ausnahme auf **Debugmomentaufnahme öffnen**.
 2. Der Bereich **Momentaufnahme debuggen** Bereich wird mit der Aufrufliste für die Anforderung geöffnet.  Klicken Sie auf eine beliebige Methode, um die Werte aller lokalen Variablen zum Zeitpunkt der Anforderung anzuzeigen.  Beginnend mit der ersten Methode in diesem Beispiel sehen wir lokale Variablen, die keinen Wert aufweisen.
 
     ![Momentaufnahme debuggen](media/app-insights-tutorial-runtime-exceptions/debug-snapshot-01.png)
 
-4. Der erste Aufruf mit gültigen Werten ist **ValidZipCode**, und wir können sehen, dass eine Postleitzahl mit Buchstaben angegeben wurde, die nicht in eine ganze Zahl übersetzt werden können.  Dies scheint der Fehler im Code zu sein, der behoben werden muss.
+3. Der erste Aufruf mit gültigen Werten ist **ValidZipCode**, und wir können sehen, dass eine Postleitzahl mit Buchstaben angegeben wurde, die nicht in eine ganze Zahl übersetzt werden können.  Dies scheint der Fehler im Code zu sein, der behoben werden muss.
 
     ![Momentaufnahme debuggen](media/app-insights-tutorial-runtime-exceptions/debug-snapshot-02.png)
 
-5. Zum Herunterladen dieser Momentaufnahme in Visual Studio, wo wir den tatsächlichen Code finden, der behoben werden muss, klicken Sie auf **Momentaufnahme herunterladen**.
-6. Die Momentaufnahme wird in Visual Studio geladen.
-7. Jetzt können Sie eine Debugsitzung in Visual Studio ausführen, mit der die Codezeile, die die Ausnahme verursacht hat, schnell identifiziert wird.
+4. Dann haben Sie die Option, diese Momentaufnahme in Visual Studio herunterzuladen, wo wir den tatsächlichen Code finden, der korrigiert werden muss. Zu diesem Zweck klicken Sie auf **Momentaufnahme herunterladen**.
+5. Die Momentaufnahme wird in Visual Studio geladen.
+6. Jetzt können Sie eine Debugsitzung in Visual Studio Enterprise ausführen, mit der die Codezeile, die die Ausnahme verursacht hat, schnell identifiziert wird.
 
     ![Ausnahme im Code](media/app-insights-tutorial-runtime-exceptions/exception-code.png)
 
