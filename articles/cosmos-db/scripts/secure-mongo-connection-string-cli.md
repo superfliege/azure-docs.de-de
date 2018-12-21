@@ -1,18 +1,18 @@
 ---
-title: 'Azure CLI-Skript: Abrufen der Azure Cosmos DB-Verbindungszeichenfolge für MongoDB-Apps| Microsoft-Dokumentation'
+title: 'Azure CLI-Skript: Abrufen der Azure Cosmos DB-Verbindungszeichenfolge für MongoDB-Apps'
 description: 'Azure CLI-Skriptbeispiel: Abrufen der Azure Cosmos DB-Verbindungszeichenfolge für MongoDB'
 author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.component: cosmosdb-mongo
 ms.topic: sample
 ms.date: 10/26/2018
-ms.author: mjbrown
-ms.openlocfilehash: e2b28a370da96484c4731c9ac3867b1d86d6adab
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 2781e18d56b4ae0691791b37b5be9d951a2c7104
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51009418"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52972234"
 ---
 # <a name="get-an-azure-cosmos-db-connection-string-for-mongodb-using-the-azure-cli"></a>Abrufen einer Azure Cosmos DB-Verbindungszeichenfolge für MongoDB mithilfe der Azure CLI
 

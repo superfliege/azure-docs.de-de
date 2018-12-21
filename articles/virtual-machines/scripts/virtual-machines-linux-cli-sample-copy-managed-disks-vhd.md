@@ -1,6 +1,6 @@
 ---
-title: Azure CLI-Skriptbeispiel – Exportieren/Kopieren einer zugrunde liegenden VHD mit verwalteten Datenträgern in ein Speicherkonto | Microsoft-Dokumentation
-description: Azure CLI-Skriptbeispiel – Exportieren/Kopieren einer zugrunde liegenden VHD mit verwalteten Datenträgern in ein Speicherkonto
+title: 'Azure CLI-Beispiel: Kopieren eines verwalteten Datenträgers in ein Speicherkonto'
+description: 'Azure CLI-Beispiel: Exportieren oder Kopieren eines verwalteten Datenträgers in ein Speicherkonto'
 services: virtual-machines-linux
 documentationcenter: storage
 author: ramankumarlive
@@ -15,15 +15,15 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/17/2018
 ms.author: ramankum
-ms.custom: mvc
-ms.openlocfilehash: c5f06a8c8fb707a2bf0451f8e9ed391ac0c5bad9
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.custom: mvc,seodec18
+ms.openlocfilehash: 4ee8b9dbb22e4530beb81bea9735867ecf21a1d4
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48045241"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53183029"
 ---
-# <a name="exportcopy-the-underlying-vhd-of-a-managed-disk-to-a-storage-account-with-cli"></a>Exportieren/Kopieren der zugrunde liegenden VHD eines verwalteten Datenträgers in ein Speicherkonto mit der CLI
+# <a name="exportcopy-a-managed-disk-to-a-storage-account-using-the-azure-cli"></a>Exportieren/Kopieren eines verwalteten Datenträgers in ein Speicherkonto per Azure CLI
 
 Mit diesem Skript wird die zugrunde liegende VHD eines verwalteten Datenträgers in ein Speicherkonto in derselben oder einer anderen Region exportiert. Zuerst wird der SAS-URI des verwalteten Datenträgers generiert und anschließend verwendet, um die VHD in ein Speicherkonto zu kopieren. Verwenden Sie dieses Skript, um Ihre verwalteten Datenträger für regionale Erweiterungen zu kopieren. 
 

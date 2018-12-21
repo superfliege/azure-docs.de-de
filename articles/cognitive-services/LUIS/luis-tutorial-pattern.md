@@ -1,21 +1,22 @@
 ---
-title: 'Tutorial 3: Muster zur Verbesserung von LUIS-Vorhersagen'
+title: Muster
 titleSuffix: Azure Cognitive Services
 description: Verwenden Sie Muster, um die Vorhersage von Absichten und Entitäten zu verbessern und zugleich weniger Beispieläußerungen anzugeben. Das Muster wird als Beispiel für eine Vorlagenäußerung bereitgestellt, die die Syntax zum Identifizieren von Entitäten und ignorierbarem Text enthält.
 services: cognitive-services
 author: diberry
+ms.custom: seodec18
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 7ba5db8e50e8da5b274f73046d56f7816ca8834d
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 346d8a83661c487a1d9a11e4da7d7bb67843e0b4
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50138326"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53075521"
 ---
 # <a name="tutorial-3-add-common-utterance-formats"></a>Tutorial 3: Hinzufügen allgemeiner Formate für Äußerungen
 
@@ -106,7 +107,7 @@ Wenn Sie nicht über die HumanResources-App aus dem vorhergehenden Tutorial verf
 
 2. Geben Sie in der Adressleiste am Ende der URL `Who is the boss of Jill Jones?` ein. Der letzte Parameter der Abfragezeichenfolge lautet `q` (für die Abfrage (**query**) der Äußerung). 
 
-    ```JSON
+    ```json
     {
         "query": "who is the boss of jill jones?",
         "topScoringIntent": {
@@ -229,7 +230,7 @@ In diesem Tutorial fügen Sie zwei neue Absichten hinzu: `OrgChart-Manager` und 
 
 Sobald LUIS eine Vorhersage an die Clientanwendung zurückgibt, kann der Name der Absicht als Funktionsname in der Clientanwendung und die Entität „Employee“ als Parameter für diese Funktion verwendet werden.
 
-```Javascript
+```nodejs
 OrgChartManager(employee){
     ///
 }
@@ -277,7 +278,7 @@ Das [Tutorial zum Entitätstyp „Liste“](luis-quickstart-intent-and-list-enti
 
 3. Geben Sie in der Adressleiste am Ende der URL `Who is the boss of Jill Jones?` als Äußerung ein. Der letzte Parameter der Abfragezeichenfolge lautet `q` (für die Abfrage (**query**) der Äußerung). 
 
-    ```JSON
+    ```json
     {
         "query": "who is the boss of jill jones?",
         "topScoringIntent": {
@@ -388,13 +389,13 @@ Beispielhafte Vorlagenäußerungen:
 
 Durch die Verwendung der optionalen Syntax von eckigen Klammern, `[]`, kann dieser optionale Text zur Vorlagenäußerung hinzugefügt und bis zu einer zweiten Ebene, `[[]]`, verschachtelt werden und Entitäten oder Text enthalten.
 
-**Frage: Warum konnten die letzten beiden Beispieläußerungen nicht zu einer einzigen Vorlagenäußerung zusammengefasst werden?** Diese Mustervorlage unterstützt nicht die ODER-Syntax. Um sowohl die `in`- als auch die `on`-Version zu erfassen, müssen diese jeweils separate Vorlagenäußerungen sein.
+**Frage: Warum konnten die letzten beiden Beispieläußerungen nicht zu einer Vorlagenäußerung zusammengefasst werden?** Diese Mustervorlage unterstützt nicht die ODER-Syntax. Um sowohl die `in`- als auch die `on`-Version zu erfassen, müssen diese jeweils separate Vorlagenäußerungen sein.
 
-**Frage: Warum sind alle `w`-Buchstaben, den ersten Buchstaben in jeder Vorlagenäußerung, Kleinbuchstaben? Sollten dies nicht optional Groß- oder Kleinbuchstaben sein?** Die von der Clientanwendung an den Abfrageendpunkt übermittelte Äußerung wird in Kleinbuchstaben konvertiert. Die Vorlagenäußerung kann in Groß- oder Kleinbuchstaben geschrieben sein, bei der Endpunktäußerung besteht diese Möglichkeit ebenfalls. Der Vergleich erfolgt immer nach der Konvertierung in Kleinbuchstaben.
+**Frage: Warum ist der Buchstabe `w` am Anfang jeder Vorlagenäußerung jeweils ein Kleinbuchstabe? Sollten dies nicht optional Groß- oder Kleinbuchstaben sein?** Die von der Clientanwendung an den Abfrageendpunkt übermittelte Äußerung wird in Kleinbuchstaben konvertiert. Die Vorlagenäußerung kann in Groß- oder Kleinbuchstaben geschrieben sein, bei der Endpunktäußerung besteht diese Möglichkeit ebenfalls. Der Vergleich erfolgt immer nach der Konvertierung in Kleinbuchstaben.
 
-**Frage: Warum ist die vordefinierte Zahl nicht Teil der Vorlagenäußerung, wenn der 3. März sowohl als Zahl `3` als auch als Datum vorhergesagt wird`March 3`?** Die Vorlagenäußerung verwendet kontextuell ein Datum, entweder wörtlich wie in `March 3` oder abstrahiert wie `in a month`. Ein Datum kann eine Zahl enthalten, aber eine Zahl muss nicht unbedingt als Datum angesehen werden. Verwenden Sie immer die Entität, die den Typ am besten repräsentiert, den Sie in den JSON-Vorhersageergebnissen zurückgeben möchten.  
+**Frage: Warum ist die vordefinierte Zahl nicht Teil der Vorlagenäußerung, wenn der 3. März sowohl als Zahl `3` als auch als Datum `March 3` vorhergesagt wird?** Die Vorlagenäußerung verwendet kontextuell ein Datum, entweder wörtlich wie in `March 3` oder abstrahiert wie `in a month`. Ein Datum kann eine Zahl enthalten, aber eine Zahl muss nicht unbedingt als Datum angesehen werden. Verwenden Sie immer die Entität, die den Typ am besten repräsentiert, den Sie in den JSON-Vorhersageergebnissen zurückgeben möchten.  
 
-**Frage: Was ist mit schlecht formulierten Äußerungen wie z.B. `Who will {Employee}['s] manager be on March 3?`.** Grammatisch unterschiedliche Verbformen wie diese, bei denen `will` und `be` getrennt sind, müssen eine neue Vorlagenäußerung sein. Die vorhandene Vorlagenäußerung wird nicht übereinstimmen. Die Absicht der Äußerung nicht sich zwar nicht geändert, die Wortstellung aber schon. Diese Änderung wirkt sich auf die Vorhersage in LUIS aus.
+**Frage: Wie ist es bei schlecht formulierten Äußerungen, z.B. `Who will {Employee}['s] manager be on March 3?`** Grammatisch unterschiedliche Verbformen wie diese, bei denen `will` und `be` getrennt sind, müssen eine neue Vorlagenäußerung sein. Die vorhandene Vorlagenäußerung wird nicht übereinstimmen. Die Absicht der Äußerung nicht sich zwar nicht geändert, die Wortstellung aber schon. Diese Änderung wirkt sich auf die Vorhersage in LUIS aus.
 
 **Beachten Sie: Entitäten werden zuerst gefunden, dann wird das Muster verglichen.**
 

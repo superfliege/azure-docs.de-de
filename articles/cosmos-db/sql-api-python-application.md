@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 02/23/2017
 ms.author: sngun
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: af8b2c3f0b319ce9769e9789f6639e1d5eb266f6
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: a2c7b7c5dc68bb96e0b54dc89f2c170cdb20c792
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52865215"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53081903"
 ---
 # <a name="build-a-python-flask-web-application-using-azure-cosmos-db"></a>Erstellen einer Python Flask-Webanwendung mithilfe von Azure Cosmos DB
 
@@ -88,7 +88,7 @@ Im Folgenden wird erläutert, wie Sie eine Python Flask-Webanwendung von Grund a
    
     Im Ausgabefenster wird `Successfully installed Flask-0.10.1 Jinja2-2.8 MarkupSafe-0.23 Werkzeug-0.11.5 itsdangerous-0.24 'requirements.txt' was installed successfully.` angezeigt, wenn die Umgebung erfolgreich installiert wurde.
 
-## <a name="step-3-modify-the-python-flask-web-application"></a>Schritt 3: Ändern der Python Flask-Webanwendung
+## <a name="step-3-modify-the-python-flask-web-application"></a>Schritt 3: Ändern der Python Flask-Webanwendung
 ### <a name="add-the-python-flask-packages-to-your-project"></a>Hinzufügen der Python Flask-Pakete zum Projekt
 Nachdem das Projekt eingerichtet ist, müssen Sie Ihrem Projekt die benötigten Flask-Pakete hinzufügen, z.B. „pydocumentdb“, das Python-Paket für die SQL-API von Azure Cosmos DB.
 
@@ -436,4 +436,4 @@ Um Ihrer Webanwendung weitere Funktionen hinzuzufügen, überprüfen Sie die im 
 
 Weitere Informationen zu Azure, Visual Studio und Python finden Sie im [Python Developer Center](https://azure.microsoft.com/develop/python/). 
 
-Weitere Python Flask-Tutorials finden Sie unter [The Flask Mega-Tutorial, Part I: Hello, World!](http://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world). 
+Weitere Python Flask-Tutorials finden Sie unter [The Flask Mega-Tutorial, Part I: Hello, World!](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world). 

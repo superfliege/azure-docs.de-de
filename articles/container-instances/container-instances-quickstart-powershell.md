@@ -1,21 +1,21 @@
 ---
-title: 'Schnellstart: Ausführen einer Anwendung in Azure Container Instances'
-description: In dieser Schnellstartanleitung stellen Sie mithilfe von Azure PowerShell eine in einem Docker-Container ausgeführte Anwendung in Azure Container Instances bereit.
+title: 'Schnellstart: Ausführen einer Anwendung in Azure Container Instances – PowerShell'
+description: In dieser Schnellstartanleitung stellen Sie mit Azure PowerShell eine Docker-Containeranwendung in Azure Container Instances bereit.
 services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: quickstart
 ms.date: 10/02/2018
 ms.author: danlep
-ms.custom: mvc
-ms.openlocfilehash: 33444e810a2deebee11e535c73ce3e249f42b340
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.custom: seodec18, mvc
+ms.openlocfilehash: b17cca7f0c00aba260b97b29345ff33156a50138
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48854642"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53183946"
 ---
-# <a name="quickstart-run-an-application-in-azure-container-instances"></a>Schnellstart: Ausführen einer Anwendung in Azure Container Instances
+# <a name="quickstart-run-a-container-application-in-azure-container-instances-with-azure-powershell"></a>Schnellstart: Ausführen einer Containeranwendung in Azure Container Instances mit Azure PowerShell
 
 Führen Sie mithilfe von Azure Container Instances Docker-Container schnell und einfach in Azure aus. Sie müssen keine virtuellen Computer bereitstellen und keine vollständige Containerorchestrierungsplattform wie Kubernetes verwenden. In dieser Schnellstartanleitung erstellen Sie mithilfe des Azure-Portals einen Windows-Container in Azure und machen seine Anwendung mit einem vollqualifizierten Domänennamen (Fully Qualified Domain Name, FQDN) verfügbar. Einige Sekunden nach dem Ausführen eines einzigen Bereitstellungsbefehls können Sie zur ausgeführten Anwendung navigieren:
 

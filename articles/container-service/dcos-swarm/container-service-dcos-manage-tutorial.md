@@ -1,5 +1,5 @@
 ---
-title: Tutorial für Azure Containerdienst – DC/OS verwalten
+title: '(VERALTET) Tutorial für Azure Container Service: Verwalten von DC/OS'
 description: Tutorial für Azure Containerdienst – DC/OS verwalten
 services: container-service
 author: iainfoulds
@@ -9,16 +9,18 @@ ms.topic: tutorial
 ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 8f4b1c1c66243c06d46ef3fddec8ea495163fa07
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: fe943ae5ac7894cdd8d8e104615cea670513b7eb
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46999612"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53000423"
 ---
-# <a name="azure-container-service-tutorial---manage-dcos"></a>Tutorial für Azure Containerdienst – DC/OS verwalten
+# <a name="deprecated-azure-container-service-tutorial---manage-dcos"></a>(VERALTET) Tutorial für Azure Container Service: Verwalten von DC/OS
 
-DC/OS bietet eine verteilte Plattform für das Ausführen moderner und containerbasierter Anwendungen. Mit dem Azure Container Service ist die Bereitstellung eines produktionsbereiten DC/OS-Clusters schnell und einfach. In diesem Schnellstart werden die notwendigen grundlegenden Schritte zum Bereitstellen eines DC/OS-Clusters und zur Ausführung eines einfachen Workloads aufgeführt.
+[!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
+
+DC/OS stellt eine verteilte Plattform zum Ausführen moderner Containeranwendungen bereit. Mit dem Azure Container Service ist die Bereitstellung eines produktionsbereiten DC/OS-Clusters schnell und einfach. In diesem Schnellstart werden die notwendigen grundlegenden Schritte zum Bereitstellen eines DC/OS-Clusters und zur Ausführung eines einfachen Workloads aufgeführt.
 
 > [!div class="checklist"]
 > * Erstellen eines ACS-DC/OS-Clusters

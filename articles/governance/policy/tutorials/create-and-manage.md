@@ -4,17 +4,17 @@ description: Verwenden Sie Azure Policy, um die Einhaltung von Standards, gesetz
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 09/18/2018
+ms.date: 12/06/2018
 ms.topic: tutorial
 ms.service: azure-policy
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 6ee7a4190248c8c18f747ee579aadc04a136696b
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 7cfcb71567931b1581618cf8f2239fb004befff8
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52583079"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53087030"
 ---
 # <a name="create-and-manage-policies-to-enforce-compliance"></a>Erstellen und Verwalten von Richtlinien zur Konformitätserzwingung
 
@@ -52,11 +52,11 @@ Für die Konformitätserzwingung mit Azure Policy muss zunächst eine Richtlinie
 
 1. Wählen Sie die **Richtliniendefinition** mit den Auslassungspunkten, um die Liste der verfügbaren Definitionen zu öffnen. Sie können den **Typ** der Richtliniendefinition nach *Integriert* filtern, um alle Definitionen anzuzeigen und ihre Beschreibungen zu lesen.
 
-1. Wählen Sie **SQL Server-Version 12.0 erfordern** aus. Wenn Sie die Option nicht direkt finden, geben Sie in das Suchfeld **SQL Server erfordern** ein, und drücken Sie dann die EINGABETASTE oder klicken Sie außerhalb des Suchfelds. Klicken Sie unten auf der Seite **Verfügbare Definitionen** auf **Auswählen**, nachdem Sie die Richtliniendefinition gefunden und ausgewählt haben.
+1. Wählen Sie **SQL Server-Version 12.0 erfordern** aus. Falls Sie die Option nicht direkt finden, geben Sie **SQL Server erfordern** in das Suchfeld ein, und drücken Sie dann die EINGABETASTE, oder klicken Sie außerhalb des Suchfelds. Klicken Sie unten auf der Seite **Verfügbare Definitionen** auf **Auswählen**, nachdem Sie die Richtliniendefinition gefunden und ausgewählt haben.
 
    ![Suchen nach einer Richtlinie](../media/create-and-manage/select-available-definition.png)
 
-1. Der **Zuweisungsname** wird automatisch mit dem ausgewählten Richtliniennamen gefüllt, kann aber geändert werden. In diesem Beispiel verwenden Sie *SQL Server-Version 12.0 erfordern*. Geben Sie ggf. auch eine **Beschreibung** ein. Die Beschreibung enthält Details zu dieser Richtlinienzuweisung.  **Zugewiesen von** wird abhängig vom angemeldeten Benutzer automatisch ausgefüllt. Dieses Feld ist optional. Daher können auch benutzerdefinierte Werte eingegeben werden.
+1. Der **Zuweisungsname** wird automatisch mit dem ausgewählten Richtliniennamen gefüllt, kann aber geändert werden. In diesem Beispiel verwenden Sie *SQL Server-Version 12.0 erfordern*. Geben Sie ggf. auch eine **Beschreibung** ein. Die Beschreibung enthält Details zu dieser Richtlinienzuweisung.  Das Feld **Zugewiesen von** wird abhängig vom angemeldeten Benutzer automatisch ausgefüllt. Dieses Feld ist optional. Daher können auch benutzerdefinierte Werte eingegeben werden.
 
 1. Lassen Sie **Verwaltete Identität erstellen** deaktiviert. Diese Option _muss_ aktiviert werden, wenn die zugewiesene Richtlinie oder Initiative eine Richtlinie mit dem Effekt [deployIfNotExists](../concepts/effects.md#deployifnotexists) enthält. Da dies bei der für dieses Tutorial verwendeten Richtlinie nicht der Fall ist, lassen Sie sie deaktiviert. Weitere Informationen finden Sie unter [Verwaltete Identitäten](../../../active-directory/managed-identities-azure-resources/overview.md) und [Funktionsweise der Wiederherstellungssicherheit](../how-to/remediate-resources.md#how-remediation-security-works).
 
@@ -64,13 +64,13 @@ Für die Konformitätserzwingung mit Azure Policy muss zunächst eine Richtlinie
 
 ## <a name="implement-a-new-custom-policy"></a>Implementieren einer neuen benutzerdefinierten Richtlinie
 
-Sie haben eine integrierte Richtliniendefinition zugewiesen und können nun weitere Aktionen mit Azure Policy ausführen. Erstellen Sie als Nächstes eine neue benutzerdefinierte Richtlinie zur Kosteneinsparung, die sicherstellt, dass in der Umgebung keine virtuellen Computer der G-Serie erstellt werden können. Wenn also ein Benutzer in Ihrer Organisation versucht, einen virtuellen Computer aus der G-Serie zu erstellen, wird die Anforderung abgelehnt.
+Sie haben eine integrierte Richtliniendefinition zugewiesen und können nun weitere Aktionen mit Azure Policy ausführen. Erstellen Sie als Nächstes eine neue benutzerdefinierte Richtlinie zur Kosteneinsparung, die durch eine Überprüfung sicherstellt, dass in Ihrer Umgebung keine VMs der G-Serie erstellt werden können. Wenn also ein Benutzer in Ihrer Organisation versucht, einen virtuellen Computer aus der G-Serie zu erstellen, wird die Anforderung abgelehnt.
 
 1. Wählen Sie links auf der Seite „Azure Policy“ unter **Erstellung** die Option **Definitionen**.
 
    ![„Definition“ unter „Authoring“ (Erstellung)](../media/create-and-manage/definition-under-authoring.png)
 
-1. Wählen Sie oben auf der Seite **+ Richtliniendefinition** aus. Daraufhin wird die Seite **Richtliniendefinition** geöffnet.
+1. Wählen Sie oben auf der Seite **+ Richtliniendefinition** aus. Über diese Schaltfläche gelangen Sie zur Seite **Richtliniendefinition**.
 
 1. Geben Sie Folgendes ein:
 
@@ -110,7 +110,7 @@ Sie haben eine integrierte Richtliniendefinition zugewiesen und können nun weit
     }
     ```
 
-    In der Richtlinienregel muss die Eigenschaft *field* einen der folgenden Werte haben: „name“, „type“, „location“, „tags“ oder einen Alias. Ein Beispiel für einen Alias wäre `"Microsoft.Compute/VirtualMachines/Size"`.
+    Die *field*-Eigenschaft in der Richtlinienregel muss einen der folgenden Werte aufweisen: „Name“, „Type“, „Location“, „Tags“ oder einen Alias. Ein Beispiel für einen Alias wäre `"Microsoft.Compute/VirtualMachines/Size"`.
 
     Weitere Beispiele für Azure-Richtlinien finden Sie unter [Azure Policy-Beispiele](../samples/index.md).
 
@@ -322,7 +322,7 @@ Es gibt alle verfügbaren Richtliniendefinitionen, einschließlich integrierten 
 
 ## <a name="create-and-assign-an-initiative-definition"></a>Erstellen und Zuweisen einer Initiativdefinition
 
-Mit einer Initiativdefinition können Sie mehrere Richtliniendefinitionen zu einer Gruppe zusammenfassen, um ein übergeordnetes Ziel zu erreichen. Eine Initiativdefinition stellt sicher, dass Ressourcen innerhalb des Definitionsbereichs mit den Richtliniendefinitionen konform sind, aus denen sich die Initiativdefinition zusammensetzt. Weitere Informationen zu Initiativdefinitionen finden Sie in der [Übersicht über Azure Policy](../overview.md).
+Mit einer Initiativdefinition können Sie mehrere Richtliniendefinitionen zu einer Gruppe zusammenfassen, um ein übergeordnetes Ziel zu erreichen. Eine Initiativendefinition überprüft, ob Ressourcen innerhalb des Definitionsbereichs mit den Richtliniendefinitionen konform sind, aus denen sich die Initiativendefinition zusammensetzt. Weitere Informationen zu Initiativdefinitionen finden Sie in der [Übersicht über Azure Policy](../overview.md).
 
 ### <a name="create-an-initiative-definition"></a>Erstellen einer Initiativdefinition
 
@@ -338,7 +338,7 @@ Mit einer Initiativdefinition können Sie mehrere Richtliniendefinitionen zu ein
 
 1. Geben Sie **Name** und **Beschreibung** der Initiative ein.
 
-   Mit diesem Beispiel wird sichergestellt, dass Ressourcen mit Richtliniendefinitionen zur Verbesserung der Sicherheit konform sind. Nennen Sie die Initiative **Get Secure** (Sicherheit verbessern), und geben Sie als Beschreibung Folgendes an: **This initiative has been created to handle all policy definitions associated with securing resources.** (Diese Initiative gilt für alle Richtliniendefinitionen, die mit dem Schutz von Ressourcen in Zusammenhang stehen.)
+   Mit diesem Beispiel wird überprüft, ob Ressourcen mit Richtliniendefinitionen zur Verbesserung der Sicherheit konform sind. Geben Sie für die Initiative den Namen **Get Secure** (Sicherheit verbessern) ein, und legen Sie die Beschreibung wie folgt fest: **This initiative has been created to handle all policy definitions associated with securing resources.** (Diese Initiative gilt für alle Richtliniendefinitionen, die mit dem Schutz von Ressourcen in Zusammenhang stehen.)
 
 1. Wählen Sie für **Kategorie** eine der vorhandenen Optionen, oder erstellen Sie eine neue Kategorie.
 
@@ -354,7 +354,7 @@ Mit einer Initiativdefinition können Sie mehrere Richtliniendefinitionen zu ein
 
    ![Initiativdefinitionen](../media/create-and-manage/initiative-definition-2.png)
 
-1. Wenn eine zur Initiative hinzugefügte Richtliniendefinition Parameter enthält, werden sie unterhalb des Richtliniennamens im Bereich **Richtlinien und Parameter** angezeigt. Der _Wert_ kann entweder auf „Wert festlegen“ (hartcodiert für alle Zuweisungen dieser Initiative) oder auf „Initiativenparameter verwenden“ (Festlegung während der einzelnen Initiativenzuweisungen) festgelegt werden. Wird „Wert festlegen“ ausgewählt, können in der Dropdownliste rechts neben _Werte_ die gewünschten Werte eingegeben oder ausgewählt werden. Wird „Initiativenparameter verwenden“ ausgewählt, wird ein neuer Abschnitt **Initiativenparameter** angezeigt, in dem Sie den Parameter definieren können, der während der Initiativenzuweisung festgelegt wird. Mit den zulässigen Werten für diesen Initiativenparameter können Sie weiter einschränken, welche Werte während der Initiativenzuweisung festgelegt werden können.
+1. Wenn eine zur Initiative hinzugefügte Richtliniendefinition Parameter enthält, werden sie unterhalb des Richtliniennamens im Bereich **Richtlinien und Parameter** angezeigt. Der _Wert_ kann entweder auf „Wert festlegen“ (hartcodiert für alle Zuweisungen dieser Initiative) oder auf „Initiativenparameter verwenden“ (Festlegung während der einzelnen Initiativenzuweisungen) festgelegt werden. Wird „Wert festlegen“ ausgewählt, können die Werte in der Dropdownliste rechts neben _Werte_ eingegeben oder ausgewählt werden. Wird „Initiativenparameter verwenden“ ausgewählt, wird ein neuer Abschnitt **Initiativenparameter** angezeigt, in dem Sie den Parameter definieren können, der während der Initiativenzuweisung festgelegt wird. Mit den zulässigen Werten für diesen Initiativenparameter können Sie weiter einschränken, welche Werte während der Initiativenzuweisung festgelegt werden können.
 
    ![Parameter der Initiativendefinition](../media/create-and-manage/initiative-definition-3.png)
 
@@ -371,17 +371,17 @@ Mit einer Initiativdefinition können Sie mehrere Richtliniendefinitionen zu ein
 
    ![Zuweisen einer Definition](../media/create-and-manage/assign-definition.png)
 
-   Alternativ können Sie mit der rechten Maustaste auf die ausgewählte Zeile oder mit der linken Maustaste auf die Auslassungspunkte am Ende der Zeile für ein Kontextmenü klicken.  Wählen Sie dann **Zuweisen** aus.
+   Sie können auch mit der rechten Maustaste auf die ausgewählte Zeile oder mit der linken Maustaste auf die Auslassungspunkte am Ende der Zeile für ein Kontextmenü klicken.  Wählen Sie dann **Zuweisen** aus.
 
    ![Rechtsklick auf eine Zeile](../media/create-and-manage/select-right-click.png)
 
 1. Füllen Sie die Seite **Get Secure: Initiative zuweisen** aus, indem Sie die folgenden Beispielinformationen eingeben. Sie können Ihre eigenen Daten verwenden.
 
    - Bereich: Die Verwaltungsgruppe oder das Abonnement, in der bzw. dem Sie die Initiative gespeichert haben, wird zur Standardeinstellung.  Sie können den Bereich ändern, um die Initiative einem Abonnement oder einer Ressourcengruppe innerhalb des Speicherorts zuzuweisen.
-   - Ausschlüsse: Konfigurieren Sie alle Ressourcen innerhalb des Bereichs, um zu verhindern, dass die Zuweisung der Initiative auf sie angewendet wird.
-   - Initiativdefinition und Zuweisungsname: Get Secure (vorab ausgefüllt als Name der zuzuweisenden Initiative).
+   - Ausschlüsse: Konfigurieren Sie Ressourcen innerhalb des Bereichs, auf die die Zuweisung der Initiative nicht angewendet werden soll.
+   - Initiativendefinition und Zuweisungsname: Get Secure (vorab ausgefüllt als Name der zuzuweisenden Initiative).
    - Beschreibung: Diese Initiativenzuweisung dient zur Erzwingung dieser Gruppe von Richtliniendefinitionen.
-   - Zugewiesen von: Diese Option wird abhängig vom angemeldeten Benutzer automatisch ausgefüllt. Dieses Feld ist optional. Daher können auch benutzerdefinierte Werte eingegeben werden.
+   - Zugewiesen von: Dieses Feld wird abhängig vom angemeldeten Benutzer automatisch ausgefüllt. Dieses Feld ist optional. Daher können auch benutzerdefinierte Werte eingegeben werden.
 
 1. Lassen Sie **Verwaltete Identität erstellen** deaktiviert. Diese Option _muss_ aktiviert werden, wenn die zugewiesene Richtlinie oder Initiative eine Richtlinie mit dem Effekt [deployIfNotExists](../concepts/effects.md#deployifnotexists) enthält. Da dies bei der für dieses Tutorial verwendeten Richtlinie nicht der Fall ist, lassen Sie sie deaktiviert. Weitere Informationen finden Sie unter [Verwaltete Identitäten](../../../active-directory/managed-identities-azure-resources/overview.md) und [Funktionsweise der Wiederherstellungssicherheit](../how-to/remediate-resources.md#how-remediation-security-works).
 
@@ -403,20 +403,20 @@ Mit einer Initiativdefinition können Sie mehrere Richtliniendefinitionen zu ein
 
 ## <a name="exempt-a-non-compliant-or-denied-resource-using-exclusion"></a>Ausnehmen einer nicht konformen oder abgelehnten Ressource mithilfe eines Ausschlusses
 
-Das obige Beispiel bewirkt, dass nach dem Zuweisen der Richtliniendefinition zur Forderung der SQL Server-Version 12.0 die Erstellung einer SQL Server-Instanz mit einer anderen Version als 12.0 abgelehnt wird. In diesem Abschnitt erfahren Sie, wie Sie das Problem, dass die Erstellung einer SQL Server-Instanz abgelehnt wird, durch Erstellen eines Ausschlusses für eine einzelne Ressourcengruppe lösen. Der Ausschluss verhindert die Durchsetzung der Richtlinie (oder Initiative) für diese Ressource.
+Das obige Beispiel bewirkt, dass nach dem Zuweisen der Richtliniendefinition zur Forderung der SQL Server-Version 12.0 die Erstellung einer SQL Server-Instanz mit einer anderen Version als 12.0 abgelehnt wird. In diesem Abschnitt wird erläutert, wie Sie das Problem einer verweigerten Anforderung zum Erstellen einer SQL Server-Instanz durch Erstellen eines Ausschlusses für eine einzelne Ressourcengruppe lösen. Der Ausschluss verhindert die Durchsetzung der Richtlinie (oder Initiative) für diese Ressource.
 Im folgenden Beispiel ist jede SQL Server-Version in einer einzigen Ressourcengruppe erlaubt. Ein Ausschluss kann für ein Abonnement oder eine Ressourcengruppe gelten oder auf einzelne Ressourcen beschränkt werden.
 
-Eine aufgrund einer zugewiesenen Richtlinie oder Initiative verhinderte Bereitstellung kann an zwei Standorten eingesehen werden:
+Eine von einer zugewiesenen Richtlinie oder Initiative verhinderte Bereitstellung kann an zwei Stellen eingesehen werden:
 
-- In der Ressourcengruppe, auf die die Bereitstellung abzielt: Wählen Sie links auf der Seite die Option **Bereitstellungen**, und klicken Sie auf **Bereitstellungsname** der fehlerhaften Bereitstellung. Die abgelehnte Ressource wird mit dem Status _Unzulässig_ angezeigt. Um die Richtlinie oder Initiative und die Zuweisung zu bestimmen, die die Ressource abgelehnt hat, klicken Sie auf der Übersichtsseite zur Bereitstellung auf **Fehler. Klicken Sie hier, um Details anzuzeigen. ->**. Rechts auf der Seite wird ein Fenster mit den Fehlerinformationen geöffnet. Unter **Fehlerdetails** werden die GUIDs der zugehörigen Richtlinienobjekte angezeigt.
+- In der Ressourcengruppe, für die die Bereitstellung gilt: Wählen Sie links auf der Seite die Option **Bereitstellungen**aus, und klicken Sie dann auf den **Bereitstellungsnamen** der fehlerhaften Bereitstellung. Die abgelehnte Ressource wird mit dem Status _Unzulässig_ angezeigt. Um die Richtlinie oder Initiative und die Zuweisung zu bestimmen, die die Ressource abgelehnt hat, klicken Sie auf der Übersichtsseite zur Bereitstellung auf **Fehler. Klicken Sie hier, um Details anzuzeigen. ->**. Rechts auf der Seite wird ein Fenster mit den Fehlerinformationen geöffnet. Unter **Fehlerdetails** werden die GUIDs der zugehörigen Richtlinienobjekte angezeigt.
 
   ![Bereitstellung durch Richtlinienzuweisung abgelehnt](../media/create-and-manage/rg-deployment-denied.png)
 
-- Wählen Sie links auf der Seite „Azure Policy“ die Option **Konformität** aus, und klicken Sie auf die Richtlinie **SQL Server-Version 12.0 erfordern**. Auf der Seite, die geöffnet wird, sehen Sie dann eine Erhöhung der Anzahl für **Ablehnen**. Auf der Registerkarte **Ereignisse** sehen Sie auch, wer die Bereitstellung versucht hat, die von der Richtlinie abgelehnt wurde.
+- Auf der Seite „Azure Policy“: Wählen Sie links auf der Seite die Option **Konformität** aus, und klicken Sie auf die Richtlinie **SQL Server-Version 12.0 erfordern**. Auf der Seite, die geöffnet wird, sehen Sie dann eine Erhöhung der Anzahl für **Ablehnen**. Auf der Registerkarte **Ereignisse** sehen Sie auch, welcher Benutzer versucht hat, die von der Richtlinie abgelehnte Bereitstellung durchzuführen.
 
   ![Konformitätsübersicht zu einer zugewiesenen Richtlinie](../media/create-and-manage/compliance-overview.png)
 
-In diesem Beispiel hat Trent Baker, einer der Virtualisierungsspezialisten von Contoso, die erforderliche Arbeit geleistet. Sie müssen ihm eine Ausnahme gewähren, aber Sie möchten keine SQL-Server der Version 12.0 in einer der Ressourcengruppen haben. Zu diesem Zweck dient eine neue Ressourcengruppe **SQLServers_Excluded**, der nun eine Ausnahme für diese Richtlinienzuweisung gewährt wird.
+In diesem Beispiel hat Trent Baker, einer der leitenden Virtualisierungsspezialisten von Contoso, erforderliche Arbeiten durchgeführt. Sie müssen eine Ausnahme für Trent gewähren, möchten aber in keiner der Ressourcengruppen SQL Server-Instanzen mit einer anderen Version als 12.0 haben. Zu diesem Zweck dient eine neue Ressourcengruppe **SQLServers_Excluded**, der nun eine Ausnahme für diese Richtlinienzuweisung gewährt wird.
 
 ### <a name="update-assignment-with-exclusion"></a>Aktualisieren einer Zuweisung mit Ausschluss
 
@@ -433,11 +433,11 @@ In diesem Beispiel hat Trent Baker, einer der Virtualisierungsspezialisten von C
 
 1. Klicken Sie auf **Auswählen**, und klicken Sie dann auf **Speichern**.
 
-In diesem Abschnitt haben Sie die Ablehnung des Versuchs, eine unzulässige Version des SQL-Servers zu erstellen, aufgehoben, indem Sie einen Ausschluss für eine einzelne Ressourcengruppe erstellt haben.
+In diesem Abschnitt haben Sie das Problem der verweigerten Anforderung behoben, indem Sie einen Ausschluss für eine einzelne Ressourcengruppe erstellt haben.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Falls Sie die Ressourcen dieses Tutorials nicht mehr benötigen, führen Sie die folgenden Schritte aus, um alle weiter oben erstellten Zuweisungen oder Definitionen zu löschen:
+Wenn Sie die Ressourcen dieses Tutorials nicht mehr benötigen, führen Sie die folgenden Schritte aus, um die erstellten Zuweisungen oder Definitionen zu löschen:
 
 1. Klicken Sie links auf der Seite „Azure Policy“ unter **Erstellung** auf **Definitionen** (oder auf **Zuweisungen**, wenn Sie eine Zuweisung löschen möchten).
 
@@ -447,7 +447,7 @@ Falls Sie die Ressourcen dieses Tutorials nicht mehr benötigen, führen Sie die
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie Folgendes erreicht:
+In diesem Tutorial haben Sie folgende Aufgaben durchgeführt:
 
 > [!div class="checklist"]
 > - Sie haben eine Richtlinie zur Erzwingung einer Bedingung für die spätere Erstellung von Ressourcen zugewiesen.

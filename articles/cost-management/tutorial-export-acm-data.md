@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/21/2018
+ms.date: 12/07/2018
 ms.topic: tutorial
 ms.service: cost-management
 manager: dougeby
-ms.custom: ''
-ms.openlocfilehash: e671c75b1ceee0e42b3af9ddc149edf2f3b0040c
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.custom: seodec18
+ms.openlocfilehash: 4614a1417213ed8b4d57c3b7ab21ac7424d75949
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51822353"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53087932"
 ---
 # <a name="tutorial-create-and-manage-exported-data"></a>Tutorial: Erstellen und Verwalten von exportierten Daten
 
@@ -50,11 +50,11 @@ Cost Management + Abrechnung &gt; Cost Management &gt; Abonnement oder eine Ress
 
 Geben Sie einen Namen für den Export ein, und wählen Sie die Option „Daily export of month-to-date costs“ (Täglicher Export von Kosten für bisherigen Kalendermonat) aus. Klicken Sie auf **Weiter**.
 
-![Neuer Export: Exporttyp](./media/tutorial-export-acm-data/basics_exports.png)
+![Beispiel für neuen Export mit Angabe des Exporttyps](./media/tutorial-export-acm-data/basics_exports.png)
 
 Geben Sie das Abonnement für Ihr Azure-Speicherkonto an, und wählen Sie dann Ihr Speicherkonto aus.  Geben Sie den Speichercontainer und den Verzeichnispfad an, unter dem die Exportdatei gespeichert werden soll.  Klicken Sie auf **Weiter**.
 
-![Neuer Export: Speicher](./media/tutorial-export-acm-data/storage_exports.png)
+![Beispiel für neuen Export mit Angabe der Speicherkontodetails](./media/tutorial-export-acm-data/storage_exports.png)
 
 Überprüfen Sie die Exportdetails, und klicken Sie auf **Erstellen**.
 
@@ -68,15 +68,15 @@ Sie können ganz einfach überprüfen, ob Ihre Cost Management-Daten erfasst wer
 
 Klicken Sie in der Exportliste auf den Namen des Speicherkontos. Klicken Sie auf der Seite des Speicherkontos auf „Im Explorer öffnen“. Wenn ein Bestätigungsdialogfeld angezeigt wird, klicken Sie auf **Ja**, um die Datei in Azure Storage-Explorer zu öffnen.
 
-![Speicherkontoseite](./media/tutorial-export-acm-data/storage-account-page.png)
+![Speicherkontoseite mit Beispielinformationen und Link „In Explorer öffnen“](./media/tutorial-export-acm-data/storage-account-page.png)
 
 Navigieren Sie im Storage-Explorer zu dem Container, den Sie öffnen möchten, und wählen Sie den Ordner aus, der dem aktuellen Monat entspricht. Es wird eine Liste der CSV-Dateien angezeigt. Wählen Sie eine Datei aus, und klicken Sie anschließend auf **Öffnen**.
 
-![Storage-Explorer](./media/tutorial-export-acm-data/storage-explorer.png)
+![In Storage-Explorer angezeigte Beispielinformationen](./media/tutorial-export-acm-data/storage-explorer.png)
 
 Die Datei wird mit dem Programm oder der Anwendung geöffnet, die zum Öffnen von CSV-Dateierweiterungen ausgewählt ist. Hier sehen Sie ein Beispiel in Excel.
 
-![Beispiel für exportierte Daten](./media/tutorial-export-acm-data/example-export-data.png)
+![Beispiel für in Excel angezeigte exportierte CSV-Daten](./media/tutorial-export-acm-data/example-export-data.png)
 
 ## <a name="access-exported-data-from-other-systems"></a>Zugreifen auf exportierte Daten über andere Systeme
 

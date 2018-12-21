@@ -9,12 +9,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 3/12/2018
-ms.openlocfilehash: a162d0c19bef28e6e4566d39c2dc3b82a87a4aa9
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 6fef56d780fe664e79f66fa23be526aec71d7e7b
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51242091"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52971163"
 ---
 # <a name="use-an-azure-marketplace-image-to-create-a-terraform-linux-virtual-machine-with-managed-identities-for-azure-resources"></a>Verwenden eines Azure Marketplace-Images zum Erstellen eines virtuellen Terraform-Computers für Linux mit verwalteten Identitäten für Azure-Ressourcen
 
@@ -37,7 +37,7 @@ Führen Sie zum Erstellen einer Instanz eines virtuellen Terraform-Computers fü
 
 3. Klicken auf der Registerkarte mit den Terraform-Details unten rechts auf die Schaltfläche **Erstellen**.
 
-    ![Erstellen eines virtuellen Terraform-Computers](media\terraformmsi.png)
+    ![Erstellen eines virtuellen Terraform-Computers](media/terraformmsi.png)
 
 4. Die folgenden Abschnitte enthalten die Angaben für jeden Schritt des Assistenten zum Erstellen des virtuellen Terraform-Computers für Linux. Im folgenden Abschnitt sind die Angaben aufgeführt, die zum Konfigurieren jedes dieser Schritte erforderlich sind.
 
@@ -47,7 +47,7 @@ Geben Sie auf der Registerkarte **Terraform erstellen** folgende Informationen e
 
 1. **Grundlagen**
     
-   * **Name**: Der Name Ihres virtuellen Terraform-Computers.
+   * **Name**: Der Name Ihrer Terraform-VM.
    * **Benutzername**: Die ID für die erste Kontoanmeldung.
    * **Kennwort**: Das erste Kontokennwort. (Sie können statt des Kennworts einen öffentlichen SSH-Schlüssel verwenden.)
    * **Abonnement**: Das Abonnement, in dem der Computer erstellt und abgerechnet werden soll. Sie müssen für dieses Abonnement über Berechtigungen zum Erstellen von Ressourcen verfügen.
@@ -56,8 +56,8 @@ Geben Sie auf der Registerkarte **Terraform erstellen** folgende Informationen e
 
 2. **Zusätzliche Einstellungen**
 
-   * **Größe**: Die Größe des virtuellen Computers. 
-   * **VM-Datenträgertyp**: Solid-State Drive (SSD) oder Festplattenlaufwerk (HDD).
+   * **Größe**: Größe des virtuellen Computers. 
+   * **VM-Datenträgertyp**: SSD oder HDD.
 
 3. **Zusammenfassung für Terraform**
 

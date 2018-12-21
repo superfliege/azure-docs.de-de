@@ -1,5 +1,5 @@
 ---
-title: Tutorial für Azure Container Service – Skalieren einer Anwendung
+title: '(VERALTET) Tutorial für Azure Container Service: Skalieren einer Anwendung'
 description: Tutorial für Azure Container Service – Skalieren einer Anwendung
 services: container-service
 author: dlepow
@@ -9,16 +9,19 @@ ms.topic: tutorial
 ms.date: 09/14/2017
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 792d9b1409b9571474f47da4940724df7a764d82
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: b16682535e7311648e832286e1e876ee0e694712
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39429881"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52993075"
 ---
-# <a name="scale-kubernetes-pods-and-kubernetes-infrastructure"></a>Skalieren von Kubernetes-Pods und der Kubernetes-Infrastruktur
+# <a name="deprecated-scale-kubernetes-pods-and-kubernetes-infrastructure"></a>(VERALTET) Skalieren von Kubernetes-Pods und der Kubernetes-Infrastruktur
 
-[!INCLUDE [aks-preview-redirect.md](../../../includes/aks-preview-redirect.md)]
+> [!TIP]
+> Die aktualisierte Version dieses Tutorials zu Azure Kubernetes Service finden Sie unter [Tutorial: Skalieren von Anwendungen in Azure Kubernetes Service (AKS)](../../aks/tutorial-kubernetes-scale.md).
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
 Wenn Sie die Tutorials durchgearbeitet haben, verfügen Sie über einen funktionsfähigen Kubernetes-Cluster in Azure Container Service und haben die Azure Vote-App bereitgestellt. 
 

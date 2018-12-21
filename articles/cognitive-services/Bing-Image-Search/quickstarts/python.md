@@ -1,6 +1,7 @@
 ---
-title: 'Schnellstart: Ausführen einer Bildersuche mit Python – Bing-Bildersuche-API'
-description: Verwenden Sie diesen Schnellstart, um die Bing-Bildersuche-API zum ersten Mal aufzurufen und eine JSON-Antwort zu erhalten. Diese einfache Python-Anwendung sendet eine Suchabfrage an die API und zeigt die Rohdatenergebnisse an.
+title: 'Schnellstart: Suchen nach Bildern – Bing-Bildersuche-REST-API und Python'
+titleSuffix: Azure Cognitive Services
+description: Verwenden Sie diese Schnellstartanleitung, um Bildsuchanforderungen mithilfe von Python an die Bing-Bildersuche-REST-API zu senden und JSON-Antworten zu empfangen.
 services: cognitive-services
 author: aahill
 manager: cgronlun
@@ -9,14 +10,15 @@ ms.component: bing-image-search
 ms.topic: quickstart
 ms.date: 8/20/2018
 ms.author: aahi
-ms.openlocfilehash: a51935300238235338ec30ec7061101745b0e0e5
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.custom: seodec2018
+ms.openlocfilehash: a93a044279cccd883de5f946bb236cad4b088ae2
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52314387"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53261976"
 ---
-# <a name="quickstart-send-search-queries-using-the-rest-api-and-python"></a>Schnellstart: Senden von Suchabfragen mithilfe der REST-API und Python
+# <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-python"></a>Schnellstart: Suchen nach Bildern mithilfe der Bing-Bildersuche-REST-API und Python
 
 Verwenden Sie diesen Schnellstart, um die Bing-Bildersuche-API zum ersten Mal aufzurufen und eine JSON-Antwort zu erhalten. Diese einfache Python-Anwendung sendet eine Suchabfrage an die API und zeigt die Rohdatenergebnisse an.
 

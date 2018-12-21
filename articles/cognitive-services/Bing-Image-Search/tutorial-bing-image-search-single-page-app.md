@@ -10,12 +10,12 @@ ms.component: bing-image-search
 ms.topic: tutorial
 ms.date: 9/12/2018
 ms.author: aahi
-ms.openlocfilehash: e37cb9b9412d257ab238f23b90e4a1077070b2b6
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: e2013b28e8c829d49efe662a9b0eba245c6d5fab
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46297450"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53253951"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-image-search-api"></a>Tutorial: Erstellen einer einseitigen Web-App mit der Bing-Bildersuche-API
 
@@ -33,7 +33,7 @@ Den vollständigen Quellcode für dieses Tutorial finden Sie auf [GitHub](https:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Die Aktuelle Version von [Node.js](https://nodejs.org/).
+* Die aktuelle Version von [Node.js](https://nodejs.org/)
 * Das [Express.js](https://expressjs.com/)-Framework für Node.js. Die Installationsanweisungen für den Quellcode finden Sie in der Infodatei des GitHub-Beispiels.
 
 [!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
@@ -346,10 +346,10 @@ Für diese Rendererfunktionen können die folgenden Parameter angegeben werden:
 
 Die Parameter `index` und `count` werden verwendet, um Ergebnisse zu nummerieren, HTML für Auflistungen zu generieren und Inhalte zu organisieren. Diese Parameter:
 
-* Berechnen die Miniaturbildgröße (die Breite variiert und weist einen Mindestwert von 120 Pixel auf, die Höhe ist auf 90 Pixel festgelegt).
-* Erstellen das HTML-`<img>`-Tag, mit dem das Miniaturbild angezeigt wird.
-* Erstellen die `<a>`-HTML-Tags, die eine Verknüpfung mit dem Bild und der Seite, die das Bild enthält, darstellen.
-* Erstellen die Beschreibung, die Informationen über das Bild und die Website, auf der sich das Bild befindet, angibt.
+* Berechnet die Miniaturbildgröße (die Breite variiert und weist einen Mindestwert von 120 Pixel auf, die Höhe ist auf 90 Pixel festgelegt).
+* Erstellt das HTML-`<img>`-Tag, mit dem das Miniaturbild angezeigt wird.
+* Erstellt die `<a>`-HTML-Tags, die eine Verknüpfung mit dem Bild und der Seite, die das Bild enthält, darstellen.
+* Erstellt die Beschreibung, die Informationen über das Bild und die Website, auf der sich das Bild befindet, angibt.
 
 ```javascript
     images: function (item, index, count) {

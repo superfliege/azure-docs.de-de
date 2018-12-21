@@ -1,7 +1,7 @@
 ---
-title: 'Schnellstart: Ausführen einer Suche mit Node.js – Bing-Websuche-API'
+title: 'Schnellstart: Ausführen einer Websuche mit Node.js – Bing-Websuche-REST-API'
 titleSuffix: Azure Cognitive Services
-description: In dieser Schnellstartanleitung wird beschrieben, wie Sie die Bing-Websuche-API zum ersten Mal aufrufen, indem Sie Node.js verwenden, und wie Sie eine JSON-Antwort erhalten.
+description: Verwenden Sie diese Schnellstartanleitung zum Senden von Anforderungen an die REST-API der Bing-Websuche mit Node.js, um eine JSON-Antwort zu erhalten.
 services: cognitive-services
 author: aahill
 manager: cgronlun
@@ -10,14 +10,15 @@ ms.component: bing-web-search
 ms.topic: quickstart
 ms.date: 9/26/2018
 ms.author: aahi
-ms.openlocfilehash: 4c6e74d4ce9e3c1f9d81e640f7fa8071f73ec776
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.custom: seodec2018
+ms.openlocfilehash: 3d8b323a316dcef10a0d7beb5d1d2dd122b0e2ba
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52309296"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53255583"
 ---
-# <a name="quickstart-use-nodejs-to-call-the-bing-web-search-api"></a>Schnellstart: Verwenden von Node.js zum Aufrufen der Bing-Websuche-API  
+# <a name="search-the-web-using-the-bing-web-search-rest-api-and-nodejs"></a>Suchen im Internet unter Verwendung von Bing-Websuche-REST-API und Node.js
 
 Verwenden Sie diese Schnellstartanleitung, um die Bing-Websuche-API zum ersten Mal aufzurufen und innerhalb von weniger als zehn Minuten eine JSON-Antwort zu erhalten.
 

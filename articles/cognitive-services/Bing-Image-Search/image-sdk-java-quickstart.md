@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Suchen nach Bildern mit dem Bing-Bildersuche-SDK für Java'
+title: 'Schnellstart: Suchen nach Bildern – Bing-Bildersuche-SDK für Java'
 description: Führen Sie mithilfe dieses Schnellstarts Ihre erste Bildersuche mit dem Bing-Bildersuche-SDK aus, das ein Wrapper für die API ist und die gleichen Funktionen enthält. Diese einfache Java-Anwendung sendet eine Bildersuchabfrage, analysiert die JSON-Antwort und zeigt die URL des ersten zurückgegebenen Bilds an.
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
@@ -10,14 +10,15 @@ ms.component: bing-image-search
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: aahi
-ms.openlocfilehash: 81bd7356579b3e4f7b82497bb2163c85374fd0d9
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.custom: seodec2018
+ms.openlocfilehash: 810cdc2029462b225b5d53634f1730cbcbb8d785
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52316326"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53254886"
 ---
-# <a name="quickstart-search-for-images-with-the-bing-image-search-sdk-and-java"></a>Schnellstart: Suchen nach Bildern mit dem Bing-Bildersuche-SDK und Java
+# <a name="quickstart-search-for-images-with-the-bing-image-search-sdk-for-java"></a>Schnellstart: Suchen nach Bildern mit dem Bing-Bildersuche-SDK für Java
 
 Führen Sie mithilfe dieses Schnellstarts Ihre erste Bildersuche mit dem Bing-Bildersuche-SDK aus, das ein Wrapper für die API ist und die gleichen Funktionen enthält. Diese einfache Java-Anwendung sendet eine Bildersuchabfrage, analysiert die JSON-Antwort und zeigt die URL des ersten zurückgegebenen Bilds an.
 

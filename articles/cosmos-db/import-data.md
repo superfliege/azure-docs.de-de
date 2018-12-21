@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 11/15/2018
 ms.author: dech
 ms.custom: mvc
-ms.openlocfilehash: e3968155c2619b5d6b09b68a59ff01607c45fa2b
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 57c70716ac0e3156440d4a602704cb0ac2e30130
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52843545"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53091158"
 ---
 # <a name="use-data-migration-tool-to-migrate-your-data-to-azure-cosmos-db"></a>Migrieren Ihrer Daten zu Azure Cosmos DB mithilfe des Datenmigrationstools
 
@@ -24,7 +24,7 @@ Welche API wird mit Azure Cosmos DB verwendet?
 
 * **[SQL-API:](documentdb-introduction.md)** Sie können eine beliebige Quelloption des Datenmigrationstools verwenden, um Daten zu importieren.
 * **[Table-API:](table-introduction.md)** Daten können mithilfe des Datenmigrationstools oder mithilfe von AzCopy importiert werden. Weitere Informationen finden Sie unter [Importieren von Daten für die Verwendung mit der Tabellen-API von Azure Cosmos DB](table-import.md).
-* **[MongoDB-API:](mongodb-introduction.md)** Das Datenmigrationstool unterstützt die Azure Cosmos DB-MongoDB-API derzeit weder als Quelle noch als Ziel. Wenn Sie die Daten in MongoDB-API-Sammlungen in Azure-Cosmos DB oder aus diesen migrieren möchten, finden Sie Anweisungen dazu unter [Azure Cosmos DB: Migrieren von Daten für die MongoDB-API](mongodb-migrate.md). Sie können weiterhin das Datenmigrationstool verwenden, um Daten von MongoDB in Azure Cosmos DB-SQL-API-Sammlungen für die Verwendung mit der SQL-API zu exportieren.
+* **[MongoDB-API:](mongodb-introduction.md)** Das Datenmigrationstool unterstützt die Azure Cosmos DB-MongoDB-API derzeit weder als Quelle noch als Ziel. Wenn Sie die Daten zu MongoDB-API-Sammlungen in Azure Cosmos DB oder aus diesen migrieren möchten, finden Sie unter [Azure Cosmos DB: Migrieren von Daten für die MongoDB-API](mongodb-migrate.md) entsprechende Anweisungen. Sie können weiterhin das Datenmigrationstool verwenden, um Daten von MongoDB in Azure Cosmos DB-SQL-API-Sammlungen für die Verwendung mit der SQL-API zu exportieren.
 * **[Gremlin-API:](graph-introduction.md)** Das Datenmigrationstool wird derzeit nicht als Importtool für Gremlin-API-Konten unterstützt.
 
 Dieses Tutorial enthält die folgenden Aufgaben:
@@ -42,7 +42,7 @@ Bevor Sie die Anweisungen in diesem Artikeln befolgen, müssen Sie die folgenden
 
 * **Erhöhung des Durchsatzes:** Die Dauer der Datenmigration richtet sich nach dem Durchsatzwert, den Sie für eine einzelne Sammlung oder eine Gruppe von Sammlungen einrichten. Achten Sie darauf, dass Sie den Durchsatz für größere Datenmigrationen erhöhen. Nachdem die Migration abgeschlossen ist, können Sie den Durchsatz wieder verringern, um Kosten zu sparen. Weitere Informationen zum Erhöhen des Durchsatzes im Azure-Portal finden Sie in den Artikeln zu den [Leistungsebenen](performance-levels.md) und [Tarifen](https://azure.microsoft.com/pricing/details/cosmos-db/) in Azure Cosmos DB.
 
-* **Erstellen von Azure Cosmos DB-Ressourcen:** Bevor Sie mit der Migration von Daten beginnen, erstellen Sie Ihre gesamten Sammlungen vorab im Azure-Portal. Wenn Sie eine Migration zu einem Azure Cosmos DB-Konto mit Durchsatz auf Datenbankebene durchführen möchten, geben Sie beim Erstellen der Azure Cosmos DB-Sammlungen einen Partitionsschlüssel an.
+* **Erstellen von Azure Cosmos DB-Ressourcen:** Bevor Sie mit der Migration von Daten beginnen, erstellen Sie zunächst alle Ihre Sammlungen im Azure-Portal. Wenn Sie eine Migration zu einem Azure Cosmos DB-Konto mit Durchsatz auf Datenbankebene durchführen möchten, geben Sie beim Erstellen der Azure Cosmos DB-Sammlungen einen Partitionsschlüssel an.
 
 ## <a id="Overviewl"></a>Übersicht
 
@@ -198,7 +198,7 @@ Mit der Importprogrammoption für CSV-Dateiquellen können Sie eine oder mehrere
 
 Beachten Sie die Aliase wie z. B."DomainInfo.Domain_Name" und "RedirectInfo.Redirecting". Durch Angabe des Schachtelungstrennzeichens „.“ erstellt das Importtool während des Imports die Filialdokumente „DomainInfo“ und „RedirectInfo“. Hier finden Sie ein Beispiel für ein Zieldokument in Azure Cosmos DB:
 
-*{ "DomainInfo": { "Domain_Name": "ACUS.GOV", "Domain_Name_Address": "http://www.ACUS.GOV" }, "Federal Agency": "Administrative Conference of the United States", "RedirectInfo": { "Redirecting": "0", "Redirect_Destination": "" }, "id": "9cc565c5-ebcd-1c03-ebd3-cc3e2ecd814d" }*
+*{ "DomainInfo": { "Domain_Name": "ACUS.GOV", "Domain_Name_Address": "https://www.ACUS.GOV" }, "Federal Agency": "Administrative Conference of the United States", "RedirectInfo": { "Redirecting": "0", "Redirect_Destination": "" }, "id": "9cc565c5-ebcd-1c03-ebd3-cc3e2ecd814d" }*
 
 Das Importtool versucht, Typinformationen für Werte ohne Anführungszeichen in CSV-Dateien abzuleiten. (Werte in Anführungszeichen werden immer als Zeichenfolgen behandelt.)  Typen werden in der folgenden Reihenfolge identifiziert: number, datetime, boolean.  
 
@@ -302,9 +302,9 @@ Zum Importieren von Daten aus einer einzelnen Azure Cosmos DB-Sammlung geben Sie
 
 Die Importprogrammoption für Azure Cosmos DB-Quellen weist die folgenden erweiterten Optionen auf:
 
-1. „Include Internal Fields“ (Interne Felder einschließen): Gibt an, ob Azure Cosmos DB-Dokumentsystemeigenschaften (wie etwa „_rid“ oder „_ts“) in den Export eingeschlossen werden sollen.
-2. „Number of Retries on Failure“ (Anzahl der Wiederholungsversuche bei Fehler): Gibt an, wie häufig bei einem vorübergehenden Fehler (beispielsweise bei einer Unterbrechung der Netzwerkverbindung) versucht werden soll, eine Verbindung mit Azure Cosmos DB herzustellen.
-3. Wiederholungsintervall: Gibt an, wie lang bei einem vorübergehenden Fehler (beispielsweise bei einer Unterbrechung der Netzwerkverbindung) gewartet werden soll, bevor erneut versucht wird, eine Verbindung mit Azure Cosmos DB herzustellen.
+1. Include Internal Fields (Interne Felder einschließen): Gibt an, ob Azure Cosmos DB-Dokumentsystemeigenschaften (beispielsweise „_rid“ oder „_ts“) in den Export eingeschlossen werden sollen.
+2. Number of Retries on Failure (Anzahl der Wiederholungsversuche bei Fehler) Gibt an, wie häufig bei einem vorübergehenden Fehler (beispielsweise bei einer Unterbrechung der Netzwerkverbindung) versucht werden soll, eine Verbindung mit Azure Cosmos DB herzustellen.
+3. Wiederholungsintervall: Gibt an, wie lange bei einem vorübergehenden Fehler (beispielsweise bei einer Unterbrechung der Netzwerkverbindung) gewartet werden soll, bevor erneut versucht wird, eine Verbindung mit Azure Cosmos DB herzustellen.
 4. Verbindungsmodus: Gibt den Verbindungsmodus an, der mit Azure Cosmos DB verwendet werden soll. Verfügbare Optionen sind DirectTcp, DirectHttps und Gateway. Die Direktverbindungsmodi sind schneller, der Gatewaymodus ist besser für Firewalls geeignet, da nur Port 443 verwendet wird.
 
 ![Screenshot der erweiterten Optionen für Azure Cosmos DB-Quellen](./media/import-data/documentdbsourceoptions.png)
@@ -396,11 +396,11 @@ Darüber hinaus können Sie beim Importieren von Datentypen (beispielsweise aus 
 Das Azure Cosmos DB-Massenimportprogramm weist die folgenden erweiterten Optionen auf:
 
 1. Batchgröße: Das Tool verwendet standardmäßig eine Batchgröße von 50.  Wenn die zu importierenden Dokumente groß sind, erwägen Sie, die Batchgröße zu verringern. Wenn die zu importierenden Dokumente dagegen klein sind, erwägen Sie, die Batchgröße zu erhöhen.
-2. „Max Script Size (bytes)“ (Maximale Skriptgröße (Bytes)): Das Tool verwendet standardmäßig eine maximale Skriptgröße von 512 KB.
+2. Max Script Size (bytes) (Maximale Skriptgröße (Bytes)): Das Tool verwendet standardmäßig eine maximale Skriptgröße von 512 KB.
 3. Disable Automatic Id Generation (Automatische ID-Generierung deaktivieren): Wenn jedes zu importierende Dokument ein ID-Feld enthält, kann die Leistung durch Auswahl dieser Option verbessert werden. Dokumente ohne Feld für eine eindeutige ID werden nicht importiert.
 4. Update Existing Documents (Vorhandene Dokumente aktualisieren): Das Tool ersetzt vorhandene Dokumente mit ID-Konflikten standardmäßig nicht. Bei Auswahl dieser Option können bereits vorhandene Dokumente mit übereinstimmenden IDs überschrieben werden. Diese Funktion ist hilfreich für geplante Datenmigrationen, die vorhandene Dokumente aktualisieren.
-5. Number of Retries on Failure (Anzahl von Wiederholungsversuchen bei einem Fehler): Die Anzahl von Verbindungsversuchen, die bei einem vorübergehenden Fehler (beispielsweise bei einer Unterbrechung der Netzwerkverbindung) ausgeführt werden, um eine Verbindung mit Azure Cosmos DB herzustellen.
-6. Wiederholungsintervall: Gibt an, wie lang bei einem vorübergehenden Fehler (beispielsweise bei einer Unterbrechung der Netzwerkverbindung) gewartet werden soll, bevor erneut versucht wird, eine Verbindung mit Azure Cosmos DB herzustellen.
+5. Number of Retries on Failure (Anzahl der Wiederholungsversuche bei Fehler) Die Anzahl von Verbindungsversuchen, die bei einem vorübergehenden Fehler (beispielsweise bei einer Unterbrechung der Netzwerkverbindung) ausgeführt werden, um eine Verbindung mit Azure Cosmos DB herzustellen.
+6. Wiederholungsintervall: Gibt an, wie lange bei einem vorübergehenden Fehler (beispielsweise bei einer Unterbrechung der Netzwerkverbindung) gewartet werden soll, bevor erneut versucht wird, eine Verbindung mit Azure Cosmos DB herzustellen.
 7. Verbindungsmodus: Gibt den Verbindungsmodus an, der mit Azure Cosmos DB verwendet werden soll. Verfügbare Optionen sind DirectTcp, DirectHttps und Gateway. Die Direktverbindungsmodi sind schneller, der Gatewaymodus ist besser für Firewalls geeignet, da nur Port 443 verwendet wird.
 
 ![Screenshot der erweiterten Optionen für den Azure Cosmos DB-Massenimport](./media/import-data/docdbbulkoptions.png)
@@ -450,10 +450,10 @@ Während des Imports steht eine Reihe von erweiterten Optionen zur Verfügung. B
 
 Das Programm für den Import von sequenziellen Azure Cosmos DB-Datensätzen weist die folgenden erweiterten Optionen auf:
 
-1. „Number of Parallel Requests“ (Anzahl paralleler Anforderungen): Das Programm verwendet standardmäßig zwei parallele Anforderungen. Wenn die zu importierenden Dokumente klein sind, erwägen Sie, die Anzahl paralleler Anforderungen zu erhöhen. Ist die Anzahl zu groß, wird für den Importvorgang unter Umständen eine Ratenbegrenzung festgelegt.
+1. Number of Parallel Requests (Anzahl paralleler Anforderungen): Das Programm verwendet standardmäßig zwei parallele Anforderungen. Wenn die zu importierenden Dokumente klein sind, erwägen Sie, die Anzahl paralleler Anforderungen zu erhöhen. Ist die Anzahl zu groß, wird für den Importvorgang unter Umständen eine Ratenbegrenzung festgelegt.
 2. Disable Automatic Id Generation (Automatische ID-Generierung deaktivieren): Wenn jedes zu importierende Dokument ein ID-Feld enthält, kann die Leistung durch Auswahl dieser Option verbessert werden. Dokumente ohne Feld für eine eindeutige ID werden nicht importiert.
 3. Update Existing Documents (Vorhandene Dokumente aktualisieren): Das Tool ersetzt vorhandene Dokumente mit ID-Konflikten standardmäßig nicht. Bei Auswahl dieser Option können bereits vorhandene Dokumente mit übereinstimmenden IDs überschrieben werden. Diese Funktion ist hilfreich für geplante Datenmigrationen, die vorhandene Dokumente aktualisieren.
-4. Number of Retries on Failure (Anzahl von Wiederholungsversuchen bei einem Fehler): Die Anzahl von Verbindungsversuchen, die bei einem vorübergehenden Fehler (beispielsweise bei einer Unterbrechung der Netzwerkverbindung) ausgeführt werden, um eine Verbindung mit Azure Cosmos DB herzustellen.
+4. Number of Retries on Failure (Anzahl der Wiederholungsversuche bei Fehler) Die Anzahl von Verbindungsversuchen, die bei einem vorübergehenden Fehler (beispielsweise bei einer Unterbrechung der Netzwerkverbindung) ausgeführt werden, um eine Verbindung mit Azure Cosmos DB herzustellen.
 5. Wiederholungsintervall: Gibt an, wie lange bei einem vorübergehenden Fehler (beispielsweise bei einer Unterbrechung der Netzwerkverbindung) gewartet werden soll, bevor erneut versucht wird, eine Verbindung mit Azure Cosmos DB herzustellen.
 6. Verbindungsmodus: Gibt den Verbindungsmodus an, der mit Azure Cosmos DB verwendet werden soll. Verfügbare Optionen sind DirectTcp, DirectHttps und Gateway. Die Direktverbindungsmodi sind schneller, der Gatewaymodus ist besser für Firewalls geeignet, da nur Port 443 verwendet wird.
 

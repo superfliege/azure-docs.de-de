@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 10/19/2018
 ms.author: sethm
 ms.reviewer: shnatara
-ms.openlocfilehash: e5ce479940faaaae95467fe6d426e999b4c6569f
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 46dd9c786fddb2f6ce9fb8a761a1b9f135a82d74
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49468669"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52959195"
 ---
 # <a name="change-the-owner-for-an-azure-stack-user-subscription"></a>Ändern des Besitzers für ein Azure Stack-Benutzerabonnement
 
@@ -28,7 +28,7 @@ Azure Stack-Bediener können mithilfe von PowerShell den Abrechnungsbesitzer ein
 
 Einem Abonnement sind zwei Arten von *Besitzern* zugewiesen:
 
-- **Abrechnungsbesitzer:** Der Abrechnungsbesitzer ist standardmäßig das Benutzerkonto, das das Abonnement aus einem Angebot erhält und dann für die Abrechnungsbeziehung dieses Abonnements zuständig ist. Dieses Konto ist gleichzeitig ein Administrator des Abonnements. Für ein Abonnement kann jeweils nur ein einzelnes Benutzerkonto als Abrechnungsbesitzer festgelegt sein. Bei einem Abrechnungsbesitzer handelt es sich häufig um eine Führungskraft der Organisation oder um einen Teamleiter. 
+- **Abrechnungsbesitzer**: Der Abrechnungsbesitzer ist standardmäßig das Benutzerkonto, das das Abonnement aus einem Angebot erhält und dann für die Abrechnungsbeziehung dieses Abonnements zuständig ist. Dieses Konto ist gleichzeitig ein Administrator des Abonnements. Für ein Abonnement kann jeweils nur ein einzelnes Benutzerkonto als Abrechnungsbesitzer festgelegt sein. Bei einem Abrechnungsbesitzer handelt es sich häufig um eine Führungskraft der Organisation oder um einen Teamleiter. 
 
   Der Abrechnungsbesitzer wird mithilfe des PowerShell-Cmdlets [Set-AzsUserSubscription](/powershell/module/azs.subscriptions.admin/set-azsusersubscription) geändert.  
 
@@ -40,8 +40,8 @@ Einem Abonnement sind zwei Arten von *Besitzern* zugewiesen:
 
 Führen Sie das folgende Skript aus, um den Abrechnungsbesitzer eines Benutzerabonnements zu ändern. Der für die Skriptausführung verwendete Computer muss eine Verbindung mit Azure Stack herstellen und mindestens Version 1.3.0 des Azure Stack PowerShell-Moduls ausführen. Weitere Informationen finden Sie unter [Installieren von Azure Stack PowerShell](azure-stack-powershell-install.md). 
 
-> [!Note]  
->  In einer mehrinstanzenfähigen Azure Stack-Instanz muss sich der neue Besitzer im gleichen Verzeichnis befinden wie der aktuelle Besitzer. Wenn Sie die Besitzerrolle für das Abonnement einem Benutzer zuweisen möchten, der sich in einem anderen Verzeichnis befindet, müssen Sie zuerst den [Benutzer als Gast in Ihr Verzeichnis einladen](../active-directory/b2b/add-users-administrator.md). 
+> [!Note]
+>  In einer mehrinstanzenfähigen Azure Stack-Instanz muss sich der neue Besitzer in demselben Verzeichnis wie der aktuelle Besitzer befinden. Wenn Sie die Besitzerrolle für das Abonnement einem Benutzer zuweisen möchten, der sich in einem anderen Verzeichnis befindet, müssen Sie zuerst den [Benutzer als Gast in Ihr Verzeichnis einladen](../active-directory/b2b/add-users-administrator.md). 
 
 Ersetzen Sie vor der Skriptausführung die folgenden Werte im Skript: 
  

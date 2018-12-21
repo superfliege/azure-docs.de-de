@@ -1,5 +1,5 @@
 ---
-title: Erstellen einer App mit mehreren Containern (Vorschauversion) in Azure-Web-App für Container per Docker Compose-Konfiguration
+title: 'Erstellen einer App mit mehreren Containern mithilfe von Docker Compose: Azure App Service'
 description: Stellen Sie in wenigen Minuten Ihre erste App mit mehreren Containern in Azure-Web-App für Container bereit.
 keywords: Azure App Service, Web-App, Linux, Docker, Compose, mehrere Container, Web-App für Container, Container, Kubernetes, Wordpress, Azure Database for MySQL, Produktionsdatenbank mit Containern
 services: app-service\web
@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 06/22/2018
 ms.author: msangapu
-ms.custom: mvc
-ms.openlocfilehash: 1d54d914edb306b89dc6f2604aa5af3d17cb535d
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.custom: seodec18
+ms.openlocfilehash: 404be7a064e0e4b09178830b7802192e8775e121
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45576781"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53316574"
 ---
-# <a name="create-a-multi-container-preview-app-using-web-app-for-containers"></a>Erstellen einer App mit mehreren Containern (Vorschauversion) mit Web-App für Container
+# <a name="create-a-multi-container-preview-app-using-a-docker-compose-configuration"></a>Erstellen einer App mit mehreren Containern (Vorschauversion) mithilfe einer Docker Compose-Konfiguration
 
 [Web-App für Container](app-service-linux-intro.md) umfasst eine flexible Möglichkeit zum Verwenden von Docker-Images. In dieser Schnellstartanleitung wird veranschaulicht, wie Sie eine App mit mehreren Containern für Web-App für Container in [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) per Docker Compose-Konfiguration bereitstellen. Für Kubernetes und eine vollständige End-to-End-Lösung mit Azure-Datenbank für MySQL führen Sie die Anweisungen im [Tutorial zu Apps mit mehreren Containern](tutorial-multi-container-app.md).
 

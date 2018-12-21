@@ -1,5 +1,5 @@
 ---
-title: 'Azure Active Directory: Übersicht | Microsoft-Dokumentation'
+title: Was ist Azure Active Directory? | Microsoft-Dokumentation
 description: Hier finden Sie Informationen zu Azure Active Directory – insbesondere zur erforderlichen Terminologie, zur Zielgruppe, zur Lizenzierung sowie zu zugehörigen Features.
 services: active-directory
 author: eross-msft
@@ -8,12 +8,13 @@ ms.service: active-directory
 ms.topic: overview
 ms.date: 11/13/2018
 ms.author: lizross
-ms.openlocfilehash: 1b1561ed8470c39b13def72774e253db28bf58d8
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.custom: it-pro, seodec18
+ms.openlocfilehash: 80c3108d468465e68d554b3d36c527c5ccd4a13c
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51686584"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53085925"
 ---
 # <a name="what-is-azure-active-directory"></a>Was ist Azure Active Directory? 
 Azure Active Directory (Azure AD) ist der cloudbasierte Identitäts- und Zugriffsverwaltungsdienst von Microsoft. Azure AD hilft Ihren Mitarbeitern bei der Anmeldung und beim Zugriff auf folgende Ressourcen:
@@ -27,7 +28,7 @@ Anhand der verschiedenen Poster aus der Reihe [Microsoft-Cloud-Identität für E
 ## <a name="who-uses-azure-ad"></a>Azure AD-Zielgruppe
 Azure AD ist für folgende Benutzer konzipiert:
 
-- **IT-Administratoren:** Als IT-Administrator können Sie mit Azure AD den Zugriff auf Ihre Apps und App-Ressourcen steuern, um die Anforderungen Ihres Unternehmens zu erfüllen. So können Sie mit Azure AD beispielsweise beim Zugriff auf wichtige Organisationsressourcen eine mehrstufige Authentifizierung erzwingen. Darüber hinaus können Sie mit Azure AD die Benutzerbereitstellung zwischen Ihrem vorhandenen Windows Server-AD und Ihren Cloud-Apps (einschließlich Office 365) automatisieren. Azure AD bietet außerdem leistungsfähige Tools zum automatischen Schutz von Benutzeridentitäten und Anmeldeinformationen, um Ihre Anforderungen in puncto Zugriffssteuerung zu erfüllen. Registrieren Sie sich für eine [kostenlose 30-tägige Azure Active Directory Premium-Testversion](https://azure.microsoft.com/trial/get-started-active-directory/), um die Lösung kennenzulernen.
+- **IT-Administratoren.** Als IT-Administrator können Sie mit Azure AD den Zugriff auf Ihre Apps und App-Ressourcen steuern, um die Anforderungen Ihres Unternehmens zu erfüllen. So können Sie mit Azure AD beispielsweise beim Zugriff auf wichtige Organisationsressourcen eine mehrstufige Authentifizierung erzwingen. Darüber hinaus können Sie mit Azure AD die Benutzerbereitstellung zwischen Ihrem vorhandenen Windows Server-AD und Ihren Cloud-Apps (einschließlich Office 365) automatisieren. Azure AD bietet außerdem leistungsfähige Tools zum automatischen Schutz von Benutzeridentitäten und Anmeldeinformationen, um Ihre Anforderungen in puncto Zugriffssteuerung zu erfüllen. Registrieren Sie sich für eine [kostenlose 30-tägige Azure Active Directory Premium-Testversion](https://azure.microsoft.com/trial/get-started-active-directory/), um die Lösung kennenzulernen.
 
 - **App-Entwickler:** Dank eines standardbasierten Ansatzes können App-Entwickler ihre App mithilfe von Azure AD mit einmaligem Anmelden (Single Sign-On, SSO) ausstatten und es Benutzern so ermöglichen, ihre bereits vorhandenen Anmeldeinformationen zu verwenden. Azure AD stellt außerdem APIs bereit, die Sie bei der Entwicklung personalisierter App-Umgebungen unter Verwendung vorhandener Organisationsdaten unterstützen. Registrieren Sie sich für eine [kostenlose 30-tägige Azure Active Directory Premium-Testversion](https://azure.microsoft.com/trial/get-started-active-directory/), um die Lösung kennenzulernen. Weitere Informationen finden Sie auch unter [Azure Active Directory für Entwickler](../develop/index.yml).
 
@@ -51,12 +52,12 @@ Zur Erweiterung Ihrer Azure AD-Implementierung können Sie auch kostenpflichtige
 
 - **Featurelizenzen mit nutzungsbasierter Bezahlung:** Es sind auch zusätzliche Featurelizenzen verfügbar (beispielsweise Azure Active Directory B2C). B2C kann Ihnen dabei helfen, Identitäts- und Zugriffsverwaltungslösungen für Ihre kundenorientierten Apps bereitzustellen. Weitere Informationen finden Sie in der [Dokumentation für Azure Active Directory B2C](../../active-directory-b2c/index.yml).
 
-Weitere Informationen zum Zuordnen eines Azure-Abonnements zu Azure AD finden Sie unter [Zuweisen oder Hinzufügen eines Azure-Abonnements zu Azure Active Directory](active-directory-how-subscriptions-associated-directory.md). Weitere Informationen zum Zuweisen von Lizenzen zu Benutzern finden Sie unter [Zuweisen oder Entfernen von Azure Active Directory-Lizenzen](license-users-groups.md).
+Weitere Informationen zum Zuordnen eines Azure-Abonnements zu Azure AD finden Sie unter [ Zuweisen oder Hinzufügen eines Azure-Abonnements zu Azure Active Directory](active-directory-how-subscriptions-associated-directory.md) und weitere Informationen zum Zuweisen von Lizenzen zu Ihren Benutzern unter [ Zuweisen oder Entfernen von Azure Active Directory-Lizenzen](license-users-groups.md).
 
-## <a name="terminology"></a>Terminologie
+## <a name="terminology"></a>Begriff
 Zum besseren Verständnis von Azure AD und der dazugehörigen Dokumentation sollten Sie sich mit den folgenden Begriffen vertraut machen:
 
-|Begriff oder Konzept|Beschreibung|
+|Begriff oder Konzept|BESCHREIBUNG|
 |---------------|-----------|
 |Azure-Abonnement| Dient zur Bezahlung für Azure-Clouddienste. Sie können über mehrere Abonnements verfügen, und die Abonnements sind mit einer Kreditkarte verknüpft.|
 |Azure-Mandant| Eine dedizierte, vertrauenswürdige Instanz von Azure AD, die automatisch erstellt wird, wenn sich Ihre Organisation für ein Abonnement eines Microsoft-Clouddiensts wie Microsoft Azure, Microsoft Intune oder Office 365 registriert. Ein Azure-Mandant stellt eine einzelne Organisation dar.|
@@ -67,14 +68,14 @@ Zum besseren Verständnis von Azure AD und der dazugehörigen Dokumentation soll
 |Benutzerdefinierte Domäne|Jedes neue Azure AD-Verzeichnis verfügt über einen anfänglichen Domänennamen im Format „<Domänenname>.onmicrosoft.com“. Neben diesem anfänglichen Namen können Sie der Liste die Domänenamen Ihrer Organisation hinzufügen – einschließlich der Namen, die Sie für Ihre geschäftliche Tätigkeit nutzen und die von Benutzern für den Zugriff auf Ihre Organisationsressourcen verwendet werden. Durch Hinzufügen benutzerdefinierter Domänennamen können Sie Benutzernamen erstellen, mit denen Ihre Benutzer vertraut sind (beispielsweise alain@contoso.com).|
 |Kontoadministrator|Diese klassische Abonnementadministratorrolle ist konzeptionell der Abrechnungsbesitzer eines Abonnements. Sie hat Zugriff auf das [Azure-Kontocenter](https://account.azure.com/Subscriptions) und ermöglicht die Verwaltung sämtlicher Abonnements in einem Konto. Weitere Informationen finden Sie unter [Administratorrollen für klassische Abonnements, Azure RBAC-Rollen und Azure AD-Administratorrollen](../../role-based-access-control/rbac-and-directory-admin-roles.md).|
 |Dienstadministrator|Diese klassische Abonnementadministratorrolle ermöglicht die Verwaltung sämtlicher Azure-Ressourcen (einschließlich Zugriff). Sie hat den gleichen Zugriff wie ein Benutzer, dem für den Abonnementbereich die Rolle „Besitzer“ zugewiesen ist. Weitere Informationen finden Sie unter [Administratorrollen für klassische Abonnements, Azure RBAC-Rollen und Azure AD-Administratorrollen](../../role-based-access-control/rbac-and-directory-admin-roles.md).|
-|Besitzer|Diese Rolle hilft Ihnen bei der Verwaltung aller Azure-Ressourcen (einschließlich Zugriff). Sie basiert auf einem neueren Autorisierungssystem namens „rollenbasierte Zugriffssteuerung“ (Role-Based Access Control, RBAC), das eine präzise Zugriffsverwaltung für Azure-Ressourcen ermöglicht. Weitere Informationen finden Sie unter [Administratorrollen für klassische Abonnements, Azure RBAC-Rollen und Azure AD-Administratorrollen](../../role-based-access-control/rbac-and-directory-admin-roles.md).|
+|Owner (Besitzer)|Diese Rolle hilft Ihnen bei der Verwaltung aller Azure-Ressourcen (einschließlich Zugriff). Sie basiert auf einem neueren Autorisierungssystem namens „rollenbasierte Zugriffssteuerung“ (Role-Based Access Control, RBAC), das eine präzise Zugriffsverwaltung für Azure-Ressourcen ermöglicht. Weitere Informationen finden Sie unter [Administratorrollen für klassische Abonnements, Azure RBAC-Rollen und Azure AD-Administratorrollen](../../role-based-access-control/rbac-and-directory-admin-roles.md).|
 |Globaler Azure AD-Administrator|Diese Administratorrolle wird automatisch dem Ersteller des Azure AD-Mandanten zugewiesen. Globale Administratoren können sämtliche administrativen Funktionen für Azure AD sowie für jeden beliebigen Azure AD-Verbunddienst ausführen. Hierzu zählen etwa Exchange Online, SharePoint Online und Skype for Business Online. Es können mehrere globale Administratoren vorhanden sein, aber nur globale Administratoren können Benutzern Administratorrollen zuweisen (einschließlich der globalen Administratorrolle).<br><br>**Hinweis**<br>Diese Administratorrolle wird im Azure-Portal als globaler Administrator bezeichnet, in der Microsoft Graph-API und der Azure AD Graph-API sowie in Azure AD PowerShell heißt sie dagegen **Unternehmensadministrator**.<br><br>Weitere Informationen zu den unterschiedlichen Administratorrollen finden Sie unter [Berechtigungen der Administratorrolle in Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md).|
 |Microsoft-Konto (auch MSA genannt)|Persönliche Microsoft-Konten, die Zugriff auf Ihre endbenutzerorientierten Microsoft-Produkte und -Clouddienste wie Outlook, OneDrive, MSN, Xbox LIVE oder Office 365 bieten. Ihr Microsoft-Konto wird im von Microsoft betriebenen Microsoft-Kontosystem für Endbenutzeridentitäten erstellt und gespeichert.|
 
 ## <a name="what-features-work-in-azure-ad"></a>Welche Features können in Azure AD verwendet werden?
 Nachdem Sie Ihre Azure AD-Lizenz gewählt haben, erhalten Sie Zugriff auf einige oder alle der folgenden Features für Ihre Organisation:
 
-|Kategorie|Beschreibung|
+|Category (Kategorie)|BESCHREIBUNG|
 |-------|-----------|
 |Anwendungsverwaltung|Verwalten Sie Ihre cloudbasierten und lokalen Apps, und verwenden Sie den Anwendungsproxy, einmaliges Anmelden, das Portal „Meine Apps“ (auch „Zugriffsbereich“ genannt) sowie SaaS-Apps (Software as-a-Service). Weitere Informationen finden Sie unter [Bereitstellen von sicherem Remotezugriff auf lokale Anwendungen](../manage-apps/application-proxy.md) sowie in der [Dokumentation zur Anwendungsverwaltung](../manage-apps/index.yml).|
 |Authentifizierung|Verwalten Sie die Self-Service-Kennwortzurücksetzung von Azure Active Directory, die Multi-Factor Authentication, eine benutzerdefinierte Liste gesperrter Kennwörter und Smart Lockout. Weitere Informationen finden Sie in der [Dokumentation zur Azure AD-Authentifizierung](../authentication/index.yml).|

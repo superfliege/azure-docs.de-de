@@ -1,24 +1,27 @@
 ---
-title: Tutorial für Azure Container Service – Aktualisieren einer Anwendung
+title: '(VERALTET) Tutorial für Azure Container Service: Aktualisieren einer Anwendung'
 description: Tutorial für Azure Container Service – Aktualisieren einer Anwendung
 services: container-service
-author: neilpeterson
+author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 02/26/2018
-ms.author: nepeters
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 9cb5769d7f54a1036bf14199c87961c95ed2e7ce
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 99e282b720bb29ed5fb94ad2c9779ae56a019836
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39432405"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52993511"
 ---
-# <a name="update-an-application-in-kubernetes"></a>Aktualisieren einer Anwendung in Kubernetes
+# <a name="deprecated-update-an-application-in-kubernetes"></a>(VERALTET) Aktualisieren einer Anwendung in Kubernetes
 
-[!INCLUDE [aks-preview-redirect.md](../../../includes/aks-preview-redirect.md)]
+> [!TIP]
+> Die aktualisierte Version dieses Tutorials zu Azure Kubernetes Service finden Sie unter [Tutorial: Aktualisieren einer Anwendung in Azure Kubernetes Service (AKS)](../../aks/tutorial-kubernetes-app-update.md).
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
 Nach der Bereitstellung einer Anwendung in Kubernetes kann diese durch Angeben eines neuen Containerimages oder einer neuen Imageversion aktualisiert werden. Dabei wird das Update gestaffelt bereitgestellt, sodass jeweils nur ein Teil der Bereitstellung aktualisiert wird. Durch diese Art des Updates kann die Anwendung während des Updates weiterhin ausgeführt werden. Darüber hinaus wird ein Rollbackmechanismus bereitgestellt, falls ein Fehler bei der Bereitstellung auftritt. 
 

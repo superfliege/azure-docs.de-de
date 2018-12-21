@@ -1,5 +1,5 @@
 ---
-title: Tutorial zur Indizierung von Azure SQL-Datenbanken in Azure Search | Microsoft-Dokumentation
+title: 'Tutorial zur Indizierung von Azure SQL-Datenbanken im Azure-Portal: Azure Search'
 description: In diesem Tutorial erfahren Sie, wie Sie eine Azure SQL-Datenbank durchforsten, um durchsuchbare Daten zu extrahieren und einen Azure Search-Index aufzufüllen.
 author: HeidiSteen
 manager: cgronlun
@@ -9,14 +9,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 07/10/2018
 ms.author: heidist
-ms.openlocfilehash: b40d3a74904d6814eb01b5d41d10632e8c9af5be
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.custom: seodec2018
+ms.openlocfilehash: 872871d2ab9a9c693ad81081f24c8de68457982d
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38988794"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53312050"
 ---
-# <a name="tutorial-crawl-an-azure-sql-database-using-azure-search-indexers"></a>Tutorial: Durchforsten einer Azure SQL-Datenbank unter Verwendung von Azure Search-Indexern
+# <a name="tutorial-crawl-an-azure-sql-database-using-azure-search-indexers"></a>Tutorial: Auffüllung einer Azure SQL-Datenbank unter Verwendung von Azure Search-Indexern
 
 In diesem Tutorial erfahren Sie, wie Sie einen Indexer konfigurieren, um durchsuchbare Daten aus einer Azure SQL-Beispieldatenbank zu extrahieren. Ein [Indexer](search-indexer-overview.md) ist eine Komponente von Azure Search, die externe Datenquellen durchforstet und einen [Suchindex](search-what-is-an-index.md) auffüllt. Von allen Indexern wird der Indexer für Azure SQL-Datenbank am häufigsten verwendet. 
 
@@ -272,7 +273,7 @@ Alle Indexer werden im Portal angezeigt. Das gilt auch für den, den Sie gerade 
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Die schnellste Möglichkeit, das System nach einem Tutorial aufzuräumen, besteht im Löschen der Ressourcengruppe, die den Azure Search-Dienst enthält. Sie können nun die Ressourcengruppe löschen, um alle darin enthaltenen Daten endgültig zu löschen. Im Portal finden Sie den Namen der Ressourcengruppe auf der Seite „Übersicht“ des Azure Search-Diensts.
+Die schnellste Möglichkeit, das System nach einem Tutorial zu bereinigen, besteht im Löschen der Ressourcengruppe, die den Azure Search-Dienst enthält. Sie können dann die Ressourcengruppe löschen, um alle darin enthaltenen Daten endgültig zu löschen. Der Name der Ressourcengruppe befindet sich im Portal auf der Seite „Übersicht“ des Azure Search-Diensts.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

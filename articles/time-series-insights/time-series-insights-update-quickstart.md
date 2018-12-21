@@ -1,6 +1,6 @@
 ---
-title: Erkunden der Azure Time Series Insights-Demoumgebung (Vorschauversion) | Microsoft-Dokumentation
-description: Grundlagen der Azure Time Series Insights-Demoumgebung (Vorschauversion)
+title: 'Schnellstart: Erkunden der Azure Time Series Insights-Demoumgebung (Vorschauversion) | Microsoft-Dokumentation'
+description: Machen Sie sich mit der Azure Time Series Insights-Demoumgebung (Vorschauversion) vertraut.
 ms.service: time-series-insights
 services: time-series-insights
 author: ashannon7
@@ -9,92 +9,92 @@ manager: cshankar
 ms.reviewer: anshan
 ms.topic: quickstart
 ms.workload: big-data
-ms.custom: mvc
+ms.custom: mvc seodec18
 ms.date: 12/03/2018
-ms.openlocfilehash: 76bdc122cab5b4ee87717c9c4df9774ecc3bd8f7
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: de5e853db6c6a0e98dea9251cc07b526288574e1
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52888774"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53276825"
 ---
-# <a name="explore-the-azure-time-series-insights-preview-demo-environment"></a>Erkunden der Azure Time Series Insights-Demoumgebung (Vorschauversion)
+# <a name="quickstart-explore-the-azure-time-series-insights-preview-demo-environment"></a>Schnellstart: Erkunden der Azure Time Series Insights-Demoumgebung (Vorschauversion)
 
-Diese Schnellstartanleitung veranschaulicht die ersten Schritte mit dem Explorer für Azure Time Series Insights (TSI) (Vorschauversion) in einer kostenlosen Demoumgebung. Sie erfahren, wie Sie eine große Menge von industriellen IoT-Verlaufsdaten im Webbrowser visualisieren, und lernen die wichtigsten Features des Azure Time Series Insights-Explorers (Vorschauversion) kennen.
+Dieser Schnellstart veranschaulicht die Verwendung des Azure Time Series Insights-Explorers (Vorschauversion) in einer kostenlosen Demoumgebung. Sie erfahren, wie Sie große Mengen von industriellen historischen IoT-Daten im Webbrowser visualisieren, und lernen die wichtigsten Features des Time Series Insights-Explorers (Vorschauversion) kennen.
 
-Mit Azure TSI wird ein umfassendes PaaS-Angebot (Platform-as-a-Service) bereitgestellt, mit dem Sie stark kontextualisierte IoT-Daten mit Zeitreihenoptimierung für die Ad-hoc-Datenuntersuchung und betriebsbezogene Analysen erfassen, verarbeiten, speichern und abfragen können. Time Series Insights ist ein spezielles Angebot, das auf die einzigartigen Anforderungen von IoT-Bereitstellungen in der Industrie zugeschnitten ist.
+Time Series Insights ist ein End-to-End-PaaS-Angebot (Platform-as-a-Service). Der Dienst kann stark kontextualisierte, zeitreihenoptimierte IoT-Daten erfassen, verarbeiten, speichern und abfragen, sodass ohne Vorbereitung Datenuntersuchungen durchgeführt werden können. Zudem bietet er Betriebsanalysen. Time Series Insights ist ein spezielles Angebot, das auf die einzigartigen Anforderungen von IoT-Bereitstellungen in der Industrie zugeschnitten ist.
 
-In der Demoumgebung wird TSI von dem Stromerzeugungsunternehmen Contoso genutzt, um aus den Daten verwertbare Erkenntnisse zu ermitteln und eine kurze Analyse der Grundursache durchzuführen. Contoso betreibt zwei Windfarmen, die jeweils zehn Windturbinen umfassen. Jede Turbine verfügt über 20 Sensoren, die jede Minute Daten an Azure IoT Hub melden. Die Sensoren sammeln Informationen zu Wetterbedingungen, Schaufelteilung und Gierposition, Generatorleistung, Getriebeverhalten und Sicherheitsüberwachung.
+Die Demoumgebung zeigt das Stromerzeugungsunternehmen Contoso. In der Umgebung verwenden Sie Time Series Insights, um verwertbare Erkenntnisse aus den Daten von Contoso zu gewinnen und eine kurze Grundursachenanalyse durchzuführen. Contoso betreibt zwei Windfarmen mit jeweils zehn Windturbinen. Jede Turbine verfügt über 20 Sensoren, die jede Minute Daten an Azure IoT Hub melden. Die Sensoren erfassen Informationen zu Wetterbedingungen, Schaufelteilung und Gierposition, Generatorleistung, Getriebeverhalten und Sicherheitsüberwachung.
 
-TSI (Vorschauversion) wird zum Analysieren der ständig wachsenden Datenmenge der letzten beiden Jahre – derzeit 40 GB – verwendet, um sowohl kritische Fehler als auch Probleme aufgrund langsamer Wartung besser zu verstehen.
+Mithilfe von Time Series Insights (Vorschauversion) analysieren Sie das stetig wachsende Dataset von Contoso der letzten zwei Jahre, das gegenwärtig 40 GB groß ist. Mithilfe der Analyse können Sie sowohl kritische Fehler als auch Probleme aufgrund langsamer Wartung besser verstehen und vorhersagen.
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein  [kostenloses Azure-Konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)  erstellen, bevor Sie beginnen.
 
-## <a name="explore-time-series-insights-explorer-in-a-demo-environment"></a>Erkunden des Time Series Insights-Explorers in einer Demoumgebung
+## <a name="explore-the-time-series-insights-explorer-in-a-demo-environment"></a>Erkunden des Time Series Insights-Explorers in einer Demoumgebung
 
-1. Navigieren Sie in Ihrem Browser zu  [insights.timeseries.azure.com/preview/samples](https://insights.timeseries.azure.com/preview/samples).  
+1. Navigieren Sie in Ihrem Browser zur  [Umgebung „Contoso Wind Farm“](https://insights.timeseries.azure.com/preview/samples).  
 
-1. Melden Sie sich bei entsprechender Aufforderung mit Ihren Anmeldeinformationen für das Azure-Konto am TSI-Explorer an.
+1. Melden Sie sich mit den Anmeldeinformationen für Ihr Azure-Konto beim Time Series Insights-Explorer an, wenn Sie dazu aufgefordert werden.
 
-### <a name="demo-step-one"></a>Demo: Schritt 1
+### <a name="demo-step-1"></a>Demo: Schritt 1
 
-1. Wir sehen uns **Windturbine #7 der Windfarm #1** an.  
+1. Wir sehen uns die Windturbine **W7** in **Contoso Plant 1** an.  
 
-    * **Aktion**: Aktualisieren Sie den Anzeigebereich in `1/1/17 20:00 – 3/10/17 20:00 (UTC)`, und fügen Sie den Sensor `Farm 1 > W7 > Generator > GeneratorSpeed` hinzu. Zeigen Sie anschließend die sich ergebenden Werte an.
+    * **Aktion**: Aktualisieren Sie den Anzeigebereich in **1/1/17 20:00 bis 3/10/17 20:00 (UTC)**, fügen Sie den Sensor **Contoso Plant 1** > **W7** > **Generator System** > **GeneratorSpeed** hinzu, und zeigen Sie dann die resultierenden Werte an.
 
        ![Schnellstart 1][1]
 
-1. Vor Kurzem hat **Contoso einen Brand in Windturbine #7 erkannt**. Dies sehen wir uns genauer an. Wir sehen, dass der Sensor für den Feueralarm während des Brands aktiviert wurde.
+1. Vor Kurzem hat Contoso einen Brand in der Windturbine **W7** erkannt. Dies sehen wir uns genauer an. Wir sehen, dass der Sensor für den Feueralarm während des Brands aktiviert wurde.
 
-    * **Aktion**: Aktualisieren Sie den Anzeigebereich in `3/9/17 20:00 – 3/10/17 20:00 (UTC)`, und fügen Sie den Sensor `Safety > FireAlert` hinzu.
+    * **Aktion**: Aktualisieren Sie den Anzeigebereich in **3/9/17 20:00 bis 3/10/17 20:00 (UTC)**, und fügen Sie den Sensor **Safety System** > **FireAlert** hinzu.
 
       ![Schnellstart 2][2]
 
-1. Wir sehen uns an, was zum Zeitpunkt des Brands sonst noch passiert ist. Sowohl der Öldruck als auch die aktiven Warnungen sind kurz vor dem Brand stark gestiegen, aber an diesem Punkt war es zu spät, um das Problem abzuwenden.
+1. Wir sehen uns an, was zum Zeitpunkt des Brands sonst noch passiert ist. Sowohl der Öldruck als auch die aktiven Warnungen sind kurz vor dem Brand stark gestiegen, an diesem Punkt war es jedoch zu spät, um das Problem abzuwenden.
 
-    * **Aktion**: Fügen Sie den Sensor `Pitch > HydraulicOilPressure` und den Sensor `Pitch > ActiveWarning` hinzu.
+    * **Aktion**: Fügen Sie die Sensoren **Pitch System** > **HydraulicOilPressure** und **Pitch System** > **ActiveWarning** hinzu.
 
       ![Schnellstart 3][3]
 
-1. Wenn wir die Ansicht verkleinern, ist zu erkennen, dass es Anzeichen für das Auftreten des Brands gab. Beide Sensoren haben schwankende Werte aufgewiesen. Ist dies schon einmal passiert?
+1. Wenn wir die Ansicht verkleinern, ist zu erkennen, dass es Anzeichen für das Auftreten des Brands gab. Beide Sensoren haben schwankende Werte aufgewiesen. Ist dieses Problem schon einmal aufgetreten?
 
-    * **Aktion**: Aktualisieren Sie den Anzeigebereich in `2/24/17 20:00 – 3/10/17 20:00 (UTC)`.
+    * **Aktion**: Aktualisieren Sie den Anzeigebereich in **2/24/17 20:00 bis 3/10/17 20:00 (UTC)**.
 
       ![Schnellstart 4][4]
 
-1. Wenn wir uns die Daten für die gesamten zwei Jahre ansehen, fällt uns auf, dass schon einmal ein Brand mit den gleichen Anzeichen aufgetreten ist. Mit diesen Daten erstellen wir Systeme, mit denen Probleme dieser Art frühzeitig erkannt werden können.
+1. Wenn wir uns die Daten für die gesamten zwei Jahre ansehen, fällt uns auf, dass schon einmal ein Brand mit den gleichen Anzeichen aufgetreten ist. Mit diesen Daten können wir Systeme zur frühzeitigen Erkennung von Problemen dieser Art erstellen.
 
-    * **Aktion**: Aktualisieren Sie den Anzeigebereich in `1/1/16 – 12/31/17` (alle Daten).
+    * **Aktion**: Aktualisieren Sie den Anzeigebereich in **1/1/16 bis 12/31/17** (alle Daten).
 
        ![Schnellstart 5][5]
 
-### <a name="demo-step-two"></a>Demo: Schritt 2
+### <a name="demo-step-2"></a>Demo: Schritt 2
 
-1. Andere Probleme sind subtiler und schwieriger zu diagnostizieren. Time Series Insights enthält verschiedene Funktionen, mit denen wir schwierige Probleme aufspüren können. Hier wird der Ausfall eines Warnsensors für `turbine #6` am `6/25` angezeigt. Aber was ist tatsächlich passiert?
+1. Andere Probleme sind subtiler und schwieriger zu diagnostizieren. Time Series Insights bietet eine Reihe von Möglichkeiten zum Aufspüren schwieriger Probleme. Hier wird der Ausfall eines Warnsensors von **W6** für das Datum **6/25** angezeigt. Aber was ist tatsächlich passiert?
 
-    * **Aktion**: Entfernen Sie die aktuellen Sensoren. Aktualisieren Sie anschließend den Anzeigebereich in `6/1/17 20:00 – 7/1/17 20:00 (UTC)`, und fügen Sie `Farm 1 > W6 > Safety > VoltageActuatorSwitchWarning` hinzu.
+    * **Aktion**: Entfernen Sie die aktuellen Sensoren, aktualisieren Sie den Anzeigebereich in **6/1/17 20:00 bis 7/1/17 20:00 (UTC)**, und fügen Sie dann den Sensor **Contoso Plant 1** > **W6** > **Safety System** > **VoltageActuatorSwitchWarning** hinzu.
 
        ![Schnellstart 6][6]
 
 1. Mit der Warnung wird auf ein Problem mit der Ausgangsspannung des Generators hingewiesen. Aber was ist die Ursache? Die gesamte Ausgangsleistung des Generators sieht für kleinere Intervalle unproblematisch aus. Aber wenn wir die Daten aggregieren, ist ein deutlicher Abfall zu erkennen.
 
-    * **Aktion**: Stellen Sie eine Remoteverbindung mit `VoltageActuatorSwitchWarning` her, und fügen Sie `Generator > ActivePower` hinzu. Aktualisieren Sie das Intervall anschließend in `3d`.
+    * **Aktion**: Entfernen Sie den Sensor **VoltageActuatorSwitchWarning**, fügen Sie den Sensor **Generator System** > **ActivePower** hinzu, und aktualisieren Sie das Intervall in **3d**.
 
        ![Schnellstart 7][7]
 
-1. Wenn wir im Dataset in Vorwärtsrichtung navigieren, wird klar, dass dies nicht nur ein vorübergehendes Problem ist. Es ist ein dauerhaftes Problem.
+1. Wenn wir im Dataset vorwärts navigieren, sehen wir, dass dies kein vorübergehendes Problem ist. Es besteht noch immer.
 
     * **Aktion**: Erweitern Sie die Zeitspanne nach rechts.
 
        ![Schnellstart 8][8]
 
-1. Wir rufen weitere Informationen auf. Wir können uns andere Sensordatenpunkte ansehen, um die Spannung nach Phase anzuzeigen. Es sieht aber alles ähnlich aus. Wir setzen einen Marker, um die tatsächlichen Werte anzuzeigen. Scheinbar liegt ein Problem mit dem Ausgang von Phase 3 vor.
+1. Wir rufen weitere Informationen auf. Wir können andere Sensordatenpunkte hinzufügen, um die Spannung nach Phase anzuzeigen. Die Datenpunkte sehen jedoch alle ähnlich aus. Wir setzen einen Marker, um die tatsächlichen Werte anzuzeigen. Scheinbar liegt ein Problem mit dem Ausgang von Phase 3 vor.
 
-    * **Aktion**: `Add Generator > GridVoltagePhase1, 2, & 3`. Setzen Sie einen Marker für den letzten Datenpunkt im sichtbaren Bereich.
+    * **Aktion**: Fügen Sie die Sensoren **Generator System** > **GridVoltagePhase1**, **GridVoltagePhase2** und **GridVoltagePhase3** hinzu. Setzen Sie einen Marker für den letzten Datenpunkt im sichtbaren Bereich.
 
        ![Schnellstart 8][8]
 
-1. Wenn wir für alle drei denselben Maßstab verwenden, ist der Abfall für Phase 3 noch besser zu erkennen. An diesem Punkt können wir dieses Problem an unser Wartungsteam weiterleiten und nützliche Hinweise zur Ursache der Warnung bereitstellen.  
+1. Wenn wir für alle drei Datenpunkte denselben Maßstab verwenden, ist der Abfall für Phase 3 noch besser zu erkennen. An diesem Punkt können wir das Problem an unser Wartungsteam weiterleiten und nützliche Hinweise zur Ursache der Warnung bereitstellen.  
 
     * **Aktion**: Aktualisieren Sie die Anzeige, um für alle Sensoren denselben Diagrammmaßstab zu verwenden.
 
@@ -102,10 +102,10 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein  [kostenloses Azure-K
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sie können nun Ihre eigene Azure TSI-Umgebung (Vorschauversion) erstellen:
+Nun können Sie Ihre eigene Time Series Insights-Umgebung (Vorschauversion) erstellen:
 
 > [!div class="nextstepaction"]
-> [Plan your Azure TSI (Preview) environment](time-series-insights-update-plan.md) (Planen Ihrer Azure TSI-Umgebung (Vorschauversion))
+> [Plan your Time Series Insights Preview environment](time-series-insights-update-plan.md) (Planen Ihrer Time Series Insights-Umgebung (Vorschauversion))
 
 <!-- Images -->
 [1]: media/v2-update-quickstart/quickstart-one.png

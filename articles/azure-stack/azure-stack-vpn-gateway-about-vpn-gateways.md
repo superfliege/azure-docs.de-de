@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/02/2018
 ms.author: sethm
-ms.openlocfilehash: 860f1181a84ef87fe0e66c2746b76b800a326354
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 86fcec0321e8f1b92fdc554532cb8f949b1b1569
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52496197"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53081386"
 ---
 # <a name="about-vpn-gateway-for-azure-stack"></a>Informationen zum VPN-Gateway für Azure Stack
 
-*Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
+*Anwendungsbereich: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
 Um Netzwerkdatenverkehr zwischen Ihrem virtuellen Azure-Netzwerk und Ihrem lokalen Standort senden zu können, müssen Sie für Ihr virtuelles Netzwerk zunächst ein Gateway für virtuelle Netzwerke erstellen.
 
@@ -108,9 +108,9 @@ In der folgenden Tabelle sind die Gatewaytypen und der geschätzte zusammengefas
 
 |   | VPN-Gatewaydurchsatz *(1)* | Max. IPsec-Tunnel für das VPN-Gateway *(2)* |
 |-------|-------|-------|
-|**Basic-SKU** ***(3)***    | 100 MBit/s  | 10    |
-|**Standard-SKU**       | 100 MBit/s  | 10    |
-|**HighPerformance-SKU** | 200 MBit/s    | 5 |
+|**Basic-SKU** ***(3)***    | 100 MBit/s  | 20    |
+|**Standard-SKU**       | 100 MBit/s  | 20    |
+|**HighPerformance-SKU** | 200 MBit/s    | 10    |
 
 **Anmerkungen zur Tabelle:**
 

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
 ms.date: 12/04/2018
-ms.openlocfilehash: 3c3127c7fd94ae0f66cd083e8a83dd9119f71dcb
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: a820287c79dcd8d904c9029de3f58d930118e840
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52867935"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52959511"
 ---
 # <a name="tutorial-migrate-mysql-to-azure-database-for-mysql-online-using-dms"></a>Tutorial: Ausführen einer Onlinemigration von MySQL zu Azure Database for MySQL mithilfe von DMS
 Mit Azure Database Migration Service können Sie die Datenbanken mit minimaler Ausfallzeit von einer lokalen MySQL-Instanz zu [Azure Database for MySQL](https://docs.microsoft.com/azure/mysql/) migrieren. Somit kommt es bei der Migration nur zu einer geringen Ausfallzeit für die Anwendung. In diesem Tutorial migrieren Sie die Beispieldatenbank **Employees** von einer lokalen Instanz von MySQL 5.7 zu Azure Database for MySQL. Zu diesem Zweck verwenden Sie eine Onlinemigrationsaktivität in Azure Database Migration Service.
@@ -121,24 +121,24 @@ SELECT Concat('DROP TRIGGER ', Trigger_Name, ';') FROM  information_schema.TRIGG
 ## <a name="register-the-microsoftdatamigration-resource-provider"></a>Registrieren des Ressourcenanbieters „Microsoft.DataMigration“
 1. Melden Sie sich beim Azure-Portal an, und klicken Sie auf **Alle Dienste** und anschließend auf **Abonnements**.
  
-   ![Abonnements im Portal anzeigen](media\tutorial-mysql-to-azure-mysql-online\portal-select-subscriptions.png)
+   ![Abonnements im Portal anzeigen](media/tutorial-mysql-to-azure-mysql-online/portal-select-subscriptions.png)
        
 2. Wählen Sie das Abonnement aus, in dem Sie die Azure Database Migration Service-Instanz erstellen möchten, und klicken Sie auf **Ressourcenanbieter**.
  
-    ![Ressourcenanbieter anzeigen](media\tutorial-mysql-to-azure-mysql-online\portal-select-resource-provider.png)
+    ![Ressourcenanbieter anzeigen](media/tutorial-mysql-to-azure-mysql-online/portal-select-resource-provider.png)
     
 3.  Suchen Sie nach „Migration“, und wählen Sie rechts neben **Microsoft.DataMigration** die Option **Registrieren** aus.
  
-    ![Registrieren des Ressourcenanbieters](media\tutorial-mysql-to-azure-mysql-online\portal-register-resource-provider.png)    
+    ![Registrieren des Ressourcenanbieters](media/tutorial-mysql-to-azure-mysql-online/portal-register-resource-provider.png)    
 
 ## <a name="create-a-dms-instance"></a>Erstellen einer DMS-Instanz
 1.  Wählen Sie im Azure-Portal die Option **+ Ressource erstellen**, suchen Sie nach Azure Database Migration Service, und wählen Sie dann **Azure Database Migration Service** aus der Dropdownliste aus.
 
-    ![Azure Marketplace](media\tutorial-mysql-to-azure-mysql-online\portal-marketplace.png)
+    ![Azure Marketplace](media/tutorial-mysql-to-azure-mysql-online/portal-marketplace.png)
 
 2.  Wählen Sie auf dem Bildschirm **Azure Database Migration Service** die Schaltfläche **Erstellen** aus.
  
-    ![Erstellen einer Instanz von Azure Database Migration Service](media\tutorial-mysql-to-azure-mysql-online\dms-create1.png)
+    ![Erstellen einer Instanz von Azure Database Migration Service](media/tutorial-mysql-to-azure-mysql-online/dms-create1.png)
   
 3.  Geben Sie auf dem Bildschirm **Migrationsdienst erstellen** einen Namen für den Dienst, das Abonnement und eine neue oder vorhandene Ressourcengruppe an.
 
@@ -154,7 +154,7 @@ SELECT Concat('DROP TRIGGER ', Trigger_Name, ';') FROM  information_schema.TRIGG
 
     Wenn Sie Hilfe bei der Wahl des richtigen Azure Database Migration Service-Tarifs benötigen, beachten Sie die Empfehlungen im Blogbeitrag [Choosing an Azure Database Migration Service (Azure DMS) tier](https://go.microsoft.com/fwlink/?linkid=861067) (Auswählen eines Azure Database Migration Service-Tarifs (Azure DMS)). 
 
-     ![Konfigurieren der Einstellungen einer Azure Database Migration Service-Instanz](media\tutorial-mysql-to-azure-mysql-online\dms-settings3.png)
+     ![Konfigurieren der Einstellungen einer Azure Database Migration Service-Instanz](media/tutorial-mysql-to-azure-mysql-online/dms-settings3.png)
 
 7.  Wählen Sie **Erstellen**, um den Dienst zu erstellen.
 
@@ -163,17 +163,17 @@ Nachdem der Dienst erstellt wurde, suchen Sie diesen im Azure-Portal, öffnen Si
 
 1. Wählen Sie im Azure-Portal **Alle Dienste**, suchen Sie nach Azure Database Migration Service, und wählen Sie dann **Azure Database Migration Service** aus.
  
-      ![Suchen aller Instanzen von Azure Database Migration Service](media\tutorial-mysql-to-azure-mysql-online\dms-search.png)
+      ![Suchen aller Instanzen von Azure Database Migration Service](media/tutorial-mysql-to-azure-mysql-online/dms-search.png)
 
 2. Suchen Sie im Bildschirm **Azure Database Migration Services** nach dem Namen der von Ihnen erstellten Azure Database Migration Service-Instanz, und wählen Sie die Instanz aus.
  
-     ![Suchen Ihrer Instanz von Azure Database Migration Service](media\tutorial-mysql-to-azure-mysql-online\dms-instance-search.png)
+     ![Suchen Ihrer Instanz von Azure Database Migration Service](media/tutorial-mysql-to-azure-mysql-online/dms-instance-search.png)
  
 3. Wählen Sie **+ Neues Migrationsprojekt** aus.
 4. Geben Sie auf dem Bildschirm **Neues Migrationsprojekt** einen Projektnamen im Textfeld **Typ des Quellservers** an, wählen Sie **MySQL**, und wählen Sie dann im Textfeld **Typ des Zielservers** die Option **AzureDbForMySQL**.
 5. Wählen Sie im Abschnitt **Aktivitätstyp auswählen** die Option **Onlinedatenmigration** aus.
 
-    ![Erstellen eines Database Migration Service-Projekts](media\tutorial-mysql-to-azure-mysql-online\dms-create-project4.png)
+    ![Erstellen eines Database Migration Service-Projekts](media/tutorial-mysql-to-azure-mysql-online/dms-create-project4.png)
 
     > [!NOTE]
     > Alternativ können Sie **Create project only** (Nur Projekt erstellen) auswählen, um das Migrationsprojekt jetzt zu erstellen und die Migration später durchzuführen.
@@ -183,22 +183,22 @@ Nachdem der Dienst erstellt wurde, suchen Sie diesen im Azure-Portal, öffnen Si
 ## <a name="specify-source-details"></a>Angeben von Quelldetails
 1. Geben Sie auf dem Bildschirm **Quelldetails hinzufügen** die Verbindungsdetails für die MySQL-Quellinstanz an.
  
-    ![Bildschirm „Quelldetails hinzufügen“](media\tutorial-mysql-to-azure-mysql-online\dms-add-source-details.png)   
+    ![Bildschirm „Quelldetails hinzufügen“](media/tutorial-mysql-to-azure-mysql-online/dms-add-source-details.png)   
 
 ## <a name="specify-target-details"></a>Angeben von Zieldetails
 1. Wählen Sie **Speichern**, und geben Sie dann auf dem Bildschirm **Zieldetails** die Verbindungsdetails für den Azure Database for MySQL-Zielserver an. Dabei handelt es sich um die zuvor bereitgestellte Instanz von Azure Database for MySQL, für die das **Employees**-Schema mithilfe von „mysqldump“ bereitgestellt wurde.
 
-    ![Bildschirm „Zieldetails“](media\tutorial-mysql-to-azure-mysql-online\dms-add-target-details.png)
+    ![Bildschirm „Zieldetails“](media/tutorial-mysql-to-azure-mysql-online/dms-add-target-details.png)
 
 2. Klicken Sie auf **Speichern**, und ordnen Sie dann auf dem Bildschirm **Den Zieldatenbanken zuordnen** die Quell- und die Zieldatenbank für die Migration zu.
 
     Wenn die Zieldatenbank denselben Datenbanknamen wie die Quelldatenbank enthält, wählt Azure Database Migration Service die Zieldatenbank standardmäßig aus.
 
-    ![Zuordnen zu Zieldatenbanken](media\tutorial-mysql-to-azure-mysql-online\dms-map-target-details.png)
+    ![Zuordnen zu Zieldatenbanken](media/tutorial-mysql-to-azure-mysql-online/dms-map-target-details.png)
 
 3.  Klicken Sie auf **Speichern**. Geben Sie auf dem Bildschirm **Migrationszusammenfassung** im Textfeld **Aktivitätsname** einen Namen für die Migrationsaktivität ein, und überprüfen Sie anschließend die Zusammenfassung, um sicherzustellen, dass die Ziel- und Quelldetails Ihren vorherigen Angaben entsprechen.
 
-    ![Migrationszusammenfassung](media\tutorial-mysql-to-azure-mysql-online\dms-migration-summary.png)
+    ![Migrationszusammenfassung](media/tutorial-mysql-to-azure-mysql-online/dms-migration-summary.png)
 
 ## <a name="run-the-migration"></a>Ausführen der Migration
 - Wählen Sie **Migration ausführen** aus.
@@ -208,22 +208,22 @@ Nachdem der Dienst erstellt wurde, suchen Sie diesen im Azure-Portal, öffnen Si
 ## <a name="monitor-the-migration"></a>Überwachen der Migration
 1. Klicken Sie auf dem Bildschirm „Migrationsaktivität“ auf **Aktualisieren**, um die Anzeige zu aktualisieren, bis der **Status** der Migration **Abgeschlossen** lautet.
 
-     ![Aktivitätsstatus: Abgeschlossen](media\tutorial-mysql-to-azure-mysql-online\dms-activity-completed.png)
+     ![Aktivitätsstatus: Abgeschlossen](media/tutorial-mysql-to-azure-mysql-online/dms-activity-completed.png)
 
 2. Wählen Sie unter **Datenbankname** eine bestimmte Datenbank aus, um den Migrationsstatus für die Vorgänge **Full data load** (Vollständiger Datenladevorgang) und **Inkrementelle Datensynchronisierung** abzurufen.
 
     Unter „Full data load“ (Vollständiger Datenladevorgang) wird der Migrationsstatus des ersten Ladevorgangs und unter „Inkrementelle Datensynchronisierung“ der CDC-Status (Change Data Capture) angezeigt.
    
-     ![Aktivitätsstatus: Vollständiger Ladevorgang abgeschlossen](media\tutorial-mysql-to-azure-mysql-online\dms-activity-full-load-completed.png)
+     ![Aktivitätsstatus: Vollständiger Ladevorgang abgeschlossen](media/tutorial-mysql-to-azure-mysql-online/dms-activity-full-load-completed.png)
 
-     ![Aktivitätsstatus: Inkrementelle Datensynchronisierung](media\tutorial-mysql-to-azure-mysql-online\dms-activity-incremental-data-sync.png)
+     ![Aktivitätsstatus: Inkrementelle Datensynchronisierung](media/tutorial-mysql-to-azure-mysql-online/dms-activity-incremental-data-sync.png)
 
 ## <a name="perform-migration-cutover"></a>Durchführen der Migrationsübernahme
 Wenn der erste vollständige Ladevorgang abgeschlossen ist, werden die Datenbanken als **Zur Übernahme bereit** markiert.
 
 1. Wenn Sie die Datenmigration abschließen möchten, klicken Sie auf **Übernahme starten**.
 
-    ![Starten der Übernahme](media\tutorial-mysql-to-azure-mysql-online\dms-start-cutover.png)
+    ![Starten der Übernahme](media/tutorial-mysql-to-azure-mysql-online/dms-start-cutover.png)
  
 2.  Achten Sie darauf, alle eingehenden Transaktionen für die Quelldatenbank zu beenden. Warten Sie, bis der Zähler **Ausstehende Änderungen** das Ergebnis **0** zeigt.
 3.  Aktivieren Sie **Bestätigen**, und klicken Sie dann auf **Anwenden**.

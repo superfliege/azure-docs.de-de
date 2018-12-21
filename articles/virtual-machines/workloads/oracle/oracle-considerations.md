@@ -14,12 +14,13 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: 6435c866f6cdf5abea3862a718579f3a6e4d7378
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.custom: seodec18
+ms.openlocfilehash: 50e5dfa21cf7a8f7203e7d96640e3cf5215130a6
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39493063"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53191460"
 ---
 # <a name="oracle-solutions-and-their-deployment-on-microsoft-azure"></a>Oracle-Lösungen und deren Bereitstellung in Microsoft Azure
 Dieser Artikel enthält Informationen, die Sie benötigen, um verschiedene Oracle-Lösungen erfolgreich in Microsoft Azure bereitzustellen. Diese Lösungen basieren auf VM-Images, die von Oracle im Azure Marketplace veröffentlicht werden. Um eine Liste der derzeit verfügbaren Images zu erhalten, führen Sie den folgenden Befehl aus:
@@ -57,7 +58,7 @@ Oracle unterstützt die Ausführung von Oracle DB 12.1 Standard und Enterprise E
 Angefügte Datenträger nutzen den Azure Blob Storage-Dienst. Auf jedem Standarddatenträger können theoretisch bis zu 500 E/A-Vorgänge pro Sekunde (IOPS) ausgeführt werden. Unser Premium-Datenträgerangebot wird in erster Linie für Datenbanknutzlasten mit hoher Leistung verwendet und kann bis zu 5000 IOps pro Datenträger erreichen. Sie können zwar einen einzelnen Datenträger verwenden, wenn dies Ihren Anforderungen an die Leistung genügt. Sie können die effektive IOPS-Leistung jedoch verbessern, wenn Sie mehrere angefügte Datenträger verwenden, Datenbankdaten auf diesen verteilen und dann Oracle Automatic Storage Management (ASM) verwenden. Spezifische Informationen zu Oracle ASM finden Sie unter [Oracle Automatic Storage Management Overview](http://www.oracle.com/technetwork/database/index-100339.html) (in englischer Sprache). Ein Beispiel für das Installieren und Konfigurieren von Oracle ASM auf einem virtuellen Azure-Linux-Computer erhalten Sie im Tutorial [Installing and Configuring Oracle Automated Storage Management](configure-oracle-asm.md) (Installieren und Konfigurieren von Oracle Automated Storage Management).
 
 ## <a name="oracle-real-application-cluster-oracle-rac"></a>Oracle Real Application Cluster (Oracle RAC)
-Oracle RAC ist so konzipiert, dass der Ausfall eines einzelnen Knotens in einer lokalen Clusterkonfiguration mit mehreren Knoten möglichst geringe Auswirkungen hat. RAC beruht auf zwei lokalen Technologien, die in öffentlichen Cloudumgebungen mit Hyperskalierung nicht nativ funktionieren: Netzwerk-Multicast und freigegebene Datenträger. Wenn Ihre Datenbanklösung Oracle RAC in Azure erfordert, benötigen Sie Software von Drittanbietern, um diese Technologien zu aktivieren.  Ein **Microsoft Azure Certified**-Angebot mit der Bezeichnung [FlashGrid Node for Oracle RAC](https://azuremarketplace.microsoft.com/marketplace/apps/flashgrid-inc.flashgrid-racnode?tab=Overview) (FlashGrid-Knoten für Oracle RAC), das von FlashGrid Inc. veröffentlicht wurde, finden Sie im Azure Marketplace. Weitere Informationen zu dieser Lösung und ihrer Funktionsweise in Azure finden Sie auf der [Seite zur FlashGrid-Lösung](https://www.flashgrid.io/oracle-rac-in-azure/).
+Oracle RAC ist so konzipiert, dass der Ausfall eines einzelnen Knotens in einer lokalen Clusterkonfiguration mit mehreren Knoten möglichst geringe Auswirkungen hat. RAC beruht auf zwei lokalen Technologien, die in öffentlichen Cloudumgebungen mit Hyperskalierung nicht nativ funktionieren: Netzwerk-Multicast und freigegebene Datenträger. Wenn Ihre Datenbanklösung Oracle RAC in Azure erfordert, benötigen Sie Software von Drittanbietern, um diese Technologien zu aktivieren. Weitere Informationen zu Oracle RAC finden Sie auf der [Seite zur Lösung FlashGrid](https://www.flashgrid.io/oracle-rac-in-azure/).
 
 ## <a name="high-availability-and-disaster-recovery-considerations"></a>Überlegungen zu Hochverfügbarkeit und Notfallwiederherstellung
 Wenn Sie Oracle-Datenbanken in Azure verwenden, müssen Sie eine Lösung für Hochverfügbarkeit und Notfallwiederherstellung implementieren, um Ausfallzeiten zu vermeiden. 
@@ -73,8 +74,8 @@ Unser Tutorial zum [Implementieren von Oracle GoldenGate in Azure](configure-ora
 Trotz einer Lösung für Hochverfügbarkeit und Notfallwiederherstellung in Azure, sollten Sie sicherstellen, dass Sie über eine Sicherungsstrategie zum Wiederherstellen der Datenbank verfügen.  Unser Tutorial zum [Sichern und Wiederherstellen einer Oracle-Datenbank](oracle-backup-recovery.md) führt Sie durch die grundlegenden Schritte der Einrichtung einer konsistenten Sicherung.
 
 ## <a name="oracle-weblogic-server-virtual-machine-images"></a>Images von virtuellen Oracle WebLogic Server-Computern
-* **Clustering wird nur in der Enterprise Edition unterstützt.** Sie sind nur für die Verwendung von WebLogic-Clustern lizenziert, wenn Sie die Enterprise Edition von WebLogic Server verwenden. Verwenden Sie Clustering nicht mit der WebLogic Server Standard Edition.
-* **UDP-Multicast wird nicht unterstützt.** Azure unterstützt UDP-Unicasting, jedoch weder Multicasting noch Broadcasting. WebLogic Server kann die UDP-Unicast-Funktionen von Azure nutzen. Um optimale Ergebnisse bei der Nutzung von UDP-Unicast zu erzielen, empfiehlt es sich, eine statische Größe des WebLogic-Clusters zu verwenden oder nicht mehr als 10 verwaltete Server in den Cluster aufzunehmen.
+* **Clustering wird nur in der Enterprise Edition unterstützt.**  Sie sind nur für die Verwendung von WebLogic-Clustern lizenziert, wenn Sie die Enterprise Edition von WebLogic Server verwenden. Verwenden Sie Clustering nicht mit der WebLogic Server Standard Edition.
+* **UDP-Multicast wird nicht unterstützt.**  Azure unterstützt UDP-Unicasting, jedoch weder Multicasting noch Broadcasting. WebLogic Server kann die UDP-Unicast-Funktionen von Azure nutzen. Um optimale Ergebnisse bei der Nutzung von UDP-Unicast zu erzielen, empfiehlt es sich, eine statische Größe des WebLogic-Clusters zu verwenden oder nicht mehr als 10 verwaltete Server in den Cluster aufzunehmen.
 * **WebLogic Server erwartet, dass für den T3-Zugriff (z.B. bei Verwendung von Enterprise JavaBeans) öffentliche und private Ports identisch sind.** Beispielszenario: Eine Anwendung auf Dienstebene (EJB) wird in einem WebLogic-Servercluster, der aus mindestens zwei VMs besteht, in einem vNet mit dem Namen **SLWLS** ausgeführt. Die Clientebene befindet sich in einem anderen Subnetz in demselben vNet, und es wird ein einfaches Java-Programm ausgeführt, das versucht, EJB auf der Dienstebene aufzurufen. Da die Dienstebene einen Lastenausgleich erfordert, muss für die virtuellen Computer im WebLogic Server-Cluster ein öffentlicher Endpunkt mit Lastenausgleich erstellt werden. Wenn der private Port, den Sie angeben, nicht mit dem öffentlichen Port identisch ist (z.B. 7006:7008), tritt ein Fehler wie der folgende auf:
 
        [java] javax.naming.CommunicationException [Root exception is java.net.ConnectException: t3://example.cloudapp.net:7006:
@@ -101,7 +102,7 @@ Verwandte Informationen finden Sie im KB-Artikel **860340.1** unter <http://supp
 * **Neueste Updates von JDK 6 und 7**. Es wird zwar empfohlen, die neueste öffentliche unterstützte Version von Java (derzeit Java 8) zu verwenden, aber für Azure werden auch JDK 6- und JDK 7-Images verfügbar gemacht. Diese sind für ältere Anwendungen vorgesehen, die noch nicht auf JDK 8 aktualisiert werden können. Updates früherer JDK-Images sind möglicherweise nicht mehr für die allgemeine Öffentlichkeit verfügbar. Aufgrund der Partnerschaft von Microsoft mit Oracle bieten die von Azure bereitgestellten JDK 6- und JDK 7-Images jedoch ein neueres nicht öffentliches Update, das Oracle normalerweise nur einer bestimmten Gruppe unterstützter Oracle-Kunden anbietet. Im Lauf der Zeit werden neuere Version der JDK-Images mit aktualisierten Versionen von JDK 6 und 7 zur Verfügung gestellt.
 
    In diesen JDK 6- und JDK 7-Images verfügbare JDK und die von ihnen abgeleiteten virtuellen Computer und Images können nur in Azure verwendet werden.
-* **64-Bit-JDK.** Die von Azure bereitgestellten Images virtueller Oracle WebLogic Server-Computer und virtueller Oracle JDK-Computer enthalten die 64-Bit-Versionen von Windows Server und dem JDK.
+* **64-Bit-JDK.**  Die von Azure bereitgestellten Images virtueller Oracle WebLogic Server-Computer und virtueller Oracle JDK-Computer enthalten die 64-Bit-Versionen von Windows Server und dem JDK.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Sie haben jetzt einen Überblick über aktuelle Oracle-Lösungen in Microsoft Azure. Der nächste Schritt besteht darin, die erste Oracle-Datenbank in Azure bereitzustellen.

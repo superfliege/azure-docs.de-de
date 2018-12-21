@@ -1,6 +1,6 @@
 ---
 title: Bereitstellen eines simulierten TPM-Geräts für Azure IoT Hub mithilfe von C | Microsoft-Dokumentation
-description: In dieser Schnellstartanleitung werden einzelne Registrierungen verwendet. In dieser Schnellstartanleitung erstellen Sie ein simuliertes TPM-Gerät mithilfe des C-Geräte-SDK für Azure IoT Hub Device Provisioning Service und stellen es bereit.
+description: In dieser Schnellstartanleitung werden individuelle Registrierungen verwendet. In dieser Schnellstartanleitung erstellen Sie ein simuliertes TPM-Gerät mithilfe des C-Geräte-SDK für Azure IoT Hub Device Provisioning Service und stellen es bereit.
 author: wesmc7777
 ms.author: wesmc
 ms.date: 07/13/2018
@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: c2f5ff778b49ffb544c53b41cf515e820d646249
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 3ae454be8327c1f9ce605899e4b26105d44ab0f6
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50157852"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53189301"
 ---
 # <a name="quickstart-provision-a-simulated-tpm-device-using-the-azure-iot-c-sdk"></a>Schnellstart: Bereitstellen eines simulierten TPM-Geräts mithilfe des Azure IoT C SDK
 
@@ -25,8 +25,8 @@ In dieser Schnellstartanleitung erfahren Sie, wie Sie einen TPM-Gerätesimulator
 Sollten Sie mit der automatischen Bereitstellung nicht vertraut sein, lesen Sie die Informationen unter [Konzepte für die automatische Bereitstellung](concepts-auto-provisioning.md). Vergewissern Sie sich außerdem, dass Sie die Schritte unter [Einrichten des IoT Hub Device Provisioning-Diensts über das Azure-Portal](./quick-setup-auto-provision.md) ausgeführt haben, bevor Sie mit dieser Schnellstartanleitung fortfahren. 
 
 In Azure IoT Device Provisioning Service werden zwei Registrierungsarten unterstützt:
-- [Registrierungsgruppen:](concepts-service.md#enrollment-group) Für die Registrierung mehrerer verbundener Geräte
-- [Individuelle Registrierung:](concepts-service.md#individual-enrollment) Für die Registrierung eines einzelnen Geräts
+- [Registrierungsgruppen:](concepts-service.md#enrollment-group) Werden zum Registrieren mehrerer verwandter Geräte verwendet.
+- [Individuelle Registrierungen](concepts-service.md#individual-enrollment): Werden zum Registrieren eines einzelnen Geräts verwendet.
 
 In diesem Artikel werden individuelle Registrierungen veranschaulicht.
 
@@ -52,7 +52,7 @@ In diesem Abschnitt bereiten Sie eine Entwicklungsumgebung vor, die zum Erstelle
     True
     ```
     
-    Zum Zeitpunkt der Erstellung dieses Artikels wurden auf der Website von CMake die folgenden Hashwerte für Version 3.11.4 aufgeführt:
+    Zum Zeitpunkt der Abfassung dieses Artikels waren auf der Website von CMake die folgenden Hashwerte für Version 3.11.4 aufgeführt:
 
     ```
     6dab016a6b82082b8bcd0f4d1e53418d6372015dd983d29367b9153f1a376435  cmake-3.11.4-Linux-x86_64.tar.gz
@@ -142,15 +142,15 @@ In diesem Abschnitt werden Sie ein Beispiel erstellen und ausführen, das den En
 
 3. Geben Sie unter **Registrierung hinzufügen** die folgenden Informationen ein, und klicken Sie auf die Schaltfläche **Speichern**.
 
-    - **Mechanismus:** Wählen Sie **TPM** als *Mechanismus* für den Nachweis der Identität aus.
+    - **Mechanismus**: Wählen Sie **TPM** als *Mechanismus* für den Nachweis der Identität.
     - **Endorsement Key:** Geben Sie den *Endorsement Key* ein, der für Ihr TPM-Gerät durch Ausführen des Projekts *tpm_device_provision* generiert wurde.
     - **Registrierungs-ID:** Geben Sie die *Registrierungs-ID* ein, die für Ihr TPM-Gerät durch Ausführen des Projekts *tpm_device_provision* generiert wurde.
     - **IoT Edge-Gerät:** Wählen Sie **Deaktivieren** aus.
-    - **IoT Hub-Geräte-ID:** Geben Sie **test-docs-device** ein, um dem Gerät eine ID zuzuweisen.
+    - **IoT Hub-Geräte-ID**: Geben Sie **test-docs-device** ein, um dem Gerät eine ID zuzuweisen.
 
-    ![Eingeben von Geräteregistrierungsinformationen im Portal](./media/quick-create-simulated-device/enter-device-enrollment.png)  
+      ![Eingeben von Geräteregistrierungsinformationen im Portal](./media/quick-create-simulated-device/enter-device-enrollment.png)  
 
-    Nach erfolgreicher Registrierung wird die *Registrierungs-ID* Ihres Geräts in der Liste auf der Registerkarte *Individual Enrollments* (Individuelle Registrierungen) angezeigt. 
+      Nach erfolgreicher Registrierung wird die *Registrierungs-ID* Ihres Geräts in der Liste auf der Registerkarte *Individual Enrollments* (Individuelle Registrierungen) angezeigt. 
 
 
 <a id="firstbootsequence"></a>

@@ -1,21 +1,22 @@
 ---
-title: Vergleich von Azure-Messagingdiensten
-description: Dieser Artikel enthält eine Gegenüberstellung von Azure Event Grid, Event Hubs und Service Bus. Hier erfahren Sie, welcher Dienst für welche Szenarien zu empfehlen ist.
+title: Azure-Messagingvergleich – Event Grid, Event Hubs, Service Bus
+description: 'Enthält eine Beschreibung der drei Azure-Messagingdienste: Azure Event Grid, Event Hubs und Service Bus. Hier erfahren Sie, welcher Dienst für welche Szenarien zu empfehlen ist.'
 services: event-grid
 author: tfitzmac
 manager: timlt
 ms.service: event-grid
 ms.topic: overview
-ms.date: 07/05/2018
+ms.date: 12/07/2018
 ms.author: tomfitz
-ms.openlocfilehash: 28f80dc71afd7d4865763561682ce54de1b118ab
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.custom: seodec18
+ms.openlocfilehash: 0eeded4e6bfe9041b360441d1e7b2a5c7dd4a099
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51852196"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53166522"
 ---
-# <a name="choose-between-azure-services-that-deliver-messages"></a>Wählen zwischen Azure-Diensten für die Nachrichtenübermittlung
+# <a name="choose-between-azure-messaging-services---event-grid-event-hubs-and-service-bus"></a>Auswahl von Azure-Messagingdiensten: Event Grid, Event Hubs und Service Bus
 
 Azure bietet drei Dienste, die Sie bei der Übermittlung von Ereignisnachrichten innerhalb einer Lösung unterstützen. Folgende Dienste stehen zur Verfügung:
 
@@ -33,7 +34,7 @@ Zwischen Diensten, die ein Ereignis übermitteln, und Diensten, die eine Nachric
 
 Ein Ereignis ist eine einfache Benachrichtigung über eine Bedingung oder eine Zustandsänderung. Der Verleger des Ereignisses hat keine Erwartungen hinsichtlich der Behandlung des Ereignisses. Der Consumer des Ereignisses entscheidet, was mit der Benachrichtigung getan wird. Ereignisse können eigenständige Einheiten oder Teil einer Reihe sein.
 
-Eigenständige Ereignisse geben Statusänderungen an und erfordern Aktionen. Um den nächsten Schritt zu machen, muss der Consumer nur zu wissen, dass etwas passiert ist. Die Ereignisdaten geben Aufschluss darüber, was geschehen ist, enthalten aber nicht die Daten, die das Ereignis ausgelöst haben. Ein Ereignis kann beispielsweise Consumer darüber informieren, dass eine Datei erstellt wurde. Das Ereignis kann allgemeine Informationen zu der Datei enthalten, aber nicht die eigentliche Datei. Eigenständige Ereignisse eignen sich ideal für serverlose Lösungen, die skaliert werden müssen.
+Eigenständige Ereignisse geben Statusänderungen an und erfordern Aktionen. Um den nächsten Schritt zu machen, muss der Consumer nur zu wissen, dass etwas passiert ist. Die Ereignisdaten geben Aufschluss darüber, was geschehen ist, enthalten aber nicht die Daten, die das Ereignis ausgelöst haben. Ein Ereignis kann beispielsweise Consumer darüber informieren, dass eine Datei erstellt wurde. Das Ereignis kann allgemeine Informationen zu der Datei enthalten, aber nicht die eigentliche Datei. Eigenständige Ereignisse eignen sich ideal für [serverlose](http://azure.com/serverless) Lösungen, die skaliert werden müssen.
 
 Reihenereignisse geben eine Bedingung an und können analysiert werden. Die Ereignisse sind nach Zeit sortiert und voneinander abhängig. Der Consumer benötigt die sortierte Reihe von Ereignissen, um zu analysieren, was passiert ist.
 

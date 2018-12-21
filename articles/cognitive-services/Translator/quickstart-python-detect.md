@@ -10,14 +10,14 @@ ms.component: translator-text
 ms.topic: quickstart
 ms.date: 10/24/2018
 ms.author: erhopf
-ms.openlocfilehash: 564a12de2a0823372ce267f9ff2759ab17199a80
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: cfc2565c0ee2b51eaff40647cfcd7505e0479e64
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50086038"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52993828"
 ---
-# <a name="quickstart-use-the-translator-text-api-to-detect-text-language-using-python"></a>Schnellstart: Verwenden der Textübersetzungs-API zum Ermitteln der Textsprache mit Python
+# <a name="quickstart-use-the-translator-text-api-to-detect-text-language-using-python"></a>Schnellstart: Verwenden der Textübersetzungs-API zur Erkennung der Textsprache mit Python
 
 In dieser Schnellstartanleitung erfahren Sie, wie Sie die Sprache des bereitgestellten Texts mit Python und der Textübersetzungs-REST-API erkennen.
 
@@ -67,7 +67,7 @@ else:
 Derzeit ist ein Endpunkt für die Textübersetzung verfügbar, der als `base_url` festgelegt ist. `path` legt die `detect`-Route fest und gibt die gewünschte Version der API (Version 3) an.
 
 >[!NOTE]
-> Weitere Informationen zu Endpunkten, Routen und Anforderungsparametern finden Sie unter [Textübersetzungs-API 3.0: Detect](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-detect).
+> Weitere Informationen zu Endpunkten, Routen und Anforderungsparametern finden Sie unter [Textübersetzungs-API 3.0: Detect](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-detect)
 
 ```python
 base_url = 'https://api.cognitive.microsofttranslator.com'
@@ -163,7 +163,7 @@ Wenn Sie den Abonnementschlüssel in Ihrem Programm hartcodiert haben, entfernen
 
 ## <a name="see-also"></a>Weitere Informationen
 
-Sie können die Textübersetzungs-API nicht nur für die Spracherkennung, sondern auch für Folgendes verwenden:
+Informieren Sie sich, wie Sie die Textübersetzungs-API für folgende Zwecke verwenden:
 
 * [Übersetzen von Text](quickstart-python-translate.md)
 * [Transliteration von Text](quickstart-python-transliterate.md)

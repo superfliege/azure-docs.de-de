@@ -1,21 +1,21 @@
 ---
 title: Registrieren mithilfe der CSP-Partnerinformationen bei Cloudyn in Azure | Microsoft-Dokumentation
-description: Verwenden Sie Ihre CSP-Partnerinformationen, um sich bei Cloudyn zu registrieren.
+description: In diesem Schnellstart wird der Registrierungsvorgang ausführlich erläutert, der zum Erstellen eines Cloudyn-Testabonnements und zum Anmelden beim Cloudyn-Portal erforderlich ist.
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/18/2018
+ms.date: 12/07/2018
 ms.topic: quickstart
-ms.custom: ''
+ms.custom: seodec18
 ms.service: cost-management
 manager: benshy
-ms.openlocfilehash: 7d89446869815e5fb33ed0f95739054552268fae
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 0cded27e5c7a7105c3e22f55fa02394572d0932f
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52274754"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53099884"
 ---
 # <a name="register-with-the-csp-partner-program-and-view-cost-data"></a>Registrieren beim CSP-Partnerprogramm und Anzeigen von Kostendaten
 
@@ -33,13 +33,13 @@ Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit der Part
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
-- Melden Sie sich unter http://portal.azure.com beim Azure-Portal an.
+- Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
 
 ## <a name="register-with-cloudyn"></a>Registrieren bei Cloudyn
 
 1. Klicken Sie im Azure-Portal in der Liste der Dienste auf **Kostenverwaltung und Abrechnung**.
 2. Klicken Sie unter **Übersicht** auf **Cloudyn**.  
-    ![Cloudyn-Seite](./media/quick-register-csp/cost-mgt-billing-service.png)
+    ![Cloudyn-Seite, die im Azure-Portal angezeigt wird](./media/quick-register-csp/cost-mgt-billing-service.png)
 3. Klicken Sie auf der Seite **Cloudyn** auf **Zu Cloudyn wechseln**, um die Cloudyn-Registrierungsseite in einem neuen Fenster zu öffnen.
 4. Geben Sie im Cloudyn-Portal auf der Registrierungsseite für die Testversion den Namen Ihres Unternehmens ein, wählen Sie **Microsoft CSP Partner Program Administrator** (Administrator des Microsoft CSP-Partnerprogramms) aus, und klicken Sie dann auf **Weiter**.  
 5. Geben Sie eine **Anwendungs-ID**, **Commerce-ID** und den **geheimen Anwendungsschlüssel** ein, und wählen Sie den **Default Pricing Plan** (Standardpreisplan) aus. Wenn Ihnen diese Informationen nicht vorliegen, melden Sie sich beim Partner Center-Portal unter [https://partnercenter.microsoft.com](https://partnercenter.microsoft.com) mit Ihrem primären Administratorkonto an, und führen Sie folgende Schritte aus:
@@ -48,9 +48,9 @@ Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit der Part
   3. Kopieren Sie die GUID Ihrer **App-ID** aus Ihrer Webanwendung.
   4. Kopieren Sie die GUID Ihrer **Commerce-ID** aus Ihrer Webanwendung.
   5. Legen Sie die Gültigkeitsdauer des Schlüssels bei Bedarf auf ein oder zwei Jahre fest. Klicken Sie auf **Schlüssel hinzufügen**, und kopieren und speichern Sie den geheimen Schlüsselwert anschließend.  
-    ![CSP Partner Center](./media/quick-register-csp/csp-partner-center.png)
+    ![Partnerdashboard, auf dem Sie die Anmeldeinformationen kopieren](./media/quick-register-csp/csp-partner-center.png)
   6. Navigieren Sie zurück zur Cloudyn-Registrierungsseite, und fügen Sie die Informationen ein.  
-      ![Anmeldeinformationen des CSP-Kontos](./media/quick-register-csp/csp-reg.png)
+      ![Einfügen von Anmeldeinformationen auf der Cloudyn-Registrierungsseite](./media/quick-register-csp/csp-reg.png)
 6. Stimmen Sie den Nutzungsbedingungen zu, und überprüfen Sie dann Ihre Informationen. Klicken Sie auf **Weiter**, um Cloudyn für das Erfassen von Azure-Ressourcendaten zu autorisieren. Die erfassten Daten beziehen sich auf Nutzungs-, Leistungs- und Abrechnungs- sowie Tagdaten aus Ihren Abonnements.  
 7. Unter **Invite other stakeholders** (Andere Beteiligte einladen) können Sie Benutzer hinzufügen, indem Sie ihre E-Mail-Adressen eingeben. Klicken Sie auf **Weiter**, wenn Sie fertig sind. Es dauert ungefähr zwei Stunden, bis alle Ihre Abrechnungsdaten Cloudyn hinzugefügt wurden.
 8. Klicken Sie auf **Zu Cloudyn wechseln**, um das Cloudyn-Portal zu öffnen. Auf der Seite **Cloudkontenverwaltung** sollten Ihre registrierten CSP-Kontoinformationen angezeigt werden.
@@ -59,7 +59,7 @@ Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit der Part
 
 Standardmäßig ist der Zugriff auf Partner Center-APIs nur für direkte CSPs möglich. Allerdings können direkte CSP-Anbieter den Zugriff für ihre indirekten CSP-Kunden oder -Partner über Entitätsgruppen in Cloudyn konfigurieren.
 
-Zum Aktivieren des Zugriffs für indirekte CSP-Kunden oder -Partner führen Sie die Schritte in [Erstellen einer Registrierung für die Testversion](#create-a-trial-registration) aus, um eine Testregistrierung einzurichten. Führen Sie als Nächstes die folgenden Schritte aus, um indirekte CSP-Daten mithilfe von Cloudyn-Entitätsgruppen zu segmentieren. Weisen Sie anschließend die entsprechenden Benutzerberechtigungen den Entitätsgruppen zu.
+Zum Aktivieren des Zugriffs für indirekte CSP-Kunden oder -Partner führen Sie die Schritte unter [Registrieren beim CSP-Partnerprogramm und Anzeigen von Kostendaten](#register-with-cloudyn) aus, um eine Testregistrierung einzurichten. Führen Sie als Nächstes die folgenden Schritte aus, um indirekte CSP-Daten mithilfe von Cloudyn-Entitätsgruppen zu segmentieren. Weisen Sie anschließend die entsprechenden Benutzerberechtigungen den Entitätsgruppen zu.
 
 1. Erstellen Sie eine Entitätsgruppe mit den Informationen unter [Erstellen von Entitäten](tutorial-user-access.md#create-and-manage-entities).
 2. Führen Sie die Schritte unter [Assigning subscriptions to Cost Entities](https://support.cloudyn.com/hc/articles/115005139425-Video-Assigning-subscriptions-to-Cost-Entities) (Zuweisen von Abonnements zu Kostenentitäten) aus. Verknüpfen Sie die Konten der indirekten CSP-Kunden und ihre Azure-Abonnements mit der Entität, die Sie zuvor erstellt haben.

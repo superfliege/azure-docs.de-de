@@ -1,21 +1,21 @@
 ---
-title: 'Azure Container Registry-Tutorial: Bereitstellen einer Web-App über Azure Container Registry'
-description: Stellen Sie eine Linux-basierte Web-App unter Verwendung eines Containerimages aus einer georeplizierten Azure-Containerregistrierung bereit. Dieses Tutorial ist der zweite Teil einer dreiteiligen Reihe.
+title: Tutorial – Bereitstellen einer App aus einer georeplizierten Docker-Registrierung in Azure
+description: Stellen Sie eine Linux-basierte Web-App unter Verwendung eines Containerimages aus einer georeplizierten Azure-Containerregistrierung in zwei unterschiedlichen Azure-Regionen bereit. Dieses Tutorial ist der zweite Teil einer dreiteiligen Reihe.
 services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: tutorial
 ms.date: 08/20/2018
 ms.author: danlep
-ms.custom: mvc
-ms.openlocfilehash: d1924d730f2c2a64063496d4be759194cef99175
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.custom: seodec18, mvc
+ms.openlocfilehash: e5a38e2b6550d763f30c2462944b154f76bbe92c
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48853860"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53253832"
 ---
-# <a name="tutorial-deploy-web-app-from-azure-container-registry"></a>Tutorial: Bereitstellen einer Web-App über Azure Container Registry
+# <a name="tutorial-deploy-a-web-app-from-a-geo-replicated-azure-container-registry"></a>Tutorial: Bereitstellen einer Web-App aus einer georeplizierten Azure-Containerregistrierung
 
 Dies ist der zweite Teil eines dreiteiligen Tutorials. In [Teil 1](container-registry-tutorial-prepare-registry.md) wurde eine private georeplizierte Containerregistrierung erstellt. Außerdem wurde ein quellcodebasiertes Containerimage erstellt und mithilfe von Push an die Registrierung übertragen. In diesem Artikel können Sie von der Netzwerknähe der georeplizierten Registrierung profitieren, indem Sie den Container Web-App-Instanzen in zwei verschiedenen Azure-Regionen bereitstellen. Jede Instanz ruft dann das Containerimage per Pull aus der nächstgelegenen Registrierung ab.
 

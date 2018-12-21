@@ -5,19 +5,19 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/18/2018
+ms.date: 12/07/2018
 ms.topic: tutorial
 ms.service: cost-management
-ms.custom: ''
+ms.custom: seodec18
 manager: benshy
-ms.openlocfilehash: 25fa099bcd6fa3843deadb3dc39d4250624ead06
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 2d83bab3686d274b9f37c0b0f7c92515801dbe70
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52274584"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53086452"
 ---
-# <a name="tutorial-forecast-future-spending"></a>Tutorial: Prognostizieren zukünftiger Ausgaben
+# <a name="tutorial-forecast-future-spending"></a>Tutorial: Vorhersage zukünftiger Ausgaben
 
 Cloudyn ermöglicht es Ihnen, zukünftige Ausgaben mit Daten zum Nutzungsverlauf und zu Ausgaben zu prognostizieren. Sie verwenden Cloudyn-Berichte, um alle Kostenprognosedaten anzuzeigen. Die Beispiele dieses Tutorials führen Sie in einer exemplarischen Vorgehensweise durch das Überprüfen der Kostenprognosen mithilfe der Berichte. In diesem Tutorial lernen Sie Folgendes:
 
@@ -37,11 +37,11 @@ Cloudyn enthält Kostenprognoseberichte, anhand derer Sie Ausgaben basierend auf
 
 Der Bericht über die aktuellen monatlichen vorhergesagten Kosten zeigt die Kosten für Ihre Dienste. Er bezieht sich auf Kosten ab Anfang des Monats und des vorhergehenden Monats, um die voraussichtlichen Kosten anzuzeigen. Klicken Sie im Berichtsmenü am oberen Rand des Portals auf **Costs** > **Projection and Budget** > **Current Month Projected Cost** (Kosten > Prognose und Budget > Vorhergesagte Kosten für den aktuellen Monat). Die folgende Abbildung zeigt ein Beispiel.
 
-![Vorhergesagte Kosten für den aktuellen Monat](./media/tutorial-forecast-spending/project-month01.png)
+![Beispielinformationen, die im Bericht „Vorhergesagte Kosten für den aktuellen Monat“ angezeigt werden](./media/tutorial-forecast-spending/project-month01.png)
 
 Im Beispiel können Sie sehen, für welche Dienste die höchsten Kosten entstanden sind. Azure-Kosten waren niedriger als AWS Kosten. Wenn Sie die Kostenprognose für Azure-VMs im Detail sehen möchten, wählen Sie in der Liste **Filter** **Azure/VM**.
 
-![Vorhergesagte Kosten für Azure-VM im aktuellen Monat](./media/tutorial-forecast-spending/project-month02.png)
+![Beispiel zu „Vorhergesagte Kosten für Azure-VM im aktuellen Monat“](./media/tutorial-forecast-spending/project-month02.png)
 
 Führen Sie die gleichen grundlegenden Schritte aus, um die Prognose der monatlichen Kosten für andere Dienste anzuzeigen, die Sie interessieren.
 
@@ -49,11 +49,11 @@ Der Bericht über die vorhergesagten jährlichen Kosten zeigt die extrapolierten
 
 Klicken Sie im Berichtsmenü am oberen Rand des Portals auf **Costs** > **Projection and Budget** > **Annual Projected Cost** (Kosten > Prognose und Budget > Vorhergesagte jährliche Kosten). Die folgende Abbildung zeigt ein Beispiel.
 
-![Bericht über die vorhergesagten jährlichen Kosten](./media/tutorial-forecast-spending/project-annual01.png)
+![Beispiel für Bericht „Vorhergesagte jährliche Kosten“](./media/tutorial-forecast-spending/project-annual01.png)
 
 Im Beispiel können Sie sehen, für welche Dienste die höchsten Kosten entstanden sind. Wie im monatlichen Beispiel waren die Azure-Kosten niedriger als die AWS Kosten. Wenn Sie die Kostenprognose für Azure-VMs im Detail sehen möchten, wählen Sie in der Liste **Filter** **Azure/VM**.
 
-![Vorhergesagte jährliche VM-Kosten](./media/tutorial-forecast-spending/project-annual02.png)
+![Beispiel für „Vorhergesagte jährliche VM-Kosten“](./media/tutorial-forecast-spending/project-annual02.png)
 
 In der Abbildung oben belaufen sich die vorhergesagten jährlichen Kosten der Azure-VMs auf 28.374 US-Dollar.
 

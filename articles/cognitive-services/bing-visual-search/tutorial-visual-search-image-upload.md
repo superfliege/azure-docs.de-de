@@ -10,12 +10,12 @@ ms.component: bing-visual-search
 ms.topic: tutorial
 ms.date: 07/10/2018
 ms.author: scottwhi
-ms.openlocfilehash: b13f2e5c96ba50fc76d7bfae256e5fcc1c8b56ce
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: 24b4bacd6a369812a07095b1d9c114f557d10d57
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52443456"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52960056"
 ---
 # <a name="tutorial-breaking-down-bing-visual-search-upload"></a>Tutorial: Darstellen des Uploads für die visuelle Bing-Suche
 
@@ -1340,4 +1340,4 @@ Dies ist das vollständige HTML- und JavaScript-Beispiel.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informationen darüber, wie Erkenntnisse mit Insights-Token abgerufen werden können, finden Sie unter [Tutorial: SDK für die visuelle Bing-Suche: ImageInsightsToken und Ergebnisse](.\tutorial-visual-search-insights-token.md).
+Informationen darüber, wie Erkenntnisse mit Insights-Token abgerufen werden können, finden Sie unter [Tutorial: SDK für die visuelle Bing-Suche: ImageInsightsToken und Ergebnisse](./tutorial-visual-search-insights-token.md).

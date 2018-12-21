@@ -1,24 +1,27 @@
 ---
-title: Dienstprinzipal für Azure Kubernetes-Cluster
+title: (VERALTET) Dienstprinzipal für Azure Kubernetes-Cluster
 description: Erstellen und Verwalten eines Azure Active Directory-Dienstprinzipals für einen Kubernetes-Cluster in Azure Container Service
 services: container-service
-author: neilpeterson
+author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: get-started-article
 ms.date: 02/26/2018
-ms.author: nepeters
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: c370d25ed5d70887c8beecae8fea3528a259a0ea
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 53bb09824a88980a171fa4067a9efd2fc067a898
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49954571"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52992160"
 ---
-# <a name="set-up-an-azure-ad-service-principal-for-a-kubernetes-cluster-in-container-service"></a>Einrichten eines Azure AD-Dienstprinzipals für einen Kubernetes-Cluster in Container Service
+# <a name="deprecated-set-up-an-azure-ad-service-principal-for-a-kubernetes-cluster-in-container-service"></a>(VERALTET) Einrichten eines Azure AD-Dienstprinzipals für einen Kubernetes-Cluster in Container Service
 
-[!INCLUDE [aks-preview-redirect.md](../../../includes/aks-preview-redirect.md)]
+> [!TIP]
+> Die aktualisierte Version dieses Artikels, in dem Azure Kubernetes Service verwendet wird, finden Sie unter [Dienstprinzipale mit Azure Kubernetes Service (AKS)](../../aks/kubernetes-service-principal.md).
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
 Für die Interaktion mit Azure-APIs benötigt Kubernetes in Azure Container Service einen [Azure Active Directory-Dienstprinzipal](../../active-directory/develop/app-objects-and-service-principals.md). Der Dienstprinzipal wird für die dynamische Verwaltung von Ressourcen wie etwa [benutzerdefinierte Routen](../../virtual-network/virtual-networks-udr-overview.md) und [Azure Load Balancer (Layer 4)](../../load-balancer/load-balancer-overview.md) benötigt.
 
@@ -30,11 +33,11 @@ In diesem Artikel werden verschiedene Optionen zum Einrichten eines Dienstprinzi
 
 Sie können einen vorhandenen Azure AD-Dienstprinzipal verwenden, der die folgenden Anforderungen erfüllt, oder einen neuen Dienstprinzipal erstellen.
 
-* **Bereich:** Ressourcengruppe
+* **Umfang**: Ressourcengruppe
 
-* **Rolle:** Mitwirkender
+* **Rolle**: Mitwirkender
 
-* **Clientgeheimnis:** Muss ein Kennwort sein. Derzeit kann kein für die Zertifikatauthentifizierung eingerichteter Dienstprinzipal verwendet werden.
+* **Geheimer Clientschlüssel**: Muss ein Kennwort sein. Derzeit kann kein für die Zertifikatauthentifizierung eingerichteter Dienstprinzipal verwendet werden.
 
 > [!IMPORTANT]
 > Um einen Dienstprinzipal zu erstellen, müssen Sie über die Berechtigungen verfügen, um eine Anwendung bei Ihrem Azure AD-Mandanten zu registrieren und die Anwendung einer Rolle in Ihrem Abonnement zuzuweisen. [Überprüfen Sie im Portal](../../active-directory/develop/howto-create-service-principal-portal.md#required-permissions), ob Sie über die erforderlichen Berechtigungen verfügen.

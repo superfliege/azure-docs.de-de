@@ -1,5 +1,5 @@
 ---
-title: 'Azure Cosmos DB: Erstellen einer Konsolen-App mit einer MongoDB-API mit Golang und dem Azure-Portal'
+title: 'Azure Cosmos DB: Erstellen einer MongoDB-API-Konsolen-App mit Golang und dem Azure-Portal'
 description: Hier finden Sie ein Golang-Codebeispiel, das Sie zum Herstellen einer Verbindung mit und zum Abfragen von Azure Cosmos DB verwenden können.
 services: cosmos-db
 author: slyons
@@ -9,14 +9,14 @@ ms.topic: quickstart
 ms.date: 07/21/2017
 ms.author: sclyon
 ms.custom: mvc
-ms.openlocfilehash: 04149e12e2926888bab82495a0924df94d6e3450
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: a05ca8602ad3b5ea3135ad2ce915bdc38359bfd7
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52836167"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53089558"
 ---
-# <a name="azure-cosmos-db-build-a-mongodb-api-console-app-with-golang-and-the-azure-portal"></a>Azure Cosmos DB: Erstellen einer Konsolen-App mit einer MongoDB-API mit Golang und dem Azure-Portal
+# <a name="azure-cosmos-db-build-a-mongodb-api-console-app-with-golang-and-the-azure-portal"></a>Azure Cosmos DB: Erstellen einer MongoDB-API-Konsolen-App mit Golang und dem Azure-Portal
 
 > [!div class="op_single_selector"]
 > * [.NET](create-mongodb-dotnet.md)
@@ -63,7 +63,7 @@ Klonen Sie die Beispielanwendung, und installieren Sie die erforderlichen Pakete
     go get gopkg.in/mgo.v2
     ```
 
-Der [mgo](http://labix.org/mgo)-Treiber ist ein [MongoDB](http://www.mongodb.org/)-Treiber für die [Sprache Go](http://golang.org/), mit dem eine umfassende und gründlich getestete Auswahl von Funktionen unter einer sehr einfachen API auf Grundlage von Go-Standardbegriffen implementiert wird.
+Der [mgo](https://labix.org/mgo)-Treiber ist ein [MongoDB](https://www.mongodb.com/)-Treiber für die [Sprache Go](https://golang.org/), mit dem eine umfassende und gründlich getestete Auswahl von Funktionen unter einer sehr einfachen API auf Grundlage von Go-Standardbegriffen implementiert wird.
 
 <a id="connection-string"></a>
 
@@ -95,7 +95,7 @@ Die folgenden Codeausschnitte stammen alle aus der Datei „main.go“.
 
 ### <a name="connecting-the-go-app-to-azure-cosmos-db"></a>Herstellen einer Verbindung für die Go-App mit Azure Cosmos DB
 
-Azure Cosmos DB unterstützt die SSL-fähige MongoDB. Zum Herstellen einer Verbindung mit einer SSL-fähigen MongoDB müssen Sie die Funktion **DialServer** in [mgo.DialInfo](http://gopkg.in/mgo.v2#DialInfo) definieren und die Funktion [tls.*Dial*](http://golang.org/pkg/crypto/tls#Dial) nutzen, um die Verbindung herzustellen.
+Azure Cosmos DB unterstützt die SSL-fähige MongoDB. Zum Herstellen einer Verbindung mit einer SSL-fähigen MongoDB müssen Sie die Funktion **DialServer** in [mgo.DialInfo](https://godoc.org/gopkg.in/mgo.v2#DialInfo) definieren und die Funktion [tls.*Dial*](https://golang.org/pkg/crypto/tls#Dial) nutzen, um die Verbindung herzustellen.
 
 Mit dem folgenden Golang-Codeausschnitt wird die Go-App mit der Azure Cosmos DB-MongoDB-API verbunden. Die *DialInfo*-Klasse enthält Optionen zum Einrichten einer Sitzung mit einem MongoDB-Cluster.
 

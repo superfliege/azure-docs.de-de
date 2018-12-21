@@ -1,21 +1,22 @@
 ---
-title: 'Tutorial 4: Genaue Textübereinstimmungen – LUIS-Listenentität'
+title: Genaue Textübereinstimmung
 titleSuffix: Azure Cognitive Services
 description: Abrufen von Daten, die mit einer vordefinierten Liste von Elementen übereinstimmen. Jedes Element auf der Liste kann Synonyme aufweisen, die ebenfalls exakt übereinstimmen
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: a4e294687b6c3ea2ba6ff8003e7a8f1ac69ea639
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 5706e0b124bb9ceaf1abf7228faf088dc4e510ce
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52425070"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53096688"
 ---
 # <a name="tutorial-4-extract-exact-text-matches"></a>Tutorial 4: Extrahieren genauer Textübereinstimmungen
 In diesem Tutorial lernen Sie, wie Daten abgerufen werden, die mit einer vordefinierten Liste von Elementen übereinstimmen. Jedes Element auf der Liste kann eine Liste mit Synonymen enthalten. Für die Personalwesen-App kann ein Mitarbeiter anhand verschiedener Schlüsselinformationen, wie Name, E-Mail, Telefonnummer und Steuernummer identifiziert werden. 
@@ -106,11 +107,11 @@ Der primäre, _kanonische_ Name für die einzelnen Elemente ist die Mitarbeitern
 
 3. Geben Sie im Popupdialogfeld `Employee` als Entitätsname und **List** (Liste) als Entitätstyp ein. Wählen Sie **Fertig**aus.  
 
-    [![](media/luis-quickstart-intent-and-list-entity/hr-list-entity-ddl.png "Screenshot: Popupdialogfeld zur Erstellung einer neuen Entität")](media/luis-quickstart-intent-and-list-entity/hr-list-entity-ddl.png#lightbox)
+    [![Screenshot des Popupdialogfensters zum Erstellen einer neuen Entität](media/luis-quickstart-intent-and-list-entity/hr-list-entity-ddl.png "Screenshot des Popupdialogfensters zum Erstellen einer neuen Entität")](media/luis-quickstart-intent-and-list-entity/hr-list-entity-ddl.png#lightbox)
 
 4. Geben Sie auf der Seite mit der Mitarbeiterentität `Employee-24612` als neuen Wert ein.
 
-    [![](media/luis-quickstart-intent-and-list-entity/hr-emp1-value.png "Screenshot: Eingeben des Werts")](media/luis-quickstart-intent-and-list-entity/hr-emp1-value.png#lightbox)
+    [![Screenshot der Eingabe eines Werts](media/luis-quickstart-intent-and-list-entity/hr-emp1-value.png "Screenshot der Eingabe eines Werts")](media/luis-quickstart-intent-and-list-entity/hr-emp1-value.png#lightbox)
 
 5. Fügen Sie unter „Synonyme“ die folgenden Werte hinzu:
 
@@ -122,7 +123,7 @@ Der primäre, _kanonische_ Name für die einzelnen Elemente ist die Mitarbeitern
     |Persönliche Mobiltelefonnummer|425-555-1212|
     |US-Sozialversicherungsnummer|123-45-6789|
 
-    [![](media/luis-quickstart-intent-and-list-entity/hr-emp1-synonyms.png "Screenshot: Eingeben von Synonymen")](media/luis-quickstart-intent-and-list-entity/hr-emp1-synonyms.png#lightbox)
+    [![Screenshot der Eingabe von Synonymen](media/luis-quickstart-intent-and-list-entity/hr-emp1-synonyms.png "Screenshot der Eingabe von Synonymen")](media/luis-quickstart-intent-and-list-entity/hr-emp1-synonyms.png#lightbox)
 
 6. Geben Sie `Employee-45612` als neuen Wert ein.
 
@@ -150,7 +151,7 @@ Der primäre, _kanonische_ Name für die einzelnen Elemente ist die Mitarbeitern
 
 2. Geben Sie in der Adressleiste am Ende der URL `shift 123-45-6789 from Z-1242 to T-54672` ein. Der letzte Parameter der Abfragezeichenfolge lautet `q` (für die Abfrage („**q**uery“) der Äußerung). Diese Äußerung entspricht keiner der bezeichneten Äußerungen. Sie ist daher ein guter Test, und es sollte die Absicht `MoveEmployee` mit Extrahierung von `Employee` zurückgegeben werden.
 
-  ```JSON
+  ```json
   {
     "query": "shift 123-45-6789 from Z-1242 to T-54672",
     "topScoringIntent": {

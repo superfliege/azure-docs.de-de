@@ -1,5 +1,5 @@
 ---
-title: Azure Container Service-Schnellstart – DC/OS-Cluster bereitstellen
+title: '(VERALTET) Azure Container Service-Schnellstart: Bereitstellen eines DC/OS-Clusters'
 description: Azure Container Service-Schnellstart – DC/OS-Cluster bereitstellen
 services: container-service
 author: iainfoulds
@@ -9,14 +9,16 @@ ms.topic: quickstart
 ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 4cd7f2284f3449fe8abdf1a6f8e85b9b0b712d7a
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: efaf82c3f378f572c289b587dbe5df1923a58c62
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46998558"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53000519"
 ---
-# <a name="deploy-a-dcos-cluster"></a>Bereitstellen eines DC/OS-Clusters
+# <a name="deprecated-deploy-a-dcos-cluster"></a>(VERALTET) Bereitstellen eines DC/OS-Clusters
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
 DC/OS stellt eine verteilte Plattform zum Ausführen moderner Containeranwendungen bereit. Mit Azure Container Service ist die Bereitstellung eines produktionsfertigen DC/OS-Clusters schnell und einfach. In diesem Schnellstart werden die grundlegenden Schritte zum Bereitstellen eines DC/OS-Clusters und Ausführen der grundlegenden Arbeitsauslastung erläutert.
 

@@ -10,14 +10,14 @@ ms.devlang: php
 ms.topic: quickstart
 ms.date: 01/05/2018
 ms.author: lbosq
-ms.openlocfilehash: e5a7d40007076d09695d166148d84684c1cccee5
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: f6ff46f391ce03f67619ef685f841dcf95a1fd92
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52839609"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53089465"
 ---
-# <a name="azure-cosmos-db-create-a-graph-database-using-php-and-the-azure-portal"></a>Azure Cosmos DB: Erstellen einer Graph-Datenbank mit PHP und dem Azure-Portal
+# <a name="azure-cosmos-db-create-a-graph-database-using-php-and-the-azure-portal"></a>Azure Cosmos DB: Erstellen einer Graphdatenbank mit PHP und dem Azure-Portal
 
 > [!div class="op_single_selector"]
 > * [Gremlin-Konsole](create-graph-gremlin-console.md)
@@ -37,7 +37,7 @@ Azure Cosmos DB ist ein global verteilter Datenbankdienst von Microsoft mit mehr
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] Alternativ können Sie [Azure Cosmos DB ohne Azure-Abonnement testen](https://azure.microsoft.com/try/cosmosdb/) – kostenlos und ohne Verpflichtung.
 
 Außerdem haben Sie folgende Möglichkeiten:
-* [PHP](http://php.net/) 5.6 oder höher
+* [PHP](https://php.net/) 5.6 oder höher
 * [Composer](https://getcomposer.org/download/)
 
 ## <a name="create-a-database-account"></a>Erstellen eines Datenbankkontos
@@ -104,7 +104,7 @@ Dieser Schritt ist optional. Wenn Sie erfahren möchten, wie die Datenbankressou
 
 Wechseln Sie nun zurück zum Azure-Portal, um die Verbindungsinformationen abzurufen und in die App zu kopieren. Durch diese Einstellungen kann Ihre App mit Ihrer gehosteten Datenbank kommunizieren.
 
-1. Klicken Sie im [Azure-Portal](http://portal.azure.com/) auf **Schlüssel**. 
+1. Klicken Sie im [Azure-Portal](https://portal.azure.com/) auf **Schlüssel**. 
 
     Kopieren Sie den ersten Teil des URI-Werts.
 

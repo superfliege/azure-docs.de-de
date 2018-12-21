@@ -1,5 +1,5 @@
 ---
-title: Einführung in App Service unter Linux | Microsoft Docs
+title: 'Einführung in App Service unter Linux: Azure | Microsoft-Dokumentation'
 description: Informationen zu Azure App Service unter Linux.
 keywords: Azure App Service, Linux, OSS
 services: app-service
@@ -15,13 +15,13 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 10/09/2018
 ms.author: wesmc
-ms.custom: mvc
-ms.openlocfilehash: 3910e13900ec1774e5a1fe449b4f510a661f1f53
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.custom: seodec18
+ms.openlocfilehash: ac8d5ddb843227e5c5d8e7508c3ea46946f4850e
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52165321"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53257878"
 ---
 # <a name="introduction-to-azure-app-service-on-linux"></a>Einführung in Azure App Service unter Linux
 

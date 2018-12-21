@@ -6,15 +6,15 @@ author: zjalexander
 ms.service: automation
 ms.component: update-management
 ms.topic: tutorial
-ms.date: 09/18/2018
+ms.date: 12/04/2018
 ms.author: zachal
 ms.custom: mvc
-ms.openlocfilehash: 8a99a784292c4294456296c1f105e5f485689368
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 83647dfb0965b8aac8ede5f2e9669ae3d7722c41
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52679901"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53184983"
 ---
 # <a name="manage-windows-updates-by-using-azure-automation"></a>Verwalten von Windows-Updates mithilfe von Azure Automation
 
@@ -82,48 +82,24 @@ Klicken Sie im Update auf eine andere Stelle, um den Bereich **Protokollsuche** 
 
 ## <a name="configure-alerts"></a>Konfigurieren von Warnungen
 
-In diesem Schritt erfahren Sie, wie Sie eine Warnung einrichten, die Sie über die erfolgreiche Bereitstellung von Updates informiert. Dazu können Sie entweder eine Log Analytics-Abfrage verwenden oder das Masterrunbook für die Updateverwaltung auf nicht erfolgreiche Bereitstellungen überwachen.
+In diesem Schritt erfahren Sie, wie Sie eine Warnung einrichten, um über den Status einer Updatebereitstellung informiert zu werden.
 
 ### <a name="alert-conditions"></a>Warnungsbedingungen
 
-Für jeden Warnungstyp müssen verschiedene Warnungsbedingungen definiert werden.
+Navigieren Sie in Ihrem Automation-Konto unter **Überwachung** zu **Warnungen**, und klicken Sie dann auf **+ Neue Warnungsregel**.
 
-#### <a name="log-analytics-query-alert"></a>Log Analytics-Abfragewarnung
+Ihr Automation-Konto ist bereits als Ressource ausgewählt. Falls Sie die Ressource ändern möchten, klicken Sie auf **Auswählen**, und wählen Sie dann auf der Seite **Ressource auswählen** in der Dropdownliste **Nach Ressourcentyp filtern** die Option **Automation-Konten** aus. Wählen Sie Ihr Automation-Konto aus, und klicken Sie auf **Fertig**.
 
-Für erfolgreiche Bereitstellungen können Sie eine auf einer Log Analytics-Abfrage basierende Warnung erstellen. Bei nicht erfolgreichen Bereitstellungen können Sie die Schritte für [Runbookwarnungen](#runbook-alert) ausführen, um benachrichtigt zu werden, wenn beim Masterrunbook, das Updatebereitstellungen orchestriert, ein Fehler auftritt. Sie können eine benutzerdefinierte Abfrage für zusätzliche Warnungen schreiben, um viele verschiedene Szenarien abzudecken.
+Klicken Sie auf **Bedingung hinzufügen**, um das geeignete Signal für Ihre Updatebereitstellung auszuwählen. In der folgenden Tabelle sind die Details der zwei verfügbaren Signale für Updatebereitstellungen aufgeführt:
 
-Navigieren Sie im Azure-Portal zu **Überwachen**, und klicken Sie dann auf **Warnung erstellen**.
+|Signalname|Dimensionen|BESCHREIBUNG|
+|---|---|---|
+|**Total Update Deployment Runs** (Updatebereitstellungsausführungen gesamt)|- Name der Updatebereitstellung</br>- Status|Dieses Signal wird für Warnungen zum allgemeinen Status einer Updatebereitstellung verwendet.|
+|**Total Update Deployment Machine Runs** (Updatebereitstellungsausführungen auf dem Computer gesamt)|- Name der Updatebereitstellung</br>- Status</br>- Zielcomputer</br>- ID der Updatebereitstellungsausführung|Dieses Signal wird für Warnungen zum Status einer Updatebereitstellung auf bestimmten Computern verwendet.|
 
-Klicken Sie unter **1. Warnungsbedingung definieren** auf **Ziel auswählen**. Wählen Sie unter **Nach Ressourcentyp filtern** die Option **Log Analytics**. Wählen Sie Ihren Log Analytics-Arbeitsbereich aus, und klicken Sie dann auf **Fertig**.
-
-![Erstellen einer Warnung](./media/automation-tutorial-update-management/create-alert.png)
-
-Klicken Sie auf **Kriterien hinzufügen**.
-
-Klicken Sie unter **Signallogik konfigurieren** in der Tabelle auf **Benutzerdefinierte Protokollsuche**. Geben Sie im Textfeld **Suchabfrage** die folgende Abfrage ein:
-
-```loganalytics
-UpdateRunProgress
-| where InstallationStatus == 'Succeeded'
-| where TimeGenerated > now(-10m)
-| summarize by UpdateRunName, Computer
-```
-Mit dieser Abfrage werden die Computer und der Name der Updateausführung zurückgegeben, die im angegebenen Zeitraum durchgeführt wurde.
-
-Geben Sie unter **Warnungslogik** für **Schwellenwert** den Wert **1** ein. Klicken Sie auf **Fertig**, wenn Sie fertig sind.
+Wählen Sie einen gültigen Wert für die Dimensionswerte in der Liste aus. Wenn der gesuchte Wert nicht in der Liste enthalten ist, klicken Sie auf das Plussymbol (**\+**) neben der Dimension, und geben Sie den benutzerdefinierten Namen ein. Anschließend können Sie den Wert auswählen, nach dem Sie suchen möchten. Wenn Sie alle Werte einer Dimension auswählen möchten, klicken Sie auf die Schaltfläche **Auswählen\***. Wenn Sie keinen Wert für eine Dimension auswählen, wird diese Dimension während der Auswertung ignoriert.
 
 ![Konfigurieren der Signallogik](./media/automation-tutorial-update-management/signal-logic.png)
-
-#### <a name="runbook-alert"></a>Runbookwarnung
-
-Bei nicht erfolgreichen Bereitstellungen muss auf die Fehlerhaftigkeit des Masterrunbooks aufmerksam gemacht werden.
-Navigieren Sie im Azure-Portal zu **Überwachen**, und klicken Sie dann auf **Warnung erstellen**.
-
-Klicken Sie unter **1. Warnungsbedingung definieren** auf **Ziel auswählen**. Wählen Sie unter **Nach Ressourcentyp filtern** die Option **Automation-Konten** aus. Wählen Sie Ihr Automation-Konto aus, und klicken Sie auf **Fertig**.
-
-Klicken Sie neben **Runbookname** auf das Pluszeichen (**\+**), und geben Sie als benutzerdefinierten Namen **Patch-MicrosoftOMSComputers** ein. Wählen Sie als **Status** die Option **Fehler**, oder klicken Sie auf das Pluszeichen (**\+**), um **Fehler** einzugeben.
-
-![Konfigurieren der Signallogik für Runbooks](./media/automation-tutorial-update-management/signal-logic-runbook.png)
 
 Geben Sie unter **Warnungslogik** für **Schwellenwert** den Wert **1** ein. Klicken Sie auf **Fertig**, wenn Sie fertig sind.
 
@@ -133,7 +109,7 @@ Wählen Sie unter **2. Warnungsdetails definieren** einen Namen und eine Beschre
 
 ![Konfigurieren der Signallogik](./media/automation-tutorial-update-management/define-alert-details.png)
 
-Klicken Sie unter **3. Aktionsgruppe definieren** auf **Neue Aktionsgruppe**. Eine Aktionsgruppe ist eine Gruppe mit Aktionen, die Sie übergreifend für mehrere Warnungen verwenden können. Dies können beispielsweise E-Mail-Benachrichtigungen, Runbooks, Webhooks und vieles mehr sein. Weitere Informationen zu Aktionsgruppen finden Sie unter [Erstellen und Verwalten von Aktionsgruppen im Azure-Portal](../monitoring-and-diagnostics/monitoring-action-groups.md).
+Wählen Sie unter **Aktionsgruppen** die Option **Neu erstellen** aus. Eine Aktionsgruppe ist eine Gruppe mit Aktionen, die Sie übergreifend für mehrere Warnungen verwenden können. Dies können beispielsweise E-Mail-Benachrichtigungen, Runbooks, Webhooks und vieles mehr sein. Weitere Informationen zu Aktionsgruppen finden Sie unter [Erstellen und Verwalten von Aktionsgruppen im Azure-Portal](../azure-monitor/platform/action-groups.md).
 
 Geben Sie im Feld **Name der Aktionsgruppe** einen Namen für die Warnung und darunter einen Kurznamen ein. Der Kurzname wird anstelle eines vollständigen Aktionsgruppennamens verwendet, wenn Benachrichtigungen mithilfe dieser Gruppe gesendet werden.
 
@@ -155,15 +131,15 @@ Um eine neue Updatebereitstellung für den virtuellen Computer zu planen, klicke
 
 Geben Sie unter **Neue Updatebereitstellung** die folgenden Informationen ein:
 
-* **Name:** Geben Sie einen eindeutigen Namen für die Updatebereitstellung ein.
+* **Name**: Geben Sie einen eindeutigen Namen für die Updatebereitstellung ein.
 
-* **Betriebssystem:** Wählen Sie das Betriebssystem aus, das als Ziel für die Updatebereitstellung dienen soll.
+* **Betriebssystem**: Wählen Sie das Betriebssystem aus, für das die Updatebereitstellung ausgeführt werden soll.
 
 * **Zu aktualisierende Gruppen (Vorschau)**: Definieren Sie eine Abfrage basierend auf einer Kombination aus Abonnement, Ressourcengruppen, Standorten und Tags, um eine dynamische Gruppe von Azure-VMs zu erstellen, die in Ihre Bereitstellung eingeschlossen werden sollen. Weitere Informationen finden Sie unter [Dynamische Gruppen](automation-update-management.md#using-dynamic-groups).
 
-* **Zu aktualisierende Computer:** Wählen Sie eine gespeicherte Suche oder eine importierte Gruppe aus, oder wählen Sie im Dropdownmenü „Computer“ und dann einzelne Computer aus. Bei Auswahl von **Computer** wird die Bereitschaft des Computers in der Spalte **BEREITSCHAFT DES UPDATE-AGENTS** angezeigt. Weitere Informationen zu den verschiedenen Methoden zum Erstellen von Computergruppen in Log Analytics finden Sie unter [Computergruppen in Log Analytics](../azure-monitor/platform/computer-groups.md).
+* **Zu aktualisierende Computer**: Wählen Sie eine gespeicherte Suche oder eine importierte Gruppe aus, oder wählen Sie im Dropdownmenü „Computer“ und dann einzelne Computer aus. Bei Auswahl von **Computer** wird die Bereitschaft des Computers in der Spalte **BEREITSCHAFT DES UPDATE-AGENTS** angezeigt. Weitere Informationen zu den verschiedenen Methoden zum Erstellen von Computergruppen in Log Analytics finden Sie unter [Computergruppen in Log Analytics](../azure-monitor/platform/computer-groups.md).
 
-* **Updateklassifizierung:** Wählen Sie die Softwareklassen aus, die in die Updatebereitstellung eingeschlossen werden sollen. Lassen Sie für dieses Tutorial alle Typen ausgewählt.
+* **Updateklassifizierung**: Wählen Sie die Softwaretypen aus, die in die Updatebereitstellung eingeschlossen werden sollen. Lassen Sie für dieses Tutorial alle Typen ausgewählt.
 
   Es gibt die folgenden Klassifizierungstypen:
 
@@ -176,14 +152,14 @@ Geben Sie unter **Neue Updatebereitstellung** die folgenden Informationen ein:
 
 * **Einzuschließende/auszuschließende Updates**: Öffnet die Seite **Einschließen/ausschließen**. Updates, die eingeschlossen oder ausgeschlossen werden sollen, befinden sich auf verschiedenen Registerkarten. Weitere Informationen zur Vorgehensweise beim Einschließen finden Sie unter [Verhalten beim Einschließen](automation-update-management.md#inclusion-behavior).
 
-* **Zeitplaneinstellungen:** Der Bereich **Zeitplaneinstellungen** wird geöffnet. Der Standard-Startzeitpunkt liegt 30 Minuten nach der aktuellen Uhrzeit. Als Startzeit können Sie einen beliebigen Wert festlegen, er muss jedoch mindestens 10 Minuten in der Zukunft liegen.
+* **Zeitplaneinstellungen**: Der Bereich **Zeitplaneinstellungen** wird geöffnet. Der Standard-Startzeitpunkt liegt 30 Minuten nach der aktuellen Uhrzeit. Als Startzeit können Sie einen beliebigen Wert festlegen, er muss jedoch mindestens 10 Minuten in der Zukunft liegen.
 
    Sie können auch angeben, ob die Bereitstellung einmalig erfolgt, oder einen sich wiederholenden Zeitplan einrichten. Wählen Sie unter **Wiederholung** die Option **Einmal**. Übernehmen Sie den Standardwert „1 Tag“, und wählen Sie **OK**. Ein Zeitplan für Wiederholung wird eingerichtet.
 
 * **Vor und nach dem Vorgang auszuführende Skripts**: Wählen Sie die Skripts aus, die vor und nach Ihrer Bereitstellung ausgeführt werden sollen. Weitere Informationen finden Sie unter [Verwalten von Pre- und Post-Skripts](pre-post-scripts.md).
-* **Wartungsfenster (Minuten):** Übernehmen Sie hierfür den Standardwert. Sie können das Zeitfenster angeben, in dem die Updatebereitstellung stattfinden soll. Mit dieser Einstellung können Sie sicherstellen, dass Änderungen in den von Ihnen festgelegten Wartungsfenstern ausgeführt werden.
+* **Wartungsfenster (Minuten)**: Behalten Sie den Standardwert bei. Sie können das Zeitfenster angeben, in dem die Updatebereitstellung stattfinden soll. Mit dieser Einstellung können Sie sicherstellen, dass Änderungen in den von Ihnen festgelegten Wartungsfenstern ausgeführt werden.
 
-* **Neustartoptionen:** Mit dieser Einstellung wird festgelegt, wie Neustarts behandelt werden sollen. Die verfügbaren Optionen lauten wie folgt:
+* **Neustartoptionen**: Mit dieser Einstellung wird festgelegt, wie Neustarts behandelt werden sollen. Die verfügbaren Optionen lauten wie folgt:
   * Neu starten bei Bedarf (Standard)
   * Immer neu starten
   * Nie neu starten
@@ -211,7 +187,7 @@ Unter **Updateergebnisse** werden eine Zusammenfassung der Gesamtzahl von Update
 In der folgenden Liste sind die verfügbaren Werte aufgeführt:
 
 * **Kein Versuch erfolgt**: Das Update wurde nicht installiert, da aufgrund des definierten Wartungsfensters nicht genügend Zeit zur Verfügung stand.
-* **Erfolgreich**: Das Update wurde erfolgreich ausgeführt.
+* **Erfolgreich**: Das Update war erfolgreich.
 * **Fehler**: Beim Update ist ein Fehler aufgetreten.
 
 Klicken Sie auf **Alle Protokolle**, um alle von der Bereitstellung erstellten Protokolleinträge anzuzeigen.

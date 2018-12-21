@@ -1,21 +1,22 @@
 ---
-title: 'Python-Schnellstartanleitung: Ändern des Modells und Trainieren einer LUIS-App'
-titleSuffix: Azure Cognitive Services
-description: In dieser Schnellstartanleitung für Python fügen Sie einer Home Automation-App Beispieläußerungen hinzu, und Sie trainieren die App. Bei Beispieläußerungen handelt es sich um Konversationstext von Benutzern, der einer Absicht zugeordnet ist. Indem Sie Beispieläußerungen für Absichten bereitstellen, teilen Sie LUIS mit, welche Arten des vom Benutzer angegebenen Texts zu welcher Absicht gehören.
+title: Ändern, Trainieren der App, Python
+titleSuffix: Language Understanding - Azure Cognitive Services
+description: In dieser Schnellstartanleitung für Python fügen Sie einer Home Automation-App Beispieläußerungen hinzu, und Sie trainieren die App.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: quickstart
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: ff076954d51605935bb41488ec6a757c2f7806a1
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 6d05859977a7cba385877298405b9ce77034da68
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47040175"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53166352"
 ---
 # <a name="quickstart-change-model-using-python"></a>Schnellstart: Ändern des Modells mit Python
 
@@ -27,7 +28,7 @@ ms.locfileid: "47040175"
 * [Python 3.6](https://www.python.org/downloads/) oder höher
 * [Visual Studio Code](https://code.visualstudio.com/)
 
-[!INCLUDE [Code is available in LUIS-Samples Github repo](../../../includes/cognitive-services-luis-qs-change-model-luis-repo-note.md)]
+[!INCLUDE [Code is available in LUIS-Samples GitHub repo](../../../includes/cognitive-services-luis-qs-change-model-luis-repo-note.md)]
 
 ## <a name="example-utterances-json-file"></a>JSON-Datei mit Beispieläußerungen
 
@@ -46,7 +47,7 @@ Führen Sie die Anwendung über eine Befehlszeile mit Python 3.6 aus.
 
 Wenn Sie „add-utterance“ ohne Argumente aufrufen, wird der App eine Äußerung hinzugefügt, ohne die App zu trainieren.
 
-```CMD
+```console
 > python add-utterances-3-6.py
 ```
 
@@ -83,7 +84,7 @@ Nachfolgend sehen Sie das Ergebnis einer erfolgreichen Anforderung zum Trainiere
 }
 ```
 
-```JSON
+```json
 Requested training status.
 [
    {

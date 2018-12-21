@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: quickstart
 ms.date: 12/4/2018
 ms.author: victorh
-ms.openlocfilehash: f54a9e40c4f75704e66c4a3a90ad4b293d1e6309
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: 9929662f1fe4612e51c82248f64e3191f7fdb223
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52889224"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52955202"
 ---
 # <a name="quickstart-configure-azure-dns-for-name-resolution-by-using-the-portal"></a>Schnellstart: Konfigurieren von Azure DNS für die Namensauflösung mit dem Portal
 
@@ -42,7 +42,7 @@ Eine DNS-Zone enthält die DNS-Einträge für eine Domäne. Wenn Sie eine Domän
 1. Geben Sie auf der Seite **DNS-Zone erstellen** die folgenden Werte ein (bzw. wählen Sie sie aus):
    
    - **Name**: Geben Sie für dieses Schnellstartbeispiel *contoso.xyz* ein. Der DNS-Zonenname kann ein beliebiger Wert sein, der auf den Azure DNS-Servern nicht bereits konfiguriert ist. Ein realer Wert ist eine Domäne, die Sie von einer Domänennamen-Registrierungsstelle erworben haben.
-   - **Ressourcengruppe**: Wählen Sie **Neu erstellen**, geben Sie *dns-test* ein, und wählen Sie **OK**. Der Name der Ressourcengruppe muss innerhalb des Azure-Abonnements eindeutig sein. 
+   - **Ressourcengruppe**: Wählen Sie **Neu erstellen** aus, geben Sie *dns-test* ein, und wählen Sie **OK**. Der Name der Ressourcengruppe muss innerhalb des Azure-Abonnements eindeutig sein. 
    
 1. Klicken Sie auf **Erstellen**.
 
@@ -63,9 +63,9 @@ Sie erstellen DNS-Einträge für Ihre Domäne in der DNS-Zone. Erstellen Sie ein
 1. Geben Sie auf der Seite **Datensatzgruppe hinzufügen** die folgenden Werte ein (bzw. wählen Sie sie aus):
 
    - **Name**: Geben Sie *www* ein. Der Eintragsname ist der Hostname, den Sie in die angegebene IP-Adresse auflösen möchten.
-   - **Typ**: Wählen Sie **A**. A-Einträge sind am gängigsten. Es gibt aber noch weitere Eintragstypen für E-Mail-Server („MX“), IPv6-Adressen („AAAA“) usw. 
-   - **Gültigkeitsdauer**: Geben Sie *1* ein. Mit der *Gültigkeitsdauer* der DNS-Anforderung wird angegeben, wie lange DNS-Server und -Clients eine Antwort zwischenspeichern können.
-   - **TTL-Einheit**: Wählen Sie **Stunden**. Dies ist die Zeiteinheit für den **TTL**-Wert. 
+   - **Typ**: Wählen Sie **A** aus. A-Einträge sind am gängigsten. Es gibt aber noch weitere Eintragstypen für E-Mail-Server („MX“), IPv6-Adressen („AAAA“) usw. 
+   - **TTL**: Geben Sie *1* ein. Mit der *Gültigkeitsdauer* der DNS-Anforderung wird angegeben, wie lange DNS-Server und -Clients eine Antwort zwischenspeichern können.
+   - **TTL-Einheit**: Wählen Sie **Stunden** aus. Dies ist die Zeiteinheit für den **TTL**-Wert. 
    - **IP-Adresse**: Geben Sie für dieses Schnellstartbeispiel *10.10.10.10* ein. Dieser Wert ist die IP-Adresse, in die der Eintragsname aufgelöst wird. In einem echten Szenario geben Sie die öffentliche IP-Adresse für Ihren Webserver ein.
 
 Da in dieser Schnellstartanleitung keine echte Domäne verwendet wird, ist es nicht erforderlich, die Azure DNS-Namensserver bei einer Domänennamen-Registrierungsstelle zu konfigurieren. Bei einer echten Domäne möchten Sie erreichen, dass alle Internetbenutzer den Hostnamen auflösen können, um eine Verbindung mit Ihrem Webserver oder Ihrer App herzustellen. Sie besuchen Ihre Domänennamen-Registrierungsstelle, um die Namenservereinträge durch die Azure DNS-Namenserver zu ersetzen. Weitere Informationen finden Sie unter [Tutorial: Hosten Ihrer Domäne in Azure DNS](dns-delegate-domain-azure-dns.md#delegate-the-domain).
@@ -91,7 +91,7 @@ Sie besitzen nun eine DNS-Testzone mit einem A-Testeintrag und können die Namen
    nslookup <host name> <name server name>
    ```
    
-   Beispiel:
+   Beispiel: 
    
    ```
    nslookup www.contoso.xyz ns1-08.azure-dns.com.

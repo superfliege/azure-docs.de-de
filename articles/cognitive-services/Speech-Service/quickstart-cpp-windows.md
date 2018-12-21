@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Erkennen von Sprache in C++ unter Windows mit dem Spracherkennungsdienst-SDK'
+title: 'Schnellstart: Erkennen von Sprache, C++ (Windows): Speech-Dienste'
 titleSuffix: Azure Cognitive Services
 description: Hier erfahren Sie, wie Sie mit dem Spracherkennungsdienst-SDK Sprache in C++ unter Windows Desktop erkennen.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: quickstart
 ms.date: 11/06/2018
 ms.author: wolfma
-ms.openlocfilehash: 8947ba3f39cebf51e956db0d841e393963832bc4
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.openlocfilehash: 454b84f4ba5e492f61daf67c980b204c82a2090d
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51218734"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53075186"
 ---
 # <a name="quickstart-recognize-speech-in-c-on-windows-by-using-the-speech-sdk"></a>Schnellstart: Erkennen von Sprache in C++ unter Windows mit dem Speech SDK
 
@@ -31,11 +31,11 @@ Sie benötigen einen Abonnementschlüssel für den Spracherkennungsdienst, um di
 
 1. Starten Sie Visual Studio 2017.
 
-1. Stellen Sie sicher, dass die Workload **Desktopentwicklung mit C++** verfügbar ist. Wählen Sie **Tools** > **Tools und Features abrufen** in der Visual Studio-Menüleiste aus, um den Visual Studio-Installer zu öffnen. Wenn diese Workload bereits aktiviert ist, fahren Sie mit dem nächsten Schritt fort. 
+1. Stellen Sie sicher, dass die Workload **Desktopentwicklung mit C++** verfügbar ist. Wählen Sie **Tools** > **Tools und Features abrufen** in der Visual Studio-Menüleiste aus, um den Visual Studio-Installer zu öffnen. Wenn diese Workload bereits aktiviert ist, fahren Sie mit dem nächsten Schritt fort.
 
     ![Screenshot der Registerkarte „Visual Studio-Workloads“](media/sdk/vs-enable-cpp-workload.png)
 
-    Aktivieren Sie andernfalls das Kontrollkästchen neben **Desktopentwicklung mit C++**. 
+    Aktivieren Sie andernfalls das Kontrollkästchen neben **Desktopentwicklung mit C++**.
 
 1. Stellen Sie sicher, dass die Komponente **NuGet-Paket-Manager** verfügbar ist. Wechseln Sie zur Registerkarte **Einzelne Komponenten** des Dialogfelds „Visual Studio-Installer“, und wählen Sie **NuGet-Paket-Manager** aus, wenn diese Option nicht bereits aktiviert ist.
 

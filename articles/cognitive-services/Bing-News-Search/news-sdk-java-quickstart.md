@@ -1,7 +1,7 @@
 ---
-title: 'Schnellstart: Bing-News-Suche-SDK, Java'
+title: 'Schnellstart: Durchführen einer Neuigkeitensuche – Bing-News-Suche-SDK für Java'
 titleSuffix: Azure Cognitive Services
-description: Informationen zum Einrichten des Bing-News-Suche-SDK für die Konsolenanwendung.
+description: Verwenden Sie diese Schnellstartanleitung, um mit dem Bing-News-Suche-SDK für Java nach Nachrichten zu suchen und die Antwort zu verarbeiten.
 services: cognitive-services
 author: mikedodaro
 manager: cgronlun
@@ -10,12 +10,13 @@ ms.component: bing-news-search
 ms.topic: quickstart
 ms.date: 02/16/2018
 ms.author: v-gedod
-ms.openlocfilehash: f01f31c5cfc30ac31ea41db2a8504454e1f05799
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.custom: seodec2018
+ms.openlocfilehash: 056d75a1039e805786b14aa19c896bda78d04150
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52316870"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53251588"
 ---
 # <a name="quickstart-bing-news-search-sdk-with-java"></a>Schnellstart: Bing-News-Suche-SDK mit Java
 

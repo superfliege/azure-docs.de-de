@@ -1,6 +1,6 @@
 ---
-title: Schnellstartanleitung zum Anzeigen der Gruppen und Mitglieder Ihrer Organisation in Azure Active Directory | Microsoft-Dokumentation
-description: Schnellstartanleitung mit Schritten zum Suchen und Anzeigen der Gruppen Ihrer Organisation und ihrer zugewiesenen Mitglieder über das Azure-Portal
+title: 'Schnellstart: Anzeigen der Gruppen und Mitglieder Ihrer Organisation – Azure Active Directory | Microsoft-Dokumentation'
+description: Enthält eine Anleitung dazu, wie Sie nach den Gruppen Ihrer Organisation und den zugewiesenen Mitgliedern suchen und diese anzeigen können.
 services: active-directory
 author: eross-msft
 manager: mtillman
@@ -10,14 +10,14 @@ ms.component: fundamentals
 ms.topic: quickstart
 ms.date: 09/24/2018
 ms.author: lizross
-ms.custom: it-pro
+ms.custom: it-pro, seodec18
 ms.reviewer: krbain
-ms.openlocfilehash: 9da9f055163f5df4ea064bd46caa811e39fba20c
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: 002b4bb4ab20e531132b461f90857cfab6aecfd3
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47056402"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53087472"
 ---
 <!--As a brand-new Azure AD administrator, I need to view my organization’s groups along with the assigned members, so I can manage permissions to apps and services for people in my organization-->
 
@@ -43,11 +43,11 @@ Erstellen Sie eine neue Gruppe mit dem Namen _MDM policy - West_ (MDM-Richtlinie
 
 2. Geben Sie auf der Seite **Gruppe** die entsprechenden Informationen ein:
     
-    - **Gruppentyp:** Wählen Sie **Sicherheit** aus.
+    - **Gruppentyp:** Wählen Sie **Sicherheit**.
     
-    - **Gruppenname:** Geben Sie _MDM policy - West_ (MDM-Richtlinie – Westen) ein.
+    - **Gruppenname:** Geben Sie _MDM policy – West_ (MDM-Richtlinie – Westen) ein.
     
-    - **Mitgliedschaftstyp:** Wählen Sie **Zugewiesen** aus.
+    - **Mitgliedschaftstyp:** Wählen Sie **Zugewiesen**.
 
 3. Klicken Sie auf **Erstellen**.
 

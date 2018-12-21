@@ -17,12 +17,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: dadobali
 ms.custom: aaddev
-ms.openlocfilehash: 2d8741f6c65002d7f3701784e5fffe67b0e9bf50
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: 7f7ae858f633a910b796f544ed69a582e749beaf
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51287233"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53311064"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>Schnellstart: Benutzeranmeldung und Aufrufen der Microsoft Graph-API aus einer Android-App
 
@@ -30,7 +30,7 @@ ms.locfileid: "51287233"
 
 Wenn Sie eine Android-Anwendung entwickeln, sorgt Microsoft für eine einfache und unkomplizierte Anmeldung von Azure Active Directory (Azure AD)-Benutzern. Azure AD ermöglicht es Ihrer Anwendung, über Microsoft Graph oder Ihre eigene geschützte Web-API auf die Benutzerdaten zuzugreifen.
 
-Die Azure AD-Authentifizierungsbibliothek (ADAL) für Android bietet Ihrer App die Möglichkeit, durch Unterstützung der [Microsoft Azure Active Directory-Konten](https://azure.microsoft.com/services/active-directory/) mithilfe der Industriestandards OAuth 2.0 und OpenID Connect mit der Nutzung der [Microsoft Azure-Cloud](https://cloud.microsoft.com) & [Microsoft Graph-API](https://developer.microsoft.com/graph) zu beginnen.
+Die Azure AD-Authentifizierungsbibliothek (ADAL) für Android bietet Ihrer App die Möglichkeit, durch Unterstützung der [Microsoft Azure Active Directory-Konten](https://azure.microsoft.com/services/active-directory/) mithilfe der Industriestandards OAuth 2.0 und OpenID Connect mit der Nutzung der [Microsoft Azure-Cloud](https://cloud.microsoft.com) und der [Microsoft Graph-API](https://developer.microsoft.com/graph) zu beginnen.
 
 In diesem Schnellstart erfahren Sie, wie die folgenden Aufgaben ausgeführt werden:
 
@@ -56,18 +56,18 @@ Den vollständigen Beispielcode finden Sie [auf GitHub](https://github.com/Azure
 ```Java
 // Initialize your app with MSAL
 AuthenticationContext mAuthContext = new AuthenticationContext(
-        MainActivity.this, 
-        AUTHORITY, 
+        MainActivity.this,
+        AUTHORITY,
         false);
 
 
 // Perform authentication requests
 mAuthContext.acquireToken(
-    getActivity(), 
-    RESOURCE_ID, 
-    CLIENT_ID, 
-    REDIRECT_URI,  
-    PromptBehavior.Auto, 
+    getActivity(),
+    RESOURCE_ID,
+    CLIENT_ID,
+    REDIRECT_URI,
+    PromptBehavior.Auto,
     getAuthInteractiveCallback());
 
 // ...
@@ -101,7 +101,7 @@ Sie müssen eine systemeigene Clientanwendung über das [Azure-Portal](https://p
     - `Application ID`
     - `Redirect URI`
 
-## <a name="step-2-get-the-sample-code"></a>Schritt 2: Abrufen des Beispielcodes
+## <a name="step-2-get-the-sample-code"></a>Schritt 2: Laden Sie den Beispielcode herunter
 
 1. Klonen Sie den Code:
     ```
