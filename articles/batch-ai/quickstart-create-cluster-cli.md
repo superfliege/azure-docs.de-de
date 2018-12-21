@@ -15,14 +15,17 @@ ms.devlang: CLI
 ms.topic: quickstart
 ms.date: 09/03/2018
 ms.author: danlep
-ms.openlocfilehash: 0d4ba7edfb22a6710222c854ceb2bf86284d2d77
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ROBOTS: NOINDEX
+ms.openlocfilehash: 1ea12c9a544704ea91b85ae944e611e6769b5592
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44057592"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53407132"
 ---
 # <a name="quickstart-create-a-cluster-for-batch-ai-training-jobs-using-the-azure-cli"></a>Schnellstart: Erstellen eines Clusters für Batch AI-Trainingsaufträge über die Azure CLI
+
+[!INCLUDE [batch-ai-retiring](../../includes/batch-ai-retiring.md)]
 
 Dieser Schnellstart zeigt, wie Sie die Azure CLI verwenden können, um einen Batch AI-Cluster zu erstellen, den Sie für das Training von KI- und Machine Learning-Modellen verwenden können. Batch AI ist ein verwalteter Dienst, mit dem Data Scientists und KI-Forscher KI- und Machine Learning-Modelle in Clustern mit virtuellen Azure-Computern trainieren können.
 

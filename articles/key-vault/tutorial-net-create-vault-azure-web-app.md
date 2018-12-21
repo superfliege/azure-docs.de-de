@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 09/05/2018
 ms.author: pryerram
 ms.custom: mvc
-ms.openlocfilehash: defe1a109381c7ee44c6fc5e5db4c6f6ecc5ac6f
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: 50a7f3166d677fe1af961866ccae4445a3d810b8
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51706839"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53322140"
 ---
 # <a name="tutorial-use-azure-key-vault-with-an-azure-web-app-in-net"></a>Tutorial: Verwenden von Azure Key Vault mit einer Azure-Web-App in .NET
 
@@ -56,7 +56,7 @@ Machen Sie sich zunächst mit den [grundlegenden Konzepten von Key Vault](key-va
 
 Azure Key Vault dient zum sicheren Speichern von Anmeldeinformationen, damit sich diese nicht in Ihrem Code befinden. Sie müssen sich jedoch bei Azure Key Vault authentifizieren, um Ihre Schlüssel abzurufen. Und für die Authentifizierung bei Key Vault benötigen Sie wiederum Anmeldeinformationen. Ein klassisches Bootstrap-Dilemma. Die verwaltete Dienstidentität (Managed Service Identity, MSI) löst dieses Problem, indem sie eine _Bootstrap-Identität_ bereitstellt, die den Prozess vereinfacht.
 
-Wenn Sie MSI für einen Azure-Dienst aktivieren (beispielsweise für Virtual Machines, App Service oder Functions), erstellt Azure einen [Dienstprinzipal](key-vault-whatis.md#basic-concepts). MSI führt diesen Schritt für die Instanz des Diensts in Azure Active Directory (Azure AD) aus und fügt die Anmeldeinformationen für den Dienstprinzipal in diese Instanz ein.
+Wenn Sie MSI für einen Azure-Dienst aktivieren (z.B.: Virtual Machines, App Service oder Functions), erstellt Azure einen [Dienstprinzipal](key-vault-whatis.md#basic-concepts). MSI führt diesen Schritt für die Instanz des Diensts in Azure Active Directory (Azure AD) aus und fügt die Anmeldeinformationen für den Dienstprinzipal in diese Instanz ein.
 
 ![MSI-Diagramm](media/MSI.png)
 
@@ -88,7 +88,7 @@ Diese Ressourcengruppe wird im gesamten Tutorial verwendet.
 
 Geben Sie die folgenden Informationen an, um einen Schlüsseltresor in Ihrer Ressourcengruppe zu erstellen:
 
-* Name des Schlüsseltresors: eine Zeichenfolge mit 3 bis 24 Zeichen, die nur Zahlen, Buchstaben und Bindestriche enthalten darf (beispielsweise 0–9, a–Z, A–Z, und -)
+* Name des Schlüsseltresors: eine Zeichenfolge mit 3 bis 24 Zeichen, die nur Zahlen, Buchstaben und Bindestriche enthalten darf (z.B.: 0-9, a – Z, A-Z und -).
 * Ressourcengruppenname
 * Standort: **USA, Westen**
 
@@ -132,7 +132,7 @@ Gehen Sie wie in [diesem Tutorial](../app-service/app-service-web-get-started-do
    - [KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault)
 3. Importieren Sie den folgenden Code in die Datei „About.cshtml.cs“:
 
-   ```
+   ```csharp
     using Microsoft.Azure.KeyVault;
     using Microsoft.Azure.KeyVault.Models;
     using Microsoft.Azure.Services.AppAuthentication;
@@ -140,7 +140,7 @@ Gehen Sie wie in [diesem Tutorial](../app-service/app-service-web-get-started-do
 
 4. Ihr Code in der Klasse „AboutModel“ sollte wie folgt aussehen:
 
-   ```
+   ```csharp
     public class AboutModel : PageModel
     {
         public string Message { get; set; }
@@ -220,7 +220,7 @@ Azure Key Vault ermöglicht das sichere Speichern von Anmeldeinformationen und a
 
 1. Notieren Sie sich den Wert von `PrincipalId`, wenn Sie die Anwendung in Azure veröffentlichen. Die Ausgabe des Befehls in Schritt 1 hat folgendes Format:
 
-   ```
+   ```json
    {
      "principalId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
      "tenantId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",

@@ -1,23 +1,24 @@
 ---
-title: 'C#-Schnellstartanleitung: Absichtsvorhersage – LUIS'
-titleSuffix: Azure Cognitive Services
-description: In dieser Schnellstartanleitung bestimmen Sie mithilfe einer verfügbaren öffentlichen LUIS-App aus Konversationstext die Absicht eines Benutzers. Mithilfe von C# senden Sie die Absicht des Benutzers als Text an den HTTP-Vorhersageendpunkt der öffentlichen App. Auf dem Endpunkt wendet LUIS das Modell der öffentlichen App an, um den Text in natürlicher Sprache im Hinblick auf seine Bedeutung zu analysieren. Dabei werden die allgemeine Absicht bestimmt und relevante Daten für die Antragstellerdomäne der App extrahiert.
+title: Abrufen der Absicht, C#
+titleSuffix: Language Understanding - Azure Cognitive Services
+description: In dieser C#-Schnellstartanleitung bestimmen Sie mithilfe einer verfügbaren öffentlichen LUIS-App aus Konversationstext die Absicht eines Benutzers.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: quickstart
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 51c23029cc771db5351575ce329944a9f06dd286
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 0e58fb35fa29cde16b1ccf50dc20dacc693a4757
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47035843"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53141763"
 ---
-# <a name="quickstart-get-intent-using-c"></a>Schnellstartanleitung: Abrufen der Absicht mit C#
+# <a name="quickstart-get-intent-using-c"></a>Schnellstart: Abrufen der Absicht mit C#
 
 [!INCLUDE [Quickstart introduction for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-intro-para.md)]
 
@@ -46,11 +47,11 @@ Verwenden Sie C# zum Abfragen der GET-[API](https://westus.dev.cognitive.microso
 
 1. Erstellen Sie eine neue Konsolenanwendung in Visual Studio. 
 
-    ![Zugriff auf das Menü mit den LUIS-Benutzereinstellungen](media/luis-get-started-cs-get-intent/visual-studio-console-app.png)
+    ![Erstellen einer neuen Konsolenanwendung in Visual Studio](media/luis-get-started-cs-get-intent/visual-studio-console-app.png)
 
 2. Klicken Sie im Visual Studio-Projekt im Projektmappen-Explorer auf **Verweis hinzufügen**, und wählen Sie dann auf der Registerkarte „Assemblys“ den Eintrag **System.Web** aus.
 
-    ![Zugriff auf das Menü mit den LUIS-Benutzereinstellungen](media/luis-get-started-cs-get-intent/add-system-dot-web-to-project.png)
+    ![Wählen Sie „Verweis hinzufügen“ und dann „System.Web“ auf der Registerkarte „Assemblys“ aus.](media/luis-get-started-cs-get-intent/add-system-dot-web-to-project.png)
 
 3. Überschreiben Sie „Program.cs“ mit dem folgenden Code:
     

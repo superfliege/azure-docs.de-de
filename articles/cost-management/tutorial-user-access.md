@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/18/2018
+ms.date: 12/07/2018
 ms.topic: tutorial
 ms.service: cost-management
-ms.custom: ''
+ms.custom: seodec18
 manager: benshy
-ms.openlocfilehash: 19cb1e414ba4a486139a502034e958907d027470
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 64e56233546a22804036b43d9769247678036049
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52275266"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53099442"
 ---
 # <a name="tutorial-assign-access-to-cloudyn-data"></a>Tutorial: Zuweisen des Zugriffs auf Cloudyn-Daten
 
@@ -47,7 +47,7 @@ Obwohl Sie bereits über Administratorzugriff verfügen, benötigen Kollegen in 
 Geben Sie die erforderlichen Informationen zum Benutzer ein. Die **Anmelde-ID** muss eine gültige E-Mail-Adresse sein. Wählen Sie die erforderlichen Berechtigungen für die Benutzerverwaltung aus, damit der Benutzer andere Benutzer erstellen und ändern kann. Dank der Empfängerlistenverwaltung kann der Benutzer Empfängerlisten bearbeiten. Ein Link mit Anmeldeinformationen wird von Cloudyn per E-Mail an den Benutzer gesendet, wenn Sie **Notify user by email** (Benutzer per E-Mail benachrichtigen) aktivieren. Bei der ersten Anmeldung legt der Benutzer ein Kennwort fest.
 
 Unter **User has admin access** (Benutzer verfügt über Administratorzugriff) ist die Stammentität Ihrer Organisation ausgewählt. Lassen Sie den Stamm ausgewählt, und speichern Sie die Benutzerinformationen. Durch das Auswählen der Stammentität verfügt der Benutzer nicht nur für die Stammentität in der Struktur über Administratorberechtigungen, sondern auch für alle Entitäten, die sich darunter befinden.  
-  ![Neuen Benutzer mit Administratorzugriff hinzufügen](.\media\tutorial-user-access\new-admin-access.png)
+  ![Beispiel: Administratorzugriff für Feld „Neuen Benutzer hinzufügen“](./media/tutorial-user-access/new-admin-access.png)
 
 ## <a name="create-a-user-with-user-access"></a>Erstellen eines Benutzers mit Benutzerzugriff
 Typische Benutzer, die Zugriff auf Cloudyn-Daten wie Dashboards oder Berichte benötigen, sollten über den entsprechenden Benutzerzugriff zum Anzeigen verfügen. Erstellen Sie einen neuen Benutzer mit Benutzerzugriff ähnlich dem, den Sie mit Administratorzugriff erstellt haben, jedoch mit folgenden Unterschieden:
@@ -56,7 +56,7 @@ Typische Benutzer, die Zugriff auf Cloudyn-Daten wie Dashboards oder Berichte be
 - Aktivieren Sie in der Liste **User has user access** (Benutzer verfügt über Benutzerzugriff) die Entitäten, für die der Benutzer Zugriff benötigt.
 - Sie können auch nach Bedarf Administratorrechte für den Zugriff auf bestimmte Entitäten zulassen.
 
-![Neuen Benutzer mit Benutzerzugriff erstellen](.\media\tutorial-user-access\new-user-access.png)
+![Beispiel: Benutzerzugriff für Feld „Neuen Benutzer hinzufügen“](./media/tutorial-user-access/new-user-access.png)
 
 Ein Videotutorial zum Hinzufügen von Benutzern finden Sie unter [Adding Users to Cloudyn](https://youtu.be/Nzn7GLahx30) (Hinzufügen von Benutzern zu Cloudyn).
 
@@ -88,11 +88,11 @@ Bei der Registrierung Ihrer Azure-Vereinbarung oder Ihres Azure-Kontos bei Cloud
 
 Klicken Sie im Cloudyn-Portal auf das Zahnradsymbol in der rechten oberen Ecke, und wählen Sie **Cloud Accounts** (Cloudkonten) aus. Sie beginnen mit einer einzigen Entität (Stamm) und erstellen Ihre Entitätsstruktur unter dem Stamm. Hier sehen Sie ein Beispiel für eine Entitätshierarchie, die vielen IT-Organisationen nach Fertigstellung der Struktur ähnelt:
 
-![Entitätsstruktur](.\media\tutorial-user-access\entity-tree.png)
+![Beispiel: Entitätsstruktur auf der Seite „Kontenverwaltung“](./media/tutorial-user-access/entity-tree.png)
 
 Klicken Sie neben **Entities** (Entitäten) auf **Add Entity** (Entität hinzufügen). Geben Sie Informationen zu der Person oder Abteilung ein, die Sie hinzufügen möchten. Die Eingaben in den Feldern **Full Name** (Vollständiger Name) und **Email** müssen keinen vorhandenen Benutzern entsprechen. Wenn Sie eine Liste von Zugriffsebenen anzeigen möchten, suchen Sie in der Hilfe nach *Adding an entity* (Hinzufügen einer Entität).
 
-![Hinzufügen einer Entität](.\media\tutorial-user-access\add-entity.png)
+![Beispiel: Entitätsname und Zugriffsebenen im Feld „Entität hinzufügen“](./media/tutorial-user-access/add-entity.png)
 
 **Speichern** Sie nach Abschluss die Entität.
 

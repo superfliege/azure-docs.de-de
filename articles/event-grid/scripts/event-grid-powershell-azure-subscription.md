@@ -10,14 +10,14 @@ ms.devlang: powershell
 ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/05/2018
+ms.date: 12/10/2018
 ms.author: tomfitz
-ms.openlocfilehash: caa2b10767027354d8a2c49ea24ff4701322d688
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 7d4b7f49edca6c72681734f70dba3be8722edd91
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31425901"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53269295"
 ---
 # <a name="subscribe-to-events-for-an-azure-subscription-with-powershell"></a>Abonnieren von Ereignissen für ein Azure-Abonnement mit PowerShell
 
@@ -25,13 +25,19 @@ Dieses Skript erstellt ein Event Grid-Abonnement für die Ereignisse für ein Az
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="sample-script"></a>Beispielskript
+Für das Vorschaubeispielskript ist das Event Grid-Modul erforderlich. Führen Sie zum Installieren `Install-Module -Name AzureRM.EventGrid -AllowPrerelease -Force -Repository PSGallery` aus.
+
+## <a name="sample-script---stable"></a>Beispielskript: stabil
 
 [!code-powershell[main](../../../powershell_scripts/event-grid/subscribe-to-azure-subscription/subscribe-to-azure-subscription.ps1 "Subscribe to Azure subscription")]
 
+## <a name="sample-script---preview-module"></a>Beispielskript: Vorschaumodul
+
+[!code-powershell[main](../../../powershell_scripts/event-grid/subscribe-to-azure-subscription-preview/subscribe-to-azure-subscription-preview.ps1 "Subscribe to Azure subscription")]
+
 ## <a name="script-explanation"></a>Erläuterung des Skripts
 
-Dieses Skript verwendet den folgenden Befehl zum Erstellen des Ereignisabonnements. Jeder Befehl in der Tabelle ist mit der zugehörigen Dokumentation verknüpft.
+Dieses Skript verwendet den folgenden Befehl, um das Ereignisabonnement zu erstellen. Jeder Befehl in der Tabelle ist mit der zugehörigen Dokumentation verknüpft.
 
 | Get-Help | Notizen |
 |---|---|

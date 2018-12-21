@@ -1,21 +1,21 @@
 ---
-title: Verwalten von Webdatenverkehr mit Azure Application Gateway unter Verwendung von Ansible (Vorschauversion)
+title: Verwalten von Webdatenverkehr mit Azure Application Gateway unter Verwendung von Ansible
 description: Hier erfahren Sie, wie Sie mit Ansible eine Azure Application Gateway-Instanz zum Verwalten von Webdatenverkehr erstellen und konfigurieren.
 ms.service: ansible
-keywords: Ansible, Azure, DevOps, Bash, Playbook, Azure Application Gateway, Lastenausgleich, Webdatenverkehr
+keywords: Ansible, Azure, DevOps, Bash, Playbook, Application Gateway, Lastenausgleich, Webdatenverkehr
 author: tomarcher
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 09/20/2018
-ms.openlocfilehash: e3c165c87d6c179141f2ddd44f00f0f62a84b285
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: af7f22ae5c289a01e6876d8ce586cb32383c8d3b
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50912865"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53253353"
 ---
-# <a name="manage-web-traffic-with-azure-application-gateway-by-using-ansible-preview"></a>Verwalten von Webdatenverkehr mit Azure Application Gateway unter Verwendung von Ansible (Vorschauversion)
+# <a name="manage-web-traffic-with-azure-application-gateway-by-using-ansible"></a>Verwalten von Webdatenverkehr mit Azure Application Gateway unter Verwendung von Ansible
 
 [Azure Application Gateway](https://docs.microsoft.com/azure/application-gateway/) ist ein Lastenausgleich für Webdatenverkehr, mit dem Sie eingehenden Datenverkehr für Ihre Webanwendungen verwalten können.
 
@@ -34,7 +34,7 @@ Dieses Tutorial veranschaulicht folgende Vorgehensweisen:
 - [!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation1.md](../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation1.md)][!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation2.md)]
 
 > [!Note]
-> Für die Ausführung der folgenden Beispielplaybooks in diesem Tutorial ist Ansible 2.7 erforderlich. Sie können `sudo pip install ansible[azure]==2.7.0rc2` ausführen, um Ansible 2.7 RC zu installieren. Nach der Veröffentlichung von Ansible 2.7 muss die Version nicht mehr angegeben werden.
+> Für die Ausführung der folgenden Beispielplaybooks in diesem Tutorial ist Ansible 2.7 erforderlich. 
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 

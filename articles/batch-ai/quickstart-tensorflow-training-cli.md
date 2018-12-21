@@ -15,14 +15,17 @@ ms.devlang: CLI
 ms.topic: quickstart
 ms.date: 09/03/2018
 ms.author: danlep
-ms.openlocfilehash: 99d864a5d519ce56a559bea4db7fe89a113e47b9
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ROBOTS: NOINDEX
+ms.openlocfilehash: 979253021f5503295e0572759b510e074ceb1a6b
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44157921"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53408067"
 ---
 # <a name="quickstart-train-a-deep-learning-model-with-batch-ai"></a>Schnellstart: Trainieren eines Deep Learning-Modells mit Batch AI
+
+[!INCLUDE [batch-ai-retiring](../../includes/batch-ai-retiring.md)]
 
 Dieser Schnellstart veranschaulicht das Trainieren eines exemplarischen Deep Learning-Modells auf einem GPU-fähigen virtuellen Computer, der mit Batch AI verwaltet wird. Batch AI ist ein verwalteter Dienst, mit dem Data Scientists und KI-Forscher KI- und Machine Learning-Modelle in Clustern mit virtuellen Azure-Computern trainieren können. 
 

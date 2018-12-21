@@ -1,6 +1,6 @@
 ---
-title: Übersicht über Azure Container Instances
-description: Grundlegende Informationen zu Azure Container Instances
+title: Was ist Azure Container Instances?
+description: Mit den Azure Container Instances-Dienst lassen sich isolierte Container in Azure besonders schnell und einfach ausführen, ohne dass Sie dazu virtuelle Computer verwalten oder einen übergeordneten Orchestrator einführen müssen.
 services: container-instances
 author: seanmck
 manager: jeconnoc
@@ -8,15 +8,15 @@ ms.service: container-instances
 ms.topic: overview
 ms.date: 11/30/2018
 ms.author: seanmck
-ms.custom: mvc
-ms.openlocfilehash: b5f97dac202edd5405c51b75581275166042ac38
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.custom: seodec18, mvc
+ms.openlocfilehash: ba454965ff2bb78ebe526e71d9280200b1f4b08b
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52841454"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53187193"
 ---
-# <a name="azure-container-instances"></a>Azure Container Instances
+# <a name="what-is-azure-container-instances"></a>Was ist Azure Container Instances?
 
 Container entwickeln sich mehr und mehr zum bevorzugten Instrument für das Packen, Bereitstellen und Verwalten von Cloudanwendungen. Mit Azure Container Instances lassen sich Container in Azure besonders schnell und einfach ausführen, ohne dass Sie dazu virtuelle Computer verwalten oder einen übergeordneten Dienst einführen müssen.
 

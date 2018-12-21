@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/12/2018
 ms.author: yexu
-ms.openlocfilehash: f06094fb82f10276f7a41d1b22f6dd99836a497f
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: eaafc8acb73dd48e213d05d953d9ada457c53132
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43095509"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52957264"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information"></a>Inkrementelles Laden von Daten aus Azure SQL-Datenbank in Azure Blob Storage mit Informationen der Änderungsnachverfolgung 
 In diesem Tutorial erstellen Sie eine Azure Data Factory mit einer Pipeline, die Deltadaten basierend auf Informationen der **Änderungsnachverfolgung** aus der Azure SQL-Datenbank als Quelle in Azure Blob Storage lädt.  
@@ -171,7 +171,7 @@ Installieren Sie die aktuellen Azure PowerShell-Module, indem Sie die Anweisunge
 5. Wählen Sie den **Standort** für die Data Factory aus. In der Dropdownliste werden nur unterstützte Standorte angezeigt. Die von der Data Factory verwendeten Datenspeicher (Azure Storage, Azure SQL-Datenbank usw.) und Computedienste (HDInsight usw.) können sich in anderen Regionen befinden.
 6. Wählen Sie die Option **An Dashboard anheften** aus.     
 7. Klicken Sie auf **Create**.      
-8. Auf dem Dashboard sehen Sie die folgende Kachel mit dem Status: **Die Data Factory wird bereitgestellt**. 
+8. Auf dem Dashboard sehen Sie die folgende Kachel mit dem Status: **Deploying data factory** (Data Factory wird bereitgestellt...). 
 
     ![Kachel „Die Data Factory wird bereitgestellt“](media/tutorial-incremental-copy-change-tracking-feature-portal/deploying-data-factory.png)
 9. Nach Abschluss der Erstellung wird die Seite **Data Factory** wie in der Abbildung angezeigt.
@@ -322,7 +322,7 @@ Klicken Sie auf der Symbolleiste der Pipeline auf **Trigger** und dann auf **Tri
 ### <a name="review-the-results"></a>Überprüfen der Ergebnisse
 Im Ordner `incchgtracking` des Containers `adftutorial` wird eine Datei mit dem Namen `incremental-<GUID>.txt` angezeigt. 
 
-![Ausgabedatei des vollständigen Kopiervorgangs](media\tutorial-incremental-copy-change-tracking-feature-portal\full-copy-output-file.png)
+![Ausgabedatei des vollständigen Kopiervorgangs](media/tutorial-incremental-copy-change-tracking-feature-portal/full-copy-output-file.png)
 
 Die Datei sollte die Daten aus der Azure SQL-Datenbank enthalten:
 
@@ -445,7 +445,7 @@ In diesem Schritt erstellen Sie eine Pipeline mit den folgenden Aktivitäten und
 ### <a name="review-the-results"></a>Überprüfen der Ergebnisse
 Die zweite Datei ist im Ordner `incchgtracking` des Containers `adftutorial` enthalten. 
 
-![Ausgabedatei des inkrementellen Kopiervorgangs](media\tutorial-incremental-copy-change-tracking-feature-portal\incremental-copy-output-file.png)
+![Ausgabedatei des inkrementellen Kopiervorgangs](media/tutorial-incremental-copy-change-tracking-feature-portal/incremental-copy-output-file.png)
 
 Die Datei sollte nur die Deltadaten aus der Azure SQL-Datenbank enthalten. Der Datensatz mit der Kennzeichnung `U` ist die aktualisierte Zeile in der Datenbank, und mit `I` wird die hinzugefügte Zeile angegeben. 
 
@@ -453,7 +453,7 @@ Die Datei sollte nur die Deltadaten aus der Azure SQL-Datenbank enthalten. Der D
 1,update,10,2,U
 6,new,50,1,I
 ```
-Die ersten drei Spalten enthalten geänderte Daten aus „data_source_table“. Die letzten beiden Spalten enthalten die Metadaten aus der Systemtabelle für die Änderungsnachverfolgung. Die vierte Spalte enthält die SYS_CHANGE_VERSION für die einzelnen geänderten Zeilen. Die fünfte Spalte enthält den Vorgang: U = update (aktualisieren), I = insert (einfügen).  Weitere Informationen zu den Informationen zur Änderungsnachverfolgung finden Sie unter [CHANGETABLE](/sql/relational-databases/system-functions/changetable-transact-sql). 
+Die ersten drei Spalten enthalten geänderte Daten aus „data_source_table“. Die letzten beiden Spalten enthalten die Metadaten aus der Systemtabelle für die Änderungsnachverfolgung. Die vierte Spalte enthält die SYS_CHANGE_VERSION für die einzelnen geänderten Zeilen. Die fünfte Spalte enthält den Vorgang:  U = update (aktualisieren), I = insert (einfügen).  Weitere Informationen zu den Informationen zur Änderungsnachverfolgung finden Sie unter [CHANGETABLE](/sql/relational-databases/system-functions/changetable-transact-sql). 
 
 ```
 ==================================================================

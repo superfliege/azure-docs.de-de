@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 07/12/2018
 ms.author: v-shysun
-ms.openlocfilehash: edfd2e9e03aefa4833c8472a43d4857f08b95780
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 0956d9bdbf6390f2d64f15ca267545ca15289a46
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52495478"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53339398"
 ---
 # <a name="frequently-asked-questions-for-sql-server-running-on-windows-virtual-machines-in-azure"></a>Häufig gestellte Fragen zu SQL Server auf virtuellen Windows-Computern in Azure
 
@@ -112,7 +112,7 @@ Dieser Artikel bietet Antworten auf einige der häufigsten Fragen zur Ausführun
 
 1. **Können selbst bereitgestellte SQL Server-VMs beim SQL-VM-Ressourcenanbieter registriert werden?**
 
-   Ja. Wenn Sie SQL Server über eigene Medien bereitgestellt haben, können Sie die SQL-VM beim Ressourcenanbieter registrieren, um die von der SQL-IaaS-Erweiterung bereitgestellten Verwaltbarkeitsvorteile zu erhalten. Sie können eine selbst bereitgestellte SQL-VM jedoch nicht in nutzungsbasierte Bezahlung konvertieren. 
+   Ja. Wenn Sie SQL Server über eigene Medien bereitgestellt und die SQL-IaaS-Erweiterung installiert haben, können Sie die SQL Server-VM beim Ressourcenanbieter registrieren, um in den Genuss der von der SQL-IaaS-Erweiterung gebotenen Vorteile bei der Verwaltung zu kommen. Sie können eine selbst bereitgestellte SQL-VM jedoch nicht für die nutzungsbasierte Bezahlung konvertieren.  
 
 ## <a name="administration"></a>Verwaltung
 
@@ -122,7 +122,7 @@ Dieser Artikel bietet Antworten auf einige der häufigsten Fragen zur Ausführun
 
 1. **Kann ich die Standardinstanz von SQL Server deinstallieren?**
 
-   Ja. Dabei sind jedoch ein paar Punkte zu beachten: Wie bereits in der vorhergehenden Antwort erläutert, können Funktionen, die sich auf die [SQL Server-IaaS-Agenterweiterung](virtual-machines-windows-sql-server-agent-extension.md) stützen, nur für die Standardinstanz ausgeführt werden. Wenn Sie die Standardinstanz deinstallieren, sucht die Erweiterung weiterhin danach und generiert möglicherweise Fehler im Ereignisprotokoll. Diese Fehler stammen aus den folgenden zwei Quellen: **Microsoft SQL Server-Verwaltung von Anmeldeinformationen** und **Microsoft SQL Server-IaaS-Agent**. Einer der Fehler kann dem Folgenden ähneln:
+   Ja. Dabei sind jedoch ein paar Punkte zu beachten: Wie bereits in der vorhergehenden Antwort erläutert, können Funktionen, die sich auf die [SQL Server-IaaS-Agenterweiterung](virtual-machines-windows-sql-server-agent-extension.md) stützen, nur für die Standardinstanz ausgeführt werden. Wenn Sie die Standardinstanz deinstallieren, sucht die Erweiterung weiterhin danach und generiert möglicherweise Fehler im Ereignisprotokoll. Diese Fehler stammen aus den folgenden beiden Quellen: **Microsoft SQL Server-Verwaltung von Anmeldeinformationen** und **Microsoft SQL Server-IaaS-Agent**. Einer der Fehler kann dem Folgenden ähneln:
 
       Netzwerkbezogener oder instanzspezifischer Fehler beim Herstellen einer Verbindung mit SQL Server. Der Server wurde nicht gefunden, oder auf ihn kann nicht zugegriffen werden.
 

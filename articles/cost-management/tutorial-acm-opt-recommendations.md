@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/21/2018
+ms.date: 12/07/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
-ms.custom: ''
-ms.openlocfilehash: 4d9e47d6da45eaba19cbe089de3fdf053c36046a
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.custom: seodec18
+ms.openlocfilehash: 2b9702dbae0414ba597b6e1f6080d9de86f624fc
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47030676"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53077074"
 ---
 # <a name="tutorial-optimize-costs-from-recommendations"></a>Tutorial: Optimieren von Kosten mithilfe von Empfehlungen
 
@@ -43,7 +43,7 @@ Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com/) beim
 
 Klicken Sie im Azure-Portal in der Liste der Dienste auf **Kostenverwaltung und Abrechnung**. Wählen Sie dann in der Liste unter **Cost Management** die Option **Advisor-Empfehlungen**. Es werden die Kostenempfehlungen von Advisor angezeigt.
 
-![Advisor-Empfehlungen](./media/tutorial-acm-opt-recommendations/advisor-recommendations.png)
+![Im Azure-Portal gezeigte Cost Management Advisor-Empfehlungen](./media/tutorial-acm-opt-recommendations/advisor-recommendations.png)
 
 Die Liste der Empfehlungen identifiziert Nutzungsineffizienzen oder zeigt Kaufempfehlungen, die Ihnen helfen können, zusätzliches Geld zu sparen. Die Summe **Potenzielle jährliche Einsparungen** zeigt den Gesamtbetrag, den Sie sparen können, wenn Sie alle Ihre VMs, die den Empfehlungsregeln entsprechen, herunterfahren oder freigeben. Wenn Sie sie nicht herunterfahren möchten, sollten Sie eine Größenänderung auf eine kostengünstigere VM-SKU in Betracht ziehen.
 
@@ -59,20 +59,20 @@ Obwohl einige Szenarien zielgerichtet eine geringe Auslastung bewirken, können 
 
 Klicken Sie in der Liste der Empfehlungen auf **Größe eines nicht ausgelasteten virtuellen Computers ändern oder virtuellen Computer herunterfahren**. Wählen Sie in der Liste der Kandidaten für virtuelle Computer einen virtuellen Computer aus, dessen Größe Sie ändern möchten, und klicken Sie dann auf den virtuellen Computer. Die Details des virtuellen Computers werden angezeigt, sodass Sie die Nutzungsmetriken überprüfen können. Der Wert der **potenziellen jährliche Einsparungen** gibt an, was Sie sparen können, wenn Sie die VM herunterfahren oder entfernen. Mit einer Größenänderung einer VM können Sie wahrscheinlich Geld sparen, aber Sie werden nicht den vollen Betrag der möglichen jährlichen Einsparungen erzielen.
 
-![Empfehlungsdetails](./media/tutorial-acm-opt-recommendations/recommendation-details.png)
+![Beispiel von Empfehlungsdetails](./media/tutorial-acm-opt-recommendations/recommendation-details.png)
 
 Überprüfen Sie in den VM-Details die Auslastung des virtuellen Computers, um sicherzustellen, dass es sich um einen geeigneten Kandidaten für die Größenänderung handelt.
 
-![VM-Detail](./media/tutorial-acm-opt-recommendations/vm-details.png)
+![Beispiel von VM-Details mit Verlauf der Nutzung](./media/tutorial-acm-opt-recommendations/vm-details.png)
 
 Beachten Sie die aktuelle VM-Größe. Nachdem Sie überprüft haben, ob die Größe des virtuellen Computers geändert werden soll, schließen Sie die VM-Details, sodass wieder die Liste der virtuellen Computer angezeigt wird.
 
 Wählen Sie in der Liste der Kandidaten, die heruntergefahren oder deren Größe geändert werden soll, auf **Größe des virtuellen Computers ändern**.
-![Ändern der Größe des virtuellen Computers](./media/tutorial-acm-opt-recommendations/resize-vm.png)
+![Beispielempfehlung mit Option zum Ändern der Größe des virtuellen Computers](./media/tutorial-acm-opt-recommendations/resize-vm.png)
 
 Als Nächstes wird eine Liste der verfügbaren Optionen für die Größenänderung angezeigt. Wählen Sie diejenige, die für Ihr Szenario die beste Leistung und Kosteneffizienz bietet. Im folgenden Beispiel ändert die gewählte Option die Größe von **DS14\_V2** auf **DS13\_V2**. Die Umsetzung der Empfehlung spart 551,30 USD/Monat oder 6.615,60 USD/Jahr.
 
-![Auswählen der Größe](./media/tutorial-acm-opt-recommendations/choose-size.png)
+![Beispielliste der verfügbaren VM-Größen, in der Sie eine Größe wählen können](./media/tutorial-acm-opt-recommendations/choose-size.png)
 
 Nachdem Sie eine geeignete Größe ausgewählt haben, klicken Sie auf **Auswählen**, um die Aktion zum Ändern der Größe zu starten.
 
@@ -82,7 +82,7 @@ Die Größenänderung erfordert einen Neustart eines aktiv laufenden virtuellen 
 
 Wenn die Größenänderung der VM erfolgreich abgeschlossen ist, wird eine Azure-Benachrichtigung angezeigt.
 
-![Benachrichtigung zur Größenänderung](./media/tutorial-acm-opt-recommendations/resized-notification.png)
+![Benachrichtigung zur erfolgreichen Änderung der Größe eines virtuellen Computers](./media/tutorial-acm-opt-recommendations/resized-notification.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

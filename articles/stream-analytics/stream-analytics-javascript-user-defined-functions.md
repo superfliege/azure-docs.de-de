@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Azure Stream Analytics – benutzerdefinierte JavaScript-Funktionen | Microsoft-Dokumentation '
+title: 'Tutorial: Azure Stream Analytics – benutzerdefinierte JavaScript-Funktionen | Microsoft Docs '
 description: In diesem Tutorial führen Sie erweiterte Abfragemechanismen mit benutzerdefinierten JavaScript-Funktionen aus.
 keywords: JavaScript, benutzerdefinierte Funktionen, UDF
 services: stream-analytics
@@ -13,12 +13,12 @@ ms.custom: mvc
 ms.date: 04/01/2018
 ms.workload: data-services
 ms.author: rodrigoa
-ms.openlocfilehash: 56ac08593d29a9003f5509f2be52f50fa250bd75
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: e33b90d6f70bb1b765f5170ac37880d31e87f3a5
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47431594"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53088874"
 ---
 # <a name="tutorial-azure-stream-analytics-javascript-user-defined-functions"></a>Tutorial: Azure Stream Analytics – benutzerdefinierte JavaScript-Funktionen
  
@@ -58,7 +58,7 @@ Führen Sie die unten angegebenen Schritte aus, um eine einfache benutzerdefinie
 4.  Wählen Sie auf dem Blatt **Neue Funktion** als **Funktionstyp** die Option **JavaScript** aus. Eine Standardfunktionsvorlage wird im Editor angezeigt.
 5.  Geben Sie **hex2Int** als **UDF-Alias** ein, und ändern Sie die Funktionsimplementierung wie folgt:
 
-    ```
+    ```javascript
     // Convert Hex value to integer.
     function hex2Int(hexValue) {
         return parseInt(hexValue, 16);
@@ -73,7 +73,7 @@ Führen Sie die unten angegebenen Schritte aus, um eine einfache benutzerdefinie
 1. Wählen Sie im Abfrage-Editor unter **Auftragstopologie** die Option **Abfrage** aus.
 2.  Bearbeiten Sie die Abfrage, und rufen Sie anschließend die benutzerdefinierte Funktion wie folgt auf:
 
-    ```
+    ```SQL
     SELECT
         time,
         UDF.hex2Int(offset) AS IntOffset
@@ -129,14 +129,14 @@ Wenn ein nachfolgender Verarbeitungsschritt die Ausgabe des Stream Analytics-Auf
 
 **Definition von benutzerdefinierten JavaScript-Funktionen:**
 
-```
+```javascript
 function main(x) {
 return JSON.stringify(x);
 }
 ```
 
 **Beispielabfrage:**
-```
+```SQL
 SELECT
     DataString,
     DataValue,

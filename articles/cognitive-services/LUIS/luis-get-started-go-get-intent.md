@@ -1,23 +1,26 @@
 ---
-title: 'Go-Schnellstartanleitung: Absichtsvorhersage – LUIS'
-titleSuffix: Azure Cognitive Services
-description: In dieser Schnellstartanleitung bestimmen Sie mithilfe einer verfügbaren öffentlichen LUIS-App aus Konversationstext die Absicht eines Benutzers. Mithilfe von Go senden Sie die Absicht des Benutzers als Text an den HTTP-Vorhersageendpunkt der öffentlichen App. Auf dem Endpunkt wendet LUIS das Modell der öffentlichen App an, um den Text in natürlicher Sprache im Hinblick auf seine Bedeutung zu analysieren. Dabei werden die allgemeine Absicht bestimmt und relevante Daten für die Antragstellerdomäne der App extrahiert.
+title: Abrufen der Absicht, Go
+titleSuffix: Language Understanding - Azure Cognitive Services
+description: In dieser Schnellstartanleitung für Go bestimmen Sie mithilfe einer verfügbaren öffentlichen LUIS-App aus Konversationstext die Absicht eines Benutzers.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: quickstart
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: f19c46fcc7dcff2e02786bb3a03082f831e880a2
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 9768e7945a94c5b28a1f28ea0264108cd47865d6
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47032732"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53104712"
 ---
-# <a name="quickstart-get-intent-using-go"></a>Schnellstartanleitung: Abrufen der Absicht mit Go
+# <a name="quickstart-get-intent-using-go"></a>Schnellstart: Abrufen der Absicht mit Go
+
+In dieser Schnellstartanleitung übergeben Sie Äußerungen an einen LUIS-Endpunkt, um Absichten und Entitäten zurückzugeben.
 
 [!INCLUDE [Quickstart introduction for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-intro-para.md)]
 

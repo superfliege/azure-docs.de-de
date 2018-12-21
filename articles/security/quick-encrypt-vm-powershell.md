@@ -1,6 +1,6 @@
 ---
 title: 'Schnellstart: Verschlüsseln eines virtuellen Windows-IaaS-Computers mit Azure PowerShell | Microsoft-Dokumentation'
-description: In dieser Schnellstartanleitung erfahren Sie, wie Sie mit Azure PowerShell einen virtuellen Windows-Computer verschlüsseln.
+description: In dieser Schnellstartanleitung erfahren Sie, wie Sie mit Azure PowerShell einen virtuellen Windows-IaaS-Computer in Azure verschlüsseln.
 services: security
 documentationcenter: na
 author: mestew
@@ -13,16 +13,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/29/2018
 ms.author: mstewart
-ms.openlocfilehash: 531da9af871595e6f8bf5d22832367bbfb301dab
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
+ms.custom: seodec18
+ms.openlocfilehash: ee2a4be97b2b56f9c659639a34e821e37c188828
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43245870"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53087863"
 ---
 # <a name="quickstart-encrypt-a-windows-iaas-vm-with-azure-powershell"></a>Schnellstart: Verschlüsseln eines virtuellen Windows-IaaS-Computers mit Azure PowerShell
 
-Mit Azure Disk Encryption können Sie die Datenträger von virtuellen Windows- und Linux-IaaS-Computern verschlüsseln. Die Lösung ist in Azure Key Vault integriert, um Ihnen die Steuerung und Verwaltung der Datenträgerverschlüsselungsschlüssel und -geheimnisse zu erleichtern. Mit der Verschlüsselungstechnologie nach Branchenstandard von Azure Disk Encryption können Sie den Schutz Ihrer virtuellen Computer im Ruhezustand gewährleisten. In dieser Schnellstartanleitung erstellen Sie einen virtuellen Windows Server 2016-Computer und verschlüsseln den Betriebssystem-Datenträger. 
+Mit Azure Disk Encryption können Sie die Datenträger von virtuellen Windows- und Linux-IaaS-Computern verschlüsseln. Die Lösung ist in Azure Key Vault integriert, um Ihnen die Steuerung und Verwaltung der Datenträgerverschlüsselungsschlüssel und -geheimnisse zu erleichtern. Mit der Verschlüsselungstechnologie nach Branchenstandard von Azure Disk Encryption können Sie den Schutz Ihrer virtuellen Computer im Ruhezustand gewährleisten. In dieser Schnellstartanleitung erstellen Sie einen virtuellen Windows Server 2016-Computer und verschlüsseln den Betriebssystem-Datenträger.
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 

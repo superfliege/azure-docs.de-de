@@ -1,21 +1,22 @@
 ---
-title: Weiterleiten von Azure Blob Storage-Ereignissen an einen benutzerdefinierten Webendpunkt | Microsoft-Dokumentation
-description: Abonnieren Sie Blob Storage-Ereignisse mit Azure Event Grid.
+title: Senden von Azure Blob Storage-Ereignissen an einen Webendpunkt – Azure CLI | Microsoft-Dokumentation
+description: Abonnieren Sie Blob Storage-Ereignisse mit Azure Event Grid. Senden Sie die Ereignisse an einen Webhook. Verarbeiten Sie die Ereignisse in einer Webanwendung.
 services: storage,event-grid
 author: cbrooksmsft
 ms.author: cbrooks
-ms.date: 08/23/2018
+ms.date: 12/06/2018
 ms.topic: quickstart
 ms.service: storage
 ms.component: blobs
-ms.openlocfilehash: 78ee6f198bf4e16e3b2b0deb8fdb0b68c0fe9b73
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.custom: seodec18
+ms.openlocfilehash: 2586b7f9c2a182ee065daab1d2a43eb5e0e2c99c
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45735085"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53073719"
 ---
-# <a name="route-blob-storage-events-to-a-custom-web-endpoint-with-azure-cli"></a>Weiterleiten von Blob Storage-Ereignissen an einen benutzerdefinierten Webendpunkt mit Azure CLI
+# <a name="quickstart-route-storage-events-to-web-endpoint-with-azure-cli"></a>Schnellstart: Weiterleiten von Speicherereignissen an einen Webendpunkt per Azure CLI
 
 Azure Event Grid ist ein Ereignisdienst für die Cloud. In diesem Artikel abonnieren Sie mithilfe der Azure-Befehlszeilenschnittstelle Blob Storage-Ereignisse und lösen das Ereignis aus, um das Ergebnis anzuzeigen.
 
@@ -32,7 +33,7 @@ Nach Abschluss der Schritte in diesem Artikel sehen Sie, dass die Ereignisdaten 
 
 Wenn Sie die Befehlszeilenschnittstelle lokal installieren und verwenden, müssen Sie für diesen Artikel mindestens die Version 2.0.24 der Azure-Befehlszeilenschnittstelle ausführen. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI](/cli/azure/install-azure-cli).
 
-Falls Sie nicht Cloud Shell verwenden, müssen Sie sich erst mithilfe von `az login` anmelden.
+Falls Sie nicht Cloud Shell verwenden, müssen Sie sich zuerst mithilfe von `az login` anmelden.
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
@@ -48,7 +49,7 @@ az group create --name <resource_group_name> --location westcentralus
 
 ## <a name="create-a-storage-account"></a>Speicherkonto erstellen
 
-Blob Storage-Ereignisse stehen in Speicherkonten des Typs „Allgemein v2“ und in Blob Storage-Konten zur Verfügung. Speicherkonten vom Typ **Allgemein v2** unterstützen alle Features für alle Speicherdienste, z.B. Blob Storage, Files, Queue Storage und Table Storage. **Blob Storage-Konten** sind spezielle Speicherkonten und dienen dazu, unstrukturierte Daten als Blobs (Objekte) in Azure Storage zu speichern. BLOB-Speicherkonten sind wie allgemeine Speicherkonten und besitzen die gleichen Haltbarkeits-, Verfügbarkeits-, Skalierbarkeits- und Leistungseigenschaften, die Sie schon heute verwenden – einschließlich vollständiger API-Konsistenz für Blockblobs und Anfügeblobs. Weitere Informationen finden Sie unter [Azure Storage-Konto – Übersicht](../common/storage-account-overview.md).
+Blob Storage-Ereignisse stehen in Speicherkonten vom Typ „Allgemein v2“ und in Blob Storage-Konten zur Verfügung. Speicherkonten vom Typ **Allgemein v2** unterstützen alle Features für alle Speicherdienste – einschließlich Blobs, Dateien, Warteschlangen und Tabellen. **Blob Storage-Konten** sind spezielle Speicherkonten und dienen dazu, unstrukturierte Daten als Blobs (Objekte) in Azure Storage zu speichern. BLOB-Speicherkonten sind wie allgemeine Speicherkonten und besitzen die gleichen Haltbarkeits-, Verfügbarkeits-, Skalierbarkeits- und Leistungseigenschaften, die Sie schon heute verwenden – einschließlich vollständiger API-Konsistenz für Blockblobs und Anfügeblobs. Weitere Informationen finden Sie unter [Azure-Speicherkonto – Übersicht](../common/storage-account-overview.md).
 
 Ersetzen Sie `<storage_account_name>` durch einen eindeutigen Namen für Ihr Speicherkonto und `<resource_group_name>` durch die zuvor erstellte Ressourcengruppe.
 

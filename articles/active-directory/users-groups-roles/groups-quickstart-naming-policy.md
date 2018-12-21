@@ -14,12 +14,12 @@ ms.date: 08/08/2018
 ms.author: curtand
 ms.reviewer: kairaz.contractor
 ms.custom: it-pro
-ms.openlocfilehash: 8ebdb22ba5ca04a5c811b3b368055f5f4371c75f
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 8c5d980f25e196add6885d250665eae7127456f1
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "40208906"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53273118"
 ---
 # <a name="quickstart-naming-policy-for-groups-in-azure-active-directory"></a>Schnellstart: Benennungsrichtlinie für Gruppen in Azure Active Directory
 
@@ -80,7 +80,7 @@ Wenn Sie über den Zugriff auf ein nicht vertrauenswürdiges Repository informie
   
 ### <a name="step-3-set-the-naming-policy-and-any-custom-blocked-words"></a>Schritt 3: Festlegen von Benennungsrichtlinie und benutzerdefinierten blockierten Wörtern
 
-1. Legen Sie die Präfixe und Suffixe für Gruppennamen in Azure AD PowerShell fest.
+1. Legen Sie die Präfixe und Suffixe für Gruppennamen in Azure AD PowerShell fest. Für die ordnungsgemäße Funktion des Features muss [GroupName] in der Einstellung enthalten sein.
   
   ````
   $Setting["PrefixSuffixNamingRequirement"] =“GRP_[GroupName]_[Department]"
@@ -102,19 +102,19 @@ Das ist alles. Sie haben Ihre Benennungsrichtlinie festgelegt und benutzerdefini
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-1. Legen Sie die Präfixe und Suffixe für Gruppennamen in Azure AD PowerShell fest.
+1. Leeren Sie die Präfixe und Suffixe für Gruppennamen in Azure AD PowerShell.
   
   ````
   $Setting["PrefixSuffixNamingRequirement"] =""
   ````
   
-2. Legen Sie benutzerdefinierte blockierte Wörter fest, deren Verwendung Sie einschränken möchten. Im folgenden Beispiel wird veranschaulicht, wie Sie Ihre eigenen benutzerdefinierten Wörter hinzufügen können.
+2. Leeren Sie die benutzerdefinierten blockierten Wörter.
   
   ````
   $Setting["CustomBlockedWordsList"]=""
   ````
   
-3. Speichern Sie die Einstellungen wie im folgenden Beispiel, damit die neue Richtlinie angewendet wird.
+3. Speichern Sie die Einstellungen.
   
   ````
   Set-AzureADDirectorySetting -Id (Get-AzureADDirectorySetting | where -Property DisplayName -Value "Group.Unified" -EQ).id -DirectorySetting $Setting

@@ -1,21 +1,21 @@
 ---
-title: 'Schnellstart: Ausführen einer Anwendung in Azure Container Instances'
-description: In dieser Schnellstartanleitung stellen Sie mithilfe des Azure-Portals eine in einem Docker-Container ausgeführte Anwendung in Azure Container Instances bereit.
+title: 'Schnellstart: Ausführen einer Anwendung in Azure Container Instances – Portal'
+description: In dieser Schnellstartanleitung stellen Sie mithilfe des Azure-Portals eine Docker-Containeranwendung zur Ausführung in einem isolierten Container in Azure Container Instances bereit.
 services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: quickstart
 ms.date: 10/02/2018
 ms.author: danlep
-ms.custom: mvc
-ms.openlocfilehash: 6ab7680559400c0a270142563ecf7e251c2cd1b8
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.custom: seodec18, mvc
+ms.openlocfilehash: 8f547977e544854e281e1c6be442607d55149e5e
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48857719"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53190287"
 ---
-# <a name="quickstart-run-an-application-in-azure-container-instances"></a>Schnellstart: Ausführen einer Anwendung in Azure Container Instances
+# <a name="quickstart-run-a-container-application-in-azure-container-instances-in-the-azure-portal"></a>Schnellstart: Ausführen einer Containeranwendung in Azure Container Instances im Azure-Portal
 
 Führen Sie mithilfe von Azure Container Instances Docker-Container schnell und einfach in Azure aus. Sie müssen keine virtuellen Computer bereitstellen und keine vollständige Containerorchestrierungsplattform wie Kubernetes verwenden. In dieser Schnellstartanleitung erstellen Sie mithilfe des Azure-Portals einen Container in Azure und machen seine Anwendung mit einem vollqualifizierten Domänennamen (Fully Qualified Domain Name, FQDN) verfügbar. Nachdem Sie einige Einstellungen konfiguriert und den Container bereitgestellt haben, können Sie zur ausgeführten Anwendung navigieren:
 
@@ -37,7 +37,7 @@ Geben Sie die folgenden Werte in die Textfelder **Containername**, **Containerim
 
 * Containername: `mycontainer`
 * Containerimage: `microsoft/aci-helloworld`
-* Ressourcengruppe: **Neu erstellen** > `myResourceGroup`
+* Ressourcengruppe: **Neue erstellen** > `myResourceGroup`
 
 ![Konfigurieren grundlegender Einstellungen für eine neue Containerinstanz im Azure-Portal][aci-portal-03]
 

@@ -1,6 +1,6 @@
 ---
-title: Hochladen von Daten (.NET – Azure Search) | Microsoft-Dokumentation
-description: Hier erfahren Sie, wie Sie Daten mit dem .NET SDK in einen Index in Azure Search hochladen.
+title: Hochladen von Daten in den Code mithilfe von .NET SDK – Azure Search
+description: Erfahren Sie, wie Sie mit C#-Beispielcode und dem .NET SDK Daten in einen durchsuchbaren Volltextindex in Azure Search hochladen.
 author: brjohnstmsft
 manager: jlembicz
 ms.author: brjohnst
@@ -9,12 +9,13 @@ ms.service: search
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 01/13/2017
-ms.openlocfilehash: dc59531b282f6c99dd399ac384a8c6264ee260ea
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.custom: seodec2018
+ms.openlocfilehash: ae723e07f92a05f128ca78a7c5974cd0ebc55ac6
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51258764"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53313291"
 ---
 # <a name="upload-data-to-azure-search-using-the-net-sdk"></a>Hochladen von Daten in Azure Search mit dem .NET SDK
 > [!div class="op_single_selector"]
@@ -204,7 +205,7 @@ public partial class Hotel
 }
 ```
 
-Das Erste, was Sie sehen, ist, dass jede öffentliche Eigenschaft von `Hotel` einem Feld in der Indexdefinition entspricht, allerdings mit einem bedeutsamen Unterschied: die Namen der Felder beginnen mit einem Kleinbuchstaben („camel-Schreibweise“), während die Namen der öffentlichen Eigenschaften von `Hotel` mit einem Großbuchstaben („Pascal-Schreibweise“) beginnen. Dies ist ein typisches Szenario für .NET-Anwendungen, die Datenbindungen durchführen, wenn das Zielschema außerhalb der Kontrolle des Anwendungsentwicklers liegt. Anstatt nun die Namenskonventionen von .NET mit Eigenschaftsnamen in camel-Schreibweise zu verletzen, können Sie das SDK mit dem Attribut `[SerializePropertyNamesAsCamelCase]` anweisen, Eigenschaftsnamen automatisch der camel-Schreibweise zuzuordnen.
+Als Erstes ist zu beachten, dass jede öffentliche Eigenschaft von `Hotel` einem Feld in der Indexdefinition entspricht, aber mit einem bedeutsamen Unterschied: Die Namen der einzelnen Felder beginnen mit einem Kleinbuchstaben („Camel-Case-Schreibweise“), während die Namen der öffentlichen Eigenschaften von `Hotel` mit einem Großbuchstaben beginnen („Pascal-Schreibweise“). Dies ist ein typisches Szenario für .NET-Anwendungen, die Datenbindungen durchführen, wenn das Zielschema außerhalb der Kontrolle des Anwendungsentwicklers liegt. Anstatt nun die Namenskonventionen von .NET mit Eigenschaftsnamen in camel-Schreibweise zu verletzen, können Sie das SDK mit dem Attribut `[SerializePropertyNamesAsCamelCase]` anweisen, Eigenschaftsnamen automatisch der camel-Schreibweise zuzuordnen.
 
 > [!NOTE]
 > Das Azure Search .NET SDK verwendet die [NewtonSoft JSON.NET](http://www.newtonsoft.com/json/help/html/Introduction.htm) -Bibliothek, um die Objekte Ihres benutzerdefinierten Modells nach JSON zu serialisieren und aus JSON zu deserialisieren. Sie können diese Serialisierung bei Bedarf anpassen. Ausführlichere Informationen finden Sie unter [Benutzerdefinierte Serialisierung mit JSON.NET](search-howto-dotnet-sdk.md#JsonDotNet). Ein Beispiel hierfür ist die Verwendung des Attributs `[JsonProperty]` für die `DescriptionFr`-Eigenschaft im obigen Beispielcode.
@@ -224,7 +225,7 @@ Diese Möglichkeit, eigene Klassen als Dokumente zu verwenden, funktioniert in b
 
 Beim Entwerfen eigener Modellklassen für die Zuordnung zum Azure Search-Index wird empfohlen, Eigenschaften von Werttypen, z. B. `bool` und `int`, als Eigenschaften zu deklarieren, die NULL-Werte zulassen (z. B. `bool?` anstelle von `bool`). Wenn Sie eine Eigenschaft verwenden, die keine NULL-Werte zulässt, müssen Sie **garantieren**, dass keine Dokumente im Index einen NULL-Wert für das entsprechende Feld enthalten. Weder das SDK noch der Azure Search-Dienst helfen Ihnen, dies durchzusetzen.
 
-Dieser Aspekt ist nicht nur hypothetischer Art: Stellen Sie sich ein Szenario vor, bei dem Sie ein neues Feld einem vorhandenen Index vom Typ `DataType.Int32` hinzufügen. Nach dem Aktualisieren der Indexdefinition besitzen alle Dokumente einen NULL-Wert für das neue Feld (da in Azure Search alle Typen NULL-Werte zulassen). Wenn Sie für dieses Feld anschließend eine Modellklasse mit einer `int`-Eigenschaft verwenden, die keine NULL-Werte zulässt, erhalten Sie beim Abrufen von Dokumenten folgendes `JsonSerializationException`-Element:
+Dies ist nicht nur von hypothetischer Bedeutung: Stellen Sie sich ein Szenario vor, bei dem Sie ein neues Feld einem vorhandenen Index vom Typ `DataType.Int32` hinzufügen. Nach dem Aktualisieren der Indexdefinition besitzen alle Dokumente einen NULL-Wert für das neue Feld (da in Azure Search alle Typen NULL-Werte zulassen). Wenn Sie für dieses Feld anschließend eine Modellklasse mit einer `int`-Eigenschaft verwenden, die keine NULL-Werte zulässt, erhalten Sie beim Abrufen von Dokumenten folgendes `JsonSerializationException`-Element:
 
     Error converting value {null} to type 'System.Int32'. Path 'IntValue'.
 

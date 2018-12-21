@@ -1,21 +1,21 @@
 ---
-title: 'Tutorial: Automatisieren von Buildvorgängen für Containerimages mit Azure Container Registry Tasks'
-description: In diesem Tutorial erfahren Sie, wie Sie eine Aufgabe so konfigurieren, dass automatisch Buildvorgänge für Containerimages in der Cloud ausgelöst werden, wenn Sie Quellcode in einem Git-Repository committen.
+title: 'Tutorial: Automatisieren von Buildvorgängen für Containerimages – Azure Container Registry Tasks'
+description: In diesem Tutorial erfahren Sie, wie Sie einen Azure Container Registry Task so konfigurieren, dass automatisch Buildvorgänge für Containerimages in der Cloud ausgelöst werden, wenn Sie Quellcode in einem Git-Repository committen.
 services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: danlep
-ms.custom: mvc
-ms.openlocfilehash: 27dbee3b292a9139ce53ef7b09a4cceba56082e4
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.custom: seodec18, mvc
+ms.openlocfilehash: 3dc602589dc3a909ea2a2cf2925d37df0a97605b
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48857226"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53436244"
 ---
-# <a name="tutorial-automate-container-image-builds-with-azure-container-registry-tasks"></a>Tutorial: Automatisieren von Buildvorgängen für Containerimages mit Azure Container Registry Tasks
+# <a name="tutorial-automate-container-image-builds-in-the-cloud-when-you-commit-source-code"></a>Tutorial: Automatisieren von Buildvorgängen für Containerimages in der Cloud beim Committen von Quellcode
 
 Neben einer [Schnellaufgabe](container-registry-tutorial-quick-task.md) unterstützt ACR Tasks mit der *Buildaufgabe* auch automatische Buildvorgänge für Docker-Containerimages. In diesem Tutorial erstellen Sie mithilfe der Azure CLI eine Aufgabe, die automatisch Imagebuildvorgänge in der Cloud auslöst, wenn Sie Quellcode in einem Git-Repository committen.
 
@@ -41,7 +41,7 @@ In diesem Tutorial wird davon ausgegangen, dass Sie bereits die Schritte des [vo
 
 ### <a name="container-registry"></a>Containerregistrierung
 
-Ihr Abonnement muss eine Azure-Containerregistrierung enthalten, um dieses Tutorial bearbeiten zu können. Informationen zum Erstellen einer Registrierung finden Sie bei Bedarf im [vorherigen Tutorial](container-registry-tutorial-quick-task.md) und in der Schnellstartanleitung [Erstellen einer Containerregistrierung mit der Azure-Befehlszeilenschnittstelle](container-registry-get-started-azure-cli.md).
+Ihr Abonnement muss eine Azure-Containerregistrierung enthalten, um dieses Tutorial bearbeiten zu können. Wenn Sie eine Registrierung benötigen, finden Sie weitere Informationen im [vorigen Tutorial](container-registry-tutorial-quick-task.md) oder unter [Schnellstart: Erstellen einer Containerregistrierung mit der Azure-Befehlszeilenschnittstelle](container-registry-get-started-azure-cli.md).
 
 ## <a name="overview-of-acr-tasks"></a>Übersicht über ACR Tasks
 
@@ -155,7 +155,7 @@ $ az acr task create \
           "branch": "master",
           "repositoryUrl": "https://github.com/gituser/acr-build-helloworld-node",
           "sourceControlAuthProperties": null,
-          "sourceControlType": "Github"
+          "sourceControlType": "GitHub"
         },
         "sourceTriggerEvents": [
           "commit"

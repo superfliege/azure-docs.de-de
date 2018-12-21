@@ -7,16 +7,16 @@ ms.component: change-inventory-management
 keywords: Änderung, Nachverfolgung, Automatisierung
 author: jennyhunter-msft
 ms.author: jehunte
-ms.date: 11/01/2018
+ms.date: 12/05/2018
 ms.topic: tutorial
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: e4ea8f92a562ea4bc90df98d6e459377b9886777
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 1df3fcad8a30b0d79f40aecc353684b7356fe061
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52844905"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53190015"
 ---
 # <a name="troubleshoot-changes-in-your-environment"></a>Problembehandlung für Änderungen in Ihrer Umgebung
 
@@ -102,7 +102,7 @@ Fügen Sie im Fenster **Arbeitsbereichskonfiguration** wie in den nächsten drei
 |Aktiviert     | Bestimmt, ob die Einstellung angewendet wird        |
 |Item Name     | Anzeigename der nachzuverfolgenden Datei        |
 |Group     | Ein Gruppenname für die logische Gruppierung von Dateien        |
-|Windows Registry Key   | Der Pfad für die Überprüfung auf die Datei, z.B. „HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders\Common Startup“      |
+|Windows-Registrierungsschlüssel   | Der zu überprüfende Pfad für die Datei. Beispiel: HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders\Common Startup      |
 
 ### <a name="add-a-windows-file"></a>Hinzufügen einer Windows-Datei
 
@@ -117,7 +117,7 @@ Fügen Sie im Fenster **Arbeitsbereichskonfiguration** wie in den nächsten drei
 |Group     | Ein Gruppenname für die logische Gruppierung von Dateien        |
 |Pfad eingeben     | Der zu überprüfende Pfad für die Datei, z.B. „c:\temp\\\*.txt“<br>Sie können auch Umgebungsvariablen verwenden, beispielsweise „%winDir%\System32\\\*.*“.         |
 |Rekursion     | Bestimmt, ob beim Suchen nach dem nachzuverfolgenden Element die Rekursion verwendet wird        |
-|Hochladen von Dateiinhalt für alle Einstellungen| Aktiviert oder deaktiviert den Upload des Dateiinhalts für nachverfolgte Änderungen. Verfügbare Optionen: **TRUE** oder **FALSE**.|
+|Hochladen von Dateiinhalt für alle Einstellungen| Aktiviert oder deaktiviert den Upload des Dateiinhalts für nachverfolgte Änderungen. Verfügbare Optionen: **True** und **False**.|
 
 ### <a name="add-a-linux-file"></a>Hinzufügen einer Linux-Datei
 
@@ -135,7 +135,7 @@ Fügen Sie im Fenster **Arbeitsbereichskonfiguration** wie in den nächsten drei
 |Recursion     | Bestimmt, ob beim Suchen nach dem nachzuverfolgenden Element die Rekursion verwendet wird        |
 |Sudo verwenden     | Diese Einstellung bestimmt, ob „sudo“ bei der Suche nach dem Element verwendet wird         |
 |Links     | Diese Einstellung bestimmt, wie symbolische Verknüpfungen beim Durchlaufen von Verzeichnissen behandelt werden<br> **Ignore**: Symbolische Links werden ignoriert, und die referenzierten Dateien/Verzeichnisse werden nicht einbezogen.<br>**Follow**: Folgt den symbolischen Links während der Rekursion und bindet auch die referenzierten Dateien/Verzeichnisse ein.<br>**Manage**: Folgt den symbolischen Links und ermöglicht eine Änderung von zurückgegebenen Inhalten.      |
-|Hochladen von Dateiinhalt für alle Einstellungen| Aktiviert oder deaktiviert den Upload des Dateiinhalts für nachverfolgte Änderungen. Verfügbare Optionen: **TRUE** oder **FALSE**.|
+|Hochladen von Dateiinhalt für alle Einstellungen| Aktiviert oder deaktiviert den Upload des Dateiinhalts für nachverfolgte Änderungen. Verfügbare Optionen: **True** und **False**.|
 
    > [!NOTE]
    > Die Linkoption „Verwalten“ wird nicht empfohlen. Das Abrufen von Dateiinhalten wird nicht unterstützt.
@@ -177,12 +177,11 @@ Das Anzeigen von Änderungen im Azure-Portal kann praktisch sein, es ist jedoch 
 
 Wechseln Sie im Azure-Portal zu **Überwachen**, um eine Warnung für einen beendeten Dienst zu erhalten. Wählen Sie dann unter **Gemeinsame Dienste** die Option **Warnungen** aus, und klicken Sie auf **+ Neue Warnungsregel**.
 
-Klicken Sie unter **1. Warnungsbedingung definieren** auf **+ Ziel auswählen**. Wählen Sie unter **Nach Ressourcentyp filtern** die Option **Log Analytics**. Wählen Sie Ihren Log Analytics-Arbeitsbereich aus, und klicken Sie dann auf **Fertig**.
+Klicken Sie auf **Auswählen**, um eine Ressource auszuwählen. Wählen Sie auf der Seite **Ressource auswählen** in der Dropdownliste **Nach Ressourcentyp filtern** die Option **Log Analytics** aus. Wählen Sie Ihren Log Analytics-Arbeitsbereich aus, und klicken Sie dann auf **Fertig**.
 
 ![Auswählen einer Ressource](./media/automation-tutorial-troubleshoot-changes/select-a-resource.png)
 
-Klicken Sie auf **+ Kriterien hinzufügen**.
-Klicken Sie unter **Signallogik konfigurieren** in der Tabelle auf **Benutzerdefinierte Protokollsuche**. Geben Sie im Textfeld „Suchabfrage“ die folgende Abfrage ein:
+Klicken Sie auf **Bedingung hinzufügen**, und wählen Sie in der Tabelle auf der Seite **Signallogik konfigurieren** die Option **Benutzerdefinierte Protokollsuche** aus. Geben Sie im Textfeld „Suchabfrage“ die folgende Abfrage ein:
 
 ```loganalytics
 ConfigurationChange | where ConfigChangeType == "WindowsServices" and SvcName == "W3SVC" and SvcState == "Stopped" | summarize by Computer
@@ -194,11 +193,9 @@ Geben Sie unter **Warnungslogik** für **Schwellenwert** den Wert **0** ein. Kli
 
 ![Konfigurieren der Signallogik](./media/automation-tutorial-troubleshoot-changes/configure-signal-logic.png)
 
-Wählen Sie unter **2. Warnungsdetails definieren** einen Namen und eine Beschreibung für die Warnung ein. Legen Sie **Schweregrad** auf **Information (Schweregrad 2)**, **Warnung (Schweregrad 1)** oder **Kritisch (Schweregrad 0)** fest.
+Wählen Sie unter **Aktionsgruppen** die Option **Neu erstellen** aus. Eine Aktionsgruppe ist eine Gruppe mit Aktionen, die Sie übergreifend für mehrere Warnungen verwenden können. Dies können beispielsweise E-Mail-Benachrichtigungen, Runbooks, Webhooks und vieles mehr sein. Weitere Informationen zu Aktionsgruppen finden Sie unter [Erstellen und Verwalten von Aktionsgruppen im Azure-Portal](../azure-monitor/platform/action-groups.md).
 
-![Definieren von Warnungsdetails](./media/automation-tutorial-troubleshoot-changes/define-alert-details.png)
-
-Klicken Sie unter **3. Aktionsgruppe definieren** auf **Neue Aktionsgruppe**. Eine Aktionsgruppe ist eine Gruppe mit Aktionen, die Sie übergreifend für mehrere Warnungen verwenden können. Dies können beispielsweise E-Mail-Benachrichtigungen, Runbooks, Webhooks und vieles mehr sein. Weitere Informationen zu Aktionsgruppen finden Sie unter [Erstellen und Verwalten von Aktionsgruppen im Azure-Portal](../monitoring-and-diagnostics/monitoring-action-groups.md).
+Geben Sie unter **Warnungsdetails definieren** einen Namen und eine Beschreibung für die Warnung ein. Legen Sie **Schweregrad** auf **Information (Schweregrad 2)**, **Warnung (Schweregrad 1)** oder **Kritisch (Schweregrad 0)** fest.
 
 Geben Sie im Feld **Name der Aktionsgruppe** einen Namen für die Warnung und darunter einen Kurznamen ein. Der Kurzname wird anstelle eines vollständigen Aktionsgruppennamens verwendet, wenn Benachrichtigungen mithilfe dieser Gruppe gesendet werden.
 

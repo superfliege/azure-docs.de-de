@@ -1,6 +1,6 @@
 ---
-title: 'Schnellstart: Zugreifen auf Azure Active Directory zum Erstellen eines neuen Mandanten | Microsoft-Dokumentation'
-description: Dieser Schnellstart enthält die Schritte zum Finden von Azure Active Directory und zum Erstellen eines neuen Mandanten für Ihre Organisation.
+title: Schnellstart zum Erstellen eines neuen Mandanten und zum Zugriff auf ihn – Azure Active Directory | Microsoft-Dokumentation
+description: Anweisungen zum Finden von Azure Active Directory und zum Erstellen eines neuen Mandanten für Ihre Organisation.
 services: active-directory
 author: eross-msft
 manager: mtillman
@@ -10,15 +10,15 @@ ms.workload: identity
 ms.topic: quickstart
 ms.date: 09/10/2018
 ms.author: lizross
-custom: it-pro
-ms.openlocfilehash: eacb2e7c52adae9de0b74c3dade59446cc8459ed
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.custom: it-pro, seodec18
+ms.openlocfilehash: cd179d371ec75a2e6ca258a1efbc2361e50a5438
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50023548"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53083266"
 ---
-# <a name="quickstart-access-azure-active-directory-to-create-a-new-tenant"></a>Schnellstart: Zugreifen auf Azure Active Directory zum Erstellen eines neuen Mandanten
+# <a name="quickstart-create-a-new-tenant-in-azure-active-directory"></a>Schnellstart: Erstellen eines neuen Mandanten in Azure Active Directory
 Sie können alle Verwaltungsaufgaben über das Azure Active Directory-Portal (Azure AD-Portal) ausführen. Dazu gehört auch das Erstellen eines neuen Mandanten für Ihre Organisation. 
 
 In diesem Schnellstart erfahren Sie, wie Sie das Azure-Portal und Azure Active Directory aufrufen, und wie Sie einen Basismandanten für Ihre Organisation erstellen.

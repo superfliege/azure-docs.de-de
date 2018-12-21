@@ -1,21 +1,21 @@
 ---
 title: Registrieren Ihres Azure Enterprise Agreements bei Cloudyn | Microsoft-Dokumentation
-description: Verwenden Sie Ihr Enterprise Agreement, um sich bei Cloudyn zu registrieren.
+description: In diesem Schnellstart wird der Registrierungsvorgang ausführlich erläutert, der zum Erstellen eines Cloudyn-Testabonnements und zum Anmelden beim Cloudyn-Portal erforderlich ist.
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/14/2018
+ms.date: 12/07/2018
 ms.topic: quickstart
-ms.custom: ''
+ms.custom: seodec18
 ms.service: cost-management
 manager: benshy
-ms.openlocfilehash: 36f53203a7d75fc06f872e9cc9ef9379944df108
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 7a3ed93814407df8f3adfe7d16ba50258fcb323e
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52273562"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53082328"
 ---
 # <a name="register-an-azure-enterprise-agreement-and-view-cost-data"></a>Registrieren eines Azure Enterprise Agreements und Anzeigen von Kostendaten
 
@@ -25,23 +25,23 @@ Azure Cost Management bietet ähnliche Funktionen wie Cloudyn. Azure Cost Manage
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
-- Melden Sie sich unter http://portal.azure.com beim Azure-Portal an.
+- Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
 
 ## <a name="register-with-cloudyn"></a>Registrieren bei Cloudyn
 
 1. Klicken Sie im Azure-Portal in der Liste der Dienste auf **Kostenverwaltung und Abrechnung**.
 2. Klicken Sie unter **Übersicht** auf **Cloudyn**.  
-    ![Cloudyn-Seite](./media/quick-register-ea/cost-mgt-billing-service.png)
+    ![Cloudyn-Seite, die im Azure-Portal angezeigt wird](./media/quick-register-ea/cost-mgt-billing-service.png)
 3. Klicken Sie auf der Seite **Cloudyn** auf **Zu Cloudyn wechseln**, um die Cloudyn-Registrierungsseite in einem neuen Fenster zu öffnen.
 4. Geben Sie im Cloudyn-Portal auf der Registrierungsseite für die Testversion den Namen Ihres Unternehmens ein, und wählen Sie dann **Azure Enterprise Enrollment Administrator** aus.  
-    ![Registrierung der Testversion](./media/quick-register-ea/trial-reg.png)
-5. Geben Sie Ihren Enterprise Portal-API-Registrierungsschlüssel ein. Wenn Ihr Schlüssel zurzeit nicht griffbereit ist, klicken Sie auf den Link [Enterprise Portal](https://ea.azure.com), und führen Sie dann die folgenden Schritte aus:
+5. Geben Sie Ihren Enterprise Portal-API-Registrierungsschlüssel ein. Wenn Ihr Schlüssel zurzeit nicht griffbereit ist, klicken Sie auf den Link [Enterprise Portal](https://ea.azure.com), und führen Sie dann die folgenden Schritte aus:  
+    ![Einfügen Ihres API-Schlüssels auf der Registerkarte „Abrechnung“](./media/quick-register-ea/trial-reg.png)
   1. Melden Sie sich auf der Azure Enterprise-Website an, und klicken Sie auf **Berichte**. Klicken Sie auf **API-Zugriffsschlüssel**, und kopieren Sie dann Ihren Primärschlüssel.  
-    ![EA-API-Schlüssel](./media/quick-register-ea/ea-key.png)
+    ![Beispiel: EA-API-Schlüssel im EA-Portal](./media/quick-register-ea/ea-key.png)
   3. Navigieren Sie zurück zur Registrierungsseite, und fügen Sie Ihren API-Schlüssel ein.
-6. Stimmen Sie den Nutzungsbedingungen zu, und überprüfen Sie dann Ihren Schlüssel. Klicken Sie auf **Weiter**, um Cloudyn für das Erfassen von Azure-Ressourcendaten zu autorisieren. Die erfassten Daten beziehen sich auf Nutzung, Leistung, Abrechnung sowie Tagdaten aus Ihren Abonnements.  
-    ![Schlüsselüberprüfung](./media/quick-register-ea/ea-key-validated.png)
-7. Unter **Andere Beteiligte einladen** können Sie Benutzer hinzufügen, indem Sie ihre E-Mail-Adressen eingeben. Klicken Sie auf **Weiter**, wenn Sie fertig sind. Je nach Größe Ihrer Azure-Registrierung kann es bis zu 24 Stunden dauern, bis Ihre gesamten Abrechnungsdaten Cloudyn hinzugefügt wurden.
+6. Stimmen Sie den Nutzungsbedingungen zu, und überprüfen Sie dann Ihren Schlüssel. Klicken Sie auf **Weiter**, um Cloudyn für das Erfassen von Azure-Ressourcendaten zu autorisieren. Die erfassten Daten beziehen sich auf Nutzungs-, Leistungs- und Abrechnungs- sowie Tagdaten aus Ihren Abonnements.  
+    ![Beispiel: Erfolgreiche Überprüfung eines EA-API-Schlüssels](./media/quick-register-ea/ea-key-validated.png)
+7. Unter **Invite other stakeholders** (Andere Beteiligte einladen) können Sie Benutzer hinzufügen, indem Sie ihre E-Mail-Adressen eingeben. Klicken Sie auf **Weiter**, wenn Sie fertig sind. Je nach Größe Ihrer Azure-Registrierung kann es bis zu 24 Stunden dauern, bis Ihre gesamten Abrechnungsdaten Cloudyn hinzugefügt wurden.
 8. Klicken Sie auf **Zu Cloudyn wechseln**, um das Cloudyn-Portal zu öffnen. Auf der Seite **Cloudkontenverwaltung** sollten Ihre registrierten EA-Kontoinformationen angezeigt werden.
 
 Ein Videotutorial zur Registrierung Ihres Enterprise Agreements finden Sie unter [How to Find Your EA Enrollment ID and API Key for use in Cloudyn](https://youtu.be/u_phLs_udig) (Ermitteln Ihrer EA-Registrierungs-ID und Ihres API-Schlüssels zur Verwendung in Cloudyn).

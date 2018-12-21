@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 08/03/2017
 ms.author: sngun
 ms.custom: devcenter, vs-azure
-ms.openlocfilehash: 8230c2ba8c7fdb10d7e37a317d4eeb5abb120d60
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: b0c8d46e74eec4bad7b7e664682c97eb0f0068b6
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52868717"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53098725"
 ---
 # <a name="_Toc395809351"></a>ASP.NET MVC-Tutorial: Entwicklung von Webanwendungen mit Azure Cosmos DB
 
@@ -51,7 +51,7 @@ Bevor Sie diesen Artikel durcharbeiten, sollten Sie sicherstellen, dass Folgende
 
 Alle Screenshots in diesem Artikel wurden mithilfe von Microsoft Visual Studio Community 2017 erstellt. Wenn Ihr System mit einer anderen Version konfiguriert ist, weichen Ihre Bildschirme und Optionen möglicherweise leicht ab. Wenn Sie die oben aufgeführten Voraussetzungen erfüllen, sollte diese Lösung jedoch funktionieren.
 
-## <a name="_Toc395637761"></a>Schritt 1: Erstellen eines Azure Cosmos DB-Datenbankkontos
+## <a name="_Toc395637761"></a>Schritt 1: Erstellen eines Azure Cosmos DB-Datenbankkontos
 Wir beginnen, indem wir ein Azure Cosmos DB-Konto erstellen. Falls Sie bereits ein SQL-Konto für Azure Cosmos DB besitzen oder den Azure Cosmos DB-Emulator für dieses Tutorial verwenden, können Sie mit [Erstellen einer neuen ASP.NET MVC-Anwendung](#_Toc395637762) fortfahren.
 
 [!INCLUDE [create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
@@ -61,7 +61,7 @@ Wir beginnen, indem wir ein Azure Cosmos DB-Konto erstellen. Falls Sie bereits e
 <br/>
 Im Folgenden wird erläutert, wie eine neue ASP.NET MVC-Anwendung von Grund auf erstellt wird. 
 
-## <a name="_Toc395637762"></a>Schritt 2: Erstellen einer neuen ASP.NET MVC-Anwendung
+## <a name="_Toc395637762"></a>Schritt 2: Erstellen einer neuen ASP.NET MVC-Anwendung
 
 1. Zeigen Sie in Visual Studio im Menü **Datei** auf **Neu**, und klicken Sie dann auf **Projekt**. Das Dialogfeld **Neues Projekt** wird angezeigt.
 
@@ -414,9 +414,9 @@ Wir fügen den Elementen DBRepository und ItemController von Azure Cosmos DB Cod
    
     Dieser Code ruft das DocumentDBRepository-Element auf und verwendet die CreateItemAsync-Methode, um das neue Todo-Element in der Datenbank beizubehalten. 
    
-    **Sicherheitshinweis**: Das **ValidateAntiForgeryToken**-Attribut wird hier verwendet, um den Schutz dieser Anwendung vor websiteübergreifenden Anforderungsfälschungen zu unterstützen. Das Hinzufügen dieses Attributs reicht jedoch nicht aus, Ihre Ansichten müssen auch mit diesem Antifälschungstoken zusammenarbeiten. Weitere Informationen zum Thema und Beispiele für eine ordnungsgemäße Implementierung finden Sie unter [Verhindern der websiteübergreifenden Anforderungsfälschung][Preventing Cross-Site Request Forgery]. Der auf [GitHub][GitHub] bereitgestellte Quellcode enthält die vollständige Implementierung.
+    **Sicherheitshinweis**: Das Attribut **ValidateAntiForgeryToken** wird hier verwendet, um den Schutz dieser Anwendung vor websiteübergreifenden Anforderungsfälschungen zu unterstützen. Das Hinzufügen dieses Attributs reicht jedoch nicht aus, Ihre Ansichten müssen auch mit diesem Antifälschungstoken zusammenarbeiten. Weitere Informationen zum Thema und Beispiele für eine ordnungsgemäße Implementierung finden Sie unter [Verhindern der websiteübergreifenden Anforderungsfälschung][Preventing Cross-Site Request Forgery]. Der auf [GitHub][GitHub] bereitgestellte Quellcode enthält die vollständige Implementierung.
    
-    **Sicherheitshinweis**: Wir verwenden außerdem das Attribut **Bind** im Methodenparameter, um Schutz vor Overposting-Angriffen bereitzustellen. Weitere Informationen finden Sie unter [Grundlegende CRUD-Vorgänge in ASP.NET MVC][Basic CRUD Operations in ASP.NET MVC].
+    **Sicherheitshinweis**: Zum Schutz vor Overposting-Angriffen wird außerdem das Attribut **Bind** im Methodenparameter verwendet. Weitere Informationen finden Sie unter [Grundlegende CRUD-Vorgänge in ASP.NET MVC][Basic CRUD Operations in ASP.NET MVC].
 
 Damit ist der für das Hinzufügen neuer Elemente zur Datenbank erforderliche Code komplett.
 
@@ -545,8 +545,8 @@ Glückwunsch! Sie haben soeben Ihre erste ASP.NET MVC-Webanwendung unter Verwend
 Wenn Sie Ihrer Anwendung zusätzliche Funktionen hinzufügen möchten, können Sie sich die APIs in der [Azure Cosmos DB .NET-Bibliothek](/dotnet/api/overview/azure/cosmosdb?view=azure-dotnet) ansehen. Sie können auch gerne eigene Beiträge zur Azure Cosmos DB .NET-Bibliothek auf [GitHub][GitHub] schreiben. 
 
 [\*]: https://microsoft.sharepoint.com/teams/DocDB/Shared%20Documents/Documentation/Docs.LatestVersions/PicExportError
-[Visual Studio Express]: http://www.visualstudio.com/products/visual-studio-express-vs.aspx
-[Microsoft Web Platform Installer]: http://www.microsoft.com/web/downloads/platform.aspx
-[Preventing Cross-Site Request Forgery]: http://go.microsoft.com/fwlink/?LinkID=517254
-[Basic CRUD Operations in ASP.NET MVC]: http://go.microsoft.com/fwlink/?LinkId=317598
+[Visual Studio Express]: https://www.visualstudio.com/products/visual-studio-express-vs.aspx
+[Microsoft Web Platform Installer]: https://www.microsoft.com/web/downloads/platform.aspx
+[Preventing Cross-Site Request Forgery]: https://go.microsoft.com/fwlink/?LinkID=517254
+[Basic CRUD Operations in ASP.NET MVC]: https://go.microsoft.com/fwlink/?LinkId=317598
 [GitHub]: https://github.com/Azure-Samples/documentdb-net-todo-app

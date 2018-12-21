@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Identifizieren der Textsprache, Go: Textübersetzungs-API'
+title: 'Schnellstart: Ermitteln der Textsprache mit Go – Textübersetzungs-API'
 titleSuffix: Azure Cognitive Services
 description: In diesem Schnellstart bestimmen Sie die Sprache des Quelltexts. Dazu verwenden Sie die Textübersetzungs-API mit Go.
 services: cognitive-services
@@ -8,105 +8,161 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
-ms.date: 06/29/2018
+ms.date: 12/05/2018
 ms.author: erhopf
-ms.openlocfilehash: 0275b408e71ec967f6453c94566b4799b3dd4396
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 84522612dbd31d406537b9679887e0f82a971b1c
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49647203"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53000508"
 ---
-# <a name="quickstart-identify-language-from-text-with-the-translator-text-rest-api-go"></a>Schnellstart: Identifizieren der Textsprache mit der Textübersetzungs-REST-API (Go)
+# <a name="quickstart-use-the-translator-text-api-to-detect-text-language-using-go"></a>Schnellstart: Verwenden der Textübersetzungs-API zur Erkennung der Textsprache mit Go
 
-In dieser Schnellstartanleitung bestimmen Sie mithilfe der Textübersetzungs-API die Sprache des Quelltexts.
+In dieser Schnellstartanleitung erfahren Sie, wie Sie die Sprache des bereitgestellten Texts unter Verwendung von Go und der Textübersetzungs-REST-API erkennen.
+
+Für diese Schnellstartanleitung wird ein [Azure Cognitive Services-Konto](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) mit einer Textübersetzungsressource benötigt. Wenn Sie über kein Konto verfügen, können Sie über die [kostenlose Testversion](https://azure.microsoft.com/try/cognitive-services/) einen Abonnementschlüssel abrufen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Zum Ausführen dieses Codes müssen Sie die [Go-Distribution](https://golang.org/doc/install) installieren. In diesem Beispielcode werden nur **Kernbibliotheken** verwendet, sodass keine externen Abhängigkeiten vorhanden sind.
+Für diese Schnellstartanleitung ist Folgendes erforderlich:
 
-Damit Sie die Textübersetzungs-API verwenden können, benötigen Sie darüber hinaus einen Abonnementschlüssel. Informationen hierzu finden Sie unter [Registrieren für die Textübersetzungs-API](translator-text-how-to-signup.md).
+* [Go](https://golang.org/doc/install)
+* Ein Azure-Abonnementschlüssel für die Textübersetzung
 
-## <a name="detect-request"></a>Ermittlungsanforderung (Detect)
+## <a name="create-a-project-and-import-required-modules"></a>Erstellen eines Projekts und Importieren der erforderlichen Module
 
-Der folgende Code identifiziert mithilfe der Methode zum [Ermitteln](./reference/v3-0-detect.md) (Detect) die Sprache des Quelltexts.
+Erstellen Sie in Ihrer bevorzugten IDE oder Ihrem bevorzugten Editor ein neues Go-Projekt. Kopieren Sie anschließend den folgenden Codeausschnitt in Ihr Projekt in eine Datei namens `detect-language.go`.
 
-1. Erstellen Sie ein neues Go-Projekt in Ihrem bevorzugten Code-Editor.
-2. Fügen Sie den unten stehenden Code hinzu.
-3. Ersetzen Sie den `subscriptionKey`-Wert durch einen für Ihr Abonnement gültigen Zugriffsschlüssel.
-4. Speichern Sie die Datei mit der Erweiterung „.go“.
-5. Öffnen Sie auf einem Computer, auf dem Go installiert ist, eine Eingabeaufforderung.
-6. Erstellen Sie die Datei, beispielsweise „go build quickstart-detect.go“.
-7. Führen Sie die Datei aus, etwa „quickstart-detect“.
-
-```golang
+```go
 package main
 
 import (
+    "bytes"
     "encoding/json"
     "fmt"
-    "io/ioutil"
+    "log"
     "net/http"
-    "strconv"
-    "strings"
-    "time"
+    "net/url"
+    "os"
 )
+```
 
+## <a name="create-the-main-function"></a>Erstellen der main-Funktion
+
+Dieses Beispiel liest den Textübersetzungs-Abonnementschlüssel aus der Umgebungsvariablen `TRANSLATOR_TEXT_KEY`. Wenn Sie mit Umgebungsvariablen nicht vertraut sind, können Sie `subscriptionKey` als Zeichenfolge festlegen und die Bedingungsanweisung auskommentieren.
+
+Kopieren Sie diesen Code in Ihr Projekt:
+
+```go
 func main() {
-    // Replace the subscriptionKey string value with your valid subscription key
-    const subscriptionKey = "<Subscription Key>"
-
-    const uriBase = "https://api.cognitive.microsofttranslator.com"
-    const uriPath = "/detect?api-version=3.0"
-
-    const uri = uriBase + uriPath
-
-    const text = "Salve, mondo!"
-
-    r := strings.NewReader("[{\"Text\" : \"" + text + "\"}]")
-
-    client := &http.Client{
-        Timeout: time.Second * 2,
+    /*
+     * Read your subscription key from an env variable.
+     * Please note: You can replace this code block with
+     * var subscriptionKey = "YOUR_SUBSCRIPTION_KEY" if you don't
+     * want to use env variables.
+     */
+    subscriptionKey := os.Getenv("TRANSLATOR_TEXT_KEY")
+    if subscriptionKey == "" {
+       log.Fatal("Environment variable TRANSLATOR_TEXT_KEY is not set.")
     }
-
-    req, err := http.NewRequest("POST", uri, r)
-    if err != nil {
-        fmt.Printf("Error creating request: %v\n", err)
-        return
-    }
-
-    req.Header.Add("Content-Type", "application/json")
-    req.Header.Add("Content-Length", strconv.FormatInt(req.ContentLength, 10))
-    req.Header.Add("Ocp-Apim-Subscription-Key", subscriptionKey)
-
-    resp, err := client.Do(req)
-    if err != nil {
-        fmt.Printf("Error on request: %v\n", err)
-        return
-    }
-    defer resp.Body.Close()
-
-    body, err := ioutil.ReadAll(resp.Body)
-    if err != nil {
-        fmt.Printf("Error reading response body: %v\n", err)
-        return
-    }
-
-    var f interface{}
-    json.Unmarshal(body, &f)
-
-    jsonFormatted, err := json.MarshalIndent(f, "", "  ")
-    if err != nil {
-        fmt.Printf("Error producing JSON: %v\n", err)
-        return
-    }
-    fmt.Println(string(jsonFormatted))
+    /*
+     * This calls our detect function, which we'll
+     * create in the next section. It takes a single argument,
+     * the subscription key.
+     */
+    detect(subscriptionKey)
 }
 ```
 
-## <a name="detect-response"></a>Ermittlungsantwort (Detect)
+## <a name="create-a-function-to-detect-the-text-language"></a>Erstellen einer Funktion zur Erkennung der Textsprache
 
-Es wird eine erfolgreiche Antwort im JSON-Format zurückgegeben, wie im folgenden Beispiel gezeigt:
+In diesem Schritt erstellen wir eine Funktion zur Erkennung der Textsprache. Diese Funktion verwendet ein einzelnes Argument: Ihren Textübersetzungs-Abonnementschlüssel.
+
+```go
+func detect(subscriptionKey string) {
+    /*  
+     * In the next few sections, we'll add code to this
+     * function to make a request and handle the response.
+     */
+}
+```
+
+Als Nächstes erstellen wir die URL. Die URL wird mit den Methoden `Parse()` und `Query()` erstellt.
+
+Kopieren Sie diesen Code in die Funktion `detect`.
+
+```go
+// Build the request URL. See: https://golang.org/pkg/net/url/#example_URL_Parse
+u, _ := url.Parse("https://api.cognitive.microsofttranslator.com/detect?api-version=3.0")
+q := u.Query()
+u.RawQuery = q.Encode()
+```
+
+>[!NOTE]
+> Weitere Informationen zu Endpunkten, Routen und Anforderungsparametern finden Sie unter [Textübersetzungs-API 3.0: Detect](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-detect).
+
+## <a name="create-a-struct-for-your-request-body"></a>Erstellen einer Struktur für Ihren Anforderungstext
+
+Erstellen Sie als Nächstes eine anonyme Struktur für den Anforderungstext, und codieren Sie sie im JSON-Format mit `json.Marshal()`. Fügen Sie diesen Code der Funktion `detect` hinzu.
+
+```go
+// Create an anonymous struct for your request body and encode it to JSON
+body := []struct {
+    Text string
+}{
+    {Text: "Salve, Mondo!"},
+}
+b, _ := json.Marshal(body)
+```
+
+## <a name="build-the-request"></a>Erstellen der Anforderung
+
+Nachdem Sie nun den Anforderungstext im JSON-Format codiert haben, können Sie Ihre POST-Anforderung erstellen und die Textübersetzungs-API aufrufen.
+
+```go
+// Build the HTTP POST request
+req, err := http.NewRequest("POST", u.String(), bytes.NewBuffer(b))
+if err != nil {
+    log.Fatal(err)
+}
+// Add required headers
+req.Header.Add("Ocp-Apim-Subscription-Key", subscriptionKey)
+req.Header.Add("Content-Type", "application/json")
+
+// Call the Translator Text API
+res, err := http.DefaultClient.Do(req)
+if err != nil {
+    log.Fatal(err)
+}
+```
+
+## <a name="handle-and-print-the-response"></a>Verarbeiten und Ausgeben der Antwort
+
+Fügen Sie diesen Code der Funktion `detect` hinzu, um die JSON-Antwort zu decodieren, zu formatieren und das Ergebnis auszugeben.
+
+```go
+// Decode the JSON response
+var result interface{}
+if err := json.NewDecoder(res.Body).Decode(&result); err != nil {
+    log.Fatal(err)
+}
+// Format and print the response to terminal
+prettyJSON, _ := json.MarshalIndent(result, "", "  ")
+fmt.Printf("%s\n", prettyJSON)
+```
+
+## <a name="put-it-all-together"></a>Korrektes Zusammenfügen
+
+Das war's: Sie haben ein einfaches Programm erstellt, das die Textübersetzungs-API aufruft und eine JSON-Antwort zurückgibt. Führen Sie das Programm jetzt aus:
+
+```console
+go run detect-language.go
+```
+
+[Auf GitHub](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-Go) finden Sie das vollständige Beispiel, falls Sie Ihren Code mit unserem Code vergleichen möchten.
+
+## <a name="sample-response"></a>Beispiel für eine Antwort
 
 ```json
 [
@@ -139,3 +195,13 @@ Sehen Sie sich Go-Pakete für Cognitive Services-APIs aus dem [Azure SDK für Go
 
 > [!div class="nextstepaction"]
 > [Go-Pakete auf GitHub](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices)
+
+## <a name="see-also"></a>Weitere Informationen
+
+Informieren Sie sich, wie Sie die Textübersetzungs-API für folgende Zwecke verwenden:
+
+* [Übersetzen von Text](quickstart-go-translate.md)
+* [Transliteration von Text](quickstart-go-transliterate.md)
+* [Ermitteln alternativer Übersetzungen](quickstart-go-dictionary.md)
+* [Abrufen einer Liste der unterstützten Sprachen](quickstart-go-languages.md)
+* [Bestimmen der Satzlänge aus einer Eingabe](quickstart-go-sentences.md)

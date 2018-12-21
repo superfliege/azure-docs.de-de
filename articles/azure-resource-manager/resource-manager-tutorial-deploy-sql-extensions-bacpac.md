@@ -10,19 +10,19 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 12/04/2018
+ms.date: 12/06/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 9f1b3ea74c59383561b019d32a80f1502716b29e
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 249356644772ae75b12f5c940ff5f9ed49b2c795
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52879212"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52994993"
 ---
 # <a name="tutorial-import-sql-bacpac-files-with-azure-resource-manager-templates"></a>Tutorial: Importieren von SQL-BACPAC-Dateien mit Azure Resource Manager-Vorlagen
 
-Hier erfahren Sie, wie Sie Azure SQL-Datenbank-Erweiterungen verwenden, um eine BACPAC-Datei zu importieren. In diesem Tutorial erstellen Sie eine Vorlage zum Bereitstellen einer Azure SQL Server-Instanz, einer SQL-Datenbank und einer BACPAC-Datei. Informationen zum Bereitstellen von Azure-VM-Erweiterungen unter Verwendung von Azure Resource Manager-Vorlagen finden Sie unter [Tutorial: Deploy virtual machine extensions with Azure Resource Manager templates](./resource-manager-tutorial-deploy-vm-extensions.md) (Tutorial: Bereitstellen von VM-Erweiterungen mit Azure Resource Manager-Vorlagen).
+Hier erfahren Sie, wie Sie die Azure SQL-Datenbank-Erweiterung verwenden, um eine BACPAC-Datei mit Azure Resource Manager-Vorlagen zu importieren. Bereitstellungsartefakte sind sämtliche Dateien, die zusätzlich zur Hauptvorlagendatei für eine Bereitstellung benötigt werden. Die BACPAC-Datei ist ein Artefakt. In diesem Tutorial erstellen Sie eine Vorlage zum Bereitstellen einer Azure SQL Server-Instanz und einer SQL-Datenbank sowie zum Importieren einer BACPAC-Datei. Informationen zum Bereitstellen von Azure-VM-Erweiterungen unter Verwendung von Azure Resource Manager-Vorlagen finden Sie unter [Tutorial: Bereitstellen von VM-Erweiterungen mithilfe von Azure Resource Manager-Vorlagen](./resource-manager-tutorial-deploy-vm-extensions.md).
 
 Dieses Tutorial enthält die folgenden Aufgaben:
 
@@ -49,7 +49,7 @@ Damit Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie F
 
 ## <a name="prepare-a-bacpac-file"></a>Vorbereiten einer BACPAC-Datei
 
-Eine BACPAC-Datei wird über ein [Azure Storage-Konto mit öffentlichem Zugriff](https://armtutorials.blob.core.windows.net/sqlextensionbacpac/SQLDatabaseExtension.bacpac) freigegeben. Informationen zum Erstellen einer eigenen Datei finden Sie unter [Exportieren einer Azure SQL-Datenbank in eine BACPAC-Datei](../sql-database/sql-database-export.md). Wenn Sie die Datei an Ihrem eigenen Standort veröffentlichen möchten, müssen Sie die Vorlage später in diesem Tutorial aktualisieren.
+Eine BACPAC-Datei wird über ein [Azure Storage-Konto](https://armtutorials.blob.core.windows.net/sqlextensionbacpac/SQLDatabaseExtension.bacpac) mit öffentlichem Zugriff freigegeben. Informationen zum Erstellen einer eigenen Datei finden Sie unter [Exportieren einer Azure SQL-Datenbank in eine BACPAC-Datei](../sql-database/sql-database-export.md). Wenn Sie die Datei an Ihrem eigenen Standort veröffentlichen möchten, müssen Sie die Vorlage später in diesem Tutorial aktualisieren.
 
 ## <a name="open-a-quickstart-template"></a>Öffnen einer Schnellstartvorlage
 
@@ -68,12 +68,13 @@ Eine BACPAC-Datei wird über ein [Azure Storage-Konto mit öffentlichem Zugriff]
     * `Microsoft.Sql/servers`. Informationen finden Sie in der [Vorlagenreferenz](https://docs.microsoft.com/azure/templates/microsoft.sql/servers).
     * `Microsoft.SQL/servers/securityAlertPolicies`. Informationen finden Sie in der [Vorlagenreferenz](https://docs.microsoft.com/azure/templates/microsoft.sql/servers/securityalertpolicies).
     * `Microsoft.SQL.servers/databases`.  Informationen finden Sie in der [Vorlagenreferenz](https://docs.microsoft.com/azure/templates/microsoft.sql/servers/databases).
+
     Bevor Sie die Vorlage anpassen, sollten Sie sich zunächst grundlegend damit vertraut machen.
 4. Wählen Sie **Datei**>**Speichern unter** aus, um eine Kopie der Datei als **azuredeploy.json** auf dem lokalen Computer zu speichern.
 
 ## <a name="edit-the-template"></a>Bearbeiten der Vorlage
 
-Der Vorlage müssen zwei weitere Ressourcen hinzugefügt werden.
+Fügen Sie der Vorlage zwei weitere Ressourcen hinzu.
 
 * Damit die SQL-Datenbank-Erweiterung BACPAC-Dateien importieren kann, müssen Sie den Zugriff auf Azure-Dienste zulassen. Fügen Sie der SQL Server-Definition den folgenden JSON-Code hinzu:
 
@@ -82,7 +83,7 @@ Der Vorlage müssen zwei weitere Ressourcen hinzugefügt werden.
         "type": "firewallrules",
         "name": "AllowAllAzureIps",
         "location": "[parameters('location')]",
-        "apiVersion": "2014-04-01",
+        "apiVersion": "2015-05-01-preview",
         "dependsOn": [
             "[variables('databaseServerName')]"
         ],
@@ -126,11 +127,11 @@ Der Vorlage müssen zwei weitere Ressourcen hinzugefügt werden.
 
     Informationen zur Ressourcendefinition finden Sie in der [Referenz zur SQL-Datenbank-Erweiterung](https://docs.microsoft.com/azure/templates/microsoft.sql/servers/databases/extensions). Im Anschluss sind einige zentrale Elemente aufgeführt:
 
-    * **dependsOn**: Die Erweiterungsressource muss nach der Erstellung der SQL-Datenbank erstellt werden.
-    * **storageKeyType**: Die Art des zu verwendenden Speicherschlüssels. Der Wert kann entweder `StorageAccessKey` oder `SharedAccessKey` lauten. Da die bereitgestellte BACPAC-Datei über ein Azure Storage-Konto mit öffentlichem Zugriff freigegeben wird, wird hier „SharedAccessKey“ verwendet.
-    * **storageKey**: Der zu verwendende Speicherschlüssel. Bei Verwendung des Speicherschlüsseltyps „SharedAccessKey“ muss ein Fragezeichen (?) vorangestellt werden.
-    * **storageUri**: Der zu verwendende Speicher-URI. Falls Sie sich gegen die Verwendung der bereitgestellten BACPAC-Datei entscheiden, müssen Sie die Werte aktualisieren.
-    * **administratorLoginPassword**: Das Kennwort des SQL-Administrators. Es wird empfohlen, ein generiertes Kennwort zu verwenden. Siehe [Voraussetzungen](#prerequisites).
+    * **dependsOn:** Die Erweiterungsressource muss nach der Erstellung der SQL-Datenbank erstellt werden.
+    * **storageKeyType:** Die Art des zu verwendenden Speicherschlüssels. Der Wert kann entweder `StorageAccessKey` oder `SharedAccessKey` lauten. Da die bereitgestellte BACPAC-Datei über ein Azure Storage-Konto mit öffentlichem Zugriff freigegeben wird, wird hier „SharedAccessKey“ verwendet.
+    * **storageKey:** Der zu verwendende Speicherschlüssel. Bei Verwendung des Speicherschlüsseltyps „SharedAccessKey“ muss ein Fragezeichen (?) vorangestellt werden.
+    * **storageUri:** Der zu verwendende Speicher-URI. Falls Sie sich gegen die Verwendung der bereitgestellten BACPAC-Datei entscheiden, müssen Sie die Werte aktualisieren.
+    * **administratorLoginPassword:** Das Kennwort des SQL-Administrators. Verwenden Sie ein generiertes Kennwort. Siehe [Voraussetzungen](#prerequisites).
 
 ## <a name="deploy-the-template"></a>Bereitstellen der Vorlage
 
@@ -151,7 +152,7 @@ New-AzureRmResourceGroupDeployment -Name $deploymentName `
     -TemplateFile azuredeploy.json
 ```
 
-Es wird empfohlen, ein generiertes Kennwort zu verwenden. Siehe [Voraussetzungen](#prerequisites).
+Verwenden Sie ein generiertes Kennwort. Siehe [Voraussetzungen](#prerequisites).
 
 ## <a name="verify-the-deployment"></a>Überprüfen der Bereitstellung
 
@@ -170,7 +171,7 @@ Wenn Sie die Azure-Ressourcen nicht mehr benötigen, löschen Sie die Ressourcen
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie eine SQL Server-Instanz und eine SQL-Datenbank bereitgestellt und eine BACPAC-Datei importiert. Im folgenden Tutorial erfahren Sie, wie Sie Azure-Ressourcen in mehreren Regionen bereitstellen und sichere Bereitstellungsverfahren verwenden:
+In diesem Tutorial haben Sie eine SQL Server-Instanz und eine SQL-Datenbank bereitgestellt und eine BACPAC-Datei importiert. Die BACPAC-Datei wird in einem Azure-Speicherkonto gespeichert. Jeder Benutzer, der über die URL verfügt, kann auf die Datei zugreifen. Informationen zum Schützen der BACPAC-Datei (Artefakt) finden Sie unter
 
 > [!div class="nextstepaction"]
-> [Tutorial: Verwenden des Azure-Bereitstellungs-Manager mit Resource Manager-Vorlagen (Public Preview)](./resource-manager-tutorial-deploy-vm-extensions.md)
+> [Tutorial: Secure artifacts in Azure Resource Manager template deployments](./resource-manager-tutorial-secure-artifacts.md) (Tutorial: Schützen von Artefakten in Azure Resource Manager-Vorlagenbereitstellungen).

@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: quickstart
 ms.date: 07/23/2018
 ms.custom: mvc
-ms.openlocfilehash: 080bf465d65199c54e0d09eab8c7bccbc9616ed7
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 1c8f280d58d12df33b687fa9c09712176987cdd1
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51568953"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53259544"
 ---
 # <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-portal"></a>Schnellstart: Ausführen eines Spark-Auftrags in Azure Databricks mit dem Azure-Portal
 
@@ -76,7 +76,7 @@ In diesem Abschnitt erstellen Sie einen Azure Databricks-Arbeitsbereich über da
 
     * Geben Sie einen Namen für den Cluster ein.
     * Erstellen Sie im Rahmen dieses Artikels einen Cluster mit der Runtime **4.0**.
-    * Aktivieren Sie das Kontrollkästchen **Terminate after \_\_ minutes of inactivity** (Nach \_\_ Minuten Inaktivität beenden). Geben Sie an, nach wie vielen Minuten der Cluster beendet werden soll, wenn er nicht verwendet wird.
+    * Aktivieren Sie das Kontrollkästchen **Terminate after \_\_ minutes of inactivity** (Nach _ Minuten Inaktivität beenden). Geben Sie an, nach wie vielen Minuten der Cluster beendet werden soll, wenn er nicht verwendet wird.
     
     Klicken Sie auf **Cluster erstellen**. Sobald der Cluster ausgeführt wird, können Sie Notizbücher an den Cluster anfügen und Spark-Aufträge ausführen.
 
@@ -91,7 +91,7 @@ Laden Sie eine Datei mit JSON-Beispieldaten herunter, und speichern Sie sie in A
 2. Wenn Sie noch nicht über ein Speicherkonto verfügen, sollten Sie jetzt eins erstellen.
     - Klicken Sie im Azure-Portal auf **Ressource erstellen**. Wählen Sie die Kategorie **Storage** und dann die Option **Speicherkonten**.
     - Geben Sie einen eindeutigen Namen für das Speicherkonto an.
-    - Wählen Sie **Kontoart**: **Blob Storage**.
+    - Wählen Sie **Kontoart** aus: **Blob-Speicher**
     - Wählen Sie eine Namen für die **Ressourcengruppe** aus. Verwenden Sie dieselbe Ressourcengruppe, die Sie für den Databricks-Arbeitsbereich erstellt haben.
     
     Weitere Informationen finden Sie unter [Erstellen eines Azure Blob Storage-Kontos](../storage/common/storage-quickstart-create-account.md).
@@ -200,7 +200,7 @@ Am Ende dieses Artikels können Sie den Cluster beenden. Klicken Sie hierzu im l
 
 ![Beenden eines Databricks-Clusters](./media/quickstart-create-databricks-workspace-portal/terminate-databricks-cluster.png "Beenden eines Databricks-Clusters")
 
-Wenn Sie den Cluster nicht manuell beenden, wird er automatisch beendet, sofern Sie bei der Erstellung des Clusters das Kontrollkästchen **Terminate after \_\_ minutes of inactivity** (Nach \_\_ Minuten Inaktivität beenden) aktiviert haben. Der Cluster wird dann automatisch beendet, wenn er für den angegebenen Zeitraum inaktiv war.
+Wenn Sie den Cluster nicht manuell beenden, wird er automatisch beendet, sofern Sie bei der Erstellung des Clusters das Kontrollkästchen **Terminate after \_\_ minutes of inactivity** (Nach __ Minuten Inaktivität beenden) aktiviert haben. Der Cluster wird dann automatisch beendet, wenn er für den angegebenen Zeitraum inaktiv war.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

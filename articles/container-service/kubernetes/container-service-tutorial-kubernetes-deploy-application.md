@@ -1,24 +1,27 @@
 ---
-title: Tutorial für Azure Container Service – Bereitstellen einer Anwendung
+title: '(VERALTET) Tutorial für Azure Container Service: Bereitstellen einer Anwendung'
 description: Tutorial für Azure Container Service – Bereitstellen einer Anwendung
 services: container-service
-author: neilpeterson
+author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 02/26/2018
-ms.author: nepeters
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: e7f9c0c3ad11cb6988f528503d614ab26dcc0968
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: dafbb8d1221d5e9c6194611ad338b3714a089cea
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "41918213"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52998769"
 ---
-# <a name="run-applications-in-kubernetes"></a>Ausführen von Anwendungen in Kubernetes
+# <a name="deprecated-run-applications-in-kubernetes"></a>(VERALTET) Ausführen von Anwendungen in Kubernetes
 
-[!INCLUDE [aks-preview-redirect.md](../../../includes/aks-preview-redirect.md)]
+> [!TIP]
+> Die aktualisierte Version dieses Tutorials zu Azure Kubernetes Service finden Sie unter [Tutorial: Ausführen von Anwendungen in Azure Kubernetes Service (AKS)](../../aks/tutorial-kubernetes-deploy-application.md).
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
 In diesem Tutorial – Teil 4 von 7 – wird eine Beispielanwendung in einem Kubernetes-Cluster bereitgestellt. Folgende Schritte werden ausgeführt:
 

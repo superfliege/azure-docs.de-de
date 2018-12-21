@@ -10,12 +10,12 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 03/26/2018
 ms.author: lbosq
-ms.openlocfilehash: e11ac1c7d813dce069523104955b885b7b857937
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: ed9bcfc52d4403213583b65a18f5066d6a2c4f75
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52841981"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53090201"
 ---
 # <a name="azure-cosmos-db-create-a-graph-database-using-java-and-the-azure-portal"></a>Azure Cosmos DB: Erstellen einer Graphdatenbank mit Java und dem Azure-Portal
 
@@ -30,7 +30,7 @@ ms.locfileid: "52841981"
 
 Azure Cosmos DB ist der global verteilte Microsoft-Datenbankdienst mit mehreren Modellen. Mit Azure Cosmos DB können Sie verwaltete Dokument-, Tabellen- und Diagrammdatenbanken erstellen und abfragen. 
 
-In dieser Schnellstartanleitung wird mithilfe der Tools des Azure-Portals für Azure Cosmos DB eine einfache Graphdatenbank erstellt. Darüber hinaus erfahren Sie hier, wie Sie unter Verwendung des OSS-Treibers [Apache TinkerPop](http://tinkerpop.apache.org/) schnell eine Java-Konsolen-App erstellen, die eine [Gremlin-API](graph-introduction.md) verwendet. Die Anweisungen in dieser Schnellstartanleitung gelten für alle Betriebssysteme, unter denen Java ausgeführt werden kann. In dieser Schnellstartanleitung erfahren Sie, wie Sie Graphen über die Benutzeroberfläche oder programmgesteuert erstellen und ändern. 
+In dieser Schnellstartanleitung wird mithilfe der Tools des Azure-Portals für Azure Cosmos DB eine einfache Graphdatenbank erstellt. Darüber hinaus erfahren Sie hier, wie Sie unter Verwendung des OSS-Treibers [Apache TinkerPop](https://tinkerpop.apache.org/) schnell eine Java-Konsolen-App erstellen, die eine [Gremlin-API](graph-introduction.md) verwendet. Die Anweisungen in dieser Schnellstartanleitung gelten für alle Betriebssysteme, unter denen Java ausgeführt werden kann. In dieser Schnellstartanleitung erfahren Sie, wie Sie Graphen über die Benutzeroberfläche oder programmgesteuert erstellen und ändern. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
@@ -40,7 +40,7 @@ Außerdem haben Sie folgende Möglichkeiten:
 * [Java Development Kit (JDK) 1.7+](https://aka.ms/azure-jdks)
     * Führen Sie unter Ubuntu `apt-get install default-jdk` aus, um das JDK zu installieren.
     * Achten Sie darauf, dass die Umgebungsvariable „JAVA_HOME“ auf den Ordner verweist, in dem das JDK installiert ist.
-* Ein binäres [Maven](http://maven.apache.org/)-Archiv ([Download](http://maven.apache.org/download.cgi)/[Installationsanleitung](http://maven.apache.org/install.html))
+* Ein binäres [Maven](https://maven.apache.org/)-Archiv ([Download](https://maven.apache.org/download.cgi)/[Installationsanleitung](https://maven.apache.org/install.html))
     * Unter Ubuntu können Sie `apt-get install maven` ausführen, um Maven zu installieren.
 * [Git-Client](https://www.git-scm.com/)
     * Unter Ubuntu können Sie `sudo apt-get install git` ausführen, um Git zu installieren.
@@ -108,7 +108,7 @@ Die folgenden Codeausschnitte stammen alle aus der Datei „C:\git-samples\azure
 
 Wechseln Sie nun zurück zum Azure-Portal, um die Verbindungsinformationen abzurufen und in die App zu kopieren. Durch diese Einstellungen kann Ihre App mit Ihrer gehosteten Datenbank kommunizieren.
 
-1. Klicken Sie im [Azure-Portal](http://portal.azure.com/) auf **Schlüssel**. 
+1. Klicken Sie im [Azure-Portal](https://portal.azure.com/) auf **Schlüssel**. 
 
     Kopieren Sie den ersten Teil des URI-Werts.
 

@@ -1,22 +1,25 @@
 ---
-title: 'Go-Schnellstartanleitung: Ändern des Modells und Trainieren einer LUIS-App'
-description: In dieser Schnellstartanleitung für die Sprache Go fügen Sie einer Home Automation-App Beispieläußerungen hinzu, und Sie trainieren die App. Bei Beispieläußerungen handelt es sich um Konversationstext von Benutzern, der einer Absicht zugeordnet ist. Indem Sie Beispieläußerungen für Absichten bereitstellen, teilen Sie LUIS mit, welche Arten des vom Benutzer angegebenen Texts zu welcher Absicht gehören.
-titleSuffix: Microsoft Cognitive Services
+title: Ändern, Trainieren der App, Go
+description: In dieser Schnellstartanleitung für die Sprache Go fügen Sie einer Home Automation-App Beispieläußerungen hinzu, und Sie trainieren die App.
+titleSuffix: Language Understanding - Microsoft Cognitive Services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: quickstart
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 2cd8c1aa2deb2af97d4f720efa0e40146b15b888
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: e3fb6b2532f2dc99a48cc3c2eac9029367c52185
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47031865"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53100286"
 ---
 # <a name="quickstart-change-model-using-go"></a>Schnellstart: Ändern des Modells mit Go
+
+In dieser Schnellstartanleitung übergeben Sie Äußerungen an einen LUIS-Endpunkt, um Absichten und Entitäten zurückzugeben.
 
 [!INCLUDE [Quickstart introduction for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-intro-para.md)]
 
@@ -66,7 +69,7 @@ ms.locfileid: "47031865"
 
 2. Führen Sie die Go-Anwendung über die Befehlszeile aus, indem Sie den folgenden Text an der Eingabeaufforderung eingeben: 
 
-    ```CMD
+    ```console
     add-utterances -appID <your-app-id> -authoringKey <add-your-authoring-key> -version <your-version-id> -region westus -utteranceFile utterances.json
 
     ```
@@ -75,7 +78,7 @@ ms.locfileid: "47031865"
 
     Mit dieser Eingabeaufforderung werden die Ergebnisse angezeigt:
 
-    ```CMD
+    ```console
     add example utterances requested
     [
         {

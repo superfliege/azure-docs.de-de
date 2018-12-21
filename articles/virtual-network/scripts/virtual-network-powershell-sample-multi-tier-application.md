@@ -13,14 +13,14 @@ ms.devlang: powershell
 ms.topic: sample
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
-ms.date: 03/20/2018
+ms.date: 12/13/2018
 ms.author: jdial
-ms.openlocfilehash: 3a57827616e4722b8520dcddb64e4e67fa8c79c9
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: ebc0e18ecea61705ea8cb925a25d4233bfc9a2cb
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31599892"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53340503"
 ---
 # <a name="create-a-network-for-multi-tier-applications-script-sample"></a>Skriptbeispiel für das Erstellen eines Netzwerks für Anwendungen mit mehreren Ebenen
 
@@ -32,10 +32,11 @@ Sie können das Skript über Azure [Cloud Shell](https://shell.azure.com/powersh
 
 ## <a name="sample-script"></a>Beispielskript
 
+<!-- gitHub issue https://github.com/MicrosoftDocs/azure-docs/issues/17748 --> Eine Subnetz-ID wird zugewiesen, nachdem Sie ein virtuelles Netzwerk erstellt haben, insbesondere mit dem Cmdlet „New-AzureRmVirtualNetwork“ mit der Option „-Subnet“. Wenn Sie das Subnetz mit dem Cmdlet „New-AzureRmVirtualNetworkSubnetConfig“ vor dem Aufruf von „New-AzureRmVirtualNetwork“ konfigurieren, wird die Subnetz-ID erst nach dem Aufruf von „New-AzureRmVirtualNetwork“ angezeigt.
 
 [!code-azurepowershell-interactive[main](../../../powershell_scripts/virtual-network/virtual-network-multi-tier-application/virtual-network-multi-tier-application.ps1  "Virtual network for multi-tier application")]
 
-## <a name="clean-up-deployment"></a>Bereinigen der Bereitstellung 
+## <a name="clean-up-deployment"></a>Bereinigen der Bereitstellung
 
 Führen Sie den folgenden Befehl aus, um die Ressourcengruppe, den virtuellen Computer und alle zugehörigen Ressourcen zu entfernen:
 

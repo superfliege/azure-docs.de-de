@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Erkennen von Sprache in Objective-C unter iOS mit dem Spracherkennungsdienst-SDK'
+title: 'Schnellstart: Erkennen von Sprache in Objective-C – Spracherkennungsdienste'
 titleSuffix: Azure Cognitive Services
 description: Hier finden Sie Informationen zum Erkennen von Sprache in Objective-C unter iOS mit dem Spracherkennungsdienst-SDK.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: speech-service
 ms.topic: quickstart
 ms.date: 11/06/2018
 ms.author: chlandsi
-ms.openlocfilehash: 7d1e05e13e55b8b7bc07eda71d63f96f12c81ff9
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.openlocfilehash: eaa44f942082c6bd062599dbdd0401fe4505daf4
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51219187"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53090200"
 ---
-# <a name="quickstart-recognize-speech-in-objective-c-on-ios-using-the-speech-service-sdk"></a>Schnellstart: Erkennen von Sprache in Objective-C unter iOS mit dem Spracherkennungsdienst-SDK
+# <a name="quickstart-recognize-speech-in-objective-c-on-ios-using-the-speech-service-sdk"></a>Schnellstart: Erkennen von Sprache in Objective-C unter iOS mit dem Speech Service SDK
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
@@ -25,8 +25,11 @@ In diesem Artikel erfahren Sie, wie Sie eine iOS-App in Objective-C mit dem Cogn
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein Abonnementschlüssel für den Spracherkennungsdienst. Weitere Informationen finden Sie unter [Kostenloses Testen des Spracherkennungsdiensts](get-started.md).
-* Ein Mac mit installiertem Xcode 9.4.1 als iOS-Entwicklungsumgebung. Dieses Tutorial bezieht sich auf die iOS-Versionen 11.4. Wenn Sie noch nicht über Xcode verfügen, können Sie Xcode aus dem [App Store](https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12) installieren.
+Folgendes wird vorausgesetzt:
+
+* Ein [Abonnementschlüssel](get-started.md) für den Speech-Dienst
+* Ein macOS-Computer mit [Xcode 9.4.1](https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12) oder einer höheren Version
+* Ziel mindestens auf die iOS-Version 11.4 festgelegt
 
 ## <a name="get-the-speech-sdk-for-ios"></a>Abrufen des Speech SDK für iOS
 
@@ -37,7 +40,7 @@ Die aktuelle Version des Cognitive Services Speech SDK ist `1.1.0`.
 Das Cognitive Services Speech SDK für Mac und iOS wird zurzeit als Cocoa-Framework bereitgestellt.
 Es kann von https://aka.ms/csspeech/iosbinary heruntergeladen werden. Laden Sie die Datei in Ihr Basisverzeichnis herunter.
 
-## <a name="create-an-xcode-project"></a>Erstellen eines Xcode-Projekts 
+## <a name="create-an-xcode-project"></a>Erstellen eines Xcode-Projekts
 
 Starten Sie Xcode, und starten Sie ein neues Projekt, indem Sie auf **Datei** > **Neu** > **Projekt** klicken.
 Wählen Sie im Dialogfeld zum Auswählen der Vorlage die Vorlage „Einzelansicht-App (iOS)“ aus.
@@ -54,7 +57,7 @@ Treffen Sie in den nachfolgenden Dialogfeldern die folgende Auswahl:
     1. Wählen Sie das Basisverzeichnis aus, in dem das Projekt gespeichert werden soll. Dadurch wird ein Verzeichnis `helloworld` in Ihrem Basisverzeichnis erstellt, das alle Dateien für das Xcode-Projekt enthält.
     1. Deaktivieren Sie die Erstellung eines Git-Repositorys für dieses Beispielprojekt.
     1. Passen Sie die Pfade zum SDK in den *Projekteinstellungen* an.
-        1. Fügen Sie auf der Registerkarte **Allgemein** unter dem Header **Eingebettete Binärdateien** die SDK-Bibliothek als Framework hinzu: **Eingebettete Binärdateien hinzufügen** > **Andere hinzufügen...**. Navigieren Sie zu Ihrem Basisverzeichnis, und wählen Sie die Datei `MicrosoftCognitiveServicesSpeech.framework` aus. Dadurch wird auch automatisch die SDK-Bibliothek dem Header **Verknüpftes Framework und Bibliotheken** hinzugefügt.
+        1. Fügen Sie auf der Registerkarte **Allgemein** unter der Überschrift **Eingebettete Binärdateien** die SDK-Bibliothek als Framework hinzu: **Eingebettete Binärdateien hinzufügen** > **Andere hinzufügen...**. Navigieren Sie dann zu Ihrem Basisverzeichnis, und wählen Sie die Datei `MicrosoftCognitiveServicesSpeech.framework` aus. Dadurch wird auch automatisch die SDK-Bibliothek dem Header **Verknüpftes Framework und Bibliotheken** hinzugefügt.
         ![Hinzugefügtes Framework](media/sdk/qs-objectivec-framework.png)
         1. Navigieren Sie zur Registerkarte **Buildeinstellungen**, und aktivieren Sie **Alle** Einstellungen.
         1. Fügen Sie das Verzeichnis `$(SRCROOT)/..` den *Frameworksuchpfaden* unter der Überschrift **Suchpfade** hinzu.
@@ -62,7 +65,7 @@ Treffen Sie in den nachfolgenden Dialogfeldern die folgende Auswahl:
 
 ## <a name="set-up-the-ui"></a>Einrichten der Benutzeroberfläche
 
-Die Benutzeroberfläche der Beispiel-App ist sehr einfach und besteht aus zwei Schaltflächen, um die Spracherkennung entweder mit einer Datei oder mit einer Mikrofoneingabe zu starten, und einer Beschriftung zum Anzeigen des Ergebnisses.
+Die Benutzeroberfläche der Beispiel-App ist sehr einfach: Sie umfasst lediglich zwei Schaltflächen, um die Spracherkennung entweder mit einer Datei oder mit einer Mikrofoneingabe zu starten, sowie eine Beschriftung zum Anzeigen des Ergebnisses.
 Die Benutzeroberfläche wird im `Main.storyboard`-Teil des Projekts eingerichtet.
 Öffnen Sie die XML-Ansicht des Storyboards, indem Sie mit der rechten Maustaste auf den Eintrag `Main.storyboard` der Projektstruktur klicken und **Öffnen als...** > **Quellcode** auswählen.
 Ersetzen Sie den automatisch generierten XML-Code durch Folgendes:
@@ -103,4 +106,3 @@ Suchen Sie nach diesem Beispiel im Ordner `quickstart/objectivec-ios`.
 
 > [!div class="nextstepaction"]
 > [Abrufen der Beispiele](speech-sdk.md#get-the-samples)
-

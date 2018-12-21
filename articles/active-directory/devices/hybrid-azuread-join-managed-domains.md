@@ -16,16 +16,16 @@ ms.topic: tutorial
 ms.date: 11/01/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: 7061776ba5325a333033d0f272de3b2663b44351
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: b8d45e72e15ff86b53f7355634e8f197b94260bd
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52887796"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53435428"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>Tutorial: Konfigurieren der Azure Active Directory-Hybrideinbindung für verwaltete Domänen
 
-Ähnlich wie ein Benutzer wird ein Gerät zu einer weiteren Identität, die Sie schützen sowie zum Schutz Ihrer Ressourcen jederzeit und überall verwenden möchten. Dafür können Sie die Identitäten Ihrer Geräte mit einer der folgenden Methoden in Azure AD bereitstellen:
+Ähnlich wie ein Benutzer wird ein Gerät zu einer weiteren Identität, die Sie schützen sowie zum Schutz Ihrer Ressourcen jederzeit und überall verwenden können. Dafür können Sie die Identitäten Ihrer Geräte mit einer der folgenden Methoden in Azure AD bereitstellen:
 
 - Azure AD-Einbindung
 - Azure AD-Hybrideinbindung
@@ -53,7 +53,11 @@ In diesem Tutorial wird vorausgesetzt, dass Sie mit Folgendem vertraut sind:
 -  [Steuern der Azure AD-Hybrideinbindung für Ihre Geräte](hybrid-azuread-join-control.md)
   
 
-Zum Konfigurieren des Szenarios in diesem Artikel muss die [aktuelle Version von Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594) (1.1.819.0 oder höher) installiert sein. 
+Für die Konfiguration des Szenarios in diesem Artikel benötigen Sie Folgendes:
+
+- Ein lokales Active Directory (AD) mit Schemalevel 85 oder höher. Weitere Informationen finden Sie unter [Aktualisieren des Active Directory-Schemas](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-device-based-conditional-access-on-premises#upgrade-your-active-directory-schema).
+
+- Die [neueste Version von Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594) (1.1.819.0 oder höher) muss installiert sein. 
 
 Vergewissern Sie sich, dass Azure AD die Computerobjekte der Geräte für die Azure AD-Hybrideinbindung mit Azure AD synchronisiert. Wenn die Computerobjekte zu bestimmten Organisationseinheiten (OEs) gehören, müssen diese OEs auch für die Synchronisierung in Azure AD Connect konfiguriert werden.
 
@@ -172,7 +176,7 @@ Außerdem müssen Sie in der lokalen Intranetzone des Benutzers die Option **Akt
 
 ### <a name="configure-seamless-sso"></a>Konfigurieren des nahtlosen einmaligen Anmeldens
 
-Sie müssen außerdem [nahtloses SSO konfigurieren](https://docs.microsoft.com/en-us/azure/active-directory/hybrid/how-to-connect-sso-quick-start#step-2-enable-the-feature), um die Azure AD-Hybrideinbindung Ihrer kompatiblen Windows-Geräte in einer verwalteten Domäne erfolgreich abzuschließen, die als Authentifizierungsmethode für die Azure AD-Cloud Passthrough-Authentifizierung (PTA) oder Kennworthashsynchronisierung (Password Hash Sync, PHS) verwendet. 
+Sie müssen außerdem [nahtloses SSO konfigurieren](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso-quick-start#step-2-enable-the-feature), um die Azure AD-Hybrideinbindung Ihrer kompatiblen Windows-Geräte in einer verwalteten Domäne erfolgreich abzuschließen, die als Authentifizierungsmethode für die Azure AD-Cloud Passthrough-Authentifizierung (PTA) oder Kennworthashsynchronisierung (Password Hash Sync, PHS) verwendet. 
 
 
 ### <a name="control-windows-down-level-devices"></a>Steuern kompatibler Windows-Geräte 

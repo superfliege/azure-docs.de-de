@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Generieren einer Miniaturansicht – SDK, C# – Maschinelles Sehen'
+title: 'Schnellstart: Generieren einer Miniaturansicht – SDK, C# – maschinelles Sehen'
 titleSuffix: Azure Cognitive Services
 description: In diesem Schnellstart generieren Sie eine Miniaturansicht aus einem Bild, indem Sie die Windows C#-Clientbibliothek von Maschinelles Sehen verwenden.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 09/14/2018
 ms.author: pafarley
-ms.openlocfilehash: d3340131c1f174201cc9fd1dcb31bd4a4b8cd07a
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: a4a6dac4ca42f98bd03da022aaed79db094a9ed6
+ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51854083"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53413284"
 ---
-# <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-sdk-and-c"></a>Schnellstart: Generieren einer Miniaturansicht mit dem Maschinelles Sehen SDK und C#
+# <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-sdk-and-c"></a>Schnellstart: Generieren einer Miniaturansicht mit dem SDK für maschinelles Sehen und C#
 
 In dieser Schnellstartanleitung generieren Sie eine Miniaturansicht aus einem Bild, indem Sie die Windows-Clientbibliothek der Maschinelles Sehen-API verwenden.
 
@@ -32,7 +32,7 @@ In dieser Schnellstartanleitung generieren Sie eine Miniaturansicht aus einem Bi
 > [!TIP]
 > Laden Sie den aktuellen Code als Visual Studio-Projektmappe von [GitHub](https://github.com/Azure-Samples/cognitive-services-vision-csharp-sdk-quickstarts/tree/master/ComputerVision) herunter.
 
-Die Methoden `GenerateThumbnailAsync` und `GenerateThumbnailInStreamAsync` umschließen die [Bildanalyse-API](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb) für lokale Bilder bzw. Remotebilder.  Sie können diese Methoden verwenden, um aus einem Bild eine Miniaturansicht zu generieren. Sie geben die Höhe und Breite an. Diese kann sich vom Seitenverhältnis des Eingabebilds unterscheiden. Für das maschinelle Sehen wird die intelligente Zuschneidefunktion verwendet, um die gewünschte Region zu identifizieren und basierend auf dieser Region Zuschneidekoordinaten zu generieren.
+Die Methoden `GenerateThumbnailAsync` und `GenerateThumbnailInStreamAsync` umschließen die [Bildanalyse-API](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb) für lokale Bilder bzw. Remotebilder.  Sie können diese Methoden verwenden, um aus einem Bild eine Miniaturansicht zu generieren. Sie geben die Höhe und Breite an. Diese kann sich vom Seitenverhältnis des Eingabebilds unterscheiden. Für das maschinelle Sehen wird die intelligente Zuschneidefunktion verwendet, um den gewünschten Bereich zu identifizieren und basierend auf dieser Region Zuschneidekoordinaten zu generieren.
 
 Führen Sie zum Ausführen des Beispiels die folgenden Schritte aus:
 

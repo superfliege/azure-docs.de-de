@@ -1,21 +1,22 @@
 ---
-title: 'C#-Schnellstartanleitung: Ändern des Modells und Trainieren einer LUIS-App'
-titleSuffix: Azure Cognitive Services
-description: In dieser Schnellstartanleitung für C# fügen Sie einer Home Automation-App Beispieläußerungen hinzu, und Sie trainieren die App. Bei Beispieläußerungen handelt es sich um Konversationstext von Benutzern, der einer Absicht zugeordnet ist. Indem Sie Beispieläußerungen für Absichten bereitstellen, teilen Sie LUIS mit, welche Arten des vom Benutzer angegebenen Texts zu welcher Absicht gehören.
+title: Ändern, Trainieren der App, C#
+titleSuffix: Language Understanding - Azure Cognitive Services
+description: In dieser Schnellstartanleitung für C# fügen Sie einer Home Automation-App Beispieläußerungen hinzu, und Sie trainieren die App.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: quickstart
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: aab9651092f7ad5dbc78c31db8df4ef3538fedfc
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 23692bd6a0c708b2747a3cc211b8238d30dfe5db
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47039971"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53161745"
 ---
 # <a name="quickstart-change-model-using-c"></a>Schnellstart: Ändern des Modells mit C#
 
@@ -28,7 +29,7 @@ ms.locfileid: "47039971"
 * C#-Programmiersprache installiert
 * NuGet-Pakete [JsonFormatterPlus](https://www.nuget.org/packages/JsonFormatterPlus) und [CommandLine](https://www.nuget.org/packages/CommandLineParser/)
 
-[!INCLUDE [Code is available in LUIS-Samples Github repo](../../../includes/cognitive-services-luis-qs-change-model-luis-repo-note.md)]
+[!INCLUDE [Code is available in LUIS-Samples GitHub repo](../../../includes/cognitive-services-luis-qs-change-model-luis-repo-note.md)]
 
 ## <a name="example-utterances-json-file"></a>JSON-Datei mit Beispieläußerungen
 
@@ -56,7 +57,7 @@ Für das Visual Studio-Projekt sind **JsonFormatterPlus** und **CommandLineParse
 ### <a name="write-the-c-code"></a>Schreiben des C#-Codes
 Die Datei **Program.cs** sollte wie folgt aussehen:
 
-```CSharp
+```C#
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -98,9 +99,7 @@ Fügen Sie der **Program**-Klasse die POST-Anforderungsmethode hinzu.
 
 Fügen Sie der **Program**-Klasse Beispieläußerungen aus der Dateimethode hinzu.
 
-   [!code-csharp[Add example utterances from file.
-](~/samples-luis/documentation-samples/quickstarts/change-model/csharp/ConsoleApp1/Program.cs?range=77-86 "Add example utterances from file.
-")]
+   [!code-csharp[Add example utterances from file.](~/samples-luis/documentation-samples/quickstarts/change-model/csharp/ConsoleApp1/Program.cs?range=77-86 "Add example utterances from file.")]
 
 Trainieren Sie das Modell, nachdem die Änderungen angewendet wurden. Fügen Sie der **Program**-Klasse eine Methode hinzu.
 
@@ -128,7 +127,7 @@ Erstellen Sie den Code in Visual Studio.
 
 Führen Sie die Anwendung im Verzeichnis „/bin/Debug“ des Projekts über eine Befehlszeile aus. 
 
-```CMD
+```console
 ConsoleApp\bin\Debug> ConsoleApp1.exe --add utterances.json --train --status
 ```
 

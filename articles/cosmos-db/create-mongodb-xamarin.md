@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 06/20/2018
 ms.author: masoucou
-ms.openlocfilehash: 4fde6d203999b15f0f60d4879c2fdc595e1fb7e9
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: ece6780803809829e69fccc320ae65a0c7b0f94b
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52835555"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53089257"
 ---
 # <a name="quickstart-build-a-mongodb-api-xamarinforms-app-with-net-and-the-azure-portal"></a>Schnellstart: Erstellen einer Xamarin.Forms-App mit einer MongoDB-API mit .NET und dem Azure-Portal
 
@@ -156,7 +156,7 @@ Die folgenden Codeausschnitte stammen alle aus der `MongoService`-Klasse, die si
 
 Wechseln Sie nun zurück zum Azure-Portal, um die Informationen der Verbindungszeichenfolge abzurufen und in die App zu kopieren.
 
-1. Klicken Sie im [Azure-Portal](http://portal.azure.com/) in Ihrem Azure Cosmos DB-Konto im linken Navigationsbereich auf **Verbindungszeichenfolge**, und klicken Sie anschließend auf **Lese-/Schreibschlüssel**. In den nächsten Schritten verwenden Sie die Schaltflächen zum Kopieren auf der rechten Seite des Bildschirms, um die primäre Verbindungszeichenfolge zu kopieren.
+1. Klicken Sie im [Azure-Portal](https://portal.azure.com/) in Ihrem Azure Cosmos DB-Konto im linken Navigationsbereich auf **Verbindungszeichenfolge**, und klicken Sie anschließend auf **Lese-/Schreibschlüssel**. In den nächsten Schritten verwenden Sie die Schaltflächen zum Kopieren auf der rechten Seite des Bildschirms, um die primäre Verbindungszeichenfolge zu kopieren.
 
 2. Öffnen Sie die Datei **APIKeys.cs** im Verzeichnis **Helpers** (Hilfsprogramme) des Projekts **TaskList.Core**.
 

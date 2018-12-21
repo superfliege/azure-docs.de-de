@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
 ms.date: 12/04/2018
-ms.openlocfilehash: ba27ceb784cf139c288a89f3191282fb9b364ddc
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 8780e145845d820ef0c6ff2c43891287c1902e2c
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52864375"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53000913"
 ---
-# <a name="tutorial-migrate-postgresql-to-azure-database-for-postgresql-online-using-dms"></a>Tutorial: Ausführen einer Onlinemigration von PostgreSQL zu Azure Database for PostgreSQL mit DMS
+# <a name="tutorial-migrate-postgresql-to-azure-database-for-postgresql-online-using-dms"></a>Tutorial: Migrieren von PostgreSQL zu Azure Database for PostgreSQL (online) mit DMS
 Mit Azure Database Migration Service können Sie die Datenbanken mit minimaler Ausfallzeit von einer lokalen PostgreSQL-Instanz zu [Azure Database for PostgreSQL](https://docs.microsoft.com/azure/postgresql/) migrieren. Somit kommt es bei der Migration nur zu einer geringen Ausfallzeit für die Anwendung. In diesem Tutorial migrieren Sie die Beispieldatenbank **DVD Rental** von einer lokalen Instanz von PostgreSQL 9.6 zu Azure Database for PostgreSQL. Zu diesem Zweck verwenden Sie eine Onlinemigrationsaktivität in Azure Database Migration Service.
 
 In diesem Tutorial lernen Sie Folgendes:
@@ -38,7 +38,7 @@ In diesem Tutorial lernen Sie Folgendes:
 ## <a name="prerequisites"></a>Voraussetzungen
 Für dieses Tutorial benötigen Sie Folgendes:
 
-- Laden Sie [PostgreSQL Community Edition](https://www.postgresql.org/download/) 9.5, 9.6 oder 10.3 herunter, und installieren Sie die Edition. Die PostgreSQL-Version des Quellservers muss 9.5.11, 9.6.7, 10.3 oder höher sein. Weitere Informationen finden Sie im Artikel [Unterstützte PostgreSQL-Datenbankversionen](https://docs.microsoft.com/azure/postgresql/concepts-supported-versions).
+- Laden Sie [PostgreSQL Community Edition](https://www.postgresql.org/download/) 9.5, 9.6 oder 10 herunter, und installieren Sie die Edition. Die PostgreSQL-Version des Quellservers muss 9.5.11, 9.6.7, 10 oder höher sein. Weitere Informationen finden Sie im Artikel [Unterstützte PostgreSQL-Datenbankversionen](https://docs.microsoft.com/azure/postgresql/concepts-supported-versions).
 
     Darüber hinaus muss die lokale PostgreSQL-Version mit der Azure Database for PostgreSQL-Version übereinstimmen. Beispiel: PostgreSQL 9.5.11.5 kann nur zu Azure Database for PostgreSQL 9.5.11 migriert, aber nicht auf Version 9.6.7 aktualisiert werden.
 
@@ -52,7 +52,7 @@ Für dieses Tutorial benötigen Sie Folgendes:
 - Es gibt zwei Methoden zum Aufrufen der CLI:
     - Wählen Sie im Azure-Portal rechts oben die Cloud Shell-Schaltfläche aus:
  
-       ![Cloud Shell-Schaltfläche im Azure-Portal](media\tutorial-postgresql-to-azure-postgresql-online\cloud-shell-button.png)
+       ![Cloud Shell-Schaltfläche im Azure-Portal](media/tutorial-postgresql-to-azure-postgresql-online/cloud-shell-button.png)
  
     - Installieren Sie die CLI lokal, und führen Sie sie aus. CLI 2.0 ist das Befehlszeilentool zum Verwalten von Azure-Ressourcen.
      
@@ -188,7 +188,7 @@ Zum Fertigstellen aller Datenbankobjekte wie Tabellenschemas, Indizes und gespei
     ```
 
     Der folgende Befehl erstellt z.B. einen Dienst in:
-    - Standort: „USA, Osten 2“
+    - Standort: USA (Ost 2)
     - Abonnement: 97181df2-909d-420b-ab93-1bff15acb6b7
     - Ressourcengruppenname: PostgresDemo
     - DMS-Dienstname: PostgresCLI
@@ -233,9 +233,9 @@ Zum Fertigstellen aller Datenbankobjekte wie Tabellenschemas, Indizes und gespei
     ```
     Der folgende Befehl erstellt z.B. ein Projekt mit folgenden Parametern:
 
-      - Standort: „USA, Westen-Mitte“
+      - Standort: USA, Westen-Mitte
       - Ressourcengruppenname: PostgresDemo
-      - Dienstname: PostgresCLI
+      - Servicename: PostgresCLI
       - Projektname: PGMigration
       - Quellplattform: PostgreSQL
       - Zielplattform: AzureDbForPostgreSql

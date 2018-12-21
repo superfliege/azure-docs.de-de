@@ -1,5 +1,6 @@
 ---
-title: Übersicht über Azure Load Balancer | Microsoft-Dokumentation
+title: Was versteht man unter Azure Load Balancer?
+titlesuffix: Azure Load Balancer
 description: Übersicht über Features, Architektur und Implementierung des Azure Load Balancers. Erfahren Sie, wie Load Balancer funktioniert, und nutzen Sie den Dienst in der Cloud.
 services: load-balancer
 documentationcenter: na
@@ -8,16 +9,17 @@ ms.service: load-balancer
 Customer intent: As an IT administrator, I want to learn more about the Azure Load Balancer service and what I can use it for.
 ms.devlang: na
 ms.topic: overview
+ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/20/2018
 ms.author: kumud
-ms.openlocfilehash: 6368b47400f6ea06babfe538cf6f58b18cc49117
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.openlocfilehash: 3b1f2374618a0fdb446c4d0bf59fa14a828639ea
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51219578"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53185612"
 ---
 # <a name="what-is-azure-load-balancer"></a>Was versteht man unter Azure Load Balancer?
 
@@ -86,7 +88,7 @@ Load Balancer stellt die folgenden grundlegenden Funktionen für TCP und UDP-Anw
      
     Load Balancer bietet [verschiedene Integritätstesttypen](load-balancer-custom-probe-overview.md#types) für TCP-, HTTP- und HTTPS-Endpunkte.
 
-    Zudem ist bei der Verwendung von klassischen Clouddiensten ein weiterer Typ zulässig: [Gast-Agent](load-balancer-custom-probe-overview.md#guestagent).  Dieser sollte als letzte Option für den Integritätstest gelten und nicht eingesetzt werden, wenn andere Optionen genutzt werden können.
+    Zudem ist bei der Verwendung von klassischen Clouddiensten ein weiterer Typ zulässig:  [Gast-Agent](load-balancer-custom-probe-overview.md#guestagent).  Dieser sollte als letzte Option für den Integritätstest gelten und nicht eingesetzt werden, wenn andere Optionen genutzt werden können.
     
 * **Ausgehende (SNAT-)Verbindungen**
 
@@ -141,14 +143,14 @@ Ein interner Load Balancer leitet Datenverkehr nur an Ressourcen weiter, die sic
 
 Ein interner Load Balancer ermöglicht die folgenden Arten von Lastenausgleich:
 
-* **In einem virtuellen Netzwerk:** Lastenausgleich zwischen virtuellen Computern im virtuellen Netzwerk und einer Gruppe von virtuellen Computern, die sich im selben virtuellen Netzwerk befinden.
-* **Für ein standortübergreifendes virtuelles Netzwerk:** Lastenausgleich zwischen lokalen Computern und einer Gruppe von virtuellen Computern, die sich im selben virtuellen Netzwerk befinden. 
-* **Für Anwendungen mit mehreren Schichten:** Lastenausgleich für Anwendungen mit mehreren Schichten mit Internetzugriff, bei denen die Back-End-Schichten nicht über Internetzugriff verfügen. Die Back-End-Schichten erfordern einen Lastenausgleich des Datenverkehrs aus einer mit dem Internet verbundenen Schicht (weitere Details finden Sie in der folgenden Abbildung).
+* **In einem virtuellen Netzwerk:** Lastenausgleich zwischen virtuellen Computern im virtuellen Netzwerk und einer Gruppe von virtuellen Computern im gleichen virtuellen Netzwerk.
+* **Für ein standortübergreifendes virtuelles Netzwerk:** Lastenausgleich zwischen lokalen Computern und einer Gruppe von virtuellen Computern im gleichen virtuellen Netzwerk. 
+* **Für Anwendungen mit mehreren Ebenen:** Lastenausgleich für Anwendungen mit mehreren Ebenen und Internetzugriff, wobei die Back-End-Ebenen nicht auf das Internet zugreifen können. Die Back-End-Ebenen erfordern einen Lastenausgleich des Datenverkehrs aus einer mit dem Internet verbundenen Ebene (weitere Details finden Sie in der folgenden Abbildung).
 * **Für Branchenanwendungen:** Lastenausgleich für Branchenanwendungen, die in Azure ohne zusätzliche Hardware oder Software für den Lastenausgleich gehostet werden. Dieses Szenario enthält lokale Server, die sich in der Gruppe der Computer befinden, für deren Datenverkehr Lastenausgleich stattfindet.
 
 ![Beispiel für einen internen Load Balancer](./media/load-balancer-overview/IC744147.png)
 
-*Abbildung: Durchführen eines Lastenausgleichs für mehrschichtige Anwendungen mit einem öffentlichen und einem internen Load Balancer*
+*Abbildung: Durchführen eines Lastenausgleichs für Anwendungen mit mehreren Ebenen mithilfe eines öffentlichen und eines internen Load Balancers*
 
 ## <a name="pricing"></a>Preise
 Die Nutzung des Standard-Load Balancers wird anhand der Anzahl konfigurierter Regeln für den Lastenausgleich und die Menge von eingehenden und ausgehenden Daten berechnet. Informationen zu den Preisen für den Standard-Load Balancer finden Sie auf der Seite [Load Balancer – Preise](https://azure.microsoft.com/pricing/details/load-balancer/).

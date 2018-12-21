@@ -1,5 +1,5 @@
 ---
-title: Erstellen einer PHP-Web-App und Bereitstellen dieser in App Service unter Linux | Microsoft-Dokumentation
+title: 'Erstellen von PHP-Web-Apps unter Linux: Azure App Service | Microsoft-Dokumentation'
 description: Stellen Sie in wenigen Minuten Ihre erste PHP-App vom Typ „Hello World“ in einer App Service unter Linux bereit.
 services: app-service\web
 documentationcenter: ''
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 08/30/2017
 ms.author: cfowler
-ms.custom: mvc
-ms.openlocfilehash: 5fdf277eb8f99f2d52600140601b413b51bcdfd8
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.custom: seodec18
+ms.openlocfilehash: 2c9586bb5abce66e4043e3df80b420174a582cbb
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42885904"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53257368"
 ---
 # <a name="create-a-php-web-app-in-app-service-on-linux"></a>Erstellen einer PHP-Web-App in App Service unter Linux
 

@@ -1,21 +1,21 @@
 ---
-title: Tutorial zu Azure Container Registry – Aktualisiertes Image per Push für regionale Bereitstellungen übertragen
-description: Übertragen Sie ein geändertes Docker-Image per Push zu Ihrer georeplizierten Azure Container Registry. Betrachten Sie dann die automatische Bereitstellung der Änderungen für Web-Apps, die in mehreren Regionen ausgeführt werden. Dieses Tutorial ist der dritte Teil einer dreiteiligen Reihe.
+title: 'Tutorial: Übertragen des aktualisierten Containerimages per Push an regionale Azure-App-Bereitstellungen'
+description: Übertragen Sie ein geändertes Docker-Image per Push an Ihre georeplizierte Azure-Containerregistrierung. Anschließend werden die Änderungen automatisch für Web-Apps bereitgestellt, die in mehreren Regionen ausgeführt werden. Dieses Tutorial ist der dritte Teil einer dreiteiligen Reihe.
 services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: tutorial
 ms.date: 04/30/2018
 ms.author: danlep
-ms.custom: mvc
-ms.openlocfilehash: 96e46c84039b7c72d5419972c7a5a401eab64659
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.custom: seodec18, mvc
+ms.openlocfilehash: d9faa89d33dde7da35ad4490b78b9a1d023274ae
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48855509"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53256620"
 ---
-# <a name="tutorial-push-an-updated-image-to-regional-deployments"></a>Tutorial: Pushübertragung eines aktualisierten Images an regionale Bereitstellungen
+# <a name="tutorial-push-an-updated-container-image-to-a-geo-replicated-container-registry-for-regional-web-app-deployments"></a>Tutorial: Übertragen eines aktualisierten Containerimages per Push an eine georeplizierte Containerregistrierung für regionale Web-App-Bereitstellungen
 
 Dies ist der dritte Teil eines dreiteiligen Tutorials. Im [vorherigen Tutorial](container-registry-tutorial-deploy-app.md) war die Georeplikation für zwei verschiedene regionale Web-App-Bereitstellungen konfiguriert. In diesem Tutorial ändern Sie zuerst die Anwendung, erstellen dann ein neues Containerimage und übertragen es per Push an Ihre georeplizierte Registrierung. Abschließend überprüfen Sie die Änderung, die automatisch von Webhooks der Azure Container Registry bereitgestellt wird, in beiden Web-App-Instanzen.
 

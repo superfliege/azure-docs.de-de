@@ -1,6 +1,6 @@
 ---
 title: In dieser Schnellstartanleitung erfahren Sie, wie Sie ein simuliertes X.509-Gerät für Azure IoT Hub mithilfe von C bereitstellen | Microsoft-Dokumentation
-description: In dieser Schnellstartanleitung werden einzelne Registrierungen verwendet. In dieser Schnellstartanleitung erstellen Sie ein simuliertes X.509-Gerät mithilfe des C-Geräte-SDK für Azure IoT Hub Device Provisioning Service und stellen es bereit.
+description: In dieser Schnellstartanleitung werden individuelle Registrierungen verwendet. In dieser Schnellstartanleitung erstellen Sie ein simuliertes X.509-Gerät mithilfe des C-Geräte-SDK für Azure IoT Hub Device Provisioning Service und stellen es bereit.
 author: wesmc7777
 ms.author: wesmc
 ms.date: 07/16/2018
@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 8b7848392ebd8ec44dcf646b13911aaafe905ae3
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 16942e183152720dc958b6c0ccecde1dee2e5cde
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50158913"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53185170"
 ---
 # <a name="quickstart-provision-an-x509-simulated-device-using-the-azure-iot-c-sdk"></a>Schnellstart: Bereitstellen eines simulierten X.509-Geräts mithilfe des Azure IoT C SDK
 
@@ -25,8 +25,8 @@ In dieser Schnellstartanleitung erfahren Sie, wie Sie einen X.509-Gerätesimulat
 Sollten Sie mit der automatischen Bereitstellung nicht vertraut sein, lesen Sie die Informationen unter [Konzepte für die automatische Bereitstellung](concepts-auto-provisioning.md). Vergewissern Sie sich außerdem, dass Sie die Schritte unter [Einrichten des IoT Hub Device Provisioning-Diensts über das Azure-Portal](./quick-setup-auto-provision.md) ausgeführt haben, bevor Sie mit dieser Schnellstartanleitung fortfahren. 
 
 In Azure IoT Device Provisioning Service werden zwei Registrierungsarten unterstützt:
-- [Registrierungsgruppen:](concepts-service.md#enrollment-group) Für die Registrierung mehrerer verbundener Geräte
-- [Individuelle Registrierung:](concepts-service.md#individual-enrollment) Für die Registrierung eines einzelnen Geräts
+- [Registrierungsgruppen:](concepts-service.md#enrollment-group) Werden zum Registrieren mehrerer verwandter Geräte verwendet.
+- [Individuelle Registrierungen](concepts-service.md#individual-enrollment): Werden zum Registrieren eines einzelnen Geräts verwendet.
 
 In diesem Artikel werden individuelle Registrierungen veranschaulicht.
 
@@ -53,7 +53,7 @@ In diesem Abschnitt bereiten Sie eine Entwicklungsumgebung vor, die zum Erstelle
     True
     ```
     
-    Zum Zeitpunkt der Erstellung dieses Artikels wurden auf der Website von CMake die folgenden Hashwerte für Version 3.11.4 aufgeführt:
+    Zum Zeitpunkt der Abfassung dieses Artikels waren auf der Website von CMake die folgenden Hashwerte für Version 3.11.4 aufgeführt:
 
     ```
     6dab016a6b82082b8bcd0f4d1e53418d6372015dd983d29367b9153f1a376435  cmake-3.11.4-Linux-x86_64.tar.gz
@@ -79,7 +79,7 @@ In diesem Abschnitt bereiten Sie eine Entwicklungsumgebung vor, die zum Erstelle
     cd cmake
     ```
 
-4. Das Codebeispiel verwendet ein X.509-Zertifikat für den Nachweis mittels X.509-Authentifizierung. Erstellen Sie mithilfe des folgenden Befehls eine spezifische SDK-Version für Ihre Entwicklungsclientplattform. Im `cmake`-Verzeichnis wird eine Visual Studio-Projektmappe für das simulierte Gerät generiert. 
+4. Das Codebeispiel verwendet ein X.509-Zertifikat für den Nachweis mittels X.509-Authentifizierung. Erstellen Sie mithilfe des folgenden Befehls eine spezifische SDK-Version für Ihre Entwicklungsclientplattform: Im `cmake`-Verzeichnis wird eine Visual Studio-Projektmappe für das simulierte Gerät generiert. 
 
     ```cmd
     cmake -Duse_prov_client:BOOL=ON ..
@@ -137,13 +137,13 @@ Sie verwenden Beispielcode aus dem Azure IoT C SDK, um das Zertifikat zu erstell
 
 3. Geben Sie unter **Registrierung hinzufügen** die folgenden Informationen ein, und klicken Sie auf die Schaltfläche **Speichern**.
 
-    - **Mechanismus:** Wählen Sie **X.509** als *Mechanismus* für den Nachweis der Identität.
-    - **PEM- oder CER-Datei des primären Zertifikats:** Klicken Sie auf **Datei auswählen**, und wählen Sie die zuvor erstellte Zertifikatdatei „X509testcert.pem“ aus.
-    - **IoT Hub-Geräte-ID:** Geben Sie **test-docs-cert-device** ein, um dem Gerät eine ID zuzuweisen.
+    - **Mechanismus**: Wählen Sie **X.509** als *Mechanismus* für den Nachweis der Identität.
+    - **Primäres Zertifikat (PEM- oder CER-Datei)**: Klicken Sie auf **Datei auswählen**, und wählen Sie die zuvor erstellte Zertifikatdatei „X509testcert.pem“ aus.
+    - **IoT Hub-Geräte-ID**: Geben Sie **test-docs-cert-device** ein, um dem Gerät eine ID zuzuweisen.
 
-    [![Hinzufügen einer individuellen Registrierung für den X.509-Nachweis im Portal](./media/quick-create-simulated-device-x509/device-enrollment.png)](./media/quick-create-simulated-device-x509/device-enrollment.png#lightbox)
+      [![Hinzufügen einer individuellen Registrierung für den X.509-Nachweis im Portal](./media/quick-create-simulated-device-x509/device-enrollment.png)](./media/quick-create-simulated-device-x509/device-enrollment.png#lightbox)
 
-    Nach der erfolgreichen Registrierung wird Ihr X.509-Gerät als **riot-device-cert**auf der Registerkarte *Individuelle Registrierungen* in der Spalte *Registrierungs-ID* angezeigt. 
+      Nach der erfolgreichen Registrierung wird Ihr X.509-Gerät als **riot-device-cert**auf der Registerkarte *Individuelle Registrierungen* in der Spalte *Registrierungs-ID* angezeigt. 
 
 
 
@@ -155,7 +155,7 @@ Aktualisieren Sie in diesem Abschnitt den Beispielcode, um die Startsequenz des 
 
 
 
-1. Navigieren Sie im Azure-Portal zur Registerkarte **Übersicht** für Ihren Device Provisioning-Dienst, und notieren Sie sich den Wert unter **_ID-Bereich_**.
+1. Navigieren Sie im Azure-Portal zur Registerkarte **Übersicht** für Ihren Device Provisioning Service, und notieren Sie sich den Wert unter **_ID-Bereich_**.
 
     ![Extrahieren von Informationen zum Device Provisioning Service-Endpunkt aus dem Portalblatt](./media/quick-create-simulated-device-x509/extract-dps-endpoints.png) 
 

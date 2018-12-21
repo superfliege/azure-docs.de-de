@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Erfassen von Daten mit der Azure-Daten-Explorer-Bibliothek für Node'
+title: 'Schnellstart: Erfassen von Daten mit der Azure Data Explorer-Bibliothek für Node'
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie mit Node.js Daten in Azure Data Explorer erfassen (laden).
 services: data-explorer
 author: orspod
@@ -8,14 +8,14 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 10/25/2018
-ms.openlocfilehash: fa322ee685d09717ac5b98398d4d1d61de2be1e9
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: c638369efc89ca4442b69c9337827fe3872fd197
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51706625"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53085959"
 ---
-# <a name="quickstart-ingest-data-using-the-azure-data-explorer-node-library"></a>Schnellstart: Erfassen von Daten mit der Azure-Daten-Explorer-Bibliothek für Node
+# <a name="quickstart-ingest-data-using-the-azure-data-explorer-node-library"></a>Schnellstart: Erfassen von Daten mit der Azure Data Explorer-Bibliothek für Node
 
 Azure-Daten-Explorer ist ein schneller und hochgradig skalierbarer Dienst zur Untersuchung von Daten (Protokoll- und Telemetriedaten). Azure Data Explorer bietet zwei Clientbibliotheken für Node: eine [Erfassungsbibliothek](https://github.com/Azure/azure-kusto-node/tree/master/azure-kusto-ingest) und eine [Datenbibliothek](https://github.com/Azure/azure-kusto-node/tree/master/azure-kusto-data). Mit diesen Bibliotheken können Sie über Ihren Code Daten in einem Cluster erfassen (laden) und Daten abfragen. In diesem Schnellstart erstellen Sie zunächst eine Tabelle und eine Datenzuordnung in einem Testcluster. Anschließend stellen Sie die Erfassung im Cluster in eine Warteschlange und überprüfen die Ergebnisse.
 
@@ -54,8 +54,8 @@ Legen Sie vor dem Ausführen dieses Codes die Werte für `authorityId`, `kustoUr
 ```javascript
 const authorityId = "<TenantId>";
 const kustoUri = "https://<ClusterName>.<Region>.kusto.windows.net:443/";
-const kustoIngestUri = "https://ingest-<ClusterName>.<Region>.kusto.windows.net:443/"
-const kustoDatabase  = "<DatabaseName>"
+const kustoIngestUri = "https://ingest-<ClusterName>.<Region>.kusto.windows.net:443/";
+const kustoDatabase  = "<DatabaseName>";
 ```
 
 Erstellen Sie nun die Verbindungszeichenfolge. In diesem Beispiel wird die Geräteauthentifizierung zum Zugreifen auf den Cluster verwendet. Sie können auch das Azure Active Directory-Anwendungszertifikat, den Anwendungsschlüssel und den Benutzer mit dem zugehörigen Kennwort verwenden.
@@ -64,9 +64,7 @@ Sie erstellen die Zieltabelle und die Zuordnung in einem späteren Schritt.
 
 ```javascript
 const kcsbIngest = KustoConnectionStringBuilder.withAadDeviceAuthentication(kustoIngestUri, authorityId);
-
 const kcsbData = KustoConnectionStringBuilder.withAadDeviceAuthentication(kustoUri, authorityId);
-
 const destTable = "StormEvents";
 const destTableMapping = "StormEvents_CSV_Mapping";
 ```
@@ -81,20 +79,19 @@ from azure.kusto.ingest import KustoIngestClient, IngestionProperties, FileDescr
 
 const container = "samplefiles";
 const account = "kustosamplefiles";
-const sas = "?st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D"
+const sas = "?st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D";
 const filePath = "StormEvents.csv";
-const fileSize = 64158321    # in bytes
-
-const blobPath = `https://${account}.blob.core.windows.net/${container}/${filePath}${sas}";
+const fileSize = 64158321; // in bytes
+const blobPath = `https://${account}.blob.core.windows.net/${container}/${filePath}${sas}`;
 ```
 
 ## <a name="create-a-table-on-your-test-cluster"></a>Erstellen einer Tabelle im Testcluster
 
-Erstellen Sie eine Tabelle, die dem Schema der Daten in der Datei `StormEvents.csv` entspricht. Wenn dieser Code ausgeführt wird, gibt er eine Meldung wie die folgende zurück: *Verwenden Sie zum Anmelden einen Webbrowser, um die Seite https://microsoft.com/devicelogin zu öffnen, und geben Sie den Code XXXXXXXXX ein, um sich zu authentifizieren*. Befolgen Sie die Schritte für die Anmeldung, und kehren Sie dann zurück, um den Codeblock auszuführen. Für nachfolgende Codeblöcke, die eine Verbindung herstellen, müssen Sie sich wieder anmelden.
+Erstellen Sie eine Tabelle, die dem Schema der Daten in der Datei `StormEvents.csv` entspricht. Wenn dieser Code ausgeführt wird, wird eine Meldung wie die folgende zurückgegeben: *Verwenden Sie zur Anmeldung einen Webbrowser, um die Seite https://microsoft.com/devicelogin zu öffnen. Geben Sie dann zur Authentifizierung den Code XXXXXXXXX ein*. Befolgen Sie die Schritte für die Anmeldung, und kehren Sie dann zurück, um den Codeblock auszuführen. Für nachfolgende Codeblöcke, die eine Verbindung herstellen, müssen Sie sich wieder anmelden.
 
 ```javascript
 const kustoClient = new KustoClient(kcsbData);
-const createTableCommand = ".create table StormEvents (StartTime: datetime, EndTime: datetime, EpisodeId: int, EventId: int, State: string, EventType: string, InjuriesDirect: int, InjuriesIndirect: int, DeathsDirect: int, DeathsIndirect: int, DamageProperty: int, DamageCrops: int, Source: string, BeginLocation: string, EndLocation: string, BeginLat: real, BeginLon: real, EndLat: real, EndLon: real, EpisodeNarrative: string, EventNarrative: string, StormSummary: dynamic)"
+const createTableCommand = ".create table StormEvents (StartTime: datetime, EndTime: datetime, EpisodeId: int, EventId: int, State: string, EventType: string, InjuriesDirect: int, InjuriesIndirect: int, DeathsDirect: int, DeathsIndirect: int, DamageProperty: int, DamageCrops: int, Source: string, BeginLocation: string, EndLocation: string, BeginLat: real, BeginLon: real, EndLat: real, EndLon: real, EpisodeNarrative: string, EventNarrative: string, StormSummary: dynamic)";
 
 kustoClient.executeMgmt(kustoDatabase, createTableCommand, (err, results) => {
     console.log(result.primaryResults[0]);

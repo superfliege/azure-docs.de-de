@@ -1,14 +1,11 @@
 ---
-title: Tutorial – Durchführen eines Lastenausgleichs für virtuelle Computer innerhalb einer Zone – Azure-Portal | Microsoft-Dokumentation
+title: 'Tutorial: Lastenausgleich für virtuelle Computer innerhalb einer Zone – Azure-Portal'
+titlesuffix: Azure Load Balancer
 description: In diesem Tutorial wird gezeigt, wie Sie einen Load Balancer Standard mit einem zonalen Front-End erstellen, um mit dem Azure-Portal einen Lastenausgleich für virtuelle Computer innerhalb einer Verfügbarkeitszone vorzunehmen.
 services: load-balancer
 documentationcenter: na
 author: KumudD
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
 Customer intent: As an IT administrator, I want to create a load balancer that load balances incoming internet traffic to virtual machines within a specific zone in a region.
-ms.assetid: ''
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: tutorial
@@ -16,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/17/2018
 ms.author: kumud
-ms.custom: mvc
-ms.openlocfilehash: 580015b7f8b1f894c69ddec0f26daeb524932e4b
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.custom: seodec18
+ms.openlocfilehash: dd4600d77373894cdc9d6225ae008a8bd677fb59
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34637292"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53262094"
 ---
-# <a name="tutorial-load-balance-vms-within-an-availability-zone-with-standard-load-balancer-by-using-the-azure-portal"></a>Tutorial: Durchführen eines Lastenausgleichs für virtuelle Computer innerhalb einer Verfügbarkeitszone mit einem Load Balancer Standard im Azure-Portal
+# <a name="tutorial-load-balance-vms-within-an-availability-zone-with-standard-load-balancer-by-using-the-azure-portal"></a>Tutorial: Durchführen eines Lastenausgleichs für virtuelle Computer innerhalb einer Verfügbarkeitszone mit Load Balancer Standard im Azure-Portal
 
 In diesem Tutorial wird mit dem Azure-Portal eine öffentliche [Azure Load Balancer Standard-Instanz](https://aka.ms/azureloadbalancerstandard) mit einem Zonen-Front-End erstellt, für das eine öffentliche Standard-IP-Adresse verwendet wird. In diesem Szenario können Sie auch eine bestimmte Zone für Ihre Front-End- und Back-End-Instanzen angeben, um Ihren Datenpfad und Ihre Ressourcen mit einer bestimmten Zone zu verbinden. Sie erfahren, wie Sie die folgenden Funktionen durchführen:
 
@@ -53,7 +50,7 @@ Für Load Balancer Standard wird nur eine öffentliche Standard-IP-Adresse unter
 2. Geben Sie auf der Seite **Lastenausgleich erstellen** folgende Werte für den Lastenausgleich ein:
     - **myLoadBalancer**: Der Name für den Lastenausgleich.
     - **Öffentlich**: Der Typ des Lastenausgleichs.
-     - **myPublicIPZonal**: Die neue öffentliche IP-Adresse, die Sie erstellen. Wählen Sie **Öffentliche IP-Adresse auswählen**. Klicken Sie anschließend auf **Neu erstellen**. Geben Sie **myPublicIP** als Namen ein. Für die SKU wird standardmäßig „Standard“ verwendet. Wählen Sie für **Verfügbarkeitszone** die Option **Zone 1**.
+      - **myPublicIPZonal**: Die neue öffentliche IP-Adresse, die Sie erstellen. Wählen Sie **Öffentliche IP-Adresse auswählen**. Klicken Sie anschließend auf **Neu erstellen**. Geben Sie **myPublicIP** als Namen ein. Für die SKU wird standardmäßig „Standard“ verwendet. Wählen Sie für **Verfügbarkeitszone** die Option **Zone 1**.
     - **myResourceGroupZLB**: Der Name der neuen Ressourcengruppe, die Sie erstellen.
     - **westeurope**. Dies ist der Standort.
 3. Wählen Sie **Erstellen**, um den Lastenausgleich zu erstellen.
@@ -81,7 +78,7 @@ In diesem Abschnitt erstellen Sie ein virtuelles Netzwerk. Außerdem erstellen S
     - **myNetworkSecurityGroup**: Der Name der Netzwerksicherheitsgruppe.
     - **myResourceGroupLBAZ**: Der Name der vorhandenen Ressourcengruppe.
    
-    ![Erstellen einer Netzwerksicherheitsgruppe](./media/tutorial-load-balancer-standard-zonal-portal/create-network-security-group.png)
+     ![Erstellen einer Netzwerksicherheitsgruppe](./media/tutorial-load-balancer-standard-zonal-portal/create-network-security-group.png)
 
 ### <a name="create-nsg-rules"></a>Erstellen von NSG-Regeln
 
@@ -100,7 +97,7 @@ In diesem Abschnitt erstellen Sie über das Azure-Portal NSG-Regeln, um eingehen
     - **Allow HTTP** für **Beschreibung**
 4. Klicken Sie auf **OK**.
  
- ![Erstellen von NSG-Regeln](./media/load-balancer-standard-public-availability-zones-portal/8-load-balancer-nsg-rules.png)
+   ![Erstellen von NSG-Regeln](./media/load-balancer-standard-public-availability-zones-portal/8-load-balancer-nsg-rules.png)
 
 5. Wiederholen Sie die Schritte 2 bis 4, um eine weitere Regel mit dem Namen **myRDPRule** zu erstellen. Diese Regel ermöglicht eine eingehende RDP-Verbindung mit Verwendung von Port 3389 und den folgenden Werten:
     - **Service Tag** für **Quelle**
@@ -112,7 +109,7 @@ In diesem Abschnitt erstellen Sie über das Azure-Portal NSG-Regeln, um eingehen
     - **myRDPRule** für **Name**
     - **Allow RDP** für **Beschreibung**
 
-    ![Erstellen einer RDP-Regel](./media/tutorial-load-balancer-standard-zonal-portal/create-rdp-rule.png)
+      ![Erstellen einer RDP-Regel](./media/tutorial-load-balancer-standard-zonal-portal/create-rdp-rule.png)
 
 ### <a name="create-virtual-machines"></a>Erstellen von virtuellen Computern
 
@@ -134,7 +131,7 @@ In diesem Abschnitt erstellen Sie über das Azure-Portal NSG-Regeln, um eingehen
 
     ![Erstellen von virtuellen Computern](./media/tutorial-load-balancer-standard-zonal-portal/create-virtual-machine.png) 
 
-### <a name="install-iis-on-vms"></a>Installieren der IIS auf VMs
+### <a name="install-iis-on-vms"></a>Installieren von IIS auf VMs
 
 1. Wählen Sie im Menü ganz links die Option **Alle Ressourcen**. Wählen Sie anschließend in der Ressourcenliste die Option **myVM1**. Sie befindet sich unter der Ressourcengruppe **myResourceGroupZLB**.
 2. Wählen Sie auf der Seite **Übersicht** die Option **Verbinden**, um per RDP auf die VM zuzugreifen.
@@ -153,7 +150,7 @@ In diesem Abschnitt erstellen Sie über das Azure-Portal NSG-Regeln, um eingehen
 7. Schließen Sie die RDP-Sitzung mit **myVM1**.
 8. Wiederholen Sie die Schritte 1 bis 7 für die Installation von IIS auf **myVM2**.
 
-## <a name="create-load-balancer-resources"></a>Erstellen von Lastenausgleichsressourcen
+## <a name="create-load-balancer-resources"></a>Erstellen von Load Balancer-Ressourcen
 
 In diesem Abschnitt konfigurieren Sie die Load Balancer-Einstellungen für einen Back-End-Adresspool und einen Integritätstest. Außerdem geben Sie Regeln für den Lastenausgleich und die Netzwerkadressenübersetzung an.
 
@@ -220,5 +217,5 @@ Löschen Sie die Ressourcengruppe, den Lastenausgleich und alle dazugehörigen R
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Weitere Informationen zu [Standard Load Balancer](load-balancer-standard-overview.md).
+- Weitere Informationen finden Sie unter [Load Balancer Standard](load-balancer-standard-overview.md).
 - [Durchführen eines verfügbarkeitszonenübergreifenden Lastenausgleichs für virtuelle Computer](tutorial-load-balancer-standard-public-zone-redundant-portal.md)

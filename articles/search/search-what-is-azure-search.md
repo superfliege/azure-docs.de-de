@@ -1,6 +1,6 @@
 ---
-title: Was ist Azure Search? | Microsoft Docs
-description: Azure Search ist ein vollständig verwalteter, gehosteter Cloudsuchdienst. Weitere Informationen finden Sie in dieser Featureübersicht.
+title: Was ist der Azure Search-Dienst? – Azure Search
+description: Azure Search ist ein vollständig verwalteter, gehosteter Cloudsuchdienst. Lesen Sie Beschreibungen der Features, oder untersuchen Sie einen Entwicklungsworkflow, um zu erfahren, was Azure Search im Vergleich zu anderen Suchprodukten auszeichnet, und wie die ersten Schritte aussehen.
 manager: cgronlun
 author: HeidiSteen
 services: search
@@ -8,12 +8,13 @@ ms.service: search
 ms.topic: overview
 ms.date: 11/09/2018
 ms.author: heidist
-ms.openlocfilehash: 85a071017f4394f4ccde297fb229f7786d9249b3
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.custom: seodec2018
+ms.openlocfilehash: 81b9aef553b4cdc214fbcc681a2e5a91b833e6be
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52285134"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53313495"
 ---
 # <a name="what-is-azure-search"></a>Was ist Azure Search?
 Azure Search ist eine Search-as-a-Service-Cloudlösung, die Entwicklern APIs und Tools zum Hinzufügen von umfangreichen Suchfunktionen für private, heterogene Inhalte in Web- und Unternehmensanwendungen sowie in mobilen Anwendungen bietet. Die Abfrageausführung erfolgt über einen benutzerdefinierten Index.
@@ -51,7 +52,7 @@ Einen Azure Search-Dienst können Sie entweder über das [Azure-Portal](https://
 
 Durch getrenntes Verarbeiten von Dokumentspeicherung und Abfragedurchsatz können Sie Ressourcen auf Produktionsanforderungen basierend kalibrieren.
 
-### <a name="step-2-create-index"></a>Schritt 2: Erstellen des Indexes
+### <a name="step-2-create-index"></a>Schritt 2: Erstellen des Index
 Bevor Sie durchsuchbaren Inhalt hochladen können, müssen Sie einen Azure Search-Index definieren. Einen Index können Sie sich wie eine Datenbanktabelle vorstellen, die Ihre Daten enthält und Suchabfragen entgegennimmt. Sie definieren das zuzuordnende Indexschema, um die Struktur der Dokumente widerzuspiegeln, die Sie durchsuchen möchten (ähnlich wie bei Feldern in einer Datenbank).
 
 Ein Schema kann im Azure-Portal oder programmgesteuert mithilfe des [.NET SDK](search-howto-dotnet-sdk.md) oder der [REST-API](/rest/api/searchservice/) erstellt werden.
@@ -63,7 +64,7 @@ Das Pullmodell ruft Daten aus externen Datenquellen ab. Es wird durch *Indexer* 
 
 Das Pushmodell wird über das SDK oder die REST-APIs bereitgestellt, die zum Senden von aktualisierten Dokumenten an einen Index verwendet werden. Sie können Daten aus praktisch jedem Dataset mit JSON-Format übertragen. Anleitungen zum Laden von Daten finden Sie unter [Hinzufügen, Aktualisieren oder Löschen von Dokumenten](/rest/api/searchservice/addupdate-or-delete-documents) oder [Verwenden des .NET SDK](search-howto-dotnet-sdk.md).
 
-### <a name="step-4-search"></a>Schritt 4: Suchen
+### <a name="step-4-search"></a>Schritt 4: Suchen,
 Nach dem Füllen eines Indexes können Sie über einfache HTTP-Anforderungen mit REST-API oder dem .NET-SDK [Suchabfragen](/rest/api/searchservice/Search-Documents) an Ihren Dienstendpunkt richten.
 
 ## <a name="how-it-compares"></a>Im Vergleich
@@ -105,7 +106,7 @@ Azure-Abonnenten können [einen Dienst im Free-Tarif bereitstellen](search-creat
 
 Wenn Sie kein Abonnent sind, können Sie [ein kostenloses Azure-Konto eröffnen](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F). Sie erhalten Gutschriften zum Testen kostenpflichtiger Azure-Dienste. Wenn das Guthaben aufgebraucht ist, können Sie das Konto behalten und weiterhin [kostenlose Azure-Dienste](https://azure.microsoft.com/free/) nutzen. Ihre Kreditkarte wird nur dann belastet, wenn Sie Ihre Einstellungen explizit ändern und mit der Berechnung von Gebühren einverstanden sind.
 
-Alternativ können Sie Ihre [Vorteile für MSDN-Abonnenten aktivieren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F): Ihr MSDN-Abonnement beinhaltet ein monatliches Guthaben, das Sie für zahlungspflichtige Azure-Dienste verwenden können. 
+Alternativ dazu können Sie Ihre [Vorteile für MSDN-Abonnenten aktivieren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F): Ihr MSDN-Abonnement beinhaltet ein monatliches Guthaben, das Sie für zahlungspflichtige Azure-Dienste verwenden können. 
 
 ## <a name="how-to-get-started"></a>Erste Schritte
 

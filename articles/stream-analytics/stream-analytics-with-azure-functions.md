@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.date: 04/09/2018
 ms.author: mamccrea
 ms.reviewer: jasonh
-ms.openlocfilehash: 0a187bbc476738294e2f7f31de4e11ea92e604f9
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: 6a89333f32fb4ccc8fc4d4710266157fca16fe02
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50977993"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53164159"
 ---
 # <a name="run-azure-functions-from-azure-stream-analytics-jobs"></a>Ausführen von Azure Functions in Azure Stream Analytics-Aufträgen 
 
@@ -35,34 +35,34 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="configure-a-stream-analytics-job-to-run-a-function"></a>Konfigurieren eines Stream Analytics-Auftrags zum Ausführen einer Funktion 
 
-Dieser Abschnitt veranschaulicht das Konfigurieren eines Stream Analytics-Auftrags zum Ausführen einer Funktion, die Daten in Azure Redis Cache schreibt. Der Stream Analytics-Auftrag liest Ereignisse aus Azure Event Hubs und führt eine Abfrage aus, die die Funktion aufruft. Diese Funktion liest Daten aus dem Stream Analytics-Auftrag und schreibt sie in Azure Redis Cache.
+Dieser Abschnitt veranschaulicht das Konfigurieren eines Stream Analytics-Auftrags zum Ausführen einer Funktion, die Daten in Azure Cache for Redis schreibt. Der Stream Analytics-Auftrag liest Ereignisse aus Azure Event Hubs und führt eine Abfrage aus, die die Funktion aufruft. Diese Funktion liest Daten aus dem Stream Analytics-Auftrag und schreibt sie in Azure Cache for Redis.
 
 ![Diagramm der Beziehungen zwischen den Azure-Diensten](./media/stream-analytics-with-azure-functions/image1.png)
 
 Die folgenden Schritte sind für diese Aufgabe erforderlich:
 * [Erstellen eines Stream Analytics-Auftrags mit Event Hubs als Eingabe](#create-a-stream-analytics-job-with-event-hubs-as-input)  
-* [Erstellen einer Azure Redis Cache-Instanz](#create-an-azure-redis-cache-instance)  
-* [Erstellen einer Funktion in Azure Functions, die Daten in Azure Redis Cache schreiben kann](#create-a-function-in-azure-functions-that-can-write-data-to-azure-redis-cache)    
+* [Erstellen einer Azure Cache for Redis-Instanz](#create-an-azure-redis-cache-instance)  
+* [Erstellen einer Funktion in Azure Functions, die Daten in Azure Cache for Redis schreiben kann](#create-a-function-in-azure-functions-that-can-write-data-to-azure-redis-cache)    
 * [Aktualisieren des Stream Analytics-Auftrags mit der Funktion als Ausgabe](#update-the-stream-analytics-job-with-the-function-as-output)  
-* [Überprüfen der Ergebnisse in Azure Redis Cache](#check-azure-redis-cache-for-results)  
+* [Überprüfen der Ergebnisse in Azure Cache for Redis](#check-azure-redis-cache-for-results)  
 
 ## <a name="create-a-stream-analytics-job-with-event-hubs-as-input"></a>Erstellen eines Stream Analytics-Auftrags mit Event Hubs als Eingabe
 
 Führen Sie das Tutorial zur [Betrugserkennung in Echtzeit](stream-analytics-real-time-fraud-detection.md) aus, um einen Event Hub zu erstellen, die Ereignisgenerator-Anwendung zu starten und einen Stream Analytics-Auftrag zu erstellen. (Überspringen Sie die Schritte zum Erstellen der Abfrage und der Ausgabe. Sehen Sie sich stattdessen die folgenden Abschnitte zum Einrichten der Functions-Ausgabe an.)
 
-## <a name="create-an-azure-redis-cache-instance"></a>Erstellen einer Azure Redis Cache-Instanz
+## <a name="create-an-azure-cache-for-redis-instance"></a>Erstellen einer Azure Cache for Redis-Instanz
 
-1. Erstellen Sie anhand der Schritte in [Erstellen eines Caches](../redis-cache/cache-dotnet-how-to-use-azure-redis-cache.md#create-a-cache) einen Cache in Azure Redis Cache.  
+1. Erstellen Sie anhand der Schritte in [Erstellen eines Caches](../azure-cache-for-redis/cache-dotnet-how-to-use-azure-redis-cache.md#create-a-cache) einen Cache in Azure Cache for Redis.  
 
 2. Wählen Sie nach der Erstellung des Caches unter **Einstellungen** die Option **Zugriffsschlüssel** aus. Notieren Sie sich die **Primäre Verbindungszeichenfolge**.
 
-   ![Screenshot der Azure Redis Cache-Verbindungszeichenfolge](./media/stream-analytics-with-azure-functions/image2.png)
+   ![Screenshot der Azure Cache for Redis-Verbindungszeichenfolge](./media/stream-analytics-with-azure-functions/image2.png)
 
-## <a name="create-a-function-in-azure-functions-that-can-write-data-to-azure-redis-cache"></a>Erstellen einer Funktion in Azure Functions, die Daten in Azure Redis Cache schreiben kann
+## <a name="create-a-function-in-azure-functions-that-can-write-data-to-azure-cache-for-redis"></a>Erstellen einer Funktion in Azure Functions, die Daten in Azure Cache for Redis schreiben kann
 
 1. Lesen Sie den Abschnitt [Erstellen einer Funktions-App](../azure-functions/functions-create-first-azure-function.md#create-a-function-app) in der Dokumentation zu Functions. Dort finden Sie die Schritte zum Erstellen einer Funktions-App und einer [Funktion in Azure Functions mit Auslösung per HTTP](../azure-functions/functions-create-first-azure-function.md#create-function) mithilfe der Sprache C#.  
 
-2. Navigieren Sie zu der Funktion **run.csx**. Aktualisieren Sie sie mit dem folgenden Code. (Ersetzen Sie unbedingt „\<your redis cache connection string goes here\>“ durch die primäre Verbindungszeichenfolge von Azure Redis Cache, die Sie im vorherigen Abschnitt abgerufen haben.)  
+2. Navigieren Sie zu der Funktion **run.csx**. Aktualisieren Sie sie mit dem folgenden Code. (Ersetzen Sie unbedingt „\<your Azure Cache for Redis connection string goes here\>“ durch die primäre Verbindungszeichenfolge von Azure Cache for Redis, die Sie im vorherigen Abschnitt abgerufen haben.)  
 
    ```csharp
    using System;
@@ -85,7 +85,7 @@ Führen Sie das Tutorial zur [Betrugserkennung in Echtzeit](stream-analytics-rea
       {        
          return new HttpResponseMessage(HttpStatusCode.RequestEntityTooLarge);
       }
-      var connection = ConnectionMultiplexer.Connect("<your redis cache connection string goes here>");
+      var connection = ConnectionMultiplexer.Connect("<your Azure Cache for Redis connection string goes here>");
       log.Info($"Connection string.. {connection}");
     
       // Connection refers to a property that returns a ConnectionMultiplexer
@@ -185,17 +185,17 @@ Führen Sie das Tutorial zur [Betrugserkennung in Echtzeit](stream-analytics-rea
     
 6.  Starten des Stream Analytics-Auftrags
 
-## <a name="check-azure-redis-cache-for-results"></a>Überprüfen der Ergebnisse in Azure Redis Cache
+## <a name="check-azure-cache-for-redis-for-results"></a>Überprüfen der Ergebnisse in Azure Cache for Redis
 
-1. Browsen Sie zum Azure-Portal, und suchen Sie Ihre Azure Redis Cache-Instanz. Wählen Sie **Konsole** aus.  
+1. Browsen Sie zum Azure-Portal, und suchen Sie Ihre Azure Cache for Redis-Instanz. Wählen Sie **Konsole** aus.  
 
-2. Vergewissern Sie sich mithilfe von [Redis Cache-Befehlen](https://redis.io/commands), dass Ihre Daten in Redis Cache enthalten sind. (Der Befehl weist das Format „Get {Schlüssel}“ auf.) Beispiel: 
+2. Überprüfen Sie mit [Azure Cache for Redis-Befehlen](https://redis.io/commands), ob Ihre Daten sich in Azure Cache for Redis befinden. (Der Befehl weist das Format „Get {Schlüssel}“ auf.) Beispiel: 
 
    **Get "12/19/2017 21:32:24 - 123414732"**
 
    Dieser Befehl sollte den Wert für den angegebenen Schlüssel ausgeben:
 
-   ![Screenshot der Azure Redis Cache-Ausgabe](./media/stream-analytics-with-azure-functions/image5.png)
+   ![Screenshot der Azure Cache for Redis-Ausgabe](./media/stream-analytics-with-azure-functions/image5.png)
    
 ## <a name="error-handling-and-retries"></a>Fehlerbehandlung und Wiederholungsversuche
 Falls beim Senden von Ereignissen an Azure Functions ein Fehler auftritt, versucht Stream Analytics erneut, den Vorgang erfolgreich abzuschließen. Es gibt jedoch einige Fehler, für die keine Wiederholungsversuche ausgeführt werden:
@@ -207,6 +207,8 @@ Falls beim Senden von Ereignissen an Azure Functions ein Fehler auftritt, versuc
 ## <a name="known-issues"></a>Bekannte Probleme
 
 Wenn Sie im Azure-Portal versuchen, die Werte für die maximal zulässige Batchgröße oder die maximal zulässige Batchanzahl auf einen leeren Wert (Standard) zurückzusetzen, ändert sich der Wert beim Speichern in den zuvor eingegebenen Wert. Geben Sie in diesem Fall die Standardwerte für diese Felder manuell ein.
+
+Die Verwendung von [HTTP-Routing](https://docs.microsoft.com/sandbox/functions-recipes/routes?tabs=csharp) für Ihre Azure Functions wird derzeit nicht von Stream Analytics unterstützt.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

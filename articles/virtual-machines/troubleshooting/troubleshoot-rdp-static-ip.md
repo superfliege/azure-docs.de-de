@@ -13,21 +13,21 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/08/2018
 ms.author: genli
-ms.openlocfilehash: c219b2fb58d46d9280ef5c022140e0499e3ac54c
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: 81a3064290e0aa720a4fe6b0fa0d8eb13cfe6903
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51347480"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53141797"
 ---
 #  <a name="cannot-remote-desktop-to-azure-virtual-machines-because-of-static-ip"></a>Remotedesktopverbindung mit Azure Virtual Machines aufgrund einer statischen IP-Adresse nicht möglich
 
 In diesem Artikel wird ein Problem beschrieben, bei dem Sie keine Remotedesktopverbindung mit Azure Windows Virtual Machines (VMs) herstellen können, nachdem auf der VM eine statische IP-Adresse konfiguriert wurde.
 
-> [!NOTE] 
-> Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Ressourcen-Manager und klassische Bereitstellungen](../../azure-resource-manager/resource-manager-deployment-model.md). Dieser Artikel behandelt die Verwendung des Resource Manager-Bereitstellungsmodells, das anstelle des klassischen Bereitstellungsmodells für neue Bereitstellungen empfohlen wird. 
+> [!NOTE]
+> Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Resource Manager-Bereitstellungen und klassische Bereitstellungen](../../azure-resource-manager/resource-manager-deployment-model.md). Dieser Artikel behandelt die Verwendung des Resource Manager-Bereitstellungsmodells, das anstelle des klassischen Bereitstellungsmodells für neue Bereitstellungen empfohlen wird.
 
-## <a name="symptoms"></a>Symptome 
+## <a name="symptoms"></a>Symptome
 
 Wenn Sie eine RDP-Verbindung mit einer VM in Azure herstellen, erhalten Sie die folgende Fehlermeldung:
 
@@ -47,7 +47,7 @@ Im Screenshot im Azure-Portal unter [Startdiagnose](../troubleshooting/boot-diag
 
 Die VM verfügt über eine statische IP-Adresse, die auf der Netzwerkschnittstelle in Windows definiert wird. Diese IP-Adresse unterscheidet sich von der Adresse, die im Azure-Portal definiert ist.
 
-## <a name="solution"></a>Lösung 
+## <a name="solution"></a>Lösung
 
 Erstellen Sie eine Momentaufnahme des Betriebssystemdatenträgers des betroffenen virtuellen Computers als Sicherung, bevor Sie die unten angegebenen Schritte ausführen. Weitere Informationen finden Sie unter [Erstellen einer Momentaufnahme eines Datenträgers](../windows/snapshot-copy-managed-disk.md).
 
@@ -55,7 +55,7 @@ Verwenden Sie zum Beheben dieses Problems die serielle Konsole, um DHCP zu aktiv
 
 ### <a name="use-serial-control"></a>Verwenden der seriellen Konsole
 
-1. Stellen Sie eine Verbindung mit der [seriellen Konsole her, und öffnen Sie eine CMD-Instanz](./serial-console-windows.md#open-cmd-or-powershell-in-serial-console
+1. Stellen Sie eine Verbindung mit der [seriellen Konsole her, und öffnen Sie eine CMD-Instanz](./serial-console-windows.md#use-cmd-or-powershell-in-serial-console
 ). Wenn die serielle Konsole auf Ihrer VM nicht aktiviert ist, helfen Ihnen die Informationen unter [Zurücksetzen der Netzwerkschnittstelle](reset-network-interface.md) weiter.
 2. Überprüfen Sie, ob DHCP für die Netzwerkschnittstelle deaktiviert ist:
 
@@ -63,7 +63,7 @@ Verwenden Sie zum Beheben dieses Problems die serielle Konsole, um DHCP zu aktiv
 3. Wenn DHCP deaktiviert ist, sollten Sie die Konfiguration Ihrer Netzwerkschnittstelle so ändern, dass DHCP verwendet wird:
 
         netsh interface ip set address name="<NIC Name>" source=dhc
-        
+
     Führen Sie beispielsweise den folgenden Befehl aus, wenn die Netzwerkschnittstelle den Namen „Ethernet 2“ hat:
 
         netsh interface ip set address name="Ethernet 2" source=dhc

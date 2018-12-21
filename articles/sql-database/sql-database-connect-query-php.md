@@ -11,12 +11,12 @@ ms.author: carlrab
 ms.reviewer: v-masebo
 manager: craigg
 ms.date: 11/28/2018
-ms.openlocfilehash: be3ac9fab6c89c65ad9673811e108cefe2c80d00
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: b768b50af7ad6736e5cc3c885e6ac5016976f48a
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52724246"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52958541"
 ---
 # <a name="quickstart-use-php-to-query-an-azure-sql-database"></a>Schnellstart: Abfragen einer Azure SQL-Datenbank mithilfe von PHP
 
@@ -32,9 +32,9 @@ Stellen Sie vor dem Ausführen dieses Beispiels sicher, dass die folgenden erfor
 
 - PHP-Software für Ihr Betriebssystem:
 
-    - **MacOS:** Installieren Sie Homebrew und PHP, den ODBC-Treiber und SQLCMD und anschließend den PHP-Treiber für SQL Server. Weitere Informationen finden Sie unter [Schritt 1.2, 1.3 und 2.1](https://www.microsoft.com/sql-server/developer-get-started/php/mac/).
+    - **MacOS**: Installieren Sie PHP, den ODBC-Treiber und dann den PHP-Treiber für SQL Server. Siehe [Schritt 1, 2 und 3](/sql/connect/php/installation-tutorial-linux-mac).
 
-    - **Ubuntu:** Installieren Sie PHP und andere erforderliche Pakete, und installieren Sie anschließend den PHP-Treiber für SQL Server. Weitere Informationen finden Sie unter [Schritt 1.2 und 2.1](https://www.microsoft.com/sql-server/developer-get-started/php/ubuntu/).
+    - **Linux**: Installieren Sie PHP, den ODBC-Treiber und dann den PHP-Treiber für SQL Server. Siehe [Schritt 1, 2 und 3](/sql/connect/php/installation-tutorial-linux-mac).
 
     - **Windows:** Installieren Sie PHP für IIS Express und Chocolatey und anschließend den ODBC-Treiber und SQLCMD. Weitere Informationen finden Sie unter [Schritt 1.2 und 1.3](https://www.microsoft.com/sql-server/developer-get-started/php/windows/).
 
@@ -91,4 +91,4 @@ Stellen Sie vor dem Ausführen dieses Beispiels sicher, dass die folgenden erfor
 
 - [Seite für Problemmeldungen und Fragen](https://github.com/Microsoft/msphpsql/issues)
 
-- [Beispiel für Wiederholungslogik: Herstellen robuster Verbindungen mit SQL mit PHP](/sql/connect/php/step-4-connect-resiliently-to-sql-with-php)
+- [Beispiel für eine Wiederholungslogik: Herstellen robuster Verbindungen mit SQL mit PHP](/sql/connect/php/step-4-connect-resiliently-to-sql-with-php)

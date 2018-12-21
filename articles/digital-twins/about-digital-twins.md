@@ -3,18 +3,18 @@ title: Übersicht über Azure Digital Twins | Microsoft-Dokumentation
 description: Hier finden Sie weitere Informationen zu Azure Digital Twins – einer Azure IoT-Lösung für Raumintelligenz.
 author: julieseto
 ms.author: jseto
-ms.date: 10/10/2018
+ms.date: 12/14/2018
 ms.topic: overview
 ms.service: digital-twins
 services: digital-twins
 manager: bertvanhoof
 ms.custom: mvc
-ms.openlocfilehash: 84f329c0a97d0f79a5f612fb3054b82a182e4da9
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: 2848f9ce97c2bdad59d86031c5894219875b6059
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51287369"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53437111"
 ---
 # <a name="overview-of-azure-digital-twins"></a>Übersicht über Azure Digital Twins
 
@@ -27,12 +27,12 @@ Mit Azure Digital Twins lassen sich Daten aus einem physischen Bereich abfragen 
 - Optimieren der Verwendung der verfügbaren Fläche für ein Büro
 
 Der Anwendungsbereich von Azure Digital Twins umfasst alle Arten von Umgebungen. Lagerhäuser, Büros, Schulen, Krankenhäuser und Banken sind nur einige Beispiele. Der Dienst kann sogar für Stadien, Fabriken, Parkplätze, Parks, intelligente Stromnetze und Städte verwendet werden. Azure Digital Twins kann in den folgenden Beispielszenarien zu folgenden Zwecken genutzt werden:
- 
-- Nachverfolgung der Tagestemperatur in mehreren Bundesländern 
+
+- Nachverfolgung der Tagestemperatur in mehreren Bundesländern
 - Überwachung intensiv genutzter Drohnenpfade
-- Erkennung autonomer Fahrzeuge 
-- Analyse der Raumbelegung eines Gebäudes 
-- Ermittlung der am stärksten ausgelasteten Kasse in einem Ladengeschäft 
+- Erkennung autonomer Fahrzeuge
+- Analyse der Raumbelegung eines Gebäudes
+- Ermittlung der am stärksten ausgelasteten Kasse in einem Ladengeschäft
 
 Über Azure Digital Twins kann für jedes geschäftliche Szenario eine entsprechende digitale Instanz bereitgestellt werden.
 
@@ -94,7 +94,7 @@ Azure Digital Twins eignet sich für die Darstellung der realen Welt und der vie
 
 Azure Digital Twins nutzt Azure IoT Hub, um eine Verbindung mit den IoT-Geräten und Sensoren herzustellen, die jeweils aktuelle Daten aus der physischen Welt liefern. Das folgende Diagramm veranschaulicht die Beziehung zwischen Azure Digital Twins und anderen Azure IoT-Diensten.
 
-![Azure Digital Twins ist ein auf Azure IoT Hub basierender Dienst.](./media/overview/azure-digital-twins-in-iot-ecosystem.png)
+![Azure Digital Twins ist ein auf Azure IoT Hub basierender Dienst.][1]
 
 Weitere Informationen zu IoT finden Sie unter [Azure IoT-Technologien und -Lösungen](https://docs.microsoft.com/azure/iot-fundamentals/iot-services-and-technologies).
 
@@ -102,15 +102,18 @@ Weitere Informationen zu IoT finden Sie unter [Azure IoT-Technologien und -Lösu
 
 Sehen Sie sich eine kurze Demo zu Azure Digital Twins an:
 
-> [!div class="nextstepaction"]
-> [Schnellstart: Suchen nach verfügbaren Räumen mithilfe von Azure Digital Twins](./quickstart-view-occupancy-dotnet.md)
+>[!div class="nextstepaction"]
+>[Schnellstart: Suchen nach verfügbaren Räumen mithilfe von Azure Digital Twins](./quickstart-view-occupancy-dotnet.md)
 
 Machen Sie sich ausführlich mit einer Gebäudeverwaltungsanwendung vertraut, die Azure Digital Twins nutzt:
 
-> [!div class="nextstepaction"]
-> [Tutorial: Bereitstellen von Azure Digital Twins und Konfigurieren eines Raumgraphen](./tutorial-facilities-setup.md)
+>[!div class="nextstepaction"]
+>[Tutorial: Bereitstellen von Azure Digital Twins und Konfigurieren eines Raumgraphen](./tutorial-facilities-setup.md)
 
 Machen Sie sich mit zentralen Aspekten von Azure Digital Twins vertraut:
 
-> [!div class="nextstepaction"]
-> [Grundlegendes zum Digital Twins-Objektmodell und zum Raumintelligenzgraphen](./concepts-objectmodel-spatialgraph.md)
+>[!div class="nextstepaction"]
+>[Grundlegendes zum Digital Twins-Objektmodell und zum Raumintelligenzgraphen](./concepts-objectmodel-spatialgraph.md)
+
+<!-- Images -->
+[1]: media/overview/azure-digital-twins-in-iot-ecosystem.png

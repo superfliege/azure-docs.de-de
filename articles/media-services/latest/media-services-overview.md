@@ -13,15 +13,15 @@ ms.devlang: multiple
 ms.topic: overview
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 10/16/2018
+ms.date: 12/14/2018
 ms.author: juliako
 ms.custom: mvc
-ms.openlocfilehash: 66c9b8297254b41156131d795376857029424e97
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: f959ce8d29975fc7c667185ef5bc2547825bccc0
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49377911"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53406912"
 ---
 # <a name="what-is-azure-media-services-v3"></a>Was ist Azure Media Services v3?
 
@@ -60,7 +60,7 @@ Azure Media Services-v3-Ressourcennamen (beispielsweise Objekte, Aufträge und T
 
 Media Services-Ressourcennamen dürfen Folgendes nicht enthalten: „<“, „>“, „%“, „&“, „:“, „&#92;“, „?“, „/“, „*“, „+“, „.“, einzelne Anführungszeichen oder Steuerzeichen. Alle anderen Zeichen sind zulässig. Ein Ressourcenname darf maximal 260 Zeichen lang sein. 
 
-Weitere Informationen zu Azure Resource Manager-Benennungen finden Sie in den [Benennungsanforderungen](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md#arguments-for-crud-on-resource) und in den [Benennungskonventionen](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions).
+Weitere Informationen zur Benennung in Azure Resource Manager finden Sie unter: [Namensanforderungen](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md#arguments-for-crud-on-resource) und [Namenskonvention](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions).
 
 ## <a name="media-services-v3-api-design-principles"></a>Entwurfsprinzipien der Media Services v3-API
 

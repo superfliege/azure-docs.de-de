@@ -1,12 +1,12 @@
 ---
-title: Was ist Azure Machine Learning Studio? | Microsoft-Dokumentation
+title: Übersicht – Azure Machine Learning Studio | Microsoft-Dokumentation
 description: Übersicht über Azure ML Studio, ein Drag & Drop-Tool zum schnellen Erstellen von Modellen aus einer verwendungsbereiten Bibliothek mit Algorithmen und Modulen.
 keywords: Azure Machine Learning,Azure ML,ML Studio
 services: machine-learning
 documentationcenter: ''
-author: ericlicoding
-ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
-ms.author: amlstudiodocs
+author: garyericson
+ms.custom: seodec18
+ms.author: garye
 ms.assetid: e65c8fe1-7991-4a2a-86ef-fd80a7a06269
 ms.service: machine-learning
 ms.component: studio
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.date: 03/28/2018
-ms.openlocfilehash: d893a0817be6ae8a271d403ed0477fa04238954b
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: b1c0d3da6dba4bf56baaf583d89c58fdc13ef83f
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52264402"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53250517"
 ---
 # <a name="what-is-azure-machine-learning-studio"></a>Was ist Azure Machine Learning Studio?
 Microsoft Azure Machine Learning Studio ist ein Tool für die Zusammenarbeit per Drag & Drop, mit der Sie Lösungen für Vorhersageanalysen erstellen, testen und bereitstellen können, die mit Ihren Daten arbeiten. Machine Learning Studio veröffentlicht Modelle als Webdienste, die von benutzerdefinierten Apps oder BI-Tools wie Excel problemlos genutzt werden können.
@@ -41,7 +41,7 @@ Es ist keine Programmierung erforderlich, sondern einfach nur das visuelle Verbi
 > 
 > 
 
-![Azure ML Studio-Diagramm: Erstellen von Experimenten, Lesen von Daten aus vielen Quellen, Schreiben der ausgewerteten Daten, Erstellen der Modelle.][ml-studio-overview]
+![Azure Machine Learning Studio-Diagramm: Erstellen von Experimenten, Lesen von Daten aus vielen Quellen, Schreiben der ausgewerteten Daten, Erstellen von Modellen.][ml-studio-overview]
 
 ## <a name="get-started-with-machine-learning-studio"></a>Erste Schritte mit Machine Learning Studio
 Wenn Sie [Machine Learning Studio](https://studio.azureml.net) zum ersten Mal öffnen, sehen Sie die **Startseite** . Hier finden Sie die Dokumentation, Videos, Webinare und weitere wertvolle Ressourcen.
@@ -146,7 +146,7 @@ Wenn Sie ein Betrugserkennungsmodell in einem überwachten Lernprozess trainiere
 Nachdem Sie das Modell trainiert haben, werden Sie es mithilfe der verbleibenden Testdaten aus. Hierzu verwenden Sie Daten, deren Ergebnisse Sie bereits kennen, um herauszufinden, ob die Vorhersage Ihres Modells genau ist.
 
 ## <a name="other-common-machine-learning-terms"></a>Weitere gängige Begriffe des maschinellen Lernens
-* **Algorithmus**: Ein eigenständiger Regelsatz, der zum Lösen von Problemen mithilfe von Datenverarbeitung, mathematischen Berechnungen oder automatisierter Argumentation verwendet wird.
+* **Algorithmus**: Ein eigenständiger Regelsatz zum Lösen von Problemen mithilfe von Datenverarbeitung, mathematischen Berechnungen oder automatisierter Argumentation.
 * **Anomalieerkennung**: Ein Modell, bei dem ungewöhnliche Ereignisse oder Werte gemeldet werden, damit Probleme erkannt werden können. Bei der Erkennung von Kreditkartenbetrug wird beispielsweise nach ungewöhnlichen Käufen gesucht.
 * **Kategorische Daten**: Daten, die nach Kategorien organisiert sind und in Gruppen unterteilt werden können. Ein kategorisches Dataset für Fahrzeuge könnte z. B. Jahr, Marke, Modell und Preis angeben.
 * **Klassifizierung**: Ein Modell für die Einordnung von Datenpunkten in Kategorien, basierend auf einem Dataset, für das die Kategoriegruppierungen bereits bekannt sind.

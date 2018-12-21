@@ -1,6 +1,6 @@
 ---
 title: 'Azure Cosmos DB: .NET-Beispiele für die SQL-API'
-description: C# .NET-Beispiele für häufige Aufgaben mit der SQL-API von Azure Cosmos DB, einschließlich CRUD-Vorgängen, finden Sie auf GitHub.
+description: C# .NET-Beispiele für allgemeine Aufgaben mit der SQL-API von Azure Cosmos DB (einschließlich CRUD-Vorgängen) finden Sie auf GitHub.
 keywords: NoSQL-Beispiel
 author: rnagpal
 ms.service: cosmos-db
@@ -8,12 +8,12 @@ ms.component: cosmosdb-sql
 ms.topic: sample
 ms.date: 02/22/2017
 ms.author: rnagpal
-ms.openlocfilehash: 39eacca1e5ddb4c7024c5195dc1823f2c3c651e7
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 9c16a882e49ceec4fc733cb3a8c1061dd1949e28
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52875262"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53166624"
 ---
 # <a name="azure-cosmos-db-net-examples-for-the-sql-api"></a>Azure Cosmos DB: .NET-Beispiele für die SQL-API
 > [!div class="op_single_selector"]
@@ -37,11 +37,11 @@ Codebeispiele für .NET SDK Version 3.0 (Vorschauversion) finden Sie in den aktu
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
   
-- Sie können Ihre [Vorteile für Visual Studio-Abonnenten aktivieren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio): Ihr Visual Studio-Abonnement beinhaltet ein monatliches Guthaben, das Sie für zahlungspflichtige Azure-Dienste nutzen können.
+- Sie können [Visual Studio-Abonnementvorteile aktivieren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio): Ihr Visual Studio-Abonnement beinhaltet ein monatliches Guthaben, das Sie für zahlungspflichtige Azure-Dienste verwenden können.
 
 [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
-Außerdem benötigen Sie das [Microsoft.Azure.DocumentDB-NuGet-Paket](http://www.nuget.org/packages/Microsoft.Azure.DocumentDB/). 
+Außerdem benötigen Sie das [Microsoft.Azure.DocumentDB-NuGet-Paket](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/). 
 
 > [!NOTE]
 > Jedes Beispiel ist eigenständig mit eigener Einrichtung und Bereinigung. In den Beispielen werden mehrere Aufrufe von CreateDocumentCollectionAsync() ausgegeben. Jedes Mal, wenn dies geschieht, wird Ihrem Abonnement 1 Stunde Nutzung gemäß dem Leistungstarif der erstellten Sammlung berechnet. 
@@ -146,7 +146,7 @@ Das ChangeFeed-Beispiel [azure-documentdb-dotnet/samples/code-samples/ChangeFeed
 | [Lesen des Änderungsfeeds](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/ChangeFeed/Program.cs#L132) |[DocumentClient.CreateDocumentChangeFeedQuery](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.createdocumentchangefeedquery.aspx) | 
 | [Lesen der Partitionsschlüsselbereiche](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/ChangeFeed/Program.cs#L118) |[DocumentClient.ReadPartitionKeyRangeFeedAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.readpartitionkeyrangefeedasync.aspx) | 
 
-Das Beispiel für den Prozessor für den Änderungfeed [Change Feed Migration Tool](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/ChangeFeedMigrationTool) (Änderungsfeed-Migrationstool) veranschaulicht, wie Sie die Prozessorbibliothek für Änderungsfeeds zum Replizieren von Daten in einer anderen Cosmos DB-Sammlung verwenden.   
+Das Beispiel für den Änderungsfeedprozessor  [Change Feed Migration Tool](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/ChangeFeedMigrationTool) (Änderungsfeed-Migrationstool) veranschaulicht, wie Sie die Prozessorbibliothek für Änderungsfeeds zum Replizieren von Daten in einer anderen Cosmos DB-Sammlung verwenden.   
 
 ## <a name="server-side-programming-examples"></a>Serverseitige Programmierbeispiele
 Die Datei [azure-documentdb-dotnet/samples/code-samples/ServerSideScripts/Program.cs](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/ServerSideScripts/Program.cs) für die serverseitige Programmierung veranschaulicht, wie Sie die folgenden Aufgaben durchführen.

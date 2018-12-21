@@ -1,6 +1,6 @@
 ---
-title: Registrieren eines neuen Azure IoT Edge-Geräts (Portal) | Microsoft-Dokumentation
-description: Registrieren eines neuen IoT Edge-Geräts über das Azure-Portal
+title: Registrieren eines neuen Geräts im Azure-Portal – Azure IoT Edge | Microsoft-Dokumentation
+description: Verwenden des Azure-Portals zum Registrieren eines neuen IoT Edge-Geräts und Abrufen der Verbindungszeichenfolge
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -8,12 +8,13 @@ ms.date: 06/05/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 6657203c76bc03a262fbcbd30b5bf74b5be140eb
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.custom: seodec18
+ms.openlocfilehash: da93541339ac1c199d3ba0a220fbfff6bbb8bf9c
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51577497"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53082119"
 ---
 # <a name="register-a-new-azure-iot-edge-device-from-the-azure-portal"></a>Registrieren eines neuen Azure IoT Edge-Geräts über das Azure-Portal
 

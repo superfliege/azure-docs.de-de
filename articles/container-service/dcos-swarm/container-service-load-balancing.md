@@ -1,5 +1,5 @@
 ---
-title: Lastenausgleich für Container in Azure-DC/OS-Clustern
+title: (VERALTET) Lastenausgleich für Container in Azure-DC/OS-Clustern
 description: Es wird beschrieben, wie Sie den Lastenausgleich für mehrere Container in einem Azure Container Service-DC/OS-Cluster durchführen.
 services: container-service
 author: rgardler
@@ -9,14 +9,16 @@ ms.topic: tutorial
 ms.date: 06/02/2017
 ms.author: rogardle
 ms.custom: mvc
-ms.openlocfilehash: 8e8ad913c6e5b8e947b17ed8920285de3fcfd8ae
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 5a1883412a5285c4916c43a5c6ad81168096dd7f
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46964359"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52993546"
 ---
-# <a name="load-balance-containers-in-an-azure-container-service-dcos-cluster"></a>Durchführen des Lastenausgleichs für Container in einem Azure Container Service-DC/OS-Cluster
+# <a name="deprecated-load-balance-containers-in-an-azure-container-service-dcos-cluster"></a>(VERALTET) Vornehmen eines Lastausgleichs für Container in einem Azure Container Service-DC/OS-Cluster
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
 In diesem Artikel wird beschrieben, wie Sie einen internen Lastenausgleich in einem per DC/OS verwalteten Azure Container Service mit Marathon-LB erstellen. Durch diese Konfiguration wird das horizontale Skalieren Ihrer Anwendungen ermöglicht. Außerdem können Sie die öffentlichen und privaten Agent-Cluster nutzen, indem Sie Ihre Load Balancer im öffentlichen Cluster und Ihre Anwendungscontainer im privaten Cluster anordnen. In diesem Tutorial haben Sie Folgendes durchgeführt:
 

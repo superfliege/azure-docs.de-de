@@ -1,6 +1,6 @@
 ---
-title: Hochladen von Daten (REST-API – Azure Search) | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie Daten in einen Index in Azure Search über die REST-API hochladen.
+title: Hochladen von Daten in den Code mit der Suchdienst-REST-API – Azure Search
+description: Erfahren Sie, wie Sie mit HTTP-Anforderungen und der REST-API Daten in einen durchsuchbaren Volltextindex in Azure Search hochladen.
 author: brjohnstmsft
 manager: jlembicz
 ms.author: brjohnst
@@ -9,12 +9,13 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: quickstart
 ms.date: 04/20/2018
-ms.openlocfilehash: 53b20c9db7efe1f8876eec7c0167dc151aa38786
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.custom: seodec2018
+ms.openlocfilehash: b3044ec3fb21e77c5174ebd5a6b2dabd2282240f
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32187979"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53312849"
 ---
 # <a name="upload-data-to-azure-search-using-the-rest-api"></a>Hochladen von Daten in Azure Search über die REST-API
 > [!div class="op_single_selector"]

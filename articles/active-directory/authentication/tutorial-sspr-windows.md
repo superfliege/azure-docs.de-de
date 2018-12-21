@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.component: authentication
 ms.topic: tutorial
-ms.date: 07/11/2018
+ms.date: 12/05/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 0c5554ca929cbd5231c99e568e987e6e0b7cf6eb
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 5c40e6c681a4f37c61519040eb32531d3c8f071c
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52844837"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53437145"
 ---
 # <a name="tutorial-azure-ad-password-reset-from-the-login-screen"></a>Tutorial: Azure AD-Kennwortzurücksetzung über den Anmeldebildschirm
 
@@ -29,8 +29,8 @@ In diesem Tutorial ermöglichen Sie Benutzern das Zurücksetzen ihrer Kennwörte
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Client mit Windows 10 April 2018 Update oder einer höheren Version und entweder:
-   * [eingebunden in Azure AD](../device-management-azure-portal.md) oder 
-   * [eingebunden in Hybrid Azure AD](../device-management-hybrid-azuread-joined-devices-setup.md)
+   * [In Azure AD eingebundener Computer](../device-management-azure-portal.md) oder
+   * [in Azure AD Hybrid eingebundener Computer](../device-management-hybrid-azuread-joined-devices-setup.md) mit Netzwerkkonnektivität zu einem Domänencontroller.
 * Die Azure AD-Self-Service-Kennwortzurücksetzung muss aktiviert sein.
 
 ## <a name="configure-reset-password-link-using-intune"></a>Konfigurieren des Links „Kennwort zurücksetzen“ mit Intune
@@ -125,7 +125,11 @@ Bei den folgenden Richtlinieneinstellungen ist bekannt, dass sie die Möglichkei
    * „EnableLostMode“ ist auf dem Gerät festgelegt.
    * „Explorer.exe“ wird durch eine benutzerdefinierte Shell ersetzt.
 
+Dieses Feature funktioniert nicht für Netzwerke mit 802.1x-Netzwerkauthentifizierung und der Option „Unmittelbar vor der Benutzeranmeldung ausführen“. In Netzwerken mit 802.1x-Netzwerkauthentifizierung empfiehlt es sich, die Computerauthentifizierung zu verwenden, um dieses Feature zu aktivieren.
+
 Wenn sich Ihre Windows 10-Computer hinter einem Proxyserver oder einer Firewall befinden, sollte HTTPS-Datenverkehr (443) zu „passwordreset.microsoftonline.com“ und „ajax.aspnetcdn.com“ zugelassen werden.
+
+Für Umgebungen mit hybrider Domäneneinbindung gibt es ein Szenario, in dem der SSPR-Workflow vollständig ausgeführt werden kann, ohne dass ein Active Directory-Domänencontroller erforderlich ist. Konnektivität mit einem Domänencontroller ist erforderlich, um das neue Kennwort zum ersten Mal zu verwenden.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

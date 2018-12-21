@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.date: 09/19/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: e48eac4cdc1e98e21a122850b1dc7d3e8f4efe07
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 0cd3d3044623e2265a4ef5f817ed41258e63ae1c
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48854523"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52995521"
 ---
 # <a name="add-messages-to-an-azure-storage-queue-using-functions"></a>Hinzufügen von Meldungen in die Warteschlange von Azure Storage mithilfe von Functions
 
@@ -31,7 +31,7 @@ So führen Sie diesen Schnellstart durch:
 
 * Folgen Sie der Anleitung unter [Erstellen Ihrer ersten Funktion im Azure-Portal](functions-create-first-azure-function.md), lassen Sie dabei aber den Schritt **Bereinigen von Ressourcen** weg. In dieser Schnellstartanleitung werden die Funktions-App und die Funktion erstellt, die hier verwendet werden.
 
-* Installieren Sie den [Microsoft Azure Storage-Explorer](http://storageexplorer.com/). Mit diesem Tool können Sie Warteschlangenmeldungen untersuchen, die Ihre Ausgabebindung erstellt.
+* Installieren Sie den [Microsoft Azure Storage-Explorer](https://storageexplorer.com/). Mit diesem Tool können Sie Warteschlangenmeldungen untersuchen, die Ihre Ausgabebindung erstellt.
 
 ## <a name="add-binding"></a>Ausgabebindung hinzufügen
 
@@ -67,7 +67,7 @@ Nachdem Sie eine Ausgabebindung definiert haben, müssen Sie den Code aktualisie
 
 ## <a name="add-code-that-uses-the-output-binding"></a>Hinzufügen von Code, der die Ausgabebindung verwendet
 
-In diesem Abschnitt fügen Sie Code hinzu, der eine Meldung in die Ausgabewarteschlange schreibt. Die Meldung enthält den Wert, der an den HTTP-Trigger in der Abfragezeichenfolge übergeben wird. Wenn die Abfragezeichenfolge also beispielsweise `name=Azure` enthält, lautet die Warteschlangenmeldung *Name passed to the function: Azure*.
+In diesem Abschnitt fügen Sie Code hinzu, der eine Meldung in die Ausgabewarteschlange schreibt. Die Meldung enthält den Wert, der an den HTTP-Trigger in der Abfragezeichenfolge übergeben wird. Wenn die Abfragezeichenfolge also beispielsweise `name=Azure` enthält, lautet die Warteschlangenmeldung *Name passed to the function: Azure* (An die Funktion übergebener Name: Azure).
 
 1. Wählen Sie die Funktion, um den Funktionscode im Editor anzuzeigen.
 
@@ -122,7 +122,7 @@ Eine neue Warteschlange mit dem Namen **outqueue** wird in Ihrem Speicherkonto v
 
 Überspringen Sie diesen Abschnitt, wenn Sie den Storage-Explorer bereits installiert und bereits eine Verbindung mit dem Speicherkonto hergestellt haben, das Sie in dieser Schnellstartanleitung verwenden.
 
-2. Führen Sie das Tool [Microsoft Azure Storage-Explorer](http://storageexplorer.com/) aus, klicken Sie auf das Verbindungssymbol auf der linken Seite, und wählen Sie **Use a storage account name and key** (Name und Schlüssel eines Speicherkontos verwenden) aus. Klicken Sie anschließend auf **Weiter**.
+2. Führen Sie das Tool [Microsoft Azure Storage-Explorer](https://storageexplorer.com/) aus, klicken Sie auf das Verbindungssymbol auf der linken Seite, und wählen Sie **Use a storage account name and key** (Name und Schlüssel eines Speicherkontos verwenden) aus. Klicken Sie anschließend auf **Weiter**.
 
     ![Führen Sie das Tool Storage Account-Explorer aus.](./media/functions-integrate-storage-queue-output-binding/functions-storage-manager-connect-1.png)
 
@@ -150,7 +150,7 @@ Eine neue Warteschlange mit dem Namen **outqueue** wird in Ihrem Speicherkonto v
 
 1. Erweitern Sie den Knoten **Warteschlangen**, und wählen Sie die Warteschlange mit dem Namen **outqueue** aus. 
 
-   Die Warteschlange enthält die Meldung, die die Warteschlangen-Ausgabebindung erstellt hat, als Sie die per HTTP ausgelöste Funktion ausgeführt haben. Wenn Sie die Funktion mit dem `name`-Standardwert *Azure* aufgerufen haben, lautet die Warteschlangenmeldung *Name passed to the function: Azure*.
+   Die Warteschlange enthält die Meldung, die die Warteschlangen-Ausgabebindung erstellt hat, als Sie die per HTTP ausgelöste Funktion ausgeführt haben. Wenn Sie die Funktion mit dem `name`-Standardwert *Azure* aufgerufen haben, lautet die Warteschlangenmeldung *Name passed to the function: Azure* (An die Funktion übergebener Name: Azure).
 
     ![Im Storage-Explorer angezeigte Warteschlangenmeldung](./media/functions-integrate-storage-queue-output-binding/function-queue-storage-output-view-queue.png)
 

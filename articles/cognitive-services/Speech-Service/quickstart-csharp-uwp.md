@@ -1,21 +1,22 @@
 ---
-title: 'Schnellstart: Erkennen von Sprache in C# in einer UWP-App mit dem Spracherkennungsdienst-SDK'
+title: 'Schnellstart: Erkennen von Sprache, C# (UWP) – Spracherkennungsdienste'
 titleSuffix: Azure Cognitive Services
-description: Hier erfahren Sie, wie Sie mit dem Spracherkennungsdienst-SDK Sprache in einer UWP-App erkennen.
+description: In diesem Artikel erstellen Sie eine C#-UWP-Anwendung (Universelle Windows-Plattform) mithilfe des Cognitive Services Speech SDK. Sie transkribieren über das Mikrofon des Geräts Sprache in Echtzeit in Text. Die Anwendung basiert auf dem NuGet-Paket für das Speech SDK und auf Microsoft Visual Studio 2017.
 services: cognitive-services
 author: wolfma61
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: quickstart
-ms.date: 11/06/2018
+ms.date: 12/06/2018
 ms.author: wolfma
-ms.openlocfilehash: 7b132ea9fea7591d32b693ef9c95acf7626c8fff
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.custom: seodec18
+ms.openlocfilehash: 55988ef65e223c76a485c3cbec13626abf68d3b9
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51218898"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53104628"
 ---
 # <a name="quickstart-recognize-speech-in-a-uwp-app-by-using-the-speech-sdk"></a>Schnellstart: Erkennen von Sprache in einer UWP-App mit dem Speech SDK
 
@@ -34,7 +35,7 @@ Sie benötigen einen Abonnementschlüssel für den Spracherkennungsdienst, um di
 
 1. Starten Sie Visual Studio 2017.
 
-1. Stellen Sie sicher, dass die Workload **Entwicklung für die universelle Windows-Plattform** verfügbar ist. Wählen Sie **Tools** > **Tools und Features abrufen** in der Visual Studio-Menüleiste aus, um den Visual Studio-Installer zu öffnen. Wenn diese Workload bereits aktiviert ist, schließen Sie das Dialogfeld. 
+1. Stellen Sie sicher, dass die Workload **Entwicklung für die universelle Windows-Plattform** verfügbar ist. Wählen Sie **Tools** > **Tools und Features abrufen** in der Visual Studio-Menüleiste aus, um den Visual Studio-Installer zu öffnen. Wenn diese Workload bereits aktiviert ist, schließen Sie das Dialogfeld.
 
     ![Screenshot des Visual Studio-Installers mit der hervorgehobenen Registerkarte „Workloads“](media/sdk/vs-enable-uwp-workload.png)
 

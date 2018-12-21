@@ -10,12 +10,12 @@ ms.date: 10/12/2018
 ms.topic: conceptual
 manager: carmonm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2678b9a1b80b1c9de6f1b554ce43bcd4f2dd5d50
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 27bacb12c66ac57a0bf1aea88a447d395b6dde8c
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49167000"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53408917"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>Nachverfolgen von Änderungen in Ihrer Umgebung mit der Lösung für die Änderungsnachverfolgung
 
@@ -63,7 +63,7 @@ Dadurch wird die Lösung für Ihr Automation-Konto aktiviert. Das Aktivieren der
 
 ## <a name="configuring-change-tracking-and-inventory"></a>Konfigurieren der Änderungs- und Bestandsnachverfolgung
 
-Wie Sie Computer in die Lösung integrieren, erfahren Sie unter [Integrieren von Automation-Lösungen](automation-onboard-solutions-from-automation-account.md). Nachdem ein Computeronboarding mit der Lösung „Änderungsnachverfolgung“ und „Bestand“ vorgenommen wurde, können Sie die nachzuverfolgenden Elemente konfigurieren. Wenn Sie eine neue Datei oder einen Registrierungsschlüssel zum Nachverfolgen aktivieren, wird das entsprechende Element sowohl für die Änderungsnachverfolgung als auch die Bestandsverfolgung aktiviert.
+Wie Sie Computer in die Lösung integrieren, erfahren Sie unter: [Integrieren von Automation-Lösungen](automation-onboard-solutions-from-automation-account.md). Nachdem ein Computeronboarding mit der Lösung „Änderungsnachverfolgung“ und „Bestand“ vorgenommen wurde, können Sie die nachzuverfolgenden Elemente konfigurieren. Wenn Sie eine neue Datei oder einen Registrierungsschlüssel zum Nachverfolgen aktivieren, wird das entsprechende Element sowohl für die Änderungsnachverfolgung als auch die Bestandsverfolgung aktiviert.
 
 Zum Nachverfolgen von Änderungen unter Windows und Linux werden MD5-Hashes der Dateien verwendet. Diese Hashes werden dann verwendet, um zu ermitteln, ob seit der letzten Bestandsaufnahme eine Änderung vorgenommen wurde.
 
@@ -85,7 +85,7 @@ Führen Sie zum Konfigurieren der Dateinachverfolgung auf Linux-Computern die fo
 |Rekursion     | Bestimmt, ob beim Suchen nach dem nachzuverfolgenden Element die Rekursion verwendet wird        |
 |Sudo verwenden     | Diese Einstellung bestimmt, ob „sudo“ bei der Suche nach dem Element verwendet wird         |
 |Links     | Diese Einstellung bestimmt, wie symbolische Verknüpfungen beim Durchlaufen von Verzeichnissen behandelt werden<br> **Ignorieren**: Symbolische Verknüpfungen werden ignoriert, und die referenzierten Dateien/Verzeichnisse werden nicht einbezogen<br>**Folgen**: Folgt den symbolischen Verknüpfungen bei der Rekursion und bindet auch die referenzierten Dateien/Verzeichnisse ein<br>**Verwalten**: Folgt den symbolischen Verknüpfungen und ermöglicht das Ändern von zurückgegebenen Inhalten     |
-|Hochladen von Dateiinhalt für alle Einstellungen| Aktiviert oder deaktiviert den Upload des Dateiinhalts für nachverfolgte Änderungen. Verfügbare Optionen: **TRUE** oder **FALSE**.|
+|Hochladen von Dateiinhalt für alle Einstellungen| Aktiviert oder deaktiviert den Upload des Dateiinhalts für nachverfolgte Änderungen. Verfügbare Optionen: **True** und **False**.|
 
 > [!NOTE]
 > Die Linkoption „Verwalten“ wird nicht empfohlen. Das Abrufen von Dateiinhalten wird nicht unterstützt.
@@ -105,7 +105,7 @@ Führen Sie zum Konfigurieren der Dateinachverfolgung auf Windows-Computern die 
 |Group     | Gruppenname für die logische Gruppierung von Dateien        |
 |Pfad eingeben     | Der zu überprüfende Pfad für die Datei, z.B. „c:\temp\\\*.txt“<br>Sie können auch Umgebungsvariablen verwenden, beispielsweise „%winDir%\System32\\\*.*“.       |
 |Rekursion     | Bestimmt, ob beim Suchen nach dem nachzuverfolgenden Element die Rekursion verwendet wird        |
-|Hochladen von Dateiinhalt für alle Einstellungen| Aktiviert oder deaktiviert den Upload des Dateiinhalts für nachverfolgte Änderungen. Verfügbare Optionen: **TRUE** oder **FALSE**.|
+|Hochladen von Dateiinhalt für alle Einstellungen| Aktiviert oder deaktiviert den Upload des Dateiinhalts für nachverfolgte Änderungen. Verfügbare Optionen: **True** und **False**.|
 
 ## <a name="wildcard-recursion-and-environment-settings"></a>Platzhalter, Rekursion und Umgebungseinstellungen
 
@@ -135,7 +135,7 @@ Führen Sie zum Konfigurieren der Nachverfolgung von Registrierungsschlüsseln a
 |Aktiviert     | Bestimmt, ob die Einstellung angewendet wird        |
 |Item Name     | Anzeigename der nachzuverfolgenden Datei        |
 |Group     | Gruppenname für die logische Gruppierung von Dateien        |
-|Windows-Registrierungsschlüssel   | Der zu überprüfende Pfad für die Datei, z. B. „HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders\Common Startup“      |
+|Windows-Registrierungsschlüssel   | Der zu überprüfende Pfad für die Datei, Beispiel:  "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders\Common Startup"      |
 
 ## <a name="limitations"></a>Einschränkungen
 
@@ -167,10 +167,21 @@ Die folgende Tabelle zeigt die Datensammlungshäufigkeit für die Änderungstype
 | Windows-Registrierung | 50 Minuten |
 | Windows-Datei | 30 Minuten |
 | Linux-Datei | 15 Minuten |
-| Windows-Dienste | 10 Sekunden bis 30 Minuten</br> Standardwert: 30 Minuten |
+| Windows-Dienste | 10 Sekunden bis 30 Minuten</br> Standardwert: 30 Minuten |
 | Linux-Daemons | 5 Minuten |
 | Windows-Software | 30 Minuten |
 | Linux-Software | 5 Minuten |
+
+Die folgende Tabelle zeigt die Grenzen der nachverfolgten Elemente pro Computer für die Änderungsnachverfolgung.
+
+| **Ressource** | **Begrenzung**| **Hinweise** |
+|---|---|---|
+|Datei|500||
+|Registrierung|250||
+|Windows-Software|250|Softwareupdates nicht inbegriffen|
+|Linux-Pakete|1250||
+|Dienste|250||
+|Daemon|250||
 
 ### <a name="windows-service-tracking"></a>Windows-Dienstnachverfolgung
 

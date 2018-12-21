@@ -9,12 +9,12 @@ ms.devlang: dotnet
 ms.topic: sample
 ms.date: 08/17/2018
 ms.author: sngun
-ms.openlocfilehash: fd437e42c404bec71036e760b95aef7e005d3fd9
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 23ee4142dbf3d3c07eb89640554a464d0ac51822
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52880198"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53102995"
 ---
 # <a name="get-started-with-azure-table-storage-and-the-azure-cosmos-db-table-api-using-net"></a>Erste Schritte mit Azure Table Storage und der Azure Cosmos DB-Tabellen-API mit .NET
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -78,7 +78,7 @@ Es gibt drei empfohlene Pakete, auf die Sie in Ihrem Projekt verweisen müssen, 
 
 * [Microsoft Azure Cosmos DB-Tabellenbibliothek für .NET](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table) Mit diesem Paket erhalten Sie programmgesteuerten Zugriff auf Datenressourcen in Ihrem Azure Table Storage-Konto bzw. Ihrem Konto für die Azure Cosmos DB-Tabellen-API. Diese Bibliothek ist derzeit nur für .NET Standard verfügbar, für .NET Core noch nicht.
 
-* [Microsoft Azure Configuration Manager Library für .NET](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager/): Mit diesem Paket wird eine Klasse zum Analysieren einer Verbindungszeichenfolge in einer Konfigurationsdatei bereitgestellt. Dies gilt unabhängig davon, wo die Anwendung ausgeführt wird.
+* [Microsoft Azure Configuration Manager-Bibliothek für .NET](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager/): Mit diesem Paket wird eine Klasse zum Analysieren einer Verbindungszeichenfolge in einer Konfigurationsdatei bereitgestellt. Dies gilt unabhängig davon, wo die Anwendung ausgeführt wird.
 
 Führen Sie diese Schritte aus, um die NuGet-Pakete abzurufen:
 
@@ -88,7 +88,7 @@ Führen Sie diese Schritte aus, um die NuGet-Pakete abzurufen:
 4. Suchen Sie online nach „WindowsAzure.ConfigurationManager“, und wählen Sie **Installieren** aus, um die Microsoft Azure Configuration Manager-Bibliothek zu installieren.
 
 > [!NOTE]
-> Die ODataLib-Abhängigkeiten in der allgemeinen Storage-Bibliothek für .NET werden mit den ODataLib-Paketen aufgelöst, die auf NuGet verfügbar sind (nicht von WCF Data Services). Die ODataLib-Bibliotheken können direkt heruntergeladen werden, oder es wird über Ihr Codeprojekt durch NuGet darauf verwiesen. Die spezifischen ODataLib-Pakete, die von der Speicherclientbibliothek verwendet werden, lauten [OData](http://nuget.org/packages/Microsoft.Data.OData/), [Edm](http://nuget.org/packages/Microsoft.Data.Edm/) und [Spatial](http://nuget.org/packages/System.Spatial/). Diese Bibliotheken werden von Azure Table Storage-Klassen verwendet und sind erforderliche Abhängigkeiten für die Programmierung mit der allgemeinen Storage-Bibliothek.
+> Die ODataLib-Abhängigkeiten in der allgemeinen Storage-Bibliothek für .NET werden mit den ODataLib-Paketen aufgelöst, die auf NuGet verfügbar sind (nicht von WCF Data Services). Die ODataLib-Bibliotheken können direkt heruntergeladen werden, oder es wird über Ihr Codeprojekt durch NuGet darauf verwiesen. Die spezifischen ODataLib-Pakete, die von der Speicherclientbibliothek verwendet werden, lauten [OData](https://nuget.org/packages/Microsoft.Data.OData/), [Edm](https://nuget.org/packages/Microsoft.Data.Edm/) und [Spatial](https://nuget.org/packages/System.Spatial/). Diese Bibliotheken werden von Azure Table Storage-Klassen verwendet und sind erforderliche Abhängigkeiten für die Programmierung mit der allgemeinen Storage-Bibliothek.
 > 
 > 
 
@@ -453,7 +453,7 @@ table.Execute(insertOrReplaceOperation);
 ```
 
 ## <a name="query-a-subset-of-entity-properties"></a>Abfragen einer Teilmenge von Entitätseigenschaften
-Mit einer Tabellenabfrage können nicht nur alle, sondern auch nur einige Eigenschaften aus einer Entität abgerufen werden. Mit dieser Technik, der sogenannten Projektion, wird die Bandbreite reduziert und die Abfrageleistung gesteigert, vor allem bei großen Entitäten. Mit der Abfrage im folgenden Code werden nur die E-Mail-Adressen von Entitäten in der Tabelle zurückgegeben. Hierzu werden eine Abfrage vom Typ [DynamicTableEntity][dotnet_DynamicTableEntity] sowie [EntityResolver][dotnet_EntityResolver] verwendet. Weitere Informationen zur Projektion finden Sie im Blogbeitrag [Microsoft Azure Tables: Introducing Upsert and Query Projection][blog_post_upsert] (Microsoft Azure Tables: Einführung in Upsert und Abfrageprojektion). Die Projektion wird vom Speicheremulator nicht unterstützt, weshalb dieser Code nur ausgeführt wird, wenn Sie ein Konto im Tabellenspeicherdienst verwenden.
+Mit einer Tabellenabfrage können nicht nur alle, sondern auch nur einige Eigenschaften aus einer Entität abgerufen werden. Mit dieser Technik, der sogenannten Projektion, wird die Bandbreite reduziert und die Abfrageleistung gesteigert, vor allem bei großen Entitäten. Mit der Abfrage im folgenden Code werden nur die E-Mail-Adressen von Entitäten in der Tabelle zurückgegeben. Hierzu werden eine Abfrage vom Typ [DynamicTableEntity][dotnet_DynamicTableEntity] sowie [EntityResolver][dotnet_EntityResolver] verwendet. Die Projektion wird vom Speicheremulator nicht unterstützt, weshalb dieser Code nur ausgeführt wird, wenn Sie ein Konto im Tabellenspeicherdienst verwenden.
 
 ```csharp
 // Retrieve the storage account from the connection string.
@@ -576,9 +576,6 @@ Nachdem Sie sich nun mit den Grundlagen des Tabellenspeichers vertraut gemacht h
 * Informationen zum Speichern relationaler Daten finden Sie unter [Herstellen von Verbindungen mit SQL-Datenbank mithilfe von .NET (C#)](../sql-database/sql-database-develop-dotnet-simple.md).
 
 [Download and install the Azure SDK for .NET]: /develop/net/
-[Creating an Azure Project in Visual Studio]: http://msdn.microsoft.com/library/azure/ee405487.aspx
-
-[blog_post_upsert]: http://blogs.msdn.com/b/windowsazurestorage/archive/2011/09/15/windows-azure-tables-introducing-upsert-and-query-projection.aspx
 
 [dotnet_api_ref]: https://msdn.microsoft.com/library/azure/mt347887.aspx
 [dotnet_CloudTableClient]: https://msdn.microsoft.com/library/microsoft.windowsazure.storage.table.cloudtableclient.aspx

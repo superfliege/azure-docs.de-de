@@ -1,21 +1,22 @@
 ---
-title: 'Tutorial 8: Schlüsselbegriffserkennung in LUIS'
+title: Schlüsselwortextraktion
 titleSuffix: Azure Cognitive Services
 description: Verwenden Sie die vordefinierte keyPhrase-Entität, um Schlüsselinhalte aus Äußerungen zu extrahieren. Sie müssen Äußerungen nicht mit vordefinierten Entitäten bezeichnen. Die Entität wird automatisch erkannt.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: fafb6a6cb986b5bcd795c9bac0fadfce2827c667
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 0a064966f118925d2a08e0ff1ce6efc7683cac96
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52424811"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53096926"
 ---
 # <a name="tutorial-8-extract-key-phrases-of-utterance"></a>Tutorial 8: Extrahieren von Schlüsselbegriffen einer Äußerung
 In diesem Tutorial verwenden Sie die vordefinierte keyPhrase-Entität, um Schlüsselinhalte aus Äußerungen zu extrahieren. Sie müssen Äußerungen nicht mit vordefinierten Entitäten bezeichnen. Die Entität wird automatisch erkannt.
@@ -31,7 +32,6 @@ Ihre Clientanwendung kann diese Werte zusammen mit anderen extrahierten Entität
 
 **In diesem Tutorial lernen Sie Folgendes:**
 
-<!-- green checkmark -->
 > [!div class="checklist"]
 > * Verwenden der vorhandenen Tutorial-App
 > * Hinzufügen der keyPhrase-Entität 
@@ -84,7 +84,7 @@ Fügen Sie die vordefinierte keyPhrase-Entität hinzu, um Schlüsselinhalte aus 
 
 2. Geben Sie in der Adressleiste am Ende der URL `does form hrf-123456 cover the new dental benefits and medical plan` ein. Der letzte Parameter der Abfragezeichenfolge lautet `q` (für die Abfrage (**query**) der Äußerung). 
     
-    ```JSON
+    ```json
     {
       "query": "does form hrf-123456 cover the new dental benefits and medical plan",
       "topScoringIntent": {

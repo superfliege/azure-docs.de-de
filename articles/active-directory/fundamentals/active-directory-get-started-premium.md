@@ -1,6 +1,6 @@
 ---
-title: 'Gewusst wie: Registrieren für Azure Active Directory Premium-Editionen | Microsoft-Dokumentation'
-description: In diesen ausführlichen Anweisungen wird erläutert, wie Sie sich für Azure Active Directory Premium-Editionen registrieren.
+title: Registrieren für Premium-Editionen – Azure Active Directory | Microsoft-Dokumentation
+description: Enthält eine Anleitung dazu, wie Sie sich für Azure Active Directory Premium-Editionen registrieren.
 services: active-directory
 author: eross-msft
 manager: mtillman
@@ -11,16 +11,16 @@ ms.topic: quickstart
 ms.date: 09/07/2017
 ms.author: lizross
 ms.reviewer: piotrci
-ms.custom: it-pro
-ms.openlocfilehash: a0a992e62e7b1e375ff2591aa82bdc7733e9d26f
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.custom: it-pro, seodec18
+ms.openlocfilehash: 23778a56cfa6440442bd7aab67c5441094a633ae
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49394696"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53073991"
 ---
-# <a name="how-to-sign-up-for-azure-active-directory-premium"></a>Gewusst wie: Registrieren für Azure Active Directory Premium
-Sie können Azure Active Directory (Azure AD) Premium erwerben und Ihrem Azure-Abonnement zuordnen. Wenn Sie ein neues Azure-Abonnement erstellen müssen, müssen Sie außerdem Ihren Lizenzplan und den Azure AD-Dienstzugriff aktivieren.
+# <a name="sign-up-for-azure-active-directory-premium-editions"></a>Registrieren für Azure Active Directory Premium-Editionen
+Sie können Azure Active Directory (Azure AD) Premium-Editionen erwerben und Ihrem Azure-Abonnement zuordnen. Wenn Sie ein neues Azure-Abonnement erstellen müssen, müssen Sie außerdem Ihren Lizenzplan und den Azure AD-Dienstzugriff aktivieren.
 
 > [!NOTE]
 >Die Azure AD-Editionen Premium und Basic stehen für Kunden in China zur Verfügung, die mit der weltweit verfügbaren Instanz von Azure Active Directory arbeiten. Allerdings werden die Azure AD-Editionen „Premium“ und „Basic“ derzeit nicht durch den Azure-Dienst unterstützt, der in China von 21Vianet betrieben wird. Sollten Sie weitere Informationen benötigen, können Sie sich über das [Azure Active Directory-Forum](https://feedback.azure.com/forums/169401-azure-active-directory/) mit uns in Verbindung setzen.

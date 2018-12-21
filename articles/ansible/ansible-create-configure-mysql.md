@@ -1,5 +1,5 @@
 ---
-title: Erstellen und Konfigurieren eines Azure Database for MySQL-Servers mit Ansible (Vorschauversion)
+title: Erstellen und Konfigurieren eines Azure Database for MySQL-Servers mit Ansible
 description: Hier wird beschrieben, wie Sie mithilfe von Ansible einen Azure Database for MySQL-Server erstellen und konfigurieren.
 ms.service: ansible
 keywords: Ansible, Azure, DevOps, Bash, Playbook, MySQL, Datenbank
@@ -8,14 +8,14 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 09/23/2018
-ms.openlocfilehash: b549aeaf24bd774245ee1f2ff6924ac1f6dbeee3
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 6fd08e21fe0573d48ae7752eb410845062932b5e
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49427895"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53255940"
 ---
-# <a name="create-and-configure-an-azure-database-for-mysql-server-by-using-ansible-preview"></a>Erstellen und Konfigurieren eines Azure Database for MySQL-Servers mit Ansible (Vorschauversion)
+# <a name="create-and-configure-an-azure-database-for-mysql-server-by-using-ansible"></a>Erstellen und Konfigurieren eines Azure Database for MySQL-Servers mit Ansible
 [Azure Database for MySQL](https://docs.microsoft.com/azure/mysql/) ist ein verwalteter Dienst, mit dem Sie hoch verfügbare MySQL-Datenbanken in der Cloud ausführen, verwalten und skalieren können. Ansible ermöglicht die Automatisierung der Bereitstellung und Konfiguration von Ressourcen in Ihrer Umgebung. 
 
 In dieser Schnellstartanleitung wird veranschaulicht, wie Sie mit Ansible einen Azure Database for MySQL-Server erstellen und die zugehörige Firewallregel konfigurieren. Über das Azure-Portal können Sie diese Aufgaben in etwa fünf Minuten ausführen.
@@ -25,7 +25,7 @@ In dieser Schnellstartanleitung wird veranschaulicht, wie Sie mit Ansible einen 
 - [!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation1.md](../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation1.md)][!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation2.md)]
 
 > [!Note]
-> Für die Ausführung der folgenden Beispielplaybooks in diesem Tutorial ist Ansible 2.7 erforderlich. Sie können die Version Ansible 2.7 RC installieren, indem Sie `sudo pip install ansible[azure]==2.7.0rc2` ausführen. Nach der Veröffentlichung von Ansible 2.7 müssen Sie die Version hier nicht mehr angeben, weil 2.7 die Standardversion ist.
+> Für die Ausführung der folgenden Beispielplaybooks in diesem Tutorial ist Ansible 2.7 erforderlich. 
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 Eine Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden.  

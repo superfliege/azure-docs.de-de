@@ -1,5 +1,5 @@
 ---
-title: 'ExpressRoute-Übersicht: Erweitern Ihres lokalen Netzwerks auf Azure über eine private Verbindung | Microsoft-Dokumentation'
+title: 'Erweitern Ihres lokalen Netzwerks auf Azure über eine private Verbindung: ExpressRoute-Übersicht – Azure | Microsoft-Dokumentation'
 description: In der technischen Übersicht über ExpressRoute wird beschrieben, wie eine ExpressRoute-Verbindung funktioniert und wie Sie Ihr lokales Netzwerk über eine private Verbindung auf Azure ausdehnen.
 services: expressroute
 author: mialdrid
@@ -7,19 +7,20 @@ ms.service: expressroute
 ms.topic: overview
 ms.date: 10/18/2018
 ms.author: mialdrid
-ms.openlocfilehash: fb3e7ac449934fe9fa36b1683bda20ff3e07f0f4
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.custom: seodec18
+ms.openlocfilehash: 56baabb95a7873b48a27943a58b8e26c56efb6b7
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49429404"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53139553"
 ---
 # <a name="expressroute-overview"></a>ExpressRoute-Übersicht
-Mit Microsoft Azure ExpressRoute können Sie Ihre lokalen Netzwerke über eine private Verbindung, die von einem Konnektivitätsanbieter bereitgestellt wird, in die Microsoft Cloud erweitern. Mit ExpressRoute können Sie Verbindungen zu Microsoft-Clouddiensten herstellen, z.B. Microsoft Azure, Office 365 und Dynamics 365.
+Mit ExpressRoute können Sie Ihre lokalen Netzwerke über eine private Verbindung, die von einem Konnektivitätsanbieter bereitgestellt wird, auf die Microsoft Cloud ausdehnen. Mit ExpressRoute können Sie Verbindungen zu Microsoft-Clouddiensten herstellen, z.B. Microsoft Azure, Office 365 und Dynamics 365.
 
 Die Konnektivität kann über ein Any-to-Any-Netzwerk (IP VPN), ein Point-to-Point-Ethernet-Netzwerk oder eine virtuelle Querverbindung über einen Konnektivitätsanbieter in einer Co-Location-Einrichtung bereitgestellt werden. ExpressRoute-Verbindungen verlaufen nicht über das öffentliche Internet. Auf diese Weise können ExpressRoute-Verbindungen eine höhere Sicherheit, größere Zuverlässigkeit und schnellere Geschwindigkeit bei geringerer Latenz als herkömmliche Verbindungen über das Internet bieten. Informationen zum Verbinden Ihres Netzwerks mit Microsoft mithilfe von ExpressRoute finden Sie unter [ExpressRoute-Konnektivitätsmodelle](expressroute-connectivity-models.md).
 
-![](./media/expressroute-introduction/expressroute-connection-overview.png)
+![Übersicht über ExpressRoute-Verbindungen](./media/expressroute-introduction/expressroute-connection-overview.png)
 
 ## <a name="key-benefits"></a>Hauptvorteile
 
@@ -77,7 +78,7 @@ ExpressRoute Direct bietet Kunden die Möglichkeit, sich direkt mit dem globalen
 ExpressRoute Direct bietet u.a. folgende Leistungsmerkmale:
 
 * Umfangreiche Datenerfassung in Diensten wie Azure Storage und Cosmos DB
-* Physische Isolierung für Branchen, die reguliert sind und dedizierte und isolierte Konnektivität erfordern (beispielsweise das Bankwesen, Behörden und der Einzelhandel)
+* Physische Isolierung für Branchen, die Regulierung sowie dedizierte und isolierte Konnektivität erfordern, beispielsweise das Bankwesen, Behörden und der Einzelhandel.
 * Präzise Steuerung der Leitungsverteilung basierend auf Unternehmensbereichen
 
 Weitere Informationen über ExpressRoute finden Sie unter [Informationen zu ExpressRoute Direct](https://go.microsoft.com/fwlink/?linkid=2022973).

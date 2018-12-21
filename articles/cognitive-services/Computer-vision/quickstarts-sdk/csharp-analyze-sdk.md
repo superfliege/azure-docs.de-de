@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Analysieren eines Bilds – SDK, C# – Maschinelles Sehen'
+title: 'Schnellstart: Analysieren eines Bilds – SDK, C# – maschinelles Sehen'
 titleSuffix: Azure Cognitive Services
 description: In diesem Schnellstart analysieren Sie ein Bild mithilfe der Windows-C#-Clientbibliothek für Maschinelles Sehen.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 09/14/2018
 ms.author: pafarley
-ms.openlocfilehash: 7de7a87c73c2dabddf2268a6a0bc2992d6017e4d
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: 0983978221e9872e92ca366edd3bd3f2bfd9c3f4
+ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51853930"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53413318"
 ---
-# <a name="quickstart-analyze-an-image-using-the-computer-vision-sdk-and-c"></a>Schnellstart: Analysieren eines Bilds mit dem Maschinelles Sehen SDK und C#
+# <a name="quickstart-analyze-an-image-using-the-computer-vision-sdk-and-c"></a>Schnellstart: Analysieren eines Bilds mit dem SDK für maschinelles Sehen und C#
 
 In dieser Schnellstartanleitung analysieren Sie mithilfe der Windows-Clientbibliothek der Maschinelles Sehen-API ein lokales Bild und ein Remotebild, um visuelle Merkmale zu extrahieren.
 
@@ -162,7 +162,7 @@ namespace ImageAnalyze
 
 In einer erfolgreichen Antwort werden die relevantesten Titel für jedes Bild angezeigt.
 
-Ein Beispiel für die unformatierte JSON-Ausgabe finden Sie unter [API Quickstarts: Analyze a local image with C#](../QuickStarts/CSharp-analyze.md#examine-the-response) (API-Schnellstarts: Analysieren von lokalen Bildern mit C#).
+Unter [API-Schnellstartanleitungen: Analysieren von lokalen Bildern mit C#](../QuickStarts/CSharp-analyze.md#examine-the-response) finden Sie ein Beispiel für die unformatierte JSON-Ausgabe.
 
 ```
 http://upload.wikimedia.org/wikipedia/commons/3/3c/Shaki_waterfall.jpg

@@ -1,5 +1,6 @@
 ---
-title: Tutorials zum Azure Machine Learning-Dienst in Jupyter-Notebooks
+title: Jupyter-Beispiel-Notebooks
+titleSuffix: Azure Machine Learning service
 description: Es wird beschrieben, wie Sie Beispiele für Jupyter-Notebooks finden und verwenden, um den Azure Machine Learning-Dienst in Python zu erkunden.
 services: machine-learning
 ms.service: machine-learning
@@ -9,12 +10,13 @@ author: sdgilley
 ms.author: sgilley
 ms.reviewer: sgilley
 ms.date: 12/04/2018
-ms.openlocfilehash: 5ec010d6e0539e9ba316b48dc02110dc19e4b13e
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.custom: seodec18
+ms.openlocfilehash: 0d74f731d0a7eca25238344e36838dc6c806c788
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52883805"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53434527"
 ---
 # <a name="use-jupyter-notebooks-to-explore-azure-machine-learning-service"></a>Verwenden von Jupyter-Notebooks zum Erkunden des Azure Machine Learning-Diensts
 
@@ -97,7 +99,7 @@ Sie können zwar die obigen Optionen beliebig verwenden, aber Sie können auch m
    >Sie können eine vorhandene Conda-Installation verwenden, solange es sich dabei um Version 4.4.10 oder höher handelt. Verwenden Sie den Befehl `conda -V`, um die Version anzuzeigen. Sie können eine Conda-Version mit dem folgenden Befehl aktualisieren: `conda update conda`. Es ist nicht erforderlich, eine spezifische Installation von mini-conda durchzuführen.
 
 1. Laden Sie die Beispielnotebooks von [GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning
-) als ZIP-Dateien herunter, und extrahieren Sie den Inhalt in einem lokalen Verzeichnis. Die Notebooks für automatisiertes maschinelles Lernen befinden sich im Ordner `how-to-use-azureml/automated-machine-learning`.
+) als ZIP-Dateien herunter, und extrahieren Sie den Inhalt in ein lokales Verzeichnis. Die Notebooks für automatisiertes maschinelles Lernen befinden sich im Ordner `how-to-use-azureml/automated-machine-learning`.
 
 1. Richten Sie eine neue Conda-Umgebung ein. 
    1. Öffnen Sie auf Ihrem lokalen Computer eine Conda-Eingabeaufforderung.
@@ -114,9 +116,10 @@ Sie können zwar die obigen Optionen beliebig verwenden, aber Sie können auch m
       + Konfiguration des Widgets
       + Starten eines Jupyter-Notebooks
       
-      Im Skript wird der Name der Conda-Umgebung als optionaler Parameter verwendet. Der Standardname der Conda-Umgebung lautet `azure_automl`. Der genaue Wortlaut des Befehls richtet sich nach dem Betriebssystem. 
+   >[!NOTE]
+   > Im Skript wird der Name der Conda-Umgebung als optionaler Parameter verwendet. Der Standardname der Conda-Umgebung lautet `azure_automl`. Der genaue Wortlaut des Befehls richtet sich nach dem Betriebssystem. Dies ist nützlich, wenn Sie eine neue Umgebung erstellen oder ein Upgrade auf eine neue Version durchführen. Sie können z.B. „automl_setup.cmd azure_automl_sandbox“ verwenden, um eine Umgebung namens „azure_automl_sandbox“ zu erstellen. 
       
-      Nachdem das Skript abgeschlossen wurde, wird in Ihrem Browser die Jupyter Notebook-Startseite angezeigt.
+1. Nachdem das Skript abgeschlossen wurde, wird in Ihrem Browser die Jupyter Notebook-Startseite angezeigt.
 
 1. Navigieren Sie zum Speicherort, an dem Sie die Notebooks gespeichert haben. 
 

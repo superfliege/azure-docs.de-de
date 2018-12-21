@@ -1,5 +1,5 @@
 ---
-title: Erstellen eines Azure Event Hubs-Namespace und Aktivieren von Capture über eine Vorlage | Microsoft-Dokumentation
+title: 'Erstellen eines Event Hubs, für den Capture aktiviert ist: Azure Event Hubs | Microsoft-Dokumentation'
 description: Erstellen eines Azure Event Hubs-Namespace mit einem Event Hub und Aktivieren der von Capture über eine Azure Resource Manager-Vorlage
 services: event-hubs
 documentationcenter: .net
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 08/16/2018
 ms.author: shvija
-ms.openlocfilehash: c8341b40ba7616add1415178a2f0775fbbc66ec1
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 36764b661d88f034b306251f76d47d72298308dc
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "41920699"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53139995"
 ---
 # <a name="create-a-namespace-with-event-hub-and-enable-capture-using-a-template"></a>Erstellen eines Namespace mit Event Hub und Aktivieren von Capture mithilfe einer Vorlage
 
@@ -45,11 +45,11 @@ Die vollständigen Vorlagen finden Sie unter den folgenden GitHub-Links:
 
 Mit dieser Vorlage können Sie einen Event Hubs-Namespace mit einem Event Hub bereitstellen und [Event Hubs Capture ](event-hubs-capture-overview.md) aktivieren. Mit Event Hubs Capture können Sie die Streamingdaten in Event Hubs automatisch innerhalb eines Zeit- oder Größenintervalls Ihrer Wahl an Azure Blob Storage oder Azure Data Lake Store übermitteln. Klicken Sie auf die folgende Schaltfläche, um Event Hubs Capture mit Azure Storage als Ziel zu aktivieren:
 
-[![Bereitstellen in Azure](./media/event-hubs-resource-manager-namespace-event-hub/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-eventhubs-create-namespace-and-enable-capture%2Fazuredeploy.json)
+[![In Azure bereitstellen](./media/event-hubs-resource-manager-namespace-event-hub/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-eventhubs-create-namespace-and-enable-capture%2Fazuredeploy.json)
 
 Klicken Sie auf die folgende Schaltfläche, um Event Hubs Capture mit Azure Data Lake Store als Ziel zu aktivieren:
 
-[![Bereitstellen in Azure](./media/event-hubs-resource-manager-namespace-event-hub/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-eventhubs-create-namespace-and-enable-capture-for-adls%2Fazuredeploy.json)
+[![In Azure bereitstellen](./media/event-hubs-resource-manager-namespace-event-hub/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-eventhubs-create-namespace-and-enable-capture-for-adls%2Fazuredeploy.json)
 
 ## <a name="parameters"></a>Parameter
 

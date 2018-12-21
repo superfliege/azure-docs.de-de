@@ -1,7 +1,7 @@
 ---
-title: 'Schnellstart: Ausführen einer Suche mit Go – Bing-Websuche-API'
+title: 'Schnellstart: Ausführen einer Websuche mit Go – Bing-Websuche-REST-API'
 titleSuffix: Azure Cognitive Services
-description: In dieser Schnellstartanleitung wird beschrieben, wie Sie die Bing-Websuche-API zum ersten Mal aufrufen, indem Sie Go verwenden, und wie Sie eine JSON-Antwort erhalten.
+description: Verwenden Sie diese Schnellstartanleitung, um Anforderungen mithilfe von Go an die Bing-Websuche-REST-API zu senden und eine JSON-Antwort zu empfangen.
 services: cognitive-services
 author: aahill
 manager: cgronlun
@@ -11,14 +11,15 @@ ms.topic: quickstart
 ms.date: 8/16/2018
 ms.author: aahi
 ms.reviewer: nhoyadx@gmail.com, v-gedod, erhopf
-ms.openlocfilehash: 4191232e45d012d3aec5d056c28e765332073ede
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.custom: seodec2018
+ms.openlocfilehash: 97b9a75802441a9360291d334b9920366a1c9450
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52310428"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53255634"
 ---
-# <a name="quickstart-use-go-to-call-the-bing-web-search-api"></a>Schnellstart: Verwenden von Go zum Aufrufen der Bing-Websuche-API  
+# <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-go"></a>Schnellstart: Suchen im Internet unter Verwendung von Bing-Websuche-REST-API und Go
 
 Verwenden Sie diese Schnellstartanleitung, um die Bing-Websuche-API zum ersten Mal aufzurufen und innerhalb von weniger als zehn Minuten eine JSON-Antwort zu erhalten.  
 

@@ -8,12 +8,13 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 11/28/2018
 ms.author: victorh
-ms.openlocfilehash: b90496b0ccc6c8243c2d1b3ead1e7c4faa4801ec
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
+ms.openlocfilehash: b01e16f85eaccee4d765b4985769df670d4d35ca
+ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52582042"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53413029"
 ---
 # <a name="what-is-azure-firewall"></a>Was ist Azure Firewall?
 
@@ -69,7 +70,9 @@ Azure Firewall weist die folgenden bekannten Probleme auf:
 Netzwerkfilterregeln für andere Protokolle als TCP/UDP (z.B. ICMP) funktionieren nicht für den Internetdatenverkehr|Netzwerkfilterregeln für andere Protokolle als TCP/UDP funktionieren nicht mit SNAT für Ihre öffentliche IP-Adresse. Nicht-TCP/UDP-Protokolle werden zwischen Spoke-Subnetzen und VNets unterstützt.|Azure Firewall verwendet Standard Load Balancer, [das SNAT für IP-Protokolle derzeit nicht unterstützt](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview#limitations). Wir prüfen Möglichkeiten, um dieses Szenario in einer zukünftigen Version zu unterstützen.|
 |Fehlende PowerShell- und CLI-Unterstützung für ICMP|Azure PowerShell und CLI weisen keine Unterstützung von ICMP als gültiges Protokoll in Netzwerkregeln auf.|Es ist weiterhin möglich, ICMP als Protokoll über das Portal und die REST-API zu verwenden. Wir arbeiten daran, ICMP in Kürze in PowerShell und CLI hinzuzufügen.|
 |Für FQDN-Tags muss ein Protokoll/Port festgelegt werden|Für Anwendungsregeln mit FQDN-Tags ist eine port:-Protokolldefinition erforderlich.|Sie können **https** als port:-Protokollwert verwenden. Wir arbeiten daran, dieses Feld optional zu machen, wenn FQDN-Tags verwendet werden.|
-|Das Verschieben einer Firewall in eine andere Ressourcengruppe oder ein Abonnement wird nicht unterstützt.|Das Verschieben einer Firewall in eine andere Ressourcengruppe oder ein Abonnement wird nicht unterstützt.|Die Unterstützung dieser Funktionalität ist Teil unserer Roadmap. Um eine Firewall in eine andere Ressourcengruppe oder ein anderes Abonnement zu verschieben, müssen Sie die aktuelle Instanz löschen und in der neuen Ressourcengruppe bzw. im Abonnement neu erstellen.|
+|Das Verschieben einer Firewall in eine andere Ressourcengruppe oder ein anderes Abonnement wird nicht unterstützt.|Das Verschieben einer Firewall in eine andere Ressourcengruppe oder ein Abonnement wird nicht unterstützt.|Die Unterstützung dieser Funktionalität ist Teil unserer Roadmap. Um eine Firewall in eine andere Ressourcengruppe oder ein anderes Abonnement zu verschieben, müssen Sie die aktuelle Instanz löschen und in der neuen Ressourcengruppe bzw. im Abonnement neu erstellen.|
+|Portbereich in Netzwerk- und Anwendungsregeln|Ports sind auf eine Anzahl von 64.000 begrenzt, da der hohe Portbereich für Verwaltung und Integritätstests reserviert sind. |Wir arbeiten daran, diese Begrenzung zu lockern.|
+|
 
 ## <a name="next-steps"></a>Nächste Schritte
 

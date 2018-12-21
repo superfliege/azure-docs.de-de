@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 10/31/2018
+ms.date: 12/07/2018
 ms.topic: tutorial
 ms.service: cost-management
-ms.custom: ''
+ms.custom: seodec18
 manager: benshy
-ms.openlocfilehash: 7b9c9a600d105d4b7fbbeb4f52ee42b5eb2bcaaa
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 928b8fd8ef076afa2c60c870fb705a9a682003d1
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52275869"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53093606"
 ---
 <!-- Intent: As a cloud-consuming user, I need to view usage and costs for my cloud resources and services.
 -->
@@ -51,15 +51,15 @@ Sie verfolgen die tatsächlich für die Nutzung getätigten Ausgaben und die Kos
 
 Dies ist ein Beispiel für einen Bericht:
 
-![Beispielbericht](./media/tutorial-review-usage/actual-cost01.png)
+![Beispiel für den Bericht „Actual Cost Over Time“ (Ist-Kosten im Zeitverlauf)](./media/tutorial-review-usage/actual-cost01.png)
 
 Im Bericht werden alle Ausgaben in den letzten 30 Tagen aufgeführt. Wenn nur die Ausgaben für Azure-Dienste angezeigt werden sollen, wenden Sie die Gruppe „Service“ (Dienst) an, und filtern Sie nach allen Azure-Diensten. Die folgende Abbildung stellt gefilterte Dienste dar.
 
-![Gefilterte Dienste](./media/tutorial-review-usage/actual-cost02.png)
+![Beispiel für die gefilterten Azure-Dienste](./media/tutorial-review-usage/actual-cost02.png)
 
 Im vorherigen Beispiel fielen ab dem 29.10.2018 geringere Ausgaben an. Eine zu große Anzahl von Spalten kann aber einen offensichtlichen Trend verdecken. Sie können die Berichtsanzeige in ein Linien- oder Flächendiagramm ändern, um die Daten in anderen Darstellungen zu untersuchen. In der folgenden Abbildung ist der Trend deutlicher erkennbar.
 
-![Trend im Bericht](./media/tutorial-review-usage/actual-cost03.png)
+![Beispiel eines rückläufigen Kostentrends für virtuelle Azure-Computer](./media/tutorial-review-usage/actual-cost03.png)
 
 Wenn Sie mit dem Beispiel fortfahren, sehen Sie, dass die Kosten für die Azure-VM gefallen sind. Die Kosten für die anderen Azure-Dienste sind ab diesem Tag ebenfalls gefallen. Wodurch wurde diese Kostensenkung verursacht? In diesem Beispiel wurde ein großes Projekt abgeschlossen, sodass auch der Verbrauch für viele Azure-Dienste gefallen ist.
 
@@ -77,15 +77,15 @@ Im Bericht mit Empfehlungen zu kostengünstigen Größenanpassungen werden poten
 
 Klicken Sie im Menü oben im Portal auf **Optimizer** (Optimierung) > **Sizing Optimization** (Größenoptimierung) > **Cost Effective Sizing Recommendations** (Empfehlungen zu kostengünstigen Größenanpassungen). Wenden Sie einen Filter an, um die Ergebnisse zu reduzieren, falls dies hilfreich ist. In der folgenden Abbildung finden Sie ein Beispiel.
 
-![Virtuelle Azure-Computer](./media/tutorial-review-usage/sizing01.png)
+![Bericht mit Empfehlungen zu kosteneffektiven Größen für virtuelle Azure-Computer](./media/tutorial-review-usage/sizing01.png)
 
 In diesem Beispiel können 2.382 USD eingespart werden, wenn die Empfehlungen hinsichtlich der Änderung der VM-Instanztypen befolgt werden. Klicken Sie auf das Pluszeichen (+) unter **Details**, um die erste Empfehlung aufzurufen. Dies sind die Details der Empfehlung.
 
-![Empfehlungsdetails](./media/tutorial-review-usage/sizing02.png)
+![Beispiel für Empfehlungsdetails](./media/tutorial-review-usage/sizing02.png)
 
 Zeigen Sie die IDs der VM-Instanz an, indem Sie auf das Pluszeichen neben **List of Candidates** (Liste der Kandidaten) klicken.
 
-![Liste der Kandidaten](./media/tutorial-review-usage/sizing03.png)
+![Beispiel für eine Liste mit VM-Kandidaten für die Größenänderung](./media/tutorial-review-usage/sizing03.png)
 
 Ein Videotutorial zum Ermitteln von Ineffizienzen bei der Nutzung finden Sie unter [Optimizing VM Size in Cloudyn](https://youtu.be/1xaZBNmV704) (Optimieren der VM-Größe in Cloudyn).
 
@@ -99,7 +99,7 @@ Für Ausgaben erstellen Sie eine Warnung anhand eines Kostenberichts. In diesem 
 
 Verwenden Sie im Feld „Save or Schedule this report“ (Diesen Bericht speichern oder planen) die Registerkarte **Scheduling** (Planung), um sich den Bericht in den gewünschten Intervallen per E-Mail zusenden zu lassen. Achten Sie darauf, dass Sie **Send via email** (Per E-Mail senden) auswählen. Sämtliche verwendeten Tags, Gruppierungen und Filter sind in dem per E-Mail versendeten Bericht enthalten. Klicken Sie auf die Registerkarte **Threshold** (Schwellenwert), und wählen Sie **Actual Cost vs. Threshold** (Tatsächliche Kosten im Vergleich zu Schwellenwert) aus. Wenn Sie über ein Gesamtbudget von 20.000 USD verfügen und eine Benachrichtigung wünschen, wenn sich die Kosten der Hälfte des Budgetbetrags nähern, sollten Sie eine **rote Warnung** bei 10.000 USD und eine **gelbe Warnung** bei 9.000 USD erstellen. Verwenden Sie keine Kommas in eingegebenen Werten. Wählen Sie anschließend die Anzahl der aufeinanderfolgenden Warnungen aus. Wenn Sie die festgelegte Gesamtzahl von Warnungen erhalten haben, werden keine weiteren Warnungen mehr versendet. Speichern Sie den geplanten Bericht.
 
-![Beispielbericht](./media/tutorial-review-usage/schedule-alert01.png)
+![Beispiel für rote und gelbe Warnungen auf der Grundlage von Ausgabeschwellenwerten](./media/tutorial-review-usage/schedule-alert01.png)
 
 Sie können auch die Schwellenwertmetrik „Cost Percentage vs. Budget“ (Prozentuale Kosten im Vergleich zu Budget) verwenden, um Warnungen zu erstellen. Mit dieser Metrik können Sie Budgetprozentsätze anstelle von Geldbeträgen verwenden.
 

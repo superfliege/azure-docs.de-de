@@ -4,15 +4,15 @@ description: Enthält eine Übersicht über den Azure Migrate-Dienst.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: overview
-ms.date: 11/28/2018
+ms.date: 12/05/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 98ff54bcfe67d79d8c15da666aad0bebfe48f6e0
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: fcf26b8a5eff407d6dde092ae645084fb20a14a8
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52839733"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53250575"
 ---
 # <a name="about-azure-migrate"></a>Informationen zu Azure Migrate
 
@@ -22,9 +22,9 @@ Mit dem Azure Migrate-Dienst werden lokale Workloads für die Migration zu Azure
 
 Azure Migrate bietet Folgendes:
 
-- **Bewerten der Bereitschaft für Azure**: Bewerten Sie, ob Ihre lokalen Computer für die Ausführung in Azure geeignet sind.
-- **Größenempfehlungen**: Nutzen Sie Größenempfehlungen für virtuelle Azure-Computer, die auf dem Leistungsverlauf lokaler virtueller Computer basieren.
-- **Voraussichtliche monatliche Kosten**: Erhalten Sie Kostenschätzungen zur Ausführung lokaler Computer in Azure.  
+- **Bewerten der Azure-Bereitschaft**: Bewerten Sie, ob Ihre lokalen Computer für die Ausführung in Azure geeignet sind.
+- **Größenempfehlungen**: Sie erhalten Größenempfehlungen für virtuelle Azure-Computer, die auf der bisherigen Leistung lokaler virtueller Computer basieren.
+- **Geschätzte monatliche Kosten**: Sie erhalten Kostenschätzungen zur Ausführung lokaler Computer in Azure.  
 - **Migration mit hoher Zuverlässigkeit**: Visualisieren Sie Abhängigkeiten von lokalen Computern, um Gruppen von Computern zu erstellen, die Sie gemeinsam bewerten und migrieren möchten.
 
 ## <a name="current-limitations"></a>Aktuelle Einschränkungen
@@ -34,10 +34,14 @@ Azure Migrate bietet Folgendes:
 - Sie können in einer einzigen Ermittlung bis zu 1.500 und in einem einzelnen Projekt bis zu 1.500 virtuelle Computer ermitteln. Außerdem können Sie in einem einzelnen Assessment bis zu 1.500 virtuelle Computer bewerten.
 - Wenn Sie eine Ermittlung für eine größere Umgebung durchführen möchten, können Sie die Ermittlung aufteilen und mehrere Projekte erstellen. [Weitere Informationen](how-to-scale-assessment.md). Azure Migrate unterstützt bis zu 20 Projekte pro Abonnement.
 - Azure Migrate unterstützt nur verwaltete Datenträger für die Migrationsbewertung.
--  Sie können ein Azure Migrate-Projekt nur in den USA erstellen. Es ist aber möglich, dass Sie eine Migration zu einem beliebigen Azure-Zielstandort planen.
-    - Nur die Metadaten, die in der lokalen Umgebung erkannt werden, werden in der Region des Migrationsprojekts gespeichert.
-    - Metadaten werden in einer Region der ausgewählten Geografie gespeichert: „USA, Westen-Mitte“ bzw. „USA, Osten“.
-    - Wenn Sie die Visualisierung von Abhängigkeiten durch Erstellung eines neuen Log Analytics-Arbeitsbereichs verwenden, wird der Arbeitsbereich in derselben Region wie das Projekt erstellt.
+-  Sie können ein Azure Migrate-Projekt nur in den folgenden geografischen Regionen erstellen. Aber dies schränkt nicht Ihre Möglichkeit zum Erstellen von Bewertungen anderer Azure-Standorte als Ziel ein.
+    **Geografie** | **Speicherort**
+    --- | ---
+    USA | „USA, Westen-Mitte“ oder „USA, Osten“
+    Azure Government | US Government, Virginia
+
+    Die mit dem Migrationsprojekt verknüpfte Region wird zum Speichern der Metadaten verwendet, die in der lokalen Umgebung ermittelt wurden. Metadaten werden in einer der Regionen basierend auf der für das Migrationsprojekt angegebenen Geografie gespeichert. Wenn Sie die Visualisierung von Abhängigkeiten durch Erstellung eines neuen Log Analytics-Arbeitsbereichs verwenden, wird der Arbeitsbereich in derselben Region wie das Projekt erstellt.
+- Die Funktion für Abhängigkeitsvisualisierung ist nicht in Azure Government verfügbar.
 
 
 ## <a name="what-do-i-need-to-pay-for"></a>Für was muss ich zahlen?
@@ -93,8 +97,8 @@ Lokale VM | Log Analytics-Arbeitsbereich | [TCP 443] | [Microsoft Monitoring Age
 
 Nachdem Sie lokale Computer bewertet haben, können Sie einige Tools nutzen, um die Migration durchzuführen:
 
-- **Azure Site Recovery:** Sie können Azure Site Recovery für die Migration zu Azure verwenden. Dazu [bereiten Sie die erforderlichen Azure-Komponenten](../site-recovery/tutorial-prepare-azure.md) vor, einschließlich eines Speicherkontos und eines virtuellen Netzwerks. Lokal [bereiten Sie Ihre VMware-Umgebung vor](../site-recovery/vmware-azure-tutorial-prepare-on-premises.md). Wenn alles vorbereitet ist, richten Sie die Replikation in Azure ein und aktivieren sie. Anschließend migrieren Sie die virtuellen Computer. [Weitere Informationen](../site-recovery/vmware-azure-tutorial.md).
-- **Azure Database Migration:** Wenn Ihre lokalen Computer eine Datenbank wie etwa SQL Server, MySQL oder Oracle ausführen, können Sie den [Azure Database Migration Service](../dms/dms-overview.md) für die Migration zu Azure verwenden.
+- **Azure Site Recovery**: Sie können Azure Site Recovery für die Migration zu Azure verwenden. Dazu [bereiten Sie die erforderlichen Azure-Komponenten](../site-recovery/tutorial-prepare-azure.md) vor, einschließlich eines Speicherkontos und eines virtuellen Netzwerks. Lokal [bereiten Sie Ihre VMware-Umgebung vor](../site-recovery/vmware-azure-tutorial-prepare-on-premises.md). Wenn alles vorbereitet ist, richten Sie die Replikation in Azure ein und aktivieren sie. Anschließend migrieren Sie die virtuellen Computer. [Weitere Informationen](../site-recovery/vmware-azure-tutorial.md).
+- **Azure-Datenbankmigration**: Wenn Ihre lokalen Computer eine Datenbank wie etwa SQL Server, MySQL oder Oracle ausführen, können Sie den [Azure Database Migration Service](../dms/dms-overview.md) für die Migration zu Azure verwenden.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

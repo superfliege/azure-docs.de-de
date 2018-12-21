@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: get-started-article
 ms.date: 09/26/2018
 ms.author: iainfou
-ms.openlocfilehash: 4af4cae07f4e02bc8306c0b317da3a58e4586494
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.openlocfilehash: 2bc0579d3dd60d66a23a29dabff7e43ca8dfee76
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51578348"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53435394"
 ---
 # <a name="service-principals-with-azure-kubernetes-service-aks"></a>Dienstprinzipale mit Azure Kubernetes Service (AKS)
 
@@ -105,7 +105,7 @@ Möglicherweise verwenden Sie erweiterte Netzwerke, in denen sich das virtuelle 
   - *Microsoft.Network/publicIPAddresses/join/action*
 - Alternativ können Sie die integrierte Rolle [Netzwerkmitwirkender][rbac-network-contributor] für das Subnetz im virtuellen Netzwerk zuweisen.
 
-### <a name="storage"></a>Speicher
+### <a name="storage"></a>Storage
 
 Möglicherweise müssen Sie auf vorhandene Datenträgerressourcen in einer anderen Ressourcengruppe zugreifen. Weisen Sie eine der folgenden Gruppen von Rollenberechtigungen zu:
 
@@ -113,6 +113,10 @@ Möglicherweise müssen Sie auf vorhandene Datenträgerressourcen in einer ander
   - *Microsoft.Compute/disks/read*
   - *Microsoft.Compute/disks/write*
 - Alternativ können Sie die integrierte Rolle [Speicherkontomitwirkender][rbac-storage-contributor] für die Ressourcengruppe zuweisen.
+
+### <a name="azure-container-instances"></a>Azure Container Instances
+
+Wenn Sie Virtual Kubelet für die Integration in AKS verwenden und Azure Container Instances (ACI) in einer Ressourcengruppe außerhalb des AKS-Clusters ausführen, muss dem AKS-Dienstprinzipal in der ACI-Ressourcengruppe die Berechtigung *Mitwirkender* gewährt werden.
 
 ## <a name="additional-considerations"></a>Zusätzliche Überlegungen
 

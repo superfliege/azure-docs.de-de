@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Generieren einer Miniaturansicht – REST, Java – Maschinelles Sehen-API'
+title: 'Schnellstart: Generieren einer Miniaturansicht – REST, Java: Maschinelles Sehen'
 titleSuffix: Azure Cognitive Services
 description: In diesem Schnellstart generieren Sie eine Miniaturansicht aus einem Bild, indem Sie die Maschinelles Sehen-API mit Java verwenden.
 services: cognitive-services
@@ -10,16 +10,16 @@ ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: pafarley
-ms.openlocfilehash: 6a169844a0c2c082e0c16f54eab82b1d99f89967
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: d30d6d073ad1e18aa2acb4c4a73c21c0d7243536
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51853063"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52972027"
 ---
-# <a name="quickstart-generate-a-thumbnail-using-the-rest-api-and-java-in-computer-vision"></a>Schnellstart: Generieren einer Miniaturansicht mit dem REST-API und Java in Maschinelles Sehen
+# <a name="quickstart-generate-a-thumbnail-using-the-rest-api-and-java-in-computer-vision"></a>Schnellstart: Generieren einer Miniaturansicht mit der REST-API und Java in der Maschinelles Sehen-API
 
-In diesem Schnellstart generieren Sie aus einem Bild eine Miniaturansicht, indem Sie die REST-API von Maschinelles Sehen verwenden. Mit der [Get Thumbnail](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb)-Methode können Sie eine Miniaturansicht von einem Bild generieren. Sie geben die Höhe und Breite an. Diese kann sich vom Seitenverhältnis des Eingabebilds unterscheiden. Für das maschinelle Sehen wird die intelligente Zuschneidefunktion verwendet, um die gewünschte Region zu identifizieren und basierend auf dieser Region Zuschneidekoordinaten zu generieren.
+In diesem Schnellstart generieren Sie eine Miniaturansicht von einem Bild, indem Sie die REST-API von Maschinelles Sehen verwenden. Mit der [Get Thumbnail](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb)-Methode können Sie eine Miniaturansicht von einem Bild generieren. Sie geben die Höhe und Breite an. Diese kann sich vom Seitenverhältnis des Eingabebilds unterscheiden. Für das maschinelle Sehen wird die intelligente Zuschneidefunktion verwendet, um den gewünschten Bereich zu identifizieren und basierend auf dieser Region Zuschneidekoordinaten zu generieren.
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) erstellen, bevor Sie beginnen.
 

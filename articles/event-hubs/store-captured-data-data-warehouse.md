@@ -1,21 +1,22 @@
 ---
-title: Migrieren von Azure Event Hubs-Daten nach SQL Data Warehouse | Microsoft-Dokumentation
+title: Migrieren von Ereignisdaten zu SQL Data Warehouse – Azure Event Hubs | Microsoft-Dokumentation
 description: In diesem Tutorial erfahren Sie, wie Sie Daten aus Ihrem Event Hub mithilfe einer durch eine Event Grid-Instanz ausgelösten Azure-Funktion in einer SQL Data Warehouse-Instanz erfassen.
 services: event-hubs
 author: ShubhaVijayasarathy
 manager: ''
 ms.author: shvija
-ms.date: 08/27/2018
+ms.custom: seodec18
+ms.date: 12/06/2018
 ms.topic: tutorial
 ms.service: event-hubs
-ms.openlocfilehash: 9673a7bff8e2d22764be28abef807434c53cc552
-ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
+ms.openlocfilehash: 03ebdabf60882a73eb15cbd36481068591bbd3bc
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43145293"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53086282"
 ---
-# <a name="process-and-migrate-captured-event-hubs-data-to-a-sql-data-warehouse-using-event-grid-and-azure-functions"></a>Verarbeiten und Migrieren erfasster Event Hubs-Daten in einer SQL Data Warehouse-Instanz mithilfe von Event Grid und Azure Functions
+# <a name="migrate-captured-event-hubs-data-to-a-sql-data-warehouse-using-event-grid-and-azure-functions"></a>Migrieren erfasster Event Hubs-Daten zu einer SQL Data Warehouse-Instanz mithilfe von Event Grid und Azure Functions
 
 Event Hubs [Capture](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview) ist die einfachste Methode, um Streamingdaten in Event Hubs automatisch an Azure Blob Storage oder an Azure Data Lake Store zu übermitteln. Die Daten können anschließend verarbeitet und an beliebige andere Speicherorte (etwa SQL Data Warehouse oder Cosmos DB) übermittelt werden. In diesem Tutorial wird gezeigt, wie Sie Daten aus Ihrem Event Hub mithilfe einer durch eine [Event Grid](https://docs.microsoft.com/azure/event-grid/overview)-Instanz ausgelösten Azure-Funktion in einer SQL Data Warehouse-Instanz erfassen.
 

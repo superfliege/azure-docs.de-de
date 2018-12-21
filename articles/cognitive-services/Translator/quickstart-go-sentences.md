@@ -1,112 +1,169 @@
 ---
-title: 'Schnellstart: Abrufen von Satzlängen, Go: Textübersetzungs-API'
+title: 'Schnellstart: Abrufen von Satzlängen mit Go – Textübersetzungs-API'
 titleSuffix: Azure Cognitive Services
 description: In diesem Schnellstart ermitteln Sie die Länge von Sätzen im Text. Dazu verwenden Sie die Textübersetzungs-API mit Go.
 services: cognitive-services
-author: noellelacharite
+author: erhopf
 manager: erhopf
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
-ms.date: 06/29/2018
+ms.date: 12/05/2018
 ms.author: erhopf
-ms.openlocfilehash: 92ea2291760edf16863dc58a00bac4389f818e72
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 71b88afeb941e6b635548468e634e07597318116
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49644922"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52994119"
 ---
-# <a name="quickstart-get-sentence-lengths-with-the-translator-text-rest-api-go"></a>Schnellstart: Abrufen von Satzlängen mit der Textübersetzungs-REST-API (Go)
+# <a name="quickstart-use-the-translator-text-api-to-determine-sentence-length-using-go"></a>Schnellstart: Verwenden der Textübersetzungs-API zum Ermitteln der Satzlänge mit Go
 
-In dieser Schnellstartanleitung ermitteln Sie mithilfe der Textübersetzungs-API die Länge von Sätzen im Text.
+In dieser Schnellstartanleitung wird beschrieben, wie Sie Satzlängen (in Zeichen) ermitteln, indem Sie Go und die Textübersetzungs-REST-API verwenden.
+
+Für diese Schnellstartanleitung wird ein [Azure Cognitive Services-Konto](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) mit einer Textübersetzungsressource benötigt. Wenn Sie über kein Konto verfügen, können Sie über die [kostenlose Testversion](https://azure.microsoft.com/try/cognitive-services/) einen Abonnementschlüssel abrufen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Zum Ausführen dieses Codes müssen Sie die [Go-Distribution](https://golang.org/doc/install) installieren. In diesem Beispielcode werden nur **Kernbibliotheken** verwendet, sodass keine externen Abhängigkeiten vorhanden sind.
+Für diese Schnellstartanleitung ist Folgendes erforderlich:
 
-Damit Sie die Textübersetzungs-API verwenden können, benötigen Sie darüber hinaus einen Abonnementschlüssel. Informationen hierzu finden Sie unter [Registrieren für die Textübersetzungs-API](translator-text-how-to-signup.md).
+* [Go](https://golang.org/doc/install)
+* Ein Azure-Abonnementschlüssel für die Textübersetzung
 
-## <a name="breaksentence-request"></a>BreakSentence-Anforderung
+## <a name="create-a-project-and-import-required-modules"></a>Erstellen eines Projekts und Importieren der erforderlichen Module
 
-Der folgende Code unterteilt mithilfe der [BreakSentence](./reference/v3-0-break-sentence.md)-Methode den Quelltext in Sätze.
+Erstellen Sie in Ihrer bevorzugten IDE oder Ihrem bevorzugten Editor ein neues Go-Projekt. Kopieren Sie anschließend den folgenden Codeausschnitt in Ihr Projekt in eine Datei namens `sentence-length.go`.
 
-1. Erstellen Sie ein neues Go-Projekt in Ihrem bevorzugten Code-Editor.
-2. Fügen Sie den unten stehenden Code hinzu.
-3. Ersetzen Sie den `subscriptionKey`-Wert durch einen für Ihr Abonnement gültigen Zugriffsschlüssel.
-4. Speichern Sie die Datei mit der Erweiterung „.go“.
-5. Öffnen Sie auf einem Computer, auf dem Go installiert ist, eine Eingabeaufforderung.
-6. Erstellen Sie die Datei, beispielsweise „go build quickstart-sentences.go“.
-7. Führen Sie die Datei aus, etwa „quickstart-sentences“.
-
-```golang
+```go
 package main
 
 import (
+    "bytes"
     "encoding/json"
     "fmt"
-    "io/ioutil"
+    "log"
     "net/http"
-    "strconv"
-    "strings"
-    "time"
+    "net/url"
+    "os"
 )
+```
 
+## <a name="create-the-main-function"></a>Erstellen der main-Funktion
+
+Dieses Beispiel liest den Textübersetzungs-Abonnementschlüssel aus der Umgebungsvariablen `TRANSLATOR_TEXT_KEY`. Wenn Sie mit Umgebungsvariablen nicht vertraut sind, können Sie `subscriptionKey` als Zeichenfolge festlegen und die Bedingungsanweisung auskommentieren.
+
+Kopieren Sie diesen Code in Ihr Projekt:
+
+```go
 func main() {
-    // Replace the subscriptionKey string value with your valid subscription key
-    const subscriptionKey = "<Subscription Key>"
-
-    const uriBase = "https://api.cognitive.microsofttranslator.com"
-    const uriPath = "/breaksentence?api-version=3.0"
-
-    const uri = uriBase + uriPath
-
-    const text = "How are you? I am fine. What did you do today?"
-
-    r := strings.NewReader("[{\"Text\" : \"" + text + "\"}]")
-
-    client := &http.Client{
-        Timeout: time.Second * 2,
+    /*
+     * Read your subscription key from an env variable.
+     * Please note: You can replace this code block with
+     * var subscriptionKey = "YOUR_SUBSCRIPTION_KEY" if you don't
+     * want to use env variables.
+     */
+    subscriptionKey := os.Getenv("TRANSLATOR_TEXT_KEY")
+    if subscriptionKey == "" {
+       log.Fatal("Environment variable TRANSLATOR_TEXT_KEY is not set.")
     }
-
-    req, err := http.NewRequest("POST", uri, r)
-    if err != nil {
-        fmt.Printf("Error creating request: %v\n", err)
-        return
-    }
-
-    req.Header.Add("Content-Type", "application/json")
-    req.Header.Add("Content-Length", strconv.FormatInt(req.ContentLength, 10))
-    req.Header.Add("Ocp-Apim-Subscription-Key", subscriptionKey)
-
-    resp, err := client.Do(req)
-    if err != nil {
-        fmt.Printf("Error on request: %v\n", err)
-        return
-    }
-    defer resp.Body.Close()
-
-    body, err := ioutil.ReadAll(resp.Body)
-    if err != nil {
-        fmt.Printf("Error reading response body: %v\n", err)
-        return
-    }
-
-    var f interface{}
-    json.Unmarshal(body, &f)
-
-    jsonFormatted, err := json.MarshalIndent(f, "", "  ")
-    if err != nil {
-        fmt.Printf("Error producing JSON: %v\n", err)
-        return
-    }
-    fmt.Println(string(jsonFormatted))
+    /*
+     * This calls our breakSentence function, which we'll
+     * create in the next section. It takes a single argument,
+     * the subscription key.
+     */
+    breakSentence(subscriptionKey)
 }
 ```
 
-## <a name="breaksentence-response"></a>BreakSentence-Antwort
+## <a name="create-a-function-to-determine-sentence-length"></a>Erstellen einer Funktion zum Ermitteln der Satzlänge
 
-Es wird eine erfolgreiche Antwort im JSON-Format zurückgegeben, wie im folgenden Beispiel gezeigt:
+In diesem Schritt erstellen wir eine Funktion zum Ermitteln der Satzlänge. Diese Funktion verwendet ein einzelnes Argument: Ihren Textübersetzungs-Abonnementschlüssel.
+
+```go
+func breakSentence(subscriptionKey string) {
+    /*  
+     * In the next few sections, we'll add code to this
+     * function to make a request and handle the response.
+     */
+}
+```
+
+Als Nächstes erstellen wir die URL. Die URL wird mit den Methoden `Parse()` und `Query()` erstellt. Mit der Methode `Add()` werden Parameter hinzugefügt.
+
+Kopieren Sie diesen Code in die Funktion `breakSentence`.
+
+```go
+// Build the request URL. See: https://golang.org/pkg/net/url/#example_URL_Parse
+u, _ := url.Parse("https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0")
+q := u.Query()
+q.Add("languages", "en")
+u.RawQuery = q.Encode()
+```
+
+>[!NOTE]
+> Weitere Informationen zu Endpunkten, Routen und Anforderungsparametern finden Sie unter [Textübersetzungs-API 3.0: BreakSentence](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-break-sentence).
+
+## <a name="create-a-struct-for-your-request-body"></a>Erstellen einer Struktur für Ihren Anforderungstext
+
+Erstellen Sie als Nächstes eine anonyme Struktur für den Anforderungstext, und codieren Sie sie im JSON-Format mit `json.Marshal()`. Fügen Sie diesen Code der Funktion `breakSentence` hinzu.
+
+```go
+// Create an anonymous struct for your request body and encode it to JSON
+body := []struct {
+    Text string
+}{
+    {Text: "How are you? I am fine. What did you do today?"},
+}
+b, _ := json.Marshal(body)
+```
+
+## <a name="build-the-request"></a>Erstellen der Anforderung
+
+Nachdem Sie nun den Anforderungstext im JSON-Format codiert haben, können Sie Ihre POST-Anforderung erstellen und die Textübersetzungs-API aufrufen.
+
+```go
+// Build the HTTP POST request
+req, err := http.NewRequest("POST", u.String(), bytes.NewBuffer(b))
+if err != nil {
+    log.Fatal(err)
+}
+// Add required headers to the request
+req.Header.Add("Ocp-Apim-Subscription-Key", subscriptionKey)
+req.Header.Add("Content-Type", "application/json")
+
+// Call the Translator Text API
+res, err := http.DefaultClient.Do(req)
+if err != nil {
+    log.Fatal(err)
+}
+```
+
+## <a name="handle-and-print-the-response"></a>Verarbeiten und Ausgeben der Antwort
+
+Fügen Sie diesen Code der Funktion `breakSentence` hinzu, um die JSON-Antwort zu decodieren, zu formatieren und das Ergebnis auszugeben.
+
+```go
+// Decode the JSON response
+var result interface{}
+if err := json.NewDecoder(res.Body).Decode(&result); err != nil {
+    log.Fatal(err)
+}
+// Format and print the response to terminal
+prettyJSON, _ := json.MarshalIndent(result, "", "  ")
+fmt.Printf("%s\n", prettyJSON)
+```
+
+## <a name="put-it-all-together"></a>Korrektes Zusammenfügen
+
+Das war's: Sie haben ein einfaches Programm erstellt, das die Textübersetzungs-API aufruft und eine JSON-Antwort zurückgibt. Führen Sie das Programm jetzt aus:
+
+```console
+go run sentence-length.go
+```
+
+[Auf GitHub](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-Go) finden Sie das vollständige Beispiel, falls Sie Ihren Code mit unserem Code vergleichen möchten.
+
+## <a name="sample-response"></a>Beispiel für eine Antwort
 
 ```json
 [
@@ -130,3 +187,13 @@ Sehen Sie sich Go-Pakete für Cognitive Services-APIs aus dem [Azure SDK für Go
 
 > [!div class="nextstepaction"]
 > [Go-Pakete auf GitHub](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices)
+
+## <a name="see-also"></a>Weitere Informationen
+
+Informieren Sie sich, wie Sie die Textübersetzungs-API für folgende Zwecke verwenden:
+
+* [Übersetzen von Text](quickstart-go-translate.md)
+* [Transliteration von Text](quickstart-go-transliterate.md)
+* [Identifizieren der Sprache anhand der Eingabe](quickstart-go-detect.md)
+* [Ermitteln alternativer Übersetzungen](quickstart-go-dictionary.md)
+* [Abrufen einer Liste der unterstützten Sprachen](quickstart-go-languages.md)

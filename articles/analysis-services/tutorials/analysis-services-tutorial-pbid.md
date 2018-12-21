@@ -2,19 +2,20 @@
 title: 'Tutorial: Herstellen einer Verbindung mit Azure Analysis Services unter Verwendung von Power BI Desktop | Microsoft-Dokumentation'
 author: minewiskan
 manager: kfile
+description: Hier erfahren Sie, wie Sie eine Verbindung zwischen Azure Analysis Services und Power BI Desktop herstellen.
 ms.service: azure-analysis-services
 ms.topic: tutorial
-ms.date: 10/18/2018
+ms.date: 12/06/2018
 ms.author: owend
 ms.reviewer: owend
-ms.openlocfilehash: ad97fd7569690d0d199b0ce1a82f31f8dfa64c26
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 0025655b3df8ddfb91857bbd56c04507ac6bca5e
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49426126"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52993977"
 ---
-# <a name="tutorial-connect-with-power-bi-desktop"></a>Tutorial: Herstellen einer Verbindung unter Verwendung von Power BI Desktop
+# <a name="tutorial-connect-with-power-bi-desktop"></a>Tutorial: Herstellen einer Verbindung mit Power BI Desktop
 
 In diesem Tutorial verwenden Sie Power BI Desktop, um eine Verbindung mit der Beispielmodelldatenbank „adventureworks“ auf Ihrem Server herzustellen. Die auszuführenden Aufgaben simulieren eine typische Benutzerverbindung mit dem Modell sowie die Erstellung eines einfachen Berichts auf der Grundlage von Modelldaten.
 
@@ -29,7 +30,7 @@ In diesem Tutorial verwenden Sie Power BI Desktop, um eine Verbindung mit der Be
 - Sie benötigen [*Leseberechtigungen*](../analysis-services-server-admins.md) für die Beispielmodelldatenbank „adventureworks“.
 - [Installieren Sie die neueste Version von Power BI Desktop.](https://powerbi.microsoft.com/desktop)
 
-## <a name="log-in-to-the-azure-portal"></a>Anmelden beim Azure-Portal
+## <a name="sign-in-to-the-azure-portal"></a>Melden Sie sich auf dem Azure-Portal an.
 In diesem Tutorial melden Sie sich nur beim Portal an, um den Servernamen abzurufen. Benutzer erhalten den Servernamen üblicherweise vom Serveradministrator.
 
 Melden Sie sich beim [Portal](https://portal.azure.com/) an.
@@ -51,7 +52,7 @@ Kopieren Sie den Servernamen über **Azure-Portal** > Server > **Übersicht** > 
 
    ![Angeben von Servername und Modeldatenbank](./media/analysis-services-tutorial-pbid/aas-pbid-connect-aas-servername.png)
 
-3. Geben Sie Ihre Anmeldeinformationen ein, wenn Sie dazu aufgefordert werden. Das eingegebene Konto muss mindestens über Leseberechtigungen für die Beispielmodelldatenbank „adventureworks“ verfügen.
+3. Geben Sie bei Aufforderung Ihre Anmeldeinformationen ein. Das eingegebene Konto muss mindestens über Leseberechtigungen für die Beispielmodelldatenbank „adventureworks“ verfügen.
 
     Das Modell „adventureworks“ wird in Power BI Desktop mit einem leeren Bericht in der Berichtsansicht geöffnet. In der Liste **Felder** werden alle nicht ausgeblendeten Modellobjekte angezeigt. Der Verbindungsstatus wird in der unteren rechten Ecke angezeigt.
 

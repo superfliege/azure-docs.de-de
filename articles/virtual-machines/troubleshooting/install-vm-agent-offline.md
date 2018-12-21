@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 3caa4f2dbe36f86c9b15a83303e90b16d06c56fd
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 14b108a836424e92a251f50b42ed93963038a333
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50419400"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53192055"
 ---
 # <a name="install-the-azure-virtual-machine-agent-in-offline-mode"></a>Installieren des Azure-VM-Agents im Offlinemodus 
 
@@ -36,7 +36,7 @@ In den folgenden Szenarien können Sie den VM-Agent im Offlinemodus installieren
 
 Mit den folgenden Schritten installieren Sie den VM-Agent im Offlinemodus:
 
-### <a name="step-1-attach-the-os-disk-of-the-vm-to-another-vm-as-a-data-disk"></a>Schritt 1: Anfügen des Betriebssystemdatenträgers des virtuellen Computers als Datenträger an einen anderen virtuellen Computer
+### <a name="step-1-attach-the-os-disk-of-the-vm-to-another-vm-as-a-data-disk"></a>Schritt 1: Anfügen des Betriebssystem-Datenträgers des virtuellen Computers als Datenträger an einen anderen virtuellen Computer
 
 1.  Löschen Sie den virtuellen Computer. Aktivieren Sie beim Löschen die Option für die **Beibehaltung der Datenträger**.
 
@@ -44,7 +44,7 @@ Mit den folgenden Schritten installieren Sie den VM-Agent im Offlinemodus:
 
 3.  Stellen Sie eine Verbindung mit der Problembehebungs-VM her. Öffnen Sie **Computerverwaltung** > **Datenträgerverwaltung**. Stellen Sie sicher, dass der Betriebssystemdatenträger online ist und dass den Datenträgerpartitionen Laufwerkbuchstaben zugewiesen sind.
 
-### <a name="step-2-modify-the-os-disk-to-install-the-azure-vm-agent"></a>Schritt 2: Ändern des Betriebssystemdatenträger zum Installieren des Azure-VM-Agents
+### <a name="step-2-modify-the-os-disk-to-install-the-azure-vm-agent"></a>Schritt 2: Ändern des Betriebssystem-Datenträgers zum Installieren des Azure-VM-Agents
 
 1.  Stellen Sie eine Remotedesktopverbindung mit der Problembehebungs-VM her.
 
@@ -76,7 +76,7 @@ Mit den folgenden Schritten installieren Sie den VM-Agent im Offlinemodus:
         - HKEY_LOCAL_MACHINE  \SYSTEM\ControlSet001\Services\WindowsAzureTelemetryService
         - HKEY_LOCAL_MACHINE  \SYSTEM\ControlSet001\Services\RdAgent
 
-        ![Exportieren der Unterschlüssel der Registrierung](./media/install-vm-agent-offline/backup-reg.png)
+          ![Exportieren der Unterschlüssel der Registrierung](./media/install-vm-agent-offline/backup-reg.png)
 
     2. Bearbeiten Sie die Registrierungsdateien. Ändern Sie in jeder Datei den Eingabewert **SYSTEM** in **BROKENSYSTEM** (wie in den folgenden Abbildungen gezeigt), und speichern Sie die Datei. Merken Sie sich den **ImagePath** des aktuellen VM-Agents. Wir müssen den entsprechenden Ordner auf den angefügten Betriebssystemdatenträger kopieren. 
 

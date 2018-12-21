@@ -14,12 +14,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 10/23/2018
 ms.author: daveba
-ms.openlocfilehash: e025d9041358fbb9dee9b64519e012c4c1988024
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 6b1eb36ae661d758f78f98de37f33c4b56741f89
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49987259"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53320777"
 ---
 # <a name="what-is-managed-identities-for-azure-resources"></a>Was sind verwaltete Identitäten für Azure-Ressourcen?
 
@@ -34,7 +34,15 @@ Die Funktion für verwaltete Identitäten für Azure-Ressourcen ist bei Azure AD
 > [!NOTE]
 > „Verwaltete Identitäten für Azure-Ressourcen“ ist der neue Name für den Dienst, der früher als „Verwaltete Dienstidentität“ (Managed Service Identity, MSI) bezeichnet wurde.
 
-## Wie funktioniert das Feature?<a name="how-does-it-work"></a>
+## <a name="terminology"></a>Begriff
+
+Die folgenden Begriffe werden in den verwalteten Identitäten für den Azure-Ressourcendokumentationssatz verwendet:
+
+- **Client-ID**: Ein eindeutiger, vom Azure AD generierter Bezeichner, der während der ersten Bereitstellung an eine Anwendung und einen Dienstprinzipal gebunden ist.
+- **Prinzipal-ID**: die Objekt-ID des Dienstprinzipalobjekts für Ihre verwaltete Identität, die zum Gewähren des rollenbasierten Zugriffs auf eine Azure-Ressource verwendet wird.
+- Der **Azure Instance Metadata Service (IMDS)** ist ein REST-Endpunkt, der für alle virtuellen IaaS-Computer verfügbar ist, die mit Azure Resource Manager erstellt wurden. Der Endpunkt steht unter einer bekannten, nicht routingfähigen IP-Adresse zur Verfügung (169.254.169.254), auf die nur von innerhalb der VM zugegriffen werden kann.
+
+## Wie funktionieren die verwalteten Identitäten für Azure-Ressourcen?<a name="how-does-it-work"></a>
 
 Es gibt zwei Arten von verwalteten Identitäten:
 

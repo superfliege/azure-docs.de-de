@@ -1,21 +1,22 @@
 ---
-title: 'Tutorial 1: Überprüfen von Endpunktäußerungen mit aktivem Lernen'
+title: Überprüfung von Endpunktäußerungen
 titleSuffix: Azure Cognitive Services
 description: Verbessern Sie App-Vorhersagen, indem Sie die über den LUIS-HTTP-Endpunkt erhaltenen Äußerungen, bei denen LUIS unsicher ist, überprüfen bzw. korrigieren. Bei einigen Äußerungen kann eine Überprüfung hinsichtlich der Absicht und bei anderen eine Überprüfung hinsichtlich der Entität erforderlich sein. Sie sollten Endpunktäußerungen regelmäßig im Rahmen der geplanten LUIS-Wartung überprüfen.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 8fbe856826770eb38cd4a6d921c1b0f4eacf9c2a
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: bc641732d74dac4f566420ada6338362932df4d7
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52426960"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53080451"
 ---
 # <a name="tutorial-1-fix-unsure-predictions"></a>Tutorial 1: Korrigieren von unsicheren Vorhersagen
 In diesem Tutorial verbessern Sie App-Vorhersagen, indem Sie die über den LUIS-HTTPS-Endpunkt erhaltenen Äußerungen, bei denen LUIS unsicher ist, überprüfen bzw. korrigieren. Bei einigen Äußerungen kann eine Überprüfung hinsichtlich der Absicht und bei anderen eine Überprüfung hinsichtlich der Entität erforderlich sein. Sie sollten Endpunktäußerungen regelmäßig im Rahmen der geplanten LUIS-Wartung überprüfen. 
@@ -132,7 +133,7 @@ Probieren Sie es mit einer Äußerung, die nicht weit von der korrigierten Äuß
 
 2. Geben Sie in der Adressleiste am Ende der URL `Are there any natural language processing jobs in my department right now?` ein. Der letzte Parameter der Abfragezeichenfolge lautet `q` (für die Abfrage (**query**) der Äußerung). 
 
-  ```JSON
+  ```json
   {
     "query": "are there any natural language processing jobs in my department right now?",
     "topScoringIntent": {

@@ -1,25 +1,18 @@
 ---
-title: Schnellstartanleitung zur Verwendung des Azure SignalR Service | Microsoft-Dokumentation
+title: Schnellstartanleitung zur Verwendung des Azure SignalR Service
 description: Eine Schnellstartanleitung zur Verwendung des Azure SignalR Service zum Erstellen eines Chatraums mit ASP.NET Core MVC-Apps.
-services: signalr
-documentationcenter: ''
 author: sffamily
-manager: cfowler
-editor: ''
-ms.assetid: ''
 ms.service: signalr
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.tgt_pltfrm: ASP.NET
-ms.workload: tbd
 ms.date: 06/13/2018
 ms.author: zhshang
-ms.openlocfilehash: b667f38c4e3d2a3fad323171a3b3b49ed3619fd9
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 805f8d55b1627ad12ce58e8a64728a42867a858e
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46959477"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53260615"
 ---
 # <a name="quickstart-create-a-chat-room-with-signalr-service"></a>Schnellstart: Erstellen eines Chatraums per SignalR Service
 

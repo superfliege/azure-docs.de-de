@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/23/2018
+ms.date: 12/13/2018
 ms.author: pareshmu
-ms.openlocfilehash: 817dd1ec5cd047035099fb88d998f79cd8c39078
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 0e683fefd0905eb48149e676b26341b47ccd9abf
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52276056"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53409784"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute-Partner und Peeringstandorte
 
@@ -42,16 +42,16 @@ Die folgende Tabelle bietet eine Übersicht über die Azure-Regionen mit Express
 
 | **Geopolitische Region** | **Zone** | **Azure-Regionen** | **ExpressRoute-Standorte** |
 | --- | --- | --- | --- |
-| **Australische Behörden** |Zone 1 | Australien, Mitte; Australien, Mitte 2 |Canberra, Canberra2 |
-| **Europa** |Zone 1 |„Frankreich, Mitte“, „Frankreich, Süden“, „Europa, Norden“, „Europa, Westen“, „Vereinigtes Königreich, Westen“, „Vereinigtes Königreich, Süden“ |Amsterdam, Amsterdam2, Dublin, London, Marseille, Newport(Wales), Paris |
-| **Nordamerika** |Zone 1 |USA, Osten; USA, Westen; USA, Osten 2; USA, Westen 2; USA, Mitte; USA, Süden-Mitte; USA, Norden-Mitte; USA, Westen-Mitte; Kanada, Mitte; Kanada, Osten |Atlanta, Chicago, Dallas, Denver, Las Vegas, Los Angeles, Miami, New York, San Antonio, Seattle, Silicon Valley, Washington DC, Montreal, Quebec City, Toronto |
-| **Asien** |Zone 2 |Ostasien, Südostasien |Hongkong, Kuala Lumpur, Singapur, Singapur2 |
-| **Australien** |Zone 2 |Südostaustralien, Ostaustralien |Melbourne, Sydney | 
-| **Indien** |Zone 2 |Indien, Westen, Indien, Mitte, Indien, Süden |Chennai, Chennai2, Mumbai, Mumbai2 |
-| **Japan** |Zone 2 |Japan West, Japan Ost |Osaka, Tokio |
-| **Südkorea** |Zone 2 |Korea, Mitte, Korea, Süden |Busan, Seoul|
-| **Südafrika** |Zone 3 |[Südafrika, Westen+, Südafrika, Norden+](https://blogs.microsoft.com/blog/2017/05/18/microsoft-deliver-microsoft-cloud-datacenters-africa/) |Kapstadt, Johannesburg |
-| **Südamerika** |Zone 3 |Brasilien Süd |Sao Paulo |
+| **Australische Behörden** | 1 | Australien, Mitte; Australien, Mitte 2 |Canberra, Canberra2 |
+| **Europa** | 1 |„Frankreich, Mitte“, „Frankreich, Süden“, „Europa, Norden“, „Europa, Westen“, „Vereinigtes Königreich, Westen“, „Vereinigtes Königreich, Süden“ |Amsterdam, Amsterdam2, Dublin, London, Marseille, Newport(Wales), Paris |
+| **Nordamerika** | 1 |USA, Osten; USA, Westen; USA, Osten 2; USA, Westen 2; USA, Mitte; USA, Süden-Mitte; USA, Norden-Mitte; USA, Westen-Mitte; Kanada, Mitte; Kanada, Osten |Atlanta, Chicago, Dallas, Denver, Las Vegas, Los Angeles, Miami, New York, San Antonio, Seattle, Silicon Valley, Washington DC, Montreal, Quebec City, Toronto |
+| **Asien** | 2 |Ostasien, Südostasien |Hongkong, Kuala Lumpur, Singapur, Singapur2 |
+| **Australien** | 2 |Südostaustralien, Ostaustralien |Melbourne, Sydney | 
+| **Indien** | 2 |Indien, Westen, Indien, Mitte, Indien, Süden |Chennai, Chennai2, Mumbai, Mumbai2 |
+| **Japan** | 2 |Japan West, Japan Ost |Osaka, Tokio |
+| **Südkorea** | 2 |Korea, Mitte, Korea, Süden |Busan, Seoul|
+| **Südafrika** | 3 |[Südafrika, Westen+, Südafrika, Norden+](https://blogs.microsoft.com/blog/2017/05/18/microsoft-deliver-microsoft-cloud-datacenters-africa/) |Kapstadt, Johannesburg |
+| **Südamerika** | 3 |Brasilien Süd |Sao Paulo |
 
 
  **+** steht für "In Kürze"
@@ -62,8 +62,8 @@ In der folgenden Tabelle finden Sie Informationen zu Regionen und geopolitischen
 | **Geopolitische Region** | **Azure-Regionen** | **ExpressRoute-Standorte** |
 | --- | --- | --- |
 | **US-Government Cloud** |„US Gov Arizona“, „US Gov Iowa“, „US Gov Texas“, „US Gov Virginia“, „US DoD, Mitte“, „US DoD, Osten“  |Chicago, Dallas, New York, Phoenix, San Antonio, Seattle, Silicon Valley, Washington DC |
-| **China, Osten** |China, Osten; China, Osten2 |Shanghai |
-| **China, Norden** |China, Norden; China, Norden2 |Peking (Beijing) |
+| **China, Osten** |China, Osten; China, Osten2 |Shanghai, Shanghai2 |
+| **China, Norden** |China, Norden; China, Norden2 |Peking, Peking2 |
 | **Deutschland** |Deutschland, Mitte, Deutschland, Ost |Berlin, Frankfurt |
 
 Konnektivität zwischen geopolitischen Regionen wird bei der ExpressRoute-Standard-SKU nicht unterstützt. Sie müssen das ExpressRoute Premium-Add-On aktivieren, um Unterstützung für globale Konnektivität zu erhalten. Verbindungen mit nationalen Cloudumgebungen werden nicht unterstützt. Wenden Sie sich an Ihren Konnektivitätsanbieter, wenn Sie derartige Verbindungen implementieren möchten.
@@ -159,7 +159,8 @@ Die folgende Tabelle enthält die Standorte nach Service Provider. [Hier](expres
 ### <a name="china"></a>China
 | **Service Provider** | **Microsoft Azure** | **Office 365** | **Standorte** |
 | --- | --- | --- | --- |
-| **China Telecom** |Unterstützt |Nicht unterstützt |Peking, Shanghai |
+| **China Telecom** |Unterstützt |Nicht unterstützt |Peking (Beijing), Shanghai |
+| **GDS** |Unterstützt |Nicht unterstützt |Peking2, Shanghai2 |
 
 Weitere Informationen finden Sie unter [ExpressRoute in China](http://www.windowsazure.cn/home/features/expressroute/).
 

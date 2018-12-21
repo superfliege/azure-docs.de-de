@@ -1,21 +1,22 @@
 ---
 title: 'Tutorial: Erstellen eines Sprachmodells mit dem Speech-Dienst'
 titlesuffix: Azure Cognitive Services
-description: Hier erfahren Sie, wie Sie ein Sprachmodell mit dem Speech-Dienst erstellen.
+description: Hier erfahren Sie, wie Sie ein Sprachmodell mit dem Speech-Dienst erstellen. Dieses benutzerdefinierte Sprachmodell kann mit modernsten Sprachmodellen von Microsoft kombiniert werden, um für Ihre App die Interaktion per Spracheingabe zu ermöglichen.
 services: cognitive-services
 author: PanosPeriorellis
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: tutorial
-ms.date: 06/25/2018
+ms.date: 12/06/2018
 ms.author: panosper
-ms.openlocfilehash: b8d58450ccc5081e3be3131761d1321a32567df3
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.custom: seodec18
+ms.openlocfilehash: 0eb946babaa3a01ca933a1290122755978fa017b
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49468992"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53093455"
 ---
 # <a name="tutorial-create-a-custom-language-model"></a>Tutorial: Erstellen eines benutzerdefinierten Sprachmodells
 
@@ -48,7 +49,7 @@ Die Sätze müssen nicht vollständig oder grammatikalisch richtig sein, aber si
 
 Die Sprachmodelldaten sollten im Format „UTF-8 BOM“ (UTF-8-Bytereihenfolge-Marke) verfasst werden. Die Textdatei muss pro Zeile jeweils ein Beispiel (Satz, Äußerung oder Abfrage) enthalten.
 
-Wenn Sie möchten, dass einige Begriffe eine höhere Gewichtung (Wichtigkeit) erhalten, können Sie Ihren Daten mehrere Äußerungen hinzufügen, die den Begriff enthalten. 
+Wenn Sie möchten, dass einige Begriffe eine höhere Gewichtung (Wichtigkeit) erhalten, können Sie Ihren Daten mehrere Äußerungen hinzufügen, die den Begriff enthalten.
 
 In der folgenden Tabelle sind die wichtigsten Anforderungen für die Sprachdaten zusammengefasst:
 
@@ -75,7 +76,7 @@ Wählen Sie in der Zeile **Sprachdatasets** die Schaltfläche **Importieren** au
 
 Melden Sie sich am [Speech Services-Portal](https://customspeech.ai) an, wenn Sie bereit sind, Ihr Sprachdataset zu importieren. Wählen Sie zunächst auf dem oberen Menüband das Dropdownmenü **Custom Speech** aus. Wählen Sie dann **Anpassungsdaten** aus. Beim ersten Versuch, Daten für Speech Services hochzuladen, wird eine leere Tabelle mit dem Namen **Datasets** angezeigt.
 
-Um ein neues Dataset zu importieren, wählen Sie die Schaltfläche **Importieren** in der Zeile **Sprachdatasets** aus. Danach zeigt die Website eine Seite zum Hochladen eines neuen Datasets an. Geben Sie einen **Namen** und eine **Beschreibung** ein, um das Dataset später identifizieren zu können, und wählen Sie dann das Gebietsschema aus. 
+Um ein neues Dataset zu importieren, wählen Sie die Schaltfläche **Importieren** in der Zeile **Sprachdatasets** aus. Danach zeigt die Website eine Seite zum Hochladen eines neuen Datasets an. Geben Sie einen **Namen** und eine **Beschreibung** ein, um das Dataset später identifizieren zu können, und wählen Sie dann das Gebietsschema aus.
 
 Klicken Sie anschließend auf die Schaltfläche **Datei auswählen**, und navigieren Sie zu der Textdatei mit den Sprachdaten. Wählen Sie anschließend **Importieren** aus. Das Dataset wird nun hochgeladen. Der Importvorgang kann je nach Größe des Datasets mehrere Minuten dauern.
 
@@ -97,9 +98,9 @@ Wenn Ihre Sprachdaten bereit sind, wählen Sie im Dropdownmenü **Menü** die Op
 
 Das entsprechende Gebietsschema muss ausgewählt werden, bevor Aktionen durchgeführt werden. Das aktuelle Gebietsschema ist im Tabellentitel auf allen Daten-, Modell- und Bereitstellungsseiten angegeben. Wählen Sie zum Ändern des Gebietsschemas die Schaltfläche **Gebietsschema ändern** unterhalb des Tabellentitels aus.  Sie gelangen auf eine Seite zum Bestätigen des Gebietsschemas. Klicken Sie auf **OK**, um zur Tabelle zurückzukehren.
 
-Geben Sie auf der Seite „Sprachmodell erstellen“ einen **Namen** und eine **Beschreibung** ein, um wichtige Informationen zu diesem Modell (etwa das verwendete Dataset) zu erfassen. Wählen Sie im nächsten Schritt das **Basissprachmodell** im Dropdownmenü aus. Dieses Modell bildet den Ausgangspunkt für Ihre Anpassung. 
+Geben Sie auf der Seite „Sprachmodell erstellen“ einen **Namen** und eine **Beschreibung** ein, um wichtige Informationen zu diesem Modell (etwa das verwendete Dataset) zu erfassen. Wählen Sie im nächsten Schritt das **Basissprachmodell** im Dropdownmenü aus. Dieses Modell bildet den Ausgangspunkt für Ihre Anpassung.
 
-Sie können zwischen zwei Basissprachmodellen wählen: Das Modell für Suche und Diktat eignet sich für anwendungsspezifische Spracheingaben wie Befehle, Suchabfragen oder diktierten Text. Das Konversationsmodell eignet sich für die Erkennung von Spracheingaben im Gesprächsstil. Diese Art von Spracheingabe richtet sich üblicherweise an eine andere Person und wird in Callcentern oder Besprechungen verwendet. 
+Sie können zwischen zwei Basissprachmodellen wählen: Das Modell für Suche und Diktat eignet sich für anwendungsspezifische Spracheingaben wie Befehle, Suchabfragen oder diktierten Text. Das Konversationsmodell eignet sich für die Erkennung von Spracheingaben im Gesprächsstil. Diese Art von Spracheingabe richtet sich üblicherweise an eine andere Person und wird in Callcentern oder Besprechungen verwendet.
 
 Das Modell für Suche und Diktat eignet sich für anwendungsspezifische Spracheingaben wie Befehle, Suchabfragen oder diktierten Text. Das Konversationsmodell eignet sich für die Erkennung von Spracheingaben im Gesprächsstil. Diese Art von Spracheingabe richtet sich üblicherweise an eine andere Person und wird in Callcentern oder Besprechungen verwendet. Ein neues Modell mit dem Namen „Universell“ ist ebenfalls öffentlich verfügbar. „Universell“ soll für alle Szenarien gelten und die Modelle vom Typ „Suche und Diktieren“ und „Konversation“ letztendlich ersetzen.
 

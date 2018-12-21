@@ -20,6 +20,8 @@ items:
     href: resource-manager-tutorial-create-encrypted-storage-accounts.md
   - name: Erstellen mehrerer Instanzen
     href: resource-manager-tutorial-create-multiple-instances.md
+  - name: Verschieben von Ressourcen
+    href: resource-manager-tutorial-move-resources.md
   - name: Festlegen der Reihenfolge für die Ressourcenbereitstellung
     href: resource-manager-tutorial-create-templates-with-dependent-resources.md
   - name: Verwenden von Bedingungen
@@ -44,9 +46,10 @@ items:
     href: https://azure.microsoft.com/resources/samples/?sort=0&service=azure-resource-manager
 - name: Konzepte
   items:
-  - name: Vorlagenstruktur
-    href: resource-group-authoring-templates.md
+  - name: Vorlagen
     items:
+    - name: Vorlagendateistruktur
+      href: resource-group-authoring-templates.md
     - name: Parameter
       href: resource-manager-templates-parameters.md
     - name: Variables
@@ -57,17 +60,21 @@ items:
       href: resource-manager-templates-resources.md
     - name: Ausgaben
       href: resource-manager-templates-outputs.md
+  - name: Anleitungen
+    items:
+    - name: Bewährte Methoden für Vorlagen
+      href: template-best-practices.md
+    - name: Abonnementgovernance
+      href: /azure/architecture/cloud-adoption/appendix/azure-scaffold
+      maintainContext: true
+    - name: Vorlagen für Cloudkonsistenz
+      href: templates-cloud-consistency.md
   - name: Ressourcenanbieter und -typen
     href: resource-manager-supported-services.md
   - name: Verwaltungsgruppen
     href: management-groups-overview.md
   - name: Bereitstellungs-Manager
     href: deployment-manager-overview.md
-  - name: Abonnementgovernance
-    href: /azure/architecture/cloud-adoption-guide/subscription-governance
-    maintainContext: true
-  - name: Vorlagen für Cloudkonsistenz
-    href: templates-cloud-consistency.md
   - name: Bereitstellungsmodi
     href: deployment-modes.md
   - name: Ressourcenlöschung
@@ -235,9 +242,9 @@ items:
     href: resource-manager-personal-data.md
   - name: Videos
     href: https://azure.microsoft.com/documentation/videos/index/?services=azure-resource-manager
-ms.openlocfilehash: 47766ce1bd0250c1eeaa269c4bc2436a2e117f02
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 71ea002b3f29952521a79ef5165e5432a48e72d6
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53600943"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53714456"

@@ -9,14 +9,14 @@ ms.date: 09/22/2018
 ms.topic: tutorial
 ms.service: service-bus-messaging
 ms.custom: mvc
-ms.openlocfilehash: 5d209d0290d8ca813101b531f18fc0f08a6edf8a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: b03a0538e92ac126a50a1346eb1bf7fb003189f9
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51246887"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52966856"
 ---
-# <a name="tutorial-update-inventory-using-azure-portal-and-topicssubscriptions"></a>Tutorial: Aktualisieren des Bestands mit dem Azure-Portal und mit Themen/Abonnements
+# <a name="tutorial-update-inventory-using-azure-portal-and-topicssubscriptions"></a>Tutorial: Aktualisieren des Bestands über das Azure-Portal und mithilfe von Themen/Abonnements
 
 Microsoft Azure Service Bus ist ein mehrinstanzenfähiger Cloudmessagingdienst, mit dem Informationen zwischen Anwendungen und Diensten gesendet werden. Asynchrone Vorgänge ermöglichen ein flexibles Brokermessaging sowie strukturiertes First-In-First-Out-Messaging (FIFO) und Funktionen zum Veröffentlichen/Abonnieren. In diesem Tutorial wird veranschaulicht, wie Sie Service Bus-Themen und -Abonnements in einem Einzelhandelsbestands-Szenario mit Veröffentlichen/Abonnieren-Kanälen über das Azure-Portal und .NET verwenden.
 
@@ -91,7 +91,7 @@ Geben Sie zum Erstellen eines Service Bus-Themas den Namespace an, unter dem die
 
 ## <a name="create-filter-rules-on-subscriptions"></a>Erstellen von Filterregeln zu Abonnements
 
-Nachdem der Namespace und das Thema bzw. die Abonnements bereitgestellt wurden und Sie über die erforderlichen Anmeldeinformationen verfügen, sind Sie zum Erstellen von Filterregeln für die Abonnements bereit und können dann Nachrichten senden und empfangen. Sie können sich den Code in [diesem GitHub-Ordner mit Beispielen](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/GettingStarted\BasicSendReceiveTutorialwithFilters) ansehen.
+Nachdem der Namespace und das Thema bzw. die Abonnements bereitgestellt wurden und Sie über die erforderlichen Anmeldeinformationen verfügen, sind Sie zum Erstellen von Filterregeln für die Abonnements bereit und können dann Nachrichten senden und empfangen. Sie können sich den Code in [diesem GitHub-Ordner mit Beispielen](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/GettingStarted/BasicSendReceiveTutorialwithFilters) ansehen.
 
 ### <a name="send-and-receive-messages"></a>Senden und Empfangen von Nachrichten
 

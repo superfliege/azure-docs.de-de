@@ -1,5 +1,5 @@
 ---
-title: Erstellen einer Azure-Blaupause mit der REST-API
+title: Erstellen einer Blaupause mit REST-API
 description: Erstellen, Definieren und Bereitstellen von Artefakten mithilfe von Azure Blueprint.
 services: blueprints
 author: DCtheGeek
@@ -8,13 +8,13 @@ ms.date: 11/07/2018
 ms.topic: quickstart
 ms.service: blueprints
 manager: carmonm
-ms.custom: mvc
-ms.openlocfilehash: b600eeff0482944a8b9b18ad39c23ee6ea4700ce
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.custom: seodec18
+ms.openlocfilehash: 9e44a44b76e79375076f71cf808d6d30eebc5cdb
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51283545"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53311421"
 ---
 # <a name="define-and-assign-an-azure-blueprint-with-rest-api"></a>Definieren und Zuweisen einer Azure-Blaupause mit der REST-API
 
@@ -412,7 +412,7 @@ Verwenden Sie den folgenden REST-API-Vorgang, um die Blaupause zu löschen:
 
 - Erfahren Sie mehr über den [Lebenszyklus von Blaupausen](./concepts/lifecycle.md).
 - Machen Sie sich mit der Verwendung [statischer und dynamischer Parameter](./concepts/parameters.md) vertraut.
-- Erfahren Sie, wie Sie die [Abfolge von Blueprints](./concepts/sequencing-order.md) anpassen können.
-- Erfahren Sie, wie Sie [Ressourcen in Blueprints sperren](./concepts/resource-locking.md) können.
+- Erfahren Sie, wie Sie die [Abfolge von Blaupausen](./concepts/sequencing-order.md) anpassen können.
+- Erfahren Sie, wie Sie [Ressourcen in Blaupausen sperren](./concepts/resource-locking.md) können.
 - Lernen Sie, wie Sie [vorhandene Zuweisungen aktualisieren](./how-to/update-existing-assignments.md).
-- Beheben Sie Probleme bei der Blueprintzuweisung mithilfe des [allgemeinen Leitfadens zur Problembehandlung](./troubleshoot/general.md).
+- Beheben Sie Probleme bei der Blaupausenzuweisung mithilfe des [allgemeinen Leitfadens zur Problembehandlung](./troubleshoot/general.md).

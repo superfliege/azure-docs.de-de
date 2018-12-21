@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/24/2018
 ms.author: andret
-ms.openlocfilehash: a421527de275d38650c314d3722a7d2f93e8331d
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: 10de179c6055feb46439792ea74a0a3131f39646
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52285015"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52970648"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>Schnellstart: Hinzufügen von „Mit Microsoft anmelden“ zu einer ASP.NET-Web-App
 
@@ -39,7 +39,7 @@ Stellen Sie zu Beginn sicher, dass die folgenden Voraussetzungen erfüllt sind:
 
 * Visual Studio 2015 Update 3 oder Visual Studio 2017 ist installiert. Sie haben beides nicht? [Laden Sie Visual Studio 2017 kostenlos herunter](https://www.visualstudio.com/downloads/)
 
-## <a name="scenario-sign-in-users-from-work-and-school-accounts-in-your-aspnet-app"></a>Szenario: Anmelden von Benutzern von Geschäfts-, Schul- oder Unikonto Konten in Ihrer ASP.NET-App
+## <a name="scenario-sign-in-users-from-work-and-school-accounts-in-your-aspnet-app"></a>Szenario: Anmelden von Benutzern von Geschäfts-, Schul- oder Unikonten in Ihrer ASP.NET-App
 
 ![Funktionsweise dieser Anleitung](./media/quickstart-v1-aspnet-webapp/aspnet-intro.png)
 
@@ -56,7 +56,7 @@ In diesem Schnellstart werden die folgenden Pakete verwendet:
 | [Microsoft.Owin.Security.OpenIdConnect](https://www.nuget.org/packages/Microsoft.Owin.Security.OpenIdConnect/) | Middleware, die einer Anwendung das Verwenden von OpenIDConnect für die Authentifizierung ermöglicht |
 | [Microsoft.Owin.Security.Cookies](https://www.nuget.org/packages/Microsoft.Owin.Security.Cookies) |Middleware, die einer Anwendung das Beibehalten der Benutzersitzung mithilfe von Cookies ermöglicht |
 | [Microsoft.Owin.Host.SystemWeb](https://www.nuget.org/packages/Microsoft.Owin.Host.SystemWeb) | Ermöglicht OWIN-basierten Anwendungen die Ausführung in IIS mithilfe der ASP.NET-Anforderungspipeline |
-|  |  | 
+|  |  |
 
 ## <a name="step-1-set-up-your-project"></a>Schritt 1: Einrichten des Projekts
 
@@ -104,11 +104,11 @@ Erstellen Sie eine *Startklasse* der OWIN-Middleware:
 
 1. Fügen Sie `Startup.cs` die Namespaces *OWIN* und *Microsoft.IdentityModel* hinzu:
 
-    [!code-csharp[main](../../../WebApp-OpenIDConnect-DotNet/WebApp-OpenIDConnect-DotNet\Startup.cs?name=AddedNameSpaces "Startup.cs")]
+    [!code-csharp[main](../../../WebApp-OpenIDConnect-DotNet/WebApp-OpenIDConnect-DotNet/Startup.cs?name=AddedNameSpaces "Startup.cs")]
 
 2. Ersetzen Sie die Startup-Klasse durch den folgenden Code:
 
-    [!code-csharp[main](../../../WebApp-OpenIDConnect-DotNet/WebApp-OpenIDConnect-DotNet\Startup.cs?name=Startup "Startup.cs")]
+    [!code-csharp[main](../../../WebApp-OpenIDConnect-DotNet/WebApp-OpenIDConnect-DotNet/Startup.cs?name=Startup "Startup.cs")]
 
 <!--start-collapse-->
 > [!NOTE]
@@ -129,11 +129,11 @@ Erstellen Sie einen neuen Controller, um An- und Abmeldeverfahren bereitzustelle
 4.  Nennen Sie den Controller `HomeController`, und wählen Sie **Hinzufügen** aus.
 5.  Fügen Sie der Klasse **OWIN**-Namespaces hinzu:
 
-    [!code-csharp[main](../../../WebApp-OpenIDConnect-DotNet/WebApp-OpenIDConnect-DotNet\Controllers\HomeController.cs?name=AddedNameSpaces "HomeController.cs")]
+    [!code-csharp[main](../../../WebApp-OpenIDConnect-DotNet/WebApp-OpenIDConnect-DotNet/Controllers/HomeController.cs?name=AddedNameSpaces "HomeController.cs")]
 
 6. Fügen Sie die folgenden Methoden hinzu, um die An- und Abmeldung bei Ihrem Controller zu verarbeiten, indem Sie eine Authentifizierungsaufforderung per Code auslösen:
 
-    [!code-csharp[main](../../../WebApp-OpenIDConnect-DotNet/WebApp-OpenIDConnect-DotNet\Controllers\HomeController.cs?name=SigInAndSignOut "HomeController.cs")]
+    [!code-csharp[main](../../../WebApp-OpenIDConnect-DotNet/WebApp-OpenIDConnect-DotNet/Controllers/HomeController.cs?name=SigInAndSignOut "HomeController.cs")]
 
 ## <a name="step-6-create-the-apps-home-page-to-sign-in-users-via-a-sign-in-button"></a>Schritt 6: Erstellen der Startseite der App zum Anmelden von Benutzern über eine Anmeldeschaltfläche
 
@@ -158,11 +158,11 @@ Dieser Controller veranschaulicht die Verwendungen des `[Authorize]`-Attributs, 
 1. Nennen Sie diesen Controller **ClaimsController**.
 1. Ersetzen Sie den Code Ihrer Controller-Klasse durch den folgenden Code. Dadurch wird der Klasse das `[Authorize]`-Attribut hinzugefügt:
 
-    [!code-csharp[main](../../../WebApp-OpenIDConnect-DotNet/WebApp-OpenIDConnect-DotNet\Controllers\ClaimsController.cs?name=ClaimsController "ClaimsController.cs")]
+    [!code-csharp[main](../../../WebApp-OpenIDConnect-DotNet/WebApp-OpenIDConnect-DotNet/Controllers/ClaimsController.cs?name=ClaimsController "ClaimsController.cs")]
 
 <!--start-collapse-->
 > [!NOTE]
-> Aufgrund der Verwendung des `[Authorize]`-Attributs können alle Methoden dieses Controllers nur ausgeführt werden, wenn der Benutzer authentifiziert ist. Wenn der Benutzer nicht authentifiziert ist und versucht, auf den Controller zuzugreifen, löst OWIN eine Authentifizierungsaufforderung aus und zwingt den Benutzer, sich zu authentifizieren. Der vorherige Code untersucht die Anspruchssammlung des Benutzers auf bestimmte Attribute, die im Token des Benutzers enthalten sind. Diesen Attribute enthalten den vollständigen Namen des Benutzers und den Benutzername sowie die GUID des Antragstellers. Sie enthalten auch die *Mandanten-ID*, die die ID der Organisation des Benutzers darstellt. 
+> Aufgrund der Verwendung des `[Authorize]`-Attributs können alle Methoden dieses Controllers nur ausgeführt werden, wenn der Benutzer authentifiziert ist. Wenn der Benutzer nicht authentifiziert ist und versucht, auf den Controller zuzugreifen, löst OWIN eine Authentifizierungsaufforderung aus und zwingt den Benutzer, sich zu authentifizieren. Der vorherige Code untersucht die Anspruchssammlung des Benutzers auf bestimmte Attribute, die im Token des Benutzers enthalten sind. Diesen Attribute enthalten den vollständigen Namen des Benutzers und den Benutzername sowie die GUID des Antragstellers. Sie enthalten auch die *Mandanten-ID*, die die ID der Organisation des Benutzers darstellt.
 <!--end-collapse-->
 
 ## <a name="step-8-create-a-view-to-display-the-users-claims"></a>Schritt 8: Erstellen einer Ansicht zum Anzeigen der Ansprüche des Benutzers
@@ -187,7 +187,7 @@ Erstellen Sie in Visual Studio eine neue Ansicht zum Anzeigen der Ansprüche des
     <add key="ClientId" value="Enter_the_Application_Id_here" />
     <add key="RedirectUrl" value="Enter_the_Redirect_Url_here" />
     <add key="Tenant" value="common" />
-    <add key="Authority" value="https://login.microsoftonline.com/{0}" /> 
+    <add key="Authority" value="https://login.microsoftonline.com/{0}" />
     ```
 2. Wählen Sie im Projektmappen-Explorer das Projekt aus. Untersuchen Sie das Fenster <i>Eigenschaften</i> (wenn es nicht angezeigt wird, drücken Sie F4).
 3. Ändern Sie „SSL-aktiviert“ in <code>True</code>.
@@ -227,10 +227,12 @@ Weitere Informationen zu dieser Einstellung und zum Konzept von mehrinstanzenfä
 Diese Option ist ein häufiges Szenario für Branchenanwendungen.
 
 Wenn Ihre Anwendung Anmeldungen nur von Konten akzeptieren soll, die zu einer bestimmten Azure AD-Instanz gehören (einschließlich *Gastkonten* dieser Instanz), gehen Sie wie folgt vor:
+
 1. Ersetzen Sie den Wert `Common` des Parameters `Tenant` in *web.config* durch den Mandantennamen des Unternehmens, z.B. durch *contoso.onmicrosoft.com*.
 1. Ändern Sie das `ValidateIssuer`-Argument in Ihrer [*OWIN-Startklasse*](#configure-the-authentication-pipeline) in `true`.
 
 Um Benutzer nur aus einer Liste bestimmter Unternehmen zuzulassen, führen Sie die folgenden Schritte aus:
+
 1. Legen Sie `ValidateIssuer` auf TRUE fest.
 1. Verwenden Sie den `ValidIssuers`-Parameter, um eine Liste mit Organisationen anzugeben.
 

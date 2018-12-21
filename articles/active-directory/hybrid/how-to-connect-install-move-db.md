@@ -10,12 +10,12 @@ ms.topic: get-started-article
 ms.date: 03/19/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: a42deb6bc039602c4bda523d2ab1ee5a69bb5644
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: cbc86405225cca0d5144b48b113cf41607ce16f4
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46303535"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53434119"
 ---
 # <a name="move-azure-ad-connect-database-from-sql-server-express-to-sql-server"></a>Verschieben einer Azure AD Connect-Datenbank von SQL Server Express zu SQL Server 
 
@@ -30,7 +30,7 @@ Nachfolgend finden Sie einige kurze Informationen zu diesem Szenario.  In diesem
 Führen Sie die folgenden Schritte aus, um die Azure AD Connect-Datenbank auf einen Remoteserver mit SQL Server zu verschieben.
 
 1.  Navigieren Sie auf dem Azure AD Connect-Server zu **Dienste**, und beenden Sie den Dienst **Microsoft Azure AD Sync**.
-2. Navigieren Sie zum Ordner **%Program Files%\Microsoft Azure AD Sync/Data/**, und kopieren Sie die Dateien **ADSync.mdf** und **ADSync_log.mdf** auf den SQL Server-Remoteserver.
+2. Navigieren Sie zum Ordner **%Program Files%\Microsoft Azure AD Sync/Data/**, und kopieren Sie die Dateien **ADSync.mdf** und **ADSync_log.ldf** auf den SQL Server-Remoteserver.
 3. Starten Sie den Dienst **Microsoft Azure AD Sync** auf dem Azure AD Connect-Server neu.
 4. Deinstallieren Sie Azure AD Connect über die Systemsteuerung: „Programme“ > „Programme und Features“.  Wählen Sie Microsoft Azure AD Connect aus, und klicken Sie oben auf „Deinstallieren“.
 5. Öffnen Sie auf dem SQL Server-Remoteserver SQL Server Management Studio.

@@ -10,12 +10,12 @@ ms.devlang: java
 ms.topic: tutorial
 ms.date: 08/22/2017
 ms.author: ramkris
-ms.openlocfilehash: 01b1a770959b29969fbfd0b4575a45b9c53318b6
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: bdfe390314f2d2174a26e9b321022a3589a06467
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52867969"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53086538"
 ---
 # <a name="build-a-java-web-application-using-azure-cosmos-db-and-the-sql-api"></a>Erstellen einer Java-Webanwendung mithilfe von Azure Cosmos DB und der SQL-API
 
@@ -49,10 +49,10 @@ Bevor Sie mit diesem Lernprogramm zur Anwendungsentwicklung beginnen, benötigen
   [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
 * [Java Development Kit (JDK) 7+](https://aka.ms/azure-jdks).
-* [Eclipse IDE für Java EE-Entwickler.](http://www.eclipse.org/downloads/packages/release/luna/sr1/eclipse-ide-java-ee-developers)
+* [Eclipse IDE für Java EE-Entwickler.](https://www.eclipse.org/downloads/packages/release/luna/sr1/eclipse-ide-java-ee-developers)
 * [Eine Azure-Website mit aktivierter Java-Laufzeitumgebung (z.B. Tomcat oder Jetty).](../app-service/app-service-web-get-started-java.md)
 
-Wenn Sie diese Tools zum ersten Mal installieren, finden Sie unter coreservlets.com im Abschnitt „Schnellstart“  eine schrittweise Anleitung im Artikel [Lernprogramm: TomCat7 installieren und mit Eclipse verwenden](http://www.coreservlets.com/Apache-Tomcat-Tutorial/tomcat-7-with-eclipse.html) .
+Falls Sie diese Tools zum ersten Mal installieren, finden Sie unter coreservlets.com im Abschnitt „Schnellstart“ eine schrittweise Anleitung im Artikel [Lernprogramm: TomCat7 installieren und mit Eclipse verwenden](https://www.coreservlets.com/Apache-Tomcat-Tutorial/tomcat-7-with-eclipse.html).
 
 ## <a id="CreateDB"></a>Schritt 1: Erstellen eines Azure Cosmos DB-Kontos
 Wir beginnen, indem wir ein Azure Cosmos DB-Konto erstellen. Falls Sie bereits ein Konto besitzen oder den Azure Cosmos DB-Emulator für dieses Tutorial verwenden, können Sie mit [Schritt 2: Erstellen der Java JSP-Anwendung](#CreateJSP) fortfahren.
@@ -61,7 +61,7 @@ Wir beginnen, indem wir ein Azure Cosmos DB-Konto erstellen. Falls Sie bereits e
 
 [!INCLUDE [keys](../../includes/cosmos-db-keys.md)]
 
-## <a id="CreateJSP"></a>Schritt 2: Erstellen der Java-JSP-Anwendung
+## <a id="CreateJSP"></a>Schritt 2: Erstellen der Java JSP-Anwendung
 So erstellen Sie eine JSP-Anwendung
 
 1. Zunächst beginnen wir mit der Erstellung eines Java-Projekts. Starten Sie Eclipse, klicken Sie auf **Datei**, dann auf **Neu** und schließlich auf **Dynamisches Webprojekt**. Wenn **Dynamic Web Project** nicht als verfügbares Projekt aufgeführt ist, gehen Sie wie folgt vor: Klicken Sie auf **Datei**, dann auf **Neu** und anschließend auf **Projekt**. Erweitern Sie die Option **Web**, klicken Sie auf **Dynamic Web Project**, und klicken Sie anschließend auf **Weiter**.
@@ -84,7 +84,7 @@ So erstellen Sie eine JSP-Anwendung
     ![Hello World – Java-Anwendungslernprogramm](./media/sql-api-java-application/image12.png)
 
 ## <a id="InstallSDK"></a>Schritt 3: Installieren des SQL Java SDK
-Das SQL Java SDK und seine Abhängigkeiten können am einfachsten über [Apache Maven](http://maven.apache.org/)einbezogen werden.
+Das SQL Java SDK und seine Abhängigkeiten können am einfachsten über [Apache Maven](https://maven.apache.org/)einbezogen werden.
 
 Dazu müssen Sie das Projekt zu einem Maven-Projekt konvertieren, indem Sie die folgenden Schritte ausführen:
 
@@ -118,7 +118,7 @@ Dazu müssen Sie das Projekt zu einem Maven-Projekt konvertieren, indem Sie die 
             private String name;
         }
    
-    In diesem Projekt verwenden Sie [Project Lombok](http://projectlombok.org/), um den Konstruktor, die Getter, die Setter und einen Generator zu generieren. Alternativ können Sie diesen Code manuell eingeben oder von der IDE generieren lassen.
+    In diesem Projekt verwenden Sie [Project Lombok](https://projectlombok.org/), um den Konstruktor, die Getter, die Setter und einen Generator zu generieren. Alternativ können Sie diesen Code manuell eingeben oder von der IDE generieren lassen.
 2. Um den Azure Cosmos DB-Dienst aufzurufen, müssen Sie eine neue **DocumentClient**-Instanz instanziieren. Im Allgemeinen ist es am besten, **DocumentClient** wiederzuverwenden, anstatt für jede nachfolgende Anforderung einen neuen Client zu erstellen. Der Client kann wiederverwendet werden, indem der Client in ein **DocumentClientFactory**eingehüllt wird. In „DocumentClientFactory.java“ müssen Sie auch die Werte für URI und PRIMÄRSCHLÜSSEL einfügen, die Sie in [Schritt 1](#CreateDB) in der Zwischenablage gespeichert haben. Ersetzen Sie [YOUR\_ENDPOINT\_HERE] durch den URI und [YOUR\_KEY\_HERE] durch den PRIMÄRSCHLÜSSEL.
    
         private static final String HOST = "[YOUR_ENDPOINT_HERE]";
@@ -729,7 +729,7 @@ Azure-Websites gestaltet die Bereitstellung von Java-Anwendungen so einfach wie 
 ## <a id="GetProject"></a>Abrufen des Projekts von GitHub
 Alle Beispiele in diesem Tutorial befinden sich im Projekt [todo](https://github.com/Azure-Samples/documentdb-java-todo-app) auf GitHub. Zum Importieren des Todo-Projekts in Eclipse müssen Sie sicherstellen, dass Sie über die im Abschnitt [Voraussetzungen](#Prerequisites) aufgeführten Softwareanwendungen und Ressourcen verfügen. Gehen Sie anschließend folgendermaßen vor:
 
-1. Installieren Sie das [Projekt Lombok](http://projectlombok.org/). Lombok wird verwendet, um Konstruktoren, Getter und Setter im Projekt zu generieren. Nachdem Sie die Datei „lombok.jar“ heruntergeladen haben, doppelklicken Sie auf die Datei, um sie zu installieren, installieren Sie sie über die Befehlszeile.
+1. Installieren Sie das [Projekt Lombok](https://projectlombok.org/). Lombok wird verwendet, um Konstruktoren, Getter und Setter im Projekt zu generieren. Nachdem Sie die Datei „lombok.jar“ heruntergeladen haben, doppelklicken Sie auf die Datei, um sie zu installieren, installieren Sie sie über die Befehlszeile.
 2. Wenn Eclipse geöffnet ist, schließen Sie es, und starten Sie es neu, um Lombok zu laden.
 3. Klicken in Eclipse im Menü **Datei** auf **Importieren**.
 4. Klicken Sie im Fenster **Importieren** auf **Git**, dann auf **Projekte aus Git** und schließlich auf **Weiter**.

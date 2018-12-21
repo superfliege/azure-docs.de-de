@@ -1,5 +1,5 @@
 ---
-title: Speichern von Daten mit dem SQL-Modul in Azure IoT Edge | Microsoft-Dokumentation
+title: 'Tutorial: Speichern von Daten mit dem SQL-Modul in Azure IoT Edge | Microsoft-Dokumentation'
 description: Hier erfahren Sie, wie Sie mit einem SQL Server-Modul Daten lokal auf Ihrem IoT Edge-Gerät speichern.
 services: iot-edge
 author: kgremban
@@ -8,13 +8,13 @@ ms.author: kgremban
 ms.date: 12/01/2018
 ms.topic: tutorial
 ms.service: iot-edge
-ms.custom: mvc
-ms.openlocfilehash: b0d26704d287f2e02541cc667250af8e8005f864
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 0193d79dec663b089184099c2a4d275c91380c8b
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52833992"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53163411"
 ---
 # <a name="tutorial-store-data-at-the-edge-with-sql-server-databases"></a>Tutorial: Speichern von Daten im Edge-Bereich mit SQL Server-Datenbanken
 
@@ -87,7 +87,7 @@ Die folgenden Schritte zeigen, wie Sie mithilfe von Visual Studio Code und der A
 
 2. Öffnen Sie die VS Code-Befehlspalette, indem Sie auf **Ansicht** > **Befehlspalette** klicken.
 
-3. Geben Sie in der Befehlspalette den Befehl **Azure IoT Edge: New IoT Edge solution** (Azure IoT Edge: Neue IoT Edge-Projektmappe) ein, und führen Sie ihn aus. Geben Sie in der Befehlspalette die folgenden Informationen an, um die Projektmappe zu erstellen: 
+3. Geben Sie in der Befehlspalette den Befehl **Azure IoT Edge: New IoT Edge Solution** ein, und führen Sie ihn aus. Geben Sie in der Befehlspalette die folgenden Informationen an, um die Projektmappe zu erstellen: 
 
    | Feld | Wert |
    | ----- | ----- |
@@ -163,7 +163,7 @@ Die folgenden Schritte zeigen, wie Sie mithilfe von Visual Studio Code und der A
                        {
                            //Execute the command and log the # rows affected.
                            var rows = await cmd.ExecuteNonQueryAsync();
-                           log.Info($"{rows} rows were updated");
+                           logger.LogInformation($"{rows} rows were updated");
                        }
                    }
 
@@ -251,7 +251,7 @@ In einem [Bereitstellungsmanifest](module-composition.md) wird deklariert, welch
    }
    ```
 
-   ![Hinzufügen eines SQL Server-Containers](./media/tutorial-store-data-sql-server/view_json_sql.png)
+   ![Fügen Sie das SQL-Server-Modul dem Manifest inzu](./media/tutorial-store-data-sql-server/view_json_sql.png)
 
 5. Aktualisieren Sie abhängig vom Typ des Docker-Containers auf Ihrem IoT Edge-Gerät die **sql**-Modulparameter mit dem folgenden Code:
    * Windows-Container:
@@ -324,7 +324,7 @@ Wenn Sie Visual Studio Code anweisen, die Projektmappe zu erstellen, wird zunäc
 
 Sie können über IoT Hub Module auf einem Gerät festlegen, können jedoch auch über Visual Studio Code auf IoT Hub und Geräte zugreifen. In diesem Abschnitt richten Sie den Zugriff auf Ihre IoT Hub-Instanz ein und stellen dann mithilfe von VS Code Ihre Projektmappe auf dem IoT Edge-Gerät bereit. 
 
-1. Wählen Sie in der Befehlspalette von VS Code den Befehl **Azure IoT Hub: Select IoT Hub** (Azure IoT Hub: IoT Hub auswählen) aus.
+1. Wählen Sie in der Befehlspalette von VS Code **Azure IoT Hub: IoT Hub auswählen** aus.
 
 2. Folgen Sie den Aufforderungen auf dem Bildschirm, um sich an Ihrem Azure-Konto anzumelden. 
 
@@ -416,7 +416,7 @@ Führen Sie im SQL-Befehlstool den folgenden Befehl aus, um die formatierten Tab
    GO
    ```
 
-   ![Anzeigen lokaler Daten](./media/tutorial-store-data-sql-server/view-data.png)
+   ![Inhalt der lokalen Datenbank anzeigen](./media/tutorial-store-data-sql-server/view-data.png)
 
 
 

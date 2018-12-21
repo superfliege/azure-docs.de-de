@@ -1,5 +1,5 @@
 ---
-title: Erstellen einer PHP- und MySQL-Web-App in Azure | Microsoft-Dokumentation
+title: Erstellen von PHP-Apps mit MySQL – Azure App Service | Microsoft-Dokumentation
 description: Erfahren Sie etwas über das Ausführen einer PHP-App in Azure mit Verbindung mit einer MySQL-Datenbank in Azure.
 services: app-service\web
 documentationcenter: php
@@ -14,13 +14,13 @@ ms.devlang: php
 ms.topic: tutorial
 ms.date: 11/15/2018
 ms.author: cephalin
-ms.custom: mvc
-ms.openlocfilehash: 9a1468c27e668663ca9079f5f1c9e5e97e51d2d5
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.custom: seodec18
+ms.openlocfilehash: a20373e43780cea10e550ae968deb2a8720b9a9f
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52291285"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53251673"
 ---
 # <a name="tutorial-build-a-php-and-mysql-web-app-in-azure"></a>Tutorial: Erstellen einer PHP- und MySQL-Web-App in Azure
 
@@ -49,9 +49,9 @@ In diesem Tutorial lernen Sie Folgendes:
 Für dieses Tutorial benötigen Sie Folgendes:
 
 * [Installation von Git](https://git-scm.com/)
-* [Installation von PHP 5.6.4 oder höher](http://php.net/downloads.php)
+* [Installation von PHP 5.6.4 oder höher](https://php.net/downloads.php)
 * [Installation von Composer](https://getcomposer.org/doc/00-intro.md)
-* Aktivieren der folgenden PHP-Erweiterungen für Laravel: OpenSSL, PDO-MySQL, Mbstring, Tokenizer, XML
+* Aktivieren Sie die folgenden PHP-Erweiterungen, die Laravel benötigt: OpenSSL, PDO-MySQL, Mbstring, Tokenizer, XML
 * [Installieren und Starten von MySQL](https://dev.mysql.com/doc/refman/5.7/en/installing.html) 
 
 ## <a name="prepare-local-mysql"></a>Vorbereiten der lokalen MySQL-Instanz
@@ -66,7 +66,7 @@ Stellen Sie in einem Terminalfenster eine Verbindung mit Ihrem lokalen MySQL-Ser
 mysql -u root -p
 ```
 
-Wenn Sie zur Eingabe eines Kennworts aufgefordert werden, geben Sie das Kennwort für das `root`-Konto ein. Wenn Sie das Kennwort für Ihr Root-Konto vergessen haben, lesen Sie unter [MySQL: How to Reset the Root Password](https://dev.mysql.com/doc/refman/5.7/en/resetting-permissions.html) (MySQL: Zurücksetzen des Root-Kennworts) nach.
+Wenn Sie zur Eingabe eines Kennworts aufgefordert werden, geben Sie das Kennwort für das `root`-Konto ein. Wenn Sie das Kennwort für Ihr Root-Konto vergessen haben, lesen Sie unter [MySQL: How to Reset the Root Password (MySQL: Zurücksetzen des Root-Kennworts)](https://dev.mysql.com/doc/refman/5.7/en/resetting-permissions.html) nach.
 
 Wenn der Befehl erfolgreich ausgeführt wurde, wird der MySQL-Server ausgeführt. Stellen Sie andernfalls anhand der [Nachinstallationsschritte für MySQL](https://dev.mysql.com/doc/refman/5.7/en/postinstallation.html) sicher, dass Ihr lokaler MySQL-Server gestartet wurde.
 
@@ -598,9 +598,9 @@ Nachdem das Protokollstreaming gestartet wurde, aktualisieren Sie die Azure-Web-
 Zum Beenden des Protokollstreamings geben Sie `Ctrl`+`C` ein.
 
 > [!TIP]
-> Eine PHP-Anwendung kann die Standardmethode [error_log()](http://php.net/manual/function.error-log.php) für die Ausgabe an die Konsole verwenden. Die Beispielanwendung verwendet diesen Ansatz in _app/Http/routes.php_.
+> Eine PHP-Anwendung kann die Standardmethode [error_log()](https://php.net/manual/function.error-log.php) für die Ausgabe an die Konsole verwenden. Die Beispielanwendung verwendet diesen Ansatz in _app/Http/routes.php_.
 >
-> Als ein Webframework verwendet [Laravel Monolog](https://laravel.com/docs/5.4/errors) als Protokollierungsanbieter. Informationen dazu, wie Sie Monolog-Meldungen an die Konsole ausgeben, finden Sie unter [PHP: How to use monolog to log to console (php://out)](http://stackoverflow.com/questions/25787258/php-how-to-use-monolog-to-log-to-console-php-out) (PHP: Verwenden von Monolog für die Konsolenprotokollierung (php://out)).
+> Als ein Webframework verwendet [Laravel Monolog](https://laravel.com/docs/5.4/errors) als Protokollierungsanbieter. Was Sie tun müssen, damit Monolog ausgehende Nachrichten an der Konsole ausgibt, erfahren Sie unter [PHP: How to use monolog to log to console (php://out) (Wie Sie Monolog zur Protokollierung auf der Konsole verwenden (php://out))](https://stackoverflow.com/questions/25787258/php-how-to-use-monolog-to-log-to-console-php-out).
 >
 >
 

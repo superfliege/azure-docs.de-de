@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/28/2018
 ms.author: b-juche
-ms.openlocfilehash: 0e9203f5b4e2a9043e242b804c82017cf6fc3ee1
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 55a1d16ce1617ecf7bc28c7c62de8557ceeea311
+ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39010802"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53412910"
 ---
 # <a name="set-up-a-capacity-pool"></a>Einrichten eines Kapazitätspools
 Nach dem Einrichten eines Kapazitätspools können Sie Volumes in diesem Pool erstellen.  
@@ -55,6 +55,6 @@ Sie müssen bereits ein NetApp-Konto erstellt haben.
 
 ## <a name="next-steps"></a>Nächste Schritte 
 
-1. [Erstellen eines Volumes für Azure NetApp Files](azure-netapp-files-create-volumes.md)
-2. [Konfigurieren der Exportrichtlinie für ein Volume (optional)](azure-netapp-files-configure-export-policy.md)
+[Delegieren eines Subnetzes für Azure NetApp Files](azure-netapp-files-delegate-subnet.md)
+
 

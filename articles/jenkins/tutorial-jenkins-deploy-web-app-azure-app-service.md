@@ -8,12 +8,12 @@ ms.author: tarcher
 manager: jeconnoc
 ms.topic: tutorial
 ms.date: 11/15/2018
-ms.openlocfilehash: 274de7ac63df0afc1a59e197deebeb7929cf1ef8
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: b65972b79fd16b912abfbd2e35642ef5d9f5adc4
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51855011"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53438471"
 ---
 # <a name="tutorial-deploy-from-github-to-azure-app-service-with-jenkins-continuous-integration-and-deployment"></a>Tutorial: Bereitstellen über GitHub in Azure App Service mit Continuous Integration und Continuous Deployment von Jenkins
 
@@ -43,7 +43,7 @@ Für dieses Tutorial benötigen Sie Folgendes:
 
 * Eine [Jenkins](https://jenkins.io/)-Serverinstallation mit Java Development Kit (JDK) und Maven-Tools auf einem virtuellen Linux-Computer.
 
-  Sollten Sie über keinen Jenkins-Server verfügen, führen Sie im Azure-Portal die folgenden Schritte aus: [Erstellen eines Jenkins-Servers auf einem virtuellen Azure-Linux-Computer über das Azure-Portal](/azure/jenkins/install-jenkins-solution-template)
+  Wenn Sie nicht über einen Jenkins-Server verfügen, führen Sie im Azure-Portal die folgenden Schritte aus: [Erstellen eines Jenkins-Servers auf einem virtuellen Azure-Linux-Computer](/azure/jenkins/install-jenkins-solution-template)
 
 * Ein [GitHub](https://github.com)-Konto, um eine Arbeitskopie ([Fork](#fork)) für die exemplarische Java-Web-App zu erhalten. 
 
@@ -92,7 +92,7 @@ Aktivieren Sie [GitHub-Webhooks](https://developer.github.com/webhooks/) in Jenk
 > 
 > Mit diesen Schritten werden Anmeldeinformationen für ein persönliches Zugriffstoken erstellt, um Jenkins die Zusammenarbeit mit GitHub zu ermöglichen. Dabei werden Ihr Benutzername und Ihr Kennwort für GitHub verwendet. 
 > Sollte Ihr GitHub-Konto die zweistufige Authentifizierung verwenden, müssen Sie stattdessen Ihr Token in GitHub erstellen und Jenkins für die Verwendung dieses Tokens konfigurieren. 
-> Weitere Informationen finden Sie in der Dokumentation für das [GitHub-Plug-In von Jenkins](https://wiki.jenkins.io/display/JENKINS/Github+Plugin).
+> Weitere Informationen finden Sie in der Dokumentation für das [GitHub-Plug-In von Jenkins](https://wiki.jenkins.io/display/JENKINS/GitHub+Plugin).
 
 1. Wählen Sie auf der Seite **Manage Jenkins** (Jenkins verwalten) die Option **Configure System** (System konfigurieren) aus. 
 
@@ -162,9 +162,9 @@ Der Befehl **`create-for-rbac`** generiert die folgende Ausgabe:
 
    ![Hinzufügen der Anmeldeinformationen für den Azure-Dienstprinzipal](media/tutorial-jenkins-deploy-web-app-azure-app-service/add-service-principal-credentials.png)
 
-   | Eigenschaft | Wert | Beschreibung | 
+   | Eigenschaft | Wert | BESCHREIBUNG | 
    |----------|-------|-------------| 
-   | **Abonnement-ID** | <*yourAzureSubscription-ID*> | Der GUID-Wert für Ihr Azure-Abonnement. <p>**Tipp:** Sollten Sie Ihre Azure-Abonnement-ID nicht kennen, führen Sie an der Befehlszeile oder in Cloud Shell den folgenden Azure CLI-Befehl aus, und verwenden Sie dann den `id`-GUID-Wert: <p>`az account list` | 
+   | **Abonnement-ID** | <*yourAzureSubscription-ID*> | Der GUID-Wert für Ihr Azure-Abonnement. <p>**Tipp**: Sollten Sie Ihre Azure-Abonnement-ID nicht kennen, führen Sie an der Befehlszeile oder in Cloud Shell den folgenden Azure CLI-Befehl aus, und verwenden Sie dann den `id`-GUID-Wert: <p>`az account list` | 
    | **Client-ID** | <*yourAzureServicePrincipal-ID*> | Der `appId`-GUID-Wert, der zuvor für Ihren Azure-Dienstprinzipal generiert wurde. | 
    | **Geheimer Clientschlüssel** | <*yourSecurePassword*> | Der `password`-Wert (Geheimnis), den Sie für Ihren Azure-Dienstprinzipal angegeben haben. | 
    | **Tenant ID** | <*yourAzureActiveDirectoryTenant-ID*> | Der `tenant`-GUID-Wert für Ihren Azure Active Directory-Mandanten. | 

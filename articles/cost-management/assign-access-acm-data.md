@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 11/28/2018
+ms.date: 12/06/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: vitavor
-ms.custom: ''
-ms.openlocfilehash: 3096a79737c816747f36956958f9a16f86b9715d
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.custom: secdec18
+ms.openlocfilehash: ab5f334b1c830ea5e9c0164b8e75ef0f4fab8e1b
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52582597"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53075640"
 ---
 # <a name="assign-access-to-cost-management-data"></a>Zuweisen des Zugriffs auf Daten in Cost Management
 
@@ -64,12 +64,12 @@ Für den Zugriff auf den Abrechnungskontenbereich muss im EA-Portal die Berechti
 1. Melden Sie sich beim EA-Portal unter [https://ea.azure.com](https://ea.azure.com) mit einem Enterprise-Administratorkonto an.
 2. Wählen Sie im linken Bereich **Verwalten** aus.
 3. Wählen Sie auf der Registerkarte **Registrierung** die Registrierung aus, die Sie verwalten möchten.  
-    ![EA-Portal](./media/assign-access-acm-data/ea-portal.png)
+    ![Auswählen Ihrer Registrierung im EA-Portal](./media/assign-access-acm-data/ea-portal.png)
 4. Klicken Sie auf **+ Administrator hinzufügen**.
 5. Wählen Sie im Feld „Administrator hinzufügen“ den Authentifizierungstyp aus, und geben Sie die E-Mail-Adresse des Benutzers ein.
 6. Wenn der Benutzer schreibgeschützten Zugriff auf Kosten- und Nutzungsdaten erhalten soll, wählen Sie unter **Schreibgeschützt** die Option **Ja** aus.  Klicken Sie andernfalls auf **Nein**.
 7. Klicken Sie auf **Hinzufügen**, um das Konto zu erstellen.  
-    ![Feld „Administrator hinzufügen“](./media/assign-access-acm-data/add-admin.png)
+    ![Beispielinformationen im Feld „Administrator hinzufügen“](./media/assign-access-acm-data/add-admin.png)
 
 Es kann bis zu 30 Minuten dauern, bevor der neue Benutzer in Cost Management auf Daten zugreifen kann.
 
@@ -85,7 +85,7 @@ Für den Zugriff auf den Abteilungsbereich muss im EA-Portal der Zugriff eines A
 6. Wenn der Benutzer schreibgeschützten Zugriff auf Kosten- und Nutzungsdaten erhalten soll, wählen Sie unter **Schreibgeschützt** die Option **Ja** aus.  Klicken Sie andernfalls auf **Nein**.
 7. Wählen Sie die Abteilungen aus, denen Sie Berechtigungen für die Abteilungsverwaltung gewähren möchten.
 8. Klicken Sie auf **Hinzufügen**, um das Konto zu erstellen.  
-    ![Feld „Add department administrator“ (Abteilungsadministrator hinzufügen)](./media/assign-access-acm-data/add-depart-admin.png)
+    ![Eingeben der erforderlichen Informationen in das Feld „Abteilungsadministrator hinzufügen“](./media/assign-access-acm-data/add-depart-admin.png)
 
 ## <a name="assign-enrollment-account-scope-access"></a>Zuweisen des Zugriffs auf den Registrierungskontobereich
 
@@ -99,7 +99,7 @@ Für den Zugriff auf den Registrierungskontobereich muss im EA-Portal der Zugrif
 6. Wählen Sie den Authentifizierungstyp aus, und geben Sie den Kontonamen ein.
 7. Geben Sie die E-Mail-Adresse des Benutzers und dann optional die Kostenstelle ein.
 8. Klicken Sie auf **Hinzufügen**, um das Konto zu erstellen.  
-    ![Feld „Konto hinzufügen“](./media/assign-access-acm-data/add-account.png)
+    ![Eingeben der erforderlichen Informationen in das Feld „Konto hinzufügen“ für ein Registrierungskonto](./media/assign-access-acm-data/add-account.png)
 
 Nachdem die obigen Schritte ausgeführt wurden, wird das Benutzerkonto zu einem Registrierungskonto im Enterprise Portal. Fortan können damit Abonnements erstellt werden. Der Benutzer kann auf Kosten- und Nutzungsdaten für von ihm erstellte Abonnements zugreifen.
 
@@ -107,7 +107,7 @@ Nachdem die obigen Schritte ausgeführt wurden, wird das Benutzerkonto zu einem 
 
 Für den Zugriff auf den Verwaltungsgruppenbereich ist mindestens die Berechtigung „Kostenverwaltung: Leser“ (oder „Leser“) erforderlich. Sie können die Berechtigungen für eine Verwaltungsgruppe im Azure-Portal konfigurieren. Sie benötigen mindestens die Berechtigung „Benutzerzugriffsadministrator“ (oder „Besitzer“) für die Verwaltungsgruppe, um anderen Benutzern Zugriff zu gewähren. Außerdem muss die Einstellung **AO view charges** (Gebühren anzeigen für Kontobesitzer) im EA-Portal aktiviert sein.
 
-1. Melden Sie sich unter [http://portal.azure.com](http://portal.azure.com) beim Azure-Portal an.
+1. Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim Azure-Portal an.
 2. Wählen Sie auf der Seitenleiste **Alle Dienste** aus, suchen Sie _Verwaltungsgruppen_, und wählen Sie dann **Verwaltungsgruppen** aus.
 3. Wählen Sie die Verwaltungsgruppe in der Hierarchie aus.
 4. Klicken Sie neben dem Namen Ihrer Verwaltungsgruppe auf **Details**.
@@ -117,13 +117,13 @@ Für den Zugriff auf den Verwaltungsgruppenbereich ist mindestens die Berechtigu
 8. Wählen Sie unter **Zugriff zuweisen zu** die Option **Azure AD-Benutzer, -Gruppe oder -Anwendung** aus.
 9. Um den Zugriff zuzuweisen, suchen Sie den Benutzer, und wählen Sie ihn aus.
 10. Klicken Sie auf **Speichern**.  
-    ![Feld „Berechtigungen hinzufügen“](./media/assign-access-acm-data/add-permissions.png)
+    ![Beispielinformationen im Feld „Berechtigungen hinzufügen“ für eine Verwaltungsgruppe](./media/assign-access-acm-data/add-permissions.png)
 
 ## <a name="assign-subscription-scope-access"></a>Zuweisen des Zugriffs auf den Abonnementbereich
 
 Der Zugriff auf ein Abonnement erfordert mindestens die Berechtigung „Kostenverwaltung: Leser“ (oder „Leser“). Sie können die Berechtigungen für ein Abonnement im Azure-Portal konfigurieren. Sie benötigen mindestens die Berechtigung „Benutzerzugriffsadministrator“ (oder „Besitzer“) für das Abonnement, um anderen Benutzern Zugriff zu gewähren. Außerdem muss die Einstellung **AO view charges** (Gebühren anzeigen für Kontobesitzer) im EA-Portal aktiviert sein.
 
-1. Melden Sie sich unter [http://portal.azure.com](http://portal.azure.com) beim Azure-Portal an.
+1. Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim Azure-Portal an.
 2. Wählen Sie auf der Seitenleiste **Alle Dienste** aus, suchen Sie _Abonnements_, und wählen Sie dann **Abonnements** aus.
 3. Wählen Sie Ihr Abonnement aus.
 4. Wählen Sie im linken Bereich **Zugriffssteuerung (IAM)** aus.
@@ -137,7 +137,7 @@ Der Zugriff auf ein Abonnement erfordert mindestens die Berechtigung „Kostenve
 
 Für den Zugriff auf den Ressourcengruppenbereich ist mindestens die Berechtigung „Kostenverwaltung: Leser“ (oder „Leser“) erforderlich. Sie können die Berechtigungen für eine Ressourcengruppe im Azure-Portal konfigurieren. Sie benötigen mindestens die Berechtigung „Benutzerzugriffsadministrator“ (oder „Besitzer“) für die Ressourcengruppe, um anderen Benutzern Zugriff zu gewähren. Außerdem muss die Einstellung **AO view charges** (Gebühren anzeigen für Kontobesitzer) im EA-Portal aktiviert sein.
 
-1. Melden Sie sich unter [http://portal.azure.com](http://portal.azure.com) beim Azure-Portal an.
+1. Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim Azure-Portal an.
 2. Wählen Sie auf der Seitenleiste **Alle Dienste** aus, suchen Sie _Ressourcengruppen_, und wählen Sie dann **Ressourcengruppen** aus.
 3. Wählen Sie Ihre Ressourcengruppe aus.
 4. Wählen Sie im linken Bereich **Zugriffssteuerung (IAM)** aus.

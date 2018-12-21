@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Indizieren, Abfragen und Filtern in Azure Search über das Portal | Microsoft-Dokumentation'
+title: Tutorial zum Indizieren, Abfragen und Filtern im Azure-Portal – Azure Search
 description: In diesem Tutorial generieren Sie über das Azure-Portal und mit vordefinierten Beispieldaten einen Index in Azure Search. Machen Sie sich unter anderem mit Volltextsuche, Filtern, Facets, Fuzzysuche und Geosuche vertraut.
 author: HeidiSteen
 manager: cgronlun
@@ -9,14 +9,15 @@ ms.service: search
 ms.topic: tutorial
 ms.date: 07/10/2018
 ms.author: heidist
-ms.openlocfilehash: aac579da3aaf6ab1507bbc12d79a5b183a82d665
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.custom: seodec2018
+ms.openlocfilehash: d8b95aaab99fc4f0aa5df21374d6ec023f869b7d
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39592754"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53314022"
 ---
-# <a name="tutorial-use-built-in-tools-for-azure-search-indexing-and-queries"></a>Tutorial: Verwenden von integrierten Tools für Azure Search-Indizierungen und -Abfragen
+# <a name="tutorial-use-built-in-portal-tools-for-azure-search-indexing-and-queries"></a>Tutorial: Verwenden von integrierten Portaltools für Azure Search-Indizierungen und -Abfragen
 
 Sie können die integrierten Tools auf der Seite des Azure Search-Diensts im Azure-Portal nutzen, um sich mit Azure Search-Konzepten vertraut zu machen. Diese Tools bieten unter Umständen nicht den vollen Funktionsumfang der .NET- und REST-APIs. Die Assistenten und Editoren bieten jedoch eine codefreie Einführung in Azure Search und ermöglichen umgehend das Schreiben interessanter Abfragen für ein Beispieldataset.
 
@@ -76,7 +77,7 @@ Für dieses Tutorial verwenden Sie ein integriertes Beispieldataset, das über d
 
    ![Überspringen des Schritts zu kognitiven Qualifikationen][11]
 
-### <a name="step-2-define-the-index"></a>Schritt 2: Definieren des Index
+### <a name="step-2-define-the-index"></a>Schritt 2: Definieren des Index
 
 Ein Index wird in der Regel manuell und mithilfe von Code erstellt. Für dieses Tutorial kann der Assistent jedoch einen Index für jede Datenquelle erstellen, die er durchforsten kann. Für einen Index sind mindestens ein Name und eine Felderauflistung erforderlich, wobei ein Feld als Dokumentschlüssel gekennzeichnet sein muss, um die einzelnen Dokumente eindeutig zu identifizieren.
 
@@ -92,7 +93,7 @@ Standardmäßig durchsucht der Assistent die Datenquelle nach eindeutigen Bezeic
 
 Klicken Sie auf **OK**, um den Index zu erstellen.
 
-### <a name="step-3-define-the-indexer"></a>Schritt 3: Definieren des Indexers
+### <a name="step-3-define-the-indexer"></a>Schritt 3: Definieren des Indexers
 
 Klicken Sie im Assistenten **Daten importieren** auf **Indexer** > **Name**, und geben Sie einen Namen für den Indexer ein.
 

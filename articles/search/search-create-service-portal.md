@@ -1,6 +1,6 @@
 ---
-title: Erstellen eines Azure Search-Diensts im Portal | Microsoft-Dokumentation
-description: Stellen Sie einen Azure Search-Dienst über das Portal bereit.
+title: Erstellen eines Azure Search-Diensts im Portal – Azure Search
+description: Stellen Sie einen Azure Search-Dienst über das Azure-Portal bereit. Wählen Sie Ressourcengruppen, Regionen und SKU oder Tarif aus.
 manager: cgronlun
 author: HeidiSteen
 services: search
@@ -8,12 +8,13 @@ ms.service: search
 ms.topic: quickstart
 ms.date: 07/09/2018
 ms.author: heidist
-ms.openlocfilehash: 83e34f926ec3133f89ccb90979fc3e6708613a80
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.custom: seodec2018
+ms.openlocfilehash: 2055ad9baff0c6acc05c9287ca1b8fb08731f8bc
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39713926"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53315978"
 ---
 # <a name="create-an-azure-search-service-in-the-portal"></a>Erstellen eines Azure Search-Diensts im Portal
 

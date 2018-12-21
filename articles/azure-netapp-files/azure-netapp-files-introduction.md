@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/28/2018
 ms.author: b-juche
-ms.openlocfilehash: 0dd7e3e19d9b7949803cdaf1dfb5eac6ea345dbd
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: eb7354f8e099f28f4a3476b16c11f5f2d8feda00
+ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39011176"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53412486"
 ---
 # <a name="introduction-to-azure-netapp-files"></a>Einführung in Azure NetApp Files
 Der Azure NetApp Files-Dienst ist ein leistungsstarker Dateispeicherdienst auf Unternehmensniveau. Azure NetApp Files unterstützt jeden Workloadtyp und ist standardmäßig hochverfügbar. Sie können über den Dienst garantierte Dienst- und Leistungsebenen auswählen und Momentaufnahmen einrichten. 
@@ -27,12 +27,13 @@ Der Azure NetApp Files-Dienst ist ein leistungsstarker Dateispeicherdienst auf U
 Die Azure NetApp Files-Dokumentation enthält Anweisungen zum Erstellen und Verwalten von Volumes mithilfe von Azure NetApp Files. 
 
 > [!IMPORTANT] 
-> Alle in dieser Dokumentation beschriebenen Aufgaben setzen voraus, dass Sie am Public Preview-Programm teilnehmen und auf der Whitelist für den Zugriff auf den Azure-Ressourcenanbieter „Microsoft.NetApp“ stehen. Nähere Informationen zur Teilnahme am Public Preview-Programm finden Sie auf der [Registrierungsseite für Azure NetApp Files Public Preview](https://aka.ms/nfspublicpreview). 
+> Alle in dieser Dokumentation beschriebenen Aufgaben setzen voraus, dass Sie am Public Preview-Programm teilnehmen und auf der Whitelist für den Zugriff auf den Azure-Ressourcenanbieter „Microsoft.NetApp“ stehen. Unter [Registrieren für Azure NetApp Files](azure-netapp-files-register.md) finden Sie Informationen zur Teilnahme am Public Preview-Programm. 
 
 **Erste Schritte** 
+1. [Registrieren für Azure NetApp Files](azure-netapp-files-register.md)
 1. [Erstellen eines NetApp-Kontos](azure-netapp-files-create-netapp-account.md)
-2. [Einrichten eines Kapazitätspools](azure-netapp-files-set-up-capacity-pool.md)
-3. [Erstellen eines Volumes für Azure NetApp Files](azure-netapp-files-create-volumes.md)
-4. [Konfigurieren der Exportrichtlinie für ein Volume (optional)](azure-netapp-files-configure-export-policy.md)
+1. [Einrichten eines Kapazitätspools](azure-netapp-files-set-up-capacity-pool.md)
+1. [Erstellen eines Volumes für Azure NetApp Files](azure-netapp-files-create-volumes.md)
+1. [Konfigurieren der Exportrichtlinie für ein Volume (optional)](azure-netapp-files-configure-export-policy.md)
 
 

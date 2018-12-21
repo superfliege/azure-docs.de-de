@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/11/2018
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: cf8c82f597cd659911cd66b0b7db8139e8d9d1a5
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 6f1cd08e3c786a1d163a22b5da5150fde5f45b95
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50416884"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53135337"
 ---
 # <a name="tutorial-configure-message-routing-with-iot-hub"></a>Tutorial: Konfigurieren der Nachrichtenweiterleitung mit IoT Hub
 
@@ -56,6 +56,10 @@ In den folgenden Abschnitten wird beschrieben, wie Sie diese Schritte ausführen
 1. Erstellen Sie eine [Ressourcengruppe](../azure-resource-manager/resource-group-overview.md). 
 
 2. Erstellen Sie eine IoT Hub-Instanz im Tarif S1. Fügen Sie Ihrer IoT Hub-Instanz eine Consumergruppe hinzu. Die Consumergruppe wird beim Abrufen von Daten von Azure Stream Analytics verwendet.
+
+   > [!NOTE]
+   > Sie müssen eine IoT Hub-Instanz in einem kostenpflichtigen Tarif verwenden, um dieses Tutorial abzuschließen. Im Free-Tarif können Sie nur einen einzelnen Endpunkt einrichten, und dieses Tutorial erfordert mehrere Endpunkte.
+   > 
 
 3. Erstellen Sie ein Speicherkonto des Typs „Standard V1“ mit Standard_LRS-Replikation.
 
@@ -302,15 +306,15 @@ Die Daten werden im Avro-Format in den Blobspeicher geschrieben.
 
 9. Geben Sie nun die restlichen Routingabfrageinformationen an. Diese Abfrage gibt die Kriterien für das Senden von Nachrichten an den Speichercontainer, den Sie gerade als Endpunkt hinzugefügt haben, an. Füllen Sie die Felder auf dem Bildschirm aus. 
 
-   **Name:** Geben Sie einen Namen für Ihre Routingabfrage ein. In diesem Tutorial wird **StorageRoute** verwendet.
+   **Name**: Geben Sie einen Namen für Ihre Routingabfrage ein. In diesem Tutorial wird **StorageRoute** verwendet.
 
-   **Endpunkt:** zeigt den Endpunkt an, den Sie gerade eingerichtet haben. 
+   **Endpunkt**: Zeigt den Endpunkt an, den Sie gerade eingerichtet haben. 
    
-   **Datenquelle:** Wählen Sie in der Dropdownliste **Gerätetelemetriemeldungen** aus.
+   **Datenquelle**: Wählen Sie in der Dropdownliste **Gerätetelemetriemeldungen** aus.
 
-   **Route aktivieren:** Achten Sie darauf, dass diese Option aktiviert ist.
+   **Route aktivieren**: Achten Sie darauf, dass diese Option aktiviert ist.
    
-   **Routingabfrage:** Geben Sie als Abfragezeichenfolge `level="storage"` ein. 
+   **Routingabfrage**: Geben Sie `level="storage"` als Abfragezeichenfolge ein. 
 
    ![Screenshot zum Erstellen einer Routingabfrage für das Speicherkonto](./media/tutorial-routing/message-routing-finish-route-storage-ep.png)  
    
@@ -330,23 +334,23 @@ Richten Sie jetzt die Weiterleitung für die Service Bus-Warteschlange ein. Wech
 
 4. Füllen Sie die Felder aus:
 
-   **Endpunktname:** Geben Sie einen Namen für den Endpunkt an. In diesem Tutorial wird **CriticalQueue** verwendet.
+   **Endpunktname**: Geben Sie einen Namen für den Endpunkt ein. In diesem Tutorial wird **CriticalQueue** verwendet.
    
-   **Service Bus-Namespace:** Klicken Sie auf dieses Feld, um die Dropdownliste einzublenden. Wählen Sie den Service Bus-Namespace aus, den Sie in den Vorbereitungsschritten eingerichtet haben. In diesem Tutorial wird **ContosoSBNamespace** verwendet.
+   **Service Bus-Namespace**: Klicken Sie auf dieses Feld, um die Dropdownliste einzublenden. Wählen Sie den Service Bus-Namespace aus, den Sie in den Vorbereitungsschritten eingerichtet haben. In diesem Tutorial wird **ContosoSBNamespace** verwendet.
 
-   **Service Bus-Warteschlange:** Klicken Sie auf dieses Feld, um die Dropdownliste einzublenden und die Service Bus-Warteschlange auszuwählen. In diesem Tutorial wird **contososbqueue** verwendet.
+   **Service Bus-Warteschlange**: Klicken Sie auf dieses Feld, um die Dropdownliste einzublenden und die Service Bus-Warteschlange auszuwählen. In diesem Tutorial wird **contososbqueue** verwendet.
 
 5. Klicken Sie auf **Erstellen**, um den Endpunkt für die Service Bus-Warteschlange hinzuzufügen. Sie wechseln zurück zum Bereich **Route hinzufügen**. 
 
 6.  Geben Sie nun die restlichen Routingabfrageinformationen an. Diese Abfrage gibt die Kriterien für das Senden von Nachrichten an die Service Bus-Warteschlange, die Sie gerade als Endpunkt hinzugefügt haben, an. Füllen Sie die Felder auf dem Bildschirm aus. 
 
-   **Name:** Geben Sie einen Namen für Ihre Routingabfrage ein. In diesem Tutorial wird **SBQueueRoute** verwendet. 
+   **Name**: Geben Sie einen Namen für Ihre Routingabfrage ein. In diesem Tutorial wird **SBQueueRoute** verwendet. 
 
-   **Endpunkt:** zeigt den Endpunkt an, den Sie gerade eingerichtet haben.
+   **Endpunkt**: Zeigt den Endpunkt an, den Sie gerade eingerichtet haben.
 
-   **Datenquelle:** Wählen Sie in der Dropdownliste **Gerätetelemetriemeldungen** aus.
+   **Datenquelle**: Wählen Sie in der Dropdownliste **Gerätetelemetriemeldungen** aus.
 
-   **Routingabfrage:** Geben Sie als Abfragezeichenfolge `level="critical"` ein. 
+   **Routingabfrage**: Geben Sie `level="critical"` als Abfragezeichenfolge ein. 
 
    ![Screenshot zum Erstellen einer Routingabfrage für die Service Bus-Warteschlange](./media/tutorial-routing/message-routing-finish-route-sbq-ep.png)
 
@@ -368,9 +372,9 @@ Die Service Bus-Warteschlange sollte zum Empfangen von als kritisch eingestuften
 
    **Name**: Dieses Feld enthält den Namen der Logik-App. In diesem Tutorial wird **ContosoLogicApp** verwendet. 
 
-   **Abonnement**: Wählen Sie Ihr Azure-Abonnement aus.
+   **Abonnement**: Wählen Sie Ihr Azure-Abonnement.
 
-   **Ressourcengruppe**: Klicken Sie auf **Vorhandene verwenden**, und wählen Sie Ihre Ressourcengruppe aus. In diesem Tutorial wird **ContosoResources** verwendet. 
+   **Ressourcengruppe:** Klicken Sie auf **Vorhandene verwenden**, und wählen Sie Ihre Ressourcengruppe aus. In diesem Tutorial wird **ContosoResources** verwendet. 
 
    **Standort**: Verwenden Sie Ihren Standort. In diesem Tutorial wird **USA, Westen** verwendet. 
 
@@ -426,7 +430,7 @@ Um die Daten in einer Power BI-Visualisierung anzuzeigen, richten Sie zuerst ein
 
    **Auftragsname**: Der Name des Auftrags. Der Name muss global eindeutig sein. In diesem Tutorial wird **contosoJob** verwendet.
 
-   **Ressourcengruppe**: Verwenden Sie dieselbe Ressourcengruppe wie für Ihre IoT Hub-Instanz. In diesem Tutorial wird **ContosoResources** verwendet. 
+   **Ressourcengruppe:** Verwenden Sie dieselbe Ressourcengruppe wie für Ihre IoT Hub-Instanz. In diesem Tutorial wird **ContosoResources** verwendet. 
 
    **Standort**: Verwenden Sie den gleichen Standort, der im Einrichtungsskript verwendet wurde. In diesem Tutorial wird **USA, Westen** verwendet. 
 

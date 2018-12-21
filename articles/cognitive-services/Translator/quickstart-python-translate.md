@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Übersetzen von Text, Python: Textübersetzungs-API'
+title: 'Schnellstart: Übersetzen von Text, Python – Textübersetzungs-API'
 titleSuffix: Azure Cognitive Services
 description: In dieser Schnellstartanleitung übersetzen Sie in weniger als zehn Minuten Text von einer Sprache in eine andere. Dazu verwenden Sie die Textübersetzungs-API mit Python.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.component: translator-text
 ms.topic: quickstart
 ms.date: 10/17/2018
 ms.author: erhopf
-ms.openlocfilehash: 3ba8064a6d13cfe9d2a2ae2ac496cfa8302989cd
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: db2328d09f9e06ccabdc2408327a342fe94fefe0
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50085984"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52999588"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-translate-a-string-using-python"></a>Schnellstart: Verwenden der Textübersetzungs-API zum Übersetzen einer Zeichenfolge mit Python
 
@@ -161,7 +161,7 @@ Wenn Sie den Abonnementschlüssel in Ihrem Programm hartcodiert haben, entfernen
 
 ## <a name="see-also"></a>Weitere Informationen
 
-Sie können die Textübersetzungs-API nicht nur für die Textübersetzung, sondern auch für Folgendes verwenden:
+Informieren Sie sich, wie Sie die Textübersetzungs-API für folgende Zwecke verwenden:
 
 * [Transliteration von Text](quickstart-python-transliterate.md)
 * [Identifizieren der Sprache anhand der Eingabe](quickstart-python-detect.md)

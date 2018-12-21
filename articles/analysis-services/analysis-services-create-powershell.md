@@ -8,14 +8,14 @@ ms.topic: quickstart
 ms.date: 10/18/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 8ce9606c6b59175e03da5382f76fb320080db86e
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 3971311bff90d0b005acd516336e13766028cccf
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49427025"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53001555"
 ---
-# <a name="quickstart-create-a-server---powershell"></a>Schnellstart: Erstellen eines Servers mit PowerShell
+# <a name="quickstart-create-a-server---powershell"></a>Schnellstart: Erstellen eines Servers – PowerShell
 
 In diesem Schnellstart erfahren Sie, wie Sie mithilfe von PowerShell über die Befehlszeile einen Azure Analysis Services-Server in Ihrem Azure-Abonnement erstellen.
 
@@ -33,7 +33,7 @@ Für die Servererstellung in Ihrem Abonnement verwenden Sie das Komponentenmodul
 Import-Module AzureRM.AnalysisServices
 ```
 
-## <a name="log-in-to-azure"></a>Anmelden an Azure
+## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
 Melden Sie sich mithilfe des Befehls [Connect-AzureRmAccount](/powershell/module/azurerm.profile/connect-azurermaccount) bei Ihrem Azure-Abonnement an. Befolgen Sie die Anweisungen auf dem Bildschirm.
 
@@ -71,6 +71,6 @@ Remove-AzureRmAnalysisServicesServer -Name "myserver" -ResourceGroupName "myReso
 In diesem Schnellstart haben Sie gelernt, wie Sie einen Server in Ihrem Azure-Abonnement mithilfe von PowerShell erstellen. Da Sie nun über einen Server verfügen, können Sie durch Konfigurieren einer (optionalen) Serverfirewall zur Sicherheit beitragen. Außerdem können Sie Ihrem Server direkt über das Portal ein einfaches Beispieldatenmodell hinzufügen. Ein Beispielmodell ist hilfreich, wenn Sie sich mit dem Konfigurieren von Modelldatenbankrollen und dem Testen von Clientverbindungen vertraut machen. Fahren Sie mit dem Tutorial zum Hinzufügen eines Beispielmodells fort, um mehr zu erfahren.
 
 > [!div class="nextstepaction"]
-> [Schnellstart: Konfigurieren einer Serverfirewall – Azure-Portal](analysis-services-qs-firewall.md)      
+> [Schnellstart: Konfigurieren der Serverfirewall – Portal](analysis-services-qs-firewall.md)      
 > [!div class="nextstepaction"]
-> [Tutorial: Tutorial: Hinzufügen eines Beispielmodells](analysis-services-create-sample-model.md)
+> [Tutorial: Hinzufügen eines Beispielmodells zu Ihrem Server](analysis-services-create-sample-model.md)

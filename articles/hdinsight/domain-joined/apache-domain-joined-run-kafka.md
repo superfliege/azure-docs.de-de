@@ -8,14 +8,14 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.topic: tutorial
 ms.date: 09/24/2018
-ms.openlocfilehash: aa6702ccf00faa3d63d5458cfbd77ac15fbfbeaa
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 0d9ad11ab9a53cf5de51dd3f262dc16054be5d85
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51633037"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53438607"
 ---
-# <a name="tutorial-configure-apache-kafka-policies-in-hdinsight-with-enterprise-security-package-preview"></a>Tutorial: Konfigurieren von Apache Kafka-Richtlinien in HDInsight mit dem Enterprise-Sicherheitspaket (Vorschauversion)
+# <a name="tutorial-configure-apache-kafka-policies-in-hdinsight-with-enterprise-security-package-preview"></a>Tutorial: Konfigurieren von Apache Kafka-Richtlinien in HDInsight mit dem Enterprise-Sicherheitspaket (Vorschau)
 
 Hier erfahren Sie, wie Sie Apache Ranger-Richtlinien für Apache Kafka-Cluster mit dem Enterprise-Sicherheitspaket (ESP) konfigurieren. Es werden Verbindungen von ESP-Clustern mit einer Domäne hergestellt, sodass Benutzer sich mit Anmeldeinformationen für die Domäne authentifizieren können. In diesem Tutorial erstellen Sie zwei Ranger-Richtlinien, um den Zugriff auf die Themen `sales*` und `marketingspend` einzuschränken.
 
@@ -39,7 +39,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
 1. Stellen Sie in einem Browser mit der URL `https://<ClusterName>.azurehdinsight.net/Ranger/` eine Verbindung mit der Ranger-Administrator-Benutzeroberfläche her. Vergessen Sie nicht, `<ClusterName>` in den Namen des Kafka-Clusters zu ändern.
 
-    > [!NOTE] 
+    > [!NOTE]  
     > Ranger-Anmeldeinformationen sind nicht identisch mit Hadoop-Clusteranmeldeinformationen. Stellen Sie die Verbindung mit der Ranger-Administratoroberfläche in einem neuen InPrivate-Browserfenster her, um zu verhindern, dass der Browser zwischengespeicherte Hadoop-Anmeldeinformationen verwendet.
 
 2. Melden Sie sich mit Ihren Administratoranmeldeinformationen für Azure Active Directory (AD) an. Die Azure AD-Administratoranmeldeinformationen sind nicht identisch mit HDInsight-Clusteranmeldeinformationen oder Linux-HDInsight-Knoten-SSH-Anmeldeinformationen.
@@ -74,7 +74,7 @@ Erstellen Sie eine Ranger-Richtlinie für **sales_user** und **marketing_user**.
 
    ![Apache Ranger-Administratoroberfläche – Richtlinie erstellen](./media/apache-domain-joined-run-kafka/apache-ranger-admin-create-policy.png)   
 
-   >[!NOTE] 
+   >[!NOTE]   
    >Warten Sie kurz, bis Ranger mit AAD synchronisiert ist, wenn unter **Benutzer auswählen** nicht automatisch ein Domänenbenutzer eingetragen wird.
 
 4. Klicken Sie auf **Hinzufügen**, um die Richtlinie zu speichern.
@@ -113,17 +113,17 @@ So erstellen Sie zwei Themen, **salesevents** und **marketingspend**:
    read -p 'Enter your Kafka cluster name:' CLUSTERNAME
    ```
 
-3. Um die Kafka-Brokerhosts und die Zookeeper-Hosts abzurufen, verwenden Sie die folgenden Befehle. Geben Sie bei entsprechender Aufforderung das Kennwort des Administratorkontos für den Cluster ein.
+3. Verwenden Sie die folgenden Befehle, um die Kafka-Brokerhosts und die Apache Zookeeper-Hosts abzurufen. Geben Sie bei entsprechender Aufforderung das Kennwort des Administratorkontos für den Cluster ein.
 
    ```bash
    export KAFKAZKHOSTS=`curl -sS -u admin -G https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/ZOOKEEPER/components/ZOOKEEPER_SERVER | jq -r '["\(.host_components[].HostRoles.host_name):2181"] | join(",")' | cut -d',' -f1,2`; \
    export KAFKABROKERS=`curl -sS -u admin -G https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/KAFKA/components/KAFKA_BROKER | jq -r '["\(.host_components[].HostRoles.host_name):9092"] | join(",")' | cut -d',' -f1,2`; \
    ```
-> [!Note]
+> [!Note]  
 > Vor dem Fortfahren müssen Sie unter Umständen Ihre Entwicklungsumgebung einrichten, falls Sie dies nicht bereits getan haben. Sie benötigen Komponenten wie Java JDK, Apache Maven und einen SSH-Client mit scp. Ausführlichere Informationen finden Sie in der [Setupanleitung](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/tree/master/DomainJoined-Producer-Consumer).
 1. Laden Sie die [Apache Kafka-Producer/Consumer-Beispiele mit Domäneneinbindung](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/tree/master/DomainJoined-Producer-Consumer) herunter.
 
-1. Führen Sie unter [Tutorial: Verwenden der Apache Kafka Producer- und Consumer-APIs](https://docs.microsoft.com/azure/hdinsight/kafka/apache-kafka-producer-consumer-api#build-and-deploy-the-example) die Schritte 2 und 3 im Abschnitt **Erstellen und Bereitstellen des Beispiels** aus.
+1. Befolgen Sie die Schritte 2 und 3 unter **Erstellen und Bereitstellen des Beispiels** im [Tutorial: Verwenden der Apache Kafka Producer- und Consumer-APIs](https://docs.microsoft.com/azure/hdinsight/kafka/apache-kafka-producer-consumer-api#build-and-deploy-the-example).
 
 1. Führen Sie die folgenden Befehle aus:
 
@@ -132,7 +132,7 @@ So erstellen Sie zwei Themen, **salesevents** und **marketingspend**:
    java -jar -Djava.security.auth.login.config=/usr/hdp/current/kafka-broker/config/kafka_client_jaas.conf kafka-producer-consumer.jar create marketingspend $KAFKABROKERS
    ```
 
-   >[!NOTE] 
+   >[!NOTE]   
    >Nur der Besitzer des Prozesses des Kafka-Diensts, z.B. „root“, kann in Zookeeper-ZNodes `/config/topics` schreiben. Ranger-Richtlinien werden nicht erzwungen, wenn ein Benutzer ohne Berechtigungen ein Thema erstellt. Der Grund hierfür ist, dass das `kafka-topics.sh`-Skript zum Erstellen des Themas direkt mit Zookeeper kommuniziert. Den Zookeeper-Knoten werden Einträge hinzugefügt, während die Watcher auf der Brokerseite Themen entsprechend überwachen und erstellen. Die Autorisierung kann nicht über das Ranger-Plug-In ausgeführt werden, und der obige Befehl wird mithilfe von `sudo` über den Kafka-Broker ausgeführt.
 
 
@@ -210,5 +210,5 @@ Basierend auf den konfigurierten Ranger-Richtlinien kann **sales_user** für das
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Bring Your Own Key für Apache Kafka auf Azure HDInsight (Vorschau)](https://docs.microsoft.com/azure/hdinsight/kafka/apache-kafka-byok)
-* [Einführung in die Hadoop-Sicherheit mit dem Enterprise-Sicherheitspaket](https://docs.microsoft.com/azure/hdinsight/domain-joined/apache-domain-joined-introduction)
+* [Bring Your Own Key für Apache Kafka](https://docs.microsoft.com/azure/hdinsight/kafka/apache-kafka-byok)
+* [Einführung in die Apache Hadoop-Sicherheit mit dem Enterprise-Sicherheitspaket](https://docs.microsoft.com/azure/hdinsight/domain-joined/apache-domain-joined-introduction)

@@ -1,6 +1,6 @@
 ---
-title: Umfassendes Authentifizieren und Autorisieren von Benutzern in Azure App Service unter Linux | Microsoft-Dokumentation
-description: Es wird beschrieben, wie Sie die App Service-Authentifizierung und -Autorisierung zum Schützen Ihrer App Service-Apps verwenden, einschließlich des Zugriffs auf Remote-APIs.
+title: Umfassendes Authentifizieren und Autorisieren von Benutzern auf Linux – Azure App Service | Microsoft-Dokumentation
+description: Es wird beschrieben, wie Sie die App Service-Authentifizierung und -Autorisierung zum Schützen Ihrer auf Linux ausgeführten App Service-Apps verwenden, einschließlich des Zugriffs auf Remote-APIs.
 keywords: App Service, Azure App Service, AuthN, AuthZ, sicher, Sicherheit, mehrstufig, Azure Active Directory, Azure AD
 services: app-service\web
 documentationcenter: dotnet
@@ -14,12 +14,13 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 04/26/2018
 ms.author: cephalin
-ms.openlocfilehash: a468c5d0f73cc182927f26ea9b7a85e2c5afb7c8
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.custom: seodec18
+ms.openlocfilehash: 65c503c96305cf23b97511dd06a56b5eb6fcc1be
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33766358"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53409390"
 ---
 # <a name="tutorial-authenticate-and-authorize-users-end-to-end-in-azure-app-service-on-linux"></a>Tutorial: Umfassendes Authentifizieren und Autorisieren von Benutzern in Azure App Service unter Linux
 
@@ -237,11 +238,11 @@ Navigieren Sie zu `http://<back_end_app_name>.azurewebsites.net`, um die aus der
 
 In diesem Schritt aktivieren Sie die Authentifizierung und Autorisierung für die beiden Apps. Außerdem konfigurieren Sie die Front-End-App so, dass ein Zugriffstoken generiert wird, mit dem Sie authentifizierte Aufrufe für die Back-End-App durchführen können.
 
-Sie verwenden Azure Active Directory als Identitätsanbieter. Weitere Informationen finden Sie unter [Konfigurieren der Azure Active Directory-Authentifizierung für die App Services-Anwendung](../app-service-mobile-how-to-configure-active-directory-authentication.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json).
+Sie verwenden Azure Active Directory als Identitätsanbieter. Weitere Informationen finden Sie unter [Konfigurieren der Azure Active Directory-Authentifizierung für die App Services-Anwendung](../configure-authentication-provider-aad.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json).
 
 ### <a name="enable-authentication-and-authorization-for-back-end-app"></a>Aktivieren der Authentifizierung und Autorisierung für die Back-End-App
 
-Öffnen Sie im [Azure-Portal](https://portal.azure.com) die Verwaltungsseite Ihrer Back-End-App, indem Sie im Menü auf der linken Seite auf Folgendes klicken: **Ressourcengruppen** > **myAuthResourceGroup** > _\<back\_end\_app\_name>_.
+Öffnen Sie im [Azure-Portal](https://portal.azure.com) die Verwaltungsseite Ihrer Back-End-App, indem Sie im Menü auf der linken Seite auf Folgendes klicken: **Resource groups** > **myAuthResourceGroup** > _\<back\_end\_app\_name>_.
 
 ![In Azure App Service ausgeführte ASP.NET Core-API](./media/tutorial-auth-aad/portal-navigate-back-end.png)
 

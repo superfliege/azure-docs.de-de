@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Suchen nach Bildern mit dem Bing-Bildersuche-SDK für C#'
+title: 'Schnellstart: Suchen nach Bildern – Bing-Bildersuche-SDK für C#'
 description: Führen Sie mithilfe dieses Schnellstarts Ihre erste Bildersuche mit dem Bing-Bildersuche-SDK aus, das ein Wrapper für die API ist und die gleichen Funktionen enthält. Diese einfache C#-Anwendung sendet eine Bildersuchabfrage, analysiert die JSON-Antwort und zeigt die URL des ersten zurückgegebenen Bilds an.
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
@@ -10,14 +10,15 @@ ms.component: bing-image-search
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: aahi
-ms.openlocfilehash: 2df767ef92ca056535e2d70a53a1588c9e89c647
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.custom: seodec2018
+ms.openlocfilehash: 2d81c7b22e5d7cae0beb8a549d4e44f3a1ebc132
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52316785"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53261244"
 ---
-# <a name="quickstart-search-for-images-with-the-bing-image-search-sdk-and-c"></a>Schnellstart: Suchen nach Bildern mit dem Bing-Bildersuche-SDK und C#
+# <a name="quickstart-search-for-images-with-the-bing-image-search-sdk-for-c"></a>Schnellstart: Suchen nach Bildern mit dem Bing-Bildersuche-SDK für C#
 
 Führen Sie mithilfe dieses Schnellstarts Ihre erste Bildersuche mit dem Bing-Bildersuche-SDK aus, das ein Wrapper für die API ist und die gleichen Funktionen enthält. Diese einfache C#-Anwendung sendet eine Bildersuchabfrage, analysiert die JSON-Antwort und zeigt die URL des ersten zurückgegebenen Bilds an.
 
@@ -53,8 +54,12 @@ string subscriptionKey = "ENTER YOUR KEY HERE";
 Images imageResults = null;
 // the image search term to be used in the query
 string searchTerm = "canadian rockies";
+
 //initialize the client
-var client = new ImageSearchAPI(new ApiKeyServiceClientCredentials(subscriptionKey));
+//NOTE: If you're using version 1.2.0 or below for the Bing Image Search SDK, 
+// use ImageSearchAPI() instead of ImageSearchClient() to initialize your search client.
+
+var client = new ImageSearchClient(new ApiKeyServiceClientCredentials(subscriptionKey));
 ```
 
 ## <a name="send-a-search-query-using-the-client"></a>Senden einer Suchabfrage mit dem Client

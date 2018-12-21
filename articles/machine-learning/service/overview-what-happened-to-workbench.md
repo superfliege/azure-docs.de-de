@@ -1,6 +1,7 @@
 ---
-title: Was passiert mit Azure Machine Learning Workbench? | Microsoft-Dokumentation
-description: Erfahren Sie, was mit der Workbench-Anwendung passiert, was sich bei Azure Machine Learning geändert hat und welche Zeitachse für den Support definiert wurde.
+title: Was ist mit Workbench passiert?
+titleSuffix: Azure Machine Learning service
+description: Hier erfahren Sie, was mit der Workbench-Anwendung geschehen ist, was sich beim Azure Machine Learning-Dienst geändert hat und welcher Zeitplan für die Unterstützung gilt.
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
@@ -9,14 +10,15 @@ ms.reviewer: jmartens
 author: j-martens
 ms.author: jmartens
 ms.date: 12/04/2018
-ms.openlocfilehash: db09203e86c32a7e03b4b2c4bcc670d16583ab20
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.custom: seodec18
+ms.openlocfilehash: c9559e07cc70cbd7adafd75c23b9e67d45bee48a
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52879433"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53184304"
 ---
-# <a name="what-is-happening-to-workbench-in-azure-machine-learning"></a>Was passiert mit Workbench in Azure Machine Learning?
+# <a name="what-is-happening-to-workbench-in-azure-machine-learning-service"></a>Was passiert mit Workbench im Azure Machine Learning-Dienst?
 
 Die Workbench-Anwendung und einige andere frühe Features sind veraltet und wurden im Release vom 2018 ersetzt, um den Weg für eine verbesserte [Architektur](concept-azure-machine-learning-architecture.md) frei zu machen. Die Version enthält viele wichtige Updates, die durch Feedback von Kunden ausgelöst wurden, um Ihr Benutzererlebnis verbessern. Die Kernfunktionen von experimentellen Läufen bis zur Modellbereitstellung haben sich nicht verändert, aber jetzt stehen das robuste <a href="https://aka.ms/aml-sdk" target="_blank">SDK</a> und das [CLI](reference-azure-machine-learning-cli.md) zur Verfügung, um Ihre Aufgaben im maschinellen Lernen zu erreichen und Ihre Pipelines zu füllen.  
 
@@ -82,13 +84,13 @@ Informationen zum Einstieg [in Python mit dem Haupt-SDK](quickstart-get-started.
  
 Die Modelle, die Sie in Ihrer alten Modellregistrierung registriert haben, müssen zu Ihrem neuen Arbeitsbereich migriert werden, wenn Sie sie weiterhin verwenden möchten. Sie können dies tun, indem Sie [die Modelle herunterladen und sie in Ihrem neuen Arbeitsbereich erneut registrieren](how-to-migrate.md). 
 
-Die Images, die Sie in Ihrer alten Imageregistrierung erstellt haben, müssen im neuen Arbeitsbereich neu erstellt werden, um weiterhin verwendet werden zu können. Anweisungen zur Umsetzung finden Sie im Abschnitt [Erstellen von Docker-Images](how-to-deploy-to-aci.md#configure-an-image). 
+Die Images, die Sie in Ihrer alten Imageregistrierung erstellt haben, müssen im neuen Arbeitsbereich neu erstellt werden, um weiterhin verwendet werden zu können. Die entsprechende Vorgehensweise wird in den Abschnitten zum [Konfigurieren und Erstellen eines Images](how-to-deploy-and-where.md#configureimage) beschrieben. 
 
 ## <a name="what-about-deployed-web-services"></a>Was ist mit bereitgestellten Webdiensten?
 
 Die Modelle, die Sie als Webdienste mithilfe Ihres Kontos zur Modellverwaltung bereitgestellt haben, funktionieren weiterhin, so lange der Azure Container Service (ACS) unterstützt wird. Für Modellverwaltungskonten werden diese Webdienste sogar nach dem Ende der Unterstützung weiterhin funktionieren. Wenn allerdings die Unterstützung für das alte CLI endet, verlieren Sie damit zugleich die Fähigkeit, diese Webdienste zu verwalten.
 
-In der neueren Version werden Modelle als Webdienste in [Azure Container Instances](how-to-deploy-to-aci.md) (ACI) oder [Azure Kubernetes Service](how-to-deploy-to-aks.md)-Clustern (AKS) bereitgestellt. Sie können darüber hinaus auch in [FPGAs und dem IoT-Edge bereitstellen](how-to-deploy-and-where.md). Ohne Änderung Ihrer Bewertungsdateien, Abhängigkeiten und Schemas können Sie Ihre Modelle mit dem neuen SDK oder CLI erneut bereitstellen. 
+In der neueren Version werden Modelle als Webdienste in Azure Container Instances (ACI) oder Azure Kubernetes Service-Clustern (AKS) bereitgestellt. Darüber hinaus sind Bereitstellungen in FPGAs und am IoT-Edge möglich. Weitere Informationen finden Sie im Dokument [Bereitstellen von Modellen mit dem Azure Machine Learning Service](how-to-deploy-and-where.md). Ohne Änderung Ihrer Bewertungsdateien, Abhängigkeiten und Schemas können Sie Ihre Modelle mit dem neuen SDK oder CLI erneut bereitstellen. 
 
 ## <a name="what-about-the-old-sdk--cli"></a>Was ist mit dem alten SDK und CLI geschehen?
 
@@ -110,6 +112,6 @@ Die Domänenpakete für [Maschinelles Sehen, Textanalyse und Vorhersagen](../des
 
 Erfahren Sie mehr über [die aktuelle Architektur für den Azure Machine Learning Service](concept-azure-machine-learning-architecture.md), und probieren Sie einen der Schnellstarts oder eins der Tutorials aus:
 
-* [Was ist der Azure Machine Learning Service?](overview-what-is-azure-ml.md)
-* [Schnellstart: Erste Schritte mit dem Azure Machine Learning-Dienst](quickstart-get-started.md)
-* [Tutorial 1: Trainieren eines Bildklassifizierungsmodells mit Azure Machine Learning](tutorial-train-models-with-aml.md)
+* [Was ist der Azure Machine Learning-Dienst (Vorschauversion)?](overview-what-is-azure-ml.md)
+* [Schnellstart: Verwenden von Python für die ersten Schritte mit Azure Machine Learning](quickstart-get-started.md)
+* [Tutorial: Trainieren eines Bildklassifizierungsmodells mit dem Azure Machine Learning-Dienst](tutorial-train-models-with-aml.md)

@@ -1,5 +1,5 @@
 ---
-title: Tutorial zum Aufrufen von APIs der kognitiven Suche in Azure Search | Microsoft-Dokumentation
+title: Tutorial zum Aufrufen von APIs der kognitiven Suche – Azure Search
 description: Dieses Tutorial führt Sie schrittweise durch ein Beispiel für das Extrahieren von Daten, natürliche Sprache und AI-Bildverarbeitung in der Azure Search-Indizierung für die Extrahierung und Transformation von Daten.
 manager: pablocas
 author: luiscabrer
@@ -9,14 +9,15 @@ ms.devlang: NA
 ms.topic: tutorial
 ms.date: 07/11/2018
 ms.author: luisca
-ms.openlocfilehash: 4694d7a580c9544e43cf0b56b192b55c02257531
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.custom: seodec2018
+ms.openlocfilehash: 4b78675de2902736b90afa1df9ad66e2df2b0f77
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45730663"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53386229"
 ---
-# <a name="tutorial-learn-how-to-call-cognitive-search-apis-preview"></a>Tutorial: Informationen zum Aufrufen von APIs der kognitiven Suche (Vorschau)
+# <a name="tutorial-learn-how-to-call-cognitive-search-apis-preview"></a>Tutorial: Informationen zum Aufrufen von APIs der kognitiven Suche (Vorschauversion)
 
 In diesem Tutorial lernen Sie die Mechanismen des Programmierens von Datenanreicherung in Azure Search mithilfe von *kognitiven Qualifikationen* kennen. Kognitive Qualifikationen sind Vorgänge zur Verarbeitung von natürlicher Sprache (Natural Language Processing, NLP) und Bildanalyse, die Text und Textdarstellungen eines Bilds extrahieren sowie Sprache, Entitäten, wichtige Formulierungen und mehr erkennen. Das Endergebnis besteht in reichhaltigen zusätzlichen Inhalten in einem Azure Search-Index, die von einer Pipeline für kognitive Indizierung erstellt wurden. 
 
@@ -34,7 +35,9 @@ Die Ausgabe ist ein durchsuchbarer Volltextindex auf Azure Search. Sie können d
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
 > [!NOTE]
-> Die kognitive Suche befindet sich derzeit in der öffentlichen Vorschauphase. Die Ausführung von Qualifikationsgruppen, das Extrahieren von Bildern und die Normalisierung werden derzeit kostenlos angeboten. Die Preise für diese Funktionen werden zu einem späteren Zeitpunkt bekannt gegeben. 
+> Ab dem 21. Dezember 2018 können Sie Cognitive Services-Ressourcen einer Azure Search-Qualifikationsgruppe zuordnen. Dies ermöglicht uns, für die Ausführung von Qualifikationsgruppen mit der Gebührenberechnung zu beginnen. Außerdem beginnen wir an diesem Datum damit, die Bildextraktion als Teil der Aufschlüsselung von Dokumenten zu berechnen. Die Textextraktion aus Dokumenten wird weiterhin ohne Zusatzkosten angeboten.
+>
+> Die Ausführung interner Qualifikationen wird nach dem bestehenden [nutzungsbasierten Preis für Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/) berechnet. Die Preise für die Bildextraktion entsprechen den Vorschaupreisen. Sie werden auf der [Preisseite von Azure Search](https://go.microsoft.com/fwlink/?linkid=2042400) beschrieben. [Weitere Informationen](cognitive-search-attach-cognitive-services.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -52,30 +55,31 @@ Registrieren Sie sich zunächst beim Azure Search-Dienst.
 
 1. Klicken Sie auf **Ressource erstellen**, suchen Sie nach Azure Search, und klicken Sie auf **Erstellen**. Wenn Sie zum ersten Mal einen Suchdienst einrichten, lesen Sie [Erstellen eines Azure Search-Diensts im Portal](search-create-service-portal.md).
 
-  ![Dashboard-Portal](./media/cognitive-search-tutorial-blob/create-service-full-portal.png "Erstellen eines Azure Search-Diensts im Portal")
+  ![Dashboard-Portal](./media/cognitive-search-tutorial-blob/create-search-service-full-portal.png "Erstellen eines Azure Search-Diensts im Portal")
 
 1. Erstellen Sie unter „Ressourcengruppe“ eine Ressourcengruppe zur Aufnahme aller Ressourcen, die Sie im Rahmen dieses Tutorials erstellen. Das macht Ihnen das Bereinigen der Ressourcen nach dem Abschluss des Tutorials leichter.
 
-1. Wählen Sie als Standortort entweder **USA, Süden-Mitte** oder **Europa, Westen** aus. Aktuell ist die Vorschau nur in diesen Regionen verfügbar.
+1. Wählen Sie unter „Standort“ eine der [unterstützten Regionen](https://docs.microsoft.com/en-us/azure/search/cognitive-search-quickstart-blob#supported-regions) für die kognitive Suche aus.
 
 1. Für die Preisstufe können Sie einen **kostenlosen** Dienst erstellen, um Tutorials und Schnellstarts zu absolvieren. Wenn Sie eine gründlichere Untersuchung unter Verwendung Ihrer eigenen Daten wünschen, erstellen Sie einen [kostenpflichtigen Dienst](https://azure.microsoft.com/pricing/details/search/), wie etwa **Basic** oder **Standard**. 
 
   Ein kostenloser Dienst ist auf 3 Indizes, eine maximale Blobgröße von 16 MB und Indizierungsvorgänge von 2 Minuten Dauer beschränkt, was zum vollständigen Nutzen der Möglichkeiten der kognitiven Suche unzureichend ist. Informationen zum Überprüfen der Grenzwerte für verschiedene Stufen finden Sie unter [Diensteinschränkungen](search-limits-quotas-capacity.md).
 
-  > [!NOTE]
-  > Die kognitive Suche befindet sich derzeit in der öffentlichen Vorschauphase. Die Ausführung von Qualifikationsgruppen ist zurzeit in allen Stufen verfügbar, einschließlich der kostenlosen. Die Preisgestaltung für diese Funktion wird zu einem späteren Zeitpunkt bekannt gegeben.
+  ![Dienstdefinitionsseite im Portal](./media/cognitive-search-tutorial-blob/create-search-service1.png "Dienstdefinitionsseite im Portal")
+  ![Dienstdefinitionsseite im Portal](./media/cognitive-search-tutorial-blob/create-search-service2.png "Dienstdefinitionsseite im Portal")
 
+ 
 1. Heften Sie den Dienst zwecks schnellem Zugriff auf Dienstinformationen an das Dashboard an.
 
-  ![Dienstdefinitionsseite im Portal](./media/cognitive-search-tutorial-blob/create-search-service.png "Dienstdefinitionsseite im Portal")
+  ![Dienstdefinitionsseite im Portal](./media/cognitive-search-tutorial-blob/create-search-service3.png "Dienstdefinitionsseite im Portal")
 
-1. Sammeln Sie nach dem Erstellen des Diensts die folgenden Informationen: **URL** von der Seite „Übersicht“ und **api-key** (entweder primär oder sekundär) von der Seite „Schlüssel“.
+1. Erfassen Sie nach dem Erstellen des Dienstes die folgenden Informationen: **URL** auf der Seite „Übersicht“ und **api-key** (entweder primär oder sekundär) von der Seite „Schlüssel“.
 
   ![Endpunkt- und Schlüsselinformationen im Portal](./media/cognitive-search-tutorial-blob/create-search-collect-info.png "Endpunkt- und Schlüsselinformationen im Portal")
 
 ### <a name="set-up-azure-blob-service-and-load-sample-data"></a>Einrichten des Azure Blob-Diensts und Laden von Beispieldaten
 
-Die Anreicherungspipeline lädt per Pull aus Azure-Datenquellen herunter. Quelldaten müssen von einem unterstützten Datenquellentyp eines [Azure Search-Indexers](search-indexer-overview.md) stammen. Für diese Übung verwenden wir Blobspeicher, um verschiedene Inhaltstypen anschaulich vorzustellen.
+Die Anreicherungspipeline lädt per Pull aus Azure-Datenquellen herunter. Quelldaten müssen von einem unterstützten Datenquellentyp eines [Azure Search-Indexers](search-indexer-overview.md) stammen. Bitte beachten Sie, dass der Azure-Tabellenspeicher für die kognitive Suche nicht unterstützt wird. Für diese Übung verwenden wir Blobspeicher, um verschiedene Inhaltstypen anschaulich vorzustellen.
 
 1. [Laden Sie Beispieldaten herunter](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4). Die Beispieldaten bestehen aus einem kleinen Satz Dateien verschiedener Typen. 
 
@@ -127,9 +131,9 @@ Da es sich hier um Ihre erste Anforderung handelt, überprüfen Sie im Azure-Por
 Wenn der Fehler 403 oder 404 angezeigt wird, überprüfen Sie die Konstruktion der Anforderung: `api-version=2017-11-11-Preview` sollte im Endpunkt vorhanden sein, `api-key` sollte im Header hinter `Content-Type` vorhanden sein, und sein Wert muss für einen Suchdienst gültig sein. Sie können den Header für die verbleibenden Schritte in diesem Tutorial wiederverwenden.
 
 > [!TIP]
-> Jetzt, bevor Sie eine Menge Arbeit investieren, ist der richtige Zeitpunkt, zu überprüfen, ob der Suchdienst an einem der unterstützten Standorte ausgeführt wird, die das Vorschaufeature bereitstellen: USA, Süden-Mitte oder Europa, Westen.
+> Jetzt, bevor Sie eine Menge Arbeit investieren, ist der richtige Zeitpunkt, zu überprüfen, ob der Suchdienst an einem der unterstützten Standorte ausgeführt wird, die die Previewfunktion bereitstellen: USA, Süden-Mitte oder Europa, Westen.
 
-## <a name="create-a-skillset"></a>Erstellen einer Qualifikationsgruppe
+## <a name="create-a-skillset"></a>Erstellen eines Skillsets
 
 In diesem Schritt definieren Sie eine Reihe von Anreicherungsschritten, die Sie auf Ihre Daten anwenden möchten. Jeder Anreicherungsschritt wird als *Qualifikation* und der Satz von Anreicherungsschritten als *Qualifikationsgruppe* bezeichnet. Dieses Tutorial verwendet für die Qualifikationsgruppe [vordefinierte kognitive Qualifikationen](cognitive-search-predefined-skills.md):
 
@@ -523,7 +527,7 @@ So indizieren Sie Ihre Dokumente mit den neuen Definitionen erneut:
 2. Ändern Sie eine Qualifikationsgruppe und die Indexdefinition.
 3. Führen Sie eine Neuerstellung eines Index und des Indexers für den Dienst aus, um die Pipeline auszuführen. 
 
-Sie können das Portal verwenden, um Indizes und Indexer zu löschen. Qualifikationsgruppen können nur mithilfe eines HTTP-Befehls gelöscht werden, sollten Sie sich für die Löschung entscheiden.
+Sie können das Portal verwenden, um Indizes, Indexer und Qualifikationsgruppen zu löschen.
 
 ```http
 DELETE https://[servicename].search.windows.net/skillsets/demoskillset?api-version=2017-11-11-Preview

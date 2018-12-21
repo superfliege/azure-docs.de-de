@@ -10,12 +10,12 @@ ms.component: computer-vision
 ms.topic: overview
 ms.date: 08/10/2017
 ms.author: kefre
-ms.openlocfilehash: e2f3a5655b2fbedf3ad80d555421599e26225196
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 09a7f02df1102e42bc45b4615a2af4235372bcdc
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45982099"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52957026"
 ---
 # <a name="what-is-computer-vision-api-version-10"></a>Worum handelt es sich bei der Maschinelles Sehen-API Version 1.0?
 
@@ -40,11 +40,11 @@ ms.locfileid: "45982099"
 ## <a name="requirements"></a>Requirements (Anforderungen)
 * Unterstützte Eingabemethoden: Rohe Bildbinärdaten in Form einer Anwendung/eines Oktettdatenstroms oder einer Bild-URL
 * Unterstützte Bildformate: JPEG, PNG, GIF, BMP
-* Bilddateigröße: Kleiner als 4 MB
-* Bildgröße: Größer als 50 x 50 Pixel
+* Bilddateigröße: Maximal 4 MB
+* Bildgröße: Mindestens 50 x 50 Pixel
 
 ## <a name="tagging-images"></a>Taggen von Bildern
-Die Maschinelles Sehen-API gibt Tags basierend auf über 2000 erkennbaren Objekten, Lebewesen, Landschaften und Aktionen zurück. Wenn Tags nicht eindeutig sind oder nicht zum Allgemeinwissen gehören, enthält die API-Antwort „Hinweise“, um die Bedeutung des Tags in einem bekannten Kontext zu erläutern. Tags sind nicht als eine Taxonomie organisiert, und es sind keine Vererbungshierarchien vorhanden. Eine Auflistung von Inhaltstags bildet die Grundlage für eine „Bildbeschreibung“, die in einer für Menschen lesbaren Sprache in vollständigen Sätzen angezeigt wird. Beachten Sie, dass derzeit nur Englisch als Sprache für Bildbeschreibungen unterstützt wird.
+Die Maschinelles Sehen-API gibt Tags basierend auf Tausenden erkennbaren Objekten, Lebewesen, Landschaften und Aktionen zurück. Wenn Tags nicht eindeutig sind oder nicht zum Allgemeinwissen gehören, enthält die API-Antwort „Hinweise“, um die Bedeutung des Tags in einem bekannten Kontext zu erläutern. Tags sind nicht als eine Taxonomie organisiert, und es sind keine Vererbungshierarchien vorhanden. Eine Auflistung von Inhaltstags bildet die Grundlage für eine „Bildbeschreibung“, die in einer für Menschen lesbaren Sprache in vollständigen Sätzen angezeigt wird. Beachten Sie, dass derzeit nur Englisch als Sprache für Bildbeschreibungen unterstützt wird.
 
 Nachdem Sie ein Bild hochgeladen oder eine Bild-URL angegeben haben, geben die Algorithmen der Maschinelles Sehen-API Tags basierend auf den Objekten, Lebewesen und Aktionen aus, die im Bild erkannt werden. Das Tagging ist nicht auf den Hauptinhalt (z.B. eine Person im Vordergrund) beschränkt, sondern umfasst auch die Umgebung (Innen- oder Außenbereich), Möbel, Werkzeuge, Pflanzen, Tiere, Zubehör, Geräte usw.
 
@@ -250,7 +250,7 @@ Die Genauigkeit der Texterkennung hängt von der Qualität des Bilds ab. Ein ung
 - Übergroße oder fehlende Großbuchstaben am Anfang von Wörtern
 - Tiefgestellter, hochgestellter oder durchgestrichener Text
 
-Einschränkungen: Bei Fotos, auf denen Text dominiert, kann es durch teilweise erkannte Wörter zu falsch positiven Ergebnissen kommen. Bei einigen Fotos, insbesondere bei Fotos ohne Text, kann die Genauigkeit je nach Bildtyp sehr stark variieren.
+ Einschränkungen: Bei Fotos, auf denen Text dominiert, kann es durch teilweise erkannte Wörter zu falsch positiven Ergebnissen kommen. Bei einigen Fotos, insbesondere bei Fotos ohne Text, kann die Genauigkeit je nach Bildtyp sehr stark variieren.
 
 ## <a name="recognize-handwritten-text"></a>Erkennen von handschriftlichem Text
 Diese Technologie ermöglicht es Ihnen, handschriftlichen Text in Notizen, Briefen, Abhandlungen, Tafelbildern, Formularen usw. zu erkennen und zu extrahieren. Sie funktioniert mit verschiedenen Oberflächen und Hintergründen, z.B. weißem Papier, gelben Haftnotizen oder Tafeln.
@@ -258,7 +258,7 @@ Diese Technologie ermöglicht es Ihnen, handschriftlichen Text in Notizen, Brief
 Die Erkennung von handschriftlichem Text spart Zeit und Mühe und kann Ihre Produktivität steigern, indem Sie Bilder von Text aufnehmen können, anstatt diesen übertragen zu müssen. Mithilfe dieser Technologie können Notizen digitalisiert werden. Diese Digitalisierung ermöglicht das Implementieren schneller und einfacher Suchen. Außerdem wird die Papiermenge reduziert.
 
 Eingabeanforderungen:
-- Unterstützte Bildformate sind JPEG, PNG und BMP.
+- Unterstützte Bildformate: JPEG, PNG und BMP
 - Die Bilddateigröße muss weniger als 4 MB betragen.
 - Die Bildgröße muss mindestens 40 x 40 Pixel und darf höchstens 3200 x 3200 Pixel betragen.
 
@@ -267,12 +267,12 @@ Hinweis: Diese Technologie befindet sich derzeit in der Vorschau und ist nur fü
 ## <a name="generating-thumbnails"></a>Generieren von Miniaturbildern
 Ein Miniaturbild ist eine kleine Darstellung eines Bilds. Verschiedene Geräte wie Smartphones, Tablets und PCs machen verschiedene Layouts der Benutzeroberfläche sowie unterschiedliche Miniaturbildgrößen erforderlich. Durch intelligente Zuschneidefunktionen bietet diese Maschinelles Sehen-API Hilfe bei der Lösung dieses Problems.
 
-Nach dem Hochladen eines Bilds wird ein qualitativ hochwertiges Miniaturbild generiert, und der Algorithmus der Maschinelles Sehen-API analysiert die Objekte im Bild. Anschließend wird das Bild auf den Interessensbereich zugeschnitten. Die Ausgabe wird in einem speziellen Rahmen angezeigt, wie es in der folgenden Abbildung dargestellt ist. Das generierte Miniaturbild kann mit einem anderen Seitenverhältnis als dem des ursprünglichen Bilds angezeigt werden, um so den Anforderungen des Benutzers zu entsprechen.
+Nach dem Hochladen eines Bilds wird ein qualitativ hochwertiges Miniaturbild generiert, und der Algorithmus der Maschinelles Sehen-API analysiert die Objekte im Bild. Anschließend wird das Bild auf den relevanten Bereich zugeschnitten. Die Ausgabe wird in einem speziellen Rahmen angezeigt, wie es in der folgenden Abbildung dargestellt ist. Das generierte Miniaturbild kann mit einem anderen Seitenverhältnis als dem des ursprünglichen Bilds angezeigt werden, um so den Anforderungen des Benutzers zu entsprechen.
 
 Der Miniaturbildalgorithmus funktioniert wie folgt:
 
-1. Störende Elemente werden aus dem Bild entfernt, und das Hauptobjekt (der Interessensbereich) wird erkannt.
-2. Das Bild wird auf Grundlage des erkannten Interessensbereichs zugeschnitten.
+1. Störende Elemente werden aus dem Bild entfernt, und das Hauptobjekt (der relevante Bereich) wird erkannt.
+2. Das Bild wird auf Grundlage des erkannten relevanten Bereichs zugeschnitten.
 3. Das Seitenverhältnis wird entsprechend den Abmessungen des Zielminiaturbilds geändert.
 
 ![Miniaturbilder](./Images/thumbnail-demo.png)

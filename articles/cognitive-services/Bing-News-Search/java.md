@@ -1,7 +1,7 @@
 ---
-title: 'Schnellstart: Bing-News-Suche-API, Java'
+title: 'Schnellstart: Ausführen einer Websuche mit C# – Bing-Websuche-REST-API'
 titlesuffix: Azure Cognitive Services
-description: Hier erhalten Sie Informationen und Codebeispiele, mit denen Sie schnell mit der Bing-News-Suche-API in Microsoft Cognitive Services in Azure einsteigen können.
+description: Verwenden Sie diese Schnellstartanleitung zum Senden einer Anforderung an die REST-API der Bing-News-Suche mit Java, um eine JSON-Antwort zu erhalten.
 services: cognitive-services
 author: aahill
 manager: cgronlun
@@ -10,16 +10,17 @@ ms.component: bing-news-search
 ms.topic: quickstart
 ms.date: 9/21/2017
 ms.author: aahi
-ms.openlocfilehash: d8ab0e10e8332cf2305185849d6446d679210845
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.custom: seodec2018
+ms.openlocfilehash: 9933f1c54e6081ed3f1004712543610a7883736b
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52316836"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53260955"
 ---
-# <a name="quickstart-for-bing-news-search-api-with-java"></a>Schnellstart für die Bing-News-Suche-API mit Java
+# <a name="quickstart-perform-a-news-search-using-java-and-the-bing-news-search-rest-api"></a>Schnellstart: Durchführen einer Neuigkeitensuche mit Java und der REST-API der Bing-News-Suche
 
-In diesem Artikel erfahren Sie, wie Sie die Bing-Suche-API verwenden, die im Rahmen von Microsoft Cognitive Services in Azure zur Verfügung steht. In diesem Artikel wird zwar Java eingesetzt, an sich ist die API aber ein RESTful-Webdienst, der mit jeder Programmiersprache kompatibel ist, die HTTP-Anforderungen senden und JSON analysieren kann. 
+In diesem Artikel erfahren Sie, wie Sie die Bing-Suche-API verwenden, die Ihnen im Rahmen von Microsoft Cognitive Services in Azure zur Verfügung steht. In diesem Artikel wird zwar Java eingesetzt, an sich ist die API aber ein RESTful-Webdienst, der mit jeder Programmiersprache kompatibel ist, die HTTP-Anforderungen senden und JSON analysieren kann. 
 
 Der Beispielcode wurde so geschrieben, dass er unter Java 7 als Konsolenanwendung ausgeführt werden kann.
 

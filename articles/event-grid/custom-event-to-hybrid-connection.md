@@ -1,21 +1,22 @@
 ---
-title: Senden von benutzerdefinierten Ereignissen für Azure Event Grid an eine Hybridverbindung | Microsoft-Dokumentation
+title: 'Senden von benutzerdefinierten Ereignissen an die Hybridverbindung: Event Grid, Azure CLI'
 description: Verwenden Sie Azure Event Grid und die Azure CLI, um ein Thema zu veröffentlichen und dieses Ereignis zu abonnieren. Für den Endpunkt wird eine Hybridverbindung verwendet.
 services: event-grid
 keywords: ''
 author: tfitzmac
 ms.author: tomfitz
-ms.date: 10/30/2018
+ms.date: 12/07/2018
 ms.topic: tutorial
 ms.service: event-grid
-ms.openlocfilehash: 488f4e09e329ee41fb307dc3579e76b5378d3a9f
-ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
+ms.custom: seodec18
+ms.openlocfilehash: 1f66c75333b41cf399a72b801a7e362672744775
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50747778"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53099585"
 ---
-# <a name="route-custom-events-to-azure-relay-hybrid-connections-with-azure-cli-and-event-grid"></a>Weiterleiten benutzerdefinierter Ereignisse an Azure Relay Hybrid Connections mit Azure-Befehlszeilenschnittstelle und Event Grid
+# <a name="tutorial-route-custom-events-to-azure-relay-hybrid-connections-with-azure-cli-and-event-grid"></a>Tutorial: Weiterleiten benutzerdefinierter Ereignisse an Azure Relay Hybrid Connections mit Azure-Befehlszeilenschnittstelle und Event Grid
 
 Azure Event Grid ist ein Ereignisdienst für die Cloud. Azure Relay Hybrid Connections ist einer der unterstützten Ereignishandler. Hybridverbindungen werden als Ereignishandler verwendet, wenn Sie Ereignisse von Anwendungen verarbeiten müssen, die über keinen öffentlichen Endpunkt verfügen. Diese Anwendungen können sich in Ihrem Unternehmensnetzwerk befinden. In diesem Artikel erstellen Sie mithilfe der Azure-Befehlszeilenschnittstelle ein benutzerdefiniertes Thema, abonnieren dieses benutzerdefinierte Thema und lösen das Ereignis zum Anzeigen des Ergebnisses aus. Sie senden die Ereignisse an die Hybridverbindung.
 

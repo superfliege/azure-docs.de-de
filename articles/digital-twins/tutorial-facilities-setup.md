@@ -7,12 +7,12 @@ ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 10/15/2018
 ms.author: dkshir
-ms.openlocfilehash: 4491ec4661c93570893e5fafd5524715e0773d8c
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 61b81602342b910a50c0cc6318746ec85a659a92
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52582329"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53080588"
 ---
 # <a name="tutorial-deploy-azure-digital-twins-and-configure-a-spatial-graph"></a>Tutorial: Bereitstellen von Azure Digital Twins und Konfigurieren eines Raumgraphen
 
@@ -163,6 +163,9 @@ Die Datei **provisionSample.yaml** enthält die folgenden Knoten:
     > Stellen Sie sicher, dass die Schlüssel `dataType` und `hardwareId` den Anweisungen über diesem Codeausschnitt entsprechen. Vergewissern Sie sich außerdem, dass Ihr Editor Leerzeichen nicht durch Tabstopps ersetzt. 
 
 Speichern und schließen Sie die Datei „provisionSample.yaml“. Im nächsten Tutorial fügen Sie dieser Datei weitere Informationen hinzu, und anschließend stellen Sie Ihr Azure Digital Twins-Beispielgebäude bereit.
+
+> [!TIP]
+> Sie können Ihren Raumgraphen mithilfe des [Azure Digital Twins Graph Viewer](https://github.com/Azure/azure-digital-twins-graph-viewer) anzeigen und ändern.
 
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen

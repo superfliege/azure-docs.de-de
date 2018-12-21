@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 10/31/2018
+ms.date: 12/07/2018
 ms.topic: tutorial
 ms.service: cost-management
-ms.custom: ''
+ms.custom: seodec18
 manager: benshy
-ms.openlocfilehash: 7d319c82da09ec5c960e1f40bc26edce8ee372b9
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 02ff1822bab0abb4850541135a6ea51ea0e7119f
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52274422"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53083562"
 ---
 # <a name="tutorial-manage-costs-by-using-cloudyn"></a>Tutorial: Verwalten von Kosten mithilfe von Cloudyn
 
@@ -53,13 +53,11 @@ Zu Beginn der Kostenzuteilung definieren Sie zuerst den Bereich, indem Sie ein K
 
 Wählen Sie zum Erstellen eines benutzerdefinierten Kostenzuteilungsmodells im Menü des Berichts die Optionen **Kosten** &gt; **Cost Management** &gt; **Cost Allocation 360**.
 
-![Auswahl von „Cost Allocation 360°“ (Kostenzuteilung 360°)](./media/tutorial-manage-costs/cost-allocation-360.png)
+![Beispiel für ein Dashboard, in dem Sie Cost Allocation 360 auswählen](./media/tutorial-manage-costs/cost-allocation-360.png)
 
 Wählen Sie auf der Seite **Cost Allocation 360°** (Kostenzuteilung 360°) die Option **Hinzufügen**, und geben Sie dann einen Namen und eine Beschreibung für Ihr Kostenmodell ein. Wählen Sie entweder alle Konten oder einzelne Konten aus. Wenn Sie mehrere einzelne Konten verwenden möchten, können Sie mehrere Konten unterschiedlicher Clouddienstanbieter auswählen. Klicken Sie als Nächstes auf **Kategorisierung**, um die ermittelten Tags auszuwählen, mit denen Ihre Kostendaten kategorisiert sind. Wählen Sie die Tags (Kategorien) aus, die Sie in Ihr Modell einbeziehen möchten. Im folgenden Beispiel ist das Tag **Unit** (Einheit) ausgewählt.
 
 ![Beispiel für Kostenmodellkategorisierung](./media/tutorial-manage-costs/cost-model01.png)
-
-
 
 Im Beispiel ist zu sehen, dass 19.680 US-Dollar nicht kategorisiert sind (keine Tags aufweisen).
 
@@ -97,7 +95,7 @@ Erstellen Sie im Bereich **Regeln** eine neue Regel, um eine neue Regel zu defin
 
 Die folgende Abbildung enthält ein Beispiel für Regeln, die für eine neue Kategorie mit dem Namen **Work-Load** erstellt wurden:
 
-![Beispiel für Kategorie](./media/tutorial-manage-costs/category01.png)
+![Beispiel für die neue Kategorie „Work-Load“](./media/tutorial-manage-costs/category01.png)
 
 ### <a name="tag-sources-and-reports"></a>Tag-Quellen und -Berichte
 
@@ -124,7 +122,7 @@ Das Verfahren, das von Organisationen zum Durchführen von Showback- und Chargeb
 
 Öffnen Sie zum Anzeigen der Ergebnisse einer Kostenzuteilung den Kostenanalysebericht, und wählen Sie das von Ihnen erstellte Kostenmodell aus. Fügen Sie anschließend eine Gruppierung nach einem oder mehreren Tags hinzu, die im Kostenmodell ausgewählt werden.
 
-![Bericht „Kostenanalyse“](./media/tutorial-manage-costs/cost-analysis.png)
+![Der Kostenanalysebericht zeigt ein Beispiel der Daten von den neuen Kosten](./media/tutorial-manage-costs/cost-analysis.png)
 
 Sie können leicht Berichte erstellen und speichern, bei denen der Schwerpunkt auf bestimmten Diensten liegt, die von bestimmten Gruppen genutzt werden. Beispielsweise verfügen Sie ggf. über eine Abteilung, in der Azure-VMs häufig verwendet werden. Sie können einen Bericht erstellen, der nach Azure-VMs gefiltert ist, um die Nutzung und die Kosten anzuzeigen.
 

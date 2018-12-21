@@ -1,5 +1,5 @@
 ---
-title: Konfigurieren von Python-Apps für Azure App Service unter Linux
+title: Konfigurieren von Python-Apps unter Linux – Azure App Service
 description: In diesem Tutorial werden die Optionen zum Erstellen und Konfigurieren von Python-Apps für Azure App Service unter Linux beschrieben.
 services: app-service\web
 documentationcenter: ''
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 10/09/2018
 ms.author: astay;cephalin;kraigb
-ms.custom: mvc
-ms.openlocfilehash: 9474b2d64c97b6e6d0fc06c3c448fa6e0515e70c
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.custom: seodec18
+ms.openlocfilehash: 1d9b0e356f0f65be44a533fe098282084b900d89
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51633647"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53249633"
 ---
 # <a name="configure-your-python-app-for-the-azure-app-service-on-linux"></a>Konfigurieren Ihrer Python-App für Azure App Service unter Linux
 
@@ -48,7 +48,7 @@ Python-Apps, die für App Service unter Linux bereitgestellt werden, werden in e
 
 Dieser Container verfügt über die folgenden Eigenschaften:
 
-- Apps werden per [Gunicorn WSGI HTTP Server](http://gunicorn.org/) mit den zusätzlichen Argumenten `--bind=0.0.0.0 --timeout 600` ausgeführt.
+- Apps werden per [Gunicorn WSGI HTTP Server](https://gunicorn.org/) mit den zusätzlichen Argumenten `--bind=0.0.0.0 --timeout 600` ausgeführt.
 
 - Standardmäßig enthält das Basisimage das Flask-Webframework, aber der Container unterstützt auch andere Frameworks, die WSGI-konform und mit Python 3.7 kompatibel sind, z.B. Django.
 
@@ -59,9 +59,9 @@ Dieser Container verfügt über die folgenden Eigenschaften:
 Beim Starten führt der Container vom Typ „App Service unter Linux“ die folgenden Schritte aus:
 
 1. Es wird eine Prüfung auf einen benutzerdefinierten Startbefehl durchgeführt, und falls dieser vorhanden ist, wird er angewendet.
-1. Es wird geprüft, ob die Datei *wsgi.py* einer Django-App vorhanden ist. Wenn ja, wird mit dieser Datei Gunicorn gestartet.
-1. Es wird geprüft, ob die Datei *application.py* vorhanden ist. Wenn ja, wird Gunicorn mit `application:app` gestartet und eine Flask-App vorausgesetzt.
-1. Wenn keine andere App gefunden wird, können Sie eine Standard-App starten, die im Container integriert ist.
+2. Es wird geprüft, ob die Datei *wsgi.py* einer Django-App vorhanden ist. Wenn ja, wird mit dieser Datei Gunicorn gestartet.
+3. Es wird geprüft, ob die Datei *application.py* vorhanden ist. Wenn ja, wird Gunicorn mit `application:app` gestartet und eine Flask-App vorausgesetzt.
+4. Wenn keine andere App gefunden wird, können Sie eine Standard-App starten, die im Container integriert ist.
 
 Die folgenden Abschnitte enthalten weitere Details zu den einzelnen Optionen.
 
@@ -100,7 +100,7 @@ Wenn Ihr Hauptmodul in einem Unterordner, z.B. `website` enthalten ist, können 
 gunicorn --bind=0.0.0.0 --timeout 600 --chdir website hello:myapp
 ```
 
-Sie können dem Befehl auch zusätzliche Argumente für Gunicorn hinzufügen, z.B. `--workers=4`. Weitere Informationen finden Sie unter [Running Gunicorn](http://docs.gunicorn.org/en/stable/run.html) (Ausführen von Gunicorn) (docs.gunicorn.org).
+Sie können dem Befehl auch zusätzliche Argumente für Gunicorn hinzufügen, z.B. `--workers=4`. Weitere Informationen finden Sie unter [Running Gunicorn](https://docs.gunicorn.org/en/stable/run.html) (Ausführen von Gunicorn) (docs.gunicorn.org).
 
 Führen Sie die folgenden Schritte aus, um einen benutzerdefinierten Befehl anzugeben:
 

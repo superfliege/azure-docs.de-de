@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstartanleitung: Erstellen einer privaten Docker-Registrierung in Azure mit der Azure CLI'
+title: 'Schnellstart: Erstellen einer privaten Docker-Registrierung in Azure: Azure CLI'
 description: Hier lernen Sie, wie Sie schnell eine private Docker-Containerregistrierung mit der Azure CLI erstellen.
 services: container-registry
 author: dlepow
@@ -7,15 +7,15 @@ ms.service: container-registry
 ms.topic: quickstart
 ms.date: 03/03/2018
 ms.author: danlep
-ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: 57c72056b669865278fa8109cd7f4963a1f0887a
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.custom: seodec18, H1Hack27Feb2017, mvc
+ms.openlocfilehash: e75a2d126680c71542aa04bae5a30ea7c376cea1
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48855237"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53255923"
 ---
-# <a name="quickstart-create-a-container-registry-using-the-azure-cli"></a>Schnellstart: Erstellen einer Containerregistrierung mit der Azure-Befehlszeilenschnittstelle
+# <a name="quickstart-create-a-private-container-registry-using-the-azure-cli"></a>Schnellstart: Erstellen einer privaten Containerregistrierung mit der Azure CLI
 
 Azure Container Registry ist ein verwalteter Docker-Containerregistrierungsdienst zum Speichern privater Docker-Containerimages. Diese Anleitung enthält ausführliche Informationen zum Erstellen einer Azure Container Registry-Instanz mit der Azure CLI, Übertragen eines Containerimages per Pushvorgang in die Registrierung und Bereitstellen des Containers aus Ihrer Registrierung in Azure Container Instances (ACI).
 

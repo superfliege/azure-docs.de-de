@@ -9,12 +9,12 @@ ms.date: 10/1/2018
 ms.topic: overview
 ms.service: service-fabric-mesh
 manager: timlt
-ms.openlocfilehash: f753d7273c685a7ec3e4e0877e171df04e69e5b4
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: da5370e274aa1904f803227d8c85912a7d26c533
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50978314"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53000659"
 ---
 # <a name="what-is-service-fabric-mesh"></a>Was ist Service Fabric Mesh?
 
@@ -50,6 +50,7 @@ Mit Service Fabric Mesh können Sie die folgenden Aufgaben ausführen:
 - Bereitstellen und Verwalten von Ressourcen mithilfe des [Azure-Portals](https://portal.azure.com), Resource Manager-Vorlagen oder der Azure CLI/PowerShell-Bibliotheken.
 - Einrichten von operativer Überwachung und Warnungen mithilfe von [Application Insights](/azure/application-insights/) (oder Ihrem bevorzugten Tool) zum Erfassen von Betriebs- und Diagnoseablaufverfolgungen von der Plattform.
 - Zugreifen auf aus dem Anwendungsmodell ausgegebene Anwendungsdiagnoseinformationen mithilfe von [Application Insights](/azure/application-insights/) oder dem Tool Ihrer Wahl.
+- Optimieren der Nutzung von Ressourcen durch Angeben von Regeln für automatische Skalierung für die Dienste in der Anwendungsdefinition.
 
 ## <a name="mission-critical-platform-capabilities"></a>Unternehmenswichtige Plattformfunktionen
 

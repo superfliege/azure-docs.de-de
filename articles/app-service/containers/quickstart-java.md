@@ -1,5 +1,5 @@
 ---
-title: Schnellstartanleitung zum Erstellen einer Java-Web-App in Azure App Service unter Linux
+title: Erstellen von Java-Web-Apps unter Linux – Azure App Service
 description: In dieser Schnellstartanleitung stellen Sie in wenigen Minuten Ihre erste Java-App „Hallo Welt“ in Azure App Service unter Linux bereit.
 services: app-service\web
 documentationcenter: ''
@@ -12,15 +12,15 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: quickstart
-ms.date: 03/07/2018
+ms.date: 12/10/2018
 ms.author: msangapu
 ms.custom: mvc
-ms.openlocfilehash: e286942f092d2e8c22824a18f5a6503d04a1be0c
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: d27491d84d4df1757f77a403cd754496bbff6887
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50247554"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53252608"
 ---
 # <a name="quickstart-create-a-java-web-app-in-app-service-on-linux"></a>Schnellstart: Erstellen einer Java-Web-App in App Service unter Linux
 
@@ -108,8 +108,10 @@ Navigieren Sie nach Abschluss der Bereitstellung zur bereitgestellten Anwendung,
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Schnellstart haben Sie mit Maven eine Java-Webanwendung erstellt, das [Maven-Plug-In für Azure-Web-Apps](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin) konfiguriert und anschließend eine in einem Webarchiv verpackte Java-App in App Service unter Linux bereitgestellt. Informationen dazu, wie Sie Datenbanken verbinden, die Protokollierung und Überwachung einrichten, die Sicherheit konfigurieren und Runtimeoptionen festlegen, finden Sie im Java-Entwicklerleitfaden für App Service unter Linux.
+In diesem Schnellstart haben Sie mit Maven eine Java-Webanwendung erstellt, das [Maven-Plug-In für Azure-Web-Apps](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin) konfiguriert und anschließend eine in einem Webarchiv verpackte Java-App in App Service unter Linux bereitgestellt. In den folgenden Tutorials und Anleitungen finden Sie weitere Informationen zum Hosten von Java-Anwendungen in App Serivce unter Linux.
 
-> [!div class="nextstepaction"]
-> [Java-Entwicklerleitfaden für App Service unter Linux](app-service-linux-java.md)
+- [Tutorial: Bereitstellen einer Java-Unternehmens-App mit PostgreSQL](tutorial-java-enterprise-postgresql-app.md)
+- [Konfigurieren einer Tomcat-Datenquelle](app-service-linux-java.md#connecting-to-data-sources)
+- [CI/CD mit Jenkins](/azure/jenkins/deploy-jenkins-app-service-plugin)
+- [Einrichten der Tools zur Überwachung der Anwendungsleistung](how-to-java-apm-monitoring.md)
 

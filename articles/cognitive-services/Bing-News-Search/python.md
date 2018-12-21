@@ -1,7 +1,7 @@
 ---
-title: 'Schnellstart: Bing-News-Suche-API, Python'
+title: 'Schnellstart: Durchführen einer Neuigkeitensuche mit Python – REST-API der Bing-News-Suche'
 titlesuffix: Azure Cognitive Services
-description: Informationen und Codebeispiele für den schnellen Einstieg in die Verwendung der Bing-News-Suche-API.
+description: Verwenden Sie diese Schnellstartanleitung zum Senden einer Anforderung an die REST-API der Bing-News-Suche mit Python, um eine JSON-Antwort zu erhalten.
 services: cognitive-services
 author: aahill
 manager: cgronlun
@@ -10,14 +10,16 @@ ms.component: bing-news-search
 ms.topic: quickstart
 ms.date: 9/21/2017
 ms.author: aahi
-ms.openlocfilehash: 738b139cb2070f2244442311d3670757caac6541
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.custom: seodec2018
+ms.openlocfilehash: 8ce8353df9a6f8354c56d9c9115645c0b7f2136a
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52308816"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53251656"
 ---
-# <a name="quickstart-for-bing-news-search-api-with-python"></a>Schnellstart für die Bing-News-Suche-API mit Python
+# <a name="quickstart-perform-a-news-search-using-python-and-the-bing-news-search-rest-api"></a>Schnellstart: Durchführen einer Neuigkeitensuche mit Python und der REST-API der Bing-News-Suche
+
 Diese exemplarische Vorgehensweise veranschaulicht ein einfaches Beispiel für das Aufrufen der Bing-News-Suche-API und die Nachbearbeitung des resultierenden JSON-Objekts. Weitere Informationen finden Sie in der [Bing-News-Suche-Dokumentation](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference).  
 
 Sie können dieses Beispiel als Jupyter Notebook in [MyBinder](https://mybinder.org) ausführen, indem Sie auf das Binder-Badge klicken: 

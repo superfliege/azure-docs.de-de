@@ -10,12 +10,12 @@ ms.component: translator-text
 ms.topic: quickstart
 ms.date: 10/24/2018
 ms.author: erhopf
-ms.openlocfilehash: 64831f13811029263a2b76f8030589d9329dd318
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: 1d7ba50bf57a5c7f88f4380c4874d6053f07082e
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50086130"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52992608"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-determine-sentence-length-using-python"></a>Schnellstart: Verwenden der Textübersetzungs-API zum Ermitteln der Satzlänge mit Python
 
@@ -153,7 +153,7 @@ Wenn Sie den Abonnementschlüssel in Ihrem Programm hartcodiert haben, entfernen
 
 ## <a name="see-also"></a>Weitere Informationen
 
-Sie können die Textübersetzungs-API nicht nur für das Transkribieren von Text, sondern auch für folgende Zwecke verwenden:
+Informieren Sie sich, wie Sie die Textübersetzungs-API für folgende Zwecke verwenden:
 
 * [Übersetzen von Text](quickstart-python-translate.md)
 * [Transliteration von Text](quickstart-python-transliterate.md)

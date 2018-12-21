@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 09/11/2018
-ms.openlocfilehash: c1e38064e8abe53c96a70fb189b3d9e4cc4bc4e4
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 049fc711d0cf6a69b584ad3926bd9e9c0fc9e27d
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50413994"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53408373"
 ---
 # <a name="deploy-applications-to-virtual-machine-scale-sets-in-azure-using-ansible"></a>Bereitstellen von Anwendungen für VM-Skalierungsgruppen in Azure mithilfe von Ansible
 Ansible ermöglicht die Automatisierung der Bereitstellung und Konfiguration von Ressourcen in Ihrer Umgebung. Sie können mithilfe von Ansible Ihre Anwendungen in Azure bereitstellen. In diesem Artikel wird veranschaulicht, wie Sie eine Java-Anwendung in einer Azure-VM-Skalierungsgruppe (VMSS) bereitstellen.  
@@ -35,7 +35,7 @@ In diesem Abschnitt wird veranschaulicht, wie Ansible zum Abrufen der Hostinform
 
 Speichern Sie das folgende Beispielplaybook als `get-hosts-tasks.yml`: 
 
-  ```yaml
+  ```yml
   - name: Get facts for all Public IPs within a resource groups
     azure_rm_publicipaddress_facts:
       resource_group: "{{ resource_group }}"
@@ -63,7 +63,7 @@ Speichern Sie das folgende Beispielplaybook als `get-hosts-tasks.yml`:
 
 In diesem Abschnitt verwenden Sie Git, um ein Java-Beispielprojekt von GitHub zu klonen, und erstellen das Projekt. Speichern Sie das folgende Playbook als `app.yml`:
 
-  ```yaml
+  ```yml
   - hosts: localhost
     vars:
       repo_url: https://github.com/spring-guides/gs-spring-boot.git
@@ -87,7 +87,7 @@ Führen Sie das Ansible-Beispielplaybook mit dem folgenden Befehl aus:
 
 Die Ausgabe des Befehls „ansible-playbook“ ähnelt der Folgenden, und Sie sehen, dass die von GitHub geklonte Beispiel-App erstellt wurde:
 
-  ```bash
+  ```Output
   PLAY [localhost] **********************************************************
 
   TASK [Gathering Facts] ****************************************************
@@ -110,7 +110,7 @@ Im folgenden Abschnitt eines Ansible-Playbooks wird die JRE (Java Runtime Enviro
 
 (Ändern Sie `admin_password` in Ihr eigenes Kennwort.)
 
-  ```yaml
+  ```yml
   - hosts: localhost
     vars:
       resource_group: myResourceGroup
@@ -167,7 +167,7 @@ Führen Sie das Playbook mit dem folgenden Befehl aus:
 
 Die Ausgabe der Ausführung des Befehls „ansible-playbook“ gibt an, dass die Java-Beispielanwendung auf der Hostgruppe der VM-Skalierungsgruppe installiert wurde:
 
-  ```bash
+  ```Output
   PLAY [localhost] **********************************************************
 
   TASK [Gathering Facts] ****************************************************
@@ -208,4 +208,4 @@ Glückwunsch! Ihre Anwendung wird jetzt in Azure ausgeführt. Sie können nun zu
 
 ## <a name="next-steps"></a>Nächste Schritte
 > [!div class="nextstepaction"] 
-> [Ansible sample playbook for VMSS (Ansible-Beispielplaybook für VMSS)](https://github.com/Azure-Samples/ansible-playbooks/tree/master/vmss)
+> [Automatisches Skalieren einer VM-Skalierungsgruppe mit Ansible](https://docs.microsoft.com/azure/ansible/ansible-auto-scale-vmss)

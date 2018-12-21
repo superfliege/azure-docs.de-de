@@ -1,5 +1,5 @@
 ---
-title: Dateifreigabe für Azure DC/OS-Cluster
+title: (VERALTET) Dateifreigabe für Azure DC/OS-Cluster
 description: Bereitstellen und Einbinden einer Dateifreigabe für einen DC/OS-Cluster in Azure Container Service
 services: container-service
 author: julienstroheker
@@ -9,14 +9,16 @@ ms.topic: tutorial
 ms.date: 06/07/2017
 ms.author: juliens
 ms.custom: mvc
-ms.openlocfilehash: 4e03a0b450c9806edfb81a867fba97052659ec44
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 728f8ddbda35f27c0f89e1d72e98fd2d7669320e
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46973503"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52999858"
 ---
-# <a name="create-and-mount-a-file-share-to-a-dcos-cluster"></a>Bereitstellen und Einbinden einer Dateifreigabe für einen DC/OS-Cluster
+# <a name="deprecated-create-and-mount-a-file-share-to-a-dcos-cluster"></a>(VERALTET) Erstellen und Bereitstellen einer Dateifreigabe für einen DC/OS-Cluster
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
 In diesem Tutorial wird erklärt, wie eine Dateifreigabe unter Azure erstellt und in jeden Agent und Master des DC/OS-Clusters eingebunden wird. Das Einrichten einer Dateifreigabe vereinfacht das Freigeben von Dateien über Ihren gesamten Cluster hinweg im Hinblick auf Konfiguration, Zugriff, Protokolle und mehr. In diesem Tutorial werden die folgenden Aufgaben ausgeführt:
 

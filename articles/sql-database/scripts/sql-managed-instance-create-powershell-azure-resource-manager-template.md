@@ -12,12 +12,12 @@ ms.author: jovanpop-msft
 ms.reviewer: ''
 manager: craigg
 ms.date: 12/04/2018
-ms.openlocfilehash: e2075f8a8e54a091dbb82f9ed6d1c8ddaa9da4d0
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 7df94a465cac03a65bd1df15bf5c1cabda315551
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52869839"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53336461"
 ---
 # <a name="use-powershell-with-azure-resource-manager-template-to-create-an-azure-sql-database-managed-instance"></a>Verwenden von PowerShell mit einer Azure Resource Manager-Vorlage zum Erstellen einer verwalteten Azure SQL-Datenbank-Instanz
 
@@ -36,6 +36,15 @@ Mit Azure PowerShell-Befehlen kann die Bereitstellung gestartet werden, indem ei
 - Sortierung der Instanz auf Serverebene (Vorschauversion)
 
 Der Instanzname, der Benutzername des SQL-Administrators, das VNET/Subnetz und die Sortierung können später nicht mehr geändert werden. Andere Eigenschaften der Instanz können geändert werden.
+
+## <a name="prerequisites"></a>Voraussetzungen
+
+In diesem Beispiel wird vorausgesetzt, dass Sie für Ihre verwaltete Instanz [eine gültige Netzwerkumgebung erstellt](../sql-database-managed-instance-create-vnet-subnet.md) oder [ein vorhandenes VNET geändert](../sql-database-managed-instance-configure-vnet-subnet.md) haben. Da im Beispiel die Cmdlets [New-AzureRmResourceGroupDeployment](https://docs.microsoft.com/powershell/module/azurerm.resources/new-azurermresourcegroupdeployment) und [Get-AzureRmVirtualNetwork](https://docs.microsoft.com/powershell/module/azurerm.network/get-azurermvirtualnetwork) verwendet werden, stellen Sie sicher, dass Sie die folgenden PowerShell-Module installiert haben:
+
+```
+Install-Module AzureRM.Network
+Install-Module AzureRM.Resources
+```
 
 ## <a name="azure-resource-manager-template"></a>Azure Resource Manager-Vorlage
 

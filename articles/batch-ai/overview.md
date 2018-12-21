@@ -14,14 +14,17 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 08/01/2018
 ms.author: danlep
-ms.openlocfilehash: 98497812e75d07fc153e0e351331c05484164fdd
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ROBOTS: NOINDEX
+ms.openlocfilehash: 37f1bf5dc20d097f7f5f560e3bf1fdd25dc38045
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44052698"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53408050"
 ---
 # <a name="what-is-azure-batch-ai"></a>Was ist Azure Batch AI?
+
+[!INCLUDE [batch-ai-retiring](../../includes/batch-ai-retiring.md)]
 
 Azure Batch AI ist ein verwalteter Dienst, mit dem Data Scientists und KI-Forscher Machine Learning- und KI-Modelle in Azure bedarfsorientiert trainieren und testen können, ohne eine komplexe Infrastruktur verwalten zu müssen. Sie müssen nur beschreiben, welche Computeressourcen und Aufträge Sie ausführen möchten, wo die Eingaben und Ausgaben der Modelle gespeichert werden, und die Batch AI kümmert sich um den Rest.
 
@@ -49,7 +52,7 @@ Wenn Sie ein Modell trainiert haben, verwenden Sie das Batch AI zum Testen des M
 
 ## <a name="how-it-works"></a>So funktioniert's
 
-Verwenden Sie Batch AI SDKs, Befehlszeilenskripte oder das Azure-Portal, um Computeressourcen zu verwalten und Aufträge für KI-Schulungen und Tests zu planen: 
+Verwenden Sie Batch AI SDKs, Befehlszeilenskripte oder das Azure-Portal, um Computeressourcen zu verwalten und Aufträge für KI-Schulungen und Tests zu planen: 
 
 * **Bereitstellung und Skalierung von Clustern mit VMs** – Wählen Sie die Anzahl der Knoten (VMs), und wählen Sie eine GPU-fähige oder eine andere VM-Größe, die Ihren Trainingsanforderungen entspricht. Skalieren Sie die Anzahl der Knoten automatisch oder manuell nach oben oder unten, sodass Sie nur bei Bedarf Ressourcen verwenden. 
 

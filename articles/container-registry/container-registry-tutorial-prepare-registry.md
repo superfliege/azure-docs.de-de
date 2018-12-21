@@ -1,5 +1,5 @@
 ---
-title: Azure Container Registry-Tutorial – Vorbereiten einer georeplizierten Azure-Containerregistrierung
+title: 'Tutorial: Erstellen einer georeplizierten Docker-Registrierung in Azure'
 description: Es wird beschrieben, wie Sie eine Azure-Containerregistrierung erstellen, die Georeplikation konfigurieren, ein Docker-Image vorbereiten und es für die Registrierung bereitstellen. Dieses Tutorial ist der erste Teil einer dreiteiligen Reihe.
 services: container-registry
 author: dlepow
@@ -7,13 +7,13 @@ ms.service: container-registry
 ms.topic: tutorial
 ms.date: 04/30/2017
 ms.author: danlep
-ms.custom: mvc
-ms.openlocfilehash: 9d1371dc02f37889b15b3448d82c62d76472f847
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.custom: seodec18, mvc
+ms.openlocfilehash: db00672c7cbb39002c4a40eb7397af76e4c8189a
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48854302"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53261312"
 ---
 # <a name="tutorial-prepare-a-geo-replicated-azure-container-registry"></a>Tutorial: Vorbereiten einer georeplizierten Azure-Containerregistrierung
 
@@ -49,8 +49,8 @@ Klicken Sie auf **Ressource erstellen** > **Container** > **Azure Container Regi
 
 Konfigurieren Sie Ihre neue Registrierung mit den folgenden Einstellungen:
 
-* **Registrierungsname**: Erstellen Sie einen Registrierungsnamen, der in Azure global eindeutig ist und 5 bis 50 alphanumerische Zeichen enthält.
-* **Ressourcengruppe**: **Neu erstellen** > `myResourceGroup`
+* **Registrierungsname:** Erstellen Sie einen Registrierungsnamen, der in Azure global eindeutig ist und 5 bis 50 alphanumerische Zeichen enthält.
+* **Ressourcengruppe:** **Neu erstellen** > `myResourceGroup`
 * **Standort**: `West US`
 * **Administratorbenutzer**: `Enable` (für Web-App für Container zum Pullen von Images erforderlich)
 * **SKU**: `Premium` (für die Georeplikation erforderlich)

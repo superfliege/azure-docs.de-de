@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 09/24/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 0b4e334ea9a423ed4eb9a0830d68ad7f4b843a88
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 6075086b390a14e807e493bd574ac889b81272bf
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52833642"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53437349"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster"></a>Schnellstart: Bereitstellen eines Azure Kubernetes Service-Clusters (AKS)
 
@@ -36,27 +36,27 @@ Klicken Sie im Azure-Portal oben links auf **Ressource erstellen** > **Kubernete
 Führen Sie zum Erstellen eines AKS-Clusters die folgenden Schritte aus:
 
 1. **Grundlagen**: Konfigurieren Sie die folgenden Optionen:
-    - *PROJEKTDETAILS:* Wählen Sie ein Azure-Abonnement und dann eine Azure-Ressourcengruppe aus, bzw. erstellen Sie eine Ressourcengruppe, etwa *myResourceGroup*. Geben Sie unter **Kubernetes cluster name** (Name des Kubernetes-Clusters) einen Namen ein, etwa *myAKSCluster*.
-    - *CLUSTERDETAILS:* Geben Sie Region, Kubernetes-Version und DNS-Namenspräfix für den AKS-Cluster ein.
-    - *SKALIERUNG:* Wählen Sie eine VM-Größe für die AKS-Knoten aus. Die VM-Größe kann **nicht** geändert werden, sobald ein AKS-Cluster bereitgestellt wurde.
+    - *PROJEKTDETAILS*: Wählen Sie ein Azure-Abonnement und dann eine Azure-Ressourcengruppe aus, bzw. erstellen Sie eine Ressourcengruppe, z.B. *myResourceGroup*. Geben Sie unter **Kubernetes cluster name** (Name des Kubernetes-Clusters) einen Namen ein, etwa *myAKSCluster*.
+    - *CLUSTERDETAILS*: Wählen Sie eine Region, eine Kubernetes-Version und ein DNS-Namenspräfix für den AKS-Cluster aus.
+    - *SKALIERUNG*: Wählen Sie eine VM-Größe für die AKS-Knoten aus. Die VM-Größe kann **nicht** geändert werden, sobald ein AKS-Cluster bereitgestellt wurde.
         - Wählen Sie die Anzahl von Knoten für die Bereitstellung im Cluster aus. Legen Sie für diese Schnellstartanleitung für **Anzahl von Knoten** die Option *1* fest. Die Knotenanzahl **kann** nach der Clusterbereitstellung angepasst werden.
     
     ![Erstellen eines AKS-Clusters – Angeben grundlegender Informationen](media/kubernetes-walkthrough-portal/create-cluster-basics.png)
 
-    Wählen Sie nach Abschluss des Vorgangs **Next: Authentication** (Nächster Schritt: Authentifizierung).
+    Klicken Sie auf **Weiter: Authentifizierung**, wenn der Vorgang abgeschlossen ist.
 
-1. **Authentifizierung:** Konfigurieren Sie die folgenden Optionen:
+1. **Authentifizierung**: Konfigurieren Sie die folgenden Optionen:
     - Erstellen Sie einen neuen Dienstprinzipal, oder *konfigurieren* Sie einen vorhandenen. Bei der Verwendung eines vorhandenen Dienstprinzipalnamens müssen Sie die SPN-Client-ID und das Geheimnis angeben.
     - Aktivieren Sie die Option für die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) für Kubernetes. Diese RBAC-Funktionen ermöglichen eine präzisere Steuerung des Zugriffs auf die im AKS-Cluster bereitgestellten Kubernetes-Ressourcen.
 
-    Wählen Sie danach **Weiter: Netzwerk** aus.
+    Klicken Sie auf **Weiter: Netzwerk**, wenn der Vorgang abgeschlossen ist.
 
-1. **Netzwerk:** Konfigurieren Sie die folgenden Netzwerkoptionen, die als Standard festgelegt werden sollten:
+1. **Netzwerk**: Konfigurieren Sie die folgenden Netzwerkoptionen:
     
     - **HTTP-Anwendungsrouting**: Wählen Sie **Ja**, um einen integrierten Eingangscontroller mit automatischer Erstellung öffentlicher DNS-Namen zu konfigurieren. Weitere Informationen zum HTTP-Routing finden Sie unter [HTTP-Routing und DNS bei AKS][http-routing].
     - **Netzwerkkonfiguration**: Wählen Sie die Netzwerkkonfiguration **Basic** mit dem [kubenet][kubenet]-Kubernetes-Plug-In anstelle der erweiterten Netzwerkkonfiguration mit [Azure CNI][azure-cni]. Weitere Informationen zu Netzwerkoptionen finden Sie unter [Netzwerkkonfiguration in Azure Kubernetes Service (AKS)][aks-network].
     
-    Wählen Sie danach **Weiter: Überwachung** aus.
+    Klicken Sie auf **Weiter: Überwachung**, wenn der Vorgang abgeschlossen ist.
 
 1. Bei der Bereitstellung eines AKS-Clusters kann Azure Monitor für Container so konfiguriert werden, dass die Integrität des AKS-Cluster und im Cluster ausgeführte Pods überwacht werden. Weitere Informationen zur Überwachung der Integrität von Containern finden Sie unter [Überwachen der Integrität von Azure Kubernetes Service][aks-monitor].
 
@@ -88,7 +88,7 @@ Verwenden Sie zum Überprüfen der Verbindung mit Ihrem Cluster den Befehl [kube
 kubectl get nodes
 ```
 
-Die folgende Beispielausgabe zeigt den in den vorherigen Schritten erstellten Knoten.
+Die folgende Beispielausgabe zeigt den in den vorherigen Schritten erstellten Knoten. Stellen Sie sicher, dass der Status des Knotens „Bereit“ lautet.
 
 ```
 NAME                       STATUS    ROLES     AGE       VERSION

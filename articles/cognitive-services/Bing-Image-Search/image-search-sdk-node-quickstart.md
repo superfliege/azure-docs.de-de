@@ -1,6 +1,6 @@
 ---
-title: 'Schnellstart: Suchen nach Bildern mit dem Bing-Bildersuche-SDK für Node.js'
-description: Verwenden Sie diesen Schnellstart, um Ihre erste Bildsuche mit dem Bing-Bildersuche-SDK durchzuführen, das ein Wrapper für die API ist und die gleichen Funktionen enthält. Diese einfache Node.js-Anwendung sendet ein Bildsuchabfrage, analysiert die JSON-Antwort und zeigt die URL des ersten zurückgegebenen Bilds an.
+title: 'Schnellstart: Suchen nach Bildern – Bing-Bildersuche-SDK für Node.js'
+description: Führen Sie mithilfe dieses Schnellstarts Ihre erste Bildersuche mit dem Bing-Bildersuche-SDK aus, das ein Wrapper für die API ist und die gleichen Funktionen enthält. Diese einfache Node.js-Anwendung sendet ein Bildsuchabfrage, analysiert die JSON-Antwort und zeigt die URL des ersten zurückgegebenen Bilds an.
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: aahill
@@ -10,16 +10,17 @@ ms.component: bing-image-search
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: aahi
-ms.openlocfilehash: a1fda703c74549c351d8eb609819198d7e2856cf
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.custom: seodec2018
+ms.openlocfilehash: cb01b45e26975d44e30669e066b195f4e3abc90a
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52311278"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53251996"
 ---
-# <a name="quickstart-search-for-images-with-the-bing-image-search-sdk-and-nodejs"></a>Schnellstart: Suchen nach Bildern mit dem Bing-Bildersuche-SDK und Node.js
+# <a name="quickstart-search-for-images-with-the-bing-image-search-sdk-for-nodejs"></a>Schnellstart: Suchen nach Bildern mit dem Bing-Bildersuche-SDK für Node.js
 
-Verwenden Sie diesen Schnellstart, um Ihre erste Bildsuche mit dem Bing-Bildersuche-SDK durchzuführen, das ein Wrapper für die API ist und die gleichen Funktionen enthält. Diese einfache JavaScript-Anwendung sendet ein Bildsuchabfrage, analysiert die JSON-Antwort und zeigt die URL des ersten zurückgegebenen Bilds an.
+Führen Sie mithilfe dieses Schnellstarts Ihre erste Bildersuche mit dem Bing-Bildersuche-SDK aus, das ein Wrapper für die API ist und die gleichen Funktionen enthält. Diese einfache JavaScript-Anwendung sendet ein Bildsuchabfrage, analysiert die JSON-Antwort und zeigt die URL des ersten zurückgegebenen Bilds an.
 
 Der Quellcode für dieses Beispiel ist auf [GitHub](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/imageSearch.js) mit zusätzlichen Fehlerbehandlungen und Anmerkungen verfügbar.
 

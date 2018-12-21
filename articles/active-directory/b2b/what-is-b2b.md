@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: mal
-ms.openlocfilehash: 609f48d0c2ba41d658850ade367d9b225941b105
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 992abf97751695c10f28f355e1086a12530b9456
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45982607"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53165230"
 ---
 # <a name="what-is-guest-user-access-in-azure-active-directory-b2b"></a>Was ist der Gastzugriff in Azure Active Directory-B2B?
 
@@ -73,7 +73,7 @@ Sie können die Gastbenutzerverwaltung an Anwendungsbesitzer delegieren, sodass 
 
 Integrieren Sie Ihre externen Partner entsprechend den Anforderungen Ihrer Organisation.
 - Mithilfe der [Einladungs-APIs der B2B-Zusammenarbeit](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation) können Sie Ihre Onboardingprozesse anpassen und unter anderem Self-Service-Registrierungsportale erstellen. 
-- Verwenden Sie den von uns bereitgestellten Beispielcode für ein Self-Service-Portal auf [Github](https://github.com/Azure/active-directory-dotnet-graphapi-b2bportal-web).
+- Verwenden Sie den von uns bereitgestellten Beispielcode für ein Self-Service-Portal auf [GitHub](https://github.com/Azure/active-directory-dotnet-graphapi-b2bportal-web).
 
 ![Registrierungsportal](media/what-is-b2b/sign-up-portal.png)
 

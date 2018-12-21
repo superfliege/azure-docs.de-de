@@ -4,17 +4,17 @@ description: Azure Blueprint ist ein Dienst in Azure, den Sie zum Erstellen, Def
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 11/07/2018
+ms.date: 12/05/2018
 ms.topic: overview
 ms.service: blueprints
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: a48876adc853ca94f606f58f7eeb13c3d1a57ce8
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: f1ebbc10109563b771c5417a0449efec12138526
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52498599"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52967690"
 ---
 # <a name="what-is-azure-blueprints"></a>Was ist Azure Blueprint?
 
@@ -111,7 +111,7 @@ Zum Zuweisen oder zum Aufheben der Zuweisung einer Blaupause sind für Ihr Konto
 > [!NOTE]
 > Da Blaupausenzuweisungen in einem Abonnement erstellt werden, müssen die Berechtigungen zum Zuweisen und Aufheben der Zuweisung von Blaupausen in einem Abonnementbereich erteilt oder vererbt werden.
 
-Mit Ausnahme der Berechtigungen zum Zuweisen von Blaupausen sind diese Berechtigungen in der Rolle **Besitzer** sowie in den Rollen vom Typ **Mitwirkender** enthalten. Sollten diese integrierten Rollen nicht Ihren Sicherheitsanforderungen entsprechen, können Sie eine [benutzerdefinierte Rolle](../../role-based-access-control/custom-roles.md) erstellen.
+Alle der oben genannten Berechtigungen sind in der Rolle **Besitzer** enthalten. Die Rolle **Mitwirkender** verfügt über Berechtigungen zum Erstellen und Löschen von Blaupausen, ist aber nicht zum Zuweisen von Blaupausen berechtigt. Sollten diese integrierten Rollen nicht Ihren Sicherheitsanforderungen entsprechen, können Sie eine [benutzerdefinierte Rolle](../../role-based-access-control/custom-roles.md) erstellen.
 
 > [!NOTE]
 > Für den Dienstprinzipal für Azure Blueprint ist die Rolle **Besitzer** für das zugewiesene Abonnement erforderlich, um die Bereitstellung zu ermöglichen. Bei Verwendung des Portals wird diese Rolle für die Bereitstellung automatisch erteilt und widerrufen. Bei Verwendung der REST-API muss diese Rolle manuell erteilt werden, sie wird jedoch nach Abschluss der Bereitstellung auch automatisch widerrufen.

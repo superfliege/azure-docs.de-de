@@ -14,14 +14,17 @@ ms.tgt-pltfrm: multiple
 ms.workload: na
 ms.date: 08/16/2018
 ms.author: danlep
-ms.openlocfilehash: 01281c0328fab85814ff93c73f9ea25e0d4c1b08
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ROBOTS: NOINDEX
+ms.openlocfilehash: 41a3a801214ff00c01397034e26fde6946ab97f0
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50232799"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53407812"
 ---
 # <a name="cli-example-create-a-batch-ai-cluster-using-a-cluster-configuration-file"></a>CLI-Beispiel: Erstellen eines Batch AI-Clusters mithilfe einer Clusterkonfigurationsdatei
+
+[!INCLUDE [batch-ai-retiring](../../../includes/batch-ai-retiring.md)]
 
 Dieses Skript zeigt, wie Sie eine JSON-Konfigurationsdatei zum Festlegen der Einstellungen für einen Batch AI-Cluster verwenden. Verwenden Sie diese Einstellungen anstelle der entsprechenden Befehlszeilenparameter für `az batchai cluster create`. Eine Konfigurationsdatei wird verwendet, wenn Sie mehrere Dateisysteme auf den Clusterknoten einbinden müssen oder eine identische Konfiguration in mehreren Clustern verwenden möchten.
 

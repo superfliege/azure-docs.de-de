@@ -4,34 +4,32 @@ description: Azure Policy ist ein Dienst in Azure, mit dem Sie Richtliniendefini
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 11/06/2018
+ms.date: 12/06/2018
 ms.topic: overview
 ms.service: azure-policy
 manager: carmonm
-ms.custom: mvc
-ms.openlocfilehash: c016e21ff59d5f68afee79b2159218d10e90a7ec
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 11384d1bbffb675bd322469d129464f58a48bb6b
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51252818"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53311830"
 ---
 # <a name="what-is-azure-policy"></a>Was ist Azure Policy?
 
-Mithilfe von IT-Governance wird sichergestellt, dass Ihre Organisation ihre Ziele basierend auf einer effektiven und effizienten IT-Nutzung erreichen kann. Hierzu werden Ihre Geschäftsziele und die IT-Projekte klar aufeinander abgestimmt.
+Anhand von Governance wird überprüft, ob Ihre Organisation ihre Ziele basierend auf einer effektiven und effizienten IT-Nutzung erreichen kann. Hierzu werden die Geschäftsziele und die IT-Projekte eindeutig aufeinander abgestimmt.
 
 Tritt in Ihrem Unternehmen eine erhebliche Anzahl von IT-Problemen auf, die anscheinend nie gelöst werden?
-Eine gute IT-Governance zeichnet sich durch die Planung von Initiativen und das Setzen von Prioritäten auf strategischer Ebene aus, um Probleme managen und verhindern zu können. An dieser Stelle kommt Azure Policy ins Spiel.
+Eine gute IT-Governance zeichnet sich durch die Planung von Initiativen und das Setzen von Prioritäten auf strategischer Ebene aus, um Probleme managen und verhindern zu können. Bei dieser strategischen Anforderung kommt Azure Policy ins Spiel.
 
-Azure Policy ist ein Dienst in Azure, mit dem Sie Richtlinien erstellen, zuweisen und verwalten können. Mit diesen Richtlinien werden unterschiedliche Regeln und Auswirkungen für Ihre Ressourcen erzwungen, damit diese stets mit Ihren Unternehmensstandards und Vereinbarungen zum Servicelevel konform bleiben. Hierzu führt Azure Policy Auswertungen Ihrer Ressourcen durch und sucht nach Fällen, in denen keine Konformität mit den von Ihnen erstellten Richtlinien besteht. Beispielsweise können Sie eine Richtlinie erstellen, die besagt, dass in Ihrer Umgebung für virtuelle Computer nur eine bestimmte SKU-Größe zulässig ist. Nach der Implementierung dieser Richtlinie wird sie nicht nur für bereits vorhandene Ressourcen ausgewertet, sondern auch, wenn Ressourcen erstellt und aktualisiert werden. Weiter unten in dieser Dokumentation werden noch weitere Details zur Erstellung und Implementierung von Richtlinien mit Azure Policy beschrieben.
+Azure Policy ist ein Dienst in Azure, mit dem Sie Richtlinien erstellen, zuweisen und verwalten können. Mit diesen Richtlinien werden unterschiedliche Regeln und Auswirkungen für Ihre Ressourcen erzwungen, damit diese stets mit Ihren Unternehmensstandards und Vereinbarungen zum Servicelevel konform bleiben. Azure Policy erfüllt diese Anforderung, indem Ihre Ressourcen auf die Nichteinhaltung der zugewiesenen Richtlinien überprüft werden. Beispielsweise können Sie eine Richtlinie erstellen, die besagt, dass in Ihrer Umgebung für virtuelle Computer nur eine bestimmte SKU-Größe zulässig ist. Nachdem diese Richtlinie implementiert wurde, wird die Konformität der neuen und vorhandenen Ressourcen ausgewertet. Mit dem richtigen Typ von Richtlinie kann für vorhandene Ressourcen Konformität erzielt werden. Weiter unten in dieser Dokumentation werden noch weitere Details zur Erstellung und Implementierung von Richtlinien mit Azure Policy beschrieben.
 
 > [!IMPORTANT]
 > Die Kompatibilitätsprüfung von Azure Policy wird nun unabhängig vom Tarif für alle Zuweisungen bereitgestellt. Sollten die Kompatibilitätsdaten für Ihre Zuweisungen nicht angezeigt werden, vergewissern Sie sich, dass das Abonnement beim Ressourcenanbieter „Microsoft.PolicyInsights“ registriert ist.
 
 ## <a name="how-is-it-different-from-rbac"></a>Worin unterscheidet sich dies von der rollenbasierten Zugriffssteuerung (RBAC)?
 
-Zwischen einer Richtlinie und der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) gibt es einige entscheidende Unterschiede. Bei RBAC stehen Benutzeraktionen in verschiedenen Bereichen im Mittelpunkt. Beispiel: Sie werden der Rolle „Mitwirkender“ für eine Ressourcengruppe in einem bestimmten Bereich hinzugefügt. Die Rolle erlaubt Ihnen, Änderungen an der Ressourcengruppe vorzunehmen.
-Bei einer Richtlinie stehen Ressourceneigenschaften während der Bereitstellung und für bereits bestehende Ressourcen im Mittelpunkt. Sie können beispielsweise über Richtlinien steuern, welche Ressourcentypen bereitgestellt werden können. Oder Sie können die Standorte einschränken, an denen die Ressourcen bereitgestellt werden können. Im Gegensatz zur RBAC stellen Richtlinien ein Standardsystem für das Zulassen und explizite Verweigern dar.
+Zwischen Policy und der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) gibt es einige entscheidende Unterschiede. Bei RBAC stehen Benutzeraktionen in verschiedenen Bereichen im Mittelpunkt. Sie können der Rolle „Mitwirkender“ für eine Ressourcengruppe hinzugefügt werden, damit Sie für die Ressourcengruppe Änderungen vornehmen können. Bei Policy stehen Ressourceneigenschaften während der Bereitstellung und für bereits bestehende Ressourcen im Mittelpunkt. Policy steuert Eigenschaften, z.B. die Typen oder Speicherorte von Ressourcen. Im Gegensatz zu RBAC stellt Policy ein Standardsystem für das Zulassen und explizite Ablehnen dar.
 
 ### <a name="rbac-permissions-in-azure-policy"></a>RBAC-Berechtigungen in Azure Policy
 
@@ -40,38 +38,38 @@ Azure Policy verfügt über verschiedene Berechtigungen (als Vorgänge bezeichne
 - [Microsoft.Authorization](../../role-based-access-control/resource-provider-operations.md#microsoftauthorization)
 - [Microsoft.PolicyInsights](../../role-based-access-control/resource-provider-operations.md#microsoftpolicyinsights)
 
-Zahlreiche integrierte Rollen erteilen Berechtigungen für Azure Policy-Ressourcen. Die Rolle **Mitwirkender an Ressourcenrichtlinien (Vorschau)** beinhaltet die meisten Policy-Vorgänge, und die Rolle **Besitzer** verfügt über die vollständigen Berechtigungen. Sowohl die Rolle **Mitwirkender** als auch die Rolle **Leser** kann alle Details in Bezug auf Policy lesen, die Rolle **Mitwirkender** kann jedoch auch die Wartung auslösen.
+Zahlreiche integrierte Rollen erteilen Berechtigungen für Azure Policy-Ressourcen. Die Rolle **Mitwirkender an Ressourcenrichtlinien (Vorschau)** umfasst die meisten Policy-Vorgänge. Die Rolle **Besitzer** verfügt über die vollständigen Berechtigungen. Sowohl für **Mitwirkender** als auch für **Leser** können alle Policy-Lesevorgänge genutzt werden, aber mit **Mitwirkender** kann zusätzlich die Bereinigung ausgelöst werden.
 
 Wenn keine der integrierten Rollen über die erforderlichen Berechtigungen verfügt, erstellen Sie eine [benutzerdefinierte Rolle](../../role-based-access-control/custom-roles.md).
 
 ## <a name="policy-definition"></a>Richtliniendefinition
 
-Die Erstellung und Implementierung einer Richtlinie in Azure Policy beginnt mit dem Erstellen einer Richtliniendefinition. Jede Richtliniendefinition hat Bedingungen, unter denen sie erzwungen wird. Des Weiteren verfügt sie über einen dazugehörigen Effekt, der wirksam wird, wenn die Bedingungen erfüllt sind.
+Die Erstellung und Implementierung einer Richtlinie in Azure Policy beginnt mit dem Erstellen einer Richtliniendefinition. Jede Richtliniendefinition verfügt über Bedingungen, unter denen sie erzwungen wird. Des Weiteren verfügt sie über einen definierten Effekt, der wirksam wird, wenn die Bedingungen erfüllt sind.
 
-In Azure Policy bieten wir einige integrierte Richtlinien an, die Ihnen standardmäßig zur Verfügung stehen. Beispiel: 
+In Azure Policy bieten wir mehrere integrierte Richtlinien an, die standardmäßig zur Verfügung stehen. Beispiel: 
 
-- **SQL Server 12.0 erfordern**: Diese Richtliniendefinition enthält Bedingungen bzw. Regeln, um sicherzustellen, dass alle SQL Server-Instanzen die Version 12.0 aufweisen. Der dazugehörige Effekt besteht in der Ablehnung aller Server, die diese Kriterien nicht erfüllen.
-- **Zulässige Speicherkonto-SKUs**: Diese Richtliniendefinition enthält eine Reihe von Bedingungen bzw. Regeln, die festlegen, ob sich ein Speicherkonto, das bereitgestellt wird, in einem Bereich von SKU-Größen befindet. Dies hat die Auswirkung, dass alle Speicherkonten abgelehnt werden, die nicht der definierten Gruppe von SKU-Größen entsprechen.
-- **Zulässiger Ressourcentyp**: Diese Richtliniendefinition enthält eine Reihe von Bedingungen bzw. Regeln, um die Ressourcentypen festzulegen, die Ihre Organisation bereitstellen kann. Der dazugehörige Effekt besteht in der Ablehnung aller Ressourcen, die nicht Teil dieser Liste sind.
-- **Zulässige Speicherorte**: Mit dieser Richtlinie können Sie die Speicherorte einschränken, die Ihre Organisation beim Bereitstellen von Ressourcen angeben kann. Der dazugehörige Effekt dient zur Erzwingung Ihrer Geokonformitätsanforderungen.
-- **Zulässige VM-SKUs**: Mit dieser Richtlinie können Sie eine Gruppe von VM-SKUs angeben, die Ihre Organisation bereitstellen kann.
-- **Tag und seinen Standardwert anwenden**: Diese Richtlinie wendet ein erforderliches Tag und seinen Standardwert an, falls es nicht vom Benutzer angegeben wird.
-- **Tag und seinen Wert erzwingen**: Diese Richtlinie setzt ein erforderliches Tag und seinen Wert bei einer Ressource durch.
-- **Nicht zulässige Ressourcentypen**: Mit dieser Richtlinie können Sie die Ressourcentypen angeben, die Ihre Organisation nicht bereitstellen kann.
+- **SQL Server-Version 12.0 erforderlich**: Überprüft, ob für alle Server mit SQL Server die Version 12.0 verwendet wird. Alle Server, die diese Kriterien nicht erfüllen, werden abgelehnt.
+- **Zulässige Speicherkonten-SKUs**: Bestimmt, ob ein bereitzustellendes Speicherkonto innerhalb einer Gruppe von SKU-Größen liegt. Alle Speicherkonten, die nicht der definierten Gruppe von SKU-Größen entsprechen, werden abgelehnt.
+- **Zulässiger Ressourcentyp**: Definiert die Ressourcentypen, die Sie bereitstellen können. Alle Ressourcen, die nicht in dieser Liste enthalten sind, werden abgelehnt.
+- **Zulässige Standorte**: Schränkt die verfügbaren Standorte für neue Ressourcen ein. Der dazugehörige Effekt dient zur Erzwingung Ihrer Geokonformitätsanforderungen.
+- **Zulässige SKUs für virtuelle Computer**: Gibt eine Gruppe von SKUs für virtuelle Computer an, die Sie bereitstellen können.
+- **Tag und Standardwert anwenden**: Wendet ein erforderliches Tag und dessen Standardwert an, falls dies nicht mit der Bereitstellungsanforderung angegeben wird.
+- **Tag und dessen Wert erzwingen**: Erzwingt ein erforderliches Tag und den zugehörigen Wert für eine Ressource.
+- **Nicht zulässige Ressourcentypen**: Verhindert, dass die in der Liste enthaltenen Ressourcentypen bereitgestellt werden.
 
 Um diese Richtliniendefinitionen implementieren zu können (integrierte und benutzerdefinierte Definitionen), müssen Sie sie zuweisen. Sie können diese Richtlinien über das Azure-Portal, PowerShell oder die Azure CLI zuweisen.
 
-Beachten Sie, dass eine erneute Auswertung einer Richtlinie ca. einmal pro Stunde erfolgt. Dies bedeutet Folgendes: Wenn Sie nach der Implementierung der Richtlinie (Erstellung einer Richtlinienzuweisung) Änderungen vornehmen, wird sie innerhalb einer Stunde für Ihre Ressourcen erneut ausgewertet.
+Bei der Richtlinienauswertung werden mehrere unterschiedliche Aktionen durchgeführt, z.B. Richtlinienzuweisung oder Richtlinienaktualisierungen. Eine vollständige Liste finden Sie unter [Evaluation Triggers](./how-to/get-compliance-data.md#evaluation-triggers) (Auswertungsauslöser).
 
 Weitere Informationen zu den Strukturen von Richtliniendefinitionen finden Sie unter [Struktur von Richtliniendefinitionen](./concepts/definition-structure.md).
 
 ## <a name="policy-assignment"></a>Richtlinienzuweisung
 
-Eine Richtlinienzuweisung ist eine zugewiesene Richtliniendefinition, die innerhalb eines bestimmten Bereichs angewendet werden soll. Ein solcher Bereich kann sich von einer [Verwaltungsgruppe](../management-groups/overview.md) bis hin zu einer Ressourcengruppe erstrecken. Der Begriff *Bereich* bezieht sich auf alle Ressourcengruppen, Abonnements oder Verwaltungsgruppen, denen die Richtliniendefinition zugewiesen ist. Richtlinienzuordnungen werden von allen untergeordneten Ressourcen geerbt. Dies bedeutet Folgendes: Wenn eine Richtlinie auf eine Ressourcengruppe angewendet wird, gilt sie auch für alle Ressourcen in der Ressourcengruppe. Sie können jedoch einen Unterbereich von der Richtlinienzuordnung ausschließen.
+Eine Richtlinienzuweisung ist eine zugewiesene Richtliniendefinition, die innerhalb eines bestimmten Bereichs angewendet werden soll. Ein solcher Bereich kann sich von einer [Verwaltungsgruppe](../management-groups/overview.md) bis hin zu einer Ressourcengruppe erstrecken. Der Begriff *Bereich* bezieht sich auf alle Ressourcengruppen, Abonnements oder Verwaltungsgruppen, denen die Richtliniendefinition zugewiesen ist. Richtlinienzuordnungen werden von allen untergeordneten Ressourcen geerbt. Dies bedeutet, dass eine auf eine Ressourcengruppe angewendete Richtlinie auch auf die Ressourcen in dieser Ressourcengruppe angewendet wird. Sie können jedoch einen Unterbereich von der Richtlinienzuordnung ausschließen.
 
-Im Abonnementbereich können Sie beispielsweise eine Richtlinie zuweisen, die die Erstellung von Netzwerkressourcen verhindert. Allerdings schließen Sie dann eine Ressourcengruppe innerhalb des Abonnements aus, die für die Netzwerkinfrastruktur vorgesehen ist. Sie gewähren Benutzern Zugriff auf diese Netzwerkressourcengruppe, denen Sie für das Erstellen von Netzwerkressourcen vertrauen.
+Im Abonnementbereich können Sie beispielsweise eine Richtlinie zuweisen, die die Erstellung von Netzwerkressourcen verhindert. Sie können eine Ressourcengruppe in diesem Abonnement ausschließen, die für die Netzwerkinfrastruktur vorgesehen ist. Sie gewähren Benutzern, denen Sie in Bezug auf das Erstellen von Netzwerkressourcen vertrauen, dann Zugriff auf diese Netzwerkressourcengruppe.
 
-In einem anderen Beispiel möchten Sie möglicherweise eine Ressourcentyp-Whitelist-Richtlinie auf der Verwaltungsgruppenebene zuweisen. Außerdem möchten Sie einer untergeordneten Verwaltungsgruppe (oder sogar Abonnements direkt) eine weniger restriktive Richtlinie zuweisen, die mehr Ressourcentypen zulässt. Dieses Beispiel funktioniert jedoch nicht, da es sich bei einer Richtlinie um ein explizites Verbotssystem handelt. Stattdessen müssen Sie die untergeordnete Verwaltungsgruppe oder das Abonnement aus der Richtlinienzuweisung auf der Verwaltungsgruppenebene ausschließen. Anschließend müssen Sie die weniger restriktive Richtlinie auf der Ebene der untergeordneten Verwaltungsgruppe oder des Abonnements zuweisen. Kurz gesagt: Falls eine Ressource aufgrund einer Richtlinie abgelehnt wird, muss zum Zulassen der Ressource die ablehnende Richtlinie geändert werden.
+In einem anderen Beispiel möchten Sie möglicherweise eine Ressourcentyp-Whitelist-Richtlinie auf der Verwaltungsgruppenebene zuweisen. Außerdem möchten Sie einer untergeordneten Verwaltungsgruppe (oder sogar Abonnements direkt) eine weniger restriktive Richtlinie zuweisen, die mehr Ressourcentypen zulässt. Dieses Beispiel funktioniert jedoch nicht, da es sich bei einer Richtlinie um ein explizites Verbotssystem handelt. Stattdessen müssen Sie die untergeordnete Verwaltungsgruppe oder das Abonnement aus der Richtlinienzuweisung auf der Verwaltungsgruppenebene ausschließen. Anschließend müssen Sie die weniger restriktive Richtlinie auf der Ebene der untergeordneten Verwaltungsgruppe oder des Abonnements zuweisen. Falls eine Ressource aufgrund einer Richtlinie abgelehnt wird, muss zum Zulassen der Ressource die ablehnende Richtlinie geändert werden.
 
 Weitere Informationen zum Einrichten von Richtliniendefinitionen und Zuweisungen über das Portal finden Sie unter [Erstellen einer Richtlinienzuweisung zum Identifizieren nicht konformer Ressourcen in Ihrer Azure-Umgebung](assign-policy-portal.md). Schritte für [PowerShell](assign-policy-powershell.md) und die [Azure-Befehlszeilenschnittstelle](assign-policy-azurecli.md) sind ebenfalls verfügbar.
 
@@ -79,30 +77,29 @@ Weitere Informationen zum Einrichten von Richtliniendefinitionen und Zuweisungen
 
 Richtlinienparameter vereinfachen die Richtlinienverwaltung für Sie, da sie die Anzahl der Richtliniendefinitionen, die Sie erstellen müssen, reduzieren. Beim Erstellen einer Richtliniendefinition können Sie Parameter definieren, damit sie allgemeingültiger ist. Anschließend können Sie diese Richtliniendefinition für verschiedene Szenarien wiederverwenden. Dazu übergeben Sie unterschiedliche Werte beim Zuweisen der Richtliniendefinition. Geben Sie z.B. eine Gruppe von Speicherorten für ein Abonnement an.
 
-Parameter werden beim Erstellen einer Richtliniendefinition definiert bzw. erstellt. Bei der Definition eines Parameters wird ein Name und optional ein Wert vergeben. Sie können z.B. einen Parameter für eine Richtlinie mit dem Titel *location* definieren. Dann können Sie ihm beim Zuweisen einer Richtlinie unterschiedliche Werte wie z.B. *EastUS* oder *WestUS* geben.
+Parameter werden beim Erstellen einer Richtliniendefinition definiert. Bei der Definition eines Parameters wird ein Name und optional ein Wert vergeben. Sie können z.B. einen Parameter für eine Richtlinie mit dem Titel *location* definieren. Dann können Sie ihm beim Zuweisen einer Richtlinie unterschiedliche Werte wie z.B. *EastUS* oder *WestUS* geben.
 
-Weitere Informationen zu Richtlinienparametern finden Sie unter [Übersicht über Ressourcenrichtlinien – Parameter](./concepts/definition-structure.md#parameters).
+Weitere Informationen zu Richtlinienparametern finden Sie unter [Struktur von Azure Policy-Definitionen – Parameter](./concepts/definition-structure.md#parameters).
 
 ## <a name="initiative-definition"></a>Initiativdefinition
 
 Eine Initiativdefinition ist eine Auflistung von Richtliniendefinitionen, die auf das Erreichen eines einzigen übergeordneten Ziels ausgerichtet sind. Initiativdefinitionen vereinfachen das Verwalten und Zuweisen von Richtliniendefinitionen. Die Vereinfachung besteht im Gruppieren einer Reihe von Richtlinien zu einem einzelnen Element. Beispielsweise können Sie eine Initiative mit dem Titel **Überwachung im Azure Security Center aktivieren** mit dem Ziel erstellen, alle vorhandenen Sicherheitsempfehlungen in Ihrem Azure Security Center zu überwachen.
 
-Im Rahmen dieser Initiative würden Sie Richtliniendefinitionen wie etwa Folgende haben:
+Im Rahmen dieser Initiative würden Sie in etwa folgende Richtliniendefinitionen nutzen:
 
 - **Unverschlüsselte SQL-Datenbank im Security Center überwachen** – Zum Überwachen von unverschlüsselten SQL-Datenbanken und Servern.
-- **Betriebssystem-Sicherheitsrisiken im Security Center überwachen** – Zum Überwachen von Servern, die nicht die konfigurierte Baseline erfüllen.
+- **Betriebssystem-Sicherheitsrisiken in Security Center überwachen** – Zum Überwachen von Servern, die die konfigurierte Baseline nicht erfüllen.
 - **Fehlendes Endpoint Protection im Security Center überwachen** – Zum Überwachen von Servern ohne installierten Endpoint Protection-Agent.
 
 ## <a name="initiative-assignment"></a>Initiativzuweisung
 
 Bei einer Initiativzuweisung handelt es sich ähnlich wie bei einer Richtlinienzuweisung um eine Initiativdefinition, die einem bestimmten Bereich zugewiesen ist. Initiativzuweisungen reduzieren den Bedarf dafür, für jeden Bereich mehrere Initiativdefinitionen zu definieren. Ein solcher Bereich kann sich auch von einer Verwaltungsgruppe bis hin zu einer Ressourcengruppe erstrecken.
 
-Die Initiative **Überwachung im Azure Security Center aktivieren** aus dem vorhergehenden Beispiel kann verschiedenen Bereichen zugeordnet werden. Beispielsweise kann eine Zuweisung **subscriptionA** zugewiesen werden.
-Eine andere kann **subscriptionB** zugewiesen werden.
+Jede Initiative kann unterschiedlichen Bereichen zugewiesen werden. Eine Initiative kann sowohl Abonnement A (**subscriptionA**) als auch Abonnement B (**subscriptionB**) zugewiesen werden.
 
 ## <a name="initiative-parameters"></a>Initiativparameter
 
-Genau wie Richtlinienparameter vereinfachen auch Initiativparameter die Initiativverwaltung, indem sie die Redundanz verringern. Bei Initiativparameter handelt es sich im Wesentlichen um die Liste der Parameter, die von den Richtliniendefinitionen innerhalb der Initiative verwendet werden.
+Genau wie Richtlinienparameter vereinfachen auch Initiativparameter die Initiativverwaltung, indem sie die Redundanz verringern. Bei Initiativparametern handelt es sich um Parameter, die von den Richtliniendefinitionen innerhalb der Initiative verwendet werden.
 
 Stellen Sie sich beispielsweise ein Szenario vor, in dem Sie die Initiativdefinition **initiativeC** mit den Richtliniendefinitionen **policyA** und **policyB** verwenden, die jeweils einen anderen Parametertyp erwarten:
 
@@ -113,11 +110,11 @@ Stellen Sie sich beispielsweise ein Szenario vor, in dem Sie die Initiativdefini
 
 In diesem Szenario haben Sie bei der Definition der Initiativparameter für **initiativeC** drei Optionen:
 
-- Nutzen Sie die Parameter der Richtliniendefinitionen innerhalb dieser Initiative: In diesem Beispiel werden *allowedLocations* und *allowedSingleLocation* zu Initiativparametern für **initiativeC**.
+- Verwenden Sie die Parameter der Richtliniendefinitionen innerhalb dieser Initiative: In diesem Beispiel werden *allowedLocations* und *allowedSingleLocation* zu Initiativparametern für **initiativeC**.
 - Geben Sie Werte für die Parameter der Richtliniendefinitionen innerhalb dieser Initiativdefinition ein. In diesem Beispiel können Sie eine Liste von Standorten für den **Parameter von policyA – allowedLocations** und den **Parameter von policyB – allowedSingleLocation** zur Verfügung stellen. Bei der Zuweisung dieser Initiative können Sie auch Werte bereitstellen.
 - Geben Sie eine Liste von *Wertoptionen* an, die bei der Zuweisung dieser Initiative verwendet werden können. Damit dürfen die von den Richtliniendefinitionen geerbten Parameter innerhalb der Initiative bei der Zuweisung dieser Initiative nur Werte aus der angegebenen Liste enthalten.
 
-Sie können z.B. eine Liste der Wertoptionen in einer Initiativdefinition erstellen, die *USA, Osten*, *USA, Westen*, *USA, Mitte* und *Europa, Westen* enthält. Dann können Sie während der Initiativzuweisung keinen anderen Wert wie z.B. *Asien, Südosten* eingeben, da er nicht Teil der Liste ist.
+Beim Erstellen von Wertoptionen in einer Initiativdefinition können Sie während der Initiativenzuweisung keinen anderen Wert eingeben, da er nicht Teil der Liste ist.
 
 ## <a name="maximum-count-of-policy-objects"></a>Maximale Anzahl von Richtlinienobjekten
 
@@ -125,13 +122,18 @@ Sie können z.B. eine Liste der Wertoptionen in einer Initiativdefinition erstel
 
 ## <a name="recommendations-for-managing-policies"></a>Empfehlungen für die Verwaltung von Richtlinien
 
-Im Folgenden sind einige Hinweise zum Erstellen und Verwalten von Richtliniendefinitionen und -zuweisungen, die Sie berücksichtigen sollten, sowie einige nützliche Tipps aufgeführt:
+Hier sind einige Hinweise und Tipps aufgeführt, die Sie beachten sollten:
 
-- Bei der Erstellung von Richtliniendefinitionen in Ihrer Umgebung sollten Sie anstatt mit einem Ablehnungseffekt mit einem Überwachungseffekt beginnen, um die Auswirkungen Ihrer Richtliniendefinition auf die Ressourcen in Ihrer Umgebung nachzuverfolgen. Wenn Sie bereits Skripts zur automatischen Skalierung Ihrer Anwendungen eingerichtet haben, kann ein Ablehnungseffekt die von Ihnen bereits eingerichteten Automatisierungsaufgaben verhindern.
-- Es ist wichtig, beim Erstellen von Definitionen und Zuweisungen die Organisationshierarchien zu berücksichtigen. Daher wird empfohlen, Definitionen auf einer übergeordneten Ebene wie etwa der Verwaltungsgruppen- oder Abonnementebene zu erstellen und der nächsten untergeordneten Ebene zuzuweisen. Wenn Sie z.B. eine Richtliniendefinition auf Verwaltungsgruppenebene erstellen, kann eine Richtlinienzuweisung dieser Definition innerhalb dieser Verwaltungsgruppe bis auf Abonnementebene heruntergebrochen werden.
-- Es wird empfohlen, anstelle von Richtliniendefinitionen immer Initiativdefinitionen zu verwenden, auch wenn Sie nur eine Richtlinie im Auge haben. Wenn Sie z.B. die Richtliniendefinition *policyDefA* unter der Initiativdefinition *initiativeDefC* erstellen und sich entschließen, eine andere Richtliniendefinition für *policyDefB* mit Zielen wie denen von *policyDefA* zu erstellen, können Sie sie unter *initiativeDefC* hinzufügen und auf diese Weise besser nachverfolgen.
-- Beachten Sie, dass neue Richtliniendefinitionen, die der Initiativdefinition hinzugefügt werden, automatisch unter die Initiativzuweisung(en) dieser Initiativdefinition fallen, nachdem Sie eine Initiativzuweisung über eine Initiativdefinition erstellt haben.
-- Nach der Auslösung einer Initiativzuweisung werden auch alle Richtlinien in der Initiative ausgelöst. Wenn Sie eine Richtlinie einzeln ausführen möchten, empfiehlt es sich, sie nicht in eine Initiative aufzunehmen.
+- Beginnen Sie mit einem Überwachungseffekt anstelle eines Ablehnungseffekts, um die Auswirkung Ihrer Richtliniendefinition auf die Ressourcen in Ihrer Umgebung nachzuverfolgen. Wenn Sie bereits Skripts für die automatische Skalierung Ihrer Anwendungen eingerichtet haben, kann ein Ablehnungseffekt die bereits eingerichteten Automatisierungsaufgaben verhindern.
+
+- Berücksichtigen Sie beim Erstellen von Definitionen und Anweisungen die Hierarchien der Organisation. Wir empfehlen Ihnen, Definitionen auf allgemeiner Ebene zu erstellen, z.B. Verwaltungsgruppen- oder Abonnementebene. Erstellen Sie anschließend die Zuweisung auf der nächsten untergeordneten Ebene. Wenn Sie eine Definition für eine Verwaltungsgruppe erstellen, kann die Zuweisung für ein Abonnement oder eine Ressourcengruppe innerhalb dieser Verwaltungsgruppe festgelegt werden.
+
+- Wir empfehlen Ihnen, auch für nur eine einzelne Richtliniendefinition Initiativdefinitionen zu erstellen und zuzuweisen.
+Es kann beispielsweise sein, dass Sie über die Richtliniendefinition *policyDefA* verfügen und sie unter der Initiativdefinition *initiativeDefC* erstellen. Wenn Sie später eine andere Richtliniendefinition für *policyDefB* erstellen, deren Ziele denen von *policyDefA* ähneln, können Sie sie unter *initiativeDefC* hinzufügen und beide zusammen nachverfolgen.
+
+- Nachdem Sie eine Initiativzuweisung erstellt haben, werden der Initiative hinzugefügte Richtliniendefinitionen ebenfalls Teil dieser Initiativzuweisungen.
+
+- Wenn eine Initiativzuweisung ausgewertet wird, werden auch alle Richtlinien innerhalb der Initiative ausgewertet. Falls Sie eine Richtlinie einzeln auswerten möchten, empfiehlt es sich, sie nicht in eine Initiative aufzunehmen.
 
 ## <a name="video-overview"></a>Videoübersicht
 

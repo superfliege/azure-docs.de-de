@@ -9,22 +9,22 @@ ms.topic: get-started-article
 ms.service: azure-stack
 manager: femila
 ms.reviewer: xiaofmao
-ms.openlocfilehash: a914a95831176a51cc6b5e2c5bf69ef1ad60bcc0
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: a218cf9b3d89236128c83d8b879691940e432a55
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51035915"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53341557"
 ---
 # <a name="get-started-with-azure-stack-storage-development-tools"></a>Erste Schritte mit den Azure Stack-Speicherentwicklungstools
 
-*Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
+*Anwendungsbereich: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
 Microsoft Azure Stack bietet eine Reihe von Speicherdiensten einschließlich Blob-, Tabellen- und Warteschlangenspeicher.
 
 Nutzen Sie diesen Artikel als Leitfaden für die ersten Schritte mit den Azure Stack-Speicherentwicklungstools. Ausführlichere Informationen und Beispielcode finden Sie in den entsprechenden Azure-Speichertutorials.
 
-> [!NOTE]  
+> [!NOTE]
 > Es gibt bestimmte Unterschiede zwischen Azure Stack-Speicher und Azure-Speicher sowie besondere Anforderungen für die jeweilige Plattform. Beispielsweise gelten bestimmte Clientbibliotheken- und Endpunktsuffix-Anforderungen für Azure Stack. Weitere Informationen finden Sie unter [Azure Stack-Speicher: Unterschiede und Überlegungen](azure-stack-acs-differences.md).
 
 ## <a name="azure-client-libraries"></a>Azure-Clientbibliotheken

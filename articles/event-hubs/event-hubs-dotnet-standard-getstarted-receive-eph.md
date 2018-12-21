@@ -1,6 +1,6 @@
 ---
-title: Empfangen von Ereignissen von Azure Event Hubs mit der .NET Standard-Bibliothek | Microsoft-Dokumentation
-description: Erste Schritte zum Empfangen von Nachrichten mit „EventProcessorHost“ in .NET Standard
+title: Empfangen von Ereignissen unter Verwendung von .NET Core – Azure Event Hubs | Microsoft-Dokumentation
+description: Dieser Artikel enthält eine exemplarische Vorgehensweise für die Erstellung einer .NET Core-Anwendung, die Ereignisse mit dem Ereignisprozessorhost empfängt.
 services: event-hubs
 documentationcenter: na
 author: ShubhaVijayasarathy
@@ -12,16 +12,17 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/16/2018
+ms.custom: seodec18
+ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 9adbd8b9e7934ebe454d14ac6e47fe96898c9184
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 18b37fd7c85fced4cc57b57320daf195f6f33e3e
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51234390"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53082379"
 ---
-# <a name="get-started-receiving-messages-with-the-event-processor-host-in-net-standard"></a>Erste Schritte zum Empfangen von Nachrichten mit dem Ereignisprozessorhost (EventProcessorHost) in .NET Standard
+# <a name="get-started-receiving-messages-with-the-event-processor-host-in-net-core"></a>Erste Schritte zum Empfangen von Nachrichten mit dem Ereignisprozessorhost in .NET Core
 Event Hubs ist ein Dienst, der große Mengen von Ereignisdaten (Telemetriedaten) von verbundenen Geräten und Anwendungen verarbeiten kann. Nach dem Sammeln von Daten auf Ereignis-Hubs können die Daten mithilfe eines Speicherclusters gespeichert oder mit einem Echtzeitanalyse-Anbieter transformiert werden. Diese umfangreiche Ereignissammlung und -verarbeitung ist eine wichtige Komponente moderner Anwendungsarchitekturen. Hierzu zählt auch das Internet der Dinge (Internet of Things, IoT). Eine ausführliche Übersicht über Event Hubs finden Sie unter [Was ist Azure Event Hubs?](event-hubs-about.md) und [Event Hubs-Features im Überblick](event-hubs-features.md).
 
 In diesem Tutorial erfahren Sie, wie Sie eine .NET Core-Konsolenanwendung schreiben, die unter Verwendung des [Ereignisprozessorhosts](event-hubs-event-processor-host.md) Nachrichten von einem Event Hub empfängt. Der [Ereignisprozessorhost](event-hubs-event-processor-host.md) ist eine .NET-Klasse, die das Empfangen von Ereignissen von Event Hubs durch die Verwaltung von permanenten Prüfpunkten und parallelen Empfangsvorgängen von diesen Event Hubs vereinfacht. Mit dem Ereignisprozessorhost können Sie Ereignisse selbst dann auf mehrere Empfänger aufteilen, wenn sie in verschiedenen Knoten gehostet werden. Dieses Beispiel zeigt, wie der Ereignisprozessorhost für einen einzelnen Empfänger verwendet wird. Das Beispiel [Horizontales Hochskalieren der Ereignisverarbeitung][Horizontales Hochskalieren der Ereignisverarbeitung mit Event Hubs] veranschaulicht die Verwendung des Ereignisprozessorhosts mit mehreren Empfängern.
@@ -206,7 +207,7 @@ Glückwunsch! Soeben haben Sie Nachrichten von einer Event Hubs-Instanz mithilfe
 > In diesem Tutorial wird eine einzelne Instanz von [EventProcessorHost](event-hubs-event-processor-host.md)verwendet. Zur Erhöhung des Durchsatzes empfiehlt es sich, mehrere Instanzen von [EventProcessorHost](event-hubs-event-processor-host.md) auszuführen, wie im Beispiel zum [horizontalen Hochskalieren der Ereignisverarbeitung](https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3) gezeigt. In diesen Fällen koordinieren sich die verschiedenen Instanzen automatisch untereinander, um die Last der empfangenen Ereignisse ausgeglichen zu verteilen. 
 
 ## <a name="next-steps"></a>Nächste Schritte
-In dieser Schnellstartanleitung haben Sie eine .NET Standard-Anwendung erstellt, die Nachrichten von einem Event Hub empfangen hat. Informationen dazu, wie Sie Ereignisse unter Verwendung von .NET Standard an einen Event Hub senden, finden Sie unter [Erste Schritte beim Senden von Nachrichten an Azure Event Hubs in .NET Standard](event-hubs-dotnet-standard-getstarted-send.md).
+In dieser Schnellstartanleitung haben Sie eine .NET Core-Anwendung erstellt, die Nachrichten von einem Event Hub empfangen hat. Informationen dazu, wie Sie Ereignisse unter Verwendung von .NET Core an einen Event Hub senden, finden Sie unter [Erste Schritte beim Senden von Nachrichten an Azure Event Hubs in .NET Core](event-hubs-dotnet-standard-getstarted-send.md).
 
 [1]: ./media/event-hubs-dotnet-standard-getstarted-receive-eph/event-hubs-python1.png
 [2]: ./media/event-hubs-dotnet-standard-getstarted-receive-eph/netcorercv.png

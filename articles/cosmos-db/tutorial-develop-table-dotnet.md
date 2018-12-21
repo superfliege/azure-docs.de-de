@@ -1,23 +1,23 @@
 ---
-title: 'Azure Cosmos DB: Entwickeln mit der Tabellen-API in .NET'
-description: Erfahren Sie, wie Sie mit der Tabellen-API von Azure Cosmos DB unter Verwendung von .NET entwickeln können.
-services: cosmos-db
+title: Entwickeln mit der Tabellen-API unter Verwendung des .NET SDK
+titleSuffix: Azure Cosmos DB
+description: Hier erfahren Sie, wie Sie mit der Tabellen-API in Azure Cosmos DB unter Verwendung des .NET SDK entwickeln können.
 author: SnehaGunda
 ms.service: cosmos-db
 ms.component: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 12/18/2017
+ms.date: 12/07/2018
 ms.author: sngun
-ms.custom: mvc
-ms.openlocfilehash: 02c4ead0f41463a70cc7123427193f835d9cca94
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.custom: seodec18
+ms.openlocfilehash: f10cb17f0300b6bd21d17b1e2ff204d57e4a7988
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52877734"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53251180"
 ---
-# <a name="azure-cosmos-db-develop-with-the-table-api-in-net"></a>Azure Cosmos DB: Entwickeln mit der Tabellen-API in .NET
+# <a name="develop-with-azure-cosmos-dbs-table-api-using-net-sdk"></a>Entwickeln mit der Tabellen-API von Azure Cosmos DB unter Verwendung des .NET SDK
 
 Azure Cosmos DB ist der global verteilte Microsoft-Datenbankdienst mit mehreren Modellen. Sie können schnell Dokument-, Schlüssel/Wert- und Graph-Datenbanken erstellen und abfragen und dabei stets die Vorteile der globalen Verteilung und der horizontalen Skalierung nutzen, die Azure Cosmos DB zugrunde liegen.
 
@@ -77,7 +77,7 @@ Zunächst erstellen wir ein Azure Cosmos DB-Konto im Azure-Portal.
 
 ## <a name="clone-the-sample-application"></a>Klonen der Beispielanwendung
 
-Klonen Sie jetzt eine Tabellen-App aus GitHub, legen Sie die Verbindungszeichenfolge fest und führen Sie diese aus. Sie werden feststellen, wie einfach Sie programmgesteuert mit Daten arbeiten können. 
+Klonen Sie jetzt eine Tabellen-App aus GitHub, legen Sie die Verbindungszeichenfolge fest, und führen Sie die App aus. Sie werden feststellen, wie einfach Sie programmgesteuert mit Daten arbeiten können. 
 
 1. Öffnen Sie ein Terminalfenster von Git (z. B. Git Bash), und verwenden Sie den Befehl `cd`, um den Ordner zu ändern, in den die Beispiel-App gespeichert wird. 
 
@@ -97,7 +97,7 @@ Klonen Sie jetzt eine Tabellen-App aus GitHub, legen Sie die Verbindungszeichenf
 
 Wechseln Sie nun zurück zum Azure-Portal, um die Informationen der Verbindungszeichenfolge abzurufen und in die App zu kopieren. Dadurch kann Ihre App mit Ihrer gehosteten Datenbank kommunizieren. 
 
-1. Klicken Sie im [Azure-Portal](http://portal.azure.com/) auf **Verbindungszeichenfolge**. 
+1. Klicken Sie im [Azure-Portal](https://portal.azure.com/) auf **Verbindungszeichenfolge**. 
 
     Kopieren Sie die primäre Verbindungszeichenfolge mithilfe der Kopierschaltfläche im rechten Bildschirmbereich.
 
@@ -180,7 +180,8 @@ CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
 Dieser Client wird mithilfe der Konfigurationswerte `TableConnectionMode`, `TableConnectionProtocol`, `TableConsistencyLevel` und `TablePreferredLocations` initialisiert, sofern in den App-Einstellungen angegeben.
 
 ## <a name="create-a-table"></a>Erstellen einer Tabelle
-Dann erstellen Sie eine Tabelle mit `CloudTable`. Tabellen können in Azure Cosmos DB unabhängig voneinander im Hinblick auf Speicher und Durchsatz skaliert werden, und die Partitionierung wird automatisch vom Dienst durchgeführt. Azure Cosmos DB unterstützt sowohl Tabellen mit fester Größe als auch unbegrenzte Tabellen. Weitere Informationen finden Sie unter [How to partition and scale in Azure Cosmos DB](partition-data.md) (Partitionieren und Skalieren in Azure Cosmos DB). 
+
+Dann erstellen Sie eine Tabelle mit `CloudTable`. Tabellen können in Azure Cosmos DB unabhängig voneinander im Hinblick auf Speicher und Durchsatz skaliert werden, und die Partitionierung wird automatisch vom Dienst durchgeführt. 
 
 ```csharp
 CloudTable table = tableClient.GetTableReference("people");

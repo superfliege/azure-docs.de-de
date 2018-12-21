@@ -1,5 +1,5 @@
 ---
-title: Erkunden der Azure Time Series Insights-JavaScript-Clientbibliothek
+title: Erkunden der Azure Time Series Insights-JavaScript-Clientbibliothek | Microsoft-Dokumentation
 description: Informieren Sie sich über die Azure Time Series Insights-JavaScript-Clientbibliothek und das zugehörige Programmiermodell.
 author: ashannon7
 manager: cshankar
@@ -8,12 +8,13 @@ services: time-series-insights
 ms.topic: tutorial
 ms.date: 06/05/2018
 ms.author: anshan
-ms.openlocfilehash: 5f31dce98cd873a0bf4b750934384e1bf6d2564a
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.custom: seodec18
+ms.openlocfilehash: 33dcf6f69d1287b4e040b3cccf4164667db2b75f
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51706992"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53269973"
 ---
 # <a name="tutorial-explore-the-azure-time-series-insights-javascript-client-library"></a>Tutorial: Erkunden der Azure Time Series Insights-JavaScript-Clientbibliothek
 
@@ -82,7 +83,7 @@ Zuerst sehen wir uns den HTML- und JavaScript-Quellcode im Hintergrund der Seite
 
 3. Wenn Sie das `<div class="chartsWrapper">`-Element erweitern, werden noch andere untergeordnete `<div>`-Elemente angezeigt. Diese Elemente werden verwendet, um die einzelnen Beispiele für Diagrammsteuerelemente zu positionieren. Beachten Sie, dass verschiedene `<div>`-Elementpaare vorhanden sind – eines für jedes Diagrammbeispiel:
 
-   - Das erste Element (`class="rowOfCardsTitle"`) enthält einen Kurztitel, der beschreibt, was die Diagramme veranschaulichen. Beispiel: „Static Line Charts With Full-Size Legends“.
+   - Das erste Element (`class="rowOfCardsTitle"`) enthält einen Kurztitel, der beschreibt, was die Diagramme veranschaulichen. Beispiel:  „Statische Liniendiagramme mit Legenden in voller Größe“
    - Das zweite Element (`class="rowOfCards"`) ist ein übergeordnetes Element, das weitere untergeordnete `<div>`-Elemente enthält, mit denen die eigentlichen Diagrammsteuerelemente in einer Zeile positioniert werden.
 
    ![Body-div-Elemente](media/tutorial-explore-js-client-lib/tcs-devtools-callouts-body-divs.png)
@@ -96,7 +97,7 @@ Zuerst sehen wir uns den HTML- und JavaScript-Quellcode im Hintergrund der Seite
 Die TSI-Clientbibliothek **tsclient.js** stellt eine Abstraktion für zwei wichtige Kategorien bereit, auf die hier nicht näher eingegangen wird:
 
 - **Wrappermethoden für den Aufruf der TSI-Abfrage-APIs**: REST-APIs, mit denen Sie mithilfe von Aggregatausdrücken TSI-Daten abrufen können. Die Methoden sind unter dem `TsiClient.Server`-Namespace der Bibliothek organisiert.
-- **Methoden zum Erstellen und Auffüllen verschiedener Arten von Diagrammsteuerelementen**: Diese werden zum Rendern der aggregierten TSI-Daten auf einer Webseite verwendet. Die Methoden sind unter dem `TsiClient.UX`-Namespace der Bibliothek organisiert.
+- **Methoden zum Erstellen und Auffüllen mehrerer Typen von Diagrammsteuerelementen**: Methoden, die zum Rendern der aggregierten TSI-Daten auf einer Webseite verwendet werden. Die Methoden sind unter dem `TsiClient.UX`-Namespace der Bibliothek organisiert.
 
 Die folgenden Konzepte sind universell und gelten ganz allgemein für die TSI-Clientbibliotheks-APIs.
 
@@ -236,7 +237,7 @@ Sehen Sie sich den Code im Hintergrund des HTML-Abschnitts unter dem Kommentar `
 1. Zuerst wird eine Reihe von benutzerdefinierten Aktionen definiert. Jede Aktion enthält ein Array mit einem oder mehreren Elementen. Mit jedem Element wird ein einzelnes Kontextmenüelement definiert:
 
    - `barChartActions`: Mit dieser Aktion wird das Kontextmenü für das Kreisdiagramm definiert, das ein Element zum Definieren eines einzelnen Elements enthält:
-     - `name`: Der Text, der für das Menüelement verwendet wird: „Print parameters to console“.
+     - `name`: Der Text, der für das Menüelement verwendet wird: "Parameter an der Konsole ausgeben".
      - `action`: Die Aktion, die dem Menüelement zugeordnet ist. Die Aktion ist immer eine anonyme Funktion, für die drei Argumente basierend auf dem Aggregatausdruck verwendet werden, mit dem das Diagramm erstellt wird. In diesem Fall werden die Argumente in das Browserkonsolenfenster geschrieben:
        - `ae`: Das Array mit den Aggregatausdrücken.
        - `splitBy`: Der splitBy-Wert.
@@ -262,7 +263,7 @@ Pinsel werden zum Angeben eines Zeitbereichs verwendet, um Aktionen wie das Zoom
 Der Code, der zum Veranschaulichen von Pinseln verwendet wird, wurde im vorherigen Beispiel „Line Chart with Context Menu to Create Pie/Bar Chart“ gezeigt, in dem [Popupkontextmenüs](#popup-context-menus-section) beschrieben wurden.
 
 1. Pinselaktionen ähneln einem Kontextmenü darin, dass sie eine Reihe von benutzerdefinierten Aktionen für den Pinsel definieren. Jede Aktion enthält ein Array mit einem oder mehreren Elementen. Mit jedem Element wird ein einzelnes Kontextmenüelement definiert:
-   - `name`: Der Text, der für das Menüelement verwendet wird: „Print parameters to console“.
+   - `name`: Der Text, der für das Menüelement verwendet wird: "Parameter an der Konsole ausgeben".
    - `action`: Die Aktion, die mit dem Menüelement verknüpft ist. Hierbei handelt es sich immer um eine anonyme Funktion, für die zwei Argumente verwendet werden. In diesem Fall werden die Argumente in das Browserkonsolenfenster geschrieben:
       - `fromTime`: Der from-Zeitstempel der Pinselauswahl.
       - `toTime`: Der to-Zeitstempel der Pinselauswahl.

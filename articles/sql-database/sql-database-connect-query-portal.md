@@ -12,87 +12,89 @@ author: AyoOlubeko
 ms.author: ayolubek
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 11/01/2018
-ms.openlocfilehash: d7b5c6b95cd11cd90f9d326e03e787a7196dcfd0
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.date: 12/05/2018
+ms.openlocfilehash: fa46260fdd5623ba32da9979aaea8470139096b8
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50913154"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53091389"
 ---
-# <a name="quickstart-azure-portal-use-the-sql-query-editor-to-connect-and-query-data"></a>Schnellstart: Azure-Portal: Verwenden des SQL-Abfrage-Editors zum Verbinden und Abfragen von Daten
+# <a name="quickstart-use-the-azure-portals-sql-query-editor-to-connect-and-query-data"></a>Schnellstart: Verwenden des SQL-Abfrage-Editors im Azure-Portal zum Verbinden und Abfragen von Daten
 
-Der SQL-Abfrage-Editor ist ein Abfragetool im Browser und eine effiziente und einfache Möglichkeit, SQL-Abfragen in Ihrer Azure SQL-Datenbank oder in Azure SQL Data Warehouse auszuführen, ohne das Azure-Portal zu verlassen. In diesem Schnellstart wird veranschaulicht, wie Sie den Abfrage-Editor zum Herstellen einer Verbindung mit einer SQL-Datenbank verwenden und anschließend Transact-SQL-Anweisungen nutzen, um Daten in der Datenbank abzufragen, einzufügen, zu aktualisieren und zu löschen.
+Der SQL-Abfrage-Editor ist ein Browsertool im Azure-Portal, über den einfach SQL-Abfragen für Ihre Azure SQL-Datenbank- oder Azure SQL Data Warehouse-Instanz ausgeführt werden können. In dieser Schnellstartanleitung wird veranschaulicht, wie Sie den Abfrage-Editor zum Herstellen einer Verbindung mit einer SQL-Datenbank verwenden und anschließend Transact-SQL-Anweisungen ausführen, um Daten abzufragen, einzufügen, zu aktualisieren und zu löschen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-In diesem Schnellstart werden als Ausgangspunkt die Ressourcen verwendet, die in einem der folgenden Schnellstarts erstellt wurden:
+Für dieses Tutorial benötigen Sie Folgendes:
 
 [!INCLUDE [prerequisites-create-db](../../includes/sql-database-connect-query-prerequisites-create-db-includes.md)]
 
 > [!NOTE]
-> Stellen Sie sicher, dass die Option „Zugriff auf Azure-Dienste erlauben“ in den SQL Server-Firewalleinstellungen auf „EIN“ festgelegt ist. Mit dieser Option erhält der SQL-Abfrage-Editor Zugriff auf Ihre Datenbanken und Data Warehouses.
+> Stellen Sie sicher, dass die Option **Zugriff auf Azure-Dienste erlauben** in den SQL Server-Firewalleinstellungen auf **EIN** festgelegt ist. Mit dieser Option erhält der SQL-Abfrage-Editor Zugriff auf Ihre Datenbanken und Data Warehouses.
 
-## <a name="log-in-to-the-azure-portal"></a>Anmelden beim Azure-Portal
+## <a name="sign-in-the-azure-portal"></a>Anmelden beim Azure-Portal
 
 Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
-
 ## <a name="connect-using-sql-authentication"></a>Herstellen einer Verbindung per SQL-Authentifizierung
 
-1. Klicken Sie im Menü auf der linken Seite auf **SQL-Datenbanken** und dann auf die Datenbank, die Sie abfragen möchten.
+1. Wählen Sie im Menü auf der linken Seite **SQL-Datenbanken** und anschließend **mySampleDatabase** aus.
 
-2. Suchen Sie auf der SQL-Datenbankseite für Ihre Datenbank im linken Menü nach **Abfrage-Editor (Vorschau)**, und klicken Sie darauf.
+2. Suchen Sie im linken Menü nach **Abfrage-Editor (Vorschau)**, und wählen Sie die Option aus. Die Seite **Anmeldung** wird angezeigt.
 
     ![Suchen des Abfrage-Editors](./media/sql-database-connect-query-portal/find-query-editor.PNG)
 
-3. Klicken Sie auf **Anmelden**, und wählen Sie dann die Option **SQL Server-Authentifizierung**, wenn die Aufforderung angezeigt wird. Geben Sie anschließend den Benutzernamen und das Kennwort des Serveradministrators an, die Sie beim Erstellen der Datenbank angegeben haben.
+3. Wählen Sie im Dropdownmenü **Autorisierungstyp** die Option **SQL Server-Authentifizierung** aus, und geben Sie die Benutzer-ID und das Kennwort des Serveradministratorkontos ein, das zum Erstellen der Datenbank verwendet wurde.
 
-    ![Anmeldung](./media/sql-database-connect-query-portal/login-menu.png)
+    ![Anmelden](./media/sql-database-connect-query-portal/login-menu.png) 
 
-4. Klicken Sie auf **OK**, um sich anzumelden.
+4. Klicken Sie auf **OK**.
 
 
-## <a name="connect-using-azure-ad"></a>Herstellen einer Verbindung mithilfe von Azure AD
+## <a name="connect-using-azure-active-directory"></a>Herstellen einer Verbindung mit Azure Active Directory
 
-Wenn Sie einen Active Directory-Administrator konfigurieren, können Sie eine einzelne Identität verwenden, um sich am Azure-Portal und Ihrer SQL-Datenbank anzumelden. Führen Sie die unten angegebenen Schritte aus, um einen Active Directory-Administrator für den von Ihnen erstellten SQL Server zu konfigurieren.
+Wenn Sie einen Active Directory-Administrator (AD) konfigurieren, können Sie eine einzelne Identität verwenden, um sich beim Azure-Portal und bei Ihrer SQL-Datenbank anzumelden. Führen Sie die unten beschriebenen Schritte aus, um einen AD-Administrator für Ihren SQL-Server zu konfigurieren.
 
 > [!NOTE]
-> E-Mail-Konten (z.B. outlook.com, hotmail.com, live.com, gmail.com, yahoo.com) werden noch nicht als Active Directory-Administratoren unterstützt. Stellen Sie sicher, dass Sie einen Benutzer auswählen, der entweder nativ im Azure Active Directory erstellt oder in einen Azure Active Directory-Verbund eingefügt wurde.
+* E-Mail-Konten (etwa „outlook.com“, „gmail.com“, „yahoo.com“ usw.) werden noch nicht als AD-Administratoren unterstützt. Stellen Sie sicher, dass Sie einen Benutzer auswählen, der entweder nativ in Azure AD erstellt oder in einen Azure AD-Verbund eingefügt wurde.
+* Die Azure AD-Administratoranmeldung funktioniert nicht bei Konten, für die die zweistufige Authentifizierung aktiviert ist.
 
-1. Wählen Sie im Menü auf der linken Seite die Option **Server mit SQL Server** und in der Serverliste dann Ihre SQL Server-Instanz aus.
+1. Wählen Sie im linken Menü **Alle Ressourcen** und anschließend Ihren SQL-Server aus.
 
-2. Wählen Sie im Einstellungsmenü Ihrer SQL Server-Instanz die Einstellung **Active Directory-Administrator**.
+2. Wählen Sie im Menü **Einstellungen** Ihres SQL-Servers die Option **Active Directory-Administrator** aus.
 
-3. Klicken Sie auf dem Blatt „Active Directory-Administrator“ auf den Befehl **Administrator festlegen**, und wählen Sie den Benutzer oder die Gruppe aus, der bzw. die als Active Directory-Administrator fungieren soll.
+3. Wählen Sie auf der Symbolleiste der AD-Administratorseite **Administrator festlegen** aus, und legen Sie dann den Benutzer oder die Gruppe als AD-Administrator fest.
 
     ![Auswählen von Active Directory](./media/sql-database-connect-query-portal/select-active-directory.png)
 
-4. Klicken Sie oben auf dem Blatt „Active Directory-Administrator“ auf den Befehl **Speichern**, um Ihren Active Directory-Administrator festzulegen.
+4. Wählen Sie auf der Symbolleiste der AD-Administratorseite **Speichern** aus.
 
-Navigieren Sie zu der SQL-Datenbank, die Sie abfragen möchten, und klicken Sie im linken Menü auf **Daten-Explorer (Vorschau)**. Die Seite mit dem Daten-Explorer wird geöffnet, und es wird automatisch eine Verbindung mit der Datenbank hergestellt.
+5. Navigieren Sie zur Datenbank **mySampleDatabase**, und wählen Sie im linken Menü **Abfrage-Editor (Vorschau)** aus. Die Seite **Anmeldung** wird angezeigt. Sind Sie AD-Administrator, wird auf der rechten Seite unterhalb von **Active Directory single sign-on** (Active Directory-SSO) eine Meldung mit dem Hinweis angezeigt, dass Sie angemeldet wurden. 
+   
+6. Klicken Sie auf **OK**.
 
 
-## <a name="run-query-using-query-editor"></a>Ausführen einer Abfrage mit dem Abfrage-Editor
+## <a name="view-data"></a>Anzeigen von Daten
 
-Geben Sie nach der Authentifizierung im Bereich für den Abfrage-Editor die folgende Abfrage ein, um eine Abfrage nach den Top 20 der Produkte nach Kategorie durchzuführen.
+1. Geben Sie nach der Authentifizierung im Abfrage-Editor die folgende SQL-Abfrage ein, um die Top 20 der Produkte nach Kategorie abzurufen.
 
-```sql
- SELECT TOP 20 pc.Name as CategoryName, p.name as ProductName
- FROM SalesLT.ProductCategory pc
- JOIN SalesLT.Product p
- ON pc.productcategoryid = p.productcategoryid;
-```
+   ```sql
+    SELECT TOP 20 pc.Name as CategoryName, p.name as ProductName
+    FROM SalesLT.ProductCategory pc
+    JOIN SalesLT.Product p
+    ON pc.productcategoryid = p.productcategoryid;
+   ```
 
-Klicken Sie auf **Ausführen**, und sehen Sie sich die Abfrageergebnisse im Bereich **Ergebnisse** an.
+2. Wählen Sie auf der Symbolleiste **Ausführen** aus, und sehen Sie sich dann die Ausgabe im Bereich **Ergebnisse** an.
 
 ![Abfrage-Editor – Ergebnisse](./media/sql-database-connect-query-portal/query-editor-results.png)
 
-## <a name="insert-data-using-query-editor"></a>Einfügen von Daten mit dem Abfrage-Editor
+## <a name="insert-data"></a>Einfügen von Daten
 
-Verwenden Sie den folgenden Code, um mit der [INSERT](https://msdn.microsoft.com/library/ms174335.aspx)-Transact-SQL-Anweisung ein neues Produkt in die Tabelle „SalesLT.Product“ einzufügen.
+Verwenden Sie die folgende [INSERT](https://msdn.microsoft.com/library/ms174335.aspx)-Transact-SQL-Anweisung zum Hinzufügen eines neuen Produkts in der Tabelle `SalesLT.Product`.
 
-1. Ersetzen Sie im Abfragefenster die vorherige Abfrage durch die folgende Abfrage:
+1. Ersetzen Sie die vorherige Abfrage durch diese.
 
    ```sql
    INSERT INTO [SalesLT].[Product]
@@ -114,13 +116,15 @@ Verwenden Sie den folgenden Code, um mit der [INSERT](https://msdn.microsoft.com
            ,GETDATE() );
    ```
 
-2. Klicken Sie in der Symbolleiste auf **Ausführen**, um eine neue Zeile in die Tabelle „Product“ einzufügen.
 
-## <a name="update-data-using-query-editor"></a>Aktualisieren von Daten mit dem Abfrage-Editor
+2. Wählen Sie **Ausführen** aus, um eine neue Zeile in die Tabelle „Product“ einzufügen. Im Bereich **Nachrichten** wird folgende Meldung angezeigt: **Abfrage erfolgreich: Betroffene Zeilen: 1**.
 
-Verwenden Sie den folgenden Code, um das neue zuvor hinzugefügte Produkt mit der [UPDATE](https://msdn.microsoft.com/library/ms177523.aspx)-Transact-SQL-Anweisung zu aktualisieren.
 
-1. Ersetzen Sie im Abfragefenster die vorherige Abfrage durch die folgende Abfrage:
+## <a name="update-data"></a>Aktualisieren von Daten
+
+Verwenden Sie die folgende [UPDATE](https://msdn.microsoft.com/library/ms177523.aspx)-Transact-SQL-Anweisung, um Ihr neues Produkt zu ändern.
+
+1. Ersetzen Sie die vorherige Abfrage durch diese.
 
    ```sql
    UPDATE [SalesLT].[Product]
@@ -128,45 +132,39 @@ Verwenden Sie den folgenden Code, um das neue zuvor hinzugefügte Produkt mit de
    WHERE Name = 'myNewProduct';
    ```
 
-2. Klicken Sie in der Symbolleiste auf **Ausführen**, um die angegebene Zeile in der Tabelle „Product“ zu aktualisieren.
+2. Wählen Sie **Ausführen** aus, um die angegebene Zeile in der Tabelle „Product“ zu aktualisieren. Im Bereich **Nachrichten** wird folgende Meldung angezeigt: **Abfrage erfolgreich: Betroffene Zeilen: 1**.
 
-## <a name="delete-data-using-query-editor"></a>Löschen von Daten mit dem Abfrage-Editor
+## <a name="delete-data"></a>Löschen von Daten
 
-Verwenden Sie den folgenden Code, um das neue zuvor hinzugefügte Produkt mit der [DELETE](https://msdn.microsoft.com/library/ms189835.aspx)-Transact-SQL-Anweisung zu löschen.
+Verwenden Sie die folgende [DELETE](https://msdn.microsoft.com/library/ms189835.aspx)-Transact-SQL-Anweisung, um das neue Produkt zu entfernen.
 
-1. Ersetzen Sie im Abfragefenster die vorherige Abfrage durch die folgende Abfrage:
+1. Ersetzen Sie die vorherige Abfrage durch diese:
 
    ```sql
    DELETE FROM [SalesLT].[Product]
    WHERE Name = 'myNewProduct';
    ```
 
-2. Klicken Sie in der Symbolleiste auf **Ausführen**, um die angegebene Zeile in der Tabelle „Product“ zu löschen.
+2. Wählen Sie **Ausführen** aus, um die angegebene Zeile in der Tabelle „Product“ zu löschen. Im Bereich **Nachrichten** wird folgende Meldung angezeigt: **Abfrage erfolgreich: Betroffene Zeilen: 1**.
 
 
 ## <a name="query-editor-considerations"></a>Aspekte des Abfrage-Editors
 
 Bei der Verwendung des Abfrage-Editors sind ein paar Dinge zu beachten:
 
-1. Stellen Sie sicher, dass Sie die Option „Zugriff auf Azure-Dienste erlauben“ in den Azure SQL Server-Firewalleinstellungen auf „EIN“ festgelegt haben. Mit dieser Option erhält der SQL-Abfrage-Editor Zugriff auf Ihre SQL-Datenbanken und Data Warehouses.
+* Sie können den Abfrage-Editor nicht verwenden, um SQL Server-Datenbanken in einem virtuellen Netzwerk abzufragen.
 
-2. Befindet sich der SQL-Server in einem virtuellen Netzwerk, kann der Abfrage-Editor nicht zum Abfragen von Datenbanken dieses Servers verwendet werden.
+* Durch Drücken von F5 wird die Seite des Abfrage-Editors aktualisiert, und aktuell bearbeitete Abfragen gehen verloren.
 
-3. Durch das Drücken der Taste F5 wird die Seite mit dem Abfrage-Editor aktualisiert, und die derzeit aktive Abfrage geht verloren. Verwenden Sie in der Symbolleiste die Schaltfläche „Ausführen“, um Abfragen auszuführen.
+* Das Herstellen einer Verbindung mit der Masterdatenbank wird vom Abfrage-Editor nicht unterstützt.
 
-4. Das Herstellen einer Verbindung mit der Masterdatenbank wird vom Abfrage-Editor nicht unterstützt.
+* Bei der Abfrageausführung gilt ein Timeout von fünf Minuten.
 
-5. Bei der Abfrageausführung gilt ein Timeout von fünf Minuten.
+* Der Abfrage-Editor unterstützt für geografische Datentypen nur die zylindrische Projektion.
 
-6. Die Anmeldung per Azure Active Directory-Administrator funktioniert nicht für Konten, für die die zweistufige Authentifizierung aktiviert ist.
-
-7. E-Mail-Konten (z.B. outlook.com, hotmail.com, live.com, gmail.com, yahoo.com) werden noch nicht als Active Directory-Administratoren unterstützt. Stellen Sie sicher, dass Sie einen Benutzer auswählen, der entweder nativ im Azure Active Directory erstellt oder in einen Azure Active Directory-Verbund eingefügt wurde.
-
-8. Der Abfrage-Editor unterstützt für geografische Datentypen nur die zylindrische Projektion.
-
-9. Für Datenbanktabellen und -sichten ist keine IntelliSense-Unterstützung vorhanden. Der Editor unterstützt aber das automatische Vervollständigen von Namen, die bereits eingegeben wurden.
+* Für Datenbanktabellen und -sichten ist keine IntelliSense-Unterstützung vorhanden. Der Editor unterstützt aber das automatische Vervollständigen von Namen, die bereits eingegeben wurden.
 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Informationen zur Unterstützung von Transact-SQL in Azure SQL-Datenbanken finden Sie unter [Auflösen von Transact-SQL-Unterschieden während der Migration zur SQL-Datenbank](sql-database-transact-sql-information.md).
+Weitere Informationen zur Unterstützung von Transact-SQL in Azure SQL-Datenbanken finden Sie unter [Auflösen von Transact-SQL-Unterschieden während der Migration zur SQL-Datenbank](sql-database-transact-sql-information.md).

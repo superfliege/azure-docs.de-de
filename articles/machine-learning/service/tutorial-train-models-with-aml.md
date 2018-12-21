@@ -1,5 +1,6 @@
 ---
-title: 'Tutorial: Trainieren eines Bildklassifizierungsmodells mit dem Azure Machine Learning-Dienst'
+title: 'Tutorial zur Bildklassifizierung: Trainieren von Modellen'
+titleSuffix: Azure Machine Learning service
 description: Dieses Tutorial zeigt, wie Sie mit Azure Machine Learning Service ein Bildklassifizierungsmodell mit scikit-learn in einem Python Jupyter Notebook trainieren. Dieses Tutorial ist der erste Teil einer zweiteiligen Reihe.
 services: machine-learning
 ms.service: machine-learning
@@ -9,14 +10,15 @@ author: hning86
 ms.author: haining
 ms.reviewer: sgilley
 ms.date: 12/04/2018
-ms.openlocfilehash: 8d3dd87adaad168d193b53507dbbb40efab57810
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.custom: seodec18
+ms.openlocfilehash: a2208e160d641d762b57668cdc635fe877677ff5
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52879484"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53310112"
 ---
-# <a name="tutorial-1-train-an-image-classification-model-with-azure-machine-learning-service"></a>Tutorial 1: Trainieren eines Bildklassifizierungsmodells mit dem Azure Machine Learning-Dienst
+# <a name="tutorial-train-an-image-classification-model-with-azure-machine-learning-service"></a>Tutorial: Trainieren eines Bildklassifizierungsmodells mit dem Azure Machine Learning Service
 
 In diesem Tutorial wird ein Machine Learning-Modell sowohl lokal als auch auf Remotecomputeressourcen traininert. Hierbei wird der Trainings- und Bereitstellungsworkflow für den Azure Machine Learning-Dienst in einem Python Jupyter Notebook verwendet.  Anschließend können Sie das Notebook als Vorlage verwenden, um Ihr eigenes Machine Learning-Modell mit Ihren eigenen Daten zu trainieren. Dieses Tutorial ist der **erste Teil einer zweiteiligen Reihe**.  
 
@@ -33,7 +35,7 @@ In diesem Artikel werden folgende Themen erläutert:
 
 In [Teil 2 dieses Tutorials](tutorial-deploy-models-with-aml.md) erfahren Sie, wie Sie ein Modell auswählen und bereitstellen. 
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://aka.ms/AMLfree) erstellen, bevor Sie beginnen.
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie die [kostenlose oder kostenpflichtige Version des Azure Machine Learning Service](http://aka.ms/AMLFree) aus.
 
 >[!NOTE]
 > Der Code in diesem Artikel wurde mit Version 1.0.2 des Azure Machine Learning SDK getestet.
@@ -382,15 +384,15 @@ Insgesamt dauert die erste Ausführung **ungefähr zehn Minuten**. Solange sich 
 
 Während der Wartezeit passiert Folgendes:
 
-- **Image-Erstellung**: Ein Docker-Image wird erstellt, das der vom Estimator angegebenen Python-Umgebung entspricht. Das Image wird in den Arbeitsbereich hochgeladen. Das Erstellen und Hochladen des Images nimmt **etwa fünf Minuten** in Anspruch. 
+- **Erstellen von Images**: Ein Docker-Image wird erstellt, das der vom Estimator angegebenen Python-Umgebung entspricht. Das Image wird in den Arbeitsbereich hochgeladen. Das Erstellen und Hochladen des Images nimmt **etwa fünf Minuten** in Anspruch. 
 
   Diese Phase erfolgt für jede Python-Umgebung einmal, weil der Container für nachfolgende Ausführungen zwischengespeichert wird.  Während der Imageerstellung werden Protokolle in den Ausführungsverlauf gestreamt. Anhand dieser Protokolle können Sie den Fortschritt der Imageerstellung überwachen.
 
-- **Skalierung**: Wenn der Remotecluster zum Ausführen mehr Knoten benötigt werden als derzeit verfügbar sind, werden weitere Knoten automatisch hinzugefügt. Die Skalierung dauert normalerweise **etwa fünf Minuten**.
+- **Skalierung**: Wenn der Remotecluster zum Ausführen mehr Knoten benötigt, als derzeit verfügbar sind, werden weitere Knoten automatisch hinzugefügt. Die Skalierung dauert normalerweise **etwa fünf Minuten**.
 
-- **Ausführung**: In dieser Phase werden die erforderlichen Skripts und Dateien an das Computeziel gesendet. Anschließend werden die Datenspeicher eingebunden/kopiert, und das entry_script wird ausgeführt. Während der Auftrag ausgeführt wird, werden „stdout“ und das Verzeichnis „./logs“ an den Ausführungsverlauf gestreamt. Anhand dieser Protokolle können Sie den Fortschritt der Ausführung überwachen.
+- **Wird ausgeführt**: In dieser Phase werden die erforderlichen Skripts und Dateien an das Computeziel gesendet. Anschließend werden die Datenspeicher eingebunden/kopiert, und das entry_script wird ausgeführt. Während der Auftrag ausgeführt wird, werden „stdout“ und das Verzeichnis „./logs“ an den Ausführungsverlauf gestreamt. Anhand dieser Protokolle können Sie den Fortschritt der Ausführung überwachen.
 
-- **Nachverarbeitung**: Das Verzeichnis „./outputs“ der Ausführung wird über den Ausführungsverlauf in Ihrem Arbeitsbereich kopiert, sodass Sie auf diese Ergebnisse zugreifen können.
+- **Nachbearbeitung**: Das Verzeichnis „./outputs“ der Ausführung wird über den Ausführungsverlauf in Ihrem Arbeitsbereich kopiert, sodass Sie auf diese Ergebnisse zugreifen können.
 
 
 Sie können den Verlauf eines Auftrags während seiner Ausführung auf verschiedene Weise überprüfen. In diesem Tutorial werden ein Jupyter-Widget sowie eine `wait_for_completion`-Methode verwendet. 

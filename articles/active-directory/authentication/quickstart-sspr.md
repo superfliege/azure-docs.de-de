@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: c40cb3192d514d990ea2a5d66e1484ff204e9b10
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: d04d27ee6136edec8d9af16f9133cf9a7cc0720c
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39223556"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53311557"
 ---
 # <a name="quickstart-self-service-password-reset"></a>Schnellstart: Self-Service-Kennwortzurücksetzung
 
@@ -39,7 +39,7 @@ In dieser Schnellstartanleitung wird Schritt für Schritt die Konfiguration der 
     * Klicken Sie auf **Speichern**.
 
 3. Wählen Sie auf der Seite **Authentifizierungsmethoden** Folgendes aus:
-   * Anzahl von Methoden, die zurückgesetzt werden müssen: **1**
+   * Anzahl von erforderlichen Methoden zum Zurücksetzen: **1**
    * Für Benutzer verfügbare Methoden:
       * **Mobiltelefon**
       * **Bürotelefon**
@@ -64,7 +64,7 @@ Jetzt testen wir Ihre SSPR-Konfiguration mit einem Testbenutzer. Da Microsoft f�
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Das Deaktivieren der Self-Service-Kennwortzurücksetzung ist einfach. Öffnen Sie Ihren Azure AD-Mandanten, und navigieren Sie zu **Kennwortzurücksetzung** > **Eigenschaften**, und wählen Sie unter **Self-Service-Kennwortzurücksetzung aktiviert** die Option **Keine**.
+Das Deaktivieren der Self-Service-Kennwortzurücksetzung ist einfach. Öffnen Sie Ihren Azure AD-Mandanten, und navigieren Sie zu **Eigenschaften** > **Kennwortzurücksetzung**, und wählen Sie unter **Self-Service-Kennwortzurücksetzung aktiviert** die Option **Keine**.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

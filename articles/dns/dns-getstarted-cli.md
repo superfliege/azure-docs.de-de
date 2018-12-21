@@ -7,14 +7,14 @@ ms.service: dns
 ms.topic: quickstart
 ms.date: 12/4/2018
 ms.author: victorh
-ms.openlocfilehash: 914f6ff67fb3f178a1cc8ad6aa698527cdbf40b4
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: e61975d81fd5920feb5fd47845c67d0aa5293ae6
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52889768"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52962010"
 ---
-# <a name="quickstart-create-an-azure-dns-zone-and-record-using-azure-cli"></a>Schnellstart: Erstellen einer Azure DNS-Zone und eines -Eintrags mithilfe der Azure CLI
+# <a name="quickstart-create-an-azure-dns-zone-and-record-using-azure-cli"></a>Schnellstart: Erstellen einer Azure DNS-Zone und eines Azure DNS-Eintrags mithilfe der Azure CLI
 
 In diesem Artikel erfahren Sie Schritt für Schritt, wie Sie mithilfe der für Windows, Mac und Linux verfügbaren Azure CLI Ihre erste DNS-Zone und Ihren ersten DNS-Eintrag erstellen. Sie können diese Schritte auch im [Azure-Portal](dns-getstarted-portal.md) oder mithilfe von [Azure PowerShell](dns-getstarted-powershell.md) ausführen.
 

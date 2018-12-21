@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Erstellen von Containerimages in der Cloud mit Azure Container Registry Tasks'
+title: 'Tutorial: Erstellen von Containerimages in der Cloud –Azure Container Registry Tasks'
 description: In diesem Tutorial erfahren Sie, wie Sie mit Azure Container Registry Tasks (ACR Tasks) ein Docker-Containerimage in Azure erstellen und anschließend in Azure Container Instances bereitstellen.
 services: container-registry
 author: dlepow
@@ -7,15 +7,15 @@ ms.service: container-registry
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: danlep
-ms.custom: mvc
-ms.openlocfilehash: 7ac4fb62c6832920634de96c3e5befb15ce3b3a4
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.custom: seodec18, mvc
+ms.openlocfilehash: eafd6a75b4297056bcf4c5415f77179cefde6541
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48854727"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53256688"
 ---
-# <a name="tutorial-build-container-images-in-the-cloud-with-azure-container-registry-tasks"></a>Tutorial: Erstellen von Containerimages in der Cloud mit Azure Container Registry Tasks
+# <a name="tutorial-build-and-deploy-container-images-in-the-cloud-with-azure-container-registry-tasks"></a>Tutorial: Erstellen und Bereitstellen von Containerimages in der Cloud mit Azure Container Registry Tasks
 
 **ACR Tasks** ist eine Suite mit Features in Azure Container Registry, die optimierte und effiziente Docker-Containerimage-Builds in Azure bietet. In diesem Artikel erfahren Sie, wie Sie das *Schnellaufgabenfeature* von ACR Tasks verwenden.
 

@@ -1,5 +1,5 @@
 ---
-title: Binden eines vorhandenen benutzerdefinierten SSL-Zertifikats an Azure-Web-Apps | Microsoft-Dokumentation
+title: 'Binden eines vorhandenen benutzerdefinierten SSL-Zertifikats: Azure App Service | Microsoft-Dokumentation'
 description: Hier erfahren Sie, wie Sie ein benutzerdefiniertes SSL-Zertifikat an Ihre Web-App, ein Back-End Ihrer mobilen App oder Ihre API-App in Azure App Service binden.
 services: app-service\web
 documentationcenter: nodejs
@@ -14,17 +14,17 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 08/24/2018
 ms.author: cephalin
-ms.custom: mvc
-ms.openlocfilehash: a543561658d593398ca74f8ae68dd6d0d27bcdaa
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.custom: seodec18
+ms.openlocfilehash: 57046b9e199fbe5e88d0ea7fa25248641693508a
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51636445"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53256994"
 ---
 # <a name="tutorial-bind-an-existing-custom-ssl-certificate-to-azure-web-apps"></a>Tutorial: Binden eines vorhandenen benutzerdefinierten SSL-Zertifikats an Azure-Web-Apps
 
-Azure-Web-Apps bietet einen überaus skalierbaren Webhostingdienst mit eigenständigem Patchen. In diesem Tutorial erfahren Sie, wie Sie ein benutzerdefiniertes SSL-Zertifikat binden, das Sie von einer vertrauenswürdigen Zertifizierungsstelle für [Azure-Web-Apps](app-service-web-overview.md) erworben haben. Wenn Sie fertig sind, können Sie am HTTPS-Endpunkt Ihrer benutzerdefinierten DNS-Domäne auf Ihre Web-App zugreifen.
+Azure-Web-Apps bietet einen hochgradig skalierbaren Webhosting-Dienst mit Self-Patching. In diesem Tutorial erfahren Sie, wie Sie ein benutzerdefiniertes SSL-Zertifikat binden, das Sie von einer vertrauenswürdigen Zertifizierungsstelle für [Azure-Web-Apps](app-service-web-overview.md) erworben haben. Wenn Sie fertig sind, können Sie am HTTPS-Endpunkt Ihrer benutzerdefinierten DNS-Domäne auf Ihre Web-App zugreifen.
 
 ![Web-App mit benutzerdefiniertem SSL-Zertifikat](./media/app-service-web-tutorial-custom-ssl/app-with-custom-ssl.png)
 
@@ -139,9 +139,9 @@ Wählen Sie auf der Seite **SSL-Bindung hinzufügen** aus den Dropdownlisten den
 >
 >
 
-Wählen Sie unter **SSL-Typ** aus, ob SSL auf der **[Servernamensanzeige (Server Name Indication, SNI)](http://en.wikipedia.org/wiki/Server_Name_Indication)** oder der IP basieren soll.
+Wählen Sie unter **SSL-Typ** aus, ob SSL auf der **[Servernamensanzeige (Server Name Indication, SNI)](https://en.wikipedia.org/wiki/Server_Name_Indication)** oder der IP basieren soll.
 
-- **SNI-basiertes SSL**: Möglicherweise können mehrere SNI-basierte SSL-Bindungen hinzugefügt werden. Bei dieser Option können mehrere zur selben IP-Adresse zugehörige Domänen durch mehrere SSL-Zertifikate geschützt werden. Die meisten modernen Browser (einschließlich Internet Explorer, Chrome, Firefox und Opera) unterstützen SNI (ausführlichere Informationen zur Browserunterstützung finden Sie unter [Servernamensanzeige](http://wikipedia.org/wiki/Server_Name_Indication)).
+- **SNI-basiertes SSL**: Möglicherweise können mehrere SNI-basierte SSL-Bindungen hinzugefügt werden. Bei dieser Option können mehrere zur selben IP-Adresse zugehörige Domänen durch mehrere SSL-Zertifikate geschützt werden. Die meisten modernen Browser (einschließlich Internet Explorer, Chrome, Firefox und Opera) unterstützen SNI (ausführlichere Informationen zur Browserunterstützung finden Sie unter [Servernamensanzeige](https://wikipedia.org/wiki/Server_Name_Indication)).
 - **IP-basiertes SSL** : Möglicherweise kann nur eine IP-basierte SSL-Bindung hinzugefügt werden. Bei dieser Option kann eine dedizierte öffentliche IP-Adresse nur durch ein SSL-Zertifikat geschützt werden. Um mehrere Domänen zu schützen, müssen Sie sie alle mit demselben SSL-Zertifikat schützen. Dies ist die herkömmliche Option für SSL-Bindungen.
 
 Klicken Sie auf **Bindung hinzufügen**.

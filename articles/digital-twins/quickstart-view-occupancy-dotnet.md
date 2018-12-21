@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 11/7/2018
 ms.author: alinast
-ms.openlocfilehash: e11ae90655e1d4ce7a2475f0eacefb25491416da
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: ab1e879a7c145699779f6af3a97cef0ee6b5d219
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52582393"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53105511"
 ---
 # <a name="quickstart-find-available-rooms-by-using-azure-digital-twins"></a>Schnellstart: Suchen nach verfügbaren Räumen mithilfe von Azure Digital Twins
 
@@ -57,9 +57,9 @@ Führen Sie diese Schritte aus, um die Belegungsanwendung zu erstellen.
 1. Führen Sie `cd occupancy-quickstart/src`aus.
 1. Führen Sie `dotnet restore`aus.
 1. Bearbeiten Sie **appSettings.json**, um folgende Variablen zu aktualisieren:
-    - **ClientId**: Geben Sie die Anwendungs-ID Ihrer Azure AD-App-Registrierung ein, die Sie sich im vorherigen Abschnitt notiert haben.
-    - **Tenant**: Geben Sie die Verzeichnis-ID Ihres Azure AD-Mandanten ein, die Sie sich ebenfalls im vorherigen Abschnitt notiert haben.
-    - **BaseUrl**: Die URL der Verwaltungs-API Ihrer Digital Twins-Instanz im Format `https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/api/v1.0/`. Ersetzen Sie die Platzhalter in dieser URL durch die Werte für Ihre Instanz aus dem vorherigen Abschnitt.
+    - **ClientId:** Geben Sie die Anwendungs-ID Ihrer Azure AD-App-Registrierung ein, die Sie sich im vorherigen Abschnitt notiert haben.
+    - **Tenant:** Geben Sie die Verzeichnis-ID Ihres Azure AD-Mandanten ein, die Sie sich ebenfalls im vorherigen Abschnitt notiert haben.
+    - **BaseUrl:** Die URL der Verwaltungs-API Ihrer Digital Twins-Instanz im Format `https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/api/v1.0/`. Ersetzen Sie die Platzhalter in dieser URL durch die Werte für Ihre Instanz aus dem vorherigen Abschnitt.
 
 ## <a name="provision-graph"></a>Bereitstellen des Graphen
 
@@ -71,7 +71,7 @@ Mit diesem Schritt wird Ihr Digital Twins-Raumgraph bereitgestellt, der Folgende
 - Eine benutzerdefinierte Funktion 
 - Eine Rollenzuweisung
  
-Der Raumgraph wird mithilfe der Datei [provisionSample.yaml](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/provisionSample.yaml) bereitgestellt.
+Der Raumgraph wird mithilfe der Datei [provisionSample.yaml](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/provisionSample.yaml) bereitgestellt. 
 
 1. Führen Sie `dotnet run ProvisionSample`aus.
     >[!NOTE]
@@ -88,6 +88,9 @@ Der Raumgraph wird mithilfe der Datei [provisionSample.yaml](https://github.com/
 1. Kopieren Sie am Ende der Ausführung die Verbindungszeichenfolge (`ConnectionString`) des Geräts, um sie im Gerätesimulatorbeispiel verwenden zu können. Kopieren Sie nur die in dieser Abbildung markierte Zeichenfolge.
 
     ![Bereitstellen des Beispiels][1]
+
+    >[!TIP]
+    > Sie können Ihren Raumgraphen mithilfe des [Azure Digital Twins Graph Viewer](https://github.com/Azure/azure-digital-twins-graph-viewer) anzeigen und ändern.
 
 ## <a name="send-sensor-data"></a>Senden von Sensordaten
 

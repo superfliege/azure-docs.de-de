@@ -10,14 +10,14 @@ ms.custom: quick start connect, mvc
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 09/24/2018
-ms.openlocfilehash: 3708027b766ff9070831dd3677e821565e0dd4fa
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 50c2362e961d882afc109a0554303d364d52384b
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46994954"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53089427"
 ---
-# <a name="quickstart-build-a-cassandra-app-with-net-and-azure-cosmos-db"></a>Schnellstartanleitung: Erstellen einer Cassandra-App mit .NET und Azure Cosmos DB
+# <a name="quickstart-build-a-cassandra-app-with-net-and-azure-cosmos-db"></a>Schnellstart: Erstellen einer Cassandra-App mit .NET und Azure Cosmos DB
 
 > [!div class="op_single_selector"]
 > * [.NET](create-cassandra-dotnet.md)
@@ -96,7 +96,7 @@ Dieser Schritt ist optional. Wenn Sie erfahren möchten, wie der Code die Datenb
 * Fügen Sie Benutzerentitäten ein. Verwenden Sie hierzu das IMapper-Objekt mit einer neuen Sitzung, die eine Verbindung mit dem Keyspace „uprofile“ herstellt.
 
     ```csharp
-    mapper.Insert<User>(new User(1, "LyubovK", "Dubai"));
+    mapper.Insert<User>(new User(1, "LyubovK", "Dubai"));
     ```
     
 * Fragen Sie alle Benutzerinformationen ab.
@@ -118,7 +118,7 @@ Dieser Schritt ist optional. Wenn Sie erfahren möchten, wie der Code die Datenb
 
 Wechseln Sie nun zurück zum Azure-Portal, um die Informationen der Verbindungszeichenfolge abzurufen und in die App zu kopieren. Die Angabe der Verbindungszeichenfolgeninformationen ermöglicht Ihrer App die Kommunikation mit Ihrer gehosteten Datenbank.
 
-1. Wählen Sie im [Azure-Portal](http://portal.azure.com/) die Option **Verbindungszeichenfolge** aus.
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) die Option **Verbindungszeichenfolge** aus.
 
     Verwenden Sie die Schaltfläche ![Schaltfläche „Kopieren“](./media/create-cassandra-dotnet/copy.png) auf der rechten Seite des Bildschirms, um den Benutzernamen zu kopieren.
 

@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 10/23/2017
 ms.author: suhuruli
 ms.custom: mvc, devcenter
-ms.openlocfilehash: a7e71b4f93f3b890ea73e36052570f9047fc8f32
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 43a059e13945be3e39f65995e18ccd552727b874
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51228231"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53312573"
 ---
 # <a name="quickstart-deploy-a-java-reliable-services-application-to-service-fabric"></a>Schnellstart: Bereitstellen einer Java Reliable Services-Anwendung in Service Fabric
 
@@ -67,7 +67,7 @@ git clone https://github.com/Azure-Samples/service-fabric-java-quickstart.git
 
 2. Öffnen Sie Eclipse.
 3. Klicken Sie auf „Datei“ -> „Importieren“ -> „Gradle“ -> „Vorhandenes Gradle-Projekt“, und führen Sie die Schritte des Assistenten aus.
-4. Klicken Sie auf „Directory“ (Verzeichnis), und wählen Sie im Ordner `service-fabric-java-quickstart` das Verzeichnis `Voting` aus, das Sie aus Github geklont haben. Klicken Sie auf Fertig stellen. 
+4. Klicken Sie auf „Directory“ (Verzeichnis), und wählen Sie im Ordner `service-fabric-java-quickstart` das Verzeichnis `Voting` aus, das Sie aus GitHub geklont haben. Klicken Sie auf Fertig stellen.
 
     ![Eclipse-Dialogfeld „Importieren“](./media/service-fabric-quickstart-java/eclipseimport.png)
 
@@ -114,10 +114,10 @@ Um die Befehlszeilenschnittstelle verwenden zu können, müssen Sie auf der Grun
 
 Zur Verwendung von Service Fabric Explorer müssen Sie die von der Partycluster-Website heruntergeladene PFX-Zertifikatdatei in Ihren Zertifikatspeicher (Windows oder Mac) oder in den Browser selbst (Ubuntu) importieren. Sie benötigen das PFX-Kennwort für den privaten Schlüssel von der Seite mit der**Infodatei**.
 
-Importieren Sie das Zertifikat mit der von Ihnen bevorzugten Methode in Ihr System. Beispiel:
+Importieren Sie das Zertifikat mit der von Ihnen bevorzugten Methode in Ihr System. Beispiel: 
 
 * Unter Windows: Doppelklicken Sie auf die PFX-Datei, und befolgen Sie die Anweisungen, um das Zertifikat in Ihrem persönlichen Zertifikatspeicher (`Certificates - Current User\Personal\Certificates`) zu installieren. Alternativ können Sie den in der**Infodatei** angegebenen PowerShell-Befehl ausführen.
-* Auf einem Mac: Doppelklicken Sie auf die PFX-Datei, und befolgen Sie die Anweisungen, um das Zertifikat in Ihrer Keychain zu installieren.
+* Auf einem Macintosh: Doppelklicken Sie auf die PFX-Datei, und befolgen Sie die Anweisungen, um das Zertifikat in Ihrer Keychain zu installieren.
 * Unter Ubuntu: Der Standardbrowser in Ubuntu 16.04 ist Mozilla Firefox. Klicken Sie zum Importieren des Zertifikats rechts oben in Firefox auf die Menüschaltfläche und anschließend auf **Einstellungen**. Suchen Sie über das Suchfeld auf der Seite **Einstellungen** nach „Zertifikate“. Klicken Sie auf **Zertifikate anzeigen**, klicken Sie auf die Registerkarte **Ihre Zertifikate**, klicken Sie auf **Importieren**, und befolgen Sie die Anweisungen zum Importieren des Zertifikats.
 
    ![Installieren des Zertifikats in Firefox](./media/service-fabric-quickstart-java/install-cert-firefox.png)
@@ -132,7 +132,7 @@ Der Zertifikatfingerabdruck muss Ihrer Anwendung hinzugefügt werden, da Service
     openssl x509 -in [CERTIFICATE_PEM_FILE] -fingerprint -noout
     ```
 
-2. Fügen Sie in der Datei `Voting/VotingApplication/ApplicationManifest.xml` unter dem Tag **ApplicationManifest** den folgenden Codeausschnitt hinzu. **X509FindValue** sollte der Fingerabdruck aus dem vorherigen Schritt sein (keine Semikolons). 
+2. Fügen Sie in der Datei `Voting/VotingApplication/ApplicationManifest.xml` unter dem Tag **ApplicationManifest** den folgenden Codeausschnitt hinzu. **X509FindValue** sollte der Fingerabdruck aus dem vorherigen Schritt sein (keine Semikolons).
 
     ```xml
     <Certificates>

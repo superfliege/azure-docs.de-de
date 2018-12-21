@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 10/25/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 8e1c58f2d60ee95189fb583e032d8748fedb88d4
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.openlocfilehash: 2ba34a6d1ecc33e8a4d355aeacb0da8a764a784d
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52620216"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52679523"
 ---
 # <a name="manage-updates-for-multiple-machines"></a>Verwalten von Updates für mehrere Computer
 
@@ -128,7 +128,7 @@ Geben Sie im Bereich **Neue Updatebereitstellung** die folgenden Informationen e
 - **Name**: Geben Sie einen eindeutigen Namen zur Identifizierung der Updatebereitstellung ein.
 - **Betriebssystem**: Wählen Sie **Windows** oder **Linux** aus.
 - **Zu aktualisierende Gruppen (Vorschau)**: Definieren Sie eine Abfrage basierend auf einer Kombination aus Abonnement, Ressourcengruppen, Standorten und Tags, um eine dynamische Gruppe von Azure-VMs zu erstellen, die in Ihre Bereitstellung eingeschlossen werden sollen. Weitere Informationen finden Sie unter [Dynamische Gruppen](automation-update-management.md#using-dynamic-groups).
-- **Zu aktualisierende Computer**: Wählen Sie eine gespeicherte Suche, eine importierte Gruppe oder Computer aus, um die Computer auszuwählen, die Sie aktualisieren möchten. Bei Auswahl von **Computer** wird die Bereitschaft des Computers in der Spalte **BEREITSCHAFT DES UPDATE-AGENTS** angezeigt. Sie können den Integritätsstatus des Computers sehen, bevor Sie die Updatebereitstellung planen. Weitere Informationen zu den verschiedenen Methoden zum Erstellen von Computergruppen in Log Analytics finden Sie unter [Computergruppen in Log Analytics](../log-analytics/log-analytics-computer-groups.md).
+- **Zu aktualisierende Computer**: Wählen Sie eine gespeicherte Suche, eine importierte Gruppe oder Computer aus, um die Computer auszuwählen, die Sie aktualisieren möchten. Bei Auswahl von **Computer** wird die Bereitschaft des Computers in der Spalte **BEREITSCHAFT DES UPDATE-AGENTS** angezeigt. Sie können den Integritätsstatus des Computers sehen, bevor Sie die Updatebereitstellung planen. Weitere Informationen zu den verschiedenen Methoden zum Erstellen von Computergruppen in Log Analytics finden Sie unter [Computergruppen in Log Analytics](../azure-monitor/platform/computer-groups.md).
 
   ![Bereich „Neue Updatebereitstellung“](./media/manage-update-multi/update-select-computers.png)
 
@@ -182,7 +182,7 @@ Klicken Sie auf die abgeschlossene Bereitstellung, um das Dashboard für eine Up
 Im Bereich **Updateergebnisse** werden die Gesamtzahl von Updates und die Ergebnisse der Bereitstellung für den virtuellen Computer angezeigt. Die Tabelle rechts enthält eine detaillierte Aufschlüsselung der einzelnen Updates und die Installationsergebnisse. Bei den Installationsergebnissen kann es sich um einen der folgenden Werte handeln:
 
 - **Kein Versuch erfolgt**: Das Update wurde nicht installiert, da aufgrund des definierten Wartungsfensters nicht genügend Zeit zur Verfügung stand.
-- **Erfolgreich**: Das Update wurde erfolgreich ausgeführt.
+- **Erfolgreich**: Das Update war erfolgreich.
 - **Fehler**: Beim Update ist ein Fehler aufgetreten.
 
 Klicken Sie auf **Alle Protokolle**, um alle von der Bereitstellung erstellten Protokolleinträge anzuzeigen.

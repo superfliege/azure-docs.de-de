@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstartanleitung: Erstellen einer privaten Docker-Registrierung in Azure über das Azure-Portal'
+title: 'Schnellstart: Erstellen einer privaten Docker-Registrierung in Azure: Azure-Portal'
 description: Hier lernen Sie, wie Sie ganz schnell eine private Docker-Containerregistrierung über das Azure-Portal erstellen.
 services: container-registry
 author: dlepow
@@ -7,15 +7,15 @@ ms.service: container-registry
 ms.topic: quickstart
 ms.date: 11/06/2018
 ms.author: danlep
-ms.custom: mvc
-ms.openlocfilehash: 1e039c465bf37e0ee5ca1db5837798680e27463d
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.custom: seodec18, mvc
+ms.openlocfilehash: 865c53fdda60f6a0384157ec68042b4b8b243a7a
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51278666"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53255362"
 ---
-# <a name="quickstart-create-a-container-registry-using-the-azure-portal"></a>Schnellstart: Erstellen einer Containerregistrierung mit dem Azure-Portal
+# <a name="quickstart-create-a-private-container-registry-using-the-azure-portal"></a>Schnellstart: Erstellen einer privaten Containerregistrierung im Azure-Portal
 
 Eine Azure Container Registry-Instanz ist eine private Docker-Registrierung in Azure, in der Sie Ihre privaten Docker-Containerimages speichern und verwalten können. In dieser Schnellstartanleitung erstellen Sie eine Containerregistrierung mit dem Azure-Portal, übertragen ein Containerimage per Pushvorgang in die Registrierung und stellen den Container abschließend aus Ihrer Registrierung in Azure Container Instances (ACI) bereit.
 

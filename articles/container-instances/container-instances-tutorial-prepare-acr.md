@@ -1,21 +1,21 @@
 ---
-title: Tutorial für Azure Container Instances – Vorbereiten der Azure Container Registry
-description: Tutorial für Azure Container Instances (Teil 2 von 3) – Vorbereiten der Azure Container Registry
+title: Tutorial – Vorbereiten einer Containerregistrierung für Azure Container Instances
+description: Tutorial für Azure Container Instances (Teil 2 von 3) – Vorbereiten einer Azure-Containerregistrierung und Übertragen eines Images per Pushvorgang
 services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: tutorial
 ms.date: 03/21/2018
 ms.author: danlep
-ms.custom: mvc
-ms.openlocfilehash: e7cf9c5fad6219e71205c181b2dbb6828595afdd
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.custom: seodec18, mvc
+ms.openlocfilehash: eeb0fe5b19f23e101eab9393dca64e1e13bf6922
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48855441"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53188913"
 ---
-# <a name="tutorial-deploy-and-use-azure-container-registry"></a>Tutorial: Bereitstellen und Verwenden von Azure Container Registry
+# <a name="tutorial-deploy-an-azure-container-registry-and-push-a-container-image"></a>Tutorial: Bereitstellen einer Azure-Containerregistrierung und Übertragen eines Containerimages per Pushvorgang
 
 Dies ist der zweite Teil eines dreiteiligen Tutorials. In [Teil 1](container-instances-tutorial-prepare-app.md) des Tutorials wurde ein Docker-Containerimage für eine Node.js-Webanwendung erstellt. In diesem Tutorial übertragen Sie das Image per Pushvorgang an die Azure Container Registry-Instanz. Kehren Sie zu [Tutorial 1 – Erstellen von Containerimages](container-instances-tutorial-prepare-app.md) zurück, falls Sie das Containerimage noch nicht erstellt haben.
 

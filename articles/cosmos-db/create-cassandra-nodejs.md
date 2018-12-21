@@ -10,14 +10,14 @@ ms.custom: quick start connect, mvc
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 09/24/2018
-ms.openlocfilehash: e7b4bc51ab71fa1043afdab019d27fd089d0356c
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: e1015331af3b31fa34170db6c1729b8e38bcbd04
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46980082"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53251050"
 ---
-# <a name="quickstart-build-a-cassandra-app-with-nodejs-and-azure-cosmos-db"></a>Schnellstartanleitung: Erstellen einer Cassandra-App mit Node.js und Azure Cosmos DB
+# <a name="quickstart-build-a-cassandra-app-with-nodejs-and-azure-cosmos-db"></a>Schnellstart: Erstellen einer Cassandra-App mit Node.js und Azure Cosmos DB
 
 > [!div class="op_single_selector"]
 > * [.NET](create-cassandra-dotnet.md)
@@ -36,7 +36,7 @@ Azure Cosmos DB ist ein global verteilter Datenbankdienst von Microsoft mit mehr
 
 Zudem benötigen Sie:
 * [Node.js](https://nodejs.org/en/) Version v0.10.29 oder höher
-* [Git-Client](http://git-scm.com/)
+* [Git-Client](https://git-scm.com/)
 
 ## <a name="create-a-database-account"></a>Erstellen eines Datenbankkontos
 
@@ -158,7 +158,7 @@ Dieser Schritt ist optional. Wenn Sie erfahren möchten, wie der Code die Datenb
 
 Wechseln Sie nun zurück zum Azure-Portal, um die Informationen der Verbindungszeichenfolge abzurufen und in die App zu kopieren. Die Angabe der Verbindungszeichenfolge ermöglicht Ihrer App die Kommunikation mit Ihrer gehosteten Datenbank.
 
-1. Wählen Sie im [Azure-Portal](http://portal.azure.com/) die Option **Verbindungszeichenfolge** aus. 
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) die Option **Verbindungszeichenfolge** aus. 
 
     Verwenden Sie die Schaltfläche ![Schaltfläche „Kopieren“](./media/create-cassandra-nodejs/copy.png) auf der rechten Seite des Bildschirms, um den obersten Wert (den Kontaktpunkt) zu kopieren.
 

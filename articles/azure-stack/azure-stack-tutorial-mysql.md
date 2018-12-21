@@ -15,14 +15,14 @@ ms.topic: tutorial
 ms.date: 10/23/2018
 ms.author: jeffgilb
 ms.reviewer: quying
-ms.openlocfilehash: 84aaa5534c629554074544b4bb56ae8da8825397
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: bee684409b2ef3fffeb9f175c2b469d3736b6484
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49986450"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52993837"
 ---
-# <a name="tutorial-offer-highly-available-mysql-databases"></a>Tutorial: Anbieten hoch verfügbarer MySQL-Datenbanken
+# <a name="tutorial-offer-highly-available-mysql-databases"></a>Tutorial: Anbieten von hoch verfügbaren MySQL-Datenbanken
 
 Als Azure Stack-Bediener können Sie virtuelle Servercomputer zum Hosten von MySQL Server-Datenbanken konfigurieren. Wenn ein MySQL-Cluster erstellt wurde und über Azure Stack verwaltet wird, können Benutzer, die MySQL-Dienste abonniert haben, ganz einfach hoch verfügbare MySQL-Datenbanken erstellen.
 
@@ -46,7 +46,7 @@ Vergewissern Sie sich zunächst, dass der [MySQL Server-Ressourcenanbieter](azur
 > Alle folgenden Elemente sind erforderlich, um den MySQL-Cluster zu erstellen.
 
 - [MySQL with Replication](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bitnami.mysql-cluster). Dies ist die Bitnami-Lösungsvorlage, die für die Bereitstellung des MySQL-Clusters verwendet wird.
-- [Debian 8 „Jessie“](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/credativ.Debian8backports?tab=Overview). Debian 8 „Jessie“ mit Backportkernel für Microsoft Azure, bereitgestellt durch credativ. Debian GNU/Linux ist eine der am häufigsten verwendeten Linux-Distributionen.
+- [Debian 8 „Jessie“](https://azuremarketplace.microsoft.com/marketplace/apps/credativ.Debian). Debian 8 „Jessie“ mit Backportkernel für Microsoft Azure, bereitgestellt durch credativ. Debian GNU/Linux ist eine der am häufigsten verwendeten Linux-Distributionen.
 - [Custom Script for Linux 2.0](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft.custom-script-linux?tab=Overview). Custom Script Extension ist ein Tool, mit dem Sie nach der Bereitstellung Ihrer VMs Anpassungstasks für die VMs ausführen. Wenn diese Erweiterung zu einem virtuellen Computer hinzugefügt wird, kann sie Skripts aus Azure Storage herunterladen und auf der VM ausführen. Custom Script Extension-Tasks können auch mithilfe von Azure PowerShell-Cmdlets und Azure Cross-Platform Command-Line Interface (xPlat CLI) automatisiert werden.
 - VM Access for Linux Extension 1.4.7. Die VM Access-Erweiterung ermöglicht es Ihnen, das Kennwort, den SSH-Schlüssel oder die SSH-Konfigurationen zurückzusetzen, sodass Sie wieder auf Ihre VM zugreifen können. Sie können mit dieser Erweiterung auch einen neuen Benutzer mit Kennwort oder SSH-Schlüssel hinzufügen oder einen Benutzer löschen. Diese Erweiterung gilt für Linux-VMs.
 

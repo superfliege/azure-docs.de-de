@@ -14,19 +14,19 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
-ms.date: 03/13/2018
+ms.date: 12/12/2018
 ms.author: jdial
 ms.custom: mvc
-ms.openlocfilehash: 81478ace72a538f4970e114cd704fd64ceb94aa6
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: fbbc624bbc3d20a70a54c50296f5b74634002a67
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37344891"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53409070"
 ---
-# <a name="tutorial-route-network-traffic-with-a-route-table-using-the-azure-portal"></a>Tutorial: Weiterleiten von Netzwerkdatenverkehr unter Verwendung des Azure-Portals
+# <a name="tutorial-route-network-traffic-with-a-route-table-using-the-azure-portal"></a>Tutorial: Weiterleiten von Netzwerkdatenverkehr mithilfe des Azure-Portals
 
-Standardmäßig leitet Azure automatisch den Datenverkehr aller Subnetze des virtuellen Netzwerks weiter. Sie können eigene Routen erstellen, um das Azure-Standardrouting außer Kraft zu setzen. Die Möglichkeit zum Erstellen von benutzerdefinierten Routen ist beispielsweise hilfreich, wenn Sie über ein virtuelles Netzwerkgerät (Network Virtual Appliance, NVA) Datenverkehr zwischen Subnetzen weiterleiten möchten. In diesem Tutorial lernen Sie Folgendes:
+Azure leitet den Netzwerkdatenverkehr standardmäßig durch alle Subnetze des virtuellen Netzwerks. Sie können eigene Routen erstellen, um das Azure-Standardrouting außer Kraft zu setzen. Die Möglichkeit zum Erstellen von benutzerdefinierten Routen ist beispielsweise hilfreich, wenn Sie über ein virtuelles Netzwerkgerät (Network Virtual Appliance, NVA) Datenverkehr zwischen Subnetzen weiterleiten möchten. In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
 > * Erstellen einer Routingtabelle
@@ -37,231 +37,360 @@ Standardmäßig leitet Azure automatisch den Datenverkehr aller Subnetze des vir
 > * Bereitstellen von VMs in unterschiedlichen Subnetzen
 > * Weiterleiten von Datenverkehr aus einem Subnetz zu einem anderen über ein virtuelles Netzwerkgerät
 
-Dieser Artikel kann auch mit der [Azure-Befehlszeilenschnittstelle](tutorial-create-route-table-cli.md) oder mit [Azure PowerShell](tutorial-create-route-table-powershell.md) durchgearbeitet werden.
+Dieser Artikel kann auch mit der [Azure CLI](tutorial-create-route-table-cli.md) oder mit [Azure PowerShell](tutorial-create-route-table-powershell.md) durchgearbeitet werden.
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
-## <a name="log-in-to-azure"></a>Anmelden an Azure 
+## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
-Melden Sie sich unter http://portal.azure.com beim Azure-Portal an.
+Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
 ## <a name="create-a-route-table"></a>Erstellen einer Routingtabelle
 
-1. Klicken Sie im Azure-Portal links oben auf **+ Ressource erstellen**.
-2. Wählen Sie die Option **Netzwerk** und dann **Routingtabelle**.
-3. Geben Sie die folgenden Informationen ein, oder wählen Sie sie aus, übernehmen Sie die Standardwerte für die übrigen Einstellungen, und klicken Sie auf **Erstellen**:
+1. Wählen Sie oben links auf dem Bildschirm **Ressource erstellen** > **Netzwerk** > **Routingtabelle** aus.
 
-    |Einstellung|Wert|
-    |---|---|
-    |NAME|myRouteTablePublic|
-    |Abonnement| Wählen Sie Ihr Abonnement aus.|
-    |Ressourcengruppe | Klicken Sie auf **Neu erstellen**, und geben Sie *myResourceGroup* ein.|
-    |Speicherort|USA (Ost)|
- 
-    ![Erstellen einer Routingtabelle](./media/tutorial-create-route-table-portal/create-route-table.png) 
+1. Geben Sie in **Routingtabelle erstellen** diese Informationen ein, oder wählen Sie sie aus:
+
+    | Einstellung | Wert |
+    | ------- | ----- |
+    | NAME | Geben Sie *myRouteTablePublic* ein. |
+    | Abonnement | Wählen Sie Ihr Abonnement aus. |
+    | Ressourcengruppe | Wählen Sie **Neue erstellen** aus, geben Sie *myResourceGroup* ein, und wählen Sie *OK* aus. |
+    | Standort | Behalten Sie den Standardwert von **USA, Osten** bei.
+    | BGP-Routenverteilung | Behalten Sie den Standardwert von **Aktiviert** bei. |
+
+1. Klicken Sie auf **Erstellen**.
 
 ## <a name="create-a-route"></a>Erstellen einer Route
 
-1. Beginnen Sie oben im Portal im Feld *Ressourcen, Dienste und Dokumente durchsuchen* mit der Eingabe von *myRouteTablePublic*. Wenn **myRouteTablePublic** in den Suchergebnissen angezeigt wird, wählen Sie diese Angabe aus.
-2. Klicken Sie unter **EINSTELLUNGEN** auf **Routen** und wählen Sie dann **+ Hinzufügen** aus, wie in der folgenden Abbildung gezeigt wird:
+1. Geben Sie in der Suchleiste des Portals *myRouteTablePublic* ein.
 
-    ![Hinzufügen einer Route](./media/tutorial-create-route-table-portal/add-route.png) 
- 
-3. Geben Sie unter **Route hinzufügen** die folgenden Informationen ein, oder wählen Sie sie aus, übernehmen Sie die Standardwerte für die übrigen Einstellungen, und klicken Sie auf **Erstellen**:
+1. Wenn **myRouteTablePublic** in den Suchergebnissen angezeigt wird, wählen Sie diese Angabe aus.
 
-    |Einstellung|Wert|
-    |---|---|
-    |Routenname|ToPrivateSubnet|
-    |Adresspräfix| 10.0.1.0/24|
-    |Typ des nächsten Hops | Wählen Sie **Virtuelles Gerät** aus.|
-    |Adresse des nächsten Hops| 10.0.2.4|
+1. Wählen Sie in **myRouteTablePublic** unter **Einstellungen**  die Optionen **Routen** > **+ Hinzufügen**.
+
+    ![Hinzufügen einer Route](./media/tutorial-create-route-table-portal/add-route.png)
+
+1. Geben Sie in **Route hinzufügen** diese Informationen ein, oder wählen Sie sie aus:
+
+    | Einstellung | Wert |
+    | ------- | ----- |
+    | Routenname | Geben Sie *ToPrivateSubnet* ein. |
+    | Adresspräfix | Geben Sie *10.0.1.0/24* ein. |
+    | Typ des nächsten Hops | Wählen Sie **Virtuelles Gerät** aus. |
+    | Adresse des nächsten Hops | Geben Sie *10.0.2.4* ein. |
+
+1. Klicken Sie auf **OK**.
 
 ## <a name="associate-a-route-table-to-a-subnet"></a>Zuordnen einer Routingtabelle zu einem Subnetz
 
-Bevor Sie eine Routingtabelle einem Subnetz zuordnen können, müssen Sie ein virtuelles Netzwerk und ein Subnetz erstellen. Danach können Sie die Routingtabelle einem Subnetz zuordnen.
+Bevor Sie eine Routingtabelle einem Subnetz zuordnen können, müssen Sie ein virtuelles Netzwerk und ein Subnetz erstellen.
 
-1. Klicken Sie im Azure-Portal links oben auf **+ Ressource erstellen**.
-2. Wählen Sie **Netzwerk** und anschließend **Virtuelles Netzwerk** aus.
-3. Geben Sie unter **Virtuelles Netzwerk erstellen** die folgenden Informationen ein, oder wählen Sie sie aus, übernehmen Sie die Standardwerte für die übrigen Einstellungen, und klicken Sie auf **Erstellen**:
+### <a name="create-a-virtual-network"></a>Erstellen eines virtuellen Netzwerks
 
-    |Einstellung|Wert|
-    |---|---|
-    |NAME|myVirtualNetwork|
-    |Adressraum| 10.0.0.0/16|
-    |Abonnement | Wählen Sie Ihr Abonnement aus.|
-    |Ressourcengruppe|Wählen Sie **Vorhandene verwenden** und dann **myResourceGroup**.|
-    |Speicherort|Wählen Sie *USA, Osten* aus.|
-    |Subnetzname|Öffentlich|
-    |Adressbereich|10.0.0.0/24|
-    
-4. Beginnen Sie oben im Portal im Feld **Ressourcen, Dienste und Dokumente durchsuchen** mit der Eingabe von *myVirtualNetwork*. Wenn **myVirtualNetwork** in den Suchergebnissen angezeigt wird, können Sie den Begriff auswählen.
-5. Klicken Sie unter **EINSTELLUNGEN** auf **Subnetze** und anschließend auf **+ Subnetz**, wie in der folgenden Abbildung gezeigt:
+1. Wählen Sie oben links auf dem Bildschirm **Ressource erstellen** > **Netzwerk** > **Virtuelles Netzwerk** aus.
 
-    ![Hinzufügen des Subnetzes](./media/tutorial-create-route-table-portal/add-subnet.png) 
+1. Geben Sie in **Virtuelles Netzwerk erstellen** diese Informationen ein, oder wählen Sie sie aus:
 
-6. Wählen Sie folgende Informationen aus, oder geben Sie sie ein, und klicken Sie auf **OK**:
+    | Einstellung | Wert |
+    | ------- | ----- |
+    | NAME | Geben Sie *myVirtualNetwork* ein. |
+    | Adressraum | Geben Sie *10.0.0.0/16* ein. |
+    | Abonnement | Wählen Sie Ihr Abonnement aus. |
+    | Ressourcengruppe | Wählen Sie ***Vorhandene auswählen*** > **MyResourceGroup**. |
+    | Standort | Behalten Sie den Standardwert von **USA, Osten** bei. |
+    | Subnetzname | Geben Sie *Öffentlich* ein. |
+    | Subnetzadressbereich | Geben Sie *10.0.0.0/24* ein. |
 
-    |Einstellung|Wert|
-    |---|---|
-    |NAME|Private|
-    |Adressraum| 10.0.1.0/24|
+1. Übernehmen Sie die übrigen Standardeinstellungen, und wählen Sie **Erstellen** aus.
 
-7. Führen Sie erneut die Schritte 5 und 6 durch, und geben Sie dabei folgende Informationen an:
+### <a name="add-subnets-to-the-virtual-network"></a>Subnetze zum virtuellen Netzwerk hinzufügen
 
-    |Einstellung|Wert|
-    |---|---|
-    |NAME|DMZ|
-    |Adressraum| 10.0.2.0/24|
+1. Geben Sie in der Suchleiste des Portals *myVirtualNetwork* ein.
 
-8. Das Feld **myVirtualNetwork – Subnetze** wird nach Durchführung des vorhergehenden Schritts angezeigt. Klicken Sie unter **EINSTELLUNGEN** auf **Subnetze**, und wählen Sie dann **Öffentlich** aus.
-9. Wählen Sie wie in der folgenden Abbildung dargestellt **Routingtabelle** und dann **MyRouteTablePublic** aus, und klicken Sie anschließend auf **Speichern**.
+1. Wenn **myVirtualNetwork** in den Suchergebnissen angezeigt wird, können Sie den Begriff auswählen.
 
-    ![Zuordnen einer Routingtabelle](./media/tutorial-create-route-table-portal/associate-route-table.png) 
+1. Wählen Sie in **myVirtualNetwork** unter **Einstellungen** die Optionen **Subnetze** > **+ Subnetz**.
+
+    ![Hinzufügen des Subnetzes](./media/tutorial-create-route-table-portal/add-subnet.png)
+
+1. Geben Sie unter **Subnetz hinzufügen** diese Informationen ein:
+
+    | Einstellung | Wert |
+    | ------- | ----- |
+    | NAME | Geben Sie *Privat* ein. |
+    | Adressraum | Geben Sie *10.0.1.0/24* ein. |
+
+1. Übernehmen Sie die übrigen Standardeinstellungen, und wählen Sie **OK**.
+
+1. Wählen Sie erneut **+ Subnetz** aus. Geben Sie diese Informationen ein:
+
+    | Einstellung | Wert |
+    | ------- | ----- |
+    | NAME | Geben Sie *DMZ* ein. |
+    | Adressraum | Geben Sie *10.0.2.0/24* ein. |
+
+1. Übernehmen Sie wie beim letzten Mal die übrigen Standardeinstellungen, und wählen Sie **OK**.
+
+    Azure zeigt die drei Subnetze an: **Öffentlich**, **Privat** und **DMZ**.
+
+### <a name="associate-myroutetablepublic-to-your-public-subnet"></a>Zuordnen von „myRouteTablePublic“ zu Ihrem öffentlichen Subnetz
+
+1. Wählen Sie **Öffentlich** aus.
+
+1. Wählen Sie in **Öffentlich** die Option **Routingtabelle** > **MyRouteTablePublic** > **Speichern**.
+
+    ![Zuordnen einer Routingtabelle](./media/tutorial-create-route-table-portal/associate-route-table.png)
 
 ## <a name="create-an-nva"></a>Erstellen eines virtuellen Netzwerkgeräts
 
-Ein virtuelles Netzwerkgerät ist eine VM, die eine Netzwerkfunktion wie Routing, Firewall oder WAN-Optimierung ausführt.
+Virtuelle Netzwerkgeräte sind VMs, die bei Netzwerkfunktionen wie Routing und Firewalloptimierung helfen. Sie können ein anderes Betriebssystem auswählen, wenn Sie möchten. In diesem Tutorial wird vorausgesetzt, dass Sie **Windows Server 2016 Datacenter** verwenden.
 
-1. Klicken Sie im Azure-Portal links oben auf **+ Ressource erstellen**.
-2. Wählen Sie **Compute** und dann **Windows Server 2016 Datacenter**. Sie können ein anderes Betriebssystem auswählen, bei den übrigen Schritten wird jedoch davon ausgegangen, dass Sie **Windows Server 2016 Datacenter** ausgewählt haben. 
-3. Wählen Sie folgende Informationen für **Grundlagen** aus, oder geben Sie sie ein, und klicken Sie auf **OK**:
+1. Wählen Sie oben links auf dem Bildschirm die Option **Ressource erstellen** > **Compute** > **Windows Server 2016 Datacenter**.
 
-    |Einstellung|Wert|
-    |---|---|
-    |NAME|myVmNva|
-    |Benutzername|Geben Sie den gewünschten Benutzernamen ein.|
-    |Password|Geben Sie das gewünschte Kennwort ein. Das Kennwort muss mindestens zwölf Zeichen lang sein und die [definierten Anforderungen an die Komplexität](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm) erfüllen.|
-    |Ressourcengruppe| Wählen Sie **Vorhandene verwenden** und dann *myResourceGroup*.|
-    |Speicherort|Wählen Sie **USA, Osten** aus.|
-4. Wählen Sie unter **Größe auswählen** eine VM-Größe aus.
-5. Wählen Sie folgende Informationen für **Einstellungen** aus, oder geben Sie sie ein, und klicken Sie auf **OK**:
+1. Geben Sie in **Virtuellen Computer erstellen – Grundlagen** diese Informationen ein, oder wählen Sie sie aus:
 
-    |Einstellung|Wert|
-    |---|---|
-    |Virtuelles Netzwerk|myVirtualNetwork. Falls dieses Netzwerk nicht ausgewählt ist, klicken Sie auf **Virtuelles Netzwerk**, und wählen Sie dann unter **Virtuelles Netzwerk auswählen** den Eintrag **myVirtualNetwork** aus.|
-    |Subnetz|Klicken Sie auf **Subnetz**, und wählen Sie dann unter **Subnetz auswählen** die Option **DMZ** aus. |
-    |Öffentliche IP-Adresse| Klicken Sie auf **Öffentliche IP-Adresse**, und wählen Sie dann unter **Öffentliche IP-Adresse wählen** die Option **Keine** aus. Diesem virtuellen Computer wird keine öffentliche IP-Adresse zugewiesen, da mit ihm keine Verbindung über das Internet hergestellt wird.
-6. Klicken Sie auf der Seite **Zusammenfassung** unter **Erstellen** auf **Erstellen**, um die Bereitstellung der VM zu starten.
+    | Einstellung | Wert |
+    | ------- | ----- |
+    | **PROJEKTDETAILS** | |
+    | Abonnement | Wählen Sie Ihr Abonnement aus. |
+    | Ressourcengruppe | Wählen Sie **myResourceGroup** aus. |
+    | **INSTANZDETAILS** |  |
+    | Name des virtuellen Computers | Geben Sie *MyVmNva* ein. |
+    | Region | Wählen Sie **USA, Osten** aus. |
+    | Verfügbarkeitsoptionen | Übernehmen Sie den Standardwert **Keine Infrastrukturredundanz erforderlich**. |
+    | Image | Übernehmen Sie den Standardwert **Microsoft Windows Server 2016 Datacenter**. |
+    | Größe | Übernehmen Sie den Standardwert **Standard DS1 v2**. |
+    | **ADMINISTRATORKONTO** |  |
+    | Username | Geben Sie den gewünschten Benutzernamen ein. |
+    | Kennwort | Geben Sie das gewünschte Kennwort ein. Das Kennwort muss mindestens zwölf Zeichen lang sein und die [definierten Anforderungen an die Komplexität](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm) erfüllen.|
+    | Kennwort bestätigen | Geben Sie das Kennwort erneut ein. |
+    | **REGELN FÜR EINGEHENDE PORTS** |  |
+    | Öffentliche Eingangsports | Übernehmen Sie den Standardwert **Keine**.
+    | **SPAREN SIE GELD** |  |
+    | Windows-Lizenz bereits vorhanden? | Übernehmen Sie den Standardwert **Nein**. |
 
-    Die Erstellung des virtuellen Computers dauert einige Minuten. Fahren Sie erst mit dem nächsten Schritt fort, wenn Azure die VM erstellt und ein Feld mit Informationen zur VM geöffnet hat.
+1. Wählen Sie **Weiter: Datenträger**.
 
-7. Klicken Sie wie in der folgenden Abbildung dargestellt in dem Feld, das nach der Erstellung für die VM geöffnet wird, unter **EINSTELLUNGEN** auf **Netzwerk**, und wählen Sie dann **myvmnva158** aus (die von Azure erstellte Netzwerkschnittstelle für Ihre VM weist eine andere Nummer nach **myvmnva** auf):
+1. Wählen Sie in **Virtuellen Computer erstellen – Datenträger** die Einstellungen entsprechend Ihren Anforderungen.
 
-    ![VM-Netzwerk](./media/tutorial-create-route-table-portal/virtual-machine-networking.png) 
+1. Wählen Sie **Weiter: Netzwerk** aus.
 
-8. Damit Netzwerkdatenverkehr, der nicht für seine eigene IP-Adresse bestimmt ist, an eine Netzwerkschnittstelle gesendet werden kann, muss die IP-Weiterleitung für die Netzwerkschnittstelle aktiviert sein. Klicken Sie unter **EINSTELLUNGEN** auf **IP-Konfigurationen**, auf **Aktiviert** für die Option **IP-Weiterleitung** und abschließend auf **Speichern** . Dies wird in der folgenden Abbildung veranschaulicht:
+1. Wählen Sie in **Virtuellen Computer erstellen – Netzwerk** diese Informationen aus:
 
-    ![Aktivieren der IP-Weiterleitung](./media/tutorial-create-route-table-portal/enable-ip-forwarding.png) 
+    | Einstellung | Wert |
+    | ------- | ----- |
+    | Virtuelles Netzwerk | Übernehmen Sie den Standardwert **myVirtualNetwork**. |
+    | Subnetz | Wählen Sie **DMZ (10.0.2.0/24)** aus. |
+    | Öffentliche IP-Adresse | Wählen Sie **Keine**. Sie benötigen keine öffentliche IP-Adresse. Der virtuelle Computer wird nicht über das Internet verbunden.|
 
-## <a name="create-virtual-machines"></a>Erstellen von virtuellen Computern
+1. Übernehmen Sie die übrigen Standardeinstellungen, und wählen Sie **Weiter: Verwaltung** aus.
 
-Erstellen Sie zwei VMs im virtuellen Netzwerk, damit Sie in einem späteren Schritt überprüfen können, ob Datenverkehr aus dem Subnetz *Öffentlich* über das virtuelle Netzwerkgerät an das Subnetz *Privat* weitergeleitet wird. Führen Sie die Schritte 1 bis 6 unter [Erstellen eines virtuellen Netzwerkgeräts](#create-a-network-virtual-appliance) aus. Verwenden Sie die gleichen Einstellungen wie in Schritt 3 und 5 mit Ausnahme der folgenden Änderungen:
+1. Wählen Sie in **Virtuellen Computer erstellen – Verwaltung** für **Diagnosespeicherkonto** **Neu erstellen** aus.
 
-|Name des virtuellen Computers      |Subnetz      | Öffentliche IP-Adresse     |
-|--------- | -----------|---------              |
-| myVmPublic  | Öffentlich     | Standardeinstellung des Portals beibehalten |
-| myVmPrivate | Private    | Standardeinstellung des Portals beibehalten |
+1. Geben Sie in **Speicherkonto erstellen** diese Informationen ein, oder wählen Sie sie aus:
 
-Sie können die VM *myVmPrivate* erstellen, während Azure die VM *myVmPublic* erstellt. Fahren Sie erst mit den nächsten Schritten fort, wenn Azure die Erstellung beider VMs abgeschlossen hat.
+    | Einstellung | Wert |
+    | ------- | ----- |
+    | NAME | Geben Sie *mynvastorageaccount* ein. |
+    | Kontoart | Übernehmen Sie den Standardwert **Storage (universell, Version 1)**. |
+    | Leistung | Übernehmen Sie den Standardwert **Standard**. |
+    | Replikation | Übernehmen Sie den Standardwert **Lokal redundanter Speicher (LRS)**.
+
+1. Klicken Sie auf **OK**.
+
+1. Klicken Sie auf **Überprüfen + erstellen**. Sie gelangen auf die Seite **Bewerten + erstellen**, und Azure überprüft Ihre Konfiguration.
+
+1. Wenn **Überprüfung erfolgreich** angezeigt wird, wählen Sie **Erstellen** aus.
+
+    Die Erstellung des virtuellen Computers dauert einige Minuten. Fahren Sie erst fort, wenn Azure die VM erstellt hat. Auf der Seite **Ihre Bereitstellung läuft** werden Bereitstellungsdetails angezeigt.
+
+1. Wenn Ihr virtueller Computer bereit ist, wählen Sie **Zu Ressource wechseln** aus.
+
+## <a name="turn-on-ip-forwarding"></a>Aktivieren der IP-Weiterleitung
+
+Aktivieren Sie die IP-Weiterleitung für *myVmNva*. Wenn Azure Netzwerkdatenverkehr an *myVmNva* sendet, und wenn der Verkehr für eine andere IP-Adresse bestimmt ist, sendet die IP-Weiterleitung den Datenverkehr an den richtigen Ort.
+
+1. Wählen Sie für **myVmNva** unter **Einstellungen** die Option **Netzwerk**.
+
+1. Wählen Sie **myvmnva123** aus. Dies ist die Netzwerkschnittstelle, die Azure für Ihren virtuellen Computer erstellt hat. Sie enthält eine Zahlenzeichenfolge, damit sie für Sie eindeutig ist.
+
+    ![VM-Netzwerk](./media/tutorial-create-route-table-portal/virtual-machine-networking.png)
+
+1. Wählen Sie unter **Einstellungen** die Option **IP-Konfigurationen**.
+
+1. Wählen Sie auf **myvmnva123 – IP-Konfigurationen** für **IP-Weiterleitung** die Option **Aktiviert** und anschließend **Speichern**.
+
+    ![Aktivieren der IP-Weiterleitung](./media/tutorial-create-route-table-portal/enable-ip-forwarding.png)
+
+## <a name="create-public-and-private-virtual-machines"></a>Erstellen von öffentlichen und privaten virtuellen Computern
+
+Erstellen Sie einen öffentlichen und einem privaten virtuellen Computer im virtuellen Netzwerk. Später werden Sie sie verwenden, um anzuzeigen, dass Azure den *öffentlichen* Subnetzverkehr durch das virtuelle Netzwerkgerät zum *privaten* Subnetz leitet.
+
+Führen Sie die Schritte 1 bis 12 unter [Erstellen eines virtuellen Netzwerkgeräts](#create-an-nva) aus. Verwenden Sie den Großteil der Einstellungen. Diese Werte müssen anders sein:
+
+| Einstellung | Wert |
+| ------- | ----- |
+| **PUBLIC VM** | |
+| BASICS |  |
+| Name des virtuellen Computers | Geben Sie *myVmPublic* ein. |
+| NETWORKING | |
+| Subnetz | Wählen Sie **Öffentlich (10.0.0.0/24)**. |
+| Öffentliche IP-Adresse | Übernehmen Sie die Standardeinstellung. |
+| Öffentliche Eingangsports | Wählen Sie **Ausgewählte Ports zulassen** aus. |
+| Eingangsports auswählen | Wählen Sie **HTTP** und **RDP** aus. |
+| MANAGEMENT | |
+| Diagnosespeicherkonto | Übernehmen Sie den Standardwert **mynvastorageaccount**. |
+| **PRIVATE VM** | |
+| BASICS |  |
+| Name des virtuellen Computers | Geben Sie *myVmPrivate* ein. |
+| NETWORKING | |
+| Subnetz | Wählen Sie **Privat (10.0.1.0/24)** aus. |
+| Öffentliche IP-Adresse | Übernehmen Sie die Standardeinstellung. |
+| Öffentliche Eingangsports | Wählen Sie **Ausgewählte Ports zulassen** aus. |
+| Eingangsports auswählen | Wählen Sie **HTTP** und **RDP** aus. |
+| MANAGEMENT | |
+| Diagnosespeicherkonto | Übernehmen Sie den Standardwert **mynvastorageaccount**. |
+
+Sie können die VM *myVmPrivate* erstellen, während Azure die VM *myVmPublic* erstellt. Fahren Sie erst mit den verbleibenden Schritten fort, wenn Azure die Erstellung beider VMs abgeschlossen hat.
 
 ## <a name="route-traffic-through-an-nva"></a>Weiterleiten von Datenverkehr über ein virtuelles Netzwerkgerät
 
-1. Beginnen Sie oben im Portal im Feld *Suchen* mit der Eingabe des Namens *myVmPrivate*. Wenn die VM **myVmPrivate** in den Suchergebnissen angezeigt wird, wählen Sie sie aus.
-2. Erstellen Sie wie in der folgenden Abbildung dargestellt eine Remotedesktopverbindung mit der VM *myVmPrivate*, indem Sie auf **Verbinden** klicken:
+### <a name="sign-in-to-myvmprivate-over-remote-desktop"></a>Melden bei „myVmPrivate“ per Remotedesktop
 
-    ![Herstellen einer Verbindung mit dem virtuellen Computer ](./media/tutorial-create-route-table-portal/connect-to-virtual-machine.png)  
+1. Geben Sie in der Suchleiste des Portals *myVmPrivate* ein.
 
-3. Öffnen Sie die heruntergeladene RDP-Datei, um eine Verbindung mit dem virtuellen Computer herzustellen. Wenn Sie dazu aufgefordert werden, wählen Sie **Verbinden** aus.
-4. Geben Sie den Benutzernamen und das Kennwort ein, wie beim Erstellen des virtuellen Computers angegeben. (Unter Umständen müssen Sie auf **Weitere Optionen** und dann auf **Anderes Konto verwenden** klicken, um die Anmeldeinformationen anzugeben, die Sie beim Erstellen des virtuellen Computers eingegeben haben.) Klicken Sie anschließend auf **OK**.
-5. Während des Anmeldevorgangs wird unter Umständen eine Zertifikatwarnung angezeigt. Wählen Sie **Ja** aus, um mit dem Herstellen der Verbindung fortzufahren.
-6. In einem späteren Schritt wird das Routing mithilfe des Traceroute-Tools getestet. Traceroute verwendet das Internet Control Message-Protokoll (ICMP). Dieses Protokoll wird durch die Windows-Firewall blockiert. Geben Sie auf dem virtuellen Computer *myVmPrivate* in PowerShell den folgenden Befehl ein, um ICMP in der Windows-Firewall zuzulassen:
+1. Wenn die VM **myVmPrivate** in den Suchergebnissen angezeigt wird, wählen Sie sie aus.
+
+1. Wählen Sie **Verbinden**, um eine Remotedesktopverbindung zur *myVmPrivate* VM herzustellen.
+
+1. Wählen Sie unter **Mit virtuellem Computer verbinden** die Option **RDP-Datei herunterladen** aus. Azure erstellt eine Remotedesktopprotokoll-Datei (*RDP*) und lädt sie auf Ihren Computer herunter.
+
+1. Öffnen Sie die heruntergeladene *RDP*-Datei.
+
+    1. Wenn Sie dazu aufgefordert werden, wählen Sie **Verbinden** aus.
+
+    1. Geben Sie den Benutzernamen und das Kennwort ein, die Sie beim Erstellen des privaten virtuellen Computers festgelegt haben.
+
+    1. Sie müssen möglicherweise **Weitere Optionen** > **verwenden ein anderes Konto**, um die Private-VM-Anmeldeinformationen zu verwenden.
+
+1. Klicken Sie auf **OK**.
+
+    Während des Anmeldevorgangs wird unter Umständen eine Zertifikatwarnung angezeigt.
+
+1. Wählen Sie **Ja** für die Verbindung mit dem virtuellen Computer.
+
+### <a name="enable-icpm-through-the-windows-firewall"></a>Aktivieren von NTTTCP über die Windows-Firewall
+
+In einem späteren Schritt wird das Routing mithilfe des Traceroute-Tools getestet. Traceroute verwendet das Internet Control Message-Protokoll (ICMP). Dieses Protokoll wird durch die Windows-Firewall standardmäßig blockiert. Aktivieren Sie ICMP über die Windows-Firewall.
+
+1. Öffnen Sie auf dem Remotedesktop von *myVmPrivate* PowerShell.
+
+1. Geben Sie diesen Befehl ein:
 
     ```powershell
     New-NetFirewallRule –DisplayName “Allow ICMPv4-In” –Protocol ICMPv4
     ```
 
-    In diesem Tutorial wird Traceroute verwendet, um das Routing zu testen. Das Zulassen von ICMP-Datenverkehr durch die Windows-Firewall wird für Produktionsbereitstellungen jedoch nicht empfohlen.
-7. Sie haben die IP-Weiterleitung innerhalb von Azure für die Netzwerkschnittstelle der VM unter [Aktivieren der IP-Weiterleitung](#enable-ip-forwarding) aktiviert. Das Betriebssystem der VM oder eine Anwendung, die auf der VM ausgeführt wird, muss ebenfalls Netzwerkdatenverkehr weiterleiten können. Aktivieren Sie im Betriebssystem des virtuellen Computers *myVmNva* die IP-Weiterleitung:
+    Sie verwenden Traceroute, um das Routing in diesem Tutorial zu testen. Für Produktionsumgebungen empfehlen wir nicht, ICMP über die Windows-Firewall zuzulassen.
 
-    Stellen Sie über eine Eingabeaufforderung auf dem virtuellen Computer *myVmPrivate* eine Remotedesktopverbindung mit dem virtuellen Computer *myVmNva* her:
+### <a name="turn-on-ip-forwarding-within-myvmnva"></a>Aktivieren der IP-Weiterleitung in myVmNva
 
-    ``` 
+Sie haben [die IP-Weiterleitung](#turn-on-ip-forwarding) für die Netzwerkschnittstelle des virtuellen Computers mit Azure aktiviert. Das Betriebssystem des virtuellen Computers muss Netzwerkdatenverkehr ebenfalls weiterleiten. Mit diesen Befehlen aktivieren Sie die IP-Weiterleitung für das Betriebssystem des virtuellen Computers *myVmNva*.
+
+1. Öffnen Sie über eine Eingabeaufforderung auf dem virtuellen Computer *myVmPrivate* eine Remotedesktopverbindung mit dem virtuellen Computer *myVmNva*:
+
+    ```cmd
     mstsc /v:myvmnva
     ```
-    
-    Geben Sie auf dem virtuellen Computer *myVmNva* in PowerShell den folgenden Befehl ein, um im Betriebssystem die IP-Weiterleitung zu aktivieren:
+
+1. Geben Sie über PowerShell auf der *myVmNva* diesen Befehl ein, um die IP-Weiterleitung zu aktivieren:
 
     ```powershell
     Set-ItemProperty -Path HKLM:\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters -Name IpEnableRouter -Value 1
     ```
-    
-    Starten Sie die VM *myVmNva* neu. Dadurch wird auch die Remotedesktopsitzung getrennt.
-8. Erstellen Sie nach dem Neustart der VM *myVmNva* bei bestehender Verbindung mit der VM *myVmPrivate* eine Remotedesktopsitzung mit der VM *myVmPublic*:
 
-    ``` 
+1. Starten die den virtuellen Computer *myVmNva* neu. Wählen Sie in der Taskleiste **Starttaste** > **Netzschaltersymbol**, **Andere (Geplant)** > **Fortsetzen**.
+
+    Dadurch wird auch die Remotedesktopsitzung getrennt.
+
+1. Nachdem der virtuelle Computer *myVmNva* neu gestartet wurde, erstellen Sie eine Remotedesktopsitzung für den virtuellen Computer *myVmPublic*. Öffnen Sie, solange Sie noch mit der *myVmPrivate* verbunden sind, eine Eingabeaufforderung und führen Sie diesen Befehl aus:
+
+    ```cmd
     mstsc /v:myVmPublic
     ```
-    
-    Geben Sie auf der VM *myVmPublic* in PowerShell den folgenden Befehl ein, um ICMP-Datenverkehr in der Windows-Firewall zuzulassen:
+1. Öffnen Sie auf dem Remotedesktop von *myVmPublic* PowerShell.
+
+1. Aktivieren Sie ICMP für die Windows-Firewall, indem Sie den folgenden Befehl eingeben:
 
     ```powershell
     New-NetFirewallRule –DisplayName “Allow ICMPv4-In” –Protocol ICMPv4
     ```
 
-9. Geben Sie auf der VM *myVmPublic* in PowerShell den folgenden Befehl ein, um die Weiterleitung von Netzwerkdatenverkehr der VM *myVmPublic* an der VM *myVmPrivate* zu testen:
+## <a name="test-the-routing-of-network-traffic"></a>Testen des Routings von Netzwerkdatenverkehr
 
-    ```
+Zunächst testen wir das Routing des Netzwerkdatenverkehrs von *myVmPublic* zu *myVmPrivate*.
+
+1. Geben Sie von PowerShell auf *myVmPublic* diesen Befehl ein:
+
+    ```powershell
     tracert myVmPrivate
     ```
 
-    Die Antwort ähnelt dem folgenden Beispiel:
-    
-    ```
+    Die Antwort ähnelt diesem Beispiel:
+
+    ```powershell
     Tracing route to myVmPrivate.vpgub4nqnocezhjgurw44dnxrc.bx.internal.cloudapp.net [10.0.1.4]
     over a maximum of 30 hops:
-        
+
     1    <1 ms     *        1 ms  10.0.2.4
     2     1 ms     1 ms     1 ms  10.0.1.4
-        
+
     Trace complete.
     ```
-      
-    Wie Sie sehen können, ist der erste Hop 10.0.2.4, die private IP-Adresse des virtuellen Netzwerksgeräts. Der zweite Hop ist 10.0.1.4, die private IP-Adresse der VM *myVmPrivate*. Die Route, die der Routingtabelle *myRouteTablePublic* hinzugefügt und dem Subnetz *Public* zugeordnet wurde, hat bewirkt, dass Azure Datenverkehr über das virtuelle Netzwerkgerät weiterleitet und nicht direkt an das Subnetz *Private*.
-10.  Schließen Sie die Remotedesktopsitzung mit der VM *myVmPublic*, sodass Sie nur noch mit der VM *myVmPrivate* verbunden sind.
-11. Geben Sie auf der VM *myVmPrivate* an einer Eingabeaufforderung den folgenden Befehl ein, um die Weiterleitung von Netzwerkdatenverkehr der VM *myVmPrivate* an der VM *myVmPublic* zu testen:
 
-    ```
+    Sie sehen, dass der erste Hop zu 10.0.2.4 erfolgt. Dies ist die private IP-Adresse des Netzwerkgeräts. Der zweite Hop ist die private IP-Adresse der VM *myVmPrivate*: 10.0.1.4. Zuvor haben Sie die Route der Routingtabelle *myRouteTablePublic* hinzugefügt und dem Subnetz *Öffentlich* zugeordnet. Infolgedessen sendete Azure den Netzwerkdatenverkehr über das Netzwerkgerät und nicht direkt an das Subnetz *Privat*.
+
+1. Schließen Sie die Remotedesktopsitzung mit der VM *myVmPublic*, sodass Sie nur noch mit der VM *myVmPrivate* verbunden sind.
+
+1. Geben Sie über eine Eingabeaufforderung auf der VM *myVmPrivate* den folgenden Befehl ein:
+
+    ```cmd
     tracert myVmPublic
     ```
 
-    Die Antwort ähnelt dem folgenden Beispiel:
+    Damit testen wir das Routing des Netzwerkdatenverkehrs *myVmPrivate* zu *myVmPublic*. Die Antwort ähnelt diesem Beispiel:
 
-    ```
+    ```cmd
     Tracing route to myVmPublic.vpgub4nqnocezhjgurw44dnxrc.bx.internal.cloudapp.net [10.0.0.4]
     over a maximum of 30 hops:
-    
+
     1     1 ms     1 ms     1 ms  10.0.0.4
-    
+
     Trace complete.
     ```
 
-    Wie Sie sehen, wird Datenverkehr direkt von der VM *myVmPrivate* zur VM *myVmPublic* weitergeleitet. Azure-Routen leiten standardmäßig Datenverkehr direkt durch Subnetze weiter.
-12. Schließen Sie die Remotedesktopsitzung mit der VM *myVmPrivate*.
+    Wie Sie sehen, dass Azure Netzwerkdatenverkehr von der VM *myVmPrivate* zur VM *myVmPublic* weitergeleitet. Azure-Routen leiten standardmäßig Datenverkehr direkt durch Subnetze weiter.
+
+1. Schließen Sie die Remotedesktopsitzung mit der VM *myVmPrivate*.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Löschen Sie die Ressourcengruppe mit allen ihren Ressourcen, wenn Sie sie nicht mehr benötigen: 
+Löschen Sie die Ressourcengruppe mit allen ihren Ressourcen, wenn Sie sie nicht mehr benötigen:
 
-1. Geben Sie im oben im Portal im Feld *Suche* die Zeichenfolge **myResourceGroup** ein. Wenn **myResourceGroup** in den Suchergebnissen angezeigt wird, wählen Sie diese Angabe aus.
-2. Wählen Sie die Option **Ressourcengruppe löschen**.
-3. Geben Sie für **Geben Sie den Ressourcengruppennamen ein:** den Namen *myResourceGroup* ein, und klicken Sie auf **Löschen**.
+1. Geben Sie in die Suchleiste im Portal *myResourceGroup* ein.
+
+1. Wenn **myResourceGroup** in den Suchergebnissen angezeigt wird, wählen Sie diese Angabe aus.
+
+1. Wählen Sie die Option **Ressourcengruppe löschen**.
+
+1. Geben Sie für **Geben Sie den Ressourcengruppennamen ein:** den Namen *myResourceGroup* ein, und klicken Sie auf **Löschen**.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie eine Routingtabelle erstellt und einem Subnetz zugeordnet. Sie haben ein einfaches virtuelles Netzwerkgerät erstellt, das Datenverkehr von einem öffentlichen Subnetz an ein privates Subnetz weiterleitet. Über den [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking) können Sie eine Vielzahl von vorkonfigurierten virtuellen Netzwerkgeräten bereitstellen, die Netzwerkfunktionen wie Firewall und WAN-Optimierung ausführen. Weitere Informationen zum Routing finden Sie unter [Routing von Datenverkehr für virtuelle Netzwerke](virtual-networks-udr-overview.md) und [Erstellen, Ändern oder Löschen einer Routingtabelle](manage-route-table.md).
+In diesem Tutorial haben Sie eine Routingtabelle erstellt und einem Subnetz zugeordnet. Sie haben ein einfaches virtuelles Netzwerkgerät erstellt, das Datenverkehr von einem öffentlichen Subnetz an ein privates Subnetz weiterleitet. Jetzt, da Sie wissen, wie das geht, können Sie verschiedene vorkonfigurierte Netzwerkgeräte aus dem [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking) bereitstellen. Sie führen viele Netzwerkfunktionen, die Sie hilfreich finden werden. Weitere Informationen zum Routing finden Sie unter [Routing von Datenverkehr für virtuelle Netzwerke](virtual-networks-udr-overview.md) und [Erstellen, Ändern oder Löschen einer Routingtabelle](manage-route-table.md).
 
-
-Sie können zwar in einem virtuellen Netzwerk viele Azure-Ressourcen bereitstellen, für einige Azure-PaaS-Dienste können jedoch keine Ressourcen in einem virtuellen Netzwerk bereitgestellt werden. Allerdings können Sie den Zugriff auf die Ressourcen einiger Azure-PaaS-Dienste nach wie vor auf den Datenverkehr nur eines Subnetzes eines virtuellen Netzwerks beschränken. Im nächsten Tutorial erfahren Sie, wie Sie den Netzwerkzugriff auf Azure-PaaS-Ressourcen einschränken.
+Sie können zwar viele Azure-Ressourcen in einem virtuellen Netzwerk bereitstellen, für einige kann Azure jedoch keine Ressourcen für einige PaaS-Dienste in einem virtuellen Netzwerk bereitstellen. Es ist möglich, den Zugriff auf die Ressourcen einiger Azure PaaS-Dienste zu beschränken. Die Beschränkung darf jedoch nur Netzwerkdatenverkehr von einem Subnetz eines virtuellen Netzwerks sein. Im nächsten Tutorial erfahren Sie, wie Sie den Netzwerkzugriff auf Azure-PaaS-Ressourcen einschränken.
 
 > [!div class="nextstepaction"]
 > [Beschränken des Netzwerkzugriffs auf PaaS-Ressourcen](tutorial-restrict-network-access-to-resources.md)

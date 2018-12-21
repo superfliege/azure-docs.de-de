@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: c170f573a473d3fdfca5c916b4be594dc93d6b27
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: f0e589689ae9a63ad90a4449c120938066309050
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50156322"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52961279"
 ---
 # <a name="how-to-use-analytics-to-analyze-your-device-data"></a>Gewusst wie: Analysieren von Gerätedaten durch Analysen
 
@@ -23,71 +23,71 @@ ms.locfileid: "50156322"
 
 Azure IoT Central stellt umfassende Analysefunktionen bereit, um große Mengen an Daten von Ihren Geräten zu verarbeiten. Um zu beginnen, wechseln Sie im links angezeigten Navigationsmenü zu **Analyse**. 
 
-  ![Navigation zu „Analyse“ in IoT Central](media\howto-create-analytics\analytics-navigation.png)
+  ![Navigation zu „Analyse“ in IoT Central](media/howto-create-analytics/analytics-navigation.png)
 
 ## <a name="querying-your-data"></a>Abfragen Ihrer Daten
 
 Sie müssen zunächst eine **Gerätegruppe** auswählen, einen **Filter** hinzufügen (optional) und einen **Zeitraum** auswählen, um zu starten. Klicken Sie anschließend auf *Ergebnisse anzeigen*, um mit der Visualisierung Ihrer Daten zu beginnen.
 
 
-* **Gerätegruppen**: Eine [Gerätegruppe](howto-use-device-sets.md) ist eine benutzerdefinierte Gruppe Ihrer Geräte. Beispiele: „Alle Kühlschränke in Oakland“ oder „Alle Windturbinen der Version 2.0“.
+* **Gerätegruppen:** Eine [Gerätegruppe](howto-use-device-sets.md) ist eine benutzerdefinierte Gruppe Ihrer Geräte. Beispiele: „Alle Kühlschränke in Oakland“ oder „Alle Windturbinen der Version 2.0“.
 
 <!---
 to-do: confirm if 10 is the max number of filters
 to-do: do we need to explain how fiters work?
 --->
 
-* **Filter**: Sie können Ihrer Suche optional Filter hinzufügen, um Ihre Daten zu verfeinern. Sie können bis zu 10 Filter gleichzeitig hinzufügen. Beispielsweise können Sie für „Alle Kühlschränke in Oakland“ diejenigen herausfiltern, deren Temperatur über 15 Grad angestiegen ist. 
-* **Zeitraum**: Standardmäßig werden die Daten der letzten 10 Minuten abgerufen. Sie können diesen Wert in einen der vordefinierten Zeitbereiche ändern oder einen benutzerdefinierten Zeitraum auswählen. 
+* **Filter:** Sie können Ihrer Suche optional Filter hinzufügen, um Ihre Daten zu verfeinern. Sie können bis zu 10 Filter gleichzeitig hinzufügen. Beispielsweise können Sie für „Alle Kühlschränke in Oakland“ diejenigen herausfiltern, deren Temperatur über 15 Grad angestiegen ist. 
+* **Zeitraum:** Standardmäßig werden die Daten der letzten 10 Minuten abgerufen. Sie können diesen Wert in einen der vordefinierten Zeitbereiche ändern oder einen benutzerdefinierten Zeitraum auswählen. 
 
- ![Analyseabfrage](media\howto-create-analytics\analytics-query.png)
+ ![Analyseabfrage](media/howto-create-analytics/analytics-query.png)
 
 ## <a name="visualizing-your-data"></a>Visualisieren Ihrer Daten
 
 Nachdem Sie Ihre Daten abgefragt haben, können Sie damit beginnen, sie zu visualisieren. Sie können Messungen anzeigen/ausblenden, die Art der Datenaggregation ändern und die Daten nach unterschiedlichen Geräteeigenschaften weiter unterteilen.  
 
-* **Teilen nach**: Durch das Aufteilen von Daten nach Geräteeigenschaften können Sie weitere Detailinformationen zu Ihren Daten anzeigen. Beispielsweise können Sie Ihre Ergebnisse nach Geräte-ID oder Standort unterteilen.
+* **Aufteilen nach:** Durch das Aufteilen von Daten nach Geräteeigenschaften können Sie weitere Detailinformationen zu Ihren Daten anzeigen. Beispielsweise können Sie Ihre Ergebnisse nach Geräte-ID oder Standort unterteilen.
 <!---
 to-do: confirm if 10 is the max number of measurements
 --->
-* **Messungen**: Sie können in einem Arbeitsschritt bis zu 10 verschiedene Telemetrieelemente anzeigen/ausblenden, die von Ihren Geräten gemeldet werden. Messungen können beispielsweise Informationen wie Temperatur und Feuchtigkeit umfassen. 
-* **Aggregation**: Daten werden standardmäßig nach dem Durchschnitt aggregiert, aber Sie können die Datenaggregation Ihren Anforderungen entsprechend ändern. 
+* **Messungen:** Sie können in einem Arbeitsschritt bis zu 10 verschiedene Telemetrieelemente ein-/ausblenden, die von Ihren Geräten gemeldet werden. Messungen können beispielsweise Informationen wie Temperatur und Feuchtigkeit umfassen. 
+* **Aggregation:** Daten werden standardmäßig nach dem Durchschnitt aggregiert, aber Sie können die Datenaggregation Ihren Anforderungen entsprechend ändern. 
 
-   ![Visualisierung der Analysedaten](media\howto-create-analytics\analytics-visualize.png) <br/><br/>
-   ![Visualisierung der Analysedaten – „Teilen nach“](media\howto-create-analytics\analytics-splitby.png)
+   ![Visualisierung der Analysedaten](media/howto-create-analytics/analytics-visualize.png) <br/><br/>
+   ![Visualisierung der Analysedaten – „Teilen nach“](media/howto-create-analytics/analytics-splitby.png)
 
 ## <a name="interacting-with-your-data"></a>Interaktion mit Ihren Daten
 
 Es gibt verschiedene Möglichkeiten, Ihre Abfrageergebnisse weiter zu verändern, damit sie Ihren Visualisierungsanforderungen entsprechen. Sie können zwischen einer Diagramm- und einer Tabellenansicht wechseln, die Anzeige vergrößern oder verkleinern, Ihr Dataset aktualisieren und die Anzeige der Zeilen ändern.
 
-* **Raster anzeigen**: Ihre Ergebnisse werden in einem Tabellenformat zur Verfügung gestellt, damit Sie den spezifischen Wert für jeden Datenpunkt anzeigen können. Diese Ansicht erfüllt außerdem die Standards der Barrierefreiheit. 
+* **Raster anzeigen:** Ihre Ergebnisse werden in einem Tabellenformat zur Verfügung gestellt, damit Sie den spezifischen Wert für jeden Datenpunkt anzeigen können. Diese Ansicht erfüllt außerdem die Standards der Barrierefreiheit. 
 * **Diagramm anzeigen**: Ihre Ergebnisse werden in Form von Linien angezeigt, um Aufwärts-/Abwärtstrends und Anomalien leicht erkennbar zu machen. 
 
- ![Rasteransicht für Ihre Analyse](media\howto-create-analytics\analytics-showgrid.png)
+ ![Rasteransicht für Ihre Analyse](media/howto-create-analytics/analytics-showgrid.png)
 
 Mit der Zoomfunktion können Sie sich auf bestimmte Daten konzentrieren. Wenn Sie einen bestimmten Zeitraum für Ihr Resultset genauer untersuchen möchten, können Sie den gewünschten Bereich mit dem Cursor markieren und über die verfügbaren Steuerelemente die folgenden Aktionen ausführen:
-* **Vergrößern**: Nachdem Sie einen Zeitraum ausgewählt haben, wird die Zoomfunktion aktiviert, und Sie können die Datenansicht vergrößern.
-* **Verkleinern**: Mit diesem Steuerelement können Sie die Vergrößerung Ihrer letzten Ansicht um eine Stufe verringern. Wenn Sie Ihre Datenansicht beispielsweise dreimal vergrößert haben, gelangen Sie mit dieser Funktion jeweils einen Schritt zurück.
+* **Vergrößern:** Nachdem Sie einen Zeitraum ausgewählt haben, wird die Zoomfunktion aktiviert, und Sie können die Datenansicht vergrößern.
+* **Verkleinern:** Mit diesem Steuerelement können Sie die Vergrößerung Ihrer letzten Ansicht um eine Stufe verringern. Wenn Sie Ihre Datenansicht beispielsweise dreimal vergrößert haben, gelangen Sie mit dieser Funktion jeweils einen Schritt zurück.
 * **Zoom zurücksetzen**: Nachdem Sie verschiedene Vergrößerungen/Verkleinerungen durchgeführt haben, können Sie die Anzeige mit diesem Steuerelement auf das ursprüngliche Resultset zurücksetzen. 
 
- ![Zoomvorgänge in Ihren Daten](media\howto-create-analytics\analytics-zoom.png)
+ ![Zoomvorgänge in Ihren Daten](media/howto-create-analytics/analytics-zoom.png)
 
 
 Sie können den Linienstil an Ihre Anforderungen anpassen. Dabei stehen vier Optionen zur Auswahl:
-* **Linie**: Zwischen jedem der Datenpunkte wird eine gerade Linie angezeigt. 
+* **Linie:** Zwischen jedem der Datenpunkte wird eine gerade Linie angezeigt. 
 * **Geglättet**: Zwischen jedem Datenpunkt wird eine geschwungene Linie angezeigt.
-* **Schritt**: Durch eine Linie an jedem Datenpunkt im Diagramm wird eine Stufenansicht erzeugt.
-* **Punkt**: Alle Punkte im Diagramm werden ohne Verbindung gezeichnet. 
+* **Schritt:** Durch eine Linie an jedem Datenpunkt im Diagramm wird eine Stufenansicht erzeugt.
+* **Punkt:** Alle Punkte im Diagramm werden ohne Verbindungslinien gezeichnet. 
 
- ![Verfügbare Linientypen bei der Analyse](media\howto-create-analytics\analytics-linetypes.png)
+ ![Verfügbare Linientypen bei der Analyse](media/howto-create-analytics/analytics-linetypes.png)
 
 Schließlich können Sie Ihre Daten auf der Y-Achse anordnen, indem Sie einen dieser drei Modi auswählen:
 
-* **Gestapelt**: Für jede Messung werden Diagramme als Stapel dargestellt, wobei jedes Diagramm mit einer eigenen Y-Achse versehen ist. Gestapelte Diagramme sind nützlich, wenn Sie mehrere Messungen ausgewählt haben und unterschiedliche Ansichten von diesen Messungen anzeigen möchten.
-* **Nicht gestapelt**: Für jedes Measure wird ein Diagramm anhand einer Y-Achse dargestellt, wobei sich die Werte für die Y-Achse jedoch basierend auf dem markierten Measure ändern. Nicht gestapelte Diagramme sind nützlich, wenn Sie mehrere Measures überlagern und für denselben Zeitraum Muster in diesen Measures ermitteln möchten.
+* **Gestapelt:** Für jede Messung werden Diagramme als Stapel dargestellt, wobei jedes Diagramm mit einer eigenen Y-Achse versehen ist. Gestapelte Diagramme sind nützlich, wenn Sie mehrere Messungen ausgewählt haben und unterschiedliche Ansichten von diesen Messungen anzeigen möchten.
+* **Nicht gestapelt:** Für jedes Measure wird ein Diagramm anhand einer Y-Achse dargestellt, wobei sich die Werte für die Y-Achse jedoch basierend auf dem markierten Measure ändern. Nicht gestapelte Diagramme sind nützlich, wenn Sie mehrere Measures überlagern und für denselben Zeitraum Muster in diesen Measures ermitteln möchten.
 * **Gemeinsame Y-Achse**: Alle Diagramme besitzen dieselbe Y-Achse, und die Werte für die Achse ändern sich nicht. Diagramme mit gemeinsamen Y-Achsen sind hilfreich, wenn Sie ein einziges Measure untersuchen möchten und gleichzeitig die Daten nach bestimmten Kriterien aufteilen.
 
- ![Anordnung der Daten auf der Y-Achse mit unterschiedlichen Visualisierungsmodi](media\howto-create-analytics\analytics-yaxis.png)
+ ![Anordnung der Daten auf der Y-Achse mit unterschiedlichen Visualisierungsmodi](media/howto-create-analytics/analytics-yaxis.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

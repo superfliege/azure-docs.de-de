@@ -4,7 +4,7 @@ description: Erfahren Sie, wie Sie über SQL Server Management Studio (SSMS) ein
 keywords: Verbinden mit SQL-Datenbank, SQL Server Management Studio
 services: sql-database
 ms.service: sql-database
-ms.subservice: scenario
+ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
 ms.topic: quickstart
@@ -12,29 +12,29 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 11/01/2018
-ms.openlocfilehash: f8d153ef415bcab85720f6733d4e01e9b44c9e50
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.date: 12/04/2018
+ms.openlocfilehash: b3342164aec49967e819c316827dca9a65f2674f
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52870995"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53098930"
 ---
-# <a name="quickstart-azure-sql-database-use-sql-server-management-studio-to-connect-and-query-data"></a>Schnellstart: Azure SQL-Datenbank: Verwenden von SQL Server Management Studio zum Herstellen einer Verbindung und zum Abfragen von Daten
+# <a name="quickstart-use-sql-server-management-studio-to-connect-and-query-an-azure-sql-database"></a>Schnellstart: Verwenden von SQL Server Management Studio zum Herstellen der Verbindung mit einer Instanz von Azure SQL-Datenbank und deren Abfrage
 
-[SQL Server Management Studio][ssms-install-latest-84g] (SSMS) ist eine integrierte Umgebung für die Verwaltung beliebiger SQL-Infrastrukturen – von SQL Server bis SQL-Datenbank für Microsoft Windows. In diesem Schnellstart wird veranschaulicht, wie Sie SSMS zum Herstellen einer Verbindung mit einer Azure SQL-Datenbank verwenden und anschließend mithilfe von Transact-SQL-Anweisungen Daten in der Datenbank abfragen, aktualisieren oder löschen bzw. in diese einfügen. 
+Sie können [SQL Server Management Studio][ssms-install-latest-84g] (SSMS) für die Verwaltung beliebiger SQL-Infrastrukturen verwenden – von SQL Server bis SQL-Datenbank für Microsoft Windows. Dieser Schnellstart zeigt Ihnen, wie Sie SSMS zum Herstellen einer Verbindung mit einer Instanz von Azure SQL-Datenbank verwenden und anschließend Transact-SQL-Anweisungen ausführen, um Daten in der Datenbank abzufragen, zu aktualisieren oder zu löschen bzw. in diese einzufügen. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-In diesem Schnellstart werden als Ausgangspunkt die Ressourcen verwendet, die in einem der folgenden Schnellstarts erstellt wurden:
+Für dieses Tutorial benötigen Sie Folgendes:
 
 [!INCLUDE [prerequisites-create-db](../../includes/sql-database-connect-query-prerequisites-create-db-includes.md)]
 
-Diese Schnellstartanleitung setzt auch voraus, dass Sie eine Firewallregel auf Serverebene konfigurieren. Ein Schnellstartanleitung für die Vorgehensweise finden Sie unter [Erstellen von Firewallregeln auf Serverebene Regel](sql-database-get-started-portal-firewall.md).
+* Eine konfigurierte Firewallregel auf Serverebene. Weitere Informationen finden Sie unter [Erstellen einer Firewallregel auf Serverebene](sql-database-get-started-portal-firewall.md).
 
 #### <a name="install-the-latest-ssms"></a>Installieren der neuesten Version von SSMS
 
-Stellen Sie zunächst sicher, dass Sie die neueste Version von [SSMS][ssms-install-latest-84g] installiert haben. 
+Bevor Sie beginnen, stellen Sie sicher, dass Sie die neueste Version von [SSMS][ssms-install-latest-84g] installiert haben. 
 
 ## <a name="sql-server-connection-information"></a>SQL Server-Verbindungsinformationen
 
@@ -42,43 +42,44 @@ Stellen Sie zunächst sicher, dass Sie die neueste Version von [SSMS][ssms-insta
 
 ## <a name="connect-to-your-database"></a>Verbinden mit der Datenbank
 
-Verwenden Sie SQL Server Management Studio, um eine Verbindung mit Ihrem Azure SQL-Datenbankserver einzurichten. 
+Stellen Sie in SMSS eine Verbindung mit Ihrer Azure SQL-Datenbankserverinstanz her. 
 
 > [!IMPORTANT]
-> Ein logischer Azure SQL-Datenbankserver lauscht über Port 1433. Wenn Sie versuchen, durch eine Unternehmensfirewall eine Verbindung mit einem logischen Azure SQL-Datenbankserver herzustellen, muss dieser Port in der Unternehmensfirewall geöffnet sein, damit der Vorgang erfolgreich ist.
+> Ein logischer Azure SQL-Datenbankserver lauscht auf Port 1433. Um von hinter einer Unternehmensfirewall eine Verbindung mit einem logischen Server herzustellen, muss dieser Port der Firewall geöffnet sein.
 >
 
-1. Öffnen Sie SQL Server Management Studio.
+1. Öffnen Sie SSMS. Das Dialogfeld **Mit Server verbinden** wird angezeigt.
 
-2. Geben Sie im Dialogfeld **Mit Server verbinden** die folgenden Informationen ein:
+2. Geben Sie Folgendes ein:
 
    | Einstellung      | Empfohlener Wert    | BESCHREIBUNG | 
    | ------------ | ------------------ | ----------- | 
-   | **Servertyp** | Datenbank-Engine | Dieser Wert ist erforderlich. |
+   | **Servertyp** | Datenbank-Engine | Erforderlicher Wert. |
    | **Servername** | Der vollqualifizierte Servername | Der Name sollte etwa wie folgt lauten: **mynewserver20170313.database.windows.net**. |
-   | **Authentifizierung** | SQL Server-Authentifizierung | In diesem Tutorial haben wir als einzigen Authentifizierungstyp die SQL-Authentifizierung konfiguriert. |
-   | **Anmeldung** | Das Serveradministratorkonto | Hierbei handelt es sich um das Konto, das Sie beim Erstellen des Servers angegeben haben. |
-   | **Kennwort** | Das Kennwort für das Serveradministratorkonto | Hierbei handelt es sich um das Kennwort, das Sie beim Erstellen des Servers angegeben haben. |
+   | **Authentifizierung** | SQL Server-Authentifizierung | In diesem Tutorial wird SQL-Authentifizierung verwendet. |
+   | **Anmeldung** | Benutzer-ID des Serveradministratorkontos | Die Benutzer-ID des Serveradministratorkontos, das zum Erstellen des Servers verwendet wird. |
+   | **Kennwort** | Kennwort des Serveradministratorkontos | Das zum Erstellen des Servers verwendete Kennwort des Serveradministratorkontos. |
    ||||
 
    ![Verbindung mit dem Server herstellen](./media/sql-database-connect-query-ssms/connect.png)  
 
-3. Klicken Sie im Dialogfeld **Mit Server verbinden** auf **Optionen**. Geben Sie im Abschnitt **Verbindung mit Datenbank herstellen** den Text **mySampleDatabase** ein, um eine Verbindung mit dieser Datenbank herzustellen.
+3. Wählen Sie im Dialogfeld **Mit Server verbinden** **Optionen** aus. Wählen Sie im Dropdownmenü **Mit Datenbank verbinden** **mySampleDatabase** aus.
 
    ![Herstellen einer Verbindung mit der Datenbank auf dem Server](./media/sql-database-connect-query-ssms/options-connect-to-db.png)  
 
-4. Klicken Sie auf **Verbinden**. Die Objekt-Explorer-Fenster wird in SSMS geöffnet. 
+4. Wählen Sie **Verbinden**aus. Die Objekt-Explorer-Fenster wird geöffnet. 
 
-   ![Mit dem Server verbunden](./media/sql-database-connect-query-ssms/connected.png)  
+5. Erweitern Sie zum Anzeigen der Objekte der Datenbank **Datenbanken** und dann **mySampleDatabase**.
 
-5. Erweitern Sie im Objekt-Explorer die Option **Datenbanken** und anschließend die Option **mySampleDatabase**, um die Objekte in der Beispieldatenbank anzuzeigen.
+   ![Datenbankobjekte anzeigen](./media/sql-database-connect-query-ssms/connected.png)  
 
 ## <a name="query-data"></a>Abfragen von Daten
 
-Verwenden Sie den folgenden Code, um mit der [SELECT](https://msdn.microsoft.com/library/ms189499.aspx)-Transact-SQL-Anweisung die 20 wichtigsten Produkte nach Kategorie abzufragen.
+Verwenden Sie den folgenden [SELECT](https://msdn.microsoft.com/library/ms189499.aspx)-Transact-SQL-Code, um die 20 wichtigsten Produkte nach Kategorie abzufragen.
 
-1. Klicken Sie im Objekt-Explorer mit der rechten Maustaste auf **mySampleDatabase**, und wählen Sie **Neue Abfrage**. Ein leeres Abfragefenster mit einer Verbindung mit Ihrer Datenbank wird geöffnet.
-2. Geben Sie im Abfragefenster die folgende Abfrage ein:
+1. Klicken Sie im Objekt-Explorer mit der rechten Maustaste auf **mySampleDatabase**, und wählen Sie **Neue Abfrage** aus. Ein leeres Abfragefenster mit einer Verbindung mit Ihrer Datenbank wird geöffnet.
+
+1. Fügen Sie diese SQL-Abfrage in das Abfragefenster ein.
 
    ```sql
    SELECT pc.Name as CategoryName, p.name as ProductName
@@ -87,15 +88,15 @@ Verwenden Sie den folgenden Code, um mit der [SELECT](https://msdn.microsoft.com
    ON pc.productcategoryid = p.productcategoryid;
    ```
 
-3. Klicken Sie in der Symbolleiste auf **Ausführen**, um Daten aus den Tabellen „Product“ und „ProductCategory“ abzurufen.
+3. Wählen Sie auf der Symbolleiste **Ausführen** aus, um Daten aus den Tabellen `Product` und `ProductCategory` abzurufen.
 
-    ![query](./media/sql-database-connect-query-ssms/query.png)
+    ![Abfrage zum Abrufen von Daten aus 2 Tabellen](./media/sql-database-connect-query-ssms/query2.png)
 
 ## <a name="insert-data"></a>Einfügen von Daten
 
-Verwenden Sie den folgenden Code, um mit der [INSERT](https://msdn.microsoft.com/library/ms174335.aspx)-Transact-SQL-Anweisung ein neues Produkt in die Tabelle „SalesLT.Product“ einzufügen.
+Verwenden Sie den folgenden [INSERT](https://msdn.microsoft.com/library/ms174335.aspx)-Transact-SQL-Code zum Erstellen eines neuen Produkts in der Tabelle `SalesLT.Product`.
 
-1. Ersetzen Sie im Abfragefenster die vorherige Abfrage durch die folgende Abfrage:
+1. Ersetzen Sie die vorherige Abfrage durch diese.
 
    ```sql
    INSERT INTO [SalesLT].[Product]
@@ -105,8 +106,7 @@ Verwenden Sie den folgenden Code, um mit der [INSERT](https://msdn.microsoft.com
            , [ProductCategoryID]
            , [StandardCost]
            , [ListPrice]
-           , [SellStartDate]
-           )
+           , [SellStartDate] )
      VALUES
            ('myNewProduct'
            ,123456789
@@ -117,15 +117,26 @@ Verwenden Sie den folgenden Code, um mit der [INSERT](https://msdn.microsoft.com
            ,GETDATE() );
    ```
 
-2. Klicken Sie in der Symbolleiste auf **Ausführen**, um eine neue Zeile in die Tabelle „Product“ einzufügen.
+2. Wählen Sie **Ausführen** aus, um eine neue Zeile in die Tabelle „Product“ einzufügen. Im Bereich **Nachrichten** wird **(1 Zeile betroffen)** angezeigt.
 
-    <img src="./media/sql-database-connect-query-ssms/insert.png" alt="insert" style="width: 780px;" />
+## <a name="view-the-result"></a>Anzeigen des Ergebnisses
 
-## <a name="update-data"></a>Aktualisieren von Daten
+1. Ersetzen Sie die vorherige Abfrage durch diese.
 
-Verwenden Sie den folgenden Code, um das neue zuvor hinzugefügte Produkt mit der [UPDATE](https://msdn.microsoft.com/library/ms177523.aspx)-Transact-SQL-Anweisung zu aktualisieren.
+   ```sql
+   SELECT * FROM [SalesLT].[Product] 
+   WHERE Name='myNewProduct' 
 
-1. Ersetzen Sie im Abfragefenster die vorherige Abfrage durch die folgende Abfrage:
+2. Select **Execute**. The following result appears. 
+
+   ![result](./media/sql-database-connect-query-ssms/result.png)
+
+ 
+## Update data
+
+Use the following [UPDATE](https://msdn.microsoft.com/library/ms177523.aspx) Transact-SQL code to modify the new product you just added.
+
+1. Replace the previous query with this one.
 
    ```sql
    UPDATE [SalesLT].[Product]
@@ -133,28 +144,24 @@ Verwenden Sie den folgenden Code, um das neue zuvor hinzugefügte Produkt mit de
    WHERE Name = 'myNewProduct';
    ```
 
-2. Klicken Sie in der Symbolleiste auf **Ausführen**, um die angegebene Zeile in der Tabelle „Product“ zu aktualisieren.
-
-    <img src="./media/sql-database-connect-query-ssms/update.png" alt="update" style="width: 780px;" />
+2. Wählen Sie **Ausführen** aus, um die angegebene Zeile in der Tabelle „Product“ zu aktualisieren. Im Bereich **Nachrichten** wird **(1 Zeile betroffen)** angezeigt.
 
 ## <a name="delete-data"></a>Löschen von Daten
 
-Verwenden Sie den folgenden Code, um das neue zuvor hinzugefügte Produkt mit der [DELETE](https://msdn.microsoft.com/library/ms189835.aspx)-Transact-SQL-Anweisung zu löschen.
+Verwenden Sie den folgenden [DELETE](https://msdn.microsoft.com/library/ms189835.aspx)-Transact-SQL-Code, um das neue, zuvor von Ihnen hinzugefügte Produkt zu entfernen.
 
-1. Ersetzen Sie im Abfragefenster die vorherige Abfrage durch die folgende Abfrage:
+1. Ersetzen Sie die vorherige Abfrage durch diese.
 
    ```sql
    DELETE FROM [SalesLT].[Product]
    WHERE Name = 'myNewProduct';
    ```
 
-2. Klicken Sie in der Symbolleiste auf **Ausführen**, um die angegebene Zeile in der Tabelle „Product“ zu löschen.
-
-    <img src="./media/sql-database-connect-query-ssms/delete.png" alt="delete" style="width: 780px;" />
+2. Wählen Sie **Ausführen** aus, um die angegebene Zeile in der Tabelle „Product“ zu löschen. Im Bereich **Nachrichten** wird **(1 Zeile betroffen)** angezeigt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Informationen zu SSMS finden Sie unter [Verwenden von SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx).
+- Informationen zu SSMS finden Sie unter [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx).
 - Informationen zum Herstellen einer Verbindung sowie zum Abfragen mithilfe des Azure-Portals finden Sie unter [Verbinden und Abfragen mit dem SQL-Abfrage-Editor des Azure-Portals](sql-database-connect-query-portal.md).
 - Informationen zum Herstellen einer Verbindung mit Visual Studio finden Sie unter [Verbinden und Abfragen mit Visual Studio Code](sql-database-connect-query-vscode.md).
 - Informationen zum Herstellen einer Verbindung und Senden von Abfragen mit .NET finden Sie unter [Verbinden und Abfragen mit .NET](sql-database-connect-query-dotnet.md).

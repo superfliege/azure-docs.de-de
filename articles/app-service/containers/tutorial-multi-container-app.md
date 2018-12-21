@@ -1,5 +1,5 @@
 ---
-title: Erstellen einer App mit mehreren Containern (Vorschauversion) über Web-App für Container
+title: 'Erstellen einer App mit mehreren Containern in Web-App für Container: Azure App Service'
 description: Es wird beschrieben, wie Sie mehrere Container in Azure mit Docker Compose- und Kubernetes-Konfigurationsdateien per WordPress- und MySQL-App verwenden.
 keywords: Azure App Service, Web-App, Linux, Docker, Compose, mehrere Container, Web-App für Container, Container, Kubernetes, Wordpress, Azure Database for MySQL, Produktionsdatenbank mit Containern
 services: app-service
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 06/25/2018
 ms.author: msangapu
-ms.custom: mvc
-ms.openlocfilehash: c8002b10e2c7c0823cd59bf300283d04fca5ce2e
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.custom: seodec18
+ms.openlocfilehash: 7feb168d9cbcb9fc19e6fcd320bbf87c15077a50
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49390209"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53251639"
 ---
 # <a name="tutorial-create-a-multi-container-preview-app-in-web-app-for-containers"></a>Tutorial: Erstellen einer App mit mehreren Containern (Vorschauversion) über Web-App für Container
 
@@ -235,7 +235,7 @@ Nach der Erstellung der Datenbank zeigt Cloud Shell Informationen wie im folgend
 
 ### <a name="configure-database-variables-in-wordpress"></a>Konfigurieren von Datenbankvariablen in WordPress
 
-Zum Herstellen einer Verbindung für die WordPress-App mit diesem neuen MySQL-Server konfigurieren Sie einige WordPress-spezifische Umgebungsvariablen, z.B. den mit `MYSQL_SSL_CA` definierten SSL-Zertifizierungsstellenpfad. [Baltimore CyberTrust Root](https://www.digicert.com/digicert-root-certificates.htm) von [DigiCert](http://www.digicert.com/) ist unten im [benutzerdefinierten Image](https://docs.microsoft.com/azure/app-service/containers/tutorial-multi-container-app#use-a-custom-image-for-mysql-ssl-and-other-configurations) angegeben.
+Zum Herstellen einer Verbindung für die WordPress-App mit diesem neuen MySQL-Server konfigurieren Sie einige WordPress-spezifische Umgebungsvariablen, z.B. den mit `MYSQL_SSL_CA` definierten SSL-Zertifizierungsstellenpfad. [Baltimore CyberTrust Root](https://www.digicert.com/digicert-root-certificates.htm) von [DigiCert](https://www.digicert.com/) ist unten im [benutzerdefinierten Image](https://docs.microsoft.com/azure/app-service/containers/tutorial-multi-container-app#use-a-custom-image-for-mysql-ssl-and-other-configurations) angegeben.
 
 Verwenden Sie zum Vornehmen dieser Änderungen in Cloud Shell den Befehl [az webapp config appsettings set](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set). Bei App-Einstellungen wird die Groß-/Kleinschreibung berücksichtigt und die Einstellungen sind durch Leerzeichen getrennt.
 

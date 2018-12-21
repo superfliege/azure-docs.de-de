@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 11/15/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 6ad839b9cf1179e282b9163df5a38e13417408e2
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: 7e11affece7e7eb133aa22e159ec07d4f15e96f7
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51706227"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52999603"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-portal"></a>Schnellstart: Weiterleiten von Webdatenverkehr per Azure Application Gateway – Azure-Portal
 
@@ -25,7 +25,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
-Melden Sie sich unter [http://portal.azure.com](http://portal.azure.com) beim Azure-Portal an.
+Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim Azure-Portal an.
 
 ## <a name="create-an-application-gateway"></a>Erstellen eines Anwendungsgateways
 
@@ -88,7 +88,7 @@ In diesem Beispiel erstellen Sie zwei virtuelle Computer, die als Back-End-Serve
     - *Azure123456!* als Kennwort
 
    Übernehmen Sie die anderen Standardwerte, und klicken Sie auf **Weiter: Datenträger**.
-4. Übernehmen Sie die Datenträger-Standardwerte, und klicken Sie auf **Weiter: Netzwerk**.
+4. Übernehmen Sie die Standardwerte für die Datenträger, und klicken Sie auf **Weiter: Netzwerk**.
 5. Stellen Sie sicher, dass als virtuelles Netzwerk **myVNet** und als Subnetz **myBackendSubnet** ausgewählt ist.
 6. Übernehmen Sie die anderen Standardwerte, und klicken Sie auf **Weiter: Verwaltung**.
 7. Klicken Sie auf **Aus**, um die Startdiagnose zu deaktivieren. Übernehmen Sie die anderen Standardwerte, und klicken Sie auf **Überprüfen + erstellen**.

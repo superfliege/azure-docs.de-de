@@ -1,6 +1,6 @@
 ---
-title: C#-Tutorial für Synonyme in Azure Search | Microsoft-Dokumentation
-description: In diesem Tutorial fügen Sie einem Index in Azure Search das Feature „Synonyme“ hinzu.
+title: 'Synonyme: C#-Tutorial für Azure Search'
+description: In diesem C#-Tutorial erfahren Sie, wie Sie einem Index in Azure Search das Feature „Synonyme“ hinzufügen. Eine Synonymzuordnung ist eine Liste der entsprechenden Begriffe. Felder mit Synonymunterstützung erweitern Abfragen, sodass sie den vom Benutzer bereitgestellten Begriff und alle zugehörigen Synonyme enthalten.
 manager: cgronlun
 author: HeidiSteen
 services: search
@@ -8,12 +8,13 @@ ms.service: search
 ms.topic: tutorial
 ms.date: 07/10/2018
 ms.author: heidist
-ms.openlocfilehash: 8340c4dc2a855911073905a3aea93e19fc7b520d
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.custom: seodec2018
+ms.openlocfilehash: b239fdc176951066699c557eaae5f7fe08a6c26f
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38990560"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53309228"
 ---
 # <a name="tutorial-add-synonyms-for-azure-search-in-c"></a>Tutorial: Hinzufügen von Synonymen für Azure Search in C#
 
@@ -167,7 +168,7 @@ Den vollständigen Quellcode der in diesem Artikel besprochenen Beispielanwendun
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Die schnellste Möglichkeit, das System nach einem Tutorial zu bereinigen, besteht im Löschen der Ressourcengruppe, die den Azure Search-Dienst enthält. Sie können die Ressourcengruppe nun löschen, um alle darin enthaltenen Daten endgültig zu löschen. Der Name der Ressourcengruppe befindet sich im Portal auf der Seite „Übersicht“ des Azure Search-Diensts.
+Die schnellste Möglichkeit, das System nach einem Tutorial zu bereinigen, besteht im Löschen der Ressourcengruppe, die den Azure Search-Dienst enthält. Sie können dann die Ressourcengruppe löschen, um alle darin enthaltenen Daten endgültig zu löschen. Der Name der Ressourcengruppe befindet sich im Portal auf der Seite „Übersicht“ des Azure Search-Diensts.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -1,5 +1,6 @@
 ---
-title: 'Tutorial 1: Vorbereiten von Daten für die Modellierung mit dem Azure Machine Learning-Dienst'
+title: 'Regressionsmodelltutorial: Vorbereiten von Daten'
+titleSuffix: Azure Machine Learning service
 description: Im ersten Teil dieses Tutorials erfahren Sie, wie Sie Daten in Python mit dem Azure ML SDK für die Regressionsmodellierung vorbereiten.
 services: machine-learning
 ms.service: machine-learning
@@ -9,14 +10,15 @@ author: cforbe
 ms.author: cforbe
 ms.reviewer: trbye
 ms.date: 12/04/2018
-ms.openlocfilehash: 700dfa9fded30fd09eab69a15abf54fb420c5c06
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.custom: seodec18
+ms.openlocfilehash: d20ff1fabfb73c899153cf42bb6f2d7a8f233e21
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52883849"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53314685"
 ---
-# <a name="tutorial-1-prepare-data-for-regression-modeling"></a>Tutorial 1: Vorbereiten von Daten für die Regressionsmodellierung
+# <a name="tutorial-prepare-data-for-regression-modeling"></a>Tutorial: Vorbereiten von Daten für die Regressionsmodellierung
 
 In diesem Tutorial erfahren Sie, wie Sie Daten mit dem Azure Machine Learning Data Prep SDK für die Regressionsmodellierung vorbereiten. Sie führen verschiedene Transformationen durch, um zwei Datasets für New Yorker Taxis zu filtern und miteinander zu kombinieren. Das Ziel dieser Tutorialreihe besteht darin, ein Modell auf der Grundlage von Daten wie Abholzeit, Wochentag, Fahrgastanzahl und Koordinaten zu trainieren, um die Kosten einer Taxifahrt zu prognostizieren. Dieses Tutorial ist der erste Teil einer zweiteiligen Reihe.
 
@@ -73,7 +75,7 @@ Füllen Sie als Nächstes einige Variablen mit Verknüpfungstransformationen auf
 all_columns = dprep.ColumnSelector(term=".*", use_regex=True)
 drop_if_all_null = [all_columns, dprep.ColumnRelationship(dprep.ColumnRelationship.ALL)]
 useful_columns = [
-    "cost", "distance""distance", "dropoff_datetime", "dropoff_latitude", "dropoff_longitude",
+    "cost", "distance", "dropoff_datetime", "dropoff_latitude", "dropoff_longitude",
     "passengers", "pickup_datetime", "pickup_latitude", "pickup_longitude", "store_forward", "vendor"
 ]
 ```
@@ -104,9 +106,6 @@ tmp_df = (green_df
 tmp_df.head(5)
 ```
 
-
-
-
 <div>
 <style scoped> .dataframe tbody tr th:only-of-type { vertical-align: middle; }
 
@@ -131,6 +130,7 @@ tmp_df.head(5)
       <th>dropoff_longitude</th>
       <th>dropoff_latitude</th>
       <th>passengers</th>
+      <th>distance</th>
       <th>cost</th>
     </tr>
   </thead>
@@ -146,6 +146,7 @@ tmp_df.head(5)
       <td>0</td>
       <td>0</td>
       <td>1</td>
+      <td>.00</td>
       <td>21.25</td>
     </tr>
     <tr>
@@ -159,6 +160,7 @@ tmp_df.head(5)
       <td>0</td>
       <td>0</td>
       <td>2</td>
+      <td>.00</td>
       <td>74.5</td>
     </tr>
     <tr>
@@ -172,6 +174,7 @@ tmp_df.head(5)
       <td>0</td>
       <td>0</td>
       <td>1</td>
+      <td>.00</td>
       <td>1</td>
     </tr>
     <tr>
@@ -185,6 +188,7 @@ tmp_df.head(5)
       <td>0</td>
       <td>0</td>
       <td>1</td>
+      <td>.00</td>
       <td>3.25</td>
     </tr>
     <tr>
@@ -198,16 +202,14 @@ tmp_df.head(5)
       <td>0</td>
       <td>0</td>
       <td>1</td>
+      <td>.00</td>
       <td>8.5</td>
     </tr>
   </tbody>
 </table>
 </div>
 
-
-
 Überschreiben Sie die Variable `green_df` mit den Transformationen, die im vorherigen Schritt für `tmp_df` ausgeführt wurden.
-
 
 ```python
 green_df = tmp_df
@@ -280,9 +282,9 @@ combined_df.keep_columns(columns=[
     <tr style="text-align: right;">
       <th></th>
       <th>Typ</th>
-      <th>Min.</th>
-      <th>Max.</th>
-      <th>Anzahl</th>
+      <th>Min</th>
+      <th>max</th>
+      <th>Count</th>
       <th>Fehlt (Anzahl)</th>
       <th>Fehlt nicht (Anzahl)</th>
       <th>Fehlt (Prozent)</th>
@@ -432,9 +434,9 @@ tmp_df.keep_columns(columns=[
     <tr style="text-align: right;">
       <th></th>
       <th>Typ</th>
-      <th>Min.</th>
-      <th>Max.</th>
-      <th>Anzahl</th>
+      <th>Min</th>
+      <th>max</th>
+      <th>Count</th>
       <th>Fehlt (Anzahl)</th>
       <th>Fehlt nicht (Anzahl)</th>
       <th>Fehlt (Prozent)</th>
@@ -575,9 +577,9 @@ combined_df.keep_columns(columns='store_forward').get_profile()
     <tr style="text-align: right;">
       <th></th>
       <th>Typ</th>
-      <th>Min.</th>
-      <th>Max.</th>
-      <th>Anzahl</th>
+      <th>Min</th>
+      <th>max</th>
+      <th>Count</th>
       <th>Fehlt (Anzahl)</th>
       <th>Fehlt nicht (Anzahl)</th>
       <th>Fehlt (Prozent)</th>
@@ -632,6 +634,14 @@ In der Datenprofilausgabe von `store_forward` sehen Sie, dass die Daten inkonsis
 combined_df = combined_df.replace(columns="store_forward", find="0", replace_with="N").fill_nulls("store_forward", "N")
 ```
 
+Führen Sie eine andere `replace`-Funktion aus, dieses Mal für das `distance`-Feld. Hiermit werden Entfernungswerte neu formatiert, die fälschlicherweise als `.00` gekennzeichnet sind, und alle NULL-Werte mit Nullen (0) aufgefüllt. Konvertieren Sie das `distance`-Feld in ein numerisches Format.
+
+
+```python
+combined_df = combined_df.replace(columns="distance", find=".00", replace_with=0).fill_nulls("distance", 0)
+combined_df = combined_df.to_number(["distance"])
+```
+
 Teilen Sie die Datums-/Uhrzeitwerte für Start und Ziel in entsprechende Datums- und Uhrzeitspalten auf. Verwenden Sie dazu `split_column_by_example()`. In diesem Fall wird der optionale `example`-Parameter `split_column_by_example()` weggelassen. Dadurch bestimmt die Funktion anhand der Daten automatisch, wo die Aufteilung erfolgen soll.
 
 
@@ -641,9 +651,6 @@ tmp_df = (combined_df
     .split_column_by_example(source_column="dropoff_datetime"))
 tmp_df.head(5)
 ```
-
-
-
 
 <div>
 <style scoped> .dataframe tbody tr th:only-of-type { vertical-align: middle; }
@@ -673,6 +680,7 @@ tmp_df.head(5)
       <th>dropoff_longitude</th>
       <th>dropoff_latitude</th>
       <th>passengers</th>
+      <th>distance</th>
       <th>cost</th>
     </tr>
   </thead>
@@ -692,6 +700,7 @@ tmp_df.head(5)
       <td>-73.937767</td>
       <td>40.758480</td>
       <td>1</td>
+      <td>0.0</td>
       <td>2.5</td>
     </tr>
     <tr>
@@ -709,6 +718,7 @@ tmp_df.head(5)
       <td>-73.937927</td>
       <td>40.757843</td>
       <td>1</td>
+      <td>0.0</td>
       <td>2.5</td>
     </tr>
     <tr>
@@ -726,6 +736,7 @@ tmp_df.head(5)
       <td>-73.937721</td>
       <td>40.758369</td>
       <td>1</td>
+      <td>0.0</td>
       <td>3.3</td>
     </tr>
     <tr>
@@ -743,6 +754,7 @@ tmp_df.head(5)
       <td>-73.937790</td>
       <td>40.758358</td>
       <td>1</td>
+      <td>0.0</td>
       <td>3.3</td>
     </tr>
     <tr>
@@ -760,12 +772,12 @@ tmp_df.head(5)
       <td>-73.937775</td>
       <td>40.758450</td>
       <td>1</td>
+      <td>0.0</td>
       <td>3.3</td>
     </tr>
   </tbody>
 </table>
 </div>
-
 
 
 Versehen Sie die von `split_column_by_example()` generierten Spalten mit aussagekräftigen Namen.
@@ -836,9 +848,6 @@ tmp_df = (combined_df
 tmp_df.head(5)
 ```
 
-
-
-
 <div>
 <style scoped> .dataframe tbody tr th:only-of-type { vertical-align: middle; }
 
@@ -871,6 +880,7 @@ tmp_df.head(5)
       <th>dropoff_longitude</th>
       <th>dropoff_latitude</th>
       <th>passengers</th>
+      <th>distance</th>
       <th>cost</th>
     </tr>
   </thead>
@@ -894,6 +904,7 @@ tmp_df.head(5)
       <td>-73.937767</td>
       <td>40.758480</td>
       <td>1</td>
+      <td>0.0</td>
       <td>2.5</td>
     </tr>
     <tr>
@@ -915,6 +926,7 @@ tmp_df.head(5)
       <td>-73.937927</td>
       <td>40.757843</td>
       <td>1</td>
+      <td>0.0</td>
       <td>2.5</td>
     </tr>
     <tr>
@@ -936,6 +948,7 @@ tmp_df.head(5)
       <td>-73.937721</td>
       <td>40.758369</td>
       <td>1</td>
+      <td>0.0</td>
       <td>3.3</td>
     </tr>
     <tr>
@@ -957,6 +970,7 @@ tmp_df.head(5)
       <td>-73.937790</td>
       <td>40.758358</td>
       <td>1</td>
+      <td>0.0</td>
       <td>3.3</td>
     </tr>
     <tr>
@@ -978,13 +992,12 @@ tmp_df.head(5)
       <td>-73.937775</td>
       <td>40.758450</td>
       <td>1</td>
+      <td>0.0</td>
       <td>3.3</td>
     </tr>
   </tbody>
 </table>
 </div>
-
-
 
 Anhand der obigen Daten sehen Sie, dass die auf der Grundlage der abgeleiteten Transformationen erzeugten Datums- und Uhrzeitkomponenten für Start und Ziel korrekt sind. Verwerfen Sie die Spalten `pickup_datetime` und `dropoff_datetime`. Sie werden nicht mehr benötigt.
 
@@ -1002,27 +1015,24 @@ type_infer.learn()
 type_infer
 ```
 
-
-
-
-    {'pickup_weekday': [FieldType.STRING],
-     'pickup_hour': [FieldType.DECIMAL],
-     'pickup_second': [FieldType.DECIMAL],
-     'dropoff_hour': [FieldType.DECIMAL],
-     'dropoff_minute': [FieldType.DECIMAL],
-     'dropoff_second': [FieldType.DECIMAL],
-     'store_forward': [FieldType.STRING],
-     'pickup_minute': [FieldType.DECIMAL],
-     'dropoff_weekday': [FieldType.STRING],
-     'vendor': [FieldType.STRING],
-     'pickup_longitude': [FieldType.DECIMAL],
-     'pickup_latitude': [FieldType.DECIMAL],
-     'dropoff_longitude': [FieldType.DECIMAL],
-     'dropoff_latitude': [FieldType.DECIMAL],
-     'passengers': [FieldType.DECIMAL],
-     'cost': [FieldType.DECIMAL]}
-
-
+    Column types conversion candidates:
+    'pickup_weekday': [FieldType.STRING],
+    'pickup_hour': [FieldType.DECIMAL],
+    'pickup_minute': [FieldType.DECIMAL],
+    'pickup_second': [FieldType.DECIMAL],
+    'dropoff_hour': [FieldType.DECIMAL],
+    'dropoff_minute': [FieldType.DECIMAL],
+    'dropoff_second': [FieldType.DECIMAL],
+    'store_forward': [FieldType.STRING],
+    'pickup_longitude': [FieldType.DECIMAL],
+    'dropoff_longitude': [FieldType.DECIMAL],
+    'passengers': [FieldType.DECIMAL],
+    'distance': [FieldType.DECIMAL],
+    'vendor': [FieldType.STRING],
+    'dropoff_weekday': [FieldType.STRING],
+    'pickup_latitude': [FieldType.DECIMAL],
+    'dropoff_latitude': [FieldType.DECIMAL],
+    'cost': [FieldType.DECIMAL]
 
 Die Rückschlussergebnisse sehen korrekt aus. Wenden Sie nun die Typkonvertierungen auf den Dataflow an.
 
@@ -1032,18 +1042,27 @@ tmp_df = type_infer.to_dataflow()
 tmp_df.get_profile()
 ```
 
-Sie verfügen nun über ein vollständig transformiertes und vorbereitetes Dataflowobjekt für die Verwendung in einem Machine Learning-Modell. Das SDK enthält eine Objektserialisierungsfunktion. Diese wird wie folgt verwendet:
-
+Wenden Sie vor dem Verpacken des Dataflows zwei abschließende Filter auf das Dataset an. Um falsche Datenpunkte zu löschen, filtern Sie den Dataflow nach Datensätzen, in denen sowohl `cost` als auch `distance` größer ist als 0 (null).
 
 ```python
+tmp_df = tmp_df.filter(dprep.col("distance") > 0)
+tmp_df = tmp_df.filter(dprep.col("cost") > 0)
+```
+
+Sie verfügen nun über ein vollständig transformiertes und vorbereitetes Dataflowobjekt für die Verwendung in einem Machine Learning-Modell. Das SDK enthält eine Objektserialisierungsfunktion. Diese wird wie folgt verwendet:
+
+```python
+import os
+file_path = os.path.join(os.getcwd(), "dflows.dprep")
+
 dflow_prepared = tmp_df
 package = dprep.Package([dflow_prepared])
-package.save(".\dflow")
+package.save(file_path)
 ```
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Löschen Sie in Ihrem aktuellen Verzeichnis die Datei `dflow` (sowohl bei lokaler Ausführung als auch bei Ausführung in Azure Notebooks), wenn Sie nicht mit Teil 2 des Tutorials fortfahren möchten. Falls Sie mit dem zweiten Teil fortfahren möchten, muss die Datei `dflow` im aktuellen Verzeichnis verbleiben.
+Löschen Sie in Ihrem aktuellen Verzeichnis die Datei `dflows.dprep` (sowohl bei lokaler Ausführung als auch bei Ausführung in Azure Notebooks), wenn Sie nicht mit Teil 2 des Tutorials fortfahren möchten. Falls Sie mit dem zweiten Teil fortfahren möchten, muss die Datei `dflows.dprep` im aktuellen Verzeichnis verbleiben.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

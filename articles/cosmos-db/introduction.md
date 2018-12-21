@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 04/08/2018
 ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: 89f5ae27e7ce3ec3155fd3fdbf42bb0f4322aa10
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 50abe2b067770976f19ae9b70c97c2df8354640f
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52835062"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53091577"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>Willkommen bei Azure Cosmos DB
 
@@ -36,10 +36,10 @@ Als global verteilter Datenbankdienst mit mehreren Modellen erleichtert Azure Co
     * Das ARS-basierte (Atom Record Sequence) Datenmodell, das Azure Cosmos DB zugrunde liegt, unterstützt von Haus aus mehrere Datenmodelle. Hierzu zählen unter anderem Modelle für Dokumente, Diagramme, Schlüssel-Wert-Paare, Tabellen und Spaltendaten.
     * APIs für die folgenden Datenmodelle werden über SDKs unterstützt, die in verschiedenen Sprachen verfügbar sind:
         * [SQL-API](sql-api-introduction.md): Ein schemaloses JSON-Datenbankmodul mit umfangreichen SQL-Abfragefunktionen
-        * [MongoDB-API](mongodb-introduction.md): Eine extrem skalierbare *MongoDB-as-a-Service*-Lösung auf der Grundlage der Azure Cosmos DB-Plattform Kompatibel mit bestehenden MongoDB-Bibliotheken, -Treibern, -Tools und -Anwendungen
-        * [Cassandra-API](cassandra-introduction.md): Eine global verteile Cassandra-as-a-Service-Lösung auf der Grundlage der Azure Cosmos DB-Plattform Kompatibel mit vorhandenen [Apache Cassandra](https://cassandra.apache.org/)-Bibliotheken, -Treibern, -Tools und -Anwendungen
-        * [Gremlin-API:](graph-introduction.md) Ein vollständig verwalteter, horizontal skalierbarer Graphdatenbankdienst, der die Erstellung und Ausführung von Anwendungen mit stark vernetzten Datasets erleichtert, die Open Gremlin-APIs unterstützen (auf der Grundlage der [Apache TinkerPop-Spezifikation](http://tinkerpop.apache.org/), Apache Gremlin).
-        * [Tabellen-API](table-introduction.md): Ein Schlüssel-Wert-Datenbankdienst zur Bereitstellung von Premiumfunktionen (beispielsweise automatische Indizierung, garantierte geringe Wartezeiten, globale Verteilung) für vorhandene Azure Table Storage-Anwendungen. App-Änderungen sind dabei nicht erforderlich.
+        * [MongoDB-API](mongodb-introduction.md): Eine extrem skalierbare *MongoDB-as-a-Service*-Lösung auf Grundlage der Azure Cosmos DB-Plattform Kompatibel mit bestehenden MongoDB-Bibliotheken, -Treibern, -Tools und -Anwendungen
+        * [Cassandra-API](cassandra-introduction.md): Eine global verteilte Cassandra-as-a-Service-Lösung auf der Grundlage der Azure Cosmos DB-Plattform Kompatibel mit vorhandenen [Apache Cassandra](https://cassandra.apache.org/)-Bibliotheken, -Treibern, -Tools und -Anwendungen
+        * [Gremlin-API](graph-introduction.md): Ein vollständig verwalteter, horizontal skalierbarer Graphdatenbankdienst, der die Erstellung und Ausführung von Anwendungen mit stark vernetzten Datasets erleichtert, die Open Gremlin-APIs unterstützen (auf der Grundlage der [Apache TinkerPop-Spezifikation](https://tinkerpop.apache.org/), Apache Gremlin).
+        * [Tabellen-API](table-introduction.md): Ein Schlüssel-Wert-Datenbankdienst zur Bereitstellung von Premiumfunktionen (beispielsweise automatische Indizierung, garantierte geringe Wartezeiten, globale Verteilung) für vorhandene Azure Table Storage-Anwendungen. App-Änderungen sind hierbei nicht erforderlich.
         * Weitere Datenmodelle und APIs folgen in Kürze.
 
 * **Elastische und unabhängige Skalierung von Durchsatz und Speicher, bedarfsorientiert und weltweit**

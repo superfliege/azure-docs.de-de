@@ -1,14 +1,11 @@
 ---
-title: 'Tutorial: Lastenausgleich für VMs über alle Verfügbarkeitszonen hinweg – Azure-Portal | Microsoft-Dokumentation'
+title: 'Tutorial: Verfügbarkeitszonenübergreifende Load Balancer-VMs: Azure-Portal'
+titlesuffix: Azure Load Balancer
 description: In diesem Tutorial wird gezeigt, wie Sie einen Lastenausgleich im Tarif „Standard“ mit einem zonenredundanten Front-End erstellen, um mit dem Azure-Portal einen Lastenausgleich für VMs über alle Verfügbarkeitszonen hinweg durchzuführen.
 services: load-balancer
 documentationcenter: na
 author: KumudD
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
 Customer intent: As an IT administrator, I want to create a load balancer that load balances incoming internet traffic to virtual machines across availability zones in a region, so that the customers can still access the web service if a datacenter is unavailable.
-ms.assetid: ''
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: tutorial
@@ -16,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/17/2018
 ms.author: kumud
-ms.custom: mvc
-ms.openlocfilehash: 5ec1cc42a0c932e47c08493fa632495426abc4c7
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.custom: seodec18
+ms.openlocfilehash: 18b5f82a5181f0bbf7024b302b802684ef676c8f
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34304459"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53255329"
 ---
-# <a name="tutorial-load-balance-vms-across-availability-zones-with-a-standard-load-balancer-using-the-azure-portal"></a>Tutorial: Lastenausgleich für VMs über alle Verfügbarkeitszonen hinweg mit einem Standard-Lastenausgleich im Azure-Portal
+# <a name="tutorial-load-balance-vms-across-availability-zones-with-a-standard-load-balancer-using-the-azure-portal"></a>Tutorial: Verfügbarkeitszonenübergreifender Lastenausgleich für VMs mit einer Load Balancer Standard-Instanz im Azure-Portal
 
 Lastenausgleich bietet ein höheres Maß an Verfügbarkeit durch Verteilung der eingehenden Anforderungen auf mehrere virtuelle Computer. In diesem Tutorial werden die einzelnen Schritte zum Erstellen eines öffentlichen Lastenausgleichs (Load Balancer) im Tarif „Standard“ beschrieben, mit dem ein Lastenausgleich für VMs über Verfügbarkeitszonen hinweg durchgeführt wird. So schützen Sie Ihre Apps und Daten vor einem unwahrscheinlichen Fehler oder Ausfall eines gesamten Datencenters. Bei Zonenredundanz können eine oder mehrere Verfügbarkeitszonen ausfallen, aber der Datenpfad bleibt dennoch so lange verfügbar, wie eine Zone in der Region fehlerfrei bleibt. Folgendes wird vermittelt:
 
@@ -37,7 +34,7 @@ Lastenausgleich bietet ein höheres Maß an Verfügbarkeit durch Verteilung der 
 > * Erstellen einer einfachen IIS-Website
 > * Anzeigen eines Load Balancers im Betrieb
 
-Informationen zur Verwendung von Verfügbarkeitszonen mit einem Standard-Lastenausgleich finden Sie unter [Standard-Lastenausgleich und Verfügbarkeitszonen](load-balancer-standard-availability-zones.md).
+Informationen zur Verwendung von Verfügbarkeitszonen mit Load Balancer Standard finden Sie unter [Load Balancer Standard und Verfügbarkeitszonen](load-balancer-standard-availability-zones.md).
 
 Sie können dieses Tutorial auch mit der [Azure-Befehlszeilenschnittstelle](load-balancer-standard-public-zone-redundant-cli.md) durcharbeiten.
 
@@ -49,16 +46,16 @@ Melden Sie sich unter [http://portal.azure.com](http://portal.azure.com) beim Az
 
 ## <a name="create-a-standard-load-balancer"></a>Einrichten eines Load Balancers im Tarif „Standard“
 
-Ein Load Balancer im Standard-Tarif unterstützt nur eine öffentliche Standard-IP-Adresse. Wenn Sie eine neue öffentliche IP-Adresse beim Erstellen des Lastenausgleichs erstellen, wird dieser automatisch als Version mit der SKU „Standard“ konfiguriert und ist automatisch auch zonenredundant.
+Ein Load Balancer im Standard-Tarif unterstützt nur eine öffentliche Standard-IP-Adresse. Wenn Sie beim Erstellen des Load Balancers eine neue öffentliche IP-Adresse erstellen, erfolgt automatisch eine Konfiguration mit der SKU „Standard“, und darüber hinaus ist der Load Balancer auch automatisch zonenredundant.
 
 1. Klicken Sie links oben auf dem Bildschirm auf **Ressource erstellen** > **Netzwerk** > **Load Balancer**.
-2. Geben Sie auf der Seite **Lastenausgleich erstellen** folgende Werte für den Lastenausgleich ein:
-    - *myLoadBalancer*: Name des Lastenausgleichs
-    - **Öffentlich**: Lastenausgleichstyp
+2. Geben Sie auf der Seite **Lastenausgleich erstellen** folgende Werte für den Load Balancer ein:
+    - *myLoadBalancer*: Name des Load Balancers
+    - **Öffentlich**: Typ des Loac Balancers
      - *myPublicIP*: Für die neue öffentliche IP-Adresse, die Sie erstellen. Klicken Sie hierfür auf **Öffentliche IP-Adresse auswählen** und dann auf **Neue erstellen**. Wählen Sie für den Namenstyp *myPublicIP* die SKU „Standard“ und **Zonenredundant** für **Verfügbarkeitszone** aus.
     - *myResourceGroupLBAZ*: Für den Namen der neuen Ressourcengruppe, die Sie erstellen.
     - **westeurope**: Standort
-3. Klicken Sie auf **Erstellen**, um den Lastenausgleich zu erstellen.
+3. Klicken Sie auf **Erstellen**, um den Load Balancer zu erstellen.
    
     ![Einrichten eines Load Balancers](./media/load-balancer-standard-public-availability-zones-portal/1a-load-balancer.png)
 
@@ -82,7 +79,7 @@ Erstellen Sie ein virtuelles Netzwerk zum Bereitstellen Ihrer Back-End-Server.
 
 Erstellen Sie eine Netzwerksicherheitsgruppe, um eingehende Verbindungen für Ihr virtuelles Netzwerk zu definieren.
 
-1. Klicken Sie auf der oberen linken Seite des Bildschirms auf **Ressource erstellen**, geben Sie in das Suchfeld *Netzwerksicherheitsgruppe* ein, und klicken Sie auf der Seite „Netzwerksicherheitsgruppe erstellen“ auf **Erstellen**.
+1. Klicken Sie auf der oberen linken Seite des Bildschirms auf **Ressource erstellen**, geben Sie in das Suchfeld *Netzwerksicherheitsgruppe* ein, und klicken Sie auf der Netzwerksicherheitsgruppe-Seite auf **Erstellen**.
 2. Geben Sie auf der Seite „Netzwerksicherheitsgruppe erstellen“ die folgenden Werte ein:
     - *myNetworkSecurityGroup*: Für den Namen der Netzwerksicherheitsgruppe.
     - *myResourceGroupLBAZ*: Für den Namen der vorhandenen Ressourcengruppe.
@@ -128,7 +125,7 @@ Erstellen Sie virtuelle Computer in unterschiedlichen Zonen (Zone 1, Zone 2 und 
 2. Klicken Sie auf **OK**.
 3. Wählen Sie als Größe des virtuellen Computers **DS1_V2** aus, und klicken Sie auf **Auswählen**.
 4. Geben Sie für die VM-Einstellungen folgende Werte ein:
-    - *Zone 1* – Für die Zone, in die die VM platziert werden soll.
+    - *Zone 1*: Für die Zone, in der die VM platziert werden soll.
     -  *myVnet*: Vergewissern Sie sich, dass als virtuelles Netzwerk diese Option ausgewählt ist.
     - *myBackendSubnet*: Vergewissern Sie sich, dass als Subnetz diese Option ausgewählt ist.
     - *myNetworkSecurityGroup*: Für den Namen der Netzwerksicherheitsgruppe (Firewall).
@@ -137,9 +134,9 @@ Erstellen Sie virtuelle Computer in unterschiedlichen Zonen (Zone 1, Zone 2 und 
   
  ![Erstellen eines virtuellen Computers](./media/load-balancer-standard-public-availability-zones-portal/create-vm-standard-ip.png)
 
-7. Erstellen Sie anhand der Schritte 1-6 in Zone 2 eine zweite VM namens *VM2* und in Zone 3 eine dritte VM mit *myVnet* als virtuelles Netzwerk, *myBackendSubnet* als Subnetz und **myNetworkSecurityGroup* als Netzwerksicherheitsgruppe.
+7. Erstellen Sie anhand der Schritte 1–6 in Zone 2 eine zweite VM namens *VM2* und in Zone 3 eine dritte VM mit *myVnet* als virtuelles Netzwerk, *myBackendSubnet* als Subnetz und **myNetworkSecurityGroup* als Netzwerksicherheitsgruppe.
 
-### <a name="install-iis-on-vms"></a>Installieren der IIS auf VMs
+### <a name="install-iis-on-vms"></a>Installieren von IIS auf VMs
 
 1. Klicken Sie im linken Menü auf **Alle Ressourcen** und anschließend in der Ressourcenliste auf **myVM1** (in der Ressourcengruppe *myResourceGroupLBAZ*).
 2. Klicken Sie auf der Seite **Übersicht** auf **Verbinden**, um eine RDP-Verbindung mit dem virtuellen Computer herzustellen.
@@ -160,7 +157,7 @@ Erstellen Sie virtuelle Computer in unterschiedlichen Zonen (Zone 1, Zone 2 und 
 6. Schließen Sie die RDP-Sitzung mit *myVM1*.
 7. Wiederholen Sie die Schritte 1 bis 6, um IIS und die aktualisierte Datei „iisstart.htm“ auf *myVM2* und *myVM3* zu installieren.
 
-## <a name="create-load-balancer-resources"></a>Erstellen von Lastenausgleichsressourcen
+## <a name="create-load-balancer-resources"></a>Erstellen von Load Balancer-Ressourcen
 
 In diesem Abschnitt konfigurieren Sie Lastenausgleichseinstellungen für einen Back-End-Adresspool und einen Integritätstest. Außerdem geben Sie Lastenausgleichs- und NAT-Regeln an.
 
@@ -176,12 +173,12 @@ Zum Verteilen von Datenverkehr auf die virtuellen Computer enthält ein Back-End
     - Klicken Sie für **Virtuelles Netzwerk** im Dropdownmenü auf **myVNet**
     - Klicken Sie für **Virtueller Computer** im Dropdownmenü auf **myVM1**.
     - Klicken Sie für **IP-Adresse** im Dropdownmenü auf die IP-Adresse von myVM1.
-4. Klicken Sie auf **Neue Back-End-Ressource hinzufügen**, um jeden virtuelle Computer hinzuzufügen (*myVM2* und *myVM3*), um den Back-End-Pool des Lastenausgleichs hinzuzufügen.
+4. Klicken Sie auf **Neue Back-End-Ressource hinzufügen**, um jeden virtuellen Computer  (*myVM2* und *myVM3*) zum Back-End-Pool der Load Balancer-Instanz hinzuzufügen.
 5. Klicken Sie auf **Hinzufügen**.
 
     ![Hinzufügen zum Back-End-Adresspool ](./media/load-balancer-standard-public-availability-zones-portal/add-backend-pool.png)
 
-3. Vergewissern Sie sich, dass in der Back-End-Pool-Einstellung Ihres Lastenausgleichs alle drei VMs (**myVM1**, **myVM2** und **myVM3**) angezeigt werden.
+3. Vergewissern Sie sich, dass in der Back-End-Pool-Einstellung für Ihren Load Balancer alle drei VMs (**myVM1**, **myVM2** und **myVM3**) angezeigt werden.
 
 ### <a name="create-a-health-probe"></a>Erstellen eines Integritätstests
 
@@ -231,4 +228,4 @@ Löschen Sie die Ressourcengruppe, den Lastenausgleich und alle dazugehörigen R
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu [Standard Load Balancer](load-balancer-standard-overview.md).
+Weitere Informationen finden Sie unter [Load Balancer Standard](load-balancer-standard-overview.md).

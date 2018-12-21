@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 1b9d6342d30c5f5e9ef80213664447c48a62494c
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 40d16076a3d995ecccd06591278b330652d960d8
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39521899"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53189012"
 ---
 # <a name="provision-the-device-to-an-iot-hub-using-the-azure-iot-hub-device-provisioning-service"></a>Bereitstellen des Geräts für eine IoT Hub-Instanz mithilfe des Azure IoT Hub Device Provisioning-Diensts
 
@@ -40,12 +40,12 @@ Bei diesem Schritt werden die einzigartigen Sicherheitsartefakte des Geräts zum
     - Der *Endorsement Key* ist für jeden TPM-Chip bzw. jede Simulation eindeutig, und Sie erhalten ihn vom Hersteller des TPM-Chips.  Weitere Informationen finden Sie im Artikel [Grundlegendes zum TPM Endorsement Key](https://technet.microsoft.com/library/cc770443.aspx).
     - Die *Registrierungs-ID*, die zur eindeutigen Identifizierung eines Geräts im Namespace/Bereich verwendet wird. Diese ID ist eventuell mit der Geräte-ID identisch. Die ID ist für jedes Gerät erforderlich. Bei TPM-basierten Geräten kann die Registrierungs-ID vom TMP selbst abgeleitet werden, z.B. ein SHA-256-Hash des TPM Endorsement Key.
 
-    [![Registrierungsinformationen für das TPM im Portal](./media/tutorial-provision-device-to-hub/tpm-device-enrollment.png)](./media/tutorial-provision-device-to-hub/tpm-device-enrollment.png#lightbox)  
+      [![Registrierungsinformationen für das TPM im Portal](./media/tutorial-provision-device-to-hub/tpm-device-enrollment.png)](./media/tutorial-provision-device-to-hub/tpm-device-enrollment.png#lightbox)  
 
 - Für X.509-basierte Geräte benötigen Sie Folgendes:
     - Das [für den X.509-Chip oder die X.509-Simulation ausgestellte Zertifikat](https://msdn.microsoft.com/library/windows/desktop/bb540819.aspx) in Form einer *PEM*- oder *CER*-Datei. Für die individuelle Registrierung müssen Sie für Ihr X.509-System das *Signaturzertifikat* auf Gerätebasis verwenden, für Registrierungsgruppen dagegen das *Stammzertifikat*. 
 
-    [![Hinzufügen einer individuellen Registrierung für den X.509-Nachweis im Portal](./media/tutorial-provision-device-to-hub/individual-enrollment.png)](./media/tutorial-provision-device-to-hub/individual-enrollment.png#lightbox)
+      [![Hinzufügen einer individuellen Registrierung für den X.509-Nachweis im Portal](./media/tutorial-provision-device-to-hub/individual-enrollment.png)](./media/tutorial-provision-device-to-hub/individual-enrollment.png#lightbox)
 
 Es gibt zwei Möglichkeiten zum Registrieren des Geräts beim Device Provisioning-Dienst:
 
@@ -89,7 +89,7 @@ Nach dem Starten Ihres Geräts sollten die folgenden Aktionen ausgeführt werden
 
     ![Erfolgreiche Herstellung einer Verbindung mit dem Hub im Portal](./media/tutorial-provision-device-to-hub/hub-connect-success.png)
 
-Weitere Informationen finden Sie in der TPM-Simulatorbeispielanwendung [dps_client_sample](https://github.com/Azure/azure-iot-device-auth/blob/master/dps_client/samples/dps_client_sample/dps_client_sample.c). 
+Weitere Informationen finden Sie unter dem Beispiel zur Bereitstellung eines Geräteclients: [prov_dev_client_sample.c](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/samples/prov_dev_client_sample/prov_dev_client_sample.c). In diesem Beispiel wird die Bereitstellung eines simulierten Geräts mit TPM, X.509-Zertifikaten und symmetrischen Schlüsseln veranschaulicht. Schritt-für-Schritt-Anleitungen zur Verwenden des Beispiels finden Sie in den Schnellstartanleitungen zu [TPM](https://docs.microsoft.com/azure/iot-dps/quick-create-simulated-device), zu [X.509](https://docs.microsoft.com/azure/iot-dps/quick-create-simulated-device-x509) und zu [symmetrischen Schlüsseln](https://docs.microsoft.com/azure/iot-dps/quick-create-simulated-device-symm-key).
 
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Tutorial haben Sie Folgendes gelernt:

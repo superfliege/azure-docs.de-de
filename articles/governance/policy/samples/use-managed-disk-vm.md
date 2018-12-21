@@ -1,5 +1,5 @@
 ---
-title: 'Azure Policy-Beispiel: Erstellen eines virtuellen Computers mit verwalteten Datenträgern'
+title: 'Beispiel: Erstellen einer VM mithilfe eines verwalteten Datenträgers'
 description: Diese Beispielrichtlinie erfordert, dass virtuelle Computer verwaltete Datenträger verwenden.
 services: azure-policy
 author: DCtheGeek
@@ -8,13 +8,12 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 09/18/2018
 ms.author: dacoulte
-ms.custom: mvc
-ms.openlocfilehash: 9939451c1665f975dd651f97fee5ef079a842e83
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: a123734f9ee44718723f8e932d645ac54c599ebf
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46978374"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53310670"
 ---
 # <a name="create-vm-using-managed-disk"></a>Erstellen einer VM mithilfe eines verwalteten Datenträgers
 
@@ -30,7 +29,7 @@ Sie können diese Vorlage über das [Azure-Portal](#deploy-with-the-portal), mit
 
 ## <a name="deploy-with-the-portal"></a>Bereitstellen über das Portal
 
-[![Bereitstellen in Azure](http://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FCompute%2Fuse-managed-disk-vm%2Fazurepolicy.json)
+[![In Azure bereitstellen](http://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FCompute%2Fuse-managed-disk-vm%2Fazurepolicy.json)
 
 ## <a name="deploy-with-powershell"></a>Bereitstellen mit PowerShell
 

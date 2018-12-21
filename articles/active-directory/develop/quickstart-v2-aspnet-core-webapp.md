@@ -3,7 +3,7 @@ title: 'Schnellstart: Azure AD v2.0 ASP.NET Core-Web-App | Microsoft Docs'
 description: Erfahren Sie, wie „Bei Microsoft anmelden“ für eine ASP.NET Core-Web-App mithilfe von OpenID Connect implementiert wird.
 services: active-directory
 documentationcenter: dev-center-name
-author: andretms
+author: jmprieur
 manager: mtillman
 editor: ''
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/09/2018
-ms.author: andret
+ms.date: 12/05/2018
+ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 4849ffcc6fd71a0b88b270f2e6cbdb23b18ecc76
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 3e571958daa72c0cb3e80bfac81d022c2f223f11
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51611640"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52993585"
 ---
-# <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>Schnellstart: Hinzufügen von „Mit Microsoft anmelden“ zu einer ASP.NET-Web-App
+# <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>Schnellstart: Hinzufügen von „Bei Microsoft anmelden“ zu einer ASP.NET Core-Web-App
 
 [!INCLUDE [active-directory-develop-applies-v2](../../../includes/active-directory-develop-applies-v2.md)]
 
@@ -46,7 +46,7 @@ In diesem Schnellstart erfahren Sie, wie eine ASP. NET Core-Web-App persönliche
 >
 > ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>Option 2: Registrieren und manuelles Konfigurieren Ihrer Anwendung und des Codebeispiels
 >
-> #### <a name="step-1-register-your-application"></a>Schritt 1: Registrieren Ihrer Anwendung
+> #### <a name="step-1-register-your-application"></a>Schritt 1: Anwendung registrieren
 > Führen Sie die folgenden Schritte aus, um Ihre Anwendung zu registrieren und Ihrer Projektmappe manuell die Registrierungsinformationen Ihrer App hinzuzufügen:
 >
 > 1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim [Azure-Portal](https://portal.azure.com) an.

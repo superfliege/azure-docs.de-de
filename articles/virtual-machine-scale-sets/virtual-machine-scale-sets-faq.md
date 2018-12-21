@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 12/12/2017
 ms.author: manayar
 ms.custom: na
-ms.openlocfilehash: 40af55e48e0097f1ad6cb52a76b78fab40c2074c
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: 1bba25d0b7fd6bbe4efeb9c2164fc663b22bed11
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52447179"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53139366"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Häufig gestellte Fragen zu Azure-VM-Skalierungsgruppen
 
@@ -31,7 +31,7 @@ Hier erhalten Sie Antworten auf häufig gestellte Fragen zu VM-Skalierungsgruppe
 
 **F.** Wie viele virtuelle Computer können in einer Skalierungsgruppe enthalten sein?
 
-**A.** Eine Skalierungsgruppe kann zwischen 0 und 1.000 virtuelle Computer (Plattformimages) bzw. 0 bis 300 virtuelle Computer (benutzerdefinierte Images) enthalten.
+**A.** Eine Skalierungsgruppe kann 0 bis 1.000 virtuelle Computer (Plattformimages) bzw. 0 bis 600 virtuelle Computer (benutzerdefinierte Images) enthalten.
 
 **F.** Werden Datenträger in Skalierungsgruppen unterstützt?
 
@@ -277,7 +277,7 @@ Ein Beispiel finden Sie in der [GitHub-Schnellstartvorlage „101-vm-sshkey“](
  
 ### <a name="when-i-run-update-azurermvmss-after-adding-more-than-one-certificate-from-the-same-key-vault-i-see-the-following-message"></a>Wenn ich `Update-AzureRmVmss` ausführe, nachdem ich mehrere Zertifikate aus dem gleichen Schlüsseltresor hinzugefügt habe, erhalte ich die folgende Meldung:
  
->Update-AzureRmVmss: Die Liste „secret“ enthält wiederholte Instanzen von „/subscriptions/<Meine Abonnement-ID>/resourceGroups/internal-rg-dev/providers/Microsoft.KeyVault/vaults/internal-keyvault-dev“, dies ist unzulässig.
+>Update-AzureRmVmss: Die Liste „secret“ enthält wiederholte Instanzen von „/subscriptions/<Meine Abonnement-ID>/resourceGroups/internal-rg-dev/providers/Microsoft.KeyVault/vaults/internal-keyvault-dev“, was nicht zulässig ist.
  
 Dieser Fall kann eintreten, wenn Sie versuchen, den gleichen Tresor erneut hinzuzufügen, anstatt ein neues Zertifikat für den vorhandenen Quelltresor zu verwenden. Die Befehl `Add-AzureRmVmssSecret` funktioniert nicht ordnungsgemäß, wenn Sie zusätzliche Geheimnisse hinzufügen.
  
@@ -559,7 +559,7 @@ Ja. Eine Netzwerksicherheitsgruppe kann direkt auf eine Skalierungsgruppe angewe
 
 ### <a name="how-do-i-do-a-vip-swap-for-virtual-machine-scale-sets-in-the-same-subscription-and-same-region"></a>Wie führe ich ein VIP-Swap für VM-Skalierungsgruppen im gleichen Abonnement und in der gleichen Region aus?
 
-Wenn Sie zwei VM-Skalierungsgruppen mit Front-Ends von Azure Load Balancer haben und diese sich im gleichen Abonnement und der gleichen Region befinden, können Sie die Zuordnung der öffentlichen IP-Adressen aufheben und der jeweils anderen zuordnen. Beispiele finde Sie unter [VIP Swap: Blue-green deployment in Azure Resource Manager (VIP-Tausch: Blaugrünbereitstellung in Azure Resource Manager)](https://msftstack.wordpress.com/2017/02/24/vip-swap-blue-green-deployment-in-azure-resource-manager/). Dies führt jedoch wahrscheinlich zu Verzögerungen, während Ressourcen auf Netzwerkebene zugeordnet werden bzw. während ihre Zuordnungen aufgehoben werden. Eine schnellere Option ist die Verwendung von Azure Application Gateway mit zwei Back-End-Pools und einer Routingregel. Alternativ können Sie Ihre Anwendung mit [Azure App Service](https://azure.microsoft.com/services/app-service/) hosten. Dieser Dienst bietet Unterstützung für das schnelle Wechseln zwischen Staging- und Produktionsslots.
+Wenn Sie zwei VM-Skalierungsgruppen mit Front-Ends von Azure Load Balancer haben und diese sich im gleichen Abonnement und der gleichen Region befinden, können Sie die Zuordnung der öffentlichen IP-Adressen aufheben und der jeweils anderen zuordnen.  Beispiele finden Sie unter [VIP Swap: Blue-green deployment in Azure Resource Manager (VIP-Tausch: Blaugrünbereitstellung in Azure Resource Manager)](https://msftstack.wordpress.com/2017/02/24/vip-swap-blue-green-deployment-in-azure-resource-manager/). Dies führt jedoch wahrscheinlich zu Verzögerungen, während Ressourcen auf Netzwerkebene zugeordnet werden bzw. während ihre Zuordnungen aufgehoben werden. Eine schnellere Option ist die Verwendung von Azure Application Gateway mit zwei Back-End-Pools und einer Routingregel. Alternativ können Sie Ihre Anwendung mit [Azure App Service](https://azure.microsoft.com/services/app-service/) hosten. Dieser Dienst bietet Unterstützung für das schnelle Wechseln zwischen Staging- und Produktionsslots.
  
 ### <a name="how-do-i-specify-a-range-of-private-ip-addresses-to-use-for-static-private-ip-address-allocation"></a>Wie gebe ich einen Bereich privater IP-Adressen für die statische private IP-Adresszuordnung an?
 
@@ -573,7 +573,7 @@ Informationen zum Bereitstellen einer VM-Skalierungsgruppe für ein vorhandenes 
 
 ### <a name="how-do-i-add-the-ip-address-of-the-first-vm-in-a-virtual-machine-scale-set-to-the-output-of-a-template"></a>Wie füge ich die IP-Adresse des ersten virtuellen Computers in einer VM-Skalierungsgruppe der Ausgabe einer Vorlage hinzu?
 
-Informationen zum Hinzufügen der IP-Adresse des ersten virtuellen Computers in einer VM-Skalierungsgruppe zur Ausgabe einer Vorlage finden Sie unter [ARM - get VMSS's private IPs](http://stackoverflow.com/questions/42790392/arm-get-vmsss-private-ips) (Azure Resource Manager: Abrufen der privaten IP-Adressen der virtuellen Computer einer Skalierungsgruppe).
+Informationen zum Hinzufügen der IP-Adresse des ersten virtuellen Computers in einer VM-Skalierungsgruppe zur Ausgabe einer Vorlage finden Sie unter [ARM: Get VMSS's private IPs](http://stackoverflow.com/questions/42790392/arm-get-vmsss-private-ips) (ARM: Abrufen der privaten IP-Adressen einer VMSS).
 
 ### <a name="can-i-use-scale-sets-with-accelerated-networking"></a>Kann ich Skalierungsgruppen mit beschleunigten Netzwerken verwenden?
 
@@ -746,7 +746,7 @@ Wenn Sie Informationen zu den Eigenschaften für die einzelnen virtuellen Comput
 
 Nein. Es ist nicht möglich, unterschiedliche Erweiterungsargumente an verschiedene virtuelle Computer in einer VM-Skalierungsgruppe zu übergeben. Erweiterungen können aber unter Berücksichtigung der eindeutigen Eigenschaften des ausführenden virtuellen Computers (beispielsweise des Computernamens) aktiv werden. Darüber hinaus können Erweiterungen Instanzmetadaten von http://169.254.169.254 abfragen, um weitere Informationen zu dem virtuellen Computer zu erhalten.
 
-### <a name="why-are-there-gaps-between-my-virtual-machine-scale-set-vm-machine-names-and-vm-ids-for-example-0-1-3"></a>Warum gibt es Lücken zwischen den Namen der virtuellen Computer meiner VM-Skalierungsgruppe und den IDs virtueller Computer? Beispiel: 0, 1, 3...
+### <a name="why-are-there-gaps-between-my-virtual-machine-scale-set-vm-machine-names-and-vm-ids-for-example-0-1-3"></a>Warum gibt es Lücken zwischen den Namen der virtuellen Computer meiner VM-Skalierungsgruppe und den IDs virtueller Computer? Beispiel:  0, 1, 3...
 
 Die Lücken zwischen den Namen der virtuellen Computer Ihrer VM-Skalierungsgruppe und den IDs virtueller Computer sind darauf zurückzuführen, dass die Eigenschaft **overprovision** Ihrer VM-Skalierungsgruppe auf den Standardwert **true** festgelegt ist. Wenn die Überbereitstellung auf **true** festgelegt ist, werden mehr virtuelle Computer als angefordert bereitgestellt. Zusätzliche virtuelle Computer werden anschließend gelöscht. Dies erhöht zwar die Bereitstellungszuverlässigkeit, geht jedoch zulasten fortlaufender Namen und zusammenhängender Regeln für die Netzwerkadressenübersetzung (Network Address Translation, NAT). 
 

@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 08/23/2018
-ms.openlocfilehash: f7dbc124781992ada9c3538cf415b836d8764064
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: f17998957db6fca5b109b5a05aa624e238af8dca
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42810819"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53257538"
 ---
 # <a name="create-and-configure-azure-kubernetes-service-clusters-in-azure-using-ansible"></a>Erstellen und Konfigurieren von Azure Kubernetes Service-Clustern in Azure mithilfe von Ansible
 Ansible ermöglicht die Automatisierung der Bereitstellung und Konfiguration von Ressourcen in Ihrer Umgebung. Sie können Ansible verwenden, um Ihren Azure Kubernetes Service (AKS) zu verwalten. Dieser Artikel beschreibt, wie Sie mithilfe von Ansible einen Azure Kubernetes Service-Cluster erstellen und verwalten können.
@@ -79,7 +79,7 @@ Um den AKS-Cluster mit Ansible zu erstellen, speichern Sie das vorherige Beispie
 
 Die Ausgabe des Befehls **ansible-playbook* sieht in etwa folgendermaßen aus und zeigt, dass der AKS-Cluster erfolgreich erstellt wurde:
 
-  ```bash
+  ```Output
   PLAY [Create AKS] ****************************************************************************************
 
   TASK [Gathering Facts] ********************************************************************************************
@@ -140,7 +140,7 @@ Um den Azure Kubernetes Service-Cluster mit Ansible zu skalieren, speichern Sie 
 
 Die folgende Ausgabe zeigt, dass der AKS-Cluster erfolgreich erstellt wurde:
 
-  ```bash
+  ```Output
   PLAY [Scale AKS cluster] ***************************************************************
 
   TASK [Gathering Facts] ******************************************************************
@@ -178,7 +178,7 @@ Zum Löschen des Azure Kubernetes Service-Clusters mit Ansible speichern Sie das
   ```
 
 Die folgende Ausgabe zeigt, dass der AKS-Cluster erfolgreich gelöscht wurde:
-  ```bash
+  ```Output
 PLAY [Delete a managed Azure Container Services (AKS) cluster] ****************************
 
 TASK [Gathering Facts] ********************************************************************

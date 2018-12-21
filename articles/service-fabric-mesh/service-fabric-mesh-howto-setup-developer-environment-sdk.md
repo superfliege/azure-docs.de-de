@@ -5,29 +5,35 @@ services: service-fabric-mesh
 keywords: ''
 author: tylermsft
 ms.author: twhitney
-ms.date: 11/29/2018
+ms.date: 12/12/2018
 ms.topic: get-started-article
 ms.service: service-fabric-mesh
 manager: jeconnoc
-ms.openlocfilehash: bec0b9a7e34f1577f80a99f5380795c479c04bc8
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: 3493b94e93a03faaf60aaa64bf8b80cefb754657
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52890465"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53309058"
 ---
 # <a name="set-up-your-windows-development-environment-to-build-service-fabric-mesh-apps"></a>Einrichten der Windows-Entwicklungsumgebung zum Erstellen von Service Fabric Mesh-Anwendungen
 
-Zum Erstellen und Ausführen von Azure Service Fabric Mesh-Anwendungen auf dem Windows-Entwicklungscomputer müssen die Service Fabric Mesh-Laufzeit, das SDK und Tools installiert werden.
+Zum Entwickeln und Ausführen von Azure Service Fabric Mesh-Anwendungen auf dem Windows-Entwicklungscomputer benötigen Sie:
+
+* Docker
+* Visual Studio 2017
+* Service Fabric Mesh-Runtime
+* Service Fabric Mesh-SDK und -Tools.
+
+Außerdem eine der folgenden Versionen von Windows:
+
+* Windows 10 (Enterprise, Professional, oder Education), Versionen 1709 (Fall Creators-Update) oder 1803 (Windows 10 April 2018-Update)
+* Windows Server, Version 1709
+* Windows Server, Version 1803
+
+Die folgenden Anweisungen helfen Ihnen bei der Installation basierend auf der von Ihnen verwendeten Version von Windows.
 
 [!INCLUDE [preview note](./includes/include-preview-note.md)]
-
-## <a name="supported-operating-system-versions"></a>Unterstützte Betriebssystemversionen
-
-Die folgenden Betriebssystemversionen werden bei der Entwicklung unterstützt:
-
-* Windows 10 (Enterprise, Professional oder Education)
-* Windows Server 2016
 
 ## <a name="visual-studio"></a>Visual Studio
 
@@ -38,7 +44,9 @@ Visual Studio 2017 ist erforderlich, um Service Fabric Mesh-Anwendungen bereitzu
 
 ## <a name="install-docker"></a>Installieren von Docker
 
-#### <a name="windows-10"></a>Windows 10
+Wenn Sie Docker bereits installiert haben, stellen Sie sicher, dass Sie über die neueste Version verfügen. Docker informiert Sie möglicherweise, wenn eine neue Version herausgekommen ist, aber überprüfen Sie dies manuell, um sicherzustellen, dass Sie über die neueste Version verfügen.
+
+#### <a name="install-docker-on-windows-10"></a>Installieren von Docker unter Windows 10
 
 Laden Sie die aktuelle Version der [Docker Community Edition für Windows][download-docker] herunter, und installieren Sie sie, um die containerbasierten Service Fabric-Apps zu unterstützen, die von Service Fabric Mesh verwendet werden.
 
@@ -46,7 +54,7 @@ Wählen Sie während der Installation **Windows-Container anstelle von Linux-Con
 
 Wenn Hyper-V auf Ihrem Computer nicht aktiviert ist, wird dieser Schritt vom Docker-Installationsprogramm angeboten. Klicken Sie auf **OK**, wenn die entsprechende Aufforderung angezeigt wird.
 
-#### <a name="windows-server-2016"></a>Windows Server 2016
+#### <a name="install-docker-on-windows-server-2016"></a>Installieren von Docker unter Windows Server 2016
 
 Ist die Hyper-V-Rolle nicht aktiviert, öffnen Sie PowerShell als Administrator, und führen Sie den folgenden Befehl aus, um Hyper-V zu aktivieren. Starten Sie anschließend Ihren Computer neu. Weitere Informationen finden Sie in der [Docker Enterprise Edition für Windows Server][download-docker-server].
 
@@ -77,9 +85,13 @@ Installieren Sie die Service Fabric Mesh-Laufzeit, das SDK und die Tools in der 
 > Docker **muss** ausgeführt werden, bevor Sie einen Cluster erstellen können.
 > Testen Sie, ob Docker ausgeführt wird, indem Sie ein Terminalfenster öffnen und `docker ps` ausführen, um zu sehen, ob ein Fehler auftritt. Wenn in der Antwort kein Fehler angegeben wird, wird Docker ausgeführt, und Sie sind bereit, einen Cluster zu erstellen.
 
+> [!Note]
+> Wenn Sie zur Entwicklung einen Computer verwenden, auf dem das Windows Fall Creators-Update (Version 1709) installiert ist, können Sie nur Docker-Images für Windows-Version 1709 verwenden.
+> Wenn Sie zur Entwicklung einen Computer verwenden, auf dem das Windows 10-Update vom April 2018 (Version 1803) installiert ist, können Sie entweder Docker-Images für Windows-Version 1709 oder 1803 verwenden.
+
 Bei Verwendung von Visual Studio können Sie diesen Abschnitt überspringen, da Visual Studio einen lokalen Cluster für Sie erstellt, falls dieser nicht vorhanden ist.
 
-Für eine optimale Debugleistung beim Erstellen und Ausführen von Service Fabric-Apps wird empfohlen, einen lokalen Entwicklungscluster mit einem Knoten zu erstellen. Dieser Cluster muss immer dann ausgeführt werden, wenn Sie ein Service Fabric Mesh-Projekt bereitstellen oder debuggen.
+Für eine optimale Debugleistung beim Erstellen und Ausführen von jeweils einer einzigen Service Fabric-App sollten Sie einen lokalen Entwicklungscluster mit einem einzelnen Knoten erstellen. Wenn Sie mehrere Anwendungen gleichzeitig ausführen, erstellen Sie einen lokalen Entwicklungscluster mit fünf Knoten. Dieser Cluster muss immer dann ausgeführt werden, wenn Sie ein Service Fabric Mesh-Projekt bereitstellen oder debuggen.
 
 Nachdem Sie die Laufzeit, SDKs, Visual Studio-Tools und Docker installiert haben und Docker ausgeführt wird, erstellen Sie einen Entwicklungscluster.
 
@@ -105,7 +117,7 @@ Jetzt können Sie Service Fabric Mesh-Anwendungen erstellen!
 
 Lesen Sie das Tutorial [Erstellen einer Azure Service Fabric-App](service-fabric-mesh-tutorial-create-dotnetcore.md).
 
-Antworten auf [häufig gestellte Fragen](service-fabric-mesh-faq.md)
+[Hier](service-fabric-mesh-faq.md) finden Sie Antworten auf häufig gestellte Fragen sowie Informationen zu bekannten Problemen.
 
 [azure-cli-install]: https://docs.microsoft.com/cli/azure/install-azure-cli
 [download-docker]: https://store.docker.com/editions/community/docker-ce-desktop-windows

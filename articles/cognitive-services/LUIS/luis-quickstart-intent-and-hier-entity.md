@@ -1,21 +1,22 @@
 ---
-title: 'Tutorial 5: Überordnungs-/Unterordnungsbeziehungen – Hierarchische LUIS-Entität für im Kontextbezug gelernte Daten'
+title: Entität vom Typ „Hierarchical“
 titleSuffix: Azure Cognitive Services
 description: Kontextbasiertes Finden aufeinander bezogener Teildaten. Beispielsweise sind der Ausgangsort und der Zielort für eine physische Verlegung aus einem Gebäude und Büro in ein anderes Gebäude und Büro aufeinander bezogen.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
-ms.date: 09/09/2018
+ms.date: 12/05/2018
 ms.author: diberry
-ms.openlocfilehash: d3b8d0597f0732a4a3cfab79125a885b2d141c9f
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: a79c0091220e2980101471abaaa0aaf4c0a898ca
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52424699"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53104406"
 ---
 # <a name="tutorial-5-extract-contextually-related-data"></a>Tutorial 5: Extrahieren kontextbezogener Daten
 In diesem Tutorial wird das kontextbasierte Finden aufeinander bezogener Teildaten behandelt. Beispielsweise sind der Ausgangsort und der Zielort für eine physische Verlegung aus einem Gebäude und Büro in ein anderes Gebäude und Büro aufeinander bezogen. Zum Erstellen eines Arbeitsauftrags sind möglicherweise beide Teilinformationen erforderlich, und sie sind aufeinander bezogen.  
@@ -32,7 +33,6 @@ Die hierarchische Entität ist eine gute Wahl für diese Art von Daten, da für 
 
 **In diesem Tutorial lernen Sie Folgendes:**
 
-<!-- green checkmark -->
 > [!div class="checklist"]
 > * Verwenden der vorhandenen Tutorial-App
 > * Hinzufügen einer Absicht 
@@ -55,7 +55,7 @@ Wenn Sie nicht über die HumanResources-App aus dem vorhergehenden Tutorial verf
 3. Klonen Sie die Version von der Registerkarte **Versionen** aus dem Abschnitt **Verwalten**, und geben Sie ihr den Namen `hier`. Durch Klonen können Sie ohne Auswirkungen auf die ursprüngliche Version mit verschiedenen Features von LUIS experimentieren. Da der Versionsname als Teil der URL-Route verwendet wird, darf er keine Zeichen enthalten, die in einer URL ungültig sind. 
 
 ## <a name="remove-prebuilt-number-entity-from-app"></a>Entfernen der vordefinierten Zahlenentität aus der App
-Entfernen Sie die vordefinierte Zahlenentität vorübergehend, um die gesamte Äußerung anzuzeigen und die untergeordneten Elemente der Hierarchie zu kennzeichnen.
+[Entfernen Sie vorübergehend die vordefinierte Zahlenentität](luis-prebuilt-entities.md#marking-entities-containing-a-prebuilt-entity-token), um die gesamte Äußerung anzuzeigen und die untergeordneten Elemente der Hierarchie zu kennzeichnen. 
 
 1. [!INCLUDE [Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
@@ -90,7 +90,7 @@ LUIS muss verstehen, was ein Ort ist, indem der Ursprung und das Ziel in den Äu
 
 Wir verwenden als Beispiel die folgende Äußerung:
 
-```JSON
+```json
 mv Jill Jones from a-2349 to b-1298
 ```
 
@@ -100,19 +100,19 @@ Wenn nur ein untergeordnetes Element (Abflug oder Ziel) einer hierarchischen Ent
 
 1. Wählen Sie in der Äußerung `Displace 425-555-0000 away from g-2323 toward hh-2345` das Wort `g-2323` aus. Ein Dropdownmenü mit einem darüber angeordneten Textfeld wird angezeigt. Geben Sie den Entitätsnamen `Locations` in das Textfeld ein, und wählen Sie dann im Dropdownmenü die Option **Create new entity** (Neue Entität erstellen). 
 
-    [![](media/luis-quickstart-intent-and-hier-entity/hr-create-new-entity-1.png "Screenshot: Erstellung einer neuen Entität auf der Seite mit der Absicht")](media/luis-quickstart-intent-and-hier-entity/hr-create-new-entity-1.png#lightbox)
+    [![Screenshot: Erstellen einer neuen Entität auf der Absichtsseite](media/luis-quickstart-intent-and-hier-entity/hr-create-new-entity-1.png "Screenshot: Erstellen einer neuen Entität auf der Absichtsseite")](media/luis-quickstart-intent-and-hier-entity/hr-create-new-entity-1.png#lightbox)
 
 2. Wählen Sie im Popupfenster den Entitätstyp **Hierarchical** (Hierarchisch) mit `Origin` und `Destination` als untergeordnete Elemente aus. Wählen Sie **Fertig**aus.
 
-    ![](media/luis-quickstart-intent-and-hier-entity/hr-create-new-entity-2.png "Screenshot: Popupdialogfeld zur Entitätserstellung für die neue Entität „Location“ (Standort)")
+    ![Screenshot: Popupdialogfeld zur Entitätserstellung für die neue Entität „Location“ (Standort)](media/luis-quickstart-intent-and-hier-entity/hr-create-new-entity-2.png "Screenshot: Popupdialogfeld zur Entitätserstellung für die neue Entität „Location“ (Standort)")
 
 3. Die Bezeichnung für `g-2323` ist als `Locations` gekennzeichnet, da LUIS nicht weiß, ob es sich hierbei um den Abflugort, Zielort oder einen anderen Ort handelt. Wählen Sie `g-2323` und dann **Locations**. Navigieren Sie im Menü nach rechts, und wählen Sie `Origin`.
 
-    [![](media/luis-quickstart-intent-and-hier-entity/hr-label-entity.png "Screenshot: Popupdialogfeld zur Entitätskennzeichnung, um das untergeordnete Element der Entität „Locations“ zu ändern")](media/luis-quickstart-intent-and-hier-entity/hr-label-entity.png#lightbox)
+    [![Screenshot: Popupdialogfeld zur Entitätskennzeichnung, um das untergeordnete Element der Entität „Locations“ (Standorte) zu ändern](media/luis-quickstart-intent-and-hier-entity/hr-label-entity.png "Screenshot: Popupdialogfeld zur Entitätskennzeichnung, um das untergeordnete Element der Entität „Locations“ (Standorte) zu ändern")](media/luis-quickstart-intent-and-hier-entity/hr-label-entity.png#lightbox)
 
 5. Kennzeichnen Sie die anderen Orte in allen anderen Äußerungen, indem Sie das Gebäude und das Büro in der Äußerung auswählen, „Locations“ wählen und dann im Menü nach rechts navigieren, um `Origin` oder `Destination` zu wählen. Nachdem alle Orte gekennzeichnet wurden, wird für die Äußerungen unter **Tokens View** (Tokenansicht) ein Muster deutlich. 
 
-    [![](media/luis-quickstart-intent-and-hier-entity/hr-entities-labeled.png "Screenshot: In Äußerungen gekennzeichnete Entität „Locations“")](media/luis-quickstart-intent-and-hier-entity/hr-entities-labeled.png#lightbox)
+    [![Screenshot: In Äußerungen gekennzeichnete Entität „Locations“ (Standorte)](media/luis-quickstart-intent-and-hier-entity/hr-entities-labeled.png "Screenshot: In Äußerungen gekennzeichnete Entität „Locations“ (Standorte)")](media/luis-quickstart-intent-and-hier-entity/hr-entities-labeled.png#lightbox)
 
 ## <a name="add-prebuilt-number-entity-to-app"></a>Hinzufügen einer vordefinierten Zahlenentität zu einer App
 Fügen Sie die vordefinierte Zahlenentität wieder der Anwendung hinzu.
@@ -140,7 +140,7 @@ Fügen Sie die vordefinierte Zahlenentität wieder der Anwendung hinzu.
 
 2. Geben Sie in der Adressleiste am Ende der URL `Please relocation jill-jones@mycompany.com from x-2345 to g-23456` ein. Der letzte Parameter der Abfragezeichenfolge lautet `q` (für die Abfrage (**query**) der Äußerung). Diese Äußerung entspricht keiner der bezeichneten Äußerungen. Sie ist daher ein guter Test und sollte die Absicht `MoveEmployee` mit der extrahierten hierarchischen Entität zurückgeben.
 
-    ```JSON
+    ```json
     {
       "query": "Please relocation jill-jones@mycompany.com from x-2345 to g-23456",
       "topScoringIntent": {

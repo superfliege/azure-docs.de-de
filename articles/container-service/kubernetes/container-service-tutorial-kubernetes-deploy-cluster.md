@@ -1,24 +1,27 @@
 ---
-title: Tutorial für Azure Container Service – Bereitstellen eines Clusters
+title: (VERALTET) Tutorial für Azure Container Service – Bereitstellen eines Clusters
 description: Tutorial für Azure Container Service – Bereitstellen eines Clusters
 services: container-service
-author: neilpeterson
+author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 09/14/2017
-ms.author: nepeters
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 8403e5d8dd3bad07e412b08709dcb8c28201bcdf
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: d77396cdcaa3f2f291aff52dfd1e6793aee4039c
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39434423"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52997860"
 ---
-# <a name="deploy-a-kubernetes-cluster-in-azure-container-service"></a>Bereitstellen eines Kubernetes-Clusters in Azure Container Service
+# <a name="deprecated-deploy-a-kubernetes-cluster-in-azure-container-service"></a>(VERALTET) Bereitstellen eines Kubernetes-Clusters in Azure Container Service
 
-[!INCLUDE [aks-preview-redirect.md](../../../includes/aks-preview-redirect.md)]
+> [!TIP]
+> Die aktualisierte Version dieses Tutorials zu Azure Kubernetes Service finden Sie im [Tutorial: Bereitstellen eines Azure Kubernetes Service-Clusters (AKS)](../../aks/tutorial-kubernetes-deploy-cluster.md).
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
 Kubernetes bietet eine verteilte Plattform für containerbasierte Anwendungen. Mit Azure Container Service ist die Bereitstellung eines produktionsbereiten Kubernetes-Clusters schnell und einfach. In diesem Tutorial (Teil 3 von 7) wird ein Azure Container Service-Kubernetes-Clusters bereitgestellt. Folgende Schritte werden ausgeführt:
 

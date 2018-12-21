@@ -1,6 +1,6 @@
 ---
-title: 'Gewusst wie: Erstellen einer Basisgruppe und Hinzufügen von Mitgliedern mit Azure Active Directory | Microsoft-Dokumentation'
-description: Erfahren Sie, wie eine Basisgruppe mit Azure Active Directory erstellt werden kann.
+title: Erstellen einer Basisgruppe und Hinzufügen von Mitgliedern – Azure Active Directory | Microsoft-Dokumentation
+description: Anleitung zum Erstellen einer Basisgruppe mit Azure Active Directory
 services: active-directory
 author: eross-msft
 manager: mtillman
@@ -11,16 +11,15 @@ ms.topic: quickstart
 ms.date: 08/22/2018
 ms.author: lizross
 ms.reviewer: krbain
-ms.custom: it-pro
-ms.openlocfilehash: 36bd0ca06859c1952a75b1aa8397fba88dc22d40
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.custom: it-pro, seodec18
+ms.openlocfilehash: be3271a1105e8222ae04e17140c6e925a1c612f9
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45574911"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53105449"
 ---
-# <a name="how-to-create-a-basic-group-and-add-members-using-azure-active-directory"></a>Gewusst wie: Erstellen einer Basisgruppe und Hinzufügen von Mitgliedern mit Azure Active Directory
-
+# <a name="create-a-basic-group-and-add-members-using-azure-active-directory"></a>Erstellen einer Basisgruppe und Hinzufügen von Mitgliedern mit Azure Active Directory
 Sie können über das Azure Active Directory-Portal (Azure AD) eine Basisgruppe erstellen. Für die Zwecke dieses Artikels wird einer einzelnen Ressource eine Basisgruppe durch den Ressourcenbesitzer (Administrator) hinzugefügt und bestimmte Mitglieder (Mitarbeiter) eingeschlossen, die auf diese Ressource zugreifen müssen. Informationen zu komplexeren Szenarien wie dynamische Mitgliedschaften und die Erstellung von Regeln finden Sie in der [Dokumentation für die Verwaltung von Azure Active Directory-Benutzern](../users-groups-roles/index.yml).
 
 ## <a name="create-a-basic-group-and-add-members"></a>Erstellen einer Basisgruppe und Hinzufügen von Mitgliedern
