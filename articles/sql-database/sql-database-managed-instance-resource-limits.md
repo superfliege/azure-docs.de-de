@@ -11,17 +11,17 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp
 manager: craigg
-ms.date: 10/17/2018
-ms.openlocfilehash: 97c141b6e0c071a8cea27f9a873f28a6c5113a18
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.date: 12/12/2018
+ms.openlocfilehash: 7af15e2e2ca6698f9d8ba1629f13804ce6457b8d
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49394866"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53315637"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Übersicht über Ressourceneinschränkungen für verwaltete Azure SQL-Datenbank-Instanzen
 
-Dieser Artikel bietet eine Übersicht über die Ressourceneinschränkungen für verwaltete Azure SQL-Datenbank-Instanzen und erläutert, wie Sie eine Anforderung zur Erhöhung der standardmäßigen regionalen Grenzwerte für Abonnements erstellen. 
+Dieser Artikel bietet eine Übersicht über die Ressourceneinschränkungen für verwaltete Azure SQL-Datenbank-Instanzen und erläutert, wie Sie eine Anforderung zur Erhöhung der standardmäßigen regionalen Grenzwerte für Abonnements erstellen.
 
 > [!NOTE]
 > Informationen zu weiteren Einschränkungen für verwaltete Instanzen finden Sie unter [Auf virtuellen Kernen basierendes Erwerbsmodell](sql-database-managed-instance.md#vcore-based-purchasing-model) und [Dienstebenen für eine verwaltete Instanz](sql-database-managed-instance.md#managed-instance-service-tiers). Unterschiede bei den unterstützten Funktionen und T-SQL-Anweisungen sind unter [Funktionsunterschiede](sql-database-features.md) und [Unterstützung von T-SQL-Anweisungen](sql-database-managed-instance-transact-sql-information.md) zu finden.
@@ -37,23 +37,27 @@ Eine verwaltete Azure SQL-Datenbank-Instanz kann auf zwei Hardwaregenerationen (
 |   | **Gen 4** | **Gen 5** |
 | --- | --- | --- |
 | Hardware | Intel E5-2673 v3-Prozessoren (Haswell) mit 2,4 GHz, angefügte SSD, virtueller Kern = 1 physischer Kern | Intel E5-2673 v4-Prozessoren (Broadwell) mit 2,3 GHz, schnelle eNVM-SSD, virtueller Kern =1 LP (Hyperthread) |
-| Compute | 8, 16, 24 virtuelle Kerne | 8, 16, 24, 32, 40, 64, 80 virtuelle Kerne |
-| Arbeitsspeicher | 7 GB pro virtuellem Kern | 5,1 GB pro virtuellem Kern |
+| Compute | 8, 16, 24 virtuelle Kerne | 8, 16, 24, 32, 40, 64, 80 V-Kerne |
+| Arbeitsspeicher | 7 GB pro V-Kern | 5,1 GB pro virtuellem Kern |
 | Max. Speicherkapazität (unternehmenskritisch) | 1 TB | 1 TB, 2 TB oder 4 TB, je nach Anzahl der Kerne |
 
 ### <a name="service-tier-characteristics"></a>Merkmale des Diensttarifs
 
-Eine verwaltete Instanz verfügt über zwei Diensttarife: „Universell“und „Unternehmenskritisch“ (öffentliche Vorschau). Diese Tarife bieten verschiedene Funktionen, die in der folgenden Tabelle beschrieben sind.
+Eine verwaltete Instanz verfügt über zwei Diensttarife: „Universell“und „Unternehmenskritisch“. Diese Tarife bieten verschiedene Funktionen, die in der folgenden Tabelle beschrieben sind.
 
-| **Funktion** | **Universell** | **Unternehmenskritisch (Vorschau)** |
+| **Feature** | **Universell** | **Unternehmenskritisch** |
 | --- | --- | --- |
 | Anzahl der virtuellen Kerne\* | Gen4: 8, 16, 24<br/>Gen5: 8, 16, 24, 32, 40, 64, 80 | Gen4: 8, 16, 24, 32 <br/> Gen5: 8, 16, 24, 32, 40, 64, 80 |
 | Arbeitsspeicher | Gen4: 56 – 156 GB<br/>Gen5: 44 – 440 GB<br/>\*Proportional zur Anzahl virtueller Kerne | Gen4: 56 – 156 GB <br/> Gen5: 44 – 440 GB<br/>\*Proportional zur Anzahl virtueller Kerne |
-| Max. Speichergröße | 8 TB | Gen 4: 1 TB <br/> Gen 5: <br/>- 1 TB für 8, 16 virtuelle Kerne<br/>- 2 TB für 24 virtuelle Kerne<br/>- 4 TB für 32, 40, 64, 80 virtuelle Kerne |
+| Max. Speichergröße | 8 TB | Gen 4: 1 TB <br/> Gen 5: <br/>- 1 TB für 8, 16 virtuelle Kerne<br/>- 2 TB für 24 virtuelle Kerne<br/>- 4 TB für 32, 40, 64, 80 virtuelle Kerne |
 | Max. Speicherkapazität pro Datenbank | Bestimmt durch die maximale Speichergröße pro Instanz | Bestimmt durch die maximale Speichergröße pro Instanz |
 | Max. Anzahl von Datenbanken pro Instanz | 100 | 100 |
-| Max. Datenbankdateien pro Instanz | Bis zu 280 | Unbegrenzt |
-| Erwartete max. Speicher-IOPS | 500 – 5000 ([abhängig von der Größe der Datendatei](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes)) | Abhängig von der zugrunde liegenden SSD-Geschwindigkeit |
+| Max. Datenbankdateien pro Instanz | Bis zu 280 | 32.767 Dateien pro Datenbank |
+| IOPS (ungefähr) | 500 – 7500 pro Datei<br/>\*[Abhängig von der Dateigröße](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes) | 11 – 110 K (1375 pro virtuellem Kern) |
+| E/A-Wartezeit (ungefähr) | 5 – 10 ms | 1 – 2 ms |
+| Max. TempDB-Größe | 192 – 1920 GB (24 GB pro virtuellem Kern) | Bestimmt durch die maximale Speichergröße pro Instanz |
+
+- Sowohl Benutzer- als auch Systemdatenbanken sind in der Instanzspeichergröße enthalten, die mit dem Grenzwert für die maximale Speichergröße verglichen wird. Ermitteln Sie mithilfe der Systemansicht <a href="https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-master-files-transact-sql">sys.master_files</a> den von Datenbanken verwendeten Gesamtspeicherplatz. Fehlerprotokolle werden nicht beibehalten und sind nicht in der Größe enthalten. Sicherungen sind nicht in der Speichergröße enthalten.
 
 ## <a name="supported-regions"></a>Unterstützte Regionen
 
@@ -66,6 +70,8 @@ Für eine verwaltete Instanz wird derzeit nur die Bereitstellung bei folgenden A
 - [Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/)
 - [Nutzungsbasierte Bezahlung](https://azure.microsoft.com/offers/ms-azr-0003p/)
 - [Clouddienstanbieter (CSP)](https://docs.microsoft.com/partner-center/csp-documents-and-learning-resources)
+- [Enterprise Dev/Test](https://azure.microsoft.com/offers/ms-azr-0148p/)
+- [Pay-As-You-Go Dev/Test](https://azure.microsoft.com/offers/ms-azr-0023p/)
 
 > [!NOTE]
 > Diese Einschränkung ist vorübergehend. Es werden in Zukunft neue Abonnementtypen bereitgestellt.
@@ -83,6 +89,8 @@ In der folgenden Tabelle sind regionale Standardlimits für unterstützte Abonne
 | :---| :--- | :--- |:--- |:--- |
 |Nutzungsbasierte Bezahlung|1*|4*|4*|1*|
 |CSP |1*|4*|4*|1*|
+|Pay-as-you-go Dev/Test|1*|4*|4*|1*|
+|Enterprise Dev/Test|1*|4*|4*|1*|
 |EA|3**|12**|12**|3**|
 
 \* Sie können entweder 1 unternehmenskritische oder 4 universelle Instanzen in einem Subnetz bereitstellen, sodass die Gesamtanzahl von „Instanzeinheiten“ im Subnetz niemals höher als 4 ist.
@@ -98,7 +106,7 @@ Diese Grenzwerte können erhöht werden, indem Sie eine spezielle [Supportanfrag
 
 Abonnements vom Typ [Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) können Kombinationen aus universellen und unternehmenskritischen Instanzen umfassen. Es gibt jedoch einige Einschränkungen in Bezug auf die Platzierung der Instanzen im Subnetz.
 
-> [!Note] 
+> [!Note]
 > Bei Abonnements vom Typ [Nutzungsbasierte Bezahlung](https://azure.microsoft.com/offers/ms-azr-0003p/) und [Clouddienstanbieter (CSP)](https://docs.microsoft.com/partner-center/csp-documents-and-learning-resources) können entweder eine unternehmenskritische oder bis zu vier universelle Instanzen vorhanden sein.
 
 Bei den folgenden Beispielen handelt es sich um Bereitstellungsfälle mit nicht leeren Subnetzen und einer Kombination der Diensttarife „Universell“ und „Unternehmenskritisch“.
@@ -114,9 +122,10 @@ Bei den folgenden Beispielen handelt es sich um Bereitstellungsfälle mit nicht 
 
 ## <a name="obtaining-a-larger-quota-for-sql-managed-instance"></a>Abrufen eines größeren Kontingents für verwaltete SQL-Instanz
 
-Wenn Sie mehr verwaltete Instanzen in Ihren aktuellen Regionen benötigen, können Sie eine Supportanfrage zum Erweitern des Kontingents über das Azure-Portal senden. Leiten Sie den Prozess zum Abrufen eines größeren Kontingents auf folgende Weise ein:
+Wenn Sie mehr verwaltete Instanzen in Ihren aktuellen Regionen benötigen, können Sie eine Supportanfrage zum Erweitern des Kontingents über das Azure-Portal senden.
+Leiten Sie den Prozess zum Abrufen eines größeren Kontingents auf folgende Weise ein:
 
-1. Öffnen Sie **Hilfe + Support**, und klicken Sie auf **Neue Supportanfrage**. 
+1. Öffnen Sie **Hilfe + Support**, und klicken Sie auf **Neue Supportanfrage**.
 
    ![Hilfe und Support](media/sql-database-managed-instance-resource-limits/help-and-support.png)
 2. Führen Sie auf der Registerkarte „Grundlagen“ für die neue Supportanfrage die folgenden Schritte aus:
@@ -140,13 +149,13 @@ Wenn Sie mehr verwaltete Instanzen in Ihren aktuellen Regionen benötigen, könn
      > - Region, in der der Grenzwert für Abonnements erhöht werden muss
      > - Erforderliche Anzahl von Instanzen pro Diensttarif in vorhandenen Subnetzen nach Erhöhung des Kontingents (wenn eines der vorhandenen Subnetze erweitert werden muss)
      > - Erforderliche Anzahl neuer Subnetze und Gesamtanzahl der Instanzen pro Diensttarif in den neuen Subnetzen (wenn Sie verwaltete Instanzen in neuen Subnetzen bereitstellen müssen)
-     
+
 5. Klicken Sie auf **Weiter**.
 6. Geben Sie auf der Registerkarte „Kontaktinformationen“ für die neue Supportanfrage Ihre bevorzugte Kontaktmethode (E-Mail oder Telefon) und die Kontaktdetails ein.
-7. Klicken Sie auf **Erstellen**.
+7. Klicken Sie auf **Create**.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Weitere Informationen zur verwalteten Instanz finden Sie unter [Was ist eine verwaltete Instanz?](sql-database-managed-instance.md) 
-- Preisinformationen finden Sie unter [Preise – verwaltete Azure SQL-Datenbank-Instanzen](https://azure.microsoft.com/pricing/details/sql-database/managed/).
+- Weitere Informationen zur verwalteten Instanz finden Sie unter [Was ist eine verwaltete Instanz?](sql-database-managed-instance.md)
+- Preisinformationen finden Sie unter [Preise – verwaltete Azure SQL-Datenbank-Instanzen ](https://azure.microsoft.com/pricing/details/sql-database/managed/).
 - Im [Schnellstarthandbuch](sql-database-managed-instance-get-started.md) erfahren Sie, wie Sie Ihre erste verwaltete Instanz erstellen.

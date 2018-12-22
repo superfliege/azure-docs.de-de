@@ -12,18 +12,18 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 10/19/2018
-ms.openlocfilehash: 6432c6b2c1c224f44b962df63e1502729f69e57f
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: fb9332832f46dc5c39bf932ce91cd3d3f3d7354f
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49470658"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53269616"
 ---
 # <a name="azure-sql-database-logical-servers-and-their-management"></a>Logischer Azure SQL-Datenbankserver und dessen Verwaltung.
 
 ## <a name="what-is-an-azure-sql-logical-server"></a>Was ist ein logischer Azure SQL-Server?
 
-Ein logischer Server fungiert als zentraler Verwaltungspunkt für mehrere einzelne oder [in einem Pool zusammengefasste](sql-database-elastic-pool.md) Datenbanken, [Anmeldungen](sql-database-manage-logins.md), [Firewallregeln](sql-database-firewall-configure.md), [Überwachungsregeln](sql-database-auditing.md), [Richtlinien zur Erkennung von Bedrohungen](sql-database-threat-detection.md) und [Failovergruppen](sql-database-geo-replication-overview.md). Ein logischer Server kann sich in einer anderen Region als seine Ressourcengruppe befinden. Der logische Server muss vorhanden sein, bevor Sie die Azure SQL-Datenbank erstellen können. Alle Datenbanken auf einem Server werden innerhalb der gleichen Region wie der logische Server erstellt.
+Ein logischer Server fungiert als zentraler Verwaltungspunkt für mehrere einzelne oder [in einem Pool zusammengefasste](sql-database-elastic-pool.md) Datenbanken, [Anmeldungen](sql-database-manage-logins.md), [Firewallregeln](sql-database-firewall-configure.md), [Überwachungsregeln](sql-database-auditing.md), [Richtlinien zur Erkennung von Bedrohungen](sql-database-threat-detection.md) und [Failovergruppen](sql-database-auto-failover-group.md). Ein logischer Server kann sich in einer anderen Region als seine Ressourcengruppe befinden. Der logische Server muss vorhanden sein, bevor Sie die Azure SQL-Datenbank erstellen können. Alle Datenbanken auf einem Server werden innerhalb der gleichen Region wie der logische Server erstellt.
 
 Ein logischer Server ist ein logisches Konstrukt, das von einer SQL Server-Instanz unterschieden wird, mit der Sie möglicherweise in der lokalen Welt vertraut sind. Insbesondere der SQL-Datenbankdienst gibt keine Garantie bezüglich des Speicherorts der Datenbanken in Bezug auf ihre logischen Server, und bietet kein Zugriff oder Funktion auf Instanzebene. Ein Server in einer verwalteten Azure SQL-Datenbank-Instanz ähnelt dagegen einer SQL Server-Instanz, mit der Sie möglicherweise in der lokalen Welt vertraut sind.
 
@@ -177,7 +177,7 @@ Verwenden Sie zum Erstellen und Verwalten von Azure SQL-Servern, -Datenbanken un
 |[Servers - List By Resource Group](https://docs.microsoft.com/rest/api/sql/servers/listbyresourcegroup)|Gibt eine Liste aller Server in einer Ressourcengruppe zurück.|
 |[Server - Update](https://docs.microsoft.com/rest/api/sql/servers/update)|Aktualisiert einen vorhandenen Server.|
 |[Datenbanken – Erstellen oder Aktualisieren](https://docs.microsoft.com/rest/api/sql/databases/createorupdate)|Erstellt eine neue Datenbank oder aktualisiert eine bereits vorhandene Datenbank|
-|[Databases - Delete](https://docs.microsoft.com/rest/api/sql/databases/delete)|Löscht eine Datenbank.|
+|[Datenbanken – Löschen](https://docs.microsoft.com/rest/api/sql/databases/delete)|Löscht eine Datenbank.|
 |[Datenbanken – Abrufen](https://docs.microsoft.com/rest/api/sql/databases/get)|Ruft eine Datenbank ab|
 |[Datenbanken – Auflisten nach Pool für elastische Datenbanken](https://docs.microsoft.com/rest/api/sql/databases/listbyelasticpool)|Gibt eine Liste der Datenbanken in einem Pool für elastische Datenbanken zurück.|
 |[Datenbanken – Auflisten nach Server](https://docs.microsoft.com/rest/api/sql/databases/listbyserver)|Gibt eine Liste der Datenbanken auf einem Server zurück|

@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 09/14/2018
-ms.openlocfilehash: 86fdd7b0bd8ac76ddb2ac30ff324b80101c177e8
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 1ba98598a88973c5d5ae09cffda931a54d521b74
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353899"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53259136"
 ---
 # <a name="monitor-and-manage-performance-of-azure-sql-databases-and-pools-in-a-multi-tenant-saas-app"></a>Überwachen und Verwalten der Leistung von Azure SQL-Datenbanken und Pools in einer mehrinstanzenfähigen SaaS-App
 
@@ -75,7 +75,7 @@ Wenn Sie in einem vorherigen Tutorial bereits einen Batch von Mandanten bereitge
 
 Das Skript stellt in weniger als fünf Minuten 17 Mandanten bereit.
 
-Das Skript *New-TenantBatch* verwendet einen geschachtelten oder verknüpften Satz von [Resource Manager](../azure-resource-manager/index.md)-Vorlagen, die einen Batch von Mandanten erstellen. Dieser kopiert standardmäßig die Datenbank **basetenantdb** auf den Katalogserver, um die neuen Mandantendatenbanken zu erstellen, registriert diese dann im Katalog und initialisiert sie schließlich mit dem Mandantennamen und dem Veranstaltungsorttyp. Dies ist konsistent mit der Bereitstellung eines neuen Mandanten durch die App. Alle an *basetenantdb* vorgenommenen Änderungen werden auf alle danach bereitgestellten neuen Mandanten angewendet. Im [Tutorial zur Schemaverwaltung](saas-tenancy-schema-management.md) erfahren Sie, wie Sie Schemaänderungen an *vorhandenen* Mandantendatenbanken ausführen (einschließlich der Datenbank *basetenantdb*).
+Das Skript *New-TenantBatch* verwendet einen geschachtelten oder verknüpften Satz von [Resource Manager](../azure-resource-manager/index.yml)-Vorlagen, die einen Batch von Mandanten erstellen. Dieser kopiert standardmäßig die Datenbank **basetenantdb** auf den Katalogserver, um die neuen Mandantendatenbanken zu erstellen, registriert diese dann im Katalog und initialisiert sie schließlich mit dem Mandantennamen und dem Veranstaltungsorttyp. Dies ist konsistent mit der Bereitstellung eines neuen Mandanten durch die App. Alle an *basetenantdb* vorgenommenen Änderungen werden auf alle danach bereitgestellten neuen Mandanten angewendet. Im [Tutorial zur Schemaverwaltung](saas-tenancy-schema-management.md) erfahren Sie, wie Sie Schemaänderungen an *vorhandenen* Mandantendatenbanken ausführen (einschließlich der Datenbank *basetenantdb*).
 
 ## <a name="simulate-usage-on-all-tenant-databases"></a>Simulieren von Verbrauch auf allen Mandantendatenbanken
 
