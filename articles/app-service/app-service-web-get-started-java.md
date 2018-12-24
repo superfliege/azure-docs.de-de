@@ -1,5 +1,5 @@
 ---
-title: Erstellen Ihrer ersten Java-Web-App in Azure
+title: Erstellen von Java-Web-Apps – Azure App Service
 description: Erfahren Sie, wie Sie Web-Apps in App Service ausführen, indem Sie eine einfache Java-App bereitstellen.
 services: app-service\web
 documentationcenter: ''
@@ -14,17 +14,17 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 03/26/2018
 ms.author: cephalin;robmcm
-ms.custom: mvc, devcenter
-ms.openlocfilehash: 854ae54992a1389ec7c7f7892c738d070421264d
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.custom: seodec18
+ms.openlocfilehash: b9321241f174a97976b2f150a9bd6c3547f0dc20
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2018
-ms.locfileid: "30283927"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53253156"
 ---
 # <a name="create-your-first-java-web-app-in-azure"></a>Erstellen Ihrer ersten Java-Web-App in Azure
 
-[Azure-Web-Apps](app-service-web-overview.md) bietet einen hoch skalierbaren Webhostingdienst mit Self-Patching. Dieser Schnellstart veranschaulicht die Bereitstellung einer Java-Web-App in App Service über die [Eclipse-IDE für Java EE-Entwickler](http://www.eclipse.org/).
+[Azure-Web-Apps](app-service-web-overview.md) bietet einen hoch skalierbaren Webhostingdienst mit Self-Patching. Dieser Schnellstart veranschaulicht die Bereitstellung einer Java-Web-App in App Service über die [Eclipse-IDE für Java EE-Entwickler](https://www.eclipse.org/).
 
 > [!NOTE]
 >
@@ -41,7 +41,7 @@ Wenn Sie diesen Schnellstart abgeschlossen haben, entspricht Ihre Anwendung bei 
 
 Für diesen Schnellstart müssen Sie Folgendes installieren:
 
-* Die kostenlose <a href="http://www.eclipse.org/downloads/" target="_blank">Eclipse-IDE für Java EE-Entwickler</a>. In diesem Schnellstart wird Eclipse Neon verwendet.
+* Die kostenlose <a href="https://www.eclipse.org/downloads/" target="_blank">Eclipse-IDE für Java EE-Entwickler</a>. In diesem Schnellstart wird Eclipse Neon verwendet.
 * Das <a href="/java/azure/eclipse/azure-toolkit-for-eclipse-installation" target="_blank">Azure-Toolkit für Eclipse</a>.
 
 > [!NOTE]
@@ -98,7 +98,7 @@ Klicken Sie im Projektexplorer mit der rechten Maustaste auf Ihr Projekt, und w�
 
 ![Kontextmenü „Publish as Azure Web App“ (Als Azure-Web-App veröffentlichen)](./media/app-service-web-get-started-java/publish-as-azure-web-app-context-menu.png)
 
-Sollte das**** Azure-Anmeldedialogfeld angezeigt werden, gehen Sie wie in der [Anleitung zur Azure-Anmeldung für das Azure-Toolkit für Eclipse](/java/azure/eclipse/azure-toolkit-for-eclipse-sign-in-instructions) beschrieben vor, um Ihre Anmeldeinformationen einzugeben.
+Sollte das**Azure-Anmeldedialogfeld** angezeigt werden, gehen Sie wie in der [Anleitung zur Azure-Anmeldung für das Azure-Toolkit für Eclipse](/java/azure/eclipse/azure-toolkit-for-eclipse-sign-in-instructions) beschrieben vor, um Ihre Anmeldeinformationen einzugeben.
 
 ### <a name="deploy-web-app-dialog-box"></a>Dialogfeld „Deploy Web App“ (Web-App bereitstellen)
 
@@ -121,9 +121,9 @@ Im Dialogfeld **Create App Service** (App Service erstellen):
 * Wählen Sie ein Azure-Abonnement aus.
 * Auf der Registerkarte **App service plan** (App Service-Plan):
 
-  * **Create new** (Neu erstellen): Behalten Sie den Standardwert, d.h. den Namen des App Service-Plans, bei.
-  * **Location** (Standort): Wählen Sie **West Europe** (Europa, Westen) oder einen Standort in Ihrer Nähe aus.
-  * **Pricing tier** (Tarif): Wählen Sie die Option „Free“ aus. Eine Beschreibung der Features finden Sie unter [App Service – Preise](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+  * **Neue erstellen**: Behalten Sie den Standardwert bei, d.h. den Namen des App Service-Plans.
+  * **Standort**: Wählen Sie **Europa, Westen** oder einen Standort in Ihrer Nähe aus.
+  * **Tarif**: Wählen Sie die Option „Free“ aus. Eine Beschreibung der Features finden Sie unter [App Service – Preise](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
    ![Dialogfeld „App Service erstellen“](./media/app-service-web-get-started-java/create-app-service-dialog-box.png)
 
