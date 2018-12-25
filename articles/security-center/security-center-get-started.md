@@ -76,7 +76,7 @@ So aktivieren Sie die automatische Bereitstellung von Microsoft Monitoring Agent
 1. Klicken Sie im Hauptmenü von Security Center auf **Sicherheitsrichtlinie**.
 2. Wählen Sie in der Zeile des Abonnements **Einstellungen bearbeiten>**.
 3. Wählen Sie auf der Registerkarte **Datensammlung** für **Automatische Bereitstellung** **Aktivieren** aus.
-4. Wählen Sie **Speichern**aus.
+4. Wählen Sie **Speichern** aus.
 ****
   ![Aktivieren der automatischen Bereitstellung][6]
 
