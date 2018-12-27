@@ -4,15 +4,15 @@ description: Informationen zur Collectorappliance in Azure Migrate
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 10/30/2018
+ms.date: 12/05/2018
 ms.author: snehaa
 services: azure-migrate
-ms.openlocfilehash: 81e6731068db84f02073f02c49bea9a8fb7c7c70
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 255f5b34e53ddfb1a503130f0bccbac16a420f9a
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50241190"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53255974"
 ---
 # <a name="about-the-collector-appliance"></a>Informationen zur Collectorappliance
 
@@ -20,23 +20,11 @@ ms.locfileid: "50241190"
 
 Der Azure Migrate-Collector ist eine einfache Appliance, die zum Ermitteln einer lokalen vCenter-Umgebung verwendet werden kann, damit vor der Migration zu Azure eine Überprüfung mit dem [Azure Migrate](migrate-overview.md)-Dienst durchgeführt werden kann.  
 
-## <a name="discovery-methods"></a>Ermittlungsmethoden
+## <a name="discovery-method"></a>Ermittlungsmethode
 
-Es gibt zwei Optionen für die Collectorappliance: einmalige Ermittlung und kontinuierliche Ermittlung.
+Zuvor gab es zwei Optionen für die Collectorappliance: die einmalige Ermittlung und die kontinuierliche Ermittlung. Das Modell zur einmaligen Ermittlung ist inzwischen veraltet, da es bei der Sammlung von Leistungsdaten von den Statistikeinstellungen von vCenter Server abhängig war (Statistikeinstellungen mussten auf Stufe 3 festgelegt werden) und außerdem durchschnittliche Leistungsindikatoren erfasst hat (anstatt Spitzenwerte), was zu einer Unterdimensionierung führte. Das Modell zur kontinuierlichen Ermittlung gewährleistet eine granulare Datensammlung und führt zu einer exakten Größenanpassung aufgrund der Sammlung von Spitzenwertindikatoren. So funktioniert es:
 
-### <a name="one-time-discovery"></a>Einmalige Ermittlung
-
-Die Collectorappliance kommuniziert einmalig mit vCenter Server, um Metadaten über die VMs zu sammeln. Er verwendet diese Methode:
-
-- Die Appliance ist nicht kontinuierlich mit dem Azure Migrate-Projekt verbunden.
-- In der lokalen Umgebung vorgenommene Änderungen werden nach Abschluss der Ermittlung in Azure Migrate nicht widergespiegelt. Sie müssen dieselbe Umgebung in demselben Projekt erneut ermitteln, um sämtliche Änderungen widerspiegeln zu können.
-- Beim Sammeln von Leistungsdaten für eine VM verwendet die Appliance die in vCenter Server gespeicherten Verlaufsleistungsdaten. Sie erfasst den Leistungsverlauf des letzten Monats.
-- Für die Sammlung historischer Leistungsdaten müssen Sie die Statistikeinstellungen in vCenter Server auf Ebene 3 festlegen. Nach dem Festlegen der Ebene 3 müssen Sie mindestens einen Tag warten, damit vCenter Leistungsindikatoren sammeln kann. Daher wird empfohlen, die Ermittlung erst nach mindestens einem Tag durchzuführen. Wenn Sie die Umgebung anhand der Leistungsdaten für eine Woche oder einen Monat bewerten möchten, müssen Sie entsprechend lange warten.
-- Bei dieser Ermittlungsmethode erfasst Azure Migrate Durchschnittswerte für jede Metrik (keine Spitzenwerte). Dies kann zu Unterdimensionierung führen. Es wird empfohlen, die kontinuierliche Erkennung zu verwenden, um genauere Ergebnisse für die Größenfestlegung zu erhalten.
-
-### <a name="continuous-discovery"></a>Kontinuierliche Ermittlung
-
-Die Collectorappliance ist kontinuierlich mit dem Azure Migrate-Projekt verbunden und sammelt kontinuierlich Leistungsdaten von VMs.
+Die Collectorappliance ist kontinuierlich mit dem Azure Migrate-Projekt verbunden und sammelt fortwährend Leistungsdaten von VMs.
 
 - Der Collector profiliert kontinuierlich die lokale Umgebung, um alle 20 Sekunden Echtzeit-Verwendungsdaten zu sammeln.
 - Die Appliance führt für die 20-Sekunden-Stichproben ein Rollup aus und erstellt alle 15 Minuten einen einzelnen Datenpunkt.
@@ -44,21 +32,23 @@ Die Collectorappliance ist kontinuierlich mit dem Azure Migrate-Projekt verbunde
 - Dieses Modell ist für die Sammlung von Leistungsdaten nicht von den Statistikeinstellungen von vCenter Server abhängig.
 - Sie können die kontinuierliche Profilerstellung jederzeit über den Collector beenden.
 
-Beachten Sie, dass die Appliance nur Leistungsdaten kontinuierlich erfasst. Sie erkennt keine Konfigurationsänderungen in der lokalen Umgebung (etwa hinzugefügte VMs, Löschvorgänge, hinzugefügte Datenträger etc.). Wenn sich die Konfiguration in der lokalen Umgebung ändert, können Sie wie folgt vorgehen, damit die Änderungen im Portal berücksichtigt werden:
+**Sofortige Ergebnisse:** Mit der Appliance für die kontinuierliche Ermittlung können Sie nach Abschluss der Ermittlung (dauert je nach Anzahl von virtuellen Computern einige Stunden) sofort Bewertungen erstellen. Da die Erfassung von Leistungsdaten bereits beim Start der Ermittlung beginnt, empfiehlt es sich, das Größenkriterium in der Bewertung auf *Wie lokal* festzulegen, um sofortige Ergebnisse zu erzielen. Bei leistungsbasierten Bewertungen empfiehlt es sich, nach dem Start der Ermittlung mindestens einen Tag zu warten, um zuverlässige Größenempfehlungen zu erhalten.
 
-- Hinzugefügte Elemente (VMs, Datenträger, Kerne und Ähnliches): Damit diese Änderungen im Azure-Portal berücksichtigt werden, können Sie die Ermittlung über die Appliance beenden und anschließend wieder starten. Dadurch wird sichergestellt, dass die Änderungen im Azure Migrate-Projekt aktualisiert werden.
+Die Appliance erfasst nur Leistungsdaten kontinuierlich. Sie erkennt keine Konfigurationsänderungen in der lokalen Umgebung (etwa hinzugefügte VMs, Löschvorgänge, hinzugefügte Datenträger usw.). Wenn sich die Konfiguration in der lokalen Umgebung ändert, können Sie wie folgt vorgehen, damit die Änderungen im Portal berücksichtigt werden:
 
-- Gelöschte VMs: Das Löschen von VMs wird aufgrund des Entwurfs der Appliance auch dann nicht berücksichtigt, wenn Sie die Ermittlung beenden und wieder starten. Das liegt daran, dass Daten nachfolgender Ermittlungen älteren Ermittlungen angefügt und nicht überschrieben werden. In diesem Fall können Sie die VM im Portal einfach ignorieren, indem Sie sie aus Ihrer Gruppe entfernen und die Bewertung neu berechnen.
+- Hinzugefügte Elemente (virtuelle Computer, Datenträger, Kerne usw.): Damit diese Änderungen im Azure-Portal berücksichtigt werden, können Sie die Ermittlung über die Appliance beenden und anschließend wieder starten. Dadurch wird sichergestellt, dass die Änderungen im Azure Migrate-Projekt aktualisiert werden.
+
+- Gelöschte virtuelle Computer: Das Löschen von virtuellen Computern wird aufgrund des Entwurfs der Appliance auch dann nicht berücksichtigt, wenn Sie die Ermittlung beenden und wieder starten. Das liegt daran, dass Daten nachfolgender Ermittlungen älteren Ermittlungen angefügt und nicht überschrieben werden. In diesem Fall können Sie die VM im Portal einfach ignorieren, indem Sie sie aus Ihrer Gruppe entfernen und die Bewertung neu berechnen.
 
 > [!NOTE]
-> Die Funktionalität der kontinuierlichen Ermittlung ist in der Vorschau. Es empfiehlt sich, diese Methode zu verwenden, da sie präzise Leistungsdaten erfasst und zu einer korrekten Größe führt.
+> Die Appliance zur einmaligen Ermittlung ist inzwischen veraltet, da diese Methode bei der Verfügbarkeit der Leistungsdatenpunkte von den Statistikeinstellungen von vCenter Server abhängig war und durchschnittliche Leistungsindikatoren erfasst hat, was zu unterdimensionierten virtuellen Computern für die Migration zu Azure führte.
 
 ## <a name="deploying-the-collector"></a>Bereitstellen des Collectors
 
 Sie können die Collectorappliance mithilfe einer OVF-Vorlage bereitstellen:
 
 - Laden Sie die OVF-Vorlage aus einem Azure Migrate-Projekt im Azure-Portal herunter. Importieren Sie die heruntergeladene Datei in vCenter Server, um die VM der Collectorappliance einzurichten.
-- VMware richtet über die OVF-Vorlage eine VM mit 4 Kernen, 8 GB RAM und einem Datenträger mit 80 GB ein. Das Betriebssystem ist Windows Server 2012 R2 (64-Bit).
+- VMware richtet über die OVF-Vorlage eine VM mit 8 Kernen, 16 GB RAM und einem Datenträger mit 80 GB ein. Das Betriebssystem ist Windows Server 2016 (64-Bit).
 - Bei der Ausführung des Collectors werden einige Voraussetzungsprüfungen ausgeführt, um sicherzustellen, dass der Collector eine Verbindung mit Azure Migrate herstellen kann.
 
 - [Erfahren Sie mehr](tutorial-assessment-vmware.md#create-the-collector-vm) über das Erstellen des Collectors.
@@ -68,21 +58,25 @@ Sie können die Collectorappliance mithilfe einer OVF-Vorlage bereitstellen:
 
 Der Collector muss einige Voraussetzungsprüfungen bestehen, um sicherzustellen, dass er über das Internet eine Verbindung mit dem Azure Migrate-Dienst herstellen und ermittelte Daten hochladen kann.
 
+- **Azure-Cloud überprüfen**: Der Collector muss die Azure-Cloud kennen, die Sie migrieren möchten.
+    - Wählen Sie Azure Government aus, wenn Sie planen, zu Azure Government-Cloud zu migrieren.
+    - Wählen Sie Azure Global aus, wenn Sie planen, zur kommerziellen Azure-Cloud zu migrieren.
+    - Basierend auf der hier angegebenen Cloud sendet die Appliance ermittelte Metadaten an die jeweiligen Endpunkte.
 - **Internetverbindung prüfen**: Der Collector kann eine direkte Verbindung mit dem Internet herstellen oder über einen Proxy.
     - Bei der Voraussetzungsprüfung wird die Konnektivität mit [erforderlichen und optionalen URLs](#connect-to-urls) überprüft.
     - Wenn Sie eine direkte Verbindung mit dem Internet haben, müssen Sie lediglich sicherstellen, dass der Collector die erforderlichen URLs erreichen kann.
     - Wenn Sie eine Verbindung über einen Proxy herstellen, sollten Sie die [nachfolgenden Anforderungen](#connect-via-a-proxy) beachten.
-- **Zeitsynchronisierung überprüfen**: Der Collector muss mit dem Internetzeitserver synchronisiert sein, um sicherzustellen, dass die Anforderungen an den Dienst authentifiziert werden.
+- **Zeitsynchronisierung überprüfen**:  Der Collector muss mit dem Internetzeitserver synchronisiert sein, um sicherzustellen, dass die Anforderungen an den Dienst authentifiziert werden.
     - Die URL „portal.azure.com“ muss über den Collector erreichbar sein, damit die Uhrzeit überprüft werden kann.
     - Wenn der Computer nicht synchronisiert wird, müssen Sie die Uhrzeit auf der Collector-VM an die aktuelle Uhrzeit anpassen. Öffnen Sie hierzu auf der VM eine Eingabeaufforderung für Administratoren, und führen Sie **w32tm /tz** zum Überprüfen der Zeitzone aus. Führen Sie **w32tm /resync** zum Synchronisieren der Zeit aus.
-- **Ausführung des Collectordiensts überprüfen**: Der Azure Migrate-Collectordienst sollte auf der Collector-VM ausgeführt werden.
+- **Ausführung des Collectordiensts überprüfen**:   Der Azure Migrate-Collectordienst sollte auf der Collector-VM ausgeführt werden.
     - Dieser Dienst wird beim Hochfahren des Computers automatisch gestartet.
     - Starten Sie den Dienst über die Einstellungen, falls er nicht ausgeführt wird.
     - Der Collectordienst stellt eine Verbindung mit vCenter Server her, sammelt die VM-Metadaten und -Leistungsdaten und sendet diese an den Azure Migrate-Dienst.
-- **Installation von VMware PowerCLI 6.5 überprüfen**: Das PowerShell-Modul VMware PowerCLI 6.5 muss auf der Collector-VM installiert sein, damit eine Kommunikation mit vCenter Server möglich ist.
+- **Installation von VMware PowerCLI 6.5 überprüfen**:  Das PowerShell-Modul VMware PowerCLI 6.5 muss auf der Collector-VM installiert sein, damit eine Kommunikation mit vCenter Server möglich ist.
     - Wenn der Collector auf die URLs zugreifen kann, die für die Installation des Moduls erforderlich sind, erfolgt die Installation automatisch während der Bereitstellung des Collectors.
     - Wenn der Collector das Modul während der Bereitstellung nicht installieren kann, müssen Sie es [manuell installieren](#install-vwware-powercli-module-manually).
-- **Verbindung mit vCenter Server überprüfen**: Der Collector muss eine Verbindung mit vCenter Server herstellen und VMs, die zugehörigen Metadaten und Leistungsindikatoren abfragen können. [Überprüfen Sie die Voraussetzungen](#connect-to-vcenter-server) zum Herstellen einer Verbindung.
+- **Verbindung mit vCenter Server überprüfen**:  Der Collector muss eine Verbindung mit vCenter Server herstellen und VMs, die zugehörigen Metadaten und Leistungsindikatoren abfragen können. [Überprüfen Sie die Voraussetzungen](#connect-to-vcenter-server) zum Herstellen einer Verbindung.
 
 
 ### <a name="connect-to-the-internet-via-a-proxy"></a>Herstellen einer Verbindung mit dem Internet über einen Proxy
@@ -117,7 +111,8 @@ Die Konnektivitätsprüfung wird durch das Herstellen einer Verbindung mit einer
 
 **URL** | **Details**  | **Voraussetzungsprüfung**
 --- | --- | ---
-*.portal.azure.com | Überprüft die Konnektivität mit dem Azure-Dienst und die Zeitsynchronisierung. | Zugriff auf URLs ist erforderlich.<br/><br/> Die Voraussetzungsprüfung schlägt fehl, wenn keine Konnektivität besteht.
+*.portal.azure.com | Gilt für Azure Global. Überprüft die Konnektivität mit dem Azure-Dienst und die Zeitsynchronisierung. | Zugriff auf URLs ist erforderlich.<br/><br/> Die Voraussetzungsprüfung schlägt fehl, wenn keine Konnektivität besteht.
+*.portal.azure.us | Gilt nur für Azure Government. Überprüft die Konnektivität mit dem Azure-Dienst und die Zeitsynchronisierung. | Zugriff auf URLs ist erforderlich.<br/><br/> Die Voraussetzungsprüfung schlägt fehl, wenn keine Konnektivität besteht.
 *.oneget.org:443<br/><br/> *.windows.net:443<br/><br/> *.windowsazure.com:443<br/><br/> *.powershellgallery.com:443<br/><br/> *.msecnd.net:443<br/><br/> *.visualstudio.com:443| Wird zum Herunterladen des auf PowerShell basierenden vCenter PowerCLI-Moduls verwendet. | Zugriff auf URLs ist optional.<br/><br/> Die Voraussetzungsprüfung schlägt nicht fehl.<br/><br/> Die automatische Installation des Moduls auf der Collector-VM schlägt fehl. Sie müssen das Modul manuell installieren.
 
 
@@ -211,7 +206,7 @@ Nach der Einrichtung der Appliance können Sie die Ermittlung durchführen. So f
 
 ### <a name="collected-metadata"></a>Gesammelte Metadaten
 
-Die Collectorappliance ermittelt folgende statische Metadaten für VMs:
+Die Collectorappliance ermittelt folgende Konfigurationsmetadaten für jede VM. Die Konfigurationsdaten für die VMs sind eine Stunde nach Beginn der Ermittlung verfügbar.
 
 - Anzeigename der VM (in vCenter Server)
 - Inventarpfad der VM (der Host/Ordner in vCenter Server)
@@ -224,26 +219,18 @@ Die Collectorappliance ermittelt folgende statische Metadaten für VMs:
 
 #### <a name="performance-counters"></a>Leistungsindikatoren
 
-- **Einmalige Ermittlung**: Beachten Sie Folgendes, wenn die Leistungsindikatoren für eine einmalige Ermittlung gesammelt werden:
+ Die Collectorappliance sammelt die folgenden Leistungsindikatoren für jede VM vom ESXi-Host in einem Intervall von 20 Sekunden. Diese Leistungsindikatoren sind vCenter-Leistungsindikatoren und obwohl die Terminologie von Durchschnitt spricht, handelt es sich bei den 20-Sekunden-Stichproben um Echtzeit-Leistungsindikatoren. Die Leistungsdaten für die virtuellen Computer stehen im Portal zwei Stunden nach dem Starten der Ermittlung zur Verfügung. Bei leistungsbasierten Bewertungen wird dringend empfohlen, mindestens einen Tag mit deren Erstellung zu warten, um korrekte Größenempfehlungen zu erhalten. Wenn Sie sofortige Ergebnisse wünschen, können Sie Bewertungen erstellen, bei denen das Größenkriterium auf *Wie lokal* festgelegt ist, wodurch die Leistungsdaten für die korrekte Größenanpassung nicht berücksichtigt werden.
 
-    - Es kann bis zu 15 Minuten dauern, bis Konfigurationsmetadaten gesammelt und an das Projekt gesendet werden.
-    - Nach der Sammlung der Konfigurationsdaten kann es bis zu einer Stunde dauern, bis Leistungsdaten im verfügbar sind.
-    - Wenn die Metadaten im Portal verfügbar sind, wird die Liste der VMs angezeigt, und Sie können mit dem Erstellen von Gruppen für die Bewertung beginnen.
-- **Kontinuierliche Ermittlung**: Beachten Sie bei der kontinuierlichen Ermittlung Folgendes:
-    - Konfigurationsdaten für die VM sind eine Stunde nach Beginn der Ermittlung verfügbar
-    - Leistungsdaten sind nach zwei Stunden verfügbar.
-    - Warten Sie nach dem Starten der Ermittlung mindestens einen Tag, bis die Appliance ein Profil für die Umgebung erstellt hat, bevor Sie Bewertungen erstellen.
-
-**Leistungsindikator** | **Level** | **Ebene pro Gerät** | **Auswirkung auf die Bewertung**
---- | --- | --- | ---
-cpu.usage.average | 1 | Nicht verfügbar | Empfohlene VM-Größe und -Kosten  
-mem.usage.average | 1 | Nicht verfügbar | Empfohlene VM-Größe und -Kosten  
-virtualDisk.read.average | 2 | 2 | Berechnet die Datenträgergröße, Speicherkosten und die VM-Größe
-virtualDisk.write.average | 2 | 2  | Berechnet die Datenträgergröße, Speicherkosten und die VM-Größe
-virtualDisk.numberReadAveraged.average | 1 | 3 |  Berechnet die Datenträgergröße, Speicherkosten und die VM-Größe
-virtualDisk.numberWriteAveraged.average | 1 | 3 |   Berechnet die Datenträgergröße, Speicherkosten und die VM-Größe
-net.received.average | 2 | 3 |  Berechnet die VM-Größe                          |
-net.transmitted.average | 2 | 3 | Berechnet die VM-Größe     
+**Leistungsindikator** |  **Auswirkung auf die Bewertung**
+--- | ---
+cpu.usage.average | Empfohlene VM-Größe und -Kosten  
+mem.usage.average | Empfohlene VM-Größe und -Kosten  
+virtualDisk.read.average | Berechnet die Datenträgergröße, Speicherkosten und die VM-Größe
+virtualDisk.write.average | Berechnet die Datenträgergröße, Speicherkosten und die VM-Größe
+virtualDisk.numberReadAveraged.average | Berechnet die Datenträgergröße, Speicherkosten und die VM-Größe
+virtualDisk.numberWriteAveraged.average | Berechnet die Datenträgergröße, Speicherkosten und die VM-Größe
+net.received.average | Berechnet die VM-Größe                          
+net.transmitted.average | Berechnet die VM-Größe     
 
 ## <a name="next-steps"></a>Nächste Schritte
 
