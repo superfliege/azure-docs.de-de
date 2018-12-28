@@ -1,6 +1,6 @@
 ---
-title: Implementieren der Facettennavigation in Azure Search | Microsoft Docs
-description: Fügen Sie die Facettennavigation Anwendungen hinzu, die in Microsoft Azure integriert sind, einem in Microsoft Azure gehosteten Cloudsuchdienst.
+title: Implementieren der Facettennavigation in einer Kategorienhierarchie – Azure Search
+description: Fügen Sie die Facettennavigation Anwendungen hinzu, die in Azure Search integriert sind, einem in Microsoft Azure gehosteten Cloudsuchdienst.
 author: HeidiSteen
 manager: cgronlun
 services: search
@@ -8,12 +8,13 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 3/10/2017
 ms.author: heidist
-ms.openlocfilehash: e00e875619e4ed6800f5739362ff0c52971f6f16
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.custom: seodec2018
+ms.openlocfilehash: 337ee5259e980509c73099f0e3417bb31ec3276d
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32195293"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53313937"
 ---
 # <a name="how-to-implement-faceted-navigation-in-azure-search"></a>Implementieren der Facettennavigation in Azure Search
 Bei der Facettennavigation handelt es sich um einen Filtermechanismus für die selbstständige Drilldownnavigation in Suchanwendungen. Der Begriff „Facettennavigation“ ist Ihnen zwar möglicherweise nicht bekannt, aber Sie haben diese wahrscheinlich bereits verwendet. Die Facettennavigation ist im Prinzip nichts weiter als die Kategorien, die zum Filtern der Ergebnisse verwendet werden.
@@ -269,11 +270,11 @@ Wenn Sie die Facettenliste dynamisch auf der Grundlage nicht vertrauenswürdiger
 ### <a name="filtering-tips"></a>Filtertipps
 **Erhöhen Sie die Genauigkeit der Suche mit Filtern**
 
-Verwenden Sie Filter. Wenn Sie sich ausschließlich auf Suchausdrücke verlassen, wird aufgrund der Wortstammerkennung unter Umständen ein Dokument zurückgegeben, bei dem keines der Felder den exakten Facettenwert enthält.
+ Verwenden Sie Filter. Wenn Sie sich ausschließlich auf Suchausdrücke verlassen, wird aufgrund der Wortstammerkennung unter Umständen ein Dokument zurückgegeben, bei dem keines der Felder den exakten Facettenwert enthält.
 
 **Erhöhen Sie die Leistung der Suche mit Filtern**
 
-Filter grenzen die für die Suche infrage kommenden Dokumente ein und schließen sie von der Sortierung aus. Wenn Sie über eine große Anzahl von Dokumenten verfügen, können Sie die Leistung mit einem selektiven Facettendrilldownelement in der Regel steigern.
+ Filter grenzen die für die Suche infrage kommenden Dokumente ein und schließen sie von der Sortierung aus. Wenn Sie über eine große Anzahl von Dokumenten verfügen, können Sie die Leistung mit einem selektiven Facettendrilldownelement in der Regel steigern.
   
 **Filtern Sie nur die facettierten Felder**
 
@@ -304,11 +305,11 @@ Beachten Sie die Unterscheidung zwischen Facettenergebnissen und Suchergebnissen
 > Die Erläuterung von `count` kann verwirrend sein, wenn mehrere Typen vorhanden sind. Die folgende Tabelle bietet einen kurzen Überblick über die Verwendung des Begriffs in Azure Search-API, Beispielcode und Dokumentation: 
 
 * `@colorFacet.count`<br/>
-  Im Darstellungscode wird die Facette mit einem count-Parameter versehen, um die Anzahl der Facettenergebnisse anzuzeigen. In den Facettenergebnissen gibt „count“ die Anzahl von Dokumenten an, die dem Facettenbegriff oder -bereich entsprechen.
+   Im Darstellungscode wird die Facette mit einem count-Parameter versehen, um die Anzahl der Facettenergebnisse anzuzeigen. In den Facettenergebnissen gibt „count“ die Anzahl von Dokumenten an, die dem Facettenbegriff oder -bereich entsprechen.
 * `&facet=City,count:12`<br/>
-  In einer Facettenabfrage können Sie „count“ auf einen Wert festlegen.  Der Standardwert lautet „10“, Sie können jedoch einen größeren oder kleineren Wert angeben. Mit `count:12` werden in den Facettenergebnissen die 12 relevantesten Übereinstimmungen (auf der Grundlage der Dokumentanzahl) zurückgegeben.
+   In einer Facettenabfrage können Sie „count“ auf einen Wert festlegen.  Der Standardwert lautet „10“, Sie können jedoch einen größeren oder kleineren Wert angeben. Mit `count:12` werden in den Facettenergebnissen die 12 relevantesten Übereinstimmungen (auf der Grundlage der Dokumentanzahl) zurückgegeben.
 * "`@odata.count`"<br/>
-  In der Abfrageantwort gibt dieser Wert die Anzahl übereinstimmender Elemente in den Suchergebnissen an. Dieser ist häufig größer als die Summe aller Facettenergebnisse, da hier auch Elemente enthalten sind, die zwar dem Suchbegriff entsprechen, für die aber keine übereinstimmenden Facettenwerte vorhanden sind.
+   In der Abfrageantwort gibt dieser Wert die Anzahl übereinstimmender Elemente in den Suchergebnissen an. Dieser ist häufig größer als die Summe aller Facettenergebnisse, da hier auch Elemente enthalten sind, die zwar dem Suchbegriff entsprechen, für die aber keine übereinstimmenden Facettenwerte vorhanden sind.
 
 **Ermitteln Sie die Anzahl in Facettenergebnissen**
 
@@ -338,7 +339,7 @@ Azure Search vereinfacht die Bereichserstellung durch zwei Bereichsberechnungsan
 Um Preisfacets in Schritten von 10 $ festzulegen, geben Sie Folgendes an: `&facet=price,interval:10`
 
 **Vorgehensweise 2: Verwenden einer Werteliste**  
-Bei numerischen Daten können Sie eine Werteliste verwenden.  Sehen Sie sich die folgende Darstellung des Facettenbereichs für ein `listPrice`-Feld an:
+ Bei numerischen Daten können Sie eine Werteliste verwenden.  Sehen Sie sich die folgende Darstellung des Facettenbereichs für ein `listPrice`-Feld an:
 
   ![Beispielwerteliste][5]
 
@@ -400,7 +401,7 @@ Achten Sie bei der Arbeit mit Suchergebnissen auf die Veränderung der Abfrageko
 Weitere Einblicke in die Entwurfsprinzipien der Facettennavigation erhalten Sie unter folgenden Links:
 
 * [Designing for Faceted Search](http://www.uie.com/articles/faceted_search/)
-* [Design Patterns: Faceted Navigation](http://alistapart.com/article/design-patterns-faceted-navigation)
+* [Entwurfsmuster: Facettennavigation](http://alistapart.com/article/design-patterns-faceted-navigation)
 
 
 <!--Anchors-->
