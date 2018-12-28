@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 08/02/2018
 ms.author: glenga
-ms.openlocfilehash: 15d2e40127579fbd278cc3dc18653d782a515caa
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 5f55122b3bf4bb7160459d524b20dd1303cc0fd8
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46957311"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52835419"
 ---
 # <a name="supported-languages-in-azure-functions"></a>In Azure Functions unterstützte Sprachen
 
@@ -37,11 +37,9 @@ Es sind [zwei Versionen der Azure Functions-Runtime](functions-versions.md) verf
 
 ### <a name="experimental-languages"></a>Experimentelle Sprachen
 
-Die experimentellen Sprachen in Version 1.x sind nicht gut skalierbar und unterstützen nicht alle Bindungen. Beispielsweise ist Python 1.x langsam, da die Functions-Runtime bei jedem Funktionsaufruf *python.exe* ausführt. Und obwohl Python HTTP-Bindungen unterstützt, kann es nicht auf das Anforderungsobjekt zugreifen.
+Die experimentellen Sprachen in Version 1.x sind nicht gut skalierbar und unterstützen nicht alle Bindungen. Beispielsweise ist die experimentelle Unterstützung für PowerShell in 1.x auf Version 5.1 eingeschränkt, weil diese Version standardmäßig auf den virtuellen Computern installiert ist, auf denen Funktions-Apps ausgeführt werden. Wenn Sie PowerShell-Skripts ausführen möchten, ziehen Sie [Azure Automation](https://azure.microsoft.com/services/automation/) in Erwägung.
 
-Die experimentelle Unterstützung für PowerShell in 1.x ist auf Version 5.1 eingeschränkt, weil diese Version standardmäßig auf den virtuellen Computern installiert ist, auf denen Funktions-Apps ausgeführt werden. Wenn Sie PowerShell-Skripts ausführen möchten, ziehen Sie [Azure Automation](https://azure.microsoft.com/services/automation/) in Erwägung.
-
-Verwenden Sie keine experimentellen Sprachen für Bereiche, die für Sie sehr wichtig sind, da es dafür keinen offiziellen Support gibt. Für Probleme mit experimentellen Sprachen sollten keine Supportfälle erstellt werden. 
+Verwenden Sie keine experimentellen Funktionen für Bereiche, die für Sie sehr wichtig sind, da es dafür keinen offiziellen Support gibt. Für Probleme mit experimentellen Sprachen sollten keine Supportfälle erstellt werden. 
 
 Für Version 2.x der Runtime werden keine experimentellen Sprachen unterstützt. Die Unterstützung für neue Sprachen wird nur hinzugefügt, wenn die Sprache in der Produktion unterstützt werden kann. 
 
@@ -64,3 +62,6 @@ Weitere Informationen zum Verwenden einer der Sprachen in allgemeiner Verfügbar
 
 > [!div class="nextstepaction"]
 > [Java](functions-reference-java.md)
+
+> [!div class="nextstepaction"]
+> [Python](functions-reference-python.md)

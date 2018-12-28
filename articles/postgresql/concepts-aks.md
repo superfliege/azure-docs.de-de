@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.date: 11/27/2018
 ms.topic: article
-ms.openlocfilehash: 86474fe612fb93f3a5853f9fea98eb9ab2dd00e5
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: 770a583ad09ec1aaa8191f5dafb3db61b2386e68
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52336508"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53166233"
 ---
 # <a name="connecting-azure-kubernetes-service-and-azure-database-for-postgresql"></a>Verbinden von Azure Kubernetes Service und Azure Database for PostgreSQL
 
@@ -24,7 +24,7 @@ Azure Kubernetes Service (AKS) stellt einen verwalteten Kubernetes-Cluster berei
 ## <a name="accelerated-networking"></a>Beschleunigte Netzwerke
 Verwenden Sie in Ihrem AKS-Cluster zugrunde liegende virtuelle Computer, für die der beschleunigte Netzwerkbetrieb aktiviert ist. Wenn der beschleunigte Netzwerkbetrieb auf einem virtuellen Computer aktiviert ist, ist die Latenz geringer, Jitter reduziert und die CPU-Auslastung des virtuellen Computers niedriger. Informieren Sie sich eingehender über die Funktionsweise des beschleunigten Netzwerkbetriebs, die unterstützten Betriebssystemversionen und die unterstützten VM-Instanzen für [Linux](../virtual-network/create-vm-accelerated-networking-cli.md).
 
-Ab November 2018 unterstützt AKS den beschleunigten Netzwerkbetrieb auf diesen unterstützen VM-Instanzen. Der beschleunigte Netzwerkbetrieb ist für neue AKS-Cluster standardmäßig aktiviert, in denen diese virtuellen Computer verwendet werden.
+Ab November 2018 unterstützt AKS den beschleunigten Netzwerkbetrieb auf diesen unterstützen VM-Instanzen. Der beschleunigte Netzwerkbetrieb ist für neue AKS-Cluster, in denen diese virtuellen Computer verwendet werden, standardmäßig aktiviert.
 
 Sie können überprüfen, ob Ihr AKS-Cluster über den beschleunigten Netzwerkbetrieb verfügt:
 1. Navigieren Sie zum Azure-Portal, und wählen Sie Ihren AKS-Cluster aus.

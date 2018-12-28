@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/14/2017
+ms.date: 12/07/2018
 ms.author: tomfitz
-ms.openlocfilehash: e3c5a581b02f1dd7b7415ebd93de0e425ac2f8ae
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 85aab429fd59afd36cd026e6d8aef2b7e6f6e122
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34358364"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53140454"
 ---
 # <a name="outputs-section-in-azure-resource-manager-templates"></a>Ausgabenabschnitt in Azure Resource Manager-Vorlagen
 Im Ausgabenabschnitt legen Sie Werte fest, die von der Bereitstellung zurückgegeben werden. Sie könnten z. B. den URI für den Zugriff auf eine bereitgestellte Ressource zurückgeben.
@@ -48,7 +48,9 @@ Verwenden Sie für die Azure-Befehlszeilenschnittstelle den folgenden Befehl:
 az group deployment show -g <resource-group-name> -n <deployment-name> --query properties.outputs.resourceID.value
 ```
 
-Mit der Funktion [reference](resource-group-template-functions-resource.md#reference) können Sie den Ausgabewert aus einer verknüpften Vorlage abrufen. Um einen Ausgabewert aus einer verknüpften Vorlage abzurufen, rufen Sie den Eigenschaftswert mit einer der folgenden ähnlichen Syntax ab: `"[reference('<name-of-deployment>').outputs.<property-name>.value]"`.
+Mit der Funktion [reference](resource-group-template-functions-resource.md#reference) können Sie den Ausgabewert aus einer verknüpften Vorlage abrufen. Um einen Ausgabewert aus einer verknüpften Vorlage abzurufen, rufen Sie den Eigenschaftswert mit einer der folgenden ähnlichen Syntax ab: `"[reference('deploymentName').outputs.propertyName.value]"`.
+
+Wenn Sie eine Ausgabeeigenschaft von einer verknüpften Vorlage abrufen, kann der Name der Eigenschaft keinen Bindestrich enthalten.
 
 So können Sie beispielsweise die IP-Adresse auf einen Lastenausgleich festlegen, indem Sie einen Wert aus einer verknüpften Vorlage abrufen.
 
@@ -75,9 +77,9 @@ Das folgende Beispiel zeigt die Struktur einer Ausgabedefinition:
 
 | Elementname | Erforderlich | BESCHREIBUNG |
 |:--- |:--- |:--- |
-| outputName |Ja |Name des Ausgabewerts. Es muss sich um einen gültigen JavaScript-Bezeichner handeln. |
-| type |Ja |Der Typ des Ausgabewerts. Ausgabewerte unterstützen dieselben Typen wie Vorlagen-Eingabeparameter. |
-| value |Ja |Vorlagensprachausdruck, der ausgewertet und als Ausgabewert zurückgegeben wird. |
+| outputName |JA |Name des Ausgabewerts. Es muss sich um einen gültigen JavaScript-Bezeichner handeln. |
+| type |JA |Der Typ des Ausgabewerts. Ausgabewerte unterstützen dieselben Typen wie Vorlagen-Eingabeparameter. |
+| value |JA |Vorlagensprachausdruck, der ausgewertet und als Ausgabewert zurückgegeben wird. |
 
 ## <a name="recommendations"></a>Empfehlungen
 
