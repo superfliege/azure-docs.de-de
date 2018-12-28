@@ -1,5 +1,5 @@
 ---
-title: Der Skill „Shaper“ der kognitiven Suche (Azure Search) | Microsoft-Dokumentation
+title: Die Qualifikation „Shaper“ der kognitiven Suche – Azure Search
 description: Extrahieren Sie Metadaten und strukturierte Informationen aus unstrukturierten Daten, und bringen Sie diese in die Form eines komplexen Typs in einer Azure Search-Anreicherungspipeline.
 services: search
 manager: pablocas
@@ -10,12 +10,13 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: 286e1f9d6f6ae09d98aa87b447df7a7524642a1f
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.custom: seodec2018
+ms.openlocfilehash: 627c53f7339dbc35d822a0bf6038ca0f1ea5e653
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45728998"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53313830"
 ---
 #   <a name="shaper-cognitive-skill"></a>Der Skill „Shaper“
 
@@ -26,9 +27,6 @@ Mit dem Skill „Shaper“ können Sie im Grunde eine Struktur erstellen, den Na
 Standardmäßig unterstützt diese Methode Objekte, die nur über eine Ebene verfügen. Für komplexere Objekte können Sie mehrere Shaper-Schritte verketten.
 
 In der Antwort lautet der Ausgabename immer „output“. Intern kann die Pipeline „output“ einen anderen Namen zuordnen, wie „analyzedText“ in den folgenden Beispielen, aber der Skill „Shaper“ selbst gibt in der Antwort „output“ zurück. Dies kann wichtig sein, wenn Sie angereicherte Dokumente debuggen und die Namensdiskrepanz bemerken, oder wenn Sie einen benutzerdefinierten Skill erstellen und die Antwort selbst strukturieren.
-
-> [!NOTE]
-> Die kognitive Suche befindet sich derzeit in der öffentlichen Vorschauphase. Die Ausführung von Qualifikationsgruppen sowie die Bildextraktion und Normalisierung werden derzeit kostenlos angeboten. Die Preise für diese Funktionen werden zu einem späteren Zeitpunkt bekannt gegeben. 
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Util.ShaperSkill

@@ -1,5 +1,5 @@
 ---
-title: Analysen in Azure Search | Microsoft-Dokumentation
+title: Analysetools für linguistische Analyse und Textverarbeitung – Azure Search
 description: Weisen Sie durchsuchbaren Textfeldern in einem Index Analysen zu, um die Lucene-Standardanalyse durch benutzerdefinierte, vordefinierte oder sprachspezifische Alternativen zu ersetzen.
 services: search
 ms.service: search
@@ -8,14 +8,15 @@ ms.date: 09/11/2017
 ms.author: heidist
 manager: cgronlun
 author: HeidiSteen
-ms.openlocfilehash: 68ce4fa5536f21d6d66245a9383a4b58c42febff
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.custom: seodec2018
+ms.openlocfilehash: 1de3743d6ec37d263e16b168d32d2b56b0a28295
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49116369"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53310537"
 ---
-# <a name="analyzers-in-azure-search"></a>Analysemodule in Azure Search
+# <a name="analyzers-for-text-processing-in-azure-search"></a>Analysetools für Textverarbeitung in Azure Search
 
 Ein *Analyzer* ist eine Komponente der [Volltextsuche](search-lucene-query-architecture.md), mit dem Text in Abfragezeichenfolgen und indizierten Dokumenten verarbeitet wird. Typische Transformationen während der Analyse:
 
@@ -82,7 +83,7 @@ Die [Search Analyzer Demo](http://alice.unearth.ai/) ist eine Demo eines Drittan
 Die folgenden Beispiele zeigen Analysedefinitionen für einige gängige Szenarien.
 
 <a name="Example1"></a>
-### <a name="example-1-custom-options"></a>Beispiel 1: Benutzerdefinierte Optionen
+### <a name="example-1-custom-options"></a>Beispiel 1: Benutzerdefinierte Optionen
 
 Dieses Beispiel zeigt eine Analysedefinition mit benutzerdefinierten Optionen. Benutzerdefinierte Optionen für char-Filter, Tokenizer und token-Filter werden separat als benannte Konstrukte angegeben, auf die dann in der Analysedefinition verwiesen wird. Vordefinierte Elemente werden unverändert verwendet und einfach über ihren Namen angegeben.
 
@@ -149,7 +150,7 @@ Das Beispiel im Detail:
 ~~~~
 
 <a name="Example2"></a>
-### <a name="example-2-override-the-default-analyzer"></a>Beispiel 2: Überschreiben der Standardanalyse
+### <a name="example-2-override-the-default-analyzer"></a>Beispiel 2: Überschreiben der Standardanalyse
 
 Die Standardanalyse ist die Standardeinstellung. Angenommen, Sie möchten die Standardeinstellung durch eine andere vordefinierte Analyse (beispielsweise „pattern“) ersetzen. Wenn Sie keine benutzerdefinierten Optionen festlegen, müssen Sie nur den Namen in der Felddefinition angeben.
 
@@ -181,7 +182,7 @@ Das Element „analyzer“ überschreibt die Standardanalyse für das jeweilige 
 ~~~~
 
 <a name="Example3"></a>
-### <a name="example-3-different-analyzers-for-indexing-and-search-operations"></a>Beispiel 3: Unterschiedliche Analysen für Indizierung und Suchvorgänge
+### <a name="example-3-different-analyzers-for-indexing-and-search-operations"></a>Beispiel 3: Unterschiedliche Analysen für Indizierung und Suchvorgänge
 
 Die APIs enthalten zusätzliche Indexattribute, die es ermöglichen, unterschiedliche Analyzer für Indizierung und Suchvorgänge anzugeben. Die Attribute `searchAnalyzer` und `indexAnalyzer` müssen als Paar angegeben werden und ersetzen das Einzelattribut `analyzer`.
 

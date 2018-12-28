@@ -1,23 +1,24 @@
 ---
-title: Workflows zum Konfigurieren einer Azure ExpressRoute-Verbindung | Microsoft-Dokumentation
-description: Diese Seite enthält die Workflows zum Konfigurieren von ExpressRoute-Verbindungen und -Peerings.
+title: 'Workflows zum Konfigurieren von Verbindungen – ExpressRoute: Azure | Microsoft-Dokumentation'
+description: Diese Seite zeigt die Workflows zum Konfigurieren von ExpressRoute-Verbindungen und -Peerings.
 services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 08/29/2018
+ms.date: 12/07/2018
 ms.author: cherylmc
-ms.openlocfilehash: 765050c9c21c7ba752535fc391cc9bb7d8ac4083
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.custom: seodec18
+ms.openlocfilehash: 3ffcc5ac2193e607573ceb93717258f5349d1f15
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43301037"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53101686"
 ---
 # <a name="expressroute-workflows-for-circuit-provisioning-and-circuit-states"></a>ExpressRoute-Workflows für die Verbindungsbereitstellung und Verbindungszustände
 Auf dieser Seite erhalten Sie einen Überblick über die Workflows zur Dienstbereitstellung und Routingkonfiguration.
 
-![](./media/expressroute-workflows/expressroute-circuit-workflow.png)
+![Verbindungsworkflow](./media/expressroute-workflows/expressroute-circuit-workflow.png)
 
 Die folgende Abbildung und die dazugehörigen Schritte veranschaulichen die Aufgaben, die zum vollständigen Bereitstellen einer ExpressRoute-Verbindung ausgeführt werden müssen. 
 
@@ -35,7 +36,7 @@ Die folgende Abbildung und die dazugehörigen Schritte veranschaulichen die Aufg
      > 
      > 
      
-     ![](./media/expressroute-workflows/routing-workflow.png)
+     ![Routing von Workflows](./media/expressroute-workflows/routing-workflow.png)
 5. Verknüpfen von virtuellen Netzwerken mit ExpressRoute-Verbindungen – Sie können virtuelle Netzwerke mit Ihrer ExpressRoute-Verbindung verknüpfen. Führen Sie die Schritte zum [Verknüpfen von VNets](expressroute-howto-linkvnet-arm.md) mit Ihrer Verbindung aus. Diese VNets können sich im gleichen Azure-Abonnement wie die ExpressRoute-Verbindung oder aber in einem anderen Abonnement befinden.
 
 ## <a name="expressroute-circuit-provisioning-states"></a>Bereitstellungszustände von ExpressRoute-Verbindungen

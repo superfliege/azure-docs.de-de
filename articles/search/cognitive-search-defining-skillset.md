@@ -1,5 +1,5 @@
 ---
-title: Erstellen eines Skillsets in einer Pipeline der kognitiven Suche (Azure Search) | Microsoft-Dokumentation
+title: Erstellen einer Qualifikationsgruppe in einer Pipeline der kognitiven Suche – Azure Search
 description: Definieren Sie Datenextrahierung, Verarbeitung natürlicher Sprache oder Bildanalyseschritte, um strukturierte Informationen aus Ihren Daten für die Verwendung in Azure Search anzureichern und zu extrahieren.
 manager: pablocas
 author: luiscabrer
@@ -9,12 +9,13 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: luisca
-ms.openlocfilehash: 997b106f748a2f18e8141f77f3b9ff8bb6b9d971
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.custom: seodec2018
+ms.openlocfilehash: 091a165dacbf0e98532f343745e56c4acf765b84
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36268022"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53320794"
 ---
 # <a name="how-to-create-a-skillset-in-an-enrichment-pipeline"></a>Erstellen eines Skillsets in einer Anreicherungspipeline
 
@@ -29,7 +30,7 @@ Wichtige Punkte, die Sie beachten sollten:
 
 + Pro Indexer kann nur ein Skillset vorhanden sein.
 + Ein Skillset muss mindestens einen Skill umfassen.
-+ Sie können mehrere Skills des gleichen Typs erstellen (z.B. Varianten eines Bildanalyseskills), aber jeder Skill kann nur einmal innerhalb eines Skillsets verwendet werden.
++ Sie können mehrere Qualifikationen des gleichen Typs erstellen (z. B. Varianten einer Bildanalysequalifikation).
 
 ## <a name="begin-with-the-end-in-mind"></a>Denken Sie bereits zu Beginn an das Ende
 

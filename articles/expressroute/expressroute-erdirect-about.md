@@ -1,5 +1,5 @@
 ---
-title: Informationen zu Azure ExpressRoute Direct | Microsoft-Dokumentation
+title: Informationen zu ExpressRoute Direct – Azure | Microsoft-Dokumentation
 description: Diese Seite enthält eine Übersicht über ExpressRoute Direct (Vorschau).
 services: expressroute
 author: mialdrid
@@ -7,21 +7,22 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: mialdrid
-ms.openlocfilehash: 3b46f24edf10fee7001b35ffdd9fa218aa438e19
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.custom: seodec18
+ms.openlocfilehash: 2f984eb8cb09e5d65c4a366b827f695c739003f3
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50959672"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53163820"
 ---
 # <a name="about-expressroute-direct-preview"></a>Informationen zu ExpressRoute Direct (Vorschau)
 
-ExpressRoute Direct bietet Kunden die Möglichkeit, sich direkt mit dem globalen Netzwerk von Microsoft zu verbinden, und zwar an strategisch über die ganze Welt verteilten Peeringstandorten. ExpressRoute Direct bietet duale Konnektivität mit 100 GBit/s, die eine Aktiv/Aktiv-Konnektivität nach Maß unterstützt.
+ExpressRoute Direct bietet Ihnen die Möglichkeit, sich direkt mit dem globalen Netzwerk von Microsoft zu verbinden, und zwar an strategisch über die ganze Welt verteilten Peeringstandorten. ExpressRoute Direct bietet duale Konnektivität mit 100 GBit/s, die eine Aktiv/Aktiv-Konnektivität nach Maß unterstützt.
 
 ExpressRoute Direct bietet u.a. folgende Leistungsmerkmale:
 
 * Umfangreiche Datenerfassung in Diensten wie Azure Storage und Cosmos DB
-* Physische Isolierung für Branchen, die Regulierung sowie dedizierte und isolierte Konnektivität erfordern, z.B. Bankwesen, Behörden und Einzelhandel
+* Physische Isolierung für Branchen, die Regulierung sowie dedizierte und isolierte Konnektivität erfordern, z. B. Bankwesen, Behörden und Einzelhandel
 * Präzise Steuerung der Leitungsverteilung basierend auf Unternehmensbereichen
 
 > [!IMPORTANT]
@@ -44,7 +45,7 @@ Bevor Sie ExpressRoute Direct nutzen, müssen Sie Ihr Abonnement für die Vorsch
 | --- | --- |
 | Verwendung von Dienstanbietern, um schnelles Onboarding und schnelle Konnektivität mit der vorhandenen Infrastruktur zu ermöglichen | Erfordert eine Infrastruktur mit 100 GBit/s und die vollständige Verwaltung aller Ebenen
 | Integration mit Hunderten von Dienstanbietern, einschließlich Ethernet und MPLS | Direkte/Dedizierte Kapazität für regulierte Branchen und Erfassung sehr umfangreicher Datenmengen |
-| Leitungs-SKUs zwischen 50 MBit/s und 10 GBit/s | Kunden können die folgenden Leitungs-SKUs kombinieren: 5 GBit/s, 10 GBit/s, 40 GBit/s, 100 GBit/s – begrenzt auf insgesamt 200 GBit/s
+| Leitungs-SKUs zwischen 50 MBit/s und 10 GBit/s | Kunden können eine Kombination der folgenden Verbindungs-SKUs auswählen: 5 Gbit/s, 10 Gbit/s, 40 Gbit/s, 100 Gbit/s – beschränkt auf maximal 200 Gbit/s
 | Für Einzelmandanten optimiert | Für Einzelmandanten/Cloud-Dienstanbieter /mehrere Unternehmensbereiche optimiert
 
 ## <a name="expressroute-direct-circuits"></a>ExpressRoute Direct-Leitungen

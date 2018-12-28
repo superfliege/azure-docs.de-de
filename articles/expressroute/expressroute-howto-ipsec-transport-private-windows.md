@@ -1,5 +1,5 @@
 ---
-title: Konfigurieren des IPsec-Transportmodus für Windows-Hosts – privates Azure ExpressRoute-Peering | Microsoft-Dokumentation
+title: 'Konfigurieren des IPsec-Transportmodus für Windows-Hosts – privates Peering: ExpressRoute: Azure | Microsoft-Dokumentation'
 description: Vorgehensweise zum Aktivieren des IPsec-Transportmodus zwischen Windows Azure-VMs und lokalen Windows-Hosts über privates ExpressRoute-Peering mit Gruppenrichtlinienobjekten und Organisationseinheiten.
 services: expressroute
 author: fabferri
@@ -7,12 +7,13 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 10/17/2018
 ms.author: fabferri
-ms.openlocfilehash: 1b228f0238c678c0cea4a6be2a6c3e0b929ed4d6
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.custom: seodec18
+ms.openlocfilehash: 39bbe8a0ec11b90d506ce0d1c0bad37ddba46a5d
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49394328"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53139113"
 ---
 # <a name="configure-ipsec-transport-mode-for-expressroute-private-peering"></a>Konfigurieren des IPsec-Transportmodus für privates ExpressRoute-Peering
 
@@ -42,11 +43,11 @@ Dieses Diagramm zeigt die IPsec-Tunnel in der Übertragung im privaten ExpressRo
 ### <a name="working-with-ipsec-policy"></a>Arbeiten mit einer IPsec-Richtlinie
 
 In Windows ist Verschlüsselung mit einer IPsec-Richtlinie verknüpft. In einer IPsec-Richtlinie wird bestimmt, welcher IP-Datenverkehr geschützt wird, und wird der Sicherheitsmechanismus bestimmt, der auf die IP-Pakete angewendet wird.
-Eine **IPSec-Richtlinie** besteht aus den folgenden Elementen: **Filterlisten**, **Filteraktionen** und **Sicherheitsregeln**.
+**IPSec-Richtlinien** bestehen aus den folgenden Elementen: **Filterlisten**, **Filteraktionen** und **Sicherheitsregeln**.
 
 Für das Konfigurieren einer IPsec-Richtlinie muss die Bedeutung der folgenden IPsec-Richtlinienbegriffe klar sein:
 
-* **IPsec-Richtlinie:** Eine Sammung von Regeln. Es kann immer nur jeweils genau eine Richtlinie aktiv („zugewiesen“) sein. Jede Richtlinie kann mehrere Regeln haben, die alle gleichzeitig aktiv sein können. Einem Computer kann immer nur jeweils genau eine aktive IPsec-Richtlinie zugewiesen sein. In einer IPsec-Richtlinie können aber mehrere Aktionen definiert sein, die in verschiedenen Situationen ausgeführt werden können. Jede Gruppe von IPsec-Regeln ist mit einer Filterliste verknüpft, die den Typ des Netzwerkdatenverkehrs betrifft, für den die jeweilige Regel gilt.
+* **IPSec-Richtlinien:** Eine Sammlung von Regeln. Es kann immer nur jeweils genau eine Richtlinie aktiv („zugewiesen“) sein. Jede Richtlinie kann mehrere Regeln haben, die alle gleichzeitig aktiv sein können. Einem Computer kann immer nur jeweils genau eine aktive IPsec-Richtlinie zugewiesen sein. In einer IPsec-Richtlinie können aber mehrere Aktionen definiert sein, die in verschiedenen Situationen ausgeführt werden können. Jede Gruppe von IPsec-Regeln ist mit einer Filterliste verknüpft, die den Typ des Netzwerkdatenverkehrs betrifft, für den die jeweilige Regel gilt.
 
 * **Filterliste:** Eine Filterliste ist eine Zusammenstellung eines oder mehrerer Filter. Eine Liste kann mehrere Filter enthalten. In einem Filter wird definiert, ob Kommunikation je nach IP-Adressbereichen, Protokollen oder sogar bestimmten Protokollports zugelassen, geschützt oder blockiert wird. In jedem Filter wird ein bestimmter Satz von Bedingungen abgeglichen, z. B. Pakete, die aus einem bestimmten Subnetz an einen bestimmten Computer hinter einem bestimmten Zielport gesendet wurden. Wenn die Netzwerkbedingungen mindestens einem dieser Filter entsprechen, wird die Filterliste aktiviert. Jeder Filter ist in einer bestimmten Filterliste definiert. Ein Filter kann nicht zu mehreren Filterlisten gehören. Eine Filterliste kann aber in mehrere IPsec-Richtlinien integriert werden. 
 
@@ -143,7 +144,7 @@ Damit das Gruppenrichtlinienobjekt auf die Organisationseinheit angewendet wird,
 7. Aktivieren Sie auf der Seite **Sicherheit des IP-Datenverkehrs** die Option **Benutzerdefiniert**, und klicken Sie dann auf **Einstellungen...** .
 
   [![21]][21]
-8. Aktivieren Sie auf der Seite **Einstellungen für Sicherheitsmethoden anpassen** die Option **Datenintegrität und Verschlüsselung (ESP): SHA1, 3DES**. Klicken Sie dann auf **OK**.
+8. Aktivieren Sie auf der Seite **Einstellungen für Sicherheitsmethoden anpassen** die Option **Datenintegrität und Verschlüsselung (ESP):  SHA1, 3DES.** Klicken Sie dann auf **OK**.
 
   [![22]][22]
 9. Auf der Seite **Filteraktionen verwalten** können Sie sehen, dass der **myEncryption**-Filter erfolgreich hinzugefügt wurde. Klicken Sie auf **Schließen**.
@@ -169,7 +170,7 @@ Erstellen Sie eine Filterliste, in der verschlüsselter HTTP-Datenverkehr mit de
 5. Geben Sie die Quelladresse für den IP-Datenverkehr in **IP-Adresse oder Subnetz** an,und klicken Sie dann auf **Weiter**.
 
   [![28]][28]
-6. Geben Sie die **Zieladresse** für „IP-Adresse oder Subnetz“ an. Klicken Sie auf **Weiter**.
+6. Festlegen der **Zieladresse:** IP-Adresse oder Subnetz. Klicken Sie auf **Weiter**.
 
   [![29]][29]
 7. Wählen Sie auf der Seite **IP-Protokolltyp** die Option **TCP** aus. Klicken Sie auf **Weiter**.
@@ -251,7 +252,7 @@ Fügen Sie der IPSec-Richtlinie die **IP-Filterliste** und die **Filteraktion** 
 6. Wählen Sie die vorhandene Filteraktion **myEncryption** aus, die Sie zuvor erstellt haben.
 
   [![46]][46]
-7. Windows unterstützt vier verschiedene Authentifizierungstypen: Kerberos, Zertifikate, NTLMv2 und vorinstallierter Schlüssel. Da hier mit Hosts gearbeitet wird, die in eine Domäne eingebunden sind, aktivieren Sie **Active Directory-Standard (Kerberos V5-Protokoll)**, und klicken Sie dann auf **Weiter**.
+7. Windows unterstützt vier verschiedene Arten der Authentifizierung: Kerberos, Zertifikate, NTLMv2 und vorinstallierte Schlüssel. Da hier mit Hosts gearbeitet wird, die in eine Domäne eingebunden sind, aktivieren Sie **Active Directory-Standard (Kerberos V5-Protokoll)**, und klicken Sie dann auf **Weiter**.
 
   [![47]][47]
 8. Die neue Richtlinie erstellt die Sicherheitsregel **azure-onpremises-HTTP8080**. Klicken Sie auf **OK**.

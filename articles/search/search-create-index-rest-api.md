@@ -1,21 +1,21 @@
 ---
-title: Erstellen eines Index (REST-API – Azure Search) | Microsoft-Dokumentation
-description: Erstellen Sie einen Index im Code mithilfe der Azure Search HTTP-REST-API.
+title: Erstellen eines Index im Code mithilfe der REST-API – Azure Search
+description: Erstellen Sie einen durchsuchbaren Volltextindex im Code mithilfe von HTTP-Anforderungen und der Azure Search REST-API.
 ms.date: 10/17/2018
 author: mgottein
 manager: cgronlun
 ms.author: magottei
-tags: azure-portal
 services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
-ms.openlocfilehash: ff534bc287e3872ee87ed808be249a6e68c68ab3
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.custom: seodec2018
+ms.openlocfilehash: f47aead95d7135e2528fea11c116effa93df4c4c
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49403542"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53309211"
 ---
 # <a name="create-an-azure-search-index-using-the-rest-api"></a>Erstellen eines Azure Search-Indexes mit der REST-API
 > [!div class="op_single_selector"]

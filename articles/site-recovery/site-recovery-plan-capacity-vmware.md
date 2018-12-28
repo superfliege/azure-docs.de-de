@@ -4,15 +4,15 @@ description: Verwenden Sie diesen Artikel zum Planen der Kapazität und Skalieru
 author: nsoneji
 manager: garavd
 ms.service: site-recovery
-ms.date: 10/28/2018
+ms.date: 12/11/2018
 ms.topic: conceptual
-ms.author: nisoneji
-ms.openlocfilehash: c6ec47017d944a206642932223ebb1d9df9cf942
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.author: mayg
+ms.openlocfilehash: f724837e8cce733680b98a5df5690e6a8dfbf6ee
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51011730"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53258847"
 ---
 # <a name="plan-capacity-and-scaling-for-vmware-disaster-recovery-to-azure"></a>Planen der Kapazität und Skalierung der VMware-Notfallwiederherstellung für Azure
 
@@ -81,7 +81,7 @@ Nachdem Sie mit dem [Deployment Planner-Tool](site-recovery-deployment-planner.m
 
 ### <a name="throttle-bandwidth"></a>Bandbreite einschränken
 
-1. Öffnen Sie das Azure Backup-MMC-Snap-In auf dem Computer, der als Prozessserver fungiert. Standardmäßig ist auf dem Desktop oder im Ordner „C:\Programme\Microsoft Azure Recovery Services Agent\bin\wabadmin“ eine Verknüpfung für Backup verfügbar.
+1. Öffnen Sie das Azure Backup-MMC-Snap-In auf dem Computer, der als Prozessserver fungiert. Standardmäßig ist eine Verknüpfung für Backup auf dem Desktop oder im folgenden Ordner verfügbar: C:\Programme\Microsoft Azure Recovery Services Agent\bin.
 2. Klicken Sie im Snap-In auf **Eigenschaften ändern**.
 
     ![Screenshot der Azure Backup-MMC-Snap-In-Option zum Ändern von Eigenschaften](./media/site-recovery-vmware-to-azure/throttle1.png)

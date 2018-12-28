@@ -6,14 +6,14 @@ author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 11/18/2018
-ms.author: ramamill
-ms.openlocfilehash: 8b67947412055d0c0b9f39cb49961e435393cec9
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.date: 12/11/2018
+ms.author: mayg
+ms.openlocfilehash: 58d45036cac6ad985b7b1ffb2736a500fdcb5ce2
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52162601"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53251027"
 ---
 # <a name="deploy-a-configuration-server"></a>Bereitstellen eines Konfigurationsservers
 
@@ -148,6 +148,9 @@ Um Unterbrechungen bei der laufenden Replikation zu vermeiden, stellen Sie siche
 7. Wo kann ich die Tresorregistrierungsschlüssel herunterladen?
 
     Im **Recovery Services-Tresor**, **Verwalten** > **Site Recovery-Infrastruktur** > **Konfigurationsserver**. Klicken Sie unter „Server“ auf **Registrierungsschlüssel herunterladen**, um die Datei mit den Tresoranmeldeinformationen herunterzuladen.
+8. Kann ich einen bestehenden Konfigurationsserver klonen und für die Replikationsorchestrierung verwenden?
+
+    **Nein**, die Verwendung einer geklonten Konfigurationsserverkomponente wird nicht unterstützt. 
 
 ## <a name="troubleshoot-deployment-issues"></a>Problembehandlung bei Bereitstellungsproblemen
 

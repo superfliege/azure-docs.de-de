@@ -1,25 +1,19 @@
 ---
-title: Beheben von Leistungsproblemen im virtuellen Azure-Netzwerk | Microsoft-Dokumentation
+title: 'Behandeln von Problemen mit der Leistung des virtuellen Netzwerks: Azure | Microsoft-Dokumentation'
 description: Diese Seite enthält eine standardisierte Methode zum Testen der Leistung der Azure-Netzwerkverbindung.
 services: expressroute
-documentationcenter: na
 author: tracsman
-manager: rossort
-editor: ''
-ms.assetid: ''
 ms.service: expressroute
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 ms.date: 12/20/2017
 ms.author: jonor
-ms.openlocfilehash: 56f011632a2aa3ef0632efd5ace472c0fc79a329
-ms.sourcegitcommit: a648f9d7a502bfbab4cd89c9e25aa03d1a0c412b
+ms.custom: seodec18
+ms.openlocfilehash: 2572ff3711fb86cda88a86744192980a5b2d5361
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/22/2017
-ms.locfileid: "27318770"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53277623"
 ---
 # <a name="troubleshooting-network-performance"></a>Beheben von Problemen bei der Netzwerkleistung
 ## <a name="overview"></a>Übersicht
@@ -185,7 +179,7 @@ Testeinrichtung:
 
 | | | | | | |
 |-|-|-|-|-|-|
-|ExpressRoute<br/>Speicherort|Azure<br/>Region|Geschätzte<br/>Entfernung (km)|Latency|1 Sitzung:<br/>Bandbreite|Maximum<br/>Bandbreite|
+|ExpressRoute<br/>Standort|Azure<br/>Region|Geschätzte<br/>Entfernung (km)|Latency|1 Sitzung:<br/>Bandbreite|Maximum<br/>Bandbreite|
 | Seattle | USA, Westen 2        |    191 km |   5 ms | 262 MBit/s |  3,74 GBit/s | 21
 | Seattle | USA (Westen)          |  1.094 km |  18 ms |  82,3 MBit/s |  3,7 GBit/s | 20
 | Seattle | USA (Mitte)       |  2.357 km |  40 ms |  38,8 MBit/s |  2,55 GBit/s | 17
@@ -204,7 +198,7 @@ Testeinrichtung:
 \* Die Latenz für Brasilien ist ein gutes Beispiel dafür, dass sich die Luftlinie erheblich von der Entfernung der Faserstrecke unterscheiden kann. Ich würde erwarten, dass die Latenz ungefähr bei 160 ms liegt, tatsächlich sind es aber 189 ms. Dieser Unterschied gegenüber meiner Erwartung kann auf ein Netzwerkproblem in einem Bereich hindeuten, aber sehr wahrscheinlich verläuft die Faserstrecke nicht in einer direkten Linie durch Brasilien, sodass sich zusätzlich ca. 1.000 km zwischen Brasilien und Seattle ergeben.
 
 ## <a name="next-steps"></a>Nächste Schritte
-1. Laden Sie das Azure Connectivity Toolkit von GitHub unter [http://aka.ms/AzCT][ACT] herunter.
+1. Laden Sie das Azure Connectivity Toolkit von GitHub unter [http://aka.ms/AzCT][ACT].
 2. Befolgen Sie die Anweisungen zum [Testen der Verbindungsleistung][Performance Doc].
 
 <!--Image References-->
