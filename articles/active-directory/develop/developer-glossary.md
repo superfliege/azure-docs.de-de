@@ -17,12 +17,12 @@ ms.date: 11/16/2017
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: elisol
-ms.openlocfilehash: 7ce11b3e54a8770a2b3d53e335afc57f52d3d14e
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: b74c3d355a720948c22e90b1792dcd6139c101ea
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52425308"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53338208"
 ---
 # <a name="azure-active-directory-developer-glossary"></a>Azure Active Directory-Glossar für Entwickler
 
@@ -41,7 +41,7 @@ Ausführlichere Informationen finden Sie in der [Azure AD-Tokenreferenz][AAD-Tok
 
 ## <a name="application-id-client-id"></a>Anwendungs-ID (Client-ID)
 
-Der eindeutige Bezeichner, den Azure AD für eine Anwendungsregistrierung ausgibt, die eine bestimmte Anwendung und die zugehörigen Konfigurationen kennzeichnet. Diese Anwendungs-ID ([Client-ID](https://tools.ietf.org/html/rfc6749#page-15)) wird verwendet, wenn Authentifizierungsanforderungen ausgeführt werden, und wird den Authentifizierungsbibliotheken in der Entwicklungszeit bereitgestellt. Die Anwendungs-ID (Client-ID) ist kein geheimer Schlüssel. 
+Der eindeutige Bezeichner, den Azure AD für eine Anwendungsregistrierung ausgibt, die eine bestimmte Anwendung und die zugehörigen Konfigurationen kennzeichnet. Diese Anwendungs-ID ([Client-ID](https://tools.ietf.org/html/rfc6749#page-15)) wird verwendet, wenn Authentifizierungsanforderungen ausgeführt werden, und wird den Authentifizierungsbibliotheken in der Entwicklungszeit bereitgestellt. Die Anwendungs-ID (Client-ID) ist kein geheimer Schlüssel.
 
 ## <a name="application-manifest"></a>Anwendungsmanifest
 
@@ -102,7 +102,7 @@ Ausführlichere Informationen finden Sie in der [Azure AD-Tokenreferenz][AAD-Tok
 
 ## <a name="client-application"></a>Clientanwendung
 
-Gemäß Definition des [OAuth2-Autorisierungsframeworks][OAuth2-Role-Def] eine Anwendung, die im Auftrag des [Ressourcenbesitzers](#resource-owner) geschützte Ressourcen anfordert. Der Begriff „Client“ impliziert keine bestimmte Hardwareimplementierung (also beispielsweise, ob die Anwendung auf einem Server, Desktopcomputer oder anderen Gerät ausgeführt wird). 
+Gemäß Definition des [OAuth2-Autorisierungsframeworks][OAuth2-Role-Def] eine Anwendung, die im Auftrag des [Ressourcenbesitzers](#resource-owner) geschützte Ressourcen anfordert. Der Begriff „Client“ impliziert keine bestimmte Hardwareimplementierung (also beispielsweise, ob die Anwendung auf einem Server, Desktopcomputer oder anderen Gerät ausgeführt wird).
 
 Eine Clientanwendung fordert eine [Autorisierung](#authorization) von einem Ressourcenbesitzer an, um an einer [OAuth2-Autorisierungsgewährung](#authorization-grant) teilzunehmen, und greift ggf. im Auftrag des Ressourcenbesitzers auf APIs/Daten zu. Das OAuth2-Autorisierungsframework [definiert zwei Arten von Clients][OAuth2-Client-Types]: „vertraulich“ und „öffentlich“ – abhängig davon, ob der Client die Vertraulichkeit seiner Anmeldeinformationen gewährleisten kann. Anwendungen können einen auf einem Webserver ausgeführten [Webclient (vertraulich)](#web-client), einen auf einem Gerät installierten [nativen Client (öffentlich)](#native-client) oder einen im Browser eines Geräts ausgeführten [Benutzer-Agent-basierten Client (öffentlich)](#user-agent-based-client) implementieren.
 
@@ -151,7 +151,7 @@ Gemäß Definition des [OAuth2-Autorisierungsframeworks][OAuth2-Role-Def] eine E
 
 Gemäß Definition des[ OAuth2-Autorisierungsframeworks][OAuth2-Role-Def] ein Server, der geschützte Ressourcen hostet und von [Clientanwendungen](#client-application), die ein [Zugriffstoken](#access-token) vorlegen, Anforderungen für geschützte Ressourcen akzeptieren und darauf reagieren kann. Wird auch als geschützter Ressourcenserver oder als Ressourcenanwendung bezeichnet.
 
-Ein Ressourcenserver macht APIs verfügbar und steuert den Zugriff auf seine geschützten Ressourcen über [Bereiche](#scopes) und [Rollen](#roles) (unter Verwendung des OAuth 2.0-Autorisierungsframeworks). Beispiele wären etwa die Azure AD Graph-API (bietet Zugriff auf Azure AD-Mandantendaten) und die Office 365-APIs (bieten Zugriff auf Daten wie E-Mails, Kalender und Dokumente). Beide stehen auch über die [Microsoft Graph-API][Microsoft-Graph] zur Verfügung. 
+Ein Ressourcenserver macht APIs verfügbar und steuert den Zugriff auf seine geschützten Ressourcen über [Bereiche](#scopes) und [Rollen](#roles) (unter Verwendung des OAuth 2.0-Autorisierungsframeworks). Beispiele wären etwa die Azure AD Graph-API (bietet Zugriff auf Azure AD-Mandantendaten) und die Office 365-APIs (bieten Zugriff auf Daten wie E-Mails, Kalender und Dokumente). Beide stehen auch über die [Microsoft Graph-API][Microsoft-Graph] zur Verfügung.
 
 Genau wie bei einer Clientanwendung wird auch die Identitätskonfiguration einer Ressourcenanwendung mittels [Registrierung](#application-registration) bei einem Azure AD-Mandanten eingerichtet und sowohl ein Anwendungs- als auch ein Dienstprinzipalobjekt bereitgestellt. Einige von Microsoft bereitgestellte APIs (etwa die Azure AD Graph-API) verfügen über vorab registrierte Dienstprinzipale, die bei der Bereitstellung in allen Mandanten verfügbar gemacht wurden.
 
@@ -219,7 +219,7 @@ Eine Art von [Clientanwendung](#client-application) , die sämtlichen Code auf e
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Das [Entwicklerhandbuch zu Azure Active Directory][AAD-Dev-Guide] ist die Einstiegsseite für alle relevanten Themen rund um die Azure AD-Entwicklung und enthält unter anderem eine Übersicht über die [Anwendungsintegration][AAD-How-To-Integrate] sowie grundlegende Informationen zur [Authentifizierung in Azure AD und Authentifizierungsszenarien für Azure AD][AAD-Auth-Scenarios]. Codebeispiele und Tutorials dazu, wie schnelles Einrichten und Ausführen ermöglicht wird, finden Sie auch auf [Github](https://github.com/azure-samples?utf8=%E2%9C%93&q=active%20directory&type=&language=).
+Das [Entwicklerhandbuch zu Azure Active Directory][AAD-Dev-Guide] ist die Einstiegsseite für alle relevanten Themen rund um die Azure AD-Entwicklung und enthält unter anderem eine Übersicht über die [Anwendungsintegration][AAD-How-To-Integrate] sowie grundlegende Informationen zur [Authentifizierung in Azure AD und Authentifizierungsszenarien für Azure AD][AAD-Auth-Scenarios]. Codebeispiele und Tutorials zur schnellen Einrichtung und Ausführung finden Sie auch auf [GitHub](https://github.com/azure-samples?utf8=%E2%9C%93&q=active%20directory&type=&language=).
 
 Senden Sie uns im folgenden Abschnitt für Kommentare Ihr Feedback, und unterstützen Sie uns bei der Verbesserung dieser Inhalte. Dabei sind Anregungen für neue Definitionen oder zur Aktualisierung bereits vorhandener Definitionen willkommen.
 

@@ -7,25 +7,25 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/04/2018
+ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 5634c14ee2b25600d66ff0f2c7385b2aaa9f1810
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: a1457b2aa571b58502b7d819eb3bcf142c10dac1
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43699497"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52725062"
 ---
 # <a name="custom-policies-in-azure-active-directory-b2c"></a>Benutzerdefinierte Richtlinien in Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Benutzerdefinierte Richtlinien sind Konfigurationsdateien, die das Verhalten Ihres Azure Active Directory (Azure AD) B2C-Mandanten definieren. Im Azure AD B2C-Portal sind integrierte Richtlinien für die häufigsten Identitätsaufgaben vordefiniert. Benutzerdefinierte Richtlinien können von einem Identitätsentwickler vollständig bearbeitet werden, um viele verschiedene Aufgaben auszuführen.
+Benutzerdefinierte Richtlinien sind Konfigurationsdateien, die das Verhalten Ihres Azure Active Directory (Azure AD) B2C-Mandanten definieren. Im Azure AD B2C-Portal sind Benutzerflows für die häufigsten Identitätsaufgaben vordefiniert. Benutzerdefinierte Richtlinien können von einem Identitätsentwickler vollständig bearbeitet werden, um viele verschiedene Aufgaben auszuführen.
 
-## <a name="comparing-built-in-policies-and-custom-policies"></a>Vergleich von integrierten und benutzerdefinierten Richtlinien
+## <a name="comparing-user-flows-and-custom-policies"></a>Vergleichen von Benutzerflows mit benutzerdefinierten Richtlinien
 
-| | Integrierte Richtlinien | Benutzerdefinierte Richtlinien |
+| | Benutzerabläufe | Benutzerdefinierte Richtlinien |
 |-|-------------------|-----------------|
 | Zielbenutzer | Alle Anwendungsentwickler mit oder ohne Identitätskenntnissen | Identitätsexperten, Systemintegratoren, Berater und interne Identitätsteams. Sie sind mit OpenID Connect-Flows sowie Identitätsanbietern und anspruchsbasierten Authentifizierungen vertraut. |
 | Konfigurationsmethode | Azure-Portal mit benutzerfreundlicher Benutzeroberfläche (User Interface, UI) | Direktes Bearbeiten von XML-Dateien und anschließendes Hochladen in das Azure-Portal |
@@ -33,7 +33,7 @@ Benutzerdefinierte Richtlinien sind Konfigurationsdateien, die das Verhalten Ihr
 | Anpassung von Attributen | Standard- und benutzerdefinierte Attribute | identisch |
 | Token- und Sitzungsverwaltung | Benutzerdefinierte Token und mehrere Sitzungsoptionen | identisch |
 | Identitätsanbieter | Vordefinierter lokaler oder Social Media-Anbieter | Standardbasierte OIDC-, OAUTH- und SAML-Protokolle |
-| Identitätsaufgaben | Registrierung oder Anmeldung mit lokalen Konten oder vielen Konten für soziale Netzwerke<br><br>Self-Service-Kennwortzurücksetzung<br><br>Profilbearbeitung<br><br>Multi-Factor Authentication<br><br>Anpassung von Token und Sitzungen<br><br>Zugriffstoken-Flows | Führen Sie dieselben Aufgaben wie bei integrierten Richtlinien mit benutzerdefinierten Identitätsanbietern durch, oder verwenden Sie benutzerdefinierte Bereiche.<br><br>Stellen Sie ein Benutzerkonto bei der Registrierung in einem anderen System bereit.<br><br>Senden Sie mit Ihrem eigenen E-Mail-Dienstanbieter eine Willkommens-E-Mail.<br><br>Verwenden Sie einen Benutzerspeicher außerhalb von Azure AD B2C.<br><br>Überprüfen Sie die von Benutzern bereitgestellten Informationen mit einem vertrauenswürdigen System über eine API. |
+| Identitätsaufgaben | Registrierung oder Anmeldung mit lokalen Konten oder vielen Konten für soziale Netzwerke<br><br>Self-Service-Kennwortzurücksetzung<br><br>Profilbearbeitung<br><br>Multi-Factor Authentication<br><br>Anpassung von Token und Sitzungen<br><br>Zugriffstoken-Flows | Führen Sie dieselben Aufgaben wie bei Benutzerflows mit benutzerdefinierten Identitätsanbietern aus, oder verwenden Sie benutzerdefinierte Bereiche.<br><br>Stellen Sie ein Benutzerkonto bei der Registrierung in einem anderen System bereit.<br><br>Senden Sie mit Ihrem eigenen E-Mail-Dienstanbieter eine Willkommens-E-Mail.<br><br>Verwenden Sie einen Benutzerspeicher außerhalb von Azure AD B2C.<br><br>Überprüfen Sie die von Benutzern bereitgestellten Informationen mit einem vertrauenswürdigen System über eine API. |
 
 ## <a name="policy-files"></a>Richtliniendateien
 
@@ -43,7 +43,7 @@ Es werden die folgenden drei Typen von Richtliniendateien verwendet:
 - **Erweiterungsdatei**: Sie enthält die eindeutigen Konfigurationsänderungen für Ihren Mandanten.
 - **Datei der vertrauenden Seite (Relying Party, RP)**: Dabei handelt es sich um die einzige aufgabenorientierte Datei, die direkt von der Anwendung oder dem Dienst (auch als „vertrauende Seite“ bezeichnet) aufgerufen wird. Jede eindeutige Aufgabe erfordert eine eigene RP, und die Anzahl kann abhängig von den Branding-Anforderungen die „Gesamtzahl von Anwendungen multipliziert mit der Gesamtzahl von Anwendungsfällen“ betragen.
 
-Integrierte Richtlinien in Azure AD B2C folgen dem oben dargestellten 3-Dateien-Muster, aber der Entwickler sieht nur die Datei der vertrauenden Seite, während das Azure-Portal Änderungen an der Erweiterungsdatei im Hintergrund vornimmt.
+Benutzerflows in Azure AD B2C folgen dem oben dargestellten 3-Dateien-Muster, aber der Entwickler sieht nur die Datei der vertrauenden Seite, während das Azure-Portal Änderungen an der Erweiterungsdatei im Hintergrund vornimmt.
 
 ## <a name="custom-policy-core-concepts"></a>Wichtige Konzepte für benutzerdefinierte Richtlinien
 

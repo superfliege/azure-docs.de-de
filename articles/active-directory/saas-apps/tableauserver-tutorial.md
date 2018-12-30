@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit Tableau Server | Microsoft Docs'
+title: 'Tutorial: Azure Active Directory-Integration von Tableau Server | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie das einmalige Anmelden für Azure Active Directory und Tableau Server konfigurieren.
 services: active-directory
 documentationCenter: na
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2018
 ms.author: jeedes
-ms.openlocfilehash: 9986e7984f24e065886f6d0a8b2d06968f778702
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 84ea1d999a26ce0ce1d548da92549c6a718d5978
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52582716"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52850362"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-tableau-server"></a>Tutorial: Azure Active Directory-Integration mit Tableau Server
+# <a name="tutorial-azure-active-directory-integration-with-tableau-server"></a>Tutorial: Azure Active Directory-Integration von Tableau Server
 
 In diesem Tutorial erfahren Sie, wie Sie Tableau Server in Azure Active Directory (Azure AD) integrieren.
 
@@ -175,7 +175,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden mit Azure AD im Azure-
    
     >[!NOTE] 
     >Kunden müssen ein Zertifikat in die Tableau Server SAML-SSO-Konfiguration hochladen, das im SSO-Fluss ignoriert wird.
-    >Wenn Sie Hilfe bei der Konfiguration von SAML für Tableau Server benötigen, finden Sie weitere Informationen im Artikel [Konfigurieren von SAML](http://onlinehelp.tableau.com/current/server/en-us/config_saml.htm).
+    >Wenn Sie Hilfe bei der Konfiguration von SAML für Tableau Server benötigen, finden Sie weitere Informationen im Artikel [Konfigurieren von SAML](https://onlinehelp.tableau.com/current/server/en-us/config_saml.htm).
 
 ### <a name="creating-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 

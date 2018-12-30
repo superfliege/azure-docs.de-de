@@ -1,5 +1,5 @@
 ---
-title: 'Azure Active Directory Domain Services: angehaltene Domänen | Microsoft-Dokumentation'
+title: 'Azure Active Directory Domain Services: Angehaltene Domänen | Microsoft-Dokumentation'
 description: Anhalten und Löschen verwalteter Domänen
 services: active-directory-ds
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/20/2018
 ms.author: ergreenl
-ms.openlocfilehash: 31e7307e427b175eb7424ecaee380bd90ce8150e
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: 161a9f1ac517d372884e7606dbd2ef30c910bf6b
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52443405"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52968099"
 ---
 # <a name="suspended-domains"></a>Angehaltene Domänen
 Wenn Azure Active Directory Domain Services (Azure AD DS) Anforderungen für eine verwaltete Domäne für einen längeren Zeitraum-nicht verarbeiten kann, wird die verwaltete Domäne in den Zustand „Angehalten“ versetzt. In diesem Artikel wird erläutert, weshalb verwaltete Domänen angehalten werden und wie Sie eine angehaltene Domäne bereinigen.
@@ -28,7 +28,7 @@ Wenn Azure Active Directory Domain Services (Azure AD DS) Anforderungen für ein
 
 ## <a name="states-your-managed-domain-can-be-in"></a>Mögliche Zustände für Ihre verwaltete Domäne
 
-![Zeitachse für angehaltene Domänen](media\active-directory-domain-services-suspension\suspension-timeline.PNG)
+![Zeitachse für angehaltene Domänen](media/active-directory-domain-services-suspension/suspension-timeline.PNG)
 
 In der Grafik oben werden die möglichen Zustände einer von Azure AD DS verwalteten Domäne dargestellt.
 
@@ -67,7 +67,7 @@ In einigen Fällen (z.B. bei einer ungültigen Netzwerkkonfiguration) sind die D
 Eine verwaltete Domäne wird aus den folgenden Gründen in den Zustand **Angehalten** versetzt:
 
 * Mindestens eine kritische Warnung wurde nicht innerhalb von 15 Tagen aufgelöst. Kritische Warnungen können durch eine Fehlkonfiguration verursacht werden, die den Zugriff auf von Azure AD DS benötigte Ressourcen blockiert.
-    * Ein Beispiel: Die Warnung [AADDS104: Netzwerkfehler](active-directory-ds-troubleshoot-nsg.md) wurde in der verwalteten Domäne mehr als 15 Tage lang nicht aufgelöst.
+    * Beispiel: Die Warnung [AADDS104: Netzwerkfehler](active-directory-ds-troubleshoot-nsg.md) wurde in der verwalteten Domäne mehr als 15 Tage lang nicht aufgelöst.
 * Ein Abrechnungsproblem in Bezug auf Ihr Azure-Abonnement liegt vor, oder das Azure-Abonnement ist abgelaufen.
 
 Verwaltete Domänen werden angehalten, wenn Microsoft nicht in der Lage ist, die Domäne fortlaufend zu verwalten, zu überwachen, zu patchen oder zu sichern.

@@ -8,13 +8,13 @@ keywords: Sicherung und Notfallwiederherstellung; Backup-Dienst
 ms.service: backup
 ms.topic: conceptual
 ms.date: 8/6/2018
-ms.author: saurse;trinadhk
-ms.openlocfilehash: cf27848b6ca63f06c7d452ac67908cb85dbafd47
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.author: trinadhk
+ms.openlocfilehash: 5262c99fae965201d4f9519495163d0e16836a7a
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51239837"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52726541"
 ---
 # <a name="questions-about-the-azure-backup-agent"></a>Fragen zum Azure Backup-Agent
 Dieser Artikel enthält Antworten auf häufig gestellte Fragen, damit Sie sich schnell mit den Komponenten des Azure Backup-Agents vertraut machen können. Einige Antworten enthalten Links zu Artikeln mit umfassenderen Informationen. Außerdem können Sie Fragen zum Azure Backup-Dienst im [Diskussionsforum](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup)stellen.
@@ -30,11 +30,11 @@ Ja. Die Tresoranmeldeinformationen laufen nach 48 Stunden ab. Wenn die Datei abl
 Folgende Laufwerke/Volumes können nicht gesichert werden:
 
 * Wechselmedien: Alle Quellen für Sicherungselemente müssen als festes Medium gemeldet werden.
-* Schreibgeschützte Volumes: Das Volume muss beschreibbar sein, damit der Volumeschattenkopie-Dienst funktioniert.
+* Schreibgeschützte Volumes: Das Volume muss beschreibbar sein, damit der Volumeschattenkopie-Dienst (VSS) funktioniert.
 * Offlinevolumes: Das Volume muss online sein, damit der VSS funktioniert.
-* Netzwerkfreigabe: Das Volume muss sich lokal auf dem Server befinden, um mit der Onlinesicherung gesichert zu werden.
+* Netzwerkfreigabe: Das Volume muss sich lokal auf dem Server befinden, damit es mit der Onlinesicherung gesichert werden kann.
 * Mit BitLocker geschützte Volumes: Das Volume muss entsperrt werden, damit die Sicherung erfolgen kann.
-* Dateisystem-ID: Als Dateisystem wird ausschließlich NTFS unterstützt.
+* Dateisystemidentifikation: Als Dateisystem wird ausschließlich NTFS unterstützt.
 
 ### <a name="what-file-and-folder-types-can-i-back-up-from-my-serverbr"></a>Welche Datei- und Ordnertypen können von meinem Server gesichert werden?<br/>
 Die folgenden Typen werden unterstützt:

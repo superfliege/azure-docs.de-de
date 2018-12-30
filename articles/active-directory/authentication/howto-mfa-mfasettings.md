@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: e0c612407047a51c4e3d4101a0ee192f55458afe
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 7bd63dc991500f1d7f68169342b9612c1b303a07
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52497009"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53320657"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Konfigurieren von Azure Multi-Factor Authentication-Einstellungen
 
@@ -257,12 +257,15 @@ Benutzer können auch App-Kennwörter nach der Registrierung erstellen. Die App-
 
 Das Feature _Vertrauenswürdige IPs_ von Azure Multi-Factor Authentication wird von Administratoren eines verwalteten Mandanten oder Verbundmandanten verwendet. Mit dem Feature wird die zweistufige Überprüfung für Benutzer umgangen, die sich über das Intranet des Unternehmens anmelden. Das Feature ist in der Vollversion von Azure Multi-Factor Authentication, aber nicht in der kostenlosen Version für Administratoren verfügbar. Weitere Informationen zum Beziehen der Vollversion von Azure Multi-Factor Authentication finden Sie unter [Azure Multi-Factor Authentication](multi-factor-authentication.md).
 
+> [!NOTE]
+> Für MFA vertrauenswürdige IPs und benannte Orte mit bedingtem Zugriff funktionieren nur mit IPV4-Adressen.
+
 Wenn Ihre Organisation die NPS-Erweiterung bereitstellt, um MFA für lokale Anwendungen bereitzustellen, beachten Sie, dass als Quell-IP-Adresse immer die des NPS-Servers angezeigt wird, über den der Authentifizierungsversuch verläuft.
 
 | Azure AD-Mandantentyp | Optionen des Features „Vertrauenswürdige IPs“ |
 |:--- |:--- |
-| Verwaltet |**Bestimmter Bereich von IP-Adressen:** Administratoren geben einen Bereich von IP-Adressen an, die die zweistufige Überprüfung für Benutzer, die sich über das Intranet des Unternehmens anmelden, umgehen können.|
-| Im Verbund |**Alle Verbundbenutzer:** Alle Verbundbenutzer, die sich von innerhalb des Unternehmen aus anmelden, können die zweistufige Überprüfung umgehen. Die Benutzer umgehen die Überprüfung mithilfe eines durch Active Directory-Verbunddienste (AD FS) ausgestellten Anspruchs.<br/>**Bestimmter Bereich von IP-Adressen:** Administratoren geben einen Bereich von IP-Adressen an, die die zweistufige Überprüfung für Benutzer, die sich über das Intranet des Unternehmens anmelden, umgehen können. |
+| Verwaltet |**Bestimmter Bereich von IP-Adressen**: Administratoren geben einen Bereich von IP-Adressen an, die die zweistufige Überprüfung für Benutzer, die sich über das Intranet des Unternehmens anmelden, umgehen können.|
+| Im Verbund |**Alle Verbundbenutzer**: Alle Verbundbenutzer, die sich von innerhalb der Organisation aus anmelden, können die zweistufige Überprüfung umgehen. Die Benutzer umgehen die Überprüfung mithilfe eines durch Active Directory-Verbunddienste (AD FS) ausgestellten Anspruchs.<br/>**Bestimmter Bereich von IP-Adressen**: Administratoren geben einen Bereich von IP-Adressen an, die die zweistufige Überprüfung für Benutzer, die sich über das Intranet des Unternehmens anmelden, umgehen können. |
 
 Die Umgehung über vertrauenswürdige IPs funktioniert nur innerhalb des Intranets eines Unternehmens. Wenn Sie die Option **Alle Verbundbenutzer** ausgewählt haben und sich ein Benutzer von außerhalb des Unternehmensintranets anmeldet, muss sich der Benutzer mit der zweistufigen Überprüfung authentifizieren. Dies ist auch der Fall, wenn der Benutzer einen AD FS-Anspruch vorweisen kann. 
 
@@ -293,11 +296,11 @@ Unabhängig davon, ob das Feature „Vertrauenswürdige IPs“ aktiviert ist, is
 3. Wählen Sie **Durch MFA bestätigte IPs konfigurieren** aus.
 4. Wählen Sie auf der Seite **Diensteinstellungen** unter **Vertrauenswürdige IPs** eine der folgenden beiden Optionen aus:
 
-   * **Für Anforderungen von Partnerbenutzern, die aus meinem Intranet stammen:** Aktivieren Sie zum Auswählen dieser Option das Kontrollkästchen. Alle Verbundbenutzer, die sich vom Unternehmensnetzwerk aus anmelden, umgehen die zweistufige Überprüfung mithilfe eines von AD FS ausgestellten Anspruchs. Stellen Sie sicher, dass AD FS über eine Regel zum Hinzufügen des Intranetanspruchs zum entsprechenden Datenverkehr verfügt. Wenn die Regel nicht vorhanden ist, erstellen Sie die folgende Regel in AD FS:
+   * **Für Anforderungen von Verbundbenutzern, die aus meinem Intranet stammen**: Aktivieren Sie das Kontrollkästchen, um diese Option auszuwählen. Alle Verbundbenutzer, die sich vom Unternehmensnetzwerk aus anmelden, umgehen die zweistufige Überprüfung mithilfe eines von AD FS ausgestellten Anspruchs. Stellen Sie sicher, dass AD FS über eine Regel zum Hinzufügen des Intranetanspruchs zum entsprechenden Datenverkehr verfügt. Wenn die Regel nicht vorhanden ist, erstellen Sie die folgende Regel in AD FS:
 
       `c:[Type== "http://schemas.microsoft.com/ws/2012/01/insidecorporatenetwork"] => issue(claim = c);`
 
-   * **Für Anforderungen aus einem bestimmten Bereich öffentlicher IPs:** Geben Sie zum Auswählen dieser Option die IP-Adressen in CIDR-Notation im Textfeld ein.
+   * **Für Anforderungen aus einem bestimmten Bereich öffentlicher IPs**: Geben Sie zum Auswählen dieser Option die IP-Adressen in der CIDR-Notation im Textfeld ein.
       * Verwenden Sie für IP-Adressen im Bereich xxx.xxx.xxx.1 bis xxx.xxx.xxx.254 die Notation **xxx.xxx.xxx.0/24**.
       * Verwenden Sie für eine einzelne IP-Adresse die Notation **xxx.xxx.xxx.xxx/32**.
       * Sie können bis zu 50 IP-Adressbereiche eingeben. Benutzer, die sich über diese IP-Adressen anmelden, umgehen die zweistufige Überprüfung.
@@ -312,11 +315,11 @@ Unabhängig davon, ob das Feature „Vertrauenswürdige IPs“ aktiviert ist, is
 4. Klicken Sie unter „Multi-Factor Authentication“ auf **Diensteinstellungen**.
 5. Wählen Sie auf der Seite **Diensteinstellungen** unter **Vertrauenswürdige IPs** eine (oder beide) der folgenden zwei Optionen aus:
 
-   * **Für Anforderungen von Partnerbenutzern, die aus meinem Intranet stammen:** Aktivieren Sie zum Auswählen dieser Option das Kontrollkästchen. Alle Verbundbenutzer, die sich vom Unternehmensnetzwerk aus anmelden, umgehen die zweistufige Überprüfung mithilfe eines von AD FS ausgestellten Anspruchs. Stellen Sie sicher, dass AD FS über eine Regel zum Hinzufügen des Intranetanspruchs zum entsprechenden Datenverkehr verfügt. Wenn die Regel nicht vorhanden ist, erstellen Sie die folgende Regel in AD FS:
+   * **Für Anforderungen von Verbundbenutzern in meinem Intranet**: Aktivieren Sie das Kontrollkästchen, um diese Option auszuwählen. Alle Verbundbenutzer, die sich vom Unternehmensnetzwerk aus anmelden, umgehen die zweistufige Überprüfung mithilfe eines von AD FS ausgestellten Anspruchs. Stellen Sie sicher, dass AD FS über eine Regel zum Hinzufügen des Intranetanspruchs zum entsprechenden Datenverkehr verfügt. Wenn die Regel nicht vorhanden ist, erstellen Sie die folgende Regel in AD FS:
 
       `c:[Type== "http://schemas.microsoft.com/ws/2012/01/insidecorporatenetwork"] => issue(claim = c);`
 
-   * **For requests from a specified range of IP address subnets** (Für Anforderungen aus einem bestimmten Bereich von IP-Adresssubnetzen): Geben Sie zum Auswählen dieser Option die IP-Adressen in CIDR-Notation im Textfeld ein.
+   * **Für Anforderungen aus einem angegebenen Bereich von IP-Adresssubnetzen**: Geben Sie zum Auswählen dieser Option die IP-Adressen in der CIDR-Notation im Textfeld ein.
       * Verwenden Sie für IP-Adressen im Bereich xxx.xxx.xxx.1 bis xxx.xxx.xxx.254 die Notation **xxx.xxx.xxx.0/24**.
       * Verwenden Sie für eine einzelne IP-Adresse die Notation **xxx.xxx.xxx.xxx/32**.
       * Sie können bis zu 50 IP-Adressbereiche eingeben. Benutzer, die sich über diese IP-Adressen anmelden, umgehen die zweistufige Überprüfung.
@@ -384,3 +387,7 @@ Mit dem Feature reduziert sich die Anzahl der Authentifizierungen für Web-Apps,
 ### <a name="mark-a-device-as-trusted"></a>Markieren eines Geräts als vertrauenswürdig
 
 Nachdem Sie das Feature „Multi-Factor Authentication speichern“ aktiviert haben, können Benutzer bei der Anmeldung ein Gerät als vertrauenswürdig markieren, indem sie **Nicht erneut nachfragen** auswählen.
+
+## <a name="next-steps"></a>Nächste Schritte
+
+[Ändern des Brandings der Azure AD-Anmeldeseite](../fundamentals/customize-branding.md)

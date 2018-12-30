@@ -1,6 +1,6 @@
 ---
-title: Hinzufügen oder Entfernen von Azure Active Directory-Gruppenbesitzern | Microsoft-Dokumentation
-description: Hier erfahren Sie, wie Sie Gruppenbesitzer mithilfe von Azure Active Directory hinzufügen oder entfernen.
+title: Hinzufügen oder Entfernen von Gruppenbesitzern – Azure Active Directory | Microsoft-Dokumentation
+description: Hier finden Sie Anweisungen zum Hinzufügen oder Entfernen von Gruppenbesitzern in Azure Active Directory.
 services: active-directory
 author: eross-msft
 manager: mtillman
@@ -10,15 +10,15 @@ ms.component: fundamentals
 ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: lizross
-ms.custom: it-pro
-ms.openlocfilehash: fae68bccbeaa54ca1bab9d77510fe6baecd11fcc
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.custom: it-pro, seodec18
+ms.openlocfilehash: 8c70378993e0155cbe730a5a351848ca1a1daa0a
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50139719"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53087149"
 ---
-# <a name="how-to-add-or-remove-group-owners-in-azure-active-directory"></a>Hinzufügen oder Entfernen von Gruppenbesitzern in Azure Active Directory
+# <a name="add-or-remove-group-owners-in-azure-active-directory"></a>Hinzufügen oder Entfernen von Gruppenbesitzern in Azure Active Directory
 Azure AD-Gruppen (Azure Active Directory) befinden sich im Besitz von Gruppenbesitzern und werden von diesen verwaltet. Gruppenbesitzer werden von einem Ressourcenbesitzer (Administrator) zugewiesen, um eine Gruppe und deren Mitglieder zu verwalten. Die Gruppenbesitzer müssen der Gruppe nicht angehören. Nachdem ein Gruppenbesitzer zugewiesen wurde, können Besitzer nur durch einen Ressourcenbesitzer hinzugefügt oder entfernt werden.
 
 In einigen Fällen können Sie sich als Administrator dafür entscheiden, keinen Gruppenbesitzer zuzuweisen. In diesem Fall werden Sie selbst der Gruppenbesitzer. Besitzer können ihrer Gruppe zudem weitere Besitzer zuweisen, sofern dies in den Gruppeneinstellungen nicht eingeschränkt wurde.

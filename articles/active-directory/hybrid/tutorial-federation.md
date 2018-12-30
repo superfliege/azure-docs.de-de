@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 08/16/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 50868d32b35e77495965b9ee9d0023d23b43fd5a
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: b813a276c2047a41038408744637b3dd50aff863
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52426382"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53163513"
 ---
 # <a name="tutorial-federate-a-single-ad-forest-environment-to-the-cloud"></a>Tutorial: Erstellen eines Verbunds einer Umgebung mit einer AD-Gesamtstruktur mit der Cloud
 
@@ -87,7 +87,7 @@ Um das Erstellen des virtuellen Computers durchzuführen, müssen Sie die Instal
 5. Klicken Sie auf **Jetzt installieren**.
 6. Geben Sie Ihren Lizenzschlüssel ein, und klicken Sie auf **Weiter**.
 7. Aktivieren Sie „Ich stimme den Lizenzbedingungen zu“, und klicken Sie auf **Weiter**.
-8. Wählen Sie **Benutzerdefiniert: Nur Windows installieren (erweitert)** aus.
+8. Wählen Sie **Benutzerdefiniert:  Nur Windows installieren (Erweitert)** aus.
 9. Klicken Sie unten auf der Seite auf **Weiter**
 10. Nach Abschluss der Installation starten Sie den virtuellen Computer neu, melden sich an und führen Windows-Updates aus, um sicherzustellen, dass die VM auf dem neuesten Stand ist.  Installieren Sie die neuesten Updates.
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/27/2017
 ms.author: danlep
-ms.openlocfilehash: a52dbdad3842760c447e22f4274ab944750840e7
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: b2ab2ad1c31337e006b613ad7f17b4ad22495893
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48816785"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52870418"
 ---
 # <a name="authenticate-batch-management-solutions-with-active-directory"></a>Authentifizieren von Batch Management-Lösungen mit Active Directory
 
@@ -28,7 +28,7 @@ Anwendungen, die den Azure Batch Management-Dienst aufrufen, werden mit [Azure A
 
 Über die Batch Management .NET-Bibliothek werden Typen zur Verwendung von Batch-Konten, -Kontoschlüsseln, -Anwendungen und -Anwendungspaketen verfügbar gemacht. Die Batch Management .NET-Bibliothek ist ein Azure-Ressourcenanbieterclient, der zusammen mit [Azure Resource Manager][resman_overview] zum programmgesteuerten Verwalten dieser Ressourcen verwendet wird. Azure AD ist erforderlich, um Anforderungen über beliebige Azure-Ressourcenanbieterclients, einschließlich der Batch Management .NET-Bibliothek, und über [Azure Resource Manager][resman_overview] zu authentifizieren.
 
-In diesem Artikel wird beschrieben, wie Azure AD zum Authentifizieren von Anwendungen verwendet werden kann, für die die Batch Management .NET-Bibliothek genutzt wird. Es wird veranschaulicht, wie Sie Azure AD zum Authentifizieren eines Administrators oder Co-Administrators eines Abonnements per integrierter Authentifizierung einsetzen können. Wir nutzen das [AccountManagment][acct_mgmt_sample]-Beispielprojekt auf GitHub, um die Schritte der Verwendung von Azure AD mit der Batch Management .NET-Bibliothek zu veranschaulichen.
+In diesem Artikel wird beschrieben, wie Azure AD zum Authentifizieren von Anwendungen verwendet werden kann, für die die Batch Management .NET-Bibliothek genutzt wird. Es wird veranschaulicht, wie Sie Azure AD zum Authentifizieren eines Administrators oder Co-Administrators eines Abonnements per integrierter Authentifizierung einsetzen können. Wir nutzen das [AccountManagement][acct_mgmt_sample]-Beispielprojekt auf GitHub, um die Schritte der Verwendung von Azure AD mit der Batch Management .NET-Bibliothek zu veranschaulichen.
 
 Weitere Informationen zur Nutzung der Batch Management .NET-Bibliothek und des AccountManagement-Beispiels finden Sie unter [Verwalten von Batch-Konten und -Kontingenten mit der Batch Management-Clientbibliothek für .NET](batch-management-dotnet.md).
 

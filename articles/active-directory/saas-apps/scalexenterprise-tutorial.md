@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit ScaleX Enterprise | Microsoft-Dokumentation'
+title: 'Tutorial: Azure Active Directory-Integration von ScaleX Enterprise | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und ScaleX Enterprise konfigurieren.
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/20/2017
 ms.author: jeedes
-ms.openlocfilehash: 04708806b9e1ba224e7b438f11c68dca82d6320e
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 60beecc0895fbfb5d3af7817e8b76e0819c89a99
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39448817"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52835385"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-scalex-enterprise"></a>Tutorial: Azure Active Directory-Integration mit ScaleX Enterprise
+# <a name="tutorial-azure-active-directory-integration-with-scalex-enterprise"></a>Tutorial: Azure Active Directory-Integration von ScaleX Enterprise
 
 In diesem Tutorial erfahren Sie, wie Sie ScaleX Enterprise in Azure Active Directory (Azure AD) integrieren.
 
@@ -123,7 +123,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     Geben Sie im Textfeld **Anmelde-URL** den Wert im folgenden Format ein: `https://platform.rescale.com/saml2/<company id>/sso/`.
      
     > [!NOTE] 
-    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch den tatsächlichen Bezeichner, die tatsächliche Antwort-URL bzw. die tatsächliche Anmelde-URL. Wenden Sie sich an das [Supportteam von ScaleX Enterprise Client](http://info.rescale.com/contact_sales), um diese Werte zu erhalten. 
+    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch den tatsächlichen Bezeichner, die tatsächliche Antwort-URL bzw. die tatsächliche Anmelde-URL. Wenden Sie sich an das [Supportteam von ScaleX Enterprise Client](https://info.rescale.com/contact_sales), um diese Werte zu erhalten. 
 
 1. Die ScaleX-Anwendung erwartet die SAML-Assertions in einem bestimmten Format. Daher müssen Sie die Zuordnungen benutzerdefinierter Attribute in Ihrer SAML-Tokenattributkonfiguration bearbeiten. Klicken Sie auf das Kontrollkästchen **Alle weiteren Benutzerattribute anzeigen und bearbeiten**, um die Einstellungen für benutzerdefinierte Attribute zu öffnen.
 
@@ -178,12 +178,12 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     f. **Identity Provider public X509 certificate:** Öffnen Sie das X509-Zertifikat, das Sie aus Azure heruntergeladen haben, in Editor, und fügen Sie den Inhalt in dieses Feld ein. Stellen Sie sicher, dass das Zertifikat keine Zeilenumbrüche enthält.
     
-    g. Aktivieren Sie die folgenden Kontrollkästchen: **Enabled, Encrypt NameID und Sign AuthnRequests**.
+    g. Aktivieren Sie die folgenden Kontrollkästchen: **Enabled**, „Encrypt NameID“ und „Sign AuthnRequests“.
 
     h. Klicken Sie auf **Update SSO Settings**, um die Einstellungen zu speichern.
 
 > [!TIP]
-> Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Eingebettete Azure AD-Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985).
+> Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Azure AD: eingebettete Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers

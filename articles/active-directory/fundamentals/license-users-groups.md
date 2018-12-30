@@ -1,6 +1,6 @@
 ---
-title: Zuweisen oder Entfernen von Azure Active Directory-Lizenzen | Microsoft-Dokumentation
-description: Zuweisen oder Entfernen von Azure Active Directory-Lizenzen zu oder von Ihren Benutzern und Gruppen mit Azure Active Directory.
+title: Zuweisen oder Entfernen von Lizenzen – Azure Active Directory | Microsoft-Dokumentation
+description: Hier finden Sie Anweisungen zum Zuweisen oder Entfernen von Azure Active Directory-Lizenzen für Ihre Benutzer oder Gruppen.
 services: active-directory
 author: eross-msft
 manager: mtillman
@@ -12,15 +12,15 @@ ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: lizross
 ms.reviewer: jeffsta
-custom: it-pro
-ms.openlocfilehash: e1b0b2f84c67e30c3bb998554dc662b002744003
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.custom: it-pro, seodec18
+ms.openlocfilehash: 6cf3e9a9b767dfaa6f04d151864f64123e3d6ae7
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45603886"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53077457"
 ---
-# <a name="how-to-assign-or-remove-azure-active-directory-licenses"></a>Zuweisen oder Entfernen von Azure Active Directory-Lizenzen
+# <a name="assign-or-remove-licenses-using-the-azure-active-directory-portal"></a>Zuweisen oder Entfernen von Lizenzen im Azure Active Directory-Portal
 Viele Azure Active Directory (Azure AD)-Dienste erfordern, dass Sie ein Azure AD-Produkt aktivieren und jeden Ihrer Benutzer oder Gruppen (und zugehörige Mitglieder) für dieses Produkt lizenzieren. Nur Benutzer mit aktiven Lizenzen können auf die lizenzierten Azure AD-Dienste zugreifen und diese nutzen.
 
 ## <a name="available-product-editions"></a>Verfügbare Produkteditionen

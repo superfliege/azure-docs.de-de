@@ -13,15 +13,15 @@ ms.topic: article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/13/2018
+ms.date: 12/14/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: f27ced5c67c5124d0792c5ce3884c88473fba056
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: 1c61286a24c3562e32cb4c734ea081526d38837a
+ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45604194"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53413148"
 ---
 # <a name="quickstart-require-mfa-for-specific-apps-with-azure-active-directory-conditional-access"></a>Schnellstart: Anfordern der mehrstufigen Authentifizierung (Multi-Factor Authentication, MFA) für bestimmte Apps über den bedingten Zugriff von Azure Active Directory 
 
@@ -85,11 +85,11 @@ Legen Sie in Ihrer Richtlinie Folgendes fest:
 
     ![Azure Active Directory](./media/app-based-mfa/02.png)
 
-3. Klicken Sie auf der Seite **Azure Active Directory** im Abschnitt **Verwalten** auf **Bedingter Zugriff**.
+3. Klicken Sie auf der Seite **Azure Active Directory** im Abschnitt **Sicherheit** auf **Bedingter Zugriff**.
 
     ![Bedingter Zugriff](./media/app-based-mfa/03.png)
  
-4. Klicken Sie auf der Seite **Bedingter Zugriff** auf der Symbolleiste am oberen Rand auf **Hinzufügen**.
+4. Klicken Sie auf der Seite **Bedingter Zugriff** auf der Symbolleiste am oberen Rand auf **Neue Richtlinie**.
 
     ![Hinzufügen](./media/app-based-mfa/04.png)
 

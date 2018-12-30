@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: cbb81f62bcea43c3c30abff6b5f76e3a89347813
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 8b6edcb70bca480ebe0d53c061c6461745f189e8
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45985395"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53321288"
 ---
 # <a name="the-elements-of-the-b2b-collaboration-invitation-email---azure-active-directory"></a>Die Elemente der Einladungs-E-Mail für die B2B-Zusammenarbeit – Azure Active Directory
 
@@ -26,11 +26,11 @@ Einladungs-E-Mails sind eine wichtige Komponente zum Onboarding von Partnern als
 ## <a name="explaining-the-email"></a>Erläuterungen zur E-Mail
 Sehen wir uns einige Elemente der E-Mail an, damit Sie diese Funktionen optimal nutzen können.
 
-### <a name="subject"></a>Antragsteller
-Der Betreff der E-Mail folgt dem folgenden Muster: Sie werden zur Organisation &lt;Mandantenname&gt; eingeladen
+### <a name="subject"></a>Betreff
+Der Betreff der E-Mail folgt dem folgenden Muster: Einladung der Organisation von &lt;Mandantenname&gt;
 
 ### <a name="from-address"></a>Absenderadresse
-Wir verwenden ein LinkedIn-ähnliches Muster für die Absenderadresse.  Sie sollten klarstellen, wer der einladende Benutzer ist und welchem Unternehmen er angehört. Außerdem soll deutlich werden, dass die E-Mail von einer Microsoft-E-Mail-Adresse stammt. Das Format lautet: &lt;Anzeigename des Einladenden&gt; von &lt;Mandantenname&gt; (über Microsoft) <invites@microsoft.com>.
+Wir verwenden ein LinkedIn-ähnliches Muster für die Absenderadresse.  Sie sollten klarstellen, wer der einladende Benutzer ist und welchem Unternehmen er angehört. Außerdem soll deutlich werden, dass die E-Mail von einer Microsoft-E-Mail-Adresse stammt. Das Format lautet: &lt;Anzeigename des einladenden Benutzers&gt; von &lt;Mandantenname&gt; (über Microsoft) <invites@microsoft.com>
 
 ### <a name="reply-to"></a>Antworten an
 Die Antwort-E-Mail-Adresse wird auf die E-Mail-Adresse des einladenden Benutzers festgelegt (falls verfügbar). Wenn eine Antwort auf die E-Mail gesendet wird, gelangt diese zurück an den einladenden Benutzer.
@@ -40,7 +40,7 @@ Die Einladungs-E-Mails von Ihrem Mandanten verwenden das Unternehmensbranding, d
 
 ### <a name="call-to-action"></a>Call-to-Action (Handlungsaufforderung)
 Die Handlungsaufforderung besteht aus zwei Teilen: der Erläuterung, warum der Empfänger die E-Mail erhalten hat, und der Aktion, die vom Empfänger erwartet wird.
-- Der Bereich „Warum“ wird über das folgende Muster abgedeckt: Sie wurden eingeladen, auf Anwendungen in der Organisation &lt;Mandantenname&gt; zuzugreifen
+- Für den Abschnitt „Warum“ kann das folgende Muster verwendet werden: Sie wurden eingeladen, auf Anwendungen in der Organisation von &lt;Mandantenname&gt; zuzugreifen.
 
 - Der Bereich „Erwartete Aktion“ wird durch die Schaltfläche **Loslegen** dargestellt. Wenn der Empfänger hinzugefügt wurde, ohne dass eine Einladung erforderlich ist, wird diese Schaltfläche nicht angezeigt.
 
@@ -52,7 +52,7 @@ Wenn Sie noch kein Profilbild eingerichtet haben, wird anstelle des Bilds ein Sy
   ![Anzeigen der Initialen des einladenden Benutzers](media/invitation-email-elements/inviters-initials.png)
 
 ### <a name="body"></a>Body
-Der Text enthält die Nachricht, die der einladende Benutzer erstellt hat bzw. die über die Einladungs-API übergeben wurde. Dies ist ein Textbereich, der aus Sicherheitsgründen keine HTML-Tags verarbeitet.
+Der Text enthält die Nachricht, die der einladende Benutzer erstellt, wenn er [einen Gastbenutzer zu einem Verzeichnis, einer Gruppe oder einer App einlädt](add-users-administrator.md) oder [die Einladungs-API verwendet](customize-invitation-api.md). Dies ist ein Textbereich, der aus Sicherheitsgründen keine HTML-Tags verarbeitet.
 
 ### <a name="footer-section"></a>Fußzeilenabschnitt
 Die Fußzeile enthält die Microsoft-Unternehmensmarke und informiert den Empfänger, wenn die E-Mail von einem nicht überwachten Alias aus gesendet wurde. Sonderfälle:

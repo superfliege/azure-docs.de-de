@@ -1,6 +1,6 @@
 ---
-title: Häufig gestellte Fragen zu Azure Active Directory | Microsoft-Dokumentation
-description: Erfahren Sie über häufig gestellte Fragen und Antworten zu Azure Active Directory sowie zur Kennwortverwaltung und zum Anwendungszugriff.
+title: Häufig gestellte Fragen (FAQ) – Azure Active Directory | Microsoft-Dokumentation
+description: Hier finden Sie häufig gestellte Fragen und Antworten zu Azure und Azure Active Directory sowie zur Kennwortverwaltung und zum Anwendungszugriff.
 services: active-directory
 author: eross-msft
 manager: mtillman
@@ -11,14 +11,15 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/12/2018
 ms.author: lizross
-ms.openlocfilehash: b004968fc53e368497632cb18d6bb7a254d347e6
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.custom: it-pro, seodec18
+ms.openlocfilehash: a3571ff24c36b7f2129f60348414d4d178ef30d1
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51621750"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53084089"
 ---
-# <a name="azure-active-directory-faq"></a>Häufig gestellte Fragen zu Azure Active Directory
+# <a name="frequently-asked-questions-about-azure-active-directory"></a>Häufig gestellte Fragen zu Azure Active Directory
 Azure Active Directory (Azure AD) ist eine umfassende IDaaS-Lösung (Identity as a Service) für sämtliche Aspekte von Identität, Zugriffsverwaltung und Sicherheit.
 
 Weitere Informationen finden Sie unter [Was ist Azure Active Directory?](active-directory-whatis.md).
@@ -36,7 +37,7 @@ Weitere Informationen finden Sie unter
 - - -
 **F: Welche Beziehung besteht zwischen Azure AD, Office 365 und Azure?**
 
-**A:** Mit Azure AD verfügen Sie über allgemeine Identitäts- und Zugriffsfunktionen für alle Webdienste. Wenn Sie Office 365, Microsoft Azure, Intune oder andere Anwendungen nutzen, verwenden Sie bereits Azure AD, um die Anmeldung und Zugriffsverwaltung für diese Dienste zu ermöglichen.
+**A:** Azure AD bietet Ihnen allgemeine Identitäts- und Zugriffsfunktionen für alle Webdienste. Wenn Sie Office 365, Microsoft Azure, Intune oder andere Anwendungen nutzen, verwenden Sie bereits Azure AD, um die Anmeldung und Zugriffsverwaltung für diese Dienste zu ermöglichen.
 
 Alle Benutzer, die für die Verwendung von Webdiensten eingerichtet sind, sind als Benutzerkonten in mindestens einer Azure AD-Instanz definiert. Für diese Konten können Sie kostenlose Azure AD-Funktionen wie etwa den Zugriff auf Cloudanwendungen einrichten.
 
@@ -44,9 +45,9 @@ Kostenpflichtige Azure AD-Dienste wie Enterprise Mobility + Security ergänzen a
 
 - - -
 
-**F: Was sind die Unterschiede zwischen Besitzer und globalem Administrator?**
+**F:  Was sind die Unterschiede zwischen Besitzer und globalem Administrator?**
 
-**A:** Der Person, die sich für ein Azure-Abonnement registriert, wird standardmäßig die Besitzerrolle für Azure-Ressourcen zugewiesen. Ein Besitzer kann entweder ein Microsoft-Konto oder ein Geschäfts-, Schul- oder Unikonto aus dem Verzeichnis verwenden, dem das Azure-Abonnement zugeordnet ist.  Diese Rolle ist zum Verwalten von Diensten im Azure-Portal berechtigt.
+**A:** Der Person, die sich für ein Azure-Abonnement registriert, wird standardmäßig die Rolle „Besitzer“ für Azure-Ressourcen zugewiesen. Ein Besitzer kann entweder ein Microsoft-Konto oder ein Geschäfts-, Schul- oder Unikonto aus dem Verzeichnis verwenden, dem das Azure-Abonnement zugeordnet ist.  Diese Rolle ist zum Verwalten von Diensten im Azure-Portal berechtigt.
 
 Anderen Benutzern, die sich mithilfe des gleichen Abonnements anmelden und auf die Dienste zugreifen müssen, können Sie die geeignete [integrierte Rolle](../../role-based-access-control/built-in-roles.md) zuweisen. Weitere Informationen finden Sie unter [Verwalten des Zugriffs mithilfe von RBAC und Azure-Portal](../../role-based-access-control/role-assignments-portal.md).
 
@@ -57,7 +58,7 @@ Kostenpflichtige Azure AD-Dienste wie Enterprise Mobility + Security ergänzen z
 - - -
 **F: Gibt es einen Bericht, der zeigt, wann meine Azure AD-Benutzerlizenzen ablaufen?**
 
-**A:** Nein.  Ein solches Feature ist derzeit nicht verfügbar.
+**A:**  Nein.  Ein solches Feature ist derzeit nicht verfügbar.
 
 - - -
 
@@ -66,11 +67,11 @@ Kostenpflichtige Azure AD-Dienste wie Enterprise Mobility + Security ergänzen z
 
 **F: Wie verlasse ich einen Mandanten, wenn ich als Projektmitarbeiter hinzugefügt werde?**
 
-**A:** Wenn Sie dem Mandanten einer anderen Organisation als Projektmitarbeiter hinzugefügt werden, können Sie rechts oben über den Mandantenumschalter zwischen Mandanten wechseln.  Derzeit gibt es noch keine Möglichkeit, die einladende Organisation zu verlassen, Microsoft arbeitet aber bereits daran.  In der Zwischenzeit können Sie die einladende Organisation bitten, Sie aus dem Mandanten zu entfernen.
+**A:** Wenn Sie dem Mandanten einer anderen Organisation als Projektmitarbeiter hinzugefügt werden, können Sie rechts oben über den „Mandantenumschalter“ zwischen Mandanten wechseln.  Derzeit gibt es noch keine Möglichkeit, die einladende Organisation zu verlassen, Microsoft arbeitet aber bereits daran.  In der Zwischenzeit können Sie die einladende Organisation bitten, Sie aus dem Mandanten zu entfernen.
 - - -
-**F: Wie kann ich eine Verbindung meines lokalen Verzeichnisses mit Azure AD verknüpfen?**
+**F: Wie kann ich mein lokales Verzeichnis mit Azure AD verbinden?**
 
-**A:** Die Verbindung zwischen Ihrem lokalen Verzeichnis und Azure AD kann mithilfe von Azure AD Connect hergestellt werden.
+**A:** Sie können mithilfe von Azure AD Connect eine Verbindung zwischen Ihrem lokalen Verzeichnis und Azure AD herstellen.
 
 Weitere Informationen finden Sie unter [Integrieren Ihrer lokalen Identitäten in Azure Active Directory](../hybrid/whatis-hybrid-identity.md).
 
@@ -99,9 +100,9 @@ Ausführlichere Informationen finden Sie unter [Überwachen Ihrer lokalen Identi
 
 - - -
 ## <a name="password-management"></a>Kennwortverwaltung
-**F: Kann ich das Kennwortrückschreiben-Feature von Azure AD ohne Kennwortsynchronisierung verwenden? (Ist es in diesem Szenario möglich, die Self-Service-Kennwortzurücksetzung von Azure AD mit dem Kennwortrückschreiben-Feature zu verwenden und Kennwörter nicht in der Cloud zu speichern?)**
+**F: Kann ich die Azure AD-Funktion „Kennwort zurückschreiben“ ohne Kennwortsynchronisierung verwenden? (Ist es in diesem Szenario möglich, die Self-Service-Kennwortzurücksetzung von Azure AD mit dem Kennwortrückschreiben-Feature zu verwenden und Kennwörter nicht in der Cloud zu speichern?)**
 
-**A:** Sie müssen Ihre Active Directory-Kennwörter nicht mit Azure AD synchronisieren, um das Kennwortrückschreiben-Feature verwenden zu können. Bei Verwendung einer Verbundumgebung nutzt das einmalige Anmelden von Azure AD die Benutzerauthentifizierung des lokalen Verzeichnisses. In diesem Szenario muss das lokale Kennwort nicht in Azure AD nachverfolgt werden.
+**A:** Sie müssen Ihre Active Directory-Kennwörter nicht mit Azure AD synchronisieren, um die Funktion „Kennwort zurückschreiben“ aktivieren zu können. Bei Verwendung einer Verbundumgebung nutzt das einmalige Anmelden von Azure AD die Benutzerauthentifizierung des lokalen Verzeichnisses. In diesem Szenario muss das lokale Kennwort nicht in Azure AD nachverfolgt werden.
 
 - - -
 **F: Wie lange dauert das Zurückschreiben eines Kennworts in das lokale Active Directory?**
@@ -111,13 +112,13 @@ Ausführlichere Informationen finden Sie unter [Überwachen Ihrer lokalen Identi
 Weitere Informationen finden Sie unter [Erste Schritte mit der Kennwortverwaltung](../authentication/quickstart-sspr.md).
 
 - - -
-**F: Kann ich das Kennwortrückschreiben-Feature für Kennwörter verwenden, die von einem Administrator verwaltet werden?**
+**F: Kann ich die Funktion „Kennwort zurückschreiben“ für Kennwörter verwenden, die von einem Administrator verwaltet werden?**
 
-**A:** Ja. Bei aktiviertem Kennwortrückschreiben werden die von einem Administrator durchgeführten Kennwortvorgänge in Ihre lokale Umgebung zurückgeschrieben.  
+**A:** Ja. Wenn die Funktion „Kennwort zurückschreiben“ aktiviert ist, werden die von einem Administrator ausgeführten Kennwortvorgänge in Ihre lokale Umgebung zurückgeschrieben.  
 
 Weitere Antworten auf kennwortbezogene Fragen finden Sie unter [Häufig gestellte Fragen zur Kennwortverwaltung](../authentication/active-directory-passwords-faq.md).
 - - -
-**F: Was kann ich tun, wenn ich mein vorhandenes Office 365-/Azure AD-Kennwort ändern möchte, aber das alte Kennwort vergessen habe?**
+**F:  Was kann ich tun, wenn ich mein vorhandenes Office 365-/Azure AD-Kennwort ändern möchte, aber das Kennwort vergessen habe?**
 
 **A:** Für diese Situation stehen mehrere Optionen zur Verfügung.  Verwenden Sie die Self-Service-Kennwortzurücksetzung (Self-Service Password Reset, SSPR), sofern verfügbar.  Ob die SSPR funktioniert, hängt davon ab, wie sie konfiguriert ist.  Weitere Informationen finden Sie unter [Wie funktioniert das Portal für die Kennwortzurücksetzung?](../authentication/howto-sspr-deployment.md).
 
@@ -131,11 +132,11 @@ Für Azure AD-Konten können Administratoren Kennwörter mit einer der folgenden
 
 - - -
 ## <a name="security"></a>Sicherheit
-**F: Werden Konten nach einer bestimmten Anzahl von Versuchen, bei denen Fehler aufgetreten sind, gesperrt, oder wird eine ausgereiftere Strategie angewandt?**
+**F: Werden Konten nach einer bestimmten Anzahl misslungener Anmeldeversuche gesperrt, oder wird eine ausgereiftere Strategie angewandt?**
 
 Wir verwenden eine ausgereiftere Strategie zum Sperren von Konten.  Sie basiert auf der IP-Adresse der Anforderung und den eingegebenen Kennwörtern. Die Dauer der Sperre wird ebenfalls gemäß der Wahrscheinlichkeit erhöht, dass es sich um einen Angriff handelt.  
 
-**F: Bestimmte (häufige) Kennwörter werden mit „Dieses Kennwort wurde zu oft verwendet“-Meldungen zurückgewiesen – bezieht sich dies auf Kennwörter, die im aktuellen Active Directory verwendet wurden?**
+**F:  Bestimmte (häufige) Kennwörter werden mit der Meldung „Dieses Kennwort wurde zu oft verwendet“ zurückgewiesen. Bezieht sich dies auf Kennwörter, die im aktuellen Active Directory verwendet wurden?**
 
 Dies bezieht sich auf Kennwörter, die global häufig sind, z.B. alle Varianten von „Password“ und „123456“.
 
@@ -147,12 +148,12 @@ Wir haben ein Gateway, das Anforderungen filtert, gewissen Schutz gegen Botnets 
 
 **F: Wo finde ich eine Liste mit bereits in Azure AD integrierten Anwendungen und deren Funktionen?**
 
-**A:** Für Azure AD stehen bereits über 2.600 integrierte Anwendungen von Microsoft, Anwendungsdienstanbietern und Partnern zur Verfügung. Alle vorab integrierten Anwendungen unterstützen einmaliges Anmelden (Single Sign-On, SSO). Mit SSO können Sie unter Verwendung der Anmeldeinformationen Ihres Unternehmens auf Ihre Apps zugreifen. Einige Anwendungen unterstützen auch die automatisierte Bereitstellung und Aufhebung der Bereitstellung.
+**A:** Für Azure AD stehen über 2.600 vorab integrierte Anwendungen von Microsoft, Anwendungsdienstanbietern und Partnern zur Verfügung. Alle vorab integrierten Anwendungen unterstützen einmaliges Anmelden (Single Sign-On, SSO). Mit SSO können Sie unter Verwendung der Anmeldeinformationen Ihres Unternehmens auf Ihre Apps zugreifen. Einige Anwendungen unterstützen auch die automatisierte Bereitstellung und Aufhebung der Bereitstellung.
 
 Eine vollständige Liste mit integrierten Anwendungen finden Sie unter [Active Directory-Marketplace](https://azure.microsoft.com/marketplace/active-directory/).
 
 - - -
-**F: Was kann ich tun, wenn die Anwendung, die ich benötige, nicht im Azure AD-Marketplace enthalten ist?**
+**F: Was kann ich tun, wenn die Anwendung, die ich benötige, nicht im Azure AD-Marketplace verfügbar ist?**
 
 **A:** Mit Azure AD Premium können Sie jede beliebige Anwendung hinzufügen und konfigurieren. Abhängig von den Funktionen Ihrer Anwendung und Ihren Präferenzen können Sie SSO und die automatische Bereitstellung konfigurieren.  
 
@@ -164,7 +165,7 @@ Weitere Informationen finden Sie unter
 - - -
 **F: Wie melden sich Benutzer mit Azure AD bei Anwendungen an?**
 
-**A:** In Azure AD können Benutzer ihre Anwendungen auf unterschiedliche Weise anzeigen und auf sie zugreifen. Im Anschluss finden Sie einige Beispiele für verfügbare Möglichkeiten:
+**A:** Azure AD bietet Benutzern mehrere Möglichkeiten zum Anzeigen von und Zugreifen auf Anwendungen. Nachfolgend finden Sie einige Beispiele für die verfügbaren Möglichkeiten:
 
 * Azure AD-Zugriffsbereich
 * Office 365-Anwendungsstartprogramm
@@ -176,7 +177,7 @@ Weitere Informationen finden Sie unter [End-user experiences for applications in
 - - -
 **F: Auf welche Arten ermöglicht Azure AD die Authentifizierung und das einmalige Anmelden bei Anwendungen?**
 
-**A:** Azure AD unterstützt für die Authentifizierung und Autorisierung viele standardisierte Protokolle wie SAML 2.0, OpenID Connect, OAuth 2.0 und WS-Federation. Außerdem unterstützt Azure AD Kennworttresore und Funktionen für die automatisierte Anmeldung für Apps, die nur die formularbasierte Authentifizierung unterstützen.  
+**A:** Azure AD unterstützt für die Authentifizierung und Autorisierung viele standardisierte Protokolle wie SAML 2.0, OpenID Connect, OAuth 2.0 und WS-Verbund. Außerdem unterstützt Azure AD Kennworttresore und Funktionen für die automatisierte Anmeldung für Apps, die nur die formularbasierte Authentifizierung unterstützen.  
 
 Weitere Informationen finden Sie unter
 
@@ -199,13 +200,13 @@ Weitere Informationen finden Sie unter [Bereitstellen von sicherem Remotezugriff
 Weitere Informationen finden Sie unter [Bedingter Zugriff mit Azure Active Directory](../active-directory-conditional-access-azure-portal.md).
 
 - - -
-**F: Was ist die automatisierte Benutzerbereitstellung für SaaS-Apps?**
+**F: Was ist eine automatisierte Benutzerbereitstellung für SaaS-Apps?**
 
-**A:** Azure AD ermöglicht die Automatisierung der Erstellung, Wartung und Entfernung von Benutzeridentitäten in vielen gängigen SaaS-Cloudanwendungen.
+**A:** Azure AD ermöglicht die Automatisierung der Erstellung, Wartung und Entfernung von Benutzeridentitäten in vielen gängigen SaaS-Cloud-Apps.
 
 Weitere Informationen finden Sie unter [Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory](../manage-apps/user-provisioning.md).
 
 - - -
-**F: Kann ich mit Azure AD eine sichere LDAP-Verbindung einrichten?**
+**F:  Kann ich mit Azure AD eine sichere LDAP-Verbindung einrichten?**
 
-**A:** Nein. Das LDAP-Protokoll wird von Azure AD nicht unterstützt. Allerdings können Sie sicheres LDAP mit Azure AD Domain Services konfigurieren.
+**A:**   Nein. Das LDAP-Protokoll wird von Azure AD nicht unterstützt. Allerdings können Sie sicheres LDAP mit Azure AD Domain Services konfigurieren.

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.date: 03/02/2018
 ms.author: barbkess
-ms.openlocfilehash: b799a3947770b44752b599dbb2c47cbf1cfbcda2
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 7657ac2e2d5a169607c73b8934328ce41ecea78e
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49959059"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53141933"
 ---
 # <a name="move-applications-from-ad-fs-to-azure-ad"></a>Verschieben von Anwendungen aus AD FS in Azure AD 
 
@@ -82,7 +82,7 @@ Verbund-Apps sind Apps, die in die hier aufgeführten Kategorien fallen:
 
 ### <a name="non-federated-apps"></a>Nicht im Verbund angeordnete Apps
 Sie können nicht im Verbund angeordnete Apps in Azure AD integrieren, indem Sie den Azure AD-Anwendungsproxy und verwandte Funktionen verwenden. Zu nicht im Verbund angeordneten Apps gehören:
-- Apps, für die die integrierte Windows-Authentifizierung direkt mit Active Directory verwendet wird. Sie können diese Apps in Azure AD über den [Azure AD-Anwendungsproxy](application-proxy-publish-azure-portal.md) integrieren.
+- Apps, für die die integrierte Windows-Authentifizierung direkt mit Active Directory verwendet wird. Sie können diese Apps in Azure AD über den [Azure AD-Anwendungsproxy](application-proxy-add-on-premises-application.md) integrieren.
 - Apps, die über einen Agent in Ihren Anbieter für einmaliges Anmelden integriert werden und Header für die Autorisierung nutzen. Lokale Apps, die einen installierten Agent für die Anmeldung und die headerbasierte Autorisierung verwenden, können für die Azure AD-basierte Anmeldung konfiguriert werden, indem der Azure AD-Anwendungsproxy mit [Ping-Zugriff für Azure AD](https://blogs.technet.microsoft.com/enterprisemobility/2017/06/15/ping-access-for-azure-ad-is-now-generally-available-ga/) genutzt wird.
 
 ## <a name="translating-on-premises-federated-apps-to-azure-ad"></a>Übersetzen von lokalen Verbund-Apps in Azure AD 
@@ -92,7 +92,7 @@ In den folgenden Tabellen sind wichtige Punkte zu AD FS, Azure AD und SaaS-Apps 
 
 ### <a name="representing-the-app-in-azure-ad-or-ad-fs"></a>Darstellen der App in Azure AD oder AD FS
 Die Migration beginnt damit, wie die Anwendung lokal konfiguriert wird, und mit der Zuordnung der Konfiguration zu Azure AD. Die folgende Tabelle enthält eine Zuordnung der Konfigurationselemente der vertrauenden AD FS-Seite zu den entsprechenden Elementen in Azure AD.  
-- AD FS-Begriff: Vertrauende Seite bzw. Vertrauensstellung der vertrauenden Seite.
+- AD FS-Begriff: Vertrauende Seite oder Vertrauensstellung der vertrauenden Seite.
 - Azure AD-Begriff: Unternehmensanwendung oder App-Registrierung (je nach App-Typ).
 
 |App-Konfigurationselement|BESCHREIBUNG|Position in AD FS-Konfiguration|Entsprechende Position in der Azure AD-Konfiguration|SAML-Tokenelement|
@@ -203,7 +203,7 @@ Navigieren Sie zum Zuweisen von Benutzern im Azure AD-Portal auf die Seite der S
 
 ![Bereich „Zuweisung hinzufügen“](media/migrate-adfs-apps-to-azure/migrate7.png)
 
-Zur Überprüfung des Zugriffs sollte Benutzern im [Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md) beim Anmelden die SaaS-App angezeigt werden. Sie finden den Zugriffsbereich unter http://myapps.microsoft.com. In diesem Beispiel wurde dem Benutzer erfolgreich sowohl Zugriff auf Salesforce als auch auf ServiceNow zugewiesen.
+Zur Überprüfung des Zugriffs sollte Benutzern im [Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md) beim Anmelden die SaaS-App angezeigt werden. Sie finden den Zugriffsbereich unter https://myapps.microsoft.com. In diesem Beispiel wurde dem Benutzer erfolgreich sowohl Zugriff auf Salesforce als auch auf ServiceNow zugewiesen.
 
 ![Beispiel für den Zugriffsbereich mit Salesforce- und ServiceNow-App](media/migrate-adfs-apps-to-azure/migrate8.png)
 
@@ -212,17 +212,17 @@ Der Umstellungsprozess vom lokalen Verbund auf Azure AD hängt davon ab, ob die 
 
    **F: Was bedeutet für eine App die Unterstützung von mehreren IdPs?**
     
-   A: Mit SaaS-Apps, die mehrere IdPs unterstützen, können Sie alle Informationen zum neuen IdP (hier Azure AD) eingeben, bevor Sie den Commit für die Änderung der Anmeldeoberfläche durchführen. Nachdem die Konfiguration abgeschlossen ist, können Sie für die Authentifizierungskonfiguration der App die Umstellung auf Azure AD vornehmen.
+   A: Mit SaaS-Apps, die mehrere IdPs unterstützen, können Sie alle Informationen zum neuen IdP (in unserem Fall Azure AD) eingeben, bevor Sie den Commit für die Änderung der Anmeldeoberfläche durchführen. Nachdem die Konfiguration abgeschlossen ist, können Sie für die Authentifizierungskonfiguration der App die Umstellung auf Azure AD vornehmen.
 
-   **F: Warum ist es wichtig, ob die SaaS-App mehrere IdPs unterstützt?**
+   **F: Warum ist es wichtig, dass die SaaS-App mehrere IdPs unterstützt?**
 
-   A: Falls die Unterstützung für mehrere IdPs fehlt, muss der Administrator ein kurzes Zeitfenster für einen Dienst- bzw. Wartungsausfall bereitstellen, in dem Azure AD als neuer IdP einer App konfiguriert werden kann. Während dieses Ausfalls sollten Benutzer darüber informiert werden, dass sie sich nicht an ihren Konten anmelden können.
+   A: Wenn nicht mehrere IdPs unterstützt werden, muss der Administrator ein kurzes Zeitfenster für einen Dienst- bzw. Wartungsausfall bereitstellen, in dem Azure AD als neuer IdP einer App konfiguriert werden kann. Während dieses Ausfalls sollten Benutzer darüber informiert werden, dass sie sich nicht an ihren Konten anmelden können.
 
    Wenn eine App mehrere IdPs unterstützt, können zusätzliche IdPs im Voraus konfiguriert werden. Der Administrator kann den IdP dann während der Azure-Umstellung wechseln.
 
    Benutzer können bei der Authentifizierung auf ihrer Anmeldeseite eine IdP-Auswahl treffen, wenn die App mehrere IdPs unterstützt und Sie mehrere IdPs für die gleichzeitige Verarbeitung der Authentifizierung während der Anmeldung auswählen.
 
-#### <a name="example-support-for-multiple-idps"></a>Beispiel: Unterstützung für mehrere IdPs
+#### <a name="example-support-for-multiple-idps"></a>Beispiel: Unterstützung mehrerer IdPs
 In Salesforce finden Sie die IdP-Konfiguration beispielsweise unter **Einstellungen** > **Unternehmenseinstellungen** > **Meine Domäne** > **Authentifizierungskonfiguration**.
 
 ![Abschnitt „Authentifizierungskonfiguration“ in der Salesforce-App](media/migrate-adfs-apps-to-azure/migrate9.png)

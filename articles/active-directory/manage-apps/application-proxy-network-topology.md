@@ -15,12 +15,12 @@ ms.date: 07/28/2017
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 2321ccf115e3b517bdc593c0c428c61d5dd90968
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 976118514dbcb4cee9675ae357d857e7b90e8c0c
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39367088"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53140472"
 ---
 # <a name="network-topology-considerations-when-using-azure-active-directory-application-proxy"></a>Aspekte der Netzwerktopologie bei Verwendung des Azure Active Directory-Anwendungsproxys
 
@@ -40,7 +40,7 @@ Wenn eine Anwendung über den Azure AD-Anwendungsproxy veröffentlicht wird, fli
 
 Wenn Sie die Registrierung für einen Azure AD-Mandanten durchführen, wird die Region Ihres Mandanten anhand des von Ihnen angegebenen Lands ermittelt. Bei Aktivierung des Anwendungsproxys werden die Instanzen des Anwendungsproxydiensts für Ihren Mandanten in derselben Region wie Ihr Azure AD-Mandant bzw. in der nächstgelegenen Region ausgewählt oder erstellt.
 
-Wenn die Region Ihres Azure AD-Mandanten beispielsweise die Europäische Union (EU) ist, werden für alle Anwendungsproxyconnectors Dienstinstanzen in Azure-Rechenzentren in der EU verwendet. Dies bedeutet auch, der Datenverkehr für Ihre Benutzer über die Instanzen des Anwendungsproxydiensts an diesem Standort geleitet wird, wenn sie versuchen, auf veröffentlichte Anwendungen zuzugreifen.
+Wenn das Land oder die Region Ihres Azure AD-Mandanten beispielsweise das Vereinigte Königreich ist, werden für alle Anwendungsproxyconnectors Dienstinstanzen in EU-Rechenzentren verwendet. Dies bedeutet auch, der Datenverkehr für Ihre Benutzer über die Instanzen des Anwendungsproxydiensts an diesem Standort geleitet wird, wenn sie versuchen, auf veröffentlichte Anwendungen zuzugreifen.
 
 ## <a name="considerations-for-reducing-latency"></a>Reduzieren der Wartezeit
 
@@ -85,9 +85,9 @@ Platzieren Sie den Connector so nah wie möglich an der Zielanwendung im Kundenn
 
 Wenn Ihr Connector über eine „Sichtlinie“ zum Domänencontroller verfügen muss, ist dieses Muster vorteilhaft. Sehr viele unserer Kunden verwenden dieses Muster, weil es für die meisten Szenarien gut funktioniert. Das Muster kann auch mit Muster 2 kombiniert werden, um den Datenverkehr zwischen dem Dienst und dem Connector zu optimieren.
 
-### <a name="pattern-2-take-advantage-of-expressroute-with-public-peering"></a>Muster 2: Nutzen von ExpressRoute mit öffentlichem Peering
+### <a name="pattern-2-take-advantage-of-expressroute-with-microsoft-peering"></a>Muster 2: Nutzen von ExpressRoute mit Microsoft-Peering
 
-Wenn Sie ExpressRoute mit öffentlichem Peering eingerichtet haben, können Sie die schnellere ExpressRoute-Verbindung für den Datenverkehr zwischen Anwendungsproxy und Connector verwenden. Der Connector befindet sich weiterhin in Ihrem Netzwerk, in der Nähe der App.
+Wenn Sie ExpressRoute mit Microsoft-Peering eingerichtet haben, können Sie die schnellere ExpressRoute-Verbindung für den Datenverkehr zwischen Anwendungsproxy und Connector verwenden. Der Connector befindet sich weiterhin in Ihrem Netzwerk, in der Nähe der App.
 
 ### <a name="pattern-3-take-advantage-of-expressroute-with-private-peering"></a>Muster 3: Nutzen von ExpressRoute mit privatem Peering
 
@@ -137,13 +137,13 @@ Das am häufigsten verwendete Muster ist wieder die Optimierung von Hop 3, bei d
 
 ### <a name="use-case-3"></a>Anwendungsfall 3
 
-**Szenario:** Die App befindet sich im Netzwerk einer Organisation in den USA. ExpressRoute mit öffentlichem Peering ist zwischen Azure und dem Unternehmensnetzwerk vorhanden.
+**Szenario:** Die App befindet sich im Netzwerk einer Organisation in den USA. ExpressRoute mit Microsoft-Peering ist zwischen Azure und dem Unternehmensnetzwerk vorhanden.
 
 **Empfehlung:** Verwenden Sie die Muster 1 und 2, die im vorherigen Abschnitt beschrieben werden.
 
 Platzieren Sie den Connector zuerst so nah wie möglich an der App. Für Hop 2 wird automatisch ExpressRoute verwendet. 
 
-Wenn für die ExpressRoute-Verbindung das öffentliche Peering verwendet wird, fließt der Datenverkehr zwischen dem Proxy und dem Connector über diese Verbindung. Hop 2 verfügt über eine optimierte Wartezeit.
+Wenn für die ExpressRoute-Verbindung das Microsoft-Peering verwendet wird, fließt der Datenverkehr zwischen dem Proxy und dem Connector über diese Verbindung. Hop 2 verfügt über eine optimierte Wartezeit.
 
 ![ExpressRoute zwischen Proxy und Connector](./media/application-proxy-network-topology/application-proxy-pattern3.png)
 
@@ -173,7 +173,7 @@ In dieser Situation können Sie auch eine andere Variante verwenden. Wenn sich d
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Aktivieren des Anwendungsproxys](application-proxy-enable.md)
+- [Aktivieren des Anwendungsproxys](application-proxy-add-on-premises-application.md)
 - [Aktivieren der einmaligen Anmeldung](application-proxy-configure-single-sign-on-with-kcd.md)
 - [Aktivieren des bedingten Zugriffs](application-proxy-integrate-with-sharepoint-server.md)
 - [Problembehandlung von Anwendungsproxys](application-proxy-troubleshoot.md)

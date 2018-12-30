@@ -1,6 +1,6 @@
 ---
-title: Hinzufügen oder Entfernen einer Gruppe zu bzw. aus einer anderen Gruppe in Azure Active Directory | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie eine Gruppe in Azure Active Directory zu einer anderen Gruppe hinzufügen bzw. die Gruppe entfernen.
+title: Hinzufügen oder Entfernen einer Gruppe zu bzw. aus einer anderen Gruppe – Azure Active Directory | Microsoft-Dokumentation
+description: Hier finden Sie Anweisungen zum Hinzufügen oder Entfernen einer Gruppe zu bzw. aus einer anderen Gruppe in Azure Active Directory.
 services: active-directory
 author: eross-msft
 manager: mtillman
@@ -10,16 +10,16 @@ ms.component: fundamentals
 ms.topic: conceptual
 ms.date: 10/19/2018
 ms.author: lizross
-ms.custom: it-pro
+ms.custom: it-pro, seodec18
 ms.reviewer: krbain
-ms.openlocfilehash: 09e023d1d562ea53d9927adf609335beac38a2d7
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 12f557e9453db0d8bff2ab91fe8453e026e0320c
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49468029"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53104270"
 ---
-# <a name="how-to-add-or-remove-a-group-from-another-group-using-azure-active-directory"></a>Gewusst wie: Hinzufügen oder Entfernen einer Gruppe zu bzw. aus einer anderen Gruppe in Azure Active Directory
+# <a name="add-or-remove-a-group-from-another-group-using-azure-active-directory"></a>Hinzufügen oder Entfernen einer Gruppe zu bzw. aus einer anderen Gruppe in Azure Active Directory
 In diesem Artikel erfahren Sie mehr zum Hinzufügen oder Entfernen einer Gruppe zu bzw. aus einer anderen Gruppe in Azure Active Directory.
 
 >[!Note]
@@ -29,7 +29,7 @@ In diesem Artikel erfahren Sie mehr zum Hinzufügen oder Entfernen einer Gruppe 
 Sie können eine bestehende Sicherheitsgruppe zu einer anderen bestehenden Sicherheitsgruppe hinzufügen (dieser Vorgang wird auch als Schachteln von Gruppen bezeichnet), indem Sie eine Mitgliedergruppe (Untergruppe) und eine übergeordnete Gruppe erstellen. Die Mitgliedergruppe übernimmt die Attribute und Eigenschaften der übergeordneten Gruppe, wodurch Sie Zeit bei der Konfiguration sparen.
 
 >[!Important]
->Folgendes wird derzeit nicht unterstützt:<ul><li>Hinzufügen von Sicherheitsgruppen zu Office 365-Gruppen</li><li>Hinzufügen von Office 365-Gruppen zu Sicherheitsgruppen oder anderen Office 365-Gruppen</li><li>Zuweisen von Apps zu geschachtelten Gruppen</li><li>Anwenden von Lizenzen auf geschachtelte Gruppen</li></ul>
+>Folgendes wird derzeit nicht unterstützt:<ul><li>Hinzufügen von Gruppen zu einer mit der lokalen Active Directory-Instanz synchronisierten Gruppe</li><li>Hinzufügen von Sicherheitsgruppen zu Office 365-Gruppen</li><li>Hinzufügen von Office 365-Gruppen zu Sicherheitsgruppen oder anderen Office 365-Gruppen</li><li>Zuweisen von Apps zu geschachtelten Gruppen</li><li>Anwenden von Lizenzen auf geschachtelte Gruppen</li></ul>
 
 ### <a name="to-add-a-group-as-a-member-of-another-group"></a>So fügen Sie eine Gruppe als Mitglied zu einer anderen Gruppe hinzu
 

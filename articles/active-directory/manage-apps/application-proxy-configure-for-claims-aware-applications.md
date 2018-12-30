@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: barbkess
 ms.reviewer: japere
-ms.openlocfilehash: bb04f1965764413c474c2e0d057d77d5d30edd07
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: b8c69ebec2258581954e26dc6181d5f4b57f461c
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51623100"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53137700"
 ---
 # <a name="working-with-claims-aware-apps-in-application-proxy"></a>Arbeiten mit Ansprüche unterstützenden Apps im Anwendungsproxy
 [Ansprüche unterstützende Apps](https://msdn.microsoft.com/library/windows/desktop/bb736227.aspx) führen eine Umleitung an den Sicherheitstokendienst (Security Token Service, STS) aus. Der STS fordert vom Benutzer Anmeldeinformationen im Austausch gegen ein Token an und leitet ihn dann an die Anwendung um. Es gibt mehrere Möglichkeiten, den Anwendungsproxy zum Arbeiten mit diesen Umleitungen zu aktivieren. Verwenden Sie diesen Artikel zum Konfigurieren Ihrer Bereitstellung für Ansprüche unterstützende Anwendungen. 
@@ -29,7 +29,7 @@ Stellen Sie sicher, dass der STS, zu dem die Ansprüche unterstützende App umge
 
 ## <a name="publish-your-application"></a>Veröffentlichen der Anwendung
 
-1. Veröffentlichen Sie Ihre Anwendung entsprechend den Anweisungen unter [Veröffentlichen von Anwendungen mit einem Anwendungsproxy](application-proxy-publish-azure-portal.md).
+1. Veröffentlichen Sie Ihre Anwendung entsprechend den Anweisungen unter [Veröffentlichen von Anwendungen mit einem Anwendungsproxy](application-proxy-add-on-premises-application.md).
 2. Navigieren Sie zu der Anwendungenseite im Portal, und wählen Sie **Einmaliges Anmelden**.
 3. Wenn Sie **Azure Active Directory** als **Präauthentifizierungsmethode** gewählt haben, wählen Sie **Azure AD-SSO deaktiviert** als **Interne Authentifizierungsmethode** aus. Wenn Sie **Passthrough** als **Methode für die Präauthentifizierung** wählen, müssen Sie nichts ändern.
 
@@ -41,7 +41,7 @@ Sie können AD FS auf zwei Arten für Ansprüche unterstützende Apps konfigurie
 
 Wenn alle internen URLs für Ihre Anwendungen vollständig qualifizierte Domänennamen (Fully Qualified Domain Names, FQDNs) sind, können Sie [benutzerdefinierte Domänen](application-proxy-configure-custom-domain.md) für Ihre Anwendungen konfigurieren. Verwenden Sie die benutzerdefinierten Domänen, um externe URLs zu erstellen, die mit den internen URLs identisch sind. Wenn Ihre externen URLs mit Ihren internen URLs übereinstimmen, funktionieren die STS-Umleitungen unabhängig davon, ob Ihre Benutzer lokal oder remote darauf zugreifen. 
 
-### <a name="option-2-ws-federation"></a>Option 2: WS-Verbund
+### <a name="option-2-ws-federation"></a>Option 2: WS-Federation-
 
 1. Öffnen Sie die AD FS-Verwaltung.
 2. Wechseln Sie zu **Vertrauensstellungen der vertrauenden Seite**, klicken Sie mit der rechten Maustaste auf die App, die Sie mit dem Anwendungsproxy veröffentlichen, und wählen Sie **Eigenschaften** aus.  

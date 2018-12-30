@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/13/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 31ca79976ec2ecf2755b975749e9c9150c4a49e8
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: ea884f6fecc1e8a0de1f6a0f8a4daafcdf612e9f
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37441072"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53272700"
 ---
 # <a name="release-notes-for-azure-active-directory-b2c-custom-policy-public-preview"></a>Versionshinweise für benutzerdefinierte Azure Active Directory B2C-Richtlinien – Öffentliche Vorschauversion
 Der Featuresatz für benutzerdefinierte Richtlinien ist jetzt als öffentliche Vorschauversion für alle Azure AD B2C-Kunden (Azure Active Directory B2C) zur Evaluierung verfügbar. Dieser Featuresatz ist für fortgeschrittene Identitätsentwickler bestimmt, die sehr komplexe Identitätslösungen erstellen.  
@@ -25,24 +25,23 @@ Bei diesem Featuresatz müssen Entwickler das Identity Experience Framework dire
 ## <a name="features-included-in-this-public-preview"></a>In der öffentlichen Vorschauversion enthaltene Features
 Mit den neuen Features, die mit der öffentlichen Vorschauversion eingeführt werden, können Entwickler die folgenden Aufgaben durchführen:<br>
 
-* Erstellen und Hochladen von benutzerdefinierten User Journeys für die Authentifizierung mit benutzerdefinierten Richtlinien 
+* Erstellen und Hochladen von benutzerdefinierten User Journeys für die Authentifizierung mit benutzerdefinierten Richtlinien 
    * Beschreiben von User Journeys als Austauschvorgänge zwischen Anspruchsanbietern (Schritt für Schritt) 
-   * Definieren der bedingten Verzweigung in User Journeys 
-* Integrieren von REST-API-fähigen Diensten in User Journeys zur benutzerdefinierten Authentifizierung  
+   * Definieren der bedingten Verzweigung in User Journeys * Integrieren von REST-API-fähigen Diensten in User Journeys für die benutzerdefinierte Authentifizierung  
 * Hinzufügen von Verbünden mit Identitätsanbietern, die mit dem OpenID Connect-Standard konform sind <br>
 * Hinzufügen von Verbünden mit Identitätsanbietern, die auf dem SAML-2.0-Protokoll basieren 
 
 ## <a name="terms-of-the-public-preview"></a>Bedingungen der öffentlichen Vorschauversion
 
-* Die Nutzung der neuen Features sollte nur zu Evaluierungszwecken erfolgen.<br>
-* Die neuen Features sind nicht für die Verwendung in einer Produktionsumgebung vorgesehen.<br>
-* Vereinbarungen zum Servicelevel (SLAs) gelten für die neuen Features nicht. <br>
-* Supportanfragen können über die üblichen Supportkanäle gesendet werden. <br>
-* Es liegt kein festes Datum für die allgemeine Verfügbarkeit vor.<br>
-* Microsoft behält sich vor, Szenarien und User Journeys, die den vorgesehenen Anwendungsumfang des Azure AD B2C-Produkts als CIAM-Plattform (Customer Identity and Access Management) überschreiten, zu kennzeichnen und aus beliebigen Gründen abzulehnen oder einzuschränken.
+* Die Nutzung der neuen Features sollte nur zu Evaluierungszwecken erfolgen.<br>
+* Die neuen Features sind nicht für die Verwendung in einer Produktionsumgebung vorgesehen.<br>
+* Vereinbarungen zum Servicelevel (Service Level Agreements, SLAs) gelten nicht für die neuen Features. <br>
+* Supportanfragen können über die üblichen Supportkanäle gesendet werden. <br>
+* Es liegt kein festes Datum für die allgemeine Verfügbarkeit vor.<br>
+* Microsoft behält sich vor, Szenarien und User Journeys, die den vorgesehenen Anwendungsumfang des Azure AD B2C-Produkts als CIAM-Plattform (Customer Identity and Access Management) überschreiten, zu kennzeichnen und aus beliebigen Gründen abzulehnen oder einzuschränken.
 
 ## <a name="responsibilities-of-custom-policy-feature-set-developers"></a>Zuständigkeiten für Entwickler von Featuregruppen für benutzerdefinierte Richtlinien
-Die manuelle Richtlinienkonfiguration gewährt eingehenderen Zugriff auf die zugrunde liegende Plattform von Azure AD B2C und führt zur Erstellung eines eindeutigen und vollständig anpassbaren Vertrauensframeworks. Die möglichen Permutationen von benutzerdefinierten Identitätsanbietern, Vertrauensstellungen, Integrationen in externe Dienste und ausführlichen Workflows stellen für fortgeschrittene Entwickler, die sie nutzen, eine höhere Anforderung dar.
+Die manuelle Richtlinienkonfiguration gewährt eingehenderen Zugriff auf die zugrunde liegende Plattform von Azure AD B2C und führt zur Erstellung eines eindeutigen und vollständig anpassbaren Vertrauensframeworks. Die möglichen Permutationen von benutzerdefinierten Identitätsanbietern, Vertrauensstellungen, Integrationen in externe Dienste und ausführlichen Workflows stellen für fortgeschrittene Entwickler, die sie nutzen, eine höhere Anforderung dar.
 
 Um von der öffentlichen Vorschauversion in vollem Umfang zu profitieren, ist es ratsam, dass sich Entwickler, die die Featuregruppe für benutzerdefinierte Richtlinien verwenden, an folgende Vorgaben halten:
 * Machen Sie sich mit der Konfigurationssprache des Identity Experience Framework und der Verwaltung von Schlüsseln/Geheimnissen vertraut.
@@ -52,7 +51,7 @@ Um von der öffentlichen Vorschauversion in vollem Umfang zu profitieren, ist es
 * Informieren Sie sich regelmäßig über neue Entwicklungen bei den von Ihnen integrierten Identitätsanbietern und -diensten. Achten Sie beispielsweise auf Änderungen an Geheimnissen sowie auf geplante und ungeplante Änderungen am Dienst.
 * Richten Sie eine aktive Überwachung ein, und überwachen Sie die Reaktionsfähigkeit von Produktionsumgebungen.
 * Halten Sie die E-Mail-Adressen der Kontaktpersonen im Azure-Abonnement aktuell, und sorgen Sie dafür, dass auf die E-Mails des Microsoft-Livewebsite-Teams schnell reagiert wird.
-* Ergreifen Sie ohne Verzögerung Maßnahmen, wenn Sie vom Microsoft-Livewebsite-Team dazu aufgefordert werden. 
+* Ergreifen Sie ohne Verzögerung Maßnahmen, wenn Sie vom Microsoft-Livewebsite-Team dazu aufgefordert werden. 
 
 ## <a name="features-by-stage-and-known-issues"></a>Features nach Phase und bekannte Probleme
 Funktionen für benutzerdefinierte Richtlinien und Identity Experience Framework werden laufend und schnell weiterentwickelt.  Die folgende Tabelle dient als Index für die Verfügbarkeit von Features und Komponenten.
@@ -100,7 +99,7 @@ Schnittstellen mit externen Komponenten und Anwendungen
 |   Anmeldung mit lokalem Konto, api.localaccountsignin |  | x |  |  |
 |   Registrierung mit lokalem Konto, api.localaccountsignup |  | x |  |  |
 |   MFA-Seite, api.phonefactor |  | x |  |  |
-|   Selbstbestätigt – z.B. Registrierung über Konto für soziales Netzwerk, api.selfasserted |  | x |  |  |
+|   Selbstbestätigt – z. B. Registrierung über ein Konto eines sozialen Netzwerks, api.selfasserted |  | x |  |  |
 |   Selbstbestätigte Profilaktualisierung, api.selfasserted.profileupdate |  | x |  |  |
 |   Einheitliche Seite für Registrierung oder Anmeldung, api.signuporsignin |  | x |  |  |
 

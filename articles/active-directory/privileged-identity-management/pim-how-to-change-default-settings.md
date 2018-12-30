@@ -10,15 +10,15 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.component: pim
-ms.date: 09/21/2018
+ms.date: 11/30/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 77a57afda3859de4a246c15d3b5c0b4ba8e2a8c8
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 87003a053823cfc257a3b6f41699feefadbbcc66
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47038999"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52835164"
 ---
 # <a name="configure-azure-ad-directory-role-settings-in-pim"></a>Konfigurieren von Einstellungen für Azure AD-Verzeichnisrollen in PIM
 
@@ -50,7 +50,15 @@ Legen Sie mit dem Schieberegler **Aktivierungen** die maximale Zeit in Stunden f
 
 ## <a name="notifications"></a>Benachrichtigungen
 
-Mit dem Schalter **Benachrichtigungen** können Sie angeben, ob das System E-Mails an Administratoren sendet, um zu bestätigen, dass sie eine Rolle aktiviert haben. Dies kann für die Erkennung von nicht autorisierten oder unzulässigem Aktivierungen nützlich sein.
+Mit dem Schalter **Benachrichtigungen** können Sie angeben, ob Administratoren E-Mail-Benachrichtigungen empfangen, wenn Rollen aktiviert werden. Dies kann für die Erkennung von nicht autorisierten oder unzulässigem Aktivierungen nützlich sein.
+
+Wenn diese Option auf **Aktivieren** festgelegt ist, werden Benachrichtigungen an folgende Administratoren gesendet:
+
+- Administrator für privilegierte Rollen
+- Sicherheitsadministrator
+- Globaler Administrator
+
+Weitere Informationen finden Sie unter[E-Mail-Benachrichtigungen in PIM](pim-email-notifications.md).
 
 ## <a name="incidentrequest-ticket"></a>Incident/Ticket anfordern
 

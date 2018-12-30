@@ -13,12 +13,12 @@ ms.date: 09/06/2018
 ms.author: barbkess
 ms.reviewer: japere
 ms.custom: it-pro
-ms.openlocfilehash: 55e262e1855eb6ab50c2d32e7e8cd4bb9175a593
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: d382a71de34e6c1527d810b0576e518b9101cf7d
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50962553"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53132753"
 ---
 # <a name="application-proxy-and-qlik-sense"></a>Anwendungsproxy und Qlik Sense 
 Die Partnerschaft von Azure Active Directory-Anwendungsproxy und Qlik Sense soll sicherstellen, dass Sie mit dem Anwendungsproxy problemlos Remotezugriff für Ihre Qlik Sense-Bereitstellung bereitstellen können.  
@@ -27,13 +27,13 @@ Die Partnerschaft von Azure Active Directory-Anwendungsproxy und Qlik Sense soll
 Im weiteren Verlauf dieses Szenarios wird davon ausgegangen, dass Sie Folgendes durchgeführt haben:
  
 - [Qlik Sense](https://community.qlik.com/docs/DOC-19822) konfiguriert. 
-- [Einen Anwendungsproxyconnector installiert.](application-proxy-enable.md#install-and-register-a-connector) 
+- [Einen Anwendungsproxyconnector installiert.](application-proxy-add-on-premises-application.md#install-and-register-a-connector) 
  
 ## <a name="publish-your-applications-in-azure"></a>Veröffentlichen Ihrer Anwendungen in Azure 
 Um Qlik Sense zu veröffentlichen, müssen Sie zwei Anwendungen in Azure veröffentlichen.  
 
 ### <a name="application-1"></a>Anwendung 1: 
-Führen Sie diese Schritte aus, um Ihre App zu veröffentlichen. Eine ausführlichere Beschreibung der Schritte 1 bis 8 finden Sie unter [Veröffentlichen von Anwendungen mit Azure AD-Anwendungsproxy](application-proxy-publish-azure-portal.md). 
+Führen Sie diese Schritte aus, um Ihre App zu veröffentlichen. Eine ausführlichere Beschreibung der Schritte 1 bis 8 finden Sie unter [Veröffentlichen von Anwendungen mit Azure AD-Anwendungsproxy](application-proxy-add-on-premises-application.md). 
 
 
 1. Melden Sie sich als globaler Administrator beim Azure-Portal an. 
@@ -42,7 +42,7 @@ Führen Sie diese Schritte aus, um Ihre App zu veröffentlichen. Eine ausführli
 4. Wählen Sie **Lokale Anwendung** aus. 
 5.       Füllen Sie die Pflichtfelder mit Informationen zur neuen App aus. Befolgen Sie diese Anleitung für die folgenden Einstellungen: 
     - **Interne URL**: Diese Anwendung muss über eine interne URL verfügen, die die Qlik Sense-URL selbst ist. Beispiel: **https&#58;//demo.qlikemm.com:4244** 
-    - **Methode für die Vorauthentifizierung** : Azure Active Directory (empfohlen, aber nicht erforderlich) 
+    - **Methode für die Vorauthentifizierung**: Azure Active Directory (empfohlen, aber nicht erforderlich) 
 1.       Klicken Sie unten auf dem Blatt auf **Hinzufügen**. Ihre Anwendung wird hinzugefügt, das Schnellstartmenü wird geöffnet. 
 2.       Wählen Sie im Schnellstartmenü **Zuweisen eines Benutzers zu Testzwecken** aus, und fügen Sie der Anwendung mindestens einen Benutzer hinzu. Stellen Sie sicher, dass dieses Testkonto auf die lokale Anwendung zugreifen kann. 
 3.       Wählen Sie **Zuweisen** aus, um die Zuweisung des Testbenutzers zu speichern. 
@@ -51,17 +51,18 @@ Führen Sie diese Schritte aus, um Ihre App zu veröffentlichen. Eine ausführli
 ### <a name="application-2"></a>Anwendung 2: 
 Führen Sie die gleichen Schritte aus wie für Anwendung 1 – mit folgenden Ausnahmen: 
 
-**Schritt 5**: Die interne URL sollte jetzt die QlikSense-URL mit dem von der Anwendung verwendeten Authentifizierungsport sein. Die Standardeinstellung ist **4244** für HTTPS und 4248 für HTTP. Beispiel: **https&#58;//demo.qlik.com:4244**</br></br>**Schritt 10:** Richten Sie nicht SSO ein, und lassen Sie das **einmalige Anmelden deaktiviert**
+**Schritt 5**: Die interne URL sollte jetzt die Qlik Sense-URL mit dem von der Anwendung verwendeten Authentifizierungsport sein. Die Standardeinstellung ist **4244** für HTTPS und 4248 für HTTP. Beispiel: **https&#58;//demo.qlik.com:4244**</br></br> 
+**Schritt 10:** Richten Sie nicht SSO ein, und lassen Sie das **einmalige Anmelden deaktiviert**.
  
  
 ## <a name="testing"></a>Testen 
 Ihre Anwendung kann jetzt getestet werden. Greifen Sie auf die externe URL zu, die Sie zum Veröffentlichen von Qlik Sense in Anwendung 1 verwendet haben, und melden Sie sich als Benutzer an, der beiden Anwendungen zugewiesen ist.  
 
 ## <a name="additional-references"></a>Zusätzliche Verweise
-Weitere Informationen zum Veröffentlichen von Qlik Sense mit Anwendungsproxy finden Sie in der Qlik-Community im Artikel [Azure AD mit integrierter Windows-Authentifizierung unter Verwendung einer eingeschränkten Kerberos-Delegierung mit Qlik Sense](https://community.qlik.com/docs/DOC-20183) (in englischer Sprache).
+Weitere Informationen zum Veröffentlichen von Qlik Sense mit dem Anwendungsproxy finden Sie in der Qlik-Community im Artikel [Azure AD mit integrierter Windows-Authentifizierung unter Verwendung einer eingeschränkten Kerberos-Delegierung mit Qlik Sense](https://community.qlik.com/docs/DOC-20183).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Veröffentlichen von Anwendungen mit dem Anwendungsproxy](application-proxy-publish-azure-portal.md)
+- [Veröffentlichen von Anwendungen mit dem Anwendungsproxy](application-proxy-add-on-premises-application.md)
 - [Arbeiten mit Anwendungsproxyconnectors](application-proxy-connector-groups.md)
 

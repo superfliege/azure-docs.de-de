@@ -15,18 +15,18 @@ ms.topic: conceptual
 ms.date: 05/15/2018
 ms.author: barbkess
 ms.reviewer: richagi
-ms.openlocfilehash: 4a5cb7d15627ac3e48b72567ec3740377b2a0264
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 6989fe88fa17bcd99c99ee3e82d82fb403d1aae4
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39365669"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53096705"
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>Verwalten des Zugriffs auf SaaS-Cloudanwendungen mithilfe von Mandanteneinschränkungen
 
 Große Organisationen mit hohen Sicherheitsanforderungen, die Clouddienste wie etwa Office 365 nutzen möchten, müssen sich darauf verlassen können, dass ihre Benutzer nur auf genehmigte Ressourcen zugreifen können. Zur Steuerung des Zugriffs schränken Unternehmen in der Regel Domänennamen oder IP-Adressen ein. In einer Welt, in der SaaS-Apps in einer öffentlichen Cloud gehostet und unter freigegebenen Domänennamen wie „outlook.office.com“ und „login.microsoftonline.com“ ausgeführt werden, ist diese Vorgehensweise jedoch zum Scheitern verurteilt. Die Blockierung der Adressen würde dazu führen, dass Benutzer gar nicht mehr über das Web auf Outlook zugreifen können, anstatt lediglich ihren Zugriff auf genehmigte Identitäten und Ressourcen zu beschränken.
 
-Zur Lösung dieses Problems bietet Azure Active Directory ein Feature namens Mandanteneinschränkungen. Mithilfe von Mandanteneinschränkungen können Organisationen den Zugriff auf SaaS-Cloudanwendungen in Abhängigkeit von dem Azure AD-Mandanten steuern, den die Anwendungen für einmaliges Anmelden verwenden. So können Sie beispielsweise den Zugriff auf die Office 365-Anwendungen Ihrer Organisation ermöglichen und den Zugriff auf Instanzen der gleichen Anwendungen anderer Organisationen verhindern.  
+Zur Lösung dieses Problems bietet Azure Active Directory ein Feature namens Mandanteneinschränkungen. Mithilfe von Mandanteneinschränkungen können Organisationen den Zugriff auf SaaS-Cloudanwendungen in Abhängigkeit von dem Azure AD-Mandanten steuern, den die Anwendungen für einmaliges Anmelden verwenden. So können Sie beispielsweise den Zugriff auf die Office 365-Anwendungen Ihrer Organisation ermöglichen und den Zugriff auf Instanzen der gleichen Anwendungen anderer Organisationen verhindern.  
 
 Mit Mandanteneinschränkungen können Organisationen eine Liste mit Mandanten angeben, für die ihre Benutzer zugriffsberechtigt sind. Azure AD gewährt daraufhin nur Zugriff auf die zugelassenen Mandanten.
 
@@ -34,13 +34,13 @@ In diesem Artikel konzentrieren wir uns auf Mandanteneinschränkungen für Offic
 
 ## <a name="how-it-works"></a>So funktioniert's
 
-Die Lösung umfasst folgende Komponenten: 
+Die Lösung umfasst folgende Komponenten: 
 
-1. **Azure AD:** Wenn `Restrict-Access-To-Tenants: <permitted tenant list>` vorhanden ist, stellt Azure AD nur Sicherheitstoken für die zugelassenen Mandanten aus. 
+1. **Azure AD:** Wenn `Restrict-Access-To-Tenants: <permitted tenant list>` vorhanden ist, stellt Azure AD nur Sicherheitstoken für die zugelassenen Mandanten aus. 
 
-2. **Lokale Proxyserverinfrastruktur:** Ein für die SSL-Prüfung geeignetes Proxygerät, das so konfiguriert ist, dass es den Header mit der Liste zugelassener Mandanten in für Azure AD bestimmten Datenverkehr einfügt. 
+2. **Lokale Proxyserverinfrastruktur:** Ein für die SSL-Prüfung geeignetes Proxygerät, das so konfiguriert ist, dass es den Header mit der Liste zugelassener Mandanten in für Azure AD bestimmten Datenverkehr einfügt. 
 
-3. **Clientsoftware:** Zur Unterstützung von Mandanteneinschränkungen muss Clientsoftware Token direkt von Azure AD anfordern, damit Datenverkehr von der Proxyinfrastruktur abgefangen werden kann. Mandanteneinschränkungen werden derzeit von browserbasierten Office 365-Anwendungen und von Office-Clients unterstützt (eine moderne Authentifizierung wie etwa OAuth 2.0 vorausgesetzt). 
+3. **Clientsoftware:** Zur Unterstützung von Mandanteneinschränkungen muss Clientsoftware Token direkt von Azure AD anfordern, damit Datenverkehr von der Proxyinfrastruktur abgefangen werden kann. Mandanteneinschränkungen werden derzeit von browserbasierten Office 365-Anwendungen und von Office-Clients unterstützt (eine moderne Authentifizierung wie etwa OAuth 2.0 vorausgesetzt). 
 
 4. **Moderne Authentifizierung:** Clouddienste müssen eine moderne Authentifizierung verwenden, um Mandanteneinschränkungen nutzen und den Zugriff auf nicht zugelassene Mandanten blockieren zu können. Office 365-Clouddienste müssen standardmäßig für die Verwendung moderner Authentifizierungsprotokolle konfiguriert sein. Aktuelle Informationen zur Unterstützung von moderner Authentifizierung durch Office 365 finden Sie unter [Updated Office 365 modern authentication](https://blogs.office.com/2015/11/19/updated-office-365-modern-authentication-public-preview/) (Aktualisierte moderne Authentifizierung für Office 365).
 
@@ -54,7 +54,7 @@ Für die Verwendung von Mandanteneinschränkungen sind zunächst zwei Schritte e
 
 ### <a name="urls-and-ip-addresses"></a>URLs und IP-Adressen
 
-Um Mandanteneinschränkungen verwenden zu können, müssen Ihre Clients für die Authentifizierung eine Verbindung mit den folgenden Azure AD-URLs herstellen können: „login.microsoftonline.com“, „login.microsoft.com“ und „login.windows.net“. Für den Zugriff auf Office 365 müssen Ihre Clients außerdem eine Verbindung mit den unter [URLs und IP-Adressbereiche von Office 365](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2) definierten FQDNs/URLs und IP-Adressen herstellen können. 
+Um Mandanteneinschränkungen verwenden zu können, müssen Ihre Clients für die Authentifizierung eine Verbindung mit den folgenden Azure AD-URLs herstellen können: „login.microsoftonline.com“, „login.microsoft.com“ und „login.windows.net“. Für den Zugriff auf Office 365 müssen Ihre Clients außerdem eine Verbindung mit den unter [URLs und IP-Adressbereiche von Office 365](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2) definierten FQDNs/URLs und IP-Adressen herstellen können. 
 
 ### <a name="proxy-configuration-and-requirements"></a>Proxykonfiguration und Anforderungen
 
@@ -62,7 +62,7 @@ Die folgende Konfiguration ist erforderlich, um Mandanteneinschränkungen über 
 
 #### <a name="prerequisites"></a>Voraussetzungen
 
-- Der Proxy muss SSL abfangen, HTTP-Header einfügen und Ziele unter Verwendung von FQDNs/URLs filtern können. 
+- Der Proxy muss SSL abfangen, HTTP-Header einfügen und Ziele unter Verwendung von FQDNs/URLs filtern können. 
 
 - Clients müssen der Zertifikatkette vertrauen, die vom Proxy für die SSL-Kommunikation präsentiert wird. Wenn also beispielsweise Zertifikate einer internen PKI verwendet werden, muss dem Zertifikat der internen ausstellenden Stammzertifizierungsstelle vertraut werden.
 
@@ -72,14 +72,14 @@ Die folgende Konfiguration ist erforderlich, um Mandanteneinschränkungen über 
 
 Fügen Sie für jede eingehende, an „login.microsoftonline.com“, „login.microsoft.com“ oder „login.windows.net“ gerichtete Anforderung zwei HTTP-Header ein: *Restrict-Access-To-Tenants* und *Restrict-Access-Context*.
 
-Die Header müssen folgende Elemente enthalten: 
-- *Restrict-Access-To-Tenants:* Ein Wert für \<Liste mit zugelassenen Mandanten\>. Hierbei handelt es sich um eine kommagetrennte Liste mit Mandanten, auf die Benutzer zugreifen können sollen. Der Mandant in dieser Liste kann mithilfe jeder bei einem Mandanten registrierten Domäne identifiziert werden. Wenn Sie also etwa den Zugriff auf den Contoso- und den Fabrikam-Mandanten zulassen möchten, sieht das Name/Wert-Paar wie folgt aus: `Restrict-Access-To-Tenants: contoso.onmicrosoft.com,fabrikam.onmicrosoft.com` 
-- *Restrict-Access-Context:* Ein Wert für eine einzelne Verzeichnis-ID, um zu deklarieren, welcher Mandant die Mandanteneinschränkungen festlegt. Wenn Sie also beispielsweise Contoso als den Mandanten deklarieren möchten, der die Mandanteneinschränkungsrichtlinie festlegt, sieht das Name/Wert-Paar wie folgt aus: `Restrict-Access-Context: 456ff232-35l2-5h23-b3b3-3236w0826f3d`  
+Die Header müssen folgende Elemente enthalten: 
+- *Restrict-Access-To-Tenants:* Ein Wert für \<Liste mit zugelassenen Mandanten\>. Hierbei handelt es sich um eine kommagetrennte Liste mit Mandanten, auf die Benutzer zugreifen können sollen. Der Mandant in dieser Liste kann mithilfe jeder bei einem Mandanten registrierten Domäne identifiziert werden. Wenn Sie beispielsweise den Zugriff auf die Mandanten Contoso und Fabrikam zulassen möchten, sieht das Name/Wert-Paar wie folgt aus:  `Restrict-Access-To-Tenants: contoso.onmicrosoft.com,fabrikam.onmicrosoft.com` 
+- *Restrict-Access-Context:* Ein Wert für eine einzelne Verzeichnis-ID, um zu deklarieren, welcher Mandant die Mandanteneinschränkungen festlegt. Wenn Sie beispielsweise Contoso als den Mandanten deklarieren möchten, der die Mandanteneinschränkungsrichtlinie festlegt, sieht das Name/Wert-Paar wie folgt aus: `Restrict-Access-Context: 456ff232-35l2-5h23-b3b3-3236w0826f3d`  
 
 > [!TIP]
 > Ihre Verzeichnis-ID finden Sie im [Azure-Portal](https://portal.azure.com). Melden Sie sich als Administrator an, und wählen Sie **Azure Active Directory** und anschließend **Eigenschaften** aus.
 
-Um zu verhindern, dass Benutzer ihre eigenen HTTP-Header mit nicht genehmigten Mandanten einfügen, muss der Proxy den Restrict-Access-To-Tenants-Header ersetzen, falls er in der eingehenden Anforderung bereits vorhanden ist. 
+Um zu verhindern, dass Benutzer ihre eigenen HTTP-Header mit nicht genehmigten Mandanten einfügen, muss der Proxy den Restrict-Access-To-Tenants-Header ersetzen, falls er in der eingehenden Anforderung bereits vorhanden ist. 
 
 Für Clients muss bei allen Anforderungen an „login.microsoftonline.com“, „login.microsoft.com“ oder „login.windows.net“ die Verwendung des Proxys erzwungen werden. Wenn Clients also beispielsweise mithilfe von PAC-Dateien zur Verwendung des Proxys angewiesen werden, sollten Endbenutzer die PAC-Dateien nicht bearbeiten oder deaktivieren können.
 
@@ -116,7 +116,7 @@ Mandanteneinschränkungen werden derzeit von browserbasierten Office 365-Anwendu
 
 Outlook- und Skype for Business-Clients, die die moderne Authentifizierung unterstützen, können für Mandanten, bei denen keine moderne Authentifizierung aktiviert ist, unter Umständen weiterhin ältere Protokolle verwenden und dadurch die Mandanteneinschränkungen umgehen. Anwendungen, die ältere Protokolle verwenden, werden unter Umständen durch Mandanteneinschränkungen blockiert, wenn sie bei der Authentifizierung login.microsoftonline.com, login.microsoft.com oder login.windows.net kontaktieren.
 
-Bei Outlook unter Windows können Kunden ggf. Einschränkungen implementieren, die verhindern, dass Endbenutzer ihren Profilen nicht genehmigte E-Mail-Konten hinzufügen. Informationen hierzu finden Sie beispielsweise unter der Gruppenrichtlinieneinstellung [Das Hinzufügen nicht standardmäßiger Exchange-Konten verhindern](http://gpsearch.azurewebsites.net/default.aspx?ref=1).
+Bei Outlook unter Windows können Kunden ggf. Einschränkungen implementieren, die verhindern, dass Endbenutzer ihren Profilen nicht genehmigte E-Mail-Konten hinzufügen. Informationen hierzu finden Sie beispielsweise unter der Gruppenrichtlinieneinstellung [Das Hinzufügen nicht standardmäßiger Exchange-Konten verhindern](https://gpsearch.azurewebsites.net/default.aspx?ref=1).
 
 ## <a name="testing"></a>Testen
 
@@ -126,21 +126,21 @@ Wenn Sie die Mandanteneinschränkungen ausprobieren möchten, bevor Sie sie für
 
 Fiddler ist ein kostenloser Web Debugging Proxy, mit dem Sie HTTP/HTTPS-Datenverkehr erfassen und modifizieren können, um beispielsweise HTTP-Header einzufügen. Gehen Sie wie folgt vor, um Fiddler zum Testen von Mandanteneinschränkungen zu konfigurieren:
 
-1.  [Laden Sie Fiddler herunter, und installieren Sie es.](http://www.telerik.com/fiddler)
-2.  Konfigurieren Sie Fiddler wie in der [Hilfedokumentation](http://docs.telerik.com/fiddler/Configure-Fiddler/Tasks/DecryptHTTPS) beschrieben für die Entschlüsselung von HTTPS-Datenverkehr.
+1.  [Laden Sie Fiddler herunter, und installieren Sie es.](https://www.telerik.com/fiddler)
+2.  Konfigurieren Sie Fiddler wie in der [Hilfedokumentation](https://docs.telerik.com/fiddler/Configure-Fiddler/Tasks/DecryptHTTPS) beschrieben für die Entschlüsselung von HTTPS-Datenverkehr.
 3.  Konfigurieren Sie Fiddler mithilfe von benutzerdefinierten Regeln so, dass die Header *Restrict-Access-To-Tenants* und *Restrict-Access-Context* eingefügt werden:
-  1. Wählen Sie im Fiddler Web Debugger-Tool das Menü **Rules** (Regeln) und anschließend **Customize Rules...** (Regeln anpassen...) aus, um die Datei „CustomRules“ zu öffnen.
-  2. Fügen Sie am Anfang der Funktion *OnBeforeRequest* die folgenden Zeilen hinzu. Ersetzen Sie \<tenant domain\> durch eine bei Ihrem Mandanten registrierte Domäne (beispielsweise „contoso.onmicrosoft.com“). Ersetzen Sie \<directory ID\> durch den Azure AD-GUID Ihres Mandanten.
+    1. Wählen Sie im Fiddler Web Debugger-Tool das Menü **Rules** (Regeln) und anschließend **Customize Rules...** (Regeln anpassen...) aus, um die Datei „CustomRules“ zu öffnen.
+    2. Fügen Sie am Anfang der Funktion *OnBeforeRequest* die folgenden Zeilen hinzu. Ersetzen Sie \<tenant domain\> durch eine bei Ihrem Mandanten registrierte Domäne (beispielsweise „contoso.onmicrosoft.com“). Ersetzen Sie \<directory ID\> durch den Azure AD-GUID Ihres Mandanten.
 
-  ```
-  if (oSession.HostnameIs("login.microsoftonline.com") || oSession.HostnameIs("login.microsoft.com") || oSession.HostnameIs("login.windows.net")){      oSession.oRequest["Restrict-Access-To-Tenants"] = "<tenant domain>";      oSession.oRequest["Restrict-Access-Context"] = "<directory ID>";}
-  ```
+    ```
+    if (oSession.HostnameIs("login.microsoftonline.com") || oSession.HostnameIs("login.microsoft.com") || oSession.HostnameIs("login.windows.net")){      oSession.oRequest["Restrict-Access-To-Tenants"] = "<tenant domain>";      oSession.oRequest["Restrict-Access-Context"] = "<directory ID>";}
+    ```
 
-  Falls Sie mehrere Mandanten zulassen möchten, trennen Sie die einzelnen Mandantennamen jeweils durch ein Komma. Beispiel: 
+    Falls Sie mehrere Mandanten zulassen möchten, trennen Sie die einzelnen Mandantennamen jeweils durch ein Komma. Beispiel: 
 
-  ```
-  oSession.oRequest["Restrict-Access-To-Tenants"] = "contoso.onmicrosoft.com,fabrikam.onmicrosoft.com";
-  ```
+    ```
+    oSession.oRequest["Restrict-Access-To-Tenants"] = "contoso.onmicrosoft.com,fabrikam.onmicrosoft.com";
+    ```
 
 4. Speichern und schließen Sie die Datei „CustomRules“.
 

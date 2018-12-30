@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit Mimecast Personal Portal | Microsoft-Dokumentation'
+title: 'Tutorial: Azure Active Directory-Integration von Mimecast Personal Portal | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Mimecast Personal Portal konfigurieren.
 services: active-directory
 documentationCenter: na
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/24/2018
 ms.author: jeedes
-ms.openlocfilehash: 71ecffebe095fd325837aeb1d6e741a2f3321aea
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 88952d09672fb4dd2d31878d56a59cb425f53de2
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39421837"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52850447"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-mimecast-personal-portal"></a>Tutorial: Azure Active Directory-Integration mit Mimecast Personal Portal
+# <a name="tutorial-azure-active-directory-integration-with-mimecast-personal-portal"></a>Tutorial: Azure Active Directory-Integration von Mimecast Personal Portal
 
 In diesem Tutorial erfahren Sie, wie Sie Mimecast Personal Portal in Azure Active Directory (Azure AD) integrieren.
 
@@ -139,7 +139,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     | Offshore        | `https://jer-api.mimecast.com/login/saml`|
     
     > [!NOTE] 
-    > Der ID-Wert ist nicht der tatsächliche Wert. Aktualisieren Sie den Wert mit dem tatsächlichen Bezeichner. Wenden Sie sich an das [Supportteam für den Mimecast Personal Portal-Client](http://www.mimecast.com/customer-success/technical-support/), um den Wert zu erhalten. 
+    > Der ID-Wert ist nicht der tatsächliche Wert. Aktualisieren Sie den Wert mit dem tatsächlichen Bezeichner. Wenden Sie sich an das [Supportteam für den Mimecast Personal Portal-Client](https://www.mimecast.com/customer-success/technical-support/), um den Wert zu erhalten. 
 
 1. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
 

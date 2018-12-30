@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: barbkess
 ms.reviewer: japere
-ms.openlocfilehash: dce9c26d9f836a2238642521be4d88ba089058d7
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: 8b410cc85584f45d4a3e9d7bce180a2c6aa46114
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52445957"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53134966"
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>Grundlegendes zu Azure AD-Anwendungsproxyconnectors
 
@@ -30,10 +30,10 @@ Bei Connectors handelt es sich um einfache Agents, die lokal eingerichtet sind u
 
 Für die erfolgreiche Bereitstellung des Anwendungsproxys benötigen Sie mindestens einen Connector, aber es wird empfohlen, für größere Resilienz über mindestens zwei zu verfügen. Installieren Sie den Connector auf einem Computer mit Windows Server 2012 R2 oder 2016. Der Connector muss mit dem Anwendungsproxydienst und mit den lokalen Anwendungen, die Sie veröffentlichen, kommunizieren können. 
 
-### <a name="windows-server"></a>Windows Server
+### <a name="windows-server"></a>Windows-Server
 Sie benötigen einen Server, auf dem Windows Server 2012 R2 oder höher ausgeführt wird und auf dem Sie den Anwendungsproxy-Connector installieren können. Der Server muss eine Verbindung mit den Anwendungsproxydiensten in Azure sowie mit den lokalen Anwendungen herstellen können, die Sie veröffentlichen.
 
-Auf dem Windows-Server muss TLS 1.2 aktiviert werden, bevor Sie den Anwendungsproxy-Connector installieren. Vorhandene Connectors mit Versionen vor 1.5.612.0 nutzen bis auf Weiteres die früheren Versionen von TLS weiter. Sie aktivieren Sie TLS 1.2:
+Auf dem Windows-Server muss TLS 1.2 aktiviert werden, bevor Sie den Anwendungsproxy-Connector installieren. Vorhandene Connectors mit Versionen vor 1.5.612.0 nutzen bis auf Weiteres die früheren Versionen von TLS weiter. So aktivieren Sie TLS 1.2
 
 1. Legen Sie die folgenden Registrierungsschlüssel fest:
     
@@ -44,10 +44,10 @@ Auf dem Windows-Server muss TLS 1.2 aktiviert werden, bevor Sie den Anwendungspr
     [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v4.0.30319] "SchUseStrongCrypto"=dword:00000001
     ```
 
-2. Starten Sie den Server neu.
+2. Neustarten des Servers
 
 
-Weitere Informationen zu den Netzwerkanforderungen für den Connectorserver finden Sie unter [Erste Schritte mit dem Anwendungsproxy und Installieren des Connectors](application-proxy-enable.md).
+Weitere Informationen zu den Netzwerkanforderungen für den Connectorserver finden Sie unter [Erste Schritte mit dem Anwendungsproxy und Installieren des Connectors](application-proxy-add-on-premises-application.md).
 
 ## <a name="maintenance"></a>Wartung 
 Die Connectors und der Dienst führen alle Aufgaben in Bezug auf Hochverfügbarkeit aus. Diese können dynamisch hinzugefügt oder entfernt werden. Jedes Mal, wenn eine neue Anforderung eintrifft, wird diese an einen der gerade verfügbaren Connectors geleitet. Falls ein Connector vorübergehend nicht verfügbar ist, reagiert er nicht auf diesen Datenverkehr.
@@ -64,7 +64,7 @@ Sie müssen nicht verwendete Connectors nicht manuell löschen. Wenn ein Connect
 
 ## <a name="automatic-updates"></a>Automatische Aktualisierungen
 
-Azure AD bietet automatische Updates für alle von Ihnen bereitgestellten Connectors. Solange der Connectorupdatedienst für den Anwendungsproxy ausgeführt wird, werden Ihre Connectors automatisch aktualisiert. Falls der Connectorupdatedienst auf Ihrem Server nicht angezeigt wird, müssen Sie den [Connector neu installieren](application-proxy-enable.md), um Updates zu erhalten. 
+Azure AD bietet automatische Updates für alle von Ihnen bereitgestellten Connectors. Solange der Connectorupdatedienst für den Anwendungsproxy ausgeführt wird, werden Ihre Connectors automatisch aktualisiert. Falls der Connectorupdatedienst auf Ihrem Server nicht angezeigt wird, müssen Sie den [Connector neu installieren](application-proxy-add-on-premises-application.md), um Updates zu erhalten. 
 
 Wenn Sie nicht warten möchten, bis ein Connector automatisch aktualisiert wird, können Sie die Aktualisierung manuell vornehmen. Rufen Sie auf dem Server mit dem Connector die [Downloadseite für den Connector](https://download.msappproxy.net/subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/connector/download) auf, und wählen Sie **Herunterladen**. Durch diesen Prozess wird ein Upgrade für den lokalen Connector gestartet. 
 
@@ -120,7 +120,7 @@ Der Lastenausgleich erfolgt zwischen Connectors einer bestimmten Connectorgruppe
 
 Ein weiterer Leistungsfaktor ist die Qualität der Netzwerkverbindung zwischen den Connectors, z.B.: 
 
-* **Online-Dienst**: Langsame Verbindungen oder Verbindungen mit hoher Wartezeit zum Anwendungsproxydienst in Azure beeinflussen die Leistung des Connectors. Stellen Sie für eine optimale Leistung eine Verbindung zwischen Ihrer Organisation und Azure über ExpressRoute her. Andernfalls muss das Netzwerkteam sicherstellen, dass Verbindungen mit Azure so effizient wie möglich verarbeitet werden. 
+* **Onlinedienst**: Langsame Verbindungen oder Verbindungen mit hoher Wartezeit mit dem Anwendungsproxydienst in Azure beeinflussen die Leistung des Connectors. Stellen Sie für eine optimale Leistung eine Verbindung zwischen Ihrer Organisation und Azure über ExpressRoute her. Andernfalls muss das Netzwerkteam sicherstellen, dass Verbindungen mit Azure so effizient wie möglich verarbeitet werden. 
 * **Back-End-Anwendungen**: In einigen Fällen sind zwischen dem Connector und den Back-End-Anwendungen zusätzliche Proxys vorhanden, die Verbindungen verlangsamen oder verhindern können. Öffnen Sie zur Behebung des Problems in diesem Szenario einen Browser vom Connectorserver aus und versuchen Sie, auf die Anwendung zuzugreifen. Wenn Sie die Connectors in Azure ausführen, die Anwendungen aber lokal vorliegen, ist die Benutzerfreundlichkeit möglicherweise nicht so hoch wie erwartet.
 * **Domänencontroller**: Wenn die Connectors SSO per eingeschränkter Kerberos-Delegierung durchführen, nehmen sie vor dem Senden der Anforderung an das Back-End Kontakt mit den Domänencontrollern auf. Die Connectors verfügen zwar über einen Cache mit Kerberos-Tickets, aber in einer Umgebung mit hoher Auslastung kann sich die Reaktionsfähigkeit der Domänencontroller auf die Leistung auswirken. Dieses Problem tritt häufiger bei Connectors auf, die in Azure ausgeführt werden, aber mit Domänencontrollern kommunizieren, die lokal installiert sind. 
 
@@ -136,7 +136,7 @@ Connectors können auch in Domänen oder Gesamtstrukturen mit einer Teilvertraue
 
 In der Regel ist die Connectorbereitstellung unkompliziert und erfordert keine spezielle Konfiguration. Es gibt jedoch einige Bedingungen, die berücksichtigt werden müssen:
 
-* Organisationen, die ausgehenden Datenverkehr einschränken, müssen [erforderliche Ports öffnen](application-proxy-enable.md#open-your-ports).
+* Organisationen, die ausgehenden Datenverkehr einschränken, müssen [erforderliche Ports öffnen](application-proxy-add-on-premises-application.md#prepare-your-on-premises-environment).
 * Möglicherweise muss die Konfiguration von FIPS-konformen Computern geändert werden, damit die Connectorprozesse ein Zertifikat generieren und speichern können.
 * Organisationen, die ihre Umgebung basierend auf den Prozessen sperren, die die Netzwerkanforderungen ausgeben, müssen sicherstellen, dass für beide Connectordienste der Zugriff auf alle erforderlichen Ports und IPs zugelassen ist.
 * In einigen Fällen kann es passieren, dass Proxys für die Weiterleitung des ausgehenden Datenverkehrs die zweistufige Authentifizierung per Zertifikat verhindern, sodass bei der Kommunikation ein Fehler auftritt.

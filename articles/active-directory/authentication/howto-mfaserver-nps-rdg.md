@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: 99ed74a9664fbeeb65d90e51d0afcd97dd0b0ca0
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 67c9cc5b46b7567674b3d0bf99bd85ab321c6bd3
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44346492"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53277166"
 ---
 # <a name="remote-desktop-gateway-and-azure-multi-factor-authentication-server-using-radius"></a>Remotedesktopgateway und Azure Multi-Factor Authentication-Server mithilfe von RADIUS
 
@@ -30,6 +30,9 @@ Installieren Sie den Multi-Factor Authentication-Server auf einem separaten Serv
 - Ein in die Domäne eingebundener Azure MFA-Server. Wenn Sie noch keinen Server installiert haben, können Sie die Schritte unter [Erste Schritte mit Azure Multi-Factor Authentication-Server](howto-mfaserver-deploy.md) ausführen.
 - Ein konfigurierter NPS-Server.
 - Ein Remotedesktopgateway, das mit Netzwerkrichtliniendiensten authentifiziert wird.
+
+> [!NOTE]
+> Dieser Artikel sollte nur für Bereitstellungen von MFA Server verwendet werden. Er gilt nicht für Azure MFA (cloudbasiert).
 
 ## <a name="configure-the-remote-desktop-gateway"></a>Konfigurieren des Remotedesktopgateways
 Konfigurieren Sie das RD-Gateway, um die RADIUS-Authentifizierung an einen Azure Multi-Factor Authentication-Server zu senden. 
