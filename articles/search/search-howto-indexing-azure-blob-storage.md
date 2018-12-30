@@ -1,5 +1,5 @@
 ---
-title: Indizieren von Azure Blob Storage mit Azure Search
+title: Indizieren von Azure Blob Storage-Inhalten für die Volltextsuche – Azure Search
 description: Erfahren Sie, wie Sie Azure Blob Storage indizieren und Text aus Dokumenten mit Azure Search extrahieren.
 ms.date: 10/17/2018
 author: mgottein
@@ -9,12 +9,13 @@ services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
-ms.openlocfilehash: d2706d4b10303cb62066f0381f9a69b553c05cb4
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.custom: seodec2018
+ms.openlocfilehash: c73a802cd67c9ecb94482cfcd6aac51fc8bbc19e
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49406971"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53317473"
 ---
 # <a name="indexing-documents-in-azure-blob-storage-with-azure-search"></a>Indizieren von Dokumenten in Azure Blob Storage mit Azure Search
 Dieser Artikel beschreibt, wie Sie Azure Search zum Indizieren von Dokumenten (z.B. PDF- oder Microsoft Office-Dokumente und verschiedene andere gängige Formate) verwenden, die in Azure Blob Storage gespeichert sind. Zunächst werden grundlegende Informationen zu Einrichten und Konfigurieren eines Blobindexers erläutert. Anschließend folgt eine ausführlichere Betrachtung der Verhaltensweisen und Szenarien, die Ihnen voraussichtlich begegnen.
@@ -69,8 +70,8 @@ Weitere Informationen über die API zum Erstellen einer Datenquelle finden Sie u
 Sie haben folgende Möglichkeiten zum Angeben der Anmeldeinformationen für den Blobcontainer:
 
 - **Verbindungszeichenfolge für den Vollzugriff auf ein Speicherkonto**: `DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your account key>`. Sie können die Verbindungszeichenfolge über das Azure-Portal abrufen, indem Sie auf dem Blatt des Speicherkontos zu „Einstellungen“ > „Schlüssel“ (für klassische Speicherkonten) oder zu „Einstellungen“ > „Zugriffsschlüssel“ (für Azure Resource Manager-Speicherkonten) navigieren.
-- **Speicherkonto Shared Access Signature-Verbindungszeichenfolge** (SAS): `BlobEndpoint=https://<your account>.blob.core.windows.net/;SharedAccessSignature=?sv=2016-05-31&sig=<the signature>&spr=https&se=<the validity end time>&srt=co&ss=b&sp=rl` Die SAS sollte über die Berechtigungen zum Auflisten und Lesen für Container und Objekte (in diesem Fall Blobs) verfügen.
--  **Container und Shared Access Signature**: `ContainerSharedAccessUri=https://<your storage account>.blob.core.windows.net/<container name>?sv=2016-05-31&sr=c&sig=<the signature>&se=<the validity end time>&sp=rl` Die SAS muss über Listen- und Leseberechtigungen für den Container verfügen.
+- Verbindungszeichenfolge für eine **Shared Access Signature (SAS) für ein Speicherkonto**: `BlobEndpoint=https://<your account>.blob.core.windows.net/;SharedAccessSignature=?sv=2016-05-31&sig=<the signature>&spr=https&se=<the validity end time>&srt=co&ss=b&sp=rl` Die SAS muss über Listen- und Leseberechtigungen für Container und Objekte (in diesem Fall Blobs) verfügen.
+-  **Shared Access Signature des Containers**: `ContainerSharedAccessUri=https://<your storage account>.blob.core.windows.net/<container name>?sv=2016-05-31&sr=c&sig=<the signature>&se=<the validity end time>&sp=rl` Die SAS muss über Listen- und Leseberechtigungen für den Container verfügen.
 
 Weitere Informationen zu Shared Access Signatures von Speichern finden Sie unter [Verwenden von Shared Access Signatures (SAS)](../storage/common/storage-dotnet-shared-access-signature-part-1.md).
 
@@ -128,7 +129,7 @@ Je nach [Indexer-Konfiguration](#PartsOfBlobToIndex), kann der Blobindexer Metad
 * Der Textinhalt des Dokuments wird in ein Zeichenfolgefeld mit dem Namen `content` extrahiert.
 
 > [!NOTE]
-> Azure Search beschränkt die Menge des Texts, der extrahiert wird, in Abhängigkeit vom Tarif: 32.000 Zeichen für den Free-Tarif, 64.000 für Basic und 4 Millionen für Standard, Standard S2 und Standard S3. Für gekürzte Dokumente wird eine Warnung in die Statusantwort des Indexers einbezogen.  
+> Azure Search beschränkt die Menge des extrahierten Texts abhängig vom Tarif: 32.000 Zeichen für den Tarif „Free“, 64.000 Zeichen für den Tarif „Basic“ und 4 Millionen Zeichen für die Tarife „Standard“, „Standard S2“ und „Standard S3“. Für gekürzte Dokumente wird eine Warnung in die Statusantwort des Indexers einbezogen.  
 
 * Falls für das Blob vom Benutzer angegebene Metadateneigenschaften vorhanden sind, werden diese „Wort für Wort“ extrahiert.
 * Standardmäßige Blob-Metadateneigenschaften werden in die folgenden Felder extrahiert:
@@ -333,7 +334,7 @@ Das Indizieren von Blobs kann sehr zeitaufwändig sein. In Fällen, in denen Sie
 
 Sie möchten möglicherweise Dokumente aus mehreren Quellen in Ihrem Index „zusammenbauen“. Womöglich möchten Sie z.B. Text aus Blobs mit anderen Metadaten zusammenführen, die in Cosmos DB gespeichert sind. Sie können auch die Indizierungs-API mit Push zusammen mit unterschiedlichen Indexern zum Erstellen von Suchdokumenten aus mehreren Teilen verwenden. 
 
-Damit dies funktioniert, müssen sich alle Indexer und andere Komponenten auf den Dokumentschlüssel einigen. Eine ausführliche exemplarische Vorgehensweise finden Sie im externen Artikel [Combine documents with other data in Azure Search](http://blog.lytzen.name/2017/01/combine-documents-with-other-data-in.html) (Zusammenführen von Dokumenten mit anderen Daten in Azure Search).
+Damit dies funktioniert, müssen sich alle Indexer und andere Komponenten auf den Dokumentschlüssel einigen. Eine ausführliche exemplarische Vorgehensweise finden Sie im externen Artikel: [Combine documents with other data in Azure Search ](http://blog.lytzen.name/2017/01/combine-documents-with-other-data-in.html) (Zusammenführen von Dokumenten mit anderen Daten in Azure Search).
 
 <a name="IndexingPlainText"></a>
 ## <a name="indexing-plain-text"></a>Indizierung von Nur-Text 
@@ -374,7 +375,7 @@ In der folgenden Tabelle sind die Verarbeitungsschritte für jedes Dokumentforma
 | MSG (application/vnd.ms-outlook) |`metadata_content_type`<br/>`metadata_message_from`<br/>`metadata_message_to`<br/>`metadata_message_cc`<br/>`metadata_message_bcc`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_subject` |Extrahieren von Text, einschließlich Anlagen |
 | ZIP (application/zip) |`metadata_content_type` |Extrahieren von Text aus allen Dokumenten im Archiv |
 | XML (application/xml) |`metadata_content_type`</br>`metadata_content_encoding`</br> |Entfernen von XML-Markup und Extrahieren von Text |
-| JSON (application/json) |`metadata_content_type`</br>`metadata_content_encoding` |Extrahieren von Text<br/>HINWEIS: Wenn Sie mehrere Felder des Dokuments aus einem JSON-Blob extrahieren möchten, helfen Ihnen die ausführlichen Informationen unter [Indizierung der JSON-Blobs](search-howto-index-json-blobs.md) weiter. |
+| JSON (application/json) |`metadata_content_type`</br>`metadata_content_encoding` |Extrahieren von Text<br/>HINWEIS:  Wenn Sie mehrere Felder des Dokuments aus einem JSON-Blob extrahieren möchten, helfen Ihnen die ausführlichen Informationen unter [Indizierung der JSON-Blobs](search-howto-index-json-blobs.md) weiter. |
 | EML (message/rfc822) |`metadata_content_type`<br/>`metadata_message_from`<br/>`metadata_message_to`<br/>`metadata_message_cc`<br/>`metadata_creation_date`<br/>`metadata_subject` |Extrahieren von Text, einschließlich Anlagen |
 | RTF (application/rtf) |`metadata_content_type`</br>`metadata_author`</br>`metadata_character_count`</br>`metadata_creation_date`</br>`metadata_page_count`</br>`metadata_word_count`</br> | Extrahieren von Text|
 | Nur-Text (text/plain) |`metadata_content_type`</br>`metadata_content_encoding`</br> | Extrahieren von Text|

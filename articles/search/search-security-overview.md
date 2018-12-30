@@ -1,5 +1,5 @@
 ---
-title: Sicherheit und Datenschutz in Azure Search | Microsoft-Dokumentation
+title: Sicherheit und Datenschutz – Azure Search
 description: Azure Search ist kompatibel mit SOC 2, HIPAA und anderen Zertifizierungen. Verbindungs- und Datenverschlüsselung, Authentifizierung und Identitätszugriff durch Benutzer- und Gruppensicherheits-IDs in Azure Search-Filtern.
 author: HeidiSteen
 manager: cgronlun
@@ -8,12 +8,13 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 09/06/2018
 ms.author: heidist
-ms.openlocfilehash: 4b1307aa00fae26d7425c9a95ed673b11ba2e9b4
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.custom: seodec2018
+ms.openlocfilehash: 55558f1483a576e7ac3b9ce027588eceabd5db70
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44092630"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53311710"
 ---
 # <a name="security-and-data-privacy-in-azure-search"></a>Sicherheit und Datenschutz in Azure Search
 
@@ -21,7 +22,7 @@ Umfassende Sicherheitsfunktionen und Zugriffssteuerungen sind in Azure Search in
 
 Die Sicherheitsarchitektur von Azure Search umfasst physische Sicherheit, verschlüsselte Übertragung, verschlüsselte Speicherung und plattformweite Standardskonformität. Im laufenden Betrieb akzeptiert Azure Search ausschließlich authentifizierte Anforderungen. Optional kann eine benutzerspezifische Zugriffssteuerung über Sicherheitsfilter für Inhalte hinzugefügt werden. Dieser Artikel geht zwar auf die einzelnen Sicherheitsebenen ein, beschäftigt sich aber hauptsächlich mit dem Schutz von Daten und Vorgängen in Azure Search.
 
-## <a name="standards-compliance-iso-27001-soc-2-hipaa"></a>Standardskonformität: ISO 27001, SOC 2, HIPAA
+## <a name="standards-compliance-iso-27001-soc-2-hipaa"></a>Einhaltung von Standards: ISO 27001, SOC 2, HIPAA
 
 Azure Search ist wie [im Juni 2018 angekündigt](https://azure.microsoft.com/blog/azure-search-is-now-certified-for-several-levels-of-compliance/) für die folgenden Standards zertifiziert:
 

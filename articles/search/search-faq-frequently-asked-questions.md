@@ -1,6 +1,6 @@
 ---
-title: Häufig gestellte Fragen (FAQ) zu Azure Search | Microsoft-Dokumentation
-description: Enthält Antworten auf häufige Fragen zu Microsoft Azure Search.
+title: Häufig gestellte Fragen (FAQ) – Azure Search
+description: Hier erhalten Sie Antworten auf häufig gestellte Fragen zum Microsoft Azure Search-Dienst, einem in der Cloud gehosteten Suchdienst für Microsoft Azure.
 author: HeidiSteen
 manager: cgronlun
 services: search
@@ -8,12 +8,13 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 08/03/2017
 ms.author: heidist
-ms.openlocfilehash: 1491fdb0f208100619e569f9a74d5e697a0065a6
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.custom: seodec2018
+ms.openlocfilehash: 9ea4e4ec78e5613758bd9e5ff7a4fbd3273208c6
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43841676"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53312815"
 ---
 # <a name="azure-search---frequently-asked-questions-faq"></a>Azure Search – Häufig gestellte Fragen (FAQ)
 
@@ -95,6 +96,6 @@ Haben Sie eine Frage zu einem fehlenden Feature bzw. einer fehlenden Funktion? F
 
 ## <a name="see-also"></a>Weitere Informationen
 
- [Stack Overflow: Azure Search](https://stackoverflow.com/questions/tagged/azure-search)   
+ [StackOverflow: Azure Search](https://stackoverflow.com/questions/tagged/azure-search)   
  [Funktionsweise der Volltextsuche in Azure Search](search-lucene-query-architecture.md)  
  [Was ist Azure Search?](search-what-is-azure-search.md)

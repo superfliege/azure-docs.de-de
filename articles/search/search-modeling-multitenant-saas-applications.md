@@ -2,19 +2,20 @@
 title: Modellieren von Mehrinstanzenfähigkeit in Azure Search | Microsoft Docs
 description: Erfahren Sie mehr über gängige Entwurfsmuster für mehrinstanzenfähige SaaS-Anwendungen bei Verwendung von Azure Search.
 manager: jlembicz
-author: ashmaka
+author: LiamCavanagh
 services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
 ms.date: 07/30/2018
-ms.author: ashmaka
-ms.openlocfilehash: b7befb46da8674e0bec7d3f73ad33a12529ffc3a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.author: liamca
+ms.custom: seodec2018
+ms.openlocfilehash: 1da9756df4fa05b367665a5fe024528939f22578
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51232376"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53313036"
 ---
 # <a name="design-patterns-for-multitenant-saas-applications-and-azure-search"></a>Entwurfsmuster für mehrinstanzenfähige SaaS-Anwendungen und Azure Search
 Eine mehrinstanzenfähige Anwendung bietet dieselben Dienste und Funktionen einer beliebigen Anzahl von Mandanten, die die Daten der anderen Mandaten nicht anzeigen oder mit diesen gemeinsam nutzen können. In diesem Dokument werden Strategien zur Isolierung von Mandanten für mehrinstanzenfähige Anwendungen erläutert, die mit Azure Search erstellt werden.

@@ -1,26 +1,19 @@
 ---
-title: 'Verknüpfen eines virtuellen Netzwerks mit einer ExpressRoute-Verbindung: Azure-Portal | Microsoft-Dokumentation'
+title: 'Verknüpfen eines virtuellen Netzwerks mit einer Verbindung – ExpressRoute: Azure-Portal | Microsoft-Dokumentation'
 description: Verbinden eines VNET mit einer Azure ExpressRoute-Verbindung. Ausführliche Schritte.
 services: expressroute
-documentationcenter: na
 author: cherylmc
-manager: timlt
-editor: ''
-tags: azure-resource-manager
-ms.assetid: f5cb5441-2fba-46d9-99a5-d1d586e7bda4
 ms.service: expressroute
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 03/08/2018
+ms.topic: conceptual
+ms.date: 12/07/2018
 ms.author: cherylmc
-ms.openlocfilehash: 47c0db66889dae5d74e2fcf46a27ec1397930e53
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.custom: seodec18
+ms.openlocfilehash: 16d85510efb055d7d564ffadb9fff2b200771bc6
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51256781"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53438828"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-the-portal"></a>Verbinden eines virtuellen Netzwerks mit einer ExpressRoute-Verbindung mithilfe des Portals
 > [!div class="op_single_selector"]
@@ -95,6 +88,10 @@ Der Besitzer der Verbindung hat die Möglichkeit, Autorisierungen jederzeit zu �
 **So erstellen Sie eine Verbindungsautorisierung**
 
 Der Verbindungsbesitzer erstellt eine Autorisierung. Dies führt zur Erstellung eines Autorisierungsschlüssels, der von einem Verbindungsbenutzer verwendet werden kann, um dessen virtuelle Netzwerkgateways mit der ExpressRoute-Verbindung zu verbinden. Eine Autorisierung gilt nur für jeweils eine Verbindung.
+
+> [!NOTE]
+> Jede Verbindung erfordert eine separate Autorisierung.
+>
 
 1. Klicken Sie auf der Seite „ExpressRoute“ auf **Autorisierungen**, geben Sie einen **Namen** für die Autorisierung ein, und klicken Sie auf **Speichern**.
 

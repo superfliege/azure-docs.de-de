@@ -1,6 +1,6 @@
 ---
-title: Feldzuordnungen in Azure Search-Indexern
-description: Konfigurieren von Feldzuordnungen im Azure Search-Indexer zum Ausgleichen von Unterschieden in Feldnamen und Datendarstellungen
+title: Feldzuordnungen für die automatisierte Indizierung mithilfe von Indexern – Azure Search
+description: Konfigurieren Sie Feldzuordnungen im Azure Search-Indexer zum Ausgleichen von Unterschieden in Feldnamen und Datendarstellungen.
 ms.date: 10/17/2018
 author: mgottein
 manager: cgronlun
@@ -9,12 +9,13 @@ services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
-ms.openlocfilehash: 01edc7001ec463cb16d8b6c715794b0028508143
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.custom: seodec2018
+ms.openlocfilehash: 94a7274c0e950661d118ad5421e7c763fe555434
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49404720"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53312696"
 ---
 # <a name="field-mappings-in-azure-search-indexers"></a>Feldzuordnungen in Azure Search-Indexern
 Bei Verwendung des Azure Search-Indexers gibt es gelegentlich Situationen, in denen die Eingabedaten nicht ganz dem Schema des Zielindexes entsprechen. In diesen Fällen können Sie Ihre Daten mithilfe von **Feldzuordnungen** in das gewünschte Format umwandeln.
@@ -134,7 +135,7 @@ Wenn Sie keine `parameters` angeben, ist `true` der Standardwert von `useHttpSer
 <a name="base64details"></a>
 
 ### <a name="details-of-base64-encoding-and-decoding"></a>Details zur Base64-Codierung und -Decodierung
-Azure Search unterstützt zwei Base64-Codierungen: das HttpServerUtility-URL-Token und die URL-sichere Base64-Codierung ohne Auffüllung. Sie müssen die gleiche Codierung wie die Zuordnungsfunktionen verwenden, wenn Sie einen Dokumentschlüssel für die Suche codieren, einen Wert für die Decodierung durch den Indexer codieren oder ein durch den Indexer codiertes Feld decodieren möchten.
+Azure Search unterstützt zwei base64-Codierungen: das HttpServerUtility-URL-Token und die URL-sichere Base64-Codierung ohne Auffüllung. Sie müssen die gleiche Codierung wie die Zuordnungsfunktionen verwenden, wenn Sie einen Dokumentschlüssel für die Suche codieren, einen Wert für die Decodierung durch den Indexer codieren oder ein durch den Indexer codiertes Feld decodieren möchten.
 
 Wenn der Parameter `useHttpServerUtilityUrlTokenEncode` zum Codieren bzw. `useHttpServerUtilityUrlTokenDecode` zum Decodieren auf `true` eingestellt ist, verhält sich `base64Encode` wie [HttpServerUtility.UrlTokenEncode](https://msdn.microsoft.com/library/system.web.httpserverutility.urltokenencode.aspx) und `base64Decode` wie [HttpServerUtility.UrlTokenDecode](https://msdn.microsoft.com/library/system.web.httpserverutility.urltokendecode.aspx).
 

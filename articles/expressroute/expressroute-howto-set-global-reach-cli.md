@@ -1,19 +1,19 @@
 ---
-title: Konfigurieren von Azure ExpressRoute Global Reach mit der Azure CLI | Microsoft-Dokumentation
+title: 'Konfigurieren von ExpressRoute Global Reach: Azure CLI | Microsoft-Dokumentation'
 description: Dieser Artikel hilft Ihnen, ExpressRoute-Leitungen miteinander zu verbinden, um ein privates Netzwerk zwischen Ihren lokalen Netzwerken aufzubauen und Global Reach zu aktivieren.
-documentationcenter: na
 services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 11/14/2018
+ms.date: 12/12/2018
 ms.author: cherylmc
-ms.openlocfilehash: 9d41ab26876d464187466f566bbfafc4861c799d
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.custom: seodec18
+ms.openlocfilehash: 9a8e0a5df9383d8e3d7159aa916b0e4fbfeea948
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52333259"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53384049"
 ---
 # <a name="configure-expressroute-global-reach-using-azure-cli-preview"></a>Konfigurieren von ExpressRoute Global Reach mit der Azure CLI (Vorschau)
 Dieser Artikel unterstützt Sie bei der Konfiguration von ExpressRoute Global Reach mit der Azure CLI. Weitere Informationen finden Sie unter [ExpressRoute Global Reach (Vorschau)](expressroute-global-reach.md).
@@ -55,24 +55,22 @@ Sie können ExpressRoute Global Reach zwischen zwei beliebigen ExpressRoute-Leit
 
 ## <a name="enable-connectivity-between-your-on-premises-networks"></a>Aktivieren der Konnektivität zwischen Ihren lokalen Netzwerken
 
-Führen Sie Folgendes an der CLI aus, um zwei ExpressRoute-Leitungen zu verbinden.
+Wenn Sie den Befehl zum Aktivieren der Konnektivität ausführen, beachten Sie die folgenden Werte:
 
-> [!NOTE]
-> Die Peerleitung *peer-circuit* muss die vollständige Ressourcen-ID sein, z. B.
-> ```
-> */subscriptions/{your_subscription_id}/resourceGroups/{your_resource_group}/providers/Microsoft.Network/expressRouteCircuits/{your_circuit_name}*
-> ```
-> 
+* Die Peerleitung *peer-circuit* muss die vollständige Ressourcen-ID sein. Beispiel:  
+
+  ```
+  /subscriptions/{your_subscription_id}/resourceGroups/{your_resource_group}/providers/Microsoft.Network/expressRouteCircuits/{your_circuit_name}
+  ```
+* *-AddressPrefix* muss ein IPv4-Subnetz des Typs „/29“ sein, z.B. „10.0.0.0/29“. Wir nutzen IP-Adressen in diesem Subnetz, um Konnektivität zwischen den beiden ExpressRoute-Leitungen herzustellen. Sie müssen keine Adressen in diesem Subnetz in Ihren Azure VNETs oder lokalen Netzwerken verwenden.
+
+Führen Sie Folgendes an der CLI aus, um zwei ExpressRoute-Leitungen zu verbinden. Verwenden Sie den folgenden Beispielbefehl:
 
 ```azurecli
 az network express-route peering connection create -g <ResourceGroupName> --circuit-name <Circuit1Name> --peering-name AzurePrivatePeering -n <ConnectionName> --peer-circuit <Circuit2ResourceID> --address-prefix <__.__.__.__/29>
 ```
 
-> [!IMPORTANT]
-> *-AddressPrefix* muss ein IPv4-Subnetz des Typs „/29“ sein, z.B. „10.0.0.0/29“. Wir nutzen IP-Adressen in diesem Subnetz, um Konnektivität zwischen den beiden ExpressRoute-Leitungen herzustellen. Sie müssen keine Adressen in diesem Subnetz in Ihren Azure VNETs oder lokalen Netzwerken verwenden.
-> 
-
-Die CLI-Ausgabe sieht wie folgt aus.
+Die CLI-Ausgabe sieht in etwa wie folgt aus:
 
 ```azurecli
 {

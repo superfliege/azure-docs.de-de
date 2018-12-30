@@ -1,5 +1,5 @@
 ---
-title: Modellieren komplexer Datentypen in Azure Search | Microsoft Docs
+title: Modellieren komplexer Datentypen – Azure Search
 description: Geschachtelte oder hierarchische Datenstrukturen lassen sich in einem Azure Search-Index mit einem vereinfachten Rowset und dem Datentyp „Sammlungen“ modellieren.
 author: brjohnstmsft
 manager: jlembicz
@@ -9,12 +9,13 @@ services: search
 ms.service: search
 ms.topic: conceptual
 ms.date: 05/01/2017
-ms.openlocfilehash: 81298bedd43a89ea948753dffc5f80248f5429ca
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.custom: seodec2018
+ms.openlocfilehash: 973623d6c4cb57518af2012bccf67c969146d23c
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31799072"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53311982"
 ---
 # <a name="how-to-model-complex-data-types-in-azure-search"></a>Gewusst wie: Modellieren komplexer Datentypen in Azure Search
 Externe Datasets, die zum Auffüllen eines Azure Search-Index verwendet werden, weisen manchmal hierarchische oder geschachtelte Teilstrukturen auf, die in einem tabellarischen Rowset nicht sauber unterteilt werden. Beispiele für solche Strukturen können mehrere Standorte und Telefonnummern für einen einzelnen Kunden, mehrere Farben und Größen für eine einzelne SKU, mehrere Autoren für ein einzelnes Buch enthalten und so weiter. In der Modelliersprache werden diese Strukturen bisweilen als *komplexe Datentypen*, *zusammengesetzte Datentypen*, *verbundene Datentypen* oder *aggregierte Datentypen* bezeichnet, um nur einige zu nennen.

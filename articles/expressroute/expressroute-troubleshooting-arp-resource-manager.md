@@ -1,25 +1,19 @@
 ---
-title: 'Abrufen von ARP-Tabellen: Resource Manager: Azure ExpressRoute-Problembehandlung | Microsoft-Dokumentation'
+title: 'Abrufen von ARP-Tabellen – Problembehandlung – ExpressRoute: Azure | Microsoft-Dokumentation'
 description: Diese Seite enthält Anweisungen zum Abrufen der ARP-Tabellen für eine ExpressRoute-Verbindung.
-documentationcenter: na
 services: expressroute
 author: ganesr
-manager: carolz
-editor: tysonn
-ms.assetid: 0a6bf1d5-6baf-44dd-87d3-1ebd2fd08bdc
 ms.service: expressroute
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 ms.date: 01/30/2017
 ms.author: ganesr
-ms.openlocfilehash: a65b1ba2998eae33b3e73bd2492fbbf025eb5946
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.custom: seodec18
+ms.openlocfilehash: a16b2dd61a1a04d8fc3362ce2e26c7d3c9433972
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2017
-ms.locfileid: "23013135"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53274467"
 ---
 # <a name="getting-arp-tables-in-the-resource-manager-deployment-model"></a>Abrufen von ARP-Tabellen im Resource Manager-Bereitstellungsmodell
 > [!div class="op_single_selector"]
@@ -28,7 +22,7 @@ ms.locfileid: "23013135"
 > 
 > 
 
-In diesem Artikel werden Sie durch die Schritte zum Erlernen der Nutzung der ARP-Tabellen für Ihre ExpressRoute-Verbindung geführt. 
+In diesem Artikel werden Sie durch die Schritte zum Erlernen der Nutzung der ARP-Tabellen für Ihre ExpressRoute-Verbindung geführt.
 
 > [!IMPORTANT]
 > Dieses Dokument soll Ihnen helfen, einfache Probleme zu untersuchen und zu beheben. Es dient nicht als Ersatz für Microsoft-Support. Sie müssen ein Supportticket beim [Microsoft-Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) öffnen, wenn Sie Ihr Problem nicht anhand der folgenden Anleitung beheben können.
