@@ -8,14 +8,14 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 10/23/2018
+ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: ce930adc4cb2c635b54b3d41ea4a3ac272541698
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 5d2cf4d76ce6f44cb31f05d45f2ccbceccbe9c10
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52638235"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53339364"
 ---
 # <a name="checkpoints-and-replay-in-durable-functions-azure-functions"></a>Prüfpunkte und Wiedergabe in Durable Functions (Azure Functions)
 
@@ -27,7 +27,7 @@ Trotzdem wird mit Durable Functions die zuverlässige Ausführung von Orchestrie
 
 Angenommen, Sie verfügen über die folgende Orchestratorfunktion:
 
-#### <a name="c"></a>C#
+### <a name="c"></a>C#
 
 ```csharp
 [FunctionName("E1_HelloSequence")]
@@ -45,7 +45,7 @@ public static async Task<List<string>> Run(
 }
 ```
 
-#### <a name="javascript-functions-v2-only"></a>JavaScript (nur Functions v2)
+### <a name="javascript-functions-2x-only"></a>JavaScript (nur Functions 2.x)
 
 ```javascript
 const df = require("durable-functions");
@@ -56,6 +56,7 @@ module.exports = df.orchestrator(function*(context) {
     output.push(yield context.df.callActivity("E1_SayHello", "Seattle"));
     output.push(yield context.df.callActivity("E1_SayHello", "London"));
 
+    // returns ["Hello Tokyo!", "Hello Seattle!", "Hello London!"]
     return output;
 });
 ```
@@ -77,47 +78,48 @@ Nachdem der Prüfpunktvorgang abgeschlossen ist, kann die Orchestratorfunktion a
 
 Nach Abschluss des Vorgangs sieht der Verlauf der obigen Funktion in Azure Table Storage etwa wie folgt aus (zu Darstellungszwecken gekürzt):
 
-| PartitionKey (InstanceId)                     | EventType             | Zeitstempel               | Eingabe | NAME             | Ergebnis                                                    | Status | 
-|----------------------------------|-----------------------|----------|--------------------------|-------|------------------|-----------------------------------------------------------|---------------------| 
-| eaee885b | OrchestratorStarted   | 2017-05-05T18:45:32.362Z |       |                  |                                                           |                     | 
-| eaee885b | ExecutionStarted      | 2017-05-05T18:45:28.852Z | null  | E1_HelloSequence |                                                           |                     | 
-| eaee885b | TaskScheduled         | 2017-05-05T18:45:32.670Z |       | E1_SayHello      |                                                           |                     | 
-| eaee885b | OrchestratorCompleted | 2017-05-05T18:45:32.670Z |       |                  |                                                           |                     | 
-| eaee885b | OrchestratorStarted   | 2017-05-05T18:45:34.232Z |       |                  |                                                           |                     | 
-| eaee885b | TaskCompleted         | 2017-05-05T18:45:34.201Z |       |                  | """Hello Tokyo!"""                                        |                     | 
-| eaee885b | TaskScheduled         | 2017-05-05T18:45:34.435Z |       | E1_SayHello      |                                                           |                     | 
-| eaee885b | OrchestratorCompleted | 2017-05-05T18:45:34.435Z |       |                  |                                                           |                     | 
-| eaee885b | OrchestratorStarted   | 2017-05-05T18:45:34.857Z |       |                  |                                                           |                     | 
-| eaee885b | TaskCompleted         | 2017-05-05T18:45:34.763Z |       |                  | """Hello Seattle!"""                                      |                     | 
-| eaee885b | TaskScheduled         | 2017-05-05T18:45:34.857Z |       | E1_SayHello      |                                                           |                     | 
-| eaee885b | OrchestratorCompleted | 2017-05-05T18:45:34.857Z |       |                  |                                                           |                     | 
-| eaee885b | OrchestratorStarted   | 2017-05-05T18:45:35.032Z |       |                  |                                                           |                     | 
-| eaee885b | TaskCompleted         | 2017-05-05T18:45:34.919Z |       |                  | """Hello London!"""                                       |                     | 
-| eaee885b | ExecutionCompleted    | 2017-05-05T18:45:35.044Z |       |                  | "[""Hello Tokyo!"",""Hello Seattle!"",""Hello London!""]" | Abgeschlossen           | 
-| eaee885b | OrchestratorCompleted | 2017-05-05T18:45:35.044Z |       |                  |                                                           |                     | 
+| PartitionKey (InstanceId)                     | EventType             | Zeitstempel               | Eingabe | NAME             | Ergebnis                                                    | Status |
+|----------------------------------|-----------------------|----------|--------------------------|-------|------------------|-----------------------------------------------------------|---------------------|
+| eaee885b | OrchestratorStarted   | 2017-05-05T18:45:32.362Z |       |                  |                                                           |                     |
+| eaee885b | ExecutionStarted      | 2017-05-05T18:45:28.852Z | null  | E1_HelloSequence |                                                           |                     |
+| eaee885b | TaskScheduled         | 2017-05-05T18:45:32.670Z |       | E1_SayHello      |                                                           |                     |
+| eaee885b | OrchestratorCompleted | 2017-05-05T18:45:32.670Z |       |                  |                                                           |                     |
+| eaee885b | OrchestratorStarted   | 2017-05-05T18:45:34.232Z |       |                  |                                                           |                     |
+| eaee885b | TaskCompleted         | 2017-05-05T18:45:34.201Z |       |                  | """Hello Tokyo!"""                                        |                     |
+| eaee885b | TaskScheduled         | 2017-05-05T18:45:34.435Z |       | E1_SayHello      |                                                           |                     |
+| eaee885b | OrchestratorCompleted | 2017-05-05T18:45:34.435Z |       |                  |                                                           |                     |
+| eaee885b | OrchestratorStarted   | 2017-05-05T18:45:34.857Z |       |                  |                                                           |                     |
+| eaee885b | TaskCompleted         | 2017-05-05T18:45:34.763Z |       |                  | """Hello Seattle!"""                                      |                     |
+| eaee885b | TaskScheduled         | 2017-05-05T18:45:34.857Z |       | E1_SayHello      |                                                           |                     |
+| eaee885b | OrchestratorCompleted | 2017-05-05T18:45:34.857Z |       |                  |                                                           |                     |
+| eaee885b | OrchestratorStarted   | 2017-05-05T18:45:35.032Z |       |                  |                                                           |                     |
+| eaee885b | TaskCompleted         | 2017-05-05T18:45:34.919Z |       |                  | """Hello London!"""                                       |                     |
+| eaee885b | ExecutionCompleted    | 2017-05-05T18:45:35.044Z |       |                  | "[""Hello Tokyo!"",""Hello Seattle!"",""Hello London!""]" | Abgeschlossen           |
+| eaee885b | OrchestratorCompleted | 2017-05-05T18:45:35.044Z |       |                  |                                                           |                     |
 
 Einige Hinweise zu den Spaltenwerten:
+
 * **PartitionKey**: Enthält die Instanz-ID der Orchestrierung.
-* **EventType**: Steht für den Typ des Ereignisses. Es kann sich um einen der folgenden Typen handeln:
-    * **OrchestrationStarted**: Die Orchestratorfunktion wurde aus einem Wartezustand fortgesetzt oder wird zum ersten Mal ausgeführt. Die Spalte `Timestamp` wird verwendet, um den deterministischen Wert für die [CurrentUtcDateTime](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CurrentUtcDateTime)-API aufzufüllen.
-    * **ExecutionStarted**: Die Ausführung der Orchestratorfunktion wurde zum ersten Mal gestartet. Dieses Ereignis enthält auch die Funktionseingabe in der Spalte `Input`.
-    * **TaskScheduled**: Eine Aktivitätsfunktion wurde geplant. Der Name der Aktivitätsfunktion wird in der Spalte `Name` erfasst.
-    * **TaskCompleted**: Eine Aktivitätsfunktion wurde abgeschlossen. Das Ergebnis der Funktion ist in der Spalte `Result` enthalten.
-    * **TimerCreated**: Ein permanenter Timer wurde erstellt. Die Spalte `FireAt` enthält die geplante UTC-Uhrzeit, zu der der Timer abläuft.
-    * **TimerFired**: Ein permanenter Timer wurde ausgelöst.
-    * **EventRaised**: Ein externes Ereignis wurde an die Orchestrierungsinstanz gesendet. In der Spalte `Name` wird der Name des Ereignisses und in der Spalte `Input` die Nutzlast des Ereignisses erfasst.
-    * **OrchestratorCompleted**: Die Orchestratorfunktion befindet sich im Wartezustand.
-    * **ContinueAsNew**: Die Orchestratorfunktion wurde abgeschlossen und mit einem neuen Zustand neu gestartet. Die Spalte `Result` enthält den Wert, der als Eingabe in der neu gestarteten Instanz verwendet wird.
-    * **ExecutionCompleted**: Die Orchestratorfunktion wurde bis zum Abschluss (oder Fehler) ausgeführt. Die Ausgaben der Funktion bzw. die Fehlerdetails werden in der Spalte `Result` gespeichert.
-* **Timestamp**: Der UTC-Zeitstempel des Verlaufsereignisses.
-* **Name**: Der Name der Funktion, die aufgerufen wurde.
-* **Input**: Die Eingabe der Funktion im JSON-Format.
-* **Result**: Die Ausgabe der Funktion, also ihr Rückgabewert.
+* **EventType**:  Steht für den Typ des Ereignisses. Es kann sich um einen der folgenden Typen handeln:
+  * **OrchestrationStarted**:  Die Orchestratorfunktion wurde aus einem Wartezustand fortgesetzt oder wird zum ersten Mal ausgeführt. Die Spalte `Timestamp` wird verwendet, um den deterministischen Wert für die [CurrentUtcDateTime](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CurrentUtcDateTime)-API aufzufüllen.
+  * **ExecutionStarted**:  Die Ausführung der Orchestratorfunktion wurde zum ersten Mal gestartet. Dieses Ereignis enthält auch die Funktionseingabe in der Spalte `Input`.
+  * **TaskScheduled**:  Eine Aktivitätsfunktion wurde geplant. Der Name der Aktivitätsfunktion wird in der Spalte `Name` erfasst.
+  * **TaskCompleted**:  Eine Aktivitätsfunktion wurde abgeschlossen. Das Ergebnis der Funktion ist in der Spalte `Result` enthalten.
+  * **TimerCreated**:  Ein permanenter Timer wurde erstellt. Die Spalte `FireAt` enthält die geplante UTC-Uhrzeit, zu der der Timer abläuft.
+  * **TimerFired**:  Ein permanenter Timer wurde ausgelöst.
+  * **EventRaised**:  Ein externes Ereignis wurde an die Orchestrierungsinstanz gesendet. In der Spalte `Name` wird der Name des Ereignisses und in der Spalte `Input` die Nutzlast des Ereignisses erfasst.
+  * **OrchestratorCompleted**:  Die Orchestratorfunktion befindet sich im Wartezustand.
+  * **ContinueAsNew**:  Die Orchestratorfunktion wurde abgeschlossen und mit einem neuen Zustand neu gestartet. Die Spalte `Result` enthält den Wert, der als Eingabe in der neu gestarteten Instanz verwendet wird.
+  * **ExecutionCompleted**:  Die Orchestratorfunktion wurde bis zum Abschluss (oder Fehler) ausgeführt. Die Ausgaben der Funktion bzw. die Fehlerdetails werden in der Spalte `Result` gespeichert.
+* **Timestamp**:  Der UTC-Zeitstempel des Verlaufsereignisses.
+* **Name**:  Der Name der Funktion, die aufgerufen wurde.
+* **Eingabe**: Die Eingabe der Funktion im JSON-Format.
+* **Result**:  Die Ausgabe der Funktion, also ihr Rückgabewert.
 
 > [!WARNING]
 > Die Tabelle ist zwar als Debugtool nützlich, aber Sie sollten keine Abhängigkeiten dafür einrichten. Dies kann sich im Rahmen der Weiterentwicklung der Erweiterung Durable Functions ändern.
 
-Jedes Mal, wenn die Funktion aus einem `await`-Zustand fortgesetzt wird, führt das Durable Task Framework die Orchestratorfunktion von Grund auf neu aus. Bei jeder erneuten Ausführung wird der Ausführungsverlauf herangezogen, um zu ermitteln, ob der aktuelle asynchrone Vorgang durchgeführt wurde.  Wenn ja, gibt das Framework die Ausgabe dieses Vorgangs sofort wieder und fährt mit dem nächsten `await`-Element fort. Dieser Prozess wird fortgesetzt, bis der gesamte Verlauf wiedergegeben wurde. An diesem Punkt werden alle lokalen Variablen in der Orchestratorfunktion auf ihre vorherigen Werte wiederhergestellt.
+Jedes Mal, wenn die Funktion aus einem `await` (C#)- oder `yield` (JavaScript)-Zustand fortgesetzt wird, führt das Durable Task Framework die Orchestratorfunktion von Grund auf neu aus. Bei jeder erneuten Ausführung wird der Ausführungsverlauf herangezogen, um zu ermitteln, ob der aktuelle asynchrone Vorgang durchgeführt wurde.  Wenn ja, gibt das Framework die Ausgabe dieses Vorgangs sofort wieder und fährt mit dem nächsten `await` (C#)- oder `yield` (JavaScript)-Element fort. Dieser Prozess wird fortgesetzt, bis der gesamte Verlauf wiedergegeben wurde. An diesem Punkt werden alle lokalen Variablen in der Orchestratorfunktion auf ihre vorherigen Werte wiederhergestellt.
 
 ## <a name="orchestrator-code-constraints"></a>Einschränkungen des Orchestratorcodes
 
@@ -125,26 +127,36 @@ Mit dem Wiedergabeverhalten sind Einschränkungen des Codetyps verbunden, der in
 
 * Der Orchestratorcode muss **deterministisch** sein. Er wird mehrfach wiedergegeben und muss jedes Mal zum gleichen Ergebnis führen. Beispielsweise keine direkten Aufrufe zum Abrufen des aktuellen Datums bzw. der Uhrzeit, Abrufen von Zufallszahlen, Generieren von zufälligen GUIDs oder Aufrufen von Remoteendpunkten.
 
-  Wenn der Orchestratorcode das aktuelle Datum bzw. die Uhrzeit abrufen muss, sollte hierfür die [CurrentUtcDateTime](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CurrentUtcDateTime)-API genutzt werden, mit der die Wiedergabe sicher ist.
+  Wenn der Orchestratorcode das aktuelle Datum bzw. die Uhrzeit abrufen muss, sollte hierfür die [CurrentUtcDateTime](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CurrentUtcDateTime) (.NET)- oder `currentUtcDateTime` (JavaScript)-API genutzt werden, mit der die Wiedergabe sicher ist.
 
-  Wenn der Orchestratorcode eine zufällige GUID generieren muss, sollte die API [NewGuid](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_NewGuid) verwendet werden, die für die Wiedergabe sicher ist.
+  Wenn der Orchestratorcode eine zufällige GUID generieren muss, sollte die API [NewGuid](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_NewGuid) (.NET) verwendet werden, die für die Wiedergabe sicher ist, oder die GUID-Generierung an eine Aktivitätsfunktion (JavaScript) delegiert werden, wie in diesem Beispiel:
+
+  ```javascript
+  const uuid = require("uuid/v1");
+
+  module.exports = async function(context) {
+    return uuid();
+  }
+  ```
 
   Nicht deterministische Vorgänge müssen in Aktivitätsfunktionen durchgeführt werden. Dies schließt alle Interaktionen mit anderen Eingabe- oder Ausgabebindungen ein. So wird sichergestellt, dass alle nicht deterministischen Werte bei der ersten Ausführung einmal generiert und im Ausführungsverlauf gespeichert werden. Bei den nachfolgenden Ausführungen wird der gespeicherte Wert dann automatisch verwendet.
 
-* Der Orchestratorcode sollte **nicht blockierend** sein. Das bedeutet beispielsweise keine E/A und keine Aufrufe an `Thread.Sleep` oder entsprechende APIs.
+* Der Orchestratorcode sollte **nicht blockierend** sein. Das bedeutet beispielsweise keine E/A und keine Aufrufe an `Thread.Sleep` (.NET) oder entsprechende APIs.
 
-  Wenn für einen Orchestrator eine Verzögerung erforderlich ist, kann die [CreateTimer](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CreateTimer_)-API genutzt werden.
+  Wenn für einen Orchestrator eine Verzögerung erforderlich ist, kann die [CreateTimer](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CreateTimer_) (.NET)- oder `createTimer` (JavaScript)-API genutzt werden.
 
-* Orchestratorcode darf **niemals einen asynchronen Vorgang initiieren**, sofern nicht die [DurableOrchestrationContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html)-API verwendet wird. `Task.Run`, `Task.Delay` oder `HttpClient.SendAsync` sind beispielsweise nicht zulässig. Das Durable Task Framework führt Orchestratorcode über einen einzelnen Thread aus und kann nicht mit anderen Threads interagieren, die von anderen asynchronen APIs geplant werden können.
+* Orchestratorcode darf **niemals einen asynchronen Vorgang initiieren**, sofern nicht die [DurableOrchestrationContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html)-API oder die API des `context.df`-Objekts verwendet wird. Beispielsweise kein `Task.Run`, `Task.Delay` oder `HttpClient.SendAsync` in .NET oder `setTimeout()` und `setInterval()` in JavaScript. Das Durable Task Framework führt Orchestratorcode über einen einzelnen Thread aus und kann nicht mit anderen Threads interagieren, die von anderen asynchronen APIs geplant werden können.
 
-* **Endlosschleifen sollten im Orchestratorcode vermieden werden**. Da das Durable Task Framework den Ausführungsverlauf speichert, während die Orchestrierungsfunktion voranschreitet, kann eine Endlosschleife unter Umständen dazu führen, dass für eine Orchestratorinstanz der Arbeitsspeicher nicht mehr ausreicht. Verwenden Sie für Szenarien mit Endlosschleifen APIs wie beispielsweise [ContinueAsNew](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_ContinueAsNew_), um die Funktionsausführung neu zu starten und den vorherigen Ausführungsverlauf zu verwerfen.
+* **Endlosschleifen sollten im Orchestratorcode vermieden werden**. Da das Durable Task Framework den Ausführungsverlauf speichert, während die Orchestrierungsfunktion voranschreitet, kann eine Endlosschleife unter Umständen dazu führen, dass für eine Orchestratorinstanz der Arbeitsspeicher nicht mehr ausreicht. Verwenden Sie für Szenarien mit Endlosschleifen APIs wie beispielsweise [ContinueAsNew](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_ContinueAsNew_) (.NET) oder `continueAsNew` (JavaScript), um die Funktionsausführung neu zu starten und den vorherigen Ausführungsverlauf zu verwerfen.
+
+* JavaScript-Orchestratorfunktionen können nicht `async` sein. Sie müssen als synchrone Generatorfunktionen deklariert werden.
 
 Diese Einschränkungen können zuerst etwas abschreckend wirken, aber in der Praxis ist ihre Einhaltung nicht sehr schwierig. Das Durable Task Framework versucht, Verstöße gegen die obigen Regeln zu erkennen, und löst eine `NonDeterministicOrchestrationException` aus. Dieses Erkennungsverhalten wird aber jeweils nur auf bestmögliche Weise durchgeführt, sodass Sie sich nicht darauf verlassen sollten.
 
 > [!NOTE]
 > Diese Regeln gelten jeweils nur für Funktionen, die von der Bindung `orchestrationTrigger` ausgelöst werden. Für Aktivitätsfunktionen, die von der Bindung `activityTrigger` ausgelöst werden, und Funktionen, für die die Bindung `orchestrationClient` verwendet wird, gelten diese Einschränkungen nicht.
 
-## <a name="durable-tasks"></a>Durable Tasks (Permanente Vorgänge)
+## <a name="durable-tasks-net"></a>Durable Tasks (Permanente Vorgänge) (.NET)
 
 > [!NOTE]
 > In diesem Abschnitt werden Details der internen Implementierung für das Durable Task Framework beschrieben. Sie können Durable Functions nutzen, ohne diese Informationen zu kennen. Sie sollen Ihnen nur als Hilfe beim Verständnis des Wiedergabeverhaltens dienen.

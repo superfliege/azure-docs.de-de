@@ -7,19 +7,19 @@ editor: jasonwhowell
 services: mariadb
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: ac05a2dcee3adaa93d31e28e5597a788c0159ddd
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.date: 12/03/2018
+ms.openlocfilehash: 4fb774341b19034d3905341a99be2114a0d1e18b
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46955434"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52835708"
 ---
 # <a name="limitations-in-azure-database-for-mariadb"></a>Einschränkungen in Azure Database for MariaDB
-Der Azure Database for MariaDB-Dienst befindet sich in der öffentlichen Vorschau. In den folgenden Abschnitten werden die Kapazitäts- und funktionalen Beschränkungen sowie Beschränkungen bei der Unterstützung der Speicher-Engine und von Datenmanipulationsanweisungen im Datenbankdienst beschrieben.
+In den folgenden Abschnitten werden die Kapazitäts- und funktionalen Beschränkungen sowie Beschränkungen bei der Unterstützung der Speicher-Engine und von Datenmanipulationsanweisungen im Datenbankdienst beschrieben.
 
 ## <a name="maximum-connections"></a>Maximale Anzahl der Verbindungen
-Die folgende Tabelle zeigt die maximale Anzahl von Verbindungen pro Tarif und Anzahl von virtuellen Kernen während der Vorschau:
+Die folgende Tabelle enthält die maximale Anzahl von Verbindungen nach Tarif und V-Kernen:
 
 |**Tarif**|**vCore(s)**| **Max. Anzahl von Verbindungen**|
 |---|---|---|
@@ -53,7 +53,7 @@ Wenn Verbindungen den Grenzwert übersteigen, erhalten Sie möglicherweise den f
 
 ### <a name="unsupported"></a>Nicht unterstützt
 - DBA-Rolle: Viele Serverparameter und -einstellungen können unbeabsichtigterweise die Serverleistung beeinträchtigen oder ACID-Eigenschaften des DBMS verschlechtern. Um die Dienstintegrität und die SLA auf Produktebene aufrechtzuerhalten, stellt dieser Dienst die DBA-Rolle nicht zur Verfügung. Das Standardbenutzerkonto, das zusammen mit einer neuen Datenbankinstanz erstellt wird, gestattet dem Benutzer die Ausführung der meisten DDL- und DML-Anweisungen in der verwalteten Datenbankinstanz.
-- SUPER-Berechtigung: Auf ähnliche Weise ist die [SUPER-Berechtigung](https://mariadb.com/kb/en/library/grant/#global-privileges) ebenfalls eingeschränkt.
+- SUPER-Berechtigung:  Auf ähnliche Weise ist die [SUPER-Berechtigung](https://mariadb.com/kb/en/library/grant/#global-privileges) ebenfalls eingeschränkt.
 
 ## <a name="data-manipulation-statement-support"></a>Unterstützung von Datenmanipulationsanweisungen
 
