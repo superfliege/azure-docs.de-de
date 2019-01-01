@@ -1,6 +1,6 @@
 ---
 title: Verwalten des Zugriffs auf Azure-Abrechnungen | Microsoft-Dokumentation
-description: ''
+description: Erfahren Sie, wie Sie Mitgliedern Ihres Teams Zugriff auf Ihre Azure-Abrechnungsinformationen gewähren.
 services: ''
 documentationcenter: ''
 author: vikramdesai01
@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/02/2018
 ms.author: cwatson
-ms.openlocfilehash: 7a4e19ae5bf770949623f4cee7fa0d3033ccfa29
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.custom: seodec18
+ms.openlocfilehash: a15d055505ca0f28ad28b477e90e6fe859cc9ac7
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52582614"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53094286"
 ---
 # <a name="manage-access-to-billing-information-for-azure"></a>Verwalten des Zugriffs auf Abrechnungsinformationen für Azure
 
@@ -72,9 +73,10 @@ Das Feature Abrechnungsleser befindet sich in der Vorschauversion und unterstüt
 
 1. Wählen Sie die Option **Zugriffssteuerung (IAM)**.
 1. Wählen Sie **Rollenzuweisungen** aus, um alle Rollenzuweisungen für dieses Abonnement anzuzeigen.
-1. Wählen Sie **Hinzufügen** > **Rollenzuweisung hinzufügen**.
+1. Wählen Sie **Rollenzuweisung hinzufügen** aus.
 1. Wählen Sie in der Dropdownliste **Rolle** **Abrechnungsleser** aus.
 1. Geben Sie im Textfeld **Auswählen** den Namen oder die E-Mail-Adresse des Benutzers ein, den Sie hinzufügen möchten.
+1. Wählen Sie den Benutzer aus.
 1. Wählen Sie **Speichern**aus.
 1. Nach einigen Augenblicken wird dem Benutzer im Abonnementbereich die Rolle „Abrechnungsleser“ zugewiesen.
 1. Der Abrechnungsleser erhält eine E-Mail mit einem Link zum Anmelden.

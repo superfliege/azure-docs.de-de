@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: f4bc90b2d1a80125ae88b4b5c4c11e42a34a985a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 4108355415d1230f98db36a4f83497de2fa848f7
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51240425"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53185578"
 ---
 # <a name="platforms-and-features-supported-by-azure-security-center"></a>Von Azure Security Center unterstützte Features und Plattformen
 
@@ -35,7 +35,7 @@ Die Überwachung des Sicherheitsstatus und entsprechende Empfehlungen sind für 
 In diesem Abschnitt werden die Plattformen aufgeführt, auf denen der Azure Security Center-Agent ausgeführt werden kann und von denen er Daten sammeln kann.
 
 ### <a name="supported-platforms-for-windows-computers-and-vms"></a>Unterstützte Plattformen für Windows-Computer und -VMs
-Unterstützte Windows-Betriebssysteme:
+Die folgenden Windows-Betriebssysteme werden unterstützt:
 
 * Windows Server 2008
 * Windows Server 2008 R2
@@ -45,16 +45,16 @@ Unterstützte Windows-Betriebssysteme:
 
 
 ### <a name="supported-platforms-for-linux-computers-and-vms"></a>Unterstützte Plattformen für Linux-Computer und -VMs
-Unterstützte Linux-Betriebssysteme:
+Die folgenden Linux-Betriebssysteme werden unterstützt:
 
-* Ubuntu-Versionen 12.04 LTS, 14.04 LTS, 16.04 LTS
-* Debian-Versionen 6, 7, 8, 9
-* CentOS-Versionen 5, 6, 7
-* Red Hat Enterprise Linux-Versionen (RHEL) 5, 6, 7
-* SUSE Linux Enterprise Server-Versionen (SLES) 11, 12
-* Oracle Linux-Versionen 5, 6, 7
+* Ubuntu-Versionen 12.04 LTS, 14.04 LTS und 16.04 LTS
+* Debian-Versionen 6, 7, 8 und 9
+* CentOS-Versionen 5, 6 und 7
+* Red Hat Enterprise Linux-Versionen (RHEL) 5, 6 und 7
+* SUSE Linux Enterprise Server-Versionen (SLES) 11 und 12
+* Oracle Linux-Versionen 5, 6 und 7
 * Amazon Linux 2012.09 bis 2017
-* OpenSSL 1.1.0 wird nur auf x86_64-Plattformen (64-Bit) unterstützt.
+* OpenSSL 1.1.0 wird nur auf x86_64-Plattformen (64 Bit) unterstützt.
 
 > [!NOTE]
 > Verhaltensanalysen für virtuelle Computer sind für Linux-Betriebssysteme noch nicht verfügbar.
@@ -62,7 +62,7 @@ Unterstützte Linux-Betriebssysteme:
 >
 
 ## <a name="vms-and-cloud-services"></a>VMs und Clouddienste
-VMs, die in einem Clouddienst ausgeführt werden, werden ebenfalls unterstützt. Es werden nur Clouddienst-Webrollen und -Workerrollen überwacht, die in Produktionsslots ausgeführt werden. Weitere Informationen zum Clouddienst finden Sie unter [Sollte ich mich für Clouddienste oder für eine andere Lösung entscheiden?](../cloud-services/cloud-services-choose-me.md).
+VMs, die in einem Clouddienst ausgeführt werden, werden ebenfalls unterstützt. Es werden nur Clouddienst-Webrollen und -Workerrollen überwacht, die in Produktionsslots ausgeführt werden. Weitere Informationen zu Clouddiensten finden Sie unter [Übersicht zu Azure Cloud Services](../cloud-services/cloud-services-choose-me.md).
 
 
 ## <a name="supported-iaas-features"></a>Unterstützte IaaS-Features
@@ -83,16 +83,16 @@ VMs, die in einem Clouddienst ausgeführt werden, werden ebenfalls unterstützt.
 |Adaptive Anwendungssteuerungen|✔|X|X|X|
 |FIM|✔|✔|✔|✔|
 |Datenträgerverschlüsselung|✔|X|✔|X|
-|Bereitstellung durch Drittanbieter|✔|X|✔|X|
+|Drittanbieterbereitstellung|✔|X|✔|X|
 |NSGs|✔|X|✔|X|
-|Dateibedrohungserkennung|✔|✔|X|X|
+|Erkennung von Fileless-Bedrohungen|✔|✔|X|X|
 |Netzwerkübersicht|✔|X|✔|X|
 |Adaptive Netzwerksteuerungen|✔|X|✔|X|
 
 \* Diese Features werden derzeit in der öffentlichen Vorschau unterstützt.
 
 
-## <a name="supported-paas-features"></a>Unterstützte PaaS-Features
+## <a name="supported-paas-features"></a>Unterstützte PaaS-Features 
 
 
 |Dienst|Empfehlungen|Bedrohungserkennung|
@@ -100,20 +100,20 @@ VMs, die in einem Clouddienst ausgeführt werden, werden ebenfalls unterstützt.
 |SQL|✔| ✔|
 |PostGreSQL*|✔| ✔|
 |MySQL*|✔| ✔|
-|Blob-Speicherkonten*|✔| ✔|
+|Azure Blob-Speicherkonten*|✔| ✔|
 |App Services|✔| ✔|
-|Clouddienste|✔| X|
+|Cloud Services|✔| X|
 |VNETs|✔| Nicht verfügbar|
 |Subnetze|✔| Nicht verfügbar|
 |NICs|✔| ✔|
 |NSGs|✔| Nicht verfügbar|
 |Abonnement|✔| ✔|
 
-\* Diese Features werden derzeit in der öffentlichen Vorschau unterstützt.
+\* Diese Features werden derzeit in der öffentlichen Vorschau unterstützt. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Planungs- und Betriebshandbuch für Azure Security Center:](security-center-planning-and-operations-guide.md) Hier erfahren Sie, wie Sie die Einführung von Azure Security Center planen, und Sie erhalten grundlegende Informationen zu Entwurfsaspekten.
-- [Security alerts by type in Azure Security Center (Sicherheitswarnungen nach Typ in Azure Security Center):](security-center-alerts-type.md#virtual-machine-behavioral-analysis) Hier finden Sie Informationen zur Verhaltensanalyse bei virtuellen Computern und zur Absturzabbild-Speicheranalyse in Security Center.
-- [Azure Security Center – Häufig gestellte Fragen](security-center-faq.md) : Hier finden Sie häufig gestellte Fragen zur Verwendung des Diensts.
-- [Azure Security Blog (Blog zur Azure-Sicherheit):](https://blogs.msdn.com/b/azuresecurity/) Hier finden Sie Blogbeiträge zur Azure-Sicherheit und -Compliance.
+- Hier erfahren Sie, wie Sie [die Entwurfsaspekte in Bezug auf die Einführung von Azure Security Center planen und verstehen](security-center-planning-and-operations-guide.md).
+- Hier finden Sie Informationen zur [Verhaltensanalyse bei virtuellen Computern und zur Absturzabbild-Speicheranalyse in Security Center](security-center-alerts-type.md#virtual-machine-behavioral-analysis).
+- Lesen Sie [Azure Security Center – Häufig gestellte Fragen](security-center-faq.md).
+- Lesen Sie [Blogbeiträge zur Sicherheit und Compliance von Azure](https://blogs.msdn.com/b/azuresecurity/).

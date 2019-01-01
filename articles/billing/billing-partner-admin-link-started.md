@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 1e2492d978073f63c1c9494d652ec35a7d6565b7
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: a0dad228f23b055d68009eb737e0347ade49e94b
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52274178"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52968047"
 ---
 # <a name="link-partner-id-to-your-azure-accounts"></a>Verknüpfen einer Partner-ID mit Ihren Azure-Konten
 
@@ -28,11 +28,11 @@ Dieses Feature ist als Public Preview verfügbar.
 
 Bevor Sie Ihre Partner-ID verknüpfen, muss Ihr Kunde Ihnen über eine der folgenden Optionen Zugriff auf ihre Azure-Ressourcen erteilen:
 
-- **Gastbenutzer**: Ihr Kunde kann Sie als Gastbenutzer hinzufügen und Ihnen eine beliebige RBAC-Rolle zuweisen. Weitere Informationen finden Sie unter [Hinzufügen von Gastbenutzern aus einem anderen Verzeichnis](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b).
+- **Gastbenutzer:** Ihr Kunde kann Sie als Gastbenutzer hinzufügen und Ihnen eine beliebige RBAC-Rolle zuweisen. Weitere Informationen finden Sie unter [Hinzufügen von Gastbenutzern aus einem anderen Verzeichnis](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b).
 
-- **Directory-Konto**: Ihr Kunde kann einen neuen Benutzer von Ihrer Organisation in ihrem Verzeichnis erstellen und diesem eine beliebige RBAC-Rolle zuweisen.
+- **Verzeichniskonto:**  Ihr Kunde kann ein Benutzerkonto für die Sie in seinem eigenen Verzeichnis erstellen und dem Konto eine beliebige RBAC-Rolle zuweisen.
 
-- **Dienstprinzipal**: Ihr Kunde kann eine App oder ein Skript von Ihrer Organisation in ihrem Verzeichnis erstellen und dieser/m eine beliebige RBAC-Rolle zuweisen. Die Identität der App oder des Skripts wird als „Dienstprinzipal“ bezeichnet.
+- **Dienstprinzipal:**  Ihr Kunde kann eine App oder ein Skript von Ihrer Organisation in seinem Verzeichnis hinzufügen und dieser oder diesem eine beliebige RBAC-Rolle zuweisen. Die Identität der App oder des Skripts wird als „Dienstprinzipal“ bezeichnet.
 
 ## <a name="link-partner-id"></a>Verknüpfen der Partner-ID
 

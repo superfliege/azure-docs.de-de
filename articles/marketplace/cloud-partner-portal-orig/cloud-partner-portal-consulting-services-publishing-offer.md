@@ -14,19 +14,19 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 43f1e71486cedbeccb2c02388147a68756581e50
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 7ea4a58f072071f60cf87d1e8817ae19658be5fb
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51037761"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53310418"
 ---
 # <a name="azure-and-dynamics-365-consulting-service-offer"></a>Azure- und Dynamics 365-Beratungsdienstangebot
 
 <table> <tr> <td>Dieser Abschnitt erläutert, wie Sie einen Beratungsdienst im Microsoft <a href="https://azuremarketplace.microsoft.com">Azure Marketplace</a> oder im <a href="https://appsource.microsoft.com">AppSource Marketplace</a> veröffentlichen. Lösungen, die auf Microsoft <a href="https://dynamics.microsoft.com">Dynamics 365</a>, <a href="https://products.office.com">Office 365</a>, <a href="https://powerbi.microsoft.com">Power BI</a> und <a href="https://powerapps.microsoft.com">PowerApps</a> basieren, können in AppSource gelistet werden. Andere Angebote, die auf anderen Microsoft <a href="https://azure.microsoft.com/services">Azure-Diensten</a> basieren, können im Azure Marketplace gelistet werden. </td> <td><img src="./media/consulting-services-publishing-offer/consulting-icon1.png"  alt="Microsoft consulting icon" /></td> </tr> </table>
 
 
-# <a name="publishing-benefits"></a>Vorteile der Veröffentlichung
+## <a name="publishing-benefits"></a>Vorteile der Veröffentlichung
 
 Die Veröffentlichung in einem der Marketplaces von Microsoft bietet erhebliche Vorteile:
 
@@ -36,13 +36,11 @@ Die Veröffentlichung in einem der Marketplaces von Microsoft bietet erhebliche 
 - Lassen Sie Ihre Dienste durch die Außendienst- und Telefonmarketingteams von Microsoft bewerben.
 
 
-<a name="define-your-consulting-services-offer"></a>Definieren Ihres Beratungsdienstangebots
--------------------------------------
+## <a name="define-your-consulting-services-offer"></a>Definieren Ihres Beratungsdienstangebots
 
 Definieren Sie Ihr konfiguriertes Beratungsdienstangebot. Fokussieren Sie auf Angebote, die einen festen Umfang, eine feste Laufzeit und einen geschätzten Festpreis haben (oder kostenlos sind) und primär presales-orientierte Angebote für einen einzelnen Kunden sind. Wählen Sie wiederholbare konfigurierte Projekte aus, die sich als beliebt und effektiv erwiesen haben, Ihnen neue Geschäfte zu bringen.
 
-<a name="publish-a-consulting-service-offer"></a>Veröffentlichen eines Beratungsdienstangebots
-----------------------------------
+## <a name="publish-a-consulting-service-offer"></a>Veröffentlichen eines Beratungsdienstangebots
 
 In den folgenden Abschnitten ist beschrieben, wie Sie Ihr Beratungsdienstangebot veröffentlichen können.
 
@@ -62,7 +60,7 @@ Führen Sie die folgenden Schritte aus, um ein neues Angebot zu erstellen:
 
 ### <a name="define-offer-settings"></a>Definieren der Angebotseinstellungen
 
-Der erste Schritt im Bildschirm „Neues Angebot“ besteht darin, die Identität des Angebots zu erstellen.  Die Angebotsidentität besteht aus drei Teilen: **Angebots-ID**, **Herausgeber-ID** und **Name**.  Jeder dieser Teile ist in den nachstehenden Abschnitten beschrieben.
+Der erste Schritt im Bildschirm „Neues Angebot“ besteht darin, die Angebots-ID zu erstellen.  Eine Angebots-ID besteht aus drei Teilen: **Angebots-ID**, **Herausgeber-ID** und **Name**.  Jeder dieser Teile ist in den nachstehenden Abschnitten beschrieben.
 
 #### <a name="offer-id"></a>Angebots-ID
 
@@ -103,7 +101,7 @@ In der folgenden Liste sind einige ordnungsgemäß benannte Angebote aufgeführt
 -   Aufbereitung Ihrer Daten: 1-Wo Workshop
 -   Cloud-Analysen: 3-Tag Workshop
 -   Power BI-Schulung: 3-Tag Workshop
--   Vertriebsmanagementlösung: 1 Wo Implementierung
+-   Vertriebsmanagementlösung: 1-Wo Implementierung
 -   CRM-Schnellstart: 1-Tag Workshop
 -   Dynamics 365 for Sales: 2-Tag Bewertung
 
@@ -137,11 +135,11 @@ Die Angebotszusammenfassung ist eine kurze Beschreibung Ihres Angebots, die dire
 *Beispiel 2*
 
 -   **Angebotsname:** Azure-IoT in der Industrie: 30-Tag Proof of Concept
--   **Angebotszusammenfassung:** Es wird ein für den industriellen Einsatz vorgesehenes Produktpilotprojekt erstellt, in dem betrieblich genutzte Geräte sicher mit einer Azure-IoT-Hub-Lösung verbunden werden, die Dashboards, Berichte und Benachrichtigungen bereitstellt.
+-   **Angebotszusammenfassung:** Es wird ein für den industriellen Einsatz vorgesehenes Produktpilotprojekt erstellt, in dem betrieblich genutzte Geräte sicher mit einer Azure IoT Hub-Lösung verbunden werden, die Dashboards, Berichte und Benachrichtigungen bereitstellt.
 
 *Beispiel 3*
 
--   **Angebotsname:** Professionelle Dienstleistungen: 1-Std. Einweisung
+-   **Angebotsname:** Dienstleistungsunternehmen: 1-Std. Einweisung
 -   **Angebotszusammenfassung:** Übersicht und Vorführung einer vorkonfigurierten erweiterten Dynamics 365 for Operations-Lösung, die verbesserte Verwaltung von Projekten, Abrechnung und Ressourcen für professionelle Dienstleistungen bereitstellt.
 
 *Beispiel 4*
@@ -160,7 +158,7 @@ Beschreibung des Beratungsdienstangebots. Eine gute Angebotsbeschreibung enthäl
 
 Fügen Sie in Ihre Angebotsbeschreibung keine E-Mail-Links oder Telefonnummern ein, über die Sie zu erreichen sind. Es wird eine „Kontakt mit mir aufnehmen“-Schaltfläche in Ihrem Angebot geben, über die Leads in das Leadverwaltungsziel hochgeladen werden, das Sie in Ihrem Angebot angeben.
 
-Sie geben die Angebotsbeschreibung im Markdown-Format ein. Wenn Sie mit Markdown oder Formatierung für HTML nicht vertraut sind, sollten Sie die entsprechenden Artikel auf der [Microsoft Dokumentationswebsite](https://docs.microsoft.com/contribute/how-to-write-use-markdown) lesen.
+Sie geben die Angebotsbeschreibung im Markdown-Format ein. Wenn Sie mit Markdown oder Formatierung für HTML nicht vertraut sind, sollten Sie die entsprechenden Artikel auf der [Microsoft Docs-Website](https://docs.microsoft.com/contribute/how-to-write-use-markdown) lesen.
 
 Durch Verwenden dieser Formate wird sichergestellt, dass Ihr Angebot eine optimale Lesbarkeit für Kunden hat.
 
@@ -236,11 +234,11 @@ Microsoft legt den Fokus ausschließlich auf Angebote, die einen festen Umfang, 
 
 Es gibt die folgenden fünf Angebotstypen:
 
--   **Bewertung**: Eine Auswertung der Umgebung eines Kunden, um die Anwendbarkeit einer Lösung zu bestimmen und eine Schätzung der Kosten und zeitlichen Steuerung zu bieten.
--   **Einweisung**: Eine Einführung in eine Lösung oder einen Beratungsdienst, um die Aufmerksamkeit von Kunden durch Frameworks, Demos und Beispiele für Kunden zu erhöhen. Einweisungen müssen direkt beim Kunden durchgeführt werden.
--   **Implementierung**: Eine vollständige Installation, die zu einer vollständig funktionierenden Lösung führt. Für diesen Pilotversuch empfiehlt Microsoft ein Beschränken auf Lösungen, die innerhalb maximal einer Woche implementiert werden können.
--   **Proof of Concept**: Eine Implementierung in einem begrenzten Bereich, um zu bestimmen, ob eine Lösung die Anforderungen eines Kunden erfüllt.
--   **Workshop**: Ein interaktives Projekt, das am Kundenstandort durchgeführt wird und Schulungssitzungen, Einweisungen, Bewertungen oder Demos umfassen kann, die auf den Daten oder der Umgebung des Kunden basieren.
+-   **Bewertung:** Eine Auswertung der Umgebung eines Kunden, um die Anwendbarkeit einer Lösung zu bestimmen und eine Schätzung der Kosten und zeitlichen Steuerung zu bieten.
+-   **Einweisung:** Eine Einführung in eine Lösung oder einen Beratungsdienst, um die Aufmerksamkeit von Kunden durch Frameworks, Demos und Beispiele für Kunden zu erhöhen. Einweisungen müssen direkt beim Kunden durchgeführt werden.
+-   **Implementierung:** Eine umfassende Installation, die zu einer vollständig funktionierenden Lösung führt. Für diesen Pilotversuch empfiehlt Microsoft ein Beschränken auf Lösungen, die innerhalb maximal einer Woche implementiert werden können.
+-   **Proof of Concept:** Eine Implementierung in einem begrenzten Bereich, um zu bestimmen, ob eine Lösung die Anforderungen eines Kunden erfüllt.
+-   **Workshop:** Ein interaktives Projekt, das am Kundenstandort durchgeführt wird und Schulungssitzungen, Einweisungen, Bewertungen oder Demos umfassen kann, die auf den Daten oder der Umgebung des Kunden basieren.
 
 **Verfügbarkeit in Land/Region**
 
@@ -290,4 +288,4 @@ Laden Sie bis zu fünf Bilder hoch, die weitere Informationen über das Angebot,
 
 Nachdem Sie die Felder für Angebotseinstellungen, Details der digitalen Ladenzeile und Kontakte ausgefüllt haben, wählen Sie **Veröffentlichen** aus, und geben Sie eine E-Mail-Adresse an. Sobald Microsoft zum Veröffentlichen Ihres Angebots bereit ist, erhalten Sie eine E-Mail, damit Sie eine Vorschau Ihres Angebots anzeigen können, bevor es freigeschaltet wird. Sie können zum Portal zurückkehren, um jederzeit den Status Ihres Angebots zu prüfen.
 
-Während des Veröffentlichungsprozesses kann ein Angebot im Status „Veröffentlichen abgebrochen“ oder „Veröffentlichungsfehler“ angezeigt werden. Dies ist ein normaler Bestandteil des Prozesses und ermöglicht es Microsoft, Ihr Angebot zu bearbeiten. Wenn Sie sehen, dass Ihr Angebot den Status „Veröffentlichen abgebrochen“ aufweist, belassen Sie es in diesem Status.
+Während des Veröffentlichungsprozesses kann ein Angebot im Status „Veröffentlichen abgebrochen“ oder „Veröffentlichungsfehler“ angezeigt werden. Dies ist ein normaler Bestandteil des Prozesses und ermöglicht es Microsoft, Ihr Angebot zu bearbeiten. Wenn Sie sehen, dass Ihr Angebot den Status „Veröffentlichen abgebrochen“, belassen sie es in diesem Status.

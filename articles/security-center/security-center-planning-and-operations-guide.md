@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: f24baaf07f86722bc461cbb79e262f63b46c8a1f
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.openlocfilehash: b3d6f30aa2a7858d673199e55090e96fb9aba915
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52619944"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53337628"
 ---
 # <a name="azure-security-center-planning-and-operations-guide"></a>Planungs- und Betriebshandbuch für Azure Security Center
 Dieses Handbuch ist für IT-Experten, IT-Architekten, Informationssicherheitsanalysten und Cloudadministratoren konzipiert, deren Organisation Azure Security Center verwenden möchte.
@@ -162,7 +162,7 @@ Die vom Microsoft Monitoring Agent (für Azure Security Center) gesammelten Date
 Sie können das Azure-Portal durchsuchen, um eine Liste Ihrer Log Analytics-Arbeitsbereiche (einschließlich aller von Azure Security Center erstellten) anzuzeigen. Für neue Arbeitsbereiche wird eine zugehörige Ressourcengruppe erstellt. Für beide gilt folgende Namenskonvention:
 
 * Arbeitsbereich: *DefaultWorkspace-[Abonnement-ID]-[Region]*
-* Ressourcengruppe: *DefaultResourceGroup-[geo]*
+* Ressourcengruppe: *DefaultResourceGroup-[Region]*
 
 Für Arbeitsbereiche, die von Azure Security Center erstellt wurden, werden die Daten 30 Tage lang beibehalten. Bei vorhandenen Arbeitsbereichen basiert die Vermerkdauer auf dem Tarif des Arbeitsbereichs. Sie können auch einen bereits vorhandenen Arbeitsbereich verwenden.
 
@@ -195,7 +195,7 @@ Planen Sie den täglichen Aufruf der Option [Informationen zu Bedrohungen](https
 ### <a name="monitoring-for-new-or-changed-resources"></a>Überwachung auf neue oder geänderte Ressourcen
 Die meisten Azure-Umgebungen sind dynamisch, sodass unter anderem immer wieder neue Ressourcen hinzukommen oder wegfallen und Konfigurationen geändert werden. Security Center trägt dazu bei, dass Sie den Überblick über den Sicherheitszustand dieser neuen Ressourcen behalten.
 
-Wenn Sie Ihrer Azure-Umgebung neue Ressourcen (virtuelle Computer, SQL-Datenbanken) hinzufügen, erkennt Security Center dies automatisch und beginnt mit der Überwachung ihrer Sicherheit. Hierzu gehören auch PaaS-Webrollen und -Workerrollen. Wenn in der [Sicherheitsrichtlinie](security-center-azure-policy.md)die Datensammlung aktiviert ist, werden für Ihre virtuellen Computer automatisch zusätzliche Überwachungsfunktionen aktiviert.
+Wenn Sie Ihrer Azure-Umgebung neue Ressourcen (virtuelle Computer, SQL-Datenbanken) hinzufügen, erkennt Security Center dies automatisch und beginnt mit der Überwachung ihrer Sicherheit. Hierzu gehören auch PaaS-Webrollen und -Workerrollen. Wenn in der [Sicherheitsrichtlinie](tutorial-security-policy.md)die Datensammlung aktiviert ist, werden für Ihre virtuellen Computer automatisch zusätzliche Überwachungsfunktionen aktiviert.
 
 ![Wichtige Bereiche](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig3-newUI.png)
 

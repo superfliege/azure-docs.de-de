@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/20/2018
+ms.date: 12/2/2018
 ms.author: rkarlin
-ms.openlocfilehash: ddf9c5e30a27a829a74ccf0985dce30a68f9bbb7
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: b4023d45c3628df5006d076e01f32bb8f3aa80a6
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51256647"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52846248"
 ---
 # <a name="adaptive-application-controls-in-azure-security-center"></a>Adaptive Anwendungssteuerungen in Azure Security Center
 In dieser exemplarischen Vorgehensweise erfahren Sie, wie Sie die Anwendungssteuerung in Azure Security Center verwenden.
@@ -118,7 +118,8 @@ Nachdem Sie „Erstellen“ ausgewählt haben, erstellt Azure Security Center au
   - **Erzwingen**: In diesem Modus werden die Regeln von der Anwendungssteuerungslösung erzwungen, und Anwendungen, deren Ausführung nicht zulässig ist, werden blockiert.
 
    > [!NOTE]
-   > Wie bereits erwähnt, werden neue Anwendungssteuerungsrichtlinien standardmäßig immer im *Überwachungsmodus* konfiguriert. 
+   > -  Der Schutzmodus **Erzwingen** wird bis auf weiteres deaktiviert.
+   > - Wie bereits erwähnt, werden neue Anwendungssteuerungsrichtlinien standardmäßig immer im *Überwachungsmodus* konfiguriert. 
    >
 
 4. Unter **Richtlinienerweiterung** können Sie beliebige Anwendungspfade hinzufügen, die Sie zulassen möchten. Nachdem Sie diese Pfade hinzugefügt haben, aktualisiert Security Center die Richtlinie für das Anwendungswhitelisting auf den virtuellen Computern innerhalb der ausgewählten Gruppe und erstellt die entsprechenden Regeln für diese Anwendungen zusätzlich zu den bereits vorhandenen Regeln.
@@ -130,7 +131,7 @@ Nachdem Sie „Erstellen“ ausgewählt haben, erstellt Azure Security Center au
 6. Unter **Regeln für Herausgeberwhitelists**, **Regeln für Pfadwhitelists** und **Hashregeln für Whitelist** können Sie sehen, welche Regeln für Anwendungswhitelists auf den virtuellen Computern innerhalb einer Gruppe gemäß dem Regelsammlungstyp konfiguriert sind. Für jede Regel werden die folgenden Informationen angezeigt:
 
   - **Regel**: Die jeweiligen Parameter, nach denen eine Anwendung von AppLocker geprüft wird, um festzustellen, ob das Ausführen der Anwendung zulässig ist.
-  - **Dateityp**: Die Dateitypen, die durch eine bestimmte Regel abgedeckt sind. Dieser kann EXE, Script, MSI oder eine beliebige Permutation dieser Dateitypen sein.
+  - **Dateityp**: Die Dateitypen, die durch eine bestimmte Regel abgedeckt sind. Dies kann einer der folgenden Typen sein: EXE, Script, MSI oder eine beliebige Permutation dieser Dateitypen.
   - **Benutzer**: Name oder Anzahl der Benutzer, denen das Ausführen einer Anwendung gestattet ist, die durch eine Regel für Anwendungswhitelists abgedeckt ist.
 
    ![Whitelistregeln](./media/security-center-adaptive-application/security-center-adaptive-application-fig9.png)

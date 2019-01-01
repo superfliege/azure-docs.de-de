@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 926fc46a4afd4e434e9769802ac096347b4ce4f0
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.openlocfilehash: f204f01fae0bd01f9f2f0e242c63ec2070d6d195
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52620080"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52678048"
 ---
 # <a name="comparing-appsource-and-the-azure-marketplace"></a>Vergleich zwischen AppSource und Azure Marketplace
 Storefronts im [Azure Marketplace](https://azuremarketplace.microsoft.com) und in [Microsoft AppSource](https://appsource.microsoft.com) dienen eindeutigen Kundenanforderungen. Verwenden Sie Storefronts, um Kunden gemäß ihrer Rollen zu erreichen. Sie können Ihren Kunden die Lösungen oder Dienste anbieten, die genau für sie richtig sind.
@@ -29,7 +29,7 @@ Um eine Storefront auszuwählen, identifizieren Sie zuerst die Zielgruppe Ihres 
 
 | Azure Marketplace | AppSource |
 |:--- |:--- |
-| IT-Profis und Entwickler | Geschäftsentscheidungsträger |
+| IT-Profis und Entwickler | Geschäftsbenutzer und Entscheidungsträger |
  
 In der folgenden Tabelle werden die Vorteile der Verwendung einer Storefront aufgeführt:
 

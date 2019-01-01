@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/01/2016
 ms.author: hascipio
-ms.openlocfilehash: 26f856059b381be91b9cdd1f98a11dc90813c0c5
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: bf41953300c3042853118c815dbf64e4474106fa
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39715871"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53194112"
 ---
 # <a name="test-your-vm-offer-for-the-azure-marketplace-in-staging"></a>Testen Ihres VM-Angebots für den Azure Marketplace in der Stagingumgebung
 In der Stagingumgebung wird Ihr Angebot in einem privaten "Sandkasten" bereitgestellt, in dem Sie seine Funktionalität vor der Bereitstellung in Marketplace testen und überprüfen können. Die SKU wird in der Stagingumgebung genau wie bei einem Kunden angezeigt, der sie bereitgestellt hat. Ihr VM-Image muss für die Freigabe in der Stagingumgebung zertifiziert sein.
@@ -35,12 +35,12 @@ In der Stagingumgebung wird Ihr Angebot in einem privaten "Sandkasten" bereitges
    > Erstellen Sie bei virtuellen Computern und Lösungsvorlagen bitte **nicht** eine Whitelist von Abonnements der Typen CSP, DreamSpark oder Azure in Open.
    > 
    > 
+   >
+   > Wenn Sie bei virtuellen Computern auf die Schaltfläche **PUSH TO STAGING**(Für Stagingumgebung freigeben) klicken, werden die folgenden Schritte im Hintergrund ausgeführt. Sie können den Fortschritt der einzelnen Schritte auf der Registerkarte VERÖFFENTLICHEN im Veröffentlichungsportal verfolgen. Sie müssen diese Seite in regelmäßigen Intervallen (bis der Status BEREITGESTELLT angezeigt wird) auf Fehlerinformationen überprüfen, die Korrektur Ihrerseits erfordern.
 
-    > Wenn Sie bei virtuellen Computern auf die Schaltfläche **PUSH TO STAGING**(Für Stagingumgebung freigeben) klicken, werden die folgenden Schritte im Hintergrund ausgeführt. Sie können den Fortschritt der einzelnen Schritte auf der Registerkarte VERÖFFENTLICHEN im Veröffentlichungsportal verfolgen. Sie müssen diese Seite in regelmäßigen Intervallen (bis der Status BEREITGESTELLT angezeigt wird) auf Fehlerinformationen überprüfen, die Korrektur Ihrerseits erfordern.
-
-    > - Ihre Staginganforderung wird zunächst an das Zertifizierungsteam geleitet, das die VHD-Datei überprüft. Wenn Ihre Anforderung allerdings nur einer Marketingänderung entspricht, wird der Zertifizierungsschritt übersprungen.
-    > - Wenn die Zertifizierung abgeschlossen ist, startet die Replikation des Angebots in allen Azure-Rechenzentren. In der Regel dauert es 24-48 Stunden, bis die Replikation abgeschlossen hat, aber es kann je nach Größe der virtuellen Festplatte bis zu einer Woche dauern. Wenn Ihre Anforderung allerdings nur einer Marketingänderung entspricht, verläuft die Replikation schneller.
-    > - Nach Abschluss der Replikation ist das Angebot im [Azure-Portal](http:/portal.azure.com)verfügbar. Zu diesem Zeitpunkt erhält es den Status BEREITGESTELLT im Veröffentlichungsportal. Ein bereitgestelltes Angebot ist nur dann im [Azure-Portal](http:/portal.azure.com) sichtbar, wenn die E-Mail-IDs verwendet werden, die mit dem Abonnement verknüpft sind, mit dem das Angebot bereitgestellt wird.
+   > - Ihre Staginganforderung wird zunächst an das Zertifizierungsteam geleitet, das die VHD-Datei überprüft. Wenn Ihre Anforderung allerdings nur einer Marketingänderung entspricht, wird der Zertifizierungsschritt übersprungen.
+   > - Wenn die Zertifizierung abgeschlossen ist, startet die Replikation des Angebots in allen Azure-Rechenzentren. In der Regel dauert es 24-48 Stunden, bis die Replikation abgeschlossen hat, aber es kann je nach Größe der virtuellen Festplatte bis zu einer Woche dauern. Wenn Ihre Anforderung allerdings nur einer Marketingänderung entspricht, verläuft die Replikation schneller.
+   > - Nach Abschluss der Replikation ist das Angebot im [Azure-Portal](http:/portal.azure.com)verfügbar. Zu diesem Zeitpunkt erhält es den Status BEREITGESTELLT im Veröffentlichungsportal. Ein bereitgestelltes Angebot ist nur dann im [Azure-Portal](http:/portal.azure.com) sichtbar, wenn die E-Mail-IDs verwendet werden, die mit dem Abonnement verknüpft sind, mit dem das Angebot bereitgestellt wird.
 
 1. Melden Sie sich beim [Azure-Vorschauportal](https://portal.azure.com) mit einem der Azure-Abonnements aus dem vorherigen Schritt an.
 2. Suchen Sie Ihr Angebot, und überprüfen Sie für Ihr VM-Image die folgenden Punkte:

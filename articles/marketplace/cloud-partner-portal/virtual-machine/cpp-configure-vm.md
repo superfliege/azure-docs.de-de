@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 10/19/2018
 ms.author: pbutlerm
-ms.openlocfilehash: c1db8c99b1bd3f9bbb768572ca1f5f7a4e1e0de4
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: 5ccfef8a6ad367e8fac100217713cd323341a535
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49639149"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53183470"
 ---
 # <a name="configure-the-azure-hosted-vm"></a>Konfigurieren der in Azure gehosteten VM
 
@@ -28,14 +28,14 @@ In diesem Artikel wird beschrieben, wie Sie für einen in Azure gehosteten virtu
 
 ## <a name="sizing-the-vhds"></a>Festlegen der Größe von VHDs
 
-<!--TD: Check if the following assertion is true. I didn't understand the original content. --> Wenn Sie eine der VMs ausgewählt haben, die mit einem Betriebssystem (und optional weiteren Diensten) vorkonfiguriert sind, verfügen Sie bereits über eine Azure-VM mit einer Standardgröße. Eine Beschreibung finden Sie unter [Registerkarte für VM-SKUs](./cpp-skus-tab.md).  Dies ist die empfohlene Vorgehensweise.  Wenn Sie ein Betriebssystem aber manuell installieren, müssen Sie die Größe Ihrer primären VHD in Ihrem VM-Image festlegen:
+<!--TD: Check if the following assertion is true. I didn't understand the original content. --> Wenn Sie eine der VMs ausgewählt haben, die mit einem Betriebssystem (und optional weiteren Diensten) vorkonfiguriert sind, verfügen Sie bereits über eine Azure-VM mit einer Standardgröße. Eine Beschreibung finden Sie unter [Registerkarte für VM-SKUs](./cpp-skus-tab.md).  Ein Starten Ihrer Lösung mit einem vorkonfigurierten Betriebssystem ist die empfohlene Vorgehensweise.  Wenn Sie ein Betriebssystem aber manuell installieren, müssen Sie die Größe Ihrer primären VHD in Ihrem VM-Image festlegen:
 
 - Für Windows sollte die Betriebssystem-VHD als virtuelle Festplatte mit 127 bis 128 GB und einem festen Format erstellt werden. 
 - Für Linux sollte diese VHD als virtuelle Festplatte mit 30 bis 50 GB und einem festen Format erstellt werden.
 
 Beträgt die physische Größe weniger als 127 bis 128 GB, sollte die VHD von geringer Dichte sein. Die bereitgestellten Windows- und SQL Server-Images erfüllen diese Anforderungen. Ändern Sie weder das Format noch die Größe der VHD. 
 
-Datenträger können bis zu 1 TB groß sein. Bedenken Sie bei der Entscheidung über die Datenträgergröße, dass Kunden die Größe von VHDs in einem Image zum Zeitpunkt der Bereitstellung nicht verändern können. Datenträger-VHDs sollten als VHDs mit festem Format erstellt werden. Sie sollten außerdem eine geringe Dichte aufweisen. Datenträger können anfänglich leer sein oder Daten enthalten.
+Datenträger können bis zu 1 TB groß sein. Bedenken Sie bei der Entscheidung über deren Größe, dass Kunden die Größe von VHDs in einem Image zum Zeitpunkt der Bereitstellung nicht verändern können. Datenträger-VHDs sollten als VHDs mit festem Format erstellt werden. Sie sollten außerdem eine geringe Dichte aufweisen. Datenträger können anfänglich leer sein oder Daten enthalten.
 
 
 ## <a name="install-the-most-current-updates"></a>Installieren der aktuellsten Updates
