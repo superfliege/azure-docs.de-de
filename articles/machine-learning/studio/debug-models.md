@@ -1,12 +1,11 @@
 ---
-title: Debuggen Ihres Modells in Azure Machine Learning Studio | Microsoft-Dokumentation
+title: 'Debuggen Ihres Modells: Azure Machine Learning Studio | Microsoft-Dokumentation'
 description: Debuggen von Fehlern, die von den Modulen „Train Model“ und „Score Model“ in Azure Machine Learning Studio generiert wurden.
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
+ms.custom: seodec18
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: 629dc45e-ac1e-4b7d-b120-08813dc448be
 ms.service: machine-learning
@@ -16,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
-ms.openlocfilehash: bb1a3e778dcbcfacbc9e605ebf2d855786d71510
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 0464dec9e747e57e4b95a691aeb5a0992cf8d9cc
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52312594"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53268885"
 ---
 # <a name="debug-your-model-in-azure-machine-learning-studio"></a>Debuggen Ihres Modells in Azure Machine Learning Studio
 
@@ -30,7 +29,7 @@ Dieser Artikel erläutert die möglichen Gründe, warum bei der Ausführung eine
 * Für das Modul [Train Model][train-model] tritt ein Fehler auf. 
 * Das Modul [Score Model][score-model] liefert falsche Ergebnisse. 
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 
 ## <a name="train-model-module-produces-an-error"></a>Für das Modul „Train Model“ tritt ein Fehler auf
 

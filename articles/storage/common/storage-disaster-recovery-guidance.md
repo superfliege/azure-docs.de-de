@@ -6,15 +6,15 @@ author: tamram
 ms.service: storage
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 09/13/2018
+ms.date: 12/12/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 20db515e99f3e7535ba7b60bbd84f050e33b7acb
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 39a938d45c8f15c21b44bb5b04b1429fb4733b5a
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47033922"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53323267"
 ---
 # <a name="what-to-do-if-an-azure-storage-outage-occurs"></a>Vorgehensweise beim Ausfall von Azure Storage
 Bei Microsoft arbeiten wir hart, um sicherzustellen, dass unsere Dienste immer verfügbar sind. Aufgrund höherer Gewalt können ungeplante Dienstausfälle in einer Region oder auch mehreren Regionen auftreten. Damit Sie mit diesen seltenen Vorkommen umgehen können, stellen wir Ihnen den folgenden allgemeinen Leitfaden für Azure Storage-Dienste zur Verfügung.
@@ -22,7 +22,7 @@ Bei Microsoft arbeiten wir hart, um sicherzustellen, dass unsere Dienste immer v
 ## <a name="how-to-prepare"></a>So bereiten Sie sich vor
 Es ist wichtig für jeden Kunden, den eigenen Notfallwiederherstellungsplan zu erstellen. Die Wiederherstellung nach einem Speicherausfall erfordert üblicherweise sowohl Personal für den Betrieb als auch automatisierte Vorgehensweise, um wieder funktionsfähige Anwendungen zu erhalten. Weitere Informationen zum Erstellen eines Notfallwiederherstellungsplans finden Sie in der Azure-Dokumentation weiter unten:
 
-* [Checkliste für Verfügbarkeit](https://docs.microsoft.com/azure/architecture/checklist/availability)
+* [Checkliste für die Verfügbarkeit](https://docs.microsoft.com/azure/architecture/checklist/availability)
 * [Entwickeln robuster Anwendungen für Azure](https://docs.microsoft.com/azure/architecture/resiliency/)
 * [Azure Site Recovery-Dienste](https://azure.microsoft.com/services/site-recovery/)
 * [Azure Storage-Replikation](https://docs.microsoft.com/azure/storage/common/storage-redundancy)
@@ -37,7 +37,7 @@ Wenn eine oder mehrere Storage-Dienste in einer Region oder in mehreren Regionen
 ### <a name="option-1-wait-for-recovery"></a>Option 1: Warten auf die Wiederherstellung
 In diesem Fall ist keine weitere Aktion erforderlich. Wir arbeiten intensiv daran, die Verfügbarkeit des Azure-Diensts wiederherzustellen. Sie können den Dienststatus auf unserem [Azure Service Health Dashboard](https://azure.microsoft.com/status/)überwachen.
 
-### <a name="option-2-copy-data-from-secondary"></a>Option 2: Kopieren von Daten von der sekundären Region
+### <a name="option-2-copy-data-from-secondary"></a>Option 2: Kopieren von Daten aus der sekundären Region
 Wenn Sie [Read-Access Geo-Redundant-Speicher (RA-GRS)](storage-redundancy-grs.md#read-access-geo-redundant-storage) (empfohlen) für Ihre Speicherkonten ausgewählt haben, verfügen Sie über Lesezugriff auf Ihre Daten in der sekundären Region. Sie können Tools wie [AzCopy](storage-use-azcopy.md), [Azure PowerShell](storage-powershell-guide-full.md) und [Azure Data Movement Library](https://azure.microsoft.com/blog/introducing-azure-storage-data-movement-library-preview-2/) verwenden, um Daten aus der sekundären Region in ein anderes Speicherkonto oder in eine nicht betroffene Region zu kopieren. Anschließend können Sie Ihre Anwendungen jeweils für Lese- und Schreibverfügbarkeit auf dieses Speicherkonto verweisen.
 
 ## <a name="what-to-expect-if-a-storage-failover-occurs"></a>Was bei einem Storage-Failover zu erwarten ist

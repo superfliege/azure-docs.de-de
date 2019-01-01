@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 10/15/2018
 ms.author: juliako
-ms.openlocfilehash: 3b4c11c359c15f1275a16774b490c08b543572c3
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 9b366cca37e562e229e7d139426fc0b24978e366
+ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49378708"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53412962"
 ---
 # <a name="create-a-job-input-from-a-local-file"></a>Erstellen einer Auftragseingabe aus einer lokalen Datei
 
@@ -26,7 +26,7 @@ Wenn Sie in Media Services v3 Aufträge zur Verarbeitung Ihrer Videos übermitte
 
 Der folgende Code zeigt, wie Sie ein Eingabemedienobjekt erstellen und es als Eingabe für den Auftrag nutzen können. Die „CreateInputAsset“-Funktion führt die folgenden Aktionen aus:
 
-* Das Medienobjekt erstellen 
+* Das Medienobjekt erstellen
 * Eine nicht schreibgeschützte [SAS-URL](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) für den [Container](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-dotnet?tabs=windows#upload-blobs-to-the-container) des Medienobjekts im Speicher abrufen
 * Die Datei in den Container im Speicher mithilfe der SAS-URL hochladen
 

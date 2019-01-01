@@ -1,46 +1,49 @@
 ---
-title: Verwenden der Visual Studio Code Tools for AI-Erweiterung mit Azure Machine Learning
-description: Erfahren Sie etwas über Visual Studio Code Tools for AI und die ersten Schritte beim Trainieren und Bereitstellen von Machine Learning- und Deep Learning-Modellen mit dem Azure Machine Learning-Dienst in Visual Studio Code.
+title: Verwenden von Visual Studio Code mit Azure Machine Learning
+titleSuffix: Azure Machine Learning service
+description: Erfahren Sie, wie Sie Azure Machine Learning für Visual Studio Code installieren und ein einfaches Experiment mit Azure Machine Learning erstellen.
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
 ms.topic: conceptual
 ms.author: shwinne
 author: swinner95
-ms.reviewer: jmartens
-ms.date: 10/1/2018
-ms.openlocfilehash: 57fe511e5de0d73f2a372da0ecab3e9a3039b194
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.date: 12/04/2018
+ms.custom: seodec18
+ms.openlocfilehash: 898fd7d0416d1e1b27a25cabf524e72a7de44fde
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51854202"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53269588"
 ---
-# <a name="vs-code-tools-for-ai-get-started-with-azure-machine-learning-from-visual-studio-code"></a>Visual Studio Code Tools for AI: erste Schritte mit Azure Machine Learning aus Visual Studio Code
+# <a name="get-started-with-azure-machine-learning-for-visual-studio-code"></a>Erste Schritte mit Azure Machine Learning für Visual Studio Code
 
-In diesem Artikel erfahren Sie etwas über die Visual Studio Code (VS Code) **Tools for AI**-Erweiterung und die ersten Schritte beim Trainieren und Bereitstellen von Machine Learning- und Deep Learning-Modellen mit dem Azure Machine Learning-Dienst in Visual Studio Code.
+In diesem Artikel erfahren Sie, wie Sie die Erweiterung **Azure Machine Learning für Visual Studio Code** installieren und Ihr erstes Experiment mit Azure Machine Learning Service in Visual Studio Code (VS Code) erstellen.
 
-Mit der Tools for AI-Erweiterung in Visual Studio Code können Sie den Azure Machine Learning-Dienst für die Vorbereitung Ihrer Daten, das Trainieren und Testen von ML-Modellen auf lokalen und Remotecomputezielen, das Bereitstellen dieser Modelle und das Verfolgen benutzerdefinierter Metriken und Experimente verwenden.
+Mit der Erweiterung Azure Machine Learning in Visual Studio Code können Sie Azure Machine Learning Service für die Vorbereitung Ihrer Daten, das Trainieren und Testen von Machine Learning-Modellen auf lokalen und Remotecomputezielen, das Bereitstellen dieser Modelle und das Verfolgen benutzerdefinierter Metriken und Experimente verwenden.
 
 ## <a name="prerequisite"></a>Voraussetzung
+
+
++ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie heute die [kostenlose oder kostenpflichtige Version des Azure Machine Learning Service](http://aka.ms/AMLFree) aus.
 
 + Visual Studio Code muss installiert sein. Visual Studio Code ist ein einfacher, aber leistungsstarker Quellcode-Editor, der auf Ihrem Desktop ausgeführt wird. Er bietet integrierte Unterstützung für Python und vieles mehr.  [Erfahren Sie, wie Sie VS Code installieren](https://code.visualstudio.com/docs/setup/setup-overview).
 
 + [Installieren Sie Python 3.5 oder höher](https://www.anaconda.com/download/).
 
-+ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://aka.ms/AMLfree) erstellen, bevor Sie beginnen.
 
-## <a name="install-vs-code-tools-for-ai-extension"></a>Installieren der VS Code Tools for AI-Erweiterung
+## <a name="install-the-azure-machine-learning-for-vs-code-extension"></a>Installieren der Erweiterung Azure Machine Learning für Visual Studio Code
 
-Beim Installieren der **Tools for AI**-Erweiterung werden automatisch zwei weitere Erweiterungen installiert (sofern Sie Zugriff auf das Internet haben). Es handelt sich um die [Azure-Kontoerweiterung](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account) und die [Microsoft Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python)-Erweiterung.
+Beim Installieren der **Azure Machine Learning**-Erweiterung werden automatisch zwei weitere Erweiterungen installiert (sofern Sie Zugriff auf das Internet haben). Es handelt sich um die [Azure-Kontoerweiterung](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account) und die [Microsoft Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python)-Erweiterung.
 
-Um mit Azure Machine Learning zu arbeiten, muss VS Code in eine Python-IDE umgestaltet werden. Für die Arbeit mit [Python in Visual Studio Code](https://code.visualstudio.com/docs/languages/python) ist die Microsoft Python-Erweiterung erforderlich, die mit Tools for AI automatisch installiert wird. Die Erweiterung macht Visual Studio Code zu einer ausgezeichneten IDE, und sie funktioniert auf jedem Betriebssystem und mit einer Vielzahl von Python-Interpretern. Sie nutzt das gesamte Leistungsspektrum von Visual Studio Code und bietet automatische Vervollständigung und IntelliSense, Linting, Debugging und Komponententests sowie die Möglichkeit, einfach zwischen Python-Umgebungen zu wechseln, einschließlich virtueller und Conda-Umgebungen. Eine exemplarische Vorgehensweise des Bearbeitens, Ausführens und Debuggens von Python-Code finden Sie im [Python-Hallo Welt-Tutorial](https://code.visualstudio.com/docs/python/python-tutorial)
+Um mit Azure Machine Learning zu arbeiten, muss VS Code in eine Python-IDE umgestaltet werden. Für die Arbeit mit [Python in Visual Studio Code](https://code.visualstudio.com/docs/languages/python) ist die Microsoft Python-Erweiterung erforderlich, die mit der Erweiterung Azure Machine Learning automatisch installiert wird. Die Erweiterung macht Visual Studio Code zu einer ausgezeichneten IDE, und sie funktioniert auf jedem Betriebssystem und mit einer Vielzahl von Python-Interpretern. Sie nutzt das gesamte Leistungsspektrum von Visual Studio Code und bietet automatische Vervollständigung und IntelliSense, Linting, Debugging und Komponententests sowie die Möglichkeit, einfach zwischen Python-Umgebungen zu wechseln, einschließlich virtueller und Conda-Umgebungen. Eine exemplarische Vorgehensweise des Bearbeitens, Ausführens und Debuggens von Python-Code finden Sie im [Python-Hallo Welt-Tutorial](https://code.visualstudio.com/docs/python/python-tutorial)
 
-**So installieren Sie die VS Code Tools for AI-Erweiterung**
+**So installieren Sie die Erweiterung Azure Machine Learning:**
 
 1. Starten Sie VS Code.
 
-1. Navigieren Sie in einem Browser zu https://aka.ms/vscodetoolsforai. 
+1. Navigieren Sie in einem Browser zu: Erweiterung [Azure Machine Learning für Visual Studio Code (Vorschau)](https://aka.ms/vscodetoolsforai)
 
 1. Klicken Sie auf dieser Webseite auf **Install** (Installieren). 
 
@@ -52,7 +55,7 @@ Um mit Azure Machine Learning zu arbeiten, muss VS Code in eine Python-IDE umges
 
 1. Klicken Sie im Dialogfeld auf **Anmelden**, und befolgen Sie die Aufforderung auf dem Bildschirm für die Authentifizierung bei Azure. 
    
-   Die Erweiterung Azure Account, die zusammen mit Visual Studio Code Tools for AI installiert wurde, hilft Ihnen bei der Authentifizierung bei Ihrem Azure-Konto. Weitere Informationen finden Sie in der Liste der Befehle auf der Seite der [Erweiterung Azure Account](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account).
+   Die Erweiterung Azure Account, die zusammen mit der Erweiterung Azure Machine Learning für VS Code installiert wurde, hilft Ihnen bei der Authentifizierung bei Ihrem Azure-Konto. Weitere Informationen finden Sie in der Liste der Befehle auf der Seite der [Erweiterung Azure Account](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account).
 
 > [!Tip] 
 > Sehen Sie sich die [IntelliCode-Erweiterung für Visual Studio Code (Vorschauversion)](https://go.microsoft.com/fwlink/?linkid=2006060) an. IntelliCode bietet eine Reihe von KI-gestützten Funktionen für IntelliSense in Python, z.B. das Ableiten der relevantesten automatischen Vervollständigung basierend auf dem aktuellen Codekontext.
@@ -64,45 +67,46 @@ Um mit Azure Machine Learning zu arbeiten, muss VS Code in eine Python-IDE umges
 1. Öffnen Sie in VS Code mit **STRG+UMSCHALT+P** die Befehlspalette.
 
 1. Geben Sie „Install Azure ML SDK“ ein, um den pip-Installationsbefehl für das SDK zu suchen. Es wird eine lokale private Python-Umgebung erstellt, die die Visual Studio Code-Voraussetzungen für die Arbeit mit Azure Machine Learning erfüllt.
-   ![Installieren](./media/vscode-tools-for-ai/install-sdk.png)
 
-1. Geben Sie in dem integrierten Terminalfenster den zu verwendenden Python-Interpreter an, oder drücken Sie die **EINGABETASTE**, um Ihren Python-Standardinterpreter zu verwenden.
+   ![Installieren des Azure Machine Learning SDK für Python](./media/vscode-tools-for-ai/install-sdk.png)
 
-   ![Installieren](./media/vscode-tools-for-ai/python.png)
+1. Geben Sie im integrierten Terminalfenster den zu verwendenden Python-Interpreter an, oder drücken Sie die **EINGABETASTE**, um Ihren Python-Standardinterpreter zu verwenden.
+
+   ![Auswählen des Interpreters](./media/vscode-tools-for-ai/python.png)
 
 ## <a name="get-started-with-azure-machine-learning"></a>Erste Schritte mit Azure Machine Learning
 
-Bevor Sie mit dem Trainieren und Bereitstellen von ML-Modellen mithilfe von Visual Studio Code beginnen, müssen Sie einen [Arbeitsbereich für den Azure Machine Learning-Dienst](concept-azure-machine-learning-architecture.md#workspace) in der Cloud erstellen, der Ihre Modelle und Ressourcen enthalten soll. Erfahren Sie, wie Sie Ihr erstes Experiment in diesem Arbeitsbereich erstellen.
+Bevor Sie mit dem Trainieren und Bereitstellen von Machine Learning-Modellen mithilfe von Visual Studio Code beginnen, müssen Sie einen [Arbeitsbereich für Azure Machine Learning Service](concept-azure-machine-learning-architecture.md#workspace) in der Cloud erstellen, der Ihre Modelle und Ressourcen enthalten soll. Erfahren Sie, wie Sie Ihr erstes Experiment in diesem Arbeitsbereich erstellen.
 
 1. Klicken Sie auf der Aktivitätsleiste von Visual Studio Code auf das Azure-Symbol. Die Seitenleiste für Azure Machine Learning wird angezeigt.
 
-   ![Installieren](./media/vscode-tools-for-ai/createworkspace.gif)
+   [![Seitenleiste](./media/vscode-tools-for-ai/CreateNewWorkspace.gif)](./media/vscode-tools-for-ai/CreateNewWorkspace.gif#lightbox)
 
-1. Klicken Sie mit der rechten Maustaste auf Ihr Azure-Abonnement, und wählen Sie **Arbeitsbereich erstellen** aus. Eine Liste wird angezeigt. In dem animierten Bild ist der Name des Abonnements „OpenMind Studio“, und der Arbeitsbereich lautet „MyWorkspace“. 
+1. Klicken Sie mit der rechten Maustaste auf Ihr Azure-Abonnement, und wählen Sie **Arbeitsbereich erstellen** aus. Eine Liste wird angezeigt. Im animierten Bild ist der Name des Abonnements „Free Trial“, und der Arbeitsbereich lautet „TeamWorkspace“. 
 
-1. Wählen Sie in der Liste eine vorhandene Ressourcengruppe aus, oder erstellen Sie mithilfe des Assistenten in der Befehlspalette eine neue.
+1. Wählen Sie in der Liste eine vorhandene Ressourcengruppe aus, oder erstellen Sie mithilfe des Assistenten in der Befehlspalette eine neue Ressourcengruppe.
 
-1. Geben Sie im Feld einen eindeutigen und klaren Namen für Ihren neuen Arbeitsbereich ein. In den Screenshots hat der Arbeitsbereich den Namen „MyWorkspace“.
+1. Geben Sie im Feld einen eindeutigen und klaren Namen für Ihren neuen Arbeitsbereich ein. In den Screenshots trägt der Arbeitsbereich den Namen „TeamWorkspace“.
 
 1. Drücken Sie die EINGABETASTE, um den neuen Arbeitsbereich zu erstellen. Er wird dann in der Struktur unter dem Namen des Abonnements angezeigt.
 
-1. Klicken Sie mit der rechten Maustaste auf den Namen des Arbeitsbereichs, und wählen Sie im Kontextmenü **Experiment erstellen** aus.  Für Experimente werden Ihre Ausführungen mit Azure Machine Learning gespeichert.
+1. Klicken Sie mit der rechten Maustaste auf den Knoten „Experiment“, und wählen Sie dann im Kontextmenü **Experiment erstellen** aus.  Für Experimente werden Ihre Ausführungen mit Azure Machine Learning gespeichert.
 
 1. Geben Sie in dem Feld einen Namen für das Experiment ein. In den Screenshots hat das Experiment den Namen „MNIST“.
  
 1. Drücken Sie die EINGABETASTE, um das neue Experiment zu erstellen. Es wird dann in der Struktur unter dem Namen des Arbeitsbereichs angezeigt.
 
-1. Klicken Sie mit der rechten Maustaste auf den Namen des Experiments, und wählen Sie **Attach a local folder** (Lokalen Ordner anfügen) aus. Dieser Ordner sollte Ihre lokalen Python-Skripts enthalten. Der Ordner wird dann mit dem Experiment in der Cloud verknüpft. 
+1. Klicken Sie mit der rechten Maustaste auf den Namen des Experiments, und wählen Sie **Ordner an Experiment anfügen** aus. Dieser Ordner sollte Ihre lokalen Python-Skripts enthalten. Der Ordner wird dann mit dem Experiment in der Cloud verknüpft. 
 
    Nun wird jedes Ihrer Experiment vollständig ausgeführt, sodass alle wichtigen Metriken im Experimentverlauf gespeichert werden. Die trainierten Modelle werden zudem automatisch in Azure Machine Learning hochgeladen und mit den Metriken und Protokollen Ihres Experiments gespeichert.
 
-   [![Hinzufügen eines Ordners in VS Code](./media/vscode-tools-for-ai/attachfolder.gif)](./media/vscode-tools-for-ai/attachfolder.gif#lightbox)
+   [![Hinzufügen eines Ordners in VS Code](./media/vscode-tools-for-ai/CreateNewExperimentandFolder.gif)](./media/vscode-tools-for-ai/CreateNewExperimentandFolder.gif#lightbox)
 
 ### <a name="use-keyboard-shortcuts"></a>Verwenden von Tastenkombinationen
 
 So wie die meisten Elemente von Visual Studio Code sind die Azure Machine Learning-Features in Visual Studio Code über die Tastatur zugänglich. Die wichtigste Tastenkombination, die Sie kennen sollten, ist STRG+UMSCHALT+P, mit der die Befehlspalette geöffnet wird. Von hier aus haben Sie Zugriff auf alle Funktionen von Visual Studio Code, einschließlich der Tastenkombinationen für die am häufigsten verwendeten Vorgänge.
 
-[![Tastenkombinationen für Visual Studio Code Tools for AI](./media/vscode-tools-for-ai/commands.gif)](./media/vscode-tools-for-ai/commands.gif#lightbox)
+[![Tastenkombinationen für Azure Machine Learning für VS Code](./media/vscode-tools-for-ai/commands.gif)](./media/vscode-tools-for-ai/commands.gif#lightbox)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

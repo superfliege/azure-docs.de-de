@@ -1,12 +1,11 @@
 ---
-title: Optimieren von Algorithmen für Azure Machine Learning Studio| Microsoft-Dokumentation
+title: 'Optimieren von Algorithmen: Azure Machine Learning Studio| Microsoft-Dokumentation'
 description: Hier erfahren Sie, wie Sie die optimalen Parameter für einen Algorithmus in Azure Machine Learning Studio auswählen.
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
+ms.custom: seodec18
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: 6717e30e-b8d8-4cc1-ad0b-1d4727928d32
 ms.service: machine-learning
@@ -16,18 +15,18 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2017
-ms.openlocfilehash: f4b7ba04f643fc823ca627e279faea31dee9d2a4
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 57561c9841297b7ea2991bda1e94065a854597cd
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52314711"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53269412"
 ---
 # <a name="choose-parameters-to-optimize-your-algorithms-in-azure-machine-learning-studio"></a>Auswählen von Parametern zur Optimierung von Algorithmen in Azure Machine Learning Studio
 
 In diesem Thema wird das Auswählen des richtigen Hyperparametersatzes für einen Algorithmus in Azure Machine Learning beschrieben. Für die meisten Machine Learning-Algorithmen müssen Parameter festgelegt werden. Wenn Sie ein Modell trainieren, müssen Sie Werte für diese Parameter bereitstellen. Die Wirksamkeit des trainierten Modells ist abhängig von den gewählten Parametern. Das Ermitteln des optimalen Parametersatzes wird als *Modellauswahl* bezeichnet.
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 
 Es gibt verschiedene Möglichkeiten zur Modellauswahl. Beim Machine Learning ist die Kreuzvalidierung eine der am häufigsten verwendeten Methoden für die Modellauswahl und der Standardmechanismus für die Modellauswahl in Azure Machine Learning. Da Azure Machine Learning sowohl R als auch Python Azure unterstützt, können Benutzer ihren eigenen Modellauswahlmechanismus in R oder Python implementieren.
 
@@ -43,7 +42,7 @@ Die folgende Abbildung veranschaulicht, wie dies in Azure Machine Learning erzie
 ![Suchen des besten Parametersatzes](./media/algorithm-parameters-optimize/fig1.png)
 
 ## <a name="define-the-parameter-space"></a>Definieren des Parameterraums
-Der Parametersatz kann bei der Initialisierung des Modells definiert werden. Der Parameterbereich aller Machine Learning-Algorithmen weist zwei Trainingsmodi: *Single Parameter* und *Parameter Range*. Wählen Sie den Modus „Parameter Range“ aus. Im Modus „Parameter Range“ können Sie für jeden Parameter mehrere Werte eingeben. Sie können in das Textfeld durch Trennzeichen getrennte Werte eingeben.
+Der Parametersatz kann bei der Initialisierung des Modells definiert werden. Der Parameterbereich aller Machine Learning-Algorithmen weist zwei Trainingsmodi auf: *Single Parameter* und *Parameter Range*. Wählen Sie den Modus „Parameter Range“ aus. Im Modus „Parameter Range“ können Sie für jeden Parameter mehrere Werte eingeben. Sie können in das Textfeld durch Trennzeichen getrennte Werte eingeben.
 
 ![Two-Class Boosted Decision Tree, Single Parameter](./media/algorithm-parameters-optimize/fig2.png)
 

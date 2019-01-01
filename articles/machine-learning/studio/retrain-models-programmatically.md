@@ -1,12 +1,11 @@
 ---
 title: Programmgesteuertes erneutes Trainieren von Machine Learning Studio-Modellen | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie ein Modell programmgesteuert erneut trainieren und den Webdienst aktualisieren, sodass er das neu trainierte Modell in Azure Azure Machine Learning verwendet.
+description: Erfahren Sie, wie Sie ein Modell programmgesteuert mit C# und dem Machine Learning Batch Execution-Dienst erneut trainieren können.
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-ms.custom: (previous ms.author=yahajiza, author=YasinMSFT)
+ms.custom: seodec18
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: 7ae4f977-e6bf-4d04-9dde-28a66ce7b664
 ms.service: machine-learning
@@ -16,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
-ms.openlocfilehash: b38143fe6f1f1cf3e65a2989e1b0a71c28530b2a
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 7a1381ce43056607486a27710cd6ee6181b9a5c1
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52313384"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53257392"
 ---
-# <a name="retrain-machine-learning-studio-models-programmatically"></a>Programmgesteuertes erneutes Trainieren von Machine Learning Studio-Modellen
+# <a name="retrain-azure-machine-learning-studio-models-programmatically"></a>Programmgesteuertes erneutes Trainieren von Azure Machine Learning Studio-Modellen
 In dieser exemplarischen Vorgehensweise erfahren Sie, wie Sie einen Azure Machine Learning Studio-Webdienst mithilfe von C# und dem Machine Learning Batch Execution-Dienst neu trainieren.
 
 Nachdem Sie das Modell neu trainiert haben, veranschaulichen die folgenden exemplarischen Vorgehensweisen das Aktualisieren des Modells in Ihrem Vorhersagewebdienst:
@@ -36,7 +35,7 @@ Eine Übersicht über den Prozess zum erneuten Trainieren finden Sie unter [Erne
 Wenn Sie mit Ihrem vorhandenen neuen auf Azure Resource Manager basierenden Webdienst beginnen möchten, lesen Sie [Erneutes Trainieren eines vorhandenen Vorhersagewebdiensts](retrain-existing-resource-manager-based-web-service.md).
 
 ## <a name="create-a-training-experiment"></a>Erstellen eines Trainingsexperiments
-In diesem Beispiel verwenden Sie „Sample 5: Train, Test, Evaluate for Binary Classification: Adult Dataset“ aus den Microsoft Azure Machine Learning-Beispielen. 
+In diesem Beispiel verwenden Sie „Sample 5: Train, Test, Evaluate for Binary Classification: Adult Dataset“ in den Microsoft Azure Machine Learning-Beispielen. 
 
 So erstellen Sie das Experiment
 
@@ -93,7 +92,7 @@ In diesem Beispiel verwenden Sie C# zum Erstellen der Anwendung für erneutes Tr
 
 So rufen Sie die APIs zum erneuten Trainieren auf
 
-1. Erstellen Sie eine C#-Konsolenanwendung in Visual Studio: **Neu** > **Projekt** > **Visual C#** > **Klassischer Windows-Desktop** > **Konsolen-App (.NET Framework)**.
+1. Erstellen Sie in Visual Studio eine C#-Konsolenanwendung: **Neu** > **Projekt** > **Visual C#** > **Klassischer Windows-Desktop** > **Konsolen-App (.NET Framework)**.
 2. Melden Sie sich beim Machine Learning-Webdienstportal an.
 3. Klicken Sie bei Verwendung eines klassischen Webdiensts auf **Classic Web Services**.
    1. Klicken Sie auf den verwendeten Webdienst.
@@ -159,7 +158,7 @@ Siehe folgendes Beispiel:
 
 ![Ausgabe des erneuten Trainings][6]
 
-Diagramm 4: Ausgabe des erneuten Trainings
+Abbildung 4: Erneutes Trainieren der Ausgabe.
 
 ## <a name="evaluate-the-retraining-results"></a>Auswerten der Ergebnisse des erneuten Trainings
 Wenn Sie die Anwendung ausführen, enthält die Ausgabe die URL und das erforderliche SAS-Token für den Zugriff auf die Auswertungsergebnisse.

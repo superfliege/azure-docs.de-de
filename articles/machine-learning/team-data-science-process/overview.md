@@ -1,5 +1,5 @@
 ---
-title: Was ist der Team Data Science-Prozess (TDSP)? | Microsoft-Dokumentation
+title: Was ist der Team Data Science-Prozess (TDSP)?
 description: Bietet eine Data Science-Methodik zur Bereitstellung von Predictive Analytics-Lösungen und intelligenten Anwendungen.
 services: machine-learning
 author: marktab
@@ -10,13 +10,13 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 10/20/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 44da452b0ec07eaa1b1446de5dab5bedaac3bc30
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: 94728bbc74d1864c76aa801628fcbfb133b97abd
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52446839"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53435989"
 ---
 # <a name="what-is-the-team-data-science-process"></a>Was ist der Team Data Science-Prozess (TDSP)?
 
@@ -104,4 +104,4 @@ Die Einführung von Prozessen stellt in den meisten Organisationen eine große H
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Team Data Science Process: Roles and tasks](https://github.com/Azure/Microsoft-TDSP/blob/master/Docs/roles-tasks.md) (Team Data Science-Prozess: Rollen und Aufgaben): Beschreibung der wichtigsten Mitarbeiterrollen und der zugeordneten Aufgaben für ein Data Science-Team, das eine Standardisierung entsprechend diesem Prozess durchführt. 
+[Team Data Science-Prozess: Rollen und Aufgaben](https://github.com/Azure/Microsoft-TDSP/blob/master/Docs/roles-tasks.md): Beschreibung der wichtigsten Mitarbeiterrollen und der zugeordneten Aufgaben für ein Data Science-Team, das eine Standardisierung entsprechend diesem Prozess durchführt. 

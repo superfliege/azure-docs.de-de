@@ -1,11 +1,12 @@
 ---
 title: Bereitstellen einer Data Science-VM für geografische KI in Azure – Azure | Microsoft-Dokumentation
-description: Bereitstellen einer Data Science-VM für geografische KI in Azure
+description: Erfahren Sie, wie Sie die Data Science-VM für geografische KI erstellen und konfigurieren. Die Data Science-VM für geografische KI bietet Ihnen die Tools zum Erstellen von KI und ML-Lösungen mit geografischen Daten.
 keywords: deep learning, KI, data science-tools, data science-VM, räumliche Analysen
 services: machine-learning
 documentationcenter: ''
 author: gopitk
 manager: cgronlun
+ms.custom: seodec18
 ms.assetid: ''
 ms.service: machine-learning
 ms.component: data-science-vm
@@ -15,12 +16,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/05/2018
 ms.author: gokuma
-ms.openlocfilehash: bdcf2662f2a81b145868cff92ecb7a2cb4d53046
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 395604da3465e66214f89b4f74ddf9d6bcdc48f8
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51239796"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53103947"
 ---
 # <a name="provision-a-geo-artificial-intelligence-virtual-machine-on-azure"></a>Bereitstellen einer Data Science-VM für geografische KI in Azure 
 
@@ -48,20 +49,20 @@ Im Folgenden wird das Verfahren zum Erstellen einer Instanz der Data Science-VM 
 
    - **Grundlagen**
 
-      1. **Name:** Name des Data Science-Servers, den Sie erstellen.
+      1. **Name**: Der Name des Data Science-Servers, den Sie erstellen.
 
-      2. **Benutzername**: ID des Administratoranmeldekontos.
+      2. **Benutzername**: Die ID des Administratoranmeldekontos.
 
-      3. **Kennwort**: Kennwort des Administratorkontos.
+      3. **Kennwort**: Das Kennwort des Administratorkontos.
 
-      4. **Abonnement:** Wenn Sie über mehrere Abonnements verfügen, wählen Sie eines aus, über das der Computer erstellt und abgerechnet wird.
+      4. **Abonnement**: Wenn Sie über mehrere Abonnements verfügen, wählen Sie eines aus, über das der Computer erstellt und abgerechnet wird.
 
       5. **Ressourcengruppe**: Sie können eine neue Ressourcengruppe erstellen oder eine **leere** in Ihrem Abonnement vorhandene Azure-Ressourcengruppe verwenden.
 
-      6. **Standort**: Wählen Sie das Rechenzentrum aus, das am besten geeignet ist. Normalerweise ist es das Rechenzentrum, in dem der größte Teil Ihrer Daten gespeichert ist oder das Ihrem Standort am nächsten ist, um den schnellsten Netzwerkzugriff zu erreichen. Wenn Sie Deep Learning-Vorgänge mit GPUs durchführen möchten, müssen Sie eine der Regionen in Azure auswählen, die GPU-VM-Instanzen der NC-Serie bietet. Die folgenden Regionen bieten derzeit GPU-VMs: **USA, Osten, USA, Norden-Mitte, USA, Süden-Mitte, USA, Westen 2, Europa, Norden und Europa, Westen**. Die neueste Liste finden Sie auf der Seite [Azure-Produkte nach Region](https://azure.microsoft.com/regions/services/). Suchen Sie hier unter **Compute** nach **NC-Serie**. 
+      6. **Standort**: Wählen Sie das Datencenter aus, das am besten geeignet ist. Normalerweise ist es das Rechenzentrum, in dem der größte Teil Ihrer Daten gespeichert ist oder das Ihrem Standort am nächsten ist, um den schnellsten Netzwerkzugriff zu erreichen. Wenn Sie Deep Learning-Vorgänge mit GPUs durchführen möchten, müssen Sie eine der Regionen in Azure auswählen, die GPU-VM-Instanzen der NC-Serie bietet. Zurzeit werden die folgenden Standorte unterstützt, die über GPU-VMs verfügen: **USA, Osten, USA, Norden-Mitte, USA, Süden-Mitte, USA, Westen 2, Europa, Norden, Europa, Westen**. Die neueste Liste finden Sie auf der Seite [Azure-Produkte nach Region](https://azure.microsoft.com/regions/services/). Suchen Sie hier unter **Compute** nach **NC-Serie**. 
 
 
-   - **Einstellungen:** Wählen Sie eine Größe für GPU-VMs der NC-Serie aus, wenn Sie vorhaben, Deep Learning auf GPUs in Ihrem Geo-DSVM auszuführen. Andernfalls können Sie eine auf einer CPU basierende Instanz auswählen.  Erstellen Sie ein Speicherkonto für Ihre VM. 
+   - **Einstellungen**: Wählen Sie eine Größe für GPU-VMs der NC-Serie aus, wenn Sie vorhaben, Deep Learning auf GPUs in Ihrer Geo-DSVM auszuführen. Andernfalls können Sie eine auf einer CPU basierende Instanz auswählen.  Erstellen Sie ein Speicherkonto für Ihre VM. 
    
    - **Zusammenfassung**: Stellen Sie sicher, dass alle eingegebenen Informationen richtig sind.
 

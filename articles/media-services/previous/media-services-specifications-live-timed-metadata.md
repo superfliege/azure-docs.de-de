@@ -3,7 +3,7 @@ title: Azure Media Services – Signalisierung von zeitgesteuerten Metadaten bei
 description: In dieser Spezifikation werden zwei Modi allgemein beschrieben, die von Media Services für die Signalisierung von zeitgesteuerten Metadaten beim Livestreaming verwendet werden. Dies schließt Unterstützung für Signale für allgemeine zeitgesteuerte Metadaten sowie SCTE-35-Signalisierung für die nahtlose Einfügung von Werbeinhalten ein.
 services: media-services
 documentationcenter: ''
-author: cenkdin
+author: johndeu
 manager: cfowler
 editor: johndeu
 ms.assetid: 265b94b1-0fb8-493a-90ec-a4244f51ce85
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/17/2018
+ms.date: 12/13/2018
 ms.author: johndeu;
-ms.openlocfilehash: 827153300b9cab4ea805689b1e103bea1b334ec9
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: b4dec5430d93cd2634fc541ae688a6bc425f5491
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51249573"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53384682"
 ---
 # <a name="signaling-timed-metadata-in-live-streaming"></a>Signalisieren von zeitgesteuerten Metadaten beim Livestreaming
 
@@ -81,7 +81,7 @@ Für den einfachen RTMP-Modus unterstützt Media Services eine einzelne AMF-Posi
 | Feldname | Feldtyp | Erforderlich? | Beschreibungen                                                                                                             |
 |------------|------------|----------|--------------------------------------------------------------------------------------------------------------------------|
 | cue        | Zeichenfolge     | Erforderlich | Die Ereignisnachricht.  Für [SCTE-35]-Nachrichten MUSS dies die in base64 (IETF RFC 4648) binär codierte splice_info_section() sein, damit Nachrichten [SCTE-67]-konform an HLS-, Smooth- und Dash-Clients gesendet werden können.                                              |
-| type       | Zeichenfolge     | Erforderlich | Ein URN oder eine URL zur Angabe des Nachrichtenschemas, z. B. „urn:example:signaling:1.0“.  Für [SCTE-35]-Nachrichten MUSS dies „urn:scte:scte35:2013a:bin“ sein, damit Nachrichten [SCTE-67]-konform an HLS-, Smooth- und Dash-Clients gesendet werden können.  |
+| type       | Zeichenfolge     | Erforderlich | Ein URN oder eine URL, der bzw. die das Nachrichtenschema angibt. Für [SCTE-35]-Nachrichten MUSS dies „urn:scte:scte35:2013a:bin“ sein, damit Nachrichten [SCTE-67]-konform an HLS-, Smooth- und Dash-Clients gesendet werden können.  |
 | id         | Zeichenfolge     | Erforderlich | Ein eindeutiger Bezeichner, der die Einfügung oder das Segment beschreibt. Gibt die Instanz der Nachricht an.  Nachrichten mit gleichbedeutender Semantik weisen den gleichen Wert auf.|
 | duration   | Number     | Erforderlich | Die Dauer des Ereignisses oder der Werbeeinblendung, sofern bekannt. Wenn sie unbekannt ist, sollte der Wert 0 sein.                                                                 |
 | elapsed    | Number     | Optional | Wenn das [SCTE-35]-Werbesignal zur Abstimmung wiederholt wird, gibt dieses Feld die Menge der Präsentationszeit an, die seit dem Anfang der Einfügung verstrichen ist. Die Einheit sind Sekundenbruchteile. Im [SCTE-35]-Modus darf dieser Wert die ursprünglich angegebene Dauer der Einfügung oder des Segments überschreiten.                                                  |
@@ -105,7 +105,7 @@ Die Sparsespur MUSS in der Live Server Manifest Box mit dem Eintrag \<textstream
 | parentTrackName    | Zeichenfolge         | Erforderlich      | MUSS der Name der übergeordneten Spur sein, an deren Zeitachse die Zeitcodes der Sparsespur ausgerichtet sind. Die übergeordnete Spur darf ihrerseits keine Sparsespur sein.                                                                                                                    |
 | manifestOutput     | Boolescher Wert        | Erforderlich      | MUSS „true“ sein, um anzugeben, dass die Sparsespur im Smooth-Clientmanifest eingebettet ist.                                                                                                                                                               |
 | Subtype            | Zeichenfolge         | Erforderlich      | MUSS der aus vier Buchstaben bestehende Code „DATA“ sein.                                                                                                                                                                                                                         |
-| Schema             | Zeichenfolge         | Erforderlich      | MUSS ein URN oder eine URL zur Angabe des Nachrichtenschemas sein, z. B. „urn:example:signaling:1.0“. Für [SCTE-35]-Nachrichten MUSS dies „urn:scte:scte35:2013a:bin“ sein, damit Nachrichten [SCTE-67]-konform an HLS-, Smooth- und Dash-Clients gesendet werden können. |
+| Schema             | Zeichenfolge         | Erforderlich      | MUSS ein URN oder eine URL sein, der bzw. die das Nachrichtenschema angibt. Für [SCTE-35]-Nachrichten MUSS dies „urn:scte:scte35:2013a:bin“ sein, damit Nachrichten [SCTE-67]-konform an HLS-, Smooth- und Dash-Clients gesendet werden können. |
 | trackName          | Zeichenfolge         | Erforderlich      | MUSS der Name der Sparsespur sein. Der Spurname kann verwendet werden, um mehrere Ereignisstreams mit dem gleichen Schema zu unterscheiden. Jeder eindeutige Ereignisstream muss einen eindeutigen Spurnamen aufweisen.                                                                           |
 | timescale          | Number         | Optional      | MUSS die Zeitskala der übergeordneten Spur sein.                                                                                                                                                                                                                      |
 
@@ -226,7 +226,7 @@ Zeitgesteuerte Metadaten für Apple HTTP Live Streaming (HLS) können in der Seg
 | **Attributname** | **Typ**                      | **Erforderlich?**                             | **Beschreibung**                                                                                                                                                                                                                                                                      |
 |--------------------|-------------------------------|-------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | CUE                | Zeichenfolge in Anführungszeichen                 | Erforderlich                                  | Die Nachricht als base64-Zeichenfolge codiert, wie in [IETF RFC 4648](http://tools.ietf.org/html/rfc4648) beschrieben. Für [SCTE-35]-Nachrichten ist dies die base64-codierte „splice_info_section()“.                                                                                                |
-| TYPE               | Zeichenfolge in Anführungszeichen                 | Erforderlich                                  | Ein URN oder eine URL mit der Angabe des Nachrichtenschemas, z. B. „urn:example:signaling:1.0“. Für [SCTE-35]-Nachrichten nimmt der Typ den Sonderwert „scte35“ an.                                                                                                                                |
+| TYPE               | Zeichenfolge in Anführungszeichen                 | Erforderlich                                  | Ein URN oder eine URL, der bzw. die das Nachrichtenschema angibt. Für [SCTE-35]-Nachrichten nimmt der Typ den Sonderwert „scte35“ an.                                                                                                                                |
 | ID                 | Zeichenfolge in Anführungszeichen                 | Erforderlich                                  | Eindeutiger Bezeichner für das Ereignis. Wenn die ID bei der Erfassung der Nachricht nicht angegeben wird, erstellt Azure Media Services eine eindeutige ID.                                                                                                                                          |
 | DURATION           | Dezimale Gleitkommazahl | Erforderlich                                  | Die Dauer des Ereignisses. Wenn sie unbekannt ist, sollte der Wert 0 sein. Die Einheit sind Sekundenbruchteile.                                                                                                                                                                                           |
 | ELAPSED            | Dezimale Gleitkommazahl | Optional, für gleitendes Fenster jedoch erforderlich | Wenn das Signal wiederholt wird, um ein gleitendes Präsentationsfenster zu unterstützen, MUSS dieses Feld gleich dem Betrag der seit dem Beginn des Ereignisses verstrichenen Präsentationszeit sein. Die Einheit sind Sekundenbruchteile. Dieser Wert darf die ursprünglich angegebene Dauer der Einfügung oder des Segments überschreiten. |
@@ -240,30 +240,17 @@ Die Anwendungsschicht des HLS-Players verwendet TYPE, um das Format der Nachrich
 #EXTM3U
 #EXT-X-VERSION:4
 #EXT-X-ALLOW-CACHE:NO
-#EXT-X-MEDIA-SEQUENCE:0
+#EXT-X-MEDIA-SEQUENCE:346
 #EXT-X-TARGETDURATION:6
-#EXT-X-PROGRAM-DATE-TIME:1970-01-01T00:00:00.000+00:00
+#EXT-X-I-FRAMES-ONLY
+#EXT-X-PROGRAM-DATE-TIME:2018-12-13T15:54:19.462Z
+#EXTINF:4.000000,no-desc
+KeyFrames(video_track=15447164594627600,format=m3u8-aapl)
 #EXTINF:6.000000,no-desc
-Fragments(video=0,format=m3u8-aapl)
+KeyFrames(video_track=15447164634627600,format=m3u8-aapl)
+#EXT-X-CUE:ID="1026",TYPE="scte35",DURATION=30.000000,TIME=1544716520.022760,CUE="/DAlAAAAAAAAAP/wFAUAAAQCf+//KRjAfP4AKTLgAAAAAAAAVYsh2w=="
 #EXTINF:6.000000,no-desc
-Fragments(video=60000000,format=m3u8-aapl)
-#EXTINF:6.000000,no-desc
-#EXT-X-CUE: ID=”metadata-12.000000”,TYPE=”urn:example:signaling:1.0”,TIME=”12.000000”, DURATION=”18.000000”,CUE=”HrwOi8vYmWVkaWEvhhaWFRlRDa=”
-Fragments(video=120000000,format=m3u8-aapl)
-#EXTINF:6.000000,no-desc
-Fragments(video=180000000,format=m3u8-aapl)
-#EXTINF:6.000000,no-desc
-Fragments(video=240000000,format=m3u8-aapl)
-#EXTINF:6.000000,no-desc
-Fragments(video=300000000,format=m3u8-aapl)
-#EXTINF:6.000000,no-desc
-Fragments(video=360000000,format=m3u8-aapl)
-#EXT-X-CUE: ID=”metadata-42.000000”,TYPE=”urn:example:signaling:1.0”,TIME=”42.000000”, DURATION=”60.000000”,CUE=”PD94bWwgdm0iMS4wIiBlbmNvpD4=”
-#EXTINF:6.000000,no-desc
-Fragments(video=420000000,format=m3u8-aapl)
-#EXTINF:6.000000,no-desc
-Fragments(video=480000000,format=m3u8-aapl)
-…
+KeyFrames(video_track=15447165474627600,format=m3u8-aapl)
 ~~~
 
 #### <a name="hls-message-handling"></a>HLS-Nachrichtenbehandlung
@@ -293,7 +280,7 @@ Das EventStream-Element weist die folgenden Attribute auf:
 
 | **Attributname** | **Typ**                | **Erforderlich?** | **Beschreibung**                                                                                                                                                                                                                                                                                   |
 |--------------------|-------------------------|---------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| scheme_id_uri      | Zeichenfolge                  | Erforderlich      | Gibt das Schema der Nachricht an. Das Schema ist auf den Wert des Scheme-Attributs in der Live Server Manifest-Box festgelegt. Der Wert SOLLTE ein URN oder eine URL zur Angabe des Nachrichtenschemas sein, z. B. „urn:example:signaling:1.0“.                                                                |
+| scheme_id_uri      | Zeichenfolge                  | Erforderlich      | Gibt das Schema der Nachricht an. Das Schema ist auf den Wert des Scheme-Attributs in der Live Server Manifest-Box festgelegt. Der Wert SOLLTE ein URN oder eine URL zur Angabe des Nachrichtenschemas sein, z.B. „urn:scte:scte35:2013a:bin“.                                                                |
 | value              | Zeichenfolge                  | Optional      | Ein zusätzlicher Zeichenfolgenwert, der von den Besitzern des Schemas zum Anpassen der Semantik der Nachricht verwendet wird. Um mehrere Ereignisdatenströme mit gleichem Schema zu unterscheiden, MUSS der Wert auf den Namen des Ereignisdatenstroms festgelegt werden (‚trackName‘ für Smooth-Erfassung oder AMF-Nachrichtenname für RTMP-Erfassung). |
 | Zeitskala          | 32-Bit-Ganzzahl ohne Vorzeichen | Erforderlich      | Die Zeitskala in Sekundenbruchteilen der Zeit- und Dauerfelder innerhalb der emsg-Box.                                                                                                                                                                                                       |
 
@@ -335,11 +322,14 @@ Im EventStream-Element sind null oder mehr Ereigniselemente enthalten, die folge
 
 
 <!-- Example Section in MPD -->
-
-<EventStream schemeIdUri=”urn:example:signaling:1.0” timescale=”1000” value=”player-statistics”>
-  <Event presentationTime=”0” duration=”10000” id=”0”> PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48QWNxdWlyZWRTaWduYWwgeG1sbnM9InVybjpjYWJsZWxhYnM6bWQ6eHNkOnNpZ25hbGluZzozLjAiIGFjcXVpc2l0aW9uUG9pbnRJZGVudGl0eT0iRVNQTl9FYXN0X0FjcXVpc2l0aW9uX1BvaW50XzEiIGFjcXVpc2l0aW9uU2lnbmFsSUQ9IjRBNkE5NEVFLTYyRkExMUUxQjFDQTg4MkY0ODI0MDE5QiIgYWNxdWlzaXRpb25UaW1lPSIyMDEyLTA5LTE4VDEwOjE0OjI2WiI+PFVUQ1BvaW50IHV0Y1BvaW50PSIyMDEyLTA5LTE4VDEwOjE0OjM0WiIvPjxTQ1RFMzVQb2ludERlc2NyaXB0b3Igc3BsaWNlQ29tbWFuZFR5cGU9IjUiPjxTcGxpY2VJbnNlcnQgc3BsaWNlRXZlbnRJRD0iMzQ0NTY4NjkxIiBvdXRPZk5ldHdvcmtJbmRpY2F0b3I9InRydWUiIHVuaXF1ZVByb2dyYW1JRD0iNTUzNTUiIGR1cmF0aW9uPSJQVDFNMFMiIGF2YWlsTnVtPSIxIiBhdmFpbHNFeHBlY3RlZD0iMTAiLz48L1NDVEUzNVBvaW50RGVzY3JpcHRvcj48U3RyZWFtVGltZXM+PFN0cmVhbVRpbWUgdGltZVR5cGU9IkhTUyIgdGltZVZhbHVlPSI1MTUwMDAwMDAwMDAiLz48L1N0cmVhbVRpbWVzPjwvQWNxdWlyZWRTaWduYWw+</Event>
-  <Event presentationTime=”20000” duration=”10000” id=”1”> PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48QWNxdWlyZWRTaWduYWwgeG1sbnM9InVybjpjYWJsZWxhYnM6bWQ6eHNkOnNpZ25hbGluZzozLjAiIGFjcXVpc2l0aW9uUG9pbnRJZGVudGl0eT0iRVNQTl9FYXN0X0FjcXVpc2l0aW9uX1BvaW50XzEiIGFjcXVpc2l0aW9uU2lnbmFsSUQ9IjRBNkE5NEVFLTYyRkExMUUxQjFDQTg4MkY0ODI0MDE5QiIgYWNxdWlzaXRpb25UaW1lPSIyMDEyLTA5LTE4VDEwOjE0OjI2WiI+PFVUQ1BvaW50IHV0Y1BvaW50PSIyMDEyLTA5LTE4VDEwOjE0OjM0WiIvPjxTQ1RFMzVQb2ludERlc2NyaXB0b3Igc3BsaWNlQ29tbWFuZFR5cGU9IjUiPjxTcGxpY2VJbnNlcnQgc3BsaWNlRXZlbnRJRD0iMzQ0NTY4NjkxIiBvdXRPZk5ldHdvcmtJbmRpY2F0b3I9InRydWUiIHVuaXF1ZVByb2dyYW1JRD0iNTUzNTUiIGR1cmF0aW9uPSJQVDFNMFMiIGF2YWlsTnVtPSIxIiBhdmFpbHNFeHBlY3RlZD0iMTAiLz48L1NDVEUzNVBvaW50RGVzY3JpcHRvcj48U3RyZWFtVGltZXM+PFN0cmVhbVRpbWUgdGltZVR5cGU9IkhTUyIgdGltZVZhbHVlPSI1MTYyMDAwMDAwMDAiLz48L1N0cmVhbVRpbWVzPjwvQWNxdWlyZWRTaWduYWw+</Event>
-</EventStream>
+  <EventStream schemeIdUri="urn:scte:scte35:2013a:bin" value="scte35_track_001_000" timescale="10000000">
+        <Event presentationTime="15447165200227600" duration="300000000" id="1026">/DAlAAAAAAAAAP/wFAUAAAQCf+//KRjAfP4AKTLgAAAAAAAAVYsh2w==</Event>
+        <Event presentationTime="15447166250227600" duration="300000000" id="1027">/DAlAAAAAAAAAP/wFAUAAAQDf+//KaeGwP4AKTLgAAAAAAAAn75a3g==</Event>
+        <Event presentationTime="15447167300227600" duration="600000000" id="1028">/DAlAAAAAAAAAP/wFAUAAAQEf+//KjkknP4AUmXAAAAAAAAAWcEldA==</Event>
+        <Event presentationTime="15447168350227600" duration="600000000" id="1029">/DAlAAAAAAAAAP/wFAUAAAQFf+//KslyqP4AUmXAAAAAAAAAvKNt0w==</Event>
+        <Event presentationTime="15447169400227600" duration="300000000" id="1030">/DAlAAAAAAAAAP/wFAUAAAQGf+//K1mIvP4AKTLgAAAAAAAAt2zEbw==</Event>
+        <Event presentationTime="15447170450227600" duration="600000000" id="1031">/DAlAAAAAAAAAP/wFAUAAAQHf+//K+hc/v4AUmXAAAAAAAAANNRzVw==</Event>
+    </EventStream>
 ~~~
 
 >[!NOTE]
@@ -375,7 +365,7 @@ Die Felder der DASHEventMessageBox sind unten definiert:
 
 | **Feldname**          | **Feldtyp**          | **Erforderlich?** | **Beschreibung**                                                                                                                                                                                                                                                                                                                                                    |
 |-------------------------|-------------------------|---------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| scheme_id_uri           | Zeichenfolge                  | Erforderlich      | Gibt das Schema der Nachricht an. Das Schema ist auf den Wert des Scheme-Attributs in der Live Server Manifest-Box festgelegt. Der Wert SOLLTE ein URN oder eine URL zur Angabe des Nachrichtenschemas sein, z. B. „urn:example:signaling:1.0“. Für [SCTE-35]-Nachrichten nimmt dies den Sonderwert „urn:scte:scte35:2013a:bin“ an, obwohl [SCTE-67] eine andere Empfehlung enthält. |
+| scheme_id_uri           | Zeichenfolge                  | Erforderlich      | Gibt das Schema der Nachricht an. Das Schema ist auf den Wert des Scheme-Attributs in der Live Server Manifest-Box festgelegt. Der Wert SOLLTE ein URN oder eine URL sein, der bzw. die das Nachrichtenschema angibt. Für [SCTE-35]-Nachrichten nimmt dies den Sonderwert „urn:scte:scte35:2013a:bin“ an, obwohl [SCTE-67] eine andere Empfehlung enthält. |
 | Wert                   | Zeichenfolge                  | Erforderlich      | Ein zusätzlicher Zeichenfolgenwert, der von den Besitzern des Schemas zum Anpassen der Semantik der Nachricht verwendet wird. Um mehrere Ereignisdatenströme mit gleichem Schema zu unterscheiden, wird der Wert auf den Namen des Ereignisdatenstroms festgelegt (‚trackName‘ für Smooth-Erfassung oder AMF-Nachrichtenname für RTMP-Erfassung).                                                                  |
 | Zeitskala               | 32-Bit-Ganzzahl ohne Vorzeichen | Erforderlich      | Die Zeitskala in Sekundenbruchteilen der Zeit- und Dauerfelder innerhalb der emsg-Box.                                                                                                                                                                                                                                                                        |
 | Presentation_time_delta | 32-Bit-Ganzzahl ohne Vorzeichen | Erforderlich      | Das Delta der Medienpräsentationszeit aus der Präsentationszeit des Ereignisses und der frühesten Präsentationszeit in diesem Segment. Die Präsentationszeit und die Dauer SOLLTEN an den Datenstrom-Zugriffspunkten, (Stream Access Points, SAPs) von Typ 1 oder Typ 2 ausgerichtet sein, wie in [ISO-14496-12] Anhang I definiert.                                                                                            |
@@ -398,9 +388,9 @@ Für Smooth-Datenstromerfassung ist es erforderlich, dass die Media Data Box (�
 
 **[SCTE-35]** ANSI/SCTE 35 2013a – Digital Program Insertion Cueing Message for Cable, 2013a (Positionsnachricht für die Einfügung von digitalen Programmen im Kabel, 2013a)
 
-**[SCTE-67]** ANSI/SCTE 67 2014 – Recommended Practice for SCTE 35: Digital Program Insertion Cueing Message for Cable (Empfohlene Vorgehensweise für SCTE 35: Positionsnachricht für die Einfügung von digitalen Programmen im Kabel)
+**[SCTE-67]**  ANSI/SCTE 67 2014 – empfohlene Vorgehensweise für SCTE 35: Digital Program Insertion Cueing Message for Cable (Positionsnachricht für die Einfügung von digitalen Programmen im Kabel)
 
-**[DASH]** ISO/IEC 23009-1 2014 – Information technology – Dynamic adaptive streaming over HTTP (DASH) – Part 1: Media Presentation description and segment formats, 2nd edition (Informationstechnologie: Dynamisches adaptives Streaming über HTTP (DASH), Teil 1: Beschreibung der Medienpräsentation und Segmentformate, 2. Ausgabe)
+**[DASH]** ISO/IEC 23009-1 2014 – Information Technology – Dynamic adaptive streaming over HTTP (Informationstechnologie – Dynamisches adaptives Streaming über HTTP) (DASH) – Teil 1: Media Presentation description und segment formats (Medienpräsentationsbeschreibung und -segmentformate), 2. Auflage
 
 **[HLS]** [„HTTP Live Streaming“, draft-pantos-http-live-streaming-14, 14. Oktober 2014](http://tools.ietf.org/html/draft-pantos-http-live-streaming-14)
 
@@ -410,7 +400,7 @@ Für Smooth-Datenstromerfassung ist es erforderlich, dass die Media Data Box (�
 
 **[LIVE-FMP4]** [Azure Media Services Fragmented MP4 Live Ingest Specification](https://docs.microsoft.com/azure/media-services/media-services-fmp4-live-ingest-overview) (Spezifikation der Live-Erfassung von fragmentiertem MP4 in Azure Media Services)
 
-**[ISO-14496-12]** ISO/IEC 14496-12: Part 12 ISO base media file format, Fourth Edition 2012-07-15 (Teil 12 ISO-Mediendatei-Basisformat, vierte Ausgabe, 15. Juli 2012).
+**[ISO-14496-12]** ISO/IEC 14496-12: Part 12 ISO base media file format, Fourth Edition 2012-07-15 (Teil 12 ISO-Mediendatei-Basisformat, 4. Auflage, 15. Juli 2012).
 
 **[RTMP]** [„Adobe’s Real-Time Messaging Protocol“, December 21, 2012](https://www.adobe.com/devnet/rtmp.html) (Adobe Echtzeit-Nachrichtenprotokoll, 21. Dezember 2012) 
 

@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/15/2018
 ms.author: juliako
-ms.openlocfilehash: 41376448095a5dd760fae594fdfe2d2b57e4440a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 9370cdfc75995f36101804d2a9f7dc9cf275243c
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51231650"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53186309"
 ---
 # <a name="azure-media-services-release-notes"></a>Versionsanmerkungen zu Azure Media Services
 Diese Versionsanmerkungen zu Azure Media Services bieten eine Übersicht über Änderungen im Vergleich zu früheren Versionen und bekannte Probleme.
@@ -39,7 +39,7 @@ Diese Versionsanmerkungen zu Azure Media Services bieten eine Übersicht über �
 | Der Drosselungsmechanismus von Media Services schränkt die Ressourcenverwendung für Anwendungen ein, die übermäßig viele Anforderungen an den Dienst senden. Der Dienst kann den HTTP-Statuscode 503, „Dienst nicht verfügbar“, zurückgeben. |Weitere Informationen finden Sie in der Beschreibung des HTTP-Statuscodes 503 unter [Media Services-Fehlercodes](media-services-encoding-error-codes.md). |
 | Beim Abfragen von Entitäten werden maximal 1.000 Entitäten gleichzeitig zurückgegeben, weil die öffentliche REST-Version 2 Abfrageergebnisse auf 1.000 Ergebnisse begrenzt. |Verwenden Sie „Skip“ und „Take“ (.NET) bzw. „top“ (REST), wie in [diesem .NET-Beispiel](media-services-dotnet-manage-entities.md#enumerating-through-large-collections-of-entities) und [diesem REST-API-Beispiel](media-services-rest-manage-entities.md#enumerating-through-large-collections-of-entities) beschrieben. |
 | Bei einigen Clients kann im Smooth Streaming-Manifest ein Problem mit einem Wiederholungstag auftreten. |Weitere Informationen finden Sie in [diesem Abschnitt](media-services-deliver-content-overview.md#known-issues). |
-| Media Services .NET SDK-Objekte können nicht serialisiert werden und funktionieren daher nicht mit Azure Redis Cache. |Wenn Sie versuchen, das SDK-Objekt „AssetCollection“ zu serialisieren, um es zu Azure Redis Cache hinzuzufügen, wird eine Ausnahme ausgelöst. |
+| Media Services .NET SDK-Objekte können nicht serialisiert werden und funktionieren daher nicht mit Azure Cache for Redis. |Wenn Sie versuchen, das SDK-Objekt „AssetCollection“ zu serialisieren, um es Azure Cache for Redis hinzuzufügen, wird eine Ausnahme ausgelöst. |
 
 
 ## <a name="a-idrestversionhistoryrest-api-version-history"></a><a id="rest_version_history"/>REST-API-Versionsverlauf
@@ -86,7 +86,7 @@ Ab dem 12. Mai 2018 unterstützen Livekanäle nicht mehr das Erfassungsprotokoll
     * Verbesserungen des im Standard-Encoder verwendeten H.264-Decoders eliminieren bestimmte seltene Artefakte. 
 
 #### <a name="media-analytics"></a>Media Analytics
-Allgemeine Verfügbarkeit von Azure Media Redactor: Dieser Medienprozessor ermöglicht die Anonymisierung von Videoinhalten, indem die Gesichter ausgewählter Personen unscharf angezeigt werden – ideal für den Einsatz in den Bereichen öffentliche Sicherheit und Nachrichtenmedien. 
+Allgemeine Verfügbarkeit von Azure Media Redactor: Dieser Medienprozessor ermöglicht die Anonymisierung von Inhalten, indem die Gesichter von bestimmten Personen unscharf gemacht werden – ideal für den Einsatz in den Bereichen öffentliche Sicherheit und Nachrichtenmedien. 
 
 Eine Übersicht über diesen neuen Prozessor finden Sie in [diesem Blogbeitrag](https://azure.microsoft.com/blog/azure-media-redactor/). Informationen zu Dokumentation und Einstellungen finden Sie unter [Bearbeiten von Gesichtern mit Azure Media Analytics](media-services-face-redaction.md).
 
@@ -194,10 +194,10 @@ Weitere Informationen finden Sie unter
 Widevine-Lizenzübermittlungsdienste über Media Services befinden sich in der Vorschauphase. Weitere Informationen finden Sie in [diesem Blog](https://azure.microsoft.com/blog/announcing-google-widevine-license-delivery-services-public-preview-in-azure-media-services/).
 
 ## <a id="oct_changes_15"></a>Release von Oktober 2015
-Media Services ist jetzt in den folgenden Rechenzentren live verfügbar: „Brasilien, Süden“, „Indien, Westen“, „Indien, Süden“ und „Indien, Mitte“. Über das Azure-Portal können Sie jetzt [Media Service-Konten erstellen](media-services-portal-create-account.md) und verschiedene auf der [Dokumentationswebseite für Media Services](https://azure.microsoft.com/documentation/services/media-services/) beschriebene Aufgaben ausführen. Live Encoding ist in diesen Rechenzentren nicht aktiviert. Darüber hinaus sind nicht alle Arten von für die Codierung reservierten Einheiten in diesen Rechenzentren verfügbar.
+Media Services ist jetzt in den folgenden Datencentern live: Brasilien, Süden, Indien, Westen, Indien, Süden und Indien, Mitte. Über das Azure-Portal können Sie jetzt [Media Service-Konten erstellen](media-services-portal-create-account.md) und verschiedene auf der [Dokumentationswebseite für Media Services](https://azure.microsoft.com/documentation/services/media-services/) beschriebene Aufgaben ausführen. Live Encoding ist in diesen Rechenzentren nicht aktiviert. Darüber hinaus sind nicht alle Arten von für die Codierung reservierten Einheiten in diesen Rechenzentren verfügbar.
 
-* „Brasilien, Süden“: Reservierte Einheiten für die Codierung stehen nur im Standard- und Basic-Tarif zur Verfügung.
-* „Indien, Westen“, „Indien, Süden“ und „Indien, Mitte“: Für die Codierung reservierte Einheiten stehen nur im Basic-Tarif zur Verfügung.
+* Brasilien, Süden:                                          Reservierte Einheiten für die Codierung stehen nur im Standard- und Basic-Tarif zur Verfügung.
+* Indien, Westen, Indien, Süden und Indien, Mitte:             Reservierte Einheiten für die Codierung stehen nur im Basic-Tarif zur Verfügung.
 
 ## <a id="september_changes_15"></a>Release von September 2015
 Media Services bietet jetzt die Möglichkeit zum Schutz von Video on Demand-Streams und Livestreams mit der modularen DRM-Technologie Widevine. Folgende Partner für Bereitstellungsdienste können Sie bei der Übermittlung von Widevine-Lizenzen unterstützen:
@@ -270,7 +270,7 @@ Weitere Informationen finden Sie in [diesem Blog](https://azure.microsoft.com/bl
 ### <a name="media-services-net-sdk-updates"></a>Updates für das Media Services .NET SDK
 Das Media Services .NET SDK liegt jetzt in der Version 3.2.0.0 vor. Die folgenden Updates wurden vorgenommen:
 
-* Änderung mit Auswirkung auf die Lauffähigkeit: TokenRestrictionTemplate.Issuer und TokenRestrictionTemplate.Audience sind jetzt Zeichenfolgentypen.
+* Wichtige Änderung: TokenRestrictionTemplate.Issuer und TokenRestrictionTemplate.Audience sind jetzt Zeichenfolgentypen.
 * Die Erstellung von benutzerdefinierten Wiederholungsrichtlinien wurde aktualisiert.
 * Im Zusammenhang mit dem Hochladen/Herunterladen von Dateien wurden Fehlerbehebungen vorgenommen.
 * Die MediaServicesCredentials-Klasse akzeptiert jetzt primäre und sekundäre Endpunkte für die Zugriffssteuerung zum Authentifizieren.
@@ -374,8 +374,8 @@ Wenn Sie ein Medienobjekt codieren, wird bei Abschluss des Codierungsauftrags ei
 ## <a id="july_changes_14"></a>Release von Juli 2014
 Die folgenden Fehlerkorrekturen wurden für Azure Media Services Packager und Encryptor vorgenommen:
 
-* Wenn Live-Archivmedienobjekt an HLS übertragen wird, wird nur die Audiospur wiedergegeben: Dieses Problem wurde behoben, jetzt können sowohl die Audio- als auch die Videospur wiedergegeben werden.
-* Wenn ein Medienobjekt in HLS und AES-128-Bit-Umschlagverschlüsselung gepackt wurde, ließen sich die gepackten Streams auf Android-Geräten nicht wiedergeben: Dieses Problem wurde behoben, und die gepackten Streams können auf Android-Geräten wiedergegeben werden, die HLS unterstützen.
+* Wenn ein Live-Archivmedienobjekt an HLS übertragen wird, wird nur Audio wiedergegeben: Dieses Problem wurde behoben. Jetzt können Audio und Video wiedergegeben werden.
+* Wenn ein Medienobjekt in HLS und AES-128-Bit-Umschlagverschlüsselung gepackt ist, werden die gepackten Streams nicht auf Android-Geräten wiedergegeben: Dieses Problem wurde behoben, und die gepackten Streams können auf Android-Geräten, die HLS unterstützen, wiedergegeben werden.
 
 ## <a id="may_changes_14"></a>Release von Mai 2014
 ### <a id="may_14_changes"></a>Allgemeine Media Services-Updates
@@ -476,7 +476,7 @@ Die folgenden Änderungen sind in den Media Services SDK-Releases von Juni 2013 
     * StorageAccount-Eigenschaft
     * StorageAccountName-Eigenschaft
   
-    Weitere Informationen finden Sie unter [Verwalten von Media Services-Medienobjekten für mehrere Speicherkonten](https://msdn.microsoft.com/library/azure/dn271889.aspx).
+      Weitere Informationen finden Sie unter [Verwalten von Media Services-Medienobjekten für mehrere Speicherkonten](https://msdn.microsoft.com/library/azure/dn271889.aspx).
 * Benachrichtigungsbezogene APIs. Ab Version 2.2.0.0 können Sie sich Azure-Warteschlangenspeicher-Benachrichtigungen anhören. Weitere Informationen finden Sie unter [Verarbeiten von Media Services-Auftragsbenachrichtigungen](https://msdn.microsoft.com/library/azure/dn261241.aspx).
   
     * Microsoft.WindowsAzure.MediaServices.Client.IJob.JobNotificationSubscriptions-Eigenschaft
@@ -494,8 +494,8 @@ Die folgenden Änderungen sind in den Media Services SDK-Releases von Juni 2013 
 
 Problembehebung im SDK von November 2012:
 
-* IAsset.Locators.Count: Diese Anzahl wird nun korrekt in neuen IAsset-Schnittstellen angegeben, nachdem alle Locators gelöscht wurden.
-* IAssetFile.ContentFileSize: Dieser Wert ist jetzt nach dem Hochladen durch „IAssetFile.Upload(filepath)“ richtig eingestellt.
+* IAsset.Locators.Count: Diese Anzahl wird nun richtig in neuen IAsset-Schnittstellen angegeben, nachdem alle Locators gelöscht wurden.
+* IAssetFile.ContentFileSize: Dieser Wert wird jetzt nach dem Hochladen durch „IAssetFile.Upload(filepath)“ richtig festgelegt.
 * IAssetFile.ContentFileSize: Diese Eigenschaft kann jetzt beim Erstellen einer Medienobjektdatei festgelegt werden. Sie war zuvor schreibgeschützt.
 * IAssetFile.Upload(filepath): Es wurde ein Fehler behoben, bei dem diese synchrone Uploadmethode beim Hochladen mehrerer Dateien in das Medienobjekt den folgenden Fehler ausgab. Der Fehler lautete "Die Anforderung konnte nicht authentifiziert werden. Stellen Sie sicher, dass der Wert des Autorisierungsheaders, einschließlich der Signatur, korrekt ist."
 * IAssetFile.UploadAsync: Es wurde ein Fehler behoben, der die Anzahl gleichzeitig hochgeladener Dateien auf fünf beschränkte.
@@ -503,7 +503,7 @@ Problembehebung im SDK von November 2012:
 * IAssetFile.DownloadAsync(string, BlobTransferClient, ILocator, CancellationToken): Diese Methodenüberladung wird nun bereitgestellt.
 * IAssetFile.DownloadAsync: Es wurde ein Fehler behoben, der die Anzahl gleichzeitig heruntergeladener Dateien auf fünf beschränkte.
 * IAssetFile.Delete(): Es wurde ein Fehler behoben, bei dem das Aufrufen der Löschfunktion eine Ausnahme auslösen konnte, wenn keine Datei für IAssetFile hochgeladen wurde.
-* Aufträge: Es wurde ein Fehler behoben, bei dem durch die Verkettung einer Aufgabe zum Konvertieren von MP4 zu Smooth Streams und einer PlayReady-Schutzaufgabe unter Verwendung einer Jobvorlage überhaupt keine Aufgabe erstellt wurde.
+* Aufträge: Es wurde ein Fehler behoben, bei dem durch die Verkettung einer Aufgabe zum Konvertieren von MP4 zu Smooth Streams und einer PlayReady-Schutzaufgabe unter Verwendung einer Auftragsvorlage überhaupt keine Aufgabe erstellt wurde.
 * EncryptionUtils.GetCertificateFromStore(): Diese Methode löst keine Nullverweisausnahme mehr aus, weil bei der Suche nach dem Zertifikat aufgrund von Problemen mit der Zertifikatkonfiguration ein Fehler auftritt.
 
 ## <a id="november_changes_12"></a>Release von November 2012
@@ -522,7 +522,7 @@ Die in diesem Abschnitt aufgeführten Änderungen sind Updates, die im SDK von N
     * IAssetFile ersetzt FileInfo und weist ein anderes Verhalten auf. Um das IAssetFiles-Objekt verwenden zu können, instanziieren Sie es, und laden Sie dann eine Datei über das Media Services SDK oder das Storage SDK hoch. Die folgenden IAssetFile.Upload-Überladungen können verwendet werden:
   
         * IAssetFile.Upload(filePath): Diese synchrone Methode sperrt den Thread und wird nur beim Hochladen einer einzelnen Datei empfohlen.
-        * IAssetFile.UploadAsync(filePath, blobTransferClient, locator, cancellationToken): Diese asynchrone Methode ist der bevorzugte Mechanismus zum Hochladen. 
+        * IAssetFile.UploadAsync(filePath, blobTransferClient, locator, cancellationToken): Diese asynchrone Methode ist der bevorzugte Uploadmechanismus. 
     
             Bekannter Fehler: Wenn Sie das Abbruchtoken verwenden, wird der Upload abgebrochen. Die Aufgaben können mehrere Abbruchzustände aufweisen. Sie müssen Ausnahmen korrekt erfassen und behandeln.
 * Locators

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/09/2018
 ms.author: artemuwka
 ms.component: common
-ms.openlocfilehash: a1b183e5b0929a2149502aa340e2e69c725dba6d
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 2ab933506ea03ae72198113d70888460e5001a6d
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49168232"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52958411"
 ---
 # <a name="transfer-data-with-the-azcopy-v10-preview"></a>Übertragen von Daten mit AzCopy v10 (Vorschau)
 
@@ -84,6 +84,16 @@ Um die Hilfeseite und Beispiele für einen bestimmten Befehl anzuzeigen, führen
 .\azcopy cp -h
 ```
 
+## <a name="create-a-file-system-azure-data-lake-storage-gen2-only"></a>Erstellen eines Dateisystems (nur Azure Data Lake Storage Gen2)
+
+Wenn Sie hierarchische Namespaces in Ihrem Blobspeicherkonto aktiviert haben, können Sie mit dem folgenden Befehl ein neues Dateisystem erstellen, damit Sie eine Downloaddatei hochladen können.
+
+```azcopy
+.\azcopy make "https://account.dfs.core.windows.net/top-level-resource-name" --recursive=true
+```
+
+Der ``account``-Teil dieser Zeichenfolge ist der Name Ihres Speicherkontos. Der ``top-level-resource-name``-Teil dieser Zeichenfolge ist der Name des Dateisystems, das Sie erstellen möchten.
+
 ## <a name="copy-data-to-azure-storage"></a>Kopieren von Daten in Azure Storage
 
 Verwenden Sie den Kopierbefehl, um Daten aus der Quelle in das Ziel zu übertragen. Die Quelle bzw. das Ziel kann Folgendes sein:
@@ -107,10 +117,22 @@ Der folgende Befehl lädt alle Dateien unter dem Ordner „C:\local\path“ reku
 .\azcopy cp "C:\local\path" "https://account.blob.core.windows.net/mycontainer1<sastoken>" --recursive=true
 ```
 
+Wenn Sie hierarchische Namespaces in Ihrem Blobspeicherkonto aktiviert haben, können Sie mit dem folgenden Befehl Dateien in Ihr Dateisystem hochladen:
+
+```azcopy
+.\azcopy cp "C:\local\path" "https://myaccount.dfs.core.windows.net/myfolder<sastoken>" --recursive=true
+```
+
 Der folgende Befehl lädt alle Dateien unter dem Ordner „C:\local\path“ (nicht rekursiv, also ohne Unterverzeichnisse) in den Container „mycontainer1“ hoch:
 
 ```azcopy
 .\azcopy cp "C:\local\path\*" "https://account.blob.core.windows.net/mycontainer1<sastoken>"
+```
+
+Wenn Sie hierarchische Namespaces in Ihrem Blobspeicherkonto aktiviert haben, können Sie den folgenden Befehl verwenden:
+
+```azcopy
+.\azcopy cp "C:\local\path\*" "https://account.blob.core.windows.net/myfolder<sastoken>"
 ```
 
 Um weitere Beispiele abzurufen, verwenden Sie den folgenden Befehl:
@@ -127,6 +149,8 @@ Um die Daten zwischen zwei Speicherkonten zu kopieren, verwenden Sie den folgend
 ```azcopy
 .\azcopy cp "https://myaccount.blob.core.windows.net/<sastoken>" "https://myotheraccount.blob.core.windows.net/<sastoken>" --recursive=true
 ```
+
+Um mit Blobspeicherkonten zu arbeiten, für die hierarchische Namespaces aktiviert sind, ersetzen Sie in diesen Beispielen die Zeichenkette ``blob.core.windows.net`` durch ``dfs.core.windows.net``.
 
 > [!NOTE]
 > Der Befehl zählt alle Blobcontainer auf und kopiert sie in das Zielkonto. Zu diesem Zeitpunkt unterstützt AzCopy v10 nur das Kopieren von Blockblobs zwischen zwei Speicherkonten. Alle anderen Speicherkontoobjekte (Anfügeblobs, Seitenblobs, Dateien, Tabellen und Warteschlangen) werden übersprungen.
@@ -154,6 +178,8 @@ Auf die gleiche Weise können Sie einen Blobcontainer mit einem lokalen Dateisys
 ```
 
 Mit diesem Befehl können Sie die Quelle inkrementell basierend auf den Zeitstempeln der letzten Änderung mit dem Ziel synchronisieren. Wenn Sie eine Datei in der Quelle hinzufügen oder löschen, verfährt AzCopy v10 im Ziel auf die gleiche Weise.
+
+[!NOTE] Um mit Blobspeicherkonten zu arbeiten, für die hierarchische Namespaces aktiviert sind, ersetzen Sie in diesen Beispielen die Zeichenfolge ``blob.core.windows.net`` durch ``dfs.core.windows.net``.
 
 ## <a name="advanced-configuration"></a>Erweiterte Konfiguration
 

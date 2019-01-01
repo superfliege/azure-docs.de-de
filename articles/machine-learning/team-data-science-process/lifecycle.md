@@ -1,5 +1,5 @@
 ---
-title: Team Data Science-Prozess-Lebenszyklus – Azure | Microsoft-Dokumentation
+title: Lebenszyklus des Team Data Science-Prozesses
 description: Zum Ausführen der Data Science-Projekte erforderliche Schritte
 services: machine-learning
 author: marktab
@@ -10,19 +10,21 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 24807d00170ed46a95d2726e1172b15775e0376d
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: a2a4a8c895bddb03271014c50f57b666faa0c2cc
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52443389"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53135940"
 ---
 # <a name="the-team-data-science-process-lifecycle"></a>Lebenszyklus des Team Data Science-Prozesses
 
 Der Team Data Science-Prozess (TDSP) bietet einen empfohlenen Lebenszyklus, mit dem Sie Ihre Data Science-Projekte strukturieren können. Im Lebenszyklus sind die gesamten Schritte aufgeführt, die bei Projekten bei der Ausführung normalerweise durchlaufen werden. Wenn Sie einen anderen Data Science-Lebenszyklus verwenden, z.B. [CRISP-DM](https://wikipedia.org/wiki/Cross_Industry_Standard_Process_for_Data_Mining) (Cross Industry Standard Process for Data Mining), [KDD](https://wikipedia.org/wiki/Data_mining#Process) (Knowledge Discovery in Databases) oder einen benutzerdefinierten Prozess Ihrer Organisation, können Sie trotzdem den aufgabenbasierten TDSP verwenden. 
 
 Dieser Lebenszyklus wurde für Data Science-Projekte entworfen, die im Lieferumfang von intelligenten Anwendungen enthalten sein sollen. Mit diesen Anwendungen werden Modelle vom Typ „Machine Learning“ oder „Künstliche Intelligenz“ für Predictive Analytics bereitgestellt. Explorative Data Science-Projekte und Ad-hoc-Analyseprojekte können von diesem Prozess ebenfalls profitieren. Für solche Projekte sind aber möglicherweise einige der hier beschriebenen Schritte nicht erforderlich. 
+
+## <a name="five-lifecycle-stages"></a>Fünf Lebenszyklusphasen
 
 Der TDSP-Lebenszyklus besteht aus fünf Hauptphasen, die iterativ ausgeführt werden. Diese Phasen umfassen:
 
@@ -41,9 +43,9 @@ Der TDSP-Lebenszyklus wird als Sequenz der durchlaufenen Schritte modelliert, di
 
 Für jede Phase werden die folgenden Informationen bereitgestellt:
 
-   * **Ziele:** die einzelnen Ziele
-   * **Vorgehensweise:** eine Übersicht über die spezifischen Aufgaben und Anleitungen für diese
-   * **Artefakte:** Aufstellung der Endergebnisse und Unterstützung für ihre Erreichung
+   * **Ziele**: Die einzelnen Ziele
+   * **Vorgehensweise**: Eine Übersicht über die spezifischen Aufgaben und Anleitungen für diese.
+   * **Artefakte**: Aufstellung der Endergebnisse und Unterstützung für ihre Erreichung.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

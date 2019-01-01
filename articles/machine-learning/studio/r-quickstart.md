@@ -5,9 +5,8 @@ keywords: Schnellstart,Sprache R,Programmiersprache R,R-Programmierungs-Lernprog
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
+ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: 99a3a0fd-b359-481a-b236-66868deccd96
 ms.service: machine-learning
@@ -17,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/06/2017
-ms.openlocfilehash: eea61419e76f4363a286f796e6df28a4e90a9ed7
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: ddd9c1fd8b51c6ae43878cf50ee16737511c82e9
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52317669"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53278660"
 ---
 # <a name="quickstart-tutorial-for-the-r-programming-language-for-azure-machine-learning-studio"></a>Schnellstarttutorial für die Programmiersprache R für Azure Machine Learning Studio
 
@@ -33,7 +32,7 @@ Dieses Schnellstart-Lernprogramm hilft Ihnen bei der schnellen Erweiterung von A
 
 Microsoft Azure Machine Learning enthält viele leistungsfähige Module für Machine Learning und Datenbearbeitung. Die leistungsfähige Sprache R wurde als die Lingua franca der Analytik beschrieben. Glücklicherweise lassen sich Analyse und Datenbearbeitung in Azure Machine Learning mithilfe von R erweitern. Diese Kombination bietet die einfache Skalierbarkeit von Bereitstellungen aus Azure Machine Learning zusammen mit der Flexibilität und den tief greifenden Analysefunktionen von R.
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 
 ### <a name="forecasting-and-the-dataset"></a>Vorhersagen und das DataSet
 Vorhersagen stellen eine verbreitet angewendete und durchaus nützliche Analysemethode dar. Allgemeine Anwendungen reichen von der Vorhersage der Umsätze für Saisonartikel, über die Bestimmung der optimalen Lagerbestände bis hin zur Vorhersage makroökonomischer Variablen. Vorhersagen werden normalerweise mit Zeitreihenmodellen erstellt.
@@ -61,7 +60,7 @@ Wir verwenden RStudio, um R-Code in geringem Umfang zu entwickeln, zu testen und
 ### <a name="the-execute-r-script-module"></a>Das "Execute R Script"-Modul
 In Machine Learning Studio werden R-Skripts innerhalb des [Execute R Script][execute-r-script]-Moduls ausgeführt. Ein Beispiel für das [Execute R Script][execute-r-script]-Modul in Machine Learning Studio sehen Sie in Abbildung 1.
 
- ![Programmiersprache R: Die Machine Learning Studio-Umgebung mit dem ausgewählten "Execute R Script"-Modul][1]
+ ![Programmiersprache R: Die Machine Learning Studio-Umgebung mit dem ausgewählten Execute R Script-Modul][1]
 
 *Abbildung 1: Die Machine Learning Studio-Umgebung, in der das ausgewählte "Execute R Script"-Modul angezeigt wird.*
 
@@ -1211,7 +1210,7 @@ Das Ausführen des Codes erzeugt die in Abbildung 27 dargestellte Ausgabe am "Re
 
 Anhand dieser Ergebnisse können wir erkennen, dass der RMS-Fehler durch das Hinzufügen der saisonalen Faktoren zu dem Modell signifikant abnimmt. Es überrascht uns nicht allzu sehr, dass der RMS-Fehler für die Trainingsdaten ein wenig niedriger ist für die Vorhersage.
 
-## <a id="appendixa"></a>ANHANG A – Anleitung für RStudio
+## <a id="appendixa"></a>ANHANG A: Leitfaden für RStudio
 RStudio ist sehr gut dokumentiert, weshalb ich in diesem Anhang einige Links zu den wichtigsten Abschnitten der RStudio-Dokumentation bereitstelle, um Ihnen einen schnellen Einstieg zu ermöglichen.
 
 1. Erstellen von Projekten
@@ -1228,7 +1227,7 @@ RStudio ist sehr gut dokumentiert, weshalb ich in diesem Anhang einige Links zu 
    
    Die Features zur Problembehandlung von Breakpoints sind unter https://support.rstudio.com/hc/articles/200534337-Breakpoint-Troubleshooting dokumentiert.
 
-## <a id="appendixb"></a>ANHANG B – Weitere Informationen
+## <a id="appendixb"></a>ANHANG B: Weitere nützliche Informationen
 Dieses Lernprogramm für die Programmierung in R behandelt die Grundlagen der Sprache R mit Azure Machine Learning Studio. Wenn Sie nicht mit R vertraut sind, finden Sie zwei Einführungen im CRAN.
 
 * Die Informationen zu „R for Beginners“ (R für Anfänger) von Emmanuel Paradis unter http://cran.r-project.org/doc/contrib/Paradis-rdebuts_en.pdf sind ein guter Einstieg.  
@@ -1236,7 +1235,7 @@ Dieses Lernprogramm für die Programmierung in R behandelt die Grundlagen der Sp
 
 Es gibt viele Bücher zu R, die Ihnen beim Einstieg helfen können. Hier finden Sie ein paar, die ich nützlich finde:
 
-* "The Art of R Programming: A Tour of Statistical Software Design" von Norman Matloff ist eine ausgezeichnete Einführung in die Programmierung in R.  
+* „The Art of R Programming: A Tour of Statistical Software Design“ von Norman Matloff ist eine ausgezeichnete Einführung in die Programmierung in R.  
 * Das "R Cookbook" von Paul Teetor bietet einen Problem-Lösung-Ansatz für die Verwendung von R.  
 * "R in Action" von Robert Kabacoff ist eine weitere nützliche Einführung. Die begleitende Website zu „Quick R“ unter http://www.statmethods.net/ ist eine nützliche Ressource.
 * „R Inferno“ von Patrick Burns ist ein erstaunlich humorvolles Buch, das sich mit einer Reihe von verzwickten und komplizierten Themen beschäftigt, die bei der Programmierung in R vorkommen können. Das Buch ist unter http://www.burns-stat.com/documents/books/the-r-inferno/ kostenlos erhältlich.
@@ -1248,7 +1247,7 @@ Das Buch "Introductory Time Series with R" von Paul Cowpertwait und Andrew Metca
 
 Einige weitere nützliche Internetressourcen:
 
-* DataCamp: DataCamp unterrichtet R bequem über den Browser mit Videolektionen und Codierungsübungen. Es gibt interaktive Lernprogramme zu den neuesten R-Techniken und -Paketen. Arbeiten Sie das kostenlose interaktive R-Tutorial unter https://www.datacamp.com/courses/introduction-to-r durch.
+* DataCamp: Mit DataCamp erlernen Sie R bequem über den Browser mit Videolektionen und Codierungsübungen. Es gibt interaktive Lernprogramme zu den neuesten R-Techniken und -Paketen. Arbeiten Sie das kostenlose interaktive R-Tutorial unter https://www.datacamp.com/courses/introduction-to-r durch.
 * Lesen Sie den Leitfaden zu den ersten Schritten mit R von Programiz unter https://www.programiz.com/r-programming.
 * Arbeiten Sie das kompakte R-Tutorial von Kelly Black von der Clarkson University unter http://www.cyclismo.org/tutorial/R/ durch.
 * Unter http://www.computerworld.com/article/2497464/business-intelligence-60-r-resources-to-improve-your-data-skills.html sind mehr als 60 R-Ressourcen aufgeführt.
